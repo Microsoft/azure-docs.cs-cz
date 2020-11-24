@@ -1,5 +1,5 @@
 ---
-title: Vytvoření monitorování připojení (Preview) – PowerShell
+title: Vytvoření monitorování připojení – PowerShell
 titleSuffix: Azure Network Watcher
 description: Naučte se vytvářet monitorování připojení pomocí PowerShellu.
 services: network-watcher
@@ -10,22 +10,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2020
+ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: b1ffce75d5c38177c70db3ec1fc024a01821d3ab
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1a554177bf7084b9a7f4c413dbe82271b3ab6b3a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984239"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545529"
 ---
-# <a name="create-a-connection-monitor-preview-using-powershell"></a>Vytvoření monitorování připojení (Preview) pomocí PowerShellu
+# <a name="create-a-connection-monitor-using-powershell"></a>Vytvoření monitorování připojení pomocí PowerShellu
 
 Naučte se vytvářet monitorování připojení, abyste mohli monitorovat komunikaci mezi prostředky pomocí PowerShellu.
 
-> [!IMPORTANT]
-> Monitor připojení je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="before-you-begin"></a>Než začnete 
 

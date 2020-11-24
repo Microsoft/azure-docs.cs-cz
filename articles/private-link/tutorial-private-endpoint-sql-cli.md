@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.author: allensu
-ms.openlocfilehash: d28a3a304a42ec82ff18ad7f5e72518e2b77ec29
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 8cfe44b9433ee1daac028253aa45c97804c88ae5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280871"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544101"
 ---
 # <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-cli"></a>Kurz – připojení k serveru SQL Azure pomocí privátního koncového bodu Azure – Azure CLI
 
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření serveru SQL Azure a privátního koncového bodu.
 > * Otestujte připojení k privátnímu koncovému bodu SQL serveru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Přihlaste se k Azure Portal a ověřte, že je vaše předplatné aktivní spuštěním `az login` .
@@ -285,11 +285,11 @@ V této části použijete virtuální počítač, který jste vytvořili v pře
     Pro název SQL serveru se vrátí privátní IP adresa **10.0.0.5** .  Tato adresa je v podsíti virtuální sítě, kterou jste vytvořili dříve.
 
 
-10. Nainstalujte [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) v **myVM**.
+10. Nainstalujte [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?preserve-view=true&view=sql-server-2017) v **myVM**.
 
 11. Otevřete **SQL Server Management Studio**.
 
-12. V **Connect to Server (připojit k serveru** ) zadejte nebo vyberte tyto informace:
+12. V **Connect to Server (připojit k serveru**) zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |

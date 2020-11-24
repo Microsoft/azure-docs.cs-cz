@@ -1,6 +1,6 @@
 ---
-title: Změna velikosti disku s operačním systémem, který má oddíl GPT | Microsoft Docs
-description: Tento článek obsahuje pokyny k změně velikosti disku s operačním systémem, který má oddíl GPT.
+title: Změna velikosti disku s operačním systémem, který má oddíl GPT
+description: Tento článek obsahuje informace o tom, jak změnit velikost disku s operačním systémem, který má oddíl GPT (GUID Partition Table) v systému Linux.
 services: virtual-machines-linux
 documentationcenter: ''
 author: kailashmsft
@@ -14,17 +14,17 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: 99b723322ce7636edce3ae5b59a69b96e288ca24
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 3565b165c669af3566667d9bdfa401d15fcce101
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392686"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544152"
 ---
 # <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>Změna velikosti disku s operačním systémem, který má oddíl GPT
 
 > [!NOTE]
-> Tento scénář se vztahuje jenom na disky s operačním systémem, které mají oddíl GPT (GUID Partition Table).
+> Tento článek se týká jenom disků s operačním systémem, které mají oddíl GPT (GUID Partition Table).
 
 Tento článek popisuje, jak zvětšit velikost disku s operačním systémem, který má oddíl GPT v systému Linux. 
 
@@ -78,14 +78,14 @@ Následující pokyny se vztahují na distribuce schválené systémem Linux.
 
 ### <a name="ubuntu"></a>Ubuntu
 
-Chcete-li zvětšit velikost disku s operačním systémem v Ubuntu 16. x a 18. x:
+Zvýšení velikosti disku s operačním systémem v Ubuntu 16. *x* a 18. *x*:
 
 1. Zastavte virtuální počítač.
 1. Zvětšete velikost disku s operačním systémem z portálu.
-1. Restartujte virtuální počítač a pak se přihlaste k virtuálnímu počítači jako uživatel **root** .
+1. Restartujte virtuální počítač a přihlaste se k virtuálnímu počítači jako uživatel **root** .
 1. Ověřte, že disk s operačním systémem teď zobrazuje zvýšenou velikost systému souborů.
 
-Jak je znázorněno v následujícím příkladu, změnila se velikost disku s operačním systémem z portálu na 100 GB. **/Dev/sda1** systém souborů, který je připojen k systému, **/** nyní zobrazuje 97 GB.
+V následujícím příkladu se změnila velikost disku s operačním systémem z portálu na 100 GB. **/Dev/sda1** systém souborů, který je připojen k systému, **/** nyní zobrazuje 97 GB.
 
 ```
 user@myvm:~# df -Th
@@ -110,21 +110,21 @@ Pokud chcete zvětšit velikost disku s operačním systémem v SUSE 12 SP4, SUS
 1. Zvětšete velikost disku s operačním systémem z portálu.
 1. Restartujte virtuální počítač.
 
-Po restartování virtuálního počítače proveďte následující kroky:
+Po restartování virtuálního počítače proveďte tyto kroky:
 
-1. K VIRTUÁLNÍmu počítači se dostanete jako uživatel **root** pomocí tohoto příkazu:
+1. K VIRTUÁLNÍmu počítači přistupujete jako uživatel **root** pomocí tohoto příkazu:
 
    ```
    # sudo -i
    ```
 
-1. Pomocí následujícího příkazu nainstalujte balíček **growpart** , který se použije ke změně velikosti oddílu:
+1. Pomocí následujícího příkazu nainstalujte balíček **growpart** , který použijete pro změnu velikosti oddílu:
 
    ```
    # zypper install growpart
    ```
 
-1. Pomocí `lsblk` příkazu Najděte oddíl připojený do kořenového adresáře systému souborů ("/"). V tomto případě se zobrazí, že je oddíl 4 SDA zařízení připojený k/:
+1. Pomocí `lsblk` příkazu Najděte oddíl připojený k kořenovému adresáři systému souborů ( **/** ). V tomto případě uvidíme, že oddíl 4 **SDA** zařízení je připojený k **/** :
 
    ```
    # lsblk
@@ -138,7 +138,7 @@ Po restartování virtuálního počítače proveďte následující kroky:
    └─sdb1   8:17   0    4G  0 part /mnt/resource
    ```
 
-1. Změňte velikost požadovaného oddílu pomocí `growpart` příkazu pomocí čísla oddílu, který najdete v předchozím kroku.
+1. Změňte velikost požadovaného oddílu pomocí `growpart` příkazu a číslo oddílu určené v předchozím kroku:
 
    ```
    # growpart /dev/sda 4
@@ -177,7 +177,7 @@ Po restartování virtuálního počítače proveďte následující kroky:
 
 1. V závislosti na typu systému souborů použijte příslušné příkazy pro změnu velikosti systému souborů.
    
-   Pro **XFS** použijte následující příkaz:
+   Pro **XFS** použijte tento příkaz:
    
    ```
    #xfs_growfs /
@@ -200,13 +200,13 @@ Po restartování virtuálního počítače proveďte následující kroky:
    data blocks changed from 7470331 to 12188923
    ```
    
-   Pro **ext4** použijte následující příkaz:
+   Pro **ext4** použijte tento příkaz:
    
    ```
    #resize2fs /dev/sda4
    ```
    
-1. Ověřte zvýšenou velikost systému souborů pro **DF-th** pomocí následujícího příkazu:
+1. Ověřte zvýšenou velikost systému souborů pro **DF-th** pomocí tohoto příkazu:
    
    ```
    #df -Thl
@@ -233,13 +233,13 @@ Po restartování virtuálního počítače proveďte následující kroky:
 
 ### <a name="rhel-with-lvm"></a>RHEL s LVM
 
-1. K VIRTUÁLNÍmu počítači se dostanete jako uživatel **root** pomocí tohoto příkazu:
+1. K VIRTUÁLNÍmu počítači přistupujete jako uživatel **root** pomocí tohoto příkazu:
 
    ```bash
    [root@dd-rhel7vm ~]# sudo -i
    ```
 
-1. Pomocí `lsblk` příkazu Najděte, který logický svazek (LV) je připojen v kořenovém adresáři systému souborů (/). V tomto případě se zobrazí, že **_rootvg-rootlv_*_ je připojen k _* /**.  Pokud je požadován jiný systém souborů, nahraďte LV a přípojný bod tímto dokumentem.
+1. Pomocí `lsblk` příkazu určete, který logický svazek (LV) je připojen v kořenovém adresáři systému souborů ( **/** ). V tomto případě se zobrazí, že je **rootvg-rootlv** připojen **/** . Pokud chcete použít jiný systém souborů, nahraďte LV a přípojný bod v rámci tohoto článku.
 
    ```shell
    [root@dd-rhel7vm ~]# lsblk -f
@@ -258,7 +258,7 @@ Po restartování virtuálního počítače proveďte následující kroky:
       └─rootvg-rootlv     xfs                 4f3e6f40-61bf-4866-a7ae-5c6a94675193   /
    ```
 
-1. Ověřte, zda je ve skupině svazků LVM obsahující kořenový oddíl volné místo.  Pokud je k dispozici volné místo, přejděte ke kroku **12**
+1. Ověřte, zda je ve skupině svazků LVM (VG), která obsahuje kořenový oddíl, volné místo. Pokud je k dispozici volné místo, přejděte ke kroku 12.
 
    ```bash
    [root@dd-rhel7vm ~]# vgdisplay rootvg
@@ -284,17 +284,15 @@ Po restartování virtuálního počítače proveďte následující kroky:
    VG UUID               lPUfnV-3aYT-zDJJ-JaPX-L2d7-n8sL-A9AgJb
    ```
 
-   V tomto příkladu je na řádku **volném disku PE/velikost** uvedeno, že ve skupině svazků je 38.02 GB volného místa.  Před přidáním prostoru do skupiny svazků není nutné měnit velikost disku.
+   V tomto příkladu řádek **Free PE/Size** ukazuje, že ve skupině svazků je 38,02 GB volného místa. Před přidáním prostoru do skupiny svazků nemusíte měnit velikost disku.
 
-1. Chcete-li zvětšit velikost disku s operačním systémem v RHEL 7. x s LVM:
+1. Chcete-li zvětšit velikost disku s operačním systémem v RHEL 7. *x* s LVM:
 
    1. Zastavte virtuální počítač.
    1. Zvětšete velikost disku s operačním systémem z portálu.
    1. Spusťte virtuální počítač.
 
-1. Po restartování virtuálního počítače proveďte následující kroky:
-
-   1. Nainstalujte balíček **Cloud-utils-growpart** k poskytnutí příkazu **growpart** , který je nutný ke zvýšení velikosti disku s operačním systémem.
+1. Až se virtuální počítač restartuje, nainstalujte balíček **Cloud-utils-growpart** , abyste získali `growpart` příkaz, který potřebujete zvětšit velikost disku s operačním systémem.
 
       Tento balíček je předinstalován na většině Azure Marketplace imagí.
 
@@ -302,14 +300,14 @@ Po restartování virtuálního počítače proveďte následující kroky:
       [root@dd-rhel7vm ~]# yum install cloud-utils-growpart
       ```
 
-1. Určete, který disk a oddíl budou obsahovat LVM fyzické svazky (souč_hod) ve skupině svazků (VG) s názvem rootvg pomocí příkazu **pvscan** .  Poznamenejte si velikost a volné místo uvedené mezi hranatými závorkami **[]**.
+1. Pomocí příkazu určete, který disk a oddíl budou obsahovat LVM fyzický svazek nebo svazky (souč_hod) ve skupině **rootvg** svazků s názvem rootvg `pvscan` . Všimněte si velikosti a volného místa uvedeného mezi hranatými závorkami (**[** a **]**).
 
    ```bash
    [root@dd-rhel7vm ~]# pvscan
      PV /dev/sda4   VG rootvg          lvm2 [<63.02 GiB / <38.02 GiB free]
    ```
 
-1. Ověřte velikost oddílu pomocí **lsblk**.  Podívejte se na 
+1. Ověřte velikost oddílu pomocí `lsblk` . 
 
    ```bash
    [root@dd-rhel7vm ~]# lsblk /dev/sda4
@@ -323,14 +321,14 @@ Po restartování virtuálního počítače proveďte následující kroky:
    └─rootvg-rootlv 253:6    0   2G  0 lvm  /
    ```
 
-1. Rozbalením oddílu obsahujícího tuto PV použijte **growpart** , název zařízení a číslo oddílu.  Tím se rozbalí zadaný oddíl, který bude používat všechny volné souvislé místo na zařízení.
+1. Rozbalením oddílu obsahujícího tuto PV použijte `growpart` , název zařízení a číslo oddílu. Tím se rozbalí zadaný oddíl, aby se na zařízení použilo všechno volné místo.
 
    ```bash
    [root@dd-rhel7vm ~]# growpart /dev/sda 4
    CHANGED: partition=4 start=2054144 old: size=132161536 end=134215680 new: size=199272414 end=201326558
    ```
 
-1. Ověřte, že se znovu změnila velikost oddílu na očekávanou velikost pomocí příkazu **lsblk** .  Všimněte si, že v příkladu sda4 se změnil z 63G na 95G.
+1. Pomocí příkazu ověřte, že se velikost oddílu změnila na očekávanou velikost `lsblk` . Všimněte si, že v příkladu **sda4** se změnila z 63 gb na 95 GB.
 
    ```bash
    [root@dd-rhel7vm ~]# lsblk /dev/sda4
@@ -344,7 +342,7 @@ Po restartování virtuálního počítače proveďte následující kroky:
    └─rootvg-rootlv 253:6    0   2G  0 lvm  /
    ```
 
-1. Rozbalením PV využijete zbytek nově rozbaleného oddílu
+1. Rozbalením PV využijete zbytek nově rozbaleného oddílu:
 
    ```bash
    [root@dd-rhel7vm ~]# pvresize /dev/sda4
@@ -352,14 +350,14 @@ Po restartování virtuálního počítače proveďte následující kroky:
    1 physical volume(s) resized or updated / 0 physical volume(s) not resized
    ```
 
-1. Ověřte, že nová velikost PV má očekávanou velikost a porovnává je s původními hodnotami **[size/Free]** .
+1. Ověřte, že nová velikost PV má očekávanou velikost a porovnává ji s původními hodnotami **[size/Free]** :
 
    ```bash
    [root@dd-rhel7vm ~]# pvscan
    PV /dev/sda4   VG rootvg          lvm2 [<95.02 GiB / <70.02 GiB free]
    ```
 
-1. Rozbalte požadovaný logický svazek (LV) o požadované množství, které nemusí být ve skupině svazků na všech volných prostorech.  V následujícím příkladu se velikost **/dev/Mapper/rootvg-rootlv** mění z 2 GB na 12 GB (zvýšení velikosti 10 GB) prostřednictvím následujícího příkazu. Tento příkaz změní také velikost systému souborů.
+1. Rozbalte požadovaný logický svazek (LV) podle požadované velikosti. Tato hodnota nemusí být ve skupině svazků na všech volných prostorech. V následujícím příkladu je velikost **/dev/Mapper/rootvg-rootlv** změněna z 2 GB na 12 GB (zvýšení velikosti 10 GB). Tento příkaz změní také velikost systému souborů.
 
    ```bash
    [root@dd-rhel7vm ~]# lvresize -r -L +10G /dev/mapper/rootvg-rootlv
@@ -383,7 +381,7 @@ Po restartování virtuálního počítače proveďte následující kroky:
    data blocks changed from 524288 to 3145728
    ```
 
-1. Příkaz lvresize automaticky zavolá odpovídající příkaz pro změnu velikosti pro systém souborů v části LV. Ověřte, jestli **/dev/Mapper/rootvg-rootlv** , která je připojená, **/** má zvýšenou velikost systému souborů pomocí následujícího příkazu:
+1. `lvresize`Příkaz automaticky zavolá odpovídající příkaz pro změnu velikosti pro systém souborů v části LV. Pomocí tohoto příkazu ověřte, jestli má **/dev/Mapper/rootvg-rootlv**, která je připojená **/** , zvýšenou velikost systému souborů:
 
    ```shell
    [root@dd-rhel7vm ~]# df -Th /
@@ -399,100 +397,102 @@ Po restartování virtuálního počítače proveďte následující kroky:
    ```
 
 > [!NOTE]
-> Chcete-li použít stejný postup pro změnu velikosti jakéhokoli jiného logického svazku, změňte název **LV** v kroku **12**.
+> Chcete-li použít stejný postup pro změnu velikosti jakéhokoli jiného logického svazku, změňte název LV v kroku 12.
 
 ### <a name="rhel-raw"></a>RHEL RAW
 >[!NOTE]
 >Vždycky pořídit snímek virtuálního počítače před zvýšením velikosti disku s operačním systémem.
 
-Pokud chcete zvětšit velikost disku s operačním systémem v RHEL s nezpracovaným oddílem:
+Pokud chcete zvětšit velikost disku s operačním systémem v nezpracovaném oddílu RHEL:
 
-Zastavte virtuální počítač.
-Zvětšete velikost disku s operačním systémem z portálu.
-Spusťte virtuální počítač.
-Po restartování virtuálního počítače proveďte následující kroky:
+1. Zastavte virtuální počítač.
+1. Zvětšete velikost disku s operačním systémem z portálu.
+1. Spusťte virtuální počítač.
 
-1. K VIRTUÁLNÍmu počítači se dostanete jako uživatel **root** pomocí tohoto příkazu:
+Po restartování virtuálního počítače proveďte tyto kroky:
+
+1. K VIRTUÁLNÍmu počítači přistupujete jako uživatel **root** pomocí tohoto příkazu:
  
    ```
    sudo su
    ```
 
-1. Nainstalujte balíček **gptfdisk** , který je nutný ke zvýšení velikosti disku s operačním systémem.
+1. Nainstalujte balíček **gptfdisk** , který potřebujete ke zvýšení velikosti disku s operačním systémem:
 
    ```
    yum install gdisk -y
    ```
 
-1.  Chcete-li zobrazit všechny sektory, které jsou na disku k dispozici, spusťte následující příkaz:
+1.  Chcete-li zobrazit všechny sektory, které jsou na disku k dispozici, spusťte tento příkaz:
     ```
     gdisk -l /dev/sda
     ```
 
-1. Zobrazí se podrobnosti o typu oddílu. Ujistěte se, že se jedná o GPT. Identifikujte kořenový oddíl. Neměňte ani neodstraňujte spouštěcí oddíl (spouštěcí oddíl systému BIOS) a systémový oddíl (' systémový oddíl EFI ')
+1. Zobrazí se podrobnosti o typu oddílu. Ujistěte se, že se jedná o GPT. Identifikujte kořenový oddíl. Neměňte ani neodstraňujte spouštěcí oddíl (spouštěcí oddíl systému BIOS) nebo systémový oddíl (systémový oddíl EFI).
 
-1. Pro první spuštění vytváření oddílů použijte následující příkaz. 
+1. Pomocí tohoto příkazu můžete poprvé spustit vytváření oddílů: 
     ```
     gdisk /dev/sda
     ```
 
-1. Nyní se zobrazí zpráva s výzvou k zadání dalšího příkazu (' Command:? pro nápovědu '). 
+1. Zobrazí se zpráva s výzvou k zadání dalšího příkazu: `Command: ? for help` . Vyberte klíč **w** :
 
    ```
    w
    ```
 
-1. Zobrazí se upozornění. Sekundární hlavička je umístěná na disku příliš brzy. Chcete tento problém vyřešit? (A/N): ". Musíte stisknout Y.
+1. Zobrazí se tato zpráva: `Warning! Secondary header is placed too early on the disk! Do you want to
+correct this problem? (Y/N)` . Vyberte klíč **Y** : 
 
    ```
    Y
    ```
 
-1. Měla by se zobrazit zpráva informující o tom, že jsou dokončeny závěrečné kontroly a žádosti o potvrzení. Stiskněte klávesu Y
+1. Měla by se zobrazit zpráva oznamující, že jsou dokončeny závěrečné kontroly a že se zobrazí výzva k potvrzení. Vyberte klíč **Y** :
 
    ```
    Y
    ```
 
-1. Ověřte, zda všechno proběhlo správně pomocí příkazu partprobe
+1. Pomocí `partprobe` příkazu ověřte, zda všechno proběhlo správně:
 
    ```
    partprobe
    ```
 
-1. Výše uvedené kroky zajistily, že sekundární hlavička GPT je umístěna na konci. Dalším krokem je spuštění procesu změny velikosti pomocí nástroje gDisk. Použijte následující příkaz.
+1. Dokončili jste předchozí kroky, abyste zajistili, že se na konec umístí sekundární hlavička GPT. Potom znovu spusťte proces změny velikosti pomocí `gdisk` nástroje. Použijte následující příkaz:
 
    ```
    gdisk /dev/sda
    ```
-1. V nabídce příkazů kliknutím na ' p ' zobrazte seznam oddílů. Identifikujte kořenový oddíl (v krocích sda2 se považuje za kořenový oddíl) a spouštěcí oddíl (v krocích se sda3 považuje za spouštěcí oddíl). 
+1. V nabídce příkazů vyberte klávesu **p** a zobrazí se seznam oddílů. Identifikujte kořenový oddíl. (V tomto postupu se **sda2** považuje za kořenový oddíl.) Identifikujte spouštěcí oddíl. (V tomto postupu se **sda3** považuje za spouštěcí oddíl.) 
 
    ```
    p
    ```
-    ![Kořenový oddíl a spouštěcí oddíl](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
+    ![Snímek obrazovky, který zobrazuje kořenový oddíl a spouštěcí oddíl.](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
 
-1. Stisknutím klávesy a odstraňte oddíl a vyberte číslo oddílu přiřazené ke spuštění (v tomto příkladu je to 3).
+1. Pro odstranění oddílu vyberte klávesu **d** . Pak vyberte číslo oddílu přiřazené spouštěcímu oddílu. (V tomto příkladu je to **3**.)
    ```
    d
    3
    ```
-1. Stisknutím klávesy a odstraňte oddíl a vyberte číslo oddílu přiřazené ke spuštění (v tomto příkladu je to "2").
+1. Pro odstranění oddílu vyberte klávesu **d** . Vyberte číslo oddílu přiřazené ke spouštěcímu oddílu. (V tomto příkladu je to **2**.)
    ```
    d
    2
    ```
-    ![Odstranit kořenový oddíl a spouštěcí oddíl](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
+    ![Snímek obrazovky, který ukazuje postup odstranění kořenových a spouštěcích oddílů.](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
 
-1. Pokud chcete znovu vytvořit kořenový oddíl se zvýšenou velikostí, stiskněte n, zadejte číslo oddílu, který jste předtím odstranili pro kořen (2 pro tento příklad), a zvolte první sektor jako výchozí hodnota, poslední sektor jako poslední hodnota sektoru – velikost spouštěcího sektoru (v tomto případě je to "4096") a šestnáctkový kód jako "8300".
+1. Pokud chcete znovu vytvořit kořenový oddíl se zvýšenou velikostí, vyberte klávesu **n** a potom zadejte číslo oddílu, který jste předtím odstranili pro kořen (**2** v tomto příkladu). Vyberte `Default Value` pro první sektor. Vyberte `Last sector value -  boot size sector` pro poslední sektor ( `4096` v tomto případě odpovídající 2 MB spuštění). Vyberte `8300` hexadecimální kód.
    ```
    n
    2
    (Enter default)
-   (Calculateed value of Last sector value - 4096)
+   (Calculated value of Last sector value - 4096)
    8300
    ```
-1. Pokud chcete znovu vytvořit spouštěcí oddíl, stiskněte n, zadejte číslo oddílu, který jste předtím odstranili pro spuštění (3 pro tento příklad), a zvolte první sektor jako výchozí hodnota, poslední sektor jako výchozí hodnota a kód hex jako EF02.
+1. Chcete-li znovu vytvořit spouštěcí oddíl, vyberte klávesu **n** a potom zadejte číslo oddílu, které jste odstranili pro spuštění (**3** v tomto příkladu). Vyberte `Default Value` pro první sektor a poslední sektor. Vyberte `EF02` hexadecimální kód.
    ```
    n
    3
@@ -501,28 +501,28 @@ Po restartování virtuálního počítače proveďte následující kroky:
    EF02
    ```
 
-1. Zapište změny pomocí příkazu w a potvrďte ji stisknutím klávesy Y.
+1. Zapište změny pomocí `w` příkazu a pak vyberte, `Y` abyste potvrdili změny:
    ```
    w
    Y
    ```
-1. Spusťte příkaz ' partprobe ' pro kontrolu stability disku
+1. Spusťte `partprobe` příkaz pro kontrolu stability disku:
    ```
    partprobe
    ```
-1. Restartujte virtuální počítač a velikost kořenového oddílu by se zvýšila.
+1. Restartujte virtuální počítač. Velikost kořenového oddílu by měla být vyšší.
    ```
    reboot
    ```
 
-   ![Nový kořenový oddíl a spouštěcí oddíl](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
+   ![Snímek obrazovky, který ukazuje postup opětovného vytvoření spouštěcího oddílu.](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
 
-1. Chcete-li změnit velikost, spusťte příkaz xfs_growfs v oddílu.
+1. `xfs_growfs`Změňte velikost spuštěním příkazu na oddílu:
    ```
    xfs_growfs /dev/sda2
    ```
 
-   ![XFS a rozšířit FS](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
+   ![Snímek obrazovky zobrazující výsledek spuštění xfs_growfs.](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
 
 ## <a name="next-steps"></a>Další kroky
 

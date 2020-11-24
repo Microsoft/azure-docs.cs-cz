@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 92ac1887aca8f30c551419ef9149073d79f333a5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7d3bc13dc373cda510153099859cf4cd61b3dd69
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143828"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95534530"
 ---
 # <a name="access-control"></a>Řízení přístupu
 
@@ -32,7 +32,7 @@ ms.locfileid: "92143828"
 "Přispěvatelé sešity" přidává do objektu oprávnění "sešity/zápis" do objektu pro ukládání sdílených sešitů.
 Uživatelé nemůžou ukládat soukromé sešity, které uvidí jenom, a nemusí žádná zvláštní oprávnění.
 
-Pro vlastní řízení přístupu na základě rolí:
+Pro vlastní role:
 
 Přidejte `microsoft.insights/workbooks/write` , chcete-li uložit sdílené sešity. Další podrobnosti najdete v tématu role [přispěvatele sešitu](../../role-based-access-control/built-in-roles.md#monitoring-contributor) .
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 21da883867da41e81ed1787faa0ebe0e6dd25d99
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 034f2b3884d732487a9f7aff4d14740691983885
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107874"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536774"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Návrh nasazení protokolů služby Azure Monitor
 
@@ -60,7 +60,7 @@ Pokud používáte System Center Operations Manager 2012 R2 nebo novější:
 
 ## <a name="access-control-overview"></a>Přehled řízení přístupu
 
-Díky řízení přístupu na základě role (RBAC) můžete uživatelům a skupinám udělit jenom množství přístupu, které potřebují k práci s daty monitorování v pracovním prostoru. Díky tomu můžete s modelem vaší organizace IT v souladu s operačním modelem IT v jednom pracovním prostoru ukládat shromážděná data, která jsou povolená pro všechny vaše prostředky. Například udělíte vašemu týmu přístup, který je zodpovědný za služby infrastruktury hostované na virtuálních počítačích Azure. v důsledku toho budou mít přístup jenom k protokolům generovaným virtuálními počítači. Toto je podle našeho nového modelu protokolu kontextu prostředků. Základem pro tento model je každý záznam protokolu generovaný prostředkem Azure, který se automaticky přidruží k tomuto prostředku. Protokoly se předávají do centrálního pracovního prostoru, který respektuje rozsah a RBAC na základě prostředků.
+Díky řízení přístupu na základě role Azure (Azure RBAC) můžete uživatelům a skupinám udělit jenom množství přístupu, které potřebují k práci s daty monitorování v pracovním prostoru. Díky tomu můžete s modelem vaší organizace IT v souladu s operačním modelem IT v jednom pracovním prostoru ukládat shromážděná data, která jsou povolená pro všechny vaše prostředky. Například udělíte vašemu týmu přístup, který je zodpovědný za služby infrastruktury hostované na virtuálních počítačích Azure. v důsledku toho budou mít přístup jenom k protokolům generovaným virtuálními počítači. Toto je podle našeho nového modelu protokolu kontextu prostředků. Základem pro tento model je každý záznam protokolu generovaný prostředkem Azure, který se automaticky přidruží k tomuto prostředku. Protokoly se předávají do centrálního pracovního prostoru, který respektuje rozsah a službu Azure RBAC na základě prostředků.
 
 Data, ke kterým má uživatel přístup, závisí na kombinaci faktorů, které jsou uvedeny v následující tabulce. Jednotlivé jsou popsány v následujících částech.
 
@@ -69,7 +69,7 @@ Data, ke kterým má uživatel přístup, závisí na kombinaci faktorů, které
 | [Režim přístupu](#access-mode) | Metoda, kterou uživatel používá pro přístup k pracovnímu prostoru.  Definuje rozsah dostupných dat a režim řízení přístupu, který se použije. |
 | [Režim řízení přístupu](#access-control-mode) | Nastavení v pracovním prostoru definující, zda jsou oprávnění použita na úrovni pracovního prostoru nebo prostředku. |
 | [Oprávnění](manage-access.md) | Oprávnění použitá pro jednotlivé nebo skupiny uživatelů pro pracovní prostor nebo prostředek. Definuje data, ke kterým má uživatel přístup. |
-| [RBAC na úrovni tabulky](manage-access.md#table-level-rbac) | Volitelná podrobné oprávnění, která platí pro všechny uživatele bez ohledu na jejich režim přístupu nebo režim řízení přístupu. Definuje typy dat, ke kterým má uživatel přístup. |
+| [Úroveň tabulky – Azure RBAC](manage-access.md#table-level-azure-rbac) | Volitelná podrobné oprávnění, která platí pro všechny uživatele bez ohledu na jejich režim přístupu nebo režim řízení přístupu. Definuje typy dat, ke kterým má uživatel přístup. |
 
 ## <a name="access-mode"></a>Režim přístupu
 
@@ -81,7 +81,7 @@ Uživatelé mají dvě možnosti pro přístup k datům:
 
     ![Log Analytics kontext z pracovního prostoru](./media/design-logs-deployment/query-from-workspace.png)
 
-* **Prostředek-kontext**: Když přistupujete k pracovnímu prostoru pro konkrétní prostředek, skupinu prostředků nebo předplatné, například když v Azure Portal vyberete **protokoly** z nabídky prostředku, můžete zobrazit protokoly jenom pro prostředky ve všech tabulkách, ke kterým máte přístup. Dotazy v tomto režimu jsou vymezeny jenom na data přidružená k tomuto prostředku. Tento režim také umožňuje detailní RBAC.
+* **Prostředek-kontext**: Když přistupujete k pracovnímu prostoru pro konkrétní prostředek, skupinu prostředků nebo předplatné, například když v Azure Portal vyberete **protokoly** z nabídky prostředku, můžete zobrazit protokoly jenom pro prostředky ve všech tabulkách, ke kterým máte přístup. Dotazy v tomto režimu jsou vymezeny jenom na data přidružená k tomuto prostředku. Tento režim také umožňuje podrobnou službu Azure RBAC.
 
     ![Log Analytics kontext z prostředku](./media/design-logs-deployment/query-from-resource.png)
 
@@ -103,22 +103,22 @@ Režimy přístupu jsou shrnuté v následující tabulce:
 |:---|:---|:---|
 | Pro koho je každý model určen? | Centrální správa. Správci, kteří potřebují nakonfigurovat shromažďování dat a uživatele, kteří potřebují přístup k nejrůznějším prostředkům. V současnosti se vyžaduje pro uživatele, kteří potřebují přístup k protokolům pro prostředky mimo Azure. | Týmy aplikace Správci prostředků Azure, které jsou monitorovány. |
 | Co uživatel potřebuje k zobrazení protokolů? | Oprávnění k pracovnímu prostoru. Oprávnění k pracovnímu prostoru najdete v tématu **oprávnění** [ke správě přístupu pomocí oprávnění pracovního prostoru](manage-access.md#manage-access-using-workspace-permissions). | Přístup pro čtení k prostředku. Podívejte se na téma **oprávnění prostředků** v tématu [Správa přístupu pomocí oprávnění Azure](manage-access.md#manage-access-using-azure-permissions). Oprávnění lze zdědit (například z obsahující skupiny prostředků) nebo přímo přiřadit prostředku. Automaticky se přiřadí oprávnění k protokolům pro daný prostředek. |
-| Jaký je rozsah oprávnění? | Stejných. Uživatelé s přístupem k pracovnímu prostoru mohou dotazovat všechny protokoly v pracovním prostoru z tabulek, ke kterým mají oprávnění. Viz [řízení přístupu k tabulce](manage-access.md#table-level-rbac) | Prostředek Azure. Uživatel může zadat dotaz na protokoly pro konkrétní prostředky, skupiny prostředků nebo předplatné, ke kterým mají přístup z libovolného pracovního prostoru, ale nedokáže dotazovat protokoly na jiné prostředky. |
+| Jaký je rozsah oprávnění? | Stejných. Uživatelé s přístupem k pracovnímu prostoru mohou dotazovat všechny protokoly v pracovním prostoru z tabulek, ke kterým mají oprávnění. Viz [řízení přístupu k tabulce](manage-access.md#table-level-azure-rbac) | Prostředek Azure. Uživatel může zadat dotaz na protokoly pro konkrétní prostředky, skupiny prostředků nebo předplatné, ke kterým mají přístup z libovolného pracovního prostoru, ale nedokáže dotazovat protokoly na jiné prostředky. |
 | Jak můžou protokoly přístupu uživatele? | <ul><li>Spusťte **protokoly** z nabídky **Azure monitor** .</li></ul> <ul><li>Spustí **protokoly** z **Log Analytics pracovní prostory**.</li></ul> <ul><li>Z Azure Monitor [sešitů](../visualizations.md#workbooks).</li></ul> | <ul><li>Spuštění **protokolů** z nabídky pro prostředek Azure</li></ul> <ul><li>Spusťte **protokoly** z nabídky **Azure monitor** .</li></ul> <ul><li>Spustí **protokoly** z **Log Analytics pracovní prostory**.</li></ul> <ul><li>Z Azure Monitor [sešitů](../visualizations.md#workbooks).</li></ul> |
 
 ## <a name="access-control-mode"></a>Režim řízení přístupu
 
 *Režim řízení přístupu* je nastavení v každém pracovním prostoru definující způsob určování oprávnění pro pracovní prostor.
 
-* **Vyžadovat oprávnění k pracovnímu prostoru**: Tento režim řízení neumožňuje podrobnou RBAC. Pro uživatele, kteří mají přístup k pracovnímu prostoru, musí mít udělená oprávnění k pracovnímu prostoru nebo určitým tabulkám.
+* **Vyžadovat oprávnění k pracovnímu prostoru**: Tento režim řízení neumožňuje podrobnou službu Azure RBAC. Pro uživatele, kteří mají přístup k pracovnímu prostoru, musí mít udělená oprávnění k pracovnímu prostoru nebo určitým tabulkám.
 
     Pokud uživatel přistupuje k pracovnímu prostoru, který následuje za pracovním prostorem, má přístup ke všem datům v libovolné tabulce, ke které byl udělen přístup. Pokud uživatel přistupuje k pracovnímu prostoru, který následuje po kontextu prostředku, má přístup pouze k datům tohoto prostředku v libovolné tabulce, ke které byl udělen přístup.
 
     Toto je výchozí nastavení pro všechny pracovní prostory vytvořené před březen 2019.
 
-* **Použít oprávnění prostředku nebo pracovního prostoru**: Tento režim řízení umožňuje detailní RBAC. Uživatelům se dá udělit přístup jenom k datům přidruženým k prostředkům, které můžou zobrazit, a to přiřazením `read` oprávnění Azure. 
+* **Použít oprávnění prostředku nebo pracovního prostoru**: Tento režim řízení umožňuje podrobnou službu Azure RBAC. Uživatelům se dá udělit přístup jenom k datům přidruženým k prostředkům, které můžou zobrazit, a to přiřazením `read` oprávnění Azure. 
 
-    Když uživatel přistupuje k pracovnímu prostoru v pracovním prostoru – kontextový režim, platí oprávnění pracovního prostoru. Když uživatel přistupuje k pracovnímu prostoru v režimu v kontextu prostředků, ověřují se jenom oprávnění prostředků a oprávnění pracovního prostoru se ignorují. Povolte RBAC pro uživatele odebráním z oprávnění pracovního prostoru a povolením rozpoznání jejich oprávnění k prostředkům.
+    Když uživatel přistupuje k pracovnímu prostoru v pracovním prostoru – kontextový režim, platí oprávnění pracovního prostoru. Když uživatel přistupuje k pracovnímu prostoru v režimu v kontextu prostředků, ověřují se jenom oprávnění prostředků a oprávnění pracovního prostoru se ignorují. Povolte službu Azure RBAC pro uživatele odebráním z oprávnění pracovního prostoru a povolením rozpoznání jejich oprávnění k prostředkům.
 
     Toto je výchozí nastavení pro všechny pracovní prostory vytvořené po březnu 2019.
 

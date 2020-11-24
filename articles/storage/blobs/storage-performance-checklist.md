@@ -9,12 +9,12 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3a3395873d7655118e3fcc9c36cdfc3855f8f000
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14da8b6cb695703f1881b6b0b9858772bde386c5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714813"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544747"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro úložiště objektů BLOB
 
@@ -59,7 +59,7 @@ Tento článek organizuje osvědčené postupy pro výkon do kontrolního seznam
 
 Pokud vaše aplikace přistupuje k některým cílům škálovatelnosti nebo překročí, může dojít ke zvýšené latenci transakcí nebo omezování. Když aplikace Azure Storage omezí vaši aplikaci, začne služba vracet kódy chyb 503 (zaneprázdněný serverem) nebo 500 (časový limit operace). Zamezení těchto chyb zachováním omezení cílů škálovatelnosti je důležitou součástí zvýšení výkonu aplikace.
 
-Další informace o cílech škálovatelnosti pro Služba front najdete v tématu [Azure Storage cíle škálovatelnosti a výkonu](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage).
+Další informace o cílech škálovatelnosti pro Služba front najdete v tématu [Azure Storage cíle škálovatelnosti a výkonu](../queues/scalability-targets.md#scale-targets-for-queue-storage).
 
 ### <a name="maximum-number-of-storage-accounts"></a>Maximální počet účtů úložiště
 
@@ -100,7 +100,7 @@ Porozumět způsobu, jakým Azure Storage oddíly dat objektů BLOB jsou užite�
 
 Úložiště objektů BLOB používá schéma dělení na základě rozsahu pro škálování a vyrovnávání zatížení. Každý objekt BLOB má klíč oddílu tvořený úplným názvem objektu BLOB (Account + Container + BLOB). Klíč oddílu se používá k rozdělení dat objektů blob do rozsahů. Rozsahy se pak vyrovnávají zatížením napříč úložištěm objektů BLOB.
 
-Dělení na základě rozsahu znamená, že konvence pojmenování, které používají lexikální řazení (například *mypayroll*, *myperformance*, *myemployees*atd.) nebo časová razítka (*log20160101*, *log20160102*, *log20160102*atd.), jsou pravděpodobnější v tom, že se oddíly společně nacházejí na stejném serveru oddílu. , dokud zvýšené zatížení nevyžaduje, aby byly rozděleny do menších rozsahů. Společné umísťování objektů blob na stejném oddílu serveru vylepšuje výkon, takže důležitou součástí zvýšení výkonu je, že se objekty blob pojmenují způsobem, který je bude efektivně organizovat.
+Dělení na základě rozsahu znamená, že konvence pojmenování, které používají lexikální řazení (například *mypayroll*, *myperformance*, *myemployees* atd.) nebo časová razítka (*log20160101*, *log20160102*, *log20160102* atd.), jsou pravděpodobnější v tom, že se oddíly společně nacházejí na stejném serveru oddílu. , dokud zvýšené zatížení nevyžaduje, aby byly rozděleny do menších rozsahů. Společné umísťování objektů blob na stejném oddílu serveru vylepšuje výkon, takže důležitou součástí zvýšení výkonu je, že se objekty blob pojmenují způsobem, který je bude efektivně organizovat.
 
 Například všechny objekty BLOB v kontejneru může obsluhovat jeden server, dokud zatížení těchto objektů BLOB nevyžaduje další nové vyrovnávání rozsahů oddílů. Podobně skupina lehce načtených účtů, jejichž názvy jsou uspořádány v lexikálním pořadí, mohou být obsluhovány jediným serverem, dokud zatížení jednoho nebo všech těchto účtů nevyžaduje, aby byly rozděleny mezi servery s více oddíly.
 
@@ -195,7 +195,7 @@ ServicePointManager.DefaultConnectionLimit = 100; //(Or More)
 
 Další programovací jazyky najdete v dokumentaci k určení, jak nastavit limit připojení.  
 
-Další informace najdete v blogovém příspěvku [webové služby: souběžná připojení](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/).  
+Další informace najdete v blogovém příspěvku [webové služby: souběžná připojení](/archive/blogs/darrenj/web-services-concurrent-connections).  
 
 ### <a name="increase-minimum-number-of-threads"></a>Zvýšení minimálního počtu vláken
 
@@ -213,7 +213,7 @@ I když paralelismus může být ideální pro výkon, buďte opatrní v použí
 
 ## <a name="client-libraries-and-tools"></a>Klientské knihovny a nástroje
 
-Nejlepšího výkonu dosáhnete, když budete vždycky používat nejnovější klientské knihovny a nástroje poskytované Microsoftem. Azure Storage klientské knihovny jsou k dispozici pro nejrůznější jazyky. Azure Storage podporuje taky PowerShell a Azure CLI. Microsoft aktivně vyvíjí tyto klientské knihovny a nástroje s ohledem na výkon, udržuje je aktuální s nejnovějšími verzemi služby a zajišťuje interní zpracování mnoha osvědčených postupů výkonu. Další informace najdete v [dokumentaci Azure Storage reference](/azure/storage/#reference).
+Nejlepšího výkonu dosáhnete, když budete vždycky používat nejnovější klientské knihovny a nástroje poskytované Microsoftem. Azure Storage klientské knihovny jsou k dispozici pro nejrůznější jazyky. Azure Storage podporuje taky PowerShell a Azure CLI. Microsoft aktivně vyvíjí tyto klientské knihovny a nástroje s ohledem na výkon, udržuje je aktuální s nejnovějšími verzemi služby a zajišťuje interní zpracování mnoha osvědčených postupů výkonu.
 
 ## <a name="handle-service-errors"></a>Zpracování chyb služby
 
@@ -243,11 +243,11 @@ Pokud chcete kopírovat data v rámci stejného účtu úložiště, použijte o
 
 ### <a name="use-azcopy"></a>Použití AzCopy
 
-Nástroj příkazového řádku AzCopy je jednoduchá a efektivní možnost pro hromadné přenosy objektů blob do, z a napříč účty úložiště. AzCopy je pro tento scénář optimalizované a může dosáhnout vysoké míry přenosů. AzCopy verze 10 používá `Put Block From URL` operaci ke kopírování dat objektů BLOB napříč účty úložiště. Další informace najdete v tématu [kopírování nebo přesun dat do Azure Storage pomocí nástroje AzCopy v10 za účelem](/azure/storage/common/storage-use-azcopy-v10).  
+Nástroj příkazového řádku AzCopy je jednoduchá a efektivní možnost pro hromadné přenosy objektů blob do, z a napříč účty úložiště. AzCopy je pro tento scénář optimalizované a může dosáhnout vysoké míry přenosů. AzCopy verze 10 používá `Put Block From URL` operaci ke kopírování dat objektů BLOB napříč účty úložiště. Další informace najdete v tématu [kopírování nebo přesun dat do Azure Storage pomocí nástroje AzCopy v10 za účelem](../common/storage-use-azcopy-v10.md).  
 
 ### <a name="use-azure-data-box"></a>Použít Azure Data Box
 
-Pokud chcete importovat velké objemy dat do úložiště objektů blob, zvažte použití řady Azure Data Box pro offline přenosy. Zařízení Data Box poskytnutá společností Microsoft jsou vhodnou volbou pro přesun velkých objemů dat do Azure, pokud jste omezeni časem, dostupností sítě nebo náklady. Další informace najdete v dokumentaci ke [službě Azure Databox](/azure/databox/).
+Pokud chcete importovat velké objemy dat do úložiště objektů blob, zvažte použití řady Azure Data Box pro offline přenosy. Zařízení Data Box poskytnutá společností Microsoft jsou vhodnou volbou pro přesun velkých objemů dat do Azure, pokud jste omezeni časem, dostupností sítě nebo náklady. Další informace najdete v dokumentaci ke [službě Azure Databox](../../databox/index.yml).
 
 ## <a name="content-distribution"></a>Distribuce obsahu
 

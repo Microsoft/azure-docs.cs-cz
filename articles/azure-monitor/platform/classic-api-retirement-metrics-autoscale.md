@@ -4,12 +4,12 @@ description: Vyřazení metrik a automatické škálování klasických rozhran�
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 38a30f2adc0de7ccb9a9a3a4ba7ed53fd5fda3f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8900d238e7542864e3dc53f9d192e579e2c96d1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87317378"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536689"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor vyřazení rozhraní API modelu nasazení Classic pro metriky a automatické škálování
 
@@ -53,7 +53,7 @@ Pokud si nejste jistí, jestli váš kód nebo vlastní nástroje volají rozhra
 
 Všechny existující funkce pro automatické škálování a metriky budou i nadále fungovat prostřednictvím nových rozhraní API.  
 
-Migrace přes do novějších rozhraní API přináší funkce založené na Správce prostředků, jako je podpora konzistentních Role-Based Access Control (RBAC) napříč všemi vašimi monitorovacími službami. Získáte také další funkce pro metriky: 
+Migrace přes do novějších rozhraní API přináší funkce založené na Správce prostředků, jako je například podpora konzistentního řízení přístupu na základě role Azure (Azure RBAC) napříč všemi vašimi monitorovacími službami. Získáte také další funkce pro metriky: 
 
 - Podpora dimenzí
 - konzistentní členitost metriky o úrovni 1 minuty napříč všemi službami 
@@ -85,7 +85,7 @@ Oznámení o vyřazení bylo odesláno na e-mailové adresy následujících rol
 
 Pokud máte nějaké dotazy, kontaktujte nás na adrese MonitorClassicAPIhelp@microsoft.com .  
 
-## <a name="references"></a>Reference
+## <a name="references"></a>Odkazy
 
 - [Novější rozhraní REST API pro Azure Monitor](/rest/api/monitor/) 
 - [Novější sada Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)

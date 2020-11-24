@@ -4,12 +4,12 @@ description: Informujte prostřednictvím SMS, Webhooku, SMS, e-mailu a dalšíc
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 7ed73678e0df1e068782c2a094846132be58cfe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 836fc20b6c3d46766801dce0e2aeda83a217d6a3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86516120"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536077"
 ---
 # <a name="alerts-on-activity-log"></a>Upozornění na protokol aktivit
 
@@ -40,7 +40,7 @@ Výstrahy protokolu aktivit mají několik běžných možností:
     - Úroveň předplatného: například všechny virtuální počítače v předplatném (nebo) všechny prostředky v rámci předplatného
 - **Skupina prostředků**: ve výchozím nastavení se pravidlo výstrahy uloží do stejné skupiny prostředků, která je v cíli definovaná v oboru. Uživatel může také definovat skupinu prostředků, ve které se má pravidlo výstrahy ukládat.
 - **Typ prostředku**: Správce prostředků definovaný obor názvů pro cíl výstrahy.
-- **Název operace**: název [operace Azure Resource Manager](../../role-based-access-control/resource-provider-operations.md) se používá pro Role-Based Access Control. Operace, které nejsou zaregistrované u Azure Resource Manager, se nedají použít v pravidle upozornění protokolu aktivit.
+- **Název operace**: název [operace poskytovatele prostředků Azure](../../role-based-access-control/resource-provider-operations.md) , který se používá pro řízení přístupu na základě role Azure. Operace, které nejsou zaregistrované u Azure Resource Manager, se nedají použít v pravidle upozornění protokolu aktivit.
 - **Level**: úroveň závažnosti události (informativní, varovná, chyba nebo kritická).
 - **Stav**: stav události, obvykle spuštěno, selhalo nebo proběhlo úspěšně.
 - **Událost iniciovaná**: taky se označuje jako volající. E-mailová adresa nebo Azure Active Directory identifikátor uživatele, který operaci provedl.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 352c057a74d1be5f440041b9f13127e8730edf82
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 4252e3a7f8c3ff9d0ec782a2a9222553c063463c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698066"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95533272"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurace clusteru AKS
 
@@ -237,47 +237,28 @@ az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myR
 Pokud chcete vytvořit regulární fondy uzlů Gen1, můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` značku.
 
 
-## <a name="ephemeral-os-preview"></a>Dočasný operační systém (Preview)
+## <a name="ephemeral-os"></a>Dočasný operační systém
 
-Ve výchozím nastavení se disk s operačním systémem pro virtuální počítač Azure automaticky replikuje do služby Azure Storage, aby se zabránilo ztrátě dat, aby se virtuální počítač mohl přeumístit na jiného hostitele. Vzhledem k tomu, že kontejnery nejsou navržené tak, aby měly trvalý místní stav, toto chování nabízí omezené hodnoty a zároveň poskytuje některé nevýhody, včetně pomalejšího zřizování uzlů a vyšší latence čtení a zápisu.
+Ve výchozím nastavení Azure automaticky replikuje disk operačního systému pro virtuální počítač do služby Azure Storage, aby nedošlo ke ztrátě dat, aby bylo možné virtuální počítač přeumístit na jiného hostitele. Vzhledem k tomu, že kontejnery nejsou navržené tak, aby měly trvalý místní stav, toto chování nabízí omezené hodnoty a zároveň poskytuje některé nevýhody, včetně pomalejšího zřizování uzlů a vyšší latence čtení a zápisu.
 
 Naproti tomu jsou dočasné disky s operačním systémem uložené jenom na hostitelském počítači, stejně jako na dočasném disku. To zajišťuje nižší latenci čtení a zápisu společně s rychlejším škálováním uzlů a upgrady clusteru.
 
 Podobně jako na dočasném disku je dočasný disk s operačním systémem zahrnutý do ceny virtuálního počítače, takže nebudete mít k dispozici žádné další náklady na úložiště.
 
-Zaregistrujte `EnableEphemeralOSDiskPreview` funkci:
+> [!IMPORTANT]
+>Pokud uživatel výslovně nepožaduje pro daný operační systém spravované disky, AKS pro danou konfiguraci nodepool nastaví jako výchozí dočasný operační systém.
 
-```azurecli
-az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
-```
+Při použití dočasného operačního systému se musí disk s operačním systémem vejít do mezipaměti virtuálních počítačů. Velikosti mezipaměti virtuálních počítačů jsou dostupné v dokumentaci k [Azure](../virtual-machines/dv3-dsv3-series.md) v závorkách vedle vstupně-výstupních propustností ("velikost mezipaměti v GIB").
 
-Může trvat několik minut, než se stav zobrazí jako **zaregistrované**. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) :
+Když použijete AKS výchozí velikost virtuálního počítače Standard_DS2_v2 s výchozí velikostí disku operačního systému 100 GB jako příklad, tato velikost virtuálního počítače podporuje dočasný operační systém, ale má jenom 86GB velikosti mezipaměti. Tato konfigurace bude ve výchozím nastavení pro spravované disky, pokud uživatel nezadá explicitně. Pokud uživatel výslovně požadoval dočasný operační systém, došlo k chybě ověření.
 
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"
-```
+Pokud uživatel požádá o stejnou Standard_DS2_v2 s diskem s operačním systémem 60GB, bude tato konfigurace ve výchozím nastavení dočasný operační systém: požadovaná velikost 60GB je menší než maximální velikost mezipaměti 86GB.
 
-Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft.ContainerService` poskytovatele prostředků pomocí příkazu [AZ Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) :
+Při použití Standard_D8s_v3 s diskem s operačním systémem 100 GB podporuje tato velikost virtuálního počítače dočasný operační systém a má 200 GB místo v mezipaměti. Pokud uživatel neurčí typ disku operačního systému, nodepool by ve výchozím nastavení dostal dočasný operační systém. 
 
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```
+Dočasný operační systém vyžaduje minimálně 2.15.0 verze Azure CLI.
 
-Dočasný operační systém vyžaduje minimálně verzi 0.4.63 rozšíření CLI AKS-Preview.
-
-K instalaci rozšíření AKS-Preview rozhraní příkazového řádku použijte následující příkazy rozhraní příkazového řádku Azure:
-
-```azurecli
-az extension add --name aks-preview
-```
-
-Pokud chcete aktualizovat rozšíření CLI AKS-Preview, použijte následující příkazy rozhraní příkazového řádku Azure CLI:
-
-```azurecli
-az extension update --name aks-preview
-```
-
-### <a name="use-ephemeral-os-on-new-clusters-preview"></a>Použít dočasný operační systém pro nové clustery (Preview)
+### <a name="use-ephemeral-os-on-new-clusters"></a>Použít dočasný operační systém v nových clusterech
 
 Nakonfigurujte cluster, aby při vytvoření clusteru používal dočasné disky s operačním systémem. Pomocí `--node-osdisk-type` příznaku nastavte dočasný operační systém jako typ disku operačního systému pro nový cluster.
 
@@ -285,9 +266,9 @@ Nakonfigurujte cluster, aby při vytvoření clusteru používal dočasné disky
 az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
-Pokud chcete vytvořit běžný cluster pomocí disků s operačním systémem připojeného k síti, můžete to udělat tak, že vynecháte vlastní `--node-osdisk-type` značku nebo zadáte `--node-osdisk-type=Managed` . Můžete se také rozhodnout přidat další dočasné fondy uzlů operačního systému podle níže uvedených pokynů.
+Pokud chcete vytvořit běžný cluster pomocí disků s operačním systémem připojeného k síti, můžete to udělat tak, že zadáte `--node-osdisk-type=Managed` . Můžete se také rozhodnout přidat další dočasné fondy uzlů operačního systému podle níže uvedených pokynů.
 
-### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>Použití dočasného operačního systému na existujících clusterech (Preview)
+### <a name="use-ephemeral-os-on-existing-clusters"></a>Použití dočasného operačního systému na existujících clusterech
 Nakonfigurujte nový fond uzlů, aby používal dočasné disky s operačním systémem. Pomocí `--node-osdisk-type` příznaku pro tento fond uzlů nastavte jako typ disku s operačním systémem jako typ disku s operačním systémem.
 
 ```azurecli
@@ -297,7 +278,7 @@ az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-grou
 > [!IMPORTANT]
 > S dočasným operačním systémem můžete nasadit image virtuálních počítačů a instancí až do velikosti mezipaměti virtuálních počítačů. V případě AKS používá výchozí konfigurace disku s operačním systémem Node 100GiB, což znamená, že potřebujete velikost virtuálního počítače, která má mezipaměť větší než 100 GiB. Výchozí Standard_DS2_v2 má velikost mezipaměti 86 GiB, která není dostatečně velká. Standard_DS3_v2 má velikost mezipaměti 172 GiB, která je dostatečně velká. Výchozí velikost disku s operačním systémem můžete také snížit pomocí `--node-osdisk-size` . Minimální velikost pro Image AKS je 30GiB. 
 
-Pokud chcete vytvořit fondy uzlů s disky s operačním systémem připojené k síti, můžete to udělat tak, že vynecháte vlastní `--node-osdisk-type` značku.
+Pokud chcete vytvořit fondy uzlů s disky s operačním systémem připojené k síti, můžete to udělat tak, že zadáte `--node-osdisk-type Managed` .
 
 ## <a name="custom-resource-group-name"></a>Název vlastní skupiny prostředků
 

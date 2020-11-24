@@ -1,5 +1,5 @@
 ---
-title: Migrace na monitor připojení (Preview) z Network Performance Monitor
+title: Migrace na monitorování připojení z Network Performance Monitor
 titleSuffix: Azure Network Watcher
 description: Přečtěte si, jak migrovat na monitorování připojení z Network Performance Monitor.
 services: network-watcher
@@ -10,22 +10,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/20/2020
+ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: 38ea682b4f3894f373d16908b942b4fa578741c4
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: cd0d4c2dc550beef1b5fceb373a4cb96ed75a172
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985803"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544492"
 ---
-# <a name="migrate-to-connection-monitor-preview-from-network-performance-monitor"></a>Migrace na monitor připojení (Preview) z Network Performance Monitor
+# <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Migrace na monitorování připojení z Network Performance Monitor
 
 Testy můžete migrovat z Network Performance Monitor (NPM) na nové, vylepšené monitorování připojení jediným kliknutím a s nulovými výpadky. Další informace o výhodách najdete v tématu [monitorování připojení](./connection-monitor-overview.md).
 
-> [!IMPORTANT]
-> Monitor připojení je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 >[!NOTE]
 > Do monitorování připojení se dají migrovat jenom testy z monitorování připojení služby.
@@ -42,7 +39,7 @@ Migrace pomáhá získat následující výsledky:
    * **Data v Log Analytics**: před migrací zůstanou data v pracovním prostoru, ve kterém je npm nakonfigurovaný v tabulce NetworkMonitoring. Po migraci přejde data do tabulky NetworkMonitoring a do tabulky ConnectionMonitor_CL ve stejném pracovním prostoru. Po zakázání testů v NPM jsou data uložena pouze v tabulce ConnectionMonitor_CL.
    * **Výstrahy založené na protokolech, řídicí panely a integrace**: dotazy je nutné ručně upravit na základě nové ConnectionMonitor_CL tabulky. Postup opětovného vytvoření výstrah v metrikách najdete v tématu [monitorování připojení k síti pomocí monitorování připojení](./connection-monitor-overview.md#metrics-in-azure-monitor).
     
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Ujistěte se, že ve vašem předplatném a oblasti pracovního prostoru Log Analytics je povolená možnost Network Watcher.
 * Virtuální počítače Azure s nainstalovanými agenty Log Analytics musí být povolené s rozšířením Network Watcher.

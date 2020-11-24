@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a5d685e49d941d7b6febbc220cdbfbcb631c4496
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 17e01844463b6d18bd7d2c3b56ee86d938682b8e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94746359"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536315"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a Správa skupin akcí v Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. V rámci předplatného můžete nakonfigurovat až 2 000 skupin akcí.
@@ -120,7 +120,7 @@ Ve skupině akcí můžete mít omezený počet akcí sady Runbook.
 ### <a name="azure-app-push-notifications"></a>Nabízená oznámení aplikace Azure
 Můžete mít omezený počet akcí aplikace Azure ve skupině akcí.
 
-### <a name="email"></a>E-mail
+### <a name="email"></a>E-mailu
 E-maily budou odeslány z následujících e-mailových adres. Ujistěte se, že je správně nakonfigurováno filtrování e-mailů.
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
@@ -149,6 +149,10 @@ Ve skupině akcí můžete mít omezený počet ITSM akcí.
 Ve skupině akcí můžete mít omezený počet akcí aplikace logiky.
 
 ### <a name="secure-webhook"></a>Zabezpečený webhook
+
+> [!NOTE]
+> Použití akce Webhooku vyžaduje, aby cílový koncový bod Webhooku buď nevyžadoval úspěšné fungování výstrahy, nebo mohl analyzovat informace kontextu výstrahy, které jsou k dispozici jako součást operace POST. Pokud koncový bod Webhooku nemůže zpracovat informace kontextu výstrahy sám o sobě, můžete použít řešení jako [akci aplikace logiky](./action-groups-logic-app.md) pro vlastní manipulaci s informacemi v kontextu výstrahy, aby odpovídala očekávanému formátu dat Webhooku.
+
 Akce Webhooku skupin akcí vám umožní využít výhod Azure Active Directory k zabezpečení připojení mezi skupinou akcí a vaším chráněným webovým rozhraním API (koncový bod Webhooku). Celkový pracovní postup pro využití této funkce je popsaný níže. Přehled aplikací a instančních objektů služby Azure AD najdete v tématu [Přehled Microsoft Identity Platform (v 2.0)](../../active-directory/develop/v2-overview.md).
 
 1. Vytvořte aplikaci Azure AD pro vaše chráněné webové rozhraní API. Viz [chráněné webové rozhraní API: registrace aplikace](../../active-directory/develop/scenario-protected-web-api-app-registration.md).
@@ -259,6 +263,10 @@ Ve skupině akcí můžete mít omezený počet hlasových akcí.
 Ceny pro podporované země nebo oblasti najdete na stránce s [cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).
 
 ### <a name="webhook"></a>Webhook
+
+> [!NOTE]
+> Použití akce Webhooku vyžaduje, aby cílový koncový bod Webhooku buď nevyžadoval úspěšné fungování výstrahy, nebo mohl analyzovat informace kontextu výstrahy, které jsou k dispozici jako součást operace POST. Pokud koncový bod Webhooku nemůže zpracovat informace kontextu výstrahy sám o sobě, můžete použít řešení jako [akci aplikace logiky](./action-groups-logic-app.md) pro vlastní manipulaci s informacemi v kontextu výstrahy, aby odpovídala očekávanému formátu dat Webhooku.
+
 Webhooky se zpracovávají pomocí následujících pravidel.
 - Volání Webhooku se podařilo maximálně třikrát.
 - Volání se bude opakovat, pokud se odpověď neobdrží v rámci časového limitu, nebo se vrátí jeden z následujících kódů stavu HTTP: 408, 429, 503 nebo 504.

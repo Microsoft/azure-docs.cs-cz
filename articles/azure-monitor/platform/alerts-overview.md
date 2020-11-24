@@ -4,12 +4,12 @@ description: Přehled upozorňování v Azure. Výstrahy, klasické výstrahy a 
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: e71f048a0a96323552b426663a235ed66fa2ef87
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: b8d24eab79bdf16e4d883549be00431bd5372af8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108792"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536043"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Přehled upozornění v Microsoft Azure 
 
@@ -80,9 +80,9 @@ Podporovány jsou následující stavy upozornění.
 |:---|:---|
 | Nová | Problém byl zjištěn a ještě nebyl revidován. |
 | Potvrzeno | Správce zkontroloval výstrahu a začal na ní pracovat. |
-| Uzavřená | Problém byl vyřešen. Jakmile je výstraha zavřena, můžete ji znovu otevřít změnou na jiný stav. |
+| Uzavřeno | Problém byl vyřešen. Jakmile je výstraha zavřena, můžete ji znovu otevřít změnou na jiný stav. |
 
-*Stav výstrahy* se liší a nezávisle na *stavu monitorování*. Stav výstrahy je nastaven uživatelem. Stav monitorování je nastaven systémem. Když se výstraha aktivuje, stav monitorování výstrahy se nastaví na *aktivováno*a když se podkladová podmínka, která způsobila výstrahu, neodstraní, stav monitorování se nastaví na *Vyřešeno*. 
+*Stav výstrahy* se liší a nezávisle na *stavu monitorování*. Stav výstrahy je nastaven uživatelem. Stav monitorování je nastaven systémem. Když se výstraha aktivuje, stav monitorování výstrahy se nastaví na *aktivováno* a když se podkladová podmínka, která způsobila výstrahu, neodstraní, stav monitorování se nastaví na *Vyřešeno*. 
 
 Stav výstrahy se nezmění, dokud ji uživatel nezmění. Zjistěte, [Jak změnit stav výstrah a inteligentních skupin](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json).
 
@@ -173,9 +173,9 @@ Stránka Podrobnosti výstrahy obsahuje následující části:
 | Historie | Zobrazí všechny akce podniknuté výstrahou a všechny změny provedené v upozornění. V současné době omezené na změny stavu. |
 | Diagnostika | Informace o inteligentní skupině, do které je tato výstraha zahrnutá *Počet výstrah* odkazuje na počet výstrah, které jsou zahrnuty v této inteligentní skupině. Obsahuje další výstrahy ve stejné inteligentní skupině, které byly vytvořeny v posledních 30 dnech bez ohledu na časový filtr na stránce seznam výstrah. Výběrem výstrahy zobrazíte její podrobnosti. |
 
-## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Řízení přístupu na základě role (RBAC) pro instance upozornění
+## <a name="azure-role-based-access-control-azure-rbac-for-your-alert-instances"></a>Řízení přístupu na základě role Azure (Azure RBAC) pro vaše instance upozornění
 
-Spotřeba a Správa instancí výstrah vyžaduje, aby uživatel měl předdefinované role pro [monitorování přispěvatele](../../role-based-access-control/built-in-roles.md#monitoring-contributor) nebo [sledovacího čtecího modulu](../../role-based-access-control/built-in-roles.md#monitoring-reader)Azure. Tyto role jsou podporované v jakémkoli oboru Azure Resource Manager, z úrovně předplatného až po podrobná přiřazení na úrovni prostředků. Pokud má například uživatel pouze oprávnění Přispěvatel monitorování pro virtuální počítač `ContosoVM1` , může tento uživatel využívat a spravovat pouze výstrahy vygenerované v `ContosoVM1` .
+Spotřeba a Správa instancí výstrah vyžaduje, aby uživatel měl předdefinované role pro [monitorování přispěvatele](../../role-based-access-control/built-in-roles.md#monitoring-contributor) nebo [sledovacího čtecího modulu](../../role-based-access-control/built-in-roles.md#monitoring-reader)Azure. Tyto role se podporují ve všech oborech Azure Resource Manageru, od úrovně předplatného až po podrobná přiřazení na úrovni prostředků. Pokud má například uživatel pouze oprávnění Přispěvatel monitorování pro virtuální počítač `ContosoVM1` , může tento uživatel využívat a spravovat pouze výstrahy vygenerované v `ContosoVM1` .
 
 ## <a name="manage-your-alert-instances-programmatically"></a>Spravujte instance výstrah programově
 

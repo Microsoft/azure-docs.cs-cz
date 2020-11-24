@@ -3,12 +3,12 @@ title: Změnit nastavení clusteru Azure Service Fabric
 description: Tento článek popisuje nastavení prostředků infrastruktury a zásady upgradu prostředků infrastruktury, které můžete přizpůsobit.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: a83d24b4badd78750756a3cb4564b1e53fd30593
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1f16e89dd1131f6aea64e5e72a342b3b737f3728
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648221"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542639"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Přizpůsobení nastavení clusteru Service Fabric
 Tento článek popisuje různá nastavení prostředků infrastruktury pro váš Service Fabric cluster, který můžete přizpůsobit. Pro clustery hostované v Azure můžete nastavení přizpůsobit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí Azure Resource Manager šablony. Další informace najdete v tématu [Upgrade konfigurace clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). Pro samostatné clustery přizpůsobíte nastavení tím, že aktualizujete *ClusterConfig.jsna* soubor a provádíte upgrade konfigurace v clusteru. Další informace najdete v tématu [Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -141,6 +141,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |IsEnabled|logická hodnota, výchozí hodnota je FALSE.|Static|Povolí nebo zakáže služba DNSservice. Služba DNSservice je ve výchozím nastavení zakázaná a tato konfigurace musí být nastavená tak, aby se povolila. |
 |PartitionPrefix|řetězec, výchozí hodnota je "--"|Static|Určuje řetězcovou hodnotu předpony oddílu v dotazech DNS pro dělené služby. Hodnota: <ul><li>By měl být kompatibilní se specifikací RFC, protože bude součástí dotazu DNS.</li><li>Nesmí obsahovat tečku (.), protože tečka má vliv na chování přípony DNS.</li><li>By neměl být delší než 5 znaků.</li><li>Nemůže být prázdný řetězec.</li><li>Pokud je nastavení PartitionPrefix přepsáno, pak PartitionSuffix musí být přepsáno a naopak.</li></ul>Další informace najdete v tématu [Service Fabric služby DNS.](service-fabric-dnsservice.md)|
 |PartitionSuffix|řetězec, výchozí hodnota je ""|Static|Určuje hodnotu řetězce přípony oddílu v dotazech DNS pro dělené služby. Hodnota: <ul><li>By měl být kompatibilní se specifikací RFC, protože bude součástí dotazu DNS.</li><li>Nesmí obsahovat tečku (.), protože tečka má vliv na chování přípony DNS.</li><li>By neměl být delší než 5 znaků.</li><li>Pokud je nastavení PartitionPrefix přepsáno, pak PartitionSuffix musí být přepsáno a naopak.</li></ul>Další informace najdete v tématu [Service Fabric služby DNS.](service-fabric-dnsservice.md) |
+|RetryTransientFabricErrors|Logická hodnota, výchozí hodnota je true.|Static|Nastavení řídí možnosti opakování při volání rozhraní Service Fabric API z služba DNSservice. Pokud je tato možnost povolená, opakuje se až třikrát, pokud dojde k přechodné chybě.|
 
 ## <a name="eventstoreservice"></a>EventStoreService
 
@@ -423,7 +424,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |AzureStorageMaxConnections | Int, výchozí hodnota je 5000 |Dynamická|Maximální počet souběžných připojení ke službě Azure Storage. |
 |AzureStorageMaxWorkerThreads | Int, výchozí hodnota je 25. |Dynamická|Maximální počet paralelně spuštěných pracovních vláken. |
 |AzureStorageOperationTimeout | Čas v sekundách, výchozí hodnota je 6000. |Dynamická|Zadejte časový interval v sekundách. Vypršel časový limit pro dokončení operace xstore. |
-|CleanupApplicationPackageOnProvisionSuccess|logická hodnota, výchozí hodnota je FALSE. |Dynamická|Povolí nebo zakáže automatické čištění balíčku aplikace při úspěšném zřízení.<br/> *Osvědčeným postupem je použití `true` .*
+|CleanupApplicationPackageOnProvisionSuccess|logická hodnota, výchozí hodnota je true. |Dynamická|Povolí nebo zakáže automatické čištění balíčku aplikace při úspěšném zřízení.
 |CleanupUnusedApplicationTypes|Logická hodnota, výchozí hodnota je FALSE. |Dynamická|Tato konfigurace, pokud je povolená, umožňuje automaticky odregistrovat nepoužívané verze typu aplikace, které přeskočí nejnovější tři nepoužívané verze, a tím vystřihuje místo na disku obsazené úložištěm imagí. Automatické čištění se spustí na konci úspěšného zřízení pro daný typ aplikace a také bude pravidelně spouštět jednou denně pro všechny typy aplikací. Počet nepoužívaných verzí, které se mají přeskočit, se dá konfigurovat pomocí parametru "MaxUnusedAppTypeVersionsToKeep". <br/> *Osvědčeným postupem je použití `true` .*
 |DisableChecksumValidation | Logická hodnota, výchozí hodnota je false. |Static| Tato konfigurace umožňuje povolit nebo zakázat ověření kontrolního součtu během zřizování aplikace. |
 |DisableServerSideCopy | Logická hodnota, výchozí hodnota je false. |Static|Tato konfigurace povolí nebo zakáže kopii balíčku aplikace na straně serveru na úložiště bitových kopií během zřizování aplikace. |
@@ -520,6 +521,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |AutoDetectAvailableResources|logická hodnota, výchozí hodnota je TRUE.|Static|Tato konfigurace aktivuje automatickou detekci dostupných prostředků v uzlu (procesor a paměť), pokud je tato konfigurace nastavená na hodnotu true. Pokud uživatel zadal chybné kapacity uzlů nebo pokud je tato konfigurace nastavená na false, načtou se skutečné kapacity a opraví. Pokud je tato konfigurace nastavená na false, budeme sledovat upozornění, že uživatel zadal chybné kapacity uzlů. ale nebudeme je opravovat. To znamená, že uživatel chce mít zadané kapacity jako >, než má uzel skutečně má, nebo pokud nejsou definovány kapacity; bude předpokládat neomezenou kapacitu. |
 |BalancingDelayAfterNewNode | Čas v sekundách, výchozí hodnota je 120. |Dynamická|Zadejte časový interval v sekundách. Po přidání nového uzlu nespouštějte vyrovnávání aktivit v tomto období. |
 |BalancingDelayAfterNodeDown | Čas v sekundách, výchozí hodnota je 120. |Dynamická|Zadejte časový interval v sekundách. Nepovolujte vyvážení aktivit v rámci této doby po událostech uzlu. |
+|BlockNodeInUpgradeConstraintPriority | Int, výchozí hodnota je 0 |Dynamická|Určuje prioritu omezení kapacity: 0: tvrdý; 1: soft; negativní: ignorovat  |
 |CapacityConstraintPriority | Int, výchozí hodnota je 0 | Dynamická|Určuje prioritu omezení kapacity: 0: tvrdý; 1: soft; negativní: ignoruje se. |
 |ConsecutiveDroppedMovementsHealthReportLimit | Int, výchozí hodnota je 20 | Dynamická|Definuje počet po sobě jdoucích pohybů vydaných ResourceBalancer před provedením diagnostiky a vygenerování upozornění na stav. Záporné: za touto podmínkou nejsou vygenerována žádná upozornění. |
 |ConstraintFixPartialDelayAfterNewNode | Čas v sekundách, výchozí hodnota je 120. |Dynamická| Zadejte časový interval v sekundách. Po přidání nového uzlu DDo v tomto období neopravit FaultDomain a porušení omezení UpgradeDomain. |
@@ -585,8 +587,8 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |GracefulReplicaShutdownMaxDuration|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (120)|Dynamická|Zadejte časový interval v sekundách. Doba, po kterou systém počká, než se ukončí hostitelé služby s replikami, které jsou zablokované v Zavřít. Pokud je tato hodnota nastavená na 0, repliky se nedají pokyn zavřít.|
 |NodeDeactivationMaxReplicaCloseDuration | Čas v sekundách, výchozí hodnota je 900. |Dynamická|Zadejte časový interval v sekundách. Doba, po kterou systém počká, než se ukončí hostitelé služby s replikami, které jsou zablokované v zavření během deaktivace uzlu. |
 |PeriodicApiSlowTraceInterval | Čas v sekundách, výchozí hodnota je 5 minut. |Dynamická| Zadejte časový interval v sekundách. PeriodicApiSlowTraceInterval definuje interval, za který se budou přesledovat pomalá volání rozhraní API monitorováním rozhraní API. |
-|ReplicaChangeRoleFailureRestartThreshold|int, výchozí hodnota je 10.|Dynamická| Integer: Zadejte počet selhání rozhraní API při primární promoakci, po kterém se použije akce automatického zmírnění (restart repliky). |
-|ReplicaChangeRoleFailureWarningReportThreshold|int, výchozí hodnota je 2147483647|Dynamická| Integer: Zadejte počet selhání rozhraní API při primární promoakci, po kterém bude vyvolána zpráva o stavu upozornění.|
+|ReplicaChangeRoleFailureRestartThreshold|int, výchozí hodnota je 10.|Dynamická| Čísla. Zadejte počet selhání rozhraní API při primární promoakci, po kterém se použije akce automatického zmírnění (restart repliky). |
+|ReplicaChangeRoleFailureWarningReportThreshold|int, výchozí hodnota je 2147483647|Dynamická| Čísla. Zadejte počet selhání rozhraní API při primární promoakci, po kterém bude vyvolána zpráva o stavu upozornění.|
 |ServiceApiHealthDuration | Čas v sekundách, výchozí hodnota je 30 minut. |Dynamická| Zadejte časový interval v sekundách. ServiceApiHealthDuration definuje, jak dlouho čekáme na spuštění rozhraní API služby předtím, než pošleme zprávu, že není v pořádku. |
 |ServiceReconfigurationApiHealthDuration | Čas v sekundách, výchozí hodnota je 30. |Dynamická| Zadejte časový interval v sekundách. ServiceReconfigurationApiHealthDuration definuje, jak dlouho čekáme na spuštění rozhraní API služby předtím, než nahlásíme, že není v pořádku. To platí pro volání rozhraní API, která mají vliv na dostupnost.|
 
@@ -758,7 +760,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |PropertyWriteBatch |řetězec, výchozí hodnota je admin. |Dynamická|Konfigurace zabezpečení pro operace zápisu vlastností pojmenování. |
 |ProvisionApplicationType |řetězec, výchozí hodnota je admin. |Dynamická| Konfigurace zabezpečení pro zřizování typu aplikace. |
 |ProvisionFabric |řetězec, výchozí hodnota je admin. |Dynamická| Konfigurace zabezpečení pro clustery MSI a/nebo zřizování manifestu clusteru. |
-|Dotazy |řetězec, výchozí hodnota je "admin \| \| User" |Dynamická| Konfigurace zabezpečení pro dotazy. |
+|Dotaz |řetězec, výchozí hodnota je "admin \| \| User" |Dynamická| Konfigurace zabezpečení pro dotazy. |
 |RecoverPartition |řetězec, výchozí hodnota je admin. | Dynamická|Konfigurace zabezpečení pro obnovování oddílu. |
 |Operace recoverpartitions |řetězec, výchozí hodnota je admin. | Dynamická|Konfigurace zabezpečení pro obnovování oddílů. |
 |RecoverServicePartitions |řetězec, výchozí hodnota je admin. |Dynamická| Konfigurace zabezpečení pro obnovování oddílů služby. |

@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 517de5c4003655c5fea2f2e7949fb513b1a3c381
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 950fcdc5cd6a5bbf3fa61ebd5e23be89691c4370
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842426"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95535788"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Vytvoření nastavení diagnostiky pro odesílání metrik a protokolů platformy do různých cílů
 [Protokoly platforem](platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. [Metriky platformy](data-platform-metrics.md) se ve výchozím nastavení shromažďují a obvykle se ukládají do databáze Azure monitor metrik. Tento článek poskytuje podrobné informace o vytváření a konfiguraci nastavení diagnostiky pro odesílání metrik platforem a protokolů platforem do různých umístění.
@@ -52,7 +52,7 @@ Protokoly a metriky platformy je možné odeslat do cílových umístění v ná
 
 ### <a name="destination-requirements"></a>Požadavky na cíl
 
-Před vytvořením nastavení diagnostiky je nutné vytvořit všechna cílová umístění pro nastavení diagnostiky. Cíl nemusí být ve stejném předplatném jako prostředek odesílající protokoly, pokud uživatel, který nastavení nakonfiguruje, má odpovídající přístup RBAC k oběma předplatným. Následující tabulka obsahuje jedinečné požadavky na jednotlivé cíle včetně případných regionálních omezení.
+Před vytvořením nastavení diagnostiky je nutné vytvořit všechna cílová umístění pro nastavení diagnostiky. Cíl nemusí být ve stejném předplatném jako prostředek odesílající protokoly, pokud uživatel, který nastavení nakonfiguruje, má odpovídající přístup k oběma předplatným Azure RBAC. Následující tabulka obsahuje jedinečné požadavky na jednotlivé cíle včetně případných regionálních omezení.
 
 | Cíl | Požadavky |
 |:---|:---|

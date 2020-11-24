@@ -3,18 +3,18 @@ title: Migrace klasického prostředku Azure Monitor Application Insights do pro
 description: Seznamte se s kroky potřebnými k upgradu Azure Monitorch klasických prostředků Application Insights na nový model založený na pracovním prostoru.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 0d2c7d1b9ee57e6d201205c04557e1b5f5623eb0
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 709cff1326bb6393a14c594ea434a6c16fb80860
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930573"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536519"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Migrace na prostředky Application Insights na základě pracovního prostoru
 
 Tato příručka vás provede procesem migrace klasického Application Insights prostředku do prostředku založeného na pracovním prostoru. Prostředky založené na pracovním prostoru podporují úplnou integraci mezi Application Insights a Log Analytics. Prostředky založené na pracovních prostorech odesílají Application Insights telemetrie do společného pracovního prostoru Log Analytics, který umožňuje přístup k [nejnovějším funkcím Azure monitor](#new-capabilities) a udržování protokolů aplikací, infrastruktury a platforem v jednom konsolidovaném umístění.
 
-Prostředky založené na pracovních prostorech umožňují v rámci svých prostředků používat běžné Role-Based Access Control (RBAC) a eliminují nutnost dotazů mezi aplikacemi a pracovními prostory.
+Prostředky založené na pracovních prostorech umožňují společné řízení přístupu na základě role Azure (Azure RBAC) napříč vašimi prostředky a eliminují nutnost dotazů mezi aplikacemi a pracovními prostory.
 
 **Prostředky založené na pracovním prostoru jsou aktuálně k dispozici ve všech komerčních oblastech a v Azure USA – státní správa.**
 
@@ -51,7 +51,7 @@ Pokud nepotřebujete migrovat existující prostředek a místo toho chcete vytv
 - Průběžný export není u prostředků založených na pracovních prostorech podporován a je třeba jej zakázat.
 Po dokončení migrace můžete pomocí [nastavení diagnostiky](../platform/diagnostic-settings.md) nakonfigurovat archivaci dat do účtu úložiště nebo streamovat do služby Azure Event hub.  
 
-- V části **Obecné**  >  **použití a odhadované náklady**  >  na pracovní prostor Log Analytics ověřte aktuální nastavení uchovávání**dat** . Toto nastavení bude mít vliv na to, jak dlouho se budou po migraci prostředku Application Insights ukládat všechna data, která se budou přijímat. Pokud v současné době ukládáte Application Insights data déle než výchozí 90 dní a chcete zachovat tuto větší dobu uchování, možná budete muset upravit nastavení uchovávání pracovního prostoru.
+- V části **Obecné**  >  **použití a odhadované náklady**  >  na pracovní prostor Log Analytics ověřte aktuální nastavení uchovávání **dat** . Toto nastavení bude mít vliv na to, jak dlouho se budou po migraci prostředku Application Insights ukládat všechna data, která se budou přijímat. Pokud v současné době ukládáte Application Insights data déle než výchozí 90 dní a chcete zachovat tuto větší dobu uchování, možná budete muset upravit nastavení uchovávání pracovního prostoru.
 
 ## <a name="migrate-your-resource"></a>Migrace prostředku
 
@@ -237,7 +237,7 @@ Funkce starší verze průběžného exportu není u prostředků založených n
 
 Před migrací není nutné provádět žádné změny, ale tato zpráva vám upozorní na to, že aktuální nastavení uchovávání Application Insights není nastavené na výchozí dobu uchování 90 dní. Tato zpráva upozornění znamená, že před migrací a zahájením ingestování nových dat můžete změnit nastavení uchovávání informací pro váš pracovní prostor Log Analytics. 
 
-Můžete kontrolovat aktuální nastavení uchování pro Log Analytics v části **Obecné**  >  **použití a odhadované náklady**na  >  **uchovávání dat** v rámci Log Analytics uživatelského rozhraní. Toto nastavení bude mít vliv na to, jak dlouho se budou po migraci prostředku Application Insights ukládat všechna data, která se budou přijímat.
+Můžete kontrolovat aktuální nastavení uchování pro Log Analytics v části **Obecné**  >  **použití a odhadované náklady** na  >  **uchovávání dat** v rámci Log Analytics uživatelského rozhraní. Toto nastavení bude mít vliv na to, jak dlouho se budou po migraci prostředku Application Insights ukládat všechna data, která se budou přijímat.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: b52cc38c40d8b6a39961ab28d9f0600ea7ee2201
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 391d9562bc73265a10976f485c78e3966aa4fe83
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841899"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536281"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -412,7 +412,7 @@ Jedinečné vlastní nastavení, která se běžně musí ručně znovu vytvoři
 - Znovu vytvořte vlastní řídicí panely a sešity. 
 - Opětovné vytvoření nebo aktualizace rozsahu jakýchkoli vlastních výstrah protokolu/metriky. 
 - Znovu vytvořte výstrahy dostupnosti.
-- Vytvořte znovu všechna vlastní nastavení Role-Based Access Control (RBAC), která jsou nutná pro to, aby vaši uživatelé měli přístup k novému prostředku. 
+- Znovu vytvořte jakékoli vlastní nastavení řízení přístupu na základě role Azure (Azure RBAC), které jsou potřeba pro to, aby vaši uživatelé měli přístup k novému prostředku. 
 - Umožňuje replikovat nastavení zahrnující vzorkování ingestování, uchovávání dat, denní limit a vlastní metriky. Tato nastavení se řídí přes podokno **využití a odhadované náklady** .
 - Veškerá integrace, která spoléhá na klíče rozhraní API, jako jsou [poznámky k verzi](/azure/azure-monitor/app/annotations), [kanály zabezpečeného řízení metriky](app/live-stream.md#secure-the-control-channel) atd. Budete muset vygenerovat nové klíče rozhraní API a aktualizovat přidruženou integraci. 
 - Průběžný export v klasických zdrojích by se musel znovu nakonfigurovat.
@@ -680,9 +680,9 @@ Tabulka ContainerInventory obsahuje informace o zastavených a spuštěných kon
 
 Pokud se zobrazí chyba **chybějící registrace odběru pro Microsoft. OperationsManagement**, můžete ji vyřešit registrací poskytovatele prostředků **Microsoft. OperationsManagement** v předplatném, ve kterém je tento pracovní prostor definovaný. Dokumentaci k tomu, jak to udělat, najdete [tady](../azure-resource-manager/templates/error-register-resource-provider.md).
 
-### <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>Podporuje AKS clustery s podporou RBAC?
+### <a name="is-there-support-for-kubernetes-rbac-enabled-aks-clusters"></a>Podporuje AKS clustery Kubernetes RBAC?
 
-Řešení pro monitorování kontejnerů nepodporuje RBAC, ale podporuje se Azure Monitor pro kontejnery. Na stránce s podrobnostmi řešení se nemusí zobrazovat správné informace v oknech, které zobrazují data pro tyto clustery.
+Řešení pro monitorování kontejnerů nepodporuje Kubernetes RBAC, ale podporuje se Azure Monitor pro kontejnery. Na stránce s podrobnostmi řešení se nemusí zobrazovat správné informace v oknech, které zobrazují data pro tyto clustery.
 
 ### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>Návody Povolit shromažďování protokolů pro kontejnery v oboru názvů Kube-System prostřednictvím Helm?
 

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: 3236e0a95c6a4b4f57ac38ed067011c3d6848b5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 176f12a0a06a5bcae601463e30189bc139d3531f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89670400"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543846"
 ---
 # <a name="move-resources-across-regions-in-powershell"></a>Přesunutí prostředků mezi oblasti v PowerShellu
 
@@ -25,7 +25,7 @@ Přečtěte si, jak přesunout prostředky Azure do jiné oblasti pomocí prost�
 
 ## <a name="before-you-start"></a>Než začnete
 
-- Vaše předplatné Azure by mělo mít přístup k dodávání prostředku a Vy byste k tomuto předplatnému měli mít oprávnění [vlastníka](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) nebo [Správce přístupu uživatelů](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) .
+- Vaše předplatné Azure by mělo mít přístup k dodávání prostředku a Vy byste k tomuto předplatnému měli mít oprávnění [vlastníka](../role-based-access-control/built-in-roles.md#owner) nebo [Správce přístupu uživatelů](../role-based-access-control/built-in-roles.md#user-access-administrator) .
 - Resource Track nesleduje změny a upgrady, proto proveďte potřebné změny prostředků, než je začnete přesouvat.
 - Když přesunete prostředky pomocí PowerShellu, nemůžete aktuálně upravovat žádná nastavení cílové oblasti. Tato nastavení upravte přímo na portálu.
 - Když přidáte prostředky do kolekce přesunutí, při přípravě na jejich přesun do jiné oblasti se metadata o přesunu ukládají do skupiny prostředků, která se pro účel vytvořila. V současné době se tato skupina prostředků může nacházet ve Východní USA 2 nebo Severní Evropa oblastech. Prostředky Azure je možné přesouvat mezi všemi veřejnými oblastmi, které používají metadata přítomná v některé z těchto oblastí.
@@ -347,7 +347,7 @@ Invoke-AzResourceMoverInitiateMove -SubscriptionId <subscription-id> -ResourceGr
 Po počátečním přesunu se můžete rozhodnout, jestli chcete přesunutí potvrdit, nebo ho zahodit. 
 
 - **Zahodit**: při testování můžete zrušit jeho přesunutí a nechcete skutečně přesunout zdrojový prostředek. Zrušením přesunutí se daný prostředek vrátí do stavu *zahájení přesunu čeká na vyřízení*. V případě potřeby pak můžete znovu zahájit přesun.
-- **Potvrdit**: potvrzení dokončí přesun do cílové oblasti. Po potvrzení bude zdrojový prostředek ve stavu *čeká na odstranění zdroje*a Vy se můžete rozhodnout, jestli ho chcete odstranit.
+- **Potvrdit**: potvrzení dokončí přesun do cílové oblasti. Po potvrzení bude zdrojový prostředek ve stavu *čeká na odstranění zdroje* a Vy se můžete rozhodnout, jestli ho chcete odstranit.
 
 ### <a name="discard"></a>Zahodit
 

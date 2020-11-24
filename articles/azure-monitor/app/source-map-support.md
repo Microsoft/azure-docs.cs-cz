@@ -6,12 +6,12 @@ author: markwolff
 ms.author: marwolff
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5b15492a36032a53ac81929eb55bce0bc70e040c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6403ecd534d17298a10ffcf8f089a2b010fa3a51
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335126"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536451"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>Podpora zdrojového mapování pro aplikace JavaScriptu
 
@@ -67,7 +67,7 @@ Pokud chcete nakonfigurovat nebo změnit účet úložiště nebo kontejner obje
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-### <a name="required-role-based-access-control-rbac-settings-on-your-blob-container"></a>Požadované nastavení řízení přístupu na základě role (RBAC) na kontejneru objektů BLOB
+### <a name="required-azure-role-based-access-control-azure-rbac-settings-on-your-blob-container"></a>Požadované nastavení řízení přístupu na základě role Azure (RBAC) na kontejneru objektů BLOB
 
 Každý uživatel na portálu, který tuto funkci používá, musí být aspoň přiřazený jako [čtečka dat objektů BLOB úložiště][storage blob data reader] do kontejneru objektů BLOB. Tuto roli musíte přiřadit někomu jinému, kdo bude používat zdrojové mapy prostřednictvím této funkce.
 

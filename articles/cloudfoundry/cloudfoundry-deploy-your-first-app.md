@@ -7,12 +7,12 @@ ms.subservice: workloads
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 18f9f62ba28595289d37975200352c26788e69cc
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: c8afc4f15f421a7b60b95d09b954e7742c24c66e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040028"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519672"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Nasazení první aplikace pro Cloud Foundry v Microsoft Azure
 
@@ -64,7 +64,7 @@ cf target -o testorg -s dev
 Když teď nasadíte aplikaci, automaticky se vytvoří v nové organizaci a prostoru. Pokud chcete potvrdit, že v nové organizaci nebo prostoru momentálně nejsou žádné aplikace, zadejte `cf apps` znovu.
 
 > [!NOTE] 
-> Další informace o organizace a mezerách a způsobu jejich použití pro řízení přístupu na základě role (RBAC) najdete v [dokumentaci k Cloud Foundry][cf-orgs-spaces-docs].
+> Další informace o organizace a mezerách a jejich použití pro Cloud Foundry řízení přístupu na základě role (Cloud Foundry RBAC) najdete v [dokumentaci k Cloud Foundry][cf-orgs-spaces-docs].
 
 ## <a name="deploy-an-application"></a>Nasazení aplikace
 
@@ -95,7 +95,7 @@ Většinu aplikací můžete nasadit pro Cloud Foundry pomocí `push` příkazu:
 cf push
 ```
 
-Když nahrajete aplikaci, Cloud Foundry detekuje typ aplikace (v tomto případě aplikace Java) a identifikuje její závislosti (v tomto případě se *jedná o* architekturu pružiny). Pak zabalí vše potřebné ke spuštění kódu v samostatné imagi kontejneru, označované jako *droplet* . Nakonec Cloud Foundry naplánování aplikace na jednom z dostupných počítačů ve vašem prostředí a vytvoří adresu URL, na které se můžete dostat, která je k dispozici ve výstupu příkazu.
+Když nahrajete aplikaci, Cloud Foundry detekuje typ aplikace (v tomto případě aplikace Java) a identifikuje její závislosti (v tomto případě se *jedná o* architekturu pružiny). Pak zabalí vše potřebné ke spuštění kódu v samostatné imagi kontejneru, označované jako *droplet*. Nakonec Cloud Foundry naplánování aplikace na jednom z dostupných počítačů ve vašem prostředí a vytvoří adresu URL, na které se můžete dostat, která je k dispozici ve výstupu příkazu.
 
 ![Výstup z příkazu CR push][cf-push-output]
 
@@ -114,7 +114,7 @@ Pomocí rozhraní příkazového řádku Cloud Foundry můžete zobrazit protoko
 cf logs hello-spring-cloud
 ```
 
-Ve výchozím nastavení používá příkaz logs *konec* , který zobrazuje nové protokoly při jejich zápisu. Pokud se chcete podívat na nové protokoly, aktualizujte v prohlížeči aplikaci Hello-jaře-Cloud.
+Ve výchozím nastavení používá příkaz logs *konec*, který zobrazuje nové protokoly při jejich zápisu. Pokud se chcete podívat na nové protokoly, aktualizujte v prohlížeči aplikaci Hello-jaře-Cloud.
 
 Chcete-li zobrazit protokoly, které již byly zapsány, přidejte `recent` přepínač:
 

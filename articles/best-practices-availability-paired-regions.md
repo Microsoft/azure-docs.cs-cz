@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: barbkess
 ms.custom: references_regions
-ms.openlocfilehash: b720d9dd824018d885ccc9860ee9fd8a90a46051
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d42eabe3afeb738b0cbb011881678839fe0ba2d7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84194319"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95539052"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Provozní kontinuita a zotavení po havárii (BCDR): Spárované oblasti Azure
 
@@ -43,7 +43,7 @@ Ne. Zatímco konkrétní služba Azure může spoléhat na regionální dvojici,
 
 ## <a name="must-i-use-azure-regional-pairs"></a>Je nutné použít místní páry Azure?
 
-Ne. Zákazníci můžou využívat služby Azure k navržení odolné služby, aniž by se museli spoléhat na regionální páry Azure.  Nicméně doporučujeme, abyste nakonfigurovali možnosti zotavení po havárii v provozní kontinuitě (BCDR) napříč místními páry, abyste mohli využít [izolaci](./security/fundamentals/isolation-choices.md) a zlepšit [dostupnost](./availability-zones/az-overview.md). U aplikací, které podporují více aktivních oblastí, doporučujeme vždy, když je to možné, použít obě oblasti z dvojice oblastí. Tím zajistíte optimální dostupnost pro aplikace a minimalizovanou dobu obnovení v případě havárie. Kdykoli je to možné, navrhněte aplikaci pro zajištění [maximální odolnosti](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview) a snadného [zotavení po havárii](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery).
+Ne. Zákazníci můžou využívat služby Azure k navržení odolné služby, aniž by se museli spoléhat na regionální páry Azure.  Nicméně doporučujeme, abyste nakonfigurovali možnosti zotavení po havárii v provozní kontinuitě (BCDR) napříč místními páry, abyste mohli využít [izolaci](./security/fundamentals/isolation-choices.md) a zlepšit [dostupnost](./availability-zones/az-overview.md). U aplikací, které podporují více aktivních oblastí, doporučujeme vždy, když je to možné, použít obě oblasti z dvojice oblastí. Tím zajistíte optimální dostupnost pro aplikace a minimalizovanou dobu obnovení v případě havárie. Kdykoli je to možné, navrhněte aplikaci pro zajištění [maximální odolnosti](/azure/architecture/framework/resiliency/overview) a snadného [zotavení po havárii](/azure/architecture/framework/resiliency/backup-and-recovery).
 
 ## <a name="azure-regional-pairs"></a>Regionální páry Azure
 
@@ -51,7 +51,7 @@ Ne. Zákazníci můžou využívat služby Azure k navržení odolné služby, a
 |:--- |:--- |:--- |
 | Asia-Pacific |Východní Asie (Hongkong) | Jihovýchodní Asie (Singapur) |
 | Austrálie |Austrálie – východ |Austrálie – jihovýchod |
-| Austrálie |Austrálie – střed |Austrálie – střed 2 |
+| Australia |Austrálie – střed |Austrálie – střed 2 |
 | Brazílie |Brazil South |Středojižní USA |
 | Kanada |Střední Kanada |Kanada – východ |
 | Čína |Čína – sever |Čína – východ|
@@ -59,8 +59,8 @@ Ne. Zákazníci můžou využívat služby Azure k navržení odolné služby, a
 | Evropa |Severní Evropa (Irsko) |Západní Evropa (Nizozemsko) |
 | Francie |Francie – střed|Francie – jih|
 | Německo |Německo – střed |Německo – severovýchod |
-| Indie |Indie – střed |Indie – jih |
-| Indie |Západní Indie |Indie – jih |
+| India |Indie – střed |Indie – jih |
+| India |Západní Indie |Indie – jih |
 | Japonsko |Japonsko – východ |Japonsko – západ |
 | Jižní Korea |Jižní Korea – střed |Jižní Korea – jih |
 | Severní Amerika |East US |USA – západ |
@@ -94,9 +94,9 @@ Jak je uvedeno na obrázku 2.
 
 1. **Azure COMPUTE (IaaS)** – musíte předem zřídit dodatečné výpočetní prostředky, abyste zajistili dostupnost prostředků v jiné oblasti během havárie. Další informace najdete v tématu [technické pokyny k odolnosti Azure](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md). 
 
-2. **Azure Storage** – Pokud používáte spravované disky, přečtěte si informace o [zálohování mezi oblastmi](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) pomocí Azure Backup a [replikaci virtuálních počítačů](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) z jedné oblasti do druhé s Azure Site Recovery. Pokud používáte účty úložiště, pak je geograficky redundantní úložiště (GRS) nakonfigurované ve výchozím nastavení, když se vytvoří účet Azure Storage. V GRS se vaše data automaticky replikují třikrát v rámci primární oblasti a třikrát se nacházejí v spárované oblasti. Další informace najdete v tématu [Azure Storage možností redundance](storage/common/storage-redundancy.md).
+2. **Azure Storage** – Pokud používáte spravované disky, přečtěte si informace o [zálohování mezi oblastmi](/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) pomocí Azure Backup a [replikaci virtuálních počítačů](./site-recovery/azure-to-azure-tutorial-enable-replication.md) z jedné oblasti do druhé s Azure Site Recovery. Pokud používáte účty úložiště, pak je geograficky redundantní úložiště (GRS) nakonfigurované ve výchozím nastavení, když se vytvoří účet Azure Storage. V GRS se vaše data automaticky replikují třikrát v rámci primární oblasti a třikrát se nacházejí v spárované oblasti. Další informace najdete v tématu [Azure Storage možností redundance](storage/common/storage-redundancy.md).
 
-3. **Azure SQL Database** – pomocí Azure SQL Database geografické replikace můžete nakonfigurovat asynchronní replikaci transakcí do libovolné oblasti světa. Nicméně doporučujeme nasadit tyto prostředky do spárované oblasti pro většinu scénářů zotavení po havárii. Další informace najdete v tématu [geografická replikace v Azure SQL Database](sql-database/sql-database-geo-replication-overview.md).
+3. **Azure SQL Database** – pomocí Azure SQL Database geografické replikace můžete nakonfigurovat asynchronní replikaci transakcí do libovolné oblasti světa. Nicméně doporučujeme nasadit tyto prostředky do spárované oblasti pro většinu scénářů zotavení po havárii. Další informace najdete v tématu [geografická replikace v Azure SQL Database](./azure-sql/database/auto-failover-group-overview.md).
 
 4. **Azure Resource Manager** – Resource Manager poskytuje logickou izolaci komponent v jednotlivých oblastech. To znamená, že logická selhání v jedné oblasti mají méně pravděpodobný dopad na jiné.
 

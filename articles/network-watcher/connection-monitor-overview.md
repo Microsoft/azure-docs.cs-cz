@@ -1,5 +1,5 @@
 ---
-title: Monitorování připojení (Preview) v Azure | Microsoft Docs
+title: Monitorování připojení v Azure | Microsoft Docs
 description: Naučte se používat monitorování připojení k monitorování síťové komunikace v distribuovaném prostředí.
 services: network-watcher
 documentationcenter: na
@@ -12,24 +12,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/27/2020
+ms.date: 11/23/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: cb24cc55844d7c42d68e75d6f6ef947b1315a306
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: c5c3f8dedad47a819ce3648a0b81ffa3e65a1a1e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984358"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544883"
 ---
-# <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Monitorování připojení k síti pomocí monitorování připojení (Preview)
+# <a name="network-connectivity-monitoring-with-connection-monitor"></a>Monitorování připojení k síti pomocí monitorování připojení
 
 Monitorování připojení nabízí sjednocené monitorování připojení v Azure Network Watcher. Funkce monitorování připojení podporuje hybridní a cloudová nasazení Azure. Network Watcher poskytuje nástroje pro monitorování, diagnostiku a zobrazení metrik souvisejících s připojením pro vaše nasazení Azure.
 
-> [!IMPORTANT]
-> Monitor připojení je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> Tady jsou některé případy použití pro monitorování připojení:
+Tady jsou některé případy použití pro monitorování připojení:
 
 - Virtuální počítač s front-end webovým serverem komunikuje s virtuálním počítačem s databázovým serverem v vícevrstvé aplikaci. Chcete kontrolovat síťové připojení mezi těmito dvěma virtuálními počítači.
 - Chcete, aby se virtuální počítače v oblasti Východní USA v oblasti Střed USA vyy na virtuální počítače s příkazy pro otestování a chcete porovnat latence sítě mezi oblastmi.
@@ -274,12 +271,12 @@ V monitorováních připojení vytvořených před prostředím monitorování p
 
 Když použijete metriky, nastavte typ prostředku jako Microsoft. Network/networkWatchers/connectionMonitors.
 
-| Metrika | Zobrazované jméno | Jednotka | Typ agregace | Popis | Dimenze |
+| Metric | Zobrazované jméno | Jednotka | Typ agregace | Popis | Dimenze |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | % PROBE selhalo | Procento | Průměr | Procento sond monitorování připojení selhalo. | Žádné dimenze |
 | AverageRoundtripMs | Průměrná doba odezvy (MS) | Milisekund | Průměr | Průměrná doba odezvy sítě pro testy monitorování připojení odesílané mezi zdrojem a cílem |             Žádné dimenze |
-| ChecksFailedPercent (Preview) | % Kontroly selhaly (Preview) | Procento | Průměr | Procento neúspěšných kontrol testu | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Parametr sourceresourceid <br>SourceType <br>Protokol <br>DestinationAddress <br>Cílový. <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Oblast |
-| RoundTripTimeMs (Preview) | Doba odezvy (MS) (Preview) | Milisekund | Průměr | Čas RTT pro kontroly odeslané mezi zdrojem a cílem. Tato hodnota není průměrná. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Parametr sourceresourceid <br>SourceType <br>Protokol <br>DestinationAddress <br>Cílový. <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Oblast |
+| ChecksFailedPercent (Preview) | % Kontroly selhaly (Preview) | Procento | Průměr | Procento neúspěšných kontrol testu | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Parametr sourceresourceid <br>SourceType <br>Protokol <br>DestinationAddress <br>Cílový. <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
+| RoundTripTimeMs (Preview) | Doba odezvy (MS) (Preview) | Milisekund | Průměr | Čas RTT pro kontroly odeslané mezi zdrojem a cílem. Tato hodnota není průměrná. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Parametr sourceresourceid <br>SourceType <br>Protokol <br>DestinationAddress <br>Cílový. <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
 
 #### <a name="metric-based-alerts-for-connection-monitor"></a>Výstrahy založené na metrikách pro monitorování připojení
 

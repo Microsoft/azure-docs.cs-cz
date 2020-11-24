@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 2b8009d6d571a9daf7163d2126b6d52edfc4bfdd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 001721ac0fdbbaaf808b962a79353369ab1dddb5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521080"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521950"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices"></a>Osvědčené postupy pro virtuální počítače v Azure automanage
 
@@ -33,6 +33,7 @@ U všech těchto služeb se automaticky připojíte, automaticky nakonfigurujete
 |Antimalware od Microsoftu    |Microsoft Antimalware pro Azure je bezplatná ochrana v reálném čase, která pomáhá identifikovat a odstraňovat viry, spyware a další škodlivý software. Vygeneruje výstrahy v případě, že se známý škodlivý nebo nežádoucí software pokusí nainstalovat nebo spustit v systémech Azure. [Další](../security/fundamentals/antimalware.md)informace |Osvědčené postupy pro virtuální počítače Azure – provozní, osvědčené postupy pro virtuální počítače Azure – vývoj a testování    |Ano    |
 |Update Management    |Pomocí Update Management v Azure Automation můžete spravovat aktualizace operačního systému pro virtuální počítače. Můžete rychle vyhodnotit stav dostupných aktualizací na všech počítačích agenta a spravovat proces instalace požadovaných aktualizací pro servery. [Další](../automation/update-management/update-mgmt-overview.md)informace    |Osvědčené postupy pro virtuální počítače Azure – provozní, osvědčené postupy pro virtuální počítače Azure – vývoj a testování    |Ne    |
 |Inventář Change Tracking &    |Change Tracking a inventář kombinuje funkce Change Tracking a Inventory, které vám umožní sledovat změny infrastruktury virtuálních počítačů a serverů. Služba podporuje sledování změn napříč službami, démony softwaru, registru a souborů ve vašem prostředí, které vám pomůžou diagnostikovat nechtěné změny a vyvolat výstrahy. Podpora inventáře vám umožní dotazovat se na prostředky v hostovi pro přehlednost v nainstalovaných aplikacích a dalších položkách konfigurace.  [Další](../automation/change-tracking/overview.md)informace    |Osvědčené postupy pro virtuální počítače Azure – provozní, osvědčené postupy pro virtuální počítače Azure – vývoj a testování    |Ne    |
+|Konfigurace hosta Azure    | Zásada konfigurace hosta slouží k monitorování konfigurace a hlášení o dodržování předpisů počítače. Služba automanage nainstaluje [základní hodnoty zabezpečení systému Windows](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines) pomocí rozšíření konfigurace hosta. [Další](../governance/policy/concepts/guest-configuration.md)informace    |Osvědčené postupy pro virtuální počítače Azure – provozní, osvědčené postupy pro virtuální počítače Azure – vývoj a testování    |Ne    |
 |Účet Azure Automation    |Azure Automation podporuje správu v celém životním cyklu vaší infrastruktury a aplikací. [Další](../automation/automation-intro.md)informace    |Osvědčené postupy pro virtuální počítače Azure – provozní, osvědčené postupy pro virtuální počítače Azure – vývoj a testování    |Ne    |
 |Pracovní prostor Log Analytics    |Azure Monitor ukládá data protokolu v pracovním prostoru Log Analytics, což je prostředek Azure a kontejner, ve kterém se data shromažďují, agreguje a slouží jako hranice správy. [Další](../azure-monitor/platform/design-logs-deployment.md)informace    |Osvědčené postupy pro virtuální počítače Azure – provozní, osvědčené postupy pro virtuální počítače Azure – vývoj a testování    |Ne    |
 

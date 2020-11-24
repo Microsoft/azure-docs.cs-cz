@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: a01b6e644ce3afda451d94d3e00eda278a645adf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 34205caf03d2f2d7255f75ea6203c5572c4c429b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87851320"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95523296"
 ---
 # <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>Rychlý Start: Správa objektů BLOB pomocí Pythonu v 2.1 SDK
 
@@ -137,7 +137,7 @@ Nejprve vytvoříte odkazy na objekty sloužící k přístupu k úložišti obj
 Jakmile budete mít CloudBlobContainer, vytvořte instanci objektu **CloudBlockBlob**, která odkazuje na konkrétní objekt blob, který vás zajímá. Tento objekt blob pak můžete podle potřeby nahrát, stáhnout nebo zkopírovat.
 
 > [!IMPORTANT]
-> Názvy kontejnerů musí být malými písmeny. Další informace o názvech kontejnerů a objektů BLOB najdete v tématu [pojmenování a odkazování kontejnerů, objektů BLOB a metadat](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+> Názvy kontejnerů musí být malými písmeny. Další informace o názvech kontejnerů a objektů BLOB najdete v tématu [pojmenování a odkazování kontejnerů, objektů BLOB a metadat](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
 ### <a name="upload-blobs-to-the-container"></a>Nahrání objektů blob do kontejneru
 
@@ -216,7 +216,7 @@ Další informace o vývoji Pythonu s využitím služby Blob Storage najdete v 
 
 ### <a name="client-library-reference-and-samples"></a>Klientská knihovna – referenční informace a ukázky
 
-- Další informace o klientské knihovně Pythonu najdete v tématu [knihovny Azure Storage pro Python](https://docs.microsoft.com/python/api/overview/azure/storage).
+- Další informace o klientské knihovně Pythonu najdete v tématu [knihovny Azure Storage pro Python](/python/api/overview/azure/storage).
 - Prozkoumejte [ukázky pro úložiště objektů blob](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=python&term=blob) napsané s využitím klientské knihovny pro Python.
 
 ## <a name="next-steps"></a>Další kroky

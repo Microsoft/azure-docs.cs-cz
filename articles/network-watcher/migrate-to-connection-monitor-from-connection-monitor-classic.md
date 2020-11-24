@@ -1,5 +1,5 @@
 ---
-title: Migrace na monitor připojení (Preview) z monitorování připojení
+title: Migrace na monitorování připojení z monitorování připojení
 titleSuffix: Azure Network Watcher
 description: Přečtěte si, jak migrovat na monitorování připojení z monitorování připojení.
 services: network-watcher
@@ -10,22 +10,18 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/20/2020
+ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: d785ecd48816150cd33d8e2f5fcce2ff36f1603f
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: eed68ff7e6b002e7a5985b336686b646a1a9acee
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985786"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522943"
 ---
-# <a name="migrate-to-connection-monitor-preview-from-connection-monitor-classic"></a>Migrace na monitor připojení (Preview) z monitoru připojení (klasický)
+# <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>Migrace na monitorování připojení z monitoru připojení (klasický)
 
-Stávající monitorování připojení můžete migrovat na nové, vylepšené monitorování připojení (Preview) jenom několika kliknutími a s nulovými výpadky. Další informace o výhodách najdete v tématu [monitorování připojení](./connection-monitor-overview.md).
-
-> [!IMPORTANT]
-> Monitor připojení je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Stávající monitorování připojení můžete migrovat na nové, vylepšené monitorování připojení jenom několika kliknutími a s nulovými výpadky. Další informace o výhodách najdete v tématu [monitorování připojení](./connection-monitor-overview.md).
 
 ## <a name="key-points-to-note"></a>Klíčové body k označení
 
@@ -33,12 +29,12 @@ Migrace pomáhá získat následující výsledky:
 
 * Nastavení agenti a brány firewall fungují tak, jak je. Nejsou vyžadovány žádné změny. 
 * Existující monitory připojení jsou namapovány na monitorování připojení > testovací skupiny > formátu testu. Výběrem možnosti **Upravit** můžete zobrazit a upravit vlastnosti nového monitorování připojení, stáhnout šablonu, která provede změny v monitorování připojení a odeslat ji pomocí Azure Resource Manager. 
-* Virtuální počítače Azure s rozšířením Network Watcher odesílají data do pracovního prostoru i do metriky. Monitorování připojení zpřístupňuje data prostřednictvím nové metriky (ChecksFailedPercent [Preview] a RoundTripTimeMs [Preview]) místo starých metrik (ProbesFailedPercent a AverageRoundtripMs). 
+* Virtuální počítače Azure s rozšířením Network Watcher odesílají data do pracovního prostoru i do metriky. Monitorování připojení zpřístupňuje data prostřednictvím nové metriky (ChecksFailedPercent a RoundTripTimeMs) místo starých metrik (ProbesFailedPercent a AverageRoundtripMs). 
 * Monitorování dat:
    * **Výstrahy**: automaticky se migrují na nové metriky.
    * **Řídicí panely a integrace**: vyžaduje ruční úpravu sady metrik. 
     
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud používáte vlastní pracovní prostor, ujistěte se, že je ve vašem předplatném a v oblasti pracovního prostoru Log Analytics povolená možnost Network Watcher. 
 

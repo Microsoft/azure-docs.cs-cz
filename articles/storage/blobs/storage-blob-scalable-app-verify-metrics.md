@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: cfc3c445595bec046de4256a57d566067fe3d29e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54023c8c4d13bb683ef2e53f2d6a49b23b3861a4
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82692443"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537760"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>Ověření metrik latence a propustnosti pro účet úložiště
 
@@ -24,7 +24,7 @@ Ve čtvrté části této série se naučíte:
 > * Konfigurace grafů na webu Azure Portal
 > * Ověření metrik latence a propustnosti
 
-Azure Monitor s využitím [metrik úložiště Azure](../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) poskytuje jednotný přehled o výkonu a dostupnosti vašeho účtu úložiště.
+Azure Monitor s využitím [metrik úložiště Azure](./monitor-blob-storage.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) poskytuje jednotný přehled o výkonu a dostupnosti vašeho účtu úložiště.
 
 ## <a name="configure-metrics"></a>Konfigurace metrik
 
@@ -36,7 +36,7 @@ V části **METRIKA** vyberte jednu z metrik uvedených v následující tabulce
 
 Pomocí následujících metrik získáte představu o latenci a propustnosti aplikace. Metriky, které nakonfigurujete na portálu, používají průměrné hodnoty za 1 minutu. V případě, že se transakce dokončí uprostřed minuty a průměrně se zkrátí data v minutách. V aplikaci se měřil čas operací nahrávání a stahování a na výstupu se zobrazila skutečná doba, jakou trvalo nahrání a stažení souborů. Tyto informace můžete použít společně s metrikami na portálu k úplnému porozumění propustnosti.
 
-|Metrika|Definice|
+|Metric|Definice|
 |---|---|
 |**Celková latence při úspěchu**|Průměrná celková latence úspěšných požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi.|
 |**Latence serveru při úspěchu**|Průměrná doba zpracování úspěšného požadavku službou Azure Storage. Tato hodnota nezahrnuje latenci sítě zadanou v metrice Celková latence při úspěchu. |
@@ -52,7 +52,7 @@ Ke grafům může být přiřazených více metrik, ale přiřazením více než
 
 ## <a name="dimensions"></a>Dimenze
 
-[Dimenze](../common/monitor-storage-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions) slouží k podrobnějšímu zkoumání grafů a získání podrobnějších informací. Různé metriky mají různé dimenze. Jednou z dostupných dimenzí je dimenze **Název rozhraní API**. Tato dimenze dělí graf na jednotlivá volání rozhraní API. První obrázek níže ukazuje příklad grafu celkových transakcí účtu úložiště. Druhý obrázek ukazuje stejný graf, ale s vybranou dimenzí Název rozhraní API. Jak je vidět, u každé transakce jsou uvedené další podrobnosti o počtu provedených volání podle názvu rozhraní API.
+[Dimenze](./monitor-blob-storage-reference.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#metrics-dimensions) slouží k podrobnějšímu zkoumání grafů a získání podrobnějších informací. Různé metriky mají různé dimenze. Jednou z dostupných dimenzí je dimenze **Název rozhraní API**. Tato dimenze dělí graf na jednotlivá volání rozhraní API. První obrázek níže ukazuje příklad grafu celkových transakcí účtu úložiště. Druhý obrázek ukazuje stejný graf, ale s vybranou dimenzí Název rozhraní API. Jak je vidět, u každé transakce jsou uvedené další podrobnosti o počtu provedených volání podle názvu rozhraní API.
 
 ![Metriky účtu úložiště – transakce bez dimenze](./media/storage-blob-scalable-app-verify-metrics/transactionsnodimensions.png)
 

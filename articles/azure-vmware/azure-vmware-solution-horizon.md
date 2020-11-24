@@ -3,12 +3,12 @@ title: Nasazení horizontu v řešení VMware Azure
 description: Přečtěte si, jak nasadit VMware Horizon do řešení Azure VMware.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: fb5e5b4c5f5da4c140f8d3575b963545f3a57db8
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 6d5d8e12e358e2289128af9840660be18f5f217a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423098"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537437"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Nasazení horizontu v řešení VMware Azure 
 
@@ -139,22 +139,6 @@ V tabulkách jsou uvedeny běžné úlohy pro přihlašovací úlohy a úlohy pr
 #### <a name="power-worker-workloads"></a>Pracovní procesy Power Worker
 
 :::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-power.png" alt-text="Tabulka běžných profilů VDI pro služby VMware Horizon pro přihlašovací úlohy Power Worker VSI" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-power.png" border="false":::
-
-### <a name="azure-vmware-solution-host-instance"></a>Instance hostitele řešení Azure VMware
-
-* Server PowerEdge R640 – omezení DSS
-
-* 36 jader ( \@ 2,3 GHz)
-
-* 576 – GB RAM
-
-* Řadič HBA HBA330 12 GB/s SAS (ne RAID)
-
-* 1,92 TB standardu SSD SATA použití 6 GB/s 512 2.5 v hot-plug AG Drive, 3 DWPD, 10512 TBW
-
-* Intel 1,6 TB, NVMe, smíšené použití Express Flash, 2,5 SFF Drive, U. 2, P4600 s operátorem
-
-* 2 síti vSAN diskové skupiny: 1,6 x 4 (1.92 TB)
 
 ### <a name="horizon-sizing-inputs"></a>Vstupy pro změnu velikosti – Horizont
 

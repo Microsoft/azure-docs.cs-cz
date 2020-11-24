@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/31/2020
 ms.author: allensu
-ms.openlocfilehash: 36b952131c2050230de89064adc586c5a2851b65
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 7448e003771bea1e235d4e0776ebce3cb1beae17
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146385"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544084"
 ---
 # <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-powershell"></a>Kurz – připojení k serveru SQL Azure pomocí privátního koncového bodu Azure – Azure PowerShell
 
@@ -268,11 +268,11 @@ V této části použijete virtuální počítač, který jste vytvořili v pře
  
 2. V levém navigačním podokně vyberte **skupiny prostředků** .
 
-3. Vyberte **CreateSQLEndpointTutorial-RG** .
+3. Vyberte **CreateSQLEndpointTutorial-RG**.
 
-4. Vyberte **myVM** .
+4. Vyberte **myVM**.
 
-5. Na stránce Přehled pro **myVM** vyberte **připojit** a pak **bastionu** .
+5. Na stránce Přehled pro **myVM** vyberte **připojit** a pak **bastionu**.
 
 6. Vyberte tlačítko modrého **použití bastionu** .
 
@@ -295,37 +295,37 @@ V této části použijete virtuální počítač, který jste vytvořili v pře
     Pro název SQL serveru se vrátí privátní IP adresa **10.0.0.5** .  Tato adresa je v podsíti virtuální sítě, kterou jste vytvořili dříve.
 
 
-10. Nainstalujte [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) v **myVM** .
+10. Nainstalujte [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?preserve-view=true&view=sql-server-2017) v **myVM**.
 
-11. Otevřete **SQL Server Management Studio** .
+11. Otevřete **SQL Server Management Studio**.
 
-12. V **Connect to Server (připojit k serveru** ) zadejte nebo vyberte tyto informace:
+12. V **Connect to Server (připojit k serveru**) zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Typ serveru | Vyberte **Databázový stroj** .|
+    | Typ serveru | Vyberte **Databázový stroj**.|
     | Název serveru | Zadejte **\<sql-server-name> . Database.Windows.NET** |
-    | Ověřování | Vyberte **Ověřování SQL Serveru** . |
+    | Ověřování | Vyberte **Ověřování SQL Serveru**. |
     | Uživatelské jméno | Zadejte uživatelské jméno, které jste zadali při vytváření serveru. |
     | Heslo | Zadejte heslo, které jste zadali při vytváření serveru. |
-    | Zapamatovat heslo | Vyberte **Ano** . |
+    | Zapamatovat heslo | Vyberte **Ano**. |
 
 13. Vyberte **Connect** (Připojit).
 
 14. V nabídce vlevo vyberte databáze.
 
-15. Volitelně Vytvoření nebo dotazování informací z **mysqldatabase** .
+15. Volitelně Vytvoření nebo dotazování informací z **mysqldatabase**.
 
-16. Zavřete připojení bastionu k **myVM** . 
+16. Zavřete připojení bastionu k **myVM**. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
 Až budete s použitím privátního koncového bodu, SQL serveru a virtuálního počítače, odstraňte skupinu prostředků a všechny prostředky, které obsahuje: 
 
 1. Do **vyhledávacího** pole v horní části portálu zadejte **CreateSQLEndpointTutorial-RG** a z výsledků hledání vyberte **CreateSQLEndpointTutorial-RG** . 
 
-2. Vyberte **Odstranit skupinu prostředků** . 
+2. Vyberte **Odstranit skupinu prostředků**. 
 
-3. Do **pole zadejte název skupiny prostředků** zadejte **CreateSQLEndpointTutorial-RG** a vyberte **Odstranit** .
+3. Do **pole zadejte název skupiny prostředků** zadejte **CreateSQLEndpointTutorial-RG** a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

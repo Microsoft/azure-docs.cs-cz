@@ -13,17 +13,17 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a55791544bf2b2f17ba189f7e4aca498469c365b
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 2a1f970a97616fbc38a2f5d274998596992d4a45
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503121"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522069"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Vytvoření nebo aktualizace dynamické skupiny v Azure Active Directory
 
 V Azure Active Directory (Azure AD) můžete pomocí pravidel určit členství ve skupině na základě vlastností uživatele nebo zařízení. V tomto článku se dozvíte, jak nastavit pravidlo pro dynamickou skupinu v Azure Portal.
-Dynamické členství je podporováno pro skupiny zabezpečení nebo skupiny Microsoft 365. Při použití pravidla členství ve skupině se vyhodnotí atributy uživatelů a zařízení pro shody s pravidlem členství. Když se změní atribut uživatele nebo zařízení, zpracují se všechna pravidla dynamické skupiny v organizaci pro změny členství. Uživatelé a zařízení se přidají nebo odeberou, pokud splňují podmínky pro skupinu. Skupiny zabezpečení lze použít buď pro zařízení, nebo pro uživatele, ale skupiny Microsoft 365 mohou být pouze skupiny uživatelů.
+Dynamické členství je podporováno pro skupiny zabezpečení nebo skupiny Microsoft 365. Při použití pravidla členství ve skupině se vyhodnotí atributy uživatelů a zařízení pro shody s pravidlem členství. Když se změní atribut uživatele nebo zařízení, zpracují se všechna pravidla dynamické skupiny v organizaci pro změny členství. Uživatelé a zařízení se přidají nebo odeberou, pokud splňují podmínky pro skupinu. Skupiny zabezpečení lze použít buď pro zařízení, nebo pro uživatele, ale skupiny Microsoft 365 mohou být pouze skupiny uživatelů. Používání dynamických skupin vyžaduje licenci Azure AD Premium P1. Další podrobnosti najdete v tématu [dynamická pravidla členství pro skupiny](https://docs.microsoft.com/azure/active-directory/enterprise-users/groups-dynamic-membership) . 
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Tvůrce pravidel v Azure Portal
 
@@ -79,7 +79,7 @@ Pokud pravidlo, které jste zadali, není platné, zobrazí se v oznámení Azur
 
 ## <a name="turn-on-or-off-welcome-email"></a>Zapnutí nebo vypnutí uvítacího e-mailu
 
-Když se vytvoří nová skupina Microsoft 365, uživatelům, kteří se do této skupiny přidají, se pošle uvítací e-mailové oznámení. Později platí, že pokud se libovolné atributy uživatele nebo zařízení změní, budou se pro změny členství zpracovávat všechna pravidla dynamické skupiny v organizaci. Přidaní uživatelé pak obdrží i uvítací oznámení. Toto chování můžete vypnout v [prostředí Exchange PowerShell](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps).
+Když se vytvoří nová skupina Microsoft 365, uživatelům, kteří se do této skupiny přidají, se pošle uvítací e-mailové oznámení. Později platí, že pokud se libovolné atributy uživatele nebo zařízení změní, budou se pro změny členství zpracovávat všechna pravidla dynamické skupiny v organizaci. Přidaní uživatelé pak obdrží i uvítací oznámení. Toto chování můžete vypnout v [prostředí Exchange PowerShell](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps&preserve-view=true).
 
 ## <a name="check-processing-status-for-a-rule"></a>Zkontroluje stav zpracování pravidla.
 

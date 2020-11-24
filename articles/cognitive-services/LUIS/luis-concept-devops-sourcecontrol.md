@@ -4,13 +4,13 @@ description: Postup udržování aplikace Language Understanding (LUIS) v rámci
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/28/2020
-ms.openlocfilehash: 9e322ac89d8ecad93c2002aa302c155f895911f4
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 11/18/2020
+ms.openlocfilehash: cf5c88df4e2ac6b95e99a3a78b1bf1e45bf534ed
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019190"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95535550"
 ---
 # <a name="devops-practices-for-luis"></a>DevOps postupy pro LUIS
 
@@ -53,7 +53,7 @@ Pokud chcete uložit aplikaci LUIS ve `.lu` formátu a umístit ji pod správu z
 - NEBO: pomocí textového editoru vytvořte `.lu` soubor pro aplikaci Luis a přidejte ji do úložiště správy zdrojového kódu.
 
 > [!TIP]
-> Pokud pracujete s exportem JSON aplikace LUIS, můžete [ji převést na LUDown](https://github.com/microsoft/botframework-cli/tree/master/packages/luis#bf-luisconvert) pomocí rozhraní [příkazového řádku BOTBUILDER-Tools Luis](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS). Tuto `--sort` možnost použijte, chcete-li zajistit, aby byly záměry a projevy seřazené abecedně.  
+> Pokud pracujete s exportem JSON aplikace LUIS, můžete [ji převést na LUDown](https://github.com/microsoft/botframework-cli/tree/master/packages/luis#bf-luisconvert).  Tuto `--sort` možnost použijte, chcete-li zajistit, aby byly záměry a projevy seřazené abecedně.  
 > Všimněte si, že **. Funkce exportu logické jednotky** , která je součástí portálu Luis, již seřadí výstup.
 
 ### <a name="build-the-luis-app-from-source"></a>Sestavení aplikace LUIS ze zdroje

@@ -1,5 +1,5 @@
 ---
-title: Vytvořit monitorování připojení (Preview) – Azure Portal
+title: Vytvořit monitorování připojení – Azure Portal
 titleSuffix: Azure Network Watcher
 description: Tento článek popisuje, jak vytvořit monitorování v monitorování připojení pomocí Azure Portal.
 services: network-watcher
@@ -10,22 +10,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2020
+ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: f1ba23d53d79587c9d75c1d840c1d3857725d8dd
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a6ba9c02b384c1b30977d962659983d600c7b2ac
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984375"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545716"
 ---
-# <a name="create-a-monitor-in-connection-monitor-preview-by-using-the-azure-portal"></a>Vytvoření monitorování v monitorování připojení (Preview) pomocí Azure Portal
+# <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Vytvoření monitorování v monitorování připojení pomocí Azure Portal
 
 Naučte se používat monitorování připojení k monitorování komunikace mezi prostředky. Tento článek popisuje, jak vytvořit monitorování pomocí Azure Portal. Monitorování připojení podporuje hybridní a cloudová nasazení Azure.
 
-> [!IMPORTANT]
-> Monitor připojení je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="before-you-begin"></a>Než začnete 
 

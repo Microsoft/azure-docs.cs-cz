@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ac69b442b06864fd45561b26909e1247674611a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddc9dbf77c04ea95e5b873c45de4c0df109514c7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458378"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544441"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Kurz – šifrování a dešifrování objektů BLOB pomocí Azure Key Vault
 
@@ -232,12 +232,12 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
     CancellationToken.None).GetAwaiter().GetResult();
 ```
 
-A je to! Užijte si ji!
+Hotovo. Užijte si ji!
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o použití Microsoft Azure Storage v jazyce C# najdete v tématu [Microsoft Azure Storage Klientská knihovna pro .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+Další informace o použití Microsoft Azure Storage v jazyce C# najdete v tématu [Microsoft Azure Storage Klientská knihovna pro .NET](/previous-versions/azure/dn261237(v=azure.100)).
 
-Další informace o REST API objektů BLOB najdete v tématu [REST API služby BLOB Service](https://msdn.microsoft.com/library/azure/dd135733.aspx).
+Další informace o REST API objektů BLOB najdete v tématu [REST API služby BLOB Service](/rest/api/storageservices/Blob-Service-REST-API).
 
-Nejnovější informace o Microsoft Azure Storage najdete na [blogu Microsoft Azure Storage týmu](https://docs.microsoft.com/archive/blogs/windowsazurestorage/).
+Nejnovější informace o Microsoft Azure Storage najdete na [blogu Microsoft Azure Storage týmu](/archive/blogs/windowsazurestorage/).

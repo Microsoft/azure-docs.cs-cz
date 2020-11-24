@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2e3e16b71d52edd9ab4eaf55651567b95e334b84
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 411815ca2f947c47b8dfb0d2e5d61f8ea18f3545
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961783"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95541245"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Použití značek indexu objektů BLOB (Preview) ke správě a hledání dat v Azure Blob Storage
 
@@ -23,7 +23,7 @@ Rejstříky objektů BLOB kategorizují data v účtu úložiště pomocí atrib
 > [!NOTE]
 > Index objektu BLOB je ve verzi Public Preview a je dostupný v oblasti **Kanada – střed**, Kanada – **východ**, Francie – **střed** a Francie – **jih** . Další informace o této funkci spolu se známými problémy a omezeních najdete v tématu [Správa a hledání dat objektů BLOB v Azure pomocí značek indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -38,7 +38,7 @@ Protože index objektu BLOB je ve verzi Preview, balíček úložiště .NET se 
 
 2. Ve Správci balíčků NuGet Najděte balíček **Azure. Storage. BLOBs** a nainstalujte verzi **12.7.0-Preview. 1** nebo novější do svého projektu. Můžete také spustit příkaz prostředí PowerShell: `Install-Package Azure.Storage.Blobs -Version 12.7.0-preview.1`
 
-   Informace o postupu najdete v tématu [vyhledání a instalace balíčku](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package).
+   Informace o postupu najdete v tématu [vyhledání a instalace balíčku](/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package).
 
 3. Do horní části souboru kódu přidejte následující příkazy using.
 
@@ -56,7 +56,7 @@ Protože index objektu BLOB je ve verzi Preview, balíček úložiště .NET se 
 
 ## <a name="upload-a-new-blob-with-index-tags"></a>Nahrát nový objekt BLOB se značkami indexu
 
-Tuto úlohu může provést [vlastník dat objektu BLOB úložiště](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) nebo objekt zabezpečení, kterému bylo uděleno oprávnění k `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [operaci poskytovatele prostředků Azure](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) prostřednictvím vlastní role Azure.
+Tuto úlohu může provést [vlastník dat objektu BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) nebo objekt zabezpečení, kterému bylo uděleno oprávnění k `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [operaci poskytovatele prostředků Azure](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) prostřednictvím vlastní role Azure.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -114,9 +114,9 @@ static async Task BlobIndexTagsOnCreate()
 
 ## <a name="get-set-and-update-blob-index-tags"></a>Získání, nastavení a aktualizace značek indexu objektů BLOB
 
-Získání značek indexu objektů BLOB může provést [vlastník dat objektu BLOB úložiště](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) nebo objekt zabezpečení, kterému bylo uděleno oprávnění k `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` [operaci poskytovatele prostředků Azure](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) prostřednictvím vlastní role Azure.
+Získání značek indexu objektů BLOB může provést [vlastník dat objektu BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) nebo objekt zabezpečení, kterému bylo uděleno oprávnění k `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` [operaci poskytovatele prostředků Azure](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) prostřednictvím vlastní role Azure.
 
-Nastavení a aktualizace značek indexu objektů BLOB může provést [vlastník dat objektu BLOB úložiště](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) nebo objekt zabezpečení, kterému bylo uděleno oprávnění k `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [operaci poskytovatele prostředků Azure](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) prostřednictvím vlastní role Azure.
+Nastavení a aktualizace značek indexu objektů BLOB může provést [vlastník dat objektu BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) nebo objekt zabezpečení, kterému bylo uděleno oprávnění k `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [operaci poskytovatele prostředků Azure](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) prostřednictvím vlastní role Azure.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -193,7 +193,7 @@ static async Task BlobIndexTagsExample()
 
 ## <a name="filter-and-find-data-with-blob-index-tags"></a>Filtrování a hledání dat pomocí značek indexu objektů BLOB
 
-Tuto úlohu může provést [vlastník dat objektu BLOB úložiště](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) nebo objekt zabezpečení, kterému bylo uděleno oprávnění k `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` [operaci poskytovatele prostředků Azure](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) prostřednictvím vlastní role Azure.
+Tuto úlohu může provést [vlastník dat objektu BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) nebo objekt zabezpečení, kterému bylo uděleno oprávnění k `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` [operaci poskytovatele prostředků Azure](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) prostřednictvím vlastní role Azure.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 

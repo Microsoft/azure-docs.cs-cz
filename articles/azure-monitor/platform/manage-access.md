@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 7acd287964d25cc7e98c11ec1986c73d8ae265da
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 79e5b1ddde0ff5f0d09dc1c20e3b20ec4de3d925
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104134"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536672"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Správa přístupu k datům protokolů a pracovním prostorům ve službě Azure Monitor
 
@@ -23,7 +23,7 @@ Tento článek vysvětluje, jak spravovat přístup k protokolům a spravovat pr
 * Uživatelé, kteří potřebují přístup k datům protokolu z konkrétních prostředků pomocí řízení přístupu na základě role Azure (Azure RBAC), označovaného také jako [kontext prostředku](design-logs-deployment.md#access-mode)
 * Uživatelé, kteří potřebují přístup k datům protokolů v konkrétní tabulce v pracovním prostoru pomocí Azure RBAC.
 
-Pro pochopení konceptů protokolů o RBAC a strategiích přístupu si přečtěte téma [návrh nasazení Azure Monitorch protokolů](design-logs-deployment.md)
+Pokud chcete porozumět koncepcím, které se týkají služby Azure RBAC a strategií přístupu, přečtěte si téma [návrh nasazení Azure Monitorch protokolů](design-logs-deployment.md)
 
 ## <a name="configure-access-control-mode"></a>Konfigurovat režim řízení přístupu
 
@@ -48,7 +48,7 @@ Toto nastavení můžete změnit na stránce **vlastností** pracovního prostor
 
 ![Změnit režim přístupu k pracovnímu prostoru](media/manage-access/change-access-control-mode.png)
 
-### <a name="using-powershell"></a>Použití PowerShellu
+### <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
 Pomocí následujícího příkazu prověřte režim řízení přístupu pro všechny pracovní prostory v rámci předplatného:
 
@@ -194,9 +194,9 @@ Když se uživatelé dotazují v protokolech z pracovního prostoru pomocí př�
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Příklady:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Možnost Zobrazit všechna data protokolu pro daný prostředek.  |
 | `Microsoft.Insights/diagnosticSettings/write` | Možnost konfigurace nastavení diagnostiky tak, aby povolovala nastavování protokolů pro tento prostředek. |
 
-`/read`oprávnění je obvykle uděleno z role, která zahrnuje _ \* /Read nebo_ oprávnění, jako jsou například _\*_ předdefinované role [Čtenář](../../role-based-access-control/built-in-roles.md#reader) a [Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) . Toto oprávnění nemusí zahrnovat vlastní role, které obsahují konkrétní akce nebo vyhrazené předdefinované role.
+`/read`oprávnění je obvykle uděleno z role, která zahrnuje _\* /Read nebo_ oprávnění, jako jsou například _\*_ předdefinované role [Čtenář](../../role-based-access-control/built-in-roles.md#reader) a [Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) . Toto oprávnění nemusí zahrnovat vlastní role, které obsahují konkrétní akce nebo vyhrazené předdefinované role.
 
-Pokud chcete vytvořit různé řízení přístupu pro různé tabulky, přečtěte si téma [Definování řízení přístupu pro jednotlivé tabulky](#table-level-rbac) .
+Pokud chcete vytvořit různé řízení přístupu pro různé tabulky, přečtěte si téma [Definování řízení přístupu pro jednotlivé tabulky](#table-level-azure-rbac) .
 
 ## <a name="custom-role-examples"></a>Příklady vlastních rolí
 
@@ -239,9 +239,9 @@ Pokud chcete vytvořit různé řízení přístupu pro různé tabulky, přečt
 
     * Udělte uživatelům následující oprávnění k prostředkům, která jsou `*/read` přiřazená k roli Čtenář, nebo `Microsoft.Insights/logs/*/read` . 
 
-## <a name="table-level-rbac"></a>RBAC na úrovni tabulky
+## <a name="table-level-azure-rbac"></a>Úroveň tabulky – Azure RBAC
 
-**RBAC na úrovni tabulky** umožňuje definovat podrobnější řízení dat v log Analyticsovém pracovním prostoru kromě dalších oprávnění. Tento ovládací prvek umožňuje definovat konkrétní datové typy, které jsou přístupné pouze konkrétní sadě uživatelů.
+**Úroveň tabulky Azure RBAC** umožňuje definovat podrobnější řízení dat v log Analyticsovém pracovním prostoru kromě dalších oprávnění. Tento ovládací prvek umožňuje definovat konkrétní datové typy, které jsou přístupné pouze konkrétní sadě uživatelů.
 
 Pomocí [vlastních rolí Azure](../../role-based-access-control/custom-roles.md) implementujete řízení přístupu k tabulce pro udělení přístupu ke konkrétním [tabulkám](./data-platform-logs.md) v pracovním prostoru. Tyto role se v pracovních prostorech aplikují pomocí [režimů řízení přístupu](design-logs-deployment.md#access-control-mode) kontextu pracovního prostoru nebo kontextu prostředků bez ohledu na [režim přístupu](design-logs-deployment.md#access-mode)uživatele.
 
@@ -302,7 +302,7 @@ Někdy vlastní protokoly pocházejí ze zdrojů, které nejsou přímo přidru�
 
 ### <a name="considerations"></a>Požadavky
 
-* Pokud má uživatel udělené globální oprávnění ke čtení s rolemi čtenář úrovně Standard a přispěvatel, které zahrnují akci _ \* /Read_ , potlačí řízení přístupu na jednotlivé tabulky a udělí jim přístup ke všem datům protokolu.
+* Pokud má uživatel udělené globální oprávnění ke čtení s rolemi čtenář úrovně Standard a přispěvatel, které zahrnují akci _\* /Read_ , potlačí řízení přístupu na jednotlivé tabulky a udělí jim přístup ke všem datům protokolu.
 * Pokud je uživateli udělen přístup pro jednotlivé tabulky, ale žádná další oprávnění, by mohl získat přístup k datům protokolu z rozhraní API, ale nikoli z Azure Portal. K poskytnutí přístupu z Azure Portal jako základní roli použijte nástroj Log Analytics Reader.
 * Správci a vlastníci předplatného budou mít přístup ke všem datovým typům bez ohledu na všechna ostatní nastavení oprávnění.
 * Vlastníci pracovního prostoru se považují za každého jiného uživatele pro řízení přístupu k jednotlivým tabulkám.

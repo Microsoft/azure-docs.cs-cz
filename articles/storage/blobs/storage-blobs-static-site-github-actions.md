@@ -9,19 +9,19 @@ ms.reviewer: dineshm
 ms.date: 09/11/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 3adbc0a2d55a2adc2ab7c1f82b0a358542eefc2a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 799c0dbc3ddb673cafe0fe4962f7346a841bd4b7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842443"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543098"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>Nastavte pracovní postup akcí GitHubu pro nasazení statického webu v Azure Storage
 
 Začněte s [akcemi GitHubu](https://docs.github.com/en/actions) pomocí pracovního postupu k nasazení statické lokality do účtu služby Azure Storage. Jakmile nastavíte pracovní postup akcí GitHubu, budete moct svůj web automaticky nasadit do Azure z GitHubu, když provedete změny v kódu vašeho webu.
 
 > [!NOTE]
-> Pokud používáte službu [Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/), nemusíte ručně nastavit pracovní postup akcí GitHubu.
+> Pokud používáte službu [Azure Static Web Apps](../../static-web-apps/index.yml), nemusíte ručně nastavit pracovní postup akcí GitHubu.
 > Statická Web Apps Azure pro vás automaticky vytvoří pracovní postup akcí GitHubu. 
 
 ## <a name="prerequisites"></a>Předpoklady
@@ -187,4 +187,4 @@ Když už svůj statický web a úložiště GitHubu nepotřebujete, vyčistěte
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Seznamte se se službou Azure static Web Apps](https://docs.microsoft.com/azure/static-web-apps/)
+> [Seznamte se se službou Azure static Web Apps](../../static-web-apps/index.yml)

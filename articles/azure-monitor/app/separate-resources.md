@@ -3,12 +3,12 @@ title: Jak navrhnout nasazení Application Insights – jeden vs mnoho prostřed
 description: Přímá telemetrie na různé prostředky pro vývoj, testování a produkční razítka.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 264cbe35e7af50577b345d686b639e47760f428d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49e9b8920af7333e0d95e23e6e5cf0828d448609
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88258719"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536349"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Kolik prostředků Application Insights mám nasadit
 
@@ -26,7 +26,7 @@ Každý Application Insights prostředek obsahuje metriky, které jsou k dispozi
 
 -   Pro součásti aplikace, které jsou nasazeny dohromady. Obvykle vyvinutá jediným týmem, který je spravovaný stejnou sadou uživatelů DevOps/ITOps.
 -   Pokud má smysl agregovat klíčové ukazatele výkonu (KPI), jako jsou například doby trvání odezvy, míry selhání v řídicím panelu atd., ve výchozím nastavení je můžete rozdělit na všechny z nich (v prostředí Průzkumník metrik můžete segmentovat podle názvu role).
--   Pokud není potřeba spravovat Access Control na základě rolí (RBAC) odlišně mezi součástmi aplikace.
+-   Pokud není potřeba spravovat řízení přístupu na základě role Azure (Azure RBAC) odlišně mezi součástmi aplikace.
 -   Pokud nepotřebujete kritéria výstrahy metrik, která se liší mezi komponentami.
 -   Pokud nepotřebujete spravovat průběžné exporty různě mezi komponentami.
 -   Pokud nepotřebujete, aby se fakturace a kvóty spravovaly různě mezi komponentami.

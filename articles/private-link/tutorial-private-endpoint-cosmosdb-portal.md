@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: cd534fff5bfc56dbc4040db016563b06bef6d047
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a544d0c5fafbdaf9d272fed552fb38eda613292f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145691"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522137"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>Kurz: připojení k účtu Azure Cosmos pomocí privátního koncového bodu Azure
 
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte:
 > * Vytvořte účet Cosmos DB s privátním koncovým bodem.
 > * Otestujte připojení k Cosmos DB privátní koncový bod účtu.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -44,16 +44,16 @@ Hostitel bastionu se bude používat k zabezpečenému připojení k virtuální
 
 1. V levém horním rohu obrazovky vyberte **Vytvořit prostředek > Sítě > Virtuální síť** nebo do vyhledávacího pole zadejte **Virtuální síť**.
 
-2. V části **vytvořit virtuální síť**zadejte nebo vyberte tyto informace na kartě **základy** :
+2. V části **vytvořit virtuální síť** zadejte nebo vyberte tyto informace na kartě **základy** :
 
     | **Nastavení**          | **Hodnota**                                                           |
     |------------------|-----------------------------------------------------------------|
     | **Podrobnosti o projektu**  |                                                                 |
     | Předplatné     | Vyberte své předplatné Azure.                                  |
-    | Resource Group   | Vybrat **myResourceGroup** |
+    | Skupina prostředků   | Vybrat **myResourceGroup** |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
-    | Oblast           | Vyberte **východní USA** |
+    | Region           | Vyberte **východní USA** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
 
@@ -63,9 +63,9 @@ Hostitel bastionu se bude používat k zabezpečenému připojení k virtuální
     |--------------------|----------------------------|
     | Adresní prostor protokolu IPv4 | Zadejte **10.1.0.0/16** |
 
-5. V části **název podsítě**vyberte slovo **výchozí**.
+5. V části **název podsítě** vyberte slovo **výchozí**.
 
-6. V **Upravit podsíť**zadejte tyto informace:
+6. V **Upravit podsíť** zadejte tyto informace:
 
     | Nastavení            | Hodnota                      |
     |--------------------|----------------------------|
@@ -76,13 +76,13 @@ Hostitel bastionu se bude používat k zabezpečenému připojení k virtuální
 
 8. Vyberte kartu **zabezpečení** .
 
-9. V části **BastionHost**vyberte **Povolit**. Zadejte tyto informace:
+9. V části **BastionHost** vyberte **Povolit**. Zadejte tyto informace:
 
     | Nastavení            | Hodnota                      |
     |--------------------|----------------------------|
     | Název bastionu | Zadejte **myBastionHost** |
     | Adresní prostor AzureBastionSubnet | Zadejte **10.1.1.0/24** |
-    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Jako **název**zadejte **myBastionIP**. </br> Vyberte **OK**. |
+    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Jako **název** zadejte **myBastionIP**. </br> Vyberte **OK**. |
 
 
 8. Vyberte kartu **Revize + vytvořit** nebo vyberte tlačítko **Revize + vytvořit** .
@@ -95,16 +95,16 @@ V této části vytvoříte virtuální počítač, který se použije k otestov
 
 1. V levé horní části portálu vyberte **vytvořit prostředek**  >  **Compute**  >  **virtuální počítač** COMPUTE nebo ve vyhledávacím poli vyhledejte **virtuální počítač** .
    
-2. V části **vytvořit virtuální počítač**zadejte nebo vyberte hodnoty na kartě **základy** :
+2. V části **vytvořit virtuální počítač** zadejte nebo vyberte hodnoty na kartě **základy** :
 
     | Nastavení | Hodnota                                          |
     |-----------------------|----------------------------------|
     | **Podrobnosti o projektu** |  |
     | Předplatné | Vyberte své předplatné Azure. |
-    | Resource Group | Vybrat **myResourceGroup** |
+    | Skupina prostředků | Vybrat **myResourceGroup** |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM** |
-    | Oblast | Vyberte **východní USA** |
+    | Region | Vyberte **východní USA** |
     | Možnosti dostupnosti | Vyberte možnost **nepožaduje se žádná redundance infrastruktury** . |
     | Image | Vyberte **Windows Server 2019 Datacenter – Gen1** |
     | Instance Azure Spot | Vybrat **ne** |
@@ -114,7 +114,7 @@ V této části vytvoříte virtuální počítač, který se použije k otestov
     | Heslo | Zadat heslo |
     | Potvrzení hesla | Znovu zadejte heslo. |
 
-3. Vyberte kartu **síť** nebo vyberte **Další: disky**a **Další: síť**.
+3. Vyberte kartu **síť** nebo vyberte **Další: disky** a **Další: síť**.
   
 4. Na kartě sítě vyberte nebo zadejte:
 
@@ -135,7 +135,7 @@ V této části vytvoříte virtuální počítač, který se použije k otestov
 
 V této části vytvoříte účet Cosmos DB a nakonfigurujete privátní koncový bod.
 
-1. V nabídce na levé straně vyberte vytvořit databáze **prostředků**  >  **Databases**  >  **Cosmos DB účet**nebo ve vyhledávacím poli vyhledejte **účet Cosmos DB** .
+1. V nabídce na levé straně vyberte vytvořit databáze **prostředků**  >  **Databases**  >  **Cosmos DB účet** nebo ve vyhledávacím poli vyhledejte **účet Cosmos DB** .
 
 2. Na kartě **základy** v části **vytvořit Cosmos DB účet** zadejte nebo vyberte následující informace:
 
@@ -165,16 +165,16 @@ V této části vytvoříte účet Cosmos DB a nakonfigurujete privátní koncov
     | Povolení přístupu z Azure Portal | Nechejte výchozí **Povolení**. |
     | Povolení přístupu z IP adresy | Ponechte výchozí nastavení **Odepřít**. |
 
-5. V **privátním koncovém bodu**vyberte **+ Přidat**.
+5. V **privátním koncovém bodu** vyberte **+ Přidat**.
 
 6. V části **vytvořit privátní koncový bod** zadejte nebo vyberte následující informace:
 
     | Nastavení | Hodnota                                          |
     |-----------------------|----------------------------------|
     | Předplatné | Vyberte své předplatné Azure. |
-    | Resource Group | Vybrat **myResourceGroup** |
+    | Skupina prostředků | Vybrat **myResourceGroup** |
     | Umístění | Vyberte **východní USA** |
-    | Název | Zadejte **myPrivateEndpoint** |
+    | Name | Zadejte **myPrivateEndpoint** |
     | Cílový podprostředek | Ponechat výchozí **jádro (SQL)** |
     | **Sítě** |  |
     | Virtuální síť | Vybrat **myVNet** |
@@ -197,7 +197,7 @@ V této části vytvoříte účet Cosmos DB a nakonfigurujete privátní koncov
 
 3. V okně **Průzkumník dat** vyberte **Nový kontejner**.
 
-4. V části **Přidat kontejner**zadejte nebo vyberte následující informace:
+4. V části **Přidat kontejner** zadejte nebo vyberte následující informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
@@ -226,7 +226,7 @@ V této části použijete virtuální počítač, který jste vytvořili v pře
 
 3. Vyberte **myVM**.
 
-4. Na stránce Přehled pro **myVM**vyberte **připojit** a pak **bastionu**.
+4. Na stránce Přehled pro **myVM** vyberte **připojit** a pak **bastionu**.
 
 5. Vyberte tlačítko modrého **použití bastionu** .
 
@@ -248,7 +248,7 @@ V této části použijete virtuální počítač, který jste vytvořili v pře
 
     Pro název Cosmos DB účtu se vrátí privátní IP adresa **10.1.0.5** .  Tato adresa je v podsíti virtuální sítě, kterou jste vytvořili dříve.
 
-9. Nainstalujte na virtuální počítač [Průzkumník služby Microsoft Azure Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows) .
+9. Nainstalujte na virtuální počítač [Průzkumník služby Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%252fazure%252fstorage%252fblobs%252ftoc.json) .
 
 10. Po instalaci **Průzkumník služby Microsoft Azure Storage** vyberte **Dokončit** .  Ponechte zaškrtnuté políčko pro otevření aplikace.
 
@@ -256,15 +256,15 @@ V této části použijete virtuální počítač, který jste vytvořili v pře
 
 12. V Průzkumník služby Storage vyberte v **Cosmos DB účtech** pravé tlačítko myši a vyberte **připojit k Cosmos DB**.
 
-13. V části **Vybrat rozhraní API**ponechte výchozí hodnotu **SQL** .
+13. V části **Vybrat rozhraní API** ponechte výchozí hodnotu **SQL** .
 
-14. V poli **připojovací řetězec**vložte připojovací řetězec z účtu Cosmos DB, který jste zkopírovali v předchozích krocích.
+14. V poli **připojovací řetězec** vložte připojovací řetězec z účtu Cosmos DB, který jste zkopírovali v předchozích krocích.
 
 15. Vyberte **Další**.
 
 16. Ověřte správnost nastavení v **souhrnu připojení**.  
 
-17. Vyberte **Připojit**.
+17. Vyberte **Connect** (Připojit).
 
 18. Ukončete připojení k **myVM**.
 
@@ -279,7 +279,7 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte virtuální síť, v
 
 3. Vyberte **Odstranit skupinu prostředků**.
 
-4. Do **pole zadejte název skupiny prostředků**zadejte **myResourceGroup** .
+4. Do **pole zadejte název skupiny prostředků** zadejte **myResourceGroup** .
 
 5. Vyberte **Odstranit**.
 

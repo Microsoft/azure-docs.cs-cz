@@ -5,14 +5,14 @@ keywords: Azure, umělal Intelligence, AI, zpracování přirozeného jazyka, NL
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 09/02/2020
+ms.date: 11/23/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: b4034f9b7a5a9ec856134e27b422736e2c98f04a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: fb36ab8a86a89d6383f93ad58c23956472841de2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025187"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95539256"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co je Language Understanding (LUIS)?
 
@@ -116,7 +116,7 @@ Nástroje pro rychlé a snadné používání služby LUIS s využitím robota:
 
 ## <a name="integrate-with-a-bot"></a>Integrace s robotem
 
-Pomocí [služby Azure bot Service](/azure/bot-service/?view=azure-bot-service-4.0 "Azure bot Service") s [Microsoft bot Framework](https://dev.botframework.com/ "Microsoft Bot Framework") sestavíte a nasadíte robota chatu. Navrhněte a vývoj pomocí nástrojů grafického rozhraní, [skladatele](/composer/ "Composer")nebo [pracovních robotů](https://github.com/microsoft/BotBuilder-Samples "Ukázky pracovních robotů") , které jsou navržené pro scénáře s největším robotem.
+Pomocí [služby Azure bot Service](/azure/bot-service/ "Azure bot Service") s [Microsoft bot Framework](https://dev.botframework.com/ "Microsoft Bot Framework") sestavíte a nasadíte robota chatu. Navrhněte a vývoj pomocí nástrojů grafického rozhraní, [skladatele](/composer/ "Composer")nebo [pracovních robotů](https://github.com/microsoft/BotBuilder-Samples "Ukázky pracovních robotů") , které jsou navržené pro scénáře s největším robotem.
 
 ## <a name="integrate-with-other-cognitive-services"></a>Integrace s jinými Cognitive Services
 
@@ -131,9 +131,13 @@ LUIS poskytuje funkce z Analýza textu jako součást vašich stávajících pro
 Seznamte se s LUIS s praktickými rychlými starty pomocí [portálu](get-started-portal-build-app.md "portál") a [klientských knihoven SDK](azure-sdk-quickstart.md "Klientské knihovny SDK").
 
 
+## <a name="deploy-on-premises-using-docker-containers"></a>Nasazení místně pomocí kontejnerů Docker
+
+[Pomocí kontejnerů Luis](luis-container-howto.md) můžete nasadit funkce rozhraní API místně. Tyto kontejnery Docker umožňují přiblížit službu k vašim datům pro účely dodržování předpisů, zabezpečení nebo jiných provozních důvodů.
+
 ## <a name="next-steps"></a>Další kroky
 
-* [Co je nového](whats-new.md "Co je nového") u služby a dokumentace
+* [Co je nového](whats-new.md "Novinky") u služby a dokumentace
 * [Plánování aplikace](luis-how-plan-your-app.md "Plánování aplikace") s využitím [záměrů](luis-concept-intent.md "záměry") a [entit](luis-concept-entity-types.md "podnikům")
 * [Dotaz na koncový bod předpovědi](luis-get-started-get-intent-from-browser.md "Dotazování koncového bodu předpovědi").
 * [Materiály pro vývojáře](developer-reference-resource.md "Materiály pro vývojáře") pro Luis.

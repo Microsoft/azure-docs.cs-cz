@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: a6bbb2abe24eba96fd2c55b7aaf15ccd8ae33530
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27dba675f82c4d34ec793cf492c18b293a6c8c77
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87760939"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544254"
 ---
 # <a name="what-is-azure-private-link-service"></a>Co je služba privátního propojení Azure?
 
-Služba privátního propojení Azure je odkazem na vlastní službu, která využívá privátní propojení Azure. Služba, která je spuštěná za [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md) , se dá povolit pro přístup k privátním odkazům, aby k nim uživatelé mohli přistupovat soukromě z vlastních virtuální sítě. Vaši zákazníci můžou ve své virtuální síti vytvořit privátní koncový bod a namapovat ho k této službě. Tento článek vysvětluje koncepty týkající se strany poskytovatele služeb. 
+Služba privátního propojení Azure je odkazem na vlastní službu, která využívá privátní propojení Azure. Služba, která je spuštěná za [Azure Standard Load Balancer](../load-balancer/load-balancer-overview.md) , se dá povolit pro přístup k privátním odkazům, aby k nim uživatelé mohli přistupovat soukromě z vlastních virtuální sítě. Vaši zákazníci můžou ve své virtuální síti vytvořit privátní koncový bod a namapovat ho k této službě. Tento článek vysvětluje koncepty týkající se strany poskytovatele služeb. 
 
 :::image type="content" source="./media/private-link-service-overview/consumer-provider-endpoint.png" alt-text="Pracovní postup služby privátního propojení" border="true":::
 
@@ -57,7 +57,7 @@ Služba privátního propojení určuje následující vlastnosti:
 |---------|---------|
 |Stav zřizování (provisioningState)  |Vlastnost jen pro čtení, která uvádí aktuální stav zřizování pro službu privátního propojení. Příslušné stavy zřizování jsou: "odstraňování; Nepovedlo se Úspěchu Aktualizuje se. Po úspěšném stavu zřizování jste úspěšně zřídili službu privátních odkazů.        |
 |Alias (alias)     | Alias je globálně jedinečný řetězec jen pro čtení vaší služby. Pomůže vám to maskovat zákaznická data pro vaši službu a zároveň vytvořit snadnou sdílenou složku pro vaši službu. Když vytvoříte službu privátního propojení, Azure vytvoří alias pro vaši službu, kterou můžete sdílet se svými zákazníky. Vaši zákazníci můžou pomocí tohoto aliasu požádat o připojení ke službě.          |
-|Viditelnost (viditelnost)     | Viditelnost je vlastnost, která řídí nastavení expozice pro službu privátního propojení. Poskytovatelé služeb se můžou rozhodnout omezit expozici své služby na předplatná pomocí oprávnění řízení přístupu na základě role (RBAC), omezené sady předplatných nebo všech předplatných Azure.          |
+|Viditelnost (viditelnost)     | Viditelnost je vlastnost, která řídí nastavení expozice pro službu privátního propojení. Poskytovatelé služeb se můžou rozhodnout omezit expozici své služby na předplatná pomocí oprávnění řízení přístupu na základě role (Azure RBAC), omezené sady předplatných nebo všech předplatných Azure.          |
 |Automatické schvalování (automatické schválení)    |   Automatické schválení řídí automatizovaný přístup ke službě privátního propojení. Odběry zadané v seznamu automatického schvalování se schvalují automaticky, když se v těchto předplatných požaduje připojení z privátních koncových bodů.          |
 |Load Balancer konfigurace IP adresy front-endu (loadBalancerFrontendIpConfigurations)    |    Služba Private Link je vázaná na IP adresu front-endu Standard Load Balancer. Veškerý provoz určený pro službu se dostane do front-endu služby SLB. Můžete nakonfigurovat pravidla služby SLB pro přesměrování tohoto provozu do příslušných back-end fondů, kde běží vaše aplikace. Konfigurace IP adresy front-endu pro vyrovnávání zatížení se liší od konfigurace IP adres NAT.      |
 |Konfigurace protokolu IP NAT (IPConfiguration)    |    Tato vlastnost odkazuje na konfiguraci protokolu IP NAT (překladu síťových adres) pro službu privátního propojení. IP adresu NAT si můžete vybrat z libovolné podsítě ve virtuální síti poskytovatele služeb. Služba privátního propojení provádí NAT cílového umístění na straně cíle na přenosy privátního propojení. Tím se zajistí, že nedojde ke konfliktu IP adres mezi zdrojovým a cílovým adresním prostorem (poskytovatelem služeb). Na straně cíle (na straně poskytovatele služeb) se IP adresa NAT zobrazí jako zdrojová IP adresa pro všechny pakety přijaté službou a cílovou IP adresou pro všechny pakety odesílané vaší službou.       |
@@ -76,7 +76,7 @@ Služba privátního propojení určuje následující vlastnosti:
  
 - Jedna služba privátního propojení je dostupná z více privátních koncových bodů patřících různým virtuální sítě, předplatným a/nebo klientům služby Active Directory. Připojení je vytvořeno prostřednictvím pracovního postupu připojení. 
  
-- Ve stejném Standard Load Balancer lze pomocí různých konfigurací front-end IP adres vytvořit více služeb privátních propojení. Existují omezení počtu služeb privátních odkazů, které můžete vytvořit pro jednotlivé Standard Load Balancer a pro každé předplatné. Podrobnosti najdete v tématu [omezení Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
+- Ve stejném Standard Load Balancer lze pomocí různých konfigurací front-end IP adres vytvořit více služeb privátních propojení. Existují omezení počtu služeb privátních odkazů, které můžete vytvořit pro jednotlivé Standard Load Balancer a pro každé předplatné. Podrobnosti najdete v tématu [omezení Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
  
 - Služba privátního propojení může mít na sebe propojenou více konfigurací IP adres NAT. Výběr více než jedné konfigurace protokolu IP NAT může pomáhat poskytovatelům služeb škálovat. V dnešní době můžou poskytovatelé služeb přiřadit až osm IP adres NAT na jednu službu privátního propojení. U každé IP adresy překladu adres (NAT) můžete přiřadit více portů pro připojení TCP a tak škálovat. Po přidání více IP adres NAT do služby privátního propojení nemůžete IP adresy NAT odstranit. K tomu je potřeba zajistit, aby při odstraňování IP adres překladu adres (NAT) nedošlo k ovlivnění aktivních připojení.
 
@@ -95,7 +95,7 @@ Alias se skládá ze tří částí: *prefix*. *Identifikátor GUID* *Přípona*
 
 ## <a name="control-service-exposure"></a>Řízení expozice služby
 
-Služba privátního propojení vám nabízí možnosti řízení expozice vaší služby prostřednictvím nastavení viditelnosti. Službu můžete nastavit jako soukromou pro použití z různých virtuální sítě, která vlastníte (jenom oprávnění RBAC), omezit vystavení omezené sadě předplatných, kterým důvěřujete, nebo je zveřejnit, aby všechna předplatná Azure mohla vyžadovat připojení ve službě privátních odkazů. Nastavení viditelnosti rozhodují, jestli se příjemce může ke službě připojit, nebo ne. 
+Služba privátního propojení vám nabízí možnosti řízení expozice vaší služby prostřednictvím nastavení viditelnosti. Službu můžete nastavit jako soukromou pro spotřebu z různých virtuální sítě, které vlastníte (jenom oprávnění Azure pro řízení přístupu), omezit vystavení omezené sadě předplatných, kterým důvěřujete, nebo zveřejnit jako veřejnou, aby všechna předplatná Azure mohla vyžadovat připojení ve službě privátních odkazů. Nastavení viditelnosti rozhodují, jestli se příjemce může ke službě připojit, nebo ne. 
 
 ## <a name="control-service-access"></a>Řízení přístupu ke službě
 
@@ -111,7 +111,7 @@ Tyto informace jsou zakódovány pomocí vlastního vektoru typu s délkou Value
 
 Podrobnosti vlastního TLV:
 
-|Pole |Délka (oktety)  |Description  |
+|Pole |Délka (oktety)  |Popis  |
 |---------|---------|----------|
 |Typ  |1        |PP2_TYPE_AZURE (0xEE)|
 |Délka  |2      |Délka hodnoty|

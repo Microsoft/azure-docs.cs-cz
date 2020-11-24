@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 7e1deb11eb8ae754198cae5be7ecf7150262a61e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: a817c12a367d7c14f693389920e49b368a35cc06
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411384"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522868"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimalizace dotazů protokolu v Azure Monitor
 Protokoly Azure Monitor používají k ukládání dat protokolu službu [Azure Průzkumník dat (ADX)](/azure/data-explorer/) a spouštějí dotazy k analýze těchto dat. Vytváří, spravuje a udržuje clustery ADX za vás a optimalizuje je pro vaši úlohu analýzy protokolů. Když spustíte dotaz, bude optimalizován a směrován do příslušného clusteru ADX, který ukládá data pracovního prostoru. Protokoly Azure Monitor a Azure Průzkumník dat využívají řadu automatických mechanismů optimalizace dotazů. I když automatické optimalizace poskytují výrazné zvýšení, existují případy, kdy můžete výrazně zvýšit výkon dotazů. V tomto článku se dozvíte o požadavcích na výkon a o některých technikech jejich řešení.
@@ -342,7 +342,7 @@ Perf
 ) on Computer
 ```
 
-Běžným případem, kdy dojde k takové chybě, je použití [arg_max ()](/azure/kusto/query/arg-max-aggfunction) k vyhledání nejaktuálnějšího výskytu. Zde je příklad:
+Běžným případem, kdy dojde k takové chybě, je použití [arg_max ()](/azure/kusto/query/arg-max-aggfunction) k vyhledání nejaktuálnějšího výskytu. Například:
 
 ```Kusto
 Perf
@@ -463,7 +463,7 @@ Chování dotazů, které může snížit paralelismus, zahrnuje:
 - Použití funkcí serializace a okno, jako je například [operátor serializace](/azure/kusto/query/serializeoperator), [Next ()](/azure/kusto/query/nextfunction), [předchozí ()](/azure/kusto/query/prevfunction)a funkce [řádku](/azure/kusto/query/rowcumsumfunction) . V některých případech je možné použít časové řady a funkce uživatelsky Analytics. Neefektivní serializace se může vyskytnout také v případě, že na konci dotazu nejsou použity následující operátory: [Rozsah](/azure/kusto/query/rangeoperator), [řazení](/azure/kusto/query/sortoperator), [pořadí](/azure/kusto/query/orderoperator), [horní](/azure/kusto/query/topoperator), [horní – hitters](/azure/kusto/query/tophittersoperator), [GetSchema](/azure/kusto/query/getschemaoperator).
 -    Použití agregační funkce [DCount ()](/azure/kusto/query/dcount-aggfunction) vynutí, aby systém měl centrální kopii jedinečných hodnot. V případě vysoké škály dat zvažte použití volitelných parametrů funkce DCOUNT pro snížení přesnosti.
 -    V mnoha případech operátor [Join](/azure/kusto/query/joinoperator?pivots=azuremonitor) snižuje celkový paralelismus. Pokud je výkon problematický, prověřte náhodné spojení jako alternativu.
--    V dotazech v oboru prostředků se kontroly RBAC před provedením můžou omezit v situacích, kdy existuje velký počet přiřazení rolí Azure. To může vést k delším kontrolám, které by způsobily nižší paralelismus. Například dotaz se spustí v předplatném, kde jsou tisíce prostředků a každý prostředek má mnoho přiřazení rolí na úrovni prostředků, nikoli na předplatném nebo skupině prostředků.
+-    V dotazech v oboru prostředků se kontroly před Kubernetesí RBAC nebo Azure RBAC můžou v situacích, kdy existuje velký počet přiřazení rolí Azure, způsobit i omezení. To může vést k delším kontrolám, které by způsobily nižší paralelismus. Například dotaz se spustí v předplatném, kde jsou tisíce prostředků a každý prostředek má mnoho přiřazení rolí na úrovni prostředků, nikoli na předplatném nebo skupině prostředků.
 -    Pokud dotaz zpracovává malé bloky dat, jeho paralelismus bude nízký, protože systém nebude rozložen mezi mnoho výpočetních uzlů.
 
 

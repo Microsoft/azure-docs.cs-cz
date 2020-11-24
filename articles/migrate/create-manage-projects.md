@@ -2,52 +2,92 @@
 title: Vytváření a správa projektů Azure Migrate
 description: Umožňuje najít, vytvořit, spravovat a odstranit projekty v Azure Migrate.
 ms.topic: how-to
-ms.date: 07/23/2020
-ms.openlocfilehash: d60868f9d0d4c60291cfd92a9e8d11fd3f9a42b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/23/2020
+ms.openlocfilehash: 95f123188f7906cbd5c7a209c9fd01be006e9a7e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87071796"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95534913"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Vytváření a správa projektů Azure Migrate
 
 Tento článek popisuje, jak vytvářet, spravovat a odstraňovat [Azure Migrate](migrate-services-overview.md) projekty.
 
+Azure Migrate projekt se používá k ukládání metadat zjišťování, hodnocení a migrace shromážděných z prostředí, které vyhodnotili nebo migrujete. V projektu můžete sledovat zjištěné prostředky, vytvářet posouzení a orchestrovat migrace do Azure.  
+
+## <a name="verify-permissions"></a>Ověření oprávnění
+
+Ověřte, zda máte správná oprávnění k vytvoření Azure Migrate projektu:
+
+1. V Azure Portal otevřete příslušné předplatné a vyberte **řízení přístupu (IAM)**.
+2. V části **kontrolovat přístup** Najděte příslušný účet a vyberte oprávnění zobrazit. Měli byste mít oprávnění *Přispěvatel* nebo *Owner* . 
+
 
 ## <a name="create-a-project-for-the-first-time"></a>První vytvoření projektu
 
-Při prvním nastavení Azure Migrate vytvoříte projekt a přidáte Nástroj pro posouzení nebo migraci. Při prvním nastavení [postupujte podle těchto pokynů](how-to-add-tool-first-time.md) .
+Nastavte nový projekt Azure Migrate v předplatném Azure.
+
+1. V Azure Portal vyhledejte *Azure Migrate*.
+2. V **služby** vyberte **Azure Migrate**.
+3. V části **Přehled** vyberte **Posoudit a migrovat servery**.
+
+    ![Možnost v přehledu k vyhodnocení a migraci serverů](./media/create-manage-projects/assess-migrate-servers.png)
+
+4. V na **serverech** vyberte **vytvořit projekt**.
+
+    ![Tlačítko pro zahájení vytváření projektu](./media/create-manage-projects/create-project.png)
+
+5. V části **vytvořit projekt** vyberte předplatné Azure a skupinu prostředků. Vytvořte skupinu prostředků, pokud ji nemáte.
+6. V části **Project Details (podrobnosti projektu**) zadejte název projektu a zeměpisnou oblast, ve které chcete vytvořit projekt.
+    - Zeměpisná oblast se používá jenom k ukládání metadat shromážděných z místních počítačů. Můžete vybrat libovolnou cílovou oblast pro migraci. 
+    - Projděte si podporované geografické oblasti pro cloudy [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [státní správy](migrate-support-matrix.md#supported-geographies-azure-government).
+
+8. Vyberte **Vytvořit**.
+
+   ![Nastavení stránky na vstupní projekt](./media/create-manage-projects/project-details.png)
+
+
+Počkejte několik minut, než se projekt Azure Migrate nasadí.
+
+## <a name="create-a-project-in-a-specific-region"></a>Vytvoření projektu v konkrétní oblasti
+
+Na portálu můžete vybrat zeměpisnou oblast, ve které chcete projekt vytvořit. Pokud chcete vytvořit projekt v konkrétní oblasti Azure, použijte následující příkaz rozhraní API k vytvoření projektu.
+
+```rest
+PUT /subscriptions/<subid>/resourceGroups/<rg>/providers/Microsoft.Migrate/MigrateProjects/<mymigrateprojectname>?api-version=2018-09-01-preview "{location: 'centralus', properties: {}}"
+``````
+
 
 ## <a name="create-additional-projects"></a>Vytvořit další projekty
 
 Pokud již máte projekt Azure Migrate a chcete vytvořit další projekt, udělejte toto:  
 
 1. Na [veřejném portálu Azure](https://portal.azure.com) nebo [Azure Government](https://portal.azure.us)vyhledejte **Azure Migrate**.
-2. Na Azure Migrate řídicím panelu > **servery**vyberte v pravém horním rohu možnost **změnit** .
+2. Na Azure Migrate řídicím panelu > **servery** vyberte v pravém horním rohu možnost **změnit** .
 
    ![Změnit Azure Migrate projekt](./media/create-manage-projects/switch-project.png)
 
 3. Chcete-li vytvořit nový projekt, vyberte **možnost klikněte sem**.
-
-   ![Vytvořit druhý Azure Migrate projekt](./media/create-manage-projects/create-new-project.png)
 
 
 ## <a name="find-a-project"></a>Najít projekt
 
 Vyhledejte projekt následujícím způsobem:
 
-1. V [Azure Portal](https://portal.azure.com)vyhledejte **Azure Migrate**.
-2. V řídicím panelu Azure Migrate > **servery**vyberte v pravém horním rohu možnost **změnit** .
+1. V [Azure Portal](https://portal.azure.com)vyhledejte *Azure Migrate*.
+2. V řídicím panelu Azure Migrate > **servery** vyberte v pravém horním rohu možnost **změnit** .
 
     ![Přepnout na existující Azure Migrate projekt](./media/create-manage-projects/switch-project.png)
 
 3. Vyberte odpovídající předplatné a Azure Migrate projekt.
 
 
+### <a name="find-a-legacy-project"></a>Najít starší projekt
+
 Pokud jste projekt vytvořili v [předchozí verzi](migrate-services-overview.md#azure-migrate-versions) Azure Migrate, najděte ho následujícím způsobem:
 
-1. V [Azure Portal](https://portal.azure.com)vyhledejte **Azure Migrate**.
+1. V [Azure Portal](https://portal.azure.com)vyhledejte *Azure Migrate*.
 2. Pokud jste v řídicím panelu Azure Migrate vytvořili projekt v předchozí verzi, zobrazí se banner odkazující na starší projekty. Vyberte banner.
 
     ![Přístup ke stávajícím projektům](./media/create-manage-projects/access-existing-projects.png)
@@ -78,7 +118,7 @@ Poznámky:
 
 1. Přejděte do pracovního prostoru Log Analytics připojeného k projektu.
 
-    - Pokud jste neodstranili Azure Migrate projekt, můžete najít odkaz na pracovní prostor v rámci **Essentials**  >  **posouzení serveru**Essentials.
+    - Pokud jste neodstranili Azure Migrate projekt, můžete najít odkaz na pracovní prostor v rámci **Essentials**  >  **posouzení serveru** Essentials.
        ![LA pracovní prostor ](./media/create-manage-projects/loganalytics-workspace.png) .
        
     - Pokud jste již Azure Migrate projekt odstranili, vyberte **skupiny prostředků** v levém podokně Azure Portal a vyhledejte pracovní prostor.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/03/2020
-ms.openlocfilehash: 1c0247c5adfe60dc2436c832cf3d561882ae3a5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ce0aea6bb257f0a52a843ce53cc904ed0a775dd
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760157"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536196"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Auditovat dotazy v protokolech Azure Monitor (Preview)
 Protokoly auditu dotazů na protokol poskytují telemetrii o dotazech protokolů spouštěných v Azure Monitor. Obsahuje například informace o tom, kdy se dotaz spustil, kdo ho spustil, jaký nástroj se použil, text dotazu a Statistika výkonu popisující spuštění dotazu.
@@ -23,7 +23,7 @@ Auditování dotazů je povoleno s [nastavením diagnostiky](../platform/diagnos
 ### <a name="azure-portal"></a>portál Azure
 Přístup k nastavení diagnostiky pro Log Analytics pracovní prostor v Azure Portal v jednom z následujících umístění:
 
-- V nabídce **Azure monitor** vyberte **nastavení diagnostiky**a pak vyhledejte a vyberte pracovní prostor.
+- V nabídce **Azure monitor** vyberte **nastavení diagnostiky** a pak vyhledejte a vyberte pracovní prostor.
 
     [![Nastavení diagnostiky Azure Monitor ](media/log-query-audit/diagnostic-setting-monitor.png)](media/log-query-audit/diagnostic-setting-monitor.png#lightbox) 
 
@@ -37,7 +37,7 @@ Můžete získat příklad Správce prostředků šablonu z [nastavení diagnost
 ## <a name="audit-data"></a>Data auditu
 Záznam auditu se vytvoří pokaždé, když se spustí dotaz. Pokud data odešlete do pracovního prostoru Log Analytics, uloží se do tabulky s názvem *LAQueryLogs*. Následující tabulka popisuje vlastnosti v jednotlivých záznamech dat auditu.
 
-| Pole | Description |
+| Pole | Popis |
 |:---|:---|
 | TimeGenerated         | Čas UTC při odeslání dotazu. |
 | CorrelationId         | Jedinečné ID pro identifikaci dotazu. Dá se použít při řešení potíží při kontaktování Microsoftu o pomoc. |
@@ -62,11 +62,11 @@ Záznam auditu se vytvoří pokaždé, když se spustí dotaz. Pokud data odešl
 | StatsWorkspaceCount | Počet pracovních prostorů, ke kterým dotaz přistupoval. Vyplní se jenom v případě, že dotaz vrátí stavový kód 200. |
 | StatsRegionCount | Počet oblastí, ke kterým dotaz přistupoval. Vyplní se jenom v případě, že dotaz vrátí stavový kód 200. |
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 - Dotazy jsou protokolovány pouze při spuštění v kontextu uživatele. V rámci Azure nebude zaznamenána žádná služba pro službu. Dvě primární sady dotazů, které toto vyloučení zahrnuje, jsou výpočty fakturace a automatizované provádění výstrah. V případě výstrah se neprotokoluje pouze plánovaný dotaz výstrahy. počáteční spuštění výstrahy na obrazovce pro vytvoření výstrahy se provádí v uživatelském kontextu a bude k dispozici pro účely auditu. 
 - Statistiky výkonu nejsou k dispozici pro dotazy přicházející z proxy serveru Azure Průzkumník dat. Všechna ostatní data pro tyto dotazy budou i nadále naplněna.
-- Pomocný parametr *h* v řetězcích, který zapisuje [řetězcové literály](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals) , nebude mít vliv na protokoly auditu dotazů. Dotazy budou zachyceny přesně tak, jak byly odeslány bez řetězce, který je zakódován. Měli byste zajistit, aby tato data mohli používat jenom uživatelé, kteří mají oprávnění k dodržování předpisů, a to v různých režimech RBAC, které jsou dostupné v Log Analytics pracovních prostorech.
+- Pomocný parametr *h* v řetězcích, který zapisuje [řetězcové literály](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals) , nebude mít vliv na protokoly auditu dotazů. Dotazy budou zachyceny přesně tak, jak byly odeslány bez řetězce, který je zakódován. Měli byste zajistit, aby tato data mohli používat jenom uživatelé, kteří mají oprávnění k dodržování předpisů, a to pomocí různých režimů Kubernetes RBAC nebo Azure RBAC, které jsou dostupné v Log Analytics pracovních prostorech.
 - Dotazy, které obsahují data z několika pracovních prostorů, budou zachyceny pouze v těch pracovních prostorech, ke kterým má uživatel přístup.
 
 ## <a name="costs"></a>Náklady  

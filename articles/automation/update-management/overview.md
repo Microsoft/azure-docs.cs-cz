@@ -3,14 +3,14 @@ title: Přehled Azure Automation Update Management
 description: Tento článek poskytuje přehled funkce Update Management, která implementuje aktualizace pro počítače se systémem Windows a Linux.
 services: automation
 ms.subservice: update-management
-ms.date: 10/26/2020
+ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: abcc2b60fd796a80342fe48c3c9027388660476a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: eadceb17d01b40deab656bdd6223cb8f0844f54f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95488143"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95528240"
 ---
 # <a name="update-management-overview"></a>Přehled Update Managementu
 
@@ -76,10 +76,10 @@ Následující tabulka uvádí podporované operační systémy pro posouzení a
 |---------|---------|
 |Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012 ||
 |Windows Server 2008 R2 (RTM a SP1 Standard)| Update Management podporuje posouzení a opravy pro tento operační systém. [Hybrid Runbook Worker](../automation-windows-hrw-install.md) se podporuje pro Windows Server 2008 R2. |
-|CentOS 6 (x86/x64) a 7 (x64)      | Agenti Linux vyžadují přístup k úložišti aktualizací. Oprava založená na klasifikaci vyžaduje `yum` , aby vracela data zabezpečení, která CentOS ve svých verzích RTM. Další informace o opravách na základě klasifikace na CentOS najdete v tématu [klasifikace aktualizací v systému Linux](view-update-assessments.md#linux).          |
-|Red Hat Enterprise 6 (x86/x64) a 7 (x64)     | Agenti Linux vyžadují přístup k úložišti aktualizací.        |
+|CentOS 6 a 7 (x64)      | Agenti Linux vyžadují přístup k úložišti aktualizací. Oprava založená na klasifikaci vyžaduje `yum` , aby vracela data zabezpečení, která CentOS ve svých verzích RTM. Další informace o opravách na základě klasifikace na CentOS najdete v tématu [klasifikace aktualizací v systému Linux](view-update-assessments.md#linux).          |
+|Red Hat Enterprise 6 a 7 (x64)     | Agenti Linux vyžadují přístup k úložišti aktualizací.        |
 |SUSE Linux Enterprise Server 12 (x64)     | Agenti Linux vyžadují přístup k úložišti aktualizací.        |
-|Ubuntu 14,04 LTS, 16,04 LTS a 18,04 (x86/x64)      |Agenti Linux vyžadují přístup k úložišti aktualizací.         |
+|Ubuntu 14,04 LTS, 16,04 LTS a 18,04 (x64)      |Agenti Linux vyžadují přístup k úložišti aktualizací.         |
 
 > [!NOTE]
 > Sady škálování virtuálních počítačů Azure je možné spravovat prostřednictvím Update Management. Update Management pracuje na samotných instancích a nikoli na základní imagi. Aktualizace budete muset naplánovat přírůstkově, takže se neaktualizují všechny instance virtuálních počítačů najednou. Uzly pro sadu škálování virtuálních počítačů můžete přidat pomocí postupu v části [Přidání počítače mimo Azure do Change Tracking a inventáře](../automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory).

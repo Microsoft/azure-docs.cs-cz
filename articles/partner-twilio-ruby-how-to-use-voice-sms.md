@@ -12,12 +12,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: 19372b30a5e56738230216777897c08b07a0a86a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49203195bf7746d0bff1b9543d1641f69ab23359
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86170696"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542673"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Použití Twilio pro hlasové funkce a možnosti SMS v Ruby
 Tato příručka ukazuje, jak provádět běžné programovací úlohy pomocí služby Twilio API v Azure. Mezi zahrnuté scénáře patří telefonní hovor a odeslání zprávy o krátké službě zprávy (SMS). Další informace o Twilio a použití hlasu a SMS v aplikacích najdete v části [Další kroky](#NextSteps) .
@@ -48,27 +48,27 @@ Například následující TwiML převede text **Hello World** na řeč.
 Všechny dokumenty TwiML mají `<Response>` jako svůj kořenový element. Odtud použijete příkazy Twilio k definování chování aplikace.
 
 ### <a name="twiml-verbs"></a><a id="Verbs"></a>Operace TwiML
-Příkazy Twilio jsou značky XML, které oznamují Twilio, co **dělat**. Například příkaz ** &lt; vyslovit &gt; ** instruuje Twilio, aby audibly doručení zprávy na volání. 
+Příkazy Twilio jsou značky XML, které oznamují Twilio, co **dělat**. Například příkaz **&lt; vyslovit &gt;** instruuje Twilio, aby audibly doručení zprávy na volání. 
 
 Následuje seznam operací Twilio.
 
-* ** &lt; Vytočit &gt; **: připojí volajícího k jinému telefonu.
-* ** &lt; Shromáždit &gt; **: shromažďuje číselné číslice, které jsou zadány na klávesnici na telefonu.
-* ** &lt; Hangup &gt; **: ukončí volání.
-* ** &lt; Přehrát &gt; **: přehraje zvukový soubor.
-* ** &lt; Pozastavit &gt; **: netiché čekání po zadaný počet sekund.
-* ** &lt; Záznam &gt; **: zaznamenává hlas volajícího a vrátí adresu URL souboru, který obsahuje záznam.
-* ** &lt; Přesměrování &gt; **: přenáší řízení volání nebo SMS na TwiML na jinou adresu URL.
-* ** &lt; Odmítnout &gt; **: odmítne příchozí volání na číslo Twilio bez fakturace.
-* ** &lt; Řekněme &gt; **: převede text na řeč, který se provádí na volání.
-* ** &lt; SMS &gt; **: pošle zprávu SMS.
+* **&lt; Vytočit &gt;**: připojí volajícího k jinému telefonu.
+* **&lt; Shromáždit &gt;**: shromažďuje číselné číslice, které jsou zadány na klávesnici na telefonu.
+* **&lt; Hangup &gt;**: ukončí volání.
+* **&lt; Přehrát &gt;**: přehraje zvukový soubor.
+* **&lt; Pozastavit &gt;**: netiché čekání po zadaný počet sekund.
+* **&lt; Záznam &gt;**: zaznamenává hlas volajícího a vrátí adresu URL souboru, který obsahuje záznam.
+* **&lt; Přesměrování &gt;**: přenáší řízení volání nebo SMS na TwiML na jinou adresu URL.
+* **&lt; Odmítnout &gt;**: odmítne příchozí volání na číslo Twilio bez fakturace.
+* **&lt; Řekněme &gt;**: převede text na řeč, který se provádí na volání.
+* **&lt; SMS &gt;**: pošle zprávu SMS.
 
 Další informace o příkazech Twilio, jejich atributech a TwiML naleznete v tématu [TwiML][twiml]. Další informace o rozhraní Twilio API najdete v tématu [rozhraní Twilio API][twilio_api].
 
 ## <a name="create-a-twilio-account"></a><a id="CreateAccount"></a>Vytvoření účtu Twilio
 Až budete připraveni získat účet Twilio, zaregistrujte se do [Twilio try][try_twilio]. Můžete začít s bezplatným účtem a později upgradovat svůj účet.
 
-Když se zaregistrujete k účtu Twilio, získáte bezplatné telefonní číslo vaší aplikace. Obdržíte také identifikátor SID účtu a ověřovací token. Pro volání rozhraní API Twilio budou potřeba obojí. Abyste zabránili neoprávněnému přístupu k účtu, udržujte svůj ověřovací token zabezpečený. Identifikátor SID účtu a ověřovací token se mohou zobrazit na [stránce účtu Twilio][twilio_account]v polích s názvem **SID účtu** a **ověřovacím tokenem**v uvedeném pořadí.
+Když se zaregistrujete k účtu Twilio, získáte bezplatné telefonní číslo vaší aplikace. Obdržíte také identifikátor SID účtu a ověřovací token. Pro volání rozhraní API Twilio budou potřeba obojí. Abyste zabránili neoprávněnému přístupu k účtu, udržujte svůj ověřovací token zabezpečený. Identifikátor SID účtu a ověřovací token se mohou zobrazit na [stránce účtu Twilio][twilio_account]v polích s názvem **SID účtu** a **ověřovacím tokenem** v uvedeném pořadí.
 
 ### <a name="verify-phone-numbers"></a><a id="VerifyPhoneNumbers"></a>Ověřit telefonní čísla
 Kromě čísla, které jste předali pomocí Twilio, můžete také ověřit čísla, která ovládáte (tj. váš mobilní telefon nebo telefonní číslo domů) pro použití ve svých aplikacích. 
@@ -206,4 +206,4 @@ Teď, když jste se seznámili se základy služby Twilio, můžete získat dal�
 [twilio_support]: https://www.twilio.com/help/contact
 [twilio_quickstarts]: https://www.twilio.com/docs/quickstart
 [sinatra]: http://www.sinatrarb.com/
-[azure_vm_setup]: https://docs.microsoft.com/azure/virtual-machines/linux/classic/ruby-rails-web-app
+[azure_vm_setup]: /previous-versions/azure/virtual-machines/linux/classic/ruby-rails-web-app

@@ -8,12 +8,12 @@ ms.date: 11/02/2020
 author: parthpandyaMSFT
 ms.author: parthp
 ms.custom: contperfq2
-ms.openlocfilehash: e15937797077e3fa46a12e726a3ce690c3979cbd
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: ccdc87d03181bad1aba4dd362a651fa42381343a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628777"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542282"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Vytvoření účtu obchodního tržiště v partnerském centru
 
@@ -67,7 +67,7 @@ Váš profil vydavatele obsahuje název vaší společnosti a ID MPN. Pokud jste
 
     Po registraci přejdete na stránku Přehled komerčního tržiště. V levém podokně se zobrazí účet komerčního tržiště.
 
-1. Pokud chcete ověřit, že účet komerčního tržiště je uvedený jako registrovaný, vyberte **Nastavení** (ikona ozubeného kolečka) v pravém horním rohu > programy pro **vývojáře nastavení**  >  **Programs**.
+1. Pokud chcete ověřit, že účet komerčního tržiště je uvedený jako registrovaný, vyberte **Nastavení** (ikona ozubeného kolečka) v pravém horním rohu > programy **Nastavení účtu**  >  **Programs**.
 
 V partnerském centru jste nyní vytvořili účet komerčního tržiště. Pokračujte [v přidávání nových vydavatelů do komerčního tržiště](#add-new-publishers-to-the-commercial-marketplace-program).
 
@@ -91,7 +91,7 @@ Když použijete účet Microsoft Partner Network, propojí doménu pracovní e-
 > Abyste se mohli přihlásit k Microsoft Partner Network, musíte mít roli **správce účtu** nebo **globální správce** .
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/) pomocí účtu Microsoft Partner Network.
-1. Vyberte **Nastavení**  >  programy pro **vývojáře nastavení** Začínáme  >  **Programs**  >  **Get Started**.
+1. Vyberte **Nastavení** nastavení  >  **účtu**  >  **programy**  >  **Začínáme**.
 
    Microsoft Partner Network zjistí vaše předplatné a zobrazí podokno s **profilem vydavatele** .
 
@@ -103,7 +103,7 @@ Když použijete účet Microsoft Partner Network, propojí doménu pracovní e-
 
     Po registraci přejdete na stránku Přehled komerčního tržiště. V levém podokně se zobrazí účet komerčního tržiště.
 
-1. Pokud chcete ověřit, že účet komerčního tržiště je uvedený jako registrovaný, vyberte **Nastavení**  >  programy pro **vývojáře nastavení**  >  **Programs**.
+1. Pokud chcete ověřit, že účet komerčního tržiště je uvedený jako registrovaný, vyberte **Nastavení**  >  **Nastavení účtu**  >  **programy**.
 
 V partnerském centru jste nyní vytvořili účet komerčního tržiště. Pokračujte [v přidávání nových vydavatelů do komerčního tržiště](#add-new-publishers-to-the-commercial-marketplace-program).
 
@@ -119,7 +119,7 @@ V partnerském centru jste nyní vytvořili účet komerčního tržiště. Pokr
 Když se zaregistrujete do programu pro komerční tržiště se stejným účtem, jaký má vývojářský program, můžete v levém podokně partnerského centra Zobrazit všechna existující přihlášení k programu.
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/) pomocí stávajícího účtu.
-1. Vyberte **Nastavení**  >  programy pro **vývojáře nastavení** Začínáme  >  **Programs**  >  **Get Started** a zadejte svou pracovní e-mailovou adresu.
+1. Vyberte **Nastavení**  >  **účtu**  >  **programy programy**  >  **Začínáme** a zadejte svou pracovní e-mailovou adresu.
 1. Vyplňte podrobnosti na stránce **profilu vydavatele** .
 2. Přečtěte si podmínky a ujednání ve [smlouvě Microsoft Publisher](https://go.microsoft.com/fwlink/?LinkID=699560)a pak vyberte **přijmout a pokračovat** a dokončete registraci.
 
@@ -128,7 +128,7 @@ Když se zaregistrujete do programu pro komerční tržiště se stejným účte
 
     Po registraci přejdete na stránku Přehled komerčního tržiště. V levém podokně se zobrazí účet komerčního tržiště.
 
-1. Pokud chcete ověřit, že účet komerčního tržiště je uvedený jako registrovaný, vyberte **Nastavení**  >  programy pro **vývojáře nastavení**  >  **Programs**.
+1. Pokud chcete ověřit, že účet komerčního tržiště je uvedený jako registrovaný, vyberte **Nastavení**  >  **Nastavení účtu**  >  **programy**.
 
 V partnerském centru jste nyní vytvořili účet komerčního tržiště. Chcete-li získat nápovědu k přidávání vydavatelů, pokračujte [v přidávání nových vydavatelů do komerčního tržiště](#add-new-publishers-to-the-commercial-marketplace-program).
 
@@ -142,7 +142,7 @@ Informace o smlouvě o publikování a profilu společnosti se přesunou na nov�
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>Přidání nových vydavatelů do programu komerčního tržiště
 
-Organizace může mít ke komerčnímu účtu Marketplace k dispozici více vydavatelů. Stávající uživatel může přidat další vydavatele po přihlášení k partnerskému centru výběrem **Nastavení**  >  **vývojář nastavení**  >  **vydavatele**  >  **Přidat vydavatele**.
+Organizace může mít ke komerčnímu účtu Marketplace k dispozici více vydavatelů. Stávající uživatel může přidat další vydavatele po přihlášení k partnerskému centru výběrem možnosti **Nastavení**  >  **účtu nastavení účet**  >  **identifikátory organizačního profilu**  >  **Identifiers**  >  **Přidat vydavatele**.
 
 >[!NOTE]
 >Před přidáním nového vydavatele zkontrolujte seznam stávajících vydavatelů tak, že se přihlásíte do partnerského centra a vyberete **Nastavení účtu**  >  **vydavatelé**.
@@ -155,9 +155,9 @@ Další uživatelé ze stejného Azure Active Directory tenant můžou pomocí n
 4. Vyberte ID MPN, které chcete přidružit k vydavateli.
 5. Aktualizuje **Podrobnosti vydavatele** na formuláři.
 
-   * **Název vydavatele** : název, který se zobrazí na komerčním webu Marketplace s nabídkou.  
-   * **PublisherID** : identifikátor používaný partnerským centrem k jedinečné identifikaci vydavatele. Výchozí hodnota tohoto pole je mapována na existující a jedinečné ID vydavatele v systému. Vzhledem k tomu, že nelze znovu použít ID vydavatele, je nutné toto pole aktualizovat.  
-   * **Kontaktní informace** : v případě potřeby aktualizujte kontaktní údaje.
+   * **Název vydavatele**: název, který se zobrazí na komerčním webu Marketplace s nabídkou.  
+   * **PublisherID**: identifikátor používaný partnerským centrem k jedinečné identifikaci vydavatele. Výchozí hodnota tohoto pole je mapována na existující a jedinečné ID vydavatele v systému. Vzhledem k tomu, že nelze znovu použít ID vydavatele, je nutné toto pole aktualizovat.  
+   * **Kontaktní informace**: v případě potřeby aktualizujte kontaktní údaje.
 
 Po dokončení tohoto procesu přejdete na účet komerčního tržiště, který je uvedený v levém podokně, a můžete spravovat nově vytvořeného vydavatele. Pokud nevidíte účet komerčního obchodu Marketplace, aktualizujte stránku. Nový Vydavatel se zobrazí v seznamu **vydavatelé** .
 

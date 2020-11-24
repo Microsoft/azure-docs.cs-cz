@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/08/2019
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: dd87e1a9bcff55813dff420976df58351386fb34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dc1f8b8a7c46a3d6ad6f62d93bc91753e42c3ae
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75371934"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545036"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Paralelní nahrávání velkých objemů náhodných dat do úložiště Azure
 
@@ -30,7 +30,7 @@ Ve druhé části této série se naučíte:
 
 [Pojmenovávání oddílů](../blobs/storage-performance-checklist.md#partitioning) je další potenciálně důležitý faktor při návrhu vysoce výkonné aplikace pomocí objektů BLOB. Pro blokové velikosti větší než nebo se rovná 4 MiB se používají [objekty blob bloku s vysokou propustností](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) a pojmenování oddílů nebude mít vliv na výkon. Pro blokové velikosti menší než 4 MiB používá Azure Storage schéma dělení na základě rozsahu pro škálování a vyrovnávání zatížení. Tato konfigurace znamená, že se soubory s podobnými zásadami vytváření názvů nebo předponami umisťují do stejného oddílu. Tato logika zahrnuje název kontejneru, do kterého se soubory nahrávají. V tomto kurzu použijete soubory, které mají jako název GUID a obsahují náhodně vygenerovaný obsah. Tyto soubory se pak nahrají do pěti různých kontejnerů s náhodnými názvy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu je nutné dokončit předchozí kurz o službě Storage: [Vytvoření virtuálního počítače a účtu úložiště pro škálovatelnou aplikaci][previous-tutorial].
 
@@ -62,7 +62,7 @@ Zadáním příkazu `dotnet run` spusťte aplikaci. Při prvním spuštění př
 dotnet run
 ```
 
-Aplikace vytvoří pět náhodně pojmenovaných kontejnerů a začne nahrávat soubory v pracovním adresáři do účtu úložiště. Aplikace nastaví minimální počet vláken na 100 a hodnotu [DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit(v=vs.110).aspx) na 100, aby se při spuštění aplikace zajistilo povolení velkého počtu souběžných připojení.
+Aplikace vytvoří pět náhodně pojmenovaných kontejnerů a začne nahrávat soubory v pracovním adresáři do účtu úložiště. Aplikace nastaví minimální počet vláken na 100 a hodnotu [DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) na 100, aby se při spuštění aplikace zajistilo povolení velkého počtu souběžných připojení.
 
 Kromě nastavení dělení na vlákna a omezení připojení se ve třídě [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) pro metodu [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) nakonfiguruje použití paralelismu a vypnutí ověřování hodnoty hash MD5. Soubory se nahrávají ve 100MB blocích. Tato konfigurace zajišťuje lepší výkon, ale může být nákladnější v případě, že používáte málo výkonnou síť, protože v případě selhání se opakuje nahrávání celého 100MB bloku.
 

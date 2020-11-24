@@ -7,12 +7,12 @@ ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 8c24c5f043d17b5f0e54ca1c2c6cf41a0d3fe9bc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0bde1b7be15d49d82818f26d07c2ec633dc4526c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "68726357"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95523259"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Ruby
 
@@ -25,7 +25,7 @@ V tomto rychlém startu zjistíte, jak pomocí Ruby nahrávat, stahovat a vypiso
 Ujistěte se, že máte nainstalované následující další požadavky:
 
 * [Ruby](https://www.ruby-lang.org/en/downloads/)
-* [Knihovna Azure Storage pro Ruby](https://docs.microsoft.com/azure/storage/blobs/storage-ruby-how-to-use-blob-storage)pomocí balíčku rubygem: 
+* [Knihovna Azure Storage pro Ruby]()pomocí balíčku rubygem: 
 
     ```
     gem install azure-storage-blob
@@ -90,7 +90,7 @@ První věc, kterou je potřeba udělat, je vytvořit odkazy na objekty slouží
 Jakmile budete mít CloudBlobContainer, můžete vytvořit objekt blobu **Block**, který odkazuje na konkrétní blob, který vás zajímá, a provádět operace, jako jsou nahrávání, stahování a kopírování.
 
 > [!IMPORTANT]
-> Názvy kontejnerů musí být malými písmeny. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+> Názvy kontejnerů musí být malými písmeny. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
 V této části vytvoříte instanci klienta úložiště Azure, instanci objektu služby blobu, nový kontejner a pak nastavíte oprávnění ke kontejneru tak, aby objekty blob byly veřejné. Kontejner má název **quickstartblobs**. 
 
@@ -189,7 +189,7 @@ Prohlédněte si tyto další zdroje informací o vývoji v Ruby s využitím ú
 V tomto rychlém startu jste zjistili, jak přenášet soubory mezi místním diskem a úložištěm objektů blob v Azure pomocí Ruby. Další informace o práci s úložištěm objektů blob najdete v postupech pro úložiště objektů blob.
 
 > [!div class="nextstepaction"]
-> [Operace s úložištěm objektů blob – postupy](./storage-ruby-how-to-use-blob-storage.md)
+> [Operace s úložištěm objektů blob – postupy]()
 
 
 Další informace o Průzkumníku služby Storage a objektech blob najdete v tématu [Správa prostředků úložiště objektů blob v Azure pomocí Průzkumníka služby Storage](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).

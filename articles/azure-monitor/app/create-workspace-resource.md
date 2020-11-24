@@ -3,18 +3,18 @@ title: Vytvoření nového prostředku založeného na pracovním prostoru Azure
 description: Přečtěte si o krocích požadovaných k povolení nových Azure Monitorch Application Insightsch prostředků založených na pracovních prostorech.
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: 9b91e5065729bee6af3f8018c36930e132eb1a15
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: ecbac02bcb4d9b4f0db36eab854a91366c774d6c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945409"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536910"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Prostředky Application Insights založené na pracovním prostoru
 
 Prostředky založené na pracovním prostoru podporují úplnou integraci mezi Application Insights a Log Analytics. Nyní se můžete rozhodnout pro odeslání telemetrie Application Insights do společného pracovního prostoru Log Analytics, který vám umožní úplný přístup ke všem funkcím Log Analytics a zároveň udržuje protokoly aplikací, infrastruktury a platforem v jednom konsolidovaném umístění.
 
-To umožňuje také společné Role-Based Access Controli (RBAC) napříč prostředky a eliminují nutnost dotazů mezi aplikacemi a pracovními prostory.
+To umožňuje také společné řízení přístupu na základě role Azure (Azure RBAC) napříč vašimi prostředky a eliminuje nutnost dotazů mezi aplikacemi a pracovními prostory.
 
 > [!NOTE]
 > Ingestování a uchovávání dat pro prostředky Application Insights založené na pracovních prostorech se účtují prostřednictvím pracovního prostoru Log Analytics, kde se data nacházejí. [Přečtěte si další informace]( ./pricing.md#workspace-based-application-insights) o fakturaci pro prostředky Application Insights založené na pracovních prostorech.
@@ -207,7 +207,7 @@ Funkce starší verze průběžného exportu není u prostředků založených n
 
 > [!NOTE]
 > Pro export telemetrie se momentálně neúčtují žádné další poplatky. Informace o cenách této funkce budou k dispozici na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).  Před zahájením fakturace budou odeslána oznámení. Pokud se rozhodnete i nadále používat <feature name> po období oznámení, bude se vám účtovat příslušná sazba. 
- 
+ 
 
 ## <a name="next-steps"></a>Další kroky
 

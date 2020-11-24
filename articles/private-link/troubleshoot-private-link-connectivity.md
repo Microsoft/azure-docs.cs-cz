@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 1e5253d617c87d5869cebc817da6d265ebfdfa7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45a7a146dd929408b50a0045fe2598726ee05505
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77539463"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544305"
 ---
 # <a name="troubleshoot-azure-private-link-connectivity-problems"></a>Řešení potíží s připojením ke službě Azure Private Link
 
@@ -37,7 +37,7 @@ Tady jsou scénáře připojení, které jsou k dispozici s privátním odkazem:
 
 ## <a name="deployment-troubleshooting"></a>Řešení potíží s nasazením
 
-Přečtěte si informace o [zakázání zásad sítě ve službě privátního propojení](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy) pro případy, kdy nemůžete vybrat zdrojovou IP adresu z podsítě dle vašeho výběru pro službu privátního propojení.
+Přečtěte si informace o [zakázání zásad sítě ve službě privátního propojení](./disable-private-link-service-network-policy.md) pro případy, kdy nemůžete vybrat zdrojovou IP adresu z podsítě dle vašeho výběru pro službu privátního propojení.
 
 Ujistěte se, že nastavení **privateLinkServiceNetworkPolicies** je pro podsíť, ze které vybíráte zdrojovou IP adresu, zakázané.
 
@@ -99,7 +99,7 @@ Pokud dojde k problémům s připojením k nastavení privátních odkazů, zkon
        - Pokud připojení vytvoří fond back-end podle pravidel vyrovnávání zatížení, je váš nástroj pro vyrovnávání zatížení funkční.
        - Můžete také zkontrolovat metriku nástroje pro vyrovnávání zatížení prostřednictvím Azure Monitor a zjistit, jestli data procházejí nástrojem pro vyrovnávání zatížení.
 
-1. Použijte [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) k zobrazení toku dat.
+1. Použijte [Azure monitor](../azure-monitor/overview.md) k zobrazení toku dat.
 
     a. V prostředku služby privátního propojení vyberte **metriky**.
      - Vyberte **bajty v bajtech nebo v** **bajtech**.
@@ -111,5 +111,5 @@ Pokud dojde k problémům s připojením k nastavení privátních odkazů, zkon
 
 ## <a name="next-steps"></a>Další kroky
 
- * [Vytvoření služby privátního propojení (CLI)](https://docs.microsoft.com/azure/private-link/create-private-link-service-cli)
+ * [Vytvoření služby privátního propojení (CLI)](./create-private-link-service-cli.md)
  * [Průvodce odstraňováním potíží privátního koncového bodu Azure](troubleshoot-private-endpoint-connectivity.md)
