@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: cbfb5c598a2a56b0b14a3a90cf29ce23366b9b6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 774c17af88e45e25cf1e8edc0df60ab55fe53e0e
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627665"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95974322"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Kurz: volání rozhraní API Microsoft Graph z aplikace Univerzální platforma Windows (UWP)
 
-V této příručce se dozvíte, jak může aplikace pro nativní Univerzální platforma Windows (UWP) požádat o přístupový token. Aplikace pak zavolá rozhraní Microsoft Graph API. Tato příručka platí i pro další rozhraní API, která vyžadují přístupové tokeny z koncového bodu Microsoft Identity Platform.
+V tomto kurzu vytvoříte nativní aplikaci Univerzální platforma Windows (UWP), která se přihlásí uživatelům a získá přístupový token pro volání rozhraní API Microsoft Graph. 
 
 Na konci tohoto průvodce vaše aplikace volá chráněné rozhraní API pomocí osobních účtů. Příklady jsou outlook.com, live.com a další. Vaše aplikace také volá pracovní a školní účty z libovolné společnosti nebo organizace, která má Azure Active Directory (Azure AD).
 
@@ -48,7 +48,7 @@ Tato příručka vytvoří ukázkovou aplikaci UWP, která se dotazuje na rozhra
 
 Tato příručka používá následující balíček NuGet:
 
-|Knihovna|Popis|
+|Knihovna|Description|
 |---|---|
 |[Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Identity a ověřování Microsoftu|
 |[Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph)|Klientská knihovna Microsoft Graph|
@@ -65,9 +65,9 @@ Tato příručka vytvoří aplikaci, která zobrazí tlačítko s dotazem na roz
 ### <a name="create-your-application"></a>Vytvořte si svoji aplikaci
 
 1. Otevřete Visual Studio a vyberte **vytvořit nový projekt**.
-1. V možnosti **vytvořit nový projekt**zvolte **prázdná aplikace (univerzální pro Windows)** pro C# a vyberte **Další**.
-1. V části **Konfigurovat nový projekt**zadejte název aplikace a vyberte **vytvořit**.
-1. Pokud se zobrazí výzva, v **New Univerzální platforma Windows Project**vyberte libovolnou verzi pro **cíl** a **minimální** verzi a vyberte **OK**.
+1. V možnosti **vytvořit nový projekt** zvolte **prázdná aplikace (univerzální pro Windows)** pro C# a vyberte **Další**.
+1. V části **Konfigurovat nový projekt** zadejte název aplikace a vyberte **vytvořit**.
+1. Pokud se zobrazí výzva, v **New Univerzální platforma Windows Project** vyberte libovolnou verzi pro **cíl** a **minimální** verzi a vyberte **OK**.
 
    ![Minimální a cílové verze](./media/tutorial-v2-windows-uwp/select-uwp-target-minimum.png)
 
@@ -107,7 +107,7 @@ Visual Studio vytvoří jako součást šablony projektu *MainPage. XAML* . Otev
 
 V této části se dozvíte, jak pomocí knihovny Microsoft Authentication Library získat token pro rozhraní Microsoft Graph API. Proveďte změny v souboru *MainPage.XAML.cs* .
 
-1. Do *MainPage.XAML.cs*přidejte následující odkazy:
+1. Do *MainPage.XAML.cs* přidejte následující odkazy:
 
     ```csharp
     using Microsoft.Identity.Client;
@@ -239,7 +239,7 @@ Nakonec se `AcquireTokenSilent` Metoda nezdařila. Důvody k selhání zahrnují
 
 ### <a name="instantiate-the-microsoft-graph-service-client-by-obtaining-the-token-from-the-signinuserandgettokenusingmsal-method"></a>Vytvoření instance klienta služby Microsoft Graph získáním tokenu z metody SignInUserAndGetTokenUsingMSAL
 
-Do *MainPage.XAML.cs*přidejte následující novou metodu:
+Do *MainPage.XAML.cs* přidejte následující novou metodu:
 
 ```csharp
       /// <summary>
@@ -326,7 +326,7 @@ Tokeny ID získané pomocí **OpenID Connect** také obsahují malou podmnožinu
 
 ### <a name="display-message"></a>Zobrazit zprávu
 
-Do *MainPage.XAML.cs*přidejte následující novou metodu:
+Do *MainPage.XAML.cs* přidejte následující novou metodu:
 
 ```csharp
 /// <summary>
@@ -346,24 +346,24 @@ private async Task DisplayMessageAsync(string message)
 
 Nyní je nutné zaregistrovat aplikaci:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Vyberte **Azure Active Directory**  >  **Registrace aplikací**.
 1. Vyberte **Nová registrace**. Zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například *UWP-App-Call-MSGraph*.
-1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft (např. Skype, Xbox)**. Pak pokračujte výběrem **zaregistrovat** .
-1. Na stránce Přehled vyhledejte hodnotu **ID aplikace (klienta)** a zkopírujte ji. Vraťte se do sady Visual Studio, otevřete *MainPage.XAML.cs*a nahraďte hodnotu `ClientId` touto hodnotou.
+1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft (např. Skype, Xbox)**. Pak pokračujte výběrem **zaregistrovat** .
+1. Na stránce Přehled vyhledejte hodnotu **ID aplikace (klienta)** a zkopírujte ji. Vraťte se do sady Visual Studio, otevřete *MainPage.XAML.cs* a nahraďte hodnotu `ClientId` touto hodnotou.
 
 Konfigurace ověřování pro vaši aplikaci:
 
-1. Zpátky v [Azure Portal](https://portal.azure.com)v části **Spravovat**vyberte **ověřování**.
+1. Zpátky v [Azure Portal](https://portal.azure.com)v části **Spravovat** vyberte **ověřování**.
 1. V části **identifikátory URI přesměrování**  |  **navrhované identifikátory URI pro přesměrování pro veřejné klienty (mobilní počítače)** ověřte https://login.microsoftonline.com/common/oauth2/nativeclient .
 1. Vyberte **Uložit**.
 
 Konfigurace oprávnění rozhraní API pro aplikaci:
 
-1. V části **Spravovat**vyberte **oprávnění rozhraní API**.
-1. Vyberte **Přidat oprávnění**a pak ověřte, že jste vybrali **rozhraní Microsoft API**.
+1. V části **Spravovat** vyberte **oprávnění rozhraní API**.
+1. Vyberte **Přidat oprávnění** a pak ověřte, že jste vybrali **rozhraní Microsoft API**.
 1. Vyberte **Microsoft Graph**.
-1. Vyberte **delegovaná oprávnění**, vyhledejte *uživatele. číst*a ověřte, zda je vybrána možnost **uživatel. čtení** .
+1. Vyberte **delegovaná oprávnění**, vyhledejte *uživatele. číst* a ověřte, zda je vybrána možnost **uživatel. čtení** .
 1. Pokud jste provedli nějaké změny, vyberte **Přidat oprávnění** a uložte je.
 
 ## <a name="enable-integrated-authentication-on-federated-domains-optional"></a>Povolit integrované ověřování u federovaných domén (volitelné)
@@ -371,7 +371,7 @@ Konfigurace oprávnění rozhraní API pro aplikaci:
 Pokud chcete povolit integrované ověřování systému Windows, když se používá s doménou federované služby Azure AD, manifest aplikace musí povolit další funkce. Vraťte se do aplikace v aplikaci Visual Studio.
 
 1. Otevřete soubor *Package. appxmanifest*.
-1. Vyberte **Možnosti**a povolit následující nastavení:
+1. Vyberte **Možnosti** a povolit následující nastavení:
 
    * **Podnikové ověřování**
    * **Privátní sítě (klient & Server)**
@@ -384,7 +384,7 @@ Pokud chcete povolit integrované ověřování systému Windows, když se použ
 
 V aktuální ukázce `WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")` je použita metoda. Chcete-li použít `WithDefaultRedirectURI()` , proveďte tyto kroky:
 
-1. V *MainPage.XAML.cs*nahraďte `WithRedirectUri` `WithDefaultRedirectUri` :
+1. V *MainPage.XAML.cs* nahraďte `WithRedirectUri` `WithDefaultRedirectUri` :
 
    **Aktuální kód**
 
@@ -464,7 +464,7 @@ Na obrazovce **výsledky volání rozhraní API** se zobrazí informace o profil
 
 Zobrazí se také základní informace o tokenu získaném prostřednictvím `AcquireTokenInteractive` nebo `AcquireTokenSilent` v poli **informace o tokenu** :
 
-|Vlastnost  |Formát  |Popis |
+|Vlastnost  |Formát  |Description |
 |---------|---------|---------|
 |`Username` |`user@domain.com` |Uživatelské jméno, které uživatele identifikuje.|
 |`Token Expires` |`DateTime` |Čas vypršení platnosti tokenu Knihovna Microsoft Authentication Library rozšiřuje datum vypršení platnosti tím, že podle potřeby token obnovuje.|

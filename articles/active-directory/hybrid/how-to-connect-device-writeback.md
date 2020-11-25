@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d526394ac89e2d29b2002004736e8480bb15b954
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279257"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973418"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: povolení zpětného zápisu zařízení
 > [!NOTE]
@@ -97,7 +97,7 @@ První věcí:
   * V nabídce Start otevřete **synchronizační službu**.
   * Otevřete kartu **konektory** .
   * Najděte konektor s typem Active Directory Domain Services a vyberte ho.
-  * V části **Akce**vyberte **vlastnosti**.
+  * V části **Akce** vyberte **vlastnosti**.
   * Přejít na **připojení k doménové struktuře služby Active Directory**. Ověřte, že doména a uživatelské jméno zadané na této obrazovce odpovídají účtu, který jste zadali ke skriptu.
     ![Účet konektoru v synchronizaci Service Manager](./media/how-to-connect-device-writeback/connectoraccount.png)
 

@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: 8d11eaa76f2133b9fdc66ba4e6bc91e2cc38c51c
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379532"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972857"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Řešení potíží a otázky a odpovědi pro Application Insights pro Java SDK
 
@@ -89,7 +89,7 @@ Pomocí metody XML je nutné restartovat aplikaci při změně hodnoty.
 **Jak můžu změnit, na který prostředek Azure můj projekt odesílá data?**
 
 * [Získejte klíč instrumentace nového prostředku.][java]
-* Pokud jste do projektu přidali Application Insights pomocí Azure Toolkit for Eclipse, klikněte pravým tlačítkem myši na svůj webový projekt, vyberte položku **Azure** , **nakonfigurujte Application Insights** a změňte klíč.
+* Pokud jste do projektu přidali Application Insights pomocí Azure Toolkit for Eclipse, klikněte pravým tlačítkem myši na svůj webový projekt, vyberte položku **Azure**, **nakonfigurujte Application Insights** a změňte klíč.
 * Pokud jste klíč instrumentace nakonfigurovali jako proměnnou prostředí, aktualizujte hodnotu proměnné prostředí pomocí New iKey.
 * V opačném případě aktualizujte klíč v ApplicationInsights.xml ve složce Resources v projektu.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 7d92cbc25411f5cc2d528ccf6ecec4539494d380
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84ae5f6adfe2a02f62b5d4b1e776d8b5ac1d731b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533270"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95975342"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Role, oprávnění a zabezpečení v Azure Monitor
 
@@ -68,7 +68,7 @@ Lidé, kteří mají přiřazenou roli Přispěvatel monitorování, můžou zob
 > 
 
 ## <a name="monitoring-permissions-and-azure-custom-roles"></a>Oprávnění monitorování a vlastní role Azure
-Pokud výše uvedené předdefinované role nevyhovují přesně vašim potřebám vašeho týmu, můžete [vytvořit vlastní roli Azure](../../role-based-access-control/custom-roles.md) s podrobnějšími oprávněními. Níže jsou uvedené běžné operace Azure Monitor RBAC s jejich popisy.
+Pokud výše uvedené předdefinované role nevyhovují přesně vašim potřebám vašeho týmu, můžete [vytvořit vlastní roli Azure](../../role-based-access-control/custom-roles.md) s podrobnějšími oprávněními. Níže jsou uvedené běžné operace Azure RBAC pro Azure Monitor s jejich popisy.
 
 | Operace | Description |
 | --- | --- |
@@ -135,7 +135,7 @@ $token = New-AzStorageAccountSASToken -ResourceType Service -Service Blob -Permi
 
 Token pak můžete předat entitě, která musí číst z daného účtu úložiště, a může vypisovat a číst ze všech objektů BLOB v tomto účtu úložiště.
 
-Případně, pokud potřebujete řídit toto oprávnění pomocí RBAC, můžete této entitě udělit oprávnění Microsoft. Storage/storageAccounts/klíče listkey/Action na daném účtu úložiště. To je nezbytné pro uživatele, kteří potřebují mít možnost nastavit diagnostické nastavení nebo profil protokolu k archivaci na účet úložiště. Můžete například vytvořit následující vlastní roli Azure pro uživatele nebo aplikaci, které musí číst pouze z jednoho účtu úložiště:
+Případně, pokud potřebujete řídit toto oprávnění pomocí Azure RBAC, můžete této entitě udělit oprávnění Microsoft. Storage/storageAccounts/klíče listkey/Action na daném účtu úložiště. To je nezbytné pro uživatele, kteří potřebují mít možnost nastavit diagnostické nastavení nebo profil protokolu k archivaci na účet úložiště. Můžete například vytvořit následující vlastní roli Azure pro uživatele nebo aplikaci, které musí číst pouze z jednoho účtu úložiště:
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -159,7 +159,7 @@ New-AzRoleDefinition -Role $role
 Podobný vzor může následovat s centry událostí, ale nejdřív je potřeba vytvořit vyhrazené autorizační pravidlo pro naslouchání. Pokud chcete udělit přístup k aplikaci, která potřebuje jenom naslouchat centrům událostí souvisejících s monitorováním, udělejte toto:
 
 1. Vytvořte zásady sdíleného přístupu v prostředcích událostí, které byly vytvořeny pro streamování dat monitorování pouze pomocí deklarací naslouchání. To se dá udělat na portálu. Například můžete zavolat "monitoringReadOnly". Pokud je to možné, budete chtít předat tento klíč přímo příjemci a přeskočit další krok.
-2. Pokud je příjemce schopný získat klíčovou ad hoc, udělte uživateli akci klíče listkey pro toto centrum událostí. To je nezbytné taky pro uživatele, kteří potřebují mít možnost nastavit diagnostické nastavení nebo profil protokolu pro streamování na centra událostí. Můžete například vytvořit pravidlo RBAC:
+2. Pokud je příjemce schopný získat klíčovou ad hoc, udělte uživateli akci klíče listkey pro toto centrum událostí. To je nezbytné taky pro uživatele, kteří potřebují mít možnost nastavit diagnostické nastavení nebo profil protokolu pro streamování na centra událostí. Můžete například vytvořit pravidlo Azure RBAC:
    
    ```powershell
    $role = Get-AzRoleDefinition "Reader"
@@ -187,6 +187,6 @@ Data monitorování se často zapisují do účtu úložiště. Možná budete c
 Další informace najdete v tématu [zabezpečení sítě a Azure Storage](../../storage/common/storage-network-security.md)
 
 ## <a name="next-steps"></a>Další kroky
-* [Přečtěte si o RBAC a oprávněních v Správce prostředků](../../role-based-access-control/overview.md)
+* [Přečtěte si informace o RBAC a oprávněních Azure v Správce prostředků](../../role-based-access-control/overview.md)
 * [Přečtěte si přehled monitorování v Azure.](../overview.md)
 

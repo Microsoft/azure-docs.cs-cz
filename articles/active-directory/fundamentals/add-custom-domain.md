@@ -14,15 +14,15 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28847ece3c08e93d14d381b35fc93fb16dad95a1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370861"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973894"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Přidání vlastního názvu domény pomocí portálu Azure Active Directory
 
-Každý nový tenant Azure AD obsahuje počáteční název domény, * \<domainname> . onmicrosoft.com*. Nemůžete změnit nebo odstranit počáteční název domény, ale můžete přidat názvy vaší organizace. Přidání vlastních názvů domén vám pomůže vytvořit uživatelská jména, která jsou pro vaše uživatele známá, například *alain \@ contoso.com*.
+Každý nový tenant Azure AD obsahuje počáteční název domény, *\<domainname> . onmicrosoft.com*. Nemůžete změnit nebo odstranit počáteční název domény, ale můžete přidat názvy vaší organizace. Přidání vlastních názvů domén vám pomůže vytvořit uživatelská jména, která jsou pro vaše uživatele známá, například *alain \@ contoso.com*.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -54,12 +54,12 @@ Po vytvoření adresáře můžete přidat vlastní název domény.
 
     ![Stránka vlastní názvy domén s zobrazenou součástí přidat vlastní doménu](media/add-custom-domain/add-custom-domain.png)
 
-1. Do **vlastního názvu domény**zadejte nový název vaší organizace, v tomto příkladu *contoso.com*. Vyberte **Přidat doménu**.
+1. Do **vlastního názvu domény** zadejte nový název vaší organizace, v tomto příkladu *contoso.com*. Vyberte **Přidat doménu**.
 
     ![Stránka vlastní názvy domén pomocí stránky přidat vlastní doménu](media/add-custom-domain/add-custom-domain-blade.png)
 
     >[!IMPORTANT]
-    >K tomu, aby to fungovalo správně, musíte zahrnout *. com*, *.NET*nebo jakékoli jiné rozšíření nejvyšší úrovně.
+    >K tomu, aby to fungovalo správně, musíte zahrnout *. com*, *.NET* nebo jakékoli jiné rozšíření nejvyšší úrovně.
 
     Je přidána neověřená doména. Zobrazí se stránka **contoso.com** se zobrazením informací o DNS. Uložte tyto informace. Později ho budete potřebovat k vytvoření záznamu TXT pro konfiguraci DNS.
 
@@ -84,7 +84,7 @@ Pokud chcete ověřit vlastní název domény, postupujte podle těchto kroků:
 
 1. Vyhledejte a vyberte *Azure Active Directory* na libovolné stránce a pak vyberte **vlastní názvy domén**.
 
-1. V části **vlastní názvy domén**vyberte vlastní název domény. V tomto příkladu vyberte **contoso.com**.
+1. V části **vlastní názvy domén** vyberte vlastní název domény. V tomto příkladu vyberte **contoso.com**.
 
     ![Fabrikam – stránka vlastní názvy domén se zvýrazněnou společností contoso](media/add-custom-domain/custom-blade-with-contoso-highlighted.png)
 

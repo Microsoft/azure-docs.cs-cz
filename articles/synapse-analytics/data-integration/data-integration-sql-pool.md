@@ -10,21 +10,21 @@ ms.date: 11/03/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
 ms.openlocfilehash: 44d17bafe534fea2d408c92a3a01efb699250a78
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317784"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95974421"
 ---
 # <a name="ingest-data-into-a-dedicated-sql-pool"></a>Ingestování dat do vyhrazeného fondu SQL
 
 V tomto článku se dozvíte, jak ingestovat data z Azure Data Lake účtu úložiště Gen 2 do vyhrazeného fondu SQL ve službě Azure synapse Analytics.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure** : Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-* **Účet úložiště Azure** : Azure Data Lake Storage Gen 2 použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště, přečtěte si článek [vytvoření Azure Storage účtu](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , kde najdete kroky pro jeho vytvoření.
-* **Azure synapse Analytics** : jako úložiště dat *jímky* použijete vyhrazený fond SQL. Pokud nemáte instanci Azure synapse Analytics, přečtěte si téma [vytvoření vyhrazeného fondu SQL](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , kde najdete kroky pro jeho vytvoření.
+* **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
+* **Účet úložiště Azure**: Azure Data Lake Storage Gen 2 použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště, přečtěte si článek [vytvoření Azure Storage účtu](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , kde najdete kroky pro jeho vytvoření.
+* **Azure synapse Analytics**: jako úložiště dat *jímky* použijete vyhrazený fond SQL. Pokud nemáte instanci Azure synapse Analytics, přečtěte si téma [vytvoření vyhrazeného fondu SQL](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , kde najdete kroky pro jeho vytvoření.
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 

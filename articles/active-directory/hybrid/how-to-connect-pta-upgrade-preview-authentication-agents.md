@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d0507f7751305af5e626cbd7dd6e0dfd1a63a74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279478"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973044"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory předávací ověřování: Upgrade agentů ověřování verze Preview
 
@@ -52,7 +52,7 @@ Pokud chcete ověřit verze vašich ověřovacích agentů, na každém serveru,
 
 1. Přejít na **Ovládací panely – > programy – > programy a funkce** na místním serveru.
 2. Pokud existuje položka pro "**Microsoft Azure AD Connect Authentication agent**", nemusíte na tomto serveru provádět žádné akce.
-3. Pokud existuje položka pro**Microsoft Azure AD konektor proxy aplikací**, musíte na tomto serveru ručně upgradovat.
+3. Pokud existuje položka pro **Microsoft Azure AD konektor proxy aplikací**, musíte na tomto serveru ručně upgradovat.
 
 ![Verze Preview ověřovacího agenta](./media/how-to-connect-pta-upgrade-preview-authentication-agents/pta6.png)
 
@@ -71,7 +71,7 @@ Před upgradem ověřovacího agenta na stejném serveru je potřeba upgradovat 
 2. **Odinstalujte verzi Preview ověřovacího agenta**: Stáhněte si [Tento skript PowerShellu](https://aka.ms/rmpreviewagent) a spusťte ho jako správce na serveru.
 3. **Stáhněte si nejnovější verzi ověřovacího agenta (verze 1.5.389.0 nebo novější)**: Přihlaste se k [centru pro správu Azure Active Directory](https://aad.portal.azure.com) pomocí přihlašovacích údajů globálního správce vašeho tenanta. Vyberte možnost **Azure Active Directory-> Azure AD Connect-> předávací ověřování-> stáhnout agenta**. Přijměte [podmínky služby](https://aka.ms/authagenteula) a Stáhněte si nejnovější verzi ověřovacího agenta. Ověřovacího agenta můžete také stáhnout z [tohoto umístění](https://aka.ms/getauthagent).
 4. **Instalace nejnovější verze ověřovacího agenta**: Spusťte spustitelný soubor stažený v kroku 3. Po zobrazení výzvy zadejte přihlašovací údaje globálního správce vašeho tenanta.
-5. **Ověřte, že je nainstalovaná nejnovější verze**: jak je znázorněno v části **ovládací panely – > programy – > programy a funkce** a ověřte, jestli je pro**agenta "Microsoft Azure AD Connect Authentication**" uvedena položka.
+5. **Ověřte, že je nainstalovaná nejnovější verze**: jak je znázorněno v části **ovládací panely – > programy – > programy a funkce** a ověřte, jestli je pro **agenta "Microsoft Azure AD Connect Authentication**" uvedena položka.
 
 >[!NOTE]
 >Pokud po dokončení předchozích kroků přejdete do okna předávací ověřování v [centru pro správu Azure Active Directory](https://aad.portal.azure.com) , zobrazí se dvě položky ověřovacího agenta na server – jedna položka, která zobrazuje ověřovacího agenta jako **aktivní** , a druhý jako **neaktivní**. Toto je _očekávané_. **Neaktivní** položka je automaticky vyřazena po několika dnech.

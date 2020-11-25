@@ -14,11 +14,11 @@ ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0ffa0059e78ee193cb12a4838282f7f9fb282edd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836593"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973690"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archivujte, co je nového v Azure Active Directory?
 
@@ -2672,7 +2672,7 @@ V seznamu [schválených klientských aplikací](../conditional-access/concept-c
 
 - Microsoft Stream
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Podmíněný přístup na základě aplikace Azure AD](../conditional-access/app-based-conditional-access.md)
 
@@ -3166,7 +3166,7 @@ Další informace o veřejné verzi Preview najdete v tématu [role správy dele
 
 ---
 
-## <a name="may-2018"></a>May 2018
+## <a name="may-2018"></a>Květen 2018
 
 ### <a name="expressroute-support-changes"></a>Změny podpory ExpressRoute
 
@@ -3336,7 +3336,7 @@ Další informace najdete v tématu [Azure AD B2C: vyžádání přístupových 
 
 Při konfiguraci aplikací jednotného přihlašování založeného na SAML budete moci otestovat integraci na stránce konfigurace. Pokud během přihlašování dojde k chybě, můžete zadat chybu v prostředí testování a Azure AD vám poskytne postup řešení pro vyřešení konkrétního problému.
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](../manage-apps/view-applications-portal.md)
 - [Jak ladit jednotné přihlašování založené na SAML pro aplikace v Azure Active Directory](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
@@ -3471,7 +3471,7 @@ Azure AD pošle oznámení, když brzy vyprší platnost certifikátu pro galeri
 
 Někteří uživatelé neobdrželi oznámení pro podnikové aplikace nakonfigurované pro jednotné přihlašování založené na SAML. Tento problém byl vyřešen. Azure AD odesílá oznámení o vypršení platnosti certifikátů do 7, 30 a 60 dnů. Tuto událost můžete zobrazit v protokolech auditu.
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Správa certifikátů pro federované jednotné přihlašování v Azure Active Directory](../manage-apps/manage-certificates-for-federated-single-sign-on.md)
 - [Sestavy aktivit auditu na portálu Azure Active Directory](../reports-monitoring/concept-audit-logs.md)
@@ -3500,7 +3500,7 @@ Další informace najdete v tématu [co je spolupráce B2B Azure AD?](../externa
 
 Další informace najdete v našem [blogovém příspěvku](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/).
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Nastavení podmíněného přístupu na základě aplikace](../conditional-access/app-based-conditional-access.md)
 
@@ -3817,7 +3817,7 @@ Do konce února budou přidány následující aplikace:
 
 - Fakturace Microsoftu
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Požadavek na schválenou aplikaci klienta](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Podmíněný přístup na základě aplikace Azure AD](../conditional-access/app-based-conditional-access.md)
@@ -3914,7 +3914,7 @@ Díky obecné dostupnosti nové konzoly pro správu Azure Active Directory a nov
 
 V rámci přechodu na novou konzolu správce jsme vytvořili 2 nová rozhraní API k načtení protokolů aktivit Azure AD. Nová sada rozhraní API nabízí lepší funkce pro filtrování a řazení, které poskytují lepší aktivity auditu a přihlašování. Data dříve dostupná prostřednictvím sestav zabezpečení teď můžou být přístupná prostřednictvím rozhraní API detekce rizik ochrany identity v Microsoft Graph.
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Začínáme s rozhraním API pro vytváření sestav Azure Active Directory](../reports-monitoring/concept-reporting-api.md)
 
@@ -4075,7 +4075,7 @@ V seznamu [schválených klientských aplikací](../conditional-access/concept-c
 - [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - Microsoft StaffHub
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Požadavek na schválenou aplikaci klienta](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Podmíněný přístup na základě aplikace Azure AD](../conditional-access/app-based-conditional-access.md)
@@ -4157,7 +4157,7 @@ V rámci zásad podmíněného přístupu Azure AD teď můžete zahrnout (nebo 
 - **Zajistěte, aby zařízení macOS vyhovovala zásadám dodržování předpisů vaší organizace definovaným v Intune.** V Intune na Azure Portal teď můžete nastavit zásady dodržování předpisů pro zařízení macOS.
 - **Omezte přístup k aplikacím ve službě Azure AD tak, aby splňovala jenom vyhovující zařízení macOS.** Při vytváření zásad podmíněného přístupu se macOS jako samostatná možnost platformy zařízení. Nyní můžete vytvářet zásady podmíněného přístupu specifické pro macOS pro cílovou aplikaci určenou v Azure.
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Vytvoření zásady dodržování předpisů pro zařízení s macOS pomocí Intune](/mem/intune/protect/compliance-policy-create-mac-os)
 - [Podmíněný přístup ve službě Azure AD](../conditional-access/overview.md)
@@ -4204,7 +4204,7 @@ Do seznamu [schválených klientských aplikací](../conditional-access/concept-
 - Microsoft Planner
 - Azure Information Protection
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [Požadavek na schválenou aplikaci klienta](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Podmíněný přístup na základě aplikace Azure AD](../conditional-access/app-based-conditional-access.md)

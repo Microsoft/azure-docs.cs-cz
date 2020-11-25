@@ -17,11 +17,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad03942a2200c57475cf8a81d0fb08d475ec6964
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458028"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973214"
 ---
 # <a name="risky-ip-report-public-preview"></a>Sestava rizikových IP adres (Public Preview)
 Zákazníci AD FS můžou zveřejnit koncové body ověřování hesla pro Internet, aby koncovým uživatelům poskytovali služby ověřování pro přístup k aplikacím SaaS, jako je Microsoft 365. V takovém případě může pochybný aktér zkoušet přihlášení do systému AD FS za účelem uhodnutí hesla koncového uživatele a získání přístupu k prostředkům aplikace. Služba AD FS od verze AD FS ve Windows Serveru 2012 R2 poskytuje funkci uzamčení účtu pro extranet, která brání těmto typům útoku. Pokud používáte nižší verzi, důrazně doporučujeme upgradovat systém AD FS na Windows Server 2016. <br />
@@ -41,7 +41,7 @@ Kromě toho je možné, aby se jedna IP adresa pokoušela o přihlášení za n�
 ## <a name="what-is-in-the-report"></a>Co je v sestavě?
 IP adresy klienta neúspěšného přihlášení jsou agregovány prostřednictvím proxy serverů webových aplikací. Každá položka v sestavě rizikových IP adres ukazuje agregované informace o neúspěšných aktivitách přihlášení ke službě AD FS, které překročí určenou prahovou hodnotu. Obsahuje následující informace: ![ snímek obrazovky, který zobrazuje rizikové zprávy IP se zvýrazněnými záhlavími sloupců.](./media/how-to-connect-health-adfs/report4a.png)
 
-| Položky sestavy | Popis |
+| Položky sestavy | Description |
 | ------- | ----------- |
 | Časové razítko | Ukazuje časové razítko na základě místního času webu Azure Portal při zahájení časového intervalu zjišťování.<br /> Všechny denní události se generují o půlnoci UTC. <br />Hodinové události mají hodnotu časového razítka zaokrouhlenou na celou hodinu. Čas spuštění první aktivity můžete vyhledat v položce firstAuditTimestamp v exportovaném souboru. |
 | Typ triggeru | Ukazuje typ časového intervalu zjišťování. Typ triggeru agregace určuje, jestli se aktivuje každou hodinu nebo každý den. To je užitečně k rozpoznání útoku hrubou silou s vysokou frekvencí od pomalého útoku, při kterém se počet pokusů distribuuje během celého dne. |
@@ -68,7 +68,7 @@ Nástroj pro vyrovnávání zatížení agreguje aktivity přihlášení, které
 ## <a name="download-risky-ip-report"></a>Stáhnout sestavu rizikových IP adres 
 Pomocí funkce **Stáhnout** můžete z portálu služby Connect Health exportovat celý seznam rizikových IP adres za posledních 30 dnů. Výsledek exportu bude obsahovat všechny neúspěšné aktivity přihlášení ke službě AD FS v jednotlivých časových intervalech zjišťování, abyste si po exportu mohli upravit filtrování. Kromě zvýrazněných agregací na portálu bude výsledek exportu obsahovat také další podrobnosti o neúspěšných aktivitách přihlášení podle IP adresy:
 
-|  Položky sestavy  |  Popis  | 
+|  Položky sestavy  |  Description  | 
 | ------- | ----------- | 
 | firstAuditTimestamp | Ukazuje časové razítko prvního výskytu neúspěšných aktivit během časového intervalu zjišťování.  | 
 | lastAuditTimestamp | Ukazuje časové razítko posledního výskytu neúspěšných aktivit během časového intervalu zjišťování.  | 
@@ -83,7 +83,7 @@ Prahovou hodnotu pro upozornění můžete upravit prostřednictvím nastavení 
 
 ![Portál služby Azure AD Connect Health](./media/how-to-connect-health-adfs/report4d.png)
 
-| Položka prahové hodnoty | Popis |
+| Položka prahové hodnoty | Description |
 | --- | --- |
 | (Chybné U/P + uzamčení extranetu) / den  | Nastavení prahové hodnoty pro ohlášení aktivity a aktivaci oznámení o upozornění, když součet počtu chybných zadání hesla a uzamčení extranetu za **den** překročí tuto prahovou hodnotu. Výchozí hodnota je 100.|
 | (Chybné U/P + uzamčení extranetu) / hodina | Nastavení prahové hodnoty pro ohlášení aktivity a aktivaci oznámení o upozornění, když součet počtu chybných zadání hesla a uzamčení extranetu za **hodinu** překročí tuto prahovou hodnotu. Výchozí hodnota je 50.|
@@ -97,7 +97,7 @@ Prahovou hodnotu pro upozornění můžete upravit prostřednictvím nastavení 
 >
 >
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 **Proč se v sestavě zobrazují rozsahy privátních IP adres?**  <br />
 Privátní IP adresy (<i>10. x. x. x, 172. x. x. x & 192.168. x. x</i>) a IP adresy Exchange se filtrují a v seznamu schválených IP adres jsou označené jako true. Pokud se vám zobrazují rozsahy privátních IP adres, je vysoce pravděpodobné, že váš externí nástroj pro vyrovnávání zatížení při předávání požadavku na proxy server webové aplikace neodesílá IP adresu klienta.
 

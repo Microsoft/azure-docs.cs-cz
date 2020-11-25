@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b82193fda64f2cf265c879c5cda9141be1b576f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0408d43fe897882fe09f6dd61a22d46349f2978e
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627886"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95974387"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Kurz: volání rozhraní Microsoft Graph API z desktopové aplikace pro Windows
 
-Tato příručka ukazuje, jak nativní aplikace Windows Desktop .NET (XAML) používá přístupový token pro volání rozhraní Microsoft Graph API. Aplikace může také přistupovat k dalším rozhraním API, která vyžadují přístupové tokeny z platformy Microsoft identity.
+V tomto kurzu vytvoříte nativní aplikaci pro Windows Desktop .NET (XAML), která se přihlásí uživatelům a získá přístupový token pro volání rozhraní API Microsoft Graph. 
 
 Po dokončení průvodce bude vaše aplikace moci volat chráněné rozhraní API, které používá osobní účty (včetně outlook.com, live.com a dalších). Aplikace bude také používat pracovní a školní účty z jakékoli společnosti nebo organizace, která používá Azure Active Directory.
 
@@ -57,7 +57,7 @@ MSAL spravuje ukládání do mezipaměti a aktualizace přístupových tokenů z
 
 Tato příručka používá následující balíčky NuGet:
 
-|Knihovna|Popis|
+|Knihovna|Description|
 |---|---|
 |[Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Knihovna Microsoft Authentication Library (MSAL.NET)|
 
@@ -74,7 +74,7 @@ Aplikace, kterou vytvoříte pomocí této příručky, zobrazuje tlačítko, kt
 Chcete-li vytvořit aplikaci, postupujte následovně:
 
 1. V aplikaci Visual Studio vyberte **soubor**  >  **Nový**  >  **projekt**.
-2. V části **šablony**vyberte **Visual C#**.
+2. V části **šablony** vyberte **Visual C#**.
 3. Vyberte možnost **aplikace WPF (.NET Framework)** v závislosti na verzi sady Visual Studio, kterou používáte.
 
 ## <a name="add-msal-to-your-project"></a>Přidání MSAL do projektu
