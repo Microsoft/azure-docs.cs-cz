@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/22/2020
+ms.date: 11/24/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d61d49fdd90f1f916141ca636e2c2a4dbe0b9bcd
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 935c0bf76e298ab1e2e4d25fab8685ac4ce617db
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657734"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95916153"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Správci předplatného Azure Classic
 
@@ -99,25 +99,25 @@ Informace, které porovnávají uživatele členů a uživatele typu Host, najde
 
 Správce služby pro předplatné může změnit jenom správce účtu. Ve výchozím nastavení platí, že když se přihlásíte k předplatnému Azure, Správce služby je stejný jako správce účtu. Uživatel s rolí správce účtu nemá přístup k Azure Portal. Uživatel s rolí správce služby má plný přístup k Azure Portal. Pokud je správce účtu a správce služby stejný uživatel a Vy změníte Správce služby na jiného uživatele, správce účtu ztratí přístup k Azure Portal. Správce účtu ale může vždy použít centrum účtů ke změně Správce služby zpátky na sebe.
 
-Pomocí těchto kroků můžete změnit správce služby v **centru účtů**.
-
-### <a name="account-center"></a>Centrum účtů
+Pomocí těchto kroků změníte Správce služby v Azure Portal.
 
 1. Ujistěte se, že je váš scénář podporovaný, kontrolou [omezení pro změnu Správce služby](#limitations-for-changing-the-service-administrator).
 
-1. Přihlaste se do [centra účtů](https://account.windowsazure.com/subscriptions) jako správce účtu.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce účtu.
 
-1. Klikněte na předplatné.
+1. Otevřete [Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) a vyberte předplatné.
 
-1. Na pravé straně klikněte na **Upravit podrobnosti předplatného**.
+1. V levém navigačním panelu klikněte na **vlastnosti**.
 
-    ![Snímek obrazovky s tlačítkem upravit předplatné v centru účtů](./media/classic-administrators/editsub.png)
+1. Klikněte na **Správce služeb**.
 
-1. Do pole **Správce služby** zadejte e-mailovou adresu nového správce služby.
+    ![Snímek obrazovky zobrazující vlastnosti odběru v Azure Portal](./media/classic-administrators/service-admin.png)
 
-    ![Snímek obrazovky se seznamem, ve kterém se má změnit e-mail Správce služby](./media/classic-administrators/change-service-admin.png)
+1. Na stránce **Upravit Správce služby** zadejte e-mailovou adresu nového správce služby.
 
-1. Změny uložíte kliknutím na značku zaškrtnutí.
+    ![Snímek obrazovky s upravenou stránkou pro správu služby](./media/classic-administrators/service-admin-edit.png)
+
+1. Změnu uložíte kliknutím na **OK** .
 
 ### <a name="limitations-for-changing-the-service-administrator"></a>Omezení pro změnu Správce služby
 
@@ -125,8 +125,8 @@ V každém předplatném Azure může být jen jeden správce služby. Změna sp
 
 | Účet správce účtu | Může změnit správce služby na jiný účet Microsoft? | Můžete změnit správce služby na účet Azure AD ve stejném adresáři? | Může změnit správce služby na účet Azure AD v jiném adresáři? |
 | --- | --- | --- | --- |
-| Účet Microsoft | Ano | No | No |
-| Účet Azure AD | Ano | Ano | No |
+| Účet Microsoft | Yes | No | No |
+| Účet Azure AD | Yes | Yes | No |
 
 Pokud je správcem účtu účet Azure AD, můžete změnit správce služby na účet Azure AD ve stejném adresáři, ale ne v jiném adresáři. Například abby@contoso.com může změnit správce služby na bob@contoso.com , ale nemůže změnit správce služby na, john@notcontoso.com Pokud john@notcontoso.com nemá přítomnost v adresáři contoso.com.
 
@@ -138,11 +138,11 @@ Správce účtu je uživatel, který původně zaregistroval předplatné Azure,
 
 Pomocí těchto kroků zobrazíte správce účtu.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Otevřete [Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) a vyberte předplatné.
 
-1. Klikněte na **Vlastnosti**.
+1. V levém navigačním panelu klikněte na **vlastnosti**.
 
     Účet správce předplatného se zobrazí v poli **správce účtu** .
 

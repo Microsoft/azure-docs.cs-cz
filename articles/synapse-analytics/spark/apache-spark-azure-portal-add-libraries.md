@@ -6,20 +6,23 @@ author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 10/16/2020
-ms.author: euang
+ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 6f777b605c5050b7fa4b3b9e3671f3638ad67372
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8d478b35b702e02f303358972526c091ceb3657e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016254"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95917121"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Správa knihoven pro Apache Spark ve službě Azure synapse Analytics
 
 Knihovny poskytují opakovaně použitelný kód, který můžete chtít zahrnout do svých programů nebo projektů. Pokud chcete vašim aplikacím zpřístupnit třetí stranu nebo místně sestavený kód, můžete knihovnu nainstalovat na jeden z vašich Apache Spark fondů bez serveru (Preview). Jakmile je knihovna nainstalována pro fond Spark, je k dispozici pro všechny relace používající stejný fond. 
 
+## <a name="before-you-begin"></a>Než začnete
+- Pokud chcete nainstalovat a aktualizovat knihovny, musíte mít oprávnění správce **dat objektu BLOB úložiště** nebo **vlastníka dat objektů BLOB úložiště** v primárním účtu úložiště Gen2, který je propojený s pracovním prostorem Azure synapse Analytics.
+  
 ## <a name="default-installation"></a>Výchozí instalace
 Apache Spark ve službě Azure synapse Analytics má úplnou instalaci Anacondas a další knihovny. Seznam úplných knihoven najdete na stránce [podpora Apache Spark verzí](apache-spark-version-support.md). 
 
@@ -35,6 +38,7 @@ Jakmile identifikujete knihovny, které chcete použít pro aplikaci Spark, mů�
 > - Pokud je balíček, který instalujete, velký nebo trvá jeho instalaci dlouhou dobu, bude to mít vliv na počáteční čas instance Spark.
 > - Balíčky, které vyžadují podporu kompilátoru v době instalace, jako je třeba RSZ, se nepodporují.
 > - Balíčky nemůžou být downgradované, jenom přidané nebo upgradované.
+> - Pokud chcete nainstalovat knihovny, musíte mít oprávnění správce dat objektu BLOB úložiště nebo vlastníka dat objektů BLOB úložiště na primárním účtu úložiště Gen2 propojeném s pracovním prostorem synapse.
 
 ### <a name="requirements-format"></a>Formát požadavků
 

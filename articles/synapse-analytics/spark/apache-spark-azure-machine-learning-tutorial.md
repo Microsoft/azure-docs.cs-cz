@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
-ms.reviewer: jrasnick,
-ms.openlocfilehash: 979e360bb920fc3b34a201b1287b50b141bffa9b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.reviewer: jrasnick
+ms.openlocfilehash: e6708874fee3e15349b4389f1ecafa3d48a628dd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313627"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95917171"
 ---
 # <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>Kurz: spouštění experimentů pomocí automatizovaného ML a Apache Spark
 
@@ -50,51 +50,52 @@ V tomto příkladu budete pomocí Sparku provádět určitou analýzu dat taxisl
 
 1. Pomocí jádra PySpark vytvořte Poznámkový blok. Pokyny najdete v tématu [vytvoření poznámkového bloku](https://docs.microsoft.com/azure/synapse-analytics/quickstart-apache-spark-notebook#create-a-notebook.) .
    
-   > [!Note]
-   > 
-   > Z důvodu jádra PySpark nemusíte vytvářet žádné kontexty explicitně. Kontext Spark je automaticky vytvořen za vás při spuštění první buňky kódu.
-   >
+> [!Note]
+> 
+> Z důvodu jádra PySpark nemusíte vytvářet žádné kontexty explicitně. Kontext Spark je automaticky vytvořen za vás při spuštění první buňky kódu.
+>
 
 2. Vzhledem k tomu, že nezpracovaná data jsou ve formátu Parquet, můžete pomocí kontextu Spark načíst soubor do paměti jako datový rámec přímo. Vytvořte datový rámec Spark, a to tak, že načtěte data prostřednictvím rozhraní API Open DataSet. Tady použijeme schéma dataframe Sparku *pro čtení* vlastností k odvození typů DataTypes a Schema. 
    
-   ```python
-   blob_account_name = "azureopendatastorage"
-   blob_container_name = "nyctlc"
-   blob_relative_path = "yellow"
-   blob_sas_token = r""
+```python
+blob_account_name = "azureopendatastorage"
+blob_container_name = "nyctlc"
+blob_relative_path = "yellow"
+blob_sas_token = r""
 
-   # Allow Spark to read from Blob remotely
-   wasbs_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
-   spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name, blob_account_name),blob_sas_token)
+# Allow Spark to read from Blob remotely
+wasbs_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
+spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name, blob_account_name),blob_sas_token)
 
-   # Spark read parquet, note that it won't load any data yet by now
-   df = spark.read.parquet(wasbs_path)
-   ```
+# Spark read parquet, note that it won't load any data yet by now
+df = spark.read.parquet(wasbs_path)
+
+```
 
 3. V závislosti na velikosti vašeho fondu Spark (Preview) mohou být nezpracovaná data příliš velká nebo mohou trvat příliš dlouho, než budou fungovat. Tato data můžete filtrovat dolů na menší hodnotu pomocí ```start_date``` ```end_date``` filtrů a. Tím se aplikuje filtr, který vrací měsíc dat. Jakmile máme filtrovaný datový rámec, spustíme také ```describe()``` funkci na novém dataframe pro zobrazení souhrnných statistik pro každé pole. 
 
    Na základě souhrnných statistik jsme zjistili, že v datech jsou nějaké nesrovnalosti a odlehlé hodnoty. Statistiky například ukazují, že minimální vzdálenost pro cestu je menší než 0. Budeme muset odfiltrovat tyto nepravidelné datové body.
    
-   ```python
-   # Create an ingestion filter
-   start_date = '2015-01-01 00:00:00'
-   end_date = '2015-12-31 00:00:00'
+```python
+# Create an ingestion filter
+start_date = '2015-01-01 00:00:00'
+end_date = '2015-12-31 00:00:00'
 
-   filtered_df = df.filter('tpepPickupDateTime > "' + start_date + '" and tpepPickupDateTime < "' + end_date + '"')
+filtered_df = df.filter('tpepPickupDateTime > "' + start_date + '" and tpepPickupDateTime < "' + end_date + '"')
 
-   filtered_df.describe().show()
-   ```
+filtered_df.describe().show()
+```
 
 4. Teď vygenerujeme funkce z datové sady tak, že vyberete sadu sloupců a v poli Datum vyzvednutí se vytvoří různé funkce založené na čase. Vyfiltrujeme také odlehlé hodnoty, které byly zjištěny v předchozím kroku, a pak odebereme poslední několik sloupců, které nejsou potřebné pro školení.
    
-   ```python
-   from datetime import datetime
-   from pyspark.sql.functions import *
+```python
+from datetime import datetime
+from pyspark.sql.functions import *
 
-   # To make development easier, faster and less expensive down sample for now
-   sampled_taxi_df = filtered_df.sample(True, 0.001, seed=1234)
+# To make development easier, faster and less expensive down sample for now
+sampled_taxi_df = filtered_df.sample(True, 0.001, seed=1234)
 
-   taxi_df = sampled_taxi_df.select('vendorID', 'passengerCount', 'tripDistance',  'startLon', 'startLat', 'endLon' \
+taxi_df = sampled_taxi_df.select('vendorID', 'passengerCount', 'tripDistance',  'startLon', 'startLat', 'endLon' \
                                 , 'endLat', 'paymentType', 'fareAmount', 'tipAmount'\
                                 , column('puMonth').alias('month_num') \
                                 , date_format('tpepPickupDateTime', 'hh').alias('hour_of_day')\
@@ -108,12 +109,13 @@ V tomto příkladu budete pomocí Sparku provádět určitou analýzu dat taxisl
                                 & (sampled_taxi_df.tripDistance > 0) & (sampled_taxi_df.tripDistance <= 200)\
                                 & (sampled_taxi_df.rateCodeId <= 5)\
                                 & (sampled_taxi_df.paymentType.isin({"1", "2"})))
-   taxi_df.show(10)
-   ```
+taxi_df.show(10)
+```
    
-Jak vidíte, vytvoří se nový datový rámec s dalšími sloupci pro den v měsíci, hodinu vyzvednutí, den v týdnu a celkovou dobu odezvy. 
+   Jak vidíte, vytvoří se nový datový rámec s dalšími sloupci pro den v měsíci, hodinu vyzvednutí, den v týdnu a celkovou dobu odezvy. 
 
-![Obrázek taxislužby dataframe.](./media/apache-spark-machine-learning-aml-notebook/aml-dataset.png)
+
+![Obrázek taxislužby dataframe.](./media/azure-machine-learning-spark-notebook/dataset.png#lightbox)
 
 ## <a name="generate-test-and-validation-datasets"></a>Generování datových sad testů a ověření
 
@@ -124,7 +126,6 @@ Jakmile máme naši finální datovou sadu, můžeme rozdělit data na sady ško
 training_data, validation_data = taxi_df.randomSplit([0.8,0.2], 223)
 
 ```
-
 Tento krok zajistí, že se budou v datových bodech testovat dokončený model, který se nepoužil pro výuku modelu. 
 
 ## <a name="connect-to-an-azure-machine-learning-workspace"></a>Připojení k pracovní prostor Azure Machine Learning
@@ -165,43 +166,41 @@ datastore.upload_files(files = ['training_pd.csv'],
                        show_progress = True)
 dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'train-dataset/tabular/training_pd.csv')])
 ```
-
-![Obrázek nahrané datové sady](./media/apache-spark-machine-learning-aml-notebook/upload-dataset.png)
+![Obrázek nahrané datové sady](./media/azure-machine-learning-spark-notebook/upload-dataset.png)
 
 ## <a name="submit-an-automl-experiment"></a>Odeslat experiment AutoML
 
 #### <a name="define-training-settings"></a>Definování nastavení školení
-
 1. Chcete-li odeslat experiment, je nutné definovat parametr experiment a nastavení modelu pro školení. Úplný seznam nastavení můžete zobrazit [tady](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train).
 
-   ```python
-   import logging
+```python
+import logging
 
-   automl_settings = {
-       "iteration_timeout_minutes": 10,
-       "experiment_timeout_minutes": 30,
-       "enable_early_stopping": True,
-       "primary_metric": 'r2_score',
-       "featurization": 'auto',
-       "verbosity": logging.INFO,
-       "n_cross_validations": 2}
-   ```
+automl_settings = {
+    "iteration_timeout_minutes": 10,
+    "experiment_timeout_minutes": 30,
+    "enable_early_stopping": True,
+    "primary_metric": 'r2_score',
+    "featurization": 'auto',
+    "verbosity": logging.INFO,
+    "n_cross_validations": 2}
+```
 
-2. Nyní předáte definovaná nastavení školení jako \* \* parametr Kwargs objektu AutoMLConfig. Vzhledem k tomu, že jsme provedli školení ve Sparku, budeme také muset předat kontext Spark, který je automaticky přístupný ```sc``` proměnnou. Kromě toho zadáme školicí údaje a typ modelu, což je v tomto případě regrese.
+2. Nyní předáte definovaná nastavení školení jako parametr * * kwargs pro objekt AutoMLConfig. Vzhledem k tomu, že jsme provedli školení ve Sparku, budeme také muset předat kontext Spark, který je automaticky přístupný ```sc``` proměnnou. Kromě toho zadáme školicí údaje a typ modelu, což je v tomto případě regrese.
 
-   ```python
-   from azureml.train.automl import AutoMLConfig
+```python
+from azureml.train.automl import AutoMLConfig
 
-   automl_config = AutoMLConfig(task='regression',
+automl_config = AutoMLConfig(task='regression',
                              debug_log='automated_ml_errors.log',
                              training_data = dataset_training,
                              spark_context = sc,
                              model_explainability = False, 
                              label_column_name ="fareAmount",**automl_settings)
-   ```
+```
 
 > [!NOTE]
-> Automatické kroky před zpracováním strojového učení (normalizace funkcí, zpracování chybějících dat, převod textu na číselnou atd.) se stanou součástí základního modelu. Při použití modelu pro předpovědi se na vstupní data automaticky aplikují stejné kroky před zpracováním během školení.
+>Automatické kroky před zpracováním strojového učení (normalizace funkcí, zpracování chybějících dat, převod textu na číselnou atd.) se stanou součástí základního modelu. Při použití modelu pro předpovědi se na vstupní data automaticky aplikují stejné kroky před zpracováním během školení.
 
 #### <a name="train-the-automatic-regression-model"></a>Analýza automatického regresního modelu 
 Nyní vytvoříme objekt experimentu v pracovním prostoru Azure Machine Learning. Experiment funguje jako kontejner pro vaše jednotlivá spuštění. 
@@ -217,10 +216,9 @@ local_run = experiment.submit(automl_config, show_output=True, tags = tags)
 # Use the get_details function to retrieve the detailed output for the run.
 run_details = local_run.get_details()
 ```
-
 Po dokončení experimentu bude výstup vracet podrobnosti o dokončených iteracích. Pro každou iteraci vidíte typ modelu, dobu trvání běhu a přesnost školení. Toto pole nejlépe sleduje nejlepší průběžné školení na základě typu metriky.
 
-![Snímek výstupu modelu](./media/apache-spark-machine-learning-aml-notebook/aml-model-output.png)
+![Snímek výstupu modelu](./media/azure-machine-learning-spark-notebook/model-output.png)
 
 > [!NOTE]
 > Po odeslání bude experiment AutoML spouštět různé iterace a typy modelů. Tento běh obvykle trvá 1 – 1,5 hodiny. 
@@ -234,94 +232,92 @@ best_run, fitted_model = local_run.get_output()
 ```
 
 #### <a name="test-model-accuracy"></a>Přesnost modelu testu
-
 1. K otestování přesnosti modelu použijeme nejlepší model pro spuštění taxislužby tarif předpovědi v sadě testů dat. ```predict```Funkce používá nejlepší model a předpovídá hodnoty y (množství tarifů) z datové sady ověření. 
 
-   ```python
-   # Test best model accuracy
-   validation_data_pd = validation_data.toPandas()
-   y_test = validation_data_pd.pop("fareAmount").to_frame()
-   y_predict = fitted_model.predict(validation_data_pd)
-   ```
+```python
+# Test best model accuracy
+validation_data_pd = validation_data.toPandas()
+y_test = validation_data_pd.pop("fareAmount").to_frame()
+y_predict = fitted_model.predict(validation_data_pd)
+```
 
 2. Chyba root-střed_hodn-Square (RMSE) je často používaná míra rozdílů mezi ukázkovými hodnotami předpokládanými modelem a zjištěnými hodnotami. Vypočítáme základní průměrnou chybu na základě porovnání y_test datového rámce s hodnotami, které model předpovídá. 
 
    Funkce ```mean_squared_error``` přebírá dvě pole a vypočítá průměrnou kvadratickou chybu mezi nimi. Pak povezmeme druhou odmocninu výsledku. Tato metrika udává zhruba, jak daleko se taxislužby tarif předpovědi ze skutečných hodnot tarifů.
 
-   ```python
-   from sklearn.metrics import mean_squared_error
-   from math import sqrt
+```python
+from sklearn.metrics import mean_squared_error
+from math import sqrt
 
-   # Calculate Root Mean Square Error
-   y_actual = y_test.values.flatten().tolist()
-   rmse = sqrt(mean_squared_error(y_actual, y_predict))
+# Calculate Root Mean Square Error
+y_actual = y_test.values.flatten().tolist()
+rmse = sqrt(mean_squared_error(y_actual, y_predict))
 
-   print("Root Mean Square Error:")
-   print(rmse)
-   ```
+print("Root Mean Square Error:")
+print(rmse)
+```
 
-   ```Output
-   Root Mean Square Error:
-   2.309997102577151
-   ```
-   
-   Chyba root-střed_hodn-Square je dobrým rozměrem, jak přesně model předpovídá odpověď. Z výsledků se zobrazí, že model je poměrně dobrý při předvídání taxislužby tarifů z funkcí datové sady, obvykle mezi +-$2,00.
+```Output
+Root Mean Square Error:
+2.309997102577151
+```
+Chyba root-střed_hodn-Square je dobrým rozměrem, jak přesně model předpovídá odpověď. Z výsledků se zobrazí, že model je poměrně dobrý při předvídání taxislužby tarifů z funkcí datové sady, obvykle mezi +-$2,00.
 
 3. Spusťte následující kód, který vypočítá průměrnou absolutní procentuální chybu (MAPE). Tato metrika vyjadřuje přesnost v procentech chyby. Provede to tak, že vypočítá absolutní rozdíl mezi každou předpovězenou a skutečnou hodnotou a potom sečte všechny rozdíly. Pak vyjadřuje, že součet jako procento z celkového počtu skutečných hodnot.
 
-   ```python
-   # Calculate MAPE and Model Accuracy 
-   sum_actuals = sum_errors = 0
+```python
+# Calculate MAPE and Model Accuracy 
+sum_actuals = sum_errors = 0
 
-   for actual_val, predict_val in zip(y_actual, y_predict):
-       abs_error = actual_val - predict_val
-       if abs_error < 0:
-           abs_error = abs_error * -1
+for actual_val, predict_val in zip(y_actual, y_predict):
+    abs_error = actual_val - predict_val
+    if abs_error < 0:
+        abs_error = abs_error * -1
 
-       sum_errors = sum_errors + abs_error
-       sum_actuals = sum_actuals + actual_val
+    sum_errors = sum_errors + abs_error
+    sum_actuals = sum_actuals + actual_val
 
-   mean_abs_percent_error = sum_errors / sum_actuals
+mean_abs_percent_error = sum_errors / sum_actuals
 
-   print("Model MAPE:")
-   print(mean_abs_percent_error)
-   print()
-   print("Model Accuracy:")
-   print(1 - mean_abs_percent_error)
-   ```
+print("Model MAPE:")
+print(mean_abs_percent_error)
+print()
+print("Model Accuracy:")
+print(1 - mean_abs_percent_error)
+```
 
-   ```Output
-   Model MAPE:
-   0.03655071038487368
+```Output
+Model MAPE:
+0.03655071038487368
 
-   Model Accuracy:
-   0.9634492896151263
-   ```
-   Ze dvou metrik přesnosti předpovědi vidíte, že model je poměrně dobrý pro předpověď taxislužby tarifů z funkcí datové sady. 
+Model Accuracy:
+0.9634492896151263
+```
+Ze dvou metrik přesnosti předpovědi vidíte, že model je poměrně dobrý pro předpověď taxislužby tarifů z funkcí datové sady. 
 
 4. Po přizpůsobení modelu lineární regrese teď budete muset určit, jak dobře model odpovídá datům. Za tímto účelem vykreslíme skutečné hodnoty jízdného s předpokládaným výstupem. Kromě toho také vypočítáme míru na základě R-čtverce, abyste pochopili, jak se data zavřou na pevně danou regresní čáru.
 
-   ```python
-   import matplotlib.pyplot as plt
-   import numpy as np
-   from sklearn.metrics import mean_squared_error, r2_score
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.metrics import mean_squared_error, r2_score
 
-   # Calculate the R2 score using the predicted and actual fare prices
-   y_test_actual = y_test["fareAmount"]
-   r2 = r2_score(y_test_actual, y_predict)
+# Calculate the R2 score using the predicted and actual fare prices
+y_test_actual = y_test["fareAmount"]
+r2 = r2_score(y_test_actual, y_predict)
 
-   # Plot the Actual vs Predicted Fare Amount Values
-   plt.style.use('ggplot')
-   plt.figure(figsize=(10, 7))
-   plt.scatter(y_test_actual,y_predict)
-   plt.plot([np.min(y_test_actual), np.max(y_test_actual)], [np.min(y_test_actual), np.max(y_test_actual)], color='lightblue')
-   plt.xlabel("Actual Fare Amount")
-   plt.ylabel("Predicted Fare Amount")
-   plt.title("Actual vs Predicted Fare Amont R^2={}".format(r2))
-   plt.show()
-   ```
-   
-   ![Snímek obrazovky regresní parcely](./media/apache-spark-machine-learning-aml-notebook/aml-fare-amount.png)
+# Plot the Actual vs Predicted Fare Amount Values
+plt.style.use('ggplot')
+plt.figure(figsize=(10, 7))
+plt.scatter(y_test_actual,y_predict)
+plt.plot([np.min(y_test_actual), np.max(y_test_actual)], [np.min(y_test_actual), np.max(y_test_actual)], color='lightblue')
+plt.xlabel("Actual Fare Amount")
+plt.ylabel("Predicted Fare Amount")
+plt.title("Actual vs Predicted Fare Amont R^2={}".format(r2))
+plt.show()
+
+```
+![Snímek obrazovky regresní parcely](./media/azure-machine-learning-spark-notebook/fare-amount.png)
 
    Z výsledků můžeme vidět, že účty měr R-kvadrát pro 95% naší odchylky. Tato funkce je ověřena také skutečnými vyhodnocenými vykreslením. Větší variance, na který je účtován regresní model, se blíží datovým bodům k namontované regresní čáře.  
 
@@ -334,15 +330,13 @@ model_path='outputs/model.pkl'
 model = best_run.register_model(model_name = 'NYCGreenTaxiModel', model_path = model_path, description = description)
 print(model.name, model.version)
 ```
-
 ```Output
 NYCGreenTaxiModel 1
 ```
-
 ## <a name="view-results-in-azure-machine-learning"></a>Zobrazit výsledky v Azure Machine Learning
 Nakonec můžete k výsledkům iterací přistupovat tak, že přejdete do experimentu v pracovní prostor Azure Machine Learning. Tady budete moct dig do dalších podrobností o stavu spuštění, pokusůch o modelech a dalších metrikách modelu. 
 
-![Snímek obrazovky pracovního prostoru AML](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-aml-workspace.png)
+![Snímek obrazovky pracovního prostoru AML](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
 
 ## <a name="next-steps"></a>Další kroky
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

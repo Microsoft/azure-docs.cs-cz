@@ -2,19 +2,21 @@
 title: Proměnné v šablonách
 description: Popisuje definování proměnných v šabloně Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: cf135959d30702ea58b7a1d4fdd82625a39245d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/24/2020
+ms.openlocfilehash: 7758451747503cb8c42566dc081a91f84bafa375
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75483814"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95915999"
 ---
 # <a name="variables-in-azure-resource-manager-template"></a>Proměnné v šabloně Azure Resource Manageru
 
 Tento článek popisuje, jak definovat a používat proměnné v šabloně Azure Resource Manager. K zjednodušení šablony můžete použít proměnné. Místo opakujících se složitých výrazů v rámci šablony definujete proměnnou, která obsahuje složitý výraz. Pak na tuto proměnnou odkazujete podle potřeby v rámci šablony.
 
 Správce prostředků vyřeší proměnné před spuštěním operací nasazení. Všude, kde je proměnná v šabloně použitá, ji Resource Manager nahradí vyřešenou hodnotou.
+
+Formát každé proměnné musí odpovídat jednomu z [datových typů](template-syntax.md#data-types).
 
 ## <a name="define-variable"></a>Definovat proměnnou
 
@@ -85,7 +87,7 @@ Chcete-li načíst nastavení pro zadané prostředí, použijte proměnnou a pa
 
 Následující příklady ukazují scénáře použití proměnných.
 
-|Šablona  |Popis  |
+|Template (Šablona)  |Description  |
 |---------|---------|
 | [Definice proměnných](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Ukazuje různé typy proměnných. Šablona neimplementuje žádné prostředky. Vytvoří proměnné hodnoty a vrátí tyto hodnoty. |
 | [konfigurační proměnná](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Ukazuje použití proměnné definující konfigurační hodnoty. Šablona neimplementuje žádné prostředky. Vytvoří proměnné hodnoty a vrátí tyto hodnoty. |

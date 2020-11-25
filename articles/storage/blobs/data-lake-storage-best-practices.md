@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: e008bad2043d8cd633f0849aefc62c4ed7a7e89d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0efcdfd1b14479edf84dc1892e7e1d9afabd5a81
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86104873"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913551"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Osvědčené postupy pro používání Azure Data Lake Storage Gen2
 
@@ -21,7 +21,7 @@ V tomto článku se seznámíte s osvědčenými postupy a pokyny pro práci s A
 
 ## <a name="security-considerations"></a>Důležité informace o zabezpečení
 
-Azure Data Lake Storage Gen2 nabízí řízení přístupu POSIX pro uživatele, skupiny a instanční objekty služby Azure Active Directory (Azure AD). Tyto ovládací prvky přístupu můžou být nastavené na existující soubory a adresáře. Ovládací prvky přístupu lze také použít k vytvoření výchozích oprávnění, která lze automaticky použít pro nové soubory nebo adresáře. Další podrobnosti o Data Lake Storage Gen2ech ACL jsou k dispozici v [řízení přístupu v Azure Data Lake Storage Gen2](storage-data-lake-storage-access-control.md).
+Azure Data Lake Storage Gen2 nabízí řízení přístupu POSIX pro uživatele, skupiny a instanční objekty služby Azure Active Directory (Azure AD). Tyto ovládací prvky přístupu můžou být nastavené na existující soubory a adresáře. Ovládací prvky přístupu lze také použít k vytvoření výchozích oprávnění, která lze automaticky použít pro nové soubory nebo adresáře. Další podrobnosti o Data Lake Storage Gen2ech ACL jsou k dispozici v [řízení přístupu v Azure Data Lake Storage Gen2](./data-lake-storage-access-control.md).
 
 ### <a name="use-security-groups-versus-individual-users"></a>Použití skupin zabezpečení oproti jednotlivým uživatelům
 
@@ -31,7 +31,7 @@ Když je skupině zabezpečení přiřazena oprávnění, přidání nebo odebr�
 
 ### <a name="security-for-groups"></a>Zabezpečení pro skupiny
 
-Když vy nebo vaši uživatelé potřebujete mít přístup k datům v účtu úložiště s povoleným hierarchickým oborem názvů, je nejvhodnější použít Azure Active Directory skupiny zabezpečení. Některé doporučené skupiny, které začínají na začátku, můžou být **ReadOnlyUsers**, **WriteAccessUsers**a **FullAccessUsers** pro kořen kontejneru a dokonce oddělené pro klíčové podadresáře. Pokud existují nějaké jiné očekávané skupiny uživatelů, které by mohly být později přidány, ale ještě nebyly identifikovány, můžete zvážit vytvoření fiktivních skupin zabezpečení, které mají přístup k určitým složkám. Pomocí skupiny zabezpečení zajistíte, že se můžete vyhnout dlouhé době zpracování při přiřazování nových oprávnění tisícům souborů.
+Když vy nebo vaši uživatelé potřebujete mít přístup k datům v účtu úložiště s povoleným hierarchickým oborem názvů, je nejvhodnější použít Azure Active Directory skupiny zabezpečení. Některé doporučené skupiny, které začínají na začátku, můžou být **ReadOnlyUsers**, **WriteAccessUsers** a **FullAccessUsers** pro kořen kontejneru a dokonce oddělené pro klíčové podadresáře. Pokud existují nějaké jiné očekávané skupiny uživatelů, které by mohly být později přidány, ale ještě nebyly identifikovány, můžete zvážit vytvoření fiktivních skupin zabezpečení, které mají přístup k určitým složkám. Pomocí skupiny zabezpečení zajistíte, že se můžete vyhnout dlouhé době zpracování při přiřazování nových oprávnění tisícům souborů.
 
 ### <a name="security-for-service-principals"></a>Zabezpečení instančních objektů
 
@@ -41,7 +41,7 @@ Azure Active Directory instanční objekty obvykle používají služby, jako je
 
 Data Lake Storage Gen2 podporuje možnost zapnout bránu firewall a omezit přístup jenom na služby Azure, což doporučuje omezit vektor externích útoků. Bránu firewall je možné povolit v účtu úložiště v Azure Portal přes bránu **firewall**  >  **Povolit bránu firewall (zapnuto)**  >  **Povolit přístup k možnostem služeb Azure** .
 
-Pokud chcete získat přístup k účtu úložiště z Azure Databricks, nasaďte Azure Databricks do vaší virtuální sítě a potom do své brány firewall přidejte tuto virtuální síť. Viz [Konfigurace bran firewall a virtuálních sítí Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Pokud chcete získat přístup k účtu úložiště z Azure Databricks, nasaďte Azure Databricks do vaší virtuální sítě a potom do své brány firewall přidejte tuto virtuální síť. Viz [Konfigurace bran firewall a virtuálních sítí Azure Storage](../common/storage-network-security.md).
 
 ## <a name="resiliency-considerations"></a>Důležité informace o odolnosti
 
