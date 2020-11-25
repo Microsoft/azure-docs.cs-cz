@@ -1,5 +1,5 @@
 ---
-title: Průvodce odstraňováním potíží Azure Attestation
+title: Průvodce odstraňováním potíží se službou Azure Attestation
 description: Průvodce odstraňováním potíží s běžně zjištěnými problémy
 services: attestation
 author: msmbaldwin
@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 46e3521a54f6bfdfbfb25634a09b8c8e0cfdcac0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: fe347983e2143c7a4bdf00ca0207356c881c66ac
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342989"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95891278"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Microsoft Azure ověření identity
 
@@ -45,7 +45,7 @@ At line:1 char:1
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Attestation.SetAzureAttestationPolicy
   ```
 
-**Postup při řešení potíží**
+**Postup řešení potíží**
 
 Aby bylo možné zobrazit zásady ověření identity/podepsané zásady, uživatel Azure AD vyžaduje oprávnění pro akce:
 - Microsoft. Attestation/attestationProviders/ověření/čtení
@@ -64,7 +64,7 @@ Pokud chcete ověřit role v PowerShellu, spusťte níže:
 
 a. Spusťte PowerShell a přihlaste se k Azure pomocí rutiny Connect-AzAccount.
 
-b. Ověření nastavení přiřazení role RBAC
+b. Ověření nastavení přiřazení role Azure
 
 
   ```powershell
@@ -134,7 +134,7 @@ Viz [Příklady zásad ověřování identity](/azure/attestation/policy-example
 - Zadaná nabídka byla neplatná, protože zařízení, na kterém byla nabídka vygenerována, nesplňuje požadavky na směrný plán Azure.
 - Zadaná citace byla neplatná, protože TCBInfo nebo QEID, které poskytla PCK Cache Service, byly neplatné.
 
-**Postup při řešení potíží**
+**Postup řešení potíží**
 
 Microsoft Azure Attestation podporuje ověřování SGXch nabídek generovaných sadou Intel SDK a Open enklávy SDK.
 

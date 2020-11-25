@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dddad5692ab2eebb6ef9b427c091be449791d7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96d1eaff4d1b93ad3bb489f177020c351fe4d13d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91818343"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95904031"
 ---
 # <a name="conditional-access-conditions"></a>Podmíněný přístup: podmínky
 
@@ -57,7 +57,7 @@ Pokud zablokujete starší ověřování pomocí podmínky **ostatních klientů
 
 Při konfiguraci umístění jako podmínky se můžou organizace rozhodnout zahrnout nebo vyloučit umístění. Tato pojmenovaná umístění můžou zahrnovat informace o veřejné síti IPv4, zemi nebo oblasti nebo dokonce neznámé oblasti, které nejsou namapované na konkrétní země nebo oblasti. Pouze rozsahy IP adres lze označit jako důvěryhodné umístění.
 
-Při zahrnutí **libovolného umístění**Tato možnost zahrnuje jakoukoli IP adresu na internetu, která není právě nakonfigurovaná pojmenovaná umístění. Když vyberete **libovolné umístění**, správci se můžou rozhodnout vyloučit **všechna důvěryhodná** nebo **Vybraná umístění**.
+Při zahrnutí **libovolného umístění** Tato možnost zahrnuje jakoukoli IP adresu na internetu, která není právě nakonfigurovaná pojmenovaná umístění. Když vyberete **libovolné umístění**, správci se můžou rozhodnout vyloučit **všechna důvěryhodná** nebo **Vybraná umístění**.
 
 Některé organizace například mohou zvolit, že nevyžadují vícefaktorové ověřování, když jsou jejich uživatelé připojeni k síti v důvěryhodném umístění, jako je jejich fyzické ústředí. Správci mohou vytvořit zásadu, která zahrnuje libovolné umístění, ale vyloučí vybraná umístění pro své sítě centrály.
 
@@ -137,7 +137,7 @@ Pokud chcete toto rozšíření automaticky nasadit do prohlížečů Chrome, vy
 - Typ REG_SZ (String)
 - Data ppnbnpeolgkicgegkbkbjmhlideopiji; https \: //clients2.Google.com/Service/Update2/CRX
 
-V případě podpory Chrome v **Windows 8.1 a 7**vytvořte následující klíč registru:
+V případě podpory Chrome v **Windows 8.1 a 7** vytvořte následující klíč registru:
 
 - HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls cesty
 - Název 1
@@ -174,7 +174,7 @@ Toto nastavení má vliv na pokusy o přístup uskutečněné z následujících
 
 ### <a name="exchange-activesync-clients"></a>Klienti Exchange ActiveSync
 
-- Organizace můžou při přiřazování zásad uživatelům nebo skupinám vybrat jenom klienty Exchange ActiveSync. Výběr **všech uživatelů**, **Všichni host a externí uživatelé**nebo **role adresáře** způsobí, že všichni uživatelé budou zablokovaný.
+- Organizace můžou při přiřazování zásad uživatelům nebo skupinám vybrat jenom klienty Exchange ActiveSync. Výběr **všech uživatelů**, **Všichni host a externí uživatelé** nebo **role adresáře** způsobí, že všichni uživatelé budou zablokovaný.
 - Při vytváření zásad přiřazených klientům Exchange ActiveSync by měla být **Exchange Online** jedinou cloudovou aplikací přiřazenou zásadám. 
 - Organizace můžou zúžit rozsah těchto zásad na konkrétní platformy pomocí podmínky pro **platformy zařízení** .
 
@@ -187,14 +187,14 @@ Další informace najdete v následujících článcích:
 
 ### <a name="other-clients"></a>Ostatní klienti
 
-Výběrem **jiných klientů**můžete určit podmínku, která bude mít vliv na aplikace, které používají základní ověřování, s poštovními protokoly, jako jsou IMAP, MAPI, pop, SMTP a starší aplikace Office, které nepoužívají moderní ověřování.
+Výběrem **jiných klientů** můžete určit podmínku, která bude mít vliv na aplikace, které používají základní ověřování, s poštovními protokoly, jako jsou IMAP, MAPI, pop, SMTP a starší aplikace Office, které nepoužívají moderní ověřování.
 
 ## <a name="device-state-preview"></a>Stav zařízení (Preview)
 
 Stav zařízení se dá použít k vyloučení zařízení, která jsou připojená k hybridní službě Azure AD nebo zařízení označená jako vyhovující zásadám dodržování předpisů pro zásady podmíněného přístupu organizace v Microsoft Intune.
 
 Například *Všichni uživatelé, kteří* přistupují ke cloudové aplikaci *pro správu Microsoft Azure* , včetně **všech stavů zařízení** , včetně **zařízení připojených k hybridní službě Azure AD** a **zařízení označená jako kompatibilní** a pro *řízení přístupu*, **blokuje**. 
-   - Tento příklad vytvoří zásadu, která umožňuje přístup ke správě Microsoft Azure jenom ze zařízení, která jsou připojená k hybridní službě Azure AD nebo zařízení označená jako vyhovující předpisům.
+   - Tento příklad vytvoří zásadu, která umožňuje přístup ke správě Microsoft Azure jenom ze zařízení, která jsou buď připojená k hybridní službě Azure AD, nebo zařízení označená jako vyhovující předpisům.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/04/2019
-ms.openlocfilehash: ef34dbfd3af326dbf2d82e09a4c5c8c8e4a91a84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/11/2020
+ms.openlocfilehash: 5aa379f6601bc324bd08c53f251b2097141eec69
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319792"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95911630"
 ---
 # <a name="log-analytics-data-security"></a>Zabezpečení dat Log Analytics
 Účelem tohoto dokumentu je poskytnout informace, které jsou specifické pro Log Analytics, což je funkce Azure Monitor, která doplní informace na [Centrum zabezpečení Azure](https://www.microsoft.com/en-us/trust-center?rtc=1).  
@@ -27,11 +27,17 @@ Služba Log Analytics spravuje vaše cloudová data bezpečně pomocí následuj
 * Dodržování předpisů
 * Certifikace standardů zabezpečení
 
+Můžete také použít další funkce zabezpečení integrované do Azure Monitor a Log Analytics. Tyto funkce vyžadují větší správu správců. 
+* Klíče spravované zákazníkem (zabezpečení)
+* Privátní úložiště Azure
+* Síť s Private Linkem 
+* Omezení přístupu podpory Azure nastavená pomocí bezpečnostního modulu Azure
+
 Kontaktujte nás s případnými dotazy, návrhy nebo problémy, které se týkají těchto informací, včetně našich zásad zabezpečení v [možnostech podpory Azure](https://azure.microsoft.com/support/options/).
 
 ## <a name="sending-data-securely-using-tls-12"></a>Bezpečné posílání dat pomocí TLS 1,2 
 
-Aby se zajistilo zabezpečení dat při přenosu do Log Analytics, důrazně doporučujeme nakonfigurovat agenta tak, aby používal minimálně protokol TLS (Transport Layer Security) 1,2. Zjistili jsme, že starší verze TLS/SSL (Secure Sockets Layer) (SSL) jsou zranitelné a i když stále fungují k tomu, aby se zajistila zpětná kompatibilita, **nedoporučuje**se a odvětví se rychle přesouvá na zrušení podpory těchto starších protokolů. 
+Aby se zajistilo zabezpečení dat při přenosu do Log Analytics, důrazně doporučujeme nakonfigurovat agenta tak, aby používal minimálně protokol TLS (Transport Layer Security) 1,2. Zjistili jsme, že starší verze TLS/SSL (Secure Sockets Layer) (SSL) jsou zranitelné a i když stále fungují k tomu, aby se zajistila zpětná kompatibilita, **nedoporučuje** se a odvětví se rychle přesouvá na zrušení podpory těchto starších protokolů. 
 
 [Rada standardů zabezpečení PCI](https://www.pcisecuritystandards.org/) nastavila [konečný termín od 30. června 2018,](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) aby se zakázaly starší verze TLS/SSL a upgradoval na bezpečnější protokoly. Když Azure uvolní podporu starší verze, pokud agenti nemůžou komunikovat přes aspoň TLS 1,2, nebudete moct odesílat data Log Analytics. 
 
@@ -170,6 +176,15 @@ Doba uchování shromážděných dat uložených v databázi závisí na zvolen
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. pro přístup k datům použijte Log Analytics
 Pokud chcete získat přístup k pracovnímu prostoru Log Analytics, přihlaste se k Azure Portal pomocí účtu organizace nebo účet Microsoft, které jste dříve nastavili. Veškerý provoz mezi portálem a službou Log Analytics se odesílá přes zabezpečený kanál HTTPS. Při používání portálu se v klientském počítači (webovém prohlížeči) generuje ID relace a data se ukládají do místní mezipaměti, dokud se relace neukončí. Po ukončení se mezipaměť odstraní. Soubory cookie na straně klienta, které neobsahují identifikovatelné osobní údaje, se automaticky neodeberou. Soubory cookie relací jsou označeny jako HTTPOnly a jsou zabezpečené. Po předem určené době nečinnosti se Azure Portal relace ukončí.
+
+
+## <a name="additional-security-features"></a>Další funkce zabezpečení
+Pomocí těchto dalších funkcí zabezpečení můžete dále zabezpečit vaše prostředí Azure Monitor/Log Analytics. Tyto funkce vyžadují větší správu správců. 
+- [Klíče spravované zákazníkem (zabezpečení)](customer-managed-keys.md) – pomocí klíčů spravovaných zákazníkem můžete šifrovat data odesílaná do vašich Log Analytics pracovních prostorů. Vyžaduje použití Azure Key Vault. 
+- [Soukromé/zákazníkem spravované úložiště](private-storage.md) – spravujte účet úložiště s vlastním šifrováním a sdělte Log Analytics, jak ho používat k ukládání dat monitorování. 
+- [Soukromé odkazy sítě](private-link-security.md) – privátní propojení Azure umožňuje zabezpečené propojení služeb Azure PaaS (včetně Azure monitor) do vaší virtuální sítě pomocí privátních koncových bodů. 
+- [Bezpečnostní modul Azure pro zákazníky](/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview) – Customer Lockbox pro Microsoft Azure poskytuje rozhraní pro zákazníky, kteří budou kontrolovat a schvalovat nebo odmítat žádosti o přístup k datům zákazníků. Používá se v případech, kdy technici Microsoftu potřebují získat přístup k datům zákazníků během zpracování žádostí o podporu.
+
 
 ## <a name="next-steps"></a>Další kroky
 * Naučte se shromažďovat data pomocí Log Analytics pro virtuální počítače Azure po [rychlém startu virtuálního počítače Azure](../learn/quick-collect-azurevm.md).  

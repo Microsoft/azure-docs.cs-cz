@@ -8,18 +8,18 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: c0b85164042ef8ba0dda5f83dbfe49f585a11f7c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: aeb2c58504d1f058a3b887e02a7b7406c09db5b6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102638"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913143"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Migrace Azure Data Lake Storage z Gen1 na Gen2
 
 Data, úlohy a aplikace můžete migrovat z Data Lake Storage Gen1 do Data Lake Storage Gen2.
 
-Azure Data Lake Storage Gen2 je postavená na [službě Azure Blob Storage](storage-blobs-introduction.md) a poskytuje sadu funkcí vyhrazených pro analýzy velkých objemů dat. [Data Lake Storage Gen2](https://azure.microsoft.com/services/storage/data-lake-storage/) kombinuje funkce z [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index), jako jsou sémantika systému souborů, adresář a zabezpečení na úrovni souborů a škálování s nízkými náklady, vrstvenými úložištěm, vysokou dostupností a možnostmi zotavení po havárii z [Azure Blob Storage](storage-blobs-introduction.md).
+Azure Data Lake Storage Gen2 je postavená na [službě Azure Blob Storage](storage-blobs-introduction.md) a poskytuje sadu funkcí vyhrazených pro analýzy velkých objemů dat. [Data Lake Storage Gen2](https://azure.microsoft.com/services/storage/data-lake-storage/) kombinuje funkce z [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml), jako jsou sémantika systému souborů, adresář a zabezpečení na úrovni souborů a škálování s nízkými náklady, vrstvenými úložištěm, vysokou dostupností a možnostmi zotavení po havárii z [Azure Blob Storage](storage-blobs-introduction.md).
 
 > [!NOTE]
 > Pro snazší čtení Tento článek používá termín *Gen1* k odkazování na Azure Data Lake Storage Gen1 a pojem *Gen2* pro odkazování na Azure Data Lake Storage Gen2.
@@ -47,9 +47,9 @@ K migraci na Gen2 doporučujeme následující postup.
 
 3. Projděte si seznam [známých problémů](data-lake-storage-known-issues.md) pro vyhodnocení všech mezer ve funkcích.
 
-4. Gen2 podporuje funkce služby Blob Storage, jako je [protokolování diagnostiky](../common/storage-analytics-logging.md), [úrovně přístupu](storage-blob-storage-tiers.md)a [zásady správy životního cyklu úložiště objektů BLOB](storage-lifecycle-management-concepts.md). Pokud jste s použitím některé z těchto funkcí zajímaví, přečtěte si [aktuální úroveň podpory](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-supported-blob-storage-features).
+4. Gen2 podporuje funkce služby Blob Storage, jako je [protokolování diagnostiky](../common/storage-analytics-logging.md), [úrovně přístupu](storage-blob-storage-tiers.md)a [zásady správy životního cyklu úložiště objektů BLOB](storage-lifecycle-management-concepts.md). Pokud jste s použitím některé z těchto funkcí zajímaví, přečtěte si [aktuální úroveň podpory](./data-lake-storage-supported-blob-storage-features.md).
 
-5. Projděte si aktuální stav [podpory ekosystému Azure](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-multi-protocol-access) , abyste zajistili, že Gen2 podporuje všechny služby, na kterých vaše řešení závisejí.
+5. Projděte si aktuální stav [podpory ekosystému Azure](./data-lake-storage-multi-protocol-access.md) , abyste zajistili, že Gen2 podporuje všechny služby, na kterých vaše řešení závisejí.
 
 ### <a name="step-2-prepare-to-migrate"></a>Krok 2: Příprava na migraci
 
@@ -69,13 +69,13 @@ K migraci na Gen2 doporučujeme následující postup.
 
 Migrujte data, úlohy a aplikace pomocí vhodného vzoru. Doporučujeme, abyste scénáře ověřovali přírůstkově.
 
-1. [Vytvořte účet úložiště](data-lake-storage-quickstart-create-account.md) a povolte funkci hierarchického oboru názvů. 
+1. [Vytvořte účet úložiště](../common/storage-account-create.md) a povolte funkci hierarchického oboru názvů. 
 
 2. Migrujte svá data. 
 
-3. Nakonfigurujte [služby ve vašich úlohách](data-lake-storage-integrate-with-azure-services.md) tak, aby odkazovaly na koncový bod Gen2. 
+3. Nakonfigurujte [služby ve vašich úlohách](./data-lake-storage-supported-azure-services.md) tak, aby odkazovaly na koncový bod Gen2. 
    
-4. Aktualizujte aplikace tak, aby používaly rozhraní Gen2 API. Přečtěte si příručky pro [.NET](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md), [Python](data-lake-storage-directory-file-acl-python.md), [JavaScript](data-lake-storage-directory-file-acl-javascript.md) a [REST](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2). 
+4. Aktualizujte aplikace tak, aby používaly rozhraní Gen2 API. Přečtěte si příručky pro [.NET](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md), [Python](data-lake-storage-directory-file-acl-python.md), [JavaScript](data-lake-storage-directory-file-acl-javascript.md) a [REST](/rest/api/storageservices/data-lake-storage-gen2). 
    
 5. Aktualizujte skripty pro použití Data Lake Storage Gen2 [rutiny prostředí PowerShell](data-lake-storage-directory-file-acl-powershell.md)a [příkazy rozhraní příkazového řádku Azure CLI](data-lake-storage-directory-file-acl-cli.md).
    
@@ -93,17 +93,17 @@ Jakmile budete mít jistotu, že vaše aplikace a úlohy jsou v Gen2 stabilní, 
 
 Tato tabulka porovnává možnosti Gen1 s Gen2.
 
-|Plošný |Gen1   |Gen2 |
+|Oblast |Gen1   |Gen2 |
 |---|---|---|
 |Organizace dat|[Hierarchický obor názvů](data-lake-storage-namespace.md)<br>Podpora souborů a složek|[Hierarchický obor názvů](data-lake-storage-namespace.md)<br>Podpora kontejnerů, souborů a složek |
 |Geografická redundance| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage), [ZRS](../common/storage-redundancy.md#zone-redundant-storage), [GRS](../common/storage-redundancy.md#geo-redundant-storage), [RA-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
-|Authentication|[Spravovaná identita AAD](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Instanční objekty](../../active-directory/develop/app-objects-and-service-principals.md)|[Spravovaná identita AAD](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Instanční objekty](../../active-directory/develop/app-objects-and-service-principals.md)<br>[Sdílený přístupový klíč](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
+|Authentication|[Spravovaná identita AAD](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Instanční objekty](../../active-directory/develop/app-objects-and-service-principals.md)|[Spravovaná identita AAD](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Instanční objekty](../../active-directory/develop/app-objects-and-service-principals.md)<br>[Sdílený přístupový klíč](/rest/api/storageservices/authorize-with-shared-key)|
 |Autorizace|Správa – [Azure RBAC](../../role-based-access-control/overview.md)<br>Data – [seznamy ACL](data-lake-storage-access-control.md)|Správa – [Azure RBAC](../../role-based-access-control/overview.md)<br>Data-  [seznamy řízení přístupu (ACL)](data-lake-storage-access-control.md), [Azure RBAC](../../role-based-access-control/overview.md) |
-|Šifrování – neaktivní neaktivní data|Strana serveru – s použitím klíčů spravovaných [Microsoftem](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) nebo [zákazníky](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|Strana serveru – s použitím klíčů spravovaných [Microsoftem](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) nebo [zákazníky](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Šifrování – neaktivní neaktivní data|Strana serveru – s použitím klíčů spravovaných [Microsoftem](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) nebo [zákazníky](../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|Strana serveru – s použitím klíčů spravovaných [Microsoftem](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) nebo [zákazníky](../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Podpora virtuální sítě|[Integrace virtuální sítě](../../data-lake-store/data-lake-store-network-security.md)|[Koncové body služby](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [privátní koncové body](../common/storage-private-endpoints.md)|
 |Vývojářské prostředí|[REST](../../data-lake-store/data-lake-store-data-operations-rest-api.md), [.NET](../../data-lake-store/data-lake-store-data-operations-net-sdk.md), [Java](../../data-lake-store/data-lake-store-get-started-java-sdk.md), [Python](../../data-lake-store/data-lake-store-data-operations-python.md), [PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md), [Azure CLI](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|Všeobecně dostupná – [REST](/rest/api/storageservices/data-lake-storage-gen2), [.NET](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md), [Python](data-lake-storage-directory-file-acl-python.md)<br>Public Preview – [JavaScript](data-lake-storage-directory-file-acl-javascript.md), [POWERSHELL](data-lake-storage-directory-file-acl-powershell.md), [Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
 |Protokoly prostředků|Klasické protokoly<br>[Azure Monitor integrovaný](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[Klasické protokoly](../common/storage-analytics-logging.md) – všeobecně dostupné<br>Integrace se službou Azure monitor – TBD časová osa|
-|Ekosystém|[HDInsight (3,6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md), [Azure Databricks (3,1 a vyšší)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html), [Azure synapse Analytics](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store), [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3,6, 4,0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md), [Azure Databricks (5,1 a vyšší)](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2), [Azure synapse Analytics](../../azure-sql/database/vnet-service-endpoint-rule-overview.md), [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
+|Ekosystém|[HDInsight (3,6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md), [Azure Databricks (3,1 a vyšší)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html), [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md), [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3,6, 4,0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md), [Azure Databricks (5,1 a vyšší)](/azure/databricks/data/data-sources/azure/azure-datalake-gen2), [Azure synapse Analytics](../../azure-sql/database/vnet-service-endpoint-rule-overview.md), [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
 
 <a id="migration-patterns"></a>
 
@@ -126,7 +126,7 @@ Toto je nejjednodušší vzor.
 
 1. Zastavte všechny zápisy do Gen1.
 
-2. Přesuňte data z Gen1 do Gen2. Doporučujeme [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage). Seznamy ACL se kopírují s daty.
+2. Přesuňte data z Gen1 do Gen2. Doporučujeme [Azure Data Factory](../../data-factory/connector-azure-data-lake-storage.md). Seznamy ACL se kopírují s daty.
 
 3. Point ingestujte operace a úlohy do Gen2.
 
@@ -147,7 +147,7 @@ Podívejte se na náš vzorový kód pro vzor výtahu a posunutí v naší [uká
 
 ### <a name="incremental-copy-pattern"></a>Vzor přírůstkového kopírování
 
-1. Začněte přesouvat data z Gen1 do Gen2. Doporučujeme [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage). Seznamy ACL se kopírují s daty.
+1. Začněte přesouvat data z Gen1 do Gen2. Doporučujeme [Azure Data Factory](../../data-factory/connector-azure-data-lake-storage.md). Seznamy ACL se kopírují s daty.
 
 2. Přírůstkové kopírování nových dat z Gen1.
 
@@ -171,7 +171,7 @@ Podívejte se na náš vzorový kód pro vzor přírůstkové kopírování v na
 
 ### <a name="dual-pipeline-pattern"></a>Vzor duálního kanálu
 
-1. Přesuňte data z Gen1 do Gen2. Doporučujeme [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage). Seznamy ACL se kopírují s daty.
+1. Přesuňte data z Gen1 do Gen2. Doporučujeme [Azure Data Factory](../../data-factory/connector-azure-data-lake-storage.md). Seznamy ACL se kopírují s daty.
 
 2. Ingestování nových dat do Gen1 i Gen2.
 
@@ -213,6 +213,6 @@ Podívejte se na náš vzorový kód pro obousměrný způsob synchronizace v [u
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o různých součástech nastavení zabezpečení pro účet úložiště. Viz [Průvodce zabezpečením Azure Storage](../common/storage-security-guide.md).
+- Přečtěte si o různých součástech nastavení zabezpečení pro účet úložiště. Viz [Průvodce zabezpečením Azure Storage](./security-recommendations.md).
 - Optimalizujte výkon pro vaše Data Lake Store. Zvýšení výkonu najdete v tématu věnovaném [optimalizaci Azure Data Lake Storage Gen2](data-lake-storage-performance-tuning-guidance.md) .
 - Projděte si osvědčené postupy pro správu Data Lake Store. Viz [osvědčené postupy pro používání Azure Data Lake Storage Gen2](data-lake-storage-best-practices.md)

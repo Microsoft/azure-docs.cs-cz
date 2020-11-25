@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: dcf34d896deafad77d16619f3883ddd103fc55d4
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: c35ee7bcdefa5091d9c887430182638f066cb9fa
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95790702"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95900877"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Vytváření, vývoj a Správa poznámkových bloků synapse Studio (Preview) v Azure synapse Analytics
 
@@ -104,7 +104,7 @@ V rozevíracím seznamu na horním panelu příkazů můžete nastavit primárn�
 
 V jednom poznámkovém bloku můžete použít více jazyků zadáním správného příkazu jazyka Magic na začátku buňky. V následující tabulce jsou uvedeny příkazy Magic pro přepínání jazyků buněk.
 
-|Magic – příkaz |Jazyk | Popis |  
+|Magic – příkaz |Jazyk | Description |  
 |---|------|-----|
 |%% pyspark| Python | Spustí dotaz **Pythonu** v kontextu Sparku.  |
 |%% Spark| Scala | Spustí dotaz **Scala** proti kontextu Spark.  |  
@@ -399,68 +399,6 @@ K datům v primárním účtu úložiště můžete přistupovat přímo. Není 
 
 ![data na buňku](./media/apache-spark-development-using-notebooks/synapse-data-to-cell.png)
 
-## <a name="visualize-data-in-a-notebook"></a>Vizualizace dat v poznámkovém bloku
-
-### <a name="produce-rendered-table-view"></a>Vygenerovat zobrazení vykreslené tabulky
-
-Zobrazení tabelárních výsledků je k dispozici s možností vytvoření pruhového grafu, spojnicového grafu, výsečového grafu, bodového grafu a plošného grafu. Data můžete vizualizovat bez nutnosti psát kód. Grafy je možné přizpůsobit v **možnostech grafu**. 
-
-V zobrazení vykreslené tabulky je ve výchozím nastavení zobrazen výstup příkazů **%%** Magic. <code>display(df)</code>K vytváření zobrazení vykreslené tabulky můžete volat funkce Spark Dataframes, PANDAS Dataframes, list nebo odolné distribuované datové sady (RDD).
-
-   [![předdefinované – grafy](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png#lightbox)
-
-### <a name="visualize-built-in-charts-from-large-scale-dataset"></a>Vizualizace vestavěných grafů z velkého rozsahu datové sady 
-
-Ve výchozím nastavení <code>display(df)</code> bude funkce při vykreslování grafů provádět pouze první 1000 řádky dat. Zaškrtněte políčko **agregace u všech výsledků** a zvolte tlačítko **použít** . generování grafu se použije z celé datové sady. Při změně nastavení grafu se aktivuje úloha Sparku, takže se výpočet dokončí a graf se vykreslí. 
-    [![Builtin-Charts-Aggregator-All](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png#lightbox)
-
-
-
-### <a name="visualize-data-statistic-information"></a>Vizualizace informací o statistice dat
-Můžete použít <code>display(df, summary = True)</code> ke kontrole souhrnu statistik daného datového rámce Sparku, který obsahuje název sloupce, typ sloupce, jedinečné hodnoty a chybějící hodnoty pro každý sloupec. Můžete také vybrat konkrétní sloupec, abyste viděli jeho minimální hodnotu, maximální hodnotu, střední hodnotu a směrodatnou odchylku.
-    [![Builtin – grafy – souhrn ](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png#lightbox)
-
-### <a name="render-html-or-interactive-libraries"></a>Vykreslování HTML nebo interaktivních knihoven
-
-Pomocí **displayHTML ()** můžete vykreslit kód HTML, včetně JavaScript, CSS, D3 nebo interaktivních knihoven, jako je **rozostření**.
-
-Následující obrázek je příkladem vykreslení glyfů přes mapu pomocí **rozostření**.
-
-   ![rozostření – příklad](./media/apache-spark-development-using-notebooks/synapse-bokeh-image.png)
-   
-
-Spusťte následující vzorový kód pro vykreslení obrázku výše.
-
-```python
-from bokeh.plotting import figure, output_file
-from bokeh.tile_providers import get_provider, Vendors
-from bokeh.embed import file_html
-from bokeh.resources import CDN
-from bokeh.models import ColumnDataSource
-
-tile_provider = get_provider(Vendors.CARTODBPOSITRON)
-
-# range bounds supplied in web mercator coordinates
-p = figure(x_range=(-9000000,-8000000), y_range=(4000000,5000000),
-           x_axis_type="mercator", y_axis_type="mercator")
-p.add_tile(tile_provider)
-
-# plot datapoints on the map
-source = ColumnDataSource(
-    data=dict(x=[ -8800000, -8500000 , -8800000],
-              y=[4200000, 4500000, 4900000])
-)
-
-p.circle(x="x", y="y", size=15, fill_color="blue", fill_alpha=0.8, source=source)
-
-# create an html document that embeds the Bokeh plot
-html = file_html(p, CDN, "my plot1")
-
-# display this html
-displayHTML(html)
-
-```
-
 ## <a name="save-notebooks"></a>Ukládat poznámkové bloky
 
 V pracovním prostoru můžete uložit jeden Poznámkový blok nebo všechny poznámkové bloky.
@@ -539,11 +477,11 @@ Podobně jako Jupyter poznámkové bloky mají poznámkové bloky Azure synapse 
 
 1. Buňka je v režimu příkazu, když není k dispozici žádný textový kurzor, který je vyzván k zadání. Když je buňka v režimu příkazu, můžete Poznámkový blok upravit jako celek, ale ne psát do jednotlivých buněk. Stisknutím `ESC` nebo pomocí myši vyberte mimo oblast editoru buňky režim příkazu.
 
-   ![režim příkazu](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
+   ![režim příkazu](./media/apache-spark-development-using-notebooks/synapse-command-mode-2.png)
 
 2. Režim úprav je označen textovým kurzorem, který vás vyzve k zadání v oblasti editoru. Když je buňka v režimu úprav, můžete zadat text do buňky. Stisknutím `Enter` nebo pomocí myši přejděte na oblast editoru buňky a vyberte režim úprav.
    
-   ![rezim-uprav](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
+   ![rezim-uprav](./media/apache-spark-development-using-notebooks/synapse-edit-mode-2.png)
 
 ### <a name="shortcut-keys-under-command-mode"></a>Klávesové zkratky v režimu příkazu
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 828b5c34aaccf2a53aa197f921a8ef02d46821ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2350177373bc99907c437d814d8f01193f18f3fd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91280466"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95895719"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Provedení obnovení k určitému bodu v čase u dat objektů blob bloku
 
@@ -29,7 +29,7 @@ Další informace o obnovení k bodu v čase najdete v tématu [obnovení k bodu
 
 Než povolíte a nakonfigurujete obnovení k bodu v čase, povolte jeho požadavky pro účet úložiště: Obnovitelné odstranění, změna kanálu a správa verzí objektů BLOB. Další informace o povolení jednotlivých funkcí najdete v těchto článcích:
 
-- [Povolení obnovitelného odstranění pro objekty blob](soft-delete-enable.md)
+- [Povolení obnovitelného odstranění pro objekty blob](./soft-delete-blob-enable.md)
 - [Povolení a zákaz kanálu změn](storage-blob-change-feed.md#enable-and-disable-the-change-feed)
 - [Povolení a správa verzí objektů BLOB](versioning-enable.md)
 
@@ -41,7 +41,7 @@ Než povolíte a nakonfigurujete obnovení k bodu v čase, povolte jeho požadav
 Pokud chcete nakonfigurovat obnovení k bodu v čase pomocí Azure Portal, postupujte takto:
 
 1. Na webu Azure Portal přejděte na svůj účet úložiště.
-1. V části **Nastavení**vyberte **Ochrana dat**.
+1. V části **Nastavení** vyberte **Ochrana dat**.
 1. Vyberte možnost **zapnout obnovení k bodu v čase** . Když vyberete tuto možnost, povolí se i obnovitelné odstraňování objektů blob, správy verzí a kanálu změn.
 1. Nastavte maximální bod obnovení pro obnovení k časovému okamžiku ve dnech. Toto číslo musí být alespoň jeden den kratší než doba uchování zadaná pro obnovitelné odstranění objektu BLOB.
 1. Uložte provedené změny.
@@ -117,12 +117,12 @@ Můžete obnovit všechny kontejnery v účtu úložiště a vrátit je do před
 Pro obnovení všech kontejnerů a objektů BLOB v účtu úložiště pomocí Azure Portal postupujte takto:
 
 1. Přejděte do seznamu kontejnerů pro váš účet úložiště.
-1. Na panelu nástrojů zvolte **obnovit kontejnery**a pak **Obnovit vše**.
+1. Na panelu nástrojů zvolte **obnovit kontejnery** a pak **Obnovit vše**.
 1. V podokně **obnovit všechny kontejnery** určete bod obnovení zadáním data a času.
 1. Zaškrtnutím políčka potvrďte, že chcete pokračovat.
 1. Vyberte **obnovit** a spusťte operaci obnovení.
 
-    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="Snímek obrazovky, který ukazuje, jak nakonfigurovat obnovení k bodu v čase Azure Portal":::
+    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="Snímek obrazovky ukazující obnovení všech kontejnerů do zadaného bodu obnovení":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -164,24 +164,24 @@ Chcete-li obnovit rozsah objektů BLOB v jednom nebo více kontejnerech s Azure 
 
 1. Přejděte do seznamu kontejnerů pro váš účet úložiště.
 1. Vyberte kontejner nebo kontejnery, které chcete obnovit.
-1. Na panelu nástrojů zvolte **obnovit kontejnery**a pak **Obnovit vybrané**.
+1. Na panelu nástrojů zvolte **obnovit kontejnery** a pak **Obnovit vybrané**.
 1. V podokně **Obnovit vybrané kontejnery** určete bod obnovení zadáním data a času.
 1. Zadejte rozsahy, které se mají obnovit. K vymezení názvu kontejneru z předpony objektu BLOB použijte lomítko (/).
 1. Ve výchozím nastavení podokno **Obnovit vybrané kontejnery** určuje rozsah, který zahrnuje všechny objekty BLOB v kontejneru. Tento rozsah odstraňte, pokud nechcete obnovit celý kontejner. Výchozí rozsah je zobrazen na následujícím obrázku.
 
-    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="Snímek obrazovky, který ukazuje, jak nakonfigurovat obnovení k bodu v čase Azure Portal":::
+    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="Snímek obrazovky s výchozím rozsahem objektů blob, který se má odstranit před zadáním vlastního rozsahu":::
 
 1. Zaškrtnutím políčka potvrďte, že chcete pokračovat.
 1. Vyberte **obnovit** a spusťte operaci obnovení.
 
 Následující obrázek znázorňuje operaci obnovení v sadě rozsahů.
 
-:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="Snímek obrazovky, který ukazuje, jak nakonfigurovat obnovení k bodu v čase Azure Portal":::
+:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="Snímek obrazovky, který ukazuje, jak obnovit rozsahy objektů BLOB v jednom nebo více kontejnerech":::
 
 Operace obnovení zobrazená na obrázku provádí následující akce:
 
 - Obnoví úplný obsah *container1*.
-- Obnoví objekty BLOB v rozsahu lexicographical *blob1* prostřednictvím *blob5* v *container2*. Tento rozsah obnoví objekty BLOB s názvy, například *blob1*, *blob11*, *blob100*, *blob2*a tak dále. Vzhledem k tomu, že konec rozsahu je exkluzivní, obnoví objekty blob, jejichž názvy začínají na *blob4*, ale neobnoví objekty blob, jejichž názvy začínají na *blob5*.
+- Obnoví objekty BLOB v rozsahu lexicographical *blob1* prostřednictvím *blob5* v *container2*. Tento rozsah obnoví objekty BLOB s názvy, například *blob1*, *blob11*, *blob100*, *blob2* a tak dále. Vzhledem k tomu, že konec rozsahu je exkluzivní, obnoví objekty blob, jejichž názvy začínají na *blob4*, ale neobnoví objekty blob, jejichž názvy začínají na *blob5*.
 - Obnoví všechny objekty BLOB v *container3* a *container4*. Vzhledem k tomu, že konec rozsahu je exkluzivní, tento rozsah neobnoví *container5*.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
@@ -248,6 +248,6 @@ Chcete-li spustit operaci obnovení synchronně a zablokovat spuštění, dokud 
 ## <a name="next-steps"></a>Další kroky
 
 - [Obnovení bodu v čase pro objekty blob bloku](point-in-time-restore-overview.md)
-- [Obnovitelné odstranění](soft-delete-overview.md)
+- [Obnovitelné odstranění](./soft-delete-blob-overview.md)
 - [Změna kanálu](storage-blob-change-feed.md)
 - [Správa verzí objektů BLOB](versioning-overview.md)

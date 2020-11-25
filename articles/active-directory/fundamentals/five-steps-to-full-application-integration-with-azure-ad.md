@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: 26dd255e6edff7c339ab9766bb71889cf4e2deaa
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8f184de8953e8e8bfe982d2502ca476fb54a66c9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577639"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95903708"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>Pět kroků pro integraci všech vašich aplikací se službou Azure AD
 
@@ -46,7 +46,7 @@ Nakonec můžete integrovat i aplikace, které vyvíjíte interně. Tento postup
 
 V dalším kroku zjistíte, že se zaměstnanci aplikace často používají, a určete prioritu práce při jejich integraci s Azure AD.
 
-Můžete začít pomocí [nástrojů Cloud discovery](/cloud-app-security/tutorial-shadow-it) Microsoft Cloud App Security&#39;s a vyhledat a spravovat &quot; stínové &quot; IT ve vaší síti (tj. aplikace, které nespravuje oddělení IT). [Pomocí rozšířené ochrany před internetovými útoky v programu Microsoft Defender](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) můžete zjednodušit a rozšířit proces zjišťování.
+Můžete začít pomocí [nástrojů Cloud discovery](/cloud-app-security/tutorial-shadow-it) Microsoft Cloud App Security pro zjišťování a správu "stínové" sítě v síti (tj. aplikace, které nespravuje oddělení IT). [Pomocí rozšířené ochrany před internetovými útoky v programu Microsoft Defender](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) můžete zjednodušit a rozšířit proces zjišťování.
 
 Kromě toho můžete pomocí [sestavy aktivita aplikace AD FS](../manage-apps/migrate-adfs-application-activity.md) v Azure Portal zjistit všechny AD FS aplikace ve vaší organizaci, počet jedinečných uživatelů, kteří se k nim přihlásili, a kompatibilitu při jejich integraci s Azure AD.
 
@@ -66,7 +66,7 @@ Během procesu zjišťování jste možná našli aplikace, které nesleduje IT 
 - Ušetříte si peníze tím, že Eliminujte nutnost místního zřizování a ověřování uživatelů a také licenční poplatky placené jiným poskytovatelům cloudových identit pro stejnou službu.
 - Snižte režijní náklady na správu a zapněte užší zabezpečení s menším počtem redundancí v procesu správy identit a přístupu.
 - Umožněte zaměstnancům zabezpečený přístup pro jednotné přihlašování ke všem aplikacím, které potřebují prostřednictvím [portálu Mojeapl](../manage-apps/access-panel-collections.md).
-- Zvyšte si inteligentní informace o službách Azure AD&#39;s [Identity Protection](../identity-protection/overview-identity-protection.md) , jako je podmíněný přístup, tím, že zvýšíte množství dat, která získá z využití vaší aplikace, a rozšíříte své výhody na nově přidané aplikace.
+- Zvyšte si informace o službách souvisejících s [ochranou identity](../identity-protection/overview-identity-protection.md) v Azure AD, jako je podmíněný přístup, tím, že zvýšíte množství dat, která získá z využití vaší aplikace, a rozšíříte své výhody na nově přidané aplikace.
 
 Publikovali jsme doprovodné materiály pro správu podnikových procesů integrování aplikací se službou Azure AD, včetně [plakátu](https://aka.ms/AppOnePager) a [prezentace](https://aka.ms/AppGuideline) , pomocí kterých mohou vlastníci podniku a aplikace dělat a zajímat. Tyto ukázky můžete upravit pomocí vlastního brandingu a publikovat je ve vaší organizaci prostřednictvím portálu společnosti, bulletinu nebo jiného média, jak budete postupovat na dokončení tohoto procesu.
 
@@ -103,10 +103,10 @@ Kromě toho můžete integrovat řadiče pro doručování aplikací, jako je F5
 
 Pro aplikace, které jsou vytvořené v rámci vaší společnosti, můžou vývojáři implementovat ověřování a autorizaci pomocí [platformy Microsoft Identity](../develop/index.yml) . Aplikace integrované s platformou se [registrují ve službě Azure AD](../develop/quickstart-register-app.md) a spravují se stejně jako jakékoli jiné aplikace v portfoliu.
 
-Vývojáři můžou používat platformu pro aplikace interního použití i pro aplikace pro zákazníky a existují i další výhody, které se s využitím platformy dodávají. [Knihovny Microsoft Authentication Library (MSAL)](../develop/msal-overview.md), které jsou součástí platformy, umožňují vývojářům povolit moderní prostředí, jako je vícefaktorové ověřování, a použití klíčů zabezpečení pro přístup ke svým aplikacím, aniž by je museli implementovat sami sebe. Kromě toho můžou aplikace integrované s platformou Microsoft Identity získat přístup k [Microsoft Graph](../develop/microsoft-graph-intro.md) – jedná se o sjednocený koncový bod rozhraní API, který poskytuje Microsoft 365 data, která popisují vzory produktivity, identity a zabezpečení v organizaci. Vývojáři můžou tyto informace využít k implementaci funkcí, které zvyšují produktivitu pro vaše uživatele. Například určením osob, se kterými uživatel interaktivně pracoval, a zpřístupnění je v uživatelském rozhraní aplikace&#39;s.
+Vývojáři můžou používat platformu pro aplikace interního použití i pro aplikace pro zákazníky a existují i další výhody, které se s využitím platformy dodávají. [Knihovny Microsoft Authentication Library (MSAL)](../develop/msal-overview.md), které jsou součástí platformy, umožňují vývojářům povolit moderní prostředí, jako je vícefaktorové ověřování, a použití klíčů zabezpečení pro přístup ke svým aplikacím, aniž by je museli implementovat sami sebe. Kromě toho můžou aplikace integrované s platformou Microsoft Identity získat přístup k [Microsoft Graph](../develop/microsoft-graph-intro.md) – jedná se o sjednocený koncový bod rozhraní API, který poskytuje Microsoft 365 data, která popisují vzory produktivity, identity a zabezpečení v organizaci. Vývojáři můžou tyto informace využít k implementaci funkcí, které zvyšují produktivitu pro vaše uživatele. Například určením osob, se kterými uživatel interaktivně pracoval, a zpřístupnění je v uživatelském rozhraní aplikace.
 
 Máme [video řady](https://www.youtube.com/watch?v=zjezqZPPOfc&amp;list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX) , které poskytují ucelený Úvod k platformě a také [mnoho ukázek kódu](../develop/sample-v2-code.md) v podporovaných jazycích a platformách.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Prostředky pro migraci aplikací na Azure Active Directory](../manage-apps/migration-resources.md)
+- [Zdroje informací o migraci aplikací do Azure Active Directory](../manage-apps/migration-resources.md)

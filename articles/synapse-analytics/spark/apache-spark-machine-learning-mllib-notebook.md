@@ -9,20 +9,20 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: d7c5bd2d1918ecebe2d2aabc213de43e7cdb1fef
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 595b3a57594401df6b61db1fcf8ee16be98ef364
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93306969"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95900413"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Kurz: Vytvoření aplikace Machine Learning pomocí Apache Spark MLlib a Azure synapse Analytics
 
 V tomto článku se naučíte, jak pomocí Apache Spark [MLlib](https://spark.apache.org/mllib/) vytvořit aplikaci pro strojové učení, která provádí jednoduchou prediktivní analýzu na otevřené datové sadě Azure. Spark nabízí integrované knihovny machine learningu. V tomto příkladu se používá *klasifikace* prostřednictvím logistické regrese.
 
-MLlib je základní knihovna Sparku, která poskytuje řadu nástrojů, které jsou užitečné pro úlohy strojového učení, včetně nástrojů, které jsou vhodné pro:
+SparkML a MLlib jsou základní knihovny Sparku, které poskytují mnoho nástrojů, které jsou užitečné pro úlohy strojového učení, včetně nástrojů, které jsou vhodné pro:
 
-- Klasifikace
+- Classification
 - Regrese
 - Clustering
 - Modelování tématu
@@ -31,7 +31,7 @@ MLlib je základní knihovna Sparku, která poskytuje řadu nástrojů, které j
 
 ## <a name="understand-classification-and-logistic-regression"></a>Pochopení klasifikace a logistické regrese
 
-*Klasifikace* , oblíbená úloha strojového učení, je proces řazení vstupních dat do kategorií. Je to úloha klasifikačního algoritmu k tomu, abyste zjistili, jak přiřadit *popisky* k určeným vstupním datům. Můžete si například představit algoritmus strojového učení, který přijímá skladové informace jako vstup a vydělí akcie na dvě kategorie: akcie, které byste měli prodávat, a zásoby, které byste měli zachovat.
+*Klasifikace*, oblíbená úloha strojového učení, je proces řazení vstupních dat do kategorií. Je to úloha klasifikačního algoritmu k tomu, abyste zjistili, jak přiřadit *popisky* k určeným vstupním datům. Můžete si například představit algoritmus strojového učení, který přijímá skladové informace jako vstup a vydělí akcie na dvě kategorie: akcie, které byste měli prodávat, a zásoby, které byste měli zachovat.
 
 *Logistická regrese* je algoritmus, který můžete použít pro klasifikaci. Rozhraní API pro logistické regrese Spark je užitečné pro *binární klasifikaci* nebo pro klasifikaci vstupních dat do jedné ze dvou skupin. Další informace o logistických regresích najdete v tématu [Wikipedii](https://en.wikipedia.org/wiki/Logistic_regression).
 
@@ -46,7 +46,7 @@ V tomto příkladu pomocí Sparku provedete určitou prediktivní analýzu dat T
 
 V následujících krocích vyvíjíte model, který předpovídá, jestli konkrétní cesta obsahuje Tip nebo ne.
 
-## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Vytvoření aplikace Machine Learning v Apache Spark MLlib
+## <a name="create-an-apache-spark--machine-learning-model"></a>Vytvoření modelu Apache Spark Machine Learning
 
 1. Pomocí jádra PySpark vytvořte Poznámkový blok. Pokyny najdete v tématu [vytvoření poznámkového bloku](../quickstart-apache-spark-notebook.md#create-a-notebook).
 2. Importujte typy požadované pro tuto aplikaci. Zkopírujte a vložte následující kód do prázdné buňky a stiskněte klávesy **SHIFT + ENTER** nebo buňku spusťte pomocí ikony modrého přehrání nalevo od kódu.
@@ -110,44 +110,6 @@ Vytvoření dočasné tabulky nebo zobrazení poskytuje různé přístupové ce
 sampled_taxi_df.createOrReplaceTempView("nytaxi")
 ```
 
-## <a name="understand-the-data"></a>Pochopení dat
-
-Normálně byste procházeli fázi *analýzy průzkumného testování dat* (EDA) v tomto okamžiku, abyste mohli vytvořit porozumění datům. Následující kód ukazuje tři různé vizualizace dat týkajících se tipů, které vedou k závěrům o stavu a kvalitě dat.
-
-```python
-# The charting package needs a Pandas dataframe or numpy array do the conversion
-sampled_taxi_pd_df = sampled_taxi_df.toPandas()
-
-# Look at tips by amount count histogram
-ax1 = sampled_taxi_pd_df['tipAmount'].plot(kind='hist', bins=25, facecolor='lightblue')
-ax1.set_title('Tip amount distribution')
-ax1.set_xlabel('Tip Amount ($)')
-ax1.set_ylabel('Counts')
-plt.suptitle('')
-plt.show()
-
-# How many passengers tipped by various amounts
-ax2 = sampled_taxi_pd_df.boxplot(column=['tipAmount'], by=['passengerCount'])
-ax2.set_title('Tip amount by Passenger count')
-ax2.set_xlabel('Passenger count')
-ax2.set_ylabel('Tip Amount ($)')
-plt.suptitle('')
-plt.show()
-
-# Look at the relationship between fare and tip amounts
-ax = sampled_taxi_pd_df.plot(kind='scatter', x= 'fareAmount', y = 'tipAmount', c='blue', alpha = 0.10, s=2.5*(sampled_taxi_pd_df['passengerCount']))
-ax.set_title('Tip amount by Fare amount')
-ax.set_xlabel('Fare Amount ($)')
-ax.set_ylabel('Tip Amount ($)')
-plt.axis([-2, 80, -2, 20])
-plt.suptitle('')
-plt.show()
-```
-
-![Graf histogramu ](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-histogram.png)
- ![ krabicového ](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
- ![ grafu](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
-
 ## <a name="prepare-the-data"></a>Příprava dat
 
 Data v jejich nezpracované podobě nejsou často vhodná pro přímý přenos modelu. Pro získání dat do stavu, ve kterém ho model může spotřebovat, je nutné provést sérii akcí.
@@ -193,7 +155,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 
 ## <a name="create-a-logistic-regression-model"></a>Vytvoření modelu logistické regrese
 
-Posledním úkolem je převést označené údaje do formátu, který lze analyzovat logistickou regresí. Vstup do algoritmu logistické regrese musí být sada *vektorových dvojic popisků* , kde je *vektor funkce* vektor čísel reprezentujících vstupní bod. Proto musíme sloupce kategorií převést na čísla. `trafficTimeBins`Sloupce a se `weekdayString` musí převést na celočíselné reprezentace. K převodu je k dispozici několik přístupů, ale přístup v tomto příkladu je *OneHotEncoding* , což je běžný přístup.
+Posledním úkolem je převést označené údaje do formátu, který lze analyzovat logistickou regresí. Vstup do algoritmu logistické regrese musí být sada *vektorových dvojic popisků*, kde je *vektor funkce* vektor čísel reprezentujících vstupní bod. Proto musíme sloupce kategorií převést na čísla. `trafficTimeBins`Sloupce a se `weekdayString` musí převést na celočíselné reprezentace. K převodu je k dispozici několik přístupů, ale přístup v tomto příkladu je *OneHotEncoding*, což je běžný přístup.
 
 ```python
 # Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed
@@ -272,13 +234,13 @@ plt.ylabel('True Positive Rate')
 plt.show()
 ```
 
-![Křivka ROC pro model špičky logistické regrese](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-nyctaxi-roc.png "Křivka ROC pro model špičky logistické regrese")
+![Křivka ROC pro model špičky logistické regrese](./media/apache-spark-machine-learning-mllib-notebook/nyc-taxi-roc.png)
 
 ## <a name="shut-down-the-spark-instance"></a>Vypnutí instance Spark
 
 Po dokončení používání aplikace vypněte Poznámkový blok a uvolněte ho tak, že zavřete kartu nebo v dolní části poznámkového bloku vyberete **ukončit relaci** ze stavového panelu.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [Přehled: Apache Spark ve službě Azure synapse Analytics](apache-spark-overview.md)
 

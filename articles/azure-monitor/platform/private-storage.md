@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: a487e6989792c63aaf5baf9ddb3875df549561a4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7cb427c83345a4603c6fe7727c1cc42c1943c456
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143987"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908246"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Používání účtů úložiště spravovaných zákazníkem v Azure Monitor Log Analytics
 
-Log Analytics spoléhá na Azure Storage v nejrůznějších scénářích. Toto použití se obvykle spravuje automaticky. Některé případy ale vyžadují, abyste poskytovali a spravovali vlastní účet úložiště, označovaný také jako účet úložiště spravovaný zákazníkem. Tento dokument popisuje použití úložiště spravovaného zákazníkem pro ingestování protokolů WAD/LAD, scénářů specifických pro privátní propojení a šifrování CMK. 
+Log Analytics spoléhá na Azure Storage v nejrůznějších scénářích. Toto použití se obvykle spravuje automaticky. Některé případy ale vyžadují, abyste poskytovali a spravovali vlastní účet úložiště, označovaný také jako účet úložiště spravovaný zákazníkem. Tento dokument popisuje využití úložiště spravovaného zákazníkem pro ingestování protokolů WAD/LAD, scénářů specifických pro privátní propojení a šifrování CMK (Customer-Managed Key). 
 
 > [!NOTE]
 > Doporučujeme, abyste nedostali závislost na obsahu Log Analytics nahrávají do úložiště spravovaného zákazníkem, protože se může změnit formátování a obsah.

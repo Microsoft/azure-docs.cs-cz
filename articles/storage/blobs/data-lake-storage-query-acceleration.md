@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 09/09/2020
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: ae92828f08ae4abf9cc28f18872cca27ce747be4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc1d217dba64c36aa219abbd4d2220a494347689
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657638"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912752"
 ---
 # <a name="azure-data-lake-storage-query-acceleration"></a>Akcelerace dotazů Azure Data Lake Storage
 
@@ -50,7 +50,7 @@ Následující diagram znázorňuje, jak Typická aplikace používá zrychlení
 
 Zrychlení dotazů optimalizuje výkon tím, že snižuje množství dat, která vaše aplikace přenáší a zpracovává.
 
-Pro výpočet agregované hodnoty aplikace běžně načítají **všechna** data ze souboru a následně zpracovávají a filtrují data místně. Analýza vstupních/výstupních vzorů pro úlohy analýzy odhalí, že aplikace obvykle vyžadují jenom 20% dat, která si přečtou, aby provedla daný výpočet. Tato statistika je pravdivá i po použití technik, jako je například [vyřazení oddílů](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-optimize-hive-query#hive-partitioning). To znamená, že 80% těchto dat je zbytečně přenesených přes síť, analyzovat a filtrovat podle aplikací. Tento model, který je v podstatě navržený tak, aby odstranil nepotřebná data, vzniká významné výpočetní náklady.  
+Pro výpočet agregované hodnoty aplikace běžně načítají **všechna** data ze souboru a následně zpracovávají a filtrují data místně. Analýza vstupních/výstupních vzorů pro úlohy analýzy odhalí, že aplikace obvykle vyžadují jenom 20% dat, která si přečtou, aby provedla daný výpočet. Tato statistika je pravdivá i po použití technik, jako je například [vyřazení oddílů](../../hdinsight/hdinsight-hadoop-optimize-hive-query.md#hive-partitioning). To znamená, že 80% těchto dat je zbytečně přenesených přes síť, analyzovat a filtrovat podle aplikací. Tento model, který je v podstatě navržený tak, aby odstranil nepotřebná data, vzniká významné výpočetní náklady.  
 
 I když Azure nabízí špičkovou síť, a to z hlediska propustnosti i latence, zbytečně přenosu dat napříč touto sítí je pro výkon aplikace stále nákladné. Filtrováním nežádoucích dat během žádosti o úložiště vyloučí akcelerace dotazu tyto náklady.
 
@@ -76,5 +76,3 @@ Bez ohledu na změnu modelu fakturace je cenový model zrychlení dotazu navrže
 
 - [Filtrování dat pomocí Azure Data Lake Storage akcelerace dotazů](data-lake-storage-query-acceleration-how-to.md)
 - [Referenční dokumentace jazyka SQL pro zrychlení dotazů](query-acceleration-sql-reference.md)
-
-

@@ -5,18 +5,18 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: ddf58219a81e81f40dcc33de1452007cbd782d2b
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: ff52e4c8056d25f2577d077ca0499236a78adc02
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95819476"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95909454"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Rychlý Start: použití témat Service Bus a předplatných v jazyce Java
 V tomto rychlém startu napíšete kód Java, který odešle zprávy do Azure Service Busho tématu, a pak dostanou zprávy z odběrů do tohoto tématu. 
 
 > [!WARNING]
->  V tomto rychlém startu se používají staré balíčky Azure-ServiceBus. Rychlý Start, který používá nejnovější balíček Azure-Messaging-ServiceBus, najdete v tématu [posílání a přijímání zpráv pomocí Azure-Messaging-ServiceBus](service-bus-java-how-to-use-topics-subscriptions.md).
+>  V tomto rychlém startu se používá aktuální všeobecně dostupný balíček Azure-ServiceBus. Pro rychlý Start, který používá nový balíček Azure-Messaging-ServiceBus, který je ve **verzi Preview**, najdete informace v tématu [posílání a přijímání zpráv pomocí Azure-Messaging-ServiceBus](service-bus-java-how-to-use-topics-subscriptions.md).
 
 ## <a name="prerequisites"></a>Požadavky
 

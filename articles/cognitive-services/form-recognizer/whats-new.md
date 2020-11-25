@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: ed6d3b927254d44863b7fd0a597528813be791cf
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 10ae9e1356cea954435d15441d74f4f86a804578
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736597"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95893976"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Co je nového ve službě Rozpoznávání formulářů?
 
@@ -40,11 +40,14 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
 - **Podporován nový jazyk: japonština** : nyní jsou podporovány následující nové jazyky: pro `AnalyzeLayout` a `AnalyzeCustomForm` : japonština ( `ja` ). [Podpora jazyků](language-support.md)
 - **Označení stylu čáry textu (ručně psané) (jenom v jazycích Latin)** – Nástroj pro rozpoznávání formulářů teď vytvoří výstup `appearance` objektu, který klasifikuje, jestli je každý textový řádek v rukopisu, nebo ne, společně s skóre spolehlivosti. Tato funkce je podporovaná jenom pro jazyky v latince.
 - **Vylepšení kvality** – vylepšení extrakce, včetně vylepšení pro extrakci s jednou číslicí.
-- **Nová funkce try-to-out v nástroji pro rozpoznávání popsání ve formě nástrojů pro označování** , schopnost vymezit předem připravené modely faktur, příjmů a obchodních karet a rozhraní API pro rozložení pomocí ukázkového nástroje pro rozpoznávání formulářů Podívejte se, jak budou data extrahována bez psaní kódu.
+- **Nová funkce try-to-out v nástroji pro rozpoznávání formulářů a nástroj pro popisování** – schopnost vyzkoušet předem připravené modely faktur, příjmů a obchodních karet a rozhraní API rozložení pomocí nástroje pro vzorkování ukázek pro rozpoznávání formulářů. Podívejte se, jak budou data extrahována bez psaní kódu.
 
   > [Vyzkoušejte si vzorový Nástroj pro rozpoznávání formulářů](https://fott-preview.azurewebsites.net/)
 
   ![Příklad FOTT](./media/ui-preview.jpg)
+  
+- **Smyčka zpětné vazby** – při analýze souborů prostřednictvím nástroje pro označování ukázek ho teď můžete přidat i do sady školení a v případě potřeby adujst zapnutou a vytvořit výuku pro zlepšení modelu.
+- **Auto Label Documets** -Automitcally popisky dalších dokumentů na základě předchozích označených dokumentů v projektu. 
 
 ## <a name="august-2020"></a>Srpen 2020
 

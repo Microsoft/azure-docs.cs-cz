@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 01/30/2020
+ms.date: 11/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fba2610b3343744c448e390bc2d713b38da481d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 25c6ccb4661fde1efb088cd8535bf2759f2057b3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839467"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95902756"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Povolení přihlášení k bezpečnostnímu klíči bez hesla pro zařízení s Windows 10 pomocí Azure Active Directory (Preview)
 
@@ -134,7 +134,7 @@ Pro **zařízení připojená k hybridní službě Azure AD** můžou organizace
 - Nastavením této zásady na **povoleno** umožňuje uživatelům přihlašovat se pomocí bezpečnostních klíčů.
 - Nastavení této zásady na **zakázáno** nebo **Nenakonfigurováno** zabrání uživatelům v přihlašování pomocí bezpečnostních klíčů.
 
-Toto nastavení Zásady skupiny vyžaduje aktualizovanou verzi `credentialprovider.admx` šablony Zásady skupiny. Tato nová šablona je k dispozici v další verzi Windows serveru a ve Windows 10 20H1. Toto nastavení lze spravovat pomocí zařízení s jednou z těchto novějších verzí systému Windows nebo centrálně podle pokynů v tématu Podpora, [jak vytvořit a spravovat centrální úložiště pro Zásady skupiny šablony pro správu ve Windows](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
+Toto nastavení Zásady skupiny vyžaduje aktualizovanou verzi `CredentialProviders.admx` šablony Zásady skupiny. Tato nová šablona je k dispozici v další verzi Windows serveru a ve Windows 10 20H1. Toto nastavení lze spravovat pomocí zařízení s jednou z těchto novějších verzí systému Windows nebo centrálně podle pokynů v tématu Podpora, [jak vytvořit a spravovat centrální úložiště pro Zásady skupiny šablony pro správu ve Windows](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
 
 ## <a name="sign-in-with-fido2-security-key"></a>Přihlaste se pomocí bezpečnostního klíče FIDO2.
 

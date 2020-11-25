@@ -2,13 +2,13 @@
 title: Struktura a syntaxe šablon
 description: Popisuje strukturu a vlastnosti šablon Azure Resource Manager pomocí deklarativní syntaxe JSON.
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: ae2c5a5fe1440c3adbae475cd4c7652a3b01c285
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/24/2020
+ms.openlocfilehash: b7cf30741cfd2b85046f64fddf01c414676a97e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86116535"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95911494"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Vysvětlení struktury a syntaxe šablon ARM
 
@@ -46,6 +46,62 @@ V nejjednodušší struktuře má šablona následující prvky:
 
 Každý prvek má vlastnosti, které lze nastavit. V tomto článku jsou podrobněji popsány části šablony.
 
+## <a name="data-types"></a>Typy dat
+
+V rámci šablony ARM můžete použít tyto typy dat:
+
+* řetězec
+* SecureString
+* int
+* bool
+* object
+* secureObject
+* array
+
+Následující šablona zobrazuje formát datových typů. Každý typ má výchozí hodnotu ve správném formátu.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "stringParameter": {
+      "type": "string",
+      "defaultValue": "option 1"
+    },
+    "intParameter": {
+      "type": "int",
+      "defaultValue": 1
+    },
+    "boolParameter": {
+        "type": "bool",
+        "defaultValue": true
+    },
+    "objectParameter": {
+      "type": "object",
+      "defaultValue": {
+        "one": "a",
+        "two": "b"
+      }
+    },
+    "arrayParameter": {
+      "type": "array",
+      "defaultValue": [ 1, 2, 3 ]
+    }
+  },
+  "resources": [],
+  "outputs": {}
+}
+```
+
+Zabezpečený řetězec používá stejný formát jako řetězec a zabezpečený objekt používá stejný formát jako objekt. Když nastavíte parametr na zabezpečený řetězec nebo zabezpečený objekt, hodnota parametru se neuloží do historie nasazení a nezaprotokoluje se. Nicméně pokud nastavíte tuto zabezpečenou hodnotu na vlastnost, která neočekává zabezpečenou hodnotu, hodnota není chráněná. Například pokud nastavíte zabezpečený řetězec na značku, tato hodnota je uložena jako prostý text. Používejte zabezpečené řetězce pro hesla a tajné kódy.
+
+Pro celá čísla předaná jako vložené parametry může být rozsah hodnot omezen sadou SDK nebo nástrojem příkazového řádku, který používáte pro nasazení. Například při použití prostředí PowerShell k nasazení šablony mohou být typy celého čísla v rozsahu od-2147483648 do 2147483647. Chcete-li se tomuto omezení vyhnout, zadejte v [souboru parametrů](parameter-files.md)velké celočíselné hodnoty. Typy prostředků použijí vlastní omezení pro celočíselné vlastnosti.
+
+Při zadávání logických a celočíselných hodnot v šabloně se hodnota neobklopuje pomocí uvozovek. Počáteční a koncové řetězcové hodnoty pomocí dvojitých uvozovek.
+
+Objekty začínají levou závorkou a končí pravou závorkou. Pole začínají levou hranatou závorkou a končí pravou závorkou.
+
 ## <a name="parameters"></a>Parametry
 
 V oddílu parametrs dané šablony určíte, které hodnoty můžete při nasazování prostředků zadat. V šabloně můžete zadat jen 256 parametrů. Počet parametrů můžete snížit pomocí objektů, které obsahují více vlastností.
@@ -72,32 +128,20 @@ Následují dostupné vlastnosti pro parametr:
 | Název elementu | Povinné | Popis |
 |:--- |:--- |:--- |
 | název parametru |Yes |Název parametru Musí být platný identifikátor JavaScriptu. |
-| typ |Yes |Typ hodnoty parametru Povolené typy a hodnoty jsou **String**, **SecureString**, **int**, **bool**, **Object**, **secureObject**a **Array**. Podívejte se na [datové typy](#data-types). |
+| typ |Yes |Typ hodnoty parametru Povolené typy a hodnoty jsou **String**, **SecureString**, **int**, **bool**, **Object**, **secureObject** a **Array**. Podívejte se na [datové typy](#data-types). |
 | Hodnot |No |Výchozí hodnota parametru, pokud není k dispozici žádná hodnota pro parametr. |
 | allowedValues |No |Pole povolených hodnot pro parametr, aby bylo zajištěno, že je zadána pravá hodnota. |
 | minValue |No |Minimální hodnota pro parametry typu int je tato hodnota včetně. |
 | maxValue |No |Maximální hodnota pro parametry typu int je tato hodnota včetně. |
 | minLength |No |Minimální délka parametrů pro řetězec, zabezpečený řetězec a typ pole je hodnota včetně. |
 | maxLength |No |Maximální délka parametrů pro řetězec, zabezpečený řetězec a typ pole je hodnota včetně. |
-| Popis |No |Popis parametru, který se uživatelům zobrazí prostřednictvím portálu. Další informace najdete v tématu [komentáře v šablonách](#comments). |
+| description |No |Popis parametru, který se uživatelům zobrazí prostřednictvím portálu. Další informace najdete v tématu [komentáře v šablonách](#comments). |
 
 Příklady použití parametrů naleznete [v tématu Parameters in Azure Resource Manager Templates](template-parameters.md).
 
-### <a name="data-types"></a>Typy dat
-
-Pro celá čísla předaná jako vložené parametry může být rozsah hodnot omezen sadou SDK nebo nástrojem příkazového řádku, který používáte pro nasazení. Například při použití prostředí PowerShell k nasazení šablony mohou být typy celého čísla v rozsahu od-2147483648 do 2147483647. Chcete-li se tomuto omezení vyhnout, zadejte v [souboru parametrů](parameter-files.md)velké celočíselné hodnoty. Typy prostředků použijí vlastní omezení pro celočíselné vlastnosti.
-
-Při zadávání logických a celočíselných hodnot v šabloně se hodnota neobklopuje pomocí uvozovek. Počáteční a koncové řetězcové hodnoty pomocí dvojitých uvozovek.
-
-Objekty začínají levou závorkou a končí pravou závorkou. Pole začínají levou hranatou závorkou a končí pravou závorkou.
-
-Když nastavíte parametr na zabezpečený řetězec nebo zabezpečený objekt, hodnota parametru se neuloží do historie nasazení a nezaprotokoluje se. Nicméně pokud nastavíte tuto zabezpečenou hodnotu na vlastnost, která neočekává zabezpečenou hodnotu, hodnota není chráněná. Například pokud nastavíte zabezpečený řetězec na značku, tato hodnota je uložena jako prostý text. Používejte zabezpečené řetězce pro hesla a tajné kódy.
-
-Ukázky formátování datových typů naleznete v tématu [formáty typu parametru](parameter-files.md#parameter-type-formats).
-
 ## <a name="variables"></a>Proměnné
 
-V části proměnné můžete vytvářet hodnoty, které lze použít v rámci šablony. Nemusíte definovat proměnné, ale často zjednodušují vaši šablonu tím, že snižují složité výrazy.
+V části proměnné můžete vytvářet hodnoty, které lze použít v rámci šablony. Nemusíte definovat proměnné, ale často zjednodušují vaši šablonu tím, že snižují složité výrazy. Formát každé proměnné odpovídá jednomu z [datových typů](#data-types).
 
 Následující příklad ukazuje dostupné možnosti pro definování proměnné:
 
@@ -169,13 +213,13 @@ Při definování uživatelské funkce existují určitá omezení:
 | namespace |Yes |Obor názvů pro vlastní funkce Použijte k zamezení konfliktu názvů s funkcemi šablon. |
 | název funkce |Yes |Název vlastní funkce Při volání funkce kombinovat název funkce s oborem názvů. Například pro volání funkce s názvem uniqueName v oboru názvů contoso, použijte `"[contoso.uniqueName()]"` . |
 | název parametru |No |Název parametru, který se má použít v rámci vlastní funkce |
-| hodnota parametru |No |Typ hodnoty parametru Povolené typy a hodnoty jsou **String**, **SecureString**, **int**, **bool**, **Object**, **secureObject**a **Array**. |
+| hodnota parametru |No |Typ hodnoty parametru Povolené typy a hodnoty jsou **String**, **SecureString**, **int**, **bool**, **Object**, **secureObject** a **Array**. |
 | výstupní typ |Yes |Typ výstupní hodnoty. Výstupní hodnoty podporují stejné typy jako vstupní parametry funkce. |
 | výstupní hodnota |Yes |Výraz jazyka šablony, který je vyhodnocen a vrácen z funkce. |
 
 Příklady použití vlastních funkcí naleznete [v tématu uživatelsky definované funkce v šabloně Azure Resource Manager](template-user-defined-functions.md).
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje informací
 
 V části Resources (prostředky) definujete prostředky, které jsou nasazené nebo aktualizované.
 
@@ -325,7 +369,7 @@ Můžete přidat `metadata` objekt skoro kdekoli v šabloně. Správce prostřed
   },
 ```
 
-Pro **parametry**přidejte `metadata` objekt s `description` vlastností.
+Pro **parametry** přidejte `metadata` objekt s `description` vlastností.
 
 ```json
 "parameters": {
@@ -341,7 +385,7 @@ Při nasazování šablony prostřednictvím portálu se text, který zadáte v 
 
 ![Zobrazit Tip parametru](./media/template-syntax/show-parameter-tip.png)
 
-Pro **prostředky**přidejte `comments` prvek nebo objekt metadat. Následující příklad ukazuje jak element Comments, tak objekt metadat.
+Pro **prostředky** přidejte `comments` prvek nebo objekt metadat. Následující příklad ukazuje jak element Comments, tak objekt metadat.
 
 ```json
 "resources": [
@@ -367,7 +411,7 @@ Pro **prostředky**přidejte `comments` prvek nebo objekt metadat. Následujíc�
 ]
 ```
 
-Pro **výstupy**přidejte objekt metadat do výstupní hodnoty.
+Pro **výstupy** přidejte objekt metadat do výstupní hodnoty.
 
 ```json
 "outputs": {

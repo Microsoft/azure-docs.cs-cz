@@ -12,17 +12,20 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 38be8b97b3255e4e63301e693d2a5f295e8d801b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8881dc3f67ac1c9f699bd2bf7bcf1dbbcd5e9c0c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779964"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95905323"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell a rozhraní příkazového řádku Azure CLI: povolení transparentní šifrování dat s klíčem spravovaným zákazníkem z Azure Key Vault
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Tento článek vás seznámí s postupem použití klíče z Azure Key Vault pro transparentní šifrování dat (TDE) v Azure SQL Database nebo ve službě Azure synapse Analytics (dříve SQL Data Warehouse). Další informace o TDE s podporou Azure Key Vault Integration-Bring Your Own Key (BYOK) najdete v části [TDE s klíči spravovanými zákazníky v Azure Key Vault](transparent-data-encryption-byok-overview.md).
+
+> [!NOTE] 
+> Azure SQL teď podporuje použití klíče RSA uloženého ve spravovaném HSM jako ochrany TDE. Tato funkce je ve **verzi Public Preview**. Azure Key Vault spravovaný modul HSM je plně spravovaná cloudová služba s vysokou dostupností, která vyhovuje standardům, která vám umožní chránit kryptografické klíče pro vaše cloudové aplikace, a to pomocí ověřené HSM úrovně 3 ve standardu FIPS 140-2. Přečtěte si další informace o [spravovaných HSM](../../key-vault/managed-hsm/index.yml).
 
 ## <a name="prerequisites-for-powershell"></a>Předpoklady pro PowerShell
 
@@ -36,7 +39,8 @@ Tento článek vás seznámí s postupem použití klíče z Azure Key Vault pro
 - Klíč musí mít následující atributy, které se mají použít pro TDE:
   - Žádné datum vypršení platnosti
   - Nezakázáno
-  - Může provádět operace *Get* , *Wrap Key* , *rozbalení klíčových* operací.
+  - Může provádět operace *Get*, *Wrap Key*, *rozbalení klíčových* operací.
+- **(Ve verzi Preview)** Pokud chcete použít spravovaný klíč HSM, postupujte podle pokynů k [Vytvoření a aktivaci spravovaného modulu HSM pomocí Azure CLI](../../key-vault/managed-hsm/quick-create-cli.md) .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -70,6 +74,8 @@ Pomocí rutiny [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-a
    Set-AzKeyVaultAccessPolicy -VaultName <KeyVaultName> `
        -ObjectId $server.Identity.PrincipalId -PermissionsToKeys get, wrapKey, unwrapKey
    ```
+Pokud chcete na server přidat oprávnění na spravovaném modulu HSM, přidejte na server místní roli RBAC šifrovací služby HSM. Tím umožníte, aby server prováděl operace získat, zabalit klíč a rozbalit klíče na klíče ve spravovaném modulu HSM.
+[Pokyny k zřízení přístupu serveru na spravovaném modulu HSM](../../key-vault/managed-hsm/role-management.md)
 
 ## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Přidejte Key Vault klíč k serveru a nastavte ochranu TDE.
 
@@ -79,10 +85,15 @@ Pomocí rutiny [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-a
 - Pomocí rutiny [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) ověřte, že ochrana TDE byla nakonfigurovaná tak, jak má.
 
 > [!NOTE]
+> **(Ve verzi Preview)** U spravovaných klíčů HSM použijte příkaz AZ. SQL 2.11.1 verze prostředí PowerShell.
+
+> [!NOTE]
 > Celková délka názvu trezoru klíčů a názvu klíče nesmí překročit 94 znaků.
 
 > [!TIP]
-> Příklad KeyId z Key Vault: https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+> Příklad KeyId z Key Vault:<br/>https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+>
+> Příklad KeyId ze spravovaného HSM:<br/>https://contosoMHSM.managedhsm.azure.net/keys/myrsakey
 
 ```powershell
 # add the key from Key Vault to the server
@@ -239,7 +250,7 @@ Pokud dojde k problému, podívejte se na následující:
 
 - Pokud nový klíč nelze přidat na server nebo nový klíč nelze aktualizovat jako ochranu TDE, podívejte se na následující:
    - Klíč by neměl mít datum vypršení platnosti.
-   - Klíč musí mít povolené operace *Get* , *Wrap Key* a *Unwrap Key* .
+   - Klíč musí mít povolené operace *Get*, *Wrap Key* a *Unwrap Key* .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/9/2020
-ms.openlocfilehash: d2095919d6f6be482390250fd8d0ee20e9015237
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 1dfe14d96efd37e3dec7faeae1dfff21122958bc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444856"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95894197"
 ---
 # <a name="service-configuration"></a>Konfigurace služeb
 
@@ -47,7 +47,7 @@ App Service přizpůsobení neplatí pro QnA Maker spravovaná (Preview).
 
 Služba QnA Maker poskytuje konfiguraci pro tyto uživatele, aby spolupracovali na jediné službě QnA Maker a všech svých základech znalostní báze.
 
-Naučte se, jak do služby [Přidat spolupracovníky](./how-to/collaborate-knowledge-base.md) .
+Naučte se, jak do služby [Přidat spolupracovníky](./reference-role-based-access-control.md) .
 
 ## <a name="change-azure-cognitive-search"></a>Změnit Kognitivní hledání Azure
 

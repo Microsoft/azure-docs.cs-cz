@@ -1,5 +1,5 @@
 ---
-title: Povolení protokolování diagnostiky v rozhraní Azure API pro FHIR®
+title: Povolení protokolování diagnostiky v Azure API pro FHIR
 description: Tento článek vysvětluje, jak povolit protokolování diagnostiky v Azure API pro FHIR®
 services: healthcare-apis
 ms.service: healthcare-apis
@@ -9,19 +9,19 @@ ms.reviewer: dseven
 ms.author: cavoeg
 author: CaitlinV39
 ms.date: 11/01/2019
-ms.openlocfilehash: 262509df98b93c7902d83f90756872a16d84198f
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 54119585d4f1377b60b85fbad01fe90f097a304f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398126"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95905170"
 ---
-# <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Povolení protokolování diagnostiky v rozhraní Azure API pro FHIR®
+# <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Povolení protokolování diagnostiky v Azure API pro FHIR
 
-V tomto článku se dozvíte, jak povolit protokolování diagnostiky v Azure API pro FHIR® a abyste mohli zkontrolovat některé ukázkové dotazy pro tyto protokoly. Přístup k diagnostickým protokolům je nezbytný pro jakoukoli službu zdravotní péče, kde se musí jednat o dodržování zákonných požadavků (například HIPAA). Funkce v rozhraní Azure API pro FHIR®, která umožňuje diagnostické protokoly, je [**nastavení diagnostiky**](../azure-monitor/platform/diagnostic-settings.md) v Azure Portal. 
+V tomto článku se dozvíte, jak povolit protokolování diagnostiky v rozhraní Azure API pro FHIR a prohlédnout si některé ukázkové dotazy pro tyto protokoly. Přístup k diagnostickým protokolům je nezbytný pro jakoukoli službu zdravotní péče, kde se musí jednat o dodržování zákonných požadavků (například HIPAA). Funkce v rozhraní Azure API pro FHIR, která umožňuje diagnostické protokoly, je [**nastavení diagnostiky**](../azure-monitor/platform/diagnostic-settings.md) v Azure Portal. 
 
 ## <a name="enable-audit-logs"></a>Povolit protokoly auditu
-1. Pokud chcete povolit protokolování diagnostiky v Azure API pro FHIR®, vyberte rozhraní API Azure pro službu FHIR® v Azure Portal 
+1. Pokud chcete povolit protokolování diagnostiky v Azure API pro FHIR, vyberte rozhraní Azure API pro službu FHIR v Azure Portal 
 2. Přejít na nastavení diagnostiky **nastavení diagnostiky**  
  ![](media/diagnostic-logging/diagnostic-settings-screen.png) 
 
@@ -35,9 +35,12 @@ V tomto článku se dozvíte, jak povolit protokolování diagnostiky v Azure AP
     2. **Streamování do centra událostí** pro ingestování prostřednictvím služby třetí strany nebo vlastního analytického řešení. Než budete moct nakonfigurovat tento krok, budete muset vytvořit obor názvů centra událostí a zásady centra událostí.
     3. **Streamování do** pracovního prostoru Log Analytics v Azure monitor. Než budete moct vybrat tuto možnost, budete muset vytvořit pracovní prostor analýzy protokolů.
 
-6. Vyberte **AuditLogs** a všechny metriky, které chcete zachytit.
+6. Vyberte **AuditLogs** a všechny metriky, které chcete zachytit. Pokud používáte Azure IoT Connector pro FHIR, ujistěte se, že jste vybrali **chyby, provoz a latenci** pro metriky. 
 
-7. Kliknutí na Uložit
+   :::image type="content" source="media/iot-metrics-export/diagnostic-setting-add.png" alt-text="IoT Connector2" lightbox="media/iot-metrics-export/diagnostic-setting-add.png":::
+
+7. Vyberte **Uložit**.
+
 
 > [!Note] 
 > Zobrazení prvních protokolů v Log Analytics může trvat až 15 minut.  
@@ -45,7 +48,7 @@ V tomto článku se dozvíte, jak povolit protokolování diagnostiky v Azure AP
 Další informace o tom, jak pracovat s diagnostickými protokoly, najdete v [dokumentaci k protokolu prostředků Azure](../azure-monitor/platform/platform-logs-overview.md) .
 
 ## <a name="audit-log-details"></a>Podrobnosti protokolu auditu
-V tuto chvíli vrátí služba Azure API pro FHIR® v protokolu auditu následující pole: 
+V tuto chvíli vrátí služba Azure API for FHIR v protokolu auditu následující pole: 
 
 |Název pole  |Typ  |Poznámky  |
 |---------|---------|---------|
@@ -60,7 +63,7 @@ V tuto chvíli vrátí služba Azure API pro FHIR® v protokolu auditu následuj
 |OperationDuration|Int|Čas potřebný k dokončení této žádosti v řádu sekund
 |OperationName|Řetězec| Popisuje typ operace (například aktualizace, hledání typu).
 |RequestUri|Řetězec|Identifikátor URI žádosti 
-|ResultType|Řetězec|Dostupné hodnoty jsou aktuálně **spuštěny** , **úspěšné** nebo **neúspěšné** .
+|ResultType|Řetězec|Dostupné hodnoty jsou aktuálně **spuštěny**, **úspěšné** nebo **neúspěšné** .
 |StatusCode|Int|Stavový kód HTTP (např. 200) 
 |TimeGenerated|DateTime|Datum a čas události|
 |Vlastnosti|Řetězec| Popisuje vlastnosti fhirResourceType.
@@ -80,7 +83,7 @@ MicrosoftHealthcareApisAuditLogs
 | limit 100
 ```
 
-Spusťte tento dotaz, aby se seskupoval operace podle **typu prostředku FHIR** :
+Spusťte tento dotaz, aby se seskupoval operace podle **typu prostředku FHIR**:
 
 ```Application Insights
 MicrosoftHealthcareApisAuditLogs 
@@ -95,12 +98,12 @@ MicrosoftHealthcareApisAuditLogs
 ```
 
 ## <a name="conclusion"></a>Závěr 
-Přístup k diagnostickým protokolům je nezbytný pro monitorování služby a poskytování sestav dodržování předpisů. Rozhraní Azure API pro FHIR® umožňuje provádět tyto akce prostřednictvím diagnostických protokolů. 
+Přístup k diagnostickým protokolům je nezbytný pro monitorování služby a poskytování sestav dodržování předpisů. Azure API pro FHIR umožňuje provádět tyto akce prostřednictvím diagnostických protokolů. 
  
-FHIR® je registrovaná ochranná známka změněného HL7 a používá se s oprávněním změněného HL7.
+FHIR je registrovaná ochranná známka HL7 a používá se s povolením HL7.
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste zjistili, jak povolit protokoly auditu pro Azure API pro FHIR®. V dalším kroku se dozvíte další informace o dalších nastaveních, která můžete nakonfigurovat v rozhraní API Azure pro FHIR.
+V tomto článku jste zjistili, jak povolit protokoly auditu pro Azure API pro FHIR. V dalším kroku se dozvíte další informace o dalších nastaveních, která můžete nakonfigurovat v rozhraní API Azure pro FHIR.
  
 >[!div class="nextstepaction"]
 >[Další nastavení](azure-api-for-fhir-additional-settings.md)

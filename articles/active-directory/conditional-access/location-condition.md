@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 06/15/2020
+ms.date: 11/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 08e236d798f700a3c48dd41ba61941bc0037d613
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 888ed2fa24b82c0dda3361df1c63bb802e58f5fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88055373"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95904099"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Použití podmínky umístění v zásadách podmíněného přístupu 
 
@@ -64,13 +64,13 @@ Tato možnost může být v rámci zásad podmíněného přístupu, kde můžet
 Některé organizace se můžou rozhodnout definovat celé země nebo regiony hranice IP adres jako pojmenovaná umístění pro zásady podmíněného přístupu. Můžou tato umístění používat při blokování zbytečných přenosů, když ví, že platní uživatelé nebudou nikdy přijít z místa, jako je Severní Korea. Tato mapování IP adres na zemi se pravidelně aktualizují. 
 
 > [!NOTE]
-> Země neobsahují rozsahy IPv6 adres, jenom známé rozsahy IPv4 adres a nelze je označit jako důvěryhodné.
+> Rozsahy IPv6 adres nelze namapovat na země. Pouze adresy IPv4 jsou mapovány na země.
 
 ![Vytvořit nové umístění na základě země nebo oblasti v Azure Portal](./media/location-condition/new-named-location-country-region.png)
 
 #### <a name="include-unknown-areas"></a>Zahrnout neznámé oblasti
 
-Některé IP adresy nejsou namapované na konkrétní zemi nebo oblast. Pokud chcete zachytit tato umístění IP adres, zaškrtněte políčko při definování umístění **Zahrnout neznámé oblasti** . Tato možnost umožňuje zvolit, jestli se mají tyto IP adresy zahrnout do pojmenovaného umístění. Toto nastavení použijte, pokud se zásada používající pojmenované umístění má vztahovat na neznámá umístění.
+Některé IP adresy nejsou namapované na konkrétní zemi nebo oblast, včetně všech adres IPv6. Pokud chcete zachytit tato umístění IP adres, zaškrtněte políčko při definování umístění **Zahrnout neznámé oblasti** . Tato možnost umožňuje zvolit, jestli se mají tyto IP adresy zahrnout do pojmenovaného umístění. Toto nastavení použijte, pokud se zásada používající pojmenované umístění má vztahovat na neznámá umístění.
 
 ### <a name="configure-mfa-trusted-ips"></a>Konfigurace důvěryhodných IP adres MFA
 
@@ -114,7 +114,7 @@ Ve verzi Preview jsou teď dvě možnosti vytvoření:
 - **Umístění rozsahů IP adres**
 
 > [!NOTE]
-> Země neobsahují rozsahy IPv6 adres, jenom známé rozsahy IPv4 adres a nelze je označit jako důvěryhodné.
+> Rozsahy IPv6 adres nelze namapovat na země. Pouze adresy IPv4 jsou mapovány na země.
 
 ![Rozhraní s pojmenovanými umístěními verze Preview](./media/location-condition/named-location-preview.png)
 
@@ -157,7 +157,7 @@ Většina provozu protokolu IPv6, která se proxy serverem do služby Azure AD d
 Toto jsou nejběžnější důvody, které možná budete potřebovat ke konfiguraci rozsahů IPv6 ve vašich pojmenovaných umístěních. Pokud navíc používáte Azure virtuální sítě, budete mít provoz z IPv6 adresy. Pokud máte provoz virtuální sítě blokovaný zásadou podmíněného přístupu, podívejte se do přihlašovacího protokolu Azure AD. Jakmile identifikujete provoz, můžete získat využívanou adresu IPv6 a vyloučit ji ze zásad. 
 
 > [!NOTE]
-> Pokud chcete zadat rozsah IP CIDR pro jednu adresu, použijte bitovou masku/32. Pokud říkáte IPv6 adresu 2607: fb90: b27a: 6f69: f8d5: dea0: fb39:74A a chtěli byste vyloučit tuto jednotlivou adresu jako rozsah, použijte 2607: fb90: b27a: 6f69: f8d5: dea0: fb39:74A/32.
+> Pokud chcete zadat rozsah IP CIDR pro jednu adresu, použijte bitovou masku/128. Pokud říkáte IPv6 adresu 2607: fb90: b27a: 6f69: f8d5: dea0: fb39:74A a chtěli byste vyloučit tuto jednotlivou adresu jako rozsah, použijte 2607: fb90: b27a: 6f69: f8d5: dea0: fb39:74A/128.
 
 ### <a name="identifying-ipv6-traffic-in-the-azure-ad-sign-in-activity-reports"></a>Určení provozu protokolu IPv6 v sestavách aktivit přihlášení k Azure AD
 

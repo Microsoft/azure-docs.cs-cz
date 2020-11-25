@@ -8,12 +8,12 @@ ms.date: 02/11/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 6ce94590a1d0de6941c27d972bdd1c4194080e95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26062d73ae4c61af77b15dd2cac0541f2a988d11
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77153073"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912990"
 ---
 # <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Azure Data Lake Storage Gen2 hierarchický obor názvů
 
@@ -47,4 +47,4 @@ K analýze rozdílů v cenách úložiště dat, cenách transakcí a cenách re
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření účtu úložiště](./data-lake-storage-quickstart-create-account.md)
+- [Vytvoření účtu úložiště](../common/storage-account-create.md)

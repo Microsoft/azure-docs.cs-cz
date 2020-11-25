@@ -2,17 +2,19 @@
 title: Výstupy v šablonách
 description: Popisuje, jak definovat výstupní hodnoty v šabloně Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 203bfc66e9515ef14a5fe1315ef5b9ee07075041
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/24/2020
+ms.openlocfilehash: 8f782a78e523ebc55faac98344643982172476fa
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79460020"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95911426"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Výstupy v šabloně Azure Resource Manager
 
 Tento článek popisuje, jak definovat výstupní hodnoty v šabloně Azure Resource Manager. Výstupy použijete, když potřebujete vrátit hodnoty z nasazených prostředků.
+
+Formát každé výstupní hodnoty se musí shodovat s jedním z [datových typů](template-syntax.md#data-types).
 
 ## <a name="define-output-values"></a>Definovat výstupní hodnoty
 
@@ -110,7 +112,7 @@ az deployment group show \
 
 Následující příklady ukazují scénáře použití výstupů.
 
-|Šablona  |Popis  |
+|Template (Šablona)  |Description  |
 |---------|---------|
 |[Kopírovat proměnné](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Vytvoří komplexní proměnné a vypíše tyto hodnoty. Neimplementuje žádné prostředky. |
 |[Veřejná IP adresa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Vytvoří veřejnou IP adresu a vypíše ID prostředku. |

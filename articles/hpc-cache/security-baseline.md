@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dc695cc36113430cb1820d978ed41f5250cad33e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3e040146673ba16c07856f30b88771d0063713e9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94974822"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95896879"
 ---
 # <a name="azure-security-baseline-for-azure-hpc-cache"></a>Základní hodnota zabezpečení Azure pro mezipaměť HPC Azure
 
@@ -305,7 +305,7 @@ Rozšířená ochrana před internetovými útoky (ATP) je řešení zabezpečen
 
 **Doprovodné** materiály: mezipaměť HPC používá Azure RBAC k izolaci přístupu k podnikovým systémům tím, že omezuje přístup k důležitým systémům pomocí omezení přístupu k předplatným a skupinám pro správu, v nichž jsou udělen privilegovaný přístup.
 
-Vytvořte standardní operační postupy kolem použití vyhrazených účtů pro správu. Mezipaměť HPC vyžaduje, aby uživatelé měli v předplatném dostatečná oprávnění pro vytváření síťových adaptérů. Pokud používáte úložiště objektů blob, pro mezipaměť HPC pro přístup do úložiště se vyžaduje Přispěvatel rolí účtu úložiště role RBAC a úložiště dat objektů BLOB úložiště. 
+Vytvořte standardní operační postupy kolem použití vyhrazených účtů pro správu. Mezipaměť HPC vyžaduje, aby uživatelé měli v předplatném dostatečná oprávnění pro vytváření síťových adaptérů. Pokud používáte službu BLOB Storage, je pro přístup k úložišti pro mezipaměť HPC nutné Přispěvatel účtu úložiště rolí Azure a přispěvatel dat úložiště. 
 
 Ujistěte se, že také omezíte přístup k systémům pro správu, identitu a zabezpečení, které mají přístup pro správu k důležitým podnikovým prostředkům, jako jsou Doména služby Active Directory Controllers (DCs), nástroje zabezpečení a nástroje pro správu systému s agenty nainstalovanými v důležitých podnikových systémech. Útočníci, kteří tyto systémy pro správu a zabezpečení ohrožují, si je můžou hned weaponize, aby naohrozili důležité obchodní prostředky.
 

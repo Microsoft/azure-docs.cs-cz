@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/12/2020
 ms.reviewer: jeking
-ms.openlocfilehash: 5bdf1cd510ed0d997e5e59c6492117a4d567c43e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e289bea6b1a23f1622ced62656164d9865303298
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024598"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912820"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>Rychlý Start: Analýza dat pomocí datacihlů
 
@@ -198,7 +198,7 @@ V tomto článku jste v Azure Databricks vytvořili cluster Spark a pak jste ke 
 V dalším článku se dozvíte, jak pomocí Azure Databricks provést operaci ETL (extrakce, transformace a načítání dat).
 
 > [!div class="nextstepaction"]
->[Extrakce, transformace a načtení dat pomocí Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md).
+>[Extrakce, transformace a načtení dat pomocí Azure Databricks](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse).
 
 - Informace o tom, jak importovat data z jiných zdrojů dat do Azure Databricks, najdete v tématu [zdroje dat Spark](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html).
 

@@ -9,12 +9,12 @@ ms.date: 09/09/2020
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: b7f566f85ebdb6b481797823cba78aa968747e9f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b02f5a7c390c5594a7c5692798a0691c8d9a42d0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746419"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912769"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Filtrování dat pomocí Azure Data Lake Storage akcelerace dotazů
 
@@ -22,17 +22,17 @@ V tomto článku se dozvíte, jak pomocí akcelerace dotazů načíst podmnožin
 
 Zrychlení dotazů umožňuje aplikacím a analytickým architekturám významně optimalizovat zpracování dat tím, že načte jenom data, která potřebují k provedení dané operace. Další informace najdete v tématu [Azure Data Lake Storage zrychlení dotazů](data-lake-storage-query-acceleration.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud chcete získat přístup k Azure Storage, budete potřebovat předplatné Azure. Pokud ještě předplatné nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-- Účet úložiště pro **obecné účely v2** . viz [Vytvoření účtu úložiště](../common/storage-quickstart-create-account.md).
+- Účet úložiště pro **obecné účely v2** . viz [Vytvoření účtu úložiště](../common/storage-account-create.md).
 
 - Vyberte kartu pro zobrazení všech požadavků specifických pro sadu SDK.
 
   ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-  Nelze použít
+  Neuvedeno
 
   ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -92,7 +92,7 @@ Pokud chcete použít zrychlení dotazů, musíte nejdřív zaregistrovat funkci
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. Otevřete [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)nebo pokud máte rozhraní příkazového řádku Azure místně [nainstalované](https://docs.microsoft.com/cli/azure/install-azure-cli) , otevřete konzolovou aplikaci, například Windows PowerShell.
+1. Otevřete [Azure Cloud Shell](../../cloud-shell/overview.md)nebo pokud máte rozhraní příkazového řádku Azure místně [nainstalované](/cli/azure/install-azure-cli) , otevřete konzolovou aplikaci, například Windows PowerShell.
 
 2. Pokud je vaše identita přidružená k více než jednomu předplatnému, nastavte své aktivní předplatné na předplatné účtu úložiště.
 
@@ -236,7 +236,7 @@ Nainstalujte Data Lake klientské knihovny pro JavaScript tak, že otevřete okn
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Nelze použít
+Neuvedeno
 
 #### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -328,7 +328,7 @@ Get-QueryCsv $ctx $container $blob "SELECT * FROM BlobStorage WHERE _3 = 'Heming
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Asynchronní metoda `BlobQuickQueryClient.QueryAsync` pošle dotaz do rozhraní API zrychlení dotazů a potom streamuje výsledky zpátky do aplikace jako objekt [streamu](https://docs.microsoft.com/dotnet/api/system.io.stream) .
+Asynchronní metoda `BlobQuickQueryClient.QueryAsync` pošle dotaz do rozhraní API zrychlení dotazů a potom streamuje výsledky zpátky do aplikace jako objekt [streamu](/dotnet/api/system.io.stream) .
 
 ```cs
 static async Task QueryHemingway(BlockBlobClient blob)

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e76612c6c1b83ddb7e88377824902fe6290e7aaf
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6b522f234343cc6a50d76607d1629c46cd180b7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015235"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95894010"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Vylepšení syntézy pomocí jazyka SSML (Speech syntézy)
 
@@ -48,7 +48,7 @@ Každý dokument SSML je vytvořen pomocí SSML prvků (nebo značek). Tyto prvk
 
 `speak` je kořenový prvek a je **vyžadován** pro všechny dokumenty SSML. `speak`Element obsahuje důležité informace, jako je verze, jazyk a definice slovníku označení.
 
-**Syntaxe**
+**Syntax**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="string"></speak>
@@ -66,7 +66,7 @@ Každý dokument SSML je vytvořen pomocí SSML prvků (nebo značek). Tyto prvk
 
 `voice`Element je povinný. Slouží k určení hlasu, který se používá pro převod textu na řeč.
 
-**Syntaxe**
+**Syntax**
 
 ```xml
 <voice name="string">
@@ -130,7 +130,7 @@ speechConfig->SetProperty(
 
 # <a name="java"></a>[Java](#tab/java)
 
-Další informace najdete na webu <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Další informace najdete na webu <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
 ```java
 speechConfig.setProperty(
@@ -219,7 +219,7 @@ V současné době jsou úpravy role-přehrávání podporovány pro tyto hlasy 
 
 Výše uvedené změny se aplikují na úrovni věty a styly a aktéry rolí se liší podle hlasu. Pokud styl nebo role-Play není podporován, služba vrátí rozpoznávání řeči ve výchozím nastavení neutrální speaking. Můžete si prohlédnout, jaké styly a role-Play jsou podporovány pro každý hlas prostřednictvím [rozhraní API pro seznam hlasu](rest-text-to-speech.md#get-a-list-of-voices) nebo prostřednictvím platformy pro [vytváření obsahu pro zvuk](https://aka.ms/audiocontentcreation) bez kódu.
 
-**Syntaxe**
+**Syntax**
 
 ```xml
 <mstts:express-as style="string"></mstts:express-as>
@@ -243,7 +243,7 @@ Výše uvedené změny se aplikují na úrovni věty a styly a aktéry rolí se 
 
 Pomocí této tabulky můžete určit, které mluvené styly jsou pro každý neuronové hlas podporovány.
 
-| Hlas                   | Styl                     | Popis                                                 |
+| Hlas                   | Styl                     | Description                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Vyjadřuje formální, jistý a autoritativní tón pro doručování zpráv. |
 |                         | `style="newscast-casual"` | Vyjadřuje všestranný a příležitostný tón pro obecné doručování zpráv.        |
@@ -369,7 +369,7 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 > [!NOTE]
 > Pomocí tohoto prvku můžete přepsat výchozí chování převodu textu na řeč (TTS) pro slovo nebo frázi v případě, že syntetizované rozpoznávání řeči pro toto slovo nebo frázi nepřirozeně zvuk. Nastavte `strength` na `none` , aby nedocházelo k přerušení Prozodický předěl, které je automaticky vložené službou pro převod textu na řeč.
 
-**Syntaxe**
+**Syntax**
 
 ```xml
 <break strength="string" />
@@ -383,7 +383,7 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 | `strength` | Určuje relativní dobu trvání pozastavení pomocí jedné z následujících hodnot:<ul><li>žádné</li><li>x – slabý</li><li>slabé</li><li>střední (výchozí)</li><li>silnější</li><li>x – silné</li></ul> | Volitelné |
 | `time` | Určuje absolutní dobu trvání pauzy v sekundách nebo milisekundách, tato hodnota by měla být nastavena na hodnotu menší než 5000ms. Příklady platných hodnot jsou `2s` a. `500ms` | Volitelné |
 
-| Obsahem                      | Popis |
+| Obsahem                      | Description |
 |-------------------------------|-------------|
 | Žádná, nebo pokud není zadána žádná hodnota | 0 MS        |
 | x – slabý                        | 250 ms      |
@@ -409,7 +409,7 @@ Použijte `mstts:silence` element pro vložení pauz před nebo za text nebo mez
 >Rozdíl mezi `mstts:silence` a `break` je, který `break` lze přidat na libovolné místo v textu, ale ticha funguje pouze na začátku nebo konci vstupního textu nebo na hranici 2 sousedících vět.  
 
 
-**Syntaxe**
+**Syntax**
 
 ```xml
 <mstts:silence  type="string"  value="string"/>
@@ -441,7 +441,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 `s`Element může obsahovat text a následující prvky: `audio` , `break` , `phoneme` , `prosody` , `say-as` , `mstts:express-as` a `sub` .
 
-**Syntaxe**
+**Syntax**
 
 ```XML
 <p></p>
@@ -474,7 +474,7 @@ Fonetické abecedy se skládají z telefonů, které jsou tvořeny písmeny, č�
 > [!NOTE]
 > Značka fonémy se pro tyto 5 hlasy nepodporuje (et-EE-AnuNeural, GA-IE-OrlaNeural, lt-LT-OnaNeural, LV-LV-EveritaNeural a MT-MT-GarceNeural).
 
-**Syntaxe**
+**Syntax**
 
 ```XML
 <phoneme alphabet="string" ph="string"></phoneme>
@@ -524,7 +524,7 @@ Někdy může služba převod textu na řeč přesně vyslovit slovo. Napříkla
 > Vlastní lexikon se pro tyto 5 hlasy nepodporuje (et-EE-AnuNeural, GA-IE-OrlaNeural, lt-LT-OnaNeural, LV-LV-EveritaNeural a MT-MT-GarceNeural).
 
 
-**Syntaxe**
+**Syntax**
 
 ```XML
 <lexicon uri="string"/>
@@ -647,7 +647,7 @@ Další informace o fonetické abecedě hlasové služby pro rozpoznávání ře
 
 Vzhledem k tomu, že se hodnoty atributů Prozodický předěl můžou v rámci široké škály lišit, překladač řeči interpretuje přiřazené hodnoty jako návrh toho, co by měly být aktuální hodnoty Prozodický předěl vybraného hlasu. Služba převod textu na řeč omezuje nebo nahrazuje hodnoty, které nejsou podporovány. Příklady nepodporovaných hodnot jsou výškou 1 MHz nebo 120.
 
-**Syntaxe**
+**Syntax**
 
 ```XML
 <prosody pitch="value" contour="value" range="value" rate="value" duration="value" volume="value"></prosody>
@@ -730,7 +730,7 @@ Změny v rozteči je možné použít u standardních hlasů na úrovni slova ne
 
 `say-as` je volitelný prvek, který určuje typ obsahu (například číslo nebo datum) textu elementu. V této části najdete pokyny k vyslovení textu v modulu Shrnutí řeči.
 
-**Syntaxe**
+**Syntax**
 
 ```XML
 <say-as interpret-as="string" format="digit string" detail="string"> <say-as>
@@ -792,7 +792,7 @@ Libovolný zvuk zahrnutý v dokumentu SSML musí splňovat tyto požadavky:
 * Celková celková doba pro všechny textové a zvukové soubory v jedné odpovědi nesmí překročit 90 (90) sekund.
 * MP3 nesmí obsahovat žádné informace specifické pro zákazníka nebo jiné citlivé informace.
 
-**Syntaxe**
+**Syntax**
 
 ```xml
 <audio src="string"/></audio>
@@ -828,7 +828,7 @@ Pokud je zadaný zvuk na pozadí kratší než převod textu na řeč nebo zesla
 
 V SSML dokumentu je povolen pouze jeden zvukový soubor na pozadí. Můžete však `audio` v rámci `voice` elementu doplnit značky přidáním dalšího zvuku do dokumentu SSML.
 
-**Syntaxe**
+**Syntax**
 
 ```XML
 <mstts:backgroundaudio src="string" volume="string" fadein="string" fadeout="string"/>

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 406371325ddf8b555ede481582e19635b85abe49
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 10a2ae71d8c26d82a4a730bab3ba16e7c62d1243
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461562"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95911732"
 ---
 # <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>Shromažďování vlastních protokolů pomocí agenta Log Analytics v Azure Monitor
 
@@ -30,6 +30,7 @@ Soubory protokolů, které mají být shromažďovány, se musí shodovat s nás
 
 - Soubor protokolu nesmí umožňovat cyklické protokolování nebo otočení v protokolu, kde je soubor přepsán novými položkami.
 - Soubor protokolu musí používat kódování ASCII nebo UTF-8.  Jiné formáty jako UTF-16 se nepodporují.
+- Pro Linux se časové pásmo converesion nepodporuje pro časová razítka v protokolech.
 
 >[!NOTE]
 > V případě, že v souboru protokolu existují duplicitní položky, Azure Monitor bude shromažďovat. Výsledky dotazu ale budou nekonzistentní, kde výsledky filtru zobrazují více událostí, než je počet výsledků. Je důležité, abyste ověřili protokol, abyste zjistili, jestli aplikace, která ji vytvořila, toto chování způsobuje, a pokud je to možné, před vytvořením vlastní definice kolekce protokolů ji vyřešit.  
@@ -53,7 +54,7 @@ K definování vlastního souboru protokolu použijte následující postup.  Po
 Průvodce vlastním protokolem se spouští v Azure Portal a umožňuje definovat nový vlastní protokol ke shromáždění.
 
 1. V Azure Portal vyberte **Log Analytics pracovní prostory** > > **Rozšířená nastavení**.
-2. Klikněte na **Data**  >  **vlastní protokoly**dat.
+2. Klikněte na **Data**  >  **vlastní protokoly** dat.
 3. Ve výchozím nastavení jsou všechny změny konfigurace automaticky vloženy do všech agentů. Pro agenty Linux se konfigurační soubor pošle do Fluent sběrače dat.
 4. Kliknutím na tlačítko **Přidat +** otevřete Průvodce vlastním protokolem.
 
@@ -77,7 +78,7 @@ Aplikace může například vytvořit soubor protokolu každý den s datem zahrn
 
 Následující tabulka uvádí příklady platných vzorů k určení různých souborů protokolu.
 
-| Popis | Cesta |
+| Description | Cesta |
 |:--- |:--- |
 | Všechny soubory v *c:\Logs.* s příponou. txt v agentovi Windows |C:\Logs. \\ \* . txt |
 | Všechny soubory v *c:\Logs.* s názvem začínajícím protokolem a příponou. txt v agentovi Windows |C:\Logs\log \* . txt |
@@ -91,7 +92,7 @@ Následující tabulka uvádí příklady platných vzorů k určení různých 
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>Krok 4: Zadejte název a popis protokolu.
 Název, který zadáte, bude použit pro typ protokolu, jak je popsáno výše.  Bude vždycky končit _CL, aby ho rozlišil jako vlastní protokol.
 
-1. Zadejte název protokolu.  Přípona ** \_ CL** se poskytuje automaticky.
+1. Zadejte název protokolu.  Přípona **\_ CL** se poskytuje automaticky.
 2. Přidejte volitelný **Popis**.
 3. Kliknutím na tlačítko **Další** uložte definici vlastního protokolu.
 
@@ -150,7 +151,7 @@ Soubory protokolu se budou nacházet v *C:\MyApp\Logs*.  Každý den se vytvoř�
 ![Cesta ke kolekci protokolů](media/data-sources-custom-logs/collection-path.png)
 
 ### <a name="provide-a-name-and-description-for-the-log"></a>Zadejte název a popis protokolu.
-Používáme název *MyApp_CL* a do **popisu**zadáte.
+Používáme název *MyApp_CL* a do **popisu** zadáte.
 
 ![Název protokolu](media/data-sources-custom-logs/log-name.png)
 
