@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2ac4f41a36a2a18a65816be5ea74e88d0b364294
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: bb0e073d5ccf73434d05c801b9a8727c1d19fa47
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789059"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122245"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>Seznámení s Azure Defenderem pro App Service
 
@@ -30,7 +30,7 @@ Díky viditelnosti, kterou Azure nabízí jako poskytovatel cloudu, Security Cen
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|[Azure Defender pro App Service](azure-defender.md) se účtuje tak, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
 |Podporované plány App Service:|![Ano, ](./media/icons/yes-icon.png) Basic, Standard, Premium, izolovaný režim nebo Linux<br>![Žádná ](./media/icons/no-icon.png) volná, sdílená ani spotřebovaná<br>[Další informace o plánech App Service](https://azure.microsoft.com/pricing/details/app-service/plans/)|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 ## <a name="what-does-azure-defender-for-app-service-protect"></a>Co je Azure Defender pro App Service chránit?
@@ -50,7 +50,7 @@ Ochrana Azure App Serviceho plánu pomocí Azure Defenderu pro App Service:
 Security Center je nativně integrovaná s App Service a odstraňuje nutnost nasazení a registraci – integrace je transparentní.
 
 >[!NOTE]
-> Stránka ceny a nastavení obsahuje počet instancí pro **množství prostředků** . To představuje celkový počet výpočetních instancí ve všech App Service plánech v tomto předplatném, který běží v okamžiku, kdy jste otevřeli stránku s cenovou úrovní.
+> Stránka ceny a nastavení obsahuje počet instancí pro **množství prostředků**. To představuje celkový počet výpočetních instancí ve všech App Service plánech v tomto předplatném, který běží v okamžiku, kdy jste otevřeli stránku s cenovou úrovní.
 >
 > Azure App Service nabízí celou řadu plánů. Plán App Service definuje sadu výpočetních prostředků, které má webová aplikace běžet. Jsou ekvivalentní se serverovými farmami v konvenčním webovém hostování. Jednu nebo více aplikací je možné nakonfigurovat tak, aby běžely na stejných výpočetních prostředcích (nebo ve stejném plánu App Service).
 >
@@ -68,4 +68,4 @@ Související materiály najdete v následujících článcích:
 - Seznam výstrah Azure App Service najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-azureappserv).
 - Další informace o plánech App Service najdete v tématu [plány App Service](https://azure.microsoft.com/pricing/details/app-service/plans/).
 - > [!div class="nextstepaction"]
-    > [Povolit Azure Defender](security-center-pricing.md)
+    > [Povolení Azure Defenderu](security-center-pricing.md)

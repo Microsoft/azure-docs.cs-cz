@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2020
 ms.author: memildin
-ms.openlocfilehash: 3108dd32b9d7338e418a1d10684115ad7265702e
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 304604b649381daa887b4d313ffd0f773f015a0b
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951192"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122216"
 ---
-# <a name="tutorial-improve-your-regulatory-compliance"></a>Kurz: zlepšení dodržování legislativních předpisů
+# <a name="tutorial-improve-your-regulatory-compliance"></a>Kurz: Vylepšení dodržování právních předpisů
 
 Azure Security Center pomáhá zjednodušit proces splnění požadavků na dodržování legislativních předpisů pomocí **řídicího panelu dodržování předpisů regulativního předpisu**. Na řídicím panelu Security Center poskytuje přehledy o dodržování předpisů stav na základě průběžného posouzení prostředí Azure. V souladu s osvědčenými postupy zabezpečení Security Center analyzuje rizikové faktory v hybridním cloudovém prostředí. Tato posouzení jsou namapována na řízení dodržování předpisů z podporované sady standardů. Na řídicím panelu dodržování předpisů můžete zobrazit stav všech posouzení v rámci vašeho prostředí v kontextu určitého standardu nebo nařízení. Při rozhodování o doporučeních a omezení rizikových faktorů ve vašem prostředí vylepšuje stav dodržování předpisů.
 
@@ -52,15 +52,15 @@ V horní části obrazovky se zobrazí řídicí panel s přehledem stavu dodrž
 
     :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="Řídicí panel dodržování předpisů v legislativě":::
 
-1. Vyberte kartu pro standard dodržování předpisů, která je pro vás důležitá (1). Uvidíte, které odběry se standardně aplikují (2), a seznam všech ovládacích prvků pro tento standard (3). Pro příslušné ovládací prvky můžete zobrazit podrobnosti o předávání a selhání hodnocení přidružených k tomuto ovládacímu prvku (4), stejně jako počet ovlivněných prostředků (5). Některé ovládací prvky jsou zobrazeny šedě. K těmto ovládacím prvkům nejsou přidružena žádná Security Center posouzení. Ověřte požadavky těchto hodnot a vyhodnoťte je ve vašem prostředí sami. Některé z nich mohou být v souvislosti s procesy a nikoli technického typu.
+1. Vyberte kartu pro standard dodržování předpisů, která je pro vás důležitá (1). Uvidíte, které odběry se standardně aplikují (2), a seznam všech ovládacích prvků pro tento standard (3). Pro příslušné ovládací prvky můžete zobrazit podrobnosti o předávání a selhání hodnocení přidružených k tomuto ovládacímu prvku (4), stejně jako počet ovlivněných prostředků (5). Některé ovládací prvky jsou zobrazeny šedě. K těmto ovládacím prvkům nejsou přidružena žádná Security Center posouzení. Ověřte požadavky těchto hodnot a vyhodnoťte je ve vašem prostředí sami. Některé z nich mohou být související s procesy a nikoli technické.
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-drilldown.png" alt-text="Řídicí panel dodržování předpisů v legislativě":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-drilldown.png" alt-text="Zkoumání podrobností o dodržování předpisů pomocí konkrétního standardu":::
 
 1. Pokud chcete vygenerovat a stáhnout sestavu PDF shrnující aktuální stav dodržování předpisů pro určitý standard, klikněte na **Stáhnout sestavu**.
 
-    Tato sestava poskytuje přehled o stavu dodržování předpisů pro vybrané standardní údaje na základě Security Center dat posouzení a organizuje se podle ovládacích prvků tohoto standardu. Tuto sestavu lze sdílet s příslušnými zúčastněnými stranami a může sloužit k poskytování důkazů pro interní a externí auditory.
+    Tato sestava poskytuje přehled o stavu dodržování předpisů pro vybrané standardní údaje na základě Security Center dat posouzení a organizuje se podle ovládacích prvků tohoto standardu. Tuto sestavu lze sdílet s příslušnými zúčastněnými stranami a může poskytovat důkazy pro interní a externí auditory.
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/download-report.png" alt-text="Řídicí panel dodržování předpisů v legislativě":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/download-report.png" alt-text="Stáhnout sestavu dodržování předpisů":::
 
 ## <a name="improve-your-compliance-posture"></a>Zlepšení stav dodržování předpisů
 
@@ -68,13 +68,13 @@ S ohledem na informace na řídicím panelu dodržování předpisů můžete vy
 
 1.  Kliknutím na kterékoli z neúspěšných posouzení, která se zobrazí na řídicím panelu, zobrazíte podrobnosti o tomto doporučení. Každé doporučení zahrnuje sadu nápravných kroků, které by měly být dodrženy k vyřešení tohoto problému.
 
-1.  Pokud chcete zobrazit další podrobnosti a vyřešit doporučení pro daný prostředek, můžete vybrat konkrétní prostředek. <br>Například v **Azure CIS 1.1.0 (New) standard**můžete vybrat, že se **má na virtuálních počítačích použít šifrování disku**s doporučeními.
+1.  Pokud chcete zobrazit další podrobnosti a vyřešit doporučení pro daný prostředek, můžete vybrat konkrétní prostředek. <br>Například v **Azure CIS 1.1.0 (New) standard** můžete vybrat, že se **má na virtuálních počítačích použít šifrování disku** s doporučeními.
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/sample-recommendation.png" alt-text="Řídicí panel dodržování předpisů v legislativě":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/sample-recommendation.png" alt-text="Výběr doporučení od standardních potenciálních zákazníků přímo na stránku s podrobnostmi o doporučeních":::
 
 1. Když v tomto příkladu vyberete **provést akci** ze stránky podrobnosti doporučení, přijdete na stránky virtuálního počítače Azure v Azure Portal, kde můžete otevřít kartu **zabezpečení** a povolit šifrování:
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/encrypting-vm-disks.png" alt-text="Řídicí panel dodržování předpisů v legislativě":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/encrypting-vm-disks.png" alt-text="Tlačítko akce na stránce s podrobnostmi o doporučení vede k možnostem nápravy":::
 
     Další informace o tom, jak používat doporučení, najdete [v tématu Implementace doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
 

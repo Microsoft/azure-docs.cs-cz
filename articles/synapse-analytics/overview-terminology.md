@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: c58ee46a608ccdcbb01a082ee278d9e0f8a07f6e
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 8fd7562d1f8e38c79f739fdd2db7031e772874bc
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030675"
+ms.locfileid: "96122637"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Terminologie Azure synapse Analytics
 
@@ -47,17 +47,11 @@ Existují dva způsoby, jak v rámci synapse použít Spark:
 * **Poznámkové bloky Spark** pro práci s datovými vědy a inženýry, které používají Scala, PySpark, C# a SparkSQL
 * **Definice úloh Sparku** pro spouštění úloh služby Batch Spark pomocí souborů JAR
 
-Podpora verzí:
-* Spark 2,4
-* Python 3.6.1
-* Scala 2.11.12
-* .NET pro Apache Spark 1,0
-* Rozdílový Lake 0,3.  
-
 ## <a name="pipelines"></a>Pipelines
 
-* **Integrace dat** – poskytuje možnost ingestovat data mezi různými zdroji a orchestrovat aktivity běžící v rámci pracovního prostoru nebo mimo pracovní prostor.
-* **Tok dat** – poskytuje plně vizuální prostředí bez nutnosti kódování, které by vyžadovalo transformaci velkých objemů dat. Veškerá optimalizace a provádění jsou zpracovávána způsobem bez serveru.
+Kanály představují způsob, jakým Azure synapse zajišťuje integraci dat – umožňuje přesun dat mezi službami a orchestrace aktivit.
+
+* **Datové toky** poskytují codine možnosti pro transformaci dat, která používá synapse Spark v rámci – pokrývá.
 * **Kanál** – logické seskupení aktivit, které provádějí úkoly společně.
 * **Activity** – definuje akce, které se mají provádět na datech, jako je kopírování dat, spuštění poznámkového bloku nebo skriptu SQL.
 * **Trigger** – spustí kanál. Dá se spustit ručně nebo automaticky (naplánování, zabubné okno nebo události).

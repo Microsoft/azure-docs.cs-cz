@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: 0b80db15e4fafd5e5c63a4194039fbeca21d429b
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: d03416f390abb8656ac1aed81419864443122ce6
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900386"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122420"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Další ochrana před hrozbami v Azure Security Center
 I integrované [ochrany v Azure defenderu](azure-defender.md)Azure Security Center taky nabízí následující možnosti ochrany před hrozbami.
@@ -29,7 +29,7 @@ I integrované [ochrany v Azure defenderu](azure-defender.md)Azure Security Cent
 ## <a name="threat-protection-for-azure-network-layer"></a>Ochrana před hrozbami pro síťovou vrstvu Azure <a name="network-layer"></a>
 Analýza Security Centerch síťových vrstev vychází z ukázkových [dat IPFIX](https://en.wikipedia.org/wiki/IP_Flow_Information_Export), což jsou hlavičky paketů shromážděné směrovači Azure Core. Na základě tohoto datového kanálu používá Security Center k identifikaci a označení aktivit škodlivého provozu modely strojového učení. Security Center k rozšíření IP adres používá taky databázi Microsoft Threat Intelligence.
 
-Některé konfigurace sítě mohou omezit Security Center generování výstrah na podezřelé síťové aktivity. Pokud Security Center chcete generovat výstrahy sítě, zajistěte, aby:
+Některé konfigurace sítě omezují Security Center generování výstrah na podezřelou síťovou aktivitu. Pokud Security Center chcete generovat výstrahy sítě, zajistěte, aby:
 - Váš virtuální počítač má veřejnou IP adresu (nebo se nachází ve službě Vyrovnávání zatížení s veřejnou IP adresou).
 - Externí řešení identifikátorů ID neblokuje provoz odchozího výstupu sítě vašeho virtuálního počítače.
 
@@ -47,10 +47,10 @@ Seznam výstrah Azure Resource Manager (Preview) najdete v [referenční tabulce
 >[!NOTE]
 > Některé z předchozích analýz jsou napájené z Microsoft Cloud App Security. Pokud chcete tyto analýzy využít, musíte aktivovat licenci Cloud App Security. Pokud máte licenci Cloud App Security, jsou tyto výstrahy ve výchozím nastavení povolené. Zakázání výstrah:
 >
-> 1. V nabídce Security Center vyberte **cenové & nastavení** .
+> 1. V nabídce Security Center vyberte **cenové & nastavení**.
 > 1. Vyberte předplatné, které chcete změnit.
-> 1. Vyberte **detekci hrozeb** .
-> 1. Zrušte zaškrtnutí políčka **Allow Microsoft Cloud App Security pro přístup k datům** a vyberte **Uložit** .
+> 1. Vyberte **detekci hrozeb**.
+> 1. Zrušte zaškrtnutí políčka **Allow Microsoft Cloud App Security pro přístup k datům** a vyberte **Uložit**.
 
 
 >[!NOTE]
@@ -58,14 +58,14 @@ Seznam výstrah Azure Resource Manager (Preview) najdete v [referenční tabulce
 
 1. Nastavte pracovní prostor, do kterého instalujete agenta. Ujistěte se, že je pracovní prostor ve stejném předplatném, které používáte v Security Center a máte oprávnění ke čtení a zápisu v pracovním prostoru.
 
-1. Povolte **Azure Defender** a vyberte **Uložit** .
+1. Povolte **Azure Defender** a vyberte **Uložit**.
 
 
 ## <a name="threat-protection-for-azure-cosmos-db-preview"></a>Ochrana před hrozbami pro Azure Cosmos DB (Preview)<a name="cosmos-db"></a>
 
 Výstrahy Azure Cosmos DB jsou generovány neobvyklými a potenciálně škodlivými pokusy o přístup k účtům Azure Cosmos DB nebo jejich zneužití.
 
-Další informace naleznete v tématech:
+Další informace najdete tady:
 
 * [Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB (Preview)](../cosmos-db/cosmos-db-advanced-threat-protection.md)
 * [Seznam výstrah ochrany před hrozbami pro Azure Cosmos DB (Preview)](alerts-reference.md#alerts-azurecosmos)

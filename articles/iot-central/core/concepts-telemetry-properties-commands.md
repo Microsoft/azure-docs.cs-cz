@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 24fbe347aeb0b47ffd1ba694f761d909ff2950f8
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 5b1bbce68be19c2dbb08f7d69611b719b450a370
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989543"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96121767"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Datové části telemetrie, vlastností a příkazů
 
@@ -36,7 +36,7 @@ Každý příklad ukazuje fragment kódu z modelu zařízení, který definuje t
 
 Soubor JSON, který definuje model zařízení, používá program [Digital DTDL Definition Language () v2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
 
-Vzorový kód zařízení, který zobrazuje některé z těchto používaných datových částí, najdete v tématu věnovaném [Vytvoření a připojení klientské aplikace do aplikace azure IoT Central (Node.js)](tutorial-connect-device-nodejs.md) a [Vytvoření a připojení klientské aplikace k vašim kurzům pro Azure IoT Central aplikace (Python)](tutorial-connect-device-python.md) .
+Vzorový kód zařízení, který zobrazuje některé z těchto používaných datových částí, najdete v kurzu [Vytvoření a připojení klientské aplikace do aplikace Azure IoT Central](tutorial-connect-device.md) .
 
 ## <a name="view-raw-data"></a>Zobrazit nezpracovaná data
 

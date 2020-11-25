@@ -7,12 +7,12 @@ ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: aeb1e5ee00bd52ebb4bd93dec2f4a1eacb002fb9
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 992fb4422974dad7a48e5fea953ac4530bb52d5c
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94986523"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122589"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Použití vlastností v řešení Azure IoT Central
 
@@ -160,11 +160,7 @@ hubClient.getTwin((err, twin) => {
 });
 ```
 
-Tento článek používá Node.js pro jednoduchost. Úplné informace o příkladech aplikací pro zařízení najdete v následujících kurzech:
-
-* [Vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central (Node.js)](tutorial-connect-device-nodejs.md)
-* [Vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central (Python)](tutorial-connect-device-python.md)
-* [Vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central (Java)](tutorial-connect-device-java.md)
+Tento článek používá Node.js pro jednoduchost. Úplné informace o příkladech aplikací pro zařízení najdete v tématu [Vytvoření a připojení klientské aplikace ke svému kurzu pro Azure IoT Central aplikace](tutorial-connect-device.md) .
 
 Následující zobrazení v aplikaci Azure IoT Central zobrazuje vlastnosti, které vidíte. Zobrazení automaticky nastaví vlastnost **model zařízení** na _vlastnost zařízení jen pro čtení_.
 
@@ -236,4 +232,4 @@ Následující zobrazení obsahuje vlastnosti, které lze zapisovat. Když zadá
 Teď, když jste se naučili, jak používat vlastnosti v aplikaci IoT Central v Azure, najdete v těchto tématech:
 
 * [Datových částí](concepts-telemetry-properties-commands.md)
-* [Vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central (Node.js)](tutorial-connect-device-nodejs.md)
+* [Vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central](tutorial-connect-device.md)

@@ -6,14 +6,14 @@ author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 10/26/2020
+ms.date: 11/25/2020
 ms.author: duau
-ms.openlocfilehash: 30d1fb62b661d898ba06548e5e3a2c7d31b97794
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8b344f38dd5effb34adec7943a444ce51ed513a9
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95906479"
+ms.locfileid: "96122539"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>Partneři připojení ExpressRoute a umístění peeringu
 
@@ -108,10 +108,11 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Podporováno |Podporováno |Amsterdam, Brno, Berlín, Canberra2, Chicago, Praha, Dubai2, Dublin, Frankfurt, Ženeva, Hongkong – zvláštní správní oblast, Londýn, London2, Los Angeles, Los Angeles2, Melbourne, Miami, Milán, New York, Ósaka, Paříž, Svatý Paulo, Seattle, Soul, Silicon sedl, Singapur, Stockholm, Sydney, Tokio, Toronto, Washington DC, Curych |
 | **Etisalat Spojené arabské emiráty** |Podporováno |Podporováno |Dubaj|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Podporováno |Podporováno |Amsterdam, Amsterdam2, Dublin, Frankfurt, Londýn |
-| **FarEasTone** |Podporováno |Podporováno |WAN|
+| **[FarEasTone](https://www.fetnet.net/corporate/en/Enterprise.html)** |Podporováno |Podporováno |WAN|
 | **[Fastweb](https://www.fastweb.it/grandi-aziende/cloud/scheda-prodotto/fastcloud-interconnect/)** | Podporováno |Podporováno |Milán|
-| **Fibrenoire** |Podporováno |Podporováno |Montreal|
-| **GÉANT** |Podporováno |Podporováno |Amsterdam, Amsterdam2, Dublin, Frankfurt, Marseille |
+| **[Fibrenoire](https://fibrenoire.ca/en/services/cloudextn-2/)** |Podporováno |Podporováno |Montreal|
+| **[GÉANT](https://www.geant.org/Networks)** |Podporováno |Podporováno |Amsterdam, Amsterdam2, Dublin, Frankfurt, Marseille |
+| **[GlobalConnect]()** | Podporováno |Podporováno | Oslo, Stavanger | 
 | **GTT** |Podporováno |Podporováno |London2 |
 | **[Global Cloud Xchange (GCX)](https://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | Podporováno| Podporováno | Čennaj, Bombaj |
 | **Intelsat** | Podporováno | Podporováno | Washington DC2 |
@@ -167,6 +168,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Telus](https://www.telus.com)** |Podporováno |Podporováno |Montreal, Seattle, Toronto, Vancouver |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |Podporováno |Podporováno |Kapské město, Johannesburg |
 | **[ČASOVÉ dotCom](https://www.time.com.my/enterprise/connectivity/direct-cloud)** | Podporováno | Podporováno | Kuala Lumpur |
+| **[Komunikace Tokai](https://www.tokai-com.co.jp/en/)** | Podporováno | Podporováno | Ósaka, Tokyo2 |
 | **[Transtelco](https://transtelco.net/enterprise-services/)** |Podporováno |Podporováno |Praha, Queretaro (Mexiko)|
 | **T-Systems** |Podporováno |Podporováno |Frankfurt|
 | **[UOLDIVEO](https://www.uoldiveo.com.br/)** |Podporováno |Podporováno |Sao Paulo |

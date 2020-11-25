@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: afe3e9812271f4b8e049fb2a53efd45fe746e514
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 313826e9e3fb5fd34d42dd735cf66259773084f7
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992807"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122342"
 ---
 # <a name="quickstart---create-an-azure-iot-central-application"></a>Rychlý Start – vytvoření aplikace IoT Central v Azure
 
@@ -68,4 +68,4 @@ V tomto rychlém startu jste vytvořili aplikaci IoT Central. Tady je doporučen
 
 Pokud jste vývojář zařízení a chcete podrobně do nějakého kódu, je navržený další krok:
 > [!div class="nextstepaction"]
-> [Vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central](./tutorial-connect-device-nodejs.md)
+> [Vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central](./tutorial-connect-device.md)

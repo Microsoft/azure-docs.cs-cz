@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 82818c8db326889079948cd2b32b2ed0be6ab50d
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: e33f48c9496ffa3cca9d8b1aa71d524be9a311bb
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990750"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122260"
 ---
 # <a name="iot-central-device-development-overview"></a>Přehled vývoje zařízení pro IoT Central
 
@@ -135,7 +135,7 @@ K implementaci chování zařízení použijte jednu ze [sad SDK pro zařízení
 
 Další informace o roli šablon zařízení najdete v tématu [co jsou to šablony zařízení?](./concepts-device-templates.md).
 
-Ukázkový kód najdete v tématu [Vytvoření a připojení klientské aplikace Node.js](./tutorial-connect-device-nodejs.md) nebo [Vytvoření a připojení klientské aplikace v Pythonu](./tutorial-connect-device-python.md).
+Ukázkový kód najdete v tématu [Vytvoření a připojení klientské aplikace](./tutorial-connect-device.md).
 
 ### <a name="languages-and-sdks"></a>Jazyky a sady SDK
 
@@ -143,6 +143,6 @@ Další informace o podporovaných jazycích a sadách SDK najdete v tématu [po
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste vývojářem zařízení a chcete podrobně do nějakého kódu, je navržený další krok [Vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central](./tutorial-connect-device-nodejs.md).
+Pokud jste vývojářem zařízení a chcete podrobně do nějakého kódu, je navržený další krok [Vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central](./tutorial-connect-device.md).
 
 Pokud chcete získat další informace o použití IoT Central, je doporučeným dalším postupem vyzkoušet rychlé starty, počínaje [vytvořením aplikace Azure IoT Central](./quick-deploy-iot-central.md).

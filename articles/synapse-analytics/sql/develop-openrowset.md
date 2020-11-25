@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2458b5f3f0c0091bb6ec24e62a1d5614e4e1ecd8
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 90a5afb19c9ba5061b9304c739914262bcdbee15
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888585"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122722"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Použití funkce OPENROWSET s použitím fondu SQL bez serveru (Preview) ve službě Azure synapse Analytics
 
@@ -147,7 +147,7 @@ V následujícím příkladu, pokud unstructured_data_path = `https://mystoragea
 
 Klauzule WITH umožňuje zadat sloupce, které chcete ze souborů číst.
 
-- V případě datových souborů CSV můžete načíst všechny sloupce a zadat názvy sloupců a jejich datové typy. Pokud chcete podmnožinu sloupců, použijte řadové číslovky a vyberte sloupce z původních datových souborů podle pořadového čísla. Sloupce budou vázány podle ordinálního označení. 
+- V případě datových souborů CSV můžete načíst všechny sloupce a zadat názvy sloupců a jejich datové typy. Pokud chcete podmnožinu sloupců, použijte řadové číslovky a vyberte sloupce z původních datových souborů podle pořadového čísla. Sloupce budou vázány podle ordinálního označení. Je-li použita HEADER_ROW = TRUE, je vazba sloupce provedena pomocí názvu sloupce namísto ordinálního umístění.
     > [!TIP]
     > Můžete také vynechat klauzuli WITH pro soubory CSV. Datové typy budou automaticky odvozeny z obsahu souboru. Argument HEADER_ROW lze použít k určení existence řádku záhlaví, ve kterém budou názvy sloupců případu načteny z řádku záhlaví. Podrobnosti najdete v podrobnostech o [automatickém zjišťování schématu](#automatic-schema-discovery).
     
@@ -231,7 +231,7 @@ Specifické pro analyzátor CSV verze 2,0:
 
 HEADER_ROW = {TRUE | CHYBNÉ
 
-Určuje, zda soubor CSV obsahuje řádek záhlaví. Výchozí hodnota je FALSE. Podporováno v PARSER_VERSION = ' 2.0 '. Pokud má hodnotu TRUE, názvy sloupců se načtou z prvního řádku podle argumentu FIRSTROW.
+Určuje, zda soubor CSV obsahuje řádek záhlaví. Výchozí hodnota je FALSE. Podporováno v PARSER_VERSION = ' 2.0 '. Pokud má hodnotu TRUE, názvy sloupců se načtou z prvního řádku podle argumentu FIRSTROW. Je-li nastavena hodnota TRUE a v WITH je zadáno schéma, vytvoří se vazba názvů sloupců podle názvu sloupce, nikoli podle pořadových míst.
 
 Datatyp_souboru = {' char ' | ' widechar '}
 
@@ -281,7 +281,7 @@ Soubory Parquet obsahují popisy typů pro každý sloupec. Následující tabul
 | UVEDENA |INT (8, false) |tinyint |
 | UVEDENA |INT (16, false) |int |
 | UVEDENA |INT (32, false) |bigint |
-| UVEDENA |DATE |datum |
+| UVEDENA |DATE |date |
 | UVEDENA |NOTACI |decimal |
 | UVEDENA |ČAS (LISOVNY)|time |
 | INT64 |INT (64; true) |bigint |

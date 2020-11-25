@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: 59cfe7b990523e5cb165d1037291b3c1b1301624
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 43b66a59062a230aa2fba6909172deb5f1740b28
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289228"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122325"
 ---
 # <a name="continuously-export-security-center-data"></a>Průběžný export Security Center dat
 
@@ -61,7 +61,11 @@ Následující postup je nezbytný, ať už nastavujete průběžný export do L
 1. Z bočního panelu Security Center vyberte **cenové & nastavení**.
 1. Vyberte konkrétní předplatné, pro které chcete exportovat data.
 1. Z postranního panelu stránky nastavení daného předplatného vyberte **průběžný export**.
-    [ ![ Možnosti exportu v Azure Security Center](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox) tady vidíte možnosti exportu. Pro každý dostupný cíl exportu je k dispozici karta. 
+
+    :::image type="content" source="./media/continuous-export/continuous-export-options-page.png" alt-text="Možnosti exportu v Azure Security Center":::
+
+    Tady vidíte možnosti exportu. Pro každý dostupný cíl exportu je k dispozici karta. 
+
 1. Vyberte datový typ, který chcete exportovat, a vyberte filtry u jednotlivých typů (například exportovat pouze upozornění s vysokou závažností).
 1. Pokud chcete, volitelně i když váš výběr obsahuje jedno z těchto čtyř doporučení, můžete do nich zahrnout výsledky posouzení ohrožení zabezpečení:
     - U vašich databází SQL by se měly opravit výsledky posouzení ohrožení zabezpečení.
@@ -115,7 +119,7 @@ K nasazení konfigurací průběžného exportu v celé organizaci použijte uve
 
 1. V následující tabulce vyberte zásadu, kterou chcete použít:
 
-    |Cíl  |Zásada  |ID zásady  |
+    |Cíl  |Zásady  |ID zásady  |
     |---------|---------|---------|
     |Průběžný export do centra událostí|[Nasazení exportu do centra událostí pro upozornění a doporučení služby Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
     |Průběžný export do pracovního prostoru Log Analytics|[Nasazení exportu do pracovního prostoru služby Log Analytics pro upozornění a doporučení služby Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
@@ -163,7 +167,7 @@ Chcete-li zobrazit schémata událostí exportovaných datových typů, navštiv
 
 ##  <a name="view-exported-alerts-and-recommendations-in-azure-monitor"></a>Zobrazení exportovaných výstrah a doporučení v Azure Monitor
 
-V některých případech můžete zvolit zobrazení exportovaných výstrah zabezpečení nebo doporučení v [Azure monitor](../azure-monitor/platform/alerts-overview.md). 
+Můžete se také rozhodnout zobrazit exportované výstrahy zabezpečení nebo doporučení v [Azure monitor](../azure-monitor/platform/alerts-overview.md). 
 
 Azure Monitor poskytuje jednotné prostředí pro upozorňování na nejrůznější výstrahy Azure, včetně diagnostického protokolu, výstrah metrik a vlastních výstrah, a to na základě Log Analytics dotazů v pracovním prostoru.
 
@@ -207,7 +211,7 @@ Přečtěte si další informace o [cenách služby Azure Event hub](https://azu
 
 ### <a name="does-the-export-include-data-about-the-current-state-of-all-resources"></a>Zahrnuje export data o aktuálním stavu všech prostředků?
 
-Ne. Průběžný export je sestaven pro streamování **událostí** :
+Ne. Průběžný export je sestaven pro streamování **událostí**:
 
 - **Výstrahy** přijaté před povolením exportu nebudou exportovány.
 - **Doporučení** se odesílají pokaždé, když se změní stav dodržování předpisů prostředku. Například pokud se prostředek změní na stav není v pořádku. Vzhledem k tomu, že se jedná o upozornění, nebudou exportována doporučení pro prostředky, které nezměnily stav od povolení exportu.
@@ -226,7 +230,7 @@ Další informace najdete v [Azure Event Hubs – geografická zotavení po hav�
 
 ### <a name="is-continuous-export-available-with-azure-security-center-free"></a>Je průběžný export dostupný s Azure Security Center zdarma?
 
-Ano! Počítejte s tím, že mnoho upozornění Security Center se poskytuje jenom v případě, že jste povolili Azure Defender. Dobrým způsobem, jak zobrazit náhled výstrah, které získáte v exportovaných datech, je zobrazit výstrahy zobrazené v Azure Portal na stránkách Security Center.
+Ano. Počítejte s tím, že mnoho upozornění Security Center se poskytuje jenom v případě, že jste povolili Azure Defender. Dobrým způsobem, jak zobrazit náhled výstrah, které získáte v exportovaných datech, je zobrazit výstrahy zobrazené v Azure Portal na stránkách Security Center.
 
 
 
