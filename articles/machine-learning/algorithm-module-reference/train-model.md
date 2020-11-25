@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: e3080836e8b9ed38e99c691c66e71a4620829c90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/25/2020
+ms.openlocfilehash: f9a7623fd27178e8b9c213a1759bb09863d16c72
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890206"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030692"
 ---
 # <a name="train-model-module"></a>Modul vlakového modelu
 
@@ -40,16 +40,14 @@ V Azure Machine Learning je vytváření a používání modelu strojového uče
 3. Po dokončení školení použijte školicí model s jedním z [modulů pro vyhodnocování](./score-model.md)a předpovědi se na nová data.
 
 ## <a name="how-to-use-train-model"></a>Jak používat model výuky 
-  
-1.  V Azure Machine Learning nakonfigurujte model klasifikace nebo regresní model.
     
-2. Přidejte modul **vlakového modelu** do kanálu.  Tento modul můžete najít v kategorii **Machine Learning** . Rozbalte položku **vlak**a přetáhněte do svého kanálu modul **vlakového modelu** .
+1. Přidejte modul **vlakového modelu** do kanálu.  Tento modul můžete najít v kategorii **Machine Learning** . Rozbalte položku **vlak** a přetáhněte do svého kanálu modul **vlakového modelu** .
   
-3.  Na levém vstupu připojte nev nevýukovém režimu. Připojte datovou sadu ke správnému vstupu **modelu výuky**.
+1.  Na levém vstupu připojte nev nevýukovém režimu. Připojte datovou sadu ke správnému vstupu **modelu výuky**.
 
     Datová sada školení musí obsahovat sloupec popisku. Všechny řádky bez popisků jsou ignorovány.
   
-4.  U **sloupce popisek**klikněte na **Upravit sloupec** v pravém panelu modulu a vyberte jeden sloupec obsahující výsledky, které model může použít pro školení.
+1.  U **sloupce popisek** klikněte na **Upravit sloupec** v pravém panelu modulu a vyberte jeden sloupec obsahující výsledky, které model může použít pro školení.
   
     - Pro problémy s klasifikací musí sloupec popisku obsahovat buď hodnoty **kategorií** nebo **diskrétní** hodnoty. Některé příklady mohou být hodnocení typu Ano/bez, kód klasifikace choroby nebo název nebo skupina pro příjem.  Pokud vyberete sloupec noncategorical, modul během školení vrátí chybu.
   
@@ -62,7 +60,10 @@ V Azure Machine Learning je vytváření a používání modelu strojového uče
     > [!TIP] 
     > Pokud máte potíže s použitím voliče sloupců, přečtěte si článek [Výběr sloupců v datové sadě](./select-columns-in-dataset.md) pro tipy. Popisuje několik běžných scénářů a tipů k používání **pravidel s pravidly** a možnostmi **názvu** .
   
-5.  Odešlete kanál. Pokud máte velké množství dat, může to chvíli trvat.
+1.  Odešlete kanál. Pokud máte velké množství dat, může to chvíli trvat.
+
+    > [!IMPORTANT] 
+    > Pokud máte sloupec ID, který má ID každého řádku, může **model výuky** mít chybu typu "počet jedinečných hodnot ve sloupci:" {column_name} "větší než povolený." Důvodem je to, že sloupec ID dosáhl prahové hodnoty jedinečných hodnot a příčinou může být nedostatek paměti. Sloupec ID obvykle nemá během školení žádný význam. Pomocí příkazu [Upravit metadata](edit-metadata.md) můžete tento sloupec označit jako **nejasná funkce** a nebude se používat při výuce. Další podrobnosti o chybě najdete v [kódu chyby návrháře](././designer-error-codes.md) .
 
 ## <a name="results"></a>Výsledky
 
