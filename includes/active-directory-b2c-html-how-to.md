@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
-ms.openlocfilehash: 9b660bf20c90a84780175e70573c96a0ce1b0b7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cb4cdef227c786b12790903037fdc02649592e3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91377271"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95990869"
 ---
 ## <a name="use-custom-page-content"></a>Použít vlastní obsah stránky
 
@@ -49,14 +49,14 @@ Následující tabulka uvádí výchozí obsah stránky, který poskytuje Azure 
 | Výchozí stránka | Description | ID definice obsahu<br/>(jenom vlastní zásady) |
 |:-----------------------|:--------|-------------|
 | [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Chybová stránka**. Tato stránka se zobrazí, pokud dojde k výjimce nebo chybě. | *rozhraní API. Chyba* |
-| [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **Stránka s vlastním kontrolním**výrazem. Tento soubor použijte jako obsah vlastní stránky pro přihlašovací stránku účtu sociální sítě, přihlašovací stránku místního účtu, přihlašovací stránku místního účtu, resetování hesla a další. Formulář může obsahovat různé vstupní ovládací prvky, jako je například textové pole pro zadání hesla, pole pro zadávání hesla, přepínač, rozevírací seznamy s jedním výběrem a zaškrtávací políčka vícenásobného výběru. | *API. localaccountsignin*, *API. localaccountsignup*, *API. localaccountpasswordreset*, *API. selfasserted* |
+| [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **Stránka s vlastním kontrolním** výrazem. Tento soubor použijte jako obsah vlastní stránky pro přihlašovací stránku účtu sociální sítě, přihlašovací stránku místního účtu, přihlašovací stránku místního účtu, resetování hesla a další. Formulář může obsahovat různé vstupní ovládací prvky, jako je například textové pole pro zadání hesla, pole pro zadávání hesla, přepínač, rozevírací seznamy s jedním výběrem a zaškrtávací políčka vícenásobného výběru. | *API. localaccountsignin*, *API. localaccountsignup*, *API. localaccountpasswordreset*, *API. selfasserted* |
 | [multifactor-1.0.0.html](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Stránku Multi-Factor Authentication**. Na této stránce můžou uživatelé při registraci nebo přihlašování ověřit svoje telefonní čísla (pomocí textu nebo hlasu). | *API. PhoneFactor* |
 | [updateprofile.html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Stránka aktualizace profilu**. Tato stránka obsahuje formulář, ke kterému můžou uživatelé získat přístup, aby mohli aktualizovat svůj profil. Tato stránka se podobá stránce pro registraci účtu sociální sítě, s výjimkou polí zadání hesla. | *API. selfasserted. profileupdate* |
 | [unified.html](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Jednotná registrace nebo přihlašovací stránka**. Tato stránka zpracovává proces registrace a přihlášení uživatele. Uživatelé můžou používat podnikové zprostředkovatele identity, poskytovatele sociálních identit, jako je Facebook nebo Google +, nebo místní účty. | *API. signuporsignin* |
 
 ## <a name="hosting-the-page-content"></a>Hostování obsahu stránky
 
-Při použití vlastních souborů HTML a CSS k přizpůsobení uživatelského rozhraní hostovat obsah svého uživatelského rozhraní na jakémkoli veřejně dostupném koncovém bodu HTTPS, který podporuje CORS. Například [Azure Blob Storage](../articles/storage/blobs/storage-blobs-introduction.md), [Azure App Services](/azure/app-service/), webové servery, sítě CDN, AWS S3 nebo systémy pro sdílení souborů.
+Při použití vlastních souborů HTML a CSS k přizpůsobení uživatelského rozhraní hostovat obsah svého uživatelského rozhraní na jakémkoli veřejně dostupném koncovém bodu HTTPS, který podporuje CORS. Například [Azure Blob Storage](../articles/storage/blobs/storage-blobs-introduction.md), [Azure App Services](../articles/app-service/index.yml), webové servery, sítě CDN, AWS S3 nebo systémy pro sdílení souborů.
 
 ## <a name="guidelines-for-using-custom-page-content"></a>Pokyny pro používání vlastního obsahu stránky
 
@@ -114,8 +114,8 @@ V tomto článku používáme pro hostování našeho obsahu službu Azure Blob 
 
 Chcete-li hostovat obsah HTML v úložišti objektů blob, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-1. V nabídce **centra** vyberte **Nový**  >  **úložiště**  >  **účet**úložiště.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. V nabídce **centra** vyberte **Nový**  >  **úložiště**  >  **účet** úložiště.
 1. Vyberte **předplatné** pro účet úložiště.
 1. Vytvořte **skupinu prostředků** nebo vyberte existující.
 1. Zadejte jedinečný **název** účtu úložiště.
@@ -134,8 +134,8 @@ Pokud chcete vytvořit veřejný kontejner ve službě BLOB Storage, proveďte n
 
 1. V části **BLOB Service** v nabídce na levé straně vyberte **objekty blob**.
 1. Vyberte **+ kontejner**.
-1. Jako **název**zadejte *root*. Název může být název, který si zvolíte, například *Contoso*, ale v tomto příkladu používáme pro jednoduchost v tomto příkladu *kořen* .
-1. Jako **úroveň veřejného přístupu**vyberte **objekt BLOB**a pak klikněte na **OK**.
+1. Jako **název** zadejte *root*. Název může být název, který si zvolíte, například *Contoso*, ale v tomto příkladu používáme pro jednoduchost v tomto příkladu *kořen* .
+1. Jako **úroveň veřejného přístupu** vyberte **objekt BLOB** a pak klikněte na **OK**.
 1. Vyberte **kořen** a otevřete tak nový kontejner.
 
 #### <a name="22-upload-your-custom-page-content-files"></a>2,2 nahrání vlastních souborů obsahu stránky
@@ -154,18 +154,18 @@ Pokud chcete vytvořit veřejný kontejner ve službě BLOB Storage, proveďte n
 Pomocí následujících kroků nakonfigurujte úložiště objektů BLOB pro sdílení prostředků mezi zdroji:
 
 1. V nabídce vyberte **CORS**.
-1. V případě **povolených zdrojů**zadejte `https://your-tenant-name.b2clogin.com` . Nahraďte `your-tenant-name` názvem vašeho tenanta Azure AD B2C. Například, `https://fabrikam.b2clogin.com`. Při zadávání názvu tenanta použijte všechna malá písmena.
-1. U **povolených metod**vyberte obojí `GET` a `OPTIONS` .
-1. U **povolených hlaviček**zadejte hvězdičku (*).
-1. U **zveřejněných hlaviček**zadejte hvězdičku (*).
-1. Do **maximálního stáří**zadejte 200.
+1. V případě **povolených zdrojů** zadejte `https://your-tenant-name.b2clogin.com` . Nahraďte `your-tenant-name` názvem vašeho tenanta Azure AD B2C. Například, `https://fabrikam.b2clogin.com`. Při zadávání názvu tenanta použijte všechna malá písmena.
+1. U **povolených metod** vyberte obojí `GET` a `OPTIONS` .
+1. U **povolených hlaviček** zadejte hvězdičku (*).
+1. U **zveřejněných hlaviček** zadejte hvězdičku (*).
+1. Do **maximálního stáří** zadejte 200.
 1. Vyberte **Uložit**.
 
 #### <a name="31-test-cors"></a>3,1 Test CORS
 
 Ověřte, že jste připraveni, provedením následujících kroků:
 
-1. Opakujte krok konfigurace CORS. U **povolených zdrojů**zadejte `https://www.test-cors.org`
+1. Opakujte krok konfigurace CORS. U **povolených zdrojů** zadejte `https://www.test-cors.org`
 1. Přejít na [www.test-CORS.org](https://www.test-cors.org/) 
 1. Do pole **Vzdálená adresa URL** vložte adresu URL souboru HTML. Například `https://your-account.blob.core.windows.net/root/azure-ad-b2c/unified.html`.
 1. Vyberte **Odeslat žádost**.
