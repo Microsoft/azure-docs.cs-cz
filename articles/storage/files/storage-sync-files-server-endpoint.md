@@ -8,11 +8,11 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: f75f0d1ae12db11590f8ce62f3c7b4c0f3e12817
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541488"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013934"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Přidat nebo odebrat koncový bod serveru Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to tak, že transformuje servery Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
@@ -33,7 +33,7 @@ Pokud chcete přidat koncový bod serveru, přejděte do požadované skupiny sy
 
 ![Přidání nového koncového bodu serveru v podokně skupiny synchronizace](media/storage-sync-files-server-endpoint/add-server-endpoint-1.png)
 
-V části **přidat koncový bod serveru**se vyžadují tyto informace:
+V části **přidat koncový bod serveru** se vyžadují tyto informace:
 
 - **Registrovaný Server**: název serveru nebo clusteru, na kterém má být vytvořen koncový bod serveru.
 - **Cesta**: cesta na serveru Windows Server, který se má synchronizovat jako součást skupiny synchronizace.

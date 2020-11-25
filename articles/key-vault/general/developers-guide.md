@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 596de459b888bb9973aca1c7d72f2f9e24c966eb
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445128"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013968"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Průvodce vývojáře pro službu Azure Key Vault
 
@@ -56,11 +56,11 @@ Key Vault používá ověřování Azure AD, které pro udělení přístupu vy�
 Pro aplikace nasazené do Azure se doporučuje používat spravovanou identitu. Pokud používáte služby Azure, které nepodporují spravovanou identitu, nebo pokud jsou aplikace nasazené místně, [instanční objekt s certifikátem](../../active-directory/develop/howto-create-service-principal-portal.md) je možné alternativou. V takovém případě by certifikát měl být uložený v Key Vault a často otočený. Instanční objekt s tajným klíčem se dá použít pro vývojová a testovací prostředí a lokálně nebo v Cloud Shell se doporučuje použít objekt zabezpečení uživatele.
 
 Doporučené objekty zabezpečení na prostředí:
-- **Provozní prostředí** :
+- **Provozní prostředí**:
   - Spravovaná identita nebo instanční objekt s certifikátem
-- **Testovací a vývojové prostředí** :
+- **Testovací a vývojové prostředí**:
   - Spravovaná identita, instanční objekt s certifikátem nebo instančním objektem s tajným klíčem
-- **Místní vývoj** :
+- **Místní vývoj**:
   - Uživatel nebo instanční objekt s tajným klíčem
 
 Scénáře ověřování jsou podporované **klientskou knihovnou identity Azure** a jsou integrované s Key Vault SDK. Knihovna identit Azure se dá používat v různých prostředích a platformách beze změny kódu. Identita Azure taky automaticky načte ověřovací token z přihlášeného k uživateli Azure pomocí Azure CLI, sady Visual Studio, Visual Studio Code a dalších. 

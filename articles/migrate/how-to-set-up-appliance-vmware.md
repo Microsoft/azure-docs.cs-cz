@@ -4,11 +4,11 @@ description: Naučte se, jak nastavit zařízení Azure Migrate pro vyhodnocení
 ms.topic: article
 ms.date: 04/16/2020
 ms.openlocfilehash: f20bb77c29d98ab4e3549bfed43d47d1f1f7dc0c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318219"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013628"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Nastavení zařízení pro virtuální počítače VMware
 
@@ -42,7 +42,7 @@ K nastavení zařízení pomocí šablony vajíček:
 1. Zkopírujte klíč, protože ho budete potřebovat k dokončení registrace zařízení během jeho konfigurace.
 
 ### <a name="download-the-ova-template"></a>Stažení šablony pro VAJÍČKy
-V **2: Stáhněte zařízení Azure Migrate**vyberte. Soubor vajíček a klikněte na **Stáhnout**. 
+V **2: Stáhněte zařízení Azure Migrate** vyberte. Soubor vajíček a klikněte na **Stáhnout**. 
 
 
    ![Výběry pro zjišťování počítačů](./media/tutorial-assess-vmware/servers-discover.png)
@@ -69,12 +69,12 @@ Naimportujte stažený soubor a vytvořte virtuální počítač.
 1. V klientské konzole vSphere klikněte na **soubor**  >  **nasadit šablonu OVF**.
 ![Příkaz nabídky pro nasazení šablony OVF](./media/tutorial-assess-vmware/deploy-ovf.png)
 
-2. V Průvodci nasazením šablony OVF > **zdroj**zadejte umístění souboru vajíček.
-3. Do pole **název** a **umístění**zadejte popisný název virtuálního počítače. Vyberte objekt inventáře, do kterého bude virtuální počítač hostovat.
-5. V části **hostitel nebo cluster**zadejte hostitele nebo cluster, na kterém se virtuální počítač spustí.
+2. V Průvodci nasazením šablony OVF > **zdroj** zadejte umístění souboru vajíček.
+3. Do pole **název** a **umístění** zadejte popisný název virtuálního počítače. Vyberte objekt inventáře, do kterého bude virtuální počítač hostovat.
+5. V části **hostitel nebo cluster** zadejte hostitele nebo cluster, na kterém se virtuální počítač spustí.
 6. V části **Storage (úložiště**) zadejte cíl úložiště pro virtuální počítač.
 7. V části **Disk Format** (Formát disku) zadejte typ a velikost disku.
-8. V části **mapování sítě**určete síť, ke které se bude virtuální počítač připojovat. Síť potřebuje připojení k Internetu, aby odesílala metadata Azure Migrate posouzení serveru.
+8. V části **mapování sítě** určete síť, ke které se bude virtuální počítač připojovat. Síť potřebuje připojení k Internetu, aby odesílala metadata Azure Migrate posouzení serveru.
 9. Zkontrolujte a ověřte všechna nastavení a pak klikněte na **Finish** (Dokončit).
 
 
@@ -95,8 +95,8 @@ Nastavte zařízení poprvé.
 3. Otevřete prohlížeč na jakémkoli počítači, který se může připojit k VIRTUÁLNÍmu počítači, a otevřete adresu URL webové aplikace zařízení: ***název zařízení https://nebo IP adresa*: 44368**.
 
    Alternativně můžete aplikaci otevřít z plochy zařízení tak, že vyberete zástupce aplikace.
-1. Přijměte **licenční podmínky**a přečtěte si informace třetích stran.
-1. Ve webové aplikaci > **nastavení požadavků**postupujte takto:
+1. Přijměte **licenční podmínky** a přečtěte si informace třetích stran.
+1. Ve webové aplikaci > **nastavení požadavků** postupujte takto:
    - **Připojení**: aplikace kontroluje, jestli má virtuální počítač přístup k Internetu. Pokud virtuální počítač používá proxy server:
      - Klikněte na **nastavit proxy server** a zadejte adresu proxy serveru (ve formuláři http://ProxyIPAddress nebo http://ProxyFQDN) portu pro naslouchání.
      - Pokud proxy server potřebuje přihlašovací údaje, zadejte je.
@@ -131,13 +131,13 @@ Aby bylo možné zjistit konfiguraci a údaje o výkonu virtuálních počítač
 1. V **kroku 2: zadejte vCenter Server podrobnosti**, klikněte na **Přidat zdroj zjišťování** a vyberte popisný název z rozevíracího seznamu, zadejte **IP adresu nebo plně kvalifikovaný název domény** instance vCenter Server. **Port** můžete ponechat výchozí (443) nebo zadejte vlastní port, na kterém vCenter Server naslouchá, a klikněte na **Uložit**.
 1. Po kliknutí na Uložit se zařízení pokusí ověřit připojení k vCenter Server s poskytnutými přihlašovacími údaji a zobrazit **stav ověření** v tabulce proti vCenter Server IP adrese nebo plně kvalifikovanému názvu domény.
 1. Můžete znovu **ověřit** připojení k vCenter Server kdykoli před zahájením zjišťování.
-1. V **kroku 3: zadání přihlašovacích údajů k virtuálnímu počítači pro zjišťování nainstalovaných aplikací a provádění mapování závislostí bez agenta**, klikněte na **Přidat přihlašovací údaje**a zadejte operační systém, pro který se přihlašovací údaje poskytují, popisný název přihlašovacích údajů a **uživatelské jméno** a **heslo**. Pak klikněte na **Uložit**.
+1. V **kroku 3: zadání přihlašovacích údajů k virtuálnímu počítači pro zjišťování nainstalovaných aplikací a provádění mapování závislostí bez agenta**, klikněte na **Přidat přihlašovací údaje** a zadejte operační systém, pro který se přihlašovací údaje poskytují, popisný název přihlašovacích údajů a **uživatelské jméno** a **heslo**. Pak klikněte na **Uložit**.
 
     - Přihlašovací údaje můžete volitelně přidat tady, pokud jste vytvořili účet, který se má používat pro [funkci zjišťování aplikací](how-to-discover-applications.md), nebo [funkci analýzy závislostí bez agenta](how-to-create-group-machine-dependencies-agentless.md).
     - Pokud tyto funkce nechcete používat, můžete tento krok přeskočit kliknutím na posuvník. Záměr můžete kdykoli vrátit později.
     - Zkontrolujte přihlašovací údaje potřebné pro [zjišťování aplikací](migrate-support-matrix-vmware.md#application-discovery-requirements)nebo pro [analýzu závislostí bez agenta](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless).
 
-5. Kliknutím na **Spustit zjišťování Vyhajte**zjišťování virtuálních počítačů. Po úspěšném zahájení zjišťování můžete v tabulce zjistit stav zjišťování oproti vCenter Server IP adrese nebo plně kvalifikovanému názvu domény.
+5. Kliknutím na **Spustit zjišťování Vyhajte** zjišťování virtuálních počítačů. Po úspěšném zahájení zjišťování můžete v tabulce zjistit stav zjišťování oproti vCenter Server IP adrese nebo plně kvalifikovanému názvu domény.
 
 Zjišťování funguje následujícím způsobem:
 - Zobrazení zjištěných metadat virtuálního počítače na portálu trvá přibližně 15 minut.

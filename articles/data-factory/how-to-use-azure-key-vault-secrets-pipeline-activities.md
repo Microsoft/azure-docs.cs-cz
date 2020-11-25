@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
 ms.openlocfilehash: 1766705e73afab5d15cdb5aa2c5bb1487ad3d7c5
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634279"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013883"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Použití tajných kódů služby Azure Key Vault v aktivitách kanálu
 
@@ -23,7 +23,7 @@ ms.locfileid: "92634279"
 
 Přihlašovací údaje nebo tajné hodnoty můžete ukládat do Azure Key Vault a použít je během provádění kanálu, aby je bylo možné předat k vašim aktivitám.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tato funkce závisí na spravované identitě objektu pro vytváření dat.  Zjistěte, jak funguje ze [spravované identity pro Data Factory](./data-factory-service-identity.md) a ujistěte se, že je k datové továrně přidružená jedna.
 
@@ -39,7 +39,7 @@ Tato funkce závisí na spravované identitě objektu pro vytváření dat.  Zji
 
     ![Zásady přístupu Key Vault](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies-2.png)
 
-    Klikněte na **Přidat** a pak na **Uložit** .
+    Klikněte na **Přidat** a pak na **Uložit**.
 
 3. Přejděte do Key Vault tajného klíče a zkopírujte tajný identifikátor.
 
@@ -51,7 +51,7 @@ Tato funkce závisí na spravované identitě objektu pro vytváření dat.  Zji
 
     |Vlastnost  |Hodnota  |
     |---------|---------|
-    |Zabezpečený výstup     |Pravda         |
+    |Zabezpečený výstup     |Ano         |
     |URL     |[Vaše tajná hodnota identifikátoru URI]? API-Version = 7.0         |
     |Metoda     |GET         |
     |Authentication     |MSI         |
@@ -65,7 +65,7 @@ Tato funkce závisí na spravované identitě objektu pro vytváření dat.  Zji
     > [!CAUTION]
     > Nastavte možnost zabezpečený výstup na hodnotu true, pokud chcete zabránit tomu, aby se tajná hodnota přihlásila do prostého textu.  Všechny další aktivity, které tuto hodnotu využívají, by měly mít možnost zabezpečeného vstupu nastavenou na hodnotu true.
 
-5. Chcete-li použít hodnotu v jiné aktivitě, použijte následující výraz kódu **@activity (' WEB1 '). Output. Value** .
+5. Chcete-li použít hodnotu v jiné aktivitě, použijte následující výraz kódu **@activity (' WEB1 '). Output. Value**.
 
     ![Výraz kódu](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 

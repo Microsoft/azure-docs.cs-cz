@@ -7,14 +7,14 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 24dc2cad8d299d150adddc03de5e9006fc831fc6
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 6a862a051d0040ac99746d81f10ae63d5af7545f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061595"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013716"
 ---
-Nastavení konfigurace pro [Durable Functions](../articles/azure-functions/durable-functions-overview.md).
+Nastavení konfigurace pro [Durable Functions](../articles/azure-functions/durable/durable-functions-overview.md).
 
 > [!NOTE]
 > Všechny hlavní verze Durable Functions jsou podporovány ve všech verzích modulu runtime Azure Functions. Schéma host.jsv konfiguraci se ale mírně liší v závislosti na verzi Azure Functions runtime a používané verzi rozšíření Durable Functions. Následující příklady slouží pro použití s Azure Functions 2,0 a 3,0. V obou příkladech platí, že pokud používáte Azure Functions 1,0, jsou dostupná nastavení stejná, ale část "durableTask" v host.jsby měla být v kořenovém adresáři host.jsv konfiguraci, a ne jako pole v části "rozšíření".
@@ -97,11 +97,11 @@ Nastavení konfigurace pro [Durable Functions](../articles/azure-functions/durab
 }
 ```
 
-Názvy centra úloh musí začínat písmenem a obsahovat jenom písmena a číslice. Pokud není zadaný, použije se výchozí název centra úloh pro aplikaci Function App **DurableFunctionsHub** . Další informace najdete v tématu [centra úloh](../articles/azure-functions/durable-functions-task-hubs.md).
+Názvy centra úloh musí začínat písmenem a obsahovat jenom písmena a číslice. Pokud není zadaný, použije se výchozí název centra úloh pro aplikaci Function App **DurableFunctionsHub**. Další informace najdete v tématu [centra úloh](../articles/azure-functions/durable/durable-functions-task-hubs.md).
 
 |Vlastnost  |Výchozí | Description |
 |---------|---------|---------|
-|hubName|DurableFunctionsHub|Alternativní názvy [centra úloh](../articles/azure-functions/durable-functions-task-hubs.md) se dají použít k izolaci více Durable Functionsch aplikací od sebe, i když používají stejný back-end úložiště.|
+|hubName|DurableFunctionsHub|Alternativní názvy [centra úloh](../articles/azure-functions/durable/durable-functions-task-hubs.md) se dají použít k izolaci více Durable Functionsch aplikací od sebe, i když používají stejný back-end úložiště.|
 |controlQueueBatchSize|32|Počet zpráv, které mají být vyžádané z fronty ovládacích prvků v čase.|
 |controlQueueBufferThreshold|256|Počet zpráv fronty řízení, které mohou být uloženy do vyrovnávací paměti v paměti v okamžiku, kdy bude dispečer čekat před vyřazením dalších zpráv do fronty.|
 |partitionCount |4|Počet oddílů pro frontu řízení. Může být kladné celé číslo mezi 1 a 16.|
@@ -124,4 +124,4 @@ Názvy centra úloh musí začínat písmenem a obsahovat jenom písmena a čís
 |useLegacyPartitionManagement|true|Pokud je nastaveno na `false` , používá algoritmus správy oddílů, který při horizontálním navýšení kapacity omezuje možnost duplikace spouštění funkce.  K dispozici od verze v 2.3.0. Výchozí hodnota se změní na `false` v budoucí verzi.|
 |useGracefulShutdown|false (nepravda)|Tisk Povolit bezproblémové vypnutí, aby se snížila pravděpodobnost vypnutí hostitelských pokusů o zpracování funkcí v procesu.|
 
-Mnohé z těchto nastavení jsou pro optimalizaci výkonu. Další informace najdete v tématu [výkon a škálování](../articles/azure-functions/durable-functions-perf-and-scale.md).
+Mnohé z těchto nastavení jsou pro optimalizaci výkonu. Další informace najdete v tématu [výkon a škálování](../articles/azure-functions/durable/durable-functions-perf-and-scale.md).

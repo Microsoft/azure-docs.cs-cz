@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
 ms.openlocfilehash: 7252a6ccd77212f75f5db54e5f3fcad7aa2df50a
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339726"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013798"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Získání viditelnosti pro Azure Security Center v úrovni tenanta
 Tento článek vysvětluje, jak spravovat stav zabezpečení vaší organizace pomocí zásad zabezpečení pro všechna předplatná Azure propojená s vaším klientem Azure Active Directory.
@@ -40,7 +40,7 @@ Předplatná můžete uspořádat do skupin pro správu a použít zásady sprá
 
  
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
-2. Vyberte **všechny**  >  **skupiny pro správu**služeb.
+2. Vyberte **všechny**  >  **skupiny pro správu** služeb.
 3. Na hlavní stránce vyberte **Nová skupina pro správu.** 
 
     ![Hlavní skupina](./media/security-center-management-groups/main.png) 
@@ -54,7 +54,7 @@ Předplatná můžete uspořádat do skupin pro správu a použít zásady sprá
 ### <a name="view-management-groups-in-the-azure-portal"></a>Zobrazení skupin pro správu v Azure Portal
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Pokud chcete zobrazit skupiny pro správu, vyberte **všechny služby** v hlavní nabídce Azure.
-3. V části **Obecné**vyberte **skupiny pro správu**.
+3. V části **Obecné** vyberte **skupiny pro správu**.
 
     ![Vytvoření skupiny pro správu](./media/security-center-management-groups/all-services.png)
 
@@ -72,7 +72,7 @@ Správce tenanta Azure Active Directory nemá přímý přístup k předplatným
 
    ![Vlastnosti Azure AD – snímek obrazovky](./media/security-center-management-groups/aad-properties.png)
 
-3. V části **Správa přístupu pro prostředky Azure**nastavte přepínač na **Ano**.
+3. V části **Správa přístupu pro prostředky Azure** nastavte přepínač na **Ano**.
 
    ![Správa přístupu pro prostředky Azure – snímek obrazovky](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
 
@@ -146,7 +146,7 @@ Jakmile budete mít zvýšený přístup, otevřete nebo aktualizujte Azure Secu
     ![Snímek obrazovky selektor odběrů](./media/security-center-management-groups/subscription-selector.png)
 
 1. V hlavní nabídce Azure vyberte **všechny služby** a pak vyberte **Security Center**.
-2. V **přehledu**je k dispozici graf pokrytí předplatného.
+2. V **přehledu** je k dispozici graf pokrytí předplatného.
 
     ![Snímek obrazovky grafu pokrytí předplatných](./media/security-center-management-groups/security-center-subscription-coverage.png)
 
@@ -161,7 +161,7 @@ Jakmile role Azure přiřadíte uživatelům, správce tenanta by se měl odebra
 
 2. V navigačním seznamu klikněte na **Azure Active Directory** a pak klikněte na **vlastnosti**.
 
-3. V části **Správa přístupu pro prostředky Azure**nastavte přepínač na **ne**.
+3. V části **Správa přístupu pro prostředky Azure** nastavte přepínač na **ne**.
 
 4. Uložte nastavení kliknutím na **Uložit** .
 
@@ -170,7 +170,7 @@ Jakmile role Azure přiřadíte uživatelům, správce tenanta by se měl odebra
 ## <a name="adding-subscriptions-to-a-management-group"></a>Přidání předplatných do skupiny pro správu
 Můžete přidat odběry do skupiny pro správu, kterou jste vytvořili. Tyto kroky nejsou povinné pro získání viditelnosti a globální správy zásad a přístupu v celém tenantovi.
 
-1. V části **skupiny pro správu**vyberte skupinu pro správu, do které chcete přidat své předplatné.
+1. V části **skupiny pro správu** vyberte skupinu pro správu, do které chcete přidat své předplatné.
 
     ![Vyberte skupinu pro správu, do které chcete přidat odběr.](./media/security-center-management-groups/management-group-subscriptions.png)
 

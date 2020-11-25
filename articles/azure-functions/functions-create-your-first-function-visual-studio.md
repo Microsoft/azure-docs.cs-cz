@@ -3,14 +3,14 @@ title: 'Rychlý Start: Vytvoření první funkce v Azure pomocí sady Visual Stu
 description: V tomto rychlém startu se dozvíte, jak pomocí sady Visual Studio vytvořit a publikovat funkci Azure Functions triggeru HTTP.
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
-ms.date: 03/06/2020
+ms.date: 09/30/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: d7cfcd02c5e6c9ff57241288bd79efb45d4ac7ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c9ddd6e74e25d8de415e24038e99da9d21dab867
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88213975"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "96014464"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Rychlý Start: Vytvoření první funkce v Azure pomocí sady Visual Studio
 
@@ -18,7 +18,7 @@ V tomto článku vytvoříte pomocí sady Visual Studio funkci založenou na kni
 
 Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li dokončit tento kurz, nejprve nainstalujte [Visual Studio 2019](https://azure.microsoft.com/downloads/). Během instalace se ujistěte, že jste vybrali **vývojovou úlohu Azure** . Pokud chcete vytvořit Azure Functions projekt pomocí sady Visual Studio 2017, je třeba nejprve nainstalovat [nejnovější nástroje Azure Functions](functions-develop-vs.md#check-your-tools-version).
 
@@ -36,7 +36,7 @@ Visual Studio vytvoří projekt a třídu, která obsahuje často používaný k
 
 `FunctionName`Atribut Method nastaví název funkce, která je ve výchozím nastavení generována jako `Function1` . Vzhledem k tomu, že nástroje neumožňují při vytváření projektu přepsat výchozí název funkce, vytvoření lepšího názvu pro třídu funkce, soubor a metadata vydejte za minutu.
 
-1. V **Průzkumníku souborů**klikněte pravým tlačítkem na soubor function1.cs a přejmenujte ho na `HttpExample.cs` .
+1. V **Průzkumníku souborů** klikněte pravým tlačítkem na soubor function1.cs a přejmenujte ho na `HttpExample.cs` .
 
 1. V kódu přejmenujte třídu Function1 na ' HttpExample '.
 
@@ -60,7 +60,7 @@ Než budete moct projekt publikovat, musíte mít ve svém předplatném Azure a
 
 ## <a name="test-your-function-in-azure"></a>Testování funkce v Azure
 
-1. V Průzkumníku cloudu by se měla vybrat nová aplikace Function App. Pokud ne, rozbalte své předplatné > **App Services**a vyberte svou novou aplikaci Function App.
+1. V Průzkumníku cloudu by se měla vybrat nová aplikace Function App. Pokud ne, rozbalte své předplatné > **App Services** a vyberte svou novou aplikaci Function App.
 
 1. Klikněte pravým tlačítkem na aplikaci Function App a vyberte **otevřít v prohlížeči**. Tím se otevře kořen vaší aplikace Function App ve výchozím webovém prohlížeči a zobrazí se stránka, která indikuje, že je spuštěná vaše aplikace Function App. 
 
@@ -74,13 +74,13 @@ Než budete moct projekt publikovat, musíte mít ve svém předplatném Azure a
 
 2. Přejděte na tuto adresu URL a v prohlížeči se zobrazí odpověď na požadavek na vzdálenou kopii vrácenou funkcí, který vypadá podobně jako v následujícím příkladu:
 
-    :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="Spuštěná aplikace Function App":::
+    :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="Odezva funkce v prohlížeči":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Další rychlé starty v této kolekci jsou postavené na tomto rychlém startu. Pokud plánujete pracovat s dalšími rychlými starty, kurzy nebo se všemi službami, které jste v tomto rychlém startu vytvořili, neprovádějte čištění prostředků.
 
-*Prostředky* v Azure odkazují na aplikace funkcí, funkce, účty úložiště atd. Jsou seskupené do *skupin prostředků*a odstraněním skupiny můžete všechno odstranit ze skupiny. 
+*Prostředky* v Azure odkazují na aplikace funkcí, funkce, účty úložiště atd. Jsou seskupené do *skupin prostředků* a odstraněním skupiny můžete všechno odstranit ze skupiny. 
 
 Vytvořili jste prostředky k dokončení těchto rychlých startů. Tyto prostředky se vám mohou fakturovat, a to v závislosti na [stavu účtu](https://azure.microsoft.com/account/) a [cenách služeb](https://azure.microsoft.com/pricing/). Pokud prostředky už nepotřebujete, můžete k jejich odstranění použít tento postup:
 
@@ -88,7 +88,7 @@ Vytvořili jste prostředky k dokončení těchto rychlých startů. Tyto prost�
 
 1. Na stránce Function App vyberte kartu **Přehled** a potom vyberte odkaz v části **Skupina prostředků**.
 
-   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="Spuštěná aplikace Function App":::
+   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="Vyberte skupinu prostředků, kterou chcete odstranit ze stránky Function App.":::
 
 2. Na stránce **Skupina prostředků** zkontrolujte seznam zahrnutých prostředků a ověřte, že se jedná o ty, které chcete odstranit.
  

@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 04/10/2020
 ms.author: jingwang
 ms.openlocfilehash: a7fcb4be47e0e1e62c190a9b089243a178df8e7a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562045"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013345"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Rychlý Start: vytvoření Azure Data Factory pomocí prostředí PowerShell
 
@@ -115,7 +115,7 @@ Je třeba počítat s následujícím:
 V datové továrně vytvořte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V tomto rychlém startu vytvoříte propojenou službu Azure Storage, která slouží jako zdroj i úložiště jímky. Tato propojená služba má informace o připojení, které služba Data Factory používá pro připojení za běhu.
 
 >[!TIP]
->V tomto rychlém startu použijete *klíč účtu* jako typ ověřování pro úložiště dat, ale v případě potřeby můžete vybrat jiné podporované metody ověřování: *URI SAS* , *instanční objekt* a *spravovaná identita* . Podrobnosti najdete v odpovídajících částech [tohoto článku](./connector-azure-blob-storage.md#linked-service-properties) .
+>V tomto rychlém startu použijete *klíč účtu* jako typ ověřování pro úložiště dat, ale v případě potřeby můžete vybrat jiné podporované metody ověřování: *URI SAS*,*instanční objekt* a *spravovaná identita* . Podrobnosti najdete v odpovídajících částech [tohoto článku](./connector-azure-blob-storage.md#linked-service-properties) .
 >K bezpečnému ukládání tajných kódů pro úložiště dat je také vhodné použít Azure Key Vault. Podrobnější ilustrace najdete v [tomto článku](./store-credentials-in-key-vault.md) .
 
 1. Ve složce **C:\ADFv2QuickStartPSH** vytvořte soubor JSON s názvem **AzureStorageLinkedService.json** s následujícím obsahem: (pokud ještě neexistuje, složku ADFv2QuickStartPSH vytvořte).
@@ -163,9 +163,9 @@ V datové továrně vytvořte propojené služby, abyste svá úložiště dat 
 
 ## <a name="create-datasets"></a>Vytvoření datových sad
 
-V tomto postupu vytvoříte dvě datové sady: **InputDataset** a **OutputDataset**. Tyto datové sady jsou typu **Binary**. Odkazují na propojenou službu Azure Storage, kterou jste vytvořili v předchozí části.
-Vstupní datová sada představuje zdrojová data ve vstupní složce. V definici vstupní datové sady určíte kontejner objektů blob ( **adftutorial** ), složku ( **input** ) a soubor ( **emp.txt** ) obsahující zdrojová data.
-Výstupní datová sada představuje data kopírovaná do cíle. V definici výstupní datové sady určíte kontejner objektů blob ( **adftutorial** ), složku ( **output** ) a soubor, do kterého se data kopírují. 
+V tomto postupu vytvoříte dvě datové sady:**InputDataset** a **OutputDataset**. Tyto datové sady jsou typu **Binary**. Odkazují na propojenou službu Azure Storage, kterou jste vytvořili v předchozí části.
+Vstupní datová sada představuje zdrojová data ve vstupní složce. V definici vstupní datové sady určíte kontejner objektů blob (**adftutorial**), složku (**input**) a soubor (**emp.txt**) obsahující zdrojová data.
+Výstupní datová sada představuje data kopírovaná do cíle. V definici výstupní datové sady určíte kontejner objektů blob (**adftutorial**), složku (**output**) a soubor, do kterého se data kopírují. 
 1. Ve složce **C:\ADFv2QuickStartPSH** vytvořte soubor JSON s názvem **InputDataset.js** s následujícím obsahem:
 
     ```json
@@ -190,7 +190,7 @@ Výstupní datová sada představuje data kopírovaná do cíle. V definici výs
     }
     ```
 
-2. Chcete-li vytvořit datovou sadu: **InputDataset** , spusťte rutinu **set-AzDataFactoryV2Dataset** .
+2. Chcete-li vytvořit datovou sadu: **InputDataset**, spusťte rutinu **set-AzDataFactoryV2Dataset** .
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
@@ -306,7 +306,7 @@ V tomto postupu vytvoříte kanál s aktivitou kopírování, která používá 
     }
     ```
 
-2. Pokud chcete vytvořit kanál: **Adfv2QuickStartPipeline** , spusťte rutinu **set-AzDataFactoryV2Pipeline** .
+2. Pokud chcete vytvořit kanál: **Adfv2QuickStartPipeline**, spusťte rutinu **set-AzDataFactoryV2Pipeline** .
 
     ```powershell
     $DFPipeLine = Set-AzDataFactoryV2Pipeline `

@@ -10,11 +10,11 @@ ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: c0fddca70ca09f0a3abb3c84672e20a42551ecd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322309"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014308"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-powershell"></a>Vytvoření snímku pomocí portálu nebo PowerShellu
 
@@ -31,7 +31,7 @@ Chcete-li vytvořit snímek, proveďte následující kroky:
 4. Zadejte **název** snímku.
 5. Vyberte existující [skupinu prostředků](../../azure-resource-manager/management/overview.md#resource-groups) nebo zadejte název nového. 
 6. Vyberte **umístění** datového centra Azure.  
-7. Pro **zdrojový disk**vyberte spravovaný disk, který se má snímek.
+7. Pro **zdrojový disk** vyberte spravovaný disk, který se má snímek.
 8. Vyberte **typ účtu** , který chcete použít k uložení snímku. Vyberte **Standard_HDD**, pokud nepotřebujete, aby byl snímek uložen na disku s vysokým výkonem.
 9. Vyberte **Vytvořit**.
 

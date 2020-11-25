@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
 ms.openlocfilehash: 390a8a49e9a47ee5e6845d85fe4fe02f514708e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362193"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013611"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Jak funguje replikace Hyper-V?
 
@@ -70,9 +70,9 @@ Výkon replikace pro Hyper-V je ovlivněný faktory, které zahrnují velikost v
 
 
 1. Přihlaste se k hostiteli nebo uzlu clusteru technologie Hyper-V.
-2. Spuštěním složky **C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.msc**otevřete modul snap-in Windows Azure Backup MMC.
+2. Spuštěním složky **C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.msc** otevřete modul snap-in Windows Azure Backup MMC.
 3. V modulu snap-in vyberte **změnit vlastnosti**.
-4. V případě **omezení**vyberte možnost **Povolit omezování šířky pásma internetu u operací zálohování**. Nastavte limity pro pracovní a nepracovní dobu. Platné rozsahy jsou od 512 do 1 023 MB/s.
+4. V případě **omezení** vyberte možnost **Povolit omezování šířky pásma internetu u operací zálohování**. Nastavte limity pro pracovní a nepracovní dobu. Platné rozsahy jsou od 512 do 1 023 MB/s.
 I
 
 ### <a name="influence-upload-efficiency"></a>Efektivita nahrávání vlivu

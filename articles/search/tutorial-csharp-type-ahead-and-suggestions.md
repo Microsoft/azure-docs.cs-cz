@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 202a7f6b01423045fe7c72db5b42c29ae58f648d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91739659"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013832"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>Kurz: přidání automatického dokončování a návrhů pomocí sady .NET SDK
 
@@ -51,7 +51,7 @@ Pojďme začít s nejjednodušším případem, který uživateli nabízí alter
      @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azureautosuggest" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-1. Po zavření tohoto příkazu po ukončení ** &lt; /div &gt; **zadejte tento skript. Tento skript využívá [widget automatického dokončování](https://api.jqueryui.com/autocomplete/) z open source knihovny uživatelského rozhraní jQuery a prezentuje rozevírací seznam navrhovaných výsledků.
+1. Po zavření tohoto příkazu po ukončení **&lt; /div &gt;** zadejte tento skript. Tento skript využívá [widget automatického dokončování](https://api.jqueryui.com/autocomplete/) z open source knihovny uživatelského rozhraní jQuery a prezentuje rozevírací seznam navrhovaných výsledků.
 
     ```javascript
     <script>
@@ -151,7 +151,7 @@ Pojďme začít s nejjednodušším případem, který uživateli nabízí alter
 
 4. Ve skriptu zobrazení nastavte **&fuzzy** na true a spusťte aplikaci znovu. Nyní zadejte "No". Všimněte si, že vyhledávání předpokládá, že máte jedno písmeno špatné.
  
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png" alt-text="Zadání * No * odhalí dva návrhy" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png" alt-text="Psaní * PA * s fuzzy nastavenou na true" border="false":::
 
     Pokud vás zajímá, [syntaxe dotazů Lucene v Azure kognitivní hledání](./query-lucene-syntax.md) popisuje logiku použitou v přibližných prohledáních podrobněji.
 
@@ -196,7 +196,7 @@ Vzhled návrhů pro uživatele můžeme vylepšit nastavením parametru **zvýra
 
 1. Znovu spusťte aplikaci a v návrzích byste měli vidět zadaný text zvýrazněný tučně. Zkuste zadat "PA".
  
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-highlight.png" alt-text="Zadání * No * odhalí dva návrhy" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-highlight.png" alt-text="Psaní * PA * s zvýrazněním" border="false":::
 
    Logika použitá ve výše uvedeném skriptu pro zvýraznění není foolproof. Pokud zadáte termín, který se zobrazí dvakrát ve stejném názvu, tučné výsledky nemusejí být naprosto, co byste chtěli. Zkuste zadat "mo".
 
@@ -255,7 +255,7 @@ Další variace, mírně odlišnější od návrhů, je automatického dokončov
 
 1. Spusťte aplikaci. Všimněte si, jak je rozsah možností zobrazených v rozevíracím seznamu jedinou slovem. Zkuste zadat slova začínající řetězcem "znovu". Všimněte si, jak se počet možností zkracuje při psaní dalších písmen.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocompletebasic.png" alt-text="Zadání * No * odhalí dva návrhy" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocompletebasic.png" alt-text="Psaní pomocí základního automatického dokončování" border="false":::
 
     Vzhledem k tomu, že skript návrhů, který jste spustili dříve, je pravděpodobně užitečnější než tento skript automatického dokončování. Chcete-li provést další uživatelsky přívětivější, zvažte použití s navrhovanými výsledky.
 
@@ -451,7 +451,7 @@ K dispozici jsou knihovny, které nabízejí tuto funkci – často se označuje
 
 1. Teď aplikaci spusťte. Do vyhledávacího pole zadejte "PA". Získáte "Palace" jako návrh automatického dokončování spolu se dvěma hotely, které obsahují "PA"?
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocomplete.png" alt-text="Zadání * No * odhalí dva návrhy" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocomplete.png" alt-text="Zadání s vloženým dokončováním a návrhy" border="false":::
 
 1. Vyzkoušejte si tabulátory, které přijímají návrh automatického dokončování, a zkuste vybrat návrhy pomocí kláves se šipkami a klávesy TAB a zkuste to znovu pomocí myši a jediného kliknutí. Ověřte, že skript pracuje s těmito situacemi úhledně.
 

@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019, devx-track-python
 ms.openlocfilehash: e511b8b5505f1fa8713d81d0ce959df32ef28503
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89439108"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013322"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rychlé zprovoznění: Vytvoření datové továrny a kanálu pomocí Pythonu
 
@@ -34,7 +34,7 @@ Azure Data Factory je cloudová služba pro integraci dat, která umožňuje vyt
 
 Kanály mohou ingestovat data z různorodých úložišť dat. Kanály zpracovávají nebo transformují data pomocí výpočetních služeb, jako jsou Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics a Azure Machine Learning. Kanály publikují výstupní data do úložišť dat, jako je Azure synapse Analytics (dříve SQL Data Warehouse) pro aplikace business intelligence (BI).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -44,7 +44,7 @@ Kanály mohou ingestovat data z různorodých úložišť dat. Kanály zpracová
 
 * [Průzkumník služby Azure Storage](https://storageexplorer.com/) (volitelné).
 
-* [Aplikace v Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Poznamenejte si následující hodnoty, které chcete použít v pozdějších krocích: **ID aplikace**, **ověřovací klíč**a **ID tenanta**. Podle pokynů ve stejném článku přiřaďte aplikaci roli **Přispěvatel** .
+* [Aplikace v Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Poznamenejte si následující hodnoty, které chcete použít v pozdějších krocích: **ID aplikace**, **ověřovací klíč** a **ID tenanta**. Podle pokynů ve stejném článku přiřaďte aplikaci roli **Přispěvatel** .
 
 ## <a name="create-and-upload-an-input-file"></a>Vytvoření a nahrání vstupního souboru
 
@@ -58,7 +58,7 @@ Kanály mohou ingestovat data z různorodých úložišť dat. Kanály zpracová
 
 ## <a name="install-the-python-package"></a>Instalace balíčku Pythonu
 
-1. Otevřete terminál nebo příkazový řádek s oprávněními správce. 
+1. Otevřete terminál nebo příkazový řádek s oprávněními správce. 
 2. Nejdřív nainstalujte balíček Pythonu pro prostředky správy Azure:
 
     ```python

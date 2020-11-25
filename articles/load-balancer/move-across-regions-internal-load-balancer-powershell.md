@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
 ms.openlocfilehash: 73a9356de555e33996b92f05c3bbbabb651f1c9f
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694792"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014223"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-powershell"></a>Přesunutí interních Load Balancer Azure do jiné oblasti pomocí prostředí PowerShell
 
@@ -20,7 +20,7 @@ Existují různé scénáře, ve kterých byste chtěli přesunout stávající 
 Interní nástroje pro vyrovnávání zatížení Azure nejde přesunout z jedné oblasti do druhé. Můžete ale použít šablonu Azure Resource Manager k exportu existující konfigurace a virtuální sítě interního nástroje pro vyrovnávání zatížení.  Pak můžete tento prostředek připravit v jiné oblasti tak, že vyexportujete Nástroj pro vyrovnávání zatížení a virtuální síť do šablony, upravíte parametry tak, aby odpovídaly cílové oblasti, a pak šablony nasadíte do nové oblasti.  Další informace o Správce prostředků a šablonách najdete v tématu [Export skupin prostředků do šablon](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates) .
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Ujistěte se, že interní nástroj pro vyrovnávání zatížení Azure je v oblasti Azure, ze které chcete přejít.
 

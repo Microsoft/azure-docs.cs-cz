@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
 ms.openlocfilehash: 5a9fcf3e13c2f86a11e9626be486a585ec659044
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325217"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013764"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>Kurz: Vytvoření aplikace Apache Spark s použitím IntelliJ pomocí pracovního prostoru synapse
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > - Vývoj aplikací Apache Spark
 > - Odeslat aplikaci do fondů Spark
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Komunita INTELLIJ nápadu](https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC)
 - Modul plug-in Azure Toolkit 3.27.0-2019.2 – instalace z [úložiště modulu plug-in IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
@@ -136,13 +136,13 @@ Po vytvoření aplikace v Scala můžete tuto aplikaci spustit vzdáleně.
 
     ![Odeslání aplikace Spark do HDInsight – příkaz 2](./media/intellij-tool-synapse/create-synapse-configuration02.png)
 
-3. V okně **Spustit/ladit konfigurace** zadejte následující hodnoty a pak vyberte **OK** :
+3. V okně **Spustit/ladit konfigurace** zadejte následující hodnoty a pak vyberte **OK**:
 
     |Vlastnost |Hodnota |
     |----|----|
     |Fondy Spark|Vyberte fondy Spark, na kterých chcete aplikaci spustit.|
     |Vyberte artefakt, který se má odeslat.|Ponechte výchozí nastavení.|
-    |Název hlavní třídy|Výchozí hodnota je hlavní třída z vybraného souboru. Třídu můžete změnit tak, že vyberete tři tečky ( **...** ) a zvolíte jinou třídu.|
+    |Název hlavní třídy|Výchozí hodnota je hlavní třída z vybraného souboru. Třídu můžete změnit tak, že vyberete tři tečky (**...**) a zvolíte jinou třídu.|
     |Konfigurace úloh|Můžete změnit výchozí klíč a hodnoty. Další informace najdete v článku [Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html).|
     |Argumenty příkazového řádku|V případě potřeby můžete zadat argumenty oddělené mezerou pro hlavní třídu.|
     |Odkazované jar a odkazované soubory|Můžete zadat cesty pro odkazované jar a soubory, pokud existují. Můžete také procházet soubory ve virtuálním systému souborů Azure, který v současné době podporuje jenom cluster ADLS Gen2. Další informace: [Apache Spark Configuration] https://spark.apache.org/docs/2.4.5/configuration.html#runtime-environment) a [Postup nahrání prostředků do clusteru](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).|
@@ -166,7 +166,7 @@ Můžete postupovat podle pokynů níže pro nastavení místního běhu a míst
 
 ### <a name="scenario-1-do-local-run"></a>Scénář 1: místní spuštění
 
-1. Otevřete dialog **Konfigurace spuštění/ladění** a vyberte znaménko plus ( **+** ). Pak vyberte možnost **Apache Spark v synapse** . Zadejte informace pro **název** , **název hlavní třídy** , který chcete uložit.
+1. Otevřete dialog **Konfigurace spuštění/ladění** a vyberte znaménko plus ( **+** ). Pak vyberte možnost **Apache Spark v synapse** . Zadejte informace pro **název**, **název hlavní třídy** , který chcete uložit.
 
     ![IntelliJ spustit konfiguraci ladění s místním spuštěním 1](./media/intellij-tool-synapse/local-run-synapse.png)
 
@@ -199,7 +199,7 @@ V Azure Exploreru můžete v rámci Azure Toolkit for IntelliJ provádět různ�
 
     ![IntelliJ nápad v hlavním zobrazení Průzkumníka Azure](./media/intellij-tool-synapse/azure-explorer-workspace.png)
 
-2. Klikněte pravým tlačítkem myši na pracovní prostor a vyberte možnost **Spustit pracovní prostor** , web bude otevřen.
+2. Klikněte pravým tlačítkem myši na pracovní prostor a vyberte možnost **Spustit pracovní prostor**, web bude otevřen.
 
     ![Zobrazení úlohy Spark podrobnosti o aplikaci 1](./media/intellij-tool-synapse/launch-workspace-synapse.png)
 
@@ -216,7 +216,7 @@ Ujistěte se, že jste splnili požadavky na WINUTILS.EXE.
 1. Z řádku nabídek přejděte na **Spustit**  >  **úpravy konfigurace...**.
 2. V okně **Konfigurace spuštění/ladění** v levém podokně přejděte na **Apache Spark v synapse**  >  **[Spark on synapse] MyApp**.
 3. V hlavním okně vyberte kartu **spustit místně** .
-4. Zadejte následující hodnoty a pak vyberte **OK** :
+4. Zadejte následující hodnoty a pak vyberte **OK**:
 
     |Vlastnost |Hodnota |
     |----|----|
@@ -247,7 +247,7 @@ Podporuje se jenom na IntelliJ 2018,2 a 2018,3.
 
 3. V hlavním okně vyberte kartu **vzdáleně spustit na clusteru** .
 
-4. Zadejte následující hodnoty a pak vyberte **OK** :
+4. Zadejte následující hodnoty a pak vyberte **OK**:
 
     |Vlastnost |Hodnota |
     |----|----|

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
 ms.openlocfilehash: d890f73ea8b2294755b14055cb11904d50160cc4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632120"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014002"
 ---
 # <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Zpracování dat spouštěním skriptů U-SQL na Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -38,11 +38,11 @@ Následující tabulka uvádí popisy obecných vlastností použitých v defini
 
 | Vlastnost                 | Popis                              | Povinné                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| **textový**                 | Vlastnost Type by měla být nastavená na: **AzureDataLakeAnalytics** . | Ano                                      |
-| **accountName**          | Azure Data Lake Analytics název účtu.  | Ano                                      |
-| **dataLakeAnalyticsUri** | Azure Data Lake Analytics identifikátor URI.           | Ne                                       |
-| **subscriptionId**       | ID předplatného Azure                    | Ne                                       |
-| **resourceGroupName**    | Název skupiny prostředků Azure                | Ne                                       |
+| **textový**                 | Vlastnost Type by měla být nastavená na: **AzureDataLakeAnalytics**. | Yes                                      |
+| **accountName**          | Azure Data Lake Analytics název účtu.  | Yes                                      |
+| **dataLakeAnalyticsUri** | Azure Data Lake Analytics identifikátor URI.           | No                                       |
+| **subscriptionId**       | ID předplatného Azure                    | No                                       |
+| **resourceGroupName**    | Název skupiny prostředků Azure                | No                                       |
 
 ### <a name="service-principal-authentication"></a>Ověřování instančních objektů
 Propojená služba Azure Data Lake Analytics vyžaduje pro připojení ke službě Azure Data Lake Analytics ověřování instančního objektu. Pokud chcete použít ověřování instančního objektu, zaregistrujte entitu aplikace ve službě Azure Active Directory (Azure AD) a udělte jí přístup k Data Lake Analytics i Data Lake Store, kterou používá. Podrobný postup najdete v tématu [ověřování služba-služba](../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md). Poznamenejte si následující hodnoty, které použijete k definování propojené služby:
@@ -57,9 +57,9 @@ Použijte ověřování instančního objektu zadáním následujících vlastno
 
 | Vlastnost                | Popis                              | Povinné |
 | :---------------------- | :--------------------------------------- | :------- |
-| **servicePrincipalId**  | Zadejte ID klienta aplikace.     | Ano      |
-| **servicePrincipalKey** | Zadejte klíč aplikace.           | Ano      |
-| **tenant**              | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. | Ano      |
+| **servicePrincipalId**  | Zadejte ID klienta aplikace.     | Yes      |
+| **servicePrincipalKey** | Zadejte klíč aplikace.           | Yes      |
+| **tenant**              | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. | Yes      |
 
 **Příklad: ověřování instančního objektu**
 ```json
@@ -121,17 +121,17 @@ V následující tabulce jsou popsány názvy a popisy vlastností, které jsou 
 
 | Vlastnost            | Popis                              | Povinné |
 | :------------------ | :--------------------------------------- | :------- |
-| name                | Název aktivity v kanálu     | Ano      |
-| description         | Text popisující, co aktivita dělá.  | Ne       |
-| typ                | Pro aktivitu Data Lake Analytics U-SQL je typ aktivity  **DataLakeAnalyticsU-SQL** . | Ano      |
-| linkedServiceName   | Propojená služba s Azure Data Lake Analytics. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) .  |Ano       |
-| scriptPath          | Cesta ke složce, která obsahuje skript U-SQL. Název souboru rozlišuje velká a malá písmena. | Ano      |
-| scriptLinkedService | Propojená služba, která propojuje **Azure Data Lake Store** nebo **Azure Storage** obsahující skript do objektu pro vytváření dat | Ano      |
-| degreeOfParallelism | Maximální počet uzlů současně použitých ke spuštění úlohy. | Ne       |
-| upřednostněn            | Určuje, které úlohy ze všech, které jsou zařazené do fronty, by měly být vybrány pro první spuštění. Čím nižší číslo, tím vyšší Priorita. | Ne       |
-| parameters          | Parametry, které se mají předat skriptu U-SQL.    | Ne       |
-| runtimeVersion      | Verze modulu runtime modulu U-SQL, který má být použit. | Ne       |
-| CompilationMode nastavena     | <p>Režim kompilace U-SQL Musí se jednat o jednu z těchto hodnot: **sémantika:** provádět pouze sémantické kontroly a nezbytné správnosti kontroly, **úplné:** proveďte úplnou kompilaci, včetně kontroly syntaxe, optimalizace, generování kódu atd., **SingleBox:** proveďte úplnou kompilaci s nastavením TargetType na SingleBox. Pokud nezadáte hodnotu pro tuto vlastnost, server určí optimální režim kompilace. | Ne |
+| name                | Název aktivity v kanálu     | Yes      |
+| description         | Text popisující, co aktivita dělá.  | No       |
+| typ                | Pro aktivitu Data Lake Analytics U-SQL je typ aktivity  **DataLakeAnalyticsU-SQL**. | Yes      |
+| linkedServiceName   | Propojená služba s Azure Data Lake Analytics. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) .  |Yes       |
+| scriptPath          | Cesta ke složce, která obsahuje skript U-SQL. Název souboru rozlišuje velká a malá písmena. | Yes      |
+| scriptLinkedService | Propojená služba, která propojuje **Azure Data Lake Store** nebo **Azure Storage** obsahující skript do objektu pro vytváření dat | Yes      |
+| degreeOfParallelism | Maximální počet uzlů současně použitých ke spuštění úlohy. | No       |
+| upřednostněn            | Určuje, které úlohy ze všech, které jsou zařazené do fronty, by měly být vybrány pro první spuštění. Čím nižší číslo, tím vyšší Priorita. | No       |
+| parameters          | Parametry, které se mají předat skriptu U-SQL.    | No       |
+| runtimeVersion      | Verze modulu runtime modulu U-SQL, který má být použit. | No       |
+| CompilationMode nastavena     | <p>Režim kompilace U-SQL Musí se jednat o jednu z těchto hodnot: **sémantika:** provádět pouze sémantické kontroly a nezbytné správnosti kontroly, **úplné:** proveďte úplnou kompilaci, včetně kontroly syntaxe, optimalizace, generování kódu atd., **SingleBox:** proveďte úplnou kompilaci s nastavením TargetType na SingleBox. Pokud nezadáte hodnotu pro tuto vlastnost, server určí optimální režim kompilace. | No |
 
 Definice skriptu najdete v tématu [SearchLogProcessing.txt](#sample-u-sql-script) . 
 
@@ -178,7 +178,7 @@ V definici ukázkového kanálu se v parametrech a výstupní parametry přiřaz
 }
 ```
 
-Místo toho je možné použít dynamické parametry. Příklad: 
+Místo toho je možné použít dynamické parametry. Například: 
 
 ```json
 "parameters": {

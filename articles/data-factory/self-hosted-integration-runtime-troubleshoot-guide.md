@@ -2,17 +2,17 @@
 title: Řešení potíží s místním prostředím Integration runtime v Azure Data Factory
 description: Přečtěte si, jak řešit problémy s místním hostováním prostředí Integration runtime v Azure Data Factory.
 services: data-factory
-author: nabhishek
+author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: e3a517497a480995b8ce63d36d0427e3bfadfe43
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 93c35828444ec93a974769ed3a2f1981c0ec4368
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844054"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96013438"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Řešení potíží s místním hostováním Integration runtime
 
@@ -320,7 +320,7 @@ Pokud se chyba zobrazí jako výše *UnauthorizedAccessException*, postupujte po
         1. Vyčistit odinstalujte aktuálně místně hostovaný IR.
         1. Nainstalujte prostředí IR pro místní hostování.
         1. Chcete-li změnit účet služby, postupujte podle pokynů níže: 
-            1. Přejděte do složky selfhosted IR pro instalaci, přejděte do složky: *Microsoft Integration Runtime\4.0\Shared*.
+            1. Přejděte do instalační složky prostředí IR v místním prostředí, přejděte do složky: *Microsoft Integration Runtime\4.0\Shared*.
             1. Spusťte příkazový řádek s oprávněním vyšší úrovně. Nahraďte *\<user>* a *\<password>* vlastním uživatelským jménem a heslem a pak spusťte následující příkaz:
                        
                 ```
@@ -731,7 +731,7 @@ Dva možné příčiny tohoto problému:
 - Kořenová certifikační autorita certifikátu serveru služby ADF není v počítači, kde je nainstalován SHIR, důvěryhodná. 
 - Ve svém prostředí používáte proxy server a certifikát serveru služby ADF je nahrazen proxy serverem, zatímco certifikát nahrazeného serveru není důvěryhodný pro počítač, na kterém je nainstalovaný SHIR.
 
-#### <a name="solution"></a>Řešení
+#### <a name="resolution"></a>Řešení
 
 - Z důvodu 1 se ujistěte, že je certifikát serveru ADF a jeho řetěz certifikátů důvěryhodný pro počítač, na kterém je nainstalovaný SHIR.
 - Z důvodu 2 buď důvěřujete nahrazené kořenové certifikační autoritě na SHIR počítači, nebo nakonfigurujte proxy server tak, aby nahradil certifikát serveru ADF.
@@ -744,6 +744,7 @@ Zavádíme nový certifikát SSL, který je podepsaný z DigiCert, zkontrolujte 
   ![Globální kořenový adresář G2 DigiCert](media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png)
 
 Pokud ne, [Stáhněte si ho odsud.](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt ) 
+
 
 ## <a name="self-hosted-ir-sharing"></a>Sdílení místního prostředí IR
 
@@ -764,7 +765,7 @@ Další pomoc při řešení potíží najdete v následujících zdrojích info
 
 *  [Blog Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
-*  [Videa k Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [Videa Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Stránka s otázkou Microsoft Q&](/answers/topics/azure-data-factory.html)
 *  [Fórum přetečení zásobníku pro Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Informace o Twitteru týkající se Data Factory](https://twitter.com/hashtag/DataFactory)

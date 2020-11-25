@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/18/2020
 ms.openlocfilehash: 85e974d51f49bbb6742683ed253c077bb3ff69de
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545544"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014648"
 ---
 # <a name="debug-wasb-file-operations-in-azure-hdinsight"></a>Ladění operací se soubory WASB ve službě Azure HDInsight
 
@@ -28,13 +28,13 @@ Vytvořený protokol bude vypadat nějak takto:
 
 1. Z webového prohlížeče přejděte na `https://CLUSTERNAME.azurehdinsight.net/#/main/services/SPARK2/configs` , kde `CLUSTERNAME` je název vašeho clusteru Spark.
 
-1. Přejděte na **Upřesnit spark2-log4j-Properties** .
+1. Přejděte na **Upřesnit spark2-log4j-Properties**.
 
     1. Upravit `log4j.appender.console.Threshold=INFO` na `log4j.appender.console.Threshold=DEBUG` .
 
     1. Přidat `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG` .
 
-1. Přejděte na **Upřesnit livy2-log4j-Properties** .
+1. Přejděte na **Upřesnit livy2-log4j-Properties**.
 
     Přidat `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG` .
 

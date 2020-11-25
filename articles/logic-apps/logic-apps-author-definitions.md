@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
 ms.openlocfilehash: 9163071237041d7c8510a644c573e3763434bb0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87060669"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014393"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>Vytváření, úpravy nebo rozšiřování souborů JSON pro definice pracovních postupů aplikací logiky v Azure Logic Apps
 
@@ -28,12 +28,12 @@ Pokud s Logic Apps začínáte, přečtěte si, [jak vytvořit svou první aplik
 
 ## <a name="edit-json---azure-portal"></a>Upravit Azure Portal JSON
 
-1. Přihlaste se k <a href="https://portal.azure.com" target="_blank">portálu Azure Portal</a>.
+1. Přihlaste se na <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
 
 2. V nabídce vlevo vyberte **všechny služby**.
 Do vyhledávacího pole Najděte "Logic Apps" a potom z výsledků vyberte svou aplikaci logiky.
 
-3. V nabídce aplikace logiky v části **vývojové nástroje**vyberte **zobrazení kód aplikace logiky**.
+3. V nabídce aplikace logiky v části **vývojové nástroje** vyberte **zobrazení kód aplikace logiky**.
 
    Otevře se editor zobrazení kódu a zobrazí se definice aplikace logiky ve formátu JSON.
 
@@ -67,7 +67,7 @@ Vyberte **Otevřít pomocí Návrháře aplikace logiky**.
 
 Životní cyklus nasazení má obvykle různá prostředí pro vývoj, testování, přípravu a produkci. Pokud máte hodnoty, které chcete znovu použít v rámci aplikace logiky bez zakódujeme nebo které se liší v závislosti na potřebách nasazení, můžete vytvořit [šablonu Azure Resource Manager](../azure-resource-manager/management/overview.md) pro definici pracovního postupu, abyste mohli také automatizovat nasazení aplikace logiky.
 
-Pomocí těchto obecných *kroků můžete místo toho definovat a používat*parametry pro, tyto hodnoty. Hodnoty pak můžete zadat do samostatného souboru parametrů, který tyto hodnoty předá vaší šabloně. Tímto způsobem můžete tyto hodnoty snadněji změnit, aniž byste museli aktualizovat a znovu nasazovat aplikaci logiky. Úplné podrobnosti najdete v tématu [Přehled: Automatizace nasazení pro Logic Apps pomocí šablon Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
+Pomocí těchto obecných *kroků můžete místo toho definovat a používat* parametry pro, tyto hodnoty. Hodnoty pak můžete zadat do samostatného souboru parametrů, který tyto hodnoty předá vaší šabloně. Tímto způsobem můžete tyto hodnoty snadněji změnit, aniž byste museli aktualizovat a znovu nasazovat aplikaci logiky. Úplné podrobnosti najdete v tématu [Přehled: Automatizace nasazení pro Logic Apps pomocí šablon Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
 
 1. V šabloně definujte parametry šablony a parametry definice pracovního postupu pro přijetí hodnot, které se mají použít při nasazení a modulu runtime v uvedeném pořadí.
 

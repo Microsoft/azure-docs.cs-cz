@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 544509a8c90c9273b748591509b1fa86510d71c3
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421732"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013815"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Analyzátory pro zpracování textu v Azure Kognitivní hledání
 
@@ -48,10 +48,10 @@ Následující seznam popisuje, které analyzátory jsou k dispozici v Azure Kog
 | Kategorie | Popis |
 |----------|-------------|
 | [Analyzátor standardního Lucene](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Default (Výchozí). Není nutná žádná specifikace nebo konfigurace. Tento obecný analyzátor je vhodný pro mnoho jazyků a scénářů.|
-| Předdefinované analyzátory | Nabízí se jako hotový produkt určený k použití tak, jak je. <br/>Existují dva typy: specializované a jazyk. Předdefinovaným způsobem je to, že na ně odkazujete podle názvu bez konfigurace nebo přizpůsobení. <br/><br/>[Speciální analyzátory (Language-nezávislá)](index-add-custom-analyzers.md#AnalyzerTable) se používají, když textové vstupy vyžadují specializované zpracování nebo minimální zpracování. Nejazykově předdefinované analyzátory obsahují **Asciifolding** , **klíčové slovo** , **vzor** , **jednoduché** , **zastavit** a **prázdné znaky**.<br/><br/>[Analyzátory jazyka](index-add-language-analyzers.md) se používají, když potřebujete bohatou jazykovou podporu pro jednotlivé jazyky. Azure Kognitivní hledání podporuje analyzátory jazyka 35 Lucene a 50 analyzátory zpracování přirozeného jazyka Microsoftu. |
+| Předdefinované analyzátory | Nabízí se jako hotový produkt určený k použití tak, jak je. <br/>Existují dva typy: specializované a jazyk. Předdefinovaným způsobem je to, že na ně odkazujete podle názvu bez konfigurace nebo přizpůsobení. <br/><br/>[Speciální analyzátory (Language-nezávislá)](index-add-custom-analyzers.md#AnalyzerTable) se používají, když textové vstupy vyžadují specializované zpracování nebo minimální zpracování. Nejazykově předdefinované analyzátory obsahují **Asciifolding**, **klíčové slovo**, **vzor**, **jednoduché**, **zastavit** a **prázdné znaky**.<br/><br/>[Analyzátory jazyka](index-add-language-analyzers.md) se používají, když potřebujete bohatou jazykovou podporu pro jednotlivé jazyky. Azure Kognitivní hledání podporuje analyzátory jazyka 35 Lucene a 50 analyzátory zpracování přirozeného jazyka Microsoftu. |
 |[Vlastní analyzátory](/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | Odkazuje na uživatelsky definovanou konfiguraci kombinace stávajících prvků, která se skládá z jednoho provádějících tokenizaci (povinné) a volitelných filtrů (Char nebo token).|
 
-Několik předdefinovaných analyzátorů, jako je například **vzor** nebo **zastavení** , podporuje omezené množství možností konfigurace. Pokud chcete tyto možnosti nastavit, můžete efektivně vytvořit vlastní analyzátor, který se skládá z předdefinovaného analyzátoru, a jednu z alternativních možností popsaných v části [předdefinované Reference k analyzátoru](index-add-custom-analyzers.md#AnalyzerTable). Stejně jako u libovolné vlastní konfigurace zadejte novou konfiguraci s názvem, například *myPatternAnalyzer* , abyste ji rozlišili od analyzátoru vzorů Lucene.
+Několik předdefinovaných analyzátorů, jako je například **vzor** nebo **zastavení**, podporuje omezené množství možností konfigurace. Pokud chcete tyto možnosti nastavit, můžete efektivně vytvořit vlastní analyzátor, který se skládá z předdefinovaného analyzátoru, a jednu z alternativních možností popsaných v části [předdefinované Reference k analyzátoru](index-add-custom-analyzers.md#AnalyzerTable). Stejně jako u libovolné vlastní konfigurace zadejte novou konfiguraci s názvem, například *myPatternAnalyzer* , abyste ji rozlišili od analyzátoru vzorů Lucene.
 
 ## <a name="how-to-specify-analyzers"></a>Postup určení analyzátorů
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 79e3ce8c1605e5d68ff44901f53854d2f5f10abc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129945"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014376"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>Použití služby Správce zařízení StorSimple ke správě svazků ve službě StorSimple Virtual Array
 
@@ -33,13 +33,13 @@ Služba StorSimple Device Manager je rozšíření v Azure Portal, které umož�
 
 StorSimple svazky mohou být:
 
-* **Místně připnuté** : data v těchto svazcích zůstanou v poli nepřetržitě a nepřesahují se do cloudu.
-* **Vrstvený** : data v těchto svazcích můžou přelití do cloudu. Když vytvoříte vrstvený svazek, přibližně 10% místa se zřídí na místní úrovni a 90% místa se zřídí v cloudu. Pokud jste například zřídili svazek o velikosti 1 TB, 100 GB by se nacházelo v místním prostoru a v cloudu se v případě datových vrstev používalo 900 GB. To znamená, že pokud vyčerpáte místo na svém zařízení, nemůžete zřídit vrstvený svazek (protože na místní úrovni nebude k dispozici 10%).
+* **Místně připnuté**: data v těchto svazcích zůstanou v poli nepřetržitě a nepřesahují se do cloudu.
+* **Vrstvený**: data v těchto svazcích můžou přelití do cloudu. Když vytvoříte vrstvený svazek, přibližně 10% místa se zřídí na místní úrovni a 90% místa se zřídí v cloudu. Pokud jste například zřídili svazek o velikosti 1 TB, 100 GB by se nacházelo v místním prostoru a v cloudu se v případě datových vrstev používalo 900 GB. To znamená, že pokud vyčerpáte místo na svém zařízení, nemůžete zřídit vrstvený svazek (protože na místní úrovni nebude k dispozici 10%).
 
 ### <a name="provisioned-capacity"></a>Zřízená kapacita
 V následující tabulce najdete maximální zřízenou kapacitu pro každý typ svazku.
 
-| **Identifikátor omezení**                                       | **Počtu**     |
+| **Identifikátor omezení**                                       | **Omezení**     |
 |------------------------------------------------------------|---------------|
 | Minimální velikost vrstveného svazku                            | 500 GB        |
 | Maximální velikost vrstveného svazku                            | 5 TB          |
@@ -55,7 +55,7 @@ Svazek se skládá z řady atributů:
 
 * **Název svazku** – popisný název, který musí být jedinečný a pomáhá identifikovat svazek.
 * **Stav** – může být online nebo offline. Pokud je svazek offline, není viditelný pro iniciátory (servery), které mají povolený přístup k použití svazku.
-* **Typ** – určuje, jestli je svazek **vrstvený** (výchozí) nebo **připojený místně** .
+* **Typ** – určuje, jestli je svazek **vrstvený** (výchozí) nebo **připojený místně**.
 * **Capacity** – určuje množství dat použitých ve srovnání s celkovým množstvím dat, které může iniciátor (Server) uložit.
 * **Zálohování** – v případě virtuálního pole StorSimple jsou všechny svazky automaticky povoleny pro zálohování.
 * **Připojení hostitelé** – určuje iniciátory (servery), které mají povolený přístup k tomuto svazku.
@@ -77,13 +77,13 @@ Pomocí pokynů v tomto kurzu proveďte následující úlohy:
 2. V okně **Přidat svazek** udělejte toto:
    
    * Do pole **název svazku** zadejte jedinečný název svazku. Název musí být řetězec, který obsahuje 3 až 127 znaků.
-   * V rozevíracím seznamu **typ** určete, zda má být vytvořen **vrstvený** nebo **místně připojený** svazek. Pro úlohy, které vyžadují místní záruky, nízkou latenci a vyšší výkon, vyberte **místně připojený svazek** . U všech ostatních dat vyberte **vrstvený** svazek.
+   * V rozevíracím seznamu **typ** určete, zda má být vytvořen **vrstvený** nebo **místně připojený** svazek. Pro úlohy, které vyžadují místní záruky, nízkou latenci a vyšší výkon, vyberte **místně připojený svazek**. U všech ostatních dat vyberte **vrstvený** svazek.
    * V poli **kapacita** zadejte velikost svazku. Vrstvený svazek musí být v rozsahu od 500 GB do 5 TB a místně připojený svazek musí být v rozmezí 50 GB až 500 GB.
-   * * Klikněte na **připojené hostitele** , vyberte záznam řízení přístupu (ACR) odpovídající iniciátoru iSCSI, ke kterému se chcete připojit, a potom klikněte na **Vybrat** .
-3. Chcete-li přidat nového připojeného hostitele, klikněte na tlačítko **Přidat nový** , zadejte název hostitele a jeho kvalifikovaný název iSCSI (IQN) a pak klikněte na tlačítko **Přidat** .
+   * * Klikněte na **připojené hostitele**, vyberte záznam řízení přístupu (ACR) odpovídající iniciátoru iSCSI, ke kterému se chcete připojit, a potom klikněte na **Vybrat**.
+3. Chcete-li přidat nového připojeného hostitele, klikněte na tlačítko **Přidat nový**, zadejte název hostitele a jeho kvalifikovaný název iSCSI (IQN) a pak klikněte na tlačítko **Přidat**.
    
     ![Snímek obrazovky se zobrazí v podokně připojené hostitele, kde můžete přidat nové.](./media/storsimple-virtual-array-manage-volumes/volume-add-acr.png)
-4. Po dokončení konfigurace svazku klikněte na **vytvořit** . Vytvoří se svazek se zadaným nastavením a zobrazí se oznámení o úspěšném vytvoření stejného. Ve výchozím nastavení bude pro svazek povolená záloha.
+4. Po dokončení konfigurace svazku klikněte na **vytvořit**. Vytvoří se svazek se zadaným nastavením a zobrazí se oznámení o úspěšném vytvoření stejného. Ve výchozím nastavení bude pro svazek povolená záloha.
 5. Pokud chcete ověřit, že se svazek úspěšně vytvořil, otevřete okno **svazky** . Měl by se zobrazit uvedený svazek.
    
     ![Svazek se úspěšně vytvořil.](./media/storsimple-virtual-array-manage-volumes/volume-success.png)
@@ -111,7 +111,7 @@ Pokud plánujete upravit nebo odstranit, možná budete muset svazek převést d
 3. Jakmile je svazek na hostiteli offline, převeďte svazek na pole v režimu offline provedením následujících kroků:
    
    * Z nastavení **svazky** v okně s přehledem služby StorSimple vyberte virtuální pole, na kterém se nachází svazek, který chcete převést do režimu offline.
-   * **Vyberte** svazek a klikněte na **...** (střídavě klikněte na něj pravým tlačítkem myši) a v místní nabídce vyberte možnost **převést do režimu offline** .
+   * **Vyberte** svazek a klikněte na **...** (střídavě klikněte na něj pravým tlačítkem myši) a v místní nabídce vyberte možnost **převést do režimu offline**.
      
         ![Offline svazek](./media/storsimple-virtual-array-manage-volumes/volume-offline.png)
    * Přečtěte si informace v okně **převést do režimu offline** a potvrďte přijetí operace. Pokud chcete svazek převést do režimu offline, klikněte na **převést do režimu offline** . Zobrazí se oznámení o probíhající operaci.
@@ -131,11 +131,11 @@ Provedením následujících kroků odstraňte svazek.
 #### <a name="to-delete-a-volume"></a>Odstranění svazku
 
 1. Z nastavení **svazky** v okně s přehledem služby StorSimple vyberte virtuální pole, na kterém se svazek, který chcete odstranit, nachází.
-2. **Vyberte** svazek a klikněte na **...** (střídavě klikněte pravým tlačítkem myši na tento řádek) a v místní nabídce vyberte **Odstranit** .
+2. **Vyberte** svazek a klikněte na **...** (střídavě klikněte pravým tlačítkem myši na tento řádek) a v místní nabídce vyberte **Odstranit**.
    
     ![Odstranit svazek](./media/storsimple-virtual-array-manage-volumes/volume-delete.png)
 3. Ověřte stav svazku, který chcete odstranit. Pokud svazek, který chcete odstranit, není v režimu offline, nejprve ho proveďte offline, a to podle kroků v části [převedení svazku do režimu offline](#take-a-volume-offline).
-4. Po zobrazení výzvy k potvrzení v okně **Odstranit** přijměte potvrzení a klikněte na **Odstranit** . Svazek se teď odstraní a okno **svazky** zobrazí aktualizovaný seznam svazků v rámci virtuálního pole.
+4. Po zobrazení výzvy k potvrzení v okně **Odstranit** přijměte potvrzení a klikněte na **Odstranit**. Svazek se teď odstraní a okno **svazky** zobrazí aktualizovaný seznam svazků v rámci virtuálního pole.
 
 ## <a name="next-steps"></a>Další kroky
 

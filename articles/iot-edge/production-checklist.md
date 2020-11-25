@@ -12,11 +12,11 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7cabae837656611813d44017ce2e1112f06066ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89669609"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013288"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Příprava na nasazení IoT Edge řešení v produkčním prostředí
 
@@ -132,7 +132,7 @@ Výchozí hodnota parametru timeToLiveSecs je 7200 sekund, což je dvě hodiny.
 
 ### <a name="do-not-use-debug-versions-of-module-images"></a>Nepoužívat ladicí verze imagí modulu
 
-Při přechodu z testovacích scénářů do produkčních scénářů nezapomeňte odebrat konfigurace ladění z manifestů nasazení. Ověřte, že žádný z imagí modulu v manifestech nasazení nemá příponu ** \. ladění** . Pokud jste přidali možnosti vytváření pro vystavování portů v modulech pro ladění, odeberte taky tyto možnosti vytváření.
+Při přechodu z testovacích scénářů do produkčních scénářů nezapomeňte odebrat konfigurace ladění z manifestů nasazení. Ověřte, že žádný z imagí modulu v manifestech nasazení nemá příponu **\. ladění** . Pokud jste přidali možnosti vytváření pro vystavování portů v modulech pro ladění, odeberte taky tyto možnosti vytváření.
 
 ## <a name="container-management"></a>Správa kontejnerů
 
@@ -163,7 +163,7 @@ K ověřování pomocí instančního objektu zadejte ID a heslo instančního o
 * Pro heslo nebo tajný klíč klienta zadejte heslo objektu služby.
 
 > [!NOTE]
-> Po implementaci rozšířeného ověřování zabezpečení zakažte nastavení **uživatele pro správu** , aby nebylo k dispozici výchozí přístup k uživatelskému jménu nebo heslu. V registru kontejneru v Azure Portal v nabídce levé podokno v části **Nastavení**vyberte **přístupové klíče**.
+> Po implementaci rozšířeného ověřování zabezpečení zakažte nastavení **uživatele pro správu** , aby nebylo k dispozici výchozí přístup k uživatelskému jménu nebo heslu. V registru kontejneru v Azure Portal v nabídce levé podokno v části **Nastavení** vyberte **přístupové klíče**.
 
 ### <a name="use-tags-to-manage-versions"></a>Použití značek ke správě verzí
 

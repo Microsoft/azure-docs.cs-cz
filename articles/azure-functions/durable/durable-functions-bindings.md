@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 899bc3fdc94b8232acd3edf3e0cbab3c481ff8f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081844"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013717"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Vazby pro Durable Functions (Azure Functions)
 
@@ -533,7 +533,7 @@ Pokud pro vývoj používáte skriptovací jazyky (například soubory *. csx* n
 
 Ve funkcích .NET se obvykle vytváří vazba na `IDurableEntityClient` , která poskytuje úplný přístup ke všem klientským rozhraním API podporovaným trvalými entitami. Můžete také vytvořit `IDurableOrchestrationClient` připojení k rozhraní, které poskytuje přístup k klientským rozhraním API pro entity i orchestrace. Mezi rozhraní API u objektu klienta patří:
 
-* **ReadEntityStateAsync \<T> **: přečte stav entity. Vrátí odpověď, která označuje, zda cílová entita existuje, a pokud ano, jaký je její stav.
+* **ReadEntityStateAsync \<T>**: přečte stav entity. Vrátí odpověď, která označuje, zda cílová entita existuje, a pokud ano, jaký je její stav.
 * **SignalEntityAsync**: pošle jednosměrnou zprávu entitě a počká, až se zazařazuje do fronty.
 * **ListEntitiesAsync**: dotazování na stav více entit. Do entit se dá zadat dotaz podle *názvu* a *času poslední operace*.
 

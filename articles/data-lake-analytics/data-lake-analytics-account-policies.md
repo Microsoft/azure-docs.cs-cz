@@ -6,11 +6,11 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 04/30/2018
 ms.openlocfilehash: ba69098f32e131714a15923aef64c3f6ba17e18f
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219492"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013305"
 ---
 # <a name="manage-azure-data-lake-analytics-using-account-policies"></a>Správa Azure Data Lake Analytics pomocí zásad účtů
 
@@ -26,7 +26,7 @@ Postup změny počtu jednotek Austrálie pro váš účet Data Lake Analytics:
 
 1. V Azure Portal přejít na účet Data Lake Analytics.
 2. Klikněte na **limity a zásady**.
-3. V části **maximální Austrálie**přesuňte posuvník pro výběr hodnoty nebo zadejte hodnotu do textového pole.
+3. V části **maximální Austrálie** přesuňte posuvník pro výběr hodnoty nebo zadejte hodnotu do textového pole.
 4. Klikněte na **Uložit**.
 
    > [!NOTE]
@@ -40,7 +40,7 @@ Změna počtu úloh, které mohou běžet současně:
 
 1. V Azure Portal přejít na účet Data Lake Analytics.
 2. Klikněte na **limity a zásady**.
-3. V části **maximální počet spuštěných úloh**přesunutím posuvníku vyberte hodnotu nebo zadejte hodnotu do textového pole.
+3. V části **maximální počet spuštěných úloh** přesunutím posuvníku vyberte hodnotu nebo zadejte hodnotu do textového pole.
 4. Klikněte na **Uložit**.
 
    > [!NOTE]
@@ -54,7 +54,7 @@ Postup změny, jak dlouho mají být uchovávány metadata a prostředky úlohy:
 
 1. V Azure Portal přejít na účet Data Lake Analytics.
 2. Klikněte na **limity a zásady**.
-3. V části **dny uložte dotazy úlohy**přesunutím posuvníku a výběrem hodnoty nebo zadáním hodnoty do textového pole.  
+3. V části **dny uložte dotazy úlohy** přesunutím posuvníku a výběrem hodnoty nebo zadáním hodnoty do textového pole.  
 4. Klikněte na **Uložit**.
 
 ## <a name="job-level-policies"></a>Zásady na úrovni úlohy
@@ -78,7 +78,7 @@ U každého účtu je nastavená výchozí zásada. Výchozí zásady platí pro
 
 2. Klikněte na **limity a zásady**.
 
-3. V části **omezení odesílání úloh**klikněte na tlačítko **Přidat zásadu** . Pak vyberte nebo zadejte následující nastavení:
+3. V části **omezení odesílání úloh** klikněte na tlačítko **Přidat zásadu** . Pak vyberte nebo zadejte následující nastavení:
 
    1. **Název zásad COMPUTE**: zadejte název zásady, který vám připomene účel zásady.
 
@@ -98,7 +98,7 @@ U každého účtu je nastavená výchozí zásada. Výchozí zásady platí pro
 
 2. Klikněte na **limity a zásady**.
 
-3. V části **omezení odesílání úloh**vyhledejte zásadu, kterou chcete upravit.
+3. V části **omezení odesílání úloh** vyhledejte zásadu, kterou chcete upravit.
 
 4. Pokud chcete zobrazit možnosti **odstranění** a **Úpravy** ve sloupci úplně vpravo v tabulce, klikněte na `...` . # # další prostředky pro zásady úlohy
 

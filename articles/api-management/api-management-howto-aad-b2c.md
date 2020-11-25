@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 7b586edd7adce8bcea61419005a3ce8cfc814fb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86254931"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013534"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Autorizace vývojářských účtů pomocí Azure Active Directory B2C ve službě Azure API Management
 
@@ -56,11 +56,11 @@ Azure Active Directory B2C je cloudové řešení pro správu identit pro webov�
 
    ![Registrace nové aplikace 2][api-management-howto-aad-b2c-add-button]
 
-1. V okně **Nová aplikace** zadejte název aplikace. V části **Webová aplikace/webové rozhraní API**vyberte **Ano** a v části **Povolení implicitního toku**vyberte **Ano** . Pak vložte **adresu URL pro přesměrování** zkopírovanou v kroku 3 do textového pole **Adresa URL odpovědi** .
+1. V okně **Nová aplikace** zadejte název aplikace. V části **Webová aplikace/webové rozhraní API** vyberte **Ano** a v části **Povolení implicitního toku** vyberte **Ano** . Pak vložte **adresu URL pro přesměrování** zkopírovanou v kroku 3 do textového pole **Adresa URL odpovědi** .
 
    ![Registrace nové aplikace 3][api-management-howto-aad-b2c-app-details]
 
-1. Pokud používáte nový portál pro vývojáře (ne starší portál pro vývojáře), zahrňte v deklaracích aplikací **křestní jméno**, **příjmení**a **ID objektu uživatele** .
+1. Pokud používáte nový portál pro vývojáře (ne starší portál pro vývojáře), zahrňte v deklaracích aplikací **křestní jméno**, **příjmení** a **ID objektu uživatele** .
 
     ![Deklarace identity aplikace](./media/api-management-howto-aad-b2c/api-management-application-claims.png)
 
@@ -80,7 +80,7 @@ Azure Active Directory B2C je cloudové řešení pro správu identit pro webov�
 
 1.  Přepněte zpátky do API Management **Přidat zprostředkovatele identity** a vložte ho do textového pole **tajný klíč klienta** .
     
-1.  V části **přihlášení tenanta**zadejte název domény Azure Active Directory B2C tenanta.
+1.  V části **přihlášení tenanta** zadejte název domény Azure Active Directory B2C tenanta.
 
 1.  Pole **autorita** umožňuje řídit Azure AD B2C přihlašovací adresu URL, která se má použít. Nastavte hodnotu na **<your_b2c_tenant_name>. b2clogin.com**.
 

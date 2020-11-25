@@ -7,11 +7,11 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.openlocfilehash: 1c2f0a2c54be7adbc7b8babd596f18e08c67a024
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269552"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014410"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Export toků z Power Automate a nasazení do Azure Logic Apps
 
@@ -48,7 +48,7 @@ Další informace najdete v tématu [o nárůstu až Azure Logic Apps](https://f
 
    ![Vyhledejte a vyberte "Template deployment"](./media/export-from-microsoft-flow-logic-app-template/select-template-deployment.png)
 
-1. V části **vlastní nasazení**vyberte **v editoru vytvořit vlastní šablonu**.
+1. V části **vlastní nasazení** vyberte **v editoru vytvořit vlastní šablonu**.
 
    ![V editoru vyberte sestavit vlastní šablonu.](./media/export-from-microsoft-flow-logic-app-template/build-template-in-editor.png)
 
@@ -102,7 +102,7 @@ Další informace najdete v tématu [o nárůstu až Azure Logic Apps](https://f
 
    1. Po aktualizaci připojení vyberte na panelu nástrojů návrháře možnost **Uložit**.
 
-1. Až budete připraveni k aktivaci aplikace logiky, v nabídce aplikace logiky vyberte **Přehled**a pak vyberte **Povolit**.
+1. Až budete připraveni k aktivaci aplikace logiky, v nabídce aplikace logiky vyberte **Přehled** a pak vyberte **Povolit**.
 
    ![Povolit aplikaci logiky](./media/export-from-microsoft-flow-logic-app-template/enable-logic-app.png)
 
@@ -166,7 +166,7 @@ Pokud jste nastavili sadu Visual Studio s [požadavky](../logic-apps/quickstart-
 
    Po dokončení nasazení se vaše aplikace logiky publikuje, ale neaktivuje se v Azure Portal.
 
-1. Až budete připraveni aktivovat aplikaci logiky v Azure Portal, najděte a otevřete aplikaci logiky v návrháři aplikace logiky. V nabídce aplikace logiky vyberte **Přehled**a pak vyberte **Povolit**.
+1. Až budete připraveni aktivovat aplikaci logiky v Azure Portal, najděte a otevřete aplikaci logiky v návrháři aplikace logiky. V nabídce aplikace logiky vyberte **Přehled** a pak vyberte **Povolit**.
 
 1. Abyste se vyhnuli spouštění duplicitních pracovních postupů, ujistěte se, že jste původní tok deaktivovali nebo odstranili.
 

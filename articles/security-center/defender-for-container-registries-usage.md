@@ -7,32 +7,22 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2471a19cf795d969644cb92e23b7a2926f2ee1a9
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: a5d66e43485ec66b6297ef11ed382e8fb82b7cb3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372604"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96014566"
 ---
-# <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Použití Azure Defenderu pro Registry kontejnerů k prohledávání imagí pro ohrožení zabezpečení
+# <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Kontrola ohrožení zabezpečení imagí s využitím Azure Defenderu pro registry kontejnerů
 
 Tato stránka vysvětluje použití integrovaného skeneru ohrožení zabezpečení ke skenování imagí kontejneru uložených v Azure Container Registry na základě Azure Resource Manager.
 
-Pokud je povolený nástroj **Azure Defender pro registry kontejnerů** , všechny image, které odešlete do registru, se okamžitě zkontrolují. Kromě toho se kontroluje i všechny image vyhledané během posledních 30 dnů. 
+Pokud je povolený nástroj **Azure Defender pro registry kontejnerů**, všechny image, které odešlete do registru, se okamžitě zkontrolují. Kromě toho se kontroluje i všechny image vyhledané během posledních 30 dnů. 
 
 Když skener ohlásí chyby zabezpečení pro Security Center, Security Center jako doporučení prezentuje závěry a související informace. Kromě toho jsou zde uvedené informace související s informacemi, jako jsou například nápravné kroky, relevantní CVEs, CVSS skóre a další. Zjištěná ohrožení zabezpečení můžete zobrazit pro jedno nebo více předplatných nebo pro konkrétní registr.
 
-## <a name="availability"></a>Dostupnost
-
-|Aspekt|Podrobnosti|
-|----|:----|
-|Stav vydaných verzí:|Všeobecně dostupná (GA)|
-|Stanov|**Azure Defender pro Registry kontejnerů** se účtuje, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
-|Podporované registry a Image:|Image Linux v registrech ACR přístupné z veřejného Internetu s přístupem k prostředí|
-|Nepodporované registry a Image:|Bitové kopie systému Windows<br>' Soukromé ' Registry<br>Registry s přístupem omezené pomocí brány firewall, koncového bodu služby nebo privátních koncových bodů, jako je například privátní odkaz Azure<br>Minimalist image, jako jsou [pomocné obrázky Docker](https://hub.docker.com/_/scratch/) nebo Image "Distroless", které obsahují jenom aplikaci a její závislosti modulu runtime bez správce balíčků, prostředí nebo operačního systému|
-|Požadované role a oprávnění:|Role **Čtenář zabezpečení** a [Azure Container Registry Reader](../container-registry/container-registry-roles.md)|
-|Cloud|![Ano ](./media/icons/yes-icon.png) komerční cloudy<br>![Ano ](./media/icons/yes-icon.png) US gov – v současné době se podporuje jenom funkce prověřování u nabízených oznámení. Další informace o tom, [kdy se naskenované obrázky prohledávají?](defender-for-container-registries-introduction.md#when-are-images-scanned)<br>![Žádná ](./media/icons/no-icon.png) čínská gov, jiné gov|
-|||
+[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
 
 
 ## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>Identifikace ohrožení zabezpečení v obrázcích ve službě Azure Container Registry 
@@ -142,7 +132,7 @@ Můžete použít kterékoli z následujících kritérií:
 
 Vytvoření pravidla:
 
-1. Na stránce s podrobnostmi o doporučeních **by se měla opravit ohrožení zabezpečení v Azure Container Registry imagí** , vyberte **zakázat pravidlo**.
+1. Na stránce s podrobnostmi o doporučeních **by se měla opravit ohrožení zabezpečení v Azure Container Registry imagí**, vyberte **zakázat pravidlo**.
 1. Vyberte příslušný obor.
 1. Definujte kritéria.
 1. Vyberte **použít pravidlo**.

@@ -9,11 +9,11 @@ ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
 ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84704518"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014733"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Zpracování chyb a výjimek v Azure Logic Apps
 
@@ -45,7 +45,7 @@ Pokud chcete vybrat jiné zásady opakování, postupujte následovně:
 
 1. Otevřete **Nastavení** akce nebo triggeru.
 
-1. Pokud akce nebo Trigger podporuje zásady opakování, vyberte v části **zásady opakování**možnost požadovaný typ.
+1. Pokud akce nebo Trigger podporuje zásady opakování, vyberte v části **zásady opakování** možnost požadovaný typ.
 
 Případně můžete zásady opakování zadat ručně v `inputs` části pro akci nebo aktivační událost, která podporuje zásady opakování. Pokud nezadáte zásadu opakování, akce použije výchozí zásady.
 
@@ -67,7 +67,7 @@ Případně můžete zásady opakování zadat ručně v `inputs` části pro ak
 }
 ```
 
-*Požadováno*
+*Povinné*
 
 | Hodnota | Typ | Description |
 |-------|------|-------------|

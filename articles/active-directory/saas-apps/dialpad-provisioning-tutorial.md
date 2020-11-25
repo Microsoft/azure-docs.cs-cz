@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: zhchia
 ms.openlocfilehash: b88e618da3f8a23c0517aaeb251e54bf559fc468
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358469"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014512"
 ---
 # <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>Kurz: Konfigurace Dialpad pro Automatické zřizování uživatelů
 
@@ -84,7 +84,7 @@ Pokud chcete nakonfigurovat Dialpad pro Automatické zřizování uživatelů po
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Dialpad** , na panelu výsledků vyberte **Dialpad** .
+4. Do vyhledávacího pole zadejte **Dialpad**, na panelu výsledků vyberte **Dialpad** .
     ![Dialpad v seznamu výsledků](common/search-new-app.png)
 
 5. V samostatném prohlížeči přejděte na **adresu URL** zvýrazněnou níže. 

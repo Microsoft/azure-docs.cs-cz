@@ -8,11 +8,11 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
 ms.openlocfilehash: 6a0aebc727233cdd838f3e1bf8eeb5cd247b9836
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489672"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014019"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Hostitel reverzních zón zpětného vyhledávání DNS v Azure DNS
 
@@ -29,7 +29,7 @@ Tento článek vás provede kroky k vytvoření první zóny a záznamu DNS zpě
 ## <a name="create-a-reverse-lookup-dns-zone"></a>Vytvoření zóny DNS zpětného vyhledávání
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
-1. V nabídce **centra** vyberte **Nový**  >  **síť**a pak vyberte **zóna DNS**.
+1. V nabídce **centra** vyberte **Nový**  >  **síť** a pak vyberte **zóna DNS**.
 
    ![Výběr zóny DNS](./media/dns-reverse-dns-hosting/figure1.png)
 
@@ -122,8 +122,8 @@ Následující příklad vás provede procesem vytvoření záznamu PTR v zóně
 1. Název sady záznamů pro záznam PTR musí být zbytek adresy IPv4 v opačném pořadí. 
 
    V tomto příkladu jsou již první tři oktety vyplněny jako součást názvu zóny (. 2.0.192). Proto je do pole **název** zadán pouze poslední oktet. Například můžete pojmenovat sadu záznamů **15** pro prostředek, jehož IP adresa je 192.0.2.15.  
-1. Jako **typ**vyberte **PTR**.  
-1. Jako **název domény**zadejte plně kvalifikovaný název domény (FQDN) prostředku, který používá IP adresu.
+1. Jako **typ** vyberte **PTR**.  
+1. Jako **název domény** zadejte plně kvalifikovaný název domény (FQDN) prostředku, který používá IP adresu.
 1. V dolní části podokna vyberte **OK** a vytvořte záznam DNS.
 
    ![Podokno přidat sadu záznamů s vyplněnými poli](./media/dns-reverse-dns-hosting/figure5.png)
@@ -158,8 +158,8 @@ Následující příklad vás provede procesem vytvoření nového záznamu PTR.
 2. Název sady záznamů pro záznam PTR musí být zbytek adresy IPv6 v opačném pořadí. Nesmí obsahovat žádnou kompresi s nulovou hodnotou. 
 
    V tomto příkladu jsou již první 64 bitů protokolu IPv6 vyplněny jako součást názvu zóny (0.0.0.0. c. d. b. a. 8. b. d. 0.1.0.0.2. ip6. arpa). V poli **název** proto jsou zadány pouze poslední 64 bitů. Poslední 64 bity IP adresy se zadávají v opačném pořadí, jako oddělovač mezi každým hexadecimálním číslem. Můžete například pojmenovat sadu záznamů **e. 5.0.4.9. f. a. 1. c. b. 0.1.4.2.5. f** pro prostředek, jehož IP adresa je 2001:0db8: ABDC: 0000: f524:10bc: 1af9:405e.  
-3. Jako **typ**vyberte **PTR**.  
-4. Jako **název domény**zadejte plně kvalifikovaný název domény prostředku, který používá IP adresu.
+3. Jako **typ** vyberte **PTR**.  
+4. Jako **název domény** zadejte plně kvalifikovaný název domény prostředku, který používá IP adresu.
 5. V dolní části podokna vyberte **OK** a vytvořte záznam DNS.
 
 ![Snímek obrazovky, který zobrazuje podokno přidat sadu záznamů s šipkou ukazující na hodnotu v poli Typ](./media/dns-reverse-dns-hosting/figure7.png)
@@ -240,7 +240,7 @@ azure network dns record-set list MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.
 az network dns record-set list -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="can-i-host-reverse-dns-lookup-zones-for-my-isp-assigned-ip-blocks-on-azure-dns"></a>Můžu na Azure DNS hostovat zóny zpětného vyhledávání DNS pro své bloky IP adres přiřazené poskytovateli internetových služeb?
 

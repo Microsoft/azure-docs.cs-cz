@@ -9,17 +9,17 @@ ms.topic: include
 ms.custom: include file
 ms.date: 06/27/2019
 ms.openlocfilehash: a979cd0a4c2ee6466edebadf61e8a98b8f17c9f3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86544933"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013347"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="azure-subscription"></a>Předplatné Azure
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 
 ### <a name="azure-roles"></a>Role Azure
 
@@ -46,7 +46,7 @@ V tomto rychlém startu použijete účet pro obecné účely Azure Storage (kon
 Pro účely tohoto rychlého startu potřebujete název účtu Azure Storage. Následující postup popisuje kroky pro získání názvu účtu úložiště: 
 
 1. Ve webovém prohlížeči přejdete na [Azure Portal](https://portal.azure.com) a přihlaste se pomocí uživatelského jména a hesla Azure.
-2. V nabídce Azure Portal vyberte **všechny služby**a pak vyberte **Storage**  >  **účty úložiště**úložiště. Můžete také vyhledat a vybrat *účty úložiště* z libovolné stránky.
+2. V nabídce Azure Portal vyberte **všechny služby** a pak vyberte **Storage**  >  **účty úložiště** úložiště. Můžete také vyhledat a vybrat *účty úložiště* z libovolné stránky.
 3. Na stránce **účty úložiště** vyfiltrujte váš účet úložiště (Pokud je to potřeba) a pak vyberte svůj účet úložiště. 
 
 Můžete také vyhledat a vybrat *účty úložiště* z libovolné stránky.
@@ -75,7 +75,7 @@ Uložte soubor do složky **C:\ADFv2QuickStartPSH** . (Pokud složka ještě nee
 1. Na *\<Account name>*  -  stránce **kontejnery** , kde jste skončili, vyberte **adftutorial** z aktualizovaného seznamu kontejnerů.
 
    1. Pokud jste okno zavřeli nebo jste přešli na jinou stránku, přihlaste se k [Azure Portal](https://portal.azure.com) znovu.
-   1. V nabídce Azure Portal vyberte **všechny služby**a pak vyberte **Storage**  >  **účty úložiště**úložiště. Můžete také vyhledat a vybrat *účty úložiště* z libovolné stránky.
+   1. V nabídce Azure Portal vyberte **všechny služby** a pak vyberte **Storage**  >  **účty úložiště** úložiště. Můžete také vyhledat a vybrat *účty úložiště* z libovolné stránky.
    1. Vyberte svůj účet úložiště a pak vyberte **kontejnery**  >  **adftutorial**.
 
 2. Na panelu nástrojů na stránce kontejneru **adftutorial** vyberte **nahrát**.

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 454bdaeb83e329ae059d6450b928d1286cd9552a
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 9d3c3dc3b9a83973e41bf5d7dd204316508c2cb4
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555732"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96013390"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Rychlý start: Vytvoření datové továrny pomocí uživatelského rozhraní Azure Data Factory 
 
@@ -47,7 +47,7 @@ Toto video vám pomůže seznámit se s uživatelským rozhraním služby Data F
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Na stránce **Nová datová továrna** jako **Název** zadejte **ADFTutorialDataFactory**. 
  
-   Název objektu pro vytváření dat Azure musí být *globálně jedinečný*. Pokud se zobrazí následující chyba, změňte název datové továrny (například na **&lt; &gt; ADFTutorialDataFactory** ) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
+   Název objektu pro vytváření dat Azure musí být *globálně jedinečný*. Pokud se zobrazí následující chyba, změňte název datové továrny (například na **&lt; &gt; ADFTutorialDataFactory**) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
   
    ![Chyba: název není k dispozici](./media/doc-common-process/name-not-available-error.png)
 1. Jako **Předplatné** vyberte své předplatné Azure, ve kterém chcete datovou továrnu vytvořit. 
@@ -102,11 +102,11 @@ V tomto postupu vytvoříte propojenou službu, která propojí váš Azure Stor
 
 
 ## <a name="create-datasets"></a>Vytvoření datových sad
-V tomto postupu vytvoříte dvě datové sady: **InputDataset** a **OutputDataset**. Tyto datové sady jsou typu **AzureBlob**. Odkazují na propojenou službu Azure Storage, kterou jste vytvořili v předchozí části. 
+V tomto postupu vytvoříte dvě datové sady:**InputDataset** a **OutputDataset**. Tyto datové sady jsou typu **AzureBlob**. Odkazují na propojenou službu Azure Storage, kterou jste vytvořili v předchozí části. 
 
-Vstupní datová sada představuje zdrojová data ve vstupní složce. V definici vstupní datové sady určíte kontejner objektů blob ( **adftutorial** ), složku ( **input** ) a soubor ( **emp.txt** ) obsahující zdrojová data. 
+Vstupní datová sada představuje zdrojová data ve vstupní složce. V definici vstupní datové sady určíte kontejner objektů blob (**adftutorial**), složku (**input**) a soubor (**emp.txt**) obsahující zdrojová data. 
 
-Výstupní datová sada představuje data kopírovaná do cíle. V definici výstupní datové sady určíte kontejner objektů blob ( **adftutorial** ), složku ( **output** ) a soubor, do kterého se data kopírují. Ke každému spuštění kanálu je přiřazené jedinečné ID. Přístup k tomuto ID můžete získat pomocí systémové proměnné **RunId**. Název výstupního souboru se dynamicky vyhodnocuje na základě ID spuštění kanálu.   
+Výstupní datová sada představuje data kopírovaná do cíle. V definici výstupní datové sady určíte kontejner objektů blob (**adftutorial**), složku (**output**) a soubor, do kterého se data kopírují. Ke každému spuštění kanálu je přiřazené jedinečné ID. Přístup k tomuto ID můžete získat pomocí systémové proměnné **RunId**. Název výstupního souboru se dynamicky vyhodnocuje na základě ID spuštění kanálu.   
 
 V nastavení propojené služby jste zadali Azure Storage účet, který obsahuje zdrojová data. V nastavení zdrojové datové sady určíte, kde přesně se data nacházejí (kontejner objektů blob, složka a soubor). V nastavení datové sady jímky určíte, kam se data kopírují (kontejner objektů blob, složka a soubor). 
  
@@ -156,6 +156,7 @@ V tomto postupu vytvoříte a ověříte kanál s aktivitou kopírování, kter�
 1. Na panelu Obecné v části **vlastnosti** zadejte **CopyPipeline** pro **název**. Pak panel sbalíte kliknutím na ikonu vlastnosti v pravém horním rohu.
 
 1. Na panelu nástrojů **Aktivity** rozbalte **Přesunout a transformovat**. Přetáhněte aktivitu **kopírování dat** z panelu nástrojů **aktivity** na plochu návrháře kanálu. Na panelu nástrojů **Aktivity** můžete aktivity také vyhledávat. Jako **Název** zadejte **CopyFromBlobToBlob**.
+
    ![Vytvoření aktivity kopírovat data](./media/quickstart-create-data-factory-portal/copy-activity.png)
 
 1. V nastavení aktivity kopírování přepněte na kartu **Zdroj** a jako **Zdrojová datová sada** vyberte **InputDataset**.
@@ -163,6 +164,7 @@ V tomto postupu vytvoříte a ověříte kanál s aktivitou kopírování, kter�
 1. V nastavení aktivity kopírování přepněte na kartu **Jímka** a jako **Datová sada jímky** vyberte **OutputDataset**.
 
 1. Kliknutím na **Ověřit** na panelu nástrojů kanálu nad plátnem ověřte nastavení kanálu. Ověřte úspěšné ověření kanálu. Pokud chcete výstup ověřování zavřít, vyberte **>>** tlačítko (šipka doprava). 
+
    ![Ověření kanálu](./media/quickstart-create-data-factory-portal/pipeline-validate.png)
 
 ## <a name="debug-the-pipeline"></a>Ladění kanálu
@@ -180,6 +182,7 @@ V tomto kroku provedete ladění kanálu před tím, než ho nasadíte do služb
 V tomto postupu nasadíte entity (propojené služby, datové sady a kanály) do služby Azure Data Factory. Pak ručně aktivujete spuštění kanálu. 
 
 1. Před aktivací kanálu je nutné publikovat entity do služby Data Factory. Pro publikování vyberte v horní části **publikovat vše** . 
+
     ![Publikovat vše](./media/quickstart-create-data-factory-portal/publish-all.png)
 
 1. Pokud chcete kanál aktivovat ručně, vyberte **Přidat aktivační událost** na panelu nástrojů kanálu a potom vyberte **aktivovat nyní**. Na stránce **spuštění kanálu** vyberte **Dokončit**.
@@ -206,7 +209,7 @@ Tento postup je v tomto kurzu volitelný. Můžete vytvořit *aktivační událo
 
 1. Na stránce **Přidat aktivační události** vyberte **Zvolit aktivační událost** a pak vyberte **Nová**. 
 
-1. Na stránce **Nová aktivační událost** v části **konec** vyberte **k datu** , zadejte koncový čas pár minut od aktuálního času a pak vyberte **OK**. 
+1. Na stránce **Nová aktivační událost** v části **konec** vyberte **k datu**, zadejte koncový čas pár minut od aktuálního času a pak vyberte **OK**. 
 
    Každé spuštění kanálu je zpoplatněno, proto zadejte koncový čas pouze pár minut po času zahájení. Ujistěte se, že se jedná o stejný den. Ujistěte se však, že je dostatek času na spuštění kanálu mezi časem publikování a koncovým časem. Aktivační událost nabývá účinnosti po publikování řešení do služby Data Factory, a ne při uložení aktivační události v uživatelském rozhraní. 
 
@@ -219,7 +222,7 @@ Tento postup je v tomto kurzu volitelný. Můžete vytvořit *aktivační událo
 
 1. Vlevo přepněte na kartu **Monitorování**. Seznam můžete aktualizovat kliknutím na **Aktualizovat**. Uvidíte, že se kanál spustí každou minutu od času publikování až do koncového času. 
 
-   Všimněte si hodnot v poli **aktivovaném** sloupcem. Ruční spuštění aktivační události proběhlo v kroku, který jste provedli dříve ( **Aktivovat** ). 
+   Všimněte si hodnot v poli **aktivovaném** sloupcem. Ruční spuštění aktivační události proběhlo v kroku, který jste provedli dříve (**Aktivovat**). 
 
 1. Přepněte na zobrazení **spuštění aktivační události** . 
 
