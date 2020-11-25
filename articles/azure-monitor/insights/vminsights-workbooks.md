@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 43cdb9de111bdea5486e49a56d58d38279b685c7
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996385"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95985539"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Vytváření interaktivních sestav ve službě Azure Monitor pro virtuální počítače s využitím sešitů
 
@@ -44,7 +44,7 @@ Následující tabulka shrnuje sešity, které Azure Monitor pro virtuální po�
 
 Sešit je tvořen oddíly, které se skládají z nezávisle upravitelných grafů, tabulek, textových a vstupních ovládacích prvků. Abychom lépe porozuměli sešitům, začněte tím, že otevřete šablonu a projdeme vytvořením vlastního sešitu. 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **Virtual Machines**.
 
@@ -58,13 +58,13 @@ Sešit je tvořen oddíly, které se skládají z nezávisle upravitelných graf
 
     Tím se spustí Galerie sešitů s několika předem sestavenými sešity, které vám pomůžou začít.
 
-7. Kliknutím na **Nový**vytvořte nový sešit.
+7. Kliknutím na **Nový** vytvořte nový sešit.
 
     ![Snímek obrazovky Galerie sešitů](media/vminsights-workbooks/workbook-gallery-01.png)
 
 ## <a name="editing-workbook-sections"></a>Úpravy oddílů sešitů
 
-Sešity mají dva režimy: **režim úprav**a **režim čtení**. Když se poprvé spustí nový sešit, otevře se v **režimu úprav**. Zobrazuje celý obsah sešitu včetně všech kroků a parametrů, které jsou jinak skryté. **Režim čtení** prezentuje zjednodušené zobrazení stylů sestav. Režim čtení vám umožňuje vyříznout složitost, která se stala vytvořením sestavy, zatímco pořád má podkladovou mechaniku jenom pár kliknutí v případě potřeby pro úpravy.
+Sešity mají dva režimy: **režim úprav** a **režim čtení**. Když se poprvé spustí nový sešit, otevře se v **režimu úprav**. Zobrazuje celý obsah sešitu včetně všech kroků a parametrů, které jsou jinak skryté. **Režim čtení** prezentuje zjednodušené zobrazení stylů sestav. Režim čtení vám umožňuje vyříznout složitost, která se stala vytvořením sestavy, zatímco pořád má podkladovou mechaniku jenom pár kliknutí v případě potřeby pro úpravy.
 
 ![Snímek obrazovky oddílu Virtual Machines sešitu v Azure Monitor zobrazení nového sešitu v režimu úprav s zvýrazněnými ovládacími prvky pro úpravy](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
 
@@ -114,7 +114,7 @@ Každá část má vlastní Rozšířená nastavení, která jsou přístupná p
 
 Většina těchto nastavení je poměrně intuitivní, ale pro pochopení **exportu parametru** je lepší prozkoumávat sešit, který tuto funkci využívá.
 
-Jeden z předem připravených sešitů – **přenos TCP**poskytuje informace o metrikách připojení z virtuálního počítače.
+Jeden z předem připravených sešitů – **přenos TCP** poskytuje informace o metrikách připojení z virtuálního počítače.
 
 První část sešitu je založena na datech dotazů protokolu. Druhá část je také založená na datech dotazů protokolu, ale výběr řádku v první tabulce bude interaktivně aktualizovat obsah grafů:
 
