@@ -8,11 +8,11 @@ ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: chrande
 ms.openlocfilehash: 9d76c3d9943300f88a146e82b862624d491cf546
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360203"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017810"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Řešení běžných problémů v rozhraní Azure Cosmos DB API pro MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -24,13 +24,13 @@ Následující článek popisuje běžné chyby a řešení pro databáze pomoc�
 
 ## <a name="common-errors-and-solutions"></a>Běžné chyby a řešení
 
-| Chyba               | Kód  | Popis  | Řešení  |
+| Chyba               | Kód  | Description  | Řešení  |
 |---------------------|-------|--------------|-----------|
 | ExceededTimeLimit   | 50 | Požadavek překročil 60sekundový časový limit provádění. | Tato chyba může mít mnoho příčin. Jednou z možných příčin je nedostatečná aktuální kapacita přidělených jednotek žádostí k dokončení požadavku. Tento problém je možné vyřešit zvýšením počtu jednotek žádostí dané kolekce nebo databáze. V ostatních případech se tato chyba může vyřešit tak, že se velký požadavek rozdělí na menší. |
 | TooManyRequests     | 16500 | Celkový počet spotřebovaných jednotek žádostí je vyšší než zřízený počet jednotek žádostí pro kolekci, a proto došlo k omezení. | Zvažte škálování propustnosti přiřazené kontejneru nebo sadě kontejnerů na webu Azure Portal, případně můžete zkusit operaci zopakovat. |
 | ExceededMemoryLimit | 16501 | Jako služba pro více tenantů se operace převzala v průběhu plnění paměti klienta. | Snižte rozsah operace prostřednictvím přísnějších kritérií dotazu nebo kontaktujte podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Příklad: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
 | Cesta indexu odpovídající zadané položce řazení je vyloučená / Dotaz řazení nemá odpovídající složený index, který by ho mohl obsloužit. | 2 | Dotaz vyžaduje řazení podle pole, které není indexované. | Pro pokusy o řadicí dotaz vytvořte stejný index (nebo složený index). |
-| Problémy s verzí přenosového protokolu MongoDB | - | Starší verze ovladačů MongoDB nemůžou v připojovacích řetězech rozpoznat název účtu Azure Cosmos. | Připojíte *AppName = @ **account** @* na konci rozhraní API Cosmos DB pro připojovací řetězec MongoDB, kde název ***účtu*** je váš Cosmos DB název účtu. |
+| Problémy s verzí přenosového protokolu MongoDB | - | Starší verze ovladačů MongoDB nemůžou v připojovacích řetězech rozpoznat název účtu Azure Cosmos. | Připojíte *AppName = @**account** @* na konci rozhraní API Cosmos DB pro připojovací řetězec MongoDB, kde název ***účtu*** je váš Cosmos DB název účtu. |
 
 ## <a name="next-steps"></a>Další kroky
 

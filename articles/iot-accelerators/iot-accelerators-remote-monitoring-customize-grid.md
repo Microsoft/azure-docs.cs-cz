@@ -10,11 +10,11 @@ ms.date: 10/04/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
 ms.openlocfilehash: 7fc878e0c9e099b201264c1c3981c603668214d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318377"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017759"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidání vlastní mřížky do webového uživatelského rozhraní akcelerátoru řešení vzdáleného monitorování
 
@@ -248,7 +248,7 @@ Pokud uživatel potřebuje pracovat s více řádky současně, použijte zaškr
 
 Pokud uživatel potřebuje jednat jenom na jednom řádku, nakonfigurujte odkaz na částečný výběr pro jeden nebo více sloupců v **columnDefs**.
 
-1. V **exampleGridConfig.js**přidejte **SoftSelectLinkRenderer** jako **cellRendererFramework** pro **columnDef**.
+1. V **exampleGridConfig.js** přidejte **SoftSelectLinkRenderer** jako **cellRendererFramework** pro **columnDef**.
 
     ```js
     export const exampleColumnDefs = {

@@ -9,11 +9,11 @@ manager: gwallace
 description: Přečtěte si, jak nastavit průběžnou integraci a průběžné nasazování pomocí Azure DevOps s využitím Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
 ms.openlocfilehash: de409aa060034c9ba0faaaa56ce21f904b02cdac
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960384"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017776"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Použití CI/CD s Azure Dev Spaces
 
@@ -25,7 +25,7 @@ Tento článek vás provede nastavením služby průběžná integrace/průběž
 
 I když vás tento článek provede s Azure DevOps, stejné koncepty by se měly vztahovat na systémy CI/CD, jako je Jenkinse, TeamCity atd.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Cluster služby Azure Kubernetes (AKS) s povoleným Azure Dev Spaces
 * [Nainstalované rozhraní příkazového řádku Azure Dev Spaces](upgrade-tools.md)
 * [Organizace Azure DevOps s projektem](/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
@@ -78,7 +78,7 @@ Vytvoření kanálu z tohoto souboru:
 1. Na hlavní stránce projektu DevOps přejděte na kanály > sestavení.
 1. Vyberte možnost pro vytvoření **nového** kanálu sestavení.
 1. Jako zdroj vyberte **GitHub** , v případě potřeby proveďte autorizaci s vaším účtem GitHub a vyberte větev _azds_updates_ z větvené verze úložiště ukázkové aplikace pro _vývoj a prostory_ .
-1. Jako šablonu vyberte **Konfigurace jako kód**nebo **YAML**.
+1. Jako šablonu vyberte **Konfigurace jako kód** nebo **YAML**.
 1. Nyní se zobrazí stránka konfigurace pro váš kanál sestavení. Jak bylo zmíněno výše, přejděte k cestě k **souboru YAML** pomocí tlačítka **...** v konkrétní jazyku. Například, `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml`.
 1. Přejít na kartu **proměnné** .
 1. Ručně přidejte _dockerId_ jako proměnnou, která je uživatelské jméno [účtu správce Azure Container Registry](../../container-registry/container-registry-authentication.md#admin-account). (Zmíněné v článku požadavky)
@@ -98,7 +98,7 @@ Teď máte řešení CI, které bude automaticky vytvářet *mywebapi* a *webend
 1. Klikněte na **OK**. Všimněte si, že podokno kanálu se načetlo pomocí stránky pro úpravu definice verze. Všimněte si také, že jsou k dispozici červeně výstražné ikony indikující konkrétní informace o clusteru, které je nutné nakonfigurovat.
 1. Vlevo od podokna kanálu klikněte na bublinu přidat bublinu **artefaktu** .
 1. V rozevíracím seznamu **zdroj** vyberte kanál sestavení, který jste vytvořili dříve.
-1. U **výchozí verze**vyberte možnost **nejnovější z výchozí větve kanálu sestavení s značkami**.
+1. U **výchozí verze** vyberte možnost **nejnovější z výchozí větve kanálu sestavení s značkami**.
 1. Nechejte **značky** prázdné.
 1. Nastavte **alias zdroje** na `drop` . Hodnota **zdrojového aliasu** se používá v předdefinovaných úlohách vydaných verzí, takže je nutné ji nastavit.
 1. Klikněte na **Přidat**.
@@ -111,21 +111,21 @@ Teď máte řešení CI, které bude automaticky vytvářet *mywebapi* a *webend
 1. Vyberte předplatné Azure, které používáte se službou Azure Dev Spaces. Může být také nutné kliknout na **autorizovat**.
 1. Vyberte skupinu prostředků a cluster, který používáte se službou Azure Dev Spaces.
 1. Klikněte na **úlohu agenta**.
-1. V části **fond agentů**vyberte **hostovaná Ubuntu 1604** .
+1. V části **fond agentů** vyberte **hostovaná Ubuntu 1604** .
 1. Najeďte myší na selektor **úkolů** v horní části a kliknutím na položku _prod_ upravíte úkoly fáze _výroby_ .
 1. Ověřte, **Azure Resource Manager** je vybrána možnost **Typ připojení.** a vyberte předplatné Azure, skupinu prostředků a cluster, který používáte se službou Azure Dev Spaces.
 1. Klikněte na **úlohu agenta**.
-1. V části **fond agentů**vyberte **hostovaná Ubuntu 1604** .
+1. V části **fond agentů** vyberte **hostovaná Ubuntu 1604** .
 1. Klikněte na kartu **proměnné** a aktualizujte proměnné pro danou verzi.
 1. Aktualizujte hodnotu **DevSpacesHostSuffix** z **UPDATE_ME** na vaši příponu hostitele. Přípona hostitele se zobrazí při `azds show-context` předchozím spuštění příkazu.
 1. Klikněte na **Uložit** v pravém horním rohu a pak na **OK**.
 1. Klikněte na **+ release** (vedle tlačítka Uložit) a **vytvořte vydání**.
-1. V části **artefakty**ověřte, zda je vybráno nejnovější sestavení z kanálu sestavení.
+1. V části **artefakty** ověřte, zda je vybráno nejnovější sestavení z kanálu sestavení.
 1. Klikněte na **Vytvořit**.
 
 Nyní začne proces automatizované verze, nasazování grafů *mywebapi* a *webendu* do clusteru Kubernetes v _prostoru nejvyšší úrovně_ . Průběh vydaných verzí můžete monitorovat na webovém portálu Azure DevOps:
 
-1. V části **kanály**přejděte do části **vydané verze** .
+1. V části **kanály** přejděte do části **vydané verze** .
 1. Pro ukázkovou aplikaci klikněte na kanál pro vydání verze.
 1. Klikněte na název nejnovější verze.
 1. Najeďte myší na **vývojové** pole v části **fáze** a klikněte na **protokoly**.
@@ -151,7 +151,7 @@ http://dev.webfrontend.fedcba098.eus.azds.io  Available
 ## <a name="deploying-to-production"></a>Nasazení do produkčního prostředí
 
 Ruční zvýšení úrovně konkrétní verze do _výrobního_ seznamu pomocí systému CI/CD vytvořeného v tomto kurzu:
-1. V části **kanály**přejděte do části **vydané verze** .
+1. V části **kanály** přejděte do části **vydané verze** .
 1. Pro ukázkovou aplikaci klikněte na kanál pro vydání verze.
 1. Klikněte na název nejnovější verze.
 1. Najeďte myší na pole **kat** v části **fáze** a klikněte na **nasadit**.

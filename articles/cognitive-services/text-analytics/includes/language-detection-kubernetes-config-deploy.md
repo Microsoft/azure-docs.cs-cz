@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 1edca9cf8449ff386d0a9920e7d80d69692536fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779281"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017839"
 ---
 ### <a name="deploy-the-language-detection-container-to-an-aks-cluster"></a>Nasazení kontejneru Rozpoznávání jazyka do clusteru AKS
 
@@ -49,7 +49,7 @@ ms.locfileid: "91779281"
     code .
     ```
 
-1. V textovém editoru vytvořte nový soubor s názvem *Language. yaml*a vložte do něj následující YAML. Nezapomeňte nahradit `billing/value` a `apikey/value` vlastními informacemi.
+1. V textovém editoru vytvořte nový soubor s názvem *Language. yaml* a vložte do něj následující YAML. Nezapomeňte nahradit `billing/value` a `apikey/value` vlastními informacemi.
 
     ```yaml
     apiVersion: apps/v1beta1

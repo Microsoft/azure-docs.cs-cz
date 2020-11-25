@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB monitorování | Microsoft Docs
 description: Naučte se monitorovat výkon a dostupnost Azure Cosmos DB.
-author: bwren
+author: SnehaGunda
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 08/24/2020
-ms.author: bwren
+ms.date: 11/23/2020
+ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: c04d61c6381304382261219f23e99401465590ca
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 19137f3384a1b97ae1ae7e3faeb4dc2e0e4fd3bd
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099381"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96017793"
 ---
-# <a name="monitoring-azure-cosmos-db"></a>Azure Cosmos DB monitorování
+# <a name="monitor-azure-cosmos-db"></a>Monitorování služby Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Pokud máte důležité aplikace a obchodní procesy spoléhající se na prostředky Azure, budete chtít tyto prostředky sledovat pro jejich dostupnost, výkon a provoz. Tento článek popisuje data monitorování generovaná databázemi Azure Cosmos a o tom, jak můžete pomocí funkcí Azure Monitor analyzovat tato data a upozorňovat na ně.
@@ -34,13 +34,17 @@ Následující obrázek ukazuje různé možnosti, které jsou k dispozici pro m
 
 :::image type="content" source="media/monitor-cosmos-db/monitoring-options-portal.png" alt-text="Možnosti monitorování dostupné v Azure Portal" border="false":::
 
-Při použití Azure Cosmos DB můžete na straně klienta shromažďovat podrobnosti o požadavcích na požadavky, ID aktivity, informace o výjimce/zásobníku, stav HTTP/dílčí stavový kód, diagnostický řetězec pro ladění všech problémů, ke kterým může dojít. Tyto informace se vyžadují i v případě, že se potřebujete obrátit na tým podpory Azure Cosmos DB.  
+Při použití Azure Cosmos DB můžete na straně klienta shromažďovat podrobnosti o požadavcích na požadavky, ID aktivity, informace o výjimce/zásobníku, stav HTTP/dílčí stavový kód, diagnostický řetězec pro ladění všech problémů, ke kterým může dojít. Tyto informace se vyžadují i v případě, že se potřebujete obrátit na tým podpory Azure Cosmos DB. 
+
+## <a name="monitor-overview"></a>Přehled monitorování
+
+Stránka **Přehled** v Azure Portal pro každý účet Azure Cosmos DB obsahuje stručný přehled využití prostředků, jako je třeba celkový počet požadavků, požadavky, které vedly k určitému kódu stavu HTTP, a hodinové fakturaci. Tyto informace jsou užitečné, ale v tomto podokně jsou k dispozici pouze malé množství dat monitorování. Některá z těchto dat jsou shromažďována automaticky a jsou k dispozici pro analýzu ihned po vytvoření prostředku. Můžete povolit další typy shromažďování dat s určitou konfigurací.
 
 ## <a name="what-is-azure-monitor"></a>Co je Azure Monitor?
 
 Azure Cosmos DB vytváří data monitorování pomocí [Azure monitor](../azure-monitor/overview.md) , což je plná služba monitorování zásobníku v Azure, která poskytuje kompletní sadu funkcí pro monitorování prostředků Azure kromě prostředků v jiných cloudech a místních prostředích.
 
-Pokud ještě nejste obeznámeni s monitorováním služeb Azure, začněte s článkem [monitorování prostředků Azure pomocí Azure monitor](../azure-monitor/insights/monitor-azure-resource.md) , který popisuje následující informace:
+Pokud ještě nejste obeznámeni s monitorováním služeb Azure, začněte s článkem [monitorování prostředků Azure pomocí Azure monitor](../azure-monitor/insights/monitor-azure-resource.md) , který popisuje následující koncepty:
 
 * Co je Azure Monitor?
 * Náklady spojené s monitorováním
@@ -52,24 +56,36 @@ Následující části jsou uvedené v tomto článku, které popisují konkrét
 
 ## <a name="azure-monitor-for-azure-cosmos-db"></a>Azure Monitor pro Azure Cosmos DB
 
-Azure Monitor pro Azure Cosmos DB je založen na [funkci sešitů Azure monitor](../azure-monitor/platform/workbooks-overview.md) a používá stejná data monitorování shromážděná pro Cosmos DB popsané v následujících částech. Pomocí Azure Monitor můžete zobrazit celkový výkon, selhání, kapacitu a provozní stav všech vašich prostředků Azure Cosmos DB ve sjednoceném interaktivním prostředí a využít další funkce Azure Monitor pro účely podrobné analýzy a upozorňování. Další informace najdete v článku [prozkoumání Azure Monitor Azure Cosmos DB](../azure-monitor/insights/cosmosdb-insights-overview.md) .
+Azure Monitor pro Azure Cosmos DB je založen na [funkci sešitů Azure monitor](../azure-monitor/platform/workbooks-overview.md) a používá stejná data monitorování shromážděná pro Azure Cosmos DB popsané v následujících částech. Pomocí Azure Monitor můžete zobrazit celkový výkon, selhání, kapacitu a provozní stav všech vašich prostředků Azure Cosmos DB ve sjednoceném interaktivním prostředí a využít další funkce Azure Monitor pro účely podrobné analýzy a upozorňování. Další informace najdete v článku [prozkoumání Azure Monitor Azure Cosmos DB](../azure-monitor/insights/cosmosdb-insights-overview.md) .
 
 > [!NOTE]
 > Při vytváření kontejnerů se ujistěte, že nevytvoříte dva kontejnery se stejným názvem, ale s různou velikostí písmen. Důvodem je to, že některé části platformy Azure nerozlišují velká a malá písmena a to může vést k nejasnostem/kolizi telemetrie a akcí na kontejnerech s takovými názvy.
 
-## <a name="monitor-data-collected-from-azure-cosmos-db-portal"></a><a id="monitoring-from-azure-cosmos-db"></a> Monitorování dat shromážděných z portálu Azure Cosmos DB
+## <a name="monitoring-data"></a><a id="monitoring-from-azure-cosmos-db"></a> Data monitorování 
 
 Azure Cosmos DB shromažďuje stejné typy dat monitorování jako jiné prostředky Azure, které jsou popsány v tématu [monitorování dat z prostředků Azure](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data). Podrobné informace o protokolech a metrikách vytvořených pomocí Azure Cosmos DB najdete v tématu [referenční informace k datům monitorování Azure Cosmos DB](monitor-cosmos-db-reference.md) .
 
 Stránka **Přehled** v Azure Portal pro každou databázi Azure Cosmos obsahuje stručný přehled využití databáze, včetně jejich žádosti a hodinového využití fakturace. Tyto informace jsou užitečné, ale k dispozici je jen malé množství dat monitorování. Některá z těchto dat jsou shromažďována automaticky a k dispozici pro analýzu, jakmile vytvoříte databázi, zatímco můžete povolit další shromažďování dat s určitou konfigurací.
 
-:::image type="content" source="media/monitor-cosmos-db/overview-page.png" alt-text="Možnosti monitorování dostupné v Azure Portal":::
+:::image type="content" source="media/monitor-cosmos-db/overview-page.png" alt-text="Stránka Přehled":::
 
-## <a name="analyzing-metric-data"></a><a id="analyze-metric-data"></a> Analýza dat metriky
+## <a name="collection-and-routing"></a>Shromažďování a směrování
 
-Azure Cosmos DB poskytuje vlastní prostředí pro práci s metrikami.
+Metriky platforem a protokol aktivit se shromažďují a ukládají automaticky, ale můžete je směrovat do jiných umístění pomocí diagnostického nastavení.  
 
-Metriky pro Azure Cosmos DB můžete analyzovat pomocí metrik z jiných služeb Azure pomocí Průzkumníka metrik, a to tak, že v nabídce **Azure monitor** otevřete **metriky** . Podrobnosti o použití tohoto nástroje najdete v tématu [Začínáme s Azure Průzkumník metrik](../azure-monitor/platform/metrics-getting-started.md) . Všechny metriky pro Azure Cosmos DB jsou v oboru názvů **Cosmos DB Standardní metriky** . Při přidávání filtru do grafu můžete použít následující dimenze s těmito metrikami:
+Protokoly prostředků se neshromažďují a ukládají, dokud nevytvoříte nastavení diagnostiky a nebudete je směrovat do jednoho nebo více umístění.
+
+Podrobný postup pro vytvoření nastavení diagnostiky pomocí Azure Portal a některých příkladů diagnostických dotazů najdete v tématu [Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik platforem v Azure](cosmosdb-monitor-resource-logs.md) . Při vytváření nastavení diagnostiky určíte, které kategorie protokolů se mají shromáždit.
+
+Metriky a protokoly, které můžete shromažďovat, jsou popsány v následujících částech.
+
+## <a name="analyzing-metrics"></a><a id="analyze-metric-data"></a> Analýza metrik
+
+Azure Cosmos DB poskytuje vlastní prostředí pro práci s metrikami. Metriky pro Azure Cosmos DB můžete analyzovat pomocí metrik z jiných služeb Azure pomocí Průzkumníka metrik, a to tak, že v nabídce **Azure monitor** otevřete **metriky** . Podrobnosti o použití tohoto nástroje najdete v tématu [Začínáme s Azure Průzkumník metrik](../azure-monitor/platform/metrics-getting-started.md) . Můžete také rezervovat, jak monitorovat [latenci na straně serveru](monitor-server-side-latency.md), [využití jednotky požadavku](monitor-request-unit-usage.md)a [normalizované využití jednotek požadavků](monitor-normalized-request-units.md) pro prostředky Azure Cosmos DB.
+
+Seznam metrik platforem shromážděných pro Azure Cosmos DB naleznete v článku [monitorování Azure Cosmos DBch referenčních dat metriky] monitor-Cosmos-DB-reference. MD # Metrics).
+
+Všechny metriky pro Azure Cosmos DB jsou v oboru názvů **Cosmos DB Standardní metriky**. Při přidávání filtru do grafu můžete použít následující dimenze s těmito metrikami:
 
 * Název kolekce
 * DatabaseName
@@ -77,51 +93,57 @@ Metriky pro Azure Cosmos DB můžete analyzovat pomocí metrik z jiných služeb
 * Oblast
 * StatusCode
 
+Pro referenci se zobrazí seznam [všech metrik prostředků, které jsou podporované v Azure monitor](/azure/azure-monitor/platform/metrics-supported).
+
 ### <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Zobrazit metriky na úrovni operace pro Azure Cosmos DB
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
-1. V levém navigačním panelu vyberte **monitor** a vyberte **metriky** .
+1. V levém navigačním panelu vyberte **monitor** a vyberte **metriky**.
 
-   :::image type="content" source="./media/monitor-cosmos-db/monitor-metrics-blade.png" alt-text="Možnosti monitorování dostupné v Azure Portal":::
+   :::image type="content" source="./media/monitor-cosmos-db/monitor-metrics-blade.png" alt-text="Podokno metrik v Azure Monitor":::
 
-1. V podokně **metriky** > **Vyberte prostředek** > zvolte požadované **předplatné** a **skupinu prostředků** . Jako **typ prostředku** vyberte **Azure Cosmos DB účty** , zvolte jeden ze stávajících účtů Azure Cosmos a pak vyberte **použít** .
+1. V podokně **metriky** > **Vyberte prostředek** > zvolte požadované **předplatné** a **skupinu prostředků**. Jako **typ prostředku** vyberte **Azure Cosmos DB účty**, zvolte jeden ze stávajících účtů Azure Cosmos a pak vyberte **použít**.
 
-   :::image type="content" source="./media/monitor-cosmos-db/select-cosmosdb-account.png" alt-text="Možnosti monitorování dostupné v Azure Portal":::
+   :::image type="content" source="./media/monitor-cosmos-db/select-cosmosdb-account.png" alt-text="Vyberte účet Cosmos DB, pro který chcete zobrazit metriky.":::
 
 1. Dále můžete vybrat metriku ze seznamu dostupných metrik. Můžete vybrat metriky specifické pro jednotky žádosti, úložiště, latenci, dostupnost, Cassandra a další. Podrobné informace o všech dostupných metrikách v tomto seznamu najdete v článku [metriky podle kategorií](monitor-cosmos-db-reference.md) . V tomto příkladu vybereme **jednotky žádosti** a jako hodnotu agregace určíte **průměr** .
 
    Kromě těchto podrobností můžete také vybrat **časový rozsah** a **časovou členitost** metrik. V poli Max (maximum) si můžete zobrazit metriky za posledních 30 dní.  Po použití filtru se v závislosti na vašem filtru zobrazí graf. Pro vybrané období můžete zobrazit průměrný počet spotřebovaných jednotek žádostí za minutu.  
 
-   :::image type="content" source="./media/monitor-cosmos-db/metric-types.png" alt-text="Možnosti monitorování dostupné v Azure Portal":::
+   :::image type="content" source="./media/monitor-cosmos-db/metric-types.png" alt-text="Vyberte metriku z Azure Portal":::
 
 ### <a name="add-filters-to-metrics"></a>Přidání filtrů do metrik
 
-Můžete také filtrovat metriky a graf zobrazený podle konkrétního typu **CollectionName** , **DatabaseName** , **typem operace OperationType** , **region** a **StatusCode** . Chcete-li filtrovat metriky, vyberte možnost **Přidat filtr** a zvolte požadovanou vlastnost, například **typem operace OperationType** , a vyberte hodnotu, jako je například **dotaz** . V grafu se pak zobrazí jednotky žádosti spotřebované pro operaci dotazování pro vybrané období. Operace provedené prostřednictvím uložené procedury nejsou protokolovány, takže nejsou k dispozici v rámci metriky typem operace OperationType.
+Můžete také filtrovat metriky a graf zobrazený podle konkrétního typu **CollectionName**, **DatabaseName**, **typem operace OperationType**, **region** a **StatusCode**. Chcete-li filtrovat metriky, vyberte možnost **Přidat filtr** a zvolte požadovanou vlastnost, například **typem operace OperationType** , a vyberte hodnotu, jako je například **dotaz**. V grafu se pak zobrazí jednotky žádosti spotřebované pro operaci dotazování pro vybrané období. Operace provedené prostřednictvím uložené procedury nejsou protokolovány, takže nejsou k dispozici v rámci metriky typem operace OperationType.
 
-:::image type="content" source="./media/monitor-cosmos-db/add-metrics-filter.png" alt-text="Možnosti monitorování dostupné v Azure Portal":::
+:::image type="content" source="./media/monitor-cosmos-db/add-metrics-filter.png" alt-text="Přidejte filtr pro výběr členitosti metriky.":::
 
 Metriky můžete seskupit pomocí možnosti **použít rozdělení** . Například můžete seskupit jednotky žádostí na typ operace a zobrazit graf pro všechny operace najednou, jak je znázorněno na následujícím obrázku:
 
-:::image type="content" source="./media/monitor-cosmos-db/apply-metrics-splitting.png" alt-text="Možnosti monitorování dostupné v Azure Portal":::
+:::image type="content" source="./media/monitor-cosmos-db/apply-metrics-splitting.png" alt-text="Přidat použít dělicí filtr":::
 
-## <a name="analyzing-log-data"></a><a id="analyze-log-data"></a> Analýza dat protokolu
+## <a name="analyzing-logs"></a><a id="analyze-log-data"></a> Analýza protokolů
 
-Data v Azure Monitor protokoly se ukládají v tabulkách, ve kterých každá tabulka má vlastní sadu jedinečných vlastností. Azure Cosmos DB ukládá data v následujících tabulkách.
+Data v Azure Monitor protokoly se ukládají v tabulkách, ve kterých každá tabulka má vlastní sadu jedinečných vlastností.
+
+Všechny protokoly prostředků v Azure Monitor mají stejná pole následovaná poli pro konkrétní služby. Společné schéma je popsáno v [Azure monitor schéma protokolu prostředků](../azure-monitor/platform/diagnostic-logs-schema.md#top-level-resource-logs-schema). Seznam typů protokolů prostředků shromážděných pro Azure Cosmos DB naleznete v tématu [monitoring Azure Cosmos DB data reference] ((monitorování-Cosmos-DB-reference. MD # Resource-logs)  
+
+[Protokol aktivit](/azure/azure-monitor/platform/activity-log) je přihlášení k platformě Azure, které poskytuje přehled o událostech na úrovni předplatného. Můžete ji zobrazit nezávisle nebo ji směrovat do Azure Monitor protokolů, kde můžete provádět mnohem složitější dotazy pomocí Log Analytics.  
+
+Azure Cosmos DB ukládá data v následujících tabulkách.
 
 | Tabulka | Popis |
 |:---|:---|
 | AzureDiagnostics | Společná tabulka používaná více službami k ukládání protokolů prostředků. Protokoly prostředků z Azure Cosmos DB lze identifikovat pomocí `MICROSOFT.DOCUMENTDB` .   |
 | AzureActivity    | Společná tabulka, která ukládá všechny záznamy z protokolu aktivit.
 
+### <a name="sample-kusto-queries"></a>Ukázkové dotazy Kusto
+
 > [!IMPORTANT]
-> Když v nabídce Azure Cosmos DB vyberete **protokoly** , Log Analytics se otevře s oborem dotazu nastaveným na aktuální databázi Azure Cosmos. To znamená, že dotazy protokolu budou zahrnovat pouze data z tohoto prostředku. Pokud chcete spustit dotaz, který zahrnuje data z jiných databází nebo dat z jiných služeb Azure, vyberte z nabídky **Azure monitor** **protokoly** . Podrobnosti najdete [v tématu Rozsah dotazů protokolu a časový rozsah v Azure Monitor Log Analytics](../azure-monitor/log-query/scope.md) .
+> Když v nabídce Azure Cosmos DB vyberete **protokoly** , Log Analytics se otevře s oborem dotazu nastaveným na aktuální účet Azure Cosmos DB. To znamená, že dotazy protokolu budou zahrnovat pouze data z tohoto prostředku. Pokud chcete spustit dotaz, který obsahuje data z jiných účtů nebo dat z jiných služeb Azure, vyberte z nabídky **Azure monitor** **protokoly** . Podrobnosti najdete [v tématu Rozsah dotazů protokolu a časový rozsah v Azure Monitor Log Analytics](../azure-monitor/log-query/scope.md) .
 
-### <a name="azure-cosmos-db-log-analytics-queries-in-azure-monitor"></a>Azure Cosmos DB Log Analytics dotazy v Azure Monitor
-
-Tady jsou některé dotazy, které můžete zadat do panelu hledání v **protokolu** , abyste mohli monitorovat kontejnery Cosmos Azure. Tyto dotazy fungují s [novým jazykem](../azure-monitor/log-query/log-query-overview.md).
-
-Níže jsou uvedené dotazy, které vám pomůžou monitorovat databáze Azure Cosmos.
+Tady jsou některé dotazy, které můžete zadat do panelu hledání v **protokolu** , abyste mohli monitorovat prostředky Azure Cosmos. Tyto dotazy fungují s [novým jazykem](../azure-monitor/log-query/log-query-overview.md).
 
 * Dotaz na všechny diagnostické protokoly z Azure Cosmos DB v zadaném časovém období:
 
@@ -148,13 +170,25 @@ Níže jsou uvedené dotazy, které vám pomůžou monitorovat databáze Azure C
     | summarize count() by Resource
     ```
 
+## <a name="alerts"></a>Výstrahy
+
+Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech monitorování nacházejí důležité podmínky. Umožňují identifikovat a řešit problémy v systému před tím, než si je vaši zákazníci všimnete. Můžete nastavit výstrahy na [metrikách](/azure/azure-monitor/platform/alerts-metric-overview), [protokolech](/azure/azure-monitor/platform/alerts-unified-log)a [protokolu aktivit](/azure/azure-monitor/platform/activity-log-alerts). Různé typy výstrah mají výhody a nevýhody.
+
+V následující tabulce jsou například uvedena několik pravidel upozornění pro vaše prostředky. Podrobný seznam pravidel upozornění najdete v Azure Portal. Další informace najdete v článku [Postup konfigurace výstrah](create-alerts.md) .  
+
+| Typ upozornění | Stav | Description  |
+|:---|:---|:---|
+|Omezení rychlosti na jednotkách žádosti (výstraha metriky) |Název dimenze: StatusCode, operátor: Equals, hodnoty dimenze: 429  | Upozorní, pokud kontejner nebo databáze překročila zřízenou mez propustnosti. |
+|Převzetí služeb při selhání oblasti |Operator: větší než, typ agregace: počet, prahová hodnota: 1 | Při převzetí služeb při selhání jedné oblasti. Tato výstraha je užitečná, pokud jste nepovolili automatické převzetí služeb při selhání. |
+| Otočit klíče (výstraha protokolu aktivit)| Úroveň události: informativní, stav: spuštěno| Upozorní na otočení klíčů účtu. Svou aplikaci můžete aktualizovat pomocí nových klíčů. |
+
 ## <a name="monitor-azure-cosmos-db-programmatically"></a><a id="monitor-cosmosdb-programmatically"></a> Monitorování Azure Cosmos DB programově
 
 Metriky na úrovni účtu dostupné na portálu, jako je například využití úložiště účtů a celkový počet požadavků, nejsou k dispozici prostřednictvím rozhraní SQL API. Data o využití na úrovni kolekce ale můžete načíst pomocí rozhraní SQL API. Chcete-li načíst data na úrovni kolekce, postupujte následovně:
 
 * Chcete-li použít REST API, [proveďte operaci get pro kolekci](/rest/api/cosmos-db/get-a-collection). Kvóta a informace o využití pro kolekci se vrátí v hlavičce x-MS-Resource-quote a x-MS-Resource-Usage v odpovědi.
 
-* Chcete-li použít sadu .NET SDK, použijte metodu [DocumentClient. ReadDocumentCollectionAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync) , která vrátí [ResourceResponse](/dotnet/api/microsoft.azure.documents.client.resourceresponse-1) obsahující řadu vlastností použití jako **CollectionSizeUsage** , **DatabaseUsage** , **DocumentUsage** a další.
+* Chcete-li použít sadu .NET SDK, použijte metodu [DocumentClient. ReadDocumentCollectionAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync) , která vrátí [ResourceResponse](/dotnet/api/microsoft.azure.documents.client.resourceresponse-1) obsahující řadu vlastností použití jako **CollectionSizeUsage**, **DatabaseUsage**, **DocumentUsage** a další.
 
 Pro přístup k dalším metrikám použijte [sadu Azure monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights). Dostupné definice metriky lze načíst voláním:
 
