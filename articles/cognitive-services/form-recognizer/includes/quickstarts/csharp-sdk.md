@@ -9,19 +9,19 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 86803e1d7ef77467fd870221c0bc2c1c006ae479
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 2d8b876f01f110a314734e596055831650a6c08b
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94816736"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95869310"
 ---
 > [!IMPORTANT]
 > Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti.
 
 [Referenční dokumentace](/dotnet/api/overview/azure/ai.formrecognizer-readme)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * [Integrované vývojové prostředí (IDE) sady Visual Studio](https://visualstudio.microsoft.com/vs/) nebo aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
@@ -31,18 +31,6 @@ ms.locfileid: "94816736"
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
 ## <a name="setting-up"></a>Nastavení
-
-### <a name="create-a-new-c-application"></a>Vytvoření nové aplikace v C#
-
-#### <a name="visual-studio-ide"></a>[Integrované vývojové prostředí sady Visual Studio](#tab/visual-studio)
-
-Pomocí sady Visual Studio vytvořte novou aplikaci .NET Core. 
-
-### <a name="install-the-client-library"></a>Instalace klientské knihovny 
-
-Po vytvoření nového projektu nainstalujte knihovnu klienta tak, že kliknete pravým tlačítkem na řešení projektu v **Průzkumník řešení** a vyberete **Spravovat balíčky NuGet**. Ve Správci balíčků, který se otevře, vyberte **Procházet**, zaškrtněte políčko **Zahrnout předprodejní** a vyhledejte `Azure.AI.FormRecognizer` . Vyberte verzi `3.0.0` a pak **nainstalujte**. 
-
-#### <a name="cli"></a>[Rozhraní příkazového řádku](#tab/cli)
 
 V okně konzoly (například cmd, PowerShell nebo bash) použijte `dotnet new` příkaz k vytvoření nové aplikace konzoly s názvem `formrecognizer-quickstart` . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: *program.cs*. 
 
@@ -70,8 +58,16 @@ Build succeeded.
 
 V adresáři aplikace nainstalujte klientskou knihovnu pro rozpoznávání formulářů pro rozhraní .NET pomocí následujícího příkazu:
 
+#### <a name="version-30"></a>[verze 3,0](#tab/ga)
+
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.0.0
+```
+
+#### <a name="version-31-preview"></a>[verze 3,1 Preview](#tab/preview)
+
+```console
+dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 ```
 ---
 
@@ -91,9 +87,14 @@ Do třídy **programu** aplikace vytvořte proměnné pro klíč a koncový bod 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_creds)]
 
-V metodě **Main** aplikace přidejte volání asynchronního úkolu, který se používá v rámci tohoto rychlého startu. Později ji budete implementovat.
+V metodě **Main** aplikace přidejte volání asynchronních úloh používaných v rámci tohoto rychlého startu. Později je budete implementovat.
 
+#### <a name="version-30"></a>[verze 3,0](#tab/ga)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
+#### <a name="version-31-preview"></a>[verze 3,1 Preview](#tab/preview)
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_main)]
+
+---
 
 
 ## <a name="object-model"></a>Objektový model 
@@ -126,6 +127,8 @@ Podívejte se na příklady [výukového modelu](#train-a-custom-model) a [sprav
 
 Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klientské knihovny pro rozpoznávání formulářů pro .NET:
 
+#### <a name="version-30"></a>[verze 3,0](#tab/ga)
+
 * [Ověření klienta](#authenticate-the-client)
 * [Rozpoznávání obsahu formuláře](#recognize-form-content)
 * [Rozpoznávání příjmů](#recognize-receipts)
@@ -133,6 +136,18 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klie
 * [Analýza formulářů pomocí vlastního modelu](#analyze-forms-with-a-custom-model)
 * [Správa vlastních modelů](#manage-your-custom-models)
 
+#### <a name="version-31-preview"></a>[verze 3,1 Preview](#tab/preview)
+
+* [Ověření klienta](#authenticate-the-client)
+* [Rozpoznávání obsahu formuláře](#recognize-form-content)
+* [Rozpoznávání příjmů](#recognize-receipts)
+* [Rozpoznávání vizitek](#recognize-business-cards)
+* [Rozpoznávání faktur](#recognize-invoices)
+* [Trénování vlastního modelu](#train-a-custom-model)
+* [Analýza formulářů pomocí vlastního modelu](#analyze-forms-with-a-custom-model)
+* [Správa vlastních modelů](#manage-your-custom-models)
+
+---
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
@@ -155,9 +170,14 @@ Také budete muset přidat odkazy na adresy URL pro školení a testování dat.
 
 * Pokud chcete načíst adresu URL SAS pro vlastní model data školení, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Ujistěte se, že jsou zaškrtnutá oprávnění **číst** a **Zobrazit seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tento formát: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 * Pak použijte výše uvedené kroky a získejte adresu URL SAS jednotlivého dokumentu v úložišti objektů BLOB.
-* Nakonec uložte adresu URL ukázkového snímku oznámení, který je zahrnutý v následujících ukázkách (k dispozici také na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms). 
+* Nakonec uložte adresu URL ukázkových imagí, které jsou uvedené níže (k dispozici také na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms)). 
 
+#### <a name="version-30"></a>[verze 3,0](#tab/ga)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_urls)]
+#### <a name="version-31-preview"></a>[verze 3,1 Preview](#tab/preview)
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_urls)]
+
+---
 
 
 ## <a name="recognize-form-content"></a>Rozpoznávání obsahu formuláře
@@ -268,6 +288,43 @@ Item:
     Total Price: '99.99', with confidence 0.386
 Total: '1203.39', with confidence '0.774'
 ```
+
+#### <a name="version-30"></a>[verze 3,0](#tab/ga)
+
+#### <a name="version-31-preview"></a>[verze 3,1 Preview](#tab/preview)
+
+## <a name="recognize-business-cards"></a>Rozpoznávání vizitek
+
+V této části se dozvíte, jak rozpoznat a extrahovat společná pole z anglických vizitek pomocí předem připraveného modelu.
+
+K rozpoznání vizitek z adresy URL použijte `StartRecognizeBusinessCardsFromUriAsync` metodu. 
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_call)]
+
+> [!TIP]
+> Můžete také rozpoznat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) , jako je například **StartRecognizeBusinessCards**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
+
+Vrácená hodnota je kolekce `RecognizedForm` objektů: jedna pro každou kartu v dokumentu. Následující kód zpracuje vizitku na daném identifikátoru URI a vytiskne hlavní pole a hodnoty do konzoly.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_print)]
+
+## <a name="recognize-invoices"></a>Rozpoznávání faktur
+
+V této části se dozvíte, jak rozpoznat a extrahovat společná pole z prodejních faktur pomocí předem připraveného modelu.
+
+Chcete-li rozpoznat faktury z adresy URL, použijte `StartRecognizeInvoicesFromUriAsync` metodu. 
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_invoice_call)]
+
+> [!TIP]
+> Můžete také rozpoznat místní obrázky faktury. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) , jako je například **StartRecognizeInvoices**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
+
+Vrácená hodnota je kolekce `RecognizedForm` objektů: jedna pro každou fakturu v odeslaném dokumentu. Následující kód zpracuje fakturu na daném identifikátoru URI a vytiskne hlavní pole a hodnoty do konzoly.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_invoice_print)]
+
+---
+
 
 ## <a name="train-a-custom-model"></a>Trénování vlastního modelu
 
@@ -575,19 +632,12 @@ Z vašeho účtu můžete také odstranit model odkazem na jeho ID. Tento krok t
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-#### <a name="visual-studio-ide"></a>[Integrované vývojové prostředí sady Visual Studio](#tab/visual-studio)
-
-Spusťte aplikaci kliknutím na tlačítko **ladění** v horní části okna IDE.
-
-#### <a name="cli"></a>[Rozhraní příkazového řádku](#tab/cli)
-
 Spusťte aplikaci z adresáře aplikace pomocí `dotnet run` příkazu.
 
 ```dotnet
 dotnet run
 ```
 
----
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

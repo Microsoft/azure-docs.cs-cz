@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: b09dfe8e585dbcb6b8b1289fc551cec12d86c6db
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 534916d81cfb4d3ad1e96d2934f43221067fb94f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925006"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95865252"
 ---
 > [!IMPORTANT]
 > * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Další informace najdete v referenční dokumentaci níže. 
@@ -25,8 +25,8 @@ ms.locfileid: "92925006"
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * [Python 3.x](https://www.python.org/)
-* Objekt blob Azure Storage, který obsahuje sadu školicích dat. Tipy a možnosti pro sestavení sady školicích dat najdete v tématu [Vytvoření školicích dat sady pro vlastní model](../../build-training-data-set.md) . Pro účely tohoto rychlého startu můžete použít soubory ve složce **výuka** [ukázkové sady dat](https://go.microsoft.com/fwlink/?linkid=2090451) (stažení a extrakce *sample_data.zip* ).
-* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" vytvořte prostředek pro rozpoznávání formulářů "  target="_blank"> vytvořením prostředku pro rozpoznávání formulářů <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku** .
+* Objekt blob Azure Storage, který obsahuje sadu školicích dat. Tipy a možnosti pro sestavení sady školicích dat najdete v tématu [Vytvoření školicích dat sady pro vlastní model](../../build-training-data-set.md) . Pro účely tohoto rychlého startu můžete použít soubory ve složce **výuka** [ukázkové sady dat](https://go.microsoft.com/fwlink/?linkid=2090451) (stažení a extrakce *sample_data.zip*).
+* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" vytvořte prostředek pro rozpoznávání formulářů "  target="_blank"> vytvořením prostředku pro rozpoznávání formulářů <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
     * K připojení aplikace k rozhraní API pro rozpoznávání formulářů budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
@@ -36,9 +36,19 @@ ms.locfileid: "92925006"
 
 Po instalaci Pythonu můžete nainstalovat nejnovější verzi klientské knihovny pro rozpoznávání formulářů pomocí:
 
+#### <a name="version-30"></a>[verze 3,0](#tab/ga)
+
 ```console
 pip install azure-ai-formrecognizer
 ```
+
+#### <a name="version-31-preview"></a>[verze 3,1 Preview](#tab/preview)
+
+```console
+pip install azure-ai-formrecognizer --pre
+```
+
+---
 
 ### <a name="create-a-new-python-application"></a>Vytvoření nové aplikace v Pythonu
 
@@ -81,6 +91,8 @@ Pomocí nástroje pro rozpoznávání formulářů můžete vytvořit dva různ�
 
 Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klientské knihovny pro rozpoznávání formulářů pro Python:
 
+#### <a name="version-30"></a>[verze 3,0](#tab/ga)
+
 * [Ověření klienta](#authenticate-the-client)
 * [Rozpoznávání obsahu formuláře](#recognize-form-content)
 * [Rozpoznávání příjmů](#recognize-receipts)
@@ -88,6 +100,18 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klie
 * [Analýza formulářů pomocí vlastního modelu](#analyze-forms-with-a-custom-model)
 * [Správa vlastních modelů](#manage-your-custom-models)
 
+#### <a name="version-31-preview"></a>[verze 3,1 Preview](#tab/preview)
+
+* [Ověření klienta](#authenticate-the-client)
+* [Rozpoznávání obsahu formuláře](#recognize-form-content)
+* [Rozpoznávání příjmů](#recognize-receipts)
+* [Rozpoznávání vizitek](#recognize-business-cards)
+* [Rozpoznávání faktur](#recognize-invoices)
+* [Trénování vlastního modelu](#train-a-custom-model)
+* [Analýza formulářů pomocí vlastního modelu](#analyze-forms-with-a-custom-model)
+* [Správa vlastních modelů](#manage-your-custom-models)
+
+---
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
@@ -99,7 +123,7 @@ Tady ověříte dva klientské objekty pomocí proměnných předplatného, kter
 ## <a name="get-assets-for-testing"></a>Získat prostředky pro testování
 
 Budete muset přidat odkazy na adresy URL pro školení a testování dat.
-* Pokud chcete načíst adresu URL SAS pro vlastní model data školení, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis** . Ujistěte se, že jsou zaškrtnutá oprávnění **číst** a **Zobrazit seznam** , a klikněte na **vytvořit** . Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tento formát: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* Pokud chcete načíst adresu URL SAS pro vlastní model data školení, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Ujistěte se, že jsou zaškrtnutá oprávnění **číst** a **Zobrazit seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tento formát: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 * Použijte ukázku z obrázků a příjemů obsažených v následujících ukázkách (k dispozici také na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) nebo můžete použít výše uvedené kroky a získat adresu URL SAS jednotlivého dokumentu v úložišti objektů BLOB). 
 
 > [!NOTE]
@@ -135,7 +159,6 @@ Confidence score: 1.0
 Cell text: Charges
 Location: [Point(x=4.7074, y=2.8088), Point(x=5.386, y=2.8088), Point(x=5.386, y=3.3219), Point(x=4.7074, y=3.3219)]
 Confidence score: 1.0
-
 ...
 
 ```
@@ -170,6 +193,30 @@ Subtotal: 1098.99 has confidence 0.964
 Tax: 104.4 has confidence 0.713
 Total: 1203.39 has confidence 0.774
 ```
+
+#### <a name="version-30"></a>[verze 3,0](#tab/ga)
+
+#### <a name="version-31-preview"></a>[verze 3,1 Preview](#tab/preview)
+
+## <a name="recognize-business-cards"></a>Rozpoznávání vizitek
+
+V této části se dozvíte, jak rozpoznat a extrahovat společná pole z anglických vizitek pomocí předem připraveného modelu. K rozpoznání vizitek z adresy URL použijte `begin_recognize_business_cards_from_url` metodu. 
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
+
+> [!TIP]
+> Můžete také rozpoznat obrázky místních obchodních karet. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) , jako je například `begin_recognize_business_cards` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
+
+## <a name="recognize-invoices"></a>Rozpoznávání faktur
+
+V této části se dozvíte, jak rozpoznat a extrahovat společná pole z prodejních faktur pomocí předem připraveného modelu. Chcete-li rozpoznat faktury z adresy URL, použijte `begin_recognize_invoices_from_url` metodu. 
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_invoice)]
+
+> [!TIP]
+> Můžete také rozpoznat místní obrázky faktury. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) , jako je například `begin_recognize_invoices` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
+
+---
 
 ## <a name="train-a-custom-model"></a>Trénování vlastního modelu
 
@@ -386,7 +433,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 
 Klientská knihovna pro rozpoznávání formulářů vyvolá výjimky definované v [Azure Core](https://aka.ms/azsdk-python-azure-core).
 
-### <a name="logging"></a>protokolování
+### <a name="logging"></a>Protokolování
 
 Tato knihovna používá [standardní knihovnu protokolování](https://docs.python.org/3/library/logging.html) pro protokolování. Základní informace o relacích HTTP (adresy URL, hlavičky atd.) se zaznamenávají na úrovni informací.
 
