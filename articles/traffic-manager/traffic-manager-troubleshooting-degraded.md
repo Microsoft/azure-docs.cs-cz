@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: duau
 ms.openlocfilehash: 83dc432a1f88b443d500bf9a977abfed69211156
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401550"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003850"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Řešení potíží při sníženém výkonu služby Azure Traffic Manager
 
-Tento článek popisuje, jak řešit potíže s profilem Azure Traffic Manager, který zobrazuje snížený stav. Jako první krok při řešení potíží se stavem degradování Azure Traffic Manager je povolení protokolování.  Další informace najdete v tématu [Povolení protokolů prostředků](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) . V tomto scénáři zvažte, že jste nakonfigurovali profil Traffic Manager, který odkazuje na některé z vašich hostovaných služeb cloudapp.net. Pokud stav Traffic Manager **zobrazuje snížený stav,** může být **snížen**stav jednoho nebo více koncových bodů:
+Tento článek popisuje, jak řešit potíže s profilem Azure Traffic Manager, který zobrazuje snížený stav. Jako první krok při řešení potíží se stavem degradování Azure Traffic Manager je povolení protokolování.  Další informace najdete v tématu [Povolení protokolů prostředků](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) . V tomto scénáři zvažte, že jste nakonfigurovali profil Traffic Manager, který odkazuje na některé z vašich hostovaných služeb cloudapp.net. Pokud stav Traffic Manager **zobrazuje snížený stav,** může být **snížen** stav jednoho nebo více koncových bodů:
 
 ![stav sníženého koncového bodu](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 

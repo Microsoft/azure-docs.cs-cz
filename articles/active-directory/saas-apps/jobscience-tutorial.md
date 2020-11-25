@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 07/12/2017
 ms.author: jeedes
 ms.openlocfilehash: 5a104dcd6ccf500c115359a1b72c67b85359a802
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94355154"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002183"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Kurz: Azure Active Directory integrace s Jobscience
 
@@ -135,7 +135,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
    
    ![Moje doména](./media/jobscience-tutorial/ic767825.png "Moje doména")
 
-1. Pokud chcete ověřit, jestli je vaše doména nastavená správně, ujistěte se, že je v **kroku 4 nasazená pro uživatele** , a zkontrolujte **Nastavení moje doména**.
+1. Pokud chcete ověřit, jestli je vaše doména nastavená správně, ujistěte se, že je v **kroku 4 nasazená pro uživatele**, a zkontrolujte **Nastavení moje doména**.
 
     ![Doména nasazená pro uživatele](./media/jobscience-tutorial/ic784377.png "Doména nasazená pro uživatele")
 
@@ -157,7 +157,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
     
     a. Do textového pole **název** zadejte název konfigurace.
 
-    b. Do textového pole **vystavitele** vložte hodnotu **ID entity SAML** , kterou jste zkopírovali z Azure Portal.
+    b. Do textového pole **vystavitele** vložte hodnotu **ID entity SAML**, kterou jste zkopírovali z Azure Portal.
 
     c. Do textového pole **ID entity** zadejte `https://salesforce-jobscience.com`
 
@@ -165,9 +165,9 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     e. Jako **typ identity SAML** vyberte **kontrolní výraz obsahuje ID federace z objektu User**.
 
-    f. Jako **umístění identity SAML** , vyberte **identita je v elementu NameIdentfier příkazu Subject**.
+    f. Jako **umístění identity SAML**, vyberte **identita je v elementu NameIdentfier příkazu Subject**.
 
-    například Do textového pole **Adresa URL pro přihlášení zprostředkovatele identity** vložte hodnotu **adresy url služby Single Sign-On služby SAML** , kterou jste zkopírovali z Azure Portal.
+    například Do textového pole **Adresa URL pro přihlášení zprostředkovatele identity** vložte hodnotu **adresy url služby Single Sign-On služby SAML**, kterou jste zkopírovali z Azure Portal.
 
     h. Do textového pole **Adresa URL pro odhlášení zprostředkovatele identity** vložte hodnotu **adresy URL** pro odhlášení, kterou jste zkopírovali z Azure Portal.
 

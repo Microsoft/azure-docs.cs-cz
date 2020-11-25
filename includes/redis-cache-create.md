@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: cauribeg
 ms.custom: include file
-ms.openlocfilehash: 07a80fcd1ec62b051a660bdac696f89e3b7c42b7
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: da36cb5c5d2db20b89f80d381f48632c7528c193
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93354019"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002445"
 ---
 1. Pokud chcete vytvořit mezipaměť, přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **vytvořit prostředek**.
 
-    :::image type="content" source="media/redis-cache-create/create-resource.png" alt-text="Vyberte mezipaměť Azure pro Redis.":::
+    :::image type="content" source="media/redis-cache-create/create-resource.png" alt-text="V levém navigačním podokně se zvýrazní vytvoření prostředku.":::
 
    
 1. Na stránce **Nový** vyberte **databáze** a pak vyberte **Azure cache pro Redis**.
 
-    :::image type="content" source="media/redis-cache-create/select-cache.png" alt-text="Vyberte mezipaměť Azure pro Redis.":::
+    :::image type="content" source="media/redis-cache-create/select-cache.png" alt-text="V novém se zvýrazní databáze a zvýrazní se mezipaměť Azure pro Redis.":::
    
 1. Na stránce **nový Redis Cache** nakonfigurujte nastavení pro novou mezipaměť.
    
@@ -54,4 +54,4 @@ ms.locfileid: "93354019"
 
 1. Po zobrazení zprávy se zobrazeným zeleným ověřením vyberte **vytvořit**.
 
-Vytvoření mezipaměti trvá nějakou dobu. Průběh můžete sledovat na stránce **Přehled** služby Azure cache pro Redis. Pokud se **stav** zobrazuje jako **spuštěno** , mezipaměť je připravena k použití. 
+Vytvoření mezipaměti trvá nějakou dobu. Průběh můžete sledovat na stránce **Přehled** služby Azure cache pro Redis. Pokud se **stav** zobrazuje jako **spuštěno**, mezipaměť je připravena k použití. 

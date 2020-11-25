@@ -7,11 +7,11 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 5c62f10d67345d68cde27af7d0a7663b22d978a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207187"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002421"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Odolnost a zotavení po havárii
 
@@ -76,7 +76,7 @@ Z Azure Portal můžete vložit změnu do jiného úložiště konfigurace pomoc
 
 1. V novém okně, které se otevře, zadejte předplatné, skupinu prostředků a název prostředku svého sekundárního úložiště a pak vyberte **použít**.
 
-1. Uživatelské rozhraní je aktualizované, abyste si mohli vybrat, jaká konfigurační data chcete exportovat do sekundárního úložiště. Výchozí hodnotu čas můžete ponechat tak, jak je, a nastavit jak **z popisku** , tak i **popisku** na stejnou hodnotu. Vyberte **Použít**. Tento postup opakujte pro všechny popisky v primárním úložišti.
+1. Uživatelské rozhraní je aktualizované, abyste si mohli vybrat, jaká konfigurační data chcete exportovat do sekundárního úložiště. Výchozí hodnotu čas můžete ponechat tak, jak je, a nastavit jak **z popisku** , tak i **popisku** na stejnou hodnotu. Vyberte **Apply** (Použít). Tento postup opakujte pro všechny popisky v primárním úložišti.
 
 1. Předchozí kroky opakujte při každé změně konfigurace.
 

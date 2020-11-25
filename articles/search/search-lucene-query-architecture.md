@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 50a1656fcb92d9777d4a9476ef2a4c1fd2f2efc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329478"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002744"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Fulltextové vyhledávání v Azure Kognitivní hledání
 
@@ -251,7 +251,7 @@ To je běžné, ale nevyžadují se pro použití stejných analyzátorů pro op
 
 Návrat do našeho příkladu pro pole **title** má obrácený index vypadat takto:
 
-| Označení | Seznam dokumentů |
+| Termín | Seznam dokumentů |
 |------|---------------|
 | atman | 1 |
 | míčů | 2 |
@@ -265,7 +265,7 @@ V poli title se pouze *Hotel* zobrazuje ve dvou dokumentech: 1, 3.
 
 Pro pole **Popis** je index následující:
 
-| Označení | Seznam dokumentů |
+| Termín | Seznam dokumentů |
 |------|---------------|
 | letové | 3
 | a | 4
@@ -351,7 +351,7 @@ search=Spacious, air-condition* +"Ocean view"
 }
 ```
 
-V dokumentu 1 se shodoval dotaz, protože v poli Description se vyskytuje jak pojem *spacious* , tak i požadované *zobrazení v oceánu* . Následující dva dokumenty odpovídají pouze *zobrazení*fráze pro fráze. Je možné, že se skóre relevance pro dokument 2 a 3 liší, i když odpovídají dotazu stejným způsobem. Je to proto, že vzorec bodování má víc součástí, než jenom TF/IDF. V tomto případě byl dokumentu 3 přiřazeno trochu větší skóre, protože jeho popis je kratší. Přečtěte si [vzorec praktického bodování pro Lucene](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html) , který vám pomůže pochopit, jak délka pole a další faktory mohou ovlivnit skóre relevance.
+V dokumentu 1 se shodoval dotaz, protože v poli Description se vyskytuje jak pojem *spacious* , tak i požadované *zobrazení v oceánu* . Následující dva dokumenty odpovídají pouze *zobrazení* fráze pro fráze. Je možné, že se skóre relevance pro dokument 2 a 3 liší, i když odpovídají dotazu stejným způsobem. Je to proto, že vzorec bodování má víc součástí, než jenom TF/IDF. V tomto případě byl dokumentu 3 přiřazeno trochu větší skóre, protože jeho popis je kratší. Přečtěte si [vzorec praktického bodování pro Lucene](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html) , který vám pomůže pochopit, jak délka pole a další faktory mohou ovlivnit skóre relevance.
 
 Některé typy dotazů (zástupný znak, prefix, regulární výraz) vždy přispívat k celkovému skóre dokumentu jako konstantní skóre. To umožňuje, aby se shody nalezené prostřednictvím rozšíření dotazu zahrnuly do výsledků, ale aniž by to ovlivnilo hodnocení. 
 

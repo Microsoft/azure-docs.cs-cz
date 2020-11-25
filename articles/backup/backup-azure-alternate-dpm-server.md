@@ -4,11 +4,11 @@ description: Obnovte data, která jste chránili do trezoru Recovery Services, z
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.openlocfilehash: 0cce45fbaaedad4cfcee0cda768aae2fa294312b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378062"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002966"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Obnovení dat z Azure Backup Serveru
 
@@ -51,7 +51,7 @@ Postup obnovení dat z Azure Backup Server:
 7. Vyberte **obnovit do alternativního umístění**. **Přejděte** do správného umístění pro obnovení.
 
     ![Alternativní umístění pro obnovení externí aplikace DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-alternate-location.png)
-8. Vyberte možnost související s **vytvořením kopie**, **přeskočení**nebo **přepsání**.
+8. Vyberte možnost související s **vytvořením kopie**, **přeskočení** nebo **přepsání**.
 
    * **Vytvořit kopii** – vytvoří kopii souboru, pokud dojde ke kolizi názvů.
    * **Přeskočit** – Pokud dojde ke kolizi názvů, neobnovuje soubor, což ponechá původní soubor.
@@ -62,7 +62,7 @@ Postup obnovení dat z Azure Backup Server:
      Určete, zda bude odesláno **oznámení** po úspěšném dokončení obnovení.
 
      ![Oznámení o externím obnovení DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-notifications.png)
-9. Na obrazovce **souhrnu** jsou uvedené možnosti, které zatím byly vybrány. Po výběru **obnovení**se data obnoví do příslušného místního umístění.
+9. Na obrazovce **souhrnu** jsou uvedené možnosti, které zatím byly vybrány. Po výběru **obnovení** se data obnoví do příslušného místního umístění.
 
     ![Souhrn možností externích obnovení DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-options-summary.png)
 

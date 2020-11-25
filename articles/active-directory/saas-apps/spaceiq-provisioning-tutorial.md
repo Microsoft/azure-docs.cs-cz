@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: Zhchia
 ms.openlocfilehash: 4e115de4f86baba9559730d94f45ab7b17cc4379
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357959"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002200"
 ---
 # <a name="tutorial-configure-spaceiq-for-automatic-user-provisioning"></a>Kurz: Konfigurace SpaceIQ pro Automatické zřizování uživatelů
 
@@ -86,7 +86,7 @@ Před konfigurací SpaceIQ pro Automatické zřizování uživatelů se službou
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **SpaceIQ** , na panelu výsledků vyberte **SpaceIQ** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **SpaceIQ**, na panelu výsledků vyberte **SpaceIQ** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![SpaceIQ v seznamu výsledků](common/search-new-app.png)
 

@@ -4,11 +4,11 @@ description: Funkce Azure Lighthouse se dají použít ke zjednodušení správy
 ms.date: 08/12/2020
 ms.topic: conceptual
 ms.openlocfilehash: 3f452e6810fa6809b5ba1b83b664f8b38d82a895
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167345"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004241"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse v podnikových scénářích
 
@@ -24,7 +24,7 @@ V případech, kdy je potřeba víceklientské architektury, může Azure Lighth
 
 Pokud chcete používat Azure Lighthouse v podniku, musíte určit, který tenant bude obsahovat uživatele, kteří provádějí operace správy v ostatních klientech. Jinými slovy, budete muset určit, který tenant bude spravovat tenanta pro ostatní klienty.
 
-Řekněme například, že vaše organizace má jednoho tenanta, který budeme volat *jako tenanta a*. Vaše organizace pak získá *tenanta B* a *tenanta C*a máte obchodní důvody, které vyžadují, abyste je zachovali jako samostatné klienty.
+Řekněme například, že vaše organizace má jednoho tenanta, který budeme volat *jako tenanta a*. Vaše organizace pak získá *tenanta B* a *tenanta C* a máte obchodní důvody, které vyžadují, abyste je zachovali jako samostatné klienty.
 
 Vaše organizace chce použít stejné definice zásad, postupy pro zálohování a procesy zabezpečení ve všech klientech. Vzhledem k tomu, že tenant A již obsahuje uživatele zodpovědné za tyto úkoly, můžete připojit odběry v rámci tenanta B a tenanta C a povolit tak stejným uživatelům v Tenantovi a provádět tyto úlohy.
 

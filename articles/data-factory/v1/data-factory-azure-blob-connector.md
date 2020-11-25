@@ -13,11 +13,11 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a77a4808390f816bc3a6646520f4b542bee89d4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89438513"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001719"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Blob Storage pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -54,7 +54,7 @@ Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data do n
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Tento článek obsahuje [návod](#walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage) pro vytvoření kanálu pro kopírování dat z BLOB Storage umístění Azure do jiného umístění Azure Blob Storage. Kurz týkající se vytvoření kanálu pro kopírování dat z Blob Storage Azure do Azure SQL Database najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md).
 
-K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -87,7 +87,7 @@ Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje inf
 | fileName |Název objektu BLOB Název souboru je nepovinný a rozlišuje velká a malá písmena.<br/><br/>Pokud zadáte název souboru, bude aktivita (včetně kopírování) fungovat na konkrétním objektu BLOB.<br/><br/>Pokud není zadán název souboru, příkaz Kopírovat zahrnuje všechny objekty BLOB v folderPath pro vstupní datovou sadu.<br/><br/>Pokud není zadán **název souboru** pro výstupní datovou sadu a **preserveHierarchy** není zadán v jímky aktivity, název generovaného souboru by byl v následujícím formátu: `Data.<Guid>.txt` (například:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |No |
 | partitionedBy |partitionedBy je volitelná vlastnost. Můžete ji použít k určení dynamického folderPath a názvu souboru pro data časových řad. Například folderPath může být Parametrizovaná za každou hodinu dat. Podrobnosti a příklady najdete v [části použití vlastnosti partitionedBy](#using-partitionedby-property) . |No |
 | formát | Podporovány jsou následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. V části formát nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v částech [Formát textu](data-factory-supported-file-and-compression-formats.md#text-format), [formát JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Formát ORC](data-factory-supported-file-and-compression-formats.md#orc-format)a formátování [Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Pokud chcete **Kopírovat soubory** mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát v definicích vstupní i výstupní datové sady. |No |
-| komprese | Zadejte typ a úroveň komprese dat. Podporované typy jsou: **gzip**, **Deflate**, **bzip2**a **ZipDeflate**. Podporované úrovně: **optimální** a **nejrychlejší**. Další informace naleznete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
+| komprese | Zadejte typ a úroveň komprese dat. Podporované typy jsou: **gzip**, **Deflate**, **bzip2** a **ZipDeflate**. Podporované úrovně: **optimální** a **nejrychlejší**. Další informace naleznete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
 
 ### <a name="using-partitionedby-property"></a>Použití vlastnosti partitionedBy
 Jak je uvedeno v předchozí části, můžete zadat dynamický folderPath a filename pro data časových řad pomocí vlastnosti **partitionedBy** , [Data Factory funkcí a systémových proměnných](data-factory-functions-variables.md).
@@ -184,11 +184,11 @@ Pojďme se podívat, jak rychle kopírovat data do nebo z úložiště objektů 
     ```
 
 ### <a name="create-the-data-factory"></a>Vytvoření datové továrny
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-2. V levém horním rohu klikněte na **vytvořit prostředek** , klikněte na **Intelligence + Analytics**a pak klikněte na **Data Factory**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+2. V levém horním rohu klikněte na **vytvořit prostředek** , klikněte na **Intelligence + Analytics** a pak klikněte na **Data Factory**.
 3. V podokně **Nová datová továrna** :  
-    1. Jako **název**zadejte **ADFBlobConnectorDF** . Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chyba: `*Data factory name “ADFBlobConnectorDF” is not available` , změňte název datové továrny (například na yournameADFBlobConnectorDF) a zkuste to znovu. V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.
-    2. Vyberte své **předplatné**Azure.
+    1. Jako **název** zadejte **ADFBlobConnectorDF** . Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chyba: `*Data factory name “ADFBlobConnectorDF” is not available` , změňte název datové továrny (například na yournameADFBlobConnectorDF) a zkuste to znovu. V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.
+    2. Vyberte své **předplatné** Azure.
     3. V případě skupiny prostředků vyberte **použít existující** a vyberte existující skupinu prostředků (nebo) vyberte **vytvořit novou** a zadejte název skupiny prostředků.
     4. Vyberte **umístění** pro příslušný objekt pro vytváření dat.
     5. Zaškrtněte políčko **Připnout na řídicí panel** v dolní části okna.
@@ -201,9 +201,9 @@ Pojďme se podívat, jak rychle kopírovat data do nebo z úložiště objektů 
     > [!NOTE]
     > Pokud zjistíte, že je webový prohlížeč zablokovaný při autorizaci..., zakažte nebo zrušte kontrolu **souborů cookie třetích stran a nastavení dat webu** (nebo) zachovejte povolení a vytvořte výjimku pro **Login.microsoftonline.com** a potom zkuste průvodce spustit znovu.
 2. Na stránce **Vlastnosti**:
-    1. Jako **název úlohy**zadejte **CopyPipeline** . Název úlohy je název kanálu ve vaší datové továrně.
+    1. Jako **název úlohy** zadejte **CopyPipeline** . Název úlohy je název kanálu ve vaší datové továrně.
     2. Zadejte **Popis** úlohy (volitelné).
-    3. V případě **tempo úkolů nebo plánu úloh**Udržujte možnost **spouštět pravidelně podle plánu** . Chcete-li tuto úlohu spustit pouze jednou, místo opakovaného spuštění podle plánu, vyberte možnost **Spustit nyní**. Pokud vyberete možnost, **spustí se jednou** , vytvoří se [jednorázový kanál](data-factory-create-pipelines.md#onetime-pipeline) .
+    3. V případě **tempo úkolů nebo plánu úloh** Udržujte možnost **spouštět pravidelně podle plánu** . Chcete-li tuto úlohu spustit pouze jednou, místo opakovaného spuštění podle plánu, vyberte možnost **Spustit nyní**. Pokud vyberete možnost, **spustí se jednou** , vytvoří se [jednorázový kanál](data-factory-create-pipelines.md#onetime-pipeline) .
     4. Ponechte nastavení pro **Periodický vzor**. Tato úloha se spouští každý den mezi časem zahájení a ukončení, který zadáte v dalším kroku.
     5. Změňte **počáteční datum a čas** na **04/21/2017**.
     6. Změňte **koncové datum a čas** na **04/25/2017**. Možná budete chtít zadat datum místo procházení kalendářem.
@@ -212,15 +212,15 @@ Pojďme se podívat, jak rychle kopírovat data do nebo z úložiště objektů 
 3. Na stránce **Source data store** (Zdrojové úložiště dat) klikněte na dlaždici **Azure Blob Storage**. Tato stránka slouží k zadání zdrojového úložiště dat pro úlohu kopírování. Můžete použít existující propojenou službu úložiště dat nebo zadat nové úložiště dat. Pokud chcete použít existující propojenou službu, vyberte **z existujících propojených služeb** a vyberte správnou propojenou službu.
     ![Nástroj pro kopírování – stránka zdrojového úložiště dat](./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png)
 4. Na stránce **Specify the Azure Blob storage account** (Zadejte účet Azure Blob Storage):
-    1. Pro **název připojení**nechte automaticky generovaný název. Název připojení je název propojené služby typu: Azure Storage.
+    1. Pro **název připojení** nechte automaticky generovaný název. Název připojení je název propojené služby typu: Azure Storage.
     2. Ujistěte se, že je pro položku **Metoda výběru účtu** vybrána možnost **Z předplatných Azure**.
     3. Vyberte své předplatné Azure nebo nechte **možnost Vybrat vše** pro **předplatné Azure**.
-    4. V seznamu účtů úložiště Azure dostupných ve zvoleném předplatném vyberte požadovaný **účet úložiště Azure**. Můžete také zadat nastavení účtu úložiště ručně tak, že pro **metodu výběru účtu**vyberete možnost **zadat ručně** .
+    4. V seznamu účtů úložiště Azure dostupných ve zvoleném předplatném vyberte požadovaný **účet úložiště Azure**. Můžete také zadat nastavení účtu úložiště ručně tak, že pro **metodu výběru účtu** vyberete možnost **zadat ručně** .
     5. Klikněte na **Next** (Další).  
         ![Nástroj pro kopírování – zadání účtu Azure Blob Storage](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
 5. Na stránce **Choose the input file or folder** (Zvolte vstupní soubor nebo složku):
     1. Dvakrát klikněte na **adfblobcontainer**.
-    2. Vyberte **vstup**a klikněte na **zvolit**. V tomto návodu vyberete vstupní složku. Místo toho můžete také vybrat soubor emp.txt ve složce.
+    2. Vyberte **vstup** a klikněte na **zvolit**. V tomto návodu vyberete vstupní složku. Místo toho můžete také vybrat soubor emp.txt ve složce.
         ![Nástroj pro kopírování – výběr vstupního souboru nebo složky 1](./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png)
 6. Na stránce **zvolit vstupní soubor nebo složku** :
     1. Potvrďte, že je **soubor nebo složka** nastavené na **adfblobconnector/Input**. Pokud jsou soubory v dílčích složkách, například 2017/04/01, 2017/04/02 a tak dále, zadejte adfblobconnector/Input/{Year}/{Month}/{Day} pro soubor nebo složku. Po stisknutí klávesy TAB mimo textové pole se zobrazí tři rozevírací seznamy pro výběr formátů Year (rrrr), month (MM) a Day (DD).
@@ -242,19 +242,19 @@ Pojďme se podívat, jak rychle kopírovat data do nebo z úložiště objektů 
     4. Klikněte na kartu **schéma** v dolní části, abyste viděli schéma, které vyvodil Průvodce kopírováním, a to tak, že prohlížíte data ve zdrojovém souboru.
     5. Po zkontrolování oddělovačů a náhledu dat klikněte na **Další**.
     ![Nástroj pro kopírování – nastavení formátu souboru](./media/data-factory-azure-blob-connector/copy-tool-file-format-settings.png)
-8. Na **stránce cílové úložiště dat**vyberte **Azure Blob Storage**a klikněte na **Další**. V tomto návodu používáte Blob Storage Azure jako zdrojové i cílové úložiště dat.  
+8. Na **stránce cílové úložiště dat** vyberte **Azure Blob Storage** a klikněte na **Další**. V tomto návodu používáte Blob Storage Azure jako zdrojové i cílové úložiště dat.  
     ![Nástroj pro kopírování – výběr cílového úložiště dat](media/data-factory-azure-blob-connector/select-destination-data-store.png)
 9. Na stránce **Zadejte účet služby Azure Blob Storage** :  
     1. Do pole **název připojení** zadejte **AzureStorageLinkedService** .
     2. Ujistěte se, že je pro položku **Metoda výběru účtu** vybrána možnost **Z předplatných Azure**.
-    3. Vyberte své **předplatné**Azure.
+    3. Vyberte své **předplatné** Azure.
     4. Vyberte svůj účet úložiště Azure.
     5. Klikněte na **Next** (Další).
 10. Na stránce **zvolit výstupní soubor nebo složku** :  
     1. Zadejte **cestu ke složce** jako **adfblobconnector/Output/{Year}/{Month}/{Day**}. Zadejte **kartu**.
-    1. V **roce**vyberte **RRRR**.
-    1. V **měsíci**potvrďte, že je nastavené na **mm**.
-    1. Pro daný **den**potvrďte, že je nastavené na **DD**.
+    1. V **roce** vyberte **RRRR**.
+    1. V **měsíci** potvrďte, že je nastavené na **mm**.
+    1. Pro daný **den** potvrďte, že je nastavené na **DD**.
     1. Potvrďte, že **typ komprese** je nastavený na **none**.
     1. Ověřte, že je **chování při kopírování** nastaveno na **Sloučit soubory**. Pokud výstupní soubor se stejným názvem již existuje, nový obsah se přidá do stejného souboru na konci.
     1. Klikněte na **Next** (Další).

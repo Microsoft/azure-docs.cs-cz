@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: f49ae5139dc92ec1448e5dea05be8c8c216ef91e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361343"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002659"
 ---
 # <a name="how-to-use-perfinsights-in-azure"></a>Jak používat PerfInsights v Azure
 
@@ -123,10 +123,10 @@ Shromažďují se informace o virtuálním počítači s Windows, discích nebo 
 | Xperf trasování                       |                            |                                    |                          |                      | Yes                  |
 | Trasování StorPort                    |                            |                                    |                          |                      | Yes                  |
 | Trasování sítě                     |                            |                                    |                          | Yes                  | Yes                  |
-| Sledování srovnávacích testů DiskSpd * * *       |                            | Yes                                |                          |                      |                      |
+| Sledování srovnávacích testů DiskSpd * * _       |                            | Yes                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
-### <a name="performance-diagnostics-trace-"></a>Trasování diagnostiky výkonu (*)
+### <a name="performance-diagnostics-trace-_"></a>Trasování diagnostiky výkonu (_)
 
 Spouští modul založený na pravidlech na pozadí ke shromažďování dat a diagnostice probíhajících problémů s výkonem. V současné době jsou podporovány následující pravidla:
 
@@ -154,7 +154,7 @@ Shromažďuje následující čítače výkonu:
 #### <a name="for-azure-files"></a>Pro soubory Azure
 \SMB sdílené složky klienta
 
-### <a name="diskspd-benchmark-trace-"></a>Sledování srovnávacích testů DiskSpd (* * *)
+### <a name="diskspd-benchmark-trace-_"></a>Sledování srovnávacích testů DiskSpd (* * _)
 DiskSpd vstupně-výstupních úloh testů (disk s operačním systémem [zápis] a jednotky fondu [čtení/zápis])
 
 ## <a name="run-the-perfinsights-tool-on-your-vm"></a>Spuštění nástroje PerfInsights na VIRTUÁLNÍm počítači
@@ -165,8 +165,7 @@ DiskSpd vstupně-výstupních úloh testů (disk s operačním systémem [zápis
 
 -  Tento nástroj se musí spustit na virtuálním počítači, který má problém s výkonem. 
 
--  Podporovány jsou následující operační systémy:
-   * Windows Server 2019
+-  Podporovány jsou následující operační systémy: _ Windows Server 2019
    * Windows Server 2016
    * Windows Server 2012 R2
    * Windows Server 2012
@@ -198,7 +197,7 @@ Chcete-li spustit nástroj PerfInsights, postupujte podle následujících krok�
 
 1. Stáhněte si [PerfInsights.zip](https://aka.ms/perfinsightsdownload).
 
-2. Odblokuje soubor PerfInsights.zip. Provedete to tak, že kliknete pravým tlačítkem na soubor PerfInsights.zip a vyberete **vlastnosti**. Na kartě **Obecné** vyberte **odblokovat**a pak vyberte **OK**. Tím se zajistí, že se nástroj spustí bez dalších výzev zabezpečení.  
+2. Odblokuje soubor PerfInsights.zip. Provedete to tak, že kliknete pravým tlačítkem na soubor PerfInsights.zip a vyberete **vlastnosti**. Na kartě **Obecné** vyberte **odblokovat** a pak vyberte **OK**. Tím se zajistí, že se nástroj spustí bez dalších výzev zabezpečení.  
 
     ![Snímek obrazovky s vlastnostmi PerfInsights se zvýrazněným odblokem](media/how-to-use-perfInsights/pi-unlock-file.png)
 
@@ -255,7 +254,7 @@ Po dokončení trasování nebo operací se ve stejné složce jako PerfInsights
 
 ## <a name="review-the-diagnostics-report"></a>Kontrola diagnostické sestavy
 
-V **PerformanceDiagnostics souboru \_ RRRR-MM- \_hh-mm-ss-fff.zipDD ** můžete najít sestavu HTML, která podrobně popisuje závěry PerfInsights. Chcete-li sestavu zkontrolovat, rozbalte soubor **PerformanceDiagnostics \_ yyyy-MM-DD \_hh-mm-ss-fff.zip** a pak otevřete soubor **PerfInsights Report.html** .
+V **PerformanceDiagnostics souboru \_ RRRR-MM- \_hh-mm-ss-fff.zipDD** můžete najít sestavu HTML, která podrobně popisuje závěry PerfInsights. Chcete-li sestavu zkontrolovat, rozbalte soubor **PerformanceDiagnostics \_ yyyy-MM-DD \_hh-mm-ss-fff.zip** a pak otevřete soubor **PerfInsights Report.html** .
 
 Vyberte kartu **zjištění** .
 
@@ -320,4 +319,4 @@ Na následujícím snímku obrazovky se zobrazí zpráva podobná tomu, co se v�
 
 Postupujte podle pokynů ve zprávě pro přístup k pracovnímu prostoru přenosu souborů. Pro zvýšení zabezpečení je nutné při prvním použití změnit heslo.
 
-Po přihlášení se zobrazí dialogové okno pro nahrání souboru ** \_ \_hh-mm-ss-fff.ziprrrr-mm-dd ** , který byl shromážděn nástrojem PerfInsights.
+Po přihlášení se zobrazí dialogové okno pro nahrání souboru **\_ \_hh-mm-ss-fff.ziprrrr-mm-dd** , který byl shromážděn nástrojem PerfInsights.

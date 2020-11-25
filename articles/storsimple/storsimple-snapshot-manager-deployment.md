@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 5f94564c5e769d3cf0e0abbe92a309a1ee2117a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055074"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003867"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>Nasazení modulu snap-in StorSimple Snapshot Manager MMC
 
@@ -151,13 +151,13 @@ Pokud upgradujete nebo přeinstalujete StorSimple Snapshot Manager, postupujte p
 K odinstalaci StorSimple Snapshot Manager použijte následující postup.
 
 #### <a name="to-uninstall-storsimple-snapshot-manager"></a>Odinstalace StorSimple Snapshot Manager
-1. V hostitelském počítači otevřete **Ovládací panely**, klikněte na **programy**a potom klikněte na **programy a funkce**.
+1. V hostitelském počítači otevřete **Ovládací panely**, klikněte na **programy** a potom klikněte na **programy a funkce**.
 2. V levém podokně klikněte na možnost **Odinstalovat nebo změnit program**.
-3. Pravým tlačítkem myši klikněte na **StorSimple Snapshot Manager**a pak klikněte na **odinstalovat**.
-4. Spustí se instalační program StorSimple Snapshot Manager. Klikněte na **Upravit nastavení**a pak klikněte na **odinstalovat**.
+3. Pravým tlačítkem myši klikněte na **StorSimple Snapshot Manager** a pak klikněte na **odinstalovat**.
+4. Spustí se instalační program StorSimple Snapshot Manager. Klikněte na **Upravit nastavení** a pak klikněte na **odinstalovat**.
    
    > [!NOTE]
-   > Pokud na pozadí běží nějaké procesy MMC, například StorSimple Snapshot Manager nebo Správa disků, odinstalace se nezdaří a zobrazí se zpráva, abyste zavřeli všechny instance konzoly MMC předtím, než se pokusíte odinstalovat program. Vyberte možnost **automaticky ukončit aplikace a pokusit se o jejich restartování po dokončení instalace**a pak klikněte na tlačítko **OK**.
+   > Pokud na pozadí běží nějaké procesy MMC, například StorSimple Snapshot Manager nebo Správa disků, odinstalace se nezdaří a zobrazí se zpráva, abyste zavřeli všechny instance konzoly MMC předtím, než se pokusíte odinstalovat program. Vyberte možnost **automaticky ukončit aplikace a pokusit se o jejich restartování po dokončení instalace** a pak klikněte na tlačítko **OK**.
    > 
    > 
 5. Po dokončení procesu odinstalace se zobrazí zpráva o **úspěšné instalaci** . Klikněte na **Zavřít**.
@@ -171,7 +171,7 @@ Pomocí následujících kroků můžete vytvořit a uložit kopii databáze Sto
    1. Spusťte Správce serveru.
    2. Na řídicím panelu Správce serveru v nabídce **nástroje** vyberte **služby**.
    3. Na stránce **služby** vyberte **Služba Microsoft StorSimple Management Service**.
-   4. V pravém podokně v části **Služba správy Microsoft StorSimple**klikněte na **Zastavit službu**.
+   4. V pravém podokně v části **Služba správy Microsoft StorSimple** klikněte na **Zastavit službu**.
       
         ![Zastavení služby StorSimple Device Manager](./media/storsimple-snapshot-manager-deployment/HCS_SSM_stop_service.png)
 2. Přejít na C:\ProgramData\Microsoft\StorSimple\BACatalog. 
@@ -186,7 +186,7 @@ Pomocí následujících kroků můžete vytvořit a uložit kopii databáze Sto
    
    1. Na řídicím panelu Správce serveru v nabídce **nástroje** vyberte **služby**.
    2. Na stránce **služby** vyberte **službu Microsoft StorSimple Management Service**.
-   3. V pravém podokně v části **Služba správy Microsoft StorSimple**klikněte na **restartovat službu**. 
+   3. V pravém podokně v části **Služba správy Microsoft StorSimple** klikněte na **restartovat službu**. 
 
 ### <a name="step-3-reinstall-storsimple-snapshot-manager-and-restore-the-database"></a>Krok 3: Přeinstalujte StorSimple Snapshot Manager a obnovte databázi.
 Pokud chcete přeinstalovat StorSimple Snapshot Manager, postupujte podle pokynů v části [instalace nového StorSimple Snapshot Manager](#install-a-new-storsimple-snapshot-manager). Potom pomocí následujícího postupu obnovte databázi StorSimple Snapshot Manager.
@@ -197,7 +197,7 @@ Pokud chcete přeinstalovat StorSimple Snapshot Manager, postupujte podle pokyn�
    1. Spusťte Správce serveru.
    2. Na řídicím panelu Správce serveru v nabídce **nástroje** vyberte **služby**.
    3. Na stránce **služby** vyberte **Služba Microsoft StorSimple Management Service**.
-   4. V pravém podokně v části **Služba správy Microsoft StorSimple**klikněte na **Zastavit službu**.
+   4. V pravém podokně v části **Služba správy Microsoft StorSimple** klikněte na **Zastavit službu**.
 2. Přejít na C:\ProgramData\Microsoft\StorSimple\BACatalog.
    
    > [!NOTE]
@@ -209,7 +209,7 @@ Pokud chcete přeinstalovat StorSimple Snapshot Manager, postupujte podle pokyn�
    
    1. Na řídicím panelu Správce serveru v nabídce **nástroje** vyberte **služby**.
    2. Na stránce **služby** vyberte **Služba Microsoft StorSimple Management Service**.
-   3. V pravém podokně v části **Služba správy Microsoft StorSimple**klikněte na **restartovat službu**.
+   3. V pravém podokně v části **Služba správy Microsoft StorSimple** klikněte na **restartovat službu**.
 
 ## <a name="next-steps"></a>Další kroky
 * Pokud chcete získat další informace o Snapshot Manager StorSimple, podívejte se na to, [co je StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md).

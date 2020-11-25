@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 48078ed06e36a33b10ee2d761a249159d14c6220
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e2d74519b9adf9a74e5af180a3da28918a9a8dab
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444499"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96001877"
 ---
 # <a name="blob-versioning"></a>Správa verzí objektů BLOB
 
@@ -128,7 +128,7 @@ Následující diagram ukazuje, jak se mění objekt BLOB po zakázání správy
 
 ## <a name="blob-versioning-and-soft-delete"></a>Správa verzí a obnovitelné odstranění objektů BLOB
 
-Správa verzí objektů BLOB a měkké odstranění objektů BLOB společně poskytují optimální ochranu dat. Pokud povolíte obnovitelné odstranění, určíte, jak dlouho Azure Storage by měl zachovat objekt BLOB s odstraněnou příznakem. Jakákoli dočasná Odstraněná verze objektu BLOB zůstane v systému a může být v rámci doby uchování obnovitelného odstranění neodstraní. Další informace o obnovitelném odstranění objektů BLOB najdete v tématu [obnovitelné odstranění pro objekty blob Azure Storage](storage-blob-soft-delete.md).
+Správa verzí objektů BLOB a měkké odstranění objektů BLOB společně poskytují optimální ochranu dat. Pokud povolíte obnovitelné odstranění, určíte, jak dlouho Azure Storage by měl zachovat objekt BLOB s odstraněnou příznakem. Jakákoli dočasná Odstraněná verze objektu BLOB zůstane v systému a může být v rámci doby uchování obnovitelného odstranění neodstraní. Další informace o obnovitelném odstranění objektů BLOB najdete v tématu [obnovitelné odstranění pro objekty blob Azure Storage](./soft-delete-blob-overview.md).
 
 ### <a name="deleting-a-blob-or-version"></a>Odstranění objektu BLOB nebo verze
 
@@ -187,7 +187,7 @@ Správa verzí objektů BLOB je navržená tak, aby chránila vaše data před n
 
 Následující tabulka uvádí, které akce Azure RBAC podporují odstranění objektu BLOB nebo verze objektu BLOB.
 
-| Popis | Operace Blob service | Vyžaduje se akce s daty služby Azure RBAC. | Podpora integrované role Azure |
+| Description | Operace Blob service | Vyžaduje se akce s daty služby Azure RBAC. | Podpora integrované role Azure |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | Odstraňuje se aktuální verze objektu BLOB. | Odstranění objektu blob | **Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/DELETE** | Přispěvatel dat v objektech blob služby Storage |
 | Odstraňuje se verze | Odstranění objektu blob | **Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/deleteBlobVersion/Action** | Vlastník dat v objektech blob služby Storage |
@@ -297,4 +297,4 @@ Následující tabulka popisuje chování fakturace u objektu blob, který je po
 
 - [Povolení a správa verzí objektů BLOB](versioning-enable.md)
 - [Vytvoření snímku objektu BLOB](/rest/api/storageservices/creating-a-snapshot-of-a-blob)
-- [Obnovitelné odstranění pro objekty blob Azure Storage](storage-blob-soft-delete.md)
+- [Obnovitelné odstranění pro objekty blob Azure Storage](./soft-delete-blob-overview.md)

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: e015c6761b920ef37af2bbfd67ced5fc3218d532
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91290683"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002234"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurace akcelerátoru řešení propojené továrny
 
@@ -88,7 +88,7 @@ Následující fragment kódu ukazuje osnovu `ContosoTopologyDescription.json` k
 }
 ```
 
-Společné vlastnosti  `<global_configuration>` ,, a `<factory_configuration>` `<production_line_configuration>` `<station_configuration>` jsou:
+Společné vlastnosti `<global_configuration>` ,, a `<factory_configuration>` `<production_line_configuration>` `<station_configuration>` jsou:
 
 * **Název** (typ řetězce)
 
@@ -265,10 +265,10 @@ Všechny vlastnosti použité v konfiguračním souboru lze seskupit do různýc
 
 ### <a name="visual-appearance"></a>Vzhled vizuálu
 
-Vlastnosti v této kategorii definují vizuální vzhled řídicího panelu propojené továrny. Příklady:
+Vlastnosti v této kategorii definují vizuální vzhled řídicího panelu propojené továrny. Mezi příklady patří:
 
 * Název
-* Popis
+* Description
 * Image
 * Umístění
 * Jednotky
@@ -337,7 +337,7 @@ Tato konfigurace umožňuje dotazování na hodnoty telemetrie tohoto uzlu pomoc
 * Průměr všech hodnot.
 * Součet všech hodnot pro všechny jedinečné páry **OpcUri** (**ApplicationUri**), **NodeId** v daném časovém rozpětí.
 
-Jedna z vlastností **NumberOfManufactureredProducts** uzlu znamená, že se zvyšuje jenom. K výpočtu počtu produktů vyrobených v rámci TimeSpan používá propojená továrna SubMaxMin **operačního** **SubMaxMin**systému. Výpočet načte minimální hodnotu na začátku TimeSpan a maximální hodnotu na konci časového rozpětí.
+Jedna z vlastností **NumberOfManufactureredProducts** uzlu znamená, že se zvyšuje jenom. K výpočtu počtu produktů vyrobených v rámci TimeSpan používá propojená továrna SubMaxMin **operačního** **SubMaxMin** systému. Výpočet načte minimální hodnotu na začátku TimeSpan a maximální hodnotu na konci časového rozpětí.
 
 **Operační kód** v konfiguraci konfiguruje logiku výpočtu pro výpočet výsledku rozdílu mezi maximální a minimální hodnotou. Tyto výsledky se pak sčítají až do kořenové (globální) úrovně a zobrazují se na řídicím panelu.
 

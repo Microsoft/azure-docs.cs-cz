@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/06/2020
 ms.author: genli
 ms.openlocfilehash: 456aa225fa8eed47ca794c54e61b77a30c93fa9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85983215"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002608"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Instalace agenta virtuálního počítače Azure v offline režimu 
 
@@ -49,7 +49,7 @@ Pomocí následujících kroků nainstalujete agenta virtuálního počítače d
 
 3.  Spusťte **Editor registru** (regedit.exe).
 
-4.  Vyberte **HKEY_LOCAL_MACHINE** klíč. V nabídce vyberte **File**  >  **podregistr Loading**File:
+4.  Vyberte **HKEY_LOCAL_MACHINE** klíč. V nabídce vyberte **File**  >  **podregistr Loading** File:
 
     ![Načtení podregistru](./media/install-vm-agent-offline/load-hive.png)
 

@@ -7,11 +7,11 @@ ms.date: 2/28/2018
 ms.author: gwallace
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 6df434610a8f595ecca7f16e31f8a302373b02f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012649"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001860"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Přidat vlastní sestavy o stavu Service Fabric
 Azure Service Fabric zavádí [model stavu](service-fabric-health-introduction.md) , který je navržený tak, aby na konkrétní entity mohl označovat stav není v pořádku a podmínky použití aplikace. Model stavu používá **sestavy stavu** (systémové součásti a sledovací zařízení). Cílem je snadno a rychle diagnostikovat a opravit. Zapisovače služeb se musí představit předem o stavu. Všechny podmínky, které mohou ovlivnit stav, by měly být hlášeny, zejména v případě, že mohou přispět k potížím s příznakem blízko ke kořenu. Informace o stavu mohou ušetřit čas a úsilí při ladění a vyšetřování. Užitečnost je obzvláště jasné, když je služba v cloudu (soukromá nebo Azure) v provozu.
@@ -153,7 +153,7 @@ Pojďme se podívat na příklad, který přináší výše popsané body. Vezm�
 
 Další podmínkou, kterou lze monitorovat, je čas spuštění úlohy. Hlavní distribuuje úlohy do sekundárních na základě typu úkolu. V závislosti na návrhu může hlavní tabulka dotazovat se na sekundární stav úlohy. Může také počkat na to, že sekundárnímu odeslání signalizuje potvrzení. V druhém případě je potřeba dbát na detekci situací, kdy dojde ke ztrátě sekundárních kostek nebo zpráv. Jednou z možností je, aby hlavní server odesílal požadavek příkazu pro odeslání na stejnou sekundární hodnotu, která odesílá zpět svůj stav. Pokud se neobdrží žádný stav, hlavní server to považuje za selhání a znovu naplánuje úlohu. Toto chování předpokládá, že se úkoly idempotentní.
 
-Monitorovaná podmínka se dá přeložit jako upozornění, pokud se úloha v určitou dobu neprovádí **(například**10 minut). Pokud úloha není dokončená v čase (**T2**, například 20 minut), monitorovaná podmínka se dá přeložit jako chyba. Vytváření sestav je možné provést několika způsoby:
+Monitorovaná podmínka se dá přeložit jako upozornění, pokud se úloha v určitou dobu neprovádí **(například** 10 minut). Pokud úloha není dokončená v čase (**T2**, například 20 minut), monitorovaná podmínka se dá přeložit jako chyba. Vytváření sestav je možné provést několika způsoby:
 
 * Hlavní primární replika sám o sobě sestavuje pravidelně. U všech čekajících úloh ve frontě můžete mít jednu vlastnost. Pokud nejméně jeden úkol trvá déle, je stav sestavy ve vlastnosti **PendingTasks** upozornění nebo chyba. Pokud neexistují žádné úlohy, které čekají na zpracování nebo jsou spuštěné všechny úlohy, stav sestavy je OK. Úkoly jsou trvalé. Pokud primární primární postup, může nově povýšená primární aplikace nadále správně nahlásit.
 * Jiný proces sledovacího procesu (v cloudu nebo externí) kontroluje úlohy (mimo jiné na základě požadovaného výsledku úkolu), aby bylo možné zjistit, zda jsou dokončeny. Pokud nerespektují prahové hodnoty, pošle se sestava do hlavní služby. Do každé úlohy, která zahrnuje identifikátor úkolu, jako je například **PendingTask + taskid**, se pošle zpráva. Sestavy by se měly odesílat jenom v případě, že stav není v pořádku. Nastavte čas na živé až několik minut a označte sestavy, které se mají odebrat, když vyprší jejich platnost, aby se zajistilo vyčištění.
@@ -207,7 +207,7 @@ public static void SendReport(object obj)
 ```
 
 ### <a name="powershell"></a>PowerShell
-Odesílání sestav o stavu pomocí **Send-ServiceFabric*EntityType*HealthReport**.
+Odesílání sestav o stavu pomocí **Send-ServiceFabric *EntityType* HealthReport**.
 
 Následující příklad ukazuje pravidelné generování sestav o hodnotách procesoru v uzlu. Sestavy by se měly posílat každých 30 sekund a jejich doba je živá po dobu dvou minut. Pokud vyprší, má zpravodaj problémy, takže se uzel vyhodnocuje při chybě. Pokud je procesor nad prahovou hodnotou, má sestava stav varování. Pokud procesor zůstává nad prahovou hodnotou pro více než nakonfigurovaný čas, nahlásí se jako chyba. V opačném případě zpravodaj odešle stav OK.
 

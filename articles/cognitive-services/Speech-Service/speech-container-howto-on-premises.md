@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: aahi
-ms.openlocfilehash: 277a3c1c53564d7c5dff6a87381680a7f41606de
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c3791a9049a3eab3ddd6fc70073629c38830dbc7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131594"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96002260"
 ---
 # <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>Použití kontejnerů služby Speech s Kubernetes a Helm
 
 Jednou z možností správy vašich místních kontejnerů řeči je použití Kubernetes a Helm. Když použijete Kubernetes a Helm k definování imagí na kontejnerech pro text a převod textu na řeč, vytvoříme balíček Kubernetes. Tento balíček se nasadí do místního clusteru Kubernetes. Nakonec se podíváme, jak otestovat nasazené služby a různé možnosti konfigurace. Další informace o spouštění kontejnerů Docker bez orchestrace Kubernetes najdete v tématu [instalace a spuštění kontejnerů služby Speech](speech-container-howto.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před použitím kontejnerů řeči v místním prostředí použijte následující požadavky:
 
@@ -31,7 +31,7 @@ Před použitím kontejnerů řeči v místním prostředí použijte následuj�
 | Přístup k Container Registry | Aby Kubernetes mohl načíst image Docker do clusteru, bude potřebovat přístup k registru kontejneru. |
 | Kubernetes CLI | [KUBERNETES CLI][kubernetes-cli] se vyžaduje pro správu sdílených přihlašovacích údajů z registru kontejneru. Kubernetes je také potřeba před Helm, což je správce balíčků Kubernetes. |
 | Helm CLI | Nainstalujte rozhraní příkazového [řádku Helm][helm-install], které se používá k instalaci grafu Helm (definice balíčku kontejneru). |
-|Prostředek řeči |Aby bylo možné tyto kontejnery použít, je nutné mít následující:<br><br>Prostředek Azure _Speech_ pro získání přidruženého fakturačního klíče a identifikátoru URI koncového bodu faktury Obě hodnoty jsou k dispozici na stránkách přehled a klíče Azure Portal **řeči** a jsou požadovány ke spuštění kontejneru.<br><br>**{API_KEY}** : klíč prostředku<br><br>**{ENDPOINT_URI}** : příklad identifikátoru URI koncového bodu je: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+|Prostředek řeči |Aby bylo možné tyto kontejnery použít, je nutné mít následující:<br><br>Prostředek Azure _Speech_ pro získání přidruženého fakturačního klíče a identifikátoru URI koncového bodu faktury Obě hodnoty jsou k dispozici na stránkách přehled a klíče Azure Portal **řeči** a jsou požadovány ke spuštění kontejneru.<br><br>**{API_KEY}**: klíč prostředku<br><br>**{ENDPOINT_URI}**: příklad identifikátoru URI koncového bodu je: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 ## <a name="the-recommended-host-computer-configuration"></a>Doporučená konfigurace hostitelského počítače
 
@@ -48,7 +48,7 @@ V hostitelském počítači se očekává, že bude dostupný cluster Kubernetes
 
 ## <a name="configure-helm-chart-values-for-deployment"></a>Konfigurace hodnot grafu Helm pro nasazení
 
-Navštivte [Centrum Microsoft Helme][ms-helm-hub] , kde najdete všechny veřejně dostupné grafy Helm, které nabízí Microsoft. V centru Microsoft Helm najdete **místní graf Cognitive Services řeč** . **Místní Cognitive Services řeč** je graf, který nainstalujeme, ale nejdřív je potřeba vytvořit `config-values.yaml` soubor s explicitními konfiguracemi. Pojďme začít přidáním úložiště Microsoftu do naší instance Helm.
+Navštivte [Centrum Microsoft Helme][ms-helm-hub] , kde najdete všechny veřejně dostupné grafy Helm, které nabízí Microsoft. V centru Microsoft Helm najdete **místní graf Cognitive Services řeč**. **Místní Cognitive Services řeč** je graf, který nainstalujeme, ale nejdřív je potřeba vytvořit `config-values.yaml` soubor s explicitními konfiguracemi. Pojďme začít přidáním úložiště Microsoftu do naší instance Helm.
 
 ```console
 helm repo add microsoft https://microsoft.github.io/charts/repo
@@ -189,7 +189,7 @@ horizontalpodautoscaler.autoscaling/text-to-speech-autoscaler   Deployment/text-
 
 ### <a name="verify-helm-deployment-with-helm-tests"></a>Ověření nasazení Helm pomocí testů Helm
 
-Nainstalované grafy Helm definují *testy Helm* , které slouží jako pohodlí pro ověřování. Tyto testy ověřují připravenost služby. Pokud chcete ověřit služby převodu **řeči na text** i text **na řeč** , spusťte příkaz [Helm test][helm-test] .
+Nainstalované grafy Helm definují *testy Helm*, které slouží jako pohodlí pro ověřování. Tyto testy ověřují připravenost služby. Pokud chcete ověřit služby převodu **řeči na text** i text **na řeč** , spusťte příkaz [Helm test][helm-test] .
 
 ```console
 helm test onprem-speech
@@ -229,7 +229,7 @@ Další podrobnosti o instalaci aplikací pomocí Helm ve službě Azure Kuberne
 <!-- LINKS - external -->
 [free-azure-account]: https://azure.microsoft.com/free
 [git-download]: https://git-scm.com/downloads
-[azure-cli]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [docker-engine]: https://www.docker.com/products/docker-engine
 [kubernetes-cli]: https://kubernetes.io/docs/tasks/tools/install-kubectl
 [helm-install]: https://helm.sh/docs/intro/install/

@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
 ms.openlocfilehash: e7d6a67f5322c5bb640430f66ccb0917f6faada1
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339780"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003493"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Připojení k Azure Cosmos DB pomocí nástrojů BI Analytics s ovladačem ODBC
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -59,17 +59,17 @@ Pojďme začít s ovladačem ODBC.
 1. V okně **Azure Cosmos DB ODBC ovladače SDN nastavení** zadejte následující informace: 
 
     :::image type="content" source="./media/odbc-driver/odbc-driver-dsn-setup.png" alt-text="Azure Cosmos DB okno nastavení DSN ovladače ODBC":::
-    - **Název zdroje dat** : vlastní popisný název DSN ODBC. Tento název je jedinečný pro váš Azure Cosmos DB účet, proto ho pojmenujte, pokud máte více účtů.
-    - **Popis** : stručný popis zdroje dat.
-    - **Host** : identifikátor URI pro váš účet Azure Cosmos DB. To můžete načíst ze stránky Azure Cosmos DB klíče v Azure Portal, jak je znázorněno na následujícím snímku obrazovky. 
-    - **Přístupový klíč** : primární nebo sekundární klíč, který je jen pro čtení a zápis, nebo jen pro čtení ze stránky Azure Cosmos DB klíče v Azure Portal, jak je znázorněno na následujícím snímku obrazovky. Pokud se název DSN používá pro zpracování dat a vytváření sestav jen pro čtení, doporučujeme použít klíč jen pro čtení.
+    - **Název zdroje dat**: vlastní popisný název DSN ODBC. Tento název je jedinečný pro váš Azure Cosmos DB účet, proto ho pojmenujte, pokud máte více účtů.
+    - **Popis**: stručný popis zdroje dat.
+    - **Host**: identifikátor URI pro váš účet Azure Cosmos DB. To můžete načíst ze stránky Azure Cosmos DB klíče v Azure Portal, jak je znázorněno na následujícím snímku obrazovky. 
+    - **Přístupový klíč**: primární nebo sekundární klíč, který je jen pro čtení a zápis, nebo jen pro čtení ze stránky Azure Cosmos DB klíče v Azure Portal, jak je znázorněno na následujícím snímku obrazovky. Pokud se název DSN používá pro zpracování dat a vytváření sestav jen pro čtení, doporučujeme použít klíč jen pro čtení.
     :::image type="content" source="./media/odbc-driver/odbc-cosmos-account-keys.png" alt-text="Stránka Azure Cosmos DB klíče":::
-    - **Šifrovat přístupový klíč pro** : vyberte nejlepší volbu na základě uživatelů tohoto počítače. 
+    - **Šifrovat přístupový klíč pro**: vyberte nejlepší volbu na základě uživatelů tohoto počítače. 
     
 1. Klikněte na tlačítko **test** a ujistěte se, že se můžete připojit k účtu Azure Cosmos DB. 
 
 1.  Klikněte na **Rozšířené možnosti** a nastavte následující hodnoty:
-    *  **REST API verze** : vyberte [verzi REST API](/rest/api/cosmos-db/) pro vaše operace. Výchozí hodnota je 2015-12-16. Pokud máte kontejnery s [velkými klíči oddílů](large-partition-keys.md) a vyžadujete REST API verze 2018-12-31:
+    *  **REST API verze**: vyberte [verzi REST API](/rest/api/cosmos-db/) pro vaše operace. Výchozí hodnota je 2015-12-16. Pokud máte kontejnery s [velkými klíči oddílů](large-partition-keys.md) a vyžadujete REST API verze 2018-12-31:
         - Zadejte **2018-12-31** pro REST API verzi.
         - V nabídce **Start** zadejte příkaz regedit a vyhledejte a otevřete aplikaci **Editor registru** .
         - V editoru registru přejděte na cestu: **Computer\HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC.INI**
@@ -79,11 +79,11 @@ Pojďme začít s ovladačem ODBC.
             - Název hodnoty: **IgnoreSessionToken**
             - Data hodnoty: **1** 
              :::image type="content" source="./media/odbc-driver/cosmos-odbc-edit-registry.png" alt-text="nastavení editoru registru":::
-    - **Konzistence dotazů** : vyberte [úroveň konzistence](consistency-levels.md) pro vaše operace. Výchozí hodnota je Session.
-    - **Počet opakování** : zadejte počet opakování operace, pokud se počáteční žádost nedokončila z důvodu omezení rychlosti služby.
-    - **Soubor schématu** : tady máte několik možností.
+    - **Konzistence dotazů**: vyberte [úroveň konzistence](consistency-levels.md) pro vaše operace. Výchozí hodnota je Session.
+    - **Počet opakování**: zadejte počet opakování operace, pokud se počáteční žádost nedokončila z důvodu omezení rychlosti služby.
+    - **Soubor schématu**: tady máte několik možností.
         - Ve výchozím nastavení zachová tuto položku jako (prázdná), ovladač prohledá první stránku dat pro všechny kontejnery a určí schéma každého kontejneru. Toto je známé jako mapování kontejneru. Bez definovaného souboru schématu musí ovladač provést kontrolu každé relace ovladače a může mít za následek vyšší dobu spuštění aplikace, která používá DSN. Doporučujeme vždy přidružit soubor schématu pro DSN.
-        - Pokud už máte soubor schématu (Možná ho vytvoříte pomocí editoru schémat), můžete kliknout na **Procházet** , přejít k souboru, kliknout na **Uložit** a pak na **OK**.
+        - Pokud už máte soubor schématu (Možná ho vytvoříte pomocí editoru schémat), můžete kliknout na **Procházet**, přejít k souboru, kliknout na **Uložit** a pak na **OK**.
         - Pokud chcete vytvořit nové schéma, klikněte na tlačítko **OK** a potom v hlavním okně klikněte na **editor schémat** . Pak přejděte k informacím editoru schématu. Po vytvoření nového souboru schématu nezapomeňte přejít zpět do okna **Upřesnit možnosti** a zahrnout nově vytvořený soubor schématu.
 
 1. Po dokončení a zavření okna **Azure Cosmos DB nastavení DSN ovladače ODBC** se nový uživatel DSN přidá na kartu uživatelské DSN.
@@ -203,7 +203,7 @@ Chcete-li vytvořit zobrazení pro data, v okně **editor schémat** klikněte v
 
 Pak v okně **definice zobrazení** proveďte následující:
 
-1. Klikněte na **Nový** , zadejte název zobrazení, třeba EmployeesfromSeattleView, a pak klikněte na **OK**.
+1. Klikněte na **Nový**, zadejte název zobrazení, třeba EmployeesfromSeattleView, a pak klikněte na **OK**.
 
 1. V okně **Upravit zobrazení** zadejte Azure Cosmos DB dotaz. Musí se jednat o [Azure Cosmos DB dotaz SQL](./sql-query-getting-started.md), například `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"` a pak klikněte na tlačítko **OK**.
 

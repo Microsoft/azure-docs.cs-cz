@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: dd0ed78c56e4d656a2ecee6395d831ed093e85b5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677370"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001605"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>Řešení potíží s FarmBeats
 
@@ -48,13 +48,13 @@ Kontaktujte nás s následujícími podrobnostmi:
 
     2. V části **Nastavení** na levé straně vyberte **nasazení** .
 
-    3. U každého nasazení, které **se zobrazí jako neúspěšné** , vyberte podrobnosti a Stáhněte si podrobnosti o nasazení. Umožňuje připojit tento soubor k e-mailu.
+    3. U každého nasazení, které **se zobrazí jako neúspěšné**, vyberte podrobnosti a Stáhněte si podrobnosti o nasazení. Umožňuje připojit tento soubor k e-mailu.
 
 ## <a name="sensor-telemetry"></a>Telemetrie senzorů
 
 ### <a name="cant-view-telemetry-data"></a>Nejde zobrazit data telemetrie.
 
-**Příznak** : zařízení nebo senzory se nasazují a propojení FarmBeats s partnerem zařízení, ale data telemetrie nemůžete získat nebo zobrazit na FarmBeats.
+**Příznak**: zařízení nebo senzory se nasazují a propojení FarmBeats s partnerem zařízení, ale data telemetrie nemůžete získat nebo zobrazit na FarmBeats.
 
 **Nápravná opatření**
 
@@ -62,14 +62,14 @@ Kontaktujte nás s následujícími podrobnostmi:
 2. Vyberte obor názvů **centra událostí** ("senzor-partner-eh-Namespace-XXXX"), klikněte na Event Hubs a pak zkontrolujte počet příchozích zpráv v centru událostí, který je přiřazený k partnerovi.
 3. Proveďte jednu z následujících akcí:
 
-   - Pokud neexistují *žádné příchozí zprávy* , obraťte se na partnera zařízení.  
-   - Pokud jsou *příchozí zprávy* , kontaktujte nás s protokoly DataHub a akcelerátory a zachycenou telemetrie.
+   - Pokud neexistují *žádné příchozí zprávy*, obraťte se na partnera zařízení.  
+   - Pokud jsou *příchozí zprávy*, kontaktujte nás s protokoly DataHub a akcelerátory a zachycenou telemetrie.
 
 Pokud chcete pochopit, jak stahovat protokoly, přečtěte si část [shromáždění protokolů ručně](#collect-logs-manually) .  
 
 ### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Po ingestování historických/streamových dat ze senzorů nejde zobrazit data telemetrie.
 
-**Příznak** : zařízení nebo senzory se nasazují a vytvořili jste zařízení/senzory na FarmBeats a ingestovaná telemetrie na EventHub, ale data telemetrie nemůžete získat nebo zobrazit na FarmBeats.
+**Příznak**: zařízení nebo senzory se nasazují a vytvořili jste zařízení/senzory na FarmBeats a ingestovaná telemetrie na EventHub, ale data telemetrie nemůžete získat nebo zobrazit na FarmBeats.
 
 **Nápravná opatření**
 
@@ -105,19 +105,19 @@ Pokud chcete pochopit, jak stahovat protokoly, přečtěte si část [shromážd
 **Nápravná opatření**
 
 1. V DataHub Swagger navštivte rozhraní API partnera.
-2. Vyberte **Get**  >  **Try** on  >  **Execute** .
+2. Vyberte **Get**  >  **Try** on  >  **Execute**.
 
 > [!NOTE]
 > ID partnera, se kterým se zajímá partnerka snímače.
 
-3. Vraťte se do partnerského rozhraní API a vyberte **získat/ \<ID>** .
-4. Zadejte ID partnera z kroku 3 a pak vyberte **provést** .
+3. Vraťte se do partnerského rozhraní API a vyberte **získat/ \<ID>**.
+4. Zadejte ID partnera z kroku 3 a pak vyberte **provést**.
 
    Odpověď rozhraní API by měla mít Event Hubs připojovací řetězec.
 
 ### <a name="device-appears-offline"></a>Zařízení se zobrazuje v režimu offline.
 
-**Příznaky** : zařízení jsou nainstalována a propojení FarmBeats s partnerem zařízení. Zařízení jsou online a odesílají data telemetrie, ale jsou v režimu offline.
+**Příznaky**: zařízení jsou nainstalována a propojení FarmBeats s partnerem zařízení. Zařízení jsou online a odesílají data telemetrie, ale jsou v režimu offline.
 
 **Nápravná opatření** Interval hlášení není pro toto zařízení nakonfigurovaný. Chcete-li nastavit interval vytváření sestav, obraťte se na výrobce zařízení. 
 
@@ -125,19 +125,19 @@ Pokud chcete pochopit, jak stahovat protokoly, přečtěte si část [shromážd
 
 Při odstraňování zařízení se může zobrazit jeden z následujících běžných scénářů chyb:  
 
-**Zpráva** : na zařízení se odkazuje v senzorech: k zařízení je přidružen jeden nebo více senzorů. Odstraňte senzory a pak zařízení odstraňte. "  
+**Zpráva**: na zařízení se odkazuje v senzorech: k zařízení je přidružen jeden nebo více senzorů. Odstraňte senzory a pak zařízení odstraňte. "  
 
-**Význam** : zařízení je přidruženo k několika senzorům, které jsou nasazeny ve farmě.
+**Význam**: zařízení je přidruženo k několika senzorům, které jsou nasazeny ve farmě.
 
 **Nápravná opatření**  
 
 1. Odstraňte senzory, které jsou přidružené k zařízení prostřednictvím akcelerátoru.  
 2. Pokud chcete senzory přidružit k jinému zařízení, požádejte partnera zařízení, aby to provede.  
-3. Odstraňte zařízení pomocí `DELETE API` volání a nastavte parametr Force na *hodnotu true* .  
+3. Odstraňte zařízení pomocí `DELETE API` volání a nastavte parametr Force na *hodnotu true*.  
 
-**Zpráva** : na zařízení je odkazováno v zařízeních jako ParentDeviceId: k tomuto zařízení jsou přidružená aspoň jedno zařízení jako podřízená zařízení. Odstraňte je a pak toto zařízení odstraňte. "  
+**Zpráva**: na zařízení je odkazováno v zařízeních jako ParentDeviceId: k tomuto zařízení jsou přidružená aspoň jedno zařízení jako podřízená zařízení. Odstraňte je a pak toto zařízení odstraňte. "  
 
-To **znamená** , že k zařízení jsou přidružená jiná zařízení.  
+To **znamená**, že k zařízení jsou přidružená jiná zařízení.  
 
 **Nápravná opatření**
 
@@ -152,7 +152,7 @@ To **znamená** , že k zařízení jsou přidružená jiná zařízení.
 
 ### <a name="farmbeats-internal-error"></a>Vnitřní chyba FarmBeats
 
-**Zpráva** : "vnitřní chyba FarmBeats, další informace najdete v Průvodci odstraňováním potíží."
+**Zpráva**: "vnitřní chyba FarmBeats, další informace najdete v Průvodci odstraňováním potíží."
 
 **Nápravná opatření** Tento problém může být způsoben dočasným selháním v datovém kanálu. Vytvořte úlohu znovu. Pokud chyba přetrvává, kontaktujte nás s chybovou zprávou/protokoly.
 
@@ -160,15 +160,15 @@ To **znamená** , že k zařízení jsou přidružená jiná zařízení.
 
 ### <a name="access-control"></a>Řízení přístupu
 
-**Problém** : při přidávání přiřazení role se zobrazí chyba.
+**Problém**: při přidávání přiřazení role se zobrazí chyba.
 
-**Zpráva** : nebyla nalezena žádná vyhovující uživatelé.
+**Zpráva**: nebyla nalezena žádná vyhovující uživatelé.
 
 **Nápravná opatření** Ověřte ID e-mailu, ke kterému se pokoušíte přidat přiřazení role. ID e-mailu musí být přesná shoda ID, která je zaregistrovaná pro daného uživatele ve službě Active Directory. Pokud chyba přetrvává, kontaktujte nás s chybovou zprávou/protokoly.
 
 ### <a name="unable-to-log-in-to-accelerator"></a>Nepovedlo se přihlásit k akcelerátoru.
 
-**Zpráva** : "Chyba: nemáte oprávnění k volání služby. Požádejte správce o autorizaci. "
+**Zpráva**: "Chyba: nemáte oprávnění k volání služby. Požádejte správce o autorizaci. "
 
 **Nápravná opatření** Požádejte správce, aby vám povolil přístup k nasazení FarmBeats. To se dá udělat tak, že provedete příspěvek rozhraní RoleAssignment API nebo prostřednictvím Access Control v podokně **Nastavení** v akcelerátoru.  
 
@@ -178,13 +178,13 @@ Pokud jste už přístup k této chybě udělili a k této chybě došlo, zkuste
 
 ### <a name="accelerator-issues"></a>Problémy akcelerátoru  
 
-**Problém** : zobrazila se chyba akcelerátoru neurčité příčiny.
+**Problém**: zobrazila se chyba akcelerátoru neurčité příčiny.
 
-**Zpráva** : "Chyba: došlo k neznámé chybě."
+**Zpráva**: "Chyba: došlo k neznámé chybě."
 
 **Nápravná opatření** K této chybě dojde, pokud ponecháte stránku nečinné příliš dlouho. Aktualizujte stránku. Pokud chyba přetrvává, kontaktujte nás s chybovou zprávou/protokoly.
 
-**Problém** : akcelerátor FarmBeats nezobrazuje nejnovější verzi, i když jste provedli upgrade FarmBeatsDeployment.
+**Problém**: akcelerátor FarmBeats nezobrazuje nejnovější verzi, i když jste provedli upgrade FarmBeatsDeployment.
 
 **Nápravná opatření** K této chybě dochází z důvodu trvalosti pracovního procesu služby v prohlížeči. Postupujte následovně:
 
@@ -195,9 +195,9 @@ Pokud jste už přístup k této chybě udělili a k této chybě došlo, zkuste
 
 ### <a name="wrong-username-or-password"></a>Nesprávné uživatelské jméno nebo heslo
 
-**Zpráva o selhání úlohy** : pro přístup k tomuto prostředku je vyžadováno úplné ověření.
+**Zpráva o selhání úlohy**: pro přístup k tomuto prostředku je vyžadováno úplné ověření.
 
-**Nápravná opatření** : proveďte jednu z následujících akcí:
+**Nápravná opatření**: proveďte jednu z následujících akcí:
 
 - Pomocí následujících kroků aktualizujte FarmBeats se správným uživatelským jménem nebo heslem a zkuste úlohu zopakovat.
 
@@ -226,9 +226,9 @@ Pokud jste už přístup k této chybě udělili a k této chybě došlo, zkuste
 
 ### <a name="sentinel-hub-wrongurlor-site-not-accessible"></a>Ověřovací centrum: nesprávná adresa URL nebo web není přístupný
 
-**Zpráva o selhání úlohy** : "bohužel došlo k nějakému problému. Stránka, ke které jste se pokusili získat přístup, je (dočasně) nedostupná.
+**Zpráva o selhání úlohy**: "bohužel došlo k nějakému problému. Stránka, ke které jste se pokusili získat přístup, je (dočasně) nedostupná.
 
-**Nápravná opatření** :
+**Nápravná opatření**:
 
 1. Otevřete v prohlížeči [Sentinel](https://scihub.copernicus.eu/dhus/) a zjistěte, jestli je web přístupný.
 2. Pokud web není přístupný, zkontrolujte, jestli brána firewall, podniková síť nebo jiný blokující software nebrání přístupu k webu, a pak proveďte potřebné kroky, aby se povolila adresa URL ověřovacího připojení. 
@@ -236,9 +236,9 @@ Pokud jste už přístup k této chybě udělili a k této chybě došlo, zkuste
 
 ### <a name="sentinel-server-down-for-maintenance"></a>Server Sentinel: vypnutí z důvodu údržby
 
-**Zpráva o selhání úlohy** : "centrum přístupu Copernicus otevřené bude brzy! Omlouváme se za nepříjemnosti. v tuto chvíli provádíme údržbu. Brzy se vrátíme do online režimu! " 
+**Zpráva o selhání úlohy**: "centrum přístupu Copernicus otevřené bude brzy! Omlouváme se za nepříjemnosti. v tuto chvíli provádíme údržbu. Brzy se vrátíme do online režimu! " 
 
-**Nápravná opatření** :
+**Nápravná opatření**:
 
 K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějaké aktivity údržby.
 
@@ -250,20 +250,20 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: dosáhlo se maximálního počtu připojení.
 
-**Zpráva o selhání úlohy** : maximální počet dvou souběžných toků dosažených uživatelem \<username> .
+**Zpráva o selhání úlohy**: maximální počet dvou souběžných toků dosažených uživatelem \<username> .
 
-**Význam** : Pokud se úloha nezdařila, protože bylo dosaženo maximálního počtu připojení, je stejný účet Sentinel používán ve více úlohách.
+**Význam**: Pokud se úloha nezdařila, protože bylo dosaženo maximálního počtu připojení, je stejný účet Sentinel používán ve více úlohách.
 
-**Nápravná opatření** : zkuste jednu z těchto možností:
+**Nápravná opatření**: zkuste jednu z těchto možností:
 
 * Než znovu spustíte neúspěšnou úlohu, počkejte, než se dokončí další úlohy.
 * Vytvořte nový účet Sentinel a aktualizujte uživatelské jméno a heslo Sentinel v FarmBeats.
 
 ### <a name="sentinel-server-refused-connection"></a>Ověřovací server: odmítnuté připojení
 
-**Zpráva o selhání úlohy** : Server odmítl připojení v: http://172.30.175.69:8983/solr/dhus .
+**Zpráva o selhání úlohy**: Server odmítl připojení v: http://172.30.175.69:8983/solr/dhus .
 
-**Nápravná opatření** : k tomuto problému může dojít, pokud se na serveru Sentinel provádí nějaké aktivity údržby.
+**Nápravná opatření**: k tomuto problému může dojít, pokud se na serveru Sentinel provádí nějaké aktivity údržby.
 
 1. Pokud dojde k chybě nějaké úlohy nebo kanálu, protože probíhá údržba, odešlete úlohu znovu po nějaké době.
 
@@ -273,9 +273,9 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 
 ### <a name="soil-moisture-map-has-white-areas"></a>Mapa vlhkosti půdy má bílé oblasti
 
-**Problém** : byla vygenerována **Mapa vlhkosti půdy** , ale mapa má hlavně bílé oblasti.
+**Problém**: byla vygenerována **Mapa vlhkosti půdy** , ale mapa má hlavně bílé oblasti.
 
-**Nápravná opatření** : k tomuto problému může dojít, pokud se satelitní indexy generované pro čas, pro který byla mapa požadována, NDVI hodnoty, které jsou menší než 0,3. Další informace najdete [v technické příručce z Sentinel](https://earth.esa.int/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm).
+**Nápravná opatření**: k tomuto problému může dojít, pokud se satelitní indexy generované pro čas, pro který byla mapa požadována, NDVI hodnoty, které jsou menší než 0,3. Další informace najdete [v technické příručce z Sentinel](https://earth.esa.int/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm).
 
 1. Spusťte úlohu znovu pro jiný rozsah dat a ověřte, jestli jsou hodnoty NDVI ve satelitních indexech větší než 0,3.
 
@@ -285,9 +285,9 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-in-datahub"></a>Shromažďování protokolů úloh Azure Data Factory nebo protokolů App Service v DataHub
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Do **vyhledávacího** pole vyhledejte skupinu prostředků FarmBeats DataHub.
-3. Na řídicím panelu **skupiny prostředků** vyhledejte účet úložiště *datahublogs \** . Například *datahublogsmvxmq* .  
+3. Na řídicím panelu **skupiny prostředků** vyhledejte účet úložiště *datahublogs \** . Například *datahublogsmvxmq*.  
 4. Ve sloupci **název** vyberte účet úložiště pro zobrazení řídicího panelu **účtu úložiště** .
 5. V **podokně datahubblogs \* *_ vyberte _* otevřít v Průzkumníkovi,** aby se zobrazila **otevřená aplikace Průzkumník služby Azure Storage** .
 6. V levém podokně vyberte **kontejnery objektů BLOB** a potom vyberte **protokoly úloh** pro protokoly Azure Data Factory nebo protokoly **appinsights** pro protokoly App Service.
@@ -297,9 +297,9 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Shromažďovat protokoly úloh Azure Data Factory nebo protokoly App Service pro akcelerátor
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Do **vyhledávacího** pole vyhledejte skupinu prostředků akcelerátoru FarmBeats.
-3. Na řídicím panelu **skupiny prostředků** vyhledejte účet úložiště *úložiště \** . Například *storagedop4k \** .
+3. Na řídicím panelu **skupiny prostředků** vyhledejte účet úložiště *úložiště \** . Například *storagedop4k \**.
 4. Vyberte účet úložiště ve sloupci **název** pro zobrazení řídicího panelu **účtu úložiště** .
 5. V **podokně úložiště \* *_ výběrem _* otevřít v Průzkumníkovi** otevřete aplikaci Průzkumník služby Azure Storage.
 6. V levém podokně vyberte **kontejnery objektů BLOB** a potom vyberte **protokoly úloh** pro protokoly Azure Data Factory nebo protokoly **appinsights** pro protokoly App Service.
@@ -307,17 +307,17 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 
 ## <a name="high-cpu-usage"></a>Vysoké využití procesoru
 
-**Chyba** : obdržíte e-mailové upozornění, které odkazuje na **vysokou výstrahu o využití procesoru** .
+**Chyba**: obdržíte e-mailové upozornění, které odkazuje na **vysokou výstrahu o využití procesoru**.
 
-**Nápravná opatření** :
+**Nápravná opatření**:
 
 1. Přejít do skupiny prostředků FarmBeats DataHub.
-2. Vyberte **službu App Service** .  
+2. Vyberte **službu App Service**.  
 3. Přejít na [stránku s cenami](https://azure.microsoft.com/pricing/details/app-service/windows/)horizontálního navýšení kapacity App Service a pak vyberte příslušnou cenovou úroveň.
 
 ## <a name="weather-data-job-failures"></a>Selhání úlohy dat počasí
 
-**Chyba** : spouštíte úlohy, abyste získali data o počasí, ale úloha se nezdařila.
+**Chyba**: spouštíte úlohy, abyste získali data o počasí, ale úloha se nezdařila.
 
 ### <a name="collect-logs-to-troubleshoot-weather-data-job-failures"></a>Shromažďovat protokoly pro řešení potíží s chybami úlohy počasí
 
@@ -329,24 +329,24 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 
 :::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="Snímek obrazovky, který zvýrazní značku SKU: DataHub.":::
 
-3. Na stránce Přehled objektu pro vytváření dat klikněte na **vytvořit a monitorovat** . V prohlížeči se otevře nová karta. Klikněte na **monitorování** .
+3. Na stránce Přehled objektu pro vytváření dat klikněte na **vytvořit a monitorovat**. V prohlížeči se otevře nová karta. Klikněte na **monitorování** .
 
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="Snímek obrazovky, který zvýrazní značku SKU: DataHub.":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="Snímek obrazovky, který zvýrazní možnost nabídky monitor.":::
 
 4. Zobrazí se seznam spuštění kanálu, která jsou součástí provádění úlohy počasí. Klikněte na úlohu, pro kterou chcete shromažďovat protokoly.
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="Snímek obrazovky, který zvýrazní značku SKU: DataHub.":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="Snímek obrazovky, který zvýrazní možnost nabídky spuštění kanálu a vybranou úlohu.":::
 
 5. Na stránce Přehled kanálu se zobrazí seznam spuštění aktivit. Poznamenejte si ID spuštění aktivit, pro které chcete shromažďovat protokoly.
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="Snímek obrazovky, který zvýrazní značku SKU: DataHub.":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="Snímek obrazovky zobrazující seznam spuštění aktivit":::
 
 6. Vraťte se do skupiny prostředků FarmBeats v Azure Portal a klikněte na účet úložiště s názvem **datahublogs-xxxx** .
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="Snímek obrazovky, který zvýrazní značku SKU: DataHub.":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="Snímek obrazovky, který zvýrazní účet úložiště s názvem datahublogs-XXXX.":::
 
-7. Klikněte na **kontejnery**  ->  **adfjobs** . Do vyhledávacího pole zadejte ID běhu úlohy, které jste si poznamenali v kroku 5 výše.
+7. Klikněte na **kontejnery**  ->  **adfjobs**. Do vyhledávacího pole zadejte ID běhu úlohy, které jste si poznamenali v kroku 5 výše.
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="Snímek obrazovky, který zvýrazní značku SKU: DataHub.":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="FarmBeats projektu":::
 
 8. Výsledek hledání bude obsahovat složku, která obsahuje protokoly týkající se úlohy. Stáhněte si protokoly a odešlete je farmbeatssupport@microsoft.com pro pomoc při ladění problému.

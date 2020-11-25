@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 37917e0ed663675677f1d0452b5796120ca2694e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75468626"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001716"
 ---
 ### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
 **Propojená služba Azure Storage** umožňuje propojit účet Azure Storage s objektem pro vytváření dat Azure pomocí **klíče účtu**, který poskytuje datovou továrnu s globálním přístupem k Azure Storage. Následující tabulka uvádí popis pro prvky JSON specifické pro Azure Storage propojenou službu.
@@ -66,7 +66,7 @@ Propojená služba Azure Storage SAS umožňuje propojit účet Azure Storage s 
 }
 ```
 
-Při vytváření **identifikátoru URI SAS**zvažte následující:  
+Při vytváření **identifikátoru URI SAS** zvažte následující:  
 
 * Nastavte vhodná **oprávnění** ke čtení a zápisu pro objekty na základě způsobu, jakým se ve vaší datové továrně používá propojená služba (čtení, zápis, čtení a zápis).
 * Nastavte odpovídající **čas vypršení platnosti** . Ujistěte se, že v aktivním období kanálu není vypršet přístup k Azure Storage objektům.

@@ -7,18 +7,18 @@ ms.date: 08/11/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 3b7c9b51bad45bb348f70c8b0e433404b49b5aac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e6c090c02798103a30cc68f2ca28e8c4f7f2f17
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761358"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96004258"
 ---
 # <a name="set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>Nastavení prostředí pro technologie Plug and Play rychlý Start a kurzy pro IoT
 
 Předtím, než budete moci dokončit technologie Plug and Play rychlých startů a kurzů pro IoT, musíte ve svém předplatném Azure nakonfigurovat službu IoT Hub a službu Device Provisioning (DPS). Budete také potřebovat místní kopie souborů modelů používaných ukázkovými aplikacemi a nástrojem Azure IoT Explorer.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 Abyste se vyhnuli nutnosti nainstalovat rozhraní příkazového řádku Azure CLI místně, můžete k nastavení Cloud Services použít Azure Cloud Shell.
 
@@ -126,7 +126,7 @@ Rychlé starty a kurzy využívají nástroj **Azure IoT Explorer** . V [Azure I
 
 Při prvním spuštění nástroje budete vyzváni k zadání připojovacího řetězce služby IoT Hub. Použijte připojovací řetězec, který jste si poznamenali dříve.
 
-Nakonfigurujte nástroj tak, aby používal soubory modelu, které jste si stáhli dříve. Z domovské stránky v nástroji vyberte **Nastavení IoT technologie Plug and Play**a potom **+ Přidat > místní složky**. Vyberte složku *modely* , kterou jste předtím vytvořili. Pak vyberte **Uložit** a uložte nastavení.
+Nakonfigurujte nástroj tak, aby používal soubory modelu, které jste si stáhli dříve. Z domovské stránky v nástroji vyberte **Nastavení IoT technologie Plug and Play** a potom **+ Přidat > místní složky**. Vyberte složku *modely* , kterou jste předtím vytvořili. Pak vyberte **Uložit** a uložte nastavení.
 
 Další informace najdete v tématu [instalace a použití Azure IoT Exploreru](howto-use-iot-explorer.md).
 
@@ -143,4 +143,4 @@ az group delete --name my-pnp-resourcegroup
 Teď, když jste nastavili prostředí, můžete vyzkoušet některý z rychlých startů nebo kurzů, jako je:
 
 > [!div class="nextstepaction"]
-> [Připojení ukázkové aplikace technologie Plug and Play pro zařízení IoT IoT Hub (Node.js)](quickstart-connect-device-node.md)
+> [Připojte k IoT Hub ukázkovou aplikaci IoT technologie Plug and Play zařízení.](quickstart-connect-device.md)

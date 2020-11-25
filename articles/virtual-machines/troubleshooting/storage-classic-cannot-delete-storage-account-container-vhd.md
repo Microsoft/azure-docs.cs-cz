@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
 ms.openlocfilehash: c74f2ef9eed25719e722970671406c850b6a59b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361853"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002591"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Řešení chyb při odstraňování klasických prostředků úložiště
 V tomto článku najdete pokyny k odstraňování potíží, když se při pokusu o odstranění účtu úložiště Azure Classic, kontejneru nebo souboru BLOB stránky virtuálního pevného disku zobrazí některá z následujících chyb. 

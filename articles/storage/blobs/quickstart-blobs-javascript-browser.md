@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: eebfa61632bc49d5df35c17ba2d2faca0382001c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 998d49e91d38a1f2fdc2503165ee99635e153027
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91336135"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001894"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -26,9 +26,9 @@ Další prostředky:
 * [Referenční dokumentace k rozhraní API](/javascript/api/@azure/storage-blob)
 * [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
 * [Balíček (npm)](https://www.npmjs.com/package/@azure/storage-blob)
-* [ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [ukázky](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Účet Azure s aktivním předplatným](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 * [Účet Azure Storage](../common/storage-account-create.md)
@@ -66,7 +66,7 @@ Tato část vás provede přípravou projektu pro práci s klientskou knihovnou 
 
 ### <a name="create-a-cors-rule"></a>Vytvoření pravidla CORS
 
-Předtím, než může vaše webová aplikace získat přístup k úložišti objektů BLOB z klienta, musíte nakonfigurovat svůj účet, aby povoloval [sdílení prostředků mezi zdroji](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)nebo CORS.
+Předtím, než může vaše webová aplikace získat přístup k úložišti objektů BLOB z klienta, musíte nakonfigurovat svůj účet, aby povoloval [sdílení prostředků mezi zdroji](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)nebo CORS.
 
 V Azure Portal vyberte svůj účet úložiště. Pokud chcete definovat nové pravidlo CORS, přejděte do části **Nastavení** a vyberte **CORS**. Pro účely tohoto rychlého startu vytvoříte otevřené pravidlo CORS:
 
@@ -76,10 +76,10 @@ Následující tabulka obsahuje popis jednotlivých nastavení CORS a vysvětlen
 
 |Nastavení  |Hodnota  | Popis |
 |---------|---------|---------|
-| **POVOLENÉ ZDROJE** | **\*** | Přijímá čárkami oddělený seznam domén nastavených jako přijatelné zdroje. Nastavením této hodnoty na `*` se povolí přístup k účtu úložiště ze všech domén. |
-| **POVOLENÉ METODY** | **Odstranění**, **získání**, **záhlaví**, **sloučení**, **odeslání**, **Možnosti**a **vložení** | Uvádí povolené příkazy HTTP, které je možné spouštět proti účtu úložiště. Pro účely tohoto rychlého startu vyberte všechny dostupné možnosti. |
-| **POVOLENÉ HLAVIČKY** | **\*** | Definuje seznam hlaviček požadavku (včetně hlaviček s předponou), které účet úložiště povoluje. Nastavením této hodnoty na `*` se povolí přístup všem hlavičkám. |
-| **ZVEŘEJNĚNÉ HLAVIČKY** | **\*** | Uvádí hlavičky odpovědi, které účet povoluje. Nastavením této hodnoty na `*` se účtu povolí odesílání jakýchkoli hlaviček. |
+| **POVOLENÉ ZDROJE** | **\** _ | Přijímá čárkami oddělený seznam domén nastavených jako přijatelné zdroje. Nastavením této hodnoty na `_` se povolí přístup k účtu úložiště ze všech domén. |
+| **POVOLENÉ METODY** | **Odstranění**, **získání**, **záhlaví**, **sloučení**, **odeslání**, **Možnosti** a **vložení** | Uvádí povolené příkazy HTTP, které je možné spouštět proti účtu úložiště. Pro účely tohoto rychlého startu vyberte všechny dostupné možnosti. |
+| **POVOLENÉ HLAVIČKY** | **\** _ | Definuje seznam hlaviček požadavku (včetně hlaviček s předponou), které účet úložiště povoluje. Nastavením této hodnoty na `_` se povolí přístup všem hlavičkám. |
+| **ZVEŘEJNĚNÉ HLAVIČKY** | **\** _ | Uvádí hlavičky odpovědi, které účet povoluje. Nastavením této hodnoty na `_` se účtu povolí odesílání jakýchkoli hlaviček. |
 | **MAXIMÁLNÍ STÁŘÍ** | **86400** | Maximální doba, po kterou prohlížeč ukládá do mezipaměti požadavek na předběžné možnosti v sekundách Hodnota *86400* povolí uchování v mezipaměti po celý den. |
 
 Po vyplnění polí hodnotami z této tabulky klikněte na tlačítko **Uložit** .
@@ -237,7 +237,7 @@ Chcete-li spustit kód v ladicím programu Visual Studio Code, nakonfigurujte *l
 Nastavení rozšíření ladicího programu v Visual Studio Code:
 
 1. Vyberte **spustit > Přidat konfiguraci** .
-2. Vyberte **Edge**, **Chrome**nebo **Firefox**v závislosti na tom, jaké rozšíření jste předtím nainstalovali v části [požadavky](#prerequisites) .
+2. Vyberte **Edge**, **Chrome** nebo **Firefox** v závislosti na tom, jaké rozšíření jste předtím nainstalovali v části [požadavky](#prerequisites) .
 
 Přidáním nové konfigurace se vytvoří *launch.js* v souboru a otevře se v editoru. Upravte *launch.jsv* souboru tak, aby `url` byla hodnota `http://localhost:1234/index.html` , jak je znázorněno zde:
 
@@ -281,14 +281,14 @@ V [Azure Portal](https://portal.azure.com)můžete pomocí následujících krok
 
 #### <a name="step-3---delete-the-blob"></a>Krok 3 – odstranění objektu BLOB
 
-1. Ve webové aplikaci vyberte v části **soubory**testovací soubor.
+1. Ve webové aplikaci vyberte v části **soubory** testovací soubor.
 2. Vyberte možnost **Odstranit vybrané soubory**. Stav označuje, že se soubor odstranil a že kontejner neobsahuje žádné soubory.
 3. V Azure Portal vyberte **aktualizovat**. Ověřte, že se **nenašly žádné objekty blob**.
 
 #### <a name="step-4---delete-the-container"></a>Krok 4 – odstranění kontejneru
 
 1. Ve webové aplikaci vyberte **Odstranit kontejner**. Stav označuje, že byl kontejner odstraněn.
-2. V Azure Portal vyberte ** \<account-name\> | **Odkaz na kontejnery v levém horním rohu podokna portálu.
+2. V Azure Portal vyberte **\<account-name\> |** Odkaz na kontejnery v levém horním rohu podokna portálu.
 3. Vyberte **aktualizovat**. Nový kontejner zmizí.
 4. Zavřete webovou aplikaci.
 

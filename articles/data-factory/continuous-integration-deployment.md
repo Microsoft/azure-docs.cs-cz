@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: b31931af7b8d1442a66333622a23d017ab7fb5a9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 93aeb088f82cae6dde215792e399997b592a5c14
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658685"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96003969"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Průběžná integrace a doručování v Azure Data Factory
 
@@ -305,7 +305,7 @@ Tady je příklad toho, co může šablona Parametrizace vypadat jako:
 ```
 Zde je vysvětlení, jak je předchozí šablona vytvořena, rozdělená podle typu prostředku.
 
-#### <a name="pipelines"></a>Kanály
+#### <a name="pipelines"></a>Pipelines
     
 * Vlastnost v cestě `activities/typeProperties/waitTimeInSeconds` je parametrizovaná. Všechny aktivity v kanálu, které mají vlastnost na úrovni kódu s názvem `waitTimeInSeconds` (například `Wait` aktivita), jsou parametrizované jako číslo s výchozím názvem. V šabloně Správce prostředků ale nebude mít výchozí hodnotu. Během nasazení Správce prostředků se bude jednat o povinný vstup.
 * Podobně je vlastnost s názvem `headers` (například v `Web` aktivitě) Parametrizovaná s typem `object` (JObject). Má výchozí hodnotu, která je stejná jako hodnota zdrojové továrny.
@@ -636,6 +636,14 @@ Pokud nasadíte továrnu do produkčního prostředí a zjistíte chybu, kterou 
 Podívejte se na video pod podrobným výukovým kurzem o tom, jak horká prostředí opravovat. 
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4I7fi]
+
+## <a name="exposure-control-and-feature-flags"></a>Řízení a příznaky funkcí pro expozici
+
+Při práci na týmu existují instance, ve kterých můžete sloučit změny, ale nechcete, aby byly spuštěny v prostředích se zvýšenými oprávněními, jako jsou například PROD a QA. Pro zpracování tohoto scénáře tým ADF doporučuje [koncept DevOps používání příznaků funkcí](https://docs.microsoft.com/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops). V rámci ADF můžete kombinovat [globální parametry](author-global-parameters.md) a [aktivitu if podmínka](control-flow-if-condition-activity.md) , aby se na základě těchto příznaků prostředí skryly sady logiky.
+
+Další informace o tom, jak nastavit příznak funkce, najdete v následujícím kurzu videa:
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4IxdW]
 
 ## <a name="best-practices-for-cicd"></a>Osvědčené postupy pro CI/CD
 

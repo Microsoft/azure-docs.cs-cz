@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.openlocfilehash: ef04bf9f6d9ca6ff5089d2826c05a5acfb759b04
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460491"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001656"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Kurz: Azure Active Directory integrace s IdeaScale
 
@@ -139,7 +139,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí IdeaScal
 
     ![Snímek obrazovky zobrazuje jedno nastavení jednotného vybrané v nabídce zabezpečení.](./media/ideascale-tutorial/ic790848.png "Nastavení jednoho jednotného")
 
-4. Jako **typ s jedním jednotného**vyberte **SAML 2,0**.
+4. Jako **typ s jedním jednotného** vyberte **SAML 2,0**.
 
     ![Typ Single jednotného](./media/ideascale-tutorial/ic790849.png "Typ Single jednotného")
 
@@ -159,7 +159,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí IdeaScal
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -184,7 +184,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k IdeaScale.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **IdeaScale**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **IdeaScale**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -244,7 +244,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici IdeaScale, měli byste se automaticky přihlásit k IdeaScale, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

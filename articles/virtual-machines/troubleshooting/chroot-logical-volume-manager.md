@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
 ms.openlocfilehash: 390443874ea63a8661ef8baea627015fcf679719
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167912"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002693"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Řešení potíží s virtuálním počítačem Linux, když není k dispozici přístup ke konzole sériového rozhraní Azure a rozložení disku používá LVM (Správce logických svazků)
 
@@ -65,9 +65,9 @@ U většiny scénářů se k připojenému disku snímku zobrazuje **/dev/sdc** 
 
 ![Fdisk](./media/chroot-logical-volume-manager/fdisk-output-sdc.png)
 
-Rozhraní **\*** indikuje spouštěcí oddíl, oba oddíly budou připojeny.
+Znak * *\** _ označuje spouštěcí oddíl, oba oddíly budou připojeny.
 
-Pokud chcete zobrazit LVMs ovlivněného virtuálního počítače, spusťte příkaz **lsblk** .
+Spuštěním příkazu _ *lsblk** Zobrazte LVMs OVLIVNĚNÉHO virtuálního počítače.
 
 `lsblk`
 
@@ -259,7 +259,7 @@ Uložení změn ![ Uložit odpojit](./media/chroot-logical-volume-manager/save-d
 
 Disk bude nyní k dispozici, takže ho bude možné vyměnit s původním diskem s operačním systémem ovlivněného virtuálního počítače.
 
-Přejděte v Azure Portal k neúspěšnému virtuálnímu počítači a vyberte **disky**odkládací  ->  disk s**operačním systémem**. 
+Přejděte v Azure Portal k neúspěšnému virtuálnímu počítači a vyberte **disky** odkládací  ->  disk s **operačním systémem**. 
  ![](./media/chroot-logical-volume-manager/swap-disk.png) 
 
 Dokončete pole, na kterých je vybraný **disk** , je snímkový disk, který je právě odpojený v předchozím kroku. Vyžaduje se taky název virtuálního počítače, který se týká daného virtuálního počítače, a pak vyberte **OK** .

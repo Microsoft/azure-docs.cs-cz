@@ -7,11 +7,11 @@ ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: efdb195ad41b036f7f470884b3a441de1db7f7f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716149"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003697"
 ---
 # <a name="manage-role-permissions-and-security"></a>Správa oprávnění rolí a zabezpečení
 
@@ -261,7 +261,7 @@ V následujících částech jsou popsány minimální požadovaná oprávnění
 
 Služba Update Management dosáhne v rámci více služeb, aby poskytovala službu. Následující tabulka uvádí oprávnění potřebná ke správě nasazení správy aktualizací:
 
-|**Prostředek**  |**Role**  |**Rozsah**  |
+|**Prostředek**  |**Role**  |**Scope**  |
 |---------|---------|---------|
 |Účet Automation     | Přispěvatel Log Analytics       | Účet Automation        |
 |Účet Automation    | Přispěvatel virtuálních počítačů        | Skupina prostředků pro účet        |
@@ -290,7 +290,7 @@ V následující části se dozvíte, jak nakonfigurovat službu Azure RBAC na s
 
 3. Do pole pro **Výběr** zadejte jméno uživatele, kterému chcete udělit oprávnění. Vyberte uživatele ze seznamu a klikněte na **Uložit**.
 
-   ![Přidávání uživatelů](media/automation-role-based-access-control/automation-04-add-users.png)
+   ![Přidání uživatelů](media/automation-role-based-access-control/automation-04-add-users.png)
 
    Nyní byste měli vidět, že uživatel byl přidán na stránku Uživatelé s přiřazenou vybranou rolí.
 

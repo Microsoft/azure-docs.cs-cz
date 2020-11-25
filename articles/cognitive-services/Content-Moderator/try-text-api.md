@@ -11,11 +11,11 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.openlocfilehash: 664c4289cbfa1f6ce2fce9f9f83b0240bd2d592c
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912867"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001996"
 ---
 # <a name="moderate-text-from-the-api-console"></a>Střední text z konzoly API
 
@@ -43,14 +43,14 @@ V případě **konzoly Open API Testing** vyberte oblast, která nejlépe popisu
 
 ### <a name="parameters"></a>Parametry
 
-Vyberte parametry dotazu, které chcete použít na textové obrazovce. V tomto příkladu použijte výchozí hodnotu pro **jazyk** . Můžete ho nechat prázdné, protože operace automaticky detekuje pravděpodobný jazyk v rámci provádění.
+Vyberte parametry dotazu, které chcete použít na textové obrazovce. V tomto příkladu použijte výchozí hodnotu pro **jazyk**. Můžete ho nechat prázdné, protože operace automaticky detekuje pravděpodobný jazyk v rámci provádění.
 
 > [!NOTE]
-> Pro parametr **jazyka** přiřaďte `eng` nebo nechejte prázdný, aby se zobrazila odpověď s podporou počítače **classification** (funkce Preview). **Tato funkce podporuje jenom angličtinu** .
+> Pro parametr **jazyka** přiřaďte `eng` nebo nechejte prázdný, aby se zobrazila odpověď s podporou počítače **classification** (funkce Preview). **Tato funkce podporuje jenom angličtinu**.
 >
 > Pro detekci **podmínek vulgárních** výrazů použijte [kód ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) podporovaných jazyků uvedených v tomto článku, nebo ponechte prázdné.
 
-V možnosti **Automatické** hodnoty, **PII** a **klasifikovat (Preview)** vyberte **true (pravda** ). Pole **ListId** ponechte prázdné.
+V možnosti **Automatické** hodnoty, **PII** a **klasifikovat (Preview)** vyberte **true (pravda**). Pole **ListId** ponechte prázdné.
 
   ![Parametry dotazu na konzolu text-obrazovka](images/text-api-console-inputs.PNG)
 

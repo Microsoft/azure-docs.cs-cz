@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: b8d05293359cff16bb6d8c9a629a1fbf68104365
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896030"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003612"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Brána Správa dat – vysoká dostupnost a škálovatelnost (Preview)
 > [!NOTE]
@@ -29,10 +29,10 @@ Tento článek vám pomůže nakonfigurovat řešení s vysokou dostupností a �
 > [!NOTE]
 > V tomto článku se předpokládá, že už jste obeznámení se základy Integration Runtime (dříve Správa dat bránu). Pokud ne, přečtěte si téma [Správa dat Gateway](data-factory-data-management-gateway.md).
 > 
-> **Tato funkce Preview je oficiálně podporovaná ve verzi Správa dat brány 2.12. xxxx. x a vyšší** . Ujistěte se prosím, že používáte verzi 2.12. xxxx. x nebo vyšší. Nejnovější verzi Správa dat brány si můžete stáhnout [tady](https://www.microsoft.com/download/details.aspx?id=39717).
+> **Tato funkce Preview je oficiálně podporovaná ve verzi Správa dat brány 2.12. xxxx. x a vyšší**. Ujistěte se prosím, že používáte verzi 2.12. xxxx. x nebo vyšší. Nejnovější verzi Správa dat brány si můžete stáhnout [tady](https://www.microsoft.com/download/details.aspx?id=39717).
 
 ## <a name="overview"></a>Přehled
-Brány pro správu dat, které jsou nainstalované na několika místních počítačích s jednou logickou bránou, můžete přidružit na portál. Tyto počítače se nazývají **uzly** . K logické bráně je možné přidružit až **čtyři uzly** . Výhody, které mají více uzlů (místní počítače s nainstalovanou bránou) pro logickou bránu:  
+Brány pro správu dat, které jsou nainstalované na několika místních počítačích s jednou logickou bránou, můžete přidružit na portál. Tyto počítače se nazývají **uzly**. K logické bráně je možné přidružit až **čtyři uzly** . Výhody, které mají více uzlů (místní počítače s nainstalovanou bránou) pro logickou bránu:  
 
 - Zlepšení výkonu přesunu dat mezi místními a cloudovým úložištěm dat.  
 - Pokud z nějakého důvodu dojde k výpadku některého z uzlů, k přesunu dat jsou stále k dispozici jiné uzly. 
@@ -49,11 +49,11 @@ Následující diagram nabízí přehled architektury funkce Správa dat bránu 
 
 **Logická brána** je brána, kterou přidáte do objektu pro vytváření dat v Azure Portal. Dříve jste mohli přidružit pouze jeden místní počítač s Windows s bránou Správa dat nainstalovanou s logickou bránou. Tento místní počítač brány se nazývá uzel. Nyní můžete k logické bráně přidružit až **čtyři fyzické uzly** . Logická brána s více uzly se nazývá brána s **více** uzly.  
 
-Všechny tyto uzly jsou **aktivní** . Všechny můžou zpracovávat úlohy přesunu dat a přesouvat data mezi místními a cloudovým úložištěm dat. Jeden z uzlů působí jako dispečer i pracovní proces. Další uzly ve skupinách jsou pracovní uzly. **Dispečerský** uzel vyžádá úlohy přesunu dat nebo úlohy z cloudové služby a odesílá je do pracovních uzlů (včetně sebe samé). **Pracovní** uzel spouští úlohy přesunu dat pro přesun dat mezi místními a cloudovým úložištěm dat. Všechny uzly jsou pracovní procesy. Pouze jeden uzel může být Dispatch i Worker.    
+Všechny tyto uzly jsou **aktivní**. Všechny můžou zpracovávat úlohy přesunu dat a přesouvat data mezi místními a cloudovým úložištěm dat. Jeden z uzlů působí jako dispečer i pracovní proces. Další uzly ve skupinách jsou pracovní uzly. **Dispečerský** uzel vyžádá úlohy přesunu dat nebo úlohy z cloudové služby a odesílá je do pracovních uzlů (včetně sebe samé). **Pracovní** uzel spouští úlohy přesunu dat pro přesun dat mezi místními a cloudovým úložištěm dat. Všechny uzly jsou pracovní procesy. Pouze jeden uzel může být Dispatch i Worker.    
 
 Obvykle můžete začít s jedním uzlem a **škálovat** tak, aby bylo možné přidat další uzly, protože stávající uzly jsou zahlceny zatížením přesunu dat. Můžete také **škálovat** schopnost přesunu dat uzlu brány tím, že zvýšíte počet souběžných úloh, které se můžou spouštět na uzlu. Tato funkce je dostupná taky u brány s jedním uzlem (i když není povolená funkce škálovatelnosti a dostupnosti). 
 
-Brána s více uzly udržuje přihlašovací údaje úložiště dat synchronizované napříč všemi uzly. Pokud dojde k potížím s připojením mezi uzly, přihlašovací údaje možná nebudou synchronizovány. Když nastavíte přihlašovací údaje pro místní úložiště dat, které používá bránu, uloží přihlašovací údaje na uzel dispečer nebo Worker. Uzel dispečera se synchronizuje s ostatními pracovními uzly. Tento proces se označuje jako **Synchronizace přihlašovacích údajů** . Komunikační kanál mezi uzly může být **zašifrovaný** veřejným certifikátem SSL/TLS. 
+Brána s více uzly udržuje přihlašovací údaje úložiště dat synchronizované napříč všemi uzly. Pokud dojde k potížím s připojením mezi uzly, přihlašovací údaje možná nebudou synchronizovány. Když nastavíte přihlašovací údaje pro místní úložiště dat, které používá bránu, uloží přihlašovací údaje na uzel dispečer nebo Worker. Uzel dispečera se synchronizuje s ostatními pracovními uzly. Tento proces se označuje jako **Synchronizace přihlašovacích údajů**. Komunikační kanál mezi uzly může být **zašifrovaný** veřejným certifikátem SSL/TLS. 
 
 ## <a name="set-up-a-multi-node-gateway"></a>Nastavení brány s více uzly
 V této části se předpokládá, že jste prošli následujícími dvěma články nebo jste se seznámili se základními pojmy v těchto článcích: 
@@ -80,7 +80,7 @@ V této části se předpokládá, že jste prošli následujícími dvěma čl�
     2. Pomocí následujících [pokynů](data-factory-data-management-gateway.md#configuration-manager)spusťte pro bránu Správa dat Configuration Manager. Zobrazí se název brány, název uzlu, stav atd.
 
         ![Snímek obrazovky s informacemi o tom, kde vidíte název brány, název uzlu a stav](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
-4. Pokud zvolíte možnost **Ruční instalace** :
+4. Pokud zvolíte možnost **Ruční instalace**:
     1. Stáhněte instalační balíček z webu Microsoft Download Center, spusťte ho a nainstalujte na svém počítači bránu.
     2. K registraci brány použijte **ověřovací klíč** ze stránky **Konfigurace** .
     
@@ -99,14 +99,14 @@ V této části se předpokládá, že jste prošli následujícími dvěma čl�
     5. Po úspěšné instalaci brány klikněte na spustit Configuration Manager:
     
         ![Ruční instalace – spuštění nástroje Configuration Manager](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)   
-    6. na uzlu (místní počítač s Windows) se zobrazí Správa dat Configuration Manager brány, která zobrazuje stav připojení, **název brány** a **název uzlu** .  
+    6. na uzlu (místní počítač s Windows) se zobrazí Správa dat Configuration Manager brány, která zobrazuje stav připojení, **název brány** a **název uzlu**.  
 
         ![Brána Správa dat – instalace byla úspěšná.](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
 
         > [!NOTE]
         > Pokud zřizujete bránu na virtuálním počítači Azure, můžete použít [tuto šablonu Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/101-mutiple-vms-with-data-management-gateway). Tento skript vytvoří logickou bránu, nastaví virtuální počítače s nainstalovaným softwarem Správa dat brány a zaregistruje je pomocí logické brány. 
 6. V Azure Portal spusťte stránku **brány** : 
-    1. Na domovské stránce objektu pro vytváření dat na portálu klikněte na **propojené služby** .
+    1. Na domovské stránce objektu pro vytváření dat na portálu klikněte na **propojené služby**.
     
         ![Snímek obrazovky, který zvýrazní dlaždici propojených služeb.](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-home-page.png)
     2. Vyberte **bránu** , aby se zobrazila stránka **brány** :
@@ -133,7 +133,7 @@ V této části se předpokládá, že jste prošli následujícími dvěma čl�
 Existující bránu můžete upgradovat tak, aby používala funkci vysoké dostupnosti a škálovatelnosti. Tato funkce funguje jenom s uzly, které mají bránu pro správu dat verze >= 2.12. xxxx. Verzi brány pro správu dat nainstalovanou na počítači můžete zobrazit na kartě **Help** Configuration Manager Správa dat brány. 
 
 1. Pomocí stažení a spuštění instalačního balíčku MSI z [webu Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717)aktualizujte bránu na místním počítači na nejnovější verzi. Podrobnosti najdete v části věnované [instalaci](data-factory-data-management-gateway.md#installation) .  
-2. Přejděte na Azure Portal. Spusťte **Data Factory stránku** pro datovou továrnu. Kliknutím na dlaždici propojené služby otevřete **stránku propojené služby** . Vyberte bránu, na které chcete spustit **stránku brány** . Klikněte na možnost povolit **funkci ve verzi Preview** , jak je znázorněno na následujícím obrázku: 
+2. Přejděte na Azure Portal. Spusťte **Data Factory stránku** pro datovou továrnu. Kliknutím na dlaždici propojené služby otevřete **stránku propojené služby**. Vyberte bránu, na které chcete spustit **stránku brány**. Klikněte na možnost povolit **funkci ve verzi Preview** , jak je znázorněno na následujícím obrázku: 
 
     ![Funkce pro povolení verze Preview služby Správa dat Gateway](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-existing-gateway-enable-high-availability.png)   
 2. Po povolení funkce Preview na portálu zavřete všechny stránky. Znovu otevřete **stránku brány** , abyste viděli nové uživatelské rozhraní verze Preview (UI).
@@ -144,7 +144,7 @@ Existující bránu můžete upgradovat tak, aby používala funkci vysoké dost
 
     > [!NOTE]
     > Během upgradu název prvního uzlu je název počítače. 
-3. Nyní přidejte uzel. Na stránce **Brána** klikněte na **přidat uzel** .  
+3. Nyní přidejte uzel. Na stránce **Brána** klikněte na **přidat uzel**.  
 
     ![Brána Správa dat – nabídka přidat uzel](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-add-node-menu.png)
 
@@ -164,8 +164,8 @@ Tady jsou požadavky na certifikát TLS/SSL, který se používá k zabezpečen�
 - Každý uzel Integration runtime musí důvěřovat tomuto certifikátu a také klientskému počítači, na kterém je spuštěná aplikace Správce přihlašovacích údajů. 
   > [!NOTE]
   > Aplikace Správce přihlašovacích údajů se používá při bezpečném nastavení přihlašovacích údajů z Průvodce kopírováním nebo na webu Azure Portal. A dá se aktivovat z libovolného počítače ve stejné síti jako místní nebo privátní úložiště dat.
-- Jsou podporovány zástupné certifikáty karet. Pokud je název plně kvalifikovaného názvu domény **node1.domain.contoso.com** , můžete jako název subjektu certifikátu použít * *_. domain.contoso.com_* .
-- Certifikáty SAN se nedoporučují, protože se použijí jenom poslední položka alternativních názvů subjektu a všechny ostatní budou v důsledku současného omezení ignorovány. Například máte certifikát SAN, jehož síť SAN je **node1.domain.contoso.com** a **node2.domain.contoso.com** , můžete tento certifikát použít jenom na počítači, jehož plně kvalifikovaný název domény je **node2.domain.contoso.com** .
+- Jsou podporovány zástupné certifikáty karet. Pokud je název plně kvalifikovaného názvu domény **node1.domain.contoso.com**, můžete jako název subjektu certifikátu použít **_. domain.contoso.com_* .
+- Certifikáty SAN se nedoporučují, protože se použijí jenom poslední položka alternativních názvů subjektu a všechny ostatní budou v důsledku současného omezení ignorovány. Například máte certifikát SAN, jehož síť SAN je **node1.domain.contoso.com** a **node2.domain.contoso.com**, můžete tento certifikát použít jenom na počítači, jehož plně kvalifikovaný název domény je **node2.domain.contoso.com**.
 - Podporuje jakoukoli velikost klíče podporovanou systémem Windows Server 2012 R2 pro certifikáty TLS/SSL.
 - Certifikát používající klíče CNG není podporován.
 
@@ -181,7 +181,7 @@ V Azure Portal můžete zobrazit snímek téměř reálného času využití pro
 
 ![Brána Správa dat – monitorování více uzlů](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png)
 
-Můžete povolit **Rozšířená nastavení** na stránce **brány** a zobrazit tak pokročilé metriky, jako je například **síť** (za provozu), **role & přihlašovací údaje** , což je užitečné při ladění potíží s bránou a **souběžné úlohy** (spuštěné/omezení), které se dají upravovat nebo měnit, a to během optimalizace výkonu. Následující tabulka uvádí popisy sloupců v seznamu **uzly brány** :  
+Můžete povolit **Rozšířená nastavení** na stránce **brány** a zobrazit tak pokročilé metriky, jako je například **síť**(za provozu), **role & přihlašovací údaje**, což je užitečné při ladění potíží s bránou a **souběžné úlohy** (spuštěné/omezení), které se dají upravovat nebo měnit, a to během optimalizace výkonu. Následující tabulka uvádí popisy sloupců v seznamu **uzly brány** :  
 
 Vlastnost monitorování | Popis
 :------------------ | :---------- 
@@ -198,7 +198,7 @@ Role | Existují dva typy rolí – dispečer a pracovní proces. Všechny uzly 
 
 ### <a name="gateway-status"></a>Stav brány
 
-Následující tabulka uvádí možné stavy **uzlu brány** : 
+Následující tabulka uvádí možné stavy **uzlu brány**: 
 
 Status  | Komentáře a scénáře
 :------- | :------------------
@@ -209,7 +209,7 @@ Omezeně | Kvůli problému s připojením. Důvodem může být problém s port
 Inactive | Uzel je v konfiguraci odlišnou od konfigurace jiných majoritní uzlů.<br/><br/> Uzel může být neaktivní, pokud se nemůže připojit k jiným uzlům. 
 
 
-Následující tabulka uvádí možné stavy **logické brány** . Stav brány závisí na stavech uzlů brány. 
+Následující tabulka uvádí možné stavy **logické brány**. Stav brány závisí na stavech uzlů brány. 
 
 Status | Komentáře
 :----- | :-------
@@ -228,7 +228,7 @@ Azure Portal poskytuje prostředí monitorování kanálu s podrobnými podrobno
 ## <a name="scale-considerations"></a>Požadavky na škálování
 
 ### <a name="scale-out"></a>Horizontální navýšení kapacity
-Když **je dostupná paměť nízká** a **využití CPU je vysoké** , přidání nového uzlu pomáhá škálovat zatížení napříč počítači. Pokud dojde k selhání aktivit z důvodu vypršení časového limitu nebo uzlu brány v režimu offline, pomůže vám to, když do brány přidáte uzel.
+Když **je dostupná paměť nízká** a **využití CPU je vysoké**, přidání nového uzlu pomáhá škálovat zatížení napříč počítači. Pokud dojde k selhání aktivit z důvodu vypršení časového limitu nebo uzlu brány v režimu offline, pomůže vám to, když do brány přidáte uzel.
  
 ### <a name="scale-up"></a>Vertikální navýšení kapacity
 Pokud není dostupná paměť a procesor dobře využité, ale kapacita nečinnosti je 0, měli byste škálovat kapacitu zvýšením počtu souběžných úloh, které se můžou spouštět na uzlu. Možná budete chtít škálovat i v případě, že aktivity čekají na vypršení časového limitu, protože brána je přetížená. Jak je znázorněno na následujícím obrázku, můžete zvýšit maximální kapacitu uzlu. Doporučujeme, abyste na začátku začali.  

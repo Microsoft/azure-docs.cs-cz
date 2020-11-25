@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/28/2020
-ms.openlocfilehash: 5bb5599c6ab6e630e0f26c6d4a13e9c9af8a15a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/24/2020
+ms.openlocfilehash: c0d0e3154360d787bfc2072c5ae1fe878fa1d138
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91405169"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96003649"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>Kopírování a transformace dat v Snowflake pomocí Azure Data Factory
 
@@ -36,8 +36,6 @@ Pro aktivitu kopírování podporuje tento konektor Snowflake tyto funkce:
 
 - Kopírovat data z Snowflake, která využívá příkaz [Kopírovat do [location]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html) Snowflake, aby dosáhla nejlepšího výkonu.
 - Zkopírujte data do Snowflake, která využívá k dosažení nejlepšího výkonu výhod příkazu [Kopírovat do [Table]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html) Snowflake. Podporuje Snowflake v Azure. 
-
-Snowflake jako jímka není podporována, pokud používáte pracovní prostor Azure synapse Analytics.
 
 ## <a name="get-started"></a>Začínáme
 
@@ -152,8 +150,8 @@ Chcete-li kopírovat data z Snowflake, v části **zdroj** aktivity kopírován�
 | typ                         | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **SnowflakeSource**. | Yes      |
 | query          | Určuje dotaz SQL, který má načíst data z Snowflake. Pokud názvy schématu, tabulky a sloupců obsahují malá písmena, citujte v dotazu identifikátor objektu, např. `select * from "schema"."myTable"` .<br>Provádění uložené procedury není podporováno. | No       |
 | exportSettings | Rozšířená nastavení používaná k načtení dat z Snowflake. Můžete nakonfigurovat ty, které podporuje příkaz Kopírovat do, který Data Factory projde při vyvolání příkazu. | No       |
-| ***V části `exportSettings` :*** |  |  |
-| typ | Typ příkazu pro export nastavený na **SnowflakeExportCopyCommand**. | Yes |
+| ***Pod `exportSettings` :** _ |  |  |
+| typ | Typ příkazu pro export nastavený na _ * SnowflakeExportCopyCommand * *. | Yes |
 | additionalCopyOptions | Další možnosti kopírování, které jsou k dispozici jako slovník párů klíč-hodnota. Příklady: MAX_FILE_SIZE, OVERWRITE. Další informace najdete v tématu [Možnosti kopírování Snowflake](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions). | No |
 | additionalFormatOptions | Další možnosti formátu souboru, které jsou k dispozici pro kopírování příkazu jako slovníku párů klíč-hodnota. Příklady: DATE_FORMAT, TIME_FORMAT TIMESTAMP_FORMAT. Další informace najdete v tématu [Možnosti typu formátu Snowflake](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions). | No |
 
@@ -163,16 +161,16 @@ Pokud vaše úložiště a formát dat jímky splňují kritéria popsaná v té
 
 - **Propojená služba jímky** je [**úložiště objektů BLOB v Azure**](connector-azure-blob-storage.md) s ověřováním pomocí **sdíleného přístupového podpisu** .
 
-- **Formát dat jímky** je **Parquet**, **oddělený text**nebo **JSON** s následujícími konfiguracemi:
+- **Formát dat jímky** je **Parquet**, **oddělený text** nebo **JSON** s následujícími konfiguracemi:
 
-    - V případě formátu **Parquet** je Kompresní kodek **none**, **přichycení**nebo **LZO**.
+    - V případě formátu **Parquet** je Kompresní kodek **none**, **přichycení** nebo **LZO**.
     - Textový formát s **oddělovači** :
-        - `rowDelimiter` je **\r\n**nebo jakýkoli jeden znak.
-        - `compression` nemůže být **žádná komprese**, **gzip**, **bzip2**ani **zúžení**.
+        - `rowDelimiter` je **\r\n** nebo jakýkoli jeden znak.
+        - `compression` nemůže být **žádná komprese**, **gzip**, **bzip2** ani **zúžení**.
         - `encodingName` je ponechán jako výchozí nebo nastavený na **UTF-8**.
-        - `quoteChar` je **dvojité uvozovky**, **jednoduché uvozovky**nebo **prázdný řetězec** (bez znaku uvozovky).
-    - V případě formátu **JSON** podporuje Přímá kopie pouze jeden sloupec, protože zdroj Snowflake tabulky nebo výsledek dotazu obsahuje pouze jeden sloupec a datový typ tohoto sloupce je **variant**, **objekt**nebo **pole**.
-        - `compression` nemůže být **žádná komprese**, **gzip**, **bzip2**ani **zúžení**.
+        - `quoteChar` je **dvojité uvozovky**, **jednoduché uvozovky** nebo **prázdný řetězec** (bez znaku uvozovky).
+    - V případě formátu **JSON** podporuje Přímá kopie pouze jeden sloupec, protože zdroj Snowflake tabulky nebo výsledek dotazu obsahuje pouze jeden sloupec a datový typ tohoto sloupce je **variant**, **objekt** nebo **pole**.
+        - `compression` nemůže být **žádná komprese**, **gzip**, **bzip2** ani **zúžení**.
         - `encodingName` je ponechán jako výchozí nebo nastavený na **UTF-8**.
         - `filePattern` v jímky aktivity kopírování je ponecháno jako výchozí nebo nastavené na **setOfObjects**.
 
@@ -283,8 +281,8 @@ Chcete-li kopírovat data do Snowflake, jsou v části **jímka** aktivity kopí
 | typ              | Vlastnost Type jímky aktivity kopírování nastavená na **SnowflakeSink**. | Yes                                           |
 | preCopyScript     | Zadejte dotaz SQL pro aktivitu kopírování, která se má spustit před zápisem dat do Snowflake při každém spuštění. Tato vlastnost slouží k vyčištění předem načtených dat. | No                                            |
 | importSettings | Rozšířená nastavení používaná k zápisu dat do Snowflake. Můžete nakonfigurovat ty, které podporuje příkaz Kopírovat do, který Data Factory projde při vyvolání příkazu. | No |
-| ***V části `importSettings` :*** |                                                              |  |
-| typ | Typ příkazu pro import, který je nastavený na **SnowflakeImportCopyCommand**. | Yes |
+| **_Pod `importSettings` :_* _ |                                                              |  |
+| typ | Typ příkazu pro import, nastavený na _ * SnowflakeImportCopyCommand * *. | Yes |
 | additionalCopyOptions | Další možnosti kopírování, které jsou k dispozici jako slovník párů klíč-hodnota. Příklady: ON_ERROR, FORCE, LOAD_UNCERTAIN_FILES. Další informace najdete v tématu [Možnosti kopírování Snowflake](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions). | No |
 | additionalFormatOptions | Další možnosti formátu souboru, které jsou k dispozici pro příkaz kopírování, který je k dispozici jako slovník párů klíč-hodnota. Příklady: DATE_FORMAT, TIME_FORMAT TIMESTAMP_FORMAT. Další informace najdete v tématu [Možnosti typu formátu Snowflake](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions). | No |
 
@@ -294,17 +292,17 @@ Pokud zdrojové úložiště a formát dat splňují kritéria popsaná v této 
 
 - **Zdrojová propojená služba** je [**úložiště objektů BLOB v Azure**](connector-azure-blob-storage.md) s ověřováním pomocí **sdíleného přístupového podpisu** .
 
-- **Formát zdrojových dat** je **Parquet**, **oddělený text**nebo **JSON** s následujícími konfiguracemi:
+- **Formát zdrojových dat** je **Parquet**, **oddělený text** nebo **JSON** s následujícími konfiguracemi:
 
-    - Pro formát **Parquet** je Kompresní kodek **žádný**nebo **přichycený**.
+    - Pro formát **Parquet** je Kompresní kodek **žádný** nebo **přichycený**.
 
     - Textový formát s **oddělovači** :
-        - `rowDelimiter` je **\r\n**nebo jakýkoli jeden znak. Pokud není oddělovač řádků "\r\n", `firstRowAsHeader` je nutné mít **hodnotu false**a není `skipLineCount` zadán.
-        - `compression` nemůže být **žádná komprese**, **gzip**, **bzip2**ani **zúžení**.
+        - `rowDelimiter` je **\r\n** nebo jakýkoli jeden znak. Pokud není oddělovač řádků "\r\n", `firstRowAsHeader` je nutné mít **hodnotu false** a není `skipLineCount` zadán.
+        - `compression` nemůže být **žádná komprese**, **gzip**, **bzip2** ani **zúžení**.
         - `encodingName` je ponechán jako výchozí nebo nastavený na UTF-8, UTF-16, UTF-16BE, UTF-32 "," UTF-32BE "," BIG5 "," EUC-JP "," EUC-KR "," UTF ",", "," ISO-2022-JP ";" ISO-2022-KR "," ISO-8859-1 "," ISO-8859-2 "," ISO-8859-5 "," ISO-8859-6 "," ISO-8859-7 "," ISO-8859-8 "," ISO-8859-9 "," WINDOWS-1250 "," WINDOWS-1251 "," WINDOWS-1252 "," WINDOWS-1253 "," Windows-1254 "," Windows-1255 ";
-        - `quoteChar` je **dvojité uvozovky**, **jednoduché uvozovky**nebo **prázdný řetězec** (bez znaku uvozovky).
-    - V případě formátu **JSON** podporuje Přímá kopie pouze jeden sloupec a datový typ tohoto sloupce je **variantou**, **objektem**nebo **polem**.
-        - `compression` nemůže být **žádná komprese**, **gzip**, **bzip2**ani **zúžení**.
+        - `quoteChar` je **dvojité uvozovky**, **jednoduché uvozovky** nebo **prázdný řetězec** (bez znaku uvozovky).
+    - V případě formátu **JSON** podporuje Přímá kopie pouze jeden sloupec a datový typ tohoto sloupce je **variantou**, **objektem** nebo **polem**.
+        - `compression` nemůže být **žádná komprese**, **gzip**, **bzip2** ani **zúžení**.
         - `encodingName` je ponechán jako výchozí nebo nastavený na **UTF-8**.
         - Není zadáno mapování sloupce.
 
@@ -413,7 +411,7 @@ V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem Snowflake
 
 | Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Tabulka | Vyberete-li možnost tabulka jako vstup, bude tok dat při použití vložené datové sady načítat všechna data z tabulky zadané v datové sadě Snowflake nebo v možnostech zdroje. | No | Řetězec | *(pouze pro vloženou datovou sadu)*<br>tableName<br>schemaName |
+| Table | Vyberete-li možnost tabulka jako vstup, bude tok dat při použití vložené datové sady načítat všechna data z tabulky zadané v datové sadě Snowflake nebo v možnostech zdroje. | No | Řetězec | *(pouze pro vloženou datovou sadu)*<br>tableName<br>schemaName |
 | Dotaz | Pokud jako vstup vyberete dotaz, zadejte dotaz, který načte data z Snowflake. Toto nastavení přepisuje jakoukoli tabulku, kterou jste zvolili v datové sadě.<br>Pokud názvy schématu, tabulky a sloupců obsahují malá písmena, citujte v dotazu identifikátor objektu, např. `select * from "schema"."myTable"` . | No | Řetězec | query |
 
 #### <a name="snowflake-source-script-examples"></a>Příklady zdrojového skriptu Snowflake

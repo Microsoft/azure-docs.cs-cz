@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: ef74c4b799c3a24636f88a8e704bf726104b034f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674316"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001588"
 ---
 # <a name="sensor-partner-integration"></a>Integrace partnerských řešení pro senzory
 
@@ -93,7 +93,7 @@ access_token = token_response.get('access_token')
 Tady jsou nejběžnější hlavičky požadavků, které je potřeba zadat při volání rozhraní API FarmBeats DataHub.
 
 
-**Hlaviček** | **Popis a příklad**
+**Hlavička** | **Popis a příklad**
 --- | ---
 Typ obsahu | Formát požadavku (Content-Type: Application/ <format> ). Pro rozhraní FarmBeats DataHub API je formát JSON. Content-Type: Application/JSON
 Autorizace | Určuje přístupový token potřebný k vytvoření volání rozhraní API. Autorizace: nosič <Access-Token>
@@ -126,19 +126,19 @@ JSON je běžný jazyk nezávislý na jazyce, který poskytuje jednoduchou texto
 
 FarmBeats DataHub má následující rozhraní API, které umožňuje partnerům zařízení vytvářet a spravovat metadata zařízení nebo senzorů.
 
-- /**DeviceModel** : DeviceModel odpovídá metadatům zařízení, jako je například výrobce a typ zařízení, který je buď bránou, nebo uzlem.
-- /**Zařízení** : zařízení odpovídá fyzickému zařízení, které je ve farmě přítomné.
-- /**SensorModel** : SensorModel odpovídá metadatům snímače, jako je výrobce, typ snímače, který je buď analogový, nebo digitální, a míru snímače, například okolní teplotu a tlak.
-- /**Senzor** : senzor odpovídá fyzickému senzoru, který zaznamenává hodnoty. Senzor se obvykle připojuje k zařízení s ID zařízení.
+- /**DeviceModel**: DeviceModel odpovídá metadatům zařízení, jako je například výrobce a typ zařízení, který je buď bránou, nebo uzlem.
+- /**Zařízení**: zařízení odpovídá fyzickému zařízení, které je ve farmě přítomné.
+- /**SensorModel**: SensorModel odpovídá metadatům snímače, jako je výrobce, typ snímače, který je buď analogový, nebo digitální, a míru snímače, například okolní teplotu a tlak.
+- /**Senzor**: senzor odpovídá fyzickému senzoru, který zaznamenává hodnoty. Senzor se obvykle připojuje k zařízení s ID zařízení.
 
-  DeviceModel | Popis |
+  DeviceModel | Description |
   --- | ---
   Typ (uzel, brána)  | Typ zařízení – uzel nebo brána |
   Manufacturer  | Název výrobce |
   ProductCode  | Kód produktu nebo číslo modelu zařízení Například EnviroMonitor # 6800. |
   Porty  | Název portu a typ, který je digitální nebo analogový.  |
-  Název  | Název, který identifikuje prostředek. Například název modelu nebo název produktu. |
-  Popis  | Poskytněte smysluplný popis modelu. |
+  Name  | Název, který identifikuje prostředek. Například název modelu nebo název produktu. |
+  Description  | Poskytněte smysluplný popis modelu. |
   Vlastnosti  | Další vlastnosti od výrobce. |
   **Zařízení** | **Popis** |
   DeviceModelId  |ID přidruženého modelu zařízení |
@@ -146,8 +146,8 @@ FarmBeats DataHub má následující rozhraní API, které umožňuje partnerům
   ReportingInterval |Interval generování sestav v sekundách. |
   Umístění    |Zeměpisná šířka zařízení (-90 až + 90), zeměpisná délka (-180 až 180) a zvýšení úrovně (v metrech). |
   ParentDeviceId | ID nadřazeného zařízení, ke kterému je připojeno toto zařízení Například pokud je uzel připojen k bráně, uzel má jako bránu parentDeviceID. |
-  Název  | Název, který identifikuje prostředek. Partneři zařízení musí poslat název, který je konzistentní s názvem zařízení na straně partnera zařízení. Pokud je název zařízení definovaný uživatelem na straně partnera zařízení, stejný uživatelsky definovaný název by měl být šířen do FarmBeats.  |
-  Popis  | Zadejte smysluplný popis.  |
+  Name  | Název, který identifikuje prostředek. Partneři zařízení musí poslat název, který je konzistentní s názvem zařízení na straně partnera zařízení. Pokud je název zařízení definovaný uživatelem na straně partnera zařízení, stejný uživatelsky definovaný název by měl být šířen do FarmBeats.  |
+  Description  | Zadejte smysluplný popis.  |
   Vlastnosti  |Další vlastnosti od výrobce.  |
   **SensorModel** | **Popis** |
   Typ (analogové, digitální)  |Zmiňující analogový nebo digitální senzor.|
@@ -160,8 +160,8 @@ FarmBeats DataHub má následující rozhraní API, které umožňuje partnerům
   SensorMeasures > AggregationType  | Buď None, Average, Max, minima nebo StandardDeviation.
   Hloubka > SensorMeasures  | Hloubka senzoru v centimetrech Například měření vlhkosti 10 cm pod vozovkou.
   Popis > SensorMeasures  | Poskytněte smysluplný popis měření.
-  Název  | Název, který identifikuje prostředek. Například název modelu nebo název produktu.
-  Popis  | Poskytněte smysluplný popis modelu.
+  Name  | Název, který identifikuje prostředek. Například název modelu nebo název produktu.
+  Description  | Poskytněte smysluplný popis modelu.
   Vlastnosti  | Další vlastnosti od výrobce.
   **Elektrické**  | **Popis** |
   HardwareId  | Jedinečné ID pro senzory nastavené výrobcem.
@@ -169,8 +169,8 @@ FarmBeats DataHub má následující rozhraní API, které umožňuje partnerům
   Umístění  | Zeměpisná šířka (-90 až + 90), zeměpisná délka (-180 až 180) a zvýšení úrovně (v metrech).
   Název > portu  |Název a typ portu, ke kterému je senzor připojen na zařízení. Tento název musí být stejný jako definovaný v modelu zařízení.
   DeviceId  | ID zařízení, ke kterému je senzor připojen.
-  Název  | Název, který identifikuje prostředek. Například název senzoru nebo název produktu a číslo modelu nebo kód produktu.
-  Popis  | Zadejte smysluplný popis.
+  Name  | Název, který identifikuje prostředek. Například název senzoru nebo název produktu a číslo modelu nebo kód produktu.
+  Description  | Zadejte smysluplný popis.
   Vlastnosti  | Další vlastnosti od výrobce.
 
  Informace o jednotlivých objektech a jejich vlastnostech naleznete v [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
@@ -324,7 +324,7 @@ Partneři zařízení můžou zákazníkům Povolit úpravu nastavení integrace
 
 ## <a name="view-the-last-telemetry-sent"></a>Zobrazení poslední odeslané telemetrie
 
-Partneři zařízení můžou zákazníkům povolit zobrazení časového razítka poslední doručené telemetrie, která se nachází na základě **odeslané telemetrie** . To je čas, kdy se úspěšně poslala nejnovější telemetrie do FarmBeats.
+Partneři zařízení můžou zákazníkům povolit zobrazení časového razítka poslední doručené telemetrie, která se nachází na základě **odeslané telemetrie**. To je čas, kdy se úspěšně poslala nejnovější telemetrie do FarmBeats.
 
 ## <a name="troubleshooting-and-error-management"></a>Řešení potíží a správa chyb
 

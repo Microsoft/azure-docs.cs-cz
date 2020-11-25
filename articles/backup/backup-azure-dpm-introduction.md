@@ -4,11 +4,11 @@ description: V tomto článku se dozvíte, jak připravit zálohy aplikace Syste
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.openlocfilehash: 0089c3d86eb36b82287570ecdfd6e8c782e6fb8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975452"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002851"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Příprava zálohování úloh do Azure pomocí System Center DPM
 
@@ -48,7 +48,7 @@ Podporované typy souborů | Tyto typy souborů je možné zálohovat pomocí Az
 Nepodporované typy souborů | <li>Servery se systémy souborů s rozlišováním velkých a malých písmen<li> pevné odkazy (vynecháno)<li> body rozboru (přeskočeny)<li> šifrované a komprimované (vynechané)<li> šifrované a zhuštěné (přeskočené)<li> Komprimovaný datový proud<li> analyzovat datový proud
 Místní úložiště | Každý počítač, který chcete zálohovat, musí mít místní volné úložiště, které má nejméně 5% velikosti zálohovaných dat. Například zálohování 100 GB dat vyžaduje minimálně 5 GB volného místa v umístění od začátku.
 Úložiště trezoru | Neexistuje žádné omezení na množství dat, která můžete zálohovat do trezoru Azure Backup, ale velikost zdroje dat (například virtuální počítač nebo databáze) by neměla překročit 54 400 GB.
-Azure ExpressRoute | Data můžete zálohovat přes Azure ExpressRoute s veřejným partnerským vztahem (k dispozici pro staré okruhy) a partnerským vztahem Microsoftu. Zálohování přes soukromý partnerský vztah se nepodporuje.<br/><br/> **S veřejným partnerským vztahem**: Zajistěte přístup k následujícím doménám nebo adresám:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **S partnerským vztahem Microsoftu**vyberte následující služby nebo oblasti a příslušné hodnoty komunity:<br/><br/>-Azure Active Directory (12076:5060)<br/><br/>-Microsoft Azure oblasti (podle umístění vašeho trezoru Recovery Services)<br/><br/>-Azure Storage (podle umístění vašeho trezoru Recovery Services)<br/><br/>Další informace najdete v tématu [požadavky na směrování ExpressRoute](../expressroute/expressroute-routing.md).<br/><br/>**Poznámka**: veřejný partnerský vztah je pro nové okruhy zastaralý.
+Azure ExpressRoute | Data můžete zálohovat přes Azure ExpressRoute s veřejným partnerským vztahem (k dispozici pro staré okruhy) a partnerským vztahem Microsoftu. Zálohování přes soukromý partnerský vztah se nepodporuje.<br/><br/> **S veřejným partnerským vztahem**: Zajistěte přístup k následujícím doménám nebo adresám:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **S partnerským vztahem Microsoftu** vyberte následující služby nebo oblasti a příslušné hodnoty komunity:<br/><br/>-Azure Active Directory (12076:5060)<br/><br/>-Microsoft Azure oblasti (podle umístění vašeho trezoru Recovery Services)<br/><br/>-Azure Storage (podle umístění vašeho trezoru Recovery Services)<br/><br/>Další informace najdete v tématu [požadavky na směrování ExpressRoute](../expressroute/expressroute-routing.md).<br/><br/>**Poznámka**: veřejný partnerský vztah je pro nové okruhy zastaralý.
 Agent Azure Backup | Je-li aplikace DPM spuštěna v produktu System Center 2012 SP1, nainstalujte kumulativní aktualizaci 2 nebo novější pro aplikaci DPM SP1. To je vyžadováno pro instalaci agenta.<br/><br/> Tento článek popisuje, jak nasadit nejnovější verzi agenta Azure Backup, označovaného také jako agent služby Microsoft Azure Recovery Services (MARS). Pokud máte nasazenou starší verzi, aktualizujte na nejnovější verzi, abyste zajistili, že zálohování funguje podle očekávání.
 
 Než začnete, potřebujete účet Azure s povolenou funkcí Azure Backup. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Přečtěte si o [cenách Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
@@ -68,7 +68,7 @@ Chcete-li upravit nastavení replikace úložiště:
 
 1. Otevřete řídicí panel trezoru.
 
-2. V **možnosti spravovat**vyberte **infrastruktura zálohování**.
+2. V **možnosti spravovat** vyberte **infrastruktura zálohování**.
 
 3. V nabídce **Konfigurace zálohování** vyberte možnost úložiště pro trezor.
 
@@ -97,13 +97,13 @@ Pokud chcete získat přihlašovací údaje, Stáhněte si soubor s přihlašova
 
 Stáhněte si soubor s přihlašovacími údaji trezoru do místního počítače následujícím způsobem:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Otevřete trezor, ve kterém chcete zaregistrovat server DPM.
-3. V **Nastavení**vyberte **vlastnosti**.
+3. V **Nastavení** vyberte **vlastnosti**.
 
     ![Otevření nabídky trezoru](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 
-4. V **vlastnosti**  >  **zálohovat přihlašovací údaje**vyberte **Stáhnout**. Portál vygeneruje soubor s přihlašovacími údaji trezoru pomocí kombinace názvu trezoru a aktuálního data a zpřístupní ho ke stažení.
+4. V **vlastnosti**  >  **zálohovat přihlašovací údaje** vyberte **Stáhnout**. Portál vygeneruje soubor s přihlašovacími údaji trezoru pomocí kombinace názvu trezoru a aktuálního data a zpřístupní ho ke stažení.
 
     ![Stáhnout přihlašovací údaje](./media/backup-azure-dpm-introduction/vault-credentials.png)
 
@@ -114,7 +114,7 @@ Stáhněte si soubor s přihlašovacími údaji trezoru do místního počítač
 Každý počítač, který je zálohovaný pomocí Azure Backup musí mít nainstalovaného agenta Zálohování (také označovaný jako agent služby obnovení Microsoft Azure (MARS). Nainstalujte agenta na server DPM následujícím způsobem:
 
 1. Otevřete trezor, do kterého chcete zaregistrovat server aplikace DPM.
-2. V **Nastavení**vyberte **vlastnosti**.
+2. V **Nastavení** vyberte **vlastnosti**.
 
     ![Otevřít nastavení trezoru](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 3. Na stránce **vlastnosti** stáhněte agenta Azure Backup.
@@ -131,19 +131,19 @@ Každý počítač, který je zálohovaný pomocí Azure Backup musí mít nains
 
 ## <a name="register-the-dpm-server-in-the-vault"></a>Registrace serveru DPM v trezoru
 
-1. V konzole správce aplikace DPM > **Správa**vyberte možnost **online**. Vyberte **Zaregistrovat**. Otevře se Průvodce registrací serveru.
-2. V části **konfigurace proxy**zadejte požadovaná nastavení proxy serveru.
+1. V konzole správce aplikace DPM > **Správa** vyberte možnost **online**. Vyberte **Zaregistrovat**. Otevře se Průvodce registrací serveru.
+2. V části **konfigurace proxy** zadejte požadovaná nastavení proxy serveru.
 
     ![Konfigurace proxy serveru](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Proxy.png)
-3. V **trezoru služby Backup**vyhledejte a vyberte soubor s přihlašovacími údaji trezoru, který jste stáhli.
+3. V **trezoru služby Backup** vyhledejte a vyberte soubor s přihlašovacími údaji trezoru, který jste stáhli.
 
     ![Přihlašovací údaje trezoru](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Credentials.jpg)
 
-4. V **nastavení omezování**můžete volitelně povolit omezení šířky pásma pro zálohy. Můžete nastavit omezení rychlosti pro možnost zadat pracovní dobu a dny.
+4. V **nastavení omezování** můžete volitelně povolit omezení šířky pásma pro zálohy. Můžete nastavit omezení rychlosti pro možnost zadat pracovní dobu a dny.
 
     ![Nastavení omezování](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Throttling.png)
 
-5. V **Nastavení složka pro obnovení**zadejte umístění, které se dá použít při obnovování dat.
+5. V **Nastavení složka pro obnovení** zadejte umístění, které se dá použít při obnovování dat.
 
     - Azure Backup používá toto umístění jako dočasnou oblast pro obnovená data.
     - Po dokončení obnovení dat Azure Backup vyčistí data v této oblasti.
@@ -151,7 +151,7 @@ Každý počítač, který je zálohovaný pomocí Azure Backup musí mít nains
 
     ![Nastavení složky pro obnovení](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_RecoveryFolder.png)
 
-6. V **nastavení šifrování**vygenerujte nebo poskytněte přístupové heslo.
+6. V **nastavení šifrování** vygenerujte nebo poskytněte přístupové heslo.
 
     - Přístupové heslo slouží k zašifrování záloh do cloudu.
     - Zadejte minimálně 16 znaků.

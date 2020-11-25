@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/10/2019
 ms.openlocfilehash: 07bd92e17b827dfeede5958587cecbdc97694329
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545289"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003918"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Vytvoření a konfigurace clusterů Balíček zabezpečení podniku ve službě Azure HDInsight
 
@@ -39,7 +39,7 @@ V této části použijete šablonu nasazení Azure pro rychlý Start k vytvoře
 
 1. Pokud chcete [vytvořit virtuální počítač Azure s novou doménovou strukturou služby Active Directory](https://azure.microsoft.com/resources/templates/active-directory-new-domain/), můžete přejít na šablonu nasazení pro rychlý Start.
 
-1. Vyberte **nasadit do Azure** .
+1. Vyberte **nasadit do Azure**.
 1. Přihlaste se ke svému předplatnému Azure.
 1. Na stránce **vytvořit virtuální počítač Azure s novou doménovou strukturou služby AD** zadejte tyto informace:
 
@@ -57,7 +57,7 @@ V této části použijete šablonu nasazení Azure pro rychlý Start k vytvoře
 
     ![Šablona pro vytvoření virtuálního počítače Azure s novou doménovou strukturou Azure AD](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-azure-vm-ad-forest.png)
 
-1. Přečtěte si **podmínky a ujednání** a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními** .
+1. Přečtěte si **podmínky a ujednání** a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními**.
 1. Vyberte **koupit** a sledujte nasazení a počkejte, než se dokončí. Dokončení nasazení trvá přibližně 30 minut.
 
 ## <a name="configure-users-and-groups-for-cluster-access"></a>Konfigurace uživatelů a skupin pro přístup k clusteru
@@ -65,24 +65,24 @@ V této části použijete šablonu nasazení Azure pro rychlý Start k vytvoře
 V této části vytvoříte uživatele, kteří budou mít přístup ke clusteru HDInsight na konci této příručky.
 
 1. Připojte se k řadiči domény pomocí vzdálené plochy.
-    1. V Azure Portal přejděte na **skupiny prostředků**  >  **OnPremADVRG**  >  **adVM**  >  **připojit** .
+    1. V Azure Portal přejděte na **skupiny prostředků**  >  **OnPremADVRG**  >  **adVM**  >  **připojit**.
     1. V rozevíracím seznamu **IP adresa** vyberte veřejná IP adresa.
     1. Vyberte **Stáhnout soubor RDP** a pak soubor otevřete.
     1. Použijte `HDIFabrikam\HDIFabrikamAdmin` jako uživatelské jméno.
     1. Zadejte heslo, které jste zvolili pro účet správce.
-    1. Vyberte **OK** .
+    1. Vyberte **OK**.
 
-1. Z řadiče domény **Správce serveru** řídicím panelu přejděte na **nástroje**  >  **Uživatelé a počítače služby Active Directory** .
+1. Z řadiče domény **Správce serveru** řídicím panelu přejděte na **nástroje**  >  **Uživatelé a počítače služby Active Directory**.
 
     ![Na řídicím panelu Správce serveru otevřete správu služby Active Directory.](./media/apache-domain-joined-create-configure-enterprise-security-cluster/server-manager-active-directory-screen.png)
 
-1. Vytvořte dva nové uživatele: **HDIAdmin** a **HDIUser** . Tito dva uživatelé se budou přihlašovat ke clusterům HDInsight.
+1. Vytvořte dva nové uživatele: **HDIAdmin** a **HDIUser**. Tito dva uživatelé se budou přihlašovat ke clusterům HDInsight.
 
-    1. Na stránce **Uživatelé a počítače služby Active Directory** klikněte pravým tlačítkem myši `HDIFabrikam.com` a potom přejděte k **novému**  >  **uživateli** .
+    1. Na stránce **Uživatelé a počítače služby Active Directory** klikněte pravým tlačítkem myši `HDIFabrikam.com` a potom přejděte k **novému**  >  **uživateli**.
 
         ![Vytvořit nového uživatele služby Active Directory](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-user.png)
 
-    1. Na stránce **Nový objekt – uživatel** zadejte pro jméno `HDIUser` a **First name** **přihlašovací jméno uživatele** . Ostatní pole se vyplní automaticky. Pak vyberte **Další** .
+    1. Na stránce **Nový objekt – uživatel** zadejte pro jméno `HDIUser` a **First name** **přihlašovací jméno uživatele**. Ostatní pole se vyplní automaticky. Pak vyberte **Další**.
 
         ![Vytvoření prvního objektu uživatele správce](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0020.png)
 
@@ -94,19 +94,19 @@ V této části vytvoříte uživatele, kteří budou mít přístup ke clusteru
 
 1. Vytvořte globální skupinu zabezpečení.
 
-    1. V části **Uživatelé a počítače služby Active Directory** klikněte pravým tlačítkem myši `HDIFabrikam.com` a potom přejděte do **nové**  >  **skupiny** .
+    1. V části **Uživatelé a počítače služby Active Directory** klikněte pravým tlačítkem myši `HDIFabrikam.com` a potom přejděte do **nové**  >  **skupiny**.
 
     1. `HDIUserGroup`Do textového pole **název skupiny** zadejte.
 
-    1. Vyberte **OK** .
+    1. Vyberte **OK**.
 
     ![Vytvoření nové skupiny služby Active Directory](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-group.png)
 
     ![Vytvořit nový objekt](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0028.png)
 
-1. Přidejte členy do **HDIUserGroup** .
+1. Přidejte členy do **HDIUserGroup**.
 
-    1. Klikněte pravým tlačítkem na **HDIUser** a vyberte **Přidat do skupiny...** .
+    1. Klikněte pravým tlačítkem na **HDIUser** a vyberte **Přidat do skupiny...**.
     1. Do textového pole **Zadejte názvy objektů k výběru** zadejte `HDIUserGroup` . Pak vyberte **OK** a znovu **OK** v automaticky otevíraném okně.
     1. Opakujte předchozí postup pro účet **HDIAdmin** .
 
@@ -119,28 +119,28 @@ Uživatelé budou synchronizováni se službou Azure AD.
 ### <a name="create-an-azure-ad-directory"></a>Vytvoření adresáře Azure AD
 
 1. Přihlaste se k webu Azure Portal.
-1. Vyberte **vytvořit prostředek** a typ `directory` . Vyberte **Azure Active Directory**  >  **vytvořit** .
+1. Vyberte **vytvořit prostředek** a typ `directory` . Vyberte **Azure Active Directory**  >  **vytvořit**.
 1. Do **pole název organizace** zadejte `HDIFabrikam` .
 1. V části **počáteční název domény** zadejte `HDIFabrikamoutlook` .
-1. Vyberte **Vytvořit** .
+1. Vyberte **Vytvořit**.
 
     ![Vytvoření adresáře Azure AD](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-new-directory.png)
 
 ### <a name="create-a-custom-domain"></a>Vytvoření vlastní domény
 
-1. V novém **Azure Active Directory** v části **Spravovat** vyberte **vlastní názvy domén** .
-1. Vyberte **+ Přidat vlastní doménu** .
-1. V části **vlastní název domény** zadejte `HDIFabrikam.com` a pak vyberte **Přidat doménu** .
+1. V novém **Azure Active Directory** v části **Spravovat** vyberte **vlastní názvy domén**.
+1. Vyberte **+ Přidat vlastní doménu**.
+1. V části **vlastní název domény** zadejte `HDIFabrikam.com` a pak vyberte **Přidat doménu**.
 1. Potom dokončete [Přidání informací DNS do doménového registrátora](../../active-directory/fundamentals/add-custom-domain.md#add-your-dns-information-to-the-domain-registrar).
 
 ![Vytvoření vlastní domény](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-custom-domain.png)
 
 ### <a name="create-a-group"></a>Vytvoření skupiny
 
-1. V novém **Azure Active Directory** v části **Spravovat** vyberte **skupiny** .
-1. Vyberte **+ Nová skupina** .
+1. V novém **Azure Active Directory** v části **Spravovat** vyberte **skupiny**.
+1. Vyberte **+ Nová skupina**.
 1. Do textového pole **název skupiny** zadejte `AAD DC Administrators` .
-1. Vyberte **Vytvořit** .
+1. Vyberte **Vytvořit**.
 
 ## <a name="configure-your-azure-ad-tenant"></a>Konfigurace tenanta Azure AD
 
@@ -148,9 +148,9 @@ Teď nakonfigurujete tenanta Azure AD tak, aby bylo možné synchronizovat uživ
 
 Vytvořte správce tenanta služby Active Directory.
 
-1. Přihlaste se k Azure Portal a vyberte svého tenanta Azure AD **HDIFabrikam** .
+1. Přihlaste se k Azure Portal a vyberte svého tenanta Azure AD **HDIFabrikam**.
 
-1. Přejděte na **Spravovat**  >  **uživatele** –  >  **Nový uživatel** .
+1. Přejděte na **Spravovat**  >  **uživatele**–  >  **Nový uživatel**.
 
 1. Pro nového uživatele zadejte následující podrobnosti:
 
@@ -159,24 +159,24 @@ Vytvořte správce tenanta služby Active Directory.
     |Vlastnost |Popis |
     |---|---|
     |Uživatelské jméno|`fabrikamazureadmin`Do textového pole zadejte. V rozevíracím seznamu název domény vyberte `hdifabrikam.com`|
-    |Název| Zadejte `fabrikamazureadmin`.|
+    |Name| Zadejte `fabrikamazureadmin`.|
 
     **Heslo**
-    1. Vyberte možnost **Chci vytvořit heslo** .
+    1. Vyberte možnost **Chci vytvořit heslo**.
     1. Zadejte zabezpečené heslo podle vašeho výběru.
 
     **Skupiny a role**
-    1. Vyberte **0 vybraných skupin** .
-    1. Vyberte **správce AAD řadiče domény** a pak **Vyberte** .
+    1. Vyberte **0 vybraných skupin**.
+    1. Vyberte **správce AAD řadiče domény** a pak **Vyberte**.
 
     ![Dialogové okno skupiny Azure AD](./media/apache-domain-joined-create-configure-enterprise-security-cluster/azure-ad-add-group-member.png)
 
-    1. Vyberte možnost **uživatel** .
-    1. Vyberte **globální správce** a pak **Vyberte** .
+    1. Vyberte možnost **uživatel**.
+    1. Vyberte **globální správce** a pak **Vyberte**.
 
     ![Dialogové okno role Azure AD](./media/apache-domain-joined-create-configure-enterprise-security-cluster/azure-ad-add-role-member.png)
 
-1. Vyberte **Vytvořit** .
+1. Vyberte **Vytvořit**.
 
 1. Pak se nový uživatel přihlásí k Azure Portal, kde se zobrazí výzva ke změně hesla. To je nutné provést před konfigurací Microsoft Azure Active Directory Connect.
 
@@ -186,25 +186,25 @@ Vytvořte správce tenanta služby Active Directory.
 
 1. Z řadiče domény stáhněte [Microsoft Azure Active Directory Connect](https://www.microsoft.com/download/details.aspx?id=47594).
 
-1. Otevřete spustitelný soubor, který jste stáhli, a vyjádřete souhlas s licenčními podmínkami. Vyberte **Pokračovat** .
+1. Otevřete spustitelný soubor, který jste stáhli, a vyjádřete souhlas s licenčními podmínkami. Vyberte **Pokračovat**.
 
-1. Vyberte **Použít expresní nastavení** .
+1. Vyberte **Použít expresní nastavení**.
 
-1. Na stránce **připojit ke službě Azure AD** zadejte uživatelské jméno a heslo globálního správce služby Azure AD. Použijte uživatelské jméno `fabrikamazureadmin@hdifabrikam.com` , které jste vytvořili při konfiguraci tenanta služby Active Directory. Pak vyberte **Další** .
+1. Na stránce **připojit ke službě Azure AD** zadejte uživatelské jméno a heslo globálního správce služby Azure AD. Použijte uživatelské jméno `fabrikamazureadmin@hdifabrikam.com` , které jste vytvořili při konfiguraci tenanta služby Active Directory. Pak vyberte **Další**.
 
     ![Stránka připojit k Azure A D](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0058.png)
 
-1. Na stránce **připojit k Active Directory Domain Services** zadejte uživatelské jméno a heslo pro účet správce podnikové sítě. Použijte uživatelské jméno `HDIFabrikam\HDIFabrikamAdmin` a heslo, které jste vytvořili dříve. Pak vyberte **Další** .
+1. Na stránce **připojit k Active Directory Domain Services** zadejte uživatelské jméno a heslo pro účet správce podnikové sítě. Použijte uživatelské jméno `HDIFabrikam\HDIFabrikamAdmin` a heslo, které jste vytvořili dříve. Pak vyberte **Další**.
 
    ![Stránka "připojit k A D D S".](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0060.png)
-1. Na stránce **Konfigurace přihlášení k Azure AD** vyberte **Další** .
+1. Na stránce **Konfigurace přihlášení k Azure AD** vyberte **Další**.
    ![Stránka Konfigurace přihlášení k Azure AD](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0062.png)
 
-1. Na stránce **připraveno ke konfiguraci** vyberte **instalovat** .
+1. Na stránce **připraveno ke konfiguraci** vyberte **instalovat**.
 
    ![Stránka připraveno ke konfiguraci](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0064.png)
 
-1. Na stránce **Konfigurace byla dokončena** vyberte možnost **ukončit** .
+1. Na stránce **Konfigurace byla dokončena** vyberte možnost **ukončit**.
    ![Stránka "konfigurace dokončena"](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0078.png)
 
 1. Po dokončení synchronizace potvrďte, že uživatelé, které jste vytvořili v adresáři IaaS, se synchronizují do Azure AD.
@@ -216,12 +216,12 @@ Vytvořte správce tenanta služby Active Directory.
 Vytvořte spravovanou identitu přiřazenou uživatelem, kterou můžete použít ke konfiguraci Azure AD Domain Services (Azure služba AD DS). Další informace najdete v tématu [Vytvoření, vypsání, odstranění nebo přiřazení role k spravované identitě přiřazené uživatelem pomocí Azure Portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 
 1. Přihlaste se k webu Azure Portal.
-1. Vyberte **vytvořit prostředek** a typ `managed identity` . Vyberte možnost vytvořit **spravovanou identitu přiřazenou uživatelem**  >  **Create** .
+1. Vyberte **vytvořit prostředek** a typ `managed identity` . Vyberte možnost vytvořit **spravovanou identitu přiřazenou uživatelem**  >  **Create**.
 1. Jako **název prostředku** zadejte `HDIFabrikamManagedIdentity` .
 1. Vyberte své předplatné.
 1. V části **Skupina prostředků** vyberte **vytvořit nové** a zadejte `HDIFabrikam-CentralUS` .
-1. V části **umístění** vyberte **střed USA** .
-1. Vyberte **Vytvořit** .
+1. V části **umístění** vyberte **střed USA**.
+1. Vyberte **Vytvořit**.
 
 ![Vytvořit novou spravovanou identitu přiřazenou uživatelem](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0082.png)
 
@@ -248,28 +248,28 @@ Pomocí následujícího postupu povolíte Azure služba AD DS. Další informac
     ```
 
 1. Přihlaste se k webu Azure Portal.
-1. Vyberte **vytvořit prostředek** , zadejte `Domain services` a vyberte **Azure AD Domain Services**  >  **vytvořit** .
+1. Vyberte **vytvořit prostředek**, zadejte `Domain services` a vyberte **Azure AD Domain Services**  >  **vytvořit**.
 1. Na stránce **základy** :
-    1. V části **název adresáře** vyberte adresář služby Azure AD, který jste vytvořili: **HDIFabrikam** .
-    1. Jako **název domény DNS** zadejte *HDIFabrikam.com* .
+    1. V části **název adresáře** vyberte adresář služby Azure AD, který jste vytvořili: **HDIFabrikam**.
+    1. Jako **název domény DNS** zadejte *HDIFabrikam.com*.
     1. Vyberte své předplatné.
-    1. Zadejte skupinu prostředků **HDIFabrikam-CentralUS** . V **oblasti umístění** vyberte **střed USA** .
+    1. Zadejte skupinu prostředků **HDIFabrikam-CentralUS**. V **oblasti umístění** vyberte **střed USA**.
 
         ![Podrobnosti o Azure služba AD DS základní](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0084.png)
 
-1. Na stránce **síť** vyberte síť ( **HDIFabrikam-VNet** ) a podsíť ( **AADDS-Subnet** ), kterou jste vytvořili pomocí skriptu PowerShellu. Pokud teď chcete vytvořit virtuální síť, vyberte **vytvořit novou** .
+1. Na stránce **síť** vyberte síť (**HDIFabrikam-VNet**) a podsíť (**AADDS-Subnet**), kterou jste vytvořili pomocí skriptu PowerShellu. Pokud teď chcete vytvořit virtuální síť, vyberte **vytvořit novou** .
 
     ![Krok vytvořit virtuální síť](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0086.png)
 
-1. Na stránce **skupina správců** by se měla zobrazit oznámení o tom, že pro správu této skupiny už se vytvořila skupina s názvem **Správci AAD DC** . Členství v této skupině můžete upravit, pokud chcete, ale v takovém případě ji nemusíte měnit. Vyberte **OK** .
+1. Na stránce **skupina správců** by se měla zobrazit oznámení o tom, že pro správu této skupiny už se vytvořila skupina s názvem **Správci AAD DC** . Členství v této skupině můžete upravit, pokud chcete, ale v takovém případě ji nemusíte měnit. Vyberte **OK**.
 
     ![Zobrazit skupinu správce Azure AD](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0088.png)
 
-1. Na stránce **synchronizace** povolte kompletní synchronizaci výběrem možnosti **vše**  >  **OK** .
+1. Na stránce **synchronizace** povolte kompletní synchronizaci výběrem možnosti **vše**  >  **OK**.
 
     ![Povolit synchronizaci se službou Azure služba AD DS](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0090.png)
 
-1. Na stránce **Souhrn** zkontrolujte podrobnosti pro Azure služba AD DS a vyberte **OK** .
+1. Na stránce **Souhrn** zkontrolujte podrobnosti pro Azure služba AD DS a vyberte **OK**.
 
     ![Souhrn příkazu "Enable Azure AD Domain Services"](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0092.png)
 
@@ -277,22 +277,22 @@ Po povolení služby Azure služba AD DS bude místní server DNS spuštěný na
 
 ### <a name="configure-your-azure-ad-ds-virtual-network"></a>Konfigurace virtuální sítě Azure služba AD DS
 
-Pomocí následujících kroků můžete nakonfigurovat službu Azure služba AD DS Virtual Network ( **HDIFabrikam-AADDSVNET** ), aby používala vlastní servery DNS.
+Pomocí následujících kroků můžete nakonfigurovat službu Azure služba AD DS Virtual Network (**HDIFabrikam-AADDSVNET**), aby používala vlastní servery DNS.
 
 1. Vyhledejte IP adresy vašich vlastních serverů DNS.
     1. Vyberte `HDIFabrikam.com` prostředek Azure služba AD DS.
-    1. V části **Spravovat** vyberte **vlastnosti** .
-    1. Vyhledá IP adresy v části **IP adresa ve virtuální síti** .
+    1. V části **Spravovat** vyberte **vlastnosti**.
+    1. Vyhledá IP adresy v části **IP adresa ve virtuální síti**.
 
     ![Vyhledání vlastních IP adres DNS pro Azure služba AD DS](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0096.png)
 
 1. Nakonfigurujte **HDIFabrikam-AADDSVNET** , aby používaly vlastní IP adresy 10.0.0.4 a 10.0.0.5.
 
-    1. V části **Nastavení** vyberte **servery DNS** .
-    1. Vyberte možnost **vlastní** .
-    1. Do textového pole zadejte první IP adresu ( *10.0.0.4* ).
-    1. Vyberte **Uložit** .
-    1. Zopakováním kroků přidejte druhou IP adresu ( *10.0.0.5* ).
+    1. V části **Nastavení** vyberte **servery DNS**.
+    1. Vyberte možnost **vlastní**.
+    1. Do textového pole zadejte první IP adresu (*10.0.0.4*).
+    1. Vyberte **Uložit**.
+    1. Zopakováním kroků přidejte druhou IP adresu (*10.0.0.5*).
 
 V našem scénáři jsme nakonfigurovali služba AD DS pro Azure, aby používaly IP adresy 10.0.0.4 a 10.0.0.5, a nastavení stejné IP adresy ve službě Azure služba AD DS Virtual Network:
 
@@ -306,7 +306,7 @@ Další informace o zabezpečeném protokolu LDAP najdete v tématu [Konfigurace
 
 V této části vytvoříte certifikát podepsaný svým držitelem, stáhnete certifikát a nakonfigurujete LDAPs pro **HDIFabrikam** Azure služba AD DS spravované domény.
 
-Následující skript vytvoří certifikát pro **HDIFabrikam** . Certifikát je uložený v cestě *LocalMachine* .
+Následující skript vytvoří certifikát pro **HDIFabrikam**. Certifikát je uložený v cestě *LocalMachine* .
 
 ```powershell
 $lifetime = Get-Date
@@ -322,32 +322,32 @@ Ověřte, zda je certifikát nainstalován v **osobním** úložišti počítač
 
 1. Spusťte konzolu MMC (Microsoft Management Console).
 1. Přidejte modul snap-in **certifikáty** , který spravuje certifikáty v místním počítači.
-1. Rozbalte položku **certifikáty (místní počítač)**  >  **osobní**  >  **certifikáty** . V **osobním** úložišti by měl existovat nový certifikát. Tento certifikát je vydaný plně kvalifikovanému názvu hostitele.
+1. Rozbalte položku **certifikáty (místní počítač)**  >  **osobní**  >  **certifikáty**. V **osobním** úložišti by měl existovat nový certifikát. Tento certifikát je vydaný plně kvalifikovanému názvu hostitele.
 
     ![Ověřit vytvoření místního certifikátu](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0102.png)
 
-1. V pravém podokně klikněte pravým tlačítkem na certifikát, který jste vytvořili. Přejděte na **všechny úlohy** a pak vyberte **exportovat** .
+1. V pravém podokně klikněte pravým tlačítkem na certifikát, který jste vytvořili. Přejděte na **všechny úlohy** a pak vyberte **exportovat**.
 
-1. Na stránce **exportovat soukromý klíč** vyberte **Ano, exportovat soukromý klíč** . Počítač, do kterého se klíč importuje, potřebuje k přečtení šifrovaných zpráv privátní klíč.
+1. Na stránce **exportovat soukromý klíč** vyberte **Ano, exportovat soukromý klíč**. Počítač, do kterého se klíč importuje, potřebuje k přečtení šifrovaných zpráv privátní klíč.
 
     ![Stránka export privátního klíče Průvodce exportem certifikátu](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0103.png)
 
-1. Na stránce **Formát souboru pro export** ponechte výchozí nastavení a pak vyberte **Další** .
-1. Na stránce **heslo** zadejte heslo pro privátní klíč. V případě **šifrování** vyberte možnost **TripleDES-SHA1** . Pak vyberte **Další** .
-1. Na stránce **soubor pro export** zadejte cestu a název exportovaného souboru certifikátu a pak vyberte **Další** . Název souboru musí mít příponu. pfx. Tento soubor je nakonfigurovaný v Azure Portal, aby se navázalo zabezpečené připojení.
+1. Na stránce **Formát souboru pro export** ponechte výchozí nastavení a pak vyberte **Další**.
+1. Na stránce **heslo** zadejte heslo pro privátní klíč. V případě **šifrování** vyberte možnost **TripleDES-SHA1**. Pak vyberte **Další**.
+1. Na stránce **soubor pro export** zadejte cestu a název exportovaného souboru certifikátu a pak vyberte **Další**. Název souboru musí mít příponu. pfx. Tento soubor je nakonfigurovaný v Azure Portal, aby se navázalo zabezpečené připojení.
 1. Povoluje protokol LDAPs pro spravovanou doménu Azure služba AD DS.
     1. Z Azure Portal vyberte doménu `HDIFabrikam.com` .
-    1. V části **Spravovat** vyberte **protokol Secure LDAP** .
-    1. Na stránce **protokol Secure LDAP** v části **protokol Secure LDAP** vyberte **Povolit** .
+    1. V části **Spravovat** vyberte **protokol Secure LDAP**.
+    1. Na stránce **protokol Secure LDAP** v části **protokol Secure LDAP** vyberte **Povolit**.
     1. Vyhledejte soubor certifikátu. pfx, který jste exportovali v počítači.
     1. Zadejte heslo certifikátu.
 
     ![Povolit zabezpečený protokol LDAP](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0113.png)
 
 1. Teď, když jste povolili LDAPs, se ujistěte, že je dosažitelná povolením portu 636.
-    1. Ve skupině prostředků **HDIFabrikam-CentralUS** vyberte skupinu zabezpečení sítě **AADDS-HDIFabrikam.com-NSG** .
-    1. V části **Nastavení** vyberte **příchozí pravidla zabezpečení**  >  **Přidat** .
-    1. Na stránce **Přidat pravidlo zabezpečení příchozího připojení** zadejte následující vlastnosti a vyberte **Přidat** :
+    1. Ve skupině prostředků **HDIFabrikam-CentralUS** vyberte skupinu zabezpečení sítě **AADDS-HDIFabrikam.com-NSG**.
+    1. V části **Nastavení** vyberte **příchozí pravidla zabezpečení**  >  **Přidat**.
+    1. Na stránce **Přidat pravidlo zabezpečení příchozího připojení** zadejte následující vlastnosti a vyberte **Přidat**:
 
         | Vlastnost | Hodnota |
         |---|---|
@@ -358,7 +358,7 @@ Ověřte, zda je certifikát nainstalován v **osobním** úložišti počítač
         | Protokol | Libovolný |
         | Akce | Povolit |
         | Priorita | \<Desired number> |
-        | Název | Port_LDAP_636 |
+        | Name | Port_LDAP_636 |
 
     ![Dialogové okno Přidat příchozí pravidlo zabezpečení](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 
@@ -370,7 +370,7 @@ Ověřte, zda je certifikát nainstalován v **osobním** úložišti počítač
 
 Tento krok vyžaduje následující požadavky:
 
-1. Vytvořte novou skupinu prostředků *HDIFabrikam-WestUS* v umístění **západní USA** .
+1. Vytvořte novou skupinu prostředků *HDIFabrikam-WestUS* v umístění **západní USA**.
 1. Vytvořte virtuální síť, která bude hostovat cluster HDInsight s podporou protokolu ESP.
 
     ```powershell
@@ -387,34 +387,34 @@ Tento krok vyžaduje následující požadavky:
     Add-AzVirtualNetworkPeering -Name 'AADDSVNet-HDIVNet' -RemoteVirtualNetworkId (Get-AzVirtualNetwork -ResourceGroupName 'HDIFabrikam-WestUS').Id -VirtualNetwork (Get-AzVirtualNetwork -ResourceGroupName 'HDIFabrikam-CentralUS')
     ```
 
-1. Vytvořte nový účet Azure Data Lake Storage Gen2 s názvem **Hdigen2store** . Nakonfigurujte účet pomocí uživatelsky spravované identity **HDIFabrikamManagedIdentity** . Další informace najdete v tématu [použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md).
+1. Vytvořte nový účet Azure Data Lake Storage Gen2 s názvem **Hdigen2store**. Nakonfigurujte účet pomocí uživatelsky spravované identity **HDIFabrikamManagedIdentity**. Další informace najdete v tématu [použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 1. Nastavte vlastní DNS ve virtuální síti **HDIFabrikam-AADDSVNET** .
-    1. Do **skupin prostředků** služby Azure Portal >  >  **OnPremADVRG**  >  **HDIFabrikam-AADDSVNET**  >  **servery DNS** .
-    1. Vyberte **vlastní** a zadejte *10.0.0.4* a *10.0.0.5* .
-    1. Vyberte **Uložit** .
+    1. Do **skupin prostředků** služby Azure Portal >  >  **OnPremADVRG**  >  **HDIFabrikam-AADDSVNET**  >  **servery DNS**.
+    1. Vyberte **vlastní** a zadejte *10.0.0.4* a *10.0.0.5*.
+    1. Vyberte **Uložit**.
 
         ![Uložení vlastních nastavení DNS pro virtuální síť](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0123.png)
 
 1. Vytvořte nový cluster HDInsight Spark s povoleným protokolem ESP.
-    1. Vyberte **vlastní (velikost, nastavení, aplikace)** .
-    1. Zadejte podrobnosti o **základech** (oddíl 1). Zajistěte, aby byl **cluster typu** **Spark 2,3 (HDI 3,6)** . Ujistěte se, že je **Skupina prostředků** **HDIFabrikam-CentralUS** .
+    1. Vyberte **vlastní (velikost, nastavení, aplikace)**.
+    1. Zadejte podrobnosti o **základech** (oddíl 1). Zajistěte, aby byl **cluster typu** **Spark 2,3 (HDI 3,6)**. Ujistěte se, že je **Skupina prostředků** **HDIFabrikam-CentralUS**.
 
     1. Pro **zabezpečení a sítě** (část 2) vyplňte následující podrobnosti:
-        * V části **balíček zabezpečení podniku** vyberte **povoleno** .
-        * Vyberte možnost **uživatel správce clusteru** a vyberte účet **HDIAdmin** , který jste vytvořili jako místní uživatel s oprávněními správce. Klikněte na **Vybrat** .
-        * Vyberte **skupinu přístupu clusteru**  >  **HDIUserGroup** . Každý uživatel, který přidáte do této skupiny v budoucnosti, bude mít přístup k clusterům HDInsight.
+        * V části **balíček zabezpečení podniku** vyberte **povoleno**.
+        * Vyberte možnost **uživatel správce clusteru** a vyberte účet **HDIAdmin** , který jste vytvořili jako místní uživatel s oprávněními správce. Klikněte na **Vybrat**.
+        * Vyberte **skupinu přístupu clusteru**  >  **HDIUserGroup**. Každý uživatel, který přidáte do této skupiny v budoucnosti, bude mít přístup k clusterům HDInsight.
 
             ![Vyberte skupinu přístupu clusteru HDIUserGroup](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0129.jpg)
 
-    1. Proveďte další kroky konfigurace clusteru a ověřte podrobnosti o **souhrnu clusteru** . Vyberte **Vytvořit** .
+    1. Proveďte další kroky konfigurace clusteru a ověřte podrobnosti o **souhrnu clusteru**. Vyberte **Vytvořit**.
 
 1. Přihlaste se k uživatelskému rozhraní Ambari pro nově vytvořený cluster v `https://CLUSTERNAME.azurehdinsight.net` . Použijte uživatelské jméno správce `hdiadmin@hdifabrikam.com` a jeho heslo.
 
     ![Přihlašovací okno uživatelského rozhraní Apache Ambari](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0135.jpg)
 
-1. Z řídicího panelu clusteru vyberte **role** .
-1. Na stránce **role** v části **přiřadit role k těmto** položkám vedle role **Správce clusteru** zadejte skupinu *hdiusergroup* . 
+1. Z řídicího panelu clusteru vyberte **role**.
+1. Na stránce **role** v části **přiřadit role k těmto** položkám vedle role **Správce clusteru** zadejte skupinu *hdiusergroup*. 
 
     ![Přiřazení role Správce clusteru k hdiusergroup](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0137.jpg)
 

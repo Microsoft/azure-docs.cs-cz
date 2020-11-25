@@ -15,11 +15,11 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 8ed567ee20835cfe076c9b06234f2cba23f3a8bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509116"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002548"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Řešení potíží s nasazením virtuálního počítače s Windows v Azure
 
@@ -38,7 +38,7 @@ productPesIds="1234, 5678"
 />
 - Opakujte požadavek s menší velikostí virtuálního počítače.
 - Pokud velikost požadovaného virtuálního počítače nejde změnit:
-    - Zastavte všechny virtuální počítače ve skupině dostupnosti. Klikněte na **skupiny prostředků** > vaší skupiny prostředků > **prostředky** > vaší skupině dostupnosti > **Virtual Machines** > **zastavte**virtuální počítač >.
+    - Zastavte všechny virtuální počítače ve skupině dostupnosti. Klikněte na **skupiny prostředků** > vaší skupiny prostředků > **prostředky** > vaší skupině dostupnosti > **Virtual Machines** > **zastavte** virtuální počítač >.
     - Až se všechny virtuální počítače zastaví, vytvořte virtuální počítač v požadované velikosti.
     - Nejprve spusťte nový virtuální počítač a potom vyberte všechny zastavené virtuální počítače a klikněte na tlačítko Spustit.
 

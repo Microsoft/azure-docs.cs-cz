@@ -14,11 +14,11 @@ ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 55a27dbb6c2ec3569bae9d6fb96fcd8087f08daf
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637662"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001673"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Průvodce kopírováním Azure Data Factory
 
@@ -63,7 +63,7 @@ Následující snímek obrazovky ukazuje dotaz SQL pomocí `Text.Format` funkce 
 ![Ověřit výrazy](./media/data-factory-copy-wizard/validate-expressions.png)
 
 ### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Filtrování dat ve složce Azure Blob
-Proměnné v cestě ke složce můžete použít ke kopírování dat ze složky, která je určena za běhu na základě [systémových proměnných](data-factory-functions-variables.md#data-factory-system-variables). Podporované proměnné jsou: **{year}** , **{month}** , **{Day}** , **{Hour}** , **{minute}** a **{Custom}** . Příklad: inputfolder/{Year}/{Month}/{Day}.
+Proměnné v cestě ke složce můžete použít ke kopírování dat ze složky, která je určena za běhu na základě [systémových proměnných](data-factory-functions-variables.md#data-factory-system-variables). Podporované proměnné jsou: **{year}**, **{month}**, **{Day}**, **{Hour}**, **{minute}** a **{Custom}**. Příklad: inputfolder/{Year}/{Month}/{Day}.
 
 Předpokládejme, že máte vstupní složky v následujícím formátu:
 
@@ -74,7 +74,7 @@ Předpokládejme, že máte vstupní složky v následujícím formátu:
 ...
 ```
 
-Klikněte na tlačítko **Procházet** pro **soubor nebo složku** , vyhledejte jednu z těchto složek (například 2016->03->01->02) a klikněte na **zvolit** . Mělo by se zobrazit `2016/03/01/02` v textovém poli. Nyní nahraďte **2016** **řetězcem** **{year}** , **03** a **{month}** , **01** s **{Day}** a **02** a stiskněte klávesu **TAB** . Měli byste vidět rozevírací seznamy a vybrat formát pro tyto čtyři proměnné:
+Klikněte na tlačítko **Procházet** pro **soubor nebo složku**, vyhledejte jednu z těchto složek (například 2016->03->01->02) a klikněte na **zvolit**. Mělo by se zobrazit `2016/03/01/02` v textovém poli. Nyní nahraďte **2016** **řetězcem** **{year}**, **03** a **{month}**, **01** s **{Day}** a **02** a stiskněte klávesu **TAB** . Měli byste vidět rozevírací seznamy a vybrat formát pro tyto čtyři proměnné:
 
 ![Použití systémových proměnných](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
@@ -98,25 +98,25 @@ V této části se prozkoumá běžné metody řešení potíží pro Průvodce 
 
 ### <a name="error-code-unable-to-validate-in-copy-wizard"></a>Kód chyby: nejde ověřit v průvodci kopírováním.
 
-- **Příznaky** : v prvním kroku Průvodce kopírováním zjistíte zprávu s upozorněním "nelze ověřit".
-- **Příčiny** : k tomu může dojít, když jsou všechny soubory cookie třetích stran zakázané.
-- **Řešení** : 
+- **Příznaky**: v prvním kroku Průvodce kopírováním zjistíte zprávu s upozorněním "nelze ověřit".
+- **Příčiny**: k tomu může dojít, když jsou všechny soubory cookie třetích stran zakázané.
+- **Řešení**: 
     - Použijte Internet Explorer nebo prohlížeč Microsoft Edge.
-    - Pokud používáte prohlížeč Chrome, postupujte podle pokynů níže a přidejte výjimku soubory cookie pro *microsoftonline.com* a *Windows.NET* .
+    - Pokud používáte prohlížeč Chrome, postupujte podle pokynů níže a přidejte výjimku soubory cookie pro *microsoftonline.com* a *Windows.NET*.
         1.  Otevřete prohlížeč Chrome.
         2.  Klikněte na klíče nebo tři čáry vpravo (přizpůsobení a řízení Google Chrome).
-        3.  Klikněte na **Nastavení** .
+        3.  Klikněte na **Nastavení**.
         4.  Prohledejte **soubory cookie** nebo v části Upřesnit nastavení otevřete **ochranu osobních údajů** .
-        5.  Vyberte **Nastavení obsahu** .    
-        6.  Soubory cookie by měly být nastavené tak, aby **umožňovaly nastavení místních dat (doporučeno)** .
-        7.  Klikněte na **Spravovat výjimky** . V části **vzor názvu hostitele** zadejte následující **a ujistěte se, že je nastavení** chování nastaveno.
+        5.  Vyberte **Nastavení obsahu**.    
+        6.  Soubory cookie by měly být nastavené tak, aby **umožňovaly nastavení místních dat (doporučeno)**.
+        7.  Klikněte na **Spravovat výjimky**. V části **vzor názvu hostitele** zadejte následující **a ujistěte se, že je nastavení** chování nastaveno.
             - login.microsoftonline.com
             - login.windows.net
         8.  Zavřete prohlížeč a znovu ho spusťte.
     - Pokud používáte prohlížeč Firefox, přidejte výjimku soubory cookie podle pokynů níže.
         1. V nabídce Firefox přejděte na **Tools**  >  **Možnosti** nástroje.
-        2. V části Historie **ochrany osobních údajů** se  >  **History** může zobrazit, že aktuální nastavení **používá pro historii vlastní nastavení** .
-        3. V části **přijmout soubory cookie třetích stran** nemusí být vaše aktuální nastavení **nikdy** , potom klikněte na **výjimky** na pravé straně pro přidání následujících webů.
+        2. V části Historie **ochrany osobních údajů** se  >  **History** může zobrazit, že aktuální nastavení **používá pro historii vlastní nastavení**.
+        3. V části **přijmout soubory cookie třetích stran** nemusí být vaše aktuální nastavení **nikdy**, potom klikněte na **výjimky** na pravé straně pro přidání následujících webů.
             - https://login.microsoftonline.com
             - https://login.windows.net
         4.  Zavřete prohlížeč a znovu ho spusťte. 
@@ -124,9 +124,9 @@ V této části se prozkoumá běžné metody řešení potíží pro Průvodce 
 
 ### <a name="error-code-unable-to-open-login-page-and-enter-password"></a>Kód chyby: nejde otevřít přihlašovací stránku a zadat heslo.
 
-- **Příznaky** : Průvodce kopírováním vás přesměruje na přihlašovací stránku, ale přihlašovací stránka se nezobrazuje úspěšně.
-- **Příčiny** : k tomuto problému může dojít, pokud jste změnili síťové prostředí ze sítě Office do domácí sítě. V prohlížečích jsou několik mezipamětí. 
-- **Řešení** : 
+- **Příznaky**: Průvodce kopírováním vás přesměruje na přihlašovací stránku, ale přihlašovací stránka se nezobrazuje úspěšně.
+- **Příčiny**: k tomuto problému může dojít, pokud jste změnili síťové prostředí ze sítě Office do domácí sítě. V prohlížečích jsou několik mezipamětí. 
+- **Řešení**: 
     1.  Zavřete prohlížeč a zkuste to znovu. Pokud problém ještě existuje, pokračujte na další krok.   
     2.  Pokud používáte prohlížeč Internet Explorer, zkuste ho otevřít v privátním režimu (stiskněte klávesu CTRL + SHIFT "+" P "). Pokud používáte prohlížeč Chrome, zkuste ho otevřít v režimu anonymním (stiskněte kombinaci kláves CTRL + SHIFT + "N"). Pokud problém ještě existuje, pokračujte na další krok. 
     3.  Zkuste použít jiný prohlížeč. 

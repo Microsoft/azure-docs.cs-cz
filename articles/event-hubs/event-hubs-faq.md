@@ -3,12 +3,12 @@ title: Nejčastější dotazy – Azure Event Hubs | Microsoft Docs
 description: Tento článek obsahuje seznam nejčastějších dotazů pro Azure Event Hubs a jejich odpovědí.
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: 41b010315adaf5a0eca2939b1d42fe4d7c159628
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c756d0bccd9b2ad303bd97d3bfb7aed8b0b82b09
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843039"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96002782"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs nejčastějších dotazech
 
@@ -58,83 +58,7 @@ Event Hubs emituje vyčerpávající metriky, které poskytují stav vašich pro
 ### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Kde Azure Event Hubs ukládá zákaznická data?
 Azure Event Hubs ukládá zákaznická data. Tato data se automaticky ukládají Event Hubs v jedné oblasti, takže tato služba automaticky splňuje požadavky na umístění dat v oblasti, včetně těch, které jsou uvedené v [Centru zabezpečení](https://azuredatacentermap.azurewebsites.net/).
 
-### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Jaké porty potřebuji v bráně firewall otevřít? 
-Pomocí následujících protokolů se službou Azure Event Hubs můžete posílat a přijímat události:
-
-- Rozšířený protokol řízení front zpráv (AMQP) 1,0 (AMQP)
-- Http (Hypertext Transfer Protocol 1,1) s protokolem TLS (HTTPS)
-- Apache Kafka
-
-V následující tabulce najdete Odchozí porty, které musíte otevřít, abyste mohli tyto protokoly používat ke komunikaci s Azure Event Hubs. 
-
-| Protokol | Porty | Podrobnosti | 
-| -------- | ----- | ------- | 
-| AMQP | 5671 a 5672 | Viz [Průvodce protokolem AMQP](../service-bus-messaging/service-bus-amqp-protocol-guide.md) . | 
-| HTTPS | 443 | Tento port se používá pro HTTP/REST API a pro sokety AMQP-over-Web. |
-| Kafka | 9093 | Viz [použití Event Hubs z aplikací Kafka](event-hubs-for-kafka-ecosystem-overview.md) .
-
-Port HTTPS se vyžaduje pro odchozí komunikaci, i když se AMQP používá přes port 5671, protože klientské sady SDK prováděly různé operace správy, které provádějí klientské sady SDK, a získání tokenů z Azure Active Directory (Pokud se používá) se spouští přes protokol HTTPS. 
-
-Oficiální sady Azure SDK obecně používají protokol AMQP pro posílání a příjem událostí z Event Hubs. Možnost protokolu AMQP-over-WebSockets se spouští přes port TCP 443 stejně jako rozhraní HTTP API, ale je jinak funkčně identická s prostým AMQP. Tato možnost má vyšší latenci počátečního připojení, protože dodatečné metody handshake jsou rychlejší a mírně větší režijní náklady na sdílení portu HTTPS. Pokud je vybrán tento režim, je pro komunikaci dostačující port TCP 443. Následující možnosti povolují výběr režimu jednoduchých AMQP nebo AMQP WebSockets:
-
-| Jazyk | Možnost   |
-| -------- | ----- |
-| .NET     | [EventHubConnectionOptions. TransportType](/dotnet/api/azure.messaging.eventhubs.eventhubconnectionoptions.transporttype?view=azure-dotnet&preserve-view=true) – vlastnost s [EventHubsTransportType. AmqpTcp](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) nebo [EventHubsTransportType. AmqpWebSockets](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) |
-| Java     | [com. Microsoft. Azure. eventhubs. EventProcessorClientBuilder. TransportType](/java/api/com.azure.messaging.eventhubs.eventprocessorclientbuilder.transporttype?view=azure-java-stable&preserve-view=true) s [AmqpTransportType. AMQP](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) nebo [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) |
-| Node  | [EventHubConsumerClientOptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions?view=azure-node-latest&preserve-view=true) má `webSocketOptions` vlastnost. |
-| Python | [EventHubConsumerClient.transport_type](/python/api/azure-eventhub/azure.eventhub.eventhubconsumerclient?view=azure-python&preserve-view=true) s [TransportType. AMQP](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python) nebo [TransportType. AmqpOverWebSocket](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python&preserve-view=true) |
-
-
-
-### <a name="what-ip-addresses-do-i-need-to-allow"></a>Jaké IP adresy potřebuji povolit?
-Pokud chcete najít správné IP adresy, které se mají přidat do seznamu povolených připojení, postupujte takto:
-
-1. Z příkazového řádku spusťte následující příkaz: 
-
-    ```
-    nslookup <YourNamespaceName>.servicebus.windows.net
-    ```
-2. Poznamenejte si IP adresu vrácenou v `Non-authoritative answer` . 
-
-Pokud používáte **redundanci zóny** pro svůj obor názvů, musíte provést několik dalších kroků: 
-
-1. Nejprve spustíte nástroj nslookup v oboru názvů.
-
-    ```
-    nslookup <yournamespace>.servicebus.windows.net
-    ```
-2. Poznamenejte si název v části **nesměrodatná odpověď** , která je v jednom z následujících formátů: 
-
-    ```
-    <name>-s1.cloudapp.net
-    <name>-s2.cloudapp.net
-    <name>-s3.cloudapp.net
-    ```
-3. Spusťte nástroj nslookup pro každý z nich s příponami S1, S2 a S3 k získání IP adres všech tří instancí spuštěných ve třech zónách dostupnosti. 
-
-    > [!NOTE]
-    > IP adresa vrácená `nslookup` příkazem není statická IP adresa. Zůstává ale konstantní, dokud se základní nasazení neodstraní nebo nepřesune do jiného clusteru.
-
-### <a name="where-can-i-find-client-ip-sending-or-receiving-messages-to-my-namespace"></a>Kde najdu adresu IP klienta při posílání nebo přijímání zpráv do mého oboru názvů?
-Nejdřív v oboru názvů povolte [filtrování IP adres](event-hubs-ip-filtering.md) . 
-
-Potom povolte protokoly diagnostiky pro [Event Hubs události připojení k virtuální síti](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema) podle pokynů v tématu [Povolení diagnostických protokolů](event-hubs-diagnostic-logs.md#enable-diagnostic-logs). Zobrazí se IP adresa, pro kterou bylo připojení odepřeno.
-
-```json
-{
-    "SubscriptionId": "0000000-0000-0000-0000-000000000000",
-    "NamespaceName": "namespace-name",
-    "IPAddress": "1.2.3.4",
-    "Action": "Deny Connection",
-    "Reason": "IPAddress doesn't belong to a subnet with Service Endpoint enabled.",
-    "Count": "65",
-    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name",
-    "Category": "EventHubVNetConnectionEvent"
-}
-```
-
-> [!IMPORTANT]
-> Protokoly virtuální sítě se generují jenom v případě, že obor názvů umožňuje přístup z **konkrétních IP adres** (pravidla filtru IP). Pokud nechcete omezit přístup k vašemu oboru názvů pomocí těchto funkcí a přesto chcete získat protokoly virtuální sítě ke sledování IP adres klientů připojujících se k Event Hubsému oboru názvů, můžete použít následující řešení: Povolit filtrování IP adres a přidat celkový adresovatelný rozsah IPv4 (1.0.0.0/1-255.0.0.0/1). Event Hubs nepodporuje rozsahy IPv6 adres. 
+[!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
 
 ## <a name="apache-kafka-integration"></a>Integrace Apache Kafka
 
@@ -318,7 +242,7 @@ Pokud například používáte v Azure Stack centra verze 2005, nejvyšší dost
 
 Příklad, jak cílit na konkrétní verzi rozhraní API úložiště z vašeho kódu, najdete v následujících ukázkách na GitHubu: 
 
-- [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)
+- [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/)
 - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)
 - Python – [synchronní](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py), [asynchronní](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
 - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) a [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts)
