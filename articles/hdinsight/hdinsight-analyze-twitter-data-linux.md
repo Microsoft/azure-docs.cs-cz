@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: fe511ed2d6b724c1215f9986c9d6c50aae076935
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533287"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95971905"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Analýza dat Twitteru pomocí Apache Hive a Apache Hadoop v HDInsight
 
@@ -30,31 +30,31 @@ Twitter umožňuje načíst data pro každý disk ve formátu. v podobě dokumen
 
 1. Z webového prohlížeče se přihlaste [https://developer.twitter.com/apps/](https://developer.twitter.com/apps/) . Pokud nemáte účet na Twitteru, vyberte odkaz **registrace nyní** .
 
-2. Vyberte **vytvořit novou aplikaci** .
+2. Vyberte **vytvořit novou aplikaci**.
 
-3. Zadejte **název** , **Popis** , **Web** . Pro pole **Web** můžete vytvořit adresu URL. V následující tabulce jsou uvedeny některé ukázkové hodnoty, které se mají použít:
+3. Zadejte **název**, **Popis**, **Web**. Pro pole **Web** můžete vytvořit adresu URL. V následující tabulce jsou uvedeny některé ukázkové hodnoty, které se mají použít:
 
    | Pole | Hodnota |
    |--- |--- |
    | Název |MyHDInsightApp |
-   | Popis |MyHDInsightApp |
+   | Description |MyHDInsightApp |
    | Web |`https://www.myhdinsightapp.com` |
 
-4. Vyberte **Ano,** souhlasím a pak vyberte **vytvořit aplikaci Twitter** .
+4. Vyberte **Ano,** souhlasím a pak vyberte **vytvořit aplikaci Twitter**.
 
-5. Vyberte kartu **oprávnění** . Výchozí oprávnění je jen **pro čtení** .
+5. Vyberte kartu **oprávnění** . Výchozí oprávnění je jen **pro čtení**.
 
 6. Vyberte kartu **klíče a přístupové tokeny** .
 
-7. Vyberte **vytvořit přístupový token** .
+7. Vyberte **vytvořit přístupový token**.
 
 8. V pravém horním rohu stránky vyberte **test OAuth** .
 
-9. Zapište **klíč příjemce** , **tajný klíč příjemce** , **přístupový token** a **tajný klíč přístupového tokenu** .
+9. Zapište **klíč příjemce**, **tajný klíč příjemce**, **přístupový token** a **tajný klíč přístupového tokenu**.
 
 ### <a name="download-tweets"></a>Stáhnout tweety
 
-Následující kód Pythonu stáhne 10 000 tweety z Twitteru a uloží je do souboru s názvem **tweets.txt** .
+Následující kód Pythonu stáhne 10 000 tweety z Twitteru a uloží je do souboru s názvem **tweets.txt**.
 
 > [!NOTE]  
 > Následující kroky se provádějí v clusteru HDInsight, protože Python je už nainstalovaný.
@@ -78,7 +78,7 @@ Následující kód Pythonu stáhne 10 000 tweety z Twitteru a uloží je do sou
    pip install tweepy progressbar pyOpenSSL requests[security]
    ```
 
-1. Pomocí následujícího příkazu vytvořte soubor s názvem **gettweets.py** :
+1. Pomocí následujícího příkazu vytvořte soubor s názvem **gettweets.py**:
 
    ```bash
    nano gettweets.py
