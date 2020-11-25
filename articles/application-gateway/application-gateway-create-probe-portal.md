@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: victorh
 ms.openlocfilehash: 5d2760415e4f4ef3b181f2fb69802659fec3ef66
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397871"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95975951"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Vytvoření vlastního testu pro Application Gateway pomocí portálu
 
@@ -34,7 +34,7 @@ Testy se konfigurují v procesu se dvěma kroky prostřednictvím portálu. Prvn
 
 ### <a name="enter-probe-properties"></a><a name="createprobe"></a>Zadat vlastnosti testu paměti
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Pokud ještě nemáte účet, můžete si zaregistrovat [bezplatnou měsíční zkušební verzi](https://azure.microsoft.com/free) .
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte účet, můžete si zaregistrovat [bezplatnou měsíční zkušební verzi](https://azure.microsoft.com/free) .
 
 2. Na webu Azure Portal v podokně Oblíbené klikněte na Všechny prostředky. V okně všechny prostředky klikněte na Aplikační brána. Pokud předplatné, které jste vybrali, již obsahovalo nějaké prostředky, můžete zadat partners.contoso.net do pole Filtrovat podle názvu... pro snadný přístup ke službě Application Gateway.
 
@@ -85,7 +85,7 @@ Testy se konfigurují v procesu se dvěma kroky prostřednictvím portálu. Prvn
 
 ### <a name="create-the-probe"></a><a name="createprobe"></a>Vytvoření testu paměti
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Pokud ještě nemáte účet, můžete si zaregistrovat [bezplatnou měsíční zkušební verzi](https://azure.microsoft.com/free) .
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte účet, můžete si zaregistrovat [bezplatnou měsíční zkušební verzi](https://azure.microsoft.com/free) .
 
 2. Na webu Azure Portal v podokně Oblíbené vyberte **Všechny prostředky**. Na stránce **všechny prostředky** vyberte Aplikační brána. Pokud předplatné, které jste vybrali, již obsahovalo nějaké prostředky, můžete zadat partners.contoso.net do pole Filtrovat podle názvu... pro snadný přístup ke službě Application Gateway.
 

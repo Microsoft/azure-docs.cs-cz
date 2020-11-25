@@ -9,11 +9,11 @@ ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
 ms.openlocfilehash: 8df24b44d648343c46532eed443717f444bd0058
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397786"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95975628"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se Application Gateway
 
@@ -434,9 +434,9 @@ Ne, doplněk AGIC je spravovaná služba, která znamená, že Microsoft bude au
 
 Application Gateway poskytuje tři protokoly: 
 
-* **ApplicationGatewayAccessLog** : protokol Access obsahuje všechny požadavky odeslané do front-endu služby Application Gateway. Mezi tato data patří IP adresa volajícího, požadovaná adresa URL, latence odezvy, návratový kód a bajtů. Obsahuje jeden záznam na aplikační bránu.
-* **ApplicationGatewayPerformanceLog** : protokol výkonu zachycuje informace o výkonu pro každou bránu aplikace. Informace zahrnují propustnost v bajtech, celkový počet zpracovaných požadavků, počet neúspěšných požadavků a stav back-endu, který není v pořádku.
-* **ApplicationGatewayFirewallLog** : pro brány aplikací, které nakonfigurujete pomocí WAF, obsahuje protokol brány firewall požadavky, které se protokolují buď v režimu detekce, nebo v režimu prevence.
+* **ApplicationGatewayAccessLog**: protokol Access obsahuje všechny požadavky odeslané do front-endu služby Application Gateway. Mezi tato data patří IP adresa volajícího, požadovaná adresa URL, latence odezvy, návratový kód a bajtů. Obsahuje jeden záznam na aplikační bránu.
+* **ApplicationGatewayPerformanceLog**: protokol výkonu zachycuje informace o výkonu pro každou bránu aplikace. Informace zahrnují propustnost v bajtech, celkový počet zpracovaných požadavků, počet neúspěšných požadavků a stav back-endu, který není v pořádku.
+* **ApplicationGatewayFirewallLog**: pro brány aplikací, které nakonfigurujete pomocí WAF, obsahuje protokol brány firewall požadavky, které se protokolují buď v režimu detekce, nebo v režimu prevence.
 
 Všechny protokoly se shromažďují každých 60 sekund. Další informace najdete v tématu [stav back-endu, diagnostické protokoly a metriky pro Application Gateway](application-gateway-diagnostics.md).
 
