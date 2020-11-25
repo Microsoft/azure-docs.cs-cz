@@ -4,11 +4,11 @@ description: Popisuje postup zálohování a obnovení šifrovaných virtuální
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.openlocfilehash: 67c0e879fe2acf241b1ed08a5658209bf70b1b9c
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173908"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95978110"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Zálohování a obnovení šifrovaných virtuálních počítačů Azure
 
@@ -32,8 +32,8 @@ Azure Backup můžou zálohovat a obnovovat virtuální počítače Azure pomoc�
 
 **Typ disku virtuálního počítače** | **ADE (klíče bek/dm-crypt)** | **ADE a KEK**
 --- | --- | ---
-**Nespravovaný** | Ano | Ano
-**Spravované**  | Ano | Ano
+**Nespravovaný** | Yes | Yes
+**Spravované**  | Yes | Yes
 
 - Přečtěte si další informace o [ADE](../security/fundamentals/azure-disk-encryption-vms-vmss.md), [Key Vault](../key-vault/general/overview.md)a [KEK](../virtual-machine-scale-sets/disk-encryption-key-vault.md#set-up-a-key-encryption-key-kek).
 - Přečtěte si [Nejčastější dotazy](../security/fundamentals/azure-disk-encryption-vms-vmss.md) k šifrování disků virtuálních počítačů Azure.
@@ -71,15 +71,15 @@ Kromě toho je možné, že v některých případech budete muset udělat něko
 
       ![Podokno scénáře](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
-1. V části **zásady zálohování**  >  **Zvolte zásady zálohování**a vyberte zásadu, kterou chcete přidružit k trezoru. Pak vyberte **OK**.
+1. V části **zásady zálohování**  >  **Zvolte zásady zálohování** a vyberte zásadu, kterou chcete přidružit k trezoru. Pak vyberte **OK**.
     - Zásady zálohování určují, kdy se mají vytvářet zálohy a jak dlouho se budou ukládat.
     - Podrobnosti výchozí zásady jsou uvedené pod rozevírací nabídkou.
 
     ![Zvolit zásady zálohování](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
 
-1. Pokud nechcete používat výchozí zásady, vyberte **vytvořit novou**a [vytvořte vlastní zásadu](backup-azure-arm-vms-prepare.md#create-a-custom-policy).
+1. Pokud nechcete používat výchozí zásady, vyberte **vytvořit novou** a [vytvořte vlastní zásadu](backup-azure-arm-vms-prepare.md#create-a-custom-policy).
 
-1. V části **Virtual Machines**vyberte **Přidat**.
+1. V části **Virtual Machines** vyberte **Přidat**.
 
     ![Přidat virtuální počítače](./media/backup-azure-vms-encryption/add-virtual-machines.png)
 
@@ -104,10 +104,10 @@ Kromě toho je možné, že v některých případech budete muset udělat něko
 Počáteční zálohování se spustí podle plánu, ale můžete ho spustit hned takto:
 
 1. V nabídce trezoru vyberte **zálohované položky**.
-2. V položku **zálohované položky**vyberte **virtuální počítač Azure**.
+2. V položku **zálohované položky** vyberte **virtuální počítač Azure**.
 3. V seznamu **zálohované položky** vyberte tři tečky (...).
 4. Vyberte **Zálohovat nyní**.
-5. V části **Zálohovat nyní**pomocí ovládacího prvku kalendáře vyberte poslední den, kdy se má bod obnovení zachovat. Pak vyberte **OK**.
+5. V části **Zálohovat nyní** pomocí ovládacího prvku kalendáře vyberte poslední den, kdy se má bod obnovení zachovat. Pak vyberte **OK**.
 6. Monitorujte oznámení na portálu. Průběh úlohy můžete monitorovat na řídicím panelu trezoru > probíhající **úlohy zálohování**  >  **In progress**. V závislosti na velikosti virtuálního počítače může vytváření prvotní zálohy chvíli trvat.
 
 ## <a name="provide-permissions"></a>Poskytnout oprávnění
@@ -119,19 +119,19 @@ Azure Backup potřebuje přístup jen pro čtení k zálohování klíčů a taj
 
 Nastavení oprávnění:
 
-1. V Azure Portal vyberte **všechny služby**a vyhledejte **trezory klíčů**.
+1. V Azure Portal vyberte **všechny služby** a vyhledejte **trezory klíčů**.
 1. Vyberte Trezor klíčů přidružený k zašifrovanému virtuálnímu počítači, který jste zálohovali.
 1. Vyberte **zásady přístupu**  >  **Přidat zásady přístupu**.
 
     ![Přidat zásady přístupu](./media/backup-azure-vms-encryption/add-access-policy.png)
 
 1. V nastavení **Přidat zásadu přístupu**  >  **Konfigurovat ze šablony (volitelné)** vyberte **Azure Backup**.
-    - Požadovaná oprávnění jsou předem vyplněna pro **klíčová oprávnění** a **oprávnění tajných**kódů.
+    - Požadovaná oprávnění jsou předem vyplněna pro **klíčová oprávnění** a **oprávnění tajných** kódů.
     - Pokud je váš virtuální počítač zašifrovaný **jenom pomocí klíče bek**, odeberte výběr pro **klíčová oprávnění** , protože potřebujete jenom přístupová tajemství.
 
     ![Azure Backup výběr](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-1. Vyberte **Přidat**. Do **zásad přístupu**se přidá **Služba správy zálohování** .
+1. Vyberte **Přidat**. Do **zásad přístupu** se přidá **Služba správy zálohování** .
 
     ![Zásady přístupu](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 
@@ -145,8 +145,8 @@ Následujícím způsobem obnovte šifrované virtuální počítače:
 
 1. [Obnovte disk virtuálního počítače](backup-azure-arm-restore-vms.md#restore-disks).
 2. Znovu vytvořte instanci virtuálního počítače jedním z následujících způsobů:
-    1. Použijte šablonu generovanou během operace obnovení k přizpůsobení nastavení virtuálního počítače a aktivaci nasazení virtuálního počítače. [Další informace](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
-    2. Vytvořte nový virtuální počítač z obnovených disků pomocí PowerShellu. [Další informace](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
+    1. Použijte šablonu generovanou během operace obnovení k přizpůsobení nastavení virtuálního počítače a aktivaci nasazení virtuálního počítače. [Přečtěte si další informace](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
+    2. Vytvořte nový virtuální počítač z obnovených disků pomocí PowerShellu. [Přečtěte si další informace](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
 3. Pro virtuální počítače se systémem Linux přeinstalujte rozšíření ADE, aby byly datové disky otevřené a připojené.
 
 ## <a name="next-steps"></a>Další kroky

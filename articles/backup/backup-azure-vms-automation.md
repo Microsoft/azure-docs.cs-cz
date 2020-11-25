@@ -4,11 +4,11 @@ description: Popisuje postup zálohování a obnovení virtuálních počítač�
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: ded2bc8a71bf564e31f40ca9f0d6c8049188768b
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094088"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95978365"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu
 
@@ -435,7 +435,7 @@ $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -Work
 
 Pomocí rutiny [Get-AzRecoveryServicesBackupRecoveryPoint Zobrazte](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) seznam všech bodů obnovení pro zálohovanou položku. Pak zvolte bod obnovení, který chcete obnovit. Pokud si nejste jistí, který bod obnovení chcete použít, je dobrým zvykem zvolit nejnovější RecoveryPointType = AppConsistent bod v seznamu.
 
-V následujícím skriptu je proměnná, **$RP**pole bodů obnovení pro vybranou zálohovanou položku, z posledních sedmi dnů. Pole je seřazené v opačném pořadí s nejnovějším bodem obnovení na indexu 0. Pro výběr bodu obnovení použijte standardní indexování pole v PowerShellu. V příkladu $rp [0] vybere nejnovější bod obnovení.
+V následujícím skriptu je proměnná, **$RP** pole bodů obnovení pro vybranou zálohovanou položku, z posledních sedmi dnů. Pole je seřazené v opačném pořadí s nejnovějším bodem obnovení na indexu 0. Pro výběr bodu obnovení použijte standardní indexování pole v PowerShellu. V příkladu $rp [0] vybere nejnovější bod obnovení.
 
 ```powershell
 $startDate = (Get-Date).AddDays(-7)
@@ -824,7 +824,7 @@ $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -Work
 
 Pomocí rutiny [Get-AzRecoveryServicesBackupRecoveryPoint Zobrazte](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) seznam všech bodů obnovení pro zálohovanou položku. Pak zvolte bod obnovení, který chcete obnovit. Pokud si nejste jistí, který bod obnovení chcete použít, je dobrým zvykem zvolit nejnovější RecoveryPointType = AppConsistent bod v seznamu.
 
-V následujícím skriptu je proměnná, **$RP**pole bodů obnovení pro vybranou zálohovanou položku, z posledních sedmi dnů. Pole je seřazené v opačném pořadí s nejnovějším bodem obnovení na indexu 0. Pro výběr bodu obnovení použijte standardní indexování pole v PowerShellu. V příkladu $rp [0] vybere nejnovější bod obnovení.
+V následujícím skriptu je proměnná, **$RP** pole bodů obnovení pro vybranou zálohovanou položku, z posledních sedmi dnů. Pole je seřazené v opačném pořadí s nejnovějším bodem obnovení na indexu 0. Pro výběr bodu obnovení použijte standardní indexování pole v PowerShellu. V příkladu $rp [0] vybere nejnovější bod obnovení.
 
 ```powershell
 $startDate = (Get-Date).AddDays(-7)
