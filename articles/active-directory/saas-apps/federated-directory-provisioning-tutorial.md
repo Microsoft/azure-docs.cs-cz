@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
 ms.openlocfilehash: 8ca7654d930247f70d85cbc20fbbeb961223f05f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359795"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998358"
 ---
 # <a name="tutorial-configure-federated-directory-for-automatic-user-provisioning"></a>Kurz: Konfigurace federovaného adresáře pro Automatické zřizování uživatelů
 
@@ -90,7 +90,7 @@ Pokud chcete nakonfigurovat federované adresáře pro Automatické zřizování
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **federovaný adresář** , na panelu výsledků vyberte **federovaný adresář** .
+4. Do vyhledávacího pole zadejte **federovaný adresář**, na panelu výsledků vyberte **federovaný adresář** .
 
     ![Federovaný adresář v seznamu výsledků](common/search-new-app.png)
 

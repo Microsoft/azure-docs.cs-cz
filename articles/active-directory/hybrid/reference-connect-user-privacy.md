@@ -16,11 +16,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8f1d1bf35d03f0f7c4d11e4cc7e9b6f98f38d8ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279563"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997694"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>Ochrana osobních údajů uživatelů a Azure AD Connect 
 
@@ -67,7 +67,7 @@ If ($File.ToUpper() -ne "$env:programdata\aadconnect\PERSISTEDSTATE.XML".toupper
 ### <a name="schedule-this-script-to-run-every-48-hours"></a>Naplánovat spuštění tohoto skriptu každých 48 hodin
 Pomocí následujících kroků můžete naplánovat spuštění skriptu každých 48 hodin.
 
-1.  Uložte skript do souboru s příponou **&#46;ps1**a pak otevřete ovládací panely a klikněte na **systémy a zabezpečení**.
+1.  Uložte skript do souboru s příponou **&#46;ps1** a pak otevřete ovládací panely a klikněte na **systémy a zabezpečení**.
     ![Systém](./media/reference-connect-user-privacy/gdpr2.png)
 
 2.  V záhlaví nástroje pro správu klikněte na **plánování úloh**.

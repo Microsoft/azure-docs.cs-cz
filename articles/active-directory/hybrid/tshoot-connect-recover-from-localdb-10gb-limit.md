@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ca5361d8500ecd4ea22a577d0a4dc7ced606eab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89275898"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997643"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: Jak provést obnovení při dosažení 10GB limitu pro LocalDB
 Azure AD Connect vyžaduje k ukládání dat identity databázi SQL Serveru. Můžete použít buď výchozí databázi SQL Server 2012 Express LocalDB nainstalovanou se službou Azure AD Connect, nebo vlastní plnou verzi SQL. SQL Server Express má omezení velikosti 10 GB. Pokud při použití LocalDB dosáhnete tohoto limitu, synchronizační služba Azure AD Connect se už nemůže spustit ani správně synchronizovat. Tento článek popisuje kroky obnovení.
@@ -85,7 +85,7 @@ Ve výchozím nastavení Azure AD Connect zachovává data historie spuštění 
 
 2. Přejít na kartu **operace** .
 
-3. V části **Akce**vyberte možnost **Vymazat běhy**...
+3. V části **Akce** vyberte možnost **Vymazat běhy**...
 
 4. Můžete buď zvolit možnost **Vymazat všechna spuštění** nebo **zrušit zaškrtnutí políček před. \<date> ..** . Doporučujeme začít tím, že vymažete data historie spuštění, která jsou starší než dva dny. Pokud budete pokračovat v běhu do problému velikosti databáze, zvolte možnost **Vymazat všechna spuštění** .
 

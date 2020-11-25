@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: de529a8ffb0c72854904717c71dbc322c919f1a8
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370810"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996691"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Přidání nebo odstranění uživatelů pomocí Azure Active Directory
 
@@ -34,7 +34,7 @@ Chcete-li přidat nového uživatele, postupujte podle následujících kroků:
 
 1. Vyhledejte a vyberte *Azure Active Directory* z libovolné stránky.
 
-1. Vyberte **Uživatelé**a potom vyberte **Nový uživatel**.
+1. Vyberte **Uživatelé** a potom vyberte **Nový uživatel**.
 
     ![Přidání uživatele prostřednictvím uživatelů – všichni uživatelé v Azure AD](media/add-users-azure-active-directory/add-user-in-users-all-users.png)
 
@@ -44,7 +44,7 @@ Chcete-li přidat nového uživatele, postupujte podle následujících kroků:
 
    - **Uživatelské jméno**. Povinná hodnota. Uživatelské jméno nového uživatele. Například, `mary@contoso.com`.
 
-     Část domény uživatelského jména musí používat počáteční výchozí název domény, * \<yourdomainname> . onmicrosoft.com*nebo vlastní název domény, jako je například *contoso.com*. Další informace o tom, jak vytvořit vlastní název domény, najdete v tématu [Přidání vlastního názvu domény pomocí portálu Azure Active Directory](add-custom-domain.md).
+     Část domény uživatelského jména musí používat počáteční výchozí název domény, *\<yourdomainname> . onmicrosoft.com* nebo vlastní název domény, jako je například *contoso.com*. Další informace o tom, jak vytvořit vlastní název domény, najdete v tématu [Přidání vlastního názvu domény pomocí portálu Azure Active Directory](add-custom-domain.md).
 
    - **Skupiny**. Volitelně můžete přidat uživatele do jedné nebo více existujících skupin. Uživatele můžete také přidat do skupin později. Další informace o přidávání uživatelů do skupin najdete v tématu [Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory](active-directory-groups-create-azure-portal.md).
 

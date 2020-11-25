@@ -1,15 +1,15 @@
 ---
-author: ramonarguelles
+author: msftradford
 ms.service: spatial-anchors
 ms.topic: include
-ms.date: 8/27/2020
-ms.author: rgarcia
-ms.openlocfilehash: 50e4799f09322eab05b4f8ddf7004c2e0078fdab
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: 9554e04c82299016076f09f85f604af10a94ab4a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971380"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95998431"
 ---
 ## <a name="android"></a>[Android](#tab/Android)
 
@@ -81,9 +81,9 @@ Scénu uložte výběrem Uložit **soubor**  >  **Save**.
 
 Přihlaste se k zařízení s Androidem a připojte ho k počítači pomocí kabelu USB.
 
-Otevřete **nastavení sestavení** výběrem **File**  >  **nastavení sestavení**souboru.
+Otevřete **nastavení sestavení** výběrem **File**  >  **nastavení sestavení** souboru.
 
-V části **scény v sestavách**se ujistěte, že má každá scéna vedle sebe značku zaškrtnutí.
+V části **scény v sestavách** se ujistěte, že má každá scéna vedle sebe značku zaškrtnutí.
 
 Zajistěte, aby **projekt pro export** neobsahoval značku zaškrtnutí. Vyberte **sestavení a spustit**. Zobrazí se výzva k uložení souboru *. apk* . Můžete si vybrat libovolný název.
 
@@ -91,9 +91,9 @@ Zajistěte, aby **projekt pro export** neobsahoval značku zaškrtnutí. Vyberte
 
 ### <a name="deploy-to-an-ios-device"></a>Nasazení na zařízení s iOS
 
-Otevřete **nastavení sestavení** výběrem **File**  >  **nastavení sestavení**souboru.
+Otevřete **nastavení sestavení** výběrem **File**  >  **nastavení sestavení** souboru.
 
-V části **scény v sestavách**se ujistěte, že má každá scéna vedle sebe značku zaškrtnutí.
+V části **scény v sestavách** se ujistěte, že má každá scéna vedle sebe značku zaškrtnutí.
 
 [!INCLUDE [Configure Xcode](spatial-anchors-unity-ios-xcode.md)]
 

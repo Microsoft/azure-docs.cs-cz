@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 544aa1a4a859a9c328eb1d36e72d0f9f9ddb55b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ad45d5f0e313c06619fa9c998515e434de957ea
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327897"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997558"
 ---
 # <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>Přesměrování pevně zakódovaných odkazů pro aplikace publikované s Azure Proxy aplikací služby AD
 
@@ -47,14 +47,14 @@ Díky těmto třem funkcím budou vaše odkazy fungovat bez ohledu na to, kde js
 > [!NOTE]
 > Poslední možnost je jenom pro klienty, které z jakéhokoli důvodu nemůžou používat vlastní domény, aby měly stejné interní a externí adresy URL pro své aplikace. Než tuto funkci povolíte, přečtěte si článek o tom, jestli můžou [vlastní domény v Azure proxy aplikací služby AD](application-proxy-configure-custom-domain.md) fungovat za vás. 
 > 
-> Nebo pokud je aplikace, kterou potřebujete nakonfigurovat s překladem odkazů, SharePoint, přečtěte si téma [Konfigurace mapování alternativních adres pro SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx) pro další přístup k mapování odkazů. 
+> Nebo pokud je aplikace, kterou potřebujete nakonfigurovat s překladem odkazů, SharePoint, přečtěte si téma [Konfigurace mapování alternativních adres pro SharePoint 2013](/SharePoint/administration/configure-alternate-access-mappings) pro další přístup k mapování odkazů. 
 
  
 ### <a name="option-1-microsoft-edge-integration"></a>Možnost 1: integrace Microsoft Edge 
 
 K další ochraně aplikace a obsahu můžete použít Microsoft Edge. Chcete-li použít toto řešení, je nutné vyžadovat nebo doporučit uživatelům přístup k aplikaci prostřednictvím Microsoft Edge. Všechny interní adresy URL publikované s proxy aplikací budou rozpoznány pomocí Edge a přesměrovány na odpovídající externí adresu URL. Tím se zajistí, že všechny pevně zakódované interní adresy URL fungují a když uživatel přejde do prohlížeče a přímo zadá interní adresu URL, funguje i v případě, že je uživatel vzdálený.  
 
-Další informace, včetně postupu konfigurace této možnosti, najdete v dokumentaci ke [správě webového přístupu pomocí Edge pro iOS a Android s Microsoft Intune](https://docs.microsoft.com/mem/intune/apps/manage-microsoft-edge) .  
+Další informace, včetně postupu konfigurace této možnosti, najdete v dokumentaci ke [správě webového přístupu pomocí Edge pro iOS a Android s Microsoft Intune](/mem/intune/apps/manage-microsoft-edge) .  
 
 ### <a name="option-2-myapps-browser-extension"></a>Možnost 2: rozšíření prohlížeče aplikace Mojeapl 
 
@@ -62,7 +62,7 @@ V rozšíření prohlížeče aplikace MyApp jsou všechny interní adresy URL p
 
 Aby bylo možné tuto funkci používat, musí si uživatel stáhnout rozšíření a přihlásit se. Pro správce nebo uživatele není nutná žádná další konfigurace. 
 
-Další informace, včetně postupu konfigurace této možnosti, najdete v dokumentaci k [rozšíření prohlížeče MyApp](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access#download-and-install-the-my-apps-secure-sign-in-extension) .
+Další informace, včetně postupu konfigurace této možnosti, najdete v dokumentaci k [rozšíření prohlížeče MyApp](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension) .
 
 ### <a name="option-3-link-translation-setting"></a>Možnost 3: nastavení překladu propojení 
 
@@ -152,4 +152,4 @@ Chceme, aby tato funkce fungovala pro všechny vaše aplikace. Hledáme více ne
 ## <a name="next-steps"></a>Další kroky
 [Použití vlastních domén s Azure proxy aplikací služby AD](application-proxy-configure-custom-domain.md) ke stejné interní a externí adrese URL
 
-[Konfigurace mapování alternativního přístupu pro SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx)
+[Konfigurace mapování alternativního přístupu pro SharePoint 2013](/SharePoint/administration/configure-alternate-access-mappings)

@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.openlocfilehash: fbc75df0b22ba452b8c91dfcb21ca13aaed557a3
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242394"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998562"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Vytvoření a správa privátního odkazu pro Azure Database for MySQL pomocí portálu
 
@@ -32,20 +32,20 @@ V této části vytvoříte virtuální síť a podsíť pro hostování virtuá
 ### <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
 V této části vytvoříte Virtual Network a podsíť, která bude hostovat virtuální počítač, který se používá pro přístup k prostředku privátního propojení.
 
-1. V levé horní části obrazovky vyberte **vytvořit prostředek**  >  **síť**  >  **virtuální síť** .
+1. V levé horní části obrazovky vyberte **vytvořit prostředek**  >  **síť**  >  **virtuální síť**.
 2. V nástroji **vytvořit virtuální síť** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Název | Zadejte *MyVirtualNetwork* . |
-    | Adresní prostor | Zadejte *10.1.0.0/16* . |
+    | Název | Zadejte *MyVirtualNetwork*. |
+    | Adresní prostor | Zadejte *10.1.0.0/16*. |
     | Předplatné | Vyberte své předplatné.|
-    | Skupina prostředků | Vyberte **vytvořit nový** , zadejte *myResourceGroup* a pak vyberte **OK** . |
-    | Umístění | Vyberte **Západní Evropa** .|
-    | Název podsítě | Zadejte *mySubnet* . |
-    | Podsíť – Rozsah adres | Zadejte *10.1.0.0/24* . |
+    | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup* a pak vyberte **OK**. |
+    | Umístění | Vyberte **Západní Evropa**.|
+    | Název podsítě | Zadejte *mySubnet*. |
+    | Podsíť – Rozsah adres | Zadejte *10.1.0.0/24*. |
     |||
-3. Ponechte REST jako výchozí a vyberte **vytvořit** .
+3. Ponechte REST jako výchozí a vyberte **vytvořit**.
 
 ### <a name="create-virtual-machine"></a>Vytvořit virtuální počítač
 
@@ -57,49 +57,49 @@ V této části vytvoříte Virtual Network a podsíť, která bude hostovat vir
     | ------- | ----- |
     | **PODROBNOSTI O PROJEKTU** | |
     | Předplatné | Vyberte své předplatné. |
-    | Skupina prostředků | Vyberte **myResourceGroup** . Vytvořili jste ho v předchozí části.  |
+    | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.  |
     | **PODROBNOSTI INSTANCE** |  |
-    | Název virtuálního počítače | Zadejte *myVm* . |
-    | Oblast | Vyberte **Západní Evropa** . |
-    | Možnosti dostupnosti | Nechte výchozí nastavení **bez nutnosti redundance infrastruktury** . |
-    | Image | Vyberte **Windows Server 2019 Datacenter** . |
-    | Velikost | Ponechte výchozí hodnotu **Standard DS1 v2** . |
+    | Název virtuálního počítače | Zadejte *myVm*. |
+    | Oblast | Vyberte **Západní Evropa**. |
+    | Možnosti dostupnosti | Nechte výchozí nastavení **bez nutnosti redundance infrastruktury**. |
+    | Image | Vyberte **Windows Server 2019 Datacenter**. |
+    | Velikost | Ponechte výchozí hodnotu **Standard DS1 v2**. |
     | **ÚČET SPRÁVCE** |  |
     | Uživatelské jméno | Zadejte uživatelské jméno, které si zvolíte. |
     | Heslo | Zadejte libovolné heslo. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     | Potvrdit heslo | Zadejte znovu heslo. |
     | **PRAVIDLA PORTŮ PRO PŘÍCHOZÍ SPOJENÍ** |  |
-    | Veřejné příchozí porty | Nechejte výchozí nastavení **žádné** . |
+    | Veřejné příchozí porty | Nechejte výchozí nastavení **žádné**. |
     | **UŠETŘETE PENÍZE** |  |
-    | Máte už licenci na Windows? | Ponechte výchozí hodnotu **ne** . |
+    | Máte už licenci na Windows? | Ponechte výchozí hodnotu **ne**. |
     |||
 
-1. Vyberte **Další: disky** .
+1. Vyberte **Další: disky**.
 
-1. V okně **Vytvořit virtuální počítač – Disky** nechte vybrané výchozí hodnoty a vyberte **Další: Sítě** .
+1. V okně **Vytvořit virtuální počítač – Disky** nechte vybrané výchozí hodnoty a vyberte **Další: Sítě**.
 
 1. V nástroji **vytvořit virtuální počítač – síť** vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Virtuální síť | Ponechte výchozí **MyVirtualNetwork** .  |
-    | Adresní prostor | Ponechte výchozí **10.1.0.0/24** .|
-    | Podsíť | Ponechte výchozí **mySubnet (10.1.0.0/24)** .|
-    | Veřejná IP adresa | Ponechte výchozí **(New) myVm-IP** . |
-    | Veřejné příchozí porty | Vyberte možnost **Povolení vybraných portů** . |
-    | Vyberte příchozí porty | Vyberte **http** a **RDP** .|
+    | Virtuální síť | Ponechte výchozí **MyVirtualNetwork**.  |
+    | Adresní prostor | Ponechte výchozí **10.1.0.0/24**.|
+    | Podsíť | Ponechte výchozí **mySubnet (10.1.0.0/24)**.|
+    | Veřejná IP adresa | Ponechte výchozí **(New) myVm-IP**. |
+    | Veřejné příchozí porty | Vyberte možnost **Povolení vybraných portů**. |
+    | Vyberte příchozí porty | Vyberte **http** a **RDP**.|
     |||
 
 
-1. Vyberte **Zkontrolovat a vytvořit** . Budete přesměrováni na stránku **Zkontrolovat a vytvořit** , kde Azure ověří konfiguraci.
+1. Vyberte **Zkontrolovat a vytvořit**. Budete přesměrováni na stránku **Zkontrolovat a vytvořit**, kde Azure ověří konfiguraci.
 
-1. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně** , vyberte **Vytvořit** .
+1. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**.
 
 ## <a name="create-an-azure-database-for-mysql"></a>Vytvoření Azure Database for MySQL
 
 V této části vytvoříte Azure Database for MySQL server v Azure. 
 
-1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >  **databáze** prostředků  >  **Azure Database for MySQL** .
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >  **databáze** prostředků  >  **Azure Database for MySQL**.
 
 1. V **Azure Database for MySQL** zadejte tyto informace:
 
@@ -107,9 +107,9 @@ V této části vytvoříte Azure Database for MySQL server v Azure.
     | ------- | ----- |
     | **Podrobnosti o projektu** | |
     | Předplatné | Vyberte své předplatné. |
-    | Skupina prostředků | Vyberte **myResourceGroup** . Vytvořili jste ho v předchozí části.|
+    | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     | **Podrobnosti serveru** |  |
-    |Název serveru  | Zadejte *MyServer* . Pokud se tento název povede, vytvořte jedinečný název.|
+    |Název serveru  | Zadejte *MyServer*. Pokud se tento název povede, vytvořte jedinečný název.|
     | Uživatelské jméno správce| Zadejte jméno správce, které chcete zvolit. |
     | Heslo | Zadejte libovolné heslo. Heslo musí mít délku alespoň 8 znaků a musí splňovat definované požadavky. |
     | Umístění | Vyberte oblast Azure, ve které chcete, aby se server MySQL nacházel. |
@@ -117,9 +117,9 @@ V této části vytvoříte Azure Database for MySQL server v Azure.
     | Výpočty a úložiště| Vyberte cenovou úroveň, která je potřebná pro server na základě zatížení. |
     |||
  
-7. Vyberte **OK** . 
-8. Vyberte **Zkontrolovat a vytvořit** . Budete přesměrováni na stránku **Zkontrolovat a vytvořit** , kde Azure ověří konfiguraci. 
-9. Když se zobrazí zpráva s potvrzením ověření, vyberte **vytvořit** . 
+7. Vyberte **OK**. 
+8. Vyberte **Zkontrolovat a vytvořit**. Budete přesměrováni na stránku **Zkontrolovat a vytvořit**, kde Azure ověří konfiguraci. 
+9. Když se zobrazí zpráva s potvrzením ověření, vyberte **vytvořit**. 
 10. Když se zobrazí zpráva s potvrzením ověření, vyberte vytvořit. 
 
 > [!NOTE]
@@ -130,9 +130,9 @@ V této části vytvoříte Azure Database for MySQL server v Azure.
 
 V této části vytvoříte Server MySQL a přidáte do něj privátní koncový bod. 
 
-1. V levé horní části obrazovky v Azure Portal vyberte **vytvořit prostředek**  >  **sítě**  >  **privátní odkaz** .
+1. V levé horní části obrazovky v Azure Portal vyberte **vytvořit prostředek**  >  **sítě**  >  **privátní odkaz**.
 
-2. V části **centrum privátních odkazů – přehled** na možnost **vytvořit privátní připojení ke službě** vyberte možnost **Spustit** .
+2. V části **centrum privátních odkazů – přehled** na možnost **vytvořit privátní připojení ke službě** vyberte možnost **Spustit**.
 
     :::image type="content" source="media/concepts-data-access-and-security-private-link/privatelink-overview.png" alt-text="Přehled privátních odkazů":::
 
@@ -142,43 +142,43 @@ V této části vytvoříte Server MySQL a přidáte do něj privátní koncový
     | ------- | ----- |
     | **Podrobnosti o projektu** | |
     | Předplatné | Vyberte své předplatné. |
-    | Skupina prostředků | Vyberte **myResourceGroup** . Vytvořili jste ho v předchozí části.|
+    | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     | **Podrobnosti instance** |  |
-    | Name | Zadejte *myPrivateEndpoint* . Pokud se tento název povede, vytvořte jedinečný název. |
-    |Oblast|Vyberte **Západní Evropa** .|
+    | Name | Zadejte *myPrivateEndpoint*. Pokud se tento název povede, vytvořte jedinečný název. |
+    |Oblast|Vyberte **Západní Evropa**.|
     |||
 
-5. Vyberte **Další: prostředek** .
+5. Vyberte **Další: prostředek**.
 6. V **Vytvoření privátního koncového bodu – prostředek** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     |Způsob připojení  | V adresáři vyberte připojit k prostředku Azure.|
     | Předplatné| Vyberte své předplatné. |
-    | Typ prostředku | Vyberte **Microsoft. DBforMySQL/servery** . |
+    | Typ prostředku | Vyberte **Microsoft. DBforMySQL/servery**. |
     | Prostředek |Vybrat *MyServer*|
     |Cílový dílčí prostředek |Vybrat *mysqlServer*|
     |||
-7. Vyberte **Další: Konfigurace** .
+7. Vyberte **Další: Konfigurace**.
 8. V **Vytvoření privátního koncového bodu – konfigurace** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     |**SÍTĚ**| |
-    | Virtuální síť| Vyberte *MyVirtualNetwork* . |
-    | Podsíť | Vyberte *mySubnet* . |
+    | Virtuální síť| Vyberte *MyVirtualNetwork*. |
+    | Podsíť | Vyberte *mySubnet*. |
     |**INTEGRACE S PRIVÁTNÍM DNS**||
-    |Integrovat s privátní zónou DNS |Vyberte **Ano** . |
+    |Integrovat s privátní zónou DNS |Vyberte **Ano**. |
     |Zóna Privátního DNS |Select *(New) privatelink. MySQL. Database. Azure. com* |
     |||
 
     > [!Note] 
     > Pro vaši službu použijte předdefinovanou privátní zónu DNS nebo zadejte upřednostňovaný název zóny DNS. Podrobnosti najdete v tématu [Konfigurace zóny DNS služeb Azure](../private-link/private-endpoint-dns.md) .
 
-1. Vyberte **Zkontrolovat a vytvořit** . Budete přesměrováni na stránku **Zkontrolovat a vytvořit** , kde Azure ověří konfiguraci. 
-2. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně** , vyberte **Vytvořit** . 
+1. Vyberte **Zkontrolovat a vytvořit**. Budete přesměrováni na stránku **Zkontrolovat a vytvořit**, kde Azure ověří konfiguraci. 
+2. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**. 
 
-    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-mysql-private-link.png" alt-text="Přehled privátních odkazů":::
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-mysql-private-link.png" alt-text="Privátní odkaz se vytvořil.":::
 
     > [!NOTE] 
     > Plně kvalifikovaný název domény v nastavení DNS zákazníka se nepřekladuje na nakonfigurovanou soukromou IP adresu. Bude nutné nastavit zónu DNS pro nakonfigurovaný plně kvalifikovaný název domény, jak je znázorněno [zde](../dns/dns-operations-recordsets-portal.md).
@@ -188,24 +188,24 @@ V této části vytvoříte Server MySQL a přidáte do něj privátní koncový
 
 Po vytvoření **myVm** se k němu připojte z Internetu následujícím způsobem: 
 
-1. Na portálu zadejte na panelu hledání *myVm* .
+1. Na portálu zadejte na panelu hledání *myVm*.
 
-1. Klikněte na tlačítko **Připojit** . Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
+1. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
 
-1. Vyberte **Stáhnout soubor RDP** . Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP* ) a stáhne ho do vašeho počítače.
+1. Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) (*. RDP*) a stáhne ho do vašeho počítače.
 
 1. Otevřete *stažený soubor. RDP* .
 
-    1. Pokud se zobrazí výzva, vyberte **Připojit** .
+    1. Pokud se zobrazí výzva, vyberte **Připojit**.
 
     1. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
         > [!NOTE]
         > Možná budete muset vybrat **Další volby**  >  **použít jiný účet** a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
-1. Vyberte **OK** .
+1. Vyberte **OK**.
 
-1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění na certifikát, vyberte **Ano** nebo **Pokračovat** .
+1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění na certifikát, vyberte **Ano** nebo **Pokračovat**.
 
 1. Jakmile se zobrazí plocha virtuálního počítače, minimalizujte ji tak, aby se vrátila k místnímu počítači.
 
@@ -230,11 +230,11 @@ Po vytvoření **myVm** se k němu připojte z Internetu následujícím způsob
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Typ serveru| Vyberte **MySQL** .|
+    | Typ serveru| Vyberte **MySQL**.|
     | Název serveru| Vybrat *MyServer.privatelink.MySQL.Database.Azure.com* |
     | Uživatelské jméno | Zadejte uživatelské jméno, username@servername které je k dispozici během vytváření serveru MySQL. |
     |Heslo |Zadejte heslo, které jste zadali během vytváření serveru MySQL. |
-    |SSL|Vyberte možnost **požadováno** .|
+    |SSL|Vyberte možnost **požadováno**.|
     ||
 
 5. Vyberte Připojit.
@@ -249,8 +249,8 @@ Po vytvoření **myVm** se k němu připojte z Internetu následujícím způsob
 Po dokončení používání privátního koncového bodu, serveru MySQL a virtuálního počítače odstraňte skupinu prostředků a všechny prostředky, které obsahuje:
 
 1. Do **vyhledávacího** pole v horní části portálu zadejte *myResourceGroup* a ve výsledcích hledání vyberte *myResourceGroup* .
-2. Vyberte **Odstranit skupinu prostředků** .
-3. Zadejte myResourceGroup pro **typ název skupiny prostředků** a vyberte **Odstranit** .
+2. Vyberte **Odstranit skupinu prostředků**.
+3. Zadejte myResourceGroup pro **typ název skupiny prostředků** a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

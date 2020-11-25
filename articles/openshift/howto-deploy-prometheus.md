@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 keywords: Prometheus, ARO, OpenShift, metriky, Red Hat
 ms.openlocfilehash: 42ed8c90b35eba57fdc3db1f0ed93d44cf9a5e41
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218608"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996844"
 ---
 # <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Nasazení samostatné instance Prometheus v clusteru Azure Red Hat OpenShift
 
@@ -36,7 +36,7 @@ Soubory konfigurace Prometheus budete připravovat místně. Vytvořte novou slo
 
 ## <a name="sign-in-to-the-cluster-by-using-the-oc-tool"></a>Přihlaste se ke clusteru pomocí nástroje OC.
 
-1. Otevřete webový prohlížeč a pak klikněte na webovou konzoli vašeho clusteru ( https://openshift .* ID náhodného*. *region*. azmosa.IO).
+1. Otevřete webový prohlížeč a pak klikněte na webovou konzoli vašeho clusteru ( https://openshift .*ID náhodného*. *region*. azmosa.IO).
 2. Přihlaste se pomocí přihlašovacích údajů Azure.
 3. V pravém horním rohu vyberte své uživatelské jméno a pak vyberte **příkaz Kopírovat přihlášení**.
 4. Vložte své uživatelské jméno do terminálu, který budete používat.
@@ -188,7 +188,7 @@ oc process -f prometheus-sdrole.yml | oc apply -f - -n prometheus-project
 
 ## <a name="optional-deploy-example-application"></a>Volitelné: příklad nasazení aplikace
 
-Vše funguje, ale neexistují žádné zdroje metriky. Přejít na adresu URL Prometheus ( https://prom-prometheus-project.apps .* ID náhodného*. *region*. azmosa.IO/). Můžete ji najít pomocí následujícího příkazu:
+Vše funguje, ale neexistují žádné zdroje metriky. Přejít na adresu URL Prometheus ( https://prom-prometheus-project.apps .*ID náhodného*. *region*. azmosa.IO/). Můžete ji najít pomocí následujícího příkazu:
 
 ```
 oc get route prom -n prometheus-project
@@ -206,7 +206,7 @@ oc new-app python:3.6~https://github.com/Makdaam/prometheus-example --name=examp
 ```
 Nové aplikace by se měly zobrazit jako platné cíle na stránce zjišťování služby během 30 sekund po nasazení.
 
-Další podrobnosti najdete v výběru **Status**  >  **cíle**stavu.
+Další podrobnosti najdete v výběru **Status**  >  **cíle** stavu.
 
 > [!NOTE]
 > Pro každý úspěšně vyřazený cíl Prometheus přidá datový bod do metriky nahoru. V levém horním rohu vyberte **Prometheus** **, jako výraz** zadejte a pak vyberte Execute ( **Spustit**).

@@ -4,11 +4,11 @@ description: Tento článek shrnuje Azure Backup podporu při zálohování poč
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: 26a47c2648d1307d2e7da2b25455f3f036cbf32d
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363234"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997235"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -46,7 +46,7 @@ Když použijete agenta MARS k zálohování dat, agent pořizuje snímek dat a 
 Velikost |  Volné místo ve složce mezipaměti by mělo být alespoň 5 až 10 procent celkové velikosti zálohovaných dat.
 Umístění | Složka mezipaměti musí být uložená místně na počítači, který se zálohuje, a musí být online. Složka mezipaměti by neměla být ve sdílené síťové složce, na vyměnitelném médiu nebo na svazku offline.
 Složka | Složka mezipaměti by neměla být zašifrovaná na svazku s odstraněnými duplicitními daty nebo v komprimované složce, která je zhuštěná, nebo má bod rozboru.
-Změny umístění | Umístění mezipaměti můžete změnit zastavením zálohovacího stroje ( `net stop bengine` ) a zkopírováním složky mezipaměti do nové jednotky. (Zajistěte, aby na nové jednotce bylo dost místa.) Pak aktualizujte dvě položky registru v části **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** ( **config/ScratchLocation** a **config/CloudBackupProvider/ScratchLocation** ) na nové místo a restartujte modul.
+Změny umístění | Umístění mezipaměti můžete změnit zastavením zálohovacího stroje ( `net stop bengine` ) a zkopírováním složky mezipaměti do nové jednotky. (Zajistěte, aby na nové jednotce bylo dost místa.) Pak aktualizujte dvě položky registru v části **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**config/ScratchLocation** a **config/CloudBackupProvider/ScratchLocation**) na nové místo a restartujte modul.
 
 ## <a name="networking-and-access-support"></a>Podpora sítí a přístupu
 
@@ -67,11 +67,11 @@ A na tyto IP adresy:
 
 Přístup ke všem adresám URL a IP adresám uvedeným výše používá protokol HTTPS na portu 443.
 
-Při zálohování souborů a složek z virtuálních počítačů Azure pomocí agenta MARS musí být virtuální síť Azure taky nakonfigurovaná tak, aby povolovala přístup. Pokud používáte skupiny zabezpečení sítě (NSG), pomocí značky služby *AzureBackup* povolte odchozí přístup k Azure Backup. Kromě značky Azure Backup musíte také umožňovat připojení k ověřování a přenosu dat vytvořením podobných [pravidel NSG](../virtual-network/network-security-groups-overview.md#service-tags) pro Azure AD ( *azureactivedirectory selhala* ) a Azure Storage ( *úložiště* ). Následující kroky popisují proces vytvoření pravidla pro Azure Backup značku:
+Při zálohování souborů a složek z virtuálních počítačů Azure pomocí agenta MARS musí být virtuální síť Azure taky nakonfigurovaná tak, aby povolovala přístup. Pokud používáte skupiny zabezpečení sítě (NSG), pomocí značky služby *AzureBackup* povolte odchozí přístup k Azure Backup. Kromě značky Azure Backup musíte také umožňovat připojení k ověřování a přenosu dat vytvořením podobných [pravidel NSG](../virtual-network/network-security-groups-overview.md#service-tags) pro Azure AD (*azureactivedirectory selhala*) a Azure Storage (*úložiště*). Následující kroky popisují proces vytvoření pravidla pro Azure Backup značku:
 
 1. Ve **všech službách** klikněte na **skupiny zabezpečení sítě** a vyberte skupinu zabezpečení sítě.
 2. V části **Nastavení** vyberte **odchozí pravidla zabezpečení** .
-3. Vyberte **Add** (Přidat). Zadejte všechny požadované podrobnosti pro vytvoření nového pravidla, jak je popsáno v [Nastavení pravidla zabezpečení](../virtual-network/manage-network-security-group.md#security-rule-settings). Ujistěte se, že možnost **cíl** je nastavená na *příznak služby* a **cílová značka služby** je nastavená na *AzureBackup*.
+3. Vyberte **Přidat**. Zadejte všechny požadované podrobnosti pro vytvoření nového pravidla, jak je popsáno v [Nastavení pravidla zabezpečení](../virtual-network/manage-network-security-group.md#security-rule-settings). Ujistěte se, že možnost **cíl** je nastavená na *příznak služby* a **cílová značka služby** je nastavená na *AzureBackup*.
 4. Vyberte **Přidat** a uložte nově vytvořené odchozí pravidlo zabezpečení.
 
 Podobně můžete vytvořit NSG odchozí pravidla zabezpečení pro Azure Storage a Azure AD. Další informace o značkách služby najdete v [tomto článku](../virtual-network/service-tags-overview.md).

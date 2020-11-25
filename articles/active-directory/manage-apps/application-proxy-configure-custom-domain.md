@@ -12,13 +12,13 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: bef120e754c84798b2d1b48f4f00fbb8f5fb3c1d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656373"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997609"
 ---
-# <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurace vlastních domén pomocí Azure Proxy aplikací služby AD
+# <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurace vlastních domén s využitím proxy aplikací Azure AD
 
 Když publikujete aplikaci prostřednictvím Proxy aplikací služby Azure Active Directory, vytvoříte externí adresu URL pro uživatele. Tato adresa URL získá výchozí *yourtenant.msappproxy.NET* domény. Například pokud publikujete aplikaci s názvem *výdaje* ve vašem tenantovi s názvem *Contoso*, externí adresa URL je *https: \/ /Expenses-contoso.msappproxy.NET*. Pokud chcete místo *msappproxy.NET* použít vlastní název domény, můžete pro svou aplikaci nakonfigurovat vlastní doménu. 
 
@@ -82,7 +82,7 @@ Publikování aplikace prostřednictvím proxy aplikací s vlastní doménou:
    
 4. V poli **externí adresa URL** vyřaďte seznam a vyberte vlastní doménu, kterou chcete použít.
    
-5. Vyberte možnost **Přidat**.
+5. Vyberte **Přidat**.
    
    ![Vybrat vlastní doménu](./media/application-proxy-configure-custom-domain/application-proxy.png)
    

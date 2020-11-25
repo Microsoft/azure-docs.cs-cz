@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: 0eb9afc179f1dd2559f0db7b212f6b3a1da15824
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790912"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998749"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Vytvoření clusteru selhalo s InvalidNetworkConfigurationErrorCode ve službě Azure HDInsight
 
@@ -66,7 +66,7 @@ Azure Storage a SQL nemají pevné IP adresy, proto musíme Povolit odchozí př
 
     Přejít na Azure Portal a Identifikujte směrovací tabulku, která je přidružená k podsíti, ve které se cluster nasazuje. Po nalezení směrovací tabulky pro podsíť zkontrolujte část **trasy** v ní.
 
-    Pokud jsou definované trasy, ujistěte se, že existují trasy pro IP adresy v oblasti, ve které byl cluster nasazený, a **typem** pro každou trasu je **Internet** . Pro každou požadovanou IP adresu popsanou ve výše uvedeném článku by měla být definována trasa.
+    Pokud jsou definované trasy, ujistěte se, že existují trasy pro IP adresy v oblasti, ve které byl cluster nasazený, a **typem** pro každou trasu je **Internet**. Pro každou požadovanou IP adresu popsanou ve výše uvedeném článku by měla být definována trasa.
 
 ## <a name="failed-to-establish-an-outbound-connection-from-the-cluster-for-the-communication-with-the-hdinsight-resource-provider-please-ensure-that-outbound-connectivity-is-allowed"></a>"Nepovedlo se navázat odchozí připojení z clusteru pro komunikaci se zprostředkovatelem prostředků HDInsight. Ujistěte se prosím, že je povolené odchozí připojení.
 

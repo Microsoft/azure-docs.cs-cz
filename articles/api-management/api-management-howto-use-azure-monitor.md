@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
 ms.openlocfilehash: 2317e61111c3ad328e8f112e7d9567f3f5d47990
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379339"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997035"
 ---
 # <a name="tutorial-monitor-published-apis"></a>Kurz: monitorování publikovaných rozhraní API
 
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > * Zobrazení protokolů aktivit
 > * Povolit a zobrazit protokoly prostředků
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Dokončete následující rychlý Start: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
@@ -56,7 +56,7 @@ Přístup k metrikám:
 
 1. V rozevíracím seznamu vyberte metriky, které vás zajímají. Například **požadavky**. 
 1. Graf zobrazí celkový počet volání rozhraní API.
-1. Graf lze filtrovat pomocí dimenzí metriky **požadavků** . Vyberte například **Přidat filtr** , vyberte **kategorie kódu odpovědi back-end** a jako hodnotu zadejte 500. Graf teď zobrazuje počet požadavků, které se v back-endu rozhraní API nezdařily.   
+1. Graf lze filtrovat pomocí dimenzí metriky **požadavků** . Vyberte například **Přidat filtr**, vyberte **kategorie kódu odpovědi back-end** a jako hodnotu zadejte 500. Graf teď zobrazuje počet požadavků, které se v back-endu rozhraní API nezdařily.   
 
 ## <a name="set-up-an-alert-rule"></a>Nastavení pravidla výstrahy 
 
@@ -79,7 +79,7 @@ Postup konfigurace ukázkového pravidla výstrahy na základě metriky požadav
     1. V **typ signálu** vyberte **metriky**.
     1. V **názvu signálu** vyberte **požadavky**.
     1. V **rozdělit podle dimenzí** v **názvu dimenze** vyberte **kategorie kódu odpovědi brány**.
-    1. V **hodnotách dimenze** vyberte **4xx** , v případě chyb klienta, například neoprávněných nebo neplatných požadavků.
+    1. V **hodnotách dimenze** vyberte **4xx**, v případě chyb klienta, například neoprávněných nebo neplatných požadavků.
     1. V poli **logika výstrahy** zadejte prahovou hodnotu, po které má být výstraha aktivována, a vyberte možnost **Hotovo**.
 
     :::image type="content" source="media/api-management-howto-use-azure-monitor/threshold.png" alt-text="Snímek obrazovky s konfigurací okna pro logiku signálů":::

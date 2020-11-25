@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 8f3a58d3a7470867ab23249bbd645289e010ad89
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92223125"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997292"
 ---
 ### <a name="functions-2x-and-higher"></a>Functions 2.x a novější
 
@@ -28,7 +28,7 @@ ms.locfileid: "92223125"
 }  
 ```
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------|
 |maxBatchSize|10|Maximální počet událostí přijatých pro jednu smyčku příjmu.|
 |prefetchCount|300|Výchozí počet předběžného načtení, který používá základní `EventProcessorHost` . Minimální povolená hodnota je 10.|
@@ -49,7 +49,7 @@ ms.locfileid: "92223125"
 }
 ```
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------| 
 |maxBatchSize|64|Maximální počet událostí přijatých pro jednu smyčku příjmu.|
 |prefetchCount|neuvedeno|Výchozí předběžné načtení, které bude používat základní `EventProcessorHost` .| 

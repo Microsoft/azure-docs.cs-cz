@@ -9,12 +9,12 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 5e6289fb4e3b5bb695b79589d544d0ae475f9774
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: dcc6f3bca80cb5860679327226d3e034c3e9b14a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314652"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95996861"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Mapování vlastní domény na koncový bod Azure Blob Storage
 
@@ -58,11 +58,11 @@ Název hostitele je adresa URL koncového bodu úložiště bez identifikátoru 
 
 1. V [Azure Portal](https://portal.azure.com)přejít na účet úložiště.
 
-2. V podokně nabídky v části **Nastavení**vyberte **vlastnosti**.  
+2. V podokně nabídky v části **Nastavení** vyberte **vlastnosti**.  
 
 3. Zkopírujte hodnotu **primárního koncového bodu služby BLOB Service** nebo **primárního koncového bodu statického webu** do textového souboru. 
 
-4. Odeberte identifikátor*protokolu (například*https) a koncové lomítko z tohoto řetězce. Následující tabulka obsahuje příklady.
+4. Odeberte identifikátor *protokolu (například* https) a koncové lomítko z tohoto řetězce. Následující tabulka obsahuje příklady.
 
    | Typ koncového bodu |  endpoint | název hostitele |
    |------------|-----------------|-------------------|
@@ -79,11 +79,11 @@ Vytvořte záznam CNAME, který bude odkazovat na název hostitele. Záznam CNAM
 
 1. Přihlaste se k webu vašeho doménového registrátora a pak na stránce pro správu nastavení DNS.
 
-   Stránku můžete najít v části s názvem **název domény**, **DNS**nebo **Správa názvového serveru**.
+   Stránku můžete najít v části s názvem **název domény**, **DNS** nebo **Správa názvového serveru**.
 
 2. Vyhledejte část pro správu záznamů CNAME. 
 
-   Možná budete muset přejít na stránku pokročilá nastavení a vyhledat **CNAME**, **alias**nebo **subdomény**.
+   Možná budete muset přejít na stránku pokročilá nastavení a vyhledat **CNAME**, **alias** nebo **subdomény**.
 
 3. Vytvoří záznam CNAME. Jako součást tohoto záznamu zadejte následující položky: 
 
@@ -97,7 +97,7 @@ Vytvořte záznam CNAME, který bude odkazovat na název hostitele. Záznam CNAM
 
 1. V [Azure Portal](https://portal.azure.com)přejít na účet úložiště.
 
-2. V podokně nabídek v části **BLOB Service**vyberte **vlastní doména**.  
+2. V podokně nabídek v části **BLOB Service** vyberte **vlastní doména**.  
 
    ![možnost vlastní domény](./media/storage-custom-domain-name/custom-domain-button.png "vlastní doména")
 
@@ -144,11 +144,11 @@ Název hostitele je adresa URL koncového bodu úložiště bez identifikátoru 
 
 1. V [Azure Portal](https://portal.azure.com)přejít na účet úložiště.
 
-2. V podokně nabídky v části **Nastavení**vyberte **vlastnosti**.  
+2. V podokně nabídky v části **Nastavení** vyberte **vlastnosti**.  
 
 3. Zkopírujte hodnotu **primárního koncového bodu služby BLOB Service** nebo **primárního koncového bodu statického webu** do textového souboru. 
 
-4. Odeberte identifikátor*protokolu (například*https) a koncové lomítko z tohoto řetězce. Následující tabulka obsahuje příklady.
+4. Odeberte identifikátor *protokolu (například* https) a koncové lomítko z tohoto řetězce. Následující tabulka obsahuje příklady.
 
    | Typ koncového bodu |  endpoint | název hostitele |
    |------------|-----------------|-------------------|
@@ -163,11 +163,11 @@ Vytvořte dočasný záznam CNAME, který bude odkazovat na název hostitele. Z�
 
 1. Přihlaste se k webu vašeho doménového registrátora a pak na stránce pro správu nastavení DNS.
 
-   Stránku můžete najít v části s názvem **název domény**, **DNS**nebo **Správa názvového serveru**.
+   Stránku můžete najít v části s názvem **název domény**, **DNS** nebo **Správa názvového serveru**.
 
 2. Vyhledejte část pro správu záznamů CNAME. 
 
-   Možná budete muset přejít na stránku pokročilá nastavení a vyhledat **CNAME**, **alias**nebo **subdomény**.
+   Možná budete muset přejít na stránku pokročilá nastavení a vyhledat **CNAME**, **alias** nebo **subdomény**.
 
 3. Vytvoří záznam CNAME. Jako součást tohoto záznamu zadejte následující položky: 
 
@@ -177,7 +177,7 @@ Vytvořte dočasný záznam CNAME, který bude odkazovat na název hostitele. Z�
        
    - Název hostitele, který jste získali v části [získání názvu hostitele vašeho koncového bodu úložiště](#endpoint) výše v tomto článku. 
 
-     Přidejte subdoménu `asverify` do názvu hostitele. Například: `asverify.mystorageaccount.blob.core.windows.net`.
+     Přidejte subdoménu `asverify` do názvu hostitele. Příklad: `asverify.mystorageaccount.blob.core.windows.net`.
 
 4. Pokud chcete zaregistrovat vlastní doménu, klikněte na tlačítko **Uložit** .
 
@@ -189,7 +189,7 @@ Když předem zaregistrujete vlastní doménu pomocí Azure, umožníte Azure ro
 
 1. V [Azure Portal](https://portal.azure.com)přejít na účet úložiště.
 
-2. V podokně nabídek v části **BLOB Service**vyberte **vlastní doména**.  
+2. V podokně nabídek v části **BLOB Service** vyberte **vlastní doména**.  
 
    ![možnost vlastní domény](./media/storage-custom-domain-name/custom-domain-button.png "vlastní doména")
 
@@ -211,11 +211,11 @@ Vytvořte dočasný záznam CNAME, který bude odkazovat na název hostitele.
 
 1. Přihlaste se k webu vašeho doménového registrátora a pak na stránce pro správu nastavení DNS.
 
-   Stránku můžete najít v části s názvem **název domény**, **DNS**nebo **Správa názvového serveru**.
+   Stránku můžete najít v části s názvem **název domény**, **DNS** nebo **Správa názvového serveru**.
 
 2. Vyhledejte část pro správu záznamů CNAME. 
 
-   Možná budete muset přejít na stránku pokročilá nastavení a vyhledat **CNAME**, **alias**nebo **subdomény**.
+   Možná budete muset přejít na stránku pokročilá nastavení a vyhledat **CNAME**, **alias** nebo **subdomény**.
 
 3. Vytvoří záznam CNAME. Jako součást tohoto záznamu zadejte následující položky: 
 
@@ -239,7 +239,7 @@ Pokud chcete odebrat vlastní nastavení domény, udělejte toto:
 
 1. V [Azure Portal](https://portal.azure.com)přejít na účet úložiště.
 
-2. V podokně nabídek v části **BLOB Service**vyberte **vlastní doména**.  
+2. V podokně nabídek v části **BLOB Service** vyberte **vlastní doména**.  
    Otevře se podokno **vlastní doména** .
 
 3. Vymažte obsah textového pole, které obsahuje vlastní název domény.
@@ -250,7 +250,7 @@ Po úspěšném odebrání vlastní domény se zobrazí oznámení na portálu, 
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete odebrat vlastní registraci domény, použijte příkaz [AZ Storage Account Update](https://docs.microsoft.com/cli/azure/storage/account) CLI a pak zadejte prázdný řetězec ( `""` ) pro `--custom-domain` hodnotu argumentu.
+Pokud chcete odebrat vlastní registraci domény, použijte příkaz [AZ Storage Account Update](/cli/azure/storage/account) CLI a pak zadejte prázdný řetězec ( `""` ) pro `--custom-domain` hodnotu argumentu.
 
 * Formát příkazu:
 
@@ -320,11 +320,11 @@ Chcete-li namapovat vlastní doménu a povolit přístup pomocí protokolu HTTPS
 
 4. Volitelné Přečtěte si následující pokyny:
 
-   * [Tokeny sdíleného přístupového podpisu (SAS) s Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#shared-access-signatures).
+   * [Tokeny sdíleného přístupového podpisu (SAS) s Azure CDN](../../cdn/cdn-storage-custom-domain-https.md#shared-access-signatures).
 
-   * [Přesměrování HTTP na https s Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#http-to-https-redirection).
+   * [Přesměrování HTTP na https s Azure CDN](../../cdn/cdn-storage-custom-domain-https.md#http-to-https-redirection).
 
-   * [Ceny a fakturace při použití BLOB Storage s Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#http-to-https-redirection).
+   * [Ceny a fakturace při použití BLOB Storage s Azure CDN](../../cdn/cdn-storage-custom-domain-https.md#http-to-https-redirection).
 
 ## <a name="next-steps"></a>Další kroky
 

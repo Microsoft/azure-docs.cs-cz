@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3365a58a0c667ca55b74a5120cdd7a78ad0abc79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299906"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997779"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Možnosti přihlášení uživatele Azure AD Connect
 Azure Active Directory (Azure AD) Connect umožňuje vašim uživatelům přihlašovat se ke cloudovým i místním prostředkům pomocí stejných hesel. Tento článek popisuje klíčové koncepty pro každý model identity, které vám pomůžou zvolit identitu, kterou chcete použít pro přihlášení k Azure AD.
@@ -68,7 +68,7 @@ Předávací ověřování používá jednoduchého agenta na počítači připo
 Kromě toho můžete také povolit jednotné přihlašování pro uživatele na počítačích připojených k doméně, které jsou v podnikové síti. Při jednotném přihlašování stačí uživatelům zadat jenom uživatelské jméno, které jim pomůžou zajistit zabezpečený přístup k prostředkům v cloudu.
 ![Předávací ověřování](./media/plan-connect-user-signin/pta.png)
 
-Další informace naleznete v tématech:
+Další informace naleznete v tématu:
 - [Předávací ověřování](how-to-connect-pta.md)
 - [Jednotné přihlašování](how-to-connect-sso.md)
 

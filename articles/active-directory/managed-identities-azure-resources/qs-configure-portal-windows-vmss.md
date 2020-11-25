@@ -16,11 +16,11 @@ ms.date: 02/20/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 43b986b6bb25dff1227247b1d249ce565553877a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91329129"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997405"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Konfigurace spravovaných identit pro prostředky Azure v sadě škálování virtuálních počítačů pomocí Azure Portal
 
@@ -69,7 +69,7 @@ Pokud máte sadu škálování virtuálního počítače, která už nepotřebuj
 
 2. Přejděte na požadovanou sadu škálování virtuálního počítače.
 
-3. V části **přiřazeno systému**, **stav**vyberte **vypnuto** a potom klikněte na **Uložit**:
+3. V části **přiřazeno systému**, **stav** vyberte **vypnuto** a potom klikněte na **Uložit**:
 
    ![Snímek obrazovky konfigurační stránky](./media/msi-qs-configure-portal-windows-vmss/disable-windows-vmss-portal-configuration-blade.png)
 
@@ -86,7 +86,7 @@ V současné době Azure Portal nepodporuje přiřazení spravované identity p�
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-virtual-machine-scale-set"></a>Přiřazení spravované identity přiřazené uživatelem do existující sady škálování virtuálních počítačů
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu přidruženého k předplatnému Azure, které obsahuje sadu škálování virtuálního počítače.
-2. Přejděte na požadovanou sadu škálování virtuálního počítače a klikněte na **Identita**, **přiřazený uživatel** a pak na ** \+ Přidat**.
+2. Přejděte na požadovanou sadu škálování virtuálního počítače a klikněte na **Identita**, **přiřazený uživatel** a pak na **\+ Přidat**.
 
    ![Snímek obrazovky zobrazující stránku identita s vybraným uživatelem přiřazenou a zvýrazněným tlačítkem Přidat](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
 

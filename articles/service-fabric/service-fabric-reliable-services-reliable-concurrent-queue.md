@@ -4,11 +4,11 @@ description: ReliableConcurrentQueue je fronta s vysokou propustností, která u
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.openlocfilehash: 423ef3d1898176d7c25c596ad186a9c000108aa4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257439"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997116"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Úvod do ReliableConcurrentQueue v Azure Service Fabric
 Spolehlivá souběžná fronta je asynchronní, transakční a replikovaná fronta, která poskytuje vysoké souběžnosti pro zařazování do fronty a operace odstranění fronty. Je navržená tak, aby poskytovala vysokou propustnost a nízkou latenci tím, že požadavků striktní řazení FIFO poskytované [spolehlivou frontou](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) a místo toho poskytuje nejlepší řazení.
@@ -33,7 +33,7 @@ Vzorový případ použití pro ReliableConcurrentQueue je scénář [fronty zpr
 * Fronta očekává, že položky ve frontě mají dobu nedostatečného uchování. To znamená, že položky nebudou zůstat ve frontě po dlouhou dobu.
 * Fronta nezaručuje striktní řazení FIFO.
 * Fronta nečte vlastní zápisy. Pokud je položka zařazena do fronty v rámci transakce, nebude viditelná pro odkládání v rámci stejné transakce.
-* Vyřazení z fronty nejsou od sebe vzájemně izolované. Pokud je položka *a* v *txnA*transakce Oddálená, i když *TxnA* není potvrzen, položka *A* nebude viditelná pro souběžnou transakční *txnB*.  Pokud *txnA* přeruší, *A* bude se okamžitě zobrazovat jako *txnB* .
+* Vyřazení z fronty nejsou od sebe vzájemně izolované. Pokud je položka *a* v *txnA* transakce Oddálená, i když *TxnA* není potvrzen, položka *A* nebude viditelná pro souběžnou transakční *txnB*.  Pokud *txnA* přeruší, *A* bude se okamžitě zobrazovat jako *txnB* .
 * Chování *TryPeekAsync* se dá implementovat pomocí *TryDequeueAsync* a pak transakci přerušit. Příklad tohoto chování najdete v části programovací vzory.
 * Počet je jiný než transakční. Dá se použít k získání nápadu na počet prvků ve frontě, ale představuje bod v čase a nemůže se spoléhat na.
 * Nákladné zpracování položek odstraněných z fronty by nemělo být prováděno, pokud je transakce aktivní, aby nedocházelo k dlouhotrvajícím transakcím, které mohou mít vliv na výkon systému.

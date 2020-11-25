@@ -1,19 +1,19 @@
 ---
 title: 'Kurz: sdílení kotev napříč relacemi a zařízeními'
 description: V tomto kurzu se dozvíte, jak sdílet identifikátory prostorové kotvy Azure mezi zařízeními s Androidem/iOS v Unity pomocí back-endové služby.
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 07/31/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b29873e161b64c52abbfdf3f2611714f6b012361
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 3048eb1ca7f9312a43bc1ab5885bf19d4c2e7931
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097282"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95998430"
 ---
 # <a name="tutorial-share-spatial-anchors-across-sessions-and-devices"></a>Kurz: sdílení prostorových ukotvení napříč relacemi a zařízeními
 
@@ -66,7 +66,7 @@ Přejít na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>
 
 Vedle pole **Skupina prostředků** vyberte **Nová**.
 
-Pojmenujte skupinu prostředků **myResourceGroup**a pak vyberte **OK**.
+Pojmenujte skupinu prostředků **myResourceGroup** a pak vyberte **OK**.
 
 ### <a name="create-an-app-service-plan"></a>Vytvoření plánu služby App Service
 

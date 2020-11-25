@@ -1,19 +1,19 @@
 ---
 title: 'Kurz: vytvoření nové aplikace pro Android'
 description: V tomto kurzu se naučíte, jak vytvořit novou aplikaci pro Android pomocí prostorových kotev Azure.
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 06/22/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3ef24e29e5dde90aa829c46d789256e6e5f3233b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af0d01a20728d2332d4a8d71819f73baf68a65a4
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85296198"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95998378"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>Kurz: podrobné pokyny k vytvoření nové aplikace pro Android pomocí prostorových kotev Azure
 
@@ -30,7 +30,7 @@ Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 
 Spusťte Android Studio. V okně **Vítá vás Android Studio** klikněte na **spustit nový projekt Android Studio**. Nebo, pokud máte projekt již otevřen, vyberte **soubor** -> **Nový projekt**.
 
-V okně **vytvořit nový projekt** v části **telefon a tablet** vyberte možnost **prázdná aktivita**a klikněte na tlačítko **Další**. Pak v části **minimální úroveň rozhraní API**zvolte `API 26: Android 8.0 (Oreo)` a zkontrolujte, že je **jazyk** nastavený na `Java` . Je možné, že budete chtít změnit název projektu & umístění a název balíčku. Ostatní možnosti ponechte beze změny. Klikněte na **Finish** (Dokončit). Spustí se **instalační program součásti** . Až to bude hotové, klikněte na **Dokončit**. Po nějakém zpracování Android Studio otevře IDE.
+V okně **vytvořit nový projekt** v části **telefon a tablet** vyberte možnost **prázdná aktivita** a klikněte na tlačítko **Další**. Pak v části **minimální úroveň rozhraní API** zvolte `API 26: Android 8.0 (Oreo)` a zkontrolujte, že je **jazyk** nastavený na `Java` . Je možné, že budete chtít změnit název projektu & umístění a název balíčku. Ostatní možnosti ponechte beze změny. Klikněte na **Finish** (Dokončit). Spustí se **instalační program součásti** . Až to bude hotové, klikněte na **Dokončit**. Po nějakém zpracování Android Studio otevře IDE.
 
 ## <a name="trying-it-out"></a>Vyzkoušení
 
@@ -134,7 +134,7 @@ dependencies {
 }
 ```
 
-Klikněte pravým tlačítkem na `app\java\<PackageName>` -> **novou** -> **třídu Java**. Nastavte **název** na _MojePrvníAplikace_a **supertřída** na _Android. app. Application_. Ostatní možnosti ponechte beze změny. Klikněte na **OK**. Vytvoří se soubor s názvem `MyFirstApp.java` . Přidejte do něj následující import:
+Klikněte pravým tlačítkem na `app\java\<PackageName>` -> **novou** -> **třídu Java**. Nastavte **název** na _MojePrvníAplikace_ a **supertřída** na _Android. app. Application_. Ostatní možnosti ponechte beze změny. Klikněte na **OK**. Vytvoří se soubor s názvem `MyFirstApp.java` . Přidejte do něj následující import:
 
 ```java
 import com.microsoft.CloudServices;
@@ -227,6 +227,6 @@ Nyní připravujeme kód, který bude vyvolán, když se na něj nachází kotva
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?name=initializeSession&highlight=34-53)]
 
-A je to! [Opětovným nasazením](#trying-it-out) aplikace z poslední doby můžete vyzkoušet celý scénář a ukončit ho. Pohybujte kolem zařízení a umístěte černou koule. Pak můžete pokračovat ve svém zařízení a zachytit snímky z kamery, dokud se koule nezmění žlutě. Vaše místní kotva se nahraje a vaše koule se zachová modře. Nakonec klepněte na obrazovku ještě jednou, aby se vaše místní kotva odebrala, a pak se podíváme na svůj cloudový protějšek. Pokračujte v přesouvání zařízení, dokud se neumístí cloudové ukotvení. Zelená koule by se měla zobrazit ve správném umístění a můžete ji vypláchněte & opakujte celý scénář.
+A to je vše! [Opětovným nasazením](#trying-it-out) aplikace z poslední doby můžete vyzkoušet celý scénář a ukončit ho. Pohybujte kolem zařízení a umístěte černou koule. Pak můžete pokračovat ve svém zařízení a zachytit snímky z kamery, dokud se koule nezmění žlutě. Vaše místní kotva se nahraje a vaše koule se zachová modře. Nakonec klepněte na obrazovku ještě jednou, aby se vaše místní kotva odebrala, a pak se podíváme na svůj cloudový protějšek. Pokračujte v přesouvání zařízení, dokud se neumístí cloudové ukotvení. Zelená koule by se měla zobrazit ve správném umístění a můžete ji vypláchněte & opakujte celý scénář.
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-new-android-app-finished.md)]

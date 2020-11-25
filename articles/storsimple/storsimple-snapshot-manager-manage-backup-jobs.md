@@ -15,16 +15,16 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 3c26a84e32a17cba83b5ca895f146e561072fa62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90054955"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998188"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>Zobrazení a správa úloh zálohování pomocí Snapshot Manager StorSimple
 
 ## <a name="overview"></a>Přehled
-Uzel **úlohy** v podokně **oboru** zobrazuje **naplánované**, **posledních 24 hodin**a **spuštěné** úlohy zálohování, které jste spustili interaktivně, nebo nakonfigurovanou zásadou. 
+Uzel **úlohy** v podokně **oboru** zobrazuje **naplánované**, **posledních 24 hodin** a **spuštěné** úlohy zálohování, které jste spustili interaktivně, nebo nakonfigurovanou zásadou. 
 
 V tomto kurzu se dozvíte, jak můžete pomocí uzlu **Jobs (úlohy** ) zobrazit informace o plánovaných, nedávných a aktuálně spuštěných úlohách zálohování. (Seznam úloh a odpovídající informace se zobrazí v podokně **výsledků** .) Kromě toho můžete kliknout pravým tlačítkem myši na uvedenou úlohu a zobrazit kontextovou nabídku, která obsahuje seznam dostupných akcí.
 

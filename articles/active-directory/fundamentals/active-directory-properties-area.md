@@ -14,11 +14,11 @@ ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f47ae9b087615a77f6bd4d3f14f1b0052037cba6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321969"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996746"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Přidání informací o ochraně osobních údajů vaší organizace pomocí Azure Active Directory
 Tento článek vysvětluje, jak může správce klienta přidávat informace týkající se ochrany osobních údajů do tenanta Azure Active Directory organizace (Azure AD) prostřednictvím Azure Portal.
@@ -34,7 +34,7 @@ Do oblasti **vlastnosti** Azure AD přidáte informace o ochraně osobních úda
 
 1. Přihlaste se k Azure Portal jako správce tenanta.
 
-2. V levém navigačním panelu vyberte **Azure Active Directory**a pak vyberte **vlastnosti**.
+2. V levém navigačním panelu vyberte **Azure Active Directory** a pak vyberte **vlastnosti**.
 
     Zobrazí se oblast **vlastnosti** .
 
@@ -49,7 +49,7 @@ Do oblasti **vlastnosti** Azure AD přidáte informace o ochraně osobních úda
     - **Adresa URL prohlášení o ochraně osobních údajů** Zadejte odkaz na dokument vaší organizace, který popisuje, jak vaše organizace zpracovává soukromí dat interního i externího hosta.
 
         >[!Important]
-        >Pokud nezahrnete vlastní prohlášení o zásadách ochrany osobních údajů ani váš kontakt na ochranu osobních údajů, vaše externí hosté uvidí text v poli pro **kontrolu oprávnění** , která uvádí, že ** < _název vaší organizace_> neposkytl odkazy na své výrazy, abyste si je mohli prohlédnout**. Uživatel typu Host uvidí například tuto zprávu, když obdrží pozvánku k přístupu k organizaci prostřednictvím spolupráce B2B.
+        >Pokud nezahrnete vlastní prohlášení o zásadách ochrany osobních údajů ani váš kontakt na ochranu osobních údajů, vaše externí hosté uvidí text v poli pro **kontrolu oprávnění** , která uvádí, že **< _název vaší organizace_> neposkytl odkazy na své výrazy, abyste si je mohli prohlédnout**. Uživatel typu Host uvidí například tuto zprávu, když obdrží pozvánku k přístupu k organizaci prostřednictvím spolupráce B2B.
 
         ![Pole oprávnění pro kontrolu spolupráce B2B se zprávou](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 

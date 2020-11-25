@@ -8,11 +8,11 @@ ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 91b6134e7c809a8af75aa1cf23523e352e0a1a0e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150245"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997337"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Důležité aspekty sítí pro službu App Service Environment #
 
@@ -20,12 +20,12 @@ ms.locfileid: "92150245"
 
  Azure [App Service Environment][Intro] je nasazení Azure App Service do podsítě ve službě Azure Virtual Network (VNET). K dispozici jsou dva typy nasazení App Service prostředí (pomocného mechanismu):
 
-- **Externí**přístupový modul pro čtení: zpřístupňuje aplikace hostované pro pomocného objektu na IP adrese přístupné pro Internet. Další informace najdete v tématu [Vytvoření externího POmocného mechanismu služby][MakeExternalASE].
+- **Externí** přístupový modul pro čtení: zpřístupňuje aplikace hostované pro pomocného objektu na IP adrese přístupné pro Internet. Další informace najdete v tématu [Vytvoření externího POmocného mechanismu služby][MakeExternalASE].
 - **Interního nástroje POmocného mechanismu**: zpřístupňuje aplikace hostované pro pomocného objektu na IP adrese v rámci vaší virtuální sítě. Interním koncovým bodem je interní nástroj pro vyrovnávání zatížení (interního nástroje), což je důvod, proč se nazývá pomocného mechanismu interního nástroje. Další informace najdete v tématu [Vytvoření a použití POmocného interního nástrojeu][MakeILBASE].
 
 Všechny služby ASE, externí a interního nástroje mají veřejnou virtuální IP adresu, která se používá pro příchozí provoz správy a jako adresa od v případě volání z pomocného mechanismu pro Internet. Volání z pomocného modulu pro pořízení, který přejde na Internet, opustí virtuální síť prostřednictvím VIP přiřazené k tomuto pomocnému uživateli. Veřejná IP adresa tohoto VIP je zdrojová IP adresa pro všechna volání z pomocného mechanismu, která se nachází na internetu. V případě, že aplikace ve vaší službě pomocného mechanismu volání vyvolají prostředky ve vaší virtuální síti nebo v síti VPN, je zdrojová IP adresa jednou z IP adres v podsíti používané vaším pomocným mechanismem řízení. Vzhledem k tomu, že je přístupový modul pro přístup ve virtuální síti, může také přistupovat k prostředkům v rámci virtuální sítě bez jakékoli další konfigurace. Pokud je virtuální síť připojená k vaší místní síti, aplikace ve vašem přihlašování k prostředkům mají také přístup k prostředkům, které nemají žádnou další konfiguraci.
 
-![Externí pomocného mechanismu][1] 
+![Externí pomocného mechanismu][1] 
 
 Pokud máte externí pomocný objekt pro pořízení, veřejná VIP je zároveň koncovým bodem, na který aplikace pomocného mechanismu přikládá:
 
@@ -109,7 +109,7 @@ Pokud změníte nastavení DNS virtuální sítě, ve které je váš přihláš
 Kromě funkčních závislostí pomocného mechanismu je několik dalších položek, které se týkají prostředí portálu. Některé funkce v Azure Portal závisí na přímém přístupu k _webu SCM_. Pro každou aplikaci v Azure App Service jsou k dispozici dvě adresy URL. První adresa URL má přístup k vaší aplikaci. Druhá adresa URL má přístup k webu SCM, který se také nazývá _Konzola Kudu_. K funkcím, které používají web SCM, patří:
 
 -   Web Jobs
--   Functions
+-   Funkce
 -   Streamování protokolů
 -   Kudu
 -   Rozšíření
@@ -180,9 +180,9 @@ Při zohlednění vstupních a odchozích požadavků by měl skupin zabezpečen
 
 ![Příchozí pravidla zabezpečení][4]
 
-Výchozí pravidlo povoluje, aby IP adresy ve virtuální síti komunikovaly s podsítí pomocného mechanismu. Další výchozí pravidlo povolí službě Vyrovnávání zatížení, která se označuje jako veřejná VIP, ke komunikaci s pomocným mechanismem řízení. Pokud chcete zobrazit výchozí pravidla, vyberte **výchozí pravidla** vedle ikony **Přidat** . Pokud před výchozími pravidly vložíte pravidlo Odepřít vše jiného, zabráníte tak provozu mezi VIP a pomocným mechanismem řízení. Pokud chcete zabránit provozu v rámci virtuální sítě, přidejte vlastní pravidlo, které povolí příchozí. Použijte **zdroj, který** se rovná AzureLoadBalancer, s cílovým umístěním a rozsahem portů **\*** . Vzhledem k tomu, že pravidlo NSG se používá pro podsíť pomocného mechanismu, nemusíte být v cíli specifická.
+Výchozí pravidlo povoluje, aby IP adresy ve virtuální síti komunikovaly s podsítí pomocného mechanismu. Další výchozí pravidlo povolí službě Vyrovnávání zatížení, která se označuje jako veřejná VIP, ke komunikaci s pomocným mechanismem řízení. Pokud chcete zobrazit výchozí pravidla, vyberte **výchozí pravidla** vedle ikony **Přidat** . Pokud před výchozími pravidly vložíte pravidlo Odepřít vše jiného, zabráníte tak provozu mezi VIP a pomocným mechanismem řízení. Pokud chcete zabránit provozu v rámci virtuální sítě, přidejte vlastní pravidlo, které povolí příchozí. Použijte zdroj, který se rovná **AzureLoadBalancer, s** cílovým umístěním a rozsahem portů * *\** _. Vzhledem k tomu, že pravidlo NSG se používá pro podsíť pomocného mechanismu, nemusíte být v cíli specifická.
 
-Pokud jste aplikaci přiřadili IP adresu, zajistěte, aby byly porty otevřené. Porty zobrazíte tak, že vyberete **App Service Environment**  >  **IP adresy**.  
+Pokud jste aplikaci přiřadili IP adresu, zajistěte, aby byly porty otevřené. Porty zobrazíte tak, že vyberete _ *App Service Environment** > **IP adresy**.  
 
 Všechny položky zobrazené v následujících odchozích pravidlech jsou potřeba s výjimkou poslední položky. Umožňují síťovému přístupu ke závislostem pomocného mechanismu, které byly popsány dříve v tomto článku. Pokud je některý z nich zablokujete, váš pomocného programu přestane fungovat. Poslední položka v seznamu umožňuje vašemu přihlášenému uživatelům komunikovat s ostatními prostředky ve vaší virtuální síti.
 

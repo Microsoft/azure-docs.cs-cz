@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: jeedes
 ms.openlocfilehash: c0c428997cfba8871a29d9bfe0df0a6920a1d22f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357585"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998664"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Kurz: Konfigurace 4me pro Automatické zřizování uživatelů
 
@@ -53,7 +53,7 @@ Před konfigurací 4me pro Automatické zřizování uživatelů se službou Azu
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **4me** , na panelu výsledků vyberte **4me** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **4me**, na panelu výsledků vyberte **4me** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![4me v seznamu výsledků](common/search-new-app.png)
 

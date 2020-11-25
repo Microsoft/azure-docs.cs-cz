@@ -9,11 +9,11 @@ ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: key-vault
 ms.openlocfilehash: ac3ee108fc63441b2a9381b9e7624631bdca4e5b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289835"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998102"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Ověřování služba-služba pro Azure Key Vault pomocí .NET
 
@@ -26,7 +26,7 @@ Správa takových přihlašovacích údajů může být obtížná. Setrvání p
 
 `Microsoft.Azure.Services.AppAuthentication`Knihovna spravuje ověřování automaticky, což zase umožňuje soustředit se na vaše řešení, nikoli na vaše přihlašovací údaje. Podporuje místní vývoj pomocí Microsoft Visual Studio, Azure CLI nebo integrovaného ověřování Azure AD. Při nasazení do prostředku Azure, který podporuje spravovanou identitu, knihovna automaticky používá [spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md). Nejsou vyžadovány žádné změny kódu nebo konfigurace. Knihovna také podporuje přímé použití [přihlašovacích údajů klienta](../../active-directory/develop/howto-authenticate-service-principal-powershell.md) Azure AD, když spravovaná identita není k dispozici, nebo když není možné určit kontext zabezpečení vývojáře během místního vývoje.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Visual studio 2019](https://www.visualstudio.com/downloads/) nebo [Visual Studio 2017 v 15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/).
 
@@ -65,7 +65,7 @@ Pro místní vývoj existují dva scénáře primárního ověřování: [ověř
 
 Místní počítače nepodporují spravované identity prostředků Azure. V důsledku toho `Microsoft.Azure.Services.AppAuthentication` Knihovna používá vaše přihlašovací údaje pro vývojáře ke spuštění ve vašem místním vývojovém prostředí. Když se řešení nasadí do Azure, knihovna pomocí spravované identity přepne na tok udělení přihlašovacích údajů klienta OAuth 2,0. Tento přístup znamená, že můžete stejný kód otestovat místně a vzdáleně bez obav.
 
-Pro místní vývoj `AzureServiceTokenProvider` načte tokeny pomocí sady **Visual Studio** , **rozhraní příkazového řádku Azure** (CLI) nebo **integrovaného ověřování Azure AD**. Každá možnost se zkouší postupně a knihovna používá první možnost, která je úspěšná. Pokud žádná možnost nefunguje, `AzureServiceTokenProviderException` je vyvolána výjimka s podrobnými informacemi.
+Pro místní vývoj `AzureServiceTokenProvider` načte tokeny pomocí sady **Visual Studio**, **rozhraní příkazového řádku Azure** (CLI) nebo **integrovaného ověřování Azure AD**. Každá možnost se zkouší postupně a knihovna používá první možnost, která je úspěšná. Pokud žádná možnost nefunguje, `AzureServiceTokenProviderException` je vyvolána výjimka s podrobnými informacemi.
 
 #### <a name="authenticating-with-visual-studio"></a>Ověřování pomocí sady Visual Studio
 
@@ -73,11 +73,11 @@ Ověření pomocí sady Visual Studio:
 
 1. Přihlaste se k aplikaci Visual **Tools** Studio a pomocí &nbsp; > &nbsp; **možností** nástrojů otevřete **Možnosti**.
 
-1. Vyberte **ověřování služby Azure** , zvolte účet pro místní vývoj a vyberte **OK**.
+1. Vyberte **ověřování služby Azure**, zvolte účet pro místní vývoj a vyberte **OK**.
 
 Pokud narazíte na problémy pomocí sady Visual Studio, jako jsou chyby, které zahrnují soubor poskytovatele tokenů, pečlivě zkontrolujte předchozí kroky.
 
-Možná budete muset znovu ověřit váš token pro vývojáře. Provedete to tak **Tools** , že vyberete &nbsp; > &nbsp; **Možnosti** nástroje a pak vyberete **&nbsp; &nbsp; ověřování služby Azure**. Vyhledejte v rámci vybraného účtu odkaz **znovu ověřit** . Vyberte ji pro ověření.
+Možná budete muset znovu ověřit váš token pro vývojáře. Provedete to tak **Tools**, že vyberete &nbsp; > &nbsp; **Možnosti** nástroje a pak vyberete **&nbsp; &nbsp; ověřování služby Azure**. Vyhledejte v rámci vybraného účtu odkaz **znovu ověřit** . Vyberte ji pro ověření.
 
 #### <a name="authenticating-with-azure-cli"></a>Ověřování pomocí Azure CLI
 
@@ -167,7 +167,7 @@ Existují tři primární metody použití instančního objektu ke spuštění 
           CertificateStoreLocation={CertificateStore}
     ```
 
-    Nahraďte hodnoty *{AppID}* , *{TenantId}* a *{kryptografický otisk}* hodnotami generovanými v kroku 1. Nahraďte *{CertificateStore}* buď *LocalMachine* , nebo *CurrentUser* , a to na základě vašeho plánu nasazení.
+    Nahraďte hodnoty *{AppID}*, *{TenantId}* a *{kryptografický otisk}* hodnotami generovanými v kroku 1. Nahraďte *{CertificateStore}* buď *LocalMachine*, nebo *CurrentUser*, a to na základě vašeho plánu nasazení.
 
 1. Spusťte aplikaci.
 
@@ -185,7 +185,7 @@ Existují tři primární metody použití instančního objektu ke spuštění 
     RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}
     ```
 
-    Nahraďte hodnoty _{AppID}_ , _{TenantId}_ a _{ClientSecret}_ hodnotami generovanými v kroku 1.
+    Nahraďte hodnoty _{AppID}_, _{TenantId}_ a _{ClientSecret}_ hodnotami generovanými v kroku 1.
 
 1. Spusťte aplikaci.
 
@@ -217,7 +217,7 @@ Použití klientského certifikátu pro ověřování instančního objektu:
     RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}
     ```
 
-    Například pokud váš Trezor klíčů byl nazvaný *myKeyVault* a vytvořili jste certifikát nazvaný *myCert* , identifikátor certifikátu by byl:
+    Například pokud váš Trezor klíčů byl nazvaný *myKeyVault* a vytvořili jste certifikát nazvaný *myCert*, identifikátor certifikátu by byl:
 
     ```azurecli
     RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier=https://myKeyVault.vault.azure.net/secrets/myCert
@@ -262,7 +262,7 @@ Chcete-li zobrazit `Microsoft.Azure.Services.AppAuthentication` knihovnu v akci,
 
 #### <a name="azure-cli-is-not-installed-youre-not-logged-in-or-you-dont-have-the-latest-version"></a>Rozhraní příkazového řádku Azure není nainstalované, nejste přihlášeni nebo nemáte nejnovější verzi.
 
-Spuštěním *AZ Account Get-Access-token* zjistíte, jestli Azure CLI zobrazuje token pro vás. Pokud **žádný takový program nenalezne** , nainstalujte [nejnovější verzi rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest). Může se zobrazit výzva k přihlášení.
+Spuštěním *AZ Account Get-Access-token* zjistíte, jestli Azure CLI zobrazuje token pro vás. Pokud **žádný takový program nenalezne**, nainstalujte [nejnovější verzi rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest). Může se zobrazit výzva k přihlášení.
 
 #### <a name="azureservicetokenprovider-cant-find-the-path-for-azure-cli"></a>AzureServiceTokenProvider nemůže najít cestu pro rozhraní příkazového řádku Azure CLI.
 

@@ -6,11 +6,11 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 ms.openlocfilehash: 7d6c0d13e440beb9a934adba3908cc9a08f396f1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747130"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997897"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace Ruby a Postgres v Azure App Service v systému Linux
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -125,7 +125,7 @@ V této části vytvoříte Azure Database for PostgreSQL Server a databázi. Za
 az extension add --name db-up
 ```
 
-Vytvořte databázi Postgres v Azure pomocí [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) příkazu, jak je znázorněno v následujícím příkladu. Nahraďte *\<postgresql-name>* *jedinečným* názvem (koncový bod serveru je *https:// \<postgresql-name> . Postgres.Database.Azure.com* ). V případě *\<admin-username>* a *\<admin-password>* Zadejte přihlašovací údaje pro vytvoření uživatele správce pro tento server Postgres.
+Vytvořte databázi Postgres v Azure pomocí [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) příkazu, jak je znázorněno v následujícím příkladu. Nahraďte *\<postgresql-name>* *jedinečným* názvem (koncový bod serveru je *https:// \<postgresql-name> . Postgres.Database.Azure.com*). V případě *\<admin-username>* a *\<admin-password>* Zadejte přihlašovací údaje pro vytvoření uživatele správce pro tento server Postgres.
 
 <!-- Issue: without --location -->
 ```azurecli
@@ -157,7 +157,7 @@ V tomto kroku připojíte aplikaci Ruby on Rails k databázi Postgres, kterou js
 
 ### <a name="configure-the-database-connection"></a>Konfigurace připojení k databázi
 
-V úložišti otevřete soubor _config/database.yml_ . Ve spodní části souboru nahraďte produkční proměnné následujícím kódem. 
+V úložišti otevřete soubor _config/database.yml_. Ve spodní části souboru nahraďte produkční proměnné následujícím kódem. 
 
 ```txt
 production:
@@ -257,7 +257,7 @@ V tomto kroku nasadíte aplikaci Rails připojenou k Postgres do služby Azure A
 
 Ve službě App Service můžete nastavit proměnné prostředí jako _nastavení aplikace_ pomocí příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) v Cloud Shellu.
 
-Následující příkaz Cloud Shellu nakonfiguruje nastavení aplikace `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` a `DB_PASSWORD`. Nahraďte zástupné symboly _&lt; AppName>_ a _&lt; postgres-Server-Name>_ .
+Následující příkaz Cloud Shellu nakonfiguruje nastavení aplikace `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` a `DB_PASSWORD`. Nahraďte zástupné symboly _&lt; AppName>_ a _&lt; postgres-Server-Name>_.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<postgres-server-name>.postgres.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="root@<postgres-server-name>" DB_PASSWORD="Sampledb1"
@@ -316,7 +316,7 @@ remote: Running deployment command...
 
 Přejděte na adresu `http://<app-name>.azurewebsites.net` a přidejte do seznamu několik úkolů.
 
-:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="Snímek obrazovky s příkladem aplikace v Ruby na železnici s názvem úkoly":::
+:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="Snímek obrazovky s příkladem úlohy, které zobrazují úkoly přidané do seznamu, s názvem úkoly":::
 
 Blahopřejeme! Teď máte ve službě Azure App Service spuštěnou aplikaci Ruby on Rails založenou na datech.
 
@@ -347,7 +347,7 @@ rake db:migrate
 
 ### <a name="update-application-logic"></a>Aktualizace logiky aplikace
 
-Otevřete soubor *app/controllers/tasks_controller.rb* . Na konci souboru najdete následující řádek:
+Otevřete soubor *app/controllers/tasks_controller.rb*. Na konci souboru najdete následující řádek:
 
 ```rb
 params.require(:task).permit(:Description)
@@ -361,7 +361,7 @@ params.require(:task).permit(:Description, :Done)
 
 ### <a name="update-the-views"></a>Aktualizace zobrazení
 
-Otevřete soubor *app/views/tasks/_form.html.erb* , což je formulář pro úpravy.
+Otevřete soubor *app/views/tasks/_form.html.erb*, což je formulář pro úpravy.
 
 Najděte řádek `<%=f.error_span(:Description) %>` a přímo pod něj vložte následující kód:
 
@@ -381,7 +381,7 @@ Najděte řádek `<dd><%= @task.Description %></dd>` a přímo pod něj vložte 
   <dd><%= check_box "task", "Done", {:checked => @task.Done, :disabled => true}%></dd>
 ```
 
-Otevřete soubor *app/views/tasks/index.html.erb* , což je indexová stránka pro všechny záznamy.
+Otevřete soubor *app/views/tasks/index.html.erb*, což je indexová stránka pro všechny záznamy.
 
 Najděte řádek `<th><%= model_class.human_attribute_name(:Description) %></th>` a přímo pod něj vložte následující kód:
 

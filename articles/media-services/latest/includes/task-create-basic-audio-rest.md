@@ -2,19 +2,19 @@
 author: IngridAtMicrosoft
 ms.service: media-services
 ms.topic: include
-ms.date: 08/18/2020
+ms.date: 11/19/2020
 ms.author: inhenkel
-ms.custom: CLI
-ms.openlocfilehash: 3a99dd9e69363e8fbb02b7e5e1ac5921d079ba21
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.custom: REST
+ms.openlocfilehash: def2553ddc71f008c5d2b902d04f587ef8d26889
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917868"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996886"
 ---
 <!--Create a basic audio transform REST-->
 
-Následující příkaz Azure REST vytvoří základní prostředek zvuku. Nahraďte hodnoty `subscriptionID` , `resourceGroup` a `amsAccountName` hodnotami, se kterými právě pracujete. Nastavte transformaci názvu nastavením `transformName` .
+Následující příkaz Azure REST vytvoří základní transformaci zvuku. Nahraďte hodnoty `subscriptionID` , `resourceGroup` a `accountName` hodnotami, se kterými právě pracujete. Nastavte transformaci názvu nastavením `transformName` .
 
 ```REST
 

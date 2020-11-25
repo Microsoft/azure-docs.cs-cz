@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 11/23/2020
 ms.author: mbullwin
 keywords: detekce anomálií, strojové učení, algoritmy
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 9b540f2e04ae8533a00f79d05e220d99964d9a34
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 1a13b962a000e6e3b2143dc23f94b63c122bd963
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016599"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95999092"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Co je rozhraní API Detektoru anomálií?
 
@@ -59,7 +59,7 @@ Chcete-li spustit Poznámkový blok, proveďte následující kroky:
 1. Vyberte jeden z poznámkových bloků.
 1. Do proměnné přidejte svůj platný klíč předplatného rozhraní API detektoru anomálií `subscription_key` .
 1. Změňte `endpoint` proměnnou na koncový bod. Příklad: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
-1. V horním řádku nabídek klikněte na **buňka**a pak na **Spustit vše**.
+1. V horním řádku nabídek klikněte na **buňka** a pak na **Spustit vše**.
 
 ## <a name="workflow"></a>Pracovní postup
 
@@ -85,6 +85,10 @@ Po registraci:
 
 
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
+
+## <a name="deploy-on-premises-using-docker-containers"></a>Nasazení místně pomocí kontejnerů Docker
+
+[Pomocí kontejnerů detektoru anomálií](anomaly-detector-container-howto.md) nasaďte funkce rozhraní API místně. Kontejnery Docker vám umožní přiblížit službu k vašim datům z hlediska dodržování předpisů, zabezpečení nebo jiných provozních důvodů.
 
 ## <a name="join-the-anomaly-detector-community"></a>Zapojení do komunity Detektoru anomálií
 

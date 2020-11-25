@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 476cf8013f5dc8b5d54efb573cf305d81fc690b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89319147"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996708"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Co je architektura Azure Active Directory?
 
@@ -91,8 +91,8 @@ Repliky Azure AD jsou uložené v datových centrech rozmístěných po celém s
 Azure AD funguje v datových centrech s následujícími charakteristikami:
 
 * Ověřování, grafy a další služby AD jsou umístěné za službou brány. Gateway spravuje vyrovnávání zatížení těchto služeb. Dojde k automatickému převzetí služeb při selhání, pokud se zjistí případné nestavové servery pomocí transakčních sond stavu. Na základě těchto sond stavu brána dynamicky směruje provoz na datová centra v pořádku.
-* V případě *čtení*má adresář sekundární repliky a odpovídající front-endové služby v konfiguraci aktivní-aktivní v několika datových centrech. V případě selhání celého datového centra se provoz automaticky směruje na jiné datové centrum.
- * V případě *zápisů*se adresář převezme primární (hlavní) replika napříč datovými centry prostřednictvím plánu (nová primární databáze je synchronizovaná se starými primárními) nebo postupy nouzového převzetí služeb při selhání. Odolnost dat se dosahuje replikací všech potvrzení do aspoň dvou datových center.
+* V případě *čtení* má adresář sekundární repliky a odpovídající front-endové služby v konfiguraci aktivní-aktivní v několika datových centrech. V případě selhání celého datového centra se provoz automaticky směruje na jiné datové centrum.
+ * V případě *zápisů* se adresář převezme primární (hlavní) replika napříč datovými centry prostřednictvím plánu (nová primární databáze je synchronizovaná se starými primárními) nebo postupy nouzového převzetí služeb při selhání. Odolnost dat se dosahuje replikací všech potvrzení do aspoň dvou datových center.
 
 #### <a name="data-consistency"></a>Konzistence dat
 

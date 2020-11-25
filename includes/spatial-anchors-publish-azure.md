@@ -1,19 +1,19 @@
 ---
-author: ramonarguelles
+author: msftradford
 ms.service: spatial-anchors
 ms.topic: include
-ms.date: 1/30/2019
-ms.author: rgarcia
-ms.openlocfilehash: 0e6f68daf22659b880827ad027268d9757c60063
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: 80685dee7907b81832c94044d1feb8fcf2e41bde
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971332"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95998429"
 ---
 ### <a name="open-the-publish-wizard"></a>Otevřít Průvodce publikováním
 
-V **Průzkumník řešení**klikněte pravým tlačítkem na projekt **SharingService** a pak vyberte **publikovat**.
+V **Průzkumník řešení** klikněte pravým tlačítkem na projekt **SharingService** a pak vyberte **publikovat**.
 
 Spustí se Průvodce publikováním. 
 
@@ -21,9 +21,9 @@ Vyberte **App Service**  >  **publikovat** a otevřete tak podokno **vytvořit A
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k portálu Azure.
+Přihlaste se k webu Azure Portal.
 
-V podokně **vytvořit App Service** vyberte **Přidat účet**a přihlaste se ke svému předplatnému Azure. Pokud jste už přihlášení, v rozevíracím seznamu vyberte požadovaný účet.
+V podokně **vytvořit App Service** vyberte **Přidat účet** a přihlaste se ke svému předplatnému Azure. Pokud jste už přihlášení, v rozevíracím seznamu vyberte požadovaný účet.
 
    > [!NOTE]
    > Pokud už jste přihlášení, nevybírejte zatím možnost **Vytvořit**.
@@ -35,7 +35,7 @@ V podokně **vytvořit App Service** vyberte **Přidat účet**a přihlaste se k
 
 Vedle pole **Skupina prostředků** vyberte **Nová**.
 
-Pojmenujte skupinu prostředků **myResourceGroup**a pak vyberte **OK**.
+Pojmenujte skupinu prostředků **myResourceGroup** a pak vyberte **OK**.
 
 ### <a name="create-an-app-service-plan"></a>Vytvoření plánu služby App Service
 
@@ -55,7 +55,7 @@ Vyberte **OK**.
 
 ### <a name="create-and-publish-the-web-app"></a>Vytvoření a publikování webové aplikace
 
-Do **název aplikace**zadejte jedinečný název aplikace. Platné znaky jsou a-z, 0-9 a spojovníky (-), nebo přijměte automaticky generovaný jedinečný název. Adresa URL webové aplikace je `https://<app_name>.azurewebsites.net`, kde `<app_name>` je název vaší aplikace.
+Do **název aplikace** zadejte jedinečný název aplikace. Platné znaky jsou a-z, 0-9 a spojovníky (-), nebo přijměte automaticky generovaný jedinečný název. Adresa URL webové aplikace je `https://<app_name>.azurewebsites.net`, kde `<app_name>` je název vaší aplikace.
 
 Výběrem možnosti **Vytvořit** spustíte vytváření prostředků Azure.
 

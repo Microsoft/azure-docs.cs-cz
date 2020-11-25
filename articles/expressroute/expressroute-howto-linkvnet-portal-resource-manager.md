@@ -9,11 +9,11 @@ ms.date: 10/15/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 0ffc9c2ee17862497d3fd986da8e003f7a497056
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107279"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998766"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Kurz: připojení virtuální sítě k okruhu ExpressRoute pomocí portálu
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 > - Připojení virtuální sítě k okruhu v jiném předplatném.
 > - Odstraňte propojení mezi virtuální sítí a okruhem ExpressRoute.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Než začnete s konfigurací, Projděte si [požadavky,](expressroute-prerequisites.md) [požadavky na směrování](expressroute-routing.md)a [pracovní postupy](expressroute-workflows.md) .
 
@@ -65,25 +65,25 @@ V tomto kurzu se naučíte:
 
 1. Teď můžete začít zřizovat připojení a propojit bránu virtuální sítě s okruhem ExpressRoute. Vyberte **připojení**  >  **Přidat** a otevřete stránku **Přidat připojení** .
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/add-connection.png" alt-text="Snímek obrazovky okruhu ExpressRoute":::
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/add-connection.png" alt-text="Obrázek přidání připojení":::
 
 1. Zadejte název připojení a pak vyberte **Další: nastavení >**.
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-connection-basic.png" alt-text="Snímek obrazovky okruhu ExpressRoute":::
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-connection-basic.png" alt-text="Vytvořit stránku Basic připojení":::
 
 1. Vyberte bránu, která patří do virtuální sítě, kterou chcete propojit s okruhem, a vyberte **zkontrolovat + vytvořit**. Po dokončení ověření vyberte **vytvořit** .
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-connection-settings.png" alt-text="Snímek obrazovky okruhu ExpressRoute":::
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-connection-settings.png" alt-text="Stránka pro vytvoření nastavení připojení":::
 
 1. Po úspěšné konfiguraci připojení se v objektu připojení zobrazí informace o připojení.
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-object.png" alt-text="Snímek obrazovky okruhu ExpressRoute":::
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-object.png" alt-text="Snímek obrazovky objektu připojení":::
 
 ## <a name="connect-a-vnet-to-a-circuit---different-subscription"></a>Připojení virtuální sítě k okruhu jiné předplatné
 
 Okruh ExpressRoute můžete sdílet mezi několika předplatnými. Následující obrázek ukazuje jednoduché schéma, jak sdílení funguje pro okruhy ExpressRoute napříč několika předplatnými.
 
-:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/cross-subscription.png" alt-text="Snímek obrazovky okruhu ExpressRoute":::
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/cross-subscription.png" alt-text="Připojení mezi předplatnými":::
 
 Každý z menších cloudů ve velkém cloudu se používá k reprezentaci předplatných, která patří do různých oddělení v rámci organizace. Každé oddělení v organizaci používá vlastní předplatné pro nasazení svých služeb – ale může sdílet jeden okruh ExpressRoute pro připojení zpět k místní síti. Jeden oddělení (v tomto příkladu: IT) může vlastnit okruh ExpressRoute. Další předplatná v rámci organizace můžou používat okruh ExpressRoute.
 
@@ -109,21 +109,21 @@ Vlastník okruhu vytvoří autorizaci, která vytvoří autorizační klíč, kt
 
 1. Na stránce ExpressRoute vyberte **autorizaci** a potom zadejte **název** autorizace a vyberte **Uložit**.
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png" alt-text="Snímek obrazovky okruhu ExpressRoute":::
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png" alt-text="Autorizace":::
 
 2. Po uložení konfigurace zkopírujte **ID prostředku** a **autorizační klíč**.
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/authorization-key.png" alt-text="Snímek obrazovky okruhu ExpressRoute":::
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/authorization-key.png" alt-text="Autorizační klíč":::
 
 **Odstranění autorizace připojení**
 
 Připojení můžete odstranit tak, že vyberete ikonu **Odstranit** pro autorizační klíč pro vaše připojení.
 
-:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-authorization-key.png" alt-text="Snímek obrazovky okruhu ExpressRoute":::
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-authorization-key.png" alt-text="Odstranit autorizační klíč":::
 
 Pokud chcete připojení odstranit, ale zachovat autorizační klíč, můžete připojení odstranit ze stránky připojení okruhu.
 
-:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-connection-owning-circuit.png" alt-text="Snímek obrazovky okruhu ExpressRoute":::
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-connection-owning-circuit.png" alt-text="Odstranit připojení vlastnící okruh":::
 
 ### <a name="circuit-user-operations"></a>Operace uživatele obvodu
 
@@ -133,31 +133,31 @@ Uživatel okruhu potřebuje ID prostředku a autorizační klíč od vlastníka 
 
 1. Vyberte tlačítko **+ vytvořit prostředek** . Vyhledejte **připojení** a vyberte **vytvořit**.
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-new-resources.png" alt-text="Snímek obrazovky okruhu ExpressRoute":::
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-new-resources.png" alt-text="Vytvoření nových prostředků":::
 
-1. Ujistěte se, že je *Typ připojení* nastavený na **ExpressRoute**. Vyberte *skupinu prostředků* a *umístění*a pak na stránce základy vyberte **OK** .
+1. Ujistěte se, že je *Typ připojení* nastavený na **ExpressRoute**. Vyberte *skupinu prostředků* a *umístění* a pak na stránce základy vyberte **OK** .
 
     > [!NOTE]
     > Umístění se *musí* shodovat s umístěním brány virtuální sítě, pro který vytváříte připojení.
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-basics.png" alt-text="Snímek obrazovky okruhu ExpressRoute":::
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-basics.png" alt-text="Stránka základy":::
 
 1. Na stránce **Nastavení** vyberte *bránu virtuální sítě* a zaškrtněte políčko **uplatnit autorizaci** . Zadejte *autorizační klíč* a *identifikátor URI rovnocenného okruhu* a zadejte název připojení. Vyberte **OK**. 
  
     > [!NOTE]
     > *Identifikátor URI partnerského okruhu* je ID prostředku okruhu ExpressRoute (který najdete v podokně nastavení vlastností okruhu ExpressRoute).
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-settings.png" alt-text="Snímek obrazovky okruhu ExpressRoute":::
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-settings.png" alt-text="Stránka Nastavení":::
 
 1. Zkontrolujte informace na stránce **Souhrn** a vyberte **OK**.
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-summary.png" alt-text="Snímek obrazovky okruhu ExpressRoute":::
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-summary.png" alt-text="Stránka souhrnu":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Připojení a odpojení virtuální sítě k okruhu ExpressRoute můžete odstranit tak, že na stránce vyberete ikonu **Odstranit** .
 
-:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-connection.png" alt-text="Snímek obrazovky okruhu ExpressRoute":::
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-connection.png" alt-text="Odstranění propojení":::
 
 ## <a name="next-steps"></a>Další kroky
 
