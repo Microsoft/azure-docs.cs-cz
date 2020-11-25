@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
 ms.openlocfilehash: 04abc051cec8a6fb38ce6aa8f5347ae06cb8bd1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84688445"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019748"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-azure-powershell"></a>Přesuňte skupinu zabezpečení sítě Azure (NSG) do jiné oblasti pomocí Azure PowerShell
 
 Existují různé scénáře, ve kterých byste chtěli přesunout stávající skupin zabezpečení sítě z jedné oblasti do druhé. Například může být vhodné vytvořit NSG se stejnou konfigurací a pravidly zabezpečení pro testování. V rámci plánování zotavení po havárii možná budete chtít přesunout NSG do jiné oblasti.
 
-Skupiny zabezpečení Azure nejde přesunout z jedné oblasti do druhé. K exportu existující konfigurace a pravidel zabezpečení NSG ale můžete použít šablonu Azure Resource Manager.  Pak můžete vytvořit prostředek v jiné oblasti tak, že NSG exportujete do šablony, upravíte parametry tak, aby odpovídaly cílové oblasti, a pak šablonu nasadíte do nové oblasti.  Další informace o Správce prostředků a šablonách najdete v tématu [Export skupin prostředků do šablon](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates).
+Skupiny zabezpečení Azure není možné přesunout z jedné oblasti do jiné. K exportu existující konfigurace a pravidel zabezpečení NSG ale můžete použít šablonu Azure Resource Manager.  Pak můžete vytvořit prostředek v jiné oblasti tak, že NSG exportujete do šablony, upravíte parametry tak, aby odpovídaly cílové oblasti, a pak šablonu nasadíte do nové oblasti.  Další informace o Správce prostředků a šablonách najdete v tématu [Export skupin prostředků do šablon](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates).
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -61,7 +61,7 @@ Následující kroky ukazují, jak připravit skupinu zabezpečení sítě pro p
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceNSGID -IncludeParameterDefaultValue
    ```
 
-4. Stažený soubor se pojmenuje po vytvoření skupiny prostředků, ze které byl prostředek exportován.  Vyhledejte soubor, který byl exportován z příkazu s názvem ** \<resource-group-name> . JSON** , a otevřete jej v editoru podle vlastního výběru:
+4. Stažený soubor se pojmenuje po vytvoření skupiny prostředků, ze které byl prostředek exportován.  Vyhledejte soubor, který byl exportován z příkazu s názvem **\<resource-group-name> . JSON** , a otevřete jej v editoru podle vlastního výběru:
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -106,9 +106,9 @@ Následující kroky ukazují, jak připravit skupinu zabezpečení sítě pro p
     Get-AzLocation | format-table
     
     ```
-8. Můžete také změnit další parametry v ** \<resource-group-name> . JSON** , pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
+8. Můžete také změnit další parametry v **\<resource-group-name> . JSON** , pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
 
-    * **Pravidla zabezpečení** – pravidla, která se nasazují do cílových NSG, můžete upravit přidáním nebo odebráním pravidel do oddílu **securityRules** v souboru ** \<resource-group-name> . JSON** :
+    * **Pravidla zabezpečení** – pravidla, která se nasazují do cílových NSG, můžete upravit přidáním nebo odebráním pravidel do oddílu **securityRules** v souboru **\<resource-group-name> . JSON** :
 
         ```json
            "resources": [
@@ -144,7 +144,7 @@ Následující kroky ukazují, jak připravit skupinu zabezpečení sítě pro p
             
         ```
 
-        Chcete-li dokončit sčítání nebo odebírání pravidel v cílovém NSG, je nutné také upravit typy vlastních pravidel na konci souboru ** \<resource-group-name> . JSON** ve formátu níže uvedeného příkladu:
+        Chcete-li dokončit sčítání nebo odebírání pravidel v cílovém NSG, je nutné také upravit typy vlastních pravidel na konci souboru **\<resource-group-name> . JSON** ve formátu níže uvedeného příkladu:
 
         ```json
            {
@@ -171,7 +171,7 @@ Následující kroky ukazují, jak připravit skupinu zabezpečení sítě pro p
             }
         ```
 
-9. Uložte soubor ** \<resource-group-name> . JSON** .
+9. Uložte soubor **\<resource-group-name> . JSON** .
 
 10. Vytvořte skupinu prostředků v cílové oblasti pro nasazení cílového NSG pomocí [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0):
     
@@ -179,7 +179,7 @@ Následující kroky ukazují, jak připravit skupinu zabezpečení sítě pro p
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. Nasaďte upravený soubor ** \<resource-group-name> . JSON** do skupiny prostředků vytvořené v předchozím kroku pomocí [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+11. Nasaďte upravený soubor **\<resource-group-name> . JSON** do skupiny prostředků vytvořené v předchozím kroku pomocí [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
 
     ```azurepowershell-interactive
 

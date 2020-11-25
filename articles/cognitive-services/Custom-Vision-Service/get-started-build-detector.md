@@ -13,19 +13,19 @@ ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: rozpoznávání obrázků, aplikace pro rozpoznávání obrázků, vlastní vize
 ms.openlocfilehash: ab747ad5e7b9362e9c587741198a0191c032b124
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91596893"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018349"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>Rychlý Start: sestavení objektu detektoru pomocí Custom Vision webu
 
 V tomto rychlém startu se dozvíte, jak pomocí Custom Vision webu vytvořit model objektu pro rozpoznávání. Jakmile model sestavíte, můžete ho otestovat pomocí nových imagí a následně ho integrovat do vlastní aplikace pro rozpoznávání imagí.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Sada imagí, se kterými se má model detektoru naučit. Můžete použít sadu [ukázkových imagí](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) na GitHubu. Případně můžete pomocí níže uvedených tipů zvolit vlastní image.
 
@@ -35,7 +35,7 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 
 ## <a name="create-a-new-project"></a>Vytvoření nového projektu
 
-Ve webovém prohlížeči přejděte na [webovou stránku Custom Vision](https://customvision.ai) a vyberte __Přihlásit__se. Přihlaste se pomocí stejného účtu, který jste použili k přihlášení do Azure Portal.
+Ve webovém prohlížeči přejděte na [webovou stránku Custom Vision](https://customvision.ai) a vyberte __Přihlásit__ se. Přihlaste se pomocí stejného účtu, který jste použili k přihlášení do Azure Portal.
 
 ![Obrázek přihlašovací stránky](./media/browser-home.png)
 
@@ -49,7 +49,7 @@ Ve webovém prohlížeči přejděte na [webovou stránku Custom Vision](https:/
    > [!NOTE]
    > Pokud není k dispozici žádná skupina prostředků, potvrďte prosím, že jste se k [customvision.AI](https://customvision.ai) přihlásili pomocí stejného účtu, jako jste použili k přihlášení do [Azure Portal](https://portal.azure.com/). Ověřte také, že jste na webu Custom Vision vybrali stejný adresář jako adresář v Azure Portal, kde se nacházejí Custom Vision prostředky. V obou lokalitách můžete adresář vybrat v nabídce účtu rozevírací nabídky v pravém horním rohu obrazovky. 
 
-1. V části __typy projektů__vyberte možnost __detekce objektu__ .
+1. V části __typy projektů__ vyberte možnost __detekce objektu__ .
 
 1. V dalším kroku vyberte jednu z dostupných domén. Každá doména optimalizuje detektor pro konkrétní typy imagí, jak je popsáno v následující tabulce. V případě potřeby budete moci doménu později změnit.
 

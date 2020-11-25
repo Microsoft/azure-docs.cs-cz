@@ -6,11 +6,11 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 02/09/2018
 ms.openlocfilehash: e7da5454581e0e414dc832d4fcec50277f3b7f40
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221243"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019051"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Použití nástrojů Azure Data Lake pro Visual Studio Code
 
@@ -18,9 +18,9 @@ V tomto článku se dozvíte, jak můžete pomocí Nástroje Azure Data Lake pro
 
 [![Video Player: Azure Data Lake nástroje pro VS Code](media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-video.png)](https://channel9.msdn.com/Series/AzureDataLake/Azure-Data-Lake-Tools-for-VSCode?term=ADL%20Tools%20for%20VSCode")
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Azure Data Lake nástroje pro VS Code podporují systémy Windows, Linux a macOS.Místní spuštění U-SQL a místní ladění funguje pouze v systému Windows.
+Azure Data Lake nástroje pro VS Code podporují systémy Windows, Linux a macOS. Místní spuštění U-SQL a místní ladění funguje pouze v systému Windows.
 
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)
 
@@ -65,18 +65,18 @@ Otevřete paletu příkazů (CTRL + SHIFT + P) a zadejte **ADL: Open Sample Scri
 4. Do souboru bez názvu-1 zadejte následující kód:
 
    ```usql
-   @departments  =
-       SELECT * FROM
-           (VALUES
-               (31,    "Sales"),
-               (33,    "Engineering"),
-               (34,    "Clerical"),
-               (35,    "Marketing")
-           ) AS
-                 D( DepID, DepName );
+   @departments  =
+       SELECT * FROM
+           (VALUES
+               (31,    "Sales"),
+               (33,    "Engineering"),
+               (34,    "Clerical"),
+               (35,    "Marketing")
+           ) AS
+                 D( DepID, DepName );
    ```
 
-   VÝSTUP @departments      do "složku/Output/departments.csv" pomocí Outputters.Csv ();
+   VÝSTUP @departments     do "složku/output/departments.csv" pomocí Outputters.Csv ();
 
     Skript vytvoří soubor departments.csv s některými daty zahrnutými do složky/Output.
 
@@ -252,7 +252,7 @@ Pokud se chcete odhlásit, zadejte příkaz **ADL: logout**.
 
 ### <a name="to-connect-to-azure-from-the-explorer"></a>Připojení k Azure z Průzkumníka
 
-Rozbalte **Azure datalake**, vyberte **Přihlásit se k Azure**a pak postupujte podle kroků 3 a 4 [pro připojení k Azure pomocí příkazu](#sign-in-by-command).
+Rozbalte **Azure datalake**, vyberte **Přihlásit se k Azure** a pak postupujte podle kroků 3 a 4 [pro připojení k Azure pomocí příkazu](#sign-in-by-command).
 
 ![Výběr možnosti přihlásit se k Azure v Průzkumníkovi](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-sign-in-from-explorer.png )  
 
@@ -382,7 +382,7 @@ V okně **výstup** se zobrazí stav stahování souboru.
 
 ### <a name="to-download-a-file-through-the-adl-download-file-command"></a>Stažení souboru pomocí příkazu ADL: Download File
 
-1. Klikněte pravým tlačítkem na editor skriptů, vyberte **Stáhnout soubor**a pak v dialogovém okně **Vybrat složku** vyberte cílovou složku.
+1. Klikněte pravým tlačítkem na editor skriptů, vyberte **Stáhnout soubor** a pak v dialogovém okně **Vybrat složku** vyberte cílovou složku.
 
 1. Zvolte složku v seznamu nebo vyberte možnost **zadat cestu** nebo **Přejít z kořenové cesty**. (Jako příklad používáme **cestu ENTER** .)
 
@@ -410,7 +410,7 @@ Po přihlášení budou všechna předplatná pro váš účet Azure uvedená v 
 
 ### <a name="data-lake-analytics-metadata-navigation"></a>Data Lake Analytics navigace metadat
 
-Rozbalte své předplatné Azure. V uzlu **databáze u-SQL** můžete procházet databázi u-SQL a zobrazovat složky jako **schémata**, **přihlašovací údaje**, **sestavení**, **tabulky**a **index**.
+Rozbalte své předplatné Azure. V uzlu **databáze u-SQL** můžete procházet databázi u-SQL a zobrazovat složky jako **schémata**, **přihlašovací údaje**, **sestavení**, **tabulky** a **index**.
 
 ### <a name="data-lake-analytics-metadata-entity-management"></a>Data Lake Analytics Správa entit metadat
 
@@ -432,11 +432,11 @@ Sestavení můžete zaregistrovat v odpovídající databázi tak, že kliknete 
 
 Přejděte na **Data Lake Store**:
 
-- Můžete kliknout pravým tlačítkem myši na uzel složka a potom v místní nabídce použít příkazy **aktualizovat**, **Odstranit**, **nahrát**, **Odeslat složku**, **Kopírovat relativní cestu**a **Kopírovat úplné cesty** .
+- Můžete kliknout pravým tlačítkem myši na uzel složka a potom v místní nabídce použít příkazy **aktualizovat**, **Odstranit**, **nahrát**, **Odeslat složku**, **Kopírovat relativní cestu** a **Kopírovat úplné cesty** .
 
    ![Příkazy místní nabídky pro uzel složky v Průzkumníkovi Data Lake](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-folder-menu.png)
 
-- Můžete kliknout pravým tlačítkem myši na uzel souboru a potom použít **Náhled**, **Stáhnout**, **Odstranit**, **vytvořit extrakci skriptu** (k dispozici pouze pro soubory CSV, TSV a txt), **zkopírovat relativní cestu**a **Kopírovat příkazy úplné cesty** v místní nabídce.
+- Můžete kliknout pravým tlačítkem myši na uzel souboru a potom použít **Náhled**, **Stáhnout**, **Odstranit**, **vytvořit extrakci skriptu** (k dispozici pouze pro soubory CSV, TSV a txt), **zkopírovat relativní cestu** a **Kopírovat příkazy úplné cesty** v místní nabídce.
 
    ![Příkazy místní nabídky pro uzel souboru v Průzkumníkovi Data Lake](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-extract.png)
 
@@ -444,7 +444,7 @@ Přejděte na **Data Lake Store**:
 
 Přejděte do úložiště objektů BLOB:
 
-- Můžete kliknout pravým tlačítkem na uzel kontejneru objektů BLOB a potom použít příkazy **aktualizovat**, **Odstranit kontejner objektů BLOB**a **nahrát objekty blob** v místní nabídce.
+- Můžete kliknout pravým tlačítkem na uzel kontejneru objektů BLOB a potom použít příkazy **aktualizovat**, **Odstranit kontejner objektů BLOB** a **nahrát objekty blob** v místní nabídce.
 
    ![Příkazy místní nabídky pro uzel kontejneru objektů BLOB v úložišti objektů BLOB](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-blob-container-node.png)
 
@@ -452,7 +452,7 @@ Přejděte do úložiště objektů BLOB:
 
    ![Příkazy místní nabídky pro uzel složky v úložišti objektů BLOB](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-folder-node.png)
 
-- Můžete kliknout pravým tlačítkem myši na uzel souboru a potom použít příkaz **Zobrazit nebo upravit**, **Stáhnout**, **Odstranit**, **vytvořit extrahování skriptu** (k dispozici pouze pro soubory CSV, TSV a txt), **zkopírovat relativní cestu**a **Kopírovat příkazy úplné cesty** v místní nabídce.
+- Můžete kliknout pravým tlačítkem myši na uzel souboru a potom použít příkaz **Zobrazit nebo upravit**, **Stáhnout**, **Odstranit**, **vytvořit extrahování skriptu** (k dispozici pouze pro soubory CSV, TSV a txt), **zkopírovat relativní cestu** a **Kopírovat příkazy úplné cesty** v místní nabídce.
 
     ![Příkazy místní nabídky pro uzel souboru pod úložištěm objektů BLOB](./media/data-lake-analytics-data-lake-tools-for-vscode/create-extract-script-from-context-menu-2.png)
 

@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotga
 ms.openlocfilehash: b9fc37c6589cdd0bc6a5cdce7b7ebebe2c6e9a85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531606"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019442"
 ---
 # <a name="iot-hub-device-provisioning-service-dps-terminology"></a>Terminologie IoT Hub Device Provisioning Service (DPS)
 
@@ -44,7 +44,7 @@ Nastavení na úrovni služby, které určuje, jak služba Device Provisioning p
 
 * **Nejnižší latence**: zařízení se zřídí do služby IoT Hub s nejnižší latencí pro zařízení. Pokud by více propojených hub IoT poskytovalo stejnou nejnižší latenci, služba zřizování vyhodnotí hodnoty hash zařízení v těchto centrech.
 
-* **Statická konfigurace prostřednictvím seznamu**registrací: specifikace požadovaného centra IoT v seznamu registrací má prioritu pro zásady přidělování na úrovni služby.
+* **Statická konfigurace prostřednictvím seznamu** registrací: specifikace požadovaného centra IoT v seznamu registrací má prioritu pro zásady přidělování na úrovni služby.
 
 * **Vlastní (použití funkce Azure)**: vlastní zásada přidělení vám poskytne lepší kontrolu nad tím, jak se zařízení přiřazují do služby IoT Hub. K tomu je potřeba pomocí vlastního kódu ve službě Azure Function přiřazovat zařízení ke službě IoT Hub. Služba Device Provisioning zavolá váš kód funkce Azure, který poskytuje všechny relevantní informace o zařízení a registraci k vašemu kódu. Váš kód funkce se spustí a vrátí informace o službě IoT Hub použité ke zřízení zařízení.
 

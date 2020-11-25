@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
 ms.openlocfilehash: c7e7509f18e7511cd60099a70785b4e2c890afad
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171627"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019289"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Vytvoření a konfigurace trezoru Recovery Services
 
@@ -26,7 +26,7 @@ Azure Backup automaticky zpracovává úložiště pro trezor. Musíte určit zp
 >- Pokud jste už zálohu nakonfigurovali a musíte se přesunout z GRS na LRS, [Přečtěte si tato alternativní řešení](#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
 1. V podokně **Recovery Services trezory** vyberte nový trezor. V části **Nastavení** vyberte  **vlastnosti**.
-1. V části **vlastnosti**v části **Konfigurace zálohování**vyberte **aktualizovat**.
+1. V části **vlastnosti** v části **Konfigurace zálohování** vyberte **aktualizovat**.
 
 1. Vyberte typ replikace úložiště a vyberte **Uložit**.
 

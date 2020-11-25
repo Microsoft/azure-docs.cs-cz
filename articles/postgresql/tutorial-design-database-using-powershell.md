@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: 70edf224494fdf1395d59d1c591d0369b9b20557
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93332980"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018082"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-powershell"></a>Kurz: návrh Azure Database for PostgreSQLho samostatného serveru pomocí prostředí PowerShell
 
@@ -28,7 +28,7 @@ Azure Database for PostgreSQL je služba relačních databází v cloudu Microso
 > - Aktualizace dat
 > - Obnovení dat
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -142,7 +142,7 @@ Pokud má klientský počítač nainstalovaný systém PostgreSQL, můžete se p
    CREATE DATABASE mypgsqldb;
    ```
 
-1. Na příkazovém řádku spusťte následující příkaz, který přepne připojení na nově vytvořenou databázi **mypgsqldb** :
+1. Na příkazovém řádku spusťte následující příkaz, který přepne připojení na nově vytvořenou databázi **mypgsqldb**:
 
    ```sql
    \c mypgsqldb

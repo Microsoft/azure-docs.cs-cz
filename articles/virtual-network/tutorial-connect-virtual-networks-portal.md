@@ -14,11 +14,11 @@ ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: e95441aab6c8ce7de37ba5f6b08d5f7d54e13347
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77201294"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017912"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Kurz: Propojení virtuálních sítí s využitím partnerského vztahu virtuálních sítí pomocí webu Azure Portal
 
@@ -32,7 +32,7 @@ Virtuální sítě můžete mezi sebou propojit s využitím partnerského vztah
 
 Pokud chcete, můžete tento kurz absolvovat s použitím [Azure CLI](tutorial-connect-virtual-networks-cli.md) nebo [Azure PowerShellu](tutorial-connect-virtual-networks-powershell.md).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
@@ -49,9 +49,9 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků| Vyberte **Vytvořit novou** a zadejte *myResourceGroup*.|
     |Oblast| Vyberte **USA – východ**.|
-    |Název|myVirtualNetwork1|
+    |Name|myVirtualNetwork1|
 
-4. Na kartě **IP adresy** zadejte 10.0.0.0/16 pro pole **adresní prostor** . Klikněte na tlačítko **Přidat podsíť** níže a jako **Rozsah adres podsítě**zadejte *Subnet1* pro **název podsítě** a 10.0.0.0/24.
+4. Na kartě **IP adresy** zadejte 10.0.0.0/16 pro pole **adresní prostor** . Klikněte na tlačítko **Přidat podsíť** níže a jako **Rozsah adres podsítě** zadejte *Subnet1* pro **název podsítě** a 10.0.0.0/24.
 5. Vyberte **zkontrolovat + vytvořit** a pak vyberte **vytvořit**.
    
 5. Zopakujte kroky 1 až 5 s následujícími změnami:
@@ -67,7 +67,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 ## <a name="peer-virtual-networks"></a>Vytvoření partnerského vztahu virtuálních sítí
 
 1. Do pole Hledat v horní části webu Azure Portal začněte zadávat *MyVirtualNetwork1*. Jakmile se ve výsledcích hledání zobrazí virtuální síť **myVirtualNetwork1**, vyberte ji.
-2. V části **Nastavení**vyberte **partnerské vztahy**a pak vyberte **Přidat**, jak je znázorněno na následujícím obrázku:
+2. V části **Nastavení** vyberte **partnerské vztahy** a pak vyberte **Přidat**, jak je znázorněno na následujícím obrázku:
 
     ![Vytvoření partnerského vztahu](./media/tutorial-connect-virtual-networks-portal/create-peering.png)
 
@@ -77,7 +77,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
     |---|---|
     |Název partnerského vztahu z myVirtualNetwork1 do vzdálené virtuální sítě|myVirtualNetwork1-myVirtualNetwork2 – při prvním načtení stránky se tady zobrazí fráze "Vzdálená virtuální síť". Po výběru vzdálené virtuální sítě se fráze "Vzdálená virtuální síť" nahradí názvem vzdálené virtuální sítě.|
     |Předplatné| Vyberte své předplatné.|
-    |Virtuální síť|myVirtualNetwork2 – Pokud chcete vybrat virtuální síť *myVirtualNetwork2* , vyberte **virtuální síť**a pak vyberte **myVirtualNetwork2 (myResourceGroup)**. Můžete vybrat virtuální síť ve stejné oblasti nebo v jiné oblasti.|
+    |Virtuální síť|myVirtualNetwork2 – Pokud chcete vybrat virtuální síť *myVirtualNetwork2* , vyberte **virtuální síť** a pak vyberte **myVirtualNetwork2 (myResourceGroup)**. Můžete vybrat virtuální síť ve stejné oblasti nebo v jiné oblasti.|
     |Název partnerského vztahu z myVirtualNetwork2 do myVirtualNetwork1|myVirtualNetwork2-myVirtualNetwork1|
 
     ![Nastavení partnerského vztahu](./media/tutorial-connect-virtual-networks-portal/peering-settings-bidirectional.png)
@@ -101,13 +101,13 @@ Vytvořte v obou virtuálních sítích virtuální počítač, abyste mezi nimi
     |Nastavení|Hodnota|
     |---|---|
     |Skupina prostředků| Vyberte **Použít existující** a pak vyberte **myResourceGroup**.|
-    |Název|myVm1|
+    |Name|myVm1|
     |Umístění| Vyberte **USA – východ**.|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
     |Heslo| Zadejte libovolné heslo. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
    
 4. Vyberte velikost virtuálního počítače pro možnost **Velikost** .
-5. V části **sítě**vyberte následující hodnoty:
+5. V části **sítě** vyberte následující hodnoty:
 
     |Nastavení|Hodnota|
     |---|---|

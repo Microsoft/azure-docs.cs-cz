@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
 ms.openlocfilehash: aa2f00a732a3978524fc017481285859c9535387
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779165"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018677"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Principy fakturace Azure CDN
 
@@ -48,7 +48,7 @@ Oblast fakturace Azure CDN je založena na umístění zdrojového serveru, kter
 Pokud například uživatel umístěný v Mexiku vydá požadavek a tato žádost je obsluhovaná serverem umístěným v USA POP kvůli podmínkám partnerských vztahů nebo přenosů, bude USA oblastí pro fakturaci.
 
 ## <a name="what-is-a-billable-azure-cdn-transaction"></a>Co je fakturovatelná Azure CDN transakce?
-Každá žádost HTTP (S), která končí v CDN, je fakturovatelná událost, která zahrnuje všechny typy odpovědí: úspěch, selhání nebo jiné. Různé odezvy ale můžou vygenerovat různé objemy provozu. Například *304 Nezměněno* a jiné odpovědi pouze hlavičky generují malý provoz, protože se jedná o malou odpověď hlavičky; Podobně se neúčtují odpovědi na chyby (například *404, které se nenašly* ), ale z důvodu datové části s malou odezvou se účtují malé náklady.
+Každá žádost HTTP (S), která končí v CDN, je fakturovatelná událost, která zahrnuje všechny typy odpovědí: úspěch, selhání nebo jiné. Různé odezvy ale můžou vygenerovat různé objemy provozu. Například *304 Nezměněno* a jiné odpovědi pouze hlavičky generují malý provoz, protože se jedná o malou odpověď hlavičky; Podobně se neúčtují odpovědi na chyby (například *404, které se nenašly*), ale z důvodu datové části s malou odezvou se účtují malé náklady.
 
 ## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>Jaké další náklady na Azure jsou spojené s Azure CDN používání?
 Při použití Azure CDN se také vyskytnou poplatky za využití služeb, které se používají jako původ vašich objektů. Tyto náklady obvykle představují malou část celkových nákladů na využití CDN.
@@ -66,7 +66,7 @@ Pokud jako zdroj obsahu používáte službu Azure Blob Storage, účtují se ta
 
 Další informace o fakturaci Azure Storage najdete v tématu [porozumění Azure Storage fakturace – šířka pásma, transakce a kapacita](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
 
-Pokud používáte *doručování hostované služby* , účtují se vám poplatky následujícím způsobem:
+Pokud používáte *doručování hostované služby*, účtují se vám poplatky následujícím způsobem:
 
 - Výpočetní čas Azure: výpočetní instance, které fungují jako původ.
 
@@ -101,7 +101,7 @@ Pokud jako zdroj CDN použijete jednu z následujících služeb Azure, nebudete
 - VPN Gateway
 - Traffic Manager
 - Network Watcher
-- Brána Azure Firewall
+- Azure Firewall
 - Azure Front Door Service
 - Azure Bastion
 - Služba Azure App Service

@@ -5,18 +5,18 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 08/02/2017
 ms.openlocfilehash: a1e9a9df4c2ec57dfeec8cf5ddd5348228b9cc3e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218676"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018558"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Použití prohlížeče úloh a zobrazení úloh pro Azure Data Lake Analytics
 Služba Azure Data Lake Analytics archivuje odeslané úlohy do úložiště dotazů. V tomto článku se naučíte, jak pomocí prohlížeče úloh a zobrazení úloh v Nástroje Azure Data Lake pro Visual Studio najít historické informace o úlohách. 
 
 Ve výchozím nastavení služba Data Lake Analytics archivuje úlohy po dobu 30 dnů. Dobu platnosti můžete nakonfigurovat z Azure Portal konfigurací přizpůsobených zásad vypršení platnosti. Po vypršení platnosti nebude možné získat přístup k informacím o úloze. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 [Požadavky sady Visual Studio najdete v tématu Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md#prerequisites).
 
 ## <a name="open-the-job-browser"></a>Otevřete prohlížeč úloh.
@@ -155,7 +155,7 @@ Podrobnosti úlohy zobrazují podrobné informace o úloze, včetně skriptu, pr
 * Skript
   
     Skript U-SQL úlohy je uložený v úložišti dotazů. V případě potřeby můžete zobrazit původní skript U-SQL a v případě potřeby ho znovu odeslat.
-* Zdroje a prostředky
+* Zdroje informací
   
     Výstupy kompilace úlohy uložené v úložišti dotazů můžete najít prostřednictvím prostředků. Například můžete najít "algebra.xml", který se používá k zobrazení grafu úlohy, vámi registrovaných sestavení atd.
 * Zobrazení spuštění vrcholu

@@ -7,11 +7,11 @@ ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
 ms.openlocfilehash: 7b2f1a170a792e0b4d069258264407c121dab3ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260244"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018830"
 ---
 # <a name="service-fabric-terminology-overview"></a>Přehled terminologie Service Fabric
 
@@ -68,8 +68,8 @@ Další informace najdete v článku o [modelu aplikace](service-fabric-applicat
 
 Existují dva typy služeb:
 
-* **Bezstavová**služba: Pokud je trvalý stav služby uložený v externí službě úložiště, například Azure Storage, Azure SQL Database nebo Azure Cosmos DB, použijte bezstavovou službu. Bezstavová služba se používá v případě, že služba nemá trvalé úložiště. Například u služby kalkulačky, kde jsou hodnoty předány službě, se provede výpočet, který tyto hodnoty používá, a pak se vrátí výsledek.
-* **Stavová**služba: pokud chcete Service Fabric spravovat stav služby prostřednictvím svých spolehlivých kolekcí nebo Reliable Actors programovacích modelů, použijte stavovou službu. Při vytváření pojmenované služby určete, kolik oddílů chcete rozšířit svůj stav a škálovatelnost. Také určete, kolikrát má být stav replikace mezi uzly, aby byla spolehlivost. Každá pojmenovaná služba má jednu primární repliku a několik sekundárních replik. Stav pojmenované služby upravíte při zápisu do primární repliky. Service Fabric pak tento stav replikuje do všech sekundárních replik, aby byl váš stav synchronizovaný. Service Fabric automaticky detekuje, kdy se primární replika nezdařila, a propaguje stávající sekundární repliku na primární repliku. Service Fabric pak vytvoří novou sekundární repliku.  
+* **Bezstavová** služba: Pokud je trvalý stav služby uložený v externí službě úložiště, například Azure Storage, Azure SQL Database nebo Azure Cosmos DB, použijte bezstavovou službu. Bezstavová služba se používá v případě, že služba nemá trvalé úložiště. Například u služby kalkulačky, kde jsou hodnoty předány službě, se provede výpočet, který tyto hodnoty používá, a pak se vrátí výsledek.
+* **Stavová** služba: pokud chcete Service Fabric spravovat stav služby prostřednictvím svých spolehlivých kolekcí nebo Reliable Actors programovacích modelů, použijte stavovou službu. Při vytváření pojmenované služby určete, kolik oddílů chcete rozšířit svůj stav a škálovatelnost. Také určete, kolikrát má být stav replikace mezi uzly, aby byla spolehlivost. Každá pojmenovaná služba má jednu primární repliku a několik sekundárních replik. Stav pojmenované služby upravíte při zápisu do primární repliky. Service Fabric pak tento stav replikuje do všech sekundárních replik, aby byl váš stav synchronizovaný. Service Fabric automaticky detekuje, kdy se primární replika nezdařila, a propaguje stávající sekundární repliku na primární repliku. Service Fabric pak vytvoří novou sekundární repliku.  
 
 **Repliky nebo instance** odkazují na kód (a stav pro stavové služby) služby, která je nasazená a spuštěná. Viz [repliky a instance](service-fabric-concepts-replica-lifecycle.md).
 

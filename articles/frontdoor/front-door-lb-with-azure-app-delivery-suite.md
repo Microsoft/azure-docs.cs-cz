@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: 50e047325ad17710794b1640715ab1938373fe85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542168"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019459"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Vyrovnávání zatížení s využitím sady pro doručování aplikací Azure
 
@@ -82,7 +82,7 @@ Kromě toho musí výchozí fond virtuálních počítačů, který obsluhuje dy
 
 Následující diagram znázorňuje architekturu tohoto scénáře:
 
-:::image type="content" source="./media/front-door-lb-with-azure-app-delivery-suite/application-delivery-figure2.png" alt-text="Sada pro doručování aplikací":::
+:::image type="content" source="./media/front-door-lb-with-azure-app-delivery-suite/application-delivery-figure2.png" alt-text="Podrobná architektura sady pro doručování aplikací":::
 
 > [!NOTE]
 > V tomto příkladu je jenom jedna z mnoha možných konfigurací služeb vyrovnávání zatížení, které Azure nabízí. Traffic Manager, přední dvířka, Application Gateway a Load Balancer lze kombinovat a porovnat s nejlepšími požadavky na Vyrovnávání zatížení. Například pokud nepotřebujete snižování zátěže TLS/SSL nebo zpracování vrstvy 7, Load Balancer lze použít místo Application Gateway.

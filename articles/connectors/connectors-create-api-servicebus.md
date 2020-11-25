@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/22/2020
 tags: connectors
 ms.openlocfilehash: b6276ff940d8b156a671cb5386ce53ede30dd879
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426638"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019701"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Výměna zpráv v cloudu pomocí Azure Logic Apps a Azure Service Bus
 
@@ -47,7 +47,7 @@ Potvrďte, že vaše aplikace logiky má oprávnění pro přístup k vašemu ob
 
 1. V [Azure Portal](https://portal.azure.com)se přihlaste pomocí svého účtu Azure.
 
-1. Přejít na *obor názvů*Service Bus. Na stránce obor názvů v části **Nastavení**vyberte **zásady sdíleného přístupu**. V části **deklarace identity**ověřte, že máte oprávnění ke **správě** tohoto oboru názvů.
+1. Přejít na *obor názvů* Service Bus. Na stránce obor názvů v části **Nastavení** vyberte **zásady sdíleného přístupu**. V části **deklarace identity** ověřte, že máte oprávnění ke **správě** tohoto oboru názvů.
 
    ![Správa oprávnění pro Service Bus obor názvů](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
 
@@ -123,7 +123,7 @@ Potvrďte, že vaše aplikace logiky má oprávnění pro přístup k vašemu ob
 
    Nebo pokud chcete přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi těmito kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a vyberte **přidat akci**.
 
-1. V části **zvolit akci**zadejte do vyhledávacího pole `azure service bus` . V seznamu akce, který se zobrazí, vyberte akci, kterou chcete. 
+1. V části **zvolit akci** zadejte do vyhledávacího pole `azure service bus` . V seznamu akce, který se zobrazí, vyberte akci, kterou chcete. 
 
    V tomto příkladu vyberte akci **Odeslat zprávu** .
 
@@ -163,7 +163,7 @@ Potvrďte, že vaše aplikace logiky má oprávnění pro přístup k vašemu ob
 
 ## <a name="send-correlated-messages-in-order"></a>Odeslání korelačních zpráv v daném pořadí
 
-Pokud potřebujete odesílat související zprávy v určitém pořadí, můžete použít [ *sekvenční vzor convoy* ](/azure/architecture/patterns/sequential-convoy) pomocí [konektoru Azure Service Bus](../connectors/connectors-create-api-servicebus.md). Korelační zprávy mají vlastnost, která definuje vztah mezi těmito zprávami, jako je ID [relace](../service-bus-messaging/message-sessions.md) v Service Bus.
+Pokud potřebujete odesílat související zprávy v určitém pořadí, můžete použít [ *sekvenční vzor convoy*](/azure/architecture/patterns/sequential-convoy) pomocí [konektoru Azure Service Bus](../connectors/connectors-create-api-servicebus.md). Korelační zprávy mají vlastnost, která definuje vztah mezi těmito zprávami, jako je ID [relace](../service-bus-messaging/message-sessions.md) v Service Bus.
 
 Když vytvoříte aplikaci logiky, můžete vybrat **korelujované doručení v pořadí pomocí šablony relace služby Service Bus** , která implementuje sekvenční vzor convoy. Další informace najdete v tématu [odeslání souvisejících zpráv v daném pořadí](../logic-apps/send-related-messages-sequential-convoy.md).
 

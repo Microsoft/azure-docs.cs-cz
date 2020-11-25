@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: c186e7beeed3a1729560d7deb002d573e0014508
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: bd45b0e1070efae7ae69a74ad96e1fa94a136006
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950954"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96019391"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver
 
@@ -315,7 +315,7 @@ Papír doplňuje dokumentaci k instalaci SAP a poznámky SAP, které reprezentuj
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 Cloud Computing je široce využívaný termín, který v rámci IT oboru získá více a větší důležitost, od malých společností až po velké a nadnárodní společnosti.
 
 Microsoft Azure je Cloud Services platforma od Microsoftu, která nabízí rozsáhlou škálu nových možností. Zákazníci teď můžou rychle zřídit a zrušit zřízení aplikací jako služby v cloudu, takže nejsou omezené na technické nebo rozpočtové omezení. Namísto investování času a rozpočtu do hardwarové infrastruktury se mohou společnosti soustředit na aplikace, obchodní procesy a její výhody pro zákazníky a uživatele.
@@ -349,7 +349,7 @@ V celém dokumentu používáme následující výrazy:
 
 
 
-### <a name="resources"></a><a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>Zdroje a prostředky
+### <a name="resources"></a><a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>Zdroje informací
 V dokumentaci k vstupnímu bodu pro úlohu SAP v Azure najdete [tady](./get-started.md). Počínaje tímto vstupním bodem najdete mnoho článků týkajících se těchto témat:
 
 - SAP NetWeaver a Business One v Azure
@@ -1951,7 +1951,7 @@ Zálohování offline by v podstatě vyžadovalo vypnutí virtuálního počíta
 
 
 Obnovení tohoto stavu by představovalo odstranění základního virtuálního počítače i původní disky základního virtuálního počítače a připojených disků, kopírování uložených disků do původního účtu úložiště nebo skupiny prostředků pro spravované disky a následného opětovného nasazení systému.
-Tento článek ukazuje příklad skriptu tohoto procesu v prostředí PowerShell: <http://www.westerndevs.com/azure-snapshots/>
+Tento článek ukazuje příklad skriptu tohoto procesu v prostředí PowerShell: <https://www.westerndevs.com/_/azure-snapshots/>
 
 Nezapomeňte nainstalovat novou licenci SAP od obnovení zálohy virtuálního počítače, jak je popsáno výše. vytvoří nový hardwarový klíč.
 

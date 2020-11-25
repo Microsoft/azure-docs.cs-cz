@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84195982"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019680"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Přesun dat mezi místními zdroji a cloudem pomocí Správa dat brány
 > [!NOTE]
@@ -53,7 +53,7 @@ Před zahájením tohoto Názorného postupu musíte mít následující požada
 V tomto kroku použijete Azure Portal k vytvoření instance Azure Data Factory s názvem **ADFTutorialOnPremDF**.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com).
-2. Klikněte na **vytvořit prostředek**, klikněte na **Intelligence + Analytics**a pak klikněte na **Data Factory**.
+2. Klikněte na **vytvořit prostředek**, klikněte na **Intelligence + Analytics** a pak klikněte na **Data Factory**.
 
    ![Nový -> Objekt pro vytváření dat](./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png)  
 3. Na stránce **Nová datová továrna** jako název zadejte **ADFTutorialOnPremDF** .
@@ -85,7 +85,7 @@ V tomto kroku použijete Azure Portal k vytvoření instance Azure Data Factory 
 2. V editoru Data Factory klikněte na **... Další** na panelu nástrojů a pak klikněte na **Nová brána dat**. Případně můžete kliknout pravým tlačítkem na **datové brány** ve stromovém zobrazení a kliknout na **Nová brána dat**.
 
    ![Nová brána dat na panelu nástrojů](./media/data-factory-move-data-between-onprem-and-cloud/NewDataGateway.png)
-3. Na stránce **vytvořit** zadejte **adftutorialgateway** pro **název**a klikněte na **OK**.     
+3. Na stránce **vytvořit** zadejte **adftutorialgateway** pro **název** a klikněte na **OK**.     
 
     ![Stránka vytvořit bránu](./media/data-factory-move-data-between-onprem-and-cloud/OnPremCreateGatewayBlade.png)
 
@@ -127,7 +127,7 @@ V tomto kroku použijete Azure Portal k vytvoření instance Azure Data Factory 
    * Pomocí tlačítka registrovat **Zaregistrujte** bránu s klíčem z Azure Portal.
    * **Zastavte** službu hostitel brány Správa dat spuštěnou na počítači brány.
    * **Naplánujte aktualizace** tak, aby se nainstalovaly v určitou dobu daného dne.
-   * Zobrazit čas **Poslední aktualizace**brány
+   * Zobrazit čas **Poslední aktualizace** brány
    * Zadejte čas, kdy se dá nainstalovat aktualizace brány.
 8. Přepněte na kartu **Nastavení** . Certifikát zadaný v části **certifikát** slouží k šifrování/dešifrování přihlašovacích údajů pro místní úložiště dat, které zadáte na portálu. volitelné Pokud místo toho chcete použít vlastní certifikát, klikněte na **změnit** . Ve výchozím nastavení brána používá certifikát, který je automaticky generovaný službou Data Factory.
 
@@ -148,23 +148,23 @@ V tomto kroku použijete Azure Portal k vytvoření instance Azure Data Factory 
    * Kliknutím na **Zobrazit protokoly** zobrazíte protokol Správa dat brány v okně Prohlížeč událostí.
    * Kliknutím na **Odeslat protokoly** nahrajte soubor zip s protokoly posledních sedmi dnů do Microsoftu, aby se usnadnilo řešení potíží s problémy.
 10. Na kartě **Diagnostika** v části **Test připojení** vyberte **SQLServer** pro typ úložiště dat, zadejte název databázového serveru, název databáze, zadejte typ ověřování, zadejte uživatelské jméno a heslo a klikněte na tlačítko **test** , chcete-li ověřit, zda se brána může připojit k databázi.
-11. Přepněte do webového prohlížeče a v **Azure Portal**klikněte na tlačítko **OK** na stránce **Konfigurace** a potom na stránce **Nová brána dat** .
+11. Přepněte do webového prohlížeče a v **Azure Portal** klikněte na tlačítko **OK** na stránce **Konfigurace** a potom na stránce **Nová brána dat** .
 12. Ve stromovém zobrazení na levé straně byste měli vidět **adftutorialgateway** v části **brány dat** .  Pokud na něj kliknete, měl by se zobrazit přidružený kód JSON.
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 V tomto kroku vytvoříte dvě propojené služby: **AzureStorageLinkedService** a **SqlServerLinkedService**. **SqlServerLinkedService** odkazuje na databázi SQL Server a propojená služba **AzureStorageLinkedService** propojuje úložiště objektů BLOB v Azure s datovou továrnou. Kanál vytvoříte později v tomto návodu, který kopíruje data z databáze SQL Server do úložiště objektů BLOB v Azure.
 
 #### <a name="add-a-linked-service-to-a-sql-server-database"></a>Přidání propojené služby do databáze SQL Server
-1. V **editoru Data Factory**klikněte na panelu nástrojů na **nové úložiště dat** a vyberte **SQL Server**.
+1. V **editoru Data Factory** klikněte na panelu nástrojů na **nové úložiště dat** a vyberte **SQL Server**.
 
    ![Nová propojená služba SQL Server](./media/data-factory-move-data-between-onprem-and-cloud/NewSQLServer.png)
 2. V **editoru JSON** vpravo proveďte následující kroky:
 
-   1. Pro **bránu**zadejte **adftutorialgateway**.    
-   2. V **připojovacím řetězci**proveďte následující kroky:    
+   1. Pro **bránu** zadejte **adftutorialgateway**.    
+   2. V **připojovacím řetězci** proveďte následující kroky:    
 
-      1. Jako název **serveru**zadejte název serveru, který je hostitelem databáze SQL Server.
-      2. Pro **DatabaseName**zadejte název databáze.
+      1. Jako název **serveru** zadejte název serveru, který je hostitelem databáze SQL Server.
+      2. Pro **DatabaseName** zadejte název databáze.
       3. Klikněte na tlačítko **šifrování** na panelu nástrojů. Zobrazí se aplikace Správce přihlašovacích údajů.
 
          ![Aplikace Správce přihlašovacích údajů](./media/data-factory-move-data-between-onprem-and-cloud/credentials-manager-application.png)
@@ -177,8 +177,8 @@ V tomto kroku vytvoříte dvě propojené služby: **AzureStorageLinkedService**
       ![SQL Server propojená služba ve stromovém zobrazení](./media/data-factory-move-data-between-onprem-and-cloud/sql-linked-service-in-tree-view.png)    
 
 #### <a name="add-a-linked-service-for-an-azure-storage-account"></a>Přidání propojené služby pro účet úložiště Azure
-1. V **editoru Data Factory**klikněte na panelu příkazů na **nové úložiště dat** a pak klikněte na **Azure Storage**.
-2. Jako **název účtu**zadejte název svého účtu úložiště Azure.
+1. V **editoru Data Factory** klikněte na panelu příkazů na **nové úložiště dat** a pak klikněte na **Azure Storage**.
+2. Jako **název účtu** zadejte název svého účtu úložiště Azure.
 3. Zadejte klíč účtu úložiště Azure pro **klíč účtu**.
 4. Kliknutím na **nasadit** nasaďte rozhraní **AzureStorageLinkedService**.
 
@@ -210,7 +210,7 @@ V tomto kroku vytvoříte vstupní a výstupní datové sady, které představuj
 
 ### <a name="create-input-dataset"></a>Vytvoření vstupní datové sady
 
-1. V **editoru Data Factory**klikněte na **... Další**, na panelu příkazů klikněte na **Nová datová sada** a pak klikněte na **SQL Server Tabulka**.
+1. V **editoru Data Factory** klikněte na **... Další**, na panelu příkazů klikněte na **Nová datová sada** a pak klikněte na **SQL Server Tabulka**.
 2. Nahraďte kód JSON v pravém podokně následujícím textem:
 
     ```JSON   
@@ -249,7 +249,7 @@ V tomto kroku vytvoříte vstupní a výstupní datové sady, které představuj
 
 ### <a name="create-output-dataset"></a>Vytvoření výstupní datové sady
 
-1. V **editoru Data Factory**klikněte na panelu příkazů na **Nová datová sada** a pak klikněte na **Azure Blob Storage**.
+1. V **editoru Data Factory** klikněte na panelu příkazů na **Nová datová sada** a pak klikněte na **Azure Blob Storage**.
 2. Nahraďte kód JSON v pravém podokně následujícím textem:
 
     ```JSON   
@@ -358,8 +358,8 @@ V tomto kroku vytvoříte **kanál** s jednou **aktivitou kopírování** , kter
 
    * V části aktivity je k dispozici pouze aktivita, jejíž **typ** je nastaven na **Kopírovat**.
    * **Vstup** aktivity je nastavený na **EmpOnPremSQLTable** a **výstup** aktivity je nastavený na **OutputBlobTable**.
-   * V části **typeProperties** je jako typ **zdroje** zadáno **SqlSource** a jako **typ jímky**je zadáno **BlobSink** .
-   * `select * from emp`Pro vlastnost **SqlReaderQuery** třídy **SQLSOURCE**je zadán dotaz SQL.
+   * V části **typeProperties** je jako typ **zdroje** zadáno **SqlSource** a jako **typ jímky** je zadáno **BlobSink** .
+   * `select * from emp`Pro vlastnost **SqlReaderQuery** třídy **SQLSOURCE** je zadán dotaz SQL.
 
    Počáteční a koncové hodnoty data a času musí být ve [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Například: 2014-10-14T16:32:41Z. Čas hodnoty **end** je nepovinný, ale my ho v tomto kurzu použijeme.
 
@@ -374,7 +374,7 @@ V tomto kroku vytvoříte **kanál** s jednou **aktivitou kopírování** , kter
 **Blahopřejeme!** Úspěšně jste vytvořili objekt pro vytváření dat Azure, propojené služby, datové sady a kanál a naplánovali jste kanál.
 
 #### <a name="view-the-data-factory-in-a-diagram-view"></a>Zobrazit objektu pro vytváření dat v zobrazení diagramu
-1. V **Azure Portal**klikněte na dlaždici **diagram** na domovské stránce pro **ADFTutorialOnPremDF** Data Factory. :
+1. V **Azure Portal** klikněte na dlaždici **diagram** na domovské stránce pro **ADFTutorialOnPremDF** Data Factory. :
 
     ![Odkaz na diagram](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramLink.png)
 2. Zobrazený diagram by měl vypadat přibližně jako na následujícím obrázku:
@@ -405,7 +405,7 @@ V tomto kroku budete pomocí webu Azure Portal monitorovat, co se děje v objekt
    Zobrazí se informace, jako je například propustnost, doba trvání a brána používaná k přenosu dat.
 6. Kliknutím na **X** zavřete všechny stránky, dokud
 7. Vraťte se na domovskou stránku pro **ADFTutorialOnPremDF**.
-8. volitelné Klikněte na **kanály**, klikněte na **ADFTutorialOnPremDF**a Projděte si vstupní tabulky (**spotřebované**) nebo výstupní datové sady (**produkované**).
+8. volitelné Klikněte na **kanály**, klikněte na **ADFTutorialOnPremDF** a Projděte si vstupní tabulky (**spotřebované**) nebo výstupní datové sady (**produkované**).
 9. Pomocí nástrojů, jako je [Microsoft Průzkumník služby Storage](https://storageexplorer.com/) , ověřte, jestli je pro každou hodinu vytvořený objekt BLOB nebo soubor.
 
    ![Azure Storage Explorer](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)

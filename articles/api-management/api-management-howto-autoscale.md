@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: 41a97c639d9148f2bff3e4f530363ea05a65a7b8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095947"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018239"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Automatické škálování instance služby Azure API Management  
 
@@ -27,7 +27,7 @@ Tento článek vás provede procesem konfigurace automatického škálování a 
 > [!NOTE]
 > Služba API Management se v úrovni **spotřeby** automaticky škáluje na základě provozu – bez nutnosti jakékoli další konfigurace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete postupovat podle kroků v tomto článku, musíte:
 
@@ -66,7 +66,7 @@ Při konfiguraci automatického škálování pro službu Azure API Management p
 
     ![Povolit automatické škálování Azure Monitor](media/api-management-howto-autoscale/03.png)
 
-6. V části **pravidla** klikněte na **+ Přidat pravidlo** .
+6. V části **pravidla** klikněte na **+ Přidat pravidlo**.
 
     ![Azure Monitor pravidlo přidání automatického škálování](media/api-management-howto-autoscale/04.png)
 
@@ -93,7 +93,7 @@ Při konfiguraci automatického škálování pro službu Azure API Management p
 
     ![Azure Monitor pravidlo horizontálního navýšení kapacity](media/api-management-howto-autoscale/05.png)
 
-9. Klikněte znovu na **+ Přidat pravidlo** .
+9. Klikněte znovu na **+ Přidat pravidlo**.
 
     Tentokrát je potřeba definovat měřítko v pravidle. Tím zajistíte, že se prostředky neprojeví, když se využití rozhraní API sníží.
 
@@ -127,7 +127,7 @@ Při konfiguraci automatického škálování pro službu Azure API Management p
 
     ![Snímek obrazovky, který zvýrazní, kde se má nastavit maximální počet jednotek Azure API Management](media/api-management-howto-autoscale/07.png)
 
-13. Klikněte na **Uložit** . Vaše automatické škálování je nakonfigurované.
+13. Klikněte na **Uložit**. Vaše automatické škálování je nakonfigurované.
 
 ## <a name="next-steps"></a>Další kroky
 

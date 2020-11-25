@@ -8,11 +8,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
 ms.openlocfilehash: d06501abe69ce9b06656cfa8949c42bb53a03983
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439239"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019034"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Konektor protokolů Azure Monitor pro Logic Apps a automatizace
 [Azure Logic Apps](../../logic-apps/index.yml) a [Power](https://flow.microsoft.com) Automata umožňují vytvářet automatizované pracovní postupy s využitím stovek akcí pro nejrůznější služby. Konektor protokolů Azure Monitor umožňuje vytvářet pracovní postupy, které načítají data z pracovního prostoru Log Analytics nebo Application Insights aplikace v Azure Monitor. Tento článek popisuje akce, které konektor obsahuje, a poskytuje návod k sestavení pracovního postupu pomocí těchto dat.
@@ -46,7 +46,7 @@ Následující kurzy ilustrují použití Azure Monitorch konektorů v Azure Log
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
 
-V Azure Portal přejděte na **Logic Apps** a klikněte na **Přidat**. Vyberte **předplatné**, **skupinu prostředků**a **oblast** , do které chcete uložit novou aplikaci logiky, a pak jí udělte jedinečný název. Můžete zapnout **Log Analytics** nastavení a shromažďovat informace o běhových datech a událostech, jak je popsáno v tématu [nastavení protokolů Azure monitor a shromažďování diagnostických dat pro Azure Logic Apps](../../logic-apps/monitor-logic-apps-log-analytics.md). Toto nastavení není vyžadováno pro použití konektoru Azure Monitorch protokolů.
+V Azure Portal přejděte na **Logic Apps** a klikněte na **Přidat**. Vyberte **předplatné**, **skupinu prostředků** a **oblast** , do které chcete uložit novou aplikaci logiky, a pak jí udělte jedinečný název. Můžete zapnout **Log Analytics** nastavení a shromažďovat informace o běhových datech a událostech, jak je popsáno v tématu [nastavení protokolů Azure monitor a shromažďování diagnostických dat pro Azure Logic Apps](../../logic-apps/monitor-logic-apps-log-analytics.md). Toto nastavení není vyžadováno pro použití konektoru Azure Monitorch protokolů.
 
 ![Vytvoření aplikace logiky](media/logicapp-flow-connector/create-logic-app.png)
 
@@ -54,7 +54,7 @@ V Azure Portal přejděte na **Logic Apps** a klikněte na **Přidat**. Vyberte 
 Klikněte na tlačítko **zkontrolovat + vytvořit** a pak **vytvořit**. Po dokončení nasazení klikněte na **Přejít k prostředku** a otevřete **Návrháře Logic Apps**.
 
 ### <a name="create-a-trigger-for-the-logic-app"></a>Vytvoření triggeru pro aplikaci logiky
-V části **začít se společným triggerem**vyberte **opakování**. Tím se vytvoří aplikace logiky, která se automaticky spustí v pravidelných intervalech. V poli **frekvence** akce vyberte **den** a v poli **interval** zadejte **1** , pokud chcete pracovní postup spustit jednou za den.
+V části **začít se společným triggerem** vyberte **opakování**. Tím se vytvoří aplikace logiky, která se automaticky spustí v pravidelných intervalech. V poli **frekvence** akce vyberte **den** a v poli **interval** zadejte **1** , pokud chcete pracovní postup spustit jednou za den.
 
 ![Akce opakování](media/logicapp-flow-connector/recurrence-action.png)
 
@@ -62,7 +62,7 @@ V části **začít se společným triggerem**vyberte **opakování**. Tím se v
 V následujícím kurzu se dozvíte, jak vytvořit aplikaci logiky, která odesílá výsledky Azure Monitorho dotazu protokolu e-mailem. 
 
 ### <a name="add-azure-monitor-logs-action"></a>Akce přidání protokolů Azure Monitor
-Kliknutím na **+ Nový krok** přidáte akci, která se spustí po akci opakování. V části **Zvolte akci**zadejte **Azure monitor** a pak vyberte **Azure monitor protokoly**.
+Kliknutím na **+ Nový krok** přidáte akci, která se spustí po akci opakování. V části **Zvolte akci** zadejte **Azure monitor** a pak vyberte **Azure monitor protokoly**.
 
 ![Akce protokolů Azure Monitor](media/logicapp-flow-connector/select-azure-monitor-connector.png)
 
@@ -73,7 +73,7 @@ Klikněte na **Azure Log Analytics – spusťte dotaz a vizualizujte výsledky**
 
 ### <a name="add-azure-monitor-logs-action"></a>Akce přidání protokolů Azure Monitor
 
-Vyberte **předplatné** a **skupinu prostředků** pro pracovní prostor Log Analytics. Jako **typ prostředku** vyberte *Log Analytics pracovní prostor* a potom v části **název prostředku**vyberte název pracovního prostoru.
+Vyberte **předplatné** a **skupinu prostředků** pro pracovní prostor Log Analytics. Jako **typ prostředku** vyberte *Log Analytics pracovní prostor* a potom v části **název prostředku** vyberte název pracovního prostoru.
 
 Do okna **dotazu** přidejte následující dotaz protokolu.  
 
@@ -85,15 +85,15 @@ Event
 | sort by Computer asc   
 ```
 
-Jako **časový rozsah** a **tabulku HTML** pro **typ grafu**vyberte *nastavit v dotazu* .
+Jako **časový rozsah** a **tabulku HTML** pro **typ grafu** vyberte *nastavit v dotazu* .
    
 ![Snímek obrazovky s nastavením pro novou Azure Monitor protokoluje akci s názvem spustit dotaz a vizualizovat výsledky.](media/logicapp-flow-connector/run-query-visualize-action.png)
 
-E-mail odešle účet přidružený k aktuálnímu připojení. Kliknutím na **změnit připojení**můžete zadat jiný účet.
+E-mail odešle účet přidružený k aktuálnímu připojení. Kliknutím na **změnit připojení** můžete zadat jiný účet.
 
 ### <a name="add-email-action"></a>Akce přidání e-mailu
 
-Klikněte na **+ Nový krok**a potom klikněte na **+ přidat akci**. V části **Zvolte akci**zadejte **Outlook** a pak vyberte **Office 365 Outlook**.
+Klikněte na **+ Nový krok** a potom klikněte na **+ přidat akci**. V části **Zvolte akci** zadejte **Outlook** a pak vyberte **Office 365 Outlook**.
 
 ![Vybrat konektor Outlooku](media/logicapp-flow-connector/select-outlook-connector.png)
 

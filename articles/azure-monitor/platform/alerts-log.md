@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
 ms.openlocfilehash: 0842efe304faa9a0d94fbf71075f1bc16ff34014
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217554"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018201"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor
 
@@ -34,7 +34,7 @@ Pravidla upozornění protokolů můžete vytvořit také pomocí šablon Azure 
 Tady je postup, jak začít psát dotazy na výstrahy:
 
 1. Přejít na prostředek, na kterém byste chtěli upozornit.
-1. V části **monitorování**vyberte **protokoly**.
+1. V části **monitorování** vyberte **protokoly**.
 1. Zadejte dotaz na data protokolu, která mohou problém indikovat. V [tématu Příklady dotazů na výstrahy](../log-query/saved-queries.md) můžete pochopit, co můžete zjistit nebo začít [psát vlastní dotaz](../log-query/get-started-portal.md). Naučíte se také, [jak vytvářet optimalizované dotazy na upozornění](alerts-log-query.md).
 1. Kliknutím na tlačítko + nové pravidlo výstrahy spustíte tok vytváření výstrah.
 
@@ -81,7 +81,7 @@ Tady je postup, jak začít psát dotazy na výstrahy:
 
 1. Vyberte **Hotovo**. 
 
-1. Zadejte název a **Popis** **pravidla výstrahy**a vyberte **závažnost**výstrahy. Tyto podrobnosti se používají ve všech akcích výstrah. Kromě toho můžete zvolit možnost neaktivovat pravidlo výstrahy při vytváření výběrem možnosti **Povolit pravidlo při vytvoření**.
+1. Zadejte název a **Popis** **pravidla výstrahy** a vyberte **závažnost** výstrahy. Tyto podrobnosti se používají ve všech akcích výstrah. Kromě toho můžete zvolit možnost neaktivovat pravidlo výstrahy při vytváření výběrem možnosti **Povolit pravidlo při vytvoření**.
 
 1. Vyberte, zda chcete po spuštění výstrahy potlačit akce s pravidly, a použijte možnost [**potlačit výstrahy**](alerts-unified-log.md#state-and-resolving-alerts) . Pravidlo se pořád spustí a vytvoří upozornění, ale akce se neaktivují, aby se zabránilo hluku. Hodnota akcí ztlumení musí být větší, než frekvence výstrahy, která má být účinná.
 
@@ -126,7 +126,7 @@ Tady je postup, jak začít psát dotazy na výstrahy:
 
     ![Vytvořit pravidlo](media/alerts-log/AlertsPreviewAdd.png)
 
-1. Stiskněte tlačítko **Vybrat prostředek** . Filtrovat podle výběru *předplatného*, *typu prostředku*a výběru prostředku. Zajistěte, aby měl prostředek k dispozici protokoly.
+1. Stiskněte tlačítko **Vybrat prostředek** . Filtrovat podle výběru *předplatného*, *typu prostředku* a výběru prostředku. Zajistěte, aby měl prostředek k dispozici protokoly.
 
    ![Vybrat prostředek](media/alerts-log/Alert-SelectResourceLog.png)
 
@@ -176,7 +176,7 @@ Tady je postup, jak začít psát dotazy na výstrahy:
 
     ![Karta akce](media/alerts-log/actions-tab.png)
 
-1. Na kartě **Podrobnosti** definujte **Podrobnosti pravidla výstrahy**a **Podrobnosti projektu**. Volitelně můžete nastavit, zda chcete **Spustit nyní**, nebo [**ztlumení akcí**](alerts-unified-log.md#state-and-resolving-alerts) po určité době, kdy pravidlo výstrahy bude aktivováno.
+1. Na kartě **Podrobnosti** definujte **Podrobnosti pravidla výstrahy** a **Podrobnosti projektu**. Volitelně můžete nastavit, zda chcete **Spustit nyní**, nebo [**ztlumení akcí**](alerts-unified-log.md#state-and-resolving-alerts) po určité době, kdy pravidlo výstrahy bude aktivováno.
 
     > [!NOTE]
     > Pravidla upozornění protokolu jsou momentálně Bezstavová a aktivují se akce pokaždé, když je vytvořena výstraha, pokud není ztlumený.

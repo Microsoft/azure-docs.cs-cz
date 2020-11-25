@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Přečtěte si, jak nastavit a spravovat koncové body a trasy událostí pro data digitálních vláken Azure.
 author: alexkarcher-msft
 ms.author: alkarche
-ms.date: 10/12/2020
+ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0b8bd9006482daf7c9218f0f3dbb16d2e08359bf
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b836038aa2f8f60e25c51d1d5674d22497b3ce44
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533748"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "96018952"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Správa koncových bodů a tras v Azure Digital revláken (rozhraní API a CLI)
 
@@ -64,15 +64,15 @@ Jakmile téma vytvoříte, můžete ho propojit s digitálními akcemi Azure pom
 az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-Teď je téma Event gridu dostupné jako koncový bod uvnitř digitálních vláken Azure pod názvem zadaným `--endpoint-name` argumentem. Tento název obvykle použijete jako cíl **trasy události** , kterou vytvoříte [později v tomto článku](#create-an-event-route) pomocí rozhraní API služby Azure Digital.
+Teď je téma Event gridu dostupné jako koncový bod uvnitř digitálních vláken Azure pod názvem zadaným `--endpoint-name` argumentem. Tento název obvykle použijete jako cíl **trasy události**, kterou vytvoříte [později v tomto článku](#create-an-event-route) pomocí rozhraní API služby Azure Digital.
 
 ### <a name="create-an-event-hubs-or-service-bus-endpoint"></a>Vytvoření koncového bodu Event Hubs nebo Service Bus
 
 Proces pro vytváření koncových bodů Event Hubs nebo Service Bus je podobný procesu Event Grid zobrazenému výše.
 
 Nejdřív vytvořte prostředky, které budete používat jako koncový bod. Tady je to, co je potřeba:
-* Service Bus: _obor názvů Service Bus_ _Service Bus téma_ , _autorizační pravidlo_
-* Event Hubs: _obor názvů Event Hubs_ , _centrum událostí_ , _autorizační pravidlo_
+* Service Bus: _obor názvů Service Bus_ _Service Bus téma_, _autorizační pravidlo_
+* Event Hubs: _obor názvů Event Hubs_, _centrum událostí_, _autorizační pravidlo_
 
 Pak použijte následující příkazy k vytvoření koncových bodů v digitálních prozdvojeních Azure: 
 
@@ -156,10 +156,10 @@ Aby bylo možné ve skutečnosti odesílat data z digitálních vláken Azure do
 
 Ukázky v této části používají [sadu .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true).
 
-**Předpoklad** : před přechodem na vytvoření trasy je nutné vytvořit koncové body, jak je popsáno výše v tomto článku. Po dokončení nastavení koncových bodů můžete pokračovat v vytváření směrování událostí.
+**Předpoklad**: před přechodem na vytvoření trasy je nutné vytvořit koncové body, jak je popsáno výše v tomto článku. Po dokončení nastavení koncových bodů můžete pokračovat v vytváření směrování událostí.
 
->[!NOTE]
->Pokud jste své koncové body v poslední době nasadili, ověřte, že se jejich nasazení dokončilo, **než** se pokusíte použít pro novou trasu události. Pokud se nasazení trasy nepovede, protože koncové body nejsou připravené, počkejte pár minut a zkuste to znovu.
+> [!NOTE]
+> Pokud jste své koncové body v poslední době nasadili, ověřte, že se jejich nasazení dokončilo, **než** se pokusíte použít pro novou trasu události. Pokud se nasazení trasy nepovede, protože koncové body nejsou připravené, počkejte pár minut a zkuste to znovu.
 >
 > Pokud tento tok spouštíte, můžete si ho vymezit tak, že sestavíte za 2-3 minut čekání na dokončení nasazování služby koncového bodu a teprve potom přejdete na nastavení směrování.
 
@@ -229,7 +229,7 @@ Bez filtrování se koncovým bodům dostanou nejrůznější události z digit�
 
 Odesílaným událostem můžete omezit přidáváním **filtru** pro koncový bod do trasy události.
 
-Pokud chcete přidat filtr, můžete použít požadavek PUT na *https://{YourHost}/EventRoutes/myNewRoute? API-Version = 2020-10-31* s následujícím textem:
+Chcete-li přidat filtr, můžete použít požadavek PUT na *protokol https://{The-Azure-Digital-reprops-název_hostitele}/eventRoutes/{Event-Route-Name}? API-Version = 2020-10-31* s následujícím textem:
 
 ```json  
 {
@@ -237,7 +237,6 @@ Pokud chcete přidat filtr, můžete použít požadavek PUT na *https://{YourHo
     "filter": "<filter-text>"
 }
 ``` 
-
 Tady jsou podporované filtry tras. Pomocí podrobností ve sloupci *schéma textu filtru* nahraďte `<filter-text>` zástupný text v těle žádosti výše.
 
 [!INCLUDE [digital-twins-route-filters](../../includes/digital-twins-route-filters.md)]

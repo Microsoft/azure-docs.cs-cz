@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 08/29/2018
 ms.custom: mvc
 ms.openlocfilehash: bb0eb9226a99f139ff10a8da12a1e22017536c67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326299"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018847"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Kurz: Nasazení aplikace typu kontejner s CI/CD do clusteru Service Fabric
 
@@ -23,7 +23,7 @@ Ve druhé části této série se naučíte:
 > * Vytvoření definice verze v aplikaci Visual Studio Team Explorer
 > * Automatické nasazení a upgrade aplikace
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem:
 
@@ -42,7 +42,7 @@ Zvolte v rámci projektu aplikace cílový profil, který se použije pro pracov
 
 Sdílejte zdrojové soubory aplikace do týmového projektu v Azure DevOps, abyste mohli generovat sestavení.
 
-Pro svůj projekt vytvořte nové místní úložiště Git, a to **Add to Source Control**tak, že  ->  na stavovém řádku v pravém dolním rohu sady Visual Studio vyberete Přidat do správy zdrojového kódu**Git** .
+Pro svůj projekt vytvořte nové místní úložiště Git, a to **Add to Source Control** tak, že  ->  na stavovém řádku v pravém dolním rohu sady Visual Studio vyberete Přidat do správy zdrojového kódu **Git** .
 
 V zobrazení **Nasdílet změny** v **Team Exploreru** vyberte v části **Doručovat do Azure DevOps** tlačítko **Publikovat úložiště Git**.
 
@@ -103,7 +103,7 @@ Sestavení se aktivují také pro nasdílení změn nebo vrácení se změnami. 
 
 ### <a name="create-a-release-definition"></a>Vytvoření definice verze
 
-Na levém panelu vyberte možnost **kanály** a pak **verze**a potom **+ Nový kanál**.  V části **Vybrat šablonu** vyberte ze seznamu šablonu **Nasazení Azure Service Fabric** a pak klikněte na **Použít**.
+Na levém panelu vyberte možnost **kanály** a pak **verze** a potom **+ Nový kanál**.  V části **Vybrat šablonu** vyberte ze seznamu šablonu **Nasazení Azure Service Fabric** a pak klikněte na **Použít**.
 
 ![Výběr šablony vydání][select-release-template]
 
@@ -134,7 +134,7 @@ Povolte trigger průběžného nasazování, aby se po dokončení sestavení au
 
 ![Povolení triggeru][enable-trigger]
 
-Výběrem **+ vydaná**verze  ->  **vytvořit vydání**  ->  **vytvořit vytvořte** vydanou verzi ručně. Průběh vydání můžete sledovat na kartě **Vydání**.
+Výběrem **+ vydaná** verze  ->  **vytvořit vydání**  ->  **vytvořit vytvořte** vydanou verzi ručně. Průběh vydání můžete sledovat na kartě **Vydání**.
 
 Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte na adresu `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170616.3.
 

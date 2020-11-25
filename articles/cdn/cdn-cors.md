@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: f7edf790e526329dd285d03a31137a26220e52ee
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778927"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018643"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Použití Azure CDN s CORS
 ## <a name="what-is-cors"></a>Co je CORS?
@@ -36,7 +36,7 @@ Existují dva typy požadavků CORS, *jednoduchých požadavků* a *složitých 
 
 2. Server může reagovat s některým z následujících způsobů:
 
-   * Hlavička **Access-Control-Allow-Origin** v odpovědi, která označuje, který zdrojový web je povolen. Příklad:
+   * Hlavička **Access-Control-Allow-Origin** v odpovědi, která označuje, který zdrojový web je povolen. Například:
 
      `Access-Control-Allow-Origin: https://www.contoso.com`
 
@@ -69,7 +69,7 @@ Na Azure CDN Standard od Microsoftu můžete vytvořit pravidlo v [modulu Standa
 ![Příklad pravidel se strojem standardních pravidel](./media/cdn-cors/cdn-standard-cors.png)
 
 > [!TIP]
-> Do pravidla můžete přidat další akce, které upraví další hlavičky odpovědí, jako je například **Access-Control-Allow-Methods** .
+> Do pravidla můžete přidat další akce, které upraví další hlavičky odpovědí, jako je například **Access-Control-Allow-Methods**.
 > 
 
 V **Azure CDN Standard od Akamai** je jediným mechanismem, který umožňuje více míst původu bez použití zástupného znaku, použít [ukládání řetězců dotazu do mezipaměti](cdn-query-string.md). Povolte nastavení řetězce dotazu pro koncový bod CDN a pak pro žádosti z každé povolené domény použijte jedinečný řetězec dotazu. Výsledkem je, že CDN ukládá do mezipaměti samostatný objekt pro každý řetězec jedinečného dotazu. Tento přístup není ideální, ale v takovém případě bude výsledkem více kopií stejného souboru v mezipaměti CDN.  
@@ -91,7 +91,7 @@ https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.co
 > 
 > 
 
-Pokud regulární výraz odpovídá, vaše pravidlo nahradí hlavičku **Access-Control-Allow-Origin** (pokud existuje) od počátku s počátkem, který odeslal požadavek.  Můžete také přidat další hlavičky CORS, například **Access-Control-Allow-Methods** .
+Pokud regulární výraz odpovídá, vaše pravidlo nahradí hlavičku **Access-Control-Allow-Origin** (pokud existuje) od počátku s počátkem, který odeslal požadavek.  Můžete také přidat další hlavičky CORS, například **Access-Control-Allow-Methods**.
 
 ![Příklad pravidel s regulárním výrazem](./media/cdn-cors/cdn-cors-regex.png)
 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
 ms.openlocfilehash: f597e58c70d6ac9daff753f5c0a54199c2383c42
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746173"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019497"
 ---
 # <a name="manage-your-function-app"></a>Správa aplikace Function App 
 
@@ -29,11 +29,11 @@ Tento článek popisuje, jak nakonfigurovat a spravovat aplikace Function App.
 
 1. Začněte tím, že přejdete na [Azure Portal] a přihlásíte se k účtu Azure. Na panelu hledání v horní části portálu zadejte název aplikace Function App a vyberte ji ze seznamu. 
 
-2. V části **Nastavení** v levém podokně vyberte **Konfigurace** .
+2. V části **Nastavení** v levém podokně vyberte **Konfigurace**.
 
     :::image type="content" source="./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png" alt-text="Přehled aplikace Function App v Azure Portal":::
 
-Na stránce Přehled můžete přejít na všechno, co potřebujete ke správě aplikace Function App, zejména **[nastavení aplikace](#settings)** a **[funkce platformy](#platform-features)** .
+Na stránce Přehled můžete přejít na všechno, co potřebujete ke správě aplikace Function App, zejména **[nastavení aplikace](#settings)** a **[funkce platformy](#platform-features)**.
 
 ## <a name="application-settings"></a><a name="settings"></a>Nastavení aplikace
 

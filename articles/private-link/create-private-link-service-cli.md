@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: e0b9ac3f16a170bb14925b555e8894cb10080488
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: cfffafaab2e2d4ef6b165ef03beb827342c94608
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026178"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96018048"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Vytvoření služby privátního propojení pomocí Azure CLI
 V tomto článku se dozvíte, jak vytvořit službu privátního propojení v Azure pomocí rozhraní příkazového řádku Azure CLI.
@@ -50,7 +50,7 @@ az network lb create --resource-group myResourceGroup --name myILB --sku standar
 
 ### <a name="create-a-load-balancer-health-probe"></a>Vytvoření sondy stavu nástroje pro vyrovnávání zatížení
 
-Sonda stavu kontroluje všechny instance virtuálních počítačů a ověřuje, že můžou přijímat síťový provoz. Instance virtuálního počítače, u níž se kontroly testu nezdaří, se odebere z nástroje pro vyrovnávání zatížení do té doby, než znovu přejde do režimu online a kontrola testu určí, že je v pořádku. Pomocí příkazu [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) vytvořte sondu stavu pro monitorování stavu virtuálních počítačů. 
+Sonda stavu kontroluje všechny instance virtuálních počítačů a ověřuje, že můžou přijímat síťový provoz. Instance virtuálního počítače, u níž se kontroly testu nezdaří, se odebere z nástroje pro vyrovnávání zatížení do té doby, než znovu přejde do režimu online a kontrola testu určí, že je v pořádku. Pomocí příkazu [az network lb probe create](/cli/azure/network/lb/probe?view=azure-cli-latest) vytvořte sondu stavu pro monitorování stavu virtuálních počítačů. 
 
 ```azurecli-interactive
   az network lb probe create \
@@ -63,7 +63,7 @@ Sonda stavu kontroluje všechny instance virtuálních počítačů a ověřuje,
 
 ### <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 
-Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Pomocí příkazu [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) vytvořte pravidlo nástroje pro vyrovnávání zatížení *myHTTPRule* pro naslouchání na portu 80 ve front-endovém fondu *myFrontEnd* a odesílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres *myBackEndPool*, a to taky na portu 80. 
+Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Pomocí příkazu [az network lb rule create](/cli/azure/network/lb/rule?view=azure-cli-latest) vytvořte pravidlo nástroje pro vyrovnávání zatížení *myHTTPRule* pro naslouchání na portu 80 ve front-endovém fondu *myFrontEnd* a odesílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres *myBackEndPool*, a to taky na portu 80. 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -79,7 +79,7 @@ Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-end
 ```
 ### <a name="create-backend-servers"></a>Vytvoření serverů back-end
 
-V tomto příkladu nepokrýváme vytváření virtuálních počítačů. Můžete postupovat podle kroků v části [rychlý Start: vytvoření interního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí](/azure/load-balancer/quickstart-load-balancer-standard-internal-cli) rozhraní příkazového řádku Azure a vytvoření dvou virtuálních počítačů, které se použijí jako servery back-end pro nástroj pro vyrovnávání zatížení. 
+V tomto příkladu nepokrýváme vytváření virtuálních počítačů. Můžete postupovat podle kroků v části [rychlý Start: vytvoření interního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí](../load-balancer/quickstart-load-balancer-standard-internal-cli.md) rozhraní příkazového řádku Azure a vytvoření dvou virtuálních počítačů, které se použijí jako servery back-end pro nástroj pro vyrovnávání zatížení. 
 
 
 ### <a name="disable-private-link-service-network-policies-on-subnet"></a>Zakázat zásady sítě služby privátního propojení v podsíti 
@@ -163,4 +163,3 @@ az network private-link-service show --resource-group myResourceGroup --name myP
 ```
 ## <a name="next-steps"></a>Další kroky
 - Další informace o [službě Azure Private Link](private-link-service-overview.md)
- 

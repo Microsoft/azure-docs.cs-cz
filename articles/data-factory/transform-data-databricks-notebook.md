@@ -12,16 +12,16 @@ ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: 6d3c9f0df0d834ffe75d0b56e3c80a432c27ea38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81419013"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018541"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Transformujte data spuštěním poznámkového bloku datacihly.
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Aktivita poznámkového bloku Azure Databricks v [kanálu Data Factory](concepts-pipelines-activities.md) spustí v pracovním prostoru Azure Databricks Poznámkový blok datacihly. Tento článek se sestavuje na článku [aktivity transformace dat](transform-data.md)   , který představuje obecný přehled transformace dat a podporovaných transformačních aktivit.Azure Databricks je spravovaná platforma pro spouštění Apache Spark.
+Aktivita poznámkového bloku Azure Databricks v [kanálu Data Factory](concepts-pipelines-activities.md) spustí v pracovním prostoru Azure Databricks Poznámkový blok datacihly. Tento článek se sestavuje na článku [aktivity transformace dat](transform-data.md) , který představuje obecný přehled transformace dat a podporovaných transformačních aktivit. Azure Databricks je spravovaná platforma pro spouštění Apache Spark.
 
 ## <a name="databricks-notebook-activity-definition"></a>Definice aktivity poznámkového bloku datacihly
 
@@ -59,11 +59,11 @@ Následující tabulka obsahuje popis vlastností JSON použitých v definici JS
 
 |Vlastnost|Popis|Povinné|
 |---|---|---|
-|name|Název aktivity v kanálu.|Ano|
-|Popis|Text popisující, co aktivita dělá.|No|
-|typ|V případě aktivity poznámkového bloku datacihly je typ aktivity DatabricksNotebook.|Ano|
-|linkedServiceName|Název propojené služby datacihly, na které se Poznámkový blok datacihly spouští. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md)   .|Ano|
-|notebookPath|Absolutní cesta poznámkového bloku, který má být spuštěn v pracovním prostoru datacihly. Tato cesta musí začínat lomítkem.|Ano|
+|name|Název aktivity v kanálu.|Yes|
+|description|Text popisující, co aktivita dělá.|No|
+|typ|V případě aktivity poznámkového bloku datacihly je typ aktivity DatabricksNotebook.|Yes|
+|linkedServiceName|Název propojené služby datacihly, na které se Poznámkový blok datacihly spouští. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) .|Yes|
+|notebookPath|Absolutní cesta poznámkového bloku, který má být spuštěn v pracovním prostoru datacihly. Tato cesta musí začínat lomítkem.|Yes|
 |baseParameters|Pole párů Key-Value. Základní parametry lze použít pro každý běh aktivity. Pokud Poznámkový blok převezme parametr, který není zadaný, použije se výchozí hodnota z poznámkového bloku. Přečtěte si další informace o parametrech v [poznámkových blocích datacihly](https://docs.databricks.com/api/latest/jobs.html#jobsparampair).|No|
 |knihovny|Seznam knihoven, které se mají nainstalovat na cluster, který spustí úlohu. Může to být pole \<string, object> .|No|
 
