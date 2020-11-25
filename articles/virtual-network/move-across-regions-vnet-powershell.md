@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
 ms.openlocfilehash: e13164c3ec6049a8ae3954528a02d20e313dd883
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84711455"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008119"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>Přesuňte virtuální síť Azure do jiné oblasti pomocí Azure PowerShell
 
@@ -60,7 +60,7 @@ Pokud chcete exportovat virtuální síť a nasadit cílovou virtuální síť p
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-1. Stažený soubor má stejný název jako skupina prostředků, ze které byl prostředek exportován. Vyhledejte soubor * \<resource-group-name> . JSON* , který jste exportovali pomocí příkazu, a pak ho otevřete v editoru:
+1. Stažený soubor má stejný název jako skupina prostředků, ze které byl prostředek exportován. Vyhledejte soubor *\<resource-group-name> . JSON* , který jste exportovali pomocí příkazu, a pak ho otevřete v editoru:
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -105,9 +105,9 @@ Pokud chcete exportovat virtuální síť a nasadit cílovou virtuální síť p
     Get-AzLocation | format-table
     ```
 
-1. Volitelné V závislosti na vašich požadavcích můžete také změnit další parametry v souboru * \<resource-group-name> . JSON* :
+1. Volitelné V závislosti na vašich požadavcích můžete také změnit další parametry v souboru *\<resource-group-name> . JSON* :
 
-    * **Adresní prostor**: před uložením souboru můžete změnit adresní prostor virtuální sítě změnou **resources**  >  části**addressSpace** prostředků a změnou vlastnosti **addressPrefixes** :
+    * **Adresní prostor**: před uložením souboru můžete změnit adresní prostor virtuální sítě změnou **resources**  >  části **addressSpace** prostředků a změnou vlastnosti **addressPrefixes** :
 
         ```json
                 "resources": [
@@ -193,7 +193,7 @@ Pokud chcete exportovat virtuální síť a nasadit cílovou virtuální síť p
          ]
         ```
 
-1. Uložte soubor * \<resource-group-name> . JSON* .
+1. Uložte soubor *\<resource-group-name> . JSON* .
 
 1. Vytvořte skupinu prostředků v cílové oblasti pro nasazení cílové virtuální sítě pomocí [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0):
     
@@ -201,7 +201,7 @@ Pokud chcete exportovat virtuální síť a nasadit cílovou virtuální síť p
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-1. Nasaďte upravený soubor * \<resource-group-name> . JSON* do skupiny prostředků, kterou jste vytvořili v předchozím kroku, pomocí [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+1. Nasaďte upravený soubor *\<resource-group-name> . JSON* do skupiny prostředků, kterou jste vytvořili v předchozím kroku, pomocí [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
 
     ```azurepowershell-interactive
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: glenga
 ms.openlocfilehash: a525d1e14e642a64235c263ba29bf7a181bf9e30
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420984"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008158"
 ---
 ## <a name="publish-the-project-to-azure"></a>Publikování projektu do Azure
 
@@ -25,15 +25,15 @@ V této části vytvoříte aplikaci funkcí a související prostředky v před
 
 1. Zadejte následující informace na následujících dotazech:
 
-    - **Vyberte složku** : Zvolte složku z pracovního prostoru nebo přejděte k nějakému, který obsahuje vaši aplikaci Function App. Tato funkce se nezobrazuje, pokud už máte spuštěnou platnou aplikaci Function App.
+    - **Vyberte složku**: Zvolte složku z pracovního prostoru nebo přejděte k nějakému, který obsahuje vaši aplikaci Function App. Tato funkce se nezobrazuje, pokud už máte spuštěnou platnou aplikaci Function App.
 
-    - **Vyberte předplatné** : zvolte předplatné, které chcete použít. Toto se nezobrazí, pokud máte jenom jedno předplatné.
+    - **Vyberte předplatné**: zvolte předplatné, které chcete použít. Toto se nezobrazí, pokud máte jenom jedno předplatné.
 
-    - **Vyberte Function App v Azure** : zvolte `- Create new Function App` . (Nevybírejte `Advanced` možnost, která není pokrytá v tomto článku.)
+    - **Vyberte Function App v Azure**: zvolte `- Create new Function App` . (Nevybírejte `Advanced` možnost, která není pokrytá v tomto článku.)
       
-    - **Zadejte globálně jedinečný název aplikace Function App** : zadejte název, který je platný v cestě URL. Název, který zadáte, bude ověřený, abyste se ujistili, že je v Azure Functions jedinečný.
+    - **Zadejte globálně jedinečný název aplikace Function App**: zadejte název, který je platný v cestě URL. Název, který zadáte, bude ověřený, abyste se ujistili, že je v Azure Functions jedinečný.
     
-    - **Vyberte umístění pro nové prostředky** : pro lepší výkon zvolte [oblast](https://azure.microsoft.com/regions/) poblíž. 
+    - **Vyberte umístění pro nové prostředky**: pro lepší výkon zvolte [oblast](https://azure.microsoft.com/regions/) poblíž. 
     
 1.  Po dokončení se ve vašem předplatném vytvoří následující prostředky Azure s použitím názvů na základě názvu vaší aplikace Function App:
     

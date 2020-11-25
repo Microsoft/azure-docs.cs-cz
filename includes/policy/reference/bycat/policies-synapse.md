@@ -1,0 +1,21 @@
+---
+author: DCtheGeek
+ms.service: azure-policy
+ms.topic: include
+ms.date: 11/20/2020
+ms.author: dacoulte
+ms.custom: generated
+ms.openlocfilehash: fb5f6dbb410a15bf88fccc1ed3f9c3ca0f830c70
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "96007675"
+---
+|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|---|---|---|---|
+|[V pracovních prostorech Azure synapse by se měly používat klíče spravované zákazníky k šifrování neaktivních dat.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff7d52b2d-e161-4dfa-a82b-55e564167385) |Klíče spravované zákazníkem slouží k řízení šifrování v klidovém umístění dat uložených v pracovních prostorech Azure synapse. Klíče spravované zákazníkem poskytují dvojité šifrování přidáním druhé vrstvy šifrování nad výchozí šifrování pomocí klíčů spravovaných službou. |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceCMK_Audit.json) |
+|[V pracovních prostorech Azure synapse by se měla odebrat pravidla brány firewall protokolu IP.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F56fd377d-098c-4f02-8406-81eb055902b8) |Odebrání všech pravidel brány firewall protokolu IP zvyšuje zabezpečení tím, že zajistí, že se k pracovnímu prostoru Azure synapse dostanete jenom z privátního koncového bodu. Tato konfigurace Audituje vytváření pravidel brány firewall, která umožňují přístup k veřejné síti v pracovním prostoru. |Audit, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceFirewallRules_Audit.json) |
+|[Měla by být povolená virtuální síť spravovaného pracovního prostoru v pracovních prostorech Azure synapse.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d9dbfa3-927b-4cf0-9d0f-08747f971650) |Povolením virtuální sítě spravovaného pracovního prostoru zajistíte, aby byl váš pracovní prostor v síti izolovaný od ostatních pracovních prostorů. Prostředky pro integraci dat a Spark nasazené v této virtuální síti také poskytují izolaci na úrovni uživatele pro aktivity Sparku. |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceManagedVnet_Audit.json) |
+|[V pracovních prostorech Azure synapse by se měla povolit připojení privátního koncového bodu.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F72d11df1-dd8a-41f7-8925-b05b960ebafc) |Privátní koncové body se dají nakonfigurovat tak, aby se připojovaly soukromě k pracovnímu prostoru Azure synapse. Slouží k vymáhání zabezpečeného komunikačního kanálu k pracovnímu prostoru Azure synapse. |Audit, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceUsePrivateLinks_Audit.json) |
+|[Spravované privátní koncové body synapse by se měly připojovat jenom k prostředkům ve schválených Azure Active Directory tenantech.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3a003702-13d2-4679-941b-937e58c443f0) |Chraňte svůj pracovní prostor synapse tím, že povolíte připojení k prostředkům ve schválených klientech Azure Active Directory (Azure AD). Schválené klienty služby Azure AD lze definovat během přiřazování zásad. |Audit, zakázáno, odepřít |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/Workspace_DataExfiltrationPrevention_Deny.json) |

@@ -4,11 +4,11 @@ description: Přečtěte si o podpoře migrace virtuálních počítačů VMware
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: 7a7713021683c394e609a302a1aa6fcb282484e5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544201"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008289"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Matice podpory pro migraci VMware
 
@@ -19,8 +19,8 @@ Tento článek shrnuje nastavení podpory a omezení pro migraci virtuálních p
 
 Virtuální počítače VMware můžete migrovat několika způsoby:
 
-- **Migrace bez agenta** : migrujte virtuální počítače, aniž byste museli instalovat cokoli. Nasadíte [zařízení Azure Migrate](migrate-appliance.md) pro migraci bez agenta.
-- **Použití migrace na základě agentů** : Nainstalujte na virtuální počítač agenta pro replikaci. Pro migraci na základě agenta nasadíte [zařízení replikace](migrate-replication-appliance.md).
+- **Migrace bez agenta**: migrujte virtuální počítače, aniž byste museli instalovat cokoli. Nasadíte [zařízení Azure Migrate](migrate-appliance.md) pro migraci bez agenta.
+- **Použití migrace na základě agentů**: Nainstalujte na virtuální počítač agenta pro replikaci. Pro migraci na základě agenta nasadíte [zařízení replikace](migrate-replication-appliance.md).
 
 Přečtěte si [Tento článek](server-migrate-overview.md) a zjistěte, kterou metodu chcete použít.
 
@@ -41,7 +41,7 @@ Tabulka shrnuje požadavky hypervisoru VMware.
 --- | ---
 **vCenter Server VMware** | Verze 5,5, 6,0, 6,5, 6,7, 7,0.
 **VMware vSphere hostitele ESXI** | Verze 5,5, 6,0, 6,5, 6,7, 7,0.
-**vCenter Server oprávnění** | Migrace bez agentů používá [zařízení migrace](migrate-appliance.md). Zařízení potřebuje tato oprávnění v vCenter Server:<br/><br/> - **Úložiště dat. procházet** : povolí procházení souborů protokolu virtuálních počítačů k řešení potíží při vytváření a odstraňování snímků.<br/><br/> - **DataStore. Management** : povolí operace čtení, zápisu, odstranění a přejmenování v prohlížeči úložiště dat, aby bylo možné řešit problémy při vytváření a odstraňování snímků.<br/><br/> - **VirtualMachine.Config. Sledování změn ve** : umožňuje povolit nebo zakázat sledování změn disků virtuálních počítačů, aby se daly načíst změněné bloky dat mezi snímky.<br/><br/> - **VirtualMachine.Config. DiskLease** : Povolte operace zapůjčení disku pro virtuální počítač a přečtěte si disk pomocí sady VMware vSphere Virtual disk Development Kit (VDDK).<br/><br/> - **VirtualMachine. Provisioning. DiskAccess** : (konkrétně pro vSphere 6,0 a vyšší) povolí otevření disku na virtuálním počítači s náhodným přístupem pro čtení na disku pomocí VDDK.<br/><br/> - **VirtualMachine. Provisioning. DiskRandomRead** : povoluje otevření disku na virtuálním počítači pro čtení disku pomocí VDDK.<br/><br/> - **VirtualMachine. Provisioning. DiskRandomAccess** : povoluje otevření disku na virtuálním počítači pro čtení disku pomocí VDDK.<br/><br/> - **VirtualMachine. Provisioning. GetVmFiles** : umožňuje operace čtení souborů přidružených k virtuálnímu počítači ke stažení protokolů a řešení potíží, pokud dojde k selhání.<br/><br/> - **VirtualMachine. State. \* *_: Povolí vytváření a správu snímků virtuálních počítačů pro replikaci. <br/> <br/> -_* VirtualMachine. interaktivně. stavu PowerOff** : povolí vypnutí virtuálního počítače během migrace do Azure.
+**vCenter Server oprávnění** | Migrace bez agentů používá [zařízení migrace](migrate-appliance.md). Zařízení potřebuje tato oprávnění v vCenter Server:<br/><br/> - **Úložiště dat. procházet**: povolí procházení souborů protokolu virtuálních počítačů k řešení potíží při vytváření a odstraňování snímků.<br/><br/> - **DataStore. Management**: povolí operace čtení, zápisu, odstranění a přejmenování v prohlížeči úložiště dat, aby bylo možné řešit problémy při vytváření a odstraňování snímků.<br/><br/> - **VirtualMachine.Config. Sledování změn ve**: umožňuje povolit nebo zakázat sledování změn disků virtuálních počítačů, aby se daly načíst změněné bloky dat mezi snímky.<br/><br/> - **VirtualMachine.Config. DiskLease**: Povolte operace zapůjčení disku pro virtuální počítač a přečtěte si disk pomocí sady VMware vSphere Virtual disk Development Kit (VDDK).<br/><br/> - **VirtualMachine. Provisioning. DiskAccess**: (konkrétně pro vSphere 6,0 a vyšší) povolí otevření disku na virtuálním počítači s náhodným přístupem pro čtení na disku pomocí VDDK.<br/><br/> - **VirtualMachine. Provisioning. DiskRandomRead**: povoluje otevření disku na virtuálním počítači pro čtení disku pomocí VDDK.<br/><br/> - **VirtualMachine. Provisioning. DiskRandomAccess**: povoluje otevření disku na virtuálním počítači pro čtení disku pomocí VDDK.<br/><br/> - **VirtualMachine. Provisioning. GetVmFiles**: umožňuje operace čtení souborů přidružených k virtuálnímu počítači ke stažení protokolů a řešení potíží, pokud dojde k selhání.<br/><br/> - **VirtualMachine. State. \* *_: Povolí vytváření a správu snímků virtuálních počítačů pro replikaci. <br/> <br/> -_* VirtualMachine. interaktivně. stavu PowerOff**: povolí vypnutí virtuálního počítače během migrace do Azure.
 
 
 
@@ -169,7 +169,7 @@ Sdílený virtuální pevný disk | Nepodporováno
 Disk FC | Nepodporováno 
 BitLocker | Nepodporováno<br/><br/> Před migrací počítače je třeba zakázat nástroj BitLocker.
 název virtuálního počítače | Od 1 do 63 znaků.<br/><br/> Pouze písmena, číslice a pomlčky.<br/><br/> Název počítače musí začínat a končit písmenem nebo číslicí. 
-Připojit po migraci – Windows | Připojení k virtuálním počítačům Azure s Windows po migraci:<br/><br/> – Před migrací povolte RDP na místním virtuálním počítači.<br/><br/> Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je pro všechny profily povolený protokol RDP.<br/><br/> V případě přístupu typu Site-to-site k síti VPN Povolte protokol RDP a Povolte protokol RDP v **bráně Windows Firewall**  ->  **povolené aplikace a funkce** pro **domény a privátní** sítě.<br/><br/> Dále ověřte, že je zásada SAN operačního systému nastavená na **OnlineAll** . [Další informace](prepare-for-migration.md).
+Připojit po migraci – Windows | Připojení k virtuálním počítačům Azure s Windows po migraci:<br/><br/> – Před migrací povolte RDP na místním virtuálním počítači.<br/><br/> Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je pro všechny profily povolený protokol RDP.<br/><br/> V případě přístupu typu Site-to-site k síti VPN Povolte protokol RDP a Povolte protokol RDP v **bráně Windows Firewall**  ->  **povolené aplikace a funkce** pro **domény a privátní** sítě.<br/><br/> Dále ověřte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Přečtěte si další informace](prepare-for-migration.md).
 Připojit po migraci – Linux | Připojení k virtuálním počítačům Azure po migraci pomocí SSH:<br/><br/> Před migrací na místním počítači ověřte, že je služba Secure Shell nastavená na Start a že pravidla brány firewall umožňují připojení SSH.<br/><br/> Po převzetí služeb při selhání povolte na virtuálním počítači Azure příchozí připojení k portu SSH pro pravidla skupiny zabezpečení sítě na virtuálním počítači, u kterého došlo k převzetí služeb při selhání, a pro podsíť Azure, ke které je připojený.<br/><br/> Kromě toho přidejte veřejnou IP adresu pro virtuální počítač.  
 
 

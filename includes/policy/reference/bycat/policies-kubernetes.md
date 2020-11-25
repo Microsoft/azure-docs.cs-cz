@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 10/20/2020
+ms.date: 11/20/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: e83e5fdd0d8797377407e27614e98c348b008164
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 1333fd582af5aad041c4a0575a6ad3d0468ea306
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311819"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "96007631"
 ---
-|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[V clusterech by měl být nainstalovaný a povolený doplněk Azure Policy pro službu Kubernetes (AKS).](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |Azure Policy doplněk pro službu Kubernetes (AKS) rozšiřuje Server Gatekeeper v3, Webhook kontroleru pro přístup pro Open Policy Agent (NEPRŮ), který se použije při vynuceném škálování a ochraně vašich clusterů v centralizovaném, konzistentním způsobem. |Audit, zakázáno |[1.0.1 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
 |[Nasazení Azure Policy doplňku do clusterů služby Azure Kubernetes](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa8eff44f-8c92-45c3-a3fb-9880802d67a7) |Pomocí doplňku Azure Policy můžete spravovat a nahlásit stav dodržování předpisů clusterů Azure Kubernetes Service (AKS). Další informace najdete na webu [https://aka.ms/akspolicydoc](https://aka.ms/akspolicydoc). |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Deploy.json) |

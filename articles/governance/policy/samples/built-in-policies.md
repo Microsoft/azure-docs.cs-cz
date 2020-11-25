@@ -1,15 +1,15 @@
 ---
 title: Seznam předdefinovaných definic zásad
 description: Vypíše předdefinované definice zásad pro Azure Policy. Kategorie zahrnují značky, dodržování předpisů, Key Vault, Kubernetes, konfiguraci hostů a další.
-ms.date: 10/20/2020
+ms.date: 11/20/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: c1627c05e041b2b4a91f5fb5ad44d79641cb9756
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 66563a4754d706f2c73e90ad3c2e8e0f4fe7d3a0
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311865"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "96007600"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy předdefinované definice zásad
 
@@ -45,6 +45,10 @@ Název každého z vestavěných odkazů na definici zásady v Azure Portal. Pom
 
 [!INCLUDE [azure-policy-reference-policies-automation](../../../../includes/policy/reference/bycat/policies-automation.md)]
 
+## <a name="azure-data-explorer"></a>Průzkumník dat Azure
+
+[!INCLUDE [azure-policy-reference-policies-azure-data-explorer](../../../../includes/policy/reference/bycat/policies-azure-data-explorer.md)]
+
 ## <a name="backup"></a>Backup
 
 [!INCLUDE [azure-policy-reference-policies-backup](../../../../includes/policy/reference/bycat/policies-backup.md)]
@@ -61,7 +65,7 @@ Název každého z vestavěných odkazů na definici zásady v Azure Portal. Pom
 
 [!INCLUDE [azure-policy-reference-policies-cognitive-services](../../../../includes/policy/reference/bycat/policies-cognitive-services.md)]
 
-## <a name="compute"></a>Výpočetní prostředky
+## <a name="compute"></a>Compute
 
 [!INCLUDE [azure-policy-reference-policies-compute](../../../../includes/policy/reference/bycat/policies-compute.md)]
 
@@ -133,7 +137,11 @@ Název každého z vestavěných odkazů na definici zásady v Azure Portal. Pom
 
 [!INCLUDE [azure-policy-reference-policies-network](../../../../includes/policy/reference/bycat/policies-network.md)]
 
-## <a name="search"></a>Search
+## <a name="portal"></a>Portál
+
+[!INCLUDE [azure-policy-reference-policies-portal](../../../../includes/policy/reference/bycat/policies-portal.md)]
+
+## <a name="search"></a>Hledat
 
 [!INCLUDE [azure-policy-reference-policies-search](../../../../includes/policy/reference/bycat/policies-search.md)]
 
@@ -164,6 +172,10 @@ Název každého z vestavěných odkazů na definici zásady v Azure Portal. Pom
 ## <a name="stream-analytics"></a>Stream Analytics
 
 [!INCLUDE [azure-policy-reference-policies-stream-analytics](../../../../includes/policy/reference/bycat/policies-stream-analytics.md)]
+
+## <a name="synapse"></a>Synapse
+
+[!INCLUDE [azure-policy-reference-policies-synapse](../../../../includes/policy/reference/bycat/policies-synapse.md)]
 
 ## <a name="tags"></a>Značky
 

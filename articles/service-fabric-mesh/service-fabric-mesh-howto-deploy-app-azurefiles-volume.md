@@ -7,11 +7,11 @@ ms.date: 11/21/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter , devx-track-azurecli
 ms.openlocfilehash: 00addbe992bc113c67df08f73414107d51b3bce5
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748200"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007388"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Připojení svazku založeného na souborech Azure v aplikaci Service Fabric sítě 
 
@@ -19,7 +19,7 @@ Tento článek popisuje, jak připojit svazek založený na souborech Azure ve s
 
 Pokud chcete připojit svazek ve službě, vytvořte v aplikaci Service Fabric sítě prostředek svazku a pak na tento svazek odkázat v rámci služby.  Deklarace prostředku svazku a odkazování na něj v prostředku služby se dá provést buď v [souborech prostředků založených na YAML](#declare-a-volume-resource-and-update-the-service-resource-yaml) , nebo v [šabloně nasazení založené na JSON](#declare-a-volume-resource-and-update-the-service-resource-json). Před připojením svazku nejdřív vytvořte účet úložiště Azure a [sdílenou složku ve službě soubory Azure](../storage/files/storage-how-to-create-file-share.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 > [!NOTE]
 > **Známý problém s nasazením na vývojovém počítači s Windows RS5:** K dispozici je otevřená chyba rutiny PowerShellu New-SmbGlobalMapping na počítačích s RS5 Windows, které brání připojení svazků Azurefile. Níže je uvedená ukázková chyba, ke které došlo při připojení svazku založeného na AzureFile do místního vývojového počítače.
 ```
@@ -76,8 +76,8 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 
 Tyto hodnoty můžete najít také v [Azure Portal](https://portal.azure.com):
 * `<storageAccountName>` – V části **účty úložiště** se jedná o název účtu úložiště použitého k vytvoření sdílené složky.
-* `<storageAccountKey>` – Vyberte svůj účet úložiště v části **účty úložiště** a pak vyberte **přístupové klíče** a použijte hodnotu pod **klíč1** .
-* `<fileShareName>` – V části  **účty úložiště** vyberte svůj účet úložiště a pak vyberte **soubory** . Název, který se má použít, je název sdílené složky, kterou jste vytvořili.
+* `<storageAccountKey>` – Vyberte svůj účet úložiště v části **účty úložiště** a pak vyberte **přístupové klíče** a použijte hodnotu pod **klíč1**.
+* `<fileShareName>` – V části  **účty úložiště** vyberte svůj účet úložiště a pak vyberte **soubory**. Název, který se má použít, je název sdílené složky, kterou jste vytvořili.
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>Deklarace prostředku svazku a aktualizace prostředku služby (JSON)
 

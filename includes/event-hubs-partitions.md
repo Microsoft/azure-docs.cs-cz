@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 05/22/2019
+ms.date: 11/19/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: cbd2d3b46ec339328e0d0889a722d39070104953
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 48cc6b84fe88676a03d1bb6e0a8154c16e3ef618
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92346917"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007426"
 ---
 Služba Event Hubs poskytuje datový proud zpráv pomocí schématu rozdělujícího datový proud na oddíly pro jednotlivé příjemce. To zajišťuje, aby každý příjemce četl jenom konkrétní podmnožinu nebo oddíl datového proudu zpráv. Toto schéma umožňuje vodorovné škálování zpracování událostí a poskytuje další funkce zaměřené na datový proud, které nejsou ve frontách a tématech k dispozici.
 
@@ -25,7 +25,7 @@ Event Hubs uchovává data pro nakonfigurovanou dobu uchování, která se vztah
 
 ![Event Hubs](./media/event-hubs-partitions/multiple-partitions.png)
 
-Počet oddílů je určený při vytvoření a musí být v rozsahu 2 až 32. Počet oddílů není možné měnit. Proto je při nastavování počtu oddílů potřeba uvažovat z dlouhodobého hlediska. Oddíly slouží jako mechanismus pro organizaci dat a souvisí se stupněm paralelismu příjmu dat, který vyžadují přijímací aplikace. Počet oddílů v centru událostí přímo souvisí s počtem souběžných čtenářů, které plánujete mít. Pokud chcete použít vyšší počet oddílů než 32, kontaktujte tým služby Event Hubs.
+Počet oddílů se zadává při vytváření a musí být v rozmezí od 1 do 32. Počet oddílů není možné měnit. Proto je při nastavování počtu oddílů potřeba uvažovat z dlouhodobého hlediska. Oddíly slouží jako mechanismus pro organizaci dat a souvisí se stupněm paralelismu příjmu dat, který vyžadují přijímací aplikace. Počet oddílů v centru událostí přímo souvisí s počtem souběžných čtenářů, které plánujete mít. Pokud chcete použít vyšší počet oddílů než 32, kontaktujte tým služby Event Hubs.
 
 Možná budete chtít nastavit, aby byla nejvyšší možná hodnota, která je v době vytváření 32. Pamatujte, že pokud bude mít více než jeden oddíl, budou události odesílány do několika oddílů bez zachování pořadí, pokud nenastavíte odesílatele tak, aby odesílali pouze jeden oddíl z 32 ponechání zbývajících 31 oddílů redundantní. V bývalém případě budete muset číst události ve všech oddílech 32. V druhém případě se od dodatečné konfigurace neúčtují žádné zjevné náklady, které musíte udělat na hostiteli procesoru událostí.
 
