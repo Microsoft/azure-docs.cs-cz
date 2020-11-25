@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: b0574c41042e172af78365bb273c81729ce204ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b872340c50c800ebe4d4d6c7ca56b3b327bf162
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88749314"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95972639"
 ---
 # <a name="speech-service-supported-regions"></a>Oblasti podporované službou Speech
 
@@ -27,7 +27,7 @@ Portál pro rozpoznávání řeči pro vlastní konfigurace prostředí Speech p
 Při zvažování oblastí Pamatujte na tyto body:
 
 * Pokud vaše aplikace používá [sadu Speech SDK](speech-sdk.md), při vytváření konfigurace řeči zadáte identifikátor oblasti, například `westus` .
-* Pokud vaše aplikace používá jedno z [rozhraní REST API](rest-apis.md)služby pro rozpoznávání řeči, je tato oblast součástí identifikátoru URI koncového bodu, který používáte při provádění požadavků.
+* Pokud vaše aplikace používá jedno z [rozhraní REST API](./overview.md#reference-docs)služby pro rozpoznávání řeči, je tato oblast součástí identifikátoru URI koncového bodu, který používáte při provádění požadavků.
 * Klíče vytvořené pro oblast jsou platné pouze v této oblasti. Při pokusu o jejich použití s ostatními oblastmi dojde k chybám ověřování.
 
 ## <a name="speech-sdk"></a>Speech SDK
@@ -38,7 +38,7 @@ V [sadě Speech SDK](speech-sdk.md)jsou oblasti určeny jako řetězec (napřík
 
 Portál pro přizpůsobení řeči je k dispozici zde: https://speech.microsoft.com
 
-Služba Speech je v těchto oblastech dostupná pro **rozpoznávání řeči**, převod **textu na řeč**a **překlady**:
+Služba Speech je v těchto oblastech dostupná pro **rozpoznávání řeči**, převod **textu na řeč** a **překlady**:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
@@ -63,7 +63,7 @@ Dostupné oblasti pro **rozpoznávání záměrů** prostřednictvím sady Speec
 | Severní Amerika | Západní USA 2        | `westus2`            |
 | Jižní Amerika | Brazil South     | `brazilsouth`        |
 
-Toto je podmnožina oblastí publikování, které podporuje [služba Language Understanding (Luis)](/azure/cognitive-services/luis/luis-reference-regions).
+Toto je podmnožina oblastí publikování, které podporuje [služba Language Understanding (Luis)](../luis/luis-reference-regions.md).
 
 ### <a name="voice-assistants"></a>Hlasoví asistenti
 

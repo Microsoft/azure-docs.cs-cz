@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: a1de313245e826511a7e9c864165ac44bcb48530
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 650ce0cc9586118b30593767c6a3ddb92f494ac3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80234235"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972640"
 ---
 ### <a name="standard-and-neural-voices"></a>Hlasy Standard a neuronové
 
@@ -37,6 +37,9 @@ Pomocí této tabulky můžete určit dostupnost standardních a neuronové hlas
 | West Europe | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | Yes |
 | USA – západ | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | No |
 | Západní USA 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | Yes |
+
+> [!TIP]
+> [Hlasy ve verzi Preview](../articles/cognitive-services/Speech-Service/language-support.md#neural-voices-in-preview) jsou dostupné jenom v těchto třech oblastech: Východní USA, západní Evropa a jihovýchodní Asie.
 
 ### <a name="custom-voices"></a>Vlastní hlasy
 

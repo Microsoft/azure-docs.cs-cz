@@ -2,14 +2,14 @@
 title: Označení prostředků, skupin prostředků a předplatných pro logickou organizaci
 description: Ukazuje, jak použít značky k uspořádání prostředků Azure k fakturaci a správě.
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 11/20/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3ffcb4a0f2f5dc64b165fcdec03f7c3ced258cc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e9ef96a712e5ac2ba483170fb8ef9c89115b4f8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90086755"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95972554"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Použití značek k uspořádání prostředků Azure a hierarchie správy
 
@@ -240,107 +240,200 @@ Remove-AzTag -ResourceId "/subscriptions/$subscription"
 
 ### <a name="apply-tags"></a>Použít značky
 
-Při přidávání značek do skupiny prostředků nebo prostředku můžete buď přepsat existující značky, nebo připojit nové značky k existujícím značkám.
+Azure CLI nabízí dva příkazy pro použití značek – [AZ tag Create](/cli/azure/tag#az_tag_create) a [AZ tag Update](/cli/azure/tag#az_tag_update). Musíte mít Azure CLI 2.10.0 nebo novější. Verzi můžete ověřit pomocí `az version` . Informace o aktualizaci nebo instalaci najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
-Chcete-li přepsat značky na prostředku, použijte:
+Příkaz **AZ tag Create** nahradí všechny značky u prostředku, skupiny prostředků nebo předplatného. Při volání příkazu předejte ID prostředku entity, kterou chcete označit.
 
-```azurecli-interactive
-az resource tag --tags 'Dept=IT' 'Environment=Test' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
-```
-
-Chcete-li připojit značku k existujícím značkám na prostředku, použijte:
+V následujícím příkladu se aplikuje sada značek na účet úložiště:
 
 ```azurecli-interactive
-az resource update --set tags.'Status'='Approved' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
+resource=$(az resource show -g demoGroup -n demoStorage --resource-type Microsoft.Storage/storageAccounts --query "id" --output tsv)
+az tag create --resource-id $resource --tags Dept=Finance Status=Normal
 ```
 
-Pokud chcete přepsat existující značky ve skupině prostředků, použijte:
+Po dokončení příkazu si všimněte, že prostředek obsahuje dvě značky.
+
+```output
+"properties": {
+  "tags": {
+    "Dept": "Finance",
+    "Status": "Normal"
+  }
+},
+```
+
+Pokud znovu spustíte příkaz, ale tentokrát s různými značkami, Všimněte si, že se předchozí značky odebraly.
 
 ```azurecli-interactive
-az group update -n examplegroup --tags 'Environment=Test' 'Dept=IT'
+az tag create --resource-id $resource --tags Team=Compliance Environment=Production
 ```
 
-Pokud chcete přidat značku k existujícím značkám ve skupině prostředků, použijte:
+```output
+"properties": {
+  "tags": {
+    "Environment": "Production",
+    "Team": "Compliance"
+  }
+},
+```
+
+Chcete-li přidat značky k prostředku, který již obsahuje značky, použijte příkaz **AZ tag Update**. Nastavte parametr **--Operation** , který se má **Sloučit**.
 
 ```azurecli-interactive
-az group update -n examplegroup --set tags.'Status'='Approved'
+az tag update --resource-id $resource --operation Merge --tags Dept=Finance Status=Normal
 ```
 
-V současné době Azure CLI nemá příkaz pro použití značek na předplatná. Pomocí rozhraní příkazového řádku (CLI) ale můžete nasadit šablonu ARM, která tyto značky aplikuje na předplatné. Viz [použití značek pro skupiny prostředků nebo odběry](#apply-tags-to-resource-groups-or-subscriptions).
+Všimněte si, že dvě nové značky byly přidány do dvou existujících značek.
+
+```output
+"properties": {
+  "tags": {
+    "Dept": "Finance",
+    "Environment": "Production",
+    "Status": "Normal",
+    "Team": "Compliance"
+  }
+},
+```
+
+Každý název značky může mít pouze jednu hodnotu. Pokud zadáte novou hodnotu pro značku, stará hodnota je nahrazena i v případě, že použijete operaci sloučení. Následující příklad změní značku stavu z normálního na zelenou.
+
+```azurecli-interactive
+az tag update --resource-id $resource --operation Merge --tags Status=Green
+```
+
+```output
+"properties": {
+  "tags": {
+    "Dept": "Finance",
+    "Environment": "Production",
+    "Status": "Green",
+    "Team": "Compliance"
+  }
+},
+```
+
+Když nastavíte parametr **--Operation** **, který má být nahrazen**, existující značky budou nahrazeny novou sadou značek.
+
+```azurecli-interactive
+az tag update --resource-id $resource --operation Replace --tags Project=ECommerce CostCenter=00123 Team=Web
+```
+
+V prostředku zůstanou jenom nové značky.
+
+```output
+"properties": {
+  "tags": {
+    "CostCenter": "00123",
+    "Project": "ECommerce",
+    "Team": "Web"
+  }
+},
+```
+
+Stejné příkazy také fungují se skupinami prostředků nebo předplatnými. Předáte identifikátor skupiny prostředků nebo předplatného, které chcete označit.
+
+Pokud chcete do skupiny prostředků přidat novou sadu značek, použijte:
+
+```azurecli-interactive
+group=$(az group show -n demoGroup --query id --output tsv)
+az tag create --resource-id $group --tags Dept=Finance Status=Normal
+```
+
+Chcete-li aktualizovat značky pro skupinu prostředků, použijte:
+
+```azurecli-interactive
+az tag update --resource-id $group --operation Merge --tags CostCenter=00123 Environment=Production
+```
+
+Pokud chcete přidat novou sadu značek k předplatnému, použijte:
+
+```azurecli-interactive
+sub=$(az account show --subscription "Demo Subscription" --query id --output tsv)
+az tag create --resource-id /subscriptions/$sub --tags CostCenter=00123 Environment=Dev
+```
+
+Pokud chcete aktualizovat značky pro předplatné, použijte:
+
+```azurecli-interactive
+az tag update --resource-id /subscriptions/$sub --operation Merge --tags Team="Web Apps"
+```
 
 ### <a name="list-tags"></a>Výpis značek
 
-Pokud chcete zobrazit existující značky pro prostředek, použijte:
+Chcete-li získat značky prostředku, skupiny prostředků nebo předplatného, použijte příkaz [AZ tag list](/cli/azure/tag#az_tag_list) a předejte mu ID prostředku pro entitu.
+
+Chcete-li zobrazit značky pro prostředek, použijte:
 
 ```azurecli-interactive
-az resource show -n examplevnet -g examplegroup --resource-type "Microsoft.Network/virtualNetworks" --query tags
+resource=$(az resource show -g demoGroup -n demoStorage --resource-type Microsoft.Storage/storageAccounts --query "id" --output tsv)
+az tag list --resource-id $resource
 ```
 
-Pokud chcete zobrazit existující značky pro skupinu prostředků, použijte:
+Pokud chcete zobrazit značky pro skupinu prostředků, použijte:
 
 ```azurecli-interactive
-az group show -n examplegroup --query tags
+group=$(az group show -n demoGroup --query id --output tsv)
+az tag list --resource-id $group
 ```
 
-Výstup tohoto skriptu bude v následujícím formátu:
+Pokud chcete zobrazit značky pro předplatné, použijte:
 
-```json
-{
-  "Dept"        : "IT",
-  "Environment" : "Test"
-}
+```azurecli-interactive
+sub=$(az account show --subscription "Demo Subscription" --query id --output tsv)
+az tag list --resource-id /subscriptions/$sub
 ```
 
 ### <a name="list-by-tag"></a>Seznam podle značky
 
-Chcete-li získat všechny prostředky, které mají určitou značku a hodnotu, použijte `az resource list` :
+Chcete-li získat prostředky, které mají konkrétní název a hodnotu značky, použijte:
 
 ```azurecli-interactive
-az resource list --tag Dept=Finance
+az resource list --tag CostCenter=00123 --query [].name
 ```
 
-Chcete-li získat skupiny prostředků s konkrétní značkou, použijte `az group list` :
+Chcete-li získat prostředky, které mají konkrétní název značky s libovolnou hodnotou značky, použijte:
 
 ```azurecli-interactive
-az group list --tag Dept=IT
+az resource list --tag Team --query [].name
+```
+
+Chcete-li získat skupiny prostředků, které mají konkrétní název a hodnotu značky, použijte:
+
+```azurecli-interactive
+az group list --tag Dept=Finance
+```
+
+### <a name="remove-tags"></a>Odebrat značky
+
+Pokud chcete odebrat konkrétní značky, použijte příkaz **AZ tag Update** a set **--operatione** **Delete**. Předejte značky, které chcete odstranit.
+
+```azurecli-interactive
+az tag update --resource-id $resource --operation Delete --tags Project=ECommerce Team=Web
+```
+
+Zadané značky jsou odebrány.
+
+```output
+"properties": {
+  "tags": {
+    "CostCenter": "00123"
+  }
+},
+```
+
+Chcete-li odebrat všechny značky, použijte příkaz [AZ tag Delete](/cli/azure/tag#az_tag_delete) .
+
+```azurecli-interactive
+az tag delete --resource-id $resource
 ```
 
 ### <a name="handling-spaces"></a>Prostory pro zpracování
 
-Pokud názvy nebo hodnoty značek obsahují mezery, je nutné provést několik dalších kroků. 
-
-`--tags`Parametry v rozhraní příkazového řádku Azure CLI můžou přijmout řetězec, který se skládá z pole řetězců. Následující příklad přepíše značky ve skupině prostředků, kde obsahují značky mezery a spojovník: 
+Pokud názvy nebo hodnoty značek obsahují mezery, uzavřete je do dvojitých uvozovek.
 
 ```azurecli-interactive
-TAGS=("Cost Center=Finance-1222" "Location=West US")
-az group update --name examplegroup --tags "${TAGS[@]}"
-```
-
-Stejnou syntaxi můžete použít při vytváření nebo aktualizaci skupiny prostředků nebo prostředků pomocí `--tags` parametru.
-
-Chcete-li aktualizovat značky pomocí `--set` parametru, je nutné předat klíč a hodnotu jako řetězec. Následující příklad připojí jednu značku ke skupině prostředků:
-
-```azurecli-interactive
-TAG="Cost Center='Account-56'"
-az group update --name examplegroup --set tags."$TAG"
-```
-
-V tomto případě je hodnota značky označená jednoduchými uvozovkami, protože hodnota má spojovník.
-
-Je také možné, že budete muset použít Tagy na mnoho prostředků. Následující příklad aplikuje všechny značky ze skupiny prostředků na příslušné prostředky, když značky můžou obsahovat mezery:
-
-```azurecli-interactive
-jsontags=$(az group show --name examplegroup --query tags -o json)
-tags=$(echo $jsontags | tr -d '{}"' | sed 's/: /=/g' | sed "s/\"/'/g" | sed 's/, /,/g' | sed 's/ *$//g' | sed 's/^ *//g')
-origIFS=$IFS
-IFS=','
-read -a tagarr <<< "$tags"
-resourceids=$(az resource list -g examplegroup --query [].id --output tsv)
-for id in $resourceids
-do
-  az resource tag --tags "${tagarr[@]}" --id $id
-done
-IFS=$origIFS
+az tag update --resource-id $group --operation Merge --tags "Cost Center"=Finance-1222 Location="West US"
 ```
 
 ## <a name="templates"></a>Šablony

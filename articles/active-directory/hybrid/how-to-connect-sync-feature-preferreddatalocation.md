@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4c456e7788280b7ca5328342e1cd848ba3a583a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411129"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972755"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect synchronizace: konfigurace upřednostňovaného umístění dat pro prostředky Microsoft 365
 Účelem tohoto tématu je projít si, jak nakonfigurovat atribut pro preferované umístění dat v Azure Active Directory (Azure AD) Connect Sync. Pokud někdo používá v Microsoft 365 více geografických možností, použijte tento atribut k určení geografického umístění dat Microsoft 365 uživatele. ( *Oblast* podmínek a *geografické* použití jsou zaměnitelné.)
@@ -43,18 +43,18 @@ Zeměpisných oblastech v Microsoft 365 k dispozici pro více geografických um�
 | Geografická oblast | hodnota preferredDataLocation |
 | --- | --- |
 | Asie a Tichomoří | KONTAKTOVAT |
-| Australia | STŘEDNÍ |
-| Canada | NEMŮŽE |
+| Austrálie | STŘEDNÍ |
+| Kanada | NEMŮŽE |
 | Evropská unie | EUR |
 | Francie | FRA |
-| India | IND |
-| Japan | JPN |
+| Indie | IND |
+| Japonsko | JPN |
 | Jižní Korea | KOR |
 | Jižní Afrika | ZAF |
 | Švýcarsko | CYRILICE |
 | Spojené arabské emiráty | JSOU |
 | Spojené království | GBR |
-| Česká republika | NAM |
+| USA | NAM |
 
 * Pokud geografická oblast není uvedená v této tabulce (například Jižní Amerika), nedá se použít pro více geografických oblastí.
 
@@ -70,7 +70,7 @@ Azure AD Connect podporuje synchronizaci atributu **preferredDataLocation** pro 
 Ve výchozím nastavení není **preferredDataLocation** povolená synchronizace. Tato funkce je určená pro větší organizace. Schéma služby Active Directory ve Windows serveru 2019 má atribut **msDS-preferredDataLocation** , který byste měli použít k tomuto účelu. Pokud jste schéma služby Active Directory neaktualizovali a nemůžete tak učinit, je nutné určit atribut, který bude pro uživatele uchovávat Microsoft 365 geograficky. To se pro každou organizaci liší.
 
 > [!IMPORTANT]
-> Azure AD umožňuje, aby byl atribut **preferredDataLocation** u **uživatelských objektů cloudového uživatele** přímo nakonfigurovaný pomocí Azure AD PowerShellu. Chcete-li nakonfigurovat tento atribut u **synchronizovaných uživatelských objektů** , je nutné použít Azure AD Connect.
+> Azure AD umožňuje, aby byl atribut **preferredDataLocation** u **uživatelských objektů cloudového uživatele** přímo nakonfigurovaný pomocí Azure AD PowerShellu. Chcete-li nakonfigurovat tento atribut u **synchronizovaných uživatelských objektů**, je nutné použít Azure AD Connect.
 
 Než povolíte synchronizaci:
 
@@ -143,10 +143,10 @@ Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přechá
     | Atribut | Hodnota | Podrobnosti |
     | --- | --- | --- |
     | Name | *Zadat název* | Například "in from AD – User preferredDataLocation" |
-    | Popis | *Zadejte vlastní popis.* |  |
+    | Description | *Zadejte vlastní popis.* |  |
     | Připojený systém | *Výběr místního konektoru služby Active Directory* |  |
     | Typ připojeného systémového objektu | **Uživatel** |  |
-    | Typ objektu úložiště metaverse | **Osoba** |  |
+    | Typ objektu úložiště metaverse | **Person (Osoba)** |  |
     | Typ odkazu | **Join** (Spojení) |  |
     | Priorita | *Vyberte číslo v rozmezí 1 až 99.* | 1 – 99 je vyhrazeno pro vlastní pravidla synchronizace. Nevybírejte hodnotu, kterou používá jiné synchronizační pravidlo. |
 
@@ -172,10 +172,10 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
     | Atribut | Hodnota | Podrobnosti |
     | ----- | ------ | --- |
     | Name | *Zadat název* | Například "odchozí do Azure AD – User preferredDataLocation" |
-    | Popis | *Zadejte popis.* ||
+    | Description | *Zadejte popis.* ||
     | Připojený systém | *Vyberte konektor Azure AD.* ||
     | Typ připojeného systémového objektu | **Uživatel** ||
-    | Typ objektu úložiště metaverse | **Osoba** ||
+    | Typ objektu úložiště metaverse | **Person (Osoba)** ||
     | Typ odkazu | **Join** (Spojení) ||
     | Priorita | *Vyberte číslo v rozmezí 1 až 99.* | 1 – 99 je vyhrazeno pro vlastní pravidla synchronizace. Nevybírejte hodnotu, kterou používá jiné synchronizační pravidlo. |
 

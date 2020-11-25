@@ -10,11 +10,11 @@ ms.date: 01/22/2019
 ms.author: chrande
 ms.custom: devx-track-python
 ms.openlocfilehash: 91b04b05b810b2b0fc221943a73e81c49f7119dc
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360186"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972418"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Rychlý Start: vytvoření databáze grafů v Azure Cosmos DB pomocí Pythonu a Azure Portal
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -75,7 +75,7 @@ Teď přejděme k práci s kódem. Pojďme naklonovat aplikaci rozhraní Gremlin
 
 Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Všechny fragmenty kódu jsou pořízeny ze souboru *Connect.py* ve *složce \\ C:\git-samples\azure-Cosmos-DB-Graph-Python-Getting-Started* . Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-information). 
 
-* Gremlin `client` je inicializován v řádku 104 v *Connect.py* :
+* Gremlin `client` je inicializován v řádku 104 v *Connect.py*:
 
     ```python
     ...
@@ -171,7 +171,7 @@ Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkop�
 
 Po vložení vrcholů a hran se teď můžete vrátit na Průzkumník dat a zobrazit vrcholy přidané do grafu a přidat další datové body.
 
-1. V Azure Cosmos DB účtu v Azure Portal vyberte možnost **Průzkumník dat** , rozbalte položku **Ukázka-graf** , vyberte možnost **graf** a pak vyberte možnost **použít filtr**. 
+1. V Azure Cosmos DB účtu v Azure Portal vyberte možnost **Průzkumník dat**, rozbalte položku **Ukázka-graf**, vyberte možnost **graf** a pak vyberte možnost **použít filtr**. 
 
    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png" alt-text="Snímek obrazovky s možností použít filtr zobrazuje graf vybraný od A P I.":::
 

@@ -14,11 +14,11 @@ ms.date: 03/16/2018
 ms.author: duau
 ms.custom: ''
 ms.openlocfilehash: 8606e89a40e9cfd2c0f55df2c65532928c0d11f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401295"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972585"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Odeslání Měření reálných uživatelů do Azure Traffic Manager pomocí webových stránek
 
@@ -31,7 +31,7 @@ Měření, která provedete a odešlete Traffic Manager z klientské aplikace, j
 Získání klíče rumu pomocí Azure Portal:
 1. V prohlížeči se přihlaste k webu Azure Portal. Pokud ještě účet nemáte, můžete si zaregistrovat zkušební verzi na měsíc zdarma.
 2. Na panelu hledání na portálu vyhledejte název profilu služby Traffic Manager, který chcete upravit, a pak na tento profil služby Traffic Manager klikněte v zobrazených výsledcích.
-3. V okně profil Traffic Manager klikněte v části **Nastavení**na **měření reálných uživatelů** .
+3. V okně profil Traffic Manager klikněte v části **Nastavení** na **měření reálných uživatelů** .
 4. Klikněte na **vygenerovat klíč** a vytvořte nový klíč rumu.
  
    ![Generovat klíč Měření reálných uživatelů](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
