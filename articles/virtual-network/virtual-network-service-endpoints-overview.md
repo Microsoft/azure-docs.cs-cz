@@ -14,17 +14,17 @@ ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
 ms.openlocfilehash: 7d937542201792c0d1c0be69df9bd1c2b34edea3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89434465"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004938"
 ---
 # <a name="virtual-network-service-endpoints"></a>Koncové body služby pro virtuální síť
 
 Koncový bod služby Virtual Network (VNet) poskytuje zabezpečené a přímé připojení ke službám Azure přes optimalizovanou trasu přes páteřní síť Azure. Koncové body umožňují svázat vaše důležité prostředky služeb Azure pouze s vašimi virtuálními sítěmi. Koncové body služby umožňují privátním IP adresám ve virtuální síti dosáhnout koncového bodu služby Azure bez nutnosti veřejné IP adresy ve virtuální síti.
 
-Tato funkce je k dispozici pro následující služby a oblasti Azure. *Microsoft. \* * Resource je v závorkách. Povolit tento prostředek ze strany podsítě při konfiguraci koncových bodů služby pro vaši službu:
+Tato funkce je k dispozici pro následující služby a oblasti Azure. *Microsoft. \** Resource je v závorkách. Povolit tento prostředek ze strany podsítě při konfiguraci koncových bodů služby pro vaši službu:
 
 **Obecná dostupnost**
 
@@ -77,7 +77,7 @@ Koncové body služby poskytují následující výhody:
 
   Ve výchozím nastavení nejsou prostředky služeb Azure zabezpečené pro virtuální sítě dosažitelné z místních sítí. Pokud chcete povolený provoz z místního prostředí, musíte taky z místního nebo ExpressRoute povolených IP adres veřejných (obvykle NAT). Tyto IP adresy můžete přidat prostřednictvím konfigurace brány firewall protokolu IP pro prostředky služeb Azure.
 
-  ExpressRoute: Pokud používáte [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro veřejné partnerské vztahy nebo partnerské vztahy Microsoftu z vašich místních prostředí, budete muset identifikovat IP adresy NAT, které používáte. U veřejných partnerských vztahů každý okruh ExpressRoute používá ve výchozím nastavení dvě IP adresy překladu adres (NAT), které se ve výchozím nastavení použijí na provoz služeb Azure, když přenos vstoupí do sítě Microsoft Azure páteřní sítě. U partnerského vztahu Microsoftu jsou IP adresy NAT buď poskytnuté zákazníkem, nebo poskytované poskytovatelem služeb.Pokud chcete povolit přístup k prostředkům služby, musíte tyto veřejné IP adresy povolit v nastavení IP adresy brány firewall prostředku.Pokud chcete zjistit IP adresy veřejného partnerského okruhu ExpressRoute, [otevřete lístek podpory pro ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) na webu Azure Portal. Další informace o překladu adres (NAT) pro veřejný partnerský vztah ExpressRoute a partnerského vztahu Microsoftu najdete v článku [požadavky na EXPRESSROUTE NAT](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering).
+  ExpressRoute: Pokud používáte [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro veřejné partnerské vztahy nebo partnerské vztahy Microsoftu z vašich místních prostředí, budete muset identifikovat IP adresy NAT, které používáte. U veřejných partnerských vztahů každý okruh ExpressRoute používá ve výchozím nastavení dvě IP adresy překladu adres (NAT), které se ve výchozím nastavení použijí na provoz služeb Azure, když přenos vstoupí do sítě Microsoft Azure páteřní sítě. U partnerského vztahu Microsoftu jsou IP adresy NAT buď poskytnuté zákazníkem, nebo poskytované poskytovatelem služeb. Pokud chcete povolit přístup k prostředkům služby, musíte tyto veřejné IP adresy povolit v nastavení IP adresy brány firewall prostředku. Pokud chcete zjistit IP adresy veřejného partnerského okruhu ExpressRoute, [otevřete lístek podpory pro ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) na webu Azure Portal. Další informace o překladu adres (NAT) pro veřejný partnerský vztah ExpressRoute a partnerského vztahu Microsoftu najdete v článku [požadavky na EXPRESSROUTE NAT](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering).
 
 ![Svázání služeb Azure s virtuálními sítěmi](./media/virtual-network-service-endpoints-overview/VNet_Service_Endpoints_Overview.png)
 
@@ -89,7 +89,7 @@ Koncové body služby poskytují následující výhody:
 - Virtuální síť, ve které je koncový bod nakonfigurovaný, může být ve stejném předplatném jako prostředek služby Azure nebo v jiném předplatném. Další informace o oprávněních požadovaných pro nastavení koncových bodů a zabezpečení služeb Azure najdete v části [Zřizování](#provisioning).
 - U podporovaných služeb můžete pomocí koncových bodů služby svázat s virtuálními sítěmi nové nebo existující prostředky.
 
-### <a name="considerations"></a>Důležité informace
+### <a name="considerations"></a>Požadavky
 
 - Po povolení koncového bodu služby se zdrojová IP adresa přepne z použití veřejných IPv4 adres na používání jejich privátní IPv4 adresy při komunikaci se službou z této podsítě. Během tohoto přepnutí se ukončí všechna existující otevřená připojení TCP ke službě. Při povolování nebo zakazování koncového bodu služby pro podsíť se ujistěte, že nejsou spuštěné žádné důležité úlohy. Také se ujistěte, že se vaše aplikace můžou po přepnutí IP adres automaticky připojit ke službám Azure.
 

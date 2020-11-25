@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 85577a428f803e31aa33468496d7efca77933835
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 1b568687ffe646a91544c1bb75d26d552a23f49c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579307"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96005278"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>Optimalizujte náklady díky automatizaci úrovní přístupu Azure Blob Storage.
 
@@ -39,7 +39,7 @@ Vezměte v úvahu scénář, kdy data budou často přístupná v počátečníc
 
 Funkce správy životního cyklu je dostupná ve všech oblastech Azure pro účty Pro obecné účely v2 (GPv2), účty BLOB Storage, účty úložiště objektů blob bloku Premium a účty Azure Data Lake Storage Gen2. V Azure Portal můžete upgradovat existující účet Pro obecné účely (GPv1) na účet GPv2. Další informace o účtech úložiště najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
 
-Funkce správy životního cyklu je bezplatná. Zákazníkům se účtují běžné provozní náklady za volání rozhraní API [vrstvy objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) . Operace odstranění je zadarmo. Další informace o cenách najdete v tématu [ceny za objekty blob bloku](https://azure.microsoft.com/pricing/details/storage/blobs/).
+Funkce správy životního cyklu je bezplatná. Zákazníkům se účtují běžné provozní náklady za volání rozhraní API [vrstvy objektů BLOB](/rest/api/storageservices/set-blob-tier) . Operace odstranění je zadarmo. Další informace o cenách najdete v tématu [ceny za objekty blob bloku](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="add-or-remove-a-policy"></a>Přidat nebo odebrat zásadu
 
@@ -47,13 +47,13 @@ Zásadu můžete přidat, upravit nebo odebrat pomocí kterékoli z následujíc
 
 * [Azure Portal](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
-* [REST API](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
+* [Azure CLI](/cli/azure/install-azure-cli)
+* [REST API](/rest/api/storagerp/managementpolicies)
 
 Zásady je možné číst nebo zapisovat v plném rozsahu. Částečné aktualizace nejsou podporovány. 
 
 > [!NOTE]
-> Pokud pro svůj účet úložiště povolíte pravidla brány firewall, můžou být požadavky správy životního cyklu blokované. Tyto požadavky můžete odblokovat poskytováním výjimek pro důvěryhodné služby společnosti Microsoft. Další informace najdete v části výjimky v tématu [Konfigurace bran firewall a virtuálních sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
+> Pokud pro svůj účet úložiště povolíte pravidla brány firewall, můžou být požadavky správy životního cyklu blokované. Tyto požadavky můžete odblokovat poskytováním výjimek pro důvěryhodné služby společnosti Microsoft. Další informace najdete v části výjimky v tématu [Konfigurace bran firewall a virtuálních sítí](../common/storage-network-security.md#exceptions).
 
 Tento článek popisuje, jak spravovat zásady pomocí portálu a metod PowerShellu.
 
@@ -74,7 +74,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
 
 1. Vyberte kartu **zobrazení seznamu** .
 
-1. Vyberte **Přidat pravidlo** a pojmenujte pravidlo na formuláři **podrobností** . Můžete také nastavit **Rozsah pravidla** , **typ objektu BLOB** a hodnoty **podtypu objektu BLOB** . Následující příklad nastaví obor pro filtrování objektů BLOB. Tím dojde k přidání karty **Sada filtrů** .
+1. Vyberte **Přidat pravidlo** a pojmenujte pravidlo na formuláři **podrobností** . Můžete také nastavit **Rozsah pravidla**, **typ objektu BLOB** a hodnoty **podtypu objektu BLOB** . Následující příklad nastaví obor pro filtrování objektů BLOB. Tím dojde k přidání karty **Sada filtrů** .
 
    :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-details.png" alt-text="Správa životního cyklu přidat stránku podrobností pravidla v Azure Portal":::
 
@@ -318,11 +318,11 @@ Filtry zahrnují:
 | Název filtru | Typ filtru | Poznámky | Je povinné |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Pole předdefinovaných hodnot výčtu. | Aktuální verze podporuje `blockBlob` a `appendBlob` . Pro se podporuje jenom odstranění `appendBlob` , nastavení úrovně se nepodporuje. | Yes |
-| prefixMatch | Pole řetězců, pro které mají být předpony spárovány. Každé pravidlo může definovat až 10 předpon. Řetězec předpony musí začínat názvem kontejneru. Například pokud chcete, aby se všechny objekty blob shodovaly v rámci `https://myaccount.blob.core.windows.net/container1/foo/...` pravidla, prefixMatch je `container1/foo` . | Pokud prefixMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště. | Ne |
-| blobIndexMatch | Pole hodnot slovníku sestávající z klíče značek indexu objektu BLOB a podmínky hodnoty, které mají být porovnány. Každé pravidlo může definovat až 10 stavových značek indexu objektu BLOB. Například pokud chcete, aby se všechny objekty blob shodovaly s `Project = Contoso` v rámci `https://myaccount.blob.core.windows.net/` pro pravidlo, je blobIndexMatch `{"name": "Project","op": "==","value": "Contoso"}` . | Pokud blobIndexMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště. | Ne |
+| prefixMatch | Pole řetězců, pro které mají být předpony spárovány. Každé pravidlo může definovat až 10 předpon. Řetězec předpony musí začínat názvem kontejneru. Například pokud chcete, aby se všechny objekty blob shodovaly v rámci `https://myaccount.blob.core.windows.net/container1/foo/...` pravidla, prefixMatch je `container1/foo` . | Pokud prefixMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště. | No |
+| blobIndexMatch | Pole hodnot slovníku sestávající z klíče značek indexu objektu BLOB a podmínky hodnoty, které mají být porovnány. Každé pravidlo může definovat až 10 stavových značek indexu objektu BLOB. Například pokud chcete, aby se všechny objekty blob shodovaly s `Project = Contoso` v rámci `https://myaccount.blob.core.windows.net/` pro pravidlo, je blobIndexMatch `{"name": "Project","op": "==","value": "Contoso"}` . | Pokud blobIndexMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště. | No |
 
 > [!NOTE]
-> Index objektu BLOB je ve verzi Public Preview a je dostupný v oblasti **Kanada – střed** , Kanada – **východ** , Francie – **střed** a Francie – **jih** . Další informace o této funkci spolu se známými problémy a omezeních najdete v tématu [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
+> Index objektu BLOB je ve verzi Public Preview a je dostupný v oblasti **Kanada – střed**, Kanada – **východ**, Francie – **střed** a Francie – **jih** . Další informace o této funkci spolu se známými problémy a omezeních najdete v tématu [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
 
 ### <a name="rule-actions"></a>Akce pravidla
 
@@ -342,7 +342,7 @@ Správa životního cyklu podporuje vrstvení a mazání objektů blob, předcho
 
 Podmínky spuštění jsou založené na stáří. Základní objekty blob používají čas poslední změny, verze objektů BLOB používají čas vytvoření verze a snímky objektů BLOB používají čas vytvoření snímku ke sledování stáří.
 
-| Podmínka spuštění akce               | Hodnota podmínky                          | Popis                                                                      |
+| Podmínka spuštění akce               | Hodnota podmínky                          | Description                                                                      |
 |------------------------------------|------------------------------------------|----------------------------------------------------------------------------------|
 | daysAfterModificationGreaterThan   | Celočíselná hodnota označující stáří ve dnech | Podmínka pro základní akce objektů BLOB                                              |
 | daysAfterCreationGreaterThan       | Celočíselná hodnota označující stáří ve dnech | Podmínka pro akci snímku verze a objektu BLOB                         |
@@ -450,7 +450,7 @@ Každá aktualizace času posledního přístupu je považována za [jinou opera
 Některá data v cloudu zůstanou nečinná a v případě potřeby jsou po uložení k dispozici zřídka. Následující zásady životního cyklu jsou nakonfigurovány k archivaci dat krátce po ingestování. Tento příklad přechází objekty blob bloku v účtu úložiště v kontejneru `archivecontainer` do archivní úrovně. Přechod se provádí na objektech blob 0 dní od poslední změny:
 
 > [!NOTE] 
-> Doporučujeme nahrát objekty blob přímo do archivní vrstvy, aby byly efektivnější. Můžete použít záhlaví x-MS-Access-úrovně pro [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) nebo [PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list) s REST verze 2018-11-09 a novějšími nebo nejnovějšími klientskými knihovnami pro úložiště objektů BLOB. 
+> Doporučujeme nahrát objekty blob přímo do archivní vrstvy, aby byly efektivnější. Můžete použít záhlaví x-MS-Access-úrovně pro [PutBlob](/rest/api/storageservices/put-blob) nebo [PutBlockList](/rest/api/storageservices/put-block-list) s REST verze 2018-11-09 a novějšími nebo nejnovějšími klientskými knihovnami pro úložiště objektů BLOB. 
 
 ```json
 {
@@ -574,7 +574,7 @@ Pro data, která se upravují a běžně přistupovala během své životnosti, 
 }
 ```
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Vytvořili jsem novou zásadu, proč se akce nespouštějí hned?**
 
@@ -592,7 +592,7 @@ Když se objekt BLOB přesune z jedné úrovně přístupu na jiný, čas posled
 
 Přečtěte si, jak obnovit data po náhodném odstranění:
 
-- [Obnovitelné odstranění objektů blob služby Azure Storage](../blobs/storage-blob-soft-delete.md)
+- [Obnovitelné odstranění objektů blob služby Azure Storage](./soft-delete-blob-overview.md)
 
 Naučte se spravovat a vyhledávat data pomocí indexu objektů BLOB:
 

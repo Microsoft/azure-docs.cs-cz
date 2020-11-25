@@ -10,11 +10,11 @@ ms.date: 10/10/2019
 ms.subservice: tables
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 71b1f3cfa1df86b417c468d56f67cd7fe8d71d73
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316181"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004700"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro úložiště tabulek
 
@@ -243,7 +243,7 @@ Tato část popisuje osvědčené postupy pro dotazování na Table service.
 
 Existuje několik způsobů, jak zadat rozsah entit pro dotaz. Následující seznam popisuje jednotlivé možnosti pro obor dotazů.
 
-- **Dotazy na body:** – dotaz na bod načte přesně jednu entitu zadáním klíče oddílu a klíče řádku entity, která se má načíst. Tyto dotazy jsou efektivní a měli byste je používat všude, kde je to možné.
+- **Dotazy na body:**– dotaz na bod načte přesně jednu entitu zadáním klíče oddílu a klíče řádku entity, která se má načíst. Tyto dotazy jsou efektivní a měli byste je používat všude, kde je to možné.
 - **Dotazy na oddíly:** Dotaz na oddíl je dotaz, který načte sadu dat, která sdílí společný klíč oddílu. Obvykle dotaz určuje rozsah hodnot klíčů řádků nebo rozsah hodnot pro některé vlastnosti entity kromě klíče oddílu. Tyto dotazy jsou méně efektivní než dotazy na body a měly by se používat jenom zřídka.
 - **Dotazy tabulky:** Dotaz na tabulku je dotaz, který načte sadu entit, které nesdílejí společný klíč oddílu. Tyto dotazy nejsou efektivní a je třeba se jim vyhnout, pokud je to možné.
 
@@ -273,10 +273,10 @@ Transakce Batch se označují jako transakce skupin entit v Azure Storage. Všec
 
 #### <a name="upsert"></a>Upsert
 
-Pokud je to možné, používejte **Upsert** operace tabulky. Existují dva typy **Upsert** , z nichž obě můžou být efektivnější než tradiční operace **vkládání** a **aktualizace** :  
+Pokud je to možné, používejte **Upsert** operace tabulky. Existují dva typy **Upsert**, z nichž obě můžou být efektivnější než tradiční operace **vkládání** a **aktualizace** :  
 
-- **InsertOrMerge** : tuto operaci použijte, pokud chcete nahrát podmnožinu vlastností entity, ale nevíte, zda entita již existuje. Pokud entita existuje, toto volání aktualizuje vlastnosti zahrnuté v operaci **Upsert** a ponechá všechny existující vlastnosti tak, jak jsou, pokud entita neexistuje, vloží novou entitu. To se podobá použití projekce v dotazu, v tom, že potřebujete pouze nahrát vlastnosti, které se mění.
-- **InsertOrReplace** : tuto operaci použijte, chcete-li nahrát zcela novou entitu, ale nejste si jisti, zda již existuje. Tuto operaci použijte, pokud víte, že nově nahraná entita je zcela správná, protože zcela přepíše starou entitu. Například chcete aktualizovat entitu, která uchovává aktuální umístění uživatele bez ohledu na to, zda aplikace dříve uložila data o umístění pro daného uživatele. nová entita umístění je dokončena a z žádné předchozí entity nepotřebujete žádné informace.
+- **InsertOrMerge**: tuto operaci použijte, pokud chcete nahrát podmnožinu vlastností entity, ale nevíte, zda entita již existuje. Pokud entita existuje, toto volání aktualizuje vlastnosti zahrnuté v operaci **Upsert** a ponechá všechny existující vlastnosti tak, jak jsou, pokud entita neexistuje, vloží novou entitu. To se podobá použití projekce v dotazu, v tom, že potřebujete pouze nahrát vlastnosti, které se mění.
+- **InsertOrReplace**: tuto operaci použijte, chcete-li nahrát zcela novou entitu, ale nejste si jisti, zda již existuje. Tuto operaci použijte, pokud víte, že nově nahraná entita je zcela správná, protože zcela přepíše starou entitu. Například chcete aktualizovat entitu, která uchovává aktuální umístění uživatele bez ohledu na to, zda aplikace dříve uložila data o umístění pro daného uživatele. nová entita umístění je dokončena a z žádné předchozí entity nepotřebujete žádné informace.
 
 #### <a name="storing-data-series-in-a-single-entity"></a>Ukládání datových řad do jedné entity
 

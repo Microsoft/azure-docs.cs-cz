@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
 ms.openlocfilehash: 97d7d21374062462248e1b86f2bde2fef2d25331
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326048"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004904"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizace prostředí s využitím řešení System Center Operations Manager Health Check (Preview)
 
@@ -54,7 +54,7 @@ K instalaci a konfiguraci řešení můžete použít následující informace.
 
 Řešení System Center Operations Manager Health Check shromažďuje data z následujících zdrojů:
 
-* Registry
+* Registr
 * Windows Management Instrumentation (WMI)
 * Protokol událostí
 * Data souborů
@@ -77,7 +77,7 @@ Než budete pokračovat, musí účet Spustit jako splňovat následující pož
 * Pokud účet nemá oprávnění správce systému SQL, potom spusťte [skript](#sql-script-to-grant-granular-permissions-to-the-run-as-account) pro udělení podrobných oprávnění účtu v každé instanci SQL Server hostující jednu nebo všechny databáze Operations Manager.
 
 1. V konzole Operations Manager vyberte navigační tlačítko **pro správu** .
-2. V části **Konfigurace spustit jako**klikněte na **účty**.
+2. V části **Konfigurace spustit jako** klikněte na **účty**.
 3. V průvodci **vytvořením účtu Spustit jako** na **úvodní** stránce klikněte na **Další**.
 4. Na stránce **Obecné vlastnosti** vyberte možnost **Windows** v seznamu **účet Spustit jako typ:** .
 5. Do textového pole **Zobrazovaný název** zadejte zobrazovaný název a volitelně zadejte popis do pole **Popis** a pak klikněte na **Další**.
@@ -86,9 +86,9 @@ Než budete pokračovat, musí účet Spustit jako splňovat následující pož
 
 Teď, když je vytvořený účet Spustit jako, musí být cílovým serverem pro správu ve skupině pro správu a přidružený k předdefinovanému profilu spustit jako, aby se pracovní postupy spouštěly pomocí přihlašovacích údajů.  
 
-1. V části **Konfigurace spustit jako**klikněte na **účty**v podokně výsledků dvakrát klikněte na účet, který jste vytvořili dříve.
+1. V části **Konfigurace spustit jako** klikněte na **účty** v podokně výsledků dvakrát klikněte na účet, který jste vytvořili dříve.
 2. Na kartě **distribuce** klikněte na **Přidat** pro **vybrané počítače** a přidejte Management Server k distribuci účtu do.  Dvakrát klikněte na **OK** , aby se změny uložily.
-3. V části **Konfigurace spustit jako**klikněte na **profily**.
+3. V části **Konfigurace spustit jako** klikněte na **profily**.
 4. Vyhledejte *profil posouzení SCOM*.
 5. Název profilu by měl být: *Microsoft System Center Operations Manager Health Check profil spustit jako*.
 6. Klikněte pravým tlačítkem a aktualizujte jeho vlastnosti a přidejte nedávno vytvořený účet Spustit jako, který jste vytvořili dříve.
@@ -214,7 +214,7 @@ Podívejte se na souhrnná vyhodnocení dodržování předpisů pro vaši infra
 4. Na stránce **Přehled** klikněte na dlaždici **System Center Operations Manager Health Check** .
 5. Na stránce **System Center Operations Manager Health Check** zkontrolujte souhrnné informace v jednom z oken detailní oblasti a potom klikněte na jednu pro zobrazení doporučení pro tuto oblast výběru.
 6. Na kterékoli stránce oblasti pro zaměření si můžete prohlédnout doporučení s prioritou vytvořená pro vaše prostředí. Kliknutím na doporučení v části **Ovlivněné objekty** zobrazíte podrobnosti o tom, proč se doporučení udělalo.<br><br> ![oblast zaměření](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
-7. V **navrhovaných akcích**můžete provést opravné akce. Po vyřešení této položky budou později vyhodnoceny záznamy o tom, že byly provedeny doporučené akce a že se bude zvyšovat skóre dodržování předpisů. Opravené položky se zobrazí jako **předané objekty**.
+7. V **navrhovaných akcích** můžete provést opravné akce. Po vyřešení této položky budou později vyhodnoceny záznamy o tom, že byly provedeny doporučené akce a že se bude zvyšovat skóre dodržování předpisů. Opravené položky se zobrazí jako **předané objekty**.
 
 ## <a name="ignore-recommendations"></a>Ignorování doporučení
 

@@ -8,11 +8,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: d0ac8e0cf187d1a6a329f2c7332c9ec37018d4cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962515"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005227"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Vytvoření webové aplikace ve App Service Environment v1
 
@@ -54,7 +54,7 @@ V tomto kurzu se předpokládá, že jste vytvořili App Service Environment. Po
    
     Pokud vaše pomocné služby používá externí VIP, adresa URL aplikace v pomocném mechanismu je: [*název_webu*]. [*název App Service Environment*]. p.azurewebsites.NET místo [*název_webu*]. azurewebsites.NET
    
-    Pokud vaše pomocné služby používá interní virtuální IP adresu, adresa URL aplikace v tomto pomocném programu je: [*název_webu*]. [*subdoména zadaná během vytváření POmocného mechanismu*řízení]   
+    Pokud vaše pomocné služby používá interní virtuální IP adresu, adresa URL aplikace v tomto pomocném programu je: [*název_webu*]. [*subdoména zadaná během vytváření POmocného mechanismu* řízení]   
     Po výběru stránky ASP během vytváření pomocného mechanismu se zobrazí aktualizace subdomény pod **názvem** .
 
 ## <a name="create-an-app-service-plan"></a><a name="createplan"></a> Vytvoření plánu App Service

@@ -5,11 +5,11 @@ ms.date: 03/05/2020
 ms.topic: how-to
 ms.reviewer: brendal
 ms.openlocfilehash: 696f1f2f96034f7a044f6a39182774c02804518f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87003062"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004836"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Používání Azure blockchain Workbench Preview REST API
 
@@ -19,12 +19,12 @@ Azure blockchain Workbench Preview REST API poskytuje vývojářům a informačn
 
 K rozhraním API aplikace blockchain Workbench se dostanete prostřednictvím koncového bodu pro vaše nasazení. Pro získání adresy URL koncového bodu rozhraní API pro vaše nasazení:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V levém navigačním podokně vyberte **skupiny prostředků**.
 1. Vyberte název skupiny prostředků, kterou jste nasadili blockchain Workbench.
 1. Vyberte záhlaví sloupce **typ** k seřazení seznamu abecedně podle typu.
 1. Existují dva prostředky s typem **App Service**. Vyberte prostředek typu **App Service** *s* příponou "-API".
-1. V **přehledu**App Service Zkopírujte hodnotu **URL** , která představuje adresu URL koncového bodu rozhraní API pro nasazenou aplikaci blockchain Workbench.
+1. V **přehledu** App Service Zkopírujte hodnotu **URL** , která představuje adresu URL koncového bodu rozhraní API pro nasazenou aplikaci blockchain Workbench.
 
     ![Adresa URL koncového bodu rozhraní API služby App Service](media/use-api/app-service-api.png)
 

@@ -11,11 +11,11 @@ ms.custom:
 - device-developer
 - iot-edge
 ms.openlocfilehash: 4c4248246be845aa8608aac8b8a3ce761ea1ef86
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987044"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004768"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Připojení zařízení Azure IoT Edge k aplikaci Azure IoT Central
 

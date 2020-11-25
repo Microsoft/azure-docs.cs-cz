@@ -13,11 +13,11 @@ ms.workload: infrastructure
 ms.date: 02/21/2020
 ms.author: rdhillon
 ms.openlocfilehash: bdf0e87c92a55d0dbb5bbe34334a6de4580cb350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84708174"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004955"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Vytvoření, změna nebo odstranění zásad koncového bodu služby pomocí Azure Portal
 
@@ -31,7 +31,7 @@ Zásady koncového bodu služby umožňují filtrovat provoz virtuální sítě 
 > * Vytvoření virtuální sítě s podsítí
 > * Přidružení zásady koncového bodu služby k podsíti
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure 
 
@@ -78,7 +78,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 ## <a name="view-endpoint-policies"></a>Zobrazit zásady koncového bodu 
 
 1. V poli *všechny služby* na portálu začněte zadávat *zásady koncového bodu služby*. Vyberte **zásady koncového bodu služby**.
-2. V části **předplatná**vyberte své předplatné a skupinu prostředků, jak je znázorněno na následujícím obrázku.
+2. V části **předplatná** vyberte své předplatné a skupinu prostředků, jak je znázorněno na následujícím obrázku.
 
    ![Zobrazit zásady](./media/virtual-network-service-endpoint-policies-portal/sep-view.png)
        
@@ -99,7 +99,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 - Předtím, než budete moci přidružit zásadu k podsíti, je nutné vytvořit virtuální síť a podsíť. Nápovědu k tomu najdete v článku o [vytvoření Virtual Network](./quick-create-portal.md) .
 
-- Jakmile budete mít virtuální síť a podsíť nastavenou, musíte pro Azure Storage nakonfigurovat Virtual Network koncové body služby. V okně Virtual Network vyberte **koncové body služby**a v dalším podokně vyberte **Microsoft. Storage** a v části **podsítě** vyberte požadovanou virtuální síť nebo podsíť.
+- Jakmile budete mít virtuální síť a podsíť nastavenou, musíte pro Azure Storage nakonfigurovat Virtual Network koncové body služby. V okně Virtual Network vyberte **koncové body služby** a v dalším podokně vyberte **Microsoft. Storage** a v části **podsítě** vyberte požadovanou virtuální síť nebo podsíť.
 
 - V případě, že jste již vytvořili zásady koncového bodu služby před konfigurací koncového bodu služby pro tuto podsíť, můžete v rozevíracím seznamu vybrat zásadu koncového bodu služby, jak je uvedeno níže.
 

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
 ms.openlocfilehash: 47c8096893742a25904f0f7e688af2fc641166d1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544490"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004309"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Osvědčené postupy pro Azure Cache for Redis 
 Pomocí těchto osvědčených postupů můžete maximalizovat výkon a nákladově efektivní využití vaší instance Azure cache pro Redis.
@@ -25,13 +25,13 @@ Pomocí těchto osvědčených postupů můžete maximalizovat výkon a náklado
 
  * **Nakonfigurujte [Nastavení rezervované pro maxmemory](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) , aby se zlepšila odezva systému** v podmínkách pro tlak paměti.  Dostatečná nastavení rezervace je obzvláště důležité pro úlohy náročné na zápis, nebo pokud ukládáte větší hodnoty (100 KB nebo více) v Redis. Měli byste začít s 10% velikosti mezipaměti a zvýšit toto procento, pokud máte zatížení náročné na zápis.
 
- * **Redis funguje nejlépe s menšími hodnotami** , takže zvažte možnost roztrhané větší data do více klíčů.  V [této diskuzi Redis](https://stackoverflow.com/questions/55517224/what-is-the-ideal-value-size-range-for-redis-is-100kb-too-large/)jsou uvedeny některé okolnosti, které byste měli pečlivě zvážit.  V [tomto článku](cache-troubleshoot-client.md#large-request-or-response-size) najdete příklad problému, který může být způsoben velkými objemy dat.
+ * **Redis funguje nejlépe s menšími hodnotami**, takže zvažte možnost roztrhané větší data do více klíčů.  V [této diskuzi Redis](https://stackoverflow.com/questions/55517224/what-is-the-ideal-value-size-range-for-redis-is-100kb-too-large/)jsou uvedeny některé okolnosti, které byste měli pečlivě zvážit.  V [tomto článku](cache-troubleshoot-client.md#large-request-or-response-size) najdete příklad problému, který může být způsoben velkými objemy dat.
 
- * **Vyhledejte instanci mezipaměti a aplikaci ve stejné oblasti.**  Pokud byste se připojovali k mezipaměti v jiné oblasti, výrazně byste tím zvýšili latenci a snížili spolehlivost.  I když se můžete připojit mimo Azure, nedoporučuje se *obzvláště při použití Redis jako mezipaměti* .  Pokud používáte Redis jako úložiště typu klíč/hodnota, latence nemusí být primárním problémem. 
+ * **Vyhledejte instanci mezipaměti a aplikaci ve stejné oblasti.**  Pokud byste se připojovali k mezipaměti v jiné oblasti, výrazně byste tím zvýšili latenci a snížili spolehlivost.  I když se můžete připojit mimo Azure, nedoporučuje se *obzvláště při použití Redis jako mezipaměti*.  Pokud používáte Redis jako úložiště typu klíč/hodnota, latence nemusí být primárním problémem. 
 
  * **Znovu použijte připojení.**  Vytváření nových připojení je náročné a zvyšuje latenci, takže by bylo možné znovu použít připojení co nejvíc. Pokud se rozhodnete vytvořit nová připojení, ujistěte se, že jste staré připojení zavřeli předtím, než je uvolníte (i ve spravovaných paměťových jazycích, jako je .NET nebo Java).
 
- * **Nakonfigurujte klientskou knihovnu tak, aby používala *časový limit připojení* aspoň 15 sekund** , a systémovým časem umožní připojit se i v rámci vyšších procesorových podmínek.  Hodnota časového limitu malého připojení nezaručuje, že v daném časovém rámci bude vytvořeno připojení.  Pokud dojde k nějakému problému (vysoký procesor procesoru, vysoký procesor serveru atd.), pak hodnota krátkého časového limitu připojení způsobí selhání pokusu o připojení. Toto chování často způsobuje horší špatnou situaci.  Namísto zvýšení časových limitů tím, že se postará o problém, vynutí systém restartování procesu pokusu o opětovné připojení, což může vést k *selhání > typu Connect->* . Obecně doporučujeme, abyste časový limit připojení nechali 15 sekund nebo vyšší. Je lepší podařit, aby se Váš pokus o připojení uspěl po 15 nebo 20 sekundách, než je možné ho rychle opakovat. Tato smyčka opakování může způsobit, že výpadek bude trvat déle, než když necháte systém jenom na začátku.  
+ * **Nakonfigurujte klientskou knihovnu tak, aby používala *časový limit připojení* aspoň 15 sekund**, a systémovým časem umožní připojit se i v rámci vyšších procesorových podmínek.  Hodnota časového limitu malého připojení nezaručuje, že v daném časovém rámci bude vytvořeno připojení.  Pokud dojde k nějakému problému (vysoký procesor procesoru, vysoký procesor serveru atd.), pak hodnota krátkého časového limitu připojení způsobí selhání pokusu o připojení. Toto chování často způsobuje horší špatnou situaci.  Namísto zvýšení časových limitů tím, že se postará o problém, vynutí systém restartování procesu pokusu o opětovné připojení, což může vést k *selhání > typu Connect->* . Obecně doporučujeme, abyste časový limit připojení nechali 15 sekund nebo vyšší. Je lepší podařit, aby se Váš pokus o připojení uspěl po 15 nebo 20 sekundách, než je možné ho rychle opakovat. Tato smyčka opakování může způsobit, že výpadek bude trvat déle, než když necháte systém jenom na začátku.  
      > [!NOTE]
      > Tyto doprovodné materiály jsou specifické pro *pokus o připojení* a nesouvisejí s časem, na který jste ochotni čekat na *operaci* , jako je získání nebo nastavení dokončení.
  
@@ -44,7 +44,7 @@ Pomocí těchto osvědčených postupů můžete maximalizovat výkon a náklado
 ## <a name="memory-management"></a>Správa paměti
 Existuje několik věcí, které souvisí s využitím paměti v rámci instance serveru Redis, kterou byste chtěli zvážit.  Tady je několik příkladů:
 
- * **Vyberte [zásadu vyřazení](https://redis.io/topics/lru-cache) , která je pro vaši aplikaci vhodná.**  Výchozí zásada pro Azure Redis je *volatile-LRU* , což znamená, že pro vyřazení bude možné využívat jenom klíče, které mají nastavenou hodnotu TTL.  Pokud žádné klíče neobsahují hodnotu TTL, nebude systém vyřadit žádné klíče.  Pokud chcete, aby systém povoloval vyřazení jakékoli klíče v případě přetížení paměti, můžete zvážit zásady *AllKeys-LRU* .
+ * **Vyberte [zásadu vyřazení](https://redis.io/topics/lru-cache) , která je pro vaši aplikaci vhodná.**  Výchozí zásada pro Azure Redis je *volatile-LRU*, což znamená, že pro vyřazení bude možné využívat jenom klíče, které mají nastavenou hodnotu TTL.  Pokud žádné klíče neobsahují hodnotu TTL, nebude systém vyřadit žádné klíče.  Pokud chcete, aby systém povoloval vyřazení jakékoli klíče v případě přetížení paměti, můžete zvážit zásady *AllKeys-LRU* .
 
  * **Nastavte hodnotu vypršení platnosti klíčů.**  Po vypršení platnosti se klíče odeberou aktivně namísto čekání, dokud nedojde k tlaku na paměť.  Při vyřazení z důvodu přetížení paměti může dojít k dalšímu zatížení serveru.  Další informace najdete v dokumentaci k příkazům [vypršení platnosti](https://redis.io/commands/expire) a [EXPIREAT](https://redis.io/commands/expireat) .
  
@@ -61,7 +61,7 @@ Existuje několik věcí, které souvisí s využitím paměti v rámci instance
 ## <a name="when-is-it-safe-to-retry"></a>Kdy je bezpečné to zkusit znovu?
 Bohužel neexistuje žádná jednoduchá odpověď.  Každá aplikace musí rozhodnout, jaké operace se můžou opakovat a které nemůžou.  Každá operace má jiné požadavky a závislosti mezi klíči.  Tady je několik věcí, které byste mohli zvážit:
 
- * Můžete získat chyby na straně klienta, i když Redis úspěšně spustil příkaz, který jste si vyžádali ke spuštění.  Příklad:
+ * Můžete získat chyby na straně klienta, i když Redis úspěšně spustil příkaz, který jste si vyžádali ke spuštění.  Například:
      - Časové limity jsou koncept na straně klienta.  Pokud operace dosáhla serveru, Server spustí příkaz i v případě, že klient čeká na vyčekání.  
      - Pokud dojde k chybě v připojení soketu, není možné zjistit, zda na serveru skutečně běžela operace.  Například Chyba připojení může nastat poté, co server zpracoval požadavek, ale předtím, než klient obdrží odpověď.
  *  Jak aplikace reaguje, když omylem spustím stejnou operaci dvakrát?  Například, co když přeroste celé číslo dvakrát místo jedenkrát?  Zapisuje moje aplikace do stejného klíče z více míst?  Co když logika opakování přepíše hodnotu nastavenou některou jinou část mé aplikace?
@@ -76,16 +76,16 @@ Pokud chcete otestovat, jak váš kód funguje v chybových podmínkách, zvažt
  * Pokud pracujete v systému Windows, **Povolte VRSS** na klientském počítači.  [Podrobnosti najdete tady](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11)).  Ukázkový skript PowerShell:
      >PowerShell – ExecutionPolicy bez omezení Enable-NetAdapterRSS – název (Get-NetAdapter). Jméno 
      
- * **Zvažte použití instancí Redis úrovně Premium** .  Tyto velikosti mezipaměti budou mít lepší latenci a propustnost sítě, protože jsou spuštěné na lepším hardwaru pro procesor i síť.
+ * **Zvažte použití instancí Redis úrovně Premium**.  Tyto velikosti mezipaměti budou mít lepší latenci a propustnost sítě, protože jsou spuštěné na lepším hardwaru pro procesor i síť.
  
      > [!NOTE]
      > Výsledky našich pozorovaných výsledků jsou [publikovány zde](cache-planning-faq.md#azure-cache-for-redis-performance) pro váš odkaz.   Také mějte na paměti, že protokol SSL/TLS přináší režijní náklady, takže pokud používáte šifrování přenosu, můžete získat různé latence a propustnost.
  
 ### <a name="redis-benchmark-examples"></a>Příklady Redis-Benchmark
-**Nastavení před testováním** : Připravte instanci mezipaměti daty požadovanými pro příkazy pro latenci a testování propustnosti uvedené níže.
+**Nastavení před testováním**: Připravte instanci mezipaměti daty požadovanými pro příkazy pro latenci a testování propustnosti uvedené níže.
 > Redis-test-h yourcache.redis.cache.windows.net-a yourAccesskey-t SET-n 10-d 1024 
 
-**Testování latence** : test Get požadavků pomocí datové části 1 tisíc
+**Testování latence**: test Get požadavků pomocí datové části 1 tisíc
 > Redis-test-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-d 1024-P 50-c 4
 
 **Postup testování propustnosti:** Požadavky GET v kanálu s datovou částí 1 tisíc

@@ -4,11 +4,11 @@ description: Naučte se, jak pomocí webhooků aktivovat události, když se akc
 ms.topic: article
 ms.date: 05/24/2019
 ms.openlocfilehash: 1db1098da81e6cf9ecb262c99f705b77af2efd26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253390"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004479"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Používání Azure Container Registry webhooků
 
@@ -23,9 +23,9 @@ Podrobnosti o požadavcích Webhooku najdete v tématu [Azure Container Registry
 
 ## <a name="create-webhook---azure-portal"></a>Vytvořit Webhook – Azure Portal
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Přejděte do registru kontejneru, ve kterém chcete vytvořit Webhook.
-1. V části **služby**vyberte **Webhooky**.
+1. V části **služby** vyberte **Webhooky**.
 1. Na panelu nástrojů Webhooku vyberte **Přidat** .
 1. Vyplňte formulář *vytvořit Webhook* s následujícími informacemi:
 

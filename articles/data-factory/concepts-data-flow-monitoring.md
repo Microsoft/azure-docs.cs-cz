@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/19/2020
-ms.openlocfilehash: a9636e7227671cd5a8ed31904e6bc27782d3bd6a
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.date: 11/22/2020
+ms.openlocfilehash: 9ca5ea5cdebe297af5081ae6e219935c56ba942e
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025829"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96004859"
 ---
 # <a name="monitor-data-flows"></a>Monitorování toků dat
 
@@ -81,6 +81,16 @@ Pokud v zobrazení monitorování kanálu ADF otevřete výstup JSON z aktivity 
 
 Když na mapě vyberete ikonu transformace jímky, v pravém dolním rohu se v panelu pro odesílání na pravé straně zobrazí další datový bod s názvem "doba zpracování". Toto je množství času stráveného prováděním úlohy v clusteru Spark *po* načtení dat, transformaci a zápis. Tento čas může zahrnovat uzavírání fondů připojení, vypnutí ovladače, odstraňování souborů, slučování souborů atd. Při provádění akcí ve vašem toku, jako je "přesunout soubory" a "výstup do jednoho souboru", se pravděpodobně zobrazí zvýšení hodnoty doba zpracování po zpracování.
   
+## <a name="error-rows"></a>Řádky chyb
+
+Ve výstupu monitorování se projeví povolení zpracování řádků chyb v jímky toku dat. Při nastavování jímky na hodnotu "zpráva o úspěchu při chybě" bude výstup monitorování zobrazovat počet úspěšných a neúspěšných řádků po kliknutí na uzel monitorování jímky.
+
+![Snímek obrazovky zobrazuje řádky chyb.](media/data-flow/error-row-2.png "Úspěch monitorování řádku chyby")
+
+Když vyberete možnost "ohlásit selhání při chybě", bude se stejný výstup zobrazovat pouze v textu monitorování aktivity výstup. Důvodem je skutečnost, že aktivita toku dat vrátí selhání pro provedení a podrobné zobrazení monitorování nebude k dispozici.
+
+![Snímek obrazovky zobrazuje chybové řádky v aktivitě.](media/data-flow/error-rows-4.png "Chyba sledování řádku chyby")
+
 ## <a name="monitor-icons"></a>Monitorovat ikony
 
 Tato ikona znamená, že data transformace již byla v clusteru uložena do mezipaměti, takže časování a cesta provádění poberou v úvahu:

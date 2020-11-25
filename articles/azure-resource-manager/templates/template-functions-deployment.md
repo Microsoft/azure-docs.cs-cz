@@ -2,13 +2,13 @@
 title: Funkce šablon – nasazení
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení informací o nasazení.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: e8240c05cba82d5563c4b327ecbc65a9c358720f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/18/2020
+ms.openlocfilehash: 9d6a1783bcd6d84c181edae84063ed7c0964c3d8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84677810"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96004564"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>Funkce nasazení pro šablony ARM
 
@@ -20,6 +20,8 @@ Správce prostředků poskytuje následující funkce pro získání hodnot vzta
 * [proměnné](#variables)
 
 Pokud chcete získat hodnoty z prostředků, skupin prostředků nebo předplatných, přečtěte si téma [funkce prostředků](template-functions-resource.md).
+
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 ## <a name="deployment"></a>nasazení
 
@@ -38,22 +40,21 @@ Když nasadíte místní šablonu do skupiny prostředků: funkce vrátí násle
 
 ```json
 {
-    "name": "",
-    "properties": {
-        "template": {
-            "$schema": "",
-            "contentVersion": "",
-            "parameters": {},
-            "variables": {},
-            "resources": [
-            ],
-            "outputs": {}
-        },
-        "templateHash": "",
-        "parameters": {},
-        "mode": "",
-        "provisioningState": ""
-    }
+  "name": "",
+  "properties": {
+    "template": {
+      "$schema": "",
+      "contentVersion": "",
+      "parameters": {},
+      "variables": {},
+      "resources": [],
+      "outputs": {}
+    },
+    "templateHash": "",
+    "parameters": {},
+    "mode": "",
+    "provisioningState": ""
+  }
 }
 ```
 
@@ -61,24 +62,24 @@ Když nasazujete vzdálenou šablonu do skupiny prostředků: funkce vrátí ná
 
 ```json
 {
-    "name": "",
-    "properties": {
-        "templateLink": {
-            "uri": ""
-        },
-        "template": {
-            "$schema": "",
-            "contentVersion": "",
-            "parameters": {},
-            "variables": {},
-            "resources": [],
-            "outputs": {}
-        },
-        "templateHash": "",
-        "parameters": {},
-        "mode": "",
-        "provisioningState": ""
-    }
+  "name": "",
+  "properties": {
+    "templateLink": {
+      "uri": ""
+    },
+    "template": {
+      "$schema": "",
+      "contentVersion": "",
+      "parameters": {},
+      "variables": {},
+      "resources": [],
+      "outputs": {}
+    },
+    "templateHash": "",
+    "parameters": {},
+    "mode": "",
+    "provisioningState": ""
+  }
 }
 ```
 
@@ -86,20 +87,20 @@ Když nasadíte do předplatného Azure, skupiny pro správu nebo tenanta, návr
 
 ```json
 {
-    "name": "",
-    "location": "",
-    "properties": {
-        "template": {
-            "$schema": "",
-            "contentVersion": "",
-            "resources": [],
-            "outputs": {}
-        },
-        "templateHash": "",
-        "parameters": {},
-        "mode": "",
-        "provisioningState": ""
-    }
+  "name": "",
+  "location": "",
+  "properties": {
+    "template": {
+      "$schema": "",
+      "contentVersion": "",
+      "resources": [],
+      "outputs": {}
+    },
+    "templateHash": "",
+    "parameters": {},
+    "mode": "",
+    "provisioningState": ""
+  }
 }
 ```
 
@@ -107,11 +108,21 @@ Když nasadíte do předplatného Azure, skupiny pro správu nebo tenanta, návr
 
 Nasazení () můžete použít k propojení na jinou šablonu na základě identifikátoru URI nadřazené šablony.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 "variables": {
-    "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
+  "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var sharedTemplateUrl = uri(deployment().prperties.templateLink.uri, 'shared-resources.json')
+```
+
+---
 
 Pokud šablonu znovu nasadíte z historie nasazení na portálu, šablona bude nasazena jako místní soubor. `templateLink`Vlastnost není ve funkci nasazení vrácena. Pokud vaše šablona spoléhá na `templateLink` Vytvoření odkazu na jinou šablonu, nepoužívejte portál k opětovnému nasazení. Místo toho použijte příkazy, které jste použili k původnímu nasazení šablony.
 
@@ -119,19 +130,29 @@ Pokud šablonu znovu nasadíte z historie nasazení na portálu, šablona bude n
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) vrátí objekt nasazení:
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "deploymentOutput": {
-            "value": "[deployment()]",
-            "type" : "object"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "deploymentOutput": {
+      "type": "object",
+      "value": "[deployment()]"
     }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output deploymentOutput object = deployment()
+```
+
+---
 
 Předchozí příklad vrátí následující objekt:
 
@@ -206,19 +227,29 @@ Tato funkce vrátí vlastnosti aktuálního prostředí Azure. Následující p�
 
 Následující příklad šablony vrátí objekt prostředí.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "environmentOutput": {
-            "value": "[environment()]",
-            "type" : "object"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "environmentOutput": {
+      "type": "object",
+      "value": "[environment()]"
     }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output environmentOutput object = environment()
+```
+
+---
 
 Předchozí příklad vrátí následující objekt při nasazení na globální Azure:
 
@@ -264,7 +295,7 @@ Vrátí hodnotu parametru. Zadaný název parametru musí být definován v odd�
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | parameterName |Yes |řetězec |Název parametru, který se má vrátit. |
 
@@ -276,78 +307,122 @@ Hodnota zadaného parametru.
 
 Obvykle použijete parametry pro nastavení hodnot prostředků. Následující příklad nastaví název webu na hodnotu parametru předaného během nasazení.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 "parameters": {
   "siteName": {
-      "type": "string"
+    "type": "string"
   }
-},
-"resources": [
-   {
-      "apiVersion": "2016-08-01",
-      "name": "[parameters('siteName')]",
-      "type": "Microsoft.Web/Sites",
-      ...
-   }
+}, "resources": [
+  {
+    "type": "Microsoft.Web/Sites",
+    "apiVersion": "2016-08-01",
+    "name": "[parameters('siteName')]",
+    ...
+  }
 ]
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param siteName string
+
+resource mySite 'Microsoft.Web/Sites@2016-08-01' = {
+  name: siteName
+  ...
+}
+```
+
+---
 
 ### <a name="example"></a>Příklad
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) ukazuje zjednodušené použití funkce Parameters.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "stringParameter": {
-            "type" : "string",
-            "defaultValue": "option 1"
-        },
-        "intParameter": {
-            "type": "int",
-            "defaultValue": 1
-        },
-        "objectParameter": {
-            "type": "object",
-            "defaultValue": {"one": "a", "two": "b"}
-        },
-        "arrayParameter": {
-            "type": "array",
-            "defaultValue": [1, 2, 3]
-        },
-        "crossParameter": {
-            "type": "string",
-            "defaultValue": "[parameters('stringParameter')]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "stringParameter": {
+      "type": "string",
+      "defaultValue": "option 1"
     },
-    "variables": {},
-    "resources": [],
-    "outputs": {
-        "stringOutput": {
-            "value": "[parameters('stringParameter')]",
-            "type" : "string"
-        },
-        "intOutput": {
-            "value": "[parameters('intParameter')]",
-            "type" : "int"
-        },
-        "objectOutput": {
-            "value": "[parameters('objectParameter')]",
-            "type" : "object"
-        },
-        "arrayOutput": {
-            "value": "[parameters('arrayParameter')]",
-            "type" : "array"
-        },
-        "crossOutput": {
-            "value": "[parameters('crossParameter')]",
-            "type" : "string"
-        }
+    "intParameter": {
+      "type": "int",
+      "defaultValue": 1
+    },
+    "objectParameter": {
+      "type": "object",
+      "defaultValue": {
+        "one": "a",
+        "two": "b"
+      }
+    },
+    "arrayParameter": {
+      "type": "array",
+      "defaultValue": [ 1, 2, 3 ]
+    },
+    "crossParameter": {
+      "type": "string",
+      "defaultValue": "[parameters('stringParameter')]"
     }
+  },
+  "variables": {},
+  "resources": [],
+  "outputs": {
+    "stringOutput": {
+      "value": "[parameters('stringParameter')]",
+      "type": "string"
+    },
+    "intOutput": {
+      "value": "[parameters('intParameter')]",
+      "type": "int"
+    },
+    "objectOutput": {
+      "value": "[parameters('objectParameter')]",
+      "type": "object"
+    },
+    "arrayOutput": {
+      "value": "[parameters('arrayParameter')]",
+      "type": "array"
+    },
+    "crossOutput": {
+      "value": "[parameters('crossParameter')]",
+      "type": "string"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param stringParameter string = 'option 1'
+param intParameter int = 1
+param objectParameter object = {
+  'one': 'a'
+  'two': 'b'
+}
+param arrayParameter array = [
+  1
+  2
+  3
+]
+param crossParameter string = stringParameter
+
+output stringOutput string = stringParameter
+output intOutput int = intParameter
+output objectOutput object = objectParameter
+output arrayOutput array = arrayParameter
+output crossOutput string = crossParameter
+```
+
+---
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
@@ -369,7 +444,7 @@ Vrátí hodnotu proměnné. Zadaný název proměnné musí být definován v od
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | variableName |Ano |Řetězec |Název proměnné, která se má vrátit. |
 
@@ -381,65 +456,111 @@ Hodnota zadané proměnné.
 
 Obvykle používáte proměnné pro zjednodušení šablony vytvořením složitých hodnot pouze jednou. Následující příklad vytvoří jedinečný název pro účet úložiště.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 "variables": {
-    "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
+  "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
 },
 "resources": [
-    {
-        "type": "Microsoft.Storage/storageAccounts",
-        "name": "[variables('storageName')]",
-        ...
-    },
-    {
-        "type": "Microsoft.Compute/virtualMachines",
-        "dependsOn": [
-            "[variables('storageName')]"
-        ],
-        ...
-    }
+  {
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[variables('storageName')]",
+    ...
+  },
+  {
+    "type": "Microsoft.Compute/virtualMachines",
+    "dependsOn": [
+      "[variables('storageName')]"
+    ],
+    ...
+  }
 ],
+
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var storageName = concat('storage', uniqueString(resourceGroup().id))
+
+resource myStorage 'Microsoft.Storage/storageAccounts@2019-06-01' = {
+  name: storageName
+  ...
+}
+
+resource myVm 'Microsoft.Compute/virtualMachines@2020-06-01' = {
+  ...
+}
+```
+
+---
 
 ### <a name="example"></a>Příklad
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) vrací různé hodnoty proměnných.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {},
-    "variables": {
-        "var1": "myVariable",
-        "var2": [ 1,2,3,4 ],
-        "var3": "[ variables('var1') ]",
-        "var4": {
-            "property1": "value1",
-            "property2": "value2"
-          }
-    },
-    "resources": [],
-    "outputs": {
-        "exampleOutput1": {
-            "value": "[variables('var1')]",
-            "type" : "string"
-        },
-        "exampleOutput2": {
-            "value": "[variables('var2')]",
-            "type" : "array"
-        },
-        "exampleOutput3": {
-            "value": "[variables('var3')]",
-            "type" : "string"
-        },
-        "exampleOutput4": {
-            "value": "[variables('var4')]",
-            "type" : "object"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {
+    "var1": "myVariable",
+    "var2": [ 1, 2, 3, 4 ],
+    "var3": "[ variables('var1') ]",
+    "var4": {
+      "property1": "value1",
+      "property2": "value2"
     }
+  },
+  "resources": [],
+  "outputs": {
+    "exampleOutput1": {
+      "value": "[variables('var1')]",
+      "type": "string"
+    },
+    "exampleOutput2": {
+      "value": "[variables('var2')]",
+      "type": "array"
+    },
+    "exampleOutput3": {
+      "value": "[variables('var3')]",
+      "type": "string"
+    },
+    "exampleOutput4": {
+      "value": "[variables('var4')]",
+      "type": "object"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var var1 = 'myVariable'
+var var2 = [
+  1
+  2
+  3
+  4
+]
+var var3 = var1
+var var4 = {
+  'property1': 'value1'
+  'property2': 'value2'
+}
+
+output exampleOutput1 string = var1
+output exampleOutput2 array = var2
+output exampleOutput3 string = var3
+output exampleOutput4 object = var4
+```
+
+---
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 

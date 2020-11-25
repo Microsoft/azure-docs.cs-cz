@@ -8,16 +8,16 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 434f112e78938c94d887423316fccea270059b6b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 641117414c855a044d3ed55004b6e6ea15b259ac
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109013"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96004734"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V12 s využitím Xamarin
 
-Začínáme s klientskou knihovnou služby Azure Blob Storage V12 s využitím Xamarin. Azure Blob Storage je řešení úložiště objektů Microsoftu pro cloud. Postupujte podle kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy. Úložiště objektů blob je optimalizované pro ukládání velkých objemů nestrukturovaných dat.
+Začínáme s klientskou knihovnou služby Azure Blob Storage V12 s využitím Xamarin. Azure Blob Storage je řešení úložiště objektů pro cloud od Microsoftu. Postupujte podle kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy. Služba Blob Storage je optimalizovaná pro ukládání velkých objemů nestrukturovaných dat.
 
 Použijte klientskou knihovnu služby Azure Blob Storage V12 s Xamarin na:
 
@@ -36,11 +36,11 @@ Odkazy odkazů:
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Účet úložiště Azure – [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* Visual Studio s nainstalovanou nebo [Visual Studio pro Macovou](https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019) [úlohou pro vývoj mobilních aplikací .NET](https://docs.microsoft.com/xamarin/get-started/installation/?pivots=windows)
+* Účet úložiště Azure – [Vytvoření účtu úložiště](../common/storage-account-create.md)
+* Visual Studio s nainstalovanou nebo [Visual Studio pro Macovou](/visualstudio/mac/installation?view=vsmac-2019) [úlohou pro vývoj mobilních aplikací .NET](/xamarin/get-started/installation/?pivots=windows)
 
 ## <a name="setting-up"></a>Nastavení
     

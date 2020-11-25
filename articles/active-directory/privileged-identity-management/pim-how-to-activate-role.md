@@ -15,11 +15,11 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 38992c15c23216aa81cda566a333d8e45f90b17e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369841"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004683"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Aktivace mých rolí Azure AD v PIM
 
@@ -48,7 +48,7 @@ Pokud potřebujete převzít roli Azure AD, můžete požádat o aktivaci otevř
 
 1. Otevřete **Azure AD Privileged Identity Management**. Informace o tom, jak přidat dlaždici Privileged Identity Management do řídicího panelu, najdete v tématu [Začínáme používat Privileged Identity Management](pim-getting-started.md).
 
-1. Vyberte **Moje role**a potom vyberte **role Azure AD** , abyste viděli seznam oprávněných rolí Azure AD.
+1. Vyberte **Moje role** a potom vyberte **role Azure AD** , abyste viděli seznam oprávněných rolí Azure AD.
 
     ![Stránka Moje role se zobrazenými rolemi, které můžete aktivovat](./media/pim-how-to-activate-role/my-roles.png)
 

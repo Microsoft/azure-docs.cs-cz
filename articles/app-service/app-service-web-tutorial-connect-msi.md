@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: 633e3a6386b9e6098e167c7fdd542d98c16fae48
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7b6f762dd04244f430f08894cc06991796a11229
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737893"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96004921"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Kurz: Zabezpečení připojení ke službě Azure SQL Database ze služby App Service s využitím spravované identity
 
@@ -41,7 +41,7 @@ Co se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento článek pokračuje tam, kde jste skončili v [kurzu: sestavení aplikace v ASP.NET v Azure pomocí SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md) nebo [kurzu: sestavení ASP.NET Core a SQL Database aplikace v Azure App Service](tutorial-dotnetcore-sqldb-app.md). Pokud jste to ještě neudělali, Projděte si jeden ze dvou kurzů jako první. Alternativně můžete upravit postup pro vlastní aplikaci .NET pomocí SQL Database.
 
@@ -75,9 +75,9 @@ Další informace o přidání správce služby Active Directory najdete v téma
 ## <a name="set-up-visual-studio"></a>Nastavit Visual Studio
 
 ### <a name="windows-client"></a>Klient Windows
-Visual Studio pro Windows je integrované s ověřováním Azure AD. Pokud chcete povolit vývoj a ladění v aplikaci Visual Studio, přidejte uživatele služby Azure AD v aplikaci Visual **File** Studio tak, že v nabídce vyberete  >  **nastavení účet** soubor a kliknete na **Přidat účet** .
+Visual Studio pro Windows je integrované s ověřováním Azure AD. Pokud chcete povolit vývoj a ladění v aplikaci Visual Studio, přidejte uživatele služby Azure AD v aplikaci Visual **File** Studio tak, že v nabídce vyberete  >  **nastavení účet** soubor a kliknete na **Přidat účet**.
 
-Pokud chcete nastavit uživatele Azure AD pro ověřování služby Azure, v **Tools**  >  nabídce vyberte **Možnosti** nástrojů a pak vyberte výběr **účtu ověřování služby Azure**  >  **Account Selection** . Vyberte uživatele Azure AD, kterého jste přidali, a klikněte na **OK** .
+Pokud chcete nastavit uživatele Azure AD pro ověřování služby Azure, v **Tools**  >  nabídce vyberte **Možnosti** nástrojů a pak vyberte výběr **účtu ověřování služby Azure**  >  **Account Selection**. Vyberte uživatele Azure AD, kterého jste přidali, a klikněte na **OK**.
 
 Nyní jste připraveni vyvíjet a ladit svou aplikaci pomocí SQL Database jako back-endu pomocí ověřování Azure AD.
 
@@ -151,8 +151,8 @@ V [kurzu ASP.NET Core a SQL Database](tutorial-dotnetcore-sqldb-app.md)se `MyDbC
 Potom zadáte kontext databáze Entity Framework k přístupovému tokenu SQL Database. V *Data\MyDatabaseContext.cs* přidejte následující kód do složených závorek prázdného `MyDatabaseContext (DbContextOptions<MyDatabaseContext> options)` konstruktoru:
 
 ```csharp
-var conn = (Microsoft.Data.SqlClient.SqlConnection)Database.GetDbConnection();
-conn.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceTokenProvider()).GetAccessTokenAsync("https://database.windows.net/").Result;
+var connection = (SqlConnection)Database.GetDbConnection();
+connection.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceTokenProvider()).GetAccessTokenAsync("https://database.windows.net/").Result;
 ```
 
 > [!NOTE]
@@ -194,7 +194,7 @@ Tady je příklad výstupu:
 ### <a name="grant-permissions-to-managed-identity"></a>Udělení oprávnění spravované identitě
 
 > [!NOTE]
-> Pokud chcete, můžete přidat identitu do [skupiny Azure AD](../active-directory/fundamentals/active-directory-manage-groups.md)a potom udělit SQL Database přístup ke skupině Azure AD namísto identity. Například následující příkazy přidají spravovanou identitu z předchozího kroku do nové skupiny s názvem _myAzureSQLDBAccessGroup_ :
+> Pokud chcete, můžete přidat identitu do [skupiny Azure AD](../active-directory/fundamentals/active-directory-manage-groups.md)a potom udělit SQL Database přístup ke skupině Azure AD namísto identity. Například následující příkazy přidají spravovanou identitu z předchozího kroku do nové skupiny s názvem _myAzureSQLDBAccessGroup_:
 > 
 > ```azurecli-interactive
 > groupid=$(az ad group create --display-name myAzureSQLDBAccessGroup --mail-nickname myAzureSQLDBAccessGroup --query objectId --output tsv)
@@ -210,7 +210,7 @@ Ve službě Cloud Shell se přihlaste ke službě SQL Database pomocí příkazu
 sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P "<aad-password>" -G -l 30
 ```
 
-V příkazovém řádku SQL pro požadovanou databázi spusťte následující příkazy, abyste udělili oprávnění, která vaše aplikace potřebuje. Příklad: 
+V příkazovém řádku SQL pro požadovanou databázi spusťte následující příkazy, abyste udělili oprávnění, která vaše aplikace potřebuje. Třeba 
 
 ```sql
 CREATE USER [<identity-name>] FROM EXTERNAL PROVIDER;
@@ -220,7 +220,7 @@ ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
 
-*\<identity-name>* je název spravované identity ve službě Azure AD. Pokud je identita přiřazena systémem, název je vždy stejný jako název vaší aplikace App Service. Pokud chcete udělit oprávnění pro skupinu Azure AD, použijte místo toho zobrazované jméno skupiny (například *myAzureSQLDBAccessGroup* ).
+*\<identity-name>* je název spravované identity ve službě Azure AD. Pokud je identita přiřazena systémem, název je vždy stejný jako název vaší aplikace App Service. Pokud chcete udělit oprávnění pro skupinu Azure AD, použijte místo toho zobrazované jméno skupiny (například *myAzureSQLDBAccessGroup*).
 
 Zadáním `EXIT` se vraťte do příkazového řádku služby Cloud Shell.
 
@@ -239,13 +239,13 @@ az webapp config connection-string delete --resource-group myResourceGroup --nam
 
 Teď už stačí jen publikovat provedené změny do Azure.
 
-**Pokud jste pocházeli z [kurzu: sestavení aplikace v ASP.NET v Azure pomocí SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)** , publikování změn v aplikaci Visual Studio. V **Průzkumníku řešení** klikněte pravým tlačítkem na projekt **DotNetAppSqlDb** a vyberte **Publikovat** .
+**Pokud jste pocházeli z [kurzu: sestavení aplikace v ASP.NET v Azure pomocí SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)**, publikování změn v aplikaci Visual Studio. V **Průzkumníku řešení** klikněte pravým tlačítkem na projekt **DotNetAppSqlDb** a vyberte **Publikovat**.
 
 ![Publikování z Průzkumníka řešení](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
-Na stránce publikování klikněte na **Publikovat** . 
+Na stránce publikování klikněte na **Publikovat**. 
 
-**Pokud jste pocházeli z [kurzu: vytvoření aplikace ASP.NET Core a SQL Database v Azure App Service](tutorial-dotnetcore-sqldb-app.md)** , publikování změn pomocí Gitu s následujícími příkazy:
+**Pokud jste pocházeli z [kurzu: vytvoření aplikace ASP.NET Core a SQL Database v Azure App Service](tutorial-dotnetcore-sqldb-app.md)**, publikování změn pomocí Gitu s následujícími příkazy:
 
 ```bash
 git commit -am "configure managed identity"

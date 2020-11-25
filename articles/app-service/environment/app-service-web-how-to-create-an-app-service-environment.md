@@ -8,11 +8,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 543050bc899c257c4ad5e0d0c399a1de6f0f58f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86220571"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005197"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>Vytvoření App Service Environment v1 
 
@@ -28,7 +28,7 @@ Je důležité vědět, co nemůžete změnit. Tyto aspekty nemůžete po vytvo�
 
 * Umístění
 * Předplatné
-* Resource Group
+* Skupina prostředků
 * Použitá virtuální síť
 * Použitá podsíť 
 * Velikost podsítě
@@ -36,7 +36,7 @@ Je důležité vědět, co nemůžete změnit. Tyto aspekty nemůžete po vytvo�
 Když vybíráte virtuální síť a zadáváte podsíť, ujistěte se, že je dostatečně velká, aby vyhovovala budoucímu růstu. 
 
 ### <a name="creating-an-app-service-environment-v1"></a>Vytvoření App Service Environment v1
-Pokud chcete vytvořit App Service Environment V1, můžete vyhledat Azure Marketplace ***App Service Environment v1***nebo si projít **vytvořením prostředku**  ->  **web a mobilní zařízení**  ->  **App Service Environment**. Vytvoření ASEv1:
+Pokud chcete vytvořit App Service Environment V1, můžete vyhledat Azure Marketplace pro ***App Service Environment v1** _ nebo jít přes _ *vytvořit prostředek**-> **web a mobilní zařízení**  ->  **App Service Environment**. Vytvoření ASEv1:
 
 1. Zadejte název vašeho pomocného programu. Název, který zadáte pro pomocného nástroje, se použije pro aplikace vytvořené v pomocném mechanismu. Pokud je název pomocného mechanismu appsvcenvdemo, název subdomény by byl: *appsvcenvdemo.p.azurewebsites.NET*. Pokud tedy vytvoříte aplikaci s názvem *MyTestApp*, bude se adresovat na *MyTestApp.appsvcenvdemo.p.azurewebsites.NET*. V názvu vašeho pomocného mechanismu se nedá použít prázdné znaky. Použijete-li velká písmena v názvu, bude název domény celková verze tohoto názvu. Pokud použijete interního nástroje, vaše jméno pomocného mechanismu se nepoužije v subdoméně, ale místo toho je explicitně uvedeno během vytváření pomocného mechanismu.
    
