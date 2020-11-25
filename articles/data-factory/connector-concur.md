@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 6699178e514f4d25666305f3251e8eaf9d28e6dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6d6c830eec8e711e700733a90611c353b68439d
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417462"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030794"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Kopírování dat z Concur pomocí Azure Data Factory (Preview)
 
@@ -36,8 +36,6 @@ Tento konektor Concur je podporován pro následující činnosti:
 
 Data z Concur můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, takže nemusíte ručně instalovat žádné ovladače pomocí tohoto konektoru.
-
 > [!NOTE]
 > Partnerský účet se v tuto chvíli nepodporuje.
 
@@ -53,15 +51,54 @@ Pro propojenou službu Concur jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **Concur** . | Ano |
-| clientId | Aplikace client_id poskytovaná správou aplikací Concur.  | Ano |
-| username | Uživatelské jméno, které používáte pro přístup ke službě Concur.  | Ano |
-| heslo | Heslo odpovídající uživatelskému jménu, které jste zadali v poli uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| typ | Vlastnost Type musí být nastavená na: **Concur** . | Yes |
+| connectionProperties | Skupina vlastností, která definuje, jak se připojit k Concur. | Yes |
+| **_Pod `connectionProperties` :_* _ | | |
+| authenticationType | Povolené hodnoty jsou `OAuth_2.0_Bearer` a `OAuth_2.0` (starší). Možnost ověřování OAuth 2,0 funguje se starým rozhraním API Concur, které bylo Zastaralé od února 2017. | Yes |
+| Hostitel | Koncový bod serveru Concur, `implementation.concursolutions.com` např.  | Yes |
+| baseUrl | Základní adresa URL autorizace vaší Concur | Ano pro `OAuth_2.0_Bearer` ověřování |
+| clientId | ID klienta aplikace, které poskytuje Správa aplikací Concur.  | Yes |
+| clientSecret | Tajný klíč klienta odpovídající ID klienta. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano pro `OAuth_2.0_Bearer` ověřování |
+| username | Uživatelské jméno, které používáte pro přístup ke službě Concur. | Yes |
+| heslo | Heslo odpovídající uživatelskému jménu, které jste zadali v poli uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | No |
 | useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | No |
 | usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | No |
 
-**Příklad:**
+_ *Příklad:**
+
+```json
+{ 
+    "name": "ConcurLinkedService", 
+    "properties": {
+        "type": "Concur",
+        "typeProperties": {
+            "connectionProperties": {
+                "host":"<host e.g. implementation.concursolutions.com>",
+                "baseUrl": "<base URL for authorization e.g. us-impl.api.concursolutions.com>",
+                "authenticationType": "OAuth_2.0_Bearer",
+                "clientId": "<client id>",
+                "clientSecret": {
+                    "type": "SecureString",
+                    "value": "<client secret>"
+                },
+                "username": "fakeUserName",
+                "password": {
+                    "type": "SecureString",
+                    "value": "<password>"
+                },
+                "useEncryptedEndpoints": true,
+                "useHostVerification": true,
+                "usePeerVerification": true
+            }
+        }
+    }
+} 
+```
+
+**Příklad (starší verze):**
+
+Všimněte si, že toto je starší model propojené služby bez `connectionProperties` a pomocí `OAuth_2.0` ověřování.
 
 ```json
 {
@@ -88,7 +125,7 @@ Chcete-li kopírovat data z Concur, nastavte vlastnost Type datové sady na **Co
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **ConcurObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **ConcurObject** . | Yes |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 
@@ -119,8 +156,8 @@ Chcete-li kopírovat data z Concur, nastavte typ zdroje v aktivitě kopírován�
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **ConcurSource** . | Ano |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Opportunities where Id = xxx "`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **ConcurSource** . | Yes |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM Opportunities where Id = xxx "`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
 

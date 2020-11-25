@@ -7,18 +7,24 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/19/2020
+ms.date: 11/24/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 81bcfdf5e63d49280fb798773559310cbd912a26
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4390291eb96c11b8fb7fdb48eb92abaf802b80c0
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013577"
+ms.locfileid: "96030777"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Vytvoření modulu pro návrhy umožňující automatické dokončování a navrhované výsledky v dotazu
 
-V Azure Kognitivní hledání je vyhledávání "Search-as-Type" povolené prostřednictvím konstrukce **návrhového** modulu přidaného do [indexu vyhledávání](search-what-is-an-index.md). Modul pro návrhy podporuje dvě prostředí: *Automatické dokončování*, které dokončuje částečný vstup pro celý dotaz na určitý termín, a *návrhy* , které pozvaní na kliknutí do konkrétní shody. Automatické dokončování vytvoří dotaz. Návrhy vytvoří vyhovující dokument.
+V Azure Kognitivní hledání je vyhledávání "Search-as-Type" povolené prostřednictvím nástroje pro *návrhy*. Modul pro návrhy je interní datová struktura, která se skládá z kolekce polí. Pole se dotýkají dodatečného tokenizace, generování posloupnosti předpon pro podporu shody na částečných výrazech.
+
+Pokud například modul pro návrhy obsahuje pole City, budou pro termín "Seattle" vytvořena Výsledná kombinace předpony "moře", "sedadlo", "pracovní stanice" a "seattl". Předpony jsou uloženy v obrácených indexech, jedno pro každé pole zadané v kolekci polí modulu pro návrhy.
+
+## <a name="typeahead-experiences-in-cognitive-search"></a>Typeahead prostředí v Kognitivní hledání
+
+Modul pro návrhy podporuje dvě prostředí: *Automatické dokončování*, které dokončuje částečný vstup pro celý dotaz na určitý termín, a *návrhy* , které pozvaní na kliknutí do konkrétní shody. Automatické dokončování vytvoří dotaz. Návrhy vytvoří vyhovující dokument.
 
 Následující snímek obrazovky z části [Vytvoření první aplikace v jazyce C#](tutorial-csharp-type-ahead-and-suggestions.md) ilustruje obě. Automatické dokončování předpokládá potenciální termín a dokončuje "TW" s "in". Návrhy jsou zkrácené výsledky hledání, kde pole jako název hotelu představuje odpovídající dokument hledání hotelu z indexu. V případě návrhů můžete Surface libovolného pole, které poskytuje popisné informace.
 
@@ -31,10 +37,6 @@ Tyto funkce můžete použít samostatně nebo dohromady. K implementaci těchto
 + Pomocí některého z [rozhraní API uvedených níže](#how-to-use-a-suggester)zavolejte na dotaz s povoleným návrhem, ve formě žádosti o návrh nebo žádosti o automatické dokončování.
 
 Podpora vyhledávání podle typu je povolena pro každé pole pro pole řetězců. Typeahead chování můžete implementovat v rámci stejného řešení hledání, pokud chcete podobné prostředí, jaké je uvedené na snímku obrazovky. Oba požadavky cílí na to, že kolekce *dokumentů* určitého indexu a odpovědí se vrátí poté, co uživatel zadá alespoň tři vstupní řetězce znaků.
-
-## <a name="what-is-a-suggester"></a>Co je to modul pro návrhy?
-
-Modul pro návrhy je interní datová struktura, která podporuje chování vyhledávání podle typu, protože ukládá předpony pro porovnání u částečných dotazů. Stejně jako u výrazů s tokeny jsou předpony uloženy v obrácených indexech, jedno pro každé pole zadané v kolekci polí pro návrhy.
 
 ## <a name="how-to-create-a-suggester"></a>Jak vytvořit modul pro návrhy
 

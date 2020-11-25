@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: ed9c3c86336a7b0a2fe989cbe9bd0dd825c5575b
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 08bcb74fd50be0eeb7a73c0743db2c4f3a57be32
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372621"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030845"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Ochrana úloh Kubernetes
 
@@ -47,23 +47,32 @@ Pokud povolíte Azure Defender, Security Center nabízí více funkcí zabezpeč
 
 Azure Security Center zahrnuje sadu doporučení, která jsou k dispozici po instalaci **Azure Policy doplňku pro Kubernetes**.
 
-1. Pokud chcete nakonfigurovat doporučení, musíte nejdřív nainstalovat doplněk na:
+### <a name="step-1-deploy-the-add-on"></a>Krok 1: nasazení doplňku
 
-    1. Na stránce doporučení vyhledejte doporučení s názvem **Azure Policy doplněk pro Kubernetes by měl být nainstalovaný a povolený v clusterech**.
+Pokud chcete nakonfigurovat doporučení, nainstalujte  **doplněk Azure Policy pro Kubernetes**. 
+
+- Tento doplněk můžete automaticky nasadit, jak je vysvětleno v tématu [Povolení automatického zřizování rozšíření](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions). Pokud je Automatické zřizování pro doplněk nastavené na zapnuto, rozšíření je ve výchozím nastavení povolené ve všech stávajících i budoucích clusterech (které splňují požadavky na instalaci doplňku).
+
+- Postup ručního nasazení doplňku:
+
+    1. Na stránce doporučení vyhledejte doporučení "**Azure Policy doplněk pro Kubernetes by měl být nainstalovaný a povolený ve vašich clusterech**". 
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes.png" alt-text="Doporučení * * Azure Policy doplněk pro Kubernetes byste měli nainstalovat a povolit ve svých clusterech * *":::
 
         > [!TIP]
         > Doporučení je součástí pěti různých ovládacích prvků zabezpečení a nezáleží na tom, který z nich vybíráte v dalším kroku.
 
-    1. V jakémkoli z ovládacích prvků zabezpečení vyberte doporučení, abyste viděli prostředky, na které můžete nainstalovat doplněk, a pak vyberte **opravit**. 
+    1. Z jakéhokoli ovládacího prvku zabezpečení vyberte doporučení a zobrazte prostředky, na které můžete nainstalovat doplněk.
+    1. Vyberte příslušný cluster a **opravte** ho.
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="Stránka s podrobnostmi doporučení pro * * Azure Policy doplňku pro Kubernetes by měla být na vašich clusterech nainstalována a povolena * *":::
+
+### <a name="step-2-view-and-configure-the-bundle-of-13-recommendations"></a>Krok 2: zobrazení a konfigurace sady 13 doporučení
 
 1. Přibližně 30 minut po dokončení instalace doplňku Security Center zobrazí stav clusterů v následujících doporučeních, v příslušném ovládacím prvku zabezpečení, jak je znázorněno níže:
 
     > [!TIP]
-    > Některá doporučení mají parametry, které je potřeba přizpůsobit pomocí Azure Policy, aby je bylo možné efektivně použít. Chcete-li například využít výhod imagí kontejnerů s doporučeními, které **by měly být nasazeny pouze z důvěryhodných registrů** , budete muset definovat důvěryhodné Registry.
+    > Některá doporučení mají parametry, které je potřeba přizpůsobit pomocí Azure Policy, aby je bylo možné efektivně použít. Chcete-li například využít výhod imagí kontejnerů s doporučeními, které **by měly být nasazeny pouze z důvěryhodných registrů**, budete muset definovat důvěryhodné Registry.
     > 
     > Pokud nezadáte potřebné parametry pro doporučení, které vyžadují konfiguraci, budou se vaše úlohy zobrazovat v pořádku.
 
@@ -82,6 +91,7 @@ Azure Security Center zahrnuje sadu doporučení, která jsou k dispozici po ins
     | Používání hostitelských sítí a portů by se mělo omezit.                     | Omezit neautorizovaný přístup k síti     | **Ano**                |
     | Přepsání nebo zakázání profilu kontejnerů AppArmor by mělo být omezené. | Náprava konfigurací zabezpečení        | **Ano**                |
     | Image kontejneru by se měly nasadit jenom z důvěryhodných registrů.            | Napravit ohrožení zabezpečení                | **Ano**                |
+    |||
 
 
 1. Doporučení s parametry se musí přizpůsobit nastavením parametrů:
@@ -97,7 +107,7 @@ Azure Security Center zahrnuje sadu doporučení, která jsou k dispozici po ins
 
 1. K vykonání všech doporučení 
 
-    1. Otevřete stránku s podrobnostmi o doporučení a vyberte **Odepřít** :
+    1. Otevřete stránku s podrobnostmi o doporučení a vyberte **Odepřít**:
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Možnost Deny pro parametr Azure Policy":::
 

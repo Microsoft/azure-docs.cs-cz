@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: a73d155d20d09573ad5e1b2597678291aea4c92b
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: c7db48a1df61472de8676192f267493232139b6e
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980571"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030811"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Plánování a Správa nákladů na Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -52,7 +52,7 @@ Pokud plánujete používat Azure Cosmos DB v režimu bez serveru, musíte odhad
 | Spustit dotaz | 10 RU | Průměrné náklady na dotaz, který plně využívá [indexování](index-overview.md) a vrací 100 výsledků nebo méně |
 
 > [!IMPORTANT] 
-> Věnujte pozornost komentářům z výše uvedené tabulky. Pro přesnější odhad skutečných nákladů na vaše operace můžete použít [emulátor Azure Cosmos](local-emulator.md) a [měřit přesné náklady na ru za vaše operace](find-request-unit-charge.md). I když emulátor Azure Cosmos nepodporuje bez serveru, oznamuje za databázové operace Standard RU a dá se použít pro tento odhad.
+> Věnujte pozornost komentářům z výše uvedené tabulky. Pro přesnější odhad skutečných nákladů na vaše operace můžete použít [emulátor Azure Cosmos DB](local-emulator.md) a [změřit přesné náklady na ru za vaše operace](find-request-unit-charge.md). I když emulátor Azure Cosmos DB nepodporuje bez serveru, oznamuje za databázové operace standardní poplatek a dá se použít pro tento odhad.
 
 Po vypočítání celkového počtu jednotek žádostí a GB úložiště, které budete pravděpodobně spotřebovávat za měsíc, vrátí následující vzorec odhad nákladů: **([počet jednotek žádosti]/1 000 000 × $0,25) + ([GB úložiště] * $0,25)**.
 

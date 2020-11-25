@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6b57428aeba702dc8cf06ec4ae7984854a94ac7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7265195f9614928a2150a56a780ea7b36bc2e266
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449170"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030862"
 ---
-# <a name="container-security-in-security-center"></a>Zabezpečení kontejneru v Security Center
+# <a name="container-security-in-security-center"></a>Zabezpečení kontejnerů ve službě Security Center
 
 Azure Security Center je řešení Azure Native pro zabezpečení vašich kontejnerů.
 
@@ -78,11 +78,11 @@ Podrobnosti o relevantních doporučeních Security Center, která se můžou zo
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>Osvědčené postupy ochrany úloh pomocí řízení přístupu Kubernetes
 
-Nainstalujte  **doplněk Azure Policy pro Kubernetes** , abyste získali sadu doporučení pro ochranu zatížení vašich kontejnerů Kubernetes.
+Pro sadu doporučení pro ochranu úloh Kubernetes kontejnerů nainstalujte  **doplněk Azure Policy pro Kubernetes**. Tento doplněk můžete také automaticky nasadit, jak je vysvětleno v tématu [Povolení automatického zřizování rozšíření](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions). Pokud je Automatické zřizování pro doplněk nastavené na zapnuto, rozšíření je ve výchozím nastavení povolené ve všech stávajících i budoucích clusterech (které splňují požadavky na instalaci doplňku).
 
 Jak je vysvětleno na [tomto Azure Policy stránce pro Kubernetes](../governance/policy/concepts/policy-for-kubernetes.md), doplněk rozšiřuje Webhook open-source [gatekeeper V3](https://github.com/open-policy-agent/gatekeeper)   Admission Controller pro [Open Policy agent](https://www.openpolicyagent.org/). Řadiče pro přijímání Kubernetes jsou moduly plug-in, které vynutily používání clusterů. Doplněk se registruje jako Webhook pro Kubernetes Admission Control a umožňuje použít v centralizovaném, konzistentním způsobem vynucování a ochranu vašich clusterů v rámci škálování. 
 
-Po instalaci doplňku v clusteru AKS se všechny požadavky na server rozhraní Kubernetes API monitorují před tím, než se zachovají do clusteru. Pak můžete nakonfigurovat, aby **vynutil** osvědčené postupy a nakonfigurovaly je pro budoucí úlohy. 
+Díky doplňku v clusteru AKS se všechny požadavky na server rozhraní Kubernetes API monitorují proti předdefinované sadě osvědčených postupů předtím, než se trvale uloží do clusteru. Pak můžete nakonfigurovat, aby **vynutil** osvědčené postupy a nakonfigurovaly je pro budoucí úlohy. 
 
 Můžete například stanovit, že by se neměly vytvářet privilegované kontejnery a všechny budoucí požadavky tak budou zablokovány.
 
@@ -100,4 +100,4 @@ Další informace najdete v informacích o [ochraně úloh Kubernetes](kubernete
 V tomto přehledu jste se dozvěděli o základních prvcích zabezpečení kontejneru v Azure Security Center. Související materiál najdete v těchto tématech:
 
 - [Seznámení s Azure Defenderem pro Kubernetes](defender-for-kubernetes-introduction.md)
-- [Seznámení s Azure Defenderem pro Registry kontejnerů](defender-for-container-registries-introduction.md)
+- [Úvod do Azure Defenderu pro registry kontejnerů](defender-for-container-registries-introduction.md)

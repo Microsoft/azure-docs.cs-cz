@@ -7,17 +7,17 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
 ms.custom: contperfq1
-ms.openlocfilehash: cb6d1cb684f4c2e3f563d5690c804d64c97ff70c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 67abcea1b5d7657ffcd342d4cddb9a96bdd8c63a
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096729"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030879"
 ---
 # <a name="command-line-and-powershell-reference-for-azure-cosmos-db-emulator"></a>Reference k příkazovému řádku a prostředí PowerShell pro emulátor Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Emulátor Azure Cosmos poskytuje místní prostředí, které emuluje službu Azure Cosmos DB pro účely místního vývoje. Po [instalaci emulátoru](local-emulator.md)můžete řídit emulátor pomocí příkazového řádku a příkazů prostředí PowerShell. Tento článek popisuje, jak použít příkazy příkazového řádku a prostředí PowerShell ke spuštění a zastavení emulátoru, konfiguraci možností a provádění dalších operací. Je nutné spustit příkazy z umístění instalace.
+Emulátor Azure Cosmos DB poskytuje místní prostředí, které emuluje službu Azure Cosmos DB pro účely místního vývoje. Po [instalaci emulátoru](local-emulator.md)můžete řídit emulátor pomocí příkazového řádku a příkazů prostředí PowerShell. Tento článek popisuje, jak použít příkazy příkazového řádku a prostředí PowerShell ke spuštění a zastavení emulátoru, konfiguraci možností a provádění dalších operací. Je nutné spustit příkazy z umístění instalace.
 
 ##  <a name="manage-the-emulator-with-command-line-syntax"></a><a id="command-line"></a>Správa emulátoru pomocí syntaxe příkazového řádku
 
@@ -29,10 +29,10 @@ Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `Micro
 
 |**Možnost** | **Popis** | **Příkaz**| **Arguments**|
 |---|---|---|---|
-|[Žádné argumenty] | Spustí emulátor Azure Cosmos s výchozími nastaveními. |Microsoft.Azure.Cosmos.Emulator.exe| |
+|[Žádné argumenty] | Spustí emulátor služby Azure Cosmos DB s výchozím nastavením. |Microsoft.Azure.Cosmos.Emulator.exe| |
 |[Nápověda] |Zobrazí seznam podporovaných argumentů příkazového řádku.|Microsoft.Azure.Cosmos.Emulator.exe/? | |
-| GetStatus |Získá stav emulátoru Azure Cosmos. Stav je indikován ukončovacím kódem: 1 = spouštění, 2 = spuštěno, 3 = zastaveno. Záporný ukončovací kód označuje, že došlo k chybě. Žádný jiný výstup neexistuje. | Microsoft.Azure.Cosmos.Emulator.exe/GetStatus| |
-| Vypnutí| Ukončí emulátor Azure Cosmos.| Microsoft.Azure.Cosmos.Emulator.exe/Shutdown | |
+| GetStatus |Získá stav emulátoru služby Azure Cosmos DB. Stav je indikován ukončovacím kódem: 1 = spouštění, 2 = spuštěno, 3 = zastaveno. Záporný ukončovací kód označuje, že došlo k chybě. Žádný jiný výstup neexistuje. | Microsoft.Azure.Cosmos.Emulator.exe/GetStatus| |
+| Vypnutí| Ukončí emulátor služby Azure Cosmos DB.| Microsoft.Azure.Cosmos.Emulator.exe/Shutdown | |
 |DataPath | Určuje cestu, do které chcete uložit datové soubory. Výchozí hodnota je%LocalAppdata%\CosmosDBEmulator. | Microsoft.Azure.Cosmos.Emulator.exe/DataPath =\<datapath\> | \<datapath\>: Přístupná cesta |
 |Port | Určuje číslo portu pro emulátor. Výchozí hodnota je 8081. |Microsoft.Azure.Cosmos.Emulator.exe/port =\<port\> | \<port\>: Jedno číslo portu |
 | ComputePort | Určuje číslo portu, které se má použít pro službu COMPUTE Interop Gateway. Port testu koncového bodu HTTP brány se počítá jako ComputePort + 79. Proto musí být ComputePort a ComputePort + 79 otevřené a dostupné. Výchozí hodnota je 8900. | Microsoft.Azure.Cosmos.Emulator.exe/ComputePort =\<computeport\> | \<computeport\>: Jedno číslo portu |
@@ -127,26 +127,26 @@ Rutina zajišťuje zastavení emulátoru před jeho odinstalací.
 
 ## <a name="change-the-number-of-default-containers"></a><a id="set-partitioncount"></a>Změna počtu výchozích kontejnerů
 
-Ve výchozím nastavení můžete vytvořit až 25 kontejnerů s pevnou velikostí (podporované jenom pomocí sad Azure Cosmos DB SDK) nebo 5 neomezených kontejnerů pomocí emulátoru Azure Cosmos. Změnou hodnoty **PartitionCount** můžete vytvořit až 250 kontejnerů pevné velikosti nebo 50 neomezených kontejnerů, případně jakoukoli kombinaci dvou, která nepřekračuje 250 kontejnerů pevné velikosti (kde jeden neomezený kontejner = 5 kontejnerů pevné velikosti). Nedoporučuje se však nastavit emulátor pro spuštění s více než 200 kontejnery s pevnou velikostí. Z důvodu režie, kterou přidává k diskovým operacím v/v, což vede k nepředvídatelným časovým limitům při použití rozhraní API koncových bodů.
+Ve výchozím nastavení můžete vytvořit až 25 kontejnerů pevné velikosti (podporuje se jenom pomocí sad Azure Cosmos DB SDK) nebo 5 neomezených kontejnerů pomocí emulátoru Azure Cosmos DB. Změnou hodnoty **PartitionCount** můžete vytvořit až 250 kontejnerů pevné velikosti nebo 50 neomezených kontejnerů, případně jakoukoli kombinaci dvou, která nepřekračuje 250 kontejnerů pevné velikosti (kde jeden neomezený kontejner = 5 kontejnerů pevné velikosti). Nedoporučuje se však nastavit emulátor pro spuštění s více než 200 kontejnery s pevnou velikostí. Z důvodu režie, kterou přidává k diskovým operacím v/v, což vede k nepředvídatelným časovým limitům při použití rozhraní API koncových bodů.
 
 Pokud se pokusíte vytvořit kontejner po překročení aktuálního počtu oddílů, emulátor vyvolá výjimku ServiceUnavailable s následující zprávou.
 
 > Omlouváme se, ale v tuto chvíli máme vysokou poptávku a v tuto chvíli nemůže váš požadavek splnit. Průběžně pracujeme na zajištění více a větší kapacity online a pomůžeme vám to zkusit znovu.
 > ActivityId: 12345678-1234-1234-1234-123456789ABC
 
-Pokud chcete změnit počet kontejnerů dostupných v emulátoru Azure Cosmos, spusťte následující postup:
+Chcete-li změnit počet kontejnerů, které jsou k dispozici v emulátoru Azure Cosmos DB, spusťte následující postup:
 
-1. Kliknutím pravým tlačítkem na ikonu **emulátoru Azure Cosmos DB** na hlavním panelu a kliknutím na **resetovat data** odstraňte všechna místní data emulátoru Azure Cosmos.
+1. Odstraňte všechna místní data emulátoru služby Azure Cosmos DB tak, že kliknete pravým tlačítkem myši na ikonu **emulátoru služby Azure Cosmos DB** na hlavním panelu systému a potom kliknete na **Reset Data...** (Obnovit data).
 
 1. Odstraní všechna data emulátoru v této složce `%LOCALAPPDATA%\CosmosDBEmulator` .
 
 1. Ukončete všechny otevřené instance tak, že kliknete pravým tlačítkem myši na ikonu **emulátoru služby Azure Cosmos DB** na hlavním panelu systému a potom kliknete na **Exit** (Konec). Ukončení všech instancí může chvíli trvat.
 
-1. Nainstalujte nejnovější verzi [emulátoru Azure Cosmos](https://aka.ms/cosmosdb-emulator).
+1. Nainstalujte nejnovější verzi [emulátoru služby Azure Cosmos DB](https://aka.ms/cosmosdb-emulator).
 
 1. Spusťte emulátor s příznakem PartitionCount nastaveným na hodnotu < = 250. Příklad: `C:\Program Files\Azure Cosmos DB Emulator> Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=100`.
  
 ## <a name="next-steps"></a>Další kroky
 
-* [Export certifikátů emulátoru Azure Cosmos pro použití s aplikacemi Java, Python a Node.js](local-emulator-export-ssl-certificates.md)
+* [Export certifikátů emulátoru Azure Cosmos DB pro použití s aplikacemi Java, Python a Node.js](local-emulator-export-ssl-certificates.md)
 * [Ladění problémů s emulátorem](troubleshoot-local-emulator.md)
