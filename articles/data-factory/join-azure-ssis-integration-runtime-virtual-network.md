@@ -12,11 +12,11 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.openlocfilehash: e73126cfc54294a7b9d54ff62c406d5e686ac470
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186769"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95982704"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Připojení prostředí Azure-SSIS Integration Runtime k virtuální síti
 
@@ -170,9 +170,9 @@ Pokud potřebujete implementovat NSG pro podsíť, kterou používá vaše Azure
 |---|---|---|---|---|---|---|
 | Odchozí | TCP | VirtualNetwork | * | AzureCloud | 443 | Uzly vašeho Azure-SSIS IR ve virtuální síti používají tento port pro přístup ke službám Azure, jako je například Azure Storage a Azure Event Hubs. |
 | Odchozí | TCP | VirtualNetwork | * | Internet | 80 | Volitelné Uzly vašeho Azure-SSIS IR ve virtuální síti používají tento port ke stažení seznamu odvolaných certifikátů z Internetu. Pokud zablokujete tento provoz, může dojít ke snížení výkonu při spuštění prostředí IR a ke ztrátě možností použití certifikátu pro kontrolu seznamu odvolaných certifikátů. Pokud chcete cíl dále zúžit na určité plně kvalifikované názvy domény, přečtěte si téma **použití Azure ExpressRoute nebo udr** .|
-| Odchozí | TCP | VirtualNetwork | * | Sql | 1433, 11000-11999 | Volitelné Toto pravidlo se vyžaduje jenom v případě, že uzly Azure-SSIS IR ve virtuální síti přístup k SSISDB hostovanému vaším serverem. Pokud je zásada připojení k serveru nastavená na **proxy** místo **přesměrování** , je potřeba jenom port 1433. <br/><br/> Toto odchozí pravidlo zabezpečení se nevztahuje na SSISDB, které hostuje vaše spravovaná instance SQL ve virtuální síti nebo SQL Database nakonfigurovaná pomocí privátního koncového bodu. |
-| Odchozí | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000-11999 | Volitelné Toto pravidlo se vyžaduje jenom v případě, že uzly vaší Azure-SSIS IR ve virtuální síti přistupují k SSISDB hostovanému vaší spravovanou instancí SQL ve virtuální síti nebo SQL Database nakonfigurované pomocí privátního koncového bodu. Pokud je zásada připojení k serveru nastavená na **proxy** místo **přesměrování** , je potřeba jenom port 1433. |
-| Odchozí | TCP | VirtualNetwork | * | Úložiště | 445 | Volitelné Toto pravidlo se vyžaduje jenom v případě, že chcete spustit balíček SSIS uložený ve službě soubory Azure. |
+| Odchozí | TCP | VirtualNetwork | * | Sql | 1433, 11000-11999 | Volitelné Toto pravidlo se vyžaduje jenom v případě, že uzly Azure-SSIS IR ve virtuální síti přístup k SSISDB hostovanému vaším serverem. Pokud je zásada připojení k serveru nastavená na **proxy** místo **přesměrování**, je potřeba jenom port 1433. <br/><br/> Toto odchozí pravidlo zabezpečení se nevztahuje na SSISDB, které hostuje vaše spravovaná instance SQL ve virtuální síti nebo SQL Database nakonfigurovaná pomocí privátního koncového bodu. |
+| Odchozí | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000-11999 | Volitelné Toto pravidlo se vyžaduje jenom v případě, že uzly vaší Azure-SSIS IR ve virtuální síti přistupují k SSISDB hostovanému vaší spravovanou instancí SQL ve virtuální síti nebo SQL Database nakonfigurované pomocí privátního koncového bodu. Pokud je zásada připojení k serveru nastavená na **proxy** místo **přesměrování**, je potřeba jenom port 1433. |
+| Odchozí | TCP | VirtualNetwork | * | Storage | 445 | Volitelné Toto pravidlo se vyžaduje jenom v případě, že chcete spustit balíček SSIS uložený ve službě soubory Azure. |
 ||||||||
 
 ### <a name="use-azure-expressroute-or-udr"></a><a name="route"></a> Použití Azure ExpressRoute nebo UDR
@@ -184,9 +184,9 @@ Chcete-li udělat celý scénář, musíte provést následující kroky.
    -   Příchozí provoz mezi Azure Batch Management Services a Azure-SSIS IR se nedá směrovat přes zařízení brány firewall.
    -   Zařízení brány firewall musí umožňovat odchozí provoz vyžadovaný Azure-SSIS IR.
 
-Příchozí provoz mezi Azure Batch Management Services a Azure-SSIS IR není možné směrovat do zařízení brány firewall. v důsledku problému s asymetrickým směrováním dojde k přerušení provozu. Trasy musí být definovány pro příchozí provoz, aby přenos mohl odpovídat stejnému způsobu, jakým přišel. Můžete definovat konkrétní udr ke směrování provozu mezi Azure Batch služby správy a Azure-SSIS IR s typem dalšího segmentu směrování jako **Internet** .
+Příchozí provoz mezi Azure Batch Management Services a Azure-SSIS IR není možné směrovat do zařízení brány firewall. v důsledku problému s asymetrickým směrováním dojde k přerušení provozu. Trasy musí být definovány pro příchozí provoz, aby přenos mohl odpovídat stejnému způsobu, jakým přišel. Můžete definovat konkrétní udr ke směrování provozu mezi Azure Batch služby správy a Azure-SSIS IR s typem dalšího segmentu směrování jako **Internet**.
 
-Pokud se například vaše Azure-SSIS IR nachází v `UK South` a chcete kontrolovat odchozí přenosy prostřednictvím Azure firewall, měli byste nejprve získat seznam rozsahů IP adres služby `BatchNodeManagement.UKSouth` z [odkazu ke stažení z rozsahu IP adres značek služby](https://www.microsoft.com/download/details.aspx?id=56519) nebo prostřednictvím [rozhraní API pro zjišťování značek služby](../virtual-network/service-tags-overview.md#service-tags-on-premises). Pak použijte následující udr trasy rozsahu IP adres s typem dalšího segmentu směrování jako **Internet** společně s trasou 0.0.0.0/0 s typem dalšího segmentu směrování jako **virtuální zařízení** .
+Pokud se například vaše Azure-SSIS IR nachází v `UK South` a chcete kontrolovat odchozí přenosy prostřednictvím Azure firewall, měli byste nejprve získat seznam rozsahů IP adres služby `BatchNodeManagement.UKSouth` z [odkazu ke stažení z rozsahu IP adres značek služby](https://www.microsoft.com/download/details.aspx?id=56519) nebo prostřednictvím [rozhraní API pro zjišťování značek služby](../virtual-network/service-tags-overview.md#service-tags-on-premises). Pak použijte následující udr trasy rozsahu IP adres s typem dalšího segmentu směrování jako **Internet** společně s trasou 0.0.0.0/0 s typem dalšího segmentu směrování jako **virtuální zařízení**.
 
 ![Nastavení UDR Azure Batch](media/join-azure-ssis-integration-runtime-virtual-network/azurebatch-udr-settings.png)
 
@@ -269,10 +269,10 @@ Aby bylo možné u zařízení s bránou firewall povolený odchozí provoz, je 
 > [!NOTE]
 > Pokud pro Azure SQL a službu Storage nakonfigurujete koncové body služby Virtual Network ve vaší podsíti, přenosy mezi Azure-SSIS IR a Azure SQL ve stejné oblasti \ Azure Storage ve stejné oblasti nebo spárované oblasti budou směrovány do Microsoft Azure páteřní sítě přímo místo zařízení brány firewall.
 
-Pokud nepotřebujete mít možnost kontrolovat odchozí provoz Azure-SSIS IR, můžete jednoduše použít směrování a vynutit veškerý provoz na typ dalšího segmentu směrování **Internet** :
+Pokud nepotřebujete mít možnost kontrolovat odchozí provoz Azure-SSIS IR, můžete jednoduše použít směrování a vynutit veškerý provoz na typ dalšího segmentu směrování **Internet**:
 
 -   V případě scénáře Azure ExpressRoute můžete použít trasu 0.0.0.0/0 s typem dalšího segmentu směrování jako **Internet** v podsíti, která hostuje Azure-SSIS IR. 
--   Ve scénáři síťové virtuální zařízení můžete upravit existující trasu 0.0.0.0/0 použitou v podsíti, která hostuje Azure-SSIS IR z dalšího typu segmentu směrování jako **virtuální zařízení** na **Internet** .
+-   Ve scénáři síťové virtuální zařízení můžete upravit existující trasu 0.0.0.0/0 použitou v podsíti, která hostuje Azure-SSIS IR z dalšího typu segmentu směrování jako **virtuální zařízení** na **Internet**.
 
 ![Přidat trasu](media/join-azure-ssis-integration-runtime-virtual-network/add-route-for-vnet.png)
 
@@ -282,9 +282,9 @@ Pokud nepotřebujete mít možnost kontrolovat odchozí provoz Azure-SSIS IR, m�
 ### <a name="set-up-the-resource-group"></a><a name="resource-group"></a> Nastavení skupiny prostředků
 
 Azure-SSIS IR musí vytvořit určité síťové prostředky ve stejné skupině prostředků jako virtuální síť. Mezi tyto prostředky patří:
-- Nástroj pro vyrovnávání zatížení Azure s názvem *\<Guid> -azurebatch-cloudserviceloadbalancer* .
-- Veřejná IP adresa Azure s názvem *\<Guid> -azurebatch-cloudservicepublicip* .
-- Skupina zabezpečení práce v síti s názvem *\<Guid> -azurebatch-cloudservicenetworksecuritygroup* . 
+- Nástroj pro vyrovnávání zatížení Azure s názvem *\<Guid> -azurebatch-cloudserviceloadbalancer*.
+- Veřejná IP adresa Azure s názvem *\<Guid> -azurebatch-cloudservicepublicip*.
+- Skupina zabezpečení práce v síti s názvem *\<Guid> -azurebatch-cloudservicenetworksecuritygroup*. 
 
 > [!NOTE]
 > Teď můžete využít vlastní statické veřejné IP adresy pro Azure-SSIS IR. V tomto scénáři vytvoříme jenom skupinu zabezpečení pro vyrovnávání zatížení Azure a skupinu zabezpečení sítě ve stejné skupině prostředků jako vaše statické veřejné IP adresy místo virtuální sítě.
@@ -340,19 +340,19 @@ Použijte portál ke konfiguraci Azure Resource Manager virtuální sítě před
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 
-1. Vyberte **Další služby** . Vyfiltrujte a vyberte **virtuální sítě** . 
+1. Vyberte **Další služby**. Vyfiltrujte a vyberte **virtuální sítě**. 
 
 1. Vyfiltrujte a vyberte svou virtuální síť v seznamu. 
 
-1. Na stránce **virtuální síť** vyberte **vlastnosti** . 
+1. Na stránce **virtuální síť** vyberte **vlastnosti**. 
 
 1. Pro zkopírování ID prostředku pro virtuální síť do schránky vyberte tlačítko Kopírovat pro **ID prostředku** . Uloží ID ze schránky ve OneNotu nebo v souboru. 
 
-1. V nabídce vlevo vyberte **podsítě** . Ujistěte se, že počet dostupných adres je větší než uzly ve vašem Azure-SSIS IR. 
+1. V nabídce vlevo vyberte **podsítě**. Ujistěte se, že počet dostupných adres je větší než uzly ve vašem Azure-SSIS IR. 
 
 1. Ověřte, jestli je poskytovatel Azure Batch zaregistrovaný v předplatném Azure, které má virtuální síť. Nebo zaregistrujte poskytovatele Azure Batch. Pokud už máte účet Azure Batch v předplatném, předplatné se zaregistruje pro Azure Batch. (Pokud vytvoříte Azure-SSIS IR na portálu Data Factory, poskytovatel Azure Batch se automaticky zaregistruje.) 
 
-   1. V Azure Portal v nabídce vlevo vyberte **předplatná** . 
+   1. V Azure Portal v nabídce vlevo vyberte **předplatná**. 
 
    1. Vyberte své předplatné. 
 
@@ -370,17 +370,17 @@ Než se pokusíte připojit k Azure-SSIS IR, použijte portál ke konfiguraci kl
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 
-1. Vyberte **Další služby** . Vyfiltrujte a vyberte **virtuální sítě (klasické)** . 
+1. Vyberte **Další služby**. Vyfiltrujte a vyberte **virtuální sítě (klasické)**. 
 
 1. Vyfiltrujte a vyberte svou virtuální síť v seznamu. 
 
-1. Na stránce **virtuální síť (Classic)** vyberte **vlastnosti** . 
+1. Na stránce **virtuální síť (Classic)** vyberte **vlastnosti**. 
 
    ![ID prostředku klasické virtuální sítě](media/join-azure-ssis-integration-runtime-virtual-network/classic-vnet-resource-id.png)
 
 1. Pro zkopírování ID prostředku pro klasickou síť do schránky vyberte tlačítko Kopírovat pro **ID prostředku** . Uloží ID ze schránky ve OneNotu nebo v souboru. 
 
-1. V nabídce vlevo vyberte **podsítě** . Ujistěte se, že počet dostupných adres je větší než uzly ve vašem Azure-SSIS IR. 
+1. V nabídce vlevo vyberte **podsítě**. Ujistěte se, že počet dostupných adres je větší než uzly ve vašem Azure-SSIS IR. 
 
    ![Počet dostupných adres ve virtuální síti](media/join-azure-ssis-integration-runtime-virtual-network/number-of-available-addresses.png)
 
@@ -390,9 +390,9 @@ Než se pokusíte připojit k Azure-SSIS IR, použijte portál ke konfiguraci kl
 
        ![Tlačítka řízení přístupu a přidat](media/join-azure-ssis-integration-runtime-virtual-network/access-control-add.png)
 
-   1. Vyberte **Přidat přiřazení role** .
+   1. Vyberte **Přidat přiřazení role**.
 
-   1. Na stránce **Přidat přiřazení role** vyberte pro **role** možnost **Přispěvatel klasických virtuálních počítačů** . Do pole **Vybrat** vložte **ddbf3205-c6bd-46ae-8127-60eb93363864** a potom v seznamu výsledků hledání vyberte **Microsoft Azure Batch** . 
+   1. Na stránce **Přidat přiřazení role** vyberte pro **role** možnost **Přispěvatel klasických virtuálních počítačů**. Do pole **Vybrat** vložte **ddbf3205-c6bd-46ae-8127-60eb93363864** a potom v seznamu výsledků hledání vyberte **Microsoft Azure Batch** . 
 
        ![Výsledky hledání na stránce přidat přiřazení role](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
 
@@ -406,7 +406,7 @@ Než se pokusíte připojit k Azure-SSIS IR, použijte portál ke konfiguraci kl
 
 1. Ověřte, jestli je poskytovatel Azure Batch zaregistrovaný v předplatném Azure, které má virtuální síť. Nebo zaregistrujte poskytovatele Azure Batch. Pokud už máte účet Azure Batch v předplatném, předplatné se zaregistruje pro Azure Batch. (Pokud vytvoříte Azure-SSIS IR na portálu Data Factory, poskytovatel Azure Batch se automaticky zaregistruje.) 
 
-   1. V Azure Portal v nabídce vlevo vyberte **předplatná** . 
+   1. V Azure Portal v nabídce vlevo vyberte **předplatná**. 
 
    1. Vyberte své předplatné. 
 
@@ -422,7 +422,7 @@ Po nakonfigurování Azure Resource Manager virtuální sítě nebo klasické vi
 
 1. Spusťte Microsoft Edge nebo Google Chrome. V současné době pouze tyto webové prohlížeče podporují rozhraní Data Factory. 
 
-1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **Datové továrny** . Pokud v nabídce nevidíte **Datové továrny** , vyberte **Další služby** a potom v části **Intelligence + Analytics** vyberte **Datové továrny** . 
+1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **Datové továrny**. Pokud v nabídce nevidíte **Datové továrny** , vyberte **Další služby** a potom v části **Intelligence + Analytics** vyberte **Datové továrny**. 
 
    ![Seznam datových továren](media/join-azure-ssis-integration-runtime-virtual-network/data-factories-list.png)
 
@@ -466,11 +466,11 @@ Po nakonfigurování Azure Resource Manager virtuální sítě nebo klasické vi
       
       1. U **druhé statické veřejné IP adresy** vyberte druhou STATICKOU veřejnou IP adresu, která [splňuje požadavky](#publicIP) pro váš Azure-SSIS IR. Pokud žádné nemáte, klikněte na **vytvořit nový** odkaz pro vytvoření statických veřejných IP adres na Azure Portal a pak klikněte na tlačítko Aktualizovat, abyste je mohli vybrat.
 
-   1. Vyberte **ověření virtuální** sítě. Pokud je ověření úspěšné, vyberte **pokračovat** . 
+   1. Vyberte **ověření virtuální** sítě. Pokud je ověření úspěšné, vyberte **pokračovat**. 
 
    ![Rozšířené nastavení virtuální sítě](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-vnet.png)
 
-1. V části **Souhrn** Zkontrolujte všechna nastavení Azure-SSIS IR. Pak vyberte **aktualizovat** .
+1. V části **Souhrn** Zkontrolujte všechna nastavení Azure-SSIS IR. Pak vyberte **aktualizovat**.
 
 1. Spusťte Azure-SSIS IR výběrem tlačítka **Start** ve sloupci **akce** pro vaši Azure-SSIS IR. Spuštění Azure-SSIS IR, který se připojuje k virtuální síti, trvá přibližně 20 až 30 minut. 
 
