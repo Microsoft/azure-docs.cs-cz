@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.openlocfilehash: bcc0faa8fdbd61ab3e3e0886256f7c796e5a98e2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534681"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011502"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrace úloh podregistru Azure HDInsight 3,6 do HDInsight 4,0
 
@@ -44,7 +44,7 @@ Použijte hodnoty v tabulce níže. Nahraďte `SQLSERVERNAME DATABASENAME USERNA
 |Vlastnost | Hodnota |
 |---|---|
 |Typ skriptu|– Vlastní|
-|Název|Upgrade podregistru|
+|Name|Upgrade podregistru|
 |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
 |Typ (typy) uzlů|Head|
 |Parametry|SQLSERVER HESLO K UŽIVATELSKÉMU JMÉNU \ DATABASENAME|
@@ -103,7 +103,7 @@ Clustery HDInsight 3,6 a 4,0 musí používat stejný účet úložiště.
 >
 > * Po dokončení tohoto skriptu se předpokládá, že původní cluster se už nebude používat pro přístup ke kterékoli z tabulek nebo databází, na které se odkazuje ve skriptu.
 >
-> * Všechny spravované tabulky se stanou transakčními v HDInsight 4,0. Volitelně můžete zachovat netransakční tabulku tak, že data exportujete do externí tabulky pomocí vlastnosti external. Table. vyprázdnění = true. Příklad:
+> * Všechny spravované tabulky se stanou transakčními v HDInsight 4,0. Volitelně můžete zachovat netransakční tabulku tak, že data exportujete do externí tabulky pomocí vlastnosti external. Table. vyprázdnění = true. Třeba
 >
 >    ```SQL
 >    create table tablename_backup like tablename;
@@ -117,7 +117,7 @@ Clustery HDInsight 3,6 a 4,0 musí používat stejný účet úložiště.
 
 1. Připojte se ke clusteru HDInsight 3,6 pomocí [klienta Secure Shell (SSH)](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-1. Z otevřené relace SSH stáhněte následující soubor skriptu, který vygeneruje soubor s názvem **alltables. HQL** .
+1. Z otevřené relace SSH stáhněte následující soubor skriptu, který vygeneruje soubor s názvem **alltables. HQL**.
 
     ```bash
     wget https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/exporthive_hdi_3_6.sh

@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: caedcf313ab809e9607907545f26ca1b62bbeca7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76720040"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012403"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Úlohy k přípravě dat pro rozšířené strojové učení
 Data před zpracováním a čištěním jsou důležité úkoly, které je nutné provést před tím, než bude možné použít datovou sadu pro školení modelů. Nezpracovaná data jsou často v nespolehlivém a nespolehlivá a můžou mít chybějící hodnoty. Použití takových dat pro modelování může způsobit zavádějící výsledky. Tyto úlohy jsou součástí vědeckého procesu týmového zpracování dat (TDSP) a obvykle se řídí počátečním zkoumáním datové sady, která se používá ke zjišťování a naplánování požadovaných předběžného zpracování. Podrobnější pokyny k procesu TDSP najdete v krocích uvedených v rámci [vědeckého procesu týmového zpracování dat](overview.md).
@@ -75,7 +75,7 @@ Chcete-li se zabývat chybějícími hodnotami, je nejlepší určit důvod chyb
 Normalizace dat mění škálované číselné hodnoty na zadaný rozsah. Mezi oblíbené metody normalizace dat patří:
 
 * **Min-max normalizace**: lineárně transformuje data do rozsahu, například 0 až 1, kde je minimální hodnota škálovaná na 0 a maximální hodnota na 1.
-* **Normalizace skóre**v: Škálujte data na základě středníku a směrodatné odchylky: rozdíl mezi daty a průměrem podle směrodatné odchylky.
+* **Normalizace skóre** v: Škálujte data na základě středníku a směrodatné odchylky: rozdíl mezi daty a průměrem podle směrodatné odchylky.
 * **Desetinné měřítko**: Škálujte data posunutím desetinné čárky hodnoty atributu.  
 
 ## <a name="how-to-discretize-data"></a>Jak diskretizaci data?

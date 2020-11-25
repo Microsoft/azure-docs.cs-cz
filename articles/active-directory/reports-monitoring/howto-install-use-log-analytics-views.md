@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 168b41534f6ea6055294cc9e9cec139853904fea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358895"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013022"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Instalace a použití zobrazení Log Analytics pro Azure Active Directory
 
@@ -59,7 +59,7 @@ Pokud chcete používat zobrazení Log Analytics, potřebujete:
     ![Snímek obrazovky zobrazující stránku podrobností analýzy, která obsahuje dotaz na sestavu.](./media/howto-install-use-log-analytics-views/details.png)
 
 
-4. Vyberte **nastavit výstrahu**a potom vyberte pokaždé, když je v části **kritéria výstrahy** vybraná možnost ** &lt; &gt; nedefinovaná logika vlastního protokolu** . Vzhledem k tomu, že chceme upozornit vždy, když dojde k chybě přihlášení, nastavte **prahovou hodnotu** výchozí logiky výstrahy na **1** a potom vyberte **Hotovo**. 
+4. Vyberte **nastavit výstrahu** a potom vyberte pokaždé, když je v části **kritéria výstrahy** vybraná možnost **&lt; &gt; nedefinovaná logika vlastního protokolu** . Vzhledem k tomu, že chceme upozornit vždy, když dojde k chybě přihlášení, nastavte **prahovou hodnotu** výchozí logiky výstrahy na **1** a potom vyberte **Hotovo**. 
 
     ![Konfigurace logiky signálů](./media/howto-install-use-log-analytics-views/configure-signal-logic.png)
 

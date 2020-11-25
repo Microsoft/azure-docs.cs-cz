@@ -10,11 +10,11 @@ ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.openlocfilehash: 0240510a2232bd12a94d5cdd59672270289e5e8f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547516"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011825"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Nejčastější dotazy
 
@@ -56,7 +56,7 @@ Seznamte [se s typy prostředků v clusterech Azure HDInsight](hdinsight-virtual
 
 ### <a name="can-i-install-additional-components-on-my-cluster"></a>Můžu do clusteru nainstalovat další součásti?
 
-Yes. K instalaci dalších součástí nebo přizpůsobení konfigurace clusteru použijte:
+Ano. K instalaci dalších součástí nebo přizpůsobení konfigurace clusteru použijte:
 
 - Skripty během nebo po vytvoření. Skripty jsou vyvolány pomocí [akce skriptu](./hdinsight-hadoop-customize-cluster-linux.md). Akce skriptu je možnost konfigurace, kterou můžete použít z Azure Portal, rutin prostředí Windows PowerShell pro HDInsight nebo sady HDInsight .NET SDK. Tuto možnost konfigurace můžete použít z Azure Portal rutin prostředí Windows PowerShell nebo sady HDInsight .NET SDK.
 
@@ -178,7 +178,7 @@ Pokud chcete připojit virtuální počítače k doméně, musíte mít řadič 
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>Můžu použít certifikát podepsaný svým držitelem v nastavení zabezpečeného LDAP AAD-DS a zřídit cluster ESP?
 
-Doporučuje se použít certifikát vydaný certifikační autoritou. Použití certifikátu podepsaného svým držitelem je také podporováno v protokolu ESP. Další informace naleznete v tématech:
+Doporučuje se použít certifikát vydaný certifikační autoritou. Použití certifikátu podepsaného svým držitelem je také podporováno v protokolu ESP. Další informace naleznete v tématu:
 
 - [Povolení služby Azure Active Directory Domain Services](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
@@ -255,7 +255,7 @@ done
 
 V současné době neexistuje žádný modul plug-in Ranger pro úložiště objektů BLOB a Azure Data Lake Storage Gen1 ani Gen2. Pro clustery ESP byste měli použít Azure Data Lake Storage. Pomocí nástrojů HDFS můžete ručně nastavit jemně odstupňovaná oprávnění na úrovni systému souborů. Při použití Azure Data Lake Storage se taky v clusterech s protokolem ESP provede některé řízení přístupu k systému souborů pomocí Azure Active Directory na úrovni clusteru. 
 
-Zásady přístupu k datům můžete přiřadit ke skupinám zabezpečení vašich uživatelů pomocí Průzkumník služby Azure Storage. Další informace naleznete v tématech:
+Zásady přístupu k datům můžete přiřadit ke skupinám zabezpečení vašich uživatelů pomocí Průzkumník služby Azure Storage. Další informace naleznete v tématu:
 
 - [Návody nastavení oprávnění pro uživatele Azure AD k dotazování na data v Data Lake Storage Gen2 pomocí podregistru nebo jiných služeb?](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
 - [Nastavení oprávnění na úrovni souborů a adresářů pomocí Průzkumník služby Azure Storage s Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-explorer.md)
@@ -272,7 +272,7 @@ Viz [použití prázdných hraničních uzlů na Apache Hadoop clusterech v HDIn
 
 ### <a name="how-can-i-connect-to-an-edge-node"></a>Jak se můžu připojit k hraničnímu uzlu?
 
-Po vytvoření hraničního uzlu se k němu můžete připojit pomocí SSH na portu 22. Název hraničního uzlu najdete na portálu clusteru. Názvy obvykle končí na *-Ed* .
+Po vytvoření hraničního uzlu se k němu můžete připojit pomocí SSH na portu 22. Název hraničního uzlu najdete na portálu clusteru. Názvy obvykle končí na *-Ed*.
 
 ### <a name="why-are-persisted-scripts-not-running-automatically-on-newly-created-edge-nodes"></a>Proč jsou trvalé skripty nespuštěny automaticky u nově vytvořených hraničních uzlů?
 

@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 6af095c7abdb9aa61e57d543ff2ab2f9192dadc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743569"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011434"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>Změna výchozí cesty k objektu blob
 
@@ -50,7 +50,7 @@ Pokud chcete vytvořit funkci Azure Functions, proveďte následující kroky:
      
         ![Function App vytvořena](./media/storsimple-data-manager-change-default-blob-path/function-app-created.png)
 
-5. Vyberte **funkce**a klikněte na **+ Nová funkce**.
+5. Vyberte **funkce** a klikněte na **+ Nová funkce**.
 
     ![Kliknout na + nová funkce](./media/storsimple-data-manager-change-default-blob-path/create-new-function.png)
 
@@ -60,7 +60,7 @@ Pokud chcete vytvořit funkci Azure Functions, proveďte následující kroky:
 
     1. Zadejte **název** funkce.
     2. Do pole **název fronty** zadejte název definice úlohy transformace dat.
-    3. V části **připojení k účtu úložiště**klikněte na **Nový**. V seznamu účtů úložiště vyberte účet přidružený k definici úlohy. Poznamenejte si název připojení (zvýrazněný). Název je požadován později ve funkci Azure Function.
+    3. V části **připojení k účtu úložiště** klikněte na **Nový**. V seznamu účtů úložiště vyberte účet přidružený k definici úlohy. Poznamenejte si název připojení (zvýrazněný). Název je požadován později ve funkci Azure Function.
 
         ![Vytvoření nové funkce jazyka C#](./media/storsimple-data-manager-change-default-blob-path/new-function-parameters.png)
 
@@ -193,7 +193,7 @@ Pokud chcete vytvořit funkci Azure Functions, proveďte následující kroky:
         
         ![Přidat novou funkci přidat soubor](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
     
-    3. Zadejte **project.js**a potom stiskněte klávesu **ENTER**. Do **project.jsv** souboru vložte následující kód:
+    3. Zadejte **project.js** a potom stiskněte klávesu **ENTER**. Do **project.jsv** souboru vložte následující kód:
 
         ```
         {

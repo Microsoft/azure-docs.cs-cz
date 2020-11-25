@@ -6,11 +6,11 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 890b555703f922168a820a0535296b9f55218752
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777727"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011043"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Vytvoření znalostní báze a Správa nastavení
 
@@ -34,13 +34,13 @@ QnA Maker umožňuje spravovat vaše znalostní báze tím, že poskytuje přís
 
     Až skončíte s vytvářením prostředku v Azure Portal, vraťte se na portál QnA Maker, aktualizujte stránku prohlížeče a pokračujte **krokem 2**.
 
-1. V **kroku 3**vyberte službu Active Directory, předplatné, službu (prostředek) a jazyk pro všechny znalostní báze vytvořené ve službě.
+1. V **kroku 3** vyberte službu Active Directory, předplatné, službu (prostředek) a jazyk pro všechny znalostní báze vytvořené ve službě.
 
    ![Snímek obrazovky s výběrem znalostní báze služby QnA Maker](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-1. V **kroku 3**pojmenujte znalostní bázi `My Sample QnA KB` .
+1. V **kroku 3** pojmenujte znalostní bázi `My Sample QnA KB` .
 
-1. V **kroku 4**nakonfigurujte nastavení pomocí následující tabulky:
+1. V **kroku 4** nakonfigurujte nastavení pomocí následující tabulky:
 
     |Nastavení|Hodnota|
     |--|--|
@@ -49,7 +49,7 @@ QnA Maker umožňuje spravovat vaše znalostní báze tím, že poskytuje přís
     |**+ Přidat adresu URL**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
     |**Povídání**|Vybrat **Professional**|
 
-1. V **kroku 5**vyberte **vytvořit znalostní báze**.
+1. V **kroku 5** vyberte **vytvořit znalostní báze**.
 
     Pro extrakci dokumentu a identifikaci otázek a odpovědí trvá proces extrakce chvíli.
 
@@ -72,8 +72,8 @@ QnA Maker umožňuje spravovat vaše znalostní báze tím, že poskytuje přís
        |Přidat adresu URL|Kliknutím na **Spravovat znalostní bázi > + přidat adresu URL** můžete přidat nové adresy URL a přidat tak nový obsah nejčastějších dotazů do znalostní báze.|
        |Odstranit adresu URL|Existující adresy URL můžete odstranit tak, že vyberete ikonu Odstranit, odpadkový koš.|
        |Aktualizovat obsah|Pokud chcete, aby znalostní báze procházela nejnovější obsah existujících adres URL, zaškrtněte políčko **aktualizovat** . Tím se aktualizuje znalostní báze s nejnovějším obsahem adresy URL. Tato možnost nenastavuje pravidelný plán aktualizací.|
-       |Přidat soubor|Podporovaný dokument, který je součástí znalostní báze, můžete přidat tak, že vyberete **Spravovat znalostní bázi**a pak vyberete **+ Přidat soubor** .|
-    |Importovat|Stávající znalostní bázi můžete také importovat výběrem tlačítka **importovat znalostní bázi** . |
+       |Přidat soubor|Podporovaný dokument, který je součástí znalostní báze, můžete přidat tak, že vyberete **Spravovat znalostní bázi** a pak vyberete **+ Přidat soubor** .|
+    |Import|Stávající znalostní bázi můžete také importovat výběrem tlačítka **importovat znalostní bázi** . |
     |Aktualizace|Aktualizace znalostní báze závisí na **cenové úrovni správy** používané při vytváření QnA maker služby přidružené k vaší znalostní bázi. V případě potřeby můžete také aktualizovat úroveň správy z Azure Portal.
 
   1. Až provedete změny ve znalostní bázi, vyberte **Uložit a vytvořit vlak** v pravém horním rohu stránky, aby se změny zachovaly.

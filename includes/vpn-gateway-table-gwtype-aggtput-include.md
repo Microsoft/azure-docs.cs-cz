@@ -9,13 +9,13 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1643b20c6c157c43e93967cef364e703dbf4478e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74828807"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010761"
 ---
-|**<br>Generace služby VPN Gateway <br>** |**Skladová jednotka (SKU)**   | **Tunely<br> S2S/VNet-to-VNet** | **Připojení P2S<br> SSTP** | **<br>Připojení P2S IKEv2/OpenVPN** | **Srovnávací test<br>agregované propustnosti** | **BGP** | **Zóna – redundantní** |
+|**<br>Generace služby VPN Gateway <br>** |**SKU**   | **Tunely<br> S2S/VNet-to-VNet** | **Připojení P2S<br> SSTP** | **<br>Připojení P2S IKEv2/OpenVPN** | **Srovnávací test<br>agregované propustnosti** | **BGP** | **Zóna – redundantní** |
 |---            |---         | ---        | ---       | ---            | ---       | ---       | ---|
 |**Generation1**|**Basic**   | Max. 10    | Max. 128  | Nepodporuje se  | 100 Mb/s  | Nepodporuje se| No |
 |**Generation1**|**VpnGw1**  | Max. 30*   | Max. 128  | Max. 250       | 650 Mb/s  | Podporováno | No |
@@ -48,7 +48,7 @@ ms.locfileid: "74828807"
 
 Abychom zákazníkům porozuměli relativnímu výkonu SKU pomocí různých algoritmů, používali jsme veřejně dostupné nástroje iPerf a CTSTraffic k měření výkonností. V následující tabulce jsou uvedeny výsledky testů výkonnosti pro VpnGw SKU generace 1. Jak vidíte, dosáhnete nejlepšího výkonu, když jsme použili GCMAES256 algoritmus pro šifrování a integritu protokolu IPsec. Dostali jsme průměrný výkon při použití AES256 pro šifrování protokolem IPsec a SHA256 pro zajištění integrity. Když jsme používali DES3 pro šifrování protokolem IPsec a SHA256 pro zajištění integrity, máme nejnižší výkon.
 
-|**Generace**|**Skladová jednotka (SKU)**   | **<br>Použité algoritmy** | **<br>Zjištěná propustnost** | **Pakety za sekundu <br> pozorovány** |
+|**Generace**|**SKU**   | **<br>Použité algoritmy** | **<br>Zjištěná propustnost** | **Pakety za sekundu <br> pozorovány** |
 |---           |---       | ---                 | ---            | ---                    |
 |**Generation1**|**VpnGw1**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 650 Mb/s<br>500 Mb/s<br>120 MB/s   | 58 000<br>50,000<br>50,000|
 |**Generation1**|**VpnGw2**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1 Gb/s<br>500 Mb/s<br>120 MB/s | 90,000<br>80,000<br>55 000|

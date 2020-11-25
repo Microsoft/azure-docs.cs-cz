@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
 ms.openlocfilehash: 5010dc08b695a0376ace5dde935c63caf0c39633
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84711404"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012067"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal"></a>Kurz: Vytvoření brány NAT pomocí Azure Portal
 
@@ -30,7 +30,7 @@ Pokud chcete, můžete tento postup provést pomocí [Azure CLI](quickstart-crea
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="virtual-network-and-parameters"></a>Virtuální síť a parametry
 
@@ -53,27 +53,27 @@ V této části budete muset v krocích níže nahradit následující parametry
 
 Nyní vytvoříme virtuální počítač pro použití služby NAT. Tento virtuální počítač má veřejnou IP adresu, která se používá jako veřejná IP adresa na úrovni instance, která umožňuje přístup k virtuálnímu počítači. Služba NAT má na vědomí směr toku a nahradí výchozí internetový cíl ve vaší podsíti. Veřejná IP adresa virtuálního počítače se nebude používat pro odchozí připojení.
 
-1. V levém horním rohu portálu vyberte **vytvořit Resource**  >  **COMPUTE**  >  **Ubuntu Server 18,04 LTS**nebo vyhledejte **Ubuntu Server 18,04 LTS** v hledání na webu Marketplace.
+1. V levém horním rohu portálu vyberte **vytvořit Resource**  >  **COMPUTE**  >  **Ubuntu Server 18,04 LTS** nebo vyhledejte **Ubuntu Server 18,04 LTS** v hledání na webu Marketplace.
 
-2. V části **vytvořit virtuální počítač**zadejte nebo vyberte následující hodnoty na kartě **základy** :
+2. V části **vytvořit virtuální počítač** zadejte nebo vyberte následující hodnoty na kartě **základy** :
    - **Předplatné**  >  **Skupina prostředků**: vyberte **myResourceGroupNAT**.
    - **Podrobnosti instance**  >  **Název virtuálního počítače**: zadejte **myVM**.
    - **Podrobnosti instance**  >  **Oblast** > vyberte **východní USA 2**.
    - **Účet správce**  >  **Typ ověřování**: vyberte **heslo**.
-   - **Účet správce** > zadejte **uživatelské jméno**, **heslo**a potvrzení informací o **hesle** .
+   - **Účet správce** > zadejte **uživatelské jméno**, **heslo** a potvrzení informací o **hesle** .
    - Pravidla portů pro **příchozí spojení**  >  **Veřejné příchozí porty**: vyberte **Povolit vybrané porty**.
    - Pravidla portů pro **příchozí spojení**  >  **Vyberte příchozí porty**: vybrat **SSH (22)**
-   - Vyberte kartu **síť** nebo vyberte **Další: disky**a **Další: síť**.
+   - Vyberte kartu **síť** nebo vyberte **Další: disky** a **Další: síť**.
 
 3. Na kartě **sítě** zkontrolujte, že jsou vybrané následující:
    - **Virtuální síť**: **myVnet**
    - **Podsíť**: **mySubnet**
-   - **Veřejná IP adresa** > vyberte **vytvořit novou**.  V okně **vytvořit veřejnou IP adresu** do pole **název** zadejte **MyPublicIPVM** a jako **SKU**vyberte **Standard** .  Klikněte na **OK**.
+   - **Veřejná IP adresa** > vyberte **vytvořit novou**.  V okně **vytvořit veřejnou IP adresu** do pole **název** zadejte **MyPublicIPVM** a jako **SKU** vyberte **Standard** .  Klikněte na **OK**.
    - **Skupina zabezpečení sítě síťové karty**: vyberte **základní**.
    - **Veřejné příchozí porty**: vyberte **Povolit vybrané porty**.
    - **Vyberte příchozí porty**: potvrďte, že je zaškrtnuté políčko Potvrdit **SSH** .
 
-4. Na kartě **Správa** v části **monitorování**nastavte **diagnostiku spouštění** na **vypnuto**.
+4. Na kartě **Správa** v části **monitorování** nastavte **diagnostiku spouštění** na **vypnuto**.
 
 5. Vyberte **Zkontrolovat a vytvořit**. 
 
@@ -89,15 +89,15 @@ Tato část podrobně popisuje, jak můžete vytvořit a nakonfigurovat následu
 
 ### <a name="create-a-public-ip-address"></a>Vytvoření veřejné IP adresy
 
-1. V levém horním rohu portálu vyberte **vytvořit**  >  **Networking**  >  **veřejnou IP adresu**sítě prostředku nebo v hledání na webu Marketplace vyhledejte **veřejnou IP adresu** .
+1. V levém horním rohu portálu vyberte **vytvořit**  >  **Networking**  >  **veřejnou IP adresu** sítě prostředku nebo v hledání na webu Marketplace vyhledejte **veřejnou IP adresu** .
 
-2. V nástroji **vytvořit veřejnou IP adresu**zadejte nebo vyberte tyto informace:
+2. V nástroji **vytvořit veřejnou IP adresu** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Verze protokolu IP | Vyberte **IPv4**.
-    | Skladová jednotka (SKU) | Vyberte **Standard**.
-    | Název | Zadejte **myPublicIP**. |
+    | SKU | Vyberte **Standard**.
+    | Name | Zadejte **myPublicIP**. |
     | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte **myResourceGroupNAT**. |
     | Umístění | Vyberte **USA – východ 2**.|
@@ -106,9 +106,9 @@ Tato část podrobně popisuje, jak můžete vytvořit a nakonfigurovat následu
 
 ### <a name="create-a-public-ip-prefix"></a>Vytvoření předpony veřejné IP adresy
 
-1. V levém horním rohu portálu vyberte **vytvořit**  >  **Networking**  >  **předponu veřejné IP adresy**sítě prostředku nebo v hledání na webu Marketplace vyhledejte **předponu veřejné IP adresy** . 
+1. V levém horním rohu portálu vyberte **vytvořit**  >  **Networking**  >  **předponu veřejné IP adresy** sítě prostředku nebo v hledání na webu Marketplace vyhledejte **předponu veřejné IP adresy** . 
 
-2. V části **vytvořit předponu veřejné IP adresy**zadejte nebo vyberte následující hodnoty na kartě **základy** :
+2. V části **vytvořit předponu veřejné IP adresy** zadejte nebo vyberte následující hodnoty na kartě **základy** :
    - **Předplatné**  >  **Skupina prostředků**: vyberte **myResourceGroupNAT**>
    - **Podrobnosti instance**  >  **Název**: zadejte **myPublicIPprefix**.
    - **Podrobnosti instance**  >  **Oblast**: vyberte **východní USA 2**.
@@ -121,7 +121,7 @@ Tato část podrobně popisuje, jak můžete vytvořit a nakonfigurovat následu
 
 ### <a name="create-a-nat-gateway-resource"></a>Vytvoření prostředku brány NAT
 
-1. V levém horním rohu portálu vyberte **vytvořit prostředek**  >  **síťové**služby  >  **NAT Gateway**nebo vyhledejte **bránu NAT** v hledání na webu Marketplace.
+1. V levém horním rohu portálu vyberte **vytvořit prostředek**  >  **síťové** služby  >  **NAT Gateway** nebo vyhledejte **bránu NAT** v hledání na webu Marketplace.
 
 2. V části **vytvořit bránu pro překlad síťových adres (NAT)** zadejte nebo vyberte na kartě **základy** následující hodnoty:
    - **Předplatné**  >  **Skupina prostředků**: vyberte **myResourceGroupNAT**.
@@ -148,7 +148,7 @@ Tato část podrobně popisuje, jak můžete vytvořit a nakonfigurovat následu
 1. Na levé straně portálu vyberte **skupiny prostředků**.
 2. Vyberte **myResourceGroupNAT**.
 3. Vyberte **myVM**.
-4. V části **Přehled**Zkopírujte hodnotu **Veřejná IP adresa** a vložte ji do poznámkového bloku, abyste ji mohli použít pro přístup k virtuálnímu počítači.
+4. V části **Přehled** Zkopírujte hodnotu **Veřejná IP adresa** a vložte ji do poznámkového bloku, abyste ji mohli použít pro přístup k virtuálnímu počítači.
 
 >[!IMPORTANT]
 >Zkopírujte veřejnou IP adresu a vložte ji do poznámkového bloku, abyste ji mohli použít pro přístup k virtuálnímu počítači.

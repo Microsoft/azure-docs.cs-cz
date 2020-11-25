@@ -8,18 +8,18 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: 0d873401d377a03581a319769604f3d976f365be
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5b7bc8be89068f0d3cf6722c36ae7fd5cc560736
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87927234"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96012114"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Rychlý Start: vytvoření služby privátního propojení pomocí Azure Portal
 
 Služba privátního propojení Azure odkazuje na vaši vlastní službu, která je spravovaná pomocí privátního propojení. Přístup ke službě nebo prostředku, který funguje za Azure Standard Load Balancer, můžete udělit privátním odkazem. Příjemci vaší služby můžou k němu přistupovat soukromě z vlastních virtuálních sítí. V tomto rychlém startu se dozvíte, jak vytvořit službu privátního propojení pomocí Azure Portal.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -56,12 +56,12 @@ Pomocí portálu vytvořte standardní interní nástroj pro vyrovnávání zat�
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | **Předplatné**               | Vyberte předplatné.    |
+    | **Předplatné**               | Vyberte své předplatné.    |
     | **Skupina prostředků**         | V poli vyberte **myResourceGroupLB** .|
     | **Název**                   | Zadejte **myLoadBalancer**.                                   |
     | **Oblast**         | Vyberte **USA – východ 2**.                                        |
     | **Typ**          | Vyberte **interní**.                                        |
-    | **Skladová jednotka (SKU)**           | Vyberte **Standard**.                          |
+    | **SKU**           | Vyberte **Standard**.                          |
     | **Virtuální síť**           | Vyberte **myVNet**.                          |
     | **Přiřazení IP adresy**              | Vyberte **Statické**.   |
     | **Privátní IP adresa**|Zadejte adresu, která se nachází v adresním prostoru virtuální sítě a podsítě. Příkladem je 10.3.0.7.  |
@@ -79,7 +79,7 @@ V této části nakonfigurujete nastavení nástroje pro vyrovnávání zatíže
 Fond adres back-endu obsahuje IP adresy virtuálních síťových karet připojených k nástroji pro vyrovnávání zatížení. Tento fond vám umožní distribuovat provoz do vašich prostředků. Vytvořte fond back-endové adresy s názvem **myBackendPool** , který bude zahrnovat prostředky vyrovnávající zatížení.
 
 1. V nabídce úplně vlevo vyberte **všechny služby** .
-1. Vyberte **všechny prostředky**a potom v seznamu prostředků vyberte **myLoadBalancer** .
+1. Vyberte **všechny prostředky** a potom v seznamu prostředků vyberte **myLoadBalancer** .
 1. V **Nastavení** vyberte **Back-endové fondy** a potom vyberte **Přidat**.
 1. Na stránce **Přidat fond back-endu** jako název svého fondu back-end zadejte **myBackendPool** a pak vyberte **Přidat**.
 
@@ -117,7 +117,7 @@ Vytvoření pravidla nástroje pro vyrovnávání zatížení:
 
 1. V nabídce vlevo vyberte **všechny prostředky** a v seznamu prostředků vyberte **myLoadBalancer** .
 
-1. V části **Nastavení**vyberte **pravidla vyrovnávání zatížení**a pak vyberte **Přidat**.
+1. V části **Nastavení** vyberte **pravidla vyrovnávání zatížení** a pak vyberte **Přidat**.
 
 1. Na stránce **Přidat pravidlo vyrovnávání zatížení** zadejte nebo vyberte následující hodnoty, pokud ještě nejsou k dispozici:
 
@@ -139,12 +139,12 @@ V této části vytvoříte službu privátního propojení za standardním nás
 
 1. V **centru privátních odkazů – přehled**  >  **vystavení vlastní služby, aby se ostatní mohli připojit**, vyberte **Spustit**.
 
-1. V části **vytvořit základní službu privátního propojení**zadejte nebo vyberte tyto informace:
+1. V části **vytvořit základní službu privátního propojení** zadejte nebo vyberte tyto informace:
 
     | Nastavení           | Hodnota                                                                        |
     |-------------------|------------------------------------------------------------------------------|
     | Podrobnosti o projektu:  |                                                                              |
-    | **Předplatné**      | Vyberte předplatné.                                                     |
+    | **Předplatné**      | Vyberte své předplatné.                                                     |
     | **Skupina prostředků**    | Vyberte **myResourceGroupLB**.                                                    |
     | Podrobnosti instance: |                                                                              |
     | **Název**              | Zadejte **myPrivateLinkService**. |
@@ -152,7 +152,7 @@ V této části vytvoříte službu privátního propojení za standardním nás
 
 1. Vyberte **Další: odchozí nastavení**.
 
-1. V části **vytvořit službu privátního propojení – odchozí nastavení**zadejte nebo vyberte tyto informace:
+1. V části **vytvořit službu privátního propojení – odchozí nastavení** zadejte nebo vyberte tyto informace:
 
     | Nastavení                           | Hodnota                                                                           |
     |-----------------------------------|---------------------------------------------------------------------------------|
@@ -165,7 +165,7 @@ V této části vytvoříte službu privátního propojení za standardním nás
 
 1. Vyberte **Další: přístup k zabezpečení**.
 
-1. V části **vytvořit zabezpečení přístupu ke službě privátního propojení**vyberte možnost **viditelnost**a pak zvolte možnost **řízení přístupu na základě role**.
+1. V části **vytvořit zabezpečení přístupu ke službě privátního propojení** vyberte možnost **viditelnost** a pak zvolte možnost **řízení přístupu na základě role**.
   
 1. Vyberte možnost **Další:**  >  **Revize značek + vytvořit** nebo zvolte kartu **zkontrolovat + vytvořit** v horní části stránky.
 
@@ -177,9 +177,9 @@ Po dokončení používání služby privátního propojení odstraňte skupinu 
 
 1. Do vyhledávacího pole v horní části portálu zadejte **myResourceGroupLB** a ve výsledcích hledání vyberte **myResourceGroupLB** .
 1. Vyberte **Odstranit skupinu prostředků**.
-1. Do pole **Zadejte název skupiny prostředků**zadejte **myResourceGroup**.
+1. Do pole **Zadejte název skupiny prostředků** zadejte **myResourceGroup**.
 1. Vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili interní nástroj pro vyrovnávání zatížení Azure a službu privátního propojení. Můžete se také dozvědět, jak [vytvořit privátní koncový bod pomocí Azure Portal](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal).
+V tomto rychlém startu jste vytvořili interní nástroj pro vyrovnávání zatížení Azure a službu privátního propojení. Můžete se také dozvědět, jak [vytvořit privátní koncový bod pomocí Azure Portal](./create-private-endpoint-portal.md).

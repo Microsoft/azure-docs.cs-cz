@@ -9,17 +9,17 @@ ms.date: 05/22/2020
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: edb80ab3107cbd0a5ddd802d56a60ce77affb2f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088110"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012914"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-java"></a>Rychlý Start: použití mezipaměti Azure pro Redis v jazyce Java
 
 V tomto rychlém startu zabezpečíte mezipaměť Azure pro Redis do aplikace Java pomocí klienta [Jedis](https://github.com/xetorthio/jedis) Redis, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Apache Maven](https://maven.apache.org/download.cgi)
@@ -32,7 +32,7 @@ V tomto rychlém startu zabezpečíte mezipaměť Azure pro Redis do aplikace Ja
 
 ## <a name="setting-up-the-working-environment"></a>Nastavení pracovního prostředí 
 
-V závislosti na vašem operačním systému přidejte proměnné prostředí pro **název hostitele** a **Primární přístupový klíč** . Otevřete příkazový řádek nebo okno terminálu a nastavte následující hodnoty:
+V závislosti na vašem operačním systému přidejte proměnné prostředí pro **název hostitele** a **Primární přístupový klíč**. Otevřete příkazový řádek nebo okno terminálu a nastavte následující hodnoty:
 
 ```CMD 
 set REDISCACHEHOSTNAME=<YOUR_HOST_NAME>.redis.cache.windows.net
@@ -57,7 +57,7 @@ Pomocí Mavenu vygenerujte novou aplikaci rychlého startu:
 mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.3 -DgroupId=example.demo -DartifactId=redistest -Dversion=1.0
 ```
 
-Přejděte do nového adresáře projektu *redistest* .
+Přejděte do nového adresáře projektu *redistest*.
 
 Otevřete soubor *pom.xml* a přidejte závislost pro [Jedis](https://github.com/xetorthio/jedis):
 
@@ -71,7 +71,7 @@ Otevřete soubor *pom.xml* a přidejte závislost pro [Jedis](https://github.com
     </dependency>
 ```
 
-Uložte soubor *pom.xml* .
+Uložte soubor *pom.xml*.
 
 Otevřete *App.java* a kód nahraďte následujícím kódem:
 
@@ -127,7 +127,7 @@ public class App
 
 Tento kód ukazuje, jak se připojit k instanci služby Azure cache for Redis pomocí názvu hostitele mezipaměti a proměnných prostředí klíče. Kód také ukládá a načítá hodnotu řetězce v mezipaměti. Spouští se také příkazy `PING` a `CLIENT LIST`. 
 
-Uložte *App.java* .
+Uložte *App.java*.
 
 ## <a name="build-and-run-the-app"></a>Sestavte a spusťte aplikaci.
 
@@ -152,13 +152,13 @@ V opačném případě, pokud jste už s ukázkovou aplikací v tomto rychlém s
 > Odstranění skupiny prostředků je nevratné a skupina prostředků včetně všech v ní obsažených prostředků bude trvale odstraněna. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro hostování této ukázky ve stávající skupině prostředků obsahující prostředky, které chcete zachovat, můžete místo odstranění skupiny prostředků odstranit jednotlivé prostředky z jejich odpovídajících oken.
 >
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) a potom vyberte **Skupiny prostředků** .
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) a potom vyberte **Skupiny prostředků**.
 
-1. Do textového pole **filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources* . Ve vaší skupině prostředků v seznamu výsledků vyberte **...** a pak **odstraňte skupinu prostředků** .
+1. Do textového pole **filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. Ve vaší skupině prostředků v seznamu výsledků vyberte **...** a pak **odstraňte skupinu prostředků**.
 
    ![Skupina prostředků Azure se odstranila.](./media/cache-java-get-started/azure-cache-redis-delete-resource-group.png)
 
-1. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Zadejte název vaší skupiny prostředků a potvrďte je a vyberte **Odstranit** .
+1. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Zadejte název vaší skupiny prostředků a potvrďte je a vyberte **Odstranit**.
 
 Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
 

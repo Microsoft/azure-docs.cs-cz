@@ -14,11 +14,11 @@ ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: b3391727b19e9e8e88646f72667545f1df7fe5a7
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637373"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012863"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory verze 1
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -43,7 +43,7 @@ Následující návod poskytuje podrobné pokyny k vytvoření vlastní aktivity
 > - Pro přístup k místním zdrojům dat není možné použít bránu Správa dat z vlastní aktivity. V současné době [Správa dat brána](data-factory-data-management-gateway.md) podporuje pouze aktivitu kopírovat aktivitu a uloženou proceduru v Data Factory.
 
 ## <a name="walkthrough-create-a-custom-activity"></a>Návod: Vytvoření vlastní aktivity
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 * Visual Studio 2012/2013/2015/2017
 * Stažení a instalace [sady Azure .NET SDK](https://azure.microsoft.com/downloads/)
 
@@ -55,17 +55,17 @@ V tomto kurzu vytvořte účet Azure Batch s fondem virtuálních počítačů. 
 1. Vytvořte **účet Azure Batch** pomocí [Azure Portal](https://portal.azure.com). Pokyny najdete v článku [Vytvoření a Správa účtu Azure Batch][batch-create-account] .
 2. Poznamenejte si Azure Batch název účtu, klíč účtu, identifikátor URI a název fondu. Budete je potřebovat k vytvoření propojené služby Azure Batch.
     1. Na domovské stránce Azure Batch účtu se zobrazí **Adresa URL** v následujícím formátu: `https://myaccount.westus.batch.azure.com` . V tomto příkladu je **MyAccount** název účtu Azure Batch. Identifikátor URI, který použijete v definici propojené služby, je adresa URL bez názvu účtu. Příklad: `https://<region>.batch.azure.com`.
-    2. V nabídce vlevo klikněte na **klíče** a ZKOPÍRUJTE **Primární přístupový klíč** .
+    2. V nabídce vlevo klikněte na **klíče** a ZKOPÍRUJTE **Primární přístupový klíč**.
     3. Pokud chcete použít existující fond, klikněte v nabídce na **fondy** a poznamenejte si **ID** fondu. Pokud nemáte existující fond, přejděte k dalšímu kroku.
-2. Vytvořte **fond Azure Batch** .
+2. Vytvořte **fond Azure Batch**.
 
-   1. V [Azure Portal](https://portal.azure.com)klikněte v levé nabídce na **Procházet** a pak klikněte na **účty Batch** .
+   1. V [Azure Portal](https://portal.azure.com)klikněte v levé nabídce na **Procházet** a pak klikněte na **účty Batch**.
    2. Vyberte účet Azure Batch, abyste otevřeli okno **účtu Batch** .
    3. Klikněte na dlaždice **fondy** .
    4. V okně **fondy** kliknutím na tlačítko Přidat na panelu nástrojů přidejte fond.
-      1. Zadejte ID fondu (ID fondu). Poznamenejte si **ID fondu** ; budete ho potřebovat při vytváření řešení Data Factory.
+      1. Zadejte ID fondu (ID fondu). Poznamenejte si **ID fondu**; budete ho potřebovat při vytváření řešení Data Factory.
       2. Pro nastavení řady operačních systémů zadejte **Windows Server 2012 R2** .
-      3. Vyberte **cenovou úroveň uzlu** .
+      3. Vyberte **cenovou úroveň uzlu**.
       4. Jako hodnotu pro **vyhrazené** nastavení zadejte **2** .
       5. Jako hodnotu pro nastavení **maximální počet úkolů na uzel** zadejte **2** .
    5. Kliknutím na tlačítko **OK** vytvořte fond.
@@ -90,9 +90,9 @@ public IDictionary<string, string> Execute(
 
 Metoda přijímá čtyři parametry:
 
-- **linkedServices** . Tato vlastnost je Výčtový seznam propojených služeb úložiště dat, na které odkazují vstupní a výstupní datové sady pro aktivitu.
-- **datové sady** . Tato vlastnost je vyčíslitelné seznam vstupních/výstupních datových sad pro aktivitu. Tento parametr můžete použít k získání umístění a schémat definovaných vstupními a výstupními datovými sadami.
-- **aktivita** . Tato vlastnost reprezentuje aktuální aktivitu. Dá se použít pro přístup k rozšířeným vlastnostem přidruženým k vlastní aktivitě. Podrobnosti najdete v tématu věnovaném [rozšířeným vlastnostem přístupu](#access-extended-properties) .
+- **linkedServices**. Tato vlastnost je Výčtový seznam propojených služeb úložiště dat, na které odkazují vstupní a výstupní datové sady pro aktivitu.
+- **datové sady**. Tato vlastnost je vyčíslitelné seznam vstupních/výstupních datových sad pro aktivitu. Tento parametr můžete použít k získání umístění a schémat definovaných vstupními a výstupními datovými sadami.
+- **aktivita**. Tato vlastnost reprezentuje aktuální aktivitu. Dá se použít pro přístup k rozšířeným vlastnostem přidruženým k vlastní aktivitě. Podrobnosti najdete v tématu věnovaném [rozšířeným vlastnostem přístupu](#access-extended-properties) .
 - **protokolovací** nástroj. Tento objekt umožňuje psát poznámky k ladění, které jsou v protokolu uživatele pro kanál.
 
 Metoda vrací slovník, který lze použít k zřetězení vlastních aktivit společně v budoucnu. Tato funkce ještě není implementovaná, proto z metody vraťte prázdný slovník.
@@ -109,9 +109,9 @@ Metoda vrací slovník, který lze použít k zřetězení vlastních aktivit sp
      <li>Kliknutím na tlačítko <b>OK</b> vytvořte projekt.</li>
    </ol>
 
-2. Klikněte na **nástroje** , přejděte na **Správce balíčků NuGet** a klikněte na **Konzola správce balíčků** .
+2. Klikněte na **nástroje**, přejděte na **Správce balíčků NuGet** a klikněte na **Konzola správce balíčků**.
 
-3. V konzole správce balíčků spusťte následující příkaz pro import **Microsoft. Azure. Management. Datafactorys** .
+3. V konzole správce balíčků spusťte následující příkaz pro import **Microsoft. Azure. Management. Datafactorys**.
 
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactories
@@ -149,7 +149,7 @@ Metoda vrací slovník, který lze použít k zřetězení vlastních aktivit sp
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
-6. Změňte název **oboru názvů** na **MyDotNetActivityNS** .
+6. Změňte název **oboru názvů** na **MyDotNetActivityNS**.
 
     ```csharp
     namespace MyDotNetActivityNS
@@ -367,7 +367,7 @@ Metoda vrací slovník, který lze použít k zřetězení vlastních aktivit sp
     ```
 
     Metoda výpočtu vypočítá počet instancí klíčového slova Microsoft ve vstupních souborech (objekty blob ve složce). Hledaný termín ("Microsoft") je pevně kódovaný v kódu.
-10. Zkompilujte projekt. V nabídce klikněte na **sestavit** a pak klikněte na **Sestavit řešení** .
+10. Zkompilujte projekt. V nabídce klikněte na **sestavit** a pak klikněte na **Sestavit řešení**.
 
     > [!IMPORTANT]
     > Nastavte verzi 4.5.2 .NET Framework jako cílovou architekturu pro váš projekt: klikněte pravým tlačítkem myši na projekt a kliknutím na **vlastnosti** nastavte cílovou architekturu. Data Factory nepodporuje vlastní aktivity zkompilované proti .NET Framework verzím novějším než 4.5.2.
@@ -376,7 +376,7 @@ Metoda vrací slovník, který lze použít k zřetězení vlastních aktivit sp
 12. Vytvořte soubor zip **MyDotNetActivity.zip** , který obsahuje všechny binární soubory ve \<project folder\> složce \bin\debug. Zahrňte soubor **MyDotNetActivity. pdb** , abyste získali další podrobnosti, jako je číslo řádku ve zdrojovém kódu, který způsobil problém, pokud došlo k chybě.
 
     > [!IMPORTANT]
-    > Všechny soubory v souboru .zip pro vlastní aktivitu musí být na **nejvyšší úrovni** , bez podsložek.
+    > Všechny soubory v souboru .zip pro vlastní aktivitu musí být na **nejvyšší úrovni**, bez podsložek.
 
     ![Binární výstupní soubory](./media/data-factory-use-custom-activities/Binaries.png)
 14. Vytvořte kontejner objektů BLOB s názvem **customactivitycontainer** , pokud ještě neexistuje.
@@ -407,7 +407,7 @@ Ve složce adftutorial\customactivityoutput se zobrazí jeden výstupní soubor 
 
 Tady jsou kroky, které provedete v této části:
 
-1. Vytvořte **datovou továrnu** .
+1. Vytvořte **datovou továrnu**.
 2. Vytvořte **propojené služby** pro fond Azure Batch virtuálních počítačů, na kterých běží vlastní aktivita, a Azure Storage, která obsahuje vstupní a výstupní objekty blob.
 3. Vytvořte vstupní a výstupní **datové sady** , které reprezentují vstup a výstup vlastní aktivity.
 4. Vytvořte **kanál** , který používá vlastní aktivitu.
@@ -419,15 +419,15 @@ Tady jsou kroky, které provedete v této části:
 1. Po přihlášení k Azure Portal proveďte následující kroky:
    1. V nabídce vlevo klikněte na **vytvořit prostředek** .
    2. V okně **Nový** klikněte na **data a analýzy** .
-   3. V okně **Analýza dat** klikněte na **Objekt pro vytváření dat** .
+   3. V okně **Analýza dat** klikněte na **Objekt pro vytváření dat**.
 
       ![Nabídka nový Azure Data Factory](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
-2. V okně **Nová datová továrna** jako název zadejte **CustomActivityFactory** . Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chyba: **název objektu pro vytváření dat "CustomActivityFactory" není k dispozici** , změňte název objektu pro vytváření dat (třeba na **yournameCustomActivityFactory** ) a zkuste to znovu.
+2. V okně **Nová datová továrna** jako název zadejte **CustomActivityFactory** . Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chyba: **název objektu pro vytváření dat "CustomActivityFactory" není k dispozici**, změňte název objektu pro vytváření dat (třeba na **yournameCustomActivityFactory**) a zkuste to znovu.
 
     ![Okno Nový Azure Data Factory](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)
 3. Klikněte na **název skupiny prostředků** a vyberte existující skupinu prostředků nebo vytvořte skupinu prostředků.
 4. Ověřte, že používáte správné **předplatné** a **oblast** , kde chcete vytvořit datovou továrnu.
-5. V okně **Nový objekt pro vytváření dat** klikněte na **Vytvořit** .
+5. V okně **Nový objekt pro vytváření dat** klikněte na **Vytvořit**.
 6. Na **řídicím panelu** Azure Portal se zobrazí objekt pro vytváření dat.
 7. Po úspěšném vytvoření objektu pro vytváření dat se zobrazí okno Data Factory, ve kterém se zobrazí obsah objektu pro vytváření dat.
 
@@ -437,8 +437,8 @@ Tady jsou kroky, které provedete v této části:
 Propojené služby propojují úložiště dat nebo výpočetní služby s objektem pro vytváření dat Azure. V tomto kroku propojíte účet Azure Storage a Azure Batch účet k datové továrně.
 
 #### <a name="create-azure-storage-linked-service"></a>Vytvoření propojené služby Azure Storage
-1. Klikněte na dlaždici **Autor a nasazení** v okně **objekt pro vytváření dat** pro **CustomActivityFactory** . Zobrazí se editor služby Data Factory.
-2. Na panelu příkazů klikněte na **nové úložiště dat** a vyberte **Azure Storage** . V editoru by se měl zobrazit skript JSON pro vytvoření propojené služby Azure Storage.
+1. Klikněte na dlaždici **Autor a nasazení** v okně **objekt pro vytváření dat** pro **CustomActivityFactory**. Zobrazí se editor služby Data Factory.
+2. Na panelu příkazů klikněte na **nové úložiště dat** a vyberte **Azure Storage**. V editoru by se měl zobrazit skript JSON pro vytvoření propojené služby Azure Storage.
 
     ![Nové úložiště dat – Azure Storage](media/data-factory-use-custom-activities/new-data-store-menu.png)
 3. Nahraďte `<accountname>` názvem účtu služby Azure Storage a `<accountkey>` klíčovým klíčem k účtu úložiště Azure. Informace o tom, jak získat přístupový klíč k úložišti, najdete v tématu [Správa přístupových klíčů účtu úložiště](../../storage/common/storage-account-keys-manage.md).
@@ -505,15 +505,15 @@ V tomto kroku vytvoříte datové sady, které reprezentují vstupní a výstupn
     }
     ```
 
-   Kanál vytvoříte později v tomto návodu s časem spuštění: 2016-11-16T00:00:00Z a koncový čas: 2016-11-16T05:00:00Z. Naplánovalo se zpracování dat každou hodinu, takže je pět vstupních/výstupních řezů (mezi **00** : 00:00-> **05** : 00:00).
+   Kanál vytvoříte později v tomto návodu s časem spuštění: 2016-11-16T00:00:00Z a koncový čas: 2016-11-16T05:00:00Z. Naplánovalo se zpracování dat každou hodinu, takže je pět vstupních/výstupních řezů (mezi **00**: 00:00-> **05**: 00:00).
 
-   **Frekvence** a **interval** pro vstupní datovou sadu je nastavená na **Hour** a **1** , což znamená, že vstupní řez je dostupný každou hodinu. V této ukázce se jedná o stejný soubor (file.txt) v intputfolder.
+   **Frekvence** a **interval** pro vstupní datovou sadu je nastavená na **Hour** a **1**, což znamená, že vstupní řez je dostupný každou hodinu. V této ukázce se jedná o stejný soubor (file.txt) v intputfolder.
 
    Zde jsou časy spuštění každého řezu, který je reprezentován systémovou proměnnou vlastnosti slicestart ve výše uvedeném fragmentu kódu JSON.
-3. Kliknutím na **nasadit** na panelu nástrojů vytvořte a nasaďte rozhraní **InputDataset** . Potvrďte, že se v záhlaví okna editoru zobrazila zpráva **ÚSPĚŠNÉ VYTVOŘENÍ TABULKY** .
+3. Kliknutím na **nasadit** na panelu nástrojů vytvořte a nasaďte rozhraní **InputDataset**. Potvrďte, že se v záhlaví okna editoru zobrazila zpráva **ÚSPĚŠNÉ VYTVOŘENÍ TABULKY**.
 
 #### <a name="create-an-output-dataset"></a>Vytvoření výstupní datové sady
-1. V **editoru Data Factory** klikněte na **... Další** na panelu příkazů klikněte na **Nová datová sada** a vyberte **Azure Blob Storage** .
+1. V **editoru Data Factory** klikněte na **... Další** na panelu příkazů klikněte na **Nová datová sada** a vyberte **Azure Blob Storage**.
 2. Nahraďte skript JSON v pravém podokně následujícím skriptem JSON:
 
     ```JSON
@@ -546,7 +546,7 @@ V tomto kroku vytvoříte datové sady, které reprezentují vstupní a výstupn
 
      Umístění výstupu je **adftutorial/customactivityoutput/** a název výstupního souboru je yyyy-MM-dd-HH.txt, kde RRRR-MM-DD-hh představuje rok, měsíc, datum a hodinu vyráběného řezu. Podrobnosti najdete v tématu Referenční informace pro [vývojáře][adf-developer-reference] .
 
-    Pro každý vstupní řez se vygeneruje výstupní objekt BLOB nebo soubor. Tady je způsob, jak je výstupní soubor pojmenován pro každý řez. Všechny výstupní soubory jsou vygenerovány v jedné výstupní složce: **adftutorial\customactivityoutput** .
+    Pro každý vstupní řez se vygeneruje výstupní objekt BLOB nebo soubor. Tady je způsob, jak je výstupní soubor pojmenován pro každý řez. Všechny výstupní soubory jsou vygenerovány v jedné výstupní složce: **adftutorial\customactivityoutput**.
 
    | Průřez | Čas spuštění | Výstupní soubor |
    |:--- |:--- |:--- |
@@ -611,19 +611,19 @@ V tomto kroku vytvoříte datové sady, které reprezentují vstupní a výstupn
     Je třeba počítat s následujícím:
 
    * **Concurrency** je nastavená na **2** , takže dva řezy se zpracovávají paralelně o 2 virtuální počítače ve fondu Azure Batch.
-   * Oddíl Activities obsahuje jednu aktivitu a je typu: **DotNetActivity** .
-   * **AssemblyName** je nastaven na název knihovny DLL: **MyDotnetActivity.dll** .
-   * **Parametr entryPoint** je nastavený na **MyDotNetActivityNS. MyDotNetActivity** .
+   * Oddíl Activities obsahuje jednu aktivitu a je typu: **DotNetActivity**.
+   * **AssemblyName** je nastaven na název knihovny DLL: **MyDotnetActivity.dll**.
+   * **Parametr entryPoint** je nastavený na **MyDotNetActivityNS. MyDotNetActivity**.
    * **PackageLinkedService** je nastavená na **AzureStorageLinkedService** , která odkazuje na úložiště objektů blob, které obsahuje soubor zip vlastní aktivity. Pokud pro vstupní/výstupní soubory a soubor zip vlastní aktivity používáte jiné účty Azure Storage, vytvoříte další Azure Storage propojenou službu. V tomto článku se předpokládá, že používáte stejný účet Azure Storage.
-   * **PackageFile** je nastavená na **customactivitycontainer/MyDotNetActivity.zip** . Má formát: containerforthezip/nameofthezip.zip.
+   * **PackageFile** je nastavená na **customactivitycontainer/MyDotNetActivity.zip**. Má formát: containerforthezip/nameofthezip.zip.
    * Vlastní aktivita přijímá **InputDataset** jako vstup a **OutputDataset** jako výstup.
-   * Vlastnost linkedServiceName vlastní aktivity odkazuje na **AzureBatchLinkedService** , která oznamuje Azure Data Factory, že vlastní aktivita musí běžet na Azure Batch virtuálních počítačích.
+   * Vlastnost linkedServiceName vlastní aktivity odkazuje na **AzureBatchLinkedService**, která oznamuje Azure Data Factory, že vlastní aktivita musí běžet na Azure Batch virtuálních počítačích.
    * vlastnost s **pozastaveným** nastavením je ve výchozím nastavení nastavena na **hodnotu false** . Kanál se spustí hned v tomto příkladu, protože řezy začínají v minulosti. Tuto vlastnost můžete nastavit na hodnotu true, chcete-li kanál pozastavit a nastavit jej zpět na hodnotu false pro restartování.
    * Čas **zahájení** a **ukončení** je **pět** hodin od a řezy se vytvářejí každou hodinu, takže kanál vytvoří pět řezů.
 3. Pokud chcete kanál nasadit, klikněte na panelu příkazů na **nasadit** .
 
 ### <a name="monitor-the-pipeline"></a>Monitorování kanálu
-1. V okně Data Factory v Azure Portal klikněte na **diagram** .
+1. V okně Data Factory v Azure Portal klikněte na **diagram**.
 
     ![Dlaždice Diagram](./media/data-factory-use-custom-activities/DataFactoryBlade.png)
 2. V zobrazení diagramu nyní klikněte na OutputDataset.
@@ -652,15 +652,15 @@ Pomocí sady Visual Studio můžete vytvářet a publikovat Data Factory entity 
 Pokud vytváříte Data Factory projekt v aplikaci Visual Studio, proveďte následující dodatečné kroky:
 
 1. Přidejte Data Factory projektu do řešení sady Visual Studio, které obsahuje projekt vlastní aktivity.
-2. Přidejte odkaz na projekt aktivity rozhraní .NET z Data Factory projektu. Klikněte pravým tlačítkem na Data Factory projekt, přejděte na **Přidat** a klikněte na **odkaz** .
-3. V dialogovém okně **Přidat odkaz** vyberte projekt **MyDotNetActivity** a klikněte na tlačítko **OK** .
+2. Přidejte odkaz na projekt aktivity rozhraní .NET z Data Factory projektu. Klikněte pravým tlačítkem na Data Factory projekt, přejděte na **Přidat** a klikněte na **odkaz**.
+3. V dialogovém okně **Přidat odkaz** vyberte projekt **MyDotNetActivity** a klikněte na tlačítko **OK**.
 4. Sestavte a publikujte řešení.
 
     > [!IMPORTANT]
     > Když publikujete Data Factory entit, automaticky se vytvoří soubor zip, který se nahraje do kontejneru objektů BLOB: customactivitycontainer. Pokud kontejner objektů BLOB neexistuje, vytvoří se automaticky.
 
 ## <a name="data-factory-and-batch-integration"></a>Integrace Data Factory a Batch
-Služba Data Factory vytvoří úlohu v Azure Batch s názvem: **ADF-pool: Job-XXX** . V nabídce vlevo klikněte na **úlohy** .
+Služba Data Factory vytvoří úlohu v Azure Batch s názvem: **ADF-pool: Job-XXX**. V nabídce vlevo klikněte na **úlohy** .
 
 ![Azure Data Factory – dávkové úlohy](media/data-factory-use-custom-activities/data-factory-batch-jobs.png)
 
@@ -675,32 +675,32 @@ Následující diagram znázorňuje vztah mezi Azure Data Factory a úlohami Bat
 ## <a name="troubleshoot-failures"></a>Řešení chyb
 Řešení potíží se skládá z několika základních technik:
 
-1. Pokud se zobrazí následující chyba, můžete místo používání služby Azure Blob Storage pro obecné účely použít horké nebo studené úložiště objektů BLOB. Nahrajte soubor zip na **účet pro obecné účely Azure Storage** .
+1. Pokud se zobrazí následující chyba, můžete místo používání služby Azure Blob Storage pro obecné účely použít horké nebo studené úložiště objektů BLOB. Nahrajte soubor zip na **účet pro obecné účely Azure Storage**.
 
     ```
     Error in Activity: Job encountered scheduling error. Code: BlobDownloadMiscError Category: ServerError Message: Miscellaneous error encountered while downloading one of the specified Azure Blob(s).
     ```
-2. Pokud se zobrazí následující chyba, zkontrolujte, že název třídy v souboru CS odpovídá názvu, který jste zadali pro vlastnost **EntryPoint** v kanálu JSON. V tomto návodu je název třídy: MyDotNetActivity a parametr EntryPoint ve formátu JSON je: MyDotNetActivityNS. **MyDotNetActivity** .
+2. Pokud se zobrazí následující chyba, zkontrolujte, že název třídy v souboru CS odpovídá názvu, který jste zadali pro vlastnost **EntryPoint** v kanálu JSON. V tomto návodu je název třídy: MyDotNetActivity a parametr EntryPoint ve formátu JSON je: MyDotNetActivityNS. **MyDotNetActivity**.
 
     ```
     MyDotNetActivity assembly does not exist or doesn't implement the type Microsoft.DataFactories.Runtime.IDotNetActivity properly
     ```
 
    Pokud se názvy shodují, potvrďte, že všechny binární soubory jsou v **kořenové složce** souboru ZIP. To znamená, že při otevření souboru ZIP by se měly zobrazit všechny soubory v kořenové složce, nikoli v žádné podsložkách.
-3. Pokud vstupní řez není nastavený na **připraveno** , zkontrolujte, jestli je struktura vstupní složky správná a **file.txt** existuje ve vstupních složkách.
+3. Pokud vstupní řez není nastavený na **připraveno**, zkontrolujte, jestli je struktura vstupní složky správná a **file.txt** existuje ve vstupních složkách.
 3. V metodě **Execute** vlastní aktivity použijte objekt **IActivityLogger** k protokolování informací, které vám pomůžou vyřešit problémy. Protokolované zprávy se zobrazí v souborech protokolu uživatele (jeden nebo více souborů s názvem: User-0. log, User-1. log, User-2. log atd.).
 
    V okně **OutputDataset** klikněte na řez a zobrazte okno **datový řez** pro daný řez. U tohoto řezu vidíte **spuštění aktivit** . Měl by se zobrazit jeden běh aktivity pro řez. Pokud kliknete na tlačítko spustit na panelu příkazů, můžete spustit další spuštění aktivit pro stejný řez.
 
    Po kliknutí na spuštění aktivity se zobrazí okno Podrobnosti o **spuštění aktivity** se seznamem souborů protokolu. Zaznamenané zprávy se zobrazí v souboru user_0. log. Pokud dojde k chybě, zobrazí se tři spuštění aktivit, protože počet opakování je v souboru JSON kanálu nebo aktivity nastavený na 3. Když kliknete na spuštění aktivity, zobrazí se soubory protokolů, které můžete zkontrolovat a vyřešit chybu.
 
-   V seznamu souborů protokolu klikněte na **User-0. log** . V pravém panelu jsou výsledky použití metody **IActivityLogger. Write** . Pokud nevidíte všechny zprávy, zkontrolujte, jestli máte víc souborů protokolu s názvem: user_1. log, user_2. log atd. V opačném případě se kód pravděpodobně nezdařil po poslední zaznamenané zprávě.
+   V seznamu souborů protokolu klikněte na **User-0. log**. V pravém panelu jsou výsledky použití metody **IActivityLogger. Write** . Pokud nevidíte všechny zprávy, zkontrolujte, jestli máte víc souborů protokolu s názvem: user_1. log, user_2. log atd. V opačném případě se kód pravděpodobně nezdařil po poslední zaznamenané zprávě.
 
    Kromě toho ověřte **protokol System-0. log** pro všechny systémové chybové zprávy a výjimky.
 4. Zahrňte soubor **PDB** do souboru zip, aby podrobnosti o chybě obsahovaly informace, jako je například **zásobník volání** , když dojde k chybě.
-5. Všechny soubory v souboru .zip pro vlastní aktivitu musí být na **nejvyšší úrovni** , bez podsložek.
-6. Zajistěte, aby byl parametr **AssemblyName** (MyDotNetActivity.dll), **EntryPoint** (MyDotNetActivityNS. MyDotNetActivity), **packageFile** (customactivitycontainer/MyDotNetActivity.zip) a **packageLinkedService** (měl by odkazovat na úložiště objektů blob Azure pro **obecné účely** , který obsahuje soubor ZIP), nastaven na správné hodnoty.
-7. Pokud jste opravili chybu a chcete řez zpracovat znovu, klikněte na něj v okně **OutputDataset** pravým tlačítkem myši a potom klikněte na **Spustit** .
+5. Všechny soubory v souboru .zip pro vlastní aktivitu musí být na **nejvyšší úrovni**, bez podsložek.
+6. Zajistěte, aby byl parametr **AssemblyName** (MyDotNetActivity.dll), **EntryPoint**(MyDotNetActivityNS. MyDotNetActivity), **packageFile** (customactivitycontainer/MyDotNetActivity.zip) a **packageLinkedService** (měl by odkazovat na úložiště objektů blob Azure pro **obecné účely**, který obsahuje soubor ZIP), nastaven na správné hodnoty.
+7. Pokud jste opravili chybu a chcete řez zpracovat znovu, klikněte na něj v okně **OutputDataset** pravým tlačítkem myši a potom klikněte na **Spustit**.
 8. Pokud se zobrazí následující chyba, používáte balíček Azure Storage verze > 4.3.0. Spouštěč služby Data Factory vyžaduje verzi 4,3 WindowsAzure. Storage. Pokud je nutné použít novější verzi Azure Storage sestavení, přečtěte si téma věnované [izolaci domény AppDomain](#appdomain-isolation) pro práci.
 
     ```
@@ -714,7 +714,7 @@ Následující diagram znázorňuje vztah mezi Azure Data Factory a úlohami Bat
     ```
 
     Sestavte projekt. Odstraňte sestavení Azure. Storage verze > 4.3.0 ze složky bin\Debug. Vytvořte soubor zip s binárními soubory a souborem PDB. Nahraďte starý soubor zip tímto souborem v kontejneru objektů BLOB (customactivitycontainer). Znovu spusťte řezy, které selhaly (klikněte pravým tlačítkem myši na řez), a pak klikněte na spustit.
-8. Vlastní aktivita nepoužívá soubor **app.config** ze svého balíčku. Proto pokud váš kód přečte všechny připojovací řetězce z konfiguračního souboru, nefunguje za běhu. Nejlepším postupem při použití Azure Batch je uložení tajných klíčů v **trezoru klíčů Azure** , použití instančního objektu založeného na certifikátu k ochraně **trezoru** klíčů a distribuce certifikátu do fondu Azure Batch. Vlastní aktivita .NET potom má přístup k tajným klíčům v trezoru za běhu. Toto řešení je obecné řešení a může se škálovat na libovolný typ tajného kódu, nikoli jenom na připojovací řetězec.
+8. Vlastní aktivita nepoužívá soubor **app.config** ze svého balíčku. Proto pokud váš kód přečte všechny připojovací řetězce z konfiguračního souboru, nefunguje za běhu. Nejlepším postupem při použití Azure Batch je uložení tajných klíčů v **trezoru klíčů Azure**, použití instančního objektu založeného na certifikátu k ochraně **trezoru** klíčů a distribuce certifikátu do fondu Azure Batch. Vlastní aktivita .NET potom má přístup k tajným klíčům v trezoru za běhu. Toto řešení je obecné řešení a může se škálovat na libovolný typ tajného kódu, nikoli jenom na připojovací řetězec.
 
    Existuje jednodušší řešení (ale ne doporučený postup): můžete vytvořit **propojenou službu Azure SQL** s nastavením připojovacího řetězce, vytvořit datovou sadu, která používá propojenou službu, a zřetězit datovou sadu jako fiktivní vstupní datovou sadu do vlastní aktivity .NET. Pak můžete přístup k připojovacímu řetězci propojené služby v kódu vlastní aktivity.
 
@@ -740,7 +740,7 @@ Můžete deklarovat rozšířené vlastnosti v kódu JSON aktivity, jak je znáz
 },
 ```
 
-V tomto příkladu jsou k dispozici dvě rozšířené vlastnosti: **vlastnosti slicestart** a **DataFactory** . Hodnota pro vlastnosti slicestart je založena na systémové proměnné vlastnosti slicestart. Seznam podporovaných systémových proměnných najdete v tématu [systémové proměnné](data-factory-functions-variables.md) . Hodnota vlastnosti DataFactory je pevně zakódována na CustomActivityFactory.
+V tomto příkladu jsou k dispozici dvě rozšířené vlastnosti: **vlastnosti slicestart** a **DataFactory**. Hodnota pro vlastnosti slicestart je založena na systémové proměnné vlastnosti slicestart. Seznam podporovaných systémových proměnných najdete v tématu [systémové proměnné](data-factory-functions-variables.md) . Hodnota vlastnosti DataFactory je pevně zakódována na CustomActivityFactory.
 
 Pro přístup k těmto rozšířeným vlastnostem v metodě **Execute** použijte kód podobný následujícímu kódu:
 

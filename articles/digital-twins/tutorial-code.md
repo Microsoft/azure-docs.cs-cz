@@ -8,11 +8,11 @@ ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ms.openlocfilehash: 3225fff1c82822dee990804f934ada86068841e8
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280284"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011246"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Kurz: kódování pomocí rozhraní API digitálních vláken Azure
 
@@ -43,7 +43,7 @@ Co je potřeba začít:
 
 Až budete připraveni přejít na instanci digitálního vlákna Azure, začněte nastavovat projekt klientské aplikace. 
 
-V počítači otevřete příkazový řádek nebo jiné okno konzoly a vytvořte prázdný adresář projektu, do kterého chcete během tohoto kurzu uložit práci. Pojmenujte adresář libovolným způsobem, který chcete (například *DigitalTwinsCodeTutorial* ).
+V počítači otevřete příkazový řádek nebo jiné okno konzoly a vytvořte prázdný adresář projektu, do kterého chcete během tohoto kurzu uložit práci. Pojmenujte adresář libovolným způsobem, který chcete (například *DigitalTwinsCodeTutorial*).
 
 Přejděte do nového adresáře.
 
@@ -114,7 +114,7 @@ DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred
 Console.WriteLine($"Service client created – ready to go");
 ```
 
-Soubor uložte. 
+Uložte soubor. 
 
 V příkazovém okně spusťte kód pomocí tohoto příkazu: 
 
@@ -213,7 +213,7 @@ await foreach (DigitalTwinsModelData md in modelDataList)
 }
 ```
 
-**Předtím, než program znovu spustíte pro otestování tohoto nového kódu** , zajistěte, aby jste svůj model nahráli již při posledním spuštění programu. Digitální vlákna Azure vám neumožní nahrát stejný model dvakrát, takže pokud se pokusíte znovu nahrát stejný model, program by měl vyvolat výjimku.
+**Předtím, než program znovu spustíte pro otestování tohoto nového kódu**, zajistěte, aby jste svůj model nahráli již při posledním spuštění programu. Digitální vlákna Azure vám neumožní nahrát stejný model dvakrát, takže pokud se pokusíte znovu nahrát stejný model, program by měl vyvolat výjimku.
 
 V takovém případě spusťte program znovu s tímto příkazem v příkazovém okně:
 
@@ -267,7 +267,7 @@ for(int i=0; i<3; i++) {
 }
 ```
 
-V příkazovém okně spusťte program pomocí příkazu `dotnet run` . Ve výstupu vyhledejte tiskové zprávy, které byly vytvořeny z *sampleTwin-0* , *sampleTwin-1* a *sampleTwin-2* . 
+V příkazovém okně spusťte program pomocí příkazu `dotnet run` . Ve výstupu vyhledejte tiskové zprávy, které byly vytvořeny z *sampleTwin-0*, *sampleTwin-1* a *sampleTwin-2* . 
 
 Pak program spusťte znovu. 
 

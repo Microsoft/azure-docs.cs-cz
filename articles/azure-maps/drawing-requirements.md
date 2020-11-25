@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: 2c3e46bf386e70cbe35d96728ede896d6bf0dc7d
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895830"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013118"
 ---
 # <a name="drawing-package-requirements"></a>Požadavky balíčku pro kreslení
 
 Nahrané balíčky výkresu můžete převést na data mapy pomocí [služby Azure Maps Conversion Service](/rest/api/maps/conversion). Tento článek popisuje požadavky balíčku pro vykreslování pro rozhraní API pro převod. Pokud chcete zobrazit ukázkový balíček, můžete si stáhnout vzorový [balíček pro kreslení](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Balíček pro kreslení obsahuje kresby uložené ve formátu DWG, což je formát nativního souboru pro software Autodesk pro® pro AutoCAD.
 
@@ -36,7 +36,7 @@ Tady jsou některé pojmy a definice, které jsou důležité při čtení tohot
 | Vrstva | Vrstva DWG AutoCADu.|
 | Úroveň | Oblast budovy se zvýšenou úrovní oprávnění. Například podlaha budovy. |
 | Odkazy XREF  |Soubor ve formátu DWG AutoCADu (. dwg), připojený k primárnímu výkresu jako externí odkaz.  |
-| Doporučené | Objekt, který kombinuje geometrii s dalšími informacemi o metadatech. |
+| Funkce | Objekt, který kombinuje geometrii s dalšími informacemi o metadatech. |
 | Třídy funkcí | Běžný podrobný plán pro funkce. Například *jednotka* je třída funkce a *kancelář* je funkce. |
 
 ## <a name="drawing-package-structure"></a>Vykreslování struktury balíčku
@@ -50,9 +50,9 @@ Soubory DWG můžete uspořádat jakýmkoli způsobem uvnitř složky, ale soubo
 
 ## <a name="dwg-files-requirements"></a>Požadavky na soubory DWG
 
-Pro každou úroveň zařízení je vyžadován jeden soubor DWG. Data úrovně musí být obsažena v jednom souboru DWG. Všechny externí odkazy ( _xrefs_ ) musí být svázané s nadřazeným vykreslováním. Navíc každý soubor DWG:
+Pro každou úroveň zařízení je vyžadován jeden soubor DWG. Data úrovně musí být obsažena v jednom souboru DWG. Všechny externí odkazy (_xrefs_) musí být svázané s nadřazeným vykreslováním. Navíc každý soubor DWG:
 
-* Je nutné definovat vrstvu na _vnějších_ a _jednotkách_ . Volitelně může definovat následující volitelné vrstvy: _zeď_ , _dveře_ , _UnitLabel_ , _zóna_ a _ZoneLabel_ .
+* Je nutné definovat vrstvu na _vnějších_ a _jednotkách_ . Volitelně může definovat následující volitelné vrstvy: _zeď_, _dveře_, _UnitLabel_, _zóna_ a _ZoneLabel_.
 * Nesmí obsahovat funkce z více úrovní.
 * Nesmí obsahovat funkce z více zařízení.
 
@@ -168,7 +168,7 @@ V [ukázkovém balíčku kreslení](https://github.com/Azure-Samples/am-creator-
 
 ## <a name="manifest-file-requirements"></a>Požadavky souboru manifestu
 
-Složka zip musí obsahovat soubor manifestu na kořenové úrovni adresáře a soubor musí mít název **manifest.js** . Popisuje soubory DWG, aby [Služba konverze Azure Maps](/rest/api/maps/conversion) mohla analyzovat svůj obsah. Ingestují se jenom soubory identifikované manifestem. Soubory, které jsou ve složce zip, ale nejsou správně uvedeny v manifestu, jsou ignorovány.
+Složka zip musí obsahovat soubor manifestu na kořenové úrovni adresáře a soubor musí mít název **manifest.js**. Popisuje soubory DWG, aby [Služba konverze Azure Maps](/rest/api/maps/conversion) mohla analyzovat svůj obsah. Ingestují se jenom soubory identifikované manifestem. Soubory, které jsou ve složce zip, ale nejsou správně uvedeny v manifestu, jsou ignorovány.
 
 Cesty k souborům v `buildingLevels` objektu souboru manifestu musí být relativní ke kořenu složky zip. Název souboru DWG se musí přesně shodovat s názvem úrovně zařízení. Například soubor DWG pro úroveň "Basement" je "Basement. DWG". Soubor DWG pro úroveň 2 se jmenuje "level_2. DWG". Použijte podtržítko, pokud má název úrovně mezeru.
 
@@ -188,7 +188,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 ### `directoryInfo`
 
-| Vlastnost  | Typ | Povinné | Popis |
+| Vlastnost  | Typ | Vyžadováno | Description |
 |-----------|------|----------|-------------|
 | `name`      | řetězec | true   |  Název budovy |
 | `streetAddress`|    řetězec |    false (nepravda)    | Adresa sestavení. |
@@ -209,7 +209,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 `buildingLevels`Objekt obsahuje pole s JSON úrovněmi budov.
 
-| Vlastnost  | Typ | Povinné | Popis |
+| Vlastnost  | Typ | Vyžadováno | Description |
 |-----------|------|----------|-------------|
 |`levelName`    |řetězec    |true |    Název popisné úrovně Například: Floor 1, předsálí, Blue parkování nebo Basement.|
 |`ordinal` | integer |    true | Určuje svislé pořadí úrovní. Každé zařízení musí mít úroveň s pořadovým číslem 0. |
@@ -219,7 +219,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 ### `georeference`
 
-| Vlastnost  | Typ | Povinné | Popis |
+| Vlastnost  | Typ | Vyžadováno | Popis |
 |-----------|------|----------|-------------|
 |`lat`    | numerické |    true |    Desítková reprezentace stupně zeměpisné šířky v počátku kreslení zařízení. Souřadnice zdroje musí být v WGS84 web Mercator ( `EPSG:3857` ).|
 |`lon`    |numerické|    true|    Desítková reprezentace ve stupních délky v počátku kreslení zařízení Souřadnice zdroje musí být v WGS84 web Mercator ( `EPSG:3857` ). |
@@ -227,7 +227,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 ### `dwgLayers`
 
-| Vlastnost  | Typ | Povinné | Popis |
+| Vlastnost  | Typ | Vyžadováno | Popis |
 |-----------|------|----------|-------------|
 |`exterior`    |pole řetězců|    true|    Názvy vrstev, které definují vnější profil budovy.|
 |`unit`|    pole řetězců|    true|    Názvy vrstev, které definují jednotky.|
@@ -241,7 +241,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 `unitProperties`Objekt obsahuje pole s vlastnostmi jednotky ve formátu JSON.
 
-| Vlastnost  | Typ | Povinné | Popis |
+| Vlastnost  | Typ | Vyžadováno | Description |
 |-----------|------|----------|-------------|
 |`unitName`    |řetězec    |true    |Název jednotky, která se má přidružit k tomuto `unitProperty` záznamu. Tento záznam je platný pouze v případě, že `unitName` se v vrstvách nachází shodný popisek `unitLabel` . |
 |`categoryName`|    řetězec|    false (nepravda)    |Název kategorie Úplný seznam kategorií najdete v tématu [kategorie](https://aka.ms/pa-indoor-spacecategories). |
@@ -261,7 +261,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 `zoneProperties`Objekt obsahuje pole JSON vlastností zóny.
 
-| Vlastnost  | Typ | Povinné | Popis |
+| Vlastnost  | Typ | Vyžadováno | Popis |
 |-----------|------|----------|-------------|
 |Název_zóny        |řetězec    |true    |Název zóny, která se má přidružit k `zoneProperty` záznamu Tento záznam je platný pouze v případě, že `zoneName` se v vrstvě zóny nachází shodný popisek `zoneLabel` .  |
 |categoryName|    řetězec|    false (nepravda)    |Název kategorie Úplný seznam kategorií najdete v tématu [kategorie](https://aka.ms/pa-indoor-spacecategories). |

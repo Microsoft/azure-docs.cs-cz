@@ -6,11 +6,11 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 110d4a3219b4898fa6f138e29f1112d7134f674c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340083"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012335"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Výstrahy metrik s dynamickými prahovými hodnotami v Azure Monitor
 
@@ -61,7 +61,7 @@ Můžete zvolit výstrahu, která se má aktivovat, na jednu z následujících 
 
 ## <a name="what-do-the-advanced-settings-in-dynamic-thresholds-mean"></a>Co znamená rozšířené nastavení v případě dynamických prahových hodnot?
 
-**Neúspěšné tečky** – dynamické prahové hodnoty také umožňují nakonfigurovat "počet porušení pro aktivaci výstrahy", minimální počet odchylek vyžadovaných v určitém časovém období pro systém k vyvolání výstrahy (výchozí časový interval je čtyři odchylky za 20 minut). Uživatel může nakonfigurovat neúspěšné intervaly a zvolit, na co se má upozornit, změnou období selhání a časového okna. Tato možnost omezuje hluk výstrah vygenerovaný přechodnými špičkami. Příklad:
+**Neúspěšné tečky** – dynamické prahové hodnoty také umožňují nakonfigurovat "počet porušení pro aktivaci výstrahy", minimální počet odchylek vyžadovaných v určitém časovém období pro systém k vyvolání výstrahy (výchozí časový interval je čtyři odchylky za 20 minut). Uživatel může nakonfigurovat neúspěšné intervaly a zvolit, na co se má upozornit, změnou období selhání a časového okna. Tato možnost omezuje hluk výstrah vygenerovaný přechodnými špičkami. Například:
 
 Chcete-li aktivovat upozornění, když je problém v průběhu 20 minut v intervalu po dobu 4 po sobě jdoucích časů v daném období seskupení 5 minut, použijte následující nastavení:
 
@@ -110,7 +110,7 @@ Následující položky jsou osvědčené postupy pro konfiguraci výstrah na n�
     > [!TIP]
     > Většina oken prostředků má také **výstrahy** v nabídce prostředků v části **monitorování**, můžete také vytvořit výstrahy.
 
-3. Klikněte na **vybrat cíl**a v kontextovém podokně, které se načte, vyberte cílový prostředek, na kterém chcete upozornit. K vyhledání prostředku, který chcete monitorovat, použijte rozevírací seznam pro **předplatné** a **typ prostředku Virtual Machines** . K vyhledání prostředku můžete použít také panel hledání.
+3. Klikněte na **vybrat cíl** a v kontextovém podokně, které se načte, vyberte cílový prostředek, na kterém chcete upozornit. K vyhledání prostředku, který chcete monitorovat, použijte rozevírací seznam pro **předplatné** a **typ prostředku Virtual Machines** . K vyhledání prostředku můžete použít také panel hledání.
 
 4. Po výběru cílového prostředku klikněte na **Přidat podmínku**.
 
@@ -129,7 +129,7 @@ Následující položky jsou osvědčené postupy pro konfiguraci výstrah na n�
 
 9. Klikněte na **Hotovo**.
 
-10. Vyplňte **Podrobnosti výstrahy** , jako **je název pravidla výstrahy**, **Popis**a **závažnost**.
+10. Vyplňte **Podrobnosti výstrahy** , jako **je název pravidla výstrahy**, **Popis** a **závažnost**.
 
 11. Přidejte skupinu akcí k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
 
@@ -147,7 +147,7 @@ Následující položky jsou osvědčené postupy pro konfiguraci výstrah na n�
     > [!TIP]
     > Většina oken prostředků má také **výstrahy** v nabídce prostředků v části **monitorování**, můžete také vytvořit výstrahy.
 
-3. Klikněte na **vybrat cíl**a v kontextovém podokně, které se načte, vyberte cílový prostředek, na kterém chcete upozornit. K vyhledání prostředku, který chcete monitorovat, použijte rozevírací seznam pro **předplatné** a **typ prostředku Application Insights** . K vyhledání prostředku můžete použít také panel hledání.
+3. Klikněte na **vybrat cíl** a v kontextovém podokně, které se načte, vyberte cílový prostředek, na kterém chcete upozornit. K vyhledání prostředku, který chcete monitorovat, použijte rozevírací seznam pro **předplatné** a **typ prostředku Application Insights** . K vyhledání prostředku můžete použít také panel hledání.
 
 4. Po výběru cílového prostředku klikněte na **Přidat podmínku**.
 
@@ -164,7 +164,7 @@ Následující položky jsou osvědčené postupy pro konfiguraci výstrah na n�
 
 9. Klikněte na **Hotovo**.
 
-10. Vyplňte **Podrobnosti výstrahy** , jako **je název pravidla výstrahy**, **Popis**a **závažnost**.
+10. Vyplňte **Podrobnosti výstrahy** , jako **je název pravidla výstrahy**, **Popis** a **závažnost**.
 
 11. Přidejte skupinu akcí k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
 

@@ -6,11 +6,11 @@ ms.topic: quickstart
 ms.date: 04/04/2020
 ms.reviewer: azfuncdf, antchu
 ms.openlocfilehash: 5d624027259212d804ced26a6daaffb853984a98
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91294840"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012625"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>Vytvoření první trvalé funkce v Pythonu
 
@@ -20,7 +20,7 @@ V tomto článku se naučíte, jak používat rozšíření Visual Studio Code A
 
 ![Spuštění trvalé funkce v Azure](./media/quickstart-python-vscode/functions-vs-code-complete.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -52,7 +52,7 @@ V této části použijete Visual Studio Code k vytvoření místního projektu 
     | ------ | ----- | ----------- |
     | Vyberte jazyk pro projekt Function App. | Python | Vytvořte projekt místních funkcí Pythonu. |
     | Vybrat verzi | Azure Functions v3 | Tato možnost se zobrazí jenom v případě, že už nejsou nainstalované základní nástroje. V takovém případě se při prvním spuštění aplikace nainstalují základní nástroje. |
-    | Verze Pythonu | Python 3,6, 3,7 nebo 3,8 | VS Code vytvoří virtuální prostředí s vybranou verzí. |
+    | Python version (Verze Pythonu) | Python 3,6, 3,7 nebo 3,8 | VS Code vytvoří virtuální prostředí s vybranou verzí. |
     | Vyberte šablonu pro funkci prvního projektu. | Prozatím přeskočte | |
     | Vyberte, jak se má projekt otevřít. | Otevřít v aktuálním okně | Znovu otevře VS Code ve vybrané složce. |
 
@@ -129,7 +129,7 @@ Dále přidáte `Hello` funkci odkazované aktivity.
     | Výzva | Hodnota | Popis |
     | ------ | ----- | ----------- |
     | Vyberte šablonu pro funkci | Aktivita Durable Functions | Vytvoření funkce aktivity |
-    | Zadejte název funkce. | Hello (Nazdar) | Název funkce aktivity |
+    | Zadejte název funkce. | Dobrý den | Název funkce aktivity |
 
 Přidali jste `Hello` funkci aktivity, která je vyvolána nástrojem Orchestrator. Otevřete *Hello/ \_ \_ init__. py* , abyste viděli, že jako vstup pořizuje název a vrátí pozdrav. Funkce Activity je místo, kde provedete akce, jako je například vytvoření databázového volání nebo provedení výpočtu.
 
@@ -172,7 +172,7 @@ Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na
     | Vyberte účet úložiště. | Vytvoření nového účtu úložiště |  |
     | Zadejte název nového účtu úložiště. | *jedinečný název* | Název účtu úložiště, který se má vytvořit |
     | Výběr skupiny prostředků | *jedinečný název* | Název skupiny prostředků, která se má vytvořit |
-    | Výběr umístění | *oblast* | Vyberte oblast, kterou chcete zavřít. |
+    | Výběr umístění | *věřitel* | Vyberte oblast, kterou chcete zavřít. |
 
 1. Na panelu **Terminál** zkopírujte adresu URL koncového bodu vaší funkce aktivované protokolem HTTP.
 

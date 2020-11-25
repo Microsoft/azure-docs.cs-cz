@@ -3,12 +3,12 @@ title: Řešení potíží s připojením – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o řešení problémů s připojením k Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: b85c0895d1c8f165f494d29013adea014187dd23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eddc0e8c598e4553b30759d179fecb6ae880829
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87039323"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96012676"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>Řešení potíží s připojením – Azure Event Hubs
 K dispozici jsou různé důvody pro klientské aplikace, které se nemohou připojit k centru událostí. Problémy s připojením mohou být trvalé nebo přechodné. Pokud se problém projeví i po celou dobu (trvalý), možná budete chtít ověřit připojovací řetězec, nastavení brány firewall vaší organizace, nastavení brány firewall protokolu IP, nastavení zabezpečení sítě (koncové body služby, privátní koncové body atd.) a další. Pro přechodné problémy, upgrade na nejnovější verzi sady SDK, spuštění příkazů pro kontrolu zrušených paketů a získání trasování sítě může pomáhat při řešení problémů. 
@@ -26,54 +26,7 @@ Ověřte, zda je připojovací řetězec, který používáte, správný. Viz [z
 
 U klientů Kafka ověřte, že jsou správně nakonfigurované producer.config nebo consumer.config soubory. Další informace najdete v tématu [posílání a přijímání zpráv pomocí Kafka v Event Hubs](event-hubs-quickstart-kafka-enabled-event-hubs.md#send-and-receive-messages-with-kafka-in-event-hubs).
 
-### <a name="check-if-the-ports-required-to-communicate-with-event-hubs-are-blocked-by-organizations-firewall"></a>Ověřte, jestli jsou porty potřebné ke komunikaci s Event Hubs blokované bránou firewall organizace.
-Ověřte, že porty používané při komunikaci s Azure Event Hubs nejsou blokované v bráně firewall vaší organizace. V následující tabulce najdete Odchozí porty, které musíte otevřít ke komunikaci s Azure Event Hubs. 
-
-| Protokol | Porty | Podrobnosti | 
-| -------- | ----- | ------- | 
-| AMQP | 5671 a 5672 | Viz [Průvodce protokolem AMQP](../service-bus-messaging/service-bus-amqp-protocol-guide.md) . | 
-| HTTP, HTTPS | 80, 443 |  |
-| Kafka | 9093 | Viz [použití Event Hubs z aplikací Kafka](event-hubs-for-kafka-ecosystem-overview.md) .
-
-Tady je ukázkový příkaz, který zkontroluje, jestli je port 5671 blokovaný.
-
-```powershell
-tnc <yournamespacename>.servicebus.windows.net -port 5671
-```
-
-V systému Linux:
-
-```shell
-telnet <yournamespacename>.servicebus.windows.net 5671
-```
-
-### <a name="verify-that-ip-addresses-are-allowed-in-your-corporate-firewall"></a>Ověřte, jestli jsou ve vaší podnikové bráně povolené IP adresy.
-Když pracujete s Azure, někdy je potřeba, abyste v podnikové bráně firewall nebo proxy povolili konkrétní rozsahy IP adres nebo adresy URL pro přístup ke všem službám Azure, které používáte nebo se pokoušíte použít. Ověřte, jestli je povolený provoz na IP adresách, které používá Event Hubs. Pro IP adresy, které používá Azure Event Hubs: Přečtěte si téma [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519).
-
-Ověřte také, zda je povolena IP adresa pro váš obor názvů. Chcete-li najít správné IP adresy, které mají být pro vaše připojení povoleny, postupujte takto:
-
-1. Z příkazového řádku spusťte následující příkaz: 
-
-    ```
-    nslookup <YourNamespaceName>.servicebus.windows.net
-    ```
-2. Poznamenejte si IP adresu vrácenou v `Non-authoritative answer` . Jediná doba, kterou by se změnila, je, že obor názvů obnovíte na jiný cluster.
-
-Pokud používáte redundanci zóny pro svůj obor názvů, musíte provést několik dalších kroků: 
-
-1. Nejprve spustíte nástroj nslookup v oboru názvů.
-
-    ```
-    nslookup <yournamespace>.servicebus.windows.net
-    ```
-2. Poznamenejte si název v části **nesměrodatná odpověď** , která je v jednom z následujících formátů: 
-
-    ```
-    <name>-s1.cloudapp.net
-    <name>-s2.cloudapp.net
-    <name>-s3.cloudapp.net
-    ```
-3. Spusťte nástroj nslookup pro každý z nich s příponami S1, S2 a S3 k získání IP adres všech tří instancí spuštěných ve třech zónách dostupnosti. 
+[!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
 
 ### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>Ověřte, že ve skupinách zabezpečení sítě je povolený tag služby AzureEventGrid.
 Pokud je vaše aplikace spuštěná v podsíti a je přidružená skupina zabezpečení sítě, ověřte, jestli je povolený internetový odchozí nebo že je povolená značka služby AzureEventGrid. Podívejte se na [značky služby virtuální sítě](../virtual-network/service-tags-overview.md) a vyhledejte `EventHub` .
@@ -91,22 +44,6 @@ Ve výchozím nastavení jsou Event Hubs obory názvů přístupné z Internetu,
 Pravidla brány firewall protokolu IP se používají na úrovni oboru názvů Event Hubs. Proto se pravidla vztahují na všechna připojení z klientů pomocí libovolného podporovaného protokolu. Všechny pokusy o připojení z IP adresy, které neodpovídají povolenému pravidlu IP v oboru názvů Event Hubs, se odmítnou jako neoprávněné. Odpověď nezmiňuje pravidlo protokolu IP. Pravidla filtru IP se aplikují v pořadí a první pravidlo, které odpovídá IP adrese, určuje akci přijmout nebo odmítnout.
 
 Další informace najdete v tématu [Konfigurace pravidel brány firewall protokolu IP pro obor názvů Azure Event Hubs](event-hubs-ip-filtering.md). Pokud chcete zjistit, jestli máte problémy s filtrováním IP adres, virtuální sítí nebo řetězem certifikátů, přečtěte si téma [řešení potíží souvisejících se sítí](#troubleshoot-network-related-issues).
-
-#### <a name="find-the-ip-addresses-blocked-by-ip-firewall"></a>Najít IP adresy blokované bránou firewall protokolu IP
-Povolte protokoly diagnostiky pro [Event Hubs události připojení k virtuální síti](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema) podle pokynů v tématu [Povolení diagnostických protokolů](event-hubs-diagnostic-logs.md#enable-diagnostic-logs). Zobrazí se IP adresa pro připojení, které bylo odepřeno.
-
-```json
-{
-    "SubscriptionId": "0000000-0000-0000-0000-000000000000",
-    "NamespaceName": "namespace-name",
-    "IPAddress": "1.2.3.4",
-    "Action": "Deny Connection",
-    "Reason": "IPAddress doesn't belong to a subnet with Service Endpoint enabled.",
-    "Count": "65",
-    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name",
-    "Category": "EventHubVNetConnectionEvent"
-}
-```
 
 ### <a name="check-if-the-namespace-can-be-accessed-using-only-a-private-endpoint"></a>Ověřte, jestli se k oboru názvů dá přistup jenom pomocí privátního koncového bodu.
 Pokud je obor názvů Event Hubs nakonfigurovaný jenom přes privátní koncový bod, zkontrolujte, jestli klientská aplikace přistupuje k oboru názvů přes soukromý koncový bod. 

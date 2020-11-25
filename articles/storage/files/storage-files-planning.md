@@ -8,19 +8,19 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: a35c34a08dba625b16940d7ec5fb870952dba36b
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e60ba773c5ef750f027c2e0b1528409c71eeb4b8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630239"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011690"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 [Soubory Azure](storage-files-introduction.md) se dají nasadit dvěma hlavními způsoby: přímým připojením sdílených složek Azure bez serveru nebo ukládáním do mezipaměti sdílených složek Azure v místním prostředí pomocí Azure File Sync. Kterou možnost nasazení zvolíte, změní se to, co je potřeba vzít v úvahu při plánování nasazení. 
 
-- **Přímé připojení sdílené složky Azure** : vzhledem k tomu, že soubory Azure poskytují přístup přes protokol SMB (Server Message Block) nebo systém souborů NFS (Network File System), můžete sdílené složky Azure připojit místně nebo v cloudu pomocí standardních klientů SMB nebo NFS, které jsou k dispozici v operačním systému. Vzhledem k tomu, že sdílené složky Azure jsou bez serveru, nasazení pro produkční scénáře nevyžaduje správu souborového serveru nebo zařízení NAS. To znamená, že nemusíte instalovat softwarové opravy ani odpínat fyzické disky. 
+- **Přímé připojení sdílené složky Azure**: vzhledem k tomu, že soubory Azure poskytují přístup přes protokol SMB (Server Message Block) nebo systém souborů NFS (Network File System), můžete sdílené složky Azure připojit místně nebo v cloudu pomocí standardních klientů SMB nebo NFS, které jsou k dispozici v operačním systému. Vzhledem k tomu, že sdílené složky Azure jsou bez serveru, nasazení pro produkční scénáře nevyžaduje správu souborového serveru nebo zařízení NAS. To znamená, že nemusíte instalovat softwarové opravy ani odpínat fyzické disky. 
 
-- **Ukládání sdílené složky Azure do mezipaměti v místním prostředí pomocí Azure File Sync** : Azure File Sync umožňuje centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zachovat tak flexibilitu, výkon a kompatibilitu místního souborového serveru. Azure File Sync transformuje místní (nebo cloudový) Windows Server na rychlou mezipaměť sdílené složky Azure SMB. 
+- **Ukládání sdílené složky Azure do mezipaměti v místním prostředí pomocí Azure File Sync**: Azure File Sync umožňuje centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zachovat tak flexibilitu, výkon a kompatibilitu místního souborového serveru. Azure File Sync transformuje místní (nebo cloudový) Windows Server na rychlou mezipaměť sdílené složky Azure SMB. 
 
 Tento článek primárně řeší požadavky nasazení na nasazení sdílené složky Azure, aby je bylo možné přímo připojit k místnímu nebo cloudovém klientovi. Chcete-li naplánovat nasazení Azure File Sync, přečtěte si téma [Plánování nasazení Azure File Sync](storage-sync-files-planning.md).
 
@@ -44,9 +44,9 @@ Při nasazování sdílených složek Azure do účtů úložiště doporučujem
 
 ## <a name="identity"></a>Identita
 Aby bylo možné získat přístup ke sdílené složce Azure, musí být uživatel sdílené složky ověřený a mít autorizaci pro přístup ke sdílené složce. To se provádí na základě identity uživatele, který přistupuje ke sdílené složce souborů. Soubory Azure se integrují se třemi hlavními zprostředkovateli identity:
-- Místní **Active Directory Domain Services (služba AD DS nebo místní služba AD DS)** : účty Azure Storage můžou být připojené k doméně, která patří k zákazníkovi Active Directory Domain Services, stejně jako souborový server Windows nebo zařízení NAS. Můžete nasadit řadič domény místně, na virtuálním počítači Azure nebo dokonce jako virtuální počítač v jiném poskytovateli cloudu. Soubory Azure se nezávislá na místo, kde je hostovaný váš řadič domény. Jakmile je účet úložiště připojený k doméně, koncový uživatel může připojit sdílenou složku s uživatelským účtem, pomocí kterého se přihlásili ke svému počítači. Ověřování založené na AD používá ověřovací protokol Kerberos.
-- **Azure Active Directory Domain Services (azure služba AD DS)** : Azure služba AD DS poskytuje řadič domény spravovaný Microsoftem, který se dá použít pro prostředky Azure. Doména, která se připojuje k vašemu účtu úložiště k Azure služba AD DS poskytuje podobné výhody pro doménu, která se připojuje ke službě Active Directory vlastněné zákazníkem. Tato možnost nasazení je nejužitečnější pro scénáře použití a posunutí aplikace, které vyžadují oprávnění založené na službě AD. Vzhledem k tomu, že Azure služba AD DS poskytuje ověřování založené na AD, používá tato možnost také ověřovací protokol Kerberos.
-- **Klíč účtu úložiště Azure** : sdílené složky Azure můžou být taky připojené pomocí klíče účtu úložiště Azure. Chcete-li připojit sdílenou složku tímto způsobem, je název účtu úložiště použit jako uživatelské jméno a klíč účtu úložiště se používá jako heslo. Použití klíče účtu úložiště pro připojení sdílené složky Azure je efektivně operace správce, protože připojená sdílená složka bude mít úplná oprávnění ke všem souborům a složkám ve sdílené složce, a to i v případě, že mají seznamy řízení přístupu (ACL). Při použití klíče účtu úložiště k připojení přes protokol SMB se používá ověřovací protokol NTLMv2.
+- Místní **Active Directory Domain Services (služba AD DS nebo místní služba AD DS)**: účty Azure Storage můžou být připojené k doméně, která patří k zákazníkovi Active Directory Domain Services, stejně jako souborový server Windows nebo zařízení NAS. Můžete nasadit řadič domény místně, na virtuálním počítači Azure nebo dokonce jako virtuální počítač v jiném poskytovateli cloudu. Soubory Azure se nezávislá na místo, kde je hostovaný váš řadič domény. Jakmile je účet úložiště připojený k doméně, koncový uživatel může připojit sdílenou složku s uživatelským účtem, pomocí kterého se přihlásili ke svému počítači. Ověřování založené na AD používá ověřovací protokol Kerberos.
+- **Azure Active Directory Domain Services (azure služba AD DS)**: Azure služba AD DS poskytuje řadič domény spravovaný Microsoftem, který se dá použít pro prostředky Azure. Doména, která se připojuje k vašemu účtu úložiště k Azure služba AD DS poskytuje podobné výhody pro doménu, která se připojuje ke službě Active Directory vlastněné zákazníkem. Tato možnost nasazení je nejužitečnější pro scénáře použití a posunutí aplikace, které vyžadují oprávnění založené na službě AD. Vzhledem k tomu, že Azure služba AD DS poskytuje ověřování založené na AD, používá tato možnost také ověřovací protokol Kerberos.
+- **Klíč účtu úložiště Azure**: sdílené složky Azure můžou být taky připojené pomocí klíče účtu úložiště Azure. Chcete-li připojit sdílenou složku tímto způsobem, je název účtu úložiště použit jako uživatelské jméno a klíč účtu úložiště se používá jako heslo. Použití klíče účtu úložiště pro připojení sdílené složky Azure je efektivně operace správce, protože připojená sdílená složka bude mít úplná oprávnění ke všem souborům a složkám ve sdílené složce, a to i v případě, že mají seznamy řízení přístupu (ACL). Při použití klíče účtu úložiště k připojení přes protokol SMB se používá ověřovací protokol NTLMv2.
 
 Pro zákazníky, kteří migrují z místních souborových serverů nebo vytváří nové sdílené složky ve službě soubory Azure, které se chovají jako souborové servery Windows nebo zařízení NAS, je doporučenou možností připojit se k vašemu účtu úložiště ke **službě Active Directory vlastněné zákazníkem** . Další informace o tom, jak se doména připojuje k vašemu účtu úložiště ke službě Active Directory vlastněné zákazníkem, najdete v tématu [Přehled služby Azure Files Active Directory](storage-files-active-directory-overview.md).
 
@@ -63,9 +63,9 @@ Pokud chcete odblokovat přístup ke sdílené složce Azure, máte dvě hlavní
 
 I když z technického hlediska je podstatně jednodušší připojit sdílené složky Azure přes Veřejný koncový bod, očekáváme, že většina zákazníků bude chtít připojit své sdílené složky Azure přes ExpressRoute nebo připojení k síti VPN. Připojení k těmto možnostem je možné u sdílených složek SMB i NFS. K tomu budete muset pro svoje prostředí nakonfigurovat následující:  
 
-- **Síťové tunelové propojení pomocí ExpressRoute, Site-to-site nebo VPN typu Point-to-site** : tunelování do virtuální sítě umožňuje přístup ke sdíleným složkám Azure z místního prostředí, i když je port 445 zablokovaný.
-- **Privátní koncové body** : privátní koncové body přidávají účtu úložiště vyhrazenou IP adresu z adresního prostoru virtuální sítě. To umožňuje síťové tunelové propojení bez nutnosti otevírat místní sítě až do všech rozsahů IP adres, které vlastní clustery Azure Storage. 
-- **Předávání DNS** : Nakonfigurujte místní službu DNS tak, aby vyřešila název vašeho účtu úložiště (tj. `storageaccount.file.core.windows.net` pro oblasti veřejného cloudu), aby se přeložila na IP adresu vašich privátních koncových bodů.
+- **Síťové tunelové propojení pomocí ExpressRoute, Site-to-site nebo VPN typu Point-to-site**: tunelování do virtuální sítě umožňuje přístup ke sdíleným složkám Azure z místního prostředí, i když je port 445 zablokovaný.
+- **Privátní koncové body**: privátní koncové body přidávají účtu úložiště vyhrazenou IP adresu z adresního prostoru virtuální sítě. To umožňuje síťové tunelové propojení bez nutnosti otevírat místní sítě až do všech rozsahů IP adres, které vlastní clustery Azure Storage. 
+- **Předávání DNS**: Nakonfigurujte místní službu DNS tak, aby vyřešila název vašeho účtu úložiště (tj. `storageaccount.file.core.windows.net` pro oblasti veřejného cloudu), aby se přeložila na IP adresu vašich privátních koncových bodů.
 
 Informace o plánování sítě přidružených k nasazení sdílené složky Azure najdete v tématu věnovaném [důležitým informacím o sítích Azure Files](storage-files-networking-overview.md).
 
@@ -133,16 +133,16 @@ Obecně platí, že funkce a interoperabilita souborů Azure s ostatními služb
 Jakmile je sdílená složka vytvořená jako verze Premium nebo standardní, nemůžete ji automaticky převést na jinou úroveň. Pokud byste chtěli přepnout na jinou úroveň, musíte v této vrstvě vytvořit novou sdílenou složku a ručně zkopírovat data z původní sdílené složky do nové sdílené složky, kterou jste vytvořili. `robocopy`K provedení této kopie doporučujeme použít pro Windows nebo `rsync` pro MacOS a Linux.
 
 ### <a name="understanding-provisioning-for-premium-file-shares"></a>Principy zřizování pro sdílení souborů úrovně Premium
-Soubory úrovně Premium se zřídí na základě pevného poměru propustnosti GiB/IOPS/. Pro každé zřízené GiB se pro sdílenou složku vystaví jedna propustnost a 0,1 MiB/s až do maximálního počtu na jednu sdílenou složku. Minimální povolené zřizování je 100 GiB s minimálním IOPS/propustností.
+Soubory úrovně Premium se zřídí na základě pevného poměru propustnosti GiB/IOPS/. Pro všechny velikosti sdílených složek se nabízí minimální základní hodnota a propustnost a povolený nárůst. Pro každou zřízenou GiB bude mít sdílená složka minimální IOPS/propustnost a 1 IOPS a 0,1 MiB/s až do maximálních limitů pro každou sdílenou složku. Minimální povolené zřizování je 100 GiB s minimálním počtem vstupně-výstupních operací/propustnosti. 
 
-Na základě optimálního úsilí se všechny sdílené složky můžou rozdělovat až na tři IOPS za GiB zřízeného úložiště po dobu 60 minut nebo déle v závislosti na velikosti sdílené složky. Nové sdílené složky začínají úplným kreditem na základě zřízené kapacity.
+Všechny úrovně Premium jsou nabízeny zdarma, a to na základě optimálního úsilí. Všechny velikosti sdílených složek se můžou rozdělovat až na 4 000 IOPS nebo až na tři vstupně-výstupní operace za zřízené GiB, podle toho, která poskytuje větší shlukový IOPS pro sdílenou složku. Všechny sdílené složky podporují rozpínání po dobu maximálně 60 minut v limitu shlukového zatížení. Nové sdílené složky začínají úplným kreditem na základě zřízené kapacity.
 
 Sdílené složky musí být zřízené v 1 přírůstcích GiB. Minimální velikost je 100 GiB, příští velikost je 101 GiB atd.
 
 > [!TIP]
-> Směrného plánu IOPS = 1 * zřízené GiB. (Až do maximálního počtu 100 000 IOPS).
+> Směrného plánu IOPS = 400 + 1 * zřízené GiB. (Až do maximálního počtu 100 000 IOPS).
 >
-> Limit shlukování = 3 * základní IOPS (Až do maximálního počtu 100 000 IOPS).
+> Limit počtu shluků = MAX (4 000, 3 × základní IOPS). (podle toho, jak je limit větší, až do maximálního počtu 100 000 IOPS).
 >
 > míra odchozích dat = 60 MiB/s + 0,06 * zřízené GiB
 >
@@ -156,33 +156,29 @@ Následující tabulka ilustruje několik příkladů těchto vzorců pro zříz
 
 |Kapacita (GiB) | Směrný IOPS | Shlukový IOPS | Výstup (MiB/s) | Příchozí přenosy (MiB/s) |
 |---------|---------|---------|---------|---------|
-|100         | 100     | Až 300     | 66   | 44   |
-|500         | 500     | Až 1 500   | 90   | 60   |
-|1 024       | 1 024   | Až 3 072   | 122   | 81   |
-|5 120       | 5 120   | Až 15 360  | 368   | 245   |
-|10 240      | 10 240  | Až 30 720  | 675 | 450   |
-|33 792      | 33 792  | Až 100 000 | 2 088 | 1 392   |
-|51 200      | 51 200  | Až 100 000 | 3 132 | 2 088   |
+|100         | 500     | Až 4 000     | 66   | 44   |
+|500         | 900     | Až 4 000  | 90   | 60   |
+|1 024       | 1 424   | Až 4 000   | 122   | 81   |
+|5 120       | 5 520   | Až 15 360  | 368   | 245   |
+|10 240      | 10 640  | Až 30 720  | 675   | 450   |
+|33 792      | 34 192  | Až 100 000 | 2 088 | 1 392   |
+|51 200      | 51 600  | Až 100 000 | 3 132 | 2 088   |
 |102 400     | 100 000 | Až 100 000 | 6 204 | 4 136   |
 
-> [!NOTE]
-> Výkon sdílených složek závisí na omezeních sítě počítačů, dostupné šířce pásma sítě, velikosti v/v, paralelních operacích, mezi mnoha dalšími faktory. Například na základě interního testování s 8 KiB velikostí vstupně-výstupních operací čtení a zápisu může být jeden virtuální počítač s Windows, *Standard F16s_v2* připojený ke sdílené složce Premium přes SMB, mohl dosáhnout 20 tisíc čtení IOPS a 15 000 IOPS. S 512 velikostí čtení/zápisu v/v souboru MiB může stejný virtuální počítač dosáhnout propustnosti 1,1 GiB/s a 370 propustnosti příchozího přenosu dat MiB/s. Chcete-li dosáhnout maximálního rozsahu výkonu, rozšíříte zatížení napříč více virtuálními počítači. Některé běžné problémy s výkonem a alternativní řešení najdete v [Průvodci odstraňováním potíží](storage-troubleshooting-files-performance.md) .
+Je důležité si uvědomit, že účinný výkon sdílených složek se vztahuje na omezení sítě počítačů, dostupnou šířku pásma sítě, velikosti v/v, paralelismus mezi mnoha dalšími faktory. Například na základě interního testování s 8 KiB velikostí vstupně-výstupních operací čtení a zápisu se může jednat o jeden virtuální počítač s Windows bez povolených souborů protokolu SMB, *Standard F16s_v2*, který je připojený ke sdílené složce Premium přes SMB, mohl dosáhnout 20 tisíc čtení IOPS a 15 000 IOPS. S 512 velikostí čtení/zápisu v/v souboru MiB může stejný virtuální počítač dosáhnout propustnosti 1,1 GiB/s a 370 propustnosti příchozího přenosu dat MiB/s. Stejný klient může dosáhnout až \~ 3x výkonu, pokud je ve sdílených složkách na úrovni Premium povolená možnost SMB vícekanálový. Pokud chcete dosáhnout maximálního výkonu, povolte v rámci více virtuálních počítačů vícekanálový a rozprostření zátěže přes protokol [SMB](storage-files-enable-smb-multichannel.md) . Některé běžné problémy s výkonem a řešení [problémů najdete v Průvodci odstraňováním potíží](storage-troubleshooting-files-performance.md) ve [vícekanálovém protokolu SMB](storage-files-smb-multichannel-performance.md) .
 
 #### <a name="bursting"></a>Shlukování
-Soubory úrovně Premium můžou zvýšit zatížení za IOPS až do násobku tří. Shlukování je automatizované a funguje na základě úvěrového systému. Shluking funguje na nejvyšší úrovni a limit shluku není zárukou, sdílené složky mohou *zvýšit úroveň až do* limitu.
+Pokud vaše úloha potřebuje dodatečný výkon pro splnění požadavků na špičku, může vaše sdílená složka použít kredity za sekundu a přejít nad limit počtu IOPS podle směrného plánu, aby bylo možné nabídnout výkon, který musí splňovat požadavky. Soubory úrovně Premium můžou zvýšit zatížení za IOPS až do 4 000 nebo až do násobku tří, podle toho, co je vyšší hodnota. Shlukování je automatizované a funguje na základě úvěrového systému. Shluking funguje na nejvyšší úrovni a limit shluku není zárukou. sdílené složky se můžou *zvýšit až* na maximální dobu od 60 minut.
 
-Kredity se sčítají v rámci shlukového přenosu, kdykoli je přenos pro sdílenou složku pod směrným intervalem IOPS. Například sdílená složka 100 GiB má 100 směrný IOPS. Pokud byl skutečný provoz na sdílené složce 40 vstupně-výstupních operací pro určitý interval 1 sekund, pak je 60 nepoužitelné IOPS v kreditu do intervalu shlukování. Tyto kredity se pak použijí později, pokud by operace překročily směrný IOPs.
+Kredity se sčítají v rámci shlukového přenosu, kdykoli je přenos pro sdílenou složku pod směrným intervalem IOPS. Například sdílená složka 100 GiB má 500 směrný IOPS. Pokud byl skutečný provoz na sdílené složce 100 vstupně-výstupních operací pro určitý interval 1 sekund, pak je 400 nepoužitelné IOPS v kreditu do intervalu shlukování. Podobně nečinný TiB sdílená složka vyplyne nárůst kreditu na 1 424 IOPS. Tyto kredity se pak použijí později, pokud by operace překročily směrný IOPS.
 
-> [!TIP]
-> Velikost shlukového intervalu = směrné IOPS * 2 * 3600.
-
-Pokaždé, když sdílená složka přesáhne základní IOPS a má kredity v rámci shlukového intervalu, dojde k nárůstu zatížení. Sdílené složky můžou pokračovat v roztržení, dokud budou kredity nižší, i když sdílené složky menší než 50 TiB budou zůstat až po hodinu. Sdílené složky, které jsou větší než 50 TiB, mohou technicky překročit tento limit hodin, až dvě hodiny, ale na základě počtu kumulovaných kreditů. Každý v/v za rámec standardních hodnot IOPS spotřebovává jeden kredit a jakmile se všechny kredity spotřebují, vrátí se do směrného plánu IOPS.
+Pokaždé, když sdílená složka přesáhne základní IOPS a má kredity v intervalu shlukového přenosu, dojde k nárůstu maximální povolené míry shlukové zátěže na nejvyšší úrovni. Sdílené složky můžou pokračovat v nárůstu, dokud budou kredity zbývající, maximálně 60 minut, ale na základě počtu kumulovaných kreditů. Každý v/v za rámec standardních hodnot IOPS spotřebovává jeden kredit a jakmile se všechny kredity spotřebují, bude se tato sdílená hodnota vracet do směrného IOPS.
 
 Sdílené kredity mají tři stavy:
 
 - Probíhá nabíhání, Pokud sdílená složka používá méně než směrný IOPS.
-- Odmítnutí, když se sdílená složka rozpíná.
-- Zbývající konstanta, pokud nejsou k dispozici žádné kredity nebo se základní hodnota IOPS používá.
+- Odmítnutí, Pokud sdílená složka používá více než IOPS a v režimu shlukování.
+- Je potřeba, aby sdílená složka používala přesně základní IOPS, ale nedošlo k žádnému kreditu nebo použití.
 
 Nové sdílené složky začínají úplným počtem kreditů v rámci svého shlukového intervalu. Kredity shluku se neúčtují, pokud se za vstupně-výstupní operace klesne pod základnu IOPS, a to kvůli omezení serveru.
 

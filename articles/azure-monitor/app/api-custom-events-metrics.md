@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: e9f175e2585a5254922c9e859cf5ece2afbbc3e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264129"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011336"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API služby Application Insights pro vlastní události a metriky
 
@@ -690,7 +690,7 @@ Pokud vaše aplikace seskupí uživatele na účty, můžete také předat ident
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-V [Průzkumník metrik](../platform/metrics-charts.md)můžete vytvořit graf, který počítá **uživatele, ověřené**a **uživatelské účty**.
+V [Průzkumník metrik](../platform/metrics-charts.md)můžete vytvořit graf, který počítá **uživatele, ověřené** a **uživatelské účty**.
 
 Můžete také [Vyhledat](./diagnostic-search.md) body dat klienta s konkrétními uživatelskými jmény a účty.
 
@@ -918,9 +918,9 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 Jednotlivá volání telemetrie můžou v jejich slovníkech vlastností přepsat výchozí hodnoty.
 
-*Pro webové klienty v jazyce JavaScript*použijte Inicializátory telemetrie JavaScript.
+*Pro webové klienty v jazyce JavaScript* použijte Inicializátory telemetrie JavaScript.
 
-*Chcete-li přidat vlastnosti do všechny telemetrie*, včetně dat ze standardních modulů kolekcí [, `ITelemetryInitializer` implementujte ](./api-filtering-sampling.md#add-properties).
+*Chcete-li přidat vlastnosti do všechny telemetrie*, včetně dat ze standardních modulů kolekcí [, `ITelemetryInitializer` implementujte](./api-filtering-sampling.md#add-properties).
 
 ## <a name="sampling-filtering-and-processing-telemetry"></a>Vzorkování, filtrování a zpracování telemetrie
 
@@ -932,7 +932,7 @@ Můžete napsat kód pro zpracování telemetrie před jejich odesláním ze sad
 
 [Vzorkování](./api-filtering-sampling.md) je zabalené řešení, které snižuje objem dat odesílaných z vaší aplikace na portál. V takovém případě nemá vliv na zobrazené metriky. A to i bez ovlivnění vaší schopnosti diagnostikovat problémy pomocí navigace mezi souvisejícími položkami, jako jsou výjimky, požadavky a zobrazení stránek.
 
-[Další informace](./api-filtering-sampling.md).
+[Přečtěte si další informace](./api-filtering-sampling.md).
 
 ## <a name="disabling-telemetry"></a>Zakázání telemetrie
 

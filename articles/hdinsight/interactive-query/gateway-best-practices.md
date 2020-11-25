@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 3db411df69a754857220867865522f8e4fa24030
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546003"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011485"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Podrobně a osvědčené postupy brány pro Apache Hive ve službě Azure HDInsight
 
@@ -54,9 +54,9 @@ V clusterech s podporou sady Enterprise Security Pack můžou dostatečně slož
 
 Existuje několik míst pro zmírnění rizik a porozumění problémům s výkonem, které jsou splněné v rámci výše uvedeného chování. Použijte následující kontrolní seznam při vykonávání snížení výkonu dotazů prostřednictvím brány HDInsight:
 
-* Při provádění velkých dotazů **Select** použijte klauzuli **limit** . Klauzule **limit** omezuje celkové řádky hlášené na hostitele klienta. Klauzule **limit** ovlivňuje pouze generování výsledků a nemění plán dotazu. Chcete-li použít klauzuli **limit** pro plán dotazu, použijte konfiguraci `hive.limit.optimize.enable` . **Limit** lze kombinovat s posunem pomocí omezení formuláře argumentu **x, y** .
+* Při provádění velkých dotazů **Select** použijte klauzuli **limit** . Klauzule **limit** omezuje celkové řádky hlášené na hostitele klienta. Klauzule **limit** ovlivňuje pouze generování výsledků a nemění plán dotazu. Chcete-li použít klauzuli **limit** pro plán dotazu, použijte konfiguraci `hive.limit.optimize.enable` . **Limit** lze kombinovat s posunem pomocí omezení formuláře argumentu **x, y**.
 
-* Pojmenujte sloupce důležité při spouštění dotazů **Select** namísto použití * *Select \** _. Výběr méně sloupců sníží množství čtených dat.
+* Pojmenujte sloupce důležité při spouštění dotazů **Select** namísto použití **Select \** _. Výběr méně sloupců sníží množství čtených dat.
 
 _ Zkuste spustit dotaz, který vás zajímá prostřednictvím Apache Beeline. Pokud načítání výsledků prostřednictvím Apache Beeline trvá delší dobu, očekávat prodlevy při načítání stejných výsledků prostřednictvím externích nástrojů.
 

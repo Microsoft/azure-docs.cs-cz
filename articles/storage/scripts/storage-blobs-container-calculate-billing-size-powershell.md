@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: f8bd47a8fde700382f9789ab1c77ff35e9b1f4f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d921a968f50f64788ccbd7637bc04c8492a3f90
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86999516"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96010890"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Vypočítat celkovou fakturační velikost kontejneru objektů BLOB
 
@@ -31,7 +31,7 @@ Tento skript vypočítá velikost kontejneru v úložišti objektů BLOB v Azure
 
 Celková velikost kontejneru objektů BLOB zahrnuje velikost samotného kontejneru a velikost všech objektů BLOB v kontejneru.
 
-V následujících částech se dozvíte, jak se počítá kapacita úložiště pro kontejnery objektů BLOB a objekty blob.V následujícím oddílu len (X) znamená počet znaků v řetězci.
+V následujících částech se dozvíte, jak se počítá kapacita úložiště pro kontejnery objektů BLOB a objekty blob. V následujícím oddílu len (X) znamená počet znaků v řetězci.
 
 ### <a name="blob-containers"></a>Kontejnery objektů blob
 
@@ -120,6 +120,6 @@ Toto je rozpis:
 
 - Další informace o fakturaci Azure Storage najdete v tématu [Principy fakturace Windows Azure Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
 
-- Další informace o modulu Azure PowerShell najdete v [dokumentaci k Azure PowerShell](https://docs.microsoft.com/powershell/azure/).
+- Další informace o modulu Azure PowerShell najdete v [dokumentaci k Azure PowerShell](/powershell/azure/).
 
 - Další ukázkové skripty PowerShellu pro úložiště najdete v [ukázkách PowerShellu pro Azure Storage](../blobs/storage-samples-blobs-powershell.md).

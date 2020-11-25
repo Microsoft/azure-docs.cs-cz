@@ -6,11 +6,11 @@ author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
 ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91871894"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011876"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Správa a údržba agenta Log Analytics pro Windows a Linux
 
@@ -32,13 +32,13 @@ Chcete-li aktualizovat agenta na virtuálním počítači s Windows na nejnověj
 
 Nejnovější verzi agenta pro Windows si můžete stáhnout z pracovního prostoru Log Analytics, a to provedením následujících kroků.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
 
 3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor.
 
-4. V pracovním prostoru Log Analytics vyberte **Upřesnit nastavení**, pak vyberte **připojené zdroje**a nakonec **Windows servery**.
+4. V pracovním prostoru Log Analytics vyberte **Upřesnit nastavení**, pak vyberte **připojené zdroje** a nakonec **Windows servery**.
 
 5. Na stránce **Windows servery** vyberte příslušnou verzi agenta pro **Windows** ke stažení, která se má stáhnout v závislosti na architektuře procesoru operačního systému Windows.
 
@@ -231,9 +231,9 @@ Pomocí jednoho z následujících postupů odinstalujte agenta systému Windows
 #### <a name="uninstall-from-control-panel"></a>Odinstalace z ovládacích panelů
 1. Přihlaste se k počítači pomocí účtu, který má práva správce.
 
-2. V **Ovládacích panelech**klikněte na **programy a funkce**.
+2. V **Ovládacích panelech** klikněte na **programy a funkce**.
 
-3. V nabídce **programy a funkce**klikněte na **Microsoft Monitoring Agent**, klikněte na **odinstalovat**a potom klikněte na **Ano**.
+3. V nabídce **programy a funkce** klikněte na **Microsoft Monitoring Agent**, klikněte na **odinstalovat** a potom klikněte na **Ano**.
 
 >[!NOTE]
 >Průvodce instalací agenta lze spustit také dvojitým kliknutím na **MMASetup \<platform\> . exe**, který je k dispozici ke stažení z pracovního prostoru v Azure Portal.
@@ -275,7 +275,7 @@ Provedením následujících kroků nakonfigurujte agenta Log Analytics pro syst
 
 8. Do pole **port serveru pro správu** zadejte číslo portu TCP.
 
-9. V části **účet akce agenta**vyberte účet místní systém nebo místní doménový účet.
+9. V části **účet akce agenta** vyberte účet místní systém nebo místní doménový účet.
 
 10. Kliknutím na tlačítko **OK** zavřete dialogové okno **Přidat skupinu pro správu** a potom kliknutím na tlačítko **OK** zavřete dialogové okno **Microsoft Monitoring Agent vlastnosti** .
 

@@ -16,11 +16,11 @@ ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b98b66d8f0350c32e89d62d776ee1288d9271712
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841148"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010907"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Návrh systému ochrany obsahu s řízením přístupu pomocí Azure Media Services
 
@@ -349,7 +349,7 @@ Pokud chcete zaregistrovat a nakonfigurovat aplikaci ukazatelů ve službě Azur
 
 3. Aktualizujte soubor manifestu aplikace tak, aby vlastnost groupMembershipClaims měla hodnotu "groupMembershipClaims": "All".
 
-4. V aplikaci Azure AD, která odkazuje na webovou aplikaci přehrávače, v části **oprávnění k ostatním aplikacím**přidejte aplikaci prostředků, kterou jste přidali v kroku 1. V části **delegovaná oprávnění**vyberte **přístup [resource_name]**. Tato možnost dává webové aplikaci oprávnění k vytváření přístupových tokenů, které přistupují k aplikaci prostředků. Tuto postup proveďte pro místní i nasazenou verzi webové aplikace, pokud vyvíjíte pomocí sady Visual Studio a webové aplikace Azure.
+4. V aplikaci Azure AD, která odkazuje na webovou aplikaci přehrávače, v části **oprávnění k ostatním aplikacím** přidejte aplikaci prostředků, kterou jste přidali v kroku 1. V části **delegovaná oprávnění** vyberte **přístup [resource_name]**. Tato možnost dává webové aplikaci oprávnění k vytváření přístupových tokenů, které přistupují k aplikaci prostředků. Tuto postup proveďte pro místní i nasazenou verzi webové aplikace, pokud vyvíjíte pomocí sady Visual Studio a webové aplikace Azure.
 
 Token JWT vydaný službou Azure AD je přístupový token, který se používá pro přístup k prostředku ukazatele.
 
@@ -473,7 +473,7 @@ Následující snímek obrazovky ukazuje scénář, který používá asymetrick
 
 V obou předchozích případech zůstává ověřování uživatelů stejné. Probíhá přes Azure AD. Jediným rozdílem je, že JWTs vydávají vlastní STS místo Azure AD. Když konfigurujete dynamickou ochranu CENC Protection, omezení služby doručování licencí určuje typ JWT, buď symetrický, nebo asymetrický klíč.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Tento dokument popisuje CENC s více nativními technologiemi DRM a Access Control přes ověřování tokenů, jeho návrh a implementaci pomocí Azure, Media Services a Media Player.
 

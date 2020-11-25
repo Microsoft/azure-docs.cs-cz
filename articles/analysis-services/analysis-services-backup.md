@@ -9,11 +9,11 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: af1850f77c1d13c761bfc2a143074b5067b349b4
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014048"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012999"
 ---
 # <a name="analysis-services-database-backup-and-restore"></a>Zálohování a obnovení databáze Analysis Services
 
@@ -25,7 +25,7 @@ Zálohování databází tabelárních modelů v Azure Analysis Services je v po
 > 
 
 > [!NOTE]
-> Pokud je účet úložiště v jiné oblasti, nakonfigurujte nastavení brány firewall účtu úložiště tak, aby povolovala přístup z **vybraných sítí**. V poli **Rozsah adres**brány firewall zadejte rozsah IP adres pro oblast, ve které je Server Analysis Services. Konfigurace nastavení brány firewall účtu úložiště tak, aby povolovala přístup ze všech sítí, ale výběr vybraných sítí a určení rozsahu IP adres jsou preferované. Další informace najdete v tématu [Nejčastější dotazy k síťovému připojení](analysis-services-network-faq.md#backup-and-restore).
+> Pokud je účet úložiště v jiné oblasti, nakonfigurujte nastavení brány firewall účtu úložiště tak, aby povolovala přístup z **vybraných sítí**. V poli **Rozsah adres** brány firewall zadejte rozsah IP adres pro oblast, ve které je Server Analysis Services. Konfigurace nastavení brány firewall účtu úložiště tak, aby povolovala přístup ze všech sítí, ale výběr vybraných sítí a určení rozsahu IP adres jsou preferované. Další informace najdete v tématu [Nejčastější dotazy k síťovému připojení](analysis-services-network-faq.md#backup-and-restore).
 
 Zálohy se ukládají s příponou. ABF. Pro tabulkové modely v paměti jsou uložená data modelů i metadata. Pro tabelární modely DirectQuery jsou uložena pouze metadata modelu. Zálohy se můžou komprimovat a šifrovat v závislosti na možnostech, které zvolíte.
 
@@ -39,7 +39,7 @@ Před zálohováním musíte nakonfigurovat nastavení úložiště pro váš se
 
     ![Zálohy v nastavení](./media/analysis-services-backup/aas-backup-backups.png)
 
-2.  Klikněte na **povoleno**a pak na **Nastavení úložiště**.
+2.  Klikněte na **povoleno** a pak na **Nastavení úložiště**.
 
     ![Povolit](./media/analysis-services-backup/aas-backup-enable.png)
 
@@ -59,7 +59,7 @@ Před zálohováním musíte nakonfigurovat nastavení úložiště pro váš se
 
 1. V SSMS klikněte pravým tlačítkem na databázi > **zálohovat**.
 
-2. V záložním souboru zálohy **databáze**  >  **Backup file**klikněte na tlačítko **Procházet**.
+2. V záložním souboru zálohy **databáze**  >  **Backup file** klikněte na tlačítko **Procházet**.
 
 3. V dialogovém okně **Uložit soubor jako** ověřte cestu ke složce a potom zadejte název záložního souboru. 
 
@@ -91,11 +91,11 @@ Při obnovení musí být váš záložní soubor v účtu úložiště, který 
 
 1. V SSMS klikněte pravým tlačítkem na databázi > **obnovení**.
 
-2. V dialogovém okně **zálohovat databázi** klikněte v části **záložní soubor**na **Procházet**.
+2. V dialogovém okně **zálohovat databázi** klikněte v části **záložní soubor** na **Procházet**.
 
 3. V dialogovém okně **Vyhledat soubory databáze** vyberte soubor, který chcete obnovit.
 
-4. V části **obnovit databázi**vyberte databázi.
+4. V části **obnovit databázi** vyberte databázi.
 
 5. Zadejte možnosti. Možnosti zabezpečení se musí shodovat s možnostmi zálohování, které jste použili při zálohování.
 
@@ -107,6 +107,6 @@ Použijte rutinu [Restore-ASDatabase](/powershell/module/sqlserver/restore-asdat
 
 ## <a name="related-information"></a>Související informace
 
-[Účty služby Azure Storage](../storage/common/storage-account-create.md)  
+[Účty úložiště Azure](../storage/common/storage-account-create.md)  
 [Vysoká dostupnost](analysis-services-bcdr.md)      
 [Nejčastější dotazy k Analysis Services připojení k síti](analysis-services-network-faq.md)

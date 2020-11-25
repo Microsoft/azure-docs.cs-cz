@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
 ms.openlocfilehash: a092859517ee6ac41e62e55fe95f72b8bfdf87d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91290718"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011196"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Přizpůsobení způsobu, jakým řešení propojené továrny zobrazuje data ze serverů OPC UA
 
@@ -23,7 +23,7 @@ ms.locfileid: "91290718"
 
 Řešení propojené továrny agreguje a zobrazuje data ze serverů OPC UA připojených k řešení. Můžete procházet a odesílat příkazy na servery OPC UA ve vašem řešení. Další informace o OPC UA najdete v tématu [propojená továrna – Nejčastější dotazy](iot-accelerators-faq-cf.md).
 
-Mezi agregovaná data v řešení patří například Celková efektivita vybavení (celkové efektivity zařízení) a klíčové ukazatele výkonu, které můžete zobrazit na řídicím panelu na úrovni továrny, řádku a stanice. Následující snímek obrazovky ukazuje hodnoty celkové efektivity zařízení a KPI pro **montážní** stanici na **výrobní lince 1**v továrně **Mnichov** :
+Mezi agregovaná data v řešení patří například Celková efektivita vybavení (celkové efektivity zařízení) a klíčové ukazatele výkonu, které můžete zobrazit na řídicím panelu na úrovni továrny, řádku a stanice. Následující snímek obrazovky ukazuje hodnoty celkové efektivity zařízení a KPI pro **montážní** stanici na **výrobní lince 1** v továrně **Mnichov** :
 
 ![Příklad hodnot celkové efektivity zařízení a klíčového ukazatele výkonu v řešení][img-oee-kpi]
 

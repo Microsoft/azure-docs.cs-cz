@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
 ms.openlocfilehash: 9a95970647a26ea80db9f63fb8523c6a65cc5e06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86082076"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012301"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Nastavení šifrování a ověřování TLS pro Apache Kafka ve službě Azure HDInsight
 
@@ -127,7 +127,7 @@ Nyní jste nastavili jednotlivé zprostředkovatele Kafka s úložištěm klíč
 Chcete-li dokončit úpravu konfigurace, proveďte následující kroky:
 
 1. Přihlaste se k Azure Portal a vyberte svůj cluster Azure HDInsight Apache Kafka.
-1. Kliknutím na **Ambari domů** v části **řídicí panely clusteru**přejdete na uživatelské rozhraní Ambari.
+1. Kliknutím na **Ambari domů** v části **řídicí panely clusteru** přejdete na uživatelské rozhraní Ambari.
 1. V části **zprostředkovatel Kafka** nastavte vlastnost **Listeners** na `PLAINTEXT://localhost:9092,SSL://localhost:9093`
 1. V části **Advanced Kafka-Broker** nastavte vlastnost **Security. Inter. Broker. Protocol** na `SSL`
 

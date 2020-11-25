@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
 ms.openlocfilehash: 0e8d5fa14678a2a26234dfcd73f4a50af62ca7aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962872"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012935"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Konfigurace vlastního názvu domény v Azure App Service s integrací Traffic Manager
 
@@ -19,7 +19,7 @@ ms.locfileid: "88962872"
 > [!NOTE]
 > Cloud Services najdete v tématu [Konfigurace vlastního názvu domény pro cloudovou službu Azure](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
-Když použijete [Azure Traffic Manager](../traffic-manager/index.yml) k vyrovnávání zatížení provozu do [Azure App Service](overview.md), App Service aplikaci lze přistupovat pomocí ** \<traffic-manager-endpoint> . trafficmanager.NET**. Pomocí aplikace App Service můžete přiřadit vlastní název domény, jako je například webová \. contoso.com, aby bylo možné poskytnout uživatelům lépe rozpoznatelný název domény.
+Když použijete [Azure Traffic Manager](../traffic-manager/index.yml) k vyrovnávání zatížení provozu do [Azure App Service](overview.md), App Service aplikaci lze přistupovat pomocí **\<traffic-manager-endpoint> . trafficmanager.NET**. Pomocí aplikace App Service můžete přiřadit vlastní název domény, jako je například webová \. contoso.com, aby bylo možné poskytnout uživatelům lépe rozpoznatelný název domény.
 
 V tomto článku se dozvíte, jak nakonfigurovat vlastní název domény pomocí aplikace App Service, která je integrovaná s [Traffic Manager](../traffic-manager/traffic-manager-overview.md).
 

@@ -13,11 +13,11 @@ ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: 01370092c5e272fe64f4ffdad577b69d3a532810
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963024"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012148"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-managed-instance"></a>Migrace balíčků služba SSIS (SQL Server Integration Services) do spravované instance Azure SQL
 Pokud používáte služba SSIS (SQL Server Integration Services) (SSIS) a chcete migrovat projekty SSIS/balíčky ze zdrojového SSISDB hostovaného SQL Server do cílového SSISDBu hostovaného službou Azure SQL Managed instance, můžete použít Azure Database Migration Service.

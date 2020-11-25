@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: dc018b5d09c9b33c10cd2d54ac6572537e05ed25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67174894"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010798"
 ---
 V následující tabulce jsou uvedené požadavky na brány VPN PolicyBased a RouteBased. Tato tabulka platí pro model nasazení Resource Manager a pro model nasazení Classic. Pro klasický model jsou brány VPN PolicyBased stejné jako statické brány a brány založené na trasách jsou stejné jako dynamické brány.
 

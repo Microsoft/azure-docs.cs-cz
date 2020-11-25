@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.openlocfilehash: 6ec146a05df1b896f8ca594d29cf13341b70765a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94954558"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010958"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Správa registrace zařízení pomocí Azure Portal
 
@@ -40,7 +40,7 @@ Existují dva způsoby, jak můžete zařízení zaregistrovat pomocí služby z
      
         [![Přidání skupiny registrací k portálu](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
         
-        | Pole | Popis |
+        | Pole | Description |
         | :--- | :--- |
         | **Název skupiny** | Požadovaný název vaší skupiny zařízení. |
         | **Typ ověření identity** | Klikněte na **certifikát** nebo **symetrický klíč** pro typ ověření identity v závislosti na metodě ověření, kterou vaše zařízení bude používat. |
@@ -64,7 +64,7 @@ Existují dva způsoby, jak můžete zařízení zaregistrovat pomocí služby z
      
         [![Jednotlivé registrace na portálu](./media/how-to-manage-enrollments/individual-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
     
-        | Pole | Popis |
+        | Pole | Description |
         | :--- | :--- |
         | **Mechanismus** | V závislosti na metodě ověření, kterou budou zařízení používat, vyberte **X. 509**, **TPM** nebo **symetrický klíč** pro mechanismus ověřování. |
         | Nastavení ověření identity | Podrobné pokyny týkající se vytváření a používání jednotlivých registrací s symetrickými klíči nebo s certifikáty X. 509 najdete v jednom z těchto [zřízení symetrického zařízení](quick-create-simulated-device-symmetric-key-java.md#create-a-device-enrollment) nebo [zřízení certifikátu x. 509](quick-create-simulated-device-x509-java.md#create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry) pro rychlé zprovoznění.<br><br>Podrobné pokyny k vytváření a používání jednotlivých registrací pomocí ověření identity pomocí čipu TPM najdete v jedné ze [zřízení simulovaných ukázek zařízení TPM](quick-create-simulated-device-tpm-java.md#create-a-device-enrollment-entry) .|

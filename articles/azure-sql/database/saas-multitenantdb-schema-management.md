@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: d222234cd6ff3d910e6dbc51a394695ce467edce
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793292"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011846"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-databases"></a>Správa schématu v SaaS aplikaci, která používá horizontálně dělené víceklientské databáze
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ Co se v tomto kurzu naučíte:
 > * Aktualizuje referenční data ve všech databázích tenanta.
 > * Vytvoří index tabulky ve všech databázích tenantů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Aplikace víceklientské lístky Wingtip již musí být nasazené:
     - Pokyny najdete v prvním kurzu, který zavádí společnost Wingtip Tickets SaaS multi-tenant Database App:<br />[Nasazení a zkoumání horizontálně dělené aplikace s více klienty, která používá Azure SQL Database](./saas-multitenantdb-get-started-deploy.md).
@@ -75,7 +75,7 @@ V úložišti [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/Wi
 
 Tento kurz vyžaduje, abyste k vytvoření databáze agenta úloh a agenta úloh použili PowerShell. Podobně jako databáze MSDB, kterou používá Agent SQL, používá Agent úlohy v Azure SQL Database databázi k ukládání definic úloh, stavu úlohy a historie. Po vytvoření agenta úlohy můžete okamžitě vytvořit a monitorovat úlohy.
 
-1. V **prostředí POWERSHELL ISE** otevřete *... \\ \\ \\Demo-SchemaManagement.ps1Správa schématu ve výukových modulech* .
+1. V **prostředí POWERSHELL ISE** otevřete *... \\ \\ \\Demo-SchemaManagement.ps1Správa schématu ve výukových modulech*.
 2. Stisknutím klávesy **F5** spusťte skript.
 
 Skript *Demo-SchemaManagement.ps1* volá skript *Deploy-SchemaManagement.ps1* , aby vytvořil databázi s názvem _Služba jobagent_ na serveru katalogu. Skript potom vytvoří agenta úloh a předá databázi _Služba jobagent_ jako parametr.
@@ -84,7 +84,7 @@ Skript *Demo-SchemaManagement.ps1* volá skript *Deploy-SchemaManagement.ps1* , 
 
 #### <a name="prepare"></a>Příprava
 
-Databáze každého tenanta obsahuje sadu typů míst v tabulce **VenueTypes** . Každý typ místa určuje druh událostí, které mohou být hostovány na místo. Tyto typy míst odpovídají obrázkům na pozadí, které vidíte v aplikaci události tenanta.  V tomto cvičení nasadíte aktualizaci do všech databází a přidáte do nich dva další typy míst: *motocykl* a svrchovaný *klub* .
+Databáze každého tenanta obsahuje sadu typů míst v tabulce **VenueTypes** . Každý typ místa určuje druh událostí, které mohou být hostovány na místo. Tyto typy míst odpovídají obrázkům na pozadí, které vidíte v aplikaci události tenanta.  V tomto cvičení nasadíte aktualizaci do všech databází a přidáte do nich dva další typy míst: *motocykl* a svrchovaný *klub*.
 
 Nejprve zkontrolujte typy míst, které jsou součástí každé databáze tenanta. Připojte se k jedné z databází tenantů v SQL Server Management Studio (SSMS) a prozkoumejte tabulku VenueTypes.  Tuto tabulku můžete také dotazovat v editoru dotazů v Azure Portal, ke kterému se dostanete ze stránky databáze.
 
@@ -105,11 +105,11 @@ K vytvoření nové úlohy použijete sadu uložených procedur systému úloh, 
 
 3. Dotaz na tabulku *VenueTypes* , aby se ověřilo, že se v seznamu výsledků nacházejí *motocykly* a moje *klubu* ještě neexistují.
 
-4. Připojte se k serveru katalogu, který je *Catalog-MT- &lt; user &gt; . Database.Windows.NET* .
+4. Připojte se k serveru katalogu, který je *Catalog-MT- &lt; user &gt; . Database.Windows.NET*.
 
 5. Připojte se k databázi _Služba jobagent_ na serveru katalogu.
 
-6. V SSMS otevřete soubor *... \\ Výukové moduly \\ : Správa schématu \\ DeployReferenceData. SQL* .
+6. V SSMS otevřete soubor *... \\ Výukové moduly \\ : Správa schématu \\ DeployReferenceData. SQL*.
 
 7. Upravte příkaz: Set @User = &lt; User &gt; a nahraďte hodnotu uživatele, která se používá při nasazení aplikace SaaS multi-tenant Database aplikace Wingtip lístky.
 
@@ -125,10 +125,10 @@ Ve skriptu *DeployReferenceData. SQL* Sledujte následující položky:
     - Typ cílového člena *serveru* .
         - Jedná se o server *tenants1-MT &lt; &gt;* , který obsahuje databáze tenantů.
         - Zahrnutí serveru zahrnuje databáze tenantů, které existují v době, kdy se úloha spustí.
-    - Typ cílového člena *databáze* pro šablonu databáze ( *basetenantdb* ), který se nachází v *katalogu-MT- &lt; User &gt;* Server,
+    - Typ cílového člena *databáze* pro šablonu databáze (*basetenantdb*), který se nachází v *katalogu-MT- &lt; User &gt;* Server,
     - Cílový členský typ *databáze* pro zahrnutí databáze *adhocreporting* , která se používá v pozdějším kurzu.
 
-- **SP \_ Add \_ Job** vytvoří úlohu s názvem *nasazení referenčních dat* .
+- **SP \_ Add \_ Job** vytvoří úlohu s názvem *nasazení referenčních dat*.
 
 - **SP \_ Add \_ jobstep** vytvoří krok úlohy obsahující text příkazu T-SQL, který aktualizuje referenční tabulku VenueTypes.
 
@@ -142,7 +142,7 @@ Toto cvičení vytvoří úlohu pro opětovné sestavení indexu v primárním k
 
 1. V SSMS se připojte k databázi _Služba jobagent_ v *katalogu – MT- &lt; User &gt; . Database.Windows.NET* Server.
 
-2. V SSMS otevřete *... \\ Výukové moduly \\ : Správa schématu \\ OnlineReindex. SQL* .
+2. V SSMS otevřete *... \\ Výukové moduly \\ : Správa schématu \\ OnlineReindex. SQL*.
 
 3. Stisknutím klávesy **F5** spusťte skript.
 
@@ -150,7 +150,7 @@ Toto cvičení vytvoří úlohu pro opětovné sestavení indexu v primárním k
 
 Ve skriptu *OnlineReindex. SQL* Sledujte následující položky:
 
-* **SP \_ Add \_ Job** vytvoří novou úlohu s názvem *online reindexation PK \_ \_ VenueTyp \_ \_ 265E44FD7FD4C885* .
+* **SP \_ Add \_ Job** vytvoří novou úlohu s názvem *online reindexation PK \_ \_ VenueTyp \_ \_ 265E44FD7FD4C885*.
 
 * **SP \_ Add \_ jobstep** vytvoří krok úlohy obsahující text příkazu T-SQL, který aktualizuje index.
 

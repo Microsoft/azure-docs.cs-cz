@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cabf5f40bc17828bc37b5c094de7b90de3ec8b26
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130217"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013050"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Požadavky pro přístup k rozhraní API pro vytváření sestav Azure Active Directory
 
@@ -55,7 +55,7 @@ Aby bylo možné získat přístup k sestavám přihlášení pro tenanta, musí
 
 ## <a name="register-an-application"></a>Registrace aplikace
 
-Registrace je nutná i v případě, že přistupujete k rozhraní API pro vytváření sestav pomocí skriptu. Registrace vám poskytne **ID aplikace** , které je vyžadováno pro autorizační volání, a umožňuje kódu přijímat tokeny.
+Registrace je nutná i v případě, že přistupujete k rozhraní API pro vytváření sestav pomocí skriptu. Registrace vám poskytne **ID aplikace**, které je vyžadováno pro autorizační volání, a umožňuje kódu přijímat tokeny.
 
 Pokud chcete nakonfigurovat adresář pro přístup k rozhraní API pro vytváření sestav Azure AD, musíte se přihlásit k [Azure Portal](https://portal.azure.com) pomocí účtu správce Azure, který je zároveň členem role adresáře **globálního správce** v tenantovi Azure AD.
 
@@ -69,11 +69,11 @@ Pokud chcete nakonfigurovat adresář pro přístup k rozhraní API pro vytvář
    
     ![Snímek obrazovky zobrazuje Azure Active Directory vybraný v nabídce Azure Portal.](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. Na stránce **Azure Active Directory** vyberte možnost **Registrace aplikací** .
+2. Na stránce **Azure Active Directory** vyberte možnost **Registrace aplikací**.
 
     ![Snímek obrazovky ukazuje Registrace aplikací vybraný v nabídce spravovat.](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
 
-3. Na stránce **Registrace aplikací** vyberte možnost **Nová registrace** .
+3. Na stránce **Registrace aplikací** vyberte možnost **Nová registrace**.
 
     ![Snímek obrazovky zobrazuje vybranou novou registraci.](./media/howto-configure-prerequisites-for-reporting-api/03.png)
 
@@ -83,11 +83,11 @@ Pokud chcete nakonfigurovat adresář pro přístup k rozhraní API pro vytvář
 
     a. Do textového pole **název** zadejte `Reporting API application` .
 
-    b. V případě **typu podporované účty** vyberte **účty jenom v této organizaci** .
+    b. V případě **typu podporované účty** vyberte **účty jenom v této organizaci**.
 
     c. V poli **Adresa URL pro přesměrování**  vyberte **webové** textové pole a zadejte `https://localhost` .
 
-    d. Vyberte **Zaregistrovat** . 
+    d. Vyberte **Zaregistrovat**. 
 
 
 ## <a name="grant-permissions"></a>Udělení oprávnění 
@@ -106,19 +106,19 @@ V následující části jsou uvedeny kroky pro obě rozhraní API. Pokud nechce
 **Chcete-li udělit vaší aplikaci oprávnění k používání rozhraní API:**
 
 
-1. Vyberte **oprávnění rozhraní API** a pak **přidejte oprávnění** . 
+1. Vyberte **oprávnění rozhraní API** a pak **přidejte oprávnění**. 
 
     ![Snímek obrazovky se zobrazí stránka oprávnění P I, kde můžete vybrat možnost Přidat oprávnění.](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
-2. Na **stránce požádat o oprávnění API** vyhledejte **podporu starší rozhraní API** **Azure Active Directory Graph** . 
+2. Na **stránce požádat o oprávnění API** vyhledejte **podporu starší rozhraní API** **Azure Active Directory Graph**. 
 
     ![Snímek obrazovky s požadavkem na stránku oprávnění P, kde můžete vybrat Azure Active Directory Graph](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
-3. Na stránce **požadovaná oprávnění** vyberte **oprávnění aplikace** , rozbalte položku **adresář** zaškrtávací políčko **adresář. ReadAll** .  Vyberte **Přidat oprávnění** .
+3. Na stránce **požadovaná oprávnění** vyberte **oprávnění aplikace**, rozbalte položku **adresář** zaškrtávací políčko **adresář. ReadAll**.  Vyberte **Přidat oprávnění**.
 
     ![Snímek obrazovky s žádostí o stránku oprávnění P I, kde můžete vybrat oprávnění aplikace](./media/howto-configure-prerequisites-for-reporting-api/07.png)
 
-4. Na stránce oprávnění rozhraní API pro **vytváření sestav aplikace API** vyberte **udělit souhlas správce** . 
+4. Na stránce oprávnění rozhraní API pro **vytváření sestav aplikace API** vyberte **udělit souhlas správce**. 
 
     ![Snímek obrazovky zobrazující stránku oprávnění p i pro aplikaci, kde můžete vybrat udělit souhlas správce.](./media/howto-configure-prerequisites-for-reporting-api/08.png)
 
@@ -140,11 +140,11 @@ Tyto hodnoty budete potřebovat při konfiguraci volání rozhraní API pro vytv
 
 **Postup získání názvu domény:**
 
-1. V [Azure Portal](https://portal.azure.com)v levém navigačním podokně vyberte **Azure Active Directory** .
+1. V [Azure Portal](https://portal.azure.com)v levém navigačním podokně vyberte **Azure Active Directory**.
    
     ![Snímek obrazovky zobrazuje Azure Active Directory vybraný v nabídce Azure Portal.](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. Na stránce **Azure Active Directory** vyberte **vlastní názvy domén** .
+2. Na stránce **Azure Active Directory** vyberte **vlastní názvy domén**.
 
     ![Snímek obrazovky zobrazuje vlastní názvy domén vybrané z Azure Active Directory.](./media/howto-configure-prerequisites-for-reporting-api/09.png) 
 
@@ -155,13 +155,13 @@ Tyto hodnoty budete potřebovat při konfiguraci volání rozhraní API pro vytv
 
 **Chcete-li získat ID klienta aplikace:**
 
-1. V [Azure Portal](https://portal.azure.com)v levém navigačním podokně klikněte na **Azure Active Directory** .
+1. V [Azure Portal](https://portal.azure.com)v levém navigačním podokně klikněte na **Azure Active Directory**.
    
     ![Snímek obrazovky zobrazuje Azure Active Directory vybraný v nabídce Azure Portal.](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2. Na stránce **Registrace aplikací** vyberte svou aplikaci.
 
-3. Na stránce aplikace přejděte na **ID aplikace** a vyberte **Kopírovat Kliknutím** .
+3. Na stránce aplikace přejděte na **ID aplikace** a vyberte **Kopírovat Kliknutím**.
 
     ![Snímek obrazovky zobrazující stránku aplikace P I, kde můžete zkopírovat aplikaci I D.](./media/howto-configure-prerequisites-for-reporting-api/11.png) 
 
@@ -171,13 +171,13 @@ Tyto hodnoty budete potřebovat při konfiguraci volání rozhraní API pro vytv
 
 **Získání tajného kódu klienta aplikace:**
 
-1. V [Azure Portal](https://portal.azure.com)v levém navigačním podokně klikněte na **Azure Active Directory** .
+1. V [Azure Portal](https://portal.azure.com)v levém navigačním podokně klikněte na **Azure Active Directory**.
    
     ![Snímek obrazovky zobrazuje Azure Active Directory vybraný v nabídce Azure Portal.](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2.  Na stránce **Registrace aplikací** vyberte svou aplikaci.
 
-3.  Na stránce **aplikace API** vyberte **certifikáty a tajné klíče** . v části **tajné klíče klienta** klikněte na **+ nový tajný klíč klienta** . 
+3.  Na stránce **aplikace API** vyberte **certifikáty a tajné klíče** . v části **tajné klíče klienta** klikněte na **+ nový tajný klíč klienta**. 
 
     ![Snímek obrazovky se zobrazí na stránce certifikáty & tajných kódů, kde můžete přidat tajný klíč klienta.](./media/howto-configure-prerequisites-for-reporting-api/12.png)
 
@@ -185,9 +185,9 @@ Tyto hodnoty budete potřebovat při konfiguraci volání rozhraní API pro vytv
 
     a. Do textového pole **Popis** zadejte `Reporting API` .
 
-    b. Po **vypršení platnosti** vyberte **2 roky** .
+    b. Po **vypršení platnosti** vyberte **2 roky**.
 
-    c. Klikněte na **Uložit** .
+    c. Klikněte na **Uložit**.
 
     d. Zkopírujte si hodnotu klíče.
 
@@ -203,7 +203,7 @@ V této části jsou uvedené běžné chybové zprávy, se kterými se můžete
 
 ### <a name="error-failed-to-do-premium-license-check-from-microsoft-graph"></a>Chyba: nepovedlo se provést kontrolu licence Premium z Microsoft Graph 
 
-Pokud při pokusu o přístup k přihlašování pomocí Graph Exploreru spustíte tuto chybovou zprávu, zvolte možnost **změnit oprávnění** pod vaším účtem na levém navigačním panelu a vyberte **Tasks.** **pročíst a adresář. Read. All** . 
+Pokud při pokusu o přístup k přihlašování pomocí Graph Exploreru spustíte tuto chybovou zprávu, zvolte možnost **změnit oprávnění** pod vaším účtem na levém navigačním panelu a vyberte **Tasks.** **pročíst a adresář. Read. All**. 
 
 ![Upravit uživatelské rozhraní oprávnění](./media/troubleshoot-graph-api/modify-permissions.png)
 
