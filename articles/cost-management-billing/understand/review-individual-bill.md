@@ -11,11 +11,11 @@ ms.date: 10/26/2020
 ms.author: banders
 ms.custom: contentperfq2
 ms.openlocfilehash: c4a9a981017becd0d9343d9c287a4fe9341d7c43
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678134"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006145"
 ---
 # <a name="tutorial-review-your-individual-azure-subscription-bill"></a>Kurz: Kontrola jednotlivého vyúčtování předplatného Azure
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít placený fakturační účet *programu Microsoft Online Services* . Tento účet se vytvoří při registraci Azure prostřednictvím webu Azure. Taková situace například nastane, když máte účet s tarify průběžných plateb nebo pokud jste odběratelem sady Visual Studio.
+Musíte mít placený fakturační účet *programu Microsoft Online Services*. Tento účet se vytvoří při registraci Azure prostřednictvím webu Azure. Taková situace například nastane, když máte účet s tarify průběžných plateb nebo pokud jste odběratelem sady Visual Studio.
 
 Faktury pro bezplatné účty Azure se vytvoří, pouze pokud dojde k překročení částky měsíčního kreditu.
 
@@ -49,23 +49,23 @@ Od vytvoření vašeho předplatného Azure musí uplynout více než 30 dnů. A
 
 Prvním krokem při porovnání využití a nákladů je stažení faktury a souboru využití. Podrobný soubor CSV s využitím zobrazuje vaše poplatky podle fakturačního období a denního využití. Nezahrnuje žádné informace o dani. Abyste si mohli tyto soubory stáhnout, musíte být správcem účtu nebo mít roli Vlastník.
 
-Na webu Azure Portal do vyhledávacího pole zadejte *předplatná* a potom klikněte na **Předplatná** .
+Na webu Azure Portal do vyhledávacího pole zadejte *předplatná* a potom klikněte na **Předplatná**.
 
 [![Přechod na předplatná](./media/review-individual-bill/navigate-subscriptions.png)](./media/review-individual-bill/navigate-subscriptions.png#lightbox)
 
 V seznamu předplatných klikněte na předplatné.
 
-V části **Fakturace** klikněte na **Faktury** .
+V části **Fakturace** klikněte na **Faktury**.
 
 V seznamu faktur vyhledejte fakturu, kterou chcete stáhnout, a potom klikněte na symbol stažení. Abyste mohli zobrazit starší faktury, budete možná muset změnit časový interval. Vygenerování souboru s podrobnostmi o využití a faktury může trvat několik minut.
 
 ![Snímek obrazovky ukazující fakturační období, možnost stažení a celkové poplatky za každé fakturační období](./media/review-individual-bill/download-invoice.png)
 
-V okně Stáhnout využití a poplatky klikněte na **Stáhnout CSV** a **Stáhnout fakturu** .
+V okně Stáhnout využití a poplatky klikněte na **Stáhnout CSV** a **Stáhnout fakturu**.
 
 ![Screenshot zobrazující stránku využití a stažení faktury](./media/review-individual-bill/usageandinvoice.png)
 
-Pokud se zobrazí zpráva **Není k dispozici** , existuje několik důvodů, proč není možné zobrazit podrobnosti o využití nebo fakturu:
+Pokud se zobrazí zpráva **Není k dispozici**, existuje několik důvodů, proč není možné zobrazit podrobnosti o využití nebo fakturu:
 
 - Od vytvoření vašeho předplatného Azure uplynulo méně než 30 dnů.
 - Ve fakturačním období nedošlo k žádnému využití.
@@ -77,7 +77,7 @@ Dále zkontrolujete poplatky. Na faktuře se zobrazují hodnoty daní a poplatky
 
 ![Příklad faktury Azure](./media/review-individual-bill/invoice-usage-charge.png)
 
-Otevřete soubor CSV s informacemi o využití, který jste stáhli. Na konci souboru sečtěte hodnotu všech položek ve sloupci *Náklady* .
+Otevřete soubor CSV s informacemi o využití, který jste stáhli. Na konci souboru sečtěte hodnotu všech položek ve sloupci *Náklady*.
 
 ![Ukázkový soubor využití se souhrnnými náklady](./media/review-individual-bill/usage-file-usage-charges.png)
 
@@ -98,7 +98,7 @@ Poplatky za využití se zobrazují na úrovni měřiče. Následující výrazy
 |Sazba | EffectivePrice (Platná cena)|
 | Hodnota | Náklady |
 
-V sekci **Poplatky za využití** faktury se zobrazuje celková hodnota (náklady) za každý měřič spotřebovaná během fakturačního období. Následující obrázek například ukazuje poplatek za využití služby Azure Storage u prostředku *Disky P10* .
+V sekci **Poplatky za využití** faktury se zobrazuje celková hodnota (náklady) za každý měřič spotřebovaná během fakturačního období. Následující obrázek například ukazuje poplatek za využití služby Azure Storage u prostředku *Disky P10*.
 
 ![Poplatky za využití na faktuře](./media/review-individual-bill/invoice-usage-charges.png)
 
@@ -110,7 +110,7 @@ Souhrnná hodnota *Náklady* musí přesně odpovídat *poplatkům za využití*
 
 ## <a name="compare-billed-charges-and-usage-in-cost-analysis"></a>Porovnání účtovaných poplatků a využití v analýze nákladů
 
-S ověřením poplatků vám může pomoci také analýza nákladů na webu Azure Portal. Pokud chcete získat rychlý přehled fakturovaného využití a poplatků, vyberte předplatné na stránce Předplatná na webu Azure Portal. Dále klikněte na **Analýza nákladů** a potom v seznamu zobrazení klikněte na **Podrobnosti o faktuře** .
+S ověřením poplatků vám může pomoci také analýza nákladů na webu Azure Portal. Pokud chcete získat rychlý přehled fakturovaného využití a poplatků, vyberte předplatné na stránce Předplatná na webu Azure Portal. Dále klikněte na **Analýza nákladů** a potom v seznamu zobrazení klikněte na **Podrobnosti o faktuře**.
 
 ![Příklad znázorňující výběr možnosti Podrobnosti o faktuře](./media/review-individual-bill/cost-analysis-select-invoice-details.png)
 
@@ -157,7 +157,7 @@ Na měřiče, které byly použity k výpočtu faktury, se můžete podívat v s
 
 <a name="payment"></a>
 
-Pokud jako způsob platby nastavíte platební kartu, strhne se platba automaticky do 10 dnů od skončení fakturačního období. Ve výpisu platební karty by na řádkové položce bylo uvedeno **MSFT Azure** .
+Pokud jako způsob platby nastavíte platební kartu, strhne se platba automaticky do 10 dnů od skončení fakturačního období. Ve výpisu platební karty by na řádkové položce bylo uvedeno **MSFT Azure**.
 
 Pokud chcete změnit platební kartu, ze které se mají strhávat poplatky, přečtěte si článek [Přidání, aktualizace nebo odebrání platební karty v Azure](../manage/change-credit-card.md).
 
