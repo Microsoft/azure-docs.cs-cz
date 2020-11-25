@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: raynew
 ms.openlocfilehash: d441284b265ab11dd5ece42ec3737e455d662435
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545799"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023563"
 ---
 # <a name="monitor-site-recovery"></a>Monitorování Site Recovery
 
@@ -30,7 +30,7 @@ Než začnete, můžete si projít [běžné otázky týkající se monitorován
 
 ## <a name="monitor-in-the-dashboard"></a>Monitorování na řídicím panelu
 
-1. V trezoru klikněte na **Přehled** . Řídicí panel Recovery Services slučuje všechny informace o monitorování pro trezor v jednom umístění. Existují stránky pro Site Recovery i Azure Backup službu a můžete mezi nimi přepínat.
+1. V trezoru klikněte na **Přehled**. Řídicí panel Recovery Services slučuje všechny informace o monitorování pro trezor v jednom umístění. Existují stránky pro Site Recovery i Azure Backup službu a můžete mezi nimi přepínat.
 
     ![Řídicí panel Site Recovery](./media/site-recovery-monitor-and-troubleshoot/dashboard.png)
 
@@ -46,12 +46,12 @@ Než začnete, můžete si projít [běžné otázky týkající se monitorován
 
 V části **replikované položky** Monitorujte stav všech počítačů v trezoru, které mají povolenou replikaci.
 
-**Státech** | **Podrobnosti**
+**State** | **Podrobnosti**
 --- | ---
 V pořádku | Replikace probíhá normálně. Nezjistily se žádné chybové příznaky ani upozornění.
 Upozornění | Zjistil se jeden nebo víc příznaků upozornění, které by mohly mít vliv na replikaci.
 Kritické | Zjistil se minimálně jeden příznak kritické chyby replikace.<br/><br/> Tyto chybové příznaky jsou obvykle indikátory, které se zablokují replikací, nebo nepostupují stejně rychle jako rychlost změny dat.
-Nelze použít | Servery, které se v současné době neočekávají pro replikaci. To může zahrnovat počítače, u kterých došlo k převzetí služeb při selhání.
+Neuvedeno | Servery, které se v současné době neočekávají pro replikaci. To může zahrnovat počítače, u kterých došlo k převzetí služeb při selhání.
 
 ## <a name="monitor-test-failovers"></a>Monitorování testovacího převzetí služeb při selhání
 
@@ -60,11 +60,11 @@ V případě **úspěchu testu převzetí služeb při selhání** Sledujte stav
 - Doporučujeme spustit testovací převzetí služeb při selhání na replikovaných počítačích nejméně jednou za šest měsíců. Je to způsob, jak ověřit, že převzetí služeb při selhání funguje podle očekávání, aniž by došlo k přerušení produkčního prostředí. 
 - Testovací převzetí služeb při selhání se považuje za úspěšné až po úspěšném dokončení a vyčištění po převzetí služeb při selhání.
 
-**Státech** | **Podrobnosti**
+**State** | **Podrobnosti**
 --- | ---
 Doporučuje se test | Počítače, u kterých došlo k testovacímu převzetí služeb při selhání, protože byla povolena ochrana.
 Úspěšně provedeno | Počítače s nebo více úspěšnými testovacími převzetím služeb při selhání.
-Nelze použít | Počítače, které aktuálně nejsou vhodné pro testovací převzetí služeb při selhání. Například počítače, u kterých došlo k převzetí služeb při selhání, mají počáteční replikaci, převzetí služeb při selhání nebo převzetí služeb při selhání.
+Neuvedeno | Počítače, které aktuálně nejsou vhodné pro testovací převzetí služeb při selhání. Například počítače, u kterých došlo k převzetí služeb při selhání, mají počáteční replikaci, převzetí služeb při selhání nebo převzetí služeb při selhání.
 
 ## <a name="monitor-configuration-issues"></a>Sledování problémů s konfigurací
 
@@ -73,7 +73,7 @@ V případě **problémů s konfigurací** monitorujte všechny problémy, kter�
 - Problémy s konfigurací (s výjimkou dostupnosti aktualizace softwaru) se zjišťují pomocí pravidelné operace ověřování, která se ve výchozím nastavení spouští každých 12 hodin. Můžete vynutit, aby operace ověřování běžela okamžitě kliknutím na ikonu aktualizace vedle záhlaví oddílu **problémy s konfigurací** .
 - Kliknutím na odkazy zobrazíte další podrobnosti. U problémů, které mají vliv na konkrétní počítače, klikněte ve sloupci **cílové konfigurace** na možnost **vyžaduje pozornost** . Podrobnosti zahrnují doporučení pro nápravu.
 
-**Státech** | **Podrobnosti**
+**State** | **Podrobnosti**
 --- | ---
 Chybějící konfigurace | Chybí nezbytné nastavení, například síť pro obnovení nebo skupina prostředků.
 Chybějící prostředky | Zadaný prostředek se nepovedlo najít nebo není v předplatném dostupný. Prostředek se například odstranil nebo migrovali. Monitorované prostředky zahrnovaly cílovou skupinu prostředků, cílovou virtuální síť, podsíť, protokol/cílový účet úložiště, cílovou skupinu dostupnosti, cílovou IP adresu.
@@ -107,14 +107,14 @@ V **zobrazení infrastruktura** Sledujte komponenty infrastruktury zapojené do 
 - Pokud chcete používat všechny funkce v zobrazení infrastruktury, měli byste pro tyto součásti používat [kumulativní aktualizaci 22](https://support.microsoft.com/help/4072852) .
 - Chcete-li použít zobrazení infrastruktury, vyberte příslušný scénář replikace ve vašem prostředí. Další podrobnosti najdete v zobrazení podrobností. V následující tabulce jsou uvedeny scénáře, které jsou zastoupeny.
 
-    **Scénář** | **Státech**  | **Zobrazit dostupné?**
+    **Scénář** | **State**  | **Zobrazit dostupné?**
     --- |--- | ---
-    **Replikace mezi místními lokalitami** | Všechny státy | Ne 
-    **Replikace virtuálních počítačů Azure mezi oblastmi Azure**  | Replikace je povolená/počáteční replikace probíhá. | Ano
-    **Replikace virtuálních počítačů Azure mezi oblastmi Azure** | Převzetí služeb při selhání/navrácení služeb po obnovení | Ne   
-    **Replikace VMware do Azure** | Replikace je povolená/počáteční replikace probíhá. | Ano     
-    **Replikace VMware do Azure** | Převzetí služeb při selhání/navrácení služeb po obnovení | Ne      
-    **Replikace Hyper-V do Azure** | Převzetí služeb při selhání/navrácení služeb po obnovení | Ne
+    **Replikace mezi místními lokalitami** | Všechny státy | No 
+    **Replikace virtuálních počítačů Azure mezi oblastmi Azure**  | Replikace je povolená/počáteční replikace probíhá. | Yes
+    **Replikace virtuálních počítačů Azure mezi oblastmi Azure** | Převzetí služeb při selhání/navrácení služeb po obnovení | No   
+    **Replikace VMware do Azure** | Replikace je povolená/počáteční replikace probíhá. | Yes     
+    **Replikace VMware do Azure** | Převzetí služeb při selhání/navrácení služeb po obnovení | No      
+    **Replikace Hyper-V do Azure** | Převzetí služeb při selhání/navrácení služeb po obnovení | No
 
 - Pokud chcete zobrazit zobrazení infrastruktury pro jeden počítač pro replikaci, v nabídce trezoru klikněte na **replikované položky** a vyberte server.  
 
@@ -138,7 +138,7 @@ Sledujte úlohy následujícím způsobem:
 2. Kliknutím na **Zobrazit vše** zobrazíte všechny úlohy za posledních 24 hodin.
 
     > [!NOTE]
-    > K informacím o úloze můžete získat přístup také v nabídce trezoru > **úlohy Site Recovery** . 
+    > K informacím o úloze můžete získat přístup také v nabídce trezoru > **úlohy Site Recovery**. 
 
 2. V seznamu **úloh Site Recovery** se zobrazí seznam úloh. V horní nabídce můžete získat podrobnosti o chybě pro konkrétní úlohy, filtrovat seznam úloh na základě určitých kritérií a exportovat podrobnosti vybrané úlohy do Excelu.
 3. Kliknutím můžete přejít na úlohu. 
@@ -153,13 +153,13 @@ V části **replikované položky** Získejte seznam replikovaných počítačů
 4. Kliknutím na **Filtr** zobrazíte informace na základě konkrétních parametrů, jako je třeba stav replikace nebo konkrétní zásada replikace.
 5. Klikněte pravým tlačítkem na počítač a inicializujte operace, jako je třeba testovací převzetí služeb při selhání, nebo zobrazte konkrétní podrobnosti o chybách, které jsou k němu přidružené.
 6. Kliknutím na počítač můžete přejít k podrobnostem. Podrobnosti zahrnují:
-   - **Informace o replikaci** : aktuální stav a stav počítače.
+   - **Informace o replikaci**: aktuální stav a stav počítače.
    - **RPO** (cíl bodu obnovení): aktuální RPO pro virtuální počítač a čas, kdy byl naposledy vypočítán cíl RPO.
-   - **Body obnovení** : nejnovější dostupné body obnovení pro daný počítač.
-   - **Připravenost na převzetí služeb při selhání** : označuje, jestli se pro daný počítač spustilo testovací převzetí služeb při selhání, verze agenta běžící v počítači (pro počítače se službou mobility) a všechny problémy s konfigurací.
-   - **Chyby** : seznam příznaků chyb replikace aktuálně zjištěných v počítači a možné příčiny nebo akce.
-   - **Události** : chronologický seznam nedávných událostí, které mají vliv na daný počítač. Podrobnosti o chybě zobrazují aktuálně pozorovatelící chybové příznaky, zatímco události jsou historické záznamy o problémech, které mají vliv na daný počítač.
-   - **Zobrazení infrastruktury** : zobrazuje stav infrastruktury pro scénář při replikaci počítačů do Azure.
+   - **Body obnovení**: nejnovější dostupné body obnovení pro daný počítač.
+   - **Připravenost na převzetí služeb při selhání**: označuje, jestli se pro daný počítač spustilo testovací převzetí služeb při selhání, verze agenta běžící v počítači (pro počítače se službou mobility) a všechny problémy s konfigurací.
+   - **Chyby**: seznam příznaků chyb replikace aktuálně zjištěných v počítači a možné příčiny nebo akce.
+   - **Události**: chronologický seznam nedávných událostí, které mají vliv na daný počítač. Podrobnosti o chybě zobrazují aktuálně pozorovatelící chybové příznaky, zatímco události jsou historické záznamy o problémech, které mají vliv na daný počítač.
+   - **Zobrazení infrastruktury**: zobrazuje stav infrastruktury pro scénář při replikaci počítačů do Azure.
 
      ![Podrobnosti/přehled replikované položky Site Recovery](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
 
@@ -173,8 +173,8 @@ Můžete se přihlásit k odběru e-mailových oznámení pro tyto kritické ud�
 
 Přihlaste se k odběru následujícím způsobem:
 
-V části Trezor > **monitoring** klikněte na **Site Recovery události** .
-1. Klikněte na **E-mailová oznámení** .
+V části Trezor > **monitoring** klikněte na **Site Recovery události**.
+1. Klikněte na **E-mailová oznámení**.
 1. V **e-mailových oznámeních** zapněte oznámení a určete, komu se má odeslat. Můžete odeslat oznámení všem správcům předplatného a volitelně konkrétní e-mailové adresy.
 
     ![E-mailová oznámení](./media/site-recovery-monitor-and-troubleshoot/email.png)

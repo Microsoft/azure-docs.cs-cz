@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: a6fc1d6b831ae794907c59ab1af3328902f3a70a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb90c5776e67c1ba8fecdbf394a8098e96ca0652
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230105"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96022373"
 ---
 # <a name="soft-delete-for-blobs"></a>Obnovitelné odstranění pro objekty blob
 
 Obnovitelné odstranění pro objekty blob chrání vaše data před náhodným nebo omylem úpravou nebo odstraněním. Když je u objektů BLOB povolená možnost obnovitelného odstranění pro účet úložiště, objekty blob, verze objektů BLOB a snímky v tomto účtu úložiště se po odstranění můžou obnovit v době uchování, kterou zadáte.
 
-Pokud existuje možnost, že by vaše data mohla být omylem upravována nebo odstraněna aplikací nebo jiným uživatelem účtu úložiště, společnost Microsoft doporučuje zapnout obnovitelné odstranění. Další informace o povolení obnovitelného odstranění najdete v tématu [povolení a Správa obnovitelného odstranění objektů BLOB](soft-delete-enable.md).
+Pokud existuje možnost, že by vaše data mohla být omylem upravována nebo odstraněna aplikací nebo jiným uživatelem účtu úložiště, společnost Microsoft doporučuje zapnout obnovitelné odstranění. Další informace o povolení obnovitelného odstranění najdete v tématu [povolení a Správa obnovitelného odstranění objektů BLOB](./soft-delete-blob-enable.md).
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -52,7 +52,7 @@ Pokud obnovitelné odstranění zakážete, můžete v účtu úložiště, kter
 
 Obnovitelné odstranění zachová data v mnoha případech, kde jsou objekty smazány nebo přepsány.
 
-Když je objekt BLOB přepsaný pomocí **objektu Put BLOB**, **seznamu blokovaných**objektů nebo **kopie objektu**blob, verze nebo snímek stavu objektu BLOB před operací zápisu se automaticky vygeneruje. Tento objekt je neviditelný, pokud nejsou explicitně odstraněné objekty výslovně uvedeny. V části věnované [obnovení](#recovery) se dozvíte, jak zobrazit seznam neodstraněných objektů.
+Když je objekt BLOB přepsaný pomocí **objektu Put BLOB**, **seznamu blokovaných** objektů nebo **kopie objektu** blob, verze nebo snímek stavu objektu BLOB před operací zápisu se automaticky vygeneruje. Tento objekt je neviditelný, pokud nejsou explicitně odstraněné objekty výslovně uvedeny. V části věnované [obnovení](#recovery) se dozvíte, jak zobrazit seznam neodstraněných objektů.
 
 ![Diagram znázorňující, jak jsou snímky objektů BLOB uložené, protože se přepíší pomocí objektů pro vložení, seznamu blokovaných objektů nebo kopie objektu BLOB.](media/soft-delete-blob-overview/storage-blob-soft-delete-overwrite.png)
 
@@ -149,7 +149,7 @@ V části [Další kroky](#next-steps) najdete ukazatel na aplikaci, která vytv
 
 ## <a name="pricing-and-billing"></a>Ceny a fakturace
 
-Všechna tichá Odstraněná data se účtují stejnou sazbou jako aktivní data. Neúčtují se vám poplatky za data, která se po nakonfigurované době uchování trvale odstraní. Pro hlubší podrobně na snímky a způsob, jakým se účtují poplatky, najdete informace v tématu [Princip nabíhání nákladů na snímky](storage-blob-snapshots.md).
+Všechna tichá Odstraněná data se účtují stejnou sazbou jako aktivní data. Neúčtují se vám poplatky za data, která se po nakonfigurované době uchování trvale odstraní. Pro hlubší podrobně na snímky a způsob, jakým se účtují poplatky, najdete informace v tématu [Princip nabíhání nákladů na snímky](./snapshots-overview.md).
 
 Neúčtují se vám transakce týkající se automatického generování snímků. V případě operací zápisu se vám budou účtovat transakce **neodstraněného objektu BLOB** .
 
@@ -193,5 +193,5 @@ Je možné využít obnovitelné odstranění bez ohledu na verzi rozhraní API,
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Povolení obnovitelného odstranění pro objekty blob](soft-delete-enable.md)
+- [Povolení obnovitelného odstranění pro objekty blob](./soft-delete-blob-enable.md)
 - [Správa verzí objektů BLOB](versioning-overview.md)

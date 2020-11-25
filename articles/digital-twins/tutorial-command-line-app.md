@@ -8,11 +8,11 @@ ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ms.openlocfilehash: d7c95317667999ac17803f08575e68641100b967
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460780"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023248"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Kurz: prozkoumání digitálních vláken Azure pomocí ukázkové klientské aplikace
 
@@ -24,7 +24,7 @@ V tomto kurzu budete...
 > [!div class="checklist"]
 > * Nastavení instance digitálních vláken Azure
 > * Konfigurace ukázkové aplikace příkazového řádku pro interakci s instancí
-> * Pomocí aplikace z příkazového řádku můžete prozkoumat digitální vlákna Azure, včetně **modelů**, **digitálních vláken**, **vztahů**a **dotazů** .
+> * Pomocí aplikace z příkazového řádku můžete prozkoumat digitální vlákna Azure, včetně **modelů**, **digitálních vláken**, **vztahů** a **dotazů** .
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
@@ -32,13 +32,13 @@ V tomto kurzu budete...
 
 ## <a name="explore-with-the-sample-solution"></a>Prozkoumejte ukázkové řešení
 
-Teď, když je nakonfigurovaná instance a ukázková aplikace, použijete ukázkový projekt a nějaký předem napsaný ukázkový kód k sestavení a prozkoumání základního řešení digitálních vláken Azure. Hlavní součásti řešení jsou **modely**, **digitální vlákna**a **vztahy**, což vede k queryablemu **grafu** prostředí.
+Teď, když je nakonfigurovaná instance a ukázková aplikace, použijete ukázkový projekt a nějaký předem napsaný ukázkový kód k sestavení a prozkoumání základního řešení digitálních vláken Azure. Hlavní součásti řešení jsou **modely**, **digitální vlákna** a **vztahy**, což vede k queryablemu **grafu** prostředí.
 
 ### <a name="model-a-physical-environment-with-dtdl"></a>Modelování fyzického prostředí pomocí DTDL
 
 Prvním krokem při vytváření řešení digitálních vláken Azure je definování dvojitých [**modelů**](concepts-models.md) pro vaše prostředí. 
 
-Modely jsou podobné třídám v objektově orientovaném programovacím jazyce; poskytují uživatelsky definované šablony pro [digitální vlákna](concepts-twins-graph.md) , které budou následovat a vytvoří se později. Jsou napsány v jazyce podobném formátu JSON, který se nazývá **Digital DTDL (digitální vlákna)**, a může definovat *vlastnosti*, *telemetrie*, *relace*a *komponenty*s dvojitou čárkou.
+Modely jsou podobné třídám v objektově orientovaném programovacím jazyce; poskytují uživatelsky definované šablony pro [digitální vlákna](concepts-twins-graph.md) , které budou následovat a vytvoří se později. Jsou napsány v jazyce podobném formátu JSON, který se nazývá **Digital DTDL (digitální vlákna)**, a může definovat *vlastnosti*, *telemetrie*, *relace* a *komponenty* s dvojitou čárkou.
 
 > [!NOTE]
 > DTDL také umožňuje definici *příkazů* pro digitální vlákna. V současné době se ale ve službě Azure Digital probíhají příkazy aktuálně nepodporují.
@@ -85,18 +85,18 @@ Před přechodem na. Nezapomeňte soubor uložit.
 
 Teď, když jste definovali model, zbývající kroky zahrnují použití ukázkové aplikace k interakci s instancí digitálních vláken Azure. Spusťte projekt pomocí tohoto tlačítka na panelu nástrojů:
 
-:::image type="content" source="media/tutorial-command-line-app/start-button-sample.png" alt-text="Upraveno Room.jss aktualizovaným číslem verze, vlastnostmi HumidityLevel a místností a obsahuje relaci.":::
+:::image type="content" source="media/tutorial-command-line-app/start-button-sample.png" alt-text="Tlačítko Start pro Visual Studio (projekt SampleClientApp)":::
 
 Otevře se okno konzoly, provede se ověřování a počká na příkaz. 
 * Ověřování se provádí prostřednictvím prohlížeče: otevře se výchozí webový prohlížeč s výzvou k ověření. Pomocí této výzvy se můžete přihlásit pomocí přihlašovacích údajů Azure. Pak můžete zavřít kartu nebo okno prohlížeče.
 
 Tady je snímek obrazovky, jak vypadá konzola projektu jako:
 
-:::image type="content" source="media/tutorial-command-line-app/command-line-app.png" alt-text="Upraveno Room.jss aktualizovaným číslem verze, vlastnostmi HumidityLevel a místností a obsahuje relaci.":::
+:::image type="content" source="media/tutorial-command-line-app/command-line-app.png" alt-text="Uvítací zpráva z aplikace příkazového řádku":::
 
 > [!TIP]
 > Seznam všech možných příkazů, které můžete použít s tímto projektem, získáte, když zadáte `help` v konzole projektu a stisknete vrátit.
-> :::image type="content" source="media/tutorial-command-line-app/command-line-app-help.png" alt-text="Upraveno Room.jss aktualizovaným číslem verze, vlastnostmi HumidityLevel a místností a obsahuje relaci.":::
+> :::image type="content" source="media/tutorial-command-line-app/command-line-app-help.png" alt-text="Výstup příkazu help":::
 
 Nechejte konzoli projektu spuštěnou pro zbytek kroků v tomto kurzu.
 
@@ -117,7 +117,7 @@ Výstup by měl označovat, že se modely úspěšně vytvořily.
 
 Ověřte vytvoření modelů spuštěním příkazu `GetModels true` . Tím se dotazuje instance digitálního vlákna Azure pro všechny nahrané modely a vytiskne jejich úplné informace. Ve výsledcích vyhledejte upravený model *místnosti* :
 
-:::image type="content" source="media/tutorial-command-line-app/output-get-models.png" alt-text="Upraveno Room.jss aktualizovaným číslem verze, vlastnostmi HumidityLevel a místností a obsahuje relaci.":::
+:::image type="content" source="media/tutorial-command-line-app/output-get-models.png" alt-text="Výsledky getmodels zobrazující aktualizovaný model místnosti":::
 
 #### <a name="errors"></a>Chyby
 
@@ -165,13 +165,13 @@ CreateDigitalTwin dtmi:example:Floor;1 floor1
 
 Výstup z těchto příkazů by měl označovat, že se vlákna úspěšně vytvořila. 
 
-:::image type="content" source="media/tutorial-command-line-app/output-create-digital-twin.png" alt-text="Upraveno Room.jss aktualizovaným číslem verze, vlastnostmi HumidityLevel a místností a obsahuje relaci.":::
+:::image type="content" source="media/tutorial-command-line-app/output-create-digital-twin.png" alt-text="Výňatek z výsledků příkazů CreateDigitalTwin, které zobrazují floor0, floor1, room0 a Room1":::
 
-Spuštěním příkazu můžete také ověřit, zda byly vlákna vytvořeny `Query` . Tento příkaz se dotazuje vaší instance digitálního vlákna Azure pro všechny digitální vlákna, které obsahuje. Ve výsledcích vyhledejte vlákna *floor0*, *floor1*, *room0*a *Room1* .
+Spuštěním příkazu můžete také ověřit, zda byly vlákna vytvořeny `Query` . Tento příkaz se dotazuje vaší instance digitálního vlákna Azure pro všechny digitální vlákna, které obsahuje. Ve výsledcích vyhledejte vlákna *floor0*, *floor1*, *room0* a *Room1* .
 
 #### <a name="modify-a-digital-twin"></a>Úprava digitálního vlákna
 
-Můžete také upravit vlastnosti vlákna, které jste vytvořili. Zkuste spustit tento příkaz, aby se změnila *room0á*místnost z *room0* na *PresidentialSuite*:
+Můžete také upravit vlastnosti vlákna, které jste vytvořili. Zkuste spustit tento příkaz, aby se změnila *room0á* místnost z *room0* na *PresidentialSuite*:
 
 ```cmd/sh
 UpdateDigitalTwin room0 add /RoomName string PresidentialSuite
@@ -205,7 +205,7 @@ CreateRelationship floor1 contains room1 relationship1
 
 Výstup z těchto příkazů potvrzuje, že relace byly úspěšně vytvořeny:
 
-:::image type="content" source="media/tutorial-command-line-app/output-create-relationship.png" alt-text="Upraveno Room.jss aktualizovaným číslem verze, vlastnostmi HumidityLevel a místností a obsahuje relaci.":::
+:::image type="content" source="media/tutorial-command-line-app/output-create-relationship.png" alt-text="Výňatek z výsledků příkazů CreateRelationship zobrazující relationship0 a relationship1":::
 
 Můžete také ověřit vztahy pomocí kteréhokoli z následujících příkazů, které dotazují relace v instanci digitálních vláken Azure.
 * Chcete-li zobrazit všechny relace, které jsou vydány z jednotlivých podlah (Zobrazení relací z jedné strany),
@@ -225,7 +225,7 @@ Můžete také ověřit vztahy pomocí kteréhokoli z následujících příkaz�
 
 Vlákna a vztahy, které jste nastavili v tomto kurzu, tvoří následující koncepční graf:
 
-:::image type="content" source="media/tutorial-command-line-app/sample-graph.png" alt-text="Upraveno Room.jss aktualizovaným číslem verze, vlastnostmi HumidityLevel a místností a obsahuje relaci." border="false":::
+:::image type="content" source="media/tutorial-command-line-app/sample-graph.png" alt-text="Graf zobrazující floor0 připojený prostřednictvím relationship0 k room0 a floor1 připojení prostřednictvím relationship1 k Room1" border="false":::
 
 ### <a name="query-the-twin-graph-to-answer-environment-questions"></a>Dotaz na dvojitou grafickou odpověď na otázky prostředí
 
@@ -239,7 +239,7 @@ Hlavní funkcí digitálních vláken Azure je schopnost snadno a efektivně [do
 
     To vám umožní pořídit si vaše prostředí na první pohled a zajistit, aby vše představovalo, jak byste chtěli být v rámci digitálních vláken Azure. Výsledek tohoto je výstup obsahující každou digitální dvojitou hodnotu s jeho podrobnostmi. Tady je ukázka:
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-all.png" alt-text="Upraveno Room.jss aktualizovaným číslem verze, vlastnostmi HumidityLevel a místností a obsahuje relaci.":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-all.png" alt-text="Částečné výsledky dvojitých dotazů, které zobrazují room0 a floor1":::
 
     >[!NOTE]
     >V ukázkovém projektu `Query` je příkaz bez dalších argumentů ekvivalentem `Query SELECT * FROM DIGITALTWINS` . K dotazování všech vláken ve vaší instanci pomocí [rozhraní API dotazů](/rest/api/digital-twins/dataplane/query) nebo [příkazů CLI](how-to-use-cli.md)použijte dotaz delší (kompletní).
@@ -252,7 +252,7 @@ Hlavní funkcí digitálních vláken Azure je schopnost snadno a efektivně [do
 
     Dotaz můžete omezit na vlákna určitého typu, abyste získali konkrétnější informace o tom, co je znázorněno. Výsledek tohoto zobrazení je *room0* a *Room1*, ale nezobrazuje *floor0* nebo *floor1* (protože **se jedná o** podlahu, ne místnosti).
     
-    :::image type="content" source="media/tutorial-command-line-app/output-query-model.png" alt-text="Upraveno Room.jss aktualizovaným číslem verze, vlastnostmi HumidityLevel a místností a obsahuje relaci.":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-model.png" alt-text="Výsledky dotazu modelu zobrazující pouze room0 a Room1":::
 
 * **Jaké jsou všechny místnosti v *floor0*?** (dotaz podle relace)
 
@@ -262,7 +262,7 @@ Hlavní funkcí digitálních vláken Azure je schopnost snadno a efektivně [do
 
     Dotaz na základě relací v grafu vám umožní získat informace o tom, jak jsou vlákna propojená, nebo omezit dotaz na určitou oblast. Pouze *room0* je na *floor0*, takže se jedná o jediné místo ve výsledku.
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-relationship.png" alt-text="Upraveno Room.jss aktualizovaným číslem verze, vlastnostmi HumidityLevel a místností a obsahuje relaci.":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-relationship.png" alt-text="Výsledky dotazu relace, zobrazující room0":::
 
 * **Jaké jsou všechny vlákna v mém prostředí s teplotou vyšší než 75?** (dotaz podle vlastnosti)
 
@@ -272,7 +272,7 @@ Hlavní funkcí digitálních vláken Azure je schopnost snadno a efektivně [do
 
     Dotaz na graf můžete na základě vlastností využít k zodpovězení nejrůznějších otázek, mezi které patří hledání ve vašem prostředí, které může vyžadovat pozornost. Podporovány jsou i další operátory porovnání ( *<* , *>* , *=* , nebo *! =*). *Room1* se zobrazí ve výsledcích, protože má teplotu 80.
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-property.png" alt-text="Upraveno Room.jss aktualizovaným číslem verze, vlastnostmi HumidityLevel a místností a obsahuje relaci.":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-property.png" alt-text="Výsledky dotazu na vlastnost zobrazující pouze Room1":::
 
 * **Jaké jsou všechny místnosti v *floor0* s teplotou vyšší 75?** (složený dotaz)
 
@@ -282,7 +282,7 @@ Hlavní funkcí digitálních vláken Azure je schopnost snadno a efektivně [do
 
     Můžete také zkombinovat předchozí dotazy jako v SQL, a to pomocí operátorů kombinace, jako je `AND` , `OR` , `NOT` . Tento dotaz používá `AND` k tomu, aby předchozí dotaz o dvojitě specifických teplotách byl konkrétnější. Výsledek teď obsahuje jenom místnosti s teplotami nad 75, které jsou v *floor0*, což v tomto případě není žádné z nich. Sada výsledků dotazu je prázdná.
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-compound.png" alt-text="Upraveno Room.jss aktualizovaným číslem verze, vlastnostmi HumidityLevel a místností a obsahuje relaci.":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-compound.png" alt-text="Výsledky složeného dotazu, který nezobrazuje žádné výsledky":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

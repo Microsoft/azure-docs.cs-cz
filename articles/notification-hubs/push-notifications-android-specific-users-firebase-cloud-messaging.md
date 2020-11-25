@@ -18,11 +18,11 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
 ms.openlocfilehash: 870842074bb4a0012a48115586a8ad571275d470
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91281027"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022407"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-android-apps-using-azure-notification-hubs"></a>Kurz: odesílání nabízených oznámení do konkrétních aplikací pro Android pomocí Azure Notification Hubs
 
@@ -485,7 +485,7 @@ Dalším krokem je aktualizovat aplikaci pro Android vytvořenou v [kurzu: nabí
 
 1. Pomocí Android Studia spusťte aplikaci na zařízení nebo v emulátoru.
 2. V aplikaci pro Android zadejte uživatelské jméno a heslo. Oba řetězce musí mít stejnou hodnotu a nesmí obsahovat mezery ani speciální znaky.
-3. V aplikaci pro Android klikněte na **Přihlásit**se. Počkejte na informační zprávu oznamující, že se **zaregistrovali a zaregistrovali**. Tím se aktivuje tlačítko **Send Notification** (Odeslat oznámení).
+3. V aplikaci pro Android klikněte na **Přihlásit** se. Počkejte na informační zprávu oznamující, že se **zaregistrovali a zaregistrovali**. Tím se aktivuje tlačítko **Send Notification** (Odeslat oznámení).
 
     ![Snímek obrazovky emulátoru ukazující, co aplikace Notification Hubs upozorní uživatele, když se přihlásí][A2]
 4. Kliknutím na přepínací tlačítko povolte všechny platformy, na kterých jste aplikaci spustili a zaregistrovali uživatele.

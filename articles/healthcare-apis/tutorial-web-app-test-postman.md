@@ -10,11 +10,11 @@ ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
 ms.openlocfilehash: 1c64468a2e420734ca51a5b9308bb52e13712c51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852918"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023308"
 ---
 # <a name="testing-the-fhir-api"></a>Testování rozhraní FHIR API
 V předchozích dvou krocích jste nasadili rozhraní Azure API pro FHIR a zaregistrovali jste klientskou aplikaci. Nyní jste připraveni otestovat, že vaše rozhraní Azure API pro FHIR je nastaveno pomocí klientské aplikace. 
@@ -46,7 +46,7 @@ Aby bylo možné získat přístup, potřebujete přístupový token.
 |ID klienta            |ID klienta, které jste zkopírovali během předchozích kroků             |
 |Tajný klíč klienta        |\<BLANK>                                                            |
 |Rozsah                |\<BLANK>                                                            |
-|Stav                |1 234                                                                |
+|State                |1 234                                                                |
 |Ověření klienta|Poslat přihlašovací údaje klienta v těle                                     |
 
 4. Přihlaste se pomocí svých přihlašovacích údajů a vyberte **přijmout** .

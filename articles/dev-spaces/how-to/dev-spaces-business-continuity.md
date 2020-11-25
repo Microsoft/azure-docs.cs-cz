@@ -9,11 +9,11 @@ description: Naučte se používat Azure Dev Spaces a služby Azure Kubernetes k
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
 manager: gwallace
 ms.openlocfilehash: 824eb1e65e7da5736080e47509aa163a868d8ec9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973133"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023325"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Provozní kontinuita a zotavení po havárii v Azure Dev Spaces
 
@@ -39,7 +39,7 @@ az aks use-dev-spaces -g <resource group name> -n <cluster name>
 
 ## <a name="deploy-your-teams-baseline-to-each-cluster"></a>Nasazení standardních hodnot týmu do každého clusteru
 
-Při práci s vývojovým prostorem obvykle nasadíte celou aplikaci do nadřazeného vývojového prostoru v clusteru Kubernetes. Ve výchozím nastavení se `default` používá mezera. Počáteční nasazení zahrnuje všechny služby a také externí prostředky, na kterých tyto služby závisejí, jako jsou databáze nebo fronty. To se označuje jako *standardní*hodnota. Po nastavení směrného plánu v nadřazeném vývojovém prostoru můžete iterovat a ladit jednotlivé služby v podřízených vývojových prostorech.
+Při práci s vývojovým prostorem obvykle nasadíte celou aplikaci do nadřazeného vývojového prostoru v clusteru Kubernetes. Ve výchozím nastavení se `default` používá mezera. Počáteční nasazení zahrnuje všechny služby a také externí prostředky, na kterých tyto služby závisejí, jako jsou databáze nebo fronty. To se označuje jako *standardní* hodnota. Po nastavení směrného plánu v nadřazeném vývojovém prostoru můžete iterovat a ladit jednotlivé služby v podřízených vývojových prostorech.
 
 Nejnovější verze sady služeb můžete nasadit do clusterů ve více oblastech. Aktualizace standardních služeb tímto způsobem zajistí, že budete moct dál používat vývojářské prostory, pokud dojde k selhání oblasti Azure. Pokud například nasadíte svůj směrný plán prostřednictvím kanálu CI/CD, upravte kanál tak, aby se nasadil do několika clusterů v různých oblastech.
 

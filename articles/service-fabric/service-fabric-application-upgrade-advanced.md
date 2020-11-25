@@ -4,11 +4,11 @@ description: Tento článek se věnuje několika pokročilým tématům, která 
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: cc2fdc8f99b74078bd8d5274cbe52265ab8455ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86248080"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022985"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Upgrade Service Fabric aplikace: Pokročilá témata
 
@@ -28,13 +28,13 @@ Pokud tomu chcete předejít, nakonfigurujte funkci *RequestDrain* přidáním *
 
 Existuje několik způsobů, jak nakonfigurovat zpoždění na straně služby.
 
- * **Při vytváření nové služby**zadejte `-InstanceCloseDelayDuration` :
+ * **Při vytváření nové služby** zadejte `-InstanceCloseDelayDuration` :
 
     ```powershell
     New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>
     ```
 
- * **Při definování služby v části výchozí v manifestu aplikace**přiřaďte `InstanceCloseDelayDurationSeconds` vlastnost:
+ * **Při definování služby v části výchozí v manifestu aplikace** přiřaďte `InstanceCloseDelayDurationSeconds` vlastnost:
 
     ```xml
           <StatelessService ServiceTypeName="Web1Type" InstanceCount="[Web1_InstanceCount]" InstanceCloseDelayDurationSeconds="15">
@@ -42,13 +42,13 @@ Existuje několik způsobů, jak nakonfigurovat zpoždění na straně služby.
           </StatelessService>
     ```
 
- * **Při aktualizaci existující služby**zadejte `-InstanceCloseDelayDuration` :
+ * **Při aktualizaci existující služby** zadejte `-InstanceCloseDelayDuration` :
 
     ```powershell
     Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
     ```
 
- * **Při vytváření nebo aktualizaci existující služby prostřednictvím šablony ARM**zadejte `InstanceCloseDelayDuration` hodnotu (minimální podporovaná verze rozhraní API: 2019-11-01-Preview):
+ * **Při vytváření nebo aktualizaci existující služby prostřednictvím šablony ARM** zadejte `InstanceCloseDelayDuration` hodnotu (minimální podporovaná verze rozhraní API: 2019-11-01-Preview):
 
     ```ARM template to define InstanceCloseDelayDuration of 30seconds
     {
@@ -205,7 +205,7 @@ ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAft
 
 ## <a name="roll-back-application-upgrades"></a>Vrácení upgradů aplikací zpátky
 
-I když se upgrady dají převádět v jednom ze tří režimů (*monitorované*, *UnmonitoredAuto*nebo *UnmonitoredManual*), dají se vrátit zpátky buď v režimu *UnmonitoredAuto* , nebo *UnmonitoredManual* . Vracení zpět v režimu *UnmonitoredAuto* funguje stejným způsobem jako při vracení s výjimkou, že výchozí hodnota *UpgradeReplicaSetCheckTimeout* je odlišná – viz [parametry upgradu aplikace](service-fabric-application-upgrade-parameters.md). Vracení zpět v režimu *UnmonitoredManual* funguje stejně jako postupné dopředné – vrácení zpět se po dokončení každého ud odblokuje a musí se explicitně obnovit pomocí funkce [Resume-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) , aby bylo možné pokračovat v vracení zpět.
+I když se upgrady dají převádět v jednom ze tří režimů (*monitorované*, *UnmonitoredAuto* nebo *UnmonitoredManual*), dají se vrátit zpátky buď v režimu *UnmonitoredAuto* , nebo *UnmonitoredManual* . Vracení zpět v režimu *UnmonitoredAuto* funguje stejným způsobem jako při vracení s výjimkou, že výchozí hodnota *UpgradeReplicaSetCheckTimeout* je odlišná – viz [parametry upgradu aplikace](service-fabric-application-upgrade-parameters.md). Vracení zpět v režimu *UnmonitoredManual* funguje stejně jako postupné dopředné – vrácení zpět se po dokončení každého ud odblokuje a musí se explicitně obnovit pomocí funkce [Resume-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) , aby bylo možné pokračovat v vracení zpět.
 
 Vrácení zpět se dá spustit automaticky, když se naruší zásady stavu upgradu v *monitorovaném* režimu s *FailureActionem* *vrácení zpět* (viz [parametry upgradu aplikace](service-fabric-application-upgrade-parameters.md)) nebo explicitně pomocí [Start-ServiceFabricApplicationRollback](/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps).
 

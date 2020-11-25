@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: 6c6f71277c276bed603989774637bd95999de333
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079050"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023516"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>Šifrování ExpressRoute: protokol IPsec over ExpressRoute pro virtuální síť WAN
 
@@ -76,7 +76,7 @@ Prostředek sítě je stejný jako lokalita VPN bez ExpressRoute pro virtuální
 >
 
 1. V prohlížeči přejdete na Azure Portal. 
-1. Vyberte centrum, které jste vytvořili. Na stránce rozbočovač virtuální sítě WAN v části **připojení**vyberte sítě **VPN**.
+1. Vyberte centrum, které jste vytvořili. Na stránce rozbočovač virtuální sítě WAN v části **připojení** vyberte sítě **VPN**.
 1. Na stránce sítě **VPN** vyberte **+ vytvořit lokalitu**.
 1. Na stránce **Create site** (Vytvořit lokalitu) zadejte údaje do následujících polí:
    * **Předplatné**: Ověřte předplatné.
@@ -95,7 +95,7 @@ Prostředek sítě je stejný jako lokalita VPN bez ExpressRoute pro virtuální
 
    Pokud je protokol BGP povolený, bude platit pro všechna připojení vytvořená pro tento web v Azure. Konfigurace protokolu BGP ve virtuální síti WAN je rovnocenná konfiguraci protokolu BGP v bráně Azure VPN. 
    
-   Vaše místní adresa partnerského uzlu BGP *nesmí* být SHODNÁ s IP adresou vaší sítě VPN k zařízení nebo adresnímu prostoru virtuální sítě sítě VPN. Pro IP adresu partnerského uzlu BGP použijte jinou IP adresu na zařízení VPN. Může se jednat o adresu přiřazenou rozhraní zpětné smyčky v zařízení. Nejedná se *can't* však o APIPA (169,254).* x*. *x*) adresa. Zadejte tuto adresu v odpovídající bráně místní sítě, která představuje umístění. Požadavky protokolu BGP najdete v tématu [informace o protokolu BGP s Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md).
+   Vaše místní adresa partnerského uzlu BGP *nesmí* být SHODNÁ s IP adresou vaší sítě VPN k zařízení nebo adresnímu prostoru virtuální sítě sítě VPN. Pro IP adresu partnerského uzlu BGP použijte jinou IP adresu na zařízení VPN. Může se jednat o adresu přiřazenou rozhraní zpětné smyčky v zařízení. Nejedná se *can't* však o APIPA (169,254).*x*. *x*) adresa. Zadejte tuto adresu v odpovídající bráně místní sítě, která představuje umístění. Požadavky protokolu BGP najdete v tématu [informace o protokolu BGP s Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md).
 
 1. Vyberte **Další: Zkontrolujte a vytvořte >** a zkontrolujte hodnoty nastavení a vytvořte lokalitu VPN. Pokud jste vybrali **rozbočovače** k připojení, připojení se vytvoří mezi místní sítí a bránou VPN centra.
 
@@ -105,16 +105,16 @@ Po vytvoření lokality VPN a připojení k centru použijte následující post
 
 1. Vraťte se na stránku prostředku virtuální sítě WAN a vyberte prostředek centra. Nebo přejděte z sítě VPN do připojeného centra.
 
-   :::image type="content" source="./media/vpn-over-expressroute/hub-selection.png" alt-text="VPN přes ExpressRoute":::
-1. V části **připojení**vyberte **VPN (site-to-site)**.
+   :::image type="content" source="./media/vpn-over-expressroute/hub-selection.png" alt-text="Výběr centra":::
+1. V části **připojení** vyberte **VPN (site-to-site)**.
 
-   :::image type="content" source="./media/vpn-over-expressroute/vpn-select.png" alt-text="VPN přes ExpressRoute":::
+   :::image type="content" source="./media/vpn-over-expressroute/vpn-select.png" alt-text="Vybrat síť VPN (site-to-site)":::
 1. Vyberte tři tečky (**...**) na webu VPN přes ExpressRoute a vyberte **Upravit připojení VPN k tomuto centru**.
 
-   :::image type="content" source="./media/vpn-over-expressroute/config-menu.png" alt-text="VPN přes ExpressRoute":::
-1. Pro možnost **použít privátní IP adresu Azure**vyberte **Ano**. Nastavení nakonfiguruje bránu VPN centra pro použití privátních IP adres v rámci rozsahu adres centra v bráně pro toto připojení místo veřejných IP adres. Tím se zajistí, že přenos z místní sítě projde cesty privátního partnerského vztahu ExpressRoute místo použití veřejného Internetu pro toto připojení k síti VPN. Následující snímek obrazovky ukazuje toto nastavení:
+   :::image type="content" source="./media/vpn-over-expressroute/config-menu.png" alt-text="Přejít do nabídky konfigurace":::
+1. Pro možnost **použít privátní IP adresu Azure** vyberte **Ano**. Nastavení nakonfiguruje bránu VPN centra pro použití privátních IP adres v rámci rozsahu adres centra v bráně pro toto připojení místo veřejných IP adres. Tím se zajistí, že přenos z místní sítě projde cesty privátního partnerského vztahu ExpressRoute místo použití veřejného Internetu pro toto připojení k síti VPN. Následující snímek obrazovky ukazuje toto nastavení:
 
-   :::image type="content" source="./media/vpn-over-expressroute/vpn-link-configuration.png" alt-text="VPN přes ExpressRoute" border="false":::
+   :::image type="content" source="./media/vpn-over-expressroute/vpn-link-configuration.png" alt-text="Nastavení pro použití privátní IP adresy pro připojení VPN" border="false":::
 1. Vyberte **Uložit**.
 
 Po uložení změn budou brány VPN centra používat privátní IP adresy v bráně VPN k navázání připojení IPsec/IKE k místnímu zařízení VPN přes ExpressRoute.
@@ -123,7 +123,7 @@ Po uložení změn budou brány VPN centra používat privátní IP adresy v br�
 
 Stáhněte si konfiguraci zařízení VPN a získejte privátní IP adresy brány VPN centra. Tyto adresy budete potřebovat ke konfiguraci místního zařízení VPN.
 
-1. Na stránce centra vyberte v části **připojení**možnost **VPN (site-to-site)** .
+1. Na stránce centra vyberte v části **připojení** možnost **VPN (site-to-site)** .
 1. V horní části stránky **Přehled** vyberte **Stáhnout konfiguraci sítě VPN**. 
 
    Azure vytvoří účet úložiště ve skupině prostředků Microsoft-Network-[location], kde *umístění* je umístění sítě WAN. Po použití konfigurace na zařízení VPN můžete tento účet úložiště odstranit.

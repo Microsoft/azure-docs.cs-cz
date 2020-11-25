@@ -2,14 +2,14 @@
 title: Příjem událostí z Azure Event Grid do koncového bodu HTTP
 description: Popisuje, jak ověřit koncový bod HTTP a pak přijímat a deserializovat události z Azure Event Grid
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 11/19/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 42cf237f0c2fbe091307625fde70613ab9173b0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75c80fb85d39298f1130537971bc700897c039d0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326469"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96023705"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Příjem událostí pro koncový bod HTTP
 
@@ -140,9 +140,11 @@ Otestujte funkci reakce na ověření vložením ukázkové události do pole te
 }]
 ```
 
-Po kliknutí na tlačítko spustit by měl být výstup 200 OK a `{"ValidationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` v těle:
+Po kliknutí na tlačítko spustit by měl být výstup 200 OK a `{"validationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` v těle:
 
-![odpověď na ověření](./media/receive-events/validation-response.png)
+:::image type="content" source="./media/receive-events/validation-request.png" alt-text="Žádost o ověření":::
+
+:::image type="content" source="./media/receive-events/validation-output.png" alt-text="Výstup ověřování":::
 
 ## <a name="handle-blob-storage-events"></a>Zpracování událostí služby Blob Storage
 
@@ -394,6 +396,8 @@ Nakonec otestujte, že vaše funkce teď může zpracovat vlastní typ události
 ```
 
 Tuto funkci můžete také v reálném čase otestovat [odesláním vlastní události pomocí objektu kudrlinkou z portálu](./custom-event-quickstart-portal.md) nebo [publikováním do vlastního tématu](./post-to-custom-topic.md)  pomocí libovolné služby nebo aplikace, která může odesílat do koncového bodu, jako je například [post](https://www.getpostman.com/). Vytvořte vlastní téma a odběr událostí s nastaveným koncovým bodem jako adresu URL funkce.
+
+[!INCLUDE [event-grid-message-headers](../../includes/event-grid-message-headers.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

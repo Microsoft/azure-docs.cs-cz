@@ -10,11 +10,11 @@ ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: feabfe505601276269c2774e3b39dd5cbaa32087
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359965"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022917"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Zabezpečení propojené služby pomocí privátních odkazů
 
@@ -22,8 +22,8 @@ V tomto článku se dozvíte, jak zabezpečit propojenou službu v synapse pomoc
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure** : Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-* **Účet Azure Storage** : Azure Data Lake Gen 2 použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště, přečtěte si článek [vytvoření Azure Storage účtu](../../storage/blobs/data-lake-storage-quickstart-create-account.md) , kde najdete kroky pro jeho vytvoření. Ujistěte se, že účet úložiště má k přístupu přístup synapse Studio IP a že povolujete přístup jenom **vybraným sítím** k účtu úložiště. Nastavení v okně **brány firewall a virtuální sítě** by mělo vypadat jako na obrázku níže.
+* **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
+* **Účet Azure Storage**: Azure Data Lake Gen 2 použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště, přečtěte si článek [vytvoření Azure Storage účtu](../../storage/blobs/data-lake-storage-quickstart-create-account.md) , kde najdete kroky pro jeho vytvoření. Ujistěte se, že účet úložiště má k přístupu přístup synapse Studio IP a že povolujete přístup jenom **vybraným sítím** k účtu úložiště. Nastavení v okně **brány firewall a virtuální sítě** by mělo vypadat jako na obrázku níže.
 
 ![Zabezpečený účet úložiště](./media/secure-storage-account.png)
 
@@ -37,7 +37,7 @@ V Azure synapse Analytics je propojená služba, kde můžete definovat informac
 1. V seznamu Vyberte dlaždici Azure Data Lake Storage Gen2 a vyberte **pokračovat**.
 1. Ujistěte se, že jste povolili **interaktivní vytváření**. Povolení může trvat přibližně 1 minutu. 
 1. Zadejte přihlašovací údaje pro ověření. Typy ověřování aktuálně podporují klíč účtu, instanční objekt a spravovanou identitu. Vyberte test připojení a ověřte správnost vašich přihlašovacích údajů.
-1. Vyberte **Test připojení** , nemělo by se zdařit, protože účet úložiště nepovoluje přístup k němu bez vytvoření a schválení privátního koncového bodu. V chybové zprávě byste měli vidět odkaz pro vytvoření **privátního koncového bodu** , pomocí kterého můžete přejít k další části. Pokud tento odkaz provedete, přeskočte další část.
+1. Vyberte **Test připojení**, nemělo by se zdařit, protože účet úložiště nepovoluje přístup k němu bez vytvoření a schválení privátního koncového bodu. V chybové zprávě byste měli vidět odkaz pro vytvoření **privátního koncového bodu** , pomocí kterého můžete přejít k další části. Pokud tento odkaz provedete, přeskočte další část.
 1. Po dokončení vyberte **Vytvořit**.
 
 ## <a name="create-a-managed-private-endpoint"></a>Vytvoření spravovaného privátního koncového bodu

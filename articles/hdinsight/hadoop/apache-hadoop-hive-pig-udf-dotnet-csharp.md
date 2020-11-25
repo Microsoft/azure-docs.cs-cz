@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
 ms.openlocfilehash: e99d68d31f1da4dcb3ef1086a2bbd90f0ab30410
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488992"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023121"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Použití uživatelem definovaných funkcí jazyka C# s Apache Hive a Apache prasetem v Apache Hadoop ve službě HDInsight
 
@@ -24,7 +24,7 @@ Naučte se používat uživatelsky definované funkce jazyka C# s [Apache Hive](
 
 Podregistr i prase mohou předat data externím aplikacím ke zpracování. Tento proces se označuje jako _streamování_. Při použití aplikace .NET se data předávají do aplikace na vstupu a aplikace vrátí výsledky na STDOUT. Chcete-li číst a zapisovat ze standardního vstupu a STDOUT, můžete použít `Console.ReadLine()` a `Console.WriteLine()` z konzolové aplikace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Znalost psaní a sestavování kódu v jazyce C#, který cílí na .NET Framework 4,5.
 
@@ -58,7 +58,7 @@ Vytvoření projektu v jazyce C# pro Apache Hive systému souborů UDF:
 
 3. V okně **vytvořit nový projekt** vyberte šablonu **Konzolová aplikace (.NET Framework)** (verze C#). Pak vyberte **Další**.
 
-4. V okně **Konfigurovat nový projekt** zadejte **název projektu** *HiveCSharp*a přejděte do **umístění** , do kterého chcete nový projekt uložit, nebo ho vytvořte. Potom vyberte **Vytvořit**.
+4. V okně **Konfigurovat nový projekt** zadejte **název projektu** *HiveCSharp* a přejděte do **umístění** , do kterého chcete nový projekt uložit, nebo ho vytvořte. Potom vyberte **Vytvořit**.
 
 5. V integrovaném vývojovém prostředí sady Visual Studio nahraďte obsah *program.cs* následujícím kódem:
 
@@ -125,7 +125,7 @@ Vytvoření projektu v jazyce C# pro Apache Hive systému souborů UDF:
 
 3. V okně **vytvořit nový projekt** vyberte šablonu **Konzolová aplikace (.NET Framework)** (verze C#). Pak vyberte **Další**.
 
-4. V okně **Konfigurovat nový projekt** zadejte **název projektu** *PigUDF*a přejděte na nebo vytvořte **umístění** , do kterého chcete nový projekt uložit. Potom vyberte **Vytvořit**.
+4. V okně **Konfigurovat nový projekt** zadejte **název projektu** *PigUDF* a přejděte na nebo vytvořte **umístění** , do kterého chcete nový projekt uložit. Potom vyberte **Vytvořit**.
 
 5. V integrovaném vývojovém prostředí sady Visual Studio nahraďte obsah *program.cs* následujícím kódem:
 
@@ -170,7 +170,7 @@ V dalším kroku nahrajte do úložiště v clusteru HDInsight aplikace v podreg
 
 1. V aplikaci Visual Studio přejděte k **zobrazení**  >  **Průzkumník serveru**.
 
-1. V **Průzkumník serveru**klikněte pravým tlačítkem myši na **Azure**, vyberte **připojit se k Microsoft Azure předplatného**a dokončete proces přihlašování.
+1. V **Průzkumník serveru** klikněte pravým tlačítkem myši na **Azure**, vyberte **připojit se k Microsoft Azure předplatného** a dokončete proces přihlašování.
 
 1. Rozbalte cluster HDInsight, do kterého chcete nasadit tuto aplikaci. Zobrazí se položka s textem **(výchozí účet úložiště)** .
 
@@ -186,7 +186,7 @@ V dalším kroku nahrajte do úložiště v clusteru HDInsight aplikace v podreg
 
         ![Ikona nahrání HDInsight pro nový projekt](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
 
-        V dialogovém okně **nahrát nový soubor** vyberte v části **název souboru**možnost **Procházet**. V dialogovém okně **nahrát objekt BLOB** otevřete složku *bin\Debug* projektu *HiveCSharp* a vyberte soubor *HiveCSharp.exe* . Nakonec vyberte **otevřít** a pak kliknutím na **OK** dokončete nahrávání.
+        V dialogovém okně **nahrát nový soubor** vyberte v části **název souboru** možnost **Procházet**. V dialogovém okně **nahrát objekt BLOB** otevřete složku *bin\Debug* projektu *HiveCSharp* a vyberte soubor *HiveCSharp.exe* . Nakonec vyberte **otevřít** a pak kliknutím na **OK** dokončete nahrávání.
 
     * Pokud používáte **Azure Data Lake Storage**, klikněte pravým tlačítkem myši na prázdnou oblast v seznamu souborů a vyberte **Odeslat**. Nakonec zvolte soubor *HiveCSharp.exe* a vyberte **otevřít**.
 
@@ -224,7 +224,7 @@ Nyní můžete spustit dotaz na podregistr, který používá vaši aplikaci pro
 
     Tento dotaz vybírá `clientid` `devicemake` pole, a `devicemodel` z `hivesampletable` a poté předává pole do aplikace *HiveCSharp.exe* . Dotaz očekává, že aplikace vrátí tři pole, která jsou uložena jako `clientid` , `phoneLabel` a `phoneHash` . Dotaz také očekává, že *HiveCSharp.exe* v kořenovém adresáři výchozího kontejneru úložiště.
 
-5. Přepněte výchozí **interaktivní** na **Batch**a pak vyberte **Odeslat** a odešlete úlohu do clusteru HDInsight. Otevře se okno **Souhrn úlohy podregistru** .
+5. Přepněte výchozí **interaktivní** na **Batch** a pak vyberte **Odeslat** a odešlete úlohu do clusteru HDInsight. Otevře se okno **Souhrn úlohy podregistru** .
 
 6. Výběrem **aktualizovat** aktualizujte souhrn, dokud se **stav úlohy** nezmění na **dokončeno**. Chcete-li zobrazit výstup úlohy, vyberte **výstup úlohy**.
 

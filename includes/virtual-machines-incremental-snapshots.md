@@ -9,11 +9,11 @@ ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a662598efdca05769c7da9fbeecdf692dccdacb5
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95553569"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025643"
 ---
 ## <a name="overview"></a>Přehled
 Azure Storage poskytuje možnost pořizovat snímky objektů BLOB. Snímky zachycují stav objektu BLOB v daném časovém okamžiku. V tomto článku popisujeme scénář, ve kterém můžete uchovávat zálohy disků virtuálních počítačů pomocí snímků. Tuto metodologii můžete použít, pokud se rozhodnete nepoužívat Azure Backup a službu Recovery Services a chcete vytvořit vlastní strategii zálohování pro disky virtuálních počítačů. Pro virtuální počítače, na kterých běží firemní nebo důležité úlohy, se doporučuje použít [Azure Backup](../articles/backup/backup-azure-vms-introduction.md) jako součást strategie zálohování.  

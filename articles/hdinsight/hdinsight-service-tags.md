@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
 ms.openlocfilehash: 1a90bc6636dcb3aa81f09b0489850c1a95b3256d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535242"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022747"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Značky služby NSG pro Azure HDInsight
 
@@ -26,9 +26,9 @@ Pokud chcete použít určitou oblast a tag služby ještě není na této strá
 
 Ve skupinách zabezpečení sítě máte dvě možnosti použití značek služeb:
 
-- **Použijte jednu globální značku služby HDInsight** : Tato možnost otevře virtuální síť se všemi IP adresami, které služba HDInsight používá pro monitorování clusterů ve všech oblastech. Tato možnost je nejjednodušší způsob, ale nemusí být vhodný, pokud máte omezující požadavky na zabezpečení.
+- **Použijte jednu globální značku služby HDInsight**: Tato možnost otevře virtuální síť se všemi IP adresami, které služba HDInsight používá pro monitorování clusterů ve všech oblastech. Tato možnost je nejjednodušší způsob, ale nemusí být vhodný, pokud máte omezující požadavky na zabezpečení.
 
-- **Použít více značek regionální služby** : Tato možnost otevře virtuální síť pouze s IP adresami, které HDInsight používá v konkrétní oblasti. Pokud ale používáte více oblastí, budete muset do své virtuální sítě přidat několik značek služeb.
+- **Použít více značek regionální služby**: Tato možnost otevře virtuální síť pouze s IP adresami, které HDInsight používá v konkrétní oblasti. Pokud ale používáte více oblastí, budete muset do své virtuální sítě přidat několik značek služeb.
 
 ## <a name="use-a-single-global-hdinsight-service-tag"></a>Použít jednu globální značku služby HDInsight
 
@@ -36,11 +36,11 @@ Nejjednodušší způsob, jak začít používat značky služeb v clusteru HDIn
 
 1. Z [Azure Portal](https://portal.azure.com/)vyberte skupinu zabezpečení sítě.
 
-1. V části **Nastavení** vyberte **příchozí pravidla zabezpečení** a pak vyberte **+ Přidat** .
+1. V části **Nastavení** vyberte **příchozí pravidla zabezpečení** a pak vyberte **+ Přidat**.
 
-1. V rozevíracím seznamu **zdroj** vyberte možnost **značka služby** .
+1. V rozevíracím seznamu **zdroj** vyberte možnost **značka služby**.
 
-1. V rozevíracím seznamu **tag zdrojové služby** vyberte **HDInsight** .
+1. V rozevíracím seznamu **tag zdrojové služby** vyberte **HDInsight**.
 
     ![Přidat značku služby z Azure Portal](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
@@ -59,7 +59,7 @@ Pokud je váš cluster umístěný v oblasti uvedené v této tabulce, stačí d
 | Country (Země) | Region (Oblast) | Značka služby |
 | ---- | ---- | ---- |
 | Austrálie | Austrálie – východ | HDInsight. AustraliaEast |
-| &nbsp; | Austrálie – jihovýchod | HDInsight. AustraliaSoutheast |
+| &nbsp; | Australia Southeast | HDInsight. AustraliaSoutheast |
 | &nbsp; | Austrálie – střed | HDInsight. AustraliaCentral |
 | Čína | Čína – východ 2 | HDInsight. ChinaEast2 |
 | &nbsp; | Čína – sever 2 | HDInsight. ChinaNorth2 |
@@ -102,7 +102,7 @@ Pokud se například v dané oblasti vytvoří cluster, budete `East US 2` muset
 | &nbsp; | Střední USA | HDInsight. CentralUS |
 | &nbsp; | NorthCentral nás | HDInsight. NorthCentralUS |
 | &nbsp; | Středojižní USA | HDInsight. SouthCentralUS |
-| &nbsp; | USA – východ | HDInsight. EastUS |
+| &nbsp; | East US | HDInsight. EastUS |
 | &nbsp; | USA – západ | HDInsight. WestUS |
 | Japonsko | Japonsko – východ | HDInsight. JapanEast |
 | Evropa | Severní Evropa | HDInsight. NorthEurope |

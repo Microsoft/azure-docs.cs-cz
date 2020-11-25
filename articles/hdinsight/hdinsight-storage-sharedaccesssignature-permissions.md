@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/28/2020
 ms.openlocfilehash: eb8201ea888b98250d452e0b0e1c48f30cbb1efc
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742057"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022730"
 ---
 # <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Použití sdílených přístupových podpisů Azure Blob Storage k omezení přístupu k datům v HDInsight
 
@@ -25,9 +25,9 @@ Služba HDInsight má úplný přístup k datům v účtech služby Azure Blob S
 > [!WARNING]  
 > HDInsight musí mít úplný přístup k výchozímu úložišti pro cluster.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](./hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](./hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Existující [kontejner úložiště](../storage/blobs/storage-quickstart-blobs-portal.md).  
 
@@ -207,7 +207,7 @@ Pokud se zobrazí chybová zpráva, může být nutné provést akci `pip instal
 
 1. Otevřete řešení v sadě Visual Studio.
 
-2. V Průzkumník řešení klikněte pravým tlačítkem na projekt **SASExample** a vyberte **vlastnosti** .
+2. V Průzkumník řešení klikněte pravým tlačítkem na projekt **SASExample** a vyberte **vlastnosti**.
 
 3. Vyberte **Nastavení** a přidejte hodnoty pro následující položky:
 
@@ -353,27 +353,27 @@ Pokud máte existující cluster, můžete přidat SAS do konfigurace **základn
 
 1. Otevřete webové uživatelské rozhraní Ambari pro váš cluster. Adresa této stránky je `https://YOURCLUSTERNAME.azurehdinsight.net` . Po zobrazení výzvy proveďte ověření v clusteru pomocí jména správce (správce) a hesla, které jste použili při vytváření clusteru.
 
-1. Přejděte na stránku **HDFS**  >  **Konfigurace**  >  **Upřesnit**  >  **vlastní jádro-site** .
+1. Přejděte na stránku **HDFS**  >  **Konfigurace**  >  **Upřesnit**  >  **vlastní jádro-site**.
 
-1. Rozbalte část **vlastní základ pro základní lokalitu** , přejděte na konec a a pak vyberte **Přidat vlastnost...** . Pro **klíč** a **hodnotu** použijte následující hodnoty:
+1. Rozbalte část **vlastní základ pro základní lokalitu** , přejděte na konec a a pak vyberte **Přidat vlastnost...**. Pro **klíč** a **hodnotu** použijte následující hodnoty:
 
-    * **Klíč** : `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
-    * **Hodnota** : SAS vrácená jednou z výše provedených metod.
+    * **Klíč**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **Hodnota**: SAS vrácená jednou z výše provedených metod.
 
     Nahraďte `CONTAINERNAME` názvem kontejneru, který jste použili v aplikaci C# nebo SAS. Nahraďte `STORAGEACCOUNTNAME` názvem účtu úložiště, který jste použili.
 
     Vyberte **Přidat** a uložte tento klíč a hodnotu.
 
-1. Kliknutím na tlačítko **Uložit** uložte změny konfigurace. Po zobrazení výzvy přidejte popis změny (například "Přidání přístupu k úložišti SAS") a pak vyberte **Uložit** .
+1. Kliknutím na tlačítko **Uložit** uložte změny konfigurace. Po zobrazení výzvy přidejte popis změny (například "Přidání přístupu k úložišti SAS") a pak vyberte **Uložit**.
 
     Po dokončení změn vyberte **OK** .
 
    > [!IMPORTANT]  
    > Změny se projeví až po restartování několika služeb.
 
-1. Zobrazí se rozevírací seznam pro **restartování** . V rozevíracím seznamu vyberte **restartovat vše** a pak __potvrďte restart vše__ .
+1. Zobrazí se rozevírací seznam pro **restartování** . V rozevíracím seznamu vyberte **restartovat vše** a pak __potvrďte restart vše__.
 
-    Tento postup opakujte pro **MapReduce2** a **příze** .
+    Tento postup opakujte pro **MapReduce2** a **příze**.
 
 1. Po restartování služby vyberte jednotlivé položky a v rozevíracím seznamu **Akce služby** zakažte režim údržby.
 
@@ -411,7 +411,7 @@ Pomocí následujících kroků ověříte, že můžete číst a vypisovat polo
     hdfs dfs -get wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log testfile.txt
     ```
 
-    Tento příkaz stáhne soubor do místního souboru s názvem **testfile.txt** .
+    Tento příkaz stáhne soubor do místního souboru s názvem **testfile.txt**.
 
 5. Pomocí následujícího příkazu nahrajte místní soubor do nového souboru s názvem **testupload.txt** v úložišti SAS:
 

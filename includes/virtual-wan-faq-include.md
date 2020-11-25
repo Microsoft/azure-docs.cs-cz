@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: da2535a9764c909af3a491402311fe263dbb48fb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c476fe2af1fb4bddff4799609b164aab14f57b00
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93330998"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023481"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Je Azure Virtual WAN v GA?
 
@@ -273,3 +273,7 @@ Viz část [omezení virtuální sítě WAN](../articles/azure-resource-manager/
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Jaké jsou rozdíly mezi typy virtuálních sítí WAN (Basic a Standard)?
 
 Viz [základní a standardní virtuální sítě WAN](../articles/virtual-wan/virtual-wan-about.md#basicstandard). Ceny najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/virtual-wan/) .
+
+### <a name="does-virtual-wan-store-customer-data"></a>Má Virtual WAN obchod zákaznická data? 
+
+Ne. Virtuální síť WAN neukládá žádná zákaznická data.

@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 805ab0e78f0679ce483af3a73203b41132be2a59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90054768"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022951"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Použití Snapshot Manager StorSimple k vytváření a správě skupin svazků
 ## <a name="overview"></a>Přehled
@@ -46,7 +46,7 @@ V tomto kurzu se dozvíte, jak můžete použít StorSimple Snapshot Manager k t
 Všechny tyto akce jsou také k dispozici v podokně **Akce** .
 
 ## <a name="view-volume-groups"></a>Zobrazit skupiny svazků
-Pokud kliknete na uzel **skupiny svazků** , v podokně **výsledků** se zobrazí následující informace o každé skupině svazků v závislosti na výběrech sloupců, které provedete. (Sloupce v podokně **výsledků** se dají konfigurovat. Klikněte pravým tlačítkem myši na uzel **svazky** , vyberte možnost **zobrazení**a pak vyberte možnost **Přidat nebo odebrat sloupce**.)
+Pokud kliknete na uzel **skupiny svazků** , v podokně **výsledků** se zobrazí následující informace o každé skupině svazků v závislosti na výběrech sloupců, které provedete. (Sloupce v podokně **výsledků** se dají konfigurovat. Klikněte pravým tlačítkem myši na uzel **svazky** , vyberte možnost **zobrazení** a pak vyberte možnost **Přidat nebo odebrat sloupce**.)
 
 | Sloupec výsledků | Popis |
 |:--- |:--- |
@@ -65,7 +65,7 @@ Chcete-li vytvořit skupinu svazků, použijte následující postup.
 
 #### <a name="to-create-a-volume-group"></a>Vytvoření skupiny svazků
 1. Kliknutím na ikonu na ploše spusťte StorSimple Snapshot Manager.
-2. V podokně **obor** klikněte pravým tlačítkem na **skupiny svazků**a pak klikněte na **vytvořit skupinu svazků**.
+2. V podokně **obor** klikněte pravým tlačítkem na **skupiny svazků** a pak klikněte na **vytvořit skupinu svazků**.
    
     ![Vytvořit skupinu svazků](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Create_volume_group.png)
    
@@ -95,7 +95,7 @@ K zálohování skupiny svazků použijte následující postup.
 2. V podokně **obor** rozbalte uzel **skupiny svazků** , klikněte pravým tlačítkem na název skupiny svazků a pak klikněte na **vytvořit zálohu**.
    
     ![Zálohování skupiny svazků hned](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Take_backup.png)
-3. V dialogovém okně **provést zálohování** vyberte **místní snímek** nebo **cloudový snímek**a potom klikněte na **vytvořit**.
+3. V dialogovém okně **provést zálohování** vyberte **místní snímek** nebo **cloudový snímek** a potom klikněte na **vytvořit**.
    
     ![Dialogové okno pro zálohování](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_TakeBackup_dialog.png)
 4. Chcete-li ověřit, zda je zálohování spuštěno, rozbalte uzel **úlohy** a potom klikněte na možnost **spuštěno**. Záloha by měla být uvedena v seznamu.
@@ -107,7 +107,7 @@ Pro úpravu skupiny svazků použijte následující postup.
 #### <a name="to-edit-a-volume-group"></a>Úprava skupiny svazků
 1. Kliknutím na ikonu na ploše spusťte StorSimple Snapshot Manager.
 2. V podokně **obor** rozbalte uzel **skupiny svazků** , klikněte pravým tlačítkem na název skupiny svazků a pak klikněte na **Upravit**.
-3. Zobrazí se dialogové okno * * vytvořit skupinu svazků * *. Můžete změnit položky **název**, **aplikace**a **svazky** .
+3. Zobrazí se dialogové okno * * vytvořit skupinu svazků * *. Můžete změnit položky **název**, **aplikace** a **svazky** .
 4. Klikněte na tlačítko **OK** a uložte změny.
 
 ## <a name="delete-a-volume-group"></a>Odstranění skupiny svazků

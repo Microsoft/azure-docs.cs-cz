@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.date: 03/15/2020
 ms.author: cavoeg
 ms.openlocfilehash: cabacd5204f4a9ac5c17c7bd66924482b5bf688a
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339284"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023461"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-portal"></a>Rychlý Start: nasazení rozhraní Azure API pro FHIR pomocí Azure Portal
 
 V tomto rychlém startu se dozvíte, jak nasadit rozhraní API Azure pro FHIR pomocí Azure Portal.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="create-new-resource"></a>Vytvořit nový prostředek
 
@@ -37,13 +37,13 @@ Rozhraní Azure API pro FHIR můžete najít zadáním "FHIR" do vyhledávacího
 
 Vyberte **vytvořit** a vytvořte nový Azure API pro účet FHIR:
 
-:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="Hledání rozhraní API pro zdravotní péči":::
+:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="Vytvoření Azure API pro účet FHIR":::
 
 ## <a name="enter-account-details"></a>Zadejte podrobnosti účtu.
 
 Vyberte existující skupinu prostředků nebo vytvořte novou, zvolte název účtu a nakonec klikněte na **zkontrolovat + vytvořit**:
 
-:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="Hledání rozhraní API pro zdravotní péči":::
+:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="Nové podrobnosti o rozhraní API pro zdravotnictví":::
 
 Potvrďte vytváření a očekává se nasazení rozhraní API FHIR.
 
@@ -51,7 +51,7 @@ Potvrďte vytváření a očekává se nasazení rozhraní API FHIR.
 
 Můžete také kliknout na **Další: Další nastavení** a zobrazit nastavení ověřování. Výchozí konfigurací rozhraní API Azure pro FHIR je [použití služby Azure RBAC pro přiřazení rolí roviny dat](configure-azure-rbac.md). Při konfiguraci v tomto režimu bude "autorita" pro službu FHIR nastavena na tenanta Azure Active Directory předplatného:
 
-:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="Hledání rozhraní API pro zdravotní péči":::
+:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="Výchozí nastavení ověřování":::
 
 Všimněte si, že pole pro zadání povolených ID objektů je šedé, protože používáme Azure RBAC pro konfiguraci přiřazení rolí v tomto případě.
 
@@ -63,7 +63,7 @@ Pokud chcete ověřit, jestli je nový účet FHIR API zřízený, načtěte př
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete odstranit skupinu prostředků, Azure API pro FHIR a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků obsahující Azure API pro účet FHIR, vyberete **Odstranit skupinu prostředků**a pak ověříte název skupiny prostředků, která se má odstranit.
+Pokud už je nepotřebujete, můžete odstranit skupinu prostředků, Azure API pro FHIR a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků obsahující Azure API pro účet FHIR, vyberete **Odstranit skupinu prostředků** a pak ověříte název skupiny prostředků, která se má odstranit.
 
 ## <a name="next-steps"></a>Další kroky
 

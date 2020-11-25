@@ -4,11 +4,11 @@ description: Přečtěte si, jak pomocí rozšíření Azure Policy Visual Studi
 ms.date: 10/20/2020
 ms.topic: how-to
 ms.openlocfilehash: 233c9158c30d6c373dd6147090894dc83b83da3d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317618"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022424"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Použít rozšíření Azure Policy pro Visual Studio Code
 
@@ -21,11 +21,11 @@ Azure Policy rozšíření pro Visual Studio Code lze nainstalovat na všechny p
 > [!NOTE]
 > Změny provedené lokálně v zásadách zobrazených v rozšíření Azure Policy pro Visual Studio Code se nesynchronizují do Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku jsou vyžadovány následující položky:
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 - [Visual Studio Code](https://code.visualstudio.com).
 
 ## <a name="install-azure-policy-extension"></a>Nainstalovat rozšíření Azure Policy
@@ -64,13 +64,13 @@ K vyhodnocení prostředků a aliasů pro vyhledávání musíte být připojeni
 
      V rozšíření Azure Policy vyberte **Přihlásit se k Azure**.
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Snímek obrazovky s výběrem cloudového přihlášení Azure pro Visual Studio Code." border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Snímek obrazovky Visual Studio Code a ikona rozšíření Azure Policy" border="false":::
 
    - Paleta příkazů
 
-     V řádku nabídek přejděte na **Zobrazit**  >  **paleta příkazů**a zadejte **Azure: přihlásit**se.
+     V řádku nabídek přejděte na **Zobrazit**  >  **paleta příkazů** a zadejte **Azure: přihlásit** se.
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Snímek obrazovky s výběrem cloudového přihlášení Azure pro Visual Studio Code." border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Snímek možností přihlášení cloudu Azure pro Visual Studio Code z palety příkazů" border="false":::
 
 1. Postupujte podle pokynů pro přihlášení a přihlaste se k Azure. Po připojení se váš název účtu Azure zobrazí na stavovém řádku v dolní části okna Visual Studio Code.
 
@@ -82,11 +82,11 @@ Při prvním přihlášení se rozšíření Azure Policy načte jenom výchozí
 
    - Paleta příkazů: 
 
-     V řádku nabídek přejděte na **Zobrazit** > **paleta příkazů**a zadejte **Azure: Vyberte odběry**.
+     V řádku nabídek přejděte na **Zobrazit** > **paleta příkazů** a zadejte **Azure: Vyberte odběry**.
 
    - Zápatí okna
 
-     V zápatí okna v dolní části obrazovky vyberte segment, který odpovídá **Azure: \<your account\> **.
+     V zápatí okna v dolní části obrazovky vyberte segment, který odpovídá **Azure: \<your account\>**.
 
 1. K rychlému vyhledání předplatných podle názvu použijte pole filtru. Potom zaškrtněte nebo odstraňte kontrolu z každého předplatného a nastavte odběry zobrazené rozšířením Azure Policy. Až se dokončí přidávání nebo odebírání předplatných k zobrazení, vyberte **OK**.
 
@@ -111,7 +111,7 @@ Zákazníci se stovkami nebo tisíci prostředků v rámci jednoho předplatnéh
 
    - Paleta příkazů:
 
-     V řádku nabídek přejděte na **zobrazení** > **paleta příkazů**a zadejte **prostředky: Hledat prostředky**.
+     V řádku nabídek přejděte na **zobrazení** > **paleta příkazů** a zadejte **prostředky: Hledat prostředky**.
 
 1. Pokud je vybráno více než jedno předplatné k zobrazení, použijte filtr k výběru předplatného, které chcete vyhledat.
 
@@ -125,7 +125,7 @@ Pokud je vybrán prostředek, ať už prostřednictvím rozhraní vyhledávání
 
 Jakmile je prostředek otevřený, najeďte myší na Správce prostředků název vlastnosti nebo hodnota zobrazí alias Azure Policy, pokud jeden existuje. V tomto příkladu je prostředkem `Microsoft.Compute/virtualMachines` typ prostředku a vlastnost **. StorageProfile. element imagereference. Offer** je najetí myší. Při najetí myší se zobrazí vyhovující aliasy.
 
-:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Snímek obrazovky s výběrem cloudového přihlášení Azure pro Visual Studio Code." border="false":::
+:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Snímek obrazovky s příponou Azure Policy pro Visual Studio Code najetí myší na vlastnost, která zobrazuje názvy aliasů." border="false":::
 
 > [!NOTE]
 > Rozšíření VS Code zpřístupňuje pouze vlastnosti režimu Správce prostředků a nezobrazuje žádné vlastnosti [režimu poskytovatele prostředků](../concepts/definition-structure.md#mode) .
@@ -142,7 +142,7 @@ Rozšíření Azure Policy obsahuje seznam typů zásad a přiřazení zásad ja
 
    - Paleta příkazů:
 
-     V řádku nabídek přejděte na **Zobrazit** > **paleta příkazů**a zadejte **zásady: zásady hledání**.
+     V řádku nabídek přejděte na **Zobrazit** > **paleta příkazů** a zadejte **zásady: zásady hledání**.
 
 1. Pokud je vybráno více než jedno předplatné k zobrazení, použijte filtr k výběru předplatného, které chcete vyhledat.
 
@@ -199,7 +199,7 @@ Výsledky hodnocení poskytují informace o definici zásady a přiřazení zás
 
 ## <a name="sign-out"></a>Odhlásit se
 
-V řádku nabídek přejděte na **Zobrazit**  >  **paleta příkazů**a pak zadejte **Azure: odhlásit**se.
+V řádku nabídek přejděte na **Zobrazit**  >  **paleta příkazů** a pak zadejte **Azure: odhlásit** se.
 
 ## <a name="next-steps"></a>Další kroky
 

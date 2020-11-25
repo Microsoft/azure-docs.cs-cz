@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
 ms.openlocfilehash: b6cc89cb082cd0ed32abd88e3a6683c60a27ba90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742175"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023036"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>Klonování ze zálohy vašeho virtuálního pole StorSimple
 
@@ -33,12 +33,12 @@ Tento článek popisuje podrobný postup klonování zálohovací sady sdílený
 
 #### <a name="to-clone-a-share"></a>Naklonování sdílené složky
 
-1. Přejděte na okno **zařízení** . Vyberte zařízení a klikněte na něj a pak klikněte na **sdílené složky**. Vyberte sdílenou složku, kterou chcete klonovat, klikněte pravým tlačítkem na sdílenou složku a vyvolejte místní nabídku. Vyberte **klonovat**.
+1. Přejděte na okno **zařízení** . Vyberte zařízení a klikněte na něj a pak klikněte na **sdílené složky**. Vyberte sdílenou složku, kterou chcete klonovat, klikněte pravým tlačítkem na sdílenou složku a vyvolejte místní nabídku. Vyberte **Clone** (Klonovat).
    
    ![Klonování zálohy](./media/storsimple-virtual-array-clone/cloneshare1.png)
 2. V okně **klonovat** klikněte na **zálohovat > vyberte** a pak postupujte takto: 
    
-   a.    Vyfiltrujte v tomto zařízení zálohu na základě časového rozsahu. Můžete si vybrat z **posledních 7 dní**, **posledních 30 dní**a **minulého roku**.
+   a.    Vyfiltrujte v tomto zařízení zálohu na základě časového rozsahu. Můžete si vybrat z **posledních 7 dní**, **posledních 30 dní** a **minulého roku**.
    
    b.    V zobrazeném seznamu filtrovaných záloh vyberte zálohu, ze které chcete klonovat.
    
@@ -73,12 +73,12 @@ Pokud chcete klonovat ze zálohy, musíte v Azure Portal při klonování sdíle
 
 #### <a name="to-clone-a-volume"></a>Naklonování svazku
 
-1. Přejděte na okno **zařízení** . Vyberte zařízení a klikněte na něj a pak klikněte na **svazky**. Vyberte svazek, který chcete klonovat, klikněte pravým tlačítkem na svazek, aby se vyvolala kontextová nabídka. Vyberte **klonovat**.
+1. Přejděte na okno **zařízení** . Vyberte zařízení a klikněte na něj a pak klikněte na **svazky**. Vyberte svazek, který chcete klonovat, klikněte pravým tlačítkem na svazek, aby se vyvolala kontextová nabídka. Vyberte **Clone** (Klonovat).
    
    ![Klonování svazku](./media/storsimple-virtual-array-clone/clonevolume1.png)
 2. V okně **klonovat** klikněte na **zálohovat** a pak postupujte takto: 
    
-   a.    Vyfiltrujte v tomto zařízení zálohu na základě časového rozsahu. Můžete si vybrat z **posledních 7 dní**, **posledních 30 dní**a **minulého roku**. 
+   a.    Vyfiltrujte v tomto zařízení zálohu na základě časového rozsahu. Můžete si vybrat z **posledních 7 dní**, **posledních 30 dní** a **minulého roku**. 
    
    b.    V zobrazeném seznamu filtrovaných záloh vyberte zálohu, ze které chcete klonovat.
    
@@ -93,7 +93,7 @@ Pokud chcete klonovat ze zálohy, musíte v Azure Portal při klonování sdíle
    
    c. Typ svazku je automaticky nastaven na původní svazek. Vrstvený svazek je klonován jako vrstvený a místně připojený svazek jako připnuté místně.
    
-   d. Pro **připojené hostitele**klikněte na **Vybrat**.
+   d. Pro **připojené hostitele** klikněte na **Vybrat**.
    
    ![Klonovat svazek 3](./media/storsimple-virtual-array-clone/clonevolume4.png)
 4. V okně **připojení hostitelé** vyberte z existujícího ACR nebo přidejte nový ACR. Pokud chcete přidat nový ACR, budete muset zadat ACR název a hostitele IQN. Klikněte na **Vybrat**.

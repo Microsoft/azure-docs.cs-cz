@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: e66329b93ebd7d90258ab4670b77ca849a28189b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547992"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024057"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Vizualizace dat Apache Hive s využitím Microsoft Power BI a ODBC ve službě Azure HDInsight
 
@@ -28,7 +28,7 @@ V tomto článku načtete data z `hivesampletable` tabulky podregistru do Power 
 
 Tyto informace platí také pro nový typ clusteru [interaktivních dotazů](../interactive-query/apache-interactive-query-get-started.md) . Informace o tom, jak se připojit k interaktivnímu dotazu HDInsight pomocí přímých dotazů, najdete v tématu [vizualizace interaktivního dotazování dat v rámci služby Microsoft Power BI pomocí přímého dotazování ve službě Azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před provedením tohoto článku musíte mít následující položky:
 
@@ -46,27 +46,27 @@ Tabulka podregistru **hivesampletable** se dodává se všemi clustery HDInsight
 
 1. Spusťte Power BI Desktop.
 
-1. V horní nabídce přejděte na **Domů**  >  **získat data**  >  **Další..** ..
+1. V horní nabídce přejděte na **Domů**  >  **získat data**  >  **Další..**..
 
     ![Aplikace Power BI v HDInsight – otevřít data](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png)
 
 1. V dialogu **získat data** vyberte z levé strany možnost **jiné** , v pravém horním rohu vyberte **ODBC** a pak dole vyberte **připojit** .
 
-1. V dialogovém okně **z rozhraní ODBC** vyberte v rozevíracím seznamu název zdroje dat, který jste vytvořili v poslední části. Pak vyberte **OK** .
+1. V dialogovém okně **z rozhraní ODBC** vyberte v rozevíracím seznamu název zdroje dat, který jste vytvořili v poslední části. Pak vyberte **OK**.
 
-1. Pro první použití se otevře dialogové okno **ovladače ODBC** . V nabídce vlevo vyberte **výchozí nebo vlastní** . Pak vyberte **připojit** k otevření **navigátoru** .
+1. Pro první použití se otevře dialogové okno **ovladače ODBC** . V nabídce vlevo vyberte **výchozí nebo vlastní** . Pak vyberte **připojit** k otevření **navigátoru**.
 
-1. V dialogovém okně **navigátor** rozbalte položku **> > podregistru rozhraní ODBC** , vyberte možnost **hivesampletable** a pak vyberte **načíst** .
+1. V dialogovém okně **navigátor** rozbalte položku **> > podregistru rozhraní ODBC**, vyberte možnost **hivesampletable** a pak vyberte **načíst**.
 
 ## <a name="visualize-data"></a>Vizualizace dat
 
 Pokračujte od posledního postupu.
 
-1. V podokně vizualizace vyberte **Mapa** , jedná se o ikonu zeměkoule.
+1. V podokně vizualizace vyberte **Mapa**, jedná se o ikonu zeměkoule.
 
     ![Sestava přizpůsobení Power BI HDInsight](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-customize.png)
 
-1. V podokně **pole** vyberte Country ( **země** ) a **devicemake** (země). Data vykreslená na mapě vidíte.
+1. V podokně **pole** vyberte Country ( **země** ) a **devicemake**(země). Data vykreslená na mapě vidíte.
 
 1. Rozbalte mapu.
 

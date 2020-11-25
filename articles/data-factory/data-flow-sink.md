@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/17/2020
-ms.openlocfilehash: d45f5d5d1d61372ed959334519aa865c22d70748
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: fa048473f0f285b793dad88c7defdb6189ca1ccd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832479"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023002"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Transformace jímky v toku dat mapování
 
@@ -107,6 +107,10 @@ Ve výchozím nastavení jsou data zapisována do více umyvadel v nedeterminist
 ## <a name="error-row-handling"></a>Zpracování chybového řádku
 
 Při zápisu do databází může dojít k selhání některých řádků dat z důvodu omezení nastavených cílem. Ve výchozím nastavení selže spuštění toku dat při první chybě, kterou získá. V určitých konektorech můžete zvolit pokračování při **chybě** , která umožňuje dokončení toku dat, i když jednotlivé řádky obsahují chyby. V současné době je tato funkce dostupná pouze v Azure SQL Database. Další informace najdete v tématu [Chyba zpracování řádků v Azure SQL DB](connector-azure-sql-database.md#error-row-handling).
+
+Níže je uvedený video kurz o tom, jak se při transformaci jímky automaticky používá zpracování řádků chyb databáze.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4IWne]
 
 ## <a name="data-preview-in-sink"></a>Náhled dat v jímky
 

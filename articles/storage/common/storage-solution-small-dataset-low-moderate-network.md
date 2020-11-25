@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
 ms.openlocfilehash: f59d1e297ba4d7607d7abd07a78da4784f55d20f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792901"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023223"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Přenos dat malých datových sad s malou až střední šířkou pásma sítě
  
@@ -23,10 +23,10 @@ Přehled všech dostupných možností přenosu dat získáte, když přejdete n
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-Malé datové sady odkazují na velikosti dat v pořadí GB na několik TBs. Nízká až střední šířka pásma sítě znamená 45 MB/s (T3 připojení v datacentru) k 1 GB/s.
+Malé datové sady odkazují na velikosti dat v řádu GB až několik TB. Nízká až střední šířka pásma sítě znamená 45 Mb/s (připojení T3 v datacentru) až 1 Gb/s.
 
 - Pokud přenášíte pouze několik souborů a nemusíte provádět automatizaci přenosu dat, zvažte nástroje s grafickým rozhraním.
-- Pokud jste obeznámeni se správou systému, zvažte použití příkazového řádku nebo programových/skriptovacích nástrojů.
+- Pokud jste obeznámeni se správou systému, zvažte použití příkazového řádku, případně programových nebo skriptovacích nástrojů.
 
 ## <a name="recommended-options"></a>Doporučené možnosti
 
@@ -34,12 +34,12 @@ V tomto scénáři jsou doporučené tyto možnosti:
 
 - **Nástroje grafického rozhraní** , jako je například Průzkumník služby Azure Storage a Azure Storage v Azure Portal. Poskytují tak snadný způsob, jak zobrazit data a rychle přenést několik souborů.
 
-    - **Průzkumník služby Azure Storage** – tento nástroj pro různé platformy umožňuje spravovat obsah účtů úložiště Azure. Umožňuje nahrávat, stahovat a spravovat objekty blob, soubory, fronty, tabulky a Azure Cosmos DB entit. Použijte ho s úložištěm BLOB pro správu objektů BLOB a složek a také nahrávat a stahovat objekty blob mezi místním systémem souborů a úložištěm objektů BLOB nebo mezi účty úložiště.
-    - **Azure Portal** – Azure Storage v Azure Portal poskytuje webové rozhraní pro prozkoumávání souborů a nahrávání nových souborů po jednom. Tato možnost je vhodná, pokud nechcete instalovat žádné nástroje nebo příkazy pro vystavování, abyste mohli rychle prozkoumat vaše soubory, nebo jednoduše nahrát několiky nových.
+    - **Průzkumník služby Azure Storage** – tento nástroj pro různé platformy umožňuje spravovat obsah účtů úložiště Azure. Umožňuje nahrávat, stahovat a spravovat objekty blob, soubory, fronty, tabulky a entity služby Azure Cosmos DB. Při použití se službou Blob Storage umožňuje spravovat objekty blob a složky a také nahrávat a stahovat objekty blob mezi místním systémem souborů a službou Blob Storage nebo mezi účty úložiště.
+    - **Azure Portal** – Azure Storage v Azure Portal poskytuje webové rozhraní pro prozkoumávání souborů a nahrávání nových souborů po jednom. Tato možnost je vhodná v případě, že nechcete instalovat žádné nástroje ani vydávat příkazy, ale chcete pouze rychle procházet soubory nebo jednoduše nahrát pár nových.
 
 - **Skriptovací a programové nástroje** , jako je AzCopy/PowerShell, Azure CLI a rozhraní REST API Azure Storage.
 
-    - **AzCopy** – pomocí tohoto nástroje příkazového řádku můžete snadno kopírovat data z a do objektů blob, souborů a tabulkového úložiště Azure s optimálním výkonem. AzCopy podporuje souběžnost a paralelismus a možnost obnovit operace kopírování při přerušení.
+    - **AzCopy** – pomocí tohoto nástroje příkazového řádku můžete snadno kopírovat data z a do objektů blob, souborů a tabulkového úložiště Azure s optimálním výkonem. AzCopy podporuje souběžnost a paralelismus a možnost obnovení operací kopírování v případě přerušení.
     - **Azure PowerShell** – pro uživatele, kteří chtějí pracovat se správou systému, použijte modul Azure Storage v Azure PowerShell k přenosu dat.
     - **Azure CLI** – pomocí tohoto nástroje pro různé platformy spravujte služby Azure a nahrajte data do Azure Storage.
     - **Azure Storage rozhraní REST API/sady SDK** – při sestavování aplikace můžete aplikaci vyvíjet pro Azure Storage REST API/sady SDK a použít klientské knihovny Azure nabízené v několika jazycích.
@@ -49,16 +49,16 @@ V tomto scénáři jsou doporučené tyto možnosti:
 
 Následující tabulka shrnuje rozdíly v klíčových funkcích.
 
-| Doporučené | Průzkumník služby Azure Storage | Azure Portal | AzCopy<br>Azure PowerShell<br>Azure CLI | Rozhraní REST API nebo sady SDK pro Azure Storage |
+| Funkce | Azure Storage Explorer | portál Azure | AzCopy<br>Azure PowerShell<br>Azure CLI | Rozhraní REST API nebo sady SDK pro Azure Storage |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
 | Dostupnost | Stažení a instalace <br>Samostatný nástroj | Webové nástroje pro průzkum v Azure Portal | Nástroj příkazového řádku |Programovatelné rozhraní v jazycích .NET, Java, Python, JavaScript, C++, přejít, Ruby a PHP |
-| Grafické rozhraní | Ano | Ano | Ne | Ne |
+| Grafické rozhraní | Yes | Yes | No | No |
 | Podporované platformy | Windows, Mac, Linux | Založené na webu |Windows, Mac, Linux |Všechny platformy |
 | Povolené operace úložiště objektů BLOB<br>pro objekty BLOB a složky | Nahrávání<br>Stáhnout<br>Spravovat | Nahrávání<br>Stáhnout<br>Spravovat |Nahrávání<br>Stáhnout<br>Spravovat | Ano, přizpůsobit |
-| Povolené Data Lake Gen1 úložiště<br>operace se soubory a složkami | Nahrávání<br>Stáhnout<br>Spravovat | Ne |Nahrávání<br>Stáhnout<br>Spravovat                   | Ne |
+| Povolené Data Lake Gen1 úložiště<br>operace se soubory a složkami | Nahrávání<br>Stáhnout<br>Spravovat | No |Nahrávání<br>Stáhnout<br>Spravovat                   | No |
 | Povolené operace úložiště souborů<br>pro soubory a adresáře | Nahrávání<br>Stáhnout<br>Spravovat | Nahrávání<br>Stáhnout<br>Spravovat   |Nahrávání<br>Stáhnout<br>Spravovat | Ano, přizpůsobit |
-| Povolené operace úložiště tabulek<br>pro tabulky |Spravovat | Ne |Podpora tabulek v AzCopy v7 |Ano, přizpůsobit|
-| Povolené úložiště fronty | Spravovat | Ne  |Ne | Ano, je přizpůsobitelný|
+| Povolené operace úložiště tabulek<br>pro tabulky |Spravovat | No |Podpora tabulek v AzCopy v7 |Ano, přizpůsobit|
+| Povolené úložiště fronty | Spravovat | No  |No | Ano, je přizpůsobitelný|
 
 
 ## <a name="next-steps"></a>Další kroky

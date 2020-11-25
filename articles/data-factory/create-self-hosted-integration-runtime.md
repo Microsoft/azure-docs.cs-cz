@@ -10,13 +10,13 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
-ms.date: 06/09/2020
-ms.openlocfilehash: 80c837e640ef0d1739c329fb463e173e6c40be31
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.date: 11/25/2020
+ms.openlocfilehash: 22155083a71a9cbf615293a4f86a179aaefce2a9
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331430"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96023345"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místního prostředí Integration Runtime
 
@@ -150,7 +150,7 @@ Tady je souhrn kroků toku dat pro kopírování pomocí prostředí IR s místn
 - Využijte místní prostředí Integration runtime k podpoře integrace dat v rámci virtuální sítě Azure.
 - Považovat zdroj dat za místní zdroj dat, který je za bránou firewall, a to i v případě, že používáte Azure ExpressRoute. Pomocí místního prostředí Integration runtime připojte službu ke zdroji dat.
 - Využijte místní prostředí Integration runtime i v případě, že je úložiště dat v cloudu na virtuálním počítači infrastruktury Azure jako služba (IaaS).
-- Úlohy můžou selhat v místním prostředí Integration runtime, které jste nainstalovali na Windows Server, pro který je povolené šifrování kompatibilní se standardem FIPS. Pokud chcete tento problém obejít, máte dvě možnosti: uložení přihlašovacích údajů/tajných hodnot v Azure Key Vault nebo zakázání šifrování kompatibilního se standardem FIPS na serveru. Chcete-li zakázat šifrování kompatibilní se standardem FIPS, změňte hodnotu v následujícím podklíči registru z 1 (povoleno) na 0 (zakázáno): `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` .
+- Úlohy můžou selhat v místním prostředí Integration runtime, které jste nainstalovali na Windows Server, pro který je povolené šifrování kompatibilní se standardem FIPS. Pokud chcete tento problém obejít, máte dvě možnosti: uložení přihlašovacích údajů/tajných hodnot v Azure Key Vault nebo zakázání šifrování kompatibilního se standardem FIPS na serveru. Chcete-li zakázat šifrování kompatibilní se standardem FIPS, změňte hodnotu v následujícím podklíči registru z 1 (povoleno) na 0 (zakázáno): `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` . Pokud použijete místní [prostředí Integration runtime jako proxy pro SSIS Integration runtime](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis), může být povoleno šifrování kompatibilní se standardem FIPS a bude použito při přesunu dat z místního prostředí do Azure Blob Storage jako pracovní oblast.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -185,7 +185,7 @@ Místní prostředí Integration runtime můžete nainstalovat stažením balí�
 ## <a name="install-and-register-a-self-hosted-ir-from-microsoft-download-center"></a>Instalace a registrace místního prostředí IR z webu Microsoft Download Center
 
 1. Přejít na [stránku pro stažení modulu runtime integrace Microsoft](https://www.microsoft.com/download/details.aspx?id=39717).
-1. Vyberte **Stáhnout** , vyberte 64 verzi a vyberte **Další**. Verze 32 není podporována.
+1. Vyberte **Stáhnout**, vyberte 64 verzi a vyberte **Další**. Verze 32 není podporována.
 1. Spusťte soubor spravované identity přímo nebo ho uložte na pevný disk a spusťte ho.
 1. V **uvítacím** okně vyberte jazyk a vyberte **Další**.
 1. Přijměte licenční podmínky pro software společnosti Microsoft a klikněte na tlačítko **Další**.
@@ -239,7 +239,7 @@ Tady jsou požadavky na certifikát TLS/SSL, který používáte k zabezpečení
 
 - Certifikát musí být veřejně důvěryhodný certifikát x509 v3. Doporučujeme používat certifikáty, které jsou vydané certifikační autoritou (CA) veřejných partnerů.
 - Každý uzel Integration runtime musí důvěřovat tomuto certifikátu.
-- Nedoporučujeme používat certifikáty alternativních názvů subjektu (SAN), protože se používá jenom poslední položka sítě SAN. Všechny ostatní položky SAN se ignorují. Pokud máte například certifikát SAN, jehož sítě San jsou **node1.domain.contoso.com** a **node2.domain.contoso.com** , můžete tento certifikát použít pouze na počítači, jehož plně kvalifikovaný název domény (FQDN) je **node2.domain.contoso.com**.
+- Nedoporučujeme používat certifikáty alternativních názvů subjektu (SAN), protože se používá jenom poslední položka sítě SAN. Všechny ostatní položky SAN se ignorují. Pokud máte například certifikát SAN, jehož sítě San jsou **node1.domain.contoso.com** a **node2.domain.contoso.com**, můžete tento certifikát použít pouze na počítači, jehož plně kvalifikovaný název domény (FQDN) je **node2.domain.contoso.com**.
 - Certifikát může používat libovolnou velikost klíče podporovanou systémem Windows Server 2012 R2 pro certifikáty TLS/SSL.
 - Certifikáty, které používají klíče CNG, nejsou podporované.  
 
@@ -264,8 +264,8 @@ Pokud chcete zobrazit Úvod a ukázku této funkce, podívejte se na následují
 
 ### <a name="terminology"></a>Terminologie
 
-- **Shared IR** : původní prostředí IR v místním prostředí, které běží na fyzické infrastruktuře.  
-- **Propojený IR** : IR, který odkazuje na jiný sdílený IR. Propojený IR je logický IR a používá infrastrukturu jiného sdíleného prostředí IR v místním prostředí.
+- **Shared IR**: původní prostředí IR v místním prostředí, které běží na fyzické infrastruktuře.  
+- **Propojený IR**: IR, který odkazuje na jiný sdílený IR. Propojený IR je logický IR a používá infrastrukturu jiného sdíleného prostředí IR v místním prostředí.
 
 ### <a name="methods-to-share-a-self-hosted-integration-runtime"></a>Metody pro sdílení prostředí Integration runtime v místním prostředí
 
@@ -351,9 +351,9 @@ Při nakonfigurovaném prostředí Integration runtime v místním prostředí p
 
 Existují tři možnosti konfigurace:
 
-- **Nepoužívat proxy** : místní prostředí Integration runtime explicitně nepoužívá žádný proxy server pro připojení ke cloudovým službám.
-- **Použít systémový proxy server** : modul Integration runtime v místním prostředí používá nastavení proxy, které je nakonfigurované v diahost.exe.config a diawp.exe.config. Pokud tyto soubory neobsahují konfiguraci proxy serveru, místní prostředí Integration runtime se ke cloudové službě připojuje přímo bez serveru proxy.
-- **Použití vlastního proxy serveru** : Nakonfigurujte nastavení proxy serveru http tak, aby se používalo pro místní prostředí Integration runtime, namísto použití konfigurací v diahost.exe.config a diawp.exe.config. **Adresy** a hodnoty **portů** jsou povinné. Hodnoty **uživatelského jména** a **hesla** jsou volitelné, v závislosti na nastavení ověřování proxy serveru. Všechna nastavení jsou šifrovaná pomocí rozhraní Windows DPAPI v místním prostředí Integration runtime a uložená místně na počítači.
+- **Nepoužívat proxy**: místní prostředí Integration runtime explicitně nepoužívá žádný proxy server pro připojení ke cloudovým službám.
+- **Použít systémový proxy server**: modul Integration runtime v místním prostředí používá nastavení proxy, které je nakonfigurované v diahost.exe.config a diawp.exe.config. Pokud tyto soubory neobsahují konfiguraci proxy serveru, místní prostředí Integration runtime se ke cloudové službě připojuje přímo bez serveru proxy.
+- **Použití vlastního proxy serveru**: Nakonfigurujte nastavení proxy serveru http tak, aby se používalo pro místní prostředí Integration runtime, namísto použití konfigurací v diahost.exe.config a diawp.exe.config. **Adresy** a hodnoty **portů** jsou povinné. Hodnoty **uživatelského jména** a **hesla** jsou volitelné, v závislosti na nastavení ověřování proxy serveru. Všechna nastavení jsou šifrovaná pomocí rozhraní Windows DPAPI v místním prostředí Integration runtime a uložená místně na počítači.
 
 Po uložení aktualizovaných nastavení proxy serveru se služba Host prostředí Integration runtime automaticky restartuje.
 

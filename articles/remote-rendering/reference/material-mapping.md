@@ -6,11 +6,11 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
 ms.openlocfilehash: 8313243bf680ea1a1d63f2719b647149a04935a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88893083"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024040"
 ---
 # <a name="material-mapping-for-model-formats"></a>Mapování materiálu pro formáty modelů
 
@@ -47,7 +47,7 @@ Každá textura v glTF může mít `texCoord` hodnotu, která je také podporov�
 
 ### <a name="embedded-textures"></a>Vložené textury
 
-Podporují se textury vložené do souborů * \* . bin* nebo * \* . glb* .
+Podporují se textury vložené do souborů *\* . bin* nebo *\* . glb* .
 
 ### <a name="supported-gltf-extension"></a>Podporované rozšíření glTF
 
@@ -164,7 +164,7 @@ IF `TransparencyFactor` , then `AlbedoAlpha` = 1,0- `TransparencyFactor`
 
 Konečná `Albedo` Barva má čtyři kanály a kombinaci `AlbedoRGB` s `AlbedoAlpha` .
 
-### <a name="summary"></a>Shrnutí
+### <a name="summary"></a>Souhrn
 
 Pokud je zde shrnuto, `Albedo` bude se velmi blízko původní `Diffuse` , pokud `Specular` bude téměř nula. V opačném případě bude povrch vypadat jako kovový povrch a ztratí barvu difúze. Povrch se bude podobat a odrazit, pokud `ShininessExponent` je dostatečně velký a `Specular` jasný. V opačném případě bude plocha vypadat hrubě a zlomek odráží prostředí.
 

@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: 4fea7719d0aa375aad3d2795d240006222b6486c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535089"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022696"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Řešení potíží s pomalou úlohou na clusteru HDInsight nebo jejím selháním
 
@@ -115,7 +115,7 @@ Následující části popisují, jak kontrolovat stav jednotlivých uzlů a cel
 
 ### <a name="check-your-webhcat-service"></a>Podívejte se na službu WebHCat
 
-Jednou z běžných scénářů pro Apache Hive, Apache Vepřu nebo Sqoop úlohy Apache je selhání služby [WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (nebo *Templeton* ). WebHCat je rozhraní REST pro vzdálené spuštění úlohy, jako je například podregistr, prase, SCOOP a MapReduce. WebHCat překládá žádosti o odeslání úlohy na Apache Hadoop PŘÍZové aplikace a vrátí stav odvozený ze stavu aplikace PŘÍZe.  Následující části popisují běžné WebHCat stavové kódy HTTP.
+Jednou z běžných scénářů pro Apache Hive, Apache Vepřu nebo Sqoop úlohy Apache je selhání služby [WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (nebo *Templeton*). WebHCat je rozhraní REST pro vzdálené spuštění úlohy, jako je například podregistr, prase, SCOOP a MapReduce. WebHCat překládá žádosti o odeslání úlohy na Apache Hadoop PŘÍZové aplikace a vrátí stav odvozený ze stavu aplikace PŘÍZe.  Následující části popisují běžné WebHCat stavové kódy HTTP.
 
 #### <a name="badgateway-502-status-code"></a>BadGateway (Stavový kód 502)
 
@@ -172,7 +172,7 @@ Na úrovni PŘÍZe existují dva typy časových limitů:
 
     Pokud otevřete `/var/log/webhcat/webhcat.log` soubor protokolu a vyhledáte "úloha zařazená do fronty", může se zobrazit více položek, kde doba provádění je příliš dlouhá (>2000 MS), s položkami, které zobrazují zvýšení čekací doby.
 
-    Čas úloh ve frontě se dál zvyšuje, protože frekvence, s jakou se nové úlohy odesílají, je vyšší než frekvence, s jakou jsou staré úlohy dokončené. Jakmile se použije paměť PŘÍZe 100%, *fronta joblauncher* už nemůže půjčit kapacitu z *výchozí fronty* . Proto nelze do fronty joblauncher přijmout žádné další nové úlohy. To může způsobit, že čas čekání bude trvat déle a déle, což způsobí chybu vypršení časového limitu, která obvykle následuje po mnoha dalších.
+    Čas úloh ve frontě se dál zvyšuje, protože frekvence, s jakou se nové úlohy odesílají, je vyšší než frekvence, s jakou jsou staré úlohy dokončené. Jakmile se použije paměť PŘÍZe 100%, *fronta joblauncher* už nemůže půjčit kapacitu z *výchozí fronty*. Proto nelze do fronty joblauncher přijmout žádné další nové úlohy. To může způsobit, že čas čekání bude trvat déle a déle, což způsobí chybu vypršení časového limitu, která obvykle následuje po mnoha dalších.
 
     Na následujícím obrázku je znázorněná fronta joblauncher na 714,4%, která se používá. To je přijatelné, pokud je stále volná kapacita výchozí fronty k vypůjčení. Pokud je ale cluster plně využíván a paměť PŘÍZe je na 100% kapacitě, musí nové úlohy počkat, což nakonec způsobí vypršení časového limitu.
 
@@ -206,7 +206,7 @@ Diagnostikujte tyto problémy:
 
 ## <a name="step-4-review-the-environment-stack-and-versions"></a>Krok 4: Kontrola zásobníku prostředí a verzí
 
-Stránka zásobník uživatelského rozhraní **a verze** Ambari poskytuje informace o konfiguraci služby Cluster Services a historii verzí služby.  Nesprávná verze knihovny služby Hadoop může způsobovat selhání clusteru.  V uživatelském rozhraní Ambari vyberte nabídku **správce** a pak nastavte  **zásobníky a verze** .  Na stránce vyberte kartu **verze** , kde najdete informace o verzi služby:
+Stránka zásobník uživatelského rozhraní **a verze** Ambari poskytuje informace o konfiguraci služby Cluster Services a historii verzí služby.  Nesprávná verze knihovny služby Hadoop může způsobovat selhání clusteru.  V uživatelském rozhraní Ambari vyberte nabídku **správce** a pak nastavte  **zásobníky a verze**.  Na stránce vyberte kartu **verze** , kde najdete informace o verzi služby:
 
 ![Stack a verze Apache Ambari](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
 

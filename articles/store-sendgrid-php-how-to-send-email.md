@@ -16,16 +16,16 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
 ms.openlocfilehash: b3a9fee09d1eac6fb4d716af83c348cb2c21f7a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67870914"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023784"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>Jak používat e-mailovou službu SendGrid z PHP
 
 Tato příručka ukazuje, jak provádět běžné programovací úlohy pomocí e-mailové služby SendGrid v Azure. Ukázky jsou napsány v PHP.
-Mezi zahrnuté scénáře patří **vytváření e-mailů**, **posílání e-mailů**a **přidávání příloh**. Další informace o SendGrid a odesílání e-mailů najdete v části [Další kroky](#next-steps) .
+Mezi zahrnuté scénáře patří **vytváření e-mailů**, **posílání e-mailů** a **přidávání příloh**. Další informace o SendGrid a odesílání e-mailů najdete v části [Další kroky](#next-steps) .
 
 ## <a name="what-is-the-sendgrid-email-service"></a>Co je e-mailová služba SendGrid?
 SendGrid je [Cloudová e-mailová služba] , která poskytuje spolehlivé zasílání [transakčních e-mailů], škálovatelnost a analýzy v reálném čase spolu s flexibilními rozhraními API, která usnadňují vlastní integraci. Mezi běžné scénáře použití SendGrid patří:

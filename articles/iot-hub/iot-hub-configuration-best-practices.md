@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
 ms.openlocfilehash: 8a39c2b06ca8a0f852891acb60ba199fc2c6db5c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92142656"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024125"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Osvědčené postupy pro konfiguraci zařízení v rámci řešení IoT
 
@@ -78,7 +78,7 @@ Níže jsou uvedené osvědčené postupy pro operátory řešení IoT, kteří 
 
 * **Uspořádat zařízení pro správu:** Řešení IoT by mělo definovat nebo umožňovat vytváření kanálů kvality nebo jiných sad zařízení na základě různých strategií nasazení, jako je například kanárskéie. Sady zařízení se použijí k zavedení změn konfigurace a k provádění dalších operací správy zařízení v rámci škálování.
 
-* **Provádět změny konfigurace pomocí postupného zavedení:**  Postupná zavedení je celkový proces, při kterém operátor nasadí změny do rozšiřování sady zařízení IoT. Cílem je udělat postupně změny, abyste snížili riziko, že dojde k zásadním změnám v rámci škálování.Operátor by měl použít rozhraní řešení k vytvoření [automatické konfigurace zařízení](./iot-hub-automatic-device-management.md) a podmínka cílení by měla cílit na počáteční sadu zařízení (například na skupinu pro Kanárské). Operátor by pak měl ověřit změnu konfigurace v počáteční sadě zařízení.
+* **Provádět změny konfigurace pomocí postupného zavedení:**  Postupná zavedení je celkový proces, při kterém operátor nasadí změny do rozšiřování sady zařízení IoT. Cílem je udělat postupně změny, abyste snížili riziko, že dojde k zásadním změnám v rámci škálování.  Operátor by měl použít rozhraní řešení k vytvoření [automatické konfigurace zařízení](./iot-hub-automatic-device-management.md) a podmínka cílení by měla cílit na počáteční sadu zařízení (například na skupinu pro Kanárské). Operátor by pak měl ověřit změnu konfigurace v počáteční sadě zařízení.
 
    Po dokončení ověření bude operátor aktualizovat automatickou konfiguraci zařízení tak, aby zahrnoval větší sadu zařízení. Operátor by měl také nastavit prioritu konfigurace, která bude vyšší než jiné konfigurace, které jsou aktuálně cílem těchto zařízení. Zavedení se dá monitorovat pomocí metrik vykázaných automatickou konfigurací zařízení.
 

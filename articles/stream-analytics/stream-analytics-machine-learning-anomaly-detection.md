@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.openlocfilehash: c57a3920dac3e18e248109fafdf61fdfa871c54d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123706"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023393"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Detekce anomálií v Azure Stream Analytics
 
@@ -114,9 +114,9 @@ FROM AnomalyDetectionStep
 
 Výkon těchto modelů závisí na velikosti historie, trvání okna, zatížení události a na tom, zda je použito dělení na úrovni funkcí. Tato část pojednává o těchto konfiguracích a obsahuje ukázky, jak tolerovat rychlosti přijímání 1 tisíc, 5K a 10 000 událostí za sekundu.
 
-* **Velikost historie** – tyto modely fungují lineárně s **velikostí historie** . Čím dál je velikost historie, tím déle bude trvat, než se v modelu vyhodnotí nová událost. Je to proto, že modely porovnávají novou událost s každou poslední událostí ve vyrovnávací paměti historie.
+* **Velikost historie** – tyto modely fungují lineárně s **velikostí historie**. Čím dál je velikost historie, tím déle bude trvat, než se v modelu vyhodnotí nová událost. Je to proto, že modely porovnávají novou událost s každou poslední událostí ve vyrovnávací paměti historie.
 * **Doba trvání okna** – **Doba trvání okna** by měla odrážet, jak dlouho trvá přijímání tolika událostí, kolik je určeno velikostí historie. Bez tohoto počtu událostí v okně Azure Stream Analytics by nedošlo ke imputaci chybějících hodnot. Proto je spotřeba procesoru funkcí velikosti historie.
-* **Zatížení událostí** – větší **zatížení události** , více práce prováděné modely, které mají dopad na spotřebu procesoru. Úlohu je možné škálovat tak, že ji zpracovatelné paralelně, což předpokládá, že obchodní logika bude používat víc vstupních oddílů.
+* **Zatížení událostí** – větší **zatížení události**, více práce prováděné modely, které mají dopad na spotřebu procesoru. Úlohu je možné škálovat tak, že ji zpracovatelné paralelně, což předpokládá, že obchodní logika bude používat víc vstupních oddílů.
 * Dělení na úrovni **funkcí**  -  **Dělení na úrovni funkcí** se provádí pomocí ```PARTITION BY``` volání funkce detekce anomálií. Tento typ dělení přináší režii, protože stav musí být udržován pro více modelů současně. Dělení na úrovni funkcí se používá ve scénářích, jako je vytváření oddílů na úrovni zařízení.
 
 ### <a name="relationship"></a>Relace
@@ -152,7 +152,7 @@ Vzorový kód pro spuštění výše uvedených konfigurací, které nejsou rozd
 > Pokud chcete přesnější odhad, přizpůsobte si ukázky podle svého scénáře.
 
 ### <a name="identifying-bottlenecks"></a>Identifikace kritických bodů
-Pomocí podokna metrik v Azure Stream Analytics úlohy můžete identifikovat kritická místa ve vašem kanálu. Zkontrolujte **vstupní/výstupní události** pro propustnost a ["zpoždění vodoznaku"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) nebo **nevyřízené události** , abyste viděli, jestli úloha nepracuje se vstupní sazbou. V případě metrik centra událostí vyhledejte **omezené požadavky** a odpovídajícím způsobem upravte prahové jednotky. V případě Cosmos DB metriky si přečtěte **maximální počet spotřebovaných ru/s na rozsah klíče oddílu** propustnost, abyste zajistili, že rozsahy klíčů oddílu budou jednotně spotřebovány. V případě služby Azure SQL DB Sledujte **protokol IO** a **CPU** .
+Pomocí podokna metrik v Azure Stream Analytics úlohy můžete identifikovat kritická místa ve vašem kanálu. Zkontrolujte **vstupní/výstupní události** pro propustnost a ["zpoždění vodoznaku"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) nebo **nevyřízené události** , abyste viděli, jestli úloha nepracuje se vstupní sazbou. V případě metrik centra událostí vyhledejte **omezené požadavky** a odpovídajícím způsobem upravte prahové jednotky. V případě Cosmos DB metriky si přečtěte **maximální počet spotřebovaných ru/s na rozsah klíče oddílu** propustnost, abyste zajistili, že rozsahy klíčů oddílu budou jednotně spotřebovány. V případě služby Azure SQL DB Sledujte **protokol IO** a **CPU**.
 
 ## <a name="next-steps"></a>Další kroky
 

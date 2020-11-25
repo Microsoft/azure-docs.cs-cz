@@ -11,11 +11,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d3f6a48815519499ddc39dcc12cafe0fe95e70e0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320231"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023801"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformy a nástroje pro projekty pro datové vědy
 
@@ -108,7 +108,7 @@ Tým TDSP od Microsoftu publikoval dva komplexní návody, které ukazují, jak 
 
 ### <a name="install-git-credential-manager-on-windows"></a>Instalace správce přihlašovacích údajů Git ve Windows
 
-Pokud používáte TDSP ve **Windows** , musíte si nainstalovat **Git Credential Manager (GCM)** , abyste mohli komunikovat s úložišti Git. Abyste mohli nainstalovat GCM, musíte nejdřív nainstalovat **Chocolaty**. Pokud chcete nainstalovat Chocolaty a GCM, spusťte v prostředí Windows PowerShell následující příkazy jako **správce** :  
+Pokud používáte TDSP ve **Windows**, musíte si nainstalovat **Git Credential Manager (GCM)** , abyste mohli komunikovat s úložišti Git. Abyste mohli nainstalovat GCM, musíte nejdřív nainstalovat **Chocolaty**. Pokud chcete nainstalovat Chocolaty a GCM, spusťte v prostředí Windows PowerShell následující příkazy jako **správce**:  
 
 ```powershell
 iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex

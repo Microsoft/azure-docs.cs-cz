@@ -12,11 +12,11 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: bc615322c11a456699d2364cf44cad40e086e851
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517882"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022475"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Použití Azure Functions ke správě výpočetních prostředků ve fondu SQL Azure synapse Analytics
 
@@ -139,7 +139,7 @@ Tato část stručně popisuje, co je potřeba k tomu, aby bylo možné získat 
 
 Denní horizontální navýšení kapacity 8:00 do DW600c a horizontální snížení kapacity na úrovni 8pm až DW200c.
 
-| Function  | Plán     | Operace                                |
+| Funkce  | Plán     | Operace                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Funkce1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600c"}` |
 | Funkce2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200c"}` |
@@ -148,7 +148,7 @@ Denní horizontální navýšení kapacity 8:00 do DW600c a horizontální sní�
 
 Denní horizontální navýšení kapacity 8:00 na DW1000c, horizontální snížení kapacity na 16:00 a horizontální snížení kapacity na 10pm.
 
-| Function  | Plán     | Operace                                |
+| Funkce  | Plán     | Operace                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Funkce1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000c"}` |
 | Funkce2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600c"}` |
@@ -158,7 +158,7 @@ Denní horizontální navýšení kapacity 8:00 na DW1000c, horizontální sní�
 
 Horizontální navýšení kapacity 8:00 na DW1000c, horizontální navýšení kapacity DW600c v pracovních dnech v 16:00. Pozastavení v pátek ve 23:00 a obnovení v pondělí v 7:00 ráno.
 
-| Function  | Plán       | Operace                                |
+| Funkce  | Plán       | Operace                                |
 | :-------- | :------------- | :--------------------------------------- |
 | Funkce1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000c"}` |
 | Funkce2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600c"}` |

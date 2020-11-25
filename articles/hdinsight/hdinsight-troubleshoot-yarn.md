@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: b8dc63030c6791779ad90500747e4e2f5c4ffeef
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288983"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022662"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hadoop YARN pomocí služby Azure HDInsight
 
@@ -24,7 +24,7 @@ Přečtěte si o hlavních problémech a jejich řešení při práci s Apache H
 
 Pomocí následujících kroků v Ambari vytvořte novou frontu PŘÍZe a pak vyvážit přidělení kapacity mezi všemi frontami.
 
-V tomto příkladu se obě existující fronty ( **výchozí** a **thriftsvr** ) změnily z 50% kapacity na 25% kapacity, což dává novou kapacitu queue (Spark) 50%.
+V tomto příkladu se obě existující fronty (**výchozí** a **thriftsvr**) změnily z 50% kapacity na 25% kapacity, což dává novou kapacitu queue (Spark) 50%.
 
 | Fronta | Kapacita | Maximální kapacita |
 | --- | --- | --- |
@@ -129,7 +129,7 @@ Tyto změny jsou okamžitě viditelné v uživatelském rozhraní plánovače P�
 
     Tento příkaz vytvoří soubor protokolu s názvem containerlogs.txt.
 
-### <a name="additional-reading"></a><a name="additional-reading-2"></a>Další materiály ke čtení
+### <a name="additional-reading"></a><a name="additional-reading-2"></a>Další čtení
 
 - [Připojení k HDInsight (Apache Hadoop) pomocí SSH](./hdinsight-hadoop-linux-use-ssh-unix.md)
 - [Apache Hadoop koncepce a aplikace PŘÍZe](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
