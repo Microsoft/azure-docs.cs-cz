@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: f2417389de98f9998c189e7cbbbcdae77fbb8840
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075055"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020700"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Jak nakonfigurovat a spustit úlohy po spuštění pro cloudovou službu
 Úlohy po spuštění můžete použít k provádění operací před spuštěním role. Operace, které můžete chtít provést, zahrnují instalaci komponenty, registraci komponent modelu COM, nastavení klíčů registru nebo spuštění dlouhotrvajícího procesu.
@@ -54,7 +54,7 @@ Následuje seznam spouštěcí procedury role v Azure:
 ## <a name="example-of-a-startup-task"></a>Příklad úlohy po spuštění
 Úlohy po spuštění jsou definovány v souboru [ServiceDefinition. csdef] v elementu **Task** . Atribut **CommandLine** Určuje název a parametry spouštěcího dávkového souboru nebo konzoly příkazového řádku, atribut **ExecutionContext** určuje úroveň oprávnění úlohy po spuštění a atribut **taskType** určuje, jak bude úkol proveden.
 
-V tomto příkladu je pro úlohu po spuštění vytvořena proměnná prostředí **MyVersionNumber**a je nastavena na hodnotu**1.0.0.0**.
+V tomto příkladu je pro úlohu po spuštění vytvořena proměnná prostředí **MyVersionNumber** a je nastavena na hodnotu **1.0.0.0**.
 
 **ServiceDefinition. csdef**:
 
@@ -154,9 +154,9 @@ Naučte se provádět některé [běžné úlohy po spuštění](cloud-services-
 [Zabalit](cloud-services-model-and-package.md) cloudovou službu.  
 
 [ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
-[Úloha]: /previous-versions/azure/reference/gg557552(v=azure.100)#Task
+[Úkol]: /previous-versions/azure/reference/gg557552(v=azure.100)#Task
 [Spuštění]: /previous-versions/azure/reference/gg557552(v=azure.100)#Startup
-[Modul runtime]: /previous-versions/azure/reference/gg557552(v=azure.100)#Runtime
+[Runtime (Modul runtime)]: /previous-versions/azure/reference/gg557552(v=azure.100)#Runtime
 [Prostředí]: /previous-versions/azure/reference/gg557552(v=azure.100)#Environment
 [Proměnná]: /previous-versions/azure/reference/gg557552(v=azure.100)#Variable
 [RoleInstanceValue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue

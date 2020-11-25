@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/04/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 16c1dec9e52be98e5b4e0103a583bdc219bc2417
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6a16106495e584c9acbc02d380242df665f35ce5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88031773"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019992"
 ---
 ## <a name="push-image-to-registry"></a>Odeslání image do registru
 
@@ -23,7 +23,7 @@ Pokud chcete nasdílet image do služby Azure Container Registry, musíte nejprv
 docker pull hello-world
 ```
 
-Před nahráním image do registru je nutné ji označit pomocí plně kvalifikovaného názvu přihlašovacího serveru registru. Název přihlašovacího serveru je ve formátu * \<registry-name\> . azurecr.IO* (malá písmena), například *mycontainerregistry.azurecr.IO*.
+Před nahráním image do registru je nutné ji označit pomocí plně kvalifikovaného názvu přihlašovacího serveru registru. Název přihlašovacího serveru je ve formátu *\<registry-name\> . azurecr.IO* (musí být malými písmeny), například *mycontainerregistry.azurecr.IO*.
 
 Označte image pomocí příkazu [docker tag][docker-tag]. Nahraďte `<login-server>` názvem přihlašovacího serveru vaší instance ACR.
 

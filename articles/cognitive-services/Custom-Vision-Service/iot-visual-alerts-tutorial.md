@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 833ec0f706786ebb86a54fb3c5b13d9c6e5c6062
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: c6405e2fcddef9ae3228ede76dfa57f7542164c8
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616225"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96020172"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Kurz: použití Custom Vision se zařízením IoT k hlášení vizuálních stavů
 
@@ -47,16 +47,16 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 Aplikace pro vizuální výstrahy IoT se spouští v souvislé smyčce, přičemž podle potřeby přepíná mezi čtyřmi různými stavy:
 
-* **Žádný model** : stav no-op. Aplikace se nepřetržitě dokončí po dobu jedné sekundy a zkontroluje kameru.
-* **Zachytávání školicích imagí** : v tomto stavu aplikace zachytí obrázek a nahraje ho jako školicí obrázek do cílového Custom Vision projektu. Aplikace se pak přejde do režimu spánku po 500 ms a operace se opakuje, dokud se nezachytí cílový počet imagí. Potom aktivuje školení modelu Custom Vision.
-* **Čekání na vyškolený model** : v tomto stavu aplikace volá rozhraní API Custom Vision každou sekundu, aby zkontrolovala, jestli cílový projekt obsahuje proškolenou iteraci. Když ho najde, stáhne odpovídající model ONNX do místního souboru a přepne do stavu **bodování** .
-* **Bodování** : v tomto stavu aplikace používá Windows ml k vyhodnocení jednoho snímku z fotoaparátu proti místnímu ONNX modelu. Výsledná klasifikace obrázku se zobrazí na obrazovce a odešle se jako zpráva do IoT Hub. Aplikace se pak před vyhodnocením nové image do režimu spánku za jednu sekundu.
+* **Žádný model**: stav no-op. Aplikace se nepřetržitě dokončí po dobu jedné sekundy a zkontroluje kameru.
+* **Zachytávání školicích imagí**: v tomto stavu aplikace zachytí obrázek a nahraje ho jako školicí obrázek do cílového Custom Vision projektu. Aplikace se pak přejde do režimu spánku po 500 ms a operace se opakuje, dokud se nezachytí cílový počet imagí. Potom aktivuje školení modelu Custom Vision.
+* **Čekání na vyškolený model**: v tomto stavu aplikace volá rozhraní API Custom Vision každou sekundu, aby zkontrolovala, jestli cílový projekt obsahuje proškolenou iteraci. Když ho najde, stáhne odpovídající model ONNX do místního souboru a přepne do stavu **bodování** .
+* **Bodování**: v tomto stavu aplikace používá Windows ml k vyhodnocení jednoho snímku z fotoaparátu proti místnímu ONNX modelu. Výsledná klasifikace obrázku se zobrazí na obrazovce a odešle se jako zpráva do IoT Hub. Aplikace se pak před vyhodnocením nové image do režimu spánku za jednu sekundu.
 
 ## <a name="examine-the-code-structure"></a>Kontrola struktury kódu
 
 Následující soubory zpracovávají hlavní funkce aplikace.
 
-| Soubor | Popis |
+| Soubor | Description |
 |-------------|-------------|
 | [MainPage. XAML](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml) | Tento soubor definuje uživatelské rozhraní XAML. Je hostitelem ovládacího prvku webové kamery a obsahuje popisky používané pro aktualizace stavu.|
 | [MainPage.xaml.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml.cs) | Tento kód řídí chování uživatelského rozhraní XAML. Obsahuje kód pro zpracování stavového stroje.|
@@ -108,7 +108,7 @@ Postup opakování tohoto procesu ve vlastním scénáři:
 1. Vyhledejte cílový projekt, který by teď měl mít všechny školicí materiály, které nahrála aplikace.
 1. U každého vizuálního stavu, který chcete identifikovat, vyberte příslušné bitové kopie a ručně použijte značku.
     * Například pokud váš cíl rozlišuje mezi prázdnou místností a místností s lidmi, doporučujeme označit pět nebo více obrázků s lidmi jako novou třídu, **lidi** a označením pěti nebo více obrázků, aniž by bylo nutné používat jako **zápornou** značku. To vám pomůže model odlišit mezi oběma stavy.
-    * Dalším příkladem je, že pokud máte v cíli přibližný způsob, jakým je plná police, můžete použít značky jako **EmptyShelf** , **PartiallyFullShelf** a **FullShelf**.
+    * Dalším příkladem je, že pokud máte v cíli přibližný způsob, jakým je plná police, můžete použít značky jako **EmptyShelf**, **PartiallyFullShelf** a **FullShelf**.
 1. Až budete hotovi, vyberte tlačítko **výuka** .
 1. Po dokončení školení aplikace zjistí, že je k dispozici vyškolená iterace. Spustí proces exportu trained model, který ONNX a stáhne do zařízení.
 

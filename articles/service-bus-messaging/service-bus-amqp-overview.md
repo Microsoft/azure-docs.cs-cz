@@ -3,12 +3,12 @@ title: Přehled AMQP 1,0 v Azure Service Bus
 description: Přečtěte si, jak Azure Service Bus podporuje rozšířený protokol řízení front zpráv (AMQP) (AMQP), což je otevřený standardní protokol.
 ms.topic: article
 ms.date: 11/20/2020
-ms.openlocfilehash: a643869d7d89b287e899b1eab89c5b9ec11856e5
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: 85943344fd8f20cf3a73af5d637b65676584f93f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95396803"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96022166"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Podpora AMQP 1,0 v Service Bus
 Cloudová služba Azure Service Bus jako svůj primární způsob komunikace používá [Rozšířený Protokol AMQP (Message Queueing Protocol) 1,0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) . Společnost Microsoft spolupracuje s partnery v celém odvětví, od zákazníků a dodavatelů konkurenčních zprostředkovatelů zasílání zpráv, aby bylo možné vyvíjet a vyvíjet AMQP za poslední desetiletí, a to s novými rozšířeními vyvinutými v [technickém výboru Oasis AMQP](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp). AMQP 1,0 je standard ISO a IEC ([iso 19464:20149](https://www.iso.org/standard/64955.html)). 
@@ -70,22 +70,13 @@ Všechny podporované Service Bus klientské knihovny dostupné prostřednictví
 - [Azure Service Bus moduly pro JavaScript a TypeScript](https://docs.microsoft.com/javascript/api/overview/azure/service-bus?view=azure-node-latest&preserve-view=true)
 - [Knihovny Azure Service Bus pro Python](https://docs.microsoft.com/python/api/overview/azure/servicebus?view=azure-python&preserve-view=true)
 
+[!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
+
 Kromě toho můžete Service Bus použít z libovolného zásobníku protokolu kompatibilního s AMQP 1,0:
 
-| Jazyk | Knihovna |
-| --- | --- |
-| Java | [Apache Qpid Proton-J](https://qpid.apache.org/proton/index.html) |
-| C/C++ |[Azure UAMQP C](https://github.com/azure/azure-uamqp-c/), [Apache Qpid Proton-C](https://qpid.apache.org/proton/index.html) |
-| Python |[Azure uAMQP pro Python](https://github.com/azure/azure-uamqp-python/), [Apache Qpid Proton Python](https://qpid.apache.org/releases/qpid-proton-0.32.0/proton/python/docs/overview.html) |
-| PHP | [Azure uAMQP pro PHP](https://github.com/vsouz4/azure-uamqp-php/) |
-| Ruby | [Apache Qpid Proton Ruby](https://github.com/apache/qpid-proton/tree/master/ruby) |
-| Přejít | [Azure přejít na AMQP](https://github.com/Azure/go-amqp), [Apache Qpid Proton přejít](https://github.com/apache/qpid-proton/tree/master/go/examples)
-| C#/F #/VB | [AMQP .NET Lite](https://github.com/Azure/amqpnetlite), [Apache NMS AMQP](https://github.com/apache/activemq-nms-amqp)|
-| JavaScript/uzel | [Rhea](https://github.com/grs/rhea) |
+[!INCLUDE [messaging-oss-amqp-stacks.md](../../includes/messaging-oss-amqp-stacks.md)]
 
-**Obrázek 2: tabulka klientských knihoven AMQP 1,0**
-
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 * AMQP 1,0 je otevřený a spolehlivý protokol pro zasílání zpráv, který můžete použít k vytváření hybridních aplikací pro různé platformy. AMQP 1,0 je OASIS Standard.
 
 ## <a name="next-steps"></a>Další kroky

@@ -15,11 +15,11 @@ ms.date: 06/12/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 43718f8ebc851f27035f2999bfb4ff3ec12ca5b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887731"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021958"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Vytvoření koncového bodu Azure CDN
 Tento článek popisuje všechna nastavení pro vytvoření koncového bodu služby [Azure Content Delivery Network (CDN)](cdn-overview.md) v existujícím profilu CDN. Po vytvoření profilu a koncového bodu můžete začít doručování obsahu vašim zákazníkům. Rychlý Start při vytváření profilu a koncového bodu najdete v tématu [rychlý Start: vytvoření profilu Azure CDN a koncového bodu](cdn-create-new-endpoint.md).
@@ -46,15 +46,15 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého ú�
 
 3. Do pole **Název** zadejte jedinečný název pro nový koncový bod CDN. Tento název se používá pro přístup k prostředkům v mezipaměti v doméně _\<endpointname>_ . azureedge.NET.
 
-4. Jako **Typ původu**vyberte jeden z následujících typů původu: 
+4. Jako **Typ původu** vyberte jeden z následujících typů původu: 
    - **Úložiště** pro Azure Storage
    - **Cloudová služba** pro Azure Cloud Services
    - **Webová aplikace** pro Azure Web Apps
    - **Vlastní původ** pro jakýkoliv jiný veřejně přístupný zdrojový webový server (hostovaný v Azure nebo jinde)
 
-5. V případě **zdrojového názvu hostitele**vyberte nebo zadejte doménu zdrojového serveru. Rozevírací seznam obsahuje všechny dostupné zdrojové servery typu, který jste zadali v kroku 4. Pokud jste jako typ zdroje vybrali možnost **vlastní zdroj** , zadejte doménu svého vlastního zdrojového serveru.
+5. V případě **zdrojového názvu hostitele** vyberte nebo zadejte doménu zdrojového serveru. Rozevírací seznam obsahuje všechny dostupné zdrojové servery typu, který jste zadali v kroku 4. Pokud jste jako typ zdroje vybrali možnost **vlastní zdroj** , zadejte doménu svého vlastního zdrojového serveru.
     
-6. Jako **zdrojovou cestu**zadejte cestu k prostředkům, které chcete uložit do mezipaměti. Pokud chcete v doméně, kterou jste zadali v kroku 5, ukládat do mezipaměti jakýkoliv prostředek, nechte toto nastavení prázdné.
+6. Jako **zdrojovou cestu** zadejte cestu k prostředkům, které chcete uložit do mezipaměti. Pokud chcete v doméně, kterou jste zadali v kroku 5, ukládat do mezipaměti jakýkoliv prostředek, nechte toto nastavení prázdné.
     
 7. Do pole **Hlavička počátečního hostitele** zadejte hlavičku hostitele, kterou má Azure CDN odeslat spolu s každou žádostí, nebo ponechte výchozí nastavení.
    
@@ -62,7 +62,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého ú�
    > Některé typy původu (například Azure Storage a Web Apps) vyžadují, aby se hlavička hostitele shodovala s doménou původu. Pokud nemáte původ, který vyžaduje hlavičku hostitele odlišnou od své domény, je vhodné ponechat výchozí hodnotu.
    > 
     
-8. V poli **protokol** a **zdrojový port**zadejte protokoly a porty, které se mají použít pro přístup k prostředkům na zdrojovém serveru. Je nutné vybrat alespoň jeden protokol (HTTP nebo HTTPS). Pro přístup k obsahu HTTPS použijte doménu poskytovanou CDN ( _\<endpointname>_ . azureedge.NET). 
+8. V poli **protokol** a **zdrojový port** zadejte protokoly a porty, které se mají použít pro přístup k prostředkům na zdrojovém serveru. Je nutné vybrat alespoň jeden protokol (HTTP nebo HTTPS). Pro přístup k obsahu HTTPS použijte doménu poskytovanou CDN ( _\<endpointname>_ . azureedge.NET). 
    
    > [!NOTE]
    > Hodnota **počáteční port** určuje pouze port, který koncový bod používá k načtení informací ze zdrojového serveru. Koncový bod jako takový je dostupný jenom koncovým klientům na výchozích portech HTTP a HTTPS (80 a 443), a to bez ohledu na nastavení **Počáteční port**.  
@@ -71,7 +71,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého ú�
    > 
    > Podpora HTTPS pro Azure CDN vlastní domény není podporovaná v **Azure CDN z produktů Akamai** . Další informace najdete v tématu [Konfigurace HTTPS pro vlastní doménu Azure CDN](cdn-custom-ssl.md).
     
-9. Pro **optimalizované pro**vyberte typ optimalizace, který nejlépe odpovídá scénáři a typ obsahu, který má koncový bod doručovat. Další informace najdete v tématu [optimalizace Azure CDN pro typ doručování obsahu](cdn-optimization-overview.md).
+9. Pro **optimalizované pro** vyberte typ optimalizace, který nejlépe odpovídá scénáři a typ obsahu, který má koncový bod doručovat. Další informace najdete v tématu [optimalizace Azure CDN pro typ doručování obsahu](cdn-optimization-overview.md).
 
     V závislosti na typu profilu se podporují následující nastavení typu optimalizace:
     - **Azure CDN Standard z profilů Microsoftu** :

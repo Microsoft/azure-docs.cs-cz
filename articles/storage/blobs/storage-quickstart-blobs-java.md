@@ -8,12 +8,12 @@ ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: e6f731a72308db98309d40bceb95f6108abab4eb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dc8df24c1ad20aa3380009fe4c0abb29e31823e8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90017043"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021720"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>Rychlý Start: Správa objektů BLOB pomocí sady Java V12 SDK
 
@@ -24,9 +24,9 @@ Další prostředky:
 * [Referenční dokumentace k rozhraní API](/java/api/overview/azure/storage-blob-readme)
 * [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob)
 * [Balíček (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob)
-* [ukázky](/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [ukázky](../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Účet služby Azure Storage. [Vytvořte účet úložiště](../common/storage-account-create.md).

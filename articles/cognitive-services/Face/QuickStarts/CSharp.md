@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 1b8bcaf283e612b3ebe6d6b7bb5660e8b3179ad3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f15fbc340aafa325f772a1fd50a2129fa5044c47
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858366"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96020870"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Rychlý Start: detekce plošek v obrázku pomocí REST API obličeje a C #
 
 V tomto rychlém startu použijete REST API Azure Face v jazyce C# k detekci lidských plošek v obrázku.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -56,7 +56,7 @@ Přidejte třídu **program** obsahující následující pole. Tato data určuj
 
 ### <a name="receive-image-input"></a>Příjem vstupu z obrázku
 
-Do metody **Main** třídy **program** přidejte následující kód. Tento kód zapíše výzvu do konzoly s výzvou, aby uživatel zadal svou místní cestu k souboru bitové kopie. Pak volá jinou metodu, **MakeAnalysisRequest**a zpracovává image v tomto umístění.
+Do metody **Main** třídy **program** přidejte následující kód. Tento kód zapíše výzvu do konzoly s výzvou, aby uživatel zadal svou místní cestu k souboru bitové kopie. Pak volá jinou metodu, **MakeAnalysisRequest** a zpracovává image v tomto umístění.
 
 :::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/rest/detect.cs" id="main":::
 
@@ -82,7 +82,7 @@ Do třídy **Program** přidejte následující metodu. Tato metoda formátuje v
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 
-Úspěšná odpověď zobrazí tvářená data ve formátu JSON, který bude snadno čitelný. Příklad:
+Úspěšná odpověď zobrazí tvářená data ve formátu JSON, který bude snadno čitelný. Například:
 
 ```json
 [
@@ -106,7 +106,7 @@ Chcete-li extrahovat atributy obličeje, použijte model detekce 1 a přidejte `
 string requestParameters = "detectionModel=detection_01&returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise";
 ```
 
-Odpověď teď obsahuje atributy obličeje. Příklad:
+Odpověď teď obsahuje atributy obličeje. Například:
 
 ```json
 [

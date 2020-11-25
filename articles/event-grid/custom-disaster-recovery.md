@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e37cb6a0679ee2e249de4ed8fa31c40d5082ea4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324123"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020139"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Vytvoření vlastního zotavení po havárii pro vlastní témata v Event Grid
 Zotavení po havárii se zaměřuje na obnovení z vážné ztráty funkčnosti aplikace. V tomto kurzu se dozvíte, jak nastavit architekturu událostí pro obnovení, pokud služba Event Grid v konkrétní oblasti nebude v pořádku.
@@ -43,7 +43,7 @@ Nezapomeňte tuto adresu URL poznamenat, protože ji budete potřebovat později
 
 Nejprve vytvořte dvě Event Grid témata. Tato témata budou fungovat jako primární a sekundární. Ve výchozím nastavení budou vaše události procházet vaším primárním tématem. Pokud v primární oblasti dojde k výpadku služby, vaše sekundární převezme.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 
 1. V levém horním rohu hlavní nabídky Azure zvolte **všechny služby** > vyhledejte **Event Grid** > vyberte **Event Grid témata**.
 

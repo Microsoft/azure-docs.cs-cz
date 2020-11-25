@@ -7,11 +7,11 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: b27ff631ce13d70d15a6fd2b6dd5ad5bccaf5450
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442067"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021907"
 ---
 # <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>Jak zdroje dat profilů dat v Azure Data Catalog
 
@@ -84,7 +84,7 @@ Datový profil v **Azure Data Catalog** zobrazuje informace o profilu tabulky a 
 * Počet řádků s hodnotami NULL
 * Minimální, maximální, průměrná a směrodatná odchylka pro hodnoty sloupce
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Profilace dat poskytuje statistiku a informace o registrovaných datových prostředcích, které vám pomůžou určit vhodnost dat k řešení obchodních problémů. Spolu s přidáváním poznámek a dokumentací zdrojů dat můžou profily dat uživatelům získat hlubší přehled o vašich datech.
 

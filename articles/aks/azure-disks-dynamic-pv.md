@@ -6,18 +6,18 @@ services: container-service
 ms.topic: article
 ms.date: 09/21/2020
 ms.openlocfilehash: ad51bfdf8c494e763921de880926b839cdb7be62
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900755"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021635"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamické vytvoření a použití trvalého svazku s disky Azure ve službě Azure Kubernetes Service (AKS)
 
 Trvalý svazek představuje část úložiště, která byla zřízena pro použití s Kubernetes lusky. Trvalý svazek lze použít v jednom nebo mnoha luskech a lze jej dynamicky nebo staticky zřídit. V tomto článku se dozvíte, jak dynamicky vytvářet trvalé svazky s disky Azure, které používá jeden z nich v clusteru Azure Kubernetes Service (AKS).
 
 > [!NOTE]
-> Disk Azure se dá připojit jenom k typu *režimu přístupu* *ReadWriteOnce* , který je dostupný pro jeden uzel v AKS. Pokud potřebujete sdílet trvalý svazek mezi více uzly, použijte [soubory Azure][azure-files-pvc].
+> Disk Azure se dá připojit jenom k typu *režimu přístupu* *ReadWriteOnce*, který je dostupný pro jeden uzel v AKS. Pokud potřebujete sdílet trvalý svazek mezi více uzly, použijte [soubory Azure][azure-files-pvc].
 
 Další informace o Kubernetes svazcích najdete v tématu [Možnosti úložiště pro aplikace v AKS][concepts-storage].
 
@@ -78,7 +78,7 @@ spec:
 ```
 
 > [!TIP]
-> Pokud chcete vytvořit disk, který využívá úložiště úrovně Standard, použijte `storageClassName: default` místo *spravovaného na Premium* .
+> Pokud chcete vytvořit disk, který využívá úložiště úrovně Standard, použijte `storageClassName: default` místo *spravovaného na Premium*.
 
 Pomocí příkazu [kubectl Apply][kubectl-apply] vytvořte deklaraci trvalého svazku a zadejte soubor *Azure-Premium. yaml* :
 
@@ -90,7 +90,7 @@ persistentvolumeclaim/azure-managed-disk created
 
 ## <a name="use-the-persistent-volume"></a>Použití trvalého svazku
 
-Po vytvoření deklarace identity trvalého svazku a úspěšném zřízení disku je možné vytvořit pod s přístupem k disku. Následující manifest vytvoří základní NGINX pod, který používá deklaraci trvalého svazku s názvem *Azure-Managed-disk* k připojení disku Azure v cestě `/mnt/azure` . V případě kontejnerů Windows serveru určete *mountPath* pomocí konvence cesty Windows, třeba *:* .
+Po vytvoření deklarace identity trvalého svazku a úspěšném zřízení disku je možné vytvořit pod s přístupem k disku. Následující manifest vytvoří základní NGINX pod, který používá deklaraci trvalého svazku s názvem *Azure-Managed-disk* k připojení disku Azure v cestě `/mnt/azure` . V případě kontejnerů Windows serveru určete *mountPath* pomocí konvence cesty Windows, třeba *:*.
 
 Vytvořte soubor s názvem `azure-pvc-disk.yaml` a zkopírujte ho do následujícího manifestu.
 
@@ -159,7 +159,7 @@ Pokud chcete využít Ultra disk, přečtěte si téma [použití Ultra Discs ve
 
 Pokud chcete zálohovat data v trvalém svazku, požádejte o tento svazek snímek spravovaného disku. Pak můžete pomocí tohoto snímku vytvořit obnovený disk a připojit se k luskům jako způsob obnovení dat.
 
-Nejdřív Získejte název svazku pomocí `kubectl get pvc` příkazu, například pro okruh PVC s názvem *Azure-Managed-disk* :
+Nejdřív Získejte název svazku pomocí `kubectl get pvc` příkazu, například pro okruh PVC s názvem *Azure-Managed-disk*:
 
 ```console
 $ kubectl get pvc azure-managed-disk
@@ -176,7 +176,7 @@ $ az disk list --query '[].id | [?contains(@,`pvc-faf0f176-8b8d-11e8-923b-deb28c
 /subscriptions/<guid>/resourceGroups/MC_MYRESOURCEGROUP_MYAKSCLUSTER_EASTUS/providers/MicrosoftCompute/disks/kubernetes-dynamic-pvc-faf0f176-8b8d-11e8-923b-deb28c58d242
 ```
 
-Pomocí ID disku vytvořte snímek disku pomocí [AZ Snapshot Create][az-snapshot-create]. Následující příklad vytvoří snímek s názvem *pvcSnapshot* ve stejné skupině prostředků jako cluster AKS ( *MC_myResourceGroup_myAKSCluster_eastus* ). Pokud vytvoříte snímky a obnovíte disky ve skupinách prostředků, ke kterým cluster AKS nemá přístup, může dojít k problémům s oprávněním.
+Pomocí ID disku vytvořte snímek disku pomocí [AZ Snapshot Create][az-snapshot-create]. Následující příklad vytvoří snímek s názvem *pvcSnapshot* ve stejné skupině prostředků jako cluster AKS (*MC_myResourceGroup_myAKSCluster_eastus*). Pokud vytvoříte snímky a obnovíte disky ve skupinách prostředků, ke kterým cluster AKS nemá přístup, může dojít k problémům s oprávněním.
 
 ```azurecli-interactive
 $ az snapshot create \
@@ -201,7 +201,7 @@ Chcete-li použít obnovený disk s pod, zadejte ID disku v manifestu. ID disku 
 az disk show --resource-group MC_myResourceGroup_myAKSCluster_eastus --name pvcRestored --query id -o tsv
 ```
 
-Vytvořte manifest pod názvem `azure-restored.yaml` a zadejte identifikátor URI disku, který jste získali v předchozím kroku. Následující příklad vytvoří základní webový server NGINX s obnoveným diskem připojeným jako svazek na */mnt/Azure* :
+Vytvořte manifest pod názvem `azure-restored.yaml` a zadejte identifikátor URI disku, který jste získali v předchozím kroku. Následující příklad vytvoří základní webový server NGINX s obnoveným diskem připojeným jako svazek na */mnt/Azure*:
 
 ```yaml
 kind: Pod

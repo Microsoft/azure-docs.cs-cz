@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
 ms.openlocfilehash: bcebc568db4a0d2b4b287045ba0a67c88d9b8c92
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312676"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020598"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Testování kódu pro datové vědy v Azure pomocí vědeckého procesu týmového zpracování dat a Azure DevOps Services
 Tento článek obsahuje předběžné pokyny pro testování kódu v pracovním postupu pro datové vědy. Toto testování dává pracovníkům dat systematický a efektivní způsob kontroly kvality a očekávaného výsledku jejich kódu. Používáme projekt vědeckého zpracování týmových dat (TDSP) [, který používá datovou sadu pro příjem dat z Ski dospělé](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , kterou jsme publikovali dříve, a ukazuje, jak se dá provést testování kódu. 
@@ -89,7 +89,7 @@ Pomocí následujících kroků můžete nastavit a spustit testování kódu a 
 
       ![Kód pro kontrolu hodnot předpovědi](./media/code-test/check_prediction_values.PNG)
 
-1. Všechny testovací funkce vložte do skriptu Pythonu s názvem **test_funcs. py** :
+1. Všechny testovací funkce vložte do skriptu Pythonu s názvem **test_funcs. py**:
 
     ![Skript Pythonu pro testovací funkce](./media/code-test/create_file_test_func.PNG)
 
@@ -154,7 +154,7 @@ Pokud jsou výstrahy správně nastavené, budete po dokončení sestavení upoz
 * V tématu věnovaném testování částí v případě scénářů pro datové vědy si prohlédněte [úložiště předpovědi pro předpověď výnosů](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) .
 * Sledujte předchozí osnovu a příklady ve scénáři prediktivní příjem výnosů ve vašich vlastních projektech pro datové vědy.
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 * [Vědecké zpracování týmových dat](./index.yml)
 * [Testovací nástroje sady Visual Studio](https://www.visualstudio.com/vs/features/testing-tools/)
 * [Prostředky testování Azure DevOps](https://www.visualstudio.com/team-services/)

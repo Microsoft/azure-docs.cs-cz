@@ -9,11 +9,11 @@ ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
 ms.openlocfilehash: 1f567b3d083853f9bb342bfad462e8545caa6480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67175440"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020232"
 ---
 ## <a name="download-the-source-code"></a>Stažení zdrojového kódu
 
@@ -62,7 +62,7 @@ Pokud jste ještě nevytvořili požadované prostředky Azure, postupujte podle
      Skript také přidá sadu proměnných prostředí s předponou **počítačů** do místního počítače. Tyto proměnné prostředí obsahují podrobnosti o tom, jak vzdálené monitorování umožní číst z prostředku Azure Key Vault. V tomto prostředku Key Vault prostředek, ze kterého bude vzdálené monitorování číst hodnoty konfigurace z.
 
      > [!TIP]
-     > Po dokončení skriptu uloží také proměnné prostředí do souboru s názvem ** \<your home folder\> \\ . PC \\ \<solution name\> . env**. Můžete je použít pro budoucí nasazení akcelerátoru řešení. Všimněte si, že všechny proměnné prostředí nastavené v místním počítači přepíší hodnoty v souboru ** \\ . ENV v souboru \\ \\ . env** , když spustíte **Docker-Dock**.
+     > Po dokončení skriptu uloží také proměnné prostředí do souboru s názvem **\<your home folder\> \\ . PC \\ \<solution name\> . env**. Můžete je použít pro budoucí nasazení akcelerátoru řešení. Všimněte si, že všechny proměnné prostředí nastavené v místním počítači přepíší hodnoty v souboru **\\ . ENV v souboru \\ \\ . env** , když spustíte **Docker-Dock**.
 
 1. Z prostředí příkazového řádku ukončete.
 
@@ -74,6 +74,6 @@ Nastavte proměnné prostředí pro následující:
 * **PCS_AAD_APPID** – ID aplikace AAD
 * **PCS_AAD_APPSECRET** – tajný klíč aplikace AAD
 
-Z tohoto prostředku Azure Key Vault budou načteny konfigurační hodnoty. Tyto proměnné prostředí se můžou v nasazení Uložit do souboru ** \<your home folder\> \\ . PC \\ \<solution name\> . env** . Všimněte si, že proměnné prostředí nastavené v místním počítači přepíší hodnoty v souboru ** \\ \\ \\ . env skriptu služby** , když spustíte **Docker-Dock**.
+Z tohoto prostředku Azure Key Vault budou načteny konfigurační hodnoty. Tyto proměnné prostředí se můžou v nasazení Uložit do souboru **\<your home folder\> \\ . PC \\ \<solution name\> . env** . Všimněte si, že proměnné prostředí nastavené v místním počítači přepíší hodnoty v souboru **\\ \\ \\ . env skriptu služby** , když spustíte **Docker-Dock**.
 
 Některá z konfigurací, které potřebuje mikroslužba, je uložená v instanci **Key Vault** , která byla vytvořena při počátečním nasazení. Odpovídající proměnné v trezoru klíčů by měly být podle potřeby upraveny.

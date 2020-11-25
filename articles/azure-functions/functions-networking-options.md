@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
 ms.openlocfilehash: bed76a6f3a17332f9a1e411ff1d4efb52703f3e1
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636465"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020980"
 ---
 # <a name="azure-functions-networking-options"></a>Možnosti sítí Azure Functions
 
@@ -180,8 +180,8 @@ Když integrujete aplikaci funkcí v plánu Premium nebo App Service plánu s vi
 ## <a name="automation"></a>Automation
 Následující rozhraní API vám umožní programově spravovat integrace místní virtuální sítě:
 
-+ **Azure CLI** : pomocí [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) příkazů můžete přidat, vypsat nebo odebrat integraci místní virtuální sítě.  
-+ **Šablony ARM** : integraci regionální virtuální sítě lze povolit pomocí šablony Azure Resource Manager. Úplný příklad najdete v tématu [Šablona pro rychlý Start pro funkce](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/).
++ **Azure CLI**: pomocí [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) příkazů můžete přidat, vypsat nebo odebrat integraci místní virtuální sítě.  
++ **Šablony ARM**: integraci regionální virtuální sítě lze povolit pomocí šablony Azure Resource Manager. Úplný příklad najdete v tématu [Šablona pro rychlý Start pro funkce](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

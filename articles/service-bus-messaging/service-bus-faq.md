@@ -3,12 +3,12 @@ title: Nejčastější dotazy k Azure Service Bus | Microsoft Docs
 description: Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se Azure Service Bus.
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: 38745d1cc2b1961da10a0c9e9f2c90c3b7dc48a7
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: acd741101928f5a2dfd72eab1598af6e4556a3d1
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899522"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96022131"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Service Bus (FAQ)
 
@@ -26,7 +26,7 @@ Tento článek popisuje některé časté otázky týkající se Microsoft Azure
 [Service Bus fronta](service-bus-queues-topics-subscriptions.md) je entita, ve které jsou uložené zprávy. Fronty jsou užitečné v případě, že máte více aplikací nebo více částí distribuované aplikace, které potřebují vzájemně komunikovat. Fronta je podobná distribučnímu centru v tom, že je přijímáno více produktů (zpráv) a následně odesláno z tohoto umístění.
 
 ### <a name="what-are-azure-service-bus-topics-and-subscriptions"></a>Co jsou Azure Service Bus témata a předplatná?
-Téma se dá vizuálně rozvažovat za frontu a když se používá víc předplatných, bude se jednat o model bohatšího zasílání zpráv. Nástroj pro komunikaci typu 1: n v podstatě. Tento model publikování/předplatného (nebo *Pub/sub* ) umožňuje aplikaci, která pošle zprávu do tématu s více předplatnými, aby tuto zprávu přijímalo více aplikacemi.
+Téma se dá vizuálně rozvažovat za frontu a když se používá víc předplatných, bude se jednat o model bohatšího zasílání zpráv. Nástroj pro komunikaci typu 1: n v podstatě. Tento model publikování/předplatného (nebo *Pub/sub*) umožňuje aplikaci, která pošle zprávu do tématu s více předplatnými, aby tuto zprávu přijímalo více aplikacemi.
 
 ### <a name="what-is-a-partitioned-entity"></a>Co je dělená entita?
 Konvenční frontu nebo téma zpracovává jeden zprostředkovatel zpráv a ukládá se do jednoho úložiště pro zasílání zpráv. Podporováno pouze na úrovních Basic a standard pro zasílání zpráv, ve [frontě nebo tématu](service-bus-partitioning.md) je zpracováváno pomocí více zprostředkovatelů zpráv a uložených ve více úložištích zasílání zpráv. Tato funkce znamená, že celková propustnost dělené fronty nebo tématu již není omezena výkonem jediného zprostředkovatele zpráv nebo úložiště pro zasílání zpráv. Dočasný výpadek úložiště pro zasílání zpráv navíc neumožňuje vykreslovat rozdělenou frontu nebo téma jako nedostupné.
@@ -53,14 +53,9 @@ V následující tabulce jsou uvedeny Odchozí porty TCP, které je třeba otev�
 
 Port HTTPS se obecně vyžaduje pro odchozí komunikaci, i když se AMQP používá přes port 5671, protože klientské sady SDK a získávání tokenů z Azure Active Directory (Pokud se používají) spouští přes protokol HTTPS několik operací správy prováděných klientskými sadami SDK. 
 
-Oficiální sady Azure SDK obecně používají protokol AMQP k posílání a přijímání zpráv z Service Bus. Možnost protokolu AMQP-over-WebSockets se spouští přes port TCP 443 stejně jako rozhraní HTTP API, ale je jinak funkčně identická s prostým AMQP. Tato možnost má vyšší latenci při počátečním připojení, protože dodatečné metody handshake a mírně větší režijní náklady na sdílení portu HTTPS. Pokud je vybrán tento režim, je pro komunikaci dostačující port TCP 443. Následující možnosti povolují výběr režimu jednoduchých AMQP nebo AMQP WebSockets:
+Oficiální sady Azure SDK obecně používají protokol AMQP k posílání a přijímání zpráv z Service Bus. 
 
-| Jazyk | Možnost   |
-| -------- | ----- |
-| .NET     | [ServiceBusConnection. TransportType](/dotnet/api/microsoft.azure.servicebus.servicebusconnection.transporttype?view=azure-dotnet) – vlastnost s [TransportType. AMQP](/dotnet/api/microsoft.azure.servicebus.transporttype?view=azure-dotnet) nebo [TransportType. AmqpWebSockets](/dotnet/api/microsoft.azure.servicebus.transporttype?view=azure-dotnet) |
-| Java     | [com. Microsoft. Azure. ServiceBus. ClientSettings](/java/api/com.microsoft.azure.servicebus.clientsettings.clientsettings?view=azure-java-stable) s [com. Microsoft. Azure. ServiceBus. primitivs. TransportType. AMQP](/java/api/com.microsoft.azure.servicebus.primitives.transporttype?view=azure-java-stable) nebo [com.Microsoft.Azure.ServiceBus.Primitives.TransportType.AMQP_WEB_SOCKETS](/java/api/com.microsoft.azure.servicebus.primitives.transporttype?view=azure-java-stable) |
-| Node  | [ServiceBusClientOptions](/javascript/api/@azure/service-bus/servicebusclientoptions?view=azure-node-latest) má `webSocket` argument konstruktoru. |
-| Python | [ServiceBusClient.transport_type](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-servicebus/latest/azure.servicebus.html#azure.servicebus.ServiceBusClient) s [TransportType. AMQP](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-servicebus/latest/azure.servicebus.html#azure.servicebus.TransportType) nebo [TransportType. AmqpOverWebSocket](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-servicebus/latest/azure.servicebus.html#azure.servicebus.TransportType) |
+[!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
 
 Starší balíček WindowsAzure. ServiceBus pro .NET Framework má možnost použít starší verzi protokolu Service Bus Messaging Protocol (SBMP), která se také označuje jako "NetMessaging". Tento protokol používá porty TCP 9350-9354. Výchozím režimem tohoto balíčku je automatické zjištění, zda jsou tyto porty k dispozici pro komunikaci, a v případě, že se jedná o tento případ, přepne na objekty WebSockets s protokolem TLS přes port 443. Toto nastavení můžete přepsat a tento režim vynutit nastavením `Https` [ConnectivityMode](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) na [`ServiceBusEnvironment.SystemConnectivity`](/dotnet/api/microsoft.servicebus.servicebusenvironment.systemconnectivity?view=azure-dotnet) nastavení, které platí globálně pro aplikaci.
 

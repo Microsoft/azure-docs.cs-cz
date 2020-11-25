@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.openlocfilehash: e377f910e1c1ddda864ea312b40fe3608c166376
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1da43d0ef208d61ced6c8ca8dbc7603e0ef51155
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541386"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96021567"
 ---
 # <a name="language-and-region-support-for-luis"></a>Podpora jazyků a oblastí pro LUIS
 
@@ -28,7 +28,7 @@ Pokud potřebujete klientskou aplikaci LUIS s více jazyky, jako je chatovací r
 
 LUIS rozumí projevy v následujících jazycích:
 
-| Jazyk |Národní prostředí  |  Předem sestavená doména | Předem vytvořená entita | Doporučení pro seznam frází | **[Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Mínění a<br>Klíčov|
+| Jazyk |Národní prostředí  |  Předem sestavená doména | Předem vytvořená entita | Doporučení pro seznam frází | **[Analýza textu](../text-analytics/language-support.md)<br>(Mínění a<br>Klíčov|
 |--|--|:--:|:--:|:--:|:--:|
 | Angličtina (Spojené státy) |`en-US` | ✔ | ✔  |✔|✔|
 | Arabština (Preview – moderní standardní arabština) |`ar-AR`|-|-|-|-|
@@ -69,7 +69,7 @@ Podpora jazyků se liší u [předem sestavených entit](luis-reference-prebuilt
 Jazyky režimů diktování řeči najdete v tématu [podporované jazyky](../speech-service/speech-to-text.md) Speech.
 
 ### <a name="bing-spell-check-supported-languages"></a>Kontrola pravopisu Bingu podporované jazyky
-Seznam podporovaných jazyků a stavu naleznete v tématu Kontrola pravopisu Bingu [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) .
+Seznam podporovaných jazyků a stavu naleznete v tématu Kontrola pravopisu Bingu [podporované jazyky](../bing-spell-check/language-support.md) .
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>Vzácná nebo cizí slova v aplikaci
 V `en-us` jazykové verzi se Luis učí, jak rozlišovat anglická slova, včetně slangem. V `zh-cn` jazykové verzi se Luis učí, aby lišily většinu čínských znaků. Pokud v nástroji použijete zřídka používané slovo `en-us` nebo znak `zh-cn` a vidíte, že Luis se zdá, že toto slovo nebo znak není možné odlišit, můžete toto slovo nebo znak přidat do [funkce seznamu frází](luis-how-to-add-features.md). Například slova mimo jazykovou verzi aplikace – to znamená, že cizí slova--by měla být přidána do funkce seznamu frází.

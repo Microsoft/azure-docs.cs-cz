@@ -4,18 +4,18 @@ ms.author: areddish
 ms.service: cognitive-services
 ms.date: 09/15/2020
 ms.openlocfilehash: 1f07cda0afa7213ca9c803754950c86a3f246469
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625286"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021257"
 ---
 Tato příručka poskytuje pokyny a ukázkový kód, který vám pomůže začít používat Custom Vision klientské knihovny pro přejít k sestavení modelu detekce objektu. Vytvoříte projekt, přidáte značky, provedete projekt a použijete adresu URL koncového bodu předpovědi projektu pro programové testování. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace pro rozpoznávání imagí.
 
 > [!NOTE]
 > Pokud chcete sestavit a vytvořit model detekce objektu _bez_ psaní kódu, Projděte si [pokyny na základě prohlížeče](../../get-started-build-detector.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Přejít 1.8 +](https://golang.org/doc/install)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
@@ -93,7 +93,7 @@ func main() {
 
 ## <a name="create-tags-in-the-project"></a>Vytvoření značek v projektu
 
-Chcete-li vytvořit klasifikační značky pro projekt, přidejte následující kód na konec *Sample. přejít* :
+Chcete-li vytvořit klasifikační značky pro projekt, přidejte následující kód na konec *Sample. přejít*:
 
 ```Go
 # Make two tags in the new project
@@ -273,7 +273,7 @@ Spusťte *Sample. přejít*.
 go run sample.go
 ```
 
-V konzole by se měl zobrazit výstup aplikace. Pak můžete ověřit správné označení testovacího obrázku (ve složce **samples/vision/images/Test** ) a správnost oblasti detekce.
+V konzole by se měl zobrazit výstup aplikace. Pak můžete ověřit správné označení testovacího obrázku (ve složce **samples/vision/images/Test**) a správnost oblasti detekce.
 
 [!INCLUDE [clean-od-project](../../includes/clean-od-project.md)]
 

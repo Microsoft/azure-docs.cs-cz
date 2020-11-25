@@ -7,11 +7,11 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: f91728435b885f3b4d9415bc81e18fdaaea0148f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86537744"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021941"
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>Nastavení podnikového glosáře pro řízení označování
 
@@ -76,7 +76,7 @@ Na portálu Data Catalog jsou dva typy značek vizuálně jedinečné a předsta
 
 Značky glosáře a uživatelské značky jsou prohledávatelné a můžete je použít jako filtry ve vyhledávání.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Používáním podnikového glosáře v Azure Data Catalog a se správou označení, které umožňuje, můžete identifikovat, spravovat a vyhledávat datové assety konzistentním způsobem. Obchodní Glosář může propagovat učení podnikového slovníku podle členů organizace. Glosář také podporuje zachytávání smysluplných metadat, což zjednodušuje zjišťování a porozumění prostředků.
 

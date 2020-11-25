@@ -7,11 +7,11 @@ ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
 ms.openlocfilehash: 48a732e3935d78bdbf8b81fe989b59be1fbe2203
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422803"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020428"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Vytvoření a publikování funkce v Azure pomocí Java a Gradle
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak sestavit a publikovat projekt funkce jazyka Ja
 > [!NOTE]
 > Pokud Gradle není preferovaným vývojářským nástrojem, Projděte si podobné kurzy pro vývojáře v jazyce Java, které využívají [Maven](./create-first-function-cli-java.md), [IntelliJ](/azure/developer/java/toolkit-for-intellij/quickstart-functions) a [vs Code](./create-first-function-vs-code-java.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K vývoji funkcí pomocí Javy musíte mít nainstalovaný následující software:
 
@@ -142,7 +142,7 @@ Můžete získat adresu URL potřebnou k aktivaci vaší funkce s klíčem funkc
 
 1. Přejděte na [Azure Portal], přihlaste se **, do horní** části stránky zadejte _AppName_ vaší aplikace Function App a stiskněte klávesu ENTER.
  
-1. Ve vaší aplikaci Function App vyberte **funkce** , zvolte funkci a pak klikněte na **</> získat adresu URL funkce** v pravém horním rohu. 
+1. Ve vaší aplikaci Function App vyberte **funkce**, zvolte funkci a pak klikněte na **</> získat adresu URL funkce** v pravém horním rohu. 
 
     :::image type="content" source="./media/functions-create-first-java-gradle/get-function-url-portal.png" alt-text="Kopírování adresy URL funkce z webu Azure Portal":::
 

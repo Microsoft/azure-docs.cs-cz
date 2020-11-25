@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
 ms.openlocfilehash: fde0afcd37cd464b0b87e5ccd257d4a7a684eeb0
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040756"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021584"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Nasazení služby Azure Log Analytics trysek pro Cloud Foundry sledování systému
 
@@ -28,7 +28,7 @@ V tomto dokumentu se dozvíte, jak nasadit trysek do svého prostředí CF a pak
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Následující kroky jsou požadavky na nasazení trysek.
 
@@ -61,11 +61,11 @@ Pracovní prostor Log Analytics můžete vytvořit ručně nebo pomocí šablony
 1. V Azure Portal vyhledejte seznam služeb v Azure Marketplace a pak vyberte Log Analytics pracovní prostory.
 2. Vyberte **vytvořit** a pak vyberte volby pro následující položky:
 
-   * **Log Analytics pracovní prostor** : zadejte název pracovního prostoru.
-   * **Předplatné** : Pokud máte více předplatných, vyberte ten, který se shoduje s vaším nasazením CF.
-   * **Skupina prostředků** : můžete vytvořit novou skupinu prostředků, nebo použít stejnou pro nasazení CF.
-   * **Umístění** : zadejte umístění.
-   * **Cenová úroveň** : dokončete výběr kliknutím na **tlačítko OK** .
+   * **Log Analytics pracovní prostor**: zadejte název pracovního prostoru.
+   * **Předplatné**: Pokud máte více předplatných, vyberte ten, který se shoduje s vaším nasazením CF.
+   * **Skupina prostředků**: můžete vytvořit novou skupinu prostředků, nebo použít stejnou pro nasazení CF.
+   * **Umístění**: zadejte umístění.
+   * **Cenová úroveň**: dokončete výběr kliknutím na **tlačítko OK** .
 
 Další informace najdete v tématu [Začínáme s protokoly Azure monitor](../azure-monitor/overview.md).
 
@@ -76,13 +76,13 @@ Další informace najdete v tématu [Začínáme s protokoly Azure monitor](../a
 1. Zadejte "Cloud Foundry" v okně hledání vyberte "Cloud Foundry monitorování řešení".
 1. Načetla se úvodní stránka šablony řešení Cloud Foundry, kliknutím na vytvořit otevřete okno šablony.
 1. Zadejte požadované parametry:
-    * **Předplatné** : vyberte předplatné Azure pro pracovní prostor Log Analytics, obvykle stejně jako nasazení Cloud Foundry.
-    * **Skupina prostředků** : Vyberte existující skupinu prostředků nebo vytvořte novou pro Log Analytics pracovní prostor.
-    * **Umístění skupiny prostředků** : vyberte umístění skupiny prostředků.
-    * **OMS_Workspace_Name** : zadejte název pracovního prostoru, pokud pracovní prostor neexistuje, šablona vytvoří novou.
-    * **OMS_Workspace_Region** : vyberte umístění pro pracovní prostor.
-    * **OMS_Workspace_Pricing_Tier** : vyberte skladovou položku pracovního prostoru Log Analytics. Podívejte se na informace o [cenách](https://azure.microsoft.com/pricing/details/log-analytics/) pro referenci.
-    * **Právní podmínky** : klikněte na právní podmínky a potom klikněte na vytvořit, aby se právní období přijalo.
+    * **Předplatné**: vyberte předplatné Azure pro pracovní prostor Log Analytics, obvykle stejně jako nasazení Cloud Foundry.
+    * **Skupina prostředků**: Vyberte existující skupinu prostředků nebo vytvořte novou pro Log Analytics pracovní prostor.
+    * **Umístění skupiny prostředků**: vyberte umístění skupiny prostředků.
+    * **OMS_Workspace_Name**: zadejte název pracovního prostoru, pokud pracovní prostor neexistuje, šablona vytvoří novou.
+    * **OMS_Workspace_Region**: vyberte umístění pro pracovní prostor.
+    * **OMS_Workspace_Pricing_Tier**: vyberte skladovou položku pracovního prostoru Log Analytics. Podívejte se na informace o [cenách](https://azure.microsoft.com/pricing/details/log-analytics/) pro referenci.
+    * **Právní podmínky**: klikněte na právní podmínky a potom klikněte na vytvořit, aby se právní období přijalo.
 1. Po zadání všech parametrů klikněte na vytvořit a nasaďte šablonu. Po dokončení nasazení se stav zobrazí na kartě oznámení.
 
 
@@ -185,7 +185,7 @@ Pokud jste pracovní prostor Log Analytics vytvořili ručně, vytvořte zobraze
 
 Na portálu OMS přejděte k **zobrazení Náhled**  >  **importu** návrháře  >  **Browse** a vyberte jeden ze souborů omsview. Vyberte například *Cloud Foundry. omsview* a uložte zobrazení. Na stránce **Přehled** se teď zobrazí dlaždice. Vyberte ho a podívejte se na vizuální metriky.
 
-Tato zobrazení můžete přizpůsobit nebo vytvořit nová zobrazení prostřednictvím **návrháře zobrazení** .
+Tato zobrazení můžete přizpůsobit nebo vytvořit nová zobrazení prostřednictvím **návrháře zobrazení**.
 
 *Cloud Foundry. omsview* je verze Preview šablony zobrazení Cloud Foundry OMS. Toto je plně nakonfigurovaná výchozí šablona. Pokud máte návrhy nebo názory na šablonu, odešlete je do [části problém](https://github.com/Azure/oms-log-analytics-firehose-nozzle/issues).
 

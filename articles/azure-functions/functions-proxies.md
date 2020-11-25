@@ -4,11 +4,11 @@ description: Přehled způsobu použití Proxy služby Azure Functions
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 3e08b9cf633162cc7015f47774b043cf58c115a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87385870"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020394"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Práce s Proxy služby Azure Functions
 
@@ -111,7 +111,7 @@ Zcela zakažte trasování přidáním `"debug":false` určitého proxy serveru 
 Proxy servery, které nakonfigurujete, se ukládají do *proxies.jsv* souboru, který se nachází v kořenovém adresáři adresáře Function App. Tento soubor můžete ručně upravit a nasadit jako součást aplikace při použití libovolné [metody nasazení](./functions-continuous-deployment.md) , které funkce podporuje. 
 
 > [!TIP] 
-> Pokud jste nestavili jednu z metod nasazení, můžete také pracovat s *proxies.js* v souboru na portálu. Přejít do aplikace Function App, vybrat **funkce platformy**a pak vybrat **Editor služby App Service**. Díky tomu můžete zobrazit celou strukturu souborů aplikace Function App a pak provést změny.
+> Pokud jste nestavili jednu z metod nasazení, můžete také pracovat s *proxies.js* v souboru na portálu. Přejít do aplikace Function App, vybrat **funkce platformy** a pak vybrat **Editor služby App Service**. Díky tomu můžete zobrazit celou strukturu souborů aplikace Function App a pak provést změny.
 
 *Proxies.js* je definována objektem proxy, který se skládá z pojmenovaných proxy a jejich definic. Případně, pokud je editor podporuje, můžete pro dokončení kódu odkazovat na [schéma JSON](http://json.schemastore.org/proxies) . Příklad souboru může vypadat takto:
 
@@ -135,7 +135,7 @@ Každý proxy server má popisný název, například *Proxy1* v předchozím p�
 * **matchCondition**: Required-objekt definující požadavky, které aktivují spuštění tohoto proxy serveru. Obsahuje dvě vlastnosti, které jsou sdílené pomocí [aktivačních událostí http]:
     * _metody_: pole metod HTTP, na které proxy reaguje. Pokud není zadaný, proxy server odpoví na všechny metody HTTP v trase.
     * _Route_: Required – definuje šablonu směrování, která určuje, na které adresy URL požadavků váš proxy reaguje. Na rozdíl od triggerů HTTP neexistuje žádná výchozí hodnota.
-* **netrvalou**adresu: adresa URL záložního prostředku, na který by se měl požadavek nacházet proxy serverem. Tato hodnota může odkazovat na nastavení aplikace a parametry z původní žádosti klienta. Pokud tato vlastnost není zahrnuta, Azure Functions odpoví pomocí protokolu HTTP 200 OK.
+* **netrvalou** adresu: adresa URL záložního prostředku, na který by se měl požadavek nacházet proxy serverem. Tato hodnota může odkazovat na nastavení aplikace a parametry z původní žádosti klienta. Pokud tato vlastnost není zahrnuta, Azure Functions odpoví pomocí protokolu HTTP 200 OK.
 * **requestOverrides**: objekt, který definuje transformace na back-end požadavek. Viz [Definování objektu requestOverrides].
 * **responseOverrides**: objekt, který definuje transformace na reakci klienta. Viz [Definování objektu responseOverrides].
 

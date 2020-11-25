@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.openlocfilehash: 38f649fbff9ea2c1182adb613b9302768708a4c4
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490946"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019867"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Principy a úpravy jednotek streamování
 
@@ -140,7 +140,7 @@ Obvykle je úloha nakonfigurovaná s jednou jednotkou streamování dostatečná
 Pro úlohu s 6 jednotkami streamování možná budete potřebovat 4 nebo 8 oddílů z centra událostí. Nepoužívejte ale příliš mnoho zbytečných oddílů, protože to způsobí nadměrné využití prostředků. Například centrum událostí s 16 oddíly nebo větší v Stream Analytics úlohy, která má 1 jednotku streamování. 
 
 ## <a name="reference-data"></a>Referenční data 
-Referenční data v ASA jsou načtena do paměti pro rychlé vyhledávání. V rámci aktuální implementace každá operace spojení s referenčními daty uchovává kopii referenčních dat v paměti, a to i v případě, že se spojíte se stejnými referenčními daty víckrát. Pro dotazy s **oddíly podle** , každý oddíl obsahuje kopii referenčních dat, takže oddíly jsou plně oddělené. Díky multiplikační efektu může využití paměti rychle získat velkou vysokou dobu, pokud se k referenčním datům připojíte víckrát s více oddíly.  
+Referenční data v ASA jsou načtena do paměti pro rychlé vyhledávání. V rámci aktuální implementace každá operace spojení s referenčními daty uchovává kopii referenčních dat v paměti, a to i v případě, že se spojíte se stejnými referenčními daty víckrát. Pro dotazy s **oddíly podle**, každý oddíl obsahuje kopii referenčních dat, takže oddíly jsou plně oddělené. Díky multiplikační efektu může využití paměti rychle získat velkou vysokou dobu, pokud se k referenčním datům připojíte víckrát s více oddíly.  
 
 ### <a name="use-of-udf-functions"></a>Použití funkcí UDF
 Když přidáte funkci UDF, Azure Stream Analytics načte modul runtime jazyka JavaScript do paměti. To bude mít vliv na% SU.

@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 12/10/2019
 ms.openlocfilehash: 3ce104e9340c3e93d64b68dcab6f5bd6d2f62493
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748730"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020619"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Vytváření clusterů Apache Hadoop pomocí Azure REST API
 
@@ -248,7 +248,7 @@ Postupujte podle kroků popsaných v části Začínáme [s Azure CLI](/cli/azur
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
-     Hodnota vrácená z tohoto příkazu je __ID objektu__ . Uložte tuto hodnotu.
+     Hodnota vrácená z tohoto příkazu je __ID objektu__. Uložte tuto hodnotu.
 
 4. Přiřaďte roli **vlastníka** k instančnímu objektu pomocí hodnoty **ID objektu** . Použijte **ID předplatného** , které jste získali dříve.
 
@@ -274,7 +274,7 @@ Nastavte `$TENANTID` , `$APPID` a `$PASSWORD` na hodnoty získané nebo použit�
 
 Pokud je tento požadavek úspěšný, obdržíte odpověď řady 200 a tělo odpovědi obsahuje dokument JSON.
 
-Dokument JSON vrácený touto žádostí obsahuje element s názvem **access_token** . Hodnota **access_token** se používá k ověřování požadavků na REST API.
+Dokument JSON vrácený touto žádostí obsahuje element s názvem **access_token**. Hodnota **access_token** se používá k ověřování požadavků na REST API.
 
 ```json
 {

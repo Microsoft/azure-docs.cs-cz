@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.openlocfilehash: fe8acfd1bfd14f339a0109cab215b8a9ab65256f
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893824"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021550"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-segment"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s segmentem
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat segment s Azure Active Directory (Azur
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -50,15 +50,15 @@ Pokud chcete nakonfigurovat integraci segmentu do Azure AD, musíte přidat segm
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace** .
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **segment** .
 1. Vyberte **segment** z panelu výsledků a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-segment"></a>Konfigurace a testování jednotného přihlašování Azure AD pro segment
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí segmentu pomocí testovacího uživatele s názvem **B. Simon** . Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v segmentu.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí segmentu pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v segmentu.
 
 Ke konfiguraci a testování jednotného přihlašování služby Azure AD pomocí segmentu dokončete následující stavební bloky:
 
@@ -73,8 +73,8 @@ Ke konfiguraci a testování jednotného přihlašování služby Azure AD pomoc
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce **segmentovat** integraci aplikace najděte část **Správa** a vyberte **jednotné přihlašování** .
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** .
+1. V [Azure Portal](https://portal.azure.com/)na stránce **segmentovat** integraci aplikace najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
@@ -104,21 +104,21 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit** .
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k segmentu.
 
-1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** .
-1. V seznamu aplikace vyberte možnost **segment** .
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny** .
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte možnost **segment**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
@@ -134,11 +134,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V novém okně webového prohlížeče se přihlaste k webu segment společnosti jako správce.
 
-1. Klikněte na **ikonu nastavení** , přejděte dolů k možnosti **ověřování** a klikněte na **připojení** .
+1. Klikněte na **ikonu nastavení** , přejděte dolů k možnosti **ověřování** a klikněte na **připojení**.
 
     ![Snímek obrazovky zobrazující vybranou ikonu nastavení a možnost připojení v nabídce ověřování.](./media/segment-tutorial/segment1.PNG)
 
-1. Klikněte na **Přidat nové připojení** .
+1. Klikněte na **Přidat nové připojení**.
 
     ![Snímek obrazovky s vybraným tlačítkem přidat nové připojení, které zobrazuje oddíl připojení](./media/segment-tutorial/segment2.PNG)
 
@@ -154,7 +154,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     b. Zkopírujte hodnotu * * * * cílové adresy URL * * * * a vložte ji do pole **Adresa URL identifikátoru** v dialogovém okně **základní konfigurace SAML** v Azure Portal.
 
-    c. Klikněte na **Další** .
+    c. Klikněte na **Další**.
 
     ![Konfigurace segmentu](./media/segment-tutorial/segment5.PNG)
 
@@ -162,7 +162,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Otevřete stažený **certifikát (Base64)** z Azure Portal do programu Poznámkový blok a vložte obsah do textového pole **veřejné certifikáty** .
 
-1. Klikněte na **Konfigurovat připojení** .
+1. Klikněte na **Konfigurovat připojení**.
 
 ### <a name="create-segment-test-user"></a>Vytvořit segment testovacího uživatele
 
@@ -174,7 +174,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici segment na přístupovém panelu, měli byste se automaticky přihlásit k segmentu, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 

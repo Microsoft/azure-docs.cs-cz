@@ -4,11 +4,11 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 09/15/2020
 ms.openlocfilehash: bb090c0e40a8376aafb7b7eca479d16d73ce131d
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625497"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021256"
 ---
 Začněte s klientskou knihovnou Custom Vision pro .NET. Pomocí těchto kroků nainstalujte balíček a vyzkoušejte ukázkový kód pro vytvoření modelu detekce objektu. Vytvoříte projekt, přidáte značky, provedete projekt na ukázkových obrázcích a použijete adresu URL koncového bodu předpovědi projektu pro programové testování. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace pro rozpoznávání imagí.
 
@@ -26,7 +26,7 @@ Pomocí klientské knihovny Custom Vision pro .NET:
 
 [Referenční dokumentace](/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet) | Zdrojový kód knihovny [(školení)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Training) [(předpověď)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Prediction) | Ukázky balíčku (NuGet) ( [školení](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/) ) [(předpovědi](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)  |  [Samples](/samples/browse/?products=azure&term=vision&terms=vision) )
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * [Integrované vývojové prostředí (IDE) sady Visual Studio](https://visualstudio.microsoft.com/vs/) nebo aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
@@ -44,7 +44,7 @@ Pomocí sady Visual Studio vytvořte novou aplikaci .NET Core.
 
 ### <a name="install-the-client-library"></a>Instalace klientské knihovny 
 
-Po vytvoření nového projektu nainstalujte knihovnu klienta tak, že kliknete pravým tlačítkem na řešení projektu v **Průzkumník řešení** a vyberete **Spravovat balíčky NuGet**. Ve Správci balíčků, který se otevře, vyberte **Procházet** , zaškrtněte políčko **Zahrnout předprodejní** a vyhledejte `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training` a `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction` . Vyberte nejnovější verzi a potom **nainstalujte**. 
+Po vytvoření nového projektu nainstalujte knihovnu klienta tak, že kliknete pravým tlačítkem na řešení projektu v **Průzkumník řešení** a vyberete **Spravovat balíčky NuGet**. Ve Správci balíčků, který se otevře, vyberte **Procházet**, zaškrtněte políčko **Zahrnout předprodejní** a vyhledejte `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training` a `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction` . Vyberte nejnovější verzi a potom **nainstalujte**. 
 
 #### <a name="cli"></a>[Rozhraní příkazového řádku](#tab/cli)
 
@@ -103,7 +103,7 @@ V metodě **Main** aplikace přidejte volání metod používaných v rámci toh
 
 ## <a name="object-model"></a>Objektový model
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |[CustomVisionTrainingClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient?view=azure-dotnet) | Tato třída zpracovává vytváření, školení a publikování vašich modelů. |
 |[CustomVisionPredictionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-dotnet-preview)| Tato třída zpracovává dotazování vašich modelů pro detekci objektů předpovědi.|
@@ -154,7 +154,7 @@ Potom se pomocí této mapy přidružení nahrají jednotlivé ukázkové obráz
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ObjectDetection/Program.cs?name=snippet_upload)]
 
-V tomto okamžiku jste nahráli všechny snímky ukázek a označili je každou z nich ( **rozvětvení** nebo **nůžky** ) s přiřazeným obdélníkem pixelů.
+V tomto okamžiku jste nahráli všechny snímky ukázek a označili je každou z nich (**rozvětvení** nebo **nůžky**) s přiřazeným obdélníkem pixelů.
 
 ## <a name="train-the-project"></a>Výuka projektu
 

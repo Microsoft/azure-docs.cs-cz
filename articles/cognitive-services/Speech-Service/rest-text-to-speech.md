@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: c7c43e02e6bdf75c9551ccdbb9dd8f75bf37a806
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a8321ba8bac0ecaf577bce6c3c05d10508128e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534977"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96020156"
 ---
 # <a name="text-to-speech-rest-api"></a>Rozhraní REST API pro převod textu na řeč
 
@@ -34,7 +34,7 @@ Než začnete používat toto rozhraní API, pochopte:
 * REST API převodu textu na řeč vyžaduje autorizační hlavičku. To znamená, že při přístupu ke službě musíte dokončit výměnu tokenů. Další informace najdete v tématu [Ověřování](#authentication).
 
 > [!TIP]
-> Podívejte [se na koncové body Azure pro státní](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure) správu (FairFax).
+> Podívejte [se na koncové body Azure pro státní](../../azure-government/compare-azure-government-global-azure.md) správu (FairFax).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -70,7 +70,7 @@ Než začnete používat toto rozhraní API, pochopte:
 
 Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro požadavky na převod textu na řeč.
 
-| Záhlaví | Description | Požadováno/volitelné |
+| Hlavička | Description | Požadováno/volitelné |
 |--------|-------------|---------------------|
 | `Authorization` | Autorizační token předchází slovu `Bearer` . Další informace najdete v tématu [Ověřování](#authentication). | Vyžadováno |
 
@@ -170,7 +170,7 @@ Tyto oblasti jsou podporované pro převod textu na řeč pomocí REST API. Ujis
 
 Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro požadavky na převod textu na řeč.
 
-| Záhlaví | Description | Požadováno/volitelné |
+| Hlavička | Description | Požadováno/volitelné |
 |--------|-------------|---------------------|
 | `Authorization` | Autorizační token předchází slovu `Bearer` . Další informace najdete v tématu [Ověřování](#authentication). | Vyžadováno |
 | `Content-Type` | Určuje typ obsahu pro zadaný text. Přijatá hodnota: `application/ssml+xml` . | Vyžadováno |
@@ -222,9 +222,9 @@ Authorization: Bearer [Base64 access_token]
 
 Příklady konkrétního jazyka najdete v našich rychlých startech:
 
-* [.NET Core, C #](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)
-* [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python)
-* [Node.js](quickstart-nodejs-text-to-speech.md)
+* [.NET Core, C #](./get-started-text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)
+* [Python](./get-started-text-to-speech.md?pivots=programming-language-python)
+* [Node.js](./get-started-text-to-speech.md)
 
 ### <a name="http-status-codes"></a>Stavové kódy HTTP
 
@@ -245,5 +245,5 @@ Pokud je stav HTTP `200 OK` , tělo odpovědi obsahuje zvukový soubor v požado
 ## <a name="next-steps"></a>Další kroky
 
 - [Vytvoření bezplatného účtu Azure](https://azure.microsoft.com/free/cognitive-services/)
-- [Asynchronní syntéza pro dlouhý formát zvuku](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [Asynchronní syntéza pro dlouhý formát zvuku](./long-audio-api.md)
 - [Začínáme se službou Custom Voice](how-to-custom-voice.md)

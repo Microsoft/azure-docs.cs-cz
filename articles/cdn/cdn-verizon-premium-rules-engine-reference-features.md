@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 06/02/2020
 ms.author: allensu
 ms.openlocfilehash: 0ea4f167b992ccfbc4156ac06c8f636d2ef4a355
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84343196"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020411"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN z funkcí modulu pravidel Premium Verizon
 
@@ -29,7 +29,7 @@ Dostupné typy funkcí jsou:
 * [Komentář](#comment)
 * [Hlavičky](#headers)
 * [Protokoly](#logs)
-* [Zvýšit](#optimize)
+* [Optimalizace](#optimize)
 * [Zdroji](#origin)
 * [Specializace](#specialty)
 * [Adresa URL](#url)
@@ -59,7 +59,7 @@ Tyto funkce jsou navržené tak, aby se přizpůsobily, kdy a jak se obsah uklá
 | [Omezení šířky pásma](https://docs.vdms.com/cdn/Content/HRE/F/Bandwidth-Throttling.htm) | Omezuje šířku pásma pro odpověď poskytovanou našimi hraničními servery. |
 | [Vynechat mezipaměť](https://docs.vdms.com/cdn/Content/HRE/F/Bypass-Cache.htm) | Určuje, jestli může požadavek využívat technologii pro ukládání do mezipaměti. |
 | [Zpracování hlaviček Cache-Control](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Control-Header-Treatment.htm) |  Řídí generování hlaviček Cache-Control serverem Edge, pokud je aktivní funkce externích Max-Age. |
-| [Řetězec dotazu na klíč v mezipaměti](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Query-String.htm) | Určuje, zda bude **mezipaměť-klíč*** zahrnovat nebo vyloučit parametry řetězce dotazu přidružené k žádosti. <br> _* Relativní cesta, která jednoznačně identifikuje prostředek pro účely ukládání do mezipaměti.  Naše hraniční servery používají tuto relativní cestu při kontrole obsahu v mezipaměti.  Ve výchozím nastavení nebude klíč mezipaměti obsahovat parametry řetězce dotazu._ |
+| [Řetězec dotazu na klíč v mezipaměti](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Query-String.htm) | Určuje, zda bude **mezipaměť-Key** _ zahrnout nebo vyloučit parametry řetězce dotazu přidružené k žádosti. <br> __ Relativní cesta, která jednoznačně identifikuje prostředek pro účely ukládání do mezipaměti.  Naše hraniční servery používají tuto relativní cestu při kontrole obsahu v mezipaměti.  Ve výchozím nastavení nebude klíč mezipaměti obsahovat řetězec dotazu parameters._ |
 | [Přepsání klíče do mezipaměti](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Rewrite.htm) | Přepíše klíč mezipaměti přidružený k žádosti. |
 | [Vyplnit celou mezipaměť](https://docs.vdms.com/cdn/Content/HRE/F/Complete-Cache-Fill.htm) | Určuje, co se stane, když požadavek způsobí částečnou Neúspěšné přístupy do mezipaměti na hraničním serveru. |
 | [Komprimovat typy souborů](https://docs.vdms.com/cdn/Content/HRE/F/Compress-File-Types.htm) | Definuje formáty souborů, které budou zkomprimovány na serveru. | 
@@ -113,7 +113,7 @@ Tyto funkce jsou navržené k přizpůsobení dat uložených v nezpracovaných 
 
 **[Zpět na začátek](#top)**
 
-### <a name="optimize"></a><a name="optimize"></a>Zvýšit
+### <a name="optimize"></a><a name="optimize"></a>Optimalizace
 
 Tyto funkce určují, jestli se požadavek bude podrobit optimalizacím poskytovaným optimalizátorem Edge.
 

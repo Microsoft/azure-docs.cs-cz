@@ -16,11 +16,11 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9b616b03698e83d256a7b81e4548edbf21dba058
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264636"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021125"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Postup sestavení Smooth Streaming aplikace pro Windows Store
 
@@ -66,13 +66,13 @@ Další informace o vývoji aplikací pro Windows Store najdete v tématu [vývo
 ### <a name="to-create-a-windows-store-project"></a>Vytvoření projektu Windows Store
 
 1. Spustit Visual Studio; jsou podporovány verze 2012 až 2015.
-1. V nabídce **soubor** klikněte na příkaz **Nový**a potom klikněte na **projekt**.
+1. V nabídce **soubor** klikněte na příkaz **Nový** a potom klikněte na **projekt**.
 1. V dialogovém okně Nový projekt zadejte nebo vyberte následující hodnoty:
 
     | Name | Hodnota |
     | --- | --- |
     | Skupina šablon |Nainstalované/šablony/Visual C#/Windows Store |
-    | Šablona |Prázdná aplikace (XAML) |
+    | Template (Šablona) |Prázdná aplikace (XAML) |
     | Name |SSPlayer |
     | Umístění |C:\SSTutorials |
     | Název řešení |SSPlayer |
@@ -82,13 +82,13 @@ Další informace o vývoji aplikací pro Windows Store najdete v tématu [vývo
 
 ### <a name="to-add-a-reference-to-the-smooth-streaming-client-sdk"></a>Přidání odkazu na sadu SDK pro Smooth Streaming klienta
 
-1. Z Průzkumník řešení klikněte pravým tlačítkem na **SSPlayer**a pak klikněte na **Přidat odkaz**.
+1. Z Průzkumník řešení klikněte pravým tlačítkem na **SSPlayer** a pak klikněte na **Přidat odkaz**.
 1. Zadejte nebo vyberte tyto hodnoty:
 
     | Name | Hodnota |
     | --- | --- |
     | Referenční skupina |Windows/rozšíření |
-    | Odkaz |Vyberte sadu Microsoft Smooth Streaming Client SDK pro Windows 8 a balíček Microsoft Visual C++ Runtime |
+    | Reference |Vyberte sadu Microsoft Smooth Streaming Client SDK pro Windows 8 a balíček Microsoft Visual C++ Runtime |
 
 1. Klikněte na **OK**. 
 
@@ -97,7 +97,7 @@ Po přidání odkazů musíte vybrat cílovou platformu (x64 nebo x86). Přidán
 ### <a name="to-design-the-player-user-interface"></a>Postup při návrhu uživatelského rozhraní přehrávače
 
 1. V Průzkumník řešení poklikejte na **MainPage. XAML** a otevře se v zobrazení Návrh.
-2. Vyhledejte ** &lt; mřížku &gt; ** a ** &lt; /Grid &gt; ** označí soubor XAML a vložte následující kód mezi dvě značky:
+2. Vyhledejte **&lt; mřížku &gt;** a **&lt; /Grid &gt;** označí soubor XAML a vložte následující kód mezi dvě značky:
 
    ```xml
          <Grid.RowDefinitions>
@@ -152,7 +152,7 @@ V tomto souboru XAML jsou k ovládacím prvkům přidruženy některé obslužn�
 
 ### <a name="to-modify-the-code-behind-file"></a>Úprava souboru kódu na pozadí
 
-1. Z Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML**a pak klikněte na **Zobrazit kód**.
+1. Z Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML** a pak klikněte na **Zobrazit kód**.
 2. V horní části souboru přidejte následující příkaz using:
 
     ```csharp
@@ -253,7 +253,7 @@ Tato lekce obsahuje následující postupy:
 
 ### <a name="to-register-the-smooth-streaming-byte-stream-handler-and-pass-the-propertyset"></a>Registrace obslužné rutiny bajtového datového proudu Smooth Streaming a předání PropertySet –u
 
-1. V Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML**a pak klikněte na **Zobrazit kód**.
+1. V Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML** a pak klikněte na **Zobrazit kód**.
 2. Na začátku souboru přidejte následující příkaz using:
 
    ```csharp
@@ -298,7 +298,7 @@ Tato lekce obsahuje následující postupy:
 
 ### <a name="to-add-the-adaptive-source-manager-level-event-handler"></a>Přidání obslužné rutiny události úrovně správce adaptivního zdroje
 
-1. V Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML**a pak klikněte na **Zobrazit kód**.
+1. V Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML** a pak klikněte na **Zobrazit kód**.
 2. Uvnitř třídy **MainPage** přidejte následující datový člen:
 
    ```csharp
@@ -326,7 +326,7 @@ Tato lekce obsahuje následující postupy:
 
 ### <a name="to-add-adaptive-source-level-event-handlers"></a>Přidání obslužných rutin událostí adaptivní zdrojové úrovně
 
-1. V Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML**a pak klikněte na **Zobrazit kód**.
+1. V Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML** a pak klikněte na **Zobrazit kód**.
 2. Uvnitř třídy **MainPage** přidejte následující datový člen:
 
    ```csharp
@@ -377,7 +377,7 @@ Stejné události jsou také k dispozici na úrovni adaptivního zdrojového spr
 
 ### <a name="to-add-media-element-event-handlers"></a>Přidání obslužných rutin událostí mediálního prvku
 
-1. V Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML**a pak klikněte na **Zobrazit kód**.
+1. V Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML** a pak klikněte na **Zobrazit kód**.
 2. Na konci třídy **MainPage** přidejte následující obslužné rutiny událostí:
 
    ```csharp
@@ -413,7 +413,7 @@ Stejné události jsou také k dispozici na úrovni adaptivního zdrojového spr
 
 ### <a name="to-add-slider-bar-related-code"></a>Přidání kódu souvisejícího s posuvníkem
 
-1. V Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML**a pak klikněte na **Zobrazit kód**.
+1. V Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML** a pak klikněte na **Zobrazit kód**.
 2. Na začátku souboru přidejte následující příkaz using:
 
    ```csharp
@@ -563,7 +563,7 @@ Smooth Streaming může streamovat obsah pomocí zvukového zvuku s více jazyky
 
 ### <a name="to-modify-the-xaml-file"></a>Úprava souboru XAML
 
-1. Z Průzkumník řešení klikněte pravým tlačítkem myši na **MainPage. XAML**a potom klikněte na tlačítko **Návrhář zobrazení**.
+1. Z Průzkumník řešení klikněte pravým tlačítkem myši na **MainPage. XAML** a potom klikněte na tlačítko **Návrhář zobrazení**.
 2. Vyhledejte &lt; Grid. RowDefinitions &gt; a upravte RowDefinitions tak, aby vypadaly takto:
 
    ```xml
@@ -606,7 +606,7 @@ Smooth Streaming může streamovat obsah pomocí zvukového zvuku s více jazyky
 
 ### <a name="to-modify-the-code-behind-file"></a>Úprava souboru kódu na pozadí
 
-1. Z Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML**a pak klikněte na **Zobrazit kód**.
+1. Z Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML** a pak klikněte na **Zobrazit kód**.
 2. V oboru názvů SSPlayer přidejte novou třídu:
 
    ```csharp
@@ -841,7 +841,7 @@ Smooth Streaming prezentace může obsahovat více videosouborů zakódovaných 
 
 ### <a name="to-modify-the-xaml-file"></a>Úprava souboru XAML
 
-1. Z Průzkumník řešení klikněte pravým tlačítkem myši na **MainPage. XAML**a potom klikněte na tlačítko **Návrhář zobrazení**.
+1. Z Průzkumník řešení klikněte pravým tlačítkem myši na **MainPage. XAML** a potom klikněte na tlačítko **Návrhář zobrazení**.
 2. Vyhledejte &lt; značku Grid &gt; s názvem **gridStreamAndBitrateSelection**, na konci značky přidejte následující kód:
    ```xml
          <StackPanel Name="spBitRateSelection" Grid.Row="1" Grid.Column="1">
@@ -863,7 +863,7 @@ Smooth Streaming prezentace může obsahovat více videosouborů zakódovaných 
 
 ### <a name="to-modify-the-code-behind-file"></a>Úprava souboru kódu na pozadí
 
-1. Z Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML**a pak klikněte na **Zobrazit kód**.
+1. Z Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML** a pak klikněte na **Zobrazit kód**.
 2. V oboru názvů SSPlayer přidejte novou třídu:
    ```csharp
         #region class Track

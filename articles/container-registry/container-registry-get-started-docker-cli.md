@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017, devx-track-azurecli
 ms.openlocfilehash: 067b5749332c2c41b86d22e7de60083d5f61a442
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746626"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020054"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Nahrání první image do soukromého registru kontejnerů Dockeru pomocí rozhraní příkazového řádku Dockeru
 
@@ -17,14 +17,14 @@ Registr kontejnerů Azure uchovává a spravuje privátní image kontejnerů [Do
 
 V následujících krocích stáhnete oficiální [Image Nginx](https://store.docker.com/images/nginx) z registru veřejného Docker Hub, označíte ji pro privátní službu Azure Container Registry, nahrajte ji do registru a pak ji nahrajte z registru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Registr kontejnerů Azure** – Vytvořte registr kontejnerů ve svém předplatném Azure. Použijte například [Azure Portal](container-registry-get-started-portal.md) nebo rozhraní příkazového [řádku Azure CLI](container-registry-get-started-azure-cli.md).
 * **Docker CLI** – musíte mít taky místně nainstalovaný Docker. Docker nabízí balíčky pro snadnou konfiguraci Dockeru v libovolném systému [macOS][docker-mac], [Windows][docker-windows] nebo [Linux][docker-linux].
 
 ## <a name="log-in-to-a-registry"></a>Přihlášení k registru
 
-Existuje [několik způsobů](container-registry-authentication.md) , jak ověřit do privátního registru kontejneru. Doporučeným způsobem při práci na příkazovém řádku je příkaz Azure CLI [AZ ACR Login](/cli/azure/acr?view=azure-cli-latest#az-acr-login). Například pro přihlášení k registru s názvem *myregistry* :
+Existuje [několik způsobů](container-registry-authentication.md) , jak ověřit do privátního registru kontejneru. Doporučeným způsobem při práci na příkazovém řádku je příkaz Azure CLI [AZ ACR Login](/cli/azure/acr?view=azure-cli-latest#az-acr-login). Například pro přihlášení k registru s názvem *myregistry*:
 
 ```azurecli
 az acr login --name myregistry
@@ -39,7 +39,7 @@ docker login myregistry.azurecr.io
 Oba příkazy se vrátí `Login Succeeded` po dokončení.
 
 > [!TIP]
-> Při použití `docker login` a při označování obrázků pro doručování do registru vždy zadejte plně kvalifikovaný název registru (všechna malá písmena). V příkladech v tomto článku je plně kvalifikovaný název *myregistry.azurecr.IO* .
+> Při použití `docker login` a při označování obrázků pro doručování do registru vždy zadejte plně kvalifikovaný název registru (všechna malá písmena). V příkladech v tomto článku je plně kvalifikovaný název *myregistry.azurecr.IO*.
 
 ## <a name="pull-the-official-nginx-image"></a>Stažení oficiální image Nginx
 

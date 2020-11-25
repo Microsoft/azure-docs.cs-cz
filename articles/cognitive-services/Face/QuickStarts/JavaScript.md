@@ -9,14 +9,14 @@ ms.custom: devx-track-js
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 06aa840c3cf33c9d1b70b800d45b9b455c4d61ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f302000529e0dbf7ecce69ac9bebe77af59561ee
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858332"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96020836"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a JavaScriptu
 
@@ -32,7 +32,7 @@ V tomto rychlém startu použijete REST API Azure Face s JavaScriptem k detekci 
 
 ## <a name="initialize-the-html-file"></a>Inicializovat soubor HTML
 
-Vytvořte nový soubor HTML *detectFaces.html*a přidejte následující kód.
+Vytvořte nový soubor HTML *detectFaces.html* a přidejte následující kód.
 
 ```html
 <!DOCTYPE html>
@@ -94,7 +94,7 @@ var params = {
 };
 ```
 
-Odpověď teď obsahuje atributy obličeje. Příklad:
+Odpověď teď obsahuje atributy obličeje. Například:
 
 ```json
 [

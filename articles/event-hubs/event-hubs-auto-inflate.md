@@ -4,11 +4,11 @@ description: Pokud chcete automaticky škálovat jednotky propustnosti, povolte 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1be564472011622b71b3066495748dfdbe6cc791
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86537237"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020802"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatické škálování jednotek propustnosti Azure Event Hubs
 Azure Event Hubs je vysoce škálovatelná platforma pro streamování dat. V takovém případě se Event Hubs využití často zvětšuje po zahájení používání služby. Takové použití vyžaduje zvýšení škály předem určených [jednotek propustnosti](event-hubs-scalability.md#throughput-units) pro škálování Event Hubs a zpracování větších přenosových rychlostí. Funkce automaticky **rozšířené** Event Hubs se automaticky škáluje tak, že se zvýší počet jednotek propustnosti, aby se splnily požadavky na využití. Zvýšení jednotek propustnosti zabraňuje scénářům omezování, ve kterých:
@@ -40,7 +40,7 @@ Automatickou možnost můžete povolit nebo zakázat na úrovni Standard Event H
 
 
 #### <a name="enable-at-the-time-of-creation"></a>Povolit v době vytváření 
-**Při vytváření oboru názvů Event Hubs**můžete povolit funkci automatického rozplochení:
+**Při vytváření oboru názvů Event Hubs** můžete povolit funkci automatického rozplochení:
  
 ![Povolit automatické rozploché v době vytváření centra událostí](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
 

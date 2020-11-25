@@ -7,11 +7,11 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 85ad78eeb095b427b1a6334f57c351e926022dff
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217809"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021873"
 ---
 # <a name="tutorial-add-cluster-nodes-to-an-azure-fxt-edge-filer-cluster"></a>Kurz: Přidání uzlů clusteru do clusteru Azure FXT Edge souborového
 
@@ -69,11 +69,11 @@ Sloupec **Actions** obsahuje tlačítka, která umožňují přidat uzel do clus
 
 Všechny uzly v clusteru musí používat stejnou verzi operačního systému, ale před přidáním uzlu nemusíte tento software aktualizovat. Po kliknutí na tlačítko **pro připojení** se proces připojení clusteru automaticky zkontroluje a nainstaluje software operačního systému, který odpovídá verzi v clusteru.
 
-Další informace o možnostech na této stránce najdete v části [ **cluster**  >  **FXT Nodes** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html) v Průvodci konfigurací clusteru.
+Další informace o možnostech na této stránce najdete v části [ **cluster**  >  **FXT Nodes**](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html) v Průvodci konfigurací clusteru.
 
 ## <a name="3-click-the-allow-to-join-button"></a>3. klikněte na tlačítko "udělit připojení".
 
-Klikněte na tlačítko **povolení spojení*** ve sloupci **Akce** pro uzel, který chcete přidat.
+Klikněte na tlačítko **pro připojení** _ ve sloupci _ *Akce** pro uzel, který chcete přidat.
 
 Po kliknutí na tlačítko se stav uzlu může změnit, protože jeho software se aktualizuje při přípravě na jeho přidání do clusteru.
 

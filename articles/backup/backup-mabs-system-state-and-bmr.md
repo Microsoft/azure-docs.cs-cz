@@ -4,11 +4,11 @@ description: Použijte Azure Backup Server k zálohování stavu systému a zaji
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: c5096158ca0e76ca03577347d8dd3e1419a33ca0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86538696"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021618"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>Zálohování stavu systému a obnovení do holého počítače pomocí Azure Backup Server
 
@@ -97,7 +97,7 @@ Po dokončení zálohování se soubor přenese na počítač se záložním ser
 
 ## <a name="before-you-begin"></a>Než začnete
 
-1. **Nasazení Azure Backup Server**. Ověřte, jestli je záložní server správně nasazený. Další informace naleznete v tématech:
+1. **Nasazení Azure Backup Server**. Ověřte, jestli je záložní server správně nasazený. Další informace naleznete v tématu:
     * [Požadavky na systém pro Azure Backup Server](/system-center/dpm/install-dpm#setup-prerequisites)
     * [Matice ochrany záložního serveru](backup-mabs-protection-matrix.md)
 
@@ -111,7 +111,7 @@ Zálohování stavu systému a holé součásti:
 
 1. Chcete-li spustit příkaz Create Průvodce vytvořením nové skupiny ochrany, vyberte v konzole správce záložního serveru možnost Akce **ochrany**  >  **Actions**  >  **vytvořit skupinu ochrany**.
 
-1. Na stránce **Vybrat typ skupiny ochrany** vyberte **servery**a pak vyberte **Další**.
+1. Na stránce **Vybrat typ skupiny ochrany** vyberte **servery** a pak vyberte **Další**.
 
 1. Na stránce **Vybrat členy skupiny** rozbalte počítač a pak vyberte buď **BMR** nebo **stav systému**.
 
@@ -122,11 +122,11 @@ Zálohování stavu systému a holé součásti:
     Krátkodobé zálohování je vždycky na disku nejprve s možností zálohování z disku do Azure pomocí Azure Backup (krátkodobá nebo dlouhodobá). Alternativou k dlouhodobému zálohování do cloudu je nastavení dlouhodobé zálohy na samostatné páskové zařízení nebo páskové knihovny, která je připojená k záložnímu serveru.
 
 1. Na stránce **Vybrat cíle Short-Term** zvolte způsob zálohování do krátkodobého úložiště na disku:
-    * V poli **Rozsah uchování**určete, jak dlouho chcete data na disku uchovávat.
-    * V případě **četnosti synchronizací**vyberte, jak často se má spouštět přírůstkové zálohování na disk. Pokud nechcete nastavit interval zálohování, můžete vybrat **těsně před bodem obnovení**. Záložní server spustí expresní úplné zálohování těsně před každým naplánovaným bodem obnovení.
+    * V poli **Rozsah uchování** určete, jak dlouho chcete data na disku uchovávat.
+    * V případě **četnosti synchronizací** vyberte, jak často se má spouštět přírůstkové zálohování na disk. Pokud nechcete nastavit interval zálohování, můžete vybrat **těsně před bodem obnovení**. Záložní server spustí expresní úplné zálohování těsně před každým naplánovaným bodem obnovení.
 
 1. Pokud chcete data pro dlouhodobé ukládání ukládat na pásku, pak na stránce **zadat Long-Termé cíle** zvolte, jak dlouho chcete data na pásce uchovávat (1 až 99 let).
-    1. V případě **četnosti zálohování**vyberte, jak často se má zálohování spouštět na pásku. Frekvence je založena na rozsahu uchování, který jste vybrali:
+    1. V případě **četnosti zálohování** vyberte, jak často se má zálohování spouštět na pásku. Frekvence je založena na rozsahu uchování, který jste vybrali:
         * Když je rozsah uchování 1 až 99 let, můžete zálohovat každý den, každý týden, dva týdny, měsíčně, čtvrtletně, pololetí nebo každý rok.
         * Když je rozsah uchování 1 až 11 měsíců, můžete zálohovat každý den, každý týden, dva týdny nebo každý měsíc.
         * Když je rozsah uchování 1 až 4 týdny, můžete zálohovat každý den nebo každý týden.
@@ -159,7 +159,7 @@ Zálohování stavu systému a holé součásti:
 
     Replikaci můžete provést po síti nebo při zálohování do offline režimu (offline osazení). Offline zálohování používá funkci importu Azure. Další informace najdete v tématu [pracovní postup offline zálohování v Azure Backup](offline-backup-azure-data-box.md).
 
-1. Na stránce  **Souhrn** zkontrolujte nastavení. Po výběru **vytvořit skupinu**se spustí počáteční replikace dat. Po dokončení replikace dat je stav skupiny ochrany **OK**na stránce **stav** . K zálohování pak dojde podle nastavení skupiny ochrany.
+1. Na stránce  **Souhrn** zkontrolujte nastavení. Po výběru **vytvořit skupinu** se spustí počáteční replikace dat. Po dokončení replikace dat je stav skupiny ochrany **OK** na stránce **stav** . K zálohování pak dojde podle nastavení skupiny ochrany.
 
 ## <a name="recover-system-state-or-bmr"></a>Obnovení stavu systému nebo BMR
 

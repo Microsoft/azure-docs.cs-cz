@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 543ecc80abeb9a437a895224de6ade679698c4d7
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565632"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020904"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Začínáme s automatické škálování v Azure
 Tento článek popisuje, jak nastavit nastavení automatického škálování pro váš prostředek v portál Microsoft Azure.
@@ -32,9 +32,9 @@ Můžete použít podokno filtru v horní části k určení oboru v seznamu pro
 
 U každého prostředku se zjistí aktuální počet instancí a stav automatického škálování. Stav automatického škálování může být:
 
-- **Nenakonfigurováno** : pro tento prostředek ještě není povolené automatické škálování.
-- **Povoleno** : pro tento prostředek jste povolili automatické škálování.
-- **Zakázáno** : pro tento prostředek jste zakázali automatické škálování.
+- **Nenakonfigurováno**: pro tento prostředek ještě není povolené automatické škálování.
+- **Povoleno**: pro tento prostředek jste povolili automatické škálování.
+- **Zakázáno**: pro tento prostředek jste zakázali automatické škálování.
 
 ## <a name="create-your-first-autoscale-setting"></a>Vytvoření prvního nastavení automatického škálování
 
@@ -59,7 +59,7 @@ Teď si projdeme jednoduchý podrobný návod k vytvoření vašeho prvního nas
    ![Škálování na základě procesoru][8]
 1. Klikněte na **Uložit**.
 
-Blahopřejeme! Úspěšně jste vytvořili první nastavení škálování pro automatické škálování webové aplikace na základě využití procesoru.
+Gratulujeme! Úspěšně jste vytvořili první nastavení škálování pro automatické škálování webové aplikace na základě využití procesoru.
 
 > [!NOTE]
 > Stejné kroky jsou použitelné pro zahájení práce se sadou škálování virtuálních počítačů nebo s rolí cloudové služby.
@@ -121,7 +121,7 @@ Chcete-li tuto funkci povolit u šablon ARM, nastavte `healthcheckpath` vlastnos
 
 ### <a name="health-check-path"></a>Cesta kontroly stavu
 
-Cesta musí odpovídat do jedné minuty se stavovým kódem mezi 200 a 299 (včetně). Pokud cesta nereaguje do jedné minuty nebo vrátí stavový kód mimo daný rozsah, instance se považuje za "není v pořádku". App Service nedodržuje 302 přesměrování v cestě kontroly stavu. Při kontrole stavu se integruje s funkcemi ověřování a autorizace App Service, bude systém kontaktovat koncový bod i v případě, že jsou povolené tyto funkce secuity. Pokud používáte vlastní ověřovací systém, musí cesta k kontrole stavu umožňovat anonymní přístup. Pokud má lokalita povolenou možnost HTTP **s** , bude žádost Healthcheck odeslána prostřednictvím protokolu HTTP **s**.
+Cesta musí odpovídat do jedné minuty se stavovým kódem mezi 200 a 299 (včetně). Pokud cesta nereaguje do jedné minuty nebo vrátí stavový kód mimo daný rozsah, instance se považuje za "není v pořádku". App Service nedodržuje 302 přesměrování v cestě kontroly stavu. Při kontrole stavu se integruje s funkcemi ověřování a autorizace App Service, bude systém kontaktovat koncový bod i v případě, že jsou povolené tyto funkce secuity. Pokud používáte vlastní ověřovací systém, musí cesta k kontrole stavu umožňovat anonymní přístup. Pokud má lokalita povolenou možnost HTTP **s**, bude žádost Healthcheck odeslána prostřednictvím protokolu HTTP **s**.
 
 Cesta pro kontrolu stavu by měla kontrolovat kritické součásti aplikace. Například pokud vaše aplikace závisí na databázi a systému zasílání zpráv, koncový bod kontroly stavu by se měl k těmto součástem připojit. Pokud se aplikace nemůže připojit k důležité součásti, měla by tato cesta vracet kód odpovědi 500 na úrovni, aby označoval, že aplikace není v pořádku.
 

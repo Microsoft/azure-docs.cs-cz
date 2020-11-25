@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
 ms.openlocfilehash: f9c7a2df83e9d630ce2b4635a830fb941180c758
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964996"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021826"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>Série StorSimple 8000: řešení hybridního cloudového úložiště
 
@@ -39,7 +39,7 @@ Kromě správy úložiště vám funkce ochrany dat StorSimple umožňují vytv�
 ## <a name="why-use-storsimple"></a>Proč používat StorSimple?
 Následující tabulka popisuje některé klíčové výhody, které Microsoft Azure StorSimple poskytuje.
 
-| Příznak | Výhoda |
+| Funkce | Výhoda |
 | --- | --- |
 | Transparentní integrace |Používá protokol iSCSI k neviditelnému propojení úložných zařízení s daty. Tím se zajistí, že se data uložená v cloudu, v datacentru nebo na vzdálených serverech budou ukládat do jednoho umístění. |
 | Snížení nákladů na úložiště |Přiděluje dostatečné místní nebo cloudové úložiště pro splnění aktuálních požadavků a rozšiřuje cloudové úložiště pouze v případě potřeby. Tím se snižuje nároky na úložiště a výdaje tím, že odstraňují redundantní verze stejných dat (odstranění duplicitních dat) a pomocí komprese. |
@@ -258,7 +258,7 @@ Následuje seznam jiného softwaru, který se používá s StorSimple k vytvář
 Před nasazením řešení Microsoft Azure StorSimple doporučujeme projít si následující pojmy a definice.
 
 ### <a name="key-terms-and-definitions"></a>Klíčové pojmy a definice
-| Výraz (akronym nebo zkratka) | Popis |
+| Výraz (akronym nebo zkratka) | Description |
 | --- | --- |
 | záznam řízení přístupu (ACR) |Záznam přidružený ke svazku na vašem zařízení Microsoft Azure StorSimple, který určuje, kteří hostitelé se k němu mohou připojit. Stanovení vychází z kvalifikovaného názvu iSCSI (IQN) hostitelů (obsažených v ACR), které se připojují k vašemu zařízení StorSimple. |
 | AES-256 |Algoritmus 256 standard AES (Advanced Encryption Standard) (AES) pro šifrování dat při jejich přesunu do cloudu a z něj. |

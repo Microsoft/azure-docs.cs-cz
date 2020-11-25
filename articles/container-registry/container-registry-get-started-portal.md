@@ -4,12 +4,12 @@ description: Rychle se naučíte, jak vytvořit privátní službu Azure Contain
 ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: f4f16506a36acfe8845e85caf2d337f992f0f332
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 00ed6b4569d22739051198c5b0c60987f783a87f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746672"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020037"
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>Rychlý Start: vytvoření služby Azure Container Registry pomocí Azure Portal
 
@@ -25,27 +25,27 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
 
-Vyberte **vytvořit**  >  **kontejnery** prostředků  >  **Container Registry** .
+Vyberte **vytvořit**  >  **kontejnery** prostředků  >  **Container Registry**.
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-01.png" alt-text="Přejít na registr kontejnerů na portálu":::
 
-Na kartě **základy** zadejte hodnoty pro **skupinu prostředků** a **název registru** . Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. Pro účely tohoto rychlého startu vytvořte novou skupinu prostředků `myResourceGroup` v umístění `West US` a jako **skladovou položku** vyberte Basic.
+Na kartě **základy** zadejte hodnoty pro **skupinu prostředků** a **název registru**. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. Pro účely tohoto rychlého startu vytvořte novou skupinu prostředků `myResourceGroup` v umístění `West US` a jako **skladovou položku** vyberte Basic.
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-03.png" alt-text="Přejít na registr kontejnerů na portálu":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-03.png" alt-text="Vytvoření registru kontejnerů na portálu":::
 
-Přijměte výchozí hodnoty pro zbývající nastavení. Pak vyberte **zkontrolovat + vytvořit** . Po zkontrolování nastavení vyberte **vytvořit** .
+Přijměte výchozí hodnoty pro zbývající nastavení. Pak vyberte **zkontrolovat + vytvořit**. Po zkontrolování nastavení vyberte **vytvořit**.
 
 V tomto rychlém startu vytvoříte *základní* registr, což je výhodná možnost pro vývojáře, kteří se naučí o Azure Container Registry. Podrobnosti o dostupných úrovních služby (SKU) najdete v tématu [úrovně služby registru kontejnerů][container-registry-skus].
 
 Po zobrazení zprávy o **úspěšném nasazení** vyberte v portálu registr kontejnerů. 
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="Přejít na registr kontejnerů na portálu":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="Přehled registru kontejnerů na portálu":::
 
-Poznamenejte si název registru a hodnotu **přihlašovacího serveru** . Tyto hodnoty použijete v následujících krocích při doručování a vyžádání imagí pomocí Docker.
+Poznamenejte si název registru a hodnotu **přihlašovacího serveru**. Tyto hodnoty použijete v následujících krocích při doručování a vyžádání imagí pomocí Docker.
 
 ## <a name="log-in-to-registry"></a>Přihlášení k registru
 
-Před vložením a stažením imagí kontejneru se musíte přihlásit k instanci registru. [Přihlaste se k Azure CLI][get-started-with-azure-cli] na svém místním počítači a spusťte příkaz [AZ ACR Login][az-acr-login] . (Při přihlášení pomocí Azure CLI zadejte jenom název registru. Nezahrnovat příponu domény ' azurecr.io '.)
+Před vložením a stažením imagí kontejneru se musíte přihlásit k instanci registru. [Přihlaste se k Azure CLI][get-started-with-azure-cli] na svém místním počítači a spusťte příkaz [AZ ACR Login][az-acr-login] . Při přihlašování pomocí Azure CLI zadejte jenom název registru. Nepoužívejte název přihlašovacího serveru, který zahrnuje příponu domény, například `azurecr.io` .
 
 ```azurecli
 az acr login --name <registry-name>
@@ -65,7 +65,7 @@ Příkaz po dokončení vrátí zprávu `Login Succeeded` (Přihlášení bylo �
 
 Pokud chcete zobrazit seznam imagí v registru, přejděte na portálu na svůj registr **a vyberte úložiště a pak** vyberte úložiště  **Hello** , které jste vytvořili pomocí `docker push` .
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-09.png" alt-text="Přejít na registr kontejnerů na portálu":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-09.png" alt-text="Výpis imagí kontejneru na portálu":::
 
 Výběrem úložiště **Hello-World** se v `v1` části **značky** zobrazí obrázek označený příznakem.
 
@@ -75,7 +75,7 @@ Výběrem úložiště **Hello-World** se v `v1` části **značky** zobrazí ob
 
 Pokud chcete prostředky vyčistit, přejděte do skupiny prostředků **myResourceGroup** na portálu. Po načtení skupiny prostředků klikněte na **Odstranit skupinu prostředků** a odeberte skupinu prostředků, registr kontejnerů a image kontejnerů, které jsou tam uložené.
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-08.png" alt-text="Přejít na registr kontejnerů na portálu":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-08.png" alt-text="Odstranit skupinu prostředků na portálu":::
 
 
 ## <a name="next-steps"></a>Další kroky

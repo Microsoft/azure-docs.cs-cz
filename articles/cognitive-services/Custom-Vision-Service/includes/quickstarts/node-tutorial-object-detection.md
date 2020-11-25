@@ -5,11 +5,11 @@ ms.service: cognitive-services
 ms.date: 10/26/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 0c6c80849f48cb4f859bcbaaeb4f072eb575ba74
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625528"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021253"
 ---
 Tato příručka poskytuje pokyny a ukázkový kód, který vám pomůže začít používat Custom Vision klientské knihovny pro Node.js sestavení modelu detekce objektu. Vytvoříte projekt, přidáte značky, provedete projekt a použijete adresu URL koncového bodu předpovědi projektu pro programové testování. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace pro rozpoznávání imagí.
 
@@ -28,7 +28,7 @@ Pomocí klientské knihovny Custom Vision pro .NET:
 Referenční dokumentace [(školení)](/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest) [(předpověď)](/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest) | Zdrojový kód knihovny [(školení)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-training) [(předpověď)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-prediction) | Ukázky balíčku (npm) ( [školení](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-training) ) [(předpovědi)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-prediction)  |  [Samples](/samples/browse/?products=azure&terms=custom%20vision&languages=javascript)
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Aktuální verze [Node.js](https://nodejs.org/)
@@ -85,7 +85,7 @@ Pro asynchronní volání přidejte také pole pro název projektu a parametr Ti
 
 ## <a name="object-model"></a>Objektový model
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |[TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) | Tato třída zpracovává vytváření, školení a publikování vašich modelů. |
 |[PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest)| Tato třída zpracovává dotazování vašich modelů pro detekci objektů předpovědi.|
@@ -177,7 +177,7 @@ Spusťte aplikaci pomocí `node` příkazu v souboru rychlého startu.
 node index.js
 ```
 
-V konzole by se měl zobrazit výstup aplikace. Pak můžete ověřit, zda je testovací obrázek (nalezen v **<sampleDataRoot> /test/** ) správně označen a zda je oblast detekce správná. Můžete se také vrátit na [web služby Custom Vision](https://customvision.ai) a zobrazit aktuální stav nově vytvořeného projektu.
+V konzole by se měl zobrazit výstup aplikace. Pak můžete ověřit, zda je testovací obrázek (nalezen v **<sampleDataRoot> /test/**) správně označen a zda je oblast detekce správná. Můžete se také vrátit na [web služby Custom Vision](https://customvision.ai) a zobrazit aktuální stav nově vytvořeného projektu.
 
 
 [!INCLUDE [clean-od-project](../../includes/clean-od-project.md)]

@@ -4,11 +4,11 @@ description: Tento článek popisuje, jak spravovat a monitorovat databáze SQL 
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: b0df22002521c8148cac1200e79aeb0ae5a60546
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89146517"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021499"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Správa a monitorování zálohovaných databází SQL Serveru
 
@@ -34,13 +34,13 @@ Vzhledem k tomu, že se zálohy protokolů vyskytují každých 15 minut, může
 
 Monitorování výstrah zálohování databáze:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. Na řídicím panelu trezoru vyberte **výstrahy a události**.
 
    ![Vybrat výstrahy a události](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
 
-3. V **upozorněních a událostech**vyberte **výstrahy zálohování**.
+3. V **upozorněních a událostech** vyberte **výstrahy zálohování**.
 
    ![Vybrat výstrahy zálohování](./media/backup-azure-sql-database/backup-alerts-dashboard.png)
 
@@ -61,7 +61,7 @@ Zastavení ochrany databáze:
 
 1. Na řídicím panelu trezoru vyberte **zálohované položky**.
 
-2. V části **typ správy zálohování**vyberte **SQL na virtuálním počítači Azure**.
+2. V části **typ správy zálohování** vyberte **SQL na virtuálním počítači Azure**.
 
     ![Výběr SQL na virtuálním počítači Azure](./media/backup-azure-sql-database/sql-restore-backup-items.png)
 
@@ -142,19 +142,19 @@ Verzi zásad můžete u všech ovlivněných položek opravit jedním kliknutím
 
 Zrušení registrace instance SQL Server po zakázání ochrany, ale před odstraněním trezoru:
 
-1. Na řídicím panelu trezoru v části **Spravovat**vyberte **infrastruktura zálohování**.  
+1. Na řídicím panelu trezoru v části **Spravovat** vyberte **infrastruktura zálohování**.  
 
    ![Výběr infrastruktury zálohování](./media/backup-azure-sql-database/backup-infrastructure-button.png)
 
-2. V části **servery pro správu**vyberte **chráněné servery**.
+2. V části **servery pro správu** vyberte **chráněné servery**.
 
    ![Vybrat chráněné servery](./media/backup-azure-sql-database/protected-servers.png)
 
-3. V části **chráněné servery**vyberte server, jehož registraci chcete zrušit. Pokud chcete trezor odstranit, musíte zrušit registraci všech serverů.
+3. V části **chráněné servery** vyberte server, jehož registraci chcete zrušit. Pokud chcete trezor odstranit, musíte zrušit registraci všech serverů.
 
 4. Klikněte pravým tlačítkem myši na chráněný Server a vyberte zrušit **registraci**.
 
-   ![Vybrat odstranit](./media/backup-azure-sql-database/delete-protected-server.jpg)
+   ![Vyberte Odstranit.](./media/backup-azure-sql-database/delete-protected-server.jpg)
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>Opětovné zaregistrování rozšíření na SQL Serverm virtuálním počítači
 

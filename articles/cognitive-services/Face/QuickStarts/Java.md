@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: fbe62cf00422710e18a6b112adc08f19ea03177b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8ea2908711497db5e86a7dd665548e33b9d9f25
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858349"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96020853"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a Javy
 
 V tomto rychlém startu použijete REST API Azure Face a Java k detekci lidských plošek v obraze.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/). 
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/). 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -75,7 +75,7 @@ Přímo pod předchozím kódem přidejte následující blok, který převede v
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 
-Zkompilujte kód a spusťte jej. Úspěšná odpověď zobrazí tvářená data v snadno čitelném formátu JSON v okně konzoly. Příklad:
+Zkompilujte kód a spusťte jej. Úspěšná odpověď zobrazí tvářená data v snadno čitelném formátu JSON v okně konzoly. Například:
 
 ```json
 [{
@@ -97,7 +97,7 @@ builder.setParameter("detectionModel", "detection_01");
 builder.setParameter("returnFaceAttributes", "age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise");
 ```
 
-Odpověď teď obsahuje atributy obličeje. Příklad:
+Odpověď teď obsahuje atributy obličeje. Například:
 
 ```json
 [{

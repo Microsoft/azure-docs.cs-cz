@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e5ffcd56be1ce7427697cd3a75bd7c4232cc3b8a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: dee9e7596c0a30301d9e0453ef22a6dfe9541522
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94667615"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96020938"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>Rychlý Start: nastavení ověření Azure pomocí Azure CLI
 
@@ -53,7 +53,7 @@ Začínáme s ověřováním Azure pomocí Azure CLI k nastavení ověření ide
 
 ## <a name="create-and-manage-an-attestation-provider"></a>Vytvoření a Správa poskytovatele ověřování identity
 
-Pomocí tohoto postupu můžete vytvořit a spravovat poskytovatele ověření identity.
+Tady jsou příkazy, které můžete použít k vytvoření a správě poskytovatele ověření identity:
 
 1. Spuštěním příkazu [AZ Attestation Create Create](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_create) vytvořte poskytovatele ověření identity:
 

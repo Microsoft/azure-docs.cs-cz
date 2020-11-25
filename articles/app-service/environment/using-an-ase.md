@@ -8,11 +8,11 @@ ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: 86d0569d95df18924ed47682b75d7491c71d4483
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833550"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021023"
 ---
 # <a name="use-an-app-service-environment"></a>Použití prostředí App Service Environment
 
@@ -165,7 +165,7 @@ Koncové body pro publikování pro aplikace ve službě ASE s interním nástro
 
 Pomocného programu má 1 TB úložiště pro všechny aplikace v pomocném formuláři. Plán App Service v izolované cenové SKU má limit 250 GB. V rámci pomocného mechanismu se 250 GB úložiště přidají za App Service plánu až do velikosti 1 TB. Můžete mít více App Service plánů než jenom čtyři, ale za omezení 1 TB se nepřidalo žádné další úložiště.
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>Protokolování
 
 Pomocí Azure Monitor můžete integrovat své pomocného mechanismu pro odesílání protokolů o pomocném programu do Azure Storage, Azure Event Hubs nebo Log Analytics. Tyto položky jsou protokolovány Dnes:
 

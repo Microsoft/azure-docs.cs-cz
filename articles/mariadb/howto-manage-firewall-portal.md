@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: 895c8e51e16cb0b82ebf3edcf954dabe62b08ff4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537127"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021771"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>Vytváření a Správa Azure Database for MariaDB pravidel brány firewall pomocí Azure Portal
 Pravidla brány firewall na úrovni serveru se dají použít ke správě přístupu k serveru Azure Database for MariaDB ze zadané IP adresy nebo rozsahu IP adres.
@@ -50,7 +50,7 @@ Pokud chcete aplikacím z Azure povolit připojení k vašemu Azure Database for
 ## <a name="manage-existing-firewall-rules-in-the-azure-portal"></a>Spravovat existující pravidla brány firewall v Azure Portal
 Opakováním kroků spravujte pravidla brány firewall.
 * Chcete-li přidat aktuální počítač, klikněte na tlačítko **+ Přidat moji IP adresu**. Kliknutím na **Uložit** uložte změny.
-* Pokud chcete přidat další IP adresy, zadejte **název pravidla** , **Počáteční IP adresu** a **koncovou IP adresu**. Kliknutím na **Uložit** uložte změny.
+* Pokud chcete přidat další IP adresy, zadejte **název pravidla**, **Počáteční IP adresu** a **koncovou IP adresu**. Kliknutím na **Uložit** uložte změny.
 * Pokud chcete upravit stávající pravidlo, klikněte na libovolné pole v pravidle a pak na Upravit. Kliknutím na **Uložit** uložte změny.
 * Pokud chcete odstranit stávající pravidlo, klikněte na tlačítko se třemi tečkami [...] a pak klikněte na **Odstranit**. Kliknutím na **Uložit** uložte změny.
 

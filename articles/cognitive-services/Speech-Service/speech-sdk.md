@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: ad26fe0d869a2e892a419b1732727c3ff1d1e9a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9356cbb6eb210d6745d90e8ad001917e73592cd3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88870710"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96021978"
 ---
 # <a name="about-the-speech-sdk"></a>Informace o sadě Speech SDK
 
@@ -29,7 +29,7 @@ Sada Speech SDK zpřístupňuje mnoho funkcí služby Speech, ale ne všechny. F
 
 ### <a name="speech-to-text"></a>Převod řeči na text
 
-[Převod řeči na text](speech-to-text.md) (označovaný také jako *rozpoznávání řeči*) transcribes zvukové streamy na text, který můžou aplikace, nástroje nebo zařízení spotřebovat nebo zobrazit. Použití převodu řeči na text s [Language Understanding (Luis)](../luis/index.yml) k odvození záměrů uživatele z přepisu řeči a fungování hlasových příkazů. [Překlad řeči](speech-translation.md) použijte k překladu vstupu řeči do jiného jazyka s jedním voláním. Další informace najdete v tématu [základy převodu řeči na text](speech-to-text-basics.md).
+[Převod řeči na text](speech-to-text.md) (označovaný také jako *rozpoznávání řeči*) transcribes zvukové streamy na text, který můžou aplikace, nástroje nebo zařízení spotřebovat nebo zobrazit. Použití převodu řeči na text s [Language Understanding (Luis)](../luis/index.yml) k odvození záměrů uživatele z přepisu řeči a fungování hlasových příkazů. [Překlad řeči](speech-translation.md) použijte k překladu vstupu řeči do jiného jazyka s jedním voláním. Další informace najdete v tématu [základy převodu řeči na text](./get-started-speech-to-text.md).
 
 **Rozpoznávání řeči (SR), seznam frází, záměr, překlad a místní kontejnery** jsou k dispozici na následujících platformách:
 
@@ -68,7 +68,7 @@ Převod [textu na řeč](text-to-speech.md) (označovaný také jako *syntéza �
 
 #### <a name="keyword-spotting"></a>Klíčové slovo hledání
 
-Koncept [klíčového slova hledání](speech-devices-sdk-create-kws.md) je podporován v sadě Speech SDK. Klíčové slovo hledání je aktem, který identifikuje klíčové slovo v řeči a po vyslechnutí klíčového slova sleduje akci. Například "Hey Cortana" by aktivoval pomocníka Cortana.
+Koncept [klíčového slova hledání](./custom-keyword-basics.md) je podporován v sadě Speech SDK. Klíčové slovo hledání je aktem, který identifikuje klíčové slovo v řeči a po vyslechnutí klíčového slova sleduje akci. Například "Hey Cortana" by aktivoval pomocníka Cortana.
 
 **Klíčové slovo hledání (KWS)** je k dispozici na následujících platformách:
 
@@ -180,4 +180,4 @@ Vlastní převod textu na řeč, označovaný také jako vlastní hlas, je sada 
 ## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření bezplatného účtu Azure](https://azure.microsoft.com/free/cognitive-services/)
-* [Přečtěte si téma rozpoznávání řeči v jazyce C. #](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+* [Přečtěte si téma rozpoznávání řeči v jazyce C. #](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet)

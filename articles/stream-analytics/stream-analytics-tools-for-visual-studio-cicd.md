@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
 ms.openlocfilehash: c05db2d9ba184da89665a236994c851355cc2644
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127429"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019850"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>Použití balíčku NuGet Azure Stream Analytics CI/CD pro integraci a vývoj 
 Tento článek popisuje, jak použít balíček NuGet Azure Stream Analytics CI/CD, abyste nastavili proces průběžné integrace a nasazování.
@@ -26,7 +26,7 @@ K dispozici je balíček NuGet: [Microsoft. Azure. Stream Analytics. CICD](https
 Další informace naleznete v tématu [Stream Analytics Tools for Visual Studio](./stream-analytics-quick-create-vs.md).
 
 ## <a name="msbuild"></a>MSBuild
-Podobně jako standardní prostředí Visual Studio MSBuild pro sestavení projektu máte dvě možnosti. Můžete kliknout pravým tlačítkem na projekt a pak zvolit **sestavit** . Nástroj **MSBuild** můžete také použít v balíčku NuGet z příkazového řádku.
+Podobně jako standardní prostředí Visual Studio MSBuild pro sestavení projektu máte dvě možnosti. Můžete kliknout pravým tlačítkem na projekt a pak zvolit **sestavit**. Nástroj **MSBuild** můžete také použít v balíčku NuGet z příkazového řádku.
 ```
 ./build/msbuild /t:build [Your Project Full Path] /p:CompilerTaskAssemblyFile=Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll  /p:ASATargetsFilePath="[NuGet Package Local Path]\build\StreamAnalytics.targets"
 
@@ -60,7 +60,7 @@ Pokud chcete použít spravovanou identitu pro Azure Data Lake Store Gen1 jako v
 ## <a name="command-line-tool"></a>Nástroj pro příkazový řádek
 
 ### <a name="build-the-project"></a>Sestavení projektu
-Balíček NuGet má nástroj příkazového řádku s názvem **SA.exe** . Podporuje sestavení projektu a místní testování na libovolném počítači, který můžete použít v procesu kontinuální integrace a průběžného doručování. 
+Balíček NuGet má nástroj příkazového řádku s názvem **SA.exe**. Podporuje sestavení projektu a místní testování na libovolném počítači, který můžete použít v procesu kontinuální integrace a průběžného doručování. 
 
 Ve výchozím nastavení jsou soubory nasazení umístěny do aktuálního adresáře. Výstupní cestu můžete zadat pomocí následujícího parametru-OutputPath:
 

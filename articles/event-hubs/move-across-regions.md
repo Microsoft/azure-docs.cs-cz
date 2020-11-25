@@ -4,11 +4,11 @@ description: V tomto článku se dozvíte, jak přesunout obor názvů Azure Eve
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.openlocfilehash: b177c3916919e3d97325f9d8c6b6027c00cb476f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89375189"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019918"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Přesunutí oboru názvů Azure Event Hubs do jiné oblasti
 V tomto článku se dozvíte, jak exportovat šablonu Azure Resource Manager pro existující obor názvů Event Hubs a potom použít šablonu k vytvoření oboru názvů se stejným nastavením konfigurace v jiné oblasti. Tento proces však nepřesouvá události, které ještě nebyly zpracovány. Před odstraněním je třeba zpracovat události z původního oboru názvů.
@@ -24,7 +24,7 @@ Pokud máte v rámci skupiny prostředků Azure, která obsahuje obor názvů Ev
 ## <a name="prepare"></a>Příprava
 Začněte tím, že vyexportujete šablonu Správce prostředků. Tato šablona obsahuje nastavení, která popisují váš obor názvů Event Hubs.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny prostředky** a pak vyberte svůj obor názvů Event Hubs.
 3. Vyberte > **Nastavení**  >  **Exportovat šablonu**.
 4. Na stránce **Exportovat šablonu** vyberte **Stáhnout** .
@@ -41,13 +41,13 @@ Nasaďte šablonu pro vytvoření oboru názvů Event Hubs v cílové oblasti.
 
 
 1. V Azure Portal vyberte **vytvořit prostředek**.
-2. V **části Hledat na Marketplace**zadejte **šablonu deployment**a vyberte **template Deployment (nasazení pomocí vlastních šablon)**.
+2. V **části Hledat na Marketplace** zadejte **šablonu deployment** a vyberte **template Deployment (nasazení pomocí vlastních šablon)**.
 5. **V editoru vyberte vytvořit vlastní šablonu**.
-6. Vyberte **načíst soubor**a potom podle pokynů načtěte **template.js** do souboru, který jste stáhli v poslední části.
+6. Vyberte **načíst soubor** a potom podle pokynů načtěte **template.js** do souboru, který jste stáhli v poslední části.
 1. Aktualizujte hodnotu `location` vlastnosti tak, aby odkazovala na novou oblast. Pokud chcete získat kódy umístění, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/). Kód oblasti je název oblasti bez mezer, například `West US` je rovno `westus` .
 1. Vyberte **Uložit** a šablonu uložte. 
 1. Na stránce **vlastní nasazení** proveďte tyto kroky: 
-    1. Vyberte **předplatné**Azure. 
+    1. Vyberte **předplatné** Azure. 
     2. Vyberte existující **skupinu prostředků** nebo ji vytvořte. Pokud byl zdrojový obor názvů v clusteru Event Hubs, vyberte skupinu prostředků, která obsahuje cluster v cílové oblasti. 
     3. Vyberte cílové **umístění** nebo oblast. Pokud jste vybrali existující skupinu prostředků, toto nastavení je jen pro čtení. 
     4. V části **Nastavení** proveďte následující kroky:    
@@ -68,17 +68,17 @@ Nasaďte šablonu pro vytvoření oboru názvů Event Hubs v cílové oblasti.
     1. Na stránce **Revize + vytvořit** zkontrolujte nastavení a pak vyberte **vytvořit**.   
 
 ## <a name="discard-or-clean-up"></a>Zahození nebo vyčištění
-Pokud po nasazení chcete začít znovu, můžete **cílový obor názvů Event Hubs**odstranit a postup opakovat postupem popsaným v části [Příprava](#prepare) a [Přesun](#move) v tomto článku.
+Pokud po nasazení chcete začít znovu, můžete **cílový obor názvů Event Hubs** odstranit a postup opakovat postupem popsaným v části [Příprava](#prepare) a [Přesun](#move) v tomto článku.
 
 Pokud chcete potvrdit změny a dokončit přesun Event Hubs oboru názvů, odstraňte **obor názvů Event Hubs** v původní oblasti. Ujistěte se, že jste všechny události v oboru názvů před odstraněním oboru názvů zpracovali. 
 
 Odstranění oboru názvů Event Hubs (zdroj nebo cíl) pomocí Azure Portal:
 
-1. V okně hledání v horní části Azure Portal zadejte **Event Hubs**a vyberte **Event Hubs** z výsledků hledání. V seznamu se zobrazí Event Hubs obory názvů.
+1. V okně hledání v horní části Azure Portal zadejte **Event Hubs** a vyberte **Event Hubs** z výsledků hledání. V seznamu se zobrazí Event Hubs obory názvů.
 2. Vyberte cílový obor názvů, který chcete odstranit, a vyberte **Odstranit** z panelu nástrojů. 
 
     ![Odstranit obor názvů – tlačítko](./media/move-across-regions/delete-namespace-button.png)
-3. Na stránce **Odstranit obor názvů** potvrďte odstranění zadáním **názvu oboru názvů**a pak vyberte **Odstranit**. 
+3. Na stránce **Odstranit obor názvů** potvrďte odstranění zadáním **názvu oboru názvů** a pak vyberte **Odstranit**. 
 
 ## <a name="next-steps"></a>Další kroky
 
