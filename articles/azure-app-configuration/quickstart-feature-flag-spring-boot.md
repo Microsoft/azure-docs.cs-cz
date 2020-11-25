@@ -8,11 +8,11 @@ ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
 ms.openlocfilehash: 64ccc9c91d9ead567035b1f7f35e0a0088b6200b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124182"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001460"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace na jaře Boot
 
@@ -20,7 +20,7 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do webové aplika
 
 Knihovny pro správu funkcí pružiny rozšiřuje rámec s kompletní podporou příznaků funkcí. Tyto **knihovny nemají závislost** na žádné knihovně Azure. Bez problémů se integruje s konfigurací aplikací prostřednictvím poskytovatele konfigurace spouštění pružiny.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Podporovaná [sada Java Development Kit SDK](/java/azure/jdk) s verzí 8.
@@ -45,12 +45,12 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
 1. Zadejte následující možnosti:
 
-   * Vygenerujte projekt **Maven** v **Javě** .
+   * Vygenerujte projekt **Maven** v **Javě**.
    * Zadejte verzi pro **jarní spuštění** , která je rovna nebo větší než 2,0.
-   * Zadejte názvy skupiny ( **Group** ) a artefaktu ( **Artifact** ) pro vaši aplikaci.  Tento článek používá `com.example` a `demo` .
+   * Zadejte názvy skupiny (**Group**) a artefaktu (**Artifact**) pro vaši aplikaci.  Tento článek používá `com.example` a `demo` .
    * Přidejte **webovou závislost pružiny** .
 
-1. Po zadání předchozích možností vyberte **generovat projekt** . Po zobrazení výzvy Stáhněte projekt do svého místního počítače.
+1. Po zadání předchozích možností vyberte **generovat projekt**. Po zobrazení výzvy Stáhněte projekt do svého místního počítače.
 
 ## <a name="add-feature-management"></a>Přidat správu funkcí
 
@@ -242,7 +242,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
     ```
 
-1. Vytvořte novou složku s názvem CSS pod `static` a uvnitř IT novým souborem CSS s názvem *Main. CSS* .
+1. Vytvořte novou složku s názvem CSS pod `static` a uvnitř IT novým souborem CSS s názvem *Main. CSS*.
 
     ```css
     html {
@@ -288,9 +288,9 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
     ![Snímek obrazovky s uvítací zprávou zobrazuje okno prohlížeče.](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
-1. Na portálu konfigurace aplikace vyberte **správce funkcí** a změňte stav **beta** klíče na **zapnuto** :
+1. Na portálu konfigurace aplikace vyberte **správce funkcí** a změňte stav **beta** klíče na **zapnuto**:
 
-    | Klíč | Stav |
+    | Klíč | State |
     |---|---|
     | Beta | Zapnout |
 

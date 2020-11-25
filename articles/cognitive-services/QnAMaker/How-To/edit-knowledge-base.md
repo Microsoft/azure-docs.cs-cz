@@ -6,11 +6,11 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.openlocfilehash: 3940f060209ea5ba55957a3673020656d45de9e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776540"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000092"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>Úprava párů QnA ve znalostní bázi
 
@@ -60,7 +60,7 @@ Textové úpravy textu odpovědi vám umožní Markdownu styl z jednoduchého pa
     |--|--|
     |Přepínání mezi bohatým editorem textu a Markdownu. `</>`|CTRL+M|
     |Psaného. **B**|z centra a za kg|
-    |Kurzíva, označená kurzívou ** _I_**|CTRL + I|
+    |Kurzíva, označená kurzívou **_I_**|CTRL + I|
     |Neseřazený seznam||
     |Seřazený seznam||
     |Styl odstavce||
@@ -112,7 +112,7 @@ Nemůžete propojit páry QnA v metadatech odpovědi.
 
 ## <a name="add-metadata"></a>Přidat metadata
 
-Přidejte páry metadat tak, že nejprve vyberete **Možnosti zobrazení**a pak vyberete **zobrazit metadata**. Tím se zobrazí sloupec metadata. Pak vyberte **+** znaménko a přidejte dvojici metadat. Tento pár se skládá z jednoho klíče a jedné hodnoty.
+Přidejte páry metadat tak, že nejprve vyberete **Možnosti zobrazení** a pak vyberete **zobrazit metadata**. Tím se zobrazí sloupec metadata. Pak vyberte **+** znaménko a přidejte dvojici metadat. Tento pár se skládá z jednoho klíče a jedné hodnoty.
 
 Další informace o metadatech v rychlém startu portálu QnA Maker pro metadata:
 * [Vytváření – přidání metadat do páru QnA](../quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)

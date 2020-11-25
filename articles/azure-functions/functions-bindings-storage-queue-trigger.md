@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 26f0006ad2b26757e335ba1819c2b82ba519f8cc
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 95560801d4132735435e4d45e8a588476636ec38
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491439"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96001231"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Aktivační událost služby Azure Queue Storage pro Azure Functions
 
@@ -97,6 +97,22 @@ public static void Run(CloudQueueMessage myQueueItem,
 
 Část [použití](#usage) vysvětluje `myQueueItem` , která je pojmenována `name` vlastností v function.jsna.  [Část metadata zprávy](#message-metadata) vysvětluje všechny zobrazené proměnné.
 
+# <a name="java"></a>[Java](#tab/java)
+
+Následující příklad Java ukazuje funkci triggeru fronty úložiště, která zaznamená aktivační zprávu umístěnou do fronty `myqueuename` .
+
+ ```java
+ @FunctionName("queueprocessor")
+ public void run(
+    @QueueTrigger(name = "msg",
+                   queueName = "myqueuename",
+                   connection = "myconnvarname") String message,
+     final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+ ```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Následující příklad ukazuje vazbu triggeru fronty v *function.js* souboru a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce dotazuje `myqueue-items` frontu a zapisuje protokol pokaždé, když je zpracována položka fronty.
@@ -141,6 +157,42 @@ module.exports = async function (context, message) {
 ```
 
 Část [použití](#usage) vysvětluje `myQueueItem` , která je pojmenována `name` vlastností v function.jsna.  [Část metadata zprávy](#message-metadata) vysvětluje všechny zobrazené proměnné.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Následující příklad ukazuje, jak číst zprávu fronty předanou funkci prostřednictvím triggeru.
+
+Aktivační událost fronty úložiště je definována v *function.jsv* souboru, kde `type` je nastavena na `queueTrigger` .
+
+```json
+{
+  "bindings": [
+    {
+      "name": "QueueItem",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "messages",
+      "connection": "MyStorageConnectionAppSetting"
+    }
+  ]
+}
+```
+
+Kód v souboru *Run.ps1* deklaruje parametr jako `$QueueItem` , který umožňuje čtení zprávy fronty ve funkci.
+
+```powershell
+# Input bindings are passed in via param block.
+param([string] $QueueItem, $TriggerMetadata)
+
+# Write out the queue message and metadata to the information log.
+Write-Host "PowerShell queue trigger function processed work item: $QueueItem"
+Write-Host "Queue item expiration time: $($TriggerMetadata.ExpirationTime)"
+Write-Host "Queue item insertion time: $($TriggerMetadata.InsertionTime)"
+Write-Host "Queue item next visible time: $($TriggerMetadata.NextVisibleTime)"
+Write-Host "ID: $($TriggerMetadata.Id)"
+Write-Host "Pop receipt: $($TriggerMetadata.PopReceipt)"
+Write-Host "Dequeue count: $($TriggerMetadata.DequeueCount)"
+```
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -189,22 +241,6 @@ def main(msg: func.QueueMessage):
 
     logging.info(result)
 ```
-
-# <a name="java"></a>[Java](#tab/java)
-
-Následující příklad Java ukazuje funkci triggeru fronty úložiště, která zaznamená aktivační zprávu umístěnou do fronty `myqueuename` .
-
- ```java
- @FunctionName("queueprocessor")
- public void run(
-    @QueueTrigger(name = "msg",
-                   queueName = "myqueuename",
-                   connection = "myconnvarname") String message,
-     final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
- ```
 
  ---
 
@@ -270,14 +306,6 @@ V [knihovnách tříd C#](functions-dotnet-class-library.md)pomocí následujíc
 
 Skripty jazyka C# nepodporují atributy.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Atributy nejsou podporovány jazykem JavaScript.
-
-# <a name="python"></a>[Python](#tab/python)
-
-Python nepodporuje atributy.
-
 # <a name="java"></a>[Java](#tab/java)
 
 `QueueTrigger`Poznámka vám poskytne přístup ke frontě, která aktivuje funkci. V následujícím příkladu je k dispozici zpráva fronty pro funkci prostřednictvím `message` parametru.
@@ -305,13 +333,25 @@ public class QueueTriggerDemo {
 |`queueName`  | Deklaruje název fronty v účtu úložiště. |
 |`connection` | Odkazuje na připojovací řetězec účtu úložiště. |
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Atributy nejsou podporovány jazykem JavaScript.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell nepodporuje atributy.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Python nepodporuje atributy.
+
 ---
 
 ## <a name="configuration"></a>Konfigurace
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `QueueTrigger` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**textový** | neuvedeno| Musí být nastaven na hodnotu `queueTrigger` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
 |**směr**| neuvedeno | V *function.jspouze v* souboru. Musí být nastaven na hodnotu `in` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
@@ -327,7 +367,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 Přístup k datům zprávy pomocí parametru metody, jako je například `string paramName` . Můžete vytvořit propojení s některým z následujících typů:
 
-* Object – modul runtime funkcí deserializace datovou část JSON do instance libovolné třídy definované ve vašem kódu. 
+* Object – modul runtime funkcí deserializace datovou část JSON do instance libovolné třídy definované ve vašem kódu.
 * `string`
 * `byte[]`
 * [CloudQueueMessage]
@@ -345,17 +385,21 @@ Přístup k datům zprávy pomocí parametru metody, jako je například `string
 
 Pokud se pokusíte vytvořit navázání `CloudQueueMessage` a získat chybovou zprávu, ujistěte se, že máte odkaz na [správnou verzi sady SDK úložiště](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x).
 
+# <a name="java"></a>[Java](#tab/java)
+
+[QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable&preserve-view=true) anotace poskytuje přístup ke zprávě fronty, která funkci aktivovala.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Datová část položky fronty je k dispozici prostřednictvím `context.bindings.<NAME>` , kde se `<NAME>` shoduje s názvem definovaným v *function.js*. Pokud je datová část JSON, hodnota je deserializována do objektu.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Přístup ke zprávě fronty prostřednictvím řetězcového parametru, který odpovídá názvu určenému `name` parametrem vazby v *function.jsv* souboru.
+
 # <a name="python"></a>[Python](#tab/python)
 
-Přístup ke zprávě fronty prostřednictvím parametru zadaného jako [QueueMessage](/python/api/azure-functions/azure.functions.queuemessage?view=azure-python).
-
-# <a name="java"></a>[Java](#tab/java)
-
-[QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable) anotace poskytuje přístup ke zprávě fronty, která funkci aktivovala.
+Přístup ke zprávě fronty prostřednictvím parametru zadaného jako [QueueMessage](/python/api/azure-functions/azure.functions.queuemessage?view=azure-python&preserve-view=true).
 
 ---
 
@@ -363,7 +407,7 @@ Přístup ke zprávě fronty prostřednictvím parametru zadaného jako [QueueMe
 
 Aktivační událost fronty poskytuje několik [vlastností metadat](./functions-bindings-expressions-patterns.md#trigger-metadata). Tyto vlastnosti lze použít jako součást výrazů vazby v jiných vazbách nebo jako parametry v kódu. Vlastnosti jsou členy třídy [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) .
 
-|Vlastnost|Typ|Popis|
+|Vlastnost|Typ|Description|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|Datová část fronty (Pokud platný řetězec). Pokud je datová část zprávy fronty řetězec, `QueueTrigger` má stejnou hodnotu jako proměnná s názvem `name` vlastností v *function.js*.|
 |`DequeueCount`|`int`|Počet, kolikrát byla tato zpráva odstraněna z fronty.|

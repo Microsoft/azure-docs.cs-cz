@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: ef9322c17a20ab5bfcf348649a1272dd4f301c5c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284465"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000670"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Řešení potíží se skripty v Azure HDInsight
 
@@ -45,13 +45,13 @@ Pokud se vytvoření clusteru nepovede kvůli chybě skriptu, protokoly se uchov
 
     ![Protokoly akcí skriptů](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
 
-    V rámci tohoto adresáře jsou protokoly uspořádány samostatně pro **hlavnímu uzlu** , **pracovní uzel** a **Zookeeper uzel**. Podívejte se na následující příklady:
+    V rámci tohoto adresáře jsou protokoly uspořádány samostatně pro **hlavnímu uzlu**, **pracovní uzel** a **Zookeeper uzel**. Podívejte se na následující příklady:
 
-    * **Hlavnímu uzlu** : `<ACTIVE-HEADNODE-NAME>.cloudapp.net`
+    * **Hlavnímu uzlu**: `<ACTIVE-HEADNODE-NAME>.cloudapp.net`
 
-    * **Pracovní uzel** : `<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
+    * **Pracovní uzel**: `<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
 
-    * **Uzel Zookeeper** : `<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
+    * **Uzel Zookeeper**: `<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
 
 * Všechny **stdout** a **stderr** odpovídajícího hostitele se nahrají do účtu úložiště. Pro každou akci skriptu existuje jeden **výstup- \* . txt** a **Errors. \* txt** . Soubor **Output-*. txt** obsahuje informace o identifikátoru URI skriptu, který byl spuštěn na hostiteli. Následující text je příkladem těchto informací:
 
@@ -84,7 +84,7 @@ Traceback (most recent call list):
 ImportError: cannot import name BlobService
 ```
 
-__Příčina__ : K této chybě dojde, když upgradujete klienta Python Azure Storage, který je součástí clusteru HDInsight. HDInsight očekává Azure Storage 0.20.0 klienta.
+__Příčina__: K této chybě dojde, když upgradujete klienta Python Azure Storage, který je součástí clusteru HDInsight. HDInsight očekává Azure Storage 0.20.0 klienta.
 
 __Řešení__. Chcete-li tuto chybu vyřešit, připojte se ručně k jednotlivým uzlům clusteru pomocí nástroje `ssh` . Spusťte následující příkaz, který znovu nainstaluje správnou verzi klienta úložiště:
 

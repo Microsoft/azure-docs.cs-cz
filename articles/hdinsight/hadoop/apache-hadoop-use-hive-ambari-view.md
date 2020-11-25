@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: cc04a891bb32ede6c7bb72a339b728642cf343ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207825"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000517"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Použití zobrazení Ambari Hive Apache s Apache Hadoopem v HDInsight
 
@@ -29,7 +29,7 @@ Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v s
 
 1. Z [Azure Portal](https://portal.azure.com/)vyberte svůj cluster.  Pokyny najdete v tématu [seznam a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#showClusters) . Cluster se otevře v novém zobrazení portálu.
 
-1. Z **řídicích panelů clusteru**vyberte **zobrazení Ambari**. Po zobrazení výzvy k ověření použijte název a heslo přihlášení clusteru (výchozí `admin` ), které jste zadali při vytváření clusteru. Můžete také přejít do `https://CLUSTERNAME.azurehdinsight.net/#/main/views` prohlížeče v prohlížeči, kde `CLUSTERNAME` je název vašeho clusteru.
+1. Z **řídicích panelů clusteru** vyberte **zobrazení Ambari**. Po zobrazení výzvy k ověření použijte název a heslo přihlášení clusteru (výchozí `admin` ), které jste zadali při vytváření clusteru. Můžete také přejít do `https://CLUSTERNAME.azurehdinsight.net/#/main/views` prohlížeče v prohlížeči, kde `CLUSTERNAME` je název vašeho clusteru.
 
 1. V seznamu zobrazení vyberte __zobrazení podregistru__.
 
@@ -62,7 +62,7 @@ Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v s
 
     |Příkaz | Popis |
     |---|---|
-    |ODKLÁDACÍ TABULKA|Odstraní tabulku a datový soubor pro případ, že tabulka již existuje.|
+    |DROP TABLE|Odstraní tabulku a datový soubor pro případ, že tabulka již existuje.|
     |VYTVOŘIT EXTERNÍ TABULKU|Vytvoří novou "externí" tabulku v podregistru. Externí tabulky ukládají pouze definici tabulky v podregistru. Data zůstanou v původním umístění.|
     |FORMÁT ŘÁDKU|Ukazuje, jak jsou data formátována. V tomto případě jsou pole v každém protokolu oddělená mezerou.|
     |ULOŽENO JAKO UMÍSTĚNÍ TEXTFILE|Zobrazuje, kde jsou data uložená, a že je uložená jako text.|
@@ -129,7 +129,7 @@ Deklarujete a uložte sadu UDF pomocí karty **UDF** v horní části zobrazení
 
 ![Zobrazení karty UDF zobrazení Apache Hive](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
-V dolní části **Editoru dotazů**se zobrazí tlačítko **Vložit UDF** . Tato položka zobrazí rozevírací seznam UDF definovaného v zobrazení podregistru. Když vyberete UDF, do dotazu se přidá příkazy HiveQL, které zapnete systém souborů UDF.
+V dolní části **Editoru dotazů** se zobrazí tlačítko **Vložit UDF** . Tato položka zobrazí rozevírací seznam UDF definovaného v zobrazení podregistru. Když vyberete UDF, do dotazu se přidá příkazy HiveQL, které zapnete systém souborů UDF.
 
 Například pokud jste definovali UDF s následujícími vlastnostmi:
 
@@ -141,7 +141,7 @@ Například pokud jste definovali UDF s následujícími vlastnostmi:
 
 * Název třídy UDF: com. myudfs. super
 
-Pomocí tlačítka pro **vložení UDF** se zobrazí položka s názvem **myudfs**a další rozevírací seznam pro každé UDF definované pro daný prostředek. V tomto případě je to **myawesomeudf**. Výběrem této položky se na začátek dotazu přidá následující text:
+Pomocí tlačítka pro **vložení UDF** se zobrazí položka s názvem **myudfs** a další rozevírací seznam pro každé UDF definované pro daný prostředek. V tomto případě je to **myawesomeudf**. Výběrem této položky se na začátek dotazu přidá následující text:
 
 ```hiveql
 add jar /myudfs.jar;

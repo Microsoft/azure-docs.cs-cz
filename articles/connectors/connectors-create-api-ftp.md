@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
 ms.openlocfilehash: f4cad2b658547d56d00efdd5e1496110f8e4a5e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87284009"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999569"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Vytvoření, monitorování a správa souborů FTP pomocí Azure Logic Apps
 
@@ -46,7 +46,7 @@ Aktivační procedury FTP fungují při cyklickém dotazování systému soubor�
 | Klient SFTP | Akce |
 |-------------|--------|
 | WinSCP | Přejít na **Možnosti**  >  **Předvolby**  >  **přenos**  >  **Upravit**  >  **zachovat časové razítko**  >  **Zakázat** |
-| FileZilly | Přejít na **přenos**–  >  zachovat zablokovaná**Časová razítka přenesených souborů**  >  **Disable** |
+| FileZilly | Přejít na **přenos**–  >  zachovat zablokovaná **Časová razítka přenesených souborů**  >  **Disable** |
 |||
 
 Pokud aktivační událost najde nový soubor, aktivační událost zkontroluje, jestli je nový soubor hotový, a ne částečně napsaný. Soubor může mít například probíhající změny, když aktivační událost kontroluje souborový server. Aby nedošlo k vrácení částečně napsaného souboru, aktivační událost zapisuje časové razítko pro soubor, který má poslední změny, ale tento soubor okamžitě nevrátí. Aktivační událost vrátí soubor pouze při opakovaném dotazování serveru. V některých případech může toto chování způsobit zpoždění až dvojnásobku intervalu dotazování triggeru.
@@ -73,7 +73,7 @@ Pokud aktivační událost najde nový soubor, aktivační událost zkontroluje,
 
    -nebo-
 
-   Pro existující aplikace logiky klikněte v posledním kroku na místo, kam chcete přidat akci, vyberte **Nový krok**a potom vyberte **přidat akci**. Do vyhledávacího pole zadejte `ftp` jako filtr. V seznamu **Akce** vyberte akci, kterou chcete.
+   Pro existující aplikace logiky klikněte v posledním kroku na místo, kam chcete přidat akci, vyberte **Nový krok** a potom vyberte **přidat akci**. Do vyhledávacího pole zadejte `ftp` jako filtr. V seznamu **Akce** vyberte akci, kterou chcete.
 
    Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
@@ -133,7 +133,7 @@ Akce **získat metadata souboru** získá vlastnosti souboru, který je na serve
 
    ![Vytvořit připojení k serveru FTP](./media/connectors-create-api-ftp/create-ftp-connection-action.png)
 
-1. Po zobrazení akce **získat metadata souboru** klikněte do pole **soubor** , aby se zobrazil seznam dynamického obsahu. Nyní můžete vybrat vlastnosti pro výstupy z předchozích kroků. V seznamu dynamického obsahu v části **získat metadata souboru**vyberte vlastnost **seznam ID souborů** , která odkazuje na kolekci, do které byl soubor přidán nebo aktualizován.
+1. Po zobrazení akce **získat metadata souboru** klikněte do pole **soubor** , aby se zobrazil seznam dynamického obsahu. Nyní můžete vybrat vlastnosti pro výstupy z předchozích kroků. V seznamu dynamického obsahu v části **získat metadata souboru** vyberte vlastnost **seznam ID souborů** , která odkazuje na kolekci, do které byl soubor přidán nebo aktualizován.
 
    ![Najde a vybere vlastnost seznam ID souborů.](./media/connectors-create-api-ftp/select-list-of-files-id-output.png)
 
@@ -145,7 +145,7 @@ Akce **získat metadata souboru** získá vlastnosti souboru, který je na serve
 
    ![Vyhledejte a vyberte akci načíst obsah souboru.](./media/connectors-create-api-ftp/select-get-file-content-ftp-action.png)
 
-1. Po zobrazení akce **získat obsah souboru** klikněte do pole **soubor** , aby se zobrazil seznam dynamického obsahu. Nyní můžete vybrat vlastnosti pro výstupy z předchozích kroků. V seznamu dynamického obsahu v části **získat metadata souboru**vyberte vlastnost **ID** , která odkazuje na soubor, který se přidal nebo aktualizoval.
+1. Po zobrazení akce **získat obsah souboru** klikněte do pole **soubor** , aby se zobrazil seznam dynamického obsahu. Nyní můžete vybrat vlastnosti pro výstupy z předchozích kroků. V seznamu dynamického obsahu v části **získat metadata souboru** vyberte vlastnost **ID** , která odkazuje na soubor, který se přidal nebo aktualizoval.
 
    ![Najde a vybere vlastnost ID.](./media/connectors-create-api-ftp/get-file-content-id-output.png)
 
@@ -167,7 +167,7 @@ Pokud chcete ověřit, že váš pracovní postup vrátí očekávaný obsah, p�
 
    ![Zadání informací o akci e-mailu](./media/connectors-create-api-ftp/selected-send-email-action.png)
 
-1. Uložte aplikaci logiky. Pokud chcete aplikaci logiky spustit a aktivovat, na panelu nástrojů vyberte **Spustit**a pak přidejte soubor do složky FTP, kterou vaše aplikace logiky teď monitoruje.
+1. Uložte aplikaci logiky. Pokud chcete aplikaci logiky spustit a aktivovat, na panelu nástrojů vyberte **Spustit** a pak přidejte soubor do složky FTP, kterou vaše aplikace logiky teď monitoruje.
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 

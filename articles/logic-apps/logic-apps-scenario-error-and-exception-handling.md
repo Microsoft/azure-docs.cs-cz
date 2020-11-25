@@ -8,11 +8,11 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
 ms.openlocfilehash: fdf5f25ae6f89ccc06c95ee1be021691dab0047a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322423"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000347"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scénář: Zpracování výjimek a protokolování chyb v aplikacích logiky
 
@@ -118,7 +118,7 @@ Je potřeba protokolovat zdroj (žádost) záznamu pacienta z portálu Dynamics 
 > [!NOTE]
 > Následující příklady jsou pouze ukázky. Vzhledem k tomu, že je tento kurz založený na implementaci nyní v produkčním prostředí, hodnota **zdrojového uzlu** nemusí zobrazovat vlastnosti související s plánováním schůzky. > 
 
-### <a name="logging"></a>protokolování
+### <a name="logging"></a>Protokolování
 
 Následující ukázka kódu aplikace logiky ukazuje, jak zpracovat protokolování.
 
@@ -396,7 +396,7 @@ Naše řešení přidalo možnosti s [Azure Cosmos DB](https://azure.microsoft.c
 
 ### <a name="error-management-portal"></a>Portál pro správu chyb
 
-Chcete-li zobrazit chyby, můžete vytvořit webovou aplikaci MVC k zobrazení záznamů o chybách z Cosmos DB. Aktuální verze obsahuje operace **seznamu**, **podrobností**, **Úpravy**a **odstranění** .
+Chcete-li zobrazit chyby, můžete vytvořit webovou aplikaci MVC k zobrazení záznamů o chybách z Cosmos DB. Aktuální verze obsahuje operace **seznamu**, **podrobností**, **Úpravy** a **odstranění** .
 
 > [!NOTE]
 > Upravit operaci: Cosmos DB nahradí celý dokument. Záznamy zobrazené v zobrazení **seznam** a **Podrobnosti** jsou pouze ukázky. Nejedná se o skutečné záznamy událostí pacienta.
@@ -468,7 +468,7 @@ Rozhraní API zavoláme z aplikace logiky pomocí následující syntaxe:
 
 Výraz v předchozí ukázce kódu kontroluje *Create_NewPatientRecord* stav **selhání**.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 * V aplikaci logiky můžete snadno implementovat protokolování a zpracování chyb.
 * Jako úložiště pro záznamy protokolů a chyb (dokumenty) můžete použít Azure Cosmos DB.

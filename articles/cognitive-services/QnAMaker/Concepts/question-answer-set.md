@@ -6,11 +6,11 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: c21c82b5fd024598da30f4ac7b1ed01e64561e3b
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576185"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000109"
 ---
 # <a name="question-and-answer-pair-concepts"></a>Koncepty dvojice otázek a odpovědí
 
@@ -28,8 +28,8 @@ Každý pár je reprezentován **identifikátorem**.
 Mezi **volitelná** nastavení pro pár patří:
 
 * **Alternativní formy otázky** – to pomáhá QnA maker vrátit správnou odpověď na širší řadu otázek.
-* **Metadata** : metadata jsou značky přidružené k páru QnA a jsou reprezentovány jako páry klíč-hodnota. Značky metadat slouží k filtrování párů QnA a omezení sady, u které se provádí párování dotazů.
-* **Víceřádkové výzvy** , které se používají k pokračování vícenásobného zapínání konverzace
+* **Metadata**: metadata jsou značky přidružené k páru QnA a jsou reprezentovány jako páry klíč-hodnota. Značky metadat slouží k filtrování párů QnA a omezení sady, u které se provádí párování dotazů.
+* **Víceřádkové výzvy**, které se používají k pokračování vícenásobného zapínání konverzace
 
 ![QnA Maker základy znalostí](../media/qnamaker-concepts-knowledgebase/knowledgebase.png)
 

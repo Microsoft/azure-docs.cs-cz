@@ -5,15 +5,15 @@ services: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.openlocfilehash: 58c2c597c7a75c801af91cd735561071250bda2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426142"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000568"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurace sítě Azure CNI ve službě Azure Kubernetes Service (AKS)
 
-Ve výchozím nastavení používají clustery AKS [kubenet][kubenet]a pro vás vytvoří virtuální síť a podsíť. Pomocí *kubenet*uzly získají IP adresu z podsítě virtuální sítě. V uzlech se pak nakonfiguruje překlad síťových adres (NAT) a lusky obdrží IP adresu "skrytá" za IP adresou uzlu. Tento přístup snižuje počet IP adres, které je třeba vyhradit v síťovém prostoru pro použití v luskech.
+Ve výchozím nastavení používají clustery AKS [kubenet][kubenet]a pro vás vytvoří virtuální síť a podsíť. Pomocí *kubenet* uzly získají IP adresu z podsítě virtuální sítě. V uzlech se pak nakonfiguruje překlad síťových adres (NAT) a lusky obdrží IP adresu "skrytá" za IP adresou uzlu. Tento přístup snižuje počet IP adres, které je třeba vyhradit v síťovém prostoru pro použití v luskech.
 
 Díky [rozhraní CNI (Azure Container Networking Interface)][cni-networking]každý z nich získá IP adresu z podsítě a dá se k nim získat přímý pøístup. Tyto IP adresy musí být v rámci vašeho síťového prostoru jedinečné a musí být plánovány předem. Každý uzel má parametr konfigurace maximálního počtu lusků, které podporuje. Pro tento uzel je pak rezervovaný i ekvivalentní počet IP adres na uzel. Tento přístup vyžaduje více plánování a často vede k vyčerpání IP adres nebo k nutnosti opětovnému sestavení clusterů ve větší podsíti, dokud vaše aplikace požaduje růst.
 

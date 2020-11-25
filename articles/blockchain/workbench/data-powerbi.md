@@ -5,11 +5,11 @@ ms.date: 04/22/2020
 ms.topic: how-to
 ms.reviewer: sunri
 ms.openlocfilehash: 7e0e585ce45616c2402972c725b502f4b704d1cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532371"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000143"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Použití dat služby Azure Blockchain Workbench v Power BI
 
@@ -24,7 +24,7 @@ Tento článek obsahuje podrobný návod, jak se připojit k databázi SQL Datab
 ## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Připojení Power BI k datům v Azure blockchain Workbench
 
 1.  Otevřete Power BI Desktop.
-2.  Vyberte **získat data**.
+2.  Vyberte **Získat data**.
 
     ![Získání dat](./media/data-powerbi/get-data.png)
 3.  Ze seznamu typů zdrojů dat vyberte **SQL Server**.

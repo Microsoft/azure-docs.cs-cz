@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
 ms.openlocfilehash: 99d90e4d93f0e4a70350a5a33a65700c3e14acb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398319"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000806"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Kopírování nových a změněných souborů pomocí LastModifiedDate s Azure Data Factory
 
@@ -26,7 +26,7 @@ Tento článek popisuje šablonu řešení, kterou můžete použít ke kopírov
 
 ## <a name="about-this-solution-template"></a>O této šabloně řešení
 
-Tato šablona nejprve vybere nové a změněné soubory pouze pomocí atributů **LastModifiedDate**a pak zkopíruje tyto vybrané soubory z úložiště zdrojů dat do úložiště cíle dat.
+Tato šablona nejprve vybere nové a změněné soubory pouze pomocí atributů **LastModifiedDate** a pak zkopíruje tyto vybrané soubory z úložiště zdrojů dat do úložiště cíle dat.
 
 Šablona obsahuje jednu aktivitu:
 - **Kopírováním** můžete kopírovat nové a změněné soubory pouze pomocí LastModifiedDate z úložiště souborů do cílového úložiště.
@@ -73,7 +73,7 @@ Tato šablona nejprve vybere nové a změněné soubory pouze pomocí atributů 
 
     ![Kontrola výsledku](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate7.png)
     
-7. Nyní můžete přidat bubnovou aktivační událost Windows pro automatizaci tohoto kanálu, aby kanál vždy mohl pravidelně kopírovat nové a změněné soubory pouze pomocí LastModifiedDate.  Vyberte **Přidat aktivační událost**a vyberte **Nová/upravit**.
+7. Nyní můžete přidat bubnovou aktivační událost Windows pro automatizaci tohoto kanálu, aby kanál vždy mohl pravidelně kopírovat nové a změněné soubory pouze pomocí LastModifiedDate.  Vyberte **Přidat aktivační událost** a vyberte **Nová/upravit**.
 
     ![Snímek obrazovky, který zvýrazní možnost nabídky nová/upravit, která se zobrazí, když vyberete Přidat Trigger.](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
     
@@ -88,8 +88,8 @@ Tato šablona nejprve vybere nové a změněné soubory pouze pomocí atributů 
     - **Directory_Source**  =  **podsložky**.  Můžete nahradit podsložku ve zdrojovém úložišti dat.
     - **FolderPath_Destination**  =  **DestinationFolder**.  Můžete nahradit složkou v cílovém úložišti dat.
     - **Directory_Destination**  =  **podsložky**.  Můžete nahradit podsložku v cílovém úložišti dat.
-    - **LastModified_From**  =   ** \@ Trigger (). Outputs. windowStartTime**.  Jedná se o systémovou proměnnou od triggeru, která určuje čas, kdy se kanál aktivoval při posledním spuštění.
-    - **LastModified_To**  =  ** \@ Trigger (). Outputs. windowEndTime**.  Jedná se o systémovou proměnnou z triggeru určující čas, kdy se kanál aktivuje.
+    - **LastModified_From**  =   **\@ Trigger (). Outputs. windowStartTime**.  Jedná se o systémovou proměnnou od triggeru, která určuje čas, kdy se kanál aktivoval při posledním spuštění.
+    - **LastModified_To**  =  **\@ Trigger (). Outputs. windowEndTime**.  Jedná se o systémovou proměnnou z triggeru určující čas, kdy se kanál aktivuje.
     
     ![Vstupní parametry](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     

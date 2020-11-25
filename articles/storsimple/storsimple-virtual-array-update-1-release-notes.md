@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 2ec88e4e97d45b27c0226198491b3adec6448496
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960236"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000891"
 ---
 # <a name="storsimple-virtual-array-update-10-release-notes"></a>Zpráva k vydání verze pro StorSimple Virtual Array Update 1,0
 
@@ -47,7 +47,7 @@ Aktualizace 1,0 odpovídá **10.0.10296.0** verze softwaru.
 
 Následující tabulka poskytuje souhrn chyb opravených v této verzi.
 
-| Ne. | Příznak | Problém |
+| Ne. | Funkce | Problém |
 | --- | --- | --- |
 | 1 |Ověřování pomocí AAD| Tato verze obsahuje změny, které umožňují ověřování AAD pomocí Device Manager StorSimple.|
 | 2 |Uvolnění paměti| Tento problém se nahlásil na zákaznické stránce, kde se zařízení a účty úložiště nacházejí v různých oblastech, a zákazník oznámil občasné chyby sítě a tím má vliv na fakturaci. V této verzi byl tento problém vyřešen. |
@@ -58,7 +58,7 @@ Následující tabulka poskytuje souhrn chyb opravených v této verzi.
 
 Následující tabulka obsahuje souhrn známých problémů pro virtuální pole StorSimple a obsahuje vydané verze zaznamenané z předchozích verzí.
 
-| Ne. | Příznak | Problém | Alternativní řešení/komentáře |
+| Ne. | Funkce | Problém | Alternativní řešení/komentáře |
 | --- | --- | --- | --- |
 | **1.** |Aktualizace |Virtuální pole vytvořená ve verzi Preview nelze aktualizovat na podporovanou verzi obecné dostupnosti. |U těchto virtuálních polí je potřeba převzít služby při selhání pro vydání obecné dostupnosti pomocí pracovního postupu zotavení po havárii (DR). |
 | **2.** |Zřízený datový disk |Jakmile zřídíte datový disk určité zadané velikosti a vytvoříte odpovídající virtuální pole StorSimple, nesmíte tento datový disk zvětšit ani zmenšit. Při pokusu o provedení dojde ke ztrátě všech dat v místních vrstvách zařízení. | |
@@ -83,7 +83,7 @@ Následující tabulka obsahuje souhrn známých problémů pro virtuální pole
 ## <a name="next-steps"></a>Další kroky
 [Nainstalujte aktualizaci 1,0](storsimple-virtual-array-install-update-1.md) na virtuální pole StorSimple.
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 Hledáte starší poznámku k verzi? Přejít na:
 *  [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,6](storsimple-virtual-array-update-06-release-notes.md)
 * [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,5](storsimple-virtual-array-update-05-release-notes.md)

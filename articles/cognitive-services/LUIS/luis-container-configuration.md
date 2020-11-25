@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 48a9856c58a815eabcc0b105efcd548e66ddd552
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a4f2b07edc6c290fa030621a4dc400ab50890bba
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80874207"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96001144"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Konfigurace kontejnerů Docker Language Understanding 
 
@@ -26,16 +26,16 @@ Prostředí modulu runtime kontejneru **Language Understanding** (Luis) je nakon
 
 Tento kontejner má následující nastavení konfigurace:
 
-|Požaduje se|Nastavení|Účel|
+|Vyžadováno|Nastavení|Účel|
 |--|--|--|
-|Ano|[ApiKey](#apikey-setting)|Používá se ke sledování fakturačních informací.|
-|No|[ApplicationInsights](#applicationinsights-setting)|Umožňuje přidat do svého kontejneru podporu telemetrie [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) .|
-|Ano|[Fakturace](#billing-setting)|Určuje identifikátor URI koncového bodu prostředku služby v Azure.|
-|Ano|[Konkrétní](#eula-setting)| Označuje, že jste přijali licenci pro kontejner.|
+|Yes|[ApiKey](#apikey-setting)|Používá se ke sledování fakturačních informací.|
+|No|[ApplicationInsights](#applicationinsights-setting)|Umožňuje přidat do svého kontejneru podporu telemetrie [Azure Application Insights](/azure/application-insights) .|
+|Yes|[Fakturace](#billing-setting)|Určuje identifikátor URI koncového bodu prostředku služby v Azure.|
+|Yes|[Konkrétní](#eula-setting)| Označuje, že jste přijali licenci pro kontejner.|
 |No|[Fluent](#fluentd-settings)|Protokol zápisu a volitelně data metriky na server se systémem.|
 |No|[Proxy server http](#http-proxy-credentials-settings)|Nakonfigurujte proxy server HTTP pro vytváření odchozích požadavků.|
 |No|[Protokolování](#logging-settings)|Poskytuje podporu protokolování ASP.NET Core pro váš kontejner. |
-|Ano|[Připojí](#mount-settings)|Čtení a zápis dat z hostitelského počítače do kontejneru a z kontejneru zpátky do hostitelského počítače.|
+|Yes|[Připojí](#mount-settings)|Čtení a zápis dat z hostitelského počítače do kontejneru a z kontejneru zpátky do hostitelského počítače.|
 
 > [!IMPORTANT]
 > [`ApiKey`](#apikey-setting)Nastavení, [`Billing`](#billing-setting) a [`Eula`](#eula-setting) se používají společně a musíte zadat platné hodnoty pro všechny tři z nich. v opačném případě se Váš kontejner nespustí. Další informace o tom, jak pomocí těchto nastavení konfigurace vytvořit instanci kontejneru, najdete v tématu [fakturace](luis-container-howto.md#billing).
@@ -64,7 +64,7 @@ Toto nastavení najdete v následujících umístěních:
 * Azure Portal: Přehled **Cognitive Services** , označený `Endpoint`
 * Portál LUIS: **klíčová stránka a nastavení koncového bodu** jako součást identifikátoru URI koncového bodu.
 
-| Požaduje se | Název | Datový typ | Popis |
+| Vyžadováno | Name | Datový typ | Popis |
 |----------|------|-----------|-------------|
 | Ano      | `Billing` | řetězec | Identifikátor URI koncového bodu fakturace Další informace o získání identifikátoru URI fakturace najdete v tématu [shromáždění požadovaných parametrů](luis-container-howto.md#gathering-required-parameters). Další informace a úplný seznam regionálních koncových bodů najdete v tématu [názvy vlastních subdomén pro Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
@@ -94,7 +94,7 @@ Přesná syntaxe umístění hostitelského připojení se liší v závislosti 
 
 V následující tabulce jsou popsána podporovaná nastavení.
 
-|Požaduje se| Název | Datový typ | Popis |
+|Vyžadováno| Name | Datový typ | Popis |
 |-------|------|-----------|-------------|
 |Ano| `Input` | Řetězec | Cíl vstupního připojení Výchozí hodnota je `/input`. Toto je umístění souborů balíčku LUIS. <br><br>Příklad:<br>`--mount type=bind,src=c:\input,target=/input`|
 |No| `Output` | Řetězec | Cíl připojení pro výstup. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly dotazů LUIS a protokoly kontejnerů. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|

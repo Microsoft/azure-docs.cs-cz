@@ -5,18 +5,18 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: 17b070fea422268ec12e0ccd3357ae0549a78916
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e803fa393d85f7f0b4849aed96356b7a4e77d83f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566261"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96000126"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Language Understanding
 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Language Understanding (LUIS).
 
-## <a name="whats-new"></a>Co je nového
+## <a name="whats-new"></a>Novinky
 
 [Přečtěte si další](whats-new.md) informace o novinkách v Language UNDERSTANDING (Luis).
 
@@ -108,7 +108,7 @@ Mezi řešení patří:
 
 * Pokud nejste na nejvyšší úrovni, můžete [zvýšit svou cenovou úroveň](luis-how-to-azure-subscription.md#change-the-pricing-tier).
 * Pokud vaše využití přesáhne nejvyšší cenovou úroveň, přidejte další Language Understanding prostředky s nástrojem pro vyrovnávání zatížení před nimi. K tomu může pomáhat [kontejner Language Understanding](luis-container-howto.md) s Kubernetes nebo Docker Compose.
-* Pomocí [zásady opakování](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) , kterou sami implementujete, můžete své požadavky na klientskou aplikaci vymezit tak, že se zobrazí tento stavový kód.
+* Pomocí [zásady opakování](/azure/architecture/best-practices/transient-faults#general-guidelines) , kterou sami implementujete, můžete své požadavky na klientskou aplikaci vymezit tak, že se zobrazí tento stavový kód.
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Dotaz na koncový bod vrátil neočekávané výsledky. Co bych měl/a dělat?
 
@@ -274,7 +274,7 @@ Předejte stejný utterance do LUIS z [koncového bodu Luis](luis-get-started-cr
 
 Pokud používáte Azure Bot Service a problém je, že se **test ve webovém chatu** vrátí `Sorry, my bot code is having an issue` , zkontrolujte protokoly:
 
-1. V Azure Portal pro robota v části **Správa robota** vyberte **Build (sestavit** ).
+1. V Azure Portal pro robota v části **Správa robota** vyberte **Build (sestavit**).
 1. Otevřete Editor kódu online.
 1. V horním, modrém navigačním panelu vyberte název robota (druhá položka napravo).
 1. V rozevíracím seznamu výsledek vyberte možnost **otevřít konzolu Kudu**.
@@ -286,7 +286,7 @@ Pokud používáte Azure Bot Service a problém je, že se **test ve webovém ch
 
 #### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Vyřešte problém při ladění na místním počítači s rozhraním bot Framework.
 
-Další informace o místním ladění robota najdete v tématu věnovaném [ladění robota](https://docs.microsoft.com/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0).
+Další informace o místním ladění robota najdete v tématu věnovaném [ladění robota](/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0).
 
 ## <a name="integrating-luis"></a>Integrace LUIS
 
@@ -296,7 +296,7 @@ Pokud vyberete šablonu LUIS a v podokně šablona vyberete tlačítko **Vybrat*
 ![Oblast bot webové aplikace LUIS Template](./media/luis-faq/web-app-bot-location.png)
 
 ### <a name="what-luis-regions-support-bot-framework-speech-priming"></a>Jaké oblasti LUIS podporují pro řeči pro robot Framework?
-Dočistění [řeči](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming) je podporované jenom pro aplikace Luis v centrální instanci (US).
+Dočistění [řeči](/bot-framework/bot-service-manage-speech-priming) je podporované jenom pro aplikace Luis v centrální instanci (US).
 
 ## <a name="api-programming-strategies"></a>Strategie programování API
 
@@ -334,4 +334,4 @@ Videa:
 
 Další informace o LUIS najdete v následujících zdrojích informací:
 * [Stack Overflow dotazy označené pomocí LUIS](https://stackoverflow.com/questions/tagged/luis)
-* [Microsoft Q&Stránka s otázkou pro MSDN Language Understanding Intelligent Services (LUIS)](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)
+* [Microsoft Q&Stránka s otázkou pro MSDN Language Understanding Intelligent Services (LUIS)](/answers/topics/azure-language-understanding.html)

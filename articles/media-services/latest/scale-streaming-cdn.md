@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 6bdf6015ca5633c77280111a55055a7394cee5bd
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057650"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001367"
 ---
 # <a name="stream-content-with-cdn-integration"></a>Streamování obsahu pomocí integrace CDN
 
@@ -32,7 +32,7 @@ Oblíbený obsah bude obsluhován přímo z mezipaměti CDN, pokud je fragment v
 Také je potřeba vzít v úvahu, jak funguje adaptivní streamování. Jednotlivé fragmenty videa jsou uloženy v mezipaměti jako vlastní entita. Představte si například, že při prvním spuštění konkrétního videa se bude sledovat. Pokud se v prohlížeči přeskočí, jak sledovat jenom pár sekund, stačí jenom fragmenty videa spojené s tím, co osoba sledovala v mezipaměti v síti CDN. Díky adaptivnímu streamování obvykle máte 5 až 7 různých přenosů videa. Pokud jedna osoba sleduje jednu přenosovou rychlost a jiná osoba sleduje jinou přenosovou rychlost, pak se všechny ukládají do mezipaměti samostatně v síti CDN. I když dva lidé sledují stejnou přenosovou rychlost, mohly by být streamování přes různé protokoly. Každý protokol (HLS, MPEG-POMLČKa, Smooth Streaming) se ukládá do mezipaměti samostatně. Takže všechny přenosové rychlosti a protokoly se ukládají do mezipaměti odděleně a všechny požadované fragmenty videa se ukládají do mezipaměti.
 
 S výjimkou testovacího prostředí doporučujeme povolit CDN pro koncové body streamování Standard a Premium. Každý typ koncového bodu streamování má jiný podporovaný limit propustnosti.
-Je obtížné provést přesný výpočet pro maximální počet souběžných streamů podporovaných koncovým bodem streamování, protože jsou k dispozici různé faktory, které je potřeba vzít v úvahu. Tady jsou některé z nich:
+Je obtížné provést přesný výpočet pro maximální počet souběžných streamů podporovaných koncovým bodem streamování, protože jsou k dispozici různé faktory, které je potřeba vzít v úvahu. Mezi ně patří:
 
 - Maximální počet přenosů používaných pro streamování
 - Chování přehrávače před uložením do vyrovnávací paměti a přepínáním. Hráči se snaží rozložit segmenty od počátku a použít rychlost zatížení k výpočtu přepínání s adaptivní přenosovou rychlostí. Pokud koncový bod streamování získá blízko sytosti, může se doba odezvy lišit a hráči začnou přepínat na nižší kvalitu. Při snižování zátěže u přehrávačů koncových bodů streamování můžete škálovat zpátky na vyšší kvalitu a vytvořit tak nechtěné přepínání triggerů.
@@ -155,7 +155,7 @@ Pokud se chcete podívat na část výměny hlaviček v akci, můžete vyzkouše
 
 * Funguje tato funkce s obsahem UHD/HEVC?
 
-    Yes.
+    Ano.
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Položte otázky, sdělte nám svůj názor, Získejte aktualizace.
 

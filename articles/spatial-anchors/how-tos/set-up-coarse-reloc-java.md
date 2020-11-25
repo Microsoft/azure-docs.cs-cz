@@ -1,20 +1,20 @@
 ---
 title: Hrubý lokální roznárodní prostředí v jazyce Java
 description: Podrobné vysvětlení, jak vytvořit a najít kotvy s využitím hrubých národních prostředí v jazyce Java.
-author: bucurb
-manager: dacoghl
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.custom: devx-track-java
-ms.author: bobuc
-ms.date: 09/19/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 01a58207d893b6e4dcadf0b8b295d4bf7ed2ec31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcc88699f4d464362e6d31d99bd028f538d161a5
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319027"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95999837"
 ---
 # <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-java"></a>Jak vytvořit a najít kotvy s využitím hrubého rozmístění v jazyce Java
 

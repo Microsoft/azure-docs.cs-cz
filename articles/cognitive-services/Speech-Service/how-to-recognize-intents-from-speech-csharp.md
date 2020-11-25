@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1138a970bf7c52182f13d0fd14d0178a2d0cfeba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93a3adf00203e317be912e3e72de7a3f7ca666c6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88918787"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96001084"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Jak rozpoznávat záměry z rozpoznávání řeči pomocí sady Speech SDK pro jazyk C #
 
@@ -55,7 +55,7 @@ LUIS používá tři typy klíčů:
 | Starter   | Umožňuje testovat aplikace LUIS jenom pomocí textu.   |
 | Koncový bod  | Autorizuje přístup ke konkrétní aplikaci LUIS.            |
 
-V této příručce budete potřebovat typ klíče koncového bodu. Tato příručka používá ukázkovou aplikaci LUIS pro automatizaci, kterou můžete vytvořit pomocí [předpřipraveného rychlého startu aplikace pro domácí automatizaci](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) . Pokud jste vytvořili vlastní aplikaci LUIS, můžete ji místo toho použít.
+V této příručce budete potřebovat typ klíče koncového bodu. Tato příručka používá ukázkovou aplikaci LUIS pro automatizaci, kterou můžete vytvořit pomocí [předpřipraveného rychlého startu aplikace pro domácí automatizaci](../luis/luis-get-started-create-app.md) . Pokud jste vytvořili vlastní aplikaci LUIS, můžete ji místo toho použít.
 
 Když vytvoříte aplikaci LUIS, LUIS automaticky vygeneruje počáteční klíč, abyste mohli otestovat aplikaci pomocí textových dotazů. Tento klíč nepovoluje integraci služby Speech Service a nebude s tímto průvodcem fungovat. Vytvořte prostředek LUIS na řídicím panelu Azure a přiřaďte ho do aplikace LUIS. Pro tuto příručku můžete použít bezplatnou úroveň předplatného.
 
@@ -68,9 +68,9 @@ Na stránce **klíče a nastavení koncového bodu** :
 1. Přejděte dolů k části **prostředky a klíče** a vyberte **přiřadit prostředek**.
 1. V dialogovém okně **přiřadit klíč k aplikaci** proveďte následující změny:
 
-   - V části **tenant**klikněte na **Microsoft**.
-   - V části **název předplatného**vyberte předplatné Azure, které obsahuje prostředek Luis, který chcete použít.
-   - V části **klíč**vyberte prostředek Luis, který chcete s aplikací používat.
+   - V části **tenant** klikněte na **Microsoft**.
+   - V části **název předplatného** vyberte předplatné Azure, které obsahuje prostředek Luis, který chcete použít.
+   - V části **klíč** vyberte prostředek Luis, který chcete s aplikací používat.
 
    Nové předplatné se za chvíli zobrazí v tabulce v dolní části stránky.
 
@@ -86,7 +86,7 @@ Na stránce **klíče a nastavení koncového bodu** :
 
 Dále přidáte kód do projektu.
 
-1. Z **Průzkumník řešení**otevřete soubor **program.cs**.
+1. Z **Průzkumník řešení** otevřete soubor **program.cs**.
 
 1. Nahraďte blok `using` příkazů na začátku souboru následujícími deklaracemi:
 
@@ -201,4 +201,4 @@ Vyhledejte kód z tohoto článku ve složce **Samples/CSharp/sharedcontent/Cons
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Rychlý Start: rozpoznávání řeči z mikrofonu](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)
+> [Rychlý Start: rozpoznávání řeči z mikrofonu](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore)

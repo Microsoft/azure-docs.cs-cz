@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
 ms.openlocfilehash: 8e60ac5065c2f9543a641daf4f62299c00c61fc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260190"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000653"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Řešení problémů pomocí sestav o stavu systému
 Komponenty služby Azure Service Fabric poskytují zprávy o stavu systému pro všechny entity v clusteru přímo ze seznamu. [Health Store](service-fabric-health-introduction.md#health-store) vytvoří a odstraní entity založené na sestavách systému. Uspořádává je také v hierarchii, která zachycuje interakce entit.
@@ -116,7 +116,7 @@ HealthEvents          :
 
 
 ### <a name="certificate-expiration"></a>Vypršení platnosti certifikátu
-**System. FabricNode** oznamuje upozornění, když se certifikáty používané uzlem blíží k vypršení platnosti. Existují tři certifikáty na uzel: **Certificate_cluster**, **Certificate_server**a **Certificate_default_client**. Pokud je doba vypršení alespoň dvou týdnů pryč, stav sestavy je OK. V případě vypršení platnosti do dvou týdnů je typ sestavy upozornění. Hodnota TTL těchto událostí je nekonečná a jsou odebrána, když uzel opustí cluster.
+**System. FabricNode** oznamuje upozornění, když se certifikáty používané uzlem blíží k vypršení platnosti. Existují tři certifikáty na uzel: **Certificate_cluster**, **Certificate_server** a **Certificate_default_client**. Pokud je doba vypršení alespoň dvou týdnů pryč, stav sestavy je OK. V případě vypršení platnosti do dvou týdnů je typ sestavy upozornění. Hodnota TTL těchto událostí je nekonečná a jsou odebrána, když uzel opustí cluster.
 
 * **SourceId**: System. FabricNode
 * **Vlastnost**: začíná s **certifikátem** a obsahuje další informace o typu certifikátu.
@@ -425,7 +425,7 @@ Tato vlastnost slouží k označení varování nebo selhání při pokusu o ote
 Tato upozornění na stav jsou aktivována po výskytu akce místně v určitém počtu (v závislosti na zásadách). Service Fabric opakuje akci až do maximální prahové hodnoty. Po dosažení maximální prahové hodnoty se může pokusit jednat, aby se situace opravila. Tento pokus může způsobit, že se tato upozornění vymažou, protože zastavuje akci v tomto uzlu. Například pokud se replika nedaří otevřít na uzlu, Service Fabric vyvolá upozornění na stav. Pokud se replika i nadále nedaří otevřít, Service Fabric funguje k samočinné opravě. Tato akce může zahrnovat pokus o stejnou operaci na jiném uzlu. Tento pokus způsobí vymazání upozornění pro tuto repliku. 
 
 * **SourceId**: System. ra
-* **Vlastnost**: **ReplicaOpenStatus**, **ReplicaCloseStatus**a **ReplicaChangeRoleStatus**.
+* **Vlastnost**: **ReplicaOpenStatus**, **ReplicaCloseStatus** a **ReplicaChangeRoleStatus**.
 * **Další kroky**: Prozkoumejte kód služby nebo výpisy stavu systému, abyste mohli zjistit, proč se operace nezdařila.
 
 Následující příklad ukazuje stav repliky, která je aktivována `TargetInvocationException` z její otevřené metody. Popis obsahuje bod selhání, **IStatefulServiceReplica. Open**, typ výjimky **TargetInvocationException –** a trasování zásobníku.

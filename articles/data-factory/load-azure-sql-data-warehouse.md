@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/30/2020
 ms.openlocfilehash: dcf3db33818448116da53d8a01d0c62aca7bc1af
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280171"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000075"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Načtení dat do služby Azure synapse Analytics pomocí Azure Data Factory
 
@@ -28,10 +28,10 @@ Začínáme s Azure synapse Analytics je teď při použití Azure Data Factory 
 
 Azure Data Factory nabízí následující výhody pro načítání dat do služby Azure synapse Analytics:
 
-* **Snadné nastavení** : intuitivní průvodce 5 kroky bez nutnosti skriptování.
-* **Bohatá Podpora úložiště dat** : Integrovaná podpora pro bohatou sadu místních a cloudových úložišť dat. Podrobný seznam najdete v tabulce [podporovaných úložišť dat](copy-activity-overview.md#supported-data-stores-and-formats).
-* **Zabezpečení a dodržování předpisů** : data se přenáší přes protokol HTTPS nebo ExpressRoute. Přítomnost globální služby zajišťuje, že vaše data nikdy neopustí zeměpisnou hranici.
-* **Neparalelní výkon pomocí základu** : základem je nejúčinnější způsob, jak přesouvat data do Azure synapse Analytics. Pomocí funkce pracovního objektu blob můžete dosáhnout vysoké rychlosti zatížení ze všech typů úložišť dat, včetně služby Azure Blob Storage a Data Lake Store. (Základem podporuje službu Azure Blob Storage a Azure Data Lake Store ve výchozím nastavení.) Podrobnosti najdete v tématu o [výkonu aktivity kopírování](copy-activity-performance.md).
+* **Snadné nastavení**: intuitivní průvodce 5 kroky bez nutnosti skriptování.
+* **Bohatá Podpora úložiště dat**: Integrovaná podpora pro bohatou sadu místních a cloudových úložišť dat. Podrobný seznam najdete v tabulce [podporovaných úložišť dat](copy-activity-overview.md#supported-data-stores-and-formats).
+* **Zabezpečení a dodržování předpisů**: data se přenáší přes protokol HTTPS nebo ExpressRoute. Přítomnost globální služby zajišťuje, že vaše data nikdy neopustí zeměpisnou hranici.
+* **Neparalelní výkon pomocí základu**: základem je nejúčinnější způsob, jak přesouvat data do Azure synapse Analytics. Pomocí funkce pracovního objektu blob můžete dosáhnout vysoké rychlosti zatížení ze všech typů úložišť dat, včetně služby Azure Blob Storage a Data Lake Store. (Základem podporuje službu Azure Blob Storage a Azure Data Lake Store ve výchozím nastavení.) Podrobnosti najdete v tématu o [výkonu aktivity kopírování](copy-activity-performance.md).
 
 V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování dat _načíst data z Azure SQL Database do služby Azure synapse Analytics_. Můžete postupovat podle podobných kroků a kopírovat data z jiných typů úložišť dat.
 
@@ -47,15 +47,15 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce vlevo vyberte **vytvořit prostředek**  >  **data a analýzy**  >  **Data Factory** :
+1. V nabídce vlevo vyberte **vytvořit prostředek**  >  **data a analýzy**  >  **Data Factory**:
 
 2. Na stránce **Nová datová továrna** zadejte hodnoty pro následující položky:
 
-    * **Název** : jako název zadejte *LoadSQLDWDemo* . Název vaší datové továrny musí být * globálně jedinečný. Pokud se zobrazí chyba "název objektu pro vytváření dat" LoadSQLDWDemo "není k dispozici", zadejte jiný název pro objekt pro vytváření dat. Můžete například použít název _**Your**_**ADFTutorialDataFactory**. Zkuste vytvořit datovou továrnu znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
-    * **Předplatné** : vyberte předplatné Azure, ve kterém chcete vytvořit datovou továrnu. 
-    * **Skupina prostředků** : v rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte možnost **vytvořit novou** a zadejte název skupiny prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
-    * **Verze** : Vyberte **V2**.
-    * **Umístění** : vyberte umístění pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat, která služba Data Factory používá, můžou být v jiných umístěních a oblastech. Mezi Tato úložiště dat patří Azure Data Lake Store, Azure Storage, Azure SQL Database a tak dále.
+    * **Název**: jako název zadejte *LoadSQLDWDemo* . Název vaší datové továrny musí být * globálně jedinečný. Pokud se zobrazí chyba "název objektu pro vytváření dat" LoadSQLDWDemo "není k dispozici", zadejte jiný název pro objekt pro vytváření dat. Můžete například použít název _**Your**_**ADFTutorialDataFactory**. Zkuste vytvořit datovou továrnu znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
+    * **Předplatné**: vyberte předplatné Azure, ve kterém chcete vytvořit datovou továrnu. 
+    * **Skupina prostředků**: v rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte možnost **vytvořit novou** a zadejte název skupiny prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
+    * **Verze**: Vyberte **V2**.
+    * **Umístění**: vyberte umístění pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat, která služba Data Factory používá, můžou být v jiných umístěních a oblastech. Mezi Tato úložiště dat patří Azure Data Lake Store, Azure Storage, Azure SQL Database a tak dále.
 
 3. Vyberte **Vytvořit**.
 4. Až se vytváření dokončí, přejdete do vaší datové továrny. Zobrazí se Domovská stránka **Data Factory** , jak je znázorněno na následujícím obrázku:
@@ -74,7 +74,7 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 
 3. Na stránce **zdrojové úložiště dat** proveďte následující kroky:
     >[!TIP]
-    >V tomto kurzu použijete *ověřování SQL* jako typ ověřování pro zdrojové úložiště dat, ale v případě potřeby můžete vybrat jiné podporované metody ověřování: *instanční objekt* a *spravovaná identita* . Podrobnosti najdete v odpovídajících částech [tohoto článku](./connector-azure-sql-database.md#linked-service-properties) .
+    >V tomto kurzu použijete *ověřování SQL* jako typ ověřování pro zdrojové úložiště dat, ale v případě potřeby můžete vybrat jiné podporované metody ověřování:*instanční objekt* a *spravovaná identita* . Podrobnosti najdete v odpovídajících částech [tohoto článku](./connector-azure-sql-database.md#linked-service-properties) .
     >K bezpečnému ukládání tajných kódů pro úložiště dat je také vhodné použít Azure Key Vault. Podrobnější ilustrace najdete v [tomto článku](./store-credentials-in-key-vault.md) .
 
     a. klikněte na **+ vytvořit nové připojení**.
@@ -97,7 +97,7 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 
 6. Na stránce **cílové úložiště dat** proveďte následující kroky:
     >[!TIP]
-    >V tomto kurzu použijete *ověřování SQL* jako typ ověřování pro cílové úložiště dat, ale v případě potřeby můžete vybrat jiné podporované metody ověřování: *instanční objekt* a *spravovaná identita* . Podrobnosti najdete v odpovídajících částech [tohoto článku](./connector-azure-sql-data-warehouse.md#linked-service-properties) .
+    >V tomto kurzu použijete *ověřování SQL* jako typ ověřování pro cílové úložiště dat, ale v případě potřeby můžete vybrat jiné podporované metody ověřování:*instanční objekt* a *spravovaná identita* . Podrobnosti najdete v odpovídajících částech [tohoto článku](./connector-azure-sql-data-warehouse.md#linked-service-properties) .
     >K bezpečnému ukládání tajných kódů pro úložiště dat je také vhodné použít Azure Key Vault. Podrobnější ilustrace najdete v [tomto článku](./store-credentials-in-key-vault.md) .
 
     a. Kliknutím na **+ Create new connection** (+ Vytvořit nové připojení) přidejte připojení.

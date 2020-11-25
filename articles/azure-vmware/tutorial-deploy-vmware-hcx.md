@@ -3,18 +3,21 @@ title: Kurz – nasazení a konfigurace nástroje VMware HCX
 description: Přečtěte si, jak nasadit a nakonfigurovat řešení VMware HCX pro privátní cloud řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 11/18/2020
-ms.openlocfilehash: 57bcf1bd3023e56f6a64b5d82d8f1fc90be9dd47
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: afb5c653ce7c4b4a453a4031c5664042357de6c0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888738"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95999619"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Nasazení a konfigurace VMware HCX
 
 V tomto článku se dozvíte, jak nasadit a nakonfigurovat místní konektor VMware HCX pro privátní cloud řešení Azure VMware. Pomocí VMware HCX můžete migrovat úlohy VMware do řešení Azure VMware a dalších připojených lokalit prostřednictvím různých typů migrace. Protože řešení Azure VMware nasazuje a konfiguruje správce cloudu HCX, musíte si stáhnout, aktivovat a nakonfigurovat konektor HCX v místním datacentru VMware.
 
 VMware HCX Advanced Connector je předem nasazený v řešení Azure VMware. Podporuje až tři připojení lokality (z místního prostředí do cloudu nebo Cloud do cloudu). Pokud potřebujete více než tři připojení k webu, odešlete [žádost o podporu](https://portal.azure.com/#create/Microsoft.Support) , která povolí doplněk [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) . Doplněk je aktuálně ve verzi Preview. 
+
+>[!Note]
+>I když nástroj pro konfiguraci VMware Configuration Manageru popisuje, že páry webů jsou maximálně 25 mezi konektorem Prem a správcem cloudu, licence se znovu omezí na 3 pro rozšířené a 10 pro Enterprise Edition.
 
 >[!NOTE]
 >VMware HCX Enterprise je k dispozici s řešením Azure VMware jako službou ve verzi Preview. Je zdarma a podléhá podmínkám a ujednáním pro službu verze Preview. Jakmile je podniková služba VMware HCX Enterprise všeobecně dostupná, dostanete 30denní oznámení o tom, že účtování bude přepínat. Také budete mít možnost vypnout nebo odhlásit službu. Neexistuje žádná jednoduchá cesta k downgradu z VMware HCX Enterprise na VMware HCX Advanced. Pokud se rozhodnete downgradovat, budete muset znovu nasadit a nasazovat výpadky.
@@ -44,7 +47,7 @@ Při přípravě nasazení doporučujeme Přečtěte si následující dokumenta
 * [Síťové porty vyžadované pro VMware HCX](https://ports.vmware.com/home/VMware-HCX)
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud plánujete použít VMware HCX Enterprise, ujistěte se, že jste požádali o aktivaci pomocí kanálů podpory řešení Azure VMware.
 

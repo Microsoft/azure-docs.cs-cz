@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74931786"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001061"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Přesunutí dat z DB2 pomocí aktivity kopírování Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -80,19 +80,19 @@ V následující tabulce jsou uvedeny vlastnosti JSON, které jsou specifické p
 
 | Vlastnost | Popis | Povinné |
 | --- | --- | --- |
-| **textový** |Tato vlastnost musí být nastavená na **OnPremisesDb2**. |Ano |
-| **WebServer** |Název serveru DB2. |Ano |
-| **databáze** |Název databáze DB2. |Ano |
+| **textový** |Tato vlastnost musí být nastavená na **OnPremisesDb2**. |Yes |
+| **WebServer** |Název serveru DB2. |Yes |
+| **databáze** |Název databáze DB2. |Yes |
 | **XSD** |Název schématu v databázi DB2. Tato vlastnost rozlišuje velká a malá písmena. |No |
-| **authenticationType** |Typ ověřování, který se používá pro připojení k databázi DB2. Možné hodnoty jsou: anonymní, základní a Windows. |Ano |
+| **authenticationType** |Typ ověřování, který se používá pro připojení k databázi DB2. Možné hodnoty jsou: anonymní, základní a Windows. |Yes |
 | **jmen** |Název uživatelského účtu, pokud použijete základní ověřování nebo ověřování systému Windows. |No |
 | **heslo** |Heslo pro uživatelský účet. |No |
-| **gatewayName** |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi DB2. |Ano |
+| **gatewayName** |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi DB2. |Yes |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
-Seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, například **Struktura**, **dostupnost**a **zásady** pro datovou sadu JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure Blob Storage, Azure Table Storage atd.).
+Seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, například **Struktura**, **dostupnost** a **zásady** pro datovou sadu JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure Blob Storage, Azure Table Storage atd.).
 
-Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl **typeProperties** pro datovou sadu **relačních**typů, která zahrnuje datovou sadu DB2, má následující vlastnost:
+Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl **typeProperties** pro datovou sadu **relačních** typů, která zahrnuje datovou sadu DB2, má následující vlastnost:
 
 | Vlastnost | Popis | Povinné |
 | --- | --- | --- |
@@ -103,7 +103,7 @@ Seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit 
 
 V případě aktivity kopírování, pokud je zdrojem typu **RelationalSource** (který zahrnuje DB2), jsou v části **typeProperties** k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
 | **zadávání** |K načtení dat použijte vlastní dotaz. |Řetězec dotazu SQL. Příklad: `"query": "select * from "MySchema"."MyTable""` |Ne (Pokud je určena vlastnost **TableName** objektu DataSet) |
 
@@ -310,13 +310,13 @@ Následující mapování se používají, když aktivita kopírování převede
 | SmallInt |Int16 |
 | Integer |Int32 |
 | BigInt |Int64 |
-| Skutečné |Jednoduché |
+| Skutečné |Jeden |
 | dvojité |dvojité |
 | Float |dvojité |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| Date |Datum a čas |
+| Datum |Datum a čas |
 | Čas |TimeSpan |
 | Timestamp |DateTime |
 | XML |Byte [] |
@@ -331,18 +331,18 @@ Následující mapování se používají, když aktivita kopírování převede
 | VarGraphic |Řetězec |
 | LongVarGraphic |Řetězec |
 | Datový typ CLOB |Řetězec |
-| Blob |Byte [] |
+| Objekt blob |Byte [] |
 | DbClob |Řetězec |
 | SmallInt |Int16 |
 | Integer |Int32 |
 | BigInt |Int64 |
-| Skutečné |Jednoduché |
+| Skutečné |Jeden |
 | dvojité |dvojité |
 | Float |dvojité |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| Date |Datum a čas |
+| Datum |Datum a čas |
 | Čas |TimeSpan |
 | Timestamp |DateTime |
 | XML |Byte [] |

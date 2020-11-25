@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: fce4da9cc9577bc9805289473d3df7647b1b0934
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670916"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000466"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>Integrace řešení vzdáleného monitorování pomocí Azure Data Lake Store
 
@@ -21,7 +21,7 @@ Můžete mít pokročilé požadavky na analýzu nad rámec toho, co je nabízen
 
 V tomto postupu použijete úlohu Azure Stream Analytics ke streamování dat ze služby IoT Hub v řešení vzdáleného monitorování do Azure Data Lake Store.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li dokončit tento postup, budete potřebovat následující:
 
@@ -57,7 +57,7 @@ az iot hub consumer-group create --hub-name contoso-rm30263 --name streamanalyti
 
 Vytvořte úlohu Azure Stream Analytics pro streamování dat ze služby IoT Hub do úložiště Azure Data Lake.
 
-1. Klikněte na **vytvořit prostředek** , na webu Marketplace vyberte Internet věcí a klikněte na **Stream Analytics úlohu** .
+1. Klikněte na **vytvořit prostředek**, na webu Marketplace vyberte Internet věcí a klikněte na **Stream Analytics úlohu**.
 
     ![Nová úloha Stream Analytics](./media/iot-accelerators-integrate-data-lake/new-stream-analytics-job.png)
 
@@ -65,9 +65,9 @@ Vytvořte úlohu Azure Stream Analytics pro streamování dat ze služby IoT Hub
 
 1. Vyberte umístění v blízkosti nebo ve stejné oblasti jako Data Lake Store. Tady používáme Východní USA.
 
-1. Zajistěte, aby se hostující prostředí nechalo jako výchozí **Cloud** .
+1. Zajistěte, aby se hostující prostředí nechalo jako výchozí **Cloud**.
 
-1. Klikněte na **Vytvořit** .
+1. Klikněte na **Vytvořit**.
 
     ![Vytvořit úlohu Stream Analytics](./media/iot-accelerators-integrate-data-lake/create-stream-analytics-job.png)
 
@@ -75,7 +75,7 @@ Vytvořte úlohu Azure Stream Analytics pro streamování dat ze služby IoT Hub
 
 1. Ve skupině prostředků řešení vzdáleného monitorování přejdete na **úlohu Stream Analytics** .
 
-1. Na stránce Přehled klikněte na možnost **vstupy** .
+1. Na stránce Přehled klikněte na možnost **vstupy**.
 
     ![Stránka Přehled](./media/iot-accelerators-integrate-data-lake/stream-analytics-overview.png)
 
@@ -83,15 +83,15 @@ Vytvořte úlohu Azure Stream Analytics pro streamování dat ze služby IoT Hub
 
     ![Přidat vstup](./media/iot-accelerators-integrate-data-lake/stream-analytics-add-input.png)
 
-1. Na kartě nová vstup zadejte vstupní alias pro **IoTHub** .
+1. Na kartě nová vstup zadejte vstupní alias pro **IoTHub**.
 
-1. V rozevíracím seznamu Skupina příjemců vyberte skupinu uživatelů, kterou jste vytvořili dříve. Tady používáme **streamanalyticsjob** .
+1. V rozevíracím seznamu Skupina příjemců vyberte skupinu uživatelů, kterou jste vytvořili dříve. Tady používáme **streamanalyticsjob**.
 
     ![Vybrat vstup](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-input.png)
 
-1. Klikněte na **Uložit** .
+1. Klikněte na **Uložit**.
 
-1. Na stránce Přehled klikněte na možnost **výstupy** .
+1. Na stránce Přehled klikněte na možnost **výstupy**.
 
     ![Přidat Data Lake Store](./media/iot-accelerators-integrate-data-lake/stream-analytics-overview-2.png)
 
@@ -99,15 +99,15 @@ Vytvořte úlohu Azure Stream Analytics pro streamování dat ze služby IoT Hub
 
     ![Přidat výstup](./media/iot-accelerators-integrate-data-lake/stream-analytics-output.png)
 
-1. Na kartě nový výstup zadejte alias pro výstup **DataLakeStore** .
+1. Na kartě nový výstup zadejte alias pro výstup **DataLakeStore**.
 
 1. Vyberte účet Data Lake Store, který jste vytvořili v předchozích krocích, a poskytněte strukturu složek pro streamování dat do úložiště.
 
-1. Do pole formát data zadejte **/streaming/{Date}/{Time}** . Ponechte výchozí formát data YYYY/MM/DD a formát času HH.
+1. Do pole formát data zadejte **/streaming/{Date}/{Time}**. Ponechte výchozí formát data YYYY/MM/DD a formát času HH.
 
     ![Zadat strukturu složek](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-output.png)
 
-1. Klikněte na **autorizovat** .
+1. Klikněte na **autorizovat**.
 
     Abyste mohli úloze Stream Analytics povolit přístup k systému souborů, bude nutné autorizovat Data Lake Store.
 
@@ -118,13 +118,13 @@ Vytvořte úlohu Azure Stream Analytics pro streamování dat ze služby IoT Hub
     > [!NOTE]
     > Pokud se v překryvném okně zobrazí chyba, otevřete nové okno prohlížeče v režimu anonymním a zkuste to znovu.
 
-1. Klikněte na **Uložit** .
+1. Klikněte na **Uložit**.
 
 ## <a name="edit-the-stream-analytics-query"></a>Úprava Stream Analyticsového dotazu
 
 Azure Stream Analytics používá dotazovací jazyk podobný SQL k určení vstupního zdroje, který streamuje data, transformuje tato data podle potřeby a vypíše výstup do celé řady úložišť nebo cílů zpracování.
 
-1. Na kartě Přehled klikněte na **Upravit dotaz** .
+1. Na kartě Přehled klikněte na **Upravit dotaz**.
 
     ![Upravit dotaz](./media/iot-accelerators-integrate-data-lake/stream-analytics-edit-query.png)
 
@@ -141,20 +141,20 @@ Azure Stream Analytics používá dotazovací jazyk podobný SQL k určení vstu
 
     ![Stream Analytics dotaz](./media/iot-accelerators-integrate-data-lake/stream-analytics-query.png)
 
-1. Klikněte na **Uložit** .
+1. Klikněte na **Uložit**.
 1. Potvrďte změny kliknutím na **Ano** .
 
 ## <a name="start-the-stream-analytics-job"></a>Spustit úlohu Stream Analytics
 
-1. Na kartě Přehled klikněte na tlačítko **Start** .
+1. Na kartě Přehled klikněte na tlačítko **Start**.
 
     ![Spustit úlohu Stream Analytics](./media/iot-accelerators-integrate-data-lake/stream-analytics-start.png)
 
-1. Na kartě spustit úlohu klikněte na **vlastní** .
+1. Na kartě spustit úlohu klikněte na **vlastní**.
 
 1. Nastavte vlastní čas, kdy se chcete vrátit k několika hodinám a vybírat data z doby, kdy zařízení zahájilo streamování.
 
-1. Klikněte na tlačítko **Start** .
+1. Klikněte na tlačítko **Start**.
 
     ![Vybrat vlastní datum](./media/iot-accelerators-integrate-data-lake/stream-analytics-start-custom.png)
 
@@ -168,7 +168,7 @@ Azure Stream Analytics používá dotazovací jazyk podobný SQL k určení vstu
 
 1. Přejít na Data Lake Store.
 
-1. Na kartě Přehled klikněte na **Průzkumník dat** .
+1. Na kartě Přehled klikněte na **Průzkumník dat**.
 
 1. V Průzkumníku dat přejděte k podrobnostem do složky **/streaming** . Zobrazí se složky vytvořené ve formátu RRRR/MM/DD.
 

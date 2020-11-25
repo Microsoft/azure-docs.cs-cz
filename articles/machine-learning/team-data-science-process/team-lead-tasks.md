@@ -11,11 +11,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: df7d2278487c1b098615a14562c498b9187c56eb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321197"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000024"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Úlohy týmu vedoucích k týmovému zpracování týmových dat
 
@@ -49,7 +49,7 @@ Následující kurz vás provede podrobnými kroky.
 > [!NOTE] 
 > Tento článek používá Azure DevOps a DSVM k nastavení týmového prostředí TDSP, protože to je způsob implementace TDSP v Microsoftu. Pokud váš tým používá jiné hostování kódu nebo vývojové platformy, úkoly vedoucí týmu jsou stejné, ale způsob jejich dokončení může být jiný.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá, že [správce skupiny](group-manager-tasks.md)nastavil následující prostředky a oprávnění:
 
@@ -89,7 +89,7 @@ Vytvoření samostatného projektu pro váš tým:
    
    ![Vybrat nový projekt](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
-1. V dialogovém okně **vytvořit projekt** zadejte do pole **název projektu** název svého týmu, například *myTeam* , a pak vyberte **Upřesnit**. 
+1. V dialogovém okně **vytvořit projekt** zadejte do pole **název projektu** název svého týmu, například *myTeam*, a pak vyberte **Upřesnit**. 
    
 1. V části **Správa verzí** vyberte **Git** a v části **proces pracovní položky** vyberte **agilní**. Potom vyberte **Vytvořit**. 
    
@@ -148,7 +148,7 @@ Pokud chcete naplnit svá úložiště v týmu obsahem společných úložišť 
    
 1. V horní části stránky **úložišť** projektu rozbalte rozevírací seznam a vyberte úložiště **TeamUtilities** .
    
-1. Opakujte proces importu pro import obsahu společného úložiště nástrojů pro vaše skupiny, například *GroupUtilities* , do úložiště **TeamUtilities** . 
+1. Opakujte proces importu pro import obsahu společného úložiště nástrojů pro vaše skupiny, například *GroupUtilities*, do úložiště **TeamUtilities** . 
    
 Každé ze dvou úložišť týmu teď obsahuje soubory z příslušného společného úložiště skupiny. 
 
@@ -296,7 +296,7 @@ Informace o sdílení dalších prostředků s týmem, například Azure HDInsig
    
 1. Vyberte účet úložiště, který se má použít, nebo vytvořte nové v rámci vybraného předplatného. Pro název služby Azure File Storage můžete použít malá písmena, číslice a spojovníky.
    
-1. Pokud chcete usnadnit připojení a sdílení úložiště, stiskněte ENTER nebo ENTER *Y* a uložte informace o službě Azure File Storage do textového souboru v aktuálním adresáři. Můžete vrátit tento textový soubor do úložiště **TeamTemplate** , v ideálním případě v **Docs\DataDictionaries** , aby k němu měli přístup všechny projekty ve vašem týmu. K připojení úložiště Azure File Storage k Azure DSVM v další části budete potřebovat taky informace o souboru. 
+1. Pokud chcete usnadnit připojení a sdílení úložiště, stiskněte ENTER nebo ENTER *Y* a uložte informace o službě Azure File Storage do textového souboru v aktuálním adresáři. Můžete vrátit tento textový soubor do úložiště **TeamTemplate** , v ideálním případě v **Docs\DataDictionaries**, aby k němu měli přístup všechny projekty ve vašem týmu. K připojení úložiště Azure File Storage k Azure DSVM v další části budete potřebovat taky informace o souboru. 
    
 ### <a name="mount-azure-file-storage-on-your-local-machine-or-dsvm"></a>Připojení úložiště souborů Azure na místním počítači nebo DSVM
 

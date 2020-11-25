@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
 ms.openlocfilehash: 255e4085e24ee7520c603f8a00b3e46c23367a77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441999"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000823"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Rozdílová kopie z databáze s řídicí tabulkou
 
@@ -42,7 +42,7 @@ Tato šablona nejprve načte starou hodnotu meze a porovná ji s aktuální hodn
 
 Šablona definuje následující parametry:
 - *Data_Source_Table_Name* je tabulka ve zdrojové databázi, ze které chcete načíst data.
-- *Data_Source_WaterMarkColumn* je název sloupce ve zdrojové tabulce, který se používá k identifikaci nových nebo aktualizovaných řádků. Typ tohoto sloupce je obvykle *DateTime*, *int*nebo podobný.
+- *Data_Source_WaterMarkColumn* je název sloupce ve zdrojové tabulce, který se používá k identifikaci nových nebo aktualizovaných řádků. Typ tohoto sloupce je obvykle *DateTime*, *int* nebo podobný.
 - *Data_Destination_Container* je kořenová cesta k místu, kam se data zkopírují do cílového úložiště.
 - *Data_Destination_Directory* je cesta k adresáři v kořenovém adresáři místa, kam se zkopírují data do cílového úložiště.
 - *Data_Destination_Table_Name* je místo, kam se data zkopírují do cílového úložiště (platí v případě, že je jako cíl pro data vybraná možnost Azure synapse Analytics (dříve SQL DW)).
@@ -52,7 +52,7 @@ Tato šablona nejprve načte starou hodnotu meze a porovná ji s aktuální hodn
 
 ## <a name="how-to-use-this-solution-template"></a>Jak používat tuto šablonu řešení
 
-1. Prozkoumejte zdrojovou tabulku, kterou chcete načíst, a definujte sloupec s vysokou mezí, který se dá použít k identifikaci nových nebo aktualizovaných řádků. Typ tohoto sloupce může být *DateTime*, *int*nebo podobný. Hodnota tohoto sloupce se zvětšuje, když se přidají nové řádky. Z následující ukázkové zdrojové tabulky (data_source_table) můžeme použít sloupec *LastModifytime* jako sloupec s vysokou mezí.
+1. Prozkoumejte zdrojovou tabulku, kterou chcete načíst, a definujte sloupec s vysokou mezí, který se dá použít k identifikaci nových nebo aktualizovaných řádků. Typ tohoto sloupce může být *DateTime*, *int* nebo podobný. Hodnota tohoto sloupce se zvětšuje, když se přidají nové řádky. Z následující ukázkové zdrojové tabulky (data_source_table) můžeme použít sloupec *LastModifytime* jako sloupec s vysokou mezí.
 
     ```sql
             PersonID    Name    LastModifytime
@@ -110,15 +110,15 @@ Tato šablona nejprve načte starou hodnotu meze a porovná ji s aktuální hodn
   
     ![Kontrola kanálu](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-9. Vyberte **uloženou proceduru**. Jako **název uložené procedury**vyberte **[dbo]. [ update_watermark]**. Vyberte **importovat parametr**a pak vyberte **Přidat dynamický obsah**.  
+9. Vyberte **uloženou proceduru**. Jako **název uložené procedury** vyberte **[dbo]. [ update_watermark]**. Vyberte **importovat parametr** a pak vyberte **Přidat dynamický obsah**.  
 
     ![Nastavení aktivity uložené procedury](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png)  
 
-10. Zapište obsah ** \@ {Activity (' LookupCurrentWaterMark '). Output. FIRSTROW. NewWatermarkValue}** a pak vyberte **Dokončit**.  
+10. Zapište obsah **\@ {Activity (' LookupCurrentWaterMark '). Output. FIRSTROW. NewWatermarkValue}** a pak vyberte **Dokončit**.  
 
     ![Zapsat obsah pro parametry uložené procedury](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)       
      
-11. Vyberte **ladit**, zadejte **parametry**a pak vyberte **Dokončit**.
+11. Vyberte **ladit**, zadejte **parametry** a pak vyberte **Dokončit**.
 
     ![Vybrat * * ladit * *](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
 
@@ -136,7 +136,7 @@ Tato šablona nejprve načte starou hodnotu meze a porovná ji s aktuální hodn
             VALUES (11, 'newdata','9/11/2017 9:01:00 AM')
     ```
 
-14. Pokud chcete znovu spustit kanál, vyberte **ladit**, zadejte **parametry**a pak vyberte **Dokončit**.
+14. Pokud chcete znovu spustit kanál, vyberte **ladit**, zadejte **parametry** a pak vyberte **Dokončit**.
 
     Uvidíte, že do cílového umístění se zkopírovaly jenom nové řádky.
 

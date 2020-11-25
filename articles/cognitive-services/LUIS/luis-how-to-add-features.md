@@ -10,11 +10,11 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.openlocfilehash: 33435d2367b92f312d41f0e32fdbb3a93d59a9fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540876"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999922"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>Použití funkcí k posílení signálu v seznamu slov
 
@@ -26,7 +26,7 @@ Seznamte se s [Koncepty](luis-concept-feature.md) a zjistěte, kdy a proč použ
 
 1. Přihlaste se k [portálu Luis](https://www.luis.ai)a vyberte své **předplatné** a **prostředek pro vytváření obsahu** , abyste viděli aplikace přiřazené k tomuto zdrojovému prostředku.
 1. Otevřete svou aplikaci tak, že na stránce **Moje aplikace** vyberete její název.
-1. Vyberte **sestavit**a pak na levém panelu vaší aplikace vyberte **funkce** .
+1. Vyberte **sestavit** a pak na levém panelu vaší aplikace vyberte **funkce** .
 
 1. Na stránce **funkce** vyberte **+ vytvořit**.
 

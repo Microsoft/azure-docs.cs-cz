@@ -8,11 +8,11 @@ ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 764e0262c8a26511c55740aa1797b5ec9b59cc8e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150144"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999424"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrace aplikace s virtuální sítí Azure
 
@@ -24,7 +24,7 @@ Azure App Service má dvě varianty funkce integrace virtuální sítě:
 
 ## <a name="enable-vnet-integration"></a>Povolit integraci virtuální sítě
 
-1. Přejít na uživatelské rozhraní **sítě** na portálu App Service. V části **Integrace virtuální**sítě vyberte **Konfigurovat kliknutím sem**.
+1. Přejít na uživatelské rozhraní **sítě** na portálu App Service. V části **Integrace virtuální** sítě vyberte **Konfigurovat kliknutím sem**.
 
 1. Vyberte **Přidat virtuální síť**.
 
@@ -36,7 +36,7 @@ Azure App Service má dvě varianty funkce integrace virtuální sítě:
 
    * Pokud je virtuální síť ve stejné oblasti, buď vytvořte novou podsíť, nebo vyberte prázdnou existující podsíť.
    * Pokud chcete vybrat virtuální síť v jiné oblasti, musíte mít zřízenou bránu virtuální sítě s povoleným odkazem na lokalitu.
-   * Pokud chcete integrovat s klasickou virtuální sítí, místo výběru **Virtual Network** rozevíracího seznamu vyberte **kliknutím sem se připojte k klasické virtuální**síti. Vyberte klasickou virtuální síť, kterou chcete. Cílová virtuální síť musí mít již zřízenou bránu Virtual Network s povoleným Point-to-site.
+   * Pokud chcete integrovat s klasickou virtuální sítí, místo výběru **Virtual Network** rozevíracího seznamu vyberte **kliknutím sem se připojte k klasické virtuální** síti. Vyberte klasickou virtuální síť, kterou chcete. Cílová virtuální síť musí mít již zřízenou bránu Virtual Network s povoleným Point-to-site.
 
     ![Vybrat klasickou virtuální síť][3]
 
@@ -118,11 +118,11 @@ Pokud používáte integraci virtuální sítě požadovaná bránou s partnersk
 
 1. Přidejte připojení partnerského vztahu do virtuální sítě, ke které se aplikace připojuje. Když přidáte připojení partnerského vztahu, povolte **Povolit přístup k virtuální síti** a vyberte **Povolit přesměrovaný přenos** a **Povolit přenos brány**.
 1. Přidejte připojení partnerského vztahu ve virtuální síti, která je v partnerském vztahu k virtuální síti, ke které jste se připojili. Pokud přidáte připojení partnerského vztahu do cílové virtuální sítě, povolte možnost **Povolit přístup k virtuální síti** a vyberte **Povolit předaný přenos** a **Povolit vzdálené brány**.
-1. V portálu **App Service Naplánujte**  >  **síťové**  >  rozhraní**Integrace virtuální** sítě. Vyberte virtuální síť, ke které se aplikace připojuje. V části směrování přidejte rozsah adres virtuální sítě, která má partnerský vztah s virtuální sítí, ke které je vaše aplikace připojená.
+1. V portálu **App Service Naplánujte**  >  **síťové**  >  rozhraní **Integrace virtuální** sítě. Vyberte virtuální síť, ke které se aplikace připojuje. V části směrování přidejte rozsah adres virtuální sítě, která má partnerský vztah s virtuální sítí, ke které je vaše aplikace připojená.
 
 ## <a name="manage-vnet-integration"></a>Správa integrace virtuální sítě
 
-Připojení a odpojení pomocí virtuální sítě se nachází na úrovni aplikace. Operace, které mohou ovlivnit integraci virtuální sítě napříč více aplikacemi, jsou na úrovni plánu App Service. Na portálu Integration **Networking služby App > Networking**  >  **VNet Integration** můžete získat podrobnosti o vaší virtuální síti. Podobné informace najdete na úrovni plánu App Service na **App Service plan**  >  portálu pro integraci**síťových virtuálních sítí**v App Service  >  **VNet Integration** .
+Připojení a odpojení pomocí virtuální sítě se nachází na úrovni aplikace. Operace, které mohou ovlivnit integraci virtuální sítě napříč více aplikacemi, jsou na úrovni plánu App Service. Na portálu Integration **Networking služby App > Networking**  >  **VNet Integration** můžete získat podrobnosti o vaší virtuální síti. Podobné informace najdete na úrovni plánu App Service na **App Service plan**  >  portálu pro integraci **síťových virtuálních sítí** v App Service  >  **VNet Integration** .
 
 Jedinou operací, kterou můžete provést v zobrazení aplikace vaší instance integrace virtuální sítě, je odpojení vaší aplikace od virtuální sítě, ke které je aktuálně připojeno. Pokud chcete aplikaci odpojit od virtuální sítě, vyberte **Odpojit**. Vaše aplikace se po odpojení od virtuální sítě restartuje. Odpojením se nemění vaše virtuální síť. Podsíť nebo brána se neodeberou. Pokud budete chtít virtuální síť odstranit, nejdřív odpojte aplikaci od virtuální sítě a odstraňte v ní prostředky, jako jsou brány.
 

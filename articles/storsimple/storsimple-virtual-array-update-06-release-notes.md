@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 05/24/2017
 ms.author: alkohli
 ms.openlocfilehash: 24bddb47a32a7b8ad4ea659d52c2d5b2730be9ad
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967019"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000908"
 ---
 # <a name="storsimple-virtual-array-update-06-release-notes"></a>Zpráva k vydání verze pro StorSimple Virtual Array Update 0,6
 
@@ -52,7 +52,7 @@ Aktualizace 0,6 je kritická a měla by se nasadit hned. Tato aktualizace obsahu
 
 Následující tabulka poskytuje souhrn chyb opravených v této verzi.
 
-| Ne. | Příznak | Problém |
+| Ne. | Funkce | Problém |
 | --- | --- | --- |
 | 1 |Zabezpečení| Tato verze obsahuje důležité aktualizace zabezpečení systému Windows. Tuto aktualizaci doporučujeme nainstalovat hned.|
 | 2 |Obnovení| Během obnovení došlo ke konfliktu časování, která by zabránila dokončení úlohy obnovení. Oprava chyby řeší tuto podmínku časování.|
@@ -62,7 +62,7 @@ Následující tabulka poskytuje souhrn chyb opravených v této verzi.
 
 Následující tabulka obsahuje souhrn známých problémů pro virtuální pole StorSimple a obsahuje vydané verze zaznamenané z předchozích verzí.
 
-| Ne. | Příznak | Problém | Alternativní řešení/komentáře |
+| Ne. | Funkce | Problém | Alternativní řešení/komentáře |
 | --- | --- | --- | --- |
 | **1.** |Aktualizace |Virtuální zařízení vytvořená ve verzi Preview nejde aktualizovat na podporovanou obecnou verzi dostupnosti. |U těchto virtuálních zařízení je potřeba převzít služby při selhání pro vydání obecné dostupnosti pomocí pracovního postupu zotavení po havárii (DR). |
 | **2.** |Zřízený datový disk |Jakmile zřídíte datový disk určité zadané velikosti a vytvoříte odpovídající virtuální zařízení StorSimple, nesmíte tento datový disk rozbalit ani zmenšit. Při pokusu o provedení dojde ke ztrátě všech dat v místních vrstvách zařízení. | |
@@ -85,7 +85,7 @@ Následující tabulka obsahuje souhrn známých problémů pro virtuální pole
 ## <a name="next-step"></a>Další krok
 [Nainstalujte aktualizaci 0,6](storsimple-virtual-array-install-update-06.md) na virtuální pole StorSimple.
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 Hledáte starší poznámku k verzi? Přejít na:
 
 * [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,5](storsimple-virtual-array-update-05-release-notes.md)

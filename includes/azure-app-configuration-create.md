@@ -4,12 +4,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: include
 ms.date: 1/31/2020
-ms.openlocfilehash: c8044ca5a52bb3acf1e154a7b835471d09072083
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48bf5d5df3c54e8b2894ad28fa08553d5add0437
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372322"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001459"
 ---
 1. Pokud chcete vytvořit nové úložiště konfigurace aplikace, přihlaste se k [Azure Portal](https://portal.azure.com). V levém horním rohu domovské stránky vyberte **vytvořit prostředek**. Do pole **Hledat na Marketplace** zadejte *Konfigurace aplikace* a vyberte <kbd>ENTER</kbd>.
 
@@ -24,10 +24,10 @@ ms.locfileid: "91372322"
     | Nastavení | Navrhovaná hodnota | Popis |
     |---|---|---|
     | **Předplatné** | Vaše předplatné | Vyberte předplatné Azure, které chcete použít k testování konfigurace aplikace. Pokud má váš účet jenom jedno předplatné, vybere se automaticky a seznam **předplatných** se nezobrazí. |
-    | **Skupina prostředků** | *AppConfigTestResources* | Vyberte nebo vytvořte skupinu prostředků pro prostředek úložiště konfigurace aplikace. Tato skupina je užitečná k organizování více prostředků, které můžete chtít odstranit současně odstraněním skupiny prostředků. Další informace najdete v tématu [použití skupin prostředků ke správě prostředků Azure](/azure/azure-resource-manager/resource-group-overview). |
+    | **Skupina prostředků** | *AppConfigTestResources* | Vyberte nebo vytvořte skupinu prostředků pro prostředek úložiště konfigurace aplikace. Tato skupina je užitečná k organizování více prostředků, které můžete chtít odstranit současně odstraněním skupiny prostředků. Další informace najdete v tématu [použití skupin prostředků ke správě prostředků Azure](../articles/azure-resource-manager/management/overview.md). |
     | **Název prostředku** | Globálně jedinečný název | Zadejte jedinečný název prostředku, který se má použít pro prostředek úložiště konfigurace aplikace. Název musí být řetězec o 5 až 50 znaků a obsahovat pouze čísla, písmena a `-` znak. Název nesmí začínat ani končit `-` znakem. |
     | **Umístění** | *USA – střed* | **Umístění** použijte k určení geografického umístění, ve kterém je úložiště konfigurace aplikace hostované. Nejlepšího výkonu dosáhnete vytvořením prostředku ve stejné oblasti jako jiné součásti aplikace. |
-    | **Cenová úroveň** | Zadejte možnost pro *bezplatnou* SKU. | Vyberte požadovanou cenovou úroveň. Další informace najdete na stránce s [cenami konfigurace aplikací](https://azure.microsoft.com/pricing/details/app-configuration). |
+    | **Cenová úroveň** | *Free* | Vyberte požadovanou cenovou úroveň. Další informace najdete na stránce s [cenami konfigurace aplikací](https://azure.microsoft.com/pricing/details/app-configuration). |
 
 1. Vyberte **zkontrolovat + vytvořit** a ověřte nastavení.
 

@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 290990e312a7f591539686ecce1eec1ac742dd60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89443020"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999293"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Přesun dat z Amazon RedShift pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -70,9 +70,9 @@ Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pr
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Sekce **Struktura**, **dostupnost**a **zásady** jsou podobné pro všechny typy datových sad. Mezi typy datových sad patří Azure SQL, Azure Blob Storage a Azure Table Storage.
+Seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Sekce **Struktura**, **dostupnost** a **zásady** jsou podobné pro všechny typy datových sad. Mezi typy datových sad patří Azure SQL, Azure Blob Storage a Azure Table Storage.
 
-Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat ve Storu. Oddíl **typeProperties** pro datovou sadu **relačních**typů, která zahrnuje datovou sadu Amazon RedShift, má následující vlastnosti:
+Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat ve Storu. Oddíl **typeProperties** pro datovou sadu **relačních** typů, která zahrnuje datovou sadu Amazon RedShift, má následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 | --- | --- | --- |
@@ -333,7 +333,7 @@ Následující mapování se používají, když aktivita kopírování převede
 | CELÉ ČÍSLO |Int32 |
 | BIGINT |Int64 |
 | NOTACI |Decimal |
-| REÁLNÉ |Jednoduché |
+| REÁLNÉ |Jeden |
 | DVOJITÁ PŘESNOST |dvojité |
 | DATOVÉHO |Řetězec |
 | CHAR |Řetězec |

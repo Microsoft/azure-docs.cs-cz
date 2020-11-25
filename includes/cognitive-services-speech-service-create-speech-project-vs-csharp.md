@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/30/2019
 ms.author: wolfma
 ms.openlocfilehash: c7332177795a45331749225e0f3dc3856e28a6a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71327060"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001085"
 ---
 Chcete-li vytvořit projekt sady Visual Studio pro vývoj pro systém Windows, je nutné vytvořit projekt, nastavit aplikaci Visual Studio pro vývoj desktopových aplikací .NET, nainstalovat sadu Speech SDK a vybrat cílovou architekturu.
 
@@ -23,7 +23,7 @@ Pokud chcete začít, vytvořte projekt v sadě Visual Studio a ujistěte se, ž
 
 1. V okně **vytvořit nový projekt** zvolte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
 
-1. V okně **Konfigurovat nový projekt** zadejte *HelloWorld* do pole **název projektu**, zvolte nebo vytvořte cestu k adresáři v **umístění**a pak vyberte **vytvořit**.
+1. V okně **Konfigurovat nový projekt** zadejte *HelloWorld* do pole **název projektu**, zvolte nebo vytvořte cestu k adresáři v **umístění** a pak vyberte **vytvořit**.
 
 1. V řádku nabídek sady Visual Studio vyberte **nástroje**  >  **získat nástroje a funkce**, které se otevře instalační program pro Visual Studio a zobrazí se dialogové okno **změny** .
 

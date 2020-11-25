@@ -9,11 +9,11 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
 ms.openlocfilehash: ffa562a734e0e6f898aaff89622362080bf1a053
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318190"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001350"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs-version-204"></a>Kurz: odesílání nabízených oznámení do aplikací pro iOS pomocí Azure Notification Hubs (verze 2.0.4)
 
@@ -28,7 +28,7 @@ Tento kurz se zabývá následujícími kroky:
 
 Kompletní kód pro tento kurz si můžete stáhnout [z GitHubu](https://github.com/Azure/azure-notificationhubs-ios/tree/v3-preview2/Samples).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu budete potřebovat následující požadavky:
 
@@ -43,21 +43,40 @@ Než budete pokračovat, přečtěte si předchozí kurz na webu Začínáme s [
 
 ## <a name="connect-your-ios-app-to-notification-hubs"></a>Připojte aplikaci iOS k centru oznámení
 
-1. V Xcode vytvořte nový projekt iOS a vyberte šablonu aplikace s **jedním zobrazením**   .
+1. V Xcode vytvořte nový projekt iOS a vyberte šablonu **Jediné zobrazení aplikace**.
 
    :::image type="content" source="media/ios-sdk/image1.png" alt-text="Vybrat šablonu":::
 
-2. Při nastavování možností pro nový projekt nezapomeňte použít stejný **název produktu**   a **identifikátor organizace**   , který jste použili při nastavení identifikátoru sady prostředků na portálu pro vývojáře Apple.
+2. Když nastavujete možnosti pro nový projekt, nezapomeňte použít stejný **Název produktu** a **Identifikátor organizace**, který jste použili při nastavení identifikátoru sady na portálu pro vývojáře Apple.
 
-3. V části Navigátor projektu vyberte název vašeho projektu v části **cíle**a pak vyberte kartu **možnosti podepisování &**   . Ujistěte se, že jste vybrali příslušný **tým**   pro svůj účet Apple Developer. XCode by na základě vašeho identifikátoru sady mělo automaticky stáhnout profil zřizování, který jste vytvořili dříve.
+3. V části Navigátor projektu vyberte název vašeho projektu v části **cíle** a pak vyberte kartu **možnosti podepisování &** . Ujistěte se, že jste vybrali příslušný **tým** pro svůj účet Apple Developer. XCode by na základě vašeho identifikátoru sady mělo automaticky stáhnout profil zřizování, který jste vytvořili dříve.
 
-   Pokud nevidíte nový profil zřizování, který jste vytvořili v Xcode, pokuste se aktualizovat profily pro podpisové identity. Klikněte na **Xcode**   na panelu nabídek, klikněte na **Předvolby**, klikněte na kartu **účet**   , klikněte na tlačítko **Zobrazit podrobnosti**   , klikněte na svou podpisovou identitu a pak klikněte na tlačítko Aktualizovat v pravém dolním rohu.
+   Pokud nevidíte nový profil zřizování, který jste vytvořili v Xcode, pokuste se aktualizovat profily pro podpisové identity. Klikněte na tlačítko **Xcode** na panelu nabídek, klikněte na tlačítko **Předvolby**, klikněte na kartu **Účet**, klikněte na tlačítko **Zobrazit podrobnosti**, klikněte na podpisovou identitu a pak klikněte na tlačítko Aktualizovat v pravém dolním rohu.
 
-   :::image type="content" source="media/ios-sdk/image2.png" alt-text="Vybrat šablonu":::
+   :::image type="content" source="media/ios-sdk/image2.png" alt-text="Zobrazit podrobnosti":::
 
-4. Na kartě **Možnosti podpisového &**   Vyberte **+ funkce**. Dvojím kliknutím na **nabízená oznámení**   ji povolte.
+4. Na kartě **Možnosti podpisového &** vyberte **+ funkce**. Dvojím kliknutím na **nabízená oznámení** ji povolte.
 
-   :::image type="content" source="media/ios-sdk/image3.png" alt-text="Vybrat šablonu"
+   :::image type="content" source="media/ios-sdk/image3.png" alt-text="Funkce":::
+
+5. Přidejte moduly Azure Notification Hubs SDK.
+
+   Sadu Azure Notification Hubs SDK můžete integrovat do své aplikace pomocí [Cocoapods](https://cocoapods.org/) nebo ručním přidáním binárních souborů do projektu.
+
+   - Integrace přes Cocoapods: přidejte do svého souboru podfile následující závislosti, které budou zahrnovat sadu Azure Notification Hubs SDK do vaší aplikace:
+
+      ```ruby
+      pod 'AzureNotificationHubs-iOS'
+      ```
+
+      - Spuštěním instalace pod nainstalujete instalaci nově definovaného bodu pod a otevřete. xcworkspace.
+
+         Pokud se zobrazí chyba, jako je například, **že se nepovedlo najít specifikaci pro AzureNotificationHubs-iOS** při spuštění po instalaci, spusťte příkaz, `pod repo update` abyste získali nejnovější lusky z úložiště Cocoapods a pak spustíte pod instalací.
+
+   - Integrace přes Carthage: přidejte do svého Cartfile následující závislosti, které budou zahrnovat sadu Azure Notification Hubs SDK do vaší aplikace:
+
+      ```ruby
+      github "Azure/azure-notificationhubs-ios"
       ```
 
       - Potom aktualizujte závislosti sestavení:
@@ -66,17 +85,17 @@ Než budete pokračovat, přečtěte si předchozí kurz na webu Začínáme s [
       $ carthage update
       ```
 
-      Další informace o použití Carthage najdete v [úložišti GitHub Carthage](https://github.com/Carthage/Carthage).
+      Další informace o použití Carthage najdete v [úložišti GitHub Carthage](https://github.com/Carthage/Carthage).
 
    - Integrace kopírováním binárních souborů do projektu: můžete je integrovat zkopírováním binárních souborů do projektu následujícím způsobem:
 
-        - Stáhněte si rozhraní [Azure Notification HUBS SDK](https://github.com/Azure/azure-notificationhubs-android/releases)   , které je k dispozici jako soubor zip, a rozbalte ho.
+        - Stáhněte si rozhraní [Azure Notification HUBS SDK](https://github.com/Azure/azure-notificationhubs-android/releases) , které je k dispozici jako soubor zip, a rozbalte ho.
 
-        - V Xcode klikněte pravým tlačítkem na projekt a kliknutím na **Přidat soubory do**   přidejte do svého projektu Xcode složku **WindowsAzureMessaging. Framework**   . Vyberte **Možnosti**   a ujistěte se, že je vybraná možnost **Kopírovat položky v případě potřeby**   , a pak klikněte na **Přidat**.
+        - V Xcode klikněte pravým tlačítkem na projekt a klikněte na možnost **Přidat soubory do** a přidejte složku **WindowsAzureMessaging.framework** do projektu Xcode. Vyberte **Možnosti**, ujistěte se, že je vybraná možnost **Kopírovat položky v případě potřeby**, a pak klikněte na **Přidat**.
 
-          :::image type="content" source="media/ios-sdk/image4.png" alt-text="Vybrat šablonu":::
+          :::image type="content" source="media/ios-sdk/image4.png" alt-text="Přidat rozhraní":::
 
-6. Přidejte nový hlavičkový soubor do projektu s názvem **konstanty. h**. Provedete to tak, že kliknete pravým tlačítkem myši na název projektu a vyberete **nový soubor...**. Pak vyberte **hlavičkový soubor**. V tomto souboru jsou konstanty vašeho centra oznámení. Pak vyberte **Další**. Pojmenujte soubor **konstanty. h**.
+6. Přidejte nový hlavičkový soubor do projektu s názvem **konstanty. h**. Provedete to tak, že kliknete pravým tlačítkem myši na název projektu a vyberete **nový soubor...**. Pak vyberte **hlavičkový soubor**. V tomto souboru jsou konstanty vašeho centra oznámení. Pak vyberte **Další**. Pojmenujte soubor **konstanty. h**.
 
 7. Do souboru konstanty. h přidejte následující kód:
 
@@ -89,15 +108,21 @@ Než budete pokračovat, přečtěte si předchozí kurz na webu Začínáme s [
    #endif /* Constants_h */
    ```
 
-8. Přidejte implementační soubor pro konstanty. h. Provedete to tak, že kliknete pravým tlačítkem myši na název projektu a vyberete **nový soubor...**. Vyberte **cíl-C soubor**a pak vyberte **Další**. Pojmenujte soubor **konstantami. m**.
+8. Přidejte implementační soubor pro konstanty. h. Provedete to tak, že kliknete pravým tlačítkem myši na název projektu a vyberete **nový soubor...**. Vyberte **cíl-C soubor** a pak vyberte **Další**. Pojmenujte soubor **konstantami. m**.
 
-   :::image type="content" source="media/ios-sdk/image5.png" alt-text="Vybrat šablonu"
+   :::image type="content" source="media/ios-sdk/image5.png" alt-text="Přidat implementační soubor":::
+
+9. Otevřete soubor **konstanty. m** a nahraďte jeho obsah následujícím kódem. Nahraďte zástupné symboly řetězcového literálu `NotificationHubConnectionString` a `NotificationHubConnectionString` názvem centra a **DefaultListenSharedAccessSignature**, v uvedeném pořadí, jak jste předtím získali z portálu:
+
+   ```objc
+   #import <Foundation/Foundation.h>
+   #import "Constants.h"
 
    NSString* const NHInfoConnectionString = @"NotificationHubConnectionString";
    NSString* const NHInfoHubName = @"NotificationHubName";NSString* const NHUserDefaultTags = @"notification_tags";
    ```
 
-10. Otevřete soubor projektu **AppDelegate. h**   a nahraďte jeho obsah následujícím kódem:
+10. Otevřete soubor projektu **AppDelegate. h** a nahraďte jeho obsah následujícím kódem:
 
     ```objc
     #import <UIKit/UIKit.h>
@@ -114,20 +139,20 @@ Než budete pokračovat, přečtěte si předchozí kurz na webu Začínáme s [
     @end
     ```
 
-11. V souboru projektu **AppDelegate. m**   přidejte následující  `import`   příkazy:
+11. V souboru projektu **AppDelegate. m** přidejte následující `import` příkazy:
 
     ```objc
     #import "Constants.h"
     #import "NotificationDetailViewController.h"
     ```
 
-12. Také v souboru **AppDelegate. m**   přidejte následující řádek kódu do  `didFinishLaunchingWithOptions`   metody na základě vaší verze iOS. Tento kód zaregistruje popisovač vašeho zařízení do APN:
+12. Také v souboru **AppDelegate. m** přidejte následující řádek kódu do `didFinishLaunchingWithOptions` metody na základě vaší verze iOS. Tento kód zaregistruje popisovač vašeho zařízení do APN:
 
     ```objc
     [[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];
     ```
 
-13. Ve stejném souboru **AppDelegate. m**   nahraďte veškerý kód za  `didFinishLaunchingWithOptions`   následujícím kódem:
+13. Ve stejném souboru **AppDelegate. m** nahraďte veškerý kód za `didFinishLaunchingWithOptions` následujícím kódem:
 
     ```objc
     // Tells the app that a remote notification arrived that indicates there is data to be fetched.
@@ -271,11 +296,11 @@ Než budete pokračovat, přečtěte si předchozí kurz na webu Začínáme s [
     @end
     ```
 
-    Tento kód se připojí k centru oznámení pomocí informací o připojení, které jste zadali v **konstantách. h**. Pak přiřadí token zařízení do centra oznámení tak, aby centrum mohlo odesílat oznámení.
+    Tento kód se připojí k centru oznámení pomocí informací o připojení, které jste zadali v **konstantách. h**. Pak přiřadí token zařízení do centra oznámení tak, aby centrum mohlo odesílat oznámení.
 
 ### <a name="create-notificationdetailviewcontroller-header-file"></a>Vytvořit soubor hlaviček NotificationDetailViewController
 
-1. Podobně jako v předchozích pokynech přidejte další hlavičkový soubor s názvem **NotificationDetailViewController. h**. Nahraďte obsah nového hlavičkového souboru následujícím kódem:
+1. Podobně jako v předchozích pokynech přidejte další hlavičkový soubor s názvem **NotificationDetailViewController. h**. Nahraďte obsah nového hlavičkového souboru následujícím kódem:
 
    ```objc
    #import <UIKit/UIKit.h>
@@ -297,7 +322,7 @@ Než budete pokračovat, přečtěte si předchozí kurz na webu Začínáme s [
    NS_ASSUME_NONNULL_END
    ```
 
-2. Přidejte implementační soubor **NotificationDetailViewController. m**. Nahraďte obsah souboru následujícím kódem, který implementuje metody UIViewController:
+2. Přidejte implementační soubor **NotificationDetailViewController. m**. Nahraďte obsah souboru následujícím kódem, který implementuje metody UIViewController:
 
    ```objc
    #import "NotificationDetailViewController.h"
@@ -362,14 +387,14 @@ Než budete pokračovat, přečtěte si předchozí kurz na webu Začínáme s [
 
 ### <a name="viewcontroller"></a>Soubor viewcontroller
 
-1. V souboru projektu **soubor viewcontroller. h**   přidejte následující  `import`   příkazy:
+1. V souboru projektu **soubor viewcontroller. h** přidejte následující `import` příkazy:
 
    ```objc
    #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
    #import <UserNotifications/UserNotifications.h>
    ```
 
-2. V **soubor viewcontroller. h**přidejte následující deklarace vlastností za  `@interface`   deklaraci:
+2. V **soubor viewcontroller. h** přidejte následující deklarace vlastností za `@interface` deklaraci:
 
    ```objc
    @property (strong, nonatomic) IBOutlet UITextField *tagsTextField;
@@ -377,7 +402,7 @@ Než budete pokračovat, přečtěte si předchozí kurz na webu Začínáme s [
    @property (strong, nonatomic) IBOutlet UIButton *unregisterButton;
    ```
 
-3. V implementačním souboru **soubor viewcontroller. m**projektu   nahraďte obsah souboru následujícím kódem:
+3. V implementačním souboru **soubor viewcontroller. m** projektu nahraďte obsah souboru následujícím kódem:
 
    ```objc
    #import "ViewController.h"
@@ -423,32 +448,32 @@ Než budete pokračovat, přečtěte si předchozí kurz na webu Začínáme s [
 
 ## <a name="send-test-push-notifications"></a>Odešlete nabízená oznámení
 
-Příjem oznámení ve vaší aplikaci můžete otestovat pomocí možnosti **Odeslat test**   v [Azure Portal](https://portal.azure.com/). Do zařízení se odešle testovací nabízené oznámení.
+Příjem oznámení ve vaší aplikaci můžete otestovat pomocí možnosti **Testovací odeslání** na webu [Azure Portal](https://portal.azure.com/). Do zařízení se odešle testovací nabízené oznámení.
 
-:::image type="content" source="media/ios-sdk/image6.png" alt-text="Vybrat šablonu":::
+:::image type="content" source="media/ios-sdk/image6.png" alt-text="Odeslat test":::
 
 Nabízená oznámení se většinou posílají ve službě back-end, jako je služba Mobile Apps, nebo v technologii ASP.NET pomocí kompatibilní knihovny. Pokud pro váš back-end není dostupná žádná knihovna, můžete k posílání oznámení použít také REST API přímo.
 
 Tady je seznam některých dalších kurzů, které byste mohli chtít zkontrolovat při odesílání oznámení:
 
-- Azure Mobile Apps: Příklad odesílání oznámení z back-endu Mobile Apps, který je integrovaný do Notification Hubs, najdete v tématu [Přidání nabízených oznámení do vaší aplikace pro iOS](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push).
-- ASP.NET: [použijte Notification Hubs k odesílání nabízených oznámení uživatelům](notification-hubs-aspnet-backend-ios-apple-apns-notification.md).
-- Sada SDK pro Azure Notification Hubs Java: Přečtěte si téma [použití Notification Hubs z Java](notification-hubs-java-push-notification-tutorial.md)   k odesílání oznámení z Java. Tato metoda prošla pro potřeby vývoje pro Android testováním v Eclipse.
-- PHP: [použití Notification Hubs z php](notification-hubs-php-push-notification-tutorial.md).
+- Azure Mobile Apps: Příklad odesílání oznámení z back-endu Mobile Apps, který je integrovaný do Notification Hubs, najdete v tématu [Přidání nabízených oznámení do vaší aplikace pro iOS](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push).
+- ASP.NET: [použijte Notification Hubs k odesílání nabízených oznámení uživatelům](notification-hubs-aspnet-backend-ios-apple-apns-notification.md).
+- Sada Azure Notification Hubs Java SDK: Informace o odesílání oznámení z Javy najdete v článku [Jak používat Notification Hubs z Javy](notification-hubs-java-push-notification-tutorial.md). Tato metoda prošla pro potřeby vývoje pro Android testováním v Eclipse.
+- PHP: [Jak používat Notification Hubs z PHP](notification-hubs-php-push-notification-tutorial.md).
 
 ## <a name="verify-that-your-app-receives-push-notifications"></a>Ověření, že aplikace přijímá nabízená oznámení
 
 Chcete-li otestovat nabízená oznámení na iOS, musíte aplikaci nasadit do fyzického zařízení iOS. Nabízená oznámení Apple nemůžete odesílat pomocí simulátoru iOS.
 
-1. Spusťte aplikaci a ověřte, že registrace proběhla úspěšně, a pak stiskněte **OK**.
+1. Spusťte aplikaci a ověřte, zda byla registrace úspěšná a stiskněte klávesu **OK**.
 
-   :::image type="content" source="media/ios-sdk/image7.png" alt-text="Vybrat šablonu":::
+   :::image type="content" source="media/ios-sdk/image7.png" alt-text="Zaregistrovat":::
 
-2. Dále odešlete testovací nabízené oznámení z [Azure Portal](https://portal.azure.com/), jak je popsáno v předchozí části.
+2. Dále odešlete testovací nabízené oznámení z [Azure Portal](https://portal.azure.com/), jak je popsáno v předchozí části.
 
 3. Nabízené oznámení se odešle na všechna zařízení, která jsou zaregistrovaná pro příjem oznámení z daného centra oznámení.
 
-   :::image type="content" source="media/ios-sdk/image8.png" alt-text="Vybrat šablonu":::
+   :::image type="content" source="media/ios-sdk/image8.png" alt-text="Odeslat test":::
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: 2f1c703f2bd2e90e15c566b7e04e8a878c16f6de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91772817"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001265"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Spouštění runbooků ve funkci Hybrid Runbook Worker
 
@@ -86,8 +86,8 @@ K určení účtu Spustit jako pro skupinu Hybrid Runbook Worker použijte násl
 
 1. Vytvořte [Asset přihlašovacích údajů](./shared-resources/credentials.md) s přístupem k místním prostředkům.
 2. Otevřete účet Automation v Azure Portal.
-3. Vyberte **Hybrid Worker skupiny**a pak vyberte konkrétní skupinu.
-4. Vyberte **všechna nastavení**a potom **Nastavení skupiny hybridních pracovních procesů**.
+3. Vyberte **Hybrid Worker skupiny** a pak vyberte konkrétní skupinu.
+4. Vyberte **všechna nastavení** a potom **Nastavení skupiny hybridních pracovních procesů**.
 5. Změňte hodnotu **Spustit jako** z **výchozí** na Custom ( **vlastní**).
 6. Vyberte přihlašovací údaje a klikněte na **Uložit**.
 
@@ -95,7 +95,7 @@ K určení účtu Spustit jako pro skupinu Hybrid Runbook Worker použijte násl
 
 Jako součást procesu automatizovaného sestavování pro nasazení prostředků v Azure můžete vyžadovat přístup k místním systémům pro podporu úlohy nebo sady kroků v sekvenci nasazení. Chcete-li zajistit ověřování v Azure pomocí účtu Spustit jako, je nutné nainstalovat certifikát účtu Spustit jako.
 
-Následující PowerShellový Runbook s názvem **Export-RunAsCertificateToHybridWorker**exportuje certifikát spustit jako z účtu Azure Automation. Sada Runbook stáhne a importuje certifikát do úložiště certifikátů místního počítače na Hybrid Runbook Worker, která je připojena ke stejnému účtu. Jakmile tento krok dokončí, sada Runbook ověří, že se pracovní proces může úspěšně ověřit v Azure pomocí účtu Spustit jako.
+Následující PowerShellový Runbook s názvem **Export-RunAsCertificateToHybridWorker** exportuje certifikát spustit jako z účtu Azure Automation. Sada Runbook stáhne a importuje certifikát do úložiště certifikátů místního počítače na Hybrid Runbook Worker, která je připojena ke stejnému účtu. Jakmile tento krok dokončí, sada Runbook ověří, že se pracovní proces může úspěšně ověřit v Azure pomocí účtu Spustit jako.
 
 >[!NOTE]
 >Tento PowerShellový Runbook není navržený nebo nemá být spuštěný mimo účet Automation jako skript na cílovém počítači.
@@ -263,7 +263,7 @@ Pokud chcete vytvořit GPG a souboru KeyPair, použijte [účet Hybrid Runbook W
     sudo su – nxautomation
     ```
 
-2. Po použití **nxautomation**vygenerujte GPG souboru KeyPair. GPG vás provede jednotlivými kroky. Musíte zadat jméno, e-mailovou adresu, čas vypršení platnosti a heslo. Potom počkejte, než bude na počítači dostatek entropie, aby se klíč vygeneroval.
+2. Po použití **nxautomation** vygenerujte GPG souboru KeyPair. GPG vás provede jednotlivými kroky. Musíte zadat jméno, e-mailovou adresu, čas vypršení platnosti a heslo. Potom počkejte, než bude na počítači dostatek entropie, aby se klíč vygeneroval.
 
     ```bash
     sudo gpg --generate-key
@@ -299,7 +299,7 @@ Jakmile nakonfigurujete ověřování podpisů, použijte následující příka
 gpg –-clear-sign <runbook name>
 ```
 
-Podepsaná sada Runbook se nazývá ** <runbook name> . asc**.
+Podepsaná sada Runbook se nazývá **<runbook name> . asc**.
 
 Teď můžete nahrát podepsaný Runbook do Azure Automation a spustit ho jako regulární Runbook.
 
@@ -315,7 +315,7 @@ Při spouštění sady Runbook pomocí prostředí PowerShell použijte `RunOn` 
 Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
 ```
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>Protokolování
 
 V rámci řešení potíží se sadami Runbook, které běží na Hybrid Runbook Worker, jsou protokoly uložené lokálně v následujícím umístění:
 

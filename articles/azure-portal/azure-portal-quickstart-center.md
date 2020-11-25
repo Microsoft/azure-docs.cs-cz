@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 21dd43b5179d0752699bb56b51a2c08976aa037b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76900689"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000840"
 ---
 # <a name="get-started-with-the-azure-quickstart-center"></a>Začínáme s Centrem rychlého startu Azure
 
@@ -32,7 +32,7 @@ Centrum rychlý Start pro Azure má tři možnosti, jak začít:
 
 ## <a name="how-to-use-azure-quickstart-center"></a>Jak používat centrum rychlý Start Azure
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. V nabídce Azure Portal vyberte **všechny služby** .
 

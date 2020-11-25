@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/02/2018
 tags: connectors
 ms.openlocfilehash: b67d2e860e8c69f6f2f43441144ef2f60ed3a104
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75378445"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999535"
 ---
 # <a name="monitor-and-manage-your-github-repo-by-using-azure-logic-apps"></a>Monitorování a správa úložiště GitHub pomocí Azure Logic Apps
 
@@ -24,9 +24,9 @@ Pokud chcete začít s konektorem GitHubu, [vytvořte nejdřív aplikaci logiky]
 
 Pokud chcete použít konektor GitHubu v aplikaci logiky, musíte nejdřív vytvořit *připojení* a pak zadat podrobnosti těchto vlastností: 
 
-| Vlastnost | Požaduje se | Popis | 
+| Vlastnost | Povinné | Popis | 
 | -------- | -------- | ----------- | 
-| Token | Ano | Zadejte svoje přihlašovací údaje GitHubu. |
+| Token | Yes | Zadejte svoje přihlašovací údaje GitHubu. |
 
 Po vytvoření připojení můžete provést akce a naslouchat aktivačním událostem popsaným v tomto článku.
 

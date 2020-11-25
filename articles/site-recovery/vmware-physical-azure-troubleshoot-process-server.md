@@ -8,11 +8,11 @@ ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: ad1bec66edaa3fcc6049f4911684f6e6d6c3e366
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369399"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999178"
 ---
 # <a name="troubleshoot-the-process-server"></a>Řešení potíží s procesovým serverem
 
@@ -168,7 +168,7 @@ Ověřte, jestli procesový Server aktivně donáší data do Azure.
 
   1. Na procesovém serveru otevřete Správce úloh (stiskněte kombinaci kláves CTRL + SHIFT + ESC).
   2. Vyberte kartu **výkon** > **otevřít sledování prostředků**.
-  3. Na stránce **Sledování prostředků** vyberte kartu **síť** . V části **procesy s aktivitou sítě**ověřte, zda cbengine.exe aktivně odesílá velké množství dat.
+  3. Na stránce **Sledování prostředků** vyberte kartu **síť** . V části **procesy s aktivitou sítě** ověřte, zda cbengine.exe aktivně odesílá velké množství dat.
 
        ![Snímek obrazovky s velkým počtem svazků v procesech se síťovou aktivitou](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 
@@ -177,7 +177,7 @@ Ověřte, jestli procesový Server aktivně donáší data do Azure.
 ## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>Krok 9: ověření připojení procesového serveru ke službě Azure Blob Storage
 
 1. V Sledování prostředků vyberte **cbengine.exe**.
-2. V části **připojení TCP**zkontrolujte, jestli je mezi procesovým serverem dosažitelný přístup k úložišti Azure.
+2. V části **připojení TCP** zkontrolujte, jestli je mezi procesovým serverem dosažitelný přístup k úložišti Azure.
 
   ![Snímek obrazovky s připojením mezi cbengine.exe a adresou URL úložiště objektů BLOB v Azure](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
 
@@ -199,8 +199,8 @@ Pokud se z procesového serveru nemůžete připojit k adrese URL služby Azure 
 
 ## <a name="step-10-check-the-process-server-connection-to-azure-public-ip-address"></a>Krok 10: ověření připojení procesového serveru k veřejné IP adrese Azure
 
-1. Na procesovém serveru v **%ProgramFiles%\Microsoft Azure Recovery Services Agent\Temp**otevřete nejnovější soubor CBEngineCurr. errlog.
-2. V souboru vyhledejte **443**nebo **se pokus o připojení k řetězci nezdařil**.
+1. Na procesovém serveru v **%ProgramFiles%\Microsoft Azure Recovery Services Agent\Temp** otevřete nejnovější soubor CBEngineCurr. errlog.
+2. V souboru vyhledejte **443** nebo **se pokus o připojení k řetězci nezdařil**.
 
   ![Protokoly chyb v dočasné složce](./media/vmware-physical-azure-troubleshoot-process-server/logdetails1.png)
 
@@ -235,7 +235,7 @@ Ověřte, jestli brána firewall na procesovém serveru blokuje přístup na zá
 
     a) vyhledejte **Microsoft Azure Backup**.
 
-    b) otevřete **Microsoft Azure Backup**a vyberte **Akce**  >  **vlastnosti změny**.
+    b) otevřete **Microsoft Azure Backup** a vyberte **Akce**  >  **vlastnosti změny**.
 
     c) na kartě **konfigurace proxy** serveru musí být adresa proxy shodná s adresou proxy serveru, která je uvedena v nastavení registru. Pokud ne, změňte ji na stejnou adresu.
 

@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 05/26/2020
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: 05082ffa891b72b472ed5433282198c61080f073
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537794"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999480"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-using-powershell"></a>Rychlý Start: vytvoření serveru Azure Database for MariaDB pomocí prostředí PowerShell
 
@@ -61,7 +61,7 @@ Následující tabulka obsahuje seznam běžně používaných parametrů a uká
 
 |        **Nastavení**         | **Ukázková hodnota** |                                                                                                                                                             **Popis**                                                                                                                                                              |
 | -------------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Název                       | mydemoserver     | V Azure vyberte globálně jedinečný název, který identifikuje Azure Database for MariaDB Server. Název serveru může obsahovat jenom písmena, číslice a znak spojovníku (-). Všechna zadaná velká písmena se během procesu vytváření automaticky převedou na malá písmena. Musí se skládat ze 3 až 63 znaků. |
+| Name                       | mydemoserver     | V Azure vyberte globálně jedinečný název, který identifikuje Azure Database for MariaDB Server. Název serveru může obsahovat jenom písmena, číslice a znak spojovníku (-). Všechna zadaná velká písmena se během procesu vytváření automaticky převedou na malá písmena. Musí se skládat ze 3 až 63 znaků. |
 | ResourceGroupName          | myresourcegroup  | Zadejte název skupiny prostředků Azure.                                                                                                                                                                                                                                                                                            |
 | Skladová jednotka (SKU)                        | GP_Gen5_2        | Název skladové položky. Postupuje podle konvence **cenové úrovně \_ COMPUTE – generace \_ virtuální jádra** ve zkráceném znění. Další informace o parametru SKU naleznete v informacích uvedených v této tabulce.                                                                                                                                           |
 | BackupRetentionDay         | 7                | Určuje, jak dlouho se mají uchovávat zálohy. Jednotkou jsou dny. Rozsah je 7 až 35.                                                                                                                                                                                                                                                                       |
@@ -70,7 +70,7 @@ Následující tabulka obsahuje seznam běžně používaných parametrů a uká
 | SslEnforcement             | Povoleno          | Zda má být pro tento server povolen nebo nikoli protokol SSL. Povolené hodnoty: Enabled, Disabled.                                                                                                                                                                                                                                                 |
 | StorageInMb                | 51200            | Kapacita úložiště serveru (jednotkou jsou megabajty). Platný StorageInMb je minimálně 5120 MB a zvyšuje se o 1024 MB. Další informace o limitech velikosti úložiště najdete v tématu [Azure Database for MariaDB cenové úrovně](./concepts-pricing-tiers.md).                                                                               |
 | Verze                    | 5.7              | Hlavní verze MariaDB                                                                                                                                                                                                                                                                                                                 |
-| AdministratorUserName      | myadmin          | Uživatelské jméno pro přihlášení správce. Nemůže být **azure_superuser** , **admin** , **administrátor** , **root** , **host** nebo **public**.                                                                                                                                                                                            |
+| AdministratorUserName      | myadmin          | Uživatelské jméno pro přihlášení správce. Nemůže být **azure_superuser**, **admin**, **administrátor**, **root**, **host** nebo **public**.                                                                                                                                                                                            |
 | AdministratorLoginPassword | `<securestring>` | Heslo správce uživatele ve formě zabezpečeného řetězce. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice a jiné než alfanumerické znaky.                                       |
 
 Hodnota parametru **SKU** dodržuje cenové úrovně **\_ \_ virtuální jádra COMPUTE-Generation** , jak je znázorněno v následujících příkladech.

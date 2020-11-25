@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 07a274bd4ac227b6260f7891b24dad0eacdfb4f7
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: a71c1a0df1a72e3831fa54a041539f62b38a0aca
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561505"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95999905"
 ---
 # <a name="create-luis-resources"></a>Vytvoření prostředků LUIS
 
@@ -29,8 +29,8 @@ LUIS umožňuje tři typy prostředků Azure a jeden jiný prostředek než Azur
 
 |Prostředek|Účel|Služba rozpoznávání `kind`|Služba rozpoznávání `type`|
 |--|--|--|--|
-|Vytváření prostředku|Umožňuje vytváření, správu, výuku, testování a publikování aplikací. Pokud máte v úmyslu vytvářet aplikace LUIS prostřednictvím kódu programu nebo z portálu LUIS, [vytvořte prostředek pro vytváření Luis](luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal) . Než propojíte prostředky pro vytváření obsahu Azure s vaší aplikací, musíte [svůj účet Luis migrovat](luis-migration-authoring.md#what-is-migration) . Oprávnění k vytváření prostředků můžete řídit přiřazením osob [do role Přispěvatel](#contributions-from-other-authors). <br><br> Pro prostředek pro vytváření LUIS je k dispozici jedna úroveň:<br> <ul> <li>**Bezplatný F0 vytváření prostředků** , který vám poskytne 1 000 000 volných transakcí pro vytváření a 1 000 bezplatné požadavky na koncový bod předpovědi testování za měsíc. |`LUIS.Authoring`|`Cognitive Services`|
-|Prostředek předpovědi| Po publikování aplikace LUIS použijte k vyřízení požadavků na koncový bod předpovědi pro dotazování prostředku nebo klíče předpovědi. Vytvořte předpověď LUIS prostředku předtím, než klientská aplikace požaduje předpovědi nad požadavky 1 000, které poskytla služba Authoring nebo Starter Resource. <br><br> Pro prostředek předpovědi jsou k dispozici dvě úrovně:<br><ul> <li> **F0 předpověď Free** , což vám poskytne 10 000 bezplatné požadavky na koncový bod předpovědi měsíčně.<br> <li> **Prostředek předpovědi úrovně Standard S0** , což je placená úroveň. [Přečtěte si další informace o cenách.](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
+|Vytváření prostředku|Umožňuje vytváření, správu, výuku, testování a publikování aplikací. Pokud máte v úmyslu vytvářet aplikace LUIS prostřednictvím kódu programu nebo z portálu LUIS, [vytvořte prostředek pro vytváření Luis](luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal) . Než propojíte prostředky pro vytváření obsahu Azure s vaší aplikací, musíte [svůj účet Luis migrovat](luis-migration-authoring.md#what-is-migration) . Oprávnění k vytváření prostředků můžete řídit přiřazením osob [do role Přispěvatel](#contributions-from-other-authors). <br><br> Pro prostředek pro vytváření LUIS je k dispozici jedna úroveň:<br> <ul> <li>**Bezplatný F0 vytváření prostředků**, který vám poskytne 1 000 000 volných transakcí pro vytváření a 1 000 bezplatné požadavky na koncový bod předpovědi testování za měsíc. |`LUIS.Authoring`|`Cognitive Services`|
+|Prostředek předpovědi| Po publikování aplikace LUIS použijte k vyřízení požadavků na koncový bod předpovědi pro dotazování prostředku nebo klíče předpovědi. Vytvořte předpověď LUIS prostředku předtím, než klientská aplikace požaduje předpovědi nad požadavky 1 000, které poskytla služba Authoring nebo Starter Resource. <br><br> Pro prostředek předpovědi jsou k dispozici dvě úrovně:<br><ul> <li> **F0 předpověď Free**, což vám poskytne 10 000 bezplatné požadavky na koncový bod předpovědi měsíčně.<br> <li> **Prostředek předpovědi úrovně Standard S0**, což je placená úroveň. [Přečtěte si další informace o cenách.](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
 |Zdroj počáteční/zkušební verze|Umožňuje vytváření, správu, výuku, testování a publikování aplikací. Tento prostředek se vytvoří ve výchozím nastavení, pokud při prvním přihlášení k LUIS zvolíte možnost prostředek počátečního prostředku. Počáteční klíč bude nakonec zastaralý. Všichni LUIS uživatelé budou muset [migrovat své účty](luis-migration-authoring.md#what-is-migration) a propojit své Luis aplikace s prostředky pro vytváření obsahu. Na rozdíl od vytváření prostředků vám tento prostředek neuděluje oprávnění k řízení přístupu na základě role v Azure. <br><br> Stejně jako u zdrojů pro vytváření počátečního prostředku vám poskytne 1 000 000 volných transakcí pro vytváření a 1 000 bezplatné požadavky na koncový bod předpovědi testování.|-|Nejedná se o prostředek Azure.|
 |[Cognitive Services klíč prostředku s více službami](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|Požadavky koncového bodu předpovědi dotazu sdílené s LUIS a dalšími podporovanými službami pro rozpoznávání.|`CognitiveServices`|`Cognitive Services`|
 
@@ -176,7 +176,7 @@ Můžete určit, kdo může zobrazit klíč koncového bodu LUIS předpovědi, v
 
 ### <a name="create-resources-in-the-azure-cli"></a>Vytváření prostředků v Azure CLI
 
-Pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) můžete jednotlivé prostředky vytvořit jednotlivě.
+Pomocí rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) můžete jednotlivé prostředky vytvořit jednotlivě.
 
 Prostředek `kind` :
 
@@ -224,7 +224,7 @@ Můžete přiřadit prostředek pro vytváření obsahu pro jednu aplikaci nebo 
 Pomocí tohoto postupu můžete vytvořit prostředek pro vytváření obsahu nebo předpovědi nebo ho přiřadit k aplikaci: 
 
 1. Přihlaste se k [portálu Luis](https://www.luis.ai). Vyberte aplikaci ze seznamu **Moje aplikace** .
-1. Přejít na **Správa**  >  **prostředků Azure** :
+1. Přejít na **Správa**  >  **prostředků Azure**:
 
     ![Snímek obrazovky, který ukazuje stránku prostředků Azure.](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
 

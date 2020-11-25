@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: d1b2ddb4d5f9c6e0e927c5249ada8dc061141a00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96d7ca7a302e3ef3506667959e34a29c36647396
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858281"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95999378"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a Ruby
 
@@ -31,7 +31,7 @@ V tomto rychlém startu použijete REST API Azure Face s Ruby k detekci lidskýc
 
 ## <a name="write-the-script"></a>Napsat skript
 
-Vytvořte nový soubor _faceDetection. RB_a přidejte následující kód. Tento kód volá Face API pro danou adresu URL obrázku.
+Vytvořte nový soubor _faceDetection. RB_ a přidejte následující kód. Tento kód volá Face API pro danou adresu URL obrázku.
 
 :::code language="ruby" source="~/cognitive-services-quickstart-code/ruby/face/rest/detect.rb":::
 
@@ -78,7 +78,7 @@ uri.query = URI.encode_www_form({
 })
 ```
 
-Odpověď teď obsahuje atributy obličeje. Příklad:
+Odpověď teď obsahuje atributy obličeje. Například:
 
 ```json
 [
@@ -265,3 +265,4 @@ V tomto rychlém startu jste napsali skript Ruby, který volá službu Azure Fac
 
 > [!div class="nextstepaction"]
 > [Rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+ 
