@@ -17,11 +17,11 @@ ms.date: 03/18/2018
 ms.author: kaanan
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 8e3a56e4a6eb1fb6eb633021178ef78f8ac7287d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87488835"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014784"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Práce s virtuální sítí klepněte pomocí Azure CLI.
 
@@ -53,7 +53,7 @@ KLEPNUTÍ na virtuální síť Azure (terminálový přístupový bod) umožňuj
 
 4. Pokud je cíl pro virtuální síť klepněte na síťové rozhraní síťového virtuálního zařízení pro kolektor nebo nástroj pro analýzu –
 
-   - Načtěte konfiguraci IP síťového rozhraní síťového virtuálního zařízení do proměnné, která se používá v pozdějším kroku. ID je koncový bod, který bude agregovat provoz klepnutím. Následující příklad načte ID konfigurace IP adresy *ipconfig1* pro síťové rozhraní s názvem *myNetworkInterface*ve skupině prostředků s názvem *myResourceGroup*:
+   - Načtěte konfiguraci IP síťového rozhraní síťového virtuálního zařízení do proměnné, která se používá v pozdějším kroku. ID je koncový bod, který bude agregovat provoz klepnutím. Následující příklad načte ID konfigurace IP adresy *ipconfig1* pro síťové rozhraní s názvem *myNetworkInterface* ve skupině prostředků s názvem *myResourceGroup*:
 
       ```azurecli-interactive
        IpConfigId=$(az network nic ip-config show \
@@ -77,7 +77,7 @@ KLEPNUTÍ na virtuální síť Azure (terminálový přístupový bod) umožňuj
 
 5. Pokud je cíl pro virtuální síť klepněte na interní nástroj pro vyrovnávání zatížení Azure:
   
-   - Načtěte konfiguraci IP adresy front-endu interního nástroje pro vyrovnávání zatížení do proměnné, která se používá v pozdějším kroku. ID je koncový bod, který bude agregovat provoz klepnutím. Následující příklad načte ID konfigurace front-end IP adresy *frontendipconfig1* pro nástroj pro vyrovnávání zatížení s názvem *myInternalLoadBalancer*ve skupině prostředků s názvem *myResourceGroup*:
+   - Načtěte konfiguraci IP adresy front-endu interního nástroje pro vyrovnávání zatížení do proměnné, která se používá v pozdějším kroku. ID je koncový bod, který bude agregovat provoz klepnutím. Následující příklad načte ID konfigurace front-end IP adresy *frontendipconfig1* pro nástroj pro vyrovnávání zatížení s názvem *myInternalLoadBalancer* ve skupině prostředků s názvem *myResourceGroup*:
 
       ```azurecli-interactive
       FrontendIpConfigId=$(az network lb frontend-ip show \

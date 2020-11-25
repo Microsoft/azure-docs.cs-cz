@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 9b712756b6daf7380998bb98f56113cab29ebb59
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516507"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015158"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>Kurz: Azure Active Directory integrace se základem dovedností
 
@@ -65,13 +65,13 @@ Pokud chcete nakonfigurovat integraci dovedností v rámci služby Azure AD, mus
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **základnu odbornosti** , vyberte možnost **základ dovedností** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **základnu odbornosti**, vyberte možnost **základ dovedností** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![Základ dovedností v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD se základem dovedností na základě testovacího uživatele s názvem **Britta Simon** .
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD se základem dovedností na základě testovacího uživatele s názvem **Britta Simon**.
 Aby jednotné přihlašování fungovalo, je potřeba zřídit vztah odkazu mezi uživatelem služby Azure AD a souvisejícím uživatelem v rámci dovedností.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD se základem dovedností, je nutné dokončit následující stavební bloky:
@@ -89,7 +89,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
 Pokud chcete nakonfigurovat jednotné přihlašování Azure AD se základem dovedností, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace s aplikací na **základě dovedností** vyberte **jednotné přihlašování** .
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace s aplikací na **základě dovedností** vyberte **jednotné přihlašování**.
 
     ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
@@ -128,11 +128,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD se základem dov
 
 1. V jiném okně webového prohlížeče se přihlaste ke odbornosti jako správce zabezpečení.
 
-2. Na levé straně nabídky klikněte v části **správce** na **ověřování** .
+2. Na levé straně nabídky klikněte v části **správce** na **ověřování**.
 
     ![Správce](./media/skillsbase-tutorial/tutorial_skillsbase_auth.png)
 
-3. Na stránce **ověřování** vyberte jednu Sign-On jako **SAML 2** .
+3. Na stránce **ověřování** vyberte jednu Sign-On jako **SAML 2**.
 
     ![Snímek obrazovky se zobrazí stránka ověřování s protokolem SAML 2, kterou jste vybrali pro přihlášení k webu.](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
 
@@ -145,13 +145,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD se základem dov
     > [!Note]
     > Metadata IDP můžete také ověřit prostřednictvím nástroje pro **ověření metadat** , jak je zvýrazněno na snímku obrazovky výše.
 
-    b. Klikněte na **Uložit** .
+    b. Klikněte na **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -163,28 +163,28 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon** .
+    a. Do pole **název** zadejte **BrittaSimon**.
   
     b. Do pole typ **uživatelského jména****brittasimon@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit** .
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k základu dovedností.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace** , vyberte možnost **všechny aplikace** a pak vyberte možnost **základ dovedností** .
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte možnost **základ dovedností**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte možnost **základ dovedností** .
+2. V seznamu aplikace vyberte možnost **základ dovedností**.
 
     ![Odkaz na základ dovedností v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny** .
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
@@ -211,7 +211,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici základ dovedností na přístupovém panelu, měli byste se automaticky přihlásit k základu dovedností, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

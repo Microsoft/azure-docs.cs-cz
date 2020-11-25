@@ -9,11 +9,11 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
 ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87066119"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015192"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Zprávy Exchange X12 pro integraci B2B Enterprise v Azure Logic Apps s využitím Enterprise Integration Pack
 
@@ -39,7 +39,7 @@ Pokud chcete pracovat se X12 zprávami v Azure Logic Apps, můžete použít kon
 
 Po nastavení vlastností smlouvy můžete nakonfigurovat způsob, jakým tato smlouva identifikuje a zpracovává příchozí zprávy, které od svého partnera obdržíte prostřednictvím této smlouvy.
 
-1. V části **Přidat**vyberte **Nastavení příjmu**.
+1. V části **Přidat** vyberte **Nastavení příjmu**.
 
 1. Tyto vlastnosti můžete nakonfigurovat na základě vaší smlouvy s partnerem, který s vámi vyměňuje zprávy. **Nastavení příjmu** jsou uspořádána do těchto částí:
 
@@ -161,7 +161,7 @@ Pro tuto část vyberte [schéma](../logic-apps/logic-apps-enterprise-integratio
 
 Po nastavení vlastností smlouvy můžete nakonfigurovat způsob, jakým tato smlouva identifikuje a zpracovává odchozí zprávy odeslané na svého partnera prostřednictvím této smlouvy.
 
-1. V části **Přidat**vyberte **Odeslat nastavení**.
+1. V části **Přidat** vyberte **Odeslat nastavení**.
 
 1. Tyto vlastnosti můžete nakonfigurovat na základě vaší smlouvy s partnerem, který s vámi vyměňuje zprávy. Popis vlastností najdete v tabulkách v této části.
 
@@ -247,7 +247,7 @@ Pro tuto část vyberte [schéma](../logic-apps/logic-apps-enterprise-integratio
 | **GS2 úrovně** | Volitelně zadejte odesílatele aplikace. |
 | **GS3 úrovně** | Volitelné, určete příjemce aplikace. |
 | **GS4 úrovně** | Volitelné, vyberte **CCYYMMDD** nebo **rrmmdd**. |
-| **GS5** | Volitelné, vyberte **hhmm**, **HHMMSS**nebo **HHMMSSdd**. |
+| **GS5** | Volitelné, vyberte **hhmm**, **HHMMSS** nebo **HHMMSSdd**. |
 | **GS7** | Volitelné, vyberte hodnotu odpovědného úřadu. |
 | **GS8** | Volitelné, zadejte verzi dokumentu schématu. |
 |||
@@ -278,7 +278,7 @@ Pro tuto část vyberte [schéma](../logic-apps/logic-apps-enterprise-integratio
 
 | Vlastnost | Popis |
 |----------|-------------|
-| **Znaková sada, která se má použít** | X12 znaková sada, která je buď **Basic**, **Extended**nebo **UTF8**. |
+| **Znaková sada, která se má použít** | X12 znaková sada, která je buď **Basic**, **Extended** nebo **UTF8**. |
 | **Schéma** | Schéma, které chcete použít. Po výběru schématu vyberte znakovou sadu, kterou chcete použít, na základě níže uvedených popisů oddělovače. |
 | **Typ vstupu** | Vstupní typ znakové sady |
 | **Oddělovač komponent** | Jeden znak, který odděluje složené datové prvky |

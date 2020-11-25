@@ -8,11 +8,11 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 08/30/2019
 ms.openlocfilehash: 7310c67ef20a4134d4f613ea969c96802958bf62
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219203"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015226"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>Testování kódu Azure Data Lake Analytics
 
@@ -34,7 +34,7 @@ Nástroje Azure Data Lake pro Visual Studio umožňuje vytvořit testovací př�
 
 ### <a name="manage-the-test-data-source"></a>Správa zdroje testovacích dat
 
-Když testujete skripty U-SQL, budete potřebovat testovací vstupní soubory. Chcete-li spravovat testovací data, v **Průzkumník řešení**klikněte pravým tlačítkem na projekt U-SQL a vyberte **vlastnosti**. Do **zdroje testovacích dat**můžete zadat zdroj.
+Když testujete skripty U-SQL, budete potřebovat testovací vstupní soubory. Chcete-li spravovat testovací data, v **Průzkumník řešení** klikněte pravým tlačítkem na projekt U-SQL a vyberte **vlastnosti**. Do **zdroje testovacích dat** můžete zadat zdroj.
 
 ![Data Lake Tools for Visual Studio – konfigurace zdroje testovacích dat projektu](./media/data-lake-analytics-cicd-test/data-lake-tools-configure-project-test-data-source.png)
 
@@ -78,7 +78,7 @@ Existují dva způsoby, jak vytvořit objekt **IRowset** :
     IRowset rowset = UnitTestHelper.GetRowsetFromFile(@"processor.txt", schema, output.AsReadOnly(), discardAdditionalColumns: true, rowDelimiter: null, columnSeparator: '\t');
     ```
 
-- K vytvoření **IRowset**použijte data z kolekce dat:
+- K vytvoření **IRowset** použijte data z kolekce dat:
 
     ```csharp
     //Schema: "a:int, b:int"

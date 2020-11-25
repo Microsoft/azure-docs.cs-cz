@@ -8,11 +8,11 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 07/03/2018
 ms.openlocfilehash: 706457a602e20dd37e64e5f389948b351ac8ebcf
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219237"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015243"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>Použití databázového projektu U-SQL pro vývoj databáze U-SQL pro Azure Data Lake
 
@@ -68,7 +68,7 @@ Databázi U-SQL můžete nasadit prostřednictvím databázového projektu U-SQL
 
 1. Klikněte pravým tlačítkem na projekt databáze U-SQL a pak vyberte **nasadit**.
 
-1. V **Průvodci nasazením U-SQL Database**vyberte **účet ADLA** , do kterého chcete nasadit databázi. Podporují se místní účty i účty ADLA.
+1. V **Průvodci nasazením U-SQL Database** vyberte **účet ADLA** , do kterého chcete nasadit databázi. Podporují se místní účty i účty ADLA.
 
 1. **Zdroj databáze** je vyplněn automaticky a odkazuje na balíček. usqldbpack ve výstupní složce sestavení projektu.
 
@@ -84,7 +84,7 @@ Databázi U-SQL můžete nasadit prostřednictvím databázového projektu U-SQL
 
 1. Otevřete **Průzkumník serveru**. Pak rozbalte **účet Azure Data Lake Analytics** , do kterého chcete nasadit databázi.
 
-1. Klikněte pravým tlačítkem na **databáze U-SQL**a pak zvolte **nasadit databázi**.
+1. Klikněte pravým tlačítkem na **databáze U-SQL** a pak zvolte **nasadit databázi**.
 
 1. Nastavte **zdroj databáze** na cestu k balíčku nasazení U-SQL Database (soubor. usqldbpack).
 
@@ -109,7 +109,7 @@ Projekt U-SQL může odkazovat na projekt databáze U-SQL. Odkaz má vliv na dv�
 
 ### <a name="how-to-add-a-u-sql-database-reference"></a>Postup přidání referenčních informací o databázi U-SQL
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt U-SQL a pak zvolte **Přidat odkaz u-SQL Database..**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem na projekt U-SQL a pak zvolte **Přidat odkaz u-SQL Database..**.
 
     ![Data Lake Tools for Visual Studio – přidat odkaz na projekt databáze](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-add-database-project-reference.png)
 

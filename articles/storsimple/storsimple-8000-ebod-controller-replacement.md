@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: bdafb4288bf818928aba43d09f15d4dd75092b24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85564238"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014835"
 ---
 # <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>Výměna EBOD kontroleru na zařízení StorSimple
 
@@ -42,7 +42,7 @@ Než v zařízení StorSimple nahradíte modul neúspěšného EBOD kontroleru, 
 
 #### <a name="to-remove-an-ebod-module"></a>Odebrání modulu EBOD
 1. Otevřete web Azure Portal.
-2. Přejděte na zařízení, přejděte na **Nastavení**  >  **hardware stav**a ověřte, že je stav indikátoru LED pro modul Active eBOD Controller zelený a indikátor LED pro modul eBOD Controller, který selhal, je červený.
+2. Přejděte na zařízení, přejděte na **Nastavení**  >  **hardware stav** a ověřte, že je stav indikátoru LED pro modul Active eBOD Controller zelený a indikátor LED pro modul eBOD Controller, který selhal, je červený.
 3. Na zadní straně zařízení Najděte modul EBOD Controller, který selhal.
 4. Než eBOD modul EBOD ze systému, odeberte kabely, které připojovat modul kontroleru k řadiči.
 5. Poznamenejte si přesný port SAS modulu EBOD Controller, který byl připojen k řadiči. Po nahrazení modulu EBOD budete muset obnovit systém do této konfigurace.

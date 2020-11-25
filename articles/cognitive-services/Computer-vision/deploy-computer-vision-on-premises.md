@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 10/30/2020
+ms.date: 11/23/2020
 ms.author: aahi
-ms.openlocfilehash: 1e77b5ea2bbd5bae79295a5680fa6e143efa5e99
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: dce8893cac156ce2941652e32409357cb8ec3b1a
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131526"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96015311"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Použití kontejneru Počítačové zpracování obrazu s Kubernetes a Helm
 
 Jednou z možností, jak místně spravovat Počítačové zpracování obrazu kontejnery, je použití Kubernetes a Helm. Když použijete Kubernetes a Helm k definování Počítačové zpracování obrazu Image kontejneru, vytvoříme balíček Kubernetes. Tento balíček se nasadí do místního clusteru Kubernetes. Nakonec se podíváme, jak otestovat nasazené služby. Další informace o spouštění kontejnerů Docker bez orchestrace Kubernetes najdete v tématu [install and run počítačové zpracování obrazu Containers](computer-vision-how-to-install-containers.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před použitím Počítačové zpracování obrazu kontejnerů v místním prostředí použijte následující požadavky:
 
@@ -30,7 +30,7 @@ Před použitím Počítačové zpracování obrazu kontejnerů v místním pros
 | Účet Azure | Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet][free-azure-account], ještě než začnete. |
 | Kubernetes CLI | [KUBERNETES CLI][kubernetes-cli] se vyžaduje pro správu sdílených přihlašovacích údajů z registru kontejneru. Kubernetes je také potřeba před Helm, což je správce balíčků Kubernetes. |
 | Helm CLI | Nainstalujte rozhraní příkazového [řádku Helm][helm-install], které se používá k instalaci grafu Helm (definice balíčku kontejneru). |
-| Prostředek Počítačové zpracování obrazu |Aby bylo možné kontejner používat, musíte mít:<br><br>Prostředek Azure **počítačové zpracování obrazu** a přidružený klíč rozhraní API identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách přehledu a klíčů pro daný prostředek a jsou požadovány ke spuštění kontejneru.<br><br>**{API_KEY}** : jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}** : koncový bod uvedený na stránce **Přehled**|
+| Prostředek Počítačové zpracování obrazu |Aby bylo možné kontejner používat, musíte mít:<br><br>Prostředek Azure **počítačové zpracování obrazu** a přidružený klíč rozhraní API identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách přehledu a klíčů pro daný prostředek a jsou požadovány ke spuštění kontejneru.<br><br>**{API_KEY}**: jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}**: koncový bod uvedený na stránce **Přehled**|
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -48,7 +48,7 @@ V hostitelském počítači se očekává, že bude dostupný cluster Kubernetes
 
 ## <a name="configure-helm-chart-values-for-deployment"></a>Konfigurace hodnot grafu Helm pro nasazení
 
-Začněte vytvořením složky s názvem *Read* . Pak vložte následující obsah YAML do nového souboru s názvem `chart.yaml` :
+Začněte vytvořením složky s názvem *Read*. Pak vložte následující obsah YAML do nového souboru s názvem `chart.yaml` :
 
 ```yaml
 apiVersion: v2
@@ -76,7 +76,7 @@ read:
     name: cognitive-services-read
     registry:  mcr.microsoft.com/
     repository: azure-cognitive-services/vision/read
-    tag: 3.1-preview
+    tag: 3.2-preview.1
     args:
       eula: accept
       billing: # {ENDPOINT_URI}
@@ -105,7 +105,7 @@ read:
 > [!IMPORTANT]
 > - Pokud `billing` `apikey` nejsou zadány hodnoty a, vyprší platnost služeb po 15 minutách. Ověřování je také neúspěšné, protože služby nejsou k dispozici.
 > 
-> - Pokud nasadíte více kontejnerů pro čtení za nástroj pro vyrovnávání zatížení, například v části Docker Compose nebo Kubernetes, musíte mít externí mezipaměť. Vzhledem k tomu, že kontejner zpracování a kontejner požadavků GET nemusí být stejné, externí mezipaměť ukládá výsledky a sdílí je napříč kontejnery. Podrobnosti o nastavení mezipaměti najdete v tématu [konfigurace kontejnerů docker počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-resource-container-config).
+> - Pokud nasadíte více kontejnerů pro čtení za nástroj pro vyrovnávání zatížení, například v části Docker Compose nebo Kubernetes, musíte mít externí mezipaměť. Vzhledem k tomu, že kontejner zpracování a kontejner požadavků GET nemusí být stejné, externí mezipaměť ukládá výsledky a sdílí je napříč kontejnery. Podrobnosti o nastavení mezipaměti najdete v tématu [konfigurace kontejnerů docker počítačové zpracování obrazu](./computer-vision-resource-container-config.md).
 >
 
 Vytvořte složku *šablon* v adresáři *pro čtení* . Zkopírujte a vložte následující YAML do souboru s názvem `deployment.yaml` . `deployment.yaml`Soubor bude sloužit jako šablona Helm.
@@ -243,6 +243,106 @@ deployment.apps/read   1/1     1            1           17s
 NAME                              DESIRED   CURRENT   READY   AGE
 replicaset.apps/read-57cb76bcf7   1         1         1       17s
 ```
+
+## <a name="deploy-multiple-v3-containers-on-the-kubernetes-cluster"></a>Nasazení více kontejnerů V3 v clusteru Kubernetes
+
+Počínaje verzí V3 kontejneru můžete kontejnery paralelně použít na úrovni úkolů i stránek.
+
+Podle návrhu každý kontejner V3 má dispečera a pracovní proces pro rozpoznávání. Dispečer zodpovídá za rozdělení vícestránkové úlohy na několik dílčích úloh na jednu stránku. Pracovník pro rozpoznávání je optimalizován pro rozpoznávání jednoho vícestránkového dokumentu. Chcete-li dosáhnout paralelismu na úrovni stránky, nasaďte více kontejnerů V3 za nástroj pro vyrovnávání zatížení a umožněte, aby kontejnery sdílely univerzální úložiště a frontu. 
+
+> [!NOTE] 
+> Momentálně se podporují jenom Azure Storage a fronta Azure. 
+
+Kontejner přijímající požadavek může rozdělit úkol na dílčí úkoly jedné stránky a přidat je do univerzální fronty. Libovolný pracovní proces pro rozpoznávání z kontejneru s menší kapacitou může využívat dílčí úkoly z fronty, provádět rozpoznávání a odesílat výsledky do úložiště. Propustnost je možné v `n` závislosti na počtu nasazených kontejnerů zvýšit na krátkou dobu.
+
+Zkopírujte a vložte následující YAML do souboru s názvem `deployment.yaml` . Nahraďte `# {ENDPOINT_URI}` `# {API_KEY}` komentáře a vlastními hodnotami. Nahraďte `# {AZURE_STORAGE_CONNECTION_STRING}` Komentář vaším připojovacím řetězcem Azure Storage. Nakonfigurujte `replicas` na číslo, které chcete, což je `3` v následujícím příkladu nastaveno na hodnotu.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: read
+  labels:
+    app: read-deployment
+spec:
+  selector:
+    matchLabels:
+      app: read-app
+  replicas: # {NUMBER_OF_READ_CONTAINERS}
+  template:
+    metadata:
+      labels:
+        app: read-app
+    spec:
+      containers:
+      - name: cognitive-services-read
+        image: mcr.microsoft.com/azure-cognitive-services/vision/read
+        ports:
+        - containerPort: 5000
+        env:
+        - name: EULA
+          value: accept
+        - name: billing
+          value: # {ENDPOINT_URI}
+        - name: apikey
+          value: # {API_KEY}
+        - name: Storage__ObjectStore__AzureBlob__ConnectionString
+          value: # {AZURE_STORAGE_CONNECTION_STRING}
+        - name: Queue__Azure__ConnectionString
+          value: # {AZURE_STORAGE_CONNECTION_STRING}
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-cognitive-service-read
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5000
+    targetPort: 5000
+  selector:
+    app: read-app
+```
+
+Spusťte následující příkaz. 
+
+```console
+kubectl apply -f deployment.yaml
+```
+
+Níže je uveden příklad výstupu, který se může zobrazit při úspěšném spuštění nasazení:
+
+```console
+deployment.apps/read created
+service/azure-cognitive-service-read created
+```
+
+Dokončení Kubernetes nasazení může trvat několik minut. Chcete-li ověřit, že jsou všechny lusky i služby správně nasazené a dostupné, spusťte následující příkaz:
+
+```console
+kubectl get all
+```
+
+Měl by se zobrazit výstup konzoly podobný následujícímu:
+
+```console
+kubectl get all
+NAME                       READY   STATUS    RESTARTS   AGE
+pod/read-6cbbb6678-58s9t   1/1     Running   0          3s
+pod/read-6cbbb6678-kz7v4   1/1     Running   0          3s
+pod/read-6cbbb6678-s2pct   1/1     Running   0          3s
+
+NAME                                   TYPE           CLUSTER-IP   EXTERNAL-IP    PORT(S)          AGE
+service/azure-cognitive-service-read   LoadBalancer   10.0.134.0   <none>         5000:30846/TCP   17h
+service/kubernetes                     ClusterIP      10.0.0.1     <none>         443/TCP          78d
+
+NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/read   3/3     3            3           3s
+
+NAME                             DESIRED   CURRENT   READY   AGE
+replicaset.apps/read-6cbbb6678   3         3         3       3s
+```
+
 <!--  ## Validate container is running -->
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
@@ -257,7 +357,7 @@ Další podrobnosti o instalaci aplikací pomocí Helm ve službě Azure Kuberne
 <!-- LINKS - external -->
 [free-azure-account]: https://azure.microsoft.com/free
 [git-download]: https://git-scm.com/downloads
-[azure-cli]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [docker-engine]: https://www.docker.com/products/docker-engine
 [kubernetes-cli]: https://kubernetes.io/docs/tasks/tools/install-kubectl
 [helm-install]: https://helm.sh/docs/using_helm/#installing-helm

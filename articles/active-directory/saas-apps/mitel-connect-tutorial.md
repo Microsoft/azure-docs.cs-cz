@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
 ms.openlocfilehash: b89ae74a1f4ead568a5454c9494d4a82b0eeea3e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521335"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015175"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>Kurz: Integrace Azure Active Directory s platformou Mitel MiCloud Connect nebo dodavatelů CloudLink
 
@@ -29,7 +29,7 @@ Podrobnosti o integraci aplikací SaaS s Azure AD najdete v tématu [co je pří
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete s integrací služby Azure AD s platformou Mitel MiCloud Connect nebo dodavatelů CloudLink.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s MiCloud Connect budete potřebovat následující položky:
 
@@ -51,7 +51,7 @@ Pokud chcete nakonfigurovat integraci Mitel připojení ke službě Azure AD, mu
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -102,7 +102,7 @@ Pokud chcete nakonfigurovat MiCloud Connect s SSO pro Azure AD, je nejjednoduš�
 
     1. V nabídce **systém pro telefon** vyberte **funkce doplňku**.
 
-    1. Napravo od **jednotného přihlašování**vyberte **aktivovat** nebo **Nastavení**.
+    1. Napravo od **jednotného přihlašování** vyberte **aktivovat** nebo **Nastavení**.
     
     Zobrazí se dialogové okno připojit nastavení jednoho Sign-On.
     
@@ -154,7 +154,7 @@ Pokud chcete nakonfigurovat MiCloud Connect s SSO pro Azure AD, je nejjednoduš�
 
 V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azure Portal.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -178,7 +178,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Mitel připojení.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -190,7 +190,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Podokno přidat přiřazení](common/add-assign-user.png)
 
@@ -249,7 +249,7 @@ Pokud chcete nakonfigurovat platformu dodavatelů CloudLink s jednotným přihla
 
     1. V části **integrace** vyberte **+ Přidat nový**. Automaticky otevíraná obrazovka se zobrazí panel **integrace** .
 
-    1. Vyberte kartu **třetí strana** . Zobrazí se seznam podporovaných aplikací třetích stran. Vyberte tlačítko **Přidat** přidružené k **jednotnému přihlašování Azure AD**a vyberte **Hotovo**.
+    1. Vyberte kartu **třetí strana** . Zobrazí se seznam podporovaných aplikací třetích stran. Vyberte tlačítko **Přidat** přidružené k **jednotnému přihlašování Azure AD** a vyberte **Hotovo**.
 
        ![Snímek obrazovky zobrazující stránku integrace, kde můžete přidat Azure A D jednotného přihlašování.](./media/mitel-connect-tutorial/mitel-cloudlink-integrations.png)
 
@@ -309,7 +309,7 @@ Pokud chcete nakonfigurovat platformu dodavatelů CloudLink s jednotným přihla
 
 V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azure Portal.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -333,7 +333,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Mitel připojení.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -345,7 +345,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Podokno přidat přiřazení](common/add-assign-user.png)
 
@@ -377,7 +377,7 @@ V této části otestujete konfiguraci služby Azure AD SSO pomocí přístupov�
 
 Když vyberete dlaždici Mitel Connect na přístupovém panelu, budete automaticky přesměrováni na přihlášení k aplikaci dodavatelů CloudLink, kterou jste nakonfigurovali jako výchozí v poli **Adresa URL pro přihlášení** . Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

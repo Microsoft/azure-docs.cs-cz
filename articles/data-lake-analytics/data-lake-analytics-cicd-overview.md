@@ -8,11 +8,11 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 09/14/2018
 ms.openlocfilehash: 95b638b85e0746d2995488f2a28a5fb2512b1063
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219322"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015260"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Jak nastavit kanál CI/CD pro Azure Data Lake Analytics  
 
@@ -79,11 +79,11 @@ Definice argumentů a jejich hodnoty jsou následující:
 - **USQLSDKPath = \<U-SQL Nuget package> \build\runtime**. Tento parametr odkazuje na instalační cestu balíčku NuGet pro službu jazyka U-SQL.
 - **USQLTargetType = Merge nebo SyntaxCheck**:
 
-  - **Sloučit**. Režim sloučení zkompiluje soubory kódu na pozadí. Příklady jsou soubory **cs**, **. py**a **. r** . Zaznamená výsledné uživatelsky definované knihovny kódu do skriptu U-SQL. Příkladem může být binární soubor DLL, Python nebo kód R.
+  - **Sloučit**. Režim sloučení zkompiluje soubory kódu na pozadí. Příklady jsou soubory **cs**, **. py** a **. r** . Zaznamená výsledné uživatelsky definované knihovny kódu do skriptu U-SQL. Příkladem může být binární soubor DLL, Python nebo kód R.
 
   - **SyntaxCheck**. Režim SyntaxCheck nejprve sloučí soubory kódu na pozadí do skriptu U-SQL. Potom zkompiluje skript U-SQL, který ověří váš kód.
 
-- **Dataroot = \<DataRoot path> **. Dataroot je potřeba jenom pro režim SyntaxCheck. Při sestavení skriptu pomocí režimu SyntaxCheck zkontroluje nástroj MSBuild odkazy na databázové objekty ve skriptu. Před sestavením nastavte odpovídající místní prostředí, které obsahuje odkazované objekty z databáze U-SQL ve složce dataroot počítače sestavení. Tyto závislosti databáze můžete spravovat také [odkazem na projekt databáze U-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project). Nástroj MSBuild kontroluje pouze odkazy na objekty databáze, nikoli soubory.
+- **Dataroot = \<DataRoot path>**. Dataroot je potřeba jenom pro režim SyntaxCheck. Při sestavení skriptu pomocí režimu SyntaxCheck zkontroluje nástroj MSBuild odkazy na databázové objekty ve skriptu. Před sestavením nastavte odpovídající místní prostředí, které obsahuje odkazované objekty z databáze U-SQL ve složce dataroot počítače sestavení. Tyto závislosti databáze můžete spravovat také [odkazem na projekt databáze U-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project). Nástroj MSBuild kontroluje pouze odkazy na objekty databáze, nikoli soubory.
 
 - **EnableDeployment = true** nebo **false**. EnableDeployment označuje, zda je povoleno nasadit v průběhu procesu sestavení odkazované databáze U-SQL. Pokud odkazujete na projekt databáze U-SQL a spotřebujete databázové objekty ve skriptu U-SQL, nastavte tento parametr na **hodnotu true**.
 
@@ -460,22 +460,22 @@ Při nastavování úlohy nasazení databáze v Azure Pipelines proveďte násle
 
 #### <a name="common-parameters"></a>Společné parametry
 
-| Parametr | Popis | Výchozí hodnota | Povinné |
+| Parametr | Popis | Výchozí hodnota | Vyžadováno |
 |---------|-----------|-------------|--------|
 |Balíček|Cesta k balíčku pro nasazení U-SQL Database, která se má nasadit|null|true|
-|Databáze|Název databáze, která má být nasazena nebo vytvořena.|master|false (nepravda)|
+|databáze|Název databáze, která má být nasazena nebo vytvořena.|master|false (nepravda)|
 |Protokolů|Cesta k souboru pro protokolování. Výchozí na standardní (konzola)|null|false (nepravda)|
 |LogLevel|Úroveň protokolu: Verbose, normální, varování nebo chyba.|LogLevel. Normal|false (nepravda)|
 
 #### <a name="parameter-for-local-deployment"></a>Parametr pro místní nasazení
 
-|Parametr|Popis|Výchozí hodnota|Povinné|
+|Parametr|Popis|Výchozí hodnota|Vyžadováno|
 |---------|-----------|-------------|--------|
 |DataRoot|Cesta ke kořenové složce místních dat|null|true|
 
 #### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Parametry pro nasazení Azure Data Lake Analytics
 
-|Parametr|Popis|Výchozí hodnota|Povinné|
+|Parametr|Popis|Výchozí hodnota|Vyžadováno|
 |---------|-----------|-------------|--------|
 |Účet|Určuje, který účet Azure Data Lake Analytics se má nasadit podle názvu účtu.|null|true|
 |ResourceGroup|Název skupiny prostředků Azure pro účet Azure Data Lake Analytics.|null|true|

@@ -10,11 +10,11 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 99fb41542dff28997438881abad71da11e927a78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898811"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014886"
 ---
 # <a name="clip-values"></a>Oříznutí hodnot
 
@@ -32,11 +32,11 @@ Modul používá stejná kritéria a metodu nahrazení na **všechny** sloupce, 
 
 Pokud potřebujete pro některé sloupce použít ořezové metody nebo jiná kritéria, musíte pro každou sadu podobných sloupců použít novou instanci **hodnoty Clip** .
 
-1.  Přidejte do svého kanálu modul **hodnoty klipu** a připojte ho k datové sadě, kterou chcete upravit. Tento modul můžete najít v části **transformace dat**v kategorii **škálování a zmenšení** . 
+1.  Přidejte do svého kanálu modul **hodnoty klipu** a připojte ho k datové sadě, kterou chcete upravit. Tento modul můžete najít v části **transformace dat** v kategorii **škálování a zmenšení** . 
   
-1.  V **seznamu sloupců**použijte selektor sloupců a vyberte sloupce, na které budou použity **hodnoty klipů** .  
+1.  V **seznamu sloupců** použijte selektor sloupců a vyberte sloupce, na které budou použity **hodnoty klipů** .  
   
-1.  V rozevíracím seznamu pro **sadu mezních hodnot**vyberte jednu z následujících možností. Tyto možnosti určují, jak nastavíte horní a dolní hranice pro přijatelné hodnoty a hodnoty, které musí být oříznuty.  
+1.  V rozevíracím seznamu pro **sadu mezních hodnot** vyberte jednu z následujících možností. Tyto možnosti určují, jak nastavíte horní a dolní hranice pro přijatelné hodnoty a hodnoty, které musí být oříznuty.  
   
     - **ClipPeaks**: při vystřihování hodnot podle špičky zadáte jenom horní hranici. Hodnoty větší než tato hodnota hranice jsou nahrazeny.
   
@@ -52,11 +52,11 @@ Pokud potřebujete pro některé sloupce použít ořezové metody nebo jiná kr
 
     Pro každý typ prahové hodnoty vyberte buď **konstanta** , nebo **percentil**.
 
-1. Pokud vyberete možnost **konstanta**, zadejte do textového pole maximální nebo minimální hodnotu. Předpokládejme například, že víte, že hodnota 999 byla použita jako hodnota zástupného symbolu. U horní prahové hodnoty můžete zvolit **konstantu** a **pro horní prahovou hodnotu**zadejte 999.
+1. Pokud vyberete možnost **konstanta**, zadejte do textového pole maximální nebo minimální hodnotu. Předpokládejme například, že víte, že hodnota 999 byla použita jako hodnota zástupného symbolu. U horní prahové hodnoty můžete zvolit **konstantu** a **pro horní prahovou hodnotu** zadejte 999.
   
 1. Pokud zvolíte **percentil**, omezíte hodnoty sloupce na rozsah percentilu. 
 
-    Předpokládejme například, že chcete zachovat pouze hodnoty v rozsahu 10-80 percentilu a nahradit všechny ostatní. Zvolte **percentil**a potom zadejte hodnotu 10 pro **hodnotu percentilu pro nižší prahovou**hodnotu a jako hodnotu percentilu zadejte 80 pro možnost **horní prahová hodnota**. 
+    Předpokládejme například, že chcete zachovat pouze hodnoty v rozsahu 10-80 percentilu a nahradit všechny ostatní. Zvolte **percentil** a potom zadejte hodnotu 10 pro **hodnotu percentilu pro nižší prahovou** hodnotu a jako hodnotu percentilu zadejte 80 pro možnost **horní prahová hodnota**. 
 
     Některé příklady použití rozsahů percentilu najdete v části o [percentilech](#examples-for-clipping-using-percentiles) .  
   
@@ -70,7 +70,7 @@ Pokud potřebujete pro některé sloupce použít ořezové metody nebo jiná kr
 
     Podporovány jsou následující nahrazující hodnoty:  
   
-    -   **Prahová**hodnota: nahradí navýšené hodnoty zadanou prahovou hodnotou.  
+    -   **Prahová** hodnota: nahradí navýšené hodnoty zadanou prahovou hodnotou.  
   
     -   **Střední hodnota**: nahradí oříznuté hodnoty průměrem hodnot sloupců. Střední hodnota je vypočítána před tím, než jsou hodnoty oříznuty.  
   
@@ -96,17 +96,17 @@ Pro pochopení, jak funguje oříznutí podle percentilů, zvažte datovou sadu 
   
 - Pokud jako spodní prahovou hodnotu používáte percentil, na hodnotě desátého percentilu musí být 10 procent všech hodnot v datové sadě menší než tato hodnota.  
   
-1.  V případě **množiny prahových hodnot**vyberte možnost **ClipPeaksAndSubPeaks**.  
+1.  V případě **množiny prahových hodnot** vyberte možnost **ClipPeaksAndSubPeaks**.  
   
-1.  Pro možnost **horní prahová hodnota**vyberte **percentil**a pro **číslo percentilu**zadejte 90.  
+1.  Pro možnost **horní prahová hodnota** vyberte **percentil** a pro **číslo percentilu** zadejte 90.  
   
-1.  V případě **hodnoty velká náhrada**vyberte možnost **chybějící hodnota**.  
+1.  V případě **hodnoty velká náhrada** vyberte možnost **chybějící hodnota**.  
   
-1.  Pro možnost **nižší prahová hodnota**vyberte **percentil**a pro **číslo percentilu**zadejte 10.  
+1.  Pro možnost **nižší prahová hodnota** vyberte **percentil** a pro **číslo percentilu** zadejte 10.  
   
-1.  V případě **nižší nahrazující hodnoty**vyberte možnost **chybějící hodnota**.  
+1.  V případě **nižší nahrazující hodnoty** vyberte možnost **chybějící hodnota**.  
   
-1.  Zrušte výběr možnosti **přepsat příznak**a vyberte možnost **Přidat sloupec indikátoru**.  
+1.  Zrušte výběr možnosti **přepsat příznak** a vyberte možnost **Přidat sloupec indikátoru**.  
   
 Nyní vyzkoušejte stejný kanál s 60 jako prahovou hodnotu v horním percentilu a 30 jako dolní prahovou hodnotu percentilu a jako hodnotu náhrady použijte prahovou hodnotu. Následující tabulka porovnává tyto dvě výsledky:  
   

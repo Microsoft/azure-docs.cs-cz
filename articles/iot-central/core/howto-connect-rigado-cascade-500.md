@@ -11,11 +11,11 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 0000e7690ab92f469a7417e82cb375c524e0b343
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90016839"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014758"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Připojení zařízení brány 500 Rigado do IoT Central k aplikaci Azure
 
@@ -41,15 +41,15 @@ Aby bylo možné za500 členit do instance aplikace IoT Central služby Azure br
 
 Přidání šablony zařízení s kaskádovou 500: 
 
-1. V levém podokně přejděte na kartu ***šablony zařízení*** , vyberte **+ Nový**: ![ vytvořit novou šablonu zařízení.](./media/howto-connect-rigado-cascade-500/device-template-new.png)
-1. Stránka vám nabídne možnost ***vytvořit vlastní šablonu*** nebo ***použít předkonfigurovaný šablonu zařízení*** .
+1. V levém podokně přejděte na kartu ***šablony zařízení** _, vyberte _ * + nový * *: ![ vytvořit novou šablonu zařízení.](./media/howto-connect-rigado-cascade-500/device-template-new.png)
+1. Stránka nabízí možnost **_vytvořit vlastní šablonu_* _ nebo _*_použít šablonu předkonfigurovaného zařízení_*_ .
 1. V seznamu předkonfigurovaných šablon zařízení vyberte šablonu zařízení C500, jak je vidět níže: ![ Vyberte šablonu zařízení C500.](./media/howto-connect-rigado-cascade-500/device-template-preconfigured.png)
-1. Vyberte ***Další: přizpůsobit*** , aby pokračoval k dalšímu kroku. 
-1. Na další obrazovce vyberte ***vytvořit*** a připojte šablonu zařízení C500 do vaší aplikace IoT Central.
+1. Vyberte _*_Další: přizpůsobit_*_ , aby pokračoval k dalšímu kroku. 
+1. Na další obrazovce vyberte _*_vytvořit_*_ a připojte šablonu zařízení C500 do vaší aplikace IoT Central.
 
 ## <a name="retrieve-application-connection-details"></a>Načíst podrobnosti připojení aplikace
 
-Teď budete muset pro aplikaci Azure IoT Central načíst **ID oboru** a **primární klíč** , aby bylo možné propojit zařízení s kaskádou 500. 
+Nyní bude nutné načíst *ID oboru* _ * a **primární klíč** pro aplikaci Azure IoT Central, aby bylo možné propojit zařízení s kaskádou 500. 
 
 1. V levém podokně přejděte do části **Správa**  a klikněte na **připojení zařízení**. 
 2. Poznamenejte si **ID oboru** pro vaši aplikaci IoT Central.

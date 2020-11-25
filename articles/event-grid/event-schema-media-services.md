@@ -4,11 +4,11 @@ description: Popisuje vlastnosti, kter√© jsou k dispozici pro Media Services ud√
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: c1c5953cae7364131eefcec97d3375404c85e963
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86105927"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015209"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>Azure Media Services jako zdroj Event Grid
 

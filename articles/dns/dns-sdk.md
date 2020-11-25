@@ -16,11 +16,11 @@ ms.date: 09/19/2016
 ms.author: rohink
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8e116096afbd01af4914be49d5675881724d5069
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965591"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015056"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>Vytvoření zón a sad záznamů DNS pomocí sady .NET SDK
 

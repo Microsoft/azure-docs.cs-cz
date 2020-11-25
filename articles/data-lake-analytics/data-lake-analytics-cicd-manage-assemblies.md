@@ -7,11 +7,11 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 10/30/2018
 ms.openlocfilehash: e88616f45c69d33234aa35333e0d82ad8cc59bb6
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219356"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015277"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>Osvědčené postupy pro správu sestavení U-SQL v kanálu CI/CD
 
@@ -57,7 +57,7 @@ Pomocí těchto kroků můžete vytvořit projekty a přidat odkazy.
 
 1. Přidejte **spravované závislosti** a **Další soubory**, pokud existují. Když přidáte další soubory, nástroj použije relativní cestu k tomu, aby bylo zajištěno, že bude moci najít sestavení v místním počítači a v počítači sestavení později.
 
-** \@ _DeployTempDirectory** v okně editoru v dolní části je předdefinovaná proměnná, která tento nástroj odkazuje na výstupní složku sestavení. V rámci výstupní složky sestavení má každé sestavení podsložku s názvem sestavení. Všechny knihovny DLL a další soubory jsou v této podsložce.
+**\@ _DeployTempDirectory** v okně editoru v dolní části je předdefinovaná proměnná, která tento nástroj odkazuje na výstupní složku sestavení. V rámci výstupní složky sestavení má každé sestavení podsložku s názvem sestavení. Všechny knihovny DLL a další soubory jsou v této podsložce.
 
 ## <a name="build-a-u-sql-database-project"></a>Vytvoření databázového projektu U-SQL
 

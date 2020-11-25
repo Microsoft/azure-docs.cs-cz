@@ -9,11 +9,11 @@ ms.date: 10/16/2020
 ms.author: juergent
 ms.reviewer: cynthn
 ms.openlocfilehash: 0cd1458c90970e219f2929e26423e455ba647a28
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951311"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015107"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Vysoká dostupnost IBM Db2 LUW na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Pacemaker
 
@@ -27,7 +27,7 @@ Podporované verze IBM Db2 jsou 10,5 a novější, jak je popsáno v části SAP
 
 Než začnete s instalací, přečtěte si následující poznámky a dokumentace SAP:
 
-| Poznámka SAP | Popis |
+| Poznámka SAP | Description |
 | --- | --- |
 | [1928533] | Aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure |
 | [2015553] | SAP v Azure: požadavky na podporu |
