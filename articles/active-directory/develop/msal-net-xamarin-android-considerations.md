@@ -14,11 +14,11 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 320d48535c4792a4d610888c6a7030568ccf16bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89459840"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995178"
 ---
 # <a name="configuration-requirements-and-troubleshooting-tips-for-xamarin-android-with-msalnet"></a>Požadavky na konfiguraci a tipy pro řešení potíží pro Xamarin Android s MSAL.NET
 
@@ -145,7 +145,7 @@ Další informace najdete v tématu věnovaném [použití webových prohlíže�
 
 ### <a name="error-the-name-authenticationcontinuationhelper-doesnt-exist-in-the-current-context"></a>Chyba: název AuthenticationContinuationHelper neexistuje v aktuálním kontextu.
 
-Pokud chyba indikuje, že `AuthenticationContinuationHelper` v aktuálním kontextu neexistuje, může Visual Studio nesprávně aktualizovat soubor *Android. csproj \* * . V některých případech je cesta k souboru v `<HintPath>` elementu nesprávně obsažena `netstandard13` místo `monoandroid90` .
+Pokud chyba indikuje, že `AuthenticationContinuationHelper` v aktuálním kontextu neexistuje, může Visual Studio nesprávně aktualizovat soubor *Android. csproj \** . V některých případech je cesta k souboru v `<HintPath>` elementu nesprávně obsažena `netstandard13` místo `monoandroid90` .
 
 Tento příklad obsahuje správnou cestu k souboru:
 

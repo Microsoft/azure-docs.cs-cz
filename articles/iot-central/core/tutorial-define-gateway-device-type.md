@@ -10,11 +10,11 @@ services: iot-central
 ms.custom: mvc
 manager: peterpr
 ms.openlocfilehash: f95df6fb74071dc16814f11fb48521f984c89778
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94988030"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995518"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Kurz – definování nového typu zařízení brány IoT v aplikaci Azure IoT Central
 

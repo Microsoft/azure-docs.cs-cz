@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/12/2018
 ms.author: jeedes
 ms.openlocfilehash: c06595b683092abf52300481068daab26394c4cb
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358741"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995637"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integrace Azure Active Directory s E-Remix manažerem E Sales
 
@@ -68,7 +68,7 @@ Pokud chcete nakonfigurovat integraci Azure AD s E-Remix Sales managerem, přide
 
     ![Tlačítko Nová aplikace][3]
 
-1. Do vyhledávacího pole zadejte **e Sales Manager Remix** , v seznamu výsledků vyberte **e Sales Manager Remix** a pak vyberte **Přidat**.
+1. Do vyhledávacího pole zadejte **e Sales Manager Remix**, v seznamu výsledků vyberte **e Sales Manager Remix** a pak vyberte **Přidat**.
 
     ![Remix E Sales Manageru v seznamu výsledků](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_addfromgallery.png)
 
@@ -217,7 +217,7 @@ V této části vytvoříte testovacího uživatele Britta Simon v Azure Portal 
     
     ![Oddíl "nové registrace zaměstnanců"](./media/esalesmanagerremix-tutorial/user2.png)
 
-    a. Do pole **název zaměstnance** zadejte jméno uživatele (například **Britta** ).
+    a. Do pole **název zaměstnance** zadejte jméno uživatele (například **Britta**).
 
     b. Vyplňte zbývající požadovaná pole.
     

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: amikuma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: 52e6c70b76b83c73059dc887eaefe8403befac13
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: ac400efe66ab740f5fb87977ac531cbe465e3f91
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594228"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95995147"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v rámci webové aplikace v uzlu pomocí toku kódu ověřování
 
@@ -45,7 +45,7 @@ V tomto rychlém startu se používá knihovna ověřování Microsoft pro Node.
 > 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a pak nastavte relaci portálu na tenanta Azure AD, kterého chcete použít.
 > 1. Vyberte [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908).
 > 1. Vyberte **Nová registrace**.
-> 1. Když se zobrazí stránka **Zaregistrovat aplikaci** , zadejte název pro vaši aplikaci.
+> 1. Když se zobrazí stránka **Zaregistrovat aplikaci**, zadejte název pro vaši aplikaci.
 > 1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 > 1. Nastavte hodnotu **identifikátoru URI přesměrování** na `http://localhost:3000/redirect` .
 > 1. Vyberte **Zaregistrovat**. 
@@ -104,7 +104,7 @@ V tomto rychlém startu se používá knihovna ověřování Microsoft pro Node.
 > ```
 >
 > > [!TIP]
-> > Pokud chcete zjistit hodnotu **ID aplikace (klienta)** , na stránce s přehledem registrace aplikace se podívejte na stránku Azure Portal s **přehledem** registrace aplikace. Pokud chcete načíst nebo vygenerovat nový **tajný klíč klienta** , vyhledejte v části **certifikáty & tajných klíčů** .
+> > Pokud chcete zjistit hodnotu **ID aplikace (klienta)**, na stránce s přehledem registrace aplikace se podívejte na stránku Azure Portal s **přehledem** registrace aplikace. Pokud chcete načíst nebo vygenerovat nový **tajný klíč klienta**, vyhledejte v části **certifikáty & tajných klíčů** .
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Krok 3: vaše aplikace je nakonfigurovaná a připravená ke spuštění.

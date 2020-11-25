@@ -10,17 +10,17 @@ ms.date: 10/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 94c30cad1e09a01686a9042a6271a152d0f433fd
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738513"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995382"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Použití serveru historie rozšířených Apache Spark k ladění a diagnostice Apache Spark aplikací
 
 V tomto článku najdete pokyny k použití serveru historie rozšířených Apache Spark k ladění a diagnostice dokončených a spuštěných aplikací Spark.
 
-Rozšíření obsahuje kartu data, kartu grafu a kartu Diagnostika. Na kartě **data** můžete kontrolovat vstupní a výstupní data úlohy Spark. Na kartě **graf** se zobrazuje tok dat a přehrávání grafu úloh. Na kartě **Diagnostika** se zobrazuje  **zešikmení dat** , **zkosení času** a **Analýza využití prováděcího modulu** .
+Rozšíření obsahuje kartu data, kartu grafu a kartu Diagnostika. Na kartě **data** můžete kontrolovat vstupní a výstupní data úlohy Spark. Na kartě **graf** se zobrazuje tok dat a přehrávání grafu úloh. Na kartě **Diagnostika** se zobrazuje  **zešikmení dat**, **zkosení času** a **Analýza využití prováděcího modulu**.
 
 ## <a name="access-the-apache-spark-history-server"></a>Přístup k serveru historie Apache Spark
 
@@ -30,7 +30,7 @@ Server historie Apache Spark je webové uživatelské rozhraní pro dokončené 
 
 1. Otevřete [Azure synapse Analytics](https://web.azuresynapse.net/).
 
-2. Vyberte **monitorování** a pak vyberte **Apache Spark aplikace** .
+2. Vyberte **monitorování** a pak vyberte **Apache Spark aplikace**.
 
     ![Vyberte monitorování a pak vyberte aplikace Spark.](./media/apache-spark-history-server/click-monitor-spark-application.png)
 
@@ -44,7 +44,7 @@ Server historie Apache Spark je webové uživatelské rozhraní pro dokončené 
 
 ### <a name="open-the-spark-history-server-web-ui-from-data-node"></a>Otevření webového uživatelského rozhraní serveru historie Sparku z datového uzlu
 
-1. Z vašeho poznámkového bloku Azure synapse Studio vyberte z výstupní buňky spuštění úlohy možnost **Server historie Spark** nebo z panelu stav na konci dokumentu poznámkového bloku. Vyberte **Podrobnosti o relaci** .
+1. Z vašeho poznámkového bloku Azure synapse Studio vyberte z výstupní buňky spuštění úlohy možnost **Server historie Spark** nebo z panelu stav na konci dokumentu poznámkového bloku. Vyberte **Podrobnosti o relaci**.
 
    ![Spustit historii Spark serveru 1](./media/apache-spark-history-server/launch-history-server2.png "Spustit server historie Sparku")
 
@@ -60,15 +60,15 @@ Vyberte ID úlohy pro úlohu, kterou chcete zobrazit. Pak v nabídce Nástroje v
 
     ![Data pro karty aplikace Spark](./media/apache-spark-history-server/apache-spark-data-tabs.png)
 
-* Zkopírujte všechny řádky výběrem možnosti **Kopírovat** .
+* Zkopírujte všechny řádky výběrem možnosti **Kopírovat**.
 
     ![Data pro kopii aplikace Spark](./media/apache-spark-history-server/apache-spark-data-copy.png)
 
-* Uložte všechna data jako soubor CSV tak, že vyberete **CSV** .
+* Uložte všechna data jako soubor CSV tak, že vyberete **CSV**.
 
     ![Data pro uložení aplikace Spark](./media/apache-spark-history-server/apache-spark-data-save.png)
 
-* Hledejte zadáním klíčových slov do pole **Hledat** . Výsledky hledání se zobrazí okamžitě.
+* Hledejte zadáním klíčových slov do pole **Hledat**. Výsledky hledání se zobrazí okamžitě.
 
     ![Data pro vyhledávání aplikace Spark](./media/apache-spark-history-server/apache-spark-data-search.png)
 
@@ -92,7 +92,7 @@ Vyberte ID úlohy pro úlohu, kterou chcete zobrazit. Pak v nabídce Nástroje v
 
     ![Data pro aplikaci Spark další informace](./media/apache-spark-history-server/sparkui-data-more-info.png)
 
-* Sdělte nám svůj názor s problémy tím, že si vyberete poslat **svůj názor** .
+* Sdělte nám svůj názor s problémy tím, že si vyberete poslat **svůj názor**.
 
     ![Sparkový graf nám zadejte zpětnou vazbu](./media/apache-spark-history-server/sparkui-graph-feedback.png)
 
@@ -102,7 +102,7 @@ Vyberte ID úlohy pro úlohu, kterou chcete zobrazit. Pak v nabídce Nástroje v
 
 ### <a name="overview"></a>Přehled
 
-Přehled úlohy můžete zobrazit v grafu vygenerované úlohy. Ve výchozím nastavení se v grafu zobrazují všechny úlohy. Toto zobrazení můžete filtrovat podle **ID úlohy** .
+Přehled úlohy můžete zobrazit v grafu vygenerované úlohy. Ve výchozím nastavení se v grafu zobrazují všechny úlohy. Toto zobrazení můžete filtrovat podle **ID úlohy**.
 
 ![ID úlohy grafu aplikace Spark a grafu úlohy](./media/apache-spark-history-server/apache-spark-graph-jobid.png)
 
@@ -118,7 +118,7 @@ Uzel grafu zobrazuje barvy zobrazené v legendě heatmapu.
 
 ### <a name="playback"></a>Přehrávání
 
-Pokud chcete úlohu přehrát, vyberte **přehrávání** . Kdykoli můžete zastavit výběr **zastavit** . Barvy úlohy při přehrávání zobrazují různé stavy:
+Pokud chcete úlohu přehrát, vyberte **přehrávání**. Kdykoli můžete zastavit výběr **zastavit** . Barvy úlohy při přehrávání zobrazují různé stavy:
 
 |Color|Význam|
 |-|-|
@@ -157,7 +157,7 @@ Když najedete myší na uzel grafu, zobrazí se popis tlačítka, když dojde k
 
 Na kartě graf úlohy mají fáze popis a zobrazí se malá ikona, pokud má úlohy, které splňují následující podmínky:
 
-|Stav|Popis|
+|Stav|Description|
 |-|-|
 |Zkosit data|velikost přečtených dat > Průměrná velikost čtení dat všech úkolů v této fázi * 2 a velikost pro čtení dat > 10 MB|
 |Časové zkosení|čas spuštění > Průměrná doba provádění všech úkolů v této fázi * 2 a doba spuštění > 2 minuty|
@@ -184,15 +184,15 @@ Uzel grafu úlohy zobrazí následující informace o každé fázi:
 
 ### <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 
-Sdělte nám svůj názor s problémy tím, že si vyberete poslat **svůj názor** .
+Sdělte nám svůj názor s problémy tím, že si vyberete poslat **svůj názor**.
 
 ![Zpětná vazba grafu aplikace Spark a úlohy](./media/apache-spark-history-server/sparkui-graph-feedback.png)
 
 ## <a name="explore-the-diagnosis-tab-in-apache-spark-history-server"></a>Prozkoumat kartu Diagnostika v serveru historie Apache Spark
 
-Chcete-li získat přístup na kartu diagnostika, vyberte ID úlohy. Pak v nabídce Nástroje vyberte **diagnóza** a získejte zobrazení diagnostiky úlohy. Karta Diagnostika zahrnuje analýzu **dat** , **zkosení času** a **analýzy využití prováděcího modulu** .
+Chcete-li získat přístup na kartu diagnostika, vyberte ID úlohy. Pak v nabídce Nástroje vyberte **diagnóza** a získejte zobrazení diagnostiky úlohy. Karta Diagnostika zahrnuje analýzu **dat**, **zkosení času** a **analýzy využití prováděcího modulu**.
 
-Výběrem karet v uvedeném pořadí ověřte, jak se mají **Přezkosit data** , **Zkosit** a **analyzovat využití prováděcích** modulů.
+Výběrem karet v uvedeném pořadí ověřte, jak se mají **Přezkosit data**, **Zkosit** a **analyzovat využití prováděcích** modulů.
 
 ![SparkUI karta pro zkosení dat diagnostiky](./media/apache-spark-history-server/sparkui-diagnosis-tabs.png)
 
@@ -216,7 +216,7 @@ Na kartě **časové zkosení** se zobrazují zkreslené úkoly na základě dob
 
 * **Zadejte parametry** – první oddíl zobrazuje parametry, které se používají ke zjištění zešikmení času. Výchozí kritéria pro detekci časového zkosení jsou: doba provádění úlohy je větší než tři časy doby spuštění a doba provádění úlohy je větší než 30 sekund. Parametry můžete změnit podle svých potřeb. Graf **zkosených fází** a **zkosení** zobrazuje odpovídající informace o fázích a úlohách stejně jako karta pro **zkosení dat** výše.
 
-* Vyberte možnost **časové zkosení** a následně filtrovaný výsledek se zobrazí v části **zkosený fáze** podle parametrů nastavených v oddílu **určení parametrů** . Vyberte jednu položku v části **šikmá fáze** . odpovídající graf je koncept v section3 a podrobnosti úlohy se zobrazí v pravém dolním panelu.
+* Vyberte možnost **časové zkosení** a následně filtrovaný výsledek se zobrazí v části **zkosený fáze** podle parametrů nastavených v oddílu **určení parametrů**. Vyberte jednu položku v části **šikmá fáze** . odpovídající graf je koncept v section3 a podrobnosti úlohy se zobrazí v pravém dolním panelu.
 
     ![oddíl asymetrie doby diagnostiky sparkui](./media/apache-spark-history-server/sparkui-diagnosis-timeskew-section2.png)
 
@@ -224,7 +224,7 @@ Na kartě **časové zkosení** se zobrazují zkreslené úkoly na základě dob
 
 Graf využití vykonavatele vizualizuje stav přidělení a spuštění prováděcího modulu úlohy Spark.  
 
-1. Vyberte možnost **Analýza využití prováděcího modulu** , pak čtyři typy křivky o použití prováděcího modulu jsou koncepty, včetně **přidělených prováděcích** modulů, **spuštěných** prováděcích modulů, **nečinných prováděcích** modulů a **maximálního počtu instancí prováděcí** V případě přidělených prováděcích modulů se každý "vykonavatel" přidaný "nebo" vykonavatel "odebírá" nebo snižuje přidělené prováděcí moduly. Pro lepší porovnání můžete zaškrtnout "Časová osa události" na kartě úlohy.
+1. Vyberte možnost **Analýza využití prováděcího modulu**, pak čtyři typy křivky o použití prováděcího modulu jsou koncepty, včetně **přidělených prováděcích** modulů, **spuštěných** prováděcích modulů, **nečinných prováděcích** modulů a **maximálního počtu instancí prováděcí** V případě přidělených prováděcích modulů se každý "vykonavatel" přidaný "nebo" vykonavatel "odebírá" nebo snižuje přidělené prováděcí moduly. Pro lepší porovnání můžete zaškrtnout "Časová osa události" na kartě úlohy.
 
    ![karta prováděcích modulů diagnostiky sparkui](./media/apache-spark-history-server/sparkui-diagnosis-executors.png)
 

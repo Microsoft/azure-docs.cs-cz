@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5aa8f675e3fd36fbebfecf42db0f02b0f0f00115
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319735"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995977"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit auditu na portálu Azure Active Directory 
 
@@ -48,7 +48,7 @@ Tento článek vám poskytne přehled o sestavě auditu.
 
 ## <a name="audit-logs"></a>Protokoly auditu
 
-Protokoly auditu Azure AD poskytují záznamy systémových aktivit pro dodržování předpisů. Chcete-li získat přístup k sestavě auditu, vyberte v části **monitorování** v **Azure Active Directory**možnost **protokoly auditu** . 
+Protokoly auditu Azure AD poskytují záznamy systémových aktivit pro dodržování předpisů. Chcete-li získat přístup k sestavě auditu, vyberte v části **monitorování** v **Azure Active Directory** možnost **protokoly auditu** . 
 
 
 
@@ -128,9 +128,9 @@ Filtr **kategorie** umožňuje vybrat jeden z následujících filtrů:
 - KerberosDomain
 - Správa
 - Popisek
-- Ostatní
+- Jiné
 - PermissionGrantPolicy
-- Zásada
+- Zásady
 - ResourceManagement
 - RoleManagement
 - UserManagement
@@ -207,7 +207,7 @@ S použitím sestav auditu orientovaných na aplikace můžete najít odpovědi 
 * Změnily se názvy aplikací?
 * Kdo udělil souhlas pro aplikaci?
 
-Pokud chcete zkontrolovat data auditu související s vašimi aplikacemi, najdete filtrované zobrazení v části **protokoly auditu** v části **aktivita** v okně **podnikové aplikace** . Tento vstupní bod má jako **Typ aplikace**předvybranou možnost **podnikové aplikace** .
+Pokud chcete zkontrolovat data auditu související s vašimi aplikacemi, najdete filtrované zobrazení v části **protokoly auditu** v části **aktivita** v okně **podnikové aplikace** . Tento vstupní bod má jako **Typ aplikace** předvybranou možnost **podnikové aplikace** .
 
 ![Podnikové aplikace](./media/concept-audit-logs/enterpriseapplications.png "Podnikové aplikace")
 

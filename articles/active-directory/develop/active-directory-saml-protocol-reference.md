@@ -13,11 +13,11 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 06f80f94be25e42c9e8f0270e6cb15aca086ae18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87552794"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994396"
 ---
 # <a name="how-microsoft-identity-platform-uses-the-saml-protocol"></a>Jak Microsoft Identity Platform používá protokol SAML
 
@@ -27,7 +27,7 @@ Protokol SAML vyžaduje pro výměnu informací o samy poskytovatele identity (M
 
 Když je aplikace zaregistrovaná ve službě Azure AD, vývojář aplikace registruje informace týkající se federace ve službě Azure AD. Tyto informace zahrnují **identifikátor URI přesměrování** a **identifikátor URI metadat** aplikace.
 
-Platforma Microsoft Identity Platform používá **identifikátor URI metadat** cloudové služby k načtení podpisového klíče a identifikátoru URI pro odhlášení. Zákazník může aplikaci otevřít ve **službě Azure AD – > registraci aplikace** a pak v **Nastavení-> vlastnosti**může aktualizovat adresu URL pro odhlášení. Tímto způsobem může Microsoft Identity Platform odeslat odpověď na správnou adresu URL. 
+Platforma Microsoft Identity Platform používá **identifikátor URI metadat** cloudové služby k načtení podpisového klíče a identifikátoru URI pro odhlášení. Zákazník může aplikaci otevřít ve **službě Azure AD – > registraci aplikace** a pak v **Nastavení-> vlastnosti** může aktualizovat adresu URL pro odhlášení. Tímto způsobem může Microsoft Identity Platform odeslat odpověď na správnou adresu URL. 
 
 Azure Active Directory zveřejňuje jednotné přihlašování (nezávislé na klientovi) a koncové body s jedním odhlášením pro konkrétního tenanta. Tyto adresy URL představují adresovatelná umístění – nejedná se o pouze identifikátory – takže můžete načíst metadata z tohoto koncového bodu.
 

@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 732362ef7099e93697320d8e47180c1207e8cb32
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92453854"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995892"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Kurz: Azure Active Directory integrace s EverBridge
 
@@ -52,7 +52,7 @@ Pokud chcete přidat EverBridge z Azure Marketplace, postupujte podle těchto kr
 
     ![Azure Active Directory – tlačítko](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -148,7 +148,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování na **EverBridge** jako ap
  
 1. V jiném okně webového prohlížeče se přihlaste k EverBridge jako správce.
 
-1. V nabídce v horní části vyberte kartu **Nastavení** . V části **zabezpečení**vyberte **jednotné přihlašování**.
+1. V nabídce v horní části vyberte kartu **Nastavení** . V části **zabezpečení** vyberte **jednotné přihlašování**.
    
      ![Konfigurace jednotného přihlašování](./media/everbridge-tutorial/tutorial_everbridge_002.png)
    
@@ -158,11 +158,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování na **EverBridge** jako ap
    
      c. Vyberte **zvolit soubor** a odešlete soubor metadat, který jste stáhli z Azure Portal.
    
-     d. V části **umístění identity SAML**vyberte **Identita v elementu NameIdentifier příkazu Subject**.
+     d. V části **umístění identity SAML** vyberte **Identita v elementu NameIdentifier příkazu Subject**.
    
      e. Do pole **Adresa URL pro přihlášení zprostředkovatele identity** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
    
-     f. U **poskytovatele služby iniciovala vazby žádosti**vyberte **Přesměrování protokolu HTTP**.
+     f. U **poskytovatele služby iniciovala vazby žádosti** vyberte **Přesměrování protokolu HTTP**.
 
      například Vyberte **Uložit**.
 
@@ -230,7 +230,7 @@ Otestujte konfiguraci jednotného přihlašování Azure AD pomocí přístupov�
 
 Když na přístupovém panelu vyberete dlaždici EverBridge, měli byste se automaticky přihlásit k účtu EverBridge, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

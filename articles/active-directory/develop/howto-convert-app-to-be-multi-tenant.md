@@ -14,15 +14,15 @@ ms.author: ryanwi
 ms.reviewer: marsma, jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
 ms.openlocfilehash: 0c5b06fd14f526ca90b1b922be281af55ba00116
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077485"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995212"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Postup: Přihlášení libovolného uživatele služby Azure Active Directory pomocí vzoru aplikace s více tenanty
 
-Pokud nabízíte aplikaci SaaS (software jako služba) pro mnoho organizací, můžete aplikaci nakonfigurovat tak, aby přijímala přihlášení z libovolného tenanta Azure Active Directory (Azure AD). Tato konfigurace se nazývá *Vytvoření víceklientské aplikace* . Uživatelé v tenantovi Azure AD se budou moci přihlásit ke své aplikaci po jejím souhlasu s používáním svého účtu s vaší aplikací.
+Pokud nabízíte aplikaci SaaS (software jako služba) pro mnoho organizací, můžete aplikaci nakonfigurovat tak, aby přijímala přihlášení z libovolného tenanta Azure Active Directory (Azure AD). Tato konfigurace se nazývá *Vytvoření víceklientské aplikace*. Uživatelé v tenantovi Azure AD se budou moci přihlásit ke své aplikaci po jejím souhlasu s používáním svého účtu s vaší aplikací.
 
 Pokud máte existující aplikaci, která má svůj vlastní systém účtů, nebo podporuje jiné typy přihlášení od jiných poskytovatelů cloudu, je přidání přihlášení k Azure AD ze všech klientů jednoduché. Stačí zaregistrovat aplikaci, přidat přihlašovací kód přes OAuth2, OpenID připojit nebo SAML a vložit do aplikace [tlačítko Přihlásit se účtem Microsoft][AAD-App-Branding] .
 
@@ -40,7 +40,7 @@ Pojďme se podrobněji podívat na jednotlivé kroky. Můžete také přejít p�
 
 ## <a name="update-registration-to-be-multi-tenant"></a>Aktualizace registrace na více tenantů
 
-Ve výchozím nastavení jsou registrace webové aplikace nebo rozhraní API ve službě Azure AD jedním klientem. Registraci pro více tenantů můžete udělat tak, že v podokně **ověřování** registrace vaší aplikace v [Azure Portal][AZURE-portal] zadáte přepínač **podporované typy účtů** a nakonfigurujete je na **účty v libovolném organizačním adresáři** .
+Ve výchozím nastavení jsou registrace webové aplikace nebo rozhraní API ve službě Azure AD jedním klientem. Registraci pro více tenantů můžete udělat tak, že v podokně **ověřování** registrace vaší aplikace v [Azure Portal][AZURE-portal] zadáte přepínač **podporované typy účtů** a nakonfigurujete je na **účty v libovolném organizačním adresáři**.
 
 Předtím, než může být aplikace vytvořená pro více tenantů, vyžaduje Azure AD identifikátor URI ID aplikace, který má být globálně jedinečný. Identifikátor URI ID aplikace je jedním ze způsobů, kterými se může aplikace ve zprávách protokolu identifikovat. U aplikace s jedním tenantem stačí, když bude identifikátor URI ID aplikace jedinečný v rámci daného tenanta. U aplikace s více tenanty musí být globálně jedinečný, aby služba Azure AD aplikaci našla mezi všemi tenanty. Globální jedinečnost se vynucuje požadavkem, aby Identifikátor URI ID aplikace obsahoval název hostitele, který odpovídá ověřené doméně tenanta Azure AD.
 
@@ -125,11 +125,11 @@ Určitá delegovaná oprávnění také vyžadují souhlas správce tenanta. Nap
 
 Pokud vaše aplikace používá oprávnění, která vyžadují souhlas správce, musíte mít gesto, jako je tlačítko nebo odkaz, kde může správce zahájit akci. Požadavek, který vaše aplikace posílá pro tuto akci, je obvyklým požadavkem na autorizaci OAuth2/OpenID Connect, který také obsahuje `prompt=admin_consent` parametr řetězce dotazu. Jakmile správce souhlasí a objekt služby se vytvoří v tenantovi zákazníka, následné žádosti o přihlášení nepotřebují `prompt=admin_consent` parametr. Vzhledem k tomu, že správce rozhodl, že požadovaná oprávnění jsou přijatelná, žádné další uživatele v tenantovi nebudou vyzváni k jejich souhlasu od tohoto okamžiku.
 
-Správce klienta může zakázat možnost pro běžné uživatele, aby jim souhlasili s aplikacemi. Pokud je tato možnost zakázaná, bude pro použití v tenantovi vždycky potřeba souhlas správce. Pokud chcete otestovat aplikaci pomocí souhlasu koncového uživatele, můžete najít přepínač konfigurace v části [Azure Portal][AZURE-portal] v části **[nastavení uživatele](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** v části **podnikové aplikace** .
+Správce klienta může zakázat možnost pro běžné uživatele, aby jim souhlasili s aplikacemi. Pokud je tato možnost zakázaná, bude pro použití v tenantovi vždycky potřeba souhlas správce. Pokud chcete otestovat aplikaci pomocí souhlasu koncového uživatele, můžete najít přepínač konfigurace v části [Azure Portal][AZURE-portal] v části **[nastavení uživatele](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** v části **podnikové aplikace**.
 
 Tento `prompt=admin_consent` parametr můžou používat i aplikace, které vyžadují oprávnění, které nevyžadují souhlas správce. V takovém případě je třeba použít například v případě, že aplikace vyžaduje prostředí, kde se správce klienta zaregistruje jednou, a žádné další uživatele nebudou vyzváni k souhlasu od tohoto okamžiku.
 
-Pokud aplikace vyžaduje souhlas správce a správce se přihlásí bez `prompt=admin_consent` odeslání parametru, když správce úspěšně souhlasí s aplikací, bude platit **pouze pro svůj uživatelský účet** . Pravidelným uživatelům se stále nebude moci přihlásit ani vyjádřit souhlas s aplikací. Tato funkce je užitečná v případě, že chcete dát správci tenanta možnost prozkoumat vaši aplikaci předtím, než povolíte ostatním uživatelům přístup.
+Pokud aplikace vyžaduje souhlas správce a správce se přihlásí bez `prompt=admin_consent` odeslání parametru, když správce úspěšně souhlasí s aplikací, bude platit **pouze pro svůj uživatelský účet**. Pravidelným uživatelům se stále nebude moci přihlásit ani vyjádřit souhlas s aplikací. Tato funkce je užitečná v případě, že chcete dát správci tenanta možnost prozkoumat vaši aplikaci předtím, než povolíte ostatním uživatelům přístup.
 
 ### <a name="consent-and-multi-tier-applications"></a>Souhlas a vícevrstvé aplikace
 

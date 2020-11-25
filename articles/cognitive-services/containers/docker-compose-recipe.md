@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: aahi
 ms.openlocfilehash: cedcf8a3fcd656c4af0ca7493c598791d35d20d9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130557"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996117"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>Použití nástroje Docker Compose k nasazení několika kontejnerů
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak nasadit více kontejnerů Azure Cognitive Serv
 
 Může být užitečné pro orchestraci více imagí kontejneru v jednom hostitelském počítači. V tomto článku si vyžádáme kontejnery pro čtení a rozpoznávání formulářů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento postup vyžaduje několik nástrojů, které je třeba nainstalovat a spustit místně:
 
@@ -39,7 +39,7 @@ Tento postup vyžaduje několik nástrojů, které je třeba nainstalovat a spus
 
 ## <a name="docker-compose-file"></a>Soubor Docker Compose
 
-Soubor YAML definuje všechny služby, které mají být nasazeny. Tyto služby spoléhají na buď `DockerFile` nebo existující image kontejneru. V tomto případě použijeme dvě image ve verzi Preview. Zkopírujte a vložte následující soubor YAML a uložte ho jako *Docker-tváře. yaml* . Zadejte v souboru příslušné hodnoty **apikey** , **fakturace** a **hodnot endpointuri** .
+Soubor YAML definuje všechny služby, které mají být nasazeny. Tyto služby spoléhají na buď `DockerFile` nebo existující image kontejneru. V tomto případě použijeme dvě image ve verzi Preview. Zkopírujte a vložte následující soubor YAML a uložte ho jako *Docker-tváře. yaml*. Zadejte v souboru příslušné hodnoty **apikey**, **fakturace** a **hodnot endpointuri** .
 
 ```yaml
 version: '3.7'

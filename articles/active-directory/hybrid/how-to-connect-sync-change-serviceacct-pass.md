@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4dcc7ed6076c3bac723d709f50f1b3ab2ce8f58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319924"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996555"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>Změna hesla účtu služby ADSync
 Změníte-li heslo účtu služby ADSync, synchronizační služba nebude moci správně spustit, dokud neodstraníte šifrovací klíč a znovu znovu spustíte heslo účtu služby ADSync. 
@@ -97,7 +97,7 @@ Vzhledem k tomu, že stávající hesla uložená v databázi již nelze dešifr
 </br>![Synchronizovat Service Manager](./media/how-to-connect-sync-change-serviceacct-pass/startmenu.png)  
 2. Přejít na kartu **konektory** .
 3. Vyberte **konektor služby Active** Directory, který odpovídá vaší místní službě AD. Pokud máte více než jeden konektor služby AD, opakujte následující postup pro každý z nich.
-4. V části **Akce**vyberte **vlastnosti**.
+4. V části **Akce** vyberte **vlastnosti**.
 5. V místním dialogovém okně vyberte **připojit k doménové struktuře služby Active Directory**:
 6. Do textového pole **heslo** zadejte heslo účtu služba AD DS. Pokud heslo neznáte, musíte ho před provedením tohoto kroku nastavit na známou hodnotu.
 7. Kliknutím na tlačítko **OK** uložte nové heslo a zavřete automaticky otevírané okno.

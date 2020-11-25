@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
 ms.openlocfilehash: 947b509468857b98b868881bdd48adf67a5d60db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86498997"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994621"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Získejte přehled o vaší infrastruktuře DNS pomocí řešení DNS Analytics Preview.
 
@@ -159,7 +159,7 @@ Tyto dotazy můžete použít jako výchozí bod pro vytváření vlastních dot
 
 Na stránce prohledávání protokolu můžete vytvořit dotaz. Výsledky hledání můžete filtrovat pomocí ovládacích prvků omezující vlastnosti. Můžete také vytvořit rozšířené dotazy pro transformaci, filtrování a vytváření sestav výsledků. Začněte tím, že použijete následující dotazy:
 
-1. Do **pole vyhledávací dotaz**zadejte, pokud `DnsEvents` chcete zobrazit všechny události DNS vygenerované servery DNS spravovanými řešením. Výsledky uvádějí data protokolu pro všechny události související s vyhledávacími dotazy, dynamickými registracemi a změnami konfigurace.
+1. Do **pole vyhledávací dotaz** zadejte, pokud `DnsEvents` chcete zobrazit všechny události DNS vygenerované servery DNS spravovanými řešením. Výsledky uvádějí data protokolu pro všechny události související s vyhledávacími dotazy, dynamickými registracemi a změnami konfigurace.
 
     ![Hledání protokolu DnsEvents](./media/dns-analytics/log-search-dnsevents.png)  
 
@@ -169,7 +169,7 @@ Na stránce prohledávání protokolu můžete vytvořit dotaz. Výsledky hledá
 
     c. Chcete-li zobrazit data protokolu pro změny konfigurace, vyberte **ConfigurationChange** jako filtr **podtypu** z ovládacího prvku omezující vlastnost na levé straně. Zobrazí se tabulka se seznamem všech událostí změny konfigurace pro vybrané časové období.
 
-1. Do **pole vyhledávací dotaz**zadejte, `DnsInventory` Chcete-li zobrazit všechna data týkající se inventarizace DNS pro servery DNS spravované řešením. Výsledky uvádějí data protokolu pro servery DNS, zóny DNS a záznamy prostředků.
+1. Do **pole vyhledávací dotaz** zadejte, `DnsInventory` Chcete-li zobrazit všechna data týkající se inventarizace DNS pro servery DNS spravované řešením. Výsledky uvádějí data protokolu pro servery DNS, zóny DNS a záznamy prostředků.
 
     ![Hledání protokolu DnsInventory](./media/dns-analytics/log-search-dnsinventory.png)
     

@@ -13,11 +13,11 @@ ms.date: 03/16/2018
 ms.author: duau
 ms.custom: devx-track-js
 ms.openlocfilehash: c49672ad38ac8cf80214d03870b5876d741e76ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259862"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994872"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Postup odeslání Měření reálných uživatelů pro Traffic Manager v aplikaci Visual Studio Mobile Center
 
@@ -35,7 +35,7 @@ Měření, která provedete a odesíláte Traffic Manager z klientské aplikace,
 K získání klíče rumu pomocí Azure Portal použijte následující postup:
 1. V prohlížeči se přihlaste k webu Azure Portal. Pokud ještě účet nemáte, můžete si zaregistrovat zkušební verzi na měsíc zdarma.
 2. Na panelu hledání na portálu vyhledejte název profilu služby Traffic Manager, který chcete upravit, a pak na tento profil služby Traffic Manager klikněte v zobrazených výsledcích.
-3. Na stránce Traffic Manager profil klikněte v části **Nastavení**na **měření reálných uživatelů** .
+3. Na stránce Traffic Manager profil klikněte v části **Nastavení** na **měření reálných uživatelů** .
 4. Klikněte na **vygenerovat klíč** a vytvořte nový klíč rumu.
         
    ![Generovat klíč Měření reálných uživatelů](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)

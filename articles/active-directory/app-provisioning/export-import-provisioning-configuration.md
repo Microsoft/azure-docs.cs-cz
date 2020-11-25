@@ -11,15 +11,15 @@ ms.workload: identity
 ms.date: 03/19/2020
 ms.author: kenwith
 ms.openlocfilehash: e34656d6ce515cabe955c101f7b52ac0f2ade8db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235813"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994804"
 ---
 # <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Postupy: Export konfigurace zřizování a návrat do známého funkčního stavu
 
-V tomto článku se dozvíte, jak:
+V tomto článku se naučíte:
 
 - Exportovat a importovat konfiguraci zřizování z Azure Portal
 - Export a import konfigurace zřizování pomocí rozhraní Microsoft Graph API
@@ -32,7 +32,7 @@ Export konfigurace:
 
 1. V [Azure Portal](https://portal.azure.com/)v levém navigačním panelu vyberte možnost **Azure Active Directory**.
 1. V podokně **Azure Active Directory** vyberte možnost **podnikové aplikace** a zvolte aplikaci.
-1. V levém navigačním podokně vyberte **zřizování**. Na stránce konfigurace zřizování klikněte na **mapování atributů**a pak na **Zobrazit pokročilé možnosti**a nakonec **Zkontrolujte schéma**. Tím přejdete do editoru schémat.
+1. V levém navigačním podokně vyberte **zřizování**. Na stránce konfigurace zřizování klikněte na **mapování atributů** a pak na **Zobrazit pokročilé možnosti** a nakonec **Zkontrolujte schéma**. Tím přejdete do editoru schémat.
 1. Kliknutím na stáhnout na panelu příkazů v horní části stránky Stáhněte své schéma.
 
 ### <a name="disaster-recovery---roll-back-to-a-known-good-state"></a>Zotavení po havárii – vracení zpátky do známého funkčního stavu

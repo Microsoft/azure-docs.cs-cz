@@ -10,11 +10,11 @@ ms.author: matjazl
 author: matjazl
 ms.date: 04/02/2019
 ms.openlocfilehash: 2e13a9fc32964781dda07e5534e5cab79868ddf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87846971"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995535"
 ---
 # <a name="tutorial-azure-active-directory-smart-on-fhir-proxy"></a>Kurz: Azure Active Directory SMART on FHIR proxy
 
@@ -126,7 +126,7 @@ Jakmile spustíte spouštěč aplikací SMART on FHIR, můžete nasměrovat proh
 
 ![Inteligentní spuštění aplikace FHIR](media/tutorial-smart-on-fhir/smart-on-fhir-app-launcher.png)
 
-Když zadáte **pacienty**, **zaznamenání**nebo informace o **specialistě** , zjistíte, že je **kontext spuštění** aktualizovaný. Pokud používáte rozhraní API Azure pro FHIR, je kontext spuštění jednoduše dokumentem JSON, který obsahuje informace o pacientech, specialistech a dalších. Tento kontext spuštění je kódovaný v kódování Base64 a předává se do inteligentní aplikace FHIR jako `launch` parametr dotazu. Podle specifikace SMART on FHIR je tato proměnná neprůhledná pro aplikaci SMART on FHIR a předala se poskytovateli identity. 
+Když zadáte **pacienty**, **zaznamenání** nebo informace o **specialistě** , zjistíte, že je **kontext spuštění** aktualizovaný. Pokud používáte rozhraní API Azure pro FHIR, je kontext spuštění jednoduše dokumentem JSON, který obsahuje informace o pacientech, specialistech a dalších. Tento kontext spuštění je kódovaný v kódování Base64 a předává se do inteligentní aplikace FHIR jako `launch` parametr dotazu. Podle specifikace SMART on FHIR je tato proměnná neprůhledná pro aplikaci SMART on FHIR a předala se poskytovateli identity. 
 
 Proxy inteligentní na FHIR používá tyto informace k naplnění polí v odpovědi na token. Aplikace SMART on FHIR *může* tato pole použít k určení toho, pro který pacient žádá o data a jak vykreslí aplikaci na obrazovce. Proxy inteligentní na FHIR podporuje následující pole:
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 340b910319cabe3379bdb1bad1c09bc71c17f072
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85507530"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994940"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>Použití služby Správce zařízení StorSimple ke správě sdílených složek ve službě StorSimple Virtual Array
 
@@ -40,7 +40,7 @@ Sdílené složky StorSimple můžou být:
 
 Pro maximální zřízenou kapacitu pro každý typ sdílené složky použijte následující tabulku.
 
-| **Identifikátor omezení** | **Počtu** |
+| **Identifikátor omezení** | **Omezení** |
 | --- | --- |
 | Minimální velikost vrstveného sdílení |500 GB |
 | Maximální velikost vrstvené sdílené složky |20 TB |

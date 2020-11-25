@@ -12,11 +12,11 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 3b77cc93385efb0bbb8a9b87d29de9bad5cd4ceb
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443326"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995997"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>Aplikace démona, která volá webová rozhraní API – registrace aplikace
 
@@ -40,7 +40,7 @@ Aplikace démona může vyžadovat pouze oprávnění aplikace pro rozhraní API
 ![Oprávnění aplikace a souhlas správce](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
 
 > [!NOTE]
-> Webové rozhraní API, které chcete volat, musí definovat *oprávnění aplikace (aplikační role)* , ne delegovaná oprávnění. Podrobnosti o tom, jak vystavit takové rozhraní API, najdete v tématu [Protected Web API: registrace aplikace – když je webové rozhraní API voláno aplikací démona](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app).
+> Webové rozhraní API, které chcete volat, musí definovat *oprávnění aplikace (aplikační role)*, ne delegovaná oprávnění. Podrobnosti o tom, jak vystavit takové rozhraní API, najdete v tématu [Protected Web API: registrace aplikace – když je webové rozhraní API voláno aplikací démona](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app).
 
 Aplikace démona vyžaduje, aby správce tenanta předá aplikaci, která volá webové rozhraní API, předem svůj souhlas. Správci tenanta poskytují tento souhlas na stejné stránce **oprávnění rozhraní API** tak, že v ***naší organizaci* vyberete udělit souhlas správce** .
 

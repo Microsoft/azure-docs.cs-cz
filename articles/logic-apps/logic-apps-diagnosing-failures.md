@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/31/2020
 ms.openlocfilehash: 1f83f13564a64a0d9d8a5e0144ca95af6a769d6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76905104"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995042"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Řešení potíží s chybami pracovního postupu a jejich diagnostika v Azure Logic Apps
 
@@ -27,7 +27,7 @@ Každá aplikace logiky se spustí s pokusy o aktivaci, takže pokud se Trigger 
 
    ![Zobrazit stav triggeru a historii](./media/logic-apps-diagnosing-failures/logic-app-trigger-history.png)
 
-1. Zkontrolujte vstupy triggeru a potvrďte, že se zobrazují podle očekávání. V části **odkaz na vstupy**vyberte odkaz, který zobrazuje podokno **vstupy** .
+1. Zkontrolujte vstupy triggeru a potvrďte, že se zobrazují podle očekávání. V části **odkaz na vstupy** vyberte odkaz, který zobrazuje podokno **vstupy** .
 
    Vstupy triggerů zahrnují data, která Trigger očekává, a vyžaduje spuštění pracovního postupu. Tyto vstupy vám pomohou určit, zda jsou vstupy triggeru správné a zda byla podmínka splněna, aby mohl pracovní postup pokračovat.
 
@@ -35,7 +35,7 @@ Každá aplikace logiky se spustí s pokusy o aktivaci, takže pokud se Trigger 
 
    ![Zkontrolovat vstupy triggeru pro chyby](./media/logic-apps-diagnosing-failures/review-trigger-inputs-for-errors.png)
 
-1. Zkontrolujte výstupy triggerů, pokud existují, a potvrďte tak, že se zobrazují podle očekávání. V části **odkaz na výstupy**vyberte odkaz, který zobrazuje podokno **výstupy** .
+1. Zkontrolujte výstupy triggerů, pokud existují, a potvrďte tak, že se zobrazují podle očekávání. V části **odkaz na výstupy** vyberte odkaz, který zobrazuje podokno **výstupy** .
 
    Výstupy triggerů zahrnují data, která aktivační událost projde k dalšímu kroku pracovního postupu. Tyto výstupy vám pomůžou určit, jestli se do dalšího kroku pracovního postupu předali správné nebo očekávané hodnoty, například:
 
@@ -60,7 +60,7 @@ Pokaždé, když se Trigger aktivuje pro položku nebo událost, vytvoří modul
 
 1. Zkontrolujte vstupy neúspěšných kroků a ověřte, jestli se zobrazují podle očekávání.
 
-1. Projděte si podrobnosti o jednotlivých krocích konkrétního spuštění. V části **historie spuštění**vyberte běh, který chcete prošetřit.
+1. Projděte si podrobnosti o jednotlivých krocích konkrétního spuštění. V části **historie spuštění** vyberte běh, který chcete prošetřit.
 
    ![Kontrola historie spuštění](./media/logic-apps-diagnosing-failures/logic-app-runs-history.png)
 

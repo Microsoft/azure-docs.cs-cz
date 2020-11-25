@@ -12,11 +12,11 @@ ms.date: 11/03/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 4e74c33a18baff3e1cb39328ce265f16975ef1b5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322159"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994838"
 ---
 # <a name="string-claims-transformations"></a>Transformace deklarací řetězců
 
@@ -80,10 +80,10 @@ Technický profil s vlastním uplatněním volá ověřovací **přihlášení �
 ### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-  - **inputClaim1** : someone@contoso.com
-  - **inputClaim2** : someone@outlook.com
+  - **inputClaim1**: someone@contoso.com
+  - **inputClaim2**: someone@outlook.com
 - Vstupní parametry:
-  - **stringComparison** : ordinalIgnoreCase
+  - **stringComparison**: ordinalIgnoreCase
 - Výsledek: došlo k chybě
 
 ## <a name="changecase"></a>ChangeCase
@@ -115,11 +115,11 @@ Pomocí této transformace deklarace identity změňte libovolný řetězec Clai
 ### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-  - **e-mail** : SomeOne@contoso.com
+  - **e-mail**: SomeOne@contoso.com
 - Vstupní parametry:
-    - **toCase** : nižší
+    - **toCase**: nižší
 - Deklarace výstupů:
-  - **e-mail** : someone@contoso.com
+  - **e-mail**: someone@contoso.com
 
 ## <a name="createstringclaim"></a>CreateStringClaim
 
@@ -127,7 +127,7 @@ Vytvoří deklaraci řetězce ze zadaného vstupního parametru v transformaci.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 |----- | ----------------------- | --------- | ----- |
-| InputParameter | hodnota | řetězec | Řetězec, který má být nastaven. Tento vstupní parametr podporuje [výrazy transformace deklarací řetězců](string-transformations.md#string-claim-transformations-expressions). |
+| InputParameter | value | řetězec | Řetězec, který má být nastaven. Tento vstupní parametr podporuje [výrazy transformace deklarací řetězců](string-transformations.md#string-claim-transformations-expressions). |
 | OutputClaim | createdClaim | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací, s hodnotou zadanou ve vstupním parametru. |
 
 Tuto transformaci deklarací identity použijte k nastavení hodnoty ClaimType typu String.
@@ -146,9 +146,9 @@ Tuto transformaci deklarací identity použijte k nastavení hodnoty ClaimType t
 ### <a name="example"></a>Příklad
 
 - Vstupní parametr:
-    - **hodnota** : podmínka služby contoso...
+    - **hodnota**: podmínka služby contoso...
 - Deklarace výstupů:
-    - **createdClaim** : služba TOS ClaimType obsahuje "podmínkami služby společnosti Contoso..." osa.
+    - **createdClaim**: služba TOS ClaimType obsahuje "podmínkami služby společnosti Contoso..." osa.
 
 ## <a name="compareclaims"></a>CompareClaims
 
@@ -183,13 +183,13 @@ Pomocí této transformace deklarací identity zjistíte, jestli je deklarace id
 ### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-  - **inputClaim1** : someone@contoso.com
-  - **inputClaim2** : someone@outlook.com
+  - **inputClaim1**: someone@contoso.com
+  - **inputClaim2**: someone@outlook.com
 - Vstupní parametry:
-    - **operátor** : není rovno
-    - **IgnoreCase** : pravda
+    - **operátor**: není rovno
+    - **IgnoreCase**: pravda
 - Deklarace výstupů:
-    - **outputClaim** : true
+    - **outputClaim**: true
 
 ## <a name="compareclaimtovalue"></a>CompareClaimToValue
 
@@ -223,13 +223,13 @@ Tuto transformaci deklarací identity můžete použít ke kontrole, jestli se d
 
 ### <a name="example"></a>Příklad
 - Vstupní deklarace identity:
-    - **inputClaim1** : V1
+    - **inputClaim1**: V1
 - Vstupní parametry:
-    - **compareTo** : V1
-    - **operátor** : EQUAL
-    - **IgnoreCase** : pravda
+    - **compareTo**: V1
+    - **operátor**: EQUAL
+    - **IgnoreCase**: pravda
 - Deklarace výstupů:
-    - **outputClaim** : true
+    - **outputClaim**: true
 
 ## <a name="createrandomstring"></a>CreateRandomString
 
@@ -259,9 +259,9 @@ Následující příklad generuje globální jedinečné ID. Tato transformace d
 ### <a name="example"></a>Příklad
 
 - Vstupní parametry:
-    - **randomGeneratorType** : GUID
+    - **randomGeneratorType**: GUID
 - Deklarace výstupů:
-    - **outputClaim** : bc8bedd2-AAA3-411E-bdee-2f1810b73dfc
+    - **outputClaim**: bc8bedd2-AAA3-411E-bdee-2f1810b73dfc
 
 Následující příklad generuje celočíselnou náhodnou hodnotu mezi 0 a 1000. Hodnota je formátována na OTP_ {Random Value}.
 
@@ -282,12 +282,12 @@ Následující příklad generuje celočíselnou náhodnou hodnotu mezi 0 a 1000
 ### <a name="example"></a>Příklad
 
 - Vstupní parametry:
-    - **randomGeneratorType** : celé číslo
-    - **maximumNumber** : 1000
-    - **StringFormat –** : OTP_{0}
-    - **Base64** : false
+    - **randomGeneratorType**: celé číslo
+    - **maximumNumber**: 1000
+    - **StringFormat –**: OTP_{0}
+    - **Base64**: false
 - Deklarace výstupů:
-    - **outputClaim** : OTP_853
+    - **outputClaim**: OTP_853
 
 
 ## <a name="formatstringclaim"></a>FormatStringClaim
@@ -319,11 +319,11 @@ Tuto transformaci deklarací použijte k formátování libovolného řetězce s
 ### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-    - **inputClaim** : 5164db16-3eee-4629-bfda-dcc3326790e9
+    - **inputClaim**: 5164db16-3eee-4629-bfda-dcc3326790e9
 - Vstupní parametry:
-    - **StringFormat –** : cpim_ {0} @ {RelyingPartyTenantId}
+    - **StringFormat –**: cpim_ {0} @ {RelyingPartyTenantId}
 - Deklarace výstupů:
-  - **outputClaim** : cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
+  - **outputClaim**: cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
 
 ## <a name="formatstringmultipleclaims"></a>FormatStringMultipleClaims
 
@@ -356,12 +356,12 @@ Tuto transformaci deklarací použijte k formátování řetězce se dvěma para
 ### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-    - **inputClaim1** : Jana
-    - **inputClaim2** : Fernando
+    - **inputClaim1**: Jana
+    - **inputClaim2**: Fernando
 - Vstupní parametry:
-    - **StringFormat –** : {0}{1}
+    - **StringFormat –**: {0}{1}
 - Deklarace výstupů:
-    - **outputClaim** : Jan Fernando
+    - **outputClaim**: Jan Fernando
 
 ## <a name="getlocalizedstringstransformation"></a>GetLocalizedStringsTransformation
 
@@ -427,10 +427,10 @@ Transformace deklarací nastaví hodnotu *předmětu* typu deklarace identity s 
 ### <a name="example"></a>Příklad
 
 - Deklarace výstupů:
-  - **Předmět** : kód pro ověření e-mailu účtu contoso
-  - **zpráva** : Děkujeme za ověření účtu!
-  - **codeIntro** : váš kód je
-  - **podpis** : pozdrav
+  - **Předmět**: kód pro ověření e-mailu účtu contoso
+  - **zpráva**: Děkujeme za ověření účtu!
+  - **codeIntro**: váš kód je
+  - **podpis**: pozdrav
 
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
@@ -472,9 +472,9 @@ Transformace deklarací vyhledá text položky a vrátí její hodnotu. Pokud je
 ### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-    - **mapFromClaim** : B2C_V1_90001
+    - **mapFromClaim**: B2C_V1_90001
 - Deklarace výstupů:
-    - **restrictionValueClaim** : nemůžete se přihlásit, protože jste nezletilější.
+    - **restrictionValueClaim**: nemůžete se přihlásit, protože jste nezletilější.
 
 ## <a name="lookupvalue"></a>LookupValue
 
@@ -509,14 +509,14 @@ Následující příklad vyhledá název domény v jedné z kolekcí vstupní pa
 ### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-    - **inputParameterId** : test.com
+    - **inputParameterId**: test.com
 - Vstupní parametry:
-    - **contoso.com** : 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
-    - **Microsoft.com** : 0213308f-17cb-4398-b97e-01da7bd4804e
-    - **test.com** : c7026f88-4299-4cdb-965d-3f166464b8a9
-    - **errorOnFailedLookup** : false
+    - **contoso.com**: 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - **Microsoft.com**: 0213308f-17cb-4398-b97e-01da7bd4804e
+    - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **errorOnFailedLookup**: false
 - Deklarace výstupů:
-    - **outputClaim** : c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **outputClaim**: c7026f88-4299-4cdb-965d-3f166464b8a9
 
 Je-li `errorOnFailedLookup` vstupní parametr nastaven na hodnotu `true` , transformace deklarací **LookupValue** je vždy prováděna z [technického profilu ověření](validation-technical-profile.md) , který je volán pomocí [technického profilu s vlastním uplatněním](self-asserted-technical-profile.md)nebo [DisplayConrtol](display-controls.md). `LookupNotFound`Metadata technického profilu s vlastním uplatněním řídí chybovou zprávu, která je prezentována uživateli.
 
@@ -544,12 +544,12 @@ Následující příklad vyhledá název domény v jedné z kolekcí vstupní pa
 ### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-    - **inputParameterId** : Live.com
+    - **inputParameterId**: Live.com
 - Vstupní parametry:
-    - **contoso.com** : 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
-    - **Microsoft.com** : 0213308f-17cb-4398-b97e-01da7bd4804e
-    - **test.com** : c7026f88-4299-4cdb-965d-3f166464b8a9
-    - **errorOnFailedLookup** : true
+    - **contoso.com**: 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - **Microsoft.com**: 0213308f-17cb-4398-b97e-01da7bd4804e
+    - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **errorOnFailedLookup**: true
 - Chyba:
     - Nebyla nalezena žádná shoda pro vstupní hodnotu deklarace v seznamu ID vstupních parametrů a errorOnFailedLookup je true.
 
@@ -573,9 +573,9 @@ Tato transformace deklarace identity slouží k odebrání nepotřebných dat z 
 ```
 
 - Vstupní deklarace identity:
-    - **outputClaim** : Vítejte v aplikaci Contoso. Pokud budete pokračovat v procházení a používání tohoto webu, souhlasíte s tím, že splníte následující podmínky a ujednání, které jsou vázány...
+    - **outputClaim**: Vítejte v aplikaci Contoso. Pokud budete pokračovat v procházení a používání tohoto webu, souhlasíte s tím, že splníte následující podmínky a ujednání, které jsou vázány...
 - Deklarace výstupů:
-    - **outputClaim** : null
+    - **outputClaim**: null
 
 ## <a name="parsedomain"></a>ParseDomain
 
@@ -602,9 +602,9 @@ Pomocí této transformace deklarací identity můžete analyzovat název domén
 ### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-  - **EmailAddress** : joe@outlook.com
+  - **EmailAddress**: joe@outlook.com
 - Deklarace výstupů:
-    - **doména** : Outlook.com
+    - **doména**: Outlook.com
 
 ## <a name="setclaimsifregexmatch"></a>SetClaimsIfRegexMatch
 
@@ -641,13 +641,13 @@ Ověří, zda je zadané telefonní číslo platné, na základě vzoru regulár
 ```
 
 - Vstupní deklarace identity:
-    - **claimToMatch** : "64854114520"
+    - **claimToMatch**: "64854114520"
 - Vstupní parametry:
-    - **matchTo** : "^ [0-9] {4,16} $"
-    - **outputClaimIfMatched** : "-Phone"
+    - **matchTo**: "^ [0-9] {4,16} $"
+    - **outputClaimIfMatched**: "-Phone"
 - Deklarace výstupů:
-    - **outputClaim** : "-Phone"
-    - **regexCompareResultClaim** : true
+    - **outputClaim**: "-Phone"
+    - **regexCompareResultClaim**: true
 
 ### <a name="example-2"></a>Příklad 2
 
@@ -672,15 +672,15 @@ Zkontroluje, jestli je poskytnutá e-mailová adresa platná, a vrátí e-mailov
 ```
 
 - Vstupní deklarace identity:
-    - **claimToMatch** : " emily@contoso.com "
+    - **claimToMatch**: " emily@contoso.com "
 - Vstupní parametry:
-    - **matchTo** : `(?&lt;mailAlias&gt;.*)@(.*)$`
-    - **outputClaimIfMatched** : "" e-mail "
-    - **extractGroups** : true
+    - **matchTo**: `(?&lt;mailAlias&gt;.*)@(.*)$`
+    - **outputClaimIfMatched**: "" e-mail "
+    - **extractGroups**: true
 - Deklarace výstupů:
-    - **outputClaim** : "" e-mail "
-    - **regexCompareResultClaim** : true
-    - **mailAlias** : Emily
+    - **outputClaim**: "" e-mail "
+    - **regexCompareResultClaim**: true
+    - **mailAlias**: Emily
     
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
 
@@ -720,16 +720,16 @@ Tuto transformaci deklarací identity můžete použít ke kontrole, jestli se d
 ### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-    - **inputClaim** : V1
+    - **inputClaim**: V1
 - Vstupní parametry:
-    - **matchTo** : V1
-    - **stringComparison** : ordinalIgnoreCase
-    - **stringMatchMsg** : B2C_V1_90005
-    - **stringMatchMsgCode** : provozovatelé nástroje pro upgrade na verzi v2
+    - **matchTo**: V1
+    - **stringComparison**: ordinalIgnoreCase
+    - **stringMatchMsg**: B2C_V1_90005
+    - **stringMatchMsgCode**: provozovatelé nástroje pro upgrade na verzi v2
 - Deklarace výstupů:
-    - **outputClaim1** : B2C_V1_90005
-    - **outputClaim2** : provozovatelé nástroje pro upgrade na verzi v2
-    - **stringCompareResultClaim** : true
+    - **outputClaim1**: B2C_V1_90005
+    - **outputClaim2**: provozovatelé nástroje pro upgrade na verzi v2
+    - **stringCompareResultClaim**: true
 
 ## <a name="setclaimsifstringsmatch"></a>SetClaimsIfStringsMatch
 
@@ -766,14 +766,14 @@ Například následující transformace deklarací identity kontroluje, zda je h
 ### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-    - **claimToMatch** : podverze
+    - **claimToMatch**: podverze
 - Vstupní parametry:
-    - **matchTo** : podverze
-    - **stringComparison** : ordinalIgnoreCase
-    - **outputClaimIfMatched** : B2C_V1_90001
+    - **matchTo**: podverze
+    - **stringComparison**: ordinalIgnoreCase
+    - **outputClaimIfMatched**: B2C_V1_90001
 - Deklarace výstupů:
-    - **isMinorResponseCode** : B2C_V1_90001
-    - **podverze** : true
+    - **isMinorResponseCode**: B2C_V1_90001
+    - **podverze**: true
 
 
 ## <a name="stringcontains"></a>StringContains
@@ -807,12 +807,12 @@ Pomocí této transformace deklarací identity zkontrolujete, zda typ deklarace 
 ### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-    - **inputClaim** : "admin, schvalovatel, Editor"
+    - **inputClaim**: "admin, schvalovatel, Editor"
 - Vstupní parametry:
-    - **obsahuje** : admin,
-    - **IgnoreCase** : pravda
+    - **obsahuje**: admin,
+    - **IgnoreCase**: pravda
 - Deklarace výstupů:
-    - **outputClaim** : true
+    - **outputClaim**: true
 
 ## <a name="stringsubstring"></a>StringSubstring
 
@@ -845,12 +845,12 @@ Můžete například získat předponu země/oblasti telefonního čísla.
 ### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-    - **inputClaim** : "+ 1644114520"
+    - **inputClaim**: "+ 1644114520"
 - Vstupní parametry:
-    - **startIndex** : 0
-    - **Délka** : 2
+    - **startIndex**: 0
+    - **Délka**: 2
 - Deklarace výstupů:
-    - **outputClaim** : "+ 1"
+    - **outputClaim**: "+ 1"
 
 ## <a name="stringreplace"></a>StringReplace
 
@@ -883,12 +883,12 @@ Například Normalizujte telefonní číslo odebráním `-` znaků.
 ### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-    - **inputClaim** : "+ 164-411-452-054"
+    - **inputClaim**: "+ 164-411-452-054"
 - Vstupní parametry:
-    - **OldValue** : "-"
-    - **NewValue** : ""
+    - **OldValue**: "-"
+    - **NewValue**: ""
 - Deklarace výstupů:
-    - **outputClaim** : "+ 164411452054"
+    - **outputClaim**: "+ 164411452054"
 
 ## <a name="stringjoin"></a>StringJoin
 
@@ -919,11 +919,11 @@ Následující příklad přebírá řetězcovou kolekci rolí uživatele a pře
 ### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-  - **inputClaim** : ["admin"; "Author"; "Reader"]
+  - **inputClaim**: ["admin"; "Author"; "Reader"]
 - Vstupní parametry:
-  - **oddělovač** : ","
+  - **oddělovač**: ","
 - Deklarace výstupů:
-  - **outputClaim** : "admin, autor, čtenář"
+  - **outputClaim**: "admin, autor, čtenář"
 
 
 ## <a name="stringsplit"></a>StringSplit
@@ -955,11 +955,11 @@ Následující příklad přijímá řetězec s oddělovači rolí uživatele č
 ### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-  - **inputClaim** : "admin, autor, čtenář"
+  - **inputClaim**: "admin, autor, čtenář"
 - Vstupní parametry:
-  - **oddělovač** : ","
+  - **oddělovač**: ","
 - Deklarace výstupů:
-  - **outputClaim** : ["admin"; "Author"; "Reader"]
+  - **outputClaim**: ["admin"; "Author"; "Reader"]
 
 ## <a name="string-claim-transformations-expressions"></a>Výrazy transformace deklarace řetězce
 Výrazy transformace deklarace v Azure AD B2C vlastní zásady poskytují kontextové informace o ID tenanta a ID technického profilu.

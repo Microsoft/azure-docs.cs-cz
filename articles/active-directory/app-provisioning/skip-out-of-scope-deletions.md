@@ -12,20 +12,20 @@ ms.date: 12/10/2019
 ms.author: kenwith
 ms.reviewer: celested
 ms.openlocfilehash: f459a804b4c375eea17cbc22ded2f41f808c1b82
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041168"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995365"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Přeskočit odstranění uživatelských účtů, které přesahují rozsah
 
 Ve výchozím nastavení modul zřizování Azure AD Soft odstraní nebo zakáže uživatele, kteří se nacházejí mimo rozsah. U některých scénářů, jako je například Workday pro příchozí zřizování uživatele AD, nemusí být toto chování očekávané a pravděpodobně budete chtít přepsat toto výchozí chování.  
 
-Tento článek popisuje, jak pomocí rozhraní Microsoft Graph API a Microsoft Graph Průzkumníku API nastavit příznak * **SkipOutOfScopeDeletions** _, který řídí zpracování účtů, které se nacházejí mimo rozsah. _ Pokud je * **SkipOutOfScopeDeletions** _ nastavené na 0 (false), účty, které se nacházejí mimo rozsah, budou v cíli zakázané.
-_ Pokud je * **SkipOutOfScopeDeletions** _ nastaveno na hodnotu 1 (true), účty, které se nacházejí mimo rozsah, nebudou v cíli zakázány. Tento příznak se nastavuje na úrovni _Provisioning App * a dá se nakonfigurovat pomocí Graph API. 
+Tento článek popisuje, jak pomocí rozhraní Microsoft Graph API a Microsoft Graph Průzkumníku API nastavit příznak ***SkipOutOfScopeDeletions** _, který řídí zpracování účtů, které se nacházejí mimo rozsah. _ Pokud je ***SkipOutOfScopeDeletions** _ nastavené na 0 (false), účty, které se nacházejí mimo rozsah, budou v cíli zakázané.
+_ Pokud je ***SkipOutOfScopeDeletions** _ nastaveno na hodnotu 1 (true), účty, které se nacházejí mimo rozsah, nebudou v cíli zakázány. Tento příznak se nastavuje na úrovni _Provisioning App * a dá se nakonfigurovat pomocí Graph API. 
 
-Vzhledem k tomu, že se tato konfigurace používá v rámci pracovní *doby pro aplikaci zřizování uživatelů služby Active Directory* , následující kroky zahrnují snímky obrazovky aplikace Workday. Nicméně tato konfigurace se dá použít i u *všech ostatních aplikací* , jako jsou ServiceNow, Salesforce a Dropbox.
+Vzhledem k tomu, že se tato konfigurace používá v rámci pracovní *doby pro aplikaci zřizování uživatelů služby Active Directory* , následující kroky zahrnují snímky obrazovky aplikace Workday. Nicméně tato konfigurace se dá použít i u *všech ostatních aplikací*, jako jsou ServiceNow, Salesforce a Dropbox.
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Krok 1: načtení ID objektu zabezpečení zřizování App Service (ID objektu)
 
@@ -68,9 +68,9 @@ Tady je blok JSON, který se má přidat do mapování.
 
 ## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>Krok 4: aktualizace koncového bodu tajných kódů pomocí příznaku SkipOutOfScopeDeletions
 
-V Průzkumníku grafů spusťte následující příkaz, který aktualizuje koncový bod tajných kódů pomocí příznaku * *_SkipOutOfScopeDeletions_* _. 
+V Průzkumníku grafů spusťte následující příkaz, který aktualizuje koncový bod tajných kódů pomocí příznaku **_SkipOutOfScopeDeletions_* _. 
 
-V následující adrese URL nahraďte [servicePrincipalId] znakem _ *servicePrincipalId* * extrahovaným z [kroku 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id). 
+V následující adrese URL nahraďte [servicePrincipalId] znakem _ *servicePrincipalId** extrahovaným z [kroku 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id). 
 
 ```http
    PUT https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets

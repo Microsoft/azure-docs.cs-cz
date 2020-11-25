@@ -13,18 +13,20 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: cbfaf52a7c5bb5e44b85513d8e2c2ec5f1cea356
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 08ee000d8f801559fcf572b8ab489161fd090b77
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101979"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95996198"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>Kurz: přihlášení uživatelů a volání rozhraní Microsoft Graph API z aplikace pro Android
 
-V tomto kurzu se dozvíte, jak integrovat aplikaci pro Android s Microsoft Identity platformou pomocí knihovny Microsoft Authentication Library (MSAL) pro Android. Naučíte se, jak se přihlásit a odhlásit uživatele, získat přístupový token a vytvořit žádost o rozhraní Microsoft Graph API.
+V tomto kurzu vytvoříte aplikaci pro Android, která se integruje s platformou Microsoft identity k přihlašování uživatelů a získá přístupový token pro volání rozhraní API Microsoft Graph.
 
 Po dokončení tohoto kurzu bude vaše aplikace přijímat přihlašování osobních účtů Microsoft (včetně outlook.com, live.com a dalších) a také pracovních nebo školních účtů z jakékoli společnosti nebo organizace, která používá Azure Active Directory.
+
+V tomto kurzu: 
 
 > [!div class="checklist"]
 > * Vytvoření projektu aplikace pro Android v *Android Studio*
@@ -33,7 +35,7 @@ Po dokončení tohoto kurzu bude vaše aplikace přijímat přihlašování osob
 > * Přidat kód pro volání rozhraní Microsoft Graph API
 > * Otestování aplikace
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Android Studio 3.5 +
 
@@ -90,7 +92,7 @@ Pokud ještě nemáte aplikaci pro Android, postupujte podle těchto kroků a na
 
 1. V podokně projektu Android Studio přejděte na **app\src\main\res**.
 2. Klikněte pravým tlačítkem na položku **res** a vyberte možnost **Nový**  >  **adresář**. `raw`Jako název nového adresáře zadejte a klikněte na **OK**.
-3. V části **App**  >  **Src**  >  **Main**  >  **res**  >  **raw**vytvořte nový soubor JSON s názvem `auth_config_single_account.json` a vložte konfiguraci MSAL, kterou jste předtím uložili.
+3. V části **App**  >  **Src**  >  **Main**  >  **res**  >  **raw** vytvořte nový soubor JSON s názvem `auth_config_single_account.json` a vložte konfiguraci MSAL, kterou jste předtím uložili.
 
     Pod identifikátorem URI přesměrování vložte:
     ```json
@@ -119,7 +121,7 @@ Pokud ještě nemáte aplikaci pro Android, postupujte podle těchto kroků a na
    >[!NOTE]
    >Tento kurz ukazuje, jak nakonfigurovat aplikaci v režimu jednoho účtu. Podívejte se na dokumentaci, kde najdete další informace o [jednom nebo víc režimech účtů](./single-multi-account.md) a [konfiguraci aplikace](./msal-configuration.md) .
 
-4. Do části **App**  >  **Src**  >  **Main**  >  **AndroidManifest.xml**přidejte `BrowserTabActivity` níže uvedenou aktivitu do těla aplikace. Tato položka umožňuje, aby Microsoft po dokončení ověřování vrátil zpět do vaší aplikace:
+4. Do části **App**  >  **Src**  >  **Main**  >  **AndroidManifest.xml** přidejte `BrowserTabActivity` níže uvedenou aktivitu do těla aplikace. Tato položka umožňuje, aby Microsoft po dokončení ověřování vrátil zpět do vaší aplikace:
 
     ```xml
     <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->

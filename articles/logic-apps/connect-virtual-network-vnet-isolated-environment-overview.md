@@ -7,11 +7,11 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.openlocfilehash: 19c9ec39d85bfc56b118498aba62c3752d6d771c
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616922"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996317"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Přístup k prostředkům Azure Virtual Network z Azure Logic Apps pomocí prostředí integračních služeb (ISEs)
 
@@ -65,9 +65,9 @@ Když vytváříte a spouštíte Logic Apps v ISE, získáte stejné uživatelsk
 
   Pokud je konektor ISE dostupný pro místní systém nebo zdroj dat, můžete se s vzácnými výjimkami připojit přímo bez použití [místní brány dat](../logic-apps/logic-apps-gateway-connection.md). Další informace najdete v části [přístup k místním systémům](#on-premises) dále v tomto tématu.
 
-* Spravované konektory, které nezobrazují popisek **ISE** , fungují i pro Logic Apps uvnitř ISE. Tyto konektory se *vždycky spouštějí ve službě Logic Apps více tenantů* , nikoli v ISE.
+* Spravované konektory, které nezobrazují popisek **ISE** , fungují i pro Logic Apps uvnitř ISE. Tyto konektory se *vždycky spouštějí ve službě Logic Apps více tenantů*, nikoli v ISE.
 
-* Vlastní konektory, které vytvoříte *mimo ISE* , bez ohledu na to, jestli vyžadují místní [bránu dat](../logic-apps/logic-apps-gateway-connection.md), budou i nadále fungovat pro Logic Apps v rámci ISE. Vlastní konektory, které vytvoříte *ve ISE* , ale nebudou fungovat s místní bránou dat. Další informace najdete v tématu [přístup k místním systémům](#on-premises).
+* Vlastní konektory, které vytvoříte *mimo ISE*, bez ohledu na to, jestli vyžadují místní [bránu dat](../logic-apps/logic-apps-gateway-connection.md), budou i nadále fungovat pro Logic Apps v rámci ISE. Vlastní konektory, které vytvoříte *ve ISE* , ale nebudou fungovat s místní bránou dat. Další informace najdete v tématu [přístup k místním systémům](#on-premises).
 
 <a name="on-premises"></a>
 
@@ -83,7 +83,7 @@ Logic Apps, které běží v rámci ISE, můžou přímo přistupovat k místní
 
 * Vlastní konektor
 
-  * Vlastní konektory, které vytvoříte *mimo ISE* , bez ohledu na to, jestli vyžadují místní [bránu dat](../logic-apps/logic-apps-gateway-connection.md), budou i nadále fungovat pro Logic Apps v rámci ISE.
+  * Vlastní konektory, které vytvoříte *mimo ISE*, bez ohledu na to, jestli vyžadují místní [bránu dat](../logic-apps/logic-apps-gateway-connection.md), budou i nadále fungovat pro Logic Apps v rámci ISE.
 
   * Vlastní konektory, které vytvoříte *ve ISE* , nefungují s místní bránou dat. Tyto konektory mají ale přímý přístup k místním systémům a zdrojům dat, které jsou uvnitř nebo připojené k virtuální síti, která je hostitelem vaší ISE. Proto Logic Apps, které jsou uvnitř ISE, obvykle nepotřebují bránu dat při přístupu k těmto prostředkům.
 
@@ -117,7 +117,7 @@ Při vytváření ISE můžete použít buď interní nebo externí koncové bod
 > [!IMPORTANT]
 > Koncový bod přístupu můžete vybrat jenom během vytváření ISE a tuto možnost nemůžete později změnit.
 
-* **Interní** : soukromé koncové body umožňují volání Logic Apps ve vašich ISE, kde můžete zobrazit a přistupovat ke vstupům a výstupům z historie spuštění Logic Apps *jenom z vaší virtuální sítě*.
+* **Interní**: soukromé koncové body umožňují volání Logic Apps ve vašich ISE, kde můžete zobrazit a přistupovat ke vstupům a výstupům z historie spuštění Logic Apps *jenom z vaší virtuální sítě*.
 
   > [!IMPORTANT]
   > Pokud potřebujete tyto triggery založené na webhookech použít, při vytváření ISE použijte externí koncové body, *ne* interní koncové body:
@@ -134,7 +134,7 @@ Při vytváření ISE můžete použít buď interní nebo externí koncové bod
   >
   > Například klientský počítač může existovat uvnitř virtuální sítě ISE nebo uvnitř virtuální sítě, která je připojená k virtuální síti ISE prostřednictvím partnerského vztahu nebo virtuální privátní sítě. 
 
-* **External** : veřejné koncové body umožňují volání Logic Apps ve vašich ISE, kde můžete zobrazit a přistupovat ke vstupům a výstupům z historie spuštění Logic Apps *z vnějšku vaší virtuální sítě*. Pokud používáte skupiny zabezpečení sítě (skupin zabezpečení sítě), zajistěte, aby byly nastavené s příchozími pravidly, aby bylo možné povolit přístup k vstupům a výstupům historie spuštění. Další informace najdete v tématu [Povolení přístupu pro ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
+* **External**: veřejné koncové body umožňují volání Logic Apps ve vašich ISE, kde můžete zobrazit a přistupovat ke vstupům a výstupům z historie spuštění Logic Apps *z vnějšku vaší virtuální sítě*. Pokud používáte skupiny zabezpečení sítě (skupin zabezpečení sítě), zajistěte, aby byly nastavené s příchozími pravidly, aby bylo možné povolit přístup k vstupům a výstupům historie spuštění. Další informace najdete v tématu [Povolení přístupu pro ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
 
 Pokud chcete zjistit, jestli váš ISE používá interní nebo externí přístupový bod, v nabídce ISE v části **Nastavení** vyberte **vlastnosti** a najděte vlastnost **koncového bodu přístupu** :
 

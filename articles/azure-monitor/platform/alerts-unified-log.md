@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
 ms.openlocfilehash: 8081c60833c3c02d55ae66ca695ba106dba01450
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294134"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995076"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Protokolování výstrah v Azure Monitor
 
@@ -74,7 +74,7 @@ Počet výsledků je výchozí míra. Ideální pro práci s událostmi, jako js
 
 Výstrahy protokolu fungují nejlépe, když se pokusíte detekovat data v protokolu. Funguje méně dobře, když se pokusíte detekovat chybějící data v protokolech. Například upozornění na prezenční signál virtuálního počítače.
 
-U pracovních prostorů a Application Insights se říká na **základě** výběru **počtu výsledků**. Ve všech ostatních typech prostředků se nazývá **Measure** s **řádky tabulky**výběru.
+U pracovních prostorů a Application Insights se říká na **základě** výběru **počtu výsledků**. Ve všech ostatních typech prostředků se nazývá **Measure** s **řádky tabulky** výběru.
 
 > [!NOTE]
 > Vzhledem k tomu, že protokoly jsou částečně strukturovaná data, jsou ve své podstatě více latentních, než je metrika, při pokusu o detekci chybějících dat v protokolech může docházet k výpadkům a měli byste zvážit použití [výstrah metrik](alerts-metric-overview.md). Data můžete do úložiště metrik odesílat z protokolů pomocí [výstrah metrik pro protokoly](alerts-metric-logs.md).
@@ -98,7 +98,7 @@ Pravidla výstrah se pak monitorují pro všechny požadavky končící kódem c
 
 #### <a name="calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value"></a>Výpočet míry na základě číselného sloupce (například hodnota čítače CPU)
 
-U pracovních prostorů a Application Insights se říká na **základě** **měření metriky**výběru. Ve všech ostatních typech prostředků se tento název nazývá **míra** s výběrem libovolného číselného sloupce s čísly.
+U pracovních prostorů a Application Insights se říká na **základě** **měření metriky** výběru. Ve všech ostatních typech prostředků se tento název nazývá **míra** s výběrem libovolného číselného sloupce s čísly.
 
 ### <a name="aggregation-type"></a>Typ agregace
 
@@ -162,7 +162,7 @@ Po definování dotazu, který se má spustit a vyhodnotit výsledky, je nutné 
 
 Výsledky dotazu jsou transformovány na číslo, které je porovnáno s prahovou hodnotou a operátorem.
 
-### <a name="frequency"></a>Frequency
+### <a name="frequency"></a>Frekvence
 
 Interval, ve kterém se dotaz spustí. Dá se nastavit z 5 minut na jeden den. Musí být rovno nebo menší než záznamy o [době, kdy je časový rozsah dotazu](#query-time-range) neúspěšný.
 

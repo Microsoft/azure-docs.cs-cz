@@ -12,11 +12,11 @@ ms.date: 08/10/2020
 ms.author: juliako
 ms.custom: devx-track-js
 ms.openlocfilehash: 1bc751ae293abbb7aa330a99a4b66a917d150906
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268617"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994974"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Vložení Video Indexer widgetů do aplikací
 
@@ -70,7 +70,7 @@ Pomůcku editoru můžete použít k vytvoření nových projektů a správě p�
 
 Tato část popisuje vložení veřejného a soukromého obsahu do aplikací.
 
-`location`Parametr musí být součástí vložených odkazů, viz [Jak získat název vaší oblasti](regions.md). Pokud je váš účet ve verzi Preview, `trial` měl by se použít pro hodnotu umístění. `trial` je výchozí hodnota pro `location` parametr. Například: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
+`location`Parametr musí být součástí vložených odkazů, viz [Jak získat název vaší oblasti](regions.md). Pokud je váš účet ve verzi Preview, `trial` měl by se použít pro hodnotu umístění. `trial` je výchozí hodnota pro `location` parametr. Příklad: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
 > [!IMPORTANT]
 > Sdílení odkazu pro widget **Playeru** nebo **Insights** bude mít přístupový token a udělí vám oprávnění jen pro čtení k vašemu účtu.
@@ -79,8 +79,8 @@ Tato část popisuje vložení veřejného a soukromého obsahu do aplikací.
 
 1. Přihlaste se k webu [video indexer](https://www.videoindexer.ai/) .
 1. Vyberte video, se kterým chcete pracovat, a stiskněte tlačítko **Přehrát**.
-1. Vyberte požadovaný typ widgetu (**rozpoznávání přehledů**, **přehrávač**nebo **Editor**).
-1. Klikněte na ** &lt; / &gt; Vložit**.
+1. Vyberte požadovaný typ widgetu (**rozpoznávání přehledů**, **přehrávač** nebo **Editor**).
+1. Klikněte na **&lt; / &gt; Vložit**.
 5. Zkopírujte kód pro vložení (zobrazí se ve **zkopírování vloženého kódu** do dialogového okna **& pro vložení sdílené složky** ).
 6. Přidejte kód do aplikace.
 

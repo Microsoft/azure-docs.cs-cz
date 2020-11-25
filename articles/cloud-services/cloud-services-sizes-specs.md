@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: 52fad84c9ed145b4acec73ffad1fa470acf94532
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076942"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994583"
 ---
 # <a name="sizes-for-cloud-services"></a>Velikosti pro Cloud Services
 Toto téma popisuje dostupné velikosti a možnosti pro instance rolí cloudové služby (webové role a role pracovního procesu). Poskytuje taky požadavky na nasazení, které vám pomají vědět, kdy plánujete tyto prostředky používat. Každá velikost má ID, které jste umístili do [souboru definice služby](cloud-services-model-and-package.md#csdef). Ceny za jednotlivé velikosti jsou k dispozici na stránce [Cloud Services ceny](https://azure.microsoft.com/pricing/details/cloud-services/) .
@@ -58,12 +58,12 @@ Vytvořili jsme koncept výpočetní jednotky Azure (ACU), aby bylo možné poro
 | [A5 – 7](#a-series) |100 |
 | [A8-A11](#a-series) |225* |
 | [A v2](#av2-series) |100 |
-| [Trojrozměrné](#d-series) |160 |
+| [D](#d-series) |160 |
 | [D V2](#dv2-series) |160 – 190 * |
 | [D V3](#dv3-series) |160 – 190 * |
 | [E V3](#ev3-series) |160 – 190 * |
-| [Věcn](#g-series) |180 - 240* |
-| [Y](#h-series) |290 - 300* |
+| [G](#g-series) |180 - 240* |
+| [H](#h-series) |290 - 300* |
 
 Hodnoty ACU s hvězdičkou označují použití technologie Intel® Turbo, která může zvýšit frekvenci procesoru podle aktuální potřeby. Množství nárůst se může lišit v závislosti na velikosti virtuálního počítače, úlohy a dalších úlohách spuštěných na stejném hostiteli.
 
@@ -79,9 +79,9 @@ Následující tabulky pro jednotlivé velikosti virtuálních počítačů uvá
 | Velikost            | Procesorová jádra | Paměť: GiB  | Dočasné úložiště: GiB       | Max. počet NIC / Šířka pásma sítě |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | ExtraSmall      | 1         | 0,768        | 20                   | 1 / malá |
-| Malý           | 1         | 1.75         | 225                  | 1 / střední |
+| Malá           | 1         | 1.75         | 225                  | 1 / střední |
 | Střední          | 2         | 3,5          | 490                  | 1 / střední |
-| Velký           | 4         | 7            | 1000                 | 2 / vysoká |
+| Velká           | 4         | 7            | 1000                 | 2 / vysoká |
 | ExtraLarge      | 8         | 14           | 2040                 | 4 / vysoká |
 | A5              | 2         | 14           | 490                  | 1 / střední |
 | A6              | 4         | 28           | 1000                 | 2 / vysoká |

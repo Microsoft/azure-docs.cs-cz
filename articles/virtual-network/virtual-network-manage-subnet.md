@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2020
 ms.author: kumud
 ms.openlocfilehash: 15fe5d6d16948875253d65e70d9d440214a4a2e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87286100"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995654"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Přidání, změna nebo odstranění podsítě virtuální sítě
 
@@ -44,14 +44,14 @@ Pokud ho nemáte, nastavte účet Azure s aktivním předplatným. [Vytvořte si
 
 2. Vyberte název virtuální sítě, do které chcete přidat podsíť.
 
-3. V **Nastavení**vyberte podsíť **podsítě**  >  **Subnet**.
+3. V **Nastavení** vyberte podsíť **podsítě**  >  **Subnet**.
 
 4. V dialogovém okně **Přidat podsíť** zadejte hodnoty pro následující nastavení:
 
     | Nastavení | Popis |
     | --- | --- |
     | **Název** | Název musí být v rámci virtuální sítě jedinečný. Pro maximální kompatibilitu s jinými službami Azure doporučujeme použít jako první znak názvu písmeno. Například Azure Application Gateway nebudete nasazovat do podsítě s názvem, který začíná číslem. |
-    | **Rozsah adres** | <p>Rozsah musí být jedinečný v rámci adresního prostoru virtuální sítě. Rozsah se nemůže překrývat s ostatními rozsahy adres podsítí v rámci virtuální sítě. Adresní prostor musí být zadaný pomocí zápisu CIDR (Inter-Domain Routing) pro třídy.</p><p>Například ve virtuální síti s adresním prostorem *10.0.0.0/16*můžete definovat adresní prostor podsítě *10.0.0.0/22*. Nejmenší rozsah, který můžete zadat, je */29*, který poskytuje osm IP adres pro podsíť. Azure rezervuje v každé podsíti první a poslední adresu pro shodu protokolu. Tři další adresy jsou rezervované pro využití služeb Azure. V důsledku toho definování podsítě s rozsahem adres */29* má za následek tři použitelné IP adresy v podsíti.</p><p>Pokud plánujete připojit virtuální síť k bráně sítě VPN, musíte vytvořit podsíť brány. Přečtěte si další informace o [konkrétních požadavcích na rozsah adres pro podsítě brány](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). Rozsah adres můžete po přidání podsítě změnit za určitých podmínek. Informace o tom, jak změnit rozsah adres podsítě, najdete v tématu [Změna nastavení podsítě](#change-subnet-settings).</p> |
+    | **Rozsah adres** | <p>Rozsah musí být jedinečný v rámci adresního prostoru virtuální sítě. Rozsah se nemůže překrývat s ostatními rozsahy adres podsítí v rámci virtuální sítě. Adresní prostor musí být zadaný pomocí zápisu CIDR (Inter-Domain Routing) pro třídy.</p><p>Například ve virtuální síti s adresním prostorem *10.0.0.0/16* můžete definovat adresní prostor podsítě *10.0.0.0/22*. Nejmenší rozsah, který můžete zadat, je */29*, který poskytuje osm IP adres pro podsíť. Azure rezervuje v každé podsíti první a poslední adresu pro shodu protokolu. Tři další adresy jsou rezervované pro využití služeb Azure. V důsledku toho definování podsítě s rozsahem adres */29* má za následek tři použitelné IP adresy v podsíti.</p><p>Pokud plánujete připojit virtuální síť k bráně sítě VPN, musíte vytvořit podsíť brány. Přečtěte si další informace o [konkrétních požadavcích na rozsah adres pro podsítě brány](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). Rozsah adres můžete po přidání podsítě změnit za určitých podmínek. Informace o tom, jak změnit rozsah adres podsítě, najdete v tématu [Změna nastavení podsítě](#change-subnet-settings).</p> |
     | **Skupina zabezpečení sítě** | K filtrování příchozího a odchozího síťového provozu pro podsíť můžete k podsíti přidružit existující skupinu zabezpečení sítě. Skupina zabezpečení sítě musí existovat ve stejném předplatném a umístění jako virtuální síť. Přečtěte si další informace o [skupinách zabezpečení sítě](security-overview.md) a [o tom, jak vytvořit skupinu zabezpečení sítě](tutorial-filter-network-traffic.md). |
     | **Směrovací tabulka** | Chcete-li řídit směrování provozu sítě do jiných sítí, můžete volitelně přidružit existující směrovací tabulku k podsíti. Směrovací tabulka musí existovat ve stejném předplatném a umístění jako virtuální síť. Přečtěte si další informace o [Směrování Azure](virtual-networks-udr-overview.md) a [o tom, jak vytvořit směrovací tabulku](tutorial-create-route-table-portal.md). |
     | **Koncové body služby** | <p>Podsíť může volitelně mít jeden nebo více koncových bodů služby, které jsou pro něj povoleny. Chcete-li povolit koncový bod služby pro službu, vyberte služby nebo služby, pro které chcete povolit koncové body služby ze seznamu **služeb** . Azure nakonfiguruje umístění automaticky pro koncový bod. Ve výchozím nastavení Azure nakonfiguruje koncové body služby pro oblast virtuální sítě. Pro podporu regionálních scénářů převzetí služeb při selhání Azure automaticky nakonfiguruje koncové body na [spárované oblasti Azure](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions) pro Azure Storage.</p><p>Chcete-li odebrat koncový bod služby, zrušte výběr služby, pro kterou chcete odebrat koncový bod služby. Další informace o koncových bodech služby a službách, pro které je možné je povolit, najdete v tématu [koncové body služby virtuální sítě](virtual-network-service-endpoints-overview.md). Po povolení koncového bodu služby pro službu musíte taky povolit přístup k síti pro podsíť pro prostředek vytvořený pomocí služby. Pokud například povolíte koncový bod služby pro **Microsoft. Storage**, musíte taky povolit přístup k síti pro všechny účty Azure Storage, ke kterým chcete udělit přístup k síti. Postup povolení síťového přístupu k podsítím, pro které je povolen koncový bod služby, najdete v dokumentaci k jednotlivé službě, pro kterou jste povolili koncový bod služby.</p><p>Pokud chcete ověřit, jestli je koncový bod služby pro podsíť povolený, podívejte se na [efektivní trasy](diagnose-network-routing-problem.md) pro jakékoli síťové rozhraní v podsíti. Při konfiguraci koncového bodu se zobrazí *výchozí* trasa s předponami adres služby a typem dalšího segmentu směrování **VirtualNetworkServiceEndpoint**. Další informace o směrování najdete v tématu [směrování provozu virtuální sítě](virtual-networks-udr-overview.md).</p> |
@@ -72,7 +72,7 @@ Pokud ho nemáte, nastavte účet Azure s aktivním předplatným. [Vytvořte si
 
 2. Vyberte název virtuální sítě obsahující podsíť, kterou chcete změnit.
 
-3. V **Nastavení**vyberte **podsítě**.
+3. V **Nastavení** vyberte **podsítě**.
 
 4. V seznamu podsítí vyberte podsíť, pro kterou chcete změnit nastavení.
 
@@ -103,11 +103,11 @@ Podsíť můžete odstranit pouze v případě, že v podsíti nejsou žádné p
 
 2. Vyberte název virtuální sítě obsahující podsíť, kterou chcete odstranit.
 
-3. V **Nastavení**vyberte **podsítě**.
+3. V **Nastavení** vyberte **podsítě**.
 
 4. V seznamu podsítí vyberte podsíť, kterou chcete odstranit.
 
-5. Vyberte **Odstranit**a potom v potvrzovacím dialogovém okně vyberte **Ano** .
+5. Vyberte **Odstranit** a potom v potvrzovacím dialogovém okně vyberte **Ano** .
 
 ### <a name="commands"></a>Příkazy
 

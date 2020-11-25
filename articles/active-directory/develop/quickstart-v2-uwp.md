@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 28d912153b52580727e0fb5086e0a7ae55e8b545
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: ab8942b473ad980da22d451116bea6a759aeb461
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560923"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95995110"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rychlý start: Volání rozhraní Microsoft Graph API z aplikace pro Univerzální platformu Windows (UPW)
 
@@ -98,7 +98,7 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 >    private const string ClientId = "Enter_the_Application_Id_here";
 >    ```
 >
->    **ID aplikace (klienta)** najdete v podokně **přehledu** aplikace v Azure Portal ( **Azure Active Directory**  >  **Registrace aplikací**  >  *{Registrace aplikace}* ).
+>    **ID aplikace (klienta)** najdete v podokně **přehledu** aplikace v Azure Portal (**Azure Active Directory**  >  **Registrace aplikací**  >  *{Registrace aplikace}*).
 > 1. Vytvořte a potom vyberte nový testovací certifikát podepsaný svým držitelem pro balíček:
 >     1. V **Průzkumník řešení** dvakrát klikněte na soubor *Package. appxmanifest* .
 >     1. Vybrat **balení**  >  **zvolit certifikát...**  >  **Vytvořit...**.
@@ -112,7 +112,7 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 
 Spuštění ukázkové aplikace na místním počítači:
 
-1. Na panelu nástrojů sady Visual Studio vyberte správnou platformu (pravděpodobně **x64** nebo **x86** , ne ARM). Cílové zařízení by se mělo změnit ze *zařízení* na *místní počítač*.
+1. Na panelu nástrojů sady Visual Studio vyberte správnou platformu (pravděpodobně **x64** nebo **x86**, ne ARM). Cílové zařízení by se mělo změnit ze *zařízení* na *místní počítač*.
 1. Vyberte **Ladit** > **Spustit bez ladění**.
     
     Pokud se zobrazí výzva k tomu, možná budete muset nejprve povolit **vývojářský režim** a pak znovu **Spustit bez ladění** , aby se aplikace spustila.

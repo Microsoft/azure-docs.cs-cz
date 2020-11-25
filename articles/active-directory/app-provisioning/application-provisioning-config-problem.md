@@ -12,11 +12,11 @@ ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: asteen
 ms.openlocfilehash: 306c3771c0392bbc97260a726e153cfd385cebcd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84782122"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994787"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Problém s konfigurací zřizování uživatelů pro aplikaci Galerie Azure AD
 
@@ -30,7 +30,7 @@ Jakmile je služba nakonfigurovaná, dají se většinu přehledů provozu služ
 
 -   **Protokoly zřizování (Preview)** – [protokoly zřizování](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) zaznamenávají všechny operace prováděné službou zřizování, včetně dotazování Azure AD pro přiřazené uživatele, kteří jsou v oboru pro zřizování. Dotazování cílové aplikace na existenci těchto uživatelů, porovnání uživatelských objektů mezi systémem. Pak na základě porovnání přidejte, aktualizujte nebo zakažte uživatelský účet v cílovém systému. K protokolům zřizování v Azure Portal můžete získat přístup tak, že **Azure Active Directory** &gt; v části aktivita vyberete Azure Active Directory protokoly zřizování **podnikových aplikací** &gt; **(Preview)** . **Activity**
 
--   **Aktuální stav –** Souhrn posledního spuštění zřizování pro danou aplikaci najdete v části **Azure Active Directory &gt; podnikové aplikace &gt; \[ název aplikace název aplikace \] &gt; ** , v dolní části obrazovky pod nastavením služby. V části aktuální stav se zobrazuje, zda zřizovací cyklus zahájil zřizování uživatelských účtů. Průběh cyklu můžete sledovat, zjistit, kolik uživatelů a skupin se zřídilo, a zjistit, kolik rolí se vytvořilo. Pokud dojde k chybám, podrobnosti najdete v [zřizovacích protokolech (. /Reports-monitoring/Concept-Provisioning-Logs.MD? Context = Azure/Active-Directory/Manage-Apps/Context/Manage-Apps-Context).
+-   **Aktuální stav –** Souhrn posledního spuštění zřizování pro danou aplikaci najdete v části **Azure Active Directory &gt; podnikové aplikace &gt; \[ název aplikace název aplikace \] &gt;** , v dolní části obrazovky pod nastavením služby. V části aktuální stav se zobrazuje, zda zřizovací cyklus zahájil zřizování uživatelských účtů. Průběh cyklu můžete sledovat, zjistit, kolik uživatelů a skupin se zřídilo, a zjistit, kolik rolí se vytvořilo. Pokud dojde k chybám, podrobnosti najdete v [zřizovacích protokolech (. /Reports-monitoring/Concept-Provisioning-Logs.MD? Context = Azure/Active-Directory/Manage-Apps/Context/Manage-Apps-Context).
 
 ## <a name="general-problem-areas-with-provisioning-to-consider"></a>Obecné oblasti problému s zřizováním pro zvážení
 
@@ -42,7 +42,7 @@ Níže je uveden seznam obecných oblastí problémů, na které můžete přej�
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>Služba zřizování se nezdá spustit
 
-Pokud nastavíte **stav zřizování** **v části** **Azure Active Directory &gt; podnikové aplikace Azure Portal &gt; \[ název aplikace \] &gt; ** . Po dalším opětovném načtení se na této stránce nezobrazují žádné další podrobnosti o stavu. Je nejspíš, že služba běží, ale ještě nedokončila počáteční cyklus. Zkontrolujte **protokoly zřizování** popsané výše a určete, jaké operace služba provádí, a pokud dojde k chybám.
+Pokud nastavíte **stav zřizování** **v části** **Azure Active Directory &gt; podnikové aplikace Azure Portal &gt; \[ název aplikace \] &gt;** . Po dalším opětovném načtení se na této stránce nezobrazují žádné další podrobnosti o stavu. Je nejspíš, že služba běží, ale ještě nedokončila počáteční cyklus. Zkontrolujte **protokoly zřizování** popsané výše a určete, jaké operace služba provádí, a pokud dojde k chybám.
 
 >[!NOTE]
 >Počáteční cyklus může trvat až 20 minut až několik hodin, v závislosti na velikosti adresáře Azure AD a počtu uživatelů v oboru pro zřizování. Následná synchronizace po počátečním cyklu, protože služba zřizování ukládá meze, které reprezentují stav obou systémů po počátečním cyklu, což zvyšuje výkon následných synchronizací.

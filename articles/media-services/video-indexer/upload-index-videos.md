@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/12/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 014c9759756a1da922a5141f064991827d593208
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: a0b7330485d3152a588d43added7d9feaa5c2a14
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630256"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "95994484"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
@@ -74,27 +74,7 @@ Tento parametr umožňuje určit ID, které bude s videem spojené. ID můžete 
 
 #### <a name="callbackurl"></a>callbackUrl
 
-Adresa URL, která se používá k upozornění na zákazníka (pomocí žádosti POST) o následujících událostech:
-
-- Změna stavu indexování: 
-    - Vlastnosti:    
-    
-        |Název|Popis|
-        |---|---|
-        |id|ID videa|
-        |state|Stav videa|  
-    - Příklad: https: \/ /test.com/notifyme?projectName=MyProject&ID = 1234abcd&State = zpracovaná
-- Osoba identifikovaná ve videu:
-  - Vlastnosti
-    
-      |Název|Popis|
-      |---|---|
-      |id| ID videa|
-      |faceId|ID obličeje, které se zobrazí v indexu videa|
-      |knownPersonId|Jedinečné ID osoby v rámci modelu obličeje|
-      |personName|Jméno osoby|
-        
-    - Příklad: https: \/ /test.com/notifyme?projectName=MyProject&ID = 1234abcd&FaceID = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&person = Inigo_Montoya 
+[!INCLUDE [callback url](./includes/callback-url.md)]
 
 ##### <a name="other-considerations"></a>Další důležité informace
 
@@ -118,7 +98,7 @@ Cena závisí na vybrané možnosti indexování.
 
 #### <a name="priority"></a>upřednostněn
 
-Videa se indexují Video Indexer podle jejich priority. Pro určení priority indexu použijte parametr **priority** . Platné jsou následující hodnoty: **Nízká** , **normální** (výchozí) a **Vysoká**.
+Videa se indexují Video Indexer podle jejich priority. Pro určení priority indexu použijte parametr **priority** . Platné jsou následující hodnoty: **Nízká**, **normální** (výchozí) a **Vysoká**.
 
 Parametr **priority** se podporuje jenom pro placené účty.
 
@@ -337,7 +317,7 @@ public class AccountContractSlim
 
 Operace Upload může vrátit kódy stavu uvedené v následující tabulce.
 
-|Stavový kód|ErrorType (v textu odpovědi)|Popis|
+|Stavový kód|ErrorType (v textu odpovědi)|Description|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|V daném účtu už probíhá zpracování stejného videa.|
 |400|VIDEO_ALREADY_FAILED|V daném účtu se méně než před 2 hodinami nepodařilo zpracovat stejné video. Klienti rozhraní API by měli před dalším nahráním videa vyčkat minimálně 2 hodiny.|

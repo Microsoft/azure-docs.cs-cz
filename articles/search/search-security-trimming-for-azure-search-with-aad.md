@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 06/04/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 87337cf22bdb388c5873a2811bb9913c3e7f4d4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019772"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994957"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Filtry zabezpečení pro oříznutí výsledků Kognitivní hledání Azure pomocí identit služby Active Directory
 
@@ -46,7 +46,7 @@ Tento krok integruje vaši aplikaci s AAD pro účely přijímání přihlášen
 1. Přejít na aplikaci na [**portál pro registraci aplikací**](https://apps.dev.microsoft.com)  >   **Converged app**  >  **Přidat aplikaci**
 2. Zadejte název aplikace a pak klikněte na **vytvořit**. 
 3. Na stránce Moje aplikace vyberte svou nově registrovanou aplikaci.
-4. Na stránce pro registraci aplikace > **platformy**  >  **Přidat platformu**vyberte **webové rozhraní API**.
+4. Na stránce pro registraci aplikace > **platformy**  >  **Přidat platformu** vyberte **webové rozhraní API**.
 5. Pořád na stránce registrace aplikace otevřete > **Microsoft Graph oprávnění**  >  **Přidat**.
 6. V části vybrat oprávnění přidejte následující delegovaná oprávnění a pak klikněte na **OK**:
 

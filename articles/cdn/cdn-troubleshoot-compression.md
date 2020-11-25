@@ -15,11 +15,11 @@ ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: f49af1488a0c044639a72fc2ea52ba0a47727a24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89433666"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996147"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Poradce při potížích s kompresí souborů CDN
 Tento článek vám pomůže při řešení potíží s [kompresí souborů CDN](cdn-improve-performance.md).
@@ -30,7 +30,7 @@ Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto č
 Komprese pro koncový bod je povolená, ale soubory se vrací nekomprimované.
 
 > [!TIP]
-> Chcete-li zjistit, zda jsou soubory vraceny zkomprimované, je třeba použít nástroj, jako je [Fiddler](https://www.telerik.com/fiddler) nebo [vývojářské nástroje](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)v prohlížeči.  Ověřte hlavičky odpovědí HTTP vrácené obsahem CDN uloženým v mezipaměti.  Pokud je hlavička s názvem `Content-Encoding` s hodnotou **gzip**, **bzip2**nebo **Deflate**, obsah se komprimuje.
+> Chcete-li zjistit, zda jsou soubory vraceny zkomprimované, je třeba použít nástroj, jako je [Fiddler](https://www.telerik.com/fiddler) nebo [vývojářské nástroje](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)v prohlížeči.  Ověřte hlavičky odpovědí HTTP vrácené obsahem CDN uloženým v mezipaměti.  Pokud je hlavička s názvem `Content-Encoding` s hodnotou **gzip**, **bzip2** nebo **Deflate**, obsah se komprimuje.
 > 
 > ![Hlavička Content-Encoding](./media/cdn-troubleshoot-compression/cdn-content-header.png)
 > 
@@ -54,7 +54,7 @@ Existuje několik možných příčin, mezi které patří:
 Nejdřív byste měli provést rychlou správnosti kontrolu na žádosti.  Pomocí [vývojářských nástrojů](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) v prohlížeči můžete zobrazit požadavky, které se provedou.
 
 * Ověřte, že se požadavek posílá na adresu URL vašeho koncového bodu, `<endpointname>.azureedge.net` a ne na váš původ.
-* Ověřte, že požadavek obsahuje hlavičku **Accept-Encoding** a že hodnota pro tuto hlavičku obsahuje **gzip**, **Deflate**nebo **bzip2**.
+* Ověřte, že požadavek obsahuje hlavičku **Accept-Encoding** a že hodnota pro tuto hlavičku obsahuje **gzip**, **Deflate** nebo **bzip2**.
 
 > [!NOTE]
 > **Azure CDN ze profilů Akamai** podporují pouze kódování **gzip** .
@@ -65,7 +65,7 @@ Nejdřív byste měli provést rychlou správnosti kontrolu na žádosti.  Pomoc
 
 ### <a name="verify-compression-settings-standard-cdn-profiles"></a>Ověřit nastavení komprese (standardní profily CDN)
 > [!NOTE]
-> Tento krok platí jenom v případě, že váš profil CDN je **Azure CDN Standard od Microsoftu**, **Azure CDN Standard od Verizon**nebo **Azure CDN Standard od profilu Akamai** . 
+> Tento krok platí jenom v případě, že váš profil CDN je **Azure CDN Standard od Microsoftu**, **Azure CDN Standard od Verizon** nebo **Azure CDN Standard od profilu Akamai** . 
 > 
 > 
 

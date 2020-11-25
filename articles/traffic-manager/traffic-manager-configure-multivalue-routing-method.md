@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: duau
 ms.openlocfilehash: 85e088dda767a6f6c80ac0a9f6eed84e8802e5ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401040"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994923"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Konfigurace metody směrování s více hodnotami v Traffic Manager
 
@@ -31,14 +31,14 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 Vytvořte skupinu prostředků pro profil Traffic Manager.
 1. V levém podokně Azure Portal vyberte **skupiny prostředků**.
-2. V části **skupiny prostředků**v horní části stránky vyberte **Přidat**.
-3. Do **název skupiny prostředků**zadejte název *myResourceGroupTM1*. V případě **umístění skupiny prostředků**vyberte **východní USA**a pak vyberte **OK**.
+2. V části **skupiny prostředků** v horní části stránky vyberte **Přidat**.
+3. Do **název skupiny prostředků** zadejte název *myResourceGroupTM1*. V případě **umístění skupiny prostředků** vyberte **východní USA** a pak vyberte **OK**.
 
 ## <a name="create-a-traffic-manager-profile"></a>Vytvoření profilu Traffic Manageru
 Vytvořte profil Traffic Manager, který směruje provoz uživatele odesláním do koncového bodu s nejnižší latencí.
 
 1. V levém horním rohu obrazovky vyberte **vytvořit prostředek**  >  **sítě**  >  **Traffic Manager profil**  >  **vytvořit**.
-2. V části **vytvořit Traffic Manager profil**zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **vytvořit**:
+2. V části **vytvořit Traffic Manager profil** zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **vytvořit**:
     
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
@@ -66,7 +66,7 @@ Přidejte dvě IP adresy jako externí koncové body do profilu vícehodnotovéh
     | Plně kvalifikovaný název domény (FQDN) nebo IP adresa           | Zadejte veřejnou IP adresu koncového bodu, který chcete přidat do tohoto profilu Traffic Manager.                         |
     |        |           |
 
-4. Opakováním kroků 2 a 3 přidejte další koncový bod s názvem *myEndpoint2*, pro **plně kvalifikovaný název domény (FQDN) nebo IP**adresu zadejte veřejnou IP adresu druhého koncového bodu.
+4. Opakováním kroků 2 a 3 přidejte další koncový bod s názvem *myEndpoint2*, pro **plně kvalifikovaný název domény (FQDN) nebo IP** adresu zadejte veřejnou IP adresu druhého koncového bodu.
 5. Po přidání se oba koncové body zobrazí v části **Profil služby Traffic Manager** a jejich stav monitorování bude **Online**.
 
    ![Přidání koncového bodu služby Traffic Manager](./media/traffic-manager-multivalue-routing-method/add-endpoint.png)

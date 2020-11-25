@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
 ms.openlocfilehash: f76d28018fdf55314593dabc44ef1e9a1dab9494
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403122"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995093"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Postup aktivace složitých akcí s výstrahami Azure Monitor
 
@@ -37,9 +37,9 @@ Postup je podobný, pokud chcete, aby aplikace logiky prováděla jinou akci.
 
 1.  V Azure Portal v levém horním rohu vyberte **vytvořit prostředek** .
 
-2.  Vyhledejte a vyberte **Aplikace logiky**a pak vyberte **vytvořit**.
+2.  Vyhledejte a vyberte **Aplikace logiky** a pak vyberte **vytvořit**.
 
-3.  Zadejte **název**aplikace logiky, vyberte **skupinu prostředků**a tak dále.
+3.  Zadejte **název** aplikace logiky, vyberte **skupinu prostředků** a tak dále.
 
     ![Vytvoření aplikace logiky](media/action-groups-logic-app/create-logic-app-dialog.png "Vytvoření aplikace logiky")
 
@@ -126,7 +126,7 @@ Postup je podobný, pokud chcete, aby aplikace logiky prováděla jinou akci.
 
     ![Akce Microsoft Teams: odeslání zprávy](media/action-groups-logic-app/teams-action-post-message.png "Akce Microsoft Teams: odeslání zprávy")
 
-14. V horní části **návrháře Logic Apps**vyberte **Uložit** a uložte svoji aplikaci logiky.
+14. V horní části **návrháře Logic Apps** vyberte **Uložit** a uložte svoji aplikaci logiky.
 
 15. Otevřete existující skupinu akcí a přidejte akci, která se odkazuje na aplikaci logiky. Pokud nemáte existující skupinu akcí, přečtěte si téma [Vytvoření a Správa skupin akcí v Azure Portal](./action-groups.md) k jeho vytvoření. Nezapomeňte uložit změny.
 

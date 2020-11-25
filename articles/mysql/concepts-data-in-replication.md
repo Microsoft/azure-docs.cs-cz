@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/7/2020
 ms.openlocfilehash: 99beddba470f73d6eadb448dfe1b77453ce6426d
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541585"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996215"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Replikovat data do Azure Database for MySQL
 
@@ -44,9 +44,9 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 - Pokud je na zdrojovém serveru povolený protokol SSL, ujistěte se, že je v uložené proceduře zahrnutý certifikát certifikační autority SSL zadaný pro tuto doménu `mysql.az_replication_change_master` . Podívejte se na následující [Příklady](./howto-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication) a `master_ssl_ca` parametr.
 - Zajistěte, aby byla IP adresa zdrojového serveru přidaná do pravidel brány firewall serveru repliky Azure Database for MySQL. Pomocí webu [Azure Portal](./howto-manage-firewall-using-portal.md) nebo [Azure CLI](./howto-manage-firewall-using-cli.md) aktualizujte pravidla brány firewall.
 - Ujistěte se, že počítač, který hostuje zdrojový server, umožňuje příchozí i odchozí provoz na portu 3306.
-- Ujistěte se, že zdrojový server má **veřejnou IP adresu** , služba DNS je veřejně přístupná nebo má plně kvalifikovaný název domény (FQDN).
+- Ujistěte se, že zdrojový server má **veřejnou IP adresu**, služba DNS je veřejně přístupná nebo má plně kvalifikovaný název domény (FQDN).
 
-### <a name="other"></a>Další
+### <a name="other"></a>Jiné
 - Replikace dat je podporovaná jenom v Pro obecné účely a paměťově optimalizované cenové úrovně.
 - Identifikátory globálních transakcí (GTID) se nepodporují.
 

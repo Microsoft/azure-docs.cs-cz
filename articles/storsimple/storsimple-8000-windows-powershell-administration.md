@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 65e9657c3948d8ce5883cd33ca8720f501352105
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950665"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995419"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Správa zařízení pomocí rozhraní Windows PowerShell pro StorSimple
 
@@ -50,7 +50,7 @@ Pokud se chcete připojit k rozhraní Windows PowerShellu z konzoly sériového 
 1. V dialogovém okně **rekonfigurace** výstupu vyberte v podokně **kategorie** možnost **klávesnice**.
 2. Ujistěte se, že jsou vybrány následující možnosti (při spuštění nové relace se jedná o výchozí nastavení).
    
-   | Položka klávesnice | Vybrat |
+   | Položka klávesnice | Vyberte |
    | --- | --- |
    | Klávesa Backspace |Ovládací prvek –? (127) |
    | Domovské a koncové klávesy |Standard |

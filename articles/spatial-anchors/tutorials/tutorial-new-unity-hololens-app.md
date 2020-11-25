@@ -1,39 +1,39 @@
 ---
 title: 'Kurz: vytvoření nové aplikace Unity pro HoloLens'
 description: V tomto kurzu se naučíte, jak vytvořit novou aplikaci pro HoloLens s využitím prostorových kotev Azure.
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 08/17/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e94ced70ad17286612328884d03d4d1253b7818b
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: ee0bf9b4ce009f37dd1931d4ed030defa24e7d38
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096534"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95996252"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Kurz: podrobné pokyny k vytvoření nové aplikace Unity pro HoloLens pomocí prostorových kotev Azure
 
 V tomto kurzu se dozvíte, jak vytvořit novou aplikaci Unity pro HoloLens pomocí prostorových kotev Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 
 1. Počítač se systémem Windows se sadou <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 +</a> nainstalovaný s úlohou **vývoje Univerzální platforma Windows** a komponentou **Windows 10 SDK (10.0.18362.0 nebo novější)** a <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a>.
 2. [Rozšíření Visual Studio/WinRT v jazyce C++](https://aka.ms/cppwinrt/vsix) pro Visual Studio by se mělo nainstalovat z [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
-3. Zařízení HoloLens s povoleným [vývojářským režimem](/windows/mixed-reality/using-visual-studio) . Tento článek vyžaduje zařízení HoloLens s [Windows 10 květen 2020 Update](/windows/mixed-reality/whats-new/release-notes-may-2020). Chcete-li provést aktualizaci na nejnovější verzi na HoloLens, otevřete aplikaci **Nastavení** , pokračujte na **aktualizace & zabezpečení**a pak vyberte tlačítko **Vyhledat aktualizace** .
+3. Zařízení HoloLens s povoleným [vývojářským režimem](/windows/mixed-reality/using-visual-studio) . Tento článek vyžaduje zařízení HoloLens s [Windows 10 květen 2020 Update](/windows/mixed-reality/whats-new/release-notes-may-2020). Chcete-li provést aktualizaci na nejnovější verzi na HoloLens, otevřete aplikaci **Nastavení** , pokračujte na **aktualizace & zabezpečení** a pak vyberte tlačítko **Vyhledat aktualizace** .
 
 ## <a name="getting-started"></a>Začínáme
 
 Nejdřív nastavíme náš projekt a scénu Unity:
 1. Spusťte Unity.
-2. Vyberte **Nové**.
+2. Vyberte možnost pro **novou** položku.
 4. Ujistěte se, že je vybraná možnost **3D** .
-5. Pojmenujte projekt a zadejte **umístění**pro uložení.
+5. Pojmenujte projekt a zadejte **umístění** pro uložení.
 6. Vyberte **Vytvořit projekt**.
 7. Uložit prázdnou výchozí scénu do nového souboru pomocí: **soubor**  >  **Uložit jako**.
 8. Pojmenujte novou **scénu** a stiskněte tlačítko **Uložit** .
@@ -48,7 +48,7 @@ Nejdřív nastavíme nastavení kvality pro naši aplikaci.
 
 Musíme nakonfigurovat naši aplikaci Unity pomocí moderního zobrazení, nikoli 2D zobrazení. Moderní zobrazení můžeme vytvořit tak, že povolíte podporu virtuální reality pro Unity cílící na sadu Windows 10 SDK.
 1. Přejít na **Upravit**  >  **nastavení projektu**  >  **Player**.
-2. Na **panelu Inspektor** pro **nastavení přehrávače**vyberte ikonu **Windows** .
+2. Na **panelu Inspektor** pro **nastavení přehrávače** vyberte ikonu **Windows** .
 3. Rozbalte skupinu **Nastavení XR** .
 4. V části **vykreslování** zaškrtněte políčko **podporované virtuálními realitami** a přidejte nový seznam **sad SDK pro virtuální realitu** .
 5. Ověřte, že se v seznamu zobrazuje **Windows Mixed reality** . Pokud ne, vyberte **+** tlačítko v dolní části seznamu a zvolte **Windows Mixed reality**.
@@ -58,17 +58,17 @@ Musíme nakonfigurovat naši aplikaci Unity pomocí moderního zobrazení, nikol
 
 **Ověřit konfiguraci skriptovacího back-endu**
 1. Přejít na **Upravit**  >  **nastavení projektu**  >  **přehrávač** (můžete mít stále otevřený **přehrávač** z předchozího kroku).
-2. Na **panelu Inspektor** pro **nastavení přehrávače**vyberte ikonu **Windows Store** .
+2. Na **panelu Inspektor** pro **nastavení přehrávače** vyberte ikonu **Windows Store** .
 3. V části **Další konfigurace nastavení** se ujistěte, že je pro **skriptování back-end** nastavená možnost **IL2CPP**.
 
 **Nastavit možnosti**
 1. Přejít na **Upravit**  >  **nastavení projektu**  >  **přehrávač** (můžete mít stále otevřený **přehrávač** z předchozího kroku).
-2. Na **panelu Inspektor** pro **nastavení přehrávače**vyberte ikonu **Windows Store** .
+2. Na **panelu Inspektor** pro **nastavení přehrávače** vyberte ikonu **Windows Store** .
 3. V části konfigurace **Nastavení publikování** ověřte **InternetClientServer** a **SpatialPerception**.
 
 **Nastavení hlavní virtuální kamery**
-1. Na **panelu hierarchie**vyberte **hlavní kamera**.
-2. V **inspektoru**nastavte jeho pozici transformace na **0, 0, 0**.
+1. Na **panelu hierarchie** vyberte **hlavní kamera**.
+2. V **inspektoru** nastavte jeho pozici transformace na **0, 0, 0**.
 3. Vyhledejte vlastnost **Vymazat příznaky** a změňte rozevírací seznam z **Skybox** na **Solid Color**.
 4. Kliknutím na tlačítko v poli **pozadí** otevřete výběr barvy.
 5. Nastavte **R, G, B a** a na **0**.
@@ -76,13 +76,13 @@ Musíme nakonfigurovat naši aplikaci Unity pomocí moderního zobrazení, nikol
 
 **Vytvoření našeho skriptu**
 1. V podokně **projekt** vytvořte ve složce **assets (prostředky** ) novou složku a **skripty**.
-2. Klikněte pravým tlačítkem na složku a vyberte **vytvořit >**, **skript C#**. **AzureSpatialAnchorsScript**název.
+2. Klikněte pravým tlačítkem na složku a vyberte **vytvořit >**, **skript C#**. **AzureSpatialAnchorsScript** název.
 3. Přejít na **GameObject**  ->  **vytvořit prázdné**
 4. Vyberte ho a v **inspektoru** ho přejmenujte z **GameObject** na **MixedRealityCloud**. Vyberte **Přidat komponentu** a vyhledejte a přidejte **AzureSpatialAnchorsScript**.
 
 **Vytvoření Prefab koule**
 1. Přejít na **GameObject**  ->  **3D objekt**  ->  **sphere**.
-2. V **inspektoru**nastavte jeho měřítko na **0,25, 0,25, 0,25**.
+2. V **inspektoru** nastavte jeho měřítko na **0,25, 0,25, 0,25**.
 3. V podokně **hierarchie** Najděte objekt **sphere** . Klikněte na něj a přetáhněte ho do složky **assets (prostředky** ) v podokně **projekt** .
 4. Klikněte pravým tlačítkem a **odstraňte** původní oblast, kterou jste vytvořili v podokně **hierarchie** .
 
@@ -103,12 +103,12 @@ Pak do své třídy přidejte následující proměnné členů `AzureSpatialAnc
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=26-47,53-57,65-84)]
 
 Než budeme pokračovat, musíme nastavit sphere Prefab, kterou jsme vytvořili v naší členské proměnné spherePrefab. Vraťte se zpět do **Unity**.
-1. V části **Unity**vyberte objekt **MixedRealityCloud** v podokně **hierarchie** .
+1. V části **Unity** vyberte objekt **MixedRealityCloud** v podokně **hierarchie** .
 2. Klikněte na Prefab **koule** , kterou jste uložili v podokně **projektu** . Přetáhněte **koulí** , na kterou jste klikli, do oblasti **sphere Prefab** v části **skriptové kotvy Azure (skript)** v podokně **inspektor** .
 
 Nyní byste měli mít nastavenou **koule** jako Prefab na vašem skriptu. Sestavte z **Unity** a pak znovu otevřete výsledné řešení sady **Visual Studio** , stejně jako jste [to právě zkoušeli](#trying-it-out).
 
-V **aplikaci Visual Studio**otevřete `AzureSpatialAnchorsScript.cs` znovu. Do své metody přidejte následující kód `Start()` . Tento kód se zachytí `GestureRecognizer` , který se zavolá, `HandleTap` když rozpozná vzduchový klepnutí.
+V **aplikaci Visual Studio** otevřete `AzureSpatialAnchorsScript.cs` znovu. Do své metody přidejte následující kód `Start()` . Tento kód se zachytí `GestureRecognizer` , který se zavolá, `HandleTap` když rozpozná vzduchový klepnutí.
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=86-95,98&highlight=4-10)]
 

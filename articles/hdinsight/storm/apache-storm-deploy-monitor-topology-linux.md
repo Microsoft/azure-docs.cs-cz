@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: 9b190b5847c7412344e2bb09fd4000985816219b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085731"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995586"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Nasazení a Správa topologií Apache Storm v Azure HDInsight
 
@@ -23,7 +23,7 @@ V tomto dokumentu se naučíte základy správy a monitorování [Apache Stormch
 
 * Cluster Apache Storm v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) **a výběr funkce** pro **typ clusteru**.
 
-* Volitelné Znalost Secure Shell (SSH) a zabezpečeného kopírování (SCP). Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Volitelné Znalost Secure Shell (SSH) a zabezpečeného kopírování (SCP). Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Volitelné Visual Studio, Azure SDK 2.5.1 nebo novější a nástroje pro Data Lake pro Visual Studio. Další informace naleznete v tématu [Apache Hadoop & Visual Studio Data Lake Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
@@ -44,13 +44,13 @@ Pomocí nástrojů Data Lake pro Visual Studio můžete odesílat do clusteru s 
 
 1. V okně **vytvořit nový projekt** vyberte vyhledávací pole a zadejte `Storm` . Pak ze seznamu výsledek zvolte možnost převést **vzorek** a vyberte **Další**.
 
-1. V okně **Konfigurovat nový projekt** zadejte **název projektu**a přejděte na nebo vytvořte **umístění** , do kterého chcete nový projekt uložit. Potom vyberte **Vytvořit**.
+1. V okně **Konfigurovat nový projekt** zadejte **název projektu** a přejděte na nebo vytvořte **umístění** , do kterého chcete nový projekt uložit. Potom vyberte **Vytvořit**.
 
     ![Konfigurace nového okna projektu, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
-1. Z **Průzkumník serveru**klikněte pravým tlačítkem myši na **Azure** a vyberte **připojit se k Microsoft Azure předplatného...** a dokončete proces přihlašování.
+1. Z **Průzkumník serveru** klikněte pravým tlačítkem myši na **Azure** a vyberte **připojit se k Microsoft Azure předplatného...** a dokončete proces přihlašování.
 
-1. Z **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte **Odeslat pro**zaplavení v HDInsight.
+1. Z **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte **Odeslat pro** zaplavení v HDInsight.
 
     > [!NOTE]  
     > Pokud se zobrazí výzva, zadejte přihlašovací údaje pro vaše předplatné Azure. Pokud máte více než jedno předplatné, přihlaste se k počítači, který obsahuje vaše navýšení na clusteru HDInsight.
@@ -89,7 +89,7 @@ Při odesílání topologie pomocí sady Visual Studio se zobrazí okno **zobraz
 ![Monitorování topologie, okna zobrazení topologií s více topologiemi, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
 
 > [!NOTE]  
-> **Topologie** **přePrůzkumník serveru**můžete zobrazit také z. Rozbalte **Azure**  >  **HDInsight**, klikněte pravým tlačítkem na cluster HDInsight a pak vyberte **Zobrazit topologie**přeplavování.
+> **Topologie** **přePrůzkumník serveru** můžete zobrazit také z. Rozbalte **Azure**  >  **HDInsight**, klikněte pravým tlačítkem na cluster HDInsight a pak vyberte **Zobrazit topologie** přeplavování.
 
 Vyberte tvar pro spoutů nebo šrouby pro zobrazení informací o těchto součástech. Pro vybranou položku se zobrazí popisek s informacemi o komponentě.
 
@@ -211,7 +211,7 @@ V části **Akce topologie** můžete vybrat následující tlačítka k provede
 | Deaktivovat | Pozastaví běžící topologii. |
 | Obnovení rovnováhy | Upravuje paralelismus topologie. Po změně počtu uzlů v clusteru byste měli znovu vyrovnat běžící topologie. Tato operace umožňuje, aby topologie upravila paralelismus, aby vyrovnala dodatečné nebo omezené množství uzlů v clusteru.<br/><br/>Další informace najdete v tématu <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Princip paralelismu Apache Storm topologie</a>.
 | Kill | Ukončí topologii nečinnosti po zadaném časovém limitu. |
-| Ladit | Spustí ladicí relaci pro spuštěnou topologii. |
+| Ladění | Spustí ladicí relaci pro spuštěnou topologii. |
 | Zastavit ladění | Ukončí relaci ladění pro spuštěnou topologii. |
 | Změnit úroveň protokolu | Upraví úroveň protokolu ladění. |
 
@@ -226,9 +226,9 @@ Výběr Spout z částí **spoutů** nebo **šrouby** zobrazí následující in
 | Statistiky Spout nebo šroubů | Statistika Spout nebo šroubu Chcete-li nastavit časový rámec pro položku v této části, vyberte její odkaz ve sloupci **okno** . |
 | (Pouze šroub)<br/>Vstupní statistiky *(časový rámec)* | Informace o vstupních streamech spotřebovaných šroubem |
 | Statistiky výstupu *(časový rámec)* | Informace o datových proudech emitovaných Spout nebo šroubem. |
-| Profilace a ladění | Ovládací prvky pro profilaci a ladění komponent na této stránce. Můžete nastavit hodnotu **stav/časový limit (minuty)** a můžete vybrat tlačítka pro **JStack**, **restartovat pracovní proces**a **haldu**. |
+| Profilace a ladění | Ovládací prvky pro profilaci a ladění komponent na této stránce. Můžete nastavit hodnotu **stav/časový limit (minuty)** a můžete vybrat tlačítka pro **JStack**, **restartovat pracovní proces** a **haldu**. |
 | Prováděcí moduly *(časový rámec)* | Informace o instancích Spout nebo šroubu. Chcete-li zobrazit protokol diagnostických informací vytvořených pro tuto instanci, vyberte položku **port** pro konkrétního prováděcího modulu. Pracovní prostředky přidružené ke konkrétnímu vykonavateli můžete zobrazit také tak, že vyberete jeho odkaz ve sloupci **hostitel** . |
-| chyby | Jakékoli informace o chybě pro Spout nebo šroub. |
+| Chyby | Jakékoli informace o chybě pro Spout nebo šroub. |
 
 Stránka souhrnu šroubového šroubu bude vypadat podobně jako tato webová stránka:
 

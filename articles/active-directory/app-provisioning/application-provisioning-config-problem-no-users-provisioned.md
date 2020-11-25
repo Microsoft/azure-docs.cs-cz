@@ -12,11 +12,11 @@ ms.date: 04/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 21f16a0b9c8b3b603735520d5dcdbf61601e1480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706497"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994821"
 ---
 # <a name="no-users-are-being-provisioned"></a>Neprobíhá zřizování žádných uživatelů 
 >[!NOTE]
@@ -42,7 +42,7 @@ Níže je uveden seznam obecných oblastí problémů, na které můžete přej�
 - [Zřizování protokolů – uživatelé se přeskočili a nezřídili, i když jsou přiřazeni.](#provisioning-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>Služba zřizování se nezdá spustit
-Pokud nastavíte **stav zřizování** **v části** **Azure Active Directory &gt; podnikové aplikace Azure Portal &gt; \[ název aplikace \] &gt; ** . Po dalším opětovném načtení se na této stránce nezobrazují žádné další podrobnosti o stavu, je ale nejspíš, že služba běží, ale ještě nedokončila počáteční cyklus. Zkontrolujte výše popsané **protokoly zřizování (Preview)** , abyste zjistili, jaké operace služba provádí, a pokud dojde k chybám.
+Pokud nastavíte **stav zřizování** **v části** **Azure Active Directory &gt; podnikové aplikace Azure Portal &gt; \[ název aplikace \] &gt;** . Po dalším opětovném načtení se na této stránce nezobrazují žádné další podrobnosti o stavu, je ale nejspíš, že služba běží, ale ještě nedokončila počáteční cyklus. Zkontrolujte výše popsané **protokoly zřizování (Preview)** , abyste zjistili, jaké operace služba provádí, a pokud dojde k chybám.
 
 >[!NOTE]
 >Počáteční cyklus může trvat až 20 minut až několik hodin, v závislosti na velikosti adresáře Azure AD a počtu uživatelů v oboru pro zřizování. Následná synchronizace po počátečním cyklu, protože služba zřizování ukládá meze, které představují stav obou systémů po počátečním cyklu. Počáteční cyklus vylepšuje výkon následných synchronizací.

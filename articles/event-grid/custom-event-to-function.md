@@ -4,11 +4,11 @@ description: 'Rychlý Start: pomocí Azure Event Grid a Azure CLI nebo portálu 
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.openlocfilehash: aea52bcaa94d6f288e86e44e1a0f294796d8e4a3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91324384"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996337"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Rychlý Start: směrování vlastních událostí do funkce Azure pomocí Event Grid
 
@@ -26,7 +26,7 @@ Před přihlášením k odběru vlastního tématu vytvořte funkci pro zpracov�
         :::image type="content" source="./media/custom-event-to-function/function-event-grid-trigger.png" alt-text="Vybrat aktivační událost Event Grid":::
 3. Na stránce **Nová funkce** zadejte název funkce a vyberte **vytvořit funkci**.
 
-    :::image type="content" source="./media/custom-event-to-function/new-function-page.png" alt-text="Vybrat aktivační událost Event Grid":::
+    :::image type="content" source="./media/custom-event-to-function/new-function-page.png" alt-text="Nová stránka funkce":::
 4. Pomocí stránky **Code + test** zobrazte existující kód funkce a aktualizujte ji. 
 
 [!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
@@ -36,7 +36,7 @@ Před přihlášením k odběru vlastního tématu vytvořte funkci pro zpracov�
 Téma Event Gridu poskytuje uživatelsky definovaný koncový bod, do kterého odesíláte události. 
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
-2. V levém navigačním panelu vyberte **všechny služby** , vyhledejte **Event Grid**a vyberte **Event Grid témata**. 
+2. V levém navigačním panelu vyberte **všechny služby** , vyhledejte **Event Grid** a vyberte **Event Grid témata**. 
 
     ![Vybrat Event Grid témata](./media/custom-event-to-function/select-event-grid-topics.png)
 3. Na stránce **Event Grid témata** vyberte **+ Přidat** na panelu nástrojů. 
@@ -46,7 +46,7 @@ Téma Event Gridu poskytuje uživatelsky definovaný koncový bod, do kterého o
 4. Na stránce **vytvořit téma** postupujte podle následujících kroků:
 
     1. Zadejte jedinečný **název** vlastního tématu. Název tématu musí být jedinečný, protože je reprezentován položkou DNS. Nepoužívejte název zobrazený na obrázku. Místo toho vytvořte vlastní název – musí mít 3-50 znaků a obsahovat pouze hodnoty a-z, A-Z, 0-9 a "-".
-    2. Vyberte své **předplatné**Azure.
+    2. Vyberte své **předplatné** Azure.
     3. Vyberte stejnou skupinu prostředků z předchozích kroků.
     4. Vyberte **umístění** tématu Event Grid.
     5. Pro pole **schéma události** ponechte výchozí hodnotu **Event Grid Schema** . 
@@ -76,7 +76,7 @@ K odběru tématu Event Gridu se přihlašujete, aby služba Event Grid věděla
 
 2. Na stránce **vytvořit odběr události** použijte následující postup:
     1. Zadejte **název** odběru události.
-    3. Jako **Typ koncového bodu**vyberte **Azure Function** . 
+    3. Jako **Typ koncového bodu** vyberte **Azure Function** . 
     4. Zvolte **Vybrat koncový bod**. 
 
        ![Zadání hodnot pro odběr události](./media/custom-event-to-function/provide-subscription-values.png)
@@ -86,9 +86,9 @@ K odběru tématu Event Gridu se přihlašujete, aby služba Event Grid věděla
        ![Zadání adresy URL koncového bodu](./media/custom-event-to-function/provide-endpoint.png)
     6. Tento krok je nepovinný, ale doporučuje se pro produkční scénáře. Na stránce **vytvořit odběr události** přepněte na kartu **Pokročilé funkce** a nastavte hodnoty **maximálního počtu událostí na dávku** a **upřednostňovanou velikost dávky v kilobajtech**. 
     
-        Dávkování vám může poskytnout vysokou propustnost. Pro **Maximum událostí na jednu dávku**nastavte maximální počet událostí, které bude předplatné zahrnovat do dávky. Upřednostňovaná velikost dávky nastaví upřednostňovanou horní mez velikosti dávky v kilobajtech, ale může být překročena, pokud je jediná událost větší než tato prahová hodnota.
+        Dávkování vám může poskytnout vysokou propustnost. Pro **Maximum událostí na jednu dávku** nastavte maximální počet událostí, které bude předplatné zahrnovat do dávky. Upřednostňovaná velikost dávky nastaví upřednostňovanou horní mez velikosti dávky v kilobajtech, ale může být překročena, pokud je jediná událost větší než tato prahová hodnota.
     
-        :::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="Vybrat aktivační událost Event Grid":::
+        :::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="Povolit dávkování":::
     6. Na stránce **vytvořit odběr události** vyberte **vytvořit**.
 
 ## <a name="send-an-event-to-your-topic"></a>Odeslání události do tématu

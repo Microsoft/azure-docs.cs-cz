@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: e6acea560c3a02420b15aff84475ab58e642116c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078251"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995960"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Nejčastější dotazy k akcelerátoru řešení propojené továrny
 
@@ -82,7 +82,7 @@ Pokud jste řešení nasadili z www.azureiotsolutions.com, nemůžete se přihl�
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
         ```
 
-    * Spusťte příkaz `./startsimulation`.
+    * Spusťte `./startsimulation`.
 
 ### <a name="how-do-i-update-the-simulation-in-the-vm"></a>Návody aktualizovat simulaci na virtuálním počítači?
 

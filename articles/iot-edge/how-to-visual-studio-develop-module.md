@@ -9,11 +9,11 @@ ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.openlocfilehash: 1883ffdff20bbbef8efec1440854f01a21a281dc
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045716"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994515"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Použití sady Visual Studio 2019 k vývoji a ladění modulů pro Azure IoT Edge
 
@@ -28,7 +28,7 @@ Nástroje pro Azure IoT Edge pro Visual Studio přináší následující výhod
 
 V tomto článku se dozvíte, jak pomocí nástrojů pro Azure IoT Edge pro Visual Studio 2019 vyvíjet moduly IoT Edge. Naučíte se také, jak nasadit projekt do zařízení Azure IoT Edge. V současné době poskytuje Visual Studio 2019 podporu pro moduly napsané v jazyce C a C#. Podporované architektury zařízení jsou Windows x64 a Linux x64 nebo ARM32. Další informace o podporovaných operačních systémech, jazycích a architekturách najdete v tématu [Podpora jazyků a architektur](module-development.md#language-and-architecture-support).
   
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že používáte počítač nebo virtuální počítač s Windows jako vývojový počítač. V počítačích s Windows můžete vyvíjet moduly pro Windows nebo Linux. Pro vývoj modulů Windows použijte počítač s Windows, na kterém běží verze 1809/Build 17763 nebo novější. Pokud chcete vyvíjet moduly pro Linux, použijte počítač s Windows, který splňuje [požadavky pro Docker Desktop](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install).
 
@@ -98,7 +98,7 @@ Po přípravě sady Visual Studio 2019 budete potřebovat také následující n
 
    ![Vytvoření nového projektu](./media/how-to-visual-studio-develop-csharp-module/create-new.png)
 
-1. V okně **přidat IoT Edge aplikaci a modul** vyberte buď **modul C#** , nebo **modul C** a pak zadejte název modulu a úložiště imagí modulu. Visual Studio automaticky vyplní název modulu pomocí **localhost: 5000/<název \> vašeho modulu**. Nahraďte je vlastními informacemi v registru. Pokud pro testování používáte místní registr Docker, pak je **localhost** v pořádku. Pokud používáte Azure Container Registry, použijte přihlašovací server z nastavení registru. Přihlašovací server vypadá jako ** _\<registry name\>_ . azurecr.IO**. Nahradí jenom část **localhost: 5000** řetězce, aby konečný výsledek vypadal jako ** \<*registry name*\> _\<your module name\>_ . azurecr.IO/**. Výchozí název modulu je **IotEdgeModule1**
+1. V okně **přidat IoT Edge aplikaci a modul** vyberte buď **modul C#** , nebo **modul C** a pak zadejte název modulu a úložiště imagí modulu. Visual Studio automaticky vyplní název modulu pomocí **localhost: 5000/<název \> vašeho modulu**. Nahraďte je vlastními informacemi v registru. Pokud pro testování používáte místní registr Docker, pak je **localhost** v pořádku. Pokud používáte Azure Container Registry, použijte přihlašovací server z nastavení registru. Přihlašovací server vypadá jako **_\<registry name\>_ . azurecr.IO**. Nahradí jenom část **localhost: 5000** řetězce, aby konečný výsledek vypadal jako **\<*registry name*\> _\<your module name\>_ . azurecr.IO/**. Výchozí název modulu je **IotEdgeModule1**
 
    ![Přidat aplikaci a modul](./media/how-to-visual-studio-develop-csharp-module/add-application-and-module.png)
 
@@ -135,7 +135,7 @@ Až budete připraveni přizpůsobit šablonu modulu vlastním kódem, použijte
 
 Obvykle budete chtít otestovat a ladit každý modul před jeho spuštěním v rámci celého řešení s více moduly.
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na **IotEdgeModule1** a v místní nabídce vyberte **nastavit jako spouštěný projekt** .
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na **IotEdgeModule1** a v místní nabídce vyberte **nastavit jako spouštěný projekt** .
 
    ![Nastavit spouštěcí projekt](./media/how-to-visual-studio-develop-csharp-module/module-start-up-project.png)
 
@@ -166,7 +166,7 @@ Obvykle budete chtít otestovat a ladit každý modul před jeho spuštěním v 
 
 Až dokončíte vývoj jednoho modulu, můžete chtít spustit a ladit celé řešení s několika moduly.
 
-1. V **Průzkumník řešení**přidejte do řešení druhý modul tak, že kliknete pravým tlačítkem na **AzureIoTEdgeApp1** a vyberete **Přidat**  >  **Nový IoT Edge modul**. Výchozí název druhého modulu je **IotEdgeModule2** a bude fungovat jako jiný modul kanálu.
+1. V **Průzkumník řešení** přidejte do řešení druhý modul tak, že kliknete pravým tlačítkem na **AzureIoTEdgeApp1** a vyberete **Přidat**  >  **Nový IoT Edge modul**. Výchozí název druhého modulu je **IotEdgeModule2** a bude fungovat jako jiný modul kanálu.
 
 1. Otevřete tento soubor `deployment.template.json` a uvidíte, že se v části **moduly** přidala **IotEdgeModule2** . V části **trasy** nahraďte následujícím. Pokud jste přizpůsobili názvy modulů, ujistěte se, že aktualizujete tyto názvy tak, aby odpovídaly.
 
@@ -192,7 +192,7 @@ Až dokončíte vývoj jednoho modulu, můžete chtít spustit a ladit celé ře
 1. Ujistěte se, že **AzureIoTEdgeApp1** je spouštěcí projekt. Vyberte buď **ladění** , nebo **vydání** jako konfiguraci pro sestavení imagí modulu.
 
     > [!NOTE]
-    > Při výběru možnosti **ladit**aplikace Visual Studio používá `Dockerfile.(amd64|windows-amd64).debug` k sestavení imagí Docker. To zahrnuje ladicí program příkazového řádku .NET Core VSDBG do image kontejneru při jeho vytváření. Pro moduly IoT Edge připravené pro produkční prostředí doporučujeme použít konfiguraci **vydané verze** , která se používá `Dockerfile.(amd64|windows-amd64)` bez VSDBG.
+    > Při výběru možnosti **ladit** aplikace Visual Studio používá `Dockerfile.(amd64|windows-amd64).debug` k sestavení imagí Docker. To zahrnuje ladicí program příkazového řádku .NET Core VSDBG do image kontejneru při jeho vytváření. Pro moduly IoT Edge připravené pro produkční prostředí doporučujeme použít konfiguraci **vydané verze** , která se používá `Dockerfile.(amd64|windows-amd64)` bez VSDBG.
 
 1. Pokud používáte privátní registr, jako je Azure Container Registry (ACR), přihlaste se k němu pomocí následujícího příkazu Docker.  Uživatelské jméno a heslo můžete získat ze stránky **přístupové klávesy** v registru v Azure Portal. Pokud používáte místní registr, můžete [Spustit místní registr](https://docs.docker.com/registry/deploying/#run-a-local-registry).
 
@@ -216,15 +216,15 @@ Až dokončíte vývoj jednoho modulu, můžete chtít spustit a ladit celé ře
           }
     ```
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem na **AzureIoTEdgeApp1** a vyberte **sestavování a nabízených IoT Edge modulů** pro sestavení a vložení image Docker pro každý modul.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem na **AzureIoTEdgeApp1** a vyberte **sestavování a nabízených IoT Edge modulů** pro sestavení a vložení image Docker pro každý modul.
 
 ## <a name="deploy-the-solution"></a>Nasazení řešení
 
 V článku Rychlý start, pomocí kterého jste nastavili své zařízení IoT Edge, jste nasadili modul pomocí webu Azure Portal. Moduly můžete nasadit také pomocí Průzkumníka cloudu pro Visual Studio. Už máte připravený manifest nasazení pro váš scénář, `deployment.json` soubor a vše, co je potřeba udělat, je vybrat zařízení pro příjem nasazení.
 
-1. Kliknutím na **Zobrazit**Průzkumníka cloudu otevřete **Průzkumníka cloudu**  >  **Cloud Explorer**. Ujistěte se, že jste přihlášeni k aplikaci Visual Studio 2019.
+1. Kliknutím na **Zobrazit** Průzkumníka cloudu otevřete **Průzkumníka cloudu**  >  **Cloud Explorer**. Ujistěte se, že jste přihlášeni k aplikaci Visual Studio 2019.
 
-1. V **Průzkumníku cloudu**rozbalte své předplatné, najděte IoT Hub Azure a Azure IoT Edge zařízení, které chcete nasadit.
+1. V **Průzkumníku cloudu** rozbalte své předplatné, najděte IoT Hub Azure a Azure IoT Edge zařízení, které chcete nasadit.
 
 1. Klikněte pravým tlačítkem na zařízení IoT Edge a vytvořte pro něj nasazení. Přejděte k manifestu nasazení nakonfigurovanému pro vaši platformu ve složce **config** v řešení aplikace Visual Studio, jako je například `deployment.arm32v7.json` .
 

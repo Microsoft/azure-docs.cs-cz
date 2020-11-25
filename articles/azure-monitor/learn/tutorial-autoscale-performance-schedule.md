@@ -9,11 +9,11 @@ ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
 ms.openlocfilehash: 8853a153450a07105ed4bac13de0da6cea95ce2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356345"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995841"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Vytvoření nastavení automatického škálování prostředků Azure na základě údajů o výkonu nebo časového plánu
 
@@ -72,7 +72,7 @@ Následujících několik kroků vás provede vyplněním obrazovky automatické
 
 4. V části **Limity instancí** nastavte **Minimum** na hodnotu 1, **Maximum** na hodnotu 2 a **Výchozí** na hodnotu 1. Toto nastavení zajistí, aby tento profil neprováděl automatické škálování plánu služby na méně než 1 instanci nebo více než 2 instance. Pokud profil nemá dostatek dat pro provedení rozhodnutí, použije výchozí počet instancí (v tomto případě 1).
 
-5. Jako **plán**vyberte opakovat konkrétní dny.
+5. Jako **plán** vyberte opakovat konkrétní dny.
 
 6. Nastavte profil tak, aby se opakoval od pondělí do pátku od 9:00 PST do 18:00 PST. Toto nastavení zajistí, že tento profil bude aktivní a použitelný jen od 9:00 do 18 00 od pondělí do pátku. Mimo tuto dobu se pro nastavení automatického škálování používá profil Výchozí.
 

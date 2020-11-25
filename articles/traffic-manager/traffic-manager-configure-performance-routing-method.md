@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: duau
 ms.openlocfilehash: 46d71a38b79f449084f7353527f2dfb05d5b92a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401023"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994906"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>Konfigurace metody směrování provozu výkonu
 
@@ -28,10 +28,10 @@ Metoda směrování provozu umožňuje směrovat provoz do koncového bodu s nej
 1. V prohlížeči se přihlaste k webu [Azure Portal](https://portal.azure.com). Pokud ještě účet nemáte, můžete si zaregistrovat [zkušební verzi na měsíc zdarma](https://azure.microsoft.com/free/). 
 2. Na panelu hledání na portálu vyhledejte **Traffic Manager profily** a potom klikněte na název profilu, pro který chcete nakonfigurovat metodu směrování.
 3. V okně **profil Traffic Manager** ověřte, zda jsou k dispozici jak cloudové služby, tak i weby, které chcete zahrnout do vaší konfigurace.
-4. V části **Nastavení** klikněte na možnost **Konfigurace**a v okně **Konfigurace** proveďte následující kroky:
-    1. V případě metody **směrování provozu**vyberte v možnosti **Směrování** možnost **výkon**.
+4. V části **Nastavení** klikněte na možnost **Konfigurace** a v okně **Konfigurace** proveďte následující kroky:
+    1. V případě metody **směrování provozu** vyberte v možnosti **Směrování** možnost **výkon**.
     2. **Nastavení monitorování koncového bodu** nastavte u všech koncových bodů v tomto profilu stejným způsobem:
-        1. Vyberte odpovídající **protokol**a zadejte číslo **portu** . 
+        1. Vyberte odpovídající **protokol** a zadejte číslo **portu** . 
         2. Jako **cestu** zadejte lomítko */* . Chcete-li monitorovat koncové body, je nutné zadat cestu a název souboru. Lomítko "/" je platná položka relativní cesty a předpokládá, že se soubor nachází v kořenovém adresáři (výchozí).
         3. V horní části stránky klikněte na **Uložit**.
 5.  Proveďte test změn v konfiguraci následujícím způsobem:

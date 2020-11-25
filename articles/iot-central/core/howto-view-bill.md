@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 515f5f665e947ff9594cce6dbbaea9b5e0c50ebf
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999709"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995739"
 ---
 # <a name="manage-your-bill-in-an-iot-central-application"></a>Správa vyúčtování v aplikaci IoT Central
 
@@ -42,7 +42,7 @@ K dokončení tohoto samoobslužného procesu použijte následující postup:
 
 1. Vyberte odpovídající Azure Active Directory a pak předplatné Azure, které chcete použít pro vaši aplikaci, která používá placený plán.
 
-1. Po výběru **převést**vaše aplikace teď používá placený plán a vy začnete s fakturací.
+1. Po výběru **převést** vaše aplikace teď používá placený plán a vy začnete s fakturací.
 
 > [!Note]
 > Ve výchozím nastavení budete převedeni na cenový tarif *Standard 2* .
@@ -59,11 +59,11 @@ V části s cenami můžete kdykoli upgradovat nebo downgradovat cenové tarify 
 
 1. Vyberte **plán** a pak vyberte **Uložit** pro upgrade nebo downgrade.
 
-## <a name="view-your-bill"></a>Zobrazení vašeho vyúčtování
+## <a name="view-your-bill"></a>Zobrazit vyúčtování
 
 1. Vyberte odpovídající Azure Active Directory a pak předplatné Azure, které chcete použít pro vaši aplikaci, která používá placený plán.
 
-1. Po výběru **převést**vaše aplikace teď používá placený plán a vy začnete s fakturací.
+1. Po výběru **převést** vaše aplikace teď používá placený plán a vy začnete s fakturací.
 
 > [!Note]
 > Ve výchozím nastavení budete převedeni na cenový tarif *Standard 2* .

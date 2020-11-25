@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: devx-track-python
 ms.openlocfilehash: 58f22a335f4c619a6348e9e127e60f5a79f658b2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099653"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994540"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý Start: Vytvoření aplikace v Pythonu pomocí rozhraní API Azure Cosmos DB pro MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "93099653"
 
 V tomto rychlém startu použijete Azure Cosmos DB pro účet rozhraní API služby Mongo DB nebo emulátor Azure Cosmos DB ke spuštění webové aplikace v To-Do Pythonu, která je klonována z GitHubu. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. Případně můžete použít [emulátor Azure Cosmos DB](local-emulator.md). 
 - [Python 3.6 +](https://www.python.org/downloads/)
@@ -100,7 +100,7 @@ Všechny následující fragmenty kódu jsou pořízeny ze souboru *App.py* a po
 
 3. Pak nastavte proměnnou prostředí pro aplikaci v baňce `set FLASK_APP=app.py` `$env:FLASK_APP = app.py` pro editory prostředí PowerShell, nebo `export FLASK_APP=app.py` Pokud používáte Mac. 
 
-4. Spusťte aplikaci pomocí nástroje `flask run` a přejděte na adresu *http: \/ /127.0.0.1:5000/* .
+4. Spusťte aplikaci pomocí nástroje `flask run` a přejděte na adresu *http: \/ /127.0.0.1:5000/*.
 
 5. Přidávejte a odebírejte úlohy a sledujte, jak se objevují a mění v rámci kolekce.
 
@@ -114,15 +114,15 @@ Pokud chcete otestovat kód proti účtu Live Azure Cosmos DB, vytvořte účet 
 
 K otestování kódu proti účtu Live Azure Cosmos DB Získejte informace o svém připojovacím řetězci. Potom ho zkopírujte do aplikace.
 
-1. V Azure Cosmos DB účtu v Azure Portal v levém navigačním panelu vyberte **připojovací řetězec** a pak vyberte **klíče pro čtení i zápis** . Pomocí tlačítek kopírování na pravé straně obrazovky zkopírujte uživatelské jméno, připojovací řetězec a heslo. 
+1. V Azure Cosmos DB účtu v Azure Portal v levém navigačním panelu vyberte **připojovací řetězec** a pak vyberte **klíče pro čtení i zápis**. Pomocí tlačítek kopírování na pravé straně obrazovky zkopírujte uživatelské jméno, připojovací řetězec a heslo. 
 
 2. Otevřete soubor *app.py* v kořenovém adresáři.
 
-3. Z portálu zkopírujte hodnotu **username** (pomocí tlačítka kopírování) a nastavte ji jako hodnotu položky **name** v souboru *app.py* .
+3. Z portálu zkopírujte hodnotu **username** (pomocí tlačítka kopírování) a nastavte ji jako hodnotu položky **name** v souboru *app.py*.
 
 4. Pak z portálu Zkopírujte hodnotu **připojovacího řetězce** a nastavte ji jako hodnotu **MongoClient** v souboru *App.py* .
 
-5. Nakonec z portálu zkopírujte hodnotu **password** a nastavte ji jako hodnotu **password** v souboru *app.py* .
+5. Nakonec z portálu zkopírujte hodnotu **password** a nastavte ji jako hodnotu **password** v souboru *app.py*.
 
 Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s Azure Cosmos DB. Můžete ji spustit stejným způsobem jako předtím.
 

@@ -10,17 +10,17 @@ ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 14c71d5888aefc11485c03935c5d8c7ff7d17045
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090552"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995875"
 ---
 # <a name="quickstart-connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Rychlý Start: připojení ke službě Azure synapse Link pro Azure Cosmos DB
 
 Tento článek popisuje, jak získat přístup k databázi Azure Cosmos DB z Azure synapse Analytics Studio s odkazem na synapse. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před připojením účtu Azure Cosmos DB k vašemu pracovnímu prostoru budete potřebovat několik věcí.
 
@@ -41,16 +41,16 @@ Připojení databáze Azure Cosmos DB se provádí jako propojená služba. Prop
 
 Z Průzkumník objektů dat můžete Azure Cosmos DB databázi připojit přímo pomocí následujících kroků:
 
-1. Výběr ***+*** ikony poblíž dat
-2. Vyberte **připojit k externím datům**
+1. Vybrat * *_+_* _ ikona v blízkosti dat
+2. Vyberte _ *připojit k externím datům**
 3. Vyberte rozhraní API, ke kterému se chcete připojit: SQL nebo MongoDB
-4. Vyberte ***Pokračovat***.
+4. Vybrat **_pokračovat_* _
 5. Pojmenujte propojenou službu. Název se zobrazí v Průzkumník objektů a synapse za běhu pro připojení k databázi a kontejnerům. Doporučujeme použít popisný název.
-6. Vyberte **název účtu Cosmos DB** a **název databáze** .
-7. Volitelné Pokud není zadána žádná oblast, synapse operace za běhu budou směrovány směrem k nejbližší oblasti, kde je analytické úložiště povoleno. Můžete ale ručně nastavit, kterou oblast chcete, aby uživatelé měli přístup k Cosmos DB analytickému obchodu. Vyberte **Další vlastnosti připojení** a pak **Nový**. V části **název vlastnosti**napište ***PreferredRegions*** a nastavte **hodnotu** na požadovanou oblast (například: WestUS2, mezi slovy a čísly není žádné místo).
-8. Vyberte ***Vytvořit***.
+6. Vyberte _ *Cosmos DB název účtu** a **název databáze** .
+7. Volitelné Pokud není zadána žádná oblast, synapse operace za běhu budou směrovány směrem k nejbližší oblasti, kde je analytické úložiště povoleno. Můžete ale ručně nastavit, kterou oblast chcete, aby uživatelé měli přístup k Cosmos DB analytickému obchodu. Vyberte **Další vlastnosti připojení** a pak **Nový**. V části **název vlastnosti** napište **_PreferredRegions_*_ a nastavte hodnotu _*** na požadovanou oblast (například: WestUS2, mezi slovy a čísly není žádné místo).
+8. Vyberte **_vytvořit_* _.
 
-Azure Cosmos DB databáze jsou viditelné na kartě **propojené** v části Azure Cosmos DB. HTAP s povoleným kontejnerem Azure Cosmos DB lze odlišit z kontejneru OLTP pouze pomocí následujících ikon:
+Azure Cosmos DB databáze jsou viditelné pod položkou _ *propojeno** v části Azure Cosmos DB. HTAP s povoleným kontejnerem Azure Cosmos DB lze odlišit z kontejneru OLTP pouze pomocí následujících ikon:
 
 **Synapse kontejner**:
 
