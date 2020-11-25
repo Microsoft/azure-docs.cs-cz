@@ -11,11 +11,11 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: duau
 ms.openlocfilehash: 4bb7458d4258dffb074d663e5cf712c7a0245cc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401516"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022322"
 ---
 # <a name="verify-traffic-manager-settings"></a>Ověření nastavení Traffic Manageru
 
@@ -33,7 +33,7 @@ Následující příklady vám pomůžou otestovat profil Traffic Manager.
 
 1. Otevřete příkaz nebo spusťte příkazový řádek Windows PowerShellu jako správce.
 2. Zadejte `ipconfig /flushdns` , chcete-li vyprázdnit mezipaměť překladače DNS.
-3. Zadejte příkaz `nslookup <your Traffic Manager domain name>`. Například následující příkaz zkontroluje název domény s předponou *MyApp. contoso.*
+3. Zadejte `nslookup <your Traffic Manager domain name>`. Například následující příkaz zkontroluje název domény s předponou *MyApp. contoso.*
 
     ```powershell
     nslookup myapp.contoso.trafficmanager.net

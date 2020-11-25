@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 08/12/2020
-ms.openlocfilehash: 055cdf7b6cec12eb8c3e7fde891d155b831a6523
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/24/2020
+ms.openlocfilehash: cc06f12317f5e30721452e07bd4dc5f50dfdb7ec
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637866"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022356"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
@@ -87,6 +87,12 @@ Pokud máte dobré znalosti o mohutnosti vašich dat, může být vytváření o
 > [!TIP]
 > Ruční nastavení schématu dělení přesadí data a může kompenzovat výhody Optimalizátoru Sparku. Osvědčeným postupem je nenastavit oddíly ručně, pokud nepotřebujete.
 
+## <a name="logging-level"></a>Úroveň protokolování
+
+Pokud nepotřebujete, aby každé spuštění kanálu pro aktivity toku dat plně protokoloval všechny protokoly telemetrie, můžete nastavit úroveň protokolování na "Basic" nebo "none". Při provádění datových toků v režimu "Verbose" (výchozí) požadujete při transformaci dat na úrovni služby ADF úplný protokol aktivity na jednotlivých úrovních jednotlivých oddílů. To může být náročná operace, takže jenom při řešení potíží můžete zlepšit celkový tok dat a výkon kanálu. Režim "základní" bude pouze dobu trvání transformace protokolu, zatímco možnost None bude obsahovat pouze souhrn dob trvání.
+
+![Úroveň protokolování](media/data-flow/logging.png "Nastavit úroveň protokolování")
+
 ## <a name="optimizing-the-azure-integration-runtime"></a><a name="ir"></a> Optimalizace Azure Integration Runtime
 
 Toky dat běží na clusterech Spark, které se provedou v době běhu. V modulu Integration runtime (IR) aktivity se definuje konfigurace pro použitý cluster. Při definování prostředí Integration runtime jsou k dispozici tři požadavky na výkon: typ clusteru, velikost clusteru a doba do provozu.
@@ -155,7 +161,7 @@ Azure SQL Database má jedinečnou možnost dělení s názvem source partitioni
 
 #### <a name="isolation-level"></a>Úroveň izolace
 
-Úroveň izolace čtení ve zdrojovém systému Azure SQL má vliv na výkon. Pokud zvolíte číst nepotvrzené, získáte nejrychlejší výkon a znemožníte zámkům v databázi. Další informace o úrovních izolace SQL najdete v tématu [Principy úrovní izolace](/sql/connect/jdbc/understanding-isolation-levels?view=sql-server-ver15).
+Úroveň izolace čtení ve zdrojovém systému Azure SQL má vliv na výkon. Pokud zvolíte číst nepotvrzené, získáte nejrychlejší výkon a znemožníte zámkům v databázi. Další informace o úrovních izolace SQL najdete v tématu [Principy úrovní izolace](https://docs.microsoft.com/sql/connect/jdbc/understanding-isolation-levels).
 
 #### <a name="read-using-query"></a>Číst pomocí dotazu
 
@@ -163,7 +169,7 @@ Můžete číst z Azure SQL Database pomocí tabulky nebo dotazu SQL. Pokud spou
 
 ### <a name="azure-synapse-analytics-sources"></a>Zdroje analýzy Azure synapse
 
-Pokud používáte Azure synapse Analytics, nastavení s názvem **Povolit přípravu** existuje v možnostech zdroje. Díky tomu může ADF číst z synapse s využitím [základny](/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15), která významně zlepšuje výkon při čtení. Při povolení podkladu je potřeba zadat Blob Storage služby Azure nebo Azure Data Lake Storage Gen2 pracovní umístění v nastavení aktivity toku dat.
+Pokud používáte Azure synapse Analytics, nastavení s názvem **Povolit přípravu** existuje v možnostech zdroje. Díky tomu může ADF číst z synapse pomocí ```Polybase``` , což významně zvyšuje výkon při čtení. Povolení ```Polybase``` vyžaduje, abyste v nastavení aktivity toku dat zadali BLOB Storage služby Azure nebo pracovní umístění Azure Data Lake Storage Gen2.
 
 ![Zapnout pracovní režim](media/data-flow/enable-staging.png "Zapnout pracovní režim")
 
@@ -183,6 +189,10 @@ Při zapisování toků dat do jímky dojde k jakémukoli vlastnímu dělení hn
 
 Při použití Azure SQL Database by výchozí dělení mělo fungovat ve většině případů. Je pravděpodobné, že vaše jímka může mít příliš mnoho oddílů pro zpracování vaší databáze SQL. Pokud k tomu dojde, snižte počet oddílů vydaných jímkou SQL Database.
 
+#### <a name="impact-of-error-row-handling-to-performance"></a>Dopad zpracování chybových řádků na výkon
+
+Pokud povolíte zpracování řádků chyb ("pokračovat při chybě") v transformaci jímky, ADF před zápisem kompatibilních řádků do cílové tabulky provede další krok. Tento další krok bude mít malý vliv na výkon, který může být v rozsahu 5% přidaného pro tento krok s dodatečným zvýšením výkonu, pokud nastavíte možnost na také nekompatibilní řádky do souboru protokolu.
+
 #### <a name="disabling-indexes-using-a-sql-script"></a>Zakázání indexů pomocí skriptu SQL
 
 Zakázání indexů před zatížením databáze SQL může významně zlepšit výkon zápisu do tabulky. Před zápisem do jímky SQL spusťte následující příkaz.
@@ -198,7 +208,7 @@ Je možné je nativně provádět pomocí skriptů před a po SQL v rámci služ
 ![Zakázat indexy](media/data-flow/disable-indexes-sql.png "Zakázat indexy")
 
 > [!WARNING]
-> Při zakázání indexů je tok dat efektivně přebírat řízení databáze a dotazy jsou v tuto chvíli pravděpodobně neúspěšné. V důsledku toho se řada úloh ETL aktivuje v noci uprostřed noční, aby se předešlo tomuto konfliktu. Další informace získáte v informacích o [omezeních zakazování indexů](/sql/relational-databases/indexes/disable-indexes-and-constraints?view=sql-server-ver15) .
+> Při zakázání indexů je tok dat efektivně přebírat řízení databáze a dotazy jsou v tuto chvíli pravděpodobně neúspěšné. V důsledku toho se řada úloh ETL aktivuje v noci uprostřed noční, aby se předešlo tomuto konfliktu. Další informace získáte v informacích o [omezeních zakazování indexů](https://docs.microsoft.com/sql/relational-databases/indexes/disable-indexes-and-constraints) .
 
 #### <a name="scaling-up-your-database"></a>Škálování databáze
 
@@ -226,7 +236,7 @@ Výběr **výchozí** možnosti bude zapisovat nejrychlejší. Každý oddíl se
 
 Nastavením **vzoru** pro pojmenování dojde k přejmenování každého souboru oddílu na více uživatelsky přívětivého názvu. Tato operace proběhne po zápisu a je mírně pomalejší než volba výchozí. Jednotlivé oddíly umožňují jednotlivé oddíly pojmenovat ručně.
 
-Pokud sloupec odpovídá způsobu, jakým chcete data výstupovat, můžete vybrat **jako data ve sloupci** . Tím dojde k přemístění dat a může to mít vliv na výkon, pokud sloupce nejsou rovnoměrně distribuovány.
+Pokud sloupec odpovídá způsobu, jakým chcete data výstupovat, můžete vybrat **jako data ve sloupci**. Tím dojde k přemístění dat a může to mít vliv na výkon, pokud sloupce nejsou rovnoměrně distribuovány.
 
 **Výstup do jednoho souboru** kombinuje všechna data do jednoho oddílu. To vede k dlouhým časem zápisu, zejména pro velké datové sady. Azure Data Factory tým **vysoce doporučuje tuto** možnost Nevybrat, pokud není k dispozici explicitní obchodní důvod.
 
@@ -240,14 +250,13 @@ Při psaní do CosmosDB může změna propustnosti a velikosti dávek během pro
 
 **Rozpočet propustnosti zápisu:** Použijte hodnotu, která je menší než celková ru za minutu. Pokud máte tok dat s vysokým počtem oddílů Spark, nastavení propustnosti rozpočtu umožní v těchto oddílech větší rovnováhu.
 
-
 ## <a name="optimizing-transformations"></a>Optimalizace transformací
 
 ### <a name="optimizing-joins-exists-and-lookups"></a>Optimalizace spojení, existence a vyhledávání
 
 #### <a name="broadcasting"></a>Vysílací
 
-V spojeních, vyhledávání a existují transformace, pokud je jeden nebo oba datové proudy dostatečně malé, aby se vešly do paměti pracovních uzlů, můžete optimalizovat výkon tím, že povolíte **všesměrové vysílání** . Všesměrové vysílání je při odesílání malých datových snímků všem uzlům v clusteru. To umožňuje, aby modul Spark prováděl spojení bez nutnosti přesměrovat data ve velkém datovém proudu. Ve výchozím nastavení se modul Spark automaticky rozhodne, jestli se má vysílat jedna strana spojení. Pokud znáte vaše příchozí data a víte, že jeden datový proud bude výrazně menší než druhý, můžete vybrat **pevné** vysílání. Pevné vysílání vynutí, aby Spark vysílaly vybraný datový proud. 
+V spojeních, vyhledávání a existují transformace, pokud je jeden nebo oba datové proudy dostatečně malé, aby se vešly do paměti pracovních uzlů, můžete optimalizovat výkon tím, že povolíte **všesměrové vysílání**. Všesměrové vysílání je při odesílání malých datových snímků všem uzlům v clusteru. To umožňuje, aby modul Spark prováděl spojení bez nutnosti přesměrovat data ve velkém datovém proudu. Ve výchozím nastavení se modul Spark automaticky rozhodne, jestli se má vysílat jedna strana spojení. Pokud znáte vaše příchozí data a víte, že jeden datový proud bude výrazně menší než druhý, můžete vybrat **pevné** vysílání. Pevné vysílání vynutí, aby Spark vysílaly vybraný datový proud. 
 
 Pokud je velikost všesměrového data pro uzel Spark příliš velká, může dojít k chybě z důvodu nedostatku paměti. Aby nedošlo k chybám, používejte **paměťově optimalizované** clustery. Pokud při provádění toku dat dojde k vypršení časového limitu všesměrového vysílání, můžete vypnout optimalizaci vysílání. Výsledkem ale bude pomalejší provádění toků dat.
 
