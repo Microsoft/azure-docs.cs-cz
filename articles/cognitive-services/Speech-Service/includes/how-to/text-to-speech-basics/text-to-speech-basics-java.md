@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 6502685890df1a5cd6a922c5bbf544d5d5798402
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 2da56514870f279da342976ac074697be5196021
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425301"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026278"
 ---
 V tomto rychlém startu se naučíte běžné vzory návrhu pro provádění syntézy textu na řeč pomocí sady Speech SDK. Začnete tím, že provádíte základní konfiguraci a shrnutí a přejdete k pokročilejším příkladům pro vývoj vlastních aplikací, včetně:
 
@@ -23,7 +23,7 @@ V tomto rychlém startu se naučíte běžné vzory návrhu pro provádění syn
 
 Pokud chcete přeskočit přímý na vzorový kód, přečtěte si [ukázky pro rychlý Start Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/jre/text-to-speech) na GitHubu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
 
@@ -52,19 +52,19 @@ import java.util.Scanner;
 
 ## <a name="create-a-speech-configuration"></a>Vytvoření konfigurace řeči
 
-Chcete-li volat službu Speech pomocí sady Speech SDK, je třeba vytvořit [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-java-stable) . Tato třída obsahuje informace o vašem předplatném, jako je klíč a přidružená oblast, koncový bod, hostitel nebo autorizační token.
+Chcete-li volat službu Speech pomocí sady Speech SDK, je třeba vytvořit [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) . Tato třída obsahuje informace o vašem předplatném, jako je klíč a přidružená oblast, koncový bod, hostitel nebo autorizační token.
 
 > [!NOTE]
 > Bez ohledu na to, jestli provádíte rozpoznávání řeči, syntézu řeči, překlad nebo rozpoznávání záměrů, vždy vytvoříte konfiguraci.
 
-Existuje několik způsobů, jak můžete inicializovat [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-java-stable) :
+Existuje několik způsobů, jak můžete inicializovat [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) :
 
 * S předplatným: předejte klíč a přidruženou oblast.
 * S koncovým bodem: předejte koncový bod služby řeči. Klíč nebo autorizační token jsou volitelné.
 * S hostitelem: předejte adresu hostitele. Klíč nebo autorizační token jsou volitelné.
 * Pomocí autorizačního tokenu: předejte autorizační token a přidruženou oblast.
 
-V tomto příkladu vytvoříte [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-java-stable) pomocí klíče a oblasti předplatného. Tyto přihlašovací údaje můžete získat podle kroků v [části Vyzkoušejte si službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free). Také můžete vytvořit nějaký základní často používaný kód, který se použije pro zbytek tohoto článku, který můžete upravit pro různá přizpůsobení.
+V tomto příkladu vytvoříte [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) pomocí klíče a oblasti předplatného. Tyto přihlašovací údaje můžete získat podle kroků v [části Vyzkoušejte si službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free). Také můžete vytvořit nějaký základní často používaný kód, který se použije pro zbytek tohoto článku, který můžete upravit pro různá přizpůsobení.
 
 ```java
 public class Program 
@@ -77,7 +77,7 @@ public class Program
 
 ## <a name="synthesize-speech-to-a-file"></a>Vysyntetizátorování řeči v souboru
 
-V dalším kroku vytvoříte [`SpeechSynthesizer`](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer?preserve-view=true&view=azure-java-stable) objekt, který provede převody textu na řeč a výstupy na reproduktory, soubory nebo jiné výstupní datové proudy. [`SpeechSynthesizer`](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer?preserve-view=true&view=azure-java-stable)Parametr přijímá jako je [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-java-stable) objekt vytvořený v předchozím kroku a [`AudioConfig`](/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?preserve-view=true&view=azure-java-stable) objekt, který určuje, jak by měly být zpracovány výsledky výstupu.
+V dalším kroku vytvoříte [`SpeechSynthesizer`](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer) objekt, který provede převody textu na řeč a výstupy na reproduktory, soubory nebo jiné výstupní datové proudy. [`SpeechSynthesizer`](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer)Parametr přijímá jako je [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) objekt vytvořený v předchozím kroku a [`AudioConfig`](/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig) objekt, který určuje, jak by měly být zpracovány výsledky výstupu.
 
 Začněte tím, že vytvoříte `AudioConfig` a automaticky zapíšete výstup do `.wav` souboru pomocí `fromWavFileOutput()` statické funkce.
 
@@ -129,7 +129,7 @@ Tuto změnu je jednoduché provést v předchozím příkladu. Nejprve odeberte 
 > [!NOTE]
 > Předání `null` pro `AudioConfig` místo toho, aby ho nemuseli vynechat jako v příkladu výstupu mluvčího, ve výchozím nastavení nebude přehrávat zvuk na aktuálním aktivním výstupním zařízení.
 
-Tentokrát výsledek uložíte do [`SpeechSynthesisResult`](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisresult?preserve-view=true&view=azure-java-stable) proměnné. `SpeechSynthesisResult.getAudioData()`Funkce vrátí `byte []` výstupní data. S tímto můžete pracovat `byte []` ručně nebo můžete použít [`AudioDataStream`](/java/api/com.microsoft.cognitiveservices.speech.audiodatastream?preserve-view=true&view=azure-java-stable) třídu ke správě streamu v paměti. V tomto příkladu použijete `AudioDataStream.fromResult()` statickou funkci k získání datového proudu z výsledku.
+Tentokrát výsledek uložíte do [`SpeechSynthesisResult`](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisresult) proměnné. `SpeechSynthesisResult.getAudioData()`Funkce vrátí `byte []` výstupní data. S tímto můžete pracovat `byte []` ručně nebo můžete použít [`AudioDataStream`](/java/api/com.microsoft.cognitiveservices.speech.audiodatastream) třídu ke správě streamu v paměti. V tomto příkladu použijete `AudioDataStream.fromResult()` statickou funkci k získání datového proudu z výsledku.
 
 ```java
 public static void main(String[] args) {
@@ -152,11 +152,11 @@ V následující části se dozvíte, jak přizpůsobit atributy výstupů zvuku
 * Vzorkovací frekvence
 * Bitová hloubka
 
-Chcete-li změnit formát zvuku, použijte `setSpeechSynthesisOutputFormat()` funkci na `SpeechConfig` objektu. Tato funkce očekává `enum` typ [`SpeechSynthesisOutputFormat`](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisoutputformat?preserve-view=true&view=azure-java-stable) výstupu, který použijete k výběru výstupního formátu. [Seznam zvukových formátů](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat?preserve-view=true&view=azure-dotnet) , které jsou k dispozici, najdete v referenční dokumentaci.
+Chcete-li změnit formát zvuku, použijte `setSpeechSynthesisOutputFormat()` funkci na `SpeechConfig` objektu. Tato funkce očekává `enum` typ [`SpeechSynthesisOutputFormat`](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisoutputformat) výstupu, který použijete k výběru výstupního formátu. [Seznam zvukových formátů](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat?preserve-view=true&view=azure-dotnet) , které jsou k dispozici, najdete v referenční dokumentaci.
 
 V závislosti na vašich požadavcích máte k dispozici různé možnosti pro různé typy souborů. Všimněte si, že podle definice nezpracované formáty jako neobsahují `Raw24Khz16BitMonoPcm` zvukové hlavičky. Nezpracované formáty použijte jenom v případě, že vaše implementace pro příjem dat může dekódovat nezpracovaný Bitstream, nebo pokud plánujete ruční vytváření hlaviček na základě bitové hloubky, vzorkovací frekvence, počtu kanálů atd.
 
-V tomto příkladu zadáte RIFF formát s vysokou přesností nastavením `Riff24Khz16BitMonoPcm` `SpeechSynthesisOutputFormat` `SpeechConfig` objektu na. Podobně jako v předchozím oddílu můžete použít [`AudioDataStream`](/java/api/com.microsoft.cognitiveservices.speech.audiodatastream?preserve-view=true&view=azure-java-stable) k získání streamu v paměti výsledku a pak ho zapsat do souboru.
+V tomto příkladu zadáte RIFF formát s vysokou přesností nastavením `Riff24Khz16BitMonoPcm` `SpeechSynthesisOutputFormat` `SpeechConfig` objektu na. Podobně jako v předchozím oddílu můžete použít [`AudioDataStream`](/java/api/com.microsoft.cognitiveservices.speech.audiodatastream) k získání streamu v paměti výsledku a pak ho zapsat do souboru.
 
 ```java
 public static void main(String[] args) {
@@ -240,7 +240,7 @@ Hlasy neuronové jsou algoritmy pro syntézu řeči založené na hluboce neuron
 Pokud chcete přepnout na neuronové hlas, změňte na `name` jednu z [možností hlasu neuronové](../../../language-support.md#neural-voices). Pak přidejte obor názvů XML pro `mstts` a zabalte text do `<mstts:express-as>` značky. Použijte `style` parametr pro přizpůsobení stylu speaking. Tento příklad používá `cheerful` , ale zkuste ho nastavit na `customerservice` nebo `chat` pro zobrazení rozdílu ve stylu speaking.
 
 > [!IMPORTANT]
-> Hlasy neuronové se podporují **jenom** u zdrojů řeči vytvořených v oblastech *Východní USA* , *Jižní východní Asie* a *západní Evropa* .
+> Hlasy neuronové se podporují **jenom** u zdrojů řeči vytvořených v oblastech *Východní USA*, *Jižní východní Asie* a *západní Evropa* .
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">

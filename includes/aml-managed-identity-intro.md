@@ -10,11 +10,11 @@ ms.custom: include file
 ms.topic: include
 ms.date: 08/24/2020
 ms.openlocfilehash: 70b636b7bb508b71475a7464983b091d5d10e0e1
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95555086"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026424"
 ---
  Azure Machine Learning výpočetní clustery také podporují [spravované identity](../articles/active-directory/managed-identities-azure-resources/overview.md) pro ověřování přístupu k prostředkům Azure bez zahrnutí přihlašovacích údajů do kódu. Existují dva typy spravovaných identit:
 
