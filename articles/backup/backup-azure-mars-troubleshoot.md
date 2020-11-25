@@ -4,11 +4,11 @@ description: V tomto článku se dozvíte, jak řešit potíže s instalací a r
 ms.topic: troubleshooting
 ms.date: 07/15/2019
 ms.openlocfilehash: 4ae4142652d9d38d5bf384e5a10d6eeb7e3cc608
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900385"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993835"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Řešení potíží s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -37,12 +37,12 @@ Doporučujeme, abyste před zahájením řešení potíží s agentem služby Az
 
 ## <a name="invalid-vault-credentials-provided"></a>Zadali jste neplatné přihlašovací údaje trezoru.
 
-**Chybová zpráva** : byly zadány neplatné přihlašovací údaje trezoru. Soubor je poškozený nebo k němu ve službě obnovení nejsou přiřazené nejnovější přihlašovací údaje. (ID: 34513)
+**Chybová zpráva**: byly zadány neplatné přihlašovací údaje trezoru. Soubor je poškozený nebo k němu ve službě obnovení nejsou přiřazené nejnovější přihlašovací údaje. (ID: 34513)
 
 | Příčina | Doporučené akce |
 | ---     | ---    |
-| **Přihlašovací údaje trezoru nejsou platné.** <br/> <br/> Soubory s přihlašovacími údaji trezoru můžou být poškozené, možná vypršela platnost nebo mají jinou příponu souboru než *. vaultCredentials* . (Například mohou být staženy více než 48 hodin před časem registrace.)| [Stáhněte si nové přihlašovací údaje](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file) z trezoru Recovery Services na Azure Portal. Pak podle potřeby proveďte tyto kroky: <ul><li> Pokud jste již nainstalovali a zaregistrovali MARS, otevřete konzolu konzoly MMC Microsoft Azure Backup agenta. Pak v podokně **Akce** vyberte **Registrovat Server** a dokončete registraci s novými přihlašovacími údaji. <br/> <li> Pokud se nová instalace nezdařila, zkuste ji znovu nainstalovat pomocí nových přihlašovacích údajů.</ul> **Poznámka** : Pokud se stáhlo více souborů přihlašovacích údajů úložiště, bude platit jenom nejnovější soubor po dobu dalších 48 hodin. Doporučujeme, abyste si stáhli nový soubor s přihlašovacími údaji úložiště.
-| **Proxy server/Brána firewall blokuje registraci** <br/>nebo <br/>**Bez připojení k Internetu** <br/><br/> Pokud má váš počítač nebo proxy server omezené připojení k Internetu a nezajistíte přístup k potřebným adresám URL, registrace se nezdaří.| Proveďte tyto kroky:<br/> <ul><li> Spolupracujte s vaším IT týmem a ujistěte se, že je systém připojen k Internetu.<li> Pokud nemáte proxy server, zajistěte, aby při registraci agenta nebyla vybraná možnost proxy. [Ověřte nastavení proxy serveru](#verifying-proxy-settings-for-windows).<li> Pokud máte bránu firewall nebo proxy server, pracujte s týmem sítě, abyste zajistili přístup k těmto adresám URL a IP adresám:<br/> <br> **Adresy URL**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP adresy**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Zkuste provést registraci znovu po dokončení předchozích kroků pro řešení potíží.<br></br> Pokud je vaše připojení prostřednictvím Azure ExpressRoute, ujistěte se, že nastavení jsou nakonfigurovaná podle pokynů v tématu [Podpora Azure ExpressRoute](backup-support-matrix-mars-agent.md#azure-expressroute-support).
+| **Přihlašovací údaje trezoru nejsou platné.** <br/> <br/> Soubory s přihlašovacími údaji trezoru můžou být poškozené, možná vypršela platnost nebo mají jinou příponu souboru než *. vaultCredentials*. (Například mohou být staženy více než 48 hodin před časem registrace.)| [Stáhněte si nové přihlašovací údaje](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file) z trezoru Recovery Services na Azure Portal. Pak podle potřeby proveďte tyto kroky: <ul><li> Pokud jste již nainstalovali a zaregistrovali MARS, otevřete konzolu konzoly MMC Microsoft Azure Backup agenta. Pak v podokně **Akce** vyberte **Registrovat Server** a dokončete registraci s novými přihlašovacími údaji. <br/> <li> Pokud se nová instalace nezdařila, zkuste ji znovu nainstalovat pomocí nových přihlašovacích údajů.</ul> **Poznámka**: Pokud se stáhlo více souborů přihlašovacích údajů úložiště, bude platit jenom nejnovější soubor po dobu dalších 48 hodin. Doporučujeme, abyste si stáhli nový soubor s přihlašovacími údaji úložiště.
+| **Proxy server/Brána firewall blokuje registraci** <br/>nebo <br/>**Bez připojení k Internetu** <br/><br/> Pokud má váš počítač nebo proxy server omezené připojení k Internetu a nezajistíte přístup k potřebným adresám URL, registrace se nezdaří.| Proveďte tyto kroky:<br/> <ul><li> Spolupracujte s vaším IT týmem a ujistěte se, že je systém připojen k Internetu.<li> Pokud nemáte proxy server, zajistěte, aby při registraci agenta nebyla vybraná možnost proxy. [Ověřte nastavení proxy serveru](#verifying-proxy-settings-for-windows).<li> Pokud máte bránu firewall nebo proxy server, pracujte s týmem sítě, abyste zajistili přístup k těmto adresám URL a IP adresám:<br/> <br> **Adrese**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP adresy**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Zkuste provést registraci znovu po dokončení předchozích kroků pro řešení potíží.<br></br> Pokud je vaše připojení prostřednictvím Azure ExpressRoute, ujistěte se, že nastavení jsou nakonfigurovaná podle pokynů v tématu [Podpora Azure ExpressRoute](backup-support-matrix-mars-agent.md#azure-expressroute-support).
 | **Antivirový software blokuje registraci** | Pokud máte na serveru nainstalovaný antivirový software, přidejte potřebná pravidla vyloučení do kontroly antivirového programu pro tyto soubory a složky: <br/><ul> <li> CBengine.exe <li> CSC.exe<li> Pomocná složka Výchozí umístění je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch. <li> Složka Bin v adresáři C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
 
 ### <a name="additional-recommendations"></a>Další doporučení
@@ -57,7 +57,7 @@ Doporučujeme, abyste před zahájením řešení potíží s agentem služby Az
 1. Spusťte `psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"` z příkazového řádku se zvýšenými oprávněními.
 
    Tento příkaz spustí aplikaci Internet Explorer.
-1. Přejít na **nástroje**  >  **Možnosti Internetu**  >  **připojení**  >  **nastavení sítě LAN** .
+1. Přejít na **nástroje**  >  **Možnosti Internetu**  >  **připojení**  >  **nastavení sítě LAN**.
 1. Ověřte nastavení proxy serveru pro účet System.
 1. Pokud není nakonfigurovaný žádný proxy server a poskytnou se podrobnosti o proxy serveru, odeberte podrobnosti.
 1. Pokud je nakonfigurován proxy server a podrobnosti o serveru proxy nejsou správné, ujistěte se, že podrobnosti o **IP adrese proxy** a **portech** jsou správné.
@@ -65,19 +65,19 @@ Doporučujeme, abyste před zahájením řešení potíží s agentem služby Az
 
 ## <a name="unable-to-download-vault-credential-file"></a>Nejde stáhnout soubor s přihlašovacími údaji trezoru.
 
-| Chybová   | Doporučené akce |
+| Chyba   | Doporučené akce |
 | ---     | ---    |
 |Nepovedlo se stáhnout soubor s přihlašovacími údaji trezoru. (ID: 403) | <ul><li> Zkuste stáhnout přihlašovací údaje trezoru pomocí jiného prohlížeče nebo proveďte tyto kroky: <ul><li> Spusťte aplikaci Internet Explorer. Vyberte F12. </li><li> Přejdete na kartu **síť** a vymažte mezipaměť a soubory cookie. </li> <li> Aktualizujte stránku.<br></li></ul> <li> Ověřte, jestli je předplatné zakázané nebo vypršela jeho platnost.<br></li> <li> Zkontroluje, jestli nějaké pravidlo brány firewall neblokuje stahování. <br></li> <li> Ujistěte se, že jste vyčerpali limit úložiště (50 počítačů na trezor).<br></li>  <li> Zajistěte, aby měl uživatel Azure Backup oprávnění, která jsou nutná ke stažení přihlašovacích údajů trezoru a registraci serveru v trezoru. Viz téma [použití řízení přístupu na základě role Azure ke správě Azure Backup bodů obnovení](backup-rbac-rs-vault.md).</li></ul> |
 
 ## <a name="the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup"></a>Agent Microsoft Azure Recovery Services se nemohl připojit ke službě Microsoft Azure Backup
 
-| Chybová  | Možná příčina | Doporučené akce |
+| Chyba  | Možná příčina | Doporučené akce |
 | ---     | ---     | ---    |
-| <br /><ul><li>Agent Microsoft Azure Recovery Services se nemohl připojit k Microsoft Azure Backup. (ID: 100050) Zkontrolujte nastavení sítě a ujistěte se, že se můžete připojit k Internetu.<li>(407) je vyžadováno ověřování proxy serveru. |Proxy blokuje připojení. |  <ul><li>V Internet Exploreru přejdete na **nástroje**  >  **Internet Options Internet možnosti**  >  **zabezpečení**  >  **Internetu** . Vyberte **vlastní úroveň** a přejděte dolů k části **Stažení souboru** . Vyberte **Povolit** .<p>Je také možné, že budete muset přidat do důvěryhodných webů v aplikaci Internet Explorer [adresy URL a IP adresy](install-mars-agent.md#verify-internet-access) .<li>Změňte nastavení na použití proxy server. Pak zadejte podrobnosti o proxy server.<li> Pokud má počítač omezený přístup k Internetu, zajistěte, aby nastavení brány firewall na počítači nebo proxy umožňovalo tyto [adresy URL a IP adresy](install-mars-agent.md#verify-internet-access). <li>Pokud máte na serveru nainstalovaný antivirový software, vylučte tyto soubory z antivirového vyhledávání: <ul><li>CBEngine.exe (místo dpmra.exe).<li>CSC.exe (souvisí s .NET Framework). Pro každou verzi .NET Framework nainstalovanou na serveru existuje CSC.exe. Vylučte soubory CSC.exe pro všechny verze .NET Framework na příslušném serveru. <li>Umístění pomocné složky nebo mezipaměti. <br>Výchozí umístění pro pomocnou složku nebo cestu k mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch.<li>Složka Bin v adresáři C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
+| <br /><ul><li>Agent Microsoft Azure Recovery Services se nemohl připojit k Microsoft Azure Backup. (ID: 100050) Zkontrolujte nastavení sítě a ujistěte se, že se můžete připojit k Internetu.<li>(407) je vyžadováno ověřování proxy serveru. |Proxy blokuje připojení. |  <ul><li>V Internet Exploreru přejdete na **nástroje**  >  **Internet Options Internet možnosti**  >  **zabezpečení**  >  **Internetu**. Vyberte **vlastní úroveň** a přejděte dolů k části **Stažení souboru** . Vyberte **Povolit**.<p>Je také možné, že budete muset přidat do důvěryhodných webů v aplikaci Internet Explorer [adresy URL a IP adresy](install-mars-agent.md#verify-internet-access) .<li>Změňte nastavení na použití proxy server. Pak zadejte podrobnosti o proxy server.<li> Pokud má počítač omezený přístup k Internetu, zajistěte, aby nastavení brány firewall na počítači nebo proxy umožňovalo tyto [adresy URL a IP adresy](install-mars-agent.md#verify-internet-access). <li>Pokud máte na serveru nainstalovaný antivirový software, vylučte tyto soubory z antivirového vyhledávání: <ul><li>CBEngine.exe (místo dpmra.exe).<li>CSC.exe (souvisí s .NET Framework). Pro každou verzi .NET Framework nainstalovanou na serveru existuje CSC.exe. Vylučte soubory CSC.exe pro všechny verze .NET Framework na příslušném serveru. <li>Umístění pomocné složky nebo mezipaměti. <br>Výchozí umístění pro pomocnou složku nebo cestu k mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch.<li>Složka Bin v adresáři C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
 
 ## <a name="the-specified-vault-credential-file-cannot-be-used-as-it-is-not-downloaded-from-the-vault-associated-with-this-server"></a>Zadaný soubor s přihlašovacími údaji trezoru se nedá použít, protože není stažený z trezoru přidruženého k tomuto serveru.
 
-| Chybová  | Možná příčina | Doporučené akce |
+| Chyba  | Možná příčina | Doporučené akce |
 | ---     | ---     | ---    |
 | Zadaný soubor s přihlašovacími údaji trezoru nejde použít, protože není stažený z trezoru přidruženého k tomuto serveru. (ID: 100110) Zadejte prosím příslušné přihlašovací údaje trezoru. | Soubor s přihlašovacími údaji trezoru pochází z jiného trezoru, než je ten, na který tento server je už zaregistrovaný. | Ujistěte se, že cílový počítač a zdrojový počítač jsou zaregistrované ve stejném trezoru Recovery Services. Pokud je cílový server již zaregistrován v jiném trezoru, zaregistrujte se do správného trezoru pomocí možnosti **Registrace serveru** .  
 
@@ -109,21 +109,21 @@ Doporučujeme, abyste před zahájením řešení potíží s agentem služby Az
 
 ## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>Nepodařilo se nastavit šifrovací klíč pro bezpečné zálohy
 
-| Chybová | Možné příčiny | Doporučené akce |
+| Chyba | Možné příčiny | Doporučené akce |
 | ---     | ---     | ---    |
 | <br />Nepovedlo se nastavit šifrovací klíč pro zabezpečené zálohy. Aktivace nebyla úspěšně dokončena, ale šifrovací heslo bylo uloženo do následujícího souboru. |<li>Server je už zaregistrovaný v jiném trezoru.<li>Během konfigurace bylo heslo poškozeno.| Zrušte registraci serveru z trezoru a znovu ho Zaregistrujte pomocí nového hesla.
 
 ## <a name="the-activation-did-not-complete-successfully"></a>Aktivace nebyla úspěšně dokončena.
 
-| Chybová  | Možné příčiny | Doporučené akce |
+| Chyba  | Možné příčiny | Doporučené akce |
 |---------|---------|---------|
-|<br />Aktivace nebyla úspěšně dokončena. Aktuální operace selhala kvůli vnitřní chybě služby [0x1FC07]. Po nějaké době zkuste operaci zopakovat. Pokud problém přetrvá, obraťte se na podporu Microsoftu.     | <li> Pomocná složka se nachází na svazku, který nemá dost místa. <li> Pomocná složka byla nesprávně přesunuta. <li> Chybí soubor OnlineBackup. KEK.         | <li>Upgradujte na [nejnovější verzi](https://aka.ms/azurebackup_agent) agenta Mars.<li>Přesuňte pomocné složky nebo umístění mezipaměti do svazku s volným místem, které je mezi 5% a 10% celkové velikosti zálohovaných dat. Pro správné přesunutí umístění mezipaměti použijte postup v tématu [běžné otázky k zálohování souborů a složek](./backup-azure-file-folder-backup-faq.md#manage-the-backup-cache-folder).<li> Zajistěte, aby byl k dispozici soubor OnlineBackup. KEK. <br>*Výchozí umístění pro pomocnou složku nebo cestu k mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch* .        |
+|<br />Aktivace nebyla úspěšně dokončena. Aktuální operace selhala kvůli vnitřní chybě služby [0x1FC07]. Po nějaké době zkuste operaci zopakovat. Pokud problém přetrvá, obraťte se na podporu Microsoftu.     | <li> Pomocná složka se nachází na svazku, který nemá dost místa. <li> Pomocná složka byla nesprávně přesunuta. <li> Chybí soubor OnlineBackup. KEK.         | <li>Upgradujte na [nejnovější verzi](https://aka.ms/azurebackup_agent) agenta Mars.<li>Přesuňte pomocné složky nebo umístění mezipaměti do svazku s volným místem, které je mezi 5% a 10% celkové velikosti zálohovaných dat. Pro správné přesunutí umístění mezipaměti použijte postup v tématu [běžné otázky k zálohování souborů a složek](./backup-azure-file-folder-backup-faq.md#manage-the-backup-cache-folder).<li> Zajistěte, aby byl k dispozici soubor OnlineBackup. KEK. <br>*Výchozí umístění pro pomocnou složku nebo cestu k mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.        |
 
 ## <a name="encryption-passphrase-not-correctly-configured"></a>Šifrovací heslo není správně nakonfigurované
 
-| Chybová  | Možné příčiny | Doporučené akce |
+| Chyba  | Možné příčiny | Doporučené akce |
 |---------|---------|---------|
-| <br />Chyba 34506. Šifrovací heslo uložené na tomto počítači není správně nakonfigurováno.    | <li> Pomocná složka se nachází na svazku, který nemá dost místa. <li> Pomocná složka byla nesprávně přesunuta. <li> Chybí soubor OnlineBackup. KEK.        | <li>Upgradujte na [nejnovější verzi](https://aka.ms/azurebackup_agent) agenta Mars.<li>Přesuňte pomocné složky nebo umístění mezipaměti do svazku s volným místem, které je mezi 5% a 10% celkové velikosti zálohovaných dat. Pro správné přesunutí umístění mezipaměti použijte postup v tématu [běžné otázky k zálohování souborů a složek](./backup-azure-file-folder-backup-faq.md#manage-the-backup-cache-folder).<li> Zajistěte, aby byl k dispozici soubor OnlineBackup. KEK. <br>*Výchozí umístění pro pomocnou složku nebo cestu k mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch* .         |
+| <br />Chyba 34506. Šifrovací heslo uložené na tomto počítači není správně nakonfigurováno.    | <li> Pomocná složka se nachází na svazku, který nemá dost místa. <li> Pomocná složka byla nesprávně přesunuta. <li> Chybí soubor OnlineBackup. KEK.        | <li>Upgradujte na [nejnovější verzi](https://aka.ms/azurebackup_agent) agenta Mars.<li>Přesuňte pomocné složky nebo umístění mezipaměti do svazku s volným místem, které je mezi 5% a 10% celkové velikosti zálohovaných dat. Pro správné přesunutí umístění mezipaměti použijte postup v tématu [běžné otázky k zálohování souborů a složek](./backup-azure-file-folder-backup-faq.md#manage-the-backup-cache-folder).<li> Zajistěte, aby byl k dispozici soubor OnlineBackup. KEK. <br>*Výchozí umístění pro pomocnou složku nebo cestu k mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.         |
 
 ## <a name="backups-dont-run-according-to-schedule"></a>Zálohování se nespouští podle plánu
 
@@ -131,11 +131,11 @@ Pokud se naplánované zálohy nespouštějí automaticky, ale ruční zálohov�
 
 - Zajistěte, aby plán zálohování Windows serveru nebyl v konfliktu s plánem zálohování souborů a složek Azure.
 
-- Zajistěte, aby byl stav online zálohování nastavený na **Povolit** . Chcete-li ověřit stav, proveďte následující kroky:
+- Zajistěte, aby byl stav online zálohování nastavený na **Povolit**. Chcete-li ověřit stav, proveďte následující kroky:
 
-  1. V Plánovač úloh rozbalte položku **Microsoft** a vyberte možnost **online zálohování** .
+  1. V Plánovač úloh rozbalte položku **Microsoft** a vyberte možnost **online zálohování**.
   1. Dvakrát klikněte na **Microsoft-OnlineBackup** a přejděte na kartu **triggery** .
-  1. Ověřte, jestli je stav nastavený na **povoleno** . Pokud není, vyberte **Upravit** , vyberte **povoleno** a pak vyberte **OK** .
+  1. Ověřte, jestli je stav nastavený na **povoleno**. Pokud není, vyberte **Upravit**, vyberte **povoleno** a pak vyberte **OK**.
 
 - Ujistěte se, že uživatelský účet vybraný pro spuštění úlohy je skupina **System** nebo **Local Administrators** na serveru. Uživatelský účet ověříte tak, že přejdete na kartu **Obecné** a zkontrolujete možnosti **zabezpečení** .
 
@@ -167,26 +167,26 @@ Set-ExecutionPolicy Unrestricted
 
 ## <a name="resource-not-provisioned-in-service-stamp"></a>Prostředek není zřízený na razítku služby.
 
-Chybová | Možné příčiny | Doporučené akce
+Chyba | Možné příčiny | Doporučené akce
 --- | --- | ---
 Aktuální operace selhala kvůli vnitřní chybě služby (prostředek není zřízený na razítku služby). Zkuste prosím tuto operaci za chvíli znovu. (ID: 230006) | Chráněný Server se přejmenoval. | <li> Přejmenujte Server zpátky na původní název, který je zaregistrovaný v trezoru. <br> <li> Znovu zaregistrujte Server do trezoru s novým názvem.
 
 ## <a name="job-could-not-be-started-as-another-job-was-in-progress"></a>Úlohu se nepovedlo spustit, protože probíhala jiná úloha.
 
-Pokud se v historii úloh **konzoly Mars** zobrazí zpráva s upozorněním  >  **Job history** , že úloha nemohla být spuštěna, protože probíhala jiná úloha, může to být způsobeno duplicitní instancí úlohy aktivované Plánovač úloh.
+Pokud se v historii úloh **konzoly Mars** zobrazí zpráva s upozorněním  >  **Job history**, že úloha nemohla být spuštěna, protože probíhala jiná úloha, může to být způsobeno duplicitní instancí úlohy aktivované Plánovač úloh.
 
 ![Úlohu se nepovedlo spustit, protože probíhala jiná úloha.](./media/backup-azure-mars-troubleshoot/job-could-not-be-started.png)
 
 Řešení tohoto problému:
 
 1. Spusťte modul snap-in Plánovač úloh tak, že v okně Spustit zadáte *Taskschd. msc.*
-1. V levém podokně přejděte do **knihovny Plánovač úloh**  ->  **Microsoft**  ->  **OnlineBackup** .
+1. V levém podokně přejděte do **knihovny Plánovač úloh**  ->  **Microsoft**  ->  **OnlineBackup**.
 1. Pro každý úkol v této knihovně poklikejte na úkol a otevřete vlastnosti a proveďte následující kroky:
-    1. Přepněte na kartu **Nastavení** .
+    1. Přepněte na kartu **Nastavení**.
 
          ![Karta nastavení](./media/backup-azure-mars-troubleshoot/settings-tab.png)
 
-    1. **Pokud je úloha už spuštěná, použijte následující pravidlo** . Vyberte **nespustit novou instanci** .
+    1. **Pokud je úloha už spuštěná, použijte následující pravidlo**. Vyberte **nespustit novou instanci**.
 
          ![Změnit pravidlo na nespouštět novou instanci](./media/backup-azure-mars-troubleshoot/change-rule.png)
 
@@ -196,23 +196,23 @@ Azure Backup nemusí úspěšně připojit svazek pro obnovení, a to ani po ně
 
 1. Zrušte proces připojení, pokud je spuštěn několik minut.
 
-2. Podívejte se, jestli máte nejnovější verzi agenta zálohování. Chcete-li zjistit verzi, vyberte v podokně **Akce** v konzole Mars možnost **o Microsoft Azure Recovery Services agenta** . Ověřte, že číslo **verze** je rovno nebo vyšší než verze uvedená v [tomto článku](https://go.microsoft.com/fwlink/?linkid=229525). Kliknutím na tento odkaz [Stáhněte nejnovější verzi](https://go.microsoft.com/fwLink/?LinkID=288905).
+2. Podívejte se, jestli máte nejnovější verzi agenta zálohování. Chcete-li zjistit verzi, vyberte v podokně **Akce** v konzole Mars možnost **o Microsoft Azure Recovery Services agenta**. Ověřte, že číslo **verze** je rovno nebo vyšší než verze uvedená v [tomto článku](https://go.microsoft.com/fwlink/?linkid=229525). Kliknutím na tento odkaz [Stáhněte nejnovější verzi](https://go.microsoft.com/fwLink/?LinkID=288905).
 
-3. Přejděte na **Device Manager**  >  **řadiče úložiště** a najděte **iniciátor iSCSI společnosti Microsoft** . Pokud ho najdete, přejděte přímo ke kroku 7.
+3. Přejděte na **Device Manager**  >  **řadiče úložiště** a najděte **iniciátor iSCSI společnosti Microsoft**. Pokud ho najdete, přejděte přímo ke kroku 7.
 
-4. Pokud nemůžete najít službu iniciátoru iSCSI společnosti Microsoft, zkuste najít položku v části **Device Manager**  >  **řadiče úložiště** s názvem **neznámé zařízení** s ID hardwaru **ROOT\ISCSIPRT** .
+4. Pokud nemůžete najít službu iniciátoru iSCSI společnosti Microsoft, zkuste najít položku v části **Device Manager**  >  **řadiče úložiště** s názvem **neznámé zařízení** s ID hardwaru **ROOT\ISCSIPRT**.
 
-5. Klikněte pravým tlačítkem na **neznámé zařízení** a vyberte **aktualizovat software ovladače** .
+5. Klikněte pravým tlačítkem na **neznámé zařízení** a vyberte **aktualizovat software ovladače**.
 
-6. Aktualizujte ovladač tak, že vyberete možnost pro  **Automatické hledání aktualizovaného softwaru ovladače** . Tato aktualizace by měla změnit **neznámé zařízení** **iniciátoru iSCSI společnosti Microsoft** :
+6. Aktualizujte ovladač tak, že vyberete možnost pro  **Automatické hledání aktualizovaného softwaru ovladače**. Tato aktualizace by měla změnit **neznámé zařízení** **iniciátoru iSCSI společnosti Microsoft**:
 
     ![Snímek obrazovky Azure Backup Device Manager se zvýrazněnými řadiči úložiště](./media/backup-azure-restore-windows-server/UnknowniSCSIDevice.png)
 
-7. Přejít na služby **Správce úloh**  >  **(místní)**  >  **Služba iniciátoru iSCSI společnosti Microsoft** :
+7. Přejít na služby **Správce úloh**  >  **(místní)**  >  **Služba iniciátoru iSCSI společnosti Microsoft**:
 
     ![Snímek obrazovky Azure Backup Správce úloh se zvýrazněnými službami (místní)](./media/backup-azure-restore-windows-server/MicrosoftInitiatorServiceRunning.png)
 
-8. Restartujte službu iniciátoru iSCSI společnosti Microsoft. Provedete to tak, že kliknete pravým tlačítkem na službu a vyberte **zastavit** . Pak znovu klikněte na něj pravým tlačítkem myši a vyberte **Spustit** .
+8. Restartujte službu iniciátoru iSCSI společnosti Microsoft. Provedete to tak, že kliknete pravým tlačítkem na službu a vyberte **zastavit**. Pak znovu klikněte na něj pravým tlačítkem myši a vyberte **Spustit**.
 
 9. Opakujte obnovení pomocí [okamžitého obnovení](backup-instant-restore-capability.md).
 
@@ -222,7 +222,7 @@ Pokud obnovení ještě neproběhne úspěšně, restartujte server nebo klienta
 
 Operace zálohování může selhat, pokud je složka mezipaměti (také označovaná jako pomocná složka) nesprávně nakonfigurovaná, chybějící předpoklady nebo má omezený přístup.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Aby operace agenta MARS uspěly ve složce mezipaměti, musí splňovat následující požadavky:
 

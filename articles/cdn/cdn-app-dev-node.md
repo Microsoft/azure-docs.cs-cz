@@ -16,11 +16,11 @@ ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: devx-track-js
 ms.openlocfilehash: f5d5c7a6e1f6993b19f38db2ae846b213a1d553e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316749"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993376"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Začínáme s vývojem pro Azure CDN
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ Vytvořte složku pro uložení vaší aplikace.  Z konzoly nástroje Node.js n�
 npm init
 ```
 
-Pak budete mít k dispozici řadu otázek pro inicializaci projektu.  V případě **vstupního bodu**používá tento kurz *app.js*.  V následujícím příkladu vidíte své další volby.
+Pak budete mít k dispozici řadu otázek pro inicializaci projektu.  V případě **vstupního bodu** používá tento kurz *app.js*.  V následujícím příkladu vidíte své další volby.
 
 ![Výstup inicializace NPM](./media/cdn-app-dev-node/cdn-npm-init.png)
 
@@ -91,7 +91,7 @@ Když *app.js* otevřete v našem editoru, pojďme získat základní strukturu 
     var msRestAzure = require('ms-rest-azure');
     var cdnManagementClient = require('azure-arm-cdn');
     ```
-2. Musíme definovat některé konstanty, které budou používat naše metody.  Přidejte následující.  Zástupné symboly, včetně ** &lt; lomených závorek &gt; **, nahraďte požadovanými hodnotami.
+2. Musíme definovat některé konstanty, které budou používat naše metody.  Přidejte následující.  Zástupné symboly, včetně **&lt; lomených závorek &gt;**, nahraďte požadovanými hodnotami.
    
     ``` javascript
     //Tenant app constants
@@ -124,7 +124,7 @@ Když *app.js* otevřete v našem editoru, pojďme získat základní strukturu 
     var cdnClient = new cdnManagementClient(credentials, subscriptionId);
     ```
    
-    Nezapomeňte nahradit položky v ** &lt; lomených závorkách &gt; ** správnými informacemi.  Pro `<redirect URI>` použijte identifikátor URI pro přesměrování, který jste zadali při registraci aplikace ve službě Azure AD.
+    Nezapomeňte nahradit položky v **&lt; lomených závorkách &gt;** správnými informacemi.  Pro `<redirect URI>` použijte identifikátor URI pro přesměrování, který jste zadali při registraci aplikace ve službě Azure AD.
 4. Naše Node.js Konzolová aplikace bude brát v úvahu některé parametry příkazového řádku.  Pojďme ověřit, že byl předán alespoň jeden parametr.
    
    ```javascript

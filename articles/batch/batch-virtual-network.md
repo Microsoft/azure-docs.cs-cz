@@ -5,11 +5,11 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: seodec18
 ms.openlocfilehash: cb5cda16cd9405f0cbe91a3f88be7dc3f582d21b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86142759"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993413"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Vytvoření fondu Azure Batch ve virtuální síti
 
@@ -35,15 +35,15 @@ Pokud chcete, aby výpočetní uzly komunikovaly zabezpečeně s ostatními virt
 
 ## <a name="create-a-pool-with-a-vnet-in-the-azure-portal"></a>Vytvoření fondu pomocí virtuální sítě v Azure Portal
 
-Jakmile vytvoříte virtuální síť a přiřadíte k ní podsíť, můžete vytvořit fond služby Batch s touto virtuální sítí. Pomocí těchto kroků vytvořte fond z Azure Portal: 
+Jakmile vytvoříte virtuální síť a přiřadíte k ní podsíť, můžete vytvořit fond služby Batch s touto virtuální sítí. Pomocí těchto kroků vytvořte fond z Azure Portal: 
 
 1. Na webu Azure Portal přejděte ke svému účtu Batch. Tento účet musí být ve stejném předplatném a oblasti jako skupina prostředků obsahující virtuální síť, kterou hodláte použít.
 2. V okně **Nastavení** na levé straně vyberte položku nabídky **fondy** .
 3. V okně **fondy** vyberte **Přidat**.
 4. V okně **Přidat fond** vyberte v rozevíracím seznamu **typ obrázku** možnost, kterou hodláte použít.
 5. Vyberte pro vlastní image správného **vydavatele/nabídku/SKU** .
-6. Zadejte zbývající požadovaná nastavení, včetně **velikosti uzlu**, **cílových vyhrazených uzlů**a uzlů s **nízkou prioritou**, a také všech požadovaných volitelných nastavení.
-7. V **Virtual Network**vyberte virtuální síť a podsíť, které chcete použít.
+6. Zadejte zbývající požadovaná nastavení, včetně **velikosti uzlu**, **cílových vyhrazených uzlů** a uzlů s **nízkou prioritou**, a také všech požadovaných volitelných nastavení.
+7. V **Virtual Network** vyberte virtuální síť a podsíť, které chcete použít.
 
    ![Přidat fond do virtuální sítě](./media/batch-virtual-network/add-vnet-pool.png)
 

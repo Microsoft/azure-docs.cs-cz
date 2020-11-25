@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bf8fe68c28457fd01704762e537fe259a96a6bce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d6fb23d7325347a1b27165d3e9bc3bf33797682
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87116233"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95994348"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku v Azure Active Directory B2C pomocí vlastní zásady
 
@@ -60,7 +60,7 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Dir
     </ClaimsSchema>
     ```
 
-3. Po **ClaimsSchema**přidejte element **ClaimsTransformations** a jeho podřízené prvky do elementu **BuildingBlocks** :
+3. Po **ClaimsSchema** přidejte element **ClaimsTransformations** a jeho podřízené prvky do elementu **BuildingBlocks** :
 
     ```xml
     <ClaimsTransformations>
@@ -219,7 +219,7 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Dir
     ```
 
 7. Na stránce **vlastní zásady** ve vašem tenantovi Azure AD B2C vyberte **Odeslat zásadu**.
-8. Pokud existuje, zapněte **zásadu přepsat**a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions.xml* .
+8. Pokud existuje, zapněte **zásadu přepsat** a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions.xml* .
 9. Klikněte na **Odeslat**.
 
 ## <a name="create-a-relying-party-file"></a>Vytvoření souboru předávající strany
@@ -240,14 +240,14 @@ Dále aktualizujte soubor předávající strany, který zahájí cestu uživate
     ```
 
 5. Na stránce **vlastní zásady** ve vašem tenantovi Azure AD B2C vyberte **Odeslat zásadu**.
-6. Pokud existuje, zapněte **zásadu přepsat**a pak vyhledejte a vyberte soubor *ROPC_Auth.xml* .
+6. Pokud existuje, zapněte **zásadu přepsat** a pak vyhledejte a vyberte soubor *ROPC_Auth.xml* .
 7. Klikněte na **Odeslat**.
 
 ## <a name="test-the-policy"></a>Testování zásad
 
 Použijte svou oblíbenou aplikaci pro vývoj rozhraní API k vygenerování volání rozhraní API a Projděte si odpověď pro ladění zásad. Sestavte volání jako v tomto příkladu s následujícími informacemi jako text požadavku POST:
 
-`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_ROPC_Auth/oauth2/v2.0/token`
 
 - Nahraďte `<tenant-name>` názvem vašeho tenanta Azure AD B2C.
 - Nahraďte `B2C_1A_ROPC_Auth` úplným názvem zásady pro přihlašovací údaje hesla vlastníka prostředku.
@@ -269,7 +269,7 @@ Použijte svou oblíbenou aplikaci pro vývoj rozhraní API k vygenerování vol
 Skutečný požadavek POST vypadá jako v následujícím příkladu:
 
 ```https
-POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
+POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1A_ROPC_Auth HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -292,7 +292,7 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 
 Sestavte následné volání jako tu, který je zde zobrazen. Použijte informace v následující tabulce jako text žádosti:
 
-`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_ROPC_Auth/oauth2/v2.0/token`
 
 - Nahraďte `<tenant-name>` názvem vašeho tenanta Azure AD B2C.
 - Nahraďte `B2C_1A_ROPC_Auth` úplným názvem zásady pro přihlašovací údaje hesla vlastníka prostředku.

@@ -8,11 +8,11 @@ ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.openlocfilehash: 5747de399e7ae0cfe99ba013f8da376be0ba1b2a
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544949"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993631"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Kurz: Konfigurace zásad Apache HBA v HDInsight pomocí Balíček zabezpečení podniku
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
-* Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+* Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 * Vytvořte [cluster HDInsight HBA pomocí balíček zabezpečení podniku](apache-domain-joined-configure-using-azure-adds.md).
 
@@ -93,13 +93,13 @@ Pomocí SSH se můžete připojit k clusterům HBA a pak pomocí [prostředí Ap
 
 ## <a name="create-ranger-policies"></a>Vytvoření zásad Ranger
 
-Vytvořte zásady Ranger pro **sales_user1** a **marketing_user1** .
+Vytvořte zásady Ranger pro **sales_user1** a **marketing_user1**.
 
-1. Otevřete **Uživatelské rozhraní správce Ranger** . Klikněte na **\<ClusterName> _hbase** pod položkou **HBA** .
+1. Otevřete **Uživatelské rozhraní správce Ranger**. Klikněte na **\<ClusterName> _hbase** pod položkou **HBA**.
 
    ![Uživatelské rozhraní správce HDInsight Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
-2. Na obrazovce **seznam zásad** se zobrazí všechny zásady Ranger vytvořené pro tento cluster. Může být uvedena jedna předem nakonfigurovaná zásada. Klikněte na **Přidat novou zásadu** .
+2. Na obrazovce **seznam zásad** se zobrazí všechny zásady Ranger vytvořené pro tento cluster. Může být uvedena jedna předem nakonfigurovaná zásada. Klikněte na **Přidat novou zásadu**.
 
     ![Seznam zásad HBA pro Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
@@ -191,7 +191,7 @@ V závislosti na nakonfigurovaných zásadách Ranger může **sales_user1** Zob
 
 ### <a name="access-data-as-marketing_user1"></a>Přístup k datům jako marketing_user1
 
-1. Otevřete nové připojení SSH ke clusteru. Pomocí následujícího příkazu se přihlaste jako **marketing_user1** :
+1. Otevřete nové připojení SSH ke clusteru. Pomocí následujícího příkazu se přihlaste jako **marketing_user1**:
 
    ```bash
    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -235,11 +235,11 @@ V závislosti na nakonfigurovaných zásadách Ranger může **sales_user1** Zob
 
 Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster HBA, který jste vytvořili, pomocí následujícího postupu:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
-2. Do **vyhledávacího** pole v horní části zadejte **HDInsight** . 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+2. Do **vyhledávacího** pole v horní části zadejte **HDInsight**. 
 1. V části **služby** vyberte **clustery HDInsight** .
 1. V seznamu clusterů HDInsight, které se zobrazí, klikněte na **...** vedle clusteru, který jste vytvořili pro účely tohoto kurzu. 
-1. Klikněte na **Odstranit** . Klikněte na **Ano** .
+1. Klikněte na **Odstranit**. Klikněte na **Ano**.
 
 ## <a name="next-steps"></a>Další kroky
 

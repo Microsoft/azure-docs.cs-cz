@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8fa1c2627917bfe386c488470f6a78db4c51f2ec
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363670"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994260"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to funguje: Samoobslužné resetování hesla v Azure AD
 
@@ -182,7 +182,7 @@ Vezměte v úvahu následující vzorový scénář:
 
 * Existují čtyři správci v prostředí.
 * Správce *A* resetuje heslo pomocí SSPR.
-* Správci *B*, *C*a *D* obdrží e-mail s upozorněním na resetování hesla.
+* Správci *B*, *C* a *D* obdrží e-mail s upozorněním na resetování hesla.
 
 ## <a name="on-premises-integration"></a>Místní integrace
 

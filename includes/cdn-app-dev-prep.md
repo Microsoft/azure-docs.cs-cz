@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
 ms.openlocfilehash: 4967991b0edaa854acbf6b308596859d662311fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316748"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993379"
 ---
 ## <a name="prerequisites"></a>Požadavky
 Než začnete psát kód pro správu CDN, musíte provést nějakou přípravu, aby kód mohl pracovat s Azure Resource Manager. K provedení této přípravy potřebujete:
@@ -27,7 +27,7 @@ Než začnete psát kód pro správu CDN, musíte provést nějakou přípravu, 
 3. Pojmenujte skupinu prostředků *CdnConsoleTutorial*.  Vyberte své předplatné a zvolte umístění poblíž.  Pokud chcete, můžete kliknutím na zaškrtávací políčko **Připnout na řídicí panel** připnout skupinu prostředků na řídicí panel na portálu.  Připnutí usnadňuje vyhledání později.  Po provedení výběru klikněte na **vytvořit**.
 
     ![Snímek obrazovky dialogového okna skupiny prostředků](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
-4. Pokud jste po vytvoření skupiny prostředků ji nepřidali do řídicího panelu, můžete ji najít kliknutím na **Procházet**a pak na **skupiny prostředků**.  Pokud ho chcete otevřít, klikněte na skupinu prostředků.  Poznamenejte si **ID předplatného**. Budeme ho potřebovat později.
+4. Pokud jste po vytvoření skupiny prostředků ji nepřidali do řídicího panelu, můžete ji najít kliknutím na **Procházet** a pak na **skupiny prostředků**.  Pokud ho chcete otevřít, klikněte na skupinu prostředků.  Poznamenejte si **ID předplatného**. Budeme ho potřebovat později.
 
     ![Snímek obrazovky s oddílem kurzu konzoly C D N.](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
 
@@ -37,7 +37,7 @@ Existují dva přístupy k ověřování aplikací pomocí Azure Active Director
 Vytvoření instančního objektu se skládá z několika kroků, včetně vytvoření Azure Active Directory aplikace.  Pokud ho chcete vytvořit, budeme [postupovat podle tohoto kurzu](../articles/active-directory/develop/howto-create-service-principal-portal.md).
 
 > [!IMPORTANT]
-> Nezapomeňte postupovat podle všech kroků v [propojeném kurzu](../articles/active-directory/develop/howto-create-service-principal-portal.md).  Je *důležité* , abyste ho dokončili přesně tak, jak je popsáno.  Nezapomeňte si poznamenat **ID tenanta**, **název domény tenanta** (obvykle doménu *. onmicrosoft.com* , pokud jste nezadali vlastní doménu), **ID klienta**a **ověřovací klíč klienta**, protože tyto informace budeme potřebovat později.  Buďte opatrní a zabezpečte **ID klienta** a **ověřovací klíč klienta**, protože tyto přihlašovací údaje můžou použít kdokoli k provádění operací jako instančního objektu.
+> Nezapomeňte postupovat podle všech kroků v [propojeném kurzu](../articles/active-directory/develop/howto-create-service-principal-portal.md).  Je *důležité* , abyste ho dokončili přesně tak, jak je popsáno.  Nezapomeňte si poznamenat **ID tenanta**, **název domény tenanta** (obvykle doménu *. onmicrosoft.com* , pokud jste nezadali vlastní doménu), **ID klienta** a **ověřovací klíč klienta**, protože tyto informace budeme potřebovat později.  Buďte opatrní a zabezpečte **ID klienta** a **ověřovací klíč klienta**, protože tyto přihlašovací údaje můžou použít kdokoli k provádění operací jako instančního objektu.
 >
 > Až se dostanete ke kroku s názvem konfigurace víceklientské aplikace, vyberte **ne**.
 >
@@ -57,7 +57,7 @@ Pokud místo instančního objektu potřebujete interaktivní ověřování indi
 >
 >
 
-1. Při vytváření aplikace namísto **webové aplikace**vyberte možnost **nativní aplikace**.
+1. Při vytváření aplikace namísto **webové aplikace** vyberte možnost **nativní aplikace**.
 
     ![Nativní aplikace](./media/cdn-app-dev-prep/cdn-native-application-include.png)
 2. Na další stránce se zobrazí výzva k zadání **identifikátoru URI přesměrování**.  Identifikátor URI se neověří, ale zapamatujte si, co jste zadali. Budete ho potřebovat později.

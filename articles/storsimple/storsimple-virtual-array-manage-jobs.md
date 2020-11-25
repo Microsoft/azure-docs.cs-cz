@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: d806d8a04dc1bd8547808d20c77bfec310f7dd06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85507479"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95992984"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>Použijte službu StorSimple Device Manager k zobrazení úloh pro virtuální pole StorSimple.
 ## <a name="overview"></a>Přehled
@@ -32,8 +32,8 @@ Můžete rychle najít úlohy, které vás zajímají, filtrováním polí, jako
 * **Časový rozsah** – úlohy je možné filtrovat podle rozsahu data a času.
 * **Zařízení** – úlohy se iniciují na konkrétním zařízení, které je připojené k vaší službě. Filtrované úlohy jsou pak na základě těchto atributů:
   
-  * **Název** – název úlohy může být **vše**, **zálohování**, **klonování**, **převzetí služeb při selhání**, **stahovat aktualizace**nebo **instalovat aktualizace**.
-  * **Stav** – úlohy mohou být **všechny**, **probíhající**, **úspěšné**nebo **neúspěšné**nebo **zrušené**.
+  * **Název** – název úlohy může být **vše**, **zálohování**, **klonování**, **převzetí služeb při selhání**, **stahovat aktualizace** nebo **instalovat aktualizace**.
+  * **Stav** – úlohy mohou být **všechny**, **probíhající**, **úspěšné** nebo **neúspěšné** nebo **zrušené**.
   * **Entita** – úlohy je možné přidružit ke svazku, sdílené složce nebo zařízení.
   * **Zařízení** – název zařízení, na kterém se úloha spustila.
   * **Zahájeno** – čas spuštění úlohy.

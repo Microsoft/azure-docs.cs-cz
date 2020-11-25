@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: af387b063a3c07d8b6b6c544814565e2a5ebdd46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87495722"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993767"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii Hyper-V do Azure
 
@@ -121,7 +121,7 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
     - Používá algoritmus bloků s pevným blokem, ve kterém jsou zdrojové a cílové soubory rozdělené do pevných bloků dat.
     - Vygenerují se kontrolní součty pro jednotlivé bloky dat. Tyto jsou porovnány s cílem určit, které bloky ze zdroje je nutné použít na cíl.
 2. Po dokončení resynchronizace by měla pokračovat normální rozdílová replikace.
-3. Pokud nechcete čekat na výchozí opětovnou synchronizaci mimo hodiny, můžete virtuální počítač znovu synchronizovat ručně. Například pokud dojde k výpadku. Provedete to tak, že v Azure Portal > znovu **synchronizujete**virtuální počítač.
+3. Pokud nechcete čekat na výchozí opětovnou synchronizaci mimo hodiny, můžete virtuální počítač znovu synchronizovat ručně. Například pokud dojde k výpadku. Provedete to tak, že v Azure Portal > znovu **synchronizujete** virtuální počítač.
 
     ![Snímek obrazovky znázorňující možnost opětovné synchronizace](./media/hyper-v-azure-architecture/image4-site.png)
 

@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
 ms.openlocfilehash: ceed62d466627d6a23554229bd6f4b96c674c7e9
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148743"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993665"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Vylepšení výkonu prostřednictvím komprimace souborů v Azure CDN
 Komprese souborů představuje jednoduchou a efektivní metodu pro zlepšení rychlosti přenosu souborů a zvýšení výkonu načítání stránek tím, že se velikost souboru před odesláním ze serveru zmenší. Komprese souborů může snížit náklady na šířku pásma a zajistit pro uživatele lépe reagující prostředí.
@@ -42,7 +42,7 @@ Existují dva způsoby, jak povolit kompresi souborů:
 
 ### <a name="standard-cdn-profiles"></a>Profily Standard CDN 
 > [!NOTE]
-> Tato část se vztahuje na **Azure CDN Standard od Microsoftu**, **Azure CDN Standard od Verizon**a **Azure CDN Standard od profilů Akamai** .
+> Tato část se vztahuje na **Azure CDN Standard od Microsoftu**, **Azure CDN Standard od Verizon** a **Azure CDN Standard od profilů Akamai** .
 > 
 > 
 

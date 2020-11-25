@@ -11,11 +11,11 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
 ms.openlocfilehash: 1765c6a7d19a11730567acd5e41deebc0a20cec2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235804"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993988"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Zřizování aplikací na základě atributů s filtry oborů
 Cílem tohoto článku je vysvětlit, jak používat filtry oborů k definování pravidel založených na atributech, která určují, kteří uživatelé se zřídí do aplikace.
@@ -72,7 +72,7 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
 
 6. Vyberte **Přidat filtr oborů**.
 
-7. Definujte klauzuli tak, že vyberete **název zdrojového atributu**, **operátor**a **hodnotu atributu** pro porovnání. Podporovány jsou následující operátory:
+7. Definujte klauzuli tak, že vyberete **název zdrojového atributu**, **operátor** a **hodnotu atributu** pro porovnání. Podporovány jsou následující operátory:
 
    a. **Je rovno**. Klauzule vrátí "true", pokud vyhodnocený atribut odpovídá hodnotě vstupního řetězce (rozlišuje velká a malá písmena).
 
@@ -86,7 +86,7 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
 
    f. není **null**. Klauzule vrátí hodnotu true, pokud vyhodnocený atribut není prázdný.
 
-   například **porovnávání regulárních**znaků. Klauzule vrátí "true", pokud vyhodnocený atribut odpovídá vzoru regulárního výrazu. Například: ([1-9] [0-9]) odpovídá libovolnému číslu mezi 10 a 99.
+   například **porovnávání regulárních** znaků. Klauzule vrátí "true", pokud vyhodnocený atribut odpovídá vzoru regulárního výrazu. Například: ([1-9] [0-9]) odpovídá libovolnému číslu mezi 10 a 99.
 
    h. **NEshoda s regulárním výrazem** Klauzule vrátí "true", pokud se vyhodnocený atribut neshoduje se vzorem regulárního výrazu.
    
@@ -103,7 +103,7 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
 
 9. Volitelně můžete opakováním kroků 7-8 přidat další klauzule rozsahu.
 
-10. V části **název filtru oboru**přidejte název filtru oborů.
+10. V části **název filtru oboru** přidejte název filtru oborů.
 
 11. Vyberte **OK**.
 

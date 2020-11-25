@@ -5,11 +5,11 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: seodec18
 ms.openlocfilehash: fe2697c73f2a5f3f0b33cfb598f11f39420ed723
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108095"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994107"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metriky, výstrahy a protokoly služby Batch pro vyhodnocení a monitorování diagnostiky
 
@@ -33,10 +33,10 @@ V Azure Portal zobrazí stránka **Přehled** pro účet ve výchozím nastaven�
 
 Zobrazení všech metrik účtu Batch v Azure Portal:
 
-1. V Azure Portal vyberte **všechny služby**  >  **účty Batch**a potom vyberte název účtu Batch.
-2. V části **Sledování** klikněte na **Metriky**.
+1. V Azure Portal vyberte **všechny služby**  >  **účty Batch** a potom vyberte název účtu Batch.
+2. V oblasti **Monitorování** vyberte **Metriky**.
 3. Vyberte **Přidat metriku** a potom vyberte metriku v rozevíracím seznamu.
-4. Vyberte možnost **agregace** pro metriku. Pro metriky založené na počtu (například "vyhrazený počet jader" nebo "počet uzlů s nízkou prioritou") použijte **průměrnou** agregaci. Pro metriky založené na událostech (jako je "Změna velikosti fondu na události") použijte agregaci **Count (počet**dokončených událostí).
+4. Vyberte možnost **agregace** pro metriku. Pro metriky založené na počtu (například "vyhrazený počet jader" nebo "počet uzlů s nízkou prioritou") použijte **průměrnou** agregaci. Pro metriky založené na událostech (jako je "Změna velikosti fondu na události") použijte agregaci **Count (počet** dokončených událostí).
 
    > [!WARNING]
    > Nepoužívejte agregaci Sum, která přidá hodnoty všech datových bodů přijatých za období grafu.
@@ -61,9 +61,9 @@ Můžete například chtít nakonfigurovat výstrahu metriky, když počet jader
 
 Postup konfigurace výstrahy metriky v Azure Portal:
 
-1. Vyberte **všechny služby**  >  **Batch účty**a potom vyberte název účtu Batch.
-2. V části **monitorování**vyberte **výstrahy**a pak vyberte **nové pravidlo výstrahy**.
-3. Klikněte na **vybrat podmínku**a pak vyberte metriku. Potvrďte hodnoty pro **periodu grafu**, **Typ prahové**hodnoty, **operátora**a **typ agregace**a zadejte **prahovou hodnotu**. Potom vyberte **Done** (Hotovo).
+1. Vyberte **všechny služby**  >  **Batch účty** a potom vyberte název účtu Batch.
+2. V části **monitorování** vyberte **výstrahy** a pak vyberte **nové pravidlo výstrahy**.
+3. Klikněte na **vybrat podmínku** a pak vyberte metriku. Potvrďte hodnoty pro **periodu grafu**, **Typ prahové** hodnoty, **operátora** a **typ agregace** a zadejte **prahovou hodnotu**. Potom vyberte **Done** (Hotovo).
 4. Přidejte skupinu akcí k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
 5. V části **Podrobnosti pravidla výstrahy** zadejte název a popis **pravidla upozornění** a vyberte **Description** **závažnost** .
 6. Vyberte **Vytvořit pravidlo upozornění**.
@@ -97,12 +97,12 @@ Alternativně můžete:
 
 Chcete-li vytvořit nové nastavení diagnostiky v Azure Portal, postupujte podle následujících kroků.
 
-1. V Azure Portal vyberte **všechny služby**  >  **účty Batch**a potom vyberte název účtu Batch.
+1. V Azure Portal vyberte **všechny služby**  >  **účty Batch** a potom vyberte název účtu Batch.
 2. V části **Monitorování** vyberte **Nastavení diagnostiky**.
-3. V **nastavení diagnostiky**vyberte **Přidat nastavení diagnostiky**.
+3. V **nastavení diagnostiky** vyberte **Přidat nastavení diagnostiky**.
 4. Zadejte název nastavení.
-5. Vyberte cíl: **odeslat Log Analytics**, **archivovat do účtu úložiště**nebo **Stream do centra událostí**. Pokud vyberete účet úložiště, můžete volitelně nastavit zásady uchovávání informací. Pokud nezadáte počet dní pro uchování, data se zachovají během životnosti účtu úložiště.
-6. Vyberte **ServiceLog**, **AllMetrics**nebo obojí.
+5. Vyberte cíl: **odeslat Log Analytics**, **archivovat do účtu úložiště** nebo **Stream do centra událostí**. Pokud vyberete účet úložiště, můžete volitelně nastavit zásady uchovávání informací. Pokud nezadáte počet dní pro uchování, data se zachovají během životnosti účtu úložiště.
+6. Vyberte **ServiceLog**, **AllMetrics** nebo obojí.
 7. Vyberte **Save (Uložit** ) a vytvořte nastavení diagnostiky.
 
 Můžete také [Povolit shromažďování prostřednictvím Azure monitor v Azure Portal](../azure-monitor/platform/diagnostic-settings.md) ke konfiguraci nastavení diagnostiky, pomocí [šablony Správce prostředků](../azure-monitor/samples/resource-manager-diagnostic-settings.md)nebo pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure CLI. Další informace najdete v tématu [Přehled protokolů platformy Azure](../azure-monitor/platform/platform-logs-overview.md).
@@ -139,7 +139,7 @@ Další informace o schématu diagnostických protokolů v účtu úložiště n
 
 ### <a name="service-log-events"></a>Události protokolu služby
 
-Protokoly služby Azure Batch, pokud jsou shromažďovány, obsahují události vydávané službou Azure Batch během životnosti jednotlivého prostředku služby Batch, jako je například fond nebo úloha. Každá událost generovaná dávkou je protokolována ve formátu JSON. Jedná se například o tělo **události vytvoření**ukázkového fondu:
+Protokoly služby Azure Batch, pokud jsou shromažďovány, obsahují události vydávané službou Azure Batch během životnosti jednotlivého prostředku služby Batch, jako je například fond nebo úloha. Každá událost generovaná dávkou je protokolována ve formátu JSON. Jedná se například o tělo **události vytvoření** ukázkového fondu:
 
 ```json
 {

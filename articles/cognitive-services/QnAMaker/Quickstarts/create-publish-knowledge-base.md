@@ -6,11 +6,11 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
 ms.openlocfilehash: b22c73b3f0626b9938608e88c3382e3f5e8d97fc
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427475"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993149"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rychlý Start: vytvoření, výuka a publikování znalostní báze QnA Maker Knowledge Base
 
@@ -101,7 +101,7 @@ Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního ob
 
     `How many Azure services are used by a knowledge base?`
 
-1. Přidejte odpověď formátovanou pomocí _Markdownu_ :
+1. Přidejte odpověď formátovanou pomocí _Markdownu_:
 
     ` * Azure QnA Maker service\n* Azure Cognitive Search\n* Azure web app\n* Azure app plan`
 
@@ -184,7 +184,7 @@ Když provedete změny ve znalostní bázi a znovu publikujete, nemusíte s robo
 
 1. Po vytvoření robota otevřete prostředek **služby bot** .
 1. V části **Správa robota** vyberte **test na webu chat**.
-1. Na příkazovém řádku chatu **Zadejte zprávu** :
+1. Na příkazovém řádku chatu **Zadejte zprávu**:
 
     `Azure services?`
 

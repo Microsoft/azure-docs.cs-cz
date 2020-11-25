@@ -12,11 +12,11 @@ ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 953653a758577ed3d48ca2d81403b4cb363ea294
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259064"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994039"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>Integrace aplikace Twilio Verify s Azure Active Directory B2C
 
@@ -90,7 +90,7 @@ Abyste mohli začít, budete potřebovat:
 
 6. Vyhledejte Twilio REST API Technical Profile **Custom – SMS – zapsat**. Aktualizujte  `ServiceURL`   ho pomocí Twilio AccountSID a číslo od do zakoupeného telefonního čísla.
 
-7. Najděte Twilio REST API Technical Profiles, **TwilioRestAPI-Verify-krok 1**   a **TwilioRestAPI-Verify-STEP2**a aktualizujte  `ServiceURL`   ho pomocí Twilio AccountSID.
+7. Najděte Twilio REST API Technical Profiles, **TwilioRestAPI-Verify-krok 1**   a **TwilioRestAPI-Verify-STEP2** a aktualizujte  `ServiceURL`   ho pomocí Twilio AccountSID.
 
 ## <a name="integrate-with-azure-ad-b2c"></a>Integrace s Azure AD B2C
 
@@ -102,11 +102,11 @@ Přidejte soubory zásad do Azure AD B2C:
 
 3. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
 
-4. Přejděte na **Azure AD B2C**  >  klíče zásad Azure AD B2C**identity Experience Framework**  >  **Policy Keys**.
+4. Přejděte na **Azure AD B2C**  >  klíče zásad Azure AD B2C **identity Experience Framework**  >  **Policy Keys**.
 
-5. Přidejte nový klíč s názvem **B2cRestTwilioClientId**. Vyberte možnost **ručně**a zadejte hodnotu Twilio AccountSID.
+5. Přidejte nový klíč s názvem **B2cRestTwilioClientId**. Vyberte možnost **ručně** a zadejte hodnotu Twilio AccountSID.
 
-6. Přidejte nový klíč s názvem **B2cRestTwilioClientSecret**. Vyberte **ručně**a zadejte hodnotu OVĚŘOVACÍho tokenu Twilio.
+6. Přidejte nový klíč s názvem **B2cRestTwilioClientSecret**. Vyberte **ručně** a zadejte hodnotu OVĚŘOVACÍho tokenu Twilio.
 
 7. Nahrajte všechny soubory zásad do svého tenanta.
 

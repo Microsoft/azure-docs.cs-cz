@@ -12,11 +12,11 @@ ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 307a97b71fe453c89617a86a88063e60fcf28fa3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235056"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994005"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Ověřit stav zřizování uživatelů
 
@@ -35,7 +35,7 @@ Při první konfiguraci automatického zřizování se v části **aktuální st
 
 Po dokončení cyklu zřizování se v části **Statistika k datu** zobrazuje kumulativní počet uživatelů a skupin, které byly zřízeny do data, spolu s datem dokončení a dobou trvání posledního cyklu. **ID aktivity** jednoznačně identifikuje nejnovější cyklus zřizování. **ID úlohy** je jedinečný identifikátor pro úlohu zřizování a je specifický pro aplikaci ve vašem tenantovi.
 
-Průběh zřizování můžete zobrazit v Azure Portal na kartě **Azure Active Directory &gt; podnikové aplikace &gt; \[ název aplikace \] &gt; ** .
+Průběh zřizování můžete zobrazit v Azure Portal na kartě **Azure Active Directory &gt; podnikové aplikace &gt; \[ název aplikace \] &gt;** .
 
 ![Indikátor průběhu zřizování stránky](./media/application-provisioning-when-will-provisioning-finish-specific-user/provisioning-progress-bar-section.png)
 
@@ -59,7 +59,7 @@ Při použití automatického zřizování uživatelů s aplikací Azure AD auto
 
 Čas potřebný k zřízení daného uživatele závisí hlavně na tom, jestli vaše úloha zřizování spouští počáteční cyklus nebo přírůstkový cyklus.
 
-- Pro **počáteční cyklus**je doba úlohy závislá na mnoha faktorech, včetně počtu uživatelů a skupin v oboru pro zřizování a celkového počtu uživatelů a skupin ve zdrojovém systému. První synchronizace mezi službou Azure AD a aplikací může trvat až 20 minut až několik hodin, a to v závislosti na velikosti adresáře služby Azure AD a počtu uživatelů v oboru pro zřizování. Úplný seznam faktorů, které ovlivňují výkon počátečního cyklu, jsou shrnuty dále v této části.
+- Pro **počáteční cyklus** je doba úlohy závislá na mnoha faktorech, včetně počtu uživatelů a skupin v oboru pro zřizování a celkového počtu uživatelů a skupin ve zdrojovém systému. První synchronizace mezi službou Azure AD a aplikací může trvat až 20 minut až několik hodin, a to v závislosti na velikosti adresáře služby Azure AD a počtu uživatelů v oboru pro zřizování. Úplný seznam faktorů, které ovlivňují výkon počátečního cyklu, jsou shrnuty dále v této části.
 
 - Pro **přírůstkové cykly** po počátečním cyklu úlohy mají někdy rychlejší dobu (například během 10 minut), protože služba zřizování ukládá meze, které reprezentují stav obou systémů po počátečním cyklu, což zlepšuje výkon následných synchronizací. Čas úlohy závisí na počtu změn zjištěných v rámci tohoto cyklu zřizování. Pokud je k dispozici méně než 5 000 změn členství uživatele nebo skupiny, může být úloha dokončena v rámci jednoho přírůstkového zřizovacího cyklu. 
 
@@ -77,7 +77,7 @@ Následující tabulka shrnuje časy synchronizace pro běžné scénáře zřiz
 | Synchronizovat všechny uživatele v Azure AD|  < 1 000  | < 30 minut | < 30 minut |
 | Synchronizovat všechny uživatele v Azure AD | 1 000 – 10 000  | 43 – 86 minut | < 30 minut |
 
-U **přiřazených uživatelů a skupin konfigurace synchronizace**konfigurací můžete pomocí následujících vzorců určit přibližné minimální a maximální očekávané **počáteční časy cyklů** :
+U **přiřazených uživatelů a skupin konfigurace synchronizace** konfigurací můžete pomocí následujících vzorců určit přibližné minimální a maximální očekávané **počáteční časy cyklů** :
 
 - Minimální počet minut = 0,01 x [počet přiřazených uživatelů, skupin a členů skupiny]
 - Maximální počet minut = 0,08 x [počet přiřazených uživatelů, skupin a členů skupiny]

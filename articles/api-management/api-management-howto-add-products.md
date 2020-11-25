@@ -7,11 +7,11 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
 ms.openlocfilehash: 2f298f240d8aa7a38b42a8c78ee3c90fe3423d10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630550"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993546"
 ---
 # <a name="tutorial-create-and-publish-a-product"></a>Kurz: vytvoření a publikování produktu  
 
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte:
 :::image type="content" source="media/api-management-howto-add-products/added-product.png" alt-text="API Management produktů na portálu":::
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Dokončete následující rychlý Start: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
@@ -38,12 +38,12 @@ V tomto kurzu se naučíte:
 1. V levém navigačním panelu vyberte **produkty**  >  **+ Přidat**.
 1.  V okně **Přidat produkt** zadejte hodnoty popsané v následující tabulce pro vytvoření produktu.
 
-    :::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-01.png" alt-text="API Management produktů na portálu":::
+    :::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-01.png" alt-text="Přidat produkt na portálu":::
 
-    | Název                     | Popis                                                                                                                                                                                                                                                                                                             |
+    | Název                     | Description                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Zobrazované jméno             | Název, který se má zobrazit na [portálu pro vývojáře](api-management-howto-developer-portal.md)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-    | Popis              | Poskytněte informace o produktu, jako je jeho účel, rozhraní API, ke kterým poskytuje přístup, a další podrobnosti.                                                                                                                                               |
+    | Description              | Poskytněte informace o produktu, jako je jeho účel, rozhraní API, ke kterým poskytuje přístup, a další podrobnosti.                                                                                                                                               |
     | State                    | Vyberte možnost **Publikováno** , pokud chcete produkt publikovat. Předtím, než bude možné volat rozhraní API v produktu, je nutné produkt publikovat. Ve výchozím nastavení jsou nové produkty publikovány a jsou viditelné pouze pro skupinu  **správců** .                                                                                      |
     | Vyžaduje předplatné    | Vyberte, jestli se uživatel musí přihlásit k odběru produktu.                                                                                                                                                                                                                                   |
     | Vyžaduje schválení        | Tuto možnost vyberte, pokud chcete, aby správce zkontroloval a přijal nebo odmítl pokusy o přihlášení k tomuto produktu. Pokud není vybraná, pokusy o přihlášení k odběru se automaticky schvalují.                                                                                                                         |
@@ -80,7 +80,7 @@ Vývojáři se nejprve musí přihlásit k odběru produktu, a teprve pak získa
 1. Vyberte **+ Přidat**.
 1. Vyberte jedno nebo více rozhraní API a pak **Vyberte**.
 
-:::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-02.png" alt-text="API Management produktů na portálu":::
+:::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-02.png" alt-text="Přidat rozhraní API do existujícího produktu":::
 
 > [!TIP]
 > Můžete vytvořit nebo aktualizovat předplatné uživatele na produkt s vlastními klíči předplatného pomocí příkazu [REST API](/rest/api/apimanagement/2019-12-01/subscription/createorupdate) nebo PowerShellu.

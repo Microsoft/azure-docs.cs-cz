@@ -4,11 +4,11 @@ description: Přidejte značky nasazení nebo sestavení do grafů Průzkumníka
 ms.topic: conceptual
 ms.date: 08/14/2020
 ms.openlocfilehash: 58f6603687838713fafbf4cd5cc3f100e22b7401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758179"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993716"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Poznámky na grafech metrik v Application Insights
 
@@ -42,14 +42,14 @@ Vytvořte samostatný klíč rozhraní API pro každou ze šablon verze Azure Pi
 
 1. V samostatném okně prohlížeče otevřete nebo vytvořte šablonu vydané verze, která spravuje nasazení Azure Pipelines.
    
-1. Vyberte **Přidat úlohu**a potom z nabídky vyberte úlohu **poznámky k verzi Application Insights** .
+1. Vyberte **Přidat úlohu** a potom z nabídky vyberte úlohu **poznámky k verzi Application Insights** .
    
    ![Vyberte přidat úlohu a vyberte Application Insights poznámky k verzi.](./media/annotations/3-add-task.png)
 
    > [!NOTE]
    > Úloha poznámky k verzi aktuálně podporuje jenom agenty založené na Windows. neběží na Linux, macOS nebo jiných typech agentů.
    
-1. V části **ID aplikace**vložte Application Insights ID, které jste zkopírovali z karty **přístup k rozhraní API** .
+1. V části **ID aplikace** vložte Application Insights ID, které jste zkopírovali z karty **přístup k rozhraní API** .
    
    ![Vložit ID Application Insights](./media/annotations/4-paste-app-id.png)
    
@@ -57,13 +57,13 @@ Vytvořte samostatný klíč rozhraní API pro každou ze šablon verze Azure Pi
    
    ![Na kartě přístup k rozhraní API vyberte vytvořit klíč rozhraní API.](./media/annotations/5-create-api-key.png)
    
-1. V okně **vytvořit klíč rozhraní API** zadejte popis, vyberte **zápis poznámek**a pak vyberte **vygenerovat klíč**. Zkopírujte nový klíč.
+1. V okně **vytvořit klíč rozhraní API** zadejte popis, vyberte **zápis poznámek** a pak vyberte **vygenerovat klíč**. Zkopírujte nový klíč.
    
    ![V okně vytvořit klíč rozhraní API zadejte popis, vyberte zápis poznámek a pak vyberte vygenerovat klíč.](./media/annotations/6-create-api-key.png)
    
 1. V okně Šablona verze vyberte na kartě **proměnné** možnost **Přidat** a vytvořte definici proměnné pro nový klíč rozhraní API.
 
-1. Do pole **název**zadejte `ApiKey` a v části **hodnota**vložte klíč rozhraní API, který jste zkopírovali z karty **přístup přes rozhraní API** .
+1. Do pole **název** zadejte `ApiKey` a v části **hodnota** vložte klíč rozhraní API, který jste zkopírovali z karty **přístup přes rozhraní API** .
    
    ![Na kartě proměnné DevOps Azure vyberte Přidat, pojmenujte proměnnou ApiKey a vložte klíč rozhraní API pod hodnotu.](./media/annotations/7-paste-api-key.png)
    

@@ -9,11 +9,11 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: c8cbfb619c9eed325161503f705bf5c4c0746265
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82612329"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95992942"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Vytvoření a správa smluv obchodních partnerů v Azure Logic Apps
 
@@ -40,27 +40,27 @@ Pokud chcete vytvořit smlouvy pro výměnu zpráv RosettaNet, přečtěte si t�
 
 ## <a name="create-agreements"></a>Vytvoření smluv
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 V hlavní nabídce Azure vyberte **všechny služby**. Do vyhledávacího pole zadejte jako filtr "integr". Z výsledků vyberte tento prostředek: účty pro **integraci** .
 
    ![Najít účet pro integraci](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)
 
-1. V části **účty pro integraci**vyberte účet pro integraci, ve kterém chcete vytvořit smlouvu.
+1. V části **účty pro integraci** vyberte účet pro integraci, ve kterém chcete vytvořit smlouvu.
 
    ![Vyberte účet pro integraci, ve kterém chcete vytvořit smlouvu.](./media/logic-apps-enterprise-integration-agreements/select-integration-account.png)
 
-1. V pravém podokně v části **komponenty**vyberte dlaždici **smlouvy** .
+1. V pravém podokně v části **komponenty** vyberte dlaždici **smlouvy** .
 
    ![Zvolit "smlouvy"](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
 
-1. V části **smlouvy**klikněte na možnost **Přidat**. V podokně **Přidat** zadejte informace o vaší smlouvě, například:
+1. V části **smlouvy** klikněte na možnost **Přidat**. V podokně **Přidat** zadejte informace o vaší smlouvě, například:
 
    ![Zvolit přidat](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
    | **Název** | Yes | <*smlouva – název*> | Název vaší smlouvy |
-   | **Typ smlouvy** | Yes | **AS2**, **X12**nebo **EDIFACT** | Typ protokolu pro vaši smlouvu. Při vytváření souboru smlouvy musí obsah v tomto souboru odpovídat typu smlouvy. | |  
+   | **Typ smlouvy** | Yes | **AS2**, **X12** nebo **EDIFACT** | Typ protokolu pro vaši smlouvu. Při vytváření souboru smlouvy musí obsah v tomto souboru odpovídat typu smlouvy. | |  
    | **Partner hostitele** | Yes | <*Host-partner – název*> | Partner hostitele představuje organizaci, která určuje smlouvu. |
    | **Hostitelská identita** | Yes | <*Host-partner – identifikátor*> | Identifikátor hostitelského partnera |
    | **Partner hosta** | Yes | <*Host – partner – název*> | Partner hosta představuje organizaci, která provádí podnikání s hostitelským partnerem. |
@@ -77,7 +77,7 @@ V hlavní nabídce Azure vyberte **všechny služby**. Do vyhledávacího pole z
    >
    > Pokud se tyto hodnoty pro vašeho partnera změní, ujistěte se, že jste smlouvu aktualizovali.
 
-1. Až budete s vytvářením smlouvy hotovi, klikněte na stránce **Přidat** na **tlačítko OK**a vraťte se k účtu pro integraci.
+1. Až budete s vytvářením smlouvy hotovi, klikněte na stránce **Přidat** na **tlačítko OK** a vraťte se k účtu pro integraci.
 
    V seznamu **smlouvy** se teď zobrazí vaše nová smlouva.
 
@@ -87,11 +87,11 @@ V hlavní nabídce Azure vyberte **všechny služby**. Do vyhledávacího pole z
 
 1. Do vyhledávacího pole zadejte jako filtr "integr". Z výsledků vyberte tento prostředek: účty pro **integraci** .
 
-1. V části **účty pro integraci**vyberte účet pro integraci s smlouvou, kterou chcete upravit.
+1. V části **účty pro integraci** vyberte účet pro integraci s smlouvou, kterou chcete upravit.
 
-1. V pravém podokně v části **komponenty**vyberte dlaždici **smlouvy** .
+1. V pravém podokně v části **komponenty** vyberte dlaždici **smlouvy** .
 
-1. V části **smlouvy**vyberte smlouvu a zvolte **Upravit**.
+1. V části **smlouvy** vyberte smlouvu a zvolte **Upravit**.
 
 1. Zajistěte a uložte provedené změny.
 
@@ -101,11 +101,11 @@ V hlavní nabídce Azure vyberte **všechny služby**. Do vyhledávacího pole z
 
 1. Do vyhledávacího pole zadejte jako filtr "integr". Z výsledků vyberte tento prostředek: účty pro **integraci** .
 
-1. V části **účty pro integraci**vyberte účet pro integraci s smlouvou, kterou chcete odstranit.
+1. V části **účty pro integraci** vyberte účet pro integraci s smlouvou, kterou chcete odstranit.
 
-1. V pravém podokně v části **komponenty**vyberte dlaždici **smlouvy** .
+1. V pravém podokně v části **komponenty** vyberte dlaždici **smlouvy** .
 
-1. V části **smlouvy**vyberte smlouvu a zvolte **Odstranit**.
+1. V části **smlouvy** vyberte smlouvu a zvolte **Odstranit**.
 
 1. Potvrďte, že chcete odstranit vybranou smlouvu.
 

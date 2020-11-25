@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
 ms.openlocfilehash: de4e32d79cf4dfb3a5f54544c65544297a2c0232
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88054098"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993563"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-powershell"></a>Kurz: Vytvoření brány NAT pomocí Azure PowerShell
 

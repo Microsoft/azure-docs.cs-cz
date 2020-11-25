@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 46c27fa2073ea1178fdf01ea3cbf96fe86954a6a
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 3fc2475569765116d46a175629f25d9d49634942
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95255100"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993941"
 ---
 V tomto článku jsou uvedené verze a funkce Azure Active Directory Connect zřizovacího agenta, který byl vydán. Tým Azure AD pravidelně aktualizuje agenta zřizování o nové funkce a funkce. Agent zřizování se aktualizuje automaticky, když se uvolní nová verze. 
 
@@ -14,12 +14,12 @@ Microsoft poskytuje přímou podporu pro nejnovější verzi agenta a jednu verz
 
 ### <a name="release-status"></a>Stav verze
 
-Úterý XX, 2020: vydáno ke stažení
+23. listopadu 2020: vydáno ke stažení
 
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 
 * Podpora pro [gMSA](../articles/active-directory/cloud-provisioning/how-to-prerequisites.md#group-managed-service-accounts)
-* Podpora skupin až do velikosti 1500 členů (během rozdílové synchronizace)
+* Podpora pro skupiny o velikosti menší než 1500 členů během přírůstkového nebo rozdílového synchronizačního cyklu. Tato nastavení platí při použití filtru oboru skupiny.
 * Podpora velkých skupin s velikostí členů až 15 000
 * Vylepšení počáteční synchronizace
 * Rozšířené podrobné protokolování
