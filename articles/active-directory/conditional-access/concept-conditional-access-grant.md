@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ef2d233024ab3e9cd086e8285e681dc9f42f3f7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a8915ae349e33390ce5bb687d7c07a21665a0258
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95904014"
+ms.locfileid: "96029400"
 ---
 # <a name="conditional-access-grant"></a>Podmíněný přístup: udělení
 
@@ -108,7 +108,7 @@ Toto nastavení platí pro následující aplikace pro iOS a Android:
 - Schválené klientské aplikace podporují funkci správy mobilních aplikací Intune.
 - Požadavek na **vyžadování schválené aplikace klienta** :
    - Podporuje jenom podmínku platformy iOS a Android pro zařízení.
-   - K registraci zařízení se vyžaduje aplikace zprostředkovatele. V systému iOS je aplikace zprostředkovatele Microsoft Authenticator a v Androidu je Portál společnosti Intune aplikace.
+   - K registraci zařízení se vyžaduje aplikace zprostředkovatele. Aplikace zprostředkovatele může být Microsoft Authenticator pro iOS nebo buď Microsoft Authenticator nebo portál společnosti Microsoft pro zařízení s Androidem.
 - Podmíněný přístup nemůže vzít v úvahu schválenou klientskou aplikaci Microsoft Edge v režimu InPrivate.
 
 Informace najdete v článku [How to: vyžadovat schválené klientské aplikace pro přístup k cloudovým aplikacím s podmíněným přístupem](app-based-conditional-access.md) pro příklady konfigurace.

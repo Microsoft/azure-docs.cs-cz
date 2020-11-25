@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: a1eba1fceb959bd475d205176c2c53f6409fdc77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73890893"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024142"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>Místní nasazení akcelerátoru řešení vzdáleného monitorování – Visual Studio
 
@@ -64,7 +64,7 @@ Následující kroky ukazují, jak spustit mikroslužby vzdáleného monitorová
 
 1. Spusťte Visual Studio.
 1. Ve složce **služby** v místní kopii úložiště otevřete řešení **Remote-Monitoring. sln** .
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na řešení a klikněte na příkaz **vlastnosti**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na řešení a klikněte na příkaz **vlastnosti**.
 1. Vyberte **společné vlastnosti > spouštěný projekt**.
 1. Vyberte **více projektů po spuštění** a nastavte **akci** na **Spustit** pro následující projekty:
     * WebService (asa-manager\WebService)
@@ -105,7 +105,7 @@ Nastavte reverzní proxy server pro propojení webové aplikace a mikroslužeb b
 * Zkopírujte soubor **Nginx. conf** ze složky **webui\scripts\localhost** v místní kopii úložiště do adresáře pro instalaci **nginx\conf** .
 * Spusťte **Nginx**.
 
-Další informace o spuštění **Nginx**najdete v tématu [Nginx for Windows](https://nginx.org/en/docs/windows.html).
+Další informace o spuštění **Nginx** najdete v tématu [Nginx for Windows](https://nginx.org/en/docs/windows.html).
 
 ### <a name="connect-to-the-dashboard"></a>Připojení k řídicímu panelu
 

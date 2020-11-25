@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 744bcfe196629f76c5505f36ef9c8c224fefe601
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d013af82a862f1bc6b5324e7523aeea5593a4f94
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95909063"
+ms.locfileid: "96030658"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Nejčastější dotazy k rozhraní Azure API pro FHIR
 
@@ -122,7 +122,7 @@ Na [stránce GitHub architektury Health Architecture](https://github.com/microso
 
 ### <a name="where-can-i-see-an-example-of-connecting-a-web-application-to-azure-api-for-fhir"></a>Kde se dá zobrazit příklad připojení webové aplikace k rozhraní Azure API pro FHIR?
 
-Máme [stránku GitHubu architektury Health](https://github.com/microsoft/health-architectures) , která obsahuje ukázkové aplikace a scénáře. Ukazuje, jak připojit webovou aplikaci k rozhraní Azure API pro FHIR.  
+Máme [stránku GitHubu architektury Health](https://aka.ms/health-architectures) , která obsahuje ukázkové aplikace a scénáře. Ukazuje, jak připojit webovou aplikaci k rozhraní Azure API pro FHIR.  
 
 ## <a name="azure-api-for-fhir-features-and-services"></a>Rozhraní Azure API pro funkce a služby FHIR 
 

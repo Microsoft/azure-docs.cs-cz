@@ -2,15 +2,15 @@
 title: Kurz – naplánování úlohy ACR
 description: V tomto kurzu se dozvíte, jak spustit úlohu Azure Container Registry podle definovaného plánu nastavením jedné nebo více triggerů časovače.
 ms.topic: article
-ms.date: 06/27/2019
-ms.openlocfilehash: 3202b5d8c426165d81129f1affa69b3a3d515ce9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/24/2020
+ms.openlocfilehash: 13a4ccac4ea97538583c1c063a6dc61e4d25686a
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78402875"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030607"
 ---
-# <a name="run-an-acr-task-on-a-defined-schedule"></a>Spuštění úlohy ACR podle definovaného plánu
+# <a name="tutorial-run-an-acr-task-on-a-defined-schedule"></a>Kurz: spuštění úlohy ACR podle definovaného plánu
 
 V tomto kurzu se dozvíte, jak spustit [úlohu ACR](container-registry-tasks-overview.md) podle plánu. Naplánování úlohy nastavením jedné nebo více *aktivačních událostí časovače*. Triggery časovače lze použít samostatně nebo v kombinaci s jinými triggery úloh.
 
@@ -25,8 +25,7 @@ Plánování úlohy je užitečné pro následující scénáře:
 * Spusťte úlohu kontejneru pro plánované operace údržby. Pokud například chcete odebrat nepotřebné image z registru, spusťte aplikaci s kontejnerem.
 * Spusťte sadu testů v provozní imagi během pracovního dne jako součást živého monitorování webu.
 
-Příklady v tomto článku můžete spustit pomocí Azure Cloud Shell nebo místní instalace rozhraní příkazového řádku Azure CLI. Pokud ho chcete používat místně, je potřeba verze 2.0.68 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
-
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="about-scheduling-a-task"></a>Plánování úlohy
 
@@ -37,19 +36,29 @@ Příklady v tomto článku můžete spustit pomocí Azure Cloud Shell nebo mís
     * Při vytváření úlohy zadejte více triggerů časovače nebo je přidejte později.
     * Volitelně můžete pojmenovat triggery pro snadnější správu, jinak budou ACR úlohy poskytovat výchozí názvy aktivačních událostí.
     * Pokud se plány časovače překrývají v čase, úlohy ACR aktivují úlohu v naplánovaném čase každého časovače.
-* **Další triggery úloh** – v úloze aktivované časovačem můžete také povolit triggery na základě [potvrzení zdrojového kódu](container-registry-tutorial-build-task.md) nebo [aktualizací Base image](container-registry-tutorial-base-image-update.md). Stejně jako jiné úlohy ACR můžete také [ručně aktivovat][az-acr-task-run] naplánovanou úlohu.
+* **Další triggery úloh** – v úloze aktivované časovačem můžete také povolit triggery na základě [potvrzení zdrojového kódu](container-registry-tutorial-build-task.md) nebo [aktualizací Base image](container-registry-tutorial-base-image-update.md). Stejně jako jiné úlohy ACR můžete také [ručně spustit][az-acr-task-run] naplánovanou úlohu.
 
 ## <a name="create-a-task-with-a-timer-trigger"></a>Vytvoření úlohy pomocí triggeru časovače
 
+### <a name="task-command"></a>Příkaz úkolu
+
+Nejdřív naplňte následující proměnnou prostředí prostředí o hodnotu vhodnou pro vaše prostředí. Tento krok není nezbytně nutný, ale usnadní provádění víceřádkových příkazů Azure CLI v tomto kurzu. Pokud nezaplníte proměnnou prostředí, je nutné ručně nahradit každou hodnotu, pokud se zobrazí v ukázkových příkazech.
+
+[![Vložené spuštění](https://shell.azure.com/images/launchcloudshell.png "Spuštění služby Azure Cloud Shell")](https://shell.azure.com)
+
+```console
+ACR_NAME=<registry-name>        # The name of your Azure container registry
+```
+
 Při vytváření úlohy pomocí příkazu [AZ ACR Task Create][az-acr-task-create] můžete volitelně přidat Trigger časovače. Přidejte `--schedule` parametr a předejte výraz cron pro časovač.
 
-Jednoduchým příkladem je následující příkaz, který spouští `hello-world` image z Docker Hub každý den v 21:00 UTC. Úloha se spustí bez kontextu zdrojového kódu.
+Jednoduchým příkladem je, že následující úloha spouští `hello-world` bitovou kopii od společnosti Microsoft Container Registry každý den v 21:00 UTC. Úloha se spustí bez kontextu zdrojového kódu.
 
 ```azurecli
 az acr task create \
-  --name mytask \
-  --registry myregistry \
-  --cmd hello-world \
+  --name timertask \
+  --registry $ACR_NAME \
+  --cmd mcr.microsoft.com/hello-world \
   --schedule "0 21 * * *" \
   --context /dev/null
 ```
@@ -57,30 +66,32 @@ az acr task create \
 Spuštěním příkazu [AZ ACR Task show][az-acr-task-show] zobrazíte, že je nakonfigurovaná aktivační událost časovače. Ve výchozím nastavení je také povolená aktivační událost základní aktualizace bitové kopie.
 
 ```azurecli
-az acr task show --name mytask --registry registry --output table
+az acr task show --name timertask --registry $ACR_NAME --output table
 ```
 
 ```output
 NAME      PLATFORM    STATUS    SOURCE REPOSITORY       TRIGGERS
 --------  ----------  --------  -------------------     -----------------
-mytask    linux       Enabled                           BASE_IMAGE, TIMER
+timertask linux       Enabled                           BASE_IMAGE, TIMER
 ```
+
+## <a name="trigger-the-task"></a>Aktivovat úlohu
 
 Ruční aktivace úlohy pomocí [AZ ACR Task Run][az-acr-task-run] , aby bylo zajištěno, že je správně nastavená:
 
 ```azurecli
-az acr task run --name mytask --registry myregistry
+az acr task run --name timertask --registry $ACR_NAME
 ```
 
-Pokud se kontejner úspěšně spustí, bude výstup podobný následujícímu:
+Pokud se kontejner úspěšně spustí, bude výstup podobný následujícímu. Výstup je zúžený, aby se zobrazily klíčové kroky.
 
 ```output
 Queued a run with ID: cf2a
 Waiting for an agent...
-2019/06/28 21:03:36 Using acb_vol_2ca23c46-a9ac-4224-b0c6-9fde44eb42d2 as the home volume
-2019/06/28 21:03:36 Creating Docker network: acb_default_network, driver: 'bridge'
+2020/11/20 21:03:36 Using acb_vol_2ca23c46-a9ac-4224-b0c6-9fde44eb42d2 as the home volume
+2020/11/20 21:03:36 Creating Docker network: acb_default_network, driver: 'bridge'
 [...]
-2019/06/28 21:03:38 Launching container with name: acb_step_0
+2020/11/20 21:03:38 Launching container with name: acb_step_0
 
 Hello from Docker!
 This message shows that your installation appears to be working correctly.
@@ -90,17 +101,16 @@ This message shows that your installation appears to be working correctly.
 Po naplánovaném čase spusťte příkaz [AZ ACR Task list-][az-acr-task-list-runs] runs a ověřte, že časovač aktivoval úlohu podle očekávání:
 
 ```azurecli
-az acr task list-runs --name mytask --registry myregistry --output table
+az acr task list-runs --name timertask --registry $ACR_NAME --output table
 ```
 
 Po úspěšném časovači je výstup podobný následujícímu:
 
 ```output
-RUN ID    TASK     PLATFORM    STATUS     TRIGGER    STARTED               DURATION
---------  -------- ----------  ---------  ---------  --------------------  ----------
-[...]
-cf2b      mytask   linux       Succeeded  Timer      2019-06-28T21:00:23Z  00:00:06
-cf2a      mytask   linux       Succeeded  Manual     2019-06-28T20:53:23Z  00:00:06
+RUN ID    TASK       PLATFORM    STATUS     TRIGGER    STARTED               DURATION
+--------  ---------  ----------  ---------  ---------  --------------------  ----------
+ca15      timertask  linux       Succeeded  Timer      2020-11-20T21:00:23Z  00:00:06
+ca14      timertask  linux       Succeeded  Manual     2020-11-20T20:53:35Z  00:00:06
 ```
 
 ## <a name="manage-timer-triggers"></a>Správa aktivačních událostí časovače
@@ -109,12 +119,12 @@ Pomocí příkazů [AZ ACR Task Timer][az-acr-task-timer] můžete spravovat tri
 
 ### <a name="add-or-update-a-timer-trigger"></a>Přidat nebo aktualizovat aktivační událost časovače
 
-Po vytvoření úkolu můžete pomocí příkazu [AZ ACR Task Timer Add][az-acr-task-timer-add] přidat Trigger časovače. Následující příklad přidá název aktivační události časovače *timer2* do *MyTask* vytvořené dříve. Tento časovač aktivuje úlohu každý den v 10:30 UTC.
+Po vytvoření úkolu můžete pomocí příkazu [AZ ACR Task Timer Add][az-acr-task-timer-add] přidat Trigger časovače. Následující příklad přidá název aktivační události časovače *timer2* do *timertask* vytvořené dříve. Tento časovač aktivuje úlohu každý den v 10:30 UTC.
 
 ```azurecli
 az acr task timer add \
-  --name mytask \
-  --registry myregistry \
+  --name timertask \
+  --registry $ACR_NAME \
   --timer-name timer2 \
   --schedule "30 10 * * *"
 ```
@@ -123,8 +133,8 @@ Aktualizujte plán existujícího triggeru nebo změňte jeho stav pomocí pří
 
 ```azurecli
 az acr task timer update \
-  --name mytask \
-  --registry myregistry \
+  --name timertask \
+  --registry $ACR_NAME \
   --timer-name timer2 \
   --schedule "30 11 * * *"
 ```
@@ -134,7 +144,7 @@ az acr task timer update \
 Příkaz [AZ ACR Task Timer list][az-acr-task-timer-list] zobrazuje aktivační události časovače nastavené pro úlohu:
 
 ```azurecli
-az acr task timer list --name mytask --registry myregistry
+az acr task timer list --name timertask --registry $ACR_NAME
 ```
 
 Příklad výstupu:
@@ -156,12 +166,12 @@ Příklad výstupu:
 
 ### <a name="remove-a-timer-trigger"></a>Odebrání triggeru časovače
 
-Pomocí příkazu [AZ ACR Task Timer Remove][az-acr-task-timer-remove] odeberte aktivační událost časovače z úlohy. Následující příklad odebere aktivační událost *timer2* z *MyTask*:
+Pomocí příkazu [AZ ACR Task Timer Remove][az-acr-task-timer-remove] odeberte aktivační událost časovače z úlohy. Následující příklad odebere aktivační událost *timer2* z *timertask*:
 
 ```azurecli
 az acr task timer remove \
-  --name mytask \
-  --registry myregistry \
+  --name timertask \
+  --registry $ACR_NAME \
   --timer-name timer2
 ```
 

@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 9f65ffc9ef24b18ce0f18571c1f3fc91e7ca7fdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85414602"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024227"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Aktivita podmínky v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Aktivita podmínky If funguje stejně jako příkaz if v programovacích jazycích. Spustí sadu aktivit, když se podmínka vyhodnotí jako `true` , a další sadu aktivit, když se podmínka vyhodnotí jako `false` . 
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 ```json
 
@@ -65,13 +65,13 @@ Aktivita podmínky If funguje stejně jako příkaz if v programovacích jazycí
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požaduje se
+Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-name | Název aktivity if-Condition | Řetězec | Ano
-typ | Musí být nastavené na **IfCondition** | Řetězec | Ano
-expression | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Výraz s typem výsledku Boolean | Ano
-ifTrueActivities | Sada aktivit, které se spustí, když se výraz vyhodnotí jako `true` . | Pole | Ano
-ifFalseActivities | Sada aktivit, které se spustí, když se výraz vyhodnotí jako `false` . | Pole | Ano
+name | Název aktivity if-Condition | Řetězec | Yes
+typ | Musí být nastavené na **IfCondition** | Řetězec | Yes
+expression | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Výraz s typem výsledku Boolean | Yes
+ifTrueActivities | Sada aktivit, které se spustí, když se výraz vyhodnotí jako `true` . | Pole | Yes
+ifFalseActivities | Sada aktivit, které se spustí, když se výraz vyhodnotí jako `false` . | Pole | Yes
 
 ## <a name="example"></a>Příklad
 Kanál v tomto příkladu kopíruje data ze vstupní složky do výstupní složky. Výstupní složka je určena hodnotou parametru kanálu: routeSelection. Pokud je hodnota routeSelection true, data se zkopírují do outputPath1. A pokud je hodnota routeSelection false, data se zkopírují do outputPath2. 

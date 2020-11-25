@@ -5,18 +5,18 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: fe3c737e0cbf6831e3abc37443e27926ed5e62b8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 183d12b5e9d32c777c8acf01177c8cbbe1b6ca00
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091768"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027361"
 ---
 ### <a name="functional-limits"></a>Funkční omezení
 
 Následující tabulka uvádí funkční omezení digitálních vláken Azure.
 
-| Plošný | Schopnost | Výchozí omezení | Měnitelný? |
+| Oblast | Schopnost | Výchozí omezení | Měnitelný? |
 | --- | --- | --- | --- |
 | Prostředek Azure | Počet instancí digitálních vláken Azure v oblasti v rámci předplatného | 10 | Yes |
 | Digitální dvojčata | Počet vláken v instanci digitálních vláken Azure | 200 000 | Yes |
@@ -29,7 +29,7 @@ Následující tabulka uvádí funkční omezení digitálních vláken Azure.
 | Modely | Počet modelů v rámci jedné instance digitálního vlákna Azure | 10 000 | Yes |
 | Modely | Počet modelů, které se dají nahrát v jednom volání rozhraní API | 250 | No |
 | Modely | Počet položek vrácených na jednu stránku | 100 | No |
-| Dotaz | Počet položek vrácených na jednu stránku | 100 | No |
+| Dotaz | Počet položek vrácených na jednu stránku | 100 | Ano |
 | Dotaz | Počet `AND`  /  `OR` výrazů v dotazu | 50 | Ano |
 | Dotaz | Počet položek pole v `IN`  /  `NOT IN` klauzuli | 50 | Ano |
 | Dotaz | Počet znaků v dotazu | 8 000 | Ano |

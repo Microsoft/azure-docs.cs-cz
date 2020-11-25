@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
 ms.openlocfilehash: 78573cfe00d8e2e7ddcbf705dffdd5530f82c4e0
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998596"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024193"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně – IntelliJ
 
@@ -98,7 +98,7 @@ Pokud jste ještě nevytvořili požadované prostředky Azure, postupujte podle
    Skript také přidá do místního počítače sadu proměnných prostředí. Každý název proměnné má předpony **počítačů**. Tyto proměnné prostředí poskytují podrobné informace, které umožňují vzdálené monitorování číst hodnoty konfigurace z prostředku Azure Key Vault.
 
    > [!TIP]
-   > Po dokončení skriptu uloží proměnné prostředí do souboru s názvem ** \<your home folder\> \\ . PC \\ \<solution name\> . env**. Můžete je použít pro budoucí nasazení akcelerátoru řešení. Všimněte si, že všechny proměnné prostředí nastavené v místním počítači přepíší hodnoty **v \\ souboru \\ \\ ** **docker-compose**
+   > Po dokončení skriptu uloží proměnné prostředí do souboru s názvem **\<your home folder\> \\ . PC \\ \<solution name\> . env**. Můžete je použít pro budoucí nasazení akcelerátoru řešení. Všimněte si, že všechny proměnné prostředí nastavené v místním počítači přepíší hodnoty **v \\ souboru \\ \\** **docker-compose**
 
 1. Zavřete prostředí příkazového řádku.
 
@@ -109,7 +109,7 @@ Pokud jste již vytvořili požadované prostředky Azure, nastavte odpovídají
 * **PCS_AAD_APPID**: ID aplikace Azure Active Directory (Azure AD).
 * **PCS_AAD_APPSECRET**: tajný klíč aplikace služby Azure AD.
 
-Z tohoto prostředku Key Vault budou načteny konfigurační hodnoty. Tyto proměnné prostředí se dají uložit do souboru ** \<your home folder\> \\ . PC \\ \<solution name\> . env** z nasazení. Všimněte si, že proměnné prostředí nastavené v místním počítači přepíší hodnoty v souboru ** \\ \\ \\ . env skriptu služby** , když spustíte **Docker-Dock**.
+Z tohoto prostředku Key Vault budou načteny konfigurační hodnoty. Tyto proměnné prostředí se dají uložit do souboru **\<your home folder\> \\ . PC \\ \<solution name\> . env** z nasazení. Všimněte si, že proměnné prostředí nastavené v místním počítači přepíší hodnoty v souboru **\\ \\ \\ . env skriptu služby** , když spustíte **Docker-Dock**.
 
 Některá z konfigurací, které potřebuje mikroslužba, je uložená v instanci Key Vault, která byla vytvořena při počátečním nasazení. Odpovídající proměnné v trezoru klíčů by měly být podle potřeby upraveny.
 
@@ -161,7 +161,7 @@ Následující kroky ukazují, jak spustit mikroslužby vzdáleného monitorová
 
 1. Vyberte **Spustit**  >  **úpravy konfigurace**.
 1. Vyberte **Přidat nový konfigurační**  >  **SBT úlohu**.
-1. Zadejte **název**a potom zadejte **úlohy** jako **Spustit**.
+1. Zadejte **název** a potom zadejte **úlohy** jako **Spustit**.
 1. V závislosti na službě, kterou chcete spustit, vyberte **pracovní adresář** .
 1. Výběrem možnosti **použít**  >  **OK** uložte své volby.
 1. Vytvořit konfigurace spouštění pro následující webové služby:
@@ -177,7 +177,7 @@ Například následující obrázek ukazuje, jak přidat konfiguraci pro službu
 #### <a name="create-a-compound-configuration"></a>Vytvoření složené konfigurace
 
 1. Chcete-li spustit všechny služby dohromady, vyberte možnost **Přidat novou konfiguraci**  >  **Compound**.
-1. Zadejte **název**a pak vyberte **Přidat úlohy SBT**.
+1. Zadejte **název** a pak vyberte **Přidat úlohy SBT**.
 1. Výběrem možnosti **použít**  >  **OK** uložte své volby.
 
 Například následující obrázek ukazuje, jak přidat všechny úlohy SBT do jedné konfigurace:

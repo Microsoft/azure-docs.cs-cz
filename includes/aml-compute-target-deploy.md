@@ -10,15 +10,15 @@ ms.custom: include file
 ms.topic: include
 ms.date: 11/02/2020
 ms.openlocfilehash: 31d00222da540751a1f95120bea00535b099403d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94816740"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027850"
 ---
 Cílový výpočetní výkon, který používáte k hostování vašeho modelu, bude mít vliv na náklady a dostupnost nasazeného koncového bodu. Pomocí této tabulky můžete zvolit vhodný cíl služby Compute.
 
-| Cílový výpočetní objekt | Použití | Podpora GPU | Podpora FPGA | Popis |
+| Cílový výpočetní objekt | Použití | Podpora GPU | Podpora FPGA | Description |
 | ----- | ----- | ----- | ----- | ----- |
 | [Místní &nbsp; Webová &nbsp; Služba](../articles/machine-learning/how-to-deploy-local-container-notebook-vm.md) | Testování a ladění | &nbsp; | &nbsp; | Používá se pro omezené testování a řešení potíží. Hardwarová akcelerace závisí na použití knihoven v místním systému.
 | [Azure Kubernetes Service (AKS)](../articles/machine-learning/how-to-deploy-azure-kubernetes-service.md) | Odvození v reálném čase |  [Ano](../articles/machine-learning/how-to-deploy-inferencing-gpus.md) (nasazení webové služby) | [Ano](../articles/machine-learning/how-to-deploy-fpga-web-service.md)   |Použijte pro vysoce škálovatelná produkční nasazení. Poskytuje rychlou odezvu a automatické škálování nasazené služby. Automatické škálování clusteru není podporováno sadou Azure Machine Learning SDK. Pokud chcete změnit uzly v clusteru AKS, použijte uživatelské rozhraní pro cluster AKS v Azure Portal. <br/><br/> Podporováno v návrháři. |

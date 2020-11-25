@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 11/10/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 955990ed9209ea1e12eed824241e8a5a456ed73b
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 4e64d866b5bd2f725db3be31d0fdd2f8663cfd7c
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444873"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029689"
 ---
 # <a name="azure-tls-certificate-changes"></a>Změny certifikátu Azure TLS  
 
@@ -30,6 +30,7 @@ Podrobnosti specifické pro službu:
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) a [DPS](../../iot-dps/index.yml) zůstanou v kořenové certifikační autoritě Baltimore CyberTrust, ale jejich zprostředkující certifikační autority se změní. [Kliknutím sem](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456)zobrazíte podrobnosti.
 - [Azure Storage](../../storage/index.yml) zůstane v kořenové certifikační autoritě Baltimore CyberTrust, ale jejich zprostředkující certifikační autority se změní. [Kliknutím sem](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518)zobrazíte podrobnosti.
 - [Mezipaměť Azure pro Redis](../../azure-cache-for-redis/index.yml) zůstane v kořenové certifikační autoritě Baltimore CyberTrust, ale jejich zprostředkující certifikační autorita se změní. [Kliknutím sem](../../azure-cache-for-redis/cache-whats-new.md)zobrazíte podrobnosti.
+- Azure Instance Metadata Service zůstane v kořenové certifikační autoritě Baltimore CyberTrust, ale jejich zprostředkující certifikační autority se změní. [Kliknutím sem](https://docs.microsoft.com/answers/questions/172717/action-required-for-attested-data-tls-with-azure-i.html)zobrazíte podrobnosti.
 
 > [!IMPORTANT]
 > Zákazníci možná budou muset po této změně aktualizovat své aplikace, aby se předešlo chybám připojení při pokusu o připojení ke službám Azure.
@@ -70,11 +71,11 @@ Tady je několik způsobů, jak zjistit, jestli je vaše aplikace ovlivněná:
 - Pokud máte aplikaci, která se integruje s rozhraními API Azure nebo jinými službami Azure, a nejste si jistí, jestli používá připnutí certifikátů, obraťte se na dodavatele aplikace.
 
 - Různé operační systémy a jazykové moduly runtime, které komunikují se službami Azure, můžou vyžadovat další kroky pro správné sestavení řetězce certifikátů s těmito novými kořeny:
-    - **Linux** : řada distribucí vyžaduje, abyste do/etc/SSL/certs. přidali certifikační autority. Konkrétní pokyny najdete v dokumentaci k distribuci.
-    - **Java** : Ujistěte se, že úložiště klíčů Java obsahuje výše uvedené CAS.
-    - **Windows spuštěné v odpojených prostředích** : systémy běžící v odpojených prostředích budou muset mít do úložiště důvěryhodných kořenových certifikačních autorit přidané nové kořeny a do úložiště zprostředkujících certifikačních autorit se přidaly zprostředkující.
-    - **Android** : Projděte si dokumentaci k vašemu zařízení a verzi Androidu.
-    - **Další hardwarová zařízení, zejména IoT** : obraťte se na výrobce zařízení.
+    - **Linux**: řada distribucí vyžaduje, abyste do/etc/SSL/certs. přidali certifikační autority. Konkrétní pokyny najdete v dokumentaci k distribuci.
+    - **Java**: Ujistěte se, že úložiště klíčů Java obsahuje výše uvedené CAS.
+    - **Windows spuštěné v odpojených prostředích**: systémy běžící v odpojených prostředích budou muset mít do úložiště důvěryhodných kořenových certifikačních autorit přidané nové kořeny a do úložiště zprostředkujících certifikačních autorit se přidaly zprostředkující.
+    - **Android**: Projděte si dokumentaci k vašemu zařízení a verzi Androidu.
+    - **Další hardwarová zařízení, zejména IoT**: obraťte se na výrobce zařízení.
 
 - Pokud máte prostředí, ve kterém jsou pravidla brány firewall nastavená tak, aby umožňovala odchozí volání jenom na určitý seznam odvolaných certifikátů (CRL) stáhnout a/nebo online ověřovací umístění protokolu OCSP (Online Certificate Status Protocol). Bude potřeba, abyste povolili následující seznam CRL a adresy URL protokolu OCSP:
 

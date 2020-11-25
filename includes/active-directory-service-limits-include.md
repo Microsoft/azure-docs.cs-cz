@@ -9,11 +9,11 @@ ms.date: 09/10/2020
 ms.author: curtand
 ms.custom: include file
 ms.openlocfilehash: 42dfa499e0a44d0b468d3a234e9dc88904c361b0
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95563892"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027511"
 ---
 Tady jsou omezení využití a další omezení služby Azure Active Directory (Azure AD).
 
@@ -21,7 +21,7 @@ Tady jsou omezení využití a další omezení služby Azure Active Directory (
 | --- | --- |
 | Tenanti | Jeden uživatel může patřit maximálně 500 tenantů Azure AD jako člen nebo host.<br/>Jeden uživatel může vytvořit maximálně 200 adresářů. |
 | Domény | Nemůžete přidat víc než 900 názvů spravovaných domén. Pokud nastavíte všechny domény pro federaci s místní službou Active Directory, můžete do každého tenanta přidat maximálně 450 názvů domén. |
-|Zdroje a prostředky |<ul><li>Ve výchozím nastavení může být v jednom tenantovi vytvořeno maximálně 50 000 prostředků Azure AD uživateli bezplatné edice Azure Active Directory. Pokud máte alespoň jednu ověřenou doménu, výchozí kvóta služby Azure AD pro vaši organizaci je rozšířena na 300 000 prostředků Azure AD. Kvóta služby Azure AD pro organizace vytvořené samoobslužným registrací zůstane 50 000 prostředků Azure AD i po převzetí interního správce a organizace se převede na spravovaného tenanta s aspoň jednou ověřenou doménou. Toto omezení služby nesouvisí s limitem cenové úrovně 500 000 prostředků na stránce s cenami služby Azure AD. Pokud chcete přejít nad výchozí kvótu, musíte kontaktovat podpora Microsoftu.</li><li>Uživatel, který není správcem, může vytvořit maximálně 250 prostředků Azure AD. K této kvótě se počítá aktivní prostředky i odstraněné prostředky, které je možné obnovit. Pro obnovení jsou k dispozici pouze prostředky služby Azure AD, které byly odstraněny před méně než 30 dny. Odstranili jste prostředky služby Azure AD, které už nejsou dostupné pro obnovení tohoto počtu k této kvótě, a to v hodnotě jedna čtvrtina po dobu 30 dnů. Pokud máte vývojáři, kteří budou pravděpodobně opakovaně překračovat tuto kvótu v průběhu jejich běžných poplatků, můžete [vytvořit a přiřadit vlastní roli](../articles/active-directory/roles/quickstart-app-registration-limits.md) s oprávněním k vytvoření neomezeného počtu registrací aplikací.</li></ul> |
+|Zdroje informací |<ul><li>Ve výchozím nastavení může být v jednom tenantovi vytvořeno maximálně 50 000 prostředků Azure AD uživateli bezplatné edice Azure Active Directory. Pokud máte alespoň jednu ověřenou doménu, výchozí kvóta služby Azure AD pro vaši organizaci je rozšířena na 300 000 prostředků Azure AD. Kvóta služby Azure AD pro organizace vytvořené samoobslužným registrací zůstane 50 000 prostředků Azure AD i po převzetí interního správce a organizace se převede na spravovaného tenanta s aspoň jednou ověřenou doménou. Toto omezení služby nesouvisí s limitem cenové úrovně 500 000 prostředků na stránce s cenami služby Azure AD. Pokud chcete přejít nad výchozí kvótu, musíte kontaktovat podpora Microsoftu.</li><li>Uživatel, který není správcem, může vytvořit maximálně 250 prostředků Azure AD. K této kvótě se počítá aktivní prostředky i odstraněné prostředky, které je možné obnovit. Pro obnovení jsou k dispozici pouze prostředky služby Azure AD, které byly odstraněny před méně než 30 dny. Odstranili jste prostředky služby Azure AD, které už nejsou dostupné pro obnovení tohoto počtu k této kvótě, a to v hodnotě jedna čtvrtina po dobu 30 dnů. Pokud máte vývojáři, kteří budou pravděpodobně opakovaně překračovat tuto kvótu v průběhu jejich běžných poplatků, můžete [vytvořit a přiřadit vlastní roli](../articles/active-directory/roles/quickstart-app-registration-limits.md) s oprávněním k vytvoření neomezeného počtu registrací aplikací.</li></ul> |
 | Rozšíření schématu |<ul><li>Rozšíření řetězcového typu (String) mohou mít maximálně 256 znaků. </li><li>Rozšíření binárního typu (Binary) jsou omezena na 256 bajtů.</li><li>Do libovolného prostředku Azure AD se dají zapisovat jenom hodnoty rozšíření 100 napříč *všemi* typy a *všemi* aplikacemi.</li><li>Rozšířit pomocí atributů typu String nebo Binary s jednou hodnotou se dají jenom entity User, Group, TenantDetail, Device, Application a ServicePrincipal.</li><li>Rozšíření schématu jsou k dispozici jenom v rozhraní Graph API verze 1.21 Preview. Pro registraci rozšíření musí aplikace mít přístup k zápisu.</li></ul> |
 | Aplikace |Vlastníky jedné aplikace může být maximálně 100 uživatelů. |
 |Manifest aplikace |V manifestu aplikace lze přidat maximálně 1200 položek. |

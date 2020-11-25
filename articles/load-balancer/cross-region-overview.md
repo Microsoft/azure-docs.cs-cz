@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 8b2f8e82cac1d26689659286a5a0f81f06fb68ca
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: f0630599c7c52f11a4cf3153bae38ad2d515b6bc
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695057"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029757"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Nástroj pro vyrovnávání zatížení mezi oblastmi (Preview)
 
@@ -35,7 +35,7 @@ Azure Standard Load Balancer podporuje vyrovnávání zatížení mezi oblastmi,
 * [Sestavit v existujícím řešení vyrovnávání zatížení](#build-cross-region-solution-on-existing-azure-load-balancer) bez výukové křivky
 
 > [!IMPORTANT]
-> Nástroj pro vyrovnávání zatížení mezi oblastmi je momentálně ve verzi Preview a není všeobecně dostupný.  Pokud chcete získat přístup k verzi Preview pro nástroj pro vyrovnávání zatížení mezi oblastmi, kontaktujte: [crossregionlb@microsoft.com](mailto:crossregionlb@microsoft.com) . </br> </br>
+> Nástroj pro vyrovnávání zatížení mezi oblastmi je momentálně ve verzi Preview a skrytý na portálu Preview. Přihlaste se, abyste **https://preview.portal.azure.com/?feature.globallb=true** mohli tuto funkci Zobrazit a nasadit. </br> </br>
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Vyrovnávání zatížení mezi oblastmi nabízí stejné výhody vysokého výkonu a nízké latence jako místní Nástroj pro vyrovnávání zatížení (Standard). 
@@ -149,6 +149,6 @@ Nástroj pro vyrovnávání zatížení mezi oblastmi sdílí [smlouvu SLA](http
  
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud chcete začít používat nástroj pro vyrovnávání zatížení, přečtěte si téma [vytvoření veřejného standardního nástroje pro vyrovnávání zatížení](quickstart-load-balancer-standard-public-portal.md) .
+- Viz [kurz: Vytvoření nástroje pro vyrovnávání zatížení mezi oblastmi pomocí Azure Portal](tutorial-cross-region-portal.md) k vytvoření nástroje pro vyrovnávání zatížení mezi oblastmi.
+- Pokud chcete vytvořit standardní oblastní Nástroj pro vyrovnávání zatížení, přečtěte si téma [vytvoření veřejného nástroje pro vyrovnávání zatížení](quickstart-load-balancer-standard-public-portal.md) .
 - Přečtěte si další informace o [Azure Load Balancer](load-balancer-overview.md).
-- [Nejčastější dotazy](load-balancer-faqs.md) k nástroji pro vyrovnávání zatížení

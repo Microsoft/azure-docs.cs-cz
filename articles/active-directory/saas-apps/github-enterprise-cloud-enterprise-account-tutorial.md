@@ -11,20 +11,18 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/29/2020
 ms.author: jeedes
-ms.openlocfilehash: 7f23551fee5331d14cdcf9e31e248cf42022d4c3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d88cbb79b42637721412dd0a35c231782a896721
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92449275"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029825"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-enterprise-cloud---enterprise-account"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí účtu GitHub Enterprise Cloud – Enterprise
 
 V tomto kurzu se dozvíte, jak integrovat účet GitHub Enterprise Cloud-Enterprise s Azure Active Directory (Azure AD). Když integrujete účet GitHub Enterprise Cloud – Enterprise s Azure AD, můžete:
 
-* Řízení ve službě Azure AD, která má přístup k účtu GitHub Enterprise Cloud – Enterprise.
-* Umožněte uživatelům, aby se automaticky přihlásili k účtu GitHub Enterprise Cloud – Enterprise pomocí svých účtů Azure AD.
-* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
+* Řízení ve službě Azure AD, která má přístup k účtu GitHub Enterprise a všem organizacím v rámci podnikového účtu.
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
@@ -33,7 +31,8 @@ Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* GitHub Enterprise Cloud – podnikový účet s povoleným jednotným přihlašováním (SSO).
+* [Účet GitHub Enterprise](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-enterprise/about-enterprise-accounts)
+* Uživatelský účet GitHubu, který je vlastníkem podnikového účtu. 
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -63,10 +62,9 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
-    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-1. **[NAKONFIGURUJTE jednotné přihlašování k účtu GitHub Enterprise Cloud-Enterprise](#configure-github-enterprise-cloud-enterprise-account-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    1. **[Vytvořte testovacího uživatele účtu GitHub enterprise Cloud-Enterprise](#create-github-enterprise-cloud-enterprise-account-test-user)** , abyste měli protějšek B. Simon v GitHub Enterprise Cloud-Enterprise, který je propojený s reprezentací uživatele Azure AD.
-1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
+    1. **[Přiřaďte uživatele Azure AD a testovací uživatelský účet k aplikaci GitHub](#assign-the-azure-ad-test-user)** – Pokud chcete povolit uživatelský účet a otestovat uživatele `B.Simon` pro použití jednotného přihlašování Azure AD.
+1. **[Povolení a testování SAML pro účet Enterprise a jeho organizace](#enable-and-test-saml-for-the-enterprise-account-and-its-organizations)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+    1. **[Otestujte jednotné přihlašování pomocí jiného vlastníka podnikového účtu nebo členského účtu organizace](#test-sso)** – ověřte, jestli konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
@@ -89,7 +87,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
      Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://github.com/enterprises/<ENTERPRISE-SLUG>/sso`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, adresy URL odpovědi a identifikátoru. Kontaktujte [GitHub Enterprise Cloud – tým podpory klientů podnikového účtu](mailto:support@github.com) pro získání těchto hodnot. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Nahraďte `<ENTERPRISE-SLUG>` skutečným názvem vašeho účtu GitHub Enterprise.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -101,9 +99,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal volána `B.Simon` .
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
@@ -111,43 +109,58 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+<a name="assign-the-azure-ad-test-user"></a>
 
-V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k účtu GitHub Enterprise Cloud-Enterprise.
+### <a name="assign-your-azure-ad-user-and-the-test-user-account-to-the-github-app"></a>Přiřazení uživatele Azure AD a testovacího uživatelského účtu k aplikaci GitHubu
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+V této části povolíte `B.Simon` a vašemu uživatelskému účtu budete používat jednotné přihlašování Azure tím, že udělíte přístup k účtu GitHub Enterprise Cloud-Enterprise.
+
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **GitHub Enterprise Cloud – podnikový účet**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte **B. Simon** a uživatelský účet ze seznamu Uživatelé a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-github-enterprise-cloud-enterprise-account-sso"></a>Konfigurace jednotného přihlašování k účtu GitHub Enterprise Cloud-Enterprise
+## <a name="enable-and-test-saml-for-the-enterprise-account-and-its-organizations"></a>Povolení a testování SAML pro účet Enterprise a jeho organizace
 
-Pokud chcete nakonfigurovat jednotné přihlašování na straně **účtu GitHub Enterprise Cloud-Enterprise** , je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do webu [GitHub Enterprise Cloud Enterprise Support Team](mailto:support@github.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Pokud chcete nakonfigurovat jednotné přihlašování na straně **účtu GitHub Enterprise Cloud-Enterprise** , postupujte podle kroků uvedených v [této dokumentaci k GitHubu](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-enterprise/enforcing-security-settings-in-your-enterprise-account#enabling-saml-single-sign-on-for-organizations-in-your-enterprise-account). 
+1. Přihlaste se k GitHub.com pomocí uživatelského účtu, který je [vlastníkem podnikového účtu](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-enterprise/roles-in-an-enterprise#enterprise-owner). 
+1. Zkopírujte hodnotu z `Login URL` pole aplikace z Azure Portal a vložte ji do `Sign on URL` pole v účtu GitHub Enterprise v nastavení SAML. 
+1. Zkopírujte hodnotu z `Azure AD Identifier` pole aplikace z Azure Portal a vložte ji do `Issuer` pole v účtu GitHub Enterprise v nastavení SAML. 
+1. Zkopírujte obsah souboru **certifikátu (Base64)** , který jste si stáhli v předchozích krocích, Azure Portal a vložte je do příslušného pole v nastavení SAML Enterprise Account. 
+1. Klikněte na `Test SAML configuration` a potvrďte, že se můžete úspěšně ověřit z účtu GitHub Enterprise do služby Azure AD.
+1. Po úspěšném dokončení testu nastavení uložte. 
+1. Po prvním ověření pomocí protokolu SAML z účtu GitHub Enterprise se vytvoří _propojená externí identita_ v účtu GitHub Enterprise, který přidruží k účtu uživatele GitHub k účtu uživatele Azure AD.  
+ 
+Po povolení jednotného přihlašování SAML pro svůj účet GitHubu Enterprise je jednotné přihlašování SAML ve výchozím nastavení povolené pro všechny organizace, které vlastní váš podnikový účet. Všichni členové budou muset ověřit pomocí jednotného přihlašování SAML, aby získali přístup k organizacím, kde jsou členy, a pokud se k účtu Enterprise budou muset při přístupu k podnikovému účtu ověřit pomocí jednotného přihlašování SAML.
 
-### <a name="create-github-enterprise-cloud-enterprise-account-test-user"></a>Vytvořit testovacího uživatele pro účet GitHub Enterprise Cloud-Enterprise
+<a name="test-sso"></a>
 
-V této části se v rámci účtu GitHub Enterprise Cloud-Enterprise vytvoří uživatel s názvem B. Simon. GitHub Enterprise Cloud – účet Enterprise podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě neexistuje v rámci účtu GitHub Enterprise Cloud-Enterprise, vytvoří se po ověření nový.
+## <a name="test-sso-with-another-enterprise-account-owner-or-organization-member-account"></a>Testování jednotného přihlašování s jiným vlastníkem podnikového účtu nebo členským účtem organizace
 
-## <a name="test-sso"></a>Test SSO 
+Po nastavení integrace SAML pro účet služby GitHub Enterprise (který platí také pro organizace GitHubu v podnikovém účtu) by měly mít jiní vlastníci podnikového účtu, kteří jsou přiřazeni k aplikaci ve službě Azure AD, přejít na adresu URL účtu GitHub Enterprise ( `https://github.com/enterprises/<enterprise account>` ), ověřit přes SAML a získat přístup k zásadám a nastavením v rámci účtu GitHub Enterprise. 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+Vlastník organizace v podnikovém účtu by měl být schopný [pozvat uživatele, aby se připojil ke své organizaci GitHubu](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-organizations-and-teams/inviting-users-to-join-your-organization). Přihlaste se k GitHub.com pomocí účtu vlastníka organizace a podle kroků v článku Pozvěte `B.Simon` organizaci. Pro případ, že ještě neexistuje uživatelský účet GitHubu, bude nutné ho vytvořit `B.Simon` . 
 
-Když na přístupovém panelu kliknete na dlaždici účet GitHub Enterprise Cloud-Enterprise, měli byste být automaticky přihlášeni k účtu GitHub Enterprise Cloud-Enterprise, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+Otestování přístupu ke organizaci GitHubu v rámci podnikového účtu pomocí `B.Simon` testovacího účtu uživatele:
+1. Pozvat `B.Simon` organizaci v rámci podnikového účtu jako vlastník organizace. 
+1. Přihlaste se k GitHub.com pomocí uživatelského účtu, který chcete propojit s `B.Simon` uživatelským účtem služby Azure AD.
+1. Přihlaste se k Azure AD pomocí `B.Simon` uživatelského účtu.
+1. Přejít na organizaci GitHubu. Uživatel by měl být vyzván k ověření prostřednictvím SAML. Po úspěšném ověření SAML `B.Simon` by mělo být umožněn přístup k prostředkům organizace. 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 - [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 

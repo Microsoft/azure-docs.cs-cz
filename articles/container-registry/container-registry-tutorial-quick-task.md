@@ -2,18 +2,18 @@
 title: Kurz – rychlé sestavení imagí kontejneru
 description: V tomto kurzu zjistíte, jak sestavit image kontejneru Dockeru v Azure pomocí Azure Container Registry Tasks (ACR Tasks) a pak ji nasadit do služby Azure Container Instances.
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: 43d2c277fe3297c7e5ee55046118add352853640
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b218f47348d5a26297f14c4bc788a6cf6b78cc60
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739544"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030321"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Kurz: Sestavení a nasazení imagí kontejneru v cloudu pomocí úloh služby Azure Container Registry
 
-**ACR Tasks** je sada funkcí ve službě Azure Container Registry, která poskytuje zjednodušená a efektivní sestavení imagí kontejnerů Dockeru v Azure. V tomto článku se dozvíte, jak používat funkci *rychlé úlohy* služby ACR Tasks.
+[ACR Tasks](container-registry-tasks-overview.md) je sada funkcí ve službě Azure Container Registry, která poskytuje zjednodušená a efektivní sestavení imagí kontejnerů Dockeru v Azure. V tomto článku se dozvíte, jak používat funkci *rychlé úlohy* služby ACR Tasks.
 
 Vývojový cyklus typu „vnitřní smyčka“ je iterativní proces psaní kódu, sestavení a testování aplikace před potvrzením do správy zdrojového kódu. Rychlá úloha rozšiřuje vnitřní smyčku do cloudu, poskytuje ověření úspěšnosti sestavení a automatické odesílání úspěšně sestavených imagí do registru kontejneru. Vaše image se nativně sestavují v cloudu, blízko registru, a umožňují tak rychlejší nasazení.
 
@@ -28,11 +28,7 @@ V tomto kurzu, který je první částí série, se naučíte:
 
 V následujících kurzech se naučíte použít ACR Tasks k automatizovanému sestavení imagu kontejneru při potvrzení kódu a aktualizaci základní image. ACR úlohy mohou také spouštět [úlohy s více kroky](container-registry-tasks-multi-step.md), pomocí souboru YAML k definování kroků pro sestavení, vložení a volitelně testování více kontejnerů.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Pokud chcete Azure CLI používat místně, musíte mít nainstalovanou verzi Azure CLI **2.0.46** nebo novější a přihlásit se pomocí příkazu [az login][az-login]. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku (CLI), přečtěte si téma [Instalace Azure CLI][azure-cli].
-
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="github-account"></a>Účet GitHub
 
@@ -66,13 +62,13 @@ cd acr-build-helloworld-node
 
 Příkazy v této sérii kurzů jsou formátované pro prostředí Bash. Pokud byste chtěli raději použít PowerShell, příkazový řádek nebo jiné prostředí, budete možná podle toho muset přizpůsobit pokračování řádku a formát proměnné prostředí.
 
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+
 ## <a name="build-in-azure-with-acr-tasks"></a>Sestavení v Azure pomocí ACR Tasks
 
 Když teď máte zdrojový kód ve svém počítači, postupujte podle těchto kroků k vytvoření registru kontejneru a sestavení image kontejneru pomocí ACR Tasks.
 
 Aby bylo spouštění ukázkových souborů jednodušší, používají kurzy v této sérii proměnné prostředí shell. Spuštěním následujícího příkazu nastavte proměnnou `ACR_NAME`. Nahraďte **\<registry-name\>** jedinečným názvem nového registru kontejneru. Název registru musí být v rámci Azure jedinečný, obsahovat pouze malá písmena a musí obsahovat 5-50 alfanumerických znaků. Další prostředky, které v tomto kurzu vytvoříte, jsou založené na tomto názvu. Proto byste měli změnit jenom tuto první proměnnou.
-
-[![Vložit spuštění](https://shell.azure.com/images/launchcloudshell.png "Spuštění služby Azure Cloud Shell")](https://shell.azure.com)
 
 ```console
 ACR_NAME=<registry-name>
@@ -80,16 +76,16 @@ ACR_NAME=<registry-name>
 
 S vyplněnou proměnnou prostředí registru kontejneru byste teď měli být schopni zkopírovat a vložit zbytek příkazů v kurzu, aniž byste museli upravovat nějaké hodnoty. Spuštěním následujících příkazů vytvořte skupinu prostředků a registr kontejneru:
 
-```azurecli-interactive
+```azurecli
 RES_GROUP=$ACR_NAME # Resource Group name
 
 az group create --resource-group $RES_GROUP --location eastus
 az acr create --resource-group $RES_GROUP --name $ACR_NAME --sku Standard --location eastus
 ```
 
-Když teď máte registr, pomocí ACR Tasks sestavte image kontejneru ze vzorového kódu. Spuštěním příkazu [az acr build][az-acr-build] proveďte *rychlou úlohu* :
+Když teď máte registr, pomocí ACR Tasks sestavte image kontejneru ze vzorového kódu. Spuštěním příkazu [az acr build][az-acr-build] proveďte *rychlou úlohu*:
 
-```azurecli-interactive
+```azurecli
 az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
 ```
 
@@ -100,16 +96,16 @@ Packing source code into tar file to upload...
 Sending build context (4.813 KiB) to ACR...
 Queued a build with build ID: da1
 Waiting for build agent...
-2018/08/22 18:31:42 Using acb_vol_01185991-be5f-42f0-9403-a36bb997ff35 as the home volume
-2018/08/22 18:31:42 Setting up Docker configuration...
-2018/08/22 18:31:43 Successfully set up Docker configuration
-2018/08/22 18:31:43 Logging in to registry: myregistry.azurecr.io
-2018/08/22 18:31:55 Successfully logged in
+2020/11/18 18:31:42 Using acb_vol_01185991-be5f-42f0-9403-a36bb997ff35 as the home volume
+2020/11/18 18:31:42 Setting up Docker configuration...
+2020/11/18 18:31:43 Successfully set up Docker configuration
+2020/11/18 18:31:43 Logging in to registry: myregistry.azurecr.io
+2020/11/18 18:31:55 Successfully logged in
 Sending build context to Docker daemon   21.5kB
-Step 1/5 : FROM node:9-alpine
-9-alpine: Pulling from library/node
+Step 1/5 : FROM node:15-alpine
+15-alpine: Pulling from library/node
 Digest: sha256:8dafc0968fb4d62834d9b826d85a8feecc69bd72cd51723c62c7db67c6dec6fa
-Status: Image is up to date for node:9-alpine
+Status: Image is up to date for node:15-alpine
  ---> a56170f59699
 Step 2/5 : COPY . /src
  ---> 88087d7e709a
@@ -131,7 +127,7 @@ Removing intermediate container fe7027a11787
  ---> 20a27b90eb29
 Successfully built 20a27b90eb29
 Successfully tagged myregistry.azurecr.io/helloacrtasks:v1
-2018/08/22 18:32:11 Pushing image: myregistry.azurecr.io/helloacrtasks:v1, attempt 1
+2020/11/18 18:32:11 Pushing image: myregistry.azurecr.io/helloacrtasks:v1, attempt 1
 The push refers to repository [myregistry.azurecr.io/helloacrtasks]
 6428a18b7034: Preparing
 c44b9827df52: Preparing
@@ -144,8 +140,8 @@ c44b9827df52: Pushed
 6428a18b7034: Pushed
 8c9992f4e5dd: Pushed
 v1: digest: sha256:b038dcaa72b2889f56deaff7fa675f58c7c666041584f706c783a3958c4ac8d1 size: 1366
-2018/08/22 18:32:43 Successfully pushed image: myregistry.azurecr.io/helloacrtasks:v1
-2018/08/22 18:32:43 Step ID acb_step_0 marked as successful (elapsed time in seconds: 15.648945)
+2020/11/18 18:32:43 Successfully pushed image: myregistry.azurecr.io/helloacrtasks:v1
+2020/11/18 18:32:43 Step ID acb_step_0 marked as successful (elapsed time in seconds: 15.648945)
 The following dependencies were found:
 - image:
     registry: myregistry.azurecr.io
@@ -155,7 +151,7 @@ The following dependencies were found:
   runtime-dependency:
     registry: registry.hub.docker.com
     repository: library/node
-    tag: 9-alpine
+    tag: 15-alpine
     digest: sha256:8dafc0968fb4d62834d9b826d85a8feecc69bd72cd51723c62c7db67c6dec6fa
   git: {}
 
@@ -178,7 +174,7 @@ Veškeré produkční scénáře by měly pro přístup k registru kontejneru Az
 
 Pokud ještě nemáte trezor ve službě [Azure Key Vault](../key-vault/index.yml), vytvořte si ho v Azure CLI pomocí následujících příkazů.
 
-```azurecli-interactive
+```azurecli
 AKV_NAME=$ACR_NAME-vault
 
 az keyvault create --resource-group $RES_GROUP --name $AKV_NAME
@@ -190,7 +186,7 @@ Teď je potřeba vytvořit instanční objekt a uložit jeho přihlašovací úd
 
 Pomocí příkazu [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] vytvořte instanční objekt a pomocí příkazu [az keyvault secret set][az-keyvault-secret-set] uložte **heslo** instančního objektu do trezoru:
 
-```azurecli-interactive
+```azurecli
 # Create service principal, store its password in AKV (the registry *password*)
 az keyvault secret set \
   --vault-name $AKV_NAME \
@@ -203,11 +199,11 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-`--role`Argument v předchozím příkazu nakonfiguruje instanční objekt pomocí role *acrpull* , která uděluje přístup pouze pro získání přístupu k registru. Chcete-li udělit přístup push i Pull, změňte `--role` argument na *acrpush* .
+`--role`Argument v předchozím příkazu nakonfiguruje instanční objekt pomocí role *acrpull* , která uděluje přístup pouze pro získání přístupu k registru. Chcete-li udělit přístup push i Pull, změňte `--role` argument na *acrpush*.
 
-V dalším kroku uložte *appId* instančního objektu v trezoru. Jedná se o **uživatelské jméno** , které předáte službě Azure Container Registry pro ověření:
+V dalším kroku uložte *appId* instančního objektu v trezoru. Jedná se o **uživatelské jméno**, které předáte službě Azure Container Registry pro ověření:
 
-```azurecli-interactive
+```azurecli
 # Store service principal ID in AKV (the registry *username*)
 az keyvault secret set \
     --vault-name $AKV_NAME \
@@ -228,7 +224,7 @@ Když teď jsou přihlašovací údaje instančního objektu uložené jako tajn
 
 Spuštěním následujícího příkazu [az container create][az-container-create] nasaďte instanci kontejneru. Příkaz používá k ověření u registru kontejneru přihlašovací údaje instančního objektu uložené ve službě Azure Key Vault.
 
-```azurecli-interactive
+```azurecli
 az container create \
     --resource-group $RES_GROUP \
     --name acr-tasks \
@@ -255,18 +251,18 @@ Poznamenejte si tento plně kvalifikovaný název domény kontejneru, použijete
 
 Pokud chcete sledovat proces spuštění kontejneru, použijte příkaz [az container attach][az-container-attach]:
 
-```azurecli-interactive
+```azurecli
 az container attach --resource-group $RES_GROUP --name acr-tasks
 ```
 
-Výstup příkazu `az container attach` nejdřív zobrazí stav kontejneru, protože načte image a spustí se, potom sváže STDOUT a STDERR místní konzoly s STDOUT a STDEER kontejneru.
+`az container attach`Výstup nejprve zobrazí stav kontejneru, protože ho načte a spustí, a potom vytvoří z tohoto kontejneru propojení stdout a stderr místní konzole.
 
 ```output
 Container 'acr-tasks' is in state 'Running'...
-(count: 1) (last timestamp: 2018-08-22 18:39:10+00:00) pulling image "myregistry.azurecr.io/helloacrtasks:v1"
-(count: 1) (last timestamp: 2018-08-22 18:39:15+00:00) Successfully pulled image "myregistry.azurecr.io/helloacrtasks:v1"
-(count: 1) (last timestamp: 2018-08-22 18:39:17+00:00) Created container
-(count: 1) (last timestamp: 2018-08-22 18:39:17+00:00) Started container
+(count: 1) (last timestamp: 2020-11-18 18:39:10+00:00) pulling image "myregistry.azurecr.io/helloacrtasks:v1"
+(count: 1) (last timestamp: 2020-11-18 18:39:15+00:00) Successfully pulled image "myregistry.azurecr.io/helloacrtasks:v1"
+(count: 1) (last timestamp: 2020-11-18 18:39:17+00:00) Created container
+(count: 1) (last timestamp: 2020-11-18 18:39:17+00:00) Started container
 
 Start streaming logs:
 Server running at http://localhost:80
@@ -274,7 +270,7 @@ Server running at http://localhost:80
 
 Když se zobrazí `Server running at http://localhost:80`, přejděte v prohlížeči na plně kvalifikovaný název domény kontejneru a zobrazte spuštěnou aplikaci. Plně kvalifikovaný název domény by se měl zobrazit ve výstupu příkazu `az container create`, který jste spustili v předchozí části.
 
-![Snímek obrazovky ukázkové aplikace vykreslené v prohlížeči][quick-build-02-browser]
+:::image type="content" source="media/container-registry-tutorial-quick-build/quick-build-02-browser.png" alt-text="Ukázková aplikace spuštěná v prohlížeči":::
 
 Pokud chcete konzolu od kontejneru odpojit, stiskněte `Control+C`.
 
@@ -282,20 +278,20 @@ Pokud chcete konzolu od kontejneru odpojit, stiskněte `Control+C`.
 
 Instanci kontejneru zastavte pomocí příkazu [az container delete][az-container-delete]:
 
-```azurecli-interactive
+```azurecli
 az container delete --resource-group $RES_GROUP --name acr-tasks
 ```
 
 Pokud chcete odebrat *všechny* prostředky, které jste v tomto kurzu vytvořili, včetně registru kontejneru, trezoru klíčů a instančního objektu, použijte následující příkazy: Tyto prostředky se ale používají v [dalším kurzu](container-registry-tutorial-build-task.md) série. Pokud tedy přejdete přímo k dalšímu kurzu, můžete si je chtít nechat.
 
-```azurecli-interactive
+```azurecli
 az group delete --resource-group $RES_GROUP
 az ad sp delete --id http://$ACR_NAME-pull
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste pomocí rychlé úlohy otestovali vnitřní smyčku, můžete nakonfigurovat **úlohu sestavení** , která aktivuje sestavení imagí kontejnerů při potvrzení zdrojového kódu do úložiště Git:
+Teď, když jste pomocí rychlé úlohy otestovali vnitřní smyčku, můžete nakonfigurovat **úlohu sestavení**, která aktivuje sestavení imagí kontejnerů při potvrzení zdrojového kódu do úložiště Git:
 
 > [!div class="nextstepaction"]
 > [Aktivace automatických sestavení pomocí úloh](container-registry-tutorial-build-task.md)

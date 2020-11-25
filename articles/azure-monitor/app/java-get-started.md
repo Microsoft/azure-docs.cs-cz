@@ -5,19 +5,19 @@ ms.topic: conceptual
 author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
-ms.date: 05/24/2019
-ms.openlocfilehash: 12497d3ac86888ed861e8d5f655f45c8cbe4b6e3
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.date: 11/22/2020
+ms.openlocfilehash: 1a68cea423678dd8582d65b839d57076e84de940
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996158"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029536"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Rychlý Start: Začínáme s Application Insights ve webovém projektu Java
 
 
-> [!IMPORTANT]
-> Doporučený postup pro monitorování aplikací Java je použití automatické instrumentace beze změny kódu. Postupujte prosím podle pokynů pro [Application Insights agenta Java 3,0](./java-in-process-agent.md).
+> [!CAUTION]
+> Od listopadu 2020 pro monitorování aplikací Java doporučujeme automatickou instrumentaci pomocí agenta Azure Monitor Application Insights 3,0. Další informace o tom, jak začít, najdete v tématu [Application Insights agenta Java 3,0](./java-in-process-agent.md).
 
 V tomto rychlém startu použijete Application Insights SDK k instrumentování požadavků, sledování závislostí a shromažďování čítačů výkonu, diagnostikování problémů s výkonem a výjimek a psaní kódu ke sledování toho, co uživatelé s vaší aplikací dělají.
 
@@ -30,7 +30,7 @@ Application Insights představují rozšiřitelnou analytickou službu, která w
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>Získejte klíč instrumentace Application Insights
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Na webu Azure Portalvytvořte prostředek Application Insights. Nastavte typ aplikace na webovou aplikaci Java.
 
 3. Najděte klíč instrumentace nového prostředku. Tento klíč budete muset za chvíli vložit do projektu kódu.
@@ -221,7 +221,7 @@ Příchozí konfigurace sady SDK je podrobněji vysvětlena v našem článku o 
 Odchozí konfigurace sady SDK je definována v souboru [AI-Agent.xml](java-agent.md) .
 
 ## <a name="performance-counters"></a>Čítače výkonu
-Otevřete **prozkoumat**, **metriky**a zobrazte si rozsah čítačů výkonu.
+Otevřete **prozkoumat**, **metriky** a zobrazte si rozsah čítačů výkonu.
 
 ![Snímek obrazovky podokna metriky se zvolenými soukromými bajty procesu](./media/java-get-started/011-perf-counters.png)
 

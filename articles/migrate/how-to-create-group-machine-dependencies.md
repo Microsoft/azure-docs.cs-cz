@@ -2,13 +2,13 @@
 title: Nastavení analýzy závislostí na základě agenta v serveru Azure Migrate Assessment
 description: Tento článek popisuje, jak nastavit analýzu závislostí založenou na agentech v serveru Azure Migrate Assessment.
 ms.topic: how-to
-ms.date: 6/09/2020
-ms.openlocfilehash: c5c019ec995f59b61fb96917bed50bd8ba3f61d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/25/2020
+ms.openlocfilehash: 17c6e3e24596727350b11946bdf6896e22d41529
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022373"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028958"
 ---
 # <a name="set-up-dependency-visualization"></a>Nastavení Vizualizace závislostí
 
@@ -38,13 +38,13 @@ Tento článek popisuje, jak nastavit analýzu závislostí bez agentů v Azure 
 
 ## <a name="associate-a-workspace"></a>Přidružení pracovního prostoru
 
-1. Po zjištění počítačů pro posouzení na **serverech**  >  **Azure Migrate: posouzení serveru**klikněte na **Přehled**.  
-2. V **Azure Migrate: posouzení serveru**klikněte na **základy**.
-3. V **pracovním prostoru OMS**klikněte na **vyžaduje konfiguraci**.
+1. Po zjištění počítačů pro posouzení na **serverech**  >  **Azure Migrate: posouzení serveru** klikněte na **Přehled**.  
+2. V **Azure Migrate: posouzení serveru** klikněte na **základy**.
+3. V **pracovním prostoru OMS** klikněte na **vyžaduje konfiguraci**.
 
-     ![Konfigurace pracovního prostoru Log Analytics](./media/how-to-create-group-machine-dependencies/oms-workspace-select.png)   
+     ![Nakonfigurujete pracovní prostor služby Log Analytics](./media/how-to-create-group-machine-dependencies/oms-workspace-select.png)   
 
-4. V **oblasti Konfigurace pracovního prostoru OMS**určete, jestli chcete vytvořit nový pracovní prostor, nebo použijte existující.
+4. V **oblasti Konfigurace pracovního prostoru OMS** určete, jestli chcete vytvořit nový pracovní prostor, nebo použijte existující.
     - Můžete vybrat existující pracovní prostor ze všech pracovních prostorů v předplatném migrace projektu.
     - K tomuto pracovnímu prostoru potřebujete přístup čtenářů, abyste ho mohli přidružit.
 5. Pokud vytváříte nový pracovní prostor, vyberte jeho umístění.
@@ -59,10 +59,10 @@ V každém počítači, který chcete analyzovat, nainstalujte agenty.
 > [!NOTE]
 > Pro počítače monitorované nástrojem System Center Operations Manager 2012 R2 nebo novějším není nutné instalovat agenta MMA. Service Map se integruje s Operations Manager. [Postupujte podle](../azure-monitor/insights/service-map-scom.md#prerequisites) pokynů pro integraci.
 
-1. V **Azure Migrate: vyhodnocování serveru**klikněte na **zjištěné servery**.
+1. V **Azure Migrate: vyhodnocování serveru** klikněte na **zjištěné servery**.
 2. Pro každý počítač, který chcete analyzovat pomocí vizualizace závislosti, ve sloupci **závislosti** klikněte na **vyžaduje instalaci agenta**.
 3. Na stránce **závislosti** Stáhněte agenta MMA a závislostí pro systém Windows nebo Linux.
-4. V části **Konfigurovat agenta MMA**zkopírujte ID a klíč pracovního prostoru. Budete je potřebovat při instalaci agenta MMA.
+4. V části **Konfigurovat agenta MMA** zkopírujte ID a klíč pracovního prostoru. Budete je potřebovat při instalaci agenta MMA.
 
     ![Instalace agentů](./media/how-to-create-group-machine-dependencies/dependencies-install.png)
 
@@ -77,13 +77,13 @@ Instalace agenta na počítač s Windows:
 
 1. Dvakrát klikněte na staženého agenta.
 2. Na **úvodní** stránce klikněte na **Další**. Na stránce **licenční podmínky** **kliknutím na Souhlasím** přijměte licenci.
-3. V části **cílová složka**ponechejte nebo upravte výchozí instalační složku > **Další**.
-4. V **Možnosti nastavení agenta**vyberte **Azure Log Analytics**  >  **Další**.
+3. V části **cílová složka** ponechejte nebo upravte výchozí instalační složku > **Další**.
+4. V **Možnosti nastavení agenta** vyberte **Azure Log Analytics**  >  **Další**.
 5. Kliknutím na **Přidat** přidejte nový pracovní prostor Log Analytics. Vložte do ID a klíče pracovního prostoru, který jste zkopírovali z portálu. Klikněte na **Next** (Další).
 
 Agenta můžete nainstalovat z příkazového řádku nebo pomocí automatizované metody, jako je Configuration Manager nebo [Intigua](https://www.intigua.com/intigua-for-azure-migration).
 - [Přečtěte si další informace](../azure-monitor/platform/log-analytics-agent.md#installation-options) o použití těchto metod k instalaci agenta MMA.
-- Agenta MMA je možné nainstalovat také pomocí tohoto [skriptu](https://go.microsoft.com/fwlink/?linkid=2104394).
+- Agenta MMA je možné nainstalovat také pomocí tohoto [skriptu](https://github.com/brianbar-MSFT/Install-MMA).
 - [Přečtěte si další informace](../azure-monitor/platform/agents-overview.md#supported-operating-systems) o operačních systémech Windows podporovaných nástrojem MMA.
 
 ### <a name="install-mma-on-a-linux-machine"></a>Instalace MMA do počítače se systémem Linux
@@ -116,7 +116,7 @@ Nyní vytvořte skupinu pro posouzení.
 > [!NOTE]
 > Skupiny, pro které chcete vizualizovat závislosti, by neměly obsahovat více než 10 počítačů. Pokud máte více než 10 počítačů, rozdělte je do menších skupin.
 
-1. V **Azure Migrate: vyhodnocování serveru**klikněte na **zjištěné servery**.
+1. V **Azure Migrate: vyhodnocování serveru** klikněte na **zjištěné servery**.
 2. Ve sloupci **závislosti** klikněte na možnost **Zobrazit závislosti** pro každý počítač, který chcete zkontrolovat.
 3. Na mapě závislostí vidíte následující:
     - Příchozí (klienti) a odchozí (servery) připojení TCP, k počítači a z něj.
@@ -153,8 +153,8 @@ Spusťte dotaz na data závislostí následujícím způsobem:
 
 1. Po instalaci agentů přejděte na portál a klikněte na **Přehled**.
 2. V **Azure Migrate: posouzení serveru**, klikněte na **Přehled**. Kliknutím na šipku dolů rozbalte **základy**.
-3. V **pracovním prostoru OMS**klikněte na název pracovního prostoru.
-3. Na stránce Log Analytics pracovní prostor > **Obecné**klikněte na **protokoly**.
+3. V **pracovním prostoru OMS** klikněte na název pracovního prostoru.
+3. Na stránce Log Analytics pracovní prostor > **Obecné** klikněte na **protokoly**.
 4. Napište dotaz a klikněte na **Spustit**.
 
 ### <a name="sample-queries"></a>Ukázkové dotazy

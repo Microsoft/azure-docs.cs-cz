@@ -9,11 +9,11 @@ ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 1b5905046fdde4d5574fd4d39f40dce1bbf11e32
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95554020"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028519"
 ---
 Následující tabulky poskytují kvóty a omezení specifické pro [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Informace o cenách Event Hubs najdete v článku [Event Hubs ceny](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -52,7 +52,7 @@ V tomto [dokumentu](../articles/event-hubs/event-hubs-dedicated-cluster-create-p
 | Funkce | Standard | Vyhrazená |
 | --- |:---|:---|
 | Šířka pásma | 20 počet propustnosti (až 40 počet propustnosti) | 20 kapacitní jednotky |
-| Jmenné prostory |  1 | 50 za CU |
+| Obory názvů |  1 | 50 za CU |
 | Event Hubs |  10 na obor názvů | 1000 na obor názvů |
 | Události příchozího přenosu dat | Plaťte za milion událostí | Zahrnuje |
 | Velikost zprávy | 1 000 000 bajtů | 1 000 000 bajtů |

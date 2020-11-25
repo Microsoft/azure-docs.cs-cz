@@ -7,11 +7,11 @@ ms.date: 10/14/2020
 ms.author: olayemio
 ms.custom: include file
 ms.openlocfilehash: 29cbb2f6a7f0faf91852e520f15b779b3fe229c8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95555827"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027237"
 ---
 Galerie sdílených imagí je služba, která pomáhá sestavovat strukturu a organizaci kolem imagí. Galerie sdílených imagí poskytují:
 
@@ -145,8 +145,8 @@ Vzhledem k tomu, že je galerie sdílených imagí, definice obrázku a verze im
 
 | Sdíleno s uživatelem     | Sdílená galerie obrázků | Definice image | Verze image |
 |----------------------|----------------------|--------------|----------------------|
-| Sdílená galerie obrázků | Ano                  | Ano          | Ano                  |
-| Definice image     | Ne                   | Ano          | Ano                  |
+| Sdílená galerie obrázků | Yes                  | Yes          | Yes                  |
+| Definice image     | No                   | Yes          | Yes                  |
 
 Pro nejlepší prostředí doporučujeme sdílení na úrovni galerie. Nedoporučujeme sdílet jednotlivé verze imagí. Další informace o RBAC najdete v tématu [Správa přístupu k prostředkům Azure pomocí RBAC](../articles/role-based-access-control/role-assignments-portal.md).
 
@@ -165,12 +165,12 @@ Za používání služby Galerie sdílených imagí se neúčtují žádné dal�
 Po vytvoření můžete provést některé změny v prostředcích Galerie imagí. Jsou omezeny na:
  
 Galerie sdílených imagí:
-- Popis
+- Description
 
 Definice Image:
 - Doporučené vCPU
 - Doporučená paměť
-- Popis
+- Description
 - Datum konce životnosti
 
 Verze Image:

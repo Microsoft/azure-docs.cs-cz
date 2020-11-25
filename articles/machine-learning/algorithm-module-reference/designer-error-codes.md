@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
-ms.date: 04/16/2020
-ms.openlocfilehash: 569cf130b464d97e0ac10904ffd86365b57610a5
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 11/25/2020
+ms.openlocfilehash: af7ac49fd6c1a31a8363c4ba0bf925787613ecc2
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420831"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030403"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>Výjimky a kódy chyb pro návrháře
 
@@ -281,11 +281,18 @@ Pokud byl model vyškolen pomocí některého ze specializovaných školicích m
 
  K této chybě dochází, pokud sloupec obsahuje příliš mnoho jedinečných hodnot.  Tato chyba se může zobrazit například v případě, že určíte, že sloupec bude zpracován jako kategoriíá data, ale ve sloupci je příliš mnoho jedinečných hodnot, aby bylo možné zpracování dokončit. Tato chyba se může zobrazit také v případě, že došlo k neshodě mezi počtem jedinečných hodnot ve dvou vstupech.   
 
+Chyba jedinečných hodnot je větší, než je povoleno, pokud splňujete **obě** následující podmínky:
+
+- Více než 97% instancí jednoho sloupce je jedinečných hodnot, což znamená, že téměř všechny kategorie se liší od sebe.
+- Jeden sloupec obsahuje více než 1000 jedinečných hodnot.
+
 **Rozhodnutí**
 
 Otevřete modul, který chybu generoval, a Identifikujte sloupce používané jako vstupy. U některých modulů můžete kliknout pravým tlačítkem myši na vstup datové sady a vybrat **vizualizovat** a získat statistiku pro jednotlivé sloupce, včetně počtu jedinečných hodnot a jejich distribuce.
 
 Pro sloupce, které chcete použít pro seskupování nebo kategorizaci, proveďte kroky ke snížení počtu jedinečných hodnot ve sloupcích. Můžete omezit různými způsoby v závislosti na typu dat sloupce. 
+
+U sloupce, který se při tomto scénáři obvykle nepoužívá, je tato chyba nevýznamná jako funkce pro výuku modelů. Proto můžete použít možnost [Upravit metadata](../algorithm-module-reference/edit-metadata.md) k označení tohoto sloupce jako **nejasné funkce** a nebude se používat během školení modelu. 
 <!--
 + For text data, you might be able to use [Preprocess Text](preprocess-text.md) to collapse similar entries. 
 + For numeric data, you can create a smaller number of bins using [Group Data into Bins](group-data-into-bins.md), remove or truncate values using [Clip Values](clip-values.md), or use machine learning methods such as [Principal Component Analysis](principal-component-analysis.md) or [Learning with Counts](data-transformation-learning-with-counts.md) to reduce the dimensionality of the data.  
@@ -1079,7 +1086,7 @@ Chybová zpráva z podregistru se obvykle hlásí zpět v protokolu chyb, takže
 + Ověřte, že dotaz funguje správně mimo Azure Machine Learning tím, že se přihlásí do konzoly podregistru clusteru Hadoop a spustí se dotaz.  
 + Zkuste umístit komentáře do skriptu v podregistru do samostatného řádku, a to na rozdíl v kombinování spustitelných příkazů a komentářů na jednom řádku.  
 
-### <a name="resources"></a>Prostředky
+### <a name="resources"></a>Zdroje informací
 
 Nápovědu k dotazům na podregistr pro strojové učení najdete v následujících článcích:
 
@@ -1106,8 +1113,8 @@ Nápovědu k dotazům na podregistr pro strojové učení najdete v následujíc
  Přihlaste se k databázovému serveru přímo a spuštěním dotazu, abyste ověřili, že dotaz funguje správně mimo Azure ML.  
 
  Pokud dojde k vygenerování zprávy generované modulem SQL, proveďte akci na základě hlášené chyby. Chybové zprávy například někdy obsahují konkrétní pokyny o pravděpodobnou chybu:
-+ *Neexistuje žádný takový sloupec nebo chybějící databáze* , což značí, že je možné, že jste zadali nesprávný název sloupce. Pokud jste si jisti, že je název sloupce správný, zkuste použít hranaté závorky nebo uvozovky k uzavření identifikátoru sloupce.
-+ *Chyba logiky SQL \<SQL keyword\> poblíž* , což znamená, že před zadaným klíčovým slovem může být chyba syntaxe.
++ *Neexistuje žádný takový sloupec nebo chybějící databáze*, což značí, že je možné, že jste zadali nesprávný název sloupce. Pokud jste si jisti, že je název sloupce správný, zkuste použít hranaté závorky nebo uvozovky k uzavření identifikátoru sloupce.
++ *Chyba logiky SQL \<SQL keyword\> poblíž*, což znamená, že před zadaným klíčovým slovem může být chyba syntaxe.
 
   
 |Zprávy výjimek|

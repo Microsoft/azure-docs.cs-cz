@@ -1,19 +1,19 @@
 ---
-title: Verze Preview pro Azure Monitor pro sítě
+title: Azure Monitor pro sítě
 description: Přehled Azure Monitor pro sítě, který poskytuje komplexní přehled o stavu a metrikách pro všechny nasazené síťové prostředky bez jakékoli konfigurace.
 ms.subservice: ''
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
-ms.date: 09/24/2020
-ms.openlocfilehash: e2a43c4d0423b286984631fda75e5ff806ae9a57
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+author: KumudD
+ms.author: kumud
+ms.date: 11/25/2020
+ms.openlocfilehash: 52ca879d5a680d0e62cc469e768236eac11f3719
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102757"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030158"
 ---
-# <a name="azure-monitor-for-networks-preview"></a>Verze Preview pro Azure Monitor pro sítě
+# <a name="azure-monitor-for-networks"></a>Azure Monitor pro sítě
 Azure Monitor pro sítě poskytuje komplexní přehled o [stavu](../../service-health/resource-health-checks-resource-types.md) a [metrikách](../platform/metrics-supported.md) pro všechny nasazené síťové prostředky, a to bez nutnosti konfigurace. Poskytuje taky přístup k funkcím monitorování sítě, jako je [monitorování připojení](../../network-watcher/connection-monitor-preview.md), [protokolování toku pro skupiny zabezpečení sítě (skupin zabezpečení sítě)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md), a [Analýza provozu](../../network-watcher/traffic-analytics.md). A poskytuje další funkce [diagnostiky](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) sítě.
 
 Azure Monitor pro sítě je členěné kolem těchto klíčových komponent monitorování:
@@ -26,14 +26,14 @@ Azure Monitor pro sítě je členěné kolem těchto klíčových komponent moni
 
 Stránka **přehled** Azure monitor pro sítě poskytuje snadný způsob vizualizace inventáře síťových prostředků spolu se stavem prostředků a výstrahami. Je rozdělená do čtyř klíčových funkčních oblastí: hledání a filtrování, stav prostředku a metriky, výstrahy a zobrazení závislostí.
 
-![Snímek obrazovky zobrazující stránku s přehledem](media/network-insights-overview/overview.png)
+[ ![ Snímek obrazovky zobrazující stránku s přehledem](media/network-insights-overview/overview.png)](media/network-insights-overview/overview.png)#lightbox)
 
 ### <a name="search-and-filtering"></a>Hledání a filtrování
-Zobrazení stavu prostředku a výstrah můžete přizpůsobit pomocí filtrů, jako je **předplatné**, **Skupina prostředků**a **typ**.
+Zobrazení stavu prostředku a výstrah můžete přizpůsobit pomocí filtrů, jako je **předplatné**, **Skupina prostředků** a **typ**.
 
 Pomocí vyhledávacího pole můžete vyhledat prostředky a jejich přidružené prostředky. Například veřejná IP adresa je přidružená k aplikační bráně. Hledání názvu DNS veřejné IP adresy vrátí veřejnou IP adresu i přidruženou Aplikační bránu:
 
-![Snímek obrazovky zobrazující Azure Monitor pro výsledky hledání sítí](media/network-insights-overview/search.png)
+[![Snímek obrazovky zobrazující Azure Monitor pro výsledky hledání sítí](media/network-insights-overview/search.png)](media/network-insights-overview/search.png#lightbox)
 
 
 ### <a name="resource-health-and-metrics"></a>Stav prostředku a metriky
@@ -57,7 +57,7 @@ Zobrazení závislostí pomáhá vizualizovat způsob konfigurace prostředku. Z
 
 Zobrazení závislostí pro Application Gateway poskytuje zjednodušený přehled o tom, jak jsou IP adresy front-endu připojené ke posluchačům, pravidlům a back-endovému fondu. Propojovací linky jsou barevně kódované a poskytují další podrobnosti na základě stavu fondu back-endu. Toto zobrazení také nabízí podrobné zobrazení Application Gateway metrik a metrik pro všechny související back-end fondy, jako je třeba sada škálování virtuálních počítačů a instance virtuálních počítačů.
 
-![Snímek obrazovky, který zobrazuje zobrazení závislostí v Azure Monitor pro sítě.](media/network-insights-overview/dependency-view.png)
+[![Snímek obrazovky, který zobrazuje zobrazení závislostí v Azure Monitor pro sítě.](media/network-insights-overview/dependency-view.png)](media/network-insights-overview/dependency-view.png#lightbox)
 
 Graf závislosti poskytuje snadnou navigaci na nastavení konfigurace. Pokud chcete získat přístup k dalším informacím, klikněte pravým tlačítkem na back-end fond. Pokud je například back-end fond virtuálním počítačem, můžete k řešení potíží s připojením získat přímý přístup k virtuálním počítačům v oblasti cloud Insights a Azure Network Watcher:
 
@@ -73,17 +73,17 @@ Vyberte **Zobrazit podrobné metriky** a otevřete tak předkonfigurovaný seši
 
 ## <a name="connectivity"></a><a name="connectivity"></a>Připojení
 
-Karta **připojení** nabízí snadný způsob, jak vizualizovat všechny testy nakonfigurované přes monitorování připojení a [monitorování připojení (Preview)](../../network-watcher/connection-monitor-preview.md) pro vybranou sadu předplatných.
+Karta **připojení** nabízí snadný způsob, jak vizualizovat všechny testy nakonfigurované přes [monitorování připojení](../../network-watcher/connection-monitor-overview.md) a monitor připojení (Classic) pro vybranou sadu předplatných.
 
 ![Snímek obrazovky, který zobrazuje kartu připojení v Azure Monitor pro sítě.](media/network-insights-overview/azure-monitor-for-networks-connectivity-tab.png)
 
 Testy jsou seskupeny podle dlaždic **zdroje** a **cíle** a zobrazují stav dostupnosti pro každý test. Dostupná nastavení poskytují snadný přístup ke konfiguracím pro vaše kritéria dostupnosti, a to na základě neúspěšných kontrol (%) a RTT (MS). Po nastavení hodnot se stav jednotlivých testů aktualizuje na základě kritérií výběru.
 
-![Snímek obrazovky, který zobrazuje testy připojení v Azure Monitor pro sítě.](media/network-insights-overview/azure-monitor-for-networks-connectivity-tests.png)
+[![Snímek obrazovky, který zobrazuje testy připojení v Azure Monitor pro sítě.](media/network-insights-overview/azure-monitor-for-networks-connectivity-tests.png)](media/network-insights-overview/azure-monitor-for-networks-connectivity-tests.png#lightbox)
 
 Můžete vybrat libovolnou dlaždici zdroje nebo cíle a otevřít tak zobrazení metriky:
 
-![Snímek obrazovky, který zobrazuje metriky připojení v Azure Monitor pro sítě.](media/network-insights-overview/azure-monitor-for-networks-connectivity-metrics.png)
+[![Snímek obrazovky, který zobrazuje metriky připojení v Azure Monitor pro sítě.](media/network-insights-overview/azure-monitor-for-networks-connectivity-metrics.png)](media/network-insights-overview/azure-monitor-for-networks-connectivity-metrics.png#lightbox)
 
 
 V zobrazení mřížky můžete vybrat libovolnou položku. Vyberte ikonu ve sloupci **dosažitelnost** a přejdete na stránku portálu monitorování připojení a Prohlédněte si topologii směrování po směrování a možnosti připojení, které mají vliv na zjištěné problémy. Výběrem hodnoty ve sloupci **Výstraha** přejdete na výstrahy. V případě, že chcete přejít na stránku metriky pro vybrané monitorování připojení, vyberte grafy ve sloupcích **zkontrolovat neúspěšné procento** a **Doba odezvy (MS)** .
@@ -93,11 +93,11 @@ Okno **výstrahy** na pravé straně stránky nabízí zobrazení všech výst
 ## <a name="traffic"></a><a name="traffic"></a>Provoz
 Karta **přenos** poskytuje přístup ke všem skupin zabezpečení sítě nakonfigurovaným pro [protokoly toku NSG](../../network-watcher/network-watcher-nsg-flow-logging-overview.md) a [Analýza provozu](../../network-watcher/traffic-analytics.md) pro vybranou sadu předplatných seskupené podle umístění. Funkce vyhledávání na této kartě vám umožní identifikovat skupin zabezpečení sítě nakonfigurovanou pro vyhledaná IP adresu. Ve svém prostředí můžete hledat libovolnou IP adresu. Místní zobrazení v dlaždicích zobrazí všechny skupin zabezpečení sítě spolu s protokoly toků NSG a stav konfigurace Analýza provozu.
 
-![Snímek obrazovky, který zobrazuje kartu přenos v Azure Monitor pro sítě.](media/network-insights-overview/azure-monitor-for-networks-traffic-view.png)
+[![Snímek obrazovky, který zobrazuje kartu přenos v Azure Monitor pro sítě.](media/network-insights-overview/azure-monitor-for-networks-traffic-view.png)](media/network-insights-overview/azure-monitor-for-networks-traffic-view.png#lightbox)
 
 Pokud vyberete dlaždici jakékoli oblasti, zobrazí se zobrazení mřížky. Mřížka poskytuje protokoly toku NSG a Analýza provozu v zobrazení, které je snadné číst a konfigurovat:  
 
-![Snímek obrazovky zobrazující zobrazení oblasti provozu v Azure Monitor pro sítě.](media/network-insights-overview/azure-monitor-for-networks-traffic-region-view.png)
+[![Snímek obrazovky zobrazující zobrazení oblasti provozu v Azure Monitor pro sítě.](media/network-insights-overview/azure-monitor-for-networks-traffic-region-view.png)](media/network-insights-overview/azure-monitor-for-networks-traffic-region-view.png#lightbox)
 
 V zobrazení mřížky můžete vybrat libovolnou položku. Výběrem ikony ve sloupci **stav konfigurace Flowlog** upravte protokol toku NSG a konfiguraci Analýza provozu. Výběrem hodnoty ve sloupci **Výstraha** přejdete k výstrahám přenosu nakonfigurovaným pro vybrané NSG. Podobně můžete přejít na zobrazení Analýza provozu tím, že vyberete **pracovní prostor Analýza provozu**.  
 

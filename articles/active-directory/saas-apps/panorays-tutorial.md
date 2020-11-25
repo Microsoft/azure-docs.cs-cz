@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 9dacbfacdbb9a1ecc103b0cec224d861b42b1576
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 3e4d3145263b4b0379f85dea86d075480935a28c
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94370560"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029332"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-panorays"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Panorays
 
@@ -75,20 +75,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. V **základní části Konfigurace SAML** nemusí uživatel provádět žádný krok, protože aplikace už je předem integrovaná s Azure.
+1. V **základní sekci konfigurace SAML** je aplikace předem nakonfigurovaná a potřebné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na tlačítko Uložit.
 
-1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
-
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
-
-    | Přihlašovací adresa URL |
-    |--------------|
-    | `https://www.panoraysapp.com` |
-    | `https://auth.panoraysapp.com` |
-
-1. Klikněte na **Uložit**.
-
-1. Vaše aplikace Panorays očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, zatímco **jedinečný identifikátor uživatele** je namapován pomocí **User. userPrincipalName**. Aplikace Panorays očekává, že **jedinečný identifikátor uživatele** má být namapován pomocí **User. mail** , takže je nutné upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
+1. Vaše aplikace Panorays očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, zatímco **jedinečný identifikátor uživatele** je namapován pomocí **User. userPrincipalName**. Aplikace Panorays očekává, že **jedinečný identifikátor uživatele** má být namapován pomocí **User. mail**, takže je nutné upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
 
     ![image](common/default-attributes.png)
 
@@ -100,7 +89,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
@@ -134,9 +123,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 #### <a name="sp-initiated"></a>Zahájena SP:
 
-1. Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro přihlášení k Panorays, kde můžete spustit tok přihlášení.  
-
-1. Přejít na adresu URL pro přihlášení k Panorays přímo a zahájit tok přihlášení.
+Přejít na [adresu URL pro přihlášení k Panorays](https://www.panoraysapp.com) přímo a zahájit tok přihlášení.
 
 #### <a name="idp-initiated"></a>Iniciované IDP:
 

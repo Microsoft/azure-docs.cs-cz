@@ -9,11 +9,11 @@ ms.date: 06/03/2020
 ms.author: jenhayes
 ms.custom: include file
 ms.openlocfilehash: 54a789aba793d9a6b44d5fe9a1e0f42023002b5a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95555507"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028059"
 ---
 | **Prostředek** | **Výchozí omezení** | **Maximální omezení** |
 | --- | --- | --- |

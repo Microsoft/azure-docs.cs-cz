@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 594ad352d5fd8431ffaf6d681c891c967cf9d32a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34e841a5f17d589c4fbef54a4a8674a99ac6c640
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90606861"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027059"
 ---
 Aby bylo možné úspěšně vytvořit tunelové zařízení, musí být splněny následující požadavky:
 
@@ -22,13 +22,13 @@ Aby bylo možné úspěšně vytvořit tunelové zařízení, musí být splněn
 * Pro každé zařízení se dá nakonfigurovat jenom jedno tunelové zařízení.
 
 1. Nainstalujte klientské certifikáty na klienta Windows 10 pomocí článku [klienta VPN typu Point-to-site](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md) . Certifikát musí být v úložišti místního počítače.
-1. Pomocí [těchto pokynů](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/vpn-device-tunnel-config#vpn-device-tunnel-configuration)vytvořte profil sítě VPN a nakonfigurujte tunel zařízení v kontextu místního systémového účtu.
+1. Pomocí [těchto pokynů](/windows-server/remote/remote-access/vpn/vpn-device-tunnel-config#vpn-device-tunnel-configuration)vytvořte profil sítě VPN a nakonfigurujte tunel zařízení v kontextu místního systémového účtu.
 
 ### <a name="configuration-example-for-device-tunnel"></a>Příklad konfigurace pro tunelové zařízení
 
 Po nakonfigurování brány virtuální sítě a instalaci klientského certifikátu v úložišti místního počítače na klientovi Windows 10 použijte následující příklady ke konfiguraci tunelu klientského zařízení:
 
-1. Zkopírujte následující text a uložte ho jako ***devicecert.ps1***.
+1. Zkopírujte následující text a uložte ho jako ***devicecert.ps1** _.
 
    ```
    Param(
@@ -80,7 +80,7 @@ Po nakonfigurování brány virtuální sítě a instalaci klientského certifik
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Zkopírujte následující text a uložte ho jako ***VPNProfile.xml*** do stejné složky jako **devicecert.ps1**. Upravte následující text tak, aby odpovídal vašemu prostředí.
+1. Zkopírujte následující text a uložte ho jako _*_VPNProfile.xml_*_ ve stejné složce jako _ * devicecert.ps1 * *. Upravte následující text tak, aby odpovídal vašemu prostředí.
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers> <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address> <= IP of resource in the vnet or the vnet address space`
@@ -115,7 +115,7 @@ Po nakonfigurování brány virtuální sítě a instalaci klientského certifik
    <RegisterDNS>true</RegisterDNS>
    </VPNProfile>
    ```
-1. Stáhněte si **PsExec** ze společnosti [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) a extrahujte soubory do **C:\PSTools**.
+1. Stáhněte si **PsExec** ze společnosti [Sysinternals](/sysinternals/downloads/psexec) a extrahujte soubory do **C:\PSTools**.
 1. Z příkazového řádku správce spusťte PowerShell spuštěním příkazu:
 
    ```

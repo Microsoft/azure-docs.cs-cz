@@ -9,15 +9,15 @@ ms.date: 07/22/2019
 ms.author: bwren
 ms.custom: include file
 ms.openlocfilehash: ff5d04a2923f16c763e1529ecb365f60d6275ca2
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95554110"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028383"
 ---
 ### <a name="general-query-limits"></a>Obecné limity dotazů
 
-| Omezení | Popis |
+| Omezení | Description |
 |:---|:---|
 | Dotazovací jazyk | Azure Monitor používá stejný [dotazovací jazyk Kusto](/azure/kusto/query/) jako Azure Průzkumník dat. Viz [rozdíly v jazyce Azure monitor protokolu dotazu](/azure/data-explorer/kusto/query/) pro prvky jazyka KQL, které nejsou v Azure monitor podporovány. |
 | Oblast Azure | Dotazy protokolů můžou mít nadměrné nároky na to, kdy data jsou Log Analytics pracovní prostory ve více oblastech Azure. Podrobnosti najdete v tématu [omezení dotazů](../articles/azure-monitor/log-query/scope.md#query-scope-limits) . |
@@ -27,7 +27,7 @@ ms.locfileid: "95554110"
 Azure Monitor má několik omezení omezování ochrany proti uživatelům, kteří odesílají nadměrný počet dotazů. Takové chování může potenciálně přetížit systémové prostředky back-endu a ohrozit odezvu služby. Následující omezení jsou navržená tak, aby chránila zákazníky před přerušením a zajistila konzistenci úrovně služeb. Omezení uživatelů a omezení jsou navržena tak, aby ovlivnila pouze extrémní využití a neměla by být relevantní pro obvyklé využití.
 
 
-| Measure | Omezení na uživatele | Popis |
+| Measure | Omezení na uživatele | Description |
 |:---|:---|:---|
 | Souběžné dotazy | 5 | Pokud již existuje 5 dotazů, které jsou spuštěny pro uživatele, všechny nové dotazy jsou umístěny do fronty souběžnosti pro jednotlivé uživatele. Když jeden ze spuštěných dotazů skončí, další dotaz se načte z fronty a spustí se. Nezahrnuje dotazy z pravidel výstrah.
 | Čas ve frontě souběžnosti | 3 minuty | Pokud dotaz zůstane ve frontě déle než 3 minuty bez spuštění, bude ukončen chybovou odpovědí HTTP s kódem 429. |

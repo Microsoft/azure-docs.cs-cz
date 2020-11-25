@@ -4,16 +4,16 @@ description: Běžné problémy se Azure Monitor výstrahami metrik a možnými 
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 10/05/2020
+ms.date: 11/25/2020
 ms.subservice: alerts
-ms.openlocfilehash: 2e68a780890b8ddf857bf8f52a0ecf9a4c24b36c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 5a57e8b7f3bf2c3e820a3befee0ee69c48a2afa9
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342123"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029872"
 ---
-# <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s výstrahami Azure Monitor metriky 
+# <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s upozorněními na metriky služby Azure Monitor 
 
 Tento článek popisuje běžné problémy v Azure Monitor [výstrahy metrik](alerts-metric-overview.md) a jejich řešení.
 
@@ -44,7 +44,7 @@ Pokud se domníváte, že výstraha metriky by měla být aktivována, ale nenar
 
 Pokud se domníváte, že výstraha o metrikě by neměla být aktivována, ale došlo k tomu, může vám tento problém vyřešit následující kroky.
 
-1. Zkontrolujte seznam aktivovaných [výstrah](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2) a vyhledejte aktivované upozornění a kliknutím zobrazíte jeho podrobnosti. Projděte si informace uvedené v části **Proč se tato výstraha aktivuje?** Pokud chcete zobrazit graf metriky, **hodnotu metriky**a **prahovou hodnotu** v době, kdy byla výstraha aktivována.
+1. Zkontrolujte seznam aktivovaných [výstrah](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2) a vyhledejte aktivované upozornění a kliknutím zobrazíte jeho podrobnosti. Projděte si informace uvedené v části **Proč se tato výstraha aktivuje?** Pokud chcete zobrazit graf metriky, **hodnotu metriky** a **prahovou hodnotu** v době, kdy byla výstraha aktivována.
 
     > [!NOTE] 
     > Pokud používáte typ podmínky dynamického prahového hodnoty a myslíme na to, že použité prahové hodnoty nejsou správné, poskytněte prosím zpětnou vazbu pomocí ikony zamračení. Tato zpětná vazba bude mít vliv na algoritmus Machine Learning algorithming a pomůže vám zlepšit budoucí zjišťování.
@@ -142,7 +142,7 @@ Export šablony Správce prostředků pravidla výstrahy metriky vám pomůže p
 2. V části Přehled zaškrtněte políčko **Zobrazit skryté typy** .
 3. V poli Filtr **typu** vyberte *Microsoft. Insights/metricalerts*.
 4. Vyberte příslušné pravidlo výstrahy, abyste zobrazili jeho podrobnosti.
-5. V části **Nastavení**vyberte **Exportovat šablonu**.
+5. V části **Nastavení** vyberte **Exportovat šablonu**.
 
 ## <a name="metric-alert-rules-quota-too-small"></a>Kvóta pravidel upozornění metrik je příliš malá.
 
@@ -187,7 +187,7 @@ Pokud dochází k potížím při vytváření, aktualizaci, načítání nebo o
 - Projděte si seznam [běžných chyb nasazení Azure](../../azure-resource-manager/templates/common-deployment-errors.md) a vyřešte případné potíže.
 - V [příkladech výstrahy metriky Azure Resource Manager příklady šablon](./alerts-metric-create-templates.md) , abyste měli jistotu, že předáváte všechny parametry správně.
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 
 Přečtěte si [průvodce REST API](/rest/api/monitor/metricalerts/) , abyste ověřili, že všechny parametry předáváte správně.
 
@@ -241,6 +241,8 @@ Vezměte v úvahu následující omezení pro názvy pravidel upozornění metri
 - Názvy pravidel upozornění na metriky nesmí obsahovat tyto znaky: * # & +:  < > ? @ % { } \ / 
 - Názvy pravidel upozornění na metriky nemůžou končit mezerou nebo tečkou.
 
+> [!NOTE] 
+> Pokud název pravidla výstrahy obsahuje znaky, které nejsou abecední nebo číselné (například mezery, interpunkční znaménka nebo symboly), můžou být tyto znaky zakódované v adresách URL, když je načte někteří klienti.
 
 ## <a name="restrictions-when-using-dimensions-in-a-metric-alert-rule-with-multiple-conditions"></a>Omezení při použití dimenzí v pravidle upozornění na metriku s několika podmínkami
 
@@ -250,7 +252,7 @@ Při použití dimenzí v pravidle výstrahy, které obsahuje více podmínek, v
 - V rámci každé podmínky můžete vybrat jenom jednu hodnotu na dimenzi.
 - Nemůžete použít možnost vybrat všechny aktuální a budoucí hodnoty (vybrat \* ).
 - Pokud metriky, které jsou konfigurovány v různých podmínkách, podporují stejnou dimenzi, pak musí být nakonfigurovaná hodnota dimenze explicitně nastavena stejným způsobem pro všechny tyto metriky (v příslušných podmínkách).
-Příklad:
+Například:
     - Vezměte v úvahu pravidlo upozornění metriky, které je definováno v účtu úložiště, a monitorujte dvě podmínky:
         * Celkový počet **transakcí** > 5
         * Průměrná **SuccessE2ELatency** > 250 ms

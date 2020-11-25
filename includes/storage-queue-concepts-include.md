@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 08/21/2020
 ms.author: tamram
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 3aa21fb99ac5ab24674bf5d4b62fd3fca98de632
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45df30f4f1444b6148af9f3c7d47b94909ccef3d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88853667"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028215"
 ---
 ## <a name="what-is-queue-storage"></a>Co je Queue Storage?
 
@@ -23,7 +23,7 @@ Služba front Azure obsahuje následující komponenty:
 ![Součásti Azure Služba front](./media/storage-queue-concepts-include/azure-queue-service-components.png)
 
 * **Účet úložiště:** Veškerý přístup ke službě Azure Storage se provádí prostřednictvím účtu úložiště. Další informace o účtech úložiště najdete v tématu [Přehled účtu úložiště](../articles/storage/common/storage-account-overview.md).
-* **Fronta:** Fronta obsahuje sadu zpráv. Všechny zprávy musí být ve frontě. Upozorňujeme, že název fronty musí být psaný malými písmeny. Informace o pojmenování front najdete v tématu [Pojmenování front a metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx).
+* **Fronta:** Fronta obsahuje sadu zpráv. Všechny zprávy musí být ve frontě. Upozorňujeme, že název fronty musí být psaný malými písmeny. Informace o pojmenování front najdete v tématu [Pojmenování front a metadata](/rest/api/storageservices/Naming-Queues-and-Metadata).
 * **Zpráva:** Zprávu v libovolném formátu o velikosti až 64 kB. Maximální doba, po kterou může zpráva zůstat ve frontě, je 7 dní. V případě verze 2017-07-29 nebo novější může být maximální doba do živého kladného čísla nebo-1, což znamená, že platnost zprávy nevyprší. Pokud je tento parametr vynechán, výchozí hodnota TTL (Time to Live) je sedm dní.
 * **Formát adresy URL:** Fronty jsou adresovatelné v následujícím formátu adresy URL: http:// `<storage account>` . Queue.Core.Windows.NET/`<queue>`
 

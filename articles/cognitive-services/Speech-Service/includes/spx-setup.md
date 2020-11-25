@@ -5,35 +5,39 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 4b04558077f6b59d0fef613308a6ab96680d7ff8
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 6f80d41001d11c52a00454ea2a593f3f1fce32db
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470705"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027952"
 ---
 ## <a name="download-and-install"></a>Stažení a instalace
 
 #### <a name="windows-install"></a>[Instalace Windows](#tab/windowsinstall)
 
-> [!NOTE]
-> V systému Windows potřebujete [Microsoft Visual C++ distribuovatelné součásti pro Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) pro vaši platformu. První instalace může vyžadovat restartování systému Windows.
-
 Pomocí těchto kroků nainstalujete rozhraní příkazového řádku pro rozpoznávání řeči ve Windows:
 
-1. Stáhněte si [archiv zip](https://aka.ms/speech/spx-zips.zip)pro rozpoznávání řeči a pak ho rozbalte.
-2. Přejít do kořenového adresáře `spx-zips` , který jste extrahovali ze staženého souboru, a extrahovat podadresář, který potřebujete ( `spx-net471` pro .NET Framework 4,7 nebo `spx-netcore-win-x64` pro .NET Core 3,0 na CPU x64).
+1. V systému Windows potřebujete [Microsoft Visual C++ distribuovatelné součásti pro Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) pro vaši platformu. První instalace může vyžadovat restartování.
+2. Stáhněte si [archiv zip](https://aka.ms/speech/spx-zips.zip)pro rozpoznávání řeči a pak ho rozbalte.
+3. Přejít do adresáře, do kterého jste extrahovali `spx-zips` . Tato složka obsahuje programové soubory pro rozhraní příkazového řádku pro rozpoznávání řeči na různých platformách. 
+4. Extrahujte soubory pro vaši platformu ( `spx-net471` pro .NET Framework 4,7 nebo `spx-netcore-win-x64` pro .net Core 3,0 na CPU x64). Mějte na paměti, že budete spouštět `spx` z tohoto adresáře.
 
-Na příkazovém řádku změňte adresář na toto umístění a potom zadejte `spx` nápovědu k rozhraní příkazového řádku pro rozpoznávání řeči.
+### <a name="run-the-speech-cli"></a>Spuštění funkce CLI pro rozpoznávání řeči
 
-> [!NOTE]
-> V systému Windows může rozhraní příkazového řádku pro rozpoznávání řeči Zobrazit pouze písma dostupná pro příkazový řádek v místním počítači.
-> Služba [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701) podporuje všechna písemně vytvořená písma pomocí funkce Speech CLI.
-> Pokud výstup do souboru, textový editor, jako je například Poznámkový blok nebo webový prohlížeč, jako je například Microsoft Edge, může zobrazit také všechna písma.
+1. Otevřete příkazový řádek nebo PowerShell a potom přejděte do adresáře, do kterého jste extrahovali rozhraní příkazového řádku pro rozpoznávání řeči.  
+2. Zadejte `spx` , chcete-li zobrazit příkazy Help pro rozhraní příkazového řádku pro rozpoznávání řeči.
 
 > [!NOTE]
 > PowerShell při hledání příkazu nekontroluje místní adresář. V prostředí PowerShell změňte adresář na umístění `spx` a zavolejte nástroj zadáním `.\spx` .
 > Pokud přidáte tento adresář do vaší cesty, PowerShell a příkazový řádek Windows se najde `spx` z libovolného adresáře bez zahrnutí `.\` předpony.
+
+### <a name="font-limitations"></a>Omezení písem
+
+V systému Windows může rozhraní příkazového řádku pro rozpoznávání řeči Zobrazit pouze písma dostupná pro příkazový řádek v místním počítači.
+Služba [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701) podporuje všechna písemně vytvořená písma pomocí funkce Speech CLI.
+
+Pokud výstup do souboru, textový editor, jako je například Poznámkový blok nebo webový prohlížeč, jako je například Microsoft Edge, může zobrazit také všechna písma.
 
 #### <a name="linux-install"></a>[Instalace pro Linux](#tab/linuxinstall)
 

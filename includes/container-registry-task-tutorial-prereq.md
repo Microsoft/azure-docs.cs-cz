@@ -4,12 +4,12 @@ ms.service: container-registry
 ms.topic: include
 ms.date: 05/02/2019
 ms.author: danlep
-ms.openlocfilehash: 40cc1856a5e943ca5596e7d11712febadd30e3ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79e2ca71d6b8178be63c3429edba89cf3bb523e2
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67133515"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029981"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -21,13 +21,13 @@ Tento kurz předpokládá, že jste už dokončili kroky v [předchozím kurzu](
 
 Abyste mohli dokončit tento kurz, musíte mít ve svém předplatném registr kontejneru Azure. Pokud potřebujete registr, podívejte se na [předchozí kurz](../articles/container-registry/container-registry-tutorial-quick-task.md) nebo článek [Rychlý start: Vytvoření registru kontejnerů pomocí Azure CLI](../articles/container-registry/container-registry-get-started-azure-cli.md).
 
-## <a name="create-a-github-personal-access-token"></a>Vytvoření tokenu PAT GitHubu
+### <a name="create-a-github-personal-access-token"></a>Vytvoření tokenu PAT GitHubu
 
 Aby mohl úkol aktivovat na základě potvrzení do úložiště Git, úlohy ACR vyžadují pro přístup k úložišti token PAT (Personal Access token). Pokud ještě nemáte PAT, vygenerujte si ho na GitHubu pomocí těchto kroků:
 
 1. Přejděte na stránku vytvoření tokenu PAT na GitHubu na adrese https://github.com/settings/tokens/new.
 1. Zadejte krátký **popis** tokenu, například „Ukázka služby ACR Tasks“.
-1. Vyberte obory pro ACR pro přístup k úložišti. Pokud chcete získat přístup k veřejnému úložišti jako v tomto kurzu, v části **úložiště**povolte **úložiště: stav** a **public_repo** .
+1. Vyberte obory pro ACR pro přístup k úložišti. Pokud chcete získat přístup k veřejnému úložišti jako v tomto kurzu, v části **úložiště** povolte **úložiště: stav** a **public_repo** .
 
    ![Snímek obrazovky se stránkou generování tokenu PAT na GitHubu][build-task-01-new-token]
 

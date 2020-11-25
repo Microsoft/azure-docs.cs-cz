@@ -7,12 +7,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 8710e0cdd6c930338009fb2b7f3bd98fafcfad3e
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: 18ece47187e3f83277d7d925ad958d2ede7cb337
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95411559"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030012"
 ---
 # <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer-preview"></a>Dotazování exportovaných dat z Azure Monitor pomocí Azure Průzkumník dat (Preview)
 Export dat z Azure Monitor do účtu úložiště Azure umožňuje snížit náklady a možnost znovu přidělit protokoly různým oblastem. Použijte Azure Průzkumník dat k dotazování na data, která byla exportována z vašich Log Analytics pracovních prostorů. Po nakonfigurování budou podporované tabulky, které se odesílají z vašich pracovních prostorů do účtu služby Azure Storage, k dispozici jako zdroj dat pro Azure Průzkumník dat.
@@ -122,7 +122,7 @@ Následující obrázek ukazuje příklad výstupu.
 
 >[!TIP]
 >* Zkopírujte, vložte a potom spusťte výstup skriptu v nástroji Azure Průzkumník dat Client a vytvořte tabulku a mapování.
->* Pokud chcete použít všechna data uvnitř kontejneru, můžete skript upravit a změnit adresu URL na https://your.blob.core.windows.net/containername . SecKey'
+>* Chcete-li použít všechna data uvnitř kontejneru, upravte skript a změňte adresu URL na hodnotu " https://your.blob.core.windows.net/containername ; SecKey'
 
 ## <a name="query-the-exported-data-from-azure-data-explorer"></a>Dotazování exportovaných dat z Azure Průzkumník dat 
 

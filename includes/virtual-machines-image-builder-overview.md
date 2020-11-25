@@ -1,20 +1,20 @@
 ---
-author: cynthn
-ms.author: cynthn
+author: ''
+ms.author: danielsollondon
 ms.date: 08/03/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: daberry
-ms.openlocfilehash: a5a201a9f993db2be00645d8d60a11c5be9cdbe0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c028fc1abd77bda1a41857a7a7c77da1ad1b2d2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89304067"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026508"
 ---
 Standardizované image virtuálních počítačů umožňují organizacím migrovat do cloudu a zajistit konzistenci nasazení. Obrázky obvykle zahrnují předdefinovaná nastavení zabezpečení a konfigurace a potřebný software. Nastavení vlastního kanálu pro vytváření imagí vyžaduje čas, infrastrukturu a instalaci, ale s nástrojem Azure VM Image Builder stačí jednoduše zadat jednoduchou konfiguraci popisující vaši image, odeslat ji do služby a image se sestaví a distribuuje.
  
-Správce imagí virtuálních počítačů Azure (Azure image Builder) umožňuje začít s bitovou kopií Azure Marketplace založenou na Windows nebo Linux, stávající vlastní image nebo Red Hat Enterprise Linux (RHEL) ISO a začít přidávat vlastní vlastní nastavení. Vzhledem k tomu, že tvůrce imagí je postaven na [HashiCorp packu](https://packer.io/), můžete také naimportovat stávající skripty sestavovatele prostředí pro vytváření balíčků. Můžete taky určit, kde se mají vaše image hostovat, v [galerii sdílených imagí Azure](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)jako spravovaná Image nebo VHD.
+Správce imagí virtuálních počítačů Azure (Azure image Builder) umožňuje začít s bitovou kopií Azure Marketplace založenou na Windows nebo Linux, stávající vlastní image nebo Red Hat Enterprise Linux (RHEL) ISO a začít přidávat vlastní vlastní nastavení. Vzhledem k tomu, že tvůrce imagí je postaven na [HashiCorp packu](https://packer.io/), můžete také naimportovat stávající skripty sestavovatele prostředí pro vytváření balíčků. Můžete taky určit, kde se mají vaše image hostovat, v [galerii sdílených imagí Azure](../articles/virtual-machines/windows/shared-image-galleries.md)jako spravovaná Image nebo VHD.
 
 > [!IMPORTANT]
 > Azure image Builder je momentálně ve verzi Public Preview.
@@ -59,12 +59,8 @@ Podpora RHEL soubory ISO už není podporovaná.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-
-![Koncepční vykreslování Azure image Builder](./media/virtual-machines-image-builder-overview/image-builder.png)
-
 Azure image Builder je plně spravovaná služba Azure, která je přístupná pro poskytovatele prostředků Azure. Proces sestavovatele imagí Azure má tři hlavní části: zdroj, přizpůsobení a distribuce, které jsou zastoupeny v šabloně. Následující obrázek znázorňuje komponenty s některými jejich vlastnostmi. 
  
-
 
 **Proces tvůrce imagí** 
 
@@ -81,14 +77,14 @@ Při registraci pro (AIB) udělí služba AIB oprávnění vytvořit, spravovat 
 
 Pokud chcete, aby tvůrce imagí virtuálních počítačů Azure mohl distribuovat image do spravovaných imagí nebo do sdílené Galerie imagí, budete muset vytvořit uživatelem přiřazenou identitu Azure, která má oprávnění ke čtení a zápisu imagí. Pokud přistupujete k Azure Storage, budete potřebovat oprávnění ke čtení privátních kontejnerů.
 
-Nejdřív je nutné dodržet dokumentaci k [Vytvoření spravované identity přiřazené uživatelem Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli) , jak vytvořit identitu.
+Nejdřív je nutné dodržet dokumentaci k [Vytvoření spravované identity přiřazené uživatelem Azure](../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) , jak vytvořit identitu.
 
 Jakmile budete mít identitu, kterou potřebujete udělit, můžete k tomu použít definici vlastní role Azure a potom přiřadit spravovanou identitu přiřazenou uživateli, aby používala vlastní definici role.
 
 [Tady](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)jsou podrobněji vysvětlena oprávnění a příklady ukazují, jak je to implementováno.
 
 > [!Note]
-> V minulosti jste používali AIB hlavní název služby AIB a udělili oprávnění hlavního názvu služby pro skupiny prostředků imagí. Od tohoto modelu přesouváme, aby bylo možné budoucí možnosti využít. V 26 může 2020 image Builder nepřijímá šablony, které nemají přiřazenou identitu uživatele, takže stávající šablony bude nutné znovu odeslat do služby pomocí [uživatelské identity](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#identity). Níže uvedené příklady již ukazují, jak lze vytvořit uživatelem přiřazenou identitu a přidat je do šablony. Další informace najdete v této [dokumentaci](https://github.com/danielsollondon/azvmimagebuilder#service-updates-and-latest-release-information) k této změně a vydání aktualizací.
+> V minulosti jste používali AIB hlavní název služby AIB a udělili oprávnění hlavního názvu služby pro skupiny prostředků imagí. Od tohoto modelu přesouváme, aby bylo možné budoucí možnosti využít. V 26 může 2020 image Builder nepřijímá šablony, které nemají přiřazenou identitu uživatele, takže stávající šablony bude nutné znovu odeslat do služby pomocí [uživatelské identity](../articles/virtual-machines/linux/image-builder-json.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#identity). Níže uvedené příklady již ukazují, jak lze vytvořit uživatelem přiřazenou identitu a přidat je do šablony. Další informace najdete v této [dokumentaci](https://github.com/danielsollondon/azvmimagebuilder#service-updates-and-latest-release-information) k této změně a vydání aktualizací.
 
 ## <a name="costs"></a>Náklady
 Při vytváření, sestavování a ukládání imagí pomocí Azure image Builder budete mít za následek několik výpočetních, síťových a úložných nákladů. Tyto náklady jsou podobné nákladům, které vznikly ručním vytvářením vlastních imagí. U prostředků se vám budou účtovat sazby za Azure. 
@@ -105,4 +101,3 @@ Nástroj image Builder aktuálně nativně podporuje vytváření imagí technol
 ## <a name="next-steps"></a>Další kroky 
  
 Pokud si chcete vyzkoušet Azure image Builder, přečtěte si články pro vytváření imagí pro [Linux](../articles/virtual-machines/linux/image-builder.md) nebo [Windows](../articles/virtual-machines/windows/image-builder.md) .
- 

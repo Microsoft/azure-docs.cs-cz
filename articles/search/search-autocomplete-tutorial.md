@@ -7,22 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 11/24/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 1bf0a4a86ccc36960f218fabebda5bc82eb29019
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 5b498b8f49f2f0636b010e3c4d86f13ad44ac090
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426166"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029009"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Přidání automatického dokončování a návrhů do klientských aplikací
 
-Hledání jako typ je běžná technika pro zlepšení produktivity dotazů inicializovaných uživatelem. V Azure Kognitivní hledání se toto prostředí podporuje prostřednictvím *automatického dokončování* , které dokončuje termín nebo frázi na základě částečného vstupu ("mikro" s "Microsoft"). Další forma je *návrhy* : krátký seznam odpovídajících dokumentů (pro vracení titulů knih s ID, aby bylo možné propojit stránku s podrobnostmi). Automatické dokončování i návrhy jsou u shody v indexu predikátem. Služba nebude nabízet dotazy, které vracejí žádné výsledky.
+Hledání jako typ je běžná technika pro zlepšení produktivity dotazů inicializovaných uživatelem. V Azure Kognitivní hledání se toto prostředí podporuje prostřednictvím *automatického dokončování*, které dokončuje termín nebo frázi na základě částečného vstupu ("mikro" s "Microsoft"). Druhý uživatel je *návrhem* nebo krátký seznam odpovídajících dokumentů (s ID, který vrací názvy knih s ID, takže můžete propojit stránku s podrobnostmi o dané knize). Automatické dokončování i návrhy jsou u shody v indexu predikátem. Služba nebude nabízet dotazy, které vracejí žádné výsledky.
 
 K implementaci těchto prostředí v Azure Kognitivní hledání budete potřebovat:
 
-+ Modul pro *návrhy* na back-endu.
++ Definice *návrhového* nástroje, která je vložena do schématu indexu.
 + *Dotaz* určující rozhraní API pro [Automatické dokončování](/rest/api/searchservice/autocomplete) nebo [návrhy](/rest/api/searchservice/suggestions) v žádosti.
 + *Ovládací prvek uživatelského rozhraní* , který v klientské aplikaci zpracovává interakce typu hledání podle vás. Pro tento účel doporučujeme použít existující knihovnu JavaScriptu.
 

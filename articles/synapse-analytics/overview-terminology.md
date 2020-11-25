@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 20e635d606676a526fac4c3720931525beb66876
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: c58ee46a608ccdcbb01a082ee278d9e0f8a07f6e
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95790408"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030675"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Terminologie Azure synapse Analytics
 
@@ -41,13 +41,11 @@ Pracovní prostor může obsahovat libovolný počet **propojených služeb**, v
 
 ## <a name="apache-spark-for-synapse"></a>Apache Spark pro synapse
 
-Pokud chcete používat Spark Analytics, vytvořte a používejte **fondy Apache Spark bez serveru** v pracovním prostoru synapse.
+Pokud chcete používat Spark Analytics, vytvořte a používejte **fondy Apache Spark bez serveru** v pracovním prostoru synapse. Když začnete používat fond Spark, pracovní prostory vytvoří **relaci Sparku** pro zpracování prostředků assosociated s touto relací. 
 
-* **Fond Apache Spark** – zřízené prostředky od 0 do N Spark s odpovídajícími databázemi se dají nasadit v pracovním prostoru. Fond Spark se dá automaticky pozastavit, obnovit a škálovat.  
-* **Aplikace Spark** – skládá se z procesu ovladače a sady procesů prováděcího modulu. Aplikace Spark běží na fondu Spark bez serveru.            
-* **Relace Spark**– sjednocený vstupní bod aplikace Spark Poskytuje způsob, jak pracovat s různými funkcemi Sparku a s menším počtem konstrukcí. Chcete-li spustit Poznámkový blok, je třeba vytvořit relaci. Relaci lze nakonfigurovat tak, aby běžela na určitém počtu prováděcích modulů určité velikosti. Výchozí konfigurace pro relaci poznámkového bloku se spouští ve dvou prováděcích modulech střední velikosti.
-* Interaktivní a reaktivované datové vědy a inženýrské **prostředí s podporou** Scala, PySpark, C# a SparkSQL.
-* **Definice úlohy** Spark – rozhraní pro odeslání úlohy Sparku pomocí sestavení jar obsahujícího kód a jeho závislosti.
+Existují dva způsoby, jak v rámci synapse použít Spark:
+* **Poznámkové bloky Spark** pro práci s datovými vědy a inženýry, které používají Scala, PySpark, C# a SparkSQL
+* **Definice úloh Sparku** pro spouštění úloh služby Batch Spark pomocí souborů JAR
 
 Podpora verzí:
 * Spark 2,4

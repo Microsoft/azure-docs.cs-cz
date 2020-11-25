@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: 5c2959a1bf6225c164f8538c3c437e464d834b96
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95556254"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028565"
 ---
 ## <a name="create-a-ruby-application"></a>Vytvoření aplikace v Ruby
 Pokyny najdete v tématu [Vytvoření aplikace v Ruby v Azure](/previous-versions/azure/virtual-machines/linux/classic/ruby-rails-web-app).

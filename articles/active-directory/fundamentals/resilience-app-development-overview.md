@@ -11,18 +11,16 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: f6078ed96106d6a53b55195ee950e2165334221d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c2c2f9d0ad7bfa50f543b57326b9fc8dab0069c6
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919683"
+ms.locfileid: "96029298"
 ---
 # <a name="increase-resilience-of-authentication-and-authorization-applications-you-develop"></a>Zvýšení odolnosti aplikací pro ověřování a autorizaci, které vyvíjíte
 
 Microsoft identity používá moderní ověřování a autorizaci založené na tokenech. To znamená, že aplikace získá tokeny od poskytovatele identity za účelem ověření uživatele a autorizaci aplikace pro volání chráněných rozhraní API.
-
-![Obrázek aplikace, která volá Microsoft identity](media/resilience-app-development-overview/app-overview.png)
 
 Token je platný po určitou dobu, než aplikace musí získat nový. Nejenom zřídka volání načtení tokenu by mohlo selhat kvůli problému, jako je selhání sítě nebo infrastruktury nebo výpadek služby ověřování. V tomto dokumentu vytvoříme osnovu kroků, které může vývojář provést kvůli zvýšení odolnosti ve svých aplikacích, pokud dojde k selhání získání tokenu.
 

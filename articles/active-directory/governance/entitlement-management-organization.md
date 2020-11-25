@@ -16,12 +16,12 @@ ms.date: 09/28/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96106cc1d9f9040f98c7d9201f05b4cff87af7e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1cdf983dc8fed64c7d283ac216eb803746add95
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449896"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029366"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Přidání propojené organizace v Azure AD – Správa nároků
 
@@ -56,9 +56,9 @@ Pokud chcete přidat externí adresář nebo doménu služby Azure AD jako přip
 
 **Požadovaná role**: *globální správce* nebo *Správce uživatelů*
 
-1. V Azure Portal vyberte **Azure Active Directory**a potom vyberte zásady **správného řízení identity**.
+1. V Azure Portal vyberte **Azure Active Directory** a potom vyberte zásady **správného řízení identity**.
 
-1. V levém podokně vyberte **připojené organizace**a pak vyberte **Přidat připojenou organizaci**.
+1. V levém podokně vyberte **připojené organizace** a pak vyberte **Přidat připojenou organizaci**.
 
     ![Tlačítko Přidat připojenou organizaci](./media/entitlement-management-organization/connected-organization.png)
 
@@ -107,9 +107,9 @@ Pokud se připojená organizace změní v jiné doméně, změní se název orga
 
 **Požadovaná role**: *globální správce* nebo *Správce uživatelů*
 
-1. V Azure Portal vyberte **Azure Active Directory**a potom vyberte zásady **správného řízení identity**.
+1. V Azure Portal vyberte **Azure Active Directory** a potom vyberte zásady **správného řízení identity**.
 
-1. V levém podokně vyberte **propojené organizace**a pak ji otevřete, když vyberete připojenou organizaci.
+1. V levém podokně vyberte **propojené organizace** a pak ji otevřete, když vyberete připojenou organizaci.
 
 1. V podokně přehledu připojené organizace vyberte **Upravit** a změňte název organizace, popis nebo stav.  
 
@@ -124,9 +124,9 @@ Pokud už nebudete mít relaci s externím adresářem nebo doménou služby Azu
 
 **Požadovaná role**: *globální správce* nebo *Správce uživatelů*
 
-1. V Azure Portal vyberte **Azure Active Directory**a potom vyberte zásady **správného řízení identity**.
+1. V Azure Portal vyberte **Azure Active Directory** a potom vyberte zásady **správného řízení identity**.
 
-1. V levém podokně vyberte **propojené organizace**a pak ji otevřete, když vyberete připojenou organizaci.
+1. V levém podokně vyberte **propojené organizace** a pak ji otevřete, když vyberete připojenou organizaci.
 
 1. V podokně přehledu připojené organizace vyberte **Odstranit** a odstraňte ji.
 
@@ -148,9 +148,9 @@ Existují dva různé typy vlastností stavu pro připojené organizace ve sprá
 
 - Navrhovaná propojená organizace je připojená organizace, která se automaticky vytvořila, ale nemá oprávnění k vytvoření nebo schválení organizace. Když se uživatel zaregistruje do balíčku pro přístup mimo nakonfigurovanou připojenou organizaci, všechny automaticky vytvořené organizace se budou nacházet v **navrhovaném** stavu, protože žádný správce v tenantovi tuto spolupráci nenastavuje. 
     
-    Navrhované připojené organizace se v sestavách pro nakonfigurované připojené organizace nezobrazují a nejsou v oboru pro nastavení všechny nakonfigurované organizace u všech zásad. 
+    Navrhované připojené organizace nejsou v oboru pro nastavení všechny nakonfigurované organizace v jakékoli zásadě, ale dá se použít v zásadách jenom pro zásady cílené na konkrétní organizace. 
 
-Přístup k balíčkům, které jsou k dispozici uživatelům ze všech nakonfigurovaných organizací, můžou vyžádat jenom uživatelé, kteří jsou nakonfigurovaní připojení. Uživatelé z navrhovaných propojených organizací mají zkušenosti, jako by pro tuto doménu neexistovala žádná připojená organizace, a dokud stav nezmění správce, nebude mít přístup k balíčku pro přístup.
+Přístup k balíčkům, které jsou k dispozici uživatelům ze všech nakonfigurovaných organizací, můžou vyžádat jenom uživatelé, kteří jsou nakonfigurovaní připojení. Uživatelé z navrhovaných propojených organizací mají zkušenosti, jako by pro tuto doménu neexistovala žádná připojená organizace. může vidět a žádat o přístup k balíčkům v oboru pro konkrétní organizaci nebo vymezenému pro libovolného uživatele.
 
 > [!NOTE]
 > V rámci zavedení této nové funkce byly všechny připojené organizace vytvořené před 09/09/20 považovány za **nakonfigurované**. Pokud máte balíček pro přístup, který umožňuje uživatelům ze všech organizací registraci, měli byste si projít seznam propojených organizací, které byly vytvořené před tímto datem, aby se zajistilo, že žádná nebude správně zařazená do kategorie **nakonfigurovaná**.  Správce může podle potřeby aktualizovat vlastnost **State** . Pokyny najdete v tématu [aktualizace propojené organizace](#update-a-connected-organization).

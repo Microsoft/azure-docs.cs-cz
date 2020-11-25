@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: ecbafe0d3f39b1bd6f7c494695ea17e067f0c79e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 6c7536e38a0d2cf7d4e906947aff645c74e459c0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129271"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026681"
 ---
 ## <a name="generalize-the-image"></a>Generalizace bitové kopie
 
@@ -41,13 +41,13 @@ Následující proces generalizuje virtuální počítač Linux a znovu ho nasad
 ### <a name="take-a-snapshot-of-the-vm-disk"></a>Pořízení snímku disku virtuálního počítače
 
 1. Přihlaste se na [Azure Portal](https://ms.portal.azure.com/).
-2. V levém horním rohu vyberte **vytvořit prostředek** , vyhledejte a vyberte **snímek** .
-3. V okně snímek vyberte  **vytvořit** .
+2. V levém horním rohu vyberte **vytvořit prostředek**, vyhledejte a vyberte **snímek**.
+3. V okně snímek vyberte  **vytvořit**.
 4. Zadejte **název** snímku.
 5. Vyberte existující skupinu prostředků nebo zadejte název nového.
 6. Pro **zdrojový disk** vyberte spravovaný disk, který se má snímek.
 7. Vyberte **typ účtu** , který chcete použít k uložení snímku. Použijte **HDD úrovně Standard** , pokud ho nepotřebujete, aby byl uložený na disku SSD s vysokou úrovní.
-8. Vyberte **Vytvořit** .
+8. Vyberte **Vytvořit**.
 
 #### <a name="extract-the-vhd"></a>Extrakce VHD
 
@@ -81,7 +81,7 @@ destinationVHDFileName=myvhdfilename.vhd
 
 az account set --subscription $subscriptionId
 
-sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $ snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
+sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
 
 az storage blob copy start --destination-blob $destinationVHDFileName --destination-container $storageContainerName --account-name $storageAccountName --account-key $storageAccountKey --source-uri $sas
 ```
