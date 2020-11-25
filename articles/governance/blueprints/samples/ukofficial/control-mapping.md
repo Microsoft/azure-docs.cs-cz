@@ -4,11 +4,11 @@ description: Mapování ovládacího prvku OFICIÁLNÍch a NHS podrobných plán
 ms.date: 11/05/2020
 ms.topic: sample
 ms.openlocfilehash: 352ba30a21c638c68401e2f8e471096a777fbde9
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420253"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009377"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Mapování ovládacího prvku OFICIÁLNÍch a NHS podrobných plánů pro Spojené království
 

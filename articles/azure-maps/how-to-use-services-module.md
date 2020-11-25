@@ -10,15 +10,15 @@ services: azure-maps
 manager: cpendleton
 ms.custom: devx-track-js
 ms.openlocfilehash: 2e07b614e87ed5dad94cf9bc5994e78071187839
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895422"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008595"
 ---
 # <a name="use-the-azure-maps-services-module"></a>Použití modulu služby Azure Maps Services
 
-Sada Azure Maps Web SDK poskytuje *modul služeb* . Tento modul je pomocná knihovna usnadňující použití Azure Maps služby REST ve webových nebo Node.js aplikacích pomocí JavaScriptu nebo TypeScript.
+Sada Azure Maps Web SDK poskytuje *modul služeb*. Tento modul je pomocná knihovna usnadňující použití Azure Maps služby REST ve webových nebo Node.js aplikacích pomocí JavaScriptu nebo TypeScript.
 
 ## <a name="use-the-services-module-in-a-webpage"></a>Použití modulu služby na webové stránce
 

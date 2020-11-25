@@ -10,11 +10,11 @@ ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 11/17/2020
 ms.openlocfilehash: e8c16f02cf6b77fa54d2a19abac48e9914aa99bd
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94743642"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008561"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Kurz: dotazování indexu Kognitivní hledání z Power Apps
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, otevřete si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Účet Power Apps](https://make.powerapps.com)
 

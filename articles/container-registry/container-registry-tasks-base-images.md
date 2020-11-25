@@ -4,11 +4,11 @@ description: Přečtěte si o základních imagí pro Image kontejnerů aplikac�
 ms.topic: article
 ms.date: 01/22/2019
 ms.openlocfilehash: 74e5fb81e3ef6f75b5ee2872ee44b99aae096fd8
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025761"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009819"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>Základní aktualizace obrázků pro úlohy ACR
 
@@ -16,7 +16,7 @@ Tento článek poskytuje základní informace o aktualizacích základní image 
 
 ## <a name="what-are-base-images"></a>Jaké jsou základní image?
 
-Fázemi definující většinu imagí kontejnerů určuje nadřazený obrázek, ze kterého je obrázek založen, často se označuje jako *základní obrázek* . Základní image obvykle obsahují operační systém, například [Alpine Linux][base-alpine] nebo [Windows Nano Server][base-windows], na kterém jsou použity zbývající vrstvy kontejneru. Můžou také obsahovat architektury aplikace, jako je třeba [Node.js][base-node] nebo [.NET Core][base-dotnet]. Tyto základní image jsou obvykle založené na veřejných nadřazených obrázcích. Několik imagí vaší aplikace může sdílet společný základní obrázek.
+Fázemi definující většinu imagí kontejnerů určuje nadřazený obrázek, ze kterého je obrázek založen, často se označuje jako *základní obrázek*. Základní image obvykle obsahují operační systém, například [Alpine Linux][base-alpine] nebo [Windows Nano Server][base-windows], na kterém jsou použity zbývající vrstvy kontejneru. Můžou také obsahovat architektury aplikace, jako je třeba [Node.js][base-node] nebo [.NET Core][base-dotnet]. Tyto základní image jsou obvykle založené na veřejných nadřazených obrázcích. Několik imagí vaší aplikace může sdílet společný základní obrázek.
 
 Základní image často aktualizuje maintainer image, aby zahrnovala nové funkce nebo vylepšení operačního systému nebo architektury v imagi. Dalším běžným důvodem pro aktualizaci základní image jsou opravy zabezpečení. Pokud dojde k těmto nadřazeným aktualizacím, je nutné také aktualizovat základní image, aby zahrnovaly kritickou opravu. Každý obrázek aplikace musí být pak znovu sestaven, aby zahrnoval tyto opravy pro odesílání dat, které jsou nyní součástí základní image.
 
@@ -52,7 +52,7 @@ Pokud se základní bitová kopie zadaná v `FROM` příkazu nachází v jednom 
 
 ## <a name="additional-considerations"></a>Další aspekty
 
-* **Základní image pro Image aplikací** – v současné době úloha ACR sleduje jenom základní aktualizace obrázků pro aplikace ( *běhové* image). Nesleduje aktualizace základních imagí pro mezilehlé ( *BuildTime* ) image používané ve více fázích fázemi.  
+* **Základní image pro Image aplikací** – v současné době úloha ACR sleduje jenom základní aktualizace obrázků pro aplikace (*běhové* image). Nesleduje aktualizace základních imagí pro mezilehlé (*BuildTime*) image používané ve více fázích fázemi.  
 
 * **Povoleno ve výchozím nastavení** – když vytvoříte úlohu ACR pomocí příkazu [AZ ACR Task Create][az-acr-task-create] , ve výchozím nastavení je úloha *povolená* pro aktivaci základní aktualizací image. To znamená, že `base-image-trigger-enabled` vlastnost je nastavena na hodnotu true. Pokud chcete toto chování v úloze zakázat, aktualizujte vlastnost na false. Například spusťte následující příkaz [AZ ACR Task Update][az-acr-task-update] :
 
@@ -60,7 +60,7 @@ Pokud se základní bitová kopie zadaná v `FROM` příkazu nachází v jednom 
   az acr task update --myregistry --name mytask --base-image-trigger-enabled False
   ```
 
-* **Aktivační událost ke sledování závislostí** – Pokud chcete, aby úloha ACR mohla určit a sledovat závislosti image kontejneru – což zahrnuje základní image, musíte nejdřív aktivovat úlohu, aby se image sestavila **aspoň jednou** . Úlohu můžete například aktivovat ručně pomocí příkazu [AZ ACR Task Run][az-acr-task-run] .
+* **Aktivační událost ke sledování závislostí** – Pokud chcete, aby úloha ACR mohla určit a sledovat závislosti image kontejneru – což zahrnuje základní image, musíte nejdřív aktivovat úlohu, aby se image sestavila **aspoň jednou**. Úlohu můžete například aktivovat ručně pomocí příkazu [AZ ACR Task Run][az-acr-task-run] .
 
 * **Stabilní značka pro základní image** – Chcete-li aktivovat úlohu na základě aktualizace základního obrázku, musí mít základní image *stabilní* značku, například `node:9-alpine` . Toto označení je typické pro základní bitovou kopii, která je aktualizována pomocí operačních systémů a oprav rozhraní .NET na nejnovější stabilní verzi. Pokud se základní image aktualizuje pomocí nové značky verze, neaktivuje úlohu. Další informace o označování obrázků naleznete v [doprovodnéch materiálech k osvědčeným postupům](container-registry-image-tag-version.md). 
 

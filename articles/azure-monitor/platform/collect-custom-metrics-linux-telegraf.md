@@ -8,11 +8,11 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: b80f27e490dd3b1890eab7740fb4650ba4280abb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88207796"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008986"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Shromažďování vlastních metrik pro virtuální počítač se systémem Linux pomocí agenta InfluxData telegraf
 
@@ -31,7 +31,7 @@ Pomocí Azure Monitor můžete shromažďovat vlastní metriky prostřednictvím
 
 V tomto kurzu nasadíme virtuální počítač Linux, na kterém běží operační systém Ubuntu 16,04 LTS. Agent telegraf se podporuje pro většinu operačních systémů Linux. Balíčky Debian i ot./min. jsou k dispozici společně s nebalenými binárními soubory Linux na [portálu pro stažení InfluxData](https://portal.influxdata.com/downloads). Další pokyny k instalaci a možnosti najdete v této [příručce k instalaci telegraf](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) . 
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 > [!NOTE]  
 > Pokud chcete migrovat pravidla pro klasické výstrahy a použít stávající virtuální počítač se systémem Linux, ujistěte se, že má počítač s virtuální nastavenou identitu přiřazenou **systémem.**
@@ -43,7 +43,7 @@ Vytvořte nový virtuální počítač pro Linux:
 1. Vyberte **Ubuntu 16,04 LTS** a vyberte **vytvořit**. 
 1. Zadejte název virtuálního počítače, třeba **MyTelegrafVM**.  
 1. Ponechte typ disku jako **SSD**. Pak zadejte **uživatelské jméno**, například **azureuser**. 
-1. Jako **typ ověřování**vyberte **heslo**. Pak zadejte heslo, které budete později používat pro SSH do tohoto virtuálního počítače. 
+1. Jako **typ ověřování** vyberte **heslo**. Pak zadejte heslo, které budete později používat pro SSH do tohoto virtuálního počítače. 
 1. Vyberte možnost **vytvořit novou skupinu prostředků**. Pak zadejte název, například **myResourceGroup**. Vyberte své **umístění**. Pak vyberte **OK**. 
 
     ![Vytvoření virtuálního počítače s Ubuntu](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
@@ -68,7 +68,7 @@ Vytvořte připojení SSH k virtuálnímu počítači. Na stránce Přehled pro 
 
 ![Stránka s přehledem virtuálního počítače s telegraf](./media/collect-custom-metrics-linux-telegraf/connect-VM-button2.png)
 
-Na stránce **Připojení k virtuálnímu počítači** ponechte výchozí výběr možností pro připojení podle názvu DNS přes port 22. V rámci **přihlášení pomocí místního účtu virtuálního počítače**se zobrazí příkaz pro připojení. Vyberte tlačítko pro zkopírování příkazu. Následující příklad ukazuje, jak vypadá příkaz pro připojení přes SSH: 
+Na stránce **Připojení k virtuálnímu počítači** ponechte výchozí výběr možností pro připojení podle názvu DNS přes port 22. V rámci **přihlášení pomocí místního účtu virtuálního počítače** se zobrazí příkaz pro připojení. Vyberte tlačítko pro zkopírování příkazu. Následující příklad ukazuje, jak vypadá příkaz pro připojení přes SSH: 
 
 ```cmd
 ssh azureuser@XXXX.XX.XXX 
@@ -86,7 +86,7 @@ wget https://dl.influxdata.com/telegraf/releases/telegraf_1.8.0~rc1-1_amd64.deb
 # install the package 
 sudo dpkg -i telegraf_1.8.0~rc1-1_amd64.deb
 ```
-Konfigurační soubor telegraf definuje operace telegraf. Ve výchozím nastavení se v cestě **/etc/telegraf/telegraf.conf**nainstaluje Ukázkový konfigurační soubor. Ukázkový konfigurační soubor uvádí všechny možné vstupní a výstupní moduly plug-in. Vytvoříme ale vlastní konfigurační soubor a dá ho použít agent, a to spuštěním následujících příkazů: 
+Konfigurační soubor telegraf definuje operace telegraf. Ve výchozím nastavení se v cestě **/etc/telegraf/telegraf.conf** nainstaluje Ukázkový konfigurační soubor. Ukázkový konfigurační soubor uvádí všechny možné vstupní a výstupní moduly plug-in. Vytvoříme ale vlastní konfigurační soubor a dá ho použít agent, a to spuštěním následujících příkazů: 
 
 ```cmd
 # generate the new Telegraf config file in the current directory 

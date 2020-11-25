@@ -11,12 +11,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: zpracování dokumentů
-ms.openlocfilehash: 5df8ced885768308369599d94c5734fa0620c507
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 7671d8d58ffbd0fca444eefe53c46c99a4e76d37
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360866"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96009326"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků
 
@@ -32,7 +32,7 @@ K dokončení tohoto rychlého startu musíte mít:
 * Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" vytvořte prostředek pro rozpoznávání formulářů "  target="_blank"> vytvořením prostředku pro rozpoznávání formulářů <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
     * K připojení aplikace k rozhraní API pro rozpoznávání formulářů budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
-* Sada alespoň šest forem stejného typu. Tato data použijete ke školení modelu a testování formuláře. Pro tento rychlý Start můžete použít [ukázkovou datovou sadu](https://go.microsoft.com/fwlink/?linkid=2090451) (stažení a extrakci *sample_data.zip* ). Nahrajte školicí soubory do kořenového adresáře kontejneru úložiště objektů BLOB v účtu Azure Storage úrovně Standard-Performance.
+* Sada alespoň šest forem stejného typu. Tato data použijete ke školení modelu a testování formuláře. Pro tento rychlý Start můžete použít [ukázkovou datovou sadu](https://go.microsoft.com/fwlink/?linkid=2090451) (stažení a extrakci *sample_data.zip*). Nahrajte školicí soubory do kořenového adresáře kontejneru úložiště objektů BLOB v účtu Azure Storage úrovně Standard-Performance.
 
 ## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku pro rozpoznávání formulářů
 
@@ -42,8 +42,17 @@ K dokončení tohoto rychlého startu musíte mít:
 
 Pokud si chcete vyzkoušet, jak se na nástroji pro rozpoznávání formulářů přejít online, navštivte [Web FOTT](https://fott-preview.azurewebsites.net/).
 
+# <a name="v20"></a>[v2.0](#tab/v2-0)
 > [!div class="nextstepaction"]
-> [Nástroj pro označování ukázek pro rozpoznávání formulářů](https://fott-preview.azurewebsites.net/)
+> [Vyzkoušet předem připravené modely](https://fott.azurewebsites.net/)
+
+# <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)
+> [!div class="nextstepaction"]
+> [Vyzkoušet předem připravené modely](https://fott-preview.azurewebsites.net/)
+
+---
+
+K vyzkoušení služby pro rozpoznávání formulářů budete potřebovat předplatné Azure ([můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services)) a koncový bod a klíč [prostředku pro rozpoznávání formuláře](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) . 
 
 
 ## <a name="set-up-the-sample-labeling-tool"></a>Nastavení nástroje pro označování ukázek
@@ -68,8 +77,6 @@ Pomocí modulu Docker spustíte ukázkový nástroj pro označování vzorků. P
 
 
 
-
-
 1. Získejte vzorový kontejner nástrojů pro označování pomocí `docker pull` příkazu.
 
     # <a name="v20"></a>[v2.0](#tab/v2-0)    
@@ -78,7 +85,7 @@ Pomocí modulu Docker spustíte ukázkový nástroj pro označování vzorků. P
     ```
     # <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)    
     ```
-    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview
+    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview
     ```
 
     ---
@@ -91,7 +98,7 @@ Pomocí modulu Docker spustíte ukázkový nástroj pro označování vzorků. P
     ```
     # <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)    
     ```
-    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview eula=accept    
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview eula=accept    
     ```
 
     --- 
@@ -130,7 +137,7 @@ Vyplňte pole následujícími hodnotami:
 
 * **Zobrazovaný název** – zobrazovaný název připojení.
 * **Popis** – Popis projektu.
-* **Adresa URL SAS** – adresa URL sdíleného přístupového podpisu (SAS) vašeho kontejneru Azure Blob Storage. Pokud chcete načíst adresu URL SAS, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Nastavte čas vypršení platnosti na dobu, kdy už službu nebudete používat. Ujistěte se, že jsou zaškrtnutá oprávnění **číst** , **zapisovat** , **Odstranit** a **seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tento formát: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* **Adresa URL SAS** – adresa URL sdíleného přístupového podpisu (SAS) vašeho kontejneru Azure Blob Storage. Pokud chcete načíst adresu URL SAS, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Nastavte čas vypršení platnosti na dobu, kdy už službu nebudete používat. Ujistěte se, že jsou zaškrtnutá oprávnění **číst**, **zapisovat**, **Odstranit** a **seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tento formát: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
 :::image type="content" source="../media/label-tool/connections.png" alt-text="Nastavení připojení nástroje Sample labeling Tool":::
 
@@ -193,7 +200,7 @@ V dalším kroku vytvoříte značky (popisky) a použijete je na textové prvky
    1. Kliknutím **+** vytvoříte novou značku.
    1. Zadejte název značky.
    1. Stisknutím klávesy ENTER značku uložíte.
-1. V hlavním editoru kliknutím vyberte slova z zvýrazněných textových prvků. Ve _verzi Preview v 2.1_ můžete také kliknout na výběr _značek výběru_ , jako jsou přepínače a zaškrtávací políčka jako páry klíč-hodnota. Nástroj pro rozpoznávání formulářů určí, zda je jako hodnota vybrána možnost "výběr" nebo "Nevybráno".
+1. V hlavním editoru kliknutím vyberte slova z zvýrazněných textových prvků. Ve _verzi v 2.1 Preview. 2_ můžete také kliknout na výběr _značek výběru_ , jako jsou přepínače a zaškrtávací políčka jako páry klíč-hodnota. Nástroj pro rozpoznávání formulářů určí, zda je jako hodnota vybrána možnost "výběr" nebo "Nevybráno".
 1. Klikněte na značku, kterou chcete použít, nebo stiskněte odpovídající klávesovou zkratku. Číselné klíče se přiřazují jako klávesové zkratky pro prvních 10 značek. Můžete změnit pořadí značek pomocí ikon šipky nahoru a dolů v podokně editor značek.
     > [!Tip]
     > Při označování formulářů mějte na paměti následující tipy.

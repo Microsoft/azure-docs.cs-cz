@@ -12,11 +12,11 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b83a8bfbc79af344c4d158ee65134034db714e9c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783959"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008901"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Správa souběžnosti v Microsoft Azure Storage
 
@@ -85,21 +85,21 @@ catch (StorageException ex)
 }
 ```
 
-Azure Storage taky zahrnuje podporu pro podmíněná záhlaví, jako je například **If-Modified-od** , **Pokud-unmodified-od** , **If-None-matched** a kombinace těchto hlaviček. Další informace najdete v tématu [určení podmíněných hlaviček pro operace služby BLOB Service](/rest/api/storageservices/Specifying-Conditional-Headers-for-Blob-Service-Operations).
+Azure Storage taky zahrnuje podporu pro podmíněná záhlaví, jako je například **If-Modified-od**, **Pokud-unmodified-od**, **If-None-matched** a kombinace těchto hlaviček. Další informace najdete v tématu [určení podmíněných hlaviček pro operace služby BLOB Service](/rest/api/storageservices/Specifying-Conditional-Headers-for-Blob-Service-Operations).
 
 Následující tabulka shrnuje operace kontejneru, které přijímají podmíněná záhlaví, například **If-Match** v žádosti a vrací hodnotu ETag v odpovědi.
 
 | Operace | Vrátí hodnotu ETag kontejneru. | Akceptuje podmíněná záhlaví |
 |:--- |:--- |:--- |
-| Vytvoření kontejneru |Ano |Ne |
-| Získat vlastnosti kontejneru |Ano |Ne |
-| Získat metadata kontejneru |Ano |Ne |
-| Nastavení metadat kontejneru |Ano |Ano |
-| Získat seznam ACL kontejneru |Ano |Ne |
-| Nastavení seznamu ACL kontejneru |Ano |Ano (*) |
-| Odstranění kontejneru |Ne |Ano |
-| Kontejner zapůjčení |Ano |Ano |
-| Výpis objektů BLOB |Ne |Ne |
+| Vytvoření kontejneru |Yes |No |
+| Získat vlastnosti kontejneru |Yes |No |
+| Získat metadata kontejneru |Yes |No |
+| Nastavení metadat kontejneru |Yes |Yes |
+| Získat seznam ACL kontejneru |Yes |No |
+| Nastavení seznamu ACL kontejneru |Yes |Ano (*) |
+| Odstranění kontejneru |No |Yes |
+| Kontejner zapůjčení |Yes |Yes |
+| Výpis objektů BLOB |No |No |
 
 (*) Oprávnění definovaná pomocí SetContainerACL jsou uložená v mezipaměti a aktualizace těchto oprávnění trvá 30 sekund, než se rozšíří aktualizace pro období, které nezaručuje konzistenci.
 
@@ -107,22 +107,22 @@ Následující tabulka shrnuje operace objektů blob, které přijímají podmí
 
 | Operace | Vrátí hodnotu ETag. | Akceptuje podmíněná záhlaví |
 |:--- |:--- |:--- |
-| Vložení objektu blob |Ano |Ano |
-| Získat objekt BLOB |Ano |Ano |
-| Získání vlastností objektu blob |Ano |Ano |
-| Nastavení vlastností objektu BLOB |Ano |Ano |
-| Získat metadata objektu BLOB |Ano |Ano |
-| Nastavení metadat objektu BLOB |Ano |Ano |
-| Objekt BLOB zapůjčení (*) |Ano |Ano |
-| Pořízení snímku objektu blob |Ano |Ano |
-| Zkopírování objektu blob |Ano |Ano (pro zdrojový a cílový objekt BLOB) |
-| Přerušit kopii objektu BLOB |Ne |Ne |
-| Odstranění objektu blob |Ne |Ano |
-| Blok vložení |Ne |Ne |
-| Seznam blokovaných umístění |Ano |Ano |
-| Získat seznam blokovaných webů |Ano |Ne |
-| Vložit stránku |Ano |Ano |
-| Získat rozsahy stránek |Ano |Ano |
+| Vložení objektu blob |Yes |Yes |
+| Získat objekt BLOB |Yes |Yes |
+| Získání vlastností objektu blob |Yes |Yes |
+| Nastavení vlastností objektu BLOB |Yes |Yes |
+| Získat metadata objektu BLOB |Yes |Yes |
+| Nastavení metadat objektu BLOB |Yes |Yes |
+| Objekt BLOB zapůjčení (*) |Yes |Yes |
+| Pořízení snímku objektu blob |Yes |Yes |
+| Zkopírování objektu blob |Yes |Ano (pro zdrojový a cílový objekt BLOB) |
+| Přerušit kopii objektu BLOB |No |No |
+| Odstranění objektu blob |No |Yes |
+| Blok vložení |No |No |
+| Seznam blokovaných umístění |Yes |Yes |
+| Získat seznam blokovaných webů |Yes |No |
+| Vložit stránku |Yes |Yes |
+| Získat rozsahy stránek |Yes |Yes |
 
 (*) Objekt BLOB zapůjčení nemění ETag u objektu BLOB.
 
@@ -130,7 +130,7 @@ Následující tabulka shrnuje operace objektů blob, které přijímají podmí
 
 Pokud chcete objekt BLOB uzamknout pro výhradní použití, Získejte na něm [zapůjčení](/rest/api/storageservices/Lease-Blob) . Po získání zapůjčení zadáte časové období pro zapůjčení. Časové období je v rozsahu od 15 do 60 sekund nebo nekonečné, což se vyhodnotí jako výhradní zámek. Obnovte konečnou zapůjčenou adresu pro její rozšiřování. Uvolněte zapůjčení, až budete s ním hotovi. Blob Storage automaticky uvolňuje konečná zapůjčení, pokud vyprší jejich platnost.
 
-Zapůjčení umožňují podporovat různé strategie synchronizace. Mezi strategie patří *exkluzivní zápis/sdílení čtení* , *exkluzivní zápis/výhradní čtení* a *sdílený zápis/výhradní čtení* . Pokud existuje zapůjčení, Azure Storage vynutí exkluzivní zápisy (operace PUT, set a Delete). zajištění výhradních operací čtení ale vyžaduje, aby vývojář zajistil, že všechny klientské aplikace používají ID zapůjčení a že v jednom okamžiku má k dispozici pouze jeden klient s platným ID zapůjčení. Výsledkem operací čtení, které neobsahují ID zapůjčení, je sdílení čtení.
+Zapůjčení umožňují podporovat různé strategie synchronizace. Mezi strategie patří *exkluzivní zápis/sdílení čtení*, *exkluzivní zápis/výhradní čtení* a *sdílený zápis/výhradní čtení*. Pokud existuje zapůjčení, Azure Storage vynutí exkluzivní zápisy (operace PUT, set a Delete). zajištění výhradních operací čtení ale vyžaduje, aby vývojář zajistil, že všechny klientské aplikace používají ID zapůjčení a že v jednom okamžiku má k dispozici pouze jeden klient s platným ID zapůjčení. Výsledkem operací čtení, které neobsahují ID zapůjčení, je sdílení čtení.
 
 Následující fragment kódu jazyka C# ukazuje příklad získání exkluzivního zapůjčení po dobu 30 sekund v objektu blob, aktualizaci obsahu objektu BLOB a uvolnění zapůjčení. Pokud při pokusu o získání nového zapůjčení již existuje platné zapůjčení objektu blob, Blob service vrátí výsledek stavu konflikt HTTP (409). Následující fragment kódu používá objekt **AccessCondition** k zapouzdření informací o zapůjčení, když odešle požadavek na aktualizaci objektu BLOB ve službě úložiště.  Úplnou ukázku si můžete stáhnout tady: [Správa souběžnosti pomocí Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
@@ -184,7 +184,7 @@ Následující operace objektů BLOB můžou použít zapůjčení ke správě p
 
 ### <a name="pessimistic-concurrency-for-containers"></a>Pesimistická souběžnost pro kontejnery
 
-Zapůjčení u kontejnerů umožňuje, aby byly stejné strategie synchronizace jako u objektů BLOB ( *exkluzivní zápis/sdílení čtení* , *exkluzivní zápis/výhradní čtení* a *sdílené zápisy/výhradní čtení* ), na rozdíl od objektů blob, ale služba úložiště vynutila výhradně výhradní operace odstranění. Aby mohl klient odstranit kontejner s aktivním zapůjčením, musí do žádosti o odstranění zahrnout aktivní ID zapůjčení. Všechny ostatní operace kontejneru jsou úspěšné na pronajatém kontejneru bez zahrnutí ID zapůjčení, v takovém případě se jedná o sdílené operace. Pokud je vyžadováno právo na aktualizaci (Put nebo Set) nebo operace čtení, vývojáři by měli zajistit, aby všichni klienti používali ID zapůjčení a aby měl pouze jeden klient v jednom okamžiku platné ID zapůjčení.
+Zapůjčení u kontejnerů umožňuje, aby byly stejné strategie synchronizace jako u objektů BLOB (*exkluzivní zápis/sdílení čtení*, *exkluzivní zápis/výhradní čtení* a *sdílené zápisy/výhradní čtení*), na rozdíl od objektů blob, ale služba úložiště vynutila výhradně výhradní operace odstranění. Aby mohl klient odstranit kontejner s aktivním zapůjčením, musí do žádosti o odstranění zahrnout aktivní ID zapůjčení. Všechny ostatní operace kontejneru jsou úspěšné na pronajatém kontejneru bez zahrnutí ID zapůjčení, v takovém případě se jedná o sdílené operace. Pokud je vyžadováno právo na aktualizaci (Put nebo Set) nebo operace čtení, vývojáři by měli zajistit, aby všichni klienti používali ID zapůjčení a aby měl pouze jeden klient v jednom okamžiku platné ID zapůjčení.
 
 Následující operace kontejneru můžou použít zapůjčení ke správě pesimistické souběžnosti:
 
@@ -196,7 +196,7 @@ Následující operace kontejneru můžou použít zapůjčení ke správě pesi
 * Nastavení seznamu ACL kontejneru
 * Kontejner zapůjčení
 
-Další informace naleznete v tématech:
+Další informace naleznete v tématu:
 
 * [Určení hlaviček podmínek pro operace Blob service](/rest/api/storageservices/Specifying-Conditional-Headers-for-Blob-Service-Operations)
 * [Kontejner zapůjčení](/rest/api/storageservices/Lease-Container)
@@ -245,19 +245,19 @@ Následující tabulka shrnuje, jak operace entity tabulky používají hodnoty 
 
 | Operace | Vrátí hodnotu ETag. | Vyžaduje hlavičku If-Match žádosti. |
 |:--- |:--- |:--- |
-| Entity dotazu |Ano |Ne |
-| Vložit entitu |Ano |Ne |
-| Aktualizovat entitu |Ano |Ano |
-| Sloučit entitu |Ano |Ano |
-| Odstranit entitu |Ne |Ano |
-| Vložit nebo nahradit entitu |Ano |Ne |
-| Vložit nebo sloučit entitu |Ano |Ne |
+| Entity dotazu |Yes |No |
+| Vložit entitu |Yes |No |
+| Aktualizovat entitu |Yes |Yes |
+| Sloučit entitu |Yes |Yes |
+| Odstranit entitu |No |Yes |
+| Vložit nebo nahradit entitu |Yes |No |
+| Vložit nebo sloučit entitu |Yes |No |
 
 Všimněte si, *že operace* **vložení nebo nahrazení entit** a **vložení nebo sloučení entit** neprovádí žádné kontroly souběžnosti, protože neodesílají hodnotu ETag službě Table Service.
 
 Obecně platí, že vývojáři používající tabulky by měli spoléhat na optimistickou souběžnost. Pokud při přístupu k tabulkám potřebujete pesimistické zamykání, přiřaďte pro každou tabulku zvolený objekt BLOB a před tím, než začnete pracovat v tabulce, se pokuste převzít zapůjčení objektu BLOB. Tento přístup vyžaduje, aby aplikace před tím, než je v tabulce, zajistila zapůjčení všech cest k datům. Je také třeba si uvědomit, že minimální doba zapůjčení je 15 sekund, což vyžaduje pečlivou pozornost škálovatelnosti.
 
-Další informace naleznete v tématech:
+Další informace naleznete v tématu:
 
 * [Operace s entitami](/rest/api/storageservices/Operations-on-Entities)
 
@@ -267,7 +267,7 @@ Jedním z scénářů, ve kterých je souběžnost ve frontě ve službě Queuei
 
 Služba front nemá podporu pro optimistickou ani pesimistickou souběžnost a z tohoto důvodu klienti zpracovávající zprávy načtené z fronty mají jistotu, že se zprávy zpracovávají idempotentní způsobem. Pro operace aktualizace, jako je SetQueueServiceProperties, SetQueueMetaData, SetQueueACL a UpdateMessage, se použije poslední strategie zapisovače WINS.
 
-Další informace naleznete v tématech:
+Další informace naleznete v tématu:
 
 * [Rozhraní REST API služby Queue Service](/rest/api/storageservices/Queue-Service-REST-API)
 * [Získat zprávy](/rest/api/storageservices/Get-Messages)
@@ -278,7 +278,7 @@ K Souborové službě se dá dostat pomocí dvou různých koncových bodů prot
 
 Když klient SMB otevře soubor pro odstranění, označí soubor jako nedokončený, dokud nebudou všechny ostatní otevřené popisovače protokolu SMB v tomto souboru zavřeny. Když je soubor označený jako čeká na odstranění, všechny operace REST na tomto souboru vrátí stavový kód 409 (konflikt) s kódem chyby SMBDeletePending. Stavový kód 404 (Nenalezeno) se nevrátí, protože klient SMB může před zavřením souboru odebrat příznak nedokončeného odstranění. Jinými slovy, stavový kód 404 (Nenalezeno) se očekává jenom v případě, že byl soubor odebraný. Všimněte si, že když je soubor ve stavu čekání na odstranění protokolu SMB, nebude zahrnutý do výsledků souborů seznamu. Všimněte si také, že operace odstranění souboru REST a odstranění adresáře REST jsou potvrzeny atomicky a nevedou k nedokončenému stavu odstranění.
 
-Další informace naleznete v tématech:
+Další informace naleznete v tématu:
 
 * [Správa zámků souborů](/rest/api/storageservices/Managing-File-Locks)
 

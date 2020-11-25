@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
 ms.openlocfilehash: 5af0eb20f9766369caa7351719b63b213c394e5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87305801"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008833"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Odeslat cloudovou službu, virtuální počítač nebo Service Fabric diagnostická data do Application Insights
 Služba Cloud Services, Virtual Machines, Virtual Machine Scale Sets a Service Fabric k shromažďování dat používá rozšíření Azure Diagnostics.  Diagnostika Azure odesílá data do tabulek Azure Storage.  Můžete však také přesměrovat všechny nebo podmnožiny dat do jiných umístění pomocí rozšíření Azure Diagnostics 1,5 nebo novější.

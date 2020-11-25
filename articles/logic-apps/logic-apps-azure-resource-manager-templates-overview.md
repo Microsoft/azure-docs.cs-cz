@@ -7,15 +7,15 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/06/2020
 ms.openlocfilehash: 4070f373175f3497156ced011a57e2ed7bd6e770
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364254"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009768"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Přehled: Automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager
 
-Až budete připraveni automatizovat vytváření a nasazení aplikace logiky, můžete svou definici pracovního postupu vaší aplikace logiky rozšířit do [šablony Azure Resource Manager](../azure-resource-manager/management/overview.md). Tato šablona definuje infrastrukturu, prostředky, parametry a další informace pro zřizování a nasazení aplikace logiky. Definováním parametrů pro hodnoty, které se liší v nasazení, označované také jako *Parametrizace* , můžete opakovaně a konzistentně nasazovat aplikace logiky na základě různých potřeb nasazení.
+Až budete připraveni automatizovat vytváření a nasazení aplikace logiky, můžete svou definici pracovního postupu vaší aplikace logiky rozšířit do [šablony Azure Resource Manager](../azure-resource-manager/management/overview.md). Tato šablona definuje infrastrukturu, prostředky, parametry a další informace pro zřizování a nasazení aplikace logiky. Definováním parametrů pro hodnoty, které se liší v nasazení, označované také jako *Parametrizace*, můžete opakovaně a konzistentně nasazovat aplikace logiky na základě různých potřeb nasazení.
 
 Například pokud nasadíte do prostředí pro vývoj, testování a produkci, pravděpodobně pro každé prostředí použijete různé připojovací řetězce. Můžete deklarovat parametry šablony, které přijímají různé připojovací řetězce, a pak tyto řetězce Uložit do samostatného [souboru parametrů](../azure-resource-manager/templates/parameter-files.md). Tímto způsobem můžete tyto hodnoty změnit, aniž byste museli šablonu aktualizovat a znovu nasadit. V případě scénářů, kde máte citlivé hodnoty parametrů, nebo musí být zabezpečené, jako jsou hesla a tajné kódy, můžete tyto hodnoty uložit v [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) a nechat si soubory parametrů tyto hodnoty načíst. V těchto scénářích se však znovu nasadí, aby se načetly aktuální hodnoty.
 
@@ -1047,7 +1047,7 @@ Další informace o práci s instančními objekty najdete v těchto tématech:
 
 ## <a name="references-to-parameters"></a>Odkazy na parametry
 
-Chcete-li odkazovat na parametry šablony, můžete použít výrazy šablony s [funkcemi šablony](../azure-resource-manager/templates/template-functions.md), které jsou vyhodnocovány při nasazení. Výrazy šablony používají hranaté závorky ( **[]** ):
+Chcete-li odkazovat na parametry šablony, můžete použít výrazy šablony s [funkcemi šablony](../azure-resource-manager/templates/template-functions.md), které jsou vyhodnocovány při nasazení. Výrazy šablony používají hranaté závorky (**[]**):
 
 `"<attribute-name>": "[parameters('<template-parameter-name>')]"`
 

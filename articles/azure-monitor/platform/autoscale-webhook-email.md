@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 3b1f13fd1ce8bedcbe58385d4cee321f1d1405df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86505515"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009003"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Použití akcí automatického škálování k odesílání oznámení o výstrahách e-mailu a Webhooku v Azure Monitor
 V tomto článku se dozvíte, jak nastavit triggery, abyste mohli volat konkrétní webové adresy URL nebo posílat e-maily na základě akcí automatického škálování v Azure.  

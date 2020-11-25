@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092996"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009496"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Jak spustit Durable Functions jako WebJobs
 
@@ -27,7 +27,7 @@ V tomto článku se předpokládá, že jste obeznámeni se základy sady WebJob
 
 * [Začínáme se sadou WebJobs SDK](../../app-service/webjobs-sdk-get-started.md)
 * [Vytvoření první funkce pomocí sady Visual Studio](../functions-create-your-first-function-visual-studio.md)
-* [Durable Functions](durable-functions-sequence.md)
+* [Odolná služba Functions](durable-functions-sequence.md)
 
 Postup dokončení kroků v tomto článku:
 
@@ -133,7 +133,7 @@ Sada WebJobs SDK nepodporuje následující funkce Azure Functions:
 
 V projektu sady WebJobs SDK je název metody funkce název funkce. `FunctionName`Atribut se používá pouze v Azure Functions.
 
-### <a name="http-trigger"></a>Trigger HTTP
+### <a name="http-trigger"></a>HTTP trigger
 
 Sada WebJobs SDK nemá Trigger HTTP. Klient orchestrace ukázkového projektu používá aktivační událost časovače:
 

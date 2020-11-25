@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: ecb066c7269217af3f8cc84e0f59ab29b4b39a9e
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 45ebd793d96ed8cf0edf88d5631353fb6cd6a982
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331467"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96008765"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Vizuální monitorování služby Azure Data Factory
 
@@ -40,7 +40,7 @@ Mřížka spuštění kanálu obsahuje následující sloupce:
 | Konec běhu | Koncové datum a čas spuštění kanálu (MM/DD/RRRR, HH: MM: SS AM/PM) |
 | Doba trvání | Doba trvání běhu (HH: MM: SS) |
 | Aktivoval | Název triggeru, který spustil kanál |
-| Status | **Selhání** , **úspěšné** , **probíhající** , **zrušeno** nebo zařazení do **fronty** |
+| Status | **Selhání**, **úspěšné**, **probíhající**, **zrušeno** nebo zařazení do **fronty** |
 | Poznámky | Filtrovatelné značky přidružené k kanálu  |
 | Parametry | Parametry pro spuštění kanálu (páry název/hodnota) |
 | Chyba | Pokud se kanál nezdařil, Chyba spuštění |
@@ -62,16 +62,16 @@ Pokud chcete získat podrobné zobrazení jednotlivých spuštění určitého k
 
 V zobrazení seznamu se zobrazí spuštění aktivit, která odpovídají každému spuštění kanálu. Najeďte myší na konkrétní spuštění aktivity a získejte informace specifické pro spuštění, jako je vstup JSON, výstup JSON a podrobné prostředí pro monitorování konkrétní aktivity.
 
-![Zobrazení seznamu pro monitorování spuštění aktivit](media/monitor-visually/activity-runs.png)
+![K dispozici jsou informace o SalesAnalyticsMLPipeline, po kterém následuje seznam spuštění aktivit.](media/monitor-visually/activity-runs.png)
 
 | **Název sloupce** | **Popis** |
 | --- | --- |
 | Název aktivity | Název aktivity uvnitř kanálu |
-| Typ aktivity | Typ aktivity, například **copy** , **ExecuteDataFlow** nebo **AzureMLExecutePipeline** |
+| Typ aktivity | Typ aktivity, například **copy**, **ExecuteDataFlow** nebo **AzureMLExecutePipeline** |
 | Akce | Ikony, které vám umožní zobrazit vstupní informace JSON, informace o výstupu JSON nebo podrobné prostředí pro monitorování konkrétní aktivity | 
 | Spustit spuštění | Počáteční datum a čas pro spuštění aktivit (MM/DD/RRRR, HH: MM: SS dop./odp.) |
 | Doba trvání | Doba trvání běhu (HH: MM: SS) |
-| Status | **Došlo** **k** chybě, **úspěšné** , probíhající nebo **zrušené** |
+| Status | **Došlo** **k** chybě, **úspěšné**, probíhající nebo **zrušené** |
 | Integration Runtime | Který Integration Runtime aktivity běžely |
 | Vlastnosti uživatele | Uživatelem definované vlastnosti aktivity |
 | Chyba | Pokud se aktivita nezdařila, Chyba spuštění |
@@ -79,7 +79,7 @@ V zobrazení seznamu se zobrazí spuštění aktivit, která odpovídají každ�
 
 Pokud se aktivita nezdařila, můžete zobrazit podrobnou chybovou zprávu kliknutím na ikonu ve sloupci chyba. 
 
-![Zobrazení seznamu pro monitorování spuštění aktivit](media/monitor-visually/activity-run-error.png)
+![Zobrazí se oznámení s podrobnostmi o chybě, včetně kódu chyby, typu selhání a podrobností o chybě.](media/monitor-visually/activity-run-error.png)
 
 ### <a name="promote-user-properties-to-monitor"></a>Zvýšení úrovně vlastností uživatele na monitorování
 

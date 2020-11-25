@@ -10,20 +10,20 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 8c4e600e012268337a5e6c63d5b3ce4f532ccec0
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: aaf614846618f3781559ad7f9ce31cb47dd11b63
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970924"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96009564"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Rychlý Start: výuka modelu pro rozpoznávání formulářů a extrakce dat formuláře pomocí REST API s Pythonem
 
 V tomto rychlém startu použijete nástroj pro rozpoznávání formulářů Azure REST API s Pythonem k vyučování a seznámení s formuláři pro extrakci párů klíč-hodnota a tabulek.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/cognitive-services/), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu musíte mít:
 - Je nainstalovaný [Python](https://www.python.org/downloads/) (Pokud chcete spustit ukázku místně).
@@ -50,6 +50,7 @@ Pokud chcete pomocí dokumentů v kontejneru objektů BLOB v Azure vytvořit mod
 1. Nahraďte `<subscription key>` klíčem předplatného, který jste zkopírovali z předchozího kroku.
 1. Nahraďte `<endpoint>` adresou URL koncového bodu pro prostředek pro rozpoznávání formulářů.
 1. Nahraďte `<Blob folder name>` cestou ke složce v úložišti objektů blob, kde se nacházejí vaše formuláře. Pokud jsou vaše formuláře v kořenu vašeho kontejneru, nechte tento řetězec prázdný.
+1. V případě potřeby nahraďte `<your model name>` popisným názvem, který byste chtěli přidělit vašemu modelu.
 
     # <a name="v20"></a>[v2.0](#tab/v2-0)
     ```python
@@ -78,6 +79,7 @@ Pokud chcete pomocí dokumentů v kontejneru objektů BLOB v Azure vytvořit mod
             "prefix": prefix,
             "includeSubFolders": includeSubFolders
         },
+        "modelName":"<your model name>",
         "useLabelFile": useLabelFile
     }
     
@@ -101,7 +103,7 @@ Pokud chcete pomocí dokumentů v kontejneru objektů BLOB v Azure vytvořit mod
     
     # Endpoint URL
     endpoint = r"<endpoint>"
-    post_url = endpoint + r"/formrecognizer/v2.1-preview.1/custom/models"
+    post_url = endpoint + r"/formrecognizer/v2.1-preview.2/custom/models"
     source = r"<SAS URL>"
     prefix = "<Blob folder name>"
     includeSubFolders = False

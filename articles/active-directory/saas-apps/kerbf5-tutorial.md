@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 161348f7566ff64858d563f34ad8f3f4c7511adf
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459097"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009156"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s F5
 
@@ -168,7 +168,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
@@ -180,13 +180,13 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k F5.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **F5**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -211,7 +211,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Certifikát metadat bude nutné importovat do F5, který bude později použit v procesu instalace.
 
-1. Přejděte do **seznamu certifikát > Správa certifikátů > přenos provozu > seznam certifikátů protokolu SSL**. V pravém horním rohu vyberte **importovat** . Zadejte **název certifikátu** (bude odkazován později v konfiguraci). Ve **zdroji certifikátu**vyberte Odeslat soubor a při konfiguraci jednotného přihlašování SAML zadejte certifikát stažený z Azure. Klikněte na **importovat**.
+1. Přejděte do **seznamu certifikát > Správa certifikátů > přenos provozu > seznam certifikátů protokolu SSL**. V pravém horním rohu vyberte **importovat** . Zadejte **název certifikátu** (bude odkazován později v konfiguraci). Ve **zdroji certifikátu** vyberte Odeslat soubor a při konfiguraci jednotného přihlašování SAML zadejte certifikát stažený z Azure. Klikněte na **importovat**.
 
     ![Snímek obrazovky se stránkou s názvem "s S certifikátem/zdrojem klíčů", která obsahuje zvýrazněný název certifikátu, nahrát soubor a vybrané tlačítko Import](./media/kerbf5-tutorial/configure01.png) 
 
@@ -232,7 +232,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Snímek obrazovky s zvýrazněnými textovými poli "Service Provider Properties" a "Description" a vybraným tlačítkem Uložit & Next.](./media/kerbf5-tutorial/configure05.png) 
 
-1. V tomto příkladu vytváříme nový virtuální server jako 192.168.30.200 s portem 443. Zadejte IP adresu virtuálního serveru v **cílové adrese**. Vyberte **profil SSL**klienta, vyberte vytvořit novou. Zadejte dříve nahraný certifikát aplikace (v tomto příkladu certifikát zástupné karty) a související klíč a potom klikněte na **uložit & další**.
+1. V tomto příkladu vytváříme nový virtuální server jako 192.168.30.200 s portem 443. Zadejte IP adresu virtuálního serveru v **cílové adrese**. Vyberte **profil SSL** klienta, vyberte vytvořit novou. Zadejte dříve nahraný certifikát aplikace (v tomto příkladu certifikát zástupné karty) a související klíč a potom klikněte na **uložit & další**.
 
     >[!NOTE]
     >v tomto příkladu náš interní webserver běží na portu 80 a chceme ho publikovat v 443.
@@ -243,7 +243,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Snímek obrazovky zobrazující stránku nastavení konektoru externího zprostředkovatele identity se zvýrazněným textovým polem název a vybraným tlačítkem Uložit & další.](./media/kerbf5-tutorial/configure07.png)  
 
-1. V části **Vybrat fond**zadejte **vytvořit novou** (případně vyberte fond, který už existuje). Nechte výchozí hodnotu.    V části servery fondů zadejte IP adresu do pole **IP adresa/název uzlu**. Zadejte **port**. Klikněte na **uložit & další**.
+1. V části **Vybrat fond** zadejte **vytvořit novou** (případně vyberte fond, který už existuje). Nechte výchozí hodnotu.    V části servery fondů zadejte IP adresu do pole **IP adresa/název uzlu**. Zadejte **port**. Klikněte na **uložit & další**.
  
     ![Snímek obrazovky zobrazující stránku vlastností fondu se zvýrazněnými textovými poli IP adresa/název uzlu a portem a vybraným tlačítkem Uložit & další.](./media/kerbf5-tutorial/configure08.png)
 
@@ -325,7 +325,7 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
 
     ![Snímek obrazovky se stránkou "Import s certifikátem nebo zdrojem klíčů" s vybraným tlačítkem import.](./media/kerbf5-tutorial/configure18.png)
 
-2. Pro nastavení IDP SAML **přejděte na přístup > federace > SAML: Service Provider > externí konektory IDP**a klikněte na **vytvořit > z metadat**.
+2. Pro nastavení IDP SAML **přejděte na přístup > federace > SAML: Service Provider > externí konektory IDP** a klikněte na **vytvořit > z metadat**.
 
     ![Snímek obrazovky se stránkou poskytovatele "S A M L" s "z metadat", která je vybrána v rozevíracím seznamu "vytvořit".](./media/kerbf5-tutorial/configure19.png)
 
@@ -356,7 +356,7 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
 
      ![Snímek obrazovky zobrazující, že je vybrané tlačítko pro konektory vytvořit vazbu/vyvážet I d P](./media/kerbf5-tutorial/configure27.png)
 
-     c. Klikněte na **Přidat nový řádek** a vyberte **externí konektor IDP** vytvořený v předchozím kroku, klikněte na **aktualizovat**a pak klikněte na **OK**.
+     c. Klikněte na **Přidat nový řádek** a vyberte **externí konektor IDP** vytvořený v předchozím kroku, klikněte na **aktualizovat** a pak klikněte na **OK**.
 
      ![Snímek obrazovky s vybraným oknem pro úpravy S A M L A d PS, který v okně Přidat nový řádek používá toto okno S](./media/kerbf5-tutorial/configure28.png)
 
@@ -480,7 +480,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici F5 na přístupovém panelu byste měli být automaticky přihlášeni k F5, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 

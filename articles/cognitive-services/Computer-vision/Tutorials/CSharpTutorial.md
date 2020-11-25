@@ -12,11 +12,11 @@ ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 522cf801e7c1bfdd3ed1f452c123a2db701c0c42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936346"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008799"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Ukázka: zkoumání aplikace pro zpracování obrázků pomocí jazyka C #
 
@@ -81,8 +81,8 @@ Ukázkovou aplikaci můžete spustit, abyste viděli, jak komunikuje s vámi a s
 1. Po dokončení sestavení stiskněte klávesu **F5** nebo zvolte možnost **ladění** z nabídky pásu karet a pak zvolte možnost **Spustit ladění** a spusťte ukázkovou aplikaci.
 1. Když se zobrazí ukázková aplikace, v navigačním podokně vyberte **Správa klíčů předplatného** . zobrazí se stránka Správa klíčů předplatného.
    ![Stránka správy klíčů předplatného](../Images/Vision_UI_Subscription.PNG)  
-1. Do **klíče předplatného**zadejte svůj klíč předplatného.
-1. Do **koncového bodu**zadejte adresu URL koncového bodu.  
+1. Do **klíče předplatného** zadejte svůj klíč předplatného.
+1. Do **koncového bodu** zadejte adresu URL koncového bodu.  
    [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 1. Pokud nechcete zadat klíč předplatného a adresu URL koncového bodu při příštím spuštění ukázkové aplikace, klikněte na **Uložit nastavení** a uložte klíč předplatného a adresu URL koncového bodu do vašeho počítače. Pokud chcete odstranit dřív uložený klíč předplatného a adresu URL koncového bodu, vyberte **Odstranit nastavení**.
 

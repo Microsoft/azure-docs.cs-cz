@@ -3,18 +3,18 @@ title: Správa portálu Azure EA
 description: V tomto článku jsou vysvětlené nejčastější úkoly, které provádí správce portálu Azure EA.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/27/2020
+ms.date: 11/13/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperfq1
-ms.openlocfilehash: e83af5baa4ca38a8e81dffa8bb81ab3da64e1e95
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: edcc94050880544a6c2de54ff27f833f1c60f99f
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411018"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683641"
 ---
 # <a name="azure-ea-portal-administration"></a>Správa portálu Azure EA
 
@@ -105,7 +105,7 @@ Správcům oddělení je možné udělit přístup jen pro čtení.
 - Při vytváření nového správce oddělení nastavte možnost jen pro čtení na hodnotu **Yes** (Ano).
 
 - Jak upravit existujícího správce oddělení:
-   1. Vyberte oddělení a potom vyberte symbol tužky vedle **správce oddělení** , kterého chcete upravit.
+   1. Vyberte oddělení a potom vyberte symbol tužky vedle **správce oddělení**, kterého chcete upravit.
    1. Nastavte otevírání jen pro čtení na **Yes** (Ano) a potom vyberte **Save** (Uložit).
 
 Podnikoví správci získávají automaticky oprávnění správce oddělení.
@@ -120,7 +120,7 @@ Jak přidat účet:
 1. Vyberte kartu **Account** (Účet). Na stránce **Account** (Účet) vyberte **+Add Account** (+Přidat účet).
 1. Vyberte oddělení nebo nechte účet nepřiřazený a pak vyberte požadovaný typ ověřování.
 1. Zadejte popisný název, který vám usnadní identifikaci účtu ve vytvořených sestavách.
-1. Zadejte **e-mailovou adresu vlastníka účtu** , kterou chcete přidružit k novému účtu.
+1. Zadejte **e-mailovou adresu vlastníka účtu**, kterou chcete přidružit k novému účtu.
 1. Ověřte e-mailovou adresu a pak vyberte **Add** (Přidat).
 
 ![Příklad znázorňující seznam účtů a možnost pro přidání účtu](./media/ea-portal-administration/create-ea-add-an-account.png)
@@ -135,28 +135,20 @@ Jak si ověřit vlastnictví účtu:
    Stav by se měl změnit z hodnoty **Pending** (Čeká) na **počáteční a koncové datum**. Počáteční datum představuje den, kdy se uživatel poprvé přihlásil, a koncové datum je den, kdy končí smlouva.
 1. Při prvním přihlášení k portálu Azure Enterprise se zobrazí zpráva **Warning** (Upozornění) a vlastník účtu si musí účet aktivovat výběrem možnosti **Continue** (Pokračovat).
 
-## <a name="change-account-owner"></a>Změna vlastníka účtu
+## <a name="change-azure-subscription-or-account-ownership"></a>Změna vlastnictví účtu nebo předplatného Azure
 
-Podnikoví správci mohou prostřednictvím portálu Azure Enterprise přenést vlastnictví účtu s předplatnými v rámci registrace. Při této akci se všechna předplatná přenesou ze zdrojového uživatelského účtu na cílový.
+Podnikoví správci můžou prostřednictvím portálu Azure Enterprise Portal přenést vlastnictví účtu pro vybraná nebo všechna předplatná v rámci registrace.
 
-Při přenášení účtů mějte na paměti toto:
+Po dokončení přenosu vlastnictví účtu nebo předplatného aktualizuje Microsoft vlastníka účtu.
 
-- Můžete provést tyto přenosy:
-  - Z pracovního nebo školního účtu na jiný pracovní nebo školní účet.
-  - Z účtu Microsoft na pracovní nebo školní účet.
-  - Z účtu Microsoft na jiný účet Microsoft.
+Před přenosem vlastnictví se seznamte s těmito zásadami řízení přístupu na základě role Azure (Azure RBAC):
 
-    Cílovým účtem pro přenos musí být platný účet Azure Commerce. U nových účtů budete při přihlašování k portálu Azure Enterprise požádáni o vytvoření účtu Azure Commerce. U existujících účtů musíte nejdřív vytvořit nové předplatné Azure – teprve pak bude účet splňovat podmínky.
-
-- Přenos z pracovního nebo školního účtu na účet Microsoft nelze provést.
-
-- Po dokončení přenosu předplatných aktualizuje Microsoft vlastníka účtu.
-
-Seznamte se s těmito zásadami řízení přístupu na základě role (RBAC):
-
-- Když provádíte přenosy předplatných mezi dvěma ID organizace ve stejném tenantovi, zachovají se zásady RBAC a přiřazené role správců služeb a spolusprávců.
-- Jiné přenosy předplatných povedou ke ztrátě nastavených zásad RBAC a přiřazení rolí.
+- Když provádíte přenosy vlastnictví účtů nebo předplatných mezi dvěma ID organizace ve stejném tenantovi, zachovají se zásady Azure RBAC a přiřazené role správců služeb a spolusprávců.
+- Přenosy vlastnictví účtů nebo předplatných mezi tenanty povedou ke ztrátě nastavených zásad Azure RBAC a přiřazení rolí.
 - Zásady a role správců se nepřenášejí mezi různými adresáři. U správců služeb proběhne aktualizace na vlastníka cílového účtu.
+- Pokud chcete zabránit ztrátě zásad RBAC a přiřazení rolí při převodu předplatného mezi tenanty, ujistěte se, že políčko **Move the subscriptions to the recipient‘s Azure AD tenant** (Přesunout předplatná do tenanta Azure AD příjemce) zůstane **nezaškrtnuté**. Tím se zajistí zachování služeb, rolí RBAC a zásad v aktuálním tenantovi Azure AD a převede se pouze vlastnictví fakturace daného účtu.  
+    :::image type="content" source="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="Obrázek ukazující nezaškrtnuté políčko pro přesun předplatných do tenanta Azure AD" lightbox="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
+
 
 Před změnou vlastníka účtu:
 
@@ -168,26 +160,25 @@ Jak přenést vlastnictví účtu pro všechna předplatná:
 1. Přihlaste se k portálu Azure Enterprise.
 1. V levé navigační oblasti vyberte **Manage** (Spravovat).
 1. Vyberte kartu **Account** (Účet) a najeďte myší na požadovaný účet.
-1. Na pravé straně vyberte ikonu pro změnu vlastníka účtu. Ikona vypadá jako osoba.
-1. Zvolte účet splňující podmínky a potom vyberte **Next** (Další).
+1. Na pravé straně vyberte ikonu pro změnu vlastníka účtu. Ikona vypadá jako osoba.  
+    ![Obrázek znázorňující symbol pro změnu vlastníka účtu](./media/ea-portal-administration/create-ea-create-sub-transfer-account-ownership-of-sub.png)
+1. Zvolte cílový účet, do kterého se má účet přenést, a vyberte **Next** (Další).
+1. Pokud chcete přenést vlastnictví účtu mezi tenanty Azure AD, zaškrtněte políčko **Move the subscriptions to the recipient‘s Azure AD tenant** (Přesunout předplatná do tenanta Azure AD příjemce).  
+    :::image type="content" source="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="Obrázek ukazující zaškrtnuté políčko pro přesun předplatných do tenanta Azure AD" lightbox="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
 1. Potvrďte přenos a vyberte **Submit** (Odeslat).
-
-![Obrázek znázorňující symbol pro změnu vlastníka účtu](./media/ea-portal-administration/create-ea-create-sub-transfer-account-ownership-of-sub.png)
 
 Jak přenést vlastnictví účtu pro jedno předplatné:
 
 1. Přihlaste se k portálu Azure Enterprise.
 1. V levé navigační oblasti vyberte **Manage** (Spravovat).
 1. Vyberte kartu **Account** (Účet) a najeďte myší na požadovaný účet.
-1. Na pravé straně vyberte ikonu pro přenos předplatných. Ikona vypadá jako stránka.
-1. Zvolte předplatné splňující podmínky a potom vyberte **Next** (Další).
+1. Na pravé straně vyberte ikonu pro přenos předplatných. Ikona vypadá jako stránka.  
+    ![Obrázek znázorňující symbol pro přenos předplatných](./media/ea-portal-administration/ea-transfer-subscriptions.png)
+1. Zvolte cílový účet, do kterého se má předplatné přenést, a vyberte **Next** (Další).
+1. Pokud chcete přenést vlastnictví předplatného mezi tenanty Azure AD, zaškrtněte políčko **Move the subscriptions to the recipient‘s Azure AD tenant** (Přesunout předplatná do tenanta Azure AD příjemce).  
+    :::image type="content" source="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="Obrázek ukazující zaškrtnuté políčko pro přesun předplatných do tenanta Azure AD" lightbox="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
 1. Potvrďte přenos a pak vyberte **Submit** (Odeslat).
 
-![Obrázek znázorňující symbol pro přenos předplatných](./media/ea-portal-administration/ea-transfer-subscriptions.png)
-
-Podívejte se na toto video o správě uživatelů na portálu Azure Enterprise:
-
-> [!VIDEO https://www.youtube.com/embed/621jVkvmwm8]
 
 ## <a name="associate-an-account-to-a-department"></a>Přidružit účet k oddělení
 
@@ -400,7 +391,7 @@ Přidání kontaktu:
 2. Zadejte e-mailovou adresu a potvrďte ji.
 3. Vyberte **Uložit**.
 
-Nový kontakt pro oznámení se zobrazí v oddílu **Kontakt pro oznámení**. Pokud chcete změnit frekvenci oznamování, vyberte kontakt pro oznámení a pak vyberte symbol tužky, který je napravo od vybraného řádku. Nastavte **denní** , **týdenní** , **měsíční** nebo **žádnou** frekvenci.
+Nový kontakt pro oznámení se zobrazí v oddílu **Kontakt pro oznámení**. Pokud chcete změnit frekvenci oznamování, vyberte kontakt pro oznámení a pak vyberte symbol tužky, který je napravo od vybraného řádku. Nastavte **denní**, **týdenní**, **měsíční** nebo **žádnou** frekvenci.
 
 Můžete také potlačit _blížící se koncové datum pokrytého období_ a _vypnout a zrušit zřízené blížící se datum_ u oznámení o životním cyklu. Pokud vypnete oznámení o životním cyklu, potlačíte tím oznámení o pokrytém období a o datu ukončení smlouvy.
 

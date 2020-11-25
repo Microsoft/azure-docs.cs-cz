@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: b9f2d3397e0a2067cb173741a0037422021f3d87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3095938f3bead6058a3b91b684557f21fec651f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858247"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96009608"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a jazyka Go
 
@@ -31,7 +31,7 @@ V tomto rychlém startu použijete Azure Face REST API with přejít k detekci l
 
 ## <a name="write-the-script"></a>Napsat skript
 
-Vytvořte nový soubor _faceDetection. přejít_a přidejte následující kód. Tím se zavolá Face API pro danou adresu URL obrázku.
+Vytvořte nový soubor _faceDetection. přejít_ a přidejte následující kód. Tím se zavolá Face API pro danou adresu URL obrázku.
 
 :::code language="go" source="~/cognitive-services-quickstart-code/go/Face/rest/detect.go":::
 
@@ -79,7 +79,7 @@ Chcete-li extrahovat atributy obličeje, použijte model detekce 1 a přidejte `
 const params = "?detectionModel=detection_01&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise"
 ```
 
-Odpověď teď obsahuje atributy obličeje. Příklad:
+Odpověď teď obsahuje atributy obličeje. Například:
 
 ```json
 [

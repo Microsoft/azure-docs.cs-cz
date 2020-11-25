@@ -12,11 +12,11 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: 511166e156591562b2120b58cc420f3fccd1d8c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84804907"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008922"
 ---
 # <a name="client-side-encryption-with-python"></a>Šifrování na straně klienta pomocí Pythonu
 
@@ -54,7 +54,7 @@ Dešifrování prostřednictvím techniky obálek funguje následujícím způso
 Klientská knihovna pro úložiště používá [algoritmus AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) , aby se šifroval data uživatelů. Konkrétně režim [řetězení bloků šifry (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) s AES. Každá služba funguje trochu jinak, takže se na ně podíváme každý z nich.
 
 ### <a name="blobs"></a>Objekty blob
-Klientská knihovna aktuálně podporuje pouze šifrování celých objektů BLOB. Šifrování je konkrétně podporováno, pokud uživatelé používají metody **Create***. Pro soubory ke stažení jsou podporované jak stahování dokončeno, tak i rozsah, ale paralelní využívání nahrávání i stahování je dostupné.
+Klientská knihovna aktuálně podporuje pouze šifrování celých objektů BLOB. Šifrování je konkrétně podporováno, pokud uživatelé používají metody **Create** _. Pro soubory ke stažení jsou podporované jak stahování dokončeno, tak i rozsah, ale paralelní využívání nahrávání i stahování je dostupné.
 
 Při šifrování vygeneruje Klientská knihovna náhodný vektor inicializace (IV) o 16 bajtech, společně s náhodným šifrovacím klíčem obsahu (CEK) 32 bajtů a provede šifrování obálky dat objektů BLOB pomocí těchto informací. Zabalené CEK a některá další šifrovací metadata se pak ukládají jako metadata objektů BLOB společně s šifrovaným objektem BLOB ve službě.
 
@@ -63,9 +63,9 @@ Při šifrování vygeneruje Klientská knihovna náhodný vektor inicializace (
 > 
 > 
 
-Stažení šifrovaného objektu BLOB zahrnuje načtení obsahu celého objektu BLOB pomocí metod **Get*** pohodlí. Zabalená CEK se nebalí a používá společně s IV (uloženými jako metadata objektů BLOB v tomto případě) k vrácení dešifrovaných dat uživatelům.
+Stažení zašifrovaného objektu BLOB zahrnuje načtení obsahu celého objektu BLOB pomocí metod _*Get* *_ pohodlí. Zabalená CEK se nebalí a používá společně s IV (uloženými jako metadata objektů BLOB v tomto případě) k vrácení dešifrovaných dat uživatelům.
 
-Stažení libovolného rozsahu (**Get*** metody s předanými parametry rozsahu) v zašifrovaném objektu BLOB zahrnuje úpravu rozsahu poskytnutého uživateli, aby bylo možné získat malé množství dalších dat, která lze použít k úspěšnému dešifrování požadovaného rozsahu.
+Stažení libovolného rozsahu (metody _*Get* *_ s předanými parametry rozsahu) v zašifrovaném objektu BLOB zahrnuje úpravu rozsahu poskytnutého uživateli, aby bylo možné získat malé množství dalších dat, která lze použít k úspěšnému dešifrování požadovaného rozsahu.
 
 Objekty blob bloku a objekty blob stránky je možné šifrovat nebo dešifrovat pomocí tohoto schématu. V tuto chvíli není k dispozici žádná podpora pro šifrování doplňovacích objektů BLOB.
 
@@ -114,7 +114,7 @@ Všimněte si, že entity se šifrují, protože jsou vložené do dávky pomoc�
 > [!IMPORTANT]
 > Pamatujte na tyto důležité body při použití šifrování na straně klienta:
 > 
-> * Při čtení nebo zápisu do šifrovaného objektu BLOB použijte úplné příkazy pro nahrání objektů BLOB a rozsah nebo celé objekty pro stažení objektů BLOB. Vyhněte se zápisu do šifrovaného objektu BLOB pomocí operací protokolu, jako je blok vložení, seznam blokovaných objektů, zápis stránek nebo vymazat stránky. v opačném případě může dojít k poškození šifrovaného objektu BLOB a zpřístupnění ho nečitelným.
+> _ Při čtení nebo zápisu do šifrovaného objektu BLOB použijte úplné příkazy pro nahrání objektů BLOB a rozsah nebo celé objekty pro stažení objektů BLOB. Vyhněte se zápisu do šifrovaného objektu BLOB pomocí operací protokolu, jako je blok vložení, seznam blokovaných objektů, zápis stránek nebo vymazat stránky. v opačném případě může dojít k poškození šifrovaného objektu BLOB a zpřístupnění ho nečitelným.
 > * V případě tabulek existuje podobné omezení. Nezapomeňte neaktualizovat šifrované vlastnosti bez aktualizace metadat šifrování.
 > * Pokud nastavíte metadata pro zašifrovaný objekt blob, můžete přepsat metadata týkající se šifrování, která jsou nutná k dešifrování, protože nastavení metadat není aditivní. To platí také pro snímky; Vyhněte se zadávání metadat při vytváření snímku šifrovaného objektu BLOB. Pokud musí být nastavena metadata, nezapomeňte nejprve zavolat metodu **get_blob_metadata** a získat aktuální šifrovací metadata a vyhnout se souběžným zápisům při nastavování metadat.
 > * Pro uživatele, kteří by měli pracovat pouze s šifrovanými daty, povolte příznak **require_encryption** u objektu služby. Další informace najdete níže.

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
 ms.openlocfilehash: 20d55de7ef0f7b7f49b922409f8cb61874fae0f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448159"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008969"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Připojit Configuration Manager k Azure Monitor
 Prostředí Microsoft Endpoint Configuration Manager můžete připojit, aby se Azure Monitor synchronizovaná data kolekce zařízení a odkazovala na tyto kolekce v Azure Monitor a Azure Automation.  
@@ -98,9 +98,9 @@ Přečtěte si článek [připojení počítačů s Windows k Azure monitor v Az
 
     3. Jako **název aplikace** zadejte název aplikace.
 
-    4. Zadejte pro **ID klienta**ID aplikace vytvořené aplikace Azure AD, kterou jste vytvořili dříve.
+    4. Zadejte pro **ID klienta** ID aplikace vytvořené aplikace Azure AD, kterou jste vytvořili dříve.
 
-    5. Zadejte tajný **klíč**klienta pro vytvořenou aplikaci Azure AD.
+    5. Zadejte tajný **klíč** klienta pro vytvořenou aplikaci Azure AD.
 
     6. Zadejte pro **vypršení platnosti tajného klíče**, datum vypršení platnosti klíče.
 
@@ -108,7 +108,7 @@ Přečtěte si článek [připojení počítačů s Windows k Azure monitor v Az
 
     8. Vyberte možnost **ověřit** a napravo by se měly výsledky zobrazit po **úspěšném ověření**.
 
-8. Na stránce **Konfigurace** si přečtěte informace, abyste ověřili, že pole pracovních prostorů **Azure**, **skupiny prostředků Azure**a **pracovního prostoru Operations Management Suite** jsou předem vyplněná, což značí, že aplikace Azure AD má ve skupině prostředků dostatečná oprávnění. Pokud jsou pole prázdná, znamená to, že vaše aplikace nemá požadovaná práva. Vyberte kolekce zařízení, které chcete shromáždit a předejte do pracovního prostoru, a pak vyberte **Přidat**.
+8. Na stránce **Konfigurace** si přečtěte informace, abyste ověřili, že pole pracovních prostorů **Azure**, **skupiny prostředků Azure** a **pracovního prostoru Operations Management Suite** jsou předem vyplněná, což značí, že aplikace Azure AD má ve skupině prostředků dostatečná oprávnění. Pokud jsou pole prázdná, znamená to, že vaše aplikace nemá požadovaná práva. Vyberte kolekce zařízení, které chcete shromáždit a předejte do pracovního prostoru, a pak vyberte **Přidat**.
 
 9. Zkontrolujte možnosti na stránce **Potvrdit nastavení** a vyberte **Další** a začněte vytvářet a konfigurovat připojení.
 

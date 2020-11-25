@@ -5,26 +5,34 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/29/2020
+ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3ffdeb0add8622e1b9f28f9603dc146b78f742cd
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 68d890386d53b4115c773b128f8678bac9579e53
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043305"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844331"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>Programové vytváření předplatných Azure pomocí rozhraní API ve verzi Preview
 
-Tento článek se věnuje programovému vytváření předplatných Azure pomocí našeho staršího rozhraní API ve verzi Preview. Vydali jsme [novější verzi rozhraní API](programmatically-create-subscription.md). Pokud nechcete využít nejnovější verzi, přečtěte si informace v tomto článku. V tomto článku se naučíte, jak programově vytvářet předplatná s využitím Azure Resource Manageru.
+Tento článek se věnuje programovému vytváření předplatných Azure pomocí našeho staršího rozhraní API ve verzi Preview. V tomto článku se naučíte, jak programově vytvářet předplatná s využitím Azure Resource Manageru.
+
+Připravili jsme nové články věnované použití nejnovější verze rozhraní API s předplatnými Azure s různými typy smluv:
+
+- [Programové vytváření předplatných EA s využitím nejnovějšího rozhraní API](programmatically-create-subscription-enterprise-agreement.md)
+- [Programové vytváření předplatných MCA s využitím nejnovějšího rozhraní API](programmatically-create-subscription-microsoft-customer-agreement.md)
+- [Programové vytváření předplatných MPA s využitím nejnovějšího rozhraní API](Programmatically-create-subscription-microsoft-customer-agreement.md)
+
+Informace v tomto článku však můžete využít, i když nechcete používat nejnovější verzi rozhraní API.
 
 Zákazníci Azure s fakturačním účtem pro následující typy smluv můžou vytvářet předplatná programově:
 
-- [Smlouva Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
-- [Smlouva se zákazníkem Microsoftu (MCA)](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/)
-- [Smlouva s partnerem Microsoftu](https://www.microsoft.com/licensing/news/introducing-microsoft-partner-agreement)
+- Smlouva Enterprise
+- Smlouva se zákazníkem Microsoftu (MCA)
+- Smlouva s partnerem Microsoftu
 
 Když vytvoříte předplatné Azure programově, vztahuje se na toto předplatné smlouva, na základě které jste získali služby Azure od Microsoftu nebo autorizovaného prodejce. Další informace najdete v článku [Právní informace o Microsoft Azure](https://azure.microsoft.com/support/legal/).
 

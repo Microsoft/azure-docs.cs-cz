@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
 ms.openlocfilehash: d2b1afea746410e966b43bef01a039a8471d4ae7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87007924"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008816"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Schéma rozšíření diagnostiky Windows
 Azure Diagnostics rozšíření je agent v Azure Monitor, který shromažďuje data monitorování z hostovaného operačního systému a zatížení výpočetních prostředků Azure. Tento článek podrobně popisuje schéma používané pro konfiguraci diagnostického rozšíření na virtuálních počítačích s Windows a dalších výpočetních prostředcích.
@@ -58,7 +58,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 |--------------------|-----------------|  
 |**WadCfg**|Povinná hodnota. Viz popis jinde na této stránce.|  
 |**StorageAccount**|Název účtu Azure Storage, do kterého se mají ukládat data Může být také zadáno jako parametr při spuštění rutiny Set-AzureServiceDiagnosticsExtension.|  
-|**StorageType**|Může být *Table*, *BLOB*nebo *TableAndBlob*. Tabulka je výchozí. Je-li zvolena možnost TableAndBlob, jsou diagnostická data do každého typu zapisována dvakrát.|  
+|**StorageType**|Může být *Table*, *BLOB* nebo *TableAndBlob*. Tabulka je výchozí. Je-li zvolena možnost TableAndBlob, jsou diagnostická data do každého typu zapisována dvakrát.|  
 |**LocalResourceDirectory**|Adresář na virtuálním počítači, kde agent monitorování ukládá data událostí. Pokud ne, nastavte, že se použije výchozí adresář:<br /><br /> Pro pracovní proces nebo webovou roli: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Pro virtuální počítač: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Požadované atributy jsou:<br /><br /> - **cesta** – adresář v systému, který má Azure Diagnostics použít.<br /><br /> - **expandEnvironment** – určuje, jestli se v názvu cesty rozbalí proměnné prostředí.|  
 
 ## <a name="wadcfg-element"></a>Element WadCFG  
@@ -189,7 +189,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
  Umožňuje vygenerovat tabulku čítače výkonu, která je optimalizována pro rychlé dotazy. Každý čítač výkonu, který je definován v elementu **čítače výkonu** , je uložen v tabulce metrik společně s tabulkou čítače výkonu.  
 
- Atribut **ResourceID** je povinný.  ID prostředku virtuálního počítače nebo sady škálování virtuálních počítačů, do které nasazujete Azure Diagnostics. Získá **ResourceID** z [Azure Portal](https://portal.azure.com). Vyberte **Procházet**  ->  **skupiny prostředků**  ->  **<název \> **. Klikněte na dlaždici **vlastnosti** a zkopírujte hodnotu z pole **ID** .  Tato vlastnost resourceID se používá pro odesílání vlastních metrik a pro přidání vlastnosti resourceID do dat odesílaných do Event Hubs. Všimněte si, že je nutné přidat vlastnost *ResourceID* pod element *metriky* , pokud chcete, aby události odeslané do Event Hubs měly ID prostředku.
+ Atribut **ResourceID** je povinný.  ID prostředku virtuálního počítače nebo sady škálování virtuálních počítačů, do které nasazujete Azure Diagnostics. Získá **ResourceID** z [Azure Portal](https://portal.azure.com). Vyberte **Procházet**  ->  **skupiny prostředků**  ->  **<název \>**. Klikněte na dlaždici **vlastnosti** a zkopírujte hodnotu z pole **ID** .  Tato vlastnost resourceID se používá pro odesílání vlastních metrik a pro přidání vlastnosti resourceID do dat odesílaných do Event Hubs. Všimněte si, že je nutné přidat vlastnost *ResourceID* pod element *metriky* , pokud chcete, aby události odeslané do Event Hubs měly ID prostředku.
 
 |Podřízené elementy|Description|  
 |--------------------|-----------------|  
@@ -237,9 +237,9 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 |Atribut|Typ|Description|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|Nepovinný parametr. Určuje maximální velikost úložiště systému souborů, která je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
-|**scheduledTransferLogLevelFilter**|**řetezce**|Nepovinný parametr. Určuje minimální úroveň závažnosti pro přenesené položky protokolu. Výchozí hodnota není **definována**, což přenáší všechny protokoly. Další možné hodnoty (v pořadí od nejvyšších po nejnižší) jsou **podrobné**, **informace**, **varování**, **Chyba**a **kritická**.|  
+|**scheduledTransferLogLevelFilter**|**řetězec**|Nepovinný parametr. Určuje minimální úroveň závažnosti pro přenesené položky protokolu. Výchozí hodnota není **definována**, což přenáší všechny protokoly. Další možné hodnoty (v pořadí od nejvyšších po nejnižší) jsou **podrobné**, **informace**, **varování**, **Chyba** a **kritická**.|  
 |**scheduledTransferPeriod**|**úkolu**|Nepovinný parametr. Určuje interval mezi plánovanými přenosy dat, zaokrouhlený na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
-|**jímky** |**řetezce**| Přidáno v 1,5. Nepovinný parametr. Odkazuje na umístění jímky, aby bylo možné také odeslat diagnostická data. Například Application Insights nebo Event Hubs. Všimněte si, že je nutné přidat vlastnost *ResourceID* pod element *metriky* , pokud chcete, aby události odeslané do Event Hubs měly ID prostředku.|  
+|**jímky** |**řetězec**| Přidáno v 1,5. Nepovinný parametr. Odkazuje na umístění jímky, aby bylo možné také odeslat diagnostická data. Například Application Insights nebo Event Hubs. Všimněte si, že je nutné přidat vlastnost *ResourceID* pod element *metriky* , pokud chcete, aby události odeslané do Event Hubs měly ID prostředku.|  
 
 ## <a name="dockersources"></a>DockerSources
  *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-DockerSources*
@@ -295,8 +295,8 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
 |Atributy|Typ|Description|  
 |----------------|----------|-----------------|  
-|**logLevel**|**řetezce**|Určuje minimální úroveň závažnosti pro přenesené položky protokolu. Výchozí hodnota není **definována**, což přenáší všechny protokoly. Další možné hodnoty (v pořadí od nejvyšších po nejnižší) jsou **podrobné**, **informace**, **varování**, **Chyba**a **kritická**.|  
-|**Jméno**|**řetezce**|Jedinečný název kanálu, na který se má odkazovat|  
+|**logLevel**|**řetězec**|Určuje minimální úroveň závažnosti pro přenesené položky protokolu. Výchozí hodnota není **definována**, což přenáší všechny protokoly. Další možné hodnoty (v pořadí od nejvyšších po nejnižší) jsou **podrobné**, **informace**, **varování**, **Chyba** a **kritická**.|  
+|**Jméno**|**řetězec**|Jedinečný název kanálu, na který se má odkazovat|  
 
 
 ## <a name="privateconfig-element"></a>Element PrivateConfig
@@ -642,8 +642,8 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
   </WadCfg>  
 
-  <StorageAccount>diagstorageaccount</StorageAccount>
-  <StorageType>TableAndBlob</StorageType> <!-- Added in 1.8 -->  
+  <StorageAccount>diagstorageaccount</StorageAccount>
+  <StorageType>TableAndBlob</StorageType> <!-- Added in 1.8 -->  
   </PublicConfig>  
 
   <PrivateConfig>  <!-- Added in 1.3 -->  

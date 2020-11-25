@@ -11,17 +11,17 @@ ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
 ms.openlocfilehash: bdc03e8c136606ab7768705b0c8dbcc97782966f
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "87088389"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008884"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Publikování webové aplikace v ASP.NET ve virtuálním počítači Azure ze sady Visual Studio
 
 Tento dokument popisuje, jak publikovat webovou aplikaci v ASP.NET na virtuálním počítači Azure pomocí funkce publikování **Microsoft Azure Virtual Machines** v aplikaci Visual Studio 2019.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Aby bylo možné použít Visual Studio k publikování projektu ASP.NET na virtuálním počítači Azure, musí být virtuální počítač správně nastavený.
 
 - Počítač musí být nakonfigurovaný tak, aby spouštěl webovou aplikaci v ASP.NET a nainstaloval nástroj WebDeploy. Další informace najdete v tématu [Vytvoření virtuálního počítače s ASP.NET pomocí nástroje WebDeploy](https://github.com/aspnet/Tooling/blob/AspNetVMs/docs/create-asp-net-vm-with-webdeploy.md).

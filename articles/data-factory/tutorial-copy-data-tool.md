@@ -13,11 +13,11 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 11/09/2020
 ms.openlocfilehash: de01a8a8522f93684ed428fd4ef19963b1af2059
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564306"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008340"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopírování dat z úložiště objektů BLOB v Azure do SQL Database pomocí nástroje Kopírování dat
 
@@ -41,8 +41,8 @@ V tomto kurzu budete provádět následující kroky:
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* **Účet Azure Storage** : jako _zdrojové_ úložiště dat použijte úložiště objektů BLOB. Pokud nemáte účet Azure Storage, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
-* **Azure SQL Database** : jako úložiště dat _jímky_ použijte SQL Database. Pokud nemáte SQL Database, přečtěte si pokyny v tématu [vytvoření SQL Database](../azure-sql/database/single-database-create-quickstart.md).
+* **Účet Azure Storage**: jako _zdrojové_ úložiště dat použijte úložiště objektů BLOB. Pokud nemáte účet Azure Storage, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
+* **Azure SQL Database**: jako úložiště dat _jímky_ použijte SQL Database. Pokud nemáte SQL Database, přečtěte si pokyny v tématu [vytvoření SQL Database](../azure-sql/database/single-database-create-quickstart.md).
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Vytvoření objektu blob a tabulky SQL
 
@@ -50,7 +50,7 @@ Provedením těchto kroků Připravte úložiště objektů BLOB a SQL Database 
 
 #### <a name="create-a-source-blob"></a>Vytvoření zdrojového objektu blob
 
-1. Spusťte **Poznámkový blok**. Zkopírujte následující text a uložte ho na disk do souboru **inputEmp.txt** :
+1. Spusťte **Poznámkový blok**. Zkopírujte následující text a uložte ho na disk do souboru **inputEmp.txt**:
 
     ```
     FirstName|LastName
@@ -80,7 +80,7 @@ Provedením těchto kroků Připravte úložiště objektů BLOB a SQL Database 
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce vlevo vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  **Data Factory** :
+1. V nabídce vlevo vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  **Data Factory**:
 
     ![Vytvoření nové datové továrny](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Do pole **Název** na stránce **Nová datová továrna** zadejte **ADFTutorialDataFactory**.
@@ -130,7 +130,7 @@ Provedením těchto kroků Připravte úložiště objektů BLOB a SQL Database 
 
 1. Na stránce **Choose the input file or folder** (Zvolit vstupní soubor nebo složku) proveďte následující kroky:
 
-    a. Klikněte na **Browse** (Procházet), přejděte do složky **adfv2tutorial/input** , vyberte soubor **inputEmp.txt** a pak klikněte na **Choose** (Zvolit).
+    a. Klikněte na **Browse** (Procházet), přejděte do složky **adfv2tutorial/input**, vyberte soubor **inputEmp.txt** a pak klikněte na **Choose** (Zvolit).
 
     b. Kliknutím na **Next** (Další) přejděte k dalšímu kroku.
 

@@ -10,11 +10,11 @@ ms.date: 07/14/2017
 ms.author: cynthn
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 779a09532790ea272d8c95ac28f8c152216efc5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89002959"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008646"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Nasazení virtuálního počítače Azure pomocí C# a šablony Správce prostředků
 
@@ -36,7 +36,7 @@ V tomto kroku se ujistěte, že je nainstalovaná aplikace Visual Studio a Vy vy
 
 Balíčky NuGet představují nejjednodušší způsob, jak nainstalovat knihovny, které potřebujete k dokončení těchto kroků. Chcete-li získat knihovny, které potřebujete v aplikaci Visual Studio, proveďte tyto kroky:
 
-1. Klikněte na **nástroje**  >  **Správce balíčků NuGet**a pak klikněte na **Konzola správce balíčků**.
+1. Klikněte na **nástroje**  >  **Správce balíčků NuGet** a pak klikněte na **Konzola správce balíčků**.
 2. Do konzoly zadejte tyto příkazy:
 
     ```powershell
@@ -50,7 +50,7 @@ V tomto kroku vytvoříte soubor šablony, který nasadí prostředky a soubor p
 
 ### <a name="create-the-template-file"></a>Vytvoření souboru šablony
 
-1. V Průzkumník řešení klikněte pravým tlačítkem myši na *myDotnetProject*  >  **Přidat**  >  **novou položku**a pak vyberte **textový soubor** v *položkách jazyka Visual C#*. Pojmenujte soubor *CreateVMTemplate.jsv*a pak klikněte na **Přidat**.
+1. V Průzkumník řešení klikněte pravým tlačítkem myši na *myDotnetProject*  >  **Přidat**  >  **novou položku** a pak vyberte **textový soubor** v *položkách jazyka Visual C#*. Pojmenujte soubor *CreateVMTemplate.jsv* a pak klikněte na **Přidat**.
 2. Tento kód JSON přidejte do souboru, který jste vytvořili:
 
     ```json
@@ -162,7 +162,7 @@ V tomto kroku vytvoříte soubor šablony, který nasadí prostředky a soubor p
 
 Chcete-li zadat hodnoty parametrů prostředků v šabloně, vytvořte soubor parametrů, který obsahuje hodnoty.
 
-1. V Průzkumník řešení klikněte pravým tlačítkem myši na *myDotnetProject*  >  **Přidat**  >  **novou položku**a pak vyberte **textový soubor** v *položkách jazyka Visual C#*. Pojmenujte soubor *Parameters.jsv*a pak klikněte na **Přidat**.
+1. V Průzkumník řešení klikněte pravým tlačítkem myši na *myDotnetProject*  >  **Přidat**  >  **novou položku** a pak vyberte **textový soubor** v *položkách jazyka Visual C#*. Pojmenujte soubor *Parameters.jsv* a pak klikněte na **Přidat**.
 2. Tento kód JSON přidejte do souboru, který jste vytvořili:
 
     ```json
@@ -182,7 +182,7 @@ Chcete-li zadat hodnoty parametrů prostředků v šabloně, vytvořte soubor pa
 
 Než budete moct nasadit šablonu, ujistěte se, že máte přístup k [instančnímu objektu služby Active Directory](../../active-directory/develop/howto-authenticate-service-principal-powershell.md). Z instančního objektu získáte token pro ověřování požadavků Azure Resource Manager. Měli byste také zaznamenat ID aplikace, ověřovací klíč a ID tenanta, které v autorizačním souboru potřebujete.
 
-1. V Průzkumník řešení klikněte pravým tlačítkem myši na *myDotnetProject*  >  **Přidat**  >  **novou položku**a pak vyberte **textový soubor** v *položkách jazyka Visual C#*. Pojmenujte soubor *azureauth. Properties*a pak klikněte na **Přidat**.
+1. V Průzkumník řešení klikněte pravým tlačítkem myši na *myDotnetProject*  >  **Přidat**  >  **novou položku** a pak vyberte **textový soubor** v *položkách jazyka Visual C#*. Pojmenujte soubor *azureauth. Properties* a pak klikněte na **Přidat**.
 2. Přidejte tyto vlastnosti autorizace:
 
     ```
@@ -196,7 +196,7 @@ Než budete moct nasadit šablonu, ujistěte se, že máte přístup k [instanč
     graphURL=https://graph.microsoft.com/
     ```
 
-    Nahraďte ** &lt; ID &gt; ** předplatného identifikátorem vašeho předplatného, ** &lt; ID &gt; aplikace** s identifikátorem aplikace služby Active ** &lt; &gt; ** Directory, klíčem pro ověřování a klíčovým klíčem aplikace a ** &lt; ID &gt; tenanta** s identifikátorem tenanta.
+    Nahraďte **&lt; ID &gt;** předplatného identifikátorem vašeho předplatného, **&lt; ID &gt; aplikace** s identifikátorem aplikace služby Active **&lt; &gt;** Directory, klíčem pro ověřování a klíčovým klíčem aplikace a **&lt; ID &gt; tenanta** s identifikátorem tenanta.
 
 3. Uložte soubor azureauth. Properties.
 4. Nastavte v systému Windows proměnnou prostředí s názvem AZURE_AUTH_LOCATION s úplnou cestou k vytvořenému autorizačnímu souboru, například můžete použít následující příkaz prostředí PowerShell:

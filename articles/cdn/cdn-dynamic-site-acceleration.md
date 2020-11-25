@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
 ms.openlocfilehash: 5387fdc224cd77ee5273767df5033a51dc27608c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778859"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008357"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Akcelerace dynamického webu prostřednictvím Azure CDN
 
@@ -40,13 +40,13 @@ Chcete-li nakonfigurovat koncový bod CDN pro optimalizaci doručování dynamic
 
 **Konfigurace koncového bodu CDN pro optimalizaci DSA pomocí Azure Portal:**
 
-1. Na stránce **profil CDN** vyberte **koncový bod** .
+1. Na stránce **profil CDN** vyberte **koncový bod**.
 
    ![Přidání nového koncového bodu CDN](./media/cdn-dynamic-site-acceleration/cdn-endpoint-profile.png) 
 
-   Otevře se podokno **Přidat koncový bod** .
+   Otevře se podokno **Přidat koncový bod**.
 
-2. V části **optimalizované pro** vyberte možnost **akcelerace dynamického webu** .
+2. V části **optimalizované pro** vyberte možnost **akcelerace dynamického webu**.
 
     ![Vytvoření nového koncového bodu CDN pomocí DSA](./media/cdn-dynamic-site-acceleration/cdn-endpoint-dsa.png)
 
@@ -54,7 +54,7 @@ Chcete-li nakonfigurovat koncový bod CDN pro optimalizaci doručování dynamic
 
     Cesta testu je funkce specifická pro DSA a pro vytvoření je nutná platná cesta. DSA používá pro optimalizaci konfigurace síťového směrování pro CDN na zdrojovém serveru malý soubor *cesty testu* . V případě souboru cesty testu můžete stáhnout a nahrát ukázkový soubor na web nebo použít stávající Asset o velikosti přibližně 10 KB.
 
-4. Zadejte další požadované možnosti koncového bodu (Další informace najdete v tématu [Vytvoření nového koncového bodu CDN](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)) a pak vyberte **Přidat** .
+4. Zadejte další požadované možnosti koncového bodu (Další informace najdete v tématu [Vytvoření nového koncového bodu CDN](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)) a pak vyberte **Přidat**.
 
    Po vytvoření koncového bodu CDN se aplikují optimalizace DSA pro všechny soubory, které splňují určitá kritéria. 
 
@@ -63,11 +63,11 @@ Chcete-li nakonfigurovat koncový bod CDN pro optimalizaci doručování dynamic
 
 1. Na stránce **profil CDN** vyberte koncový bod, který chcete upravit.
 
-2. V levém podokně vyberte možnost **optimalizace** . 
+2. V levém podokně vyberte možnost **optimalizace**. 
 
    Zobrazí se stránka **optimalizace** .
 
-3. V části **optimalizované pro** vyberte možnost **akcelerace dynamického webu** a pak vyberte **Uložit** .
+3. V části **optimalizované pro** vyberte možnost **akcelerace dynamického webu** a pak vyberte **Uložit**.
 
 > [!Note]
 > DSA další poplatky. Další informace najdete v tématu [Content Delivery Network ceny](https://azure.microsoft.com/pricing/details/cdn/).
@@ -157,7 +157,7 @@ Pro **Azure CDN Standard od Verizon** a **Azure CDN Standard od profilů Akamai*
 
 Přístup k pravidlům pro ukládání do mezipaměti:
 
-1. Na stránce **profil CDN** v části nastavení vyberte **pravidla ukládání do mezipaměti** .  
+1. Na stránce **profil CDN** v části nastavení vyberte **pravidla ukládání do mezipaměti**.  
     
     ![Tlačítko Pravidla ukládání do mezipaměti CDN](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
@@ -169,13 +169,13 @@ Pro **Azure CDN Premium jenom v** profilech Verizon můžete zapnout ukládání
 
 Přístup ke stroji pravidel:
     
-1. Na stránce **profil CDN** vyberte **Spravovat** .  
+1. Na stránce **profil CDN** vyberte **Spravovat**.  
     
     ![Tlačítko Spravovat profil CDN](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 
     Otevře se portál pro správu CDN.
 
-2. Na portálu pro správu CDN vyberte **a** a pak vyberte **modul pravidel** . 
+2. Na portálu pro správu CDN vyberte **a** a pak vyberte **modul pravidel**. 
 
     ![Modul pravidel pro DSA](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
 

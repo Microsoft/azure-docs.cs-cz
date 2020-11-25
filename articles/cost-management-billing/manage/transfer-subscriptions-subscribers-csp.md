@@ -6,14 +6,14 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/22/2020
+ms.date: 11/17/2020
 ms.author: banders
-ms.openlocfilehash: 69d6544485e356741634749dd91ba6485cfbb31c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7cbb628f6af286141fb1c7b330117ded33142c4f
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460678"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744234"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Přenos předplatných Azure mezi předplatiteli a CSP
 
@@ -25,7 +25,7 @@ Pokud máte nějaké existující rezervace, po převodu předplatného se jejic
 
 ## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>Převody předplatných EA na partnera CSP
 
-Partneři poskytovatelů CSP s přímým účtováním, kteří jsou certifikovaní jako [Poskytovatelé spravovaných služeb Azure Expert (MSP)](https://partner.microsoft.com/membership/azure-expert-msp), můžou požádat o přenos předplatných Azure pro své zákazníky, kteří mají přímou smlouvu Enterprise (EA). Přenosy předplatného jsou povolené jenom pro zákazníky, kteří přijali Smlouvu se zákazníkem Microsoftu (MCA) a koupili si plán Azure.
+Partneři poskytovatelů CSP s přímým účtováním, kteří jsou certifikovaní jako [Poskytovatelé spravovaných služeb Azure Expert (MSP)](https://partner.microsoft.com/membership/azure-expert-msp), můžou požádat o přenos předplatných Azure pro své zákazníky, kteří mají přímou smlouvu Enterprise (EA). Přenosy předplatných jsou povolené pouze pro zákazníky, kteří přijali Smlouvu se zákazníkem Microsoftu (MCA) a koupili si plán Azure v rámci programu CSP.
 
 Po schválení žádosti může CSP poskytnout zákazníkům kombinovanou fakturu. Další informace o přenosu předplatných poskytovateli CSP najdete v tématu [Získání vlastnictví fakturace předplatných Azure pro váš účet MPA](mpa-request-ownership.md).
 

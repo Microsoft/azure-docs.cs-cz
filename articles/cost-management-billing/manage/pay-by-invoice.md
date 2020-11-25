@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/26/2020
+ms.date: 11/16/2020
 ms.author: banders
 ms.custom: contentperfq2
-ms.openlocfilehash: df95305d1b014579ca6294a9015ac7879d8ce0b3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 9311a22575c328e0412398f6b63af84c35ac3c32
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670464"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652905"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Úhrada předplatných Azure pomocí faktury
 
@@ -28,21 +28,21 @@ Pokud přepnete na platby pomocí faktur, znamená to, že budete hradit faktury
 
 ## <a name="request-to-pay-by-invoice"></a>Podání žádosti o platby pomocí faktur
 
-1. Přejděte na Azure Portal a odešlete žádost o podporu. Vyhledejte a vyberte **Nápověda a podpora** .
+1. Přejděte na Azure Portal a odešlete žádost o podporu. Vyhledejte a vyberte **Nápověda a podpora**.
 
     ![Hledání možnosti Pomoc a podpora, portál Microsoft Azure](./media/pay-by-invoice/search-for-help-and-support.png)
 
-2. Vyberte **Nová žádost o podporu** .
+2. Vyberte **Nová žádost o podporu**.
 
     ![Odkaz na novou žádost o podporu, obrazovka Pomoc a podpora, portál Microsoft Azure](./media/pay-by-invoice/help-and-support.png)
 
-2. Jako **Typ problému** vyberte **Fakturace** . *Typ problému* představuje kategorii žádosti o podporu. Vyberte předplatné, které chcete hradit pomocí faktur, vyberte plán podpory a pak zvolte **Další** .
+2. Jako **Typ problému** vyberte **Fakturace**. *Typ problému* představuje kategorii žádosti o podporu. Vyberte předplatné, které chcete hradit pomocí faktur, vyberte plán podpory a pak zvolte **Další**.
 
 3. Jako **Typ problému** vyberte **Payment** (Platba). *Typ problému* představuje podkategorii žádosti o podporu.
 
-4. Jako **Podtyp problému** vyberte **Přepnutí na platby pomocí faktur** .
+4. Jako **Podtyp problému** vyberte **Přepnutí na platby pomocí faktur**.
 
-5. Do pole **Podrobnosti** zadejte následující informace a potom vyberte **Další** .
+5. Do pole **Podrobnosti** zadejte následující informace a potom vyberte **Další**.
 
      Nový nebo stávající zákazník:<br>
      Pokud stávající, aktuální způsob platby:<br>
@@ -70,9 +70,9 @@ Pokud přepnete na platby pomocí faktur, znamená to, že budete hradit faktury
     - Položky **Company name** (Název společnosti) a **Company address** (Adresa společnosti) by se měly shodovat s informacemi, které jste zadali v účtu Azure. Pokud chcete informace zobrazit nebo aktualizovat, přečtěte si téma [Změna informací o profilu účtu Azure](change-azure-account-profile.md).
     - Před schválením kreditního limitu je potřeba přidat na webu Azure Portal kontaktní údaje pro fakturaci. Mělo by se jednat o údaje oddělení závazků nebo financí vaší společnosti.
 
-6. Zkontrolujte své kontaktní informace a upřednostňovaný způsob kontaktování a potom vyberte **Vytvořit** .
+6. Zkontrolujte své kontaktní informace a upřednostňovaný způsob kontaktování a potom vyberte **Vytvořit**.
 
-Pokud bude nutné provést ověření kredibility vzhledem k potřebnému množství kreditů, pošleme vám žádost o ověření kredibility.
+Pokud bude nutné provést ověření kredibility vzhledem k potřebnému množství kreditů, pošleme vám žádost o ověření kredibility. Můžeme vás požádat o předložení auditovaných finančních výkazů vaší společnosti. Pokud nepředložíte žádné finanční informace nebo pokud tyto informace nedostatečně ospravedlní požadovanou výši kreditního limitu, můžeme vás požádat o složení zálohy nebo vystavení záložního akreditivu, abychom mohli schválit vaši žádost o ověření kredibility.
 
 ## <a name="switch-to-invoice-pay-checkwire-transfer"></a>Přepnutí na platby pomocí faktur (šekem nebo převodem)
 
@@ -82,15 +82,15 @@ Pokud máte účet programu Microsoft Online Services, můžete své předplatn�
 
 ### <a name="switch-azure-subscription-to-checkwire-transfer"></a>Přepnutí předplatného Azure na platby šekem nebo převodem
 
-Pokud chcete přepnout předplatné Azure na platby pomocí faktur (šekem nebo převodem), postupujte podle kroků níže. *Po přepnutí na platby pomocí faktur není možné přepnout zpět na platby pomocí platební karty* .
+Pokud chcete přepnout předplatné Azure na platby pomocí faktur (šekem nebo převodem), postupujte podle kroků níže. *Po přepnutí na platby pomocí faktur není možné přepnout zpět na platby pomocí platební karty*.
 
-1. Přejděte na web Azure Portal a přihlaste se jako správce účtu. Vyhledejte a vyberte možnost **Správa nákladů a fakturace** .
+1. Přejděte na web Azure Portal a přihlaste se jako správce účtu. Vyhledejte a vyberte možnost **Správa nákladů a fakturace**.
 
     ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace na webu Azure Portal](./media/pay-by-invoice/search.png)
 
 1. Vyberte předplatné, které chcete přepnout na platby pomocí faktur.
-1. Vyberte **Způsoby platby** .
-1. Na panelu příkazů vyberte tlačítko **Zaplatit fakturou** .
+1. Vyberte **Způsoby platby**.
+1. Na panelu příkazů vyberte tlačítko **Zaplatit fakturou**.
 
     ![Tlačítko Zaplatit fakturou, způsoby platby, portál Microsoft Azure](./media/pay-by-invoice/pay-by-invoice.png)
 
@@ -98,13 +98,13 @@ Pokud chcete přepnout předplatné Azure na platby pomocí faktur (šekem nebo 
 
 Pokud chcete přepnout fakturační profil na platby šekem nebo převodem, postupujte podle kroků níže. Výchozí způsob platby pro určitý fakturační profil může změnit jen osoba, která provedla registraci v Azure.
 
-1. Přejděte na Azure Portal a zobrazte vaše platební informace. Vyhledejte a vyberte možnost **Správa nákladů a fakturace** .
-1. V nabídce vyberte **Fakturační profily** .
+1. Přejděte na Azure Portal a zobrazte vaše platební informace. Vyhledejte a vyberte možnost **Správa nákladů a fakturace**.
+1. V nabídce vyberte **Fakturační profily**.
 
     ![Položka nabídky Fakturační profily, Správa nákladů a fakturace, portál Microsoft Azure](./media/pay-by-invoice/billing-profile.png)
 
 1. Vyberte fakturační profil.
-1. V nabídce **Fakturační profil** vyberte **Způsoby platby** .
+1. V nabídce **Fakturační profil** vyberte **Způsoby platby**.
 
    ![Položka nabídky Způsoby platby, Fakturační profily, Správa nákladů, portál Microsoft Azure](./media/pay-by-invoice/billing-profile-payment-methods.png)
 

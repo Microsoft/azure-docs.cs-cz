@@ -7,11 +7,11 @@ ms.reviewer: arthii, divswa, logicappspm
 ms.topic: article
 ms.date: 08/18/2020
 ms.openlocfilehash: 2dd086ccc45458299cf6b8a7ad83d023055c96ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88661193"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009245"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Připojení k místním zdrojům dat z Azure Logic Apps
 
@@ -72,11 +72,11 @@ Po instalaci brány na místní počítač vytvořte prostředek Azure pro vaši
 
    ![Najít místní bránu dat](./media/logic-apps-gateway-connection/search-for-on-premises-data-gateway.png)
 
-1. V části **místní brány dat**vyberte **Přidat**.
+1. V části **místní brány dat** vyberte **Přidat**.
 
    ![Přidat nový prostředek Azure pro bránu dat](./media/logic-apps-gateway-connection/add-azure-data-gateway-resource.png)
 
-1. V části **vytvořit bránu připojení**zadejte tyto informace pro prostředek brány. Po dokončení vyberte **Vytvořit**.
+1. V části **vytvořit bránu připojení** zadejte tyto informace pro prostředek brány. Po dokončení vyberte **Vytvořit**.
 
    | Vlastnost | Popis |
    |----------|-------------|
@@ -103,7 +103,7 @@ Po vytvoření prostředku brány a přidružení předplatného Azure k tomuto 
 
 1. Vyberte **připojit přes místní bránu dat**.
 
-1. V části **brány**v seznamu **předplatná** vyberte předplatné Azure, které má prostředek brány, který chcete.
+1. V části **brány** v seznamu **předplatná** vyberte předplatné Azure, které má prostředek brány, který chcete.
 
    Pokud máte přístup k předplatnému, můžete si vybrat z různých předplatných Azure, která jsou přidružená k jinému prostředku brány. Vaše aplikace logiky a prostředek brány nemusí existovat ve stejném předplatném Azure.
 
@@ -128,7 +128,7 @@ Vaše připojení k bráně je teď připravené na použití vaší aplikace lo
 
 Chcete-li aktualizovat nastavení pro připojení brány, můžete upravit připojení.
 
-1. Pokud chcete najít všechna připojení rozhraní API jenom pro vaši aplikaci logiky, v nabídce aplikace logiky v části **vývojové nástroje**vyberte **připojení rozhraní API**.
+1. Pokud chcete najít všechna připojení rozhraní API jenom pro vaši aplikaci logiky, v nabídce aplikace logiky v části **vývojové nástroje** vyberte **připojení rozhraní API**.
 
    ![V nabídce aplikace logiky vyberte připojení rozhraní API.](./media/logic-apps-gateway-connection/logic-app-api-connections.png)
 
@@ -161,7 +161,7 @@ Pokud chcete vytvořit jiný prostředek brány, propojte instalaci brány s jin
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 **Otázka**: Proč se při vytváření prostředku moje brány v Azure nezobrazí moje instalace brány? <br/>
-Odpověď: k tomuto problému může **dojít z těchto**důvodů:
+Odpověď: k tomuto problému může **dojít z těchto** důvodů:
 
 * Váš účet Azure není stejný účet, který jste použili pro instalaci brány na místním počítači. Ověřte, že jste se přihlásili k Azure Portal se stejnou identitou, jakou jste použili pro instalaci brány. Prostředek brány v Azure může vytvořit jenom Správce brány. Instanční objekty se aktuálně nepodporují.
 

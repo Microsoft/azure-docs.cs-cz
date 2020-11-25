@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/21/2020
+ms.date: 11/03/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 638ab84658c36536966ef990570684a047521ee6
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 0aace1041eba771a26bed4c85361ea2551c71ba6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257452"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659416"
 ---
 ::: zone target="docs"
 
@@ -66,18 +66,18 @@ Při vrácení zařízení v USA nebo Kanadě proveďte následující kroky.
     - Pokud sledovací číslo neuvedete, bude společnost UPS vyžadovat, abyste při vyzvednutí zaplatili dodatečné poplatky.
     - Místo naplánování vyzvednutí můžete také Data Box Disk dovézt na nejbližší sběrné místo.
 
-### <a name="europe"></a>[Evropa](#tab/in-europe)
 
-Při vrácení zařízení v Evropě proveďte následující kroky.
+### <a name="europe-or-uk"></a>[Evropa nebo Velká Británie](#tab/in-europe-or-uk)
+
+Při vracení zařízení v Evropě nebo ve Velké Británii proveďte následující kroky.
 
 1. Použijte zpáteční expediční štítek v průhledném plastovém obalu připevněném k tomuto boxu. Pokud je popisek poškozený nebo se ztratil:
     - Přejděte na **Přehled > Stáhnout expediční štítek** a stáhněte zpáteční expediční štítek.
     - Připevněte štítek na zařízení.
 
-2. Zapečeťte přepravní box a zkontrolujte, že zpáteční expediční štítek je vidět.
-3. Pokud zařízení vracíte v Evropě prostřednictvím DHL, vyžádejte si vyzvednutí tak, že navštívíte web DHL a zadáte číslo přepravního lístku.
-4. Přejděte na web DHL Express pro vaši zemi/oblast a zvolte **Naplánovat vyzvednutí pro zpáteční zásilku**.
-5. Zadejte číslo nákladového listu a kliknutím na tlačítko **Naplánovat vyzvednutí** zařiďte vyzvednutí.
+2. Zapečeťte přepravní krabici a zkontrolujte, že je vidět zpáteční expediční štítek.
+3. Přejděte na web DHL Express pro vaši zemi/oblast a vyberte **Naplánovat vyzvednutí**. V části **Potřebujete expediční štítek?** vyberte **Ne** > **Mám číslo nákladního listu DHL**.
+4. Zadejte číslo nákladního listu a kliknutím na tlačítko **Naplánovat vyzvednutí** zařiďte vyzvednutí.
 
 ### <a name="australia"></a>[Austrálie](#tab/in-australia)
 

@@ -7,11 +7,11 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: e79e5e16b300fd02b9c9124f9677747834f22813
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89443139"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009428"
 ---
 # <a name="how-to-catalog-big-data-in-azure-data-catalog"></a>Katalog velkých objemů dat v Azure Data Catalog
 
@@ -64,8 +64,8 @@ V tomto modelu dává smysl registrovat jednotlivé soubory referenčních dat p
 
 ## <a name="alternate-patterns"></a>Alternativní vzory
 
-Vzorce popsané v předchozí části představují dva možné způsoby, jak může být velké úložiště dat uspořádané, ale každá implementace je odlišná. Bez ohledu na to, jakým způsobem jsou zdroje dat strukturované, se při registraci velkých zdrojů dat pomocí **Azure Data Catalog**zaměřte na registraci souborů a adresářů, které představují datové sady, které jsou v rámci vaší organizace pro jiné hodnoty. Při registraci všech souborů a adresářů může být katalog nepřehledný, takže uživatelé budou mít těžší najít, co potřebují.
+Vzorce popsané v předchozí části představují dva možné způsoby, jak může být velké úložiště dat uspořádané, ale každá implementace je odlišná. Bez ohledu na to, jakým způsobem jsou zdroje dat strukturované, se při registraci velkých zdrojů dat pomocí **Azure Data Catalog** zaměřte na registraci souborů a adresářů, které představují datové sady, které jsou v rámci vaší organizace pro jiné hodnoty. Při registraci všech souborů a adresářů může být katalog nepřehledný, takže uživatelé budou mít těžší najít, co potřebují.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Registrace zdrojů dat pomocí **Azure Data Catalog** usnadňuje zjišťování a pochopení. Když zaregistrujete a pokládáte soubory s velkými objemy dat a adresáře, které představují logické datové sady, můžete uživatelům pomáhat při hledání a používání zdrojů s velkými objemy dat, které potřebují.

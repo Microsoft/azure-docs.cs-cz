@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 8/04/2017
 ms.author: cawa
 ms.openlocfilehash: d4d6b781d97d481793e69cf2ca97cca5b93ce432
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86256089"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008527"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Konfigurace zabezpečených připojení k Service Fabricmu clusteru ze sady Visual Studio
 Naučte se používat Visual Studio k zabezpečenému přístupu ke clusteru Azure Service Fabric s nakonfigurovanými zásadami řízení přístupu.
@@ -21,7 +21,7 @@ Cluster Azure Service Fabric podporuje dva typy připojení: **nezabezpečená**
 Nástroje sady Visual Studio Service Fabric podporují všechny typy ověřování pro připojení ke clusteru pro publikování. Pokyny, jak nastavit cluster zabezpečeného Service Fabric, najdete v tématu [Nastavení clusteru Service Fabric v Azure Portal](service-fabric-cluster-creation-via-portal.md) .
 
 ## <a name="configure-cluster-connections-in-publish-profiles"></a>Konfigurace připojení clusteru v profilech publikování
-Pokud publikujete Service Fabric projekt ze sady Visual Studio, použijte dialogové okno **publikovat Service Fabric aplikaci** k výběru clusteru Azure Service Fabric. V části **koncový bod připojení**vyberte v rámci svého předplatného existující cluster.
+Pokud publikujete Service Fabric projekt ze sady Visual Studio, použijte dialogové okno **publikovat Service Fabric aplikaci** k výběru clusteru Azure Service Fabric. V části **koncový bod připojení** vyberte v rámci svého předplatného existující cluster.
 
 ![Dialogové okno * * Publikovat Service Fabric aplikace * * se používá ke konfiguraci připojení Service Fabric.][publishdialog]
 

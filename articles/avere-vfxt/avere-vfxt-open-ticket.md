@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 8159d83624cdd474d91030d5376a3db447beffe1
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342344"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008425"
 ---
 # <a name="get-help-with-your-system"></a>Získejte pomoc s vaším systémem.
 
@@ -37,7 +37,7 @@ Pomocí těchto kroků se ujistěte, že je váš lístek podpory označený pro
 
 1. Na první stránce žádosti o podporu vyberte typ problému a ujistěte se, že je vybrané správné předplatné.
 
-   V části **Služba**klikněte na **všechny služby** a v části **úložiště** vyberte **avere vFXT**.
+   V části **Služba** klikněte na **všechny služby** a v části **úložiště** vyberte **avere vFXT**.
 
    Přidejte krátký souhrn a vyberte typ problému.
 

@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli
 ms.date: 09/02/2020
 ms.openlocfilehash: 35c3901e9a48523a10c1a6aacbc52e6c165e278f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748700"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009785"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Přizpůsobení clusterů Azure HDInsight pomocí akcí skriptů
 
@@ -25,8 +25,8 @@ Akce skriptu je také možné publikovat do Azure Marketplace jako aplikace HDIn
 
 U clusteru HDInsight připojeného k doméně jsou k dispozici dvě oprávnění Apache Ambari, která se vyžadují při použití akcí skriptu s clusterem:
 
-* **AMBARI. Spusťte \_ vlastní \_ příkaz** . Role správce Ambari má ve výchozím nastavení toto oprávnění.
-* **Cluster. Spusťte \_ vlastní \_ příkaz** . Ve výchozím nastavení má Správce clusteru HDInsight i správce Ambari toto oprávnění.
+* **AMBARI. Spusťte \_ vlastní \_ příkaz**. Role správce Ambari má ve výchozím nastavení toto oprávnění.
+* **Cluster. Spusťte \_ vlastní \_ příkaz**. Ve výchozím nastavení má Správce clusteru HDInsight i správce Ambari toto oprávnění.
 
 Další informace o práci s oprávněními s HDInsight připojenými k doméně najdete v tématu [Správa clusterů HDInsight pomocí balíček zabezpečení podniku](./domain-joined/apache-domain-joined-manage.md).
 
@@ -110,7 +110,7 @@ Selhání skriptu v případě spuštěného clusteru automaticky nezpůsobí zm
 
 Akce skriptů se spouští s oprávněními root. Ujistěte se, že rozumíte tomu, co skript dělá předtím, než ho použijete pro váš cluster.
 
-Když použijete skript na cluster, stav clusteru se změní ze **spuštěno** na **přijato** . Pak se změní na **konfiguraci HDInsight** a nakonec zpátky na **spuštěno** pro úspěšné skripty. Stav skriptu je zaznamenán v historii akcí skriptu. Tyto informace vám sdělí, jestli byl skript úspěšný nebo neúspěšný. Například `Get-AzHDInsightScriptActionHistory` rutina PowerShellu zobrazuje stav skriptu. Vrátí informace podobné následujícímu textu:
+Když použijete skript na cluster, stav clusteru se změní ze **spuštěno** na **přijato**. Pak se změní na **konfiguraci HDInsight** a nakonec zpátky na **spuštěno** pro úspěšné skripty. Stav skriptu je zaznamenán v historii akcí skriptu. Tyto informace vám sdělí, jestli byl skript úspěšný nebo neúspěšný. Například `Get-AzHDInsightScriptActionHistory` rutina PowerShellu zobrazuje stav skriptu. Vrátí informace podobné následujícímu textu:
 
 ```output
 ScriptExecutionId : 635918532516474303
@@ -126,14 +126,14 @@ Status            : Succeeded
 
 Skripty akcí skriptů lze použít prostřednictvím následujících nástrojů:
 
-* Azure Portal
+* portál Azure
 * Azure PowerShell
 * Azure CLI
 * Sada HDInsight .NET SDK
 
 HDInsight poskytuje skripty pro instalaci následujících komponent do clusterů HDInsight:
 
-| Název | Skript |
+| Name | Skript |
 | --- | --- |
 | Přidat účet Azure Storage |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Viz [Přidání dalších účtů úložiště do služby HDInsight](hdinsight-hadoop-add-storage.md). |
 | Nainstalovat odstín |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Viz [instalace a použití odstínu v clusterech HDInsight Hadoop](hdinsight-hadoop-hue-linux.md). |
@@ -145,11 +145,11 @@ V této části jsou vysvětleny různé způsoby, jak můžete při vytvářen�
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>Použití akce skriptu během vytváření clusteru z Azure Portal
 
-1. Začněte vytvářet cluster, jak je popsáno v tématu [vytváření clusterů se systémem Linux ve službě HDInsight pomocí Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md). Na kartě **Konfigurace + ceny** vyberte **+ přidat akci skriptu** .
+1. Začněte vytvářet cluster, jak je popsáno v tématu [vytváření clusterů se systémem Linux ve službě HDInsight pomocí Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md). Na kartě **Konfigurace + ceny** vyberte **+ přidat akci skriptu**.
 
     ![Akce skriptu Azure Portal clusteru](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-configuration-scriptaction.png)
 
-1. K výběru předpřipraveného skriptu použijte položku __Vybrat skript__ . Chcete-li použít vlastní skript, vyberte možnost __vlastní__ . Pak zadejte __název__ a __identifikátor URI pro skript bash__ pro váš skript.
+1. K výběru předpřipraveného skriptu použijte položku __Vybrat skript__ . Chcete-li použít vlastní skript, vyberte možnost __vlastní__. Pak zadejte __název__ a __identifikátor URI pro skript bash__ pro váš skript.
 
     ![Přidání skriptu do formuláře pro výběr skriptu](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
@@ -157,10 +157,10 @@ V této části jsou vysvětleny různé způsoby, jak můžete při vytvářen�
 
     | Vlastnost | Hodnota |
     | --- | --- |
-    | Vybrat skript | Chcete-li použít vlastní skript, vyberte možnost __vlastní__ . V opačném případě vyberte jeden ze zadaných skriptů. |
-    | Název |Zadejte název akce skriptu. |
+    | Vybrat skript | Chcete-li použít vlastní skript, vyberte možnost __vlastní__. V opačném případě vyberte jeden ze zadaných skriptů. |
+    | Name |Zadejte název akce skriptu. |
     | Identifikátor URI skriptu bash |Zadejte identifikátor URI skriptu. |
-    | Vedoucí/pracovní proces/ZooKeeper |Zadejte uzly, na kterých je spuštěn skript: **head** , **Worker** nebo **Zookeeper** . |
+    | Vedoucí/pracovní proces/ZooKeeper |Zadejte uzly, na kterých je spuštěn skript: **head**, **Worker** nebo **Zookeeper**. |
     | Parametry |Zadejte parametry, pokud to skript vyžaduje. |
 
     Použijte položku __zachovat tuto položku akce skriptu__ a ujistěte se, že je skript použit během operace škálování.
@@ -217,13 +217,13 @@ V této části se dozvíte, jak aplikovat akce skriptů na běžící cluster.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a Najděte svůj cluster.
 
-1. Ve výchozím zobrazení vyberte v části **Nastavení** možnost **akce skriptu** .
+1. Ve výchozím zobrazení vyberte v části **Nastavení** možnost **akce skriptu**.
 
-1. V horní části stránky **akce skriptu** vyberte **+ Odeslat novou** .
+1. V horní části stránky **akce skriptu** vyberte **+ Odeslat novou**.
 
     ![Přidání skriptu do běžícího clusteru](./media/hdinsight-hadoop-customize-cluster-linux/add-script-running-cluster.png)
 
-1. K výběru předpřipraveného skriptu použijte položku __Vybrat skript__ . Chcete-li použít vlastní skript, vyberte možnost __vlastní__ . Pak zadejte __název__ a __identifikátor URI pro skript bash__ pro váš skript.
+1. K výběru předpřipraveného skriptu použijte položku __Vybrat skript__ . Chcete-li použít vlastní skript, vyberte možnost __vlastní__. Pak zadejte __název__ a __identifikátor URI pro skript bash__ pro váš skript.
 
     ![Přidání skriptu do formuláře pro výběr skriptu](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
@@ -231,10 +231,10 @@ V této části se dozvíte, jak aplikovat akce skriptů na běžící cluster.
 
     | Vlastnost | Hodnota |
     | --- | --- |
-    | Vybrat skript | Chcete-li použít vlastní skript, vyberte možnost __vlastní__ . V opačném případě vyberte poskytnutý skript. |
-    | Název |Zadejte název akce skriptu. |
+    | Vybrat skript | Chcete-li použít vlastní skript, vyberte možnost __vlastní__. V opačném případě vyberte poskytnutý skript. |
+    | Name |Zadejte název akce skriptu. |
     | Identifikátor URI skriptu bash |Zadejte identifikátor URI skriptu. |
-    | Vedoucí/pracovní proces/Zookeeper |Zadejte uzly, na kterých je spuštěn skript: **head** , **Worker** nebo **Zookeeper** . |
+    | Vedoucí/pracovní proces/Zookeeper |Zadejte uzly, na kterých je spuštěn skript: **head**, **Worker** nebo **Zookeeper**. |
     | Parametry |Zadejte parametry, pokud to skript vyžaduje. |
 
     Pomocí položky __zachovat tuto položku akce skriptu__ zajistěte, aby byl skript použit během operací škálování.
@@ -292,7 +292,7 @@ Příklad použití sady .NET SDK pro použití skriptů v clusteru najdete v t�
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a Najděte svůj cluster.
 
-1. Ve výchozím zobrazení vyberte v části **Nastavení** možnost **akce skriptu** .
+1. Ve výchozím zobrazení vyberte v části **Nastavení** možnost **akce skriptu**.
 
 1. Historie skriptů pro tento cluster se zobrazí v oddílu akce skriptu. Tyto informace obsahují seznam trvalých skriptů. Na následujícím snímku obrazovky vidíte, že skript Solr byl spuštěn v tomto clusteru. Snímek obrazovky nezobrazuje žádné trvalé skripty.
 
@@ -308,7 +308,7 @@ Příklad použití sady .NET SDK pro použití skriptů v clusteru najdete v t�
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-| rutiny | Function |
+| rutiny | Funkce |
 | --- | --- |
 | `Get-AzHDInsightPersistedScriptAction` |Načte informace o trvalých akcích skriptu. Tato rutina nevrátí zpět akce provedené skriptem, odebere pouze trvalý příznak.|
 | `Get-AzHDInsightScriptActionHistory` |Načtěte historii akcí skriptu použitých pro cluster nebo podrobnosti konkrétního skriptu. |

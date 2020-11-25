@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.openlocfilehash: b76c41787d7a35fb3024fa18c0122bc966243bbc
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514533"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008391"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s využitím Trend Micro Web Security (TMWS)
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Trend Micro Web Security (TMWS) s Azur
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Na začátek budete potřebovat:
 
@@ -112,25 +112,25 @@ Provedením těchto kroků povolíte jednotné přihlašování služby Azure AD
 
 V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure Portal.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**. Vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**. Vyberte **Uživatelé** a pak vyberte **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **název** zadejte `B.Simon` .  
-   1. Do pole **uživatelské jméno** zadejte **_username_ @ *doménaspolečnosti *.* Přípona * * *. Například, `B.Simon@contoso.com`.
-   1. Vyberte možnost **Zobrazit heslo**a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Do pole **uživatelské jméno** zadejte **_username_ @* doménaspolečnosti *.* Přípona * * *. Například, `B.Simon@contoso.com`.
+   1. Vyberte možnost **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Vyberte **Vytvořit**.
 
 ### <a name="grant-the-azure-ad-test-user-access-to-tmws"></a>Udělte testovacímu uživateli Azure AD přístup k TMWS.
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k TMWS.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Trend Micro Web Security (TMWS)**.
 1. Na stránce Přehled aplikace v části **Spravovat** vyberte **Uživatelé a skupiny**:
 
    ![Vyberte Uživatelé a skupiny.](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Výběr možnosti Přidat uživatele](common/add-assign-user.png)
 
@@ -142,17 +142,17 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V levém podokně vyberte **Azure Active Directory**.
 
-1. V části **Spravovat**vyberte **Registrace aplikací**a potom v části **všechny aplikace**vyberte novou podnikovou aplikaci.
+1. V části **Spravovat** vyberte **Registrace aplikací** a potom v části **všechny aplikace** vyberte novou podnikovou aplikaci.
 
-1. V části **Spravovat**vyberte **certifikáty & tajných**kódů.
+1. V části **Spravovat** vyberte **certifikáty & tajných** kódů.
 
 1. V oblasti **tajné klíče klienta** vyberte **nový tajný klíč klienta**.
 
-1. Na **obrazovce Přidat tajný klíč klienta**Volitelně přidejte popis a vyberte období vypršení platnosti tajného klíče klienta a pak vyberte **Přidat**. Nový tajný klíč klienta se zobrazí v oblasti **tajné klíče klienta** .
+1. Na **obrazovce Přidat tajný klíč klienta** Volitelně přidejte popis a vyberte období vypršení platnosti tajného klíče klienta a pak vyberte **Přidat**. Nový tajný klíč klienta se zobrazí v oblasti **tajné klíče klienta** .
 
 1. Poznamenejte si hodnotu tajného klíče klienta. Později je zadáte do TMWS.
 
-1. V části **Spravovat**vyberte **oprávnění rozhraní API**. 
+1. V části **Spravovat** vyberte **oprávnění rozhraní API**. 
 
 1. V okně **oprávnění rozhraní API** vyberte **Přidat oprávnění**.
 
@@ -224,11 +224,11 @@ Až nakonfigurujete službu Azure AD a jako metodu ověření uživatele zadáte
 
 1. Navštivte libovolný internetový web. TMWS vás přesměruje na portál TMWS pro všechny uživatele.
 
-1. Zadejte účet Active Directory (formát: *doména* \\ *sAMAccountName* nebo doména *sAMAccountName* @ *domain*), e-mailovou adresu nebo hlavní název uživatele (UPN) a pak vyberte **Přihlásit**se. TMWS vám pošle přihlašovací okno služby Azure AD.
+1. Zadejte účet Active Directory (formát: *doména* \\ *sAMAccountName* nebo doména *sAMAccountName* @ *domain*), e-mailovou adresu nebo hlavní název uživatele (UPN) a pak vyberte **Přihlásit** se. TMWS vám pošle přihlašovací okno služby Azure AD.
 
 1. V okně přihlášení k Azure AD zadejte svoje přihlašovací údaje k účtu Azure AD. Nyní byste měli být přihlášeni do TMWS.
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Kurzy k integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
 ms.openlocfilehash: dc4d1b852b0a498de0834731b2b1cd1225b9748b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107772"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008850"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor
 
@@ -108,15 +108,15 @@ Pokud chcete bránu Log Analytics z Azure Portal získat, postupujte takto:
 
 1. Procházejte seznamem služeb a vyberte **Log Analytics**. 
 1. Vyberte pracovní prostor.
-1. V okně pracovního prostoru v části **Obecné**vyberte **rychlé zprovoznění**. 
-1. V části **Zvolit zdroj dat pro připojení k pracovnímu prostoru**vyberte **počítače**.
+1. V okně pracovního prostoru v části **Obecné** vyberte **rychlé zprovoznění**. 
+1. V části **Zvolit zdroj dat pro připojení k pracovnímu prostoru** vyberte **počítače**.
 1. V okně **přímý agent** vyberte **Stáhnout Log Analytics bránu**.
  
    ![Snímek obrazovky s postupem, jak stáhnout bránu Log Analytics](./media/gateway/download-gateway.png)
 
 nebo 
 
-1. V okně pracovního prostoru v části **Nastavení**vyberte **Upřesnit nastavení**.
+1. V okně pracovního prostoru v části **Nastavení** vyberte **Upřesnit nastavení**.
 1. Přejít na **připojené zdroje**  >  **Windows servery** a vyberte **Stáhnout Log Analytics bránu**.
 
 ## <a name="install-log-analytics-gateway-using-setup-wizard"></a>Instalace brány Log Analytics pomocí Průvodce instalací
@@ -192,7 +192,7 @@ Bránu pro vysokou dostupnost můžete nakonfigurovat pomocí služby Vyrovnáv�
 Informace o tom, jak navrhnout a nasadit cluster programu pro vyrovnávání zatížení sítě Windows Server 2016, najdete v tématu [Vyrovnávání zatížení sítě](/windows-server/networking/technologies/network-load-balancing). Následující postup popisuje, jak nakonfigurovat cluster programu pro vyrovnávání zatížení sítě společnosti Microsoft.  
 
 1. Přihlaste se k systému Windows Server, který je členem clusteru programu NLB, s účtem správce.  
-2. V Správce serveru otevřete Správce vyrovnávání zatížení sítě, klikněte na **nástroje**a potom klikněte na **Správce vyrovnávání zatížení sítě**.
+2. V Správce serveru otevřete Správce vyrovnávání zatížení sítě, klikněte na **nástroje** a potom klikněte na **Správce vyrovnávání zatížení sítě**.
 3. Pokud chcete připojit Server Log Analytics brány s nainstalovaným Microsoft Monitoring Agent, klikněte pravým tlačítkem na IP adresu clusteru a pak klikněte na **Přidat hostitele do clusteru**. 
 
     ![Správce vyrovnávání zatížení sítě – přidání hostitele do clusteru](./media/gateway/nlb02.png)
@@ -201,12 +201,12 @@ Informace o tom, jak navrhnout a nasadit cluster programu pro vyrovnávání zat
 
     ![Správce vyrovnávání zatížení sítě – přidat hostitele do clusteru: připojit](./media/gateway/nlb03.png) 
 
-### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
+### <a name="azure-load-balancer"></a>Azure Load Balancer
 
 Informace o tom, jak navrhnout a nasadit Azure Load Balancer, najdete v tématu [co je Azure Load Balancer?](../../load-balancer/load-balancer-overview.md). Pokud chcete nasadit základní nástroj pro vyrovnávání zatížení, postupujte podle kroků uvedených v tomto [rychlém](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) startu s výjimkou kroků uvedených v části **Vytvoření back-endové serverů**.   
 
 > [!NOTE]
-> Konfigurace Azure Load Balancer pomocí **základní skladové**položky (SKU) vyžaduje, aby virtuální počítače Azure patřily do skupiny dostupnosti. Další informace o skupinách dostupnosti najdete v tématu [Správa dostupnosti virtuálních počítačů s Windows v Azure](../../virtual-machines/manage-availability.md). Chcete-li přidat existující virtuální počítače do skupiny dostupnosti, přečtěte si téma [nastavení sady dostupnosti virtuálního počítače Azure Resource Manager](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4).
+> Konfigurace Azure Load Balancer pomocí **základní skladové** položky (SKU) vyžaduje, aby virtuální počítače Azure patřily do skupiny dostupnosti. Další informace o skupinách dostupnosti najdete v tématu [Správa dostupnosti virtuálních počítačů s Windows v Azure](../../virtual-machines/manage-availability.md). Chcete-li přidat existující virtuální počítače do skupiny dostupnosti, přečtěte si téma [nastavení sady dostupnosti virtuálního počítače Azure Resource Manager](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4).
 > 
 
 Po vytvoření nástroje pro vyrovnávání zatížení je třeba vytvořit back-end fond, který distribuuje provoz na jeden nebo více serverů brány. Postupujte podle kroků popsaných v části článek rychlý Start [vytvoření prostředků pro nástroj pro vyrovnávání zatížení](../../load-balancer/quickstart-load-balancer-standard-public-portal.md).  
@@ -262,7 +262,7 @@ Pokud chcete nakonfigurovat integraci, aktualizujte konfiguraci proxy serveru po
 
 Po dokončení integrace s Log Analytics odeberte změnu spuštěním `netsh winhttp reset proxy` . V konzoli Operations Console pak pomocí možnosti **konfigurovat proxy server** určete server brány Log Analytics. 
 
-1. V konzole Operations Manager v části **Operations Management Suite**vyberte **připojení**a pak vyberte **konfigurovat proxy server**.
+1. V konzole Operations Manager v části **Operations Management Suite** vyberte **připojení** a pak vyberte **konfigurovat proxy server**.
 
    ![Snímek obrazovky Operations Manager zobrazující výběr konfigurace proxy serveru](./media/gateway/scom01.png)
 

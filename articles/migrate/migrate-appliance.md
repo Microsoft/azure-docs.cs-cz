@@ -4,11 +4,11 @@ description: Poskytuje souhrn podpory pro zařízení Azure Migrate.
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: ac3c90f1c09d290d5112a0e0d7abc5218788caf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450048"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008697"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -69,8 +69,8 @@ Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro VMwar
 **Omezení zjišťování** | Zařízení může zjistit až 5000 virtuálních počítačů Hyper-V.<br/> Zařízení se může připojit k až 300 hostitelům Hyper-V.
 **Šablona VHD** | Složka zip, včetně VHD. Stáhněte si ho z portálu nebo [tady](https://go.microsoft.com/fwlink/?linkid=2140422).<br/><br/> Velikost ke stažení je 8,91 GB.<br/><br/> Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
 **Skript prostředí PowerShell** | Informace najdete v tomto [článku](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v).<br/><br/> 
-**Software a hardware***   |  Zařízení by mělo běžet na počítači s Windows serverem 2016, 16 GB paměti RAM, 8 vCPU, přibližně 80 GB diskového úložiště a externím virtuálním přepínačem.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/><br/> Pokud zařízení spouštíte jako virtuální počítač Hyper-V, budete potřebovat dostatek prostředků na hostiteli Hyper-V, abyste mohli přidělit hardwarové požadavky.<br/><br/> Pokud zařízení spouštíte na fyzickém počítači, ujistěte se, že je spuštěný systém Windows Server 2016 a splňuje požadavky na hardware. 
-**Požadavky technologie Hyper-V** | Pokud nasadíte zařízení se šablonou VHD, virtuální počítač zařízení, který poskytuje Azure Migrate, je Hyper-V VM verze 5,0.<br/><br/> Na hostiteli Hyper-V musí běžet Windows Server 2012 R2 nebo novější. 
+**Software/hardware** _   |  Zařízení by mělo běžet na počítači s Windows serverem 2016, 16 GB paměti RAM, 8 vCPU, přibližně 80 GB diskového úložiště a externím virtuálním přepínačem.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/><br/> Pokud zařízení spouštíte jako virtuální počítač Hyper-V, budete potřebovat dostatek prostředků na hostiteli Hyper-V, abyste mohli přidělit hardwarové požadavky.<br/><br/> Pokud zařízení spouštíte na fyzickém počítači, ujistěte se, že je spuštěný systém Windows Server 2016 a splňuje požadavky na hardware. 
+_ *Požadavky technologie Hyper-V** | Pokud nasadíte zařízení se šablonou VHD, virtuální počítač zařízení, který poskytuje Azure Migrate, je Hyper-V VM verze 5,0.<br/><br/> Na hostiteli Hyper-V musí běžet Windows Server 2012 R2 nebo novější. 
 **Hodnota hash – VHD** | [Ověřit](tutorial-discover-hyper-v.md#verify-security) Hodnoty hash šablony VHD
 **Hodnota hash – skript prostředí PowerShell** | [Ověřte](deploy-appliance-script.md#verify-file-security) hodnoty hash skriptu PowerShellu.
 
@@ -84,7 +84,7 @@ Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro VMwar
 **Podporované nasazení** | Nasaďte jako vyhrazený fyzický počítač nebo virtuální počítač pomocí instalačního skriptu PowerShellu. Skript je k dispozici ke stažení na portálu.
 **Podpora projektu** |  Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> 
 **Omezení zjišťování** | Zařízení může zjistit až 1000 fyzických serverů.
-**Skript prostředí PowerShell** | Stáhněte si skript (AzureMigrateInstaller.ps1) ve složce zip z portálu nebo z [tohoto místa](https://go.microsoft.com/fwlink/?linkid=2140334). [Další informace](tutorial-discover-physical.md).<br/><br/> Velikost ke stažení je 85,8 MB.
+**Skript prostředí PowerShell** | Stáhněte si skript (AzureMigrateInstaller.ps1) ve složce zip z portálu nebo z [tohoto místa](https://go.microsoft.com/fwlink/?linkid=2140334). [Přečtěte si další informace](tutorial-discover-physical.md).<br/><br/> Velikost ke stažení je 85,8 MB.
 **Software a hardware** |  Zařízení by mělo běžet na počítači s Windows serverem 2016, 16 GB paměti RAM, 8 vCPU, přibližně 80 GB diskového úložiště.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/><br/> Pokud zařízení spouštíte na fyzickém počítači, ujistěte se, že je spuštěný systém Windows Server 2016 a splňuje požadavky na hardware.<br/>_(V současné době se nasazení zařízení podporuje jenom v systému Windows Server 2016.)_
 **Hodnota hash** | [Ověřte](tutorial-discover-physical.md#verify-security) hodnoty hash skriptu PowerShellu.
 
@@ -152,8 +152,8 @@ ID virtuálního počítače | vm.Config. InstanceUuid
 název virtuálního počítače | vm.Config. Jméno
 ID vCenter Server | VMwareClient. instance. UUID
 Popis virtuálního počítače | vm.Summary.Config. Poznámky
-Název licenčního produktu | síť. Client. ServiceContent. about. LicenseProductName
-Typ operačního systému | síť. SummaryConfig.GuestFullName
+Název licenčního produktu | VM. Client. ServiceContent. about. LicenseProductName
+Typ operačního systému | VM. SummaryConfig. GuestFullName
 Typ spouštění | vm.Config. Firmwar
 Počet jader | vm.Config. Hardware. NumCPU
 Paměť (MB) | vm.Config. Hardware. MemoryMB
@@ -175,8 +175,8 @@ Propustnost zápisu (MB za sekundu) | virtualDisk. Write. Average
 **Podrobnosti na NIC** | 
 Název síťového adaptéru | síťových. Zkrat
 Adresa MAC | ((VirtualEthernetCard) síťová karta). MacAddress
-Adresy IPv4 | síť. Guest.Net
-IPv6 adresy | síť. Guest.Net
+Adresy IPv4 | vm.Guest.Net
+IPv6 adresy | vm.Guest.Net
 Propustnost čtení (MB za sekundu) | NET. Received. Average
 Propustnost zápisu (MB za sekundu) | NET. přenášeno. Average
 **Podrobnosti o cestě inventáře** | 
@@ -518,7 +518,7 @@ Pokud používáte starší verzi nějaké součásti, musíte službu odinstalo
 
 5. Ověřte, že výstup příkazu odpovídá položce hodnoty hash pro službu v souboru (například hodnota hash MD5 výše).
 6. Nyní spusťte instalační službu MSI a nainstalujte ji. Je to tichá instalace a po dokončení se okno instalace zavře.
-7. Po dokončení instalace ověřte verzi služby v části **Control panel**  >  **programy a funkce**v Ovládacích panelech. Verze služby by teď měla být upgradována na nejnovější verzi uvedenou v souboru JSON.
+7. Po dokončení instalace ověřte verzi služby v části **Control panel**  >  **programy a funkce** v Ovládacích panelech. Verze služby by teď měla být upgradována na nejnovější verzi uvedenou v souboru JSON.
 
 
 

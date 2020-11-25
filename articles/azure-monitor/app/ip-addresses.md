@@ -4,11 +4,11 @@ description: Výjimky brány firewall serveru vyžadované Application Insights
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.openlocfilehash: bf81cc863ab795ce9be5a9166d7dc68aeb3caeed
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565836"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009955"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>IP adresy používané službami Application Insights a Log Analytics
 Služba [Azure Application Insights](./app-insights-overview.md) používá několik IP adres. Pokud je aplikace, kterou sledujete, hostovaná za bránou firewall, může být potřeba tyto adresy znát.
@@ -224,13 +224,13 @@ Poznámka: doména *. loganalytics.io je vlastněna týmem Log Analytics.
 | --- | --- | --- |
 | Zobrazení výstrah | 13.72.19.232 <br/>13.106.57.181<br/>13.106.54.3<br/>13.106.54.19<br/>13.106.38.142<br/>13.106.38.148<br/>13.106.57.196<br/>13.106.57.197<br/>52.244.68.117<br/>52.244.65.137<br/>52.183.31.0<br/>52.184.145.166<br/>51.4.138.199<br/>51.5.148.86<br/>51.5.149.19 | 443 |
 
-## <a name="profiler"></a>profiler
+## <a name="profiler"></a>Profiler
 
 | Účel | Identifikátor URI | IP adresa | Porty |
 | --- | --- | --- | --- |
 | Agent | agent.azureserviceprofiler.net<br/>*. agent.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
 | Portál | gateway.azureserviceprofiler.net | dynamic | 443
-| Úložiště | *.core.windows.net | dynamic | 443
+| Storage | *.core.windows.net | dynamic | 443
 
 ## <a name="snapshot-debugger"></a>Ladicí program snímků
 
@@ -241,5 +241,5 @@ Poznámka: doména *. loganalytics.io je vlastněna týmem Log Analytics.
 | --- | --- | --- | --- |
 | Agent | ppe.azureserviceprofiler.net<br/>*. ppe.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
 | Portál | ppe.gateway.azureserviceprofiler.net | dynamic | 443
-| Úložiště | *.core.windows.net | dynamic | 443
+| Storage | *.core.windows.net | dynamic | 443
 

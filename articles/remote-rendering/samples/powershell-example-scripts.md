@@ -7,11 +7,11 @@ ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: cb8cc98a020cb382a6941c1e410eab4543594629
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279011"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009751"
 ---
 # <a name="example-powershell-scripts"></a>Ukázkové skripty PowerShellu
 
@@ -28,7 +28,7 @@ Vzdálené vykreslování Azure poskytuje následující dvě rozhraní REST API
 > [!CAUTION]
 > Příliš časté volání funkcí REST API způsobí, že server bude omezovat a vracet chybu nakonec. ID kódu chyby HTTP v tomto případě je 429 (příliš mnoho požadavků). Jako pravidlo pro palec by se měla **mezi následnými voláními čekat 5-10 sekund**.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li spustit ukázkové skripty, budete potřebovat instalaci funkcí [Azure PowerShell](/powershell/azure/).
 
@@ -119,7 +119,7 @@ Normální použití s plně vyplněným arrconfig.js:
 .\RenderingSession.ps1
 ```
 
-Skript zavolá [REST API správy relace](../how-tos/session-rest-api.md) , aby VYVOLAL virtuální počítač pro vykreslování se zadaným nastavením. Po úspěšném načtení bude *identifikátor SessionID*načten. Pak bude dotazovat vlastnosti relace až do chvíle, kdy je relace připravena nebo dojde k chybě.
+Skript zavolá [REST API správy relace](../how-tos/session-rest-api.md) , aby VYVOLAL virtuální počítač pro vykreslování se zadaným nastavením. Po úspěšném načtení bude *identifikátor SessionID* načten. Pak bude dotazovat vlastnosti relace až do chvíle, kdy je relace připravena nebo dojde k chybě.
 
 Použití **alternativního konfiguračního** souboru:
 

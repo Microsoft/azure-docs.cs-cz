@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: ramamill
 ms.openlocfilehash: 16214fa07b14c8db2f32fa2c69739b7fa3dc1907
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74083958"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008467"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>Nastavení procesového serveru v Azure pro účely navrácení služeb po obnovení
 
@@ -35,7 +35,7 @@ Přečtěte [si další](vmware-azure-reprotect.md) informace o procesu [překlo
 
    ![Přidat položku galerie procesového serveru](./media/vmware-azure-set-up-process-server-azure/add-ps-page-1.png)
 
-4. Do pole **název serveru**, **uživatelské jméno**a **heslo**zadejte název procesového serveru a přihlašovací údaje, které budou přiřazeny oprávnění správce na serveru.
+4. Do pole **název serveru**, **uživatelské jméno** a **heslo** zadejte název procesového serveru a přihlašovací údaje, které budou přiřazeny oprávnění správce na serveru.
 5. Zadejte účet úložiště, který se má použít pro disky virtuálních počítačů serveru, podsíť, ve které se virtuální počítač procesového serveru nachází, a IP adresu serveru, která se přiřadí při spuštění virtuálního počítače.
 6. Kliknutím na tlačítko **OK** začněte NASAZOVAT virtuální počítač procesového serveru. Procesový Server se nasadí na Standard_A8_v2 SKU. Ujistěte se, že je tato skladová položka virtuálního počítače k dispozici pro vaše předplatné.
 

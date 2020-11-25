@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 11/17/2020
 ms.author: banders
-ms.openlocfilehash: 550be6c10402398b62af307281660b93981a0df3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cad3082981bcfc699bc230badf44e2ffc2e1bed3
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308958"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744421"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>Opětovná aktivace zakázaného předplatného Azure
 
@@ -54,6 +54,10 @@ Pokud jste správce účtu a omylem jste zrušili individuální předplatné se
     ![Snímek obrazovky s odkazy pro opětovnou aktivaci v pravém podokně](./media/subscription-disabled/reactivate-sub.png)
 
 Pokud chcete znovu aktivovat předplatné jiného typu, [kontaktujte podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
+## <a name="after-reactivation"></a>Po opětovné aktivaci
+
+Po opětovné aktivaci předplatného může dojít ke zpoždění při vytváření nebo správě prostředků. Pokud zpoždění přesáhne 30 minut, požádejte o pomoc [podporu fakturace Azure](https://go.microsoft.com/fwlink/?linkid=2083458). Většina prostředků Azure se automaticky obnoví a nevyžaduje žádnou akci. Doporučujeme však zkontrolovat prostředky služeb Azure a restartovat ty, které se automaticky neobnoví.
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 

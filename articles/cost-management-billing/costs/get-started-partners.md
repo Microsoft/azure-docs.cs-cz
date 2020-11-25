@@ -3,18 +3,18 @@ title: Začínáme se službou Azure Cost Management pro partnery
 description: V tomto článku je vysvětlené, jak partneři používají funkce služby Azure Cost Management a jak k ní umožní přístup svým zákazníkům.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/04/2020
+ms.date: 11/16/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 0076c70f64ec5cea8b92cb2b9ed27de05406316d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: d2b90db18a31fff4190be4f84625ad52fcaae578
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827574"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657308"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Začínáme se službou Azure Cost Management pro partnery
 
@@ -126,7 +126,7 @@ Pokud globální správci a agenti správy mají přístup k předplatnému a sk
 
 Abyste mohli tyto zásady zobrazit a aktualizovat, musíte být členem skupiny **agentů pro správu**. Pokud chcete povolit zásady, které zákazníkům umožňují zobrazovat poplatky za používání Azure, použijte následující informace.
 
-Na webu Azure Portal se přihlaste k partnerskému tenantovi a vyberte **Správa nákladů a fakturace**. V oblasti Obor fakturace vyberte příslušný rozsah fakturace a potom vyberte **Zákazníci**. Seznam zákazníků se vztahuje k fakturačnímu účtu.
+Na webu Azure Portal se přihlaste k *partnerskému tenantovi* a vyberte **Správa nákladů a fakturace**. V oblasti Obor fakturace vyberte příslušný rozsah fakturace a potom vyberte **Zákazníci**. Seznam zákazníků se vztahuje k fakturačnímu účtu. *Pokud jste se omylem přihlásili k zákaznickému tenantovi, seznam **Zákazníci** se nezobrazí.*
 
 V seznamu zákazníků vyberte zákazníka, kterému chcete povolit prohlížet náklady.
 
@@ -188,7 +188,7 @@ Následující datová pole najdete v souborech s podrobnostmi o využití a v r
 | costCenter | Nákladové centrum přidružené k předplatnému. | – |
 | billingPeriodStartDate | Počáteční datum fakturačního období, které je uvedené na faktuře. | – |
 | billingPeriodEndDate | Koncové datum fakturačního období, které je uvedené na faktuře. | – |
-| servicePeriodStartDate | Počáteční datum hodnoceného období, kdy byly za používání služby účtovány poplatky. Ceny služeb Azure se určují pro hodnocené období. | V partnerském centru je to ChargeStartDate. Počáteční datum fakturačního cyklu. Neplatí pro zatím neúčtovaná data o latentním využití z předchozího fakturačního cyklu. Čas je vždy začátek dne, tj. 0:00. |
+| servicePeriodStartDate | Počáteční datum hodnoceného období, kdy byly za používání služby účtovány poplatky. Ceny služeb Azure se určují pro hodnocené období. | V partnerském centru je to ChargeStartDate.  Počáteční datum fakturačního cyklu. Neplatí pro zatím neúčtovaná data o latentním využití z předchozího fakturačního cyklu. Čas je vždy začátek dne, tj. 0:00. |
 | servicePeriodEndDate | Konečné datum období, za které se vyhodnocují poplatky za používání služby. Ceny služeb Azure se určují na základě hodnoceného období. | – |
 | date | U dat o spotřebě Azure se zobrazuje hodnocené datum použití. U rezervovaných instancí se zobrazuje datum nákupu. U pravidelných i jednorázových poplatků, třeba za Marketplace a podporu, se zobrazí datum nákupu. | – |
 | productID | Identifikátor produktu, kterému se načítají poplatky za spotřebu nebo nákup. Je to klíč vzniklý zřetězením hodnot productID a SKuID, který je zobrazený v partnerském centru. | ID produktu. |

@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
-ms.openlocfilehash: 5a85086ea8d969dc70f4cd24b25a00765da285eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b77474d63cb47b561f9913ff06be5718aba4152
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89425802"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96009635"
 ---
 # <a name="deploy-the-speech-service-container-to-azure-container-instances"></a>Nasaďte kontejner služby Speech Service do Azure Container Instances
 
-Přečtěte si, jak nasadit kontejner [služby Cognitive Services Speech Service](speech-container-howto.md) do Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/). Tento postup ukazuje vytvoření prostředku služby Azure Speech Service. Pak se podíváme na navýšení přidružené image kontejneru. Nakonec zvýrazníme možnost cvičení těchto dvou z prohlížeče. Pomocí kontejnerů můžete před správou infrastruktury místo toho, aby se zaměřily na vývoj aplikací, posunout pozornost vývojářů.
+Přečtěte si, jak nasadit kontejner [služby Cognitive Services Speech Service](speech-container-howto.md) do Azure [Container Instances](../../container-instances/index.yml). Tento postup ukazuje vytvoření prostředku služby Azure Speech Service. Pak se podíváme na navýšení přidružené image kontejneru. Nakonec zvýrazníme možnost cvičení těchto dvou z prohlížeče. Pomocí kontejnerů můžete před správou infrastruktury místo toho, aby se zaměřily na vývoj aplikací, posunout pozornost vývojářů.
 
 [!INCLUDE [Prerequisites](../containers/includes/container-preview-prerequisites.md)]
 

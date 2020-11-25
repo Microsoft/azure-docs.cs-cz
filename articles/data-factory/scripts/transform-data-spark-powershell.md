@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/12/2017
 ms.openlocfilehash: 3af38f4cae53807c7268f00017f02f1325116fb6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637050"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008748"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>Skript PowerShellu – transformace dat v cloudu pomocí Azure Data Factory
 
@@ -25,8 +25,8 @@ Tento ukázkový skript PowerShell vytvoří kanál, který transformuje data v 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
-* **Účet Azure Storage** . Vytvořte skript Pythonu a vstupní soubor a nahrajte je do úložiště Azure. V tomto účtu úložiště se ukládá výstup z programu Sparku. Cluster Spark na vyžádání používá stejný účet úložiště jako primární úložiště.  
+## <a name="prerequisites"></a>Požadavky
+* **Účet Azure Storage**. Vytvořte skript Pythonu a vstupní soubor a nahrajte je do úložiště Azure. V tomto účtu úložiště se ukládá výstup z programu Sparku. Cluster Spark na vyžádání používá stejný účet úložiště jako primární úložiště.  
 
 ### <a name="upload-python-script-to-your-blob-storage-account"></a>Uložení skriptu Pythonu do účtu služby Blob Storage
 1. Vytvořte soubor Pythonu s názvem **WordCount_Spark. py** s následujícím obsahem: 
@@ -55,10 +55,10 @@ Tento ukázkový skript PowerShell vytvoří kanál, který transformuje data v 
         main()
     ```
 2. Nahraďte **&lt; storageAccountName &gt;** názvem vašeho účtu Azure Storage. Pak soubor uložte. 
-3. Ve službě Azure Blob Storage, vytvořte kontejner nazvaný **adftutorial** , pokud ještě neexistuje. 
-4. Vytvořte složku **spark** .
-5. Ve složce **spark** vytvořte podsložku **script** . 
-6. Do podsložky **script** uložte soubor **WordCount_Spark.py** . 
+3. Ve službě Azure Blob Storage, vytvořte kontejner nazvaný **adftutorial**, pokud ještě neexistuje. 
+4. Vytvořte složku **spark**.
+5. Ve složce **spark** vytvořte podsložku **script**. 
+6. Do podsložky **script** uložte soubor **WordCount_Spark.py**. 
 
 
 ### <a name="upload-the-input-file"></a>Nahrání vstupního souboru

@@ -11,11 +11,11 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.openlocfilehash: 3dc6fb64f6e8695d84e292322293998e2f4cb0a3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324789"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009224"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>Nastavení společné identity na Data Science Virtual Machine
 
@@ -49,7 +49,7 @@ Azure služba AD DS usnadňuje správu identit tím, že poskytuje plně spravov
     
    1. Zkopírujte nebo si jiným způsobem poznamenejte vygenerované heslo uživatele, abyste ho mohli po dokončení tohoto procesu poskytnout příslušnému uživateli.
     
-   1. Můžete ale také otevřít a vyplnit informace o uživateli v části **Profil** , **Skupiny** nebo **Role adresáře**. 
+   1. Můžete ale také otevřít a vyplnit informace o uživateli v části **Profil**, **Skupiny** nebo **Role adresáře**. 
     
    1. V části **uživatel** vyberte **vytvořit**.
     

@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
 ms.openlocfilehash: d1c69f528328d5ff983c7de9d7fad052a7c41285
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696247"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009292"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Upgradovat interní Load Balancer Azure – vyžaduje se odchozí připojení
 [Azure Standard Load Balancer](load-balancer-overview.md) nabízí bohatou sadu funkcí a vysokou dostupnost prostřednictvím redundance zóny. Další informace o Load Balancer SKU najdete v tématu [srovnávací tabulka](./skus.md#skus). Vzhledem k tomu, že standardní interní Load Balancer neposkytuje odchozí připojení, poskytujeme řešení, které místo toho vytvoří standardní veřejný Load Balancer.

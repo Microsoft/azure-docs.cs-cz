@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 11/11/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 1ce461f50a6775bf7884fedc4cfa4dc7cb41bb8c
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: ab71a7fa3d3f92ecf3e1f73835e41fa7170130e6
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408138"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636601"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Převod vlastnictví fakturace předplatného Azure na jiný účet
 
@@ -24,7 +24,7 @@ Tento článek ukazuje kroky, které je potřeba provést k převodu vlastnictv�
 
 Pokud chcete vlastnictví fakturace zachovat, ale chcete změnit typ předplatného, přečtěte si téma [Přepnutí předplatného Azure na jinou nabídku](switch-azure-offer.md). Pokud chcete řídit, kdo má přístup k prostředkům v předplatném, přečtěte si téma věnované [předdefinovaným rolím v Azure](../../role-based-access-control/built-in-roles.md).
 
-Pokud jste zákazníkem se smlouvou Enterprise (EA), může váš podnikový správce převádět vlastnictví fakturace vašich předplatných mezi účty. Další informace najdete v části [Změna vlastníka účtu](ea-portal-administration.md#change-account-owner).
+Pokud jste zákazníkem se smlouvou Enterprise (EA), může váš podnikový správce převádět vlastnictví fakturace vašich předplatných mezi účty. Další informace najdete v části [Změna vlastnictví účtu nebo předplatného Azure](ea-portal-administration.md#change-azure-subscription-or-account-ownership).
 
 Vlastnictví předplatného může převést pouze správce fakturace účtu.
 
@@ -39,7 +39,7 @@ Vlastnictví předplatného může převést pouze správce fakturace účtu.
 1. Zadejte e-mailovou adresu uživatele, který je správcem fakturace účtu, který bude novým vlastníkem předplatného.
 1. Pokud předplatné převádíte na účet v jiném tenantovi Azure AD, vyberte, jestli chcete předplatné do tenanta nového účtu přesunout. Další informace najdete v tématu [Převod předplatného na účet v jiném tenantovi Azure AD](#transfer-a-subscription-to-another-azure-ad-tenant-account).
     > [!IMPORTANT]
-    > Pokud se rozhodnete přesunout předplatné do tenanta Azure AD nového účtu, všechna [přiřazení rolí Azure](../../role-based-access-control/role-assignments-portal.md) pro přístup k prostředkům v předplatném se trvale odstraní. Přístup ke správě prostředků v předplatném bude mít pouze uživatel v novém účtu, který přijme žádost o převod. Případně můžete zrušit zaškrtnutí políčka u možnosti **Tenant Azure AD předplatného** , abyste vlastnictví fakturace převedli bez přesunu předplatného do tenanta nového účtu. Pokud to uděláte, zachovají se stávající přiřazení rolí Azure pro přístup k prostředkům Azure.  
+    > Pokud se rozhodnete přesunout předplatné do tenanta Azure AD nového účtu, všechna [přiřazení rolí Azure](../../role-based-access-control/role-assignments-portal.md) pro přístup k prostředkům v předplatném se trvale odstraní. Přístup ke správě prostředků v předplatném bude mít pouze uživatel v novém účtu, který přijme žádost o převod. Případně můžete zrušit zaškrtnutí políčka u možnosti **Tenant Azure AD předplatného**, abyste vlastnictví fakturace převedli bez přesunu předplatného do tenanta nového účtu. Pokud to uděláte, zachovají se stávající přiřazení rolí Azure pro přístup k prostředkům Azure.  
     ![Stránka odeslání žádosti o převod](./media/billing-subscription-transfer/billing-send-transfer-request.png)
 1. Vyberte možnost **Poslat žádost o převod**.
 1. Tento uživatel obdrží e-mail s pokyny ke kontrole vaší žádosti o převod.  
