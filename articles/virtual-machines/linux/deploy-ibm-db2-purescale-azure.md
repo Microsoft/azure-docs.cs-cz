@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
 ms.openlocfilehash: 17ea965758150adb72d8e8f9fee9937bd5387a48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87371919"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016314"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Nasazení IBM DB2 pureScale v Azure
 
@@ -111,7 +111,7 @@ Až skripty vytvoří zařízení iSCSI, posledním krokem je instalace DB2 pure
 
 - Skripty pro instalaci používají aliasy pro disky iSCSI, aby se mohly snadno najít skutečné názvy.
 
-- Pokud je instalační skript spuštěn v D0, hodnoty **/dev/DM- \* ** se mohou lišit v sestavách D1, cf0 a CF1. Rozdíl v hodnotách nemá vliv na nastavení pureScale DB2.
+- Pokud je instalační skript spuštěn v D0, hodnoty **/dev/DM- \*** se mohou lišit v sestavách D1, cf0 a CF1. Rozdíl v hodnotách nemá vliv na nastavení pureScale DB2.
 
 ## <a name="troubleshooting-and-known-issues"></a>Řešení potíží a známé problémy
 

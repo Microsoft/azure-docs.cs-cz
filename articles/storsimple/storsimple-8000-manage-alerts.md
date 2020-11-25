@@ -7,15 +7,15 @@ ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: 36ed87a75d590a8647e5347b3e90e6f5159dc6b5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961829"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016841"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>Použití služby StorSimple Device Manager k zobrazení a správě upozornění StorSimple
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>Přehled
 
 Okno **výstrahy** ve službě StorSimple Device Manager poskytuje způsob, jak zkontrolovat a vymazat výstrahy týkající se zařízení StorSimple na základě v reálném čase. Z tohoto okna můžete centrálně monitorovat problémy se stavem zařízení StorSimple a celkovému řešení Microsoft Azure StorSimple.
 
@@ -139,7 +139,7 @@ Pokud v produkčním zařízení StorSimple dojde k chybě cloudového připojen
 
     V závislosti na množství dat ve vašem zařízení budou zápisy taky pořád po přerušení připojení cloudu i po výpadku. Zápisy se pak zpomalí a nakonec začnou selhat, pokud dojde k narušení cloudového připojení několik hodin. (Na zařízení je dočasné úložiště pro data, která se mají vložit do cloudu. Tato oblast se po odeslání dat vyprázdní. Pokud se připojení nezdaří, data v této oblasti úložiště nebudou vložena do cloudu a vstupně-výstupní operace selže.)
 * **Pro data v cloudu**: pro většinu chyb cloudového připojení se vrátí chyba. Po obnovení připojení se IOs obnoví, aniž by uživatel musel převést svazek do online režimu. Ve výjimečných případech může být nutný zásah uživatele, aby se vrátil zpátky do online režimu z Azure Portal.
-* **Pro cloudové snímky**probíhá opakování operace několikrát během 4-5 hodin, a pokud se připojení neobnoví, snímky v cloudu se nezdaří.
+* **Pro cloudové snímky** probíhá opakování operace několikrát během 4-5 hodin, a pokud se připojení neobnoví, snímky v cloudu se nezdaří.
 
 ### <a name="cluster-alerts"></a>Výstrahy clusteru
 

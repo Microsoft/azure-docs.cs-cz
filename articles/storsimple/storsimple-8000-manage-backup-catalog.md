@@ -15,14 +15,14 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 6ab4694159c6269f2f72d3d591147d43aef34a0a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961591"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017368"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>Správa katalogu záloh pomocí služby StorSimple Device Manager
-## <a name="overview"></a>Overview
+## <a name="overview"></a>Přehled
 V okně StorSimple Device Manager Service **Backup Catalog** se zobrazí všechny zálohovací sklady, které se vytvoří při ručním nebo plánovaném zálohování. Pomocí této stránky můžete zobrazit seznam všech záloh pro zásady zálohování nebo svazek, vybrat nebo odstranit zálohy nebo použít zálohu k obnovení nebo klonování svazku.
 
 Tento kurz vysvětluje, jak vytvořit seznam, vybrat a odstranit zálohovací sklad. Informace o tom, jak obnovit zařízení ze zálohy, najdete [v tématu Obnovení zařízení ze zálohovacího skladu](storsimple-8000-restore-from-backup-set-u2.md). Informace o tom, jak klonovat svazek, najdete v tématu [klonování svazku StorSimple](storsimple-8000-clone-volume-u2.md).

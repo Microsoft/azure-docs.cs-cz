@@ -5,11 +5,11 @@ ms.date: 09/05/2019
 ms.topic: how-to
 ms.reviewer: mmercuri
 ms.openlocfilehash: 898360d8e22803e17ff4da7d3b63f5595cad47ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254646"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015481"
 ---
 # <a name="get-information-about-your-azure-blockchain-workbench-database"></a>Získání informací o databázi služby Azure Blockchain Workbench
 
@@ -31,7 +31,7 @@ K databázi se připojíte takto:
 1. Přihlaste se k Azure Portal pomocí účtu, který má oprávnění **vlastníka** pro prostředky Azure blockchain Workbench.
 2. V levém navigačním podokně zvolte **Skupiny prostředků**.
 3. Zvolte název skupiny prostředků svého nasazení služby Blockchain Workbench.
-4. Výběrem možnosti **Typ** tento seznam prostředků seřaďte a pak zvolte **SQL Server**. Seřazený seznam v následujícím snímku obrazovky zobrazuje dvě databáze "Master" a jeden, který jako **předponu prostředku**používá "lhgn".
+4. Výběrem možnosti **Typ** tento seznam prostředků seřaďte a pak zvolte **SQL Server**. Seřazený seznam v následujícím snímku obrazovky zobrazuje dvě databáze "Master" a jeden, který jako **předponu prostředku** používá "lhgn".
 
    ![Seřazený seznam prostředků služby Blockchain Workbench](./media/getdb-details/sorted-workbench-resource-list.png)
 

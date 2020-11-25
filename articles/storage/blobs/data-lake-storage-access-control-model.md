@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.author: normesta
-ms.openlocfilehash: 3ddcbe57112251a428e11d6c164cdb1224553f98
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 65d1ef76ffae113a4b526eec75301abbfea751e7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959199"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017708"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Model řízení přístupu v Azure Data Lake Storage Gen2
 
@@ -33,17 +33,17 @@ Tento článek se zaměřuje na Azure RBAC a seznamy ACL a na tom, jak ho systé
 
 ## <a name="role-based-access-control-azure-rbac"></a>Řízení přístupu na základě role (Azure RBAC)
 
-Azure RBAC používá přiřazení rolí k použití sad oprávnění pro [objekty zabezpečení](https://docs.microsoft.com/azure/role-based-access-control/overview#security-principal). Objekt zabezpečení je objekt, který představuje uživatele, skupinu, instanční objekt nebo spravovanou identitu, která je definovaná v Azure Active Directory (AD). Sada oprávnění může objektu zabezpečení poskytnout "hrubý" stupeň přístupu, jako je čtení nebo zápis **všech** dat v účtu úložiště nebo **všech** dat v kontejneru. 
+Azure RBAC používá přiřazení rolí k použití sad oprávnění pro [objekty zabezpečení](../../role-based-access-control/overview.md#security-principal). Objekt zabezpečení je objekt, který představuje uživatele, skupinu, instanční objekt nebo spravovanou identitu, která je definovaná v Azure Active Directory (AD). Sada oprávnění může objektu zabezpečení poskytnout "hrubý" stupeň přístupu, jako je čtení nebo zápis **všech** dat v účtu úložiště nebo **všech** dat v kontejneru. 
 
 Následující role umožňují objektu zabezpečení získat přístup k datům v účtu úložiště. 
 
 |Role|Popis|
 |--|--|
-| [Vlastník dat v objektech blob služby Storage](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) | Úplný přístup k kontejnerům a datům služby Blob Storage. Tento přístup umožňuje objektu zabezpečení nastavit vlastníka položky a upravit seznamy ACL pro všechny položky. |
-| [Přispěvatel dat v objektech blob služby Storage](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) | Čtení, zápis a odstraňování přístupu ke kontejnerům a objektům blob úložiště objektů BLOB. Tento přístup nepovoluje, aby objekt zabezpečení nastavil vlastnictví položky, ale může upravit seznam ACL pro položky, které jsou vlastněny objektem zabezpečení. |
-| [Čtenář dat v objektech blob služby Storage](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) | Přečte a vypíše kontejnery a objekty blob služby Blob Storage. |
+| [Vlastník dat v objektech blob služby Storage](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) | Úplný přístup k kontejnerům a datům služby Blob Storage. Tento přístup umožňuje objektu zabezpečení nastavit vlastníka položky a upravit seznamy ACL pro všechny položky. |
+| [Přispěvatel dat v objektech blob služby Storage](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) | Čtení, zápis a odstraňování přístupu ke kontejnerům a objektům blob úložiště objektů BLOB. Tento přístup nepovoluje, aby objekt zabezpečení nastavil vlastnictví položky, ale může upravit seznam ACL pro položky, které jsou vlastněny objektem zabezpečení. |
+| [Čtenář dat v objektech blob služby Storage](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader) | Přečte a vypíše kontejnery a objekty blob služby Blob Storage. |
 
-Role, jako je [vlastník](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner), [Přispěvatel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor), [Čtenář](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)a [Přispěvatel účtu úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) , umožňují objektu zabezpečení Spravovat účet úložiště, ale neposkytují přístup k datům v rámci tohoto účtu. Tyto role (kromě **čtenářů**) ale můžou získat přístup k klíčům úložiště, které se dají použít v různých nástrojích klienta pro přístup k datům.
+Role, jako je [vlastník](../../role-based-access-control/built-in-roles.md#owner), [Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor), [Čtenář](../../role-based-access-control/built-in-roles.md#reader)a [Přispěvatel účtu úložiště](../../role-based-access-control/built-in-roles.md#storage-account-contributor) , umožňují objektu zabezpečení Spravovat účet úložiště, ale neposkytují přístup k datům v rámci tohoto účtu. Tyto role (kromě **čtenářů**) ale můžou získat přístup k klíčům úložiště, které se dají použít v různých nástrojích klienta pro přístup k datům.
 
 ## <a name="access-control-lists-acls"></a>Seznamy ACL
 
@@ -73,7 +73,7 @@ Následující diagram znázorňuje tok oprávnění pro tři běžné operace: 
 
 V následující tabulce se dozvíte, jak kombinovat role Azure a položky seznamu ACL tak, aby objekt zabezpečení mohl provádět operace uvedené ve sloupci **operace** . Tato tabulka obsahuje sloupec, který představuje jednotlivé úrovně fiktivní hierarchie adresářů. Existuje sloupec pro kořenový adresář kontejneru ( `/` ), podadresář s názvem **Brno**, podadresáře adresáře Brno s názvem **Portland** a textový soubor v adresáři Portland s názvem **Data.txt**. V těchto sloupcích se zobrazují [krátké](data-lake-storage-access-control.md#short-forms-for-permissions) reprezentace položky seznamu ACL, která je vyžadována pro udělení oprávnění. Není **-** li k provedení operace k dispozici, zobrazí se ve sloupci Hodnota _není k dispozici_.
 
-|    Operace             | Přiřazená role RBAC               |    /        | Brno     | Portland | Data.txt |             
+|    Operace             | Přiřazená role Azure               |    /        | Brno     | Portland | Data.txt |             
 |--------------------------|----------------------------------|-------------|-------------|-----------|----------|
 | Přečíst Data.txt            |   Vlastník dat v objektech blob služby Storage        | N/A      | N/A      | N/A       | N/A    |  
 |                          |   Přispěvatel dat v objektech blob služby Storage  | N/A      | N/A      | N/A       | N/A    |
@@ -85,12 +85,12 @@ V následující tabulce se dozvíte, jak kombinovat role Azure a položky sezna
 |                          |   Žádné                           | `--X`    | `--X`    | `--X`     | `RW-`  |
 | Odstranit Data.txt          |   Vlastník dat v objektech blob služby Storage        | N/A      | N/A      | N/A       | N/A    |
 |                          |   Přispěvatel dat v objektech blob služby Storage  | N/A      | N/A      | N/A       | N/A    |
-|                          |   Čtenář dat v objektech blob služby Storage       | `--X`    | `--X`    | `-WX`     | –    |
-|                          |   Žádné                           | `--X`    | `--X`    | `-WX`     | –    |
+|                          |   Čtenář dat v objektech blob služby Storage       | `--X`    | `--X`    | `-WX`     | Není k dispozici    |
+|                          |   Žádné                           | `--X`    | `--X`    | `-WX`     | Není k dispozici    |
 | Vytvořit Data.txt          |   Vlastník dat v objektech blob služby Storage        | N/A      | N/A      | N/A       | N/A    |
 |                          |   Přispěvatel dat v objektech blob služby Storage  | N/A      | N/A      | N/A       | N/A    |
-|                          |   Čtenář dat v objektech blob služby Storage       | `--X`    | `--X`    | `-WX`     | –    |
-|                          |   Žádné                           | `--X`    | `--X`    | `-WX`     | –    |
+|                          |   Čtenář dat v objektech blob služby Storage       | `--X`    | `--X`    | `-WX`     | Není k dispozici    |
+|                          |   Žádné                           | `--X`    | `--X`    | `-WX`     | Není k dispozici    |
 | Seznamu                   |   Vlastník dat v objektech blob služby Storage        | N/A      | N/A      | N/A       | N/A    |
 |                          |   Přispěvatel dat v objektech blob služby Storage  | N/A      | N/A      | N/A       | N/A    |
 |                          |   Čtenář dat v objektech blob služby Storage       | N/A      | N/A      | N/A       | N/A    |
@@ -102,11 +102,11 @@ V následující tabulce se dozvíte, jak kombinovat role Azure a položky sezna
 | Seznam/Oregon/Portland/   |   Vlastník dat v objektech blob služby Storage        | N/A      | N/A      | N/A       | N/A    |
 |                          |   Přispěvatel dat v objektech blob služby Storage  | N/A      | N/A      | N/A       | N/A    |
 |                          |   Čtenář dat v objektech blob služby Storage       | N/A      | N/A      | N/A       | N/A    |
-|                          |   Žádné                           | `--X`    | `--X`    | `R-X`     | –    |
+|                          |   Žádné                           | `--X`    | `--X`    | `R-X`     | Není k dispozici    |
 
 
 > [!NOTE] 
-> Chcete-li zobrazit obsah kontejneru v Průzkumník služby Azure Storage, musí se objekty zabezpečení [přihlašovat k Průzkumník služby Storage pomocí Azure AD](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#add-a-resource-via-azure-ad)a (minimálně) mít oprávnění ke čtení (R--) do kořenové složky ( `\` ) kontejneru. Tato úroveň oprávnění jim dává možnost vypisovat obsah kořenové složky. Pokud nechcete, aby se obsah kořenové složky zobrazil, můžete jim přiřadit roli [čtenáře](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) . S touto rolí budou moci zobrazit kontejnery v účtu, ale ne obsah kontejneru. Přístup ke konkrétním adresářům a souborům pak můžete udělit pomocí seznamů řízení přístupu (ACL).   
+> Chcete-li zobrazit obsah kontejneru v Průzkumník služby Azure Storage, musí se objekty zabezpečení [přihlašovat k Průzkumník služby Storage pomocí Azure AD](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#add-a-resource-via-azure-ad)a (minimálně) mít oprávnění ke čtení (R--) do kořenové složky ( `\` ) kontejneru. Tato úroveň oprávnění jim dává možnost vypisovat obsah kořenové složky. Pokud nechcete, aby se obsah kořenové složky zobrazil, můžete jim přiřadit roli [čtenáře](../../role-based-access-control/built-in-roles.md#reader) . S touto rolí budou moci zobrazit kontejnery v účtu, ale ne obsah kontejneru. Přístup ke konkrétním adresářům a souborům pak můžete udělit pomocí seznamů řízení přístupu (ACL).   
 
 ## <a name="security-groups"></a>Skupiny zabezpečení
 
@@ -120,7 +120,7 @@ Při použití skupin je méně pravděpodobnější, že bude překročen maxim
 
 ## <a name="shared-key-and-shared-access-signature-sas-authorization"></a>Autorizace sdíleného klíče a sdíleného přístupového podpisu (SAS)
 
-Azure Data Lake Storage Gen2 podporuje také [sdílené klíče](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key) a metody [SAS](https://docs.microsoft.com/azure/storage/common/storage-sas-overview?toc=/azure/storage/blobs/toc.json) pro ověřování. Charakteristikou těchto metod ověřování je, že k volajícímu není přidružena žádná identita, a proto nelze provést autorizaci pomocí zabezpečení na základě oprávnění.
+Azure Data Lake Storage Gen2 podporuje také [sdílené klíče](/rest/api/storageservices/authorize-with-shared-key) a metody [SAS](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) pro ověřování. Charakteristikou těchto metod ověřování je, že k volajícímu není přidružena žádná identita, a proto nelze provést autorizaci pomocí zabezpečení na základě oprávnění.
 
 V případě sdíleného klíče volající efektivně získává přístup super uživatele, což znamená úplný přístup ke všem operacím na všech prostředcích, včetně dat, nastavení vlastníků a změně seznamů ACL.
 
@@ -129,4 +129,3 @@ Tokeny SAS zahrnují povolená oprávnění jako součást tokenu. Oprávnění 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o seznamech řízení přístupu najdete  [v tématu seznamy řízení přístupu (ACL) v Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
-

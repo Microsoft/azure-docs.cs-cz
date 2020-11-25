@@ -13,11 +13,11 @@ ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 49a0e48977393aeab7ff93b79e28acc55a87b51a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87504615"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016178"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Jak nainstalovat a nakonfigurovat MongoDB na virtuálním počítači se systémem Linux
 
@@ -125,7 +125,7 @@ K vytvoření tohoto prostředí potřebujete mít nainstalované nejnovější 
 az group create --name myResourceGroup --location eastus
 ```
 
-V dalším kroku nasaďte šablonu MongoDB pomocí [AZ Group Deployment Create](/cli/azure/group/deployment). Po zobrazení výzvy zadejte vlastní jedinečné hodnoty pro *newStorageAccountName*, *dnsNameForPublicIP*a uživatelské jméno a heslo správce:
+V dalším kroku nasaďte šablonu MongoDB pomocí [AZ Group Deployment Create](/cli/azure/group/deployment). Po zobrazení výzvy zadejte vlastní jedinečné hodnoty pro *newStorageAccountName*, *dnsNameForPublicIP* a uživatelské jméno a heslo správce:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -176,7 +176,7 @@ K vytvoření tohoto prostředí potřebujete mít nainstalované nejnovější 
 az group create --name myResourceGroup --location eastus
 ```
 
-V dalším kroku nasaďte šablonu MongoDB pomocí [AZ Group Deployment Create](/cli/azure/group/deployment). V případě potřeby definujte vlastní názvy prostředků a velikosti, jako třeba pro *mongoAdminUsername*, *sizeOfDataDiskInGB*a *configNodeVmSize*:
+V dalším kroku nasaďte šablonu MongoDB pomocí [AZ Group Deployment Create](/cli/azure/group/deployment). V případě potřeby definujte vlastní názvy prostředků a velikosti, jako třeba pro *mongoAdminUsername*, *sizeOfDataDiskInGB* a *configNodeVmSize*:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \

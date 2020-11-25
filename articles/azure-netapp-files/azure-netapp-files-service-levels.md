@@ -15,18 +15,18 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: b-juche
 ms.openlocfilehash: 7eac6a40476cffe875a03de49c9c9311ffbf4d39
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016038"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017062"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Úrovně služeb pro Azure NetApp Files
 Úrovně služeb jsou atributem fondu kapacit. Úrovně služeb jsou definované a rozlišené o povolenou maximální propustnost svazku ve fondu kapacity na základě kvóty, která je přiřazená ke svazku.
 
 ## <a name="supported-service-levels"></a>Podporované úrovně služeb
 
-Azure NetApp Files podporuje tři úrovně služeb: *Ultra*, *Premium*a *Standard*. 
+Azure NetApp Files podporuje tři úrovně služeb: *Ultra*, *Premium* a *Standard*. 
 
 * <a name="Ultra"></a>Ultra Storage
 

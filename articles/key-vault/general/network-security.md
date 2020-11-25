@@ -11,11 +11,11 @@ ms.date: 10/01/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: d1b1c27fe0136220d5a1851af4a5c24102a37da1
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288615"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015549"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurace Azure Key Vault bran firewall a virtuálních sítí
 
@@ -71,7 +71,7 @@ Informace o tom, jak nakonfigurovat připojení privátního propojení v trezor
 > [!NOTE]
 > Mějte na paměti následující omezení konfigurace:
 > * Povoluje se maximálně 127 pravidel virtuální sítě a 127 pravidel IPv4. 
-> * Pravidla sítě IP jsou povolena pouze pro veřejné IP adresy. Rozsahy IP adres rezervované pro privátní sítě (definované v dokumentu RFC 1918) nejsou v pravidlech protokolu IP povoleny. Soukromé sítě obsahují adresy, které začínají na **10.** , **172.16-31** a **192,168.**. 
+> * Pravidla sítě IP jsou povolena pouze pro veřejné IP adresy. Rozsahy IP adres rezervované pro privátní sítě (definované v dokumentu RFC 1918) nejsou v pravidlech protokolu IP povoleny. Soukromé sítě obsahují adresy, které začínají na **10.**, **172.16-31** a **192,168.**. 
 > * V tuto chvíli se podporují jenom IPv4 adresy.
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
@@ -165,7 +165,7 @@ Tady je postup konfigurace Key Vault bran firewall a virtuálních sítí pomoc�
    Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
    ```
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 * Odkaz na šablonu ARM: [odkaz na šablonu Azure Key Vault ARM](/azure/templates/Microsoft.KeyVault/vaults)
 * Příkazy rozhraní příkazového řádku Azure: [AZ pro Trezor klíčů Network-Rule](/cli/azure/keyvault/network-rule?view=azure-cli-latest)
 * Rutiny Azure PowerShell: [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault), [Add-AzKeyVaultNetworkRule](/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-AzKeyVaultNetworkRule](/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-AzKeyVaultNetworkRuleSet](/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)

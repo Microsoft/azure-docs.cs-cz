@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 03117b9f0c3cbaea22f36703f689264549b851e8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 485b23d9b7ebac4f7d183239d035fbd53b09f4ee
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959131"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017663"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Seznamy řízení přístupu (ACL) v Azure Data Lake Storage Gen2
 
@@ -23,7 +23,7 @@ Azure Data Lake Storage Gen2 implementuje model řízení přístupu, který pod
 
 ## <a name="about-acls"></a>O seznamech ACL
 
-K souborům a adresářům můžete přidružit [objekt zabezpečení](https://docs.microsoft.com/azure/role-based-access-control/overview#security-principal) s úrovní přístupu. Tato přidružení jsou zachycena v *seznamu řízení přístupu (ACL)*. Každý soubor a adresář v účtu úložiště má seznam řízení přístupu. Když se objekt zabezpečení pokusí operaci u souboru nebo adresáře, zkontroluje seznam řízení přístupu (ACL), jestli má tento objekt zabezpečení (uživatel, skupina, instanční objekt nebo spravovaná identita) správnou úroveň oprávnění k provedení operace.
+K souborům a adresářům můžete přidružit [objekt zabezpečení](../../role-based-access-control/overview.md#security-principal) s úrovní přístupu. Tato přidružení jsou zachycena v *seznamu řízení přístupu (ACL)*. Každý soubor a adresář v účtu úložiště má seznam řízení přístupu. Když se objekt zabezpečení pokusí operaci u souboru nebo adresáře, zkontroluje seznam řízení přístupu (ACL), jestli má tento objekt zabezpečení (uživatel, skupina, instanční objekt nebo spravovaná identita) správnou úroveň oprávnění k provedení operace.
 
 > [!NOTE]
 > Seznamy ACL platí jenom pro objekty zabezpečení ve stejném tenantovi a nevztahují se na uživatele, kteří používají ověřování pomocí sdíleného klíče nebo sdíleného přístupového podpisu (SAS). Důvodem je skutečnost, že k volajícímu není přidružena žádná identita, a proto nelze provést autorizaci na základě oprávnění zabezpečení.  
@@ -34,13 +34,13 @@ Chcete-li nastavit oprávnění na úrovni souborů a adresářů, přečtěte s
 
 | Prostředí | Článek |
 |--------|-----------|
-|Průzkumník služby Azure Storage |[Správa adresářů, souborů a seznamů ACL ve službě Azure Data Lake Storage Gen2 pomocí Průzkumníka služby Azure Storage](data-lake-storage-explorer.md#managing-access)|
+|Azure Storage Explorer |[Správa adresářů, souborů a seznamů ACL ve službě Azure Data Lake Storage Gen2 pomocí Průzkumníka služby Azure Storage](data-lake-storage-explorer.md#managing-access)|
 |.NET |[Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí .NET](data-lake-storage-directory-file-acl-dotnet.md#manage-access-control-lists-acls)|
 |Java|[Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí jazyka Java](data-lake-storage-directory-file-acl-java.md#manage-access-control-lists-acls)|
 |Python|[Použití Pythonu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-python.md#manage-access-control-lists-acls)|
 |PowerShell|[Použití PowerShellu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-powershell.md#manage-access-control-lists-acls)|
 |Azure CLI|[Použití Azure CLI ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-cli.md#manage-access-control-lists-acls)|
-|REST API |[Cesta – aktualizace](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
+|REST API |[Cesta – aktualizace](/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
 > Pokud *je objekt zabezpečení instanční objekt* , je důležité použít ID objektu instančního objektu a nikoli ID objektu související registrace aplikace. Pokud chcete získat ID objektu instančního objektu, otevřete Azure CLI a pak použijte tento příkaz: `az ad sp show --id <Your App ID> --query objectId` . `<Your App ID>`zástupný text nahraďte ID aplikace registrace vaší aplikace.
@@ -92,7 +92,8 @@ V následující tabulce jsou uvedeny položky seznamu ACL, které jsou potřeba
 
 Tato tabulka obsahuje sloupec, který představuje jednotlivé úrovně fiktivní hierarchie adresářů. Existuje sloupec pro kořenový adresář kontejneru ( `\` ), podadresář s názvem **Brno**, podadresáře adresáře Brno s názvem **Portland** a textový soubor v adresáři Portland s názvem **Data.txt**. 
 
-> [! IMPORANT] v této tabulce se předpokládá, že používáte **jenom** seznamy ACL bez přiřazení rolí Azure. Podobnou tabulku, která kombinuje službu Azure RBAC spolu s seznamy ACL, najdete v tématu [Tabulka oprávnění: kombinování služby Azure RBAC a ACL](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl).
+> [!IMPORTANT]
+> V této tabulce se předpokládá, že používáte **jenom** seznamy ACL bez přiřazení rolí Azure. Podobnou tabulku, která kombinuje službu Azure RBAC spolu s seznamy ACL, najdete v tématu [Tabulka oprávnění: kombinování služby Azure RBAC a ACL](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl).
 
 |    Operace             |    /    | Brno | Portland | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
@@ -203,7 +204,7 @@ Pro nový kontejner Data Lake Storage Gen2 je maska pro seznam ACL přístupu ko
 |--|--|--|
 |Vlastnící uživatel|`rwx`|`r-w`|
 |Vlastnící skupina|`r-x`|`r--`|
-|Ostatní|`---`|`---`|
+|Jiné|`---`|`---`|
 
 Soubory neobdrží bit X, protože to není podstatné pro soubory v systému pouze v úložišti. 
 
@@ -254,7 +255,7 @@ def set_default_acls_for_new_child(parent, child):
         child_acls.add( new_entry )
 ```
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>Je třeba povolit podporu pro seznamy ACL?
 
@@ -330,7 +331,7 @@ Pokud máte pro instanční objekt správný identifikátor OID, přejděte na s
 
 Ne. Kontejner nemá seznam ACL. Můžete ale nastavit seznam řízení přístupu kořenového adresáře kontejneru. Každý kontejner má kořenový adresář a sdílí stejný název jako kontejner. Například pokud má kontejner název `my-container` , pak kořenový adresář má název `myContainer/` . 
 
-Azure Storage REST API obsahuje operaci s názvem [seznam ACL kontejneru](https://docs.microsoft.com/rest/api/storageservices/set-container-acl), ale tato operace se nedá použít k nastavení seznamu ACL kontejneru nebo kořenového adresáře kontejneru. Místo toho se tato operace používá k označení, zda mohou být objekty BLOB v kontejneru [přístupné veřejně](anonymous-read-access-configure.md). 
+Azure Storage REST API obsahuje operaci s názvem [seznam ACL kontejneru](/rest/api/storageservices/set-container-acl), ale tato operace se nedá použít k nastavení seznamu ACL kontejneru nebo kořenového adresáře kontejneru. Místo toho se tato operace používá k označení, zda mohou být objekty BLOB v kontejneru [přístupné veřejně](anonymous-read-access-configure.md). 
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Kde najdu další informace o modelu řízení přístupu POSIX?
 

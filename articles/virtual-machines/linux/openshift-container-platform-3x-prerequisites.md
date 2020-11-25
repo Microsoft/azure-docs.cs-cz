@@ -10,11 +10,11 @@ ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
 ms.openlocfilehash: 68bd748e890659e4b79d76e4ccab038f251a937a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87368179"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016025"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Běžné požadavky pro nasazení OpenShift kontejneru Platform 3,11 v Azure
 
@@ -44,7 +44,7 @@ Tato příručka popisuje, jak vytvořit artefakty spojené s požadavky.
 > * Vytvořte Trezor klíčů pro správu klíčů SSH pro cluster OpenShift.
 > * Vytvoření instančního objektu pro použití poskytovatelem cloudu Azure.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure 
 Přihlaste se ke svému předplatnému Azure pomocí příkazu [AZ Login](/cli/azure/reference-index) a postupujte podle pokynů na obrazovce, nebo klikněte na tlačítko **vyzkoušet** a použijte Cloud Shell.
@@ -138,7 +138,7 @@ Další informace o instančních objektech najdete v tématu [Vytvoření insta
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Požadavky, které se vztahují pouze na šablonu Správce prostředků
 
-Pro privátní klíč SSH (**sshPrivateKey**) se musí vytvořit tajné kódy, tajný klíč klienta Azure AD (**aadClientSecret**), heslo správce OpenShift (**openshiftPassword**) a heslo správce předplatného Red Hat (**rhsmPasswordOrActivationKey**).  Pokud se navíc použijí vlastní certifikáty TLS/SSL, musí se vytvořit šest dalších tajných klíčů – **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**a **masterkeyfile**.  Tyto parametry budou podrobněji vysvětleny.
+Pro privátní klíč SSH (**sshPrivateKey**) se musí vytvořit tajné kódy, tajný klíč klienta Azure AD (**aadClientSecret**), heslo správce OpenShift (**openshiftPassword**) a heslo správce předplatného Red Hat (**rhsmPasswordOrActivationKey**).  Pokud se navíc použijí vlastní certifikáty TLS/SSL, musí se vytvořit šest dalších tajných klíčů – **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile** a **masterkeyfile**.  Tyto parametry budou podrobněji vysvětleny.
 
 Šablona odkazuje na konkrétní tajné názvy, takže je **nutné** použít tučné názvy uvedené výše (rozlišuje velká a malá písmena).
 

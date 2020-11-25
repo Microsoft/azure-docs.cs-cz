@@ -6,11 +6,11 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 152a000939f74b1852073742e501ac66246389a5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88961412"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015824"
 ---
 # <a name="create-a-php-web-app-in-azure-app-service"></a>Vytvoření webové aplikace v PHP v Azure App Service
 
@@ -30,7 +30,7 @@ Tento postup můžete použít v případě počítačů se systémem Mac, Windo
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
@@ -116,7 +116,7 @@ Vytvořili jste prázdnou novou webovou aplikaci s povoleným nasazením Gitu.
 > Adresa URL vzdáleného úložiště Git se zobrazuje ve vlastnosti `deploymentLocalGitUrl` ve formátu `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git`. Tuto adresu URL si uložte, protože ji budete potřebovat později.
 >
 
-Přejděte do vaší nově vytvořené webové aplikace. Nahraďte _ &lt; název aplikace>_ jedinečným názvem aplikace vytvořeným v předchozím kroku.
+Přejděte do vaší nově vytvořené webové aplikace. Nahraďte _&lt; název aplikace>_ jedinečným názvem aplikace vytvořeným v předchozím kroku.
 
 ```bash
 http://<app-name>.azurewebsites.net
@@ -196,7 +196,7 @@ Po dokončení nasazení se vraťte do okna prohlížeče, které se otevřelo v
 
     ![Přechod do aplikace Azure na portálu](./media/quickstart-php/php-docs-hello-world-app-service-list.png)
 
-    Zobrazí se stránka s **přehledem** vaší webové aplikace. Tady můžete provádět základní úlohy správy, jako je **procházení**, **zastavení**, **restartování**a **odstranění**.
+    Zobrazí se stránka s **přehledem** vaší webové aplikace. Tady můžete provádět základní úlohy správy, jako je **procházení**, **zastavení**, **restartování** a **odstranění**.
 
     ![Stránka služby App Service na webu Azure Portal](media/quickstart-php/php-docs-hello-world-app-service-detail.png)
 

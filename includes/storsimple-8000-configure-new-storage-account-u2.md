@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 9f1c30b303bd1fe02e0685c7d848be92073ca2f6
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93375894"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016861"
 ---
 #### <a name="to-add-a-storage-account-credential-in-the-same-azure-subscription-as-the-storsimple-device-manager-service"></a>Přidání přihlašovacích údajů účtu úložiště ve stejném předplatném Azure, jako je služba Správce zařízení StorSimple
 

@@ -10,11 +10,11 @@ ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: 7577c8510746d1140c1f8b70081f600d992ae512
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745820"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016671"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Úprava škálovací sady virtuálních počítačů
 
@@ -354,7 +354,7 @@ Některé vlastnosti mohou být změněny, s výjimkami v závislosti na aktuál
 ### <a name="properties-that-require-deallocation-to-change"></a>Vlastnosti, které vyžadují změnu navracení
 Některé vlastnosti lze změnit pouze na určité hodnoty, pokud jsou virtuální počítače v sadě škálování navráceny. Mezi tyto vlastnosti patří:
 
-- **Název SKU** – Pokud se nová SKU virtuálního počítače nepodporuje na hardwaru, na kterém je sada škálování aktuálně zapnutá, musíte zrušit přidělení virtuálních počítačů v sadě škálování, než UPRAVÍTE název SKU. Další informace najdete v tématu [Změna velikosti virtuálního počítače Azure](../virtual-machines/windows/resize-vm.md).
+- **Název SKU**– Pokud se nová SKU virtuálního počítače nepodporuje na hardwaru, na kterém je sada škálování aktuálně zapnutá, musíte zrušit přidělení virtuálních počítačů v sadě škálování, než UPRAVÍTE název SKU. Další informace najdete v tématu [Změna velikosti virtuálního počítače Azure](../virtual-machines/windows/resize-vm.md).
 
 
 ## <a name="vm-specific-updates"></a>Aktualizace specifické pro virtuální počítače
@@ -379,7 +379,7 @@ Pokud používáte vlastní image, můžete bitovou kopii aktualizovat aktualiza
 ## <a name="examples"></a>Příklady
 
 ### <a name="update-the-os-image-for-your-scale-set"></a>Aktualizace image operačního systému pro sadu škálování
-Můžete mít sadu škálování, která spouští starou verzi Ubuntu LTS 16,04. Chcete aktualizovat na novější verzi Ubuntu LTS 16,04, jako je například verze *16.04.201801090* . Vlastnost verze odkazu na obrázek není součástí seznamu, takže můžete tyto vlastnosti přímo upravit pomocí jednoho z následujících příkazů:
+Můžete mít sadu škálování, která spouští starou verzi Ubuntu LTS 16,04. Chcete aktualizovat na novější verzi Ubuntu LTS 16,04, jako je například verze *16.04.201801090*. Vlastnost verze odkazu na obrázek není součástí seznamu, takže můžete tyto vlastnosti přímo upravit pomocí jednoho z následujících příkazů:
 
 - Azure PowerShell s [Update-AzVmss](/powershell/module/az.compute/update-azvmss) následujícím způsobem:
 
@@ -447,7 +447,7 @@ Alternativně můžete chtít změnit obrázek, který sada škálování použ�
     ```
 
 >[!NOTE]
-> U těchto příkazů se předpokládá, že je v sadě škálování jenom jedna konfigurace protokolu IP a nástroj pro vyrovnávání zatížení. Pokud existuje více, možná budete muset použít index seznamu jiný než *0* .
+> U těchto příkazů se předpokládá, že je v sadě škálování jenom jedna konfigurace protokolu IP a nástroj pro vyrovnávání zatížení. Pokud existuje více, možná budete muset použít index seznamu jiný než *0*.
 
 
 ## <a name="next-steps"></a>Další kroky

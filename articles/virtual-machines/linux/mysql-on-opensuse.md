@@ -11,11 +11,11 @@ ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: cynthn
 ms.openlocfilehash: eee32dc7edd4256dd2bd120609504042d7ab78ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836874"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016076"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Instalace MySQL na virtuálním počítači se systémem OpenSUSE Linux v Azure
 
@@ -98,7 +98,7 @@ sudo reboot
 
 ## <a name="mysql-password"></a>Heslo MySQL
 
-Po instalaci je kořenové heslo MySQL ve výchozím nastavení prázdné. Spusťte skript ** \_ zabezpečené \_ Instalace MySQL** a zabezpečte MySQL. Skript vás vyzve ke změně kořenového hesla MySQL, odebrání anonymních uživatelských účtů, zakázání vzdáleného kořenového přihlášení, odebrání testovacích databází a načtení tabulky oprávnění. 
+Po instalaci je kořenové heslo MySQL ve výchozím nastavení prázdné. Spusťte skript **\_ zabezpečené \_ Instalace MySQL** a zabezpečte MySQL. Skript vás vyzve ke změně kořenového hesla MySQL, odebrání anonymních uživatelských účtů, zakázání vzdáleného kořenového přihlášení, odebrání testovacích databází a načtení tabulky oprávnění. 
 
 Po restartování serveru se znovu připojte k virtuálnímu počítači přes SSH.
 

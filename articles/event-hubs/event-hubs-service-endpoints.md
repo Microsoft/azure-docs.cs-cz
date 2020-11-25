@@ -4,11 +4,11 @@ description: Tento článek poskytuje informace o tom, jak přidat koncový bod 
 ms.topic: article
 ms.date: 07/29/2020
 ms.openlocfilehash: 029338e3835d03b1a66ff6629e872c84113b0ff2
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427190"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015570"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>Povolení přístupu k oborům názvů Azure Event Hubs z konkrétních virtuálních sítí 
 
@@ -55,7 +55,7 @@ V této části se dozvíte, jak pomocí Azure Portal přidat koncový bod služ
 
     ![Firewall – vybraná možnost všechny sítě](./media/event-hubs-firewall/firewall-all-networks-selected.png)
 1. Pokud chcete omezit přístup k určitým sítím, vyberte možnost **vybrané sítě** v horní části stránky, pokud už není vybraná.
-2. V části **Virtual Network** stránky vyberte **+ Přidat existující virtuální síť** _. Vyberte _ *+ vytvořit novou virtuální síť* *, pokud chcete vytvořit novou virtuální síť. 
+2. V části **Virtual Network** stránky vyberte **+ Přidat existující virtuální síť** _. Vyberte _ *+ vytvořit novou virtuální síť**, pokud chcete vytvořit novou virtuální síť. 
 
     ![Přidat existující virtuální síť](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
 3. V seznamu virtuálních sítí vyberte virtuální síť a pak vyberte **podsíť**. Před přidáním virtuální sítě do seznamu musíte povolit koncový bod služby. Pokud koncový bod služby není povolený, portál vás vyzve, abyste ho povolili.

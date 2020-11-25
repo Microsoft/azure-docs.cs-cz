@@ -8,11 +8,11 @@ ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
 ms.openlocfilehash: 0806c6e0ed89c2c0f4712ec985599810119fcf89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86999016"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015515"
 ---
 # <a name="monitoring-scheduled-events"></a>Scheduled Events monitorování
 
@@ -110,7 +110,7 @@ Nyní chceme připojit Log Analytics pracovní prostor k virtuálnímu počíta�
     ![Připojení k virtuálnímu počítači jako zdroji dat](./media/notifications/connect-to-data-source.png)
 
 1. Vyhledejte a vyberte **myCollectorVM**. 
-1. Na nové stránce pro **myCollectorVM**vyberte **připojit**.
+1. Na nové stránce pro **myCollectorVM** vyberte **připojit**.
 
 Tím se na virtuální počítač nainstaluje [Agent Microsoft Monitoring Agent](../extensions/oms-windows.md) . Připojení virtuálního počítače k pracovnímu prostoru a instalace rozšíření bude trvat několik minut. 
 
@@ -118,11 +118,11 @@ Tím se na virtuální počítač nainstaluje [Agent Microsoft Monitoring Agent]
 
 1. Otevřete stránku pro váš pracovní prostor a vyberte **Upřesnit nastavení**.
 1. V nabídce vlevo vyberte **data** a pak vyberte **protokoly událostí systému Windows**.
-1. V **části shromáždit z následujících protokolů událostí**začněte psát *aplikaci* a pak v seznamu vyberte **aplikace** .
+1. V **části shromáždit z následujících protokolů událostí** začněte psát *aplikaci* a pak v seznamu vyberte **aplikace** .
 
     ![Vybrat upřesňující nastavení](./media/notifications/advanced.png)
 
-1. Ponechte vybranou možnost **Chyba**, **Upozornění**a **informace** a pak vyberte **Uložit** . tím nastavení uložíte.
+1. Ponechte vybranou možnost **Chyba**, **Upozornění** a **informace** a pak vyberte **Uložit** . tím nastavení uložíte.
 
 
 > [!NOTE]
@@ -150,22 +150,22 @@ Po vložení událostí do Log Analytics můžete spustit následující [dotaz]
     | project-away RenderedDescription,ReqJson
     ```
 
-1. Vyberte **Uložit**a pak jako název zadejte *logQuery* , jako typ nechejte **dotaz** , jako **kategorii**zadejte *VMLogs* a pak vyberte **Save (Uložit**). 
+1. Vyberte **Uložit** a pak jako název zadejte *logQuery* , jako typ nechejte **dotaz** , jako **kategorii** zadejte *VMLogs* a pak vyberte **Save (Uložit**). 
 
     ![Uložit dotaz](./media/notifications/save-query.png)
 
 1. Vyberte **Nové pravidlo upozornění**. 
 1. Na stránce **vytvořit pravidlo** nechejte `collectorworkspace` jako **prostředek**.
-1. V části **Podmínka**vyberte položku *vždy, když je <login undefined> hledání v protokolu zákazníka *. Otevře se stránka **Konfigurovat logiku signálu** .
-1. V části **prahová hodnota**zadejte *0* a potom vyberte **Hotovo**.
-1. V části **Akce**vyberte **vytvořit skupinu akcí**. Otevře se stránka **Přidat skupinu akcí** .
-1. Do **název skupiny akcí**zadejte *myActionGroup*.
-1. Do textu **krátký název**zadejte **myActionGroup**.
-1. V **skupiny prostředků**vyberte **myResourceGroupAvailability**.
-1. V části Akce zadejte do pole **název akce** **e-mail**a pak vyberte **e-mail/SMS/Push/Voice**. Otevře se stránka **e-mail/SMS/Push/Voice** .
+1. V části **Podmínka** vyberte položku *vždy, když je <login undefined> hledání v protokolu zákazníka*. Otevře se stránka **Konfigurovat logiku signálu** .
+1. V části **prahová hodnota** zadejte *0* a potom vyberte **Hotovo**.
+1. V části **Akce** vyberte **vytvořit skupinu akcí**. Otevře se stránka **Přidat skupinu akcí** .
+1. Do **název skupiny akcí** zadejte *myActionGroup*.
+1. Do textu **krátký název** zadejte **myActionGroup**.
+1. V **skupiny prostředků** vyberte **myResourceGroupAvailability**.
+1. V části Akce zadejte do pole **název akce** **e-mail** a pak vyberte **e-mail/SMS/Push/Voice**. Otevře se stránka **e-mail/SMS/Push/Voice** .
 1. Vyberte **e-mail**, zadejte e-mailovou adresu a pak vyberte **OK**.
 1. Na stránce **Přidat skupinu akcí** vyberte **OK**. 
-1. Na stránce **vytvořit pravidlo** v části **Podrobnosti výstrahy**zadejte *myAlert* pro **název pravidla upozornění**a pak zadejte *pravidlo e-mailové výstrahy* pro **Popis**.
+1. Na stránce **vytvořit pravidlo** v části **Podrobnosti výstrahy** zadejte *myAlert* pro **název pravidla upozornění** a pak zadejte *pravidlo e-mailové výstrahy* pro **Popis**.
 1. Po dokončení vyberte **vytvořit pravidlo výstrahy**.
 1. Restartujte jeden z virtuálních počítačů ve skupině dostupnosti. Během několika minut byste měli obdržet e-mail s aktivovaným upozorněním.
 

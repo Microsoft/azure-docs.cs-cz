@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 3db9811322d27ab287fa568eeeffcb5f4d57bdf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f490b6f25112ed8a10bbd865070bd07ea3ee84f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86530163"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016934"
 ---
 ## <a name="create-the-webapi-project"></a>Vytvoření projektu WebAPI
 
@@ -63,7 +63,7 @@ Vytvořte nový back-end ASP.NET WebAPI provedením následujících akcí:
 
 ## <a name="authenticate-clients-to-the-webapi-backend"></a>Ověřování klientů v back-endu WebAPI
 
-V této části vytvoříte pro nový back-end novou třídu popisovače zprávy **AuthenticationTestHandler**. Tato třída je odvozená od třídy [DelegatingHandler](https://msdn.microsoft.com/library/system.net.http.delegatinghandler.aspx) a přidaná jako popisovač zprávy, aby mohla zpracovávat všechny požadavky přicházející na back-end.
+V této části vytvoříte pro nový back-end novou třídu popisovače zprávy **AuthenticationTestHandler**. Tato třída je odvozená od třídy [DelegatingHandler](/previous-versions/visualstudio/hh193679(v=vs.118)) a přidaná jako popisovač zprávy, aby mohla zpracovávat všechny požadavky přicházející na back-end.
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na projekt **AppBackend**, vyberte **Přidat** a pak vyberte **Třída**.
 2. Pojmenujte novou třídu **AuthenticationTestHandler.cs** a pak ji výběrem **Přidat** vygenerujte. Tato třída bude pro zjednodušení ověřovat uživatele pomocí *základního ověřování*. Vaše aplikace může používat jakékoli schéma ověřování.
@@ -88,7 +88,7 @@ V této části vytvoříte pro nový back-end novou třídu popisovače zprávy
 
    Jinak bude požadavek zamítnut. Při tomto ověření se nepoužívá správný přístup k ověřování a autorizaci. Je to jenom jednoduchý příklad pro účely tohoto kurzu.
 
-   Pokud třída `AuthenticationTestHandler` ověří a autorizuje zprávu požadavku, uživatel základního ověřování se připojí k aktuálnímu požadavku v objektu [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx). Informace o uživateli v objektu HttpContext později použije jiný kontroler (RegisterController) pro přidání [značky](https://msdn.microsoft.com/library/azure/dn530749.aspx) do požadavku na registraci oznámení.
+   Pokud třída `AuthenticationTestHandler` ověří a autorizuje zprávu požadavku, uživatel základního ověřování se připojí k aktuálnímu požadavku v objektu [HttpContext](/dotnet/api/system.web.httpcontext.current). Informace o uživateli v objektu HttpContext později použije jiný kontroler (RegisterController) pro přidání [značky](/previous-versions/azure/azure-services/dn530749(v=azure.100)) do požadavku na registraci oznámení.
 
     ```csharp
     public class AuthenticationTestHandler : DelegatingHandler
@@ -333,7 +333,7 @@ V této části přidáte nový kontroler, který zveřejňuje způsob odesílá
 
     Tento kód odesílá typ oznámení na základě parametru `pns` systému oznámení platformy. Hodnota `to_tag` slouží k nastavení značky *username* (uživatelské jméno) pro zprávu. Tato značka musí odpovídat značce uživatelského jména aktivní registrace k centru událostí. Zpráva oznámení se přetáhne z textu požadavku POST a naformátuje se pro cílový systém oznámení platformy.
 
-    V závislosti na systému oznámení platformy, který vaše zařízení používá k přijímání oznámení, jsou podporována oznámení v různých formátech. Například na zařízeních s Windows byste mohli použít [informační zprávu pomocí Služby nabízených oznámení Windows](https://msdn.microsoft.com/library/windows/apps/br230849.aspx), kterou ostatní systémy oznámení platformy přímo nepodporují. V takovém případě musí váš back-end formátovat oznámení na podporované oznámení pro systémy oznámení platformy zařízení, která chcete podporovat. Ve [třídě NotificationHubClient](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.notificationhubclient_methods.aspx) pak použijte vhodné rozhraní API pro odesílání.
+    V závislosti na systému oznámení platformy, který vaše zařízení používá k přijímání oznámení, jsou podporována oznámení v různých formátech. Například na zařízeních s Windows byste mohli použít [informační zprávu pomocí Služby nabízených oznámení Windows](/uwp/schemas/tiles/toastschema/schema-root), kterou ostatní systémy oznámení platformy přímo nepodporují. V takovém případě musí váš back-end formátovat oznámení na podporované oznámení pro systémy oznámení platformy zařízení, která chcete podporovat. Ve [třídě NotificationHubClient](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient) pak použijte vhodné rozhraní API pro odesílání.
 
     ```csharp
     public async Task<HttpResponseMessage> Post(string pns, [FromBody]string message, string to_tag)

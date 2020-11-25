@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: f2dd7cac8370c261f24f5587e801bd621fbdb0f0
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151376"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016994"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Ověření podřízeného zařízení pro Azure IoT Hub
 
@@ -29,7 +29,7 @@ Zařízení pro příjem dat se můžou pomocí IoT Hub ověřit pomocí jedné 
 
 Automatické zřizování podřízených zařízení s Azure IoT Hub Device Provisioning Service (DPS) se nepodporuje.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Proveďte kroky v části [konfigurace IoT Edge zařízení, které bude fungovat jako transparentní brána](how-to-create-transparent-gateway.md).
 
@@ -144,13 +144,13 @@ Tato část je založená na pokynech, které jsou popsané v IoT Hub článku [
 
 2. Postupujte podle pokynů v části [Registrace certifikátů certifikační autority x. 509 do centra IoT Hub](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) *v tématu Nastavení zabezpečení X. 509 ve službě Azure IoT Hub*. V této části provedete následující kroky:
 
-   1. Nahrajte certifikát kořenové certifikační autority. Pokud používáte ukázkové certifikáty, kořenová certifikační autorita se ** \<path> /certs/Azure-IoT-test-Only.root.ca.CERT.pem**.
+   1. Nahrajte certifikát kořenové certifikační autority. Pokud používáte ukázkové certifikáty, kořenová certifikační autorita se **\<path> /certs/Azure-IoT-test-Only.root.ca.CERT.pem**.
 
    2. Ověřte, že vlastníte certifikát kořenové certifikační autority.
 
 3. Postupujte podle pokynů v části [Vytvoření zařízení x. 509 pro službu IoT Hub](../iot-hub/iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub) *v tématu Nastavení zabezpečení x. 509 ve službě Azure IoT Hub*. V této části provedete následující kroky:
 
-   1. Přidejte nové zařízení. Zadejte malý název **ID zařízení**a vyberte typ ověřování, který je **podepsaný certifikační autoritou X. 509**.
+   1. Přidejte nové zařízení. Zadejte malý název **ID zařízení** a vyberte typ ověřování, který je **podepsaný certifikační autoritou X. 509**.
 
    2. Nastavte nadřazené zařízení. Vyberte **nastavit nadřazené zařízení** a zvolte zařízení IoT Edge brány, které bude poskytovat připojení k IoT Hub.
 

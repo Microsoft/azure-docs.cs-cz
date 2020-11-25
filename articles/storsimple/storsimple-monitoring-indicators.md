@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85512967"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015396"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>Použití indikátorů monitorování StorSimple ke správě zařízení
 
@@ -119,7 +119,7 @@ Pomocí následující tabulky můžete určit stav PCM.
 | Bez napájení z AC (do skříně) |OFF |OFF |OFF |OFF |
 | Žádný výkon střídavého napětí (jenom tento PCM) |OFF |ON |OFF |ON |
 | Zapnout modul PCM pro střídavý proud – OK |ON |OFF |OFF |OFF |
-| Chyba PCM (ventilátor selže) |OFF |OFF |ON |× |
+| Chyba PCM (ventilátor selže) |OFF |OFF |ON |X |
 | Chyba PCM (přes amp, nad napětím, nad aktuálním |OFF |ON |ON |ON |
 | PCM (ventilátor je mimo toleranci) |ON |OFF |OFF |ON |
 | Pohotovostní model |Blikající |OFF |OFF |OFF |
@@ -180,7 +180,7 @@ Pomocí následující tabulky můžete určit stav jednotlivých diskových jed
 | Status | Indikátor aktivity v pořádku (zelený) | INDIKÁTOR chyby (červená – oranžová) | Indikátor LED přidruženého panelu OPS |
 | --- | --- | --- | --- |
 | Není nainstalovaná žádná jednotka. |OFF |OFF |Žádné |
-| Jednotka je nainstalovaná a funkční. |Zapnutí nebo vypnutí blikání aktivity |× |Žádné |
+| Jednotka je nainstalovaná a funkční. |Zapnutí nebo vypnutí blikání aktivity |X |Žádné |
 | Sada identit zařízení služby skříně SCSI (SES) |ON |Blikání 1 sekundy na/1 sekundu vypnuto |Žádné |
 | Sada bitů SES-bit pro selhání zařízení |ON |ON |Logická chyba (červená) |
 | Selhání okruhu řízení spotřeby |OFF |ON |Chyba modulu (červená) |

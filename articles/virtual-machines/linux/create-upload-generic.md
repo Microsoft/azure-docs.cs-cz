@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: guybo
 ms.openlocfilehash: a80cc29f318cff8e5a4c665cd07ba1829d25d66d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373381"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016331"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informace pro neschválené distribuce
 
@@ -35,7 +35,7 @@ Doporučujeme, abyste začali s jedním ze systému [Linux v rámci schválenýc
 Tento článek se zaměřuje na obecné pokyny pro provozování distribuce systému Linux v Azure.
 
 ## <a name="general-linux-installation-notes"></a>Obecné poznámky k instalaci pro Linux
-* Formát virtuálního pevného disku Hyper-V (VHDX) se v Azure nepodporuje, jenom *pevný virtuální*pevný disk.  Disk můžete převést na formát VHD pomocí Správce technologie Hyper-V nebo rutiny [Convert-VHD](/powershell/module/hyper-v/convert-vhd) . Pokud používáte VirtualBox, při vytváření disku vyberte **pevnou velikost** , nikoli výchozí (dynamicky přidělené).
+* Formát virtuálního pevného disku Hyper-V (VHDX) se v Azure nepodporuje, jenom *pevný virtuální* pevný disk.  Disk můžete převést na formát VHD pomocí Správce technologie Hyper-V nebo rutiny [Convert-VHD](/powershell/module/hyper-v/convert-vhd) . Pokud používáte VirtualBox, při vytváření disku vyberte **pevnou velikost** , nikoli výchozí (dynamicky přidělené).
 * Azure podporuje virtuální počítače Gen1 (Boot Boot) & Gen2 (UEFI Boot).
 * Maximální velikost povolená pro virtuální pevný disk je 1 023 GB.
 * Při instalaci systému Linux doporučujeme místo Správce logických svazků (LVM) používat standardní oddíly, což je výchozí nastavení pro mnoho instalací. Použití standardních oddílů zabrání v konfliktu LVM názvů s klonovanými virtuálními počítači, zejména pokud je disk s operačním systémem někdy připojený k jinému stejnému virtuálnímu počítači pro řešení potíží. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) se můžou používat na datových discích.

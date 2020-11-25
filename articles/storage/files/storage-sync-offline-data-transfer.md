@@ -8,11 +8,11 @@ ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 94abb33d39765a19306a013576d43fb2602d1c37
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630222"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017623"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Migrace hromadných dat do Azure File Sync s využitím Azure DataBoxu
 Hromadná data můžete migrovat do Azure File Sync dvěma způsoby:
@@ -81,7 +81,7 @@ Protože server dokončí počáteční synchronizaci oboru názvů, Data Box hr
 
 Nyní můžete vyčistit pracovní sdílenou složku a ušetřit tak náklady:
 
-1. V okně **Vlastnosti koncového bodu serveru** , když je stav **dokončený** , vyberte **Zakázat offline přenos dat**.
+1. V okně **Vlastnosti koncového bodu serveru** , když je stav **dokončený**, vyberte **Zakázat offline přenos dat**.
 2. Zvažte odstranění pracovní sdílené složky za účelem úspory nákladů. Pracovní sdílená složka pravděpodobně neobsahuje seznamy řízení přístupu k souborům a složkám, takže není pravděpodobně užitečná. Pro účely zálohování v čase vytvořte skutečný [snímek synchronizace sdílené složky Azure](storage-snapshots-files.md). Můžete [nastavit Azure Backup pro pořizování snímků]( ../../backup/backup-afs.md) podle plánu.
 
 Režim offline přenosu dat zakažte pouze v případě, že je stav **dokončen** nebo pokud chcete operaci zrušit z důvodu neplatného nastavení. Pokud režim během nasazování zakážete, začnou se soubory nahrávat ze serveru i v případě, že je vaše pracovní sdílená složka stále k dispozici.
@@ -94,7 +94,7 @@ Režim offline přenosu dat zakažte pouze v případě, že je stav **dokončen
 Pokud ve sdílené složce Azure máte osazené soubory jiným způsobem než DataBox – například prostřednictvím AzCopy, Robocopy ze zálohy v cloudu nebo jakékoli jiné metody – pak byste měli postupovat i [Offline přenos dat proces](#process-for-offline-data-transfer) popsaný v tomto článku. DataBox budete muset jenom odvažovat za metodu, kterou soubory přesunete do cloudu. Je ale nejdůležitější, abyste se ujistili, že nadále probíhá proces osazení souborů do *pracovní sdílené složky* a nikoli do konečné, Azure File Sync připojené sdílené složky.
 
 > [!WARNING]
-> **Postupujte podle postupu osazení souborů do pracovní sdílené složky, nikoli z konečné** , Azure File Sync připojené sdílené složky. Pokud to neuděláte, může dojít ke konfliktům souborů (obě verze souborů budou uložené) i soubory odstraněné na živém serveru se můžou vrátit, pokud pořád existují ve starším, naočkované sadě souborů. Kromě toho se změny složek sloučí mezi sebou, takže je velmi obtížné oddělit obor názvů po takovém případě omylem.
+> **Postupujte podle postupu osazení souborů do pracovní sdílené složky, nikoli z konečné**, Azure File Sync připojené sdílené složky. Pokud to neuděláte, může dojít ke konfliktům souborů (obě verze souborů budou uložené) i soubory odstraněné na živém serveru se můžou vrátit, pokud pořád existují ve starším, naočkované sadě souborů. Kromě toho se změny složek sloučí mezi sebou, takže je velmi obtížné oddělit obor názvů po takovém případě omylem.
 
 ## <a name="next-steps"></a>Další kroky
 - [Plánování nasazení Azure File Sync](storage-sync-files-planning.md)

@@ -8,11 +8,11 @@ ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
 ms.openlocfilehash: 6a5d4f388d9e5f47a13812687489525590c520c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87085482"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016093"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Připojení služby Azure File Storage na virtuálních počítačích se systémem Linux pomocí protokolu SMB
 
@@ -35,7 +35,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-V rámci vytvořené skupiny prostředků vytvořte nový účet úložiště pomocí [AZ Storage Account Create](/cli/azure/storage/account). Tento příklad vytvoří účet úložiště s názvem *mySTORAGEACCT \<random number> * a vloží název tohoto účtu úložiště do proměnné **STORAGEACCT**. Názvy účtů úložiště musí být jedinečné, použití `$RANDOM` čísla ke konci připojovat k jedinečnému názvu.
+V rámci vytvořené skupiny prostředků vytvořte nový účet úložiště pomocí [AZ Storage Account Create](/cli/azure/storage/account). Tento příklad vytvoří účet úložiště s názvem *mySTORAGEACCT \<random number>* a vloží název tohoto účtu úložiště do proměnné **STORAGEACCT**. Názvy účtů úložiště musí být jedinečné, použití `$RANDOM` čísla ke konci připojovat k jedinečnému názvu.
 
 ```azurecli
 STORAGEACCT=$(az storage account create \

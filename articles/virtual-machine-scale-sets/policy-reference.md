@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro Azure Virtual Machine Scale Sets
 description: Obsahuje seznam Azure Policy integrovaných definic zásad pro Azure Virtual Machine Scale Sets. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 10/20/2020
+ms.date: 11/20/2020
 ms.topic: reference
 author: ju-shim
 ms.author: jushiman
 ms.service: virtual-machine-scale-sets
 ms.custom: subject-policy-reference
-ms.openlocfilehash: e6345b95b8fb7606f6ac5f1781961e14a5f3a924
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ba46a8b0602d0318795f43c47459e88d78d1c363
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330338"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "96016745"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-virtual-machine-scale-sets"></a>Azure Policy předdefinované definice pro Azure Virtual Machine Scale Sets
 

@@ -10,11 +10,11 @@ ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 6374108247b9bfb950c42495b13b501ded8a02d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89317991"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015957"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-azure-cli"></a>Vytvoření snímku pomocí portálu nebo rozhraní příkazového řádku Azure
 
@@ -58,12 +58,12 @@ az snapshot list \
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Začněte v levém horním rohu, klikněte na **vytvořit prostředek** a vyhledejte **snímek**. Z výsledků hledání vyberte **snímek** .
 3. V okně **snímek** klikněte na **vytvořit**.
 4. Zadejte **název** snímku.
 5. Vyberte existující skupinu prostředků nebo zadejte název nového. 
-7. Pro **zdrojový disk**vyberte spravovaný disk, který se má snímek.
+7. Pro **zdrojový disk** vyberte spravovaný disk, který se má snímek.
 8. Vyberte **typ účtu** , který chcete použít k uložení snímku. Použijte **HDD úrovně Standard** , pokud ho nepotřebujete, aby byl uložený na disku SSD s vysokou úrovní.
 9. Klikněte na **Vytvořit**.
 

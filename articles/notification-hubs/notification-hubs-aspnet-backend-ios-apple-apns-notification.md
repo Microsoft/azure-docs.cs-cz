@@ -15,11 +15,11 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 167c666c536ee33531fd069dbd1edb530331a9f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302185"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016933"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Kurz: odeslání nabízených oznámení konkrétním uživatelům pomocí Azure Notification Hubs
 
@@ -57,7 +57,7 @@ Pokud chcete jako back-end službu použít Mobile Apps, přečtěte si téma [M
     ![Upravit scénář v Tvůrci rozhraní Xcode][1]
 
    * **Uživatelské jméno**: UITextField se zástupným textem, *Zadejte uživatelské jméno*, hned pod popiskem odeslat výsledky a omezením na levý a pravý okraj a pod popiskem odeslat výsledky.
-   * **Heslo**: UITextField se zástupným textem, *Zadejte heslo*hned pod textové pole uživatelské jméno a omezené na levý a pravý okraj a pod textovým polem username (uživatelské jméno). V inspektoru atributů v části *návratový klíč*zaškrtněte políčko **Zabezpečená textová položka** .
+   * **Heslo**: UITextField se zástupným textem, *Zadejte heslo* hned pod textové pole uživatelské jméno a omezené na levý a pravý okraj a pod textovým polem username (uživatelské jméno). V inspektoru atributů v části *návratový klíč* zaškrtněte políčko **Zabezpečená textová položka** .
    * **Přihlásit**: UIButton označený hned pod textovým polem heslo a zrušit kontrolu možnosti **Enabled** v inspektoru atributů v části *řízení-obsah*
    * **WNS**: Label a Switch povolí odeslání služby oznamování systému Windows oznámení, pokud byla nastavena v centru. Přečtěte si kurz [Windows Začínáme](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) .
    * **GCM**: Label a Switch povolí odesílání oznámení Google Cloud Messaging, pokud bylo nastaveno v centru. Viz kurz k [androidu Začínáme](notification-hubs-android-push-notification-google-gcm-get-started.md) .

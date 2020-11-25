@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 09/03/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: afeae4af9b41bf434b26833a3bd927118a4697ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a8a7be6f437687a4de31ce8e0ac62588f64e2eb
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67175233"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96016895"
 ---
 **Požadavky na konfigurační server a procesový Server pro replikaci fyzických serverů**
 
@@ -31,8 +31,8 @@ Volné místo na disku (disk pro uchovávání) | 600 GB
 Operační systém | Windows Server 2012 R2 <br> Windows Server 2016
 Národní prostředí operačního systému | Angličtina (en-us)
 Role Windows Serveru | Nepovolujte tyto role: <br> – Active Directory Domain Services <br>– Internet Information Service <br> – Hyper-V 
-Zásady skupiny | Nepovolujte tyto zásady skupiny: <br> – Zabraňte přístupu k příkazovému řádku. <br> – Zabraňte přístup k nástrojům pro úpravu registru. <br> – Logika vztahu důvěryhodnosti pro přílohy souborů. <br> -Zapnout provádění skriptu. <br> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
-IIS | -Žádný stávající výchozí web <br> -Žádný existující web nebo aplikace nenaslouchá na portu 443. <br>-Povolit  [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Povolit nastavení [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) .
+Zásady skupiny | Nepovolujte tyto zásady skupiny: <br> – Zabraňte přístupu k příkazovému řádku. <br> – Zabraňte přístup k nástrojům pro úpravu registru. <br> – Logika vztahu důvěryhodnosti pro přílohy souborů. <br> -Zapnout provádění skriptu. <br> [Další informace](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))
+IIS | -Žádný stávající výchozí web <br> -Žádný existující web nebo aplikace nenaslouchá na portu 443. <br>-Povolit  [anonymní ověřování](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) <br> -Povolit nastavení [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) .
 Typ IP adresy | Static 
 | 
 **NASTAVENÍ PŘÍSTUPU** | 
@@ -49,4 +49,3 @@ Porty | Povolení 443 (orchestrace řídicích kanálů)<br/><br/> Povolení 944
 8 vCPU<br/><br/> 2 sokety × 4 jádra \@ 2,5 GHz | 16GB | 300 GB | 500 GB nebo méně | Počítače s < 100
 12 vCPU<br/><br/> 2 SOCKS * 6 jader \@ 2,5 GHz | 18 GB | 600 GB | 500 GB AŽ 1 TB | 100 až 150 počítačů
 16 vCPU<br/><br/> 2 SOCKS * 8 jader \@ 2,5 GHz | 32 GB | 1 TB | 1-2 TB | 150 – 200 počítačů
-

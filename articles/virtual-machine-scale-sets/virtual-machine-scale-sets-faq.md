@@ -10,11 +10,11 @@ ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87080467"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016705"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Nejčastější dotazy ke škálovacím sadám virtuálních počítačů Azure
 
@@ -64,7 +64,7 @@ Oblastní sada pro škálování (mimo oblast) používá *skupiny umístění*,
 
 ### <a name="do-scale-sets-work-with-azure-availability-zones"></a>Fungují sady škálování s využitím zón dostupnosti Azure?
 
-Ano! Další informace najdete v [dokumentu zóna sady škálování](./virtual-machine-scale-sets-use-availability-zones.md).
+Ano. Další informace najdete v [dokumentu zóna sady škálování](./virtual-machine-scale-sets-use-availability-zones.md).
 
 
 ## <a name="autoscale"></a>Automatické škálování
@@ -660,7 +660,7 @@ Požadované ID pracovního prostoru a workspaceKey najdete v pracovním prostor
 
 ### <a name="how-do-i-turn-on-boot-diagnostics"></a>Návody zapnout diagnostiku spouštění?
 
-Pokud chcete zapnout diagnostiku spouštění, nejdřív vytvořte účet úložiště. Pak tento blok JSON vložte do **virtualMachineProfile**sady škálování virtuálních počítačů a aktualizujte sadu škálování virtuálního počítače:
+Pokud chcete zapnout diagnostiku spouštění, nejdřív vytvořte účet úložiště. Pak tento blok JSON vložte do **virtualMachineProfile** sady škálování virtuálních počítačů a aktualizujte sadu škálování virtuálního počítače:
 
 ```json
 "diagnosticsProfile": {

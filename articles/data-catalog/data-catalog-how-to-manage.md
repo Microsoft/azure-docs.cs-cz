@@ -7,11 +7,11 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 9d035417b613c81487c493bde90cdcc461f04412
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081147"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017283"
 ---
 # <a name="manage-data-assets-in-azure-data-catalog"></a>Správa datových assetů v Azure Data Catalog
 ## <a name="introduction"></a>Úvod
@@ -63,5 +63,5 @@ Vlastníci assetů dat můžou řídit viditelnost datových prostředků, kter�
 ## <a name="catalog-administrators"></a>Správci katalogu
 Správci Data Catalog jsou implicitně spoluvlastníci všech assetů v katalogu. Vlastníci prostředků nemohou odebrat viditelnost správců a správci mohou spravovat vlastnictví a viditelnost všech datových assetů v katalogu.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 Model Data Catalog crowdsourcingový pro metadata a zjišťování datových assetů umožňuje všem uživatelům katalogu přispívat a zjišťovat. Edice Standard Data Catalog je navržená k vlastnictví a správě, aby omezila viditelnost a používání konkrétních datových assetů.

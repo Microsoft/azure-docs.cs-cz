@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 5427077a4b07917c8852d0a63c815195e776b9de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085187"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017028"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Správa prostředků pro cluster Apache Spark ve službě Azure HDInsight
 
@@ -29,7 +29,7 @@ Pomocí uživatelského rozhraní PŘÍZe můžete monitorovat aplikace, které 
 
 1. Z [Azure Portal](https://portal.azure.com/)otevřete cluster Spark. Další informace najdete v tématech [seznam a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#showClusters).
 
-2. Z **řídicích panelů clusteru**vyberte možnost **příze**. Po zobrazení výzvy zadejte přihlašovací údaje správce pro cluster Spark.
+2. Z **řídicích panelů clusteru** vyberte možnost **příze**. Po zobrazení výzvy zadejte přihlašovací údaje správce pro cluster Spark.
 
     ![Spustit rozhraní PŘÍZe](./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png)
 
@@ -126,7 +126,7 @@ Z důvodu dynamického přidělování Spark jsou jediné prostředky, které js
 
 ## <a name="restart-the-jupyter-service"></a>Restartujte službu Jupyter.
 
-Spusťte webové uživatelské rozhraní Ambari, jak je znázorněno na začátku článku. V levém navigačním podokně vyberte **Jupyter**, vyberte **Akce služby**a pak vyberte **restartovat vše**. Tím se spustí služba Jupyter ve všech hlavních.
+Spusťte webové uživatelské rozhraní Ambari, jak je znázorněno na začátku článku. V levém navigačním podokně vyberte **Jupyter**, vyberte **Akce služby** a pak vyberte **restartovat vše**. Tím se spustí služba Jupyter ve všech hlavních.
 
 ![Restartujte Jupyter.](./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png "Restartujte Jupyter.")
 

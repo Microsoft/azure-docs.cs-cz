@@ -9,11 +9,11 @@ ms.workload: infrastructure
 ms.date: 05/07/2019
 ms.author: cynthn
 ms.openlocfilehash: 29a0c47bf24ecd916fb9402ffcb2a3ff13a36a84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372276"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016416"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Použití balíčku k vytváření imagí virtuálních počítačů se systémem Linux v Azure
 Každý virtuální počítač (VM) v Azure je vytvořený z image, která definuje distribuci Linux a verzi operačního systému. Obrázky můžou zahrnovat předem nainstalované aplikace a konfigurace. Azure Marketplace poskytuje spoustu prvních a dalších imagí pro většinu běžných distribucí a prostředí aplikací, nebo můžete vytvořit vlastní image přizpůsobené vašim potřebám. Tento článek podrobně popisuje, jak pomocí Open [source nástroje pro](https://www.packer.io/) definování a vytváření vlastních imagí v Azure.
