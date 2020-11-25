@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: Zhchia
 ms.openlocfilehash: 53b1db1a8c4da59055c0af5f448fa0c8a6933daf
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94354212"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95988089"
 ---
 # <a name="tutorial-configure-wrike-for-automatic-user-provisioning"></a>Kurz: Konfigurace Wrike pro Automatické zřizování uživatelů
 
@@ -95,7 +95,7 @@ Pokud chcete přidat Wrike z Galerie aplikací Azure AD, postupujte podle těcht
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Wrike** , na panelu výsledků vyberte **Wrike** a pak vyberte **Přidat** , aby se aplikace přidala.
+4. Do vyhledávacího pole zadejte **Wrike**, na panelu výsledků vyberte **Wrike** a pak vyberte **Přidat** , aby se aplikace přidala.
 
     ![Wrike v seznamu výsledků](common/search-new-app.png)
 
@@ -109,7 +109,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="configure-automatic-user-provisioning-for-wrike-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Wrike ve službě Azure AD
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**  >  **všechny aplikace**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**  >  **všechny aplikace**.
 
     ![Všechny aplikace](common/enterprise-applications.png)
 

@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6a74f105525ec8ce28559b47ed4fc9624f518a06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a74a3b7542a8d683e9bbf16f99c9b2646d95e00d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488333"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95986531"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Kurz: mapování stávajícího vlastního názvu DNS na Azure App Service
 
@@ -83,7 +83,7 @@ Zobrazí se stránka pro správu aplikace App Service.
 
 1. Vyberte některou z placených úrovní (**D1**, **B1**, **B2**, **B3** nebo kteroukoli úroveň v kategorii **Produkční**). Další možnosti **zobrazíte výběrem možnosti Zobrazit další možnosti**.
 
-1. Vyberte **Použít**.
+1. Vyberte **Apply** (Použít).
 
    ![Snímek obrazovky, který ukazuje kontrolu cenové úrovně.](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
@@ -100,7 +100,7 @@ Pokud chcete do aplikace přidat vlastní doménu, musíte ověřit vlastnictví
 ![Snímek obrazovky zobrazující ID v poli ID ověření vlastní domény](./media/app-service-web-tutorial-custom-domain/get-custom-domain-verification-id.png)
 
 > [!WARNING]
-> Přidání identifikátorů ověřování domény do vlastní domény může zabránit tomu, aby se dangling záznamy DNS a usnadnily převzetí subdomény. Další informace o této společné hrozbě s vysokou závažností najdete v tématu [převzetí subdomény](../security/fundamentals/subdomain-takeover.md).
+> Přidání identifikátorů ověřování domény do vlastní domény může zabránit tomu, aby se dangling záznamy DNS a usnadnily převzetí subdomény. U vlastních domén, které jste dříve nakonfigurovali bez tohoto ID ověření, byste je měli chránit před stejným rizikem přidáním ID ověření do záznamu DNS. Další informace o této společné hrozbě s vysokou závažností najdete v tématu [převzetí subdomény](../security/fundamentals/subdomain-takeover.md).
 
 ## <a name="map-your-domain"></a>Mapování domény
 

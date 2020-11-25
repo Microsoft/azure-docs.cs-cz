@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: 2f490a5b12484a91e963d068810b292d7761521a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89484289"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95986532"
 ---
 > [!NOTE]
 > K nakonfigurování vlastního názvu DNS pro Azure App Service můžete použít Azure DNS. Další informace najdete v tématu popisujícím [použití Azure DNS k určení nastavení vlastní domény pro službu Azure](../articles/dns/dns-custom-domain.md#app-service-web-apps).
@@ -20,7 +20,7 @@ ms.locfileid: "89484289"
 
 1. Vyhledejte stránku pro správu záznamů DNS. Každý poskytovatel domén má vlastní rozhraní pro správu záznamů DNS, takže se obraťte na dokumentaci poskytovatele. Hledejte oblasti webu označené jako **Domain Name** (Název domény), **DNS** nebo **Name Server Management** (Správa názvových serverů).
 
-   Často můžete najít stránku záznamy DNS zobrazením informací o účtu a pak vyhledat odkaz, jako je **moje doména**. Přejít na tuto stránku a vyhledat odkaz s názvem, jako je **soubor zóny**, **záznamy DNS**nebo **Pokročilá konfigurace**.
+   Často můžete najít stránku záznamy DNS zobrazením informací o účtu a pak vyhledat odkaz, jako je **moje doména**. Přejít na tuto stránku a vyhledat odkaz s názvem, jako je **soubor zóny**, **záznamy DNS** nebo **Pokročilá konfigurace**.
 
    Následující snímek obrazovky obsahuje příklad stránky záznamů DNS:
 
