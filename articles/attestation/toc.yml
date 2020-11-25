@@ -35,6 +35,8 @@
           href: claim-sets.md
     - name: Pracovní postup
       href: workflow.md
+    - name: Zobrazení protokolů auditu
+      href: audit-logs.md
 - name: Odkazy
   items:
     - name: Nejčastější dotazy

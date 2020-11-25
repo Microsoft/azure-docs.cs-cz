@@ -24,9 +24,6 @@
     - name: Nabídky spravovaných služeb na Azure Marketplace
       displayName: 'azure marketplace, marketplace, managed service, private, plan'
       href: ./concepts/managed-services-offers.md
-    - name: Doporučené postupy zabezpečení
-      displayName: 'mfa, authentication, secure, group'
-      href: ./concepts/recommended-security-practices.md
     - name: Aspekty programu Cloud Solution Provider
       displayName: 'csp, aobo, partner'
       href: ./concepts/cloud-solution-provider.md
@@ -38,6 +35,9 @@
       href: ./concepts/managed-applications.md
     - name: Zabezpečení
       items:
+        - name: Doporučené postupy zabezpečení
+          displayName: 'mfa, authentication, secure, group'
+          href: ./concepts/recommended-security-practices.md
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
 - name: Návody

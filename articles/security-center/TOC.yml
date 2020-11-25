@@ -278,8 +278,6 @@
       items:
         - name: Obecné otázky
           href: faq-general.md
-        - name: Dotazy k fakturaci
-          href: faq-billing.md
         - name: Dotazy k oprávněním
           href: faq-permissions.md
         - name: Dotazy k agentům a shromažďování dat

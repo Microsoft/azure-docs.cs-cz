@@ -125,12 +125,12 @@
       items:
         - name: Plánování nabídky kontejnerů Azure
           href: marketplace-containers.md
+        - name: Příprava technických prostředků
+          href: create-azure-container-technical-assets.md
         - name: Vytvoření a publikování nabídky kontejnerů Azure
           items:
-            - name: Příprava technických prostředků
-              href: partner-center-portal/create-azure-container-technical-assets.md
             - name: Vytvoření nabídky kontejnerů Azure
-              href: partner-center-portal/create-azure-container-offer.md
+              href: create-azure-container-offer.md
     - name: Nabídky virtuálních počítačů Azure
       items:
         - name: Plánování nabídky virtuálních počítačů

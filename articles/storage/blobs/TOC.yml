@@ -1,5 +1,5 @@
 - name: Dokumentace službě Azure Blob Storage
-  href: /azure/storage/blobs/
+  href: ./index.yml
 - name: Přehled
   items:
     - name: Co je Azure Blob Storage?
@@ -590,7 +590,7 @@
             - name: Dostupnost Storage Exploreru
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Blob Storage na webu Microsoft Q&A
-          href: 'https://docs.microsoft.com/answers/topics/azure-blob-storage.html'
+          href: /answers/topics/azure-blob-storage.html
         - name: Blob Storage na webu Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-blob-storage'
         - name: Ceny pro objekty blob bloku
@@ -654,7 +654,7 @@
 - name: Data Lake Storage Gen2
   items:
     - name: Dokumentace k přechodu na Data Lake Storage Gen1
-      href: /azure/data-lake-store/
+      href: ../../data-lake-store/index.yml
     - name: Přehled
       items:
         - name: Úvodní informace ke službě Data Lake Store
@@ -666,7 +666,7 @@
     - name: Kurzy
       items:
         - name: 'Extrakce, transformace a načítání dat pomocí Azure Databricks'
-          href: ../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          href: /azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Přístup k datům Data Lake Storage se službou Databricks s využitím Sparku
           href: data-lake-storage-use-databricks-spark.md
         - name: 'Extrakce, transformace a načítání dat s využitím Apache Hivu ve službě Azure HDInsight'
@@ -712,7 +712,7 @@
         - name: Monitorování
           items:
             - name: Monitorování úložiště objektů blob
-              href: ../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              href: ./monitor-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Přechod z klasických metrik
               href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Monitorování (klasické prostředí)
@@ -874,7 +874,7 @@
             - name: Dostupnost Storage Exploreru
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Stránka s dotazy na Microsoft Q&A
-          href: 'https://docs.microsoft.com/answers/topics/azure-blob-storage.html'
+          href: /answers/topics/azure-blob-storage.html
         - name: Azure Storage na webu Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
         - name: Ceny
