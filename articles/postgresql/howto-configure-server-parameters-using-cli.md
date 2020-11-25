@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 06/19/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 4231f348f99073406fcb6a5bef9bf0f84cacf2eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707672"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005567"
 ---
 # <a name="customize-server-configuration-parameters-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>Přizpůsobení parametrů konfigurace serveru pro Azure Database for PostgreSQL pro jeden server pomocí Azure CLI
 Můžete vypsat, zobrazit a aktualizovat parametry konfigurace pro server Azure PostgreSQL pomocí rozhraní příkazového řádku (Azure CLI). Podmnožina konfigurací modulu se zveřejňuje na úrovni serveru a dá se upravit. 
@@ -40,7 +40,7 @@ az postgres server configuration show --name log_min_messages --resource-group m
 ## <a name="modify-server-configuration-parameter-value"></a>Změnit hodnotu parametru konfigurace serveru
 Můžete také změnit hodnotu určitého parametru konfigurace serveru, který aktualizuje základní konfigurační hodnotu pro modul PostgreSQL serveru. Chcete-li aktualizovat konfiguraci, použijte příkaz [AZ Postgres Server Configuration set](/cli/azure/postgres/server/configuration) . 
 
-Chcete-li aktualizovat parametr konfigurace serveru pro ** \_ minimální \_ zprávy protokolu** serveru **mydemoserver.Postgres.Database.Azure.com** v části Skupina prostředků **myresourcegroup.**
+Chcete-li aktualizovat parametr konfigurace serveru pro **\_ minimální \_ zprávy protokolu** serveru **mydemoserver.Postgres.Database.Azure.com** v části Skupina prostředků **myresourcegroup.**
 ```azurecli-interactive
 az postgres server configuration set --name log_min_messages --resource-group myresourcegroup --server mydemoserver --value INFO
 ```
@@ -48,7 +48,7 @@ Pokud chcete resetovat hodnotu konfiguračního parametru, stačí vybrat volite
 ```azurecli-interactive
 az postgres server configuration set --name log_min_messages --resource-group myresourcegroup --server mydemoserver
 ```
-Tento příkaz obnoví konfiguraci ** \_ minimálních \_ zpráv protokolu** na **Upozornění**na výchozí hodnotu. Další informace o konfiguraci serveru a přípustných hodnotách najdete v dokumentaci k PostgreSQL v tématu věnovaném [konfiguraci serveru](https://www.postgresql.org/docs/9.6/static/runtime-config.html).
+Tento příkaz obnoví konfiguraci **\_ minimálních \_ zpráv protokolu** na **Upozornění** na výchozí hodnotu. Další informace o konfiguraci serveru a přípustných hodnotách najdete v dokumentaci k PostgreSQL v tématu věnovaném [konfiguraci serveru](https://www.postgresql.org/docs/9.6/static/runtime-config.html).
 
 ## <a name="next-steps"></a>Další kroky
 - [Informace o tom, jak restartovat server](howto-restart-server-cli.md)

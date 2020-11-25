@@ -11,11 +11,11 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: b7faec5023abe37802d8b08980f216934d70a6ac
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784350"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005537"
 ---
 # <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
@@ -76,7 +76,7 @@ Rozhraní příkazového řádku Azure můžete také nainstalovat a používat 
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -199,7 +199,7 @@ Pokud chcete vytvořit účet úložiště pro obecné účely v2 s jinou možno
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-K nasazení Správce prostředků šablony pro vytvoření účtu úložiště můžete použít buď Azure PowerShell, nebo rozhraní příkazového řádku Azure. Šablona použitá v tomto článku s návody je od [Azure Resource Manager šablon pro rychlý Start](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Chcete-li spustit skripty, vyberte příkaz **zkusit** pro otevření Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit** .
+K nasazení Správce prostředků šablony pro vytvoření účtu úložiště můžete použít buď Azure PowerShell, nebo rozhraní příkazového řádku Azure. Šablona použitá v tomto článku s návody je od [Azure Resource Manager šablon pro rychlý Start](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Chcete-li spustit skripty, vyberte příkaz **zkusit** pro otevření Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit**.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -236,7 +236,7 @@ Odstranění účtu úložiště odstraní celý účet včetně všech dat v ú
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. V [Azure Portal](https://portal.azure.com)přejděte na účet úložiště.
-1. Klikněte na **Odstranit** .
+1. Klikněte na **Odstranit**.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

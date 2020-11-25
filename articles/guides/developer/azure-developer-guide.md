@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
 ms.openlocfilehash: 8694c403b14234a70b0a67f9f4defb7817ba3ae3
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372204"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005380"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -66,7 +66,7 @@ Stávající aplikace můžete migrovat na App Service pomocí [Nástroje pro on
 >
 > **Začínáme**: App Service usnadňuje vytvoření a nasazení první [webové aplikace](../../app-service/quickstart-dotnetcore.md), [mobilní aplikace](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started)nebo [aplikace API](../../app-service/app-service-web-tutorial-rest-api.md).
 >
-> **Vyzkoušejte**si to: App Service umožňuje zřídit krátkodobou aplikaci pro vyzkoušení platformy bez nutnosti registrace účtu Azure. Vyzkoušejte si platformu a [vytvořte aplikaci Azure App Service](https://tryappservice.azure.com/).
+> **Vyzkoušejte** si to: App Service umožňuje zřídit krátkodobou aplikaci pro vyzkoušení platformy bez nutnosti registrace účtu Azure. Vyzkoušejte si platformu a [vytvořte aplikaci Azure App Service](https://tryappservice.azure.com/).
 
 #### <a name="azure-virtual-machines"></a>Azure Virtual Machines
 
@@ -313,9 +313,9 @@ Azure Resource Manager umožňuje přiřadit k jednotlivým prostředkům vlastn
 
 * Na portálu
 * V šabloně Azure Resource Manager
-* Použití rozhraní REST API
+* S využitím REST API
 * Použití Azure CLI
-* Pomocí prostředí PowerShell
+* Použití PowerShellu
 
 Každému prostředku můžete přiřadit více značek. Další informace najdete v tématu [použití značek k uspořádání prostředků Azure](../../azure-resource-manager/management/tag-resources.md).
 

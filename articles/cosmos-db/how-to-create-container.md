@@ -9,11 +9,11 @@ ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 302c5d6e8e523a11b8773f10bb6089e3bea09bdd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101557"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006844"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-sql-api"></a>Vytvoření kontejneru v Azure Cosmos DB SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -31,13 +31,13 @@ Tento článek popisuje různé způsoby, jak vytvořit kontejner v rozhraní Az
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account)nebo vyberte existující účet.
 
-1. Otevřete podokno **Průzkumník dat** a vyberte **Nový kontejner** . Dále zadejte následující podrobnosti:
+1. Otevřete podokno **Průzkumník dat** a vyberte **Nový kontejner**. Dále zadejte následující podrobnosti:
 
    * Určete, zda vytváříte novou databázi, nebo použijte existující.
    * Zadejte ID kontejneru.
    * Zadejte klíč oddílu.
    * Zadejte propustnost, která se má zřídit (například 1000 ru).
-   * Vyberte **OK** .
+   * Vyberte **OK**.
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-sql.png" alt-text="Snímek obrazovky s podoknem Průzkumník dat s zvýrazněným novým kontejnerem":::
 

@@ -16,11 +16,11 @@ ms.date: 06/25/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b159250e107fa73b9071eafe24fbe08ff1ea100b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896000"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006247"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí volání REST API
 
@@ -35,7 +35,7 @@ V tomto článku se pomocí objektu KUDRLINKOU pro volání Azure Resource Manag
 
 Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si téma [co jsou spravované identity pro prostředky Azure?](overview.md). Další informace o spravovaných typech identity přiřazených systémem a uživatelem definovaných uživatelů najdete v tématu [spravované identity typu](overview.md#managed-identity-types).
 
@@ -154,7 +154,7 @@ Aby se povolila spravovaná identita přiřazená systémem na virtuálním poč
    az account get-access-token
    ```
 
-2. Pomocí následujícího příkazu KUDRLINKOU zavolejte Azure Resource Manager koncový bod REST, aby se na VIRTUÁLNÍm počítači povolila spravovaná identita přiřazená systémem, jak je identifikované v těle požadavku hodnotou `{"identity":{"type":"SystemAssigned"}` pro virtuální počítač s názvem *myVM* .  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
+2. Pomocí následujícího příkazu KUDRLINKOU zavolejte Azure Resource Manager koncový bod REST, aby se na VIRTUÁLNÍm počítači povolila spravovaná identita přiřazená systémem, jak je identifikované v těle požadavku hodnotou `{"identity":{"type":"SystemAssigned"}` pro virtuální počítač s názvem *myVM*.  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
    
    > [!IMPORTANT]
    > Aby se zajistilo, že neodstraníte žádné existující spravované identity přiřazené uživatelem, které jsou přiřazené k virtuálnímu počítači, musíte pomocí tohoto příkazu SLOŽENÉho příkazu Zobrazit seznam spravovaných identit přiřazených uživateli: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` . Pokud máte k virtuálnímu počítači přiřazené spravované identity přiřazené uživatelem, jak je identifikuje `identity` hodnota v odpovědi, přejděte ke kroku 3, který vám ukáže, jak uchovávat spravované identity přiřazené uživatelem a zároveň na svém virtuálním počítači povolit spravovanou identitu přiřazenou systémem.
@@ -264,7 +264,7 @@ Aby se na virtuálním počítači zakázala spravovaná identita přiřazená s
    az account get-access-token
    ```
 
-2. Aktualizujte virtuální počítač pomocí metody KUDRLINKOU a zavolejte tak Azure Resource Manager koncový bod REST, aby se zakázala spravovaná identita přiřazená systémem.  Následující příklad zakáže spravovanou identitu přiřazenou systémem, která je v těle žádosti identifikovaná hodnotou `{"identity":{"type":"None"}}` z virtuálního počítače s názvem *myVM* .  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
+2. Aktualizujte virtuální počítač pomocí metody KUDRLINKOU a zavolejte tak Azure Resource Manager koncový bod REST, aby se zakázala spravovaná identita přiřazená systémem.  Následující příklad zakáže spravovanou identitu přiřazenou systémem, která je v těle žádosti identifikovaná hodnotou `{"identity":{"type":"None"}}` z virtuálního počítače s názvem *myVM*.  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
 
    > [!IMPORTANT]
    > Aby se zajistilo, že neodstraníte žádné existující spravované identity přiřazené uživatelem, které jsou přiřazené k virtuálnímu počítači, musíte pomocí tohoto příkazu SLOŽENÉho příkazu Zobrazit seznam spravovaných identit přiřazených uživateli: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` . Pokud máte k virtuálnímu počítači přiřazené žádné spravované identity přiřazené uživatelem, jak je uvedeno v `identity` hodnotě odpovědi, přejděte ke kroku 3, který vám ukáže, jak zachovat uživatelem přiřazené spravované identity a zároveň na svém virtuálním počítači zablokovat spravovanou identitu přiřazenou systémem.
@@ -293,7 +293,7 @@ Aby se na virtuálním počítači zakázala spravovaná identita přiřazená s
     }
    ```
 
-   Pokud chcete odebrat spravovanou identitu přiřazenou systémem z virtuálního počítače, který má uživatelsky přiřazené spravované identity, odeberte `SystemAssigned` `{"identity":{"type:" "}}` hodnotu z hodnoty a zachová hodnoty slovníku, `UserAssigned` `userAssignedIdentities` Pokud používáte **rozhraní API verze 2018-06-01** . Pokud používáte **rozhraní API verze 2017-12-01** nebo starší, nechejte `identityIds` pole.
+   Pokud chcete odebrat spravovanou identitu přiřazenou systémem z virtuálního počítače, který má uživatelsky přiřazené spravované identity, odeberte `SystemAssigned` `{"identity":{"type:" "}}` hodnotu z hodnoty a zachová hodnoty slovníku, `UserAssigned` `userAssignedIdentities` Pokud používáte **rozhraní API verze 2018-06-01**. Pokud používáte **rozhraní API verze 2017-12-01** nebo starší, nechejte `identityIds` pole.
 
 ## <a name="user-assigned-managed-identity"></a>Spravovaná identita přiřazená uživatelem
 
@@ -517,7 +517,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
 
 4. Pokud nemáte ke svému VIRTUÁLNÍmu počítači přiřazené žádné spravované identity přiřazené uživatelem, použijte následující příkaz, který zavolá Azure Resource Manager koncový bod REST a přiřadí k virtuálnímu počítači první spravovanou identitu přiřazenou uživatelem.
 
-   V následujícím příkladu se přiřadí spravovaná identita přiřazená uživateli `ID1` k virtuálnímu počítači s názvem *myVM* ve skupině prostředků *myResourceGroup* .  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
+   V následujícím příkladu se přiřadí spravovaná identita přiřazená uživateli `ID1` k virtuálnímu počítači s názvem *myVM* ve skupině prostředků *myResourceGroup*.  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
 
    **ROZHRANÍ API VERZE 2018-06-01**
 

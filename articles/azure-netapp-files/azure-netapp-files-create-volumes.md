@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: b-juche
 ms.openlocfilehash: e88cf0c063b3ba42dadd72c19c23be8fcf919b86
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930726"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006606"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Vytvoření svazku NFS pro Azure NetApp Files
 
@@ -31,7 +31,7 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 * Podsíť musí být delegovaná na Azure NetApp Files.  
     Viz [delegování podsítě na Azure NetApp Files](azure-netapp-files-delegate-subnet.md).
 
-## <a name="considerations"></a>Důležité informace 
+## <a name="considerations"></a>Požadavky 
 
 * Rozhodnutí o tom, která verze systému souborů NFS se má použít  
   NFSv3 dokáže zvládnout širokou škálu případů použití a je běžně nasazená ve většině podnikových aplikací. Měli byste ověřit, jakou verzi (NFSv3 nebo NFSv 4.1) vaše aplikace vyžaduje, a vytvořit svazek s použitím příslušné verze. Pokud například používáte [Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave), doporučuje se zamykání souborů s nfsv 4.1 nad NFSv3. 
@@ -56,7 +56,7 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 
     ![Přejít na svazky](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png) 
 
-2.  V okně vytvořit svazek klikněte na **vytvořit**a zadejte informace pro následující pole na kartě základy:   
+2.  V okně vytvořit svazek klikněte na **vytvořit** a zadejte informace pro následující pole na kartě základy:   
     * **Název svazku**      
         Zadejte název svazku, který vytváříte.   
 
@@ -98,7 +98,7 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 
         ![Zobrazit rozšířený výběr](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
-3. Klikněte na **protokol**a pak proveďte následující akce:  
+3. Klikněte na **protokol** a pak proveďte následující akce:  
     * Jako typ protokolu pro svazek vyberte **systém souborů NFS** .   
     * Zadejte **cestu k souboru** , která bude použita k vytvoření cesty pro export pro nový svazek. Cesta pro export slouží pro připojení svazku a přístup k němu.
 

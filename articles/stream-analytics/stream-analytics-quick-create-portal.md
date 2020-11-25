@@ -8,11 +8,11 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 ms.openlocfilehash: 5ad261064adf34945a600983296cb3e0ceaa5247
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90901071"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006657"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Rychlý start: Vytvoření úlohy Stream Analytics pomocí webu Azure Portal
 
@@ -22,13 +22,13 @@ V tomto rychlém startu se naučíte, jak začít vytvořením úlohy Stream Ana
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
-* Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+* Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="prepare-the-input-data"></a>Příprava vstupních dat
 
 Před definováním Stream Analytics úlohy byste měli připravit vstupní data. Data snímače v reálném čase se ingestují na IoT Hub, která se později nakonfigurovala jako vstup úlohy. Chcete-li připravit vstupní data požadovaná úlohou, proveďte následující kroky:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte **vytvořit prostředek**  >  **Internet věcí**  >  **IoT Hub**.
 
@@ -61,7 +61,7 @@ Před definováním Stream Analytics úlohy byste měli připravit vstupní data
 
 ## <a name="create-blob-storage"></a>Vytvoření úložiště objektů BLOB
 
-1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek**úložiště  >  **Storage**  >  **účet**úložiště.
+1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** úložiště  >  **Storage**  >  **účet** úložiště.
 
 2. V podokně **vytvořit účet úložiště** zadejte název účtu úložiště, umístění a skupinu prostředků. Vyberte stejné umístění a skupinu prostředků jako IoT Hub, který jste vytvořili. Pak klikněte na tlačítko **zkontrolovat + vytvořit** a vytvořte účet.
 
@@ -77,11 +77,11 @@ Před definováním Stream Analytics úlohy byste měli připravit vstupní data
 
 ## <a name="create-a-stream-analytics-job"></a>Vytvoření úlohy Stream Analytics
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 
 2. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**.  
 
-3. **Analytics**  >  V seznamu výsledků vyberte**úlohu Stream Analytics** analýzy.  
+3. **Analytics**  >  V seznamu výsledků vyberte **úlohu Stream Analytics** analýzy.  
 
 4. Na stránce Úloha Stream Analytics zadejte následující informace:
 
@@ -170,7 +170,7 @@ V této části nakonfigurujete vstup IoT Hub zařízení pro Stream Analytics �
 
 1. Vraťte se na stránku přehledu úlohy a vyberte **Spustit**.
 
-2. V části **počáteční úloha**vyberte **nyní**u pole **čas zahájení výstupu úlohy** . Pak vyberte **Spustit** a spusťte svoji úlohu.
+2. V části **počáteční úloha** vyberte **nyní** u pole **čas zahájení výstupu úlohy** . Pak vyberte **Spustit** a spusťte svoji úlohu.
 
 3. Po několika minutách najděte na portálu účet úložiště a kontejner, které jste nakonfigurovali jako výstup úlohy. Soubor výstupu teď uvidíte v kontejneru. První spuštění úlohy trvá několik minut. Potom bude úloha dál běžet s tím, jak budou data přicházet.  
 

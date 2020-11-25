@@ -6,11 +6,11 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.openlocfilehash: 5185e7d0bd60eec239f1233db7f9789cbefc2c10
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873535"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006162"
 ---
 # <a name="manage-qna-maker-resources"></a>Správa prostředků QnA Maker
 
@@ -256,7 +256,7 @@ Přečtěte si, jak upgradovat prostředky používané ve znalostní bázi. QnA
 
 Pokud máte v úmyslu mít spoustu znalostní báze, upgradujte si cenovou úroveň služby Azure Kognitivní hledání.
 
-V současné době nemůžete provést místní upgrade SKU služby Azure Search. Můžete ale vytvořit nový prostředek služby Azure Search s požadovanou skladovou jednotkou, obnovit data do nového prostředku a pak ho propojit s QnA Makerm zásobníkem. Postupujte takto:
+V současné době nemůžete provést místní upgrade SKU služby Azure Search. Můžete ale vytvořit nový prostředek služby Azure Search s požadovanou skladovou jednotkou, obnovit data do nového prostředku a pak ho propojit s QnA Makerm zásobníkem. Postupujte přitom takto:
 
 1. Vytvořte nový prostředek Azure Search v Azure Portal a vyberte požadovanou SKU.
 
@@ -345,7 +345,7 @@ Bezplatné prostředky vyhledávání se odstraní po 90 dnech bez přijetí vol
 
 Pokud máte v úmyslu mít spoustu znalostní báze, upgradujte si cenovou úroveň služby Azure Kognitivní hledání.
 
-V současné době nemůžete provést místní upgrade SKU služby Azure Search. Můžete ale vytvořit nový prostředek služby Azure Search s požadovanou skladovou jednotkou, obnovit data do nového prostředku a pak ho propojit s QnA Makerm zásobníkem. Postupujte takto:
+V současné době nemůžete provést místní upgrade SKU služby Azure Search. Můžete ale vytvořit nový prostředek služby Azure Search s požadovanou skladovou jednotkou, obnovit data do nového prostředku a pak ho propojit s QnA Makerm zásobníkem. Postupujte přitom takto:
 
 1. Vytvořte nový prostředek Azure Search v Azure Portal a vyberte požadovanou SKU.
 

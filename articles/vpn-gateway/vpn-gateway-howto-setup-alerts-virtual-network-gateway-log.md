@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: alzam
 ms.openlocfilehash: 1f10799ab32b6cb26a8b3b5b343f65b960d71357
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94889095"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006997"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>Nastavení upozornění na události protokolu prostředků z VPN Gateway
 
@@ -20,7 +20,7 @@ Tento článek vám pomůže nastavit výstrahy na základě událostí protokol
 
 V Azure jsou k dispozici následující protokoly prostředků:
 
-|***Název** _ | _*_Popis_*_ |
+|***Název** _ | _*_Description_*_ |
 |---        | ---               |
 |GatewayDiagnosticLog | Obsahuje protokoly prostředků pro události konfigurace brány, primární změny a události údržby. |
 |TunnelDiagnosticLog | Obsahuje události změny stavu tunelu. Události připojení a odpojení tunelu mají souhrnný důvod změny stavu, pokud je to možné. |
@@ -39,39 +39,39 @@ Následující příklad kroků vytvoří výstrahu pro událost odpojení, kter
 
 2. Na stránce **Log Analytics** vyberte **vytvořit** .
 
-   ![Stránka Log Analytics s tlačítkem vytvořit](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "Vybrat")
+   ![Stránka Log Analytics s tlačítkem vytvořit](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "Vyberte")
 
 3. Vyberte **vytvořit novou** a vyplňte podrobnosti.
 
-   ![Podrobnosti o vytvoření pracovního prostoru Log Analytics](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "Vybrat")
+   ![Podrobnosti o vytvoření pracovního prostoru Log Analytics](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "Vyberte")
 
 4. V okně **monitorovat**  >  **nastavení diagnostiky** Najděte bránu VPN.
 
-   ![Výběry pro vyhledání brány VPN v nastavení diagnostiky](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "Vybrat")
+   ![Výběry pro vyhledání brány VPN v nastavení diagnostiky](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "Vyberte")
 
 5. Pokud chcete zapnout diagnostiku, poklikejte na bránu a pak vyberte **zapnout diagnostiku**.
 
-   ![Výběry pro zapnutí diagnostiky](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "Vybrat")
+   ![Výběry pro zapnutí diagnostiky](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "Vyberte")
 
 6. Vyplňte podrobnosti a ujistěte se, že je vybraná možnost **Odeslat do Log Analytics** a **TunnelDiagnosticLog** . Vyberte pracovní prostor Log Analytics, který jste vytvořili v kroku 3.
 
-   ![Vybraná zaškrtávací políčka](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "Vybrat")
+   ![Vybraná zaškrtávací políčka](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "Vyberte")
 
    > [!NOTE]
    > Počáteční zobrazení dat může trvat několik hodin.
 
 7. Přejít na přehled prostředku brány virtuální sítě a vybrat **výstrahy** na kartě **monitorování** . Pak vytvořte nové pravidlo výstrahy nebo upravte existující pravidlo výstrahy.
 
-   ![Výběry pro vytvoření nového pravidla výstrahy](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Vybrat")
+   ![Výběry pro vytvoření nového pravidla výstrahy](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Vyberte")
 
-   ![Point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Vybrat")
+   ![Point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Vyberte")
 8. Vyberte pracovní prostor Log Analytics a prostředek.
 
-   ![Výběry pro pracovní prostor a prostředek](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "Vybrat")
+   ![Výběry pro pracovní prostor a prostředek](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "Vyberte")
 
 9. Jako logiku signálu v části **Přidat podmínku** vyberte **vlastní prohledávání protokolu** .
 
-   ![Výběry pro vlastní prohledávání protokolu](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "Vybrat")
+   ![Výběry pro vlastní prohledávání protokolu](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "Vyberte")
 
 10. Do textového pole **Vyhledávací dotaz** zadejte následující dotaz. Nahraďte hodnoty v <> a TimeGenerated podle potřeby.
 
@@ -88,15 +88,15 @@ Následující příklad kroků vytvoří výstrahu pro událost odpojení, kter
 
     Nastavte mezní hodnotu na 0 a vyberte **Hotovo**.
 
-    ![Zadání dotazu a výběr prahové hodnoty](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert9.png  "Vybrat")
+    ![Zadání dotazu a výběr prahové hodnoty](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert9.png  "Vyberte")
 
 11. Na stránce **vytvořit pravidlo** vyberte v části **skupiny akcí** položku **vytvořit nový** . Vyplňte podrobnosti a vyberte **OK**.
 
-    ![Podrobnosti nové skupiny akcí](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert10.png  "Vybrat")
+    ![Podrobnosti nové skupiny akcí](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert10.png  "Vyberte")
 
 12. Na stránce **vytvořit pravidlo** vyplňte podrobnosti pro **vlastní akce** a ujistěte se, že se v části **název skupiny akcí** zobrazuje správný název. Vyberte **vytvořit pravidlo upozornění** a vytvořte pravidlo.
 
-    ![Výběry pro vytvoření pravidla](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "Vybrat")
+    ![Výběry pro vytvoření pravidla](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "Vyberte")
 
 ## <a name="set-up-alerts-by-using-powershell"></a><a name="setuppowershell"></a>Nastavení výstrah pomocí prostředí PowerShell
 

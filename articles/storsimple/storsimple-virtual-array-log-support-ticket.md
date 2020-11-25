@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 57cd9b55f529bde3f6bcb0a25a95c70333f6d8dd
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130948"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005771"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>Použití služby StorSimple Device Manager k zaznamenání Support request pro virtuální pole StorSimple
 
@@ -33,15 +33,15 @@ V závislosti na [plánu podpory](https://azure.microsoft.com/support/plans/)mů
 
 #### <a name="to-log-a-new-request"></a>Postup při zaznamenání nového požadavku
 
-1. Přejděte do služby Správce zařízení StorSimple. V okně souhrnu služby přejděte do části **Podpora a řešení potíží** a pak klikněte na **Nová žádost o podporu** .
+1. Přejděte do služby Správce zařízení StorSimple. V okně souhrnu služby přejděte do části **Podpora a řešení potíží** a pak klikněte na **Nová žádost o podporu**.
    
     ![Snímek obrazovky se zobrazí v podokně základy nové žádosti o podporu.](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
 
 2. V okně **základy** proveďte následující:
 
-    1. V rozevíracím seznamu **typ problému** vyberte možnost **technický** . 
+    1. V rozevíracím seznamu **typ problému** vyberte možnost **technický**. 
     
-    2. Automaticky se zvolí aktuální **předplatné** , typ **služby** a **prostředek** (Služba StorSimple Device Manager Service). 
+    2. Automaticky se zvolí aktuální **předplatné**, typ **služby** a **prostředek** (Služba StorSimple Device Manager Service). 
 
     3. Zadejte jedno nebo více zařízení zaregistrovaných ve službě, u kterých dochází k problémům.
 
@@ -61,7 +61,7 @@ Po vytvoření lístku můžete spravovat lístek v celém jeho životním cyklu
 
 #### <a name="to-manage-your-support-requests"></a>Správa žádostí o podporu
 
-Pokud se chcete dostat na stránku Nápověda a podpora, přejděte na **Procházet a přejděte > nápovědu a podpora** .
+Pokud se chcete dostat na stránku Nápověda a podpora, přejděte na **Procházet a přejděte > nápovědu a podpora**.
 
 ![Správa žádostí o podporu](./media/storsimple-virtual-array-log-support-ticket/manage-support-tickets.png)
 

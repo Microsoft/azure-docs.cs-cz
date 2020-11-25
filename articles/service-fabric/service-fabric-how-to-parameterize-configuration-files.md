@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: mikhegn
 ms.openlocfilehash: 4e96a732cffd70b0a5c24e7ebafe214297a72720
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75644626"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006043"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Jak parametrizovat konfigurační soubory v Service Fabric
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak parametrizovat konfigurační soubor v Service
 
 V tomto příkladu přepíšete konfigurační hodnotu pomocí parametrů ve vašem nasazení aplikace.
 
-1. Otevřete * \<MyService>\PackageRoot\Config\Settings.xml* soubor v projektu služby.
+1. Otevřete *\<MyService>\PackageRoot\Config\Settings.xml* soubor v projektu služby.
 1. Přidáním následujícího kódu XML nastavte název a hodnotu konfiguračního parametru, například velikost mezipaměti rovnou 25.
 
    ```xml
@@ -30,7 +30,7 @@ V tomto příkladu přepíšete konfigurační hodnotu pomocí parametrů ve va�
    ```
 
 1. Uložte soubor a zavřete ho.
-1. Otevřete soubor * \<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* .
+1. Otevřete soubor *\<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* .
 1. V souboru ApplicationManifest.xml deklarujte parametr a výchozí hodnotu v `Parameters` elementu.  Doporučuje se, aby název parametru obsahoval název služby (například "Mojesluzba").
 
    ```xml

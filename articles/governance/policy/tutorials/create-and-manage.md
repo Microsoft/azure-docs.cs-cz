@@ -4,11 +4,11 @@ description: V tomto kurzu použijete zásady k vymáhání standardů, řízen�
 ms.date: 10/05/2020
 ms.topic: tutorial
 ms.openlocfilehash: bf3da82abcdcada1fc38df29efc988a1805c3020
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876356"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005431"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů
 
@@ -36,11 +36,11 @@ Prvním krokem při vynucování dodržování předpisů pomocí služby Azure 
 
 1. Na levé straně stránky služby Azure Policy vyberte **Přiřazení**. Přiřazení je zásada, která byla přiřazena, aby proběhla v rámci zadaného oboru.
 
-   :::image type="content" source="../media/create-and-manage/select-assignments.png" alt-text="Snímek obrazovky s hledáním zásad na panelu hledání" border="false":::
+   :::image type="content" source="../media/create-and-manage/select-assignments.png" alt-text="Snímek obrazovky s výběrem uzlu přiřazení na stránce Přehled zásad" border="false":::
 
 1. V horní části stránky **Zásady – Přiřazení** vyberte **Přiřadit zásadu**.
 
-   :::image type="content" source="../media/create-and-manage/select-assign-policy.png" alt-text="Snímek obrazovky s hledáním zásad na panelu hledání" border="false":::
+   :::image type="content" source="../media/create-and-manage/select-assign-policy.png" alt-text="Snímek obrazovky s výběrem tlačítka přiřadit zásadu na stránce přiřazení" border="false":::
 
 1. Na stránce **přiřadit zásady** a na kartě **základy** vyberte **obor** tak, že vyberete tři tečky a vyberete buď skupinu pro správu nebo předplatné. Volitelně můžete vybrat skupinu prostředků. Obor určuje, pro které prostředky nebo seskupení prostředků se toto přiřazení zásady bude vynucovat.
    Pak vyberte **Vybrat** v dolní části stránky **Rozsah** .
@@ -54,7 +54,7 @@ Prvním krokem při vynucování dodržování předpisů pomocí služby Azure 
 1. Pokud chybí, vyberte možnost **Zdědit značku ze skupiny prostředků**. Pokud ho nemůžete hned najít, zadejte do vyhledávacího pole **značku** a pak stiskněte klávesu ENTER nebo vyberte mimo vyhledávací pole.
    Po nalezení a výběru definice zásady vyberte **Vybrat** v dolní části stránky **dostupné definice** .
 
-   :::image type="content" source="../media/create-and-manage/select-available-definition.png" alt-text="Snímek obrazovky s hledáním zásad na panelu hledání":::
+   :::image type="content" source="../media/create-and-manage/select-available-definition.png" alt-text="Snímek obrazovky vyhledávacího filtru při výběru definice zásady":::
 
 1. Do pole **Název přiřazení** se automaticky vyplní název vybrané zásady, který však můžete změnit. V tomto příkladu ponechte _zděděnou značku ze skupiny prostředků, pokud chybí_. Volitelně můžete přidat také **Popis**. Popis obsahuje podrobnosti o tomto přiřazení zásady.
 
@@ -64,7 +64,7 @@ Prvním krokem při vynucování dodržování předpisů pomocí služby Azure 
 
 1. V horní části průvodce vyberte kartu **parametry** .
 
-1. Jako **název značky**zadejte _prostředí_.
+1. Jako **název značky** zadejte _prostředí_.
 
 1. V horní části průvodce vyberte kartu **náprava** .
 
@@ -82,7 +82,7 @@ Teď, když jste přiřadili předdefinovanou definici zásady, můžete se slu�
 
 1. Na levé straně stránky služby Azure Policy v části **Vytváření obsahu** vyberte **Definice**.
 
-   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="Snímek obrazovky s hledáním zásad na panelu hledání" border="false":::
+   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="Snímek obrazovky se stránkou definice v části Authoring Group" border="false":::
 
 1. V horní části stránky vyberte **+ Definice zásady**. Toto tlačítko se otevře na stránce **definice zásad** .
 
@@ -342,11 +342,11 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
 
 1. Na levé straně stránky služby Azure Policy v části **Vytváření obsahu** vyberte **Definice**.
 
-   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="Snímek obrazovky s hledáním zásad na panelu hledání":::
+   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="Snímek obrazovky se stránkou definice ve skupině pro vytváření obsahu":::
 
 1. V horní části stránky vyberte **+ definice iniciativy** a otevřete průvodce **definice iniciativy** .
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition.png" alt-text="Snímek obrazovky s hledáním zásad na panelu hledání":::
+   :::image type="content" source="../media/create-and-manage/initiative-definition.png" alt-text="Snímek obrazovky stránky definice iniciativy a vlastností, které se mají nastavit":::
 
 1. Pro výběr skupiny pro správu nebo předplatného pro uložení definice použijte tři tečky **umístění iniciativy** . Pokud byla předchozí stránka vymezena na jednu skupinu pro správu nebo předplatné, bude automaticky vyplněno **umístění iniciativy** .
 
@@ -375,16 +375,30 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
    Po výběru jednotlivých definic zásad ze seznamu vyberte **Přidat** v dolní části seznamu.
    Vzhledem k tomu, že je přidaný dvakrát, je pro _Přidání nebo nahrazení značky na základě_ definicí prostředků k disdílnému _identifikátoru reference_.
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition-2.png" alt-text="Snímek obrazovky s hledáním zásad na panelu hledání" nebo "použít parametr iniciativy". Je-li vybrána možnost nastavit hodnotu, je související hodnota zadána pod _hodnotou (Values)_. Pokud parametr v definici zásady obsahuje seznam povolených hodnot, pole pro zadání je rozevírací selektor. Pokud je vybrána možnost použít parametr iniciativy, je k dispozici rozevírací seznam s názvy parametrů iniciativy vytvořených na kartě **parametry iniciativy** .
+   :::image type="content" source="../media/create-and-manage/initiative-definition-2.png" alt-text="Snímek obrazovky vybraných definic zásad s jejich referenčním ID a skupinou na stránce definice iniciativy":::
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition-3.png" alt-text="Snímek obrazovky s hledáním zásad na panelu hledání":::
+   > [!NOTE]
+   > Vybrané definice zásad se dají přidat do skupin tak, že vyberete jednu nebo víc přidaných definic a vyberete **Přidat vybrané zásady do skupiny**. Skupina musí existovat jako první a lze ji vytvořit na kartě **skupiny** v průvodci.
+
+1. V dolní části stránky nebo na kartě **skupiny** v horní části průvodce vyberte **Další** . Na této kartě lze přidat nové skupiny. Pro tento kurz nepřidáme žádné skupiny.
+
+1. V dolní části stránky nebo na kartě **parametry iniciativy** v horní části průvodce vyberte **Další** . Pokud jsme chtěli, aby v iniciativě existoval parametr pro předávání jedné nebo více zahrnutých definic zásad, je zde definován parametr a pak se používá na kartě **parametry zásad** . Pro tento kurz nepřidáme žádné parametry iniciativy.
+
+   > [!NOTE]
+   > Po uložení do definice iniciativy nelze z iniciativy odstranit parametry iniciativy. Pokud už parametr iniciativy nepotřebujete, odeberte ho pomocí jakýchkoli parametrů definice zásad.
+
+1. V dolní části stránky klikněte na tlačítko **Další** nebo na kartu **parametry zásad** v horní části průvodce.
+
+1. Definice zásady přidaná k iniciativě, která má parametry, se zobrazí v mřížce. _Typ hodnoty_ může být "výchozí hodnota", "nastavená hodnota" nebo "použít parametr iniciativy". Je-li vybrána možnost nastavit hodnotu, je související hodnota zadána pod _hodnotou (Values)_. Pokud parametr v definici zásady obsahuje seznam povolených hodnot, pole pro zadání je rozevírací selektor. Pokud je vybrána možnost použít parametr iniciativy, je k dispozici rozevírací seznam s názvy parametrů iniciativy vytvořených na kartě **parametry iniciativy** .
+
+   :::image type="content" source="../media/create-and-manage/initiative-definition-3.png" alt-text="Snímek obrazovky s možnostmi pro povolené hodnoty pro parametr definice povolených umístění na kartě Parametry zásad stránky definice iniciativy":::
 
    > [!NOTE]
    > U některých parametrů `strongType` není možné automaticky určit seznam hodnot. V těchto případech se napravo od řádku parametru zobrazí tři tečky. Při výběru se otevře stránka obor parametru ( &lt; název parametru &gt; ). Na této stránce vyberte předplatné, které chcete použít k zadání možností hodnot. Tento obor parametru se používá pouze během vytváření definice iniciativy a nemá žádný vliv na vyhodnocování zásad ani na obor iniciativy po přiřazení.
 
    V rozevíracím seznamu nastavte _hodnotu_ ' Povolit umístění ' na hodnotu ' nastavit hodnotu ' a vyberte ' východní USA 2 '. Pro dvě instance definic zásad pro _Přidání nebo nahrazení značky u prostředků_ nastavte parametry **názvu značky** na ' ENV ' a ' CostCenter ' a parametry **hodnoty značky** na ' test ' a ' Lab ', jak je uvedeno níže. Ostatní ponechte jako výchozí hodnotu. Použití stejné definice dvakrát v iniciativě, ale s různými parametry, tato konfigurace přidá nebo nahradí značku ENV hodnotou test a značkou CostCenter s hodnotou Lab u prostředků v rozsahu přiřazení.
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition-4.png" alt-text="Snímek obrazovky s hledáním zásad na panelu hledání":::
+   :::image type="content" source="../media/create-and-manage/initiative-definition-4.png" alt-text="Snímek obrazovky se zadanými možnostmi pro povolené hodnoty pro parametr definice povolených umístění a hodnoty pro obě sady parametrů značek na kartě Parametry zásad stránky definice iniciativy.":::
 
 1. V dolní části stránky nebo v horní části průvodce vyberte **zkontrolovat + vytvořit** .
 
@@ -437,11 +451,11 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 1. Vyhledejte definici iniciativy **Zajištění zabezpečení**, kterou jste vytvořili dříve, a vyberte ji. V horní části stránky vyberte **Přiřadit** a otevřete stránku **Zajištění zabezpečení: Přiřadit iniciativu**.
 
-   :::image type="content" source="../media/create-and-manage/assign-definition.png" alt-text="Snímek obrazovky s hledáním zásad na panelu hledání" border="false":::
+   :::image type="content" source="../media/create-and-manage/assign-definition.png" alt-text="Snímek obrazovky s tlačítkem přiřadit na stránce definice iniciativy" border="false":::
 
    Můžete také kliknout pravým tlačítkem myši na vybraný řádek nebo vybrat tři tečky na konci řádku kontextové nabídky. Pak vyberte **přiřadit**.
 
-   :::image type="content" source="../media/create-and-manage/select-right-click.png" alt-text="Snímek obrazovky s hledáním zásad na panelu hledání" border="false":::
+   :::image type="content" source="../media/create-and-manage/select-right-click.png" alt-text="Snímek obrazovky kontextové nabídky pro iniciativu pro výběr funkce přiřazení" border="false":::
 
 1. Vyplňte stránku **Zajištění zabezpečení: Přiřadit iniciativu** zadáním následujících ukázkových údajů. Můžete použít vlastní údaje.
 
@@ -468,11 +482,11 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 1. Vyhledejte bezpečnostní iniciativu **Get** . Je nejspíš pořád ve _stavu dodržování předpisů_ **Nezahájeno**.
    Pokud chcete získat úplné podrobnosti o přiřazení, vyberte iniciativu.
 
-   :::image type="content" source="../media/create-and-manage/compliance-status-not-started.png" alt-text="Snímek obrazovky s hledáním zásad na panelu hledání" border="false":::
+   :::image type="content" source="../media/create-and-manage/compliance-status-not-started.png" alt-text="Snímek obrazovky stránky dodržování předpisů v iniciativě zobrazující vyhodnocení přiřazení v nespuštěném stavu" border="false":::
 
 1. Po dokončení přiřazení iniciativy se na stránce Dodržování předpisů aktualizuje _Stav dodržování předpisů_ na **Vyhovuje**.
 
-   :::image type="content" source="../media/create-and-manage/compliance-status-compliant.png" alt-text="Snímek obrazovky s hledáním zásad na panelu hledání" border="false":::
+   :::image type="content" source="../media/create-and-manage/compliance-status-compliant.png" alt-text="Snímek stránky s dodržováním předpisů v iniciativě, která zobrazuje vyhodnocení přiřazení, a v kompatibilním stavu." border="false":::
 
 1. Výběrem jakékoli zásady na stránce dodržování předpisů v iniciativě se otevře stránka s podrobnostmi o dodržování předpisů pro tyto zásady. Tato stránka obsahuje podrobnosti o dodržování předpisů na úrovni prostředku.
 
@@ -485,13 +499,13 @@ Po přiřazení iniciativy zásad pro vyžadování konkrétního umístění do
 
 Nasazení zabraňující přiřazeným zásadám nebo iniciativě můžete zobrazit ve skupině prostředků, která je cílem nasazení: vyberte **nasazení** v levé straně stránky a potom vyberte **název nasazení** neúspěšného nasazení. U zamítnutého prostředku je uvedený stav _Zakázáno_. Chcete-li určit zásadu nebo iniciativu a přiřazení, které prostředek odepřel, vyberte možnost **neúspěšné. Kliknutím sem zobrazíte podrobnosti – >** na stránce Přehled nasazení. Na pravé straně stránky se otevře okno s informacemi o chybě. V části **Podrobnosti o chybě** jsou identifikátory GUID souvisejících objektů zásad.
 
-:::image type="content" source="../media/create-and-manage/rg-deployment-denied.png" alt-text="Snímek obrazovky s hledáním zásad na panelu hledání" border="false":::
+:::image type="content" source="../media/create-and-manage/rg-deployment-denied.png" alt-text="Snímek obrazovky s neúspěšným nasazením, které bylo zamítnuto přiřazením zásady" border="false":::
 
 Na stránce Azure Policy: na levé straně stránky vyberte **dodržování předpisů** a vyberte iniciativu **získat zabezpečenou** zásadu. Na této stránce se zvyšuje počet **odepření** blokovaných prostředků. Na kartě **události** najdete podrobné informace o tom, kdo se pokusil vytvořit nebo nasadit prostředek, který byl zakázán definicí zásad.
 
-:::image type="content" source="../media/create-and-manage/compliance-overview.png" alt-text="Snímek obrazovky s hledáním zásad na panelu hledání" border="false":::
+:::image type="content" source="../media/create-and-manage/compliance-overview.png" alt-text="Snímek obrazovky karty události a podrobností události zásad na stránce dodržování předpisů v iniciativách" border="false":::
 
-V tomto příkladu Trent pekař, One z specialisty na řešení SR. Virtualization společnosti Contoso, jednalo se o požadovanou práci. Musíme pro výjimku udělit Trent prostor. Vytvořili jste novou skupinu prostředků, **LocationsExcluded**a další jí přidělíte výjimku tomuto přiřazení zásady.
+V tomto příkladu Trent pekař, One z specialisty na řešení SR. Virtualization společnosti Contoso, jednalo se o požadovanou práci. Musíme pro výjimku udělit Trent prostor. Vytvořili jste novou skupinu prostředků, **LocationsExcluded** a další jí přidělíte výjimku tomuto přiřazení zásady.
 
 ### <a name="update-assignment-with-exclusion"></a>Aktualizace přiřazení o vyloučení
 
@@ -501,7 +515,7 @@ V tomto příkladu Trent pekař, One z specialisty na řešení SR. Virtualizati
 
 1. Nastavte **vyloučení** tak, že vyberete tři tečky a vyberete skupinu prostředků, kterou chcete vyloučit, _LocationsExcluded_ v tomto příkladu. Vyberte **Přidat do vybraného oboru** a pak vyberte **Uložit**.
 
-   :::image type="content" source="../media/create-and-manage/request-exclusion.png" alt-text="Snímek obrazovky s hledáním zásad na panelu hledání" border="false":::
+   :::image type="content" source="../media/create-and-manage/request-exclusion.png" alt-text="Snímek obrazovky s možností vyloučení na stránce přiřazení iniciativy pro přidání Vyloučené skupiny prostředků do přiřazení zásady." border="false":::
 
    > [!NOTE]
    > V závislosti na definici zásad a jejím účinku by bylo možné vyloučení taky udělit konkrétním prostředkům v rámci skupiny prostředků v rozsahu přiřazení. V tomto kurzu byl použit efekt **odepření** , protože by nebylo vhodné nastavit vyloučení u konkrétního prostředku, který již existuje.

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 962bb7a4484f28d52ffd4f0cae985140ec2f0d28
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792918"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006026"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Přenos dat rozsáhlých datových sad se střední až velkou šířkou pásma sítě
  
@@ -27,9 +27,9 @@ Velké datové sady odkazují na velikosti dat v pořadí služby TBs na PBs. St
 
 ## <a name="recommended-options"></a>Doporučené možnosti
 
-Možnosti doporučené v tomto scénáři závisí na tom, jestli máte střední šířku pásma sítě nebo velkou šířku pásma sítě.
+Doporučené možnosti v tomto scénáři závisí na tom, jestli máte střední nebo velkou šířku pásma sítě.
 
-### <a name="moderate-network-bandwidth-100-mbps---1-gbps"></a>Střední šířka pásma sítě (100 MB/s – 1 GB/s)
+### <a name="moderate-network-bandwidth-100-mbps---1-gbps"></a>Střední šířka pásma sítě (100 Mb/s až 1 Gb/s)
 
 U střední šířky pásma sítě je potřeba promítnout čas přenosu dat přes síť.
 
@@ -39,20 +39,20 @@ Pomocí následující tabulky můžete odhadnout čas a na základě toho vybra
 
 - Pokud je přenos v síti příliš pomalý, měli byste použít fyzické zařízení. Doporučené možnosti v tomto případě jsou offline přenosové zařízení z řady Azure Data Box nebo Azure import/export s použitím vlastních disků.
 
-    - **Azure Data box rodina pro offline přenosy** – pomocí zařízení ze zařízení data box dodaných společností Microsoft můžete přesunout velké objemy dat do Azure, pokud jste omezeni časem, dostupností sítě nebo náklady. Zkopírujte místní data pomocí nástrojů, jako je například Robocopy. V závislosti na velikosti dat určeného pro přenos můžete zvolit z Data Box Disk, Data Box nebo Data Box Heavy.
-    - **Import/export do Azure** – pomocí služby importu a exportu v Azure můžete prostřednictvím přenosu vlastních diskových jednotek bezpečně importovat velké objemy dat do služby Azure Blob Storage a souborů Azure. Tato služba se dá také použít k přenosu dat z úložiště objektů BLOB v Azure na diskové jednotky a k odeslání do vašich místních webů.
+    - **Azure Data box rodina pro offline přenosy** – pomocí zařízení ze zařízení data box dodaných společností Microsoft můžete přesunout velké objemy dat do Azure, pokud jste omezeni časem, dostupností sítě nebo náklady. Ke kopírování místních dat můžete použít nástroje, jako je například Robocopy. V závislosti na velikosti dat, která chcete přenést, si můžete vybrat Data Box Disk, Data Box nebo Data Box Heavy.
+    - **Import/export do Azure** – pomocí služby importu a exportu v Azure můžete prostřednictvím přenosu vlastních diskových jednotek bezpečně importovat velké objemy dat do služby Azure Blob Storage a souborů Azure. Pomocí této služby je také možné přenést data ze služby Azure Blob Storage na diskové jednotky a odeslat je do místních lokalit.
 
 - Pokud je přenos v síti přihlášený jako rozumný, můžete použít některý z následujících nástrojů popsaných ve [vysoké šířce pásma sítě](#high-network-bandwidth).
 
 
-### <a name="high-network-bandwidth-1-gbps---100-gbps"></a>Vysoká šířka pásma sítě (1 GB/s až 100 GB/s)
+### <a name="high-network-bandwidth-1-gbps---100-gbps"></a>Velká šířka pásma sítě (1 Gb/s až 100 Gb/s)
 
 Pokud je dostupná šířka pásma sítě vysoká, použijte jeden z následujících nástrojů.
 
-- **AzCopy** – pomocí tohoto nástroje příkazového řádku můžete snadno kopírovat data z a do objektů blob, souborů a tabulkového úložiště Azure s optimálním výkonem. AzCopy podporuje souběžnost a paralelismus a možnost obnovit operace kopírování při přerušení.
+- **AzCopy** – pomocí tohoto nástroje příkazového řádku můžete snadno kopírovat data z a do objektů blob, souborů a tabulkového úložiště Azure s optimálním výkonem. AzCopy podporuje souběžnost a paralelismus a možnost obnovení operací kopírování v případě přerušení.
 - **Azure Storage rozhraní REST API/sady SDK** – při sestavování aplikace můžete vyvíjet aplikace proti Azure Storage rozhraní REST API a používat sady Azure SDK nabízené v různých jazycích.
-- **Azure Data box rodina pro online přenosy** – Data Box Edge a data box Gateway jsou online síťová zařízení, která mohou přesouvat data do a z Azure. Data Box Edge fyzické zařízení použijte v případě, že je k dispozici souběžná potřeba nepřetržitého příjmu a předběžného zpracování dat před nahráním. Data Box Gateway je virtuální verze zařízení se stejnými možnostmi přenosu dat. V každém případě je přenos dat spravován zařízením.
-- **Azure Data Factory** – Data Factory by se měly používat ke škálování operace přenosu, a pokud je potřeba Orchestrace a možnosti monitorování podnikové úrovně. Použijte Data Factory k pravidelnému přenosu souborů mezi několika službami Azure, místním prostředím nebo kombinací těchto dvou. pomocí Data Factory můžete vytvářet a plánovat pracovní postupy řízené daty (nazývané kanály), které ingestují data z různorodých úložišť dat a automatizují přesun dat a transformaci dat.
+- **Azure Data box rodina pro online přenosy** – Data Box Edge a data box Gateway jsou online síťová zařízení, která mohou přesouvat data do a z Azure. Fyzické zařízení Data Box Edge použijte v případě, že potřebujete průběžný příjem dat a zároveň předběžné zpracování dat před nahráním. Data Box Gateway je virtuální verze tohoto zařízení, ale se stejnými funkcemi pro přenos dat. Správu přenosu dat v každém případě zajišťuje zařízení.
+- **Azure Data Factory** – Data Factory by se měly používat ke škálování operace přenosu, a pokud je potřeba Orchestrace a možnosti monitorování podnikové úrovně. Data Factory umožňuje pravidelný přenos souborů mezi několika službami Azure, místními prostředími nebo jejich kombinací. Pomocí služby Data Factory můžete vytvářet a plánovat pracovní postupy řízené daty (označované jako kanály), které ingestují data z různorodých úložišť dat a automatizují přesun a transformaci dat.
 
 ## <a name="comparison-of-key-capabilities"></a>Porovnání klíčových funkcí
 
@@ -68,8 +68,8 @@ Pokud používáte offline přenos dat, použijte následující tabulku pro poc
 |    **Datový typ**                    |    Objekty blob Azure                  |    Objekty blob Azure<br>Soubory Azure                    |    Objekty blob Azure<br>Soubory Azure            |    Objekty blob Azure<br>Soubory Azure          |
 |    **Formulářový faktor**                  |    5 SSD na objednávku             |    1 X 50-kg zařízení velikosti stolního počítače na jednu objednávku    |    1 X ~ 500-kg velké zařízení na jednu objednávku    |    Až 10 HDD/SSD na objednávku        |
 |    **Čas prvotního nastavení**               |    Nízká <br>(15 minut)            |    Nízká až střední <br> (<30 minut)               |    Pokročilé<br>(1-2 hodin)               |    Střední až obtížné<br>variabilní |
-|    **Odesílání dat do Azure**           |    Ano                          |    Ano                                           |    Ano                                   |    Ano                                 |
-|    **Export dat z Azure**           |    Ne                           |    Ne                                            |    Ne                                    |    Ano                                 |
+|    **Odesílání dat do Azure**           |    Yes                          |    Yes                                           |    Yes                                   |    Yes                                 |
+|    **Export dat z Azure**           |    No                           |    No                                            |    No                                    |    Yes                                 |
 |    **Šifrování**                   |    AES 128-bit                  |    AES 256-bit                                   |    AES 256-bit                           |    AES 128-bit                         |
 |    **Hardware**                     |     Dodán Microsoft          |    Dodán Microsoft                            |    Dodán Microsoft                    |    Dodán zákazník                   |
 |    **Síťové rozhraní**            |    USB 3.1/SATA                 |    RJ 45, SFP +                                   |    RJ45, QSFP +                           |    SATA II/SATA III                    |
@@ -88,8 +88,8 @@ Pokud používáte online přenos dat, použijte tabulku v následující část
 |    **Datový typ**              |    Objekty blob Azure, soubory Azure, tabulky Azure    |    Objekty blob Azure, soubory Azure, tabulky Azure    |    Objekty blob Azure, soubory Azure                           |   Podporuje 70 + datových konektorů pro úložiště a formáty dat    |
 |    **Formulářový faktor**            |    Nástroje příkazového řádku                        |    Programové rozhraní                    |    Microsoft poskytuje virtuální <br>nebo fyzické zařízení     |    Služba v Azure Portal                                            |
 |    **Počáteční nastavení jednorázového času** |    Snadné               |    Pokročilé                       |    Snadné (<30 minut) až střední (1-2 hodin)            |    Množství                                                          |
-|    **Předběžné zpracování dat**          |    Ne                                        |    Ne                                        |    Ano (s využitím hraničních výpočtů)                               |    Ano                                                                |
-|    **Přenos z jiných cloudů**   |    Ne                                        |    Ne                                        |    Ne                                                    |    Ano                                                                |
+|    **Předběžné zpracování dat**          |    No                                        |    No                                        |    Ano (s využitím hraničních výpočtů)                               |    Yes                                                                |
+|    **Přenos z jiných cloudů**   |    No                                        |    No                                        |    No                                                    |    Yes                                                                |
 |    **Typ uživatele**                    |    IT specialisté a vývoj                                       |    Vývoj                                       |    IT profesionál                                                |    IT profesionál                                                             |
 |    **Ceny**                      |    Bezplatné použití poplatků za výstup dat         |    Bezplatné použití poplatků za výstup dat         |    [Ceny](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [Ceny](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |
 

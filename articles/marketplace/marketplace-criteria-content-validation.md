@@ -8,11 +8,11 @@ author: trkeya
 ms.author: trkeya
 ms.date: 09/04/2020
 ms.openlocfilehash: 3b2fc1ea37b09f6e4813d2a3c2333bc6d744293d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491490"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006502"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Pokyny pro výpis Azure Marketplace
 
@@ -40,7 +40,7 @@ Tento článek popisuje požadavky a pokyny pro výpis nových nabídek a služe
 
 | Ne. | Výpis elementu | Základní požadavek | Optimální požadavek | 
 |:--- |:--- |:--- |:--- |
-|  | Seznam stavů (možnost výpis) | Odkaz musí vést k *vyzkoušení* zkušeností zákazníků. | K dispozici jsou také další možnosti výpisu (například *koupit nyní* ). | 
+|  | Seznam stavů (možnost výpis) | Odkaz musí vést k *vyzkoušení* zkušeností zákazníků. | K dispozici jsou také další možnosti výpisu (například *koupit nyní*). | 
 |||
 
 ## <a name="saas-application-requirements"></a>Požadavky aplikace SaaS
@@ -48,7 +48,7 @@ Tento článek popisuje požadavky a pokyny pro výpis nových nabídek a služe
 | Ne. | Výpis elementu | Základní požadavek | Optimální požadavek | 
 |:--- |:--- |:--- |:--- |
 | 1 | Název nabídky |<ul><li>Musí obsahovat jenom malá písmena, alfanumerické znaky, pomlčky nebo podtržítka. Po publikování se název nedá změnit.</li><li>Popisuje nabídku řešení.</li><li>Odpovídá online podpoře řešení na webu partnera. | Obsahuje hledaná klíčová slova. |
-| 2 | Technické informace: Konfigurace |<ul><li>V případě aplikací SaaS (software jako služba) vyberte, jestli chcete zobrazit jenom seznam aplikací, nebo pokud chcete, aby si zákazníci mohli koupit aplikaci prostřednictvím Azure.</li><li>Vyberte požadovaný text na tlačítku pro získání nabídky: *zdarma* , *bezplatná zkušební verze* nebo *kontaktujte mě*.</li><li>V automaticky otevíraném okně vyberte jenom jeden příslušný produkt, pokud vaše aplikace využívá technologii: Cortana Intelligence, Power BI šablony řešení nebo Power Apps. |  |
+| 2 | Technické informace: Konfigurace |<ul><li>V případě aplikací SaaS (software jako služba) vyberte, jestli chcete zobrazit jenom seznam aplikací, nebo pokud chcete, aby si zákazníci mohli koupit aplikaci prostřednictvím Azure.</li><li>Vyberte požadovaný text na tlačítku pro získání nabídky: *zdarma*, *bezplatná zkušební verze* nebo *kontaktujte mě*.</li><li>V automaticky otevíraném okně vyberte jenom jeden příslušný produkt, pokud vaše aplikace využívá technologii: Cortana Intelligence, Power BI šablony řešení nebo Power Apps. |  |
 | 3 | Testovací jednotka | Vyberte *Ano* nebo *Ne*. | Zákazník může snadno pochopit, jaké jsou další kroky: <ol><li>Vyzkoušejte si zkušební verzi.</li><li>Kupte si hned.</li><li>Kontaktování e-mailem nebo telefonním číslem vám umožní zajistit pro ověření koncepce, posouzení nebo přehled.</li></ol> |
 | 4 | Podrobnosti o online obchodu: Souhrn nabídky | Zobrazí se na stránce vyhledávání vaší aplikace a může mít maximálně 100 znaků. | |
 | 5 | Podrobnosti o online obchodu: odvětví | Obory (max. 2): Vyberte odvětví, pro které je vaše aplikace nejlépe zarovnaná a platí pro. | |

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/29/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b571b2b8e0d334a02631e3f443ec54398117ee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cd1fb7f33c56aefe76bc55181ae92ca3d149754
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532665"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006952"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Cosmos DB
 
@@ -82,7 +82,7 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
 ```
 
 >[!NOTE]
-> Mějte na paměti, že pokud nemůžete provést operaci, možná nemáte správná oprávnění. Pokud chcete přístup pro zápis ke klíčům, potřebujete použít roli RBAC, jako je například Přispěvatel účtu DocumentDB nebo vytvořit vlastní roli. Další informace najdete [v Azure Cosmos DB řízení přístupu na základě rolí](../../cosmos-db/role-based-access-control.md) .
+> Mějte na paměti, že pokud nemůžete provést operaci, možná nemáte správná oprávnění. Pokud chcete přístup pro zápis ke klíčům, potřebujete použít roli Azure, jako je například Přispěvatel účtu DocumentDB nebo vytvořit vlastní roli. Další informace najdete [v v Azure Cosmos DB řízení přístupu na základě role v Azure](../../cosmos-db/role-based-access-control.md) .
 
 ## <a name="access-data"></a>Přístup k datům
 

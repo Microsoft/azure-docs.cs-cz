@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.openlocfilehash: 9d5d572c3e32e3645e65ba8d6fc28b567b3c1e9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "65827196"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005958"
 ---
 # <a name="configure-access-controls-for-the-time-series-insights-telemetry-explorer"></a>Konfigurace ovládacích prvků přístupu pro Time Series Insights Průzkumník telemetrie
 
@@ -25,13 +25,13 @@ Zásady přístupu k datům udělují oprávnění k vydávání dotazů na data
 
 Pomocí těchto kroků udělíte přístup k datům pro objekt zabezpečení uživatele:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. Najděte své Time Series Insights prostředí. Do **vyhledávacího** pole zadejte **časovou řadu** . Ve výsledcích hledání vyberte **prostředí Time Series** . 
 
 3. Ze seznamu vyberte vaše prostředí Time Series Insights.
 
-4. Vyberte **zásady přístupu k datům**a pak vybrat **+ Přidat**.
+4. Vyberte **zásady přístupu k datům** a pak vybrat **+ Přidat**.
     ![Správa zdroje Time Series Insights – prostředí](media/iot-accelerators-remote-monitoring-rbac-tsi/getstarted-grant-data-access1.png)
 
 5. Vyberte **Vybrat uživatele**.  Vyhledejte uživatelské jméno nebo e-mailovou adresu a vyhledejte uživatele, kterého chcete přidat. Kliknutím na tlačítko **Vybrat** potvrďte výběr. 

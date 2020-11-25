@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
 ms.openlocfilehash: 71ef902e909e552ade5174196f291630bc242ca0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543232"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005363"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Připojení HDInsightu k místní síti
 
@@ -44,7 +44,7 @@ V následujícím diagramu jsou zelenými řádky požadavky na prostředky, kte
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](./hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](./hdinsight-hadoop-linux-use-ssh-unix.md).
 * Pokud používáte PowerShell, budete potřebovat [AZ Module](/powershell/azure/).
 * Pokud chcete použít rozhraní příkazového řádku Azure a ještě jste ho nenainstalovali, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli).
 
@@ -63,9 +63,9 @@ Pomocí následujících dokumentů se naučíte, jak vytvořit Virtual Network 
 
 Tyto kroky používají [Azure Portal](https://portal.azure.com) k vytvoření virtuálního počítače Azure. Další způsoby vytvoření virtuálního počítače najdete v tématu [Vytvoření virtuálního počítače – Azure CLI](../virtual-machines/linux/quick-create-cli.md) a [Vytvoření virtuálního počítače – Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md).  K vytvoření virtuálního počítače se systémem Linux, který používá software DNS [BIND](https://www.isc.org/downloads/bind/) , použijte následující postup:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
   
-1. V horní nabídce vyberte **+ vytvořit prostředek** .
+1. V horní nabídce vyberte **+ vytvořit prostředek**.
 
     ![Vytvoření virtuálního počítače s Ubuntu](./media/connect-on-premises-network/azure-portal-create-resource.png)
 
@@ -77,14 +77,14 @@ Tyto kroky používají [Azure Portal](https://portal.azure.com) k vytvoření v
     | --- | --- |
     |Předplatné |Vyberte odpovídající předplatné.|
     |Skupina prostředků |Vyberte skupinu prostředků, která obsahuje dříve vytvořenou virtuální síť.|
-    |Název virtuálního počítače | Zadejte popisný název, který identifikuje tento virtuální počítač. V tomto příkladu se používá **DNSProxy** .|
-    |Region (Oblast) | Vyberte stejnou oblast jako dříve vytvořenou virtuální síť.  Ne všechny velikosti virtuálních počítačů jsou dostupné ve všech oblastech.  |
-    |Možnosti dostupnosti |  Vyberte požadovanou úroveň dostupnosti.  Azure nabízí řadu možností pro správu dostupnosti a odolnosti pro vaše aplikace.  Architekt svého řešení pro použití replikovaných virtuálních počítačů v Zóny dostupnosti nebo skupin dostupnosti k ochraně vašich aplikací a dat před výpadky datacentra a událostmi údržby. V tomto příkladu se **nepožaduje žádná redundance infrastruktury** . |
-    |Image | Ponechte na **Ubuntu serveru 18,04 LTS** . |
-    |Typ ověřování | __Heslo__ nebo __veřejný klíč SSH__ : metoda ověřování pro účet SSH. Doporučujeme používat veřejné klíče, protože jsou bezpečnější. V tomto příkladu se používá **heslo** .  Další informace najdete v dokumentu [Vytvoření a použití klíčů ssh pro virtuální počítače se systémem Linux](../virtual-machines/linux/mac-create-ssh-keys.md) .|
-    |Uživatelské jméno |Zadejte uživatelské jméno správce pro virtuální počítač.  V tomto příkladu se používá **sshuser** .|
-    |Heslo nebo veřejný klíč SSH | Dostupné pole je určeno podle vaší volby pro **typ ověřování** .  Zadejte odpovídající hodnotu.|
-    |Veřejné příchozí porty|Vyberte možnost **Povolení vybraných portů** . Pak v rozevíracím seznamu **vybrat příchozí porty** vyberte **SSH (22)** .|
+    |Název virtuálního počítače | Zadejte popisný název, který identifikuje tento virtuální počítač. V tomto příkladu se používá **DNSProxy**.|
+    |Oblast | Vyberte stejnou oblast jako dříve vytvořenou virtuální síť.  Ne všechny velikosti virtuálních počítačů jsou dostupné ve všech oblastech.  |
+    |Možnosti dostupnosti |  Vyberte požadovanou úroveň dostupnosti.  Azure nabízí řadu možností pro správu dostupnosti a odolnosti pro vaše aplikace.  Architekt svého řešení pro použití replikovaných virtuálních počítačů v Zóny dostupnosti nebo skupin dostupnosti k ochraně vašich aplikací a dat před výpadky datacentra a událostmi údržby. V tomto příkladu se **nepožaduje žádná redundance infrastruktury**. |
+    |Image | Ponechte na **Ubuntu serveru 18,04 LTS**. |
+    |Typ ověřování | __Heslo__ nebo __veřejný klíč SSH__: metoda ověřování pro účet SSH. Doporučujeme používat veřejné klíče, protože jsou bezpečnější. V tomto příkladu se používá **heslo**.  Další informace najdete v dokumentu [Vytvoření a použití klíčů ssh pro virtuální počítače se systémem Linux](../virtual-machines/linux/mac-create-ssh-keys.md) .|
+    |Uživatelské jméno |Zadejte uživatelské jméno správce pro virtuální počítač.  V tomto příkladu se používá **sshuser**.|
+    |Heslo nebo veřejný klíč SSH | Dostupné pole je určeno podle vaší volby pro **typ ověřování**.  Zadejte odpovídající hodnotu.|
+    |Veřejné příchozí porty|Vyberte možnost **Povolení vybraných portů**. Pak v rozevíracím seznamu **vybrat příchozí porty** vyberte **SSH (22)** .|
 
     ![Základní konfigurace virtuálního počítače](./media/connect-on-premises-network/virtual-machine-basics.png)
 
@@ -100,7 +100,7 @@ Tyto kroky používají [Azure Portal](https://portal.azure.com) k vytvoření v
 
     ![Nastavení virtuální sítě HDInsight](./media/connect-on-premises-network/virtual-network-settings.png)
 
-    Ponechte výchozí hodnoty na další položky a potom vyberte **zkontrolovat + vytvořit** .
+    Ponechte výchozí hodnoty na další položky a potom vyberte **zkontrolovat + vytvořit**.
 
 5. Na kartě **Revize + vytvořit** vyberte **vytvořit** a vytvořte tak virtuální počítač.
 
@@ -108,7 +108,7 @@ Tyto kroky používají [Azure Portal](https://portal.azure.com) k vytvoření v
 
 Po vytvoření virtuálního počítače se zobrazí oznámení o **úspěšném nasazení** s tlačítkem **Přejít na prostředek** .  Vyberte **Přejít k prostředku** a přejít na nový virtuální počítač.  Ve výchozím zobrazení nového virtuálního počítače pomocí těchto kroků Identifikujte přidružené IP adresy:
 
-1. V **Nastavení** vyberte **vlastnosti** .
+1. V **Nastavení** vyberte **vlastnosti**.
 
 2. Poznamenejte si hodnoty pro **veřejnou IP adresu/název DNS popisek** a **privátní IP adresu** pro pozdější použití.
 
@@ -168,7 +168,7 @@ Po vytvoření virtuálního počítače se zobrazí oznámení o **úspěšném
     sudo nano /etc/bind/named.conf.options
     ```
 
-    Pokud chcete soubor uložit, použijte __CTRL + X__ , __Y__ a pak __Zadejte__ .
+    Pokud chcete soubor uložit, použijte __CTRL + X__, __Y__ a pak __Zadejte__.
 
 4. Z relace SSH použijte následující příkaz:
 
@@ -203,7 +203,7 @@ Po vytvoření virtuálního počítače se zobrazí oznámení o **úspěšném
     sudo nano /etc/bind/named.conf.local
     ```
 
-    Pokud chcete soubor uložit, použijte __CTRL + X__ , __Y__ a pak __Zadejte__ .
+    Pokud chcete soubor uložit, použijte __CTRL + X__, __Y__ a pak __Zadejte__.
 
 6. K zahájení vazby použijte následující příkaz:
 
@@ -238,15 +238,15 @@ Po vytvoření virtuálního počítače se zobrazí oznámení o **úspěšném
 
 Pokud chcete virtuální síť nakonfigurovat tak, aby místo rekurzivního překladače Azure používala vlastní server DNS, použijte následující postup [Azure Portal](https://portal.azure.com):
 
-1. V nabídce vlevo přejděte na **všechny služby**  >  **sítě**  >  **virtuální sítě** .
+1. V nabídce vlevo přejděte na **všechny služby**  >  **sítě**  >  **virtuální sítě**.
 
 2. Vyberte ze seznamu svou virtuální síť, čímž otevřete výchozí zobrazení vaší virtuální sítě.  
 
-3. Ve výchozím zobrazení v části **Nastavení** vyberte **servery DNS** .  
+3. Ve výchozím zobrazení v části **Nastavení** vyberte **servery DNS**.  
 
 4. Vyberte __vlastní__ a zadejte **privátní IP adresu** vlastního serveru DNS.
 
-5. Vyberte __Uložit__ .  <br />  
+5. Vyberte __Uložit__.  <br />  
 
     ![Nastavení vlastního serveru DNS pro síť](./media/connect-on-premises-network/configure-custom-dns.png)
 
@@ -254,7 +254,7 @@ Pokud chcete virtuální síť nakonfigurovat tak, aby místo rekurzivního pře
 
 V předchozí části jste nakonfigurovali vlastní server DNS pro přeposílání požadavků na místní server DNS. V dalším kroku musíte nakonfigurovat místní server DNS tak, aby předal požadavky na vlastní server DNS.
 
-Konkrétní postup konfigurace serveru DNS najdete v dokumentaci k vašemu softwaru DNS Server. Vyhledejte kroky, jak nakonfigurovat __podmíněný předávací server__ .
+Konkrétní postup konfigurace serveru DNS najdete v dokumentaci k vašemu softwaru DNS Server. Vyhledejte kroky, jak nakonfigurovat __podmíněný předávací server__.
 
 Podmíněný posun pouze přepošle požadavky na konkrétní příponu DNS. V takovém případě musíte nakonfigurovat službu pro směrování pro příponu DNS virtuální sítě. Žádosti o tuto příponu by se měly přesměrovat na IP adresu vlastního serveru DNS. 
 
@@ -288,8 +288,8 @@ K řízení síťového provozu můžete použít skupiny zabezpečení sítě (
 
 2. Pro IP adresy identifikované v kroku 1 povolte příchozí provoz z těchto IP adres.
 
-   * Pokud používáte __NSG__ : Povolit __příchozí__ provoz na portu __443__ pro IP adresy.
-   * Pokud používáte __udr__ : nastavte typ dalšího segmentu __Směrování__ trasy na __Internet__ pro IP adresy.
+   * Pokud používáte __NSG__: Povolit __příchozí__ provoz na portu __443__ pro IP adresy.
+   * Pokud používáte __udr__: nastavte typ dalšího segmentu __Směrování__ trasy na __Internet__ pro IP adresy.
 
 Příklad použití Azure PowerShell nebo rozhraní příkazového řádku Azure ke tvorbě skupin zabezpečení sítě najdete v dokumentu věnovaném [Rozšířené službě HDInsight s Azure Virtual Networks](hdinsight-create-virtual-network.md#hdinsight-nsg) .
 

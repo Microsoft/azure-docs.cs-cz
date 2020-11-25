@@ -11,11 +11,11 @@ ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
 ms.openlocfilehash: d39e00a80ab167936a749c73867b4343e6ed9d76
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358809"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006434"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Kurz: Konfigurace zpětného zápisu atributu z Azure AD do SAP SuccessFactors
 Cílem tohoto kurzu je Ukázat kroky pro atributy zpětného zápisu z Azure AD do SAP SuccessFactors Employee Central. 
@@ -71,7 +71,7 @@ Spolupracujte s týmem správce SuccessFactors nebo partnerem pro implementaci a
    > [!div class="mx-imgBorder"]
    > ![Podrobnosti role oprávnění](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
 
-1. V části nastavení oprávnění klikněte na **oprávnění...** , přejděte dolů na seznam oprávnění a klikněte na **spravovat nástroje pro integraci**. Zaškrtněte políčko, pokud **chcete, aby správce mohl přistupovat k rozhraní OData API prostřednictvím základního ověřování**.
+1. V části nastavení oprávnění klikněte na **oprávnění...**, přejděte dolů na seznam oprávnění a klikněte na **spravovat nástroje pro integraci**. Zaškrtněte políčko, pokud **chcete, aby správce mohl přistupovat k rozhraní OData API prostřednictvím základního ověřování**.
 
    > [!div class="mx-imgBorder"]
    > ![Správa integračních nástrojů](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
@@ -111,7 +111,7 @@ Spolupracujte s týmem správce SuccessFactors nebo partnerem pro implementaci a
 
 1. V centru pro správu SuccessFactors vyhledejte *možnosti spravovat role oprávnění* a pak ve výsledcích hledání vyberte **Spravovat role oprávnění** .
 1. V **seznamu role oprávnění** vyberte roli, kterou jste vytvořili pro oprávnění používání rozhraní API.
-1. V části **udělení této role na...** , klikněte na tlačítko **Přidat..** ..
+1. V části **udělení této role na...**, klikněte na tlačítko **Přidat..** ..
 1. V rozevírací nabídce vyberte **skupinu oprávnění** a pak kliknutím na **Vybrat...** otevřete okno skupiny, kde můžete hledat a vybrat skupinu vytvořenou výše. 
 
    > [!div class="mx-imgBorder"]
@@ -183,7 +183,7 @@ V SAP SuccessFactors je *rozevírací seznam* konfigurovatelnou sadou možností
    > ![Získat kód typu e-mailu](./media/sap-successfactors-inbound-provisioning/get-email-type-code.png)
 
    > [!NOTE]
-   > Při kopírování na hodnotu vyřaďte znak čárky. Například pokud je hodnota **ID možnosti** *8 448* , nastavte *emailType* ve službě Azure AD na konstantní číslo *8448* (bez znaku čárky). 
+   > Při kopírování na hodnotu vyřaďte znak čárky. Například pokud je hodnota **ID možnosti** *8 448*, nastavte *emailType* ve službě Azure AD na konstantní číslo *8448* (bez znaku čárky). 
 
 ### <a name="retrieve-constant-value-for-phonetype"></a>Načíst konstantní hodnotu pro phoneType
 
@@ -214,7 +214,7 @@ V SAP SuccessFactors je *rozevírací seznam* konfigurovatelnou sadou možností
    > ![Získat kód mobilního telefonu](./media/sap-successfactors-inbound-provisioning/get-cell-phone-code.png)
 
    > [!NOTE]
-   > Při kopírování na hodnotu vyřaďte znak čárky. Například pokud je hodnota **ID možnosti** *10 606* , nastavte *cellPhoneType* ve službě Azure AD na konstantní číslo *10606* (bez znaku čárky). 
+   > Při kopírování na hodnotu vyřaďte znak čárky. Například pokud je hodnota **ID možnosti** *10 606*, nastavte *cellPhoneType* ve službě Azure AD na konstantní číslo *10606* (bez znaku čárky). 
 
 
 ## <a name="configuring-successfactors-writeback-app"></a>Konfigurace aplikace pro zpětný zápis SuccessFactors
@@ -308,7 +308,7 @@ V této části nakonfigurujete, jak budou data uživatelů z SuccessFactors do 
    > Pokud se v Azure Portal nezobrazuje možnost **Upravit seznam atributů pro SuccessFactors** , použijte adresu URL *https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true* pro přístup ke stránce. 
 
 1. Sloupec **výrazu rozhraní API** v tomto zobrazení zobrazuje výrazy cesty JSON používané konektorem. 
-1. Aktualizujte výrazy cesty JSON pro telefon do zaměstnání a mobilní telefon, aby se použila hodnota ID ( *businessPhoneType* a *cellPhoneType* ) odpovídající vašemu prostředí. 
+1. Aktualizujte výrazy cesty JSON pro telefon do zaměstnání a mobilní telefon, aby se použila hodnota ID (*businessPhoneType* a *cellPhoneType*) odpovídající vašemu prostředí. 
 
     >[!div class="mx-imgBorder"]
     >![Změna cesty JSON pro telefon](./media/sap-successfactors-inbound-provisioning/phone-json-path-change.png)
@@ -325,8 +325,8 @@ Po dokončení konfigurace aplikace SuccessFactors Provisioning můžete službu
 1. Na kartě **zřizování** nastavte **stav zřizování** na **zapnuto**.
 
 1. Vyberte **obor**. Můžete vybrat jednu z následujících možností: 
-   * **Synchronizovat všechny uživatele a skupiny** : tuto možnost vyberte, pokud chcete zapisovat zpětně mapované atributy všech uživatelů ze služby Azure AD do SuccessFactors, a to v souladu s pravidly oboru definovanými v části **mapování**  ->  **oboru zdrojového objektu**. 
-   * **Synchronizovat pouze přiřazené uživatele a skupiny** : tuto možnost vyberte, pokud chcete do této aplikace v nabídce **aplikace**  ->  **Spravovat**  ->  **uživatele a skupiny** zapisovat zpět mapované atributy pouze uživatele, které jste přiřadili k této aplikaci. Tito uživatelé také podléhají pravidlům oboru definovaným v oboru **mapování**  ->  **zdrojového objektu**.
+   * **Synchronizovat všechny uživatele a skupiny**: tuto možnost vyberte, pokud chcete zapisovat zpětně mapované atributy všech uživatelů ze služby Azure AD do SuccessFactors, a to v souladu s pravidly oboru definovanými v části **mapování**  ->  **oboru zdrojového objektu**. 
+   * **Synchronizovat pouze přiřazené uživatele a skupiny**: tuto možnost vyberte, pokud chcete do této aplikace v nabídce **aplikace**  ->  **Spravovat**  ->  **uživatele a skupiny** zapisovat zpět mapované atributy pouze uživatele, které jste přiřadili k této aplikaci. Tito uživatelé také podléhají pravidlům oboru definovaným v oboru **mapování**  ->  **zdrojového objektu**.
 
    > [!div class="mx-imgBorder"]
    > ![Vybrat obor zpětného zápisu](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)

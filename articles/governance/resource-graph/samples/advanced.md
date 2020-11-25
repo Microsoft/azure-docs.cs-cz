@@ -4,11 +4,11 @@ description: Pomocí Azure Resource graphu můžete spouštět některé rozší
 ms.date: 10/14/2020
 ms.topic: sample
 ms.openlocfilehash: dff4b06cc5cf4385820c7f6251efaae792d9c22d
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057140"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005397"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Ukázky dotazů v rozšířeném grafu prostředků
 
@@ -255,7 +255,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.documentdb/databasea
 
 ## <a name="key-vaults-with-subscription-name"></a><a name="join"></a>Trezory klíčů s názvem předplatného
 
-Následující dotaz ukazuje komplexní použití `join` s **druhem** jako _LeftOuter_. Dotaz omezí propojenou tabulku na prostředky předplatného a s tím, že `project` zahrne pouze původní pole _SubscriptionId_ a pole _název_ bylo přejmenováno na _subname_. Přejmenování pole zabraňuje `join` jeho přidání jako _název1_ , protože pole již v _prostředcích_existuje. Původní tabulka je filtrována pomocí `where` a následující `project` obsahuje sloupce z obou tabulek. Výsledkem dotazu jsou všechny trezory klíčů, které zobrazují typ, název trezoru klíčů a název předplatného, které je v.
+Následující dotaz ukazuje komplexní použití `join` s **druhem** jako _LeftOuter_. Dotaz omezí propojenou tabulku na prostředky předplatného a s tím, že `project` zahrne pouze původní pole _SubscriptionId_ a pole _název_ bylo přejmenováno na _subname_. Přejmenování pole zabraňuje `join` jeho přidání jako _název1_ , protože pole již v _prostředcích_ existuje. Původní tabulka je filtrována pomocí `where` a následující `project` obsahuje sloupce z obou tabulek. Výsledkem dotazu jsou všechny trezory klíčů, které zobrazují typ, název trezoru klíčů a název předplatného, které je v.
 
 ```kusto
 Resources
@@ -378,7 +378,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 ## <a name="list-all-extensions-installed-on-a-virtual-machine"></a><a name="join-vmextension"></a>Vypíše všechna rozšíření nainstalovaná na virtuálním počítači.
 
 Nejprve tento dotaz používá `extend` typ prostředku virtuální počítače k získání ID na velká písmena ( `toupper()` ) ID, získání názvu a typu operačního systému a získání velikosti virtuálního počítače.
-Získání ID prostředku v horním případě je dobrým způsobem, jak připravit připojení k jiné vlastnosti. Pak dotaz používá `join` s **druhem** jako _LeftOuter_ k získání rozšíření virtuálních počítačů porovnáním horního použitau `substring` ID rozšíření. Část ID před "/Extensions/ \<ExtensionName\> " má stejný formát jako ID virtuálních počítačů, takže tuto vlastnost používáme pro `join` . `summarize` se pak používá s `make_list` názvem rozšíření virtuálního počítače pro kombinování názvu každého rozšíření, kde _ID_, _OSName_, _OSType_a _VMSize_ jsou stejné jako jedna vlastnost Array. Nakonec jsme `order by` snížili použita _OSName_ na **ASC**. Ve výchozím nastavení `order by` je sestupně.
+Získání ID prostředku v horním případě je dobrým způsobem, jak připravit připojení k jiné vlastnosti. Pak dotaz používá `join` s **druhem** jako _LeftOuter_ k získání rozšíření virtuálních počítačů porovnáním horního použitau `substring` ID rozšíření. Část ID před "/Extensions/ \<ExtensionName\> " má stejný formát jako ID virtuálních počítačů, takže tuto vlastnost používáme pro `join` . `summarize` se pak používá s `make_list` názvem rozšíření virtuálního počítače pro kombinování názvu každého rozšíření, kde _ID_, _OSName_, _OSType_ a _VMSize_ jsou stejné jako jedna vlastnost Array. Nakonec jsme `order by` snížili použita _OSName_ na **ASC**. Ve výchozím nastavení `order by` je sestupně.
 
 ```kusto
 Resources

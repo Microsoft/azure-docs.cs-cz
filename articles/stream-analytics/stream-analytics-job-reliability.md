@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: 889e298f64689748340713de6318f8ffcd181001
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123842"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006451"
 ---
 # <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a>Záruka Stream Analytics spolehlivost úloh během aktualizací služby
 
@@ -23,7 +23,7 @@ Součástí plně spravované služby je schopnost zavádět nové funkce a vyle
 
 Stream Analytics garantuje, že se úlohy v spárovaných oblastech aktualizují v samostatných dávkách. Výsledkem je dostatečné časové rozmezí mezi aktualizacemi k identifikaci potenciálních problémů a jejich napravení.
 
-_S výjimkou střed Indie_ (jejichž spárovaná oblast, Jižní Indie, nemá Stream Analytics přítomnost), nasazení aktualizace Stream Analytics se v sadě spárovaných oblastí neprojeví současně. Nasazení ve více oblastech **ve stejné skupině** se může vyskytovat **ve stejnou dobu** .
+_S výjimkou střed Indie_ (jejichž spárovaná oblast, Jižní Indie, nemá Stream Analytics přítomnost), nasazení aktualizace Stream Analytics se v sadě spárovaných oblastí neprojeví současně. Nasazení ve více oblastech **ve stejné skupině** se může vyskytovat **ve stejnou dobu**.
 
 Článek o **[dostupnosti a spárovaných oblastech](../best-practices-availability-paired-regions.md)** obsahuje nejaktuálnější informace o párování oblastí.
 

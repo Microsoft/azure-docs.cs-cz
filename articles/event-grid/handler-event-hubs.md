@@ -3,12 +3,12 @@ title: Centrum událostí jako obslužná rutina události pro Azure Event Grid 
 description: Popisuje, jak můžete používat centra událostí jako obslužné rutiny událostí pro Azure Event Grid události.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 4fb8027290831dbfed4b6d202d61d2d689274828
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 446fef6df65f59206519e282c74d59c2ed1bfa9d
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629620"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "96005621"
 ---
 # <a name="event-hub-as-an-event-handler-for-azure-event-grid-events"></a>Centrum událostí jako obslužná rutina události pro Azure Event Grid události
 Obslužná rutina události je místo, kam se událost posílá. Obslužná rutina provede akci zpracování události. Několik služeb Azure se automaticky nakonfiguruje tak, aby zpracovávala události a **Azure Event Hubs** je jednou z nich. 
@@ -23,17 +23,8 @@ Podívejte se na následující příklady:
 | [Rychlý Start: směrování vlastních událostí do Azure Event Hubs pomocí Azure CLI](custom-event-to-eventhub.md) | Odesílá vlastní událost do centra událostí pro zpracování aplikací. |
 | [Správce prostředků Šablona: Vytvoření vlastního tématu Event Grid a odeslání událostí do centra událostí](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Správce prostředků šablonu, která vytvoří odběr pro vlastní téma. Odesílá události do Azure Event Hubs. |
 
-## <a name="message-properties"></a>Vlastnosti zprávy
-Použijete-li **centrum událostí** jako obslužnou rutinu události pro události z Event Grid, jsou vlastnosti, které jste obdrželi v záhlavích zpráv: 
+[!INCLUDE [event-grid-message-headers](../../includes/event-grid-message-headers.md)]
 
-| Název vlastnosti | Description |
-| ------------- | ----------- | 
-| AEG-Subscription-Name | Název odběru události |
-| AEG – počet doručení | <p>Počet pokusů o provedení události.</p> <p>Příklad: "1"</p> |
-| AEG-typ události | <p>Typ události</p><p> Příklad: Microsoft. Storage. blobCreated</p> | 
-| AEG – metadata – verze | <p>Verze události v metadatech</p> <p>Příklad: "1".</p><p> Pro **Event Grid schéma událostí**Tato vlastnost představuje verzi metadat a pro **schéma cloudové události**představuje **verzi specifikace**. </p>|
-| AEG-data-verze | <p>Verze dat události</p><p>Příklad: "1".</p><p>Pro **Event Grid schéma událostí**Tato vlastnost představuje verzi dat a pro **schéma cloudových událostí**se nepoužije.</p> |
-| AEG-Output-Event-ID | ID události Event Grid |
 
 ## <a name="rest-examples-for-put"></a>Příklady REST (pro PUT)
 

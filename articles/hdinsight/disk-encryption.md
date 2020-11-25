@@ -9,11 +9,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
 ms.openlocfilehash: a9a90fbb2eedd6db2873d4ac2a5fea94c05c7eed
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844740"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005652"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Dvojité šifrování Azure HDInsight pro neaktivní neaktivní data
 
@@ -36,7 +36,7 @@ Tyto typy jsou shrnuty v následující tabulce.
 |Typ clusteru |Disk s operačním systémem (spravovaný disk) |Datový disk (spravovaný disk) |Dočasný datový disk (místní SSD) |
 |---|---|---|---|
 |Kafka, HBA s akcelerovanými zápisy|LAYER1: [šifrování SSE](../virtual-machines/managed-disks-overview.md#encryption) ve výchozím nastavení|LAYER1: [šifrování SSE](../virtual-machines/managed-disks-overview.md#encryption) ve výchozím nastavení layer2: volitelné šifrování v klidovém stavu s VYUŽITÍm CMK|LAYER1: volitelné šifrování u hostitele pomocí klíče PMK, layer2: volitelné šifrování v klidovém formátu pomocí CMK|
-|Všechny ostatní clustery (Spark, Interactive, Hadoop, HBA bez urychleného zápisu)|LAYER1: [šifrování SSE](../virtual-machines/managed-disks-overview.md#encryption) ve výchozím nastavení|–|LAYER1: volitelné šifrování u hostitele pomocí klíče PMK, layer2: volitelné šifrování v klidovém formátu pomocí CMK|
+|Všechny ostatní clustery (Spark, Interactive, Hadoop, HBA bez urychleného zápisu)|LAYER1: [šifrování SSE](../virtual-machines/managed-disks-overview.md#encryption) ve výchozím nastavení|Není k dispozici|LAYER1: volitelné šifrování u hostitele pomocí klíče PMK, layer2: volitelné šifrování v klidovém formátu pomocí CMK|
 
 ## <a name="encryption-at-rest-using-customer-managed-keys"></a>Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem
 

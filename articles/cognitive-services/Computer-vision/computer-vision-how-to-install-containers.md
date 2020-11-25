@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 10/22/2020
+ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: místní, OCR, Docker, kontejner
-ms.openlocfilehash: 33fc13722a4d0f26c71aa85809a605188b610014
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b89d02107365872471f1dd5a7df07902b08f2031
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539006"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96006898"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Nainstalovat čtení kontejnerů Docker pro optické rozpoznávání znaků (Preview) 
 
@@ -27,12 +27,12 @@ Kontejnery umožňují spouštět rozhraní API Počítačového zpracování ob
 
 Kontejner OCR *pro čtení* umožňuje extrahovat vytištěný a rukou psaný text z obrázků a dokumentů s podporou formátů souborů JPEG, PNG, BMP, PDF a TIFF. Další informace najdete v [dokumentaci k rozhraní API pro čtení](concept-recognizing-text.md#read-api).
 
-## <a name="read-31-container"></a>Přečíst kontejner 3,1
+## <a name="read-32-preview-container"></a>Přečíst kontejner 3,2 – Preview
 
 > [!NOTE]
 > Kontejner Read 3,0-Preview se už nepoužívá. 
 
-Kontejner Read 3,1-Preview poskytuje:
+Kontejner Read 3,2-Preview poskytuje:
 * Nové modely pro vyšší přesnost.
 * Podpora více jazyků v rámci jednoho dokumentu
 * Podpora: Holandština, angličtina, francouzština, němčina, italština, portugalština a španělština.
@@ -54,9 +54,9 @@ Před použitím kontejnerů musíte splnit následující předpoklady:
 |--|--|
 |Docker Engine| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows** musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
 |Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů.| 
-|Prostředek Počítačové zpracování obrazu |Aby bylo možné kontejner používat, musíte mít:<br><br>Prostředek Azure **počítačové zpracování obrazu** a přidružený klíč rozhraní API identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách přehledu a klíčů pro daný prostředek a jsou požadovány ke spuštění kontejneru.<br><br>**{API_KEY}** : jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}** : koncový bod uvedený na stránce **Přehled**|
+|Prostředek Počítačové zpracování obrazu |Aby bylo možné kontejner používat, musíte mít:<br><br>Prostředek Azure **počítačové zpracování obrazu** a přidružený klíč rozhraní API identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách přehledu a klíčů pro daný prostředek a jsou požadovány ke spuštění kontejneru.<br><br>**{API_KEY}**: jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}**: koncový bod uvedený na stránce **Přehled**|
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/cognitive-services/), ještě než začnete.
 
 ## <a name="request-approval-to-run-the-container"></a>Požádat o schválení ke spuštění kontejneru
 
@@ -92,16 +92,16 @@ K dispozici jsou image kontejneru pro čtení.
 | Kontejner | Název Container Registry/úložiště/image |
 |-----------|------------|
 | Přečíst 2,0 – Preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
-| Přečíst 3,1 – Preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
+| Přečíst 3,2 – Preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1` |
 
 Pomocí [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) příkazu Stáhněte image kontejneru.
 
 ### <a name="docker-pull-for-the-read-container"></a>Pull Docker pro kontejner pro čtení
 
-# <a name="version-31-preview"></a>[Verze 3,1-Preview](#tab/version-3-1)
+# <a name="version-32-preview"></a>[Verze 3,2-Preview](#tab/version-3-2)
 
 ```bash
-docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1
 ```
 
 # <a name="version-20-preview"></a>[Verze 2,0-Preview](#tab/version-2)
@@ -127,11 +127,11 @@ Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.co
 
 [Examples](computer-vision-resource-container-config.md#example-docker-run-commands) `docker run` K dispozici jsou příklady příkazů.
 
-# <a name="version-31-preview"></a>[Verze 3,1-Preview](#tab/version-3-1)
+# <a name="version-32-preview"></a>[Verze 3,2-Preview](#tab/version-3-2)
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -169,9 +169,9 @@ Tento příkaz:
 > [!IMPORTANT]
 > `Eula` `Billing` `ApiKey` Aby bylo možné spustit kontejner, musí být zadány možnosti, a. v opačném případě se kontejner nespustí.  Další informace najdete v tématu [fakturace](#billing).
 
-Pokud potřebujete vyšší propustnost (například při zpracování vícestránkových souborů), zvažte nasazení více kontejnerů [v clusteru Kubernetes](deploy-computer-vision-on-premises.md)pomocí [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-create) a [fronty Azure](https://docs.microsoft.com/azure/storage/queues/storage-queues-introduction).
+Pokud potřebujete vyšší propustnost (například při zpracování vícestránkových souborů), zvažte nasazení více kontejnerů [v clusteru Kubernetes](deploy-computer-vision-on-premises.md)pomocí [Azure Storage](../../storage/common/storage-account-create.md) a [fronty Azure](../../storage/queues/storage-queues-introduction.md).
 
-Pokud používáte Azure Storage k ukládání imagí ke zpracování, můžete vytvořit [připojovací řetězec](https://docs.microsoft.com/azure/storage/common/storage-configure-connection-string) , který se použije při volání kontejneru.
+Pokud používáte Azure Storage k ukládání imagí ke zpracování, můžete vytvořit [připojovací řetězec](../../storage/common/storage-configure-connection-string.md) , který se použije při volání kontejneru.
 
 Postup vyhledání připojovacího řetězce:
 
@@ -189,9 +189,9 @@ Postup vyhledání připojovacího řetězce:
 
 Kontejner poskytuje rozhraní API prediktivního koncového bodu pro dotazy založené na REST. 
 
-# <a name="version-31-preview"></a>[Verze 3,1-Preview](#tab/version-3-1)
+# <a name="version-32-preview"></a>[Verze 3,2-Preview](#tab/version-3-2)
 
-Pro rozhraní API kontejneru použijte hostitele `http://localhost:5000`. Cestu Swagger můžete zobrazit v umístění: `http://localhost:5000/swagger/vision-v3.1-preview-read/swagger.json` .
+Pro rozhraní API kontejneru použijte hostitele `http://localhost:5000`. Cestu Swagger můžete zobrazit v umístění: `http://localhost:5000/swagger/vision-v3.2-preview-read/swagger.json` .
 
 # <a name="version-20-preview"></a>[Verze 2,0-Preview](#tab/version-2)
 
@@ -202,9 +202,9 @@ Pro rozhraní API kontejneru použijte hostitele `http://localhost:5000`. Cestu 
 ### <a name="asynchronous-read"></a>Asynchronní čtení
 
 
-# <a name="version-31-preview"></a>[Verze 3,1-Preview](#tab/version-3-1)
+# <a name="version-32-preview"></a>[Verze 3,2-Preview](#tab/version-3-2)
 
-Můžete použít `POST /vision/v3.1/read/analyze` `GET /vision/v3.1/read/operations/{operationId}` operace a společně k asynchronnímu čtení obrázku, podobně jako služba počítačové zpracování obrazu používá tyto odpovídající operace REST. Asynchronní metoda POST vrátí `operationId` hodnotu, která se používá jako identifikátorem požadavku HTTP GET.
+Můžete použít `POST /vision/v3.2/read/analyze` `GET /vision/v3.2/read/operations/{operationId}` operace a společně k asynchronnímu čtení obrázku, podobně jako služba počítačové zpracování obrazu používá tyto odpovídající operace REST. Asynchronní metoda POST vrátí `operationId` hodnotu, která se používá jako identifikátorem požadavku HTTP GET.
 
 
 V uživatelském rozhraní Swagger vyberte `asyncBatchAnalyze` a rozbalte ho v prohlížeči. Pak vyberte **vyzkoušet** pro výběr  >  **souboru**. V tomto příkladu použijeme následující obrázek:
@@ -216,7 +216,7 @@ Po úspěšném spuštění asynchronního příspěvku vrátí stavový kód **
 ```http
  content-length: 0
  date: Fri, 04 Sep 2020 16:23:01 GMT
- operation-location: http://localhost:5000/vision/v3.1/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
+ operation-location: http://localhost:5000/vision/v3.2/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
  server: Kestrel
 ```
 
@@ -228,7 +228,7 @@ Po úspěšném spuštění asynchronního příspěvku vrátí stavový kód **
   "createdDateTime": "2020-09-02T10:30:14Z",
   "lastUpdatedDateTime": "2020-09-02T10:30:15Z",
   "analyzeResult": {
-    "version": "3.1.0",
+    "version": "3.2.0",
     "readResults": [
       {
         "page": 1,
@@ -344,15 +344,15 @@ Po úspěšném spuštění asynchronního příspěvku vrátí stavový kód **
 ---
 
 > [!IMPORTANT]
-> Pokud nasadíte více kontejnerů pro čtení za nástroj pro vyrovnávání zatížení, například v části Docker Compose nebo Kubernetes, musíte mít externí mezipaměť. Vzhledem k tomu, že kontejner zpracování a kontejner požadavků GET nemusí být stejné, externí mezipaměť ukládá výsledky a sdílí je napříč kontejnery. Podrobnosti o nastavení mezipaměti najdete v tématu [konfigurace kontejnerů docker počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-resource-container-config).
+> Pokud nasadíte více kontejnerů pro čtení za nástroj pro vyrovnávání zatížení, například v části Docker Compose nebo Kubernetes, musíte mít externí mezipaměť. Vzhledem k tomu, že kontejner zpracování a kontejner požadavků GET nemusí být stejné, externí mezipaměť ukládá výsledky a sdílí je napříč kontejnery. Podrobnosti o nastavení mezipaměti najdete v tématu [konfigurace kontejnerů docker počítačové zpracování obrazu](./computer-vision-resource-container-config.md).
 
 ### <a name="synchronous-read"></a>Synchronní čtení
 
 K synchronnímu čtení obrázku můžete použít následující operaci. 
 
-# <a name="version-31-preview"></a>[Verze 3,1-Preview](#tab/version-3-1)
+# <a name="version-32-preview"></a>[Verze 3,2-Preview](#tab/version-3-2)
 
-`POST /vision/v3.1/read/syncAnalyze` 
+`POST /vision/v3.2/read/syncAnalyze` 
 
 # <a name="version-20-preview"></a>[Verze 2,0-Preview](#tab/version-2)
 
@@ -394,7 +394,7 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů Počítačové zpracování obrazu. Souhrn:
 

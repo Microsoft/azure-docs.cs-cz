@@ -4,11 +4,11 @@ description: Přečtěte si o mechanismu Aktualizace existujícího přiřazení
 ms.date: 08/27/2020
 ms.topic: how-to
 ms.openlocfilehash: ddaac8110885d817bc96745965c1af7e522b1919
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651368"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007184"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Jak aktualizovat existující přiřazení podrobného plánu
 
@@ -28,15 +28,15 @@ Při přiřazení podrobného plánu se přiřazení dá aktualizovat. Existuje 
 
    :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="Snímek stránky přiřazení podrobného plánu se zvýrazněným tlačítkem aktualizovat přiřazení" border="false":::
 
-1. Stránka **přiřadit podrobný plán** načte předem vyplněnou všechny hodnoty z původního přiřazení. Můžete změnit **verzi definice**podrobného plánu, stav **přiřazení zámku** a všechny dynamické parametry, které existují v definici podrobného plánu. Po dokončení změn vyberte **přiřadit** .
+1. Stránka **přiřadit podrobný plán** načte předem vyplněnou všechny hodnoty z původního přiřazení. Můžete změnit **verzi definice** podrobného plánu, stav **přiřazení zámku** a všechny dynamické parametry, které existují v definici podrobného plánu. Po dokončení změn vyberte **přiřadit** .
 
 1. Na stránce aktualizované Podrobnosti přiřazení se podívejte na nový stav. V tomto příkladu jsme přidali **uzamykání** k přiřazení.
 
-   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="Snímek stránky přiřazení podrobného plánu se zvýrazněným tlačítkem aktualizovat přiřazení" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="Snímek obrazovky aktualizovaného přiřazení podrobného plánu ukazující změnu režimu zámku" border="false":::
 
 1. Prozkoumejte podrobnosti o dalších **operacích přiřazení** pomocí rozevíracího seznamu. Tabulka s aktualizacemi **spravovaných prostředků** podle vybrané operace přiřazení
 
-   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="Snímek stránky přiřazení podrobného plánu se zvýrazněným tlačítkem aktualizovat přiřazení" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="Snímek obrazovky aktualizovaného přiřazení podrobného plánu znázorňující operace přiřazení a jejich stav" border="false":::
 
 ## <a name="rules-for-updating-assignments"></a>Pravidla aktualizace přiřazení
 

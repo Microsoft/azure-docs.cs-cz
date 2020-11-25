@@ -10,11 +10,11 @@ ms.date: 10/05/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
 ms.openlocfilehash: 1dcca8409022ba4cf1f988b7c777e3a1fa511060
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318360"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006060"
 ---
 # <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidání vlastního panelu na řídicí panel ve webovém uživatelském rozhraní akcelerátoru řešení vzdáleného monitorování
 
@@ -50,7 +50,7 @@ Chcete-li začít, obsahuje soubor **Src/názor/komponenty, stránky/Řídicí p
 
 Zkopírujte **zdroj/návod/komponenty/stránky/Řídicí panel/panely/panely/složka examplePanel** do složky **Src/Components/Pages/paneles/panely** .
 
-Přidejte následující export do souboru **Src/názorného/Components/Pages/Dashboard ** /paneles/index.js:
+Přidejte následující export do souboru **Src/názorného/Components/Pages/Dashboard** /paneles/index.js:
 
 ```js
 export * from './examplePanel';

@@ -6,20 +6,28 @@ author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 11/22/2020
 ms.author: makromer
-ms.openlocfilehash: 3f8ac2d1434019548b01d8468015a543d89d0fba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49d11dfe3d42d99c610fae9fa64079a5fd87501f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254408"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96006779"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Zpracování řádků chyb zkracování SQL v Data Factory datových toků mapování
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Běžným scénářem v Data Factory při použití toků dat mapování je psaní transformovaných dat do databáze v Azure SQL Database. V tomto scénáři je běžný chybový stav, který je třeba zabránit proti, možné zkrátit sloupec. Pomocí těchto kroků můžete zadat protokolování sloupců, které se nevejdou do sloupce cílového řetězce, což umožňuje, aby tok dat v těchto scénářích pokračoval.
+Běžným scénářem v Data Factory při použití toků dat mapování je psaní transformovaných dat do databáze v Azure SQL Database. V tomto scénáři je běžný chybový stav, který je třeba zabránit proti, možné zkrátit sloupec.
+
+Existují dvě primární metody pro řádné zpracování chyb při zápisu dat do jímky databáze v datových tocích ADF:
+
+* Při zpracování dat databáze nastavte [zpracování řádků chyb](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#error-row-handling) jímky na "pokračovat při chybě". Toto je automatizovaná metoda catch-All, která nevyžaduje vlastní logiku v toku dat.
+* Případně postupujte podle následujících kroků a poskytněte protokolování sloupců, které se nevejdou do sloupce cílového řetězce, což umožňuje, aby tok dat pokračoval.
+
+> [!NOTE]
+> Při povolování automatického zpracování řádků chyb na rozdíl od metody uvedené níže při psaní vlastní logiky zpracování chyb dojde k malému snížení výkonu a k provedení dvou fází, které se provádí pomocí ADF, provede v rámci dvoufázové operace zachycení chyb.
 
 ## <a name="scenario"></a>Scénář
 
@@ -49,6 +57,10 @@ V tomto videu se seznámíte s příkladem logiky zpracování řádků chyb př
 4. Dokončený tok dat je uvedený níže. Nyní je možné rozdělit řádky chyb, aby se předešlo chybám při zkracování SQL a vložením těchto záznamů do souboru protokolu. Mezitím úspěšné řádky můžou pokračovat v zápisu do naší cílové databáze.
 
     ![dokončení toku dat](media/data-flow/error2.png)
+
+5. Pokud zvolíte možnost zpracování řádků chyby v transformaci jímky a nastavíte "řádky s chybou výstupu", bude ADF automaticky vygenerovat výstup souboru CSV pro data řádku spolu s chybovými zprávami ovladače. Tuto logiku nemusíte do toku dat přidat ručně pomocí této alternativní možnosti. Tato možnost má za sníženou účinnost, aby ADF mohla implementovat 2 fáze metodologie pro zachycení chyb a jejich protokolování.
+
+    ![dokončení toku dat s chybovými řádky](media/data-flow/error-row-3.png)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: e8f027ccc577df79e561fca7194c20b6cc7ef2c6
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356736"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005499"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Kurz: Konfigurace Elium pro Automatické zřizování uživatelů
 
@@ -79,7 +79,7 @@ Pokud chcete nakonfigurovat Elium pro Automatické zřizování uživatelů pomo
 
     ![Odkaz na novou aplikaci](common/add-new-app.png)
 
-1. Do vyhledávacího pole zadejte **Elium** , v seznamu výsledků vyberte **Elium** a pak vyberte **Přidat** , aby se aplikace přidala.
+1. Do vyhledávacího pole zadejte **Elium**, v seznamu výsledků vyberte **Elium** a pak vyberte **Přidat** , aby se aplikace přidala.
 
     ![Vyhledávací pole galerie](common/search-new-app.png)
 

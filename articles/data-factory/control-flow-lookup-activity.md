@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: 66a17b61fef652160dc6d4a02bf330adbf0c7362
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425698"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006814"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Aktivita vyhledávání v Azure Data Factory
 
@@ -58,8 +58,8 @@ Aktivita vyhledávání může vracet až 5000 řádků. Pokud sada výsledků o
 
 Název | Popis | Typ | Povinné?
 ---- | ----------- | ---- | --------
-integrován | Poskytuje odkaz na datovou sadu pro vyhledávání. Získejte podrobnosti z oddílu **Vlastnosti datové sady** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Ano
-source | Obsahuje vlastnosti zdroje specifické pro datovou sadu, která je stejná jako zdroj aktivity kopírování. Získejte podrobnosti z části **vlastnosti aktivity kopírování** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Ano
+integrován | Poskytuje odkaz na datovou sadu pro vyhledávání. Získejte podrobnosti z oddílu **Vlastnosti datové sady** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Yes
+source | Obsahuje vlastnosti zdroje specifické pro datovou sadu, která je stejná jako zdroj aktivity kopírování. Získejte podrobnosti z části **vlastnosti aktivity kopírování** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Yes
 firstRowOnly | Označuje, zda má být vrácen pouze první řádek nebo všechny řádky. | Logická hodnota | Ne. Výchozí formát je `true`.
 
 > [!NOTE]
@@ -85,7 +85,7 @@ Výsledek vyhledávání se vrátí v `output` části výsledku spuštění akt
     }
     ```
 
-* **Pokud `firstRowOnly` je nastaven na `false` **, výstupní formát je znázorněn v následujícím kódu. `count`Pole indikuje, kolik záznamů je vráceno. Podrobné hodnoty se zobrazí pod pevným `value` polem. V takovém případě je aktivita vyhledávání následována [aktivitou foreach](control-flow-for-each-activity.md). Předáte pole `value` aktivity ForEach `items` pomocí vzoru `@activity('MyLookupActivity').output.value` . Chcete-li získat přístup k prvkům v `value` poli, použijte následující syntaxi: `@{activity('lookupActivity').output.value[zero based index].propertyname}` . Příklad: `@{activity('lookupActivity').output.value[0].schema}`.
+* **Pokud `firstRowOnly` je nastaven na `false`**, výstupní formát je znázorněn v následujícím kódu. `count`Pole indikuje, kolik záznamů je vráceno. Podrobné hodnoty se zobrazí pod pevným `value` polem. V takovém případě je aktivita vyhledávání následována [aktivitou foreach](control-flow-for-each-activity.md). Předáte pole `value` aktivity ForEach `items` pomocí vzoru `@activity('MyLookupActivity').output.value` . Chcete-li získat přístup k prvkům v `value` poli, použijte následující syntaxi: `@{activity('lookupActivity').output.value[zero based index].propertyname}` . Příklad: `@{activity('lookupActivity').output.value[0].schema}`.
 
     ```json
     {

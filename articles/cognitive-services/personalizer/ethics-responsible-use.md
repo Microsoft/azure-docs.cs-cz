@@ -9,11 +9,11 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.openlocfilehash: 602da28f0c235fb0e797a493bc1160631c042a9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132717"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005975"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Pokyny pro odpovědnou implementaci přizpůsobeného přizpůsobování
 
@@ -152,7 +152,7 @@ Níže jsou uvedené oblasti návrhu pro zodpovědné implementace AI. Další i
 ### <a name="security-and-privacy"></a>Zabezpečení a soukromí
 *Systémy AI by měly být zabezpečené a respektovat soukromí*. Při použití přizpůsobeného přizpůsobování:
 
-* *Informujte uživatele o shromažďovaných datech a způsobu jejich používání a předem si vyžádejte svůj souhlas, a*to podle místních a průmyslových předpisů.
+* *Informujte uživatele o shromažďovaných datech a způsobu jejich používání a předem si vyžádejte svůj souhlas, a* to podle místních a průmyslových předpisů.
 * *Poskytněte ochranu osobních údajů a zabezpečte uživatelské ovládací prvky.* Pro aplikace, které ukládají osobní údaje, zvažte poskytnutí snadno najítelné tlačítko pro funkce, jako například:
    * `Show me all you know about me`
    * `Forget my last interaction`

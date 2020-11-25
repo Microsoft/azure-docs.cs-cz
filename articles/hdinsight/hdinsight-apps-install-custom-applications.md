@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 11/29/2019
 ms.openlocfilehash: d110f4ee0248b6ea069c6033dd69840eec1a18f3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741614"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007150"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Instalace vlastních aplikací Apache Hadoop ve službě Azure HDInsight
 
@@ -21,7 +21,7 @@ V tomto článku se dozvíte, jak nainstalovat aplikaci [Apache Hadoop](https://
 
 An HDInsight aplikace je aplikace, kterou uživatelé můžou instalovat v clusteru HDInsight.  Tyto aplikace mohou být vytvořeny společností Microsoft, nezávislými dodavateli softwaru (ISV) nebo vámi samotnými.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete instalovat aplikace HDInsight na stávající cluster HDInsight, musí mít cluster služby HDInsight. Chcete-li jeden vytvořit, prostudujte si část [Tvorba clusterů](hadoop/apache-hadoop-linux-tutorial-get-started.md). Aplikace HDInsight můžete také nainstalovat při vytváření clusteru HDInsight.
 
@@ -49,9 +49,9 @@ Soubory potřebné pro nasazení této aplikace (Hue):
 
 1. Zadejte název clusteru, do kterého chcete aplikaci nainstalovat. Tento cluster musí být existující cluster.
 
-1. Zaškrtněte políčko pro souhlasím **s podmínkami a ujednáními uvedenými nahoře** .
+1. Zaškrtněte políčko pro souhlasím **s podmínkami a ujednáními uvedenými nahoře**.
 
-1. Vyberte **Koupit** .
+1. Vyberte **Koupit**.
 
 Stav instalace můžete zobrazit z dlaždice připnuté k řídicímu panelu portálu a portálu oznámení (kliknutím na ikonu zvonku v horní části portálu).  Instalace aplikace trvá přibližně 10 minut.
 
@@ -75,11 +75,11 @@ Stav aplikace můžete zkontrolovat na portálu Azure a ověřit tak instalaci a
 
 Pro **odstín** můžete použít následující kroky:
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Vyberte cluster, do kterého jste nainstalovali aplikaci.
-1. V nabídce **Nastavení** vyberte **aplikace** .
+1. V nabídce **Nastavení** vyberte **aplikace**.
 1. Výběrem možnosti **odstín** ze seznamu zobrazíte vlastnosti.  
 1. Vyberte odkaz webová stránka pro ověření webu.
 
@@ -123,13 +123,13 @@ Pokud se instalace aplikace nezdařila, můžete zobrazit chybové zprávy a inf
 
 ## <a name="remove-hdinsight-applications"></a>Odstranění aplikací HDInsight
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Vyberte cluster, do kterého jste nainstalovali aplikaci.
-1. V nabídce **Nastavení** vyberte **aplikace** .
-1. Klikněte pravým tlačítkem na aplikaci, kterou chcete odebrat, a pak vyberte **Odstranit** .
-1. Akci potvrďte výběrem **Ano** .
+1. V nabídce **Nastavení** vyberte **aplikace**.
+1. Klikněte pravým tlačítkem na aplikaci, kterou chcete odebrat, a pak vyberte **Odstranit**.
+1. Akci potvrďte výběrem **Ano**.
 
 ### <a name="azure-cli"></a>Azure CLI
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: 530aa17a165092fc9219629180c81014039c3dac
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: ab0ed536bd23aaf15d85af85e4f924bc2f51f3d4
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132682"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96006623"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Odeslání dat protokolu do Azure Monitor pomocí rozhraní API kolekce dat HTTP (Public Preview)
 V tomto článku se dozvíte, jak pomocí rozhraní API kolekce dat HTTP odesílat data protokolu Azure Monitor z klienta REST API.  Popisuje, jak formátovat data shromážděná vaším skriptem nebo aplikací, jak je zahrnout do žádosti a které vyžadují autorizaci Azure Monitor.  Příklady jsou k dispozici pro PowerShell, C# a Python.
@@ -49,7 +49,7 @@ Pokud chcete použít rozhraní API kolekce dat HTTP, vytvoříte požadavek POS
 | Verze rozhraní API |Verze rozhraní API, která se má použít s touto žádostí V současné době je to 2016-04-01. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
-| Záhlaví | Popis |
+| Hlavička | Description |
 |:--- |:--- |
 | Autorizace |Podpis autorizace. Později v článku si můžete přečíst o tom, jak vytvořit hlavičku HMAC-SHA256. |
 | Log-Type |Zadejte typ záznamu dat, která se odesílají. Může obsahovat pouze písmena, číslice a podtržítka (_) a nesmí překročit 100 znaků. |
@@ -148,7 +148,7 @@ Datový typ, který Azure Monitor používá pro jednotlivé vlastnosti závisí
 * Pokud typ záznamu neexistuje, Azure Monitor vytvoří nový pomocí odvození typu JSON pro určení datového typu pro každou vlastnost nového záznamu.
 * Pokud typ záznamu existuje, Azure Monitor se pokusí vytvořit nový záznam na základě existujících vlastností. Pokud datový typ pro vlastnost v novém záznamu neodpovídá a nelze jej převést na existující typ, nebo pokud záznam obsahuje vlastnost, která neexistuje, Azure Monitor vytvoří novou vlastnost, která má příslušnou příponu.
 
-Tato položka odeslání by například vytvořila záznam se třemi vlastnostmi, **number_d**, **boolean_b**a **string_s**:
+Tato položka odeslání by například vytvořila záznam se třemi vlastnostmi, **number_d**, **boolean_b** a **string_s**:
 
 ![Vzorový záznam 1](media/data-collector-api/record-01.png)
 
@@ -160,7 +160,7 @@ Pokud pak toto další odeslání provedete, Azure Monitor by vytvořilo nové v
 
 ![Vzorový záznam 3](media/data-collector-api/record-03.png)
 
-Pokud jste potom před vytvořením typu záznamu odeslali následující položku, Azure Monitor by vytvořil záznam se třemi vlastnostmi, **number_s**, **boolean_s**a **string_s**. V této položce je každá počáteční hodnota formátována jako řetězec:
+Pokud jste potom před vytvořením typu záznamu odeslali následující položku, Azure Monitor by vytvořil záznam se třemi vlastnostmi, **number_s**, **boolean_s** a **string_s**. V této položce je každá počáteční hodnota formátována jako řetězec:
 
 ![Vzorový záznam 4](media/data-collector-api/record-04.png)
 
@@ -183,7 +183,7 @@ Stavový kód HTTP 200 znamená, že žádost byla přijata ke zpracování. To 
 
 Tato tabulka uvádí kompletní sadu stavových kódů, které může služba vracet:
 
-| Kód | Status | Kód chyby | Popis |
+| Kód | Status | Kód chyby | Description |
 |:--- |:--- |:--- |:--- |
 | 200 |OK | |Požadavek byl úspěšně přijat. |
 | 400 |Chybný požadavek |InactiveCustomer |Pracovní prostor je uzavřený. |
@@ -212,7 +212,7 @@ Pro každou ukázku proveďte tyto kroky a nastavte proměnné pro autorizační
 1. V Azure Portal Najděte pracovní prostor Log Analytics.
 2. Vyberte **Správa agentů**.
 2. Napravo od **ID pracovního prostoru**, vyberte ikonu kopírování a vložte ID jako hodnotu proměnné **ID zákazníka** .
-3. Napravo od **primárního klíče**vyberte ikonu kopírování a vložte ID jako hodnotu proměnné **sdíleného klíče** .
+3. Napravo od **primárního klíče** vyberte ikonu kopírování a vložte ID jako hodnotu proměnné **sdíleného klíče** .
 
 Alternativně můžete změnit proměnné pro typ protokolu a data JSON.
 
@@ -647,11 +647,11 @@ public class ApiExample {
 ## <a name="alternatives-and-considerations"></a>Alternativy a požadavky
 I když by rozhraní API kolekce dat mělo zahrnovat většinu vašich potřeb ke shromažďování dat volných formulářů do protokolů Azure, existují případy, kdy může být k překonání některých omezení v rozhraní API potřeba Alternativně. K dispozici jsou následující možnosti, které obsahují hlavní důležité požadavky:
 
-| Jiné | Popis | Nejlépe vhodné pro |
+| Jiné | Description | Nejlépe vhodné pro |
 |---|---|---|
 | [Vlastní události](../app/api-custom-events-metrics.md?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): ingestování na základě nativní sady SDK v Application Insights | Application Insights obvykle instrumentované prostřednictvím sady SDK v rámci aplikace, nabízí možnost odesílat vlastní data prostřednictvím vlastních událostí. | <ul><li> Data, která jsou generována v rámci aplikace, ale nejsou vyzvednuta sadou SDK prostřednictvím jednoho z výchozích datových typů (požadavky, závislosti, výjimky atd.).</li><li> Data, která jsou často korelujá s jinými daty aplikace v Application Insights </li></ul> |
 | Rozhraní API kolekce dat v protokolu Azure Monitor | Rozhraní API kolekce dat v protokolu Azure Monitor představuje zcela otevřený způsob ingestování dat. Všechna data formátovaná v objektu JSON lze odeslat zde. Po odeslání se zpracuje a v protokolech bude k dispozici, aby se mohla korelovat s ostatními daty v protokolech nebo s jinými Application Insights daty. <br/><br/> Data je poměrně snadné nahrát jako soubory do objektu blob Azure Blob, ze kterého se tyto soubory zpracují a nahrají do Log Analytics. Ukázkovou implementaci takového kanálu najdete v [tomto](./create-pipeline-datacollector-api.md) článku. | <ul><li> Data, která nejsou nutně generovaná v rámci aplikace instrumentované v rámci Application Insights.</li><li> Mezi příklady patří tabulky pro vyhledávání a fakty, referenční data, předem agregované statistiky atd. </li><li> Určeno pro data, která budou odkazována na jiné Azure Monitor data (Application Insights, jiné protokoly, Security Center, Azure Monitor pro kontejnery a virtuální počítače atd.). </li></ul> |
-| [Azure Data Explorer](/azure/data-explorer/ingest-data-overview) | Azure Průzkumník dat (ADX) je datová platforma, která je Application Insights analýzou a Azure Monitor protokoly. Nyní všeobecně dostupná ("GA"): pomocí datové platformy v její nezpracované podobě získáte kompletní flexibilitu (ale vyžaduje režii správy) přes cluster (RBAC, rychlost uchování, schéma atd.). ADX poskytuje mnoho [možností přijímání](/azure/data-explorer/ingest-data-overview#ingestion-methods) do příjmu včetně souborů [CSV, TSV a JSON](/azure/kusto/management/mappings?branch=master) . | <ul><li> Data, která se nevztahují na žádná jiná data v Application Insights nebo protokolech. </li><li> Data vyžadující pokročilé funkce příjmu nebo zpracování, které ještě nejsou dostupné v protokolech Azure Monitor. </li></ul> |
+| [Azure Data Explorer](/azure/data-explorer/ingest-data-overview) | Azure Průzkumník dat (ADX) je datová platforma, která je Application Insights analýzou a Azure Monitor protokoly. Teď všeobecně dostupná ("GA"), pomocí datové platformy v její nezpracované podobě získáte flexibilitu (ale vyžaduje režii správy) přes cluster (Kubernetes RBAC, míra uchovávání, schéma atd.). ADX poskytuje mnoho [možností přijímání](/azure/data-explorer/ingest-data-overview#ingestion-methods) do příjmu včetně souborů [CSV, TSV a JSON](/azure/kusto/management/mappings?branch=master) . | <ul><li> Data, která se nevztahují na žádná jiná data v Application Insights nebo protokolech. </li><li> Data vyžadující pokročilé funkce příjmu nebo zpracování, které ještě nejsou dostupné v protokolech Azure Monitor. </li></ul> |
 
 
 ## <a name="next-steps"></a>Další kroky

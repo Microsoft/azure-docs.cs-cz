@@ -4,11 +4,11 @@ description: Zobrazuje, které typy prostředků Azure podporují značky. Posky
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.openlocfilehash: fb81ed303cf27add3a033021f017c03f4b9e9750
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427764"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005720"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
 Tento článek popisuje, zda typ prostředku podporuje [značky](tag-resources.md). Sloupec s popisem **podporuje značky** označuje, zda typ prostředku má vlastnost pro značku. Sloupec s označením **značka v sestavě náklady** označuje, zda tento typ prostředku předá značku k sestavě nákladů. Náklady můžete zobrazit podle značek v [cost management analýza nákladů](../../cost-management-billing/costs/group-filter.md) a [fakturace Azure a data o denním využití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -847,7 +847,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ReservationTransactions | No | No |
 > | Značky | No | No |
 > | tenantů | No | No |
-> | Výrazy | No | No |
+> | Terminologie | No | No |
 > | UsageDetails (Podrobnosti o využití) | No | No |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
@@ -937,7 +937,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Dotaz | No | No |
 > | register | No | No |
 > | Reportconfigs | No | No |
-> | sestavy | No | No |
+> | Sestavy | No | No |
 > | Nastavení | No | No |
 > | showbackRules | No | No |
 > | Zobrazení | No | No |

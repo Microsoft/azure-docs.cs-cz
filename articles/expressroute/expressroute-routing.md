@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
 ms.openlocfilehash: 208fe9c5bfa20bf5b2daab296af9f955db67a33d
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204669"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007167"
 ---
 # <a name="expressroute-routing-requirements"></a>Požadavky na směrování služby ExpressRoute
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, budete muset nastavit a spravovat směrování. Někteří poskytovatelé připojení nabízejí nastavení a správu směrování jako spravovanou službu. Zeptejte se svého poskytovatele připojení, jestli tuto službu nabízí. Pokud ne, je nutné splnit následující požadavky:
@@ -82,7 +82,7 @@ Pro nastavení relací protokolu BGP musíte použít veřejné IP adresy, kter�
 ### <a name="private-peering"></a>Soukromý partnerský vztah
 Pro soukromý partnerský vztah si můžete zvolit použití veřejných nebo privátních IPv4 adres. Poskytujeme kompletní izolaci provozu, takže v případě soukromého partnerského vztahu není možné překrývání adres s jinými zákazníky. Tyto adresy nejsou inzerované na internetu. 
 
-### <a name="microsoft-peering"></a>Partnerský vztah Microsoftu
+### <a name="microsoft-peering"></a>Partnerský vztah s Microsoftem
 Cesta partnerského vztahu Microsoftu vám umožní připojit se ke cloudovým službám Microsoftu. Seznam služeb zahrnuje Microsoft 365 služby, jako je Exchange Online, SharePoint Online, Skype pro firmy a Microsoft Teams. Microsoft v partnerském vztahu Microsoftu podporuje obousměrné připojení. Přenosy směřující do cloudových služeb Microsoftu musí před vstupem do služby MSN používat platné veřejné IPv4 adresy.
 
 Ujistěte se, že vaše IP adresa a číslo AS jsou registrované na vás v jednom z následujících registrů:

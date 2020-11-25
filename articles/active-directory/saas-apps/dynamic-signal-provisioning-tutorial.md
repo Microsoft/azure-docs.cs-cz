@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 263a67fd8fba2c336d1ed4d91475386a8ae175dd
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359013"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005788"
 ---
 # <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>Kurz: Konfigurace dynamického signálu pro Automatické zřizování uživatelů
 
@@ -53,7 +53,7 @@ Než začnete konfigurovat dynamický signál pro Automatické zřizování uži
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **dynamický signál** , v panelu výsledků vyberte možnost **dynamický signál** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **dynamický signál**, v panelu výsledků vyberte možnost **dynamický signál** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Dynamický signál v seznamu výsledků](common/search-new-app.png)
 
