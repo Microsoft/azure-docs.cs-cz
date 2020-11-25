@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: apimpm
 ms.openlocfilehash: 979bdaa1e0dac4f45a321abda2a208f46983f9cd
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108129"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010227"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>Kurz: transformace a ochrana rozhraní API
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 
 :::image type="content" source="media/transform-api/api-management-management-console.png" alt-text="Zásady na portálu":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 -   Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 -   Seznamte se s [konceptem zásad ve službě Azure API Management](api-management-howto-policies.md).
@@ -58,21 +58,21 @@ Původní odpověď zobrazíte následovně:
 
 Původní odpověď by měla vypadat nějak takto:
 
-:::image type="content" source="media/transform-api/original-response.png" alt-text="Zásady na portálu":::
+:::image type="content" source="media/transform-api/original-response.png" alt-text="Původní odpověď rozhraní API":::
 
 Jak vidíte, odpověď obsahuje hlavičky **x-ASPNET-Version** a **x-Power-by** .
 
 ### <a name="set-the-transformation-policy"></a>Nastavení zásady transformací
 
-1. Vyberte **ukázková konferenční rozhraní API**pro  >  **Design**  >  **všechny operace**.
+1. Vyberte **ukázková konferenční rozhraní API** pro  >  **Design**  >  **všechny operace**.
 4. V části **odchozí zpracování** vyberte ikonu Editor kódu ( **</>** ).
 
-   :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png" alt-text="Zásady na portálu" border="false":::
+   :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png" alt-text="Přejít na odchozí zásady" border="false":::
 
-1. Umístěte kurzor do elementu ** &lt; Outbound &gt; ** a v pravém horním rohu vyberte **Zobrazit fragmenty** .
-1. V pravém okně v části **zásady transformace**vyberte možnost **nastavit hlavičku HTTP** dvakrát (pro vložení dvou fragmentů zásad).
+1. Umístěte kurzor do elementu **&lt; Outbound &gt;** a v pravém horním rohu vyberte **Zobrazit fragmenty** .
+1. V pravém okně v části **zásady transformace** vyberte možnost **nastavit hlavičku HTTP** dvakrát (pro vložení dvou fragmentů zásad).
 
-   :::image type="content" source="media/transform-api/transform-api.png" alt-text="Zásady na portálu":::
+   :::image type="content" source="media/transform-api/transform-api.png" alt-text="Nastavit zásady hlaviček protokolu HTTP":::
 
 1. Upravte **\<outbound>** kód tak, aby vypadal takto:
 
@@ -81,7 +81,7 @@ Jak vidíte, odpověď obsahuje hlavičky **x-ASPNET-Version** a **x-Power-by** 
    <set-header name="X-AspNet-Version" exists-action="delete" />
    ```
 
-   :::image type="content" source="media/transform-api/set-policy.png" alt-text="Zásady na portálu"::: (Nastavit hlavičku HTTP)
+   :::image type="content" source="media/transform-api/set-policy.png" alt-text="Set HTTP header"::: (Nastavit hlavičku HTTP)
 
 1. Vyberte **Uložit**.
 
@@ -98,15 +98,15 @@ Původní odpověď zobrazíte následovně:
 
     Jak vidíte, odpověď obsahuje původní adresy URL back-endu:
 
-    :::image type="content" source="media/transform-api/original-response2.png" alt-text="Zásady na portálu":::
+    :::image type="content" source="media/transform-api/original-response2.png" alt-text="Původní adresy URL v odpovědi":::
 
 
 ### <a name="set-the-transformation-policy"></a>Nastavení zásady transformací
 
 1.  Vyberte **ukázková konferenční rozhraní API**  >  **všechny operace**  >  **Návrh**.
 1.  V části **odchozí zpracování** vyberte ikonu Editor kódu ( **</>** ).
-1.  Umístěte kurzor do elementu ** &lt; Outbound &gt; ** a v pravém horním rohu vyberte **Zobrazit fragmenty** .
-1.  V pravém okně v části **zásady transformace**vyberte **adresy URL masky v obsahu**. 
+1.  Umístěte kurzor do elementu **&lt; Outbound &gt;** a v pravém horním rohu vyberte **Zobrazit fragmenty** .
+1.  V pravém okně v části **zásady transformace** vyberte **adresy URL masky v obsahu**. 
 1.  Vyberte **Uložit**.
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>Ochránit rozhraní API přidáním zásady omezování četnosti (omezení využití sítě)
@@ -115,11 +115,11 @@ Tato část ukazuje, jak přidat ochranu back-endovému rozhraní API nakonfigur
 
 1.  Vyberte **ukázková konferenční rozhraní API**  >  **všechny operace**  >  **Návrh**.
 1.  V části **příchozí zpracování** vyberte ikonu Editor kódu ( **</>** ).
-1.  Umístěte kurzor dovnitř elementu ** &lt; vstupu &gt; ** a vyberte **Zobrazit fragmenty kódu** v pravém horním rohu.
+1.  Umístěte kurzor dovnitř elementu **&lt; vstupu &gt;** a vyberte **Zobrazit fragmenty kódu** v pravém horním rohu.
 
-    :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png" alt-text="Zásady na portálu" border="false":::
+    :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png" alt-text="Nastavení příchozí zásady" border="false":::
 
-1.  V pravém okně v části **zásady omezení přístupu**vyberte **+ omezit četnost volání na klíč**.
+1.  V pravém okně v části **zásady omezení přístupu** vyberte **+ omezit četnost volání na klíč**.
 1.  Upravte kód **sazby-limit-by-Key** (v **\<inbound\>** elementu) na následující kód:
 
     ```
@@ -160,7 +160,7 @@ Zbývající část článku testuje transformace zásad, které jste nastavili.
 
     Jak vidíte, hlavičky byly odstraněny:
 
-    :::image type="content" source="media/transform-api/final-response1.png" alt-text="Zásady na portálu":::
+    :::image type="content" source="media/transform-api/final-response1.png" alt-text="Vynechají hlavičky odpovědí":::
 
 ### <a name="test-the-replaced-url"></a>Test nahrazené adresy URL
 
@@ -169,7 +169,7 @@ Zbývající část článku testuje transformace zásad, které jste nastavili.
 
     Jak vidíte, adresa URL byla nahrazena.
 
-    :::image type="content" source="media/transform-api/final-response2.png" alt-text="Zásady na portálu":::
+    :::image type="content" source="media/transform-api/final-response2.png" alt-text="Nahrazená adresa URL":::
 
 ### <a name="test-the-rate-limit-throttling"></a>Test omezování četnosti (omezení využití sítě)
 
@@ -178,7 +178,7 @@ Zbývající část článku testuje transformace zásad, které jste nastavili.
 
     Po odeslání žádosti třikrát obdržíte **429 příliš mnoho** odpovědí na požadavky.
 
-    :::image type="content" source="media/transform-api/test-throttling.png" alt-text="Zásady na portálu":::
+    :::image type="content" source="media/transform-api/test-throttling.png" alt-text="Příliš mnoho žádostí":::
 
 1. Počkejte 15 sekund nebo to a pak znovu vyberte **Odeslat** . Tentokrát by se už měla objevit odpověď **200 OK**.
 

@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 05/19/2020
 ms.openlocfilehash: d2780b3456a802904800b894f6849544cfee4e61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85105935"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010125"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Kurz: Konfigurace zásad Apache Kafka v HDInsight pomocí Balíček zabezpečení podniku (Preview)
 
@@ -48,7 +48,7 @@ Vytvoření zásady Ranger pro uživatele **sales_user** a **marketing_user**.
 
 1. Otevřete **Uživatelské rozhraní správce Ranger**.
 
-2. V části **Kafka**vyberte ** \<ClusterName> _kafka** . Může být uvedena jedna předem nakonfigurovaná zásada.
+2. V části **Kafka** vyberte **\<ClusterName> _kafka** . Může být uvedena jedna předem nakonfigurovaná zásada.
 
 3. Vyberte **Přidat novou zásadu** a zadejte následující hodnoty:
 
@@ -218,9 +218,9 @@ Vytvoření a použití témat v Kafka ESP pomocí konzoly:
 
 Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster Kafka, který jste vytvořili, pomocí následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Do **vyhledávacího** pole v horní části zadejte **HDInsight**.
-1. V části **služby**vyberte **clustery HDInsight** .
+1. V části **služby** vyberte **clustery HDInsight** .
 1. V seznamu clusterů HDInsight, které se zobrazí, klikněte na **...** vedle clusteru, který jste vytvořili pro účely tohoto kurzu. 
 1. Klikněte na **Odstranit**. Klikněte na **Ano**.
 

@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
 ms.openlocfilehash: ddd1a6fa2fc25add30664da5b739338e87e7e74f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547839"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010108"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Použití prázdných hraničních uzlů na Apache Hadoop clusterech v HDInsight
 
@@ -109,9 +109,9 @@ V této části použijete šablonu Správce prostředků k vytvoření clusteru
     |Skupina prostředků|Vytvořte novou skupinu prostředků použitou pro cluster.|
     |Umístění|Vyberte umístění skupiny prostředků.|
     |Název clusteru|Zadejte název nového clusteru, který chcete vytvořit.|
-    |Uživatelské jméno přihlášení clusteru|Zadejte uživatelské jméno Hadoop HTTP.  Výchozí uživatelské jméno je **admin** .|
+    |Uživatelské jméno přihlášení clusteru|Zadejte uživatelské jméno Hadoop HTTP.  Výchozí uživatelské jméno je **admin**.|
     |Heslo přihlášení clusteru|Zadejte heslo uživatele Hadoop HTTP.|
-    |Uživatelské jméno SSH|Zadejte uživatelské jméno SSH. Výchozí název je **sshuser** .|
+    |Uživatelské jméno SSH|Zadejte uživatelské jméno SSH. Výchozí název je **sshuser**.|
     |Heslo SSH|Zadejte heslo uživatele SSH.|
     |Nainstalovat akci skriptu|Ponechte výchozí hodnotu pro procházení tohoto článku.|
 
@@ -133,7 +133,7 @@ Hraniční uzel se zobrazí jako aplikace na Azure Portal.  Portál poskytuje in
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 2. Otevřete cluster HDInsight s hraničním uzlem.
-3. Vyberte **aplikace** . Zobrazí se hraniční uzel.  Výchozí název je **New-edgenode** .
+3. Vyberte **aplikace**. Zobrazí se hraniční uzel.  Výchozí název je **New-edgenode**.
 4. Vyberte hraniční uzel. Zobrazí se koncový bod SSH.
 
 **Použití podregistru na hraničním uzlu**
@@ -158,9 +158,9 @@ Hraniční uzel můžete z Azure Portal odstranit.
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 2. Otevřete cluster HDInsight s hraničním uzlem.
-3. Vyberte **aplikace** . Zobrazí se seznam hraničních uzlů.  
-4. Klikněte pravým tlačítkem myši na hraniční uzel, který chcete odstranit, a vyberte **Odstranit** .
-5. Akci potvrďte výběrem **Ano** .
+3. Vyberte **aplikace**. Zobrazí se seznam hraničních uzlů.  
+4. Klikněte pravým tlačítkem myši na hraniční uzel, který chcete odstranit, a vyberte **Odstranit**.
+5. Akci potvrďte výběrem **Ano**.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 3e6e060f4af2addba66ed02e82d76dd520375f25
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 76af225b6f93e0a47799234e3e2b430344f68787
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516403"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009989"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-cli"></a>Rychlý Start: vytvoření veřejné IP adresy pomocí Azure CLI
 
@@ -37,6 +37,9 @@ Vytvořte skupinu prostředků pomocí [AZ Group Create](https://docs.microsoft.
     --name myResourceGroup \
     --location eastus2
 ```
+
+## <a name="create-public-ip"></a>Vytvoření veřejné IP adresy
+
 ---
 # <a name="standard-sku---using-zones"></a>[**Standardní SKU – používání zón**](#tab/option-create-public-ip-standard-zones)
 
@@ -56,7 +59,7 @@ Pomocí [AZ Network Public-IP Create](https://docs.microsoft.com/cli/azure/netwo
 > U verzí rozhraní API starších než 2020-08-01 spusťte výše uvedený příkaz bez zadání parametru zóny pro vytvoření redundantní IP adresy zóny. 
 >
 
-Pokud chcete vytvořit veřejnou IP adresu Standard Zona v Zóna 2 s názvem **myStandardZonalPublicIP** v **myResourceGroup** , použijte následující příkaz:
+Pokud chcete vytvořit veřejnou IP adresu Standard Zona v Zóna 2 s názvem **myStandardZonalPublicIP** v **myResourceGroup**, použijte následující příkaz:
 
 ```azurecli-interactive
   az network public-ip create \

@@ -4,11 +4,11 @@ description: Tento článek popisuje, jak můžete řešit problémy a řešit p
 ms.topic: conceptual
 ms.date: 07/21/2020
 ms.openlocfilehash: 5727702ff973523ce7ab6400c1c7748e0584acbf
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890356"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010584"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>Řešení potíží se službou Azure Monitor pro kontejnery
 
@@ -23,9 +23,9 @@ Při připojování nebo aktualizaci se u prostředku clusteru pokusy o přiřaz
 Tuto roli můžete také ručně udělit z Azure Portal provedením následujících kroků:
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
-2. Na webu Azure Portal klikněte v levém horním rohu na **Všechny služby** . V seznamu prostředků zadejte **Kubernetes** . Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Azure Kubernetes** .
+2. Na webu Azure Portal klikněte v levém horním rohu na **Všechny služby**. V seznamu prostředků zadejte **Kubernetes**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Azure Kubernetes**.
 3. V seznamu clusterů Kubernetes vyberte jeden ze seznamu.
-2. V nabídce na levé straně klikněte na **řízení přístupu (IAM)** .
+2. V nabídce na levé straně klikněte na **řízení přístupu (IAM)**.
 3. Vyberte **+ Přidat** , chcete-li přidat přiřazení role a vybrat roli **vydavatele metrik monitorování** a v poli **Vybrat** **AKS** zadejte příkaz pro filtrování výsledků jenom v clusterových objektech definovaných v předplatném. Vyberte jednu ze seznamu, která je specifická pro daný cluster.
 4. Kliknutím na **Uložit** dokončete přiřazení role.
 
@@ -112,7 +112,7 @@ Azure Monitor for Containers agent lusky pomocí koncového bodu cAdvisor v agen
 
 ## <a name="non-azure-kubernetes-cluster-are-not-showing-in-azure-monitor-for-containers"></a>Cluster s Kubernetes, který není v Azure, se v Azure Monitor pro kontejnery nezobrazuje.
 
-Pokud chcete zobrazit cluster Kubernetes mimo Azure v Azure Monitor for Containers, vyžaduje se v pracovním prostoru Log Analytics přístup pro čtení, který podporuje tento přehled a v ContainerInsights prostředků řešení Container Insights **( *pracovní prostor* )** .
+Pokud chcete zobrazit cluster Kubernetes mimo Azure v Azure Monitor for Containers, vyžaduje se v pracovním prostoru Log Analytics přístup pro čtení, který podporuje tento přehled a v ContainerInsights prostředků řešení Container Insights **(*pracovní prostor*)**.
 
 ## <a name="next-steps"></a>Další kroky
 

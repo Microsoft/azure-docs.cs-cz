@@ -8,11 +8,11 @@ ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: e1549dda367105db34272eab8a90c1760dd5bb5c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576440"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010176"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Nastavení omezení přístupu Azure App Service
 
@@ -65,14 +65,14 @@ V podokně **Přidat omezení IP adresy** při vytváření pravidla udělejte t
 1. V případě potřeby zadejte název a popis pravidla.  
 1. V rozevíracím seznamu **typ** vyberte typ pravidla.  
 1. Do pole **Priorita** zadejte hodnotu priority.  
-1. V rozevíracích seznamech **odběr** , **Virtual Network** a **podsíť** vyberte, ke kterým chcete omezit přístup.  
+1. V rozevíracích seznamech **odběr**, **Virtual Network** a **podsíť** vyberte, ke kterým chcete omezit přístup.  
 
 ### <a name="set-an-ip-address-based-rule"></a>Nastavení pravidla na základě IP adresy
 
 Postupujte podle pokynů uvedených v předchozí části, ale s následující variací:
 * V kroku 3 v rozevíracím seznamu **typ** vyberte **IPv4** nebo **IPv6**. 
 
-Zadejte IP adresu v zápisu CIDR (Classless Inter-Domain Routing) pro adresy IPv4 i IPv6. Pokud chcete zadat adresu, můžete použít něco jako *1.2.3.4/32* , kde první čtyři oktety reprezentují vaši IP adresu a */32* je maska. Zápis IPv4 protokolu IPv4 pro všechny adresy je 0.0.0.0/0. Další informace o zápisu CIDR najdete v tématu [směrování Inter-Domain bez třídy](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). 
+Zadejte IP adresu v zápisu CIDR (Classless Inter-Domain Routing) pro adresy IPv4 i IPv6. Pokud chcete zadat adresu, můžete použít něco jako *1.2.3.4/32*, kde první čtyři oktety reprezentují vaši IP adresu a */32* je maska. Zápis IPv4 protokolu IPv4 pro všechny adresy je 0.0.0.0/0. Další informace o zápisu CIDR najdete v tématu [směrování Inter-Domain bez třídy](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). 
 
 ## <a name="use-service-endpoints"></a>Použití koncových bodů služby
 
@@ -112,7 +112,7 @@ Existující pravidlo omezení přístupu můžete upravit nebo odstranit.
 
 ### <a name="delete-a-rule"></a>Odstranění pravidla
 
-Pokud chcete pravidlo odstranit, na stránce **omezení přístupu** vyberte tři tečky ( **...** ) vedle pravidla, které chcete odstranit, a pak vyberte **Odebrat**.
+Pokud chcete pravidlo odstranit, na stránce **omezení přístupu** vyberte tři tečky (**...**) vedle pravidla, které chcete odstranit, a pak vyberte **Odebrat**.
 
 ![Snímek obrazovky se stránkou omezení přístupu, kde se zobrazují tři tečky Remove vedle pravidla omezení přístupu, které se má odstranit.](media/app-service-ip-restrictions/access-restrictions-delete.png)
 
@@ -153,7 +153,7 @@ Hodnoty můžete také nastavit ručně jedním z následujících způsobů:
 
 * Použijte operaci Put služby [Azure REST API](/rest/api/azure/) pro konfiguraci aplikace v Azure Resource Manager. Umístění pro tyto informace v Azure Resource Manager:
 
-  **ID předplatného** Management.Azure.com/Subscriptions//resourceGroups/ **skupiny prostředků** /Providers/Microsoft.Web/Sites/ **název webové aplikace** /config/Web? API-Version = 2018-02-01
+  **ID předplatného** Management.Azure.com/Subscriptions//resourceGroups/**skupiny prostředků**/Providers/Microsoft.Web/Sites/**název webové aplikace**/config/Web? API-Version = 2018-02-01
 
 * Použijte šablonu ARM. Jako příklad můžete použít resources.azure.com a upravit blok ipSecurityRestrictions pro přidání požadovaného formátu JSON.
 

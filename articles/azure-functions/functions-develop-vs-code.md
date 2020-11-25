@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
 ms.openlocfilehash: c851f5284b87f224932b027fd10ce720327639c2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167895"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010451"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Vývoj Azure Functions pomocí Visual Studio Code
 
@@ -39,7 +39,7 @@ Tento článek poskytuje podrobné informace o tom, jak používat rozšíření
 > [!IMPORTANT]
 > Nekombinujte vývoj místních vývojových a portálů pro jednu aplikaci Function App. Při publikování z místního projektu do aplikace Function App proces nasazení přepíše všechny funkce, které jste vytvořili na portálu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než nainstalujete a spustíte rozšíření [Azure Functions rozšíření][Azure Functions pro Visual Studio Code], musíte splnit tyto požadavky:
 
@@ -60,7 +60,7 @@ Pokud [publikujete pomocí Visual Studio Code](#publish-to-azure), v předplatn�
 
 Rozšíření Functions umožňuje vytvořit projekt Function App spolu s první funkcí. Následující kroky ukazují, jak vytvořit funkci aktivovanou protokolem HTTP v novém projektu Functions. [Aktivační procedura http](functions-bindings-http-webhook.md) je nejjednodušší šablona triggeru funkce.
 
-1. V **Azure: funkce**vyberte ikonu **vytvořit funkci** :
+1. V **Azure: funkce** vyberte ikonu **vytvořit funkci** :
 
     ![Vytvoření funkce](./media/functions-develop-vs-code/create-function.png)
 
@@ -311,7 +311,7 @@ Tato část používá [rozšíření Azure Storage pro Visual Studio Code](http
 
 Nastavení připojovacího řetězce účtu úložiště:
 
-1. V aplikaci Visual Studio otevřete **Průzkumník cloudu**, rozbalte **účet úložiště**  >  **Your Storage Account**a pak vyberte **vlastnosti** a zkopírujte hodnotu **primárního připojovacího řetězce** .
+1. V aplikaci Visual Studio otevřete **Průzkumník cloudu**, rozbalte **účet úložiště**  >  **Your Storage Account** a pak vyberte **vlastnosti** a zkopírujte hodnotu **primárního připojovacího řetězce** .
 
 2. V projektu otevřete local.settings.jsv souboru a nastavte hodnotu klíče **AzureWebJobsStorage** na připojovací řetězec, který jste zkopírovali.
 
@@ -396,7 +396,7 @@ Další informace o monitorování pomocí Application Insights najdete v témat
 
 Ve výchozím nastavení jsou všechny projekty C# vytvořeny jako [projekty knihovny kompilovaných tříd jazyka c#](functions-dotnet-class-library.md). Pokud raději chcete pracovat s projekty skriptů v jazyce C#, je nutné vybrat skript jazyka C# jako výchozí jazyk v nastavení rozšíření Azure Functions:
 
-1. Vyberte **File**  >  **Preferences**  >  **Nastavení**předvoleb souboru.
+1. Vyberte **File**  >  **Preferences**  >  **Nastavení** předvoleb souboru.
 
 1. Přejít na **rozšíření uživatelských nastavení**  >  **Extensions**  >  **Azure Functions**.
 
@@ -408,7 +408,7 @@ Po dokončení tohoto postupu budou volání do základních základních nástr
 
 Rozšíření Azure Functions poskytuje užitečné grafické rozhraní v oblasti pro interakci s aplikacemi Function App v Azure. Stejné funkce jsou také k dispozici jako příkazy v paletě příkazů (F1). K dispozici jsou tyto příkazy Azure Functions:
 
-|Azure Functions – příkaz  | Popis  |
+|Azure Functions – příkaz  | Description  |
 |---------|---------|
 |**Přidat nová nastavení**  |  Vytvoří nové nastavení aplikace v Azure. Další informace najdete v tématu [publikování nastavení aplikace](#publish-application-settings). Může být také nutné [Stáhnout toto nastavení do místního nastavení](#download-settings-from-azure). |
 | **Konfigurovat zdroj nasazení** | Připojí aplikaci funkcí v Azure k místnímu úložišti Git. Další informace najdete v tématu [průběžné nasazování pro Azure Functions](functions-continuous-deployment.md). |

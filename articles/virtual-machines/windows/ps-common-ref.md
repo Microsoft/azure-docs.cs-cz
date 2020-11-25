@@ -8,11 +8,11 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.openlocfilehash: 6f7f2adb5c3e154c3910ee1082e9afad70de9758
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836169"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010074"
 ---
 # <a name="common-powershell-commands-for-creating-and-managing-azure-virtual-machines"></a>Běžné příkazy PowerShellu pro vytváření a správu virtuálních počítačů Azure
 
@@ -28,7 +28,7 @@ Tyto proměnné mohou být užitečné při spuštění více než jednoho z př
 
 ## <a name="create-a-vm---simplified"></a>Vytvoření virtuálního počítače – zjednodušené
 
-| Úloha | Příkaz |
+| Úkol | Příkaz |
 | ---- | ------- |
 | Vytvoření jednoduchého virtuálního počítače | [New-AzVM](/powershell/module/az.compute/new-azvm) -Name $myVM <BR></BR><BR></BR> New-AzVM má sadu *zjednodušených* parametrů, kde je požadováno jediné jméno. Hodnota pro – název se použije jako název pro všechny prostředky, které jsou potřebné pro vytvoření nového virtuálního počítače. Můžete zadat víc, ale to je všechno, co je potřeba.|
 | Vytvoření virtuálního počítače z vlastní image | New-AzVm-ResourceGroupName $myResourceGroup-Name $myVM ImageName "myImage" – Location $location  <BR></BR><BR></BR>Musíte již vytvořit vlastní [spravovanou bitovou kopii](capture-image-resource.md). Image můžete použít k vytvoření několika identických virtuálních počítačů. |
@@ -37,7 +37,7 @@ Tyto proměnné mohou být užitečné při spuštění více než jednoho z př
 
 ## <a name="create-a-vm-configuration"></a>Vytvořit konfiguraci virtuálního počítače
 
-| Úloha | Příkaz |
+| Úkol | Příkaz |
 | ---- | ------- |
 | Vytvořit konfiguraci virtuálního počítače |$vm = [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) -VMName $MyVM-VMSize "Standard_D1_v1"<BR></BR><BR></BR>Konfigurace virtuálního počítače se používá k definování nebo aktualizaci nastavení virtuálního počítače. Konfigurace se inicializuje s názvem virtuálního počítače a jeho [velikosti](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). |
 | Přidat nastavení konfigurace |$vm = [set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) -VM $VM-Windows-ComputerName $MyVM-Credential $Cred-ProvisionVMAgent-EnableAutoUpdate<BR></BR><BR></BR>Do objektu konfigurace, který jste dříve vytvořili pomocí New-AzVMConfig, se přidají nastavení operačního systému včetně [přihlašovacích údajů](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) . |
@@ -48,14 +48,14 @@ Tyto proměnné mohou být užitečné při spuštění více než jednoho z př
 
 ## <a name="get-information-about-vms"></a>Získat informace o virtuálních počítačích
 
-| Úloha | Příkaz |
+| Úkol | Příkaz |
 | ---- | ------- |
 | Výpis virtuálních počítačů v předplatném |[Get-AzVM](/powershell/module/az.compute/get-azvm) |
 | Vypsat virtuální počítače ve skupině prostředků |Get-AzVM – ResourceGroupName $myResourceGroup<BR></BR><BR></BR>Pokud chcete získat seznam skupin prostředků ve vašem předplatném, použijte [příkaz Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup). |
 | Získání informací o virtuálním počítači |Get-AzVM-ResourceGroupName $myResourceGroup-Name $myVM |
 
 ## <a name="manage-vms"></a>Správa virtuálních počítačů
-| Úloha | Příkaz |
+| Úkol | Příkaz |
 | --- | --- |
 | Spuštění virtuálního počítače |[Start-AzVM](/powershell/module/az.compute/start-azvm) -ResourceGroupName $MyResourceGroup-Name $myVM |
 | Zastavení virtuálního počítače |[Stop-AzVM](/powershell/module/az.compute/stop-azvm) -ResourceGroupName $MyResourceGroup-Name $myVM |

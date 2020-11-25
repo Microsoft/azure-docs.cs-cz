@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: jingwang
 ms.openlocfilehash: 7d61121b4c80b7b89ec29ade4ab1bfab91a660d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334340"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010550"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Formát Avro v Azure Data Factory
 
@@ -32,7 +32,7 @@ Formát Avro se podporuje pro následující konektory: [Amazon S3](connector-am
 | ---------------- | ------------------------------------------------------------ | -------- |
 | typ             | Vlastnost Type datové sady musí být nastavená na **Avro**. | Yes      |
 | location         | Nastavení umístění souborů. Každý konektor založený na souborech má svůj vlastní typ umístění a podporované vlastnosti v rámci `location` . **Podrobnosti najdete v článku o konektoru – > vlastnosti datové sady**. | Yes      |
-| avroCompressionCodec | Kompresní kodek, který se má použít při zápisu do souborů Avro Při čtení ze souborů Avro Data Factory automaticky zjišťuje Kompresní kodek na základě metadat souboru.<br>Podporované typy jsou**none**(výchozí), "**uprostřed**", "**přichycení**". Poznámka: v současné době kopírování není při čtení a zápisu souborů Avro podporovat přichycení. | No       |
+| avroCompressionCodec | Kompresní kodek, který se má použít při zápisu do souborů Avro Při čtení ze souborů Avro Data Factory automaticky zjišťuje Kompresní kodek na základě metadat souboru.<br>Podporované typy jsou **none**(výchozí), "**uprostřed**", "**přichycení**". Poznámka: v současné době kopírování není při čtení a zápisu souborů Avro podporovat přichycení. | No       |
 
 > [!NOTE]
 > Prázdné znaky v názvu sloupce nejsou pro soubory Avro podporovány.
@@ -67,7 +67,7 @@ Níže je příklad datové sady Avro v Azure Blob Storage:
 
 ### <a name="avro-as-source"></a>Avro as source
 
-V části *** \* zdroj \* *** aktivity kopírování jsou podporovány následující vlastnosti.
+V oddílu aktivita kopírování **_ \_ zdroj \**** jsou podporovány následující vlastnosti.
 
 | Vlastnost      | Popis                                                  | Povinné |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -76,7 +76,7 @@ V části *** \* zdroj \* *** aktivity kopírování jsou podporovány následuj
 
 ### <a name="avro-as-sink"></a>Avro jako jímka
 
-V části *** \* jímka \* *** aktivity kopírování jsou podporovány následující vlastnosti.
+V části **\_ jímka \*** aktivity kopírování _ * jsou podporovány následující vlastnosti.
 
 | Vlastnost      | Popis                                                  | Povinné |
 | ------------- | ------------------------------------------------------------ | -------- |

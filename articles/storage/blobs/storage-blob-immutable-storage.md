@@ -9,12 +9,12 @@ ms.date: 11/13/2020
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 39fdde572e269bb4f5648e91bf85539d02236ff6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: acb2ebb0d7ce70c6b5963a8a6c3e392091e4bb1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658549"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010057"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Ukládání důležitých podnikových dat objektů BLOB s neměnném úložištěm
 
@@ -76,7 +76,7 @@ Následující omezení platí pro zásady uchovávání informací:
 
 ### <a name="allow-protected-append-blobs-writes"></a>Povolení zápisů chráněných objektů BLOB
 
-Doplňovací objekty BLOB se skládají z bloků dat a jsou optimalizované pro operace připojení dat vyžadované scénáři auditování a protokolování. V rámci návrhu připojovat objekty blob umožňují pouze přidávání nových bloků na konec objektu BLOB. Bez ohledu na neměnnosti, úprava nebo odstranění existujících bloků v doplňovacím objektu BLOB není v podstatě povolená. Další informace o přidaných objektech blob najdete v tématu věnovaném [přidávání objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs).
+Doplňovací objekty BLOB se skládají z bloků dat a jsou optimalizované pro operace připojení dat vyžadované scénáři auditování a protokolování. V rámci návrhu připojovat objekty blob umožňují pouze přidávání nových bloků na konec objektu BLOB. Bez ohledu na neměnnosti, úprava nebo odstranění existujících bloků v doplňovacím objektu BLOB není v podstatě povolená. Další informace o přidaných objektech blob najdete v tématu věnovaném [přidávání objektů BLOB](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs).
 
 Jenom zásady uchovávání informací mají `allowProtectedAppendWrites` nastavení, které umožňuje psát nové bloky do doplňovacího objektu BLOB při zachování ochrany neměnnosti a dodržování předpisů. Pokud je toto nastavení povolené, budete moct vytvořit doplňovací objekt BLOB přímo v kontejneru chráněném zásadami a dál přidávat nové bloky dat na konec stávajících objektů BLOB s použitím rozhraní *AppendBlock* API. Přidat lze pouze nové bloky a všechny existující bloky nelze upravovat ani odstraňovat. Ochrana neměnnosti s časovým limitem se pořád platí, takže je možné odstranit doplňovací objekt BLOB až do doby, kdy uplynula doba uchování. Povolení tohoto nastavení nemá vliv na chování neměnnosti objektů blob bloku nebo objektů blob stránky.
 
@@ -103,7 +103,7 @@ Následující omezení platí pro právní blokování:
 
 ## <a name="scenarios"></a>Scénáře
 
-V následující tabulce jsou uvedeny typy operací úložiště objektů blob, které jsou zakázané pro různé neměnné scénáře. Další informace najdete v dokumentaci ke [službě Azure Blob Service REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) .
+V následující tabulce jsou uvedeny typy operací úložiště objektů blob, které jsou zakázané pro různé neměnné scénáře. Další informace najdete v dokumentaci ke [službě Azure Blob Service REST API](/rest/api/storageservices/blob-service-rest-api) .
 
 | Scénář | Stav objektu BLOB | Operace objektu BLOB se zamítly. | Ochrana kontejneru a účtu |
 |--|--|--|--|
@@ -116,13 +116,13 @@ V následující tabulce jsou uvedeny typy operací úložiště objektů blob, 
 <sup>2</sup> připojovací blok je povolený jenom pro zásady uchovávání informací s `allowProtectedAppendWrites` povolenou vlastností. Další informace najdete v části [Povolení chráněných objektů BLOB pro zápis](#allow-protected-append-blobs-writes) .
 
 > [!IMPORTANT]
-> Některé úlohy, jako je například [zálohování SQL na adresu URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url), vytvářejí objekt BLOB a pak se do něj přidají. Pokud má kontejner aktivní zásady uchovávání informací založené na čase nebo právní blokování, tento model nebude úspěšný.
+> Některé úlohy, jako je například [zálohování SQL na adresu URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url), vytvářejí objekt BLOB a pak se do něj přidají. Pokud má kontejner aktivní zásady uchovávání informací založené na čase nebo právní blokování, tento model nebude úspěšný.
 
 ## <a name="pricing"></a>Ceny
 
 Za použití této funkce se neúčtují žádné další poplatky. Neproměnlivá data se účtují stejným způsobem jako proměnlivá data. Podrobnosti o cenách služby Azure Blob Storage najdete na [stránce s cenami Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Máte k dispozici dokumentaci týkající se dodržování předpisů WORM?**
 
@@ -170,11 +170,11 @@ Ano. Když se poprvé vytvoří zásady uchovávání informací založené na �
 
 **Můžu použít obnovitelné odstranění společně se zásadami neproměnlivého objektu BLOB?**
 
-Ano, pokud vaše požadavky na dodržování předpisů umožňují povolit obnovitelné odstranění. [Obnovitelné odstranění pro úložiště objektů BLOB v Azure](storage-blob-soft-delete.md) platí pro všechny kontejnery v rámci účtu úložiště bez ohledu na to, jakou dobu zablokují nebo zásady uchovávání informací podle času. Před použitím a potvrzením jakýchkoli neměnitelných zásad WORM doporučujeme povolit obnovitelné odstranění pro další ochranu.
+Ano, pokud vaše požadavky na dodržování předpisů umožňují povolit obnovitelné odstranění. [Obnovitelné odstranění pro úložiště objektů BLOB v Azure](./soft-delete-blob-overview.md) platí pro všechny kontejnery v rámci účtu úložiště bez ohledu na to, jakou dobu zablokují nebo zásady uchovávání informací podle času. Před použitím a potvrzením jakýchkoli neměnitelných zásad WORM doporučujeme povolit obnovitelné odstranění pro další ochranu.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB](storage-blob-immutability-policies-manage.md)
 - [Nastavení pravidel pro automatické vytvoření vrstev a odstraňování dat objektů BLOB pomocí správy životního cyklu](storage-lifecycle-management-concepts.md)
-- [Obnovitelné odstranění objektů blob služby Azure Storage](../blobs/storage-blob-soft-delete.md)
+- [Obnovitelné odstranění objektů blob služby Azure Storage](./soft-delete-blob-overview.md)
 - [Chraňte předplatná, skupiny prostředků a prostředky pomocí Azure Resource Manager zámků](../../azure-resource-manager/management/lock-resources.md).

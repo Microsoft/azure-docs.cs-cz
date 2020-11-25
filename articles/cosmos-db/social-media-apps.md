@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
 ms.openlocfilehash: 329c4b40f11b36de80581d4a1396813bc8de5c73
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097324"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010312"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Spolupráce s Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Živý ve vysoce propojené společnosti znamená, že v určitém okamžiku se stanete součástí **sociální sítě** . Pomocí sociálních sítí se budete moci spojit s přáteli, kolegy, rodinou nebo občas sdílet své zaujetí s lidmi se společnými zájmy.
+Živý ve vysoce propojené společnosti znamená, že v určitém okamžiku se stanete součástí **sociální sítě**. Pomocí sociálních sítí se budete moci spojit s přáteli, kolegy, rodinou nebo občas sdílet své zaujetí s lidmi se společnými zájmy.
 
 Jako technici nebo vývojáři můžete mít přemýšleli, jak tyto sítě ukládají a propojovat vaše data. Nebo jste dokonce mohli vytvořit nebo vytvořit architekta nové sociální sítě pro konkrétní mezery trh. To je v situaci, kdy se jedná o významnou otázku: jak jsou všechna tato data uložena?
 
@@ -172,7 +172,7 @@ Pojďme získat informace o uživateli jako příklad:
 
 Když si tyto informace prohlížíte, můžete rychle zjistit, které z nich jsou důležité a které nejsou, takže se vytvoří "žebřík":
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="Diagram znázorňující relativní relační model" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="Diagram vzoru žebříku" border="false":::
 
 Nejmenší krok se nazývá UserChunk, minimální část informací, která identifikuje uživatele a používá se pro duplikaci dat. Zmenšením velikosti duplicitních dat na jenom informace, které se zobrazí, snížíte tak možnost obrovských aktualizací.
 
@@ -239,9 +239,9 @@ Další dostupnou možností je použít k analýze obsahu uživatelů službu [
 
 ## <a name="a-planet-scale-social-experience"></a>Prostředí globálním pro sociální škálování
 
-K dispozici je jen poslední, ale nejméně důležitý článek, který je potřeba řešit: **škálovatelnost** . Při návrhu architektury by se každá součást měla škálovat samostatně. Nakonec budete muset zpracovat více dat nebo budete chtít mít větší geografické pokrytí. Naštěstí, které jsou v obou úlohách, je **prostředí klíč** s Cosmos DB.
+K dispozici je jen poslední, ale nejméně důležitý článek, který je potřeba řešit: **škálovatelnost**. Při návrhu architektury by se každá součást měla škálovat samostatně. Nakonec budete muset zpracovat více dat nebo budete chtít mít větší geografické pokrytí. Naštěstí, které jsou v obou úlohách, je **prostředí klíč** s Cosmos DB.
 
-Cosmos DB podporuje dynamické dělení předem. Automaticky vytvoří oddíly na základě daného **klíče oddílu** , který je definován jako atribut v dokumentech. Definování správného klíče oddílu je nutné provést v době návrhu. Další informace najdete v tématu [dělení v Azure Cosmos DB](partitioning-overview.md).
+Cosmos DB podporuje dynamické dělení předem. Automaticky vytvoří oddíly na základě daného **klíče oddílu**, který je definován jako atribut v dokumentech. Definování správného klíče oddílu je nutné provést v době návrhu. Další informace najdete v tématu [dělení v Azure Cosmos DB](partitioning-overview.md).
 
 Pro sociální prostředí je nutné sjednotit strategii dělení pomocí způsobu dotazování a zápisu. (Například čtení v rámci stejného oddílu je žádoucí a nepoužívejte "aktivní body" rozšíříte zápisy na více oddílů.) Mezi možnosti patří: oddíly založené na dočasném klíči (den/měsíc/týden), podle kategorie obsahu, podle zeměpisné oblasti nebo podle uživatele. Všechno ve skutečnosti záleží na způsobu, jakým se dotazuje na data a zobrazují data v sociálním prostředí.
 
@@ -249,23 +249,23 @@ Cosmos DB spustí vaše dotazy (včetně [agregací](https://azure.microsoft.com
 
 V čase budete nakonec růst provozu a spotřebu prostředků (měřené v [ru](request-units.md)nebo jednotkách žádosti) se zvýší. Při zvětšování uživatelské základny budete číst a zapisovat častěji. Uživatelskou základnu začne vytvářet a číst další obsah. Schopnost **škálování propustnosti** je proto důležitá. Zvýšení ru je snadné. Můžete to udělat několika kliknutími na Azure Portal nebo vyvoláním [příkazů prostřednictvím rozhraní API](/rest/api/cosmos-db/replace-an-offer).
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="Diagram znázorňující relativní relační model":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="Škálování a definování klíče oddílu":::
 
 Co se stane, když všechno pořád ještě lepší? Předpokládejme, že uživatelé z jiné oblasti, země nebo kontinentu si vyvšimli vaši platformu a začnou ji používat. Co Skvělé neočekávaně!
 
-Ale počkejte! Brzy zjistíte, že své zkušenosti s platformou nejsou optimální. Jsou zatím mimo vaši provozní oblast, že latence je ještěrů. Zjevně nechcete, aby se ukončily. Pokud je k dispozici pouze snadný způsob **rozšíření globálního dosahu** ? K dispozici je!
+Ale počkejte! Brzy zjistíte, že své zkušenosti s platformou nejsou optimální. Jsou zatím mimo vaši provozní oblast, že latence je ještěrů. Zjevně nechcete, aby se ukončily. Pokud je k dispozici pouze snadný způsob **rozšíření globálního dosahu**? K dispozici je!
 
 Cosmos DB umožňuje globálně a transparentně [replikovat data](../cosmos-db/tutorial-global-distribution-sql-api.md) několika kliknutími a automaticky vybírat z dostupných oblastí z vašeho [klientského kódu](../cosmos-db/tutorial-global-distribution-sql-api.md). Tento proces také znamená, že můžete mít [více oblastí převzetí služeb při selhání](high-availability.md).
 
 Při globální replikaci dat je potřeba zajistit, aby ji vaši klienti mohli využít. Pokud používáte webový front-end nebo přístup k rozhraním API z mobilních klientů, můžete nasadit [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) a klonovat Azure App Service ve všech požadovaných oblastech pomocí konfigurace výkonu pro podporu vašeho rozšířeného globálního pokrytí. Když klienti přistupují k front-endu nebo rozhraním API, budou přesměrováni na nejbližší App Service, která se zase připojí k místní replice Cosmos DB.
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="Diagram znázorňující relativní relační model" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="Přidání globálního pokrytí na sociální platformu" border="false":::
 
 ## <a name="conclusion"></a>Závěr
 
 Tento článek se podrobněji přenese do alternativních možností vytváření sociálních sítí, které jsou zcela v Azure, s nižšími náklady. poskytuje výsledky tím, že povzbudí použití řešení úložiště s více vrstvami a distribuce dat s názvem "žebřík".
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="Diagram znázorňující relativní relační model" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="Diagram interakce mezi službami Azure pro sociální sítě" border="false":::
 
 Pravdy je, že pro tento druh scénářů není k dispozici žádná stříbrné odrážka. Jedná se o synergii vytvořenou kombinací skvělých služeb, které nám umožňují sestavovat Skvělé prostředí: rychlost a volnost Azure Cosmos DB poskytování Skvělé sociální aplikace, inteligentních řešení pro vyhledávání, jako je Azure Kognitivní hledání, flexibility Azure App Services pro hostování nenezávislách aplikací pro jazyky, ale výkonné procesy na pozadí a rozšiřitelné Azure Storage a Azure SQL Database pro ukládání velkých objemů dat a analytické síly počítačů Azure Naučte se vytvářet poznatky a inteligentní informace, které vám poskytnou zpětnou vazbu vašim procesům a pomáhají zajistit správnému obsahu správným uživatelům.
 

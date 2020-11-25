@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
 ms.openlocfilehash: a226682c2580a871e1b2fc4db71f369f3bcc3abb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778623"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010159"
 ---
 # <a name="how-caching-works"></a>Jak funguje ukládání do mezipaměti
 
@@ -126,12 +126,12 @@ Následující tabulka popisuje výchozí chování při ukládání do mezipam�
 
 |    | Microsoft: obecné webové doručování | Verizon: Obecné doručování webu | Verizon: DSA | Akamai: Obecné doručování webu | Akamai: DSA | Akamai: stahování velkých souborů | Akamai: General nebo VOD Streaming Media |
 |------------------------|--------|-------|------|--------|------|-------|--------|
-| **Dodržovat původ**       | Ano    | Ano   | Ne   | Ano    | Ne   | Ano   | Ano    |
+| **Dodržovat původ**       | Yes    | Yes   | No   | Yes    | No   | Yes   | Yes    |
 | **Doba uložení mezipaměti CDN** | 2 dny |7 dní | Žádné | 7 dní | Žádné | 1 den | 1 rok |
 
-**Dodržovat původ** : Určuje, jestli se mají přijmout podporované hlavičky cache-direktivy, pokud existují v odpovědi HTTP ze zdrojového serveru.
+**Dodržovat původ**: Určuje, jestli se mají přijmout podporované hlavičky cache-direktivy, pokud existují v odpovědi HTTP ze zdrojového serveru.
 
-**Doba uložení mezipaměti CDN** : Určuje dobu, po kterou je prostředek uložen v mezipaměti Azure CDN. Pokud je ale možnost **akceptovat původ** nastavená na Ano a odpověď HTTP ze zdrojového serveru zahrnuje hlavičku cache-a `Expires` `Cache-Control: max-age` Azure CDN použije hodnotu trvání určenou hlavičkou. 
+**Doba uložení mezipaměti CDN**: Určuje dobu, po kterou je prostředek uložen v mezipaměti Azure CDN. Pokud je ale možnost **akceptovat původ** nastavená na Ano a odpověď HTTP ze zdrojového serveru zahrnuje hlavičku cache-a `Expires` `Cache-Control: max-age` Azure CDN použije hodnotu trvání určenou hlavičkou. 
 
 ## <a name="next-steps"></a>Další kroky
 

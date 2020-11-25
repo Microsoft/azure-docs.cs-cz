@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 675f68a36963d19f42cb7c0c5d49ae8c4f0006f2
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103420"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010533"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>Vytváření clusterů HDInsight s Azure Data Lake Storage Gen1 jako výchozí úložiště pomocí prostředí PowerShell
 
 > [!div class="op_single_selector"]
-> * [Použití Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
+> * [Použití webu Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [Použití PowerShellu (pro výchozí úložiště)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [Použití PowerShellu (pro další úložiště)](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [Použít Správce prostředků](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
@@ -31,7 +31,7 @@ Tady jsou některé důležité informace pro používání služby HDInsight s 
 
 Pokud chcete nakonfigurovat HDInsight pro práci s Data Lake Storage Gen1 pomocí prostředí PowerShell, postupujte podle pokynů v následujících pěti částech.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -236,7 +236,7 @@ V této části vytvoříte cluster HDInsight Hadoop Linux s Data Lake Storage G
     Po úspěšném dokončení rutiny by se měl zobrazit výstup, který obsahuje seznam podrobností o clusteru.
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Spuštění testovacích úloh v clusteru HDInsight pro použití Data Lake Storage Gen1
-Po nakonfigurování clusteru HDInsight můžete na něm spustit testovací úlohy, aby se zajistilo, že bude mít přístup k Data Lake Storage Gen1. Uděláte to tak, že spustíte ukázkovou úlohu podregistru a vytvoříte tabulku, která používá ukázková data, která jsou už dostupná v Data Lake Storage Gen1 na adrese * \<cluster root> /example/data/Sample.log*.
+Po nakonfigurování clusteru HDInsight můžete na něm spustit testovací úlohy, aby se zajistilo, že bude mít přístup k Data Lake Storage Gen1. Uděláte to tak, že spustíte ukázkovou úlohu podregistru a vytvoříte tabulku, která používá ukázková data, která jsou už dostupná v Data Lake Storage Gen1 na adrese *\<cluster root> /example/data/Sample.log*.
 
 V této části provedete připojení k Secure Shell (SSH) do clusteru HDInsight Linux, který jste vytvořili, a potom spustíte ukázkový dotaz na podregistr.
 
