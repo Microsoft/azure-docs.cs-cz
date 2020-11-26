@@ -5,14 +5,14 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 07/10/2020
+ms.date: 11/25/2020
 ms.author: chrande
-ms.openlocfilehash: d0bd94037a75db8d69cfd44820a80ae8b403c9ea
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 56ed1e653547b3c0e3469f820eb33155aedb1bcb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357075"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187200"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Úvod do rozhraní Gremlin API v Azure Cosmos DB
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -24,6 +24,9 @@ ms.locfileid: "93357075"
 Tento článek obsahuje přehled rozhraní Azure Cosmos DB API Gremlin a vysvětluje, jak je používat k ukládání obrovských grafů s miliardami vrcholů a hran. Můžete zadávat dotazy na grafy s latencí milisekund a snadno vyvíjet strukturu grafu. Rozhraní Gremlin API pro Azure Cosmos DB je postavené na základě rozhraní [Apache TinkerPop](https://tinkerpop.apache.org), architektury grafu computingu. Rozhraní Gremlin API v Azure Cosmos DB používá dotazovací jazyk Gremlin.
 
 Rozhraní Gremlin API Azure Cosmos DB kombinuje sílu algoritmů databázové databáze s vysoce škálovatelnou a spravovanou infrastrukturou, aby poskytovala jedinečné a flexibilní řešení nejběžnějších problémů s daty, která souvisí s nedostatečnou flexibilitou a relačními přístupy.
+
+> [!NOTE]
+> [Režim kapacity bez serveru](serverless.md) je teď k dispozici v Azure Cosmos DB rozhraní API pro Gremlin.
 
 ## <a name="features-of-azure-cosmos-dbs-gremlin-api"></a>Funkce rozhraní Gremlin API pro Azure Cosmos DB
  
@@ -111,18 +114,18 @@ Ukázkový graf vám pomůže pochopit, jak lze v jazyce Gremlin vyjádřit dota
 
 Tento graf má následující typy *vrcholů* (v Gremlin se také nazývají "jmenovka"):
 
-* **Lidé** : graf má tři lidi, Robin, Tomáš a Robert.
-* **Zájmy** : jejich zájmy v tomto příkladu se hrou fotbalu
-* **Zařízení** : zařízení, která uživatelé používají
-* **Operační systémy** : operační systémy, ve kterých se zařízení spouštějí
-* **Místo** : místa, ze kterých se mají zařízení přistupovat
+* **Lidé**: graf má tři lidi, Robin, Tomáš a Robert.
+* **Zájmy**: jejich zájmy v tomto příkladu se hrou fotbalu
+* **Zařízení**: zařízení, která uživatelé používají
+* **Operační systémy**: operační systémy, ve kterých se zařízení spouštějí
+* **Místo**: místa, ze kterých se mají zařízení přistupovat
 
 Vztahy mezi těmito entitami zastupujeme prostřednictvím následujících typů *Edge* :
 
-* **Ví** : například "Tomáš ví s dotazem"
+* **Ví**: například "Tomáš ví s dotazem"
 * **Zúčastněte** se: k vyjádření zájmů lidí v našem grafu, například "Robert se zajímá o fotbal."
-* **RunsOS** : laptop spouští operační systém Windows.
-* **Používá** : k vyjádření zařízení, které osoba používá. Robin například používá telefon Motorola se sériovým číslem 77.
+* **RunsOS**: laptop spouští operační systém Windows.
+* **Používá**: k vyjádření zařízení, které osoba používá. Robin například používá telefon Motorola se sériovým číslem 77.
 * **Umístění: představuje** umístění, ze kterého mají být zařízení k dispozici.
 
 Konzola Gremlin je interaktivní terminál nabízený Apache TinkerPop a tento terminál slouží k interakci s daty grafu. Další informace najdete v dokumentu rychlý Start, [Jak používat konzolu Gremlin](create-graph-gremlin-console.md). K jejich provedení můžete také použít ovladače Gremlin na platformě dle vlastního výběru (Java, Node.js, Python nebo .NET). Následující příklady ukazují, jak spustit dotazy na data grafu pomocí konzoly Gremlin.

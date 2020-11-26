@@ -6,11 +6,11 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.openlocfilehash: aa2530f817bf20af40ab2913df9f16e7d1974ef3
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375450"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187132"
 ---
 # <a name="tutorial-create-an-faq-bot-with-azure-bot-service"></a>Kurz: vytvoření robota s nejčastějšími dotazy pomocí Azure Bot Service
 Pomocí QnA Maker a Azure [bot Service](https://azure.microsoft.com/services/bot-service/) si na stránce s přehledem dotazů vytvořte roboty, které nemají žádný kód.
@@ -73,7 +73,7 @@ Když provedete změny ve znalostní bázi a znovu publikujete, nemusíte s robo
 
 1. Po vytvoření robota otevřete prostředek **služby bot** .
 1. V části **Správa robota** vyberte **test na webu chat**.
-1. Na příkazovém řádku chatu **Zadejte zprávu** :
+1. Na příkazovém řádku chatu **Zadejte zprávu**:
 
     `Azure services?`
 

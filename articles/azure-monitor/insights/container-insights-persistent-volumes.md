@@ -3,12 +3,12 @@ title: Konfigurace monitorování PV pomocí Azure Monitor pro kontejnery | Micr
 description: Tento článek popisuje, jak můžete nakonfigurovat monitorování clusterů Kubernetes s trvalými svazky s Azure Monitor pro kontejnery.
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: 30e99c2abbc66de257f9623dedc901fca51976c1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: e7c547c137fc84e6e6dfb2807b871ef0329a3c13
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92492157"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186843"
 ---
 # <a name="configure-pv-monitoring-with-azure-monitor-for-containers"></a>Konfigurace monitorování PV pomocí Azure Monitor pro kontejnery
 
@@ -30,4 +30,4 @@ Azure Monitor for containers obsahuje předem nakonfigurované grafy pro tuto me
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o shromažďovaných metrikách PV [najdete tady](https://aka.ms/ci/pvconfig).
+- Další informace o shromažďovaných metrikách PV [najdete tady](./container-insights-agent-config.md).

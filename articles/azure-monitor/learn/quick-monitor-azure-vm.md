@@ -7,12 +7,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: 11475de159cf3d59923d6f2129aa46ddf0ef8f2c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ef0e3a451a5687278acaf1e857012027a5e657a3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90084426"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186758"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Rychlý Start: monitorování virtuálního počítače Azure pomocí Azure Monitor
 [Azure monitor](../overview.md) spustí shromažďování dat z virtuálních počítačů Azure a okamžik jejich vytvoření. V tomto rychlém startu se dozvíte, jak se budou automaticky shromažďovat data pro virtuální počítač Azure a jak je zobrazit v Azure Portal. Pak povolíte [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md) pro váš virtuální počítač, který umožní agentům na virtuálním počítači shromažďovat a analyzovat data z hostovaného operačního systému, včetně procesů a jejich závislostí.
@@ -77,7 +77,7 @@ Když vytváříte nový pracovní prostor Log Analytics, musí být nakonfiguro
 
 2. Přidejte protokol událostí zadáním názvu protokolu.  Zadejte **SYSLOG** a potom vyberte znaménko plus **+** .  
 
-3. V tabulce zrušte výběr **informací o**závažnosti, **Upozornění** a **ladění**. 
+3. V tabulce zrušte výběr **informací o** závažnosti, **Upozornění** a **ladění**. 
 
 4. V horní části stránky vyberte **Uložit** a uložte konfiguraci.
 
@@ -107,4 +107,4 @@ Když vytváříte nový pracovní prostor Log Analytics, musí být nakonfiguro
 V tomto rychlém startu jste povolili Azure Monitor pro virtuální počítače pro virtuální počítač a nakonfigurovali Log Analytics pracovní prostor pro shromažďování událostí pro hostovaný operační systém. Pokud chcete zjistit, jak zobrazit a analyzovat data, pokračujte k následujícímu kurzu.
 
 > [!div class="nextstepaction"]
-> [Zobrazení nebo analýza dat v Log Analytics](../log-query/get-started-portal.md)
+> [Zobrazení nebo analýza dat v Log Analytics](../log-query/log-analytics-tutorial.md)

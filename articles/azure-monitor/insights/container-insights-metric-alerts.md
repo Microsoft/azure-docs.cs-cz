@@ -3,12 +3,12 @@ title: Výstrahy metrik z Azure Monitor pro kontejnery
 description: Tento článek kontroluje Doporučené výstrahy metriky, které jsou dostupné z Azure Monitor pro kontejnery ve verzi Public Preview.
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: cda5639fdf72f5731af851860f37afa888e7d965
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 16995246578dc8d3c009253d8384c6d7ff3911d3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927817"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186877"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Doporučené výstrahy metriky (Preview) z Azure Monitor pro kontejnery
 
@@ -29,7 +29,7 @@ Než začnete, zkontrolujte následující:
     Pokud chcete ověřit, že cluster používá novější verzi agenta, můžete:
 
     * Spusťte příkaz: `kubectl describe <omsagent-pod-name> --namespace=kube-system` . Ve vráceném stavu si všimněte hodnoty v části **Image** pro omsagent v oddílu *Containers* výstupu. 
-    * Na kartě **uzly** vyberte uzel clusteru a v podokně **vlastnosti** napravo si poznamenejte hodnotu v části **značka image agenta** .
+    * Na kartě **uzly** vyberte uzel clusteru a v podokně **vlastnosti** napravo si poznamenejte hodnotu v části **značka image agenta**.
 
     Hodnota zobrazená pro AKS by měla být verze **ciprod05262020** nebo novější. Hodnota zobrazená pro cluster Kubernetes s povoleným ARC Azure by měla být verze **ciprod09252020** nebo novější. Pokud má cluster starší verzi, přečtěte si téma [Postup upgradu agenta Azure monitor for Containers](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) , kde najdete pokyny k získání nejnovější verze.
 
@@ -39,7 +39,7 @@ Než začnete, zkontrolujte následující:
 
 Pokud chcete upozornit na to, co Azure Monitor kontejnerů, zahrnuje následující výstrahy metriky pro clustery Kubernetes a Azure ARC s povoleným AKS:
 
-|Název| Description |Výchozí prahová hodnota |
+|Název| Popis |Výchozí prahová hodnota |
 |----|-------------|------------------|
 |Průměrný procesor kontejneru% |Vypočítá průměrný procesor využívaný na jeden kontejner.|V případě, že průměrné využití procesoru na kontejner je větší než 95%.| 
 |Průměrná paměť pracovní sady v kontejneru% |Vypočítá průměrnou paměť pracovní sady použitou na kontejner.|V případě, že průměrná spotřeba paměti pracovní sady na kontejner je větší než 95%. |
@@ -74,15 +74,15 @@ Následující metriky založené na výstrahách mají v porovnání s ostatní
 
 * Metrika *oomKilledContainerCount* se posílá pouze v případě, že existují OOM ukončené kontejnery.
 
-* metriky *cpuExceededPercentage* , *memoryRssExceededPercentage* a *memoryWorkingSetExceededPercentage* se odesílají v případě, že hodnoty pracovní sady procesoru, paměti RSS a paměti překročí nakonfigurovanou prahovou hodnotu (výchozí prahová hodnota je 95%). Tyto prahové hodnoty jsou výhradně pro mezní hodnotu podmínky upozornění zadanou pro příslušné pravidlo výstrahy. To znamená, že pokud chcete shromáždit tyto metriky a analyzovat je z [Průzkumníka metrik](../platform/metrics-getting-started.md), doporučujeme nastavit prahovou hodnotu na nižší hodnotu, než je prahová hodnota pro výstrahu. Konfigurace související s nastavením kolekce pro prahové hodnoty využití prostředků kontejneru se dá přepsat v souboru ConfigMaps v části `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` . Podrobnosti týkající se konfigurace konfiguračního souboru ConfigMap najdete v části [Konfigurace metrik s výstrahou ConfigMaps](#configure-alertable-metrics-in-configmaps) .
+* metriky *cpuExceededPercentage*, *memoryRssExceededPercentage* a *memoryWorkingSetExceededPercentage* se odesílají v případě, že hodnoty pracovní sady procesoru, paměti RSS a paměti překročí nakonfigurovanou prahovou hodnotu (výchozí prahová hodnota je 95%). Tyto prahové hodnoty jsou výhradně pro mezní hodnotu podmínky upozornění zadanou pro příslušné pravidlo výstrahy. To znamená, že pokud chcete shromáždit tyto metriky a analyzovat je z [Průzkumníka metrik](../platform/metrics-getting-started.md), doporučujeme nastavit prahovou hodnotu na nižší hodnotu, než je prahová hodnota pro výstrahu. Konfigurace související s nastavením kolekce pro prahové hodnoty využití prostředků kontejneru se dá přepsat v souboru ConfigMaps v části `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` . Podrobnosti týkající se konfigurace konfiguračního souboru ConfigMap najdete v části [Konfigurace metrik s výstrahou ConfigMaps](#configure-alertable-metrics-in-configmaps) .
 
-* Pokud procento využití trvalého svazku překročí nastavenou prahovou hodnotu, bude odeslána metrika *pvUsageExceededPercentage* (výchozí prahová hodnota je 60%). Tato prahová hodnota je výlučná na prahovou hodnotu podmínky upozornění zadanou pro příslušné pravidlo výstrahy. To znamená, že pokud chcete shromáždit tyto metriky a analyzovat je z [Průzkumníka metrik](../platform/metrics-getting-started.md), doporučujeme nastavit prahovou hodnotu na nižší hodnotu, než je prahová hodnota pro výstrahu. Konfigurace související s nastavením kolekce pro prahové hodnoty trvalého využití svazku se dá přepsat v souboru ConfigMaps v části `[alertable_metrics_configuration_settings.pv_utilization_thresholds]` . Podrobnosti týkající se konfigurace konfiguračního souboru ConfigMap najdete v části [Konfigurace metrik s výstrahou ConfigMaps](#configure-alertable-metrics-in-configmaps) . Ve výchozím nastavení jsou vyloučeny kolekce trvalých metrik svazků s deklaracemi v oboru názvů *Kube-System* . Chcete-li povolit shromažďování v tomto oboru názvů, použijte část `[metric_collection_settings.collect_kube_system_pv_metrics]` v souboru ConfigMap. Podrobnosti najdete v tématu [nastavení kolekce metrik](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-agent-config#metric-collection-settings) .
+* Pokud procento využití trvalého svazku překročí nastavenou prahovou hodnotu, bude odeslána metrika *pvUsageExceededPercentage* (výchozí prahová hodnota je 60%). Tato prahová hodnota je výlučná na prahovou hodnotu podmínky upozornění zadanou pro příslušné pravidlo výstrahy. To znamená, že pokud chcete shromáždit tyto metriky a analyzovat je z [Průzkumníka metrik](../platform/metrics-getting-started.md), doporučujeme nastavit prahovou hodnotu na nižší hodnotu, než je prahová hodnota pro výstrahu. Konfigurace související s nastavením kolekce pro prahové hodnoty trvalého využití svazku se dá přepsat v souboru ConfigMaps v části `[alertable_metrics_configuration_settings.pv_utilization_thresholds]` . Podrobnosti týkající se konfigurace konfiguračního souboru ConfigMap najdete v části [Konfigurace metrik s výstrahou ConfigMaps](#configure-alertable-metrics-in-configmaps) . Ve výchozím nastavení jsou vyloučeny kolekce trvalých metrik svazků s deklaracemi v oboru názvů *Kube-System* . Chcete-li povolit shromažďování v tomto oboru názvů, použijte část `[metric_collection_settings.collect_kube_system_pv_metrics]` v souboru ConfigMap. Podrobnosti najdete v tématu [nastavení kolekce metrik](./container-insights-agent-config.md#metric-collection-settings) .
 
 ## <a name="metrics-collected"></a>Shromážděné metriky
 
 Následující metriky jsou povolené a shromážděné, pokud není uvedeno jinak, jako součást této funkce:
 
-|Obor názvů metriky |Metrika |Popis |
+|Obor názvů metriky |Metric |Popis |
 |---------|----|------------|
 |Insights. Container/Nodes |cpuUsageMillicores |Využití CPU v millicores podle hostitele.|
 |Insights. Container/Nodes |cpuUsagePercentage |Procento využití procesoru podle uzlu|
@@ -110,11 +110,11 @@ Pomocí těchto kroků povolíte výstrahy metrik v Azure Monitor z Azure Portal
 
 Tato část vás provede povolením výstrahy metriky Azure Monitor pro kontejnery (Preview) z Azure Portal.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Přístup k funkci upozornění na metriku Azure Monitor for Containers (Preview) je k dispozici přímo z clusteru AKS, a to tak, že v levém podokně v Azure Portal vyberete **přehledy** .
 
-3. Na panelu příkazů vyberte **Doporučené výstrahy** .
+3. Na panelu příkazů vyberte **Doporučené výstrahy**.
 
     ![Možnost Doporučené výstrahy v Azure Monitor pro kontejnery](./media/container-insights-metric-alerts/command-bar-recommended-alerts.png)
 
@@ -148,15 +148,15 @@ Základní postup je následující:
 
 2. Chcete-li nasadit přizpůsobenou šablonu prostřednictvím portálu, vyberte možnost **vytvořit prostředek** z [Azure Portal](https://portal.azure.com).
 
-3. Vyhledejte **šablonu** a pak vyberte **template Deployment** .
+3. Vyhledejte **šablonu** a pak vyberte **template Deployment**.
 
-4. Vyberte **Vytvořit** .
+4. Vyberte **Vytvořit**.
 
-5. Zobrazí se několik možností pro vytvoření šablony. Vyberte **vytvořit vlastní šablonu v editoru** .
+5. Zobrazí se několik možností pro vytvoření šablony. Vyberte **vytvořit vlastní šablonu v editoru**.
 
 6. Na **stránce Upravit šablonu** vyberte **načíst soubor** a pak vyberte soubor šablony.
 
-7. Na stránce **Upravit šablonu** vyberte Save ( **Uložit** ).
+7. Na stránce **Upravit šablonu** vyberte Save ( **Uložit**).
 
 8. Na stránce **vlastní nasazení** zadejte následující a potom po dokončení vyberte **koupit** pro nasazení šablony a vytvoření pravidla výstrahy.
 
@@ -200,14 +200,14 @@ Základní postup je následující:
 
 Můžete zobrazit a spravovat pravidla výstrah Azure Monitor pro kontejnery, upravit její prahovou hodnotu nebo nakonfigurovat [skupinu akcí](../platform/action-groups.md) pro cluster AKS. I když můžete provádět tyto akce z Azure Portal a Azure CLI, můžete je taky dělat přímo z clusteru AKS v Azure Monitor for Containers.
 
-1. Na panelu příkazů vyberte **Doporučené výstrahy** .
+1. Na panelu příkazů vyberte **Doporučené výstrahy**.
 
 2. Chcete-li změnit prahovou hodnotu, vyberte v podokně **Doporučené výstrahy** povolenou výstrahu. V poli **Upravit pravidlo** vyberte **kritéria výstrahy** , která chcete upravit.
 
-    * Pokud chcete změnit prahovou hodnotu pravidla upozornění, vyberte **podmínku** .
+    * Pokud chcete změnit prahovou hodnotu pravidla upozornění, vyberte **podmínku**.
     * Pokud chcete zadat existující nebo vytvořit skupinu akcí, vyberte **Přidat** nebo **vytvořit** v části **Skupina akcí** .
 
-Chcete-li zobrazit výstrahy vytvořené pro povolená pravidla, vyberte v podokně **Doporučené výstrahy** možnost **Zobrazit v upozorněních** . Budete přesměrováni do nabídky výstrahy pro cluster AKS, kde můžete zobrazit všechny výstrahy, které jsou aktuálně vytvořeny pro váš cluster.
+Chcete-li zobrazit výstrahy vytvořené pro povolená pravidla, vyberte v podokně **Doporučené výstrahy** možnost **Zobrazit v upozorněních**. Budete přesměrováni do nabídky výstrahy pro cluster AKS, kde můžete zobrazit všechny výstrahy, které jsou aktuálně vytvořeny pro váš cluster.
 
 ## <a name="configure-alertable-metrics-in-configmaps"></a>Konfigurace metrik s výstrahou v ConfigMaps
 

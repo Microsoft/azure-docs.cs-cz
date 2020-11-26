@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 10/15/2020
 ms.author: duau
 ms.openlocfilehash: 29b3cdde328a994e5806df810db15b529a6da9af
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92208093"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188662"
 ---
 # <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Kurz: Konfigurace metody geografického směrování provozu pomocí Traffic Manager
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > - Použijte profil Traffic Manager.
 > - Odstranit profil Traffic Manager.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -52,17 +52,17 @@ V tomto kurzu se naučíte:
 
 1. Vyberte **vytvořit** a nasaďte profil Traffic Manager.
 
-    :::image type="content" source="./media/traffic-manager-geographic-routing-method/create-traffic-manager-profile.png" alt-text="Vytvořit profil Traffic Manager":::
+    :::image type="content" source="./media/traffic-manager-geographic-routing-method/create-traffic-manager-profile.png" alt-text="Vytvoření stránky profilu Traffic Manager":::
 
 ## <a name="add-endpoints"></a>Přidat koncové body
 
 1. V seznamu vyberte profil Traffic Manager.
 
-    :::image type="content" source="./media/traffic-manager-geographic-routing-method/traffic-manager-list-geographic.png" alt-text="Vytvořit profil Traffic Manager":::
+    :::image type="content" source="./media/traffic-manager-geographic-routing-method/traffic-manager-list-geographic.png" alt-text="Traffic Manager zeměpisný seznam":::
 
 1. V části *Nastavení* vyberte **koncové body** a vyberte **+ Přidat** pro přidání nového koncového bodu.
 
-    :::image type="content" source="./media/traffic-manager-geographic-routing-method/add-geographic-endpoint.png" alt-text="Vytvořit profil Traffic Manager":::
+    :::image type="content" source="./media/traffic-manager-geographic-routing-method/add-geographic-endpoint.png" alt-text="Přidat koncové body":::
 
 1. Vyberte nebo zadejte následující nastavení: 
 
@@ -83,23 +83,23 @@ V tomto kurzu se naučíte:
 
 1. Opakujte poslední krok u všech koncových bodů, které chcete přidat pod tento profil, a pak vyberte **Uložit**.
 
-    :::image type="content" source="./media/traffic-manager-geographic-routing-method/traffic-manager-add-endpoint.png" alt-text="Vytvořit profil Traffic Manager":::
+    :::image type="content" source="./media/traffic-manager-geographic-routing-method/traffic-manager-add-endpoint.png" alt-text="Přidání koncového bodu služby Traffic Manager":::
 
 ## <a name="use-the-traffic-manager-profile"></a>Použít profil Traffic Manager
 
 1.  Na panelu hledání na portálu vyhledejte název **profilu Traffic Manager** , který jste vytvořili v předchozí části, a v zobrazených výsledcích vyberte profil Traffic Manageru.
     
-    :::image type="content" source="./media/traffic-manager-geographic-routing-method/search-traffic-manager-profile.png" alt-text="Vytvořit profil Traffic Manager":::
+    :::image type="content" source="./media/traffic-manager-geographic-routing-method/search-traffic-manager-profile.png" alt-text="Vyhledat profil Traffic Manageru":::
 
 1. V části **Profil služby Traffic Manager** se zobrazí název DNS nově vytvořeného profilu služby Traffic Manager. Název můžou použít všichni klienti (například tak, že se k němu přejde pomocí webového prohlížeče), aby se směroval do správného koncového bodu, který určuje typ směrování. V případě geografického směrování se Traffic Manager prohlíží na zdrojové IP adrese příchozího požadavku a určí oblast, ze které pochází. Pokud je tato oblast namapovaná na koncový bod, do ní se směruje provoz. Pokud tato oblast není namapovaná na koncový bod, Traffic Manager vrátí odpověď na dotaz na DATA.
 
-    :::image type="content" source="./media/traffic-manager-geographic-routing-method/traffic-manager-geographic-overview.png" alt-text="Vytvořit profil Traffic Manager":::
+    :::image type="content" source="./media/traffic-manager-geographic-routing-method/traffic-manager-geographic-overview.png" alt-text="Přehled geografických Traffic Manager":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud nepotřebujete profil Traffic Manager, najděte profil a vyberte **Odstranit profil**.
 
-:::image type="content" source="./media/traffic-manager-geographic-routing-method/delete-traffic-manager-profile.png" alt-text="Vytvořit profil Traffic Manager":::
+:::image type="content" source="./media/traffic-manager-geographic-routing-method/delete-traffic-manager-profile.png" alt-text="Odstranit profil Traffic Manager":::
 
 ## <a name="next-steps"></a>Další kroky
 

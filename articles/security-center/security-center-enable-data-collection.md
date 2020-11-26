@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 7d96b03598f90b45b7ecf88027be7408d8f161ea
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: 53130e395995b3533a45a96f897a0c6bcf1e4c71
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638763"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187183"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Automatické zřizování agentů a rozšíření z Azure Security Center
 
@@ -23,8 +23,8 @@ Shromažďování dat je nutné, aby poskytovala přehled o chybějících aktua
 
 Data se shromažďují pomocí:
 
-- **Agent Log Analytics** , který čte různé konfigurace a protokoly událostí související se zabezpečením z počítače a kopíruje data do vašeho pracovního prostoru pro účely analýzy. Příklady takových dat: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy a přihlášený uživatel.
-- **Rozšíření zabezpečení** , jako je [Azure Policy doplněk pro Kubernetes](../governance/policy/concepts/policy-for-kubernetes.md), která také poskytují data Security Center týkající se specializovaných typů prostředků.
+- **Agent Log Analytics**, který čte různé konfigurace a protokoly událostí související se zabezpečením z počítače a kopíruje data do vašeho pracovního prostoru pro účely analýzy. Příklady takových dat: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy a přihlášený uživatel.
+- **Rozšíření zabezpečení**, jako je [Azure Policy doplněk pro Kubernetes](../governance/policy/concepts/policy-for-kubernetes.md), která také poskytují data Security Center týkající se specializovaných typů prostředků.
 
 > [!TIP]
 > Jak Security Center vzrostly, byly také vypěstovány typy prostředků, které lze monitorovat. Počet rozšíření se také zvětšil. Automatické zřizování se rozšířilo na podporu dalších typů prostředků, a to díky využití možností Azure Policy.
@@ -103,7 +103,7 @@ Povolení automatického zřizování agenta Log Analytics:
     - **Ano** – nové nastavení pracovního prostoru se použije na všechny virtuální počítače a každý virtuální počítač, který je aktuálně připojený k Security Center vytvořenému pracovnímu prostoru, se znovu připojí k novému cílovému pracovnímu prostoru.
 
    > [!NOTE]
-   > Pokud vyberete **Ano** , neodstraňujte pracovní prostory vytvořené pomocí Security Center, dokud se všechny virtuální počítače znovu nepřipojí k novému cílovému pracovnímu prostoru. Tato operace se nezdařila, pokud je pracovní prostor odstraněn příliš brzy.
+   > Pokud vyberete **Ano**, neodstraňujte pracovní prostory vytvořené pomocí Security Center, dokud se všechny virtuální počítače znovu nepřipojí k novému cílovému pracovnímu prostoru. Tato operace se nezdařila, pokud je pracovní prostor odstraněn příliš brzy.
 
 
 ## <a name="enable-auto-provisioning-of-extensions"></a>Povolení automatického zřizování rozšíření
@@ -197,7 +197,7 @@ Ruční instalace agenta Log Analytics:
 
     1. Nastavte pracovní prostor, do kterého instalujete agenta. Ujistěte se, že je pracovní prostor ve stejném předplatném, které používáte v Security Center a máte oprávnění ke čtení a zápisu pro tento pracovní prostor.
 
-    1. Vyberte **Azure Defender on** a **Save (Uložit** ).
+    1. Vyberte **Azure Defender on** a **Save (Uložit**).
 
        >[!NOTE]
        >Pokud má pracovní prostor již povolené řešení **Security** nebo **SecurityCenterFree** , ceny se nastaví automaticky. 
@@ -232,7 +232,7 @@ Pokud je nakonfigurovaným pracovním prostorem pracovní prostor uživatele (ve
   
 - **V počítači je nainstalován agent System Center Operations Manager** – Security Center bude instalovat rozšíření agenta Log Analytics na straně sebe na stávající Operations Manager. Stávající agent Operations Manager bude pokračovat v hlášení na Server Operations Manager normálně. Agent Operations Manager a Agent Log Analytics sdílejí běžné běhové knihovny, které budou během tohoto procesu aktualizovány na nejnovější verzi. Pokud je nainstalovaná verze agenta Operations Manager 2012 **, nepovolujte** Automatické zřizování.
 
-- K **dispozici již existující rozšíření virtuálního počítače** :
+- K **dispozici již existující rozšíření virtuálního počítače**:
     - Pokud je agent monitorování nainstalován jako rozšíření, konfigurace rozšíření umožňuje vytváření sestav pouze do jednoho pracovního prostoru. Security Center nepřepisují existující připojení k pracovním prostorům uživatelů. Security Center bude ukládat data zabezpečení z virtuálního počítače v pracovním prostoru, který je už připojený, a to za předpokladu, že je na něm nainstalované řešení Security nebo securityFree. Security Center může v tomto procesu upgradovat verzi rozšíření na nejnovější verzi.  
     - Chcete-li zjistit, který pracovní prostor existující rozšíření odesílá data, spusťte test a [Ověřte připojení pomocí Azure Security Center](/archive/blogs/yuridiogenes/validating-connectivity-with-azure-security-center). Případně můžete otevřít Log Analytics pracovní prostory, vybrat pracovní prostor, vybrat virtuální počítač a podívat se na připojení agenta Log Analytics. 
     - Pokud máte prostředí, ve kterém je agent Log Analytics nainstalovaný na klientských pracovních stanicích a vytváření sestav do existujícího pracovního prostoru Log Analytics, Projděte si seznam [operačních systémů podporovaných Azure Security Center](security-center-os-coverage.md) , abyste se ujistili, že je váš operační systém podporovaný. Další informace najdete v tématu [existující zákazníci Log Analytics](./faq-azure-monitor-logs.md).
@@ -261,7 +261,7 @@ Vypnutí automatického zřizování agenta:
 >
 
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 -   Informace o tom, jak identifikovat Automatické zřizování problémů, najdete v tématu [monitorování problémů se stavem agenta](security-center-troubleshooting-guide.md#mon-agent).
 

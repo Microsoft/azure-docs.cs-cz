@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d7ec1edb779ddaf53cef02dd6e83bb3e719d0b4e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b096b24acd5cf65f6ad3e9eabb1d536b3aae0168
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503551"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187064"
 ---
 # <a name="tutorial---migrate-an-android-app-from-google-maps"></a>Kurz – migrace aplikace pro Android z Google Maps
 
@@ -35,7 +35,7 @@ Další informace o vývoji Android SDK pomocí Azure Maps naleznete v tématu [
 
 ## <a name="prerequisites"></a>Předpoklady 
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 2. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
@@ -65,7 +65,7 @@ Pokud chcete zobrazit mapu pomocí Google Maps SDK pro Android, provede se násl
 
     `implementation 'com.google.android.gms:play-services-maps:17.0.0'`
 
-3. Přidejte klíč rozhraní API pro Google Maps do oddílu aplikace v souboru  ** \_ \_api.xmlmapy Google ** :
+3. Přidejte klíč rozhraní API pro Google Maps do oddílu aplikace v souboru  **\_ \_api.xmlmapy Google** :
 
     ```xml
     <meta-data android:name="com.google.android.geo.API_KEY" android:value="YOUR_GOOGLE_MAPS_KEY"/>
@@ -769,7 +769,7 @@ Další informace o Azure Maps Android SDK:
 > [Přidání vrstvy symbolů na mapu pro Android](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Přidání obrazců na mapu pro Android](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+> [Přidání obrazců na mapu pro Android](./how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Změna stylů mapy v doplňkech Android Maps](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [Změna stylů mapy v doplňkech Android Maps](./set-android-map-styles.md)

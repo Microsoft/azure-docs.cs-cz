@@ -9,11 +9,11 @@ ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c476fe2af1fb4bddff4799609b164aab14f57b00
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023481"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187390"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Je Azure Virtual WAN v GA?
 

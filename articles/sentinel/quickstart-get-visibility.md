@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 26a29524e0bf329a368b3cd2281dd9b070b42a14
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 369847810cdb7f7e93a13f5d410f226d3663080d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660810"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188577"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Rychlý start: Začínáme se službou Azure Sentinel
 
@@ -91,12 +91,11 @@ Můžete vytvořit nový sešit úplně od začátku nebo použít vestavěný s
 Následující vzorový dotaz vám umožní porovnat trendy provozu v různých týdnech. Můžete snadno přepnout daného dodavatele zařízení a zdroje dat, na kterém jste dotaz spustili. V tomto příkladu se používá SecurityEvent ze systému Windows, takže ho můžete přepnout na AzureActivity nebo CommonSecurityLog na kterékoli jiné brány firewall.
 
 ```console
- |where DeviceVendor == "Palo Alto Networks":
-  // week over week query
-  SecurityEvent
-  | where TimeGenerated > ago(14d)
-  | summarize count() by bin(TimeGenerated, 1d)
-  | extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
+// week over week query
+SecurityEvent
+| where TimeGenerated > ago(14d)
+| summarize count() by bin(TimeGenerated, 1d)
+| extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
 ```
 
 Možná budete chtít vytvořit dotaz, který zahrnuje data z více zdrojů. Můžete vytvořit dotaz, který bude Azure Active Directory protokoly auditu pro nové uživatele, které jste právě vytvořili, a pak zkontrolovat protokoly Azure, abyste viděli, jestli uživatel začal provádět změny přiřazení role během 24 hodin od vytvoření. Tato podezřelá aktivita by se zobrazila na tomto řídicím panelu:

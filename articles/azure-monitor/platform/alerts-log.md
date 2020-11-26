@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 0842efe304faa9a0d94fbf71075f1bc16ff34014
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 61aba3e5792d1cc20da16686d052de91744dab76
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018201"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186775"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor
 
 ## <a name="overview"></a>Přehled
 
-Výstrahy protokolu umožňují uživatelům pomocí [log Analyticsho](../log-query/get-started-portal.md) dotazu vyhodnotit protokoly prostředků každou nastavenou frekvencí a vyvolat výstrahu na základě výsledků. Pravidla mohou aktivovat jednu nebo více akcí pomocí [skupin akcí](./action-groups.md). [Přečtěte si další informace o funkcích a terminologii výstrah protokolu](alerts-unified-log.md).
+Výstrahy protokolu umožňují uživatelům pomocí [log Analyticsho](../log-query/log-analytics-tutorial.md) dotazu vyhodnotit protokoly prostředků každou nastavenou frekvencí a vyvolat výstrahu na základě výsledků. Pravidla mohou aktivovat jednu nebo více akcí pomocí [skupin akcí](./action-groups.md). [Přečtěte si další informace o funkcích a terminologii výstrah protokolu](alerts-unified-log.md).
 
 V tomto článku se dozvíte, jak vytvářet a spravovat výstrahy protokolu pomocí Azure Monitor. Pravidla výstrah jsou definována třemi součástmi:
 - Cíl: konkrétní prostředek Azure, který se má monitorovat.
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak vytvářet a spravovat výstrahy protokolu pom
 Pravidla upozornění protokolů můžete vytvořit také pomocí šablon Azure Resource Manager, které jsou popsány v [samostatném článku](alerts-log-create-templates.md).
 
 > [!NOTE]
-> Data protokolu z [Log Analytics pracovního prostoru](../log-query/get-started-portal.md) lze odeslat do úložiště metrik Azure monitor. Výstrahy metrik mají [různé chování](alerts-metric-overview.md), což může být více žádoucí v závislosti na datech, se kterými pracujete. Informace o tom, co a jak můžete směrovat protokoly do metrik, najdete v tématu [Upozornění na metriky pro protokoly](alerts-metric-logs.md).
+> Data protokolu z [Log Analytics pracovního prostoru](../log-query/log-analytics-tutorial.md) lze odeslat do úložiště metrik Azure monitor. Výstrahy metrik mají [různé chování](alerts-metric-overview.md), což může být více žádoucí v závislosti na datech, se kterými pracujete. Informace o tom, co a jak můžete směrovat protokoly do metrik, najdete v tématu [Upozornění na metriky pro protokoly](alerts-metric-logs.md).
 
 ## <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Vytvořte pravidlo upozornění protokolu s Azure Portal
 
@@ -35,7 +35,7 @@ Tady je postup, jak začít psát dotazy na výstrahy:
 
 1. Přejít na prostředek, na kterém byste chtěli upozornit.
 1. V části **monitorování** vyberte **protokoly**.
-1. Zadejte dotaz na data protokolu, která mohou problém indikovat. V [tématu Příklady dotazů na výstrahy](../log-query/saved-queries.md) můžete pochopit, co můžete zjistit nebo začít [psát vlastní dotaz](../log-query/get-started-portal.md). Naučíte se také, [jak vytvářet optimalizované dotazy na upozornění](alerts-log-query.md).
+1. Zadejte dotaz na data protokolu, která mohou problém indikovat. V [tématu Příklady dotazů na výstrahy](../log-query/example-queries.md) můžete pochopit, co můžete zjistit nebo začít [psát vlastní dotaz](../log-query/log-analytics-tutorial.md). Naučíte se také, [jak vytvářet optimalizované dotazy na upozornění](alerts-log-query.md).
 1. Kliknutím na tlačítko + nové pravidlo výstrahy spustíte tok vytváření výstrah.
 
     ![Výstraha Log Analytics-set](media/alerts-log/AlertsAnalyticsCreate.png)
@@ -55,7 +55,7 @@ Tady je postup, jak začít psát dotazy na výstrahy:
 
 1. Výstrahy protokolu můžou být založené na dvou typech [**měr**](alerts-unified-log.md#measure):
     1. **Počet výsledků** – počet záznamů vrácených dotazem.
-    1. **Měření**  -  metriky *Agregovaná hodnota* počítaná pomocí souhrnu seskupené podle zvolených výrazů a výběru z [přihrádky ()](/azure/kusto/query/binfunction) Například:
+    1. **Měření**  -  metriky *Agregovaná hodnota* počítaná pomocí souhrnu seskupené podle zvolených výrazů a výběru z [přihrádky ()](/azure/kusto/query/binfunction) Příklad:
 
     ```Kusto
     // Reported errors
@@ -327,4 +327,3 @@ Po úspěšném vytvoření se vrátí 201. Po úspěšném dokončení aktualiz
 * Vytvářejte výstrahy protokolu pomocí [šablon Azure Resource Manager](./alerts-log-create-templates.md).
 * Porozumění [akcím Webhooku pro výstrahy protokolu](./alerts-log-webhook.md)
 * Přečtěte si další informace o [dotazech protokolu](../log-query/log-query-overview.md).
-

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: d203cb5ccef90fd09659ba64b7bcbc8b9be9e47a
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: d42a32e236eb73f2aa9f2f61d9708314783564dd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358069"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187289"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Rychlý Start – Prozkoumejte ukázkový scénář digitálních vláken Azure pomocí Průzkumníka aplikace ADT
 
@@ -35,7 +35,7 @@ Vzorový graf, se kterým budete pracovat, představuje sestavení se dvěma pod
 
 :::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '. Kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny.":::
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto rychlého startu budete potřebovat předplatné Azure. Pokud ho ještě nemáte, vytvořte si [ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) hned teď.
 
@@ -66,6 +66,7 @@ V opačném případě můžete místní Azure CLI nainstalovat pomocí těchto 
 1. Pomocí [tohoto odkazu na instalaci](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) dokončete instalaci, která odpovídá vašemu operačnímu systému.
 1. Otevřete na svém počítači okno konzoly.
 1. Spusťte `az login` příkaz a podle pokynů k ověření se přihlaste ke svému účtu Azure.
+1. Možný poslední krok: Pokud v rámci tohoto účtu použijete více předplatných Azure, nastavte kontext ověřování na předplatné Azure, které obsahuje instanci digitálního vlákna Azure, a to spuštěním `az account set --subscription "<your-subscription-name-or-ID>"` (hodnota název nebo ID předplatného bude fungovat).
 
 Po přihlášení by měl Průzkumník aplikace ADT při spuštění v další části automaticky zvolit přihlašovací údaje Azure.
 
@@ -90,7 +91,7 @@ Otevřete okno konzoly do umístění složky **Azure_Digital_Twins__ADT__explor
 
    :::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="Průzkumník ADT – zvýrazní ikonu přihlášení v horní části okna. Ikona zobrazuje jednoduché Silhouette osoby překrývající Silhouette klíče." lightbox="media/quickstart-adt-explorer/sign-in.png":::
 
-1. Zadejte adresu URL instance digitálních vláken Azure, kterou jste shromáždili dříve v části [předpoklady](#prerequisites) , ve formátu *https://{instance Name Host}*.
+1. Zadejte adresu URL instance digitálních vláken Azure, kterou jste shromáždili dříve v části [Nastavení instance digitálních vláken Azure](#set-up-an-azure-digital-twins-instance) , ve formátu *https://{instance hosta}*.
 
 >[!NOTE]
 > Tyto informace můžete kdykoli znovu navštívit nebo upravit tak, že vyberete stejnou ikonu pro opětovné otevření **přihlašovacího** pole. Zachová se hodnoty, které jste předali.
@@ -108,7 +109,7 @@ V dalším kroku naimportujete vzorový scénář a graf do nástroje ADT Explor
 
 Prvním krokem v řešení digitálních vláken Azure je definování slovníku pro vaše prostředí. Vytvoříte vlastní [modely](concepts-models.md) , které popisují typy entit, které ve vašem prostředí existují.
 
-Každý model je napsán v jazyce, jako je JSON-LD, označovaný jako Digital DTDL Definition Language (). Každý model popisuje jeden typ entity z pohledu jeho *vlastností* , *telemetrie* , *vztahů* a *komponent*. Později tyto modely použijete jako základ pro digitální vlákna, které představuje konkrétní instance těchto typů.
+Každý model je napsán v jazyce, jako je JSON-LD, označovaný jako Digital DTDL Definition Language (). Každý model popisuje jeden typ entity z pohledu jeho *vlastností*, *telemetrie*, *vztahů* a *komponent*. Později tyto modely použijete jako základ pro digitální vlákna, které představuje konkrétní instance těchto typů.
 
 Obvykle při vytváření modelu dokončíte tři kroky:
 
@@ -313,7 +314,7 @@ Pokud máte v úmyslu pokračovat na kurzy digitálních vláken Azure, můžete
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-Nakonec odstraňte ukázkovou složku projektu **Azure_Digital_Twins__ADT__explorer** , kterou jste stáhli do svého místního počítače. Možná bude nutné odstranit verze zip i unzip.
+Nakonec odstraňte ukázkovou složku projektu **Azure_Digital_Twins__ADT__explorer**, kterou jste stáhli do svého místního počítače. Možná bude nutné odstranit verze zip i unzip.
 
 ## <a name="next-steps"></a>Další kroky
 

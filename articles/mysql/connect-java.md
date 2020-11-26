@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
 ms.openlocfilehash: 457f7e07391c647d2ab0e7d78197086f6f5e2cf7
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337435"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187778"
 ---
 # <a name="quickstart-use-java-and-jdbc-with-azure-database-for-mysql"></a>Rychlý Start: použití jazyků Java a JDBC s Azure Database for MySQL
 
@@ -43,14 +43,14 @@ AZ_MYSQL_PASSWORD=<YOUR_MYSQL_PASSWORD>
 AZ_LOCAL_IP_ADDRESS=<YOUR_LOCAL_IP_ADDRESS>
 ```
 
-Zástupné symboly nahraďte následujícími hodnotami, které se používají v celém tomto článku:
+Zástupné symboly nahraďte následujícími hodnotami, které se používají v tomto článku:
 
 - `<YOUR_DATABASE_NAME>`: Název serveru MySQL. Měl by být jedinečný v rámci Azure.
-- `<YOUR_AZURE_REGION>`: Oblast Azure, kterou budete používat. `eastus`Ve výchozím nastavení můžete použít, ale doporučujeme, abyste nakonfigurovali oblast blíže k umístění, kde žijete. Můžete mít úplný seznam oblastí, které jsou k dispozici, zadáním `az account list-locations` .
-- `<YOUR_MYSQL_PASSWORD>`: Heslo serveru databáze MySQL. Heslo by mělo mít minimálně osm znaků. Znaky by měly být ze tří z následujících kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0-9) a jiné než alfanumerické znaky (!, $, #,% a tak dále).
+- `<YOUR_AZURE_REGION>`: Oblast Azure, kterou budete používat. Standardně můžete použít `eastus`, ale doporučujeme nakonfigurovat oblast blíže k místu, kde se nacházíte. Můžete mít úplný seznam oblastí, které jsou k dispozici, zadáním `az account list-locations` .
+- `<YOUR_MYSQL_PASSWORD>`: Heslo serveru databáze MySQL. Toto heslo by mělo mít minimálně osm znaků. Znaky by měly pocházet z následujících tří kategorií: Velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0–9) a jiné než alfanumerické znaky (!, $, #, % atd.).
 - `<YOUR_LOCAL_IP_ADDRESS>`: IP adresa místního počítače, ze kterého spouštíte aplikaci Java. Jedním pohodlným způsobem, jak ho najít, je ukázat svůj prohlížeč na [whatismyip.Akamai.com](http://whatismyip.akamai.com/).
 
-Potom vytvořte skupinu prostředků:
+Následně vytvořte skupinu prostředků:
 
 ```azurecli
 az group create \
@@ -60,15 +60,15 @@ az group create \
 ```
 
 > [!NOTE]
-> Používáme `jq` nástroj, který je ve výchozím nastavení nainstalovaný na [Azure Cloud Shell](https://shell.azure.com/) , aby se zobrazila data JSON a bylo čitelnější.
-> Pokud tento nástroj nechcete, můžete bezpečně odebrat `| jq` část všech příkazů, které budeme používat.
+> Používáme nástroj `jq`, který je standardně nainstalován v [Azure Cloud Shellu](https://shell.azure.com/) a umožňuje zobrazit data JSON v čitelnějším formátu.
+> Pokud tento nástroj nepoužíváte, můžete ve všech příkazech, které budeme používat, klidně odebrat část `| jq`.
 
 ## <a name="create-an-azure-database-for-mysql-instance"></a>Vytvoření instance Azure Database for MySQL
 
-První věc, kterou vytvoříme, je spravovaný server MySQL.
+Jako první vytvoříme spravovaný server MySQL.
 
 > [!NOTE]
-> Podrobnější informace o vytváření serverů MySQL najdete v tématu [vytvoření serveru Azure Database for MySQL pomocí Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md).
+> Podrobnější informace o vytváření serverů MySQL najdete v článku [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md).
 
 V [Azure Cloud Shell](https://shell.azure.com/)spusťte následující skript:
 
@@ -88,7 +88,7 @@ Tento příkaz vytvoří malý server MySQL.
 
 ### <a name="configure-a-firewall-rule-for-your-mysql-server"></a>Konfigurace pravidla brány firewall pro server MySQL
 
-Instance Azure Database for MySQL jsou ve výchozím zabezpečení zabezpečené. Mají bránu firewall, která nepovoluje žádné příchozí připojení. Aby bylo možné používat vaši databázi, je nutné přidat pravidlo brány firewall, které umožní místní IP adrese přístup k databázovému serveru.
+Instance Azure Database for MySQL jsou ve výchozím zabezpečení zabezpečené. Obsahuje bránu firewall, která nepovoluje žádné příchozí připojení. Aby bylo možné používat vaši databázi, je nutné přidat pravidlo brány firewall, které umožní místní IP adrese přístup k databázovému serveru.
 
 Vzhledem k tomu, že jste místní IP adresu nakonfigurovali na začátku tohoto článku, můžete bránu firewall serveru otevřít spuštěním:
 
@@ -104,7 +104,7 @@ az mysql server firewall-rule create \
 
 ### <a name="configure-a-mysql-database"></a>Konfigurace databáze MySQL
 
-Server MySQL, který jste vytvořili dříve, je prázdný. Nemá žádnou databázi, kterou můžete použít s aplikací Java. Vytvořte novou databázi s názvem `demo` :
+Server MySQL, který jste vytvořili dříve, je prázdný. Nemá žádnou databázi, kterou můžete použít s aplikací Java. Vytvořte novou databázi s názvem `demo`:
 
 ```azurecli
 az mysql db create \
@@ -163,7 +163,7 @@ password=$AZ_MYSQL_PASSWORD
 - Nahraďte `$AZ_MYSQL_PASSWORD` proměnnou hodnotou, kterou jste nakonfigurovali na začátku tohoto článku.
 
 > [!NOTE]
-> Připojíme `?serverTimezone=UTC` se ke konfigurační vlastnosti `url` , aby ovladač JDBC informoval, že má při připojování k databázi používat formát data UTC (nebo koordinovaný světový čas). V opačném případě by náš server Java nepoužíval stejný formát data jako databáze, což by způsobilo chybu.
+> Tím, že ke konfigurační vlastnosti `url` přidáme `?serverTimezone=UTC`, ovladači JDBC sdělíme, aby při připojování k databázi používal datum ve formátu UTC (koordinovaný univerzální čas). V opačném případě by server Java nepoužíval stejný datumový formát jako databáze, což by způsobilo chybu.
 
 ### <a name="create-an-sql-file-to-generate-the-database-schema"></a>Vytvoření souboru SQL pro generování schématu databáze
 
@@ -174,7 +174,7 @@ DROP TABLE IF EXISTS todo;
 CREATE TABLE todo (id SERIAL PRIMARY KEY, description VARCHAR(255), details VARCHAR(4096), done BOOLEAN);
 ```
 
-## <a name="code-the-application"></a>Kódování aplikace
+## <a name="code-the-application"></a>Vytvoření kódu aplikace
 
 ### <a name="connect-to-the-database"></a>Připojte se k databázi.
 
@@ -495,7 +495,7 @@ Spuštění hlavní třídy by nyní mělo mít následující výstup:
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Blahopřejeme vám. Vytvořili jste aplikaci Java, která používá JDBC k ukládání a načítání dat z Azure Database for MySQL.
+Gratulujeme! Vytvořili jste aplikaci Java, která používá JDBC k ukládání a načítání dat z Azure Database for MySQL.
 
 Pokud chcete vyčistit všechny prostředky používané v rámci tohoto rychlého startu, odstraňte skupinu prostředků pomocí následujícího příkazu:
 

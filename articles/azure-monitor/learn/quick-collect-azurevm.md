@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: fb7a32199117be76e411155910d558ef187398ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6cc9c6af4592956b6498e826ef65b556e5780f34
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91448249"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186826"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Shromažďování dat z virtuálního počítače Azure pomocí Azure Monitor
 
@@ -30,7 +30,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
     ![portál Azure](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
-2. Vyberte **vytvořit**a pak vyberte volby pro následující položky:
+2. Vyberte **vytvořit** a pak vyberte volby pro následující položky:
 
    * Zadejte název nového **pracovního prostoru služby Log Analytics**, například *DefaultLAWorkspace*.  
    * Vyberte **předplatné**, které má být cílem propojení, výběrem z rozevíracího seznamu, pokud výchozí vybrané předplatné není vhodné.
@@ -99,7 +99,7 @@ Azure Monitor může shromažďovat události z protokolů událostí systému W
 
 2. Protokol událostí přidáte zadáním názvu protokolu.  Zadejte **SYSLOG** a potom vyberte znaménko plus **+** .  
 
-3. V tabulce zrušte výběr **informací o**závažnosti, **Upozornění** a **ladění**. 
+3. V tabulce zrušte výběr **informací o** závažnosti, **Upozornění** a **ladění**. 
 
 4. V horní části stránky vyberte **Uložit** a uložte konfiguraci.
 
@@ -141,4 +141,4 @@ Teď, když shromažďujete data o provozu a výkonu z virtuálních počítač�
 Pokud chcete zjistit, jak zobrazit a analyzovat data, pokračujte k následujícímu kurzu.
 
 > [!div class="nextstepaction"]
-> [Zobrazení nebo analýza dat v Log Analytics](../log-query/get-started-portal.md)
+> [Zobrazení nebo analýza dat v Log Analytics](../log-query/log-analytics-tutorial.md)

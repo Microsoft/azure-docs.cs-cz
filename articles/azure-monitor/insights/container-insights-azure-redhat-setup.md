@@ -3,12 +3,12 @@ title: Konfigurace Azure Red Hat OpenShift v3. x s Azure Monitor for Containers 
 description: Tento článek popisuje, jak nakonfigurovat monitorování clusteru Kubernetes s Azure Monitor hostovaným na Azure Red Hat OpenShift verze 3 a vyšší.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 1186056559d6497b2b48cb3533a0967d6d61f38e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 2cd39c13ce7d67b2bfcfaca0a6f627e19d289783
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216364"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186911"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Konfigurace Azure Red Hat OpenShift V3 pomocí Azure Monitor for Containers
 
@@ -18,7 +18,7 @@ ms.locfileid: "92216364"
 > Od října 2020 už nebudete moct vytvářet nové clustery 3,11.
 > Stávající clustery 3,11 budou fungovat i nadále až do června 2022, ale po tomto datu již nebudou podporovány.
 >
-> Podle tohoto průvodce [vytvořte cluster Azure Red Hat OpenShift 4](https://docs.microsoft.com/azure/openshift/tutorial-create-cluster).
+> Podle tohoto průvodce [vytvořte cluster Azure Red Hat OpenShift 4](../../openshift/tutorial-create-cluster.md).
 > Pokud máte konkrétní otázky, [kontaktujte nás prosím](mailto:aro-feedback@microsoft.com).
 
 Azure Monitor for Containers poskytuje bohatou monitorovací prostředí pro clustery Azure Kubernetes Service (AKS) a AKS Engine. Tento článek popisuje, jak povolit monitorování clusterů Kubernetes hostovaných v [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) verze 3 a nejnovější verzi verze 3, aby bylo možné dosáhnout podobného monitorování.
@@ -81,7 +81,7 @@ Azure Monitor for Containers podporuje monitorování Azure Red Hat OpenShift, j
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
-1. Ve výstupu vyhledejte název pracovního prostoru a zkopírujte úplné ID prostředku, které Log Analytics pracovní prostor pod **ID**pole.
+1. Ve výstupu vyhledejte název pracovního prostoru a zkopírujte úplné ID prostředku, které Log Analytics pracovní prostor pod **ID** pole.
 
 ## <a name="enable-for-a-new-cluster-using-an-azure-resource-manager-template"></a>Povolení pro nový cluster pomocí šablony Azure Resource Manager
 
@@ -168,13 +168,13 @@ Provedením následujících kroků povolíte monitorování clusteru Azure Red 
 
 ### <a name="from-the-azure-portal"></a>Pomocí webu Azure Portal
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. V nabídce Azure Portal nebo na domovské stránce vyberte možnost **Azure monitor**. V části **přehledy** vyberte **kontejnery**.
 
 3. Na stránce **monitor – kontejnery** vyberte **nemonitorované clustery**.
 
-4. V seznamu nemonitorovaných clusterů Najděte cluster v seznamu a klikněte na **Povolit**. Výsledky v seznamu můžete zjistit tak, že ve sloupci **typu clusteru**vyhledáte hodnotu **ARO** společnosti.
+4. V seznamu nemonitorovaných clusterů Najděte cluster v seznamu a klikněte na **Povolit**. Výsledky v seznamu můžete zjistit tak, že ve sloupci **typu clusteru** vyhledáte hodnotu **ARO** společnosti.
 
 5. Pokud máte existující pracovní prostor Log Analytics v rámci stejného předplatného jako cluster, vyberte v rozevíracím seznamu na stránce **připojování k Azure monitor for Containers** .  
     Seznam předchází výchozí pracovní prostor a umístění, do kterého se cluster nasazuje v rámci předplatného.

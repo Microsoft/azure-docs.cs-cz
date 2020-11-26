@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: b7248a3a66e0eeca4d86568f80af82bf2d89701f
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: a5cb5831090987f1b620593843ddba817d8e68d4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96031165"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188118"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Správa zdrojového kódu v Azure synapse studiu
 
@@ -38,7 +38,7 @@ Na plátně pro vytváření synapse studia vyberte **synapse** a pak vyberte **
 
 ![Konfigurace nastavení úložiště kódu z vytváření obsahu](media/configure-repo-1.png)
 
-### <a name="configuration-method-2-management-hub"></a>Konfigurační Metoda 2: Centrum správy
+### <a name="configuration-method-2-manage-hub"></a>Konfigurační Metoda 2: Správa centra
 
 Přejít do centra pro správu synapse studia. V části **Správa zdrojového kódu** vyberte **Konfigurace Gitu** . Pokud nemáte připojené žádné úložiště, klikněte na **Konfigurovat**.
 
@@ -217,6 +217,11 @@ Pokud větev publikování není synchronizovaná s branou pro spolupráci a obs
 
 1. Vytvoření žádosti o přijetí změn, která sloučí změny do větve pro spolupráci 
 
+## <a name="unsupported-features"></a>Nepodporované funkce
+
+- Synapse Studio nepovoluje vybírání určitých položek potvrzení nebo selektivního publikování prostředků. 
+- Synapse Studio nepodporuje přizpůsobení zprávy potvrzení.
+- V případě návrhu se akce Odstranit v studiu dokončí přímo do Gitu.
 
 ## <a name="next-steps"></a>Další kroky
 

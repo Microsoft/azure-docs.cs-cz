@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 68daec6bb6682d2b488abacb2f79bdfadc4ae628
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: bedf4dd2a955a8ffe648b47c1691e77ac1fdb8f5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076568"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187795"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Řešení potíží s rolemi cloudových služeb, které se nedaří spustit
 Tady jsou některé běžné problémy a řešení týkající se rolí Azure Cloud Services, které se nedaří spustit.
@@ -27,11 +27,11 @@ Tady jsou některé běžné problémy a řešení týkající se rolí Azure Cl
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="missing-dlls-or-dependencies"></a>Chybějící knihovny DLL nebo závislosti
-Nereagující role a role, které se cyklují mezi **inicializací**, **zaneprázdnění**a stavy **zastavení** , mohou být způsobeny chybějícími knihovnami DLL nebo sestaveními.
+Nereagující role a role, které se cyklují mezi **inicializací**, **zaneprázdnění** a stavy **zastavení** , mohou být způsobeny chybějícími knihovnami DLL nebo sestaveními.
 
 Příznaky chybějících knihoven DLL nebo sestavení mohou být:
 
-* Vaše instance role se cykluje prostřednictvím **inicializace**, **zaneprázdnění**a stavu **zastavení** .
+* Vaše instance role se cykluje prostřednictvím **inicializace**, **zaneprázdnění** a stavu **zastavení** .
 * Vaše instance role byla přesunuta do **připraveného** , ale pokud přejdete na webovou aplikaci, stránka se nezobrazí.
 
 Existuje několik doporučených metod pro zkoumání těchto problémů.
@@ -47,13 +47,13 @@ Další informace o kompletní chybě najdete v části Konfigurace web.config p
 Zobrazení dalších úplných chyb bez použití funkce Vzdálená plocha:
 
 1. Otevřete řešení v Microsoft Visual Studio.
-2. V **Průzkumník řešení**vyhledejte soubor web.config a otevřete ho.
+2. V **Průzkumník řešení** vyhledejte soubor web.config a otevřete ho.
 3. V souboru web.config vyhledejte část System. Web a přidejte následující řádek:
 
     ```xml
     <customErrors mode="Off" />
     ```
-4. Soubor uložte.
+4. Uložte soubor.
 5. Znovu zabalit a znovu nasaďte službu.
 
 Po opětovném nasazení služby se zobrazí chybová zpráva s názvem chybějícího sestavení nebo knihovny DLL.
@@ -66,7 +66,7 @@ Pomocí vzdálené plochy můžete získat přístup k roli a vzdáleně zobrazi
 3. V portál Microsoft Azure, jakmile instance zobrazí stav **připraveno**, vzdáleně do instance. Další informace o používání vzdálené plochy s Cloud Services najdete v tématu [vzdálené instance rolí](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances).
 5. Přihlaste se k virtuálnímu počítači pomocí přihlašovacích údajů, které jste zadali při konfiguraci vzdálené plochy.
 6. Otevřete příkazové okno.
-7. Zadejte příkaz `IPconfig`.
+7. Zadejte `IPconfig`.
 8. Poznamenejte si hodnotu adresy IPV4.
 9. Otevřete Internet Explorer.
 10. Zadejte adresu a název webové aplikace. Například, `http://<IPV4 Address>/default.aspx`.
@@ -77,7 +77,7 @@ Když přejdete na web, budou se teď vracet explicitní chybové zprávy:
 * Popis: při provádění aktuálního webového požadavku došlo k neošetřené výjimce. Přečtěte si prosím trasování zásobníku, kde najdete další informace o chybě a kde vznikly v kódu.
 * Podrobnosti výjimky: System. IO. FIleNotFoundException: nelze načíst soubor nebo sestavení Microsoft. WindowsAzure. StorageClient, Version = 1.1.0.0, Culture = neutral, PublicKeyToken = 31bf856ad364e35 nebo jedna z jeho závislostí. Systém nemůže najít zadaný soubor.
 
-Například:
+Příklad:
 
 ![Explicitní chyba serveru v aplikaci/](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 
@@ -114,7 +114,7 @@ Pomocí těchto kroků nasaďte službu s povoleným IntelliTrace:
 Chcete-li vyřešit chybějící DLL a chyby sestavení, postupujte podle následujících kroků:
 
 1. Otevřete řešení v sadě Visual Studio.
-2. V **Průzkumník řešení**otevřete složku **odkazy** .
+2. V **Průzkumník řešení** otevřete složku **odkazy** .
 3. Klikněte na sestavení identifikované v chybě.
 4. V podokně **vlastnosti** Najděte položku **Kopírovat místní vlastnost** a nastavte hodnotu na **true**.
 5. Znovu nasaďte cloudovou službu.

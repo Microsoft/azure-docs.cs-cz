@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.openlocfilehash: ee88a7cc187644c89aca5656df9ab9ae48a5a056
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096908"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187557"
 ---
 1. Spusťte Eclipse.
 
@@ -35,7 +35,7 @@ ms.locfileid: "92096908"
 
    ![Snímek obrazovky s průzkumníkem balíčků](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-04-convert-to-maven-project.png)
 
-1. Zobrazí se okno **Create new POM** (Vytvořit nový POM). Do pole **ID skupiny** zadejte *com. Microsoft. cognitiveservices Account. Speech. Samples*a do pole **ID artefaktu** zadejte *rychlý Start*. Pak vyberte **Dokončit**.
+1. Zobrazí se okno **Create new POM** (Vytvořit nový POM). Do pole **ID skupiny** zadejte *com. Microsoft. cognitiveservices Account. Speech. Samples* a do pole **ID artefaktu** zadejte *rychlý Start*. Pak vyberte **Dokončit**.
 
    ![Snímek obrazovky s oknem Create new POM (Vytvořit nový POM)](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-05-configure-maven-pom.png)
 

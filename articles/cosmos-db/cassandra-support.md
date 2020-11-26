@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: ecf4229c95ff9103cd27fd161fdd19c9e7a0f76b
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 8c51450fb6ce5c381784e6aaf9b1a66c3c4ff153
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636958"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188543"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Funkce Apache Cassandra, které podporuje rozhraní API Cassandra pro Azure Cosmos DB 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -50,7 +50,7 @@ Rozhraní API Cassandra pro Azure Cosmos DB podporuje následující datové typ
 | blob  | Ano |
 | boolean  | Ano |
 | counter  | Ano |
-| datum  | Ano |
+| date  | Ano |
 | decimal  | Ano |
 | double  | Ano |
 | float  | Ano |
@@ -84,7 +84,7 @@ Rozhraní API Cassandra pro Azure Cosmos DB podporuje tyto funkce CQL:
 | Klíčové | Ano |
 | TTL | Ano |
 | writetime | Ano |
-| přetypování | Ne |
+| přetypování | No |
 
 > [!NOTE]
 > \* Rozhraní API Cassandra podporuje token jako projekci nebo selektor a povoluje token (PK) na levé straně klauzule WHERE. Například `WHERE token(pk) > 1024` je podporován, ale není `WHERE token(pk) > token(100)` podporován. **not**
@@ -139,49 +139,49 @@ Azure Cosmos DB podporuje u účtů rozhraní API Cassandra následující datab
 |---------|---------|
 | POVOLENÍ FILTROVÁNÍ | Ano |
 | ZMĚNIT MÍSTO NA DISKU | Není k dispozici (služba PaaS, interně spravovaná replikace)|
-| ZMĚNIT MATERIALIZOVANÉ ZOBRAZENÍ | Ne |
-| ZMĚNIT ROLI | Ne |
+| ZMĚNIT MATERIALIZOVANÉ ZOBRAZENÍ | No |
+| ZMĚNIT ROLI | No |
 | ALTER TABLE | Ano |
-| ZMĚNIT TYP | Ne |
-| ZMĚNIT UŽIVATELE | Ne |
+| ZMĚNIT TYP | No |
+| ZMĚNIT UŽIVATELE | No |
 | PARTIE | Ano (pouze nezaznamenaná dávka)|
 | KOMPAKTNÍ ÚLOŽIŠTĚ | Není k dispozici (služba PaaS) |
-| VYTVOŘIT AGREGOVANOU | Ne | 
-| VYTVOŘIT VLASTNÍ INDEX (SASI) | Ne |
+| VYTVOŘIT AGREGOVANOU | No | 
+| VYTVOŘIT VLASTNÍ INDEX (SASI) | No |
 | CREATE INDEX | Ano (bez [zadání názvu indexu](cassandra-secondary-index.md)a indexů na klíčích clusteringu nebo celá zmrazená kolekce není podporovaná) |
-| CREATE FUNCTION | Ne |
+| CREATE FUNCTION | No |
 | VYTVOŘIT prostor (nastavení replikace se ignorují) | Ano |
-| VYTVOŘIT MATERIALIZOVANÉ ZOBRAZENÍ | Ne |
+| VYTVOŘIT MATERIALIZOVANÉ ZOBRAZENÍ | No |
 | CREATE TABLE | Ano |
-| VYTVOŘIT AKTIVAČNÍ UDÁLOST | Ne |
+| VYTVOŘIT AKTIVAČNÍ UDÁLOST | No |
 | VYTVOŘIT TYP | Ano |
-| VYTVOŘIT ROLI | Ne |
-| VYTVOŘIT uživatele (zastaralé v nativní Apache Cassandra) | Ne |
+| VYTVOŘIT ROLI | No |
+| VYTVOŘIT uživatele (zastaralé v nativní Apache Cassandra) | No |
 | DELETE | Ano |
 | Odstranit (odlehčené transakce s PODMÍNKou IF)| Ano |
-| DISTINCT | Ne |
-| ZRUŠIT AGREGAČNÍ | Ne |
-| DROP FUNCTION | Ne |
+| DISTINCT | No |
+| ZRUŠIT AGREGAČNÍ | No |
+| DROP FUNCTION | No |
 | DROP INDEX | Ano |
 | ODKLÁDACÍ MÍSTO | Ano |
-| VYŘADIT MATERIALIZOVANÉ ZOBRAZENÍ | Ne |
-| ROLE ZRUŠENÍ | Ne |
+| VYŘADIT MATERIALIZOVANÉ ZOBRAZENÍ | No |
+| ROLE ZRUŠENÍ | No |
 | DROP TABLE | Ano |
-| VYŘADIT AKTIVAČNÍ UDÁLOST | Ne | 
+| VYŘADIT AKTIVAČNÍ UDÁLOST | No | 
 | TYP PŘETAŽENÍ | Ano |
-| Přetažení uživatele (zastaralé v nativní Apache Cassandra) | Ne |
-| GRANT | Ne |
+| Přetažení uživatele (zastaralé v nativní Apache Cassandra) | No |
+| GRANT | No |
 | INSERT | Ano |
 | Vložit (odlehčené transakce s PODMÍNKou IF)| Ano |
-| OPRÁVNĚNÍ K VYPSÁNÍ | Ne |
-| SEZNAM ROLÍ | Ne |
-| SEZNAM uživatelů (zastaralých v nativních Apache Cassandra) | Ne |
-| REVOKE | Ne |
+| OPRÁVNĚNÍ K VYPSÁNÍ | No |
+| SEZNAM ROLÍ | No |
+| SEZNAM uživatelů (zastaralých v nativních Apache Cassandra) | No |
+| REVOKE | No |
 | SELECT | Ano |
-| VYBRAT (odlehčené transakce s PODMÍNKou IF)| Ne |
+| VYBRAT (odlehčené transakce s PODMÍNKou IF)| No |
 | UPDATE | Ano |
-| AKTUALIZACE (lehké transakce s PODMÍNKou IF)| Ne |
-| ZKRÁTIT | Ne |
+| AKTUALIZACE (lehké transakce s PODMÍNKou IF)| No |
+| ZKRÁTIT | No |
 | USE | Ano |
 
 ## <a name="json-support"></a>Podpora JSON
@@ -189,15 +189,15 @@ Azure Cosmos DB podporuje u účtů rozhraní API Cassandra následující datab
 |---------|---------|
 | VYBRAT JSON | Ano |
 | VLOŽIT JSON | Ano |
-| fromJson() | Ne |
-| toJson () | Ne |
+| fromJson() | No |
+| toJson () | No |
 
 
 ## <a name="cassandra-api-limits"></a>Omezení rozhraní API Cassandra
 
 Rozhraní API Cassandra pro Azure Cosmos DB nemá žádná omezení velikosti dat uložených v tabulce. Když se dodrží limity klíče oddílu, je možné uložit stovky terabajtů nebo petabajtů dat. Podobně všechny ekvivalenty entit nebo řádků nemají omezení počtu sloupců. Celková velikost entity však nesmí překročit 2 MB. Data na klíč oddílu nesmí být větší než 20 GB jako u všech ostatních rozhraní API.
 
-## <a name="tools"></a>Nástroje 
+## <a name="tools"></a>nástroje 
 
 Rozhraní API Cassandra pro Azure Cosmos DB je platforma pro spravované služby. Ke správě clusteru nevyžaduje žádnou režii ani nástroje řízení, jako jsou například systém uvolňování paměti, Java Virtual Machine (JVM) a nodetool. Podporuje nástroje, jako je cqlsh, které využívá kompatibilitu Binary CQLv4. 
 
@@ -205,7 +205,7 @@ Rozhraní API Cassandra pro Azure Cosmos DB je platforma pro spravované služby
 
 ## <a name="hosted-cql-shell-preview"></a>Hostované prostředí CQL (Preview)
 
-Hosted Native Cassandra Shell (CQLSH v 5.0.1) můžete otevřít přímo z Průzkumník dat v [Azure Portal](data-explorer.md) nebo v [Průzkumníku Azure Cosmos](https://cosmos.azure.com/). Než povolíte prostředí CQL, musíte ve svém účtu [Povolit funkci poznámkových blocích](enable-notebooks.md) (Pokud ještě není povolená, zobrazí se vám výzva při kliknutí `Open Cassandra Shell` ). Podívejte se na zvýrazněnou poznámku v části [Povolení poznámkových bloků pro účty Azure Cosmos DB](enable-notebooks.md) pro podporované oblasti Azure.
+Hosted Native Cassandra Shell (CQLSH v 5.0.1) můžete otevřít přímo z Průzkumník dat v [Azure Portal](data-explorer.md) nebo v [Průzkumníkovi Azure Cosmos DB](https://cosmos.azure.com/). Než povolíte prostředí CQL, musíte ve svém účtu [Povolit funkci poznámkových blocích](enable-notebooks.md) (Pokud ještě není povolená, zobrazí se vám výzva při kliknutí `Open Cassandra Shell` ). Podívejte se na zvýrazněnou poznámku v části [Povolení poznámkových bloků pro účty Azure Cosmos DB](enable-notebooks.md) pro podporované oblasti Azure.
 
 :::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="Otevřít CQLSH":::
 

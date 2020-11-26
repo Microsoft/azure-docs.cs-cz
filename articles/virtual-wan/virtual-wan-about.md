@@ -9,11 +9,11 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
 ms.openlocfilehash: 69525173aa5c4af536105a4e897ee4860f021b6c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91267427"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187424"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Co je Azure Virtual WAN?
 
@@ -95,7 +95,7 @@ Virtuální síť WAN umožňuje přenosové připojení mezi virtuální sítě
 
 Směrovač může mít čtyři stavy směrování: zřizování, zřizování, neúspěšné nebo žádné. **Stav směrování** je umístěný v Azure Portal tak, že přejdete na stránku virtuálního centra.
 
-* Stav **žádný** označuje, že virtuální rozbočovač nezřídil směrovač. K tomu může dojít, pokud je virtuální síť WAN typu *Basic*nebo pokud byl virtuální rozbočovač nasazen před zpřístupněním služby.
+* Stav **žádný** označuje, že virtuální rozbočovač nezřídil směrovač. K tomu může dojít, pokud je virtuální síť WAN typu *Basic* nebo pokud byl virtuální rozbočovač nasazen před zpřístupněním služby.
 * Stav **selhání** indikuje selhání při vytváření instance. Chcete-li vytvořit instanci nebo resetovat směrovač, můžete najít možnost **resetovat směrovač** tak, že přejdete na stránku Přehled virtuálního centra v Azure Portal.
 
 Každý směrovač virtuálního rozbočovače podporuje agregovanou propustnost až do 50 GB/s. Připojení mezi virtuálními síťovými připojeními předpokládá celkem 2000 úloh virtuálních počítačů v rámci všech virtuální sítě připojených k jednomu virtuálnímu rozbočovači.
@@ -128,7 +128,7 @@ Směrovací tabulky teď mají funkce pro přidružení a šíření. Již exist
 
 * **Základní virtuální zákazníci sítě WAN s již existujícími trasami ve virtuálním centru**: Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, budete je muset nejdřív odstranit a pak **upgradovat** základní virtuální síť WAN na standardní virtuální síť WAN. Viz [upgrade virtuální sítě WAN z úrovně Basic na standard](upgrade-virtual-wan.md).
 
-## <a name="faq"></a><a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a><a name="faq"></a>Časté otázky
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 

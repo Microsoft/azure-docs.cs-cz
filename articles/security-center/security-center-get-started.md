@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 3a523421c128ea26503c0848ad8fcf7d74636a04
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: bd8c5c31579ac22cd6c77dffd31103680e393f69
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341325"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187166"
 ---
 # <a name="quickstart-setting-up-azure-security-center"></a>Rychlý Start: nastavení Azure Security Center
 
@@ -47,7 +47,7 @@ Stránka **Security Center – Přehled** poskytuje jednotný přehled o stavu h
 
 Seznam předplatných můžete zobrazit a filtrovat tak, že vyberete položku nabídky **předplatná** . Security Center upraví displej tak, aby odrážel stav zabezpečení vybraných předplatných. 
 
-Během několika minut od prvního spuštění služby Security Center se může zobrazit následující:
+Během několika minut od prvního spuštění Security Center se může zobrazit:
 
 - **Doporučení** , jak zvýšit zabezpečení připojených prostředků.
 - Inventarizace vašich prostředků, které se teď Security Center společně s stav zabezpečení každého z nich.
@@ -57,13 +57,13 @@ Abyste mohli plně využít výhod Security Center, musíte provést následují
 > [!TIP]
 > Pokud chcete povolit Security Center u všech předplatných v rámci skupiny pro správu, přečtěte si téma [povolení Security Center ve více předplatných Azure](onboard-management-group.md).
 
-## <a name="enable-azure-defender"></a>Povolit Azure Defender
+## <a name="enable-azure-defender"></a>Povolení Azure Defenderu
 
 Pro účely Security Center rychlých startů a kurzů musíte povolit Azure Defender. K dispozici je bezplatná 30denní zkušební verze. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/). 
 
 1. Z bočního panelu Security Center vyberte **Začínáme**.
 
-    :::image type="content" source="./media/security-center-get-started/get-started-upgrade-tab.png" alt-text="Řídicí panel s přehledem Security Center"::: 
+    :::image type="content" source="./media/security-center-get-started/get-started-upgrade-tab.png" alt-text="Karta upgrade stránky Začínáme"::: 
 
     Karta **upgrade** obsahuje seznam předplatných a pracovních prostorů, které mají nárok na registraci.
 
@@ -84,7 +84,7 @@ Povolení automatického zřizování agenta Log Analytics:
 1. Na stránce **shromažďování dat** nastavte **Automatické zřizování** na **zapnuto**.
 1. Vyberte **Uložit**.
 
-    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Řídicí panel s přehledem Security Center":::
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Povolení automatického zřizování agenta Log Analytics":::
 
 >[!TIP]
 > Pokud je potřeba zřídit pracovní prostor, může instalace agenta trvat až 25 minut.

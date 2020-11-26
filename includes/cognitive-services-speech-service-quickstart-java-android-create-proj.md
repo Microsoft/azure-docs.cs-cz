@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: travisw
 ms.openlocfilehash: 2efe17bdf597b7e3ba7d0277f06d4b24e9b51db3
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096874"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187552"
 ---
 1. Spusťte Android Studio a v **uvítacím** okně vyberte **spustit nový projekt Android Studio** .
 
@@ -19,7 +19,7 @@ ms.locfileid: "92096874"
 
    ![Snímek obrazovky s průvodcem pro výběr projektu](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-02-target-android-devices.png)
 
-1. Na obrazovce **konfigurace projektu** zadejte jako **název** do pole *rychlý Start* a jako **název balíčku**zadejte *Samples.Speech.cognitiveservices.Microsoft.com* . Pak vyberte adresář projektu. V případě **minimální úrovně rozhraní API**vyberte **rozhraní API 23: Android 6,0 (Marshmallow)**. Zrušte zaškrtnutí všech ostatních políček a vyberte **Dokončit**.
+1. Na obrazovce **konfigurace projektu** zadejte jako **název** do pole *rychlý Start* a jako **název balíčku** zadejte *Samples.Speech.cognitiveservices.Microsoft.com* . Pak vyberte adresář projektu. V případě **minimální úrovně rozhraní API** vyberte **rozhraní API 23: Android 6,0 (Marshmallow)**. Zrušte zaškrtnutí všech ostatních políček a vyberte **Dokončit**.
 
    ![Snímek obrazovky Průvodce konfigurací projektu](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-03-create-android-project.png)
 
@@ -47,7 +47,7 @@ Nastavte projekt tak, aby používal sadu Speech SDK. Otevřete okno **struktury
 
    ![Snímek obrazovky sady Speech SDK v seznamu závislostí](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)
 
-1. Vyberte kartu **vlastnosti** . V případě kompatibility **zdrojového kódu** i **cíle**vyberte **1,9**.
+1. Vyberte kartu **vlastnosti** . V případě kompatibility **zdrojového kódu** i **cíle** vyberte **1,9**.
 
    ![Snímek obrazovky s kompatibilitou zdrojů a cíli](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-09-dependency-added.png)
 

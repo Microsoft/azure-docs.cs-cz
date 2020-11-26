@@ -12,11 +12,11 @@ ms.date: 10/15/2020
 ms.author: erhopf
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: f63c97fd23d56ff508de8d5953eefac6b15ae1aa
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097061"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188199"
 ---
 V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro .NET Framework (Windows). Pokud chcete, aby název balíčku začal vlastním způsobem, spusťte `Install-Package Microsoft.CognitiveServices.Speech` v konzole NuGet.
 
@@ -40,7 +40,7 @@ Budete muset nainstalovat [balíček NuGet sady Speech SDK](https://aka.ms/csspe
 
 1. V okně **vytvořit nový projekt** zvolte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
 
-1. V okně **Konfigurovat nový projekt** zadejte *HelloWorld* do pole **název projektu**, zvolte nebo vytvořte cestu k adresáři v **umístění**a pak vyberte **vytvořit**.
+1. V okně **Konfigurovat nový projekt** zadejte *HelloWorld* do pole **název projektu**, zvolte nebo vytvořte cestu k adresáři v **umístění** a pak vyberte **vytvořit**.
 
 1. V řádku nabídek sady Visual Studio vyberte **nástroje**  >  **získat nástroje a funkce**, které se otevře instalační program pro Visual Studio a zobrazí se dialogové okno **změny** .
 

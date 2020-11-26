@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: f97d04ca40e69ba2516744adfc9f1f455cba97c0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0bb252e227e4f23388929f2fca18769e0bd02e19
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896340"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187030"
 ---
 # <a name="tutorial---migrate-web-service-from-google-maps"></a>Kurz – migrace webové služby z Google Maps
 
@@ -40,7 +40,7 @@ V tabulce jsou uvedena rozhraní API služby Azure Maps, která mají podobnou f
 
 | Rozhraní API služby Google Maps | Rozhraní API služby Azure Maps                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| Pokyny              | [Trasa](/rest/api/maps/route)                                     |
+| Pokyny              | [Cestě](/rest/api/maps/route)                                     |
 | Matice vzdáleností         | [Matice směrování](/rest/api/maps/route/postroutematrixpreview)       |
 | Geokódování               | [Hledání](/rest/api/maps/search)                                   |
 | Hledání míst           | [Hledání](/rest/api/maps/search)                                   |
@@ -67,7 +67,7 @@ Azure Maps má několik dalších webových služeb REST, které mohou být zaj�
 
 ## <a name="prerequisites"></a>Předpoklady 
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 2. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
@@ -116,7 +116,7 @@ Tato tabulka křížově odkazuje na parametry rozhraní API služby Google Maps
 | `key`                       | `subscription-key` – Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
 | `language`                  | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
 | `latlng`                    | `query`  |
-| `location_type`             | *Není k dispozici*     |
+| `location_type`             | *–*     |
 | `result_type`               | `entityType`    |
 
 Projděte si [osvědčené postupy pro hledání](how-to-use-best-practices-for-search.md).
@@ -132,7 +132,7 @@ Rozhraní API pro invertování geografického kódování Azure Maps obsahuje n
 Data z bodu zájmu můžete vyhledávat ve službě Google Maps pomocí rozhraní API pro vyhledávání míst. Toto rozhraní API nabízí tři různé způsoby hledání bodů zájmu:
 
 - **Najít místo z textu:** Vyhledá bod zájmu na základě jeho názvu, adresy nebo telefonního čísla.
-- **Nejbližší hledání** : vyhledá body zájmů, které spadají do určité vzdálenosti.
+- **Nejbližší hledání**: vyhledá body zájmů, které spadají do určité vzdálenosti.
 - **Hledání textu:** Vyhledá místa pomocí bezplatného textu, který obsahuje bod zájmu a informace o poloze. Například "pizza in Praha" nebo "restaurace poblíž Main St".
 
 Azure Maps poskytuje několik rozhraní API pro hledání bodů zájmu:
@@ -160,9 +160,9 @@ Tabulka křížově odkazuje na parametry rozhraní API Google Maps pomocí srov
 
 | Parametr rozhraní API pro Google Maps | Srovnatelný parametr Azure Maps rozhraní API |
 |---------------------------|-------------------------------------|
-| `fields`                  | *Není k dispozici*                               |
+| `fields`                  | *–*                               |
 | `input`                   | `query`                             |
-| `inputtype`               | *Není k dispozici*                               |
+| `inputtype`               | *–*                               |
 | `key`                     | `subscription-key` – Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
 | `language`                | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
 | `locationbias`            | `lat``lon`a`radius`<br/>`topLeft` a `btmRight`<br/>`countrySet`  |
@@ -179,13 +179,13 @@ V tabulce jsou uvedeny parametry rozhraní API služby Google Maps s podobnými 
 | `keyword`                   | `categorySet` a `brandSet`        |
 | `language`                  | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
 | `location`                  | `lat` a `lon`                     |
-| `maxprice`                  | *Není k dispozici*                               |
-| `minprice`                  | *Není k dispozici*                               |
+| `maxprice`                  | *–*                               |
+| `minprice`                  | *–*                               |
 | `name`                      | `categorySet` a `brandSet`        |
-| `opennow`                   | *Není k dispozici*                               |
+| `opennow`                   | *–*                               |
 | `pagetoken`                 | `ofs` a `limit`                   |
 | `radius`                    | `radius`                            |
-| `rankby`                    | *Není k dispozici*                               |
+| `rankby`                    | *–*                               |
 | `type`                      | `categorySet –` Viz dokumentace k [kategoriím hledání podporované](supported-search-categories.md) .   |
 
 ## <a name="calculate-routes-and-directions"></a>Vypočítat trasy a směry
@@ -265,10 +265,10 @@ Tabulka křížově odkazuje na parametry rozhraní API Google Maps s podobnými
 | `markers`                   | `pins`                             |
 | `path`                      | `path`                             |
 | `region`                    | Není *k dispozici* – jedná se o funkci související s geografické kódování. Použijte `countrySet` parametr při použití Azure Maps rozhraní API pro geografické kódování.  |
-| `scale`                     | *Není k dispozici*                              |
+| `scale`                     | *–*                              |
 | `size`                      | `width` a `height` – může mít velikost až 8192x8192. |
-| `style`                     | *Není k dispozici*                              |
-| `visible`                   | *Není k dispozici*                              |
+| `style`                     | *–*                              |
+| `visible`                   | *–*                              |
 | `zoom`                      | `zoom`                             |
 
 > [!NOTE]
@@ -501,10 +501,10 @@ Další informace o Azure Maps služby REST:
 > [Osvědčené postupy pro směrování](how-to-use-best-practices-for-routing.md)
 
 > [!div class="nextstepaction"]
-> [Referenční dokumentace k rozhraní API služby Azure Maps REST](https://docs.microsoft.com/rest/api/maps/)
+> [Referenční dokumentace k rozhraní API služby Azure Maps REST](/rest/api/maps/)
 
 > [!div class="nextstepaction"]
-> [Ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Ukázky kódu](/samples/browse/?products=azure-maps)
 
 > [!div class="nextstepaction"]
 > [Jak používat modul služby (Web SDK)](how-to-use-best-practices-for-routing.md)

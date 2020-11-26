@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.custom: seo-nov-2020
-ms.openlocfilehash: f698c1ac7ab3ad2dbd86710bea9a48d962603d86
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 23401885580a3883dc49eccc97c17bbedd9080ab
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94334580"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187319"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Jednotky žádostí ve službě Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,34 +31,34 @@ Aby bylo možné spravovat a plánovat kapacitu, Azure Cosmos DB zajišťuje, ž
 
 Typ účtu Azure Cosmos, který používáte, určuje způsob, jakým se účtují poplatky za spotřebované ru. Existují tři režimy, ve kterých můžete vytvořit účet:
 
-1. **Zřízený režim propustnosti** : v tomto režimu zřizujete počet ru pro vaši aplikaci za sekundu v přírůstcích po 100 ru za sekundu. Pro škálování zřízené propustnosti aplikace můžete zvýšit nebo snížit počet ru v jakémkoli okamžiku v přírůstcích nebo snižování 100 ru. Změny můžete naprogramovat nebo můžete použít Azure Portal. Poplatky se účtují po hodinách po dobu ru za sekundu, kterou jste zřídili. Další informace najdete v článku o [zřízené propustnosti](set-throughput.md) .
+1. **Zřízený režim propustnosti**: v tomto režimu zřizujete počet ru pro vaši aplikaci za sekundu v přírůstcích po 100 ru za sekundu. Pro škálování zřízené propustnosti aplikace můžete zvýšit nebo snížit počet ru v jakémkoli okamžiku v přírůstcích nebo snižování 100 ru. Změny můžete naprogramovat nebo můžete použít Azure Portal. Poplatky se účtují po hodinách po dobu ru za sekundu, kterou jste zřídili. Další informace najdete v článku o [zřízené propustnosti](set-throughput.md) .
 
    Propustnost můžete zřídit ve dvou různých rozlišeních:
 
-   * **Kontejnery** : Další informace najdete v tématu [zřízení propustnosti v kontejneru Azure Cosmos](how-to-provision-container-throughput.md).
-   * **Databáze** : Další informace najdete v tématu [zřízení propustnosti databáze Azure Cosmos](how-to-provision-database-throughput.md).
+   * **Kontejnery**: Další informace najdete v tématu [zřízení propustnosti v kontejneru Azure Cosmos](how-to-provision-container-throughput.md).
+   * **Databáze**: Další informace najdete v tématu [zřízení propustnosti databáze Azure Cosmos](how-to-provision-database-throughput.md).
 
-2. **Režim bez serveru** : v tomto režimu nemusíte při vytváření prostředků v účtu Azure Cosmos zřizovat žádné propustnosti. Na konci fakturačního období se vám bude účtovat množství jednotek požadavků, které vaše databázové operace spotřebují. Další informace najdete v článku o [propustnosti bez serveru](serverless.md) . 
+2. **Režim bez serveru**: v tomto režimu nemusíte při vytváření prostředků v účtu Azure Cosmos zřizovat žádné propustnosti. Na konci fakturačního období se vám bude účtovat množství jednotek požadavků, které vaše databázové operace spotřebují. Další informace najdete v článku o [propustnosti bez serveru](serverless.md) . 
 
-3. **Režim automatického škálování** : v tomto případě můžete automaticky a okamžitě škálovat propustnost (ru/s) databáze nebo kontejneru na základě využití IT, aniž by to ovlivnilo dostupnost, latenci, propustnost nebo výkon úlohy. Tento režim je vhodný pro klíčové úlohy, které mají proměnlivé nebo nepředvídatelné vzory přenosů dat, a vyžadují SLA s vysokým výkonem a škálováním. Další informace najdete v článku o [propustnosti automatického škálování](provision-throughput-autoscale.md) . 
+3. **Režim automatického škálování**: v tomto režimu můžete automaticky a okamžitě škálovat propustnost (ru/s) databáze nebo kontejneru na základě využití IT, aniž by to ovlivnilo dostupnost, latenci, propustnost nebo výkon úlohy. Tento režim je vhodný pro klíčové úlohy, které mají proměnlivé nebo nepředvídatelné vzory přenosů dat, a vyžadují SLA s vysokým výkonem a škálováním. Další informace najdete v článku o [propustnosti automatického škálování](provision-throughput-autoscale.md) . 
 
 ## <a name="request-unit-considerations"></a>Co ovlivňuje jednotky žádosti
 
 Při odhadování počtu ru spotřebovaných úlohami Vezměte v úvahu následující faktory:
 
-* **Velikost položky** : Se vzrůstající velikostí položky se také zvyšuje počet jednotek žádosti spotřebovaných pro čtení a zápis.
+* **Velikost položky**: Se vzrůstající velikostí položky se také zvyšuje počet jednotek žádosti spotřebovaných pro čtení a zápis.
 
-* **Indexování položky** : Ve výchozím nastavení se automaticky indexuje každá položka. Pokud se rozhodnete některé z položek v kontejneru neindexovat, spotřebujete tak méně jednotek žádosti.
+* **Indexování položky**: Ve výchozím nastavení se automaticky indexuje každá položka. Pokud se rozhodnete některé z položek v kontejneru neindexovat, spotřebujete tak méně jednotek žádosti.
 
-* **Počet vlastností položky** : Pokud u všech vlastností platí výchozí indexování, roste s počtem vlastností položky také počet jednotek žádosti spotřebovaných pro její zápis.
+* **Počet vlastností položky**: Pokud u všech vlastností platí výchozí indexování, roste s počtem vlastností položky také počet jednotek žádosti spotřebovaných pro její zápis.
 
-* **Indexované vlastnosti** : Vlastnosti, které se ve výchozím nastavení indexují, jsou určovány zásadami indexování každého kontejneru. Pokud tedy chcete snížit spotřebu jednotek žádosti pro operace zápisu, omezte počet indexovaných vlastností.
+* **Indexované vlastnosti**: Vlastnosti, které se ve výchozím nastavení indexují, jsou určovány zásadami indexování každého kontejneru. Pokud tedy chcete snížit spotřebu jednotek žádosti pro operace zápisu, omezte počet indexovaných vlastností.
 
-* **Konzistence dat** : silná a ohraničená úroveň konzistence odolná proti chybám spotřebovává během operací čtení ve srovnání s jinými uvolněnými úrovněmi konzistence přibližně dvojnásobek více ru.
+* **Konzistence dat**: silná a ohraničená úroveň konzistence odolná proti chybám spotřebovává během operací čtení ve srovnání s jinými uvolněnými úrovněmi konzistence přibližně dvojnásobek více ru.
 
-* **Typ čtení** : Point čte náklady významně méně ru než dotazy.
+* **Typ čtení**: Point čte náklady významně méně ru než dotazy.
 
-* **Struktura dotazů** : Složitost dotazu má vliv na počet jednotek žádosti spotřebovaných operací. Mezi faktory ovlivňující náklady na operace dotazování patří: 
+* **Struktura dotazů**: Složitost dotazu má vliv na počet jednotek žádosti spotřebovaných operací. Mezi faktory ovlivňující náklady na operace dotazování patří: 
  
   * Počet výsledků dotazu
   * Počet predikátů
@@ -70,7 +70,7 @@ Při odhadování počtu ru spotřebovaných úlohami Vezměte v úvahu následu
 
   Stejný dotaz na stejná data bude vždy při opakovaném spuštění ru náklady na stejný počet.
 
-* **Použití skriptu** : stejně jako u dotazů, uložené procedury a triggery spotřebovávají ru na základě složitosti operací, které jsou prováděny. Abyste získali lepší přehled o tom, jakou kapacitu (vyjádřenou v jednotkách RU) každá operace spotřebuje, zkontrolujte při vývoji aplikace [hlavičku zátěže žádostmi](./optimize-cost-reads-writes.md#measuring-the-ru-charge-of-a-request).
+* **Použití skriptu**: stejně jako u dotazů, uložené procedury a triggery spotřebovávají ru na základě složitosti operací, které jsou prováděny. Abyste získali lepší přehled o tom, jakou kapacitu (vyjádřenou v jednotkách RU) každá operace spotřebuje, zkontrolujte při vývoji aplikace [hlavičku zátěže žádostmi](./optimize-cost-reads-writes.md#measuring-the-ru-charge-of-a-request).
 
 ## <a name="request-units-and-multiple-regions"></a>Jednotky žádostí a několik oblastí
 
@@ -78,7 +78,7 @@ Pokud zřizujete *' r '* ru na kontejneru Cosmos (nebo databázi), Cosmos DB zaj
 
 Za předpokladu, že je kontejner Cosmos nakonfigurovaný pomocí *R* ru a je *N* oblastí přidružených k účtu Cosmos, celkový ru k dispozici globálně na kontejneru = *R* x *N*.
 
-Vaše volba [modelu konzistence](consistency-levels.md) má vliv také na propustnost. V porovnání s silnějšími úrovněmi konzistence můžete získat přibližně dvojnásobnou propustnost čtení pro příznivější úrovně konzistence *(například* *relace* , *konzistentní předpony* *a* konečná *konzistence* ).
+Vaše volba [modelu konzistence](consistency-levels.md) má vliv také na propustnost. V porovnání s silnějšími úrovněmi konzistence můžete získat přibližně dvojnásobnou propustnost čtení pro příznivější úrovně konzistence *(například* *relace*, *konzistentní předpony* *a* konečná *konzistence* ).
 
 ## <a name="next-steps"></a>Další kroky
 

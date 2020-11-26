@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.openlocfilehash: df9dbdf61dbc7d83f1cf74871ddc864488ed9d47
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097214"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188163"
 ---
 Chcete-li vytvořit projekt sady Visual Studio pro Univerzální platforma Windows (UWP), je nutné nastavit vývojové možnosti sady Visual Studio, vytvořit projekt, vybrat cílovou architekturu, nastavit záznam zvuku a nainstalovat sadu Speech SDK.
 
@@ -27,9 +27,9 @@ Pokud chcete začít, ujistěte se, že jste správně nastavili v sadě Visual 
 
    ![Snímek obrazovky zobrazující kartu úlohy v dialogovém okně úpravy s zvýrazněným Univerzální platforma Windowsm vývojem](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-workload.png)
 
-1. Na kartě **úlohy** v části **Windows**Najděte **Univerzální platforma Windows vývojové** úlohy. Pokud je zaškrtnuté políčko vedle této úlohy, zavřete dialogové okno **Úpravy** a pokračujte na krok 6.
+1. Na kartě **úlohy** v části **Windows** Najděte **Univerzální platforma Windows vývojové** úlohy. Pokud je zaškrtnuté políčko vedle této úlohy, zavřete dialogové okno **Úpravy** a pokračujte na krok 6.
 
-1. Zaškrtněte políčko **Univerzální platforma Windows vývoje** , vyberte **Upravit**a potom v dialogovém okně **před** spuštěním vyberte **pokračovat** a nainstalujte úlohu vývoje UWP. Instalace nové funkce může chvíli trvat.
+1. Zaškrtněte políčko **Univerzální platforma Windows vývoje** , vyberte **Upravit** a potom v dialogovém okně **před** spuštěním vyberte **pokračovat** a nainstalujte úlohu vývoje UWP. Instalace nové funkce může chvíli trvat.
 
 1. Zavřete Instalační program pro Visual Studio.
 
@@ -47,9 +47,9 @@ Potom vytvořte projekt:
 
    ![Snímek obrazovky zobrazující obrazovku konfigurovat nový projekt s poli název projektu a umístění a zvýrazněným tlačítkem vytvořit.](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-configure-your-new-project.png)
 
-1. Do **název projektu**zadejte `helloworld` .
+1. Do **název projektu** zadejte `helloworld` .
 
-1. V části **umístění**přejděte na a vyberte nebo vytvořte složku, do které chcete projekt uložit.
+1. V části **umístění** přejděte na a vyberte nebo vytvořte složku, do které chcete projekt uložit.
 
 1. Výběrem možnosti **vytvořit** přejdete do okna **Nový Univerzální platforma Windows projektu** .
 
@@ -72,7 +72,7 @@ Teď vyberte cílovou architekturu platformy. Na panelu nástrojů sady Visual S
 
 Umožněte zachytávání zvukového vstupu v projektu:
 
-1. V **Průzkumník řešení**dvakrát klikněte na **Package. appxmanifest** a otevřete manifest aplikace balíčku.
+1. V **Průzkumník řešení** dvakrát klikněte na **Package. appxmanifest** a otevřete manifest aplikace balíčku.
 
 1. Vyberte kartu **Možnosti** .
 
@@ -86,13 +86,13 @@ Umožněte zachytávání zvukového vstupu v projektu:
 
 Nakonec nainstalujte [balíček NuGet sady Speech SDK](https://aka.ms/csspeech/nuget)a odkažte na sadu Speech SDK v projektu:
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na vaše řešení a vyberte **Spravovat balíčky NuGet pro řešení** , abyste přešli do okna **NuGet – řešení** .
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na vaše řešení a vyberte **Spravovat balíčky NuGet pro řešení** , abyste přešli do okna **NuGet – řešení** .
 
 1. Vyberte **Procházet**.
 
    ![Snímek obrazovky, který zobrazuje dialogové okno Spravovat balíčky pro řešení pomocí karty Procházet, hledání a "zdroj balíčku" byl zvýrazněn.](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-nuget-solution-browse.png)
 
-1. Ve **zdroji balíčku**vyberte možnost **NuGet.org**.
+1. Ve **zdroji balíčku** vyberte možnost **NuGet.org**.
 
 1. Do **vyhledávacího** pole zadejte `Microsoft.CognitiveServices.Speech` a po zobrazení ve výsledcích hledání zvolte tento balíček.
 
@@ -100,7 +100,7 @@ Nakonec nainstalujte [balíček NuGet sady Speech SDK](https://aka.ms/csspeech/n
 
 1. V podokně stav balíčku vedle výsledků hledání vyberte svůj projekt **HelloWorld** .
 
-1. Vyberte **Nainstalovat**.
+1. Vyberte **Install** (Nainstalovat).
 
 1. V dialogovém okně **Náhled změn** vyberte **OK**.
 

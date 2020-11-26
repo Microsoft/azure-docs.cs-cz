@@ -12,11 +12,11 @@ ms.date: 10/15/2020
 ms.author: erhopf
 ms.custom: devx-track-js
 ms.openlocfilehash: 79320144264766a504a71c554c2a138779c55331
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097129"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188181"
 ---
 V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro JavaScript pro použití s NodeJS. Pokud chcete, aby název balíčku začal vlastní, spusťte `npm install microsoft-cognitiveservices-speech-sdk` z existujícího projektu.
 

@@ -11,11 +11,11 @@ ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d7bb697879f40b45c886cd90bbb1e34906d35f66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530501"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187370"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid"></a>Příjem a reakce na oznámení o trezoru klíčů pomocí Azure Event Grid
 
@@ -23,9 +23,9 @@ Azure Key Vault Integration with Azure Event Grid povolí uživateli oznámení,
 
 Tato příručka popisuje, jak dostávat oznámení o Key Vault prostřednictvím Event Grid a jak reagovat na změny stavu prostřednictvím Azure Automation.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 - Trezor klíčů ve vašem předplatném Azure. Nový trezor klíčů můžete rychle vytvořit podle kroků v části [nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure CLI](../secrets/quick-create-cli.md).
 
 ## <a name="concepts"></a>Koncepty
@@ -58,7 +58,7 @@ Až bude váš účet služby Automation připravený, vytvořte sadu Runbook.
 
 1.  Vyberte účet Automation, který jste právě vytvořili.
 
-1.  V části **Automatizace procesu**vyberte **Runbooky** .
+1.  V části **Automatizace procesu** vyberte **Runbooky** .
 
 1.  Vyberte **vytvořit Runbook**.
 
@@ -133,7 +133,7 @@ Vytvořte Event Grid předplatné prostřednictvím [Azure Portal](https://porta
 
 1.  **Prostředkem tématu** by měl být Trezor klíčů, který chcete monitorovat pro změny stavu.
 
-1.  Pro možnost **Filtr na typ události**ponechte vybrané všechny možnosti (počet**vybraných: 9**).
+1.  Pro možnost **Filtr na typ události** ponechte vybrané všechny možnosti (počet **vybraných: 9**).
 
 1.  Jako **Typ koncového bodu** vyberte **Webhook**.
 
@@ -159,7 +159,7 @@ Ověřte, že je vaše předplatné Event Grid správně nakonfigurované. Tento
 
 1.  Na kartě **události** v trezoru klíčů vyberte Event Grid předplatné, které jste vytvořili.
 
-1.  V části **metriky**ověřte, zda byla událost zachycena. Jsou očekávány dvě události: SecretNewVersion a SecretNearExpiry. Tyto události ověřují, že Event Grid úspěšně zachytil změnu stavu tajného kódu v trezoru klíčů.
+1.  V části **metriky** ověřte, zda byla událost zachycena. Jsou očekávány dvě události: SecretNewVersion a SecretNearExpiry. Tyto události ověřují, že Event Grid úspěšně zachytil změnu stavu tajného kódu v trezoru klíčů.
 
     ![Podokno metriky: kontrolovat zaznamenané události](../media/event-grid-tutorial-11.png)
 
@@ -187,7 +187,7 @@ Znovu zaregistrujte Event Grid a poskytovatele trezoru klíčů ve svých poskyt
 
 ## <a name="next-steps"></a>Další kroky
 
-Blahopřejeme! Pokud jste správně postupovali podle všech těchto kroků, jste teď připraveni programově reagovat na změny stavu tajných kódů uložených ve vašem trezoru klíčů.
+Gratulujeme! Pokud jste správně postupovali podle všech těchto kroků, jste teď připraveni programově reagovat na změny stavu tajných kódů uložených ve vašem trezoru klíčů.
 
 Pokud jste k hledání změn stavu tajných kódů v trezorech klíčů používali systém založený na cyklické dotazování, můžete nyní začít používat tuto funkci oznámení. Můžete také nahradit testovací skript v Runbooku kódem pro programové obnovení tajných kódů, když brzy vyprší platnost.
 

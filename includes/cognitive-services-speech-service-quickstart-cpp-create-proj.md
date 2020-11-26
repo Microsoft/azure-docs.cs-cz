@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.openlocfilehash: 967861363d5056a5a466aa88840cda2aafbeb86b
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097163"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188211"
 ---
 Chcete-li vytvořit projekt sady Visual Studio pro vývoj desktopových aplikací C++, je nutné nastavit možnosti vývoje sady Visual Studio, vytvořit projekt, vybrat cílovou architekturu a nainstalovat sadu Speech SDK.
 
@@ -27,7 +27,7 @@ Pokud chcete začít, ujistěte se, že jste správně nastavili v sadě Visual 
 
    ![Snímek obrazovky zobrazující kartu úlohy v dialogovém okně změny pro "Instalační program pro Visual Studio".](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
 
-1. Na kartě **úlohy** v části **Windows**Najděte **desktopový vývoj s** využitím úlohy C++. Pokud není zaškrtnuté políčko vedle této úlohy, vyberte ji.
+1. Na kartě **úlohy** v části **Windows** Najděte **desktopový vývoj s** využitím úlohy C++. Pokud není zaškrtnuté políčko vedle této úlohy, vyberte ji.
 
 1. Na kartě **jednotlivé součásti** vyhledejte zaškrtávací políčko **Správce balíčků NuGet** . Pokud políčko ještě není vybrané, vyberte ho.
 
@@ -49,9 +49,9 @@ Potom vytvořte projekt:
 
    ![Konfigurace nového projektu, C++ – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-configure-your-new-project.png)
 
-1. Do **název projektu**zadejte `helloworld` .
+1. Do **název projektu** zadejte `helloworld` .
 
-1. V části **umístění**přejděte na a vyberte nebo vytvořte složku, do které chcete projekt uložit.
+1. V části **umístění** přejděte na a vyberte nebo vytvořte složku, do které chcete projekt uložit.
 
 Teď vyberte cílovou architekturu platformy. Na panelu nástrojů sady Visual Studio Najděte rozevírací seznam **platformy řešení** . (Pokud ji nevidíte, klikněte na tlačítko **Zobrazit**  >  **Panely nástrojů**  >  **Standard** pro zobrazení panelu nástrojů obsahujícího **platformy řešení**.) Pokud používáte 64-bit Windows, v rozevíracím seznamu vyberte **x64** . 64-bitová okna můžou spouštět i 32 aplikace, takže pokud chcete, můžete vybrat možnost **x86** .
 
@@ -59,13 +59,13 @@ Teď vyberte cílovou architekturu platformy. Na panelu nástrojů sady Visual S
 
 Nakonec nainstalujte [balíček NuGet sady Speech SDK](https://aka.ms/csspeech/nuget)a odkažte na sadu Speech SDK v projektu:
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na vaše řešení a vyberte **Spravovat balíčky NuGet pro řešení** , abyste přešli do okna **NuGet – řešení** .
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na vaše řešení a vyberte **Spravovat balíčky NuGet pro řešení** , abyste přešli do okna **NuGet – řešení** .
 
 1. Vyberte **Procházet**.
 
    ![NuGet – karta řešení, Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-03-manage-nuget-packages.png)
 
-1. Ve **zdroji balíčku**vyberte možnost **NuGet.org**.
+1. Ve **zdroji balíčku** vyberte možnost **NuGet.org**.
 
 1. Do **vyhledávacího** pole zadejte `Microsoft.CognitiveServices.Speech` a po zobrazení ve výsledcích hledání zvolte tento balíček.
 
@@ -73,7 +73,7 @@ Nakonec nainstalujte [balíček NuGet sady Speech SDK](https://aka.ms/csspeech/n
 
 1. V podokně stav balíčku vedle výsledků hledání vyberte svůj projekt **HelloWorld** .
 
-1. Vyberte **Nainstalovat**.
+1. Vyberte **Install** (Nainstalovat).
 
 1. V dialogovém okně **Náhled změn** vyberte **OK**.
 

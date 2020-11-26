@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d349d07a66b21766ea529661c2f27d0c76ea4d3b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: cac0d8cb8a910b735454c9270060364cab2db5fb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024717"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187234"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Použití rozhraní API a sad SDK služby Azure Digital Twins
 
@@ -20,7 +20,7 @@ Digitální vlákna Azure jsou vybavená **rozhraními API řídicí plochy** a 
 * Rozhraní API plochy ovládacího prvku jsou [Azure Resource Manager (ARM)](../azure-resource-manager/management/overview.md) rozhraní API a zahrnují operace správy prostředků, jako je vytváření a odstraňování vaší instance. 
 * Rozhraní API roviny dat jsou rozhraní API digitálních vláken Azure, která se používají pro operace správy dat, jako je Správa modelů, vláken a grafu.
 
-Tento článek poskytuje přehled dostupných rozhraní API a metody, jak s nimi interaktivně pracovat. Rozhraní REST API můžete buď použít přímo spolu s jejich přidruženými Swagger, nebo prostřednictvím sady SDK.
+Tento článek poskytuje přehled dostupných rozhraní API a metody, jak s nimi interaktivně pracovat. Rozhraní REST API můžete buď použít přímo spolu s jejich přidruženými Swagger (prostřednictvím nástroje jako je [post](how-to-use-postman.md)), nebo prostřednictvím sady SDK.
 
 ## <a name="overview-control-plane-apis"></a>Přehled: Řídicí rozhraní API roviny
 
@@ -32,7 +32,7 @@ Chcete-li použít rozhraní API plochy ovládacího prvku:
 * Rozhraní API můžete volat přímo odkazem na nejnovější Swagger ve [složce Swagger řídicí roviny](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins). Toto úložiště obsahuje také složku příkladů, které ukazují použití.
 * V tuto chvíli můžete přistupovat k sadám SDK pro řídicí rozhraní API v...
   - [**.NET (C#)**](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([odkaz [automaticky generované]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true)) ([zdroj](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
-  - [**Java**](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([odkaz [automaticky generovaný]](/java/api/overview/azure/digitaltwins?view=azure-java-stable)) ([zdroj](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
+  - [**Java**](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([odkaz [automaticky generovaný]](/java/api/overview/azure/digitaltwins?view=azure-java-stable&preserve-view=true)) ([zdroj](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
   - [**JavaScript**](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([zdroj](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
   - [**Python**](https://pypi.org/project/azure-mgmt-digitaltwins/) ([zdroj](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins))
   - [**Přejít**](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ([zdroj](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins))
@@ -279,6 +279,7 @@ client.UpdateDigitalTwin("myTwin", updateTwinData);
 
 Následující seznam poskytuje další podrobnosti a obecné pokyny pro používání rozhraní API a sad SDK.
 
+* K přímému volání rozhraní API digitálních vláken Azure můžete použít nástroj pro testování REST HTTP, jako je například post. Další informace o tomto procesu naleznete v tématu [*How to: Make a requests with post*](how-to-use-postman.md).
 * Chcete-li použít sadu SDK, vytvořte instanci `DigitalTwinsClient` třídy. Konstruktor vyžaduje přihlašovací údaje, které lze získat pomocí různých metod ověřování v `Azure.Identity` balíčku. Další `Azure.Identity` informace najdete v [dokumentaci k jejímu oboru názvů](/dotnet/api/azure.identity?preserve-view=true&view=azure-dotnet). 
 * `InteractiveBrowserCredential`Při zahájení práce může být užitečné, ale k dispozici je několik dalších možností, včetně přihlašovacích údajů pro [spravovanou identitu](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet), které pravděpodobně použijete k ověření služby [Azure Functions se službou MSI](../app-service/overview-managed-identity.md?tabs=dotnet) proti digitálním vazbám Azure. Další informace o naleznete `InteractiveBrowserCredential` v [dokumentaci třídy](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet).
 * Všechna volání rozhraní API služby jsou vystavena jako členské funkce `DigitalTwinsClient` třídy.
@@ -303,8 +304,8 @@ Tady můžete zobrazit metriky pro vaši instanci a vytvořit vlastní zobrazen�
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o použití rozhraní API k nastavení instance a ověřování digitálních vláken Azure:
-* [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-cli.md)
+Přečtěte si téma jak vytvořit přímé požadavky na rozhraní API pomocí metody post:
+* [*Postupy: Vytváření požadavků s použitím metody post*](how-to-use-postman.md)
 
-Nebo si Projděte kroky k vytvoření klientské aplikace, jako je ta, kterou jste použili v tomto postupu:
+Nebo je vhodné použít sadu .NET SDK vytvořením klientské aplikace pomocí tohoto kurzu:
 * [*Kurz: vytvoření kódu klientské aplikace*](tutorial-code.md)

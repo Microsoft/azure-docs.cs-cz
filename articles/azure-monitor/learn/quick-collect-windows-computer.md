@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 726caa0c4a7bbd6b8d0c17ffdfade5f9cc3c2a34
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9cd92075c7e0c4450dbee750fd31efb394dd24f7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89020367"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186741"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Shromažďování dat z počítače s Windows v hybridním prostředí pomocí Azure Monitor
 
@@ -26,7 +26,7 @@ ms.locfileid: "89020367"
 
 Další informace o podporované konfiguraci najdete v tématu [podporované operační systémy](../platform/agents-overview.md#supported-operating-systems) a [Konfigurace brány firewall sítě](../platform/log-analytics-agent.md#network-requirements).
  
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -38,7 +38,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
     ![portál Azure](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
-2. Vyberte **vytvořit**a pak vyberte volby pro následující položky:
+2. Vyberte **vytvořit** a pak vyberte volby pro následující položky:
 
    * Zadejte název nového **pracovního prostoru služby Log Analytics**, například *DefaultLAWorkspace*.  
    * Vyberte **předplatné**, které má být cílem propojení, výběrem z rozevíracího seznamu, pokud výchozí vybrané předplatné není vhodné.
@@ -112,7 +112,7 @@ Azure Monitor mohou shromažďovat události, které zadáte z protokolu událos
  
 3. Vyberte **Data** a pak vyberte **Protokoly událostí systému Windows**.  
 
-4. Protokol událostí můžete přidat zadáním názvu protokolu. Zadejte **systém**a potom vyberte znaménko plus ( **+** ).  
+4. Protokol událostí můžete přidat zadáním názvu protokolu. Zadejte **systém** a potom vyberte znaménko plus ( **+** ).  
 
 5. V tabulce vyberte závažnost **chyby** a **varování** .
 
@@ -152,7 +152,7 @@ Chcete-li odebrat agenta, proveďte následující kroky:
 
 2. Otevřete **Programy a funkce**.
 
-3. V **programech a funkcích**vyberte **Microsoft Monitoring Agent** a pak vyberte **odinstalovat**.
+3. V **programech a funkcích** vyberte **Microsoft Monitoring Agent** a pak vyberte **odinstalovat**.
 
 Pokud chcete odstranit pracovní prostor Log Analytics, který jste vytvořili dříve, vyberte ho a na stránce prostředek vyberte **Odstranit**:
 
@@ -165,5 +165,4 @@ Teď, když shromažďujete data o provozu a výkonu z počítače s Windows, m�
 Pokud se chcete dozvědět, jak zobrazit a analyzovat data, přejděte k kurzu:
 
 > [!div class="nextstepaction"]
-> [Zobrazení nebo analýza dat v Log Analytics](../log-query/get-started-portal.md)
-
+> [Zobrazení nebo analýza dat v Log Analytics](../log-query/log-analytics-tutorial.md)

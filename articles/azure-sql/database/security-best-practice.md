@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: b309ce01595e2e62bea7f78ae728d83bc7d9b9be
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 803c9a98f0dc10ff8218ac7b7c20dcb117700034
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992161"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187098"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>PlayBook pro adresování běžných požadavků na zabezpečení pomocí Azure SQL Database a spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -614,7 +614,7 @@ Ve spravované instanci SQL:
 
 DDoS Protection se automaticky povolí jako součást platformy Azure. Zahrnuje nepřetržité monitorování provozu a zmírnění útoků na úrovni sítě u veřejných koncových bodů v reálném čase.
 
-- Pomocí [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md) můžete monitorovat veřejné IP adresy přidružené k prostředkům nasazeným ve virtuálních sítích.
+- Pomocí [Azure DDoS Protection](../../ddos-protection/ddos-protection-overview.md) můžete monitorovat veřejné IP adresy přidružené k prostředkům nasazeným ve virtuálních sítích.
 
 - Použití [rozšířené ochrany před internetovými útoky pro Azure SQL Database](threat-detection-overview.md) k detekci útoků DOS (Denial of Service) na databáze.
 

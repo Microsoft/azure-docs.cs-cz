@@ -8,12 +8,12 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: f4008b43c487f9dd1c8cfe5e5b67a250ff849daf
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a382f5bc2cb7223ea7c740225a8e39bc63e3e65e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786203"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188594"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Rychlý Start: Azure Key Vaulta tajná Klientská knihovna pro Java
 
@@ -24,7 +24,7 @@ Další prostředky:
 * [Zdrojový kód](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault)
 * [Referenční dokumentace k rozhraní API](https://azure.github.io/azure-sdk-for-java)
 * [Produktová dokumentace](index.yml)
-* [Ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
+* [ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -122,7 +122,7 @@ Otevřete *pom.xml* soubor v textovém editoru. Přidejte následující prvky z
 Vytvořte zásady přístupu pro váš Trezor klíčů, který uděluje oprávnění tajného kódu vašemu uživatelskému účtu.
 
 ```console
-az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set purge
 ```
 
 #### <a name="set-environment-variables"></a>Nastavení proměnných prostředí

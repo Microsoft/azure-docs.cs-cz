@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 093d470052a639ad3d4e819d08fad7c34b547d44
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: bf7e99f6e6201afefd316deafe37e38088fb9fae
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789501"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187115"
 ---
 # <a name="what-is-azure-sql-database"></a>Co je Azure SQL Database?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -26,7 +26,7 @@ Azure SQL je plně spravovaný databázový stroj typu PaaS (platforma jako slu�
 
 Pomocí Azure SQL Database můžete vytvořit vysoce dostupnou a výkonnou vrstvu datového úložiště pro aplikace a řešení v Azure. SQL Database může být správnou volbou pro celou řadu moderních cloudových aplikací, protože umožňuje zpracovat jak relační, tak i [nerelační struktury](../multi-model-features.md), jako jsou grafy, JSON, prostorová data a XML.
 
-Azure SQL Database vychází z nejnovější stabilní verze [databázového stroje Microsoft SQL Server](/sql/sql-server/sql-server-technical-documentation?toc=%252fazure%252fsql-database%252ftoc.json). Můžete používat funkce pokročilého zpracování dotazů, jako jsou [vysoce výkonné technologie v paměti](../in-memory-oltp-overview.md) a [Inteligentní zpracování dotazů](/sql/relational-databases/performance/intelligent-query-processing?toc=%252fazure%252fsql-database%252ftoc.json). Nejnovější funkce SQL Serveru se dokonce vydávají nejprve v SQL Database a až poté v samotném SQL Serveru. Tyto funkce otestované na milionech databází se k vám tak dostanou bez nutnosti vynaložení dalších nákladů na opravy a upgrade. 
+Azure SQL Database vychází z nejnovější stabilní verze [databázového stroje Microsoft SQL Server](/sql/sql-server/sql-server-technical-documentation?toc=%2fazure%2fsql-database%2ftoc.json). Můžete používat funkce pokročilého zpracování dotazů, jako jsou [vysoce výkonné technologie v paměti](../in-memory-oltp-overview.md) a [Inteligentní zpracování dotazů](/sql/relational-databases/performance/intelligent-query-processing?toc=%2fazure%2fsql-database%2ftoc.json). Nejnovější funkce SQL Serveru se dokonce vydávají nejprve v SQL Database a až poté v samotném SQL Serveru. Tyto funkce otestované na milionech databází se k vám tak dostanou bez nutnosti vynaložení dalších nákladů na opravy a upgrade. 
 
 SQL Database umožňuje snadno definovat a škálovat výkon v rámci dvou různých nákupních modelů: [nákupní model založený na Vcore](service-tiers-vcore.md) a [nákupní model založený na DTU](service-tiers-dtu.md). SQL Database je plně spravovaná služba s integrovanou vysokou dostupností, zálohováním a dalšími běžnými operacemi údržby. Společnost Microsoft zpracovává všechny opravy a aktualizace kódu SQL a operačního systému. Správou základní infrastruktury se tedy nemusíte zabývat.
 
@@ -37,7 +37,7 @@ Pokud s Azure SQL Database začínáte, přečtěte si video s *přehledem Azure
 
 Azure SQL Database poskytuje pro databázi následující možnosti nasazení:
 
-- [Samostatná databáze](single-database-overview.md) představuje plně spravovanou izolovanou databázi. Tuto možnost můžete použít, pokud máte moderní cloudové aplikace a mikroslužby, které potřebují jeden spolehlivý zdroj dat. Jedna databáze je podobná databázi s [omezením](/sql/relational-databases/databases/contained-databases?toc=%252fazure%252fsql-database%252ftoc.json) v [SQL Server databázovém stroji](/sql/sql-server/sql-server-technical-documentation?toc=%252fazure%252fsql-database%252ftoc.json).
+- [Samostatná databáze](single-database-overview.md) představuje plně spravovanou izolovanou databázi. Tuto možnost můžete použít, pokud máte moderní cloudové aplikace a mikroslužby, které potřebují jeden spolehlivý zdroj dat. Jedna databáze je podobná databázi s [omezením](/sql/relational-databases/databases/contained-databases?toc=%2fazure%2fsql-database%2ftoc.json) v [SQL Server databázovém stroji](/sql/sql-server/sql-server-technical-documentation?toc=%2fazure%2fsql-database%2ftoc.json).
 - [Elastický fond](elastic-pool-overview.md) je kolekce izolovaných [databází](single-database-overview.md) se sdílenou sadou prostředků, jako je například procesor nebo paměť. Jednotlivé databáze lze přesunout do elastického fondu nebo z něj.
 
 > [!IMPORTANT]
@@ -53,7 +53,7 @@ Můžete definovat množství přiřazených prostředků.
 
 Svou první aplikaci můžete vytvořit na malé a omezené databázi s nízkými náklady měsíčně na úrovni služby pro obecné účely. Svou vrstvu služby pak můžete kdykoli nebo programově změnit na kritickou úroveň služeb, aby splňovala požadavky vašeho řešení. Můžete upravit úroveň výkonu bez přerušení provozu aplikace a bez dopadu na vaše zákazníky. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, když je potřebujete.
 
-*Dynamická škálovatelnost* se liší od *automatického škálování* . K automatickému škálování dochází, když se služba škáluje automaticky na základě kritérií, zatímco dynamická škálovatelnost umožňuje ruční škálování bez prostojů. Možnost jediná databáze podporuje ruční dynamickou škálovatelnost, ale ne automatické škálování. Pokud chcete automatizovanější prostředí, zvažte použití elastických fondů, které databázím umožňují sdílet prostředky ve fondu na základě potřeb jednotlivých databází. Další možností je použít skripty, které mohou přispět k automatizaci škálovatelnosti pro izolovanou databázi. Příklad najdete v tématu [použití PowerShellu pro monitorování a škálování izolované databáze](scripts/monitor-and-scale-database-powershell.md).
+*Dynamická škálovatelnost* se liší od *automatického škálování*. K automatickému škálování dochází, když se služba škáluje automaticky na základě kritérií, zatímco dynamická škálovatelnost umožňuje ruční škálování bez prostojů. Možnost jediná databáze podporuje ruční dynamickou škálovatelnost, ale ne automatické škálování. Pokud chcete automatizovanější prostředí, zvažte použití elastických fondů, které databázím umožňují sdílet prostředky ve fondu na základě potřeb jednotlivých databází. Další možností je použít skripty, které mohou přispět k automatizaci škálovatelnosti pro izolovanou databázi. Příklad najdete v tématu [použití PowerShellu pro monitorování a škálování izolované databáze](scripts/monitor-and-scale-database-powershell.md).
 
 ### <a name="purchasing-models"></a>Nákupní modely
 
@@ -97,8 +97,8 @@ Azure SQL Database poskytuje pokročilé funkce monitorování a řešení potí
 Azure poskytuje [integrované nástroje pro monitorování výkonu](performance-guidance.md) a [upozorňování](alerts-insights-configure-portal.md) v kombinaci s hodnocením výkonu, které vám umožní monitorovat stav tisíců databází. Pomocí těchto nástrojů můžete rychle posoudit dopad vertikálního navýšení nebo snížení kapacity na základě aktuálních nebo plánovaných potřeb výkonu. Kromě toho SQL Database možné [vygenerovat metriky a protokoly prostředků](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) pro snazší monitorování. SQL Database můžete nakonfigurovat pro ukládání využití prostředků, pracovních procesů, relací a možností připojení do jednoho z těchto prostředků Azure:
 
 - **Azure Storage:** Pro archivaci obrovských objemů telemetrických dat za nízkou cenu.
-- **Azure Event Hubs** : pro integraci SQL Database telemetrie s vlastními řešeními monitorování nebo aktivními kanály.
-- **Protokoly Azure monitor** : pro integrované řešení monitorování s využitím sestav, upozorňování a zmírnění možností.
+- **Azure Event Hubs**: pro integraci SQL Database telemetrie s vlastními řešeními monitorování nebo aktivními kanály.
+- **Protokoly Azure monitor**: pro integrované řešení monitorování s využitím sestav, upozorňování a zmírnění možností.
 
 ![Diagram architektury monitorování Azure](./media/sql-database-paas-overview/architecture.png)
 
@@ -114,7 +114,7 @@ Zóny dostupnosti Azure se snaží chránit před výpadkem jednoho datového ce
 
 Smlouva o úrovni služeb [(SLA)](https://azure.microsoft.com/support/legal/sla/) Azure, která využívá globální síť datacenter spravovaných Microsoftem, pomáhá zajistit, aby vaše aplikace běžela 24/7. Platforma Azure plně spravuje každou databázi a zaručuje žádnou ztrátu dat a vysoké procento dostupnosti dat. Azure automaticky zpracovává opravy, zálohy, replikaci, detekci selhání, základní potenciální hardware, software nebo síť, nasazování oprav chyb, převzetí služeb při selhání, upgrady databáze a další úlohy údržby. Dostupnosti úrovně Standard se dosahuje oddělením výpočetní a úložné vrstvy. Dostupnost Premium se dosahuje integrací výpočetních prostředků a úložiště v jednom uzlu pro výkon a následnou implementací technologie podobně jako u skupin dostupnosti Always On. Úplnou diskuzi o funkcích Azure SQL Database vysoké dostupnosti najdete v článku [dostupnost SQL Database](high-availability-sla.md). 
 
-Kromě toho SQL Database poskytuje integrovanou funkci pro [provozní kontinuitu a globální škálovatelnost](business-continuity-high-availability-disaster-recover-hadr-overview.md) . Tady jsou některé z nich:
+Kromě toho SQL Database poskytuje integrovanou funkci pro [provozní kontinuitu a globální škálovatelnost](business-continuity-high-availability-disaster-recover-hadr-overview.md) . Mezi ně patří:
 
 - [Automatické zálohování](automated-backups-overview.md):
 
@@ -150,7 +150,7 @@ Mnohé z našich partnerů, kteří spouštějí [SaaS aplikace SQL Database pro
 [V SQL Database jsou k dispozici](automatic-tuning-overview.md)dvě další aspekty automatického ladění:
 
 - **Automatická správa indexů:** Identifikuje indexy, které by se měly do databáze přidat nebo z ní naopak odebrat.
-- **Automatická oprava plánu** : identifikuje problematické plány a opravuje problémy s výkonem plánu SQL.
+- **Automatická oprava plánu**: identifikuje problematické plány a opravuje problémy s výkonem plánu SQL.
 
 ### <a name="adaptive-query-processing"></a>Adaptivní zpracování dotazů
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.openlocfilehash: 6d20df031633df4642ce9fb5cbbc469fd7f0a5da
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097231"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188217"
 ---
 Chcete-li vytvořit projekt sady Visual Studio pro vývoj mobilních aplikací pro různé platformy pomocí Xamarin, budete potřebovat:
 - Nastavení možností vývoje sady Visual Studio.
@@ -26,7 +26,7 @@ Pokud chcete začít, ujistěte se, že jste správně nastavili v sadě Visual 
 
    ![Snímek obrazovky zobrazující kartu úlohy, změny dialogového okna a Instalační program pro Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-workload.png)
 
-1. Na kartě **úlohy** v části **Windows**Najděte **vývoj mobilních aplikací pomocí technologie .NET** . Pokud je zaškrtnuté políčko vedle této úlohy, zavřete dialogové okno **Úpravy** a pokračujte krokem 5.
+1. Na kartě **úlohy** v části **Windows** Najděte **vývoj mobilních aplikací pomocí technologie .NET** . Pokud je zaškrtnuté políčko vedle této úlohy, zavřete dialogové okno **Úpravy** a pokračujte krokem 5.
 
 1. Zaškrtněte políčko **vývoj pro mobilní zařízení pomocí .NET** a pak vyberte **Upravit**. V dialogovém okně **předtím, než** začnete, vyberte **pokračovat** a nainstalujte mobilní vývoj pomocí úlohy .NET. Instalace nové funkce může chvíli trvat.
 
@@ -44,9 +44,9 @@ Pokud chcete začít, ujistěte se, že jste správně nastavili v sadě Visual 
 
    ![Snímek obrazovky, který ukazuje, jak nakonfigurovat nový projekt v aplikaci Visual Studio.](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-configure-your-new-project.png)
 
-1. Do **název projektu**zadejte *HelloWorld*.
+1. Do **název projektu** zadejte *HelloWorld*.
 
-1. V části **umístění**klikněte na a vyberte nebo vytvořte složku, do které chcete projekt uložit.
+1. V části **umístění** klikněte na a vyberte nebo vytvořte složku, do které chcete projekt uložit.
 
 1. Výběrem možnosti **vytvořit** přejdete do okna **Nový projekt mobilní aplikace Xamarin Forms** .
 
@@ -54,7 +54,7 @@ Pokud chcete začít, ujistěte se, že jste správně nastavili v sadě Visual 
 
 1. Vyberte **prázdnou** šablonu.
 
-1. V části **platforma**zaškrtněte políčka pro **Android**, **iOS**a **Windows (UWP)**.
+1. V části **platforma** zaškrtněte políčka pro **Android**, **iOS** a **Windows (UWP)**.
 
 1. Vyberte **OK**. Vrátíte se do integrovaného vývojového prostředí sady Visual Studio s novým projektem vytvořeným a zobrazeným v podokně **Průzkumník řešení** .
 
@@ -66,13 +66,13 @@ Nyní vyberte cílovou architekturu platformy a spouštěný projekt. Na panelu 
 
 Nainstalujte [balíček NuGet sady Speech SDK](https://aka.ms/csspeech/nuget)a odkažte na sadu Speech SDK v projektu.
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na vaše řešení. Výběrem **možnosti spravovat balíčky NuGet pro řešení** přejdete do okna **řešení NuGet** .
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na vaše řešení. Výběrem **možnosti spravovat balíčky NuGet pro řešení** přejdete do okna **řešení NuGet** .
 
 1. Vyberte **Procházet**.
 
    ![Snímek obrazovky dialogového okna spravovat balíčky pro řešení při instalaci sady Speech SDK](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-nuget-solution-browse.png)
 
-1. Ve **zdroji balíčku**vyberte NuGet.org.
+1. Ve **zdroji balíčku** vyberte NuGet.org.
 
 1. Do **vyhledávacího** pole zadejte *Microsoft. cognitiveservices Account. Speech*. Pak vyberte tento balíček, jakmile se zobrazí ve výsledcích hledání.
 
@@ -81,9 +81,9 @@ Nainstalujte [balíček NuGet sady Speech SDK](https://aka.ms/csspeech/nuget)a o
    > [!NOTE] 
    > Knihovna iOS uvnitř `Microsoft.CognitiveServices.Speech` NuGet nemá povolený bitcode. Pokud potřebujete pro svou aplikaci povolenou knihovnu bitcode, použijte `Microsoft.CognitiveServices.Speech.Xamarin.iOS` konkrétně NuGet pro projekt iOS.
 
-1. V podokně stav balíčku vedle výsledků hledání vyberte všechny projekty: **HelloWorld**, **HelloWorld. Android**, **HelloWorld. iOS**a **HelloWorld. UWP**.
+1. V podokně stav balíčku vedle výsledků hledání vyberte všechny projekty: **HelloWorld**, **HelloWorld. Android**, **HelloWorld. iOS** a **HelloWorld. UWP**.
 
-1. Vyberte **Nainstalovat**.
+1. Vyberte **Install** (Nainstalovat).
 
 1. V dialogovém okně **Náhled změn** vyberte **OK**.
 

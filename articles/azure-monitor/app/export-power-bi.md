@@ -3,12 +3,12 @@ title: Export do Power BI z Azure Application Insights | Microsoft Docs
 description: Analytické dotazy se dají zobrazit v Power BI.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 804da7d3aaa2fd1b7973a686bc9ca5cb5ee973a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e88d60cd9a9d0e6267998237b33a361b12ffd84
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979157"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186996"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Power BI informačního kanálu od Application Insights
 [Power BI](https://www.powerbi.com/) je sada obchodních nástrojů, která pomáhá analyzovat data a sdílet přehledy. V každém zařízení jsou k dispozici řídicí panely s bohatou dostupností. Můžete kombinovat data z mnoha zdrojů, včetně analytických dotazů z [Azure Application Insights](./app-insights-overview.md).
@@ -31,12 +31,12 @@ Pokud chcete importovat Application Insights dotaz, použijte desktopovou verzi 
 Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
 ### <a name="export-an-analytics-query"></a>Export analytického dotazu
-1. [Otevřete Analytics a napište dotaz](../log-query/get-started-portal.md).
+1. [Otevřete Analytics a napište dotaz](../log-query/log-analytics-tutorial.md).
 2. Otestujte a zužte dotaz, dokud nebudete spokojeni s výsledky. Před exportem se ujistěte, že dotaz běží v analýze správně.
 3. V nabídce **Export** vyberte možnost **Power BI (M)**. Uložte textový soubor.
    
     ![Snímek obrazovky s analýzou se zvýrazněnou nabídkou export](./media/export-power-bi/analytics-export-power-bi.png)
-4. V Power BI Desktop vyberte **získat data**  >  **prázdný dotaz**. Pak v editoru dotazů v části **zobrazení**vyberte **Rozšířený editor**.
+4. V Power BI Desktop vyberte **získat data**  >  **prázdný dotaz**. Pak v editoru dotazů v části **zobrazení** vyberte **Rozšířený editor**.
 
     Vložte exportovaný skript jazyka M do Rozšířený editor.
 
@@ -61,7 +61,7 @@ Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
    ![Snímek obrazovky s tlačítkem Power BI](./media/export-power-bi/button.png)
 
-3. V Power BI Desktop vyberte **získat data**  >  **prázdný dotaz**. Pak v editoru dotazů v části **zobrazení**vyberte **Rozšířený editor**.
+3. V Power BI Desktop vyberte **získat data**  >  **prázdný dotaz**. Pak v editoru dotazů v části **zobrazení** vyberte **Rozšířený editor**.
 
    ![Snímek obrazovky Power BI Desktop s zvýrazněným tlačítkem pro prázdné dotazy](./media/export-power-bi/blankquery.png)
 
@@ -77,7 +77,7 @@ Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
    ![Snímek obrazovky Power BI Desktop se zvýrazněnou změnou názvu](./media/export-power-bi/changetitle.png)
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Může dojít k chybám souvisejícím s přihlašovacími údaji nebo velikostí datové sady. Zde jsou některé informace o tom, co dělat o těchto chybách.
 
@@ -146,5 +146,4 @@ Po počátečním importu se řídicí panel a sestavy budou dál aktualizovat d
 
 ## <a name="next-steps"></a>Další kroky
 * [Power BI – informace](https://www.powerbi.com/learning/)
-* [Kurz analýzy](../log-query/get-started-portal.md)
-
+* [Kurz analýzy](../log-query/log-analytics-tutorial.md)

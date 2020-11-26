@@ -12,11 +12,11 @@ ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
 ms.openlocfilehash: f00448f19cc0a2118477a9527005548fea25537e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651441"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187268"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Kurz: Export dat z Azure IoT Central a vizualizace Insights v Power BI
 
@@ -30,23 +30,23 @@ V tomto kurzu se naučíte, jak:
 > * Pomocí Logic Apps můžete odesílat data z centra událostí do datové sady streamování Power BI.
 > * Vytvořte řídicí panel Power BI pro vizualizaci dat v datové sadě streamování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
 * Pokud chcete dokončit předchozí dva kurzy, [vytvořte v Azure aplikaci pro analýzu v obchodě IoT Central](./tutorial-in-store-analytics-create-app.md) a [Přizpůsobte řídicí panel operátora a spravujte zařízení ve službě Azure IoT Central](./tutorial-in-store-analytics-customize-dashboard.md).
-* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 * Účet Power BI. Pokud nemáte účet Power BI, zaregistrujte si [bezplatnou zkušební verzi Power BI pro](https://app.powerbi.com/signupredirect?pbi_source=web) , než začnete.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Před vytvořením centra událostí a aplikace logiky je potřeba vytvořit skupinu prostředků pro jejich správu. Skupina prostředků by měla být ve stejném umístění jako vaše aplikace IoT Central pro **analýzu v rámci služby Store** . Vytvoření skupiny prostředků:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V levém navigačním panelu vyberte **skupiny prostředků**. Pak vyberte **Přidat**.
-1. V poli **předplatné**vyberte název předplatného Azure, které jste použili k vytvoření aplikace IoT Central.
+1. V poli **předplatné** vyberte název předplatného Azure, které jste použili k vytvoření aplikace IoT Central.
 1. Jako název **skupiny prostředků** zadejte _Retail-Store-Analysis_*.
-1. V poli **oblast**vyberte stejnou oblast, kterou jste zvolili pro IoT Central aplikaci.
+1. V poli **oblast** vyberte stejnou oblast, kterou jste zvolili pro IoT Central aplikaci.
 1. Vyberte **zkontrolovat + vytvořit**.
 1. Na stránce **Revize + vytvořit** vyberte **vytvořit**.
 
@@ -57,7 +57,7 @@ Teď máte v předplatném skupinu prostředků s názvem **Retail-Store-Analysi
 Předtím, než budete moci nakonfigurovat aplikaci maloobchodního monitorování pro export telemetrie, je nutné vytvořit centrum událostí pro příjem exportovaných dat. Následující kroky ukazují, jak vytvořit centrum událostí:
 
 1. V Azure Portal v levém horním rohu obrazovky vyberte **vytvořit prostředek** .
-1. V **části Hledat na Marketplace**zadejte _Event Hubs_a potom stiskněte klávesu **ENTER**.
+1. V **části Hledat na Marketplace** zadejte _Event Hubs_ a potom stiskněte klávesu **ENTER**.
 1. Na stránce **Event Hubs** vyberte **vytvořit**.
 1. Na stránce **vytvořit obor názvů** proveďte následující kroky:
     * Zadejte jedinečný název oboru názvů, jako je například _Your-Retail-Store-Analysis_. Systém zkontroluje, zda je tento název k dispozici.
@@ -66,7 +66,7 @@ Předtím, než budete moci nakonfigurovat aplikaci maloobchodního monitorován
     * Vyberte skupinu prostředků **Retail-Store-Analysis** .
     * Vyberte stejné umístění, které jste použili pro vaši aplikaci IoT Central.
     * Vyberte **Vytvořit**. Je možné, že budete muset několik minut počkat, než systém zřídí prostředky.
-1. Na portálu přejděte do skupiny prostředků **Retail-Store-Analysis** . Počkejte, až se nasazení dokončí. Možná budete muset vybrat možnost **aktualizovat** , aby se aktualizoval stav nasazení. V **oznámeních**můžete taky zjistit stav vytvoření oboru názvů centra událostí.
+1. Na portálu přejděte do skupiny prostředků **Retail-Store-Analysis** . Počkejte, až se nasazení dokončí. Možná budete muset vybrat možnost **aktualizovat** , aby se aktualizoval stav nasazení. V **oznámeních** můžete taky zjistit stav vytvoření oboru názvů centra událostí.
 1. Ve skupině prostředků **Retail-Store-Analysis** vyberte **obor názvů Event Hubs**. Na portálu se zobrazí domovská stránka **oboru názvů Event Hubs** .
 
 Teď máte **Event Hubs obor názvů**, můžete vytvořit **centrum událostí** pro použití s vaší aplikací IoT Central:
@@ -85,7 +85,7 @@ Teď máte centrum událostí, ve kterém můžete nakonfigurovat aplikaci pro *
 1. Přihlaste se k vaší aplikaci IoT Central pro **analýzy v rámci obchodu** .
 1. V levém podokně vyberte **exportovat data** .
 1. Vyberte **nový > Azure Event Hubs**.
-1. Jako **Zobrazovaný název**zadejte _Export telemetrie_ .
+1. Jako **Zobrazovaný název** zadejte _Export telemetrie_ .
 1. Vyberte svůj **obor názvů Event Hubs**.
 1. Vyberte centrum událostí **telemetrie úložiště** .
 1. V části **data k exportu** přepněte na **zařízení** a **šablony zařízení** .
@@ -100,12 +100,12 @@ Export dat může trvat několik minut, než se zahájí odesílání telemetrie
 Řídicí panel Power BI zobrazí data z vaší aplikace pro monitorování maloobchodního prodeje. V tomto řešení použijete Power BI datové sady streamování jako zdroj dat pro Power BI řídicí panel. V této části definujete schéma datových sad streamování, aby aplikace logiky mohla přesílat data z centra událostí. Následující kroky ukazují, jak vytvořit dvě datové sady streamování pro senzory prostředí a jednu datovou sadu streamování pro senzor obsazení:
 
 1. Přihlaste se ke svému účtu **Power BI**.
-1. Vyberte **pracovní prostory**a pak vyberte **vytvořit pracovní prostor**.
-1. Na stránce **vytvořit pracovní prostor** zadejte v části _Store Analytics –_ jako **název pracovního prostoru**proveďte rezervaci.
+1. Vyberte **pracovní prostory** a pak vyberte **vytvořit pracovní prostor**.
+1. Na stránce **vytvořit pracovní prostor** zadejte v části _Store Analytics –_ jako **název pracovního prostoru** proveďte rezervaci.
 1. Posuňte se do dolní části okna **Vítejte na stránce pracovní prostor pro analýzu v úložišti** a vyberte **Přeskočit**.
 1. Na stránce pracovní prostor vyberte **vytvořit > datovou sadu streamování**.
-1. Na stránce **Nová datová sada streamování** zvolte **rozhraní API**a pak vyberte **Další**.
-1. Jako **název datové sady**zadejte _zóna 1 snímač_ .
+1. Na stránce **Nová datová sada streamování** zvolte **rozhraní API** a pak vyberte **Další**.
+1. Jako **název datové sady** zadejte _zóna 1 snímač_ .
 1. Zadejte tři **hodnoty ze streamu** v následující tabulce:
 
     | Název hodnoty  | Typ hodnoty |
@@ -127,8 +127,8 @@ Toto řešení využívá jednu datovou sadu streamování pro každý senzor, p
 Také potřebujete datovou sadu streamování pro telemetrii obsazení:
 
 1. Na stránce pracovní prostor vyberte **vytvořit > datovou sadu streamování**.
-1. Na stránce **Nová datová sada streamování** zvolte **rozhraní API**a pak vyberte **Další**.
-1. Jako **název datové sady**zadejte _snímač obsazení_ .
+1. Na stránce **Nová datová sada streamování** zvolte **rozhraní API** a pak vyberte **Další**.
+1. Jako **název datové sady** zadejte _snímač obsazení_ .
 1. Zadejte pět **hodnot ze streamu** v následující tabulce:
 
     | Název hodnoty     | Typ hodnoty |
@@ -161,7 +161,7 @@ Než vytvoříte aplikaci logiky, budete potřebovat ID zařízení dvou senzor�
 Následující kroky ukazují, jak vytvořit aplikaci logiky v Azure Portal:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a v levém horním rohu obrazovky vyberte **vytvořit prostředek** .
-1. V **části Hledat na Marketplace**zadejte _aplikaci logiky_a potom stiskněte klávesu **ENTER**.
+1. V **části Hledat na Marketplace** zadejte _aplikaci logiky_ a potom stiskněte klávesu **ENTER**.
 1. Na stránce **Aplikace logiky** vyberte **vytvořit**.
 1. Na stránce vytvoření **Aplikace logiky** :
     * Zadejte jedinečný název vaší aplikace logiky, jako je například _Your-Retail-Store-Analysis_.
@@ -171,13 +171,13 @@ Následující kroky ukazují, jak vytvořit aplikaci logiky v Azure Portal:
     * Vyberte **Vytvořit**. Je možné, že budete muset několik minut počkat, než systém zřídí prostředky.
 1. V Azure Portal přejděte na novou aplikaci logiky.
 1. Na stránce **návrháře Logic Apps** se posuňte dolů a vyberte **prázdná aplikace logiky**.
-1. V **vyhledávacích konektorech a triggerech**zadejte _Event Hubs_.
-1. V **aktivačních**událostech vyberte, **kdy jsou události k dispozici v centru událostí**.
-1. Jako **název připojení**zadejte _telemetrie úložiště_ a vyberte svůj **obor názvů Event Hubs**.
+1. V **vyhledávacích konektorech a triggerech** zadejte _Event Hubs_.
+1. V **aktivačních** událostech vyberte, **kdy jsou události k dispozici v centru událostí**.
+1. Jako **název připojení** zadejte _telemetrie úložiště_ a vyberte svůj **obor názvů Event Hubs**.
 1. Vyberte zásadu **RootManageSharedAccess** a vyberte **vytvořit**.
 1. V části **události když jsou k dispozici události centra událostí** :
-    * V **název centra událostí**vyberte **Store-telemetrie**.
-    * V **typu obsahu**vyberte **Application/JSON**.
+    * V **název centra událostí** vyberte **Store-telemetrie**.
+    * V **typu obsahu** vyberte **Application/JSON**.
     * Nastavte **interval** na tři a **četnost** na sekundy.
 1. Výběrem možnosti **Uložit** aplikaci logiky uložte.
 
@@ -372,52 +372,52 @@ Chcete-li přidat logiku k návrhu aplikace logiky, vyberte **zobrazení kódu**
 
     ![Návrh aplikace logiky](./media/tutorial-in-store-analytics-visualize-insights/logic-app.png)
 
-1. Kliknutím na **přepínač přepnout podle DeviceID** tuto akci rozbalíte. Pak vyberte **zóna 1 prostředí**a vyberte **přidat akci**.
-1. Do **vyhledávacích konektorů a akcí**zadejte **Power BI**a potom stiskněte klávesu **ENTER**.
+1. Kliknutím na **přepínač přepnout podle DeviceID** tuto akci rozbalíte. Pak vyberte **zóna 1 prostředí** a vyberte **přidat akci**.
+1. Do **vyhledávacích konektorů a akcí** zadejte **Power BI** a potom stiskněte klávesu **ENTER**.
 1. Vyberte akci **Přidat řádky do datové sady (Preview)** .
 1. Vyberte **Přihlásit** se a podle pokynů se přihlaste ke svému účtu Power BI.
 1. Po dokončení procesu přihlašování v akci **Přidat řádky do datové sady** :
     * Vyberte **in-Store Analytics – proveďte rezervaci** jako pracovní prostor.
     * Jako datovou sadu vyberte **zóna 1 senzor** .
     * Jako tabulku vyberte **RealTimeData** .
-    * Vyberte **Přidat nový parametr** a pak vyberte pole **časové razítko**, **vlhkost**a **teplota** .
+    * Vyberte **Přidat nový parametr** a pak vyberte pole **časové razítko**, **vlhkost** a **teplota** .
     * Vyberte pole **časové razítko** a pak ze seznamu **dynamického obsahu** vyberte **x-opt-enqueuedtime** .
-    * Vyberte pole **vlhkost** a pak pro **analýzu telemetrie**vyberte **Zobrazit více** . Pak vyberte **vlhkost**.
-    * Vyberte pole **teplota** a pak pro **analýzu telemetrie**vyberte **Zobrazit více** . Pak vyberte možnost **teplota**.
+    * Vyberte pole **vlhkost** a pak pro **analýzu telemetrie** vyberte **Zobrazit více** . Pak vyberte **vlhkost**.
+    * Vyberte pole **teplota** a pak pro **analýzu telemetrie** vyberte **Zobrazit více** . Pak vyberte možnost **teplota**.
     * Vyberte **Uložit** a uložte tak provedené změny. Akce **zóna 1 prostředí** vypadá jako na následujícím snímku obrazovky: ![ zóna 1 prostředí.](./media/tutorial-in-store-analytics-visualize-insights/zone-1-action.png)
 1. Vyberte akci **zóna 2 prostředí** a vyberte **přidat akci**.
-1. Do **vyhledávacích konektorů a akcí**zadejte **Power BI**a potom stiskněte klávesu **ENTER**.
+1. Do **vyhledávacích konektorů a akcí** zadejte **Power BI** a potom stiskněte klávesu **ENTER**.
 1. Vyberte akci **Přidat řádky do datové sady (Preview)** .
 1. V akci **Přidat řádky do datové sady 2** :
     * Vyberte **in-Store Analytics – proveďte rezervaci** jako pracovní prostor.
     * Jako datovou sadu vyberte **zóna 2 senzor** .
     * Jako tabulku vyberte **RealTimeData** .
-    * Vyberte **Přidat nový parametr** a pak vyberte pole **časové razítko**, **vlhkost**a **teplota** .
+    * Vyberte **Přidat nový parametr** a pak vyberte pole **časové razítko**, **vlhkost** a **teplota** .
     * Vyberte pole **časové razítko** a pak ze seznamu **dynamického obsahu** vyberte **x-opt-enqueuedtime** .
-    * Vyberte pole **vlhkost** a pak pro **analýzu telemetrie**vyberte **Zobrazit více** . Pak vyberte **vlhkost**.
-    * Vyberte pole **teplota** a pak pro **analýzu telemetrie**vyberte **Zobrazit více** . Pak vyberte možnost **teplota**.
+    * Vyberte pole **vlhkost** a pak pro **analýzu telemetrie** vyberte **Zobrazit více** . Pak vyberte **vlhkost**.
+    * Vyberte pole **teplota** a pak pro **analýzu telemetrie** vyberte **Zobrazit více** . Pak vyberte možnost **teplota**.
     Vyberte **Uložit** a uložte tak provedené změny.  Akce **zóna 2 prostředí** vypadá jako na následujícím snímku obrazovky: ![ zóna 2 prostředí.](./media/tutorial-in-store-analytics-visualize-insights/zone-2-action.png)
 1. Vyberte akci **obsazení** a pak vyberte akci **Přepnout podle ID rozhraní** .
 1. Vyberte akci **rozhraní pro dobu bydlení** a vyberte **přidat akci**.
-1. Do **vyhledávacích konektorů a akcí**zadejte **Power BI**a potom stiskněte klávesu **ENTER**.
+1. Do **vyhledávacích konektorů a akcí** zadejte **Power BI** a potom stiskněte klávesu **ENTER**.
 1. Vyberte akci **Přidat řádky do datové sady (Preview)** .
 1. V akci **Přidat řádky do datové sady** :
     * Vyberte **in-Store Analytics – proveďte rezervaci** jako pracovní prostor.
     * Jako datovou sadu vyberte **senzor obsazení** .
     * Jako tabulku vyberte **RealTimeData** .
-    * Vyberte možnost **Přidat nový parametr** a potom vyberte pole časové **razítko**, **doba bydlení 1**a **Doba obydlí 2** .
+    * Vyberte možnost **Přidat nový parametr** a potom vyberte pole časové **razítko**, **doba bydlení 1** a **Doba obydlí 2** .
     * Vyberte pole **časové razítko** a pak ze seznamu **dynamického obsahu** vyberte **x-opt-enqueuedtime** .
-    * Vyberte pole **Doba obydlí 1** a potom pro **analýzu telemetrie**vyberte **Zobrazit další** . Pak vyberte **DwellTime1**.
-    * Vyberte pole **Doba obydlí 2** a potom pro **analýzu telemetrie**vyberte **Zobrazit další** . Pak vyberte **DwellTime2**.
+    * Vyberte pole **Doba obydlí 1** a potom pro **analýzu telemetrie** vyberte **Zobrazit další** . Pak vyberte **DwellTime1**.
+    * Vyberte pole **Doba obydlí 2** a potom pro **analýzu telemetrie** vyberte **Zobrazit další** . Pak vyberte **DwellTime2**.
     * Vyberte **Uložit** a uložte tak provedené změny. Akce **rozhraní pro dobu bydlení** vypadá jako na následujícím snímku obrazovky: ![ snímek obrazovky, který zobrazuje akci "rozhraní pro dobu bydlení".](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
 1. Vyberte akci **rozhraní počtu osob** a pak vyberte **přidat akci**.
-1. Do **vyhledávacích konektorů a akcí**zadejte **Power BI**a potom stiskněte klávesu **ENTER**.
+1. Do **vyhledávacích konektorů a akcí** zadejte **Power BI** a potom stiskněte klávesu **ENTER**.
 1. Vyberte akci **Přidat řádky do datové sady (Preview)** .
 1. V akci **Přidat řádky do datové sady** :
     * Vyberte **in-Store Analytics – proveďte rezervaci** jako pracovní prostor.
     * Jako datovou sadu vyberte **senzor obsazení** .
     * Jako tabulku vyberte **RealTimeData** .
-    * Vyberte **Přidat nový parametr** a pak vyberte pole **časové razítko**, **Délka fronty 1**a **délka 2 fronty** .
+    * Vyberte **Přidat nový parametr** a pak vyberte pole **časové razítko**, **Délka fronty 1** a **délka 2 fronty** .
     * Vyberte pole **časové razítko** a pak ze seznamu **dynamického obsahu** vyberte **x-opt-enqueuedtime** .
     * Vyberte pole **Délka fronty 1** a pak vyberte **Zobrazit více** vedle možnosti **analyzovat telemetrii**. Pak vyberte **count1**.
     * Vyberte pole **Délka fronty 2** a potom vyberte **Zobrazit více** vedle možnosti **analyzovat telemetrii**. Pak vyberte **count2**.
@@ -436,7 +436,7 @@ Nyní máte k dispozici telemetrii z vaší aplikace IoT Central prostřednictv�
 
 ### <a name="add-line-charts"></a>Přidat spojnicové grafy
 
-Přidejte čtyři dlaždice spojnicového grafu pro zobrazení teploty a vlhkosti ze dvou senzorů pro životní prostředí. K vytvoření dlaždic použijte informace v následující tabulce. Chcete-li přidat každou dlaždici, začněte tím, že vyberete **... (Další možnosti) > přidat dlaždici**. Vyberte **vlastní streamovaná data**a pak vyberte **Další**:
+Přidejte čtyři dlaždice spojnicového grafu pro zobrazení teploty a vlhkosti ze dvou senzorů pro životní prostředí. K vytvoření dlaždic použijte informace v následující tabulce. Chcete-li přidat každou dlaždici, začněte tím, že vyberete **... (Další možnosti) > přidat dlaždici**. Vyberte **vlastní streamovaná data** a pak vyberte **Další**:
 
 | Nastavení | #1 grafu | #2 grafu | #3 grafu | #4 grafu |
 | ------- | -------- | -------- | -------- | -------- |
@@ -454,7 +454,7 @@ Následující snímek obrazovky ukazuje nastavení prvního grafu:
 
 ### <a name="add-cards-to-show-environmental-data"></a>Přidání karet pro zobrazení dat o životním prostředí
 
-Přidejte čtyři dlaždice karet k zobrazení nejaktuálnějších hodnot teploty a vlhkosti ze dvou senzorů pro životní prostředí. K vytvoření dlaždic použijte informace v následující tabulce. Chcete-li přidat každou dlaždici, začněte tím, že vyberete **... (Další možnosti) > přidat dlaždici**. Vyberte **vlastní streamovaná data**a pak vyberte **Další**:
+Přidejte čtyři dlaždice karet k zobrazení nejaktuálnějších hodnot teploty a vlhkosti ze dvou senzorů pro životní prostředí. K vytvoření dlaždic použijte informace v následující tabulce. Chcete-li přidat každou dlaždici, začněte tím, že vyberete **... (Další možnosti) > přidat dlaždici**. Vyberte **vlastní streamovaná data** a pak vyberte **Další**:
 
 | Nastavení | #1 karty | #2 karty | #3 karty | #4 karty |
 | ------- | ------- | ------- | ------- | ------- |
@@ -470,7 +470,7 @@ Následující snímek obrazovky ukazuje nastavení pro první kartu:
 
 ### <a name="add-tiles-to-show-checkout-occupancy-data"></a>Přidat dlaždice pro zobrazení rezervací dat obsazení
 
-Přidejte čtyři dlaždice karet, abyste zobrazili délku fronty a dobu trvání obydlí pro dvě rezervace ve Storu. K vytvoření dlaždic použijte informace v následující tabulce. Chcete-li přidat každou dlaždici, začněte tím, že vyberete **... (Další možnosti) > přidat dlaždici**. Vyberte **vlastní streamovaná data**a pak vyberte **Další**:
+Přidejte čtyři dlaždice karet, abyste zobrazili délku fronty a dobu trvání obydlí pro dvě rezervace ve Storu. K vytvoření dlaždic použijte informace v následující tabulce. Chcete-li přidat každou dlaždici, začněte tím, že vyberete **... (Další možnosti) > přidat dlaždici**. Vyberte **vlastní streamovaná data** a pak vyberte **Další**:
 
 | Nastavení | #1 karty | #2 karty | #3 karty | #4 karty |
 | ------- | ------- | ------- | ------- | ------- |

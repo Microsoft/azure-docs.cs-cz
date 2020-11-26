@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b684123068889e422080605fb9c50ef9aed0cb76
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e446ec08d63c44566b2f45c1427999536d0be703
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630154"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188713"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Řešení potíží se soubory Azure v systému Windows (SMB)
 
@@ -26,7 +26,7 @@ V tomto článku jsou uvedené běžné problémy související se soubory Micro
 
 Když se pokusíte připojit sdílenou složku, může se zobrazit následující chyba:
 
-- Došlo k systémové chybě 5. Přístup je odepřen.
+- Došlo k systémové chybě 5. Přístup byl zamítnut.
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>Příčina 1: nešifrovaný komunikační kanál
 
@@ -176,7 +176,7 @@ Ověřte, že jsou pro účet úložiště správně nakonfigurovaná pravidla b
 Přejděte k účtu úložiště, kde se nachází sdílená složka Azure, klikněte na **řízení přístupu (IAM)** a ověřte, jestli má uživatelský účet přístup k účtu úložiště. Další informace najdete v tématu [zabezpečení účtu úložiště pomocí řízení přístupu na základě role Azure (RBAC)](../blobs/security-recommendations.md#data-protection).
 
 <a id="open-handles"></a>
-## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Nejde odstranit soubor nebo adresář ve sdílené složce Azure
+## <a name="unable-to-modify-moverename-or-delete-a-file-or-directory"></a>Nelze upravit, přesunout/přejmenovat nebo odstranit soubor nebo adresář.
 Jedním z klíčových účelů sdílené složky je, že více uživatelů a aplikací může současně komunikovat se soubory a adresáři ve sdílené složce. Pro pomoc s touto interakcí nabízí sdílení souborů několik způsobů, jak Mediating přístup k souborům a adresářům.
 
 Když otevřete soubor z připojené sdílené složky Azure přes protokol SMB, aplikace nebo operační systém vyžádá popisovač souboru, který je odkazem na soubor. Mimo jiné aplikace určí režim sdílení souborů, když požádá o popisovač souboru, který určuje úroveň výhradního přístupu k souboru vydanému soubory Azure: 

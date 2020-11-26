@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: d5da6576258d3e33296781bbc262494220140ddc
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 37c237cdaf6c0d4f766d4b2e39c10e3e96215463
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489280"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187829"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>Připojení zařízení IoT Edge pro příjem dat k bráně Azure IoT Edge (Preview)
 
@@ -34,15 +34,15 @@ Některé síťové architektury vyžadují, aby se ke cloudu mohl připojit jen
 
 Všechny kroky v tomto článku jsou sestavené na těch v tématu [konfigurace IoT Edge zařízení, aby fungovalo jako transparentní brána](how-to-create-transparent-gateway.md), která nastaví IoT Edge zařízení jako bránu pro podřízená zařízení IoT. Stejné základní kroky platí pro všechny scénáře brány:
 
-* **Ověřování** : Vytvořte IoT Hub identity pro všechna zařízení v hierarchii brány.
-* **Autorizace** : Nastavte vztah nadřazenosti/podřízenosti v IoT Hub k autorizaci podřízených zařízení pro připojení k jejich nadřazenému zařízení, jako by se připojili k IoT Hub.
-* **Zjišťování brány** : Ujistěte se, že podřízené zařízení může najít své nadřazené zařízení v místní síti.
-* **Zabezpečené připojení** : navažte zabezpečené připojení k důvěryhodným certifikátům, které jsou součástí stejného řetězce.
+* **Ověřování**: Vytvořte IoT Hub identity pro všechna zařízení v hierarchii brány.
+* **Autorizace**: Nastavte vztah nadřazenosti/podřízenosti v IoT Hub k autorizaci podřízených zařízení pro připojení k jejich nadřazenému zařízení, jako by se připojili k IoT Hub.
+* **Zjišťování brány**: Ujistěte se, že podřízené zařízení může najít své nadřazené zařízení v místní síti.
+* **Zabezpečené připojení**: navažte zabezpečené připojení k důvěryhodným certifikátům, které jsou součástí stejného řetězce.
 
 ## <a name="prerequisites"></a>Předpoklady
 
 * Centrum IoT úrovně Free nebo Standard.
-* Aspoň dvě **IoT Edge zařízení** , jednu jako zařízení nejvyšší vrstvy a jedno nebo více zařízení nižší vrstvy. Pokud nemáte dostupná IoT Edgeá zařízení, můžete [Azure IoT Edge spustit na virtuálních počítačích s Ubuntu](how-to-install-iot-edge-ubuntuvm.md).
+* Aspoň dvě **IoT Edge zařízení**, jednu jako zařízení nejvyšší vrstvy a jedno nebo více zařízení nižší vrstvy. Pokud nemáte dostupná IoT Edgeá zařízení, můžete [Azure IoT Edge spustit na virtuálních počítačích s Ubuntu](how-to-install-iot-edge-ubuntuvm.md).
 * Pokud k vytváření a správě zařízení používáte Azure CLI, použijte Azure CLI v 2.3.1 s nainstalovaným rozšířením Azure IoT v 0.10.6 nebo novějším.
 
 Tento článek poskytuje podrobné postupy a možnosti, které vám pomůžou vytvořit správnou hierarchii brány pro váš scénář. Kurz průvodce najdete v tématu [vytvoření hierarchie IoT Edge zařízení pomocí bran](tutorial-nested-iot-edge.md).
@@ -99,7 +99,7 @@ V případě tohoto nastavení může IoT Edge každé zařízení s edgeHub neb
 
 Vytvořte následující certifikáty:
 
-* **Certifikát kořenové certifikační autority** , což je nejvyšší sdílený certifikát pro všechna zařízení v dané hierarchii brány. Tento certifikát je nainstalovaný na všech zařízeních.
+* **Certifikát kořenové certifikační autority**, což je nejvyšší sdílený certifikát pro všechna zařízení v dané hierarchii brány. Tento certifikát je nainstalovaný na všech zařízeních.
 * Všechny **zprostředkující certifikáty** , které chcete zahrnout do kořenového řetězu certifikátů.
 * **Certifikát certifikační autority zařízení** a jeho **privátní klíč** vygenerovaný kořenovými a zprostředkujícími certifikáty. Pro každé zařízení IoT Edge v hierarchii brány potřebujete jeden jedinečný certifikát CA zařízení.
 
@@ -148,9 +148,9 @@ V systému Linux se ujistěte, že uživatel **iotedge** má oprávnění ke čt
 
 1. V souboru config. yaml vyhledejte část **certifikáty** . Aktualizujte pole tří certifikátů tak, aby odkazovala na vaše certifikáty. Zadejte cesty k identifikátorům URI souboru, které mají formát `file:///<path>/<filename>` .
 
-   * **device_ca_cert** : cesta k identifikátoru URI souboru pro certifikát certifikační autority zařízení je pro toto zařízení jedinečná.
-   * **device_ca_pk** : cesta k identifikátoru URI souboru pro toto zařízení je pro privátní klíč certifikační autority zařízení jedinečná.
-   * **trusted_ca_certs** : cesta k identifikátoru URI souboru pro kořenový certifikát certifikační autority, kterou sdílí všechna zařízení v hierarchii brány.
+   * **device_ca_cert**: cesta k identifikátoru URI souboru pro certifikát certifikační autority zařízení je pro toto zařízení jedinečná.
+   * **device_ca_pk**: cesta k identifikátoru URI souboru pro toto zařízení je pro privátní klíč certifikační autority zařízení jedinečná.
+   * **trusted_ca_certs**: cesta k identifikátoru URI souboru pro kořenový certifikát certifikační autority, kterou sdílí všechna zařízení v hierarchii brány.
 
 1. V souboru config. yaml vyhledejte parametr **hostname** . Aktualizujte název hostitele tak, aby byl plně kvalifikovaný název domény (FQDN) nebo IP adresa IoT Edgeho zařízení.
 
@@ -160,7 +160,7 @@ V systému Linux se ujistěte, že uživatel **iotedge** má oprávnění ke čt
 
    Je konzistentní se vzorem názvu hostitele napříč hierarchií brány. Použijte buď plně kvalifikované názvy domény nebo IP adresy, ale ne obojí.
 
-1. **Pokud je toto zařízení podřízené** , vyhledejte parametr **parent_hostname** . Aktualizujte pole **parent_hostname** tak, aby se jednalo o plně kvalifikovaný název domény nebo IP adresu nadřazeného zařízení, a to podle toho, co bylo zadáno jako název hostitele v souboru config. yaml nadřazeného objektu.
+1. **Pokud je toto zařízení podřízené**, vyhledejte parametr **parent_hostname** . Aktualizujte pole **parent_hostname** tak, aby se jednalo o plně kvalifikovaný název domény nebo IP adresu nadřazeného zařízení, a to podle toho, co bylo zadáno jako název hostitele v souboru config. yaml nadřazeného objektu.
 
 1. I když je tato funkce ve verzi Public Preview, musíte zařízení IoT Edge nakonfigurovat tak, aby při spuštění používala verzi Public Preview agenta IoT Edge.
 
@@ -172,7 +172,7 @@ V systému Linux se ujistěte, že uživatel **iotedge** má oprávnění ke čt
      type: "docker"
      env: {}
      config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1"
+       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
        auth: {}
    ```
 
@@ -202,7 +202,7 @@ V systému Linux se ujistěte, že uživatel **iotedge** má oprávnění ke čt
 
 I když je tato funkce ve verzi Public Preview, musíte zařízení IoT Edge nakonfigurovat tak, aby používala verze Public Preview modulů IoT Edge runtime. V předchozí části najdete postup konfigurace edgeAgent při spuštění. Také je nutné nakonfigurovat moduly modulu runtime v nasazeních pro vaše zařízení.
 
-1. Nakonfigurujte modul edgeHub tak, aby používal image Public Preview: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1` .
+1. Nakonfigurujte modul edgeHub tak, aby používal image Public Preview: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` .
 
 1. Pro modul edgeHub nakonfigurujte následující proměnné prostředí:
 
@@ -211,7 +211,7 @@ I když je tato funkce ve verzi Public Preview, musíte zařízení IoT Edge nak
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. Nakonfigurujte modul edgeAgent tak, aby používal image Public Preview: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1` .
+1. Nakonfigurujte modul edgeAgent tak, aby používal image Public Preview: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` .
 
 ## <a name="network-isolate-downstream-devices"></a>Síť s izolací pro příjem dat
 
@@ -298,17 +298,17 @@ Modul API proxy byl navržený tak, aby zpracovával nejběžnější scénáře
 1. Vyberte **Uložit** a uložte změny do nastavení modulu runtime.
 1. Vyberte znovu **Přidat** a pak zvolte **IoT Edge modul**.
 1. Zadejte následující hodnoty pro přidání modulu Docker registru do nasazení:
-   1. **Název modulu IoT Edge** : `registry`
-   1. Na kartě **nastavení modulu** , **identifikátor URI obrázku** : `registry:latest`
+   1. **Název modulu IoT Edge**: `registry`
+   1. Na kartě **nastavení modulu** , **identifikátor URI obrázku**: `registry:latest`
    1. Na kartě **proměnné prostředí** přidejte následující proměnné prostředí:
 
-      * **Název** : `REGISTRY_PROXY_REMOTEURL` **hodnota** : adresa URL registru kontejneru, na který chcete mapovat tento modul registru. Například, `https://myregistry.azurecr`.
+      * **Název**: `REGISTRY_PROXY_REMOTEURL` **hodnota**: adresa URL registru kontejneru, na který chcete mapovat tento modul registru. Například, `https://myregistry.azurecr`.
 
         Modul registru lze mapovat pouze na jeden registr kontejneru, proto doporučujeme mít všechny image kontejneru v jednom privátním registru kontejneru.
 
-      * **Název** : `REGISTRY_PROXY_USERNAME` **hodnota** : uživatelské jméno pro ověření v registru kontejnerů.
+      * **Název**: `REGISTRY_PROXY_USERNAME` **hodnota**: uživatelské jméno pro ověření v registru kontejnerů.
 
-      * **Name** : `REGISTRY_PROXY_PASSWORD` **hodnota** : heslo pro ověření v registru kontejnerů.
+      * **Name**: `REGISTRY_PROXY_PASSWORD` **hodnota**: heslo pro ověření v registru kontejnerů.
 
    1. Na kartě **možnosti vytvoření kontejneru** vložte:
 
@@ -329,8 +329,8 @@ Modul API proxy byl navržený tak, aby zpracovával nejběžnější scénáře
 1. Vyberte **Přidat** a přidejte modul do nasazení.
 1. Vyberte **Další: trasy** , které chcete přejít k dalšímu kroku.
 1. Pokud chcete povolit zprávy typu zařízení-Cloud ze zařízení se systémem IoT Hub, přidejte trasu, která všem zprávám projde IoT Hub. Příklad:
-    1. **Název** : `Route`
-    1. **Hodnota** : `FROM /messages/* INTO $upstream`
+    1. **Název**: `Route`
+    1. **Hodnota**: `FROM /messages/* INTO $upstream`
 1. Výběrem možnosti **zkontrolovat + vytvořit** přejdete k poslednímu kroku.
 1. Vyberte **vytvořit** a nasaďte ho do svého zařízení.
 
@@ -366,7 +366,7 @@ agent:
   type: "docker"
   env: {}
   config:
-    image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc1"
+    image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc2"
     auth: {}
 ```
 
@@ -436,8 +436,8 @@ Modul API proxy byl navržený tak, aby zpracovával nejběžnější scénáře
 1. Vyberte **Uložit** a uložte změny do nastavení modulu runtime.
 1. Vyberte **Další: trasy** , které chcete přejít k dalšímu kroku.
 1. Pokud chcete povolit zprávy typu zařízení-Cloud ze zařízení, která budou mít IoT Hub, přidejte trasu, do které se budou všechny zprávy předávat `$upstream` . Parametr pro odesílání odkazuje na nadřazené zařízení v případě nižší vrstvy zařízení. Příklad:
-    1. **Název** : `Route`
-    1. **Hodnota** : `FROM /messages/* INTO $upstream`
+    1. **Název**: `Route`
+    1. **Hodnota**: `FROM /messages/* INTO $upstream`
 1. Výběrem možnosti **zkontrolovat + vytvořit** přejdete k poslednímu kroku.
 1. Vyberte **vytvořit** a nasaďte ho do svého zařízení.
 

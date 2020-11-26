@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: c38fa77951aaeb5559dc2030f1401a896d7c238d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f9ced3dfeccdbac5f0eb220cf0e104679f263aac
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841916"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186860"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Monitorování řešení v Azure Monitor
 
@@ -29,7 +29,7 @@ Pomocí rozevíracích seznamů v horní části obrazovky změňte pracovní pr
 
 [![Snímek obrazovky se zobrazí v nabídce Azure Portal s vybranými řešeními a řešeními, která se zobrazují v podokně řešení.](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
-Řešení monitorování mohou obsahovat více typů prostředků Azure a můžete si Zobrazit všechny prostředky, které jsou součástí řešení, stejně jako všechny ostatní prostředky. Například všechny dotazy protokolu zahrnuté v řešení jsou uvedeny v části **dotazy řešení** v [Průzkumníku dotazů](../log-query/get-started-portal.md#load-queries) . Tyto dotazy můžete použít při provádění analýzy ad hoc pomocí [dotazů protokolu](../log-query/log-query-overview.md).
+Řešení monitorování mohou obsahovat více typů prostředků Azure a můžete si Zobrazit všechny prostředky, které jsou součástí řešení, stejně jako všechny ostatní prostředky. Například všechny dotazy protokolu zahrnuté v řešení jsou uvedeny v části **dotazy řešení** v [Průzkumníku dotazů](../log-query/log-analytics-tutorial.md). Tyto dotazy můžete použít při provádění analýzy ad hoc pomocí [dotazů protokolu](../log-query/log-query-overview.md).
 
 ## <a name="list-installed-monitoring-solutions"></a>Výpis nainstalovaných řešení monitorování
 
