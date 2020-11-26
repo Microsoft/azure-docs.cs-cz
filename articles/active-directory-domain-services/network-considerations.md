@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: 4ced7331daa116e237d9628d12d16a67687db5b9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 43731f84066943b991b566ff5936e4288aa669eb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968085"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175215"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Požadavky na návrh virtuální sítě a možnosti konfigurace pro Azure Active Directory Domain Services
 
@@ -104,11 +104,11 @@ Spravovaná doména vytvoří během nasazení některé síťové prostředky. 
 
 ## <a name="network-security-groups-and-required-ports"></a>Skupiny zabezpečení sítě a požadované porty
 
-[Skupina zabezpečení sítě (NSG)](../virtual-network/security-overview.md) obsahuje seznam pravidel, která povolují nebo zakazují síťový provoz do provozu ve službě Azure Virtual Network. Skupina zabezpečení sítě se vytvoří při nasazení spravované domény, která obsahuje sadu pravidel, která službě umožní poskytovat funkce ověřování a správy. Tato výchozí skupina zabezpečení sítě je přidružená k podsíti virtuální sítě, ve které je spravovaná doména nasazená.
+[Skupina zabezpečení sítě (NSG)](../virtual-network/network-security-groups-overview.md) obsahuje seznam pravidel, která povolují nebo zakazují síťový provoz do provozu ve službě Azure Virtual Network. Skupina zabezpečení sítě se vytvoří při nasazení spravované domény, která obsahuje sadu pravidel, která službě umožní poskytovat funkce ověřování a správy. Tato výchozí skupina zabezpečení sítě je přidružená k podsíti virtuální sítě, ve které je spravovaná doména nasazená.
 
 Aby mohla spravovaná doména poskytovat služby ověřování a správy, vyžadují se následující pravidla skupiny zabezpečení sítě. Neupravujte ani neodstraňujte tato pravidla skupiny zabezpečení sítě pro podsíť virtuální sítě, do které je spravovaná doména nasazená.
 
-| Číslo portu | Protokol | Zdroj                             | Cíl | Akce | Povinné | Účel |
+| Číslo portu | Protokol | Zdroj                             | Cíl | Akce | Požaduje se | Účel |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
 | 443         | TCP      | AzureActiveDirectoryDomainServices | Všechny         | Povolit  | Ano      | Synchronizace s vaším klientem služby Azure AD. |
 | 3389        | TCP      | CorpNetSaw                         | Všechny         | Povolit  | Ano      | Správa vaší domény. |
@@ -123,7 +123,7 @@ V případě potřeby můžete [vytvořit požadovanou skupinu zabezpečení sí
 >
 > Pokud používáte zabezpečený protokol LDAP, můžete přidat požadované pravidlo portu TCP 636, které v případě potřeby povolí externí provoz. Přidáním tohoto pravidla neumístíte pravidla skupiny zabezpečení sítě v nepodporovaném stavu. Další informace najdete v tématu [uzamčení zabezpečeného přístupu LDAP přes Internet](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet) .
 >
-> Pro skupinu zabezpečení sítě existují také výchozí pravidla pro *AllowVnetInBound*, *AllowAzureLoadBalancerInBound*, *DenyAllInBound*, *AllowVnetOutBound*, *AllowInternetOutBound*a *DenyAllOutBound* . Tato výchozí pravidla neupravujte ani neodstraňujte.
+> Pro skupinu zabezpečení sítě existují také výchozí pravidla pro *AllowVnetInBound*, *AllowAzureLoadBalancerInBound*, *DenyAllInBound*, *AllowVnetOutBound*, *AllowInternetOutBound* a *DenyAllOutBound* . Tato výchozí pravidla neupravujte ani neodstraňujte.
 >
 > Smlouvy SLA Azure se nevztahují na nasazení, kde se používala nesprávně nakonfigurovaná skupina zabezpečení sítě nebo uživatelsky definované směrovací tabulky, které blokují Azure služba AD DS v rámci aktualizace a správy vaší domény.
 
@@ -140,7 +140,7 @@ V případě potřeby můžete [vytvořit požadovanou skupinu zabezpečení sí
 * Výchozí pravidlo skupiny zabezpečení sítě používá značku služby *CorpNetSaw* k dalšímu omezení provozu.
     * Tato značka služby umožňuje v podnikové síti Microsoftu pouze zabezpečené přístupové pracovní stanice, aby se k spravované doméně používala Vzdálená plocha.
     * Přístup je povolený jenom pro obchodní odůvodnění, například pro scénáře správy nebo řešení potíží.
-* Toto pravidlo může být nastaveno na *Odepřít*a v případě potřeby nastaveno pouze na *povoleno* . Většina úloh správy a monitorování se provádí pomocí vzdálené komunikace PowerShellu. Protokol RDP se používá jenom ve vzácných událostech, které Microsoft potřebuje ke své spravované doméně vzdáleně připojit pro řešení potíží s pokročilým řešením.
+* Toto pravidlo může být nastaveno na *Odepřít* a v případě potřeby nastaveno pouze na *povoleno* . Většina úloh správy a monitorování se provádí pomocí vzdálené komunikace PowerShellu. Protokol RDP se používá jenom ve vzácných událostech, které Microsoft potřebuje ke své spravované doméně vzdáleně připojit pro řešení potíží s pokročilým řešením.
 
 > [!NOTE]
 > Pokud se pokusíte upravit toto pravidlo skupiny zabezpečení sítě, nemůžete ručně vybrat značku služby *CorpNetSaw* z portálu. Pokud chcete ručně nakonfigurovat pravidlo, které používá značku služby *CorpNetSaw* , musíte použít Azure PowerShell nebo rozhraní příkazového řádku Azure CLI.
@@ -154,7 +154,7 @@ V případě potřeby můžete [vytvořit požadovanou skupinu zabezpečení sí
 * Slouží k provádění úloh správy pomocí vzdálené komunikace PowerShellu ve spravované doméně.
 * Bez přístupu k tomuto portu se vaše spravovaná doména nedá aktualizovat, konfigurovat, zálohovat ani sledovat.
 * U spravovaných domén, které používají Správce prostředků virtuální sítě, můžete omezit příchozí přístup k tomuto portu na značku služby *AzureActiveDirectoryDomainServices* .
-    * U starších spravovaných domén pomocí klasické virtuální sítě můžete omezit příchozí přístup k tomuto portu na následující zdrojové IP adresy: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18*a *104.40.87.209*.
+    * U starších spravovaných domén pomocí klasické virtuální sítě můžete omezit příchozí přístup k tomuto portu na následující zdrojové IP adresy: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18* a *104.40.87.209*.
 
     > [!NOTE]
     > V 2017 je Azure AD Domain Services k dispozici pro hostování v Azure Resource Manager síti. Od té doby jsme dokázali vytvořit bezpečnější službu pomocí moderních možností Azure Resource Manager. Vzhledem k tomu, že Azure Resource Manager nasazení plně nahrazují klasická nasazení, nasazení Azure služba AD DS Classic Virtual Network se vyřadí 1. března 2023.
@@ -176,4 +176,4 @@ Další informace o některých síťových prostředcích a možnostech připoj
 
 * [Partnerský vztah virtuálních sítí Azure](../virtual-network/virtual-network-peering-overview.md)
 * [Brány VPN Azure](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)
-* [Skupiny zabezpečení sítě Azure](../virtual-network/security-overview.md)
+* [Skupiny zabezpečení sítě Azure](../virtual-network/network-security-groups-overview.md)

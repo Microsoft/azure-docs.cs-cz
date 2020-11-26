@@ -11,9 +11,9 @@
 - name: Rychlé starty
   expanded: true
   items:
-    - name: .NET Core
+    - name: Jádro ASP.NET
       href: quickstart-dotnetcore.md
-    - name: .NET Framework
+    - name: ASP.NET
       href: quickstart-dotnet-framework.md
     - name: Node.js
       href: quickstart-nodejs.md
@@ -52,9 +52,9 @@
           href: scenario-secure-app-clean-up-resources.md
     - name: Aplikace s DB
       items:
-        - name: .NET Core s SQL DB
+        - name: ASP.NET Core s SQL DB
           href: tutorial-dotnetcore-sqldb-app.md
-        - name: .NET Framework s SQL DB
+        - name: ASP.NET s SQL DB
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: PHP s MySQL
           href: tutorial-php-mysql-app.md

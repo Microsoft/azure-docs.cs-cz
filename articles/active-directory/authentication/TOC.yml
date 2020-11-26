@@ -244,7 +244,7 @@
     - name: Beta verze Microsoft Graph REST API
       href: /graph/api/resources/authenticationmethods-overview?view=graph-rest-beta
     - name: Limity a omezení služeb
-      href: ../users-groups-roles/directory-service-limits-restrictions.md
+      href: ../enterprise-users/directory-service-limits-restrictions.md
 - name: Zdroje a prostředky
   items:
     - name: Fórum Azure pro názory

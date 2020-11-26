@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: joflore
-ms.openlocfilehash: 02c4679016ea80a4ac8bb53b502292945cbe9d7b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5d19cddc82d9fb092887c5cdeba36b8ab7127f94
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967065"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175130"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Kontrola událostí auditu zabezpečení v Azure Active Directory Domain Services používání sešitů Azure Monitor
 
@@ -103,7 +103,7 @@ Stejně jako v sestavě přehledu zabezpečení můžete přejít k podrobnostem
 
 Dva sešity šablon, které poskytuje Azure služba AD DS, jsou vhodným místem, kde můžete začít s vlastní analýzou dat. Pokud potřebujete podrobnější informace v dotazech a dotazech k datům, můžete uložit vlastní sešity a upravit dotazy.
 
-1. Pokud chcete uložit kopii jedné ze šablon sešitu, vyberte **upravit > Uložit jako > sdílené sestavy**a potom zadejte název a uložte ho.
+1. Pokud chcete uložit kopii jedné ze šablon sešitu, vyberte **upravit > Uložit jako > sdílené sestavy** a potom zadejte název a uložte ho.
 1. Z vlastní kopie šablony vyberte **Upravit** a zadejte režim úprav. Můžete zvolit modré tlačítko **Upravit** vedle libovolné části sestavy a změnit ji.
 
 Všechny grafy a tabulky v Azure Monitor sešitech se generují pomocí dotazů Kusto. Další informace o vytváření vlastních dotazů najdete v kurzu [Azure monitor dotazy protokolů][azure-monitor-queries] a [dotazy Kusto][kusto-queries].
@@ -122,5 +122,5 @@ V případě problémů s uživateli se dozvíte, jak řešit problémy s [přih
 [password-policy]: password-policy.md
 [troubleshoot-sign-in]: troubleshoot-sign-in.md
 [troubleshoot-account-lockout]: troubleshoot-account-lockout.md
-[azure-monitor-queries]: ../azure-monitor/log-query/query-language.md
+[azure-monitor-queries]: /azure/data-explorer/kusto/query/
 [kusto-queries]: /azure/kusto/query/tutorial?pivots=azuredataexplorer

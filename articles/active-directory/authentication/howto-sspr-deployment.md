@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06c37eaf63b79b171e5a21d807262cfb359d416c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 765bfe0f805ae4219110d689e8f7f8fd54a26cf3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994158"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173932"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Plánování nasazení samoobslužného resetování hesla Azure Active Directory
 
@@ -64,7 +64,7 @@ Pokud chcete porovnat edice a funkce a povolit skupinu nebo uživatele licencov�
 
 Další informace o cenách najdete v tématu [Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/).
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * Funkční tenant Azure AD, který má přiřazenou alespoň zkušební licenci. V případě potřeby [ho vytvořte zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -123,7 +123,7 @@ Při určování strategie pro toto nasazení v prostředí zvažte potřeby va�
 
 ### <a name="engage-the-right-stakeholders"></a>Zapojení správných zúčastněných stran
 
-Když projekty technologie selžou, obvykle to vznikne z důvodu neshodných očekávání na dopad, výsledky a zodpovědnosti. Pokud se chcete těmto nástrah vyhnout, ujistěte se, že jste si [jisti, že jste připravují správné zúčastněné strany](https://aka.ms/deploymentplans) a že role účastníků v projektu jsou dobře srozumitelné při dokumentaci zúčastněných stran a jejich vstupu a accountabilities projektu.
+Když projekty technologie selžou, obvykle to vznikne z důvodu neshodných očekávání na dopad, výsledky a zodpovědnosti. Pokud se chcete těmto nástrah vyhnout, ujistěte se, že jste si [jisti, že jste připravují správné zúčastněné strany](../fundamentals/active-directory-deployment-plans.md) a že role účastníků v projektu jsou dobře srozumitelné při dokumentaci zúčastněných stran a jejich vstupu a accountabilities projektu.
 
 #### <a name="required-administrator-roles"></a>Požadované role správce
 
@@ -154,14 +154,14 @@ K povolení SSPR spolu s doporučenými hodnotami jsou nutná následující nas
 | **Vlastnosti SSPR** | Samoobslužné resetování hesla povoleno | **Vybraná** skupina pro pilotní/ **vše** pro produkci |
 | **Metody ověřování** | Metody ověřování vyžadované k registraci | Vždy 1, než je vyžadováno pro resetování |
 |   | Metody ověřování vyžadované k resetování | Jedna nebo dvě |
-| **Evidenc** | Při přihlášení vyžadovat registraci uživatelů | Yes |
+| **Evidenc** | Při přihlášení vyžadovat registraci uživatelů | Ano |
 |   | Počet dní před vyzváním uživatelů k potvrzení ověřovacích informací | 90 – 180 dnů |
-| **Oznámení** | Upozornit uživatele na resetování hesla | Yes |
-|   | Upozornit všechny správce na resetování hesla jiného správce | Yes |
-| **Přizpůsobení** | Přizpůsobení odkazu na helpdesk | Yes |
+| **Oznámení** | Upozornit uživatele na resetování hesla | Ano |
+|   | Upozornit všechny správce na resetování hesla jiného správce | Ano |
+| **Přizpůsobení** | Přizpůsobení odkazu na helpdesk | Ano |
 |   | E-mail nebo adresa URL vlastního helpdesku | Web podpory nebo e-mailová adresa |
-| **Místní integrace** | Zápis hesel zpátky do místní služby AD | Yes |
-|   | Povolí uživatelům odemknout účet bez resetování hesla. | Yes |
+| **Místní integrace** | Zápis hesel zpátky do místní služby AD | Ano |
+|   | Povolí uživatelům odemknout účet bez resetování hesla. | Ano |
 
 ### <a name="sspr-properties"></a>Vlastnosti SSPR
 
@@ -254,7 +254,7 @@ I když SSPR obvykle nevytváří problémy s uživatelem, je důležité připr
 
 Pokud chcete, aby váš tým podpory byl úspěšný, můžete vytvořit Nejčastější dotazy na základě dotazů, které obdržíte od uživatelů. Tady je pár příkladů:
 
-| Scénáře| Description |
+| Scénáře| Popis |
 | - | - |
 | Uživatel nemá k dispozici žádné registrované metody ověřování.| Uživatel se pokusí resetovat heslo, ale nemá žádnou z metod ověřování, které jsou k dispozici (například: opustil svůj mobilní telefon na domácím a nemůže získat přístup k e-mailu). |
 | Uživatel nepřijímá text nebo volá na svém Office nebo na mobilním telefonu.| Uživatel se snaží ověřit svoji identitu prostřednictvím textu nebo volání, ale nepřijímá text nebo volání. |
@@ -325,7 +325,7 @@ Protokoly auditu pro registraci a resetování hesla jsou k dispozici po dobu 30
 
 ### <a name="troubleshoot"></a>Řešení potíží
 
-* Přečtěte si téma [řešení potíží samoobslužného resetování hesla](./active-directory-passwords-troubleshoot.md) . 
+* Přečtěte si téma [řešení potíží samoobslužného resetování hesla](./troubleshoot-sspr.md) . 
 
 * Dodržujte [Nejčastější dotazy týkající se správy hesel](./active-directory-passwords-faq.md) 
 

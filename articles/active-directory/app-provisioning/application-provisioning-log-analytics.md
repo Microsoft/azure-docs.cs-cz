@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 68e47fe3cc674542a807ecbabd37cc6b624d5c03
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 167ed7e5c00452db4ee77e10236fec3ff86f0439
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145592"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175096"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>Informace o tom, jak se zřizování integruje s protokoly Azure Monitor
 
@@ -30,13 +30,13 @@ Po nakonfigurování monitorování Azure můžete povolit protokoly pro zřizov
 
 :::image type="content" source="media/application-provisioning-log-analytics/diagnostic-settings.png" alt-text="Nastavení diagnostiky přístupu" lightbox="media/application-provisioning-log-analytics/diagnostic-settings.png":::
 
-:::image type="content" source="media/application-provisioning-log-analytics/enable-log-analytics.png" alt-text="Nastavení diagnostiky přístupu" lightbox="media/application-provisioning-log-analytics/enable-log-analytics.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/enable-log-analytics.png" alt-text="Povolit protokoly zřizování aplikací" lightbox="media/application-provisioning-log-analytics/enable-log-analytics.png":::
 
 > [!NOTE]
 > Pokud jste právě zřídili pracovní prostor, může trvat nějakou dobu, než můžete do něj Odeslat protokoly. Pokud se zobrazí chyba, že předplatné není zaregistrované pro používání *Microsoft. Insights* , vraťte se po několika minutách.
  
 ## <a name="understanding-the-data"></a>Porozumění datům
-Podkladový datový proud, který zřizování odesílá, je téměř identický. Protokoly Azure Monitor jsou skoro stejný datový proud jako Azure Portal UI a rozhraní Azure API. V poli protokolu je jenom několik **rozdílů** , jak je uvedeno v následující tabulce. Další informace o těchto polích naleznete v [seznamu provisioningObjectSummary](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http&preserve-view=true).
+Podkladový datový proud, který zřizování odesílá, je téměř identický. Protokoly Azure Monitor jsou skoro stejný datový proud jako Azure Portal UI a rozhraní Azure API. V poli protokolu je jenom několik **rozdílů** , jak je uvedeno v následující tabulce. Další informace o těchto polích naleznete v [seznamu provisioningObjectSummary](/graph/api/provisioningobjectsummary-list?preserve-view=true&tabs=http&view=graph-rest-beta).
 
 |Protokoly služby Azure Monitor   |Azure Portal UI   |Rozhraní API Azure |
 |----------|-----------|------------|
@@ -51,9 +51,9 @@ Azure Monitor sešity poskytují flexibilní plátno pro analýzu dat. Také pos
 
 Zřizování aplikací se dodává se sadou předem připravených sešitů. Můžete je najít na stránce sešity. Chcete-li zobrazit data, je nutné zajistit, aby všechny filtry (timeRange, jobID, appName) byly naplněny. Budete také muset zajistit, aby byla aplikace zajištěna, jinak nebudou v protokolech žádná data.
 
-:::image type="content" source="media/application-provisioning-log-analytics/workbooks.png" alt-text="Nastavení diagnostiky přístupu" lightbox="media/application-provisioning-log-analytics/workbooks.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/workbooks.png" alt-text="Sešity zřizování aplikací" lightbox="media/application-provisioning-log-analytics/workbooks.png":::
 
-:::image type="content" source="media/application-provisioning-log-analytics/report.png" alt-text="Nastavení diagnostiky přístupu" lightbox="media/application-provisioning-log-analytics/report.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/report.png" alt-text="Řídicí panel zřizování aplikace" lightbox="media/application-provisioning-log-analytics/report.png":::
 
 ## <a name="custom-queries"></a>Vlastní dotazy
 
@@ -100,15 +100,15 @@ Další informace o výstrahách najdete v tématu [reakce na události s výstr
 
 Upozorní, když dojde k selhání špičky. Nahraďte jobID řetězcem jobID pro vaši aplikaci.
 
-:::image type="content" source="media/application-provisioning-log-analytics/alert1.png" alt-text="Nastavení diagnostiky přístupu" lightbox="media/application-provisioning-log-analytics/alert1.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/alert1.png" alt-text="Upozorní, když dojde k selhání špičky." lightbox="media/application-provisioning-log-analytics/alert1.png":::
 
 Může se jednat o problém, který způsobil zastavení běhu služby zřizování. Pomocí následující výstrahy zjistíte, že během daného časového intervalu neexistují žádné události zřizování.
 
-:::image type="content" source="media/application-provisioning-log-analytics/alert2.png" alt-text="Nastavení diagnostiky přístupu" lightbox="media/application-provisioning-log-analytics/alert2.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/alert2.png" alt-text="Může se jednat o problém, který způsobil zastavení běhu služby zřizování." lightbox="media/application-provisioning-log-analytics/alert2.png":::
 
 Pošle upozornění, když se v nástroji zakáže nebo odstraní špička.
 
-:::image type="content" source="media/application-provisioning-log-analytics/alert3.png" alt-text="Nastavení diagnostiky přístupu" lightbox="media/application-provisioning-log-analytics/alert3.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/alert3.png" alt-text="Pošle upozornění, když se v nástroji zakáže nebo odstraní špička." lightbox="media/application-provisioning-log-analytics/alert3.png":::
 
 
 ## <a name="community-contributions"></a>Komunitní příspěvky
@@ -121,4 +121,4 @@ Přijímáme open source a přístup založený na komunitě pro dotazy a řídi
 - [Začínáme s dotazy v protokolech Azure Monitor](../../azure-monitor/log-query/get-started-queries.md)
 - [Vytváření a Správa skupin výstrah v Azure Portal](../../azure-monitor/platform/action-groups.md)
 - [Instalace a použití zobrazení Log Analytics pro Azure Active Directory](../reports-monitoring/howto-install-use-log-analytics-views.md)
-- [Rozhraní API pro zřizování protokolů](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta.md&preserve-view=true)
+- [Rozhraní API pro zřizování protokolů](/graph/api/resources/provisioningobjectsummary?preserve-view=true&view=graph-rest-beta.md)

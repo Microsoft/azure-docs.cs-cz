@@ -445,61 +445,72 @@
           href: quickstart-create-apache-spark-pool-studio.md
     - name: Kurzy
       items:
-        - name: Spouštění aplikací Apache Sparku
-          href: ./spark/intellij-tool-synapse.md
-          displayname: intellij
-        - name: Spouštění aplikací PySparku pro fondy úloh Sparku
-          href: ./spark/vscode-tool-synapse.md
-        - name: Definice úloh Sparku
+        - name: Vizualizace dat s využitím poznámkových bloků Synapse Studio
+          href: ./spark/apache-spark-data-visualization-tutorial.md
+        - name: Analýza dat s využitím Apache Sparku a Power BI
+          href: ./spark/apache-spark-to-power-bi.md
+        - name: Vytváření modelů strojového učení
+          href: ./spark/apache-spark-machine-learning-mllib-notebook.md
+        - name: Odeslání definic úloh Sparku
           href: ./spark/apache-spark-job-definitions.md
     - name: Koncepty
       items:
-        - name: Koncepty Apache Sparku
+        - name: Apache Spark
           href: ./spark/apache-spark-concepts.md
-        - name: Co je Delta Lake
+        - name: Delta Lake
           href: ./spark/apache-spark-what-is-delta-lake.md
-        - name: Přehled funkcí Delta Lake
-          href: ./spark/apache-spark-delta-lake-overview.md
-        - name: Výkon Apache Sparku
-          href: ./spark/apache-spark-performance.md
-        - name: Optimalizace výkonu pro Apache Spark s využitím indexů hyperprostoru
-          href: ./spark/apache-spark-performance-hyperspace.md
         - name: Chování automatického škálování Apache Sparku
           href: ./spark/apache-spark-autoscale.md
-        - name: Vývoj
+        - name: Běhové moduly Synapse
+          href: ./spark/apache-spark-version-support.md
+        - name: Strojové učení
+          href: ./spark/apache-spark-machine-learning-concept.md
+        - name: Notebooks
+          href: ./spark/apache-spark-notebook-concept.md
+        - name: Monitorovací nástroje
+          href: monitoring/how-to-monitor-spark-applications.md
+    - name: Návody
+      items:
+        - name: Práce se službou Delta Lake
+          href: ./spark/apache-spark-delta-lake-overview.md
+        - name: Správa knihoven
+          href: ./spark/apache-spark-azure-portal-add-libraries.md
+        - name: Použití poznámkových bloků
           items:
-            - name: Knihovny
-              items:
-                - name: Přidání a správa knihoven
-                  href: ./spark/apache-spark-azure-portal-add-libraries.md
-                - name: Podpora jazyků a knihoven v modulu runtime
-                  href: ./spark/apache-spark-version-support.md
-            - name: Poznámkové bloky s funkcí Azure Synapse Studio
+            - name: Správa poznámkových bloků
               href: ./spark/apache-spark-development-using-notebooks.md
-            - name: Zabezpečení přihlašovacích údajů s využitím TokenLibrary
-              href: ./spark/apache-spark-secure-credentials-with-tokenlibrary.md
+            - name: Vizualizace dat
+              href: ./spark/apache-spark-data-visualization.md
+            - name: Připojení ke Sparku pomocí modulu plug-in IntelliJ
+              href: ./spark/intellij-tool-synapse.md
+            - name: Připojení k fondům úloh Sparku pomocí VSCode
+              href: ./spark/vscode-tool-synapse.md
+        - name: Procházení jazyků
+          items:
             - name: .NET pro Apache Spark
               href: ./spark/spark-dotnet.md
-        - name: Monitorování
+        - name: Zabezpečení
+          items:
+            - name: Zabezpečení přihlašovacích údajů s využitím TokenLibrary
+              href: ./spark/apache-spark-secure-credentials-with-tokenlibrary.md
+        - name: Optimalizace výkonu
+          items:
+            - name: Výkon Apache Sparku
+              href: ./spark/apache-spark-performance.md
+            - name: Optimalizace výkonu pro Apache Spark s využitím indexů hyperprostoru
+              href: ./spark/apache-spark-performance-hyperspace.md
+        - name: Správa a monitorování
           items:
             - name: Server historie fondu úloh Sparku
               href: ./spark/apache-spark-history-server.md
-    - name: Návody
-      items:
-        - name: Správa a monitorování
-          items:
-            - name: Aplikace Apache Spark
-              href: monitoring/how-to-monitor-spark-applications.md
-            - name: Podrobnosti o aplikaci Apache Spark
+            - name: Monitorování aplikací Sparku
               href: monitoring/apache-spark-applications.md
-            - name: Analýza JSON s využitím Apache Sparku
-              href: how-to-analyze-complex-schema.md
         - name: Ingestování a příprava dat
           items:
-            - name: Do datového skladu
-              items:
-                - name: Import a export dat pomocí Apache Sparku
-                  href: ./spark/synapse-spark-sql-pool-import-export.md
+            - name: SQL Data Warehouse
+              href: ./spark/synapse-spark-sql-pool-import-export.md
+            - name: Analýza JSON
+              href: how-to-analyze-complex-schema.md
 - name: Synapse Link
   items:
     - name: Přehled
@@ -616,6 +627,8 @@
               href: ../data-factory/connector-azure-database-for-mysql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure Database for PostgreSQL
               href: ../data-factory/connector-azure-database-for-postgresql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Azure Databricks Delta Lake
+              href: ../data-factory/connector-azure-databricks-delta-lake.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure File Storage
               href: ../data-factory/connector-azure-file-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure SQL Database
@@ -959,8 +972,8 @@
               href: ../data-factory/data-factory-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Řešení potíží s konektory
               href: ../data-factory/connector-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Řešení potíží s nástrojem Kopírování dat
-              href: ../data-factory/copy-data-tool-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Řízení přístupu a zabezpečení
+              href: ../data-factory/security-and-access-control-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Řešení potíží s místním prostředím Integration Runtime
               href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
 - name: Machine Learning
@@ -973,15 +986,22 @@
       items:
         - name: Vytvoření nové služby propojené s Azure Machine Learningem
           href: machine-learning/quickstart-integrate-azure-machine-learning.md
+    - name: Koncepty
+      items:
+        - name: Trénování modelů
+          href: ./spark/apache-spark-machine-learning-training.md
     - name: Kurzy
       items:
+        - name: Vizualizace dat s využitím Apache Sparku
+          href: ./spark/apache-spark-data-visualization-tutorial.md
+          displayname: machine learning
         - name: Průvodce bodováním modelů pro fondy SQL
           href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
           displayname: machine learning
         - name: Spuštění regresního experimentu s využitím Azure AutoML
           href: ./spark/apache-spark-azure-machine-learning-tutorial.md
           displayname: machine learning
-        - name: Vytvoření aplikace strojového učení Apache Sparku
+        - name: Vytvoření modelu strojového učení s využitím knihovny Apache Spark MLlib
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
           displayname: machine learning
 - name: Referenční informace
@@ -1046,5 +1066,9 @@
           href: ./sql-data-warehouse/sql-data-warehouse-partner-data-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Strojové učení a AI
           href: ./sql-data-warehouse/sql-data-warehouse-partner-machine-learning-ai.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Systémová integrace
+          href: ./sql-data-warehouse/sql-data-warehouse-partner-system-integration.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Partneři pro Public Preview
           href: ./sql-data-warehouse/sql-data-warehouse-partner-launch.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Problémy s kompatibilitou u aplikací třetích stran
+          href: ./sql-data-warehouse/sql-data-warehouse-partner-compatibility-issues.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

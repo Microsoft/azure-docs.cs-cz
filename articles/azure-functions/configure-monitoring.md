@@ -4,12 +4,12 @@ description: Naučte se, jak připojit aplikaci Function App k Application Insig
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperfq2, devx-track-azurecli
-ms.openlocfilehash: f5b1b00c534abf1e7f82d2aca69dd4763b40d5ad
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0b8aae707f0fb055677af111f1e88c0a2e19b227
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833074"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175742"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Postup konfigurace monitorování pro Azure Functions
 
@@ -230,7 +230,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 
 Aby aplikace Function App odesílala data Application Insights, musí znát klíč instrumentace prostředku Application Insights. Klíč musí být v nastavení aplikace s názvem **APPINSIGHTS_INSTRUMENTATIONKEY**.
 
-Když vytvoříte aplikaci Function App [v Azure Portal](functions-create-first-azure-function.md), z příkazového řádku pomocí [Azure Functions Core Tools](functions-create-first-azure-function-azure-cli.md)nebo pomocí [Visual Studio Code](functions-create-first-function-vs-code.md)je ve výchozím nastavení povolená integrace Application Insights. Prostředek Application Insights má stejný název jako aplikace Function App a je vytvořený buď ve stejné oblasti, nebo v nejbližší oblasti.
+Když vytvoříte aplikaci Function App [v Azure Portal](functions-create-first-azure-function.md), z příkazového řádku pomocí [Azure Functions Core Tools](./create-first-function-cli-csharp.md)nebo pomocí [Visual Studio Code](./create-first-function-vs-code-csharp.md)je ve výchozím nastavení povolená integrace Application Insights. Prostředek Application Insights má stejný název jako aplikace Function App a je vytvořený buď ve stejné oblasti, nebo v nejbližší oblasti.
 
 ### <a name="new-function-app-in-the-portal"></a>Nová aplikace Function App na portálu
 

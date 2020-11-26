@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bef201cbd14a4de0c785b5f86d534f27bfedb31
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e121a6a45ab20055591a3670152114b8d03529cf
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363704"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173990"
 ---
 # <a name="customize-the-user-experience-for-azure-active-directory-self-service-password-reset"></a>Přizpůsobení uživatelského prostředí pro Azure Active Directory Samoobslužné resetování hesla
 
@@ -74,8 +74,8 @@ Obrázek, který zvolíte, se zobrazí v následujících situacích:
 
 Pokud chcete, aby vypadaly lépe uživatelsky přívětivé, můžete změnit název organizace na portálu a v automatizované komunikaci. Chcete-li změnit atribut názvu adresáře v Azure Portal, přejděte do části **Azure Active Directory**  >  **Properties (vlastnosti**). Tato srozumitelná možnost názvu organizace je nejčastěji viditelná v automatizovaných e-mailech, jako v následujících příkladech:
 
-* Popisný název v e-mailu, například*Microsoft jménem ukázky společnosti Contoso*
-* Řádek předmětu v e-mailu, například*kód pro ověření e-mailu s ukázkovým účtem contoso*
+* Popisný název v e-mailu, například *Microsoft jménem ukázky společnosti Contoso*
+* Řádek předmětu v e-mailu, například *kód pro ověření e-mailu s ukázkovým účtem contoso*
 
 ## <a name="customize-the-ad-fs-sign-in-page"></a>Přizpůsobení přihlašovací stránky AD FS
 
@@ -91,4 +91,4 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><a href='https://passwor
 
 Informace o používání SSPR ve vašem prostředí najdete v tématu [Možnosti vytváření sestav pro správu hesel služby Azure AD](howto-sspr-reporting.md).
 
-Pokud máte nebo uživatelé s SSPR problémy, přečtěte si téma [řešení potíží s samoobslužným resetováním hesla](active-directory-passwords-troubleshoot.md) .
+Pokud máte nebo uživatelé s SSPR problémy, přečtěte si téma [řešení potíží s samoobslužným resetováním hesla](./troubleshoot-sspr.md) .

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: f65fb37a4cc6640bc998af1c56e7852cccaba234
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5f6e5de61c9f43d5958e68c545105c4373996f7c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955511"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175062"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kurz – přizpůsobení atributů zřizování uživatelů – mapování pro SaaS aplikace v Azure Active Directory
 
@@ -239,7 +239,7 @@ Pomocí následujících kroků můžete zřídit role pro uživatele aplikace. 
    }
    ]
    ```  
-Formát žádosti v opravě a příspěvku se liší. Chcete-li zajistit, aby byly zprávy POST a PATCH odesílány ve stejném formátu, můžete použít příznak funkce popsané [zde](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility#flags-to-alter-the-scim-behavior). 
+Formát žádosti v opravě a příspěvku se liší. Chcete-li zajistit, aby byly zprávy POST a PATCH odesílány ve stejném formátu, můžete použít příznak funkce popsané [zde](./application-provisioning-config-problem-scim-compatibility.md#flags-to-alter-the-scim-behavior). 
 
 - **AppRoleAssignmentsComplex** 
   - **Kdy použít:** Pomocí výrazu AppRoleAssignmentsComplex můžete zřídit více rolí pro uživatele. 

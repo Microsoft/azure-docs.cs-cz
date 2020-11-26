@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: f1a7ffc8225ea20b48df4e1d9a049655ca4776a4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: de74d7e3cf854f36d122be6a32c7fb4d449c5fe5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964656"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175912"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
@@ -91,7 +91,6 @@ Bez [serveru](serverless.md) můžete používat prostředky Azure Cosmos DB v z
 
 | Prostředek | Omezení |
 | --- | --- |
-| Maximální počet RU/s na kontejner | 5 000 |
 | Maximální počet RU/s na (logický) oddíl | 5 000 |
 | Maximální velikost úložiště napříč všemi položkami na (logický) oddíl | 20 GB |
 | Maximální počet různých (logických) klíčů oddílu | Unlimited |
@@ -253,7 +252,7 @@ V následující tabulce jsou uvedeny limity pro [testovací Azure Cosmos DB pro
 | Maximální počet kontejnerů na předplatné (rozhraní API MongoDB) | 3 |
 | Maximální propustnost na kontejner | 5000 |
 | Maximální propustnost na sdílenou databázi propustnosti | 20000 |
-| Maximální celková velikost úložiště na účet | 10 GB |
+| Maximální celková velikost úložiště na účet | 10 GB |
 
 Zkuste Cosmos DB podporuje globální distribuci jenom v oblastech Střed USA, Severní Evropa a jihovýchodní Asie. Lístky podpory Azure nelze vytvořit pro účty try Azure Cosmos DB. Nicméně podpora je poskytována pro předplatitele se stávajícími plány podpory.
 
@@ -265,7 +264,7 @@ V následující tabulce jsou uvedeny limity [Azure Cosmos DB účtů úrovně F
 | Počet účtů bezplatné úrovně na předplatné Azure | 1 |
 | Doba trvání slevy na volné úrovni | Doba života účtu. Při vytváření účtu musí být výslovný souhlas. |
 | Maximální RU/s zdarma | 400 RU/s |
-| Maximální úložiště zdarma | 5 GB |
+| Maximální úložiště zdarma | 5 GB |
 | Maximální počet sdílených databází propustnosti | 5 |
 | Maximální počet kontejnerů ve sdílené databázi propustnosti | 25 <br>V účtech bezplatné úrovně je minimální RU/s pro sdílenou databázi propustnosti s až 25 kontejnery 400 RU/s. |
 

@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f6c5985c16875e263f2494f56636abb4d4e980d
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 8eb8de2424012d12f216f154eb077028a8f82d76
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95237251"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173698"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Požadavky pro zřízení cloudu Azure AD Connect
 Tento článek poskytuje pokyny k výběru a používání Azure Active Directory (Azure AD) připojení cloudového zřizování jako řešení identity.
@@ -30,11 +30,11 @@ Pro použití Azure AD Connectho zřizování cloudu potřebujete následující
 - Místní konfigurace brány firewall.
 
 ## <a name="group-managed-service-accounts"></a>Skupinové účty spravované služby
-Skupinový účet spravované služby je účet spravované domény, který poskytuje automatickou správu hesel, zjednodušenou správu hlavního názvu služby (SPN), schopnost delegovat správu na jiné správce a také rozšiřuje tuto funkci na více serverů.  Azure AD Connect synchronizace cloudu podporuje a používá gMSA ke spuštění agenta.  Během instalace budete vyzváni k zadání přihlašovacích údajů správce, aby bylo možné tento účet vytvořit.  Účet se zobrazí jako (domain\provAgentgMSA $).  Další informace o gMSA najdete v tématu [skupinový účet spravované služby](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) . 
+Skupinový účet spravované služby je účet spravované domény, který poskytuje automatickou správu hesel, zjednodušenou správu hlavního názvu služby (SPN), schopnost delegovat správu na jiné správce a také rozšiřuje tuto funkci na více serverů.  Azure AD Connect synchronizace cloudu podporuje a používá gMSA ke spuštění agenta.  Během instalace budete vyzváni k zadání přihlašovacích údajů správce, aby bylo možné tento účet vytvořit.  Účet se zobrazí jako (domain\provAgentgMSA $).  Další informace o gMSA najdete v tématu [skupinový účet spravované služby](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) . 
 
 ### <a name="prerequisites-for-gmsa"></a>Předpoklady pro gMSA:
 1.  Schéma služby Active Directory v doménové struktuře domény gMSA se musí aktualizovat na Windows Server 2012.
-2.  [Moduly PowerShellu pro vzdálenou správu](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools) počítače v řadiči domény
+2.  [Moduly PowerShellu pro vzdálenou správu](/windows-server/remote/remote-server-administration-tools) počítače v řadiči domény
 3.  Aspoň jeden řadič domény v doméně musí používat Windows Server 2012.
 4.  Server připojený k doméně, na kterém je agent nainstalovaný, musí být Windows Server 2012 nebo novější.
 

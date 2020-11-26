@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 695d47c839a9436f4fad9399f7995b3197e1c0eb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b1583307771dd58053128d71cb0ae5dd7e709f68
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964991"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174377"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení účtů v Azure Active Directory
 
@@ -45,7 +45,7 @@ Zásady hesel se aplikují na všechny uživatelské účty, které se vytvář�
 
 Ve výchozím nastavení je účet uzamčen po 10 neúspěšných pokusech o přihlášení s nesprávným heslem. Uživatel je zablokován na jednu minutu. Další nesprávné pokusy o přihlášení zablokují uživateli zvýšení doby trvání. [Inteligentní uzamykání](howto-password-smart-lockout.md) sleduje poslední tři chybné hodnoty hash hesla, aby nedošlo k vyššímu zvýšení čítače uzamčení pro stejné heslo. Pokud někdo několikrát zadá stejné chybné heslo, toto chování nezpůsobí, že účet nebude uzamčen. Můžete definovat mezní hodnotu inteligentního uzamčení a dobu trvání.
 
-Zásady hesel Azure AD se nevztahují na uživatelské účty synchronizované z místního prostředí služba AD DS pomocí Azure AD Connect, pokud *EnforceCloudPasswordPolicyForPasswordSyncedUsers*nepovolíte.
+Zásady hesel Azure AD se nevztahují na uživatelské účty synchronizované z místního prostředí služba AD DS pomocí Azure AD Connect, pokud *EnforceCloudPasswordPolicyForPasswordSyncedUsers* nepovolíte.
 
 Jsou definované následující možnosti zásad hesel služby Azure AD. Pokud není uvedeno jinak, nemůžete tato nastavení změnit:
 
@@ -180,4 +180,4 @@ Po instalaci modulu použijte následující postup k dokončení jednotlivých 
 
 Pokud chcete začít s SSPR, přečtěte si téma [kurz: povolení uživatelům odemknout svůj účet nebo resetovat hesla pomocí samoobslužného resetování hesla Azure Active Directory](tutorial-enable-sspr.md).
 
-Pokud máte nebo uživatelé s SSPR problémy, přečtěte si téma [řešení potíží s samoobslužným resetováním hesla](active-directory-passwords-troubleshoot.md) .
+Pokud máte nebo uživatelé s SSPR problémy, přečtěte si téma [řešení potíží s samoobslužným resetováním hesla](./troubleshoot-sspr.md) .

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: a487d984fe4b8f5d6313e181863872c4ea150059
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 3355b502033451f58ac2289a81414e62823e459b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334530"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175929"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Konfigurace a použití odkazu na Azure synapse pro Azure Cosmos DB (Preview)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -63,7 +63,7 @@ Analytické úložiště můžete zapnout v kontejneru Azure Cosmos při vytvá�
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/) nebo ke [službě Azure Cosmos Explorer](https://cosmos.azure.com/).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) nebo [Azure Cosmos DB Exploreru](https://cosmos.azure.com/).
 
 1. Přejděte na účet Azure Cosmos DB a otevřete kartu **Průzkumník dat** .
 
@@ -75,7 +75,7 @@ Analytické úložiště můžete zapnout v kontejneru Azure Cosmos při vytvá�
 
 1. Vyberte **OK** a vytvořte kontejner Azure Cosmos s povoleným analytickým úložištěm.
 
-1. Po vytvoření kontejneru ověřte, že je analytické úložiště povolené, a to tak, že kliknete na **Nastavení** , vpravo pod dokumenty v Průzkumník dat a zkontrolujete, jestli je zapnutá možnost **Doba provozu analytického úložiště** .
+1. Po vytvoření kontejneru ověřte, že je analytické úložiště povolené, a to tak, že kliknete na **Nastavení**, vpravo pod dokumenty v Průzkumník dat a zkontrolujete, jestli je zapnutá možnost **Doba provozu analytického úložiště** .
 
 ### <a name="net-sdk"></a>.NET SDK
 
@@ -171,7 +171,7 @@ Po povolení analytického úložiště s konkrétní hodnotou TTL můžete tuto
 
 Pokud jste vytvořili kontejner analytického úložiště s povoleným Azure Portal, obsahuje výchozí analytickou hodnotu TTL-1. Tuto hodnotu můžete aktualizovat pomocí následujících kroků:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/) nebo ke [službě Azure Cosmos Explorer](https://cosmos.azure.com/).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) nebo [Azure Cosmos DB Exploreru](https://cosmos.azure.com/).
 
 1. Přejděte na účet Azure Cosmos DB a otevřete kartu **Průzkumník dat** .
 
@@ -238,7 +238,7 @@ Další informace najdete v následujících dokumentech:
 
 * [Odkaz na Azure synapse pro Azure Cosmos DB.](synapse-link.md)
 
-* [Přehled analytického úložiště Azure Cosmos DB](analytical-store-introduction.md)
+* [Přehled analytického úložiště Azure Cosmos DB.](analytical-store-introduction.md)
 
 * [Nejčastější dotazy týkající se Azure Cosmos DB odkaz na synapse.](synapse-link-frequently-asked-questions.md)
 

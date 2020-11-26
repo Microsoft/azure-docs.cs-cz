@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 31c9dcaf6c6f26d28d70e3d1664665c2dbc37ce6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 48188adfc3648db76f2ca362f59de6986c7c1339
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393077"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174947"
 ---
 # <a name="how-provisioning-works"></a>Jak funguje zřizování
 
@@ -43,7 +43,7 @@ Pokud chcete požádat o automatický konektor zřizování Azure AD pro aplikac
 
 ## <a name="authorization"></a>Autorizace
 
-Aby se služba Azure AD mohla připojit k rozhraní API pro správu uživatelů aplikace, vyžadují přihlašovací údaje. Při konfiguraci automatického zřizování uživatelů pro aplikaci musíte zadat platné přihlašovací údaje. Pro aplikace Galerie můžete najít typy a požadavky na přihlašovací údaje pro aplikaci odkazem na kurz aplikace. Pro jiné aplikace než galerie můžete v dokumentaci k [SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#authorization-for-provisioning-connectors-in-the-application-gallery) pochopit typy a požadavky přihlašovacích údajů. V Azure Portal budete moct otestovat přihlašovací údaje tím, že se Azure AD pokusí připojit k aplikaci zřizování aplikace pomocí zadaných přihlašovacích údajů.
+Aby se služba Azure AD mohla připojit k rozhraní API pro správu uživatelů aplikace, vyžadují přihlašovací údaje. Při konfiguraci automatického zřizování uživatelů pro aplikaci musíte zadat platné přihlašovací údaje. Pro aplikace Galerie můžete najít typy a požadavky na přihlašovací údaje pro aplikaci odkazem na kurz aplikace. Pro jiné aplikace než galerie můžete v dokumentaci k [SCIM](./use-scim-to-provision-users-and-groups.md#authorization-for-provisioning-connectors-in-the-application-gallery) pochopit typy a požadavky přihlašovacích údajů. V Azure Portal budete moct otestovat přihlašovací údaje tím, že se Azure AD pokusí připojit k aplikaci zřizování aplikace pomocí zadaných přihlašovacích údajů.
 
 ## <a name="mapping-attributes"></a>Mapování atributů
 
@@ -51,7 +51,7 @@ Pokud povolíte zřizování uživatelů pro aplikaci SaaS třetí strany, Azure
 
 K dispozici je předem nakonfigurovaná sada atributů a mapování atributů mezi uživatelskými objekty Azure AD a všemi uživatelskými objekty aplikace v SaaS. Některé aplikace spravují jiné typy objektů spolu s uživateli, jako jsou skupiny.
 
-Při nastavování zřizování je důležité zkontrolovat a nakonfigurovat mapování atributů a pracovní postupy, které definují, které vlastnosti uživatele (nebo skupiny) se z Azure AD do aplikace přesměrují. Zkontrolujte a nakonfigurujte odpovídající vlastnost ( **Porovnat objekty pomocí tohoto atributu** ), která se používá k jednoznačné identifikaci uživatelů nebo skupin mezi oběma systémy a jejich porovnání.
+Při nastavování zřizování je důležité zkontrolovat a nakonfigurovat mapování atributů a pracovní postupy, které definují, které vlastnosti uživatele (nebo skupiny) se z Azure AD do aplikace přesměrují. Zkontrolujte a nakonfigurujte odpovídající vlastnost (**Porovnat objekty pomocí tohoto atributu**), která se používá k jednoznačné identifikaci uživatelů nebo skupin mezi oběma systémy a jejich porovnání.
 
 Výchozí mapování atributů můžete přizpůsobit podle potřeb vaší firmy. Takže můžete změnit nebo odstranit existující mapování atributů nebo vytvořit nová mapování atributů. Podrobnosti najdete v tématu [přizpůsobení atributů zřizování uživatelů – mapování pro aplikace SaaS](./customize-application-attributes.md).
 
@@ -62,7 +62,7 @@ Při konfiguraci zřizování pro aplikaci SaaS je jedním z typů mapování at
 
 Pro odchozí zřizování z Azure AD do aplikace SaaS, která se spoléhá na [přiřazení uživatele nebo skupiny](../manage-apps/assign-user-or-group-access-portal.md) , je nejběžnější způsob, jak určit, kteří uživatelé jsou v oboru pro zřizování. Vzhledem k tomu, že přiřazení uživatelů slouží také k povolení jednotného přihlašování, lze stejnou metodu použít ke správě přístupu i zřizování. Obory založené na přiřazení se nevztahují na vstupní scénáře zřizování, například Workday a SuccessFactors.
 
-* **Skupiny.** Pomocí Azure AD Premiumho licenčního plánu můžete pomocí skupin přiřadit přístup k aplikaci SaaS. Až se pak obor zřizování nastaví na **synchronizovat jenom přiřazené uživatele a skupiny** , služba zřizování Azure AD zřídí nebo zruší zřízení uživatelů na základě toho, jestli jsou členy skupiny, která je přiřazená k dané aplikaci. Samotný objekt skupiny není zřízený, pokud aplikace nepodporuje skupinové objekty. Zajistěte, aby skupiny přiřazené k vaší aplikaci měly vlastnost "SecurityEnabled" nastavenou na hodnotu "true".
+* **Skupiny.** Pomocí Azure AD Premiumho licenčního plánu můžete pomocí skupin přiřadit přístup k aplikaci SaaS. Až se pak obor zřizování nastaví na **synchronizovat jenom přiřazené uživatele a skupiny**, služba zřizování Azure AD zřídí nebo zruší zřízení uživatelů na základě toho, jestli jsou členy skupiny, která je přiřazená k dané aplikaci. Samotný objekt skupiny není zřízený, pokud aplikace nepodporuje skupinové objekty. Zajistěte, aby skupiny přiřazené k vaší aplikaci měly vlastnost "SecurityEnabled" nastavenou na hodnotu "true".
 
 * **Dynamické skupiny.** Služba zřizování uživatelů Azure AD může číst a zřizovat uživatele v [dynamických skupinách](../enterprise-users/groups-create-rule.md). Mějte na paměti tato upozornění a doporučení:
 
@@ -133,7 +133,7 @@ Po úvodním cyklu budou všechny ostatní cykly:
 10. Zachovejte nový vodoznak na konci přírůstkového cyklu, který poskytuje výchozí bod pro pozdější přírůstkové cykly.
 
 > [!NOTE]
-> Volitelně můžete zakázat operace **vytvořit** , **aktualizovat** nebo **Odstranit** pomocí **akcí cílového objektu** v sekci [mapování](customize-application-attributes.md) . Logika zakázání uživatele během aktualizace je také řízena prostřednictvím mapování atributů z pole, jako je například "accountEnabled".
+> Volitelně můžete zakázat operace **vytvořit**, **aktualizovat** nebo **Odstranit** pomocí **akcí cílového objektu** v sekci [mapování](customize-application-attributes.md) . Logika zakázání uživatele během aktualizace je také řízena prostřednictvím mapování atributů z pole, jako je například "accountEnabled".
 
 Zřizovací služba pokračuje v provádění přírůstkových cyklů back-to-back v intervalech definovaných v tomto [kurzu, které jsou specifické pro jednotlivé aplikace](../saas-apps/tutorial-list.md). Přírůstkové cykly pokračují, dokud nedojde k jedné z následujících událostí:
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: kenwith
-ms.openlocfilehash: 9736e1b71f5e129989aba9a045581bae8a1c5f93
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9815237617566eda4759ecc31718786b6cb2cac8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997541"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176048"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Naplánování nasazení proxy aplikací služby Azure AD
 
@@ -33,7 +33,7 @@ Tento článek obsahuje prostředky, které potřebujete k plánování, provozo
 
 V následující části najdete širokou škálu klíčových prvků plánování, které nastavíte jako efektivní prostředí pro nasazení.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Než začnete s implementací, musíte splnit následující požadavky. V tomto [kurzu](application-proxy-add-on-premises-application.md)můžete zobrazit další informace o nastavení prostředí, včetně těchto požadavků.
 
@@ -323,7 +323,7 @@ Následující články se týkají běžných scénářů, které lze použít 
 * [Konfigurace jednotného přihlašování k mé aplikaci](application-proxy-config-sso-how-to.md)
 * [Potíže při vytváření aplikace na portálu pro správu](application-proxy-config-problem.md)
 * [Konfigurace omezeného delegování Kerberos](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
-* [Konfigurace s využitím PingAccess](/azure/active-directory/manage-apps/application-proxy-ping-access-publishing-guide)
+* [Konfigurace s využitím PingAccess](./application-proxy-ping-access-publishing-guide.md)
 * [Chyba typu Není přístup k podnikové aplikaci](application-proxy-sign-in-bad-gateway-timeout-error.md)
 * [Potíže při instalaci konektoru agenta proxy aplikací](application-proxy-connector-installation-problem.md)
 * [Potíže s přihlašováním](application-sign-in-problem-on-premises-application-proxy.md)

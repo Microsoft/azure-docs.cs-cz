@@ -12,11 +12,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f02ec2220827fbec8c981ab3a1859d633675a6f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91313259"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176201"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Kurz: integrace jedné doménové struktury služby AD pomocí předávacího ověřování (PTA)
 
@@ -210,7 +210,7 @@ Teď, když máme tenanta a globálního správce, musíme přidat naši vlastn�
 2. Nalevo vyberte **Názvy vlastních domén**.
 3. Vyberte **Přidat vlastní doménu**.</br>
 ![Snímek obrazovky znázorňující zvýrazněné tlačítko Přidat vlastní doménu](media/tutorial-federation/custom1.png)</br>
-4. V poli **vlastní názvy domén**zadejte do pole název vlastní domény a klikněte na **Přidat doménu**.
+4. V poli **vlastní názvy domén** zadejte do pole název vlastní domény a klikněte na **Přidat doménu**.
 5. Na obrazovce vlastní název domény budete mít k dispozici buď informace TXT, nebo MX.  Tyto informace musí být přidány do informací DNS doménového registrátora ve vaší doméně.  Takže musíte přejít do svého registrátora domény a zadat informace o TXT nebo MX do nastavení DNS pro vaši doménu.  To umožní službě Azure ověřit vaši doménu.  To může trvat až 24 hodin, než ho Azure ověří.  Další informace najdete v dokumentaci k [Přidání vlastní domény](../../active-directory/fundamentals/add-custom-domain.md) .</br>
 ![Snímek obrazovky, který ukazuje, kde přidat informace o TXT nebo MX.](media/tutorial-federation/custom2.png)</br>
 6. Chcete-li zajistit, že je ověřeno, klikněte na tlačítko ověřit.</br>

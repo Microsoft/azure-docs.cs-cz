@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 5e2f323f705a891f06cee1d25779351d02a91572
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 19942e5400be63dfde48b9653282fb93bcb1ec42
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695261"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174811"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Kurz – sestavení koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure AD
 
@@ -154,7 +154,7 @@ V rámci [specifikace protokolu SCIM 2,0](http://www.simplecloud.info/#Specifica
 * Podporuje dotazování uživatelů nebo skupin podle části [3.4.2 protokolu SCIM](https://tools.ietf.org/html/rfc7644#section-3.4.2).  Ve výchozím nastavení jsou uživatelé načítáni pomocí `id` a dotazováni jejich `username` a a `externalId` skupiny jsou dotazovány nástrojem `displayName` .  
 * Podporuje dotazování uživatele podle ID a podle manažera podle části 3.4.2 protokolu SCIM.  
 * Podporuje dotazování skupin podle ID a členu podle části 3.4.2 protokolu SCIM.  
-* Podporuje filtr [excludedAttributes = Members](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#get-group) při dotazování na prostředek skupiny, podle části 3.4.2.5 protokolu SCIM.
+* Podporuje filtr [excludedAttributes = Members](#get-group) při dotazování na prostředek skupiny, podle části 3.4.2.5 protokolu SCIM.
 * Přijme jeden nosný token pro ověřování a autorizaci služby Azure AD pro vaši aplikaci.
 * Podporuje obnovitelné odstranění uživatele `active=false` a obnovení uživatele `active=true` (objekt uživatele by měl být vrácen v požadavku bez ohledu na to, zda je uživatel aktivní). Jediným okamžikem, kdy by uživatel neměl být vrácen, je v případě, že je pevným smazán z aplikace. 
 
@@ -1173,7 +1173,7 @@ Po zahájení počátečního cyklu můžete na levém panelu vybrat **protokoly
 
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>Krok 5: publikování aplikace v galerii aplikací Azure AD
 
-Pokud vytváříte aplikaci, kterou bude používat víc než jeden tenant, můžete je zpřístupnit v galerii aplikací Azure AD. Díky tomu budou moci organizace snadno vyhledat aplikaci a nakonfigurovat zřizování. Publikování aplikace v galerii Azure AD a zpřístupnění pro ostatní je snadné. Podívejte se na tento [postup.](../azuread-dev/howto-app-gallery-listing.md) Microsoft bude s vámi spolupracovat na integraci vaší aplikace do naší galerie, testování koncového bodu a [dokumentaci](../saas-apps/tutorial-list.md) k registraci pro zákazníky, kteří budou používat. 
+Pokud vytváříte aplikaci, kterou bude používat víc než jeden tenant, můžete je zpřístupnit v galerii aplikací Azure AD. Díky tomu budou moci organizace snadno vyhledat aplikaci a nakonfigurovat zřizování. Publikování aplikace v galerii Azure AD a zpřístupnění pro ostatní je snadné. Podívejte se na tento [postup.](../develop/v2-howto-app-gallery-listing.md) Microsoft bude s vámi spolupracovat na integraci vaší aplikace do naší galerie, testování koncového bodu a [dokumentaci](../saas-apps/tutorial-list.md) k registraci pro zákazníky, kteří budou používat.
 
 ### <a name="gallery-onboarding-checklist"></a>Kontrolní seznam pro registraci galerie
 Postupujte podle níže uvedeného kontrolního seznamu a ujistěte se, že je vaše aplikace rychlá a zákazníci mají hladké prostředí pro nasazení. Informace budou shromažďovány od vás při připojování k galerii. 

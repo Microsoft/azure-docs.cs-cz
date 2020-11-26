@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: b9656b62e2c689d0993fb16c1f1d66b14d3430c6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b4fb5c1dcb2bb34b472c2a3eda88ca4c219303d0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967728"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175164"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Povolit audity zabezpečení pro Azure Active Directory Domain Services
 
@@ -63,15 +63,15 @@ Pokud chcete povolit události auditu zabezpečení Azure služba AD DS pomocí 
     ![Povolit požadovaný cíl a typ událostí auditu, které se mají zachytit](./media/security-audit-events/diagnostic-settings-page.png)
 
     * **Úložiště Azure**
-        * Vyberte možnost **archivovat do účtu úložiště**a pak zvolte **Konfigurovat**.
+        * Vyberte možnost **archivovat do účtu úložiště** a pak zvolte **Konfigurovat**.
         * Vyberte **předplatné** a **účet úložiště** , který chcete použít k archivaci událostí auditu zabezpečení.
         * Až budete připraveni, klikněte na **tlačítko OK**.
     * **Centra událostí Azure**
-        * Vyberte **Stream do centra událostí**a pak zvolte **Konfigurovat**.
+        * Vyberte **Stream do centra událostí** a pak zvolte **Konfigurovat**.
         * Vyberte **předplatné** a **obor názvů centra událostí**. V případě potřeby také zvolte **název centra událostí** a **název zásady centra událostí**.
         * Až budete připraveni, klikněte na **tlačítko OK**.
     * **Analytické pracovní prostory pro Azure log**
-        * Vyberte **odeslat Log Analytics**a pak zvolte pracovní prostor **odběr** a **Log Analytics** , který chcete použít k ukládání událostí auditu zabezpečení.
+        * Vyberte **odeslat Log Analytics** a pak zvolte pracovní prostor **odběr** a **Log Analytics** , který chcete použít k ukládání událostí auditu zabezpečení.
 
 1. Vyberte kategorie protokolů, které chcete zahrnout do konkrétního cílového prostředku. Pokud odešlete události auditu na účet Azure Storage, můžete také nakonfigurovat zásady uchovávání informací, které definují počet dní uchovávání dat. Výchozí nastavení *0* zachovává všechna data a po uplynutí určité doby neotáčí události.
 
@@ -95,7 +95,7 @@ Pokud chcete povolit události auditu zabezpečení Azure služba AD DS pomocí 
 1. Vytvořte cílový prostředek pro události auditu zabezpečení.
 
     * **Úložiště Azure**  -  [Vytvoření účtu úložiště pomocí Azure PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell)
-    * **Centra**  -  událostí Azure [Vytvořte centrum událostí pomocí Azure PowerShell](../event-hubs/event-hubs-quickstart-powershell.md). K vytvoření autorizačního pravidla, které uděluje službě Azure služba AD DS oprávnění k *oboru názvů*centra událostí, možná budete muset použít rutinu [New-AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) . Autorizační pravidlo musí zahrnovat práva **Spravovat**, **naslouchat**a **odesílat** .
+    * **Centra**  -  událostí Azure [Vytvořte centrum událostí pomocí Azure PowerShell](../event-hubs/event-hubs-quickstart-powershell.md). K vytvoření autorizačního pravidla, které uděluje službě Azure služba AD DS oprávnění k *oboru názvů* centra událostí, možná budete muset použít rutinu [New-AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) . Autorizační pravidlo musí zahrnovat práva **Spravovat**, **naslouchat** a **odesílat** .
 
         > [!IMPORTANT]
         > Ujistěte se, že jste nastavili autorizační pravidlo v oboru názvů centra událostí a ne na samotném centru událostí.
@@ -141,7 +141,7 @@ Pokud chcete povolit události auditu zabezpečení Azure služba AD DS pomocí 
 V protokolu analytické pracovní prostory můžete zobrazit a analyzovat události auditu zabezpečení pomocí Azure Monitor a jazyka dotazů Kusto. Tento dotazovací jazyk je navržený pro použití jen pro čtení, které Boasts možnosti analytického analytika se snadno čitelným syntaxí. Další informace o tom, jak začít používat jazyky dotazů Kusto, najdete v následujících článcích:
 
 * [Dokumentace k Azure Monitor](../azure-monitor/index.yml)
-* [Začínáme s Log Analytics v Azure Monitor](../azure-monitor/log-query/get-started-portal.md)
+* [Začínáme s Log Analytics v Azure Monitor](../azure-monitor/log-query/log-analytics-tutorial.md)
 * [Začínáme s dotazy protokolů v Azure Monitoru](../azure-monitor/log-query/get-started-queries.md)
 * [Vytváření a sdílení řídicích panelů s daty Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
 

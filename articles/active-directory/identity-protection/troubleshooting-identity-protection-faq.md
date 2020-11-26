@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58f0ffa8bd43a8428603334b6c89fa1cf36315b5
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: ba22745923f1b157c477dce0b5704c7e278e748e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987333"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175997"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Nejčastější dotazy – ochrana identity v Azure Active Directory
 
@@ -38,7 +38,7 @@ Pokud jste zákazník Azure AD Identity Protection, přejděte do zobrazení [ri
 ## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>Proč bylo moje přihlášení blokované, ale ochrana identity negenerovala detekci rizika?
 Přihlášení mohou být blokována z několika důvodů. Je důležité si uvědomit, že ochrana identity generuje jenom detekci rizik, pokud se v žádosti o ověření používají správné přihlašovací údaje. Pokud uživatel používá nesprávné přihlašovací údaje, nebude označen ochranou identity, protože nehrozí riziko ohrožení zabezpečení přihlašovacích údajů, pokud nesprávný objekt actor nepoužívá správné přihlašovací údaje. Některé důvody, proč může být uživatel zablokován z podepisování, které negeneruje detekci Identity Protection, zahrnují:
 * **IP adresa může být zablokovaná** z důvodu škodlivé aktivity z IP adresy. Zpráva blokovaná protokolem IP nerozlišuje, zda byly pověření správné nebo nikoli. Pokud je IP adresa blokovaná a správné přihlašovací údaje se nepoužijí, vygeneruje se detekce Identity Protection.
-* **[Inteligentní uzamčení](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)** může účtu zabránit v přihlášení po několika neúspěšných pokusech.
+* **[Inteligentní uzamčení](../authentication/howto-password-smart-lockout.md)** může účtu zabránit v přihlášení po několika neúspěšných pokusech.
 * Je možné vyhovět **zásadám podmíněného přístupu** , které používají jiné podmínky než úroveň rizika k blokování žádosti o ověření.
 
 ### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>Jak získám sestavu zjištění určitého typu?
@@ -93,6 +93,4 @@ Vzhledem k kumulativnímu riziku uživatele je souhrnná povaha a nevyprší pla
 
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>Proč má přihlášení "riziko při přihlašování" (agregované) "vysoké skóre", pokud jsou k němu přidružená zjištění nízká nebo střední rizikovost?
 
-Vysoké agregované riziko by mohlo být založené na dalších funkcích přihlášení nebo na skutečnost, že pro toto přihlášení bylo vyvoláno více zjišťování. A naopak, přihlášení může mít riziko přihlašování (agregované) na střední úrovni, i když zjišťování spojená s přihlašováním jsou vysoké riziko. 
-
-
+Vysoké agregované riziko by mohlo být založené na dalších funkcích přihlášení nebo na skutečnost, že pro toto přihlášení bylo vyvoláno více zjišťování. A naopak, přihlášení může mít riziko přihlašování (agregované) na střední úrovni, i když zjišťování spojená s přihlašováním jsou vysoké riziko.

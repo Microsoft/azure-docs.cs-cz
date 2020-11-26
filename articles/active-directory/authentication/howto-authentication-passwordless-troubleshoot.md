@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 690d4761657b8bf6e5ba63ddfbce7163584e64e2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964566"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174030"
 ---
 # <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad-preview"></a>Řešení potíží s hybridními nasazeními klíčů zabezpečení FIDO2 ve službě Azure AD (Preview)
 
@@ -76,9 +76,9 @@ Pokud chcete shromažďovat data, která pomáhají při řešení potíží s p
 
 1. Vyberte kategorii *zabezpečení a ochrana osobních údajů a* potom podkategorii *Fido* .
 1. Přepněte zaškrtávací políčko pro *Odeslat připojené soubory a diagnostiku Microsoftu spolu se svou zpětnou vazbou*.
-1. Vyberte znovu *vytvořit moje problémy*a pak *Spustit zachytávání*.
+1. Vyberte znovu *vytvořit moje problémy* a pak *Spustit zachytávání*.
 1. Zamkněte a odemkněte počítač s klíčem zabezpečení FIDO2. Pokud k problému dojde, zkuste se odemknout s ostatními přihlašovacími údaji.
-1. Vraťte se do **centra pro zpětnou vazbu**, vyberte **Zastavit zachytávání**a odešlete svůj názor.
+1. Vraťte se do **centra pro zpětnou vazbu**, vyberte **Zastavit zachytávání** a odešlete svůj názor.
 1. Přejít na stránku *Zpětná vazba* a pak na kartu *Moje zpětná vazba* . Vyberte svou nedávno odeslanou zpětnou vazbu.
 1. Kliknutím na tlačítko *sdílet* v pravém horním rohu získáte odkaz na zpětnou vazbu. Tento odkaz zahrňte, když otevřete případ podpory nebo odpovíte na inženýra přiřazený existujícímu případu podpory.
 

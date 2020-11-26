@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 010e2a206ef08677651572c274cfc38fd516ecc9
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: e741bd6c87ea32b0d92b1dd53112a1bed3e4cd38
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041127"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174913"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Naplánování nasazení automatického zřizování uživatelů
 
@@ -34,13 +34,13 @@ Zřizování uživatelů vytvoří základ pro průběžné řízení identit a 
 
 Mezi klíčové výhody povolení automatického zřizování uživatelů patří:
 
-* **Zvýšení produktivity** . Pomocí jednoho rozhraní pro správu zřizování uživatelů můžete spravovat identity uživatelů napříč SaaS aplikacemi. Toto rozhraní má jednu sadu zásad zřizování.
+* **Zvýšení produktivity**. Pomocí jednoho rozhraní pro správu zřizování uživatelů můžete spravovat identity uživatelů napříč SaaS aplikacemi. Toto rozhraní má jednu sadu zásad zřizování.
 
-* **Řízení rizik** . Zabezpečení můžete zvýšit automatizací změn na základě stavu zaměstnanců nebo členství ve skupinách, které definují role nebo přístup.
+* **Řízení rizik**. Zabezpečení můžete zvýšit automatizací změn na základě stavu zaměstnanců nebo členství ve skupinách, které definují role nebo přístup.
 
-* **Vyřešte dodržování předpisů a zásady správného řízení** . Azure AD podporuje protokoly nativního auditu pro každou žádost o zřízení uživatele. Žádosti jsou spouštěny ve zdrojovém i cílovém systému. Díky tomu můžete sledovat, kdo má přístup k aplikacím z jedné obrazovky.
+* **Vyřešte dodržování předpisů a zásady správného řízení**. Azure AD podporuje protokoly nativního auditu pro každou žádost o zřízení uživatele. Žádosti jsou spouštěny ve zdrojovém i cílovém systému. Díky tomu můžete sledovat, kdo má přístup k aplikacím z jedné obrazovky.
 
-* **Snižte náklady** . Automatické zřizování uživatelů snižuje náklady tím, že se vyhne neefektivitám a lidským chybám přidruženým k ručnímu zřizování. Omezuje nutnost vlastních řešení pro zřizování uživatelů, skriptů a protokolů auditu.
+* **Snižte náklady**. Automatické zřizování uživatelů snižuje náklady tím, že se vyhne neefektivitám a lidským chybám přidruženým k ručnímu zřizování. Omezuje nutnost vlastních řešení pro zřizování uživatelů, skriptů a protokolů auditu.
 
 ### <a name="licensing"></a>Licencování
 
@@ -157,7 +157,7 @@ Skutečný postup potřebný k povolení a konfiguraci automatického zřizován
 
 V takovém případě postupujte podle následujících kroků:
 
-1. [Vytvoří žádost](../azuread-dev/howto-app-gallery-listing.md) o předem integrovaný konektor pro zřizování uživatelů. Náš tým bude spolupracovat s vámi a vývojářem aplikace, aby svou aplikaci připojil k naší platformě, pokud podporuje SCIM.
+1. [Vytvoří žádost](../develop/v2-howto-app-gallery-listing.md) o předem integrovaný konektor pro zřizování uživatelů. Náš tým bude spolupracovat s vámi a vývojářem aplikace, aby svou aplikaci připojil k naší platformě, pokud podporuje SCIM.
 
 1. Pro aplikaci použijte podporu obecného zřizování uživatelů [BYOA SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) . To je požadavek, aby služba Azure AD zřídila uživatele do aplikace bez integrovaného zřizovacího konektoru.
 
@@ -300,11 +300,11 @@ Pokud chcete vyřešit všechny problémy, které se můžou během zřizování
 
 * [Synchronizace atributu z místní služby Active Directory do Azure AD kvůli zřizování pro aplikaci](../app-provisioning/user-provisioning-sync-attributes-for-mapping.md)
 
-* [Při ukládání přihlašovacích údajů správce při konfiguraci zřizování uživatelů pro aplikaci Galerie Azure Active Directory došlo k potížím.](../app-provisioning/application-provisioning-config-problem-storage-limit.md)
+* [Při ukládání přihlašovacích údajů správce při konfiguraci zřizování uživatelů pro aplikaci Galerie Azure Active Directory došlo k potížím.](./user-provisioning.md)
 
 * [Pro aplikaci Galerie Azure AD se nezřídí žádní uživatelé.](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md)
 
-* [Pro aplikaci Galerie Azure AD se zřizuje nesprávná sada uživatelů.](../app-provisioning/application-provisioning-config-problem-wrong-users-provisioned.md)
+* [Pro aplikaci Galerie Azure AD se zřizuje nesprávná sada uživatelů.](../manage-apps/add-application-portal-assign-users.md)
 
 ### <a name="helpful-documentation"></a>Užitečná dokumentace
 

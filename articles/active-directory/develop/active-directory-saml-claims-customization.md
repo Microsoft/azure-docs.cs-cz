@@ -13,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 90efdd560735a112c2a4c5eb5740f211b587a241
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f462a78790e73f3e0f67f55b6417589c7826a75d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275751"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173664"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -109,7 +109,7 @@ Můžete také použít funkce transformace deklarací identity.
 
 Přidání deklarací specifických pro aplikaci:
 
-1. V **atributu uživatele & deklarací identity**výběrem možnosti **Přidat novou deklaraci** identity otevřete stránku **Spravovat deklarace identity uživatelů** .
+1. V **atributu uživatele & deklarací identity** výběrem možnosti **Přidat novou deklaraci** identity otevřete stránku **Spravovat deklarace identity uživatelů** .
 1. Zadejte **název** deklarací identity. Hodnota nemusí bezpodmínečně odpovídat vzoru identifikátoru URI podle specifikace SAML. Pokud potřebujete vzor identifikátoru URI, můžete ho umístit do pole **obor názvů** .
 1. Vyberte **zdroj** , ve kterém bude deklarace identity získávat svou hodnotu. Můžete vybrat atribut uživatele z rozevíracího seznamu zdrojový atribut nebo použít transformaci na atribut uživatele před jeho vygenerováním jako deklarace identity.
 
@@ -117,7 +117,7 @@ Přidání deklarací specifických pro aplikaci:
 
 Chcete-li použít transformaci na atribut uživatele:
 
-1. V části **Spravovat deklaraci identity**vyberte *transformovat* jako zdroj deklarace a otevřete stránku **Spravovat transformaci** .
+1. V části **Spravovat deklaraci identity** vyberte *transformovat* jako zdroj deklarace a otevřete stránku **Spravovat transformaci** .
 2. Vyberte funkci z rozevíracího seznamu transformace. V závislosti na vybrané funkci budete muset zadat parametry a konstantní hodnotu pro vyhodnocení v transformaci. Další informace o dostupných funkcích najdete v následující tabulce.
 3. Chcete-li použít více transformací, klikněte na tlačítko **Přidat transformaci**. Můžete použít maximálně dvě transformace na deklaraci identity. Například můžete nejprve extrahovat předponu e-mailu `user.mail` . Pak zadejte řetězec na velká písmena.
 
@@ -162,7 +162,7 @@ Jedním z situací, kdy je to užitečné, je, že je zdroj deklarace identity j
 
 Přidání podmínky deklarace identity:
 
-1. V části **Spravovat deklaraci identity**rozbalte podmínky deklarace identity.
+1. V části **Spravovat deklaraci identity** rozbalte podmínky deklarace identity.
 2. Vyberte typ uživatele.
 3. Vyberte skupiny, do kterých má uživatel patřit. V rámci všech deklarací pro danou aplikaci můžete vybrat až 50 jedinečných skupin. 
 4. Vyberte **zdroj** , ve kterém bude deklarace identity získávat svou hodnotu. Můžete vybrat atribut uživatele z rozevíracího seznamu zdrojový atribut nebo použít transformaci na atribut uživatele před jeho vygenerováním jako deklarace identity.
@@ -178,5 +178,5 @@ Nejdřív Microsoft Identity Platform ověří, jestli je typ uživatele Britta 
 ## <a name="next-steps"></a>Další kroky
 
 * [Správa aplikací v Azure AD](../manage-apps/what-is-application-management.md)
-* [Konfigurace jednotného přihlašování u aplikací, které nejsou v galerii aplikací Azure AD](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
-* [Řešení potíží s jednotným přihlašováním založeným na SAML](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+* [Konfigurace jednotného přihlašování u aplikací, které nejsou v galerii aplikací Azure AD](../manage-apps/configure-saml-single-sign-on.md)
+* [Řešení potíží s jednotným přihlašováním založeným na SAML](../manage-apps/debug-saml-sso-issues.md)

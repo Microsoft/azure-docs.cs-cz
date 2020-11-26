@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 - devx-track-azurecli
-ms.openlocfilehash: 5c8993bdf892ceb7d9886d0d2b97063dedec720c
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: db24fa4721e2e502c5098b415c4cf06da80f697d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635547"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175674"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Rychlý Start: vytvoření funkce Java v Azure z příkazového řádku
 
@@ -34,7 +34,7 @@ Než začnete, musíte mít následující:
 
 + [Azure CLI](/cli/azure/install-azure-cli) verze 2,4 nebo novější.
 
-+ [Sada Java Developer Kit](https://aka.ms/azure-jdks), verze 8 nebo 11. `JAVA_HOME`Proměnná prostředí musí být nastavená na umístění instalace správné verze JDK.     
++ [Sada Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), verze 8 nebo 11. `JAVA_HOME`Proměnná prostředí musí být nastavená na umístění instalace správné verze JDK.     
 
 + [Apache Maven](https://maven.apache.org)verze 3,0 nebo vyšší.
 
@@ -88,7 +88,7 @@ V Azure Functions je projekt funkce kontejnerem pro jednu nebo více jednotlivý
 
 1. `Y`Potvrďte zadáním nebo stisknutím klávesy ENTER.
 
-    Maven vytvoří soubory projektu v nové složce s názvem _artifactId_ , který je v tomto příkladu `fabrikam-functions` . 
+    Maven vytvoří soubory projektu v nové složce s názvem _artifactId_, který je v tomto příkladu `fabrikam-functions` . 
 
 1. Přejděte do složky projektu:
 

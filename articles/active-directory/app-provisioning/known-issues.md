@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 11/19/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 8a1c789759f1119a6170fffc2c70874cd9a32fde
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: e0a77e1e4757c8951756c3e41479628c293dfd8f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919674"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174828"
 ---
 # <a name="known-issues-application-provisioning"></a>Známé problémy: zřizování aplikací
 Známé problémy, které je třeba znát při práci s zřizováním aplikací. Zpětnou vazbu o službě zřizování aplikací na UserVoice najdete v tématu [Azure AD Application zřizování UserVoice](https://aka.ms/appprovisioningfeaturerequest). Úzce sledujeme UserVoice, abychom mohli službu vylepšit. 
@@ -28,7 +28,7 @@ Známé problémy, které je třeba znát při práci s zřizováním aplikací.
 
 **Po úspěšném testu připojení se nepovedlo Uložit.**
 
-Pokud můžete připojení úspěšně otestovat, ale nemůžete ho uložit, překročili jste maximální povolený limit úložiště pro přihlašovací údaje. Další informace najdete v tématu [problém při ukládání přihlašovacích údajů správce](application-provisioning-config-problem-storage-limit.md).
+Pokud můžete připojení úspěšně otestovat, ale nemůžete ho uložit, překročili jste maximální povolený limit úložiště pro přihlašovací údaje. Další informace najdete v tématu [problém při ukládání přihlašovacích údajů správce](./user-provisioning.md).
 
 **Nejde Uložit.**
 

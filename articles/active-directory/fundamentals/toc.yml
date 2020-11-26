@@ -79,6 +79,46 @@
               href: sync-ldap.md
             - name: Synchronizace SCIM
               href: sync-scim.md
+        - name: Sestavení pro zajištění odolnosti
+          items:
+            - name: Přehled
+              href: resilience-overview.md
+            - name: Doprovodné materiály pro infrastrukturu
+              items:
+                - name: Přehled infrastruktury
+                  href: resilience-in-infrastructure.md
+                - name: Správa přihlašovacích údajů
+                  href: resilience-in-credentials.md
+                - name: Stavy zařízení
+                  href: resilience-with-device-states.md
+                - name: Nepřetržité vyhodnocování přístupu
+                  href: resilience-with-continuous-access-evaluation.md
+                - name: Ověřování externích uživatelů
+                  href: resilience-b2b-authentication.md
+                - name: Hybridní ověřování
+                  href: resilience-in-hybrid.md
+                - name: Proxy aplikací
+                  href: resilience-on-premises-access.md
+            - name: Doprovodné materiály pro Azure AD B2C
+              items:
+                - name: Seznámení s odolností Azure AD B2C
+                  href: resilience-b2c.md
+                - name: Prostředí koncového uživatele
+                  href: resilient-end-user-experience.md
+                - name: Rozhraní s externími procesy
+                  href: resilient-external-processes.md
+                - name: Osvědčené postupy vývojářů pro Azure AD B2C
+                  href: resilience-b2c-developer-best-practices.md
+                - name: Sledování a analýza
+                  href: resilience-with-monitoring-alerting.md
+            - name: Doprovodné materiály k vývoji aplikací
+              items:
+                - name: Přehled vývoje
+                  href: resilience-app-development-overview.md
+                - name: Klientské aplikace
+                  href: resilience-client-app.md
+                - name: Aplikace démona
+                  href: resilience-daemon-app.md
         - name: Certifikační autority použité v Azure
           href: certificate-authorities.md
     - name: Průvodce nasazením

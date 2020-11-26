@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 036c40395e5da5ebc09a87e420893d7dbd2ec668
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94da22fbb2940bddaad1324bedc8759706eca37b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116797"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173562"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Osvědčené postupy a doporučení pro Microsoft Identity Platform
 
@@ -32,7 +32,7 @@ Pomocí následujícího kontrolního seznamu se ujistěte, že je vaše aplikac
 
 ## <a name="basics"></a>Základy
 
-![Zaškrtněte políčko ](./media/active-directory-integration-checklist/checkbox-two.svg) a pochopte si [Zásady platformy Microsoft](https://go.microsoft.com/fwlink/?linkid=2090497&clcid=0x409). Ujistěte se, že vaše aplikace dodržuje podmínek, které jsou navržené tak, aby chránily uživatele a platformu.
+![Zaškrtněte políčko ](./media/active-directory-integration-checklist/checkbox-two.svg) a pochopte si [Zásady platformy Microsoft](/legal/microsoft-identity-platform/terms-of-use). Ujistěte se, že vaše aplikace dodržuje podmínek, které jsou navržené tak, aby chránily uživatele a platformu.
 
 ## <a name="ownership"></a>Vlastnictví
 
@@ -100,7 +100,7 @@ Pomocí následujícího kontrolního seznamu se ujistěte, že je vaše aplikac
 
 ![zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) Otestujte svoji aplikaci se všemi možnými účty, které hodláte podporovat (například pracovní nebo školní účty, osobní účty Microsoft, podřízené účty a účty z svrchovaného účtu).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 Prostudujte si podrobné informace týkající se v2.0:
 

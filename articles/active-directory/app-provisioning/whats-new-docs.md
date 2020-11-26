@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 21307deb509d0735e4367f2b41603086f301bdeb
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 51a2facfdaccc6cb29264873e9ffd60fc48735da
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533527"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174658"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory zřizování aplikací: co je nového
 
@@ -59,7 +59,7 @@ Vítá vás novinky v Azure Active Directory dokumentaci zřizování aplikací.
 
 
 ### <a name="updated-articles"></a>Aktualizované články
-- [Konfigurace zřizování pomocí rozhraní API Microsoft Graph](application-provisioning-configure-api.md)
+- [Konfigurace zřizování pomocí rozhraní API Microsoft Graph](/graph/application-provisioning-configure-api)
 - [Známé problémy a řešení s dodržováním předpisů protokolu SCIM 2,0 ve službě Azure AD pro zřizování uživatelů](application-provisioning-config-problem-scim-compatibility.md)
 
 ## <a name="july-2020"></a>Červenec 2020

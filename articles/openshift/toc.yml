@@ -22,6 +22,12 @@
           href: howto-create-private-cluster-4x.md
         - name: Konfigurace přesměrování DNS
           href: dns-forwarding.md
+    - name: Storage
+      items:
+        - name: Vytvoření třídy Azure Files Storage
+          href: howto-create-a-storageclass.md
+        - name: Použití integrovaného registru kontejneru
+          href: built-in-container-registry.md
     - name: Zabezpečení a ověřování
       items:
         - name: Konfigurace ověřování Azure Active Directory (CLI)

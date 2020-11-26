@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6aa31d0b8c68f38d2b4fc41a6bbaaeab8a3ffac
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 3f2c5b37c713b69df56e938fdaa2a9134402d765
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363602"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173898"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Možnosti vytváření sestav správy hesel v Azure AD
 
@@ -53,7 +53,7 @@ V prostředí Azure Portal jsme vylepšili způsob, jakým můžete zobrazit akt
 
 ### <a name="combined-registration"></a>Kombinovaná registrace
 
-Pokud jste povolili [kombinovanou registraci](./concept-registration-mfa-sspr-combined.md), budou se v části **Security**  >  **metody ověřování**zabezpečení najít informace týkající se aktivity uživatele v protokolech auditu.
+Pokud jste povolili [kombinovanou registraci](./concept-registration-mfa-sspr-combined.md), budou se v části **Security**  >  **metody ověřování** zabezpečení najít informace týkající se aktivity uživatele v protokolech auditu.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Popis sloupců sestavy v Azure Portal
 
@@ -181,7 +181,7 @@ Následující seznam vysvětluje tuto aktivitu podrobněji:
 * [Jaké jsou možnosti zásad se SSPR?](concept-sspr-policy.md)
 * [Co je zpětný zápis hesla a proč byste se o něj měli starat?](./tutorial-enable-sspr-writeback.md)
 * [Jaké jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
-* [Myslím, že je něco přerušeno. Návody řešit potíže s SSPR?](active-directory-passwords-troubleshoot.md)
+* [Myslím, že je něco přerušeno. Návody řešit potíže s SSPR?](./troubleshoot-sspr.md)
 * [Mám otázku, která není zodpovězená jinde](active-directory-passwords-faq.md)
 
 [Reporting]: ./media/howto-sspr-reporting/sspr-reporting.png "Příklad protokolů auditu aktivity SSPR v Azure AD"

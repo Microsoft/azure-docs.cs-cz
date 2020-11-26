@@ -15,11 +15,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4410708905610562feb15804277021950eb1edeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826529"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176286"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Kurz: federovat jednoho prostředí doménové struktury služby AD do cloudu
 
@@ -27,7 +27,7 @@ ms.locfileid: "91826529"
 
 Následující kurz vás provede vytvořením hybridního prostředí identity pomocí federace.  Toto prostředí se pak dá použít k testování nebo pro získání více znalostí, jak hybridní identita funguje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Níže jsou uvedené předpoklady nezbytné pro dokončení tohoto kurzu.
 - Počítač s nainstalovanou [technologií Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview) .  Tento postup je navržený na počítači s [Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os) nebo [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) .
 - [Předplatné Azure](https://azure.microsoft.com/free)
@@ -227,7 +227,7 @@ Teď, když máme tenanta a globálního správce, musíme přidat naši vlastn�
 2. Nalevo vyberte **Názvy vlastních domén**.
 3. Vyberte **Přidat vlastní doménu**.</br>
 ![Snímek obrazovky znázorňující zvýrazněné tlačítko Přidat vlastní doménu](media/tutorial-federation/custom1.png)</br>
-4. V poli **vlastní názvy domén**zadejte do pole název vlastní domény a klikněte na **Přidat doménu**.
+4. V poli **vlastní názvy domén** zadejte do pole název vlastní domény a klikněte na **Přidat doménu**.
 5. Na obrazovce vlastní název domény budete mít k dispozici buď informace TXT, nebo MX.  Tyto informace musí být přidány do informací DNS doménového registrátora ve vaší doméně.  Takže musíte přejít do svého registrátora domény a zadat informace o TXT nebo MX do nastavení DNS pro vaši doménu.  To umožní službě Azure ověřit vaši doménu.  To může trvat až 24 hodin, než ho Azure ověří.  Další informace najdete v dokumentaci k [Přidání vlastní domény](../../active-directory/fundamentals/add-custom-domain.md) .</br>
 ![Snímek obrazovky, který ukazuje, kde přidat informace o TXT nebo MX.](media/tutorial-federation/custom2.png)</br>
 6. Chcete-li zajistit, že je ověřeno, klikněte na tlačítko ověřit.</br>

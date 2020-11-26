@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 224ccaeace91288171db42d2b8b8cf8c21a352e0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 99da9b787bfe06bece8b8dafdafc257336dddf63
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652514"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176184"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Řešení potíží s předávacím ověřováním služby Azure Active Directory
 
@@ -72,7 +72,7 @@ Chcete-li ověřit, že se jedná o problém, nejprve otestujte správné fungov
  ``` 
 4. Když se zobrazí výzva k zadání přihlašovacích údajů, zadejte stejné uživatelské jméno a heslo, které se použijí k přihlášení k nástroji ( https://login.microsoftonline.com) .
 
-Pokud se zobrazí stejná chyba uživatelského jména a hesla, znamená to, že agent předávacího ověřování funguje správně a problém může být, že místní hlavní název uživatele (UPN) není směrovatelný. Další informace najdete v tématu [Konfigurace alternativního přihlašovacího ID]( /windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More).
+Pokud se zobrazí stejná chyba uživatelského jména a hesla, znamená to, že agent předávacího ověřování funguje správně a problém může být, že místní hlavní název uživatele (UPN) není směrovatelný. Další informace najdete v tématu [Konfigurace alternativního přihlašovacího ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id).
 
 > [!IMPORTANT]
 > Pokud se Azure AD Connect Server nepřipojí k doméně, vyžaduje se požadavek uvedený v článku [Azure AD Connect: požadavky](./how-to-connect-install-prerequisites.md#installation-prerequisites), nejedná se o problém s platným uživatelským jménem nebo heslem.

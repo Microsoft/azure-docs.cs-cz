@@ -10,11 +10,11 @@ ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: a9f58a9cdf8dea9631443d499548f2aee61eda69
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553671"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175402"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Použití externích tabulek s synapse SQL
 
@@ -332,7 +332,7 @@ Možnost vytvořit externí tabulku podporuje konfiguraci názvu sloupce, datov�
 
 Při čtení ze souborů Parquet můžete zadat pouze sloupce, které chcete číst, a přeskočit zbytek.
 
-LOCATION = ' *folder_or_filepath* '
+LOCATION = '*folder_or_filepath*'
 
 Určuje složku, cestu k souboru a název souboru pro skutečná data v Azure Blob Storage. Umístění začíná od kořenové složky. Kořenová složka je umístění dat zadané v externím zdroji dat.
 
@@ -383,7 +383,7 @@ SELECT TOP 1 * FROM census_external_table
 
 Pomocí možností zkoumání Data Lake nyní můžete vytvořit a zadat dotaz na externí tabulku pomocí vyhrazeného fondu SQL nebo bez serveru SQL s jednoduchým kliknutím pravým tlačítkem myši na soubor.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Musíte mít přístup k pracovnímu prostoru, který má alespoň roli přístupu pro přispěvatele dat objektů BLOB úložiště k účtu ADLS Gen2.
 

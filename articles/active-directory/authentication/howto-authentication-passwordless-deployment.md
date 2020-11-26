@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0143da9c1961b4123467120210135f7db2c582c8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b4c06e53d3ddfb5f344a759e31d83cb22ce6d4d3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839569"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174132"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Plánování nasazení ověřování s neplatnými hesly v Azure Active Directory
 
@@ -78,11 +78,11 @@ Organizace musí před zahájením nasazení s neplatným heslem splňovat násl
 
 Požadavky na Windows Hello jsou vysoce závislé na tom, jestli nasazujete v konfiguraci místních, hybridních nebo cloudových konfigurací. Další informace najdete v [úplném seznamu požadavků pro Windows Hello pro firmy](/windows/security/identity-protection/hello-for-business/hello-identity-verification).
 
-### <a name="azure-ad-multi-factor-authentication"></a>Multi-Factor Authentication Azure AD
+### <a name="azure-ad-multi-factor-authentication"></a>Vícefaktorové ověřování Azure AD
 
 Uživatelé registrují svou metodu nejenom hesla jako součást toku registrace Multi-Factor Authentication služby Azure AD. Vícefaktorové ověřování s uživatelským jménem a heslem společně s jinou registrovanou metodou se dá použít jako záložní pro případ, že v některých scénářích nemůžou použít svůj telefon nebo bezpečnostní klíč.
 
-### <a name="licensing"></a>Licensing 
+### <a name="licensing"></a>Licencování 
 Pro ověřování bez hesla se neúčtují žádné další poplatky, i když některé předpoklady můžou vyžadovat předplatné Premium. Podrobné informace o funkcích a licencování najdete na [stránce Azure Active Directory licencování](https://azure.microsoft.com/pricing/details/active-directory/). 
 
 ## <a name="develop-a-plan"></a>Vývoj plánu
@@ -126,7 +126,7 @@ Při nasazení ověřování bez hesla byste měli nejdřív povolit jednu nebo 
 
 Skupiny je možné synchronizovat z místního adresáře nebo z Azure AD. Jakmile budete spokojeni s výsledky svého pilotního projektu, můžete pro všechny uživatele přepnout na ověřování bez hesla.
 
-[Doporučené postupy pro pilotní](https://aka.ms/deploymentplans) nasazení najdete na stránce plány nasazení.
+[Doporučené postupy pro pilotní](../fundamentals/active-directory-deployment-plans.md) nasazení najdete na stránce plány nasazení.
 
 ## <a name="plan-passwordless-authentication-with-the-microsoft-authenticator-app"></a>Plánování ověřování bez hesla pomocí aplikace Microsoft Authenticator
 

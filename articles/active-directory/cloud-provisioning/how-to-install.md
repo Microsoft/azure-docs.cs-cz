@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5322e5ce1bb124387931eac666cf9e5510cb2463
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: c3960b8afeb9d7ecc80aa49fc13eee4977fa5494
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95237628"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173966"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Instalace agenta zřizování cloudů Azure AD Connect
 Tento dokument vás provede procesem instalace agenta zřizování služby Azure Active Directory (Azure AD) Connect a jeho počáteční konfigurace v Azure Portal.
@@ -32,7 +32,7 @@ Instalace a konfigurace Azure AD Connect zřizování se provádí v následují
 
 
 ## <a name="group-managed-service-accounts"></a>Skupinové účty spravované služby
-Skupinový účet spravované služby je účet spravované domény, který poskytuje automatickou správu hesel, zjednodušenou správu hlavního názvu služby (SPN), schopnost delegovat správu na jiné správce a také rozšiřuje tuto funkci na více serverů.  Azure AD Connect synchronizace cloudu podporuje a doporučuje používání skupinového účtu spravované služby ke spuštění agenta.  Další informace o gMSA najdete v tématu [skupinový účet spravované služby](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) . 
+Skupinový účet spravované služby je účet spravované domény, který poskytuje automatickou správu hesel, zjednodušenou správu hlavního názvu služby (SPN), schopnost delegovat správu na jiné správce a také rozšiřuje tuto funkci na více serverů.  Azure AD Connect synchronizace cloudu podporuje a doporučuje používání skupinového účtu spravované služby ke spuštění agenta.  Další informace o gMSA najdete v tématu [skupinový účet spravované služby](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) . 
 
 
 ### <a name="upgrading-an-existing-agent-to-use-the-gmsa-account"></a>Upgrade existujícího agenta na používání účtu gMSA
@@ -107,4 +107,3 @@ Pokud chcete ověřit, jestli je agent spuštěný, postupujte podle těchto kro
 
 - [Co je zřizování?](what-is-provisioning.md)
 - [Co je zřízení cloudu Azure AD Connect?](what-is-cloud-provisioning.md)
- 
