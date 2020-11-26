@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 138eecce6160cb272356a626d10ce3d19f41229a
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 29f2610c371ecd567a18dc70e51b3eb34754d8ff
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686289"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180851"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hightail"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Hightail
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Hightail s Azure Active Directory (Azu
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Hightail svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -90,7 +90,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Hightail několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | -------- |-------- |
     | FirstName | User. křestní jméno |
     | LastName | User. příjmení |
@@ -185,9 +185,9 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k Hightail, pro které jste nastavili jednotné přihlašování. 
 
-K otestování aplikace v jakémkoli režimu můžete také použít panel Microsoft Access. Když kliknete na dlaždici Hightail na přístupovém panelu, pokud se nakonfiguruje v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k Hightail, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+K otestování aplikace v jakémkoli režimu můžete také použít panel Microsoft Access. Když kliknete na dlaždici Hightail na přístupovém panelu, pokud se nakonfiguruje v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k Hightail, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování Hightail můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Po nakonfigurování Hightail můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 51249c68407f6b4ca7793b2fdeceab5aa4f7bc5c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 1cc7df755198461643703cac988c8c31f2ac25db
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94575981"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182882"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Řešení potíží s App Service v Application Gateway
 
@@ -93,7 +93,7 @@ App Service teď provádí přesměrování (pokud existuje) ve stejné původn�
 
 Musíte vlastnit vlastní doménu a postupovat podle tohoto postupu:
 
-- Zaregistrujte doménu do seznamu vlastních domén služby App Service. V vlastní doméně musíte mít záznam CNAME, který odkazuje na plně kvalifikovaný název domény služby App Service. Další informace najdete v tématu [Mapování existujícího vlastního názvu DNS na Azure App Service](/azure/app-service/app-service-web-tutorial-custom-domain).
+- Zaregistrujte doménu do seznamu vlastních domén služby App Service. V vlastní doméně musíte mít záznam CNAME, který odkazuje na plně kvalifikovaný název domény služby App Service. Další informace najdete v tématu [Mapování existujícího vlastního názvu DNS na Azure App Service](../app-service/app-service-web-tutorial-custom-domain.md).
 
     ![Seznam vlastních domén služby App Service](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 

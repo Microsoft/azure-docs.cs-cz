@@ -14,14 +14,14 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1012ae32f679d23f16a7483415657596d027cc01
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: ab3b655d59e2cb8c6773fa1a34a08638e6926475
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658821"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180655"
 ---
-# <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Přesunutí ověřování aplikace z Active Directory Federation Services (AD FS) na Azure Active Directory
+# <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Přesun ověřování aplikací z Active Directory Federation Services (AD FS) do Azure Active Directory
 
 [Azure Active Directory (Azure AD)](../fundamentals/active-directory-whatis.md) nabízí univerzální platformu pro identitu, která poskytuje vašim lidem, partnerům a zákazníkům jedinou identitu pro přístup k aplikacím a spolupráci z libovolné platformy a zařízení. Azure AD má [plnou sadu funkcí pro správu identit](../fundamentals/active-directory-whatis.md). Standardizace ověřování aplikací (App) a autorizace do Azure AD umožní výhodám, které tyto funkce poskytují.
 
@@ -320,7 +320,7 @@ Selektor uživatel/skupiny je pravidlo, které umožňuje vymáhat MFA pro jedno
 
 Zadejte pravidla MFA pro uživatele nebo skupinu ve službě Azure AD:
 
-1. Vytvořte [nové zásady podmíněného přístupu](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json).
+1. Vytvořte [nové zásady podmíněného přístupu](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json).
 
 2. Vyberte **přiřazení**. Přidejte uživatele nebo skupiny, pro které chcete vymáhat MFA.
 
@@ -333,7 +333,7 @@ Zadejte pravidla MFA pro uživatele nebo skupinu ve službě Azure AD:
 
 Zadejte pravidla MFA pro neregistrovaná zařízení ve službě Azure AD:
 
-1. Vytvořte [nové zásady podmíněného přístupu](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json).
+1. Vytvořte [nové zásady podmíněného přístupu](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json).
 
 2. Nastavte **přiřazení** pro **všechny uživatele**.
 
@@ -348,7 +348,7 @@ Když nastavíte možnost pro více ovládacích prvků tak, aby vyžadovala jed
 
 Zadejte pravidla MFA na základě umístění uživatele v Azure AD:
 
-1. Vytvořte [nové zásady podmíněného přístupu](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json).
+1. Vytvořte [nové zásady podmíněného přístupu](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json).
 
 1. Nastavte **přiřazení** pro **všechny uživatele**.
 
@@ -386,7 +386,7 @@ AD FS 2016 obsahuje několik předdefinovaných zásad řízení přístupu, ze 
 ![Integrované řízení přístupu k Azure AD](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-1.png)
 
 
-K implementaci integrovaných zásad v Azure AD můžete použít [nové zásady podmíněného přístupu](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json) a nakonfigurovat řízení přístupu, nebo můžete použít vlastní návrháře zásad v AD FS 2016 ke konfiguraci zásad řízení přístupu. Editor pravidel má vyčerpávající seznam povolených a s výjimkou možností, které vám můžou usnadnit vytváření všech druhů permutací.
+K implementaci integrovaných zásad v Azure AD můžete použít [nové zásady podmíněného přístupu](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json) a nakonfigurovat řízení přístupu, nebo můžete použít vlastní návrháře zásad v AD FS 2016 ke konfiguraci zásad řízení přístupu. Editor pravidel má vyčerpávající seznam povolených a s výjimkou možností, které vám můžou usnadnit vytváření všech druhů permutací.
 
 ![Zásady řízení přístupu Azure AD](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-2.png)
 

@@ -4,12 +4,12 @@ description: Naučte se konfigurovat šifrování založené na hostiteli v clus
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 4b5deeec0b76520952345e9b03135fa094a1f78e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14ec39272bf2f434aaa57217a90667a62e82901a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87986861"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183290"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Šifrování založené na hostiteli ve službě Azure Kubernetes (AKS) (Preview)
 
@@ -23,7 +23,7 @@ Tato funkce se dá nastavit jenom při vytváření clusteru nebo při vytváře
 > [!NOTE]
 > Šifrování založené na hostiteli je dostupné v [oblastech Azure][supported-regions] , které podporují šifrování na straně serveru Azure Managed disks a jenom s konkrétními [podporovanými velikostmi virtuálních počítačů][supported-sizes].
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Ujistěte se, že máte `aks-preview` nainstalovanou příponu CLI v 0.4.55 nebo novější verzi.
 - Ujistěte se, že je `EncryptionAtHost` v části `Microsoft.Compute` povoleno příznak funkce.
@@ -41,7 +41,7 @@ az feature register --namespace "Microsoft.Compute" --name "EncryptionAtHost"
 az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHostPreview"
 ```
 
-Zobrazení stavu v *registraci*trvá několik minut. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list][az-feature-list] :
+Zobrazení stavu v *registraci* trvá několik minut. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list][az-feature-list] :
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.Compute/EncryptionAtHost')].{Name:name,State:properties.state}"
@@ -99,7 +99,7 @@ Pokud chcete vytvořit nové fondy uzlů bez funkce šifrování založené na h
 
 ## <a name="next-steps"></a>Další kroky
 
-Projděte si [osvědčené postupy zabezpečení clusteru AKS][best-practices-security] . Další informace o [šifrování na základě hostitele](../virtual-machines/linux/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
+Projděte si [osvědčené postupy zabezpečení clusteru AKS][best-practices-security] . Další informace o [šifrování na základě hostitele](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
 
 
 <!-- LINKS - external -->
@@ -108,8 +108,8 @@ Projděte si [osvědčené postupy zabezpečení clusteru AKS][best-practices-se
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [best-practices-security]: ./operator-best-practices-cluster-security.md
-[supported-regions]: ../virtual-machines/linux/disk-encryption.md#supported-regions
-[supported-sizes]: ../virtual-machines/linux/disk-encryption.md#supported-vm-sizes
+[supported-regions]: ../virtual-machines/disk-encryption.md#supported-regions
+[supported-sizes]: ../virtual-machines/disk-encryption.md#supported-vm-sizes
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list

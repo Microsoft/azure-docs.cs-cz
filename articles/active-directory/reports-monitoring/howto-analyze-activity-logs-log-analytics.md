@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a48a72aa021a17c59adb86bece66cec966e234bd
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0c4fde22b1b8d72ae8ae775c090e0da25ce0665f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056136"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181165"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Analýza protokolů aktivit Azure AD pomocí protokolů Azure Monitor
 
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak analyzovat protokoly aktivit Azure AD v pracov
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 Pokud chcete postup sledovat, potřebujete:
 
@@ -47,9 +47,9 @@ Pokud chcete postup sledovat, potřebujete:
     
 ## <a name="navigate-to-the-log-analytics-workspace"></a>Přejděte do pracovního prostoru Log Analytics.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
-2. Vyberte **Azure Active Directory**a potom v části **monitorování** vyberte **protokoly** . tím otevřete pracovní prostor Log Analytics. Pracovní prostor se otevře s výchozím dotazem.
+2. Vyberte **Azure Active Directory** a potom v části **monitorování** vyberte **protokoly** . tím otevřete pracovní prostor Log Analytics. Pracovní prostor se otevře s výchozím dotazem.
 
     ![Výchozí dotaz](./media/howto-analyze-activity-logs-log-analytics/defaultquery.png)
 
@@ -104,9 +104,9 @@ Pro svůj dotaz můžete také nastavit výstrahy. Pokud třeba chcete nakonfigu
 
 Sešity obsahují několik sestav, které se týkají běžných scénářů týkajících se auditu, přihlašování a zřizování událostí. Pomocí postupu popsaného v předchozí části můžete také upozornit na kterékoli z dat, která jsou uvedena v sestavách.
 
-* **Analýza zřizování**: Tento [sešit](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics) obsahuje sestavy týkající se aktivity zřizování auditování, jako je počet nových uživatelů, kteří se zřídili a provisionují chyby, počet aktualizovaných uživatelů a selhání aktualizací a počet nezřízených uživatelů a odpovídající selhání.    
+* **Analýza zřizování**: Tento [sešit](../app-provisioning/application-provisioning-log-analytics.md) obsahuje sestavy týkající se aktivity zřizování auditování, jako je počet nových uživatelů, kteří se zřídili a provisionují chyby, počet aktualizovaných uživatelů a selhání aktualizací a počet nezřízených uživatelů a odpovídající selhání.    
 * **Události přihlášení**: Tento sešit obsahuje nejrelevantnější sestavy týkající se monitorování přihlašovacích aktivit, jako jsou například přihlášení podle aplikace, uživatele, zařízení a také souhrnné zobrazení sledování počtu přihlášení v průběhu času.
-* **Přehledy podmíněného přístupu**: přehledy podmíněného přístupu [a vytváření sestav](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-insights-reporting) vám umožní pochopit dopad zásad podmíněného přístupu ve vaší organizaci v průběhu času. 
+* **Přehledy podmíněného přístupu**: přehledy podmíněného přístupu [a vytváření sestav](../conditional-access/howto-conditional-access-insights-reporting.md) vám umožní pochopit dopad zásad podmíněného přístupu ve vaší organizaci v průběhu času. 
 
 ## <a name="next-steps"></a>Další kroky
 

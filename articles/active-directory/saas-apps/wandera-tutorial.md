@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
 ms.openlocfilehash: d13619b818e18c64d9882f9e3181824173403859
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519261"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181386"
 ---
 # <a name="tutorial-integrate-wandera-radar-admin-with-azure-active-directory"></a>Kurz: integrace správce Wandera RADARu pomocí Azure Active Directory
 
@@ -94,7 +94,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     1. Vyberte **možnost podepisování** jako **podepsat odpověď SAML a kontrolní výraz**.
 
-    1. Jako **SHA-256**vyberte **podpisový algoritmus** .
+    1. Jako **SHA-256** vyberte **podpisový algoritmus** .
 
 1. V části **Nastavení WANDERA paprskového správce** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
@@ -104,7 +104,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
@@ -116,13 +116,13 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k Wandera pro správce PAPRSKů.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **WANDERA paprskový správce**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -164,7 +164,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici Správce Wandera PAPRSKů na přístupovém panelu byste se měli automaticky přihlášeni ke Správci Wandera PAPRSKů, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

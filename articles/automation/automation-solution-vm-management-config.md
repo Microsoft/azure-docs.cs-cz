@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: b0bc23d515bebdd0d943bbad33c5ebba35a35605
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fdb3b2b23d07b79a8e9979450bee653d646196c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987212"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182797"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Konfigurace Start/Stop VMs during off-hours
 
@@ -63,7 +63,7 @@ V prostředí, které obsahuje dvě nebo více součástí na více virtuálníc
 
 ### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>Cílem akcí spuštění a zastavení u předplatného a skupiny prostředků
 
-1. Přidejte `sequencestart` a `sequencestop` značku s kladnými celočíselnými hodnotami do virtuálních počítačů, které jsou zaměřeny na `External_Start_ResourceGroupNames` a `External_Stop_ResourceGroupNames` proměnné. Akce spuštění a zastavení se provádí ve vzestupném pořadí. Informace o tom, jak označit virtuální počítač, najdete v tématu [označení virtuálního počítače s Windows v Azure](../virtual-machines/windows/tag.md) a [označení virtuálního počítače se systémem Linux v Azure](../virtual-machines/linux/tag.md).
+1. Přidejte `sequencestart` a `sequencestop` značku s kladnými celočíselnými hodnotami do virtuálních počítačů, které jsou zaměřeny na `External_Start_ResourceGroupNames` a `External_Stop_ResourceGroupNames` proměnné. Akce spuštění a zastavení se provádí ve vzestupném pořadí. Informace o tom, jak označit virtuální počítač, najdete v tématu [označení virtuálního počítače s Windows v Azure](../virtual-machines/tag-portal.md) a [označení virtuálního počítače se systémem Linux v Azure](../virtual-machines/tag-cli.md).
 
 2. Upravte plány **Sequenced-StartVM** a **Sequenced-StopVM** na datum a čas, který splňuje vaše požadavky, a povolte plán.
 
@@ -137,19 +137,19 @@ Chcete-li změnit e-mailová oznámení po nasazení Start/Stop VMs during off-h
 > [!NOTE]
 > Předplatná v cloudu Azure Government nepodporují funkce e-mailu této funkce.
 
-1. V Azure Portal přejděte na **monitorování**a pak na **skupiny akcí**. Vyberte skupinu akcí s názvem **StartStop_VM_Notication**.
+1. V Azure Portal přejděte na **monitorování** a pak na **skupiny akcí**. Vyberte skupinu akcí s názvem **StartStop_VM_Notication**.
 
     :::image type="content" source="media/automation-solution-vm-management/azure-monitor.png" alt-text="Snímek obrazovky se stránkou monitor – skupiny akcí":::
 
 2. Na stránce StartStop_VM_Notification klikněte na **Upravit podrobnosti** v části **Podrobnosti**. Tím se otevře stránka E-mail/SMS/Push/Voice. Aktualizujte e-mailovou adresu a kliknutím na **OK** uložte změny.
 
-    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="Snímek obrazovky se stránkou monitor – skupiny akcí":::
+    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="Snímek obrazovky se stránkou E-mail/SMS/Push/Voice ukazující ukázkovou e-mailovou adresu.":::
 
     Případně můžete do skupiny akcí přidat další akce. Další informace o skupinách akcí naleznete v tématu [skupiny akcí](../azure-monitor/platform/action-groups.md) .
 
 Následuje příklad e-mailu, který se pošle, když funkce vypne virtuální počítače.
 
-:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="Snímek obrazovky se stránkou monitor – skupiny akcí":::
+:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="Snímek obrazovky s ukázkovým e-mailem odeslaným, když funkce vypne virtuální počítače":::
 
 ## <a name="add-or-exclude-vms"></a><a name="add-exclude-vms"></a>Přidat nebo vyloučit virtuální počítače
 

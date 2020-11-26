@@ -17,12 +17,12 @@ ms.date: 10/07/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 675c98e00b7458f326c95741529f7ce41a91dc18
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2408db2d91740350405f11e2a1250ab9b3a4fe31
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319730"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181199"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Sestavy zřizování na portálu Azure Active Directory (Preview)
 
@@ -61,7 +61,7 @@ Protokoly zřizování poskytují odpovědi na následující otázky:
 
 Přístup k protokolům zřizování můžete získat tak, že v části **monitorování** v okně **Azure Active Directory** v [Azure Portal](https://portal.azure.com)vyberete **protokoly zřizování** . Může trvat až dvě hodiny, než se některé záznamy zřizování zobrazí na portálu.
 
-![Protokoly zřizování](./media/concept-provisioning-logs/access-provisioning-logs.png "Protokoly zřizování")
+![Zřizování protokolů](./media/concept-provisioning-logs/access-provisioning-logs.png "Protokoly zřizování")
 
 
 Protokol zřizování má výchozí zobrazení seznamu, které obsahuje:
@@ -86,7 +86,7 @@ To umožňuje zobrazit další pole, nebo odebrat pole, která jsou už zobrazen
 
 Chcete-li získat podrobnější informace, vyberte položku v zobrazení seznamu.
 
-![Podrobné informace](./media/concept-provisioning-logs/steps.png "Filtr")
+![Podrobné informace](./media/concept-provisioning-logs/steps.png "Filtrovat")
 
 
 ## <a name="filter-provisioning-activities"></a>Filtrovat aktivity zřizování
@@ -100,7 +100,7 @@ Ve výchozím zobrazení můžete vybrat následující filtry:
 - Akce
 
 
-![Přidání filtrů](./media/concept-provisioning-logs/default-filter.png "Filtr")
+![Přidání filtrů](./media/concept-provisioning-logs/default-filter.png "Filtrovat")
 
 Filtr **identit** umožňuje zadat název nebo identitu, o které se zajímáte. Tato identita by mohla být uživatel, skupina, role nebo jiný objekt. Můžete hledat podle názvu nebo ID objektu. ID se liší podle scénáře. Například při zřizování objektu ze služby Azure AD do SalesForce je ID zdroje ID objektu uživatele ve službě Azure AD, zatímco TargetID je ID uživatele v Salesforce. Při zřizování z Workday do služby Active Directory je zdrojem ID ID zaměstnance pracovního procesu Workday. Všimněte si, že jméno uživatele nemusí být vždy k dispozici ve sloupci identita. Vždy bude existovat jedno ID. 
 
@@ -132,7 +132,7 @@ Filtr **akcí** umožňuje filtrovat:
 - Aktualizace
 - Odstranit
 - Zakázat
-- Ostatní
+- Jiné
 
 Kromě toho můžete také nastavit následující filtry pro filtry výchozího zobrazení:
 
@@ -191,7 +191,7 @@ Karta **kroky** popisuje kroky podniknuté při zřizování objektu. Zřizován
 
 
 
-![Snímek obrazovky se zobrazí na kartě kroky, na které se zobrazují kroky zřizování.](./media/concept-provisioning-logs/steps.png "Filtr")
+![Snímek obrazovky se zobrazí na kartě kroky, na které se zobrazují kroky zřizování.](./media/concept-provisioning-logs/steps.png "Filtrovat")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Řešení potíží a doporučení
@@ -211,7 +211,7 @@ Karta **Souhrn** poskytuje přehled o tom, co se stalo, a identifikátory pro ob
 
 ## <a name="what-you-should-know"></a>Co byste měli vědět
 
-- Azure Portal ukládá nahlášená data zřizování po dobu 30 dnů, pokud máte edici Premium a 7 dní, pokud máte bezplatnou edici. Zřizovací protokoly je možné publikovat do [Log Analytics](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics) za účelem uchování po dobu 30 dnů. 
+- Azure Portal ukládá nahlášená data zřizování po dobu 30 dnů, pokud máte edici Premium a 7 dní, pokud máte bezplatnou edici. Zřizovací protokoly je možné publikovat do [Log Analytics](../app-provisioning/application-provisioning-log-analytics.md) za účelem uchování po dobu 30 dnů. 
 
 - Atribut Change ID můžete použít jako jedinečný identifikátor. To je například užitečné při interakci s produktovou podporou.
 

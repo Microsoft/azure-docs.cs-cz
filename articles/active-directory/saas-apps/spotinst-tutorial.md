@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.openlocfilehash: d9c9ac87e655cf9178d58f04b502f7e781d1fef7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520536"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181403"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Spotinst
 
@@ -78,7 +78,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované v IDP, proveďte v **základní části Konfigurace SAML** tyto kroky:
 
    1. Ujistěte se, že **Adresa URL odpovědi** je nastavená na: https://console.spotinst.com/auth/saml .
-   1. Do pole **stav přenosu**zadejte ID organizace Spotinst, které můžete také potvrdit na kartě **jednotného přihlašování** .
+   1. Do pole **stav přenosu** zadejte ID organizace Spotinst, které můžete také potvrdit na kartě **jednotného přihlašování** .
    1. **Adresa URL pro přihlášení** musí být prázdná.
 
 1. Klikněte na **Uložit**.
@@ -89,7 +89,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Spotinst několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | -----| --------------- |
     | E-mail | uživatel. pošta |
     | FirstName | User. křestní jméno |
@@ -107,7 +107,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
@@ -119,13 +119,13 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Spotinst.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Spotinst**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -175,7 +175,7 @@ Cílem této části je vytvořit uživatele s názvem Britta Simon v Spotinst.
 
     * Do textového pole **e-mail** zadejte e-mailovou adresu uživatele, jako je `brittasimon\@contoso.com` .
 
-    * Pro **role organizace, role účtu a účty**vyberte podrobnosti specifické pro vaši organizaci.
+    * Pro **role organizace, role účtu a účty** vyberte podrobnosti specifické pro vaši organizaci.
 
 2. Pokud jste aplikaci nakonfigurovali v režimu iniciované **IDP** , v této části neexistuje žádná položka akce. Spotinst podporuje zřizování za běhu, které je ve výchozím nastavení povolené. Nový uživatel se vytvoří během pokusu o přístup k Spotinst, pokud ještě neexistuje.
 
@@ -185,7 +185,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Spotinst, měli byste se automaticky přihlásit k Spotinst, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 

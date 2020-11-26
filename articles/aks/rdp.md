@@ -5,12 +5,12 @@ description: Přečtěte si, jak vytvořit připojení RDP s clustery Windows se
 services: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.openlocfilehash: c774e2287d0540c73cdd2234843d6766e7f2fb91
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 4f221a98adb779d32fc5567b201699672c8b90f5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95792256"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183273"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Připojení pomocí protokolu RDP ke službě Azure Kubernetes (AKS) clustery Windows serveru pro účely údržby nebo řešení potíží
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak vytvořit připojení RDP s uzlem AKS pomocí 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-V tomto článku se předpokládá, že máte existující cluster AKS s uzlem Windows serveru. Pokud potřebujete cluster AKS, přečtěte si článek o [Vytvoření clusteru AKS s kontejnerem Windows pomocí Azure CLI][aks-windows-cli]. Pro uzel Windows serveru, pro který chcete řešit potíže, budete potřebovat uživatelské jméno a heslo správce systému Windows. Pokud je neznáte, můžete je resetovat pomocí následujícího [resetování služby Vzdálená plocha nebo jejího hesla správce na virtuálním počítači s Windows ](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/reset-rdp). Potřebujete také klienta protokolu RDP, například [Vzdálená plocha Microsoft][rdp-mac].
+V tomto článku se předpokládá, že máte existující cluster AKS s uzlem Windows serveru. Pokud potřebujete cluster AKS, přečtěte si článek o [Vytvoření clusteru AKS s kontejnerem Windows pomocí Azure CLI][aks-windows-cli]. Pro uzel Windows serveru, pro který chcete řešit potíže, budete potřebovat uživatelské jméno a heslo správce systému Windows. Pokud je neznáte, můžete je resetovat pomocí následujícího [resetování služby Vzdálená plocha nebo jejího hesla správce na virtuálním počítači s Windows ](../virtual-machines/troubleshooting/reset-rdp.md). Potřebujete také klienta protokolu RDP, například [Vzdálená plocha Microsoft][rdp-mac].
 
 Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.61 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 

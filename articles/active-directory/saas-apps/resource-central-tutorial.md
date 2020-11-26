@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 0d37c4c18456518c3ecaeb34b7a0f2018191214c
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: b83a720c6d8def8966e98e39200f1abcd133c8c8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94687220"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181610"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-resource-central"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s využitím prostředků Central
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat prostředky Central pomocí Azure Acti
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k prostředkům centrálně pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -134,11 +134,9 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Přejít na adresu URL centrálního přihlašování prostředků přímo a zahájit tok přihlášení.
 
-* Můžete použít panel Microsoft Access. Po kliknutí na dlaždici centrálního zdroje na přístupovém panelu se tato akce přesměruje na adresu URL centrálního přihlašování prostředků. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít panel Microsoft Access. Po kliknutí na dlaždici centrálního zdroje na přístupovém panelu se tato akce přesměruje na adresu URL centrálního přihlašování prostředků. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování centrálního ovládání prostředků můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Po nakonfigurování centrálního ovládání prostředků můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

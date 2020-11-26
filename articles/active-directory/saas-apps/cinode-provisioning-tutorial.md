@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: Zhchia
-ms.openlocfilehash: 43b20f2b286bdadbee33555abc1a19845092c64b
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: dbed4eaabda34c1f35c21b8fe69db72c07f6d03f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357500"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180108"
 ---
 # <a name="tutorial-configure-cinode-for-automatic-user-provisioning"></a>Kurz: Konfigurace Cinode pro Automatické zřizování uživatelů
 
@@ -34,12 +34,12 @@ Tento kurz popisuje kroky, které je třeba provést v Cinode i Azure Active Dir
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a Cinode
 > * Zřizování skupin a členství ve skupinách v Cinode
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenant Azure AD](../develop/quickstart-create-new-tenant.md) 
-* Uživatelský účet ve službě Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce). 
+* Uživatelský účet ve službě Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce). 
 * Uživatelský účet v Cinode s právy správce.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Krok 1. Plánování nasazení zřizování

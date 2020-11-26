@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: 73934521cc68dc8ec2e28f29e35df833651915d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e090b4c3b4ecc3870f060aba4b03be3abe2942ec
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83996971"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180706"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Spouštění kanálů a aktivační události v Azure Data Factory
 
@@ -179,7 +179,7 @@ Kanály a triggery mají relaci m:n (s výjimkou aktivační události pro bubno
 ## <a name="schedule-trigger"></a>Aktivační událost plánovače
 Aktivační událost plánovače spouští kanály podle časového plánu. Tato aktivační událost podporuje pravidelné spouštění i rozšířené možnosti kalendáře. Tato aktivační událost podporuje například intervaly, jako „weekly“ (týdně) nebo „Monday at 5:00 PM and Thursday at 9:00 PM“ (V pondělí v 17:00 a ve čtvrtek ve 21:00). Aktivační událost plánovače je flexibilní, protože je nezávislá na vzorech datových sad a nerozlišuje mezi daty časových řad a daty bez časových řad.
 
-Další informace o aktivačních událostech plánovače a příklady najdete v tématu [Vytvoření aktivační události plánovače](how-to-create-schedule-trigger.md).
+Další informace o aktivačních událostech plánovače a příklady najdete v tématu [Vytvoření triggeru, který spouští kanál podle plánu](how-to-create-schedule-trigger.md).
 
 ## <a name="schedule-trigger-definition"></a>Definice aktivační události plánovače
 Při vytváření aktivační události plánovače určíte plánování a opakování pomocí definice JSON.
@@ -235,14 +235,14 @@ Pokud chcete, aby aktivační událost plánovače aktivovala spuštění kanál
 ### <a name="schema-overview"></a>Přehled schématu
 Následující tabulka obsahuje přehled hlavních elementů schématu souvisejících s opakováním a plánováním aktivační události:
 
-| Vlastnost JSON | Description |
+| Vlastnost JSON | Popis |
 | --- | --- |
 | **Spuštění** | Hodnota data a času. V případě základních plánů se hodnota vlastnosti **startTime** vztahuje pouze na první výskyt. U složitějších plánů aktivační událost nezačíná dřív než v čas určený hodnotou **startTime**. |
 | **endTime** | Koncové datum a čas pro aktivační událost. Aktivační událost se nebude spouštět po zadaném koncovém datu a času. Hodnota této vlastnosti nemůže být v minulosti. <!-- This property is optional. --> |
-| **Údaj** | Časové pásmo. V současné době se podporuje pouze časové pásmo UTC. |
+| **Údaj** | Časové pásmo. Seznam podporovaných časových pásem najdete v tématu [Vytvoření triggeru, který spouští kanál podle plánu](how-to-create-schedule-trigger.md#time-zone-option). |
 | **vzorec** | Objekt recurrence, který určuje pravidla opakování aktivační události. Objekt recurrence podporuje elementy **frequency** (frekvence), **interval** (interval), **endTime** (koncový čas), **count** (počet) a **schedule** (plán). Když je definovaný objekt recurrence, vyžaduje se element **frequency** (frekvence). Další elementy objektu recurrence jsou volitelné. |
 | **frequency** | Jednotka frekvence, s jakou se aktivační událost opakuje. Mezi podporované hodnoty patří „minute“ (minuta), „hour“ (hodina), „day“ (den), „week“ (týden) a „month“ (měsíc). |
-| **interval** | Kladné celé číslo označující interval pro hodnotu **frequency**. Hodnota **frequency** určuje, jak často se má aktivační událost spouštět. Pokud má například **interval** hodnotu 3 a **frequency** hodnotu „week“ (týden), aktivační událost se opakuje každé tři týdny. |
+| **doba** | Kladné celé číslo označující interval pro hodnotu **frequency**. Hodnota **frequency** určuje, jak často se má aktivační událost spouštět. Pokud má například **interval** hodnotu 3 a **frequency** hodnotu „week“ (týden), aktivační událost se opakuje každé tři týdny. |
 | **CXL** | Plán opakování pro aktivační událost. Aktivační události se zadanou hodnotou **frequency** mění své opakování na základě plánu opakování. Vlastnost **schedule** obsahuje úpravy opakování na základě minut, hodin, dní v týdnu, dní v měsíci a čísla týdne. |
 
 ### <a name="schedule-trigger-example"></a>Příklad plánování aktivační události
@@ -283,10 +283,10 @@ Následující tabulka obsahuje přehled hlavních elementů schématu souvisej�
 
 | Vlastnost JSON | Typ | Vyžadováno | Výchozí hodnota | Platné hodnoty | Příklad |
 | --- | --- | --- | --- | --- | --- |
-| **Spuštění** | řetězec | Yes | Žádné | Data a časy podle normy ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **vzorec** | object | Yes | Žádné | Objekt opakování | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | číslo | No | 1 | 1 až 1 000 | `"interval":10` |
-| **endTime** | řetězec | Yes | Žádné | Hodnota data a času představující čas v budoucnosti | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **Spuštění** | řetězec | Ano | Žádné | Data a časy podle normy ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **vzorec** | object | Ano | Žádné | Objekt opakování | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **doba** | číslo | No | 1 | 1 až 1 000 | `"interval":10` |
+| **endTime** | řetězec | Ano | Žádné | Hodnota data a času představující čas v budoucnosti | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **CXL** | object | No | Žádné | Objekt plánu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>Vlastnost startTime
@@ -314,7 +314,7 @@ Pokud je zadáno více elementů **plánu** , pořadí vyhodnocení je od nejvě
 
 Následující tabulka obsahuje podrobný popis elementů **schedule**:
 
-| Element JSON | Description | Platné hodnoty |
+| Element JSON | Popis | Platné hodnoty |
 | --- | --- | --- |
 | **minuty** | Minuty v hodině, ve kterých se aktivační událost spouští. |– Celé číslo<br />– Pole celých čísel |
 | **hodin** | Hodiny dne, ve kterých se aktivační událost spouští. |– Celé číslo<br />– Pole celých čísel |
@@ -338,7 +338,7 @@ Tato část obsahuje příklady plánů opakování. Zaměřuje se na objekt **s
 
 V příkladech se předpokládá, že hodnota **intervalu** je 1 a hodnota **frekvence** je správná podle definice plánu. Například není možné, aby vlastnost **frequency** měla hodnotu „day“ a zároveň objekt **schedule** obsahoval úpravu atributu **monthDays**. Tyto typy omezení jsou popsané v tabulce v předchozí části.
 
-| Příklad | Description |
+| Příklad | Popis |
 | --- | --- |
 | `{"hours":[5]}` | Spuštění každý den v 5:00. |
 | `{"minutes":[15], "hours":[5]}` | Spuštění každý den v 5:15. |

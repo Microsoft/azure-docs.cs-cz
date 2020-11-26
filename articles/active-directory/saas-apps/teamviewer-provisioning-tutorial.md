@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5f26746cbe88a01503c1d6c481a9a938a660c05a
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 0362f0d69581c252170b4f37f8564caa7acd3d29
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359319"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182236"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Kurz: Konfigurace TeamVieweru pro Automatické zřizování uživatelů
 
@@ -30,12 +30,12 @@ Tento kurz popisuje kroky, které je třeba provést v TeamVieweru i Azure Activ
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a TeamViewerem
 > * [Jednotné přihlašování](./teamviewer-tutorial.md) k TeamVieweru (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenant Azure AD](../develop/quickstart-create-new-tenant.md) 
-* Uživatelský účet v Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
+* Uživatelský účet v Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
 * Platná [licence tensor](https://www.teamviewer.com/de/teamviewer-tensor/) pro TeamViewer.
 * Platný vlastní identifikátor z dostupné konfigurace [jednotného přihlašování](https://community.teamviewer.com/t5/Knowledge-Base/Single-Sign-On-with-Azure-Active-Directory/ta-p/60209#toc-hId--473669723) .
 

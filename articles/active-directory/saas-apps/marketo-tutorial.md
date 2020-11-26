@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/04/2020
 ms.author: jeedes
-ms.openlocfilehash: fc98201ac97409edd9be8522532728d7bb9b15af
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bd62855aef59439ed476a13770f79ce6d3cf68f8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021397"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180791"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-marketo"></a>Kurz: Azure Active Directory integrace se službou Marketo
 
@@ -27,7 +27,7 @@ Integrování Marketo se službou Azure AD poskytuje následující výhody:
 * Uživatelům můžete povolit, aby se automaticky přihlásili ke službě Marketo (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD se službou Marketo potřebujete následující položky:
 
@@ -239,9 +239,8 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 1. Klikněte na testovat tuto aplikaci v Azure Portal a měli byste se automaticky přihlášeni ke službě Marketo, pro kterou jste si nastavili jednotné přihlašování.
 
-1. Můžete použít panel Microsoft Access. Když kliknete na dlaždici Marketo na přístupovém panelu, měli byste se automaticky přihlásit ke službě Marketo, pro kterou jste si nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+1. Můžete použít panel Microsoft Access. Když kliknete na dlaždici Marketo na přístupovém panelu, měli byste se automaticky přihlásit ke službě Marketo, pro kterou jste si nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po konfiguraci služby Marketo můžete vyhovět řízení relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
+Po konfiguraci služby Marketo můžete vyhovět řízení relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

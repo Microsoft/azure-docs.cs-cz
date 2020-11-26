@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: fe347983e2143c7a4bdf00ca0207356c881c66ac
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 72d7a40c38f3629a70260f223074b456dff9ce38
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95891278"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182831"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Microsoft Azure ověření identity
 
@@ -95,7 +95,7 @@ b. Ověření nastavení přiřazení role Azure
  
   ```
 
-c. Pokud v seznamu nenajdete odpovídající přiřazení role, postupujte podle pokynů v [tomto tématu](/azure/role-based-access-control/role-assignments-powershell) .
+c. Pokud v seznamu nenajdete odpovídající přiřazení role, postupujte podle pokynů v [tomto tématu](../role-based-access-control/role-assignments-powershell.md) .
 
 ## <a name="2-http--400-errors"></a>2. chyby HTTP – 400
 
@@ -123,7 +123,7 @@ G:\Az\security\Attestation\src\AttestationServices\Instance\Enclave\api.cpp(840)
 
 Odešlete požadavek na ověření identity rozhraní API zadáním textu zásad v parametru "draftPolicyForAttestation". Rozhraní AttestSgxEnclave API bude používat tento dokument zásad během volání ověřování identity. to se dá použít k otestování zásad ověření identity dřív, než se spotřebují. Token ověření identity vygenerovaný v případě, že toto pole je k dispozici, bude nezabezpečený.
 
-Viz [Příklady zásad ověřování identity](/azure/attestation/policy-examples) .
+Viz [Příklady zásad ověřování identity](./policy-examples.md) .
 
 ### <a name="22-attestation-failure-due-to-invalid-input"></a>2.2. Selhání ověření identity z důvodu neplatného vstupu
 
@@ -163,7 +163,7 @@ Zajistěte, aby bylo rozšíření základní omezení kořenového certifikátu
 
 V opačném případě se řetěz certifikátů považuje za neplatný.
 
-Viz příklady [přihlášení k zásadám](/azure/attestation/policy-signer-examples) a [zásady](/azure/attestation/policy-examples) 
+Viz příklady [přihlášení k zásadám](./policy-signer-examples.md) a [zásady](./policy-examples.md) 
 
 ### <a name="24-adddelete-policy-signer-failure"></a>2.4. Přidat nebo odstranit chybu přihlášení k zásadám
 
@@ -209,7 +209,7 @@ At line:1 char:1
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Attestation.AddAzureAttestationPolicySigner
 ```
 
-**Postup řešení potíží** Chcete-li přidat nebo odstranit nový certifikát podepsané zásady, použijte RFC7519 JSON Web Token (JWT) s deklarací identity s názvem "x-MS-policyCertificate". Hodnota deklarace identity je RFC7517 webový klíč JSON, který obsahuje certifikát, který chcete přidat. Token JWT musí být podepsán pomocí privátního klíče jakéhokoli platného certifikátu podepsaného zásad přidruženým k poskytovateli. Viz [Příklady odhlašování zásad](/azure/attestation/policy-signer-examples).
+**Postup řešení potíží** Chcete-li přidat nebo odstranit nový certifikát podepsané zásady, použijte RFC7519 JSON Web Token (JWT) s deklarací identity s názvem "x-MS-policyCertificate". Hodnota deklarace identity je RFC7517 webový klíč JSON, který obsahuje certifikát, který chcete přidat. Token JWT musí být podepsán pomocí privátního klíče jakéhokoli platného certifikátu podepsaného zásad přidruženým k poskytovateli. Viz [Příklady odhlašování zásad](./policy-signer-examples.md).
 
 ### <a name="25-attestation-policy-configuration-failure"></a>2.5. Chyba konfigurace zásad ověření identity
 
@@ -255,7 +255,7 @@ Pokud chcete nakonfigurovat zásadu v textovém formátu, určete přímo text z
 
 V PowerShellu zadejte PolicyFormat jako JWT ke konfiguraci zásad ve formátu JWT. Výchozí formát zásad je text.
 
-Viz [Příklady zásad](/azure/attestation/policy-examples) ověřování identity a [vytváření zásad ověření identity](/azure/attestation/author-sign-policy) . 
+Viz [Příklady zásad](./policy-examples.md) ověřování identity a [vytváření zásad ověření identity](./author-sign-policy.md) . 
 
 ## <a name="3-azattestation-installation-issues-in-powershell"></a>3. AZ. Attestation instalace ověření identity v PowerShellu
 
@@ -301,4 +301,3 @@ Get-InstalledModule
 Pokud se verze neshodují s minimálním požadavkem, spusťte příkazy Update-Module
 
 například-Update-Module-Name AZ. Attestation
-

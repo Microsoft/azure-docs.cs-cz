@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 3413e594179cdca0704cb5db7908276b7502e719
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5ba81c7a3da6747b0fee8a05e359181e86e4a19d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004751"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181519"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s ServiceNow
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat ServiceNow s Azure Active Directory (A
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k ServiceNow svým účtům Azure AD.
 * Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -478,5 +478,4 @@ Když na přístupovém panelu vyberete dlaždici ServiceNow, měli byste se aut
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování ServiceNow můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace se rozšíří z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
-
+Po nakonfigurování ServiceNow můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace se rozšíří z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)

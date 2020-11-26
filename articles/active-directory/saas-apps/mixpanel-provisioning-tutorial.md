@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/24/2020
 ms.author: Zhchia
-ms.openlocfilehash: e70ee06d696539f0b41c0a070f6f5b43391fda52
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ab261d4ca04fed04c8a3e1046c0a4c563767ad4c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357146"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181998"
 ---
 # <a name="tutorial-configure-mixpanel-for-automatic-user-provisioning"></a>Kurz: Konfigurace Mixpanelu pro Automatické zřizování uživatelů
 
@@ -31,11 +31,11 @@ Tento kurz popisuje kroky, které je třeba provést v Mixpanelu i Azure Active 
 > * Zřizování skupin a členství ve skupinách v Mixpanelu
 > * [Jednotné přihlašování](./mixpanel-tutorial.md) k mixpanelu (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 * [Tenant Azure AD](../develop/quickstart-create-new-tenant.md) 
-* Uživatelský účet v Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
+* Uživatelský účet v Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
 * Organizace mixpanelu na podnikové úrovni
 * Účet mixpanelu s oprávněními správce u dané organizace
 * Jednotné přihlašování je povolené v rámci mixpanelu s nahlášenou doménou.

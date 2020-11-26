@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/16/2020
 ms.custom: subject-armqs, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: c8542bfe3d1393917a63e4a1feae7d6dfc223031
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 5be4cea7d8ddb00a4c8a22a696dbdce1c062765c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746177"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183018"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Rychlý Start: Vytvoření aplikace App Service pomocí šablony ARM
 
@@ -21,7 +21,7 @@ Začněte s [Azure App Service](overview.md) nasazením aplikace do cloudu pomoc
 
  [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 K nasazení na **Linux** použijte následující tlačítko:
 
@@ -51,12 +51,12 @@ Tato šablona obsahuje několik parametrů, které jsou předdefinované pro va�
 
 | Parametry | Typ    | Výchozí hodnota                | Popis |
 |------------|---------|------------------------------|-------------|
-| webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Název aplikace |
-| location   | string  | "[[resourceName (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Oblast aplikace |
-| skladové        | string  | Kláves                         | Velikost instance (F1 = Free úrovně) |
-| language   | string  | platformy                       | Sada programovacích jazyků (.NET, php, Node, HTML) |
-| Hell | boolean | Nepravda                        | True = nasadit aplikaci Hello World |
-| relijte    | string  | " "                          | Externí úložiště Git (volitelné) |
+| webAppName | řetězec  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Název aplikace |
+| location   | řetězec  | "[[resourceName (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Oblast aplikace |
+| skladové        | řetězec  | Kláves                         | Velikost instance (F1 = Free úrovně) |
+| language   | řetězec  | platformy                       | Sada programovacích jazyků (.NET, php, Node, HTML) |
+| Hell | boolean | Ne                        | True = nasadit aplikaci Hello World |
+| relijte    | řetězec  | " "                          | Externí úložiště Git (volitelné) |
 ::: zone-end
 ::: zone pivot="platform-linux"
 Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-app-service-docs-linux). Nasadí App Service plán a App Service aplikaci v systému Linux. Je kompatibilní se všemi podporovanými programovacími jazyky na App Service.
@@ -72,11 +72,11 @@ Tato šablona obsahuje několik parametrů, které jsou předdefinované pro va�
 
 | Parametry | Typ    | Výchozí hodnota                | Popis |
 |------------|---------|------------------------------|-------------|
-| webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Název aplikace |
-| location   | string  | "[[resourceName (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Oblast aplikace |
-| skladové        | string  | Kláves                         | Velikost instance (F1 = Free úrovně) |
-| linuxFxVersion   | string  | "DOTNETCORE&#124;3,0        | "&#124; verze zásobníku programovacího jazyka" |
-| relijte    | string  | " "                          | Externí úložiště Git (volitelné) |
+| webAppName | řetězec  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Název aplikace |
+| location   | řetězec  | "[[resourceName (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Oblast aplikace |
+| skladové        | řetězec  | Kláves                         | Velikost instance (F1 = Free úrovně) |
+| linuxFxVersion   | řetězec  | "DOTNETCORE&#124;3,0        | "&#124; verze zásobníku programovacího jazyka" |
+| relijte    | řetězec  | " "                          | Externí úložiště Git (volitelné) |
 
 ---
 ::: zone-end
@@ -145,7 +145,7 @@ Pokud už je nepotřebujete, [odstraňte skupinu prostředků](../azure-resource
 > [PHP s MySQL](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
-> [Připojení ke službě Azure SQL Database pomocí jazyka Java](../azure-sql/database/connect-query-java.md?toc=%252fazure%252fjava%252ftoc.json)
+> [Připojení ke službě Azure SQL Database pomocí jazyka Java](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
 
 > [!div class="nextstepaction"]
 > [Mapování vlastní domény](app-service-web-tutorial-custom-domain.md)

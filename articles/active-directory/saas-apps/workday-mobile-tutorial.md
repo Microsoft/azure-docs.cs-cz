@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: e706649957bf427cd577d7995fb9ce104c687f4b
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: ef1ca41f54a15554a04fa3edf608bb13f5fb3398
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378988"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182015"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday-mobile-application"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s mobilní aplikací v Workday
 
@@ -33,13 +33,13 @@ V tomto kurzu se naučíte, jak integrovat Azure Active Directory (Azure AD), po
 Jak začít:
 
 * Integrujte Workday s Azure AD.
-* Přečtěte si [Azure Active Directory integraci jednotného přihlašování s Workday](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-tutorial).
+* Přečtěte si [Azure Active Directory integraci jednotného přihlašování s Workday](./workday-tutorial.md).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete zásady podmíněného přístupu Azure AD a Intune s mobilní aplikací v Workday.
 
-Pokud chcete povolit jednotné přihlašování (SSO), můžete pro Azure AD nakonfigurovat federované aplikace Workday. Další informace najdete v tématu věnovaném [Azure Active Directory integraci jednotného přihlašování s Workday](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-tutorial).
+Pokud chcete povolit jednotné přihlašování (SSO), můžete pro Azure AD nakonfigurovat federované aplikace Workday. Další informace najdete v tématu věnovaném [Azure Active Directory integraci jednotného přihlašování s Workday](./workday-tutorial.md).
 
 > [!NOTE] 
 > Pracovní den nepodporuje zásady ochrany aplikací Intune. K použití podmíněného přístupu musíte použít správu mobilních zařízení.
@@ -86,7 +86,7 @@ Pokud chcete nastavit Workday jako spravované zařízení, proveďte následuj�
 
 1. **Jenom na spravovaných zařízeních** v části **název** vyberte **jenom spravovaná zařízení** a pak vyberte **cloudové aplikace nebo akce**.
 
-1. V **cloudových aplikacích nebo akcích** :
+1. V **cloudových aplikacích nebo akcích**:
 
     a. Přepínač **Vyberte, pro který tyto zásady platí** pro **cloudové aplikace**.
 
@@ -108,7 +108,7 @@ Pro **udělení** přístupu proveďte následující kroky:
 
 1. Jenom na **spravovaných zařízeních** v části **název** vyberte **jenom spravovaná zařízení**. V části **Ovládací prvky přístupu** zvolte **Udělení**.
 
-1. V **udělení** :
+1. V **udělení**:
 
     a. Vyberte ovládací prvky, které se mají vykonat jako **udělení přístupu**.
 
@@ -168,7 +168,7 @@ Abyste zajistili, že se zařízení s iOS můžou přihlásit jenom prostředni
     </dict>
 
     ```
-1. Vyberte **Add** (Přidat).
+1. Vyberte **Přidat**.
 1. Aktualizujte stránku a vyberte nově vytvořenou zásadu.
 1. Vyberte **přiřazení** a zvolte, na koho se má aplikace vztahovat.
 1. Vyberte **Uložit**.
@@ -182,4 +182,3 @@ Abyste zajistili, že se zařízení s iOS můžou přihlásit jenom prostředni
 6. V části **platforma** vyberte **Android**.
 7. V části **přidružená aplikace** vyberte aplikaci v Workday pro Android, kterou jste přidali.
 8. Vyberte **nastavení konfigurace**. V části **formát nastavení konfigurace** vyberte **zadat data JSON**.
-

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 26424106098a8385faff5ab6d3de33d98576ef4e
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: a7f4682be2f7fbf308aba32768efa932f27b7a87
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381299"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181689"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-roadmunk"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Roadmunk
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Roadmunk s Azure Active Directory (Azu
 * Umožněte uživatelům, aby se do Roadmunk automaticky přihlásili pomocí svých účtů Azure AD.
 * Spravujte své účty na jednom centrálním místě, Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -171,12 +171,10 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 V této části otestujete konfiguraci služby Azure AD SSO pomocí přístupového panelu.
 
-Když na portálu moje aplikace vyberete dlaždici **Roadmunk** , měli byste se automaticky přihlásit k účtu Roadmunk, pro který jste nastavili jednotné přihlašování. Další informace najdete v tématu [přihlášení a spouštění aplikací na portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
+Když na portálu moje aplikace vyberete dlaždici **Roadmunk** , měli byste se automaticky přihlásit k účtu Roadmunk, pro který jste nastavili jednotné přihlašování. Další informace najdete v tématu [přihlášení a spouštění aplikací na portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 Po nakonfigurování Roadmunk můžete vynutili řízení relace. Řízení relace chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. 
 
-Přečtěte si, jak [vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Přečtěte si, jak [vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

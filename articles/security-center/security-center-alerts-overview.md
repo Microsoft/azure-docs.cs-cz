@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: 7f5f920f14a556d63f433b36658d7b265d51a28d
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 033f06aa61baf04b5c74fbbe9cc8f925d5d4e3d3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340372"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182304"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Výstrahy zabezpečení ve službě Azure Security Center
 
@@ -25,7 +25,7 @@ Výstrahy zabezpečení se spouštějí pomocí pokročilých detekcí a jsou do
 
 ## <a name="respond-to-todays-threats"></a>Reakce na dnešní hrozby <a name="respond-threats"> </a>
 
-Za posledních 20 let došlo ve světě hrozeb k významným změnám. V minulosti se společnosti obvykle musely zabývat pouze tím, že se týká jenom individuálních útočníků, kteří byli většinou zájem, aby viděli "co můžou dělat". Dnešní útočníci jsou mnohem sofistikovanější a organizované. Často mají konkrétní finanční a strategické cíle. Mají také k dispozici větší zdroje, protože mohou být financováni státy nebo organizovanou trestnou činností.
+Za posledních 20 let došlo ve světě hrozeb k významným změnám. V minulosti se společnosti obvykle musely zabývat pouze tím, že se týká jenom individuálních útočníků, kteří byli většinou zájem, aby viděli "co můžou dělat". Dnešní útočníci jsou mnohem sofistikovanější a organizované. Často mají konkrétní finanční a strategické cíle. Mají také k dispozici více prostředků, protože mohou být financovány státy nebo organizovanou trestnou činností.
 
 Tyto změny v realitách vedly k navýšení nebývalého profesionálního postavení v útočníkovi. Již je nezajímá pouhé poškození vzhledu webu. Nyní mají zájem ukrást informace, finanční účty a soukromá data – to vše, co můžou využít ke generování hotovosti na otevřeném trhu nebo k využití konkrétní obchodní, politické nebo vojenské pozice. Ještě znepokojivější než útočníci s finančními cíli jsou útočníci, kteří pronikají do sítí s cílem poškodit infrastrukturu a lidi.
 
@@ -67,12 +67,12 @@ Security Center přiřadí závažnosti výstrahám, které vám pomůžou urči
 > Závažnost výstrahy se na portálu a ve verzích REST API, které předchází 01-01-2019, zobrazuje jinak. Pokud používáte starší verzi rozhraní API, upgradujte na konzistentní prostředí popsané níže.
 
 - **Vysoká:** Existuje vysoká pravděpodobnost, že dojde k ohrožení zabezpečení prostředku. Měli byste se podívat hned. Security Center má vysokou důvěru v škodlivém záměru i ve zjištěních použitých k vystavení výstrahy. Například výstraha, která detekuje spuštění známého škodlivého nástroje, jako je například Mimikatz, společný nástroj používaný ke krádeži přihlašovacích údajů.
-- **Střední:** Je pravděpodobné, že podezřelá aktivita může znamenat, že došlo k ohrožení zabezpečení prostředku.
+- **Střední:** Je pravděpodobné, že podezřelá aktivita může znamenat, že dojde k ohrožení bezpečnosti prostředku.
 Při analýze nebo hledání je jistota Security Center střední a důvěra škodlivého záměru je střední až vysoká. Obvykle se jedná o strojové učení nebo detekci na základě anomálií. Například pokus o přihlášení z umístění neobvyklé.
 - **Nízká úroveň:** Může se jednat o neškodný pozitivní nebo blokovaný útok.
-   * Security Center není dostatečně jistý, že záměr je škodlivý a aktivita může být Innocent. Například vymazání protokolu je akce, ke které může dojít, když se útočník pokusí skrýt jejich stopy, ale v mnoha případech je rutinní operací prováděná správci.
+   * Security Center není dostatečně jistý, že záměr je škodlivý a aktivita může být Innocent. Například vymazání protokolu je akce, která může nastat, když se útočník pokusí skrýt jejich stopy, ale v mnoha případech je rutina prováděná správci.
    * Security Center vám většinou neřekne při zablokování útoků, pokud se nejedná o zajímavý případ, který doporučujeme najít. 
-- **Informační:** Informační výstrahy se zobrazí jenom v případě, že přejdete k incidentu zabezpečení, nebo pokud použijete REST API s konkrétním ID výstrahy. Incident se většinou skládá z několika výstrah. některé z nich se můžou zobrazovat jenom s informacemi, ale v kontextu dalších výstrah se můžou důvěryhodného o bližším vzhledu. 
+- **Informační:** Informační výstrahy se zobrazí jenom v případě, že přejdete k incidentu zabezpečení, nebo pokud použijete REST API s konkrétním ID výstrahy. Incident se většinou skládá z řady výstrah. některé z nich se můžou zobrazovat jenom s informacemi, ale v kontextu dalších výstrah se můžou důvěryhodného o bližším vzhledu. 
 
 ## <a name="continuous-monitoring-and-assessments"></a>Průběžné monitorování a posouzení
 
@@ -96,6 +96,6 @@ Máte řadu možností, jak zobrazit výstrahy mimo Security Center, včetně t�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o různých typech výstrah, které jsou k dispozici v Security Center. Další informace naleznete v tématech:
+V tomto článku jste se dozvěděli o různých typech výstrah, které jsou k dispozici v Security Center. Další informace najdete tady:
 
 - **Výstrahy zabezpečení v protokolu aktivit Azure** – navíc k dispozici v Azure Portal nebo programově se výstrahy a incidenty zabezpečení auditují jako události v [protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log). Další informace o schématu událostí najdete v tématu [výstrahy zabezpečení v protokolu aktivit Azure](https://go.microsoft.com/fwlink/?linkid=2114113) .

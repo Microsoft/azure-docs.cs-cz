@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 99fe2f8356b53b5d8e459dbf62534ddb4f0019b2
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: a09594d1bc6037f252ba71855ae302208b4980d4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357262"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182211"
 ---
 # <a name="tutorial-configure-tic-tac-mobile-for-automatic-user-provisioning"></a>Kurz: Konfigurace Tic-Tac Mobile pro Automatické zřizování uživatelů
 
-Tento kurz popisuje kroky, které je třeba provést v Tic-Tac Mobile i Azure Active Directory (Azure AD) ke konfiguraci automatického zřizování uživatelů. Po nakonfigurování Azure AD automaticky zřídí a odhodnotí uživatele a skupiny s využitím služby Azure AD Provisioning v rámci služby [Tic-Tac Mobile](https://www.tictacmobile.com/) . Informace o tom, jak tato služba funguje, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro aplikace SaaS (software jako služba) s Azure AD](../manage-apps/user-provisioning.md).
+Tento kurz popisuje kroky, které je třeba provést v Tic-Tac Mobile i Azure Active Directory (Azure AD) ke konfiguraci automatického zřizování uživatelů. Po nakonfigurování Azure AD automaticky zřídí a odhodnotí uživatele a skupiny s využitím služby Azure AD Provisioning v rámci služby [Tic-Tac Mobile](https://www.tictacmobile.com/) . Informace o tom, jak tato služba funguje, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro aplikace SaaS (software jako služba) s Azure AD](../app-provisioning/user-provisioning.md).
 
 
 ## <a name="capabilities-supported"></a>Podporované funkce
@@ -34,20 +34,20 @@ Tento kurz popisuje kroky, které je třeba provést v Tic-Tac Mobile i Azure Ac
 > * Odeberte uživatele v Tic-Tac Mobile, když už nevyžadují přístup.
 > * Udržujte atributy uživatelů synchronizované mezi Azure AD a Tic-Tac Mobile.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
-* [Tenanta Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)
-* Uživatelský účet ve službě Azure AD s [oprávněním](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) ke konfiguraci zřizování. Příkladem může být správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce.
+* [Tenanta Azure AD](../develop/quickstart-create-new-tenant.md)
+* Uživatelský účet ve službě Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování. Příkladem může být správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce.
 * [Mobilní účet Tic-Tac](https://www.tictacmobile.com/) s rolí správce super.
 
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Krok 1. Plánování nasazení zřizování
 
-1. Seznamte se s [fungováním služby zřizování](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
-1. Zjistěte, kdo bude v [rozsahu zřizování](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
-1. Určete, jaká data se mají [mapovat mezi Azure AD a Tic-Tac Mobile](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).
+1. Seznamte se s [fungováním služby zřizování](../app-provisioning/user-provisioning.md).
+1. Zjistěte, kdo bude v [rozsahu zřizování](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+1. Určete, jaká data se mají [mapovat mezi Azure AD a Tic-Tac Mobile](../app-provisioning/customize-application-attributes.md).
 
 ## <a name="step-2-configure-tic-tac-mobile-to-support-provisioning-with-azure-ad"></a>Krok 2. Konfigurace Tic-Tac Mobile na podporu zřizování s Azure AD
 
@@ -55,14 +55,14 @@ Kontaktujte support@tictacmobile.com pro získání **adresy URL tenanta** a **t
 
 ## <a name="step-3-add-tic-tac-mobile-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání Tic-Tac mobilní aplikace z Galerie aplikací Azure AD
 
-Přidejte Tic-Tac mobilní zařízení z Galerie aplikací Azure AD a začněte spravovat zřizování pro Tic-Tac Mobile. Pokud jste dříve nastavili Tic-Tac Mobile pro jednotné přihlašování, můžete použít stejnou aplikaci. Když nejprve otestujete integraci, vytvořte samostatnou aplikaci. Další informace o tom, jak přidat aplikaci z Galerie, najdete v tématu [zřizování aplikace založené na atributech s filtry oborů](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app).
+Přidejte Tic-Tac mobilní zařízení z Galerie aplikací Azure AD a začněte spravovat zřizování pro Tic-Tac Mobile. Pokud jste dříve nastavili Tic-Tac Mobile pro jednotné přihlašování, můžete použít stejnou aplikaci. Když nejprve otestujete integraci, vytvořte samostatnou aplikaci. Další informace o tom, jak přidat aplikaci z Galerie, najdete v tématu [zřizování aplikace založené na atributech s filtry oborů](../manage-apps/add-application-portal.md).
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Krok 4: Definování uživatelů, kteří budou v rozsahu zřizování
 
-Pomocí služby Azure AD Provisioning můžete nastavit obor, který se zřídí v závislosti na přiřazení aplikace, nebo na základě atributů uživatele nebo skupiny. Pokud se rozhodnete určit rozsah, který se bude zřizovat pro vaši aplikaci na základě přiřazení, postupujte podle kroků v části [Správa přiřazení uživatelů pro aplikaci v Azure Active Directory](../manage-apps/assign-user-or-group-access-portal.md) k přiřazení uživatelů a skupin k aplikaci. Pokud se rozhodnete obor, který se zřídí výhradně na základě atributů uživatele nebo skupiny, použijte filtr oboru, jak je popsáno v tématu [zřizování aplikací založené na atributech s filtry oborů](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+Pomocí služby Azure AD Provisioning můžete nastavit obor, který se zřídí v závislosti na přiřazení aplikace, nebo na základě atributů uživatele nebo skupiny. Pokud se rozhodnete určit rozsah, který se bude zřizovat pro vaši aplikaci na základě přiřazení, postupujte podle kroků v části [Správa přiřazení uživatelů pro aplikaci v Azure Active Directory](../manage-apps/assign-user-or-group-access-portal.md) k přiřazení uživatelů a skupin k aplikaci. Pokud se rozhodnete obor, který se zřídí výhradně na základě atributů uživatele nebo skupiny, použijte filtr oboru, jak je popsáno v tématu [zřizování aplikací založené na atributech s filtry oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-* Když přiřadíte uživatele a skupiny k Tic-Tac mobilní, musíte vybrat jinou roli než **výchozí přístup**. Uživatelé s výchozí rolí přístupu se z zřizování vylučují a v protokolech zřizování se označí jako neefektivně. Pokud je jedinou rolí dostupnou v aplikaci výchozí role přístupu, můžete [aktualizovat manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) a přidat tak další role.
-* Začněte v malém. Před zavedením všech uživatelů proveďte test pomocí malé sady uživatelů a skupin. Pokud je obor pro zřizování nastavený na přiřazené uživatele a skupiny, můžete spravovat řízení přiřazením jednoho nebo dvou uživatelů nebo skupin k aplikaci. Pokud je obor nastaven na všechny uživatele a skupiny, můžete zadat [Filtr oboru založený na atributech](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+* Když přiřadíte uživatele a skupiny k Tic-Tac mobilní, musíte vybrat jinou roli než **výchozí přístup**. Uživatelé s výchozí rolí přístupu se z zřizování vylučují a v protokolech zřizování se označí jako neefektivně. Pokud je jedinou rolí dostupnou v aplikaci výchozí role přístupu, můžete [aktualizovat manifest aplikace](../develop/howto-add-app-roles-in-azure-ad-apps.md) a přidat tak další role.
+* Začněte v malém. Před zavedením všech uživatelů proveďte test pomocí malé sady uživatelů a skupin. Pokud je obor pro zřizování nastavený na přiřazené uživatele a skupiny, můžete spravovat řízení přiřazením jednoho nebo dvou uživatelů nebo skupin k aplikaci. Pokud je obor nastaven na všechny uživatele a skupiny, můžete zadat [Filtr oboru založený na atributech](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-tic-tac-mobile"></a>Krok 5. Konfigurace automatického zřizování uživatelů pro Tic-Tac Mobile
 
@@ -98,7 +98,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 1. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatele a Tic-Tac mobilní zařízení**.
 
-1. Zkontrolujte atributy uživatelů synchronizované z Azure AD a Tic-Tac Mobile v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Tic-Tac Mobile pro operace aktualizace. Pokud změníte [odpovídající cílový atribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), je nutné zajistit, aby Tic-Tac mobilní rozhraní API podporovalo filtrování uživatelů na základě tohoto atributu. Kliknutím na tlačítko **Uložit** potvrďte změny.
+1. Zkontrolujte atributy uživatelů synchronizované z Azure AD a Tic-Tac Mobile v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Tic-Tac Mobile pro operace aktualizace. Pokud změníte [odpovídající cílový atribut](../app-provisioning/customize-application-attributes.md), je nutné zajistit, aby Tic-Tac mobilní rozhraní API podporovalo filtrování uživatelů na základě tohoto atributu. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
    |Atribut|Typ|
    |---|---|
@@ -119,7 +119,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: divize|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
 
-1. Pokud chcete nakonfigurovat filtry oborů, přečtěte si pokyny v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+1. Pokud chcete nakonfigurovat filtry oborů, přečtěte si pokyny v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 1. Pokud chcete povolit službu Azure AD Provisioning pro Tic-Tac Mobile, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
@@ -139,15 +139,15 @@ Tato operace zahájí cyklus počáteční synchronizace všech uživatelů a sk
 
 Po nakonfigurování zřizování použijte následující prostředky k monitorování vašeho nasazení.
 
-1. Pomocí [protokolů zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) určete, kteří uživatelé se úspěšně zřídili nebo neúspěšně zřídili.
-1. Zkontrolujte indikátor [průběhu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) a zobrazte stav cyklu zřizování a způsob, jakým se má dokončit.
-1. Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [v tématu zřizování aplikací ve stavu karantény](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+1. Pomocí [protokolů zřizování](../reports-monitoring/concept-provisioning-logs.md) určete, kteří uživatelé se úspěšně zřídili nebo neúspěšně zřídili.
+1. Zkontrolujte indikátor [průběhu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) a zobrazte stav cyklu zřizování a způsob, jakým se má dokončit.
+1. Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [v tématu zřizování aplikací ve stavu karantény](../app-provisioning/application-provisioning-quarantine-status.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací
 
-* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../manage-apps/check-status-user-account-provisioning.md).
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).

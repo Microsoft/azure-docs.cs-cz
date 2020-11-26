@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/27/2020
 ms.author: jeedes
-ms.openlocfilehash: b8538031570d201e57186930b713816821848bc1
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 29ffaaa1b1b6efbcd5523a76018c92645e13d187
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135201"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181788"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-perimeterx"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s PerimeterX
 
@@ -46,15 +46,15 @@ Pokud chcete nakonfigurovat integraci PerimeterX do služby Azure AD, musíte p�
 
 1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace** .
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **PerimeterX** .
 1. Na panelu výsledků vyberte **PerimeterX** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
 ## <a name="configure-and-test-azure-ad-sso-for-perimeterx"></a>Konfigurace a testování jednotného přihlašování Azure AD pro PerimeterX
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí PerimeterX pomocí testovacího uživatele s názvem **B. Simon** . Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v PerimeterX.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí PerimeterX pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v PerimeterX.
 
 K nakonfigurování a testování jednotného přihlašování Azure AD pomocí PerimeterX postupujte takto:
 
@@ -69,8 +69,8 @@ K nakonfigurování a testování jednotného přihlašování Azure AD pomocí 
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V Azure Portal na stránce integrace aplikací **PerimeterX** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování** .
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** .
+1. V Azure Portal na stránce integrace aplikací **PerimeterX** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
@@ -84,7 +84,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace PerimeterX několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ------------ | --------- |
     | firstName | User. křestní jméno |
     | lastName  | User. příjmení |
@@ -100,21 +100,21 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit** .
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k PerimeterX.
 
-1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** .
-1. V seznamu aplikace vyberte **PerimeterX** .
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny** .
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **PerimeterX**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
@@ -136,7 +136,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     a.  Zaškrtněte **Povolit jednu Sign-On (SSO)** .
 
-    b.  Vyberte **Azure SAML** .
+    b.  Vyberte **Azure SAML**.
 
     c.  Do textového pole **koncového bodu SAML** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali Azure Portal.
 
@@ -156,11 +156,9 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 1. Klikněte na testovat tuto aplikaci v Azure Portal a měli byste se automaticky přihlášeni k PerimeterX, pro které jste nastavili jednotné přihlašování.
 
-1. Můžete použít panel Microsoft Access. Když na přístupovém panelu kliknete na dlaždici PerimeterX, měli byste se automaticky přihlásit k PerimeterX, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+1. Můžete použít panel Microsoft Access. Když na přístupovém panelu kliknete na dlaždici PerimeterX, měli byste se automaticky přihlásit k PerimeterX, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování PerimeterX můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Po nakonfigurování PerimeterX můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

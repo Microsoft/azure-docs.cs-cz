@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: cee9544dbc2deecafa67d73d3bdea804937c1d7a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 691d35267c255c933a8098b99301fbb795a3cd0c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005108"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181063"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Kurz: Konfigurace Atlassian cloudu pro Automatické zřizování uživatelů
 
@@ -31,12 +31,12 @@ Cílem tohoto kurzu je předvést kroky, které je třeba provést v Atlassian c
 > * Zřizování skupin a členství ve skupinách v Atlassian cloudu
 > * [Jednotné přihlašování](./atlassian-cloud-tutorial.md) do Atlassian cloudu (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenanta Azure AD](../develop/quickstart-create-new-tenant.md)
-* Uživatelský účet v Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce)
+* Uživatelský účet v Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce)
 * [Cloudový tenant Atlassian](https://www.atlassian.com/licensing/cloud)
 * Uživatelský účet v cloudu Atlassian s oprávněními správce.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.author: jeedes
-ms.openlocfilehash: aa8b3f9bc81733ded05e858bcb0fb50b7f487db4
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: bad1ccc99575b788e1bb5ea541c6b6690ead6eca
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428840"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180978"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coupa-risk-assess"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s posouzením rizik Coupa
 
@@ -78,23 +78,23 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
  
-    * Pro **přípravu** : `https://<STAGING ENTITY>.hiperos.com/sp/<CUSTOMERIDENTIFIER>.login`
+    * Pro **přípravu**: `https://<STAGING ENTITY>.hiperos.com/sp/<CUSTOMERIDENTIFIER>.login`
 
-    * Pro **prod** : `https://<PROD ENTITY>.hiperos.com/sp/<CUSTOMERIDENTIFIER>.login`
+    * Pro **prod**: `https://<PROD ENTITY>.hiperos.com/sp/<CUSTOMERIDENTIFIER>.login`
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
  
-    * Pro **přípravu** : `https://<STAGING ENTITY>.hiperos.com/sp/<CUSTOMERIDENTIFIER>.login`
+    * Pro **přípravu**: `https://<STAGING ENTITY>.hiperos.com/sp/<CUSTOMERIDENTIFIER>.login`
 
-    * Pro **prod** : `https://<PROD ENTITY>.hiperos.com/sp/<CUSTOMERIDENTIFIER>.login`
+    * Pro **prod**: `https://<PROD ENTITY>.hiperos.com/sp/<CUSTOMERIDENTIFIER>.login`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
 
-    * Pro **přípravu** : `https://<STAGING ENTITY>.hiperos.com/sp/<CUSTOMERIDENTIFIER>.login`
+    * Pro **přípravu**: `https://<STAGING ENTITY>.hiperos.com/sp/<CUSTOMERIDENTIFIER>.login`
 
-    * Pro **prod** : `https://<PROD ENTITY>.hiperos.com/sp/<CUSTOMERIDENTIFIER>.login`
+    * Pro **prod**: `https://<PROD ENTITY>.hiperos.com/sp/<CUSTOMERIDENTIFIER>.login`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Chcete-li získat tyto hodnoty, obraťte se na [Coupa rizika vyhodnocení týmu podpory pro klienty](mailto:rasupport@coupa.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -110,7 +110,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
@@ -152,10 +152,8 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k vyhodnocení rizik Coupa, pro které jste nastavili jednotné přihlašování. 
 
-K otestování aplikace v jakémkoli režimu můžete také použít panel Microsoft Access. Když kliknete na dlaždici posouzení rizik Coupa na přístupovém panelu, pokud se nakonfiguruje v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k vyhodnocení rizika Coupa, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+K otestování aplikace v jakémkoli režimu můžete také použít panel Microsoft Access. Když kliknete na dlaždici posouzení rizik Coupa na přístupovém panelu, pokud se nakonfiguruje v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k vyhodnocení rizika Coupa, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile nakonfigurujete posouzení rizik Coupa, můžete vyhovět řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Jakmile nakonfigurujete posouzení rizik Coupa, můžete vyhovět řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

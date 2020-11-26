@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 88481346f22176b8e307b53774b42d753838f90b
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 5179a619b1adba432910605c75fae0789efd3397
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554817"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182669"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace ASP.NET Core
 
@@ -20,7 +20,7 @@ V tomto rychlém startu vytvoříte ucelenou implementaci správy funkcí v apli
 
 Knihovny pro správu funkcí .NET Core přesahují rámec s kompletní podporou příznaků funkcí. Tyto knihovny jsou postaveny na systému konfigurace .NET Core. Bez problémů se integrují s konfigurací aplikací prostřednictvím poskytovatele konfigurace .NET Core.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/dotnet) .
 * [Sada .NET Core SDK](https://dotnet.microsoft.com/download)
@@ -29,7 +29,7 @@ Knihovny pro správu funkcí .NET Core přesahují rámec s kompletní podporou 
 
 [!INCLUDE[Azure App Configuration resource creation steps](../../includes/azure-app-configuration-create.md)]
 
-8. Vyberte **Operations**  >  **Manager** –  >  **Přidat** a přidejte příznak funkce s názvem *beta*.
+8. Vyberte **Operations**  >  **Manager**–  >  **Přidat** a přidejte příznak funkce s názvem *beta*.
 
     > [!div class="mx-imgBorder"]
     > ![Povolit příznak funkce s názvem beta](media/add-beta-feature-flag.png)
@@ -106,7 +106,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     ---
 
-    V předchozí změně byl [Poskytovatel konfigurace pro konfiguraci aplikace](https://go.microsoft.com/fwlink/?linkid=2074664) zaregistrován s rozhraním .NET Core Configuration API.
+    V předchozí změně byl [Poskytovatel konfigurace pro konfiguraci aplikace](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) zaregistrován s rozhraním .NET Core Configuration API.
 
 1. Do *Startup.cs* přidejte odkaz na správce funkcí .NET Core:
 
@@ -217,7 +217,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-before.png" alt-text="Místní aplikace pro rychlý Start před změnou" border="true":::
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **správce funkcí**. 
 
@@ -235,7 +235,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho ke správě funkcí v ASP.NET Core webové aplikaci přes [knihovny pro správu funkcí](https://go.microsoft.com/fwlink/?linkid=2074664).
+V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho ke správě funkcí v ASP.NET Core webové aplikaci přes [knihovny pro správu funkcí](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration).
 
 * Přečtěte si další informace o [správě funkcí](./concept-feature-management.md).
 * [Správa příznaků funkcí](./manage-feature-flags.md).

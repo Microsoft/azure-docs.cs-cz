@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 544e01ef96165cd6c96a97761a3e758b93b1b15b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 79076db9de4122c19fcb03bbfc938214097e19f6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014342"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181590"
 ---
 # <a name="tutorial-configure-rollbar-for-automatic-user-provisioning"></a>Kurz: Konfigurace Rollbar pro Automatické zřizování uživatelů
 
@@ -31,12 +31,12 @@ Tento kurz popisuje kroky, které je třeba provést v Rollbar i Azure Active Di
 > * Zřizování skupin a členství ve skupinách v Rollbar
 > * [Jednotné přihlašování](./rollbar-tutorial.md) k Rollbar (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenant Azure AD](../develop/quickstart-create-new-tenant.md) 
-* Uživatelský účet v Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
+* Uživatelský účet v Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
 * [Tenant Rollbar](https://rollbar.com/pricing/) , který má plán Enterprise.
 * Uživatelský účet v Rollbar s oprávněními správce.
 

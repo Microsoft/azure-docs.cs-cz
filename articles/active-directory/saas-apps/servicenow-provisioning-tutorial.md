@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: fe2d09315dcb2a0958f8a1b8efe7532c64c111d8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: ab729460a676bb5daa8860b3b4a837ec276fc5db
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966543"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182333"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Kurz: Konfigurace ServiceNow pro Automatické zřizování uživatelů
 
@@ -31,12 +31,12 @@ Tento kurz popisuje kroky, které je třeba provést v ServiceNow i Azure Active
 > * Zřizování skupin a členství ve skupinách v ServiceNow
 > * [Jednotné přihlašování](servicenow-tutorial.md) k ServiceNow (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenant Azure AD](../develop/quickstart-create-new-tenant.md) 
-* Uživatelský účet v Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
+* Uživatelský účet v Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
 * [Instance ServiceNow](https://www.servicenow.com/) typu Calgary nebo vyšší
 * [ServiceNow Express instance](https://www.servicenow.com/) Helsinky nebo vyšší
 * Uživatelský účet v ServiceNow s rolí správce
@@ -147,7 +147,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
    1. Vybrat **System Security**  >  **nastavení vysokého zabezpečení** zabezpečení systému  >  **vyžaduje základní ověřování pro příchozí požadavky schématu**.
    2. Vybrat **Vlastnosti systému**  >  **webové služby**  >  **vyžadují základní autorizaci pro příchozí požadavky SOAP**.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

@@ -4,11 +4,11 @@ description: Získejte odpovědi na běžné otázky týkající se použití mi
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.openlocfilehash: b62110e6b2ce97cdd80ed91ee4b1e75d119c7c7d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315235"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180689"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Migrace Azure Migrate serveru: běžné otázky
 
@@ -143,7 +143,7 @@ Zařízení Azure Migrate v případě replikace bez agenta komprimuje data a š
 
 ## <a name="how-does-churn-rate-affect-agentless-replication"></a>Jak četnost změn ovlivňuje replikaci bez agentů?
 
-Vzhledem k tomu, že replikace bez agentů je přeložena v datech, je *vzor* změn důležitější než *frekvence četnosti*změn. Když se znovu zapíše a znovu vytvoří soubor, míra nebude mít žádný vliv. Vzor, ve kterém je zápis všech ostatních sektorů, ale způsobuje vysokou ztrátu v dalším cyklu. Vzhledem k tomu, že minimalizujeme objem přenášených dat, umožňujíme, aby data byla přeložena co nejvíce, než naplánujeme další cyklus.
+Vzhledem k tomu, že replikace bez agentů je přeložena v datech, je *vzor* změn důležitější než *frekvence četnosti* změn. Když se znovu zapíše a znovu vytvoří soubor, míra nebude mít žádný vliv. Vzor, ve kterém je zápis všech ostatních sektorů, ale způsobuje vysokou ztrátu v dalším cyklu. Vzhledem k tomu, že minimalizujeme objem přenášených dat, umožňujíme, aby data byla přeložena co nejvíce, než naplánujeme další cyklus.
 
 ## <a name="how-frequently-is-a-replication-cycle-scheduled"></a>Jak často je naplánováno replikační cyklus?
 
@@ -199,7 +199,7 @@ Po zastavení replikace nástroj Azure Migrate: Server Migration Tool vyčistí 
 
 ## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>Potřebuji pro migraci virtuálních počítačů VMware Server VMware vCenter?
 
-Pokud chcete [migrovat virtuální počítače VMware](server-migrate-overview.md) pomocí agenta VMware nebo migrace bez agentů, musí být hostitelé ESXi, na kterých jsou virtuální počítače umístěné, spravované pomocí vCenter Server. Pokud nemáte vCenter Server, můžete migrovat virtuální počítače VMware tak, že je migrujete jako fyzické servery. [Další informace](migrate-support-matrix-physical-migration.md).
+Pokud chcete [migrovat virtuální počítače VMware](server-migrate-overview.md) pomocí agenta VMware nebo migrace bez agentů, musí být hostitelé ESXi, na kterých jsou virtuální počítače umístěné, spravované pomocí vCenter Server. Pokud nemáte vCenter Server, můžete migrovat virtuální počítače VMware tak, že je migrujete jako fyzické servery. [Přečtěte si další informace](migrate-support-matrix-physical-migration.md).
 
 ## <a name="can-i-upgrade-my-os-while-migrating"></a>Můžu upgradovat operační systém při migraci?
 

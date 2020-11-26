@@ -11,15 +11,14 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: e041b69d8fc256ff5fe759be9716db032540f2cb
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: d314c285057950ebaecb2e3f75a83948c8bf3cc2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873790"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182440"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Nasazení modelu do clusteru služby Azure Kubernetes
-
 
 Naučte se používat Azure Machine Learning k nasazení modelu jako webové služby ve službě Azure Kubernetes Service (AKS). Služba Azure Kubernetes je vhodná pro vysoce škálovatelná produkční nasazení. Použijte službu Azure Kubernetes, pokud potřebujete jednu nebo více z následujících možností:
 
@@ -34,7 +33,7 @@ Naučte se používat Azure Machine Learning k nasazení modelu jako webové slu
 Při nasazování do služby Azure Kubernetes nasadíte do clusteru AKS, který je __připojený k vašemu pracovnímu prostoru__. Informace o připojení clusteru AKS k pracovnímu prostoru najdete v tématu [Vytvoření a připojení clusteru služby Azure Kubernetes](how-to-create-attach-kubernetes.md).
 
 > [!IMPORTANT]
-> Doporučujeme, abyste před nasazením do webové služby ladit místně. Další informace najdete v tématu [ladění místně](./how-to-troubleshoot-deployment.md#debug-locally) .
+> Doporučujeme, abyste před nasazením do webové služby ladit místně. Další informace najdete v tématu [ladění místně](./how-to-troubleshoot-deployment-local.md) .
 >
 > Můžete využít také [poznámkový blok služby Azure Machine Learning pro místní nasazení](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local).
 

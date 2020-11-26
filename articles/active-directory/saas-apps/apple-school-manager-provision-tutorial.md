@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 43b430ffe1eb9b074eedea3d977523589bc4606a
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 00e3b40b0e3f4c799c54308b35ce3e810cde118c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359247"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181080"
 ---
 # <a name="tutorial-configure-apple-school-manager-for-automatic-user-provisioning"></a>Kurz: Konfigurace Apple School Manageru pro Automatické zřizování uživatelů
 
@@ -34,12 +34,12 @@ Tento kurz popisuje kroky, které je třeba provést v Apple School Manageru a A
 > * Odebrat uživatele v Apple School Manageru, když už nevyžadují přístup
 > * Udržování specifických uživatelských atributů synchronizovaných mezi Azure AD a Apple School Managerem
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenant Azure AD](../develop/quickstart-create-new-tenant.md) 
-* Uživatelský účet ve službě Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce). 
+* Uživatelský účet ve službě Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce). 
 * Účet Apple School Manager s rolí správce, Site Manager nebo manažer pro lidi.
 
 > [!NOTE]

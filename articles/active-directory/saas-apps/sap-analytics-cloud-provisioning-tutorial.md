@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: b87b9d9e7cab0334f1b1996feb99dc69396527b7
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 31e5393cb5de627ebf8832e43302583d6eacbf59
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94352944"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181474"
 ---
 # <a name="tutorial-configure-sap-analytics-cloud-for-automatic-user-provisioning"></a>Kurz: Konfigurace cloudu SAP Analytics pro Automatické zřizování uživatelů
 
@@ -34,12 +34,12 @@ Tento kurz popisuje kroky, které je třeba provést v cloudu SAP Analytics i Az
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a cloudem SAP Analytics
 > * [Jednotné přihlašování](sapboc-tutorial.md) ke službě SAP Analytics Cloud (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenant Azure AD](../develop/quickstart-create-new-tenant.md) 
-* Uživatelský účet v Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
+* Uživatelský účet v Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
 * Cloudový tenant SAP Analytics
 * Uživatelský účet v konzole správce zřizování SAP identity s oprávněními správce. Ujistěte se, že máte přístup k systémům proxy v konzole pro správu zřizování identit. Pokud nevidíte dlaždici **systémy proxy** , vytvořte incident pro komponentu **BC-IAM-IP** pro vyžádání přístupu k této dlaždici.
 * Klient OAuth s oprávněním pro udělení přihlašovacích údajů klienta v cloudu SAP Analytics. Další informace najdete v tématu [Správa klientů OAuth a důvěryhodných zprostředkovatelů identity](https://help.sap.com/viewer/00f68c2e08b941f081002fd3691d86a7/release/en-US/4f43b54398fc4acaa5efa32badfe3df6.html) .

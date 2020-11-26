@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 915133210c9797db7446bf30391635fd36b73bf0
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: f57114fc4cb76c500cc422966635273c3a923046
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94352788"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181612"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Kurz: Konfigurace RingCentral pro Automatické zřizování uživatelů
 
@@ -30,12 +30,12 @@ Tento kurz popisuje kroky, které je třeba provést v RingCentral i Azure Activ
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a RingCentral
 > * [Jednotné přihlašování](./ringcentral-tutorial.md) k RingCentral (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenant Azure AD](../develop/quickstart-create-new-tenant.md) 
-* Uživatelský účet v Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
+* Uživatelský účet v Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
 * [Tenant RingCentral](https://www.ringcentral.com/office/plansandpricing.html)
 * Uživatelský účet v RingCentral s oprávněními správce.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: a51a4a95d3580912d9b727d1580e6f278831f677
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ffbf3fa3e2d404b7bc5888ef01707cbd816600b3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891498"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182848"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure automanage pro virtuální počítače
 
@@ -28,7 +28,7 @@ Tento článek obsahuje informace o službě Azure automanage pro virtuální po
 
 ## <a name="overview"></a>Přehled
 
-Azure automanage pro virtuální počítače je služba, která eliminuje nutnost zjišťovat, poznat, jak připojit a jak nakonfigurovat určité služby v Azure, které by mohly být pro váš virtuální počítač výhodné. Tyto služby vám pomůžou zlepšit spolehlivost, zabezpečení a správu pro virtuální počítače a považují se za služby Azure Best Practices, jako je například [azure Update Management](../automation/update-management/update-mgmt-overview.md) a [Azure Backup](../backup/backup-overview.md) -pouze pár názvů.
+Azure automanage pro virtuální počítače je služba, která eliminuje nutnost zjišťovat, poznat, jak připojit a jak nakonfigurovat určité služby v Azure, které by mohly být pro váš virtuální počítač výhodné. Tyto služby vám pomůžou zlepšit spolehlivost, zabezpečení a správu pro virtuální počítače a považují se za služby Azure Best Practices, jako je například [azure Update Management](../automation/update-management/overview.md) a [Azure Backup](../backup/backup-overview.md) -pouze pár názvů.
 
 Po připojení virtuálních počítačů k automatické správě Azure automaticky nakonfiguruje každou službu osvědčených postupů na Doporučené nastavení. Osvědčené postupy se pro jednotlivé služby liší. Příkladem může být Azure Backup, kde osvědčeným postupem může být vytvoření zálohy virtuálního počítače jednou denně a doba uchování po dobu šesti měsíců.
 
@@ -69,7 +69,7 @@ Pro všechny tyto služby budeme automaticky připínat, automaticky konfigurova
 
 V Azure Portal můžete povolit automanage na existujícím virtuálním počítači nebo při vytváření nového virtuálního počítače. Stručné kroky tohoto procesu najdete v [rychlém startu pro automatizované správy virtuálních počítačů](quick-create-virtual-machines-portal.md).
 
-Pokud pro virtuální počítač používáte službu automanage poprvé, můžete hledat v Azure Portal pro možnost **automanage – osvědčené postupy pro virtuální počítače Azure** . Klikněte na **Povolit na existujícím virtuálním počítači** , vyberte virtuální počítače, které chcete připojit, klikněte na **Vybrat** , klikněte na **Povolit** a Vy jste hotovi.
+Pokud pro virtuální počítač používáte službu automanage poprvé, můžete hledat v Azure Portal pro možnost **automanage – osvědčené postupy pro virtuální počítače Azure**. Klikněte na **Povolit na existujícím virtuálním počítači**, vyberte virtuální počítače, které chcete připojit, klikněte na **Vybrat**, klikněte na **Povolit** a Vy jste hotovi.
 
 Jediná doba, kterou možná budete potřebovat k interakci s tímto virtuálním počítačem za účelem správy těchto služeb, je v události, kterou jsme se pokusili opravit váš virtuální počítač, ale to se nepovedlo. Pokud jsme váš virtuální počítač úspěšně napravili, převedeme ho zpátky do dodržování předpisů, aniž by vás upozornili na vás.
 
@@ -114,7 +114,7 @@ V prostředí Azure Portal máte při povolování funkce automanage na vašich 
 
 V Azure Portal přejdete na stránku s **osvědčenými postupy pro automatické spravování – Azure Virtual Machine** , kde najdete seznam všech vašich automatických spravovaných virtuálních počítačů. Tady se zobrazí celkový stav každého virtuálního počítače.
 
-:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="Inteligentně zaregistrované služby.":::
+:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="Seznam nakonfigurovaných virtuálních počítačů.":::
 
 Pro každý uvedený virtuální počítač se zobrazí následující podrobnosti: název, konfigurační profil, předvolby konfigurace, stav, účet, předplatné a skupina prostředků.
 
@@ -123,7 +123,7 @@ Sloupec **Status (stav** ) může zobrazit následující stavy:
 - *Nakonfigurováno* – virtuální počítač je nakonfigurovaný a nezjistil se žádný posun.
 - *Selhalo* – virtuální počítač se ztratil a nedokázali jsme ho opravit.
 
-Pokud se **stav** zobrazuje jako *neúspěšný* , můžete řešit problémy s nasazením prostřednictvím skupiny prostředků, ve které se váš virtuální počítač nachází. Přejděte na **skupiny prostředků** , vyberte svoji skupinu prostředků, klikněte na **nasazení** a v části stav *selhání se* zobrazí podrobnosti o chybě.
+Pokud se **stav** zobrazuje jako *neúspěšný*, můžete řešit problémy s nasazením prostřednictvím skupiny prostředků, ve které se váš virtuální počítač nachází. Přejděte na **skupiny prostředků**, vyberte svoji skupinu prostředků, klikněte na **nasazení** a v části stav *selhání se* zobrazí podrobnosti o chybě.
 
 
 ## <a name="disabling-automanage-for-vms"></a>Zakázání automanage pro virtuální počítače
@@ -132,9 +132,9 @@ Můžete se rozhodnout jeden den, abyste mohli na určitých virtuálních poč�
 
 Pokud to chcete udělat v Azure Portal, přečtěte si stránku s **osvědčenými postupy pro automatické spravování – Azure Virtual Machine** , která obsahuje seznam všech vašich automatických spravovaných virtuálních počítačů. Zaškrtněte políčko u virtuálního počítače, který chcete zakázat z možnosti spravovat, a pak klikněte na tlačítko **Zakázat autosprávu** .
 
-:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Inteligentně zaregistrované služby.":::
+:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Zakázání automanage na virtuálním počítači.":::
 
-Než se odsouhlaste s **zakázáním** , důkladně si přečtěte zprávy ve výsledném okně.
+Než se odsouhlaste s **zakázáním**, důkladně si přečtěte zprávy ve výsledném okně.
 
 > [!NOTE]
 > Zakázáním funkce automanagement ve virtuálním počítači dojde k následujícímu chování:

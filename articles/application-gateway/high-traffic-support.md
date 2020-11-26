@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: 2c5c017ac0faf443a38fc43dfd27c7e776cb52a0
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: a5f7569fc46d4678ca0c12299e33caa3c78df849
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683333"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182916"
 ---
 # <a name="application-gateway-high-traffic-support"></a>Podpora vysokého provozu služby Application Gateway
 
@@ -23,7 +23,7 @@ Pomocí Application Gateway s firewallem webových aplikací (WAF) můžete šk�
 
 Je důležité škálovat Application Gateway v závislosti na provozu a bitové kopii vyrovnávací paměti, abyste se připravili na jakýkoliv nárůst provozu nebo špičky a minimalizovali dopad, který může mít vaše technologie QoS. Následující návrhy vám pomůžou nastavit Application Gateway s využitím WAF pro zpracování dalšího provozu.
 
-Úplný seznam metrik nabízených nástrojem Application Gateway najdete v [dokumentaci k metrikám](./application-gateway-metrics.md) . Informace o tom, jak nastavit výstrahy pro metriky, najdete v tématu [vizualizace metriky](./application-gateway-metrics.md#metrics-visualization) v Azure Portal a v [dokumentaci ke službě Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric) .
+Úplný seznam metrik nabízených nástrojem Application Gateway najdete v [dokumentaci k metrikám](./application-gateway-metrics.md) . Informace o tom, jak nastavit výstrahy pro metriky, najdete v tématu [vizualizace metriky](./application-gateway-metrics.md#metrics-visualization) v Azure Portal a v [dokumentaci ke službě Azure monitor](../azure-monitor/platform/alerts-metric.md) .
 
 ## <a name="scaling-for-application-gateway-v1-sku-standardwaf-sku"></a>Škálování pro Application Gateway verze V1 SKU (standardní/WAF SKU)
 
@@ -65,7 +65,7 @@ Podívejte se na metriku výpočetní jednotky za uplynulý měsíc. Metrika vý
 
 ## <a name="monitoring-and-alerting"></a>Monitorování a upozorňování
 
-Chcete-li dostávat oznámení o jakémkoli provozu nebo anomáliích využití, můžete nastavit výstrahy pro určité metriky. Úplný seznam metrik nabízených nástrojem Application Gateway najdete v [dokumentaci k metrikám](./application-gateway-metrics.md) . Informace o tom, jak nastavit výstrahy pro metriky, najdete v tématu [vizualizace metriky](./application-gateway-metrics.md#metrics-visualization) v Azure Portal a v [dokumentaci ke službě Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric) .
+Chcete-li dostávat oznámení o jakémkoli provozu nebo anomáliích využití, můžete nastavit výstrahy pro určité metriky. Úplný seznam metrik nabízených nástrojem Application Gateway najdete v [dokumentaci k metrikám](./application-gateway-metrics.md) . Informace o tom, jak nastavit výstrahy pro metriky, najdete v tématu [vizualizace metriky](./application-gateway-metrics.md#metrics-visualization) v Azure Portal a v [dokumentaci ke službě Azure monitor](../azure-monitor/platform/alerts-metric.md) .
 
 ## <a name="alerts-for-application-gateway-v1-sku-standardwaf"></a>Výstrahy pro Application Gateway v1 SKU (Standard/WAF)
 

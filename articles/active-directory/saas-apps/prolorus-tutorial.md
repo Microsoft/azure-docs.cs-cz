@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 4582970a048a98c728a96ab707790be61d236e0e
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 1fd718f206220edeef4cba164d787a8de44e82f7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289416"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181693"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-prolorus"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Prolorus
 
@@ -96,7 +96,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
@@ -132,10 +132,8 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 2. Přejít na adresu URL pro přihlášení k Prolorus přímo a zahájit tok přihlášení.
 
-3. Můžete použít panel Microsoft Access. Po kliknutí na dlaždici Prolorus na přístupovém panelu se tato akce přesměruje na přihlašovací adresu Prolorus. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+3. Můžete použít panel Microsoft Access. Po kliknutí na dlaždici Prolorus na přístupovém panelu se tato akce přesměruje na přihlašovací adresu Prolorus. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování Prolorus můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Po nakonfigurování Prolorus můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

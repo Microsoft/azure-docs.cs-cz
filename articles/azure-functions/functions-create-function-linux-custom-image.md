@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 846599414c0bca95a3f41e127dc01e06d0fd43f9
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 30481fee949df16c70718d0a9cbc6df9ca54d11e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747110"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182542"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Vytvoření funkce v Linuxu s využitím vlastního kontejneru
 
@@ -18,7 +18,7 @@ V tomto kurzu vytvoříte a nasadíte kód, který se Azure Functions jako vlast
 
 Nasazení kódu funkce ve vlastním kontejneru Linux vyžaduje [Plán Premium](functions-premium-plan.md#features) , nebo vyhrazený hostující [plán (App Service)](functions-scale.md#app-service-plan) . Výsledkem tohoto kurzu jsou náklady na několik amerických dolarů v účtu Azure, které můžete minimalizovat [vyčištěním prostředků](#clean-up-resources) , až budete hotovi.
 
-Můžete také použít výchozí kontejner Azure App Service, jak je popsáno v tématu [Vytvoření první funkce hostované v systému Linux](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python). Podporované základní image pro Azure Functions najdete v [úložišti Azure Functions Base images](https://hub.docker.com/_/microsoft-azure-functions-base).
+Můžete také použít výchozí kontejner Azure App Service, jak je popsáno v tématu [Vytvoření první funkce hostované v systému Linux](./create-first-function-cli-csharp.md?pivots=programming-language-python). Podporované základní image pro Azure Functions najdete v [úložišti Azure Functions Base images](https://hub.docker.com/_/microsoft-azure-functions-base).
 
 V tomto kurzu se naučíte:
 
@@ -112,7 +112,7 @@ Po zobrazení výzvy zadejte následující hodnoty:
 
 `Y`Potvrďte zadáním nebo stisknutím klávesy ENTER.
 
-Maven vytvoří soubory projektu v nové složce s názvem _artifactId_ , který je v tomto příkladu `fabrikam-functions` . 
+Maven vytvoří soubory projektu v nové složce s názvem _artifactId_, který je v tomto příkladu `fabrikam-functions` . 
 ::: zone-end
 `--docker`Možnost generuje `Dockerfile` pro projekt, který definuje vhodný vlastní kontejner pro použití s Azure functions a vybraným modulem runtime.
 
@@ -128,7 +128,7 @@ cd fabrikam-functions
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
-Do projektu přidejte funkci pomocí následujícího příkazu, kde `--name` argument je jedinečný název vaší funkce a `--template` argument určuje Trigger funkce. `func new` Vytvořte podsložku odpovídající názvu funkce, která obsahuje soubor kódu, který je vhodný pro zvolený jazyk projektu, a konfigurační soubor s názvem *function.jsv* .
+Do projektu přidejte funkci pomocí následujícího příkazu, kde `--name` argument je jedinečný název vaší funkce a `--template` argument určuje Trigger funkce. `func new` Vytvořte podsložku odpovídající názvu funkce, která obsahuje soubor kódu, který je vhodný pro zvolený jazyk projektu, a konfigurační soubor s názvem *function.jsv*.
 
 ```
 func new --name HttpExample --template "HTTP trigger"
@@ -180,7 +180,7 @@ docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
 ```
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
-Po spuštění image v místním kontejneru otevřete prohlížeč `http://localhost:8080` , ve kterém se má zobrazit zástupný obrázek uvedený níže. V tomto okamžiku se zobrazí obrázek, protože funkce je spuštěná v místním kontejneru, stejně jako v Azure, což znamená, že je chráněná přístupovým klíčem definovaným v *function.jsve* `"authLevel": "function"` Vlastnosti. Kontejner ještě není v Azure publikovaný do aplikace Function App, takže tento klíč ještě není dostupný. Pokud chcete testovat z místního kontejneru, zastavte Docker, změňte vlastnost Authorization na `"authLevel": "anonymous"` , znovu sestavte image a restartujte Docker. Pak se resetujte `"authLevel": "function"` v *function.js* . Další informace najdete v tématu [autorizační klíče](functions-bindings-http-webhook-trigger.md#authorization-keys).
+Po spuštění image v místním kontejneru otevřete prohlížeč `http://localhost:8080` , ve kterém se má zobrazit zástupný obrázek uvedený níže. V tomto okamžiku se zobrazí obrázek, protože funkce je spuštěná v místním kontejneru, stejně jako v Azure, což znamená, že je chráněná přístupovým klíčem definovaným v *function.jsve* `"authLevel": "function"` Vlastnosti. Kontejner ještě není v Azure publikovaný do aplikace Function App, takže tento klíč ještě není dostupný. Pokud chcete testovat z místního kontejneru, zastavte Docker, změňte vlastnost Authorization na `"authLevel": "anonymous"` , znovu sestavte image a restartujte Docker. Pak se resetujte `"authLevel": "function"` v *function.js*. Další informace najdete v tématu [autorizační klíče](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
 ![Zástupný obrázek označující, že je kontejner spuštěn místně](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
@@ -189,7 +189,7 @@ Po spuštění image v místním kontejneru otevřete prohlížeč `http://local
 Jakmile je image spuštěná v místním kontejneru, přejděte na `http://localhost:8080/api/HttpExample?name=Functions` , která by měla zobrazit stejnou zprávu "Hello" jako předtím. Vzhledem k tomu, že Maven Archetype vygeneruje funkci aktivovanou protokolem HTTP, která používá anonymní autorizaci, můžete funkci volat i v případě, že je spuštěná v kontejneru. 
 ::: zone-end  
 
-Po ověření aplikace Function App v kontejneru zastavte Docker pomocí **CTRL** + **C** .
+Po ověření aplikace Function App v kontejneru zastavte Docker pomocí **CTRL** + **C**.
 
 ## <a name="push-the-image-to-docker-hub"></a>Odeslat image do Docker Hub
 
@@ -302,7 +302,7 @@ S imagí nasazenými do aplikace Function App v Azure teď můžete funkci vyvol
 
     # <a name="portal"></a>[Azure Portal](#tab/portal)
 
-    1. Přihlaste se k Azure Portal, vyhledejte a vyberte **Function App** .
+    1. Přihlaste se k Azure Portal, vyhledejte a vyberte **Function App**.
 
     1. Vyberte funkci, kterou chcete ověřit.
 
@@ -311,7 +311,7 @@ S imagí nasazenými do aplikace Function App v Azure teď můžete funkci vyvol
         ![Vyberte funkci v Azure Portal](./media/functions-create-function-linux-custom-image/functions-portal-select-function.png)   
 
     
-    1. Vyberte **získat adresu URL funkce** .
+    1. Vyberte **získat adresu URL funkce**.
 
         ![Získat adresu URL funkce z Azure Portal](./media/functions-create-function-linux-custom-image/functions-portal-get-function-url.png)   
 
@@ -375,7 +375,7 @@ Můžete povolit, aby Azure Functions automaticky aktualizovala nasazení image 
 
 1. Zkopírujte adresu URL Webhooku nasazení do schránky.
 
-1. Otevřete okno [Docker Hub](https://hub.docker.com/), přihlaste se a v navigačním panelu vyberte **úložiště** . Najděte a vyberte obrázek, vyberte kartu **Webhooky** , zadejte **název Webhooku** , vložte adresu URL do pole **Webhook URL** a pak vyberte **vytvořit** :
+1. Otevřete okno [Docker Hub](https://hub.docker.com/), přihlaste se a v navigačním panelu vyberte **úložiště** . Najděte a vyberte obrázek, vyberte kartu **Webhooky** , zadejte **název Webhooku**, vložte adresu URL do pole **Webhook URL** a pak vyberte **vytvořit**:
 
     ![Přidání Webhooku do úložiště Dockerhubu](./media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
 
@@ -441,7 +441,7 @@ SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. Když je po
 
 ## <a name="write-to-an-azure-storage-queue"></a>Zapsat do fronty Azure Storage
 
-Azure Functions umožňuje připojit vaše funkce k dalším službám a prostředkům Azure, aniž byste museli psát vlastní kód pro integraci. Tyto *vazby* , které představují vstupní i výstupní, jsou deklarovány v rámci definice funkce. Data z vazeb má funkce k dispozici jako parametry. *Trigger* je speciální typ vstupní vazby. I když má funkce pouze jednu Trigger, může mít více vstupních a výstupních vazeb. Další informace najdete v tématu [Azure Functions triggery a koncepty vazeb](functions-triggers-bindings.md).
+Azure Functions umožňuje připojit vaše funkce k dalším službám a prostředkům Azure, aniž byste museli psát vlastní kód pro integraci. Tyto *vazby*, které představují vstupní i výstupní, jsou deklarovány v rámci definice funkce. Data z vazeb má funkce k dispozici jako parametry. *Trigger* je speciální typ vstupní vazby. I když má funkce pouze jednu Trigger, může mít více vstupních a výstupních vazeb. Další informace najdete v tématu [Azure Functions triggery a koncepty vazeb](functions-triggers-bindings.md).
 
 V této části se dozvíte, jak integrovat funkci do fronty Azure Storage. Výstupní vazba, kterou přidáte do této funkce, zapisuje data z požadavku HTTP do zprávy ve frontě.
 

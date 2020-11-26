@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/12/2020
 ms.author: jeedes
-ms.openlocfilehash: 0b33bb1f18febe54c3f569ab629c1b1be013cc9d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1e27bd823bd4ad0428773242b5cbc0f9922925ed
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026798"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181760"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-podbean"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s podbean
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat podbean s Azure Active Directory (Azur
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k podbean svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -143,10 +143,8 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 2. Přejít na adresu URL pro přihlášení k podbean přímo a zahájit tok přihlášení.
 
-3. Můžete použít panel Microsoft Access. Po kliknutí na dlaždici podbean na přístupovém panelu se tato akce přesměruje na přihlašovací adresu podbean. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+3. Můžete použít panel Microsoft Access. Po kliknutí na dlaždici podbean na přístupovém panelu se tato akce přesměruje na přihlašovací adresu podbean. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování podbean můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Po nakonfigurování podbean můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

@@ -8,12 +8,12 @@ ms.date: 10/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: a05da5fae748e799d7965c51415956c2e2a524b1
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d8c7965a1d77d443b538392a4c190a8f578d8e18
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201507"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183205"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je Azure Analysis Services?
 
@@ -35,7 +35,7 @@ Azure Analysis Services se integruje s mnoha službami Azure a umožňuje tak se
 
 ## <a name="the-right-tier-when-you-need-it"></a>Správná úroveň kdykoli potřebujete
 
-Azure Analysis Services je k dispozici v úrovních **Developer**, **Basic**a **Standard** . V rámci každé úrovně se náklady naplánují v závislosti na výpočetním výkonu, jednotkách zpracování dotazů (jednotek qpu) a velikosti paměti. Při vytváření serveru si vyberete plán na nějaké úrovni. Plány můžete měnit na vyšší nebo nižší v rámci stejné úrovně nebo upgradovat na vyšší úroveň, není však možné downgradovat z vyšší úrovně na nižší.
+Azure Analysis Services je k dispozici v úrovních **Developer**, **Basic** a **Standard** . V rámci každé úrovně se náklady naplánují v závislosti na výpočetním výkonu, jednotkách zpracování dotazů (jednotek qpu) a velikosti paměti. Při vytváření serveru si vyberete plán na nějaké úrovni. Plány můžete měnit na vyšší nebo nižší v rámci stejné úrovně nebo upgradovat na vyšší úroveň, není však možné downgradovat z vyšší úrovně na nižší.
 
 ### <a name="developer-tier"></a>Úroveň Developer
 
@@ -160,7 +160,7 @@ Tabulkové modely ve službě Azure Analysis Services podporují celou řadu zdr
 
 ## <a name="your-data-is-secure"></a>Vaše data jsou v bezpečí
 
-Služba Azure Analysis Services poskytuje zabezpečení citlivých dat na více úrovních. Jako služba Azure Analysis Services poskytuje **základní** úroveň útoků DDoS (Distributed Denial of Service), které se automaticky povolují jako součást platformy Azure. Další informace najdete v tématu [přehled Azure DDoS Protection Standard](../virtual-network/ddos-protection-overview.md). 
+Služba Azure Analysis Services poskytuje zabezpečení citlivých dat na více úrovních. Jako služba Azure Analysis Services poskytuje **základní** úroveň útoků DDoS (Distributed Denial of Service), které se automaticky povolují jako součást platformy Azure. Další informace najdete v tématu [přehled Azure DDoS Protection Standard](../ddos-protection/ddos-protection-overview.md). 
 
 Na úrovni serveru Analysis Services poskytuje bránu firewall, ověřování Azure, role správců serveru a šifrování Server-Side. Na úrovni datového modelu, rolích uživatelů, zabezpečení na úrovni řádků a objektů zajišťuje bezpečnost vašich dat a jejich zobrazení pouze uživatelé, kteří jsou určeni k jejich zobrazení.
 
@@ -184,7 +184,7 @@ Služba Analysis Services používá [autorizaci na základě rolí](/analysis-s
   
 Koncovým uživatelům (jiným než správcům), kteří se dotazují na data, se udělí přístup prostřednictvím databázových rolí. Databázová role se vytvoří jako samostatný objekt v databázi a použije se pouze na databázi, ve které byla vytvořena. Databázové role jsou definované oprávněními správce, ke čtení a ke čtení a zpracování (v databázi). Uživatelské a skupinové účty se přidají pomocí SSMS nebo PowerShellu.
 
-### <a name="row-level-security"></a>Zabezpečení na úrovni řádku
+### <a name="row-level-security"></a>Zabezpečení na úrovni řádků
 
 Tabulkové modely na všech úrovních kompatibility podporují zabezpečení na úrovni řádků. Zabezpečení na úrovni řádků se konfiguruje v modelu pomocí výrazů DAX, které definují řádky v tabulce a jakékoli řádky v mnoha směrech související tabulky, na které se uživatel může dotazovat. Pro oprávnění pro čtení a pro čtení a zpracování jsou pomocí výrazů DAX definovány filtry řádků. 
 

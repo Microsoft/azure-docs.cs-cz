@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2020
 ms.author: jeedes
-ms.openlocfilehash: 19d14ae681a8d991c26a211d0042ece0aefb21b4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: c14af3698826405244b65bc8fef6f241f7f0032f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95255210"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181329"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tribeloo"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Tribeloo
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Tribeloo s Azure Active Directory (Azu
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Tribeloo svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -125,11 +125,9 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Přejít na adresu URL pro přihlášení k Tribeloo přímo a zahájit tok přihlášení.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Tribeloo v části Moje aplikace, přesměruje se na přihlašovací adresu Tribeloo. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Tribeloo v části Moje aplikace, přesměruje se na přihlašovací adresu Tribeloo. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování Tribeloo můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Po nakonfigurování Tribeloo můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

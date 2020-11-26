@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 25767a7ddb83acf3ad10698f9f2ff8949a0ad55f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 0ed56d200c2b5a472dbf93d45ad25156ea02a884
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357194"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181148"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>Kurz: Konfigurace 8x8 pro Automatické zřizování uživatelů
 
@@ -29,12 +29,12 @@ Tento kurz popisuje kroky, které je třeba provést v 8x8 Configuration Manager
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a 8x8
 > * [Jednotné přihlašování](./8x8virtualoffice-tutorial.md) k 8x8 (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenant Azure AD](../develop/quickstart-create-new-tenant.md) 
-* Uživatelský účet v Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce)
+* Uživatelský účet v Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce)
 * Předplatné 8x8 X řady všech úrovní.
 * 8x8 uživatelský účet s oprávněním správce v [Configuration Manager](https://vo-cm.8x8.com).
 * [Jedna Sign-On s Azure AD](./8x8virtualoffice-tutorial.md) už je nakonfigurovaná.

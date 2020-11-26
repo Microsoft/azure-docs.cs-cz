@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0da8755199645b12e9c6ed75a42881fe86e70b5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f10d8a94be53780f732112c012600a7fb840642b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023033"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180638"
 ---
 # <a name="what-is-risk"></a>Co je riziko?
 
@@ -74,7 +74,7 @@ Tato rizika se dají vypočítat v reálném čase nebo vypočítat v režimu of
 
 ### <a name="risk-levels"></a>Úrovně rizika
 
-Identity Protection kategorizuje riziko do tří úrovní: nízká, střední a vysoká. Když konfigurujete [vlastní zásady ochrany identit](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-policies#custom-conditional-access-policy), můžete ji také nakonfigurovat tak, aby se aktivovala **bez úrovně rizika** . Žádné riziko znamená, že neexistuje žádná aktivní indikace ohrožení identity uživatele.
+Identity Protection kategorizuje riziko do tří úrovní: nízká, střední a vysoká. Když konfigurujete [vlastní zásady ochrany identit](./concept-identity-protection-policies.md#custom-conditional-access-policy), můžete ji také nakonfigurovat tak, aby se aktivovala **bez úrovně rizika** . Žádné riziko znamená, že neexistuje žádná aktivní indikace ohrožení identity uživatele.
 
 Zatímco společnost Microsoft neposkytuje konkrétní informace o tom, jakým způsobem je riziko vypočítáno, říkáme, že každá úroveň přináší větší jistotu, že se uživateli nebo přihlášení naruší zabezpečení. Například něco jako jedna instance neznámého přihlašovacího oprávnění pro uživatele nemusí být ohroženo jako nevrácená pověření pro jiného uživatele.
 

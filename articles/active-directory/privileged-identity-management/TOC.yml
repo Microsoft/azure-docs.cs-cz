@@ -11,7 +11,7 @@
     - name: 'Role, které nemůžete spravovat pomocí PIM'
       href: pim-roles.md
     - name: Zabezpečení privilegovaného přístupu
-      href: ../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
+      href: ../roles/security-planning.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
     - name: MFA a PIM
       href: pim-how-to-require-mfa.md
     - name: Přehledové řídicí panely

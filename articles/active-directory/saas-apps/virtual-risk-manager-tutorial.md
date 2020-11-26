@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 7bf9f909331faff7b821a98042d07473573c9cef
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: e3de90084c42a6ce5f71977de7e90e0767f858db
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94918308"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181301"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-virtual-risk-manager"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s využitím Virtual rizika Manageru
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Virtual rizikový Manager s Azure Acti
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k virtuálnímu správci rizik pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -121,10 +121,8 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Klikněte na testovat tuto aplikaci v Azure Portal a měli byste se automaticky přihlášeni k virtuálnímu správci rizik, pro který jste nastavili jednotné přihlašování.
 
-* Můžete použít panel Microsoft Access. Když kliknete na dlaždici Správce virtuálního rizika na přístupovém panelu, měli byste být automaticky přihlášeni k virtuálnímu správci rizik, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít panel Microsoft Access. Když kliknete na dlaždici Správce virtuálního rizika na přístupovém panelu, měli byste být automaticky přihlášeni k virtuálnímu správci rizik, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile nakonfigurujete Virtual rizikový Manager, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Jakmile nakonfigurujete Virtual rizikový Manager, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

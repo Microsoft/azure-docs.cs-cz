@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 185b61f77b275ed78050f5d8efb820c5333f6e1f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: d813757d5adb8cee9b83e0486baed80ae1bac874
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358571"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180927"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Kurz: Konfigurace DocuSign pro Automatické zřizování uživatelů
 
@@ -95,7 +95,7 @@ Spustí počáteční synchronizaci všech uživatelů přiřazených k DocuSign
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="troubleshooting-tips"></a>Tipy pro řešení problémů
-* Zřizování role nebo profilu oprávnění pro uživatele v Docusign se dá provést pomocí výrazu v mapování atributů pomocí funkcí [Switch](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#switch) a [singleAppRoleAssignment](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#singleapproleassignment) . Například níže uvedený výraz zřídí ID "8032066", pokud má uživatel přiřazenou roli "DS admin" v Azure AD. Pokud uživatel nemá přiřazenou roli na straně Azure AD, nezřídí žádný profil oprávnění. ID se dá načíst z [portálu](https://support.docusign.com/articles/Default-settings-for-out-of-the-box-DocuSign-Permission-Profiles)Docusign.
+* Zřizování role nebo profilu oprávnění pro uživatele v Docusign se dá provést pomocí výrazu v mapování atributů pomocí funkcí [Switch](../app-provisioning/functions-for-customizing-application-data.md#switch) a [singleAppRoleAssignment](../app-provisioning/functions-for-customizing-application-data.md#singleapproleassignment) . Například níže uvedený výraz zřídí ID "8032066", pokud má uživatel přiřazenou roli "DS admin" v Azure AD. Pokud uživatel nemá přiřazenou roli na straně Azure AD, nezřídí žádný profil oprávnění. ID se dá načíst z [portálu](https://support.docusign.com/articles/Default-settings-for-out-of-the-box-DocuSign-Permission-Profiles)Docusign.
 
 Switch (SingleAppRoleAssignment ([appRoleAssignments]); ""; "8032066"; "DS admin")
 

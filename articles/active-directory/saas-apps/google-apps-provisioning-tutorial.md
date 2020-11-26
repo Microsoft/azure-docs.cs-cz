@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 6643ec72ec5126866b0ad6e924a92f02170bd278
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 2ce5ac43af57b82f912b10eeacf285a688888e9d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359642"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180876"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Kurz: Konfigurace G Suite pro Automatické zřizování uživatelů
 
@@ -40,12 +40,12 @@ Tento kurz popisuje kroky, které je třeba provést v G Suite a Azure Active Di
 > * Zřizování skupin a členství ve skupinách v G Suite
 > * [Jednotné přihlašování](./google-apps-tutorial.md) do G Suite (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenant Azure AD](../develop/quickstart-create-new-tenant.md) 
-* Uživatelský účet v Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
+* Uživatelský účet v Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
 * [Tenant G Suite](https://gsuite.google.com/pricing.html)
 * Uživatelský účet v G Suite s oprávněními správce.
 

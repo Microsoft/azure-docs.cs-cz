@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1b603dc4c31cb608a0840da78a2e987b3edd3c1e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 4d3ee6df90424788c6f9b6bb4e2055023a5d56a6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353590"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182047"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Kurz: Konfigurace MediusFlow pro Automatické zřizování uživatelů
 
@@ -31,12 +31,12 @@ Tento kurz popisuje kroky, které je třeba provést v MediusFlow i Azure Active
 > * Zřizování skupin a členství ve skupinách v MediusFlow
 > * Jednotné přihlašování k MediusFlow (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenant Azure AD](../develop/quickstart-create-new-tenant.md) 
-* Uživatelský účet ve službě Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce). 
+* Uživatelský účet ve službě Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce). 
 * Aktivní předplatné MediusFlow se zajištěním kvality nebo produkčního tenanta.
 * Uživatelský účet v MediusFlow s přístupovými právy správce, aby bylo možné provést konfiguraci v rámci MediusFlow.
 * Společnosti přidané v tenantovi MediusFlow, kde by se měli uživatelé zřídit.
@@ -165,7 +165,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
    |name.familyName|Řetězec|
    |název. formátovaný|Řetězec|
    |externalID|Řetězec|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Reference|
 
 
 10. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do MediusFlow**.

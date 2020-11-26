@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: arvinh
-ms.openlocfilehash: 58fe99164c390d8a9435e5aa65e55fe7fca5d6db
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 92c2ae13b840d7a73d86365ce88584bcafc878e8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359472"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181452"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Kurz: Konfigurace automatického zřizování uživatelů ve Slacku
 
@@ -36,7 +36,7 @@ Cílem tohoto kurzu je ukázat postup zajištění automatického zřizování a
 Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 
 * [Tenanta Azure AD](../develop/quickstart-create-new-tenant.md)
-* Uživatelský účet v Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce)
+* Uživatelský účet v Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce)
 * Tenanta Slacku s [plánem Plus](https://aadsyncfabric.slack.com/pricing) nebo lepším
 * Uživatelský účet ve Slacku s oprávněními správce týmu
 

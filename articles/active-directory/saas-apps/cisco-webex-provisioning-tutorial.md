@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 069c8a8e2a595248afe45bbb90de877b3b6fc87d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc05e83ac6c7f0f7c5e9a571c1fa7397af858f44
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849288"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180043"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>Kurz: Konfigurace Cisco Webex pro Automatické zřizování uživatelů
 
@@ -77,7 +77,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-cisco-webex-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Cisco Webex ve službě Azure AD:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Cisco Webex**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **Cisco Webex**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -91,21 +91,21 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
-    :::image type="content" source="common/provisioning-automatic.png" alt-text="Snímek obrazovky nabídky Azure Portal. V části Správa se zvýrazní zřizování." border="false":::
+    :::image type="content" source="common/provisioning-automatic.png" alt-text="Snímek obrazovky se seznamem režimu zřizování s automatickým zvýrazněním" border="false":::
 
-5. V části **přihlašovací údaje správce** zadejte **adresu URL tenanta**a **tajný token** vašeho účtu Cisco Webex.
+5. V části **přihlašovací údaje správce** zadejte **adresu URL tenanta** a **tajný token** vašeho účtu Cisco Webex.
 
-    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/secrettoken1.png" alt-text="Snímek obrazovky nabídky Azure Portal. V části Správa se zvýrazní zřizování." border="false":::
+    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/secrettoken1.png" alt-text="Snímek obrazovky oddílu přihlašovací údaje správce Pole tenant U R L a tajného tokenu jsou zvýrazněna, ale jsou prázdná." border="false":::
 
 6.  Do pole **Adresa URL tenanta** zadejte hodnotu ve formátu `https://api.ciscospark.com/v1/scim/[OrgId]` . Pokud se chcete získat `[OrgId]` , přihlaste se do [centra řízení Cisco Webex](https://admin.webex.com/login). V levém dolním rohu klikněte na název vaší organizace a zkopírujte hodnotu z **ID organizace**. 
 
-    * Pokud chcete získat hodnotu **tajného tokenu**, přejděte na tuto [adresu URL](https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3DC4ca14fe00b0e51efb414ebd45aa88c1858c3bfb949b2405dba10b0ca4bc37402%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fauth%252Fcode%26scope%3Dspark%253Apeople_read%2520spark%253Apeople_write%2520Identity%253ASCIM%26state%3Dthis-should-be-a-random-string-for-security-purpose). Na zobrazené stránce pro přihlášení k WebEx se přihlaste pomocí úplného účtu správce Cisco Webex pro vaši organizaci. Zobrazí se chybová stránka s informací o tom, že lokalita není dostupná, ale je normální.
+    * Pokud chcete získat hodnotu **tajného tokenu**, přejděte na tuto [adresu URL](https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3DC4ca14fe00b0e51efb414ebd45aa88c1858c3bfb949b2405dba10b0ca4bc37402%26redirect_uri%3Dhttp%253A%2f%2flocalhost%253A3000%2fauth%2fcode%26scope%3Dspark%253Apeople_read%2520spark%253Apeople_write%2520Identity%253ASCIM%26state%3Dthis-should-be-a-random-string-for-security-purpose). Na zobrazené stránce pro přihlášení k WebEx se přihlaste pomocí úplného účtu správce Cisco Webex pro vaši organizaci. Zobrazí se chybová stránka s informací o tom, že lokalita není dostupná, ale je normální.
 
-        :::image type="content" source="./media/cisco-webex-provisioning-tutorial/test.png" alt-text="Snímek obrazovky nabídky Azure Portal. V části Správa se zvýrazní zřizování." border="false":::
+        :::image type="content" source="./media/cisco-webex-provisioning-tutorial/test.png" alt-text="Snímek webové stránky, která zobrazuje chybovou zprávu Zpráva říká, že lokalita není dostupná a obsahuje několik tipů pro řešení potíží." border="false":::
  
     * Zkopírujte hodnotu vygenerovaného tokenu nosiče z adresy URL, jak je zvýrazněno níže. Tento token je platný po dobu 365 dnů.
         
-        :::image type="content" source="./media/cisco-webex-provisioning-tutorial/test1.png" alt-text="Snímek obrazovky nabídky Azure Portal. V části Správa se zvýrazní zřizování." border="false":::
+        :::image type="content" source="./media/cisco-webex-provisioning-tutorial/test1.png" alt-text="Snímek obrazovky s dlouhým U R L. část adresy je nečitelné, ale je zvýrazněná a má popisek nosný token." border="false":::
 
 7. Po vyplnění polí zobrazených v kroku 5 klikněte na **Test připojení** , aby se služba Azure AD mohla připojit k Cisco Webex. Pokud se připojení nepovede, ujistěte se, že váš účet Cisco Webex má oprávnění správce, a zkuste to znovu.
 
@@ -119,11 +119,11 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 10. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelů na Cisco Webex**.
 
-    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/usermapping.png" alt-text="Snímek obrazovky nabídky Azure Portal. V části Správa se zvýrazní zřizování." border="false":::
+    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/usermapping.png" alt-text="Snímek obrazovky s oddílem mapování v Azure Portal. V části název je zvýrazněná položka synchronizovat Azure Active Directory uživatelů do CiscoSpark." border="false":::
 
 11. Zkontrolujte atributy uživatele synchronizované z Azure AD až Cisco Webex v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Cisco Webex pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/usermappingattributes.png" alt-text="Snímek obrazovky nabídky Azure Portal. V části Správa se zvýrazní zřizování." border="false":::
+    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/usermappingattributes.png" alt-text="Snímek obrazovky oddílu mapování atributů zobrazující atributy Azure Active Directory, odpovídající atributy CiscoSpark a stav pro porovnání" border="false":::
 
 12. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -148,7 +148,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 * Cisco Webex je v současné době ve fázi EFT pro testování v prvním poli společnosti Cisco. Pokud chcete získat další informace, obraťte se na [tým podpory společnosti Cisco](https://www.webex.co.in/support/support-overview.html). 
 * Další informace o konfiguraci Cisco Webex najdete [tady](https://help.webex.com/en-us/aumpbz/Synchronize-Azure-Active-Directory-Users-into-cisco-webex-Control-Hub)v dokumentaci k Cisco.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

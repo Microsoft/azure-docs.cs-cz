@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: overview
-ms.date: 07/26/2019
+ms.date: 11/25/2020
 ms.author: sngun
-ms.openlocfilehash: 9f44279e47de737bd23fcd0266b7fb73e6245b13
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 98b1db18b72aad0c68f2faee031cc040a2a1f369
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096049"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181233"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Úvod do Azure Cosmos DB: API tabulka
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -27,13 +27,16 @@ ms.locfileid: "93096049"
 
 Pomocí rozhraní API tabulky je možné migrovat aplikace napsané pro Azure Table Storage beze změn kódu na službu Azure Cosmos DB a využít tak prémiové funkce. Rozhraní API tabulky má klientské sady SDK dostupné pro .NET, Java, Python a Node.js.
 
+> [!NOTE]
+> [Režim kapacity bez serveru](serverless.md) je teď k dispozici v rozhraní API pro tabulky Azure Cosmos DB.
+
 > [!IMPORTANT]
 > Sada .NET Framework SDK [Microsoft. Azure. CosmosDB. Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) je v režimu údržby a bude brzy zastaralá. Upgradujte prosím na novou .NET Standard knihovny [Microsoft. Azure. Cosmos. Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) , abyste mohli dál získávat nejnovější funkce, které rozhraní API pro tabulky podporuje.
 
 ## <a name="table-offerings"></a>Nabídky Table
 Pokud aktuálně používáte službu Azure Table Storage, získáte přechodem na rozhraní API tabulky Azure Cosmos DB následující výhody:
 
-| Doporučené | Azure Table Storage | Rozhraní API tabulky Azure Cosmos DB |
+| Funkce | Azure Table Storage | Rozhraní API tabulky Azure Cosmos DB |
 | --- | --- | --- |
 | Latence | Rychlá, bez horních omezení latence. | Latence pro čtení a zápis v řádu milisekund, která se zálohuje <10 MS, pro čtení a zápisy na 99 percentilu v jakémkoli měřítku, kdekoli na světě. |
 | Propustnost | Model variabilní propustnosti. Tabulky mají omezení škálovatelnosti 20 000 operací za sekundu. | Vysoká škálovatelnost s [vyhrazenou rezervovanou propustností na tabulku](request-units.md), podložená smlouvami SLA. Účty nemají žádné horní omezení propustnosti a podporují více než 10 milionů operací za sekundu na tabulku. |

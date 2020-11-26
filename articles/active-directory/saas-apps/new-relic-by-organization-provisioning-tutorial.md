@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: Zhchia
-ms.openlocfilehash: ede5de4bb70e098372fc6ccdcdc6d06bc26f995d
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 6d196f7037fe9c0209e66e9d6e9ab25bdf807b59
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359183"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181894"
 ---
 # <a name="tutorial-configure-new-relic-by-organization-for-automatic-user-provisioning"></a>Kurz: konfigurace nového Relic podle organizace pro Automatické zřizování uživatelů
 
@@ -31,12 +31,12 @@ Tento kurz popisuje kroky, které je třeba provést v nových Relic organizací
 > * Zřizování skupin a členství ve skupinách v New Relic podle organizace
 > * [Jednotné přihlašování](./new-relic-limited-release-tutorial.md) k novému Relic podle organizace (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenant Azure AD](../develop/quickstart-create-new-tenant.md) 
-* Uživatelský účet v Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
+* Uživatelský účet v Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
 * Jeden nebo více účtů na novém Relic podle organizace, ke kterým chcete mít přístup vaši uživatelé. 
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Krok 1. Plánování nasazení zřizování

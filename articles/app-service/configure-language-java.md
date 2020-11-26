@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 9abc069c202af425970e46286d88d1c18ece5a20
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: aa3329c3d9e241fb8224ecc69199779d53027474
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616191"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183137"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Konfigurace aplikace Java pro Azure App Service
 
@@ -700,7 +700,7 @@ Protokol EAP JBoss je k dispozici pouze v možnostech hardwaru Premium a Isolate
 
 ### <a name="jdk-versions-and-maintenance"></a>Verze a údržba JDK
 
-Podporovaná sada Java Development Kit (JDK) pro Azure je zajištěná [Zulu](https://www.azul.com/downloads/azure-only/zulu/) prostřednictvím [systémů Azul](https://www.azul.com/). Azul Zulu Enterprise Builds of OpenJDK jsou špičkovou distribucí do produkčního prostředí OpenJDK pro Azure a Azure Stack zajištěné systémy Microsoftu a Azul. Obsahuje všechny komponenty pro vytváření a spouštění aplikací Java SE. JDK můžete nainstalovat z [instalace Java JDK](https://aka.ms/azure-jdks).
+Podporovaná sada Java Development Kit (JDK) pro Azure je zajištěná [Zulu](https://www.azul.com/downloads/azure-only/zulu/) prostřednictvím [systémů Azul](https://www.azul.com/). Azul Zulu Enterprise Builds of OpenJDK jsou špičkovou distribucí do produkčního prostředí OpenJDK pro Azure a Azure Stack zajištěné systémy Microsoftu a Azul. Obsahuje všechny komponenty pro vytváření a spouštění aplikací Java SE. JDK můžete nainstalovat z [instalace Java JDK](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 Hlavní aktualizace verze se budou poskytovat prostřednictvím nových možností modulu runtime v Azure App Service. Zákazníci aktualizují tyto novější verze Java tím, že nakonfigurují nasazení App Service a zodpovídá za testování a zajištění významné aktualizace, které vyhovují jejich potřebám.
 

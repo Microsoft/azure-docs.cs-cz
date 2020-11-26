@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: f7fd2337fe496e75ced78215d14d530a853096fd
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b4f24c9beffcd67fb84940c2e159da615496d9aa
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359274"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180366"
 ---
 # <a name="tutorial-configure-apple-business-manager-for-automatic-user-provisioning"></a>Kurz: Konfigurace programu Apple Business Manager pro Automatické zřizování uživatelů
 
@@ -34,12 +34,12 @@ Tento kurz popisuje kroky, které je třeba provést v Apple Business Manageru i
 > * Odebrat uživatele v Apple Business Manageru, když už nevyžadují přístup
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a Apple Business Managerem
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenanta Azure AD](../develop/quickstart-create-new-tenant.md)
-* Uživatelský účet ve službě Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce).
+* Uživatelský účet ve službě Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce).
 * Účet Apple Business Manageru s rolí správce nebo Správce uživatelů.
 
 > [!NOTE]

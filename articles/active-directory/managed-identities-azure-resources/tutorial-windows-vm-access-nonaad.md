@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85da26c9ff302c526ea6210dde776f3a34929ccd
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: fa17a18de8e71b099d6ed717974486203c4379f4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360355"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180502"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Key Vaultu 
 
@@ -34,13 +34,13 @@ Získáte informace o těchto tématech:
 > * Udělení přístupu virtuálnímu počítači k tajnému kódu uloženému ve službě Key Vault
 > * Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k načtení tajného kódu ze služby Key Vault 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Porozumění spravovaným identitám. Pokud ještě neznáte funkci spravovaných identit pro prostředky Azure, podívejte se na tento [přehled](overview.md). 
 - Účet Azure, [Zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/).
 - Oprávnění "vlastník" v příslušném oboru (vaše předplatné nebo skupina prostředků) k provedení požadovaných kroků vytváření prostředků a správy rolí. Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [Použití řízení přístupu na základě role ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md).
 - Budete také potřebovat virtuální počítač s Windows, který má povolené spravované identity přiřazené systémem.
-  - Pokud pro tento kurz potřebujete vytvořit virtuální počítač, můžete postupovat podle článku [s názvem vytvořit virtuální počítač s povolenou identitou přiřazenou systémem](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) .
+  - Pokud pro tento kurz potřebujete vytvořit virtuální počítač, můžete postupovat podle článku [s názvem vytvořit virtuální počítač s povolenou identitou přiřazenou systémem](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity) .
 
 ## <a name="create-a-key-vault"></a>Vytvoření trezoru klíčů  
 
@@ -96,7 +96,7 @@ V této části se dozvíte, jak získat přístupový token pomocí identity vi
 
 Nejdřív použijeme spravovanou identitu přiřazenou systémem virtuálního počítače k získání přístupového tokenu pro ověření v Key Vaultu:
  
-1. Na portálu přejděte na **Virtuální počítače** , přejděte ke svému virtuálnímu počítači s Windows a v části **Přehled** klikněte na **Připojit**.
+1. Na portálu přejděte na **Virtuální počítače**, přejděte ke svému virtuálnímu počítači s Windows a v části **Přehled** klikněte na **Připojit**.
 2. Do svého **uživatelského jména** a **hesla** zadejte svoje uživatelské jméno a heslo, které jste přidali při vytváření **virtuálního počítače s Windows**.  
 3. Teď, když jste vytvořili **připojení ke vzdálené ploše** virtuálního počítače, otevřete ve vzdálené relaci PowerShell.  
 4. V PowerShellu vyvolejte na tenantovi webový požadavek na získání tokenu pro místního hostitele na konkrétním portu pro virtuální počítač.  
@@ -135,7 +135,7 @@ Jakmile ze služby Key Vault načtete tajný kód, můžete ho použít při př
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete prostředky vyčistit, přejděte na [Azure Portal](https://portal.azure.com), vyberte **skupiny prostředků** , najděte a vyberte skupinu prostředků, která se vytvořila v procesu tohoto kurzu (například `mi-test` ), a pak použijte příkaz **Odstranit skupinu prostředků** .
+Pokud chcete prostředky vyčistit, přejděte na [Azure Portal](https://portal.azure.com), vyberte **skupiny prostředků**, najděte a vyberte skupinu prostředků, která se vytvořila v procesu tohoto kurzu (například `mi-test` ), a pak použijte příkaz **Odstranit skupinu prostředků** .
 
 Případně můžete to provést také prostřednictvím [PowerShellu nebo rozhraní](../../azure-resource-manager/management/delete-resource-group.md) PŘÍKAZového řádku.
 

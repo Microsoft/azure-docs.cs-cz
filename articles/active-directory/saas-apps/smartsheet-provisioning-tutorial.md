@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 79fa480e0cca590446a0251f43c45b2e04c97cd5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: aa4e8c2baaaa0c8ccc9bcdda595f040fac72682f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013152"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181437"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>Kurz: Konfigurace Smartsheet pro Automatické zřizování uživatelů
 
@@ -33,12 +33,12 @@ Cílem tohoto kurzu je předvést kroky, které je třeba provést v Smartsheet 
 > [!NOTE]
 > Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenanta Azure AD](../develop/quickstart-create-new-tenant.md)
-* Uživatelský účet v Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce)
+* Uživatelský účet v Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce)
 * [Tenant Smartsheet](https://www.smartsheet.com/pricing)
 * Uživatelský účet v plánu Smartsheet Enterprise nebo Enterprise Premier s oprávněními správce systému.
 

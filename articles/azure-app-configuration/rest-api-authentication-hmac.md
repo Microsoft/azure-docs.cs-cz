@@ -6,23 +6,23 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 4171155f5a9f72ef0c021bd0e37fe4ec2f206646
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: bd1667f6c17922b6c0b0bfba7a7329a3fc96b62e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95253350"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182627"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>Ověřování HMAC – REST API odkaz
 
 Požadavky HTTP můžete ověřit pomocí schématu ověřování HMAC-SHA256. (HMAC označuje kód pro ověřování zpráv na bázi hash.) Tyto požadavky musí být přenášeny přes protokol TLS.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **Pověřovací** - \<Access Key ID\>
 - Hodnota **tajného** klíče přístupového kódu pro kódování Base64. ``base64_decode(<Access Key Value>)``
 
-Hodnoty pro přihlašovací údaje (také nazývané `id` ) a tajný kód (také nazývané `value` ) se musí získat z instance konfigurace aplikace Azure. To můžete provést pomocí [Azure Portal](https://portal.azure.com) nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true).
+Hodnoty pro přihlašovací údaje (také nazývané `id` ) a tajný kód (také nazývané `value` ) se musí získat z instance konfigurace aplikace Azure. To můžete provést pomocí [Azure Portal](https://portal.azure.com) nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest).
 
 Zadejte všechny požadavky na všechny hlavičky HTTP vyžadované pro ověřování. Minimální požadovaná:
 
@@ -45,7 +45,7 @@ Authorization: HMAC-SHA256 Credential={Access Key ID}&SignedHeaders=x-ms-date;ho
 
 ## <a name="authorization-header"></a>Autorizační hlavička
 
-### <a name="syntax"></a>Syntaxe
+### <a name="syntax"></a>Syntax
 
 ``Authorization``: **HMAC-SHA256**```Credential```=\<value\>&```SignedHeaders```=\<value\>&```Signature```=\<value\>
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8578f8aef779ff80f3965fc21b24b785f11226d0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2e7e798967541748b5572994d48cb5bdf7474cb1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024139"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182865"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Předávání dat úloh Azure Automation do protokolů Azure Monitoru
 
@@ -22,7 +22,7 @@ Azure Automation může odesílat datové proudy úloh sady Runbook a streamová
 * Korelujte úlohy mezi účty Automation.
 * Pomocí vlastních zobrazení a vyhledávacích dotazů můžete vizualizovat výsledky Runbooku, stav úlohy Runbooku a další související klíčové ukazatele nebo metriky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete začít odesílat protokoly pro automatizaci Azure Monitor protokolů, budete potřebovat:
 
@@ -56,7 +56,7 @@ Pokud chcete vrátit výsledky z konkrétní skupiny prostředků, zahrňte `-Re
 
 Pokud máte ve výstupu předchozích příkazů více než jeden účet služby Automation nebo pracovní prostor, můžete najít název a další související vlastnosti, které jsou součástí úplného ID prostředku vašeho účtu Automation, a to následujícím způsobem:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V Azure Portal na stránce **účty Automation** vyberte svůj účet Automation.
 1. Na stránce vybraného účtu Automation v části **Nastavení účtu** vyberte **vlastnosti**.
 1. Na stránce **vlastnosti** si všimněte níže uvedených podrobností.
@@ -177,7 +177,7 @@ AzureDiagnostics
 
 ### <a name="filter-job-status-output-converted-into-a-json-object"></a>Filtrovat výstup stavu úlohy převedený na objekt JSON
 
-Nedávno jsme změnili chování způsobu, jakým jsou data protokolu automatizace zapsána do `AzureDiagnostics` tabulky ve službě Log Analytics, kde již nedělí vlastnosti JSON na samostatné pole. Pokud jste Runbook nakonfigurovali tak, aby naformátoval objekty ve formátu JSON jako samostatné sloupce, je nutné znovu nakonfigurovat vaše dotazy, aby toto pole analyzovalo na objekt JSON, aby bylo možné tyto vlastnosti přistupovat. To se provádí pomocí [parseJSON](https://docs.microsoft.com/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#parsejson) pro přístup k určitému prvku JSON ve známé cestě.
+Nedávno jsme změnili chování způsobu, jakým jsou data protokolu automatizace zapsána do `AzureDiagnostics` tabulky ve službě Log Analytics, kde již nedělí vlastnosti JSON na samostatné pole. Pokud jste Runbook nakonfigurovali tak, aby naformátoval objekty ve formátu JSON jako samostatné sloupce, je nutné znovu nakonfigurovat vaše dotazy, aby toto pole analyzovalo na objekt JSON, aby bylo možné tyto vlastnosti přistupovat. To se provádí pomocí [parseJSON](/azure/data-explorer/kusto/query/samples?pivots=#parsejson) pro přístup k určitému prvku JSON ve známé cestě.
 
 Sada Runbook například formátuje vlastnost *ResultDescription* ve výstupním datovém proudu ve formátu JSON s více poli. Pokud chcete vyhledat stav úloh, které jsou ve stavu selhání, jak je uvedeno v poli s názvem **stav**, použijte tento ukázkový dotaz k hledání *ResultDescription* se stavem **selhání**:
 

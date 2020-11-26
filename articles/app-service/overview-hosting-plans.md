@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5f96b48b8fec07ab207ea3962a201bbff68a5339
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8033235cde5b7ebe298bb1fa8d4222e208df998b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92200844"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183001"
 ---
 # <a name="azure-app-service-plan-overview"></a>Přehled plánu služby App Service
 
@@ -27,7 +27,7 @@ Při vytváření plánu App Service v určité oblasti (například Západní E
 _Cenová úroveň_ plánu App Service určuje, jaké App Service funkce získáte a kolik platíte za plán. Kategorií cenových úrovní existuje několik:
 
 - **Shared COMPUTE**: **Free** and **Shared**, dvě základní úrovně, spustí aplikaci na stejném virtuálním počítači Azure jako jiné aplikace App Service, včetně aplikací jiných zákazníků. Tyto úrovně přidělují kvóty procesoru každé aplikaci, která na sdílených prostředcích běží, a u těchto prostředků není možné škálovat na více instancí.
-- **Vyhrazené výpočetní**prostředky: úrovně **Basic**, **Standard**, **Premium**, **PremiumV2**a **PremiumV3** spouštějí aplikace na vyhrazených virtuálních počítačích Azure. Stejné výpočetní prostředky sdílejí jen aplikace ve stejném plánu služby App Service. Čím vyšší cenová úroveň, tím více instancí virtuálních počítačů můžete škálovat.
+- **Vyhrazené výpočetní** prostředky: úrovně **Basic**, **Standard**, **Premium**, **PremiumV2** a **PremiumV3** spouštějí aplikace na vyhrazených virtuálních počítačích Azure. Stejné výpočetní prostředky sdílejí jen aplikace ve stejném plánu služby App Service. Čím vyšší cenová úroveň, tím více instancí virtuálních počítačů můžete škálovat.
 - **Izolované**: Tato úroveň spouští vyhrazené virtuální počítače Azure ve vyhrazených virtuálních sítích Azure. Poskytuje izolaci sítě nad výpočetní izolací pro vaše aplikace. Tato úroveň nabízí maximální škálování na více instancí.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
@@ -37,13 +37,13 @@ Každá úroveň také poskytuje určitou podmnožinu funkcí App Service. Mezi 
 <a name="new-pricing-tier-premiumv3"></a>
 
 > [!NOTE]
-> Nová cenová úroveň **PremiumV3** garantuje počítače s rychlejšími procesory (minimálně 195 [ACU](https://docs.microsoft.com/azure/virtual-machines/acu) na virtuální procesor), SSD Storage a čtyřnásobným poměrům paměti až po jádru v porovnání s úrovní **Standard** . **PremiumV3** také podporuje vyšší škálování prostřednictvím zvýšeného počtu instancí a zároveň zajišťuje všechny rozšířené možnosti, které se nacházejí na úrovni **Standard** . Všechny funkce, které jsou k dispozici ve stávající úrovni **PremiumV2** , jsou součástí **PremiumV3**.
+> Nová cenová úroveň **PremiumV3** garantuje počítače s rychlejšími procesory (minimálně 195 [ACU](../virtual-machines/acu.md) na virtuální procesor), SSD Storage a čtyřnásobným poměrům paměti až po jádru v porovnání s úrovní **Standard** . **PremiumV3** také podporuje vyšší škálování prostřednictvím zvýšeného počtu instancí a zároveň zajišťuje všechny rozšířené možnosti, které se nacházejí na úrovni **Standard** . Všechny funkce, které jsou k dispozici ve stávající úrovni **PremiumV2** , jsou součástí **PremiumV3**.
 >
 > Podobně jako jiné vyhrazené úrovně jsou pro tuto vrstvu k dispozici tři velikosti virtuálních počítačů:
 >
 > - Malé (2 jádra procesoru, 8 GiB paměti) 
 > - Střední (4 jádra procesoru, 16 GiB paměti) 
-> - Velký (8 jader procesoru, 32 GiB paměti)  
+> - Velký (8 jader procesoru, 32 GiB paměti)  
 >
 > Informace o cenách **PremiumV3** najdete v tématu [App Service ceny](https://azure.microsoft.com/pricing/details/app-service/).
 >

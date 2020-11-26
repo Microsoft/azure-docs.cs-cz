@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 39a511601606118228ee5fbd9dcf68b6707ede47
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 5d950598e4a0af86ac37b53722e80eb4ef0a71a4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288348"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183052"
 ---
 # <a name="app-service-networking-features"></a>Funkce App Service sítě
 
@@ -43,7 +43,7 @@ Kromě popsaných výjimek můžete všechny tyto funkce použít dohromady. Mů
 
 U každého daného případu použití může být několik způsobů, jak problém vyřešit. Výběr nejlepší funkce někdy nabývá mimo případ použití. Následující případy příchozího použití ukazují, jak používat funkce App Service sítě k řešení problémů s řízením provozu, který do vaší aplikace směřuje:
  
-| Případ příchozího použití | Příznak |
+| Případ příchozího použití | Funkce |
 |---------------------|-------------------|
 | Podpora protokolu SSL založeného na protokolu IP pro vaši aplikaci | Adresa přiřazená aplikacím |
 | Podpora nesdílené vyhrazené příchozí adresy pro vaši aplikaci | Adresa přiřazená aplikacím |
@@ -56,7 +56,7 @@ U každého daného případu použití může být několik způsobů, jak prob
 
 Následující případy odchozího použití ukazují, jak používat funkce App Service sítě k řešení požadavků na odchozí přístup k vaší aplikaci:
 
-| Případ odchozího použití | Příznak |
+| Případ odchozího použití | Funkce |
 |---------------------|-------------------|
 | Přístup k prostředkům ve virtuální síti Azure ve stejné oblasti | Integrace virtuální sítě </br> ASE |
 | Přístup k prostředkům ve virtuální síti Azure v jiné oblasti | Brána – požadovaná integrace virtuální sítě </br> Pomocného mechanismu pro vytváření a virtuální sítě |
@@ -243,7 +243,7 @@ Tento styl nasazení vám neposkytne vyhrazenou adresu pro odchozí přenosy na 
 
 ### <a name="create-multitier-applications"></a>Vytváření vícevrstvých aplikací
 
-Vícevrstvá aplikace je aplikace, ve které je back-endové aplikace API dostupné jenom z front-endové úrovně. Existují dva způsoby, jak vytvořit vícevrstvou aplikaci. Jak začít pomocí integrace virtuální sítě připojit front-end webovou aplikaci k podsíti ve virtuální síti. Tím umožníte, aby webová aplikace prováděla volání do vaší virtuální sítě. Jakmile je aplikace front-end připojená k virtuální síti, musíte se rozhodnout, jak uzamknout přístup k vaší aplikaci API. Máte následující možnosti:
+Vícevrstvá aplikace je aplikace, ve které je back-endové aplikace API dostupné jenom z front-endové úrovně. Existují dva způsoby, jak vytvořit vícevrstvou aplikaci. Jak začít pomocí integrace virtuální sítě připojit front-end webovou aplikaci k podsíti ve virtuální síti. Tím umožníte, aby webová aplikace prováděla volání do vaší virtuální sítě. Jakmile je aplikace front-end připojená k virtuální síti, musíte se rozhodnout, jak uzamknout přístup k vaší aplikaci API. Můžete:
 
 * Hostování front-endu i aplikace API ve stejném interního nástroje pomocném programu pro čtení a zpřístupnění aplikace front-end pro Internet pomocí aplikační brány.
 * Hostování front-endu ve víceklientské službě a back-endu v interního nástroje pomocném modulu pro obnovení.
@@ -290,12 +290,12 @@ Pokud provedete kontrolu App Service, najdete několik portů, které jsou vysta
 |  Použití infrastruktury | 7654, 1221 |
 
 <!--Links-->
-[appassignedaddress]: https://docs.microsoft.com/azure/app-service/configure-ssl-certificate
-[iprestrictions]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
-[serviceendpoints]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
-[hybridconn]: https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections
-[vnetintegrationp2s]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
-[vnetintegration]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
-[networkinfo]: https://docs.microsoft.com/azure/app-service/environment/network-info
-[appgwserviceendpoints]: https://docs.microsoft.com/azure/app-service/networking/app-gateway-with-service-endpoints
-[privateendpoints]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint
+[appassignedaddress]: ./configure-ssl-certificate.md
+[iprestrictions]: ./app-service-ip-restrictions.md
+[serviceendpoints]: ./app-service-ip-restrictions.md
+[hybridconn]: ./app-service-hybrid-connections.md
+[vnetintegrationp2s]: ./web-sites-integrate-with-vnet.md
+[vnetintegration]: ./web-sites-integrate-with-vnet.md
+[networkinfo]: ./environment/network-info.md
+[appgwserviceendpoints]: ./networking/app-gateway-with-service-endpoints.md
+[privateendpoints]: ./networking/private-endpoint.md

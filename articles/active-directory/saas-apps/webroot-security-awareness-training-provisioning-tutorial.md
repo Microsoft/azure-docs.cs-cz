@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: feb661a5f0a22350d9660669c18209e7b1fd878d
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: d374043235d6c09243ea5ecdacccf141a2d4f8b4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358520"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181328"
 ---
 # <a name="tutorial-configure-webroot-security-awareness-training-for-automatic-user-provisioning"></a>Kurz: Konfigurace školení na vědomí zabezpečení společnosti Webroot pro Automatické zřizování uživatelů
 
@@ -34,12 +34,12 @@ Tento kurz popisuje kroky, které je třeba provést v rámci školicích kurzů
 > * Udržování uživatelských atributů synchronizovaných mezi službou Azure AD a školením o povědomí o zabezpečení služby Webroot
 > * Zřizování skupin a členství ve skupinách ve školicích kurzech zabezpečení společnosti Webroot
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenant Azure AD](../develop/quickstart-create-new-tenant.md) 
-* Uživatelský účet ve službě Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce).
+* Uživatelský účet ve službě Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce).
 * Konzola poskytovatele spravované služby se službou Webroot Security Training je povolená pro aspoň jednu z vašich webů.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Krok 1. Plánování nasazení zřizování

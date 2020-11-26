@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: df1b3f81c1d8f9ead6d5773de6b6d1cd9517235e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: bbb9b47e42ce195a98801ee08d177efd409c597e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357479"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181658"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>Kurz: Konfigurace PureCloud podle Genesys pro Automatické zřizování uživatelů
 
@@ -31,12 +31,12 @@ Tento kurz popisuje kroky, které je třeba provést v PureCloud pomocí Genesys
 > * Zřizování skupin a členství ve skupinách v PureCloud pomocí Genesys
 > * [Jednotné přihlašování](./purecloud-by-genesys-tutorial.md) do PureCloud podle Genesys (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenant Azure AD](../develop/quickstart-create-new-tenant.md) 
-* Uživatelský účet v Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
+* Uživatelský účet v Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
 * PureCloud [organizace](https://help.mypurecloud.com/?p=81984).
 * Uživatel s [oprávněním](https://help.mypurecloud.com/?p=24360) k vytvoření klienta OAuth.
 
@@ -110,7 +110,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
      |phoneNumbers[type eq "mobile"].value|Řetězec|
      |phoneNumbers[type eq "work"].value|Řetězec|
      |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
-     |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
+     |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Reference|
      |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: employeeNumber|Řetězec|
      
 

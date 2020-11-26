@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: d0113ea684b9b2fb26eac1fb5ceec5b53aef677f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: e690a761efcd16428f9da8fe53e5dd8d26e9ff79
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359744"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181278"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracoviště na Facebooku pro Automatické zřizování uživatelů
 
@@ -30,12 +30,12 @@ Tento kurz popisuje kroky, které je třeba provést na pracovišti na Facebooku
 
 >[!VIDEO https://www.youtube.com/embed/oF7I0jjCfrY]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenant Azure AD](../develop/quickstart-create-new-tenant.md) 
-* Uživatelský účet ve službě Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce)
+* Uživatelský účet ve službě Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce)
 * Pracoviště s povoleným jednorázovým přihlášením na Facebooku
 
 > [!NOTE]

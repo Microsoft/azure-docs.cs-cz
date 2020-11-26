@@ -1,5 +1,5 @@
 ---
-title: Oblasti a zóny dostupnosti v Azure
+title: Oblasti a Zóny dostupnosti v Azure
 description: Přečtěte si o oblastech a Zóny dostupnosti v Azure, které odpovídají vašim technickým a zákonným požadavkům.
 author: cynthn
 ms.service: azure
@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 771635baa3c49c07d0d796cf6ef3be7b870de3e1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 32cd6c23e1fe465a801e56fad5dd3461df860503
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425443"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182729"
 ---
-# <a name="regions-and-availability-zones-in-azure"></a>Oblasti a zóny dostupnosti v Azure
+# <a name="regions-and-availability-zones-in-azure"></a>Oblasti a Zóny dostupnosti v Azure
 
 Služby Microsoft Azure Services jsou k dispozici globálně, aby bylo možné provozovat cloudové operace na optimální úrovni. Podle technických a regulativních hledisek si můžete vybrat nejlepší oblast pro potřeby: možnosti služby, zaregistrování dat, požadavky na dodržování předpisů a latence.
 
@@ -94,7 +94,7 @@ Jak už bylo uvedeno výše, Azure klasifikuje služby do tří kategorií: zák
 > | Úložiště účtů | API Management | Azure API for FHIR |
 > | Application Gateway | App Configuration | Azure Analysis Services |
 > | Azure Backup | App Service | Služba Azure Blockchain |
-> | Azure Cosmos DB | Automation | Azure Blueprint |
+> | Azure Cosmos DB | Automation | Azure Blueprints |
 > | Azure Data Lake Storage Gen2 | Azure Active Directory Domain Services | Azure Database for MariaDB |
 > | Azure ExpressRoute | Azure Bastion | Rezervované HSM Azure |
 > | Azure SQL Database | Azure Cache for Redis | Azure Dev Spaces |
@@ -107,7 +107,7 @@ Jak už bylo uvedeno výše, Azure klasifikuje služby do tří kategorií: zák
 > | Cloud Services: Vyhrazená IP adresa | Azure Databricks | Azure VMware Solution by CloudSimple |
 > | Disk Storage | Azure DDoS Protection | Cloud Services: Řada G |
 > | Event Hubs | Azure DevTest Labs | Cloud Services: řada H-Series |
-> | Key Vault | Brána Azure Firewall | Cognitive Services: Custom Vision |
+> | Key Vault | Azure Firewall | Cognitive Services: Custom Vision |
 > | Nástroj pro vyrovnávání zatížení | Azure Firewall Manager | Cognitive Services: rozpoznávání mluvčího |
 > | Service Bus | Azure Functions | Data Box Heavy |
 > | Service Fabric | Azure HPC Cache | Data Catalog |
@@ -170,9 +170,9 @@ Pro virtuální počítače nasazené v zóně dostupnosti se neúčtují žádn
 - [Vytvoření virtuálního počítače](../virtual-machines/windows/create-portal-availability-zone.md)
 - [Přidání spravovaného disku pomocí PowerShellu](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 - [Vytvoření sady škálování virtuálních počítačů v zóně redundantní](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [Vyrovnávání zatížení virtuálních počítačů napříč zónami pomocí Standard Load Balancer se zónou redundantního front-endu](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
-- [Vyrovnávání zatížení virtuálních počítačů v rámci zóny pomocí Standard Load Balancer s oblastí front-endu](../load-balancer/load-balancer-standard-public-zonal-cli.md)
-- [Zónově redundantní úložiště](../storage/common/storage-redundancy-zrs.md)
+- [Vyrovnávání zatížení virtuálních počítačů napříč zónami pomocí Standard Load Balancer se zónou redundantního front-endu](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
+- [Vyrovnávání zatížení virtuálních počítačů v rámci zóny pomocí Standard Load Balancer s oblastí front-endu](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
+- [Zónově redundantní úložiště](../storage/common/storage-redundancy.md)
 - [SQL Database úroveň pro obecné účely](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
 - [Geografické zotavení po havárii služby Event Hubs](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [Geografické zotavení po havárii služby Service Bus](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)

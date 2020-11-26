@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 168b41534f6ea6055294cc9e9cec139853904fea
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d9fc1592681429998f5082fbadcd45fa068f130e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013022"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180468"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Instalace a použití zobrazení Log Analytics pro Azure Active Directory
 
@@ -31,7 +31,7 @@ Azure Active Directory zobrazení Log Analytics pomáhá analyzovat a hledat pro
 * Protokoly auditu: [Sestava aktivity protokoly auditu](concept-audit-logs.md) vám poskytne přístup k historii všech úloh, které provedete ve vašem tenantovi.
 * Protokoly přihlašování: pomocí [sestavy aktivita přihlášení](concept-sign-ins.md)můžete určit, kdo provedl úkoly hlášené v protokolech auditu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete používat zobrazení Log Analytics, potřebujete:
 
@@ -74,4 +74,4 @@ Pokud chcete používat zobrazení Log Analytics, potřebujete:
 ## <a name="next-steps"></a>Další kroky
 
 * [Postup analýzy protokolů aktivit pomocí protokolů Azure Monitor](howto-analyze-activity-logs-log-analytics.md)
-* [Začínáme s protokoly Azure Monitor v Azure Portal](../../azure-monitor/log-query/get-started-portal.md)
+* [Začínáme s protokoly Azure Monitor v Azure Portal](../../azure-monitor/log-query/log-analytics-tutorial.md)

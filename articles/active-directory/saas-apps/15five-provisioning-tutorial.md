@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 528ab93d1cf47d64338ef186a120695681f48e55
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 00f713e8d319d7ad8dcea014429c57d7fba40541
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998647"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181216"
 ---
 # <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>Kurz: Konfigurace 15Five pro Automatické zřizování uživatelů
 
@@ -34,12 +34,12 @@ Cílem tohoto kurzu je předvést kroky, které je třeba provést v 15Five a Az
 > * Zřizování skupin a členství ve skupinách v 15Five
 > * [Jednotné přihlašování](./15five-tutorial.md) k 15Five (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenant služby Azure AD](../develop/quickstart-create-new-tenant.md) .
-* Uživatelský účet v Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce)
+* Uživatelský účet v Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce)
 * [Tenant 15Five](https://www.15five.com/pricing/)
 * Uživatelský účet v 15Five s oprávněními správce.
 

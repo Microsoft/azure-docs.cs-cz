@@ -2,15 +2,15 @@
 title: Přehled specifikací šablon
 description: Popisuje, jak vytvořit specifikace šablony a sdílet je s ostatními uživateli ve vaší organizaci.
 ms.topic: conceptual
-ms.date: 11/17/2020
+ms.date: 11/25/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 83d5a210a5af538173ad0ca5e4c718363639c40a
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: e919db24a70b0ed69aca6977865cc76c0c9c5845
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94747396"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182457"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager specifikace šablon (Preview)
 
@@ -73,7 +73,7 @@ Vytvořte specifikaci šablony pomocí:
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-New-AzTemplateSpec -Name storageSpec -Version 1.0 -ResourceGroupName templateSpecsRg -Location westus2 -TemplateFile ./mainTemplate.json
+New-AzTemplateSpec -Name storageSpec -Version 1.0a -ResourceGroupName templateSpecsRg -Location westus2 -TemplateFile ./mainTemplate.json
 ```
 
 # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/azure-cli)
@@ -81,7 +81,7 @@ New-AzTemplateSpec -Name storageSpec -Version 1.0 -ResourceGroupName templateSpe
 ```azurecli
 az ts create \
   --name storageSpec \
-  --version "1.0" \
+  --version "1.0a" \
   --resource-group templateSpecRG \
   --location "westus2" \
   --template-file "./mainTemplate.json"
@@ -119,7 +119,7 @@ Get-AzTemplateSpec -ResourceGroupName templateSpecsRG -Name storageSpec
 az ts show \
     --name storageSpec \
     --resource-group templateSpecRG \
-    --version "1.0"
+    --version "1.0a"
 ```
 
 ---
@@ -134,14 +134,14 @@ Místo předání cesty nebo identifikátoru URI pro šablonu nasadíte specifik
 
 **/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Resources/templateSpecs/{template-spec-name}/versions/{template-spec-version}**
 
-Všimněte si, že ID prostředku obsahuje číslo verze specifikace šablony.
+Všimněte si, že ID prostředku obsahuje název verze pro specifikaci šablony.
 
 Například můžete nasadit specifikaci šablony pomocí následujícího příkazu.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-$id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/templateSpecsRG/providers/Microsoft.Resources/templateSpecs/storageSpec/versions/1.0"
+$id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/templateSpecsRG/providers/Microsoft.Resources/templateSpecs/storageSpec/versions/1.0a"
 
 New-AzResourceGroupDeployment `
   -TemplateSpecId $id `
@@ -151,7 +151,7 @@ New-AzResourceGroupDeployment `
 # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/azure-cli)
 
 ```azurecli
-id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/templateSpecsRG/providers/Microsoft.Resources/templateSpecs/storageSpec/versions/1.0"
+id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/templateSpecsRG/providers/Microsoft.Resources/templateSpecs/storageSpec/versions/1.0a"
 
 az deployment group create \
   --resource-group demoRG \
@@ -160,12 +160,12 @@ az deployment group create \
 
 ---
 
-V praxi se obvykle spouštíte `Get-AzTemplateSpec` a získáte ID specifikace šablony, kterou chcete nasadit.
+V praxi obvykle spustíte `Get-AzTemplateSpec` nebo `az ts show` získáte ID specifikace šablony, kterou chcete nasadit.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-$id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -Version 1.0).Versions.Id
+$id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -Version 1.0a).Versions.Id
 
 New-AzResourceGroupDeployment `
   -ResourceGroupName demoRG `
@@ -175,7 +175,7 @@ New-AzResourceGroupDeployment `
 # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/azure-cli)
 
 ```azurecli
-id = $(az ts show --name storageSpec --resource-group templateSpecRG --version "1.0" --query "id")
+id = $(az ts show --name storageSpec --resource-group templateSpecRG --version "1.0a" --query "id")
 
 az deployment group create \
   --resource-group demoRG \
@@ -309,7 +309,7 @@ Následující příklad je podobný jako předchozí příklad, ale `id` vlastn
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "id": "[resourceId('templateSpecsRG', 'Microsoft.Resources/templateSpecs/versions', 'networkingSpec', '1.0')]"
+          "id": "[resourceId('templateSpecsRG', 'Microsoft.Resources/templateSpecs/versions', 'networkingSpec', '1.0a')]"
         }
       }
     },
@@ -321,7 +321,7 @@ Následující příklad je podobný jako předchozí příklad, ale `id` vlastn
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "id": "[resourceId('templateSpecsRG', 'Microsoft.Resources/templateSpecs/versions', 'storageSpec', '1.0')]"
+          "id": "[resourceId('templateSpecsRG', 'Microsoft.Resources/templateSpecs/versions', 'storageSpec', '1.0a')]"
         }
       }
     }
@@ -334,7 +334,7 @@ Další informace o propojování specifikací šablon najdete v tématu [kurz: 
 
 ## <a name="versioning"></a>Správa verzí
 
-Když vytvoříte specifikaci šablony, zadáte pro ni číslo verze. Při iteraci kódu šablony můžete buď aktualizovat existující verzi (pro opravy hotfix) nebo publikovat novou verzi. Verze je textový řetězec. Můžete se rozhodnout, že budete postupovat podle systému správy verzí, včetně sémantické správy verzí. Uživatelé specifikace šablony můžou poskytnout číslo verze, které chtějí použít při jeho nasazení.
+Při vytváření specifikace šablony zadejte název verze. Při iteraci kódu šablony můžete buď aktualizovat existující verzi (pro opravy hotfix) nebo publikovat novou verzi. Verze je textový řetězec. Můžete se rozhodnout, že budete postupovat podle systému správy verzí, včetně sémantické správy verzí. Uživatelé specifikace šablony můžou poskytnout název verze, který chtějí použít při jeho nasazení.
 
 ## <a name="next-steps"></a>Další kroky
 

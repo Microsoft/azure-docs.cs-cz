@@ -3,12 +3,12 @@ title: Zlepšení výkonu aplikací Azure pomocí služby Advisor
 description: Využijte doporučení k výkonu v Azure Advisor ke zlepšení rychlosti a odezvy vašich důležitých podnikových aplikací.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 6a008411d4422853e6a98fad59bd4519b42a9548
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 55f5ac6784bf613170fd10060799ab5ad1290a62
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308685"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183341"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Zlepšení výkonu aplikací Azure pomocí Azure Advisor
 
@@ -146,7 +146,7 @@ Advisor detekuje účty Azure Cosmos DB, které mají provoz z oblasti, která n
 
 ## <a name="configure-your-azure-cosmos-db-indexing-policy-by-using-custom-included-or-excluded-paths"></a>Konfigurace zásad indexování Azure Cosmos DB pomocí vlastních zahrnutých nebo vyloučených cest
 
-Advisor identifikuje kontejnery Azure Cosmos DB, které používají výchozí zásady indexování, ale můžou využít vlastní zásady indexování. Toto určení je založené na vzoru úloh. Výchozí zásada indexování indexuje všechny vlastnosti. Vlastní zásada indexování s explicitními zahrnutými nebo vyloučenými cestami, které se používají ve filtrech dotazů, může snížit ru a úložiště spotřebované při indexování. [Přečtěte si další informace o změnách zásad indexování.](/azure/cosmos-db/index-policy)
+Advisor identifikuje kontejnery Azure Cosmos DB, které používají výchozí zásady indexování, ale můžou využít vlastní zásady indexování. Toto určení je založené na vzoru úloh. Výchozí zásada indexování indexuje všechny vlastnosti. Vlastní zásada indexování s explicitními zahrnutými nebo vyloučenými cestami, které se používají ve filtrech dotazů, může snížit ru a úložiště spotřebované při indexování. [Přečtěte si další informace o změnách zásad indexování.](../cosmos-db/index-policy.md)
 
 ## <a name="set-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Nastavení velikosti stránky dotazu na Azure Cosmos DB (MaxItemCount) na hodnotu-1 
 

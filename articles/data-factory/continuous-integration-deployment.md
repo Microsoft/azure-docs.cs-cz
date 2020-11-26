@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 93aeb088f82cae6dde215792e399997b592a5c14
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 728dda7c702d7fc52c9285c7cb15fc4b6dc3003c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96003969"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182046"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Průběžná integrace a doručování v Azure Data Factory
 
@@ -639,7 +639,7 @@ Podívejte se na video pod podrobným výukovým kurzem o tom, jak horká prost�
 
 ## <a name="exposure-control-and-feature-flags"></a>Řízení a příznaky funkcí pro expozici
 
-Při práci na týmu existují instance, ve kterých můžete sloučit změny, ale nechcete, aby byly spuštěny v prostředích se zvýšenými oprávněními, jako jsou například PROD a QA. Pro zpracování tohoto scénáře tým ADF doporučuje [koncept DevOps používání příznaků funkcí](https://docs.microsoft.com/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops). V rámci ADF můžete kombinovat [globální parametry](author-global-parameters.md) a [aktivitu if podmínka](control-flow-if-condition-activity.md) , aby se na základě těchto příznaků prostředí skryly sady logiky.
+Při práci na týmu existují instance, kde můžete sloučit změny, ale nechcete, aby běžely v prostředích se zvýšenými oprávněními, jako jsou například PROD a QA. Pro zpracování tohoto scénáře tým ADF doporučuje [koncept DevOps používání příznaků funkcí](https://docs.microsoft.com/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops). V rámci ADF můžete kombinovat [globální parametry](author-global-parameters.md) a [aktivitu if podmínka](control-flow-if-condition-activity.md) , aby se na základě těchto příznaků prostředí skryly sady logiky.
 
 Další informace o tom, jak nastavit příznak funkce, najdete v následujícím kurzu videa:
 

@@ -263,7 +263,7 @@
             - name: Konfigurace omezeného delegování Kerberos
               href: application-proxy-back-end-kerberos-constrained-delegation-how-to.md
             - name: Konfigurace s využitím PingAccess
-              href: /azure/active-directory/manage-apps/application-proxy-ping-access-publishing-guide
+              href: ./application-proxy-ping-access-publishing-guide.md
             - name: Chyba typu Není přístup k podnikové aplikaci
               href: application-proxy-sign-in-bad-gateway-timeout-error.md
             - name: Potíže při instalaci konektoru agenta proxy aplikací

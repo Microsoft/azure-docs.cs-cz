@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: 250e95b33b985aedcc1b1537f57338d29e848451
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: c596b0d218c0b935fa1f3e971067160e52d87af1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96020207"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183120"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>Kurz: přístup k Azure Storage z webové aplikace
 
@@ -23,7 +23,7 @@ Naučte se, jak získat přístup k Azure Storage webové aplikace (ne k přihl�
 
 :::image type="content" alt-text="Diagram, který ukazuje, jak získat přístup k úložišti" source="./media/scenario-secure-app-access-storage/web-app-access-storage.svg" border="false":::
 
-Z webové aplikace chcete přidat přístup k rovině dat Azure (Azure Storage, Azure SQL Database, Azure Key Vault nebo jiným službám). Můžete použít sdílený klíč, ale pak se musíte starat o provozní zabezpečení, kteří můžou vytvořit, nasadit a spravovat tajný klíč. Je také možné, že se klíč rezervoval do GitHubu, který hackeři ví, jak hledat. Bezpečnější způsob, jak poskytnout přístup k datům vaší webové aplikaci, je použití [spravovaných identit](/azure/active-directory/managed-identities-azure-resources/overview).
+Z webové aplikace chcete přidat přístup k rovině dat Azure (Azure Storage, Azure SQL Database, Azure Key Vault nebo jiným službám). Můžete použít sdílený klíč, ale pak se musíte starat o provozní zabezpečení, kteří můžou vytvořit, nasadit a spravovat tajný klíč. Je také možné, že se klíč rezervoval do GitHubu, který hackeři ví, jak hledat. Bezpečnější způsob, jak poskytnout přístup k datům vaší webové aplikaci, je použití [spravovaných identit](../active-directory/managed-identities-azure-resources/overview.md).
 
 Spravovaná identita z Azure Active Directory (Azure AD) umožňuje App Service přistupovat k prostředkům prostřednictvím řízení přístupu na základě role (RBAC), aniž by museli vyžadovat přihlašovací údaje aplikace. Po přiřazení spravované identity k webové aplikaci se Azure postará o vytvoření a distribuci certifikátu. Lidé si nemuseli dělat starosti se správou tajných klíčů nebo přihlašovacích údajů aplikací.
 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Webová aplikace spuštěná v Azure App Service s [povoleným App Servicem ověřováním/autorizačním modulem](scenario-secure-app-authentication-app-service.md).
 

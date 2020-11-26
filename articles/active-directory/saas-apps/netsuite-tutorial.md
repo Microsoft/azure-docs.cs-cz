@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 9bebb11c3a1162a0a7b72140f7d3812f86f793ce
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 9272114dd472717e59680b40c07d8435dea19682
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95791369"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181964"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Kurz: Integrace jednotného přihlašování (SSO) Azure AD pomocí NetSuite
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat NetSuite s Azure Active Directory (Azu
 * Umožněte uživatelům, aby se automaticky přihlásili k NetSuite pomocí svých účtů Azure AD.
 * Spravujte své účty na jednom centrálním místě, Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -253,7 +253,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 - Klikněte na testovat tuto aplikaci v Azure Portal a měli byste se automaticky přihlášeni k NetSuite, pro které jste nastavili jednotné přihlašování.
 
-- Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici NetSuite v okně moje aplikace, měli byste se automaticky přihlásit k NetSuite, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+- Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici NetSuite v okně moje aplikace, měli byste se automaticky přihlásit k NetSuite, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky

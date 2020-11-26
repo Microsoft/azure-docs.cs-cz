@@ -3,12 +3,12 @@ title: Vytvoření aplikace Function App na platformě Linux z Azure Portal
 description: Naučte se, jak vytvořit první funkci Azure Functions na platformě Linux pomocí Azure Portal.
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 53edee15d9c9dfa66e57bb1eb03b1d8f66aa1ee2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20390239ed58e42749e9a3bae472a2f3f6324bb2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970723"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181250"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Vytvoření aplikace Function App v systému Linux v plánu Azure App Service
 
@@ -44,7 +44,7 @@ K hostování provádění funkcí v Linuxu musíte mít aplikaci funkcí. Aplik
     |**Verze**| Číslo verze | Vyberte verzi nainstalovaného modulu runtime.  |
     |**Oblast**| Upřednostňovaná oblast | Vyberte [oblast](https://azure.microsoft.com/regions/) poblíž nebo poblíž dalších služeb, ke kterým máte přístup. |
 
-    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-basics-linux.png" alt-text="Vytvoření aplikace funkcí na webu Azure Portal":::
+    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-basics-linux.png" alt-text="Stránka základy":::
 
 1. Vyberte **Další: hostování**. Na stránce **hostování** zadejte následující nastavení.
 
@@ -54,15 +54,15 @@ K hostování provádění funkcí v Linuxu musíte mít aplikaci funkcí. Aplik
     |**Operační systém**| **Linux** | Operační systém je předem vybraný pro vás na základě výběru zásobníku modulu runtime, ale v případě potřeby můžete změnit nastavení. |
     | **[Plánování](../azure-functions/functions-scale.md)** | **Využití (bez serverů)** | Plán hostování, který určuje způsob přidělování prostředků aplikaci Function App. Ve výchozím plánu **Využití** se prostředky přidávají dynamicky podle požadavků příslušných funkcí. V tomto hostiteli bez [serveru](https://azure.microsoft.com/overview/serverless-computing/) platíte jenom za čas, kdy se vaše funkce spouštějí. Pokud používáte plán služby App Service, musíte zajistit správu [škálování vaší aplikace funkcí](../azure-functions/functions-scale.md).  |
 
-    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-hosting-linux.png" alt-text="Vytvoření aplikace funkcí na webu Azure Portal":::
+    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-hosting-linux.png" alt-text="Stránka hostování":::
 
 1. Vyberte **Další: monitorování**. Na stránce **monitorování** zadejte následující nastavení.
 
     | Nastavení      | Navrhovaná hodnota  | Popis |
     | ------------ | ---------------- | ----------- |
-    | **[Application Insights](../azure-functions/functions-monitoring.md)** | **Ano** (výchozí) | Vytvoří Application Insights prostředek stejného *názvu aplikace* v nejbližší podporované oblasti. Rozbalením tohoto nastavení nebo výběrem možnosti **vytvořit nový**můžete změnit název Application Insights nebo zvolit jinou oblast v [geografickém umístění Azure](https://azure.microsoft.com/global-infrastructure/geographies/) , kam chcete ukládat data. |
+    | **[Application Insights](../azure-functions/functions-monitoring.md)** | **Ano** (výchozí) | Vytvoří Application Insights prostředek stejného *názvu aplikace* v nejbližší podporované oblasti. Rozbalením tohoto nastavení nebo výběrem možnosti **vytvořit nový** můžete změnit název Application Insights nebo zvolit jinou oblast v [geografickém umístění Azure](https://azure.microsoft.com/global-infrastructure/geographies/) , kam chcete ukládat data. |
 
-   :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-monitoring-linux.png" alt-text="Vytvoření aplikace funkcí na webu Azure Portal":::
+   :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-monitoring-linux.png" alt-text="Stránka monitorování":::
 
 1. Výběrem možnosti **zkontrolovat + vytvořit** zkontrolujte výběry konfigurace aplikace.
 
@@ -83,15 +83,15 @@ Dál vytvoříte v nové aplikaci Function App funkci.
 V této části se dozvíte, jak vytvořit funkci ve vaší nové aplikaci Function App na portálu.
 
 > [!NOTE]
-> Prostředí pro vývoj na portálu může být užitečné při vyzkoušení Azure Functions. V případě většiny scénářů zvažte místní vývoj funkcí a publikování projektu do aplikace Function App pomocí [Visual Studio Code](functions-create-first-function-vs-code.md#create-an-azure-functions-project) nebo [Azure Functions Core Tools](functions-run-local.md#create-a-local-functions-project).  
+> Prostředí pro vývoj na portálu může být užitečné při vyzkoušení Azure Functions. V případě většiny scénářů zvažte místní vývoj funkcí a publikování projektu do aplikace Function App pomocí [Visual Studio Code](./create-first-function-vs-code-csharp.md#create-an-azure-functions-project) nebo [Azure Functions Core Tools](functions-run-local.md#create-a-local-functions-project).  
 
-1. V levé nabídce okna **Functions (funkce** ) vyberte **funkce**a pak v horní nabídce vyberte **Přidat** . 
+1. V levé nabídce okna **Functions (funkce** ) vyberte **funkce** a pak v horní nabídce vyberte **Přidat** . 
  
 1. V **novém okně funkce** vyberte **Trigger http**.
 
     ![Zvolit funkci triggeru HTTP](./media/create-function-app-linux-app-service-plan/function-app-select-http-trigger.png)
 
-1. V okně **Nová funkce** přijměte výchozí název **nové funkce**nebo zadejte nový název. 
+1. V okně **Nová funkce** přijměte výchozí název **nové funkce** nebo zadejte nový název. 
 
 1. V rozevíracím seznamu **úroveň autorizace** zvolte **anonymní** a pak vyberte **vytvořit funkci**.
 

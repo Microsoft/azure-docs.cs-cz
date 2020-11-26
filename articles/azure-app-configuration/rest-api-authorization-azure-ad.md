@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 89c51e69a4274affcecb4d967deb96dcebcfd70f
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 0229b1941e40345f35cb7409533e54b0c4ea7d5d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95253366"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182610"
 ---
 # <a name="azure-active-directory-authorization---rest-api-reference"></a>Ověřování Azure Active Directory – REST API Reference
 
@@ -43,4 +43,4 @@ HTTP/1.1 403 Forbidden
 
 ## <a name="managing-role-assignments"></a>Správa přiřazení rolí
 
-Přiřazení rolí můžete spravovat pomocí [postupů RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) , které jsou standardem napříč všemi službami Azure. Můžete to provést prostřednictvím rozhraní příkazového řádku Azure, PowerShellu a Azure Portal. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+Přiřazení rolí můžete spravovat pomocí [postupů RBAC](../role-based-access-control/overview.md) , které jsou standardem napříč všemi službami Azure. Můžete to provést prostřednictvím rozhraní příkazového řádku Azure, PowerShellu a Azure Portal. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md).

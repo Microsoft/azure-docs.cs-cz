@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 280083ccbd732e95796013bf2b2c08e96564c24c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c87c3692d7e1106e0952b85791da663e03c6001d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020479"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182474"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Kurz: Konfigurace přiblížení pro Automatické zřizování uživatelů
 
@@ -30,12 +30,12 @@ Tento kurz popisuje kroky, které je třeba provést v rámci lupy i Azure Activ
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a přiblížením
 > * [Jednotné přihlašování](./zoom-tutorial.md) pro přiblížení (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenanta Azure AD](../develop/quickstart-create-new-tenant.md)
-* Uživatelský účet v Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
+* Uživatelský účet v Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
 * [Tenant přiblížení](https://zoom.us/pricing).
 * Uživatelský účet v přiblížení s oprávněními správce.
 

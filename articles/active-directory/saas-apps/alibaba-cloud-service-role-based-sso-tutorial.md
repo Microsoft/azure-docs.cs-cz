@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 84bf1b5ebac158135cf4e19cdbd0afdb181905d9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 256685e035659cd0fac7fa5577d99f43f4761ea2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079202"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180575"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s cloudovou službou Alibaba (jednotné přihlašování založené na rolích)
 
@@ -45,8 +45,8 @@ Pokud chcete nakonfigurovat integraci Alibaba cloudové služby (SSO založená 
 
 1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace** .
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **Alibaba cloudovou službu (SSO založené na rolích)** .
 1. Z panelu výsledků vyberte **cloudovou službu Alibaba (SSO založené na rolích)** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 5. Na stránce **Alibaba Cloud Service (SSO na základě rolí)** klikněte na **vlastnosti** v navigačním PODOKNĚ vlevo a zkopírujte **ID objektu** a uložte ho do svého počítače pro následné použití.
@@ -56,7 +56,7 @@ Pokud chcete nakonfigurovat integraci Alibaba cloudové služby (SSO založená 
 
 ## <a name="configure-and-test-azure-ad-sso-for-alibaba-cloud-service-role-based-sso"></a>Konfigurace a testování jednotného přihlašování služby Azure AD pro cloudovou službu Alibaba (jednotné přihlašování založené na rolích)
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí cloudové služby Alibaba (SSO založené na rolích) pomocí testovacího uživatele s názvem **B. Simon** . Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v cloudové službě Alibaba (jednotné přihlašování na základě rolí).
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí cloudové služby Alibaba (SSO založené na rolích) pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v cloudové službě Alibaba (jednotné přihlašování na základě rolí).
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí cloudové služby Alibaba (SSO založené na rolích), proveďte následující kroky:
 
@@ -72,17 +72,17 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce **cloudová služba Alibaba (jednotné přihlašování na základě rolí)** najděte část **Správa** a vyberte **jednotné přihlašování** .
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** .
+1. V [Azure Portal](https://portal.azure.com/)na stránce **cloudová služba Alibaba (jednotné přihlašování na základě rolí)** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. Pokud máte **soubor metadat poskytovatele služeb** v **základní části Konfigurace SAML** , proveďte následující kroky:
 
-    a. Klikněte na **nahrát soubor metadat** .
+    a. Klikněte na **nahrát soubor metadat**.
 
-    b. Kliknutím na **logo složky** vyberte soubor metadat a klikněte na **nahrát** .
+    b. Kliknutím na **logo složky** vyberte soubor metadat a klikněte na **nahrát**.
 
     
     >[!NOTE]
@@ -108,23 +108,23 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit** .
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup ke cloudové službě Alibaba (SSO založené na rolích).
 
-1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** .
-1. V seznamu aplikace vyberte **cloudovou službu Alibaba (jednotné přihlašování na základě rolí)** .
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny** .
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **cloudovou službu Alibaba (jednotné přihlašování na základě rolí)**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-1. Na kartě **Uživatelé a skupiny** vyberte v seznamu uživatelů možnost U2 a klikněte na **Vybrat** . Pak klikněte na **přiřadit** .
+1. Na kartě **Uživatelé a skupiny** vyberte v seznamu uživatelů možnost U2 a klikněte na **Vybrat**. Pak klikněte na **přiřadit**.
 
     ![Přiřazení Azure AD test user1](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
 
@@ -139,13 +139,13 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. Přihlaste se ke konzole Alibaba Cloud [RAM](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A%2F%2Fram.console.aliyun.com%2F%3Fspm%3Da2c63.p38356.879954.8.7d904e167h6Yg9) pomocí Account1.
 
-2. V navigačním podokně na levé straně vyberte **jednotné přihlašování** .
+2. V navigačním podokně na levé straně vyberte **jednotné přihlašování**.
 
-3. Na kartě **jednotné přihlašování na základě rolí** klikněte na **vytvořit IDP** .
+3. Na kartě **jednotné přihlašování na základě rolí** klikněte na **vytvořit IDP**.
 
-4. Na zobrazené stránce zadejte `AAD` do pole název IDP, zadejte popis do pole **Poznámka** , klikněte na tlačítko **nahrát** a nahrajte soubor federačních metadat, který jste stáhli dříve, a klikněte na **OK** .
+4. Na zobrazené stránce zadejte `AAD` do pole název IDP, zadejte popis do pole **Poznámka** , klikněte na tlačítko **nahrát** a nahrajte soubor federačních metadat, který jste stáhli dříve, a klikněte na **OK**.
 
-5. Po úspěšném vytvoření IdP klikněte na **vytvořit roli RAM** .
+5. Po úspěšném vytvoření IdP klikněte na **vytvořit roli RAM**.
 
 6. V poli **název role RAM** zadejte `AADrole` vyberte v `AAD` rozevíracím seznamu **Vybrat IDP** a klikněte na OK.
 
@@ -160,14 +160,14 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     ![Config1 grafu](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
 
-    c. V seznamu vyberte následující oprávnění a klikněte na **Upravit oprávnění** , jak je znázorněno na následujícím obrázku.
+    c. V seznamu vyberte následující oprávnění a klikněte na **Upravit oprávnění**, jak je znázorněno na následujícím obrázku.
 
     ![Config2 grafu](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
 
     >[!NOTE]
     >Po udělení oprávnění se znovu přihlaste do Průzkumníka graphu.
 
-    d. Na stránce Průzkumník grafů vyberte v prvním rozevíracím seznamu **získat** a **beta** z druhého rozevíracího seznamu. Potom zadejte `https://graph.microsoft.com/beta/servicePrincipals` do pole vedle rozevíracího seznamu a klikněte na **Spustit dotaz** .
+    d. Na stránce Průzkumník grafů vyberte v prvním rozevíracím seznamu **získat** a **beta** z druhého rozevíracího seznamu. Potom zadejte `https://graph.microsoft.com/beta/servicePrincipals` do pole vedle rozevíracího seznamu a klikněte na **Spustit dotaz**.
 
     ![Config3 grafu](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
 
@@ -181,7 +181,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
     >[!NOTE]
     >Vlastnost appRoles můžete vyhledat zadáním `https://graph.microsoft.com/beta/servicePrincipals/<objectID>` do pole dotazu. Všimněte si, že `objectID` je ID objektu, které jste zkopírovali ze stránky **vlastností** Azure AD.
 
-    f. Vraťte se do Průzkumníka graphu, změňte metodu z možnosti **získat** na **opravu** , vložte následující obsah do části **Text žádosti** a klikněte na **Spustit dotaz** :
+    f. Vraťte se do Průzkumníka graphu, změňte metodu z možnosti **získat** na **opravu**, vložte následující obsah do části **Text žádosti** a klikněte na **Spustit dotaz**:
     ```
     { 
     "appRoles": [
@@ -226,11 +226,11 @@ V této části vytvoříte uživatele s názvem Britta Simon v cloudové služb
 
 Po dokončení předchozích konfigurací otestujte cloudovou službu Alibaba (SSO založené na rolích) pomocí následujících kroků:
 
-1. V Azure Portal přejděte na stránku **cloudová služba Alibaba (SSO založená na rolích)** , vyberte **jednotné přihlašování** a klikněte na **test** .
+1. V Azure Portal přejděte na stránku **cloudová služba Alibaba (SSO založená na rolích)** , vyberte **jednotné přihlašování** a klikněte na **test**.
 
     ![Config1 testu](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
 
-2. Klikněte na **Přihlásit se jako aktuální uživatel** .
+2. Klikněte na **Přihlásit se jako aktuální uživatel**.
 
     ![Config2 testu](./media/alibaba-cloud-service-role-based-sso-tutorial/test04.png)
 
@@ -244,5 +244,4 @@ Po dokončení předchozích konfigurací otestujte cloudovou službu Alibaba (S
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile nakonfigurujete cloudovou službu Alibaba (jednotné přihlašování na základě rolí), můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
+Jakmile nakonfigurujete cloudovou službu Alibaba (jednotné přihlašování na základě rolí), můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

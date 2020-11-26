@@ -7,12 +7,12 @@ keywords: Azure Automation, DSC, PowerShell, konfigurace stavu, Správa aktualiz
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 24aeb37cf868bed5d4211bc9b459a4736ceea4b2
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: e3986b7e8fc70f8662bed40b076897caa6165744
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205332"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182814"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Seznámení s Azure Automation
 
@@ -43,7 +43,7 @@ Change Tracking a inventář kombinuje funkce Change Tracking a Inventory, kter�
 
 ## <a name="update-management"></a>Správa aktualizací
 
-Azure Automation obsahuje funkci [Update Management](update-management/update-mgmt-overview.md) pro systémy Windows a Linux napříč hybridními prostředími. Update Management vám poskytne přehled o kompatibilitě aktualizací napříč Azure a ostatními cloudy a místním prostředí. Tato funkce umožňuje vytvářet plánovaná nasazení, která orchestrují instalaci aktualizací v rámci definovaného časového období údržby. Pokud by se aktualizace neměla instalovat na počítač, můžete k vyloučení z nasazení použít funkci Update Management.
+Azure Automation obsahuje funkci [Update Management](./update-management/overview.md) pro systémy Windows a Linux napříč hybridními prostředími. Update Management vám poskytne přehled o kompatibilitě aktualizací napříč Azure a ostatními cloudy a místním prostředí. Tato funkce umožňuje vytvářet plánovaná nasazení, která orchestrují instalaci aktualizací v rámci definovaného časového období údržby. Pokud by se aktualizace neměla instalovat na počítač, můžete k vyloučení z nasazení použít funkci Update Management.
 
 ## <a name="shared-capabilities"></a>Sdílené možnosti
 

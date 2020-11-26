@@ -14,12 +14,12 @@ ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f82314b0a4e16829b4c192a14fae7f24875365d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a632c0e31de1c2d7e5417656d537e5f9f82ecfbe
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359607"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180485"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Konfigurace výstrah zabezpečení pro role Azure AD v Privileged Identity Management
 
@@ -186,7 +186,7 @@ V této části jsou uvedené všechny výstrahy zabezpečení pro role Azure AD
 | **Jak opravit?** | Zkontrolujte účty v seznamu. Pokud již přístup nepotřebují, odeberte je ze svých privilegovaných rolí. |
 | **Prevention (Prevence)** | Ujistěte se, že účty, které jsou sdíleny, přecházejí silné heslo, když dojde ke změně v uživatelích, kteří znají heslo. </br>Pravidelně kontrolujte účty s privilegovanými rolemi pomocí kontrol [přístupu](pim-how-to-start-security-review.md) a odeberte přiřazení rolí, která už nepotřebujete. |
 | **Akce zmírňování na portálu** | Odebere účet z své privilegované role. |
-| **Osvědčené postupy** | Účty Shared, Service a Emergency Access, které se ověřují pomocí hesla a jsou přiřazené k vysoce privilegovaným rolím pro správu, jako je globální správce nebo správce zabezpečení, by měli mít svoje hesla otočená v následujících případech:<ul><li>Po bezpečnostním incidentu, který zahrnuje zneužití nebo narušení přístupových práv pro správu</li><li>Po změně oprávnění libovolného uživatele tak, aby již neexistovala jako správce (například po zaměstnanci, který ho správce opustí nebo opustí organizaci)</li><li>V pravidelných intervalech (například čtvrtletní nebo roční), a to i v případě, že nedošlo k žádnému nedodržení předpisů nebo ke změně pracovníků IT</li></ul>Vzhledem k tomu, že k přihlašovacím údajům těchto účtů mají přístup více lidí, by se měla otočit přihlašovací údaje, aby uživatelé, kteří si opustili své role, už nemuseli získat přístup k účtům. [Další informace](../users-groups-roles/directory-admin-roles-secure.md) |
+| **Osvědčené postupy** | Účty Shared, Service a Emergency Access, které se ověřují pomocí hesla a jsou přiřazené k vysoce privilegovaným rolím pro správu, jako je globální správce nebo správce zabezpečení, by měli mít svoje hesla otočená v následujících případech:<ul><li>Po bezpečnostním incidentu, který zahrnuje zneužití nebo narušení přístupových práv pro správu</li><li>Po změně oprávnění libovolného uživatele tak, aby již neexistovala jako správce (například po zaměstnanci, který ho správce opustí nebo opustí organizaci)</li><li>V pravidelných intervalech (například čtvrtletní nebo roční), a to i v případě, že nedošlo k žádnému nedodržení předpisů nebo ke změně pracovníků IT</li></ul>Vzhledem k tomu, že k přihlašovacím údajům těchto účtů mají přístup více lidí, by se měla otočit přihlašovací údaje, aby uživatelé, kteří si opustili své role, už nemuseli získat přístup k účtům. [Další informace](../roles/security-planning.md) |
 
 ### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>Role se přiřazují mimo Privileged Identity Management
 

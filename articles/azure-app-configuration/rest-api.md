@@ -6,20 +6,20 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 2e89b372e3ee8d71e99baa4072cd577fa4fb8d7c
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: e2753f0f8926ac15f5d32020c8891d1b612d2bb3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423988"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182593"
 ---
 # <a name="azure-app-configuration-rest-api"></a>REST API konfigurace aplikace Azure
 
-V hlavní [dokumentaci k Azure REST](https://docs.microsoft.com/rest/api/appconfiguration/)najdete dokumentaci vysoké úrovně pro REST API pro konfiguraci aplikací Azure. Tato část obsahuje další podrobnosti o vývojářích, kteří pracují s konfigurací aplikace REST API.
+V hlavní [dokumentaci k Azure REST](/rest/api/appconfiguration/)najdete dokumentaci vysoké úrovně pro REST API pro konfiguraci aplikací Azure. Tato část obsahuje další podrobnosti o vývojářích, kteří pracují s konfigurací aplikace REST API.
 
 K dispozici jsou následující referenční stránky, které podrobně popisují plochu rozhraní API pro konfiguraci aplikací Azure.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje informací
 
 - [Klíče](./rest-api-keys.md)
 - [Hodnoty klíč](./rest-api-key-value.md)

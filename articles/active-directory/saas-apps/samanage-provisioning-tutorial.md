@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5cdc36c20cbba148bb68bda700f5fdccbc593caf
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: cca46d47003a1611c861986f8df839de57500db6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94352995"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181475"
 ---
 # <a name="tutorial-configure-solarwinds-service-desk-previously-samanage-for-automatic-user-provisioning"></a>Kurz: Konfigurace služby SolarWinds Service Desk (dříve Samanage) pro Automatické zřizování uživatelů
 
@@ -49,12 +49,12 @@ Když se vaše aplikace migruje, v části **přihlašovací údaje správce** s
 > * Zřizování skupin a členství ve skupinách v SolarWinds oddělení služeb
 > * [Jednotné přihlašování](./samanage-tutorial.md) do služby SolarWinds Service Desk (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenant Azure AD](../develop/quickstart-create-new-tenant.md) 
-* Uživatelský účet ve službě Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce). 
+* Uživatelský účet ve službě Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce). 
 * [Tenant služby SolarWinds Service](https://www.samanage.com/pricing/) se balíčkem Professional.
 * Uživatelský účet ve službě SolarWinds Service s oprávněními správce.
 

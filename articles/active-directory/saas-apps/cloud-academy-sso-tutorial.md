@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: jeedes
 ms.openlocfilehash: 822e28402d0b7829b835ad03a3b3cf7d05c3d343
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455802"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180995"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-cloud-academy---sso"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí cloudu Academy-SSO
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Cloud Academy-SSO pomocí Azure Active
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -88,25 +88,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure Portal.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**. Vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**. Vyberte **Uživatelé** a pak vyberte **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. V části vlastnosti **uživatele** proveďte tyto kroky:
    1. Do pole **název** zadejte **B. Simon**.  
    1. Do pole **uživatelské jméno** zadejte \<username> @ \<companydomain> . \<extension> . Například, `B.Simon@contoso.com`.
-   1. Vyberte možnost **Zobrazit heslo**a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Vyberte možnost **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Vyberte **Vytvořit**.
 
 ### <a name="grant-access-to-the-test-user"></a>Udělení přístupu testovacímu uživateli
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte tomuto uživateli přístup ke cloudu Academy-SSO.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Cloud Academy-SSO**.
 1. Na stránce Přehled aplikace v části **Spravovat** vyberte **Uživatelé a skupiny**:
 
    ![Snímek obrazovky, který zobrazuje možnost Uživatelé a skupiny.](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** :
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** :
 
     ![Snímek obrazovky zobrazující tlačítko Přidat uživatele](common/add-assign-user.png)
 
@@ -165,7 +165,7 @@ Nyní otestujete konfiguraci služby Azure AD SSO pomocí přístupového panelu
 
 Když vyberete dlaždici Cloud Academy-SSO na přístupovém panelu, měli byste se automaticky přihlásit k instanci Cloud Academy-SSO, pro kterou jste nastavili jednotné přihlašování. Další informace najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Kurzy k integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

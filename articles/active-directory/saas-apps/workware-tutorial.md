@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: f3f48695f0ef26b6e54073dbfc4bb0c61802fe58
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: f4996943fd95252be45f7a270d143f14e7f2d48a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905706"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181267"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workware"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Workware
 
@@ -45,15 +45,15 @@ Pokud chcete nakonfigurovat integraci Workware do služby Azure AD, musíte při
 
 1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace** .
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Workware** .
 1. Na panelu výsledků vyberte **Workware** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
 ## <a name="configure-and-test-azure-ad-sso-for-workware"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Workware
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Workware pomocí testovacího uživatele s názvem **B. Simon** . Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Workware.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Workware pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Workware.
 
 K nakonfigurování a testování jednotného přihlašování Azure AD pomocí Workware postupujte takto:
 
@@ -68,8 +68,8 @@ K nakonfigurování a testování jednotného přihlašování Azure AD pomocí 
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V Azure Portal na stránce integrace aplikací **Workware** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování** .
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** .
+1. V Azure Portal na stránce integrace aplikací **Workware** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
@@ -94,21 +94,21 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit** .
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Workware.
 
-1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** .
-1. V seznamu aplikace vyberte **Workware** .
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny** .
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **Workware**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
@@ -137,9 +137,9 @@ Chcete-li použít funkci jednotného přihlašování v Workware, je nutné pro
     1. Do textového pole **Adresa URL pro přihlášení zprostředkovatele identity** zadejte hodnotu **adresy URL** , kterou jste zkopírovali z Azure Portal.
     1. Do textového pole **Adresa URL vystavitele zprostředkovatele identity** zadejte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal.
     1. V textovém poli **Adresa URL pro odhlášení zprostředkovatele identity** zadejte hodnotu **adresy URL pro odhlášení** , kterou jste zkopírovali z Azure Portal.
-    1. Klikněte na **Povolit** .
+    1. Klikněte na **Povolit**.
     1. Nahrajte stažený **certifikát** do **certifikátu zprostředkovatele identity** z Azure Portal.
-    1. Klikněte na **Uložit** .
+    1. Klikněte na **Uložit**.
 
 
 ### <a name="create-workware-test-user"></a>Vytvořit testovacího uživatele Workware
@@ -156,7 +156,7 @@ Chcete-li použít funkci jednotného přihlašování v Workware, je nutné pro
 
     b. Jako **jednotné přihlašování** vyberte **typ ověřování** .
 
-    c. Zadejte požadovaná pole a klikněte na **Uložit** .
+    c. Zadejte požadovaná pole a klikněte na **Uložit**.
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -164,11 +164,9 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Klikněte na testovat tuto aplikaci v Azure Portal a měli byste se automaticky přihlášeni k Workware, pro které jste nastavili jednotné přihlašování.
 
-* Můžete použít panel Microsoft Access. Když na přístupovém panelu kliknete na dlaždici Workware, měli byste se automaticky přihlásit k Workware, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít panel Microsoft Access. Když na přístupovém panelu kliknete na dlaždici Workware, měli byste se automaticky přihlásit k Workware, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování Workware můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Po nakonfigurování Workware můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

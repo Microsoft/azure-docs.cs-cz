@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01f762ef1fa3a997c01873df02abf87362b8c06f
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 85e6a66f4520f12278266203211e1d1ae224c97f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055949"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180451"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Integrace protokolů služby Azure AD s protokoly Azure Monitor
 
@@ -46,13 +46,13 @@ Protokoly aktivit auditu a protokoly aktivit přihlašování můžete směrovat
 
 * **Protokoly auditu:**[Sestava aktivit protokolů auditu](concept-audit-logs.md) poskytuje přístup k historii každé úlohy provedené ve vašem tenantovi.
 * **Protokoly přihlašování:** Se [sestavou aktivit přihlašování](concept-sign-ins.md) můžete určit, kdo provedl úlohy hlášené v protokolech auditu.
-* **Protokoly zřizování**: pomocí [protokolů zřizování](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics)můžete sledovat, které uživatele se vytvořily, aktualizovaly a odstranily ve všech aplikacích třetích stran. 
+* **Protokoly zřizování**: pomocí [protokolů zřizování](../app-provisioning/application-provisioning-log-analytics.md)můžete sledovat, které uživatele se vytvořily, aktualizovaly a odstranily ve všech aplikacích třetích stran. 
 
 > [!NOTE]
 > Zatím není dostupná podpora protokolů aktivit auditu a přihlašování souvisejících s B2C.
 >
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 Pokud chcete používat tuto funkci, potřebujete tyto položky:
 
@@ -67,7 +67,7 @@ Použití této funkce vyžaduje licenci Azure AD Premium P1 nebo P2. Pokud chce
 
 ## <a name="send-logs-to-azure-monitor"></a>Odeslat protokoly do Azure Monitor
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
 2. Vyberte **Azure Active Directory**  >  **nastavení diagnostiky**  ->  **Přidat nastavení diagnostiky**. Můžete také vybrat **Exportovat nastavení** na stránce **protokoly auditu** nebo **přihlášení** a získat tak stránku konfigurace nastavení diagnostiky.  
     

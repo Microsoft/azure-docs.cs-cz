@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: d3706c26d9b15e9ea607996ace222b29ccd84458
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 4125a4493b72fa60203067f3eba1ccebdc820b02
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95999650"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182967"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>Kurz: přístup k Microsoft Graph z zabezpečené aplikace jako uživatel
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Webová aplikace spuštěná v Azure App Service s [povoleným App Servicem ověřováním/autorizačním modulem](scenario-secure-app-authentication-app-service.md).
 
@@ -78,7 +78,7 @@ Vaše webová aplikace teď má požadovaná oprávnění a také přidá ID kli
 > [!NOTE]
 > Knihovna Microsoft. identity. Web není ve vaší webové aplikaci vyžadována pro základní ověřování/autorizaci nebo pro ověřování požadavků pomocí Microsoft Graph. Je možné [bezpečně volat rozhraní API pro příjem dat](tutorial-auth-aad.md#call-api-securely-from-server-code) pouze s povoleným ověřováním App Service/autorizačním modulem.
 > 
-> Ověřování a autorizace App Service ale jsou navržené pro další scénáře základního ověřování. V případě složitějších scénářů (například zpracování vlastních deklarací identity) potřebujete knihovnu Microsoft. identity. Web nebo [knihovnu Microsoft Authentication Library](/azure/active-directory/develop/msal-overview). Na začátku se nachází trochu další instalace a konfigurace, ale knihovna Microsoft. identity. Web Library může běžet společně s modulem App Service ověřování/autorizace. Později, pokud vaše webová aplikace potřebuje pracovat se složitějšími scénáři, můžete zakázat modul App Service Authentication/Authorization a Microsoft. identity. Web už je součástí vaší aplikace.
+> Ověřování a autorizace App Service ale jsou navržené pro další scénáře základního ověřování. V případě složitějších scénářů (například zpracování vlastních deklarací identity) potřebujete knihovnu Microsoft. identity. Web nebo [knihovnu Microsoft Authentication Library](../active-directory/develop/msal-overview.md). Na začátku se nachází trochu další instalace a konfigurace, ale knihovna Microsoft. identity. Web Library může běžet společně s modulem App Service ověřování/autorizace. Později, pokud vaše webová aplikace potřebuje pracovat se složitějšími scénáři, můžete zakázat modul App Service Authentication/Authorization a Microsoft. identity. Web už je součástí vaší aplikace.
 
 ### <a name="install-client-library-packages"></a>Nainstalovat balíčky klientské knihovny
 

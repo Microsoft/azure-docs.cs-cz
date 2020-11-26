@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 2317e61111c3ad328e8f112e7d9567f3f5d47990
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 031b3bfd30e0272589c5c7ee2c546b9459767b33
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997035"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183188"
 ---
 # <a name="tutorial-monitor-published-apis"></a>Kurz: monitorování publikovaných rozhraní API
 
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > * Zobrazení protokolů aktivit
 > * Povolit a zobrazit protokoly prostředků
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Dokončete následující rychlý Start: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
@@ -90,7 +90,7 @@ Postup konfigurace ukázkového pravidla výstrahy na základě metriky požadav
 
 1. Zadejte název a popis pravidla výstrahy a vyberte úroveň závažnosti. 
 1. Vyberte **Vytvořit pravidlo upozornění**.
-1. Nyní otestujte pravidlo výstrahy voláním rozhraní API pro konferenci bez klíče rozhraní API. Například:
+1. Nyní otestujte pravidlo výstrahy voláním rozhraní API pro konferenci bez klíče rozhraní API. Příklad:
 
     ```bash
     curl GET https://apim-hello-world.azure-api.net/conference/speakers HTTP/1.1 
@@ -149,7 +149,7 @@ Pokud povolíte shromažďování GatewayLogs nebo metrik v pracovním prostoru 
 
     :::image type="content" source="media/api-management-howto-use-azure-monitor/logs-menu-item.png" alt-text="Snímek obrazovky s položkou Logs v nabídce monitorování":::
 
-Spusťte dotazy pro zobrazení dat. Je k dispozici několik [ukázkových dotazů](../azure-monitor/log-query/saved-queries.md) nebo vlastní spuštění. Například následující dotaz načte nejaktuálnější 24 hodin dat z tabulky GatewayLogs:
+Spusťte dotazy pro zobrazení dat. Je k dispozici několik [ukázkových dotazů](../azure-monitor/log-query/example-queries.md) nebo vlastní spuštění. Například následující dotaz načte nejaktuálnější 24 hodin dat z tabulky GatewayLogs:
 
 ```kusto
 ApiManagementGatewayLogs
@@ -158,7 +158,7 @@ ApiManagementGatewayLogs
 
 Další informace o použití protokolů prostředků pro API Management najdete v tématech:
 
-* Začněte [s Azure Monitor Log Analytics](../azure-monitor/log-query/get-started-portal.md)nebo vyzkoušejte [ukázkové prostředí Log Analytics](https://portal.loganalytics.io/demo).
+* Začněte [s Azure Monitor Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)nebo vyzkoušejte [ukázkové prostředí Log Analytics](https://portal.loganalytics.io/demo).
 
 * [Přehled dotazů protokolu v Azure monitor](../azure-monitor/log-query/log-query-overview.md).
 

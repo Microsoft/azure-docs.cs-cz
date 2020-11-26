@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/04/2020
 ms.author: jeedes
-ms.openlocfilehash: ac7382f60d5c49ac8c784566af4d9db8ea78956b
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: e0cabcbaaf8e84ac1bdfd13c0ef4ab14f326fcf7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331282"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182280"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Kurz: Azure Active Directory integrace s Citrix ShareFile
 
@@ -27,7 +27,7 @@ Integrace Citrix ShareFile s Azure AD poskytuje následující výhody:
 * Uživatelům můžete povolit, aby se automaticky přihlásili k Citrix ShareFile (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Citrix ShareFile potřebujete následující položky:
 
@@ -109,7 +109,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
@@ -173,7 +173,7 @@ Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybr
    
     a. Do textového pole **název** **Zadejte jméno** uživatele jako **Britta**.
    
-    b.  Do textového pole **příjmení** zadejte příjmení User as **Simon** ( **jméno** uživatele).
+    b.  Do textového pole **příjmení** zadejte příjmení User as **Simon**( **jméno** uživatele).
    
     c. Do textového pole **e-mailová adresa** zadejte e-mailovou adresu Britta Simon jako **brittasimon \@ contoso.com**.
 
@@ -190,7 +190,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 2. Přejít na adresu URL pro přihlášení k Citrix ShareFile přímo a zahájit tok přihlášení.
 
-3. Můžete použít panel Microsoft Access. Po kliknutí na dlaždici Citrix ShareFile na přístupovém panelu se tato akce přesměruje na adresu URL pro přihlášení k Citrix ShareFile. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+3. Můžete použít panel Microsoft Access. Po kliknutí na dlaždici Citrix ShareFile na přístupovém panelu se tato akce přesměruje na adresu URL pro přihlášení k Citrix ShareFile. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 23ad4347dc898f713066ea1ff061490d3eefb55b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 84e8c7fc1d2655ea0685ac79841a9c467bf766cf
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080477"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182387"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect-saml-authentication"></a>Kurz: Azure Active Directory integrace s ověřováním SAML v RStudio Connect
 
@@ -48,15 +48,15 @@ Pokud chcete nakonfigurovat integraci ověřování SAML RStudio Connect do slu�
 
 1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace** .
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **RSTUDIO připojit ověřování SAML** .
 1. Na panelu výsledků vyberte **RStudio Connect Authentication SAML** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
 ## <a name="configure-and-test-azure-ad-sso-for-rstudio-connect-saml-authentication"></a>Konfigurace a testování jednotného přihlašování služby Azure AD pro RStudio Connect pro ověřování SAML
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí RStudio Connect s ověřováním SAML pomocí testovacího uživatele s názvem **B. Simon** . Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v RStudio Connect s ověřováním SAML.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí RStudio Connect s ověřováním SAML pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v RStudio Connect s ověřováním SAML.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí ověřování RStudio Connect SAML, proveďte následující kroky:
 
@@ -71,8 +71,8 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V Azure Portal na stránce integrace aplikace **ověřování SAML pro RStudio Connect** , najděte část **Správa** a vyberte **jednotné přihlašování** .
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** .
+1. V Azure Portal na stránce integrace aplikace **ověřování SAML pro RStudio Connect** , najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
@@ -94,7 +94,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Jsou určeny z adresy ověřovacího serveru SAML RStudio Connect ( `https://example.com` v předchozích příkladech). Pokud máte problémy, obraťte se na [tým podpory pro ověřování SAML v RStudio Connect](mailto:support@rstudio.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-6. Vaše aplikace ověřování RStudio Connect SAML očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde **NameIdentifier** je mapován pomocí **User. userPrincipalName** . RStudio Connect pro ověřování SAML očekává, že **NameIdentifier** se namapují pomocí **User. mail** , takže potřebujete upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
+6. Vaše aplikace ověřování RStudio Connect SAML očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde **NameIdentifier** je mapován pomocí **User. userPrincipalName**. RStudio Connect pro ověřování SAML očekává, že **NameIdentifier** se namapují pomocí **User. mail**, takže potřebujete upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
 
     ![image](common/edit-attribute.png)
 
@@ -106,21 +106,21 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit** .
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k ověřování SAML RStudio Connect.
 
-1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** .
-1. V seznamu aplikace vyberte **RStudio připojit ověřování SAML** .
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny** .
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **RStudio připojit ověřování SAML**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
@@ -128,7 +128,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ## <a name="configure-rstudio-connect-saml-authentication-sso"></a>Konfigurace jednotného přihlašování RStudio Connect pro ověřování SAML
 
-Pokud chcete nakonfigurovat jednotné přihlašování pro **RStudio připojení SAML** , musíte použít **adresu URL federačních metadat aplikace** a **adresu serveru** použitou výše. To se provádí v souboru konfigurace ověřování SAML RStudio Connect na adrese `/etc/rstudio-connect.rstudio-connect.gcfg` .
+Pokud chcete nakonfigurovat jednotné přihlašování pro **RStudio připojení SAML**, musíte použít **adresu URL federačních metadat aplikace** a **adresu serveru** použitou výše. To se provádí v souboru konfigurace ověřování SAML RStudio Connect na adrese `/etc/rstudio-connect.rstudio-connect.gcfg` .
 
 Toto je ukázkový konfigurační soubor:
 
@@ -177,9 +177,8 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k ověřování RSTUDIO Connect SAML, pro které jste nastavili jednotné přihlašování. 
 
-K otestování aplikace v jakémkoli režimu můžete také použít panel Microsoft Access. Když kliknete na dlaždici ověřování RStudio připojit SAML na přístupovém panelu, pokud se nakonfiguruje v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k ověřování SAML RStudio Connect, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+K otestování aplikace v jakémkoli režimu můžete také použít panel Microsoft Access. Když kliknete na dlaždici ověřování RStudio připojit SAML na přístupovém panelu, pokud se nakonfiguruje v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k ověřování SAML RStudio Connect, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po konfiguraci ověřování RStudio Connect SAML můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
+Po konfiguraci ověřování RStudio Connect SAML můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

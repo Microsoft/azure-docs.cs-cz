@@ -4,12 +4,12 @@ description: Naučte se vytvořit funkci Azure pomocí předplatného Azure for 
 Customer intent: As a student, I want to be able to create an HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: ecb2cc20bec602101d683dbfdd3f82a2e199aa16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f40405c9325743da5d1963e3baea781606d2d8d9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87386958"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182525"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Vytvoření funkce pomocí Azure for Students Starter
 
@@ -41,13 +41,13 @@ Dál vytvoříte v nové aplikaci Function App funkci.
 
 ## <a name="create-an-http-trigger-function"></a><a name="create-function"></a>Vytvoření funkce triggeru HTTP
 
-1. V levé nabídce okna **Functions (funkce** ) vyberte **funkce**a pak v horní nabídce vyberte **Přidat** . 
+1. V levé nabídce okna **Functions (funkce** ) vyberte **funkce** a pak v horní nabídce vyberte **Přidat** . 
  
 1. V **novém okně funkce** vyberte **Trigger http**.
 
     ![Zvolit funkci triggeru HTTP](./media/functions-create-student-starter/function-app-select-http-trigger.png)
 
-1. V okně **Nová funkce** přijměte výchozí název **nové funkce**nebo zadejte nový název. 
+1. V okně **Nová funkce** přijměte výchozí název **nové funkce** nebo zadejte nový název. 
 
 1. V rozevíracím seznamu **úroveň autorizace** zvolte **anonymní** a pak vyberte **vytvořit funkci**.
 
@@ -100,7 +100,7 @@ V Azure for Students Starter máte přístup k většině funkcí prostředí Az
 Právě jste dokončili vytváření aplikace Function App s jednoduchou funkcí triggeru HTTP. Dále můžete prozkoumat místní nástroje, další jazyky, monitorování a integrace.
 
  * [Vytvoření první funkce pomocí sady Visual Studio](./functions-create-your-first-function-visual-studio.md)
- * [Vytvoření první funkce pomocí Visual Studio Code](./functions-create-first-function-vs-code.md)
+ * [Vytvoření první funkce pomocí Visual Studio Code](./create-first-function-vs-code-csharp.md)
  * [Azure Functions příručka pro vývojáře JavaScriptu](./functions-reference-node.md)
  * [Připojení k Azure SQL Database pomocí Azure Functions](./functions-scenario-database-table-cleanup.md)
  * [Přečtěte si další informace o Azure Functions vazeb HTTP](./functions-bindings-http-webhook.md).

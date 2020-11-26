@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bc3352dd57a76cbb0b38455adfa11987ec93781a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d73cf3336afad83fadf6f56606161f523e202280
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003017"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180536"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Použití Azure Proxy aplikací služby AD k publikování místních aplikací pro vzdálené uživatele
 
@@ -95,7 +95,7 @@ App proxy funguje s aplikacemi, které používají následující nativní prot
 
 Proxy aplikace také podporuje následující protokoly ověřování s integrací třetí strany nebo v konkrétních scénářích konfigurace:
 
-* [**Ověřování na základě hlaviček**](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers). Tato metoda přihlašování používá ověřovací službu třetí strany nazvanou PingAccess a používá se v případě, že aplikace používá hlavičky pro ověřování. V tomto scénáři se ověřování zpracovává pomocí PingAccess.
+* [**Ověřování na základě hlaviček**](./application-proxy-configure-single-sign-on-with-headers.md). Tato metoda přihlašování používá ověřovací službu třetí strany nazvanou PingAccess a používá se v případě, že aplikace používá hlavičky pro ověřování. V tomto scénáři se ověřování zpracovává pomocí PingAccess.
 * [**Ověřování pomocí formulářů nebo hesel**](application-proxy-configure-single-sign-on-password-vaulting.md). Pomocí této metody ověřování se uživatelé přihlásí k aplikaci pomocí uživatelského jména a hesla při prvním přístupu k ní. Po prvním přihlášení Azure AD zadá uživatelské jméno a heslo k aplikaci. V tomto scénáři služba Azure AD zpracovává ověřování.
 * [**Ověřování SAML**](application-proxy-configure-single-sign-on-on-premises-apps.md). Jednotné přihlašování založené na SAML je podporované pro aplikace, které používají protokol SAML 2,0 nebo WS-Federation protokoly. Pomocí jednotného přihlašování SAML Azure AD ověřuje aplikace pomocí účtu Azure AD uživatele.
 

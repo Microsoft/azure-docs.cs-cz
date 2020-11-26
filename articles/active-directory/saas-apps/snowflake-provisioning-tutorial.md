@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: fcbfd3eb805e046647a2c28cef8c378b44026bd0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ac6981d998f25b8df7cea553fe152d68cd43fee5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013183"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181417"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Kurz: Konfigurace Snowflake pro Automatické zřizování uživatelů
 
@@ -34,12 +34,12 @@ Cílem tohoto kurzu je předvést kroky, které je třeba provést v Snowflake a
 > * Zřizování skupin a členství ve skupinách v Snowflake
 > * [Jednotné přihlašování](./snowflake-tutorial.md) k Snowflake (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenanta Azure AD](../develop/quickstart-create-new-tenant.md)
-* Uživatelský účet v Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce)
+* Uživatelský účet v Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce)
 * [Tenant Snowflake](https://www.Snowflake.com/pricing/)
 * Uživatelský účet v Snowflake s oprávněními správce.
 

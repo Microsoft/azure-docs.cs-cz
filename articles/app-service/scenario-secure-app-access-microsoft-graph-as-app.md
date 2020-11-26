@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: a7b8ca309bf5710ddbd88413935bef5e97a1ed9f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: bdd6dbf790bcf2ec97be33504e51ca3db2eb3ef7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95999667"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182984"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-app"></a>Kurz: přístup k Microsoft Graph z zabezpečené aplikace jako aplikace
 
@@ -23,7 +23,7 @@ Naučte se, jak získat přístup k Microsoft Graph z webové aplikace běžíc�
 
 :::image type="content" alt-text="Diagram, který zobrazuje přístup k Microsoft Graph." source="./media/scenario-secure-app-access-microsoft-graph/web-app-access-graph.svg" border="false":::
 
-Chcete volat Microsoft Graph pro webovou aplikaci. Bezpečný způsob, jak poskytnout přístup k datům vaší webové aplikaci, je použití [spravované identity přiřazené systémem](/azure/active-directory/managed-identities-azure-resources/overview). Spravovaná identita z Azure Active Directory umožňuje App Service přistupovat k prostředkům prostřednictvím řízení přístupu na základě role (RBAC), aniž by museli vyžadovat přihlašovací údaje aplikace. Po přiřazení spravované identity k webové aplikaci se Azure postará o vytvoření a distribuci certifikátu. Nemusíte si dělat starosti se správou tajných klíčů nebo přihlašovacích údajů aplikací.
+Chcete volat Microsoft Graph pro webovou aplikaci. Bezpečný způsob, jak poskytnout přístup k datům vaší webové aplikaci, je použití [spravované identity přiřazené systémem](../active-directory/managed-identities-azure-resources/overview.md). Spravovaná identita z Azure Active Directory umožňuje App Service přistupovat k prostředkům prostřednictvím řízení přístupu na základě role (RBAC), aniž by museli vyžadovat přihlašovací údaje aplikace. Po přiřazení spravované identity k webové aplikaci se Azure postará o vytvoření a distribuci certifikátu. Nemusíte si dělat starosti se správou tajných klíčů nebo přihlašovacích údajů aplikací.
 
 V tomto kurzu se naučíte:
 
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Webová aplikace spuštěná v Azure App Service s [povoleným App Servicem ověřováním/autorizačním modulem](scenario-secure-app-authentication-app-service.md).
 

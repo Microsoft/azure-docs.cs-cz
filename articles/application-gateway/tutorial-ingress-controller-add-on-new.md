@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 3cae4591a5da53683c965d7c6ba3ec169249c87e
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 43aadee627c7dc12a37a8f3895ba4dfed472808c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566125"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182899"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Kurz: Povolení doplňku příchozího adaptéru (Preview) pro nový cluster AKS s novou instancí Application Gateway
 
@@ -36,17 +36,17 @@ V tomto kurzu se naučíte:
 
  - V tomto kurzu se vyžaduje verze rozhraní příkazového řádku Azure 2.0.4 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
- - Pomocí příkazu [AZ Feature Register](https://docs.microsoft.com/cli/azure/feature#az-feature-register) Zaregistrujte příznak funkce *AKS-IngressApplicationGatewayAddon* , jak je znázorněno v následujícím příkladu. Pokud je doplněk stále ve verzi Preview, budete ho muset udělat jenom jednou pro každé předplatné.
+ - Pomocí příkazu [AZ Feature Register](/cli/azure/feature#az-feature-register) Zaregistrujte příznak funkce *AKS-IngressApplicationGatewayAddon* , jak je znázorněno v následujícím příkladu. Pokud je doplněk stále ve verzi Preview, budete ho muset udělat jenom jednou pro každé předplatné.
     ```azurecli-interactive
     az feature register --name AKS-IngressApplicationGatewayAddon --namespace Microsoft.ContainerService
     ```
 
-   Zobrazení stavu může trvat několik minut `Registered` . Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](https://docs.microsoft.com/cli/azure/feature#az-feature-register) :
+   Zobrazení stavu může trvat několik minut `Registered` . Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature#az-feature-register) :
     ```azurecli-interactive
     az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
     ```
 
- - Až budete připraveni, aktualizujte registraci poskytovatele prostředků Microsoft. ContainerService pomocí příkazu [AZ Provider Register](https://docs.microsoft.com/cli/azure/provider#az-provider-register) :
+ - Až budete připraveni, aktualizujte registraci poskytovatele prostředků Microsoft. ContainerService pomocí příkazu [AZ Provider Register](/cli/azure/provider#az-provider-register) :
     ```azurecli-interactive
     az provider register --namespace Microsoft.ContainerService
     ```
