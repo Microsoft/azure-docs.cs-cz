@@ -70,6 +70,8 @@
       items:
         - name: Nasdílení změn s využitím Azure Pipelines
           href: push-kv-devops-pipeline.md
+        - name: Přijmutí změn s využitím Azure Pipelines
+          href: pull-key-value-devops-pipeline.md
         - name: Nasdílení změn s využitím GitHub Actions
           href: concept-github-action.md
         - name: Sestavení projektu pomocí vyexportované konfigurace

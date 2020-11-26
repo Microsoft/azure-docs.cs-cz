@@ -105,6 +105,8 @@
       href: ../../devtest-labs/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Firewall
       href: ../../firewall/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Firewall Manager
+      href: ../../firewall-manager/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Front Door
       href: ../../frontdoor/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Functions
@@ -185,6 +187,8 @@
       href: ../../logic-apps/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Network Watcher
       href: ../../network-watcher/security-baseline.md
+    - name: Standardní hodnoty pro Power BI
+      href: /power-bi/fundamentals/security-baseline
     - name: Standardní hodnoty zabezpečení pro Security Center
       href: ../../security-center/security-baseline.md
     - name: Standardní hodnoty pro Service Bus
@@ -207,5 +211,7 @@
       href: ../../virtual-network/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro překlad adres virtuální sítě
       href: ../../virtual-network/nat-security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Virtual WAN
+      href: ../../virtual-wan/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro VPN Gateway
       href: ../../vpn-gateway/security-baseline.md
