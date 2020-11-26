@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ffa0059e78ee193cb12a4838282f7f9fb282edd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a55fdf781de80834bf5463fb9bec3730e6e39a76
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973690"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168691"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archivujte, co je nového v Azure Active Directory?
 
@@ -131,7 +131,7 @@ V dubnu 2020 jsme do Galerie aplikací přidali tyto 31 nových aplikací s podp
 
 [SincroPool Apps](https://www.sincropool.com/), [SmartDB](https://hibiki.dreamarts.co.jp/smartdb/trial/), [float](../saas-apps/float-tutorial.md), [LMS365](https://lms.365.systems/), [iwt Suite Suite](../saas-apps/iwt-procurement-suite-tutorial.md), [Lunni](https://lunni.fi/), [EasySSO pro JIRA](../saas-apps/easysso-for-jira-tutorial.md), [Virtual Training Academy](https://vta.c3p.ca/app/en/openid?authenticate_with=microsoft), [Meraki Dashboard](../saas-apps/meraki-dashboard-tutorial.md), [Microsoft 365 stěhovací](https://app.mover.io/login), [mluvčí zapojení](https://speakerengage.com/login.php), [upřímně](../saas-apps/honestly-tutorial.md), [Ally](../saas-apps/ally-tutorial.md), [DutyFlow](https://app.dutyflow.nl/), [AlertMedia](../saas-apps/alertmedia-tutorial.md), [gr8 lidé](../saas-apps/gr8-people-tutorial.md), [Pendo](../saas-apps/pendo-tutorial.md), [HighGround](../saas-apps/highground-tutorial.md), [harmonie](../saas-apps/harmony-tutorial.md), Timetabling [, SynchroNet](../saas-apps/synchronet-click-tutorial.md), [empower](https://www.made-in-office.com/en/) [litmus, GroupTalk](../saas-apps/timetabling-solutions-tutorial.md) [, Frontify](../saas-apps/mongodb-cloud-tutorial.md) [, MongoDB,](https://hexaware.com/partnerships-and-alliances/digital-transformation-using-microsoft-azure/) [TickitLMS](../saas-apps/nitro-productivity-suite-tutorial.md) , [díky Coco, nitro](../saas-apps/litmus-tutorial.md) [, TMWS](https://recorder.grouptalk.com/) [,](../saas-apps/frontify-tutorial.md)( [TickitLMS Learn](../saas-apps/tickitlms-learn-tutorial.md) [)](https://review.docs.microsoft.com/azure/active-directory/saas-apps/trend-micro-tutorial) [Fortes Change Cloud](../saas-apps/fortes-change-cloud-tutorial.md)
 
-Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -215,7 +215,7 @@ Pomocí jednotek pro správu může centrální správce:
 - Přiřazení role s oprávněními správce jenom pro uživatele Azure AD v jednotce pro správu
 - Podle potřeby naplňte jednotky pro správu uživateli a skupinami.
 
-Další informace najdete v tématu [Správa jednotek pro správu v Azure Active Directory (Preview)](../users-groups-roles/directory-administrative-units.md).
+Další informace najdete v tématu [Správa jednotek pro správu v Azure Active Directory (Preview)](../roles/administrative-units.md).
 
 ---
 
@@ -286,7 +286,7 @@ Další informace najdete v následujících informacích:
 
 **Schopnost produktu:**
 
-Moji zaměstnanci umožňují správcům Firstline, jako je Správce úložiště, zajistit, aby jejich zaměstnanci měli přístup k účtům Azure AD. Namísto spoléhání na centrální Helpdesk můžou organizace delegovat běžné úlohy, jako je resetování hesel nebo změna telefonních čísel, na Firstline Manager. Uživatel, který nemá přístup ke svému účtu, může pomocí mých zaměstnanců znovu získat přístup jenom v několika kliknutích, aniž by to vyžadovalo Helpdesk nebo pracovníky IT. Další informace najdete v tématu [Správa uživatelů pomocí možnosti Moji zaměstnanci (Preview)](../users-groups-roles/my-staff-configure.md) a [delegování správy uživatelů pomocí mých zaměstnanců (Preview)](../user-help/my-staff-team-manager.md).
+Moji zaměstnanci umožňují správcům Firstline, jako je Správce úložiště, zajistit, aby jejich zaměstnanci měli přístup k účtům Azure AD. Namísto spoléhání na centrální Helpdesk můžou organizace delegovat běžné úlohy, jako je resetování hesel nebo změna telefonních čísel, na Firstline Manager. Uživatel, který nemá přístup ke svému účtu, může pomocí mých zaměstnanců znovu získat přístup jenom v několika kliknutích, aniž by to vyžadovalo Helpdesk nebo pracovníky IT. Další informace najdete v tématu [Správa uživatelů pomocí možnosti Moji zaměstnanci (Preview)](../roles/my-staff-configure.md) a [delegování správy uživatelů pomocí mých zaměstnanců (Preview)](../user-help/my-staff-team-manager.md).
 
 ---
 
@@ -451,7 +451,7 @@ V březnu 2020 jsme do Galerie aplikací přidali tyto 51 nové aplikace s podpo
 
 [Cisco AnyConnect](../saas-apps/cisco-anyconnect.md), [Zoho One Čína](../saas-apps/zoho-one-china-tutorial.md), [PlusPlus](https://test.plusplus.app/auth/login/azuread-outlook/), [Profit.co aplikace SAML](../saas-apps/profitco-saml-app-tutorial.md) [IPoint poskytovatel služeb](../saas-apps/ipoint-service-provider-tutorial.md), [contexxt.AI koule](https://contexxt-sphere.com/login) [Skills Workflow](../saas-apps/skills-workflow-tutorial.md), [vyhodnocení informací získaných by Invictus](../saas-apps/wisdom-by-invictus-tutorial.md), [odlesk digitálního podepisování](https://spark-dev.pixelnebula.com/login), [LOGZ.IO-Cloud pozorovatelé pro inženýry](../saas-apps/logzio-cloud-observability-for-engineers-tutorial.md), [spektrum](../saas-apps/spectrumu-tutorial.md), BizzContact [,](https://bizzcontact.app/) [Elqano SSO](../saas-apps/elqano-sso-tutorial.md) [, MarketSignShare](http://www.signshare.com/), [CrossKnowledge Learning Suite](../saas-apps/crossknowledge-learning-suite-tutorial.md), [Netvision COMPAS](../saas-apps/netvision-compas-tutorial.md), [FCM hub](../saas-apps/fcm-hub-tutorial.md) [,](../saas-apps/lift-tutorial.md) [žebr a/S Byggeweb Mobile,](https://apps.apple.com/us/app/docia/id529058757)GoLinks [,](../saas-apps/golinks-tutorial.md)služby Datadog [,](../saas-apps/datadog-tutorial.md)Zscaler [User Portal,](../saas-apps/zscaler-b2b-user-portal-tutorial.md)Planview Enterprise One [Aster](https://demo.asterapp.io/login) [platforma IP](../saas-apps/ip-platform-tutorial.md), [Planview Enterprise One](../saas-apps/planview-enterprise-one-tutorial.md) [Invision](../saas-apps/invision-tutorial.md), [WatchTeams](https://www.devfinition.com/) [pipedrivu](../saas-apps/pipedrive-tutorial.md), [prezentující Workshop](https://app.showcaseworkshop.com/), [platforma GreenLight Integration Platform](../saas-apps/greenlight-integration-platform-tutorial.md), [Správa přístupu kompatibilní s GreenLight](../saas-apps/greenlight-compliant-access-management-tutorial.md), [vzdělávání grok](../saas-apps/grok-learning-tutorial.md), [Miradore online](https://login.online.miradore.com/), Khoros [péče](../saas-apps/khoros-care-tutorial.md) [Code42](../saas-apps/code42-tutorial.md) , AskYourTeam, [TruNarrative](../saas-apps/trunarrative-tutorial.md) [, Smartwaiver, bizagi](https://www.smartwaiver.com/m/user/sw_login.php?wms_login) [Studio pro automatizaci digitálních procesů](../saas-apps/bizagi-studio-for-digital-process-automation-tutorial.md), [insuiteX, Sybo](../saas-apps/askyourteam-tutorial.md) [, Britive](https://www.systexsoftware.com.tw/) [,](../saas-apps/britive-tutorial.md), [,](../saas-apps/e-days-tutorial.md) [WhosOffice,](../saas-apps/whosoffice-tutorial.md) [SDN](https://portal.kollective.app/login) [, Kollective,](https://app.witivio.com/) [Witivio](https://my.playvox.com/login), [Korn trajekt 360](../saas-apps/korn-ferry-360-tutorial.md), [areál kavárny](../saas-apps/campus-cafe-tutorial.md) [,](../saas-apps/catchpoint-tutorial.md) [PlayVox, záchytný bod](https://www.insuite.jp/) [Node Insight](https://admin.nodeinsight.com/AADLogin.aspx)
 
-Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -602,7 +602,7 @@ V únoru 2020 jsme do Galerie aplikací přidali tyto 31 nových aplikací s pod
 [IamIP patentová platforma](../saas-apps/iamip-patent-platform-tutorial.md), [Experience Cloud](../saas-apps/experience-cloud-tutorial.md), [ns1 jednotného přihlašování pro Azure](../saas-apps/ns1-sso-azure-tutorial.md), [Barracuda e-mailové služby](https://ess.barracudanetworks.com/sso/azure), [vytváření sestav ABA](https://myaba.co.uk/client-access/signin/auth/msad), [v případě řešení krizí – online portál](../saas-apps/in-case-of-crisis-online-portal-tutorial.md), [BIC pro Cloud](../saas-apps/bic-cloud-design-tutorial.md), [Včelařský datový konektor Azure AD](../saas-apps/beekeeper-azure-ad-data-connector-tutorial.md), [vyhodnocování trajektů](https://www.kornferry.com/solutions/kf-digital/kf-assess), [Verkada příkaz](../saas-apps/verkada-command-tutorial.md), [Splashtop](../saas-apps/splashtop-tutorial.md), [Syxsense](../saas-apps/syxsense-tutorial.md), [EAB Navigate](../saas-apps/eab-navigate-tutorial.md), [New Relic (omezená verze)](../saas-apps/new-relic-limited-release-tutorial.md), [Thulium](https://admin.thulium.com/login/instance), [správce lístků](../saas-apps/ticketmanager-tutorial.md), [Výběr šablony pro týmy](https://links.officeatwork.com/templatechooser-download-teams), [včely](https://www.beesy.me/index.php/site/login), [systém podpory Health](../saas-apps/health-support-system-tutorial.md), [MURAL](https://app.mural.co/signup), [podregistr](../saas-apps/hive-tutorial.md), [LavaDo](https://appsource.microsoft.com/product/web-apps/lavaloon.lavado_standard?tab=Overview), [Wakelet](https://wakelet.com/login), [Firmex VDR](../saas-apps/firmex-vdr-tutorial.md), [ThingLink pro učitele a školy](https://www.thinglink.com/), [Coda](../saas-apps/coda-tutorial.md), [NearpodApp](https://nearpod.com/signup/?oc=Microsoft&utm_campaign=Microsoft&utm_medium=site&utm_source=product), [WEDO](../saas-apps/wedo-tutorial.md), [InvitePeople](https://invitepeople.com/login), [REPRINTER – článek Galaxy](../saas-apps/reprints-desk-article-galaxy-tutorial.md), [TeamViewer](../saas-apps/teamviewer-tutorial.md)
 
  
-Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
  
@@ -713,7 +713,7 @@ Do ledna 2020 jsme do Galerie aplikací přidali tyto 33 nové aplikace s podpor
 
 [JOSA](../saas-apps/josa-tutorial.md), [Fast Edge Cloud](../saas-apps/fastly-edge-cloud-tutorial.md), [terraformu Enterprise](../saas-apps/terraform-enterprise-tutorial.md), [Spintr SSO](../saas-apps/spintr-sso-tutorial.md), [Abibot Netlogistik](https://azuremarketplace.microsoft.com/marketplace/apps/aad.abibotnetlogistik), [SkyKick](https://login.skykick.com/login?state=g6Fo2SBTd3M5Q0xBT0JMd3luS2JUTGlYN3pYTE1remJQZnR1c6N0aWTZIDhCSkwzYVQxX2ZMZjNUaWxNUHhCSXg2OHJzbllTcmYto2NpZNkgM0h6czk3ZlF6aFNJV1VNVWQzMmpHeFFDbDRIMkx5VEc&client=3Hzs97fQzhSIWUMUd32jGxQCl4H2LyTG&protocol=oauth2&audience=https://papi.skykick.com&response_type=code&redirect_uri=https://portal.skykick.com/callback&scope=openid%20profile%20offline_access), pro, LeaveBot, [LeaveBot](https://leavebot.io/#home) [DataCamp](../saas-apps/datacamp-tutorial.md), [TripActions](../saas-apps/tripactions-tutorial.md), [SMARTWORK](https://www.intumit.com/english/SmartWork.html), [DOTCOM-monitor](../saas-apps/dotcom-monitor-tutorial.md), [SSOGEN – Azure AD SSO Gateway pro Oracle E-Business Suite-EBS, PeopleSoft spouštěných místně a jde](../saas-apps/ssogen-tutorial.md), [hostované MyCirqa SSO](../saas-apps/hosted-mycirqa-sso-tutorial.md), [platforma pro správu vlastností yuhu](../saas-apps/yuhu-property-management-platform-tutorial.md), [LumApps](https://sites.lumapps.com/login), [Working Enterprise](../saas-apps/upwork-enterprise-tutorial.md), [Talentsoft](../saas-apps/talentsoft-tutorial.md), [SmartDB pro Microsoft Teams](http://teams.smartdb.jp/login/), [PressPage](../saas-apps/presspage-tutorial.md), [ContractSafe typu Saml2 SSO](../saas-apps/contractsafe-saml2-sso-tutorial.md), [Maxient software Manager](../saas-apps/maxient-conduct-manager-software-tutorial.md), [helpshift](../saas-apps/helpshift-tutorial.md), [PortalTalk 365](https://www.portaltalk.com/), [koview](https://portal.coreview.com/), [squelch Cloud Office 365 Connector](https://laxmi.squelch.io/login), PingFlow [Authentication](https://app-staging.pingview.io/), PrinterLogic [SaaS](../saas-apps/printerlogic-saas-tutorial.md), [Taskize Connect](../saas-apps/taskize-connect-tutorial.md), Sandwai [,](https://app.sandwai.com/) [EZRentOut](../saas-apps/ezrentout-tutorial.md), [AssetSonar](../saas-apps/assetsonar-tutorial.md), [Akari Virtual Assistant](https://akari.io/akari-virtual-assistant/) [Upshotly](../saas-apps/upshotly-tutorial.md)
 
-Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -935,7 +935,7 @@ V listopadu 2019 jsme do Galerie aplikací přidali tyto 21 nových aplikací s 
 
 Studijní [tabulka](../saas-apps/airtable-tutorial.md), [HootSuite](../saas-apps/hootsuite-tutorial.md), [modrý přístup pro členy (BAM)](../saas-apps/blue-access-for-members-tutorial.md), [bitly](../saas-apps/bitly-tutorial.md), [Riva](../saas-apps/riva-tutorial.md), [ResLife Portal](https://app.reslifecloud.com/hub5_signin/microsoft_azuread/?g=44BBB1F90915236A97502FF4BE2952CB&c=5&uid=0&ht=2&ref=), [NegometrixPortal jednotné přihlašování (SSO)](../saas-apps/negometrixportal-tutorial.md), [TeamsChamp](https://login.microsoftonline.com/551f45da-b68e-4498-a7f5-a6e1efaeb41c/adminconsent?client_id=ca9bbfa4-1316-4c0f-a9ee-1248ac27f8ab&redirect_uri=https://admin.teamschamp.com/api/adminconsent&state=6883c143-cb59-42ee-a53a-bdb5faabf279), [Motus](../saas-apps/motus-tutorial.md), [MyAryaka](../saas-apps/myaryaka-tutorial.md), [BlueMail](https://loginself1.bluemail.me/), [Beedle](https://teams-web.beedle.co/#/), [Visma](../saas-apps/visma-tutorial.md), [OneDesk](../saas-apps/onedesk-tutorial.md), [FOKO Retail](../saas-apps/foko-retail-tutorial.md), Qmarkets [nápad & Správa inovací](../saas-apps/qmarkets-idea-innovation-management-tutorial.md), [Netskope ověřování uživatelů](../saas-apps/netskope-user-authentication-tutorial.md), uniFLOW [online](../saas-apps/uniflow-online-tutorial.md), [Claromentis](../saas-apps/claromentis-tutorial.md), [JISC pro registraci Voter](../saas-apps/jisc-student-voter-registration-tutorial.md), [e4enable](https://portal.e4enable.com/)
 
-Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -1096,7 +1096,7 @@ V říjnu 2019 jsme do Galerie aplikací přidali tyto 35 nové aplikace s podpo
 
 [V případě krize – Mobile](../saas-apps/in-case-of-crisis-mobile-tutorial.md), [Juno cest](../saas-apps/juno-journey-tutorial.md), [ExponentHR](../saas-apps/exponenthr-tutorial.md), [TACT](https://tact.ai/assistant/), [OpusCapita řízení pokladní správy](http://cm1.opuscapita.com/tenantname), [Salestim](https://www.salestim.com/), [Learnster](../saas-apps/learnster-tutorial.md), [dynaTrace](../saas-apps/dynatrace-tutorial.md), [HunchBuzz](https://login.hunchbuzz.com/integrations/azure/process), [Freshworks](../saas-apps/freshworks-tutorial.md), [ECornell](../saas-apps/ecornell-tutorial.md), [ShipHazmat](../saas-apps/shiphazmat-tutorial.md), [Netskope Cloud Security](../saas-apps/netskope-cloud-security-tutorial.md), [contentd](../saas-apps/contentful-tutorial.md), [Bindtuning](https://bindtuning.com/login), HireVue [ová souřadnice – Evropa](https://www.hirevue.com/), [HireVue – koordinace – USOnly](https://www.hirevue.com/), [HireVue souřadnice – USA](https://www.hirevue.com/), WittyParrot, [Cloudmore](../saas-apps/cloudmore-tutorial.md), [WittyParrot Knowledge Box](https://wittyapi.wittyparrot.com/wittyparrot/api/provision/trail/signup), Visit.org, [cambium,](../saas-apps/visitorg-tutorial.md) [Xirrus EasyPass Paylocity](https://login.xirrus.com/azure-signup) [, SIGNL4](../saas-apps/paylocity-tutorial.md), vyjímá [!](../saas-apps/mail-luck-tutorial.md), [Týmová](https://theteamie.com/)schránka, [rychlost pro týmy](https://velocity.peakup.org/teams/login), [EAB](https://account.signl4.com/manage), [impl, ScreenMeet](../saas-apps/eab-navigate-impl-tutorial.md) [, ExactCare,,](https://console.screenmeet.com/) [bod Omega](https://pi.ompnt.com/), [Hlasová pošta pro Intune (iPhone)](https://speaking.email/FAQ/98/email-access-via-microsoft-intune) [,](https://ihealthnav.com/account/signin) [hlasová zpráva pro Office 365 Direct (iPhone/Android)](https://speaking.email/FAQ/126/email-access-via-microsoft-office-365-direct) [,](https://qubie.azurewebsites.net/static/adminTab/authorize.html) [iHealthHome SSO](../saas-apps/exactcare-sso-tutorial.md)
 
-Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -1199,7 +1199,7 @@ Do září 2019 jsme do Galerie aplikací přidali tyto 29 nových aplikací s p
 
 [ScheduleLook](https://schedulelook.bbsonlineservices.net/), Microsoft [Azure SSO Access pro dodržování předpisů Ethidex &trade; – jednotné přihlašování](../saas-apps/ms-azure-sso-access-for-ethidex-compliance-office-tutorial.md), [iServer Portal](../saas-apps/iserver-portal-tutorial.md), [SKYSITE](../saas-apps/skysite-tutorial.md), [Concur cestovné a výdaje](../saas-apps/concur-travel-and-expense-tutorial.md), [WorkBoard](../saas-apps/workboard-tutorial.md), `https://apps.yeeflow.com/` , [zařízení ARC](../saas-apps/arc-facilities-tutorial.md), [Luware Stratus tým](https://stratus.emea.luware.cloud/login), [nejrůznějších nápadů](https://wideideas.online/wideideas/), [Prisma Cloud](../saas-apps/prisma-cloud-tutorial.md), [JDLT klienta](https://clients.jdlt.co.uk/login), [RENRAKU](../saas-apps/renraku-tutorial.md), [SealPath zabezpečený prohlížeč](https://protection.sealpath.com/SealPathInterceptorWopiSaas/Open/InstallSealPathEditorOneDrive), [Prisma Cloud](../saas-apps/prisma-cloud-tutorial.md),, Cintoo, Whitesource, CakeHR, COO, týmu, Kai, `https://app.penneo.com/` `https://app.testhtm.com/settings/email-integration` [Sonarqube](../saas-apps/sonarqube-tutorial.md) [Adobe Identity Management](../saas-apps/tutorial-list.md), možnosti zjišťování pro [Whitesource](../saas-apps/whitesource-tutorial.md) [SSO](../saas-apps/discovery-benefits-sso-tutorial.md) [BIS](../saas-apps/bis-tutorial.md) [Coo Kai Team Build](https://ms-contacts.coo-kai.jp/) [Amelio](https://app.amelio.co/) [CakeHR](../saas-apps/cakehr-tutorial.md) [Cintoo Cloud](https://aec.cintoo.com/login) [Hosted Heritage Online SSO](../saas-apps/hosted-heritage-online-sso-tutorial.md) [IDC](../saas-apps/idc-tutorial.md), SonarQube,`https://itask.yipinapp.com/`
 
-Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -1370,7 +1370,7 @@ V srpnu 2019 jsme do Galerie aplikací přidali tyto 26 nových aplikací s podp
 
 [Civic Platform](../saas-apps/civic-platform-tutorial.md), [Amazon Business](../saas-apps/amazon-business-tutorial.md), [ProNovos](../saas-apps/pronovos-ops-manager-tutorial.md)Operations Manager, Cognidox, [Viareport – portál Inativ (Evropa)](../saas-apps/viareports-inativ-portal-europe-tutorial.md), [Azure Databricks](https://azure.microsoft.com/services/databricks), [Robin](../saas-apps/robin-tutorial.md), [Cognidox](../saas-apps/cognidox-tutorial.md) [,](../saas-apps/academy-attendance-tutorial.md) [prioritní matrice](https://sync.appfluence.com/pmwebng/), [Academy Cousto](https://cousto.platformers.be/account/login), [MySpace](https://uploadcare.com/accounts/signup/), [Uploadcare Backup Endpoint](../saas-apps/carbonite-endpoint-backup-tutorial.md), [Carbonite](../saas-apps/cpqsync-by-cincom-tutorial.md)CPQSync, [Cincom](../saas-apps/chargebee-tutorial.md), [doručovat. Media &trade; Portal](https://portal.deliver.media), Chargebee [vzdělávání](../saas-apps/frontline-education-tutorial.md), [F5](https://www.f5.com/products/security/access-policy-manager), [prvotní AD Connect](https://www.stashcat.com), Blink, [stashcat](../saas-apps/vocoli-tutorial.md), [Vocoli Analytics](../saas-apps/pronovos-analytics-tutorial.md), [ProNovos](../saas-apps/sigstr-tutorial.md), [Sigstr](../saas-apps/darwinbox-tutorial.md), [Sledujte barvy](../saas-apps/watch-by-colors-tutorial.md), [rozsvítit](../saas-apps/blink-tutorial.md), [EAB Navigate Strategic Care](../saas-apps/eab-navigate-strategic-care-tutorial.md) [Darwinbox](../saas-apps/harness-tutorial.md)
 
-Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -1523,7 +1523,7 @@ V červenci 2019 jsme do Galerie aplikací přidali tyto 18 nových aplikací s 
 
 [Ungerboeck software](../saas-apps/ungerboeck-software-tutorial.md), [jasný vzor Omnichannel kontakt Center](../saas-apps/bright-pattern-omnichannel-contact-center-tutorial.md), [chytřejší Nelly](../saas-apps/clever-nelly-tutorial.md), [AcquireIO](../saas-apps/acquireio-tutorial.md), [Looop](https://www.looop.co/schedule-a-demo/), [productboard](../saas-apps/productboard-tutorial.md) [Abstract](../saas-apps/abstract-tutorial.md) [TwineSocial](https://twinesocial.com/) [HyperAnna](../saas-apps/hyperanna-tutorial.md) [Wandera](../saas-apps/wandera-tutorial.md) [JFrog Artifactory](../saas-apps/jfrog-artifactory-tutorial.md) [Hype](../saas-apps/hype-tutorial.md) [Flipsnack](https://www.flipsnack.com/accounts/sign-in-sso.html) [Kallidus](../saas-apps/kallidus-tutorial.md) [ &trade; productboard, přístup k aplikaci MS Azure SSO pro Ethidex dodržování předpisů pro Hype](../saas-apps/ms-azure-sso-access-for-ethidex-compliance-office-tutorial.md), Flipsnack, abstrakt, [prostoupání](../saas-apps/ascentis-tutorial.md), Wandera, TwineSocial, Kallidus, HyperAnna, PharmID, [WasteWitness i2B](https://pharmid.com/), [JFrog připojit](https://www.i2b-online.com/sign-up-to-use-i2b-connect-here-sso-access/), Artifactory
 
-Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -1701,7 +1701,7 @@ Do června 2019 jsme do Galerie aplikací přidali tyto 22 nových aplikací s p
 
 [Azure AD SAML Toolkit](../saas-apps/saml-toolkit-tutorial.md), [Otsuka Shokai (大塚商会)](../saas-apps/otsuka-shokai-tutorial.md), [ANAQUA](../saas-apps/anaqua-tutorial.md), [klient VPN Azure](https://portal.azure.com/), [ExpenseIn](../saas-apps/expensein-tutorial.md), pomocná [pomocná Nápověda](../saas-apps/helper-helper-tutorial.md), [Costpoint](../saas-apps/costpoint-tutorial.md), [GlobalOne](../saas-apps/globalone-tutorial.md), [Mercedes-Benz In-Car Office](https://me.secure.mercedes-benz.com/), [skore](https://app.justskore.it/), [konzole pro cloudová infrastruktura Oracle](../saas-apps/oracle-cloud-tutorial.md), [CyberArk ověřování SAML](../saas-apps/cyberark-saml-authentication-tutorial.md), [scrible edu](https://www.scrible.com/sign-in/#/create-account), [PandaDoc](../saas-apps/pandadoc-tutorial.md), [Perceptyx](https://apexdata.azurewebsites.net/docs.microsoft.com/azure/active-directory/saas-apps/perceptyx-tutorial), [Proptimise OS](https://proptimise.co.uk/software/), [Vtiger CRM (SAML)](../saas-apps/vtiger-crm-saml-tutorial.md), Oracle Access Manager pro Oracle pro E-Business Suite, Oracle Access Manager pro Oracle E-Business Suite, Oracle IDCS pro IDCS PeopleSoft spouštěných místně
 
-Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -1849,7 +1849,7 @@ V květnu 2019 jsme do Galerie aplikací přidali tyto 21 nových aplikací s po
 
 [Freedcamp](../saas-apps/freedcamp-tutorial.md), [skutečné odkazy](../saas-apps/real-links-tutorial.md), [Kianda](https://app.kianda.com/sso/OpenID/AzureAD/), [Simple Sign](../saas-apps/simple-sign-tutorial.md), [Braze](../saas-apps/braze-tutorial.md), [Replay](../saas-apps/displayr-tutorial.md), [Templafy](../saas-apps/templafy-tutorial.md), [Marketo Sales](https://toutapp.com/login)propojování, [ACLP](../saas-apps/aclp-tutorial.md), [subsystéms](../saas-apps/outsystems-tutorial.md), [META4 Global HR](../saas-apps/meta4-global-hr-tutorial.md), na [pracovišti](../saas-apps/quantum-workplace-tutorial.md), [kobalt](../saas-apps/cobalt-tutorial.md), [webMethods API Cloud](../saas-apps/webmethods-integration-cloud-tutorial.md), [RedFlag](https://pocketstop.com/redflag/), [Whatfix](../saas-apps/whatfix-tutorial.md), [Control](../saas-apps/control-tutorial.md), [JOBHUB](../saas-apps/jobhub-tutorial.md), [NEOGOV](../saas-apps/neogov-tutorial.md), [Foodee](../saas-apps/foodee-tutorial.md), [MyVR](../saas-apps/myvr-tutorial.md)
 
-Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -1979,7 +1979,7 @@ V dubnu 2019 jsme do Galerie aplikací přidali tyto 21 nových aplikací s podp
 
 [SAP Fiori](../saas-apps/sap-fiori-tutorial.md), [HRworks Single Signing](../saas-apps/hrworks-single-sign-on-tutorial.md), [percolate](../saas-apps/percolate-tutorial.md), [MobiControl](../saas-apps/mobicontrol-tutorial.md), [Citrix NetScaler](../saas-apps/citrix-netscaler-tutorial.md), [shibumi](../saas-apps/shibumi-tutorial.md), MileIQ [, PageDNA](../saas-apps/benchling-tutorial.md), [EduBrite](https://mileiq.onelink.me/991934284/7e980085), [PageDNA](../saas-apps/pagedna-tutorial.md) [RStudio LMS](../saas-apps/edubrite-lms-tutorial.md), AMMS [Connect](../saas-apps/rstudio-connect-tutorial.md), [Mitel](../saas-apps/amms-tutorial.md), [Alibaba Connect](../saas-apps/mitel-connect-tutorial.md), [Certent Cloud (SSO založený na rolích)](../saas-apps/alibaba-cloud-service-role-based-sso-tutorial.md), Sectigo [jmění Management](../saas-apps/certent-equity-management-tutorial.md), [GreenOrbit Certificate Manager](../saas-apps/sectigo-certificate-manager-tutorial.md), [Workgrid](../saas-apps/greenorbit-tutorial.md), [Monday.com](../saas-apps/workgrid-tutorial.md), [SurveyMonkey](../saas-apps/mondaycom-tutorial.md), [Indiggo Enterprise](../saas-apps/surveymonkey-enterprise-tutorial.md), [Indiggo](https://indiggolead.com/)
 
-Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -2073,7 +2073,7 @@ V březnu 2019 jsme do Galerie aplikací přidali tyto 14 nových aplikací s po
 
 [ISEC7](https://www.isec7.com/english/), [MediusFlow](https://office365.cloudapp.mediusflow.com/), [ePlatform](../saas-apps/eplatform-tutorial.md), [Fulcrum](../saas-apps/fulcrum-tutorial.md), [ExcelityGlobal](../saas-apps/excelityglobal-tutorial.md), [auditování na základě vysvětlení systém](../saas-apps/explanation-based-auditing-system-tutorial.md), [štíhlé](../saas-apps/lean-tutorial.md), [PowerSchool výkonnostní otázky](../saas-apps/powerschool-performance-matters-tutorial.md), [Cinode](https://cinode.com/), Iris v [intranetu](../saas-apps/iris-intranet-tutorial.md), [Empactis](../saas-apps/empactis-tutorial.md), [SmartDraw](../saas-apps/smartdraw-tutorial.md), [Confirmit horizonts](../saas-apps/confirmit-horizons-tutorial.md), [ú](../saas-apps/tas-tutorial.md)
 
-Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -2209,7 +2209,7 @@ V únoru 2019 jsme do Galerie aplikací přidali tyto 27 nových aplikací s pod
 
 [Euromonitor Passport](../saas-apps/euromonitor-passport-tutorial.md), [MindTickle](../saas-apps/mindtickle-tutorial.md), [Finger](https://seeforgetest-exxon.azurewebsites.net/Account/create?Length=7), [AirStack](../saas-apps/airstack-tutorial.md),, [iDrive](../saas-apps/idrive-tutorial.md), [Skyward Qmlativ](../saas-apps/skyward-qmlativ-tutorial.md), [Knowledge Anywhere LMS](../saas-apps/knowledge-anywhere-lms-tutorial.md) [Brightidea](../saas-apps/brightidea-tutorial.md), [AlertOps](../saas-apps/alertops-tutorial.md), [Soloinsight-CloudGate SSO](../saas-apps/soloinsight-cloudgate-sso-tutorial.md) [, Click](../saas-apps/oracle-fusion-erp-tutorial.md), [Brandfolder](../saas-apps/brandfolder-tutorial.md), [StoregateSmartFile](../saas-apps/smartfile-tutorial.md), Pexip, [Stormboard, seismických procesů](../saas-apps/stormboard-tutorial.md) [, Bugsnag](../saas-apps/seismic-tutorial.md) [, Periscope,](../saas-apps/clickup-productivity-platform-tutorial.md) [Netop, smartvid.IO](../saas-apps/bugsnag-tutorial.md) [,](../saas-apps/netop-portal-tutorial.md) [PureCloud, Genesys](../saas-apps/pexip-tutorial.md) [,](../saas-apps/purecloud-by-genesys-tutorial.md) [ClickUp,](../saas-apps/smartvid.io-tutorial.md), [pro](https://www.shareadream.org/how-it-works) [integraci](../saas-apps/webmethods-integration-cloud-tutorial.md) [dat](../saas-apps/periscope-data-tutorial.md) [OU Campus](../saas-apps/ou-campus-tutorial.md)
 
-Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -2315,7 +2315,7 @@ Do ledna 2019 jsme do Galerie aplikací přidali tyto 35 nové aplikace s podpor
 
 [Firstbird](../saas-apps/firstbird-tutorial.md), [Folloze](../saas-apps/folloze-tutorial.md), [talentůová paleta](../saas-apps/talent-palette-tutorial.md), [informační CloudSuite](../saas-apps/infor-cloud-suite-tutorial.md), [Cisco deštník](../saas-apps/cisco-umbrella-tutorial.md), [Zscaler Internet Access Administrator](../saas-apps/zscaler-internet-access-administrator-tutorial.md), [připomenutí vypršení platnosti](../saas-apps/expiration-reminder-tutorial.md), prohlížeč pro [instavování](../saas-apps/instavr-viewer-tutorial.md), [CorpTax](../saas-apps/corptax-tutorial.md), [sloveso](https://app.verb.net/login), [OpenLattice](https://openlattice.com/agora), [TheOrgWiki](https://www.theorgwiki.com/signup), [Pavaso Digital Close](../saas-apps/pavaso-digital-close-tutorial.md), [GoodPractice Toolkit](../saas-apps/goodpractice-toolkit-tutorial.md), [Cloud Service Picco](../saas-apps/cloud-service-picco-tutorial.md), [AuditBoard](../saas-apps/auditboard-tutorial.md) [, iProva,](../saas-apps/iprova-tutorial.md) [funkční](../saas-apps/workable-tutorial.md), [CallPlease](https://webapp.callplease.com/create-account/create-account.html), [GTNexus SSO System](../saas-apps/gtnexus-sso-module-tutorial.md), [CBRE ServiceInsight](../saas-apps/cbre-serviceinsight-tutorial.md), Deskradar, [Coralogixv](../saas-apps/coralogix-tutorial.md) [Acadia](../saas-apps/acadia-tutorial.md), [Signagelive](../saas-apps/signagelive-tutorial.md), [arů pro Enterprise](../saas-apps/ares-for-enterprise-tutorial.md), [K2 pro Office 365](https://www.k2.com/O365), [HighGear](../saas-apps/highgear-tutorial.md) [Xledger](https://www.xledger.net/), [Visitly](../saas-apps/visitly-tutorial.md) [iDiD](../saas-apps/idid-manager-tutorial.md) [HighGear, Alp](../saas-apps/deskradar-tutorial.md) [Korn Ferry ALP](../saas-apps/korn-ferry-alp-tutorial.md) [Adoddle cSaas Platform](../saas-apps/adoddle-csaas-platform-tutorial.md)<!-- , [CaféX Portal (Meetings)](https://docs.microsoft.com/azure/active-directory/saas-apps/cafexportal-meetings-tutorial), [MazeMap Link](https://docs.microsoft.com/azure/active-directory/saas-apps/mazemaplink-tutorial)-->
 
-Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -2535,7 +2535,7 @@ V listopadu 2018 jsme do Galerie aplikací přidali tyto 26 nových aplikací s 
 
 [CoreStack](https://cloud.corestack.io/site/login), [HubSpot](../saas-apps/hubspot-tutorial.md), [gettam](../saas-apps/getthere-tutorial.md), [GRA-PE](../saas-apps/grape-tutorial.md), [eHour](https://getehour.com/try-now), [Consent2Go](../saas-apps/consent2go-tutorial.md), [Appinux](../saas-apps/appinux-tutorial.md), [DriveDollar](https://azuremarketplace.microsoft.com/marketplace/apps/savitas.drivedollar-azuread?tab=Overview), [Useall](../saas-apps/useall-tutorial.md), [nekonečné areály](../saas-apps/infinitecampus-tutorial.md), [Alaya](https://alayagood.com), [HEYBUDDY](../saas-apps/heybuddy-tutorial.md), [Wrike SAML](../saas-apps/wrike-tutorial.md), [unášená](../saas-apps/drift-tutorial.md), [Zenegy pro Business Central 365](https://accounting.zenegy.com/), [EverBridge Member Portal](../saas-apps/everbridge-tutorial.md), [ideo](https://profile.ideo.com/users/sign_up), [Ivanti Service Manager (ISM)](../saas-apps/ivanti-service-manager-tutorial.md), [Peakon](../saas-apps/peakon-tutorial.md), [Allbound SSO](../saas-apps/allbound-sso-tutorial.md), [aplikace objektů plex – klasický test](https://test.plexonline.com/signon), [aplikace Plex – klasický](https://www.plexonline.com/signon), [aplikace Plex](https://test.cloud.plex.com/sso)– test pro UX, aplikace [plex – UX,](https://cloud.plex.com/sso)aplikace pro vytváření objektů plex – [IAM,](https://accounts.plex.com/) [řemesla](https://getcrafts.ca/craftsregistration) &
 
-Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -2557,7 +2557,7 @@ V říjnu 2018 jsme do Galerie aplikací přidali tyto 14 nových aplikací s po
 
 [Body ocenění](../saas-apps/myawardpoints-tutorial.md), [Vibe HCM](../saas-apps/vibehcm-tutorial.md), ambyint, [MyWorkDrive](../saas-apps/myworkdrive-tutorial.md), [BorrowBox](../saas-apps/borrowbox-tutorial.md), Dialpad, [ON24 Virtual Environment](../saas-apps/on24-tutorial.md), RingCentral [,](../saas-apps/ringcentral-tutorial.md) [Zscaler tři](../saas-apps/zscaler-three-tutorial.md), [Phraseanet](../saas-apps/phraseanet-tutorial.md), [hodnocení](../saas-apps/appraisd-tutorial.md), Workspot [Control](../saas-apps/workspotcontrol-tutorial.md), [Shuccho Navi](../saas-apps/shucchonavi-tutorial.md), [Glassfrog](../saas-apps/glassfrog-tutorial.md)
 
-Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -2672,7 +2672,7 @@ V seznamu [schválených klientských aplikací](../conditional-access/concept-c
 
 - Microsoft Stream
 
-Další informace naleznete v tématu:
+Další informace najdete tady:
 
 - [Podmíněný přístup na základě aplikace Azure AD](../conditional-access/app-based-conditional-access.md)
 
@@ -2708,7 +2708,7 @@ Do září 2018 jsme do Galerie aplikací přidali tyto 16 nových aplikací s p
 
 [Uberflip](../saas-apps/uberflip-tutorial.md), [vyhovující náborový software](../saas-apps/comeetrecruitingsoftware-tutorial.md), [Workteam](../saas-apps/workteam-tutorial.md), [ArcGIS Enterprise](../saas-apps/arcgisenterprise-tutorial.md), [Nuclino](../saas-apps/nuclino-tutorial.md), [JDA Cloud](../saas-apps/jdacloud-tutorial.md), [Snowflake](../saas-apps/snowflake-tutorial.md), NavigoCloud, [Figma](../saas-apps/figma-tutorial.md), JOIN.me, [ZephyrSSO](../saas-apps/zephyrsso-tutorial.md), [Silverback](../saas-apps/silverback-tutorial.md), Riverbed Xirrus EasyPass, [Rackspace SSO](../saas-apps/rackspacesso-tutorial.md), Enlyft SSO pro Azure, SurveyMonkey, [svolat](../saas-apps/convene-tutorial.md), dmarcian [dmarcian](../saas-apps/dmarcian-tutorial.md)
 
-Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -2826,7 +2826,7 @@ V srpnu 2018 jsme do Galerie aplikací přidali tyto 16 nových aplikací s podp
 
 [Hornbill](../saas-apps/hornbill-tutorial.md), [bridgeline bez vazby](../saas-apps/bridgelineunbound-tutorial.md), [Omáčk Labs – mobilní a webové testování](../saas-apps/saucelabs-mobileandwebtesting-tutorial.md), [konektor meta sítě](../saas-apps/metanetworksconnector-tutorial.md), [způsob, jakým](../saas-apps/waywedo-tutorial.md)je, [Spotinst](../saas-apps/spotinst-tutorial.md), [prohlavní (podle Inlogik)](../saas-apps/promaster-tutorial.md), SchoolBooking, [4me](../saas-apps/4me-tutorial.md), [dokumentace](../saas-apps/dossier-tutorial.md), [N2F – sestavy výdajů](../saas-apps/n2f-expensereports-tutorial.md), [Comm100 Live chat](../saas-apps/comm100livechat-tutorial.md) [, SafeConnect](../saas-apps/safeconnect-tutorial.md), [ZenQMS](../saas-apps/zenqms-tutorial.md), [eLuminate](../saas-apps/eluminate-tutorial.md), [Dovetale](../saas-apps/dovetale-tutorial.md).
 
-Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -2912,7 +2912,7 @@ V červenci 2018 jsme do Galerie aplikací přidali tyto 16 nových aplikací s 
 
 [Centrum inovace](../saas-apps/innovationhub-tutorial.md), [Leapsome](../saas-apps/leapsome-tutorial.md), [určité jednotné přihlašování pro správce](../saas-apps/certainadminsso-tutorial.md), PSUC fázování, [IPASS SmartConnect](../saas-apps/ipasssmartconnect-tutorial.md), [záznam dění na více koncových matic](../saas-apps/screencast-tutorial.md), PowerSchool sjednocené učebny, [Blažková](../saas-apps/elionboarding-tutorial.md)registrace, [Bomgar vzdálená podpora](../saas-apps/bomgarremotesupport-tutorial.md), [NimbleX](../saas-apps/nimblex-tutorial.md), [Představte webvision](../saas-apps/imagineerwebvision-tutorial.md), [Insight4GRC](../saas-apps/insight4grc-tutorial.md), [SecureW2 JoinNow Connector](../saas-apps/securejoinnow-tutorial.md), [Kanbanize](../saas-apps/kanbanize-tutorial.md), [SmartLPA](../saas-apps/smartlpa-tutorial.md), [dovednosti – základ](../saas-apps/skillsbase-tutorial.md)
 
-Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -3092,7 +3092,7 @@ Do června 2018 jsme do Galerie aplikací přidali tyto 15 nových aplikací s p
 
 [Skytap](../saas-apps/skytap-tutorial.md), [Vyrovnávání hudby](../saas-apps/settlingmusic-tutorial.md), obchodní [aplikace s povoleným tokenem SAML 1,1](../saas-apps/saml-tutorial.md), [nálada](../saas-apps/supermood-tutorial.md), automatického [úkolu](../saas-apps/autotaskendpointbackup-tutorial.md), [zálohování koncových bodů](../saas-apps/autotaskendpointbackup-tutorial.md), [Skyhigh sítě](../saas-apps/skyhighnetworks-tutorial.md), Smartway2, [TonicDM](../saas-apps/tonicdm-tutorial.md), [Moconavi](../saas-apps/moconavi-tutorial.md), [Zoho One](../saas-apps/zohoone-tutorial.md), [místní SharePoint](../saas-apps/sharepoint-on-premises-tutorial.md), [předvídat sadu CX](../saas-apps/foreseecxsuite-tutorial.md), [Vidyard](../saas-apps/vidyard-tutorial.md), [ChronicX](../saas-apps/chronicx-tutorial.md)
 
-Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -3270,7 +3270,7 @@ V květnu 2018 jsme do Galerie aplikací přidali tyto 18 nových aplikací s po
 
 Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md).
 
-Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -3336,10 +3336,10 @@ Další informace najdete v tématu [Azure AD B2C: vyžádání přístupových 
 
 Při konfiguraci aplikací jednotného přihlašování založeného na SAML budete moci otestovat integraci na stránce konfigurace. Pokud během přihlašování dojde k chybě, můžete zadat chybu v prostředí testování a Azure AD vám poskytne postup řešení pro vyřešení konkrétního problému.
 
-Další informace naleznete v tématu:
+Další informace najdete tady:
 
 - [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](../manage-apps/view-applications-portal.md)
-- [Jak ladit jednotné přihlašování založené na SAML pro aplikace v Azure Active Directory](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+- [Jak ladit jednotné přihlašování založené na SAML pro aplikace v Azure Active Directory](../manage-apps/debug-saml-sso-issues.md)
 
 ---
 
@@ -3415,7 +3415,7 @@ Kritérium HCM, [FiscalNote](../saas-apps/fiscalnote-tutorial.md), [Secret Serve
 
 Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md).
 
-Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -3471,7 +3471,7 @@ Azure AD pošle oznámení, když brzy vyprší platnost certifikátu pro galeri
 
 Někteří uživatelé neobdrželi oznámení pro podnikové aplikace nakonfigurované pro jednotné přihlašování založené na SAML. Tento problém byl vyřešen. Azure AD odesílá oznámení o vypršení platnosti certifikátů do 7, 30 a 60 dnů. Tuto událost můžete zobrazit v protokolech auditu.
 
-Další informace naleznete v tématu:
+Další informace najdete tady:
 
 - [Správa certifikátů pro federované jednotné přihlašování v Azure Active Directory](../manage-apps/manage-certificates-for-federated-single-sign-on.md)
 - [Sestavy aktivit auditu na portálu Azure Active Directory](../reports-monitoring/concept-audit-logs.md)
@@ -3500,7 +3500,7 @@ Další informace najdete v tématu [co je spolupráce B2B Azure AD?](../externa
 
 Další informace najdete v našem [blogovém příspěvku](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/).
 
-Další informace naleznete v tématu:
+Další informace najdete tady:
 
 - [Nastavení podmíněného přístupu na základě aplikace](../conditional-access/app-based-conditional-access.md)
 
@@ -3558,7 +3558,7 @@ V březnu 2018 jsme do Galerie aplikací přidali tyto 15 nových aplikací s po
 
 Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md).
 
-Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -3817,7 +3817,7 @@ Do konce února budou přidány následující aplikace:
 
 - Fakturace Microsoftu
 
-Další informace naleznete v tématu:
+Další informace najdete tady:
 
 - [Požadavek na schválenou aplikaci klienta](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Podmíněný přístup na základě aplikace Azure AD](../conditional-access/app-based-conditional-access.md)
@@ -3844,7 +3844,7 @@ V lednu 2018 byly do Galerie aplikací přidány následující nové aplikace s
 
 Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md).
 
-Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -3914,7 +3914,7 @@ Díky obecné dostupnosti nové konzoly pro správu Azure Active Directory a nov
 
 V rámci přechodu na novou konzolu správce jsme vytvořili 2 nová rozhraní API k načtení protokolů aktivit Azure AD. Nová sada rozhraní API nabízí lepší funkce pro filtrování a řazení, které poskytují lepší aktivity auditu a přihlašování. Data dříve dostupná prostřednictvím sestav zabezpečení teď můžou být přístupná prostřednictvím rozhraní API detekce rizik ochrany identity v Microsoft Graph.
 
-Další informace naleznete v tématu:
+Další informace najdete tady:
 
 - [Začínáme s rozhraním API pro vytváření sestav Azure Active Directory](../reports-monitoring/concept-reporting-api.md)
 
@@ -3998,7 +3998,7 @@ Do prosince 2017 jsme do Galerie aplikací přidali tyto nové aplikace s podpor
 
 Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md).
 
-Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 
 ---
 
@@ -4075,7 +4075,7 @@ V seznamu [schválených klientských aplikací](../conditional-access/concept-c
 - [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - Microsoft StaffHub
 
-Další informace naleznete v tématu:
+Další informace najdete tady:
 
 - [Požadavek na schválenou aplikaci klienta](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Podmíněný přístup na základě aplikace Azure AD](../conditional-access/app-based-conditional-access.md)
@@ -4157,7 +4157,7 @@ V rámci zásad podmíněného přístupu Azure AD teď můžete zahrnout (nebo 
 - **Zajistěte, aby zařízení macOS vyhovovala zásadám dodržování předpisů vaší organizace definovaným v Intune.** V Intune na Azure Portal teď můžete nastavit zásady dodržování předpisů pro zařízení macOS.
 - **Omezte přístup k aplikacím ve službě Azure AD tak, aby splňovala jenom vyhovující zařízení macOS.** Při vytváření zásad podmíněného přístupu se macOS jako samostatná možnost platformy zařízení. Nyní můžete vytvářet zásady podmíněného přístupu specifické pro macOS pro cílovou aplikaci určenou v Azure.
 
-Další informace naleznete v tématu:
+Další informace najdete tady:
 
 - [Vytvoření zásady dodržování předpisů pro zařízení s macOS pomocí Intune](/mem/intune/protect/compliance-policy-create-mac-os)
 - [Podmíněný přístup ve službě Azure AD](../conditional-access/overview.md)
@@ -4204,7 +4204,7 @@ Do seznamu [schválených klientských aplikací](../conditional-access/concept-
 - Microsoft Planner
 - Azure Information Protection
 
-Další informace naleznete v tématu:
+Další informace najdete tady:
 
 - [Požadavek na schválenou aplikaci klienta](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Podmíněný přístup na základě aplikace Azure AD](../conditional-access/app-based-conditional-access.md)

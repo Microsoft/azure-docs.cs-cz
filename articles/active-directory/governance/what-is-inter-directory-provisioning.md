@@ -11,14 +11,14 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cbca2d00d10b6595b8a1d13251dd88c65667541
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: df199afd85c788299334087321c3edac8482698d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135320"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168504"
 ---
-# <a name="what-is-inter-directory-provisioning"></a>Co je mezi adresářovým zřizováním?
+# <a name="what-is-inter-directory-provisioning"></a>Co je zřizování mezi adresářovými systémy?
 
 Adresář je sdílená informační infrastruktura, která se používá k vyhledání, správě, správě a uspořádání položek a síťových prostředků.  Příklady aplikací, které používají adresářové služby, jsou Microsoft Active Directory a Azure AD.  Identity v adresářových systémech usnadňují určení, jako je třeba to, kdo má přístup k čemu a kdo smí používat konkrétní prostředky.
 
@@ -35,7 +35,7 @@ Azure AD aktuálně podporuje tři metody pro zajištění meziadresářového z
 
 - [Zřizování cloudu Azure AD Connect](../cloud-provisioning/what-is-cloud-provisioning.md) – nový agent Microsoftu, který je navržený tak, aby splňoval a splnil vaše cíle hybridní identity.  Nabízí vysoce náročné prostředí pro zřizování mezi službami Active Directory a Azure AD.
 
-- [Microsoft Identity Manager](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016) – místní řešení pro správu identit a přístupu od Microsoftu, které pomáhá spravovat uživatele, přihlašovací údaje, zásady a přístup v rámci vaší organizace. Kromě toho MIM nabízí pokročilou zřizování mezi adresáři, aby bylo možné využívat hybridní prostředí identit pro služby Active Directory, Azure AD a další adresáře.
+- [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) – místní řešení pro správu identit a přístupu od Microsoftu, které pomáhá spravovat uživatele, přihlašovací údaje, zásady a přístup v rámci vaší organizace. Kromě toho MIM nabízí pokročilou zřizování mezi adresáři, aby bylo možné využívat hybridní prostředí identit pro služby Active Directory, Azure AD a další adresáře.
 
 ### <a name="key-benefits"></a>Klíčové výhody
 
@@ -45,7 +45,7 @@ Tato schopnost meziadresářového zřizování nabízí tyto významné obchodn
 - [Předávací ověřování](../hybrid/how-to-connect-pta.md) – Metoda přihlašování, která umožňuje uživatelům používat stejné heslo místně a v cloudu, ale nevyžaduje další infrastrukturu federovaného prostředí.
 - [Integrace federace](../hybrid/how-to-connect-fed-whatis.md) – dá se použít ke konfiguraci hybridního prostředí pomocí místní infrastruktury AD FS. Poskytuje taky AD FS možnosti správy, jako je například obnovení certifikátu a další AD FS nasazení serveru.
 - [Synchronizace](../hybrid/how-to-connect-sync-whatis.md) – zodpovídá za vytváření uživatelů, skupin a dalších objektů.  A zároveň se ujistěte, že informace o identitě místních uživatelů a skupin odpovídají cloudu.  Tato synchronizace zahrnuje taky hodnoty hash hesel.
-- [Monitorování stavu](../hybrid/whatis-hybrid-identity-health.md) – může poskytovat robustní monitorování a poskytovat centrální umístění v Azure Portal k zobrazení této aktivity. 
+- [Monitorování stavu](../hybrid/whatis-azure-ad-connect.md) – může poskytovat robustní monitorování a poskytovat centrální umístění v Azure Portal k zobrazení této aktivity. 
 
 
 ## <a name="next-steps"></a>Další kroky 

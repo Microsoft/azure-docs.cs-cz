@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 4810de772e44be22ee5bd4a9fb6ef0ef756e62f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8a176fff0da932d0fafd40b9ab895b635acc5f6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77085204"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169439"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Postupy: Konfigurace MSAL pro iOS a macOS pro používání různých zprostředkovatelů identity
 
@@ -29,7 +29,7 @@ V tomto článku se dozvíte, jak nakonfigurovat aplikaci knihovny Microsoft Aut
 `MSALPublicClientApplication` má nakonfigurovanou adresu URL s výchozí autoritou `https://login.microsoftonline.com/common` , která je vhodná pro většinu Azure Active Directorych scénářů (AAD). Pokud neimplementujete pokročilé scénáře, jako jsou národní cloudy nebo pracujete s B2C, nebudete je muset měnit.
 
 > [!NOTE]
-> Moderní ověřování pomocí Active Directory Federation Services (AD FS) jako zprostředkovatele identity (ADFS) není podporované (podrobnosti najdete v tématu [ADFS pro vývojáře](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios) ). Služba ADFS je podporovaná prostřednictvím federace.
+> Moderní ověřování pomocí Active Directory Federation Services (AD FS) jako zprostředkovatele identity (ADFS) není podporované (podrobnosti najdete v tématu [ADFS pro vývojáře](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios) ). Služba ADFS je podporovaná prostřednictvím federace.
 
 ## <a name="change-the-default-authority"></a>Změna výchozího úřadu
 
@@ -180,7 +180,7 @@ Je možné, že budete muset do každého svrchovaného cloudu předat různé o
 
 Když je adresa URL autority nastavená na `"login.microsoftonline.com/common"` , uživatel se přihlásí do svého domovského tenanta. Některé aplikace ale můžou potřebovat podepsat uživatele do jiného tenanta a některé aplikace fungují jenom s jedním klientem.
 
-Pokud chcete uživatele podepsat do konkrétního tenanta, nakonfigurujte ho `MSALPublicClientApplication` pomocí konkrétní autority. Například:
+Pokud chcete uživatele podepsat do konkrétního tenanta, nakonfigurujte ho `MSALPublicClientApplication` pomocí konkrétní autority. Příklad:
 
 `https://login.microsoftonline.com/469fdeb4-d4fd-4fde-991e-308a78e4bea4`
 

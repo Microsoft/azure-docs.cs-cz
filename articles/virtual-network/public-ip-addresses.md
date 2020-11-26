@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 3f2dfb113f4c82dfea422a7c2be1c5fb07ffd60e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ef79844cf2f90ce97ea30a1948a441f909255f98
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358163"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169929"
 ---
 # <a name="public-ip-addresses"></a>Veřejné IP adresy
 
@@ -54,7 +54,7 @@ Veřejné IP adresy standardní SKU:
 - Musí mít nastavitelný časový limit nečinnosti příchozího výstupního toku 4-30 minut, výchozí hodnota je 4 minuty a pevný časový limit odchozího pocházejícího toku je 4 minuty.
 - Zabezpečení je ve výchozím nastavení a uzavřeno pro příchozí provoz. Povoluje výpis příchozích přenosů se [skupinou zabezpečení sítě](security-overview.md#network-security-groups).
 - Přiřazeno k síťovým rozhraním, standardním veřejným nástrojům pro vyrovnávání zatížení nebo aplikačním branám. Další informace o službě Load Balancer úrovně Standard najdete v tématu [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Může být redundantní nebo Geografická zóna (lze vytvořit oblast a zaručit ji v konkrétní zóně dostupnosti). Další informace o zónách dostupnosti najdete v článku s [přehledem zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a v článku o [nástroji pro vyrovnávání zatížení úrovně Standard a zónách dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Může být redundantní v zóně (v reklamě ze všech 3 zón) nebo oblastí (lze vytvořit oblast a zaručit ji v konkrétní zóně dostupnosti). Další informace o zónách dostupnosti najdete v článku s [přehledem zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a v článku o [nástroji pro vyrovnávání zatížení úrovně Standard a zónách dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **Redundantní IP adresy zóny se dají vytvářet jenom v [oblastech, kde jsou živé zóny dostupnosti tři](https://docs.microsoft.com/azure/availability-zones/az-region) .** IP adresy vytvořené před živými zónami nebudou zóny redundantní.
  
 > [!NOTE]
 > Příchozí komunikace se zdrojem standardní skladové položky selže, dokud nevytvoříte a nepřidružíte [skupinu zabezpečení sítě](security-overview.md#network-security-groups) a výslovně nepovolíte požadovaný příchozí provoz.
@@ -178,13 +178,13 @@ Pomocí brány firewall můžete přidružit pouze **statické** standardní ve�
 
 V následující tabulce je uvedena vlastnost, jejímž prostřednictvím je možné veřejnou IP adresu přiřadit prostředku nejvyšší úrovně a možné metody přidělení.
 
-| Prostředek nejvyšší úrovně | Přidružení IP adresy | Dynamická | Statická |
+| Prostředek nejvyšší úrovně | Přidružení IP adresy | Dynamická | Static |
 | --- | --- | --- | --- |
-| Virtuální počítač |Síťové rozhraní |Yes |Yes |
-| Internetový nástroj pro vyrovnávání zatížení |Konfigurace front-endu |Yes |Yes |
-| VPN Gateway |Konfigurace protokolu IP brány |Yes |No |
+| Virtuální počítač |Síťové rozhraní |Ano |Ano |
+| Internetový nástroj pro vyrovnávání zatížení |Konfigurace front-endu |Ano |Ano |
+| VPN Gateway |Konfigurace protokolu IP brány |Ano |No |
 | Application Gateway |Konfigurace front-endu |Ano (jenom V1) |Ano (jenom v2) |
-| Azure Firewall | Konfigurace front-endu | No | Yes|
+| Azure Firewall | Konfigurace front-endu | No | Ano|
 
 ## <a name="limits"></a>Omezení
 

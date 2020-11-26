@@ -67,6 +67,10 @@
           href: virtual-wan-ipsec.md
         - name: Několik odkazů poskytovatele internetových služeb – výběr cesty Azure
           href: path-selection-multiple-links.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: Koncepce cen
       href: pricing-concepts.md
     - name: Informace o NVA ve virtuálním centru

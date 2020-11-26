@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb54410fb314376b68d7297a3452f0990762343d
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 69e87fc919893a544f5d0b1b615a110f25486e57
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577154"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168742"
 ---
 # <a name="header-based-authentication-with-azure-active-directory"></a>Ověřování na základě hlaviček pomocí Azure Active Directory
 
@@ -34,22 +34,22 @@ Vzdálení uživatelé potřebují bezpečně jednotné přihlašování (SSO) d
 
 ## <a name="components-of-system"></a>Součásti systému
 
-* **Uživatel** : přistupuje k starším aplikacím, které obsluhuje proxy aplikace.
+* **Uživatel**: přistupuje k starším aplikacím, které obsluhuje proxy aplikace.
 
-* **Webový prohlížeč** : komponenta, s jakou uživatel pracuje, aby mohla přistupovat k externí adrese URL aplikace.
+* **Webový prohlížeč**: komponenta, s jakou uživatel pracuje, aby mohla přistupovat k externí adrese URL aplikace.
 
-* **Azure AD** : ověřuje uživatele. 
+* **Azure AD**: ověřuje uživatele. 
 
-* **Služba proxy aplikací** : slouží jako reverzní proxy server k odeslání požadavku od uživatele do místní aplikace. Je umístěný ve službě Azure AD a může taky vyhovět všem zásadám podmíněného přístupu.
+* **Služba proxy aplikací**: slouží jako reverzní proxy server k odeslání požadavku od uživatele do místní aplikace. Je umístěný ve službě Azure AD a může taky vyhovět všem zásadám podmíněného přístupu.
 
-* **Konektor proxy aplikací** : nainstalovaný místně na serverech Windows pro zajištění připojení k aplikacím. Používá pouze odchozí připojení. Vrátí odpověď do služby Azure AD.
+* **Konektor proxy aplikací**: nainstalovaný místně na serverech Windows pro zajištění připojení k aplikacím. Používá pouze odchozí připojení. Vrátí odpověď do služby Azure AD.
 
-* **Starší verze aplikací** : aplikace, které přijímají požadavky uživatelů od proxy aplikace. Starší verze aplikace obdrží požadované hlavičky HTTP k nastavení relace a vrácení odpovědi. 
+* **Starší verze aplikací**: aplikace, které přijímají požadavky uživatelů od proxy aplikace. Starší verze aplikace obdrží požadované hlavičky HTTP k nastavení relace a vrácení odpovědi. 
 
 ## <a name="implement-header-based-authentication-with-azure-ad"></a>Implementace ověřování na základě hlaviček pomocí Azure AD
 
-* [Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikací v Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)  
+* [Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikací v Azure AD](../manage-apps/application-proxy-add-on-premises-application.md)  
 
-* [Ověřování založené na hlavičkách pro jednotné přihlašování s Proxy aplikací a PingAccess](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-ping-access) 
+* [Ověřování založené na hlavičkách pro jednotné přihlašování s Proxy aplikací a PingAccess](../manage-apps/application-proxy-configure-single-sign-on-with-headers.md) 
 
-* [Zabezpečení aplikací starší verze s využitím kontrolerů doručování aplikací a sítí](https://docs.microsoft.com/azure/active-directory/manage-apps/secure-hybrid-access)
+* [Zabezpečení aplikací starší verze s využitím kontrolerů doručování aplikací a sítí](../manage-apps/secure-hybrid-access.md)

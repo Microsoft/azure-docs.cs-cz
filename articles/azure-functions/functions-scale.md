@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 88e9d16a205df16a2be63e67f45cdbcf9144b30f
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f41354630f4885a30bd5c036495b216a2cc05599
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108452"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96167790"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Hostování a škálování Azure Functions
 
@@ -97,7 +97,7 @@ I při zapnuté funkci Always On je časový limit spuštění pro jednotlivé f
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Určení plánu hostování existující aplikace
 
-Chcete-li určit plán hostování používaný vaší aplikací Function App, přečtěte si téma **App Service plán** na kartě **Přehled** aplikace Function App v [Azure Portal](https://portal.azure.com). Pokud chcete zobrazit cenovou úroveň, vyberte název **plánu App Service**a v levém podokně vyberte **vlastnosti** .
+Chcete-li určit plán hostování používaný vaší aplikací Function App, přečtěte si téma **App Service plán** na kartě **Přehled** aplikace Function App v [Azure Portal](https://portal.azure.com). Pokud chcete zobrazit cenovou úroveň, vyberte název **plánu App Service** a v levém podokně vyberte **vlastnosti** .
 
 ![Zobrazit plán škálování na portálu](./media/functions-scale/function-app-overview-portal.png)
 
@@ -257,6 +257,6 @@ Následující tabulka porovnání uvádí všechny důležité aspekty, které 
 
 ## <a name="next-steps"></a>Další kroky
 
-+ [Rychlý Start: vytvoření projektu Azure Functions pomocí Visual Studio Code](functions-create-first-function-vs-code.md)
++ [Rychlý Start: vytvoření projektu Azure Functions pomocí Visual Studio Code](./create-first-function-vs-code-csharp.md)
 + [Technologie nasazení v Azure Functions](functions-deployment-technologies.md) 
 + [Příručka pro vývojáře v Azure Functions](functions-reference.md)

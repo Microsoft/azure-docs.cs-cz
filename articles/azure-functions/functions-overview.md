@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperfq2
-ms.openlocfilehash: 6713c0d45a8b5363122c726d1d31e5c479ba8fff
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 514f2e9a82a50f95f9c054c6a54e7b5af3c0af15
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95504645"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96167773"
 ---
 # <a name="introduction-to-azure-functions"></a>Úvod do Azure Functions
 
@@ -38,7 +38,7 @@ Níže jsou uvedeny běžné, _ale nemají vyčerpávající význam_, sadu scé
 | --- | --- |
 | **Sestavení webového rozhraní API** | Implementace koncového bodu pro webové aplikace pomocí [triggeru protokolu HTTP](./functions-bindings-http-webhook.md) |
 | **Zpracovat nahrávání souborů** | Spustit kód, když se v [úložišti objektů BLOB](./functions-bindings-storage-blob.md) nahraje nebo změní soubor |
-| **Sestavení pracovního postupu bez serveru** | Řetězení řady funkcí pomocí [trvalých funkcí](./durable-functions-overview.md) |
+| **Sestavení pracovního postupu bez serveru** | Řetězení řady funkcí pomocí [trvalých funkcí](./durable/durable-functions-overview.md) |
 | **Reakce na změny v databázi** | Spuštění vlastní logiky při vytvoření nebo aktualizaci dokumentu v [Cosmos DB](./functions-bindings-cosmosdb-v2.md) |
 | **Spouštění naplánovaných úloh** | Spustit kód v [Nastavení časů](./functions-bindings-timer.md) |
 | **Vytváření spolehlivých systémů fronty zpráv** | Zpracování front zpráv pomocí [Queue Storage](./functions-bindings-storage-queue.md), [Service Bus](./functions-bindings-service-bus.md)nebo [Event Hubs](./functions-bindings-event-hubs.md) |

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
-ms.openlocfilehash: 37f305a7564382b9c6c5a031340d81a22cfedbf2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0df811f4e8b5d6a95868dfebe192e96fbfa80ed9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88120707"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169252"
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Přidání aplikace s více tenanty do galerie aplikací Azure AD
 
@@ -29,9 +29,9 @@ Azure Active Directory (Azure AD) je cloudová služba identit. [Galerie aplikac
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>Pokud vaše aplikace podporuje SAML nebo OpenIDConnect
 Pokud máte víceklientské aplikace, kterou chcete uvést v galerii aplikací Azure AD, musíte nejdřív zajistit, aby vaše aplikace podporovala jednu z následujících technologií jednotného přihlašování:
 
-- **OpenID Connect**: Pokud chcete svou aplikaci zobrazit, vytvořte víceklientské aplikace v Azure AD a implementujte rozhraní pro [vyjádření souhlasu Azure AD](./consent-framework.md) pro vaši aplikaci. Odešle žádost o přihlášení ke společnému koncovému bodu, aby mohl každý zákazník poskytnout souhlas aplikaci. Přístup uživatele můžete řídit na základě ID tenanta a hlavního názvu uživatele (UPN) přijatého v tokenu. Odešlete aplikaci pomocí procesu popsanýho v [části výpis vaší aplikace v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+- **OpenID Connect**: Pokud chcete svou aplikaci zobrazit, vytvořte víceklientské aplikace v Azure AD a implementujte rozhraní pro [vyjádření souhlasu Azure AD](./consent-framework.md) pro vaši aplikaci. Odešle žádost o přihlášení ke společnému koncovému bodu, aby mohl každý zákazník poskytnout souhlas aplikaci. Přístup uživatele můžete řídit na základě ID tenanta a hlavního názvu uživatele (UPN) přijatého v tokenu. Odešlete aplikaci pomocí procesu popsanýho v [části výpis vaší aplikace v galerii aplikací Azure Active Directory](./v2-howto-app-gallery-listing.md).
 
-- **SAML**: Pokud vaše aplikace podporuje SAML 2,0, může být aplikace uvedená v galerii. Postupujte podle pokynů v [části výpis vaší aplikace v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+- **SAML**: Pokud vaše aplikace podporuje SAML 2,0, může být aplikace uvedená v galerii. Postupujte podle pokynů v [části výpis vaší aplikace v galerii aplikací Azure Active Directory](./v2-howto-app-gallery-listing.md).
 
 ## <a name="if-your-application-does-not-support-saml-or-openidconnect"></a>Pokud vaše aplikace nepodporuje SAML ani OpenIDConnect
 Aplikace, které nepodporují SAML nebo OpenIDConnect, můžou být i nadále integrované do Galerie aplikací prostřednictvím technologie jednotného přihlašování k heslům.
@@ -40,11 +40,11 @@ Jednotné přihlašování k heslům, označované taky jako trezor hesel, umož
 
 Pokud chcete zobrazit seznam aplikací pomocí této technologie:
 1. Vytvořte webovou aplikaci, která má přihlašovací stránku HTML pro konfiguraci [jednotného přihlašování pomocí hesla](../manage-apps/what-is-single-sign-on.md). 
-2. Odešlete žádost, jak je popsáno v [části výpis vaší aplikace v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+2. Odešlete žádost, jak je popsáno v [části výpis vaší aplikace v galerii aplikací Azure Active Directory](./v2-howto-app-gallery-listing.md).
 
 ## <a name="escalations"></a>Eskalací zákazníka
 
 Pro všechny eskalace odešlete e-mail do [týmového týmu jednotného přihlašování služby Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) a my se vám pošle zpět na co možná nejdříve.
 
 ## <a name="next-steps"></a>Další kroky
-Naučte se, jak [Zobrazit seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
+Naučte se, jak [Zobrazit seznam aplikací v galerii aplikací Azure Active Directory](./v2-howto-app-gallery-listing.md).

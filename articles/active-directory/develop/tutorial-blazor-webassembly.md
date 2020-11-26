@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 5489feeeec64c7b3d4b5fc28eddfe8b780308796
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 09e922ffddcce732d9213eb91026561528c0728a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979874"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169133"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Kurz: přihlášení uživatelů a volání chráněného rozhraní API z aplikace Blazor WebAssembly
 
@@ -26,9 +26,9 @@ V tomto kurzu:
 > [!div class="checklist"]
 >
 > * Vytvoření nové aplikace WebAssembly v Blazor, která je nakonfigurovaná tak, aby používala Azure Active Directory (Azure AD) pro [ověřování a autorizaci](authentication-vs-authorization.md) pomocí platformy Microsoft Identity Platform
-> * Načtěte data z chráněného webového rozhraní API, v tomto případě [Microsoft Graph](https://docs.microsoft.com/graph/overview)
+> * Načtěte data z chráněného webového rozhraní API, v tomto případě [Microsoft Graph](/graph/overview)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Sada .NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 * Tenant služby Azure AD, kde můžete zaregistrovat aplikaci. Pokud nemáte přístup k tenantovi služby Azure AD, můžete si ho zaregistrovat pomocí [vývojářského programu Microsoft 365](https://developer.microsoft.com/microsoft-365/dev-program) nebo vytvořením [bezplatného účtu Azure](https://azure.microsoft.com/free).

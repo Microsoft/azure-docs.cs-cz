@@ -4,12 +4,12 @@ description: Vysvětlení, jak vyvíjet funkce pomocí Pythonu
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 7d97405a0b75129ddb0da581955728b393bf49ca
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8254abda68949e6884143316d4b29b07ade129dc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539069"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96167841"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -19,7 +19,7 @@ Jako vývojář v Pythonu se může také zajímat jedna z následujících čl�
 
 | Začínáme | Koncepty| Scénáře/ukázky |
 | -- | -- | -- | 
-| <ul><li>[Funkce Pythonu používající Visual Studio Code](./functions-create-first-function-vs-code.md?pivots=programming-language-python)</li><li>[Funkce Pythonu s terminálem/Command Prompt](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)</li></ul> | <ul><li>[Příručka pro vývojáře](functions-reference.md)</li><li>[Možnosti hostování](functions-scale.md)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li></ul> | <ul><li>[Klasifikace obrázků s využitím PyTorchu](machine-learning-pytorch.md)</li><li>[Ukázka Azure Automation](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[Machine learning s TensorFlow](functions-machine-learning-tensorflow.md)</li><li>[Procházet ukázky v Pythonu](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
+| <ul><li>[Funkce Pythonu používající Visual Studio Code](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[Funkce Pythonu s terminálem/Command Prompt](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[Příručka pro vývojáře](functions-reference.md)</li><li>[Možnosti hostování](functions-scale.md)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li></ul> | <ul><li>[Klasifikace obrázků s využitím PyTorchu](machine-learning-pytorch.md)</li><li>[Ukázka Azure Automation](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[Machine learning s TensorFlow](functions-machine-learning-tensorflow.md)</li><li>[Procházet ukázky v Pythonu](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 ## <a name="programming-model"></a>Programovací model
 
@@ -93,22 +93,22 @@ Doporučená struktura složek pro projekt funkcí Pythonu vypadá jako v násle
 ```
 Hlavní složka projektu (<project_root>) může obsahovat následující soubory:
 
-* *local.settings.jsv* : používá se k ukládání nastavení aplikace a připojovacích řetězců při místním spuštění. Tento soubor se nepublikuje do Azure. Další informace najdete v tématu [Local. Settings. File](functions-run-local.md#local-settings-file).
-* *requirements.txt* : obsahuje seznam balíčků Pythonu, které systém nainstaluje při publikování do Azure.
-* *host.js* : obsahuje možnosti globální konfigurace, které ovlivňují všechny funkce aplikace Function App. Tento soubor se publikuje do Azure. Ne všechny možnosti jsou podporovány při místním spuštění. Další informace najdete v tématu [host.jsv](functions-host-json.md).
-* *. VSCode/* : (volitelné) obsahuje konfiguraci VSCode úložiště. Další informace najdete v tématu [Nastavení VSCode](https://code.visualstudio.com/docs/getstarted/settings).
-* *. venv/* : (volitelné) obsahuje virtuální prostředí Pythonu, které používá místní vývoj.
-* *Souboru Dockerfile* : (volitelné) používá se při publikování projektu ve [vlastním kontejneru](functions-create-function-linux-custom-image.md).
-* *testy/* : (volitelné) obsahuje testovací případy vaší aplikace Function App.
-* *. funcignore* : (volitelné) deklaruje soubory, které by neměly být publikovány do Azure. Tento soubor obvykle obsahuje, chcete-li ignorovat `.vscode/` nastavení editoru, ignorovat `.venv/` místní virtuální prostředí Python, ignorovat `tests/` testovací případy a `local.settings.json` zabránit publikování nastavení místní aplikace.
+* *local.settings.jsv*: používá se k ukládání nastavení aplikace a připojovacích řetězců při místním spuštění. Tento soubor se nepublikuje do Azure. Další informace najdete v tématu [Local. Settings. File](functions-run-local.md#local-settings-file).
+* *requirements.txt*: obsahuje seznam balíčků Pythonu, které systém nainstaluje při publikování do Azure.
+* *host.js*: obsahuje možnosti globální konfigurace, které ovlivňují všechny funkce aplikace Function App. Tento soubor se publikuje do Azure. Ne všechny možnosti jsou podporovány při místním spuštění. Další informace najdete v tématu [host.jsv](functions-host-json.md).
+* *. VSCode/*: (volitelné) obsahuje konfiguraci VSCode úložiště. Další informace najdete v tématu [Nastavení VSCode](https://code.visualstudio.com/docs/getstarted/settings).
+* *. venv/*: (volitelné) obsahuje virtuální prostředí Pythonu, které používá místní vývoj.
+* *Souboru Dockerfile*: (volitelné) používá se při publikování projektu ve [vlastním kontejneru](functions-create-function-linux-custom-image.md).
+* *testy/*: (volitelné) obsahuje testovací případy vaší aplikace Function App.
+* *. funcignore*: (volitelné) deklaruje soubory, které by neměly být publikovány do Azure. Tento soubor obvykle obsahuje, chcete-li ignorovat `.vscode/` nastavení editoru, ignorovat `.venv/` místní virtuální prostředí Python, ignorovat `tests/` testovací případy a `local.settings.json` zabránit publikování nastavení místní aplikace.
 
 Každá funkce má svůj vlastní soubor kódu a konfigurační soubor vazby (function.json).
 
-Když nasadíte projekt do aplikace Function App v Azure, měli byste zahrnout celý obsah složky hlavního projektu ( *<project_root>* ) do balíčku, ale ne samotné složky, což znamená, `host.json` že by měl být v kořenovém adresáři balíčku. V tomto příkladu doporučujeme udržovat testy ve složce společně s jinými funkcemi `tests/` . Další informace najdete v tématu [testování částí](#unit-testing).
+Když nasadíte projekt do aplikace Function App v Azure, měli byste zahrnout celý obsah složky hlavního projektu (*<project_root>*) do balíčku, ale ne samotné složky, což znamená, `host.json` že by měl být v kořenovém adresáři balíčku. V tomto příkladu doporučujeme udržovat testy ve složce společně s jinými funkcemi `tests/` . Další informace najdete v tématu [testování částí](#unit-testing).
 
 ## <a name="import-behavior"></a>Chování při importu
 
-Můžete importovat moduly v kódu funkce pomocí absolutních i relativních odkazů. V závislosti na struktuře složky uvedené výše následující importy fungují v rámci souboru funkce *<project_root> \My \_ First \_ Function \\ _ \_ init \_ \_ . py* :
+Můžete importovat moduly v kódu funkce pomocí absolutních i relativních odkazů. V závislosti na struktuře složky uvedené výše následující importy fungují v rámci souboru funkce *<project_root> \My \_ First \_ Function \\ _ \_ init \_ \_ . py*:
 
 ```python
 from shared_code import my_first_helper_function #(absolute)
@@ -236,7 +236,7 @@ def main(req: func.HttpRequest,
     return message
 ```
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>Protokolování
 
 Přístup k protokolovacímu nástroji Azure Functions runtime je k dispozici prostřednictvím kořenové [`logging`](https://docs.python.org/3/library/logging.html#module-logging) obslužné rutiny ve vaší aplikaci Function App. Tento protokolovací nástroj je svázán s Application Insights a umožňuje označit upozornění a chyby, které byly zjištěny během provádění funkce.
 
@@ -385,7 +385,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT se vztahuje na každého hostitele, který funkce
 
 Chcete-li získat kontext vyvolání funkce během provádění, zahrňte [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) do jejího podpisu argument.
 
-Například:
+Příklad:
 
 ```python
 import azure.functions
@@ -440,7 +440,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 Pro místní vývoj se nastavení aplikace [uchovávají v local.settings.jssouboru](functions-run-local.md#local-settings-file).
 
-## <a name="python-version"></a>Verze Pythonu
+## <a name="python-version"></a>Python version (Verze Pythonu)
 
 Azure Functions podporuje následující verze Pythonu:
 
@@ -491,7 +491,7 @@ func azure functionapp publish <APP_NAME>
 
 Nezapomeňte nahradit `<APP_NAME>` názvem vaší aplikace Function App v Azure.
 
-[Rozšíření Azure Functions pro Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) také požádá o vzdálené sestavení ve výchozím nastavení.
+[Rozšíření Azure Functions pro Visual Studio Code](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure) také požádá o vzdálené sestavení ve výchozím nastavení.
 
 ### <a name="local-build"></a>Místní sestavení
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5314758acecae2a9d68f2405fc1c3d2196950b4
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: f209d394e1a0c2c4ddde9cbf8df2704647e2822a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577052"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168708"
 ---
 # <a name="ldap-authentication-with-azure-active-directory"></a>Ověřování protokolu LDAP pomocí Azure Active Directory
 
@@ -40,32 +40,31 @@ Pro aplikaci nebo službu je nutné, aby používala ověřování protokolu LDA
 
 ## <a name="components-of-system"></a>Součásti systému
 
-* **Uživatel** : přístup k aplikacím závislým na protokolu LDAP prostřednictvím prohlížeče.
+* **Uživatel**: přístup k aplikacím závislým na protokolu LDAP prostřednictvím prohlížeče.
 
-* **Webový prohlížeč** : rozhraní, se kterým uživatel pracuje, aby bylo možné získat přístup k externí adrese URL aplikace.
+* **Webový prohlížeč**: rozhraní, se kterým uživatel pracuje, aby bylo možné získat přístup k externí adrese URL aplikace.
 
-* **Virtual Network** : privátní síť v Azure, přes kterou může starší verze aplikace využívat služby LDAP. 
+* **Virtual Network**: privátní síť v Azure, přes kterou může starší verze aplikace využívat služby LDAP. 
 
-* **Starší verze aplikací** : úlohy aplikací nebo serverů, které vyžadují protokol LDAP nasazený ve virtuální síti v Azure, nebo které mají na služba AD DS IP adresy instancí prostřednictvím síťových tras. 
+* **Starší verze aplikací**: úlohy aplikací nebo serverů, které vyžadují protokol LDAP nasazený ve virtuální síti v Azure, nebo které mají na služba AD DS IP adresy instancí prostřednictvím síťových tras. 
 
-* **Azure AD** : synchronizuje informace o identitě z místního adresáře organizace prostřednictvím Azure AD Connect.
+* **Azure AD**: synchronizuje informace o identitě z místního adresáře organizace prostřednictvím Azure AD Connect.
 
-* **Azure AD Domain Services (služba AD DS)** : provádí jednosměrnou synchronizaci z Azure AD, která poskytuje přístup k centrální skupině uživatelů, skupin a přihlašovacích údajů. Instance služba AD DS je přiřazena k virtuální síti. Aplikace, služby a virtuální počítače v Azure, které se připojují k virtuální síti přiřazené k služba AD DS, můžou používat běžné služba AD DS funkce, jako je LDAP, připojení k doméně, zásady skupiny, Kerberos a ověřování NTLM.
+* **Azure AD Domain Services (služba AD DS)**: provádí jednosměrnou synchronizaci z Azure AD, která poskytuje přístup k centrální skupině uživatelů, skupin a přihlašovacích údajů. Instance služba AD DS je přiřazena k virtuální síti. Aplikace, služby a virtuální počítače v Azure, které se připojují k virtuální síti přiřazené k služba AD DS, můžou používat běžné služba AD DS funkce, jako je LDAP, připojení k doméně, zásady skupiny, Kerberos a ověřování NTLM.
    > [!NOTE]
    >  V prostředích, kde organizace nemůže synchronizovat hodnoty hash hesel nebo se uživatelé přihlásí pomocí čipových karet, doporučujeme, abyste v služba AD DS používali doménovou strukturu prostředků. 
 
-* **Azure AD Connect** : Nástroj pro synchronizaci informací o místních identitách, který se má Microsoft Azure AD. Průvodce nasazením a s asistencí vám pomůžou nakonfigurovat požadavky a součásti potřebné pro připojení, včetně synchronizace a přihlášení ze služby Active Directory do Azure AD. 
+* **Azure AD Connect**: Nástroj pro synchronizaci informací o místních identitách, který se má Microsoft Azure AD. Průvodce nasazením a s asistencí vám pomůžou nakonfigurovat požadavky a součásti potřebné pro připojení, včetně synchronizace a přihlášení ze služby Active Directory do Azure AD. 
 
-* **Active Directory** : Adresářová služba, která ukládá [místní informace o identitě, jako jsou informace o uživatelích a účtech](https://www.dnsstuff.com/active-directory-service-accounts), a informace o zabezpečení, jako jsou hesla.
+* **Active Directory**: Adresářová služba, která ukládá [místní informace o identitě, jako jsou informace o uživatelích a účtech](https://www.dnsstuff.com/active-directory-service-accounts), a informace o zabezpečení, jako jsou hesla.
 
 ## <a name="implement-ldap-authentication-with-azure-ad"></a>Implementace ověřování LDAP pomocí Azure AD
 
-* [Vytvoření a konfigurace instance služby Azure služba AD DS](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance) 
+* [Vytvoření a konfigurace instance služby Azure služba AD DS](../../active-directory-domain-services/tutorial-create-instance.md) 
 
-* [Konfigurace virtuální sítě pro instanci Azure služba AD DS](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-configure-networking) 
+* [Konfigurace virtuální sítě pro instanci Azure služba AD DS](../../active-directory-domain-services/tutorial-configure-networking.md) 
 
-* [Konfigurace protokol Secure LDAP pro spravovanou doménu Azure služba AD DS](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-configure-ldaps) 
+* [Konfigurace protokol Secure LDAP pro spravovanou doménu Azure služba AD DS](../../active-directory-domain-services/tutorial-configure-ldaps.md) 
 
-* [Vytvoření odchozího vztahu důvěryhodnosti doménové struktury k místní doméně v Azure služba AD DS](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-forest-trust)
+* [Vytvoření odchozího vztahu důvěryhodnosti doménové struktury k místní doméně v Azure služba AD DS](../../active-directory-domain-services/tutorial-create-forest-trust.md)
 
- 

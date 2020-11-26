@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: baa0aa01c94c4deb35db8a59f7b4f81224ae1fd3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5f529e6148463ae384791985659378cb9d0a5046
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836984"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168861"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenční příručka operací správy ověřování Azure Active Directory
 
@@ -160,7 +160,7 @@ Zajištění standardizovaného mechanismu jednotného přihlašování pro celo
 > [!NOTE]
 > Pokud nemáte mechanismus pro zjišťování nespravovaných aplikací ve vaší organizaci, doporučujeme implementovat proces zjišťování pomocí řešení Cloud Access Security broker (CASB), jako je například [Microsoft Cloud App Security](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security).
 
-Nakonec, pokud máte galerii aplikací Azure AD a používáte aplikace, které podporují jednotné přihlašování pomocí služby Azure AD, doporučujeme [v galerii aplikací zobrazit seznam aplikací](../azuread-dev/howto-app-gallery-listing.md).
+Nakonec, pokud máte galerii aplikací Azure AD a používáte aplikace, které podporují jednotné přihlašování pomocí služby Azure AD, doporučujeme [v galerii aplikací zobrazit seznam aplikací](../develop/v2-howto-app-gallery-listing.md).
 
 #### <a name="single-sign-on-recommended-reading"></a>Doporučené čtení jednotného přihlašování
 
@@ -255,7 +255,7 @@ Podmíněný přístup je důležitým nástrojem pro zlepšení stav zabezpeče
 
 #### <a name="conditional-access-recommended-reading"></a>Doporučené čtení pro podmíněný přístup
 
-- [Osvědčené postupy pro podmíněný přístup v Azure Active Directory](../conditional-access/best-practices.md)
+- [Osvědčené postupy pro podmíněný přístup v Azure Active Directory](../conditional-access/overview.md)
 - [Konfigurace identit a přístupu k zařízením](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Odkaz na nastavení Azure Active Directory podmíněného přístupu](../conditional-access/concept-conditional-access-conditions.md)
 - [Běžné zásady podmíněného přístupu](../conditional-access/concept-conditional-access-policy-common.md)
@@ -309,7 +309,7 @@ Níže najdete seznam aplikací s oprávněními, které byste mohli chtít poř
 | | Pošta. Read. Shared |
 | | Pošta. v zápisu |
 
-- Aplikace udělily úplnému zosobnění uživatele přihlášeného uživatele. Například:
+- Aplikace udělily úplnému zosobnění uživatele přihlášeného uživatele. Příklad:
 
 |Prostředek | Oprávnění |
 | :- | :- |

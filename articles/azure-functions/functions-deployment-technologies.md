@@ -4,12 +4,12 @@ description: Seznamte se s různými způsoby, jak můžete nasadit kód pro Azu
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 3988f30d0e6429a8cac450711d4033e4b2603d46
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 7a75408008a90a2c40553b1f6c5c196775a48e61
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900174"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168096"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie nasazení v Azure Functions
 
@@ -86,7 +86,7 @@ Pro povolení vzdáleného sestavení v systému Linux musí být nastavena nás
 * `ENABLE_ORYX_BUILD=true`
 * `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
 
-Ve výchozím nastavení obě [Azure Functions Core Tools](functions-run-local.md) a [rozšíření Azure Functions pro Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) provádějí vzdálená sestavení při nasazování do systému Linux. Z tohoto důvodu obě nástroje tato nastavení pro vás v Azure automaticky vytvoří.
+Ve výchozím nastavení obě [Azure Functions Core Tools](functions-run-local.md) a [rozšíření Azure Functions pro Visual Studio Code](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure) provádějí vzdálená sestavení při nasazování do systému Linux. Z tohoto důvodu obě nástroje tato nastavení pro vás v Azure automaticky vytvoří.
 
 Když se aplikace na platformě Linux vytváří vzdáleně, [spouštějí se z balíčku pro nasazení](run-functions-from-deployment-package.md).
 
@@ -185,7 +185,7 @@ V editoru založeném na portálu můžete přímo upravovat soubory, které jso
 
 >__Kdy ji použít:__ Portál je dobrým způsobem, jak začít s Azure Functions. Pro přesnější vývojovou práci doporučujeme použít jeden z následujících nástrojů klienta:
 >
->* [Visual Studio Code](functions-create-first-function-vs-code.md)
+>* [Visual Studio Code](./create-first-function-vs-code-csharp.md)
 >* [Azure Functions Core Tools (příkazový řádek)](functions-run-local.md)
 >* [Visual Studio](functions-create-your-first-function-visual-studio.md)
 
@@ -210,7 +210,7 @@ Když nasazení provedete, všechna stávající spuštění budou moci být dok
 
 Pokud potřebujete větší kontrolu nad tímto přechodem, měli byste použít sloty nasazení.
 
-## <a name="deployment-slots"></a>Sloty nasazení
+## <a name="deployment-slots"></a>Nasazovací sloty
 
 Když nasadíte aplikaci Function App do Azure, můžete ji nasadit do samostatného slotu pro nasazení místo přímo do produkčního prostředí. Další informace o slotech nasazení najdete v dokumentaci [Azure Functions Deployments](functions-deployment-slots.md) – další podrobnosti.
 

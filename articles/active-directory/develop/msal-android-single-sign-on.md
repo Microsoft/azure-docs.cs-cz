@@ -14,26 +14,26 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: hahamil
 ms.reviewer: marsma
-ms.openlocfilehash: 7e53e21b6d929e2f0ba9a2e23e4e8e1b2278f828
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 3f5791bfcf6547b7fc4e84bee3d4c1c49453af9c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209635"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169490"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-msal"></a>Postupy: povolení jednotného přihlašování mezi aplikacemi na Androidu pomocí MSAL
 
 Jednotné přihlašování (SSO) umožňuje uživatelům zadat přihlašovací údaje jenom jednou a nechat tyto přihlašovací údaje automaticky fungovat napříč aplikacemi.
 
-[Microsoft Identity Platform](/azure/active-directory/develop/) a Microsoft Authentication Library (MSAL) vám pomůžou povolit jednotné přihlašování napříč vlastní sadou aplikací. Pomocí ověřovacích a ověřovacích aplikací pro zprostředkovatele můžete v celém zařízení rozšířené jednotné přihlašování.
+[Microsoft Identity Platform](./index.yml) a Microsoft Authentication Library (MSAL) vám pomůžou povolit jednotné přihlašování napříč vlastní sadou aplikací. Pomocí ověřovacích a ověřovacích aplikací pro zprostředkovatele můžete v celém zařízení rozšířené jednotné přihlašování.
 
 V tomto postupu se naučíte, jak nakonfigurovat sady SDK používané vaší aplikací k poskytování jednotného přihlašování pro vaše zákazníky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento postup předpokládá, že máte tyto informace:
 
-- Zřiďte aplikaci pomocí Azure Portal. Další informace o tomto tématu najdete v tématu pokyny k vytvoření aplikace v kurzu pro [Android](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android#create-a-project) .
+- Zřiďte aplikaci pomocí Azure Portal. Další informace o tomto tématu najdete v tématu pokyny k vytvoření aplikace v kurzu pro [Android](./tutorial-v2-android.md#create-a-project) .
 - Integrujte svoji aplikaci s [knihovnou Microsoft Authentication Library pro Android](https://github.com/AzureAD/microsoft-authentication-library-for-android).
 
 ## <a name="methods-for-single-sign-on"></a>Metody jednotného přihlašování
@@ -81,7 +81,7 @@ Pokud na zařízení ještě není nainstalovaná aplikace zprostředkovatele, M
 
 Když je v zařízení nainstalován zprostředkovatel, budou všechny následné požadavky na interaktivní tokeny (volání `acquireToken()` ) zpracovávány zprostředkovatelem namísto místně pomocí MSAL. Pro zprostředkovatele není k dispozici jakýkoli stav jednotného přihlašování, který je dřív dostupný pro MSAL. V důsledku toho se uživatel bude muset znovu ověřit nebo vybrat účet ze stávajícího seznamu účtů, které zařízení zná.
 
-Instalace zprostředkovatele nevyžaduje, aby se uživatel znovu přihlásil. Pouze v případě, že uživatel potřebuje vyřešit, `MsalUiRequiredException` bude další požadavek přejít do služby Broker. `MsalUiRequiredException` může být vyvolána z několika důvodů a je třeba je přeložit interaktivně. Například:
+Instalace zprostředkovatele nevyžaduje, aby se uživatel znovu přihlásil. Pouze v případě, že uživatel potřebuje vyřešit, `MsalUiRequiredException` bude další požadavek přejít do služby Broker. `MsalUiRequiredException` může být vyvolána z několika důvodů a je třeba je přeložit interaktivně. Příklad:
 
 - Uživatel změnil heslo přidružené k účtu.
 - Uživatelský účet už nesplňuje zásady podmíněného přístupu.
@@ -119,7 +119,7 @@ keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.k
 
 Jakmile vygenerujete hodnotu hash podpisu pomocí *nástroje*, použijte Azure Portal k VYgenerování identifikátoru URI přesměrování:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a v **Registrace aplikací**vyberte svou aplikaci pro Android.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a v **Registrace aplikací** vyberte svou aplikaci pro Android.
 1. Vyberte **ověřování**  >  **Přidat platformu**  >  **Android**.
 1. V podokně **Konfigurovat aplikaci pro Android** , které se otevře, zadejte **hodnotu hash podpisu** , kterou jste dříve vytvořili, a **název balíčku**.
 1. Klikněte na tlačítko **Konfigurovat** .

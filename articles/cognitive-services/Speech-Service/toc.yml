@@ -37,6 +37,8 @@
           href: how-to-automatic-language-detection.md
         - name: Použití rozhraní API pro dávkový přepis
           href: batch-transcription.md
+        - name: Posouzení výslovnosti
+          href: how-to-pronunciation-assessment.md
     - name: Kurzy
       items:
         - name: Zlepšení přesnosti s využitím modelů tenantů
@@ -494,7 +496,7 @@
           href: 'https://speech.microsoft.com'
         - name: Vytvoření aplikace Vlastní příkazy s využitím sady Speech Studio
           href: ./quickstart-custom-commands-application.md
-- name: Nasazení
+- name: Nasadit
   items:
     - name: Povolit protokolování
       href: how-to-use-logging.md
@@ -506,7 +508,7 @@
     - name: Konfigurace RHEL/CentOS 7
       href: how-to-configure-rhel-centos-7.md
       displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
-    - name: Containers
+    - name: Kontejnery
       items:
         - name: Instalace a spuštění kontejnerů služby Speech
           displayName: 'containers,install container,run container'

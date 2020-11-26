@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eaf033f7da7a5bd4882d0c78a2321640aa64d8ac
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1ffe8c1397525348e472e965a407909fee36152d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646555"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168443"
 ---
 # <a name="what-is-hr-driven-provisioning"></a>Co je zřizování na základě lidských zdrojů?
 
@@ -35,7 +35,7 @@ V současné době řešení zajišťování místních lidských zdrojů v rám
 
 Pomocí MIM můžete zřídit uživatele z vašich místních systémů pro personální prostředí se službou Active Directory nebo Azure AD.
 
-Informace o Microsoft Identity Manager a systémech, které podporuje, najdete v dokumentaci k [Microsoft Identity Manager](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016) .
+Informace o Microsoft Identity Manager a systémech, které podporuje, najdete v dokumentaci k [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) .
 
 [!INCLUDE [active-directory-hr-provisioning.md](../../../includes/active-directory-hr-provisioning.md)]
 

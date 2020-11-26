@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: a2d5234b3c80456a98fde4547b9665ca1b0a83dd
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 651c1913491952c53af42abec5ce5d5009da06a0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913541"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168062"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Průběžné doručování pomocí akce GitHubu
 
@@ -34,7 +34,7 @@ V případě pracovního postupu Azure Functions má soubor tři části:
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Účet GitHub. Pokud ho ještě nemáte, zaregistrujte se [zdarma](https://github.com/join).  
 - Pracovní funkce hostovaná v Azure s úložištěm GitHub.   
-    - [Rychlé zprovoznění: Vytvoření funkce v Azure s využitím Visual Studio Code](functions-create-first-function-vs-code.md)
+    - [Rychlé zprovoznění: Vytvoření funkce v Azure s využitím Visual Studio Code](./create-first-function-vs-code-csharp.md)
 
 ## <a name="generate-deployment-credentials"></a>Generovat přihlašovací údaje nasazení
 
@@ -46,7 +46,7 @@ Po uložení přihlašovacích údajů profilu publikování jako [tajného kód
 
 Chcete-li stáhnout profil publikování aplikace Function App:
 
-1. Vyberte stránku **Přehled** aplikace Function App a pak vyberte **získat profil publikování** .
+1. Vyberte stránku **Přehled** aplikace Function App a pak vyberte **získat profil publikování**.
 
    :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="Stáhnout profil publikování":::
 
@@ -55,11 +55,11 @@ Chcete-li stáhnout profil publikování aplikace Function App:
 
 ### <a name="add-the-github-secret"></a>Přidat tajný klíč GitHubu
 
-1. V [GitHubu](https://github.com)přejděte do úložiště, vyberte **Nastavení**  >  **tajné klíče**  >  **Přidat nový tajný kód** .
+1. V [GitHubu](https://github.com)přejděte do úložiště, vyberte **Nastavení**  >  **tajné klíče**  >  **Přidat nový tajný kód**.
 
-   :::image type="content" source="media/functions-how-to-github-actions/add-secret.png" alt-text="Stáhnout profil publikování":::
+   :::image type="content" source="media/functions-how-to-github-actions/add-secret.png" alt-text="Přidat tajný kód":::
 
-1. Přidejte nový tajný kód s `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` použitím **pro název** , obsah souboru profilu publikování pro **hodnotu** a pak vyberte **Přidat tajný klíč** .
+1. Přidejte nový tajný kód s `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` použitím **pro název**, obsah souboru profilu publikování pro **hodnotu** a pak vyberte **Přidat tajný klíč**.
 
 GitHub se teď může ověřit pro vaši aplikaci Function App v Azure.
 

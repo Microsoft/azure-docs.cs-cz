@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ab14413de1f999747e5b3fb58b505e0a9258a55
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7cd2aa5e9ff8cbaeead69f11d2e3de7f760b53ec
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441211"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168640"
 ---
 # <a name="saml-authentication-with-azure-active-directory"></a>Ověřování SAML s Azure Active Directory
 
@@ -45,7 +45,7 @@ I když je jedním z nejdůležitějších případů použití jednotné přihl
 
 * **Webový prohlížeč**: součást, se kterou uživatel pracuje.
 
-* **Webová**aplikace: podniková aplikace, která podporuje SAML a používá Azure AD jako IDP.
+* **Webová** aplikace: podniková aplikace, která podporuje SAML a používá Azure AD jako IDP.
 
 * **Token**: kontrolní výraz SAML (označovaný také jako tokeny SAML), který má sady deklarací identity provedené IDP o principu (uživatele). Obsahuje informace o ověřování, atributy a příkazy autorizace rozhodnutí.
 
@@ -53,8 +53,8 @@ I když je jedním z nejdůležitějších případů použití jednotné přihl
 
 ## <a name="implement-saml-authentication-with-azure-ad"></a>Implementace ověřování SAML pomocí Azure AD
 
-* [Kurzy pro integraci SaaSch aplikací pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) 
+* [Kurzy pro integraci SaaSch aplikací pomocí Azure Active Directory](../saas-apps/tutorial-list.md) 
 
-* [Konfigurace jednotného přihlašování založeného na SAML pro aplikace mimo galerii](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app) 
+* [Konfigurace jednotného přihlašování založeného na SAML pro aplikace mimo galerii](../manage-apps/add-application-portal.md) 
 
-* [Jak Azure AD využívá protokol SAML](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-protocol-reference)
+* [Jak Azure AD využívá protokol SAML](../develop/active-directory-saml-protocol-reference.md)

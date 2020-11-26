@@ -54,6 +54,7 @@
     - name: Prozkoumání výstupu služby Video Indexer
       href: video-indexer-output-json-v2.md
     - name: Vyhledání určitých momentů ve videích
+      displayName: search
       href: video-indexer-search.md
     - name: 'Detekce scén, snímků a klíčových snímků'
       href: scenes-shots-keyframes.md

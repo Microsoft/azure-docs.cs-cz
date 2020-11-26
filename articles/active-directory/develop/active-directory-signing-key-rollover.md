@@ -12,12 +12,12 @@ ms.date: 8/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b65ad1f22d20686a1ee47631f9209e1b15b0ab58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 981ac775e7153cfd03dc1760bbbc4e50fd9ecc57
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88948126"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169541"
 ---
 # <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Výměna podpisových klíčů na platformě Microsoft identity
 Tento článek popisuje, co potřebujete znát o veřejných klíčích, které používá platforma Microsoft Identity Platform k podepisování tokenů zabezpečení. Je důležité si uvědomit, že tyto klíče se převezmou v pravidelných intervalech a v naléhavém případě by mohlo dojít k okamžitému zavedení. Všechny aplikace, které používají platformu Microsoft Identity Platform, by měly být schopné programově zpracovat proces výměny klíčů. Pokračujte ve čtení, abyste pochopili, jak klíče fungují, jak vyhodnotit dopad přechodu na aplikaci a jak aktualizovat aplikaci nebo vytvořit pravidelný ruční proces ručního zpracování, který v případě potřeby zabere v případě potřeby klíčovou výměnu.
@@ -138,7 +138,7 @@ Pokud jste k řešení přidali ověřování ručně, nemusí mít aplikace pot
 Následující kroky vám pomůžou ověřit, že logika správně funguje ve vaší aplikaci.
 
 1. V Visual Studio 2013 otevřete řešení a pak klikněte na kartu **Průzkumník serveru** v pravém okně.
-2. Rozbalte položku **datová připojení**, **DefaultConnection**a pak **tabulky**. Vyhledejte tabulku **IssuingAuthorityKeys** , klikněte na ni pravým tlačítkem myši a pak klikněte na **Zobrazit data tabulky**.
+2. Rozbalte položku **datová připojení**, **DefaultConnection** a pak **tabulky**. Vyhledejte tabulku **IssuingAuthorityKeys** , klikněte na ni pravým tlačítkem myši a pak klikněte na **Zobrazit data tabulky**.
 3. V tabulce **IssuingAuthorityKeys** bude k dispozici alespoň jeden řádek, který odpovídá hodnotě kryptografického otisku klíče. Odstraňte všechny řádky v tabulce.
 4. Klikněte pravým tlačítkem na tabulku **klienti** a pak klikněte na možnost **Zobrazit data tabulky**.
 5. V tabulce **tenantůs** bude k dispozici alespoň jeden řádek, který odpovídá jedinečnému identifikátoru tenanta adresáře. Odstraňte všechny řádky v tabulce. Pokud neodstraníte řádky v tabulce **tenantů** i v tabulce **IssuingAuthorityKeys** , zobrazí se při spuštění chyba.
@@ -150,7 +150,7 @@ Pokud jste vytvořili aplikaci webového rozhraní API v Visual Studio 2013 pomo
 
 Pokud jste ručně nakonfigurovali ověřování, postupujte podle pokynů níže, abyste se dozvěděli, jak nakonfigurovat webové rozhraní API tak, aby automaticky aktualizovalo své klíčové informace.
 
-Následující fragment kódu ukazuje, jak získat nejnovější klíče z dokumentu federačních metadat a pak pomocí [obslužné rutiny tokenu JWT](https://msdn.microsoft.com/library/dn205065.aspx) ověřit token. Fragment kódu předpokládá, že budete používat vlastní mechanismus ukládání do mezipaměti pro uchování klíče k ověřování budoucích tokenů z platformy Microsoft Identity Platform, ať už se jedná o databázi, konfigurační soubor nebo jiné místo.
+Následující fragment kódu ukazuje, jak získat nejnovější klíče z dokumentu federačních metadat a pak pomocí [obslužné rutiny tokenu JWT](/previous-versions/dotnet/framework/security/json-web-token-handler) ověřit token. Fragment kódu předpokládá, že budete používat vlastní mechanismus ukládání do mezipaměti pro uchování klíče k ověřování budoucích tokenů z platformy Microsoft Identity Platform, ať už se jedná o databázi, konfigurační soubor nebo jiné místo.
 
 ```
 using System;
@@ -241,11 +241,11 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>Webové aplikace chránící prostředky a vytvořené pomocí sady Visual Studio 2012
-Pokud byla vaše aplikace sestavena v aplikaci Visual Studio 2012, pravděpodobně jste pro konfiguraci aplikace použili nástroj identita a přístup. Je také možné, že používáte [ověřovací registr názvů vystavitele (VINR)](https://msdn.microsoft.com/library/dn205067.aspx). VINR zodpovídá za údržbu informací o důvěryhodných zprostředkovatelích identity (Microsoft Identity Platform) a klíčů používaných k ověřování tokenů vydaných jimi. VINR také usnadňuje automatické aktualizace informací o klíčích uložených v souboru Web.config stažením nejnovějšího dokumentu federačních metadat přidružených k vašemu adresáři, zkontrolováním, zda je konfigurace neaktuální s nejnovějším dokumentem, a aktualizujte aplikaci tak, aby používala nový klíč podle potřeby.
+Pokud byla vaše aplikace sestavena v aplikaci Visual Studio 2012, pravděpodobně jste pro konfiguraci aplikace použili nástroj identita a přístup. Je také možné, že používáte [ověřovací registr názvů vystavitele (VINR)](/previous-versions/dotnet/framework/security/validating-issuer-name-registry). VINR zodpovídá za údržbu informací o důvěryhodných zprostředkovatelích identity (Microsoft Identity Platform) a klíčů používaných k ověřování tokenů vydaných jimi. VINR také usnadňuje automatické aktualizace informací o klíčích uložených v souboru Web.config stažením nejnovějšího dokumentu federačních metadat přidružených k vašemu adresáři, zkontrolováním, zda je konfigurace neaktuální s nejnovějším dokumentem, a aktualizujte aplikaci tak, aby používala nový klíč podle potřeby.
 
 Pokud jste aplikaci vytvořili pomocí některého z ukázek kódu nebo pokynů v dokumentaci od Microsoftu, je logika přecházení mezi klíči již obsažena v projektu. Všimněte si, že níže uvedený kód již v projektu existuje. Pokud vaše aplikace ještě tuto logiku nemá, postupujte podle následujících kroků a ověřte, zda správně funguje.
 
-1. V **Průzkumník řešení**přidejte odkaz na sestavení **System. IdentityModel** pro příslušný projekt.
+1. V **Průzkumník řešení** přidejte odkaz na sestavení **System. IdentityModel** pro příslušný projekt.
 2. Otevřete soubor **Global.asax.cs** a přidejte následující direktivy using:
    ```
    using System.Configuration;
@@ -290,14 +290,14 @@ Použijte následující postup, chcete-li ověřit, zda je logika výměny klí
 Pokud jste vytvořili aplikaci v WIF v 1.0, není k dispozici žádný mechanismus pro automatickou aktualizaci konfigurace vaší aplikace, aby používal nový klíč.
 
 * *Nejjednodušší způsob* Použijte nástroje soubor FedUtil obsažené v sadě WIF SDK, které mohou načíst nejnovější dokument metadat a aktualizovat konfiguraci.
-* Aktualizujte svou aplikaci na .NET 4,5, která zahrnuje nejnovější verzi WIF, která se nachází v oboru názvů System. Pak můžete pomocí [ověřování názvu vystavitele (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) provádět automatické aktualizace konfigurace aplikace.
+* Aktualizujte svou aplikaci na .NET 4,5, která zahrnuje nejnovější verzi WIF, která se nachází v oboru názvů System. Pak můžete pomocí [ověřování názvu vystavitele (VINR)](/previous-versions/dotnet/framework/security/validating-issuer-name-registry) provádět automatické aktualizace konfigurace aplikace.
 * Proveďte ruční výměnu podle pokynů na konci tohoto dokumentu s pokyny.
 
 Pokyny k aktualizaci konfigurace pomocí nástroje soubor FedUtil:
 
 1. Ověřte, že je na vašem vývojovém počítači nainstalována sada WIF v 1.0 pro sadu Visual Studio 2008 nebo 2010. Pokud jste ho ještě nenainstalovali, můžete [si ho stáhnout tady](https://www.microsoft.com/en-us/download/details.aspx?id=4451) .
 2. V aplikaci Visual Studio otevřete řešení a klikněte pravým tlačítkem myši na příslušný projekt a vyberte možnost **aktualizovat federační metadata**. Pokud tato možnost není k dispozici, soubor FedUtil a/nebo sada SDK WIF v 1.0 nebyla nainstalována.
-3. V příkazovém řádku vyberte **aktualizovat** a začněte aktualizovat federační metadata. Máte-li přístup k prostředí serveru, kde je aplikace hostována, můžete volitelně použít [Plánovač aktualizací automatických metadat](https://msdn.microsoft.com/library/ee517272.aspx)soubor FedUtil.
+3. V příkazovém řádku vyberte **aktualizovat** a začněte aktualizovat federační metadata. Máte-li přístup k prostředí serveru, kde je aplikace hostována, můžete volitelně použít [Plánovač aktualizací automatických metadat](/previous-versions/windows-identity-foundation/ee517272(v=msdn.10))soubor FedUtil.
 4. Kliknutím na **Dokončit** dokončete proces aktualizace.
 
 ### <a name="web-applications--apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>Webové aplikace/rozhraní API chrání prostředky pomocí jiných knihoven nebo ručně implementují některé podporované protokoly.

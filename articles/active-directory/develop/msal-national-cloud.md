@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 0b54a8227594a81c17dcaaaaa6c599d70217c498
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d899fe7f84a8708bb8ee32cc008567b272a885c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705856"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169371"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Použití MSAL v národním cloudovém prostředí
 
@@ -34,7 +34,7 @@ Zahrnutí globálního cloudu Azure Active Directory (Azure AD) je nasazeno v n�
 
 Tato příručka ukazuje, jak se přihlásit k pracovním a školním účtům, získat přístupový token a volat rozhraní API Microsoft Graph v [cloudovém prostředí Azure Government](https://azure.microsoft.com/global-infrastructure/government/) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že splňujete tyto požadavky.
 
@@ -49,7 +49,7 @@ V případě, že se rozhodnete, že provádíte registraci vaší aplikace, bud
 
 ### <a name="get-an-azure-government-subscription"></a>Získat Azure Government předplatné
 
-Pokud chcete získat Azure Government předplatné, přečtěte si téma [Správa a připojení k předplatnému v Azure Government](../../azure-government/documentation-government-manage-subscriptions.md).
+Pokud chcete získat Azure Government předplatné, přečtěte si téma [Správa a připojení k předplatnému v Azure Government](../../azure-government/compare-azure-government-global-azure.md).
 
 Pokud nemáte předplatné Azure Government, vytvořte si [bezplatný účet](https://azure.microsoft.com/global-infrastructure/government/request/) před tím, než začnete.
 
@@ -70,19 +70,19 @@ Povolení aplikace MSAL.js pro cloudy svrchovaného prostředí:
 
 ### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.us/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.us/).
 
    Pokud chcete najít Azure Portal koncových bodů pro jiné národní cloudy, přečtěte si téma [koncové body registrace aplikace](authentication-national-cloud.md#app-registration-endpoints).
 
 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
 1. Přejít na stránku [Registrace aplikací](https://aka.ms/ra/ff) na platformě Microsoft identity pro vývojáře.
 1. Když se zobrazí stránka **Zaregistrovat aplikaci**, zadejte název pro vaši aplikaci.
-1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři**.
+1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři**.
 1. V části **identifikátor URI pro přesměrování** vyberte **webovou** platformu a nastavte hodnotu na adresu URL aplikace na základě vašeho webového serveru. V dalších částech najdete pokyny, jak nastavit a získat adresu URL pro přesměrování v sadě Visual Studio a uzlu.
 1. Vyberte **Zaregistrovat**.
 1. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** .
 1. Tento kurz vyžaduje, abyste povolili [postup implicitního udělení](v2-oauth2-implicit-grant-flow.md). V levém podokně registrované aplikace vyberte **ověřování**.
-1. V části **Upřesnit nastavení**v části **implicitní udělení**vyberte zaškrtávací políčka **tokeny ID** a **přístupové tokeny** . Tokeny ID a přístupové tokeny jsou povinné, protože tato aplikace musí přihlašovat uživatele a volat rozhraní API.
+1. V části **Upřesnit nastavení** v části **implicitní udělení** vyberte zaškrtávací políčka **tokeny ID** a **přístupové tokeny** . Tokeny ID a přístupové tokeny jsou povinné, protože tato aplikace musí přihlašovat uživatele a volat rozhraní API.
 1. Vyberte **Uložit**.
 
 ### <a name="step-2--set-up-your-web-server-or-project"></a>Krok 2: nastavení webového serveru nebo projektu
