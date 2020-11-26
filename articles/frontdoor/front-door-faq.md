@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 18e32a0387119d235294d1126d869186ae28d2b2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: abc4529d6076496b34859eec2b931a8dcbd1ce93
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488975"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296586"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Nejčastější dotazy pro přední dveře Azure
 
@@ -24,7 +24,7 @@ Tento článek obsahuje odpovědi na běžné dotazy k funkcím a funkcím služ
 
 1. Část s poznámkami tohoto článku.
 2. [Přední dveře Azure ve službě UserVoice](https://feedback.azure.com/forums/217313-networking?category_id=345025).
-3. **Podpora Microsoftu:** Chcete-li vytvořit novou žádost o podporu, v Azure Portal na kartě **help** klikněte na tlačítko **pomoc a podpora** a pak vyberte **Nová žádost o podporu** .
+3. **Podpora Microsoftu:** Chcete-li vytvořit novou žádost o podporu, v Azure Portal na kartě **help** klikněte na tlačítko **pomoc a podpora** a pak vyberte **Nová žádost o podporu**.
 
 ## <a name="general"></a>Obecné
 
@@ -97,7 +97,7 @@ Pokud chcete aplikaci uzamknout, aby přijímala provoz jenom z vašich konkrét
     > [!WARNING]
     > Back-endové IP místo pro front-endu se může později změnit, ale zajistíme, že budeme integrovat s [rozsahy IP adres Azure a značkami služeb](https://www.microsoft.com/download/details.aspx?id=56519). Doporučujeme, abyste se přihlásili k odběru [rozsahů IP adres Azure a značek služeb](https://www.microsoft.com/download/details.aspx?id=56519) pro jakékoli změny nebo aktualizace.
 
--    Proveďte operaci GET na front-dveřích s verzí rozhraní API `2020-01-01` nebo vyšší. V volání rozhraní API vyhledejte `frontdoorID` pole. Vyfiltrujte příchozí hlavičku **X-Azure-FDID** , kterou odeslala přední dvířka do back-endu, s hodnotou, která je v poli `frontdoorID` . Hodnotu můžete najít také `Front Door ID` v části Přehled na stránce portálu front dveří. 
+-    Proveďte operaci GET na front-dveřích s verzí rozhraní API `2020-01-01` nebo vyšší. V volání rozhraní API vyhledejte `frontdoorID` pole. Vyfiltrujte příchozí hlavičku **X-Azure-FDID**, kterou odeslala přední dvířka do back-endu, s hodnotou, která je v poli `frontdoorID` . Hodnotu můžete najít také `Front Door ID` v části Přehled na stránce portálu front dveří. 
 
 - Na webovém serveru back-end použijte filtrování pravidel pro omezení provozu na základě výsledné hodnoty hlavičky X-Azure-FDID.
 
@@ -235,22 +235,22 @@ Ano, ve výchozím nastavení je připojení protokolu OCSP podporované předn�
 
 ### <a name="does-azure-front-door-also-support-re-encryption-of-traffic-to-the-backend"></a>Podporuje i přední dveře Azure opětovné šifrování provozu do back-endu?
 
-Ano, přední dvířka Azure podporují snižování zátěže TLS/SSL a koncového šifrování TLS, které znovu zašifruje provoz do back-endu. Vzhledem k tomu, že připojení k back-endu nastávají přes veřejnou IP adresu, doporučujeme nakonfigurovat přední dveře tak, aby jako protokol předávání používaly protokol HTTPS.
+Ano, přední dvířka Azure podporují snižování zátěže TLS/SSL a koncového šifrování TLS, které znovu zašifruje provoz do back-endu. Vzhledem k tomu, že připojení k back-endu dojde přes veřejnou IP adresu, doporučujeme nakonfigurovat přední dvířka tak, aby používala jako předávací protokol protokol HTTPS.
 
 ### <a name="does-front-door-support-self-signed-certificates-on-the-backend-for-https-connection"></a>Podporují přední dveře certifikáty podepsané svým držitelem v back-endu pro připojení HTTPS?
 
 Ne, certifikáty podepsané svým držitelem nejsou podporovány na front-dveřích a omezení platí pro:
 
-1. **Back-endy** : certifikáty podepsané svým držitelem nemůžete použít při předávání provozu jako sondy stavu HTTPS nebo HTTPS nebo při vyplňování mezipaměti pro zdroj od počátku pro pravidla směrování s povoleným ukládáním do mezipaměti.
-2. **Front-end** : certifikáty podepsané svým držitelem nemůžete použít při použití vlastního certifikátu TLS/SSL pro povolení protokolu HTTPS ve vaší vlastní doméně.
+1. **Back-endy**: certifikáty podepsané svým držitelem nemůžete použít při předávání provozu jako sondy stavu HTTPS nebo HTTPS nebo při vyplňování mezipaměti pro zdroj od počátku pro pravidla směrování s povoleným ukládáním do mezipaměti.
+2. **Front-end**: certifikáty podepsané svým držitelem nemůžete použít při použití vlastního certifikátu TLS/SSL pro povolení protokolu HTTPS ve vaší vlastní doméně.
 
 ### <a name="why-is-https-traffic-to-my-backend-failing"></a>Proč selhává přenos HTTPS na můj back-end?
 
 Pro úspěšné připojení HTTPS k back-endu, ať už pro sondy stavu nebo pro předávání požadavků, můžou existovat dva důvody, proč může selhání provozu HTTPS:
 
-1. **Neshoda názvů subjektu certifikátu** : u připojení HTTPS očekává přední dveře, že váš server back-end prezentuje certifikát od platné certifikační autority s názvy subjektů odpovídajícími názvu hostitele back-endu. Pokud je například váš název hostitele back-endu nastavený na `myapp-centralus.contosonews.net` a certifikát, který váš back-end prezentuje během metody handshake `myapp-centralus.contosonews.net` TLS `*myapp-centralus*.contosonews.net` , ani v názvu subjektu není, zamítne Tato dvířka připojení a výsledkem bude chyba. 
-    1. **Řešení** : i když se z hlediska dodržování předpisů nedoporučuje, můžete tuto chybu obejít tím, že pro vaše přední dveře zakážete kontrolu názvu subjektu certifikátu. Tato možnost je k dispozici v části nastavení v Azure Portal a v části BackendPoolsSettings v rozhraní API.
-2. **Certifikát hostování back-endu z neplatného certifikační autority** : pro back-end s předními dveřmi lze použít pouze certifikáty z [platných certifikačních autorit](./front-door-troubleshoot-allowed-ca.md) . Certifikáty z interních certifikačních autorit nebo certifikátů podepsaných svým držitelem nejsou povoleny.
+1. **Neshoda názvů subjektu certifikátu**: u připojení HTTPS očekává přední dveře, že váš server back-end prezentuje certifikát od platné certifikační autority s názvy subjektů odpovídajícími názvu hostitele back-endu. Pokud je například váš název hostitele back-endu nastavený na `myapp-centralus.contosonews.net` a certifikát, který váš back-end prezentuje během metody handshake `myapp-centralus.contosonews.net` TLS `*myapp-centralus*.contosonews.net` , ani v názvu subjektu není, zamítne Tato dvířka připojení a výsledkem bude chyba. 
+    1. **Řešení**: i když se z hlediska dodržování předpisů nedoporučuje, můžete tuto chybu obejít tím, že pro vaše přední dveře zakážete kontrolu názvu subjektu certifikátu. Tato možnost je k dispozici v části nastavení v Azure Portal a v části BackendPoolsSettings v rozhraní API.
+2. **Certifikát hostování back-endu z neplatného certifikační autority**: pro back-end s předními dveřmi lze použít pouze certifikáty z [platných certifikačních autorit](./front-door-troubleshoot-allowed-ca.md) . Certifikáty z interních certifikačních autorit nebo certifikátů podepsaných svým držitelem nejsou povoleny.
 
 ### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>Můžu použít klienta a vzájemné ověřování s využitím front-dveří Azure?
 

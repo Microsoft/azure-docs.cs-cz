@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: ab13d53e54317bac15b9e1b0067cbd29f72eb3c1
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: c56f1ab546327aaf281ff3616fa489728f3885a6
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319031"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296943"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Kurz: Azure Active Directory integrace s Agiloft
 
@@ -30,7 +30,7 @@ Integrace Agiloft s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 
 Ke konfiguraci integrace služby Azure AD s Agiloft potřebujete následující položky:
 
@@ -105,14 +105,12 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Agiloft,
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
     ```http
-    https://<subdomain>.saas.enterprisewizard.com/project/<KB_NAME>
-    https://<subdomain>.agiloft.com/project/<KB_NAME>
+    https://<subdomain>.agiloft.com/<KB_NAME>
     ```
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
 
     ```http
-    https://<subdomain>.saas.enterprisewizard.com:443/gui2/spsamlsso?project=<KB_NAME>
     https://<subdomain>.agiloft.com:443/gui2/spsamlsso?project=<KB_NAME>
     ```
 
@@ -123,7 +121,6 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Agiloft,
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
 
     ```http
-    https://<subdomain>.saas.enterprisewizard.com/gui2/samlssologin.jsp?project=<KB_NAME>
     https://<subdomain>.agiloft.com/gui2/samlssologin.jsp?project=<KB_NAME>
     ```
 
@@ -174,7 +171,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Agiloft,
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -199,7 +196,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Agiloft.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Agiloft**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **Agiloft**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -231,7 +228,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Agiloft, měli byste se automaticky přihlásit k Agiloft, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

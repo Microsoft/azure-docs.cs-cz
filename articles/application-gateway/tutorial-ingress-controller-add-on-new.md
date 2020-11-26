@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 43aadee627c7dc12a37a8f3895ba4dfed472808c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 627d5b15a861c3d564cb4db33b366d3227092d37
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182899"
+ms.locfileid: "96296246"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Kurz: Povolení doplňku příchozího adaptéru (Preview) pro nový cluster AKS s novou instancí Application Gateway
 
@@ -34,7 +34,10 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
- - V tomto kurzu se vyžaduje verze rozhraní příkazového řádku Azure 2.0.4 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
+ - V tomto kurzu se vyžaduje verze rozhraní příkazového řádku Azure 2.0.4 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná. Pokud používáte Azure CLI, musíte v rozhraní příkazového řádku nainstalovat rozšíření Preview pomocí následujícího příkazu, pokud to ještě není:
+    ```azurecli-interactive
+    az extension add --name aks-preview
+    ```
 
  - Pomocí příkazu [AZ Feature Register](/cli/azure/feature#az-feature-register) Zaregistrujte příznak funkce *AKS-IngressApplicationGatewayAddon* , jak je znázorněno v následujícím příkladu. Pokud je doplněk stále ve verzi Preview, budete ho muset udělat jenom jednou pro každé předplatné.
     ```azurecli-interactive

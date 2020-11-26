@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/16/2019
-ms.openlocfilehash: b85e72ae6698cd9fa018c940e158bfcf25279ed5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/26/2020
+ms.openlocfilehash: 11e0d3336f085ccae9a7fb83ed050d69a15ce42b
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81410469"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296501"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>Kopírování dat do a z Azure Database for PostgreSQL pomocí Azure Data Factory
 
@@ -76,7 +76,7 @@ Typický připojovací řetězec je `Server=<server>.postgres.database.azure.com
 
 **Příklad**:
 
-***Ukládat heslo v Azure Key Vault***
+**_Ukládat heslo v Azure Key Vault_* _
 
 ```json
 {
@@ -85,13 +85,13 @@ Typický připojovací řetězec je `Server=<server>.postgres.database.azure.com
         "type": "AzurePostgreSql",
         "typeProperties": {
             "connectionString": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;",
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         }
     }
@@ -102,7 +102,7 @@ Typický připojovací řetězec je `Server=<server>.postgres.database.azure.com
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete [v tématu datové sady v Azure Data Factory](concepts-datasets-linked-services.md). V této části najdete seznam vlastností, které Azure Database for PostgreSQL podporuje v datových sadách.
 
-Chcete-li kopírovat data z Azure Database for PostgreSQL, nastavte vlastnost Type datové sady na **AzurePostgreSqlTable**. Podporovány jsou následující vlastnosti:
+Chcete-li kopírovat data z Azure Database for PostgreSQL, nastavte vlastnost Type objektu DataSet na _ * AzurePostgreSqlTable * *. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
@@ -136,7 +136,7 @@ Chcete-li kopírovat data z Azure Database for PostgreSQL, nastavte typ zdroje v
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **AzurePostgreSqlSource** . | Ano |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"` | Ne (Pokud je určena vlastnost tableName v sadě dat) |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `SELECT * FROM mytable` nebo `SELECT * FROM "MyTable"` . Všimněte si, že v PostgreSQL se název entity považuje za nerozlišující velká a malá písmena, pokud není uvedeno v uvozovkách. | Ne (Pokud je určena vlastnost tableName v sadě dat) |
 
 **Příklad**:
 
@@ -160,7 +160,7 @@ Chcete-li kopírovat data z Azure Database for PostgreSQL, nastavte typ zdroje v
         "typeProperties": {
             "source": {
                 "type": "AzurePostgreSqlSource",
-                "query": "<custom query e.g. SELECT * FROM MyTable>"
+                "query": "<custom query e.g. SELECT * FROM mytable>"
             },
             "sink": {
                 "type": "<sink type>"

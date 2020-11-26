@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8fd7562d1f8e38c79f739fdd2db7031e772874bc
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 0e637a09a5305e314a32b1cac34b2da669eec614
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122637"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296195"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Terminologie Azure synapse Analytics
 
@@ -51,9 +51,9 @@ Existují dva způsoby, jak v rámci synapse použít Spark:
 
 Kanály představují způsob, jakým Azure synapse zajišťuje integraci dat – umožňuje přesun dat mezi službami a orchestrace aktivit.
 
-* **Datové toky** poskytují codine možnosti pro transformaci dat, která používá synapse Spark v rámci – pokrývá.
-* **Kanál** – logické seskupení aktivit, které provádějí úkoly společně.
-* **Activity** – definuje akce, které se mají provádět na datech, jako je kopírování dat, spuštění poznámkového bloku nebo skriptu SQL.
+* **Kanál** je logické seskupení aktivit, které provádějí úkoly společně.
+* **Aktivity** definují akce v rámci kanálu, které se mají provádět na datech, jako je kopírování dat, spuštění poznámkového bloku nebo skriptu SQL.
+* **Toky dat** představují konkrétní druh aktivity, která poskytuje prostředí bez kódu pro transformaci dat, která používá synapse Spark v rámci – pokrývá.
 * **Trigger** – spustí kanál. Dá se spustit ručně nebo automaticky (naplánování, zabubné okno nebo události).
 * **Datová sada Integration** – pojmenovaná zobrazení dat, která jednoduše odkazují na data, která se mají použít v aktivitě jako vstup a výstup. Patří do propojené služby.
 

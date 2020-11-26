@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: a5cb5831090987f1b620593843ddba817d8e68d4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 111b2b5b660133c20afdb3c56e1c3e3ed607398c
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188118"
+ms.locfileid: "96296994"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Správa zdrojového kódu v Azure synapse studiu
 
@@ -30,17 +30,17 @@ Pro zajištění schopnosti správy zdrojového kódu vám synapse Studio umožn
 
 ## <a name="configure-git-repository-in-synapse-studio"></a>Konfigurace úložiště Git v synapse studiu 
 
-Po spuštění synapse studia můžete nakonfigurovat úložiště Git v pracovním prostoru. Pracovní prostor synapse Studio může být současně přidružen pouze k jednomu úložišti Git. 
+Po spuštění synapse studia můžete v pracovním prostoru nakonfigurovat úložiště Git. Pracovní prostor synapse Studio může být současně přidružen pouze k jednomu úložišti Git. 
 
-### <a name="configuration-method-1-authoring-canvas"></a>Konfigurační Metoda 1: plátno pro vytváření obsahu
+### <a name="configuration-method-1-global-bar"></a>Konfigurační Metoda 1: globální pruh
 
-Na plátně pro vytváření synapse studia vyberte **synapse** a pak vyberte **nastavit úložiště kódu**.
+V globálním panelu synapse Studio vyberte rozevírací nabídku **synapse Live** a pak vyberte **nastavit úložiště kódu**.
 
 ![Konfigurace nastavení úložiště kódu z vytváření obsahu](media/configure-repo-1.png)
 
 ### <a name="configuration-method-2-manage-hub"></a>Konfigurační Metoda 2: Správa centra
 
-Přejít do centra pro správu synapse studia. V části **Správa zdrojového kódu** vyberte **Konfigurace Gitu** . Pokud nemáte připojené žádné úložiště, klikněte na **Konfigurovat**.
+Přejdete do centra pro správu synapse studia. V části **Správa zdrojového kódu** vyberte **Konfigurace Gitu** . Pokud nemáte připojené žádné úložiště, klikněte na **Konfigurovat**.
 
 ![Konfigurace nastavení úložiště kódu z centra pro správu](media/configure-repo-2.png)
 
@@ -51,11 +51,11 @@ V pracovním prostoru můžete připojit buď úložiště Git Azure DevOps, neb
 
 ## <a name="connect-with-azure-devops-git"></a>Připojení ke službě Azure DevOps Git 
 
-Pracovní prostor synapse můžete přidružit k úložišti Azure DevOps pro správu zdrojového kódu, spolupráci, správu verzí a tak dále. Pokud nemáte úložiště Azure DevOps, při prvním vytváření prostředků úložiště postupujte podle [těchto pokynů](/azure/devops/organizations/accounts/create-organization-msa-or-work-student) .
+Pracovní prostor synapse můžete přidružit k úložišti Azure DevOps pro správu zdrojového kódu, spolupráci, správu verzí a tak dále. Pokud nemáte úložiště Azure DevOps, při vytváření prostředků úložiště postupujte podle [těchto pokynů](/azure/devops/organizations/accounts/create-organization-msa-or-work-student) .
 
 ### <a name="azure-devops-git-repository-settings"></a>Nastavení úložiště Git Azure DevOps
 
-Při připojování k úložišti Git nejdřív vyberte typ úložiště jako Azure DevOps Git a pak vyberte jeden tenant Azure AD z rozevíracího seznamu a klikněte na **pokračovat**.
+Při připojování k úložišti Git nejdřív vyberte typ úložiště jako Azure DevOps Git a pak v rozevíracím seznamu vyberte jeden tenant Azure AD a klikněte na **pokračovat**.
 
 ![Konfigurace nastavení úložiště kódu](media/connect-with-azuredevops-repo-selected.png)
 
@@ -94,7 +94,7 @@ Pokud chcete použít osobní účet Microsoft pro integraci Gitu, můžete své
 
 Po provedení těchto kroků konfigurace bude osobní úložiště k dispozici při nastavení integrace Gitu v nástroji synapse Studio.
 
-Další informace o připojení Azure Repos ke službě Active Directory vaší organizace najdete v tématu věnovaném [připojení organizace Azure DevOps k Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad).
+Další informace o připojení Azure Repos ke službě Active Directory vaší organizace najdete v tématu věnovaném [připojení organizace k Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad).
 
 ## <a name="connect-with-github"></a>Připojení k GitHubu 
 
@@ -112,7 +112,7 @@ V podokně Konfigurace se zobrazí následující nastavení úložiště GitHub
 
 | **Nastavení** | **Popis**  | **Hodnota**  |
 |:--- |:--- |:--- |
-| **Typ úložiště** | Typ úložiště kódu Azure Repos. | GitHub |
+| **Typ úložiště** | Typ úložiště kódu Azure Repos. | GitHubu |
 | **Použití GitHubu Enterprise** | Zaškrtávací políčko pro výběr GitHubu Enterprise | nevybráno (výchozí) |
 | **Adresa URL GitHubu Enterprise** | Kořenová adresa URL pro GitHub Enterprise (musí být HTTPS pro místní server GitHub Enterprise). Příklad: `https://github.mydomain.com`. Požadováno jenom v případě, že je vybraná **možnost použít GitHub Enterprise** | `<your GitHub enterprise url>` |                                                           
 | **Účet GitHub** | Název vašeho účtu GitHubu. Tento název najdete v názvu https: \/ /GitHub.com/{account}/{repository Name}. Když přejdete na tuto stránku, zobrazí se výzva k zadání přihlašovacích údajů GitHubu OAuth do svého účtu GitHubu. | `<your GitHub account name>` |

@@ -8,18 +8,18 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 55ec8be176dc7274a3b9a1feca53726d57eeb422
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2e96cbf0c1464e27b0a384e8a813118056103b91
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024461"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296627"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>Připojení k prostředkům pracovního prostoru z omezené sítě
 
 Předpokládejme, že jste správcem IT, který spravuje omezenou síť vaší organizace. Chcete povolit síťové připojení mezi Azure synapse Analytics Studio a pracovní stanicí v rámci této omezené sítě. V tomto článku se dozvíte, jak.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Pracovní prostor analýzy Azure synapse**: můžete si ho vytvořit z Azure synapse Analytics. V kroku 4 budete potřebovat název pracovního prostoru.
@@ -46,14 +46,11 @@ Další informace najdete v tématu [Přehled značek služeb](/azure/virtual-ne
 
 Pak z Azure Portal vytvořte rozbočovače privátních odkazů. Pokud to chcete najít na portálu, vyhledejte službu *Azure synapse Analytics (centra privátních odkazů)* a pak ji vytvořte zadáním požadovaných informací. 
 
-> [!Note]
-> Ujistěte se, že hodnota **oblasti** je stejná jako ta, ve které je váš pracovní prostor Azure synapse Analytics.
-
 ![Snímek obrazovky s vytvořením centra privátních odkazů pro synapse](./media/how-to-connect-to-workspace-from-restricted-network/private-links.png)
 
-## <a name="step-3-create-a-private-endpoint-for-your-gateway"></a>Krok 3: Vytvoření privátního koncového bodu pro bránu
+## <a name="step-3-create-a-private-endpoint-for-your-synapse-studio"></a>Krok 3: Vytvoření privátního koncového bodu pro synapse Studio
 
-Pokud chcete získat přístup k bráně Azure synapse Analytics Studio, musíte z Azure Portal vytvořit privátní koncový bod. Pokud to chcete najít na portálu, vyhledejte *privátní odkaz*. V **centru privátních odkazů** vyberte **vytvořit privátní koncový bod** a pak zadáním požadovaných informací vytvořte. 
+Pokud chcete získat přístup k Azure synapse Analytics Studio, musíte z Azure Portal vytvořit privátní koncový bod. Pokud to chcete najít na portálu, vyhledejte *privátní odkaz*. V **centru privátních odkazů** vyberte **vytvořit privátní koncový bod** a pak zadáním požadovaných informací vytvořte. 
 
 > [!Note]
 > Ujistěte se, že hodnota **oblasti** je stejná jako ta, ve které je váš pracovní prostor Azure synapse Analytics.
@@ -118,6 +115,43 @@ Pokud chcete, aby váš Poznámkový blok měl přístup k prostředkům propoje
 Po vytvoření tohoto koncového bodu stav schválení zobrazí stav **čeká na vyřízení**. Požadavek schválí od vlastníka tohoto účtu úložiště na kartě **připojení privátního koncového bodu** tohoto účtu úložiště v Azure Portal. Po schválení bude mít váš Poznámkový blok přístup k prostředkům propojených úložiště v rámci tohoto účtu úložiště.
 
 Nyní všechno je nastavené. Můžete získat přístup k vašemu prostředku pracovního prostoru Azure synapse Analytics Studio.
+
+## <a name="appendix-dns-registration-for-private-endpoint"></a>Příloha: registrace DNS pro soukromý koncový bod
+
+Pokud se při vytváření privátního koncového bodu v následujícím snímku obrazovky nepovoluje integrace s privátní zónou DNS, musíte pro každý ze svých privátních koncových bodů vytvořit **zónu privátní DNS**.
+![Snímek obrazovky s synapse privátní zónou DNS 1](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-1.png)
+
+Pokud chcete na portálu najít **zónu privátní DNS** , vyhledejte *privátní DNS Zone*. V **zóně privátní DNS** vyplňte níže požadované informace, které chcete vytvořit.
+
+* Do pole **název** zadejte privátní vyhrazený název zóny DNS pro konkrétní soukromý koncový bod, jak je uvedeno níže:
+  * **`privatelink.azuresynapse.net`** je pro přístup k bráně Azure synapse Analytics Studio pro soukromý koncový bod. V kroku 3 se zobrazí tento typ vytvoření privátního koncového bodu.
+  * **`privatelink.sql.azuresynapse.net`** je pro tento typ privátního koncového bodu provádění dotazu SQL ve fondu SQL a integrovaném fondu. Podívejte se na téma vytváření koncových bodů v kroku 4.
+  * **`privatelink.dev.azuresynapse.net`** je pro tento typ privátního koncového bodu přístupu ke všem ostatním v pracovních prostorech Azure synapse Analytics Studio. V kroku 4 se zobrazí tento typ vytvoření privátního koncového bodu.
+  * **`privatelink.dfs.core.windows.net`** slouží pro soukromý koncový bod přístupu k Azure Data Lake Storage Gen2 připojenému k pracovnímu prostoru. V kroku 5 se zobrazí tento typ vytvoření privátního koncového bodu.
+  * **`privatelink.blob.core.windows.net`** je určen pro soukromý koncový bod s přístupem k pracovnímu prostoru připojeným k Azure Blob Storage. V kroku 5 se zobrazí tento typ vytvoření privátního koncového bodu.
+
+![Snímek obrazovky s synapse privátní zónou DNS 2](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-2.png)
+
+Po vytvoření **zóny privátní DNS** zadejte vytvořenou privátní zónu DNS a kliknutím na **odkazy virtuální sítě** přidejte odkaz na virtuální síť. 
+
+![Snímek obrazovky s synapse privátní DNS zóna 3](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-3.png)
+
+Vyplňte povinná pole níže:
+* Jako **název odkazu** zadejte název odkazu.
+* V případě služby **Virtual Network** vyberte svou virtuální síť.
+
+![Snímek obrazovky s synapse privátní zónou DNS 4.](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-4.png)
+
+Po přidání odkazu virtuální síť budete muset přidat sadu záznamů DNS v **zóně privátní DNS** , kterou jste vytvořili dříve.
+
+* Pro **název** zadejte řetězce vyhrazených názvů pro jiný privátní koncový bod: 
+  * **Web** je pro soukromý koncový bod přístupu k Azure synapse Analytics studia.
+  * "***YourWorkSpaceName * * _" je pro soukromý koncový bod provádění dotazů SQL ve fondu SQL a také pro soukromý koncový bod pro přístup ke všem ostatním v pracovních prostorech Azure synapse Analytics Studio. _ "*** YourWorkSpaceName *-OnDemand * *" slouží jako soukromý koncový bod provádění dotazu SQL ve vestavěném fondu.
+* Jako **typ** vyberte pouze typ záznamu DNS **A** . 
+* Do pole **IP adresa** zadejte odpovídající IP adresu každého privátního koncového bodu. IP adresu můžete získat v **síťovém rozhraní** z přehledu privátního koncového bodu.
+
+![Snímek obrazovky s synapse privátní DNS zóna 5.](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-5.png)
+
 
 ## <a name="next-steps"></a>Další kroky
 

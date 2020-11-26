@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 649f02097a18a141d186434a91539563c64e72ba
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: ecea9dcd28aede92ef255bf002b9195ded43c68b
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042130"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296110"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -95,7 +95,7 @@ New Supported Version List
 
 Můžete použít jednu podverzi starší nebo novější `kubectl` vzhledem k vaší verzi *Kube-apiserver* , která je v souladu se [zásadami podpory Kubernetes pro kubectl](https://kubernetes.io/docs/setup/release/version-skew-policy/#kubectl).
 
-Například pokud je vaše *Kube-apiserver* v *1,17* , můžete použít verze *1,16* pro *1,18* `kubectl` s tímto *Kube-apiserver* .
+Například pokud je vaše *Kube-apiserver* v *1,17*, můžete použít verze *1,16* pro *1,18* `kubectl` s tímto *Kube-apiserver*.
 
 Chcete-li nainstalovat nebo aktualizovat svou verzi `kubectl` , spusťte příkaz `az aks install-cli` .
 
@@ -106,6 +106,9 @@ V kalendáři vydaných verzí [AKS Kubernetes](#aks-kubernetes-release-calendar
 Pro nové **menší** verze Kubernetes
 1. AKS publikuje před odebráním předem oznámení s plánovaným datem vydání nové verze a vyřazením původní verze v [poznámkách k verzi AKS](https://aka.ms/aks/releasenotes) nejméně 30 dní před odebráním.
 2. AKS zveřejňuje [oznámení o stavu služby](../service-health/service-health-overview.md) dostupné všem uživatelům s přístupem k AKS a portálu a pošle jim e-mail správcům předplatného s plánovanými datem odebrání verze.
+````
+To find out who is your subscription administrators or to change it, please refer to [manage Azure subscriptions](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator#assign-a-subscription-administrator).
+````
 3. Odebráním verze na podporu v případě, že uživatelé budou moci pokračovat v poskytování podpory, mají **30 dnů** od odebrání verze k upgradu na podporovanou verzi
 
 Pro nové verze **patch** Kubernetes
@@ -121,7 +124,7 @@ Konkrétní vydané verze oprav se můžou přeskočit nebo se zrychlí v závis
 
 ## <a name="azure-portal-and-cli-versions"></a>Verze Azure Portal a CLI
 
-Když nasadíte cluster AKS na portálu nebo pomocí rozhraní příkazového řádku Azure CLI, cluster se nastaví jako výchozí v podverzi N-1 a nejnovější oprava. Například pokud AKS podporuje *1.17. a* , *1.17. b* , *1.16. c* , *1.16. d* , *1.15. e* a *1.15. f* , vybraná výchozí verze je *1.16. c* .
+Když nasadíte cluster AKS na portálu nebo pomocí rozhraní příkazového řádku Azure CLI, cluster se nastaví jako výchozí v podverzi N-1 a nejnovější oprava. Například pokud AKS podporuje *1.17. a*, *1.17. b*, *1.16. c*, *1.16. d*, *1.15. e* a *1.15. f*, vybraná výchozí verze je *1.16. c*.
 
 Pokud chcete zjistit, jaké verze jsou aktuálně k dispozici pro vaše předplatné a oblast, použijte příkaz [AZ AKS get-versions][az-aks-get-versions] . Následující příklad uvádí dostupné verze Kubernetes pro oblast *EastUS* :
 
@@ -144,7 +147,7 @@ Historii minulých verzí najdete v tématu [Kubernetes](https://en.wikipedia.or
 \* V důsledku svátků se AKS prodlouží životnost 1,16 od listopadu 2020 až do ledna 2021. [Další informace](https://github.com/Azure/AKS/releases/tag/2020-10-12).
 
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Jak často mám očekávat, že upgradují verze Kubernetes, aby zůstaly v podpoře?**
 
@@ -179,7 +182,7 @@ Rovina ovládacího prvku musí být v rámci okna verzí ze všech fondů uzlů
 
 Pokud upgradujete podporovaný cluster AKS, nelze podverze Kubernetes vynechat. Například upgrady mezi *1.12. x*  ->  *1.13. x* nebo *1.13. x*  ->  *1.14. x* jsou povoleny, ale *1.12. x*  ->  *1.14. x* není.
 
-Chcete-li provést upgrade, z *1.12. x*  ->  *1.14. x* , nejprve upgradujte z *1.12. x*  ->  *1.13. x* a potom proveďte upgrade z *1.13. x*  ->  *1.14. x* .
+Chcete-li provést upgrade, z *1.12. x*  ->  *1.14. x*, nejprve upgradujte z *1.12. x*  ->  *1.13. x* a potom proveďte upgrade z *1.13. x*  ->  *1.14. x*.
 
 Přeskočení více verzí lze provést pouze při upgradu z nepodporované verze zpět do podporované verze. Například upgradujte z nepodporovaného prvku *1.10. x* --> podporovanou *1.15. x* je možné dokončit.
 

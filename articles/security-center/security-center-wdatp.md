@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 372ff1dc53f15a1338cad933fec64746b6736f40
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5645a2e0449a1929421f9444bf645f08ad0525e9
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368077"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296807"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Ochrana koncových bodů pomocí integrovaného řešení EDR Security Center: Microsoft Defender pro koncové body
 
@@ -44,8 +44,8 @@ Microsoft Defender pro koncové body je holistický, cloudové řešení zabezpe
 | Stanov                        | Vyžaduje [Azure Defender pro servery](security-center-pricing.md) .                                                                                                                                                                                                                                             |
 | Podporované platformy:            | ![Ano](./media/icons/yes-icon.png) Počítače Azure s Windows<br>![Ano](./media/icons/yes-icon.png) Počítače ARC Azure s Windows|
 | Podporované verze systému Windows:  | Defender pro koncový bod je integrovaný do systému Windows 10 1703 (a novější) a Windows Server 2019.<br>Security Center podporuje detekci na Windows serveru 2016, 2012 R2 a 2008 R2 SP1.<br>Monitorování koncového bodu serveru pomocí této integrace bylo pro zákazníky Office 365 RSZ zakázané. |
-| Požadované role a oprávnění: | Povolení nebo zakázání integrace: **Správce zabezpečení** nebo **vlastník**<br>Zobrazení upozornění MDATP v Security Center: **čtecí modul zabezpečení**, **Čtenář**, **Přispěvatel skupiny prostředků**, **vlastník skupiny prostředků**, **Správce zabezpečení**, **vlastník předplatného**nebo **přispěvatele předplatného**                         |
-| Cloud                         | ![Ano](./media/icons/yes-icon.png) Komerční cloudy.<br>![Ne](./media/icons/no-icon.png) Zákazníci v RSZ, kteří spouštějí úlohy v globálním cloudech Azure<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov                                                        |
+| Požadované role a oprávnění: | Povolení nebo zakázání integrace: **Správce zabezpečení** nebo **vlastník**<br>Zobrazení upozornění MDATP v Security Center: **čtecí modul zabezpečení**, **Čtenář**, **Přispěvatel skupiny prostředků**, **vlastník skupiny prostředků**, **Správce zabezpečení**, **vlastník předplatného** nebo **přispěvatele předplatného**                         |
+| Cloud                         | ![Ano](./media/icons/yes-icon.png) Komerční cloudy.<br>![No](./media/icons/no-icon.png) Zákazníci v RSZ, kteří spouštějí úlohy v globálním cloudech Azure<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 
@@ -61,7 +61,7 @@ Microsoft Defender pro koncové body poskytuje:
 
 Integrací programu Defender pro koncový bod s Security Center se vám bude vytěžit z následujících dalších možností:
 
-- **Automatizované připojování**. Security Center automaticky povolí Microsoft Defender pro všechny servery se systémem Windows, které jsou monitorovány pomocí Security Center (pokud nepoužívají systém Windows Server 2019).
+- **Automatizované připojování**. Security Center automaticky povolí Microsoft Defender pro koncové body pro všechny servery Windows monitorované pomocí Security Center. S výjimkou těch, na kterých je spuštěný systém Windows Server 2019, který musí být připojen prostřednictvím místního skriptu, Zásady skupiny objektů (GPO) nebo [Microsoft Endpoint Configuration Manager](https://docs.microsoft.com/mem/configmgr/) (dříve SCCM).
 
 - **Jedno podokno skla** Konzola Security Center zobrazí výstrahu programu Microsoft Defender pro koncové body. Pro další zkoumání použijte Microsoft Defender pro vlastní stránky portálu, kde se zobrazí další informace, jako je strom procesu výstrahy a graf incidentu. Můžete se také podívat na podrobnou časovou osu počítače, která zobrazuje každé chování po dobu až šesti měsíců.
 
@@ -87,14 +87,14 @@ Po nakonfigurování umístění ho nemůžete změnit. Pokud potřebujete přes
 1. Vyberte **detekci hrozeb**.
 1. Zaškrtněte políčko **povolí programu Microsoft Defender, aby měl koncový bod přístup k datům**, a vyberte **Uložit**.
 
-    :::image type="content" source="./media/security-center-wdatp/enable-integration-with-edr.png" alt-text="Microsoft Defender pro vlastní Security Center koncového bodu":::
+    :::image type="content" source="./media/security-center-wdatp/enable-integration-with-edr.png" alt-text="Povolení integrace mezi Azure Security Center a řešením Microsoftu EDR a Microsoft Defender pro koncový bod":::
 
     Azure Security Center automaticky zařadí vaše servery do programu Microsoft Defender pro koncový bod. Připojování může trvat až 24 hodin.
 
 
 ## <a name="access-the-microsoft-defender-for-endpoint-portal"></a>Přístup k programu Microsoft Defender pro portál koncových bodů
 
-1. Ujistěte se, že uživatelský účet má potřebná oprávnění. [Další informace](/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access).
+1. Ujistěte se, že uživatelský účet má potřebná oprávnění. [Přečtěte si další informace](/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access).
 
 1. Ověřte, jestli máte proxy nebo bránu firewall, která blokuje anonymní provoz. Defender pro senzor koncového bodu se připojuje z kontextu systému, takže musí být povolený anonymní provoz. Pokud chcete zajistit nerušený přístup k programu Defender pro portál Endpoint, postupujte podle pokynů v tématu [Povolení přístupu k adresám URL služby v proxy server](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server).
 
@@ -112,10 +112,10 @@ Pro vygenerování neškodné výstrahy testování v programu Microsoft Defende
     ```powershell
     powershell.exe -NoExit -ExecutionPolicy Bypass -WindowStyle Hidden (New-Object System.Net.WebClient).DownloadFile('http://127.0.0.1/1.exe', 'C:\\test-MDATP-test\\invoice.exe'); Start-Process 'C:\\test-MDATP-test\\invoice.exe'
     ```
-    :::image type="content" source="./media/security-center-wdatp/generate-edr-alert.png" alt-text="Microsoft Defender pro vlastní Security Center koncového bodu":::
+    :::image type="content" source="./media/security-center-wdatp/generate-edr-alert.png" alt-text="Okno příkazového řádku s příkazem pro vygenerování testovací výstrahy.":::
 
 1. Pokud je příkaz úspěšný, zobrazí se nová výstraha na řídicím panelu Azure Security Center a v programu Microsoft Defender pro portál koncového bodu. Zobrazení této výstrahy může trvat několik minut.
-1. Pokud chcete zobrazit výstrahu v Security Center, přečtěte si **Security alerts**  >  **podezřelé příkazový řádek PowerShellu**výstrahy zabezpečení.
+1. Pokud chcete zobrazit výstrahu v Security Center, přečtěte si **Security alerts**  >  **podezřelé příkazový řádek PowerShellu** výstrahy zabezpečení.
 1. V okně šetření vyberte odkaz pro přechod na portál Microsoft Defender pro koncový bod.
 
 
@@ -123,7 +123,7 @@ Pro vygenerování neškodné výstrahy testování v programu Microsoft Defende
 
 ### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Jaké jsou licenční požadavky pro Microsoft Defender pro koncový bod?
 
-Defender pro koncový bod je v **Azure Defenderu pro servery**zahrnutý bez dalších poplatků. Alternativně se dá koupit samostatně pro 50 počítače a další.
+Defender pro koncový bod je v **Azure Defenderu pro servery** zahrnutý bez dalších poplatků. Alternativně se dá koupit samostatně pro 50 počítače a další.
 
 
 ### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>Návody přepnout z nástroje EDR třetí strany?

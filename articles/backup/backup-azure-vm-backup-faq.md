@@ -4,12 +4,12 @@ description: V tomto článku najdete odpovědi na běžné dotazy týkající s
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 74e2facfd9fd6073acc1f939c3d2ba922e3ac931
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: e6e14209a8df7160d103cb036d38c9fee29b34dd
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925573"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296059"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Nejčastější dotazy – zálohování virtuálních počítačů Azure
 
@@ -87,11 +87,11 @@ Ano, Azure Backup podporuje [Standard SSD spravované disky](https://docs.micros
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Můžeme zálohovat virtuální počítač s diskem s povoleným Akcelerátor zápisu (WA)?
 
-Na disku s podporou WA se snímky nedají považovat. Služba Azure Backup však může ze zálohy vyloučit disk s podporou WA.
+Snímky se dají provádět jenom na datových discích, které mají povolený WA a ne disky s operačním systémem. Proto je možné chránit pouze datové disky, které jsou povoleny v WA.
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>Mám virtuální počítač s disky Akcelerátor zápisu (WA) a SAP HANA nainstalované. Návody zálohování?
 
-Azure Backup nemůže zálohovat disk s podporou WA, ale může ho vyloučit ze zálohy. Zálohování ale neposkytne konzistenci databáze, protože informace na disku s podporou WA se nezálohují. Disky s touto konfigurací můžete zálohovat, pokud chcete zálohovat disk s operačním systémem a zálohovat disky, u kterých není povolený režim WA.
+Azure Backup může zálohovat datový disk s podporou WA. Zálohování ale neposkytne konzistenci databáze.
 
 Azure Backup poskytuje řešení zálohování pro služby streamování pro databáze SAP HANA s PLÁNOVANÝm zápisem na 15 minut. Backint je certifikováno pro SAP, aby poskytoval nativní podporu zálohování s využitím nativních rozhraní API SAP HANA. Přečtěte si další informace [o zálohování SAP HANA databází na virtuálních počítačích Azure](./sap-hana-db-about.md).
 
@@ -149,7 +149,7 @@ Ano. I když virtuální počítač odstraníte, můžete přejít na odpovídaj
 
 ### <a name="how-do-i-restore-a-vm-to-the-same-availability-sets"></a>Návody obnovit virtuální počítač do stejných skupin dostupnosti?
 
-U virtuálních počítačů Azure se spravovanými disky je obnovení do skupin dostupnosti umožněno tím, že v šabloně při obnovení jako spravované disky poskytnete možnost. Tato šablona obsahuje vstupní parametr s názvem **skupiny dostupnosti** .
+U virtuálních počítačů Azure se spravovanými disky je obnovení do skupin dostupnosti umožněno tím, že v šabloně při obnovení jako spravované disky poskytnete možnost. Tato šablona obsahuje vstupní parametr s názvem **skupiny dostupnosti**.
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>Jak získám rychlejší obnovení?
 
@@ -185,7 +185,7 @@ Virtuální počítač se zálohuje pomocí nastavení plánu a uchování v upr
 
    1. Najděte umístění virtuálního počítače.
    2. Vyhledejte skupinu prostředků s následujícím vzorem pojmenování: `AzureBackupRG_<location of your VM>_1` . Například *AzureBackupRG_westus2_1*
-   3. V Azure Portal zaškrtnout **Zobrazit skryté typy** .
+   3. V Azure Portal zaškrtnout **Zobrazit skryté typy**.
    4. Vyhledejte prostředek typu **Microsoft. COMPUTE/restorePointCollections** , který má vzor pojmenování `AzureBackup_<name of your VM that you're trying to move>_###########` .
    5. Odstranit tento prostředek. Tato operace odstraní pouze rychlé body obnovení, nikoli zálohovaná data v trezoru.
    6. Po dokončení operace odstranění můžete virtuální počítač přesunout.

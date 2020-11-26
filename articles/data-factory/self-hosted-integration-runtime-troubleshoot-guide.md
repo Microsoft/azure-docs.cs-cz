@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: 93c35828444ec93a974769ed3a2f1981c0ec4368
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 8195c4d072acce5345fa9752f97713aed22d962f
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96013438"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296950"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Řešení potíží s místním hostováním Integration runtime
 
@@ -167,7 +167,7 @@ Při řešení případů souvisejících s ověřováním SSL/TLS metodou hands
 
 `Could not load file or assembly 'XXXXXXXXXXXXXXXX, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
  
-Například: 
+Příklad: 
 
 `Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
 
@@ -458,6 +458,22 @@ Před a po převodu:
 ![Před změnou certifikátu](media/self-hosted-integration-runtime-troubleshoot-guide/before-certificate-change.png)
 
 ![Po změně certifikátu](media/self-hosted-integration-runtime-troubleshoot-guide/after-certificate-change.png)
+
+### <a name="self-hosted-integration-runtime-version-5x"></a>Samoobslužná Integration Runtime verze 5. x
+Pro upgrade na verzi 5. x z Azure Data Factory místního prostředí Integration runtime vyžadujeme **rozhraní .NET Framework runtime 4.7.2** nebo novější. Na stránce stáhnout se stáhnou odkazy na nejnovější verzi 4. x a nejnovější dvě verze 5. x. 
+
+
+Pro zákazníky ADF v2:
+- Pokud je funkce Automatické aktualizace zapnutá a už jste upgradovali modul runtime rozhraní .NET Framework na 4.7.2 nebo vyšší, pak se místní prostředí Integration runtime automaticky upgraduje na nejnovější verzi 5. x.
+- Pokud je funkce Automatické aktualizace zapnutá a neupgradovali jste modul runtime rozhraní .NET Framework na 4.7.2 nebo vyšší, pak se místní prostředí Integration runtime automaticky neupgraduje na nejnovější verzi 5. x. Místní prostředí Integration runtime zůstane v aktuální verzi 4. x. Na portálu a v místním prostředí Integration runtime se zobrazí upozornění na upgrade modulu runtime rozhraní .NET Framework.
+- Pokud je automatická aktualizace vypnutá a už jste upgradovali modul runtime rozhraní .NET Framework na 4.7.2 nebo novější, můžete si ručně stáhnout nejnovější 5. x a nainstalovat ho do svého počítače.
+- Pokud je automatická aktualizace vypnutá a váš modul runtime rozhraní .NET Framework jste neupgradovali na 4.7.2 nebo novější. Když se pokusíte ručně nainstalovat SHIR 5. x a zaregistrovat klíč, budete nejprve muset upgradovat modul runtime rozhraní .NET Framework.
+
+
+Pro zákazníky ADF V1:
+- Místní prostředí Integration runtime 5. X nepodporuje ADF v1.
+- Místní prostředí Integration runtime se automaticky upgraduje na nejnovější verzi 4. x. A poslední verze 4. x nebude vypršet. 
+- Pokud se pokusíte ručně nainstalovat místní prostředí Integration runtime 5. x a zaregistrovat klíč, budete si dozvěděli, že v místním prostředí Integration runtime 5. x se nepodporuje v1.
 
 
 ## <a name="self-hosted-ir-connectivity-issues"></a>Problémy s připojením IR v místním prostředí
@@ -757,6 +773,7 @@ Můžete si všimnout jiných datových továren (v různých klientech) při po
 #### <a name="cause"></a>Příčina
 
 Prostředí IR v místním prostředí nelze sdílet mezi klienty.
+
 
 
 ## <a name="next-steps"></a>Další kroky

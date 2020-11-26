@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 76f4f9ddaa1e4aec9409e96a0088ec51b8c2645e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 86de3e1199b00dff4e03f3b4292f86e6c19ea491
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097460"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296535"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na zřízenou propustnost ve službě Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,7 +31,7 @@ Propustnost můžete zřídit pro databáze nebo kontejnery a v závislosti na k
 
 Níže jsou uvedeny některé pokyny k rozhodování o strategii zřízené propustnosti:
 
-**Zvažte zajištění propustnosti v databázi Azure Cosmos (obsahující sadu kontejnerů), pokud** :
+**Zvažte zajištění propustnosti v databázi Azure Cosmos (obsahující sadu kontejnerů), pokud**:
 
 1. Máte několik desítek Cosmos kontejnerů Azure a chcete sdílet propustnost napříč některými nebo všemi z nich. 
 
@@ -59,9 +59,9 @@ Jak je znázorněno v následující tabulce v závislosti na volbě rozhraní A
 |----|----|----|
 |SQL API|databáze|Kontejner|
 |Rozhraní API služby Azure Cosmos DB pro MongoDB|Databáze|Kolekce|
-|Rozhraní Cassandra API|Prostor klíčů|Tabulka|
+|Rozhraní Cassandra API|Prostor klíčů|Table|
 |Rozhraní Gremlin API|Databázový účet|Graph|
-|Rozhraní Table API|Databázový účet|Tabulka|
+|Rozhraní Table API|Databázový účet|Table|
 
 Díky zajištění propustnosti na různých úrovních můžete optimalizovat náklady na základě charakteristik vašich úloh. Jak bylo zmíněno dříve, můžete programově a kdykoli zvětšit nebo zmenšit zřízenou propustnost pro jednotlivé kontejnery nebo souhrnně napříč sadou kontejnerů. Díky elastickému škálování propustnosti při změnách zatížení platíte jenom za propustnost, kterou jste nakonfigurovali. Pokud je váš kontejner nebo sada kontejnerů distribuován napříč několika oblastmi, je zaručená propustnost, kterou nakonfigurujete na kontejneru nebo sadě kontejnerů, ve všech oblastech.
 
@@ -137,7 +137,7 @@ Vzhledem k tomu, že se vám bude účtovat zajištěná propustnost, která vyh
 
 K určení zřízené propustnosti pro novou úlohu můžete použít následující postup: 
 
-1. Proveďte počáteční přibližné hodnocení pomocí plánovače kapacity a upravte své odhady pomocí Azure Cosmos Exploreru v Azure Portal. 
+1. Proveďte počáteční a hrubou zkušební verzi pomocí plánovače kapacity a upravte své odhady pomocí Azure Cosmos DB Exploreru v Azure Portal. 
 
 2. Doporučuje se vytvořit kontejnery s vyšší propustností, než se očekávalo, a pak podle potřeby škálovat dolů. 
 
