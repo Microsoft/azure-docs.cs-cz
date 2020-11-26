@@ -83,6 +83,8 @@
       items:
         - name: Použití rozhraní API a sad SDK
           href: how-to-use-apis-sdks.md
+        - name: Vytváření požadavků s využitím Postmana
+          href: how-to-use-postman.md
         - name: Vytváření vlastních sad SDK s využitím AutoRestu
           href: how-to-create-custom-sdks.md
         - name: Integrace se službou Azure SignalR Service
