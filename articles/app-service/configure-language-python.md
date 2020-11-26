@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 11/16/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 149f8deb8839b3adce3555300c94b8ebdf587100
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: f12ed42755af64f024fdcb0452173134f7b58482
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873841"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183732"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux v Pythonu pro Azure App Service
 
@@ -126,10 +126,10 @@ Následující tabulka popisuje nastavení produkčního prostředí, která jso
 
 | Nastavení Django | Pokyny pro Azure |
 | --- | --- |
-| `SECRET_KEY` | Uložte hodnotu do nastavení App Service, jak je popsáno v [nastavení přístup aplikace jako proměnné prostředí](#access-app-settings-as-environment-variables). [Hodnotu můžete v Azure Key Vault Alternativně uložit jako "tajný klíč"](/azure/key-vault/secrets/quick-create-python). |
+| `SECRET_KEY` | Uložte hodnotu do nastavení App Service, jak je popsáno v [nastavení přístup aplikace jako proměnné prostředí](#access-app-settings-as-environment-variables). [Hodnotu můžete v Azure Key Vault Alternativně uložit jako "tajný klíč"](../key-vault/secrets/quick-create-python.md). |
 | `DEBUG` | Vytvořte `DEBUG` nastavení pro App Service s hodnotou 0 (NEPRAVDA) a pak hodnotu načtěte jako proměnnou prostředí. Ve vašem vývojovém prostředí vytvořte `DEBUG` proměnnou prostředí s hodnotou 1 (true). |
 | `ALLOWED_HOSTS` | V produkčním prostředí vyžaduje Django, abyste do pole settings.py zahrnuli adresu URL aplikace `ALLOWED_HOSTS` . *settings.py* Tuto adresu URL můžete načíst za běhu s kódem, `os.environ['WEBSITE_HOSTNAME']` . App Service automaticky nastaví `WEBSITE_HOSTNAME` proměnnou prostředí na adresu URL aplikace. |
-| `DATABASES` | Definujte nastavení v App Service pro připojení k databázi a načtěte je jako proměnné prostředí pro naplnění [`DATABASES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-DATABASES) slovníku. Hodnoty (zejména uživatelské jméno a heslo) můžete alternativně ukládat jako [Azure Key Vault tajné klíče](/azure/key-vault/secrets/quick-create-python). |
+| `DATABASES` | Definujte nastavení v App Service pro připojení k databázi a načtěte je jako proměnné prostředí pro naplnění [`DATABASES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-DATABASES) slovníku. Hodnoty (zejména uživatelské jméno a heslo) můžete alternativně ukládat jako [Azure Key Vault tajné klíče](../key-vault/secrets/quick-create-python.md). |
 
 ## <a name="container-characteristics"></a>Vlastnosti kontejneru
 
@@ -306,7 +306,7 @@ V těchto protokolech se zobrazí problémy, jako jsou nesprávné závislosti v
 
 Po úspěšném připojení k relaci SSH by se v dolní části okna měla zobrazit zpráva "připojení SSH je ZŘÍZENÉ". Pokud se zobrazí chyby, jako je například "SSH_CONNECTION_CLOSED" nebo zpráva o restartování kontejneru, může dojít k chybě, která brání spuštění kontejneru aplikace. Postup, jak prozkoumat možné problémy, najdete v tématu [věnovaném řešení potíží](#troubleshooting) .
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Prvním krokem při řešení potíží je obecně použití diagnostiky App Service:
 

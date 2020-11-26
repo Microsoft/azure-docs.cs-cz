@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 65451ed99580d9f2d66bd28518f0ec40a21ffe65
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ed5eda668f6bd52ba144aa664119ab613fdb7742
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317093"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183579"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Správa runbooků v Azure Automation
 
@@ -45,7 +45,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 ## <a name="import-a-runbook"></a>Import Runbooku
 
-Můžete importovat skript PowerShellu nebo PowerShellového pracovního postupu ( **. ps1** ), grafický Runbook ( **. graphrunbook** ) nebo skript Python 2 ( **. py** ), abyste mohli vytvořit vlastní Runbook. Je nutné zadat [typ Runbooku](automation-runbook-types.md) , který se vytvoří během importu, přičemž vezme v úvahu následující skutečnosti.
+Můžete importovat skript PowerShellu nebo PowerShellového pracovního postupu (**. ps1**), grafický Runbook (**. graphrunbook**) nebo skript Python 2 (**. py**), abyste mohli vytvořit vlastní Runbook. Je nutné zadat [typ Runbooku](automation-runbook-types.md) , který se vytvoří během importu, přičemž vezme v úvahu následující skutečnosti.
 
 * Soubor **. ps1** , který neobsahuje pracovní postup, můžete importovat buď do [Runbooku PowerShellu](automation-runbook-types.md#powershell-runbooks) , nebo do [Runbooku pracovního postupu PowerShellu](automation-runbook-types.md#powershell-workflow-runbooks). Pokud ho naimportujete do Runbooku pracovního postupu PowerShellu, převede se na pracovní postup. V tomto případě jsou komentáře součástí Runbooku a popisují provedené změny.
 
@@ -223,7 +223,7 @@ Použití vlastního skriptu:
 
 1. Vytvořte účet Automation a získejte [roli přispěvatele](automation-role-based-access-control.md).
 2. [Připojte účet k pracovnímu prostoru Azure](../security-center/security-center-enable-data-collection.md).
-3. Povolí [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md), [Update Management](update-management/update-mgmt-overview.md)nebo jinou funkci automatizace. 
+3. Povolí [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md), [Update Management](./update-management/overview.md)nebo jinou funkci automatizace. 
 4. Pokud máte na počítači se systémem Linux, budete potřebovat vysoké oprávnění. Přihlaste se a [vypněte kontroly podpisů](automation-linux-hrw-install.md#turn-off-signature-validation).
 
 ## <a name="test-a-runbook"></a>Testování runbooku

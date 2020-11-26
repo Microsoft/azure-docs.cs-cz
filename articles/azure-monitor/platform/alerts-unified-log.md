@@ -6,28 +6,28 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 8081c60833c3c02d55ae66ca695ba106dba01450
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 89cec12804f6fd2b8a3885248c42646d6c6dbb13
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995076"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186554"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Protokolování výstrah v Azure Monitor
 
 ## <a name="overview"></a>Přehled
 
-Výstrahy protokolu jsou jedním z typů výstrah, které jsou podporovány v [upozorněních Azure](./alerts-overview.md). Výstrahy protokolu umožňují uživatelům pomocí [log Analyticsho](../log-query/get-started-portal.md) dotazu vyhodnotit protokoly prostředků každou nastavenou frekvencí a vyvolat výstrahu na základě výsledků. Pravidla mohou aktivovat jednu nebo více akcí pomocí [skupin akcí](./action-groups.md).
+Výstrahy protokolu jsou jedním z typů výstrah, které jsou podporovány v [upozorněních Azure](./alerts-overview.md). Výstrahy protokolu umožňují uživatelům pomocí [log Analyticsho](../log-query/log-analytics-tutorial.md) dotazu vyhodnotit protokoly prostředků každou nastavenou frekvencí a vyvolat výstrahu na základě výsledků. Pravidla mohou aktivovat jednu nebo více akcí pomocí [skupin akcí](./action-groups.md).
 
 > [!NOTE]
-> Data protokolu z [Log Analytics pracovního prostoru](../log-query/get-started-portal.md) lze odeslat do úložiště metrik Azure monitor. Výstrahy metrik mají [různé chování](alerts-metric-overview.md), což může být více žádoucí v závislosti na datech, se kterými pracujete. Informace o tom, co a jak můžete směrovat protokoly do metrik, najdete v tématu [Upozornění na metriky pro protokoly](alerts-metric-logs.md).
+> Data protokolu z [Log Analytics pracovního prostoru](../log-query/log-analytics-tutorial.md) lze odeslat do úložiště metrik Azure monitor. Výstrahy metrik mají [různé chování](alerts-metric-overview.md), což může být více žádoucí v závislosti na datech, se kterými pracujete. Informace o tom, co a jak můžete směrovat protokoly do metrik, najdete v tématu [Upozornění na metriky pro protokoly](alerts-metric-logs.md).
 
 > [!NOTE]
 > Pro verzi rozhraní API `2020-05-01-preview` a výstrahy protokolu orientované na prostředky se momentálně neúčtují žádné další poplatky.  Ceny pro funkce, které jsou ve verzi Preview, budou v budoucnu ohlášeny a oznámení poskytované před zahájením fakturace. Pokud se rozhodnete dál používat novou verzi rozhraní API a výstrahy protokolu orientované na prostředky po období oznámení, bude se vám účtovat příslušná sazba.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Výstrahy protokolu spouštějí dotazy na Log Analytics data. Nejdřív byste měli začít [shromažďovat data protokolu](resource-logs.md) a dotazovat se na data protokolu. Pomocí [tématu Příklady dotazů na výstrahy](../log-query/saved-queries.md) v Log Analytics můžete pochopit, co můžete zjistit nebo začít [psát vlastní dotaz](../log-query/get-started-portal.md).
+Výstrahy protokolu spouštějí dotazy na Log Analytics data. Nejdřív byste měli začít [shromažďovat data protokolu](resource-logs.md) a dotazovat se na data protokolu. Pomocí [tématu Příklady dotazů na výstrahy](../log-query/example-queries.md) v Log Analytics můžete pochopit, co můžete zjistit nebo začít [psát vlastní dotaz](../log-query/log-analytics-tutorial.md).
 
 [Přispěvatel monitorování Azure](./roles-permissions-security.md) je společná role, která je nutná k vytváření, úpravám a aktualizaci výstrah protokolu. Pro protokoly prostředků je taky potřeba mít přístup & oprávnění k provádění dotazů. Částečný přístup k protokolům prostředků může selhat s dotazy nebo vracet částečné výsledky. [Přečtěte si další informace o konfiguraci upozornění protokolu v Azure](./alerts-log.md).
 
@@ -44,7 +44,7 @@ Definice podmínky pravidel hledání protokolu začíná na:
 V následujících částech jsou popsány různé parametry, které můžete použít k nastavení výše uvedené logiky.
 
 ### <a name="log-query"></a>Dotaz protokolu
-[Log Analytics](../log-query/get-started-portal.md) dotaz použitý k vyhodnocení pravidla Výsledky vrácené tímto dotazem slouží k určení, zda má být výstraha aktivována. Dotaz může být vymezen na:
+[Log Analytics](../log-query/log-analytics-tutorial.md) dotaz použitý k vyhodnocení pravidla Výsledky vrácené tímto dotazem slouží k určení, zda má být výstraha aktivována. Dotaz může být vymezen na:
 
 - Konkrétní prostředek, jako je třeba virtuální počítač.
 - Škálování prostředku, jako je například předplatné nebo skupina prostředků.
@@ -102,7 +102,7 @@ U pracovních prostorů a Application Insights se říká na **základě** **mě
 
 ### <a name="aggregation-type"></a>Typ agregace
 
-Výpočet, který je proveden na více záznamech pro agregaci na jednu číselnou hodnotu. Například:
+Výpočet, který je proveden na více záznamech pro agregaci na jednu číselnou hodnotu. Příklad:
 - **Count** vrátí počet záznamů v dotazu.
 - Funkce **Average** Vrátí průměrnou hodnotu definování [**členitosti**](#aggregation-granularity) sloupce měr.
 
@@ -209,4 +209,3 @@ Informace o cenách najdete na [stránce s cenami Azure monitor](https://azure.m
 * Pochopení [webhooků v protokolových výstrahách v Azure](alerts-log-webhook.md).
 * Přečtěte si o [výstrahách Azure](./alerts-overview.md).
 * Přečtěte si další informace o [Log Analytics](../log-query/log-query-overview.md).
-

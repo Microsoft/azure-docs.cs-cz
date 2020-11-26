@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 391d9562bc73265a10976f485c78e3966aa4fe83
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: b770e4488b6edb1c2d3749066315b552c0b5b40a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536281"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186163"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -31,7 +31,7 @@ V září 2018 společnost Microsoft kombinovaná Azure Monitor, Log Analytics a
 Funkce Azure Monitor, které jsou automaticky povoleny, například shromažďování metrik a protokolů aktivit, jsou poskytovány bez nákladů. Existují náklady spojené s dalšími funkcemi, jako jsou dotazy protokolu a výstrahy. Podrobné informace o cenách najdete na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/) .
 
 ### <a name="how-do-i-enable-azure-monitor"></a>Návody povolit Azure Monitor?
-Azure Monitor je povolený okamžik, kdy vytvoříte nové předplatné Azure, a automaticky se shromažďují [metriky](platform/data-platform-metrics.md) [protokolů aktivit](./platform/platform-logs-overview.md) a platforem. Vytvořte [nastavení diagnostiky](platform/diagnostic-settings.md) pro shromažďování podrobnějších informací o provozu prostředků Azure a přidejte [řešení monitorování](insights/solutions.md) a [přehledy](insights/insights-overview.md) , které poskytují další analýzy shromážděných dat pro konkrétní služby. 
+Azure Monitor je povolený okamžik, kdy vytvoříte nové předplatné Azure, a automaticky se shromažďují [metriky](platform/data-platform-metrics.md) [protokolů aktivit](./platform/platform-logs-overview.md) a platforem. Vytvořte [nastavení diagnostiky](platform/diagnostic-settings.md) pro shromažďování podrobnějších informací o provozu prostředků Azure a přidejte [řešení monitorování](insights/solutions.md) a [přehledy](./monitor-reference.md) , které poskytují další analýzy shromážděných dat pro konkrétní služby. 
 
 ### <a name="how-do-i-access-azure-monitor"></a>Azure Monitor Návody Access?
 Přístup ke všem funkcím Azure Monitor a datům z nabídky **monitor** v Azure Portal. Část **monitorování** v nabídce různých služeb Azure poskytuje přístup ke stejným nástrojům, které obsahují data filtrovaná pro konkrétní prostředek. Data Azure Monitor jsou také přístupná pro celou řadu scénářů pomocí rozhraní příkazového řádku, PowerShellu a REST API.
@@ -65,7 +65,7 @@ Přehledy a řešení poskytují vlastní prostředí pro práci s daty uložen�
 ## <a name="solutions-and-insights"></a>Řešení a přehledy
 
 ### <a name="what-is-an-insight-in-azure-monitor"></a>Co je přehled v Azure Monitor?
-Přehledy poskytují přizpůsobené možnosti monitorování pro konkrétní služby Azure. Používají stejné metriky a protokoly jako jiné funkce v Azure Monitor, ale mohou shromažďovat další data a v Azure Portal poskytovat jedinečné prostředí. Podívejte [se na přehledy v Azure monitor](insights/insights-overview.md).
+Přehledy poskytují přizpůsobené možnosti monitorování pro konkrétní služby Azure. Používají stejné metriky a protokoly jako jiné funkce v Azure Monitor, ale mohou shromažďovat další data a v Azure Portal poskytovat jedinečné prostředí. Podívejte [se na přehledy v Azure monitor](./monitor-reference.md).
 
 Pokud chcete zobrazit přehledy v Azure Portal, přečtěte si část **Přehled** v nabídce **monitor** nebo v části **monitorování** v nabídce služby.
 
@@ -77,7 +77,7 @@ Pokud chcete zobrazit řešení v Azure Portal, klikněte na tlačítko **Dalš�
 ## <a name="logs"></a>Protokoly
 
 ### <a name="whats-the-difference-between-azure-monitor-logs-and-azure-data-explorer"></a>Jaký je rozdíl mezi protokoly Azure Monitor a Azure Průzkumník dat?
-Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Protokoly Azure Monitor jsou postavené na Azure Průzkumník dat a používají stejný dotazovací jazyk Kusto (KQL) s některými drobnými rozdíly. Viz [rozdíly v jazyce pro dotazování protokolu Azure monitor](log-query/data-explorer-difference.md).
+Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Protokoly Azure Monitor jsou postavené na Azure Průzkumník dat a používají stejný dotazovací jazyk Kusto (KQL) s některými drobnými rozdíly. Viz [rozdíly v jazyce pro dotazování protokolu Azure monitor](/azure/data-explorer/kusto/query/).
 
 ### <a name="how-do-i-retrieve-log-data"></a>Návody načíst data protokolu?
 Všechna data se načítají z Log Analyticsho pracovního prostoru pomocí dotazu protokolu napsaného pomocí dotazovacího jazyka KQL (Kusto Query Language). Můžete napsat vlastní dotazy nebo využít řešení a přehledy, které obsahují dotazy protokolu pro konkrétní aplikaci nebo službu. Další informace najdete [v tématu Přehled dotazů protokolu v Azure monitor](log-query/log-query-overview.md).
@@ -224,7 +224,7 @@ Návrhář zobrazení je k dispozici pouze pro uživatele, kteří jsou přiřaz
 * [Aplikace Node.js](app/nodejs.md)
 * [Webové aplikace v Azure](app/azure-web-apps.md)
 * [Cloud Services v Azure](app/cloudservices.md)
-* [Aplikační servery běžící v Docker](app/docker.md)
+* [Aplikační servery běžící v Docker](./azure-monitor-app-hub.yml)
 * [Jednostránkové webové aplikace](app/javascript.md)
 * [SharePoint](app/sharepoint.md)
 * [Desktopová aplikace pro Windows](app/windows-desktop.md)
@@ -401,7 +401,7 @@ Každá odeslaná položka nese `itemCount` vlastnost, která ukazuje, kolik pů
 
 Přesunutí stávajících Application Insightsch prostředků z jedné oblasti do druhé není v **současné době podporováno**. Historická data, která jste shromáždili, **nelze migrovat** do nové oblasti. Jedinou částečnou alternativou je:
 
-1. Vytvořte novou značku Application Insights prostředku (v[klasickém](app/create-new-resource.md) [prostředí nebo na základě pracovního prostoru](/azure/azure-monitor/app/create-workspace-resource)) v nové oblasti.
+1. Vytvořte novou značku Application Insights prostředku (v[klasickém](app/create-new-resource.md) [prostředí nebo na základě pracovního prostoru](./app/create-workspace-resource.md)) v nové oblasti.
 2. Znovu vytvořit všechna jedinečná vlastní nastavení specifická pro původní prostředek v novém prostředku.
 3. Upravte aplikaci tak, aby používala [klíč instrumentace](app/create-new-resource.md#copy-the-instrumentation-key) prostředku nové oblasti nebo [připojovací řetězec](app/sdk-connection-string.md).  
 4. Otestujte, abyste potvrdili, že vše pokračuje v práci podle očekávání u nového prostředku Application Insights. 
@@ -414,7 +414,7 @@ Jedinečné vlastní nastavení, která se běžně musí ručně znovu vytvoři
 - Znovu vytvořte výstrahy dostupnosti.
 - Znovu vytvořte jakékoli vlastní nastavení řízení přístupu na základě role Azure (Azure RBAC), které jsou potřeba pro to, aby vaši uživatelé měli přístup k novému prostředku. 
 - Umožňuje replikovat nastavení zahrnující vzorkování ingestování, uchovávání dat, denní limit a vlastní metriky. Tato nastavení se řídí přes podokno **využití a odhadované náklady** .
-- Veškerá integrace, která spoléhá na klíče rozhraní API, jako jsou [poznámky k verzi](/azure/azure-monitor/app/annotations), [kanály zabezpečeného řízení metriky](app/live-stream.md#secure-the-control-channel) atd. Budete muset vygenerovat nové klíče rozhraní API a aktualizovat přidruženou integraci. 
+- Veškerá integrace, která spoléhá na klíče rozhraní API, jako jsou [poznámky k verzi](./app/annotations.md), [kanály zabezpečeného řízení metriky](app/live-stream.md#secure-the-control-channel) atd. Budete muset vygenerovat nové klíče rozhraní API a aktualizovat přidruženou integraci. 
 - Průběžný export v klasických zdrojích by se musel znovu nakonfigurovat.
 - Nastavení diagnostiky v prostředcích založených na pracovních prostorech by se muselo nakonfigurovat znovu.
 

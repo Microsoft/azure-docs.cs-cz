@@ -4,12 +4,12 @@ description: Application Insights provádí inteligentní analýzu telemetrie ap
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: c817e2c7f609bbbec52eff1b898a8d7c53209a28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28a32c714618a3b6b0c3126d8060295f134ddc7c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87321305"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186231"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Inteligentní zjišťování – anomálie výkonu
 
@@ -175,11 +175,10 @@ Tyto diagnostické nástroje vám pomůžou zkontrolovat telemetrii z vaší apl
 
 * [Profiler](profiler.md) 
 * [Snapshot Debugger](./snapshot-debugger.md)
-* [Analýzy](../log-query/get-started-portal.md)
+* [Analýzy](../log-query/log-analytics-tutorial.md)
 * [Inteligentní Diagnostika Analytics](../log-query/log-query-overview.md)
 
 Inteligentní detekce jsou zcela automatické. Možná byste ale chtěli nastavit ještě nějaké další výstrahy?
 
 * [Ručně nakonfigurované výstrahy metriky](../platform/alerts-log.md)
 * [Testy dostupnosti webu](./monitor-web-app-availability.md)
-

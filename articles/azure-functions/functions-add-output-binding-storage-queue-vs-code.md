@@ -5,12 +5,12 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-js
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: b709981e199d63c32426381ba48665402de820ce
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 1729e0b27dd50519359cf6a39bfa81ba7b3b41e9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422701"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185143"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Připojení Azure Functions k Azure Storage pomocí Visual Studio Code
 
@@ -55,7 +55,7 @@ V tomto článku se předpokládá, že jste už přihlášení k předplatnému
 
 ## <a name="download-the-function-app-settings"></a>Stažení nastavení Function App
 
-V [předchozím článku rychlý Start](functions-create-first-function-vs-code.md)jste vytvořili aplikaci funkcí v Azure spolu s požadovaným účtem úložiště. Připojovací řetězec pro tento účet je bezpečně uložený v nastavení aplikace v Azure. V tomto článku napíšete zprávy do fronty úložiště ve stejném účtu. Pokud se chcete připojit k účtu úložiště, když se funkce spouští místně, musíte si stáhnout nastavení aplikace do local.settings.jsv souboru. 
+V [předchozím článku rychlý Start](./create-first-function-vs-code-csharp.md)jste vytvořili aplikaci funkcí v Azure spolu s požadovaným účtem úložiště. Připojovací řetězec pro tento účet je bezpečně uložený v nastavení aplikace v Azure. V tomto článku napíšete zprávy do fronty úložiště ve stejném účtu. Pokud se chcete připojit k účtu úložiště, když se funkce spouští místně, musíte si stáhnout nastavení aplikace do local.settings.jsv souboru. 
 
 1. Stisknutím klávesy F1 otevřete paletu příkazů a pak vyhledejte a spusťte příkaz `Azure Functions: Download Remote Settings....` . 
 
@@ -182,7 +182,7 @@ Pokud jste už Průzkumník služby Azure Storage nainstalovali a připojili ho 
 
     ![Přidat účet Azure do Průzkumník služby Microsoft Azure Storage](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-add-account.png)
 
-1. V dialogovém okně **připojit** zvolte **Přidat účet Azure** , zvolte **prostředí Azure** a pak vyberte **Přihlásit se...**. 
+1. V dialogovém okně **připojit** zvolte **Přidat účet Azure**, zvolte **prostředí Azure** a pak vyberte **Přihlásit se...**. 
 
     ![Přihlášení k účtu Azure](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-connect-azure-account.png)
 
@@ -194,7 +194,7 @@ Po úspěšném přihlášení ke svému účtu uvidíte všechna předplatná A
 
 1. Rozbalte uzel **Fronty** a potom vyberte frontu s názvem **outqueue**. 
 
-   Tato fronta obsahuje zprávu, kterou vytvořila výstupní vazba fronty při spuštění funkce aktivované protokolem HTTP. Pokud jste tuto funkci volali s výchozí hodnotou `name` ( *Azure* ), zpráva fronty je *Name passed to the function: Azure*.
+   Tato fronta obsahuje zprávu, kterou vytvořila výstupní vazba fronty při spuštění funkce aktivované protokolem HTTP. Pokud jste tuto funkci volali s výchozí hodnotou `name` (*Azure*), zpráva fronty je *Name passed to the function: Azure*.
 
     ![Zpráva fronty zobrazená v Průzkumník služby Azure Storage](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
 

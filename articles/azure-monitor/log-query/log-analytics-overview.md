@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/04/2020
-ms.openlocfilehash: 26d6bcb52099b15aeeb73a36a7144c14bdf481d6
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: ba27739ff9e9d992ffe6202629a1db19604b1409
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496938"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186112"
 ---
 # <a name="overview-of-log-analytics-in-azure-monitor"></a>Přehled Log Analytics v Azure Monitor
 Log Analytics je nástroj v Azure Portal, který se používá k úpravě a spouštění dotazů protokolu s daty v protokolech Azure Monitor. Můžete napsat jednoduchý dotaz, který vrátí sadu záznamů, a pak pomocí funkcí Log Analytics řadit, filtrovat a analyzovat. Nebo můžete napsat pokročilejší dotaz, který provede statistickou analýzu a vizualizuje výsledky v grafu, aby identifikoval konkrétní trend. Ať už pracujete s výsledky dotazů interaktivně nebo je použijete s jinými Azure Monitor funkcemi, jako jsou výstrahy nebo sešity dotazů protokolu, Log Analytics je nástroj, který budete používat pro zápis a testování. 
 
 
 > [!TIP]
-> Tento článek obsahuje popis Log Analytics a všech jeho funkcí. Pokud chcete přejít přímo do kurzu, přečtěte si článek [Log Analytics kurz](get-started-portal.md).
+> Tento článek obsahuje popis Log Analytics a všech jeho funkcí. Pokud chcete přejít přímo do kurzu, přečtěte si článek [Log Analytics kurz](./log-analytics-tutorial.md).
 
 
 
@@ -85,11 +85,11 @@ Zobrazí výsledky jako jeden z několika dostupných typů grafů. Typ grafu m�
 | **Osa X** | Sloupec ve výsledcích, který se má použít pro osu X 
 | **Osa Y** | Sloupec ve výsledcích, který se má použít pro osu Y Obvykle se jedná o číselný sloupec. |
 | **Rozděleno podle** | Sloupec ve výsledcích, který definuje řadu v grafu. Pro každou hodnotu ve sloupci se vytvoří řada. |
-| **Agregovat** | Typ agregace, která má být provedena na numerických hodnotách na ose Y. |
+| **Agregace** | Typ agregace, která má být provedena na numerických hodnotách na ose Y. |
 
 ## <a name="relationship-to-azure-data-explorer"></a>Vztah k Azure Průzkumník dat
 Pokud jste již obeznámeni s webovým uživatelským rozhraním Azure Průzkumník dat, Log Analytics by měl vypadat dobře. To je proto, že je postavená na Azure Průzkumník dat a používá stejný dotazovací jazyk KQL (Kusto Query Language). Log Analytics přidává funkce specifické pro Azure Monitor, jako je filtrování podle časového rozsahu a možnost vytvořit pravidlo výstrahy z dotazu. Oba nástroje obsahují Průzkumníka, který umožňuje prohledat strukturu dostupných tabulek, ale webové uživatelské rozhraní Azure Průzkumník dat primárně funguje s tabulkami v Azure Průzkumník dat databázemi, zatímco Log Analytics pracuje s tabulkami v pracovním prostoru Log Analytics. 
 
 ## <a name="next-steps"></a>Další kroky
-- Projděte si [kurz použití Log Analytics v Azure Portal](get-started-portal.md).
+- Projděte si [kurz použití Log Analytics v Azure Portal](./log-analytics-tutorial.md).
 - Projděte si [kurz týkající se psaní dotazů](get-started-queries.md).

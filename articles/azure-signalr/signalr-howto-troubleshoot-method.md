@@ -6,18 +6,18 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: yajin1
-ms.openlocfilehash: 4b0b85b08c3f813440d556c61ba5e290ac200049
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 413bb88deac96c1ca12e8a9d25fc9cd16edf4616
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686761"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183953"
 ---
 # <a name="how-to-troubleshoot-connectivity-and-message-delivery-issues"></a>Řešení potíží s připojením a doručováním zpráv
 
 Tento návod zavádí několik způsobů, jak pomocí samočinného diagnostiky najít hlavní příčinu přímo nebo zúžit problém. Výsledek samočinné diagnostiky je také užitečný při informování do nás pro další zkoumání.
 
-Nejdřív je potřeba ověřit z Azure Portal, který je [ServiceMode](https://docs.microsoft.com/azure/azure-signalr/concept-service-mode) službou Azure Signal (označuje se také jako **ASRS**).
+Nejdřív je potřeba ověřit z Azure Portal, který je [ServiceMode](./concept-service-mode.md) službou Azure Signal (označuje se také jako **ASRS**).
 
 :::image type="content" source="./media/signalr-howto-troubleshoot-method/service-mode.png" alt-text="ServiceMode":::
 
@@ -49,13 +49,13 @@ Existuje několik způsobů, které vám pomůžou s zúžením tohoto problému
 
 ### <a name="how-to-view-the-traffic-and-narrow-down-the-issue"></a>Postup zobrazení provozu a zúžení problému
 
-Zachycení průběžného provozu je nejpřímější způsob, jak tento problém zúžit. [Trasování sítě](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#network-traces) můžete zachytit pomocí níže uvedených možností:
+Zachycení průběžného provozu je nejpřímější způsob, jak tento problém zúžit. [Trasování sítě](/aspnet/core/signalr/diagnostics#network-traces) můžete zachytit pomocí níže uvedených možností:
 
-* [Shromáždění trasování sítě pomocí Fiddler](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#network-traces)
+* [Shromáždění trasování sítě pomocí Fiddler](/aspnet/core/signalr/diagnostics#network-traces)
 
-* [Shromáždění trasování sítě pomocí tcpdump](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#collect-a-network-trace-with-tcpdump-macos-and-linux-only)
+* [Shromáždění trasování sítě pomocí tcpdump](/aspnet/core/signalr/diagnostics#collect-a-network-trace-with-tcpdump-macos-and-linux-only)
 
-* [Shromáždění trasování sítě v prohlížeči](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#collect-a-network-trace-in-the-browser)
+* [Shromáždění trasování sítě v prohlížeči](/aspnet/core/signalr/diagnostics#collect-a-network-trace-in-the-browser)
 
 <a name="view_traffic_client"></a>
 
@@ -63,7 +63,7 @@ Zachycení průběžného provozu je nejpřímější způsob, jak tento problé
 
 V případě trvalého připojení signálního serveru nejprve `/negotiate` k hostovanému aplikačnímu serveru a následnému přesměrování na službu Azure Signal Service a následně vytvoří skutečné trvalé připojení ke službě Azure Signal. Podrobné pokyny najdete v [interních informacích o službě Azure Signal](https://github.com/Azure/azure-signalr/blob/dev/docs/internal.md) .
 
-Pomocí trasování sítě na straně klienta zkontrolujte, který požadavek se nezdařil s kódem stavu a jaká odpověď je, a vyhledejte řešení v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/azure-signalr/signalr-howto-troubleshoot-guide).
+Pomocí trasování sítě na straně klienta zkontrolujte, který požadavek se nezdařil s kódem stavu a jaká odpověď je, a vyhledejte řešení v [Průvodci odstraňováním potíží](./signalr-howto-troubleshoot-guide.md).
 
 #### <a name="server-requests"></a>Žádosti serveru
 
@@ -71,7 +71,7 @@ Pomocí trasování sítě na straně klienta zkontrolujte, který požadavek se
 
 *Připojení k serveru* je možné vyřadit z důvodu nestability sítě nebo pravidelné údržby služby signalizace Azure nebo aktualizací/údržby hostovaného serveru aplikace. Pokud má Klientská strana mechanismus odpojení nebo opětovného připojení, je dopad minimální, protože kterákoli strana klienta způsobila odpojení a opětovné připojení.
 
-Zobrazit trasování sítě na straně serveru pro zjištění stavového kódu a podrobností o chybě, proč *připojení serveru* poklesne nebo je *službou* zamítnuto, a vyhledejte hlavní příčinu v [Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/azure-signalr/signalr-howto-troubleshoot-guide).
+Zobrazit trasování sítě na straně serveru pro zjištění stavového kódu a podrobností o chybě, proč *připojení serveru* poklesne nebo je *službou* zamítnuto, a vyhledejte hlavní příčinu v [Průvodci odstraňováním potíží](./signalr-howto-troubleshoot-guide.md).
 
 
 ### <a name="how-to-add-logs"></a>Postup přidání protokolů
@@ -86,18 +86,18 @@ Prostředí protokolování na straně klienta je přesně stejné jako při pou
 
 ##### <a name="enable-client-side-logging-for-aspnet-core-signalr"></a>Povolit protokolování na straně klienta pro `ASP.NET Core SignalR`
 
-* [Protokolování klienta JavaScript](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#javascript-client-logging)
+* [Protokolování klienta JavaScript](/aspnet/core/signalr/diagnostics#javascript-client-logging)
 
-* [Protokolování klienta .NET](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#net-client-logging)
+* [Protokolování klienta .NET](/aspnet/core/signalr/diagnostics#net-client-logging)
 
 
 ##### <a name="enable-client-side-logging-for-aspnet-signalr"></a>Povolit protokolování na straně klienta pro `ASP.NET SignalR`
 
-* [Klient .NET](https://docs.microsoft.com/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-net-client-windows-desktop-apps)
+* [Klient .NET](/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-net-client-windows-desktop-apps)
 
-* [Povolení trasování v klientech Windows Phone 8](https://docs.microsoft.com/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-windows-phone-8-clients)
+* [Povolení trasování v klientech Windows Phone 8](/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-windows-phone-8-clients)
 
-* [Povolení trasování v klientovi JavaScriptu](https://docs.microsoft.com/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-javascript-client)
+* [Povolení trasování v klientovi JavaScriptu](/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-javascript-client)
 
 <a name="add_logs_server"></a>
 
@@ -105,7 +105,7 @@ Prostředí protokolování na straně klienta je přesně stejné jako při pou
 
 ##### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>Povolit protokolování na straně serveru pro `ASP.NET Core SignalR`
 
-Protokolování na straně serveru pro `ASP.NET Core SignalR` integraci s `ILogger` [protokolováním](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&tabs=aspnetcore2x) na základě poskytované v `ASP.NET Core` rozhraní. Protokolování na straně serveru můžete povolit pomocí `ConfigureLogging` , ukázkového použití následujícím způsobem:
+Protokolování na straně serveru pro `ASP.NET Core SignalR` integraci s `ILogger` [protokolováním](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1) na základě poskytované v `ASP.NET Core` rozhraní. Protokolování na straně serveru můžete povolit pomocí `ConfigureLogging` , ukázkového použití následujícím způsobem:
 
 ```cs
 .ConfigureLogging((hostingContext, logging) =>
@@ -162,7 +162,7 @@ Zkontroluje, jestli nejsou zaznamenané žádné neobvyklé protokoly upozorněn
 
 #### <a name="how-to-enable-logs-inside-azure-signalr-service"></a>Jak povolit protokoly v rámci služby Azure Signal Service
 
-Můžete také [Povolit diagnostické protokoly](https://docs.microsoft.com/azure/azure-signalr/signalr-tutorial-diagnostic-logs) pro službu Azure Signal Service. tyto protokoly poskytují podrobné informace o každém připojení připojeném ke službě Azure Signal.
+Můžete také [Povolit diagnostické protokoly](./signalr-howto-diagnostic-logs.md) pro službu Azure Signal Service. tyto protokoly poskytují podrobné informace o každém připojení připojeném ke službě Azure Signal.
 
 <a name="serverless_mode_tsg"></a>
 
@@ -194,7 +194,7 @@ Rozhraní API pro stav služby můžete kontrolovat.
     * Nebo restartujte instanci.
     * Pokud všechny výše uvedené možnosti nefungují, kontaktujte nás přidáním nové žádosti o podporu v Azure Portal.
 
-Další informace o [zotavení po havárii](https://docs.microsoft.com/azure/azure-signalr/signalr-concept-disaster-recovery).
+Další informace o [zotavení po havárii](./signalr-concept-disaster-recovery.md).
 
 ## <a name="next-steps"></a>Další kroky
 

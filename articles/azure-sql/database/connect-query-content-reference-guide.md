@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 4cc345eda8a8d51fb61cbbbd5cf0bf84633ccf0b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: ec40e209d522daf882b8c704c7de6a1fb6aa29f9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676092"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183936"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Články Azure SQL Database a Azure SQL Managed instance Connect a dotazy
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,10 +26,10 @@ Následující dokument obsahuje odkazy na příklady Azure, které ukazují, ja
 
 ## <a name="quickstarts"></a>Rychlé starty
 
-| Rychlý start | Popis |
+| Rychlé zprovoznění | Popis |
 |---|---|
 |[SQL Server Management Studio](connect-query-ssms.md)|Tento rychlý Start ukazuje použití SSMS pro připojení k databázi a následné použití příkazů jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi.|
-|[Azure Data Studio](/sql/azure-data-studio/quickstart-sql-database?toc=%252fazure%252fsql-database%252ftoc.json)|Tento rychlý Start ukazuje, jak použít Azure Data Studio pro připojení k databázi a následné použití příkazů jazyka Transact-SQL (T-SQL) k vytvoření databáze tutorialdb používaného v Azure Data Studioch kurzech.|
+|[Azure Data Studio](/sql/azure-data-studio/quickstart-sql-database?toc=%2fazure%2fsql-database%2ftoc.json)|Tento rychlý Start ukazuje, jak použít Azure Data Studio pro připojení k databázi a následné použití příkazů jazyka Transact-SQL (T-SQL) k vytvoření databáze tutorialdb používaného v Azure Data Studioch kurzech.|
 |[Azure Portal](connect-query-portal.md)|Tento rychlý Start ukazuje použití Editoru dotazů pro připojení k databázi (pouze Azure SQL Database) a následné použití příkazů jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi.|
 |[Visual Studio Code](connect-query-vscode.md)|Tento rychlý Start ukazuje, jak použít Visual Studio Code pro připojení k databázi a následné použití příkazů jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi.|
 |[.NET se sadou Visual Studio](connect-query-dotnet-visual-studio.md)|Tento rychlý Start ukazuje použití rozhraní .NET Framework k vytvoření programu v jazyce C# se sadou Visual Studio pro připojení k databázi a použití příkazů jazyka Transact-SQL k dotazování dat.|

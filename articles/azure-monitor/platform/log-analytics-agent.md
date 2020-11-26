@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: c09b50272ce73fe084e84d49be7d9d81cbe725aa
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8563f734db8524d6e90171bb2272723f14533055
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207134"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185925"
 ---
 # <a name="log-analytics-agent-overview"></a>Přehled agenta Log Analytics
 Agent Azure Log Analytics shromažďuje telemetrie z virtuálních počítačů s Windows a Linux v jakémkoli cloudu, v místních počítačích a monitorované pomocí [System Center Operations Manager](/system-center/scom/) a odesílá je do vašeho pracovního prostoru Log Analytics v Azure monitor. Agent Log Analytics také podporuje přehledy a další služby v Azure Monitor, jako jsou [Azure monitor pro virtuální počítače](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml)a [Azure Automation](../../automation/automation-intro.md). Tento článek poskytuje podrobný přehled požadavků na agenty, systém a síť a metody nasazení.
@@ -51,7 +51,7 @@ Následující tabulka uvádí typy dat, které můžete nakonfigurovat Log Anal
 Agent Log Analytics odesílá data do pracovního prostoru Log Analytics v Azure Monitor. Agent systému Windows může být více vícedomý pro posílání dat do několika pracovních prostorů a System Center Operations Manager skupin pro správu. Agent pro Linux může být odeslán pouze do jednoho cíle, buď z pracovního prostoru, nebo do skupiny pro správu.
 
 ## <a name="other-services"></a>Další služby
-Agent pro Linux a Windows není dostupný jenom pro připojení k Azure Monitor. Jiné služby, například Azure Security Center a služba Azure Sentinel, spoléhají na agenta a jeho připojené Log Analytics pracovním prostoru. Agent také podporuje Azure Automation pro hostování role Hybrid Runbook Worker a dalších služeb, jako jsou [Change Tracking](../../automation/change-tracking/overview.md), [Update Management](../../automation/update-management/update-mgmt-overview.md)a [Azure Security Center](../../security-center/security-center-intro.md). Další informace o Hybrid Runbook Worker roli najdete v tématu [Azure Automation Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
+Agent pro Linux a Windows není dostupný jenom pro připojení k Azure Monitor. Jiné služby, například Azure Security Center a služba Azure Sentinel, spoléhají na agenta a jeho připojené Log Analytics pracovním prostoru. Agent také podporuje Azure Automation pro hostování role Hybrid Runbook Worker a dalších služeb, jako jsou [Change Tracking](../../automation/change-tracking/overview.md), [Update Management](../../automation/update-management/overview.md)a [Azure Security Center](../../security-center/security-center-introduction.md). Další informace o Hybrid Runbook Worker roli najdete v tématu [Azure Automation Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
 
 ## <a name="workspace-and-management-group-limitations"></a>Omezení skupiny pro pracovní prostor a skupinu pro správu
 
@@ -98,7 +98,7 @@ Bez ohledu na to, jakou metodu instalace použijete, budete potřebovat ID a kl�
 
 ## <a name="tls-12-protocol"></a>Protokol TLS 1,2
 
-Abychom zajistili zabezpečení dat při přenosu do Azure Monitor protokolů, důrazně doporučujeme nakonfigurovat agenta tak, aby používal minimálně protokol TLS (Transport Layer Security) 1,2. Zjistili jsme, že starší verze TLS/SSL (Secure Sockets Layer) (SSL) jsou zranitelné a i když stále fungují k tomu, aby se zajistila zpětná kompatibilita, **nedoporučuje**se.  Další informace najdete v [zabezpečeném posílání dat pomocí TLS 1,2](data-security.md#sending-data-securely-using-tls-12). 
+Abychom zajistili zabezpečení dat při přenosu do Azure Monitor protokolů, důrazně doporučujeme nakonfigurovat agenta tak, aby používal minimálně protokol TLS (Transport Layer Security) 1,2. Zjistili jsme, že starší verze TLS/SSL (Secure Sockets Layer) (SSL) jsou zranitelné a i když stále fungují k tomu, aby se zajistila zpětná kompatibilita, **nedoporučuje** se.  Další informace najdete v [zabezpečeném posílání dat pomocí TLS 1,2](data-security.md#sending-data-securely-using-tls-12). 
 
 ## <a name="network-requirements"></a>Požadavky sítě
 Agent pro Linux a Windows komunikuje odchozí komunikaci s Azure Monitor službou přes port TCP 443. Pokud se počítač připojuje přes Internet přes bránu firewall nebo proxy server pro komunikaci přes Internet, zkontrolujte níže uvedené požadavky, abyste pochopili požadovanou konfiguraci sítě. Pokud vaše zásady zabezpečení IT neumožňují, aby se počítače v síti připojovaly k Internetu, můžete nastavit [bránu Log Analytics](gateway.md) a potom nakonfigurovat agenta tak, aby se připojil přes bránu k Azure monitor. Agent pak může získat informace o konfiguraci a shromažďovat shromážděná data.
@@ -130,7 +130,7 @@ V případě agenta pro Linux je proxy server zadáno během instalace nebo [po 
 
 |Vlastnost| Popis |
 |--------|-------------|
-|Protokol | HTTPS |
+|Protokol | https |
 |uživatel | Volitelné uživatelské jméno pro ověřování proxy |
 |heslo | Volitelné heslo pro ověřování proxy serveru |
 |proxyhost | Adresa nebo plně kvalifikovaný název domény brány proxy server/Log Analytics |

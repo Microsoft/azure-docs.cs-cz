@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: fa7faf64e1889ef2d1abe644f23f0be363709a6b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b25bae460ff11c3dab84e80524acd2eaf878561c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322714"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184684"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Rychlý Start: vytvoření pracovního prostoru synapse
 Tento rychlý Start popisuje kroky pro vytvoření pracovního prostoru Azure synapse pomocí Azure Portal.
@@ -32,6 +32,9 @@ Tento rychlý Start popisuje kroky pro vytvoření pracovního prostoru Azure sy
 1. MOŽNOST 2 viz **Příprava pokynů účtu úložiště** v dolní části tohoto dokumentu.
 1. Váš pracovní prostor Azure synapse použije tento účet úložiště jako primární účet úložiště a kontejner pro uložení dat pracovního prostoru. Pracovní prostor ukládá data v Apache Sparkch tabulkách. Ukládá protokoly aplikací Spark do složky s názvem **/synapse/workspacename**.
 1. Vyberte **Zkontrolovat a vytvořit** > **Vytvořit**. Váš pracovní prostor je připravený během několika minut.
+
+> [!NOTE]
+> Po vytvoření pracovního prostoru Azure synapse nebudete moct pracovní prostor přesunout do jiného tenanta Azure Active Directory. Pokud to uděláte prostřednictvím migrace předplatného nebo jinými akcemi, můžete ztratit přístup k artefaktům v pracovním prostoru.  
 
 ## <a name="open-synapse-studio"></a>Otevřít synapse Studio
 
@@ -67,4 +70,4 @@ Spravované identity pro váš pracovní prostor Azure synapse už můžou mít 
 
 * [Vytvoření vyhrazeného fondu SQL](quickstart-create-sql-pool-studio.md) 
 * [Vytvoření fondu Apache Spark bez serveru](quickstart-create-apache-spark-pool-portal.md)
-* [Použít fond SQL bez serveru](quickstart-sql-on-demand.md)
+* [Použití bezserverového fondu SQL](quickstart-sql-on-demand.md)

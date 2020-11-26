@@ -4,11 +4,11 @@ description: Pochopení procesu vytváření privátních koncových bodů pro A
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.openlocfilehash: 0ca4e7a83e18ac72e25131d320737ce9578b1cf3
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172243"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184739"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Soukromé koncové body pro Azure Backup
 
@@ -73,11 +73,11 @@ Pro vytvoření požadovaných privátních koncových bodů pro Azure Backup mu
 Doporučujeme, abyste roli **přispěvatele** nadělili pro tyto tři skupiny prostředků do trezoru (spravovaná identita). Následující postup popisuje, jak to provést pro konkrétní skupinu prostředků (je potřeba provést u každé ze tří skupin prostředků):
 
 1. Přejděte do skupiny prostředků a na levém panelu přejděte na **Access Control (IAM)** .
-1. V **Access Control**klikněte na **Přidat přiřazení role**.
+1. V **Access Control** klikněte na **Přidat přiřazení role**.
 
     ![Přidat přiřazení role](./media/private-endpoints/add-role-assignment.png)
 
-1. V podokně **Přidat přiřazení role** vyberte jako **roli**možnost **Přispěvatel** a jako **objekt zabezpečení**použijte **název** trezoru. Vyberte svůj trezor a po dokončení vyberte **Uložit** .
+1. V podokně **Přidat přiřazení role** vyberte jako **roli** možnost **Přispěvatel** a jako **objekt zabezpečení** použijte **název** trezoru. Vyberte svůj trezor a po dokončení vyberte **Uložit** .
 
     ![Výběr role a objektu zabezpečení](./media/private-endpoints/choose-role-and-principal.png)
 
@@ -358,7 +358,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
     `privateendpointconnectionid = {peName}.{vaultId}.backup.{guid}`
 
-1. Získejte **ID připojení privátního koncového bodu** (a **název privátního koncového bodu**bez ohledu na to, kde je potřeba), a nahraďte ho v následujících JSON a Azure Resource Manager URI a zkuste změnit stav na "schváleno/odmítnuto/odpojeno", jak je znázorněno v následující ukázce:
+1. Získejte **ID připojení privátního koncového bodu** (a **název privátního koncového bodu** bez ohledu na to, kde je potřeba), a nahraďte ho v následujících JSON a Azure Resource Manager URI a zkuste změnit stav na "schváleno/odmítnuto/odpojeno", jak je znázorněno v následující ukázce:
 
     ```rest
     armclient PUT /subscriptions/<subscriptionid>/resourceGroups/<rgname>/providers/Microsoft.RecoveryServices/Vaults/<vaultname>/privateEndpointConnections/<privateendpointconnectionid>?api-version=2020-02-02-preview @C:\<filepath>\BackupAdminApproval.json
@@ -390,7 +390,7 @@ Musíte vytvořit tři privátní zóny DNS a propojit je s vaší virtuální s
 | **Zóna**                                                     | **Služba** |
 | ------------------------------------------------------------ | ----------- |
 | `privatelink.<geo>.backup.windowsazure.com`      | Backup      |
-| `privatelink.blob.core.windows.net`                            | Blob        |
+| `privatelink.blob.core.windows.net`                            | Objekt blob        |
 | `privatelink.queue.core.windows.net`                           | Fronta       |
 
 >[!NOTE]
@@ -448,7 +448,7 @@ Otázka: Pokusili jste se chránit položku do trezoru, ale nedošlo k jejímu u
 A. Ne, trezor nesmí mít žádné pokusy o ochranu jakýchkoli položek v minulosti.
 
 Otázka: Mám trezor, který používá privátní koncové body pro zálohování a obnovení. Můžu později přidat nebo odebrat soukromé koncové body pro tento trezor i v případě, že jsou k němu chráněné zálohované položky?<br>
-A. Yes. Pokud jste již vytvořili privátní koncové body pro trezor a chráněné zálohované položky, můžete později přidat nebo odebrat soukromé koncové body podle potřeby.
+A. Ano. Pokud jste již vytvořili privátní koncové body pro trezor a chráněné zálohované položky, můžete později přidat nebo odebrat soukromé koncové body podle potřeby.
 
 Otázka: Může být privátní koncový bod pro Azure Backup také použit pro Azure Site Recovery?<br>
 A. Ne, privátní koncový bod pro zálohování se dá použít jenom pro Azure Backup. Pro Azure Site Recovery budete muset vytvořit nový privátní koncový bod, pokud ho služba podporuje.

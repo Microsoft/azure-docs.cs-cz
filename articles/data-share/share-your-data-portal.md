@@ -7,17 +7,17 @@ ms.service: data-share
 ms.topic: quickstart
 ms.date: 10/30/2020
 ms.openlocfilehash: 1442720fdf48aaa7da76e181b168a04306ff3e33
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577494"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186452"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-in-the-azure-portal"></a>Rychlý Start: sdílení dat pomocí Azure Data Share v Azure Portal
 
 V tomto rychlém startu se dozvíte, jak nastavit novou sdílenou složku Azure pro sdílení dat z účtu úložiště pomocí Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * Přihlašovací e-mailová adresa Azure vašeho příjemce (pomocí e-mailového aliasu nebude fungovat).
@@ -33,7 +33,7 @@ V tomto rychlém startu se dozvíte, jak nastavit novou sdílenou složku Azure 
 
 Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. V levém horním rohu portálu vyberte tlačítko **vytvořit prostředek** (+).
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 0fa0b0d5e3620fc45a104ea31fd3bcbedd673da1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0ce969a4ab016d6a036d33a0e9bf027bb580a20
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318942"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186214"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Nasazení agenta Azure Monitor Application Insights pro místní servery
 
@@ -45,7 +45,7 @@ Agent Application Insights se nachází zde: https://www.powershellgallery.com/p
 - [Set-ApplicationInsightsMonitoringConfig](./status-monitor-v2-api-reference.md#set-applicationinsightsmonitoringconfig)
 - [Spustit – ApplicationInsightsMonitoringTrace](./status-monitor-v2-api-reference.md#start-applicationinsightsmonitoringtrace)
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 - [Řešení potíží](status-monitor-v2-troubleshoot.md)
 - [Známé problémy](status-monitor-v2-troubleshoot.md#known-issues)
 
@@ -67,7 +67,7 @@ Každá z těchto možností je popsaná v [podrobných pokynech](status-monitor
   - Pomocí rutiny [Get-ApplicationInsightsMonitoringStatus](./status-monitor-v2-api-reference.md#get-applicationinsightsmonitoringstatus) můžete ověřit, že je povolení úspěšné.
   - K rychlému určení, jestli vaše aplikace posílá telemetrii, doporučujeme použít [živé metriky](./live-stream.md) .
 
-  - [Log Analytics](../log-query/get-started-portal.md) můžete použít také k vypsání všech cloudových rolí, které aktuálně odesílají telemetrii:
+  - [Log Analytics](../log-query/log-analytics-tutorial.md) můžete použít také k vypsání všech cloudových rolí, které aktuálně odesílají telemetrii:
       ```Kusto
       union * | summarize count() by cloud_RoleName, cloud_RoleInstance
       ```
@@ -86,4 +86,3 @@ Přidání další telemetrie:
 * [Vytvoření webových testů](monitor-web-app-availability.md) a ověření, jestli web zůstává živý.
 * [Přidejte telemetrii webového klienta](./javascript.md) pro zobrazení výjimek z kódu webové stránky a umožnění volání trasování.
 * [Přidejte sadu Application Insights SDK do kódu](./asp-net.md) , abyste mohli vložit trasování a protokolování volání.
-

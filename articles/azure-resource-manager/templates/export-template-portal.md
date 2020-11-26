@@ -3,12 +3,12 @@ title: Exportovat šablonu v Azure Portal
 description: Pomocí Azure Portal můžete exportovat šablonu Azure Resource Manager z prostředků v rámci vašeho předplatného.
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 6d0c9adb121372047336d2753df047f54f1e0fa2
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: ee97953a337bbb7cc9a8d1f042a3beae7bccdcae
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951753"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185687"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Export jednoho a více prostředků do šablony v Azure Portal
 
@@ -51,7 +51,7 @@ Při exportu ze skupiny prostředků nebo prostředku se vyexportovaná šablona
 
 Funkce Exportovat šablonu nepodporuje export Azure Data Factorych prostředků. Další informace o tom, jak můžete exportovat Data Factory prostředky, najdete [v tématu kopírování nebo klonování datové továrny v Azure Data Factory](../../data-factory/copy-clone-data-factory.md).
 
-Chcete-li exportovat prostředky vytvořené prostřednictvím modelu nasazení Classic, je nutné [je migrovat do modelu nasazení Správce prostředků](../../virtual-machines/windows/migration-classic-resource-manager-overview.md).
+Chcete-li exportovat prostředky vytvořené prostřednictvím modelu nasazení Classic, je nutné [je migrovat do modelu nasazení Správce prostředků](../../virtual-machines/migration-classic-resource-manager-overview.md).
 
 Pokud se zobrazí upozornění při exportu šablony, která indikuje, že se typ prostředku neexportoval, můžete stále zjistit vlastnosti daného prostředku. Další informace o různých možnostech zobrazení vlastností prostředků najdete v tématu věnovaném [zjištění vlastností prostředku](view-resources.md). Můžete se také podívat na [REST API Azure](/rest/api/azure/) pro daný typ prostředku.
 

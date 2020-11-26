@@ -15,12 +15,12 @@ ms.date: 11/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: 53628f5aa0bc5ab5dedde5deb9950c7b13fb4bf6
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e30af9522d7c8fa81c4d93e11d252aefc4426586
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490742"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184259"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Řešení potíží s Azure RBAC
 
@@ -151,7 +151,7 @@ Podobně platí, že pokud toto přiřazení role vypíšete pomocí Azure CLI, 
 }
 ```
 
-Nejedná se o problém s ponechání těchto přiřazení rolí, kde byl odstraněn objekt zabezpečení. Pokud chcete, můžete tato přiřazení role odebrat pomocí kroků, které jsou podobné jiným přiřazením rolí. Informace o tom, jak odebrat přiřazení rolí, najdete v tématu [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)nebo [Azure CLI](role-assignments-cli.md#remove-role-assignment) .
+Nejedná se o problém s ponechání těchto přiřazení rolí, kde byl odstraněn objekt zabezpečení. Pokud chcete, můžete tato přiřazení role odebrat pomocí kroků, které jsou podobné jiným přiřazením rolí. Informace o tom, jak odebrat přiřazení rolí, najdete v tématu [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)nebo [Azure CLI](role-assignments-cli.md#remove-a-role-assignment) .
 
 Pokud se v prostředí PowerShell pokusíte odstranit přiřazení rolí pomocí ID objektu a definice role a na základě parametrů se shoduje více než jedno přiřazení role, zobrazí se chybová zpráva: "zadané informace nejsou namapovány na přiřazení role". Následující výstup ukazuje příklad chybové zprávy:
 
@@ -212,7 +212,7 @@ Tyto položky vyžadují přístup pro **zápis** do **plánu App Service** , kt
 Tyto položky vyžadují přístup pro **zápis** do celé **skupiny prostředků** , která obsahuje váš web:  
 
 * Certifikáty a vazby TLS/SSL (certifikáty TLS/SSL se dají sdílet mezi lokalitami ve stejné skupině prostředků a geografickým umístěním)  
-* Pravidla výstrah  
+* Pravidla upozornění  
 * Nastavení automatického škálování  
 * Součásti Application Insights  
 * Webové testy  
@@ -234,7 +234,7 @@ Tyto požadavky vyžadují přístup pro **zápis** k **virtuálnímu počítač
 
 * Skupina dostupnosti  
 * Sada s vyrovnáváním zatížení  
-* Pravidla výstrah  
+* Pravidla upozornění  
 
 Pokud nemůžete získat přístup k žádné z těchto dlaždic, požádejte správce, aby přístup přispěvatele k této skupině prostředků.
 

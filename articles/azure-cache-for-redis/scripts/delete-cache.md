@@ -9,12 +9,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b1e044c6f61e51de1d8f2ba07f64918307109e46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ce6e20e5e4866bc4daa3f331fa2a8612ac6c260
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87494719"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184157"
 ---
 # <a name="delete-an-azure-cache-for-redis"></a>Odstranění mezipaměti Azure pro Redis
 
@@ -34,11 +34,11 @@ Tento skript pomocí následujících příkazů odstraní službu Azure cache f
 
 | Příkaz | Poznámky |
 |---|---|
-| [AZ Redis DELETE](https://docs.microsoft.com/cli/azure/redis) | Odstraňte službu Azure cache pro instanci Redis. |
+| [AZ Redis DELETE](/cli/azure/redis) | Odstraňte službu Azure cache pro instanci Redis. |
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
 Další ukázky skriptů Azure cache pro Redis CLI najdete v [dokumentaci k Azure cache pro Redis](../cli-samples.md).

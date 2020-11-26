@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: 52ca879d5a680d0e62cc469e768236eac11f3719
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 2f262b328efcc341c93f1e5c31cab8cbd3ecbf6b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030158"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184633"
 ---
 # <a name="azure-monitor-for-networks"></a>Azure Monitor pro sítě
 Azure Monitor pro sítě poskytuje komplexní přehled o [stavu](../../service-health/resource-health-checks-resource-types.md) a [metrikách](../platform/metrics-supported.md) pro všechny nasazené síťové prostředky, a to bez nutnosti konfigurace. Poskytuje taky přístup k funkcím monitorování sítě, jako je [monitorování připojení](../../network-watcher/connection-monitor-preview.md), [protokolování toku pro skupiny zabezpečení sítě (skupin zabezpečení sítě)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md), a [Analýza provozu](../../network-watcher/traffic-analytics.md). A poskytuje další funkce [diagnostiky](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) sítě.
@@ -108,7 +108,7 @@ Diagnostická sada poskytuje přístup ke všem diagnostickým funkcím dostupn�
 
 ![Snímek obrazovky zobrazující kartu diagnostická sada](media/network-insights-overview/azure-monitor-for-networks-diagnostic-toolkit.png)
 
-## <a name="troubleshooting"></a>Řešení potíží 
+## <a name="troubleshooting"></a>Poradce při potížích 
 
 Obecné pokyny k odstraňování potíží najdete v článku věnovaném [řešení potíží](troubleshoot-workbooks.md)s vyhrazenými sešity na základě článků.
 
@@ -119,11 +119,11 @@ Tato část vám pomůže diagnostikovat a řešit některé běžné problémy,
 Další informace o řešení potíží souvisejících se sítí, které identifikujete pomocí Azure Monitor pro sítě, najdete v dokumentaci k řešení potíží pro prostředek, který nefunguje. 
 
 Tady jsou některé odkazy na články týkající se řešení potíží pro často používané služby. Další články o řešení potíží s těmito službami najdete v dalších článcích v části věnované řešení potíží v obsahu služby.
-* [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-peering-issues)
-* [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/create-gateway-internal-load-balancer-app-service-environment)
-* [Azure VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-troubleshoot)
-* [Azure ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-expressroute-overview) 
-* [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-troubleshoot) 
+* [Azure Virtual Network](../../virtual-network/virtual-network-troubleshoot-peering-issues.md)
+* [Azure Application Gateway](../../application-gateway/create-gateway-internal-load-balancer-app-service-environment.md)
+* [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-troubleshoot.md)
+* [Azure ExpressRoute](../../expressroute/expressroute-troubleshooting-expressroute-overview.md) 
+* [Azure Load Balancer](../../load-balancer/load-balancer-troubleshoot.md) 
 
 ### <a name="why-dont-i-see-the-resources-for-all-the-subscriptions-ive-selected"></a>Proč se mi nezobrazují prostředky pro všechna předplatná, která jsem vybral?
 

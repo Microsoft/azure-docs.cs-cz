@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/29/2019
-ms.openlocfilehash: 727792b110c3bc486d31214096be1934539f6d11
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 392f361f6fe487a15bdd63c2f3281ccc78b2f86d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790300"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184412"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Začínáme s izolovanými databázemi v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ K vytvoření, konfiguraci a škálování databáze můžete použít PowerShel
 
 ## <a name="migrating-to-a-single-database-with-minimal-downtime"></a>Migrace na izolovanou databázi s minimálními výpadky
 
-Tyto rychlé starty vám umožní rychle vytvořit nebo importovat databázi do Azure pomocí `.bacpac` souboru. `.bacpac` `.dacpac` Soubory a jsou ale navržené k rychlému přesunu databází v různých verzích SQL Server a v rámci Azure SQL nebo k implementaci průběžné integrace do kanálu DevOps. Tato metoda není navržená pro migraci provozních databází s minimálními výpadky, protože byste museli ukončit přidávání nových dat, počkat na dokončení exportu zdrojové databáze do `.bacpac` souboru a pak počkat na dokončení importu do Azure SQL Database. Všechny tyto čekající výsledky v důsledku výpadku vaší aplikace, zejména pro velké databáze. Pro přesun provozní databáze potřebujete lepší způsob migrace, která zaručuje minimální výpadky migrace. K tomu je potřeba použít [službu migrace dat (DMS)](../../dms/tutorial-sql-server-to-azure-sql.md?toc=%252fazure%252fsql-database%252ftoc.json) k migraci databáze s minimálními výpadky. DMS to provede přírůstkovým vložením změn provedených ve zdrojové databázi do databáze, která se obnovuje. Tímto způsobem můžete rychle přepnout aplikaci ze zdrojového do cílové databáze s minimálními výpadky.
+Tyto rychlé starty vám umožní rychle vytvořit nebo importovat databázi do Azure pomocí `.bacpac` souboru. `.bacpac` `.dacpac` Soubory a jsou ale navržené k rychlému přesunu databází v různých verzích SQL Server a v rámci Azure SQL nebo k implementaci průběžné integrace do kanálu DevOps. Tato metoda není navržená pro migraci provozních databází s minimálními výpadky, protože byste museli ukončit přidávání nových dat, počkat na dokončení exportu zdrojové databáze do `.bacpac` souboru a pak počkat na dokončení importu do Azure SQL Database. Všechny tyto čekající výsledky v důsledku výpadku vaší aplikace, zejména pro velké databáze. Pro přesun provozní databáze potřebujete lepší způsob migrace, která zaručuje minimální výpadky migrace. K tomu je potřeba použít [službu migrace dat (DMS)](../../dms/tutorial-sql-server-to-azure-sql.md?toc=%2fazure%2fsql-database%2ftoc.json) k migraci databáze s minimálními výpadky. DMS to provede přírůstkovým vložením změn provedených ve zdrojové databázi do databáze, která se obnovuje. Tímto způsobem můžete rychle přepnout aplikaci ze zdrojového do cílové databáze s minimálními výpadky.
 
 ## <a name="hands-on-learning-modules"></a>Praktické výukové moduly
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: f7980ca7bc6f23c383ea013c2b017b3bd61e2d25
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 410281ce67faf345539701389d4b03351d403b99
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842290"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186061"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Propojení produktů nebo služeb ITSM s využitím ITSM konektoru
 Tento článek poskytuje informace o tom, jak nakonfigurovat připojení mezi ITSM produktem/službou a konektorem Service Management Connector (ITSMC) v Log Analytics pro centrální správu vašich pracovních položek. Další informace o ITSMC najdete v tématu [Přehled](./itsmc-overview.md).
@@ -46,7 +46,7 @@ Ujistěte se, že jsou splněné následující předpoklady:
 > [!NOTE]
 > 
 > - Konektor ITSM se může připojit pouze ke cloudovým instancím ServiceNow. Místní instance ServiceNow se v tuto chvíli nepodporují.
-> - Aby bylo možné používat vlastní [šablony](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) jako součást akcí, parametr "ProjectionType" v šabloně SCSM by měl být namapován na "IncidentManagement! System. pracovní položka. incident. ProjectionType "
+> - Aby bylo možné používat vlastní [šablony](./itsmc-overview.md#template-definitions) jako součást akcí, parametr "ProjectionType" v šabloně SCSM by měl být namapován na "IncidentManagement! System. pracovní položka. incident. ProjectionType "
 
 ### <a name="connection-procedure"></a>Postup připojení
 
@@ -432,4 +432,3 @@ K vygenerování ID klienta/klíče pro Cherwell použijte následující postup
 
 ## <a name="next-steps"></a>Další kroky
  - [Vytváření pracovních položek ITSM z výstrah Azure](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
-

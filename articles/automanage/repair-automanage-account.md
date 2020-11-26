@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: alsin
-ms.openlocfilehash: 226a23bfdacb0f7423c7dafb8cae36af7333699d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 4694fa679c7bbff309a0452219ff39bacf2488c4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681835"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183698"
 ---
 # <a name="repair-an-automanage-account"></a>Opravit účet pro autosprávu
 Vaším [účtem Azure automanage](./automanage-virtual-machines.md#automanage-account) je kontext zabezpečení nebo identita, pod kterou se automatizované operace vyskytují. Pokud jste nedávno přesunuli předplatné, které obsahuje účet pro autosprávu pro nového tenanta, je nutné znovu nakonfigurovat tento účet. Pokud ho chcete znovu nakonfigurovat, musíte obnovit typ identity a přiřadit příslušné role pro tento účet.
@@ -22,8 +22,8 @@ Vaším [účtem Azure automanage](./automanage-virtual-machines.md#automanage-a
 Obnovte typ identity účtu automanage pomocí následující šablony Azure Resource Manager (ARM). Uložte soubor místně jako armdeploy.jsnebo podobný název. Poznamenejte si název a umístění účtu vaší automanage, protože se jedná o požadované parametry v šabloně ARM.
 
 1. Pomocí následující šablony vytvořte nasazení Správce prostředků. Použijte `identityType = None`.
-    * Nasazení můžete vytvořit v rozhraní příkazového řádku Azure pomocí `az deployment sub create` . Další informace najdete v tématu [AZ Deployment sub](https://docs.microsoft.com/cli/azure/deployment/sub).
-    * Nasazení můžete vytvořit v PowerShellu pomocí `New-AzDeployment` modulu. Další informace najdete v tématu [New-AzDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azdeployment).
+    * Nasazení můžete vytvořit v rozhraní příkazového řádku Azure pomocí `az deployment sub create` . Další informace najdete v tématu [AZ Deployment sub](/cli/azure/deployment/sub).
+    * Nasazení můžete vytvořit v PowerShellu pomocí `New-AzDeployment` modulu. Další informace najdete v tématu [New-AzDeployment](/powershell/module/az.resources/new-azdeployment).
 
 1. Spusťte stejnou šablonu ARM znovu s `identityType = SystemAssigned` .
 
@@ -63,7 +63,7 @@ Obnovte typ identity účtu automanage pomocí následující šablony Azure Res
 
 Pokud používáte šablonu ARM nebo rozhraní příkazového řádku Azure CLI, budete potřebovat hlavní ID (označované také jako ID objektu) vašeho účtu automanage. (Toto ID nebudete potřebovat, pokud používáte Azure Portal.) Toto ID můžete najít pomocí těchto metod:
 
-- [Azure CLI](https://docs.microsoft.com/cli/azure/ad/sp): použijte příkaz `az ad sp list --display-name <name of your Automanage Account>` .
+- [Azure CLI](/cli/azure/ad/sp): použijte příkaz `az ad sp list --display-name <name of your Automanage Account>` .
 
 - Azure Portal: Přejít na **Azure Active Directory** a vyhledat účet automanage podle názvu. V části **podnikové aplikace** vyberte při zobrazení název účtu pro správu znovu.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 79e5b1ddde0ff5f0d09dc1c20e3b20ec4de3d925
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 234ef58920a9f896d3e8ebcc561562ea7ceb2708
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536672"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186418"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Správa přístupu k datům protokolů a pracovním prostorům ve službě Azure Monitor
 
@@ -48,7 +48,7 @@ Toto nastavení můžete změnit na stránce **vlastností** pracovního prostor
 
 ![Změnit režim přístupu k pracovnímu prostoru](media/manage-access/change-access-control-mode.png)
 
-### <a name="using-powershell"></a>Pomocí prostředí PowerShell
+### <a name="using-powershell"></a>Použití PowerShellu
 
 Pomocí následujícího příkazu prověřte režim řízení přístupu pro všechny pracovní prostory v rámci předplatného:
 
@@ -285,7 +285,7 @@ Výše uvedené příklady definují seznam povolených tabulek. Tento příklad
 
 ### <a name="custom-logs"></a>Vlastní protokoly
 
- Vlastní protokoly se vytvářejí ze zdrojů dat, jako jsou vlastní protokoly a rozhraní API kolekce dat HTTP. Nejjednodušší způsob, jak identifikovat typ protokolu, je kontrola tabulek uvedených v části [vlastní protokoly ve schématu protokolu](../log-query/get-started-portal.md#understand-the-schema).
+ Vlastní protokoly se vytvářejí ze zdrojů dat, jako jsou vlastní protokoly a rozhraní API kolekce dat HTTP. Nejjednodušší způsob, jak identifikovat typ protokolu, je kontrola tabulek uvedených v části [vlastní protokoly ve schématu protokolu](../log-query/log-analytics-tutorial.md#table-schema).
 
  Nemůžete udělit přístup k jednotlivým vlastním protokolům, ale můžete udělit přístup ke všem vlastním protokolům. Chcete-li vytvořit roli s přístupem ke všem vlastním protokolům, vytvořte vlastní roli pomocí následujících akcí:
 

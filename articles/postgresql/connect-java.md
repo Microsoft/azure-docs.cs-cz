@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
 ms.openlocfilehash: 42547338c0f5f2f3105833b12e499d40b6209b05
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341412"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184701"
 ---
 # <a name="quickstart-use-java-and-jdbc-with-azure-database-for-postgresql"></a>Rychlý Start: použití jazyků Java a JDBC s Azure Database for PostgreSQL
 
@@ -43,11 +43,11 @@ AZ_POSTGRESQL_PASSWORD=<YOUR_POSTGRESQL_PASSWORD>
 AZ_LOCAL_IP_ADDRESS=<YOUR_LOCAL_IP_ADDRESS>
 ```
 
-Zástupné symboly nahraďte následujícími hodnotami, které se používají v celém tomto článku:
+Zástupné symboly nahraďte následujícími hodnotami, které se používají v tomto článku:
 
 - `<YOUR_DATABASE_NAME>`: Název serveru PostgreSQL. Měl by být jedinečný v rámci Azure.
-- `<YOUR_AZURE_REGION>`: Oblast Azure, kterou budete používat. `eastus`Ve výchozím nastavení můžete použít, ale doporučujeme, abyste nakonfigurovali oblast blíže k umístění, kde žijete. Můžete mít úplný seznam oblastí, které jsou k dispozici, zadáním `az account list-locations` .
-- `<YOUR_POSTGRESQL_PASSWORD>`: Heslo serveru databáze PostgreSQL. Heslo by mělo mít minimálně osm znaků. Znaky by měly být ze tří z následujících kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0-9) a jiné než alfanumerické znaky (!, $, #,% a tak dále).
+- `<YOUR_AZURE_REGION>`: Oblast Azure, kterou budete používat. Standardně můžete použít `eastus`, ale doporučujeme nakonfigurovat oblast blíže k místu, kde se nacházíte. Můžete mít úplný seznam oblastí, které jsou k dispozici, zadáním `az account list-locations` .
+- `<YOUR_POSTGRESQL_PASSWORD>`: Heslo serveru databáze PostgreSQL. Toto heslo by mělo mít minimálně osm znaků. Znaky by měly pocházet z následujících tří kategorií: Velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0–9) a jiné než alfanumerické znaky (!, $, #, % atd.).
 - `<YOUR_LOCAL_IP_ADDRESS>`: IP adresa místního počítače, ze kterého spouštíte aplikaci Java. Jedním pohodlným způsobem, jak ho najít, je ukázat svůj prohlížeč na [whatismyip.Akamai.com](http://whatismyip.akamai.com/).
 
 Dále vytvořte skupinu prostředků pomocí následujícího příkazu:
@@ -60,7 +60,7 @@ az group create \
 ```
 
 > [!NOTE]
-> Nástroj používáme `jq` k zobrazení dat JSON a k lepší čitelnosti. Tento nástroj je ve výchozím nastavení nainstalován na [Azure Cloud Shell](https://shell.azure.com/). Pokud tento nástroj nechcete, můžete bezpečně odebrat `| jq` část všech příkazů, které budeme používat.
+> Nástroj používáme `jq` k zobrazení dat JSON a k lepší čitelnosti. Tento nástroj je ve výchozím nastavení nainstalován na [Azure Cloud Shell](https://shell.azure.com/). Pokud tento nástroj nepoužíváte, můžete ve všech příkazech, které budeme používat, klidně odebrat část `| jq`.
 
 ## <a name="create-an-azure-database-for-postgresql-instance"></a>Vytvoření instance Azure Database for PostgreSQL
 
@@ -87,7 +87,7 @@ Tento příkaz vytvoří malý PostgreSQL Server.
 
 ### <a name="configure-a-firewall-rule-for-your-postgresql-server"></a>Konfigurace pravidla brány firewall pro server PostgreSQL
 
-Instance Azure Database for PostgreSQL jsou ve výchozím zabezpečení zabezpečené. Mají bránu firewall, která nepovoluje žádné příchozí připojení. Aby bylo možné používat vaši databázi, je nutné přidat pravidlo brány firewall, které umožní místní IP adrese přístup k databázovému serveru.
+Instance Azure Database for PostgreSQL jsou ve výchozím zabezpečení zabezpečené. Obsahuje bránu firewall, která nepovoluje žádné příchozí připojení. Aby bylo možné používat vaši databázi, je nutné přidat pravidlo brány firewall, které umožní místní IP adrese přístup k databázovému serveru.
 
 Vzhledem k tomu, že jste místní IP adresu nakonfigurovali na začátku tohoto článku, můžete bránu firewall serveru otevřít spuštěním následujícího příkazu:
 
@@ -173,7 +173,7 @@ DROP TABLE IF EXISTS todo;
 CREATE TABLE todo (id SERIAL PRIMARY KEY, description VARCHAR(255), details VARCHAR(4096), done BOOLEAN);
 ```
 
-## <a name="code-the-application"></a>Kódování aplikace
+## <a name="code-the-application"></a>Vytvoření kódu aplikace
 
 ### <a name="connect-to-the-database"></a>Připojte se k databázi.
 
@@ -487,7 +487,7 @@ Spuštění hlavní třídy by nyní mělo mít následující výstup:
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Blahopřejeme vám. Vytvořili jste aplikaci Java, která používá JDBC k ukládání a načítání dat z Azure Database for PostgreSQL.
+Gratulujeme! Vytvořili jste aplikaci Java, která používá JDBC k ukládání a načítání dat z Azure Database for PostgreSQL.
 
 Pokud chcete vyčistit všechny prostředky používané v rámci tohoto rychlého startu, odstraňte skupinu prostředků pomocí následujícího příkazu:
 

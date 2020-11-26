@@ -4,12 +4,12 @@ description: Monitorujte výkon a diagnostikujte problémy ve službách Node.js
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 982adf6c6d7cd825d185802321ce30a04bd2f216
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4c350cbfdf92d19a084940941351cf1f028c93d2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020887"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186275"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Monitorování služeb a aplikací Node.js pomocí Application Insights
 
@@ -25,7 +25,7 @@ Pomocí rozhraní TelemetryClient API můžete ručně instrumentovat a monitoro
 
 Proveďte následující úlohy a nastavte monitorování pro aplikaci nebo službu.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte předplatné Azure nebo [zdarma získejte nové předplatné][azure-free-offer]. Pokud vaše organizace již má předplatné Azure, správce vás do něj může přidat pomocí [těchto pokynů][add-aad-user].
 
@@ -34,7 +34,7 @@ Než začnete, ujistěte se, že máte předplatné Azure nebo [zdarma získejte
 
 ### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a> Nastavení prostředku Application Insights
 
-1. Přihlaste se na [Azure Portal][portal].
+1. Přihlaste se k webu [Azure Portal][portal].
 2. [Vytvoření prostředku Application Insights](create-new-resource.md)
 
 ### <a name="set-up-the-nodejs-sdk"></a><a name="sdk"></a>Nastavení sady Node.js SDK
@@ -374,7 +374,7 @@ appInsights.defaultClient.addTelemetryProcessor(removeStackTraces);
 
 Můžete vytvořit několik prostředků Application Insights a do každého odeslat různá data pomocí příslušných klíčů instrumentace ("ikey").
 
- Například:
+ Příklad:
 
 ```javascript
 let appInsights = require("applicationinsights");
@@ -416,10 +416,9 @@ Tyto vlastnosti jsou specifické pro konkrétního klienta, takže je můžete n
 ## <a name="next-steps"></a>Další kroky
 
 * [Monitorování vaší telemetrie na portálu](./overview-dashboard.md)
-* [Zápis analytických dotazů nad telemetrií](../log-query/get-started-portal.md)
+* [Zápis analytických dotazů nad telemetrií](../log-query/log-analytics-tutorial.md)
 
 <!--references-->
 
 [portal]: https://portal.azure.com/
 [FAQ]: ../faq.md
-

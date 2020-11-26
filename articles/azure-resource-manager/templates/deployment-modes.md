@@ -3,14 +3,14 @@ title: Režimy nasazení
 description: Popisuje, jak určit, jestli se má použít kompletní nebo přírůstkový režim nasazení s Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: e584acd4af1dc6adb5f5d383acd5d16da0815f32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc499be4185905af7eaf71b3515895de9bee46d3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87371579"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184038"
 ---
-# <a name="azure-resource-manager-deployment-modes"></a>Režimy nasazení Azure Resource Manager
+# <a name="azure-resource-manager-deployment-modes"></a>Režimy nasazení Azure Resource Manageru
 
 Při nasazování prostředků určíte, že nasazení je přírůstková nebo kompletní aktualizace. Rozdíl mezi těmito dvěma režimy spočívá v tom, že Správce prostředků zpracovává stávající prostředky ve skupině prostředků, která není v šabloně.
 
@@ -29,7 +29,7 @@ Pokud vaše šablona obsahuje prostředek, který není nasazený, protože [Pod
 
 Použití kompletního režimu s [kopírováním smyček](copy-resources.md)vám bude opatrní. Všechny prostředky, které nejsou zadány v šabloně po vyřešení smyčky kopírování, jsou odstraněny.
 
-Pokud nasadíte do [více než jedné skupiny prostředků v šabloně](cross-scope-deployment.md), prostředky ve skupině prostředků zadané v rámci operace nasazení mají nárok na odstranění. Prostředky v sekundárních skupinách prostředků se neodstraňují.
+Pokud nasadíte do [více než jedné skupiny prostředků v šabloně](./deploy-to-resource-group.md), prostředky ve skupině prostředků zadané v rámci operace nasazení mají nárok na odstranění. Prostředky v sekundárních skupinách prostředků se neodstraňují.
 
 Existují určité rozdíly ve způsobu, jakým typy prostředků zpracovávají kompletní odstranění režimu. Nadřazené prostředky se odstraní automaticky, když nejsou v šabloně, která je nasazena v úplném režimu. Některé podřízené prostředky nejsou automaticky odstraněny, pokud nejsou v šabloně. Tyto podřízené prostředky se ale odstraní, pokud se odstraní nadřazený prostředek.
 

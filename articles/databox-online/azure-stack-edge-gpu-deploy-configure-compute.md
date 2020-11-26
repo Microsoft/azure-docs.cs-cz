@@ -10,11 +10,11 @@ ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: 711da24b3edf08f4867109d0d70165955236c39a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743416"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184650"
 ---
 # <a name="tutorial-configure-compute-on-azure-stack-edge-pro-gpu-device"></a>Kurz: Konfigurace výpočtů na zařízeních GPU Azure Stack Edge pro
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > * Získat koncové body Kubernetes
 
  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před nastavením výpočetní role na zařízení Azure Stack Edge pro se ujistěte, že:
 
@@ -49,7 +49,7 @@ Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack Edge pro, vytvoř
 
     ![Začínáme se službou COMPUTE](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-1.png)
 
-2. Na dlaždici **Konfigurace hraničních výpočtů** vyberte **Konfigurovat výpočetní**prostředky.
+2. Na dlaždici **Konfigurace hraničních výpočtů** vyberte **Konfigurovat výpočetní** prostředky.
 
     ![Konfigurace COMPUTE](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-2.png)
 
@@ -59,7 +59,7 @@ Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack Edge pro, vytvoř
     |Pole  |Hodnota  |
     |---------|---------|
     |IoT Hub     | Vyberte z **nových** nebo **existujících**. <br> Ve výchozím nastavení se k vytváření prostředků IoT používá úroveň Standard (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> V každém případě IoT Hub prostředek používá stejné předplatné a skupinu prostředků, kterou používá prostředek Azure Stack Edge.     |
-    |Name     |Zadejte název prostředku IoT Hub.         |
+    |Název     |Zadejte název prostředku IoT Hub.         |
 
     ![Začínáme s výpočetním využitím 2](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 
@@ -76,7 +76,7 @@ Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack Edge pro, vytvoř
     
 Když se na hraničním zařízení nastaví role hraničního zpracování, vytvoří se dvě zařízení: zařízení IoT a zařízení IoT Edge. Obě zařízení je možné zobrazit v prostředku IoT Hub. V tomto zařízení IoT Edge je spuštěn také modul runtime IoT Edge. V tomto okamžiku je k dispozici pouze Platforma Linux pro vaše zařízení IoT Edge.
 
-Konfigurace výpočetních prostředků na pozadí může trvat 20-30 minut, než se vytvoří virtuální počítače a Kubernetes cluster. 
+Konfigurace výpočetních prostředků na pozadí může trvat 20-30 minut, než se vytvoří virtuální počítače a Kubernetes cluster. 
 
 Po úspěšné konfiguraci výpočtů v Azure Portal existuje cluster Kubernetes a výchozí uživatel přidružený k oboru názvů IoT (obor názvů System řízený pomocí Azure Stack Edge pro). 
 
@@ -85,7 +85,7 @@ Po úspěšné konfiguraci výpočtů v Azure Portal existuje cluster Kubernetes
 Chcete-li nakonfigurovat klienta pro přístup ke clusteru Kubernetes, budete potřebovat koncový bod Kubernetes. Pomocí těchto kroků můžete získat koncový bod rozhraní Kubernetes API z místního uživatelského rozhraní vašeho zařízení Azure Stack Edge pro.
 
 1. V místním webovém uživatelském rozhraní zařízení klikněte na stránku **zařízení** .
-2. V části **koncové body zařízení**zkopírujte koncový bod **služby API Kubernetes** . Tento koncový bod je řetězec v následujícím formátu: `https://compute.<device-name>.<DNS-domain>[Kubernetes-cluster-IP-address]` . 
+2. V části **koncové body zařízení** zkopírujte koncový bod **služby API Kubernetes** . Tento koncový bod je řetězec v následujícím formátu: `https://compute.<device-name>.<DNS-domain>[Kubernetes-cluster-IP-address]` . 
 
     ![Stránka zařízení v místním uživatelském rozhraní](./media/azure-stack-edge-j-series-create-kubernetes-cluster/device-kubernetes-endpoint-1.png)
 

@@ -9,19 +9,19 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/21/2020
-ms.openlocfilehash: 6231e4631c19aa3595fa85ca0aa7997861de65a3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e068ad01c07af4e5833399c0053da3362cd6aaa6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675031"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185636"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Kurz: vytvoření uživatelů Azure AD pomocí aplikací Azure AD
 
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 > [!NOTE]
-> Tento článek je ve **verzi Public Preview** . Další informace najdete v tématu [Azure Active Directory instančního objektu se službou Azure SQL](authentication-aad-service-principal.md). Tento článek bude používat Azure SQL Database k předvedení nezbytných kroků kurzu, ale může se obdobně použít pro [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md).
+> Tento článek je ve **verzi Public Preview**. Další informace najdete v tématu [Azure Active Directory instančního objektu se službou Azure SQL](authentication-aad-service-principal.md). Tento článek bude používat Azure SQL Database k předvedení nezbytných kroků kurzu, ale může se obdobně použít pro [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md).
 
 Tento článek vás provede procesem vytvoření uživatelů Azure AD v Azure SQL Database pomocí instančních objektů Azure (aplikace Azure AD). Tato funkce už ve spravované instanci SQL Azure existuje, ale teď se zavádí v Azure SQL Database a Azure synapse Analytics. Pro podporu tohoto scénáře musí být identita Azure AD vygenerovaná a přiřazená k logickému serveru Azure SQL.
 
@@ -44,9 +44,9 @@ V tomto kurzu se naučíte:
 
 ## <a name="assign-an-identity-to-the-azure-sql-logical-server"></a>Přiřazení identity k logickému serveru Azure SQL
 
-1. Připojte se k vašemu Azure Active Directory. Bude nutné najít ID tenanta. Dá se najít tak, že do [Azure Portal](https://portal.azure.com)zařadíte do svého prostředku **Azure Active Directory** . V podokně **Přehled** by se mělo zobrazit vaše **ID tenanta** . Spusťte následující příkaz PowerShellu:
+1. Připojte se k vašemu Azure Active Directory. Bude nutné najít ID tenanta. Dá se najít tak, že do [Azure Portal](https://portal.azure.com)zařadíte do svého prostředku **Azure Active Directory** . V podokně **Přehled** by se mělo zobrazit vaše **ID tenanta**. Spusťte následující příkaz PowerShellu:
 
-    - Nahraďte `<TenantId>` **ID tenanta** .
+    - Nahraďte `<TenantId>` **ID tenanta**.
 
     ```powershell
     Connect-AzAccount -Tenant <TenantId>
@@ -82,7 +82,7 @@ V tomto kurzu se naučíte:
 
 1. Identitu můžete také ověřit tak, že na [Azure Portal](https://portal.azure.com)kliknete.
 
-    - V části prostředek **Azure Active Directory** přejít na **podnikové aplikace** . Zadejte název logického serveru SQL. Uvidíte, že obsahuje **ID objektu** připojené k prostředku.
+    - V části prostředek **Azure Active Directory** přejít na **podnikové aplikace**. Zadejte název logického serveru SQL. Uvidíte, že obsahuje **ID objektu** připojené k prostředku.
     
     :::image type="content" source="media/authentication-aad-service-principals-tutorial/enterprise-applications-object-id.png" alt-text="ID objektu":::
 
@@ -161,11 +161,11 @@ Podobný přístup k nastavení oprávnění **čtenářů adresáře** pro SPRA
 
 1. Pokud chcete [svoji aplikaci zaregistrovat a nastavit oprávnění](active-directory-interactive-connect-azure-sql-db.md#register-your-app-and-set-permissions), postupujte podle pokynů v příručce.
 
-    Nezapomeňte přidat **oprávnění aplikace** i **delegovaná oprávnění** .
+    Nezapomeňte přidat **oprávnění aplikace** i **delegovaná oprávnění**.
 
-    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="ID objektu":::
+    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="Snímek obrazovky zobrazující stránku Registrace aplikací Azure Active Directory Aplikace se zobrazeným názvem AppSP se zvýrazní.":::
 
-    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-app-registration-api-permissions.png" alt-text="ID objektu":::
+    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-app-registration-api-permissions.png" alt-text="rozhraní API – oprávnění":::
 
 2. Také budete muset vytvořit tajný klíč klienta pro přihlášení. Pomocí příručky sem [Nahrajte certifikát nebo vytvořte tajný klíč pro přihlášení](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options).
 
@@ -173,15 +173,15 @@ Podobný přístup k nastavení oprávnění **čtenářů adresáře** pro SPRA
     - **ID aplikace**
     - **ID tenanta** – mělo by to být stejné jako před
 
-V tomto kurzu budeme používat *AppSP* jako hlavní instanční objekt a *Mojeapl* jako druhý uživatel instančního objektu, který se vytvoří v Azure SQL pomocí *AppSP* . Budete muset vytvořit dvě aplikace, *AppSP* a *MyApp* .
+V tomto kurzu budeme používat *AppSP* jako hlavní instanční objekt a *Mojeapl* jako druhý uživatel instančního objektu, který se vytvoří v Azure SQL pomocí *AppSP*. Budete muset vytvořit dvě aplikace, *AppSP* a *MyApp*.
 
 Další informace o tom, jak vytvořit aplikaci Azure AD, najdete v článku [Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](../../active-directory/develop/howto-create-service-principal-portal.md).
 
 ### <a name="permissions-required-to-set-or-unset-the-azure-ad-admin"></a>Oprávnění požadovaná k nastavení nebo zrušení správce Azure AD
 
-Aby instanční objekt nastavil nebo oddělil správce Azure AD pro Azure SQL, je potřeba další oprávnění API. [Adresář. Read. všechna](https://docs.microsoft.com/graph/permissions-reference#application-permissions-18) oprávnění Application API se budou muset do vaší aplikace přidat ve službě Azure AD.
+Aby instanční objekt nastavil nebo oddělil správce Azure AD pro Azure SQL, je potřeba další oprávnění API. [Adresář. Read. všechna](/graph/permissions-reference#application-permissions-18) oprávnění Application API se budou muset do vaší aplikace přidat ve službě Azure AD.
 
-:::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-directory-reader-all-permissions.png" alt-text="ID objektu":::
+:::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-directory-reader-all-permissions.png" alt-text="Directory. Reader. všechna oprávnění ve službě Azure AD":::
 
 Instanční objekt bude také potřebovat roli [**přispěvatel SQL Server**](../../role-based-access-control/built-in-roles.md#sql-server-contributor) pro SQL Database nebo roli [**Přispěvatel spravované instance SQL**](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) pro spravovanou instanci SQL.
 
@@ -199,7 +199,7 @@ Po vytvoření instančního objektu ve službě Azure AD vytvořte uživatele v
     GO
     ```
 
-2. Udělte `db_owner` oprávnění *AppSP* , která umožňuje uživateli vytvářet v databázi další uživatele Azure AD.
+2. Udělte `db_owner` oprávnění *AppSP*, která umožňuje uživateli vytvářet v databázi další uživatele Azure AD.
 
     ```sql
     EXEC sp_addrolemember 'db_owner', [AppSP]
@@ -223,7 +223,7 @@ Po vytvoření instančního objektu ve službě Azure AD vytvořte uživatele v
 > [!IMPORTANT]
 > Instanční objekt použitý k přihlášení do SQL Database musí mít tajný klíč klienta. Pokud to ještě nemáte, postupujte podle pokynů v části [Vytvoření instančního objektu (aplikace Azure AD) ve službě Azure AD](#create-a-service-principal-an-azure-ad-application-in-azure-ad). Tento tajný klíč klienta je nutné přidat jako vstupní parametr ve skriptu níže.
 
-1. Pomocí následujícího skriptu vytvořte uživatele instančního objektu služby Azure AD *Mojeapl* pomocí instančního objektu *AppSP* .
+1. Pomocí následujícího skriptu vytvořte uživatele instančního objektu služby Azure AD *Mojeapl* pomocí instančního objektu *AppSP*.
 
     - Nahraďte `<TenantId>` `TenantId` dříve shromážděnými.
     - Nahraďte `<ClientId>` `ClientId` dříve shromážděnými.

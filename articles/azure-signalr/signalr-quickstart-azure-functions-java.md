@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
 ms.custom: devx-track-java
-ms.openlocfilehash: aa300122ab6c448862d46579d6e9ce1e5fc06a79
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 62f31d8426e86cc20e957f3a47b30109dee0a634
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874402"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185670"
 ---
 # <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Rychlý Start: použití jazyka Java k vytvoření chatovací místnosti s Azure Functions a službou Signal
 
@@ -103,4 +103,4 @@ Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](sig
 V tomto rychlém startu jste vytvořili a spustili aplikaci bez serveru v reálném čase s využitím Maven. V dalším kroku se dozvíte, jak vytvořit Azure Functions Java od začátku.
 
 > [!div class="nextstepaction"]
-> [Vytvoření první funkce pomocí Java a Maven](../azure-functions/functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java%252cprogramming-language-java)
+> [Vytvoření první funkce pomocí Java a Maven](../azure-functions/create-first-function-cli-csharp.md?pivots=programming-language-java%2cprogramming-language-java)

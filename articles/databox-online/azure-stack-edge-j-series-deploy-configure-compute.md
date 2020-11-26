@@ -10,11 +10,11 @@ ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: 75428b28095b0e425a1670caffcf960aa6ae58f6
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504449"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185500"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>Kurz: transformace dat pomocí Azure Stack Edge pro
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 > * Ověření transformace dat a jejich přenos
 
  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před nastavením výpočetní role na zařízení Azure Stack Edge pro se ujistěte, že:
 
@@ -90,7 +90,7 @@ Pro jednoduché nasazení v tomto kurzu budete potřebovat dvě sdílené složk
 
     3. V okně **Přidat sdílenou složku** zadejte název sdílené složky a vyberte typ sdílené složky.
     4. Pokud chcete připojit hraniční sdílenou složku, zaškrtněte políčko pro **použití sdílené složky s hraničními výpočty**.
-    5. Vyberte **účet úložiště** , **službu úložiště** , stávající uživatel a pak vyberte **vytvořit**.
+    5. Vyberte **účet úložiště**, **službu úložiště**, stávající uživatel a pak vyberte **vytvořit**.
 
         ![Přidat hraniční sdílenou složku](./media/azure-stack-edge-j-series-deploy-configure-compute/add-edge-share-1.png) 
 

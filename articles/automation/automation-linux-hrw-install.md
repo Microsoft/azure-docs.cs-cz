@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 07c04274829530942bab0e3267200f6524c4ddc7
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 20683808c81b32560170b175edf1c37c332f47ad
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95793410"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183613"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker pro Linux
 
@@ -20,7 +20,7 @@ Linux Hybrid Runbook Worker spouští Runbooky jako speciálního uživatele, kt
 
 Po úspěšném nasazení služby Runbook Worker si přečtěte téma [spuštění runbooků na Hybrid Runbook Worker](automation-hrw-run-runbooks.md) , kde se dozvíte, jak konfigurovat Runbooky pro automatizaci procesů v místním datovém centru nebo v jiném cloudovém prostředí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte následující.
 
@@ -73,7 +73,7 @@ Minimální požadavky pro systém Linux a uživatelské Hybrid Runbook Worker j
 Pracovní počítač můžete přidat do skupiny Hybrid Runbook Worker v jednom z vašich účtů Automation. Pro počítače, které hostují systém Hybrid Runbook Worker spravované pomocí Update Management, je lze přidat do skupiny Hybrid Runbook Worker. Je ale nutné použít stejný účet Automation pro Update Management a členství v Hybrid Runbook Worker skupině.
 
 >[!NOTE]
->Azure Automation [Update Management](update-management/update-mgmt-overview.md) automaticky nainstaluje systémovou Hybrid Runbook Worker na počítač s Azure nebo mimo Azure, který je povolený pro Update Management. Tento pracovní proces ale není zaregistrovaný u žádné skupiny Hybrid Runbook Worker ve vašem účtu Automation. Pokud chcete spouštět Runbooky na těchto počítačích, musíte je přidat do skupiny Hybrid Runbook Worker. Postupujte podle kroku 4 v části [instalace Hybrid Runbook Worker pro Linux](#install-a-linux-hybrid-runbook-worker) a přidejte ji do skupiny.
+>Azure Automation [Update Management](./update-management/overview.md) automaticky nainstaluje systémovou Hybrid Runbook Worker na počítač s Azure nebo mimo Azure, který je povolený pro Update Management. Tento pracovní proces ale není zaregistrovaný u žádné skupiny Hybrid Runbook Worker ve vašem účtu Automation. Pokud chcete spouštět Runbooky na těchto počítačích, musíte je přidat do skupiny Hybrid Runbook Worker. Postupujte podle kroku 4 v části [instalace Hybrid Runbook Worker pro Linux](#install-a-linux-hybrid-runbook-worker) a přidejte ji do skupiny.
 
 ## <a name="supported-linux-hardening"></a>Podporované posílení zabezpečení pro Linux
 
@@ -87,7 +87,7 @@ Procesy Hybrid Runbook Worker pro Linux podporují v Azure Automation omezené s
 
 |Typ Runbooku | Podporováno |
 |-------------|-----------|
-|Python 2 |Yes |
+|Python 2 |Ano |
 |PowerShell |Ano<sup>1</sup> |
 |Pracovní postup PowerShellu |No |
 |Grafický |No |

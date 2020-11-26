@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 066e9cf6c63c9f2073ba869e8b40e25bfc993cd8
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: ddb73de87789934aa66893bdbe6519011cf324b3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491371"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186095"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Rozsah dotazu protokolu a časový rozsah ve Azure Monitor Log Analytics
-Když spustíte [dotaz protokolu](log-query-overview.md) v [Log Analytics Azure Portal](get-started-portal.md), sada dat vyhodnocených dotazem závisí na rozsahu a časovém rozsahu, který jste vybrali. Tento článek popisuje rozsah a časový rozsah a způsob, jakým můžete nastavit jednotlivé požadavky v závislosti na vašich požadavcích. Popisuje také chování různých typů oborů.
+Když spustíte [dotaz protokolu](log-query-overview.md) v [Log Analytics Azure Portal](./log-analytics-tutorial.md), sada dat vyhodnocených dotazem závisí na rozsahu a časovém rozsahu, který jste vybrali. Tento článek popisuje rozsah a časový rozsah a způsob, jakým můžete nastavit jednotlivé požadavky v závislosti na vašich požadavcích. Popisuje také chování různých typů oborů.
 
 
 ## <a name="query-scope"></a>Rozsah dotazu
@@ -48,7 +48,7 @@ Pokud je oborem dotazu Log Analytics pracovní prostor nebo aplikace Application
 V dotazu, který je vymezený na prostředek, nemůžete použít následující příkazy, protože obor dotazu již bude obsahovat všechny pracovní prostory s daty pro daný prostředek nebo sadu prostředků:
 
 - [aplikace](app-expression.md)
-- [workspace (pracovní prostor)](workspace-expression.md) 
+- [stejných](workspace-expression.md)
  
 
 ## <a name="query-scope-limits"></a>Omezení rozsahu dotazů
@@ -75,7 +75,7 @@ Pokud nastavíte filtr v dotazu, který používá sloupec standardního času, 
 
 ![Filtrovaný dotaz](media/scope/query-filtered.png)
 
-Pokud použijete příkaz [pracovní prostor](workspace-expression.md) nebo [aplikace](app-expression.md) k načtení dat z jiného pracovního prostoru nebo klasické aplikace, výběr času se může chovat jinak. Pokud je oborem Log Analytics pracovní prostor a používáte **aplikaci** nebo pokud je oborem klasický Application Insights aplikace a používáte **pracovní prostor** , Log Analytics nemusí pochopit, zda by měl sloupec použitý ve filtru určovat časový filtr.
+Pokud použijete příkaz [pracovní prostor](workspace-expression.md) nebo [aplikace](app-expression.md) k načtení dat z jiného pracovního prostoru nebo klasické aplikace, výběr času se může chovat jinak. Pokud je oborem Log Analytics pracovní prostor a používáte **aplikaci** nebo pokud je oborem klasický Application Insights aplikace a používáte **pracovní prostor**, Log Analytics nemusí pochopit, zda by měl sloupec použitý ve filtru určovat časový filtr.
 
 V následujícím příkladu je obor nastaven na Log Analytics pracovní prostor.  Dotaz používá **pracovní prostor** k načtení dat z jiného pracovního prostoru Log Analytics. Výběr času se změní na **nastavení v dotazu** , protože vidí filtr, který používá očekávaný sloupec **TimeGenerated** .
 
@@ -87,5 +87,5 @@ Pokud dotaz používá **aplikaci** k načtení dat z klasické Application Insi
 
 ## <a name="next-steps"></a>Další kroky
 
-- Projděte si [kurz použití Log Analytics v Azure Portal](get-started-portal.md).
+- Projděte si [kurz použití Log Analytics v Azure Portal](./log-analytics-tutorial.md).
 - Projděte si [kurz týkající se psaní dotazů](get-started-queries.md).

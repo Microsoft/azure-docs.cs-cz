@@ -4,12 +4,12 @@ description: Sledování výkonu aplikací pro Azure App Services. Zatížení g
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: f46d00f97dab18b0c7c1d4a5742a87308f814e9e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c0ee68659f4729ed8f63b9ea990343adf51513bd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832890"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186367"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu služby Azure App Service
 
@@ -61,11 +61,11 @@ Existují dva způsoby, jak povolit monitorování aplikací pro hostované apli
         
 | Data | Kolekce ASP.NET úrovně Basic | ASP.NET Doporučené shromažďování |
 | --- | --- | --- |
-| Přidání trendů využití procesoru, paměti a vstupně-výstupních operací |Yes |Yes |
-| Shromažďování trendů využití a povolení korelace mezi výsledky dostupnosti a transakcemi | Yes |Yes |
-| Shromažďování výjimek nezpracovaných hostitelským procesem | Yes |Yes |
-| Zlepšení přesnosti metrik APM v případě zatížení při použití vzorkování | Yes |Yes |
-| Korelace mikroslužeb napříč požadavky a závislostmi | Ne (jenom možnosti APM s jednou instancí) |Yes |
+| Přidání trendů využití procesoru, paměti a vstupně-výstupních operací |Ano |Ano |
+| Shromažďování trendů využití a povolení korelace mezi výsledky dostupnosti a transakcemi | Ano |Ano |
+| Shromažďování výjimek nezpracovaných hostitelským procesem | Ano |Ano |
+| Zlepšení přesnosti metrik APM v případě zatížení při použití vzorkování | Ano |Ano |
+| Korelace mikroslužeb napříč požadavky a závislostmi | Ne (jenom možnosti APM s jednou instancí) |Ano |
 
 3. Pokud chcete nakonfigurovat nastavení, jako je vzorkování, které byste mohli dříve řídit prostřednictvím souboru applicationinsights.config, můžete teď s těmito nastaveními pracovat pomocí nastavení aplikace s odpovídající předponou. 
 
@@ -346,7 +346,7 @@ Počínaje verzí 2.8.9 se používá předem nainstalovaná rozšíření webu.
 
 Pokud je upgrade proveden z verze před aplikací 2.5.1, zkontrolujte, zda jsou knihovny DLL ApplicationInsigths odebrány ze složky bin aplikace, [v tématu Postup řešení potíží](#troubleshooting).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Níže najdete naše podrobné pokyny k odstraňování potíží pro monitorování rozšíření/na základě agentů pro aplikace založené na ASP.NET a ASP.NET Core, které běží na Azure App Services.
 
@@ -372,7 +372,7 @@ Níže najdete naše podrobné pokyny k odstraňování potíží pro monitorov�
 
     * Potvrďte, že nejsou k dispozici žádné položky pro `AppAlreadyInstrumented` , `AppContainsDiagnosticSourceAssembly` a `AppContainsAspNetTelemetryCorrelationAssembly` .
         * Pokud existuje kterákoli z těchto položek, odeberte z aplikace následující balíčky:, a `Microsoft.ApplicationInsights` `System.Diagnostics.DiagnosticSource` `Microsoft.AspNet.TelemetryCorrelation` .
-        * Pouze pro ASP.NET Core aplikace: v případě, že vaše aplikace odkazuje na jakékoli Application Insights balíčky, například pokud jste předtím instrumentoval (nebo se pokusili instrumentovat) aplikaci pomocí [sady ASP.NET Core SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core), povolení integrace App Service se nemusí projevit a data se nemusí zobrazit v Application Insights. Pokud chcete problém vyřešit, na portálu zapněte "spolupráci s Application Insights SDK" a začnete zobrazovat data v Application Insights 
+        * Pouze pro ASP.NET Core aplikace: v případě, že vaše aplikace odkazuje na jakékoli Application Insights balíčky, například pokud jste předtím instrumentoval (nebo se pokusili instrumentovat) aplikaci pomocí [sady ASP.NET Core SDK](./asp-net-core.md), povolení integrace App Service se nemusí projevit a data se nemusí zobrazit v Application Insights. Pokud chcete problém vyřešit, na portálu zapněte "spolupráci s Application Insights SDK" a začnete zobrazovat data v Application Insights 
         > [!IMPORTANT]
         > Tato funkce je ve verzi Preview. 
 
@@ -432,4 +432,3 @@ Nejnovější aktualizace a opravy chyb [najdete v poznámkách k verzi](./web-a
 * [Přijímejte oznámení o výstrahách](../platform/alerts-overview.md) vždy, když nastanou provozní události nebo když metriky překročí prahovou hodnotu.
 * Použitím [Application Insights pro aplikace JavaScript a webové stránky](javascript.md) získávejte telemetrické údaje klienta z prohlížečů, které webovou stránky navštíví.
 * [Nastavte testy dostupnosti webu](monitor-web-app-availability.md) tak, aby se aktivovaly výstrahy, pokud je webový server mimo provoz.
-

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 42932d712d6c4a94cad28aec924b88fbc126662b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dec41a5e05d22891aae9d16280ebb6b0c8da3f20
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212797"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185109"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB vstupní vazby pro Azure Functions 2. x a vyšší
 
@@ -20,7 +20,7 @@ Vstupní vazba služby Azure Cosmos DB načítá pomocí rozhraní SQL API jeden
 Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled](./functions-bindings-cosmosdb-v2.md).
 
 > [!NOTE]
-> Pokud je kolekce [rozdělená na oddíly](../cosmos-db/partition-data.md#logical-partitions), operace vyhledávání musí také určovat hodnotu klíče oddílu.
+> Pokud je kolekce [rozdělená na oddíly](../cosmos-db/partitioning-overview.md#logical-partitions), operace vyhledávání musí také určovat hodnotu klíče oddílu.
 >
 
 <a id="example" name="example"></a>
@@ -212,7 +212,7 @@ Následující příklad ukazuje [funkci jazyka C#](functions-dotnet-class-libra
 Příklad ukazuje, jak použít výraz vazby v `SqlQuery` parametru. Můžete předat údaje o trasách k `SqlQuery` parametru, jak je znázorněno, ale v současné době [nelze předat hodnoty řetězce dotazu](https://github.com/Azure/azure-functions-host/issues/2554#issuecomment-392084583).
 
 > [!NOTE]
-> Pokud potřebujete dotazovat pouze podle ID, doporučuje se použít hledání, podobně jako v [předchozích příkladech](#http-trigger-look-up-id-from-query-string-c), protože bude spotřebovávat méně [jednotek žádosti](../cosmos-db/request-units.md). Operace čtení bodu čtení (GET) [jsou efektivnější](../cosmos-db/optimize-cost-queries.md) než dotazy podle ID.
+> Pokud potřebujete dotazovat pouze podle ID, doporučuje se použít hledání, podobně jako v [předchozích příkladech](#http-trigger-look-up-id-from-query-string-c), protože bude spotřebovávat méně [jednotek žádosti](../cosmos-db/request-units.md). Operace čtení bodu čtení (GET) [jsou efektivnější](../cosmos-db/optimize-cost-reads-writes.md) než dotazy podle ID.
 >
 
 ```cs
@@ -1315,7 +1315,7 @@ public class DocByIdFromRoute {
 Následující příklad ukazuje funkci jazyka Java, která načte jeden dokument. Funkce je aktivována požadavkem HTTP, který používá parametr směrování k určení ID, které se má vyhledat. Toto ID se používá k načtení dokumentu ze zadané databáze a kolekce a převod výsledné sady na ```ToDoItem[]``` , protože v závislosti na kritériích dotazu může být vráceno mnoho dokumentů.
 
 > [!NOTE]
-> Pokud potřebujete dotazovat pouze podle ID, doporučuje se použít hledání, podobně jako v [předchozích příkladech](#http-trigger-look-up-id-from-query-string---pojo-parameter-java), protože bude spotřebovávat méně [jednotek žádosti](../cosmos-db/request-units.md). Operace čtení bodu čtení (GET) [jsou efektivnější](../cosmos-db/optimize-cost-queries.md) než dotazy podle ID.
+> Pokud potřebujete dotazovat pouze podle ID, doporučuje se použít hledání, podobně jako v [předchozích příkladech](#http-trigger-look-up-id-from-query-string---pojo-parameter-java), protože bude spotřebovávat méně [jednotek žádosti](../cosmos-db/request-units.md). Operace čtení bodu čtení (GET) [jsou efektivnější](../cosmos-db/optimize-cost-reads-writes.md) než dotazy podle ID.
 >
 
 ```java
@@ -1432,7 +1432,7 @@ Z [běhové knihovny Functions jazyka Java](/java/api/overview/azure/functions/r
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `CosmosDB` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**textový**     | neuvedeno | Musí být nastaven na hodnotu `cosmosDB` .        |
 |**směr**     | neuvedeno | Musí být nastaven na hodnotu `in` .         |
@@ -1442,7 +1442,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**id**    | **Účet** | ID dokumentu, který se má načíst Tato vlastnost podporuje [výrazy vazby](./functions-bindings-expressions-patterns.md). Nenastavte `id` vlastnosti i **sqlQuery** . Pokud nenastavíte žádné nastavení, načte se celá kolekce. |
 |**sqlQuery**  |**SqlQuery**  | Azure Cosmos DB dotaz SQL, který se používá k načítání více dokumentů. Vlastnost podporuje vazby za běhu, jako v tomto příkladu: `SELECT * FROM c where c.departmentId = {departmentId}` . Nenastavte `id` `sqlQuery` vlastnosti a. Pokud nenastavíte žádné nastavení, načte se celá kolekce.|
 |**connectionStringSetting**     |**ConnectionStringSetting**|Název nastavení aplikace, které obsahuje připojovací řetězec Azure Cosmos DB. |
-|**partitionKey**|**PartitionKey**|Určuje hodnotu klíče oddílu pro vyhledávání. Může zahrnovat parametry vazby. Je vyžadován pro vyhledávání v [dělených](../cosmos-db/partition-data.md#logical-partitions) kolekcích.|
+|**partitionKey**|**PartitionKey**|Určuje hodnotu klíče oddílu pro vyhledávání. Může zahrnovat parametry vazby. Je vyžadován pro vyhledávání v [dělených](../cosmos-db/partitioning-overview.md#logical-partitions) kolekcích.|
 |**preferredLocations**| **PreferredLocations**| Volitelné Definuje upřednostňovaná umístění (oblasti) pro geograficky replikované databázové účty ve službě Azure Cosmos DB. Hodnoty by měly být oddělené čárkami. Například "Východní USA, Střed USA – jih, Severní Evropa". |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

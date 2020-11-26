@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9111a16a4264c4b225eaf0888fc09bd1bba07ef4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6672fd41dbd199940d663c4f7e1cb7f3b1936ce9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372115"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185772"
 ---
 # <a name="manage-azure-resources-by-using-azure-cli"></a>Správa prostředků Azure pomocí Azure CLI
 
@@ -61,7 +61,7 @@ Můžete vytvořit skupinu prostředků a nasadit prostředky do skupiny. Dalš�
 
 ## <a name="deploy-resources-to-multiple-subscriptions-or-resource-groups"></a>Nasazení prostředků do více předplatných nebo skupin prostředků
 
-Obvykle se všechny prostředky v šabloně nasazují do jedné skupiny prostředků. Existují však situace, kdy chcete nasadit sadu prostředků dohromady, ale umístit je do různých skupin prostředků nebo předplatných. Další informace najdete v tématu [nasazení prostředků Azure do několika předplatných nebo skupin prostředků](../templates/cross-scope-deployment.md).
+Obvykle se všechny prostředky v šabloně nasazují do jedné skupiny prostředků. Existují však situace, kdy chcete nasadit sadu prostředků dohromady, ale umístit je do různých skupin prostředků nebo předplatných. Další informace najdete v tématu [nasazení prostředků Azure do několika předplatných nebo skupin prostředků](../templates/deploy-to-resource-group.md).
 
 ## <a name="delete-resources"></a>Odstranění prostředků
 

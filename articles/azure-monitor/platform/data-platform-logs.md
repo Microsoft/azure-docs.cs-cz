@@ -6,14 +6,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: d00ffb1cb9b9fd6231322d4ef5bfebfbe242eac7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3c3a20d8401affc519e118c7f2295339990e7dee
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014233"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186503"
 ---
-# <a name="azure-monitor-logs-overview"></a>Přehled protokolů Azure Monitor
+# <a name="azure-monitor-logs-overview"></a>Přehled protokolů Azure Monitoru
 Protokoly Azure Monitor jsou funkcí Azure Monitor, která shromažďuje a uspořádává data protokolů a výkonu z [monitorovaných prostředků](../monitor-reference.md). Data z různých zdrojů, jako jsou [protokoly platforem](platform-logs-overview.md) ze služeb Azure, data protokolů a výkonu z [agentů virtuálních počítačů](agents-overview.md)a data o využití a výkonu z [aplikací](../app/app-insights-overview.md) , se dají konsolidovat do jednoho pracovního prostoru, aby je bylo možné analyzovat společně pomocí sofistikovaného dotazovacího jazyka, který je schopný rychle analyzovat miliony záznamů. Můžete provést jednoduchý dotaz, který jednoduše načte konkrétní sadu záznamů, nebo provede propracované analýzy dat, které identifikují kritické vzory v datech monitorování. Pracujte s dotazy protokolů a jejich výsledky interaktivně pomocí Log Analytics, využijte je v pravidlech výstrah k deaktivnímu upozorňování na problémy nebo Vizualizujte své výsledky v sešitu nebo řídicím panelu.
 
 > [!NOTE]
@@ -25,11 +25,11 @@ Následující tabulka popisuje některé z různých způsobů, jak můžete po
 
 |  |  |
 |:---|:---|
-| **Analýza** | Použití [Log Analytics](../log-query/get-started-portal.md) v Azure Portal k zápisu [dotazů protokolu](../log-query/log-query-overview.md) a interaktivní analýze dat protokolu pomocí výkonného analytického modulu |
+| **Analýza** | Použití [Log Analytics](../log-query/log-analytics-tutorial.md) v Azure Portal k zápisu [dotazů protokolu](../log-query/log-query-overview.md) a interaktivní analýze dat protokolu pomocí výkonného analytického modulu |
 | **Výstraha** | Nakonfigurujte [pravidlo upozornění protokolu](alerts-log.md) , které pošle oznámení, nebo provede [automatizovanou akci](action-groups.md) , když výsledky dotazu odpovídají konkrétnímu výsledku. |
-| **Vizualizace** | Připněte výsledky dotazu vykreslené jako tabulky nebo grafy na [řídicí panel Azure](../../azure-portal/azure-portal-dashboards.md).<br>Vytvoří [sešit](../app/usage-workbooks.md) pro kombinování s více sadami dat v interaktivní sestavě. <br>Exportujte výsledky dotazu do [Power BI](powerbi.md) , abyste mohli používat různé vizualizace a sdílet s uživateli mimo Azure.<br>Exportujte výsledky dotazu do [Grafana](grafana-plugin.md) a využijte jeho řídicí panely a kombinaci s jinými zdroji dat.|
+| **Vizualizace** | Připněte výsledky dotazu vykreslené jako tabulky nebo grafy na [řídicí panel Azure](../../azure-portal/azure-portal-dashboards.md).<br>Vytvoří [sešit](./workbooks-overview.md) pro kombinování s více sadami dat v interaktivní sestavě. <br>Exportujte výsledky dotazu do [Power BI](powerbi.md) , abyste mohli používat různé vizualizace a sdílet s uživateli mimo Azure.<br>Exportujte výsledky dotazu do [Grafana](grafana-plugin.md) a využijte jeho řídicí panely a kombinaci s jinými zdroji dat.|
 | **Přehledy** | Podpora [přehledů](../monitor-reference.md#insights-and-core-solutions) , které poskytují přizpůsobené možnosti monitorování pro konkrétní aplikace a služby.  |
-| **Stahovat** | Přístup k výsledkům dotazu protokolu z příkazového řádku pomocí [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics).<br>Přístup k výsledkům dotazu protokolu z příkazového řádku pomocí [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights).<br>Přístup k výsledkům dotazu protokolu z vlastní aplikace pomocí [REST API](https://dev.loganalytics.io/). |
+| **Stahovat** | Přístup k výsledkům dotazu protokolu z příkazového řádku pomocí [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics).<br>Přístup k výsledkům dotazu protokolu z příkazového řádku pomocí [rutin prostředí PowerShell](/powershell/module/az.operationalinsights).<br>Přístup k výsledkům dotazu protokolu z vlastní aplikace pomocí [REST API](https://dev.loganalytics.io/). |
 | **Export** | Konfigurace [automatizovaného exportu dat protokolu](logs-data-export.md) na účet služby Azure Storage nebo Azure Event Hubs.<br>Sestavte pracovní postup, který načte data protokolu a zkopíruje ho do externího umístění pomocí [Logic Apps](logicapp-flow-connector.md). |
 
 ![Přehled protokolů](media/data-platform-logs/logs-overview.png)
@@ -75,8 +75,8 @@ Data se načítají z Log Analyticsho pracovního prostoru pomocí dotazu protok
 ## <a name="log-analytics"></a>Log Analytics
 Pomocí Log Analytics, což je nástroj v Azure Portal, můžete upravovat a spouštět dotazy protokolů a interaktivně analyzovat jejich výsledky. Pak můžete pomocí dotazů, které vytvoříte, použít k podpoře dalších funkcí v Azure Monitor, jako jsou například výstrahy a sešity dotazů protokolu. Přístup k Log Analytics z možnosti **protokoly** v nabídce Azure monitor nebo z většiny ostatních služeb v Azure Portal.
 
-- Popis Log Analytics najdete [v tématu přehled Log Analytics v Azure monitor](/azure/azure-monitor/log-query/log-analytics-overview) . 
-- Log Analytics v tomto [kurzu](/azure/azure-monitor/log-query/log-analytics-tutorial) se dozvíte, jak pomocí Log Analytics funkcí vytvořit jednoduchý dotaz protokolu a analyzovat jeho výsledky.
+- Popis Log Analytics najdete [v tématu přehled Log Analytics v Azure monitor](../log-query/log-analytics-overview.md) . 
+- Log Analytics v tomto [kurzu](../log-query/log-analytics-tutorial.md) se dozvíte, jak pomocí Log Analytics funkcí vytvořit jednoduchý dotaz protokolu a analyzovat jeho výsledky.
 
 
 

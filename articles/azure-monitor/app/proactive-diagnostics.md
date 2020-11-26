@@ -3,12 +3,12 @@ title: Inteligentní zjišťování v Azure Application Insights | Microsoft Doc
 description: Application Insights provádí automatickou hloubkovou analýzu telemetrie aplikací a upozorňuje na potenciální problémy.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 24ed8eefb7e07930cbd123fbe4081d555f0c27c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b6e9370387bf3bb87555261b3949db2917e9911
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87305869"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186248"
 ---
 # <a name="smart-detection-in-application-insights"></a>Inteligentní zjišťování v Application Insights
  Inteligentní zjišťování vás automaticky upozorní na potenciální problémy s výkonem a anomálie při selhání ve vaší webové aplikaci. Provádí proaktivní analýzu telemetrie, kterou vaše aplikace odesílá [Application Insights](./app-insights-overview.md). Pokud dojde k náhlému nárůstu sazeb za selhání nebo abnormálních vzorů v výkonu klienta nebo serveru, zobrazí se upozornění. Tato funkce nepotřebuje žádnou konfiguraci. Funguje, pokud vaše aplikace posílá dostatek telemetrie.
@@ -40,7 +40,7 @@ Inteligentní zjišťování detekuje a upozorňuje na nejrůznější problémy
 
 ## <a name="smart-detection-email-notifications"></a>E-mailová oznámení inteligentního zjišťování
 
-Všechna pravidla inteligentního zjišťování s výjimkou pravidel označených jako _Preview_jsou ve výchozím nastavení nakonfigurována tak, aby odesílala e-mailová oznámení při nalezení detekce.
+Všechna pravidla inteligentního zjišťování s výjimkou pravidel označených jako _Preview_ jsou ve výchozím nastavení nakonfigurována tak, aby odesílala e-mailová oznámení při nalezení detekce.
 
 Konfigurace e-mailových oznámení pro konkrétní pravidlo inteligentního zjišťování se dá udělat tak, že otevřete okno **Nastavení** inteligentního zjišťování a vyberete pravidlo, ve kterém se otevře okno **Upravit pravidlo** .
 
@@ -55,10 +55,9 @@ Tyto diagnostické nástroje vám pomůžou zkontrolovat telemetrii z vaší apl
 
 * [Průzkumník metrik](../platform/metrics-charts.md)
 * [Průzkumník vyhledávání](./diagnostic-search.md)
-* [Analýza – výkonný dotazovací jazyk](../log-query/get-started-portal.md)
+* [Analýza – výkonný dotazovací jazyk](../log-query/log-analytics-tutorial.md)
 
 Inteligentní zjišťování je zcela automatické. Možná byste ale chtěli nastavit ještě nějaké další výstrahy?
 
 * [Ručně nakonfigurované výstrahy metriky](../platform/alerts-log.md)
-* [Testy dostupnosti webu](./monitor-web-app-availability.md) 
-
+* [Testy dostupnosti webu](./monitor-web-app-availability.md)

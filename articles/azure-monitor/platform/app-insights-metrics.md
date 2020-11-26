@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 9ea98df4b6cd8572412e7082b451feac3736919c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c61287475eb82241aa5c9e1d1649e8b20e3b28c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327068"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185942"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights metriky založené na protokolu
 
@@ -35,10 +35,10 @@ Když vykreslíte stejnou metriku v [Průzkumníkovi metrik](metrics-getting-sta
 
 - Všechny vybrané dimenze **filtru** jsou přeloženy do dalších klauzulí *WHERE* .
 
-- Vybraná dimenze **rozděleného grafu** se převede na další vlastnost Shrnutí. Například pokud rozdělíte graf podle *umístění*a sekreslíte pomocí členitosti s časem 5 minut, je shrnuta klauzule *Shrnutí* *... po přihrádce (časové razítko, 5 m), umístění*.
+- Vybraná dimenze **rozděleného grafu** se převede na další vlastnost Shrnutí. Například pokud rozdělíte graf podle *umístění* a sekreslíte pomocí členitosti s časem 5 minut, je shrnuta klauzule *Shrnutí* *... po přihrádce (časové razítko, 5 m), umístění*.
 
 > [!NOTE]
-> Pokud začínáte s dotazovacím jazykem Kusto, začnete zkopírováním a vložením příkazů Kusto do podokna dotazu Log Analytics bez provedení jakýchkoli úprav. Kliknutím na tlačítko **Spustit** zobrazíte základní graf. Jak začínáte pochopit syntaxi dotazovacího jazyka, můžete začít provádět malé úpravy a vidět dopad změny. Seznámení s vlastními daty představuje skvělý způsob, jak začít s plným výkonem [Log Analytics](../log-query/get-started-portal.md) a [Azure monitor](../overview.md).
+> Pokud začínáte s dotazovacím jazykem Kusto, začnete zkopírováním a vložením příkazů Kusto do podokna dotazu Log Analytics bez provedení jakýchkoli úprav. Kliknutím na tlačítko **Spustit** zobrazíte základní graf. Jak začínáte pochopit syntaxi dotazovacího jazyka, můžete začít provádět malé úpravy a vidět dopad změny. Seznámení s vlastními daty představuje skvělý způsob, jak začít s plným výkonem [Log Analytics](../log-query/log-analytics-tutorial.md) a [Azure monitor](../overview.md).
 
 ## <a name="availability-metrics"></a>Metriky dostupnosti
 
@@ -492,4 +492,3 @@ union traces, requests, pageViews, dependencies, customEvents, availabilityResul
 | summarize dcount(user_AuthenticatedId) by bin(timestamp, 1h)
 | render barchart
 ```
-

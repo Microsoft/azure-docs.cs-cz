@@ -3,12 +3,12 @@ title: Funkce šablon – prostředky
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení hodnot o prostředcích.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 0d118b80439579b0c8be45fdf1180b9a03b54c1d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b7bb726250c6d1ef8a597481b5f7e95f024a56d4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95994127"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183987"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Funkce prostředků pro šablony ARM
 
@@ -37,11 +37,11 @@ Vrátí ID prostředku pro [prostředek rozšíření](../management/extension-r
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Description |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| resourceId |Yes |řetězec |ID prostředku prostředku, na který se prostředek rozšíření používá |
-| resourceType |Yes |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
-| resourceName1 |Yes |řetězec |Název prostředku |
+| resourceId |Ano |řetězec |ID prostředku prostředku, na který se prostředek rozšíření používá |
+| resourceType |Ano |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
+| resourceName1 |Ano |řetězec |Název prostředku |
 | resourceName2 |No |řetězec |Další segment názvu prostředku (v případě potřeby). |
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
@@ -179,10 +179,10 @@ Syntaxe této funkce se liší podle názvu operací seznamu. Každá implementa
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Description |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| resourceName nebo resourceIdentifier |Yes |řetězec |Jedinečný identifikátor prostředku |
-| apiVersion |Yes |řetězec |Verze rozhraní API stavu modulu runtime prostředku Obvykle ve formátu **yyyy-MM-DD**. |
+| resourceName nebo resourceIdentifier |Ano |řetězec |Jedinečný identifikátor prostředku |
+| apiVersion |Ano |řetězec |Verze rozhraní API stavu modulu runtime prostředku Obvykle ve formátu **yyyy-MM-DD**. |
 | functionValues |No |object | Objekt, který má hodnoty pro funkci. Tento objekt Poskytněte jenom pro funkce, které podporují příjem objektu s hodnotami parametrů, jako je například **listAccountSas** v účtu úložiště. Příklad předávání hodnot funkcí je uveden v tomto článku. |
 
 ### <a name="valid-uses"></a>Platná použití
@@ -438,11 +438,11 @@ Určuje, zda typ prostředku podporuje zóny pro oblast.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Description |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| providerNamespace | Yes | řetězec | Obor názvů poskytovatele prostředků pro typ prostředku, který má kontrolovat podporu zóny. |
-| resourceType | Yes | řetězec | Typ prostředku pro kontrolu podpory zón. |
-| location | Yes | řetězec | Oblast pro kontrolu podpory zón. |
+| providerNamespace | Ano | řetězec | Obor názvů poskytovatele prostředků pro typ prostředku, který má kontrolovat podporu zóny. |
+| resourceType | Ano | řetězec | Typ prostředku pro kontrolu podpory zón. |
+| location | Ano | řetězec | Oblast pro kontrolu podpory zón. |
 | numberOfZones | No | integer | Počet logických zón, které mají být vráceny. Výchozí hodnota je 1. Číslo musí být kladné celé číslo od 1 do 3.  U prostředků s jednou zónou použijte 1. U prostředků s více zónami musí být hodnota menší nebo rovna počtu podporovaných zón. |
 | posun | No | integer | Posun od počáteční logické zóny. Funkce vrátí chybu, pokud posun plus numberOfZones překračuje počet podporovaných zón. |
 
@@ -547,9 +547,9 @@ Vrátí informace o poskytovateli prostředků a jeho podporovaných typech pros
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Description |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |Yes |řetězec |Obor názvů poskytovatele |
+| providerNamespace |Ano |řetězec |Obor názvů poskytovatele |
 | resourceType |No |řetězec |Typ prostředku v rámci zadaného oboru názvů. |
 
 ### <a name="return-value"></a>Vrácená hodnota
@@ -635,9 +635,9 @@ Vrátí objekt představující běhový stav prostředku.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Description |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| resourceName nebo resourceIdentifier |Yes |řetězec |Název nebo jedinečný identifikátor prostředku Při odkazování na prostředek v aktuální šabloně zadejte jako parametr jenom název prostředku. Když odkazujete na dříve nasazený prostředek nebo pokud je název prostředku dvojznačný, zadejte ID prostředku. |
+| resourceName nebo resourceIdentifier |Ano |řetězec |Název nebo jedinečný identifikátor prostředku Při odkazování na prostředek v aktuální šabloně zadejte jako parametr jenom název prostředku. Když odkazujete na dříve nasazený prostředek nebo pokud je název prostředku dvojznačný, zadejte ID prostředku. |
 | apiVersion |No |řetězec |Verze rozhraní API zadaného prostředku **Tento parametr je vyžadován, pokud prostředek není zřízen v rámci stejné šablony.** Obvykle ve formátu **yyyy-MM-DD**. Platné verze rozhraní API pro váš prostředek naleznete v tématu [Reference k šabloně](/azure/templates/). |
 | Kompletní |No |řetězec |Hodnota, která určuje, zda má být vrácen úplný objekt prostředku. Pokud nezadáte `'Full'` , vrátí se pouze objekt vlastnosti prostředku. Úplný objekt obsahuje hodnoty, jako je ID a umístění prostředku. |
 
@@ -798,7 +798,7 @@ Při sestavování plně kvalifikovaného odkazu na prostředek, pořadí pro ko
 
 **{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-Resource-Name}]**
 
-Například:
+Příklad:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` je správné, není `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` správné.
 
@@ -1030,7 +1030,7 @@ Vlastnost **ManagedBy** je vrácena pouze pro skupiny prostředků, které obsah
 
 ### <a name="remarks"></a>Poznámky
 
-`resourceGroup()`Funkci nelze použít v šabloně, která je [nasazena na úrovni předplatného](deploy-to-subscription.md). Dá se použít jenom v šablonách, které se nasazují do skupiny prostředků. Funkci můžete použít `resourceGroup()` v [propojené nebo vnořené šabloně (s vnitřním rozsahem)](linked-templates.md) , která cílí na skupinu prostředků, i když je nadřazená šablona nasazena do předplatného. V takovém případě je propojená nebo vnořená šablona nasazena na úrovni skupiny prostředků. Další informace o cílení skupiny prostředků v nasazení na úrovni předplatného najdete v tématu [nasazení prostředků Azure do více než jednoho předplatného nebo skupiny prostředků](cross-scope-deployment.md).
+`resourceGroup()`Funkci nelze použít v šabloně, která je [nasazena na úrovni předplatného](deploy-to-subscription.md). Dá se použít jenom v šablonách, které se nasazují do skupiny prostředků. Funkci můžete použít `resourceGroup()` v [propojené nebo vnořené šabloně (s vnitřním rozsahem)](linked-templates.md) , která cílí na skupinu prostředků, i když je nadřazená šablona nasazena do předplatného. V takovém případě je propojená nebo vnořená šablona nasazena na úrovni skupiny prostředků. Další informace o cílení skupiny prostředků v nasazení na úrovni předplatného najdete v tématu [nasazení prostředků Azure do více než jednoho předplatného nebo skupiny prostředků](./deploy-to-resource-group.md).
 
 Běžné použití funkce Resource je vytvořit prostředky ve stejném umístění jako skupina prostředků. Následující příklad používá umístění skupiny prostředků pro výchozí hodnotu parametru.
 
@@ -1055,7 +1055,7 @@ param location string = resourceGroup().location
 
 K použití značek ze skupiny prostředků na prostředek můžete také použít funkci Resource. Další informace najdete v tématu [použití značek ze skupiny prostředků](../management/tag-resources.md#apply-tags-from-resource-group).
 
-Při použití vnořených šablon k nasazení do více skupin prostředků můžete zadat obor pro vyhodnocení funkce Resource. Další informace najdete v tématu [nasazení prostředků Azure do více než jednoho předplatného nebo skupiny prostředků](cross-scope-deployment.md).
+Při použití vnořených šablon k nasazení do více skupin prostředků můžete zadat obor pro vyhodnocení funkce Resource. Další informace najdete v tématu [nasazení prostředků Azure do více než jednoho předplatného nebo skupiny prostředků](./deploy-to-resource-group.md).
 
 ### <a name="resource-group-example"></a>Příklad skupiny prostředků
 
@@ -1107,12 +1107,12 @@ Vrátí jedinečný identifikátor prostředku. Tuto funkci použijete, pokud je
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Description |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |No |řetězec (ve formátu GUID) |Výchozí hodnota je aktuální předplatné. Tuto hodnotu zadejte, když potřebujete načíst prostředek v jiném předplatném. Tuto hodnotu Poskytněte jenom při nasazení v oboru skupiny prostředků nebo předplatného. |
 | resourceGroupName |No |řetězec |Výchozí hodnota je aktuální skupina prostředků. Tuto hodnotu zadejte, když potřebujete načíst prostředek v jiné skupině prostředků. Tuto hodnotu Poskytněte jenom při nasazení v oboru skupiny prostředků. |
-| resourceType |Yes |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
-| resourceName1 |Yes |řetězec |Název prostředku |
+| resourceType |Ano |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
+| resourceName1 |Ano |řetězec |Název prostředku |
 | resourceName2 |No |řetězec |Další segment názvu prostředku (v případě potřeby). |
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
@@ -1372,7 +1372,7 @@ Funkce vrátí následující formát:
 
 ### <a name="remarks"></a>Poznámky
 
-Při použití vnořených šablon k nasazení do více předplatných můžete zadat obor pro vyhodnocení funkce předplatného. Další informace najdete v tématu [nasazení prostředků Azure do více než jednoho předplatného nebo skupiny prostředků](cross-scope-deployment.md).
+Při použití vnořených šablon k nasazení do více předplatných můžete zadat obor pro vyhodnocení funkce předplatného. Další informace najdete v tématu [nasazení prostředků Azure do více než jednoho předplatného nebo skupiny prostředků](./deploy-to-resource-group.md).
 
 ### <a name="subscription-example"></a>Příklad předplatného
 
@@ -1410,11 +1410,11 @@ Vrátí jedinečný identifikátor prostředku nasazeného na úrovni předplatn
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Description |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |No |řetězec (ve formátu GUID) |Výchozí hodnota je aktuální předplatné. Tuto hodnotu zadejte, když potřebujete načíst prostředek v jiném předplatném. |
-| resourceType |Yes |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
-| resourceName1 |Yes |řetězec |Název prostředku |
+| resourceType |Ano |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
+| resourceName1 |Ano |řetězec |Název prostředku |
 | resourceName2 |No |řetězec |Další segment názvu prostředku (v případě potřeby). |
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
@@ -1542,10 +1542,10 @@ Vrátí jedinečný identifikátor prostředku nasazeného na úrovni tenanta.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Description |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| resourceType |Yes |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
-| resourceName1 |Yes |řetězec |Název prostředku |
+| resourceType |Ano |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
+| resourceName1 |Ano |řetězec |Název prostředku |
 | resourceName2 |No |řetězec |Další segment názvu prostředku (v případě potřeby). |
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.

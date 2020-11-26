@@ -4,12 +4,12 @@ description: Naučte se používat servery s podporou ARC Azure ke správě serv
 keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu, Správa aktualizací, sledování změn, inventarizace, Runbooky, Python, grafický, hybridní
 ms.date: 11/12/2020
 ms.topic: overview
-ms.openlocfilehash: 2df970f7c94f1e306243aba1480ee7023b8f76c1
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8368f89b8e471698ede3e9e8eb691e69f494b6e2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578718"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183392"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Co jsou servery s podporou služby Azure Arc?
 
@@ -29,7 +29,7 @@ Když počítač připojíte k serverům s podporou ARC Azure, umožní vám pro
 
 - Zjednodušte nasazení s ostatními službami Azure, jako je [Konfigurace stavu](../../automation/automation-dsc-overview.md) Azure Automation, a Azure monitor Log Analytics pracovní prostor s použitím podporovaných [rozšíření virtuálních počítačů Azure](manage-vm-extensions.md) pro počítač se systémem Windows nebo Linux, který není Azure. To zahrnuje provádění konfigurace po nasazení nebo instalace softwaru pomocí rozšíření vlastních skriptů.
 
-- Použití [Update Management](../../automation/update-management/update-mgmt-overview.md) v Azure Automation ke správě aktualizací operačního systému pro servery s Windows a Linux
+- Použití [Update Management](../../automation/update-management/overview.md) v Azure Automation ke správě aktualizací operačního systému pro servery s Windows a Linux
 
     > [!NOTE]
     > V tuto chvíli není podporována povolení Update Management přímo ze serveru s podporou ARC. V tématu [povolení Update Management ze svého účtu Automation](../../automation/update-management/enable-from-automation-account.md) můžete pochopit požadavky a povolit server.

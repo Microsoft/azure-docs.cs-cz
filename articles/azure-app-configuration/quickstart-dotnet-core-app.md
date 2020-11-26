@@ -9,17 +9,17 @@ ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: lcozzens
 ms.openlocfilehash: bb12224fd29d50765bc56a531787b7a0849cd06e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075786"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183511"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Rychlý Start: Vytvoření aplikace .NET Core s konfigurací aplikace
 
 V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové aplikace .NET Core, která umožňuje centralizaci úložiště a správy nastavení aplikace odděleně od vašeho kódu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/dotnet) .
 - [.NET Core SDK](https://dotnet.microsoft.com/download) – k dispozici také [Azure Cloud Shell](https://shell.azure.com).
@@ -36,7 +36,7 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové apl
 
     V tuto chvíli ponechat **popisek** a **typ obsahu** prázdné.
 
-8. Vyberte **Použít**.
+8. Vyberte **Apply** (Použít).
 
 ## <a name="create-a-net-core-console-app"></a>Vytvoření konzolové aplikace .NET Core
 
@@ -64,7 +64,7 @@ K vytvoření nového projektu konzolové aplikace .NET Core použijete [rozhran
     dotnet restore
     ```
 
-3. Otevřete *program.cs*a přidejte odkaz na poskytovatele konfigurace aplikace .NET Core.
+3. Otevřete *program.cs* a přidejte odkaz na poskytovatele konfigurace aplikace .NET Core.
 
     ```csharp
     using Microsoft.Extensions.Configuration;
@@ -86,7 +86,7 @@ K vytvoření nového projektu konzolové aplikace .NET Core použijete [rozhran
 
 ## <a name="build-and-run-the-app-locally"></a>Místní sestavení a spuštění aplikace
 
-1. Nastavte proměnnou prostředí s názvem **ConnectionString**a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. Na příkazovém řádku spusťte následující příkaz:
+1. Nastavte proměnnou prostředí s názvem **ConnectionString** a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. Na příkazovém řádku spusťte následující příkaz:
 
     ```cmd
     setx ConnectionString "connection-string-of-your-app-configuration-store"

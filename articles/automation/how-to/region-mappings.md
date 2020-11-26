@@ -5,12 +5,12 @@ ms.date: 10/19/2020
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: bffd1cc0ce2a6a827c0bc708321a6bd2839aae2d
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 23e5293301a2fc311565d0c1c8ec5fd92bebe9b2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207321"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183562"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Podporované oblasti pro propojený pracovní prostor Log Analytics
 
@@ -63,7 +63,7 @@ Po odebrání funkcí můžete pomocí následujících kroků zrušit propojen�
 > [!NOTE]
 > Některé funkce, včetně dřívějších verzí řešení Azure SQL monitoring, mohly vytvořit assety automatizace, které je potřeba před odpojením pracovního prostoru odebrat.
 
-1. V Azure Portal otevřete svůj účet Automation. Na stránce účet Automation vyberte v části **související prostředky**možnost **propojený pracovní prostor** .
+1. V Azure Portal otevřete svůj účet Automation. Na stránce účet Automation vyberte v části **související prostředky** možnost **propojený pracovní prostor** .
 
 2. Na stránce zrušit propojení pracovního prostoru vyberte zrušit **propojení pracovního prostoru**. Zobrazí se výzva, abyste ověřili, jestli chcete pokračovat.
 
@@ -87,6 +87,6 @@ Alternativně můžete zrušit propojení pracovního prostoru s účtem Automat
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si o Update Management v článku [Update Management přehled](../update-management/update-mgmt-overview.md).
+* Přečtěte si o Update Management v článku [Update Management přehled](../update-management/overview.md).
 * Přečtěte si o Change Tracking a inventáři v [přehledu Change Tracking a inventáře](../change-tracking/overview.md).
 * Přečtěte si o Start/Stop VMs during off-hours v článku [Start/Stop VMS during off-hours přehled](../automation-solution-vm-management.md).

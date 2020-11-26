@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 425a7ff0553ddeac502c59e240f5ab152d6e0d79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f66c710901b129cb6b138fff126e67615c790714
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015149"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183664"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>Integrace s protokoly Azure Monitor
 
@@ -30,13 +30,13 @@ Protokoly Azure Monitor poskytují větší provozní viditelnost dat konfigurac
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít odesílat sestavy konfigurace stavu automatizace do Azure Monitor protokolů, budete potřebovat:
 
 - Vydání [Azure PowerShell](/powershell/azure/) (v 2.3.0) v listopadu 2016 nebo novějším.
 - Účet Azure Automation. Další informace najdete v [úvodu k Azure Automation](automation-intro.md).
-- Pracovní prostor Log Analytics pomocí nabídky služby Automation & Control. Další informace najdete v tématu [Začínáme s Log Analytics v Azure monitor](../azure-monitor/log-query/get-started-portal.md).
+- Pracovní prostor Log Analytics pomocí nabídky služby Automation & Control. Další informace najdete v tématu [Začínáme s Log Analytics v Azure monitor](../azure-monitor/log-query/log-analytics-tutorial.md).
 - Nejméně jeden uzel Konfigurace stavu Azure Automation. Další informace najdete v tématu věnovaném [připojování počítačů pro správu podle konfigurace stavu Azure Automation](automation-dsc-onboarding.md).
 - Modul [xDscDiagnostics](https://www.powershellgallery.com/packages/xDscDiagnostics/2.7.0.0) verze 2.7.0.0 nebo vyšší. Pokyny k instalaci najdete v tématu [řešení potíží Azure Automation konfiguraci požadovaného stavu](./troubleshoot/desired-state-configuration.md).
 

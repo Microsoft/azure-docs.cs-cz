@@ -4,16 +4,16 @@ description: Správa inteligentních skupin vytvořených v instancích výstrah
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 09/24/2018
-ms.openlocfilehash: 763bfefcf71b0be43722b99f31641015a5991607
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 564440336bf6a90cbd40aba6c8284cbc6c5e3ff3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92105834"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186044"
 ---
 # <a name="manage-smart-groups"></a>Správa inteligentních skupin
 
-[Inteligentní skupiny](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json) pomocí algoritmů strojového učení seskupují výstrahy na základě společného výskytu nebo podobnosti, aby teď uživatel mohl spravovat inteligentní skupiny, místo abyste museli spravovat jednotlivé výstrahy jednotlivě. Tento článek vás seznámí s postupem přístupu a používání inteligentních skupin v Azure Monitor.
+[Inteligentní skupiny](./alerts-smartgroups-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json) pomocí algoritmů strojového učení seskupují výstrahy na základě společného výskytu nebo podobnosti, aby teď uživatel mohl spravovat inteligentní skupiny, místo abyste museli spravovat jednotlivé výstrahy jednotlivě. Tento článek vás seznámí s postupem přístupu a používání inteligentních skupin v Azure Monitor.
 
 1. Pro zobrazení inteligentních skupin vytvořených pro vaše instance výstrah můžete:
 

@@ -4,12 +4,12 @@ description: Naučte se škálovat webovou aplikaci prostředků, cloudovou slu�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 543ecc80abeb9a437a895224de6ade679698c4d7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5af60befeda9f0ed4ed76f7ab8449e94950352fb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020904"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186571"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Začínáme s automatické škálování v Azure
 Tento článek popisuje, jak nastavit nastavení automatického škálování pro váš prostředek v portál Microsoft Azure.
@@ -151,12 +151,12 @@ Tato část popisuje, jak přesunout automatické škálování Azure do jiné o
 1. Ujistěte se, že je automatické škálování Azure dostupné v [oblasti Azure, do které chcete přejít](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all).
 
 ### <a name="move"></a>Přesunout
-Pomocí [REST API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings/createorupdate) můžete v novém prostředí vytvořit nastavení automatického škálování. Nastavení automatického škálování vytvořené v cílové oblasti bude kopií nastavení automatického škálování ve zdrojové oblasti.
+Pomocí [REST API](/rest/api/monitor/autoscalesettings/createorupdate) můžete v novém prostředí vytvořit nastavení automatického škálování. Nastavení automatického škálování vytvořené v cílové oblasti bude kopií nastavení automatického škálování ve zdrojové oblasti.
 
-[Nastavení diagnostiky](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) , která byla vytvořena v přidružení s nastavením automatického škálování ve zdrojové oblasti, nelze přesunout. Až se dokončí vytváření nastavení pro účely autovýprodej, budete muset v cílové oblasti znovu vytvořit nastavení diagnostiky. 
+[Nastavení diagnostiky](./diagnostic-settings.md) , která byla vytvořena v přidružení s nastavením automatického škálování ve zdrojové oblasti, nelze přesunout. Až se dokončí vytváření nastavení pro účely autovýprodej, budete muset v cílové oblasti znovu vytvořit nastavení diagnostiky. 
 
 ### <a name="learn-more-about-moving-resources-across-azure-regions"></a>Další informace o přesouvání prostředků napříč oblastmi Azure
-Další informace o přesouvání prostředků mezi oblastmi a zotavení po havárii v Azure najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources) .
+Další informace o přesouvání prostředků mezi oblastmi a zotavení po havárii v Azure najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../../azure-resource-manager/management/move-resource-group-and-subscription.md) .
 
 ## <a name="next-steps"></a>Další kroky
 - [Vytvoření upozornění protokolu aktivit pro monitorování všech operací modulu automatického škálování v předplatném](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

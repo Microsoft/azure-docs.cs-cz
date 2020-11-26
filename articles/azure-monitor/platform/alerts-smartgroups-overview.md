@@ -4,12 +4,12 @@ description: Inteligentní skupiny jsou agregace výstrah, které vám pomůžou
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/15/2018
-ms.openlocfilehash: dff59ac207e6078a264d1350d24c9e6f4a461d78
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 743bd1a674c034cd6a0350f959289ac3ecb568de
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012880"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186605"
 ---
 # <a name="smart-groups"></a>Inteligentní skupiny
 
@@ -33,7 +33,7 @@ Podporovány jsou následující stavy inteligentních skupin.
 | Potvrzeno | Správce zkontroloval tuto inteligentní skupinu a začal na ní pracovat. |
 | Uzavřeno | Problém byl vyřešen. Po zavření čipové skupiny ji můžete znovu otevřít změnou do jiného stavu. |
 
-[Zjistěte, jak změnit stav vaší inteligentní skupiny.](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+[Zjistěte, jak změnit stav vaší inteligentní skupiny.](./alerts-managing-alert-states.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 
 > [!NOTE]
 >  Změna stavu inteligentní skupiny nemění stav výstrah jednotlivých členů.
@@ -47,7 +47,7 @@ Stránka s podrobnostmi inteligentní skupiny se zobrazí, když vyberete inteli
 
 Stránka podrobností inteligentní skupiny obsahuje následující části.
 
-| Sekce | Description |
+| Sekce | Popis |
 |:---|:---|
 | Výstrahy | Zobrazí seznam jednotlivých výstrah, které jsou zahrnuty v inteligentní skupině. Výběrem výstrahy otevřete stránku s podrobnostmi o výstrahách. |
 | Historie | Zobrazí všechny akce prováděné čipovou skupinou a veškeré změny, které jsou v něm provedeny. V současné době je omezen na změny stavu a změny členství v výstrahách. |
@@ -58,5 +58,5 @@ Název inteligentní skupiny je název první výstrahy. Nemůžete vytvořit ne
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Správa inteligentních skupin](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
-- [Změna upozornění a stavu inteligentní skupiny](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+- [Správa inteligentních skupin](./alerts-managing-smart-groups.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
+- [Změna upozornění a stavu inteligentní skupiny](./alerts-managing-alert-states.md?toc=%2fazure%2fazure-monitor%2ftoc.json)

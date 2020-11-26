@@ -4,12 +4,12 @@ description: Popisuje způsob nasazení Azure Resource Manager šablon pomocí a
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 3dcb246956aae274f17cf938ee3d406562b22941
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cf705f68544c4c4e0db55d4a375e1e50530c8957
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95905255"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185704"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>Nasazení šablon Azure Resource Manager pomocí akcí GitHubu
 
@@ -17,7 +17,7 @@ ms.locfileid: "95905255"
 
 Použijte [akci nasadit Azure Resource Manager šablonu](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) k automatizaci nasazení Správce prostředků šablony do Azure. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Účet GitHub. Pokud ho ještě nemáte, zaregistrujte se [zdarma](https://github.com/join).  
@@ -157,4 +157,4 @@ Pokud už vaše skupina prostředků a úložiště nepotřebujete, vyčistěte 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření první šablony ARM](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Vytvoření první šablony ARM](./template-tutorial-create-first-template.md)

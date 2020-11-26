@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2020
-ms.openlocfilehash: 30521e85feda0fc19329364dcb710d322ae8cfc1
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: c6db5a856b127d4549de9597f8157f524a38af79
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95323239"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186656"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Přehled agentů Azure Monitor
 
@@ -81,8 +81,8 @@ Agenta Log Analytics použijte v případě, že potřebujete:
 * Shromažďovat protokoly a data o výkonu z virtuálních nebo fyzických počítačů uvnitř nebo mimo Azure. 
 * Odešlete data do pracovního prostoru Log Analytics, abyste mohli využívat funkce podporované [Azure monitor protokoly](data-platform-logs.md) , jako jsou například [dotazy protokolu](../log-query/log-query-overview.md).
 * Použijte [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md) , které vám umožní monitorovat vaše virtuální počítače ve velkém měřítku a monitorovat jejich procesy a závislosti na dalších prostředcích a externích procesech.  
-* Spravujte zabezpečení virtuálních počítačů pomocí [Azure Security Center](../../security-center/security-center-intro.md)  nebo [Azure Sentinel](../../sentinel/overview.md).
-* Pro zajištění komplexní správy virtuálních počítačů Azure použijte [Azure Automation správu aktualizací](../../automation/update-management/update-mgmt-overview.md), [konfiguraci Azure Automation](../../automation/automation-dsc-overview.md)nebo [Azure Automation Change Tracking a inventarizaci](../../automation/change-tracking/overview.md) .
+* Spravujte zabezpečení virtuálních počítačů pomocí [Azure Security Center](../../security-center/security-center-introduction.md)  nebo [Azure Sentinel](../../sentinel/overview.md).
+* Pro zajištění komplexní správy virtuálních počítačů Azure použijte [Azure Automation správu aktualizací](../../automation/update-management/overview.md), [konfiguraci Azure Automation](../../automation/automation-dsc-overview.md)nebo [Azure Automation Change Tracking a inventarizaci](../../automation/change-tracking/overview.md) .
 * Pomocí různých [řešení](../monitor-reference.md#insights-and-core-solutions) můžete monitorovat konkrétní službu nebo aplikaci.
 
 Mezi omezení agenta Log Analytics patří:

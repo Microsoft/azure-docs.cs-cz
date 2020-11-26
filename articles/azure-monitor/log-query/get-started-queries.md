@@ -6,17 +6,17 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: 8b3b6a41da6e3100739da920472d582711d1e9b1
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a949c9b34e299e0dc4eccbb62f4b4ebb38d6ccb9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024377"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186707"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Začínáme s dotazy protokolů v Azure Monitoru
 
 > [!NOTE]
-> Pokud shromažďujete data alespoň z jednoho virtuálního počítače, můžete toto cvičení použít ve vlastním prostředí. Pokud ne, použijte naše ukázkové [prostředí](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade), které obsahuje spoustu ukázkových dat.  Pokud už víte, jak dotazovat v KQL, ale stačí rychle vytvořit užitečné dotazy založené na typech prostředků, Projděte si [podokno uložené Ukázkové dotazy](saved-queries.md).
+> Pokud shromažďujete data alespoň z jednoho virtuálního počítače, můžete toto cvičení použít ve vlastním prostředí. Pokud ne, použijte naše ukázkové [prostředí](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade), které obsahuje spoustu ukázkových dat.  Pokud už víte, jak dotazovat v KQL, ale stačí rychle vytvořit užitečné dotazy založené na typech prostředků, Projděte si [podokno uložené Ukázkové dotazy](./example-queries.md).
 
 V tomto kurzu se naučíte psát dotazy protokolu v Azure Monitor. Naučíte se, jak:
 
@@ -28,14 +28,14 @@ V tomto kurzu se naučíte psát dotazy protokolu v Azure Monitor. Naučíte se,
 - Definování a použití vlastních polí
 - Agregace a seskupení výsledků
 
-Kurz použití Log Analytics v Azure Portal najdete v tématu [Začínáme s Azure Monitor Log Analytics](get-started-portal.md).<br>
+Kurz použití Log Analytics v Azure Portal najdete v tématu [Začínáme s Azure Monitor Log Analytics](./log-analytics-tutorial.md).<br>
 Další podrobnosti o dotazech protokolu v Azure Monitor najdete v tématu [Přehled dotazů protokolu v Azure monitor](log-query-overview.md).
 
 Sledujte níže uvedenou verzi videa v tomto kurzu:
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE42pGX]
 
-## <a name="writing-a-new-query"></a>Zápis nového dotazu
+## <a name="writing-a-new-query"></a>Vytvoření nového dotazu
 
 Dotazy mohou začít buď s názvem tabulky, nebo s příkazem *hledání* . Měli byste začít s názvem tabulky, protože definuje pro dotaz jasný rozsah a zvyšuje výkon dotazů a relevanci výsledků.
 
@@ -44,7 +44,7 @@ Dotazy mohou začít buď s názvem tabulky, nebo s příkazem *hledání* . Mě
 
 ### <a name="table-based-queries"></a>Dotazy založené na tabulkách
 
-Azure Monitor uspořádá data protokolu v tabulkách, z nichž každý se skládá z více sloupců. Všechny tabulky a sloupce se zobrazí v podokně schématu v Log Analytics na portálu Analytics. Identifikujte tabulku, na kterou vás zajímáte, a pak se podívejte na bitovou část dat:
+Azure Monitor organizuje data protokolu v tabulkách, přičemž každá se skládá z několika sloupců. Všechny tabulky a sloupce se zobrazí v podokně schématu v Log Analytics na portálu Analytics. Identifikujte tabulku, na kterou vás zajímáte, a pak se podívejte na bitovou část dat:
 
 ```Kusto
 SecurityEvent

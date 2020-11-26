@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 90a5f0f84c72895a8450a42260b07f6dbea15e37
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: b4e35296a999070a6f536f4a52cfb7c3a1d4f42a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428031"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186486"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí služby IT Service Management Connector
 
@@ -50,11 +50,11 @@ Můžete začít používat ITSMC provedením následujících kroků:
 
 Než budete moct vytvořit připojení, musíte přidat ITSMC.
 
-1. V Azure Portal vyberte **vytvořit prostředek** :
+1. V Azure Portal vyberte **vytvořit prostředek**:
 
    ![Snímek obrazovky, který ukazuje položku nabídky vytvořit prostředek.](media/itsmc-overview/azure-add-new-resource.png)
 
-2. Vyhledejte **konektor pro správu služeb IT** v Azure Marketplace. Vyberte **vytvořit** :
+2. Vyhledejte **konektor pro správu služeb IT** v Azure Marketplace. Vyberte **vytvořit**:
 
    ![Snímek obrazovky, který zobrazuje tlačítko vytvořit v Azure Marketplace.](media/itsmc-overview/add-itsmc-solution.png)
 
@@ -90,11 +90,11 @@ Podle ITSM produktu, ke kterému se připojujete, vyberte jeden z následující
 
 Po připravenou nástrojů ITSM dokončete tyto kroky a vytvořte připojení:
 
-1. Ve **všech prostředcích** vyhledejte **partnera ( *název vašeho pracovního prostoru* )** :
+1. Ve **všech prostředcích** vyhledejte **partnera (*název vašeho pracovního prostoru*)**:
 
    ![Snímek obrazovky, který zobrazuje poslední prostředky v Azure Portal.](media/itsmc-overview/itsm-connections.png)
 
-1. V části **zdroje dat pracovního prostoru** v levém podokně vyberte **připojení ITSM** :
+1. V části **zdroje dat pracovního prostoru** v levém podokně vyberte **připojení ITSM**:
 
    ![Snímek obrazovky zobrazující položku nabídky připojení ITSM](media/itsmc-overview/add-new-itsm-connection.png)
    Tato stránka zobrazuje seznam připojení.
@@ -129,7 +129,7 @@ Skupiny akcí poskytují modulární a opakovaně použitelný způsob, jak akti
 Chcete-li vytvořit pracovní položky, použijte následující postup:
 
 1. V Azure Portal vyberte  **výstrahy**.
-2. V nabídce v horní části obrazovky vyberte **Spravovat akce** :
+2. V nabídce v horní části obrazovky vyberte **Spravovat akce**:
 
     ![Snímek obrazovky zobrazující položku nabídky spravovat akce](media/itsmc-overview/action-groups-selection-big.png)
 
@@ -145,9 +145,9 @@ Chcete-li vytvořit pracovní položky, použijte následující postup:
 
 7. Vyberte typ **pracovní položky** .
 
-8. Pokud chcete vyplnit předem vydaná pole s pevnými hodnotami, vyberte **použít vlastní šablonu**. V opačném případě v seznamu **šablon** vyberte existující [šablonu](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) a v polích šablony zadejte pevné hodnoty.
+8. Pokud chcete vyplnit předem vydaná pole s pevnými hodnotami, vyberte **použít vlastní šablonu**. V opačném případě v seznamu **šablon** vyberte existující [šablonu](#template-definitions) a v polích šablony zadejte pevné hodnoty.
 
-9. Pokud vyberete možnost **vytvořit jednotlivé pracovní položky pro každou položku konfigurace** , bude každá položka konfigurace mít svou vlastní pracovní položku. Pro každou položku konfigurace bude k dispozici jedna pracovní položka. Bude aktualizován podle výstrah, které budou vytvořeny.
+9. Pokud vyberete možnost **vytvořit jednotlivé pracovní položky pro každou položku konfigurace**, bude každá položka konfigurace mít svou vlastní pracovní položku. Pro každou položku konfigurace bude k dispozici jedna pracovní položka. Bude aktualizován podle výstrah, které budou vytvořeny.
 
    * V případě, že vyberete v rozevíracím seznamu pracovní položky "incident" nebo "Alert": Pokud zrušíte zaškrtnutí políčka **vytvořit jednotlivé pracovní položky pro každou položku konfigurace** , bude každá výstraha vytvářet novou pracovní položku. Může existovat více než jedna výstraha na jednu položku konfigurace.
 
@@ -329,4 +329,3 @@ Pokud máte dotazy nebo připomínky ke konektoru správy IT služeb, kontaktujt
 
 ## <a name="next-steps"></a>Další kroky
 [Přidat ITSM produkty/služby do konektoru správy služeb IT](./itsmc-connections.md)
-

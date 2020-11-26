@@ -10,11 +10,11 @@ ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: cd288926e6f7a3f454be2788479b5c9d414b167a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440286"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185483"
 ---
 # <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>Kurz: přenos dat prostřednictvím sdílených složek s grafickým procesorem Azure Stack Edge pro
 
@@ -56,23 +56,23 @@ Chcete-li vytvořit sdílenou složku, proveďte následující postup:
     a. Do pole **název** zadejte jedinečný název pro sdílenou složku.  
     Název sdílené složky může obsahovat jenom písmena, číslice a spojovníky. Musí mít 3 až 63 znaků a nesmí začínat písmenem nebo číslicí. Spojovníky musí předcházet znak a následovaný písmenem nebo číslicí.
     
-    b. Vyberte **Typ** sdílené složky.  
-    Typ může být **SMB** nebo **NFS**, přičemž výchozí typ je SMB. Protokol SMB je standardem pro klienty Windows a systém souborů NFS se používá pro klienty Linuxu.  
+    b. Vyberte **typ** sdílené složky.  
+    Typ může být **SMB** nebo **NFS**, přičemž výchozí hodnota je SMB. Protokol SMB je standardem pro klienty Windows a systém souborů NFS se používá pro klienty Linuxu.  
     V závislosti na tom, jestli zvolíte sdílené složky SMB nebo NFS, se ostatní možnosti mírně liší. 
 
     c. Zadejte účet úložiště, ve kterém se sdílená složka bude nacházet.
 
-    d. V rozevíracím seznamu **služba úložiště** vyberte objekty **blob bloku**, objekty **blob stránky**nebo **soubory**.  
+    d. V rozevíracím seznamu **služba úložiště** vyberte objekty **blob bloku**, objekty **blob stránky** nebo **soubory**.  
     Typ služby, kterou zvolíte, závisí na tom, který formát má data používat v Azure. Protože v tomto příkladu chceme ukládat data jako objekty blob bloku v Azure, vybíráme **objekt blob bloku**. Pokud vyberete **objekt blob stránky**, ujistěte se, že jsou data v 512 bajtů. Například formát VHDX je vždy zarovnaný na 512 bajtů.
 
    > [!IMPORTANT]
    > Ujistěte se, že účet Azure Storage, který používáte, nemá nastavené zásady neměnnosti, pokud ho používáte se zařízením Azure Stack Edge pro nebo Data Box Gateway. Další informace najdete v tématu [nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
 
-    e. Vytvořte nový kontejner objektů BLOB nebo použijte existující objekt v rozevíracím seznamu. Pokud vytváříte kontejner objektů blob, zadejte název kontejneru. Pokud kontejner ještě neexistuje, vytvoří se v účtu úložiště s nově vytvořeným názvem sdílené složky.
+    e. Vytvořte nový kontejner objektů BLOB nebo použijte existující objekt v rozevíracím seznamu. Pokud vytváříte kontejner objektů blob, zadejte název kontejneru. Pokud ještě neexistuje, v účtu úložiště se vytvoří kontejner s názvem nové sdílené složky.
    
     f. V závislosti na tom, jestli jste vytvořili sdílenou složku SMB nebo sdílenou složku NFS, proveďte jeden z následujících kroků: 
      
-    - **Sdílená složka SMB**: v části **všechny oprávnění místního uživatele**vyberte **vytvořit novou** nebo **použít existující**. Pokud vytváříte nového místního uživatele, zadejte uživatelské jméno a heslo a pak heslo potvrďte. Touto akcí se místnímu uživateli přiřadí oprávnění. Jakmile tady přiřadíte oprávnění, můžete je upravit pomocí Průzkumníka souborů.
+    - **Sdílená složka SMB**: v části **všechny oprávnění místního uživatele** vyberte **vytvořit novou** nebo **použít existující**. Pokud vytváříte nového místního uživatele, zadejte uživatelské jméno a heslo a pak heslo potvrďte. Touto akcí se místnímu uživateli přiřadí oprávnění. Jakmile tady přiřadíte oprávnění, můžete je upravit pomocí Průzkumníka souborů.
     Pokud pro tato sdílená data zaškrtnete políčko **povoleno pouze čtení operací** , můžete zadat uživatele jen pro čtení.
     
         ![Přidání sdílené složky SMB](./media/azure-stack-edge-j-series-deploy-add-shares/add-share-smb-1.png)
@@ -123,7 +123,7 @@ V klientovi se systémem Windows, který používáte pro připojení k zaříze
 V klientovi Windows serveru připojeném k vašemu zařízení Azure Stack Edge pro se připojte ke sdílené složce SMB zadáním příkazů:
 
 
-1. V příkazovém okně zadejte:
+1. V příkazovém okně zadejte: .
 
     `net use \\<Device name>\<share name>  /u:<user name for the share>`
 

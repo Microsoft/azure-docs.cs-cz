@@ -5,23 +5,23 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9d13e19958ce4614db3706845cc6717b77f60c4c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 6ca5b1df05c04937598278378e001f41f08ef23c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209624"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183630"
 ---
 # <a name="enable-change-tracking-and-inventory-from-azure-portal"></a>Povolit Change Tracking a inventář z Azure Portal
 
 Tento článek popisuje, jak můžete povolit [Change Tracking a inventář](overview.md) pro jeden nebo více virtuálních počítačů Azure v Azure Portal. Pokud chcete povolit virtuální počítače Azure ve velkém měřítku, musíte povolit existující virtuální počítač pomocí Change Tracking a inventáře.
 
-Počet skupin prostředků, které můžete použít pro správu virtuálních počítačů, je omezený [Správce prostředků limity nasazení](../../azure-resource-manager/templates/cross-scope-deployment.md). Správce prostředků nasazení jsou omezená na pět skupin prostředků na jedno nasazení. Dvě z těchto skupin prostředků jsou rezervované pro konfiguraci Log Analyticsho pracovního prostoru, účtu Automation a souvisejících prostředků. Tím se dokončí tři skupiny prostředků pro výběr správy pomocí Change Tracking a inventáře. Tento limit se vztahuje pouze na souběžné nastavení, nikoli na počet skupin prostředků, které lze spravovat pomocí funkce automatizace.
+Počet skupin prostředků, které můžete použít pro správu virtuálních počítačů, je omezený [Správce prostředků limity nasazení](../../azure-resource-manager/templates/deploy-to-resource-group.md). Správce prostředků nasazení jsou omezená na pět skupin prostředků na jedno nasazení. Dvě z těchto skupin prostředků jsou rezervované pro konfiguraci Log Analyticsho pracovního prostoru, účtu Automation a souvisejících prostředků. Tím se dokončí tři skupiny prostředků pro výběr správy pomocí Change Tracking a inventáře. Tento limit se vztahuje pouze na souběžné nastavení, nikoli na počet skupin prostředků, které lze spravovat pomocí funkce automatizace.
 
 > [!NOTE]
 > Při povolování Change Tracking a inventáře jsou podporovány pouze určité oblasti pro propojení Log Analyticsho pracovního prostoru a účtu Automation. Seznam podporovaných dvojic mapování najdete v tématu [mapování oblastí pro účet Automation a Log Analytics pracovní prostor](../how-to/region-mappings.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Účet Automation](../index.yml) pro správu počítačů.
@@ -42,7 +42,7 @@ Přihlaste se k Azure na adrese https://portal.azure.com .
     > [!TIP]
     > Pomocí ovládacích prvků filtru vyberte virtuální počítače z různých předplatných, umístění a skupin prostředků. Kliknutím na zaškrtávací políčko v horní části můžete vybrat všechny virtuální počítače v seznamu.
 
-3. V části **Správa konfigurace**vyberte možnost **sledování změn** nebo **inventarizace** .
+3. V části **Správa konfigurace** vyberte možnost **sledování změn** nebo **inventarizace** .
 
 4. Seznam virtuálních počítačů je filtrovaný tak, aby zobrazoval pouze virtuální počítače, které jsou ve stejném předplatném a umístění. Pokud jsou vaše virtuální počítače ve více než třech skupinách prostředků, vybere se první tři skupiny prostředků.
 

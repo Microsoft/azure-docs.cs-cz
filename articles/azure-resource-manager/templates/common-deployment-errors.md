@@ -4,12 +4,12 @@ description: Popisuje řešení běžných chyb při nasazení prostředků do A
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 09/09/2020
-ms.openlocfilehash: fb7e476a5b4416282546d321a5e9a0127b7a4364
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 785a74184cae8523b99da7f647ca87fda53c8648
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000704"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185823"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Řešení běžných problémů s nasazením v Azure při použití Azure Resource Manageru
 
@@ -76,10 +76,10 @@ Pokud hledáte informace o kódu chyby a tyto informace nejsou v tomto článku 
 | StorageAccountAlreadyTaken | Zadejte jedinečný název účtu úložiště. | [Přeložit název účtu úložiště](error-storage-account-name.md) |
 | StorageAccountNotFound | Ověřte předplatné, skupinu prostředků a název účtu úložiště, který se pokoušíte použít. | |
 | SubnetsNotInSameVnet | Virtuální počítač může mít jenom jednu virtuální síť. Při nasazování několika síťových adaptérů se ujistěte, že patří do stejné virtuální sítě. | [Více síťových karet](../../virtual-machines/windows/multiple-nics.md) |
-| SubscriptionNotFound | Zadané předplatné pro nasazení není k dispozici. Je možné, že ID předplatného je chybné, uživatel, který šablonu nasazuje, nemá dostatečná oprávnění k nasazení do předplatného nebo ID předplatného je ve špatném formátu. Při použití vnořených nasazení k [nasazení napříč obory](cross-scope-deployment.md)zadejte identifikátor GUID předplatného. | |
+| SubscriptionNotFound | Zadané předplatné pro nasazení není k dispozici. Je možné, že ID předplatného je chybné, uživatel, který šablonu nasazuje, nemá dostatečná oprávnění k nasazení do předplatného nebo ID předplatného je ve špatném formátu. Při použití vnořených nasazení k [nasazení napříč obory](./deploy-to-resource-group.md)zadejte identifikátor GUID předplatného. | |
 | SubscriptionNotRegistered | Při nasazování prostředku musí být poskytovatel prostředků zaregistrován pro vaše předplatné. Když použijete šablonu Azure Resource Manager pro nasazení, poskytovatel prostředků se automaticky zaregistruje v předplatném. V některých případech se automatická registrace nedokončila v čase. Chcete-li se tomuto přerušované chybě vyhnout, zaregistrujte poskytovatele prostředků před nasazením. | [Vyřešit registraci](error-register-resource-provider.md) |
 | TemplateResourceCircularDependency | Odeberte zbytečné závislosti. | [Vyřešit cyklické závislosti](error-invalid-template.md#circular-dependency) |
-| TooManyTargetResourceGroups | Snižte počet skupin prostředků pro jedno nasazení. | [Nasazení mezi různými obory](cross-scope-deployment.md) |
+| TooManyTargetResourceGroups | Snižte počet skupin prostředků pro jedno nasazení. | [Nasazení mezi různými obory](./deploy-to-resource-group.md) |
 
 ## <a name="find-error-code"></a>Najít kód chyby
 

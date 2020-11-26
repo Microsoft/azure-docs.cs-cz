@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: ed9942fa7b73418e3ef1ddf0651781d32b662995
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 04f1eb0d9db00a2be1a4619cafe38aa18145fc78
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92049789"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185993"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>Archivace dat z pracovního prostoru Log Analytics do Azure Storage pomocí aplikace logiky
 Tento článek popisuje způsob, jak použít [Azure Logic Apps](../../logic-apps/index.yml) k dotazování dat z pracovního prostoru Log Analytics v Azure monitor a odeslání do Azure Storage. Tento postup použijte v případě, že potřebujete exportovat data protokolu Azure Monitor pro scénáře auditování a dodržování předpisů nebo pokud chcete, aby mohla jiná služba načíst tato data.  
@@ -25,7 +25,7 @@ Metoda popsaná v tomto článku popisuje plánovaný export z dotazu protokolu 
 - Jednou při exportu do místního počítače pomocí skriptu PowerShellu. Viz [Invoke-AzOperationalInsightsQueryExport]] ( https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport) .
 
 ## <a name="overview"></a>Přehled
-Tento postup používá [konektor protokolů Azure monitor](https://docs.microsoft.com/connectors/azuremonitorlogs/) , který umožňuje spustit dotaz protokolu z aplikace logiky a použít jeho výstup v jiných akcích v pracovním postupu. Pomocí [konektoru služby azure BLOB Storage](https://docs.microsoft.com/connectors/azureblob/) se v tomto postupu pošle výstup dotazu do služby Azure Storage. Další akce jsou popsány v následujících částech.
+Tento postup používá [konektor protokolů Azure monitor](/connectors/azuremonitorlogs/) , který umožňuje spustit dotaz protokolu z aplikace logiky a použít jeho výstup v jiných akcích v pracovním postupu. Pomocí [konektoru služby azure BLOB Storage](/connectors/azureblob/) se v tomto postupu pošle výstup dotazu do služby Azure Storage. Další akce jsou popsány v následujících částech.
 
 ![Přehled aplikace logiky](media/logs-export-logicapp/logic-app-overview.png)
 
@@ -39,7 +39,7 @@ SecurityEvent
 
 Při exportu dat podle plánu použijte v dotazu funkci ingestion_time (), abyste se ujistili, že nebudete mít pozdě přijíždějící data. Pokud jsou data zpožděna kvůli problémům se sítí nebo platformou, bude při použití času příjmu zajištěno, že budou zahrnuty do dalšího spuštění aplikace logiky. Příklad najdete v tématu o [akci přidání protokolů Azure monitor](#add-azure-monitor-logs-action) .
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 Níže jsou uvedené požadavky, které je nutné před dokončením tohoto postupu dokončit.
 
 - Log Analytics pracovní prostor. Uživatel, který vytváří aplikaci logiky, musí mít k pracovnímu prostoru oprávnění alespoň pro čtení. 
@@ -61,7 +61,7 @@ Pomocí postupu v části [vytvoření kontejneru](../../storage/blobs/storage-q
 
 ## <a name="create-logic-app"></a>Vytvoření aplikace logiky
 
-V Azure Portal přejděte na **Logic Apps** a klikněte na **Přidat**. Vyberte **předplatné**, **skupinu prostředků**a **oblast** , do které chcete uložit novou aplikaci logiky, a pak jí udělte jedinečný název. Můžete zapnout **Log Analytics** nastavení a shromažďovat informace o běhových datech a událostech, jak je popsáno v tématu [nastavení protokolů Azure monitor a shromažďování diagnostických dat pro Azure Logic Apps](../../logic-apps/monitor-logic-apps-log-analytics.md). Toto nastavení není vyžadováno pro použití konektoru Azure Monitorch protokolů.
+V Azure Portal přejděte na **Logic Apps** a klikněte na **Přidat**. Vyberte **předplatné**, **skupinu prostředků** a **oblast** , do které chcete uložit novou aplikaci logiky, a pak jí udělte jedinečný název. Můžete zapnout **Log Analytics** nastavení a shromažďovat informace o běhových datech a událostech, jak je popsáno v tématu [nastavení protokolů Azure monitor a shromažďování diagnostických dat pro Azure Logic Apps](../../logic-apps/monitor-logic-apps-log-analytics.md). Toto nastavení není vyžadováno pro použití konektoru Azure Monitorch protokolů.
 
 ![Vytvoření aplikace logiky](media/logs-export-logicapp/create-logic-app.png)
 
@@ -69,13 +69,13 @@ V Azure Portal přejděte na **Logic Apps** a klikněte na **Přidat**. Vyberte 
 Klikněte na tlačítko **zkontrolovat + vytvořit** a pak **vytvořit**. Po dokončení nasazení klikněte na **Přejít k prostředku** a otevřete **Návrháře Logic Apps**.
 
 ## <a name="create-a-trigger-for-the-logic-app"></a>Vytvoření triggeru pro aplikaci logiky
-V části **začít se společným triggerem**vyberte **opakování**. Tím se vytvoří aplikace logiky, která se automaticky spustí v pravidelných intervalech. V poli **frekvence** akce vyberte **hodiny** a v poli **interval** zadejte **1** , pokud chcete pracovní postup spustit jednou za den.
+V části **začít se společným triggerem** vyberte **opakování**. Tím se vytvoří aplikace logiky, která se automaticky spustí v pravidelných intervalech. V poli **frekvence** akce vyberte **hodiny** a v poli **interval** zadejte **1** , pokud chcete pracovní postup spustit jednou za den.
 
 ![Akce opakování](media/logs-export-logicapp/recurrence-action.png)
 
 
 ### <a name="add-azure-monitor-logs-action"></a>Akce přidání protokolů Azure Monitor
-Kliknutím na **+ Nový krok** přidáte akci, která se spustí po akci opakování. V části **Zvolte akci**zadejte **Azure monitor** a pak vyberte **Azure monitor protokoly**.
+Kliknutím na **+ Nový krok** přidáte akci, která se spustí po akci opakování. V části **Zvolte akci** zadejte **Azure monitor** a pak vyberte **Azure monitor protokoly**.
 
 ![Akce protokolů Azure Monitor](media/logs-export-logicapp/select-azure-monitor-connector.png)
 
@@ -89,7 +89,7 @@ Zobrazí se výzva k výběru tenanta a udělení přístupu k Log Analyticsmu p
 ## <a name="add-azure-monitor-logs-action"></a>Akce přidání protokolů Azure Monitor
 Akce protokoly Azure Monitor umožňuje zadat dotaz, který se má spustit. Dotaz protokolu použitý v tomto příkladu je optimalizován na hodinové opakování a shromažďuje data ingestovaná pro konkrétní dobu provádění. Například pokud pracovní postup běží v 4:35, bude časový rozsah 4:00 až 5:00. Pokud změníte aplikaci logiky tak, aby běžela s jinou frekvencí, budete potřebovat také dotaz změnit. Například pokud nastavíte, aby se opakování spouštělo každý den, nastavili jste Čas_spuštění v dotazu na startofday (make_datetime (rok, měsíc, den, 0, 0)). 
 
-Vyberte **předplatné** a **skupinu prostředků** pro pracovní prostor Log Analytics. Jako **typ prostředku** vyberte *Log Analytics pracovní prostor* a potom v části **název prostředku**vyberte název pracovního prostoru.
+Vyberte **předplatné** a **skupinu prostředků** pro pracovní prostor Log Analytics. Jako **typ prostředku** vyberte *Log Analytics pracovní prostor* a potom v části **název prostředku** vyberte název pracovního prostoru.
 
 Do okna **dotazu** přidejte následující dotaz protokolu.  
 
@@ -131,7 +131,7 @@ Výstup akce **Spustit dotaz a výsledky seznamu** je ve formátu JSON. Tato dat
 Můžete zadat schéma JSON, které popisuje datovou část, kterou očekáváte pro příjem. Návrhář analyzuje obsah JSON pomocí tohoto schématu a generuje uživatelsky přívětivé tokeny, které reprezentují vlastnosti v obsahu JSON. Pak můžete tyto vlastnosti snadno odkazovat a používat v rámci pracovního postupu vaší aplikace logiky. 
 
 
-Klikněte na **+ Nový krok**a potom klikněte na **+ přidat akci**. V části **zvolit akci**zadejte **JSON** a pak vyberte **analyzovat JSON**.
+Klikněte na **+ Nový krok** a potom klikněte na **+ přidat akci**. V části **zvolit akci** zadejte **JSON** a pak vyberte **analyzovat JSON**.
 
 ![Vybrat aktivitu analyzovat JSON](media/logs-export-logicapp/select-parse-json.png)
 
@@ -166,7 +166,7 @@ Kliknutím do pole **obsah** zobrazíte seznam hodnot z předchozích aktivit. V
 ## <a name="add-the-compose-action"></a>Přidat akci psaní
 Akce **Vytvoření** převezme analyzovaný výstup JSON a vytvoří objekt, který je třeba uložit do objektu BLOB.
 
-Klikněte na **+ Nový krok**a potom klikněte na **+ přidat akci**. V části **zvolit akci**napište **napsat** a pak vyberte akci **vytvořit** .
+Klikněte na **+ Nový krok** a potom klikněte na **+ přidat akci**. V části **zvolit akci** napište **napsat** a pak vyberte akci **vytvořit** .
 
 ![Vybrat akci psaní](media/logs-export-logicapp/select-compose.png)
 
@@ -179,7 +179,7 @@ Kliknutím na pole **vstupy** zobrazíte seznam hodnot z předchozích aktivit. 
 ## <a name="add-the-create-blob-action"></a>Přidat akci vytvořit objekt BLOB
 Akce vytvořit objekt BLOB zapisuje složený kód JSON do úložiště.
 
-Klikněte na **+ Nový krok**a potom klikněte na **+ přidat akci**. V části **zvolit akci**zadejte **objekt BLOB** a potom vyberte akci **vytvořit objekt BLOB** .
+Klikněte na **+ Nový krok** a potom klikněte na **+ přidat akci**. V části **zvolit akci** zadejte **objekt BLOB** a potom vyberte akci **vytvořit objekt BLOB** .
 
 ![Vyberte vytvořit objekt BLOB](media/logs-export-logicapp/select-create-blob.png)
 

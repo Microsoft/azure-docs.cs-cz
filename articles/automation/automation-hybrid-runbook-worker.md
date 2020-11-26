@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: ea2b8deb07a899ab35ddd761df3e3ddb413dd45d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 7bd9560399a2b2b377cb543a4f829883bcbdf7c8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95509086"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183766"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Přehled funkce Hybrid Runbook Worker
 
@@ -29,7 +29,7 @@ Existují dva typy pracovních procesů Runbooku – systém a uživatel. Rozdí
 
 Hybrid Runbook Worker lze spustit buď v operačním systému Windows nebo Linux, a tato role spoléhá na [Log Analytics agenta](../azure-monitor/platform/log-analytics-agent.md) sestav do Azure monitor [Log Analytics pracovního prostoru](../azure-monitor/platform/design-logs-deployment.md). Pracovní prostor není pouze monitorující počítač pro podporovaný operační systém, ale také ke stažení součástí potřebných k instalaci Hybrid Runbook Worker.
 
-Pokud je povolená Azure Automation [Update Management](update-management/update-mgmt-overview.md) , je počítač připojený k vašemu Log Analytics pracovnímu prostoru automaticky nakonfigurovaný jako Hybrid Runbook Worker systému.
+Pokud je povolená Azure Automation [Update Management](./update-management/overview.md) , je počítač připojený k vašemu Log Analytics pracovnímu prostoru automaticky nakonfigurovaný jako Hybrid Runbook Worker systému.
 
 Každý uživatel Hybrid Runbook Worker je členem skupiny Hybrid Runbook Worker, kterou zadáte při instalaci pracovního procesu. Skupina může obsahovat jeden pracovní proces, ale k zajištění vysoké dostupnosti můžete do skupiny zahrnout více pracovních procesů. Každý počítač může hostovat jeden Hybrid Runbook Worker hlášení na jeden účet Automation; hybridní pracovní proces nemůžete zaregistrovat v několika účtech Automation. Důvodem je to, že hybridní pracovní proces může naslouchat jenom úlohám z jednoho účtu Automation. Pro počítače, které hostují systém Hybrid Runbook Worker spravované pomocí Update Management, je lze přidat do skupiny Hybrid Runbook Worker. Je ale nutné použít stejný účet Automation pro Update Management a členství v Hybrid Runbook Worker skupině.
 
@@ -99,7 +99,7 @@ Azure Automation Hybrid Runbook Worker lze v Azure Government použít pro podpo
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>Update Management adres pro Hybrid Runbook Worker
 
-Kromě standardních adres a portů vyžadovaných pro Hybrid Runbook Worker má Update Management další požadavky na konfiguraci sítě popsané v části [Plánování sítě](update-management/update-mgmt-overview.md#ports) .
+Kromě standardních adres a portů vyžadovaných pro Hybrid Runbook Worker má Update Management další požadavky na konfiguraci sítě popsané v části [Plánování sítě](./update-management/overview.md#ports) .
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>Konfigurace stavu Azure Automation na Hybrid Runbook Worker
 

@@ -6,22 +6,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/29/2020
-ms.openlocfilehash: 7ddfb3221c73c740a339dd8d9d4f60cca46c6425
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: e2b12d7a2206ab369328563af438c6ef1ea39327
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026764"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184106"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>Vyřazení verze rozhraní API OperationalInsights
 Microsoft poskytuje oznámení alespoň 12 měsíců před vyřazením rozhraní API z důvodu hladkého přechodu na novější/podporovanou verzi. Vydali jsme novou verzi (2020-08-01) pro rozhraní API poskytovatele prostředků **OperationalInsights** a vyřadíme všechny starší verze API z 29. února 2024.
 
-Doporučujeme vám hned začít používat verzi 2020-08-01, abyste získali výhody nových funkcí, jako je například [vyhrazený cluster](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters), [klíče spravované zákazníky](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys), [soukromý odkaz](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security) a [Export dat](https://docs.microsoft.com/azure/azure-monitor/platform/logs-data-export). Nové funkce a funkce a optimalizace se navíc přidávají jenom do aktuálního rozhraní API.
+Doporučujeme vám hned začít používat verzi 2020-08-01, abyste získali výhody nových funkcí, jako je například [vyhrazený cluster](../log-query/logs-dedicated-clusters.md), [klíče spravované zákazníky](./customer-managed-keys.md), [soukromý odkaz](./private-link-security.md) a [Export dat](./logs-data-export.md). Nové funkce a funkce a optimalizace se navíc přidávají jenom do aktuálního rozhraní API.
 
 Po 29. února 2024 Azure Monitor už nebude podporovat starší verze rozhraní API než 2020-08-01. Pokud nechcete upgradovat, požadavky odeslané z dřívějších verzí budou nadále obsluhovány službou Azure Monitor až do 29. února 2024.
 
 ## <a name="migration-steps"></a>Kroky migrace
-V závislosti na metodě konfigurace, kterou používáte, byste měli aktualizovat novou verzi v žádostech **REST** a **Správce prostředků šablonách** . Podle následujících příkladů aktualizujte verzi rozhraní API:
+V závislosti na metodě konfigurace, kterou používáte, byste měli aktualizovat novou verzi v žádostech **REST** a **Správce prostředků šablonách**. Podle následujících příkladů aktualizujte verzi rozhraní API:
 
 1. REST API požadavky používají verzi rozhraní API v adrese URL požadavku. Nahraďte tuto verzi nejnovější verzí (2020-08-01), jak je znázorněno v následujícím příkladu.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 2f2221ad10a2e07a3443cab9f957c8ec26969a3b
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 7b77a47acba6180df4a067887b79d8cdc0f56df6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96031201"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185075"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Průběžná integrace a doručování pro Azure synapse Workspace
 
@@ -25,7 +25,7 @@ Pro pracovní prostor Azure synapse můžete průběžnou integraci a doručová
 
 V tomto článku se dozvíte, jak pomocí kanálu pro vydávání Azure automatizovat nasazení pracovního prostoru synapse do více prostředí.
 
-## <a name="pre-requirements"></a>Předběžné požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 -   Pracovní prostor použitý pro vývoj byl nakonfigurován s úložištěm Git v nástroji Studio, viz [Správa zdrojového kódu v synapse studiu](source-control.md).
 -   Projekt Azure DevOps se připravil pro běh kanálu vydávání verzí.
@@ -82,7 +82,7 @@ Přidejte úlohu nasazení Azure Resource Manager pro vytvoření nebo aktualiza
     
     ![nasazení pracovního prostoru a fondů](media/pools-resource-deploy.png)
 
-1. Volitelné Přidejte **Azure PowerShell** pro přiřazení role pracovní prostor udělení a aktualizace. Pokud k vytvoření pracovního prostoru synapse použijete kanál vydaných verzí, musí se tento instanční objekt kanálu přidat jako výchozí správce pracovního prostoru. Můžete spustit PowerShell pro udělení přístupu k pracovnímu prostoru jiným účtům. 
+1. Volitelné Přidejte **Azure PowerShell** pro přiřazení role pracovní prostor udělení a aktualizace. Pokud k vytvoření pracovního prostoru synapse použijete kanál vydaných verzí, bude objekt služby kanálu přidán jako výchozí správce pracovního prostoru. Můžete spustit PowerShell pro udělení přístupu k pracovnímu prostoru jiným účtům. 
     
     ![udělit oprávnění](media/release-creation-grant-permission.png)
 
@@ -115,12 +115,8 @@ Po uložení všech změn můžete vybrat **vytvořit vydání** a ručně vytvo
 Pokud používáte integraci Git s vaším pracovním prostorem synapse a máte kanál CI/CD, který přesouvá vaše změny z vývoje do testu a následně do produkčního prostředí, doporučujeme tyto osvědčené postupy:
 
 -   **Integrace Gitu**. Nakonfigurujte jenom váš pracovní prostor vývojového synapse s integrací Gitu. Změny pracovních prostorů testů a výroby se nasazují prostřednictvím CI/CD a nepotřebují integraci Git.
--   **Příprava fondů před migrací artefaktů**. Pokud připojíte fondy ke skriptu nebo poznámkovému bloku SQL ve vývojovém pracovním prostoru, očekává se stejný název fondů v různých prostředích. 
--   **Ostatní**. Zobrazit [Další osvědčené postupy](/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)
+-   **Příprava fondů před migrací artefaktů**. Pokud máte skript SQL nebo Poznámkový blok připojený ke fondům v pracovním prostoru pro vývoj, očekává se stejný název fondů v různých prostředích. 
+-   **Infrastruktura jako kód (IAC)**. Správa infrastruktury (sítí, virtuálních počítačů, nástrojů pro vyrovnávání zatížení a topologie připojení) v popisném modelu používá stejnou verzi jako DevOps tým používá ke zdrojovému kódu. 
+-   **Ostatní**. Podívejte se [na osvědčené postupy pro artefakty ADF](/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd) .
 
-## <a name="unsupported-features"></a>Nepodporované funkce
-
-- Synapse Studio nepovoluje vybírání určitých položek potvrzení nebo selektivního publikování prostředků. 
-- Synapse Studio nepodporuje přizpůsobení zprávy potvrzení.
-- Podle návrhu se akce Odstranit Odstraní přímo do Gitu.
 

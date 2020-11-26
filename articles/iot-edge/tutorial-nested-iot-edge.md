@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: db77df29d1b9b0adf07c7da377c028dee5312617
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: cd0fd7ac004d07b71a69a3e59c9cfd4727d98eb6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579194"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184667"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Kurz: vytvoření hierarchie zařízení IoT Edge (Preview)
 
@@ -39,13 +39,13 @@ Tento kurz vás provede vytvořením hierarchie IoT Edge zařízení, nasazením
 
 V tomto kurzu jsou definovány následující vrstvy sítě:
 
-* **Nejvyšší vrstva** : zařízení IoT Edge v této vrstvě se můžou připojit přímo ke cloudu.
+* **Nejvyšší vrstva**: zařízení IoT Edge v této vrstvě se můžou připojit přímo ke cloudu.
 
-* **Nižší vrstva** : zařízení IoT Edge v této vrstvě se nemohou připojit přímo ke cloudu. Musí projít jedním nebo více zprostředkujícími IoT Edge zařízeními pro odesílání a příjem dat.
+* **Nižší vrstva**: zařízení IoT Edge v této vrstvě se nemohou připojit přímo ke cloudu. Musí projít jedním nebo více zprostředkujícími IoT Edge zařízeními pro odesílání a příjem dat.
 
-V tomto kurzu se pro jednoduchost používá dvě hierarchie zařízení. Jedno zařízení, **topLayerDevice** , představuje zařízení v horní vrstvě hierarchie, které se může připojit přímo ke cloudu. Toto zařízení se bude také označovat jako **nadřazené zařízení**. Druhé zařízení, **lowerLayerDevice** , představuje zařízení v nižší vrstvě hierarchie, které se nemůže připojit přímo ke cloudu. Toto zařízení se bude také označovat jako **podřízené zařízení**. Můžete přidat další zařízení nižší vrstvy, která reprezentují vaše provozní prostředí. Konfigurace dalších zařízení nižší vrstvy bude následovat po konfiguraci **lowerLayerDevice**.
+V tomto kurzu se pro jednoduchost používá dvě hierarchie zařízení. Jedno zařízení, **topLayerDevice**, představuje zařízení v horní vrstvě hierarchie, které se může připojit přímo ke cloudu. Toto zařízení se bude také označovat jako **nadřazené zařízení**. Druhé zařízení, **lowerLayerDevice**, představuje zařízení v nižší vrstvě hierarchie, které se nemůže připojit přímo ke cloudu. Toto zařízení se bude také označovat jako **podřízené zařízení**. Můžete přidat další zařízení nižší vrstvy, která reprezentují vaše provozní prostředí. Konfigurace dalších zařízení nižší vrstvy bude následovat po konfiguraci **lowerLayerDevice**.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete vytvořit hierarchii IoT Edgech zařízení, budete potřebovat:
 
@@ -73,7 +73,7 @@ První krok, vytvoření zařízení IoT Edge, se dá provést pomocí Azure Por
 
 1. Znovu vyberte **+ přidat IoT Edge zařízení** . Toto zařízení bude hraniční zařízení nižší vrstvy, takže zadejte odpovídající jedinečné ID zařízení.
 
-1. Zvolte možnost **nastavit nadřazené zařízení** , v seznamu zařízení vyberte zařízení nejvyšší vrstvy a vyberte **OK**. Vyberte **Uložit**.
+1. Zvolte možnost **nastavit nadřazené zařízení**, v seznamu zařízení vyberte zařízení nejvyšší vrstvy a vyberte **OK**. Vyberte **Uložit**.
 
    ![Nastavení nadřazené položky pro zařízení nižší vrstvy](./media/tutorial-nested-iot-edge/set-parent-device.png)
 
@@ -188,8 +188,8 @@ Pomocí následujících kroků na obou zařízeních nainstalujte IoT Edge.
 1. Instalace hsmlib a démona IoT Edge <!-- Update with proper image links on release -->
 
    ```bash
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/libiothsm-std_1.2.0.rc1-1-1_debian9_amd64.deb -o libiothsm-std.deb
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/iotedge_1.2.0_rc1-1_debian9_amd64.deb -o iotedge.deb
+   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc2/libiothsm-std_1.2.0.rc2-1-1_debian9_amd64.deb -o libiothsm-std.deb
+   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc2/iotedge_1.2.0_rc2-1_debian9_amd64.deb -o iotedge.deb
    sudo dpkg -i ./libiothsm-std.deb
    sudo dpkg -i ./iotedge.deb
    ```
@@ -261,7 +261,7 @@ Proveďte tyto kroky a restartujte službu IoT Edge pro konfiguraci zařízení.
      type: "docker"
      env: {}
      config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1"
+       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
        auth: {}
    ```
 
@@ -273,7 +273,7 @@ Proveďte tyto kroky a restartujte službu IoT Edge pro konfiguraci zařízení.
      type: "docker"
      env: {}
      config:
-       image: "<parent_device_fqdn_or_ip>:8000/azureiotedge-agent:1.2.0-rc1"
+       image: "<parent_device_fqdn_or_ip>:8000/azureiotedge-agent:1.2.0-rc2"
        auth: {}
    ```
 
@@ -305,7 +305,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
 1. Vedle ikony ozubeného kolečka vyberte **nastavení modulu runtime**.
 
-1. V části **hraniční centrum** v poli obrázek zadejte `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1` .
+1. V části **hraniční centrum** v poli obrázek zadejte `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` .
 
    ![Úprava obrázku hraničního centra](./media/tutorial-nested-iot-edge/edge-hub-image.png)
 
@@ -318,7 +318,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
    ![Upravit proměnné prostředí hraničního centra](./media/tutorial-nested-iot-edge/edge-hub-environment-variables.png)
 
-1. Pod položkou **Agent Edge** v poli Image zadejte `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1` . Vyberte **Uložit**.
+1. Pod položkou **Agent Edge** v poli Image zadejte `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2` . Vyberte **Uložit**.
 
 1. Přidejte modul registru Docker do zařízení nejvyšší vrstvy. Vyberte **+ Přidat** a v rozevíracím seznamu vyberte **IoT Edge modul** . Zadejte název `registry` pro modul registru Docker a zadejte `registry:latest` pro identifikátor URI image. Dále přidejte proměnné prostředí a vytvořte možnosti, které odkazují na místní modul registru v registru Microsoft Container Registry ke stažení imagí kontejneru z a k obsluze těchto imagí v registru: 5000.
 
@@ -412,14 +412,14 @@ V [Azure Portal](https://ms.portal.azure.com/):
                    "systemModules": {
                        "edgeAgent": {
                            "settings": {
-                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1",
+                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2",
                                "createOptions": ""
                            },
                            "type": "docker"
                        },
                        "edgeHub": {
                            "settings": {
-                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1",
+                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2",
                                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
                            },
                            "type": "docker",
@@ -478,7 +478,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
 1. Vedle ikony ozubeného kolečka vyberte **nastavení modulu runtime**.
 
-1. V části **hraniční centrum** v poli obrázek zadejte `$upstream:8000/azureiotedge-hub:1.2.0-rc1` .
+1. V části **hraniční centrum** v poli obrázek zadejte `$upstream:8000/azureiotedge-hub:1.2.0-rc2` .
 
 1. Do modulu Edge hub přidejte následující proměnné prostředí:
 
@@ -487,13 +487,13 @@ V [Azure Portal](https://ms.portal.azure.com/):
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. Pod položkou **Agent Edge** v poli Image zadejte `$upstream:8000/azureiotedge-agent:1.2.0-rc1` . Vyberte **Uložit**.
+1. Pod položkou **Agent Edge** v poli Image zadejte `$upstream:8000/azureiotedge-agent:1.2.0-rc2` . Vyberte **Uložit**.
 
 1. Přidejte modul snímače teploty. V rozevíracím seznamu vyberte **+ Přidat** a vyberte **modul Marketplace** . Vyhledejte `Simulated Temperature Sensor` a vyberte modul.
 
 1. V části **IoT Edge moduly** vyberte `Simulated Temperature Sensor` modul, který jste právě přidali, a aktualizujte jeho identifikátor URI obrázku tak, aby odkazoval na `$upstream:8000/azureiotedge-simulated-temperature-sensor:1.0` .
 
-1. Kliknutím na **Uložit** , **zkontrolovat + vytvořit** a **vytvořit** dokončete nasazení.
+1. Kliknutím na **Uložit**, **zkontrolovat + vytvořit** a **vytvořit** dokončete nasazení.
 
    ![Kompletní nasazení, které obsahuje hraniční centrum, hraničního agenta a simulovaný senzor teploty](./media/tutorial-nested-iot-edge/complete-lower-layer-deployment.png)
 
@@ -534,14 +534,14 @@ V [Azure Portal](https://ms.portal.azure.com/):
                    "systemModules": {
                        "edgeAgent": {
                            "settings": {
-                               "image": "$upstream:8000/azureiotedge-agent:1.2.0-rc1",
+                               "image": "$upstream:8000/azureiotedge-agent:1.2.0-rc2",
                                "createOptions": ""
                            },
                            "type": "docker"
                        },
                        "edgeHub": {
                            "settings": {
-                               "image": "$upstream:8000/azureiotedge-hub:1.2.0-rc1",
+                               "image": "$upstream:8000/azureiotedge-hub:1.2.0-rc2",
                                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
                            },
                            "type": "docker",

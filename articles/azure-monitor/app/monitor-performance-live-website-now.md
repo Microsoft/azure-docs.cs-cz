@@ -4,12 +4,12 @@ description: Monitorování výkonu webu bez opětovného nasazení. Funguje s A
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 6c27c78bf8e3f3b8af342a14a38c9be3821d781a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 53dbcc341fdd4bc194d34d40cdd2a975df496376
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020921"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186299"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentace webových aplikací za běhu s Application Insights připojením bez kódu
 
@@ -40,14 +40,14 @@ Tady je rekapitulace toho, co každý způsob přináší:
 
 |  | Při sestavení | Za běhu |
 | --- | --- | --- |
-| **Vyžádá & výjimky.** |Yes |Yes |
-| **[Podrobnější výjimky](./asp-net-exceptions.md)** | |Yes |
+| **Vyžádá & výjimky.** |Ano |Ano |
+| **[Podrobnější výjimky](./asp-net-exceptions.md)** | |Ano |
 | **[Diagnostika závislostí](./asp-net-dependencies.md)** |Na platformě .NET 4.6+, ale méně podrobná |Ano, úplné podrobnosti: kódy výsledků, text příkazu SQL, příkaz HTTP|
-| **[Čítače výkonu systému](./performance-counters.md)** |Yes |Yes |
-| **[Rozhraní API pro vlastní telemetrii][api]** |Yes |No |
-| **[Integrace protokolu trasování](./asp-net-trace-logs.md)** |Yes |No |
-| **[Zobrazení stránky & uživatelských dat](./javascript.md)** |Yes |No |
-| **Nutnost znovu sestavit kód** |Yes | No |
+| **[Čítače výkonu systému](./performance-counters.md)** |Ano |Ano |
+| **[Rozhraní API pro vlastní telemetrii][api]** |Ano |No |
+| **[Integrace protokolu trasování](./asp-net-trace-logs.md)** |Ano |No |
+| **[Zobrazení stránky & uživatelských dat](./javascript.md)** |Ano |No |
+| **Nutnost znovu sestavit kód** |Ano | No |
 
 
 
@@ -85,7 +85,7 @@ Pokud chcete znovu publikovat aniž byste přidali Application Insights do kódu
 4. Obnovte veškeré úpravy, které jste provedli v souboru .config.
 
 
-## <a name="troubleshooting"></a><a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshooting"></a><a name="troubleshoot"></a>Poradce při potížích
 
 ### <a name="confirm-a-valid-installation"></a>Potvrďte platnou instalaci. 
 
@@ -93,7 +93,7 @@ Tady je několik kroků, pomocí kterých můžete ověřit, že se instalace ú
 
 - Ověřte, že se soubor applicationInsights.config nachází v adresáři cílové aplikace a obsahuje vaše ikey.
 
-- Pokud se domníváte, že chybí data, můžete spustit dotaz v části [Analytics](../log-query/get-started-portal.md) a zobrazit seznam všech cloudových rolí, které aktuálně odesílají telemetrii.
+- Pokud se domníváte, že chybí data, můžete spustit dotaz v části [Analytics](../log-query/log-analytics-tutorial.md) a zobrazit seznam všech cloudových rolí, které aktuálně odesílají telemetrii.
   ```Kusto
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
@@ -340,4 +340,3 @@ Přidání další telemetrie:
 [qna]: ../faq.md
 [roles]: ./resources-roles-access-control.md
 [usage]: ./javascript.md
-

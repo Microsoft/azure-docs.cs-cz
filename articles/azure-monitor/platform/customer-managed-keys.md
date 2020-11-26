@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/18/2020
-ms.openlocfilehash: 7bfd951d7cec27e0b8264aaabf9bc3a17875256a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9715724fc0fbd25198dd3244215ac2c12638d2b8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000721"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185959"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Klíč spravovaný zákazníkem v Azure Monitoru 
 
@@ -72,7 +72,7 @@ Platí následující pravidla:
 1. Udělování oprávnění vašemu Key Vault
 1. Propojení Log Analyticsch pracovních prostorů
 
-Konfigurace Customer-Managed klíčů není podporovaná v Azure Portal a zřizování se provádí prostřednictvím [PowerShellu](https://docs.microsoft.com/powershell/module/az.operationalinsights/), [CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics) nebo požadavků [REST](https://docs.microsoft.com/rest/api/loganalytics/) .
+Konfigurace Customer-Managed klíčů není podporovaná v Azure Portal a zřizování se provádí prostřednictvím [PowerShellu](/powershell/module/az.operationalinsights/), [CLI](/cli/azure/monitor/log-analytics) nebo požadavků [REST](/rest/api/loganalytics/) .
 
 ### <a name="asynchronous-operations-and-status-check"></a>Asynchronní operace a kontroly stavu
 
@@ -107,7 +107,7 @@ Tato nastavení je možné aktualizovat v Key Vault prostřednictvím rozhraní 
 
 ### <a name="create-cluster"></a>Vytvoření clusteru
 
-Postupujte podle postupu popsaného v [článku věnovaném vyhrazeným clusterům](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters#creating-a-cluster). 
+Postupujte podle postupu popsaného v [článku věnovaném vyhrazeným clusterům](../log-query/logs-dedicated-clusters.md#creating-a-cluster). 
 
 > [!IMPORTANT]
 > Zkopírujte a uložte odpověď, protože budete potřebovat podrobnosti v části Další kroky.
@@ -212,7 +212,7 @@ K provedení této operace musíte mít oprávnění Write pro váš pracovní p
 
 Tato operace je asynchronní a její dokončení může chvíli trvat.
 
-Postupujte podle postupu popsaného v [článku věnovaném vyhrazeným clusterům](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters#link-a-workspace-to-the-cluster).
+Postupujte podle postupu popsaného v [článku věnovaném vyhrazeným clusterům](../log-query/logs-dedicated-clusters.md#link-a-workspace-to-the-cluster).
 
 ## <a name="key-revocation"></a>Odvolání klíče
 
@@ -511,7 +511,7 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
 
 - Odkaz na pracovní prostor na cluster se nezdaří, pokud je propojený s jiným clusterem.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 - Chování při Key Vault dostupnosti
   - V normálním provozu – mezipaměť úložiště AEK na krátkou dobu a vrátí se zpět na Key Vault k pravidelnému rozbalení.

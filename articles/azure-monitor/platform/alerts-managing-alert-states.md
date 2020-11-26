@@ -5,16 +5,16 @@ ms.subservice: alerts
 ms.topic: conceptual
 author: anantr
 ms.date: 09/24/2018
-ms.openlocfilehash: b91c3d59a5a37457d67fdfbc646334fccb331df5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: fa1701c59f099f5222ab6454cc67b9dc20d1e7e7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104797"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186673"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>Správa stavů inteligentních skupin a upozornění
 
-Výstrahy v Azure Monitor nyní mají [stav výstrahy a stav monitorování](./alerts-overview.md) , a podobně inteligentní skupiny mají [stav inteligentní skupiny](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json). Změny stavu jsou nyní zachyceny v historii přidružené k příslušné výstraze nebo inteligentní skupině. Tento článek vás provede procesem změny stavu pro výstrahu i pro čipovou skupinu.
+Výstrahy v Azure Monitor nyní mají [stav výstrahy a stav monitorování](./alerts-overview.md) , a podobně inteligentní skupiny mají [stav inteligentní skupiny](./alerts-smartgroups-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json). Změny stavu jsou nyní zachyceny v historii přidružené k příslušné výstraze nebo inteligentní skupině. Tento článek vás provede procesem změny stavu pro výstrahu i pro čipovou skupinu.
 
 ## <a name="change-the-state-of-an-alert"></a>Změna stavu výstrahy
 

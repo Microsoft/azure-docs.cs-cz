@@ -3,12 +3,12 @@ title: Připojení hybridních počítačů k Azure z centra pro správu Windows
 description: V tomto článku se dozvíte, jak nainstalovat agenta a připojit počítače k Azure pomocí serverů s podporou ARC Azure z centra pro správu systému Windows.
 ms.date: 10/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: d47e3dd4434d719f890b64e4cdfb12a189c0632a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 8fa118a254689feade2897f083bb3aa2dc9db02c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133589"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183409"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-windows-admin-center"></a>Připojení hybridních počítačů k Azure z centra pro správu Windows
 
@@ -36,11 +36,11 @@ Provedením následujících kroků nakonfigurujte Windows Server se servery s p
 
 1. V seznamu připojení na stránce **Přehled** vyberte ze seznamu připojené servery Windows Server, ke kterému se chcete připojit.
 
-1. V levém podokně vyberte **Azure Hybrid Services** .
+1. V levém podokně vyberte **Azure Hybrid Services**.
 
-1. Na stránce **Azure Hybrid Services** vyberte **zjišťování služeb Azure** .
+1. Na stránce **Azure Hybrid Services** vyberte **zjišťování služeb Azure**.
 
-1. Na stránce **Vyhledat služby Azure** v části **využití zásad a řešení Azure ke správě serverů pomocí Azure ARC** vyberte **nastavit** .
+1. Na stránce **Vyhledat služby Azure** v části **využití zásad a řešení Azure ke správě serverů pomocí Azure ARC** vyberte **nastavit**.
 
 1. Pokud se zobrazí výzva k ověření do Azure, na stránce **Settings\Azure ARC pro servery** vyberte **Začínáme.**
 
@@ -49,7 +49,7 @@ Provedením následujících kroků nakonfigurujte Windows Server se servery s p
     1. V rozevíracím seznamu **předplatné Azure** vyberte předplatné Azure.
     1. V části **Skupina prostředků** vyberte možnost **nové** , pokud chcete vytvořit novou skupinu prostředků, nebo v rozevíracím seznamu **Skupina prostředků** vyberte existující skupinu prostředků, ze které se má počítač zaregistrovat a spravovat.
     1. V rozevíracím seznamu **oblast** vyberte oblast Azure, do které se budou ukládat metadata serverů.
-    1. Pokud počítač nebo server komunikuje prostřednictvím proxy server pro připojení k Internetu, vyberte možnost **použít proxy server** . Zadejte proxy server IP adresu nebo název a číslo portu, které bude počítač používat ke komunikaci s proxy server.
+    1. Pokud počítač nebo server komunikuje prostřednictvím proxy server pro připojení k Internetu, vyberte možnost **použít proxy server**. Zadejte proxy server IP adresu nebo název a číslo portu, které bude počítač používat ke komunikaci s proxy server.
 
 1. Vyberte **nastavit** , abyste mohli pokračovat v konfiguraci Windows serveru se servery s podporou ARC Azure.
 
@@ -69,4 +69,4 @@ Po instalaci agenta a jeho konfiguraci pro připojení k serverům s podporou AR
 
 * Naučte se, jak spravovat počítač pomocí [Azure Policy](../../governance/policy/overview.md), jako je [Konfigurace hosta](../../governance/policy/concepts/guest-configuration.md)virtuálního počítače, ověření, že se počítač hlásí k očekávanému log Analyticsmu pracovnímu prostoru, povolit monitorování pomocí [Azure monitor s virtuálními počítači](../../azure-monitor/insights/vminsights-enable-policy.md)a mnohem víc.
 
-* Přečtěte si další informace o [agentovi Log Analytics](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je vyžadován, pokud chcete shromažďovat data o monitorování operačního systému a úloh, spravovat je pomocí runbooků nebo funkcí automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-intro.md).
+* Přečtěte si další informace o [agentovi Log Analytics](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je vyžadován, pokud chcete shromažďovat data o monitorování operačního systému a úloh, spravovat je pomocí runbooků nebo funkcí automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-introduction.md).

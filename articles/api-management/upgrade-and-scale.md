@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: c7f0e98b5ea2fdd13b1daa9fd9737998eb6cfaf1
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 466af29a3f073f73d4a0fc62d74709cd59f82425
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "96010210"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183783"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Upgrade a škálování instance služby Azure API Management  
 
@@ -29,7 +29,7 @@ Cena každé jednotky a dostupné funkce (například nasazení ve více oblaste
 >[!NOTE]
 >Článek s [podrobnostmi o cenách](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) ukazuje přibližný počet kapacit jednotek v každé úrovni. Pokud chcete získat přesnější čísla, musíte se podívat na reálný scénář pro vaše rozhraní API. Podívejte se na [kapacitu článku instance služby Azure API Management](api-management-capacity.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete postupovat podle kroků v tomto článku, musíte:
 
@@ -80,7 +80,7 @@ Můžete upgradovat a downgradovat z libovolné úrovně a z ní. Upgrade nebo d
 Pokud provádíte škálování z nebo do úrovně Developer, dojde k výpadkům. V opačném případě nedochází k výpadkům. 
 
 ## <a name="compute-isolation"></a>Izolace výpočtů
-Pokud vaše požadavky na zabezpečení zahrnují [izolaci výpočtů](https://docs.microsoft.com/azure/azure-government/azure-secure-isolation-guidance#compute-isolation), můžete použít **izolovanou** cenovou úroveň. Tato vrstva zajišťuje, aby výpočetní prostředky instance služby API Management využily celého fyzického hostitele a poskytovaly potřebnou úroveň izolace, která je nutná k podpoře, například ministerstva pro úlohy obrany obrany 5 (IL5). Pokud chcete získat přístup k izolované vrstvě, [vytvořte lístek podpory](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). 
+Pokud vaše požadavky na zabezpečení zahrnují [izolaci výpočtů](../azure-government/azure-secure-isolation-guidance.md#compute-isolation), můžete použít **izolovanou** cenovou úroveň. Tato vrstva zajišťuje, aby výpočetní prostředky instance služby API Management využily celého fyzického hostitele a poskytovaly potřebnou úroveň izolace, která je nutná k podpoře, například ministerstva pro úlohy obrany obrany 5 (IL5). Pokud chcete získat přístup k izolované vrstvě, [vytvořte lístek podpory](../azure-portal/supportability/how-to-create-azure-support-request.md). 
 
 
 

@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 04d53dc213d5e992dc79e322b071025bdb447b1b
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 4527d871df3667f483efd529d93f044377f34651
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057497"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186180"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Rychlý Start: shromáždění dat z počítače se systémem Linux v hybridním prostředí pomocí Azure Monitor
 
@@ -38,7 +38,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
     ![Hledání Log Analyticsho pracovního prostoru v Azure Portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
-2. Vyberte **vytvořit**a pak vyberte volby pro následující položky:
+2. Vyberte **vytvořit** a pak vyberte volby pro následující položky:
 
    * Zadejte název nového **pracovního prostoru služby Log Analytics**, například *DefaultLAWorkspace*.  
    * Vyberte **předplatné**, které má být cílem propojení, výběrem z rozevíracího seznamu, pokud výchozí vybrané předplatné není vhodné.
@@ -115,7 +115,7 @@ Azure Monitor může shromažďovat události ze systému Linux syslog a číta�
 
 1. V Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte Log Analytics. Při psaní se seznam filtruje podle vašeho zadání. Vyberte **Log Analytics pracovní prostory** a v seznamu pracovních prostorů Log Analytics vyberte pracovní prostor, který hledáte, a vyberte **Upřesnit nastavení** **log Analyticsho** pracovního prostoru.
 
-2. Vyberte **data**a pak vyberte **syslog**.  
+2. Vyberte **data** a pak vyberte **syslog**.  
 
 3. Syslog přidáte zadáním názvu protokolu. Zadejte **SYSLOG** a potom vyberte znaménko plus **+** .  
 
@@ -166,5 +166,4 @@ Teď, když shromažďujete data o provozu a výkonu z místního počítače s 
 Pokud chcete zjistit, jak zobrazit a analyzovat data, pokračujte k následujícímu kurzu.
 
 > [!div class="nextstepaction"]
-> [Zobrazení nebo analýza dat v Log Analytics](../log-query/get-started-portal.md)
-
+> [Zobrazení nebo analýza dat v Log Analytics](../log-query/log-analytics-tutorial.md)

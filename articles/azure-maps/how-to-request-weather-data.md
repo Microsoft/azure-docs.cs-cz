@@ -9,24 +9,24 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3e0dce10d582006ab8c1dabf6d4b3efc82d8f39f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c11f20286c514056d14b8faa941315345fea71f2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957108"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186333"
 ---
 # <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services"></a>Vyžádání dat počasí v reálném čase a předpovědi s využitím Azure Maps povětrnostních služeb
 
-Služba Azure Maps [počasí](https://docs.microsoft.com/rest/api/maps/weather) je sada rozhraní API RESTful, která vývojářům umožňuje integrovat do jejich řešení vysoce dynamická data historických, v reálném čase a předpovědi počasí. V tomto článku vám ukážeme, jak si vyžádat data počasí v reálném čase i předpovědi.
+Služba Azure Maps [počasí](/rest/api/maps/weather) je sada rozhraní API RESTful, která vývojářům umožňuje integrovat do jejich řešení vysoce dynamická data historických, v reálném čase a předpovědi počasí. V tomto článku vám ukážeme, jak si vyžádat data počasí v reálném čase i předpovědi.
 
 V tomto článku se dozvíte, jak:
 
-* Vyžádání dat počasí v reálném čase (aktuální) pomocí [rozhraní API získat aktuální podmínky](https://docs.microsoft.com/rest/api/maps/weather/getcurrentconditionspreview)
-* Vyžádejte si závažné výstrahy počasí pomocí [rozhraní API získat závažné nepočasí výstrahy](https://docs.microsoft.com/rest/api/maps/weather/getsevereweatheralertspreview).
-* Vyžádejte si denní předpovědi pomocí [rozhraní API získat denní předpovědi](https://docs.microsoft.com/rest/api/maps/weather/getdailyforecastpreview).
-* Vyžádá hodinové prognózy pomocí [rozhraní Get hodinové prognózy API](https://docs.microsoft.com/rest/api/maps/weather/gethourlyforecastpreview).
-* Vyžádejte si minutové prognózy s použitím [rozhraní API pro předpovědi pro získání minut](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview).
+* Vyžádání dat počasí v reálném čase (aktuální) pomocí [rozhraní API získat aktuální podmínky](/rest/api/maps/weather/getcurrentconditionspreview)
+* Vyžádejte si závažné výstrahy počasí pomocí [rozhraní API získat závažné nepočasí výstrahy](/rest/api/maps/weather/getsevereweatheralertspreview).
+* Vyžádejte si denní předpovědi pomocí [rozhraní API získat denní předpovědi](/rest/api/maps/weather/getdailyforecastpreview).
+* Vyžádá hodinové prognózy pomocí [rozhraní Get hodinové prognózy API](/rest/api/maps/weather/gethourlyforecastpreview).
+* Vyžádejte si minutové prognózy s použitím [rozhraní API pro předpovědi pro získání minut](/rest/api/maps/weather/getminuteforecastpreview).
 
 Toto video poskytuje přehled služeb počasí v Azure Maps s příklady volání REST.
 
@@ -34,21 +34,21 @@ Toto video poskytuje přehled služeb počasí v Azure Maps s příklady volán�
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps-Weather-services-for-developers/player" width="960" height="540" allowFullScreen frameBorder="0" title="Azure Maps povětrnostní služby pro vývojáře – video pro Microsoft Channel 9"></iframe>
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 
     >[!IMPORTANT]
-    >[Rozhraní API pro předpověď výsledků Get minut](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview) vyžaduje klíč cenové úrovně S1. Všechna ostatní rozhraní API vyžadují klíč cenové úrovně S0.
+    >[Rozhraní API pro předpověď výsledků Get minut](/rest/api/maps/weather/getminuteforecastpreview) vyžaduje klíč cenové úrovně S1. Všechna ostatní rozhraní API vyžadují klíč cenové úrovně S0.
 
 V tomto kurzu se používá aplikace [po](https://www.postman.com/) aplikaci, ale můžete zvolit jiné vývojové prostředí API.
 
 ## <a name="request-real-time-weather-data"></a>Vyžádat data o počasí v reálném čase
 
-[Rozhraní API získat aktuální podmínky](https://docs.microsoft.com/rest/api/maps/weather/getcurrentconditionspreview) vrací podrobné povětrnostní podmínky, jako je například vysrážení, teplota a vítr pro dané umístění souřadnic. Lze také načíst poznámky z posledních 6 nebo 24 hodin pro konkrétní umístění. Odpověď obsahuje podrobnosti, jako je datum a čas pozorování, stručný popis povětrnostních podmínek, ikona počasí, příznaky indikátoru pro vysrážení a teplota. Vrátí se také RealFeel™ teplotní a ultrafialový (UV) index.
+[Rozhraní API získat aktuální podmínky](/rest/api/maps/weather/getcurrentconditionspreview) vrací podrobné povětrnostní podmínky, jako je například vysrážení, teplota a vítr pro dané umístění souřadnic. Lze také načíst poznámky z posledních 6 nebo 24 hodin pro konkrétní umístění. Odpověď obsahuje podrobnosti, jako je datum a čas pozorování, stručný popis povětrnostních podmínek, ikona počasí, příznaky indikátoru pro vysrážení a teplota. Vrátí se také RealFeel™ teplotní a ultrafialový (UV) index.
 
-V tomto příkladu použijete [rozhraní API získat aktuální podmínky](https://docs.microsoft.com/rest/api/maps/weather/getcurrentconditionspreview) k načtení aktuálních povětrnostních podmínek v souřadnicích v Seattle, WA.
+V tomto příkladu použijete [rozhraní API získat aktuální podmínky](/rest/api/maps/weather/getcurrentconditionspreview) k načtení aktuálních povětrnostních podmínek v souřadnicích v Seattle, WA.
 
 1. Otevřete aplikaci pro vyúčtování. V horní části okna po aplikaci vyberte **Nový**. V okně **vytvořit nové** vyberte **kolekce**.  Pojmenujte kolekci a vyberte tlačítko **vytvořit** . Tuto kolekci použijete pro zbytek příkladů v tomto dokumentu.
 
@@ -235,9 +235,9 @@ V tomto příkladu použijete [rozhraní API získat aktuální podmínky](https
 
 ## <a name="request-severe-weather-alerts"></a>Vyžadovat závažné výstrahy počasí
 
-[Azure Maps získat závažné počasí upozorňující na nepočasí](https://docs.microsoft.com/rest/api/maps/weather/getsevereweatheralertspreview) vrátí závažné výstrahy počasí, které jsou dostupné po celém světě, od oficiálních meteorologických úřadů státní správy a od začátku globálního až po regionální poskytovatele upozornění na počasí. Služba může vracet podrobnosti, jako je typ výstrahy, kategorie, úroveň a podrobné popisy aktivních závažných výstrah pro požadované umístění, jako je například hurikány, thunderstorms, blesk, tepelné vlny nebo doménová struktura požárů. Jako příklad mohou vedoucí logistiky vizualizovat závažné povětrnostní podmínky na mapě, společně s obchodními umístěními a plánovanými trasami a dále koordinovat s ovladači a místními pracovními procesy.
+[Azure Maps získat závažné počasí upozorňující na nepočasí](/rest/api/maps/weather/getsevereweatheralertspreview) vrátí závažné výstrahy počasí, které jsou dostupné po celém světě, od oficiálních meteorologických úřadů státní správy a od začátku globálního až po regionální poskytovatele upozornění na počasí. Služba může vracet podrobnosti, jako je typ výstrahy, kategorie, úroveň a podrobné popisy aktivních závažných výstrah pro požadované umístění, jako je například hurikány, thunderstorms, blesk, tepelné vlny nebo doménová struktura požárů. Jako příklad mohou vedoucí logistiky vizualizovat závažné povětrnostní podmínky na mapě, společně s obchodními umístěními a plánovanými trasami a dále koordinovat s ovladači a místními pracovními procesy.
 
-V tomto příkladu použijete [rozhraní API získat vážné počasí](https://docs.microsoft.com/rest/api/maps/weather/getsevereweatheralertspreview) k načtení aktuálních povětrnostních podmínek v souřadnicích v CHEYENNE, WY.
+V tomto příkladu použijete [rozhraní API získat vážné počasí](/rest/api/maps/weather/getsevereweatheralertspreview) k načtení aktuálních povětrnostních podmínek v souřadnicích v CHEYENNE, WY.
 
 >[!NOTE]
 >Tento příklad načte v době psaní závažné výstrahy počasí. Je možné, že v požadovaném umístění již neexistují závažná upozornění na počasí. Pokud chcete při spuštění tohoto příkladu načíst skutečná data o závažných výstrahách, budete potřebovat načíst data v jiném umístění souřadnic.
@@ -287,12 +287,12 @@ V tomto příkladu použijete [rozhraní API získat vážné počasí](https://
 
 ## <a name="request-daily-weather-forecast-data"></a>Žádost o každodenní předpověď počasí dat
 
-[Rozhraní API získat denní předpovědi](https://docs.microsoft.com/rest/api/maps/weather/getdailyforecastpreview) vrátí detailní denní předpověď počasí, jako je například teplota a vítr. Požadavek může určit, kolik dní se má vrátit: 1, 5, 10, 15, 25 nebo 45 dnů pro dané umístění souřadnic. Odpověď obsahuje podrobnosti, jako je teplota, větru, srážky, kvalita ovzduší a index UV.  V tomto příkladu si vyžádáme pět dní nastavením `duration=5` .
+[Rozhraní API získat denní předpovědi](/rest/api/maps/weather/getdailyforecastpreview) vrátí detailní denní předpověď počasí, jako je například teplota a vítr. Požadavek může určit, kolik dní se má vrátit: 1, 5, 10, 15, 25 nebo 45 dnů pro dané umístění souřadnic. Odpověď obsahuje podrobnosti, jako je teplota, větru, srážky, kvalita ovzduší a index UV.  V tomto příkladu si vyžádáme pět dní nastavením `duration=5` .
 
 >[!IMPORTANT]
 >V cenové úrovni S0 si můžete vyžádat denní předpověď na dalších 1, 5, 10 a 15 dnů. V cenové úrovni S1 si také můžete vyžádat denní předpověď na dalších 25 dní a 45 dnů.
 
-V tomto příkladu použijete [rozhraní API získat denní prognózu](https://docs.microsoft.com/rest/api/maps/weather/getdailyforecastpreview) k načtení 5 dní předpověď počasí pro souřadnice umístěné v Seattle, WA.
+V tomto příkladu použijete [rozhraní API získat denní prognózu](/rest/api/maps/weather/getdailyforecastpreview) k načtení 5 dní předpověď počasí pro souřadnice umístěné v Seattle, WA.
 
 1. Otevřete aplikaci pro odesílání, klikněte na **Nový** a vyberte **žádost**. Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozí části, nebo vytvořte novou, a pak vyberte **Uložit**.
 
@@ -535,12 +535,12 @@ V tomto příkladu použijete [rozhraní API získat denní prognózu](https://d
 
 ## <a name="request-hourly-weather-forecast-data"></a>Žádost o hodinu počasí data předpovědi
 
-[Rozhraní API získat hodinové prognózy](https://docs.microsoft.com/rest/api/maps/weather/gethourlyforecastpreview) vrátí Detailní předpověď počasí o hodinu od dalších 1, 12, 24 (1 den), 72 (3 dny), 120 (5 dní) a 240 hodin (10 dní) pro dané umístění souřadnic. Rozhraní API vrátí podrobnosti, jako je teplota, vlhkost, větru, srážky a index UV.
+[Rozhraní API získat hodinové prognózy](/rest/api/maps/weather/gethourlyforecastpreview) vrátí Detailní předpověď počasí o hodinu od dalších 1, 12, 24 (1 den), 72 (3 dny), 120 (5 dní) a 240 hodin (10 dní) pro dané umístění souřadnic. Rozhraní API vrátí podrobnosti, jako je teplota, vlhkost, větru, srážky a index UV.
 
 >[!IMPORTANT]
 >V cenové úrovni S0 si můžete vyžádat hodinovou prognózu pro následující 1, 12, 24 hodin (1 den) a 72 hodin (3 dny). V cenové úrovni S1 si také můžete vyžádat hodinovou prognózu po dobu příštích 120 (5 dní) a 240 hodin (10 dní).
 
-V tomto příkladu použijete [rozhraní Get hodinové prognózy API](https://docs.microsoft.com/rest/api/maps/weather/gethourlyforecastpreview) k načtení předpovědi hodinových počasí po dalších 12 hodin v souřadnicích v Seattle, WA.
+V tomto příkladu použijete [rozhraní Get hodinové prognózy API](/rest/api/maps/weather/gethourlyforecastpreview) k načtení předpovědi hodinových počasí po dalších 12 hodin v souřadnicích v Seattle, WA.
 
 1. Otevřete aplikaci pro odesílání, klikněte na **Nový** a vyberte **žádost**. Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozí části, nebo vytvořte novou, a pak vyberte **Uložit**.
 
@@ -645,9 +645,9 @@ V tomto příkladu použijete [rozhraní Get hodinové prognózy API](https://do
     ```
 ## <a name="request-minute-by-minute-weather-forecast-data"></a>Vyžádat data předpovědi počasí po minutách
 
- [Rozhraní API pro předpověď výsledků Get minut](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview) vrací předpovědi po minutách pro dané umístění po dobu dalších 120 minut. Uživatelé můžou vyžádat předpovědi počasí v intervalech od 1, 5 do 15 minut. Odpověď obsahuje podrobnosti, jako je například typ srážky (včetně deště, sněhu nebo kombinace obou), času zahájení a hodnoty intenzity vysrážení (dBZ).
+ [Rozhraní API pro předpověď výsledků Get minut](/rest/api/maps/weather/getminuteforecastpreview) vrací předpovědi po minutách pro dané umístění po dobu dalších 120 minut. Uživatelé můžou vyžádat předpovědi počasí v intervalech od 1, 5 do 15 minut. Odpověď obsahuje podrobnosti, jako je například typ srážky (včetně deště, sněhu nebo kombinace obou), času zahájení a hodnoty intenzity vysrážení (dBZ).
 
-V tomto příkladu použijete [rozhraní API pro předpověď minut](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview) k načtení předpovědi počasí po minutách v souřadnicích v Seattle, WA. Předpověď počasí je uvedena po dobu dalších 120 minut. Náš dotaz požádá o zadání prognózy v intervalech 15 minut, ale můžete upravit parametr tak, aby byl buď 1, nebo 5 minut.
+V tomto příkladu použijete [rozhraní API pro předpověď minut](/rest/api/maps/weather/getminuteforecastpreview) k načtení předpovědi počasí po minutách v souřadnicích v Seattle, WA. Předpověď počasí je uvedena po dobu dalších 120 minut. Náš dotaz požádá o zadání prognózy v intervalech 15 minut, ale můžete upravit parametr tak, aby byl buď 1, nebo 5 minut.
 
 1. Otevřete aplikaci pro odesílání, klikněte na **Nový** a vyberte **žádost**. Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozí části, nebo vytvořte novou, a pak vyberte **Uložit**.
 
@@ -751,8 +751,8 @@ V tomto příkladu použijete [rozhraní API pro předpověď minut](https://doc
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Azure Maps koncepty služby počasí](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts)
+> [Azure Maps koncepty služby počasí](./weather-services-concepts.md)
 
 > [!div class="nextstepaction"]
-> [Služba Azure Maps počasí REST API](https://docs.microsoft.com/rest/api/maps/weather
+> [Služba Azure Maps počasí REST API](/rest/api/maps/weather
 )

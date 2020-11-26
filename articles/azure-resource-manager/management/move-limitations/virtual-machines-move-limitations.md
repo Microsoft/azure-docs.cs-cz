@@ -2,13 +2,13 @@
 title: Přesun virtuálních počítačů Azure do nového předplatného nebo skupiny prostředků
 description: K přesunutí virtuálních počítačů do nové skupiny prostředků nebo předplatného použijte Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: 219a8b438d2715f6e97085a527b386e51759ec2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/25/2020
+ms.openlocfilehash: ace1fb6bf3944df539ec8f7301357e67d2b315a9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317102"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184072"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Pokyny pro přesunutí virtuálních počítačů
 
@@ -19,7 +19,6 @@ Tento článek popisuje scénáře, které aktuálně nejsou podporované, a Pos
 Následující scénáře se zatím nepodporují:
 
 * Virtual Machine Scale Sets se standardní SKU Load Balancer nebo veřejnou IP adresou standardní SKU nejde přesunout.
-* Virtuální počítače vytvořené z prostředků z Marketplace s připojenými plány se nedají přesunout mezi předplatnými. Zrušte zřízení virtuálního počítače v aktuálním předplatném a znovu ho nasaďte do nového předplatného.
 * Virtuální počítače ve stávající virtuální síti nejde přesunout do nového předplatného, když nepřesouváte všechny prostředky ve virtuální síti.
 * Virtuální počítače s nízkou prioritou a virtuální počítače s nízkou prioritou se nedají přesouvat mezi skupinami prostředků nebo předplatnými.
 * Virtuální počítače ve skupině dostupnosti se nedají přesunout jednotlivě.
@@ -36,6 +35,24 @@ az vm encryption disable --resource-group demoRG --name myVm1
 Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
 ```
 
+## <a name="virtual-machines-with-marketplace-plans"></a>Virtuální počítače s plány Marketplace
+
+Virtuální počítače vytvořené z prostředků z Marketplace s připojenými plány se nedají přesunout mezi předplatnými. Pokud chcete toto omezení obejít, můžete zrušit zřízení virtuálního počítače v aktuálním předplatném a znovu ho nasadit do nového předplatného. Následující kroky vám pomůžou znovu vytvořit virtuální počítač v novém předplatném. Nemusí ale fungovat pro všechny scénáře. Pokud plán již není na webu Marketplace k dispozici, tyto kroky nebudou fungovat.
+
+1. Zkopírujte informace o plánu.
+
+1. Buď naklonujte disk s operačním systémem do cílového předplatného, nebo po odstranění virtuálního počítače ze zdrojového předplatného přesuňte původní disk.
+
+1. V části cílové předplatné přijměte podmínky pro Marketplace vašeho plánu. Podmínky můžete přijmout spuštěním následujícího příkazu PowerShellu:
+
+   ```azurepowershell
+   Get-AzMarketplaceTerms -Publisher {publisher} -Product {product/offer} -Name {name/SKU} | Set-AzMarketplaceTerms -Accept
+   ```
+
+   Nebo můžete vytvořit novou instanci virtuálního počítače s plánem prostřednictvím portálu. Po přijetí podmínek v novém předplatném můžete virtuální počítač odstranit.
+
+1. V cílovém předplatném znovu vytvořte virtuální počítač z klonovaného disku s operačním systémem pomocí PowerShellu, CLI nebo šablony Azure Resource Manager. Zahrňte plán na tržišti, který je připojený k disku. Informace o plánu by se měly shodovat s plánem, který jste zakoupili v rámci nového předplatného.
+
 ## <a name="virtual-machines-with-azure-backup"></a>Virtuální počítače s Azure Backup
 
 Chcete-li přesunout virtuální počítače nakonfigurované s Azure Backup, je nutné odstranit body obnovení z trezoru.
@@ -44,7 +61,7 @@ Pokud je pro virtuální počítač povolené [obnovitelné odstranění](../../
 
 ### <a name="portal"></a>Portál
 
-1. Dočasné zastavení zálohování a uchování zálohovaných dat.
+1. Dočasně zastavte zálohování a udržujte zálohovaná data.
 2. Pokud chcete přesunout virtuální počítače nakonfigurované s Azure Backup, proveďte následující kroky:
 
    1. Najděte umístění virtuálního počítače.

@@ -10,11 +10,11 @@ ms.date: 08/31/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: c24970b30e522d593a491194dbbabb0421ad7f4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891054"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185528"
 ---
 # <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-pro-gpu"></a>Kurz: přenos dat prostřednictvím účtů úložiště s grafickým procesorem Azure Stack Edge pro 
 
@@ -159,7 +159,7 @@ Pro import certifikátů v Průzkumník služby Azure Storage proveďte následu
 
 ### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Přidat IP adresu zařízení a koncový bod služby BLOB Service
 
-[Při připojování přes *protokol HTTP*použijte stejný postup při přidávání IP adresy zařízení a koncového bodu služby BLOB Service](#add-device-ip-address-and-blob-service-endpoint-to-the-remote-client).
+[Při připojování přes *protokol HTTP* použijte stejný postup při přidávání IP adresy zařízení a koncového bodu služby BLOB Service](#add-device-ip-address-and-blob-service-endpoint-to-the-remote-client).
 
 ### <a name="configure-and-verify-connection"></a>Konfigurace a ověření připojení
 

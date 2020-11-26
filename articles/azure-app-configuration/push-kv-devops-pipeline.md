@@ -7,23 +7,23 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: lcozzens
-ms.openlocfilehash: b2b903f259fdd2564fbcaed5eb0a750edf9c06e2
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 936be917d5b494c9d71386440c711ef6c29ffb45
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075871"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183494"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Nastavení nabízených oznámení do konfigurace aplikace pomocí Azure Pipelines
 
 [Nabízená úloha konfigurace aplikace Azure](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push) přenáší hodnoty klíč-hodnota z konfiguračního souboru do úložiště konfigurace aplikace. Tato úloha v rámci kanálu umožňuje úplné funkce kruhů, protože teď můžete získat nastavení z úložiště konfigurace aplikace a nabízet nastavení do úložiště konfigurace aplikace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - Prostředek konfigurace aplikace – vytvořte si ho zdarma ve [Azure Portal](https://portal.azure.com).
 - Projekt Azure DevOps – [Vytvořte si ho zdarma](https://go.microsoft.com/fwlink/?LinkId=2014881) .
-- Úloha nabízených oznámení konfigurace Azure App – stažení z [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push#:~:text=Navigate%20to%20the%20Tasks%20tab,the%20Azure%20App%20Configuration%20instance.)zdarma
+- Úloha nabízených oznámení konfigurace Azure App – stažení z [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push)zdarma
 
 ## <a name="create-a-service-connection"></a>Vytvoření připojení služby
 
@@ -49,7 +49,7 @@ Přiřaďte správné přiřazení role konfigurace aplikace k přihlašovacím 
 1. Přejděte do cílového úložiště konfigurace aplikace. 
 1. Na levé straně vyberte **řízení přístupu (IAM)**.
 1. V horní části vyberte **+ Přidat** a vyberte **Přidat přiřazení role**.
-1. V části **role**vyberte možnost **vlastník dat konfigurace aplikace**. Tato role umožňuje, aby úloha četla do úložiště konfigurace aplikace a zapisovala do něj. 
+1. V části **role** vyberte možnost **vlastník dat konfigurace aplikace**. Tato role umožňuje, aby úloha četla do úložiště konfigurace aplikace a zapisovala do něj. 
 1. Vyberte objekt služby přidružený k připojení služby, které jste vytvořili v předchozí části.
   
 ## <a name="use-in-builds"></a>Použít v sestaveních
@@ -66,7 +66,7 @@ V této části se dozvíte, jak používat úlohu Azure App Configuration Push 
 
 V této části se dozvíte, jak používat úlohu Azure App Configuration Push v kanálech pro vydávání verzí Azure DevOps.
 
-1. Vyberte vydaná vydání **kanálů**a přejděte na stránku kanály vydání  >  **Releases**. Dokumentaci k kanálům pro vydávání verzí najdete [tady](/azure/devops/pipelines/release?view=azure-devops).
+1. Vyberte vydaná vydání **kanálů** a přejděte na stránku kanály vydání  >  **Releases**. Dokumentaci k kanálům pro vydávání verzí najdete [tady](/azure/devops/pipelines/release?view=azure-devops).
 1. Vyberte existující kanál verze. Pokud ji nemáte, vyberte **+ Nová** a vytvořte novou.
 1. Kliknutím na tlačítko **Upravit** v pravém horním rohu upravte kanál verze.
 1. Vyberte **fázi** pro přidání úlohy. Další informace o fázích najdete [tady](/azure/devops/pipelines/release/environments?view=azure-devops).
@@ -93,11 +93,11 @@ Následující parametry používá úloha nabízení konfigurace aplikace:
 
 Po vyplnění požadovaných parametrů spusťte kanál. Všechny klíčové hodnoty v zadaném konfiguračním souboru se nahrají do konfigurace aplikace.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud dojde k neočekávané chybě, můžete povolit protokoly ladění nastavením proměnné kanálu `system.debug` na `true` .
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Jak můžu nahrát víc konfiguračních souborů?**
 

@@ -4,19 +4,19 @@ description: Efektivní sledování webových rolí a rolí pracovních procesů
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: cae2e4e1d5b5e199e772c5263a46d82289f5d6ac
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 29482403358936b95fc5e814b68238cc8c25f7a8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992845"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186350"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights pro Azure Cloud Services
 [Application Insights][start] můžou monitorovat [aplikace cloudových služeb Azure](https://azure.microsoft.com/services/cloud-services/) kvůli dostupnosti, výkonu, selhání a využití díky kombinování dat ze Application Insights sad SDK s [Azure Diagnosticsmi](../platform/diagnostics-extension-overview.md) daty z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
 
 ![Řídicí panel přehled](./media/cloudservices/overview-graphs.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než začnete, budete potřebovat:
 
 * Předplatné [Azure](https://azure.com) . Přihlaste se pomocí účet Microsoft pro Windows, Xbox Live nebo jiné cloudové služby Microsoftu. 
@@ -85,9 +85,9 @@ Jednotlivé prostředky identifikuje klíč instrumentace. Tento klíč možná 
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Nastavení diagnostiky Azure pro každou roli
 Tuto možnost nastavte, pokud chcete aplikaci monitorovat pomocí Application Insights. U webových rolí Tato možnost poskytuje monitorování výkonu, výstrahy, diagnostiku a analýzu využití. U ostatních rolí můžete vyhledávat a monitorovat Azure Diagnostics, jako je například restart, čítače výkonu a volání System. Diagnostics. Trace. 
 
-1. V aplikaci Visual Studio Průzkumník řešení v části **\<YourCloudService>**  >  **role**otevřete vlastnosti jednotlivých rolí.
+1. V aplikaci Visual Studio Průzkumník řešení v části **\<YourCloudService>**  >  **role** otevřete vlastnosti jednotlivých rolí.
 
-1. V okně **Konfigurace**zaškrtněte políčko **Odeslat diagnostická data do Application Insights** a pak vyberte prostředek Application Insights, který jste vytvořili dříve.
+1. V okně **Konfigurace** zaškrtněte políčko **Odeslat diagnostická data do Application Insights** a pak vyberte prostředek Application Insights, který jste vytvořili dříve.
 
 Pokud jste se rozhodli použít samostatný prostředek Application Insights pro každou konfiguraci sestavení, vyberte nejprve konfiguraci.
 
@@ -95,7 +95,7 @@ Pokud jste se rozhodli použít samostatný prostředek Application Insights pro
 
 To má vliv na vložení klíčů instrumentace Application Insights do souborů s názvem *ServiceConfiguration. \* . cscfg*. Zde je [ukázkový kód](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
 
-Pokud chcete změnit úroveň diagnostických informací, které se odesílají do Application Insights, můžete to provést tak, že [přímo upravíte soubory *. cscfg* ](../platform/diagnostics-extension-to-application-insights.md).
+Pokud chcete změnit úroveň diagnostických informací, které se odesílají do Application Insights, můžete to provést tak, že [přímo upravíte soubory *. cscfg*](../platform/diagnostics-extension-to-application-insights.md).
 
 ## <a name="install-the-sdk-in-each-project"></a><a name="sdk"></a>Instalace sady SDK v každém projektu
 Pomocí této možnosti můžete přidat vlastní obchodní telemetrii k libovolné roli. Možnost poskytuje užší analýzu způsobu použití a provádění vaší aplikace.
@@ -191,7 +191,7 @@ Chcete-li zobrazit čítače výkonu a počty událostí, otevřete [Průzkumní
 
 ![Data Azure Diagnostics](./media/cloudservices/23-wad.png)
 
-Pokud chcete hledat v různých protokolech trasování odesílaných pomocí Azure Diagnostics, použijte [vyhledávací](./diagnostic-search.md) dotaz nebo [dotaz Analytics](../log-query/get-started-portal.md). Předpokládejme například, že máte neošetřenou výjimku, která způsobila selhání a recyklaci role. Tyto informace se zobrazují v kanálu Aplikace protokolu událostí systému Windows. Pomocí služby Search můžete zobrazit chybu protokolu událostí systému Windows a získat úplné trasování zásobníku pro výjimku. V takovém případě vám pomůže najít hlavní příčinu problému.
+Pokud chcete hledat v různých protokolech trasování odesílaných pomocí Azure Diagnostics, použijte [vyhledávací](./diagnostic-search.md) dotaz nebo [dotaz Analytics](../log-query/log-analytics-tutorial.md). Předpokládejme například, že máte neošetřenou výjimku, která způsobila selhání a recyklaci role. Tyto informace se zobrazují v kanálu Aplikace protokolu událostí systému Windows. Pomocí služby Search můžete zobrazit chybu protokolu událostí systému Windows a získat úplné trasování zásobníku pro výjimku. V takovém případě vám pomůže najít hlavní příčinu problému.
 
 ![Hledání Azure Diagnostics](./media/cloudservices/25-wad.png)
 

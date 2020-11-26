@@ -6,16 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: b23f1d455610222ffa5713773a0bfb947f23ce34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fb0288d592af8bd23415b31ecf6a6e3448b92ba
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342252"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186027"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na protokol pomocí šablony Resource Manageru
 
-Výstrahy protokolu umožňují uživatelům pomocí [log Analyticsho](../log-query/get-started-portal.md) dotazu vyhodnotit protokoly prostředků každou nastavenou frekvencí a vyvolat výstrahu na základě výsledků. Pravidla mohou aktivovat spuštění jedné nebo více akcí pomocí [skupin akcí](./action-groups.md). [Přečtěte si další informace o funkcích a terminologii výstrah protokolu](alerts-unified-log.md).
+Výstrahy protokolu umožňují uživatelům pomocí [log Analyticsho](../log-query/log-analytics-tutorial.md) dotazu vyhodnotit protokoly prostředků každou nastavenou frekvencí a vyvolat výstrahu na základě výsledků. Pravidla mohou aktivovat spuštění jedné nebo více akcí pomocí [skupin akcí](./action-groups.md). [Přečtěte si další informace o funkcích a terminologii výstrah protokolu](alerts-unified-log.md).
 
 V tomto článku se dozvíte, jak můžete pomocí [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) nakonfigurovat [výstrahy protokolu](alerts-unified-log.md) v Azure monitor. Šablony Správce prostředků umožňují programově nastavit výstrahy konzistentně a reprodukovatelným způsobem napříč vašimi prostředími. Výstrahy protokolu se vytvářejí ve `Microsoft.Insights/scheduledQueryRules` zprostředkovateli prostředků. Viz reference k rozhraní API pro [naplánovaná pravidla dotazů rozhraní API](/rest/api/monitor/scheduledqueryrules/).
 
@@ -26,7 +26,7 @@ Základní postup je následující:
 4. Nasaďte šablonu pomocí libovolné metody nasazení.
 
 > [!NOTE]
-> Data protokolu z [Log Analytics pracovního prostoru](../log-query/get-started-portal.md) lze odeslat do úložiště metrik Azure monitor. Výstrahy metrik mají [různé chování](alerts-metric-overview.md), což může být více žádoucí v závislosti na datech, se kterými pracujete. Informace o tom, co a jak můžete směrovat protokoly do metrik, najdete v tématu [Upozornění na metriky pro protokoly](alerts-metric-logs.md).
+> Data protokolu z [Log Analytics pracovního prostoru](../log-query/log-analytics-tutorial.md) lze odeslat do úložiště metrik Azure monitor. Výstrahy metrik mají [různé chování](alerts-metric-overview.md), což může být více žádoucí v závislosti na datech, se kterými pracujete. Informace o tom, co a jak můžete směrovat protokoly do metrik, najdete v tématu [Upozornění na metriky pro protokoly](alerts-metric-logs.md).
 
 > [!NOTE]
 > Výstrahy protokolu pro Log Analytics používané ke správě pomocí starší verze [rozhraní API Log Analytics výstrah](api-alerts.md) a starších šablon [Log Analytics uložených hledání a upozornění](../insights/solutions.md). [Přečtěte si další informace o přepnutí na aktuální rozhraní ScheduledQueryRules API](alerts-log-api-switch.md).

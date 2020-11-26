@@ -3,14 +3,14 @@ title: Záznamy DNS datového centra Azure, které používá Azure Automation |
 description: Tento článek obsahuje záznamy DNS vyžadované funkcemi Azure Automation, když omezíte komunikaci s konkrétní oblastí Azure hostující tento účet Automation.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/23/2020
+ms.date: 11/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 17d0857a8979cfcc632ab8951fb255f97229a665
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4b8f48afc75c0a96937575bdad5bb884d0cb4d8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87117188"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183715"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>Záznamy DNS pro oblasti Azure používané Azure Automation
 
@@ -89,6 +89,9 @@ Pro podporu [privátního odkazu](../../private-link/private-link-overview.md) v
 ![Stránka primárního klíče účtu Automation](./media/automation-region-dns-records/automation-account-keys.png)
 
 Zkopírujte hodnotu po *účtech/* z pole **Adresa URL** – `https://<GUID>.agentsvc.<region>.azure-automation.net/accounts/<GUID>`
+
+> [!NOTE]
+> Všechny záznamy DNS Webhooku a AgentService se aktualizovaly na nové styly DNS pro podporu privátního odkazu. U záznamů DNS JRDS se podporují staré i nové styly DNS. Pokud nepoužíváte privátní odkaz, zobrazí se původní styl záznamů DNS, zatímco na základě privátního odkazu se zobrazí nový styl záznamů DNS.
 
 Doporučujeme používat adresy uvedené při definování [výjimek](../automation-runbook-execution.md#exceptions). Seznam IP adres oblastí a nikoli názvů oblastí získáte stažením souboru JSON z webu Microsoft Download Center pro následující cloudová prostředí:
 

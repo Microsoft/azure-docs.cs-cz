@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: ramakk
-ms.openlocfilehash: 50669dcce044988f2e45acc2a17ae43c140d1ab5
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 96d8ba058a33d408ec2ee2a1adfba9011f393da9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930301"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184480"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Pokyny pro plánování sítě Azure NetApp Files
 
@@ -27,7 +27,7 @@ Plánování síťové architektury je klíčovým prvkem návrhu jakékoli apli
 
 Azure NetApp Files svazky jsou navržené tak, aby se obsahovaly v podsíti pro zvláštní účely označované jako [delegovaná podsíť](../virtual-network/virtual-network-manage-subnet.md) v rámci Azure Virtual Network. Proto můžete ke svazkům přistupovat přímo z vaší virtuální sítě, ze virtuální sítě partnerských uzlů ve stejné oblasti nebo z místní sítě přes bránu Virtual Network (ExpressRoute nebo VPN Gateway) podle potřeby. Podsíť je vyhrazená pro Azure NetApp Files a neexistuje žádné připojení k ostatním službám Azure nebo Internetu.
 
-## <a name="considerations"></a>Důležité informace  
+## <a name="considerations"></a>Požadavky  
 
 Při plánování Azure NetApp Files sítě byste měli pochopit několik důležitých informací.
 
@@ -56,13 +56,13 @@ Následující tabulka popisuje síťové topologie podporované nástrojem Azur
 
 |    Topologie    |    Je podporováno    |     Alternativní řešení    |
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
-|    Připojení ke svazku v místní síti VNet    |    Yes    |         |
-|    Připojení ke svazku ve virtuální síti s partnerským vztahem (stejná oblast)    |    Yes    |         |
+|    Připojení ke svazku v místní síti VNet    |    Ano    |         |
+|    Připojení ke svazku ve virtuální síti s partnerským vztahem (stejná oblast)    |    Ano    |         |
 |    Připojení ke svazku ve virtuální síti s partnerským vztahem (mezi oblastí nebo globálním partnerským vztahem)    |    No    |    Žádné    |
-|    Připojení ke svazku přes ExpressRoute bránu    |    Yes    |         |
-|    Připojení z místního prostředí ke svazku ve virtuální síti rozbočovače prostřednictvím brány ExpressRoute a partnerského vztahu virtuálních sítí s přenosem brány    |    Yes    |        |
-|    Připojení z místního prostředí k svazku ve virtuální síti rozbočovače přes bránu VPN    |    Yes    |         |
-|    Připojení z místního prostředí k svazku ve virtuální síti rozbočovače prostřednictvím brány VPN a partnerského vztahu virtuálních sítí s přenosem brány    |    Yes    |         |
+|    Připojení ke svazku přes ExpressRoute bránu    |    Ano    |         |
+|    Připojení z místního prostředí ke svazku ve virtuální síti rozbočovače prostřednictvím brány ExpressRoute a partnerského vztahu virtuálních sítí s přenosem brány    |    Ano    |        |
+|    Připojení z místního prostředí k svazku ve virtuální síti rozbočovače přes bránu VPN    |    Ano    |         |
+|    Připojení z místního prostředí k svazku ve virtuální síti rozbočovače prostřednictvím brány VPN a partnerského vztahu virtuálních sítí s přenosem brány    |    Ano    |         |
 
 
 ## <a name="virtual-network-for-azure-netapp-files-volumes"></a>Virtuální síť pro Azure NetApp Files svazky
@@ -116,7 +116,7 @@ Následující diagram znázorňuje hybridní prostředí:
 
 ![Hybridní síťové prostředí](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
 
-V hybridním scénáři potřebují aplikace z místních datových center přístup k prostředkům v Azure.  Jedná se o případ, že chcete své datacentrum rozšíříte do Azure nebo pokud chcete používat nativní služby Azure nebo pro zotavení po havárii. Informace o tom, jak propojit více prostředků v místním prostředí s prostředky v Azure pomocí sítě VPN typu Site-to-site nebo ExpressRoute, najdete VPN Gateway v tématu [Možnosti plánování](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%252fazure%252fvirtual-network%252ftoc.json#planningtable) .
+V hybridním scénáři potřebují aplikace z místních datových center přístup k prostředkům v Azure.  Jedná se o případ, že chcete své datacentrum rozšíříte do Azure nebo pokud chcete používat nativní služby Azure nebo pro zotavení po havárii. Informace o tom, jak propojit více prostředků v místním prostředí s prostředky v Azure pomocí sítě VPN typu Site-to-site nebo ExpressRoute, najdete VPN Gateway v tématu [Možnosti plánování](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable) .
 
 Virtuální síť rozbočovače v Azure v hybridní hvězdicové topologii funguje jako centrální bod připojení k vaší místní síti. Paprsky jsou virtuální sítě partnerského vztahu s rozbočovačem a lze je použít k izolaci úloh.
 

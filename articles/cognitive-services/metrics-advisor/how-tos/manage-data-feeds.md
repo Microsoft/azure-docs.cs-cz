@@ -10,16 +10,16 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: mbullwin
-ms.openlocfilehash: de8d5d8e9fc5ce1df05cfd4c67ef146760e2c7e9
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: fb6eaf44967732d3a41ea92b0896540a40f694e3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043166"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184718"
 ---
 # <a name="how-to-manage-your-data-feeds"></a>Postupy: Správa datových kanálů
 
-Naučte se spravovat datové kanály připojitelné do služby Advisory metriky. Tento článek vás provede správou datových kanálů v monitorování metrik.
+Naučte se spravovat datové kanály připojitelné do služby Advisory metriky. Tento článek vás provede správou datových kanálů v poradci metriky.
 
 ## <a name="edit-a-data-feed"></a>Úprava datového kanálu
 
@@ -27,7 +27,7 @@ Naučte se spravovat datové kanály připojitelné do služby Advisory metriky.
 > Po vytvoření datového kanálu nelze změnit následující podrobnosti. 
 > * ID datového kanálu
 > * Čas vytvoření
-> * Rozměr
+> * Dimenze
 > * Typ zdroje
 > * Členitost
 
@@ -66,13 +66,13 @@ Poradce pro metriky umožňuje udělit oprávnění různým skupinám uživatel
 - Viewer: kdo má přístup k zobrazení datového kanálu jen pro čtení.
  
 
-## <a name="advanced-settings"></a>Rozšířená nastavení
+## <a name="advanced-settings"></a>Pokročilá nastavení
 
 Při vytváření nového datového kanálu je k dispozici několik volitelných upřesňujících nastavení, která je možné upravit na stránce s podrobnostmi o datovém kanálu.
 
 ### <a name="ingestion-options"></a>Možnosti ingestování
 
-* **Časový posun**příjmu: ve výchozím nastavení jsou data přijímána podle zadané členitosti. Například metrika s *denním* časovým razítkem bude ingestovat jeden den po jeho časovém razítku. Posun můžete použít k prodlevě času *příjmu s kladným* číslem nebo k jeho posunutí se *záporným* číslem.
+* **Časový posun** příjmu: ve výchozím nastavení jsou data přijímána podle zadané členitosti. Například metrika s *denním* časovým razítkem bude ingestovat jeden den po jeho časovém razítku. Posun můžete použít k prodlevě času *příjmu s kladným* číslem nebo k jeho posunutí se *záporným* číslem.
 
 * **Maximální souběžnost**: Tento parametr nastavte, pokud váš zdroj dat podporuje omezené souběžnosti. V opačném případě ponechte výchozí nastavení.
 
@@ -89,7 +89,7 @@ Při vytváření nového datového kanálu je k dispozici několik volitelných
     | :------------ | :--------------- |
     | Denně, Custom (>= 1 den), týdně, měsíčně     | 30 minut          |
     | Každou hodinu, vlastní (< 1 den)      | 10 minut |
-    | Ročně | 1 den          |
+    | Roční | 1 den          |
  
 ### <a name="fill-gap-when-detecting"></a>Při detekci vyplnit mezeru: 
 
@@ -106,7 +106,7 @@ Možnosti:
 
 Šablony odkazů na akce slouží k předdefinování akcí HTTP URL, které se skládají ze zástupných symbolů `%datafeed` , `%metric` ,, `%timestamp` `%detect_config` a `%tagset` . Tuto šablonu můžete použít k přesměrování z anomálie nebo incidentu na konkrétní adresu URL pro přechod k podrobnostem.
 
-:::image type="content" source="../media/action-link-template.png" alt-text="Datový kanál pro naplnění dat" lightbox="../media/action-link-template.png":::
+:::image type="content" source="../media/action-link-template.png" alt-text="Šablona odkazu na akci" lightbox="../media/action-link-template.png":::
 
 Jakmile vyplníte odkaz akce, klikněte na **odkaz přejít na akci** v možnosti akce v seznamu incidentu a na místní nabídku stromu incidentů. Zástupné symboly v šabloně odkazu akce nahraďte odpovídajícími hodnotami anomálie nebo incidentu.
 

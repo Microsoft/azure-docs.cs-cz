@@ -8,11 +8,11 @@ ms.topic: quickstart
 ms.date: 10/21/2020
 ms.author: duau
 ms.openlocfilehash: b0fd844021e7398e061072d7939b782616580c1c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368685"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185194"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit"></a>Rychlý Start: vytvoření a úprava okruhu ExpressRoute
 
@@ -41,13 +41,13 @@ Okruh ExpressRoute můžete vytvořit tak, že vyberete možnost vytvoření nov
 
     :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/create-expressroute-circuit-menu.png" alt-text="Vytvoření okruhu ExpressRoute":::
 
-2. Po výběru **ExpressRoute**se zobrazí stránka **vytvořit ExpressRoute** . Zadejte **skupinu prostředků**, **oblast**a  **název** okruhu. Pak vyberte **Další: >konfigurace **.
+2. Po výběru **ExpressRoute** se zobrazí stránka **vytvořit ExpressRoute** . Zadejte **skupinu prostředků**, **oblast** a  **název** okruhu. Pak vyberte **Další: >konfigurace**.
 
-    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-basic.png" alt-text="Vytvoření okruhu ExpressRoute":::
+    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-basic.png" alt-text="Konfigurace skupiny prostředků a oblasti":::
 
 3. Když vyplníte hodnoty na této stránce, ujistěte se, že zadáváte správnou úroveň SKU (Local, Standard nebo Premium) a model fakturace měření dat (bez omezení nebo měření).
 
-    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-configuration.png" alt-text="Vytvoření okruhu ExpressRoute":::
+    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-configuration.png" alt-text="Konfigurace okruhu":::
     
     * **Typ portu** určuje, jestli se připojujete k poskytovateli služeb nebo přímo do globální sítě Microsoftu v umístění partnerského vztahu.
     * **Vytvořit nový nebo importovat z klasického** nastavení určuje, jestli se vytvoří nový okruh, nebo pokud migrujete klasický okruh na Azure Resource Manager.
@@ -74,17 +74,17 @@ Okruh ExpressRoute můžete vytvořit tak, že vyberete možnost vytvoření nov
 
 Můžete zobrazit všechny okruhy, které jste vytvořili výběrem možnosti **všechny služby > sítě > okruhy ExpressRoute** v nabídce na levé straně.
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-menu.png" alt-text="Vytvoření okruhu ExpressRoute":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-menu.png" alt-text="Nabídka okruhu ExpressRoute":::
 
 Tady se zobrazí všechny okruhy ExpressRoute vytvořené v rámci předplatného.
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-list.png" alt-text="Vytvoření okruhu ExpressRoute":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-list.png" alt-text="Seznam okruhů ExpressRoute":::
 
 **Zobrazit vlastnosti**
 
 Vlastnosti okruhu můžete zobrazit tak, že ho vyberete. Na stránce **Přehled** pro váš okruh se klíč služby zobrazí v poli klíč služby. Chcete-li dokončit proces zajišťování, přečtěte si klíč služby pro váš okruh a poskytněte mu poskytovatele služby. Klíč služby je specifický pro váš okruh.
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview.png" alt-text="Vytvoření okruhu ExpressRoute":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview.png" alt-text="Zobrazení vlastností":::
 
 ### <a name="send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>Poslat klíč služby poskytovateli připojení pro zřizování
 
@@ -95,7 +95,7 @@ Při vytváření nového okruhu ExpressRoute je okruh v následujícím stavu:
 Stav poskytovatele: **není zřízené** .<BR>
 Stav okruhu: **povoleno**
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview-provisioning-state.png" alt-text="Vytvoření okruhu ExpressRoute":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview-provisioning-state.png" alt-text="Spustí proces zřizování.":::
 
 Když poskytovatel připojení v tuto chvíli povoluje poskytovatel připojení, změní se na následující stav:
 
@@ -111,7 +111,7 @@ Stav okruhu: **povoleno**
 
 Výběrem této možnosti můžete zobrazit vlastnosti okruhu, který vás zajímá. Než budete pokračovat, zkontrolujte **stav poskytovatele** a ujistěte se, že byl přesunut do stavu **zřizování** .
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png" alt-text="Vytvoření okruhu ExpressRoute":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png" alt-text="Stav okruhu a poskytovatele":::
 
 ### <a name="create-your-routing-configuration"></a>Vytvoření konfigurace směrování
 
@@ -159,7 +159,7 @@ Můžete provádět následující úlohy bez výpadku:
 
 Pokud chcete upravit okruh ExpressRoute, vyberte **Konfigurace**.
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-configuration.png" alt-text="Vytvoření okruhu ExpressRoute":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-configuration.png" alt-text="Upravit okruh":::
 
 ## <a name="deprovisioning-an-expressroute-circuit"></a><a name="delete"></a>Zrušení zřízení okruhu ExpressRoute
 
@@ -174,7 +174,7 @@ Pokud je stav zřizování poskytovatele služby okruhu ExpressRoute **zřizová
 
 Okruh ExpressRoute můžete odstranit tak, že vyberete ikonu **Odstranit** . Než budete pokračovat, ujistěte se, že stav poskytovatele není *zřízený* .
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-delete.png" alt-text="Vytvoření okruhu ExpressRoute":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-delete.png" alt-text="Odstranit okruh":::
 
 ## <a name="next-steps"></a>Další kroky
 

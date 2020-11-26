@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: kgremban
-ms.openlocfilehash: 7ab62b04f8bea76c7efb587665f87ccaf123da24
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: a7794bcdfa4f82698fdc5875bc94dcf52b70166e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108996"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185092"
 ---
 # <a name="install-or-uninstall-the-azure-iot-edge-runtime"></a>Instalace nebo odinstalace modulu runtime Azure IoT Edge
 
@@ -51,7 +51,7 @@ Připravte zařízení pro přístup k instalačním balíčkům společnosti Mi
      curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
      ```
 
-   * **Raspbian Stretch**:
+   * **Malina Pi OS Stretch**:
 
      ```bash
      curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
@@ -278,7 +278,7 @@ Pokud bude vaše zařízení během instalace offline nebo pokud chcete nainstal
 
 5. Chcete [-li nainstalovat](/powershell/module/microsoft.powershell.core/about/about_scripts#script-scope-and-dot-sourcing) nástroje s offline komponentami, poznamenejte si místní kopii skriptu PowerShellu. 
 
-6. Spusťte příkaz [Deploy-IoTEdge](reference-windows-scripts.md#deploy-iotedge) s `-OfflineInstallationPath` parametrem. Zadejte absolutní cestu k adresáři souborů. Příklad:
+6. Spusťte příkaz [Deploy-IoTEdge](reference-windows-scripts.md#deploy-iotedge) s `-OfflineInstallationPath` parametrem. Zadejte absolutní cestu k adresáři souborů. Třeba
 
    ```powershell
    . <path>\IoTEdgeSecurityDaemon.ps1

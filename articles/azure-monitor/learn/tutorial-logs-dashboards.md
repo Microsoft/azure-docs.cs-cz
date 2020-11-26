@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/28/2020
 ms.custom: mvc
-ms.openlocfilehash: d38a4ba04529e70ecfd772eef7f60179041f0273
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 880d173c6eef9d267e8860ebad805e071706de42
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927364"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186146"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Vytváření a sdílená řídicích panelů s daty Log Analytics
 
@@ -57,7 +57,7 @@ Když vytvoříte řídicí panel, ve výchozím nastavení je privátní. To zn
 Zobrazí se výzva k výběru předplatného a skupiny prostředků, do kterých se má řídicí panel publikovat. Pro usnadnění práce vás prostředí pro publikování na portálu navede k umístění řídicích panelů do skupiny prostředků **dashboards** (řídicí panely).  Ověřte vybrané předplatné a pak klikněte na **Publikovat**.  Přístup k informacím zobrazeným na řídicím panelu se řídí pomocí [řízení přístupu na základě role Azure (RBAC)](../../role-based-access-control/role-assignments-portal.md).   
 
 ## <a name="visualize-a-log-query"></a>Vizualizace dotazu protokolu
-[Log Analytics](../log-query/get-started-portal.md) je vyhrazený portál, který se používá pro práci s dotazy protokolů a jejich výsledky. Mezi tyto funkce patří možnost upravovat dotazy na několik řádků, selektivní spouštění kódu, funkce IntelliSense závislá na kontextu a inteligentní analýzy. V tomto kurzu použijete Log Analytics k vytvoření zobrazení výkonu v grafické podobě, uložíte ho pro budoucí dotaz a připnete ho na sdílený řídicí panel, který jste vytvořili dříve.
+[Log Analytics](../log-query/log-analytics-tutorial.md) je vyhrazený portál, který se používá pro práci s dotazy protokolů a jejich výsledky. Mezi tyto funkce patří možnost upravovat dotazy na několik řádků, selektivní spouštění kódu, funkce IntelliSense závislá na kontextu a inteligentní analýzy. V tomto kurzu použijete Log Analytics k vytvoření zobrazení výkonu v grafické podobě, uložíte ho pro budoucí dotaz a připnete ho na sdílený řídicí panel, který jste vytvořili dříve.
 
 Otevřete Log Analytics výběrem **protokolů** v nabídce Azure monitor. Začíná novým prázdným dotazem.
 

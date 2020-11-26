@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9b5addd9d275e9367988dc10689c27fa035e97dd
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4a9a4ed4ebba7f6f2470bb9e7000a899ebc26323
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951770"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185806"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Správa skupin prostředků Azure Resource Manager pomocí Azure CLI
 
@@ -135,7 +135,7 @@ Skript zobrazí šablonu v konzole nástroje.  Zkopírujte kód JSON a uložte h
 
 Funkce Exportovat šablonu nepodporuje export Azure Data Factorych prostředků. Další informace o tom, jak můžete exportovat Data Factory prostředky, najdete [v tématu kopírování nebo klonování datové továrny v Azure Data Factory](../../data-factory/copy-clone-data-factory.md).
 
-Chcete-li exportovat prostředky vytvořené prostřednictvím modelu nasazení Classic, je nutné [je migrovat do modelu nasazení Správce prostředků](../../virtual-machines/windows/migration-classic-resource-manager-overview.md).
+Chcete-li exportovat prostředky vytvořené prostřednictvím modelu nasazení Classic, je nutné [je migrovat do modelu nasazení Správce prostředků](../../virtual-machines/migration-classic-resource-manager-overview.md).
 
 Další informace najdete v tématu [Export jednoho a více prostředků do šablony v Azure Portal](../templates/export-template-portal.md).
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 940955c8ace956354a2747f5ad21430620c2a9d1
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: b84d24174771e8395677874c9dac863fa6f27a54
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95744564"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185908"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitoru    
 
@@ -78,7 +78,7 @@ Do faktury Azure se přidají poplatky za Log Analytics. Podrobnosti o fakturaci
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>Zobrazení využití Log Analytics na faktuře Azure 
 
-Azure poskytuje skvělou užitečnou funkci centra [Azure cost management + fakturace](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%252fazure%252fbilling%252fTOC.json) . Například funkce "cost Analysis" umožňuje zobrazit vaše výdaje na prostředky Azure. Nejdřív přidejte filtr podle "typ prostředku" (do Microsoft. operationalinsights/Workspace pro Log Analytics a Microsoft. operationalinsights/Workspace for Log Analytics clusters) vám umožní sledovat výdaje na Log Analytics. Pak u možnosti "seskupit podle" vyberte kategorii měřičů "nebo" měřič ".  Všimněte si, že jiné služby, například Azure Security Center a Sentinel Azure, účtují své využití také pomocí Log Analytics prostředků pracovního prostoru. Chcete-li zobrazit mapování na název služby, můžete místo grafu vybrat zobrazení tabulky. 
+Azure poskytuje skvělou užitečnou funkci centra [Azure cost management + fakturace](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json) . Například funkce "cost Analysis" umožňuje zobrazit vaše výdaje na prostředky Azure. Nejdřív přidejte filtr podle "typ prostředku" (do Microsoft. operationalinsights/Workspace pro Log Analytics a Microsoft. operationalinsights/Workspace for Log Analytics clusters) vám umožní sledovat výdaje na Log Analytics. Pak u možnosti "seskupit podle" vyberte kategorii měřičů "nebo" měřič ".  Všimněte si, že jiné služby, například Azure Security Center a Sentinel Azure, účtují své využití také pomocí Log Analytics prostředků pracovního prostoru. Chcete-li zobrazit mapování na název služby, můžete místo grafu vybrat zobrazení tabulky. 
 
 Další vysvětlení vašeho využití můžete získat [stažením informací o využití z webu Azure Portal](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal). Ve stažené tabulce uvidíte využití jednotlivých prostředků Azure (např. pracovního prostoru služby Log Analytics) po dnech. V této excelové tabulce můžete využití vašich Log Analytics pracovních prostorů najít prvním filtrováním ve sloupci měřiče měření, ve kterém se zobrazí "Log Analytics", "přehledy a analýzy (používané některými staršími cenovými úrovněmi) a" Azure Monitor "(používané cenovými úrovněmi rezervací kapacity) a pak přidání filtru do sloupce" ID instance ", který je" obsahuje pracovní prostor "nebo" obsahuje cluster "(druhý k zahrnutí Log Analytics využití clusteru). Využití se zobrazí ve sloupci "spotřebované množství" a jednotka pro každou položku je zobrazena ve sloupci Měrná jednotka.  K dispozici jsou také další podrobnosti, které vám pomůžou [porozumět informacím na faktuře za Microsoft Azure](../../cost-management-billing/understand/review-individual-bill.md). 
 
@@ -128,7 +128,7 @@ Další podrobnosti o omezeních cenové úrovně jsou k dispozici v [limitech, 
 
 ## <a name="log-analytics-and-security-center"></a>Log Analytics a Security Center
 
-[Azure Security Center](https://docs.microsoft.com/azure/security-center/) fakturace je úzce spjata s Log Analytics fakturace. Security Center poskytuje přidělení 500 MB/uzel/den pro sadu [datových typů zabezpečení](https://docs.microsoft.com/azure/azure-monitor/reference/tables/tables-category#security) (WindowsEvent, SecurityAlert, SecurityBaseline, SecurityBaselineSummary, SecurityDetection, SecurityEvent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, ProtectionStatus) a datové typy aktualizace a UpdateSummary, pokud je povolené Update Management řešení neběží v pracovním prostoru nebo cílení řešení. Pokud je pracovní prostor ve starší verzi na cenové úrovni pro jednotlivé uzly, Security Center a Log Analytics alokace se zkombinují a společně se aplikují na všechna fakturovatelná ingestovaná data.  
+[Azure Security Center](../../security-center/index.yml) fakturace je úzce spjata s Log Analytics fakturace. Security Center poskytuje přidělení 500 MB/uzel/den pro sadu [datových typů zabezpečení](/azure/azure-monitor/reference/tables/tables-category#security) (WindowsEvent, SecurityAlert, SecurityBaseline, SecurityBaselineSummary, SecurityDetection, SecurityEvent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, ProtectionStatus) a datové typy aktualizace a UpdateSummary, pokud je povolené Update Management řešení neběží v pracovním prostoru nebo cílení řešení. Pokud je pracovní prostor ve starší verzi na cenové úrovni pro jednotlivé uzly, Security Center a Log Analytics alokace se zkombinují a společně se aplikují na všechna fakturovatelná ingestovaná data.  
 
 ## <a name="change-the-data-retention-period"></a>Změna doby uchovávání dat
 
@@ -481,7 +481,7 @@ Mezi návrhy na snížení objemu shromažďovaných protokolů patří:
 | Čítače výkonu       | Změňte [konfiguraci čítačů výkonu](data-sources-performance-counters.md) tak, aby se: <br> – Snížila četnost shromažďování dat <br> – Snížil počet čítačů výkonu |
 | Protokoly událostí                 | Změňte [konfiguraci protokolů událostí](data-sources-windows-events.md) tak, aby se: <br> – Snížil počet shromažďovaných protokolů událostí <br> – Shromažďovaly pouze požadované úrovně událostí Například zrušte shromažďování událostí úrovně *Informace*. |
 | Syslog                     | Změňte [konfiguraci syslogu](data-sources-syslog.md) tak, aby se: <br> – Snížil počet zařízení, ze kterých se shromažďují data <br> – Shromažďovaly pouze požadované úrovně událostí Například zrušte shromažďování událostí úrovně *Informace* a *Ladění*. |
-| AzureDiagnostics           | Změnit [kolekci protokolů prostředků](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-in-azure-portal) na: <br> – Snížil počet prostředků, které odesílají protokoly do Log Analytics <br> – Shromažďovaly pouze požadované protokoly |
+| AzureDiagnostics           | Změnit [kolekci protokolů prostředků](./diagnostic-settings.md#create-in-azure-portal) na: <br> – Snížil počet prostředků, které odesílají protokoly do Log Analytics <br> – Shromažďovaly pouze požadované protokoly |
 | Data řešení z počítačů, které řešení nepotřebují | K shromažďování dat z požadovaných skupin počítačů použijte [cílení na řešení](../insights/solution-targeting.md) . |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>Získávání uzlů, které se účtují v cenové úrovni podle počtu uzlů

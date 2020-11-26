@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 11ea348a80bc226b6a96bea1e7c023ee9c06b13a
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: cc17dcef7a554bee2715c79ba7d0c2356db2c6b3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684113"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185653"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Průvodce odstraňováním potíží pro běžné problémy služby signalizace Azure
 
@@ -148,7 +148,7 @@ V případě ASP.NET signalizace, když se [připojení klienta](#client_connect
 
 U **bezplatných** instancí je limit počtu **souběžných** připojení 20 u instancí **Standard** , limit počtu **souběžných** připojení **na jednotku** je 1 K, což znamená, že Unit100 umožňuje souběžná připojení 100-K.
 
-Připojení zahrnují připojení klienta i serveru. [tady](https://docs.microsoft.com/azure/azure-signalr/signalr-concept-messages-and-connections#how-connections-are-counted) najdete informace o tom, jak se započítávají připojení.
+Připojení zahrnují připojení klienta i serveru. [tady](./signalr-concept-messages-and-connections.md#how-connections-are-counted) najdete informace o tom, jak se započítávají připojení.
 
 ## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>500 Chyba při vyjednávání: Služba Azure Signaler ještě není připojená, zkuste to prosím znovu později.
 
@@ -162,7 +162,7 @@ Pokud se server pokusí připojit ke službě signalizace Azure, povolte trasov�
 
 #### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>Povolit protokolování ASP.NET Coreového signálu na straně serveru
 
-Protokolování na straně serveru pro signalizaci ASP.NET Core se integruje s `ILogger` [protokolováním](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&tabs=aspnetcore2x) založeným na ASP.NET Core Framework. Protokolování na straně serveru můžete povolit pomocí `ConfigureLogging` , ukázkového použití následujícím způsobem:
+Protokolování na straně serveru pro signalizaci ASP.NET Core se integruje s `ILogger` [protokolováním](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1) založeným na ASP.NET Core Framework. Protokolování na straně serveru můžete povolit pomocí `ConfigureLogging` , ukázkového použití následujícím způsobem:
 ```cs
 .ConfigureLogging((hostingContext, logging) =>
         {
@@ -257,7 +257,7 @@ Připojení klienta k signalizaci `DisposeAsync` není nikdy voláno, připojen�
 
 Ověřte, zda je ukončeno připojení. `HubConnection.DisposeAsync()`Po použití volání zastavte ručně.
 
-Například:
+Příklad:
 
 ```C#
 var connection = new HubConnectionBuilder()

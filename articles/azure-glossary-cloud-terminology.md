@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 2e183ad8a6e25c12f073f51e9416b4fc0ed9365f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 33672e90406b94a1b5788803911c072cdc2577f7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95530399"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186384"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure Glosář: slovník cloudové terminologie na platformě Azure
 
@@ -41,7 +41,7 @@ Výpočetní prostředky, které [Azure App Service](app-service/overview.md) po
 
 ## <a name="availability-set"></a>Skupina dostupnosti
 Kolekce virtuálních počítačů, které jsou spravovány společně za účelem zajištění redundance a spolehlivosti aplikací. Použití skupiny dostupnosti zajišťuje, že během plánované nebo neplánované události údržby je k dispozici alespoň jeden virtuální počítač.  
-Viz [Správa dostupnosti virtuálních počítačů s Windows](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) a [Správa dostupnosti virtuálních počítačů se systémem Linux](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) .
+Viz [Správa dostupnosti virtuálních počítačů s Windows](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a [Správa dostupnosti virtuálních počítačů se systémem Linux](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
 ## <a name="azure-classic-deployment-model"></a><a name="classic-model"></a>Model nasazení Azure Classic
 Jeden ze dvou [modelů nasazení](./azure-resource-manager/management/deployment-models.md) , které se používají k nasazení prostředků v Azure (nový model je Azure Resource Manager). Některé služby Azure podporují jenom model nasazení Správce prostředků, některá podporují jenom klasický model nasazení a některá podporují obojí. Dokumentace ke každé službě Azure určuje, které modely podporují.
@@ -58,7 +58,7 @@ Jeden ze dvou [modelů nasazení](./azure-resource-manager/management/deployment
 
 ## <a name="fault-domain"></a>Doména selhání
 Kolekce virtuálních počítačů ve skupině dostupnosti, která může být ve stejnou dobu neúspěšná. Příkladem je skupina počítačů v racku, které sdílejí společný zdroj napájení a síťový přepínač. V Azure se virtuální počítače ve skupině dostupnosti automaticky oddělují mezi několik domén selhání.  
-Viz [Správa dostupnosti virtuálních počítačů s Windows](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) nebo [Správa dostupnosti virtuálních počítačů se systémem Linux](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) .  
+Viz [Správa dostupnosti virtuálních počítačů s Windows](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) nebo [Správa dostupnosti virtuálních počítačů se systémem Linux](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .  
 
 ## <a name="geo"></a>geograficky
 Definovaná hranice pro zasídlí dat, která obvykle obsahuje dvě nebo více oblastí. Hranice mohou být v mezích hranic nebo mimo hranice států a jsou ovlivněny daňovým nařízením. Každé geografické umístění má alespoň jednu oblast. Příklady zeměpisných oblastech jsou Asie a Tichomoří a Japonsko. Označuje se také jako *geografické*.  
@@ -135,7 +135,7 @@ Informace najdete v tématu [použití značek k uspořádání prostředků Azu
 
 ## <a name="update-domain"></a>aktualizovat doménu
 Kolekce virtuálních počítačů ve skupině dostupnosti, které jsou aktualizovány ve stejnou dobu. Virtuální počítače ve stejné aktualizační doméně se při plánované údržbě restartují společně. Azure nikdy nerestartuje více než jednu aktualizační doménu současně. Také se označuje jako upgradovací doména.  
-Viz [Správa dostupnosti virtuálních počítačů s Windows](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) a [Správa dostupnosti virtuálních počítačů se systémem Linux](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) .
+Viz [Správa dostupnosti virtuálních počítačů s Windows](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a [Správa dostupnosti virtuálních počítačů se systémem Linux](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
 ## <a name="virtual-machine"></a><a name="vm"></a>virtuální počítač
 Implementace softwaru fyzického počítače, který používá operační systém. Na stejném hardwaru může běžet více virtuálních počítačů současně. V Azure jsou virtuální počítače dostupné v nejrůznějších velikostech.  
@@ -144,7 +144,7 @@ Viz [dokumentace Virtual Machines](https://azure.microsoft.com/documentation/ser
 ## <a name="virtual-machine-extension"></a><a name="vm-extension"></a>rozšíření virtuálního počítače
 Prostředek, který implementuje chování nebo funkce, které pomůžou použít jiné programy, nebo vám umožní pracovat s běžícím počítačem. Můžete například použít rozšíření přístupu virtuálních počítačů k resetování nebo úpravě hodnot vzdáleného přístupu na virtuálním počítači Azure.
 <!-- This definition seems obscure to me; maybe a list of examples would work better than a conceptual definition? -->
-Přečtěte si informace [o rozšířeních a funkcích virtuálních počítačů (Windows)](./virtual-machines/extensions/features-windows.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) nebo [o rozšířeních a funkcích virtuálních počítačů (Linux)](./virtual-machines/extensions/features-linux.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) .
+Přečtěte si informace [o rozšířeních a funkcích virtuálních počítačů (Windows)](./virtual-machines/extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) nebo [o rozšířeních a funkcích virtuálních počítačů (Linux)](./virtual-machines/extensions/features-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
 ## <a name="virtual-network"></a><a name="vnet"></a>virtuální síť
 Síť, která poskytuje připojení mezi prostředky Azure, které jsou izolované od všech ostatních tenantů Azure. [Azure VPN Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) umožňuje navázat připojení mezi virtuálními sítěmi a mezi virtuální sítí a místní sítí. V rámci virtuální sítě můžete plně řídit bloky IP adres, nastavení DNS, zásady zabezpečení a směrovací tabulky.  

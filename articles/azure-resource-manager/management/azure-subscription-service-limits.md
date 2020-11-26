@@ -3,12 +3,12 @@ title: Omezení a kvóty předplatného Azure
 description: Poskytuje seznam běžných limitů, kvót a omezení předplatného a služeb Azure. Tento článek obsahuje informace o tom, jak zvýšit limity spolu s maximálními hodnotami.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 54eb25e302d49be9e3ab1febeb5c636d267d7e4f
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 810d503f1abdc14ad2d255a89aebe7c10954a889
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577834"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186197"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 
@@ -96,7 +96,7 @@ Cenové úrovně určují kapacitu a omezení služby vyhledávání. Mezi vrstv
 
 * **Bezplatná** víceklientská služba, která je sdílená s ostatními předplatiteli Azure, je určená pro vyhodnocení a malé vývojové projekty.
 * **Basic** poskytuje vyhrazené výpočetní prostředky pro produkční úlohy v menším měřítku, a to až tři repliky pro úlohy dotazů s vysokou dostupností.
-* Pro větší produkční úlohy je **Standard** , který zahrnuje S1, S2, S3 a S3 vysokou hustotu. Na úrovni Standard existuje více úrovní, takže můžete zvolit konfiguraci prostředků, která nejlépe odpovídá vašemu profilu zatížení.
+* Pro větší produkční úlohy je **Standard**, který zahrnuje S1, S2, S3 a S3 vysokou hustotu. Na úrovni Standard existuje více úrovní, takže můžete zvolit konfiguraci prostředků, která nejlépe odpovídá vašemu profilu zatížení.
 
 **Omezení na předplatné**
 
@@ -398,7 +398,7 @@ Další informace najdete v tématu [velikosti virtuálních počítačů](../..
 
 #### <a name="disk-encryption-sets"></a>Sady šifrování disků
 
-U každého předplatného je omezení 50 sad Disk Encryption pro jednotlivé oblasti. Další informace najdete v dokumentaci k šifrování pro virtuální počítače se systémem [Linux](../../virtual-machines/linux/disk-encryption.md#restrictions) nebo [Windows](../../virtual-machines/windows/disk-encryption.md#restrictions) . Pokud potřebujete tuto kvótu zvýšit, obraťte se na podporu Azure.
+U každého předplatného je omezení 50 sad Disk Encryption pro jednotlivé oblasti. Další informace najdete v dokumentaci k šifrování pro virtuální počítače se systémem [Linux](../../virtual-machines/disk-encryption.md#restrictions) nebo [Windows](../../virtual-machines/disk-encryption.md#restrictions) . Pokud potřebujete tuto kvótu zvýšit, obraťte se na podporu Azure.
 
 ### <a name="managed-virtual-machine-disks"></a>Spravované disky virtuálních počítačů
 
@@ -442,7 +442,7 @@ Pro nasazení prostředků pomocí galerií sdílených imagí existují omezen�
 
 [!INCLUDE [virtual-machine-scale-sets-limits](../../../includes/azure-virtual-machine-scale-sets-limits.md)]
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Pochopení omezení a zvýšení počtu Azure](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Velikosti virtuálních počítačů a cloudových služeb pro Azure](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

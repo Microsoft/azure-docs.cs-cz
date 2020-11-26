@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 7a7a3669c5462adba3828bb1fd6c2fc9c4b3213c
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9d1aa54ba1e3f3a589df8f694e340909c4e24ecc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566159"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183681"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>Kurz: Povolení doplňku Application Gateway příchozího adaptéru pro existující cluster AKS s existujícím Application Gateway prostřednictvím Azure CLI (Preview)
 
@@ -35,16 +35,16 @@ V tomto kurzu se naučíte:
 
  - V tomto kurzu se vyžaduje verze rozhraní příkazového řádku Azure 2.0.4 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
- - Pomocí příkazu [AZ Feature Register](https://docs.microsoft.com/cli/azure/feature#az-feature-register) Zaregistrujte příznak funkce *AKS-IngressApplicationGatewayAddon* , jak je znázorněno v následujícím příkladu. To je potřeba udělat jenom jednou pro každé předplatné, zatímco doplněk je stále ve verzi Preview:
+ - Pomocí příkazu [AZ Feature Register](/cli/azure/feature#az-feature-register) Zaregistrujte příznak funkce *AKS-IngressApplicationGatewayAddon* , jak je znázorněno v následujícím příkladu. To je potřeba udělat jenom jednou pro každé předplatné, zatímco doplněk je stále ve verzi Preview:
      ```azurecli-interactive
      az feature register --name AKS-IngressApplicationGatewayAddon --namespace microsoft.containerservice
      ```
-    Může to trvat několik minut, než se stav zobrazí jako zaregistrované. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](https://docs.microsoft.com/cli/azure/feature#az-feature-register) :
+    Může to trvat několik minut, než se stav zobrazí jako zaregistrované. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature#az-feature-register) :
      ```azurecli-interactive
      az feature list -o table --query "[?contains(name, 'microsoft.containerservice/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
      ```
 
- - Až budete připraveni, aktualizujte registraci poskytovatele prostředků Microsoft. ContainerService pomocí příkazu [AZ Provider Register](https://docs.microsoft.com/cli/azure/provider#az-provider-register) :
+ - Až budete připraveni, aktualizujte registraci poskytovatele prostředků Microsoft. ContainerService pomocí příkazu [AZ Provider Register](/cli/azure/provider#az-provider-register) :
     ```azurecli-interactive
     az provider register --namespace Microsoft.ContainerService
     ```
@@ -71,7 +71,7 @@ Chcete-li nakonfigurovat další parametry pro `az aks create` příkaz, navšti
 
 ## <a name="deploy-a-new-application-gateway"></a>Nasadit nový Application Gateway 
 
-Nyní nasadíte novou Application Gateway pro simulaci existující Application Gateway, kterou chcete použít k vyrovnávání zatížení provozu do clusteru AKS *myCluster*. Název Application Gateway bude *myApplicationGateway* , ale budete muset nejdřív vytvořit prostředek veřejné IP adresy s názvem *myPublicIp* a novou virtuální síť s názvem *myVnet* s adresním prostorem 11.0.0.0/8 a podsíť s adresním prostorem 11.1.0.0/16 nazvanou *MySubnet* a nasadit Application Gateway v *mySubnet* pomocí *myPublicIp*. 
+Nyní nasadíte novou Application Gateway pro simulaci existující Application Gateway, kterou chcete použít k vyrovnávání zatížení provozu do clusteru AKS *myCluster*. Název Application Gateway bude *myApplicationGateway*, ale budete muset nejdřív vytvořit prostředek veřejné IP adresy s názvem *myPublicIp* a novou virtuální síť s názvem *myVnet* s adresním prostorem 11.0.0.0/8 a podsíť s adresním prostorem 11.1.0.0/16 nazvanou *MySubnet* a nasadit Application Gateway v *mySubnet* pomocí *myPublicIp*. 
 
 Pokud používáte cluster AKS a Application Gateway v samostatných virtuálních sítích, nesmí se adresní prostory těchto dvou virtuálních sítí překrývat. Výchozím adresním prostorem, ve kterém se nasazuje cluster AKS, je 10.0.0.0/8, takže nastavíme předponu adresy Application Gateway virtuální sítě na 11.0.0.0/8. 
 

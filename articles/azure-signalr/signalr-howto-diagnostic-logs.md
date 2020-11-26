@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: b0c1a91df30ee6a88f055dc47cfdef339e2ee2b2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5ad40ca051677ced0c6d8b5c35e8563272ff598f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151060"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183970"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Protokoly prostředků pro službu Azure Signal Service
 
@@ -31,7 +31,7 @@ Můžete zobrazit protokoly prostředků pro službu Azure Signal Service. Tyto 
 
 Ve výchozím nastavení jsou protokoly prostředků zakázané. Pokud chcete povolit protokoly prostředků, postupujte podle těchto kroků:
 
-1. V [Azure Portal](https://portal.azure.com)v části **monitorování**klikněte na **nastavení diagnostiky**.
+1. V [Azure Portal](https://portal.azure.com)v části **monitorování** klikněte na **nastavení diagnostiky**.
 
     ![Navigační podokno s nastavením diagnostiky](./media/signalr-tutorial-diagnostic-logs/diagnostic-settings-menu-item.png)
 
@@ -122,7 +122,7 @@ Chcete-li zobrazit protokoly prostředků, postupujte podle následujících kro
 
     ![Položka nabídky Log Analytics](./media/signalr-tutorial-diagnostic-logs/log-analytics-menu-item.png)
 
-2. Zadejte `SignalRServiceDiagnosticLogs` a vyberte časový rozsah pro dotazování protokolů prostředků. Rozšířené dotazy najdete v tématu [Začínáme s Log Analytics v Azure monitor](../azure-monitor/log-query/get-started-portal.md)
+2. Zadejte `SignalRServiceDiagnosticLogs` a vyberte časový rozsah pro dotazování protokolů prostředků. Rozšířené dotazy najdete v tématu [Začínáme s Log Analytics v Azure monitor](../azure-monitor/log-query/log-analytics-tutorial.md)
 
     ![Dotaz pro přihlášení Log Analytics](./media/signalr-tutorial-diagnostic-logs/query-log-in-log-analytics.png)
 
@@ -182,9 +182,9 @@ Pokud obdržíte pro žádosti klientů 401 neautorizovaných prostředků, ově
 
 #### <a name="throttling"></a>Throttling
 
-Pokud zjistíte, že nemůžete navázat připojení klientů ke službě Azure Signal Service, Projděte si protokoly prostředků. Pokud narazíte `Connection count reaches limit` na protokol prostředků, nakonfigurujete příliš mnoho připojení ke službě signalizace, která dosáhla limitu počtu připojení. Zvažte možnost škálování služby Signal. Pokud se setkáte `Message count reaches limit` v protokolu prostředků, znamená to, že použijete úroveň Free a použijete kvótu zpráv. Pokud chcete odesílat další zprávy, zvažte změnu služby signalizace na úroveň Standard, aby se odesílaly další zprávy. Další informace najdete v tématu [ceny služby Azure Signal Service](https://azure.microsoft.com/pricing/details/signalr-service/).
+Pokud zjistíte, že nemůžete navázat připojení klientů ke službě Azure Signal Service, Projděte si protokoly prostředků. Pokud narazíte `Connection count reaches limit` na protokol prostředků, nakonfigurujete příliš mnoho připojení ke službě signalizace, která dosáhla limitu počtu připojení. Zvažte možnost škálování služby Signal. Pokud se setkáte `Message count reaches limit` v protokolu prostředků, znamená to, že použijete úroveň Free a použijete kvótu zpráv. Pokud chcete odesílat další zprávy, zvažte změnu služby signalizace na úroveň Standard, aby se odesílaly další zprávy. Další informace najdete v tématu [ceny služby Azure Signal Service](https://azure.microsoft.com/pricing/details/signalr-service/).
 
-### <a name="get-help"></a>Podpora
+### <a name="get-help"></a>Získání pomoci
 
 Doporučujeme, abyste si nejdřív vypomohli. Většina problémů je způsobená aplikačním serverem nebo problémy se sítí. Podle pokynů [Průvodce odstraňováním potíží s protokolem prostředků](#troubleshooting-with-resource-logs) a průvodcem řešením potíží se [základními](https://github.com/Azure/azure-signalr/blob/dev/docs/tsg.md) příčinami Najděte hlavní příčinu.
 Pokud se problém ještě nedá vyřešit, zvažte otevření problému v GitHubu nebo vytvoření lístku na webu Azure Portal.

@@ -7,12 +7,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 18ece47187e3f83277d7d925ad958d2ede7cb337
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 2735aec0f95f5e282bb1dffba6e4f42f966cf117
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030012"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186537"
 ---
 # <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer-preview"></a>Dotazování exportovaných dat z Azure Monitor pomocí Azure Průzkumník dat (Preview)
 Export dat z Azure Monitor do účtu úložiště Azure umožňuje snížit náklady a možnost znovu přidělit protokoly různým oblastem. Použijte Azure Průzkumník dat k dotazování na data, která byla exportována z vašich Log Analytics pracovních prostorů. Po nakonfigurování budou podporované tabulky, které se odesílají z vašich pracovních prostorů do účtu služby Azure Storage, k dispozici jako zdroj dat pro Azure Průzkumník dat.
@@ -136,4 +136,4 @@ external_table("HBTest","map") | take 10000
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se [zapisovat dotazy do Azure Průzkumník dat](https://docs.microsoft.com/azure/data-explorer/write-queries)
+- Naučte se [zapisovat dotazy do Azure Průzkumník dat](/azure/data-explorer/write-queries)

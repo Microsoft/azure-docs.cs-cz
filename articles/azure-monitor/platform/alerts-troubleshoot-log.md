@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: ec2ffe71a32781a855da258f3621738f1a5f6be4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9a1bef582053eccdbfef63c2159cf540ffd9bfb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294287"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186588"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Řešení potíží s výstrahami protokolu v Azure Monitor  
 
 V tomto článku se dozvíte, jak vyřešit běžné problémy s výstrahami protokolu v Azure Monitor. Poskytuje také řešení pro běžné problémy s funkcemi a konfigurací výstrah protokolů.
 
-Výstrahy protokolu umožňují uživatelům pomocí [log Analyticsho](../log-query/get-started-portal.md) dotazu vyhodnotit protokoly prostředků každou nastavenou frekvencí a vyvolat výstrahu na základě výsledků. Pravidla mohou aktivovat jednu nebo více akcí pomocí [skupin akcí](./action-groups.md). [Přečtěte si další informace o funkcích a terminologii výstrah protokolu](alerts-unified-log.md).
+Výstrahy protokolu umožňují uživatelům pomocí [log Analyticsho](../log-query/log-analytics-tutorial.md) dotazu vyhodnotit protokoly prostředků každou nastavenou frekvencí a vyvolat výstrahu na základě výsledků. Pravidla mohou aktivovat jednu nebo více akcí pomocí [skupin akcí](./action-groups.md). [Přečtěte si další informace o funkcích a terminologii výstrah protokolu](alerts-unified-log.md).
 
 > [!NOTE]
 > Tento článek nebere v úvahu případy, kdy Azure Portal zobrazuje aktivované pravidlo výstrahy a přidružená skupina akcí neprovádí oznámení. V takových případech si přečtěte podrobnosti [o řešení potíží](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected).
@@ -131,7 +131,7 @@ Pokud jste dosáhli limitu kvóty, může vám tento problém vyřešit následu
 
     - ID předplatných a ID prostředků, pro které se maximální kvóta musí zvýšit.
     - Důvod zvýšení kvóty
-    - Typ prostředku pro zvýšení kvóty: **Log Analytics**, **Application Insights**atd.
+    - Typ prostředku pro zvýšení kvóty: **Log Analytics**, **Application Insights** atd.
     - Požadovaná maximální kvóta.
 
 

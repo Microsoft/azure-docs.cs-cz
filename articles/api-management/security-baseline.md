@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6ac568e56d201ef43e40428085b226608e83973a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 62b4629d258f8779dc53b4b8e00684d3b793291d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024564"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183749"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Základní hodnoty zabezpečení Azure pro API Management
 
@@ -40,9 +40,9 @@ Příchozí a odchozí provoz do podsítě, ve které je nasazená API Managemen
 
 * [Integrace API Management v interní virtuální síti s Application Gateway](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1,2: Sledujte a protokolujte konfiguraci a provoz virtuální sítě, podsítí a síťových karet.
 
@@ -56,9 +56,9 @@ Upozornění: při konfiguraci NSG v podsíti API Management existuje sada port�
 
 * [Postup povolení a použití Analýza provozu](../network-watcher/traffic-analytics.md)
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="13-protect-critical-web-applications"></a>1,3: Chraňte kritické webové aplikace
 
@@ -75,9 +75,9 @@ Poznámka: Tato funkce je dostupná na úrovních API Management úrovně Premiu
 
 * [Pochopení Application Gateway Azure](../application-gateway/index.yml)
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: zakažte komunikaci se známými škodlivými IP adresami.
 
@@ -98,13 +98,13 @@ K odepření komunikace se známými škodlivými nebo nepoužívanými internet
 
 * [Pochopení Application Gateway Azure](../application-gateway/index.yml)
 
-* [Postup konfigurace Azure DDoS Protection úrovně Standard](../virtual-network/manage-ddos-protection.md)
+* [Postup konfigurace Azure DDoS Protection úrovně Standard](../ddos-protection/manage-ddos-protection.md)
 
 * [Pochopení Azure Security Center integrované analýzy hrozeb](../security-center/azure-defender.md)
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování služby Azure Security Center:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1,5: záznam síťových paketů a protokolů toků
 
@@ -118,9 +118,9 @@ Upozornění: při konfiguraci NSG v podsíti API Management existuje sada port�
 
 * [Postup povolení a použití Analýza provozu](../network-watcher/traffic-analytics.md)
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování služby Azure Security Center:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: nasazení systémů ochrany před internetovými útoky/systémy prevence vniknutí (ID/IP adresy)
 
@@ -139,9 +139,9 @@ Poznámka: Tato funkce je dostupná na úrovních API Management úrovně Premiu
 
 * [Vysvětlení Azure Application Gateway WAF](../web-application-firewall/ag/ag-overview.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1,7: Správa provozu do webových aplikací
 
@@ -164,9 +164,9 @@ Poznámka: Tato funkce je dostupná na úrovních API Management úrovně Premiu
 
 * [Pochopení Application Gateway Azure](../application-gateway/overview.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: Minimalizujte složitost a administrativní režii pravidel zabezpečení sítě
 
@@ -178,9 +178,9 @@ Upozornění: při konfiguraci NSG v podsíti API Management existuje sada port�
 
 * [Porty vyžadované pro API Management](./api-management-using-with-vnet.md#-common-network-configuration-issues)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: Udržujte standardní konfigurace zabezpečení pro síťová zařízení.
 
@@ -193,9 +193,9 @@ Plány Azure můžete použít také ke zjednodušení rozsáhlých nasazení Az
 
 * [Vytvoření Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="110-document-traffic-configuration-rules"></a>1,10: pravidla pro konfiguraci provozu dokumentu
 
@@ -207,9 +207,9 @@ Plány Azure můžete použít také ke zjednodušení rozsáhlých nasazení Az
 
 * [Vytvoření NSG s konfigurací zabezpečení](../virtual-network/tutorial-filter-network-traffic.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: pomocí automatizovaných nástrojů monitorujte konfigurace síťových prostředků a zjišťují změny.
 
@@ -219,9 +219,9 @@ Plány Azure můžete použít také ke zjednodušení rozsáhlých nasazení Az
 
 * [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
@@ -231,7 +231,7 @@ Plány Azure můžete použít také ke zjednodušení rozsáhlých nasazení Az
 
 **Doprovodné** materiály: Microsoft udržuje časové zdroje pro Azure API Management.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
 **Zodpovědnost**: Microsoft
 
@@ -253,9 +253,9 @@ Volitelně můžete povolit a začlenit data do Azure Sentinel nebo incidentu za
 
 * [Postup při integraci s Azure Application Insights](./api-management-howto-app-insights.md)
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: povolení protokolování auditu pro prostředky Azure
 
@@ -267,15 +267,15 @@ V případě protokolování auditu roviny dat poskytují diagnostické protokol
 
 * [Postup povolení nastavení diagnostiky pro Azure API Management](./api-management-howto-use-azure-monitor.md#activity-logs)
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: shromáždění protokolů zabezpečení z operačních systémů
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
 **Odpovědnost**: netýká se
 
@@ -287,9 +287,9 @@ V případě protokolování auditu roviny dat poskytují diagnostické protokol
 
 * [Postup archivace protokolů na účet Azure Storage](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: Sledujte a kontrolujte protokoly
 
@@ -301,13 +301,13 @@ Volitelně můžete integrovat API Management s Azure Application Insights a pou
 
 * [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
-* [Principy Log Analyticsho pracovního prostoru](../azure-monitor/log-query/get-started-portal.md)
+* [Principy Log Analyticsho pracovního prostoru](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [Postup při integraci s Azure Application Insights](./api-management-howto-app-insights.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: povolení výstrah pro aktivitu neobvyklé
 
@@ -331,15 +331,15 @@ Volitelně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí
 
 * [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="28-centralize-anti-malware-logging"></a>2,8: centralizace protokolování proti malwaru
 
 **Doprovodné** materiály: nepoužitelné; Azure API Management nezpracovává ani nevytváří protokoly související s malwarem.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
 **Odpovědnost**: netýká se
 
@@ -347,7 +347,7 @@ Volitelně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí
 
 **Doprovodné** materiály: nepoužitelné; Azure API Management nezpracovává ani nevytváří protokoly související s DNS, které jsou přístupné pro uživatele.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
 **Odpovědnost**: netýká se
 
@@ -355,7 +355,7 @@ Volitelně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
 **Odpovědnost**: netýká se
 
@@ -383,9 +383,9 @@ Pro správu a údržbu účtů pro správu použijte doporučení od Azure Secur
 
 * [Pochopení doporučení identity a přístupu z Azure Security Center](../security-center/recommendations-reference.md#recs-identity)
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování služby Azure Security Center:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: Změna výchozích hesel tam, kde je to možné
 
@@ -395,9 +395,9 @@ Předplatná Azure API Management, která jsou jedním ze způsobů zabezpečen�
 
 * [Principy předplatných Azure API Management](./api-management-subscriptions.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: použijte vyhrazené účty pro správu.
 
@@ -412,9 +412,9 @@ Kromě toho můžete použít doporučení z Azure Security Center nebo integrov
 
 * [Jak používat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování služby Azure Security Center:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: použijte jednotné přihlašování (SSO) s Azure Active Directory
 
@@ -426,21 +426,21 @@ Alternativně lze proces přihlášení nebo přihlášení dále přizpůsobit 
 
 * [Delegování registrace uživatelů a předplatného produktu](./api-management-howto-setup-delegation.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Používejte vícefaktorové ověřování pro veškerý přístup založený na Azure Active Directory
 
 **Doprovodné** materiály: Povolte Azure Active Directory (AD) Multi-Factor Authentication (MFA) a sledujte Azure Security Center doporučení pro správu identit a přístupu.
 
-* [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
+* [Povolení vícefaktorového ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
 * [Jak monitorovat identitu a přístup v rámci Azure Security Center](../security-center/security-center-identity-access.md)
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování služby Azure Security Center:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Používejte vyhrazené počítače (privilegovaný přístup k pracovní stanici) pro všechny úlohy správy
 
@@ -448,11 +448,11 @@ Alternativně lze proces přihlášení nebo přihlášení dále přizpůsobit 
 
 * [Další informace o pracovních stanicích s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
+* [Povolení vícefaktorového ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: protokolování a upozornění na podezřelou aktivitu z účtů pro správu
 
@@ -464,9 +464,9 @@ Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a ses
 
 * [Vysvětlení zjišťování rizik Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování služby Azure Security Center:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: Správa prostředků Azure pouze ze schválených umístění
 
@@ -474,9 +474,9 @@ Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a ses
 
 * [Postup konfigurace pojmenovaných umístění v Azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="39-use-azure-active-directory"></a>3,9: použijte Azure Active Directory
 
@@ -490,11 +490,11 @@ Nakonfigurujte instanci Azure API Management tak, aby chránila vaše rozhraní 
 
 * [Jak chránit rozhraní API pomocí OAuth 2,0 s Azure Active Directory a API Management](./api-management-howto-protect-backend-with-aad.md)
 
-* [Jak vytvořit a nakonfigurovat instanci Azure AD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+* [Vytvoření a konfigurace instance Azure AD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: pravidelně kontrolovat a sjednotit přístup uživatelů
 
@@ -512,9 +512,9 @@ Správci můžou vytvářet vlastní skupiny nebo využívat externí skupiny v 
 
 * [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování služby Azure Security Center:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: monitorování pokusů o přístup k deaktivovaným účtům
 
@@ -540,23 +540,23 @@ Pomocí zásad můžete nakonfigurovat rozšířené monitorování pomocí API 
 
 * [Pokročilé monitorování rozhraní API](./api-management-log-to-eventhub-sample.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: upozornění na odchylku chování přihlášení k účtu
 
 **Doprovodné** materiály: pro odchylku chování přihlášení k účtu na rovině ovládacího prvku (Azure Portal) použijte funkce Azure Active Directory (AD) Identity Protection a detekce rizik ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce týkající se identit uživatelů. Můžete také ingestovat data do služby Azure Sentinel pro další šetření.
 
-* [Jak zobrazit rizikové přihlašování Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
+* [Zobrazení rizikových přihlášení Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
 * [Jak nakonfigurovat a povolit zásady rizik ochrany identity](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
 * [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: Poskytněte Microsoftu přístup k relevantním zákaznickým datům během scénářů podpory.
 
@@ -564,9 +564,9 @@ Pomocí zásad můžete nakonfigurovat rozšířené monitorování pomocí API 
 
 * [Seznam služeb podporovaných Customer Lockbox](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ## <a name="data-protection"></a>Ochrana dat
 
@@ -578,9 +578,9 @@ Pomocí zásad můžete nakonfigurovat rozšířené monitorování pomocí API 
 
 * [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: izolujte systémy, které ukládají nebo zpracovávají citlivé informace.
 
@@ -594,9 +594,9 @@ Pomocí zásad můžete nakonfigurovat rozšířené monitorování pomocí API 
 
 * [Použití služby Azure API Management s virtuálními sítěmi](./api-management-using-with-vnet.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: Sledujte a zablokujte neoprávněný přenos citlivých informací
 
@@ -604,17 +604,17 @@ Pomocí zásad můžete nakonfigurovat rozšířené monitorování pomocí API 
 
 Microsoft spravuje základní infrastrukturu pro Azure API Management a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
-* [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
+* [Principy ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: šifrování všech citlivých informací během přenosu
 
 **Doprovodné** materiály: volání roviny správy se provádí prostřednictvím Azure Resource Manager přes TLS. Vyžaduje se platný webový token JSON (JWT). Volání roviny dat je možné zabezpečit pomocí protokolu TLS a jednoho z podporovaných mechanismů ověřování (například klientský certifikát nebo token JWT).
 
-* [Pochopení ochrany dat v Azure API Management](./api-management-security-controls.md#data-protection)
+* [Pochopení ochrany dat v Azure API Management](#data-protection)
 
 * [Správa nastavení TLS v Azure API Management](./api-management-howto-manage-protocols-ciphers.md)
 
@@ -622,9 +622,9 @@ Microsoft spravuje základní infrastrukturu pro Azure API Management a implemen
 
 * [Ochrana rozhraní API v Azure API Management s využitím Azure Active Directory B2C](./howto-protect-backend-frontend-azure-ad-b2c.md)
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování služby Azure Security Center:** Ano
 
-**Odpovědnost**: sdílená
+**Odpovědnost:** Sdílená
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: k identifikaci citlivých dat použijte aktivní nástroj zjišťování.
 
@@ -632,11 +632,11 @@ Microsoft spravuje základní infrastrukturu pro Azure API Management a implemen
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
-* [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
+* [Principy ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
@@ -644,9 +644,9 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 * [Použití řízení přístupu na základě role ve službě API Management](./api-management-role-based-access-control.md)
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: použití prevence ztráty dat na základě hostitele k vymáhání řízení přístupu
 
@@ -654,19 +654,19 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 Microsoft spravuje základní infrastrukturu pro Azure API Management a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
-* [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
+* [Principy ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: šifrování citlivých informací v klidovém umístění
 
 **Doprovodné** materiály: citlivá data, jako jsou certifikáty, klíče a tajné hodnoty, se šifrují pomocí klíčů pro instanci služby spravované službou. Všechny šifrovací klíče jsou na instanci služby a jsou spravované službou.
 
-* [Pochopení ochrany a šifrování dat v klidovém umístění pomocí Azure API Management](./api-management-security-controls.md#data-protection)
+* [Pochopení ochrany a šifrování dat v klidovém umístění pomocí Azure API Management](#data-protection)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
 **Zodpovědnost**: Microsoft
 
@@ -678,9 +678,9 @@ Microsoft spravuje základní infrastrukturu pro Azure API Management a implemen
 
 * [Jak používat Azure Monitor a protokol aktivit Azure v Azure API Management](./api-management-howto-use-azure-monitor.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
 
@@ -692,35 +692,35 @@ Microsoft spravuje základní infrastrukturu pro Azure API Management a implemen
 
 Nadřazená platforma byla zkontrolována a opravena společností Microsoft. Zkontrolujte bezpečnostní mechanismy, které jsou k dispozici pro omezení ohrožení zabezpečení související s konfigurací služby.
 
-* [Principy ovládacích prvků zabezpečení dostupných pro Azure API Management](./api-management-security-controls.md)
+* [Principy ovládacích prvků zabezpečení dostupných pro Azure API Management]()
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: nasazení automatizovaného řešení pro správu oprav operačního systému
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: nasazení automatizovaného řešení pro správu oprav softwaru třetí strany
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: porovnání kontrol zabezpečení back-to-back
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: použijte proces hodnocení rizik k určení priorit nápravy zjištěných ohrožení zabezpečení
 
@@ -728,11 +728,11 @@ Nadřazená platforma byla zkontrolována a opravena společností Microsoft. Zk
 
 Nadřazená platforma byla zkontrolována a opravena společností Microsoft. Zákazník si zkontroluje bezpečnostní mechanismy, které jsou k dispozici, k omezení ohrožení zabezpečení souvisejícího s konfigurací služby.
 
-* [Principy ovládacích prvků zabezpečení dostupných pro Azure API Management](./api-management-security-controls.md)
+* [Principy ovládacích prvků zabezpečení dostupných pro Azure API Management]()
 
-**Monitorování Azure Security Center**: aktuálně není k dispozici.
+**Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
 
@@ -750,9 +750,9 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 * [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="62-maintain-asset-metadata"></a>6,2: Údržba metadat assetu
 
@@ -760,9 +760,9 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 * [Jak vytvářet a používat značky](../azure-resource-manager/management/tag-resources.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6,3: odstranění neautorizovaných prostředků Azure
 
@@ -778,17 +778,17 @@ Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají
 
 * [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6,4: udržování inventáře schválených prostředků Azure a softwarových titulů
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitorování neschválených prostředků Azure
 
@@ -802,33 +802,33 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 * [Jak vytvářet dotazy pomocí Azure graphu](../governance/resource-graph/first-query-portal.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: monitorujte neschválené softwarové aplikace v rámci výpočetních prostředků.
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: Odeberte neschválené prostředky Azure a softwarové aplikace
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="68-use-only-approved-applications"></a>6,8: Používejte pouze schválené aplikace.
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
 
@@ -840,17 +840,17 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 * [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/index.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="610-implement-approved-application-list"></a>6,10: Implementujte schválený seznam aplikací
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resources-manager-via-scripts"></a>6,11: Omezte schopnost uživatelů pracovat se správcem prostředků Azure prostřednictvím skriptů
 
@@ -860,25 +860,25 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 * [Řízení přístupu na základě role v Azure API Management](./api-management-role-based-access-control.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: Omezte schopnost uživatelů spouštět skripty ve výpočetních prostředcích.
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fyzicky nebo logicky oddělené aplikace s vysokým rizikem
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro webové aplikace běžící na Azure App Service nebo výpočetních prostředcích.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ## <a name="secure-configuration"></a>Zabezpečená konfigurace
 
@@ -892,17 +892,17 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 * [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7,2: Vytvoření zabezpečených konfigurací operačního systému
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: udržování zabezpečených konfigurací prostředků Azure
 
@@ -912,17 +912,17 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 * [Pochopení Azure Policych efektů](../governance/policy/concepts/effects.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: udržování zabezpečených konfigurací operačního systému
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Odpovědnost**: sdílená
+**Odpovědnost:** Sdílená
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Konfigurace prostředků Azure v zabezpečeném úložišti
 
@@ -932,19 +932,17 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 * [Dokumentace k Azure Repos](/azure/devops/repos/index)
 
-* [Vysvětlení sady Resource Kit pro Azure API Management DevOps](./api-management-security-controls.md#configuration-management)
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Monitorování Azure Security Center**: nelze použít
-
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: bezpečné uložení vlastních imagí operačního systému
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="77-deploy-system-configuration-management-tools"></a>7,7: nasazení nástrojů pro správu konfigurace systému
 
@@ -954,17 +952,17 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 * [Pochopení Azure Policych efektů](../governance/policy/concepts/effects.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7,8: nasaďte nástroje pro správu konfigurace systému pro operační systémy.
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: Implementujte automatizované monitorování konfigurace pro služby Azure.
 
@@ -972,23 +970,21 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 Kromě toho definujte a Implementujte standardní konfigurace zabezpečení pro služby Azure API Management Services pomocí Azure Policy. Pomocí aliasů Azure Policy v oboru názvů Microsoft. ApiManagement můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace instancí Azure API Management. Použijte zásady Azure [Deny] a [nasazení, pokud neexistuje], abyste vynutili zabezpečená nastavení napříč prostředky Azure.
 
-* [Vysvětlení sady Resource Kit pro Azure API Management DevOps](./api-management-security-controls.md#configuration-management)
-
 * [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 * [Pochopení Azure Policych efektů](../governance/policy/concepts/effects.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: Implementujte automatizované monitorování konfigurace pro operační systémy
 
 **Doprovodné** materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="711-manage-azure-secrets-securely"></a>7,11: zabezpečená Správa tajných kódů Azure
 
@@ -996,7 +992,7 @@ Kromě toho definujte a Implementujte standardní konfigurace zabezpečení pro 
 
 * [Jak nastavit vlastní názvy domén s pokyny pro Key Vault střídání klíčů](./configure-custom-domain.md)
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování služby Azure Security Center:** Ano
 
 **Zodpovědnost**: Microsoft
 
@@ -1008,9 +1004,9 @@ Kromě toho definujte a Implementujte standardní konfigurace zabezpečení pro 
 
 * [Zásada pro ověření pomocí spravované identity](./api-management-authentication-policies.md#ManagedIdentity)
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování služby Azure Security Center:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: Eliminujte nezamýšlenou expozici přihlašovacích údajů
 
@@ -1018,9 +1014,9 @@ Kromě toho definujte a Implementujte standardní konfigurace zabezpečení pro 
 
 * [Jak nastavit skener přihlašovacích údajů](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ## <a name="malware-defense"></a>Obrana před malwarem
 
@@ -1032,9 +1028,9 @@ Kromě toho definujte a Implementujte standardní konfigurace zabezpečení pro 
 
 Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje služby Azure (například Azure API Management), ale neběží na zákaznickém obsahu.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: předběžná kontrola souborů, které se mají nahrát do prostředků Azure, které nejsou COMPUTE
 
@@ -1042,9 +1038,9 @@ Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje 
 
 Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje služby Azure (například Azure API Management), ale neběží na zákaznickém obsahu.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: Ujistěte se, že antimalwarový software a signatury jsou aktualizované.
 
@@ -1052,9 +1048,9 @@ Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje 
 
 Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje služby Azure (například Azure API Management), ale neběží na zákaznickém obsahu.
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ## <a name="data-recovery"></a>Obnovení dat
 
@@ -1074,9 +1070,9 @@ Funkce zálohování a obnovení služby API Management poskytují potřebné st
 
 * [Jak volat operaci obnovení API Management](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: proveďte kompletní systémové zálohy a zálohujte všechny spravované klíče zákazníka.
 
@@ -1088,9 +1084,9 @@ Spravované identity lze použít k získání certifikátů z Azure Key Vault p
 
 * [Postup zálohování certifikátů Azure Key Vault](/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: Ověřte všechny zálohy včetně spravovaných klíčů zákazníků.
 
@@ -1100,9 +1096,9 @@ Spravované identity lze použít k získání certifikátů z Azure Key Vault p
 
 * [Postup obnovení certifikátů Azure Key Vault](/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a spravovaných klíčů zákazníků.
 
@@ -1116,9 +1112,9 @@ Povolí Soft-Delete v Key Vault k ochraně klíčů proti náhodnému nebo škod
 
 * [Postup povolení Soft-Delete v Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
@@ -1134,23 +1130,23 @@ Povolí Soft-Delete v Key Vault k ochraně klíčů proti náhodnému nebo škod
 
 * [Využijte příručku pro zpracování incidentů zabezpečení počítače NIST, která vám pomůže při vytváření vlastního plánu odpovědí na incidenty.](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: vytvoření bodování incidentu a postupu stanovení priorit
 
 **Doprovodné** materiály: Security Center přiřadí každému upozornění závažnost závažnosti, které vám pomůžou určit, které výstrahy by se měly prozkoumat jako první. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
 
-Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka pomocí značek a vytvoření názvového systému pro zřetelné identifikaci a kategorizaci prostředků Azure, zejména těch, která zpracovávají citlivá data. Máte zodpovědnost za to, že je možné určit prioritu nápravy výstrah na základě závažnosti prostředků a prostředí Azure, ve kterých došlo k incidentu.
+Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka pomocí značek a vytvoření názvového systému pro zřetelné identifikaci a kategorizaci prostředků Azure, zejména těch, která zpracovávají citlivá data. Je vaší zodpovědností určit prioritu nápravy upozornění v závislosti na důležitosti prostředků Azure a prostředí, ve kterém k incidentu došlo.
 
 * [Výstrahy zabezpečení ve službě Azure Security Center](../security-center/security-center-alerts-overview.md)
 
 * [Používání značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md)
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování služby Azure Security Center:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="103-test-security-response-procedures"></a>10,3: testovací postupy pro odpověď zabezpečení
 
@@ -1158,9 +1154,9 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 * [Publikování v NIST – průvodce pro testování, školení a cvičení programů pro plány a možnosti IT](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: zadání podrobností o kontaktu incidentu zabezpečení a konfigurace oznámení o výstrahách pro incidenty zabezpečení
 
@@ -1168,9 +1164,9 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 * [Jak nastavit kontakt zabezpečení Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
-**Monitorování Azure Security Center**: Ano
+**Monitorování služby Azure Security Center:** Ano
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: zahrňte výstrahy zabezpečení do systému reakce na incidenty.
 
@@ -1178,11 +1174,11 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 * [Postup konfigurace průběžného exportu](../security-center/continuous-export.md)
 
-* [Jak streamovat výstrahy do Azure Sentinel](../sentinel/connect-azure-security-center.md)
+* [Streamování upozornění do služby Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatizujte reakci na výstrahy zabezpečení
 
@@ -1190,9 +1186,9 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 * [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](../security-center/workflow-automation.md)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrační testy a tzv. red team exercises
 
@@ -1204,11 +1200,11 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 * [Další informace o strategii a provádění testování na základě červeného seskupování a testování průniku na webu společnosti Microsoft pro cloudovou infrastrukturu, služby a aplikace Microsoftu najdete tady.](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Monitorování Azure Security Center**: nelze použít
+**Monitorování služby Azure Security Center:** Neuvedeno
 
-**Odpovědnost**: sdílená
+**Odpovědnost:** Sdílená
 
 ## <a name="next-steps"></a>Další kroky
 
 - Zobrazit [Srovnávací test zabezpečení Azure](../security/benchmarks/overview.md)
-- Další informace o [plánech zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)
+- Přečtěte si další informace o [standardních hodnotách zabezpečení Azure](../security/benchmarks/security-baselines-overview.md).
