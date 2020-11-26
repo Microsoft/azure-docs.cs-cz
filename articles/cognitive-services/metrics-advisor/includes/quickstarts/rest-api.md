@@ -1,5 +1,5 @@
 ---
-title: Sledování metrik REST API rychlý Start
+title: Poradce pro metriky REST API rychlý Start
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mrbullwinkle
@@ -9,14 +9,14 @@ ms.subservice: metrics-advisor
 ms.topic: include
 ms.date: 09/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: 416f28f51a3ebe00e7227503f189898406229c8a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 42ea166119d3cc405b3d73e184c44dbfd6708a97
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047453"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96231476"
 ---
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Jakmile budete mít předplatné Azure, <a href="https://go.microsoft.com/fwlink/?linkid=2142156"  title=" vytvořte prostředek Advisoru metriky "  target="_blank"> vytvořením prostředku Advisoru metriky <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal k nasazení instance služby Advisor pro metriky.  
@@ -38,7 +38,7 @@ Abyste mohli začít používat REST API, budete potřebovat dva klíče:
 
 ## <a name="add-a-data-feed-from-a-sample-or-data-source"></a>Přidání datového kanálu ze vzorku nebo zdroje dat
 
-Chcete-li začít monitorovat data časových řad, je nutné přidat datový kanál. Chcete-li přidat datový kanál, je nutné zadat schéma dat podle typu zdroje dat a parametrů. Níže uvedený text požadavku JSON uložte do souboru s názvem *body.jsv*a spusťte příkaz kudrlinkou.
+Chcete-li začít monitorovat data časových řad, je nutné přidat datový kanál. Chcete-li přidat datový kanál, je nutné zadat schéma dat podle typu zdroje dat a parametrů. Níže uvedený text požadavku JSON uložte do souboru s názvem *body.jsv* a spusťte příkaz kudrlinkou.
 
 ```json
 {
@@ -197,7 +197,7 @@ curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/datafeeds/REPLACE-WI
 
 ## <a name="check-ingestion-status"></a>Ověřit stav ingestování
 
-Pokud chcete sledovat průběh úlohy příjmu, můžete po přidání datového kanálu zjistit jeho stav. Níže uvedený text požadavku JSON uložte do souboru s názvem *body.jsv*a spusťte příkaz kudrlinkou.
+Pokud chcete sledovat průběh úlohy příjmu, můžete po přidání datového kanálu zjistit jeho stav. Níže uvedený text požadavku JSON uložte do souboru s názvem *body.jsv* a spusťte příkaz kudrlinkou.
 
 ```json
 {
@@ -246,7 +246,7 @@ curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/datafeeds/REPLACE-WI
 
 ##  <a name="configure-anomaly-detection-configuration"></a>Konfigurace detekce anomálií
 
-I když je výchozí konfigurace automaticky použita u každé metriky, můžete ladit režimy detekce používané na vašich datech. Níže uvedený text požadavku JSON uložte do souboru s názvem *body.jsv*a spusťte příkaz kudrlinkou.
+I když je výchozí konfigurace automaticky použita u každé metriky, můžete ladit režimy detekce používané na vašich datech. Níže uvedený text požadavku JSON uložte do souboru s názvem *body.jsv* a spusťte příkaz kudrlinkou.
 
 ```json
 {
@@ -338,7 +338,7 @@ curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/enrichment/anomalyDe
 
 Před konfigurací výstrahy je potřeba vytvořit zavěšení, které bude sloužit k upozornění na upozornění. Existují dva způsoby, jak obdržet upozornění, když se aktivuje výstraha, která je webhookem a e-mailem. Při vytváření zavěšení můžete zadat buď v konfiguraci zavěšení jako typ zavěšení.
 
-Níže uvedený text požadavku JSON uložte do souboru s názvem *body.jsv*a spusťte příkaz kudrlinkou.
+Níže uvedený text požadavku JSON uložte do souboru s názvem *body.jsv* a spusťte příkaz kudrlinkou.
 
 ```json
 {
@@ -414,7 +414,7 @@ curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/hooks/REPLACE-WITH-Y
 }
 ```
 
-Konfigurací výstrahy můžete určit podmínku detekce, která se dá použít k aktivaci výstrahy. Níže uvedený text požadavku JSON uložte do souboru s názvem *body.jsv*a spusťte příkaz kudrlinkou.
+Konfigurací výstrahy můžete určit podmínku detekce, která se dá použít k aktivaci výstrahy. Níže uvedený text požadavku JSON uložte do souboru s názvem *body.jsv* a spusťte příkaz kudrlinkou.
 
 ```json
 {
@@ -538,7 +538,7 @@ curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/alert/anomaly/config
 }
 ```
 
-Ve výše uvedené reakci máme upozornění. Pomocí tohoto **alertIDu**se můžeme dotázat na všechny související anomálie, které způsobily tuto výstrahu.
+Ve výše uvedené reakci máme upozornění. Pomocí tohoto **alertIDu** se můžeme dotázat na všechny související anomálie, které způsobily tuto výstrahu.
 
 (Další způsob, jak získat výstrahu, je konfigurace Webhooku a upozornění po jeho nalezení.)
 
