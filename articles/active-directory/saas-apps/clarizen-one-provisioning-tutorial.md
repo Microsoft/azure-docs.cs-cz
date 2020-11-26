@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: Zhchia
-ms.openlocfilehash: 9335869797509171c71caffb0062aeccca207803
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 1658e6adf0c9de0cbd7412b963fb9a134f633430
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358911"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179690"
 ---
 # <a name="tutorial-configure-clarizen-one-for-automatic-user-provisioning"></a>Kurz: Konfigurace Clarizen jednoho pro Automatické zřizování uživatelů
 
-Tento kurz popisuje kroky, které je třeba provést v Clarizen a Azure Active Directory (Azure AD) ke konfiguraci automatického zřizování uživatelů. Po nakonfigurování Azure AD automaticky zřídí a [odClarizen](https://www.clarizen.com/) uživatele a skupiny, aby je pomocí služby Azure AD Provisioning. Informace o tom, jak tato služba funguje, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro aplikace SaaS (software jako služba) s Azure AD](../manage-apps/user-provisioning.md).
+Tento kurz popisuje kroky, které je třeba provést v Clarizen a Azure Active Directory (Azure AD) ke konfiguraci automatického zřizování uživatelů. Po nakonfigurování Azure AD automaticky zřídí a [odClarizen](https://www.clarizen.com/) uživatele a skupiny, aby je pomocí služby Azure AD Provisioning. Informace o tom, jak tato služba funguje, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro aplikace SaaS (software jako služba) s Azure AD](../app-provisioning/user-provisioning.md).
 
 ## <a name="capabilities-supported"></a>Podporované funkce
 
@@ -33,21 +33,21 @@ Tento kurz popisuje kroky, které je třeba provést v Clarizen a Azure Active D
 > * Odeberte uživatele v Clarizen, když k nim ještě nepotřebují přístup.
 > * Udržujte atributy uživatelů synchronizované mezi Azure AD a Clarizen jednu.
 > * Zřizování skupin a členství ve skupinách v Clarizen jednom.
-> * Pro Clarizen se doporučuje [jednotné přihlašování (SSO)](https://docs.microsoft.com/azure/active-directory/saas-apps/clarizen-tutorial) .
+> * Pro Clarizen se doporučuje [jednotné přihlašování (SSO)](./clarizen-tutorial.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
-* [Tenanta Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)
-* Uživatelský účet ve službě Azure AD s [oprávněním](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) ke konfiguraci zřizování. Příkladem může být správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce.
+* [Tenanta Azure AD](../develop/quickstart-create-new-tenant.md)
+* Uživatelský účet ve službě Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování. Příkladem může být správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce.
 * Uživatelský účet v Clarizen s [oprávněním](https://success.clarizen.com/hc/articles/360011833079-API-Keys-Support)pro **uživatele integrace** a **správce Lite** .
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Krok 1. Plánování nasazení zřizování
 
-1. Seznamte se s [fungováním služby zřizování](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
-1. Zjistěte, kdo bude v [rozsahu zřizování](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
-1. Určete, jaká data se mají [mapovat mezi Azure AD a Clarizen jednu](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).
+1. Seznamte se s [fungováním služby zřizování](../app-provisioning/user-provisioning.md).
+1. Zjistěte, kdo bude v [rozsahu zřizování](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+1. Určete, jaká data se mají [mapovat mezi Azure AD a Clarizen jednu](../app-provisioning/customize-application-attributes.md).
 
 ## <a name="step-2-configure-clarizen-one-to-support-provisioning-with-azure-ad"></a>Krok 2. Konfigurace Clarizen pro podporu zřizování s Azure AD
 
@@ -61,14 +61,14 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 ## <a name="step-3-add-clarizen-one-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání Clarizen z Galerie aplikací Azure AD
 
-Přidejte Clarizen jednu z Galerie aplikací Azure AD a začněte spravovat zřizování pro Clarizen. Pokud jste dříve nastavili Clarizen pro jednotné přihlašování, můžete použít stejnou aplikaci. Když nejprve otestujete integraci, vytvořte samostatnou aplikaci. Další informace o tom, jak přidat aplikaci z Galerie, najdete v tématu [Přidání aplikace do tenanta služby Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app).
+Přidejte Clarizen jednu z Galerie aplikací Azure AD a začněte spravovat zřizování pro Clarizen. Pokud jste dříve nastavili Clarizen pro jednotné přihlašování, můžete použít stejnou aplikaci. Když nejprve otestujete integraci, vytvořte samostatnou aplikaci. Další informace o tom, jak přidat aplikaci z Galerie, najdete v tématu [Přidání aplikace do tenanta služby Azure AD](../manage-apps/add-application-portal.md).
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Krok 4: Definování uživatelů, kteří budou v rozsahu zřizování
 
-Pomocí služby Azure AD Provisioning můžete nastavit obor, který se zřídí v závislosti na přiřazení aplikace, nebo na základě atributů uživatele nebo skupiny. Pokud se rozhodnete určit rozsah, který se bude zřizovat pro vaši aplikaci na základě přiřazení, postupujte podle kroků v části [Správa přiřazení uživatelů pro aplikaci v Azure Active Directory](../manage-apps/assign-user-or-group-access-portal.md) k přiřazení uživatelů a skupin k aplikaci. Pokud se rozhodnete obor, který se zřídí výhradně na základě atributů uživatele nebo skupiny, použijte filtr oboru, jak je popsáno v tématu [zřizování aplikací založené na atributech s filtry oborů](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+Pomocí služby Azure AD Provisioning můžete nastavit obor, který se zřídí v závislosti na přiřazení aplikace, nebo na základě atributů uživatele nebo skupiny. Pokud se rozhodnete určit rozsah, který se bude zřizovat pro vaši aplikaci na základě přiřazení, postupujte podle kroků v části [Správa přiřazení uživatelů pro aplikaci v Azure Active Directory](../manage-apps/assign-user-or-group-access-portal.md) k přiřazení uživatelů a skupin k aplikaci. Pokud se rozhodnete obor, který se zřídí výhradně na základě atributů uživatele nebo skupiny, použijte filtr oboru, jak je popsáno v tématu [zřizování aplikací založené na atributech s filtry oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-* Když přiřadíte uživatele a skupiny, aby Clarizen jednu, musíte vybrat jinou roli než **výchozí přístup**. Uživatelé s výchozí rolí přístupu se z zřizování vylučují a v protokolech zřizování se označí jako neefektivně. Pokud je jedinou rolí dostupnou v aplikaci výchozí role přístupu, můžete [aktualizovat manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) a přidat tak další role.
-* Začněte v malém. Před zavedením všech uživatelů proveďte test pomocí malé sady uživatelů a skupin. Pokud je obor pro zřizování nastavený na přiřazené uživatele a skupiny, můžete spravovat řízení přiřazením jednoho nebo dvou uživatelů nebo skupin k aplikaci. Pokud je obor nastaven na všechny uživatele a skupiny, můžete zadat [Filtr oboru založený na atributech](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+* Když přiřadíte uživatele a skupiny, aby Clarizen jednu, musíte vybrat jinou roli než **výchozí přístup**. Uživatelé s výchozí rolí přístupu se z zřizování vylučují a v protokolech zřizování se označí jako neefektivně. Pokud je jedinou rolí dostupnou v aplikaci výchozí role přístupu, můžete [aktualizovat manifest aplikace](../develop/howto-add-app-roles-in-azure-ad-apps.md) a přidat tak další role.
+* Začněte v malém. Před zavedením všech uživatelů proveďte test pomocí malé sady uživatelů a skupin. Pokud je obor pro zřizování nastavený na přiřazené uživatele a skupiny, můžete spravovat řízení přiřazením jednoho nebo dvou uživatelů nebo skupin k aplikaci. Pokud je obor nastaven na všechny uživatele a skupiny, můžete zadat [Filtr oboru založený na atributech](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-clarizen-one"></a>Krok 5. Konfigurace automatického zřizování uživatelů, aby Clarizen jednu
 
@@ -104,7 +104,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 1. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatele, abyste Clarizen jednu**.
 
-1. Zkontrolujte atributy uživatelů synchronizované z Azure AD a Clarizen je v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Clarizen jednom pro operace aktualizace. Pokud změníte [odpovídající cílový atribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), je nutné zajistit, aby Clarizen jedno rozhraní API podporovalo filtrování uživatelů na základě tohoto atributu. Kliknutím na tlačítko **Uložit** potvrďte změny.
+1. Zkontrolujte atributy uživatelů synchronizované z Azure AD a Clarizen je v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Clarizen jednom pro operace aktualizace. Pokud změníte [odpovídající cílový atribut](../app-provisioning/customize-application-attributes.md), je nutné zajistit, aby Clarizen jedno rozhraní API podporovalo filtrování uživatelů na základě tohoto atributu. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
    |Atribut|Typ|
    |---|---|
@@ -143,7 +143,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
    |userType|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: employeeNumber|Řetězec|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Reference|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: costCenter|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: divize|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: divize|Řetězec|
@@ -158,7 +158,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
       |externalId|Řetězec|
       |členy|Referenční informace|
 
-1. Pokud chcete nakonfigurovat filtry oborů, přečtěte si pokyny v  [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+1. Pokud chcete nakonfigurovat filtry oborů, přečtěte si pokyny v  [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 1. Pokud chcete povolit službu Azure AD Provisioning pro Clarizen jednu, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
@@ -178,9 +178,9 @@ Tato operace zahájí cyklus počáteční synchronizace všech uživatelů a sk
 
 Po nakonfigurování zřizování použijte následující prostředky k monitorování vašeho nasazení.
 
-1. Pomocí [protokolů zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) určete, kteří uživatelé se úspěšně zřídili nebo neúspěšně zřídili.
-1. Zkontrolujte indikátor [průběhu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) a zobrazte stav cyklu zřizování a způsob, jakým se má dokončit.
-1. Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [v tématu zřizování aplikací ve stavu karantény](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+1. Pomocí [protokolů zřizování](../reports-monitoring/concept-provisioning-logs.md) určete, kteří uživatelé se úspěšně zřídili nebo neúspěšně zřídili.
+1. Zkontrolujte indikátor [průběhu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) a zobrazte stav cyklu zřizování a způsob, jakým se má dokončit.
+1. Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [v tématu zřizování aplikací ve stavu karantény](../app-provisioning/application-provisioning-quarantine-status.md).
 
 ## <a name="troubleshooting-tips"></a>Rady pro řešení potíží
 
@@ -196,9 +196,9 @@ Když přiřadíte uživatele do Clarizen jedné aplikace Galerie, vyberte jenom
 
 ## <a name="additional-resources"></a>Další zdroje informací
 
-* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../manage-apps/check-status-user-account-provisioning.md).
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/13/2020
 ms.author: jeedes
-ms.openlocfilehash: ef49a8a3ac1779071a4d4906bfd053530063102d
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: b70c50e7c2900f884dd4d91c6650205bc626326e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984460"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96178017"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Kurz: Azure Active Directory integrace s nástrojem Správce hesel & digitálního trezoru
 
@@ -28,7 +28,7 @@ Tato integrace poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění: Azure Portal.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K nakonfigurování integrace služby Azure AD pomocí & digitálního trezoru Správce úložiště, potřebujete tyto kroky:
 
@@ -106,7 +106,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     | ------------| --------- |
     | První | User. křestní jméno |
     | Poslední | User. příjmení |
-    | E-mailu | uživatel. pošta |
+    | E-mail | uživatel. pošta |
 
 5. V části **nastavit jednu Sign-On s SAML** v části **podpisový certifikát SAML** vyberte **Stáhnout**. Tím se stáhnou **XML federačních metadat** z možností podle vašich požadavků a uloží se do vašeho počítače.
 
@@ -157,7 +157,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Můžete přejít přímo na přihlašovací adresu URL pro aplikaci a zahájit přihlášení.
 
-* Můžete použít panel Microsoft Access. Když na přístupovém panelu kliknete na dlaždici **& správce hesel** , na které se odkazuje na přihlašovací adresu pro aplikaci. Další informace o přístupovém panelu najdete v tématu [přihlášení a spouštění aplikací na portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít panel Microsoft Access. Když na přístupovém panelu kliknete na dlaždici **& správce hesel** , na které se odkazuje na přihlašovací adresu pro aplikaci. Další informace o přístupovém panelu najdete v tématu [přihlášení a spouštění aplikací na portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky

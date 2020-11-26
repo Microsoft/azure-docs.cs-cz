@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1a0ec8393e3c5ea40cb53fc101040441a5ca15bb
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 7419f5f8b519b8c3e978e358afb9f15a61132769
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359030"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96177816"
 ---
 # <a name="tutorial-configure-linkedin-learning-for-automatic-user-provisioning"></a>Kurz: Konfigurace programu LinkedIn Learning pro Automatické zřizování uživatelů
 
@@ -35,12 +35,12 @@ Tento kurz popisuje kroky, které je třeba provést při konfiguraci automatick
 > * Zřizování skupin a členství ve skupinách ve studiu LinkedIn
 > * [Jednotné přihlašování](linkedinlearning-tutorial.md) na LinkedIn Learning (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenant Azure AD](../develop/quickstart-create-new-tenant.md) 
-* Uživatelský účet v Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
+* Uživatelský účet v Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
 * Schválení a SCIM povolená pro LinkedIn Learning (kontaktujte e-mailem).
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Krok 1. Plánování nasazení zřizování
@@ -122,7 +122,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
    |adresy [typ EQ "Work"].|Řetězec|
    |title|Řetězec|
    |emails[type eq "work"].value|Řetězec|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Reference|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
 
 10. V části **mapování** vyberte možnost **zřídit Azure Active Directory skupiny**.
