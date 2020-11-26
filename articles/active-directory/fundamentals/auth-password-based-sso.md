@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74815976036abafc56f97e622351a1018fe30504
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 5bd6a5c8af117bf6cb39969a5f1b1f17ff08681c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576928"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172818"
 ---
 # <a name="password-based-authentication-with-azure-active-directory"></a>Ověřování na základě hesla pomocí Azure Active Directory
 
@@ -35,20 +35,19 @@ Je nutné chránit pomocí předběžného ověřování a poskytovat jednotné 
 
 ## <a name="components-of-system"></a>Součásti systému
 
-* **Uživatel** : přistupuje k aplikaci vytvořené pomocí aplikace z mých aplikací nebo přímo na web. 
+* **Uživatel**: přistupuje k aplikaci vytvořené pomocí aplikace z mých aplikací nebo přímo na web. 
 
-* **Webový prohlížeč** : komponenta, s jakou uživatel pracuje, aby mohla přistupovat k externí adrese URL aplikace. Uživatel přistupuje k aplikaci založené na formulářích prostřednictvím rozšíření MyApp. 
+* **Webový prohlížeč**: komponenta, s jakou uživatel pracuje, aby mohla přistupovat k externí adrese URL aplikace. Uživatel přistupuje k aplikaci založené na formulářích prostřednictvím rozšíření MyApp. 
 
-* **Rozšíření MyApp** : identifikuje nakonfigurovanou aplikaci jednotného přihlašování založené na heslech a zadá přihlašovací údaje do formuláře pro přihlášení. Rozšíření MyApps je nainstalováno ve webovém prohlížeči. 
+* **Rozšíření MyApp**: identifikuje nakonfigurovanou aplikaci jednotného přihlašování založené na heslech a zadá přihlašovací údaje do formuláře pro přihlášení. Rozšíření MyApps je nainstalováno ve webovém prohlížeči. 
 
-* **Azure AD** : ověřuje uživatele.
+* **Azure AD**: ověřuje uživatele.
 
 ## <a name="implement-password-based-sso-with-azure-ad"></a>Implementace jednotného přihlašování založeného na heslech pomocí Azure AD
 
-* [Co je jednotné přihlašování založené na heslech](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) 
+* [Co je jednotné přihlašování založené na heslech](../manage-apps/what-is-single-sign-on.md) 
 
-* [Konfigurace jednotného přihlašování založeného na heslech pro cloudové aplikace ](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-password-single-sign-on-non-gallery-applications)
+* [Konfigurace jednotného přihlašování založeného na heslech pro cloudové aplikace ](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)
 
-* [Konfigurace jednotného přihlašování založeného na heslech pro místní aplikace s proxy aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-password-vaulting)
+* [Konfigurace jednotného přihlašování založeného na heslech pro místní aplikace s proxy aplikací](../manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md)
 
- 

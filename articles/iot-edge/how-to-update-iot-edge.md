@@ -9,12 +9,12 @@ ms.date: 06/22/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7cde23372f6a3af0320e2d48c78a0d7fe69a2600
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 3916855a62e506b12f72de713ccb56e89f846938
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045699"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171802"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizace modulu runtime a procesu démon zabezpečení IoT Edge
 
@@ -48,7 +48,7 @@ Získat nejnovější konfiguraci úložiště od Microsoftu:
    curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
    ```
 
-* **Raspbian Stretch**:
+* **Malina Pi OS Stretch**:
 
    ```bash
    curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
@@ -160,7 +160,7 @@ Použijete-li v nasazení konkrétní značky (například mcr.microsoft.com/azu
 
    ![Konfigurace nastavení modulu runtime](./media/how-to-update-iot-edge/configure-runtime.png)
 
-1. V **nastavení modulu runtime**aktualizujte hodnotu **Image** pro **centrum Edge** s požadovanou verzí. Ještě nevybírejte možnost **Uložit** .
+1. V **nastavení modulu runtime** aktualizujte hodnotu **Image** pro **centrum Edge** s požadovanou verzí. Ještě nevybírejte možnost **Uložit** .
 
    ![Aktualizovat verzi obrázku centra hran](./media/how-to-update-iot-edge/runtime-settings-edgehub.png)
 
@@ -194,7 +194,7 @@ K aktualizaci IoT Edge zařízení se používají dvě komponenty:
 
 3. Pokud má soubor. cab, který jste stáhli, příponu architektury, přejmenujte soubor na pouze **Microsoft-Azure-IoTEdge.cab**.
 
-4. Chcete-li aktualizovat s offline [komponentami, poznamenejte si místní](/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) kopii skriptu PowerShellu. Pak použijte `-OfflineInstallationPath` parametr jako součást `Update-IoTEdge` příkazu a zadejte absolutní cestu k adresáři souborů. Příklad:
+4. Chcete-li aktualizovat s offline [komponentami, poznamenejte si místní](/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) kopii skriptu PowerShellu. Pak použijte `-OfflineInstallationPath` parametr jako součást `Update-IoTEdge` příkazu a zadejte absolutní cestu k adresáři souborů. Třeba
 
    ```powershell
    . <path>\IoTEdgeSecurityDaemon.ps1

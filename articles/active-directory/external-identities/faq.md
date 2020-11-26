@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f92b95e38dea6555ca881d56ccf1cf2d68783e53
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 2825d3776f7b45f6726aaec05484900511ed1477
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896085"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172971"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Nejčastější dotazy k Azure Active Directory spolupráci B2B
 
@@ -30,7 +30,7 @@ Tyto nejčastější dotazy týkající se spolupráce B2B (Business-to-Business
 Samozřejmě. Další informace najdete v našem [blogovém příspěvku o této funkci](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/). Další informace o tom, jak přizpůsobit přihlašovací stránku vaší organizace, najdete v tématu [Přidání firemního brandingu pro přihlášení a přístup ke stránkám na panelu](../fundamentals/customize-branding.md).
 
 ### <a name="can-b2b-collaboration-users-access-sharepoint-online-and-onedrive"></a>Můžou uživatelé spolupráce B2B přistupovat k SharePointu Online a OneDrivu?
-Ano. Možnost hledání stávajících uživatelů typu Host v SharePointu Online pomocí výběru osob je ale ve výchozím nastavení **vypnutá** . Pokud chcete zapnout možnost hledání stávajících uživatelů typu Host, nastavte **ShowPeoplePickerSuggestionsForGuestUsers** na **zapnuto** . Toto nastavení můžete zapnout buď na úrovni tenanta, nebo na úrovni kolekce webů. Toto nastavení můžete změnit pomocí rutin Set-SPOTenant a Set-SPOSite. Pomocí těchto rutin můžou členové vyhledat všechny existující uživatele typu Host v adresáři. Změny v oboru tenanta neovlivňují online weby SharePointu, které již byly zřízeny.
+Ano. Možnost hledání stávajících uživatelů typu Host v SharePointu Online pomocí výběru osob je ale ve výchozím nastavení **vypnutá** . Pokud chcete zapnout možnost hledání stávajících uživatelů typu Host, nastavte **ShowPeoplePickerSuggestionsForGuestUsers** na **zapnuto**. Toto nastavení můžete zapnout buď na úrovni tenanta, nebo na úrovni kolekce webů. Toto nastavení můžete změnit pomocí rutin Set-SPOTenant a Set-SPOSite. Pomocí těchto rutin můžou členové vyhledat všechny existující uživatele typu Host v adresáři. Změny v oboru tenanta neovlivňují online weby SharePointu, které již byly zřízeny.
 
 ### <a name="is-the-csv-upload-feature-still-supported"></a>Je funkce nahrávání CSV pořád podporovaná?
 Ano. Další informace o použití funkce nahrání souboru. CSV najdete v [této ukázce PowerShellu](code-samples.md).
@@ -61,20 +61,20 @@ Pokud uživatel nemá přiřazenou roli omezeného správce, nebudou uživatelé
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>Můžu přístup k Azure Portal zablokovat pro uživatele typu Host?
 
-Ano! Můžete vytvořit zásadu podmíněného přístupu, která zablokuje všem uživatelům typu Host a externím uživatelům přístup k Azure Portal. Při konfiguraci této zásady buďte opatrní, abyste se vyhnuli nechtěnému blokování přístupu ke členům a správcům.
+Ano. Můžete vytvořit zásadu podmíněného přístupu, která zablokuje všem uživatelům typu Host a externím uživatelům přístup k Azure Portal. Při konfiguraci této zásady buďte opatrní, abyste se vyhnuli nechtěnému blokování přístupu ke členům a správcům.
 
 1. Přihlaste se k vašemu [Azure Portal](https://portal.azure.com/) jako správce zabezpečení nebo správce podmíněného přístupu.
-2. V Azure Portal vyberte **Azure Active Directory** . 
-3. V části **Spravovat** vyberte **zabezpečení** .
-4. V části **chránit** vyberte **podmíněný přístup** . Vyberte **nové zásady** .
+2. Na portálu Azure Portal vyberte **Azure Active Directory**. 
+3. V části **Spravovat** vyberte **zabezpečení**.
+4. V části **chránit** vyberte **podmíněný přístup**. Vyberte **nové zásady**.
 5. Na **nové** stránce zadejte do textového pole **název** název zásady (například zablokovat hostům přístup k portálu).
-6. V části **Přiřazení** vyberte **Uživatelé a skupiny** .
-7. Na kartě **Zahrnout** zvolte **Vybrat uživatele a skupiny** a pak vyberte **Všichni uživatelé typu Host a externí uživatelé (Preview)** .
-9. Vyberte **Hotovo** .
-10. Na **nové** stránce v části **přiřazení** vyberte **cloudové aplikace nebo akce** .
-11. Na stránce **cloudové aplikace nebo akce** zvolte **vybrat aplikace** a pak zvolte **Vybrat** .
-12. Na stránce **Vybrat** zvolte **Microsoft Azure Management** a potom zvolte **Vybrat** .
-13. Na stránce **cloudové aplikace nebo akce** vyberte **Hotovo** .
+6. V části **Přiřazení** vyberte **Uživatelé a skupiny**.
+7. Na kartě **Zahrnout** zvolte **Vybrat uživatele a skupiny** a pak vyberte **Všichni uživatelé typu Host a externí uživatelé (Preview)**.
+9. Vyberte **Hotovo**.
+10. Na **nové** stránce v části **přiřazení** vyberte **cloudové aplikace nebo akce**.
+11. Na stránce **cloudové aplikace nebo akce** zvolte **vybrat aplikace** a pak zvolte **Vybrat**.
+12. Na stránce **Vybrat** zvolte **Microsoft Azure Management** a potom zvolte **Vybrat**.
+13. Na stránce **cloudové aplikace nebo akce** vyberte **Hotovo**.
 
 ### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Podporuje spolupráce Azure AD B2B službu Multi-Factor Authentication a e-mailové účty uživatelů?
 Ano. Služba Multi-Factor Authentication a e-mailové e-mailové účty se podporují pro spolupráci Azure AD B2B.
@@ -84,7 +84,7 @@ Pokud je váš tenant služby Azure AD domovským adresářem pro uživatele, m�
  
 * Uživatelé typu Host, kteří se přihlásí pomocí účet Microsoft (například guestuser@live.com ), mohou resetovat vlastní hesla pomocí účet Microsoft samoobslužného resetování hesla (SSPR). Přečtěte si informace [o resetování hesla účet Microsoft](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).
 * Uživatelé typu Host, kteří se přihlásí pomocí účtu Google nebo jiného externího zprostředkovatele identity, můžou resetovat svoje vlastní hesla pomocí metody SSPR zprostředkovatele identity. Uživatel typu host s účtem Google guestuser@gmail.com může například resetovat heslo podle pokynů v tématu [Změna nebo resetování hesla](https://support.google.com/accounts/answer/41078).
-* Pokud je tenant identity tenanta JIT (just-in-time) nebo "virová" tenant (což znamená, že se jedná o samostatného nespravovaného tenanta Azure), může heslo resetovat jenom uživatel typu Host. Někdy organizace [převezme správu virového tenanta](../users-groups-roles/domains-admin-takeover.md) , které se vytvoří, když zaměstnanci použijí své pracovní e-mailové adresy k registraci služeb. Až organizace převezme klienta virového, může resetování hesla uživatele nebo povolení SSPR jenom správce v této organizaci. V případě potřeby můžete jako pozvánku do organizace odebrat uživatelský účet hosta z adresáře a znovu odeslat pozvánku.
+* Pokud je tenant identity tenanta JIT (just-in-time) nebo "virová" tenant (což znamená, že se jedná o samostatného nespravovaného tenanta Azure), může heslo resetovat jenom uživatel typu Host. Někdy organizace [převezme správu virového tenanta](../enterprise-users/domains-admin-takeover.md) , které se vytvoří, když zaměstnanci použijí své pracovní e-mailové adresy k registraci služeb. Až organizace převezme klienta virového, může resetování hesla uživatele nebo povolení SSPR jenom správce v této organizaci. V případě potřeby můžete jako pozvánku do organizace odebrat uživatelský účet hosta z adresáře a znovu odeslat pozvánku.
 
 * Pokud je domovský adresář uživatele typu Host vaším klientem služby Azure AD, můžete resetovat heslo uživatele. Mohli jste například vytvořit uživatele nebo synchronizovat uživatele z místní služby Active Directory a nastavit jejich UserType na hodnotu Host. Vzhledem k tomu, že se tento uživatel nachází v adresáři, můžete resetovat heslo z Azure Portal.
 

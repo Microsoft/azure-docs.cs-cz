@@ -13,11 +13,11 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 7fa13a328a55b0e9eaa546e70bf0711f4f011cf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89068524"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173426"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Použití Microsoft Authenticator nebo Portál společnosti Intune v aplikacích Xamarin
 
@@ -183,7 +183,7 @@ Přidejte identifikátor URI přesměrování do registrace aplikace v [Azure Po
 
 **Vygenerujte identifikátor URI pro přesměrování:**
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyberte **Azure Active Directory**  >  **Registrace aplikací** > zaregistrovanou aplikaci.
 1. Výběr **ověřování**  >  **Přidání platformy**  >  **iOS/MacOS**
 1. Zadejte ID sady prostředků a pak vyberte **Konfigurovat**.
@@ -239,7 +239,7 @@ result = await app.AcquireTokenInteractive(scopes)
 
 MSAL používá adresy URL pro vyvolání zprostředkovatele a pak se vrátí do vaší aplikace. K dokončení této operace odezvy je potřeba pro vaši aplikaci zaregistrovat **identifikátor URI přesměrování** pomocí [Azure Portal](https://portal.azure.com).
 
-Formát identifikátoru URI přesměrování vaší aplikace závisí na certifikátu použitém k podepsání APK. Například:
+Formát identifikátoru URI přesměrování vaší aplikace závisí na certifikátu použitém k podepsání APK. Příklad:
 
 ```
 msauth://com.microsoft.xforms.testApp/hgbUYHVBYUTvuvT&Y6tr554365466=
@@ -347,7 +347,7 @@ Tady je několik tipů pro předcházení problémům při implementaci zprostř
   - Zobrazit protokoly Microsoft Authenticator:
 
     1. Vyberte tlačítko nabídky v pravém horním rohu aplikace.
-    1. Vyberte **help**  >  **Odeslat**protokoly  >  **Zobrazit protokoly**.
+    1. Vyberte **help**  >  **Odeslat** protokoly  >  **Zobrazit protokoly**.
     1. Výběrem **Kopírovat vše** zkopírujte protokoly zprostředkovatele do schránky zařízení.
 
     Nejlepším způsobem, jak tento protokol ladit, je poslat ho e-mailem sami sobě a zobrazit je na vývojovém počítači. Možná bude snazší analyzovat protokoly v počítači místo na samotném zařízení. Pomocí editoru testů v Androidu můžete také ukládat protokoly jako textový soubor a potom použít kabel USB ke zkopírování souboru do počítače.

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 10ae9e1356cea954435d15441d74f4f86a804578
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 929aed28df2725ccde62c348a18ef7b41334e233
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95893976"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172125"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Co je nového ve službě Rozpoznávání formulářů?
 
@@ -37,6 +37,7 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
  
   > [Další informace o extrakci rozložení](concept-layout.md)
 
+- **Aktualizace klientské knihovny** – pro [klientské knihovny](quickstarts/client-library.md) pro .NET, Python, Java a JavaScript se zadala Obecná dostupnost.
 - **Podporován nový jazyk: japonština** : nyní jsou podporovány následující nové jazyky: pro `AnalyzeLayout` a `AnalyzeCustomForm` : japonština ( `ja` ). [Podpora jazyků](language-support.md)
 - **Označení stylu čáry textu (ručně psané) (jenom v jazycích Latin)** – Nástroj pro rozpoznávání formulářů teď vytvoří výstup `appearance` objektu, který klasifikuje, jestli je každý textový řádek v rukopisu, nebo ne, společně s skóre spolehlivosti. Tato funkce je podporovaná jenom pro jazyky v latince.
 - **Vylepšení kvality** – vylepšení extrakce, včetně vylepšení pro extrakci s jednou číslicí.
@@ -46,8 +47,8 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
 
   ![Příklad FOTT](./media/ui-preview.jpg)
   
-- **Smyčka zpětné vazby** – při analýze souborů prostřednictvím nástroje pro označování ukázek ho teď můžete přidat i do sady školení a v případě potřeby adujst zapnutou a vytvořit výuku pro zlepšení modelu.
-- **Auto Label Documets** -Automitcally popisky dalších dokumentů na základě předchozích označených dokumentů v projektu. 
+- **Smyčka zpětné vazby** – při analýze souborů prostřednictvím nástroje pro označování ukázek se teď můžete přidat i do sady školení a v případě potřeby upravit štítky a vytvořit výuku pro zlepšení modelu.
+- **Automatické označování dokumentů** – automaticky označí další dokumenty na základě předchozích označených dokumentů v projektu.
 
 ## <a name="august-2020"></a>Srpen 2020
 

@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d54e1127207f0593f8d345b266d7db6e92b5c0d
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 65e1217041d85b66664792d9475cdfcb517559b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335396"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172431"
 ---
 # <a name="what-is-identity-lifecycle-management"></a>Co je správa životního cyklu identit?
 
@@ -70,7 +70,7 @@ Služba Azure AD v současné době poskytuje tyto funkce:
 ## <a name="next-steps"></a>Další kroky 
 
 - [Co je zřizování?](what-is-provisioning.md)
-- [Řízení přístupu pro externí uživatele ve správě nároků Azure AD](/azure/active-directory/governance/entitlement-management-external-users)
+- [Řízení přístupu pro externí uživatele ve správě nároků Azure AD](./entitlement-management-external-users.md)
 - [Co je zřizování na základě lidských zdrojů?](what-is-hr-driven-provisioning.md)
 - [Co je zřizování aplikací?](what-is-app-provisioning.md)
 - [Co je zřizování mezi adresářovými systémy?](what-is-inter-directory-provisioning.md)

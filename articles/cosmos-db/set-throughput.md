@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: a02fa7d9f656ed3b6e61aab1f42e2a3ffca131a7
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 4fea027663b55e87822eae1fd0cdb2d67dbc630b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917252"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170816"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Úvod k zřízené propustnosti v Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -137,7 +137,7 @@ Pomocí [Azure monitor metrik](monitor-cosmos-db.md#view-operation-level-metrics
 
 Jak je popsáno výše v předchozí [zřízené propustnosti](#current-provisioned-throughput) , je minimální propustnost, kterou můžete zřídit na kontejneru nebo databázi, závislá na mnoha faktorech. Jedním z nich je množství dat, která jsou momentálně uložená, protože Azure Cosmos DB vynutila minimální propustnost 10 RU/s za GB úložiště.
 
-To může být obavou v situacích, kdy potřebujete ukládat velké objemy dat, ale v porovnání s nízkými nároky na propustnost. Aby lépe vyhovovaly těmto scénářům, Azure Cosmos DB zavedl **program "vysokého úložiště/nízké propustnosti"** , který u opravňujících účtů snižuje omezení ru/s na GB z 10 na 1.
+To může být obavou v situacích, kdy potřebujete ukládat velké objemy dat, ale v porovnání s nízkými nároky na propustnost. Aby lépe vyhovovaly těmto scénářům, Azure Cosmos DB zavedl **program vysokého úložiště/nízké propustnosti** , který u oprávněných účtů sníží omezení ru/s na GB.
 
 V současné době musíte mít v účtu k dispozici alespoň 1 kontejner nebo sdílenou databázi s více než 1 TB dat, aby mohla být v účtu oprávněná. Abyste se mohli připojit k tomuto programu a posoudit celou způsobilost, stačí udělat, abyste [Tento průzkum](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u)naplnili. Tým Azure Cosmos DB pak bude sledovat a pokračovat v registraci.
 

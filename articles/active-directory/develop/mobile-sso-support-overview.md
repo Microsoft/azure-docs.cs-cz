@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 4a9282882d23ecbdc3c03ca158ea3de5566143e7
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 59924c1f876d08aa504f19c5d6c86dca32fbd1e2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94634850"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173460"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Podpora jednotného přihlašování a zásad ochrany aplikací v mobilních aplikacích, které vyvíjíte
 
@@ -38,7 +38,7 @@ K tomu, aby vaše aplikace mohla využívat jednotné přihlašování, doporuč
 
 ### <a name="use-microsoft-authentication-library-msal"></a>Použití knihovny Microsoft Authentication Library (MSAL)
 
-Nejlepší volbou pro implementaci jednotného přihlašování v aplikaci je použití [knihovny Microsoft Authentication Library (MSAL)](msal-overview.md). Pomocí MSAL můžete do své aplikace přidat ověřování s minimálními voláními kódu a rozhraní API, získat kompletní funkce [platformy Microsoft Identity Platform](/azure/active-directory/develop/)a nechat Microsoft zvládnout údržbu řešení zabezpečeného ověřování. Ve výchozím nastavení MSAL přidává podporu jednotného přihlašování pro vaši aplikaci. Použití MSAL je navíc potřeba v případě, že plánujete implementovat taky zásady ochrany aplikací.
+Nejlepší volbou pro implementaci jednotného přihlašování v aplikaci je použití [knihovny Microsoft Authentication Library (MSAL)](msal-overview.md). Pomocí MSAL můžete do své aplikace přidat ověřování s minimálními voláními kódu a rozhraní API, získat kompletní funkce [platformy Microsoft Identity Platform](./index.yml)a nechat Microsoft zvládnout údržbu řešení zabezpečeného ověřování. Ve výchozím nastavení MSAL přidává podporu jednotného přihlašování pro vaši aplikaci. Použití MSAL je navíc potřeba v případě, že plánujete implementovat taky zásady ochrany aplikací.
 
 > [!NOTE]
 > MSAL je možné nakonfigurovat tak, aby používala vložené webové zobrazení. Tím zabráníte jednotnému přihlašování. Pro zajištění, že jednotné přihlašování bude fungovat, použijte výchozí chování (to znamená systémový webový prohlížeč).
@@ -64,7 +64,7 @@ Apple obsahuje pokyny k tomu, jak to provést v aplikacích pro iOS: [ověřová
 
 Pokud chcete povolit zásady ochrany aplikací, použijte [Microsoft Authentication Library (MSAL)](msal-overview.md). MSAL je knihovna pro ověřování a autorizaci platformy Microsoft a sada Intune SDK je vyvíjená tak, aby fungovala společně s ní.
 
-Kromě toho musíte pro ověřování použít aplikaci zprostředkovatele. Zprostředkovatel vyžaduje, aby aplikace poskytovala informace o aplikaci a zařízení, aby zajistila dodržování předpisů pro aplikace. uživatelé iOS použijí [aplikaci Microsoft Authenticator](../user-help/user-help-auth-app-sign-in.md) a uživatelé systému Android použijí pro zprostředkované [ověřování](brokered-auth.md)buď aplikaci Microsoft Authenticator, nebo [aplikaci Portál společnosti](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal) . Ve výchozím nastavení MSAL používá zprostředkovatele jako první volbu pro splnění žádosti o ověření, takže použití zprostředkovatele k ověřování bude automaticky zapnuto pro vaši aplikaci při použití MSAL.
+Kromě toho musíte pro ověřování použít aplikaci zprostředkovatele. Zprostředkovatel vyžaduje, aby aplikace poskytovala informace o aplikaci a zařízení, aby zajistila dodržování předpisů pro aplikace. uživatelé iOS použijí [aplikaci Microsoft Authenticator](../user-help/user-help-auth-app-sign-in.md) a uživatelé systému Android použijí pro zprostředkované [ověřování](./msal-android-single-sign-on.md)buď aplikaci Microsoft Authenticator, nebo [aplikaci Portál společnosti](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal) . Ve výchozím nastavení MSAL používá zprostředkovatele jako první volbu pro splnění žádosti o ověření, takže použití zprostředkovatele k ověřování bude automaticky zapnuto pro vaši aplikaci při použití MSAL.
 
 Nakonec přidejte do své aplikace [Intune SDK](/mem/intune/developer/app-sdk-get-started) , abyste mohli povolit zásady ochrany aplikací. Sada SDK pro většinu částí sleduje model zachycení a automaticky použije zásady ochrany aplikací k určení, jestli jsou povolené akce, které aplikace přijímá. K dispozici jsou také rozhraní API, která můžete volat ručně a sdělit aplikaci, pokud existují určitá omezení pro určité akce.
 
@@ -73,8 +73,8 @@ Nakonec přidejte do své aplikace [Intune SDK](/mem/intune/developer/app-sdk-ge
 - [Plánování nasazení s jednotným přihlašováním Azure Active Directory](../manage-apps/plan-sso-deployment.md)
 - [Postupy: Konfigurace jednotného přihlašování v macOS a iOS](single-sign-on-macos-ios.md)
 - [Microsoft Enterprise SSO – modul plug-in pro zařízení Apple (Preview)](apple-sso-plugin.md)
-- [Zprostředkované ověřování v Androidu](brokered-auth.md)
-- [Autorizační agenti a jejich povolení](authorization-agents.md)
+- [Zprostředkované ověřování v Androidu](./msal-android-single-sign-on.md)
+- [Autorizační agenti a jejich povolení](./msal-android-single-sign-on.md)
 - [Začínáme se sadou Microsoft Intune App SDK](/mem/intune/developer/app-sdk-get-started)
 - [Konfigurace nastavení pro sadu Intune App SDK](/mem/intune/developer/app-sdk-ios#configure-settings-for-the-intune-app-sdk)
 - [Microsoft Intune chráněné aplikace](/mem/intune/apps/apps-supported-intune-apps)

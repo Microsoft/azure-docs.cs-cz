@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9510bd564ced2f458a9a78ff23200bb32358c3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb889298a09c30a629c69442ebf31bc735af31d1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268532"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173120"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Nejčastější dotazy k nastavení a datovému roamingu
 
@@ -77,7 +77,7 @@ V listopadu 2015 nebo novějších verzích Windows 10 se Enterprise State Roami
 Pokud jsou na stejném zařízení víc účtů Azure AD z různých tenantů Azure AD, musíte aktualizovat registr zařízení, aby komunikoval se službou Azure Rights Management pro každého tenanta Azure AD.  
 
 1. Vyhledejte identifikátor GUID pro každého tenanta Azure AD. Otevřete Azure Portal a vyberte tenanta Azure AD. Identifikátor GUID pro tenanta se nachází na stránce vlastností vybraného tenanta ( https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) s popiskem **ID adresáře**. 
-2. Po dokončení identifikátoru GUID budete muset přidat klíč registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID> **.
+2. Po dokončení identifikátoru GUID budete muset přidat klíč registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID>**.
    Z klíče **GUID ID tenanta** vytvořte novou hodnotu s více řetězci (reg-multi-SZ) s názvem **AllowedRMSServerUrls**. Pro svá data zadejte adresy URL distribučního bodu pro licencování ostatních tenantů Azure, ke kterým zařízení přistupuje.
 3. Adresy URL distribučního bodu licencování můžete najít spuštěním rutiny **Get-AadrmConfiguration** z modulu aadrm. Pokud se hodnoty pro **LicensingIntranetDistributionPointUrl** a **LicensingExtranetDistributionPointUrl** liší, zadejte obě hodnoty. Pokud jsou hodnoty stejné, zadejte hodnotu pouze jednou.
 
@@ -85,7 +85,7 @@ Pokud jsou na stejném zařízení víc účtů Azure AD z různých tenantů Az
 
 Roaming funguje jenom pro univerzální aplikace pro Windows. K dispozici jsou dvě možnosti, jak povolit roaming ve stávající desktopové aplikaci pro Windows:
 
-* [Most pro stolní počítače](https://aka.ms/desktopbridge) vám pomůže přenést stávající desktopové aplikace Windows do Univerzální platforma Windows. Z tohoto místa se budou vyžadovat minimální změny kódu, aby bylo možné využívat roaming dat aplikací Azure AD. Most pro stolní počítače poskytuje vašim aplikacím identitu aplikace, která je nutná k povolení roamingu dat aplikací pro existující aplikace klasické pracovní plochy.
+* [Most pro stolní počítače](/windows/msix/desktop/source-code-overview) vám pomůže přenést stávající desktopové aplikace Windows do Univerzální platforma Windows. Z tohoto místa se budou vyžadovat minimální změny kódu, aby bylo možné využívat roaming dat aplikací Azure AD. Most pro stolní počítače poskytuje vašim aplikacím identitu aplikace, která je nutná k povolení roamingu dat aplikací pro existující aplikace klasické pracovní plochy.
 * [Virtualizace uživatelského prostředí (UE-V)](/previous-versions//dn458947(v=vs.85)) vám pomůže vytvořit vlastní šablonu nastavení pro stávající desktopové aplikace pro Windows a povolit roaming pro aplikace Win32. Tato možnost nevyžaduje, aby vývojář aplikace změnil kód aplikace. Pro zákazníky, kteří si zakoupili sadu Microsoft Desktop Optimization Pack, je UE-V omezený na místní roaming služby Active Directory.
 
 Správci můžou nakonfigurovat vícefaktorové technologie pro roaming dat aplikací klasické pracovní plochy Windows změnou roamingu nastavení operačního systému Windows a univerzálních aplikačních dat pomocí [zásad skupiny s podporou UE-v](/microsoft-desktop-optimization-pack/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2), včetně těchto:

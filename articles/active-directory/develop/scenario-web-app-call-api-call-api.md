@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 846c47017ba2887c287dd080c44c46b372660d0e
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 016a2917c02deaecf35c526426cb2a6dbc89e338
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443598"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173185"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Webová aplikace, která volá webová rozhraní API: volá webové rozhraní API.
 
@@ -29,7 +29,7 @@ Volání chráněného webového rozhraní API závisí na vašem jazyku a archi
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Pokud používáte *Microsoft. identity. Web* , máte tři možnosti použití pro volání rozhraní API:
+Pokud používáte *Microsoft. identity. Web*, máte tři možnosti použití pro volání rozhraní API:
 
 - [Možnost 1: volání Microsoft Graph s využitím sady Microsoft Graph SDK](#option-1-call-microsoft-graph-with-the-sdk)
 - [Možnost 2: volání webového rozhraní API pro příjem dat s podpůrnou třídou](#option-2-call-a-downstream-web-api-with-the-helper-class)
@@ -152,7 +152,7 @@ public async Task<IActionResult> Profile()
 > [!NOTE]
 > Stejný princip můžete použít pro volání libovolného webového rozhraní API.
 >
-> Většina webových rozhraní API Azure poskytuje sadu SDK, která zjednodušuje volání rozhraní API, jako je případ pro Microsoft Graph. Příklad webové aplikace [, která umožňuje přístup k úložišti objektů BLOB s využitím služby Azure AD](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=dotnet) , najdete v tématu Vytvoření webové aplikace s použitím sady Microsoft. identity. web a Azure Storage SDK.
+> Většina webových rozhraní API Azure poskytuje sadu SDK, která zjednodušuje volání rozhraní API, jako je případ pro Microsoft Graph. Příklad webové aplikace [, která umožňuje přístup k úložišti objektů BLOB s využitím služby Azure AD](../../storage/common/storage-auth-aad-app.md?tabs=dotnet&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) , najdete v tématu Vytvoření webové aplikace s použitím sady Microsoft. identity. web a Azure Storage SDK.
 
 # <a name="java"></a>[Java](#tab/java)
 

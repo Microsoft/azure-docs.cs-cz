@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: c811a2ea5c06250068e7c0276e4b79e9108d920d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.date: 11/25/2020
+ms.openlocfilehash: cabc243c6ba74217873b5b0a5fa51a7cb410512e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490351"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170824"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB bez serveru (Preview)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -33,9 +33,8 @@ Při použití Azure Cosmos DB má každá databázová operace náklady vyjád�
 
 Azure Cosmos DB nejlépe vyhovuje scénářům, kde očekáváte:
 
-- **Lehký provoz** : vzhledem k tomu, že zřízení kapacity v takových situacích není nutné a může být nákladově zakazují
-- **Střední úroveň shlukování** : protože kontejnery bez serveru můžou doručovat až 5 000 jednotek žádostí za sekundu.
-- **Střední výkon** : vzhledem k tomu, že kontejnery bez serveru mají [specifické charakteristiky výkonu](#performance)
+- **Nízký, přerušovaný a nepředvídatelný provoz**: vzhledem k tomu, že zřízení kapacity v takových situacích není nutné a může být nákladově zakazují.
+- **Střední výkon**: vzhledem k tomu, že kontejnery bez serveru mají [specifické charakteristiky výkonu](#performance)
 
 Z těchto důvodů je Azure Cosmos DB bez serveru zvážit pro následující typy úloh:
 
@@ -62,7 +61,6 @@ Jakýkoli kontejner, který je vytvořený v účtu bez serveru, je kontejner be
     - Při vytváření kontejneru bez serveru nemůžete předat žádnou propustnost a v takovém případě vrátí chybu.
     - Nemůžete číst ani aktualizovat propustnost na kontejneru bez serveru a v takovém případě vrátí chybu.
     - Nelze vytvořit sdílenou databázi propustnosti v účtu bez serveru a v takovém případě vrátí chybu.
-- Kontejnery bez serveru můžou poskytovat maximální prostupnost propustnosti 5 000 jednotek žádostí za sekundu.
 - Kontejnery bez serveru můžou ukládat maximálně 50 GB dat a indexů.
 
 ## <a name="monitoring-your-consumption"></a>Monitorování vaší spotřeby
@@ -79,8 +77,8 @@ Stejný graf můžete najít při použití Azure Monitor, jak je popsáno [zde]
 
 Prostředky bez serveru poskytují specifické charakteristiky výkonu, které se liší od poskytovaných prostředků propustnosti:
 
-- **Dostupnost** : až bude nabídka bez serveru všeobecně dostupná, dostupnost kontejnerů bez serveru se pokryje s smlouva SLA (SLA) 99,9%, pokud se nepoužijí zóny dostupnosti (redundance zóny). Smlouva SLA je 99,99% při použití Zóny dostupnosti.
-- **Latence** : po zpřístupnění nabídky bez serveru bude obecně dostupná, latence kontejnerů bez serveru bude pokrytá cílovou úrovní služeb (SLO) a 10 milisekundami pro čtení bodů a 30 milisekundami a méně pro zápisy. Operace čtení z bodu se skládá z načtení jedné položky podle jejího ID a hodnoty klíče oddílu.
+- **Dostupnost**: až bude nabídka bez serveru všeobecně dostupná, dostupnost kontejnerů bez serveru se pokryje s smlouva SLA (SLA) 99,9%, pokud se nepoužijí zóny dostupnosti (redundance zóny). Smlouva SLA je 99,99% při použití Zóny dostupnosti.
+- **Latence**: po zpřístupnění nabídky bez serveru bude obecně dostupná, latence kontejnerů bez serveru bude pokrytá cílovou úrovní služeb (SLO) a 10 milisekundami pro čtení bodů a 30 milisekundami a méně pro zápisy. Operace čtení z bodu se skládá z načtení jedné položky podle jejího ID a hodnoty klíče oddílu.
 - Prostupnost **: po** zpřístupnění nabídky bez serveru bude dostupná i v případě, že dojde k obecné dostupnosti nabídek bez serveru, bude se vztahovat na úroveň služeb (SLO) 95%. To znamená, že maximální navýšení zatížení je možné dosáhnout minimálně 95% času.
 
 > [!NOTE]

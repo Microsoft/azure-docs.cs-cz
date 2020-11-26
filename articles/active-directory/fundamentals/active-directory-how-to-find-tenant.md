@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbf23a32fdf5515402e18f70fe032a1a589dbcbe
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 32526a31a9d52fbfac57f1d384b25e0939b5e297
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424056"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172869"
 ---
 # <a name="how-to-find-your-azure-active-directory-tenant-id"></a>Jak najít ID tenanta Azure Active Directory
 
@@ -26,7 +26,7 @@ Předplatná Azure mají vztah důvěryhodnosti s Azure Active Directory (Azure 
 
 ## <a name="find-tenant-id-through-the-azure-portal"></a>Najít ID tenanta prostřednictvím Azure Portal
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
  
 1. Vyberte **Azure Active Directory**.
 
@@ -51,7 +51,7 @@ Další informace najdete v tématu Azure PowerShell Reference k rutině pro [Ge
 ## <a name="find-tenant-id-with-cli"></a>Najít ID tenanta pomocí rozhraní příkazového řádku
 Pokud chcete najít ID tenanta pomocí rozhraní příkazového řádku, můžete to udělat pomocí [Azure CLI](/cli/azure/install-azure-cli) nebo [Microsoft 365 CLI](https://pnp.github.io/cli-microsoft365/). 
 
-V případě Azure CLI použijte jeden z příkazů **AZ Login** , **AZ Account list** nebo **AZ Account tenant list** , jak je znázorněno v následujícím příkladu. Všimněte si, že vlastnost **tenantId** pro každé z vašich předplatných ve výstupu z každého příkazu.
+V případě Azure CLI použijte jeden z příkazů **AZ Login**, **AZ Account list** nebo **AZ Account tenant list** , jak je znázorněno v následujícím příkladu. Všimněte si, že vlastnost **tenantId** pro každé z vašich předplatných ve výstupu z každého příkazu.
 
 ```azurecli-interactive
 az login
@@ -77,4 +77,4 @@ Další informace najdete v tématu informace o příkazu pro [ID tenanta Micros
 
 - Informace o tom, jak přidružit nebo přidat předplatné ke klientovi, najdete v tématu [přidružení nebo přidání předplatného Azure ke svému tenantovi Azure Active Directory](active-directory-how-subscriptions-associated-directory.md).
 
-- Informace o tom, jak najít ID objektu, najdete v tématu [Vyhledání ID objektu uživatele](https://docs.microsoft.com/partner-center/find-ids-and-domain-names#find-the-user-object-id).
+- Informace o tom, jak najít ID objektu, najdete v tématu [Vyhledání ID objektu uživatele](/partner-center/find-ids-and-domain-names#find-the-user-object-id).

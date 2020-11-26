@@ -11,21 +11,21 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2427d974f96c0905ea2eb33daea7c89de277ec9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8520afdd05ecce8604ce72596bdf06053217cc2e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441806"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173086"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory uplatnění pozvánky B2B pro spolupráci
 
 Tento článek popisuje způsoby, kterými můžou uživatelé typu Host získat přístup k vašim prostředkům a k procesu souhlasu, ke kterým dojde. Pokud odešlete e-mailovou pozvánku na hosta, pozvánka zahrnuje odkaz, který může host uplatnit, aby získal přístup k vaší aplikaci nebo portálu. E-mail pozvánky je jedním z způsobů, jak hosté můžou získat přístup k vašim prostředkům. Jako alternativu můžete do svého adresáře přidat hosty a dát jim přímý odkaz na portál nebo aplikaci, kterou chcete sdílet. Bez ohledu na to, jakou metodu používají, se hostů prostřednictvím procesu souhlasu při prvním použití. Tento proces zajistí, že se vaši hosté dohodli na podmínky ochrany osobních údajů a přijmou [podmínky použití](../conditional-access/terms-of-use.md) , které jste si nastavili.
 
-Když do svého adresáře přidáte uživatele typu Host, má uživatelský účet hosta stav souhlasu (zobrazitelný v PowerShellu), který je zpočátku nastavený na **PendingAcceptance**. Toto nastavení zůstane, dokud uživatel nepřijme pozvání a schválí vaše zásady ochrany osobních údajů a podmínky použití. Po tomto případě se stav souhlasu změní na **přijato**a na hostovi se již neprezentují stránky souhlasu.
+Když do svého adresáře přidáte uživatele typu Host, má uživatelský účet hosta stav souhlasu (zobrazitelný v PowerShellu), který je zpočátku nastavený na **PendingAcceptance**. Toto nastavení zůstane, dokud uživatel nepřijme pozvání a schválí vaše zásady ochrany osobních údajů a podmínky použití. Po tomto případě se stav souhlasu změní na **přijato** a na hostovi se již neprezentují stránky souhlasu.
 
    > [!IMPORTANT]
-   > **Od 31. března 2021**přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované účty a klienty Azure AD. V přípravě doporučujeme zákazníkům, aby se přihlásili k [e-mailu ověřování jednorázovým heslem](one-time-passcode.md). Uvítáme vaše názory na tuto funkci Public Preview a zajímáme si vytváření ještě více způsobů, jak spolupracovat.
+   > **Od 31. března 2021** přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované účty a klienty Azure AD. V přípravě doporučujeme zákazníkům, aby se přihlásili k [e-mailu ověřování jednorázovým heslem](one-time-passcode.md). Uvítáme vaše názory na tuto funkci Public Preview a zajímáme si vytváření ještě více způsobů, jak spolupracovat.
 
 ## <a name="redemption-through-the-invitation-email"></a>Vyplacení prostřednictvím e-mailu s pozvánkou
 
@@ -33,7 +33,7 @@ Když do svého adresáře přidáte uživatele typu host [pomocí Azure Portal]
 
 1. Host dostane [e-mail pozvánky](./invitation-email-elements.md) , která se pošle z **pozvánky Microsoftu**.
 2. Host vybere **přijmout pozvánku** v e-mailu.
-3. Host bude používat vlastní přihlašovací údaje pro přihlášení k adresáři. Pokud host nemá účet, který může být federovaný pro váš adresář a funkce [e-mailového hesla (jednorázového hesla)](./one-time-passcode.md) není povolená; Host se zobrazí výzva k vytvoření osobního [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) nebo [samoobslužného účtu služby Azure AD](../users-groups-roles/directory-self-service-signup.md). Podrobnosti najdete v tématu [postup pro uplatnění pozvánky](#invitation-redemption-flow) .
+3. Host bude používat vlastní přihlašovací údaje pro přihlášení k adresáři. Pokud host nemá účet, který může být federovaný pro váš adresář a funkce [e-mailového hesla (jednorázového hesla)](./one-time-passcode.md) není povolená; Host se zobrazí výzva k vytvoření osobního [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) nebo [samoobslužného účtu služby Azure AD](../enterprise-users/directory-self-service-signup.md). Podrobnosti najdete v tématu [postup pro uplatnění pozvánky](#invitation-redemption-flow) .
 4. Host se provede prostřednictvím [souhlasu](#consent-experience-for-the-guest) uživatele uvedeného níže.
 
 ## <a name="redemption-through-a-direct-link"></a>Uplatnění přes přímý odkaz
@@ -74,9 +74,9 @@ Když uživatel klikne na odkaz **přijmout pozvánku** v [e-mailu s pozvánkou]
 
 7. Pokud [je povolený e-mailová hesla pro hosty](./one-time-passcode.md#when-does-a-guest-user-get-a-one-time-passcode), pošle se uživateli heslo prostřednictvím pozvaného e-mailu. Uživatel načte a zadá toto heslo na přihlašovací stránce služby Azure AD.
 
-8. Pokud je e-mailové heslo pro hosty zakázané, Azure AD ověří příponu domény a určí, jestli patří do účtu uživatele. V takovém případě se uživateli zobrazí výzva k vytvoření osobního [účet Microsoft](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create). V takovém případě se uživateli zobrazí výzva k vytvoření [účtu samoobslužné služby Azure AD](../users-groups-roles/directory-self-service-signup.md).
+8. Pokud je e-mailové heslo pro hosty zakázané, Azure AD ověří příponu domény a určí, jestli patří do účtu uživatele. V takovém případě se uživateli zobrazí výzva k vytvoření osobního [účet Microsoft](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create). V takovém případě se uživateli zobrazí výzva k vytvoření [účtu samoobslužné služby Azure AD](../enterprise-users/directory-self-service-signup.md).
 
-9. Služba Azure AD se pokusí vytvořit [účet samoobslužné služby Azure AD](../users-groups-roles/directory-self-service-signup.md) tím, že ověří přístup k e-mailu. Ověřování účtu se provádí odesláním kódu do e-mailu a uživatel ho načte a odešle do Azure AD. Pokud je však tenant pozvaného uživatele federovaný nebo pokud je v tenantovi pozvaného uživatele nastaveno na hodnotu false, uživatel nemůže dokončit uplatnění a výsledkem toku je chyba. Další informace najdete v tématu [řešení potíží s Azure Active Directory spolupráce B2B](./troubleshoot.md#the-user-that-i-invited-is-receiving-an-error-during-redemption).
+9. Služba Azure AD se pokusí vytvořit [účet samoobslužné služby Azure AD](../enterprise-users/directory-self-service-signup.md) tím, že ověří přístup k e-mailu. Ověřování účtu se provádí odesláním kódu do e-mailu a uživatel ho načte a odešle do Azure AD. Pokud je však tenant pozvaného uživatele federovaný nebo pokud je v tenantovi pozvaného uživatele nastaveno na hodnotu false, uživatel nemůže dokončit uplatnění a výsledkem toku je chyba. Další informace najdete v tématu [řešení potíží s Azure Active Directory spolupráce B2B](./troubleshoot.md#the-user-that-i-invited-is-receiving-an-error-during-redemption).
 
 10. Uživateli se zobrazí výzva k vytvoření osobního [účet Microsoft (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create).
 

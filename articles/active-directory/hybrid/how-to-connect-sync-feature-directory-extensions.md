@@ -16,12 +16,12 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a0765f5279eb41324691c431c5973bb55a8b52d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74bc659c11c4f43ab3cf85cdc53f704cd07a1cde
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662495"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172363"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect synchronizace: přípony adresářů
 K rozšíření schématu v Azure Active Directory (Azure AD) s vlastními atributy z místní služby Active Directory můžete použít rozšíření adresáře. Tato funkce umožňuje sestavovat obchodní aplikace pomocí atributů, které budete nadále spravovat místně. Tyto atributy lze spotřebovat prostřednictvím [rozšíření](/graph/extensibility-overview
@@ -60,7 +60,7 @@ Během instalace Azure AD Connect je aplikace zaregistrovaná tam, kde jsou tyto
 
 Ujistěte se, že jste vybrali možnost **všechny aplikace** , aby se tato aplikace zobrazila.
 
-Atributy mají předponu **rozšíření \_ {ApplicationId} \_ **. ApplicationId má stejnou hodnotu pro všechny atributy v tenantovi Azure AD. Tuto hodnotu budete potřebovat pro všechny ostatní scénáře v tomto tématu.
+Atributy mají předponu **rozšíření \_ {ApplicationId} \_**. ApplicationId má stejnou hodnotu pro všechny atributy v tenantovi Azure AD. Tuto hodnotu budete potřebovat pro všechny ostatní scénáře v tomto tématu.
 
 ## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>Zobrazení atributů pomocí rozhraní Microsoft Graph API
 
@@ -70,6 +70,9 @@ Tyto atributy jsou nyní k dispozici prostřednictvím rozhraní Microsoft Graph
 > V rozhraní Microsoft Graph API musíte požádat o vrácení atributů. Explicitně vyberte atributy takto: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division` .
 >
 > Další informace najdete v tématu [Microsoft Graph: použití parametrů dotazu](/graph/query-parameters#select-parameter).
+
+>[!NOTE]
+> Není podporováno synchronizaci hodnot atributů z AADConnect k atributům rozšíření, které nejsou vytvořeny pomocí AADConnect. To může způsobit problémy s výkonem a neočekávané výsledky. Pro synchronizaci jsou podporovány pouze atributy rozšíření, které jsou vytvořeny jak je uvedeno výše.
 
 ## <a name="use-the-attributes-in-dynamic-groups"></a>Použití atributů v dynamických skupinách
 

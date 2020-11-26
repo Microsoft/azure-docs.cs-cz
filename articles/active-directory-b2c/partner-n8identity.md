@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: dd6e760fe8052463491f249b54c3af3d2636d46d
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 337275cef0f2159cb5fac40ac0435408baf3bbef
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376880"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170918"
 ---
 # <a name="tutorial-for-configuring-theaccesshub-admin-tool-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci nástroje pro správu TheAccessHub pomocí Azure Active Directory B2C
 
@@ -38,13 +38,13 @@ Abyste mohli začít, budete potřebovat:
 
 - Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 
-- [Tenant Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant). Tenant musí být propojený s vaším předplatným Azure.
+- [Tenant Azure AD B2C](./tutorial-create-tenant.md). Tenant musí být propojený s vaším předplatným Azure.
 
 - Prostředí pro správu TheAccessHub: kontaktuje [identitu N8](https://n8id.com/contact/) a zřídí nové prostředí.
 
 - Volitelné Informace o připojení a přihlašovacích údajích pro všechny databáze nebo protokoly LDAP (Lightweight Directory Access Protocol), ze kterých chcete migrovat zákaznická data.
 
-- Volitelné Nakonfigurované Azure AD B2C prostředí pro použití [vlastních zásad](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started), pokud chcete integrovat nástroj TheAccessHub admin do svého toku zásad registrace.
+- Volitelné Nakonfigurované Azure AD B2C prostředí pro použití [vlastních zásad](./custom-policy-get-started.md), pokud chcete integrovat nástroj TheAccessHub admin do svého toku zásad registrace.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -162,9 +162,9 @@ Oprávnění ke správě uživatelů a oddělení služeb zákazníkům a helpde
 
 3. Vyberte > **Přidat skupinu** .
 
-4. Zadejte **název skupiny** , **Popis skupiny** a **vlastníka skupiny** .
+4. Zadejte **název skupiny**, **Popis skupiny** a **vlastníka skupiny** .
 
-5. Vyhledejte a zaškrtněte políčka u kolegů, které chcete být členy skupiny, a pak vyberte > **Přidat**
+5. Vyhledejte a zaškrtněte políčka u kolegů, které chcete být členy skupiny, a pak vyberte >**Přidat**
 
 6. V dolní části stránky vidíte všechny členy skupiny.
 
@@ -180,7 +180,7 @@ Oprávnění ke správě uživatelů a oddělení služeb zákazníkům a helpde
 
 3. Vyberte > **Přidat organizaci** .
 
-4. Zadejte **název organizace** , **vlastníka organizace** a **nadřazenou organizaci**.
+4. Zadejte **název organizace**, **vlastníka organizace** a **nadřazenou organizaci**.
 
     a. Název organizace je v ideálním případě hodnota, která odpovídá zákaznickým datům. Pokud při načítání zákaznických a zákaznických dat zadáte název organizace do zatížení, může být kolega automaticky umístěný do organizace.
 
@@ -358,7 +358,7 @@ Synchronizace dat z Azure AD B2C do nástroje pro správu TheAccessHub:
 
 ## <a name="configure-azure-ad-b2c-policies"></a>Konfigurace zásad Azure AD B2C
 
-Občas synchronizování nástroje pro správu TheAccessHub je omezené jeho schopnost udržovat svůj stav aktuální Azure AD B2C. K informování TheAccessHub nástrojů pro správu TheAccessHub můžete využít zásady rozhraní API a Azure AD B2C nástroje pro správu. Toto řešení vyžaduje technické znalosti [Azure AD B2C vlastní zásady](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started#:~:text=%20Get%20started%20with%20custom%20policies%20in%20Azure,Experience%20Framework%20applications.%20Azure%20AD%20B2C...%20More%20). V další části vám poskytneme ukázkový postup a zabezpečený certifikát pro oznamování TheAccessHub nástroje pro správu nových účtů v Sign-Up vlastních zásadách.
+Občas synchronizování nástroje pro správu TheAccessHub je omezené jeho schopnost udržovat svůj stav aktuální Azure AD B2C. K informování TheAccessHub nástrojů pro správu TheAccessHub můžete využít zásady rozhraní API a Azure AD B2C nástroje pro správu. Toto řešení vyžaduje technické znalosti [Azure AD B2C vlastní zásady](./custom-policy-get-started.md). V další části vám poskytneme ukázkový postup a zabezpečený certifikát pro oznamování TheAccessHub nástroje pro správu nových účtů v Sign-Up vlastních zásadách.
 
 ### <a name="create-a-secure-credential-to-invoke-theaccesshub-admin-tools-api"></a>Vytvoření zabezpečeného pověření pro vyvolání rozhraní API nástroje pro správu TheAccessHub
 
@@ -372,7 +372,7 @@ Občas synchronizování nástroje pro správu TheAccessHub je omezené jeho sch
 
 5. Vyberte **Stáhnout** a získejte klientský certifikát.
 
-6. Podle tohoto [kurzu](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-api#https-client-certificate-authentication ) přidejte certifikát klienta do Azure AD B2C.
+6. Podle tohoto [kurzu](./secure-rest-api.md#https-client-certificate-authentication ) přidejte certifikát klienta do Azure AD B2C.
 
 ### <a name="retrieve-your-custom-policy-examples"></a>Příklady získání vlastních zásad
 
@@ -386,12 +386,12 @@ Občas synchronizování nástroje pro správu TheAccessHub je omezené jeho sch
 
 5. Vyberte **Stáhnout** a získejte soubor zip se základními zásadami, které přidávají zákazníky do nástroje pro správu TheAccessHub jako registrace zákazníků.
 
-6. V tomto [kurzu](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started) začnete s návrhem vlastních zásad v Azure AD B2C.
+6. V tomto [kurzu](./custom-policy-get-started.md) začnete s návrhem vlastních zásad v Azure AD B2C.
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v následujících článcích:
 
-- [Vlastní zásady v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Vlastní zásady v Azure AD B2C](./custom-policy-overview.md)
 
-- [Začínáme s vlastními zásadami v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Začínáme s vlastními zásadami v Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

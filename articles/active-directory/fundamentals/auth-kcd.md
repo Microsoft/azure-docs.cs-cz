@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62c8f230ca2b2d0db1170cde9b24f9e4819889bb
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: a1c7aa4d2300a6dee44da067b122fc7af97f7aa9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577120"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172852"
 ---
 # <a name="windows-authentication---kerberos-constrained-delegation-with-azure-active-directory"></a>Ověřování systému Windows – omezené delegování protokolu Kerberos pomocí Azure Active Directory
 
@@ -36,24 +36,23 @@ Je potřeba zajistit vzdálený přístup, chránit před předběžným ověřo
 
 ## <a name="components-of-system"></a>Součásti systému
 
-* **Uživatel** : přistupuje k starší aplikaci, kterou obsluhuje proxy aplikace.
+* **Uživatel**: přistupuje k starší aplikaci, kterou obsluhuje proxy aplikace.
 
-* **Webový prohlížeč** : komponenta, s jakou uživatel pracuje, aby mohla přistupovat k externí adrese URL aplikace.
+* **Webový prohlížeč**: komponenta, s jakou uživatel pracuje, aby mohla přistupovat k externí adrese URL aplikace.
 
-* **Azure AD** : ověřuje uživatele. 
+* **Azure AD**: ověřuje uživatele. 
 
-* **Služba proxy aplikací** : slouží jako reverzní proxy server k odeslání požadavku od uživatele do místní aplikace. Je umístěný ve službě Azure AD. Proxy aplikací může taky vyhovět všem zásadám podmíněného přístupu.
+* **Služba proxy aplikací**: slouží jako reverzní proxy server k odeslání požadavku od uživatele do místní aplikace. Je umístěný ve službě Azure AD. Proxy aplikací může taky vyhovět všem zásadám podmíněného přístupu.
 
-* **Konektor proxy aplikací** : nainstalovaný místně na serverech Windows pro zajištění připojení k aplikaci. Vrátí odpověď do služby Azure AD. Provádí vyjednávání KCD se službou Active Directory a zosobňuje uživatele k získání tokenu protokolu Kerberos do aplikace.
+* **Konektor proxy aplikací**: nainstalovaný místně na serverech Windows pro zajištění připojení k aplikaci. Vrátí odpověď do služby Azure AD. Provádí vyjednávání KCD se službou Active Directory a zosobňuje uživatele k získání tokenu protokolu Kerberos do aplikace.
 
-* **Active Directory** : odešle token protokolu Kerberos pro aplikaci konektoru proxy aplikací.
+* **Active Directory**: odešle token protokolu Kerberos pro aplikaci konektoru proxy aplikací.
 
-* **Starší verze aplikací** : aplikace, které přijímají požadavky uživatelů od proxy aplikace. Starší verze aplikací vrátí odpověď konektoru proxy aplikací.
+* **Starší verze aplikací**: aplikace, které přijímají požadavky uživatelů od proxy aplikace. Starší verze aplikací vrátí odpověď konektoru proxy aplikací.
 
 ## <a name="implement-windows-authentication-kcd-with-azure-ad"></a>Implementace ověřování systému Windows (KCD) s Azure AD
 
-* [Omezené delegování Kerberos pro jednotné přihlašování k aplikacím pomocí Proxy aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd) 
+* [Omezené delegování Kerberos pro jednotné přihlašování k aplikacím pomocí Proxy aplikací](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md) 
 
-* [Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)
+* [Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](../manage-apps/application-proxy-add-on-premises-application.md)
 
- 

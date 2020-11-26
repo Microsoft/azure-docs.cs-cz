@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 3b9f744e414e83c103f6b9249a0ccf5020588463
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 6374164bb5049742d63a669b4c1e552c93967977
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356344"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173375"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Publikování aplikace v galerii aplikací Azure AD
 
@@ -36,7 +36,7 @@ V případě, že vaši zákazníci používají jako poskytovatele identity va�
 - Poskytněte pro uživatele jednotné přihlašování. Pomocí jednotného přihlašování (SSO) snížíte náklady na podporu tím, že zákazníkům usnadníte jednotné přihlašování. Pokud je jednotné přihlašování jedním kliknutím povolené, správci IT nemusí vědět, jak konfigurovat aplikaci pro použití ve své organizaci. Další informace o jednotném přihlašování najdete v tématu [co je jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md).
 - Vaše aplikace může být zjistitelná v Microsoft 365 Galerie aplikací, spouštěč Microsoft 365 aplikace a v rámci Microsoft Search on Office.com. 
 - Integrovaná správa aplikací. Další informace o správě aplikací ve službě Azure AD najdete v tématu [co je Správa aplikací?](../manage-apps/what-is-application-management.md).
-- Vaše aplikace může používat [Graph API](https://docs.microsoft.com/graph/) pro přístup k datům, která řídí produktivitu uživatelů v ekosystému Microsoftu.
+- Vaše aplikace může používat [Graph API](/graph/) pro přístup k datům, která řídí produktivitu uživatelů v ekosystému Microsoftu.
 - Dokumentace ke konkrétní aplikaci společně s týmem Azure AD pro naše vzájemné zákazníky usnadňuje přijímání.
 - Zákazníkům poskytnete možnost plně spravovat ověřování a autorizaci identity svých zaměstnanců a hostů.
 - Zadáváme zodpovědnost za správu účtů a dodržování předpisů s vlastníkem zákazníka těchto identit.
@@ -47,7 +47,7 @@ V případě, že vaši zákazníci používají jako poskytovatele identity va�
 - Přidejte zabezpečení a pohodlí, když se uživatelé přihlásí k aplikacím pomocí jednotného přihlašování Azure AD a odstraňují nutnost samostatných přihlašovacích údajů.
 
 > [!TIP]
-> Když nabídnete aplikaci pro použití jinými společnostmi prostřednictvím nákupu nebo předplatného, zpřístupníte ji zákazníkům v jejich vlastních klientech Azure. To se označuje jako vytvoření víceklientské aplikace. Přehled tohoto konceptu najdete v tématu víceklientské [aplikace v Azure a tenant](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications) [v Azure Active Directory](single-and-multi-tenant-apps.md).
+> Když nabídnete aplikaci pro použití jinými společnostmi prostřednictvím nákupu nebo předplatného, zpřístupníte ji zákazníkům v jejich vlastních klientech Azure. To se označuje jako vytvoření víceklientské aplikace. Přehled tohoto konceptu najdete v tématu víceklientské [aplikace v Azure a tenant](../../dotnet-develop-multitenant-applications.md) [v Azure Active Directory](single-and-multi-tenant-apps.md).
 
 > [!IMPORTANT]
 > Pokud chcete publikovat aplikaci v galerii Azure AD, musíte souhlasit s konkrétními podmínkami a ujednáními. Než začnete, nezapomeňte si přečíst [podmínky a ujednání](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/)a souhlasím s nimi.
@@ -69,7 +69,7 @@ Postup publikování aplikace v galerii aplikací Azure AD:
 - Mezi vzájemné zákazníky získáte Podrobný kurz konfigurace.
 - Zákazníci, kteří používají systém pro správu identit mezi doménami ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)), můžou použít zřizování pro stejnou aplikaci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Budete potřebovat trvalý účet pro testování s alespoň dvěma registrovanými uživateli.
 
@@ -95,10 +95,10 @@ V následující tabulce jsou porovnávány hlavní standardy: Otevřete ověřo
 | Jednotné odhlašování na základě webu| √| √ |
 | Jednotné přihlašování prostřednictvím mobilního telefonu| √| √* |
 | Jednotné odhlašování pomocí mobilních zařízení| √| √* |
-| Zásady podmíněného přístupu pro mobilní aplikace| √| × |
-| Bezproblémové možnosti vícefaktorového ověřování pro mobilní aplikace| √| × |
+| Zásady podmíněného přístupu pro mobilní aplikace| √| X |
+| Bezproblémové možnosti vícefaktorového ověřování pro mobilní aplikace| √| X |
 | Zřizování SCIM| √| √ |
-| Přístup Microsoft Graph| √| × |
+| Přístup Microsoft Graph| √| X |
 
 *, Ale Microsoft neposkytuje ukázky ani doprovodné materiály.
 
@@ -162,7 +162,7 @@ Pokud vaše aplikace podporuje SAML 2,0, můžete ji integrovat přímo s klient
 Microsoft neposkytuje ani nedoporučuje knihovny pro implementace SAML. K dispozici je celá řada Open Source knihoven.
 
 ### <a name="implement-ws-fed"></a>Implementovat WS-Fed
-Další informace o WS-Fed v ASP.NET Core najdete v tématu [ověřování uživatelů pomocí WS-Federation v ASP.NET Core](https://docs.microsoft.com/aspnet/core/security/authentication/ws-federation).
+Další informace o WS-Fed v ASP.NET Core najdete v tématu [ověřování uživatelů pomocí WS-Federation v ASP.NET Core](/aspnet/core/security/authentication/ws-federation).
 
 ### <a name="implement-password-vaulting"></a>Implementace trezoru hesel
 
@@ -173,7 +173,7 @@ Vytvořte webovou aplikaci, která má přihlašovací stránku HTML. Zajistěte
 
 K otestování vaší aplikace budete potřebovat tenanta Azure AD. Informace o nastavení vývojového prostředí najdete v tématu [rychlý Start: nastavení tenanta](quickstart-create-new-tenant.md).
 
-Další možností je, že tenant služby Azure AD přináší každé předplatné Microsoft 365. Pokud chcete nastavit bezplatné Microsoft 365 vývojové prostředí, přečtěte si téma [zapojení do programu Microsoft 365 Developer](https://docs.microsoft.com/office/developer-program/microsoft-365-developer-program).
+Další možností je, že tenant služby Azure AD přináší každé předplatné Microsoft 365. Pokud chcete nastavit bezplatné Microsoft 365 vývojové prostředí, přečtěte si téma [zapojení do programu Microsoft 365 Developer](/office/developer-program/microsoft-365-developer-program).
 
 Jakmile budete mít tenanta, musíte povolit a otestovat přístup pro jednotné přihlašování. 
 
@@ -209,7 +209,7 @@ Doporučujeme, aby vaše dokumentace na webu obsahovala minimálně následujíc
 
 ### <a name="documentation-on-the-microsoft-site"></a>Dokumentace na webu společnosti Microsoft
 
-Při vytváření seznamu aplikací pomocí Azure Active Directory Galerie aplikací, která také publikuje vaši aplikaci v Azure Marketplace, společnost Microsoft vygeneruje dokumentaci pro naše vzájemné zákazníky, kteří vysvětlují podrobný proces. [Tady](https://aka.ms/appstutorial)vidíte příklad. Tato dokumentace je vytvořena na základě odeslání do galerie a můžete ji snadno aktualizovat, pokud provedete změny aplikace pomocí účtu GitHub.
+Při vytváření seznamu aplikací pomocí Azure Active Directory Galerie aplikací, která také publikuje vaši aplikaci v Azure Marketplace, společnost Microsoft vygeneruje dokumentaci pro naše vzájemné zákazníky, kteří vysvětlují podrobný proces. [Tady](../saas-apps/tutorial-list.md)vidíte příklad. Tato dokumentace je vytvořena na základě odeslání do galerie a můžete ji snadno aktualizovat, pokud provedete změny aplikace pomocí účtu GitHub.
 
 
 ## <a name="step-5---submit-your-app"></a>Krok 5 – odeslání aplikace
@@ -262,7 +262,7 @@ Pokud chcete přidat aplikaci do seznamu v galerii pomocí jednotného přihlaš
 
 ![Výpis aplikace pro jednotné přihlašování do galerie](./media/howto-app-gallery-listing/passwordsso.png)
 
-Pokud implementujete koncový bod [SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) 2,0 pro zřizování uživatelů, vyberte možnost, jak je zobrazeno. 
+Pokud implementujete koncový bod [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2,0 pro zřizování uživatelů, vyberte možnost, jak je zobrazeno. 
 
    ![Požadavek na zřizování uživatelů](./media/howto-app-gallery-listing/user-provisioning.png)
 

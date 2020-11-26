@@ -8,11 +8,11 @@ ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: přizpůsobování, přizpůsobování v Azure, Machine Learning
 ms.openlocfilehash: f843e7bfa014ad8391e20efff83a3c21a9de11b9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363897"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171955"
 ---
 # <a name="what-is-personalizer"></a>Co je služba Personalizace?
 
@@ -29,14 +29,14 @@ Než začnete, můžete si vyzkoušet [přizpůsobování pomocí této interakt
 
 ## <a name="how-does-personalizer-select-the-best-content-item"></a>Jak přizpůsobuje výběr nejlepší položky obsahu?
 
-Přizpůsobování využívá **posílení učení** k výběru nejlepší položky ( _Akce_ ) na základě kolektivního chování a odměňování výsledků napříč všemi uživateli. Akce jsou položky obsahu, jako jsou například články s novinkami, konkrétní filmy nebo produkty.
+Přizpůsobování využívá **posílení učení** k výběru nejlepší položky (_Akce_) na základě kolektivního chování a odměňování výsledků napříč všemi uživateli. Akce jsou položky obsahu, jako jsou například články s novinkami, konkrétní filmy nebo produkty.
 
 Volání **pořadí** přijímá položku akce, společně s funkcemi akce a funkce kontextu pro výběr nejvyšší položky akce:
 
 * **Akce s funkcemi** – položky obsahu s funkcemi specifickými pro jednotlivé položky
 * **Kontextové funkce** – funkce uživatelů, jejich kontext nebo prostředí při použití vaší aplikace
 
-Volání pořadí vrátí ID, které položky obsahu, __Akce__ , která se má uživateli zobrazit, v poli **ID akce odměna** .
+Volání pořadí vrátí ID, které položky obsahu, __Akce__, která se má uživateli zobrazit, v poli **ID akce odměna** .
 
 __Akce__ zobrazená uživateli se volí pomocí modelů strojového učení, které se snaží maximalizovat celkovou částku v průběhu času.
 
@@ -94,7 +94,7 @@ Vzhledem k tomu, že přidaný modul používá k vrácení jediné nejlepší p
     |--|--|
     |Uživatel zvolil nejlepší, jednu položku _obsahu_ (ID akce pro odměnu).|**1**|
     |Uživatel vybral jiný obsah.|**0**|
-    |Uživatel byl pozastaven, je před tím nerozhodující, aby bylo možné vybrat nejlepší, jednu položku _obsahu_ (ID akce odměna).|**0.5**|
+    |Uživatel byl pozastaven, je před tím nerozhodující, aby bylo možné vybrat nejlepší, jednu položku _obsahu_ (ID akce odměna).|**0,5**|
 
     1. Přidejte volání **odměňování** , které posílá skóre odměňování od 0 do 1.
         * Hned po zobrazení obsahu
@@ -113,7 +113,7 @@ Až budete mít možnost začít se službou pro přizpůsobování, vyzkoušejt
 * [Kurz: použití přizpůsobeného prostředí v robotu chatu pro .NET](tutorial-use-personalizer-chat-bot.md)
 * [Kurz: použití individuálního nastavení v poznámkovém bloku Azure](tutorial-use-azure-notebook-generate-loop-data.md)
 
-## <a name="reference"></a>Referenční informace 
+## <a name="reference"></a>Reference 
 
 * [Sada/.NET SDK pro přizpůsobení C#](/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
 * [Sada SDK pro přizpůsobování](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/personalizer/v1.0/personalizer)

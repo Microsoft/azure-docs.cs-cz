@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 11/12/2020
-ms.openlocfilehash: b41f5e9a3bd4d3cbe52cf2e1c567d24de8a661f4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6d40eab12c9726459543d0b69e27b73178eba99f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95992839"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170612"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Monitorování Azure AD B2C s využitím Azure Monitor
 
@@ -48,7 +48,7 @@ Během tohoto nasazení nakonfigurujete svého klienta Azure AD B2C i klienta sl
 
 Nejprve vytvořte nebo vyberte skupinu prostředků, která obsahuje cílový Log Analytics pracovní prostor, který bude přijímat data z Azure AD B2C. Název skupiny prostředků určíte při nasazení šablony Azure Resource Manager.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho **tenanta Azure AD**.
 1. [Vytvořte skupinu prostředků](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) nebo vyberte některou z existujících. V tomto příkladu se používá skupina prostředků s názvem *Azure-AD-B2C-monitor*.
 
@@ -56,7 +56,7 @@ Nejprve vytvořte nebo vyberte skupinu prostředků, která obsahuje cílový Lo
 
 **Log Analytics pracovní prostor** je jedinečné prostředí pro Azure monitor data protokolu. Pomocí tohoto Log Analytics pracovního prostoru můžete shromažďovat data z [protokolů auditu](view-audit-logs.md)Azure AD B2C a pak je vizualizovat pomocí dotazů a sešitů nebo vytvářet upozornění.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho **tenanta Azure AD**.
 1. [Vytvořte pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md). V tomto příkladu se používá pracovní prostor Log Analytics s názvem *AzureAdB2C* ve skupině prostředků s názvem *Azure-AD-B2C-monitor*.
 
@@ -68,7 +68,7 @@ V tomto kroku zvolíte svého tenanta Azure AD B2C jako **poskytovatele služeb*
 
 Nejprve získejte **ID tenanta** vašeho adresáře Azure AD B2C (označuje se také jako ID adresáře).
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta **Azure AD B2C** .
 1. Vyberte **Azure Active Directory** vyberte **Přehled**.
 1. Poznamenejte si **ID tenanta**.
@@ -89,7 +89,7 @@ Pro usnadnění správy doporučujeme použít pro každou roli *skupiny* uživa
 
 V dalším kroku vytvoříte šablonu Azure Resource Manager, která uděluje Azure AD B2C přístup k této skupině prostředků Azure AD, kterou jste vytvořili dříve (například *Azure-AD-B2C-monitor*). Nasaďte šablonu z ukázky na GitHubu pomocí tlačítka **nasadit do Azure** , které otevře Azure Portal a umožňuje konfiguraci a nasazení šablony přímo na portálu. V případě těchto kroků se ujistěte, že jste přihlášeni ke svému tenantovi služby Azure AD (nikoli k tenantovi Azure AD B2C).
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho TENANTA **Azure AD** .
 3. Pomocí tlačítka **nasadit do Azure** otevřete Azure Portal a šablonu nasaďte přímo na portálu. Další informace najdete v tématu [Vytvoření šablony Azure Resource Manager](../lighthouse/how-to/onboard-customer.md#create-an-azure-resource-manager-template).
 
@@ -140,9 +140,9 @@ Po nasazení šablony a dokončení projekce prostředků počkejte několik min
 
 Nastavení diagnostiky definují, kam se mají odesílat protokoly a metriky prostředku. Možné cíle:
 
-- [Účet úložiště Azure](../azure-monitor/platform/resource-logs-collect-storage.md)
-- Řešení [centra událostí](../azure-monitor/platform/resource-logs-stream-event-hubs.md)
-- [Pracovní prostor Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md)
+- [Účet úložiště Azure](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- Řešení [centra událostí](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)
+- [Pracovní prostor Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)
 
 V tomto příkladu používáme pracovní prostor Log Analytics k vytvoření řídicího panelu.
 
@@ -180,7 +180,7 @@ Teď můžete nakonfigurovat svůj pracovní prostor Log Analytics k vizualizaci
 Dotazy protokolu umožňují plně využít hodnoty dat shromažďovaných v protokolech Azure Monitor. Výkonný dotazovací jazyk umožňuje spojit data z více tabulek, agregovat velké sady dat a provádět komplexní operace s minimálním kódem. Prakticky všechny dotazy mohou být zodpovězeny a analýzou provedeny, pokud jsou shromážděna podpůrná data a rozumíte tomu, jak vytvořit správný dotaz. Další informace najdete v tématu [Začínáme s dotazy protokolu v Azure monitor](../azure-monitor/log-query/get-started-queries.md).
 
 1. V **Log Analytics pracovním prostoru** vyberte **protokoly** .
-1. V editoru dotazů vložte následující dotaz dotazovacího [jazyka Kusto](https://docs.microsoft.com/azure/data-explorer/kusto/query/) . Tento dotaz zobrazí použití zásad podle operace za posledních x dní. Výchozí doba trvání je nastavená na 90 dní (90d). Všimněte si, že dotaz se zaměřuje pouze na operaci, kde je token nebo kód vydán zásadami.
+1. V editoru dotazů vložte následující dotaz dotazovacího [jazyka Kusto](/azure/data-explorer/kusto/query/) . Tento dotaz zobrazí použití zásad podle operace za posledních x dní. Výchozí doba trvání je nastavená na 90 dní (90d). Všimněte si, že dotaz se zaměřuje pouze na operaci, kde je token nebo kód vydán zásadami.
 
     ```kusto
     AuditLogs
@@ -205,7 +205,7 @@ Dotazy protokolu umožňují plně využít hodnoty dat shromažďovaných v pro
 
 1. Vyberte **Uložit**.
 
-Můžete také změnit dotaz pro vizualizaci dat pomocí operátoru [vykreslení](https://docs.microsoft.com/azure/data-explorer/kusto/query/renderoperator?pivots=azuremonitor) .
+Můžete také změnit dotaz pro vizualizaci dat pomocí operátoru [vykreslení](/azure/data-explorer/kusto/query/renderoperator?pivots=azuremonitor) .
 
 ```kusto
 AuditLogs

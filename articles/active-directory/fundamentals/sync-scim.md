@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f957070ec94fc4c61089f31fe91261a2f52c4ee4
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: b95aac504bc6ee72c353faecad25384e2dc90840
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578854"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172414"
 ---
 # <a name="scim-synchronization-with-azure-active-directory"></a>SCIM synchronizaci s Azure Active Directory
 
@@ -35,21 +35,20 @@ Chcete automaticky zřídit informace o uživateli ze systému HCM do služby Az
 
 ## <a name="components-of-system"></a>Součásti systému 
 
-* **HCM System** : aplikace a technologie, které umožňují proces správy lidských zdrojů a postupy, které podporují a automatizují procesy pro personál v životním cyklu zaměstnanců. 
+* **HCM System**: aplikace a technologie, které umožňují proces správy lidských zdrojů a postupy, které podporují a automatizují procesy pro personál v životním cyklu zaměstnanců. 
 
-* **Služba zřizování Azure AD** : používá protokol SCIM 2,0 pro Automatické zřizování. Služba se připojí ke koncovému bodu SCIM pro aplikaci a pomocí schématu uživatelského objektu SCIM a rozhraní REST API automatizuje zřizování a zrušení zřizování uživatelů a skupin.  
+* **Služba zřizování Azure AD**: používá protokol SCIM 2,0 pro Automatické zřizování. Služba se připojí ke koncovému bodu SCIM pro aplikaci a pomocí schématu uživatelského objektu SCIM a rozhraní REST API automatizuje zřizování a zrušení zřizování uživatelů a skupin.  
 
-* **Azure AD** : úložiště uživatelů používané ke správě životního cyklu identit a jejich nároků. 
+* **Azure AD**: úložiště uživatelů používané ke správě životního cyklu identit a jejich nároků. 
 
-* **Cílový systém** : aplikace nebo systém, který má koncový bod SCIM a spolupracuje s zřizováním Azure AD za účelem umožnění automatického zřizování uživatelů a skupin.  
+* **Cílový systém**: aplikace nebo systém, který má koncový bod SCIM a spolupracuje s zřizováním Azure AD za účelem umožnění automatického zřizování uživatelů a skupin.  
 
 ## <a name="implement-scim-with-azure-ad"></a>Implementace SCIM s využitím Azure AD 
 
-* [Jak zřizování funguje v Azure AD ](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works)
+* [Jak zřizování funguje v Azure AD ](../app-provisioning/how-provisioning-works.md)
 
-* [Správa zřizování uživatelských účtů pro podnikové aplikace v Azure Portal ](https://docs.microsoft.com/azure/active-directory/app-provisioning/configure-automatic-user-provisioning-portal)
+* [Správa zřizování uživatelských účtů pro podnikové aplikace v Azure Portal ](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 
-* [Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure AD  ](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups)
+* [Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure AD  ](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
-* [Dodržování předpisů protokolu SCIM 2,0 ve službě Azure AD Provisioning](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility)
-
+* [Dodržování předpisů protokolu SCIM 2,0 ve službě Azure AD Provisioning](../app-provisioning/application-provisioning-config-problem-scim-compatibility.md)

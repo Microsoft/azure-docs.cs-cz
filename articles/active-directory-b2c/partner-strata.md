@@ -11,31 +11,31 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 6276bd0db9bfb93897f7350b87d208ac2951c859
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: bddc4c64feb31f78bed482bbd729ab1c4b8e676e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330321"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171411"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Kurz pro rozšíření Azure AD B2C k ochraně místních aplikací pomocí vrstev
 
 V tomto ukázkovém kurzu se dozvíte, jak integrovat Azure Active Directory (AD) B2C s [Maverics identity Orchestrator](https://www.strata.io/maverics-identity-orchestrator/)pro vrstvy.
 Maverics identity Orchestrator rozšiřuje Azure AD B2C k ochraně místních aplikací. Připojuje se k jakémukoli systému identit, transparentně migruje uživatele a přihlašovací údaje, synchronizuje zásady a konfigurace a abstrakce ověřování a správu relací. Použití vrstev v podnicích dokáže rychle přejít ze starší verze na Azure AD B2C bez nutnosti přepisovat aplikace. Toto řešení má následující výhody:
 
-- **Zákaznické jednotné Sign-On (SSO) k místním hybridním aplikacím** : Azure AD B2C podporuje jednotné přihlašování zákazníka s Maverics identity Orchestrator. Uživatelé se přihlásí pomocí účtů, které jsou hostovány v Azure AD B2C nebo IdP (sociální identity Provider). Maverics rozšiřuje jednotné přihlašování do aplikací, které byly historicky zabezpečeny staršími systémy identit, jako je Symantec SiteMinder.
+- **Zákaznické jednotné Sign-On (SSO) k místním hybridním aplikacím**: Azure AD B2C podporuje jednotné přihlašování zákazníka s Maverics identity Orchestrator. Uživatelé se přihlásí pomocí účtů, které jsou hostovány v Azure AD B2C nebo IdP (sociální identity Provider). Maverics rozšiřuje jednotné přihlašování do aplikací, které byly historicky zabezpečeny staršími systémy identit, jako je Symantec SiteMinder.
 
-- **Rozšiřování jednotného přihlašování do aplikací bez nutnosti jejich psaní** : pomocí Azure AD B2C můžete spravovat přístup uživatelů a povolit jednotné přihlašování pomocí konektorů Maverics identity Orchestrator SAML nebo OIDC.
+- **Rozšiřování jednotného přihlašování do aplikací bez nutnosti jejich psaní**: pomocí Azure AD B2C můžete spravovat přístup uživatelů a povolit jednotné přihlašování pomocí konektorů Maverics identity Orchestrator SAML nebo OIDC.
 
-- **Snadná konfigurace** : Azure AD B2C poskytuje jednoduché podrobné uživatelské rozhraní pro připojení konektorů Maverics identity Orchestrator nebo OIDC k Azure AD B2C.
+- **Snadná konfigurace**: Azure AD B2C poskytuje jednoduché podrobné uživatelské rozhraní pro připojení konektorů Maverics identity Orchestrator nebo OIDC k Azure AD B2C.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli začít, budete potřebovat:
 
 - Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 
-- [Klienta Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) , který je propojený s vaším předplatným Azure.
+- [Klienta Azure AD B2C](./tutorial-create-tenant.md) , který je propojený s vaším předplatným Azure.
 
 - Instance [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) pro ukládání tajných kódů, které používá Maverics identity Orchestrator Slouží k připojení k Azure AD B2C nebo jiným poskytovatelům atributů, jako je například adresář protokolu LDAP (Lightweight Directory Access Protocol) nebo databáze.
 
@@ -47,11 +47,11 @@ Abyste mohli začít, budete potřebovat:
 
 Integrace Maverics do vrstev zahrnuje následující součásti:
 
-- **Azure AD B2C** : autorizační Server, který je zodpovědný za ověření přihlašovacích údajů uživatele. Ověření uživatelé můžou k místním aplikacím přistupovat pomocí místního účtu uloženého v adresáři Azure AD B2C.
+- **Azure AD B2C**: autorizační Server, který je zodpovědný za ověření přihlašovacích údajů uživatele. Ověření uživatelé můžou k místním aplikacím přistupovat pomocí místního účtu uloženého v adresáři Azure AD B2C.
 
-- **Externí IDP nebo Enterprise** : může to být libovolný poskytovatel OpenID Connect, Facebook, Google nebo GitHub. Přečtěte si informace o použití [externích zprostředkovatelů identity](https://docs.microsoft.com/azure/active-directory-b2c/technical-overview#external-identity-providers) s Azure AD B2C.  
+- **Externí IDP nebo Enterprise**: může to být libovolný poskytovatel OpenID Connect, Facebook, Google nebo GitHub. Přečtěte si informace o použití [externích zprostředkovatelů identity](./technical-overview.md#external-identity-providers) s Azure AD B2C.  
 
-- **Maverics identity Orchestrator** : služba, která orchestruje přihlašování uživatelů a transparentně předává identity aplikacím prostřednictvím hlaviček protokolu HTTP.
+- **Maverics identity Orchestrator**: služba, která orchestruje přihlašování uživatelů a transparentně předává identity aplikacím prostřednictvím hlaviček protokolu HTTP.
 
 V následujícím diagramu architektury se zobrazuje implementace.
 
@@ -75,7 +75,7 @@ Pokud chcete získat software, který budete používat k integraci své starš�
 
 1. **Registrace aplikace**
 
-   a. [Zaregistrujte nástroj Orchestrator jako aplikaci](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications?tabs=app-reg-ga) v tenantovi Azure AD B2C.
+   a. [Zaregistrujte nástroj Orchestrator jako aplikaci](./tutorial-register-applications.md?tabs=app-reg-ga) v tenantovi Azure AD B2C.
    >[!Note]
    >Po nakonfigurování instance Orchestrator budete potřebovat název tenanta a identifikátor, ID klienta, tajný klíč klienta, nakonfigurované deklarace identity a identifikátor URI přesměrování později.
 
@@ -83,13 +83,13 @@ Pokud chcete získat software, který budete používat k integraci své starš�
 
    c. Přidejte identifikátor URI pro přesměrování vaší aplikace. Tento identifikátor URI se bude shodovat s `oauthRedirectURL` parametrem konfigurace konektoru Azure AD B2C Orchestrator, například `https://example.com/oidc-endpoint` .
 
-2. **Vytvoření toku uživatele** : Vytvořte [uživatelský tok pro přihlašování a přihlašování](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows).
+2. **Vytvoření toku uživatele**: Vytvořte [uživatelský tok pro přihlašování a přihlašování](./tutorial-create-user-flows.md).
 
-3. **Přidat IDP** : vyberte, abyste se přihlásili ke svému uživateli pomocí místního účtu nebo společenského nebo podnikového [IdPu](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers).
+3. **Přidat IDP**: vyberte, abyste se přihlásili ke svému uživateli pomocí místního účtu nebo společenského nebo podnikového [IdPu](./tutorial-add-identity-providers.md).
 
-4. **Definovat atributy uživatele** : definujte atributy, které mají být shromážděny při registraci.
+4. **Definovat atributy uživatele**: definujte atributy, které mají být shromážděny při registraci.
 
-5. **Zadat deklarace identity aplikace** : Určete atributy, které se mají vrátit do aplikace přes instanci nástroje Orchestrator. Nástroj Orchestrator využívá atributy z deklarací vrácených Azure AD B2C a může načítat další atributy z jiných systémů s připojenými identitami, jako jsou adresáře a databáze LDAP. Tyto atributy se nastavují v hlavičkách HTTP a odesílají do nadřazené místní aplikace.
+5. **Zadat deklarace identity aplikace**: Určete atributy, které se mají vrátit do aplikace přes instanci nástroje Orchestrator. Nástroj Orchestrator využívá atributy z deklarací vrácených Azure AD B2C a může načítat další atributy z jiných systémů s připojenými identitami, jako jsou adresáře a databáze LDAP. Tyto atributy se nastavují v hlavičkách HTTP a odesílají do nadřazené místní aplikace.
 
 ## <a name="configure-maverics-identity-orchestrator"></a>Konfigurace Maverics identity Orchestrator
 
@@ -259,7 +259,7 @@ appgateways:
 
 Je důležité zabezpečit tajné klíče, které nástroj Orchestrator používá pro připojení k Azure AD B2C a jakýmkoli jiným systémům identity. Maverics bude `maverics.yaml` v tomto kurzu jako poskytovatel tajných kódů Azure Key Vault používat výchozí načtení tajných kódů do prostého textu.
 
-Podle pokynů [vytvořte novou Key Vault](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#create-a-vault) , kterou vaše instance Orchestrator použije jako poskytovatele tajných kódů. Přidejte svoje tajná klíč do trezoru a poznamenejte si je z `SECRET NAME` daného klíče. Například, `AzureADB2CClientSecret`.
+Podle pokynů [vytvořte novou Key Vault](../key-vault/secrets/quick-create-portal.md) , kterou vaše instance Orchestrator použije jako poskytovatele tajných kódů. Přidejte svoje tajná klíč do trezoru a poznamenejte si je z `SECRET NAME` daného klíče. Například, `AzureADB2CClientSecret`.
 
 Chcete-li deklarovat hodnotu jako tajný kód v `maverics.yaml` konfiguračním souboru, zabalte tajný klíč pomocí lomených závorek:
 
@@ -342,6 +342,6 @@ appgateways:
 
 Další informace najdete v následujících článcích:
 
-- [Vlastní zásady v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Vlastní zásady v Azure AD B2C](./custom-policy-overview.md)
 
-- [Začínáme s vlastními zásadami v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Začínáme s vlastními zásadami v Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

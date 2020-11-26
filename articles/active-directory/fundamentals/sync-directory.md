@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c340f973193f9c46735423c86112816003fecfcd
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 748f91b2fe77667969e9736f8084a9dd24018425
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578905"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172465"
 ---
 # <a name="directory-synchronization"></a>Synchronizace adresářů
 
@@ -40,22 +40,22 @@ Je potřeba synchronizovat data identity z místních prostředí Active Directo
 
 ## <a name="components-of-system"></a>Součásti systému
 
-* **Uživatel** : přistupuje k aplikaci pomocí Azure AD.
+* **Uživatel**: přistupuje k aplikaci pomocí Azure AD.
 
-* **Webový prohlížeč** : komponenta, s jakou uživatel pracuje, aby mohla přistupovat k externí adrese URL aplikace.
+* **Webový prohlížeč**: komponenta, s jakou uživatel pracuje, aby mohla přistupovat k externí adrese URL aplikace.
 
-* **Aplikace** : webová aplikace, která spoléhá na použití Azure AD pro účely ověřování a autorizace.
+* **Aplikace**: webová aplikace, která spoléhá na použití Azure AD pro účely ověřování a autorizace.
 
-* **Azure AD** : synchronizuje informace o identitě z místního adresáře organizace prostřednictvím Azure AD Connect. 
+* **Azure AD**: synchronizuje informace o identitě z místního adresáře organizace prostřednictvím Azure AD Connect. 
 
-* **Azure AD Connect** : Nástroj pro připojení k místním infrastrukturám identity, který se má Microsoft Azure AD. Průvodce a průvodce vám pomůžou nasadit a nakonfigurovat požadované součásti a komponenty potřebné pro připojení, včetně synchronizace a přihlášení z aktivních adresářů do Azure AD. 
+* **Azure AD Connect**: Nástroj pro připojení k místním infrastrukturám identity, který se má Microsoft Azure AD. Průvodce a průvodce vám pomůžou nasadit a nakonfigurovat požadované součásti a komponenty potřebné pro připojení, včetně synchronizace a přihlášení z aktivních adresářů do Azure AD. 
 
-* **Active Directory** : Služba Active Directory je adresářová služba obsažená ve většině operačních systémů Windows Server. Servery se systémem Active Directory Domain Services (služba AD DS) se nazývají řadiče domény. Ověřují a autorizují všechny uživatele a počítače v doméně.
+* **Active Directory**: Služba Active Directory je adresářová služba obsažená ve většině operačních systémů Windows Server. Servery se systémem Active Directory Domain Services (služba AD DS) se nazývají řadiče domény. Ověřují a autorizují všechny uživatele a počítače v doméně.
 
 ## <a name="implement-directory-synchronization-with-azure-ad"></a>Implementace synchronizace adresářů pomocí Azure AD
 
-* [Co je zřizování identit?](https://docs.microsoft.com/azure/active-directory/cloud-provisioning/what-is-provisioning) 
+* [Co je zřizování identit?](../cloud-provisioning/what-is-provisioning.md) 
 
-* [Nástroje pro integraci adresáře Hybrid identity](https://docs.microsoft.com/azure/active-directory/hybrid/plan-hybrid-identity-design-considerations-tools-comparison) 
+* [Nástroje pro integraci adresáře Hybrid identity](../hybrid/plan-hybrid-identity-design-considerations-tools-comparison.md) 
 
-* [Průvodce instalací Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-roadmap)
+* [Průvodce instalací Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md)

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3bf65fd2cc6feb338c1cd7d0742fb3d2a4289eff
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c695a08e25512720c542c2a94048c5390b452591
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287171"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170990"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C partneři ISV
 
@@ -37,6 +37,7 @@ Naše síť partnera ISV rozšiřuje naše možnosti řešení, které vám pom�
 | ![Snímek obrazovky s logem Jumio](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) je ověřovací služba ID, která umožňuje automatické ověřování ID v reálném čase a zabezpečení zákaznických dat. |
 | ![Snímek obrazovky s logem LexisNexis](./media/partner-gallery/lexisnexis-logo.png) | [LexisNexis](./partner-lexisnexis.md) je profilace a zprostředkovatel ověřování identity, který ověřuje identifikaci uživatele a poskytuje komplexní vyhodnocení rizika na základě zařízení uživatele. |
 | ![Snímek obrazovky s logem N8 identity](./media/partner-gallery/n8identity-logo.png) | [N8 identity](./partner-n8identity.md) je platforma pro zásady správného řízení identity jako služba, která poskytuje řešení pro řešení migrace zákaznických účtů a správy žádostí o služby zákazníkům, které běží na Microsoft Azure. |
+| ![Snímek obrazovky s logem Nevis](./media/partner-gallery/nevis-logo.png) | [Nevis](./partner-nevis.md) nabízí mobilní a plně náročné prostředí koncového uživatele s aplikací Nevis Access, které poskytuje silné ověřování zákazníků a dodržuje požadavky na transakce 2 (PSD2) pro platební služby. |
 | ![Snímek obrazovky s logem Onfido](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) je ID dokumentu a řešení pro ověřování obličeje biometrika, které společnosti umožňuje uspokojit požadavky na *zákazníky* a identitu v reálném čase.  |
 | ![Snímek obrazovky s logem Saviynt](./media/partner-gallery/saviynt-logo.png) | [Saviynt](./partner-saviynt.md) cloudová nativní platforma používá inteligentní analýzy a poskytuje integraci mezi aplikacemi k zjednodušení modernizace IT a k podpoře lepšího zabezpečení, zásad správného řízení a dodržování předpisů. Modernizace podniku mění způsob, jakým společnost přezkoumává žádosti o přístup, prověří přístup, analýzu sestav a zjednodušuje certifikační kampaně.  |
 | ![Snímek obrazovky s logem vrstev](./media/partner-gallery/strata-logo.png) | Úrovně [chrání místní](./partner-strata.md) aplikace vyvynucováním konzistentních zásad přístupu, udržováním synchronizovaných identit a zjednodušuje přechod aplikací ze starších systémů identit na ověřování pomocí standardů a řízení přístupu, které poskytuje Azure AD B2C. |

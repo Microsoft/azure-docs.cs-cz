@@ -11,18 +11,18 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 705df6ddc6b665ac3d0d62ec3dad93e38f5e513e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6a9f3b864bd8aba2140c7d32d4b5474ff7b95f88
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953096"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171224"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Kurz: povolení ověřování v aplikaci s jednou stránkou s Azure AD B2C
 
 V tomto kurzu se dozvíte, jak pomocí Azure Active Directory B2C (Azure AD B2C) se zaregistrovat a přihlašovat uživatele v rámci jednostránkové aplikace (SPA) pomocí těchto akcí:
-* [Tok autorizačního kódu OAuth 2,0](https://docs.microsoft.com/azure/active-directory-b2c/authorization-code-flow) (s použitím [MSAL.js 2. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser))
-* [Tok implicitního udělení OAuth 2,0](https://docs.microsoft.com/azure/active-directory-b2c/implicit-flow-single-page-application) (použití [MSAL.js 1. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core))
+* [Tok autorizačního kódu OAuth 2,0](./authorization-code-flow.md) (s použitím [MSAL.js 2. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser))
+* [Tok implicitního udělení OAuth 2,0](./implicit-flow-single-page-application.md) (použití [MSAL.js 1. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core))
 
 V tomto kurzu první v řadě dvou částí:
 
@@ -36,7 +36,7 @@ V [dalším kurzu](tutorial-single-page-app-webapi.md) v řadě se povoluje čá
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat v krocích v tomto kurzu, budete potřebovat následující Azure AD B2C prostředky:
 
@@ -51,13 +51,13 @@ V místním vývojovém prostředí budete navíc potřebovat následující:
 
 ## <a name="update-the-application"></a>Aktualizace aplikace
 
-V [druhém kurzu](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-spa) , který jste dokončili v rámci požadavků, jste zaregistrovali jednostránkovou aplikaci v Azure AD B2C. Pokud chcete povolit komunikaci s ukázkami kódu v tomto kurzu, přidejte do registrace aplikace adresu URL odpovědi (označuje se taky jako identifikátor URI přesměrování).
+V [druhém kurzu](./tutorial-register-spa.md) , který jste dokončili v rámci požadavků, jste zaregistrovali jednostránkovou aplikaci v Azure AD B2C. Pokud chcete povolit komunikaci s ukázkami kódu v tomto kurzu, přidejte do registrace aplikace adresu URL odpovědi (označuje se taky jako identifikátor URI přesměrování).
 
 Pokud chcete aktualizovat aplikaci ve vašem tenantovi Azure AD B2C, můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze  **aplikací (zastaralé)** . [Další informace o novém prostředí](./app-registrations-training-guide.md).
 
 #### <a name="app-registrations-auth-code-flow"></a>[Registrace aplikací (tok kódu ověřování)](#tab/app-reg-auth/)
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací**, vyberte kartu **vlastněné aplikace** a pak vyberte aplikaci *spaapp1* .
@@ -68,7 +68,7 @@ Pokud chcete aktualizovat aplikaci ve vašem tenantovi Azure AD B2C, můžete vy
 
 #### <a name="app-registrations-implicit-flow"></a>[Registrace aplikací (implicitní tok)](#tab/app-reg-implicit/)
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací**, vyberte kartu **vlastněné aplikace** a pak vyberte aplikaci *spaapp1* .
@@ -79,7 +79,7 @@ Pokud chcete aktualizovat aplikaci ve vašem tenantovi Azure AD B2C, můžete vy
 
 #### <a name="applications-legacy"></a>[Aplikace (starší verze)](#tab/applications-legacy/)
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **aplikace (starší verze)** a pak vyberte aplikaci *spaapp1* .

@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ef6f6068bce7a676e55eca10ae9198b2238a143
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 640367d1b833f61e8a83fe9ce6b14d6d799cf9b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135343"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172448"
 ---
 # <a name="what-is-provisioning"></a>Co je zřizování?
 
@@ -59,7 +59,7 @@ Další informace najdete v tématu [co je zřizování na základě lidských z
 
 ![zřizování aplikací](media/what-is-provisioning/cloud-3b.png)
 
-Termín **[zřizování aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)** v Azure AD odkazuje na automatické vytváření kopií identit uživatelů v aplikacích, ke kterým uživatelé potřebují přistupovat, pro aplikace, které mají své vlastní úložiště dat, liší se od Azure AD nebo Active Directory. Kromě vytváření identit uživatelů zahrnuje zřizování aplikací také údržbu a odebírání uživatelských identit z těchto aplikací, když se změní stav nebo role uživatele. Mezi běžné scénáře patří zřízení uživatele Azure AD v aplikacích, jako jsou [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial), protože každá z těchto aplikací má vlastní uživatelské úložiště odlišné od Azure AD.
+Termín **[zřizování aplikací](../app-provisioning/user-provisioning.md)** v Azure AD odkazuje na automatické vytváření kopií identit uživatelů v aplikacích, ke kterým uživatelé potřebují přistupovat, pro aplikace, které mají své vlastní úložiště dat, liší se od Azure AD nebo Active Directory. Kromě vytváření identit uživatelů zahrnuje zřizování aplikací také údržbu a odebírání uživatelských identit z těchto aplikací, když se změní stav nebo role uživatele. Mezi běžné scénáře patří zřízení uživatele Azure AD v aplikacích, jako jsou [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md), protože každá z těchto aplikací má vlastní uživatelské úložiště odlišné od Azure AD.
 
 Další informace najdete v tématu [co je zřizování aplikací?](what-is-app-provisioning.md) .
 
@@ -77,7 +77,7 @@ Další informace najdete v tématu [co je mezi adresářovým zřizováním?](w
 
  
 ## <a name="next-steps"></a>Další kroky 
-- [Co je Správa životního cyklu identit?](what-is-identity-lifecycle-management.md)
+- [Co je správa životního cyklu identit?](what-is-identity-lifecycle-management.md)
 - [Co je zřizování na základě lidských zdrojů?](what-is-hr-driven-provisioning.md)
 - [Co je zřizování aplikací?](what-is-app-provisioning.md)
-- [Co je mezi adresářovým zřizováním?](what-is-inter-directory-provisioning.md)
+- [Co je zřizování mezi adresářovými systémy?](what-is-inter-directory-provisioning.md)

@@ -16,12 +16,12 @@ ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eccc0e71c73fb8bd2a5a50ebd0dda048d34dbea0
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 032b1ca945cf729f8a6682cf71d26a716b1e8863
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488396"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172341"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Tento článek popisuje požadavky a požadavky na hardware pro službu Azure Active Directory (Azure AD) Connect.
@@ -42,7 +42,7 @@ Než nainstalujete Azure AD Connect, budete potřebovat několik věcí.
 
 ### <a name="on-premises-active-directory"></a>Místní služby Active Directory
 * Úroveň funkčnosti schématu Active Directory a doménové struktury musí být Windows Server 2003 nebo novější. Řadiče domény můžou spouštět libovolnou verzi, pokud jsou splněné verze schématu a požadavky na úrovni doménové struktury.
-* Pokud plánujete použít *zpětný zápis hesla* , musí být řadiče domény v systému Windows Server 2012 nebo novějším.
+* Pokud plánujete použít *zpětný zápis hesla*, musí být řadiče domény v systému Windows Server 2012 nebo novějším.
 * Řadič domény, který používá Azure AD, musí být zapisovatelný. Použití řadiče domény jen pro čtení (RODC) *není podporované* a Azure AD Connect nedodržují žádné přesměrování zápisu.
 * Použití místních doménových struktur nebo domén pomocí teček (název obsahuje tečku ".") Názvy rozhraní NetBIOS *nejsou podporovány*.
 * Doporučujeme [Povolit složku Koš služby Active Directory](how-to-connect-sync-recycle-bin.md).
@@ -52,7 +52,7 @@ Azure Active Directory Connect v rámci instalace spouští podepsané skripty P
 
 Doporučené zásady spouštění během instalace jsou "RemoteSigned".
 
-Další informace o nastavení zásad spouštění prostředí PowerShell najdete v tématu [Set-ExecutionPolicy](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7).
+Další informace o nastavení zásad spouštění prostředí PowerShell najdete v tématu [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7).
 
 
 ### <a name="azure-ad-connect-server"></a>Server Azure AD Connect
@@ -82,7 +82,7 @@ Doporučujeme, abyste Server Azure AD Connect, abyste snížili plochu pro útok
 - Vytvořte [vyhrazený účet pro všechny pracovníky s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/securing-privileged-access). Správci by neměli procházet web, kontrolovat jejich e-maily a provádět každodenní úkoly s vysoce privilegovanými účty.
 - Postupujte podle pokynů uvedených v části [zabezpečení privilegovaného přístupu](/windows-server/identity/securing-privileged-access/securing-privileged-access). 
 - Zamítnout použití ověřování NTLM se serverem AADConnect Tady je několik způsobů, jak to provést: [omezení NTLM na serveru AADConnect](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) a [omezení NTLM v doméně](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain) .
-- Zajistěte, aby měl každý počítač jedinečné heslo místního správce. Další informace najdete v tématu [řešení hesla místního správce (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) může konfigurovat jedinečná náhodná hesla na každé pracovní stanici a na serveru, kde jsou v ní chráněná seznamem ACL. Resetovat hesla těchto účtů místních správců můžou číst nebo žádat jenom oprávnění autorizovaní uživatelé. LAPS můžete získat pro použití na pracovních stanicích a serverech z [webu Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.). Další pokyny pro provoz prostředí s LAPS a privilegovaným přístupem (Privileged Access Workstations) najdete v [provozních standardech na základě principu čistého zdroje](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle). 
+- Zajistěte, aby měl každý počítač jedinečné heslo místního správce. Další informace najdete v tématu [řešení hesla místního správce (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) může konfigurovat jedinečná náhodná hesla na každé pracovní stanici a na serveru, kde jsou v ní chráněná seznamem ACL. Resetovat hesla těchto účtů místních správců můžou číst nebo žádat jenom oprávnění autorizovaní uživatelé. LAPS můžete získat pro použití na pracovních stanicích a serverech z [webu Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=46899). Další pokyny pro provoz prostředí s LAPS a privilegovaným přístupem (Privileged Access Workstations) najdete v [provozních standardech na základě principu čistého zdroje](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle). 
 - Implementujte vyhrazené [pracovní stanice s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations) pro všechny pracovníky s privilegovaným přístupem k informačním systémům vaší organizace. 
 - Pomocí těchto [dalších pokynů](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) můžete omezit plochu útoku prostředí Active Directory.
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9db46d13c9a798204958a7c295df9cca169fc08f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cd4c70354920655507f987f43a542e4b474803e1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94954031"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170935"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Microsoft Graph operace k dispozici pro Azure AD B2C
 
@@ -36,12 +36,12 @@ Další informace o správě Azure AD B2C uživatelských účtů s rozhraním A
 
 ## <a name="user-phone-number-management"></a>Správa telefonního čísla uživatele
 
-- [Přidat](https://docs.microsoft.com/graph/api/authentication-post-phonemethods)
-- [Čtěte](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-get)
-- [Aktualizace](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-update)
-- [Odstranit](https://docs.microsoft.com/graph/api/phoneauthenticationmethod-delete)
+- [Přidat](/graph/api/authentication-post-phonemethods)
+- [Čtěte](/graph/api/b2cauthenticationmethodspolicy-get)
+- [Aktualizace](/graph/api/b2cauthenticationmethodspolicy-update)
+- [Odstranit](/graph/api/phoneauthenticationmethod-delete)
 
-Další informace o tom, jak spravovat telefonní číslo přihlášení uživatele pomocí rozhraní Microsoft Graph API, najdete v tématu [metody ověřování B2C](https://docs.microsoft.com/graph/api/resources/b2cauthenticationmethodspolicy).
+Další informace o tom, jak spravovat telefonní číslo přihlášení uživatele pomocí rozhraní Microsoft Graph API, najdete v tématu [metody ověřování B2C](/graph/api/resources/b2cauthenticationmethodspolicy).
 
 ## <a name="identity-providers-user-flow"></a>Zprostředkovatelé identity (tok uživatelů)
 

@@ -13,16 +13,16 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: ed3e9da628ab779ab47673fa2ce728c5c25539be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b683eaaf4c93ef0dcf74680e1e174e0f867a7041
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88166429"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173392"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Použití MSAL.NET k přihlašování uživatelů pomocí sociálních identit
 
-Pomocí MSAL.NET [(Azure AD B2C)](https://aka.ms/aadb2c)se můžete přihlásit k uživatelům pomocí sociálních Azure Active Directory B2C identit. Azure AD B2C je vybudována kolem pojmu zásad. V MSAL.NET určení zásady se překládá na poskytování autority.
+Pomocí MSAL.NET [(Azure AD B2C)](../../active-directory-b2c/overview.md)se můžete přihlásit k uživatelům pomocí sociálních Azure Active Directory B2C identit. Azure AD B2C je vybudována kolem pojmu zásad. V MSAL.NET určení zásady se překládá na poskytování autority.
 
 - Při vytváření instance veřejné klientské aplikace je třeba zadat zásadu v rámci autority.
 - Pokud chcete použít zásadu, zavolejte přepsání `AcquireTokenInteractive` , které přijímá `authority` parametr.
@@ -78,7 +78,7 @@ V předchozím fragmentu kódu:
 
 - `policy` je řetězec obsahující název Azure AD B2C toku uživatele nebo vlastní zásady (například `PolicySignUpSignIn` ).
 - `ParentActivityOrWindow` vyžaduje se pro Android (aktivita) a je volitelný pro jiné platformy, které podporují nadřazené uživatelské rozhraní, jako je Windows v Microsoft Windows a UIViewController v iOS. Další informace o dialogovém okně uživatelského rozhraní najdete v tématu [WithParentActivityOrWindow](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow) na wikiwebu MSAL.
-- `GetAccountByPolicy(IEnumerable<IAccount>, string)` je metoda, která najde účet pro danou zásadu. Například:
+- `GetAccountByPolicy(IEnumerable<IAccount>, string)` je metoda, která najde účet pro danou zásadu. Příklad:
 
   ```csharp
   private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
@@ -194,6 +194,6 @@ Další informace o určení, které deklarace identity vrátí vaše uživatels
 
 Další podrobnosti o interaktivním získání tokenů pomocí MSAL.NET pro Azure AD B2C aplikace jsou k dispozici v následující ukázce.
 
-| Ukázka | Platforma | Description|
+| Ukázka | Platforma | Popis|
 |------ | -------- | -----------|
 |[Active-Directory-B2C-Xamarin-Native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | Aplikace Xamarin Forms, která používá MSAL.NET k ověřování uživatelů prostřednictvím Azure AD B2C a přístup k webovému rozhraní API s vrácenými tokeny.|

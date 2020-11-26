@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 184616058cb2a86025eb75b4923e374ab42ebf05
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 99741a412ae02a2d30293e1aa254245f5ca7b662
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953555"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171428"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci Saviynt s využitím Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ V tomto ukázkovém kurzu nastavíte Saviynt tak, aby poskytovalo podrobné ří
 
 - Zabezpečení na úrovni dat k určení, jestli uživatel může provádět určitou operaci na konkrétním uživateli. Například správce helpdesku pro oblast UK může spravovat pouze uživatele ve Velké Británii.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli začít, budete potřebovat:
 
@@ -69,13 +69,13 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 1. Pokud chcete vytvořit účet Saviynt, kontaktujte [Saviynt](https://saviynt.com/contact-us/) .
 
-2. Vytvořte zásady delegované správy a přiřaďte uživatele jako [delegované správce](../active-directory/users-groups-roles/roles-concept-delegation.md) s různými rolemi.
+2. Vytvořte zásady delegované správy a přiřaďte uživatele jako [delegované správce](../active-directory/roles/concept-delegation.md) s různými rolemi.
 
 ## <a name="configure-azure-ad-b2c-with-saviynt"></a>Konfigurace Azure AD B2C pomocí Saviynt
 
 ### <a name="create-an-azure-ad-application-for-saviynt"></a>Vytvoření aplikace Azure AD pro Saviynt
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/#home).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/#home).
 
 2. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 
