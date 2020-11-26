@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: 223f3e45f25e3aed3ed6fa15e5b9ea04b17f6c59
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 205cc6eea5d1ac3be2d0e266621067dc8e20d2f9
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023904"
+ms.locfileid: "96121752"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Připojení dat od zprostředkovatelů pro analýzu hrozeb
 
@@ -56,10 +56,15 @@ Pomocí jednoho z produktů s integrovanými platformami pro analýzu hrozeb (TI
 
     Informace najdete v tématu věnovaném [integraci ThreatConnect](https://threatconnect.com/integrations/) a vyhledání rozhraní API pro Microsoft Graph zabezpečení na stránce.
 
+- [Platforma EclecticIQ](https://www.eclecticiq.com/solutions)
+
+- [Platforma ThreatQ Threat Intelligence](https://www.threatq.com/)
+
+    Informace a pokyny najdete v tématu [Microsoft Sentinel Connector for ThreatQ Integration](https://appsource.microsoft.com/product/web-apps/threatquotientinc1595345895602.microsoft-sentinel-connector-threatq?src=health&tab=Overview).
 
 ## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>Připojení Azure Sentinel k vaší platformě pro analýzu hrozeb
 
-### <a name="prerequisites"></a>Požadavky  
+### <a name="prerequisites"></a>Předpoklady  
 
 - Role Azure AD buď globálního správce nebo správce zabezpečení, aby udělila oprávnění k produktu TIP nebo vlastní aplikaci, která používá přímou integraci s rozhraním API Microsoft Graph tiIndicators Security.
 
@@ -89,7 +94,7 @@ Pomocí jednoho z produktů s integrovanými platformami pro analýzu hrozeb (TI
 
 ## <a name="connect-azure-sentinel-to-taxii-servers"></a>Připojení Azure Sentinel k serverům TAXII
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Oprávnění ke čtení a zápisu do pracovního prostoru Azure Sentinel pro ukládání indikátorů hrozeb.
 

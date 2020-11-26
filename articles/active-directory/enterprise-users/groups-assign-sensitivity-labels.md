@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08abd6938990f5300639a56fb487d910bf8000b3
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: f8680c1d24fe3c1ed840def40c1c3abdd2fdaf24
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95488857"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96121783"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Přiřazení popisků citlivosti Microsoft 365 skupinám v Azure Active Directory
 
-Azure Active Directory (Azure AD) podporuje použití popisků citlivostí publikovaných [centrem dodržování předpisů Microsoft 365](https://sip.protection.office.com/homepage) do skupin Microsoft 365. Popisky citlivosti se vztahují na skupinu napříč službami, jako je Outlook, Microsoft teams a SharePoint. Tato funkce je aktuálně ve veřejném GA. Další informace o podpoře aplikací Microsoft 365 najdete v tématu [Podpora značek citlivosti Microsoft 365](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
+Azure Active Directory (Azure AD) podporuje použití popisků citlivostí publikovaných [centrem dodržování předpisů Microsoft 365](https://sip.protection.office.com/homepage) do skupin Microsoft 365. Popisky citlivosti se vztahují na skupinu napříč službami, jako je Outlook, Microsoft teams a SharePoint. Další informace o podpoře aplikací Microsoft 365 najdete v tématu [Podpora značek citlivosti Microsoft 365](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
 
 > [!IMPORTANT]
 > Pokud chcete tuto funkci nakonfigurovat, musí být ve vaší organizaci Azure AD aspoň jedna licence Active Azure Active Directory Premium P1.

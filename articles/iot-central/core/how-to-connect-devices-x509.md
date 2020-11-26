@@ -8,22 +8,22 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 33d837f63fca2062ec930fcf0d64ee01ea822c99
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: d36cf2344891bb70ab5499e77699b111429a936b
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989526"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96121832"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>Postup připojení zařízení pomocí certifikátů X. 509 pomocí sady SDK pro Node.js zařízení pro IoT Central aplikace
 
-IoT Central podporuje certifikáty sdíleného přístupu (SAS) i X. 509 k zabezpečení komunikace mezi zařízením a vaší aplikací. V kurzu [Vytvoření a připojení klientské aplikace do Azure IoT Central aplikace se](./tutorial-connect-device-nodejs.md) používá SAS. V tomto článku se naučíte, jak upravit ukázku kódu pro použití X. 509.  V produkčním prostředí se doporučují certifikáty X. 509. Další informace najdete v tématu věnovaném [připojení k Azure IoT Central](./concepts-get-connected.md).
+IoT Central podporuje certifikáty sdíleného přístupu (SAS) i X. 509 k zabezpečení komunikace mezi zařízením a vaší aplikací. V kurzu [Vytvoření a připojení klientské aplikace do Azure IoT Central aplikace se](./tutorial-connect-device.md) používá SAS. V tomto článku se naučíte, jak upravit ukázku kódu pro použití X. 509.  V produkčním prostředí se doporučují certifikáty X. 509. Další informace najdete v tématu věnovaném [připojení k Azure IoT Central](./concepts-get-connected.md).
 
 Tento článek ukazuje dva způsoby použití registrů X. 509- [Group](how-to-connect-devices-x509.md#use-a-group-enrollment) , které se obvykle používají v produkčním prostředí, a [jednotlivé registrace](how-to-connect-devices-x509.md#use-an-individual-enrollment) užitečné pro testování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Dokončení [Vytvoření a připojení klientské aplikace do kurzu Azure IoT Central aplikace (Node.js)](./tutorial-connect-device-nodejs.md) .
+- Dokončení [Vytvoření a připojení klientské aplikace do kurzu Azure IoT Central Application (JavaScript)](./tutorial-connect-device.md) .
 - [Git](https://git-scm.com/download/).
 - Stáhněte a nainstalujte [OpenSSL](https://www.openssl.org/). Pokud používáte systém Windows, můžete použít binární soubory ze [stránky OpenSSL na SourceForge](https://sourceforge.net/projects/openssl/).
 
@@ -97,7 +97,7 @@ Po uložení skupiny registrace si poznamenejte rozsah ID.
 
 ## <a name="run-sample-device-code"></a>Spustit ukázkový kód zařízení
 
-1. Zkopírujte soubory **sampleDevice01_key. pem** a **sampleDevice01_cert. pem** do složky _Azure-IoT-SDK-Node/Device/Samples/pnp_ , která obsahuje aplikaci **simple_thermostat.js** . Tuto aplikaci jste použili po dokončení [kurzu připojit zařízení (Node.js)](./tutorial-connect-device-nodejs.md).
+1. Zkopírujte soubory **sampleDevice01_key. pem** a **sampleDevice01_cert. pem** do složky _Azure-IoT-SDK-Node/Device/Samples/pnp_ , která obsahuje aplikaci **simple_thermostat.js** . Tuto aplikaci jste použili po dokončení [kurzu připojit zařízení (JavaScript)](./tutorial-connect-device.md).
 
 1. Přejděte do složky _Azure-IoT-SDK-Node/Device/Samples/PNP_ , která obsahuje aplikaci **simple_thermostat.js** a spusťte následující příkaz pro instalaci balíčku X. 509:
 
@@ -149,7 +149,7 @@ Po uložení skupiny registrace si poznamenejte rozsah ID.
     ```
 
     > [!TIP]
-    > Další požadované proměnné prostředí nastavíte po dokončení kurzu [Vytvoření a připojení klientské aplikace do aplikace Azure IoT Central](./tutorial-connect-device-nodejs.md) .
+    > Další požadované proměnné prostředí nastavíte po dokončení kurzu [Vytvoření a připojení klientské aplikace do aplikace Azure IoT Central](./tutorial-connect-device.md) .
 
 1. Spusťte skript a ověřte, jestli se zařízení úspěšně zřídilo:
 
@@ -197,7 +197,7 @@ Zařízení je teď zřízené pomocí certifikátu X. 509.
 
 ## <a name="run-a-sample-individual-enrollment-device"></a>Spuštění ukázkového samostatného registračního zařízení
 
-1. Zkopírujte soubory _mytestselfcertprimary_key. pem_ a _mytestselfcertprimary_cert. pem_ do složky _Azure-IoT-SDK-Node/Device/Samples/pnp_ , která obsahuje aplikaci **simple_thermostat.js** . Tuto aplikaci jste použili po dokončení [kurzu připojit zařízení (Node.js)](./tutorial-connect-device-nodejs.md).
+1. Zkopírujte soubory _mytestselfcertprimary_key. pem_ a _mytestselfcertprimary_cert. pem_ do složky _Azure-IoT-SDK-Node/Device/Samples/pnp_ , která obsahuje aplikaci **simple_thermostat.js** . Tuto aplikaci jste použili po dokončení [kurzu připojit zařízení (JavaScript)](./tutorial-connect-device.md).
 
 1. Upravte proměnné prostředí, které jste použili v následujícím příkladu:
 
