@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 1b5905046fdde4d5574fd4d39f40dce1bbf11e32
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 262783e83bdb846a3ea7e3015212c01048a00125
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "96028519"
+ms.locfileid: "96152698"
 ---
 Následující tabulky poskytují kvóty a omezení specifické pro [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Informace o cenách Event Hubs najdete v článku [Event Hubs ceny](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-## <a name="common-limits-for-all-tiers"></a>Společná omezení pro všechny úrovně
+### <a name="common-limits-for-all-tiers"></a>Společná omezení pro všechny úrovně
 Následující omezení jsou společná napříč všemi úrovněmi. 
 
 | Omezení |  Poznámky | Hodnota |
@@ -33,7 +33,7 @@ Následující omezení jsou společná napříč všemi úrovněmi.
 | Počet pravidel virtuální sítě (VNet) a konfigurace protokolu IP | - | 128 | 
 
 
-## <a name="basic-vs-standard-tiers"></a>Úrovně Basic a Standard
+### <a name="basic-vs-standard-tiers"></a>Úrovně Basic a Standard
 V následující tabulce jsou uvedena omezení, která se mohou lišit pro úrovně Basic a Standard. 
 
 | Omezení | Poznámky | Basic | Standard |
@@ -44,7 +44,7 @@ V následující tabulce jsou uvedena omezení, která se mohou lišit pro úrov
 | Maximální doba uchování dat události | &nbsp; |1 den |1-7 dní |
 | Maximální počet jednotek propustnosti |Překročení tohoto limitu způsobí omezení vašich dat a vygeneruje [výjimku zaneprázdněnou serverem](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception). Pokud chcete požádat o větší počet jednotek propustnosti pro úroveň Standard, zaregistrujte [žádost o podporu](../articles/azure-portal/supportability/how-to-create-azure-support-request.md). [Další jednotky propustnosti](../articles/event-hubs/event-hubs-auto-inflate.md) jsou k dispozici v blocích po 20 na potvrzeném nákupu. |20 | 20 | 
 
-## <a name="dedicated-tier-vs-standard-tier"></a>Vyhrazená úroveň vs. úroveň Standard
+### <a name="dedicated-tier-vs-standard-tier"></a>Vyhrazená úroveň vs. úroveň Standard
 V nabídce Event Hubs úrovně Dedicated se účtuje pevná měsíční cena s minimálním počtem 4 hodin využití. Vyhrazená úroveň nabízí všechny funkce plánu Standard, ale kapacitu a omezení na úrovni podniku pro zákazníky s náročnými úlohami. 
 
 V tomto [dokumentu](../articles/event-hubs/event-hubs-dedicated-cluster-create-portal.md) najdete informace o tom, jak vytvořit vyhrazený cluster Event Hubs pomocí Azure Portal.
@@ -63,11 +63,11 @@ V tomto [dokumentu](../articles/event-hubs/event-hubs-dedicated-cluster-create-p
 | Zachytávání | Platba za hodinu | Zahrnuje |
 
 
-## <a name="schema-registry-limitations"></a>Omezení registru schématu
+### <a name="schema-registry-limitations"></a>Omezení registru schématu
 
-### <a name="limits-that-are-the-same-for-standard-and-dedicated-tiers"></a>Omezení, která jsou stejná pro **standardní** a **vyhrazené** úrovně 
+#### <a name="limits-that-are-the-same-for-standard-and-dedicated-tiers"></a>Omezení, která jsou stejná pro standardní a vyhrazené úrovně 
 | Funkce | Omezení | 
-|---|---|--|
+|---|---|
 | Maximální délka názvu skupiny schémat | 50 |  
 | Maximální délka názvu schématu | 100 |    
 | Velikost v bajtech na schéma | 1 MB |   
@@ -76,10 +76,10 @@ V tomto [dokumentu](../articles/event-hubs/event-hubs-dedicated-cluster-create-p
 | Velikost v bajtech na hodnotu vlastnosti skupiny | 1024 | 
 
 
-### <a name="limits-that-are-different-for-standard-and-dedicated-tiers"></a>Omezení, která jsou odlišná na úrovni **Standard** a **vyhrazené** 
+#### <a name="limits-that-are-different-for-standard-and-dedicated-tiers"></a>Omezení, která jsou odlišná na úrovni Standard a vyhrazené 
 
 | Omezení | Standard | Vyhrazená | 
-|---|---|--|---|
+|---|---|--|
 | Velikost registru schématu (obor názvů) v megabajtů bajtech | 25 |  1024 |
 | Počet skupin schémat v registru schématu nebo oboru názvů | 1 – vyloučení výchozí skupiny | 1000 |
 | Počet verzí schématu napříč všemi skupinami schémat | 25 | 10000 |
