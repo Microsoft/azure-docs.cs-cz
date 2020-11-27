@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace správy PaperCut cloudového tisku (Pocket/podregistr) pro Automatické zřizování uživatelů s Azure Active Directory | Microsoft Docs'
-description: Přečtěte si, jak automaticky zřídit a zrušit zřízení uživatelských účtů z Azure AD až po PaperCut správu cloudových tiskáren (Pocket/podregistr).
+title: 'Kurz: Konfigurace správy tisku v cloudu PaperCut pro Automatické zřizování uživatelů s Azure Active Directory | Microsoft Docs'
+description: Naučte se, jak automaticky zřídit a zrušit zřízení uživatelských účtů z Azure AD až po PaperCut cloudové správy tisku.
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -15,31 +15,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
-ms.openlocfilehash: d0ecc06cd256dc2fae598e8bc44336d69a9c99df
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 860b880faae9c5fe37a2c7eab2ef3a068ed4da3e
+ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96031185"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96299086"
 ---
-# <a name="tutorial-configure-papercut-cloud-print-management-pockethive-for-automatic-user-provisioning"></a>Kurz: Konfigurace správy PaperCut cloudového tisku (Pocket/podregistr) pro Automatické zřizování uživatelů
+# <a name="tutorial-configure-papercut-cloud-print-management-for-automatic-user-provisioning"></a>Kurz: Konfigurace správy tisku v cloudu PaperCut pro Automatické zřizování uživatelů
 
-Tento kurz popisuje kroky, které je třeba provést v PaperCut cloudové správě tisku (Pocket/podregistr), a Azure Active Directory (Azure AD) pro konfiguraci automatického zřizování uživatelů. Po nakonfigurování Azure AD automaticky zřídí a odzřídí uživatele a skupiny, aby [PaperCut cloudovou správu tisku](https://www.papercut.com/products/papercut-pocket/) pomocí služby Azure AD Provisioning. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../manage-apps/user-provisioning.md).
+Tento kurz popisuje kroky, které je třeba provést v PaperCut cloudové správě tisku a Azure Active Directory (Azure AD) pro konfiguraci automatického zřizování uživatelů. Po nakonfigurování Azure AD automaticky zřídí a odzřídí uživatele a skupiny, aby [PaperCut cloudovou správu tisku](https://www.papercut.com/products/papercut-pocket/) pomocí služby Azure AD Provisioning. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../manage-apps/user-provisioning.md).
 
 ## <a name="capabilities-supported"></a>Podporované funkce
 
 > [!div class="checklist"]
-> * Vytváření uživatelů v PaperCut cloudové správě tisku (Pocket/podregistr)
-> * Odebrat uživatele v PaperCut cloudové správě tisku (Pocket/podregistr), když už nevyžadují přístup
-> * Udržování uživatelských atributů synchronizovaných mezi Azure AD a PaperCut cloudovou správou tisku (Pocket/podregistr)
+> * Vytváření uživatelů v PaperCut cloudové správě tisku
+> * Odebrat uživatele ve správě tisku PaperCut cloudu, když už nevyžadují přístup
+> * Udržování uživatelských atributů synchronizovaných mezi Azure AD a PaperCut cloudovou správou tisku
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenant Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Uživatelský účet ve službě Azure AD s [oprávněním](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce). 
-* Uživatelský účet v PaperCut Cloud Management (Pocket/podregistr) s oprávněními správce
+* Uživatelský účet v PaperCut Správa tisku v cloudu s oprávněními správce
 
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Krok 1. Plánování nasazení zřizování
@@ -58,23 +58,23 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 
 
-4. Po nainstalování se zobrazí stránka s podrobnostmi o doplňku s **adresou URL vašeho tenanta** a **tajného tokenu**. Tyto hodnoty se zadají do pole Adresa URL tenanta \* a tajného tokenu \* na kartě zřizování vaší aplikace PaperCut cloudu pro správu tisku (Pocket/podregistr) v Azure Portal.
+4. Po nainstalování se zobrazí stránka s podrobnostmi o doplňku s **adresou URL vašeho tenanta** a **tajného tokenu**. Tyto hodnoty se zadají do pole Adresa URL tenanta \* a tajného tokenu \* na kartě zřizování aplikace PaperCut Cloud Print Management v Azure Portal.
 
 
 
-## <a name="step-3-add-papercut-cloud-print-management-pockethive-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání správy PaperCut cloudového tisku (Pocket/podregistr) z Galerie aplikací Azure AD
+## <a name="step-3-add-papercut-cloud-print-management-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání správy tisku PaperCut do cloudu z Galerie aplikací Azure AD
 
-Přidáním PaperCut cloudu pro správu tisku (Pocket/podregistr) z Galerie aplikací Azure AD spustíte správu zřizování pro PaperCut správu cloudových tiskáren (Pocket/podregistr). Pokud jste už dříve nastavili správu cloudového tisku PaperCut (Pocket/podregistr) pro jednotné přihlašování, můžete použít stejnou aplikaci. Pro účely počátečního testování integrace však doporučujeme vytvořit samostatnou aplikaci. Další informace o přidání aplikace z galerie najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app).
+Přidejte PaperCut cloudovou správu tisku z Galerie aplikací Azure AD a začněte spravovat zřizování pro PaperCut správu cloudových tiskáren. Pokud jste dříve nastavili správu cloudového tisku PaperCut pro jednotné přihlašování, můžete použít stejnou aplikaci. Pro účely počátečního testování integrace však doporučujeme vytvořit samostatnou aplikaci. Další informace o přidání aplikace z galerie najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app).
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Krok 4: Definování uživatelů, kteří budou v rozsahu zřizování
 
 Služba zřizování Azure AD umožňuje nastavit rozsah uživatelů, kteří se zřídí, na základě přiřazení k aplikaci nebo atributů jednotlivých uživatelů nebo skupin. Pokud se rozhodnete nastavit rozsah uživatelů, kteří se zřídí pro vaši aplikaci, na základě přiřazení, můžete k aplikaci přiřadit uživatele a skupiny pomocí následujících [kroků](../manage-apps/assign-user-or-group-access-portal.md). Pokud se rozhodnete nastavit rozsah uživatelů, kteří se zřídí, pouze na základě atributů jednotlivých uživatelů nebo skupin, můžete použít filtr rozsahu, jak je popsáno [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
 
-* Při přiřazování uživatelů a skupin do PaperCut správy cloudových tiskáren (Pocket/podregistr) musíte vybrat jinou roli než **výchozí přístup**. Uživatelé s rolí Výchozí přístup jsou vyloučeni ze zřizování a v protokolech zřizování se označí příznakem neplatného nároku. Pokud je v aplikaci k dispozici pouze role Výchozí přístup, můžete [aktualizovat manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) a přidat další role.
+* Při přiřazování uživatelů a skupin ke správě PaperCut cloudového tisku musíte vybrat jinou roli než **výchozí přístup**. Uživatelé s rolí Výchozí přístup jsou vyloučeni ze zřizování a v protokolech zřizování se označí příznakem neplatného nároku. Pokud je v aplikaci k dispozici pouze role Výchozí přístup, můžete [aktualizovat manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) a přidat další role.
 
 * Začněte v malém. Než se pustíte do zavádění pro všechny, proveďte testování s malou skupinou uživatelů a skupin. Pokud je rozsah zřizování nastavený na přiřazené uživatele a skupiny, můžete testování provést tak, že k aplikaci přiřadíte jednoho nebo dva uživatele nebo skupiny. Pokud je rozsah nastavený na všechny uživatele a skupiny, můžete určit [filtr rozsahu na základě atributů](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-papercut-cloud-print-management-pockethive"></a>Krok 5. Konfigurace automatického zřizování uživatelů pro PaperCut cloudové správy tisku (Pocket/podregistr)
+## <a name="step-5-configure-automatic-user-provisioning-to-papercut-cloud-print-management"></a>Krok 5. Konfigurace automatického zřizování uživatelů pro PaperCut cloudové správy tisku
 
 V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v TestApp na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
@@ -84,7 +84,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **PaperCut Správa tisku do cloudu (Pocket/podregistr)**.
+2. V seznamu aplikace vyberte **PaperCut Správa tisku do cloudu**.
 
    ![Odkaz na správu cloudového tisku PaperCut v seznamu aplikací](common/all-applications.png)
 
@@ -96,7 +96,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
    ![Automatická karta zřizování](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte svou adresu URL tenanta PaperCut Cloud Management (Pocket/podregistr) a tajný token. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k PaperCut cloudové správě tisku. Pokud se připojení nepovede, zajistěte, aby měl účet správy tisku PaperCut cloudu oprávnění správce, a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte adresu URL tenanta správy tisku PaperCut cloudu a tajný token. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k PaperCut cloudové správě tisku. Pokud se připojení nepovede, zajistěte, aby měl účet správy tisku PaperCut cloudu oprávnění správce, a zkuste to znovu.
 
    ![Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -118,11 +118,11 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 10. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-11. Pokud chcete povolit službu Azure AD Provisioning pro správu cloudového tisku PaperCut (Pocket/podregistr), změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
+11. Pokud chcete povolit službu Azure AD Provisioning pro správu cloudového tisku PaperCut, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
     ![Zapnutý přepínač Stav zřizování](common/provisioning-toggle-on.png)
 
-12. Definujte uživatele nebo skupiny, které chcete zřídit pro PaperCut cloudovou správu tisku (Pocket/podregistr), a to tak, že v části **Nastavení** vyberete požadované hodnoty v **oboru** .
+12. Definujte uživatele nebo skupiny, které chcete zřídit pro PaperCut cloudovou správu tisku, a to tak, že v části **Nastavení** vyberete požadované hodnoty v **oboru** .
 
     ![Rozsah zřizování](common/provisioning-scope.png)
 
@@ -140,7 +140,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 2. Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user).
 3. Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

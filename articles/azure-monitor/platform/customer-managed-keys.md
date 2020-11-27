@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/18/2020
-ms.openlocfilehash: 9715724fc0fbd25198dd3244215ac2c12638d2b8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ac785b3ad534e80d4dd240d1a29ba5f6aa75e10a
+ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185959"
+ms.locfileid: "96299035"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Klíč spravovaný zákazníkem v Azure Monitoru 
 
@@ -511,7 +511,7 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
 
 - Odkaz na pracovní prostor na cluster se nezdaří, pokud je propojený s jiným clusterem.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 - Chování při Key Vault dostupnosti
   - V normálním provozu – mezipaměť úložiště AEK na krátkou dobu a vrátí se zpět na Key Vault k pravidelnému rozbalení.
@@ -538,7 +538,9 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
   1. Pokud používáte REST, zkopírujte hodnotu adresy URL Azure-AsyncOperation z odpovědi a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
   2. Odešlete požadavek GET do clusteru nebo pracovního prostoru a sledujte odpověď. Například nepropojený pracovní prostor nebude mít *clusterResourceId* v části *funkce*.
 
-- Pro clustery vytvořené z října 2020 se pro clustery vytvořené v říjnu nakonfigurovalo [dvojité šifrování](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) , pokud se v oblasti použilo dvojité šifrování Pokud vytvoříte cluster a obdržíte chybu "<název oblasti> nepodporuje dvojité šifrování pro clustery.", cluster stále můžete vytvořit, ale je zakázané dvojité šifrování. Po vytvoření clusteru se nedá zapnout nebo vypnout. Pokud chcete vytvořit cluster, pokud se v oblasti nepodporují šifrování, přidejte `"properties": {"isDoubleEncryptionEnabled": false}` do textu žádosti REST.
+- Pro clustery vytvořené z října 2020 se v podporovaných oblastech automaticky nakonfiguruje [dvojité šifrování](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) . Můžete ověřit, jestli je váš cluster nakonfigurovaný pro dvojité šifrování, požadavkem GET v clusteru a `"isDoubleEncryptionEnabled"` hodnotou vlastnosti – `true` pro clustery se zapnutým šifrováním s dvojitým šifrováním. 
+  - Pokud vytvoříte cluster a obdržíte chybu "<název oblasti> nepodporuje pro clustery dvojité šifrování", můžete cluster stále vytvořit bez šifrování. Přidejte `"properties": {"isDoubleEncryptionEnabled": false}` do textu žádosti REST.
+  - Nastavení dvojitého šifrování nelze změnit po vytvoření clusteru.
 
 - Chybové zprávy
   
