@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 10/29/2020
 ms.author: baanders
 ms.openlocfilehash: 8ea371e25f149c52412153aa0b9c3b7475dc77fd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187288"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96303594"
 ---
 Pokud chcete pracovat s digitálními úkoly Azure v tomto článku, musíte nejdřív **nastavit instanci digitálních vláken Azure** a požadovaná oprávnění k jejímu použití. Pokud už máte instanci digitálních vláken Azure nastavenou na předchozí práci, můžete tuto instanci použít.
 
