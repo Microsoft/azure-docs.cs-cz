@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: 247abafd7abec38e43794b76268ee52538aee508
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 63b9d74fbbb1a79dd4f3d3e7c5fb094a372282e0
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655676"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299628"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Použití Logstash k připojení zdrojů dat k Sentinel Azure
 
@@ -57,7 +57,7 @@ Modul plug-in Azure Sentinel Output pro Logstash odesílá data ve formátu JSON
 
 Modul plug-in Azure Sentinel Output je k dispozici v kolekci Logstash.
 
-- Pokud chcete nainstalovat modul plug-in *_Microsoft-Logstash-Output-Azure-loganalytics_* _, postupujte podle pokynů v dokumentu Logstash [Working with plugins](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) .
+- Pokud chcete nainstalovat modul plug-in *_[Microsoft-Logstash-Output-Azure-loganalytics](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics)_* _, postupujte podle pokynů v dokumentu Logstash [Working with plugins](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) .
    
 - Pokud váš systém Logstash nemá přístup k Internetu, připravte a použijte offline balíček modulu plug-in pomocí pokynů v dokumentu [správy modulu plug-in](https://www.elastic.co/guide/en/logstash/current/offline-plugins.html) Logstash. (To bude vyžadovat, abyste vytvořili jiný Logstash systém s přístupem k Internetu.)
 

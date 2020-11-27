@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/05/2020
+ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4f104accad2b23b907d888ce3d0da083f1fa019a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 05b2747dc21e2aedf16c6ca6e6c31af03b38c81f
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964826"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299509"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -80,6 +80,7 @@ V této části najdete dokumenty o integraci PowerBI do zdrojů dat SAP a také
 
 ## <a name="change-log"></a>Protokol změn
 
+- 11/26/2020: Přizpůsobte [SAP HANA konfigurací úložiště virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) a [Azure Storage typů pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) na změnu jednoho [virtuálního počítače SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)
 - 11/05/2020: Změna odkazu na nové poznámky SAP týkající se typů systému souborů podporovaných systémem HANA v [SAP HANA konfiguracích úložiště virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) 
 - 10/26/2020: Změna některých tabulek pro konfiguraci služby Azure Premium Storage za účelem objasnění zajištěné a propustnosti v [SAP HANA konfiguracích úložiště virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
 - 10/22/2020: Změna [dostupnosti pro SAP NW na virtuálních počítačích Azure v SLES pro aplikace SAP](./high-availability-guide-suse.md), ha pro SAP NW na virtuálních počítačích Azure [v SLES s ANF](./high-availability-guide-suse-netapp-files.md), [ha pro SAP NW na virtuálních počítačích Azure v RHEL pro aplikace SAP](./high-availability-guide-rhel.md) a ha pro SAP NW na virtuálních počítačích Azure v [RHEL s ANF](./high-availability-guide-rhel-netapp-files.md) pro úpravu doporučení pro NET.IPv4.tcp_keepalive_time  

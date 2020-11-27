@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/23/2020
+ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1cd6f5f7865d18461ac7a635530e9aabfde380a6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 325e28b9fde349fc4bf01d2b130bee0be0684962
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955408"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299594"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Typy služby Azure Storage pro úlohy SAP
 Azure má spoustu typů úložiště, které se v různých možnostech, propustnosti, latenci a cenách liší. Některé typy úložiště nejsou ani omezené možnosti použitelné pro scénáře SAP. Vzhledem k tomu, že některé typy úložiště Azure jsou vhodné nebo optimalizované pro konkrétní scénáře úloh SAP. Zejména u SAP HANA některé typy úložiště Azure získali certifikaci pro použití s SAP HANA. V tomto dokumentu procházíme mezi různými typy úložišť a popisujete jejich schopnost a použitelnost pomocí úloh SAP a komponent SAP.
@@ -34,6 +34,8 @@ Přeoznačení jednotek používaných v rámci tohoto článku. Dodavatelé ve�
 Microsoft Azure úložiště HDD úrovně Standard, SSD úrovně Standard, Azure Premium Storage a Ultra disk udržuje základní virtuální pevný disk (s operačním systémem) a disky s připojenými daty virtuálních počítačů ve třech kopiích na třech různých uzlech úložiště. Převzetí služeb při selhání jinou replikou a osazení nové repliky v případě selhání uzlu úložiště je transparentní. V důsledku tohoto redundance **není nutné na** více discích Azure použít žádný druh záložní vrstvy úložiště. Tento fakt se nazývá Local redundantní úložiště (LRS). LRS je výchozí pro tyto typy úložiště v Azure. [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) poskytuje dostatečnou redundanci, aby bylo možné dosáhnout stejného SLA jako jiné nativní úložiště Azure.
 
 Existuje několik dalších metod redundance, které jsou popsány v článku [Azure Storage replikaci](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) , která platí pro některé z různých typů úložiště, které Azure nabízí. 
+
+Pamatujte na to, že různé typy úložiště Azure mají vliv na SLA dostupnosti jediného virtuálního počítače, který je vydaný ve [smlouvě SLA pro Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines).
 
 ### <a name="azure-managed-disks"></a>Azure Managed disks
 
@@ -131,7 +133,6 @@ Tento typ úložiště cílí na úlohy DBMS, provoz úložiště, který vyžad
 - Propustnost vstupně-výstupních operací pro toto úložiště není lineární pro velikost kategorie disku. Pro menší disky, jako je kategorie mezi 65 GiB a 128 GiB kapacita, je propustnost kolem 780KB/GiB. Vzhledem k tomu, že pro extrémní velké disky, jako je 32 767 GiB disk, je propustnost kolem 28KB/GiB
 - VSTUPNĚ-výstupní operace a SLA propustnosti nelze změnit, aniž by došlo ke změně kapacity disku.
 
-Azure má smlouvu SLA pro virtuální počítače s jednou instancí z 99,9%, která je vázaná na využívání služby Azure Premium Storage nebo Azure Ultra disk Storage. Smlouva SLA je dokumentována v části [SLA pro Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Aby bylo možné dodržovat tuto jednu smlouvu SLA pro jeden virtuální počítač, musí být na základním disku VHD i na **všech** připojených discích buď Azure Premium Storage, nebo Azure Ultra disk Storage.
 
 Matrice schopností pro úlohu SAP vypadá takto:
 

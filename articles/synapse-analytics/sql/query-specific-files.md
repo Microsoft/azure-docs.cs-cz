@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: e3f0a9f0b7fdef26cf1ef2b145ede1826fda6ebd
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d24ae1f42c685589309506b2d5e0eab157b2bc42
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685592"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299611"
 ---
 # <a name="use-file-metadata-in-serverless-sql-pool-queries"></a>Použití metadat souboru v neserverových dotazech na fond SQL
 
@@ -24,7 +24,7 @@ V některých případech možná budete muset zjistit, který zdroj souborů ne
 
 Pomocí funkce a můžete `filepath` `filename` vracet názvy souborů nebo cestu v sadě výsledků dotazu. Můžete je také použít k filtrování dat na základě názvu souboru nebo cesty ke složce. Tyto funkce jsou popsány v oddílu syntaxe [filename](query-data-storage.md#filename-function) a funkce [FilePath](query-data-storage.md#filepath-function). V následujících částech najdete krátké popisy podél vzorků.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Prvním krokem je **Vytvoření databáze** se zdrojem dat, který odkazuje na účet úložiště. Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří zdroje dat, přihlašovací údaje v oboru databáze a formáty externích souborů, které jsou použity v těchto ukázkách.
 
@@ -76,7 +76,7 @@ ORDER BY
 
 Funkce FilePath vrátí úplnou nebo částečnou cestu:
 
-- Při volání bez parametru vrátí úplnou cestu k souboru, ze které řádek pochází.
+- Při volání bez parametru vrátí úplnou cestu k souboru, ze které řádek pochází. Pokud je použita DATA_SOURCE v OPENROWSET, vrátí cestu relativní k DATA_SOURCE. 
 - Při volání s parametrem vrátí část cesty, která odpovídá zástupnému znaku na pozici zadané v parametru. Například hodnota parametru 1 vrátí část cesty, která se shoduje s prvním zástupným znakem.
 
 Následující ukázka přečte NYC žluté taxislužby datové soubory za poslední tři měsíce 2017. Vrátí počet jezdí na cestu k souboru. Část OPENROWSET dotazu určuje, které soubory budou čteny.
