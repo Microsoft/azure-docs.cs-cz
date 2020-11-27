@@ -45,6 +45,10 @@
           href: manage-assets-quickstart.md
         - name: Použití portálu k šifrování obsahu
           href: encrypt-content-quickstart.md
+    - name: Použití šablony ARM
+      items:
+        - name: Vytvoření účtu s využitím ARM
+          href: quickstart-arm-template-account.md
 - name: Kurzy
   items:
     - name: .NET

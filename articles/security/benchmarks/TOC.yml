@@ -75,10 +75,14 @@
       href: ../../backup/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Bastion
       href: ../../bastion/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Bot Network
+      href: /azure/bot-service/security-baseline?view=azure-bot-service-4.0
     - name: Standardní hodnoty zabezpečení pro Azure Cache for Redis
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Cognitive Search
       href: ../../search/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Cosmos DB
+      href: ../../cosmos-db/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Data Box
       href: ../../databox/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Data Explorer
@@ -91,18 +95,20 @@
       href: ../../mysql/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Database for MariaDB
       href: ../../mariadb/security-baseline.md
-    - name: Standardní hodnoty zabezpečení pro Azure Database for PostgreSQL – Jeden server
-      href: ../../postgresql/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Database for PostgreSQL – Hyperscaleserver
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Database for PostgreSQL – Jeden server
+      href: ../../postgresql/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Databricks
       href: /azure/databricks/scenarios/security-baseline
+    - name: Standardní hodnoty zabezpečení pro Azure DDOS Protection úrovně Standard
+      href: ../fundamentals/ddos-protection-security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Defender for IoT
       href: ../../defender-for-iot/security-baseline.md
-    - name: Standardní hodnoty zabezpečení Azure DNS
-      href: ../../dns/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure DevTest Labs
       href: ../../devtest-labs/security-baseline.md
+    - name: Standardní hodnoty zabezpečení Azure DNS
+      href: ../../dns/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Firewall
       href: ../../firewall/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Firewall Manager
@@ -115,18 +121,16 @@
       href: ../../hpc-cache/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Information Protection
       href: /azure/information-protection/security-baseline
-    - name: Standardní hodnoty zabezpečení pro Azure IoT Hub
-      href: ../../iot-hub/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Kubernetes Service
       href: ../../aks/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Lighthouse
       href: ../../lighthouse/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Load Balancer
       href: ../../load-balancer/security-baseline.md
-    - name: Standardní hodnoty zabezpečení pro Azure Monitor
-      href: ../../azure-monitor/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Machine Learning
       href: ../../machine-learning/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Monitor
+      href: ../../azure-monitor/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Migrate Learning
       href: ../../migrate/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Policy
@@ -141,12 +145,12 @@
       href: ../../azure-resource-manager/management/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Sentinel
       href: ../../sentinel/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure SignalR Service
+      href: ../../azure-signalr/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure SQL Database
       href: ../../azure-sql/database/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Storage
       href: ../../storage/common/security-baseline.md
-    - name: Standardní hodnoty zabezpečení pro Azure Traffic Manager
-      href: ../../traffic-manager/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Web Application Firewall
       href: ../../web-application-firewall/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Batch
@@ -163,16 +167,12 @@
       href: ../../container-registry/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Content Delivery Network
       href: ../../cdn/security-baseline.md
-    - name: Standardní hodnoty zabezpečení pro Cosmos DB
-      href: ../../cosmos-db/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Cost Management
       href: ../../cost-management-billing/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Customer Lockbox
       href: ../fundamentals/customer-lockbox-security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Data Lake Analytics
       href: ../../data-lake-analytics/security-baseline.md
-    - name: Standardní hodnoty zabezpečení pro DDOS Protection
-      href: ../fundamentals/ddos-protection-security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Event Grid
       href: ../../event-grid/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Event Hubs
@@ -181,6 +181,8 @@
       href: ../../expressroute/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro HDInsight
       href: ../../hdinsight/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro IoT Hub
+      href: ../../iot-hub/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Key Vault
       href: ../../key-vault/general/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Logic Apps
@@ -201,6 +203,8 @@
       href: ../../stream-analytics/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Synapse Analytics
       href: ../../synapse-analytics/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Traffic Manager
+      href: ../../traffic-manager/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Virtual Machine Scale Sets
       href: ../../virtual-machine-scale-sets/security-baseline.md
     - name: Standardní hodnoty zabezpečení Linuxu pro Virtual Machines

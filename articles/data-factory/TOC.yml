@@ -752,6 +752,8 @@
           href: connector-troubleshoot-guide.md
         - name: Toky dat
           href: data-flow-troubleshoot-guide.md
+        - name: "Průběžná integrace a\_nasazování"
+          href: ci-cd-github-troubleshoot-guide.md
         - name: Řízení přístupu a zabezpečení
           href: security-and-access-control-troubleshoot-guide.md
         - name: Místní prostředí Integration Runtime
