@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak migrovat fyzické počítače do Azure
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: 67ea5800885b4edb16581f22c199d139053af495
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c783cb22ce8a31d346e98c53dee365fa59b73b8a
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018932"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302888"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrace počítačů jako fyzických serverů do Azure
 
@@ -52,7 +52,7 @@ Připravte Azure na migraci pomocí migrace serveru.
 
 **Úkol** | **Podrobnosti**
 --- | ---
-**Vytvoření projektu Azure Migrate** | Váš účet Azure potřebuje k vytvoření projektu oprávnění přispěvatele nebo vlastníka.
+**Vytvoření projektu Azure Migrate** | Váš účet Azure potřebuje oprávnění Přispěvatel nebo Owner k [Vytvoření nového projektu](https://docs.microsoft.com/azure/migrate/create-manage-projects).
 **Ověření oprávnění pro účet Azure** | Váš účet Azure potřebuje oprávnění k vytvoření virtuálního počítače a zápis na spravovaný disk Azure.
 
 
@@ -110,28 +110,6 @@ Připravte se na nasazení zařízení následujícím způsobem:
 
 > [!NOTE]
 > Zařízení replikace by se nemělo nainstalovat na zdrojový počítač, který chcete replikovat, nebo na zařízení pro zjišťování a hodnocení Azure Migrate, které jste mohli nainstalovat dřív.
-
-## <a name="add-the-server-migration-tool"></a>Přidání nástroje pro migraci serveru
-
-Nastavte projekt Azure Migrate a potom do něj přidejte Nástroj pro migraci serveru.
-
-1. Na webu Azure Portal v části **Všechny služby** vyhledejte **Azure Migrate**.
-2. V části **Služby** vyberte **Azure Migrate**.
-3. V části **Přehled** klikněte na **Posoudit a migrovat servery**.
-4. V části **zjišťování, vyhodnocení a migrace serverů** klikněte na možnost **zhodnotit a migrovat servery**.
-
-    ![Zjištění a posouzení serverů](./media/tutorial-migrate-physical-virtual-machines/assess-migrate.png)
-
-5. V části **Zjistit, posoudit a migrovat servery** klikněte na **Přidat nástroje**.
-6. V části **Projekt migrace** vyberte své předplatné Azure a vytvořte skupinu prostředků, pokud ji ještě nemáte.
-7. V části **Podrobnosti o projektu** zadejte název projektu a zeměpisnou oblast, ve které chcete projekt vytvořit, a klikněte na **Další**. Projděte si podporované geografické oblasti pro cloudy [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [státní správy](migrate-support-matrix.md#supported-geographies-azure-government).
-
-    ![Vytvoření projektu Azure Migrate](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
-
-8. V části **Vybrat nástroj pro posouzení** vyberte **V tuto chvíli přeskočit přidání nástroje pro posouzení** > **Další**.
-9. V části **Vybrat nástroj pro migraci** vyberte **Azure Migrate: Migrace serverů** > **Další**.
-10. V části **Zkontrolovat a přidat nástroje** zkontrolujte nastavení a klikněte na **Přidat nástroje**.
-11. Po přidání je nástroj zobrazen v nástroji Azure Migrate Project > servery pro **Servers**  >  **migraci**.
 
 ## <a name="set-up-the-replication-appliance"></a>Nastavení zařízení replikace
 

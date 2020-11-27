@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/10/2020
+ms.date: 11/25/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2e54c0b09c3dbe398b0522d0ad9ad2314e29ed26
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dcc84dc252001721a3848a008a3db80dcc7822d2
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023836"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301263"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Řešení potíží s konektory služby Azure Data Factory
 
@@ -440,7 +440,7 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Zpráva**: `The name of column index %index; is empty. Make sure column name is properly specified in the header row.`
 
-- **Příčina**: když se v aktivitě nastaví ' firstRowAsHeader ', jako název sloupce se použije první řádek. Tato chyba znamená, že první řádek obsahuje prázdnou hodnotu. Například: "Columns,; ColumnB".
+- **Příčina**: když se v aktivitě nastaví ' firstRowAsHeader ', jako název sloupce se použije první řádek. Tato chyba znamená, že první řádek obsahuje prázdnou hodnotu. Například: "Columns, ColumnB".
 
 - **Doporučení**: Ověřte první řádek a opravte hodnotu, pokud existuje prázdná hodnota.
 
@@ -645,6 +645,29 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Doporučení**: Odeberte ' Argument ' v datové části.
 
+
+## <a name="rest"></a>REST
+
+### <a name="unexpected-network-response-from-rest-connector"></a>Neočekávaná odezva sítě z konektoru REST
+
+- **Příznaky**: koncový bod někdy obdrží neočekávanou odpověď (400/401/403/500) z konektoru REST.
+
+- **Příčina**: zdrojový konektor REST při vytváření požadavku HTTP používá jako parametry adresu URL a metodu/hlavičku/záhlaví/tělo protokolu HTTP z propojené služby, datové sady nebo zdroje kopie. Problém je pravděpodobně způsoben některými chybami v jednom nebo více zadaných parametrech.
+
+- **Řešení**: 
+    - V příkazovém okně použijte ' kudrlinkou ' a ověřte, zda je parametr příčinou nebo ne (**přijmout** a zda mají být hlavičky **uživatelských agentů** vždy zahrnuty):
+        ```
+        curl -i -X <HTTP method> -H <HTTP header1> -H <HTTP header2> -H "Accept: application/json" -H "User-Agent: azure-data-factory/2.0" -d '<HTTP body>' <URL>
+        ```
+      Pokud příkaz vrátí stejnou neočekávanou odpověď, opravte prosím výše uvedené parametry pomocí ' kudrlinkou ', dokud nevrátí očekávanou odpověď. 
+
+      K pokročilejšímu využití příkazu můžete také použít "kudrlinkou--Help".
+
+    - Pokud jenom konektor ADF REST vrátí neočekávanou odpověď, obraťte se prosím na podporu Microsoftu, kde najdete další řešení potíží.
+    
+    - Upozorňujeme, že ' kudrlinkou ' nemusí být vhodný k reprodukování problému s ověřením certifikátu SSL. V některých scénářích byl příkaz ' kudrlinkou ' proveden úspěšně, aniž by došlo k potížím s ověřením certifikátu SSL. Pokud se ale v prohlížeči spustí stejná adresa URL, nevrátí se ve skutečnosti žádný certifikát SSL, který by klient navázal na vytvoření vztahu důvěryhodnosti se serverem.
+
+      U výše uvedeného případu doporučujeme používat nástroje jako **post** a **Fiddler** .
 
 
 ## <a name="general-copy-activity-error"></a>Obecná chyba aktivity kopírování

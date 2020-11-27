@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: 217be627f81406f671118d5290cd5f67f52c01d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92603165ac399415ec4fb6daeea1641065671a83
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86112108"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302924"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Skupiny počítačů v Azure Monitor dotazy protokolu
 Skupiny počítačů v Azure Monitor umožňují oborovat [dotazy protokolu](../log-query/log-query-overview.md) na konkrétní sadu počítačů.  Každá skupina se naplní počítači pomocí dotazu, který definujete, nebo importováním skupin z různých zdrojů.  Pokud je skupina zahrnutá v dotazu protokolu, výsledky jsou omezené na záznamy, které odpovídají počítačům ve skupině.
@@ -61,7 +61,7 @@ Když konfigurujete Azure Monitor pro import členství ve skupinách služby Ac
 > [!NOTE]
 > Importované skupiny služby Active Directory obsahují pouze počítače se systémem Windows.
 
-Nakonfigurujete Azure Monitor pro import skupin zabezpečení služby Active Directory z **rozšířeného nastavení** v pracovním prostoru Log Analytics v Azure Portal.  Vyberte **skupiny počítačů**, **Active Directory**a pak **importujte členství ve skupinách služby Active Directory z počítačů**.  Není nutná žádná další konfigurace.
+Nakonfigurujete Azure Monitor pro import skupin zabezpečení služby Active Directory z **rozšířeného nastavení** v pracovním prostoru Log Analytics v Azure Portal.  Vyberte **skupiny počítačů**, **Active Directory** a pak **importujte členství ve skupinách služby Active Directory z počítačů**.  Není nutná žádná další konfigurace.
 
 ![Skupiny počítačů ze služby Active Directory](media/computer-groups/configure-activedirectory.png)
 
@@ -70,7 +70,7 @@ Po importu skupin v nabídce se zobrazí seznam počtu počítačů, ve kterých
 ### <a name="windows-server-update-service"></a>Služba Windows Server Update Service
 Když nakonfigurujete Azure Monitor pro import členství ve skupině WSUS, analyzuje členství v cílových skupinách u všech počítačů s agentem Log Analytics.  Pokud používáte cílení na klientské straně, každý počítač, který je připojený k Azure Monitor a je součástí všech skupin cílené na službu WSUS, má členství ve skupině importované do Azure Monitor. Pokud používáte cílení na straně serveru, měl by být agent Log Analytics nainstalován na server WSUS, aby bylo možné do Azure Monitor importovat informace o členství ve skupině.  Toto členství se průběžně aktualizuje každé 4 hodiny. 
 
-Nakonfigurujete Azure Monitor pro import skupin WSUS z **rozšířeného nastavení** v pracovním prostoru Log Analytics v Azure Portal.  Vyberte **skupiny počítačů**a **službu WSUS**a pak **importujte členství ve skupině WSUS**.  Není nutná žádná další konfigurace.
+Nakonfigurujete Azure Monitor pro import skupin WSUS z **rozšířeného nastavení** v pracovním prostoru Log Analytics v Azure Portal.  Vyberte **skupiny počítačů** a **službu WSUS** a pak **importujte členství ve skupině WSUS**.  Není nutná žádná další konfigurace.
 
 ![Skupiny počítačů ze služby WSUS](media/computer-groups/configure-wsus.png)
 
@@ -97,13 +97,13 @@ Kliknutím na **x** ve sloupci **Odebrat** odstraňte skupinu počítačů.  Kli
 Můžete použít skupinu počítačů vytvořenou z dotazu protokolu v dotazu, a to tak, že se její alias považuje za funkci, obvykle s následující syntaxí:
 
 ```kusto
-Table | where Computer in (ComputerGroup)`
+Table | where Computer in (ComputerGroup)
 ```
 
 Například můžete použít následující pro vrácení záznamů UpdateSummary pouze pro počítače ve skupině počítačů s názvem mycomputergroup.
 
 ```kusto
-UpdateSummary | where Computer in (mycomputergroup)`
+UpdateSummary | where Computer in (mycomputergroup)
 ```
 
 Importované skupiny počítačů a jejich zahrnuté počítače jsou uložené v tabulce skupiny **počítačů** .  Následující dotaz například vrátí seznam počítačů ve skupině Domain Computers ze služby Active Directory. 

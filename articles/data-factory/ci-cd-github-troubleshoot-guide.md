@@ -7,21 +7,21 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: troubleshooting
-ms.date: 11/26/2020
-ms.openlocfilehash: f07cc8e3d5e9d6f59671a3c8c2efd9f5fb9f27b7
-ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
+ms.date: 11/27/2020
+ms.openlocfilehash: e0b4b31a1d732cbd5cbfaa9b6e5e021caa3adf01
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96299052"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301955"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>Řešení potíží s CI-CD, Azure DevOps a GitHubem v ADF 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Tento článek popisuje běžné metody řešení potíží pro CI-CD, Azure DevOps a GitHub problémy v Azure Data Factory.
+Tento článek popisuje běžné metody řešení potíží pro průběžné nasazování Integration-Continuous (CI-CD), problémy s Azure DevOps a GitHub v Azure Data Factory.
 
-Pokud máte dotazy nebo problémy s používáním technik správy zdrojového kódu nebo DevOps, najdete tady několik článků, které mohou být užitečné.:
+Pokud máte dotazy nebo problémy s používáním technik správy zdrojového kódu nebo DevOps, najdete tady několik článků, které mohou být užitečné:
 
 - Informace o tom, jak je Správa zdrojového kódu v ADF, najdete [v tématu Správa zdrojového kódu v ADF](source-control.md) . 
 - Další informace o tom, jak se DevOps CI-CD funguje v ADF, najdete  [v tématu CI-CD v ADF](continuous-integration-deployment.md) .
@@ -158,9 +158,5 @@ Další pomoc při řešení potíží najdete v následujících zdrojích info
 *  [Blog Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
 *  [Videa Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [Stránka s otázkou Microsoft Q&](/answers/topics/azure-data-factory.html)
 *  [Fórum přetečení zásobníku pro Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Informace o Twitteru týkající se Data Factory](https://twitter.com/hashtag/DataFactory)
-
-
- 

@@ -8,12 +8,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: f164418c29e9838928f3d03519342ebef40e16e7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b14bd60ab744be5a1735abc073f32f8ebc3e1ab1
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015693"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301701"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Vytvoření a použití vlastních pravidel brány firewall webových aplikací v2 na Application Gateway
 
@@ -21,7 +21,7 @@ Firewall webových aplikací (WAF) V2 v Azure Application Gateway poskytuje ochr
 
 Tento článek ukazuje několik ukázkových uživatelských pravidel, která můžete vytvořit a používat s WAF v2. Informace o tom, jak nasadit WAF pomocí vlastního pravidla pomocí Azure PowerShell, najdete v tématu [Konfigurace vlastních pravidel firewallu webových aplikací pomocí Azure PowerShell](configure-waf-custom-rules.md).
 
-Fragmenty kódu JSON uvedené v tomto článku jsou odvozeny z prostředku [ApplicationGatewayWebApplicationFirewallPolicies](/templates/microsoft.network/applicationgatewaywebapplicationfirewallpolicies) .
+Fragmenty kódu JSON uvedené v tomto článku jsou odvozeny z prostředku [ApplicationGatewayWebApplicationFirewallPolicies](/azure/templates/microsoft.network/applicationgatewaywebapplicationfirewallpolicies) .
 
 >[!NOTE]
 > Pokud Aplikační brána nepoužívá úroveň WAF, v pravém podokně se zobrazí možnost upgradovat aplikační bránu na úroveň WAF.

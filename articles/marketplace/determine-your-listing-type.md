@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 11/16/2020
-ms.openlocfilehash: 38f65253791f28d9ae9806bea1264e594b769b19
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: aaf0374bcafdb91f316b7133de1c2d019b12b285
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94741905"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302855"
 ---
 # <a name="introduction-to-listing-options"></a>Úvod k možnostem výpisu
 
@@ -145,7 +145,7 @@ V následující tabulce jsou uvedeny možnosti, které jsou k dispozici pro rů
 
 SaaS příkazy, které lze využít v AppSource, jsou momentálně pouze kreditními kartami. &#42;
 
-&#42;&#42; Microsoft 365 doplňky je zdarma nainstalovat a je možné je můžou finančně zhodnocovat pomocí nabídky SaaS. Další informace najdete v tématu [monetizovat vašeho doplňku pro Office 365 prostřednictvím komerčního tržiště Microsoftu](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace.md).
+&#42;&#42; Microsoft 365 doplňky je zdarma nainstalovat a je možné je můžou finančně zhodnocovat pomocí nabídky SaaS. Další informace najdete v tématu [monetizovat vašeho doplňku pro Office 365 prostřednictvím komerčního tržiště Microsoftu](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
 
 ## <a name="marketplace-rewards"></a>Ceny Marketplace
 

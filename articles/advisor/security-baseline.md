@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 24935f1b10ec11bb546cb08e06430d1e0b5c31fa
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7a3351654bb912eb7a4b532e636ca02fdf08a14d
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183324"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301557"
 ---
 # <a name="azure-security-baseline-for-azure-advisor"></a>Základní hodnoty zabezpečení Azure pro Azure Advisor
 
@@ -143,7 +143,7 @@ Všimněte si, že některé služby Azure podporují místní uživatele a role
 
 - [Vytvoření kontroly přístupu pro role prostředků Azure v Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md) 
 
-- [Používání kontrol přístupu a identit Azure AD](/azure/active-directory/governance/access-reviews-overvie)
+- [Používání kontrol přístupu a identit Azure AD](/azure/active-directory/governance/access-reviews-overview)
 
 **Monitorování služby Azure Security Center:** Neuvedeno
 
@@ -219,7 +219,7 @@ Podmíněný přístup Azure použijte k omezení schopnosti uživatele pracovat
 
 ## <a name="logging-and-threat-detection"></a>Protokolování a detekce hrozeb
 
-*Další informace najdete v tématu [Srovnávací test zabezpečení Azure: Protokolování a detekce hrozeb](/azure/security/benchmarks/security-controls-v2-logging-threat-protection).*
+*Další informace najdete v tématu [Srovnávací test zabezpečení Azure: Protokolování a detekce hrozeb](/azure/security/benchmarks/security-controls-v2-logging-threat-detection).*
 
 ### <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4: povolení protokolování pro prostředky Azure
 
@@ -370,7 +370,7 @@ Kromě toho můžete prostředky označit pomocí značek a vytvořit systém vy
 
 ## <a name="posture-and-vulnerability-management"></a>Správa stavu a ohrožení zabezpečení
 
-*Další informace najdete v tématu [Srovnávací test zabezpečení Azure: Správa stavu a ohrožení zabezpečení](/azure/security/benchmarks/security-controls-v2-vulnerability-management).*
+*Další informace najdete v tématu [Srovnávací test zabezpečení Azure: Správa stavu a ohrožení zabezpečení](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management).*
 
 ### <a name="pv-8-conduct-regular-attack-simulation"></a>PV-8: Provádění pravidelných simulací útoku
 
@@ -420,9 +420,9 @@ Další informace najdete na následujících odkazech:
 
 - [Cloud Adoption Framework – Osvědčené postupy šifrování a zabezpečení dat v Azure](../security/fundamentals/data-encryption-best-practices.md?amp;bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
-- [Srovnávací test zabezpečení Azure – Správa prostředků](/azure/security/benchmarks/security-benchmark-v2-asset-management)
+- [Srovnávací test zabezpečení Azure – Správa prostředků](/azure/security/benchmarks/security-controls-v2-asset-management)
 
-- [Srovnávací test zabezpečení Azure – Ochrana dat](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Srovnávací test zabezpečení Azure – Ochrana dat](/azure/security/benchmarks/security-controls-v2-data-protection)
 
 **Monitorování služby Azure Security Center:** Neuvedeno
 
@@ -450,7 +450,7 @@ Zajistěte, aby se strategie segmentace implementovala konzistentně napříč t
 
 **Pokyny:** Průběžně měřte a zmírňujte rizika pro jednotlivé prostředky a prostředí, ve kterém jsou hostované. Jako prioritu si stanovte prostředky s vysokou hodnotou a vysoce exponované oblasti útoku, jako jsou publikované aplikace, vstupní a výstupní body sítě, koncové body uživatelů a správců atd.
 
-- [Srovnávací test zabezpečení Azure – Správa stavu a ohrožení zabezpečení](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Srovnávací test zabezpečení Azure – Správa stavu a ohrožení zabezpečení](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
 **Monitorování služby Azure Security Center:** Neuvedeno
 
@@ -491,7 +491,7 @@ Tato strategie by měla zahrnovat zdokumentované pokyny, zásady a standardy pr
 Další informace najdete na následujících odkazech:
 - [Osvědčený postup zabezpečení Azure 11 – Architektura: Jednotná bezpečnostní strategie](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Srovnávací test zabezpečení Azure – Zabezpečení sítě](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Srovnávací test zabezpečení Azure – Zabezpečení sítě](/azure/security/benchmarks/security-controls-v2-network-security)
 
 - [Přehled zabezpečení sítě Azure](../security/fundamentals/network-overview.md)
 
@@ -519,9 +519,9 @@ Tato strategie by měla zahrnovat zdokumentované pokyny, zásady a standardy pr
 
 Další informace najdete v odkazovaných odkazech.
 
-- [Srovnávací test zabezpečení Azure – Správa identit](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Srovnávací test zabezpečení Azure – Správa identit](/azure/security/benchmarks/security-controls-v2-identity-management)
 
-- [Srovnávací test zabezpečení Azure – Privilegovaný přístup](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Srovnávací test zabezpečení Azure – Privilegovaný přístup](/azure/security/benchmarks/security-controls-v2-privileged-access)
 
 - [Osvědčený postup zabezpečení Azure 11 – Architektura: Jednotná bezpečnostní strategie](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -553,9 +553,9 @@ Tato strategie by měla zahrnovat zdokumentované pokyny, zásady a standardy pr
 
 Další informace najdete na následujících odkazech:
 
-- [Srovnávací test zabezpečení Azure – Protokolování a detekce hrozeb](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Srovnávací test zabezpečení Azure – Protokolování a detekce hrozeb](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Srovnávací test zabezpečení Azure – Reakce na incidenty](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Srovnávací test zabezpečení Azure – Reakce na incidenty](/azure/security/benchmarks/security-controls-v2-incident-response)
 
 - [Osvědčený postup zabezpečení Azure 4 – Procesy: Aktualizace procesů reakce na incidenty pro cloud](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 04399dc82a3bd2d70b8b472b121e95a73ca43136
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9c27139e2dca37c1ff8d963e1e8cdb5de682d39d
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009598"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302952"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>Kurz: Azure Active Directory integrace s cestou k Wagonlit pro Carlson
 
@@ -119,7 +119,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí cesty Ca
 
 ### <a name="configure-carlson-wagonlit-travel-single-sign-on"></a>Konfigurace Carlson cest Wagonlit na jednom Sign-On
 
-Ke konfiguraci jednotného přihlašování na **cestách Carlson Wagonlit** je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory Carlson Wagonlit](http://www.carlsonwagonlit.in/content/cwt/in/en/technical-assistance.html). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Ke konfiguraci jednotného přihlašování na **cestách Carlson Wagonlit** je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory Carlson Wagonlit](https://www.mycwt.com/traveler-help/). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
@@ -174,7 +174,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-carlson-wagonlit-travel-test-user"></a>Vytvořit uživatele cestovního testu pro Carlson Wagonlit
 
-V této části vytvoříte uživatele s názvem Britta Simon na cestách Carlson Wagonlit. Spolupracujte s [týmem podpory Carlson Wagonlit](http://www.carlsonwagonlit.in/content/cwt/in/en/technical-assistance.html) , abyste mohli přidat uživatele na Carlson platformě Wagonlit. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon na cestách Carlson Wagonlit. Spolupracujte s [týmem podpory Carlson Wagonlit](https://www.mycwt.com/traveler-help/) , abyste mohli přidat uživatele na Carlson platformě Wagonlit. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 

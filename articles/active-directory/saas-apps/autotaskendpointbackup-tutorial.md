@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/19/2019
 ms.author: jeedes
-ms.openlocfilehash: b451e1645061d2de1758bf02ff0f59c07a43158e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0264baf6a8ff107c4a3aa811b9e8639352dca782
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457516"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301816"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>Kurz: Azure Active Directory integrace se zálohováním koncového bodu automatického úkolu
 
@@ -106,7 +106,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí zálohov
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.backup.autotask.net/singlesignon/saml/SSO`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory klienta podpory pro úlohy automatického úkolu](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory klienta podpory pro úlohy automatického úkolu](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -124,13 +124,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí zálohov
 
 ### <a name="configure-autotask-endpoint-backup-single-sign-on"></a>Konfigurace jednoho Sign-On zálohování koncového bodu automatického úkolu
 
-Chcete-li nakonfigurovat jednotné přihlašování na straně **zálohování koncového bodu automatického úkolu** , je třeba odeslat stažená **metadata federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory zálohování koncového bodu](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Chcete-li nakonfigurovat jednotné přihlašování na straně **zálohování koncového bodu automatického úkolu** , je třeba odeslat stažená **metadata federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory zálohování koncového bodu](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -155,7 +155,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k zálohování koncového bodu automatického úkolu.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **zálohování koncového bodu automatického úkolu**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte možnost **zálohování koncového bodu automatického úkolu**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -179,7 +179,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-autotask-endpoint-backup-test-user"></a>Vytvořit autoúlohu – koncový uživatel záložního koncového bodu
 
-V této části vytvoříte uživatele s názvem Britta Simon v zálohování koncového bodu automatického úkolu. Pokud chcete přidat uživatele na platformě zálohování koncového bodu automatického úkolu, pracujte s nástrojem pro [zálohování koncového bodu služby automatického úkolu](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v zálohování koncového bodu automatického úkolu. Pokud chcete přidat uživatele na platformě zálohování koncového bodu automatického úkolu, pracujte s nástrojem pro [zálohování koncového bodu služby automatického úkolu](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
@@ -187,7 +187,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici zálohování koncového bodu automatického úkolu, měli byste být automaticky přihlášeni k zálohování koncového bodu automatického úkolu, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

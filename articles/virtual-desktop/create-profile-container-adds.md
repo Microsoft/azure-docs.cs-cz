@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ea834ed874f3011d95f8b924df860576f72bc4ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70a56b7efc34ba2fd3c06521c6e4cac6ea28778f
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88825609"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302464"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Vytvoření kontejneru profilu se službou Azure Files a Azure služba AD DS
 
@@ -27,7 +27,7 @@ Pokud chcete přidat další správce, vytvořte nového uživatele a udělte mu
 
 Přidání správce:
 
-1. Na bočním panelu vyberte **Azure Active Directory** a pak vyberte **Všichni uživatelé**a pak vyberte **Nový uživatel**.
+1. Na bočním panelu vyberte **Azure Active Directory** a pak vyberte **Všichni uživatelé** a pak vyberte **Nový uživatel**.
 
 2.  Zadejte do polí Podrobnosti o uživateli.
 
@@ -35,7 +35,7 @@ Přidání správce:
 
 4. Vyberte skupinu **AAD DC Administrators** .
 
-5. V levém podokně vyberte **členy**a potom v hlavním podokně vyberte **přidat členy** . Zobrazí se seznam všech uživatelů dostupných ve službě Azure AD. Vyberte název profilu uživatele, který jste právě vytvořili.
+5. V levém podokně vyberte **členy** a potom v hlavním podokně vyberte **přidat členy** . Zobrazí se seznam všech uživatelů dostupných ve službě Azure AD. Vyberte název profilu uživatele, který jste právě vytvořili.
 
 ## <a name="set-up-an-azure-storage-account"></a>Nastavení účtu Azure Storage
 
@@ -67,7 +67,7 @@ Přiřazení přístupových oprávnění uživatelům:
 
 4. Na kartě **Přidat přiřazení role** vyberte v seznamu role příslušnou integrovanou roli. Abyste získali správná oprávnění, musíte aspoň vybrat **soubor úložiště datový Přispěvatel SMB** pro tento účet.
 
-5. Pro **přiřazení přístupu k**vyberte **Azure Active Directory uživatel, skupina nebo instanční objekt**.
+5. Pro **přiřazení přístupu k** vyberte **Azure Active Directory uživatel, skupina nebo instanční objekt**.
 
 6. Vyberte jméno nebo e-mailovou adresu pro cílovou Azure Active Directory identitu.
 
@@ -83,7 +83,7 @@ Získání přístupového klíče účtu úložiště:
 
 2. V seznamu účtů úložiště vyberte účet, pro který jste povolili Azure služba AD DS a ve výše uvedených krocích jste vytvořili vlastní role.
 
-3. V části **Nastavení**vyberte **přístupové klíče** a zkopírujte klíč z **klíč1**.
+3. V části **Nastavení** vyberte **přístupové klíče** a zkopírujte klíč z **klíč1**.
 
 4. Přejděte na kartu **Virtual Machines** a vyhledejte libovolný virtuální počítač, který se stane součástí fondu hostitelů.
 
@@ -99,7 +99,7 @@ Získání přístupového klíče účtu úložiště:
 7. Spusťte následující příkaz:
 
      ```cmd
-     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
+     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
      ```
 
     - Nahraďte `<desired-drive-letter>` zvoleným písmenem jednotky (například `y:` ).
@@ -107,7 +107,7 @@ Získání přístupového klíče účtu úložiště:
     - Nahraďte `<share-name>` názvem sdílené složky, kterou jste vytvořili dříve.
     - Nahraďte `<storage-account-key>` klíčem účtu úložiště z Azure.
 
-    Například:
+    Příklad:
 
      ```cmd
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
@@ -125,7 +125,7 @@ Získání přístupového klíče účtu úložiště:
     - Nahraďte `<mounted-drive-letter>` písmenem jednotky, kterou jste použili k namapování jednotky.
     - Nahraďte `<user-email>` hlavní název uživatele nebo skupiny Active Directory, který obsahuje uživatele, kteří budou potřebovat přístup ke sdílené složce.
 
-    Například:
+    Příklad:
 
      ```cmd
      icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)
@@ -142,29 +142,29 @@ Postup konfigurace kontejneru profilu FSLogix:
 
 1. Přihlaste se k virtuálnímu počítači hostitele relace, který jste nakonfigurovali na začátku tohoto článku, [a pak stáhněte a nainstalujte agenta FSLogix](/fslogix/install-ht/).
 
-2. Rozbalte stažený soubor agenta FSLogix, klikněte na verze **x64**a  >  **Releases**pak otevřete **FSLogixAppsSetup.exe**.
+2. Rozbalte stažený soubor agenta FSLogix, klikněte na verze **x64** a  >  **Releases** pak otevřete **FSLogixAppsSetup.exe**.
 
 3. Jakmile se instalační program spustí, vyberte Souhlasím **s licenčními podmínkami a ujednáními.** V případě potřeby zadejte nový klíč.
 
-4. Vyberte **Nainstalovat**.
+4. Vyberte **Install** (Nainstalovat).
 
-5. Otevřete **jednotku C**a pak vyhledejte **soubory Program Files**  >  **FSLogix**  >  **Apps** a ujistěte se, že je agent FSLogix správně nainstalovaný.
+5. Otevřete **jednotku C** a pak vyhledejte **soubory Program Files**  >  **FSLogix**  >  **Apps** a ujistěte se, že je agent FSLogix správně nainstalovaný.
 
      >[!NOTE]
      > Pokud je ve fondu hostitelů víc virtuálních počítačů, budete muset pro každý virtuální počítač zopakovat kroky 1 až 5.
 
 6. Spusťte **Editor registru** (Regedit) jako správce.
 
-7. Přejděte na **počítač**  >  **HKEY_LOCAL_MACHINE**  >  **software**  >  **FSLogix**, klikněte pravým tlačítkem na **FSLogix**, vyberte **Nový**a pak vyberte **klíč**.
+7. Přejděte na **počítač**  >  **HKEY_LOCAL_MACHINE**  >  **software**  >  **FSLogix**, klikněte pravým tlačítkem na **FSLogix**, vyberte **Nový** a pak vyberte **klíč**.
 
 8. Vytvořte nový klíč s názvem **Profiles**.
 
-9.  Klikněte pravým tlačítkem na **profily**, vyberte **Nový**a pak vyberte **hodnotu DWORD (32-bit).** Pojmenujte hodnotu **Enabled** a nastavte hodnotu **data** na **1**.
+9.  Klikněte pravým tlačítkem na **profily**, vyberte **Nový** a pak vyberte **hodnotu DWORD (32-bit).** Pojmenujte hodnotu **Enabled** a nastavte hodnotu **data** na **1**.
 
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky s klíčem Profile REG_DWORD soubor je zvýrazněný a jeho datová hodnota je nastavená na 1.](media/dword-value.png)
 
-10. Klikněte pravým tlačítkem na **profily**, vyberte **Nový**a potom vyberte **hodnotu s více řetězci**. Pojmenujte hodnotu **VHDLocations** a `\\fsprofile.file.core.windows.net\share` jako datovou hodnotu zadejte identifikátor URI pro sdílenou složku souborů Azure.
+10. Klikněte pravým tlačítkem na **profily**, vyberte **Nový** a potom vyberte **hodnotu s více řetězci**. Pojmenujte hodnotu **VHDLocations** a `\\fsprofile.file.core.windows.net\share` jako datovou hodnotu zadejte identifikátor URI pro sdílenou složku souborů Azure.
 
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky s klíčem Profiles, který ukazuje soubor VHDLocations Jeho hodnota dat zobrazuje identifikátor URI pro sdílenou složku služby soubory Azure.](media/multi-string-value.png)
@@ -206,7 +206,7 @@ Přiřazení uživatelů:
 
     Stejně jako v předchozích rutinách Nezapomeňte nahradit `<your-wvd-tenant>` , `<wvd-pool>` a `<user-principal>` s odpovídajícími hodnotami.
 
-    Například:
+    Příklad:
 
      ```powershell
      $pool1 = "contoso"

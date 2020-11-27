@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 11/22/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: b9bcdbdf8bdad0d1ad96fc043f29a84b962318c2
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 9f443b15cd427dd31c2ffa95af8d1124f1169881
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95324010"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302639"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Rychlý Start: vytvoření veřejného nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure PowerShell
 
@@ -618,7 +618,7 @@ V této části vytvoříte virtuální počítače pro back-end fond nástroje 
 
 * Vytvořte tři síťová rozhraní pomocí [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface).
 
-* Pomocí [Get-Credential](/powershell/reference/5.1/microsoft.powershell.security/Get-Credential)nastavte uživatelské jméno a heslo správce pro virtuální počítače.
+* Pomocí [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential)nastavte uživatelské jméno a heslo správce pro virtuální počítače.
 
 * Pomocí [New-AzAvailabilitySet](/powershell/module/az.compute/new-azvm) vytvořte skupinu dostupnosti pro virtuální počítače.
 

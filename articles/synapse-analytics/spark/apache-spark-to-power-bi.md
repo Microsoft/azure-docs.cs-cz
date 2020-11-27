@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: ea8fcb602f49dec61187260e08d3ccd1b148cee8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9fb8bbffb423031afd31e156183bc4f8be3c147e
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95920247"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302531"
 ---
 # <a name="tutorial-create-a-power-bi-report-using-apache-spark-and-azure-synapse-analytics"></a>Kurz: Vytvoření sestavy Power BI pomocí Apache Spark a Azure synapse Analytics
 
@@ -69,6 +69,9 @@ V tomto příkladu použijete Apache Spark k provedení některých analýz dat 
                                     & (filtered_df.paymentType.isin({"1", "2"})))
     ```
 4. Nakonec uložíme náš datový rámec pomocí ```saveAsTable``` metody Apache Spark. To vám umožní dotazovat se na stejnou tabulku a připojit se k ní pomocí neserverových fondů SQL.
+  ```python
+     taxi_df.write.mode("overwrite").saveAsTable("NycTlcTutorial.nyctaxi")
+  ```
    
 ## <a name="query-data-using-serverless-sql-pools"></a>Dotazování na data s využitím fondů SQL bez serveru
 Azure synapse Analytics umožňuje různým výpočetním modulům pracovních prostorů sdílet databáze a tabulky mezi svými fondy Apache Spark serverů bez serveru (Preview) a SQL fondem bez serveru (Preview). Tato možnost se využívá prostřednictvím funkce [správy sdílených metadat](../metadata/overview.md) synapse. V důsledku toho se databáze Spark vytvořené a jejich Parquet tabulky budou zobrazovat ve fondu SQL bez serveru v pracovním prostoru.

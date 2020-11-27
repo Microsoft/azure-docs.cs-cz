@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 6d98f1a1dfb575f4af8b666d173f9354b5eeac6b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: e2d89718d953f05b3e5500db412ac8ac03bfa00b
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966237"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301946"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatizované řešení zotavení po havárii s využitím Azure Site Recovery pro sdílené složky hostované v StorSimple
 
@@ -44,7 +44,7 @@ Implementace řešení pro zotavení po havárii typu jedním kliknutím, který
    - Místní zařízení úložiště StorSimple zaregistrované ve službě Azure StorSimple Manager
    - StorSimple Cloud Appliance vytvořené v Azure StorSimple Manageru. Zařízení se může uchovávat v nefunkčním stavu.
    - Sdílené složky hostované na svazcích nakonfigurovaných na zařízení úložiště StorSimple
-   - [Trezor služby Azure Site Recovery](/azure/storsimple/hyper-v-vmm-disaster-recovery) se vytvořil v předplatném Microsoft Azure.
+   - [Trezor služby Azure Site Recovery](/azure/site-recovery/hyper-v-vmm-azure-tutorial) se vytvořil v předplatném Microsoft Azure.
 
 Kromě toho, pokud je Azure vaším webem pro obnovení, spusťte na virtuálních počítačích [Nástroj pro vyhodnocení připravenosti na virtuální počítače Azure](https://azure.microsoft.com/downloads/vm-readiness-assessment/) , abyste zajistili, že jsou kompatibilní s virtuálními počítači azure a Azure Site Recovery službami.
 
@@ -112,7 +112,7 @@ Tento krok vyžaduje, abyste připravili místní prostředí souborového serve
    1. Pomocí role Souborová služba a služba úložiště vytvořte sdílené složky na těchto svazcích.
 
 #### <a name="to-create-and-prepare-an-azure-site-recovery-vault"></a>Vytvoření a příprava trezoru Azure Site Recovery
-Informace o Azure Site Recovery před ochranou virtuálního počítače souborového serveru najdete v [dokumentaci k Azure Site Recovery](/azure/storsimple/hyper-v-azure-tutorial) .
+Informace o Azure Site Recovery před ochranou virtuálního počítače souborového serveru najdete v [dokumentaci k Azure Site Recovery](/azure/site-recovery/) .
 
 #### <a name="to-enable-protection"></a>Povolení ochrany
 1. Odpojte cíle iSCSI od místních virtuálních počítačů, které chcete chránit pomocí Azure Site Recovery:
@@ -124,7 +124,7 @@ Informace o Azure Site Recovery před ochranou virtuálního počítače souboro
    > [!NOTE]
    > Tato akce způsobí, že sdílené složky budou dočasně nedostupné.
    
-1. [Povolte ochranu virtuálního počítače pro virtuální počítač](/azure/storsimple/hyper-v-azure-tutorial) souborového serveru z portálu Azure Site Recovery.
+1. [Povolte ochranu virtuálního počítače pro virtuální počítač](/azure/site-recovery/hyper-v-azure-tutorial) souborového serveru z portálu Azure Site Recovery.
 1. Po zahájení počáteční synchronizace můžete cíl znovu připojit. Přejděte k iniciátoru iSCSI, vyberte zařízení StorSimple a klikněte na **připojit**.
 1. Po dokončení synchronizace a stavu **ochrany** virtuálního počítače vyberte virtuální počítač, vyberte kartu **Konfigurovat** a odpovídajícím způsobem aktualizujte síť virtuálního počítače (Jedná se o síť, které virtuální počítače s převzetím služeb při selhání budou součástí). Pokud se síť nezobrazí, znamená to, že synchronizace stále probíhá.
 

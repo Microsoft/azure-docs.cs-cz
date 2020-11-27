@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 9a2bda0a526c307ae17d8415f6f24423ddf51b63
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 8a4f9a5df8def928c06fe95a53c7be0d93ec76c4
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917762"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302672"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight ID Broker (HIB)
 
@@ -140,7 +140,7 @@ Pro použití Beeline a Livy můžete také použít kódy ukázek, které [tady
 
 ## <a name="faq"></a>Nejčastější dotazy
 ### <a name="what-app-is-created-by-hdinsight-in-aad"></a>Jakou aplikaci vytvoří HDInsight v AAD?
-Pro každý cluster bude aplikace třetí strany registrována v AAD s identifikátorem URI clusteru jako identifierUri (jako https://clustername.azurehdinsight.net ).
+Pro každý cluster bude aplikace třetí strany registrována v AAD s identifikátorem URI clusteru jako identifierUri (jako `https://clustername.azurehdinsight.net` ).
 
 ### <a name="why-are-users-prompted-for-consent-before-using-hib-enabled-clusters"></a>Proč se uživatelé před použitím clusterů s podporou HIB zobrazí výzva k zadání souhlasu?
 V AAD se vyžaduje souhlas pro všechny aplikace třetích stran předtím, než může ověřit uživatele nebo získat přístup k datům.

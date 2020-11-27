@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5b9c41209902e384988064207bb3e1ded1c47477
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 691bb538ea0f46e26c318a68e9f66a9a986eb5d4
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182950"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301834"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>Základní hodnoty zabezpečení Azure pro App Service
 
@@ -168,7 +168,7 @@ Další informace najdete v odkazovaných odkazech.
 
 - [Jak nakonfigurovat kompletní protokol TLS pomocí Application Gateway s portálem](../application-gateway/end-to-end-ssl-portal.md)
 
-- [Zabezpečte si pomocného mechanismu zabezpečení, jak je popsáno v tématu uzamčení App Service](https://review.docs.microsoft.com/azure/app-service/environment/firewall-integrationEnvironment:)
+- [Zabezpečte si pomocného mechanismu zabezpečení, jak je popsáno v tématu uzamčení App Service](/azure/app-service/environment/firewall-integration)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -205,7 +205,7 @@ Další informace najdete v odkazovaných odkazech.
 
 - [Jak nakonfigurovat kompletní protokol TLS pomocí Application Gateway s portálem](../application-gateway/end-to-end-ssl-portal.md)
 
-- [Zabezpečte si pomocného mechanismu zabezpečení, jak je popsáno v tématu uzamčení App Service](https://review.docs.microsoft.com/azure/app-service/environment/firewall-integrationEnvironment:)
+- [Zabezpečte si pomocného mechanismu zabezpečení, jak je popsáno v tématu uzamčení App Service](/azure/app-service/environment/firewall-integration)
 
 **Monitorování služby Azure Security Center:** Neuvedeno
 
@@ -221,7 +221,7 @@ Použijte některou z vestavěných definic Azure Policy souvisejících s efekt
 
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-- [Omezení přístupu Azure App Service](/azure/app-service/app-service-ip-restriction)
+- [Omezení přístupu Azure App Service](/azure/app-service/app-service-ip-restrictions)
 
 **Monitorování služby Azure Security Center:** Neuvedeno
 

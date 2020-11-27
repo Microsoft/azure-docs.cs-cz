@@ -6,12 +6,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 84f04d2f1f8c9b54a1f2a2a13cc97954ac5add90
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 038d0ec817d4f81371546e8d7aa4b48b299c8d98
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995314"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302549"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrace virtuálních počítačů Hyper-V do Azure 
 
@@ -43,23 +43,9 @@ Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 2. [Kontrola](migrate-support-matrix-hyper-v-migration.md#hyper-v-host-requirements) Požadavky na hostitele Hyper-V pro migraci a adresy URL Azure, ke kterým hostitelé a clustery Hyper-V potřebují přístup pro migraci virtuálních počítačů.
 3. [Projděte si](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) požadavky na virtuální počítače Hyper-V, které chcete migrovat do Azure.
 4. Doporučujeme, abyste před migrací na Azure  [vyhodnotili virtuální počítače Hyper-V](tutorial-assess-hyper-v.md) , ale nemusíte je používat.
+5. Přejít do již vytvořeného projektu nebo [vytvořit nový projekt](https://docs.microsoft.com/azure/migrate/create-manage-projects)
+6. Ověřte oprávnění pro účet Azure – váš účet Azure potřebuje oprávnění k vytvoření virtuálního počítače a zápis na spravovaný disk Azure.
 
-   
-## <a name="add-the-azure-migrateserver-migration-tool"></a>Přidejte Azure Migrate: Nástroj pro migraci serveru
-
-Přidejte nástroj Azure Migrate: Server pro migraci. Pokud ještě nemáte Azure Migrate projekt [, který nejprve vytvoří,](how-to-add-tool-first-time.md) aby bylo možné nastavit projekt Azure Migrate. Při vytváření projektu přidáte Azure Migrate: Nástroj pro migraci serveru.
-
-Pokud máte projekt nastavený, přidejte nástroj následujícím způsobem:
-
-1. V projektu Azure Migrate klikněte na **Přehled**. 
-2. V nabídce **zjišťování, posouzení a migrace serverů** klikněte na možnost **zhodnotit a migrovat servery**.
-3. V okně **Nástroje pro migraci** vyberte **kliknutím sem přidáte Nástroj pro migraci, který jste připraveni migrovat**.
-
-    ![Vybrat nástroj](./media/tutorial-migrate-hyper-v/select-migration-tool.png)
-
-4. V seznamu Nástroje vyberte možnost **Azure Migrate:**  >  **Nástroj pro přidání** migrace serveru
-
-    ![Nástroj pro migraci serverů](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
 
 ## <a name="download-and-install-the-provider"></a>Stažení a instalace poskytovatele
 

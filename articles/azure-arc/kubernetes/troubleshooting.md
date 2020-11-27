@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Řešení běžných problémů s Kubernetes clustery s podporou ARC.
 keywords: Kubernetes, oblouk, Azure, kontejnery
-ms.openlocfilehash: 4a8f4c652f1ab73e0b9979f77d7de5014c8d31a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e05701b92d2d96074a07e0e61ce65145a1d9dfd
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540604"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302394"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>Řešení potíží s Kubernetesem v Azure ARC (Preview)
 
@@ -69,7 +69,7 @@ pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
 pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 ```
 
-Všechny lusky by `STATUS` se měly zobrazovat jako `Running` a `READY` by měly být buď `3/3` nebo `2/2` . Načte protokoly a popište lusky, které vrací `Error` nebo `CrashLoopBackOff` . Pokud je některá z těchto lusků zablokovaná ve `Pending` stavu, může to být způsobeno nedostatečnými prostředky v uzlech clusteru. Při vertikálním [navýšení kapacity clusteru](https://kubernetes.io/docs/tasks/administer-cluster/cluster-management/#resizing-a-cluster) budou tyto lusky přecházet do `Running` stavu.
+Všechny lusky by `STATUS` se měly zobrazovat jako `Running` a `READY` by měly být buď `3/3` nebo `2/2` . Načte protokoly a popište lusky, které vrací `Error` nebo `CrashLoopBackOff` . Pokud je některá z těchto lusků zablokovaná ve `Pending` stavu, může to být způsobeno nedostatečnými prostředky v uzlech clusteru. Při vertikálním [navýšení kapacity clusteru](https://kubernetes.io/docs/tasks/administer-cluster/) budou tyto lusky přecházet do `Running` stavu.
 
 ## <a name="connecting-kubernetes-clusters-to-azure-arc"></a>Připojení clusterů Kubernetes ke službě Azure ARC
 

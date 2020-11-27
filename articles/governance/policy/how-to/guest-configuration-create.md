@@ -3,12 +3,12 @@ title: Postup vytváření zásad konfigurace hosta pro Windows
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro Windows.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: ea9b40006deefbac2c253082eda4ef2da12149a4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 124f747a1e7c7925efc2519ee826d62034e69cc5
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700673"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302692"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Postup vytváření zásad konfigurace hosta pro Windows
 
@@ -160,7 +160,7 @@ Dokončený balíček používá konfigurace hosta k vytvoření Azure Policych 
 
 Rutiny prostředí PowerShell pomáhají při vytváření balíčku.
 Není požadována žádná složka kořenové úrovně ani složka verze.
-Formát balíčku musí být soubor. zip.
+Formát balíčku musí být soubor. zip a při nekomprimaci nemůže překročit celkovou velikost 100 MB.
 
 ### <a name="storing-guest-configuration-artifacts"></a>Ukládání artefaktů konfigurace hosta
 

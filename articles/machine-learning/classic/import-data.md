@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: 00501a1e17f8e085b817cfe3dac819ba890248f5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c69ed7b9e2aaa7113637868e1c1329ed2962b931
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309846"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302769"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Import školicích dat do Azure Machine Learning Studio (Classic) z různých zdrojů dat
 
-**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Pokud chcete používat vlastní data v Machine Learning Studio (Classic) k vývoji a výukovém řešení prediktivní analýzy, můžete použít data z: 
@@ -50,11 +50,11 @@ Do experimentu můžete importovat několik datových typů, v závislosti na to
 * Hodnoty oddělené tabulátory (TSV) s hlavičkou (. TSV) nebo bez (. NH. TSV)
 * Excelový soubor
 * Tabulka Azure
-* Tabulka podregistru
+* Tabulka Hive
 * Tabulka SQL Database
 * Hodnoty OData
 * Data SVMLight (. SVMLight) (viz [definice SVMLight](http://svmlight.joachims.org/) pro informace o formátu)
-* Data formátu souboru relací atributů (ARFF) (. arff) (viz [definice arff](https://weka.wikispaces.com/ARFF) pro informace o formátu)
+* Data formátu souboru relací atributů (ARFF) (. arff) (viz [definice arff](https://www.cs.waikato.ac.nz/ml/weka/arff.html) pro informace o formátu)
 * Soubor zip (. zip)
 * Objekt R nebo soubor pracovního prostoru (. RData
 
@@ -73,7 +73,7 @@ Studio (Classic) rozpozná následující typy dat:
 * Datum a čas
 * TimeSpan
 
-Studio používá k předávání dat mezi moduly interní datový typ s názvem * **Tabulka dat**. Data můžete explicitně převést do formátu tabulky dat pomocí modulu [převést na datovou sadu][convert-to-dataset] .
+Studio používá k předávání dat mezi moduly interní datový typ s názvem ***Tabulka dat**. Data můžete explicitně převést do formátu tabulky dat pomocí modulu [převést na datovou sadu][convert-to-dataset] .
 
 Libovolný modul, který přijímá jiné formáty než tabulka dat, převede data do tabulky dat před jejich předáním dalšímu modulu.
 
@@ -157,7 +157,7 @@ Online zdroje dat, které jsou podporovány, jsou vypsány v následující tabu
 ### <a name="supported-online-data-sources"></a>Podporované online zdroje dat
 Modul **Import dat** Azure Machine Learning Studio (Classic) podporuje následující zdroje dat:
 
-| Zdroj dat | Popis | Parametry |
+| Zdroj dat | Description | Parametry |
 | --- | --- | --- |
 | Webová adresa URL přes HTTP |Čte data v hodnotách oddělených čárkami (CSV), hodnot oddělených tabulátory (TSV), formát souboru relací atributů (ARFF) a podporují formáty vektorových počítačů (SVM-Light) z libovolné webové adresy URL, která používá protokol HTTP. |<b>Adresa URL</b>: Určuje úplný název souboru včetně adresy URL webu a názvu souboru s libovolným rozšířením. <br/><br/><b>Formát dat</b>: Určuje jeden z podporovaných formátů dat: CSV, TSV, arff nebo SVM-Light. Pokud data obsahují řádek záhlaví, slouží k přiřazení názvů sloupců. |
 | Hadoop/HDFS |Načte data z distribuovaného úložiště v Hadoop. Požadovaná data určíte pomocí HiveQL dotazovacího jazyka, který se podobá jazyku SQL. HiveQL lze také použít k agregaci dat a filtrování dat před přidáním dat do studia (Classic). |<b>Dotaz na databázi podregistru</b>: určuje dotaz na podregistr použitý k vygenerování dat.<br/><br/><b>Identifikátor URI serveru HCatalog</b> : zadali jste název vašeho clusteru ve formátu *&lt; název vašeho clusteru &gt; . azurehdinsight.NET.*<br/><br/><b>Název uživatelského účtu Hadoop</b>: Určuje název uživatelského účtu Hadoop, který se používá k zřízení clusteru.<br/><br/><b>Heslo uživatelského účtu Hadoop</b> : Určuje přihlašovací údaje, které se použijí při zřizování clusteru. Další informace najdete v tématu [vytváření clusterů Hadoop ve službě HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md).<br/><br/><b>Umístění výstupních dat</b>: Určuje, jestli jsou data uložená v systému Hadoop Distributed File System (HDFS) nebo v Azure. <br/><ul>Pokud ukládáte výstupní data do HDFS, zadejte identifikátor URI serveru HDFS. (Nezapomeňte použít název clusteru HDInsight bez předpony HTTPS://). <br/><br/>Pokud ukládáte výstupní data do Azure, musíte zadat název účtu úložiště Azure, přístupový klíč úložiště a název kontejneru úložiště.</ul> |

@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: a58fa45f47ee8dce4ec96591551abad76c1218ee
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 86c6ea9dded423e7bd513faf73adfd293f2bd38f
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045478"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302609"
 ---
 # <a name="iot-plug-and-play-conventions"></a>Konvence IoT Plug and Play
 
@@ -23,7 +23,7 @@ Zařízení mohou zahrnovat [moduly](../iot-hub/iot-hub-devguide-module-twins.md
 Popíšete telemetrii, vlastnosti a příkazy, které zařízení technologie Plug and Play IoT implementuje, pomocí modelu [DTDL (Digital Reed Definition Language) verze V2](https://github.com/Azure/opendigitaltwins-dtdl) _model_. V tomto článku jsou uvedeny dva typy modelu:
 
 - **Žádná součást** -model bez komponent. Model deklaruje telemetrii, vlastnosti a příkazy jako vlastnosti nejvyšší úrovně v části obsah hlavního rozhraní. V nástroji Azure IoT Explorer se tento model zobrazuje jako jediná _výchozí součást_.
-- **Více komponent** – model složený ze dvou nebo více rozhraní. Hlavní rozhraní, které se zobrazí jako _výchozí komponenta_s telemetrie, vlastnostmi a příkazy. Jedno nebo více rozhraní deklarované jako komponenty s další telemetrie, vlastnostmi a příkazy.
+- **Více komponent** – model složený ze dvou nebo více rozhraní. Hlavní rozhraní, které se zobrazí jako _výchozí komponenta_ s telemetrie, vlastnostmi a příkazy. Jedno nebo více rozhraní deklarované jako komponenty s další telemetrie, vlastnostmi a příkazy.
 
 Další informace naleznete v tématu [komponenty IoT technologie Plug and Play v modelech](concepts-components.md).
 
@@ -79,7 +79,7 @@ Ukázka datové části hlášené vlastnosti:
 
 Zařízení nebo modul musí přidat `{"__t": "c"}` značku, aby označoval, že element odkazuje na komponentu.
 
-DTDL:
+DTDL, které odkazují na komponentu:
 
 ```json
 {
@@ -95,7 +95,11 @@ DTDL:
     }
   ]
 }
+```
 
+DTDL definující komponentu:
+
+```json
 {
   "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:com:example:Thermostat;1",
@@ -255,7 +259,7 @@ Když zařízení obdrží více hlášených vlastností v jedné datové čás
 
 Zařízení nebo modul by měl potvrdit, že přijaly vlastnosti odesláním hlášených vlastností:
 
-DTDL:
+DTDL, které odkazují na komponentu:
 
 ```json
 {
@@ -271,7 +275,11 @@ DTDL:
     }
   ]
 }
+```
 
+DTDL definující komponentu:
+
+```json
 {
   "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:com:example:Thermostat;1",
