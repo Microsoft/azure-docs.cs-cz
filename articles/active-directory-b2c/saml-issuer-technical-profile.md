@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 73c381624b69acb6fe7a6296a3153160812818bf
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: b4fb7c6fb3bbf02e5f1aba25c868e4a44e8507dd
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886409"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309626"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu pro vystavitele tokenů SAML v Azure Active Directory B2C vlastní zásady
 
@@ -57,9 +57,11 @@ Prvky **InputClaims**, **OutputClaims** a **PersistClaims** jsou prázdné nebo 
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| IssuerUri | Ne | Název vystavitele, který se zobrazí v odpovědi SAML. Hodnota by měla být stejný název jako nakonfigurovaný v aplikaci předávající strany. |
-| XmlSignatureAlgorithm | Ne | Metoda, kterou Azure AD B2C používá k podepsání kontrolního výrazu SAML. Možné hodnoty: `Sha256` , `Sha384` , `Sha512` , nebo `Sha1` . Nezapomeňte nakonfigurovat algoritmus podpisu na obou stranách se stejnou hodnotou. Používejte jenom algoritmus, který podporuje váš certifikát. Postup konfigurace odpovědi SAML najdete v tématu [metadata SAML předávající strany](relyingparty.md#metadata) .|
-|TokenNotBeforeSkewInSeconds| Ne| Určuje zešikmení jako celé číslo pro časové razítko, které označuje začátek období platnosti. Čím vyšší je toto číslo, tím dále v čase začíná doba platnosti v souvislosti s časem, kdy jsou deklarace identity vystaveny předávající straně. Pokud je například TokenNotBeforeSkewInSeconds nastaveno na 60 sekund, je-li token vydán v 13:05:10 UTC, token je platný z 13:04:10 UTC. Výchozí hodnota je 0. Maximální hodnota je 3600 (jedna hodina). |
+| IssuerUri | No | Název vystavitele, který se zobrazí v odpovědi SAML. Hodnota by měla být stejný název jako nakonfigurovaný v aplikaci předávající strany. |
+| XmlSignatureAlgorithm | No | Metoda, kterou Azure AD B2C používá k podepsání kontrolního výrazu SAML. Možné hodnoty: `Sha256` , `Sha384` , `Sha512` , nebo `Sha1` . Nezapomeňte nakonfigurovat algoritmus podpisu na obou stranách se stejnou hodnotou. Používejte jenom algoritmus, který podporuje váš certifikát. Postup konfigurace odpovědi SAML najdete v tématu [metadata SAML předávající strany](relyingparty.md#metadata) .|
+|TokenNotBeforeSkewInSeconds| No| Určuje zešikmení jako celé číslo pro časové razítko, které označuje začátek období platnosti. Čím vyšší je toto číslo, tím dále v čase začíná doba platnosti v souvislosti s časem, kdy jsou deklarace identity vystaveny předávající straně. Pokud je například TokenNotBeforeSkewInSeconds nastaveno na 60 sekund, je-li token vydán v 13:05:10 UTC, token je platný z 13:04:10 UTC. Výchozí hodnota je 0. Maximální hodnota je 3600 (jedna hodina). |
+|TokenLifeTimeInSeconds| No| Určuje životnost kontrolního výrazu SAML. Tato hodnota je v sekundách od hodnoty NotBefore refernced výše. Výchozí hodnota je 300 sekund (5 minut). |
+
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 

@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e637a09a5305e314a32b1cac34b2da669eec614
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 60c3fc6688dc4a25faf5ed94df25055e29d34403
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296195"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309813"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Terminologie Azure synapse Analytics
 
@@ -36,8 +36,7 @@ Pracovní prostor může obsahovat libovolný počet **propojených služeb**, v
 
 **Synapse SQL** je schopnost provádět analýzy založené na T-SQL v pracovním prostoru synapse. Synapse SQL má dva modely spotřeby: vyhrazené a bez serveru.  Pro vyhrazený model použijte **vyhrazené fondy SQL**. Pracovní prostor může obsahovat libovolný počet těchto fondů. Pokud chcete používat model bez serveru, používejte **fondy SQL bez serveru**. Každý pracovní prostor má jeden z těchto fondů.
 
-* **Požadavek SQL** – operace, jako je dotaz spouštěný prostřednictvím vyhrazeného fondu SQL nebo bez serveru SQL
-* **Skript SQL** – sada příkazů SQL, které jsou uložené v souboru. Skript SQL může obsahovat jeden nebo více příkazů SQL. Dá se použít ke spouštění požadavků SQL prostřednictvím vyhrazeného fondu SQL nebo bez serveru SQL.
+V synapse studiu můžete pracovat s fondy SQL vytvořením a spuštěním **skriptů SQL** .
 
 ## <a name="apache-spark-for-synapse"></a>Apache Spark pro synapse
 
@@ -47,7 +46,7 @@ Existují dva způsoby, jak v rámci synapse použít Spark:
 * **Poznámkové bloky Spark** pro práci s datovými vědy a inženýry, které používají Scala, PySpark, C# a SparkSQL
 * **Definice úloh Sparku** pro spouštění úloh služby Batch Spark pomocí souborů JAR
 
-## <a name="pipelines"></a>Pipelines
+## <a name="pipelines"></a>Kanály
 
 Kanály představují způsob, jakým Azure synapse zajišťuje integraci dat – umožňuje přesun dat mezi službami a orchestrace aktivit.
 

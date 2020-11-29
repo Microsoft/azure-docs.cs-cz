@@ -3,37 +3,69 @@ title: Upgrade imagí uzlu služby Azure Kubernetes Service (AKS)
 description: Naučte se upgradovat image na uzlech clusteru AKS a fondech uzlů.
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 211190228c1ea9c98004b55da96ad38808821d67
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.date: 11/25/2020
+ms.author: jpalma
+ms.openlocfilehash: e8214345bd1c328f0996f8aa8a2a8bb402a76e8d
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682379"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309592"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Upgrade image uzlu služby Azure Kubernetes (AKS)
 
 AKS podporuje upgrade imagí na uzlu, takže budete mít nejnovější aktualizace operačního systému a modulu runtime. AKS poskytuje za týden jednu novou image s nejnovějšími aktualizacemi, takže je vhodné pravidelně upgradovat image vašeho uzlu na nejnovější funkce, včetně aktualizací pro Linux nebo Windows. V tomto článku se dozvíte, jak upgradovat image uzlů clusteru AKS a jak aktualizovat image fondu uzlů bez upgradu verze Kubernetes.
 
-Pokud vás zajímá informace o nejnovějších obrázcích poskytovaných službou AKS, přečtěte si [poznámky k verzi AKS](https://github.com/Azure/AKS/releases) , kde najdete další podrobnosti.
+Další informace o nejnovějších obrázcích, které poskytuje AKS, najdete v [poznámkách k verzi AKS](https://github.com/Azure/AKS/releases).
 
 Informace o tom, jak upgradovat verzi Kubernetes pro váš cluster, najdete v tématu [upgrade clusteru AKS][upgrade-cluster].
 
-## <a name="limitations"></a>Omezení
+> [!NOTE]
+> Cluster AKS musí pro uzly používat sadu škálování virtuálních počítačů.
 
-* Cluster AKS musí pro uzly používat sadu škálování virtuálních počítačů.
+## <a name="check-if-your-node-pool-is-on-the-latest-node-image"></a>Ověřte, jestli je fond uzlů na nejnovější imagi uzlu.
 
-## <a name="install-the-aks-cli-extension"></a>Instalace rozšíření CLI AKS
-
-Předtím, než bude vydána další základní verze rozhraní příkazového řádku, budete potřebovat rozšíření CLI *AKS-Preview* pro použití upgradu bitové kopie uzlu. Použijte příkaz [AZ Extension Add][az-extension-add] a potom vyhledejte všechny dostupné aktualizace pomocí příkazu [AZ Extension Update][az-extension-update] :
+Můžete zjistit, jaká je nejnovější verze image uzlu dostupná pro váš fond uzlů, a to pomocí následujícího příkazu: 
 
 ```azurecli
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
+az aks nodepool get-upgrades \
+    --nodepool-name mynodepool \
+    --cluster-name myAKSCluster \
+    --resource-group myResourceGroup
 ```
+
+Ve výstupu vidíte `latestNodeImageVersion` podobně jako v následujícím příkladu:
+
+```output
+{
+  "id": "/subscriptions/XXXX-XXX-XXX-XXX-XXXXX/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster/agentPools/nodepool1/upgradeProfiles/default",
+  "kubernetesVersion": "1.17.11",
+  "latestNodeImageVersion": "AKSUbuntu-1604-2020.10.28",
+  "name": "default",
+  "osType": "Linux",
+  "resourceGroup": "myResourceGroup",
+  "type": "Microsoft.ContainerService/managedClusters/agentPools/upgradeProfiles",
+  "upgrades": null
+}
+```
+
+Proto `nodepool1` je k dispozici nejnovější obrázek uzlu `AKSUbuntu-1604-2020.10.28` . Teď ji můžete porovnat s aktuální verzí image uzlu, kterou používá fond uzlů, a to spuštěním:
+
+```azurecli
+az aks nodepool show \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name mynodepool \
+    --query nodeImageVersion
+```
+
+Příklad výstupu:
+
+```output
+"AKSUbuntu-1604-2020.10.08"
+```
+
+V tomto příkladu můžete upgradovat z aktuální `AKSUbuntu-1604-2020.10.08` verze image na nejnovější verzi `AKSUbuntu-1604-2020.10.28` . 
 
 ## <a name="upgrade-all-nodes-in-all-node-pools"></a>Upgradovat všechny uzly ve všech fondech uzlů
 

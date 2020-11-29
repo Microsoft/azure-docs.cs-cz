@@ -1,16 +1,16 @@
 ---
-title: Co je nového v Azure Backup
+title: Co je nového ve službě Azure Backup
 description: Seznamte se s novými funkcemi v Azure Backup.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: e48a7df1e42591843c30b77026a4d8656773a57d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ba29ddea5d5f096640f2bfc012c44ab06bb3e131
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511505"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309660"
 ---
-# <a name="whats-new-in-azure-backup"></a>Co je nového v Azure Backup
+# <a name="whats-new-in-azure-backup"></a>Co je nového ve službě Azure Backup
 
 Azure Backup neustále vylepšuje a uvolňuje nové funkce, které zvyšují ochranu vašich dat v Azure. Tyto nové funkce rozšiřují ochranu dat na nové typy úloh, zvyšují zabezpečení a zlepšují dostupnost zálohovaných dat. Také přidávají nové možnosti správy, monitorování a automatizace.
 
@@ -19,6 +19,7 @@ Další informace o nových vydaných verzích najdete v tématu popisujícím t
 ## <a name="updates-summary"></a>Souhrn aktualizací
 
 - Listopad 2020
+  - [Šablona Azure Resource Manager pro zálohování ve službě Azure File Share (AFS)](#azure-resource-manager-template-for-afs-backup)
   - [Přírůstkové zálohování pro databáze SAP HANA na virtuálních počítačích Azure](#incremental-backups-for-sap-hana-databases)
 - Září 2020
   - [Centrum zálohování](#backup-center)
@@ -30,6 +31,12 @@ Další informace o nových vydaných verzích najdete v tématu popisujícím t
   - [Zálohování SAP HANA v RHEL Azure Virtual Machines](#backup-sap-hana-in-rhel-azure-virtual-machines)
   - [Redundantní úložiště zóny (ZRS) pro zálohovaná data](#zone-redundant-storage-zrs-for-backup-data)
   - [Obnovitelné odstranění pro úlohy SQL Server a SAP HANA na virtuálních počítačích Azure](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="azure-resource-manager-template-for-afs-backup"></a>Šablona Azure Resource Manager pro zálohování AFS
+
+Azure Backup teď podporuje konfiguraci zálohování pro existující sdílené složky Azure pomocí šablony Azure Resource Manager (ARM). Šablona konfiguruje ochranu pro existující sdílenou složku Azure tím, že určí příslušné podrobnosti pro Recovery Services trezor a zásady zálohování. Volitelně vytvoří nový trezor Recovery Services a zásadu zálohování a zaregistruje účet úložiště obsahující sdílenou složku do trezoru Recovery Services.
+
+Další informace najdete v tématu [šablony Azure Resource Manager pro Azure Backup](backup-rm-template-samples.md).
 
 ## <a name="incremental-backups-for-sap-hana-databases"></a>Přírůstkové zálohování pro databáze SAP HANA
 

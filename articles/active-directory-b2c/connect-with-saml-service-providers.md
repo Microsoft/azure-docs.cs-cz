@@ -12,12 +12,12 @@ ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4426a305d72fdd86ee58b3f4a05153593515d4b5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7c6ba79a82fe3d291008f3317ddce7df4adcda0a
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949645"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309643"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
 
@@ -41,7 +41,7 @@ Shrnutí dvou scénářů, které nejsou exkluzivní, pomocí SAML:
 | Moje aplikace očekává pro dokončení ověřování kontrolní výraz SAML. | **Azure AD B2C funguje jako zprostředkovatel identity (IdP).**<br />Azure AD B2C funguje jako IdP SAML pro aplikace. | Tento článek. |
 | Moji uživatelé potřebují jednotné přihlašování pomocí zprostředkovatele identity kompatibilního s SAML, jako je ADFS, Salesforce nebo Shibboleth.  | **Azure AD B2C funguje jako poskytovatel služeb (SP).**<br />Azure AD B2C slouží jako poskytovatel služeb při připojování k poskytovateli identity SAML. Jedná se o federační proxy mezi vaší aplikací a poskytovatelem identity SAML.  | <ul><li>[Nastavení přihlášení pomocí služby ADFS jako IdP SAML pomocí vlastních zásad](identity-provider-adfs2016-custom.md)</li><li>[Nastavení přihlašování pomocí poskytovatele služby Salesforce SAML pomocí vlastních zásad](identity-provider-salesforce-custom.md)</li></ul> |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Proveďte kroky v části Začínáme [s vlastními zásadami v Azure AD B2C](custom-policy-get-started.md). Vlastní zásady *SocialAndLocalAccounts* potřebujete od úvodní sady Custom Policy Pack popsané v článku.
 * Základní porozumění protokolu Security Assertion Markup Language (SAML).
@@ -453,7 +453,7 @@ Token SAML je token zabezpečení, který je vydaný Azure AD B2C po úspěšné
 |`<Response>` `<Assertion>` `<Subject>` `<NameID>`     |         |Objekt zabezpečení, o kterém token vyhodnotí informace, například ID objektu uživatele. Tato hodnota je neměnná a nelze ji znovu přiřadit ani použít znovu. Dá se použít k bezpečnému provádění kontrol autorizace, například když se token používá pro přístup k prostředku. Ve výchozím nastavení se deklarace identity subjektu naplní s ID objektu uživatele v adresáři.|
 |`<Response>` `<Assertion>` `<Subject>` `<NameID>`     | `Format` | Odkaz na identifikátor URI představující klasifikaci informací o identifikátoru založeném na řetězci. Ve výchozím nastavení je tato vlastnost vynechána. Nastavením [SubjectNamingInfo](relyingparty.md#subjectnaminginfo) předávající strany můžete určit `NameID` formát, například `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` . |
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |Čas, kdy bude token platný. Hodnota Time je kódována v UTC. Vaše aplikace by měla tuto deklaraci identity použít k ověření platnosti životnosti tokenu. Pokud chcete změnit nastavení pro životnosti tokenů, nastavte `TokenNotBeforeSkewInSeconds` [metadata](saml-issuer-technical-profile.md#metadata) technického profilu problému s tokenem SAML. |
-|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | Čas, kdy se token stal neplatným Vaše aplikace by měla tuto deklaraci identity použít k ověření platnosti životnosti tokenu. Hodnota je 15 minut po `NotBefore` a nelze ji změnit.|
+|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | Čas, kdy se token stal neplatným Vaše aplikace by měla tuto deklaraci identity použít k ověření platnosti životnosti tokenu. Výchozí hodnota je 5 minut po a je `NotBefore` možné ji aktualizovat přidáním `TokenLifeTimeInSeconds` [metadat](saml-issuer-technical-profile.md#metadata) technického profilu problému s tokenem SAML.|
 |`<Response>` `<Assertion>` `<Conditions>` `<AudienceRestriction>` `<Audience>` | |Odkaz na identifikátor URI, který identifikuje zamýšlenou cílovou skupinu. Identifikuje zamýšleného příjemce tokenu. Hodnota je shodná s požadavkem SAML `AssertionConsumerServiceURL` .|
 |`<Response>``<Assertion>` `<AttributeStatement>` kolekce`<Attribute>` | | Kolekce kontrolních výrazů (deklarace identity), jak je nakonfigurováno ve výstupních deklaracích [technického profilu předávající strany](relyingparty.md#technicalprofile) . Můžete nakonfigurovat název kontrolního výrazu nastavením `PartnerClaimType` výstupní deklarace identity. |
 

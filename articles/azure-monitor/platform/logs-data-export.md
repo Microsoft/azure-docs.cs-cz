@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: bd929d06bca370ffab53ce2023188bc12a1d8bd1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d2e93ccfaf3ff2c5b74ceef1f6a274f71ee52c4e
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186435"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309830"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Export dat pracovního prostoru Log Analytics v Azure Monitor (Preview)
 Export dat v pracovním prostoru Log Analytics v Azure Monitor umožňuje průběžně exportovat data z vybraných tabulek v pracovním prostoru Log Analytics do účtu služby Azure Storage nebo Event Hubs Azure jako shromážděná. Tento článek poskytuje podrobné informace o této funkci a postupu konfigurace exportu dat ve vašich pracovních prostorech.
@@ -118,6 +118,10 @@ Pokud jste nakonfigurovali účet úložiště tak, aby povoloval přístup z vy
 Pravidlo exportu dat definuje data, která se mají exportovat pro sadu tabulek do jednoho cíle. Můžete vytvořit pravidlo pro každý cíl.
 
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+–
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Pomocí následujícího příkazu rozhraní příkazového řádku můžete zobrazit tabulky v pracovním prostoru. Může vám to usnadnit kopírování tabulek, které chcete, a zahrnutí v pravidle exportu dat.
@@ -203,6 +207,10 @@ Následuje ukázkový text žádosti REST pro centrum událostí, kde je zadaný
 
 ## <a name="view-data-export-configuration"></a>Zobrazit konfiguraci exportu dat
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+–
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Pomocí následujícího příkazu můžete zobrazit konfiguraci pravidla exportu dat pomocí rozhraní příkazového řádku (CLI).
@@ -221,6 +229,10 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ---
 
 ## <a name="disable-an-export-rule"></a>Zakázat pravidlo exportu
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+–
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -256,6 +268,10 @@ Content-type: application/json
 
 ## <a name="delete-an-export-rule"></a>Odstraní pravidlo exportu.
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+–
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Pomocí následujícího příkazu odstraňte pravidlo exportu dat pomocí rozhraní příkazového řádku.
@@ -274,6 +290,10 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 ---
 
 ## <a name="view-all-data-export-rules-in-a-workspace"></a>Zobrazit všechna pravidla exportu dat v pracovním prostoru
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+–
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

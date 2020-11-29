@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/18/2020
-ms.openlocfilehash: ac785b3ad534e80d4dd240d1a29ba5f6aa75e10a
-ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
+ms.openlocfilehash: 6264ea50f128764a5213a7a1fd9b8c47ddae8961
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96299035"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309677"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Klíč spravovaný zákazníkem v Azure Monitoru 
 
@@ -76,7 +76,23 @@ Konfigurace Customer-Managed klíčů není podporovaná v Azure Portal a zřizo
 
 ### <a name="asynchronous-operations-and-status-check"></a>Asynchronní operace a kontroly stavu
 
-Některé kroky konfigurace běží asynchronně, protože je nepůjde rychle dokončit. Při použití REST odpověď zpočátku po přijetí vrátí stavový kód HTTP 200 (OK) a záhlaví s vlastností *Azure-AsyncOperation* :
+Některé kroky konfigurace běží asynchronně, protože je nepůjde rychle dokončit. `status`V odpovědi může být jedna z následujících: ' InProgress ', ' aktualizace ', ' odstranění ', ' úspěch nebo ' neúspěch ' včetně kódu chyby.
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+–
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+–
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+–
+
+# <a name="rest"></a>[REST](#tab/rest)
+
+Při použití REST odpověď zpočátku po přijetí vrátí stavový kód HTTP 200 (OK) a záhlaví s vlastností *Azure-AsyncOperation* :
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
@@ -87,7 +103,7 @@ GET https://management.azure.com/subscriptions/subscription-id/providers/microso
 Authorization: Bearer <token>
 ```
 
-`status`V odpovědi může být jedna z následujících: ' InProgress ', ' aktualizace ', ' odstranění ', ' úspěch nebo ' neúspěch ' včetně kódu chyby.
+---
 
 ### <a name="allowing-subscription"></a>Povoluje se předplatné
 
@@ -137,16 +153,25 @@ Aktualizuje KeyVaultProperties v clusteru s podrobnostmi identifikátoru klíče
 
 Operace je asynchronní a její dokončení může chvíli trvat.
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+–
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
 az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --key-name "key-name" --key-vault-uri "key-uri" --key-version "key-version"
 ```
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -KeyVaultUri "key-uri" -KeyName "key-name" -KeyVersion "key-version"
 ```
 
+# <a name="rest"></a>[REST](#tab/rest)
+
 ```rst
-PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name"?api-version=2020-08-01
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name?api-version=2020-08-01
 Authorization: Bearer <token> 
 Content-type: application/json
  
@@ -200,6 +225,8 @@ Odpověď na požadavek GET by měla vypadat takto jako při dokončení aktuali
 }
 ```
 
+---
+
 ### <a name="link-workspace-to-cluster"></a>Propojit pracovní prostor s clusterem
 
 K provedení této operace musíte mít oprávnění Write pro váš pracovní prostor i cluster, což zahrnuje tyto akce:
@@ -250,15 +277,25 @@ Když přenesete vlastní úložiště (BYOS) a propojíte ho s vaším pracovn�
 
 Propojení účtu úložiště pro *dotaz* k vašemu pracovnímu prostoru – dotazy *uložené při hledání* se ukládají do svého účtu úložiště. 
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+–
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
 $storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
 az monitor log-analytics workspace linked-storage create --type Query --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Query -StorageAccountIds $storageAccount.Id
 ```
+
+# <a name="rest"></a>[REST](#tab/rest)
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Query?api-version=2020-08-01
@@ -276,21 +313,33 @@ Content-type: application/json
 }
 ```
 
+---
+
 Po dokončení konfigurace budou všechny nové *uložené vyhledávací* dotazy uloženy v úložišti.
 
 **Konfigurace BYOS pro dotazy log-Alerts**
 
 Propojení účtu úložiště s *upozorněními* k vašemu pracovnímu prostoru – dotazy *protokolu výstrahy* se ukládají do svého účtu úložiště. 
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+–
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
 $storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
 az monitor log-analytics workspace linked-storage create --type ALerts --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Alerts -StorageAccountIds $storageAccount.Id
 ```
+
+# <a name="rest"></a>[REST](#tab/rest)
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Alerts?api-version=2020-08-01
@@ -308,9 +357,12 @@ Content-type: application/json
 }
 ```
 
+---
+
 Po dokončení konfigurace se všechny nové dotazy na upozornění uloží do úložiště.
 
 ## <a name="customer-lockbox-preview"></a>Customer Lockbox (Preview)
+
 Bezpečnostní modul poskytuje kontrolu na schválení nebo odmítnutí žádosti Microsoft inženýra o přístup k vašim datům během žádosti o podporu.
 
 V Azure Monitor máte tento ovládací prvek pro data v pracovních prostorech propojených s vaším Log Analytics vyhrazeným clusterem. Ovládací prvek bezpečnostní modul se vztahuje na data uložená ve Log Analytics vyhrazeném clusteru, kde se udržuje izolovaně v účtech úložiště clusteru v rámci předplatného chráněného bezpečnostním modulem.  
@@ -321,13 +373,23 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
 
 - **Získání všech clusterů ve skupině prostředků**
   
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  –
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
   ```azurecli
   az monitor log-analytics cluster list --resource-group "resource-group-name"
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name"
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
@@ -369,15 +431,27 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
   }
   ```
 
+  ---
+
 - **Získání všech clusterů v předplatném**
+
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  –
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
   ```azurecli
   az monitor log-analytics cluster list
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Get-AzOperationalInsightsCluster
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
@@ -388,17 +462,29 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
     
   Stejná odpověď jako u ' cluster ve skupině prostředků ', ale v oboru předplatného.
 
+  ---
+
 - **Aktualizovat *rezervaci kapacity* v clusteru**
 
   Když se datový svazek do propojených pracovních prostorů změní v čase a chcete patřičně aktualizovat úroveň rezervace kapacity. Postupujte podle [aktualizovaného clusteru](#update-cluster-with-key-identifier-details) a zadejte novou hodnotu kapacity. Může být v rozsahu 1000 až 3000 GB za den a v krocích po 100. Pro zajištění vyšší úrovně než 3000 GB za den kontaktujte kontakt Microsoftu, abyste ho povolili. Všimněte si, že nemusíte zadávat úplný text žádosti REST, ale měla by obsahovat SKU:
+
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  –
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
   ```azurecli
   az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --sku-capacity daily-ingestion-gigabyte
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity daily-ingestion-gigabyte
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
@@ -413,6 +499,8 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
   }
   ```
 
+  ---
+
 - **Aktualizace *billingType* v clusteru**
 
   Vlastnost *billingType* Určuje přidělení fakturace pro cluster a jeho data:
@@ -420,6 +508,20 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
   - *pracovní prostory* – fakturace je úměrná předplatným hostujícím vaše pracovní prostory.
   
   Postupujte podle [aktualizovaného clusteru](#update-cluster-with-key-identifier-details) a zadejte novou hodnotu billingType. Všimněte si, že nemusíte zadávat úplný text žádosti REST a měla by obsahovat *billingType*:
+
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  –
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+  –
+
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+  –
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
@@ -433,36 +535,67 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
   }
   ``` 
 
+  ---
+
 - **Zrušení propojení s pracovním prostorem**
 
   K provedení této operace potřebujete oprávnění Write pro tento pracovní prostor a cluster. Pracovní prostor z clusteru můžete kdykoli zrušit. Nová ingestovaná data po operaci zrušení propojení se uloží do Log Analytics úložiště a šifrují pomocí klíče Microsoft Key. Můžete zadat dotaz na data, která byla ingestovaná do vašeho pracovního prostoru před a po bezproblémovém propojení, pokud je cluster zřízený a nakonfigurovaný pomocí platného Key Vaultho klíče.
 
   Tato operace je asynchronní a její dokončení může chvíli trvat.
 
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  –
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
   ```azurecli
   az monitor log-analytics workspace linked-service delete --resource-group "resource-group-name" --name "cluster-name" --workspace-name "workspace-name"
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Remove-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" -Name "workspace-name" -LinkedServiceName cluster
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rest
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-08-01
   Authorization: Bearer <token>
   ```
 
+  ---
+
   - **Ověřit stav odkazu na pracovní prostor**
   
   V pracovním prostoru proveďte operaci get a sledujte, zda je v odpovědi v části *funkce* přítomna vlastnost *clusterResourceId* . Propojený pracovní prostor bude mít vlastnost *clusterResourceId* .
+
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  –
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
   ```azurecli
   az monitor log-analytics cluster show --resource-group "resource-group-name" --name "cluster-name"
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Get-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
+
+   ```rest
+  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>?api-version=2020-08-01
+  Authorization: Bearer <token>
+  ```
+
+  ---
 
 - **Odstranění clusteru**
 
@@ -470,18 +603,30 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
   
   Operace zrušení propojení je asynchronní a dokončení může trvat až 90 minut.
 
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  –
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
   ```azurecli
   az monitor log-analytics cluster delete --resource-group "resource-group-name" --name "cluster-name"
   ```
- 
+
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
   Authorization: Bearer <token>
   ```
+
+  ---
   
 - **Obnovení clusteru a vašich dat** 
   
