@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 870a55e5bc2701df5c03e142522e8490612b2917
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 03abe4e4e098d46060e33ba114872905e54a443f
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506052"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317057"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>Diagnostika potíží s konfigurací služeb Private Link ve službě Azure Key Vault
 
@@ -180,8 +180,15 @@ Windows:
 C:\> nslookup fabrikam.vault.azure.net
 ```
 
-Neautoritativní odpověď: adresa: 52.168.109.101 aliasy: fabrikam.vault.azure.net fabrikam.privatelink.vaultcore.azure.net data-prod-eus.vaultcore.azure.net data-prod-eus-region.vaultcore.azure.net
+```output
+Non-authoritative answer:
+Address:  52.168.109.101
+Aliases:  fabrikam.vault.azure.net
+          fabrikam.privatelink.vaultcore.azure.net
+          data-prod-eus.vaultcore.azure.net
+          data-prod-eus-region.vaultcore.azure.net
 ```
+
 Linux:
 
 ```console
@@ -295,7 +302,7 @@ Jak vidíte, překlad názvů je pod vaším ovládacím prvkem. Pro tento návr
 
 ### <a name="query-the-healthstatus-endpoint-of-the-key-vault"></a>Dotazování `/healthstatus` koncového bodu trezoru klíčů
 
-Váš Trezor klíčů poskytuje `/healthstatus` koncový bod, který se dá použít pro diagnostiku. Hlavičky odpovědi obsahují IP adresu původu, jak je vidět služba trezoru klíčů. Tento koncový bod můžete zavolat pomocí následujícího příkazu ( **nezapomeňte použít název hostitele trezoru klíčů** ):
+Váš Trezor klíčů poskytuje `/healthstatus` koncový bod, který se dá použít pro diagnostiku. Hlavičky odpovědi obsahují IP adresu původu, jak je vidět služba trezoru klíčů. Tento koncový bod můžete zavolat pomocí následujícího příkazu (**nezapomeňte použít název hostitele trezoru klíčů**):
 
 Windows (PowerShell):
 

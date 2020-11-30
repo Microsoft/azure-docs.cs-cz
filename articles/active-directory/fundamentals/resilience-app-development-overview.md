@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: c2c2f9d0ad7bfa50f543b57326b9fc8dab0069c6
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: d06e851390537bf94b59e656f84bf58fe7216410
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029298"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317348"
 ---
 # <a name="increase-resilience-of-authentication-and-authorization-applications-you-develop"></a>Zvýšení odolnosti aplikací pro ověřování a autorizaci, které vyvíjíte
 
@@ -29,4 +29,4 @@ Tyto články poskytují pokyny ke zvýšení odolnosti v aplikacích pomocí pl
 - [Zajištění odolnosti proti chybám při sestavování aplikací přihlašování uživatelů](resilience-client-app.md)
 - [Zajištění odolnosti proti sestavování aplikací bez uživatelů](resilience-daemon-app.md)
 - [Odolnost sestavení v infrastruktuře pro správu identit a přístupu](resilience-in-infrastructure.md)
-- [Zajištění odolnosti při správě identit a přístupu zákazníků pomocí Azure Active Directory B2C](resilience-b2c.md)
+- [Odolnost sestavení v systémech CIAM](resilience-b2c.md)

@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: 69967035f98d7ec2fcedff173dcf481455014ac2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9189d4d8cda5f9fcfce7e6ac2097414aa29f0a68
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919659"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317465"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>Zvýšení odolnosti při ověřování a autorizaci v klientských aplikacích, které vyvíjíte
 
@@ -157,4 +157,4 @@ Pokud vyvíjíte rozhraní API prostředků, doporučujeme, abyste se účastnil
 - [Jak používat rozhraní API s povoleným vyhodnocováním průběžného přístupu ve vašich aplikacích](../develop/app-resilience-continuous-access-evaluation.md)
 - [Zajištění odolnosti proti sestavení v aplikacích démona](resilience-daemon-app.md)
 - [Odolnost sestavení v infrastruktuře pro správu identit a přístupu](resilience-in-infrastructure.md)
-- [Zajištění odolnosti při správě identit a přístupu zákazníků pomocí Azure Active Directory B2C](resilience-b2c.md)
+- [Odolnost sestavení v systémech CIAM](resilience-b2c.md)

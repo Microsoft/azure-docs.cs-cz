@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 3f9779d2676d4d2b67efff37118d109664b84bd5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8633aba2f7cda5dec4a48e9f7132283f8235f746
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184599"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317516"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Použití Azure Private Linku k bezpečnému propojení sítí k Azure Monitoru
 
@@ -79,10 +79,10 @@ Při plánování nastavení privátního propojení byste měli zvážit někol
 * Objekt AMPLS se může připojit k 10 soukromým koncovým bodům.
 
 V následující topologii:
-* Každá virtuální síť se připojuje k AMPLS objektu, takže se nemůže připojit k ostatním AMPLSs.
-* AMPLS B se připojuje k 2 virtuální sítě: pomocí 2/10 z jeho možných připojení typu privátní koncový bod.
-* AMPLS se připojí k 2 pracovním prostorům a 1 komponentě Insight Application Insights: pomocí Azure Monitor 3/50 dostupných prostředků.
-* Pracovní prostor 2 se připojuje k AMPLS a a AMPLS B: pomocí 2/5 z jeho možných připojení AMPLS.
+* Každá virtuální síť se připojuje pouze k **1** AMPLS objektu.
+* AMPLS B je připojen k soukromým koncovým bodům dvou virtuální sítě (VNet2 a síti vnet3), a to pomocí 2/10 (20%). z jeho možných privátních připojení koncových bodů.
+* AMPLS připojení ke dvěma pracovním prostorům a jedné součásti Application Insights pomocí 3/50 (6%) z možných Azure Monitorch připojení prostředků.
+* Workspace2 se připojuje k AMPLS a a AMPLS B pomocí 2/5 (40%) z možných připojení AMPLS.
 
 ![Diagram omezení AMPLS](./media/private-link-security/ampls-limits.png)
 
@@ -103,9 +103,9 @@ Začněte vytvořením prostředku oboru privátního propojení Azure Monitor.
 
 6. Potvrďte ověření a pak klikněte na **vytvořit**.
 
-## <a name="connect-azure-monitor-resources"></a>Připojit Azure Monitor prostředky
+### <a name="connect-azure-monitor-resources"></a>Připojit Azure Monitor prostředky
 
-AMPLS se můžete připojit jako první k soukromým koncovým bodům a potom k Azure Monitor prostředkům nebo naopak, ale proces připojení pokračuje rychleji, pokud začnete s prostředky Azure Monitor. Tady je postup připojení Azure Monitor Log Analytics pracovní prostory a Application Insights komponenty k AMPLS
+Připojte Azure Monitor prostředky (pracovní prostory Log Analytics a Application Insights komponenty) k vašemu AMPLS.
 
 1. V Azure Monitor oboru privátního propojení klikněte na **Azure monitor prostředky** v nabídce vlevo. Klikněte na tlačítko **Přidat** .
 2. Přidejte pracovní prostor nebo komponentu. Kliknutím na tlačítko **Přidat** zobrazíte dialogové okno, kde můžete vybrat Azure monitor prostředky. Můžete procházet předplatná a skupiny prostředků, nebo můžete zadat jejich jméno, abyste je mohli vyfiltrovat. Vyberte pracovní prostor nebo komponentu a kliknutím na tlačítko **použít** je přidejte do svého oboru.
@@ -158,16 +158,19 @@ Nyní jste vytvořili nový privátní koncový bod, který je připojen k tomut
 
 ## <a name="configure-log-analytics"></a>Konfigurace služby Log Analytics
 
-Přejděte na Azure Portal. V Log Analytics prostředku pracovního prostoru je na levé straně položka nabídky **izolace sítě** . Z této nabídky můžete řídit dva různé stavy. 
+Přejděte na Azure Portal. V Log Analytics prostředku pracovního prostoru je na levé straně položka nabídky **izolace sítě** . Z této nabídky můžete řídit dva různé stavy.
 
 ![Izolace sítě LA](./media/private-link-security/ampls-log-analytics-lan-network-isolation-6.png)
 
-Nejprve můžete připojit tento prostředek Log Analytics k jakýmkoli Azure Monitorm oborům privátního propojení, ke kterým máte přístup. Klikněte na tlačítko **Přidat** a vyberte Azure monitor obor privátních odkazů.  Kliknutím na **použít** ho připojte. Na této obrazovce se zobrazí všechny připojené obory. Když se toto připojení připojuje k tomuto pracovnímu prostoru, umožní síťovému provozu v připojených virtuálních sítích. Vytvoření připojení má stejný účinek jako připojení z oboru, jako jsme provedli [připojení Azure Monitorch prostředků](#connect-azure-monitor-resources).  
+### <a name="connected-azure-monitor-private-link-scopes"></a>Připojené Azure Monitor obory privátního propojení
+Na této obrazovce se zobrazí všechny rozsahy připojené k tomuto pracovnímu prostoru. Připojení k oborům (AMPLSs) umožňuje přístup k tomuto pracovnímu prostoru ze sítě z virtuální sítě připojené ke každému AMPLS. Vytvoření připojení prostřednictvím tohoto umístění má stejný účinek jako nastavení v oboru, stejně jako v souvislosti s [připojením Azure Monitorch prostředků](#connect-azure-monitor-resources). Chcete-li přidat nové připojení, klikněte na tlačítko **Přidat** a vyberte Azure monitor obor privátních odkazů. Kliknutím na **použít** ho připojte. Všimněte si, že se pracovní prostor může připojit k 5 AMPLS objektům, jak je vysvětleno v tématu [zvážení omezení](#consider-limits). 
 
-Za druhé můžete řídit, jak se tento prostředek dá oslovit mimo rozsahy privátních odkazů uvedených výše. Pokud nastavíte možnost **povolí přístup k veřejné síti pro** ingestování na **ne**, počítače mimo připojené obory nemůžou do tohoto pracovního prostoru nahrávat data. Pokud nastavíte možnost **povolí přístup k veřejné síti pro dotazy** na **ne**, počítače mimo rozsah nebudou mít přístup k datům v tomto pracovním prostoru. Tato data zahrnují přístup k sešitům, řídicím panelům, klientským prostředím založeném na rozhraní API pro dotazy, přehledům v Azure Portal a dalším. Prostředí spuštěné mimo Azure Portal a dotaz Log Analytics data musí být spuštěná také v rámci virtuální sítě s privátním propojením.
+### <a name="access-from-outside-of-private-links-scopes"></a>Přístup mimo rozsahy privátních odkazů
+Nastavení v dolní části této stránky řídí přístup z veřejných sítí, což znamená sítě nepřipojené přes výše uvedené obory. Pokud nastavíte možnost **povolí přístup k veřejné síti pro** ingestování na **ne**, počítače mimo připojené obory nemůžou do tohoto pracovního prostoru nahrávat data. Pokud nastavíte možnost **umožnit přístup k veřejné síti pro dotazy** na **ne**, počítače mimo rozsah nebudou mít přístup k datům v tomto pracovním prostoru, což znamená, že nebude moct dotazovat data pracovního prostoru. To zahrnuje dotazy v sešitech, řídicích panelech, prostředí klienta založené na rozhraní API, přehledy Azure Portal a další. Prostředí spuštěné mimo Azure Portal a dotaz Log Analytics data musí být spuštěná také v rámci virtuální sítě s privátním propojením.
 
-Omezení přístupu tímto způsobem se nevztahuje na Azure Resource Manager a má proto tato omezení:
-* Přístup k datům – při blokování dotazů z veřejných sítí se používá pro většinu Log Analyticsch prostředí, některá prostředí dotazují data prostřednictvím Azure Resource Manager a proto se nebudou moci dotazovat na data, pokud se pro Správce prostředků nepoužijí nastavení privátního propojení (funkce už brzy). Patří mezi ně například Azure Monitor řešení, sešity a přehledy a konektor LogicApp.
+### <a name="exceptions"></a>Výjimky
+Omezení přístupu, jak je vysvětleno výše, se nevztahuje na Azure Resource Manager a má proto tato omezení:
+* Přístup k datům – při blokování nebo povolování dotazů z veřejných sítí se používá pro většinu Log Analyticsch prostředí, některá prostředí dotazují data prostřednictvím Azure Resource Manager a proto se nebudou moci dotazovat na data, pokud se u Správce prostředků nepoužijí nastavení privátního propojení (funkce už brzy). Patří mezi ně například Azure Monitor řešení, sešity a přehledy a konektor LogicApp.
 * Správa pracovního prostoru – změny nastavení pracovního prostoru a konfigurace (včetně zapnutí nebo vypnutí těchto nastavení přístupu) se spravují pomocí Azure Resource Manager. Omezte přístup ke správě pracovních prostorů pomocí příslušných rolí, oprávnění, síťových ovládacích prvků a auditování. Další informace najdete v tématu [Azure monitor role, oprávnění a zabezpečení](roles-permissions-security.md).
 
 > [!NOTE]

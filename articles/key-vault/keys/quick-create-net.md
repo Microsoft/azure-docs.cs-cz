@@ -1,31 +1,31 @@
 ---
-title: Rychlý Start – Azure Key Vault klientské knihovny pro certifikáty pro .NET (verze 4)
-description: Naučte se vytvářet, načítat a odstraňovat certifikáty z trezoru klíčů Azure pomocí klientské knihovny .NET (verze 4).
+title: Rychlý Start – Azure Key Vault klientských knihoven pro .NET (verze 4)
+description: Naučte se vytvářet, načítat a odstraňovat klíče z trezoru klíčů Azure pomocí klientské knihovny .NET (verze 4).
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 09/23/2020
 ms.service: key-vault
-ms.subservice: certificates
+ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 49f244ea8e602f3b5e6499b8e14db2be15bfc8f7
+ms.openlocfilehash: 658fa81c972846292b1bf608110fc95ffe1a730d
 ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317073"
+ms.locfileid: "96318453"
 ---
-# <a name="quickstart-azure-key-vault-certificate-client-library-for-net-sdk-v4"></a>Rychlý Start: Azure Key Vault klientské knihovny certifikátů pro .NET (SDK v4)
+# <a name="quickstart-azure-key-vault-key-client-library-for-net-sdk-v4"></a>Rychlý Start: Azure Key Vault klíč klientské knihovny pro .NET (SDK v4)
 
-Začněte s klientskou knihovnou certifikátů Azure Key Vault pro .NET. [Azure Key Vault](../general/overview.md) je cloudová služba, která poskytuje zabezpečené úložiště pro certifikáty. Můžete bezpečně ukládat klíče, hesla, certifikáty a další tajné klíče. Trezory klíčů Azure můžete vytvářet a spravovat přes web Azure Portal. V tomto rychlém startu se dozvíte, jak vytvářet, načítat a odstraňovat certifikáty z trezoru klíčů Azure pomocí klientské knihovny .NET.
+Začněte s knihovnou klienta Azure Key Vault Key pro .NET. [Azure Key Vault](../general/overview.md) je cloudová služba, která poskytuje zabezpečené úložiště pro kryptografické klíče. Můžete bezpečně ukládat kryptografické klíče, hesla, certifikáty a další tajné klíče. Trezory klíčů Azure můžete vytvářet a spravovat přes web Azure Portal. V tomto rychlém startu se naučíte vytvářet, načítat a odstraňovat klíče z trezoru klíčů Azure pomocí klientské knihovny .NET Key.
 
-Prostředky klientské knihovny Key Vault:
+Prostředky klientské knihovny Key Vault klíčů:
 
-[Referenční dokumentace k](/dotnet/api/azure.security.keyvault.certificates)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Certificates/)
+[Referenční dokumentace k](/dotnet/api/azure.security.keyvault.keys)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.keys/)
 
-Další informace o Key Vault a certifikátech najdete v tématech:
+Další informace o Key Vault a klíčích najdete v tématech:
 - [Přehled Key Vault](../general/overview.md)
-- [Přehled certifikátů](about-certificates.md).
+- [Přehled klíčů](about-keys.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -79,10 +79,10 @@ Tento rychlý Start používá Azure identity Library s Azure CLI k ověřován�
 
 ### <a name="install-the-packages"></a>Nainstalovat balíčky
 
-Z příkazového prostředí nainstalujte Azure Key Vault klientskou knihovnu certifikátů pro .NET:
+Z příkazového prostředí nainstalujte klientskou knihovnu Azure Key Vault Key pro .NET:
 
 ```dotnetcli
-dotnet add package Azure.Security.KeyVault.Certificates
+dotnet add package Azure.Security.KeyVault.Keys
 ```
 
 Pro tento rychlý Start budete taky muset nainstalovat klientskou knihovnu Azure SDK pro identitu Azure:
@@ -93,10 +93,10 @@ dotnet add package Azure.Identity
 
 #### <a name="grant-access-to-your-key-vault"></a>Udělení přístupu k trezoru klíčů
 
-Vytvořte zásady přístupu pro váš Trezor klíčů, který uděluje oprávnění certifikátu vašemu uživatelskému účtu.
+Vytvořte zásady přístupu pro váš Trezor klíčů, který uděluje klíč oprávnění k vašemu uživatelskému účtu.
 
 ```console
-az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --certificate-permissions delete get list create purge
+az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --key-permissions delete get list create purge
 ```
 
 #### <a name="set-environment-variables"></a>Nastavení proměnných prostředí
@@ -119,7 +119,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 ## <a name="object-model"></a>Objektový model
 
-Klientská knihovna certifikátů Azure Key Vault pro .NET umožňuje správu certifikátů. V části [Příklady kódu](#code-examples) se dozvíte, jak vytvořit klienta, nastavit certifikát, načíst certifikát a odstranit certifikát.
+Klíčová knihovna klienta Azure Key Vault pro .NET umožňuje správu klíčů. V části [Příklady kódu](#code-examples) se dozvíte, jak vytvořit klienta, nastavit klíč, načíst klíč a odstranit klíč.
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -130,7 +130,7 @@ Do horní části *program.cs* přidejte následující direktivy:
 ```csharp
 using System;
 using Azure.Identity;
-using Azure.Security.KeyVault.Certificates;
+using Azure.Security.KeyVault.Keys;
 ```
 
 ### <a name="authenticate-and-create-a-client"></a>Ověření a vytvoření klienta
@@ -140,44 +140,43 @@ V tomto rychlém startu se přihlášený uživatel používá k ověření v tr
 V níže uvedeném příkladu je název trezoru klíčů rozbalený do identifikátoru URI trezoru klíčů ve formátu "https:// \<your-key-vault-name\> . Vault.Azure.NET". Tento příklad používá třídu  [' DefaultAzureCredential () '](/dotnet/api/azure.identity.defaultazurecredential) , která umožňuje použít stejný kód v různých prostředích s různými možnostmi k poskytnutí identity. Další informace o ověřování do trezoru klíčů najdete v tématu [Příručka pro vývojáře](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code).
 
 ```csharp
-string keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
+var keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
 var kvUri = "https://" + keyVaultName + ".vault.azure.net";
 
-var client = new CertificateClient(new Uri(kvUri), new DefaultAzureCredential());
+var client = new KeyClient(new Uri(kvUri), new DefaultAzureCredential());
 ```
 
-### <a name="save-a-certificate"></a>Uložení certifikátu
+### <a name="save-a-key"></a>Uložení klíče
 
-V tomto příkladu můžete pro jednoduchost použít certifikát podepsaný svým držitelem s výchozími zásadami vystavování. Pro tuto úlohu použijte metodu [StartCreateCertificateAsync](/dotnet/api/azure.security.keyvault.certificates.certificateclient.startcreatecertificateasync) . Parametry metody akceptují název certifikátu a [zásady certifikátu](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.certificates.certificatepolicy).
+Pro tuto úlohu použijte metodu [CreateKeyAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.createkeyasync) . Parametry metody akceptují název klíče a [typ klíče](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.keys.keytype).
 
 ```csharp
-var operation = await client.StartCreateCertificateAsync("myCertificate", CertificatePolicy.Default);
-var certificate = await operation.WaitForCompletionAsync();
+var key = await client.CreateKeyAsync("myKey", KeyType.Rsa);
 ```
 
 > [!NOTE]
-> Pokud název certifikátu existuje, vytvoří se nad kódem nová verze tohoto certifikátu.
+> Pokud existuje klíč s názvem, bude výše uvedený kód vytvářet novou verzi tohoto klíče.
 
-### <a name="retrieve-a-certificate"></a>Načtení certifikátu
+### <a name="retrieve-a-key"></a>Načtení klíče
 
-Nyní můžete načíst dříve vytvořený certifikát pomocí metody [GetCertificateAsync](/dotnet/api/azure.security.keyvault.certificates.certificateclient.getcertificateasync) .
+Nyní můžete načíst dříve vytvořený klíč pomocí metody [GetKeyAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.getkeyasync) .
 
 ```csharp
-var certificate = await client.GetCertificateAsync("myCertificate");
+var key = await client.GetKeyAsync("myKey");
 ```
 
-### <a name="delete-a-certificate"></a>Odstranit certifikát
+### <a name="delete-a-key"></a>Odstranění klíče
 
-Nakonec smažte a vyprázdnit certifikát z trezoru klíčů pomocí metod [StartDeleteCertificateAsync](/dotnet/api/azure.security.keyvault.certificates.certificateclient.startdeletecertificateasync) a [PurgeDeletedCertificateAsync](/dotnet/api/azure.security.keyvault.certificates.certificateclient.purgedeletedcertificateasync)  .
+Nakonec tento klíč odstraníme a vymažeme z vašeho trezoru klíčů pomocí metod [StartDeleteKeyAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.startdeletekeyasync) a [PurgeDeletedKeyAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.purgedeletedkeyasync) .
 
 ```csharp
-var operation = await client.StartDeleteCertificateAsync("myCertificate");
+var operation = await client.StartDeleteKeyAsync("myKey");
 
-// You only need to wait for completion if you want to purge or recover the certificate.
+// You only need to wait for completion if you want to purge or recover the key.
 await operation.WaitForCompletionAsync();
 
-var certificate = operation.Value;
-await client.PurgeDeletedCertificateAsync("myCertificate");
+var key = operation.Value;
+await client.PurgeDeletedKeyAsync("myKey");
 ```
 
 ## <a name="sample-code"></a>Ukázka kódu
@@ -190,7 +189,7 @@ Upravte konzolovou aplikaci .NET Core tak, aby spolupracovala s Key Vault, a to 
     using System;
     using System.Threading.Tasks;
     using Azure.Identity;
-    using Azure.Security.KeyVault.Certificates;
+    using Azure.Security.KeyVault.Keys;
     
     namespace key_vault_console_app
     {
@@ -198,29 +197,28 @@ Upravte konzolovou aplikaci .NET Core tak, aby spolupracovala s Key Vault, a to 
         {
             static async Task Main(string[] args)
             {
-                const string certificateName = "myCertificate";
+                const string keyName = "myKey";
                 var keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
                 var kvUri = $"https://{keyVaultName}.vault.azure.net";
     
-                var client = new CertificateClient(new Uri(kvUri), new DefaultAzureCredential());
+                var client = new KeyClient(new Uri(kvUri), new DefaultAzureCredential());
     
-                Console.Write($"Creating a certificate in {keyVaultName} called '{certificateName}' ...");
-                CertificateOperation operation = await client.StartCreateCertificateAsync(certificateName, CertificatePolicy.Default);
-                await operation.WaitForCompletionAsync();
-                Console.WriteLine(" done.");
+                Console.Write($"Creating a key in {keyVaultName} called '{keyName}' ...");
+                var createdKey = await client.CreateKeyAsync(keyName, KeyType.Rsa);
+                Console.WriteLine("done.");
     
-                Console.WriteLine($"Retrieving your certificate from {keyVaultName}.");
-                var certificate = await client.GetCertificateAsync(certificateName);
-                Console.WriteLine($"Your certificate version is '{certificate.Value.Properties.Version}'.");
+                Console.WriteLine($"Retrieving your key from {keyVaultName}.");
+                var key = await client.GetKeyAsync(keyName);
+                Console.WriteLine($"Your key version is '{key.Value.Properties.Version}'.");
     
-                Console.Write($"Deleting your certificate from {keyVaultName} ...");
-                DeleteCertificateOperation deleteOperation = await client.StartDeleteCertificateAsync(certificateName);
-                // You only need to wait for completion if you want to purge or recover the certificate.
+                Console.Write($"Deleting your key from {keyVaultName} ...");
+                var deleteOperation = await client.StartDeleteKeyAsync(keyName);
+                // You only need to wait for completion if you want to purge or recover the key.
                 await deleteOperation.WaitForCompletionAsync();
-                Console.WriteLine(" done.");
+                Console.WriteLine("done.");
 
-                Console.Write($"Purging your certificate from {keyVaultName} ...");
-                await client.PurgeDeletedCertificateAsync(certificateName);
+                Console.Write($"Purging your key from {keyVaultName} ...");
+                await client.PurgeDeletedKeyAsync(keyName);
                 Console.WriteLine(" done.");
             }
         }
@@ -245,10 +243,10 @@ Upravte konzolovou aplikaci .NET Core tak, aby spolupracovala s Key Vault, a to 
     Zobrazí se varianta následujícího výstupu:
 
     ```console
-    Creating a certificate in mykeyvault called 'myCertificate' ... done.
-    Retrieving your certificate from mykeyvault.
-    Your certificate version is '8532359bced24e4bb2525f2d2050738a'.
-    Deleting your certificate from jl-kv ... done
+    Creating a key in mykeyvault called 'myKey' ... done.
+    Retrieving your key from mykeyvault.
+    Your key version is '8532359bced24e4bb2525f2d2050738a'.
+    Deleting your key from jl-kv ... done
     ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -287,12 +285,12 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili Trezor klíčů, uložili certifikát a načetli jste tento certifikát. 
+V tomto rychlém startu jste vytvořili Trezor klíčů, uložili klíč a načetli jste tento klíč. 
 
 Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete v následujících článcích:
 
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md)
-- Přečtěte si [Přehled certifikátů](about-certificates.md) .
+- Přečtěte si [Přehled klíčů](about-keys.md) .
 - Přečtěte si [kurz Key Vault přístupu z App Service aplikace](../general/tutorial-net-create-vault-azure-web-app.md) .
 - Podívejte se na [kurz Key Vault přístupu z virtuálního počítače](../general/tutorial-net-virtual-machine.md) .
 - Další informace najdete v [příručce pro vývojáře Azure Key Vault](../general/developers-guide.md) .

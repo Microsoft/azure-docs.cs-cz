@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 7b77a47acba6180df4a067887b79d8cdc0f56df6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5dbd49312b58dc656e2239e8a0a4acea614023de
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185075"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317123"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Průběžná integrace a doručování pro Azure synapse Workspace
 
@@ -25,7 +25,7 @@ Pro pracovní prostor Azure synapse můžete průběžnou integraci a doručová
 
 V tomto článku se dozvíte, jak pomocí kanálu pro vydávání Azure automatizovat nasazení pracovního prostoru synapse do více prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 -   Pracovní prostor použitý pro vývoj byl nakonfigurován s úložištěm Git v nástroji Studio, viz [Správa zdrojového kódu v synapse studiu](source-control.md).
 -   Projekt Azure DevOps se připravil pro běh kanálu vydávání verzí.
@@ -91,15 +91,25 @@ Přidejte úlohu nasazení Azure Resource Manager pro vytvoření nebo aktualiza
 
 ## <a name="set-up-a-stage-task-for-artifacts-deployment"></a>Nastavení úlohy fáze pro nasazení artefaktů 
 
-K nasazení dalších položek v pracovním prostoru synapse použijte úlohu [vytváření & pracovních prostorů synapse](https://marketplace.visualstudio.com/items?itemName=PraveenMathamsetty.synapsecicd-deploy) , jako je datová sada, skript SQL, Poznámkový blok, definice úlohy Spark, tok Dataflow, kanál, propojená služba, přihlašovací údaje a infračervená verze (Integration Runtime).  
+Pomocí rozšíření [nasazení pracovního prostoru synapse](https://marketplace.visualstudio.com/items?itemName=AzureSynapseWorkspace.synapsecicd-deploy) nasaďte další položky v pracovním prostoru synapse, jako je datová sada, skript SQL, Poznámkový blok, definice úlohy Spark, tok Dataflow, kanál, propojená služba, přihlašovací údaje a IR (Integration Runtime).  
+
+1. Vyhledejte a získejte rozšíření z **Azure DevOps Marketplace**(https://marketplace.visualstudio.com/azuredevops) 
+
+     ![Získat rozšíření](media/get-extension-from-market.png)
+
+1. Vyberte organizaci pro instalaci rozšíření. 
+
+     ![Instalace rozšíření](media/install-extension.png)
 
 1. Zajistěte, aby měl Princip služby DevOps kanálu služby Azure udělené oprávnění k předplatnému a také byl přiřazen jako správce pracovního prostoru pro cílový pracovní prostor. 
 
-1. Vytvoří nový úkol. Vyhledejte **& verze sestavení pracovních prostorů synapse** a pak vyberte **Přidat**.
+1. Vytvoří nový úkol. Vyhledejte **nasazení v pracovním prostoru synapse** a pak vyberte **Přidat**.
+
+     ![Přidat rozšíření](media/add-extension-task.png)
 
 1.  V úloze zadejte související informace o úložišti Git **workspace_publish** a vyberte skupinu prostředků, oblast, název a cloudové prostředí pro cílový pracovní prostor. Zadejte parametry a hodnoty, pokud potřebujete.
 
-    ![nasazení pracovního prostoru synapse](media/create-release-artifacts-deployment.png)
+    ![Nasazení pracovního prostoru synapse](media/create-release-artifacts-deployment.png)
 
 > [!IMPORTANT]
 > Ve scénářích CI/CD musí být typ prostředí Integration runtime (IR) v různých prostředích stejný. Například pokud máte v prostředí pro vývoj v místním prostředí IR, stejný IR musí být také typu v místním prostředí v jiných prostředích, jako je například test a produkce. Podobně pokud sdílíte prostředí Integration runtime v několika fázích, je nutné nakonfigurovat prostředí Integration runtime jako propojená místně ve všech prostředích, jako je vývoj, testování a produkce.

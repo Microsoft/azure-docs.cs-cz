@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 89cec12804f6fd2b8a3885248c42646d6c6dbb13
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9f8004b41e8048dfc97fb61bb67a634963c0c575
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186554"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317550"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Protokolování výstrah v Azure Monitor
 
@@ -25,7 +25,7 @@ Výstrahy protokolu jsou jedním z typů výstrah, které jsou podporovány v [u
 > [!NOTE]
 > Pro verzi rozhraní API `2020-05-01-preview` a výstrahy protokolu orientované na prostředky se momentálně neúčtují žádné další poplatky.  Ceny pro funkce, které jsou ve verzi Preview, budou v budoucnu ohlášeny a oznámení poskytované před zahájením fakturace. Pokud se rozhodnete dál používat novou verzi rozhraní API a výstrahy protokolu orientované na prostředky po období oznámení, bude se vám účtovat příslušná sazba.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Výstrahy protokolu spouštějí dotazy na Log Analytics data. Nejdřív byste měli začít [shromažďovat data protokolu](resource-logs.md) a dotazovat se na data protokolu. Pomocí [tématu Příklady dotazů na výstrahy](../log-query/example-queries.md) v Log Analytics můžete pochopit, co můžete zjistit nebo začít [psát vlastní dotaz](../log-query/log-analytics-tutorial.md).
 
@@ -90,7 +90,7 @@ requests
 | where resultCode == "500"
 ```
 
-- **Časové období:** 15 minut
+- **Časové období/členitost agregace:** 15 minut
 - **Frekvence upozornění:** 15 minut
 - **Prahová hodnota:** Větší než 0
 
@@ -145,7 +145,7 @@ Například chcete monitorovat chyby pro více virtuálních počítačů, na kt
 - **Sloupec ID prostředku:** _ResourceId (rozdělení podle sloupce ID prostředku v pravidlech výstrah je k dispozici pouze pro odběry a skupiny prostředků v současnosti)
 - **Dimenze/agregované na:**
   - Computer = VM1, VM2 (hodnoty filtrování v definici pravidel výstrah nejsou aktuálně k dispozici pro pracovní prostory a Application Insights. Filtrovat v textu dotazu.)
-- **Časové období:** 15 minut
+- **Časové období/členitost agregace:** 15 minut
 - **Frekvence upozornění:** 15 minut
 - **Prahová hodnota:** Větší než 0
 
