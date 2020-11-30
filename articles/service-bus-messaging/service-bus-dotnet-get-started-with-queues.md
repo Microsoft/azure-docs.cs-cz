@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 11/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4335c1e81ead36d14ee1794fffbdd4cc1ff72a0a
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 3e24024d9670d430e35b09a32b284a543d412842
+ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029604"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96310370"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>Posílání zpráv a příjem zpráv z Azure Service Bus front (.NET)
 V tomto kurzu vytvoříte konzolovou aplikaci .NET Core pro posílání zpráv a příjem zpráv z fronty Service Bus pomocí balíčku **Azure. Messaging. ServiceBus** . 
@@ -63,7 +63,7 @@ Spusťte Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Cor
     public static async Task Main(string[] args)
     {    
         const int numberOfMessages = 10;
-        queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
+        var queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
 
         Console.WriteLine("======================================================");
         Console.WriteLine("Press ENTER key to exit after sending all the messages.");

@@ -2,14 +2,14 @@
 title: Matice podpory pro zotavení po havárii virtuálního počítače Azure pomocí Azure Site Recovery
 description: Shrnuje podporu zotavení po havárii virtuálních počítačů Azure do sekundární oblasti pomocí Azure Site Recovery.
 ms.topic: article
-ms.date: 07/14/2020
+ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: 2391a4056d5c0c952677b57e7d37a181ef0eacc0
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 25fb28c8f420a64f60ab0d058c374f5de74ed883
+ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95808867"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96310322"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -98,8 +98,8 @@ Windows 7 (x64) s aktualizací SP1 a vyšší | Z verze [9,30](https://support.m
 
 **Operační systém** | **Podrobnosti**
 --- | ---
-Red Hat Enterprise Linux | 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6,[7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [7,8, 7,9](https://support.microsoft.com/help/4564347/), [8,0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery), [8,1, 8,2](https://support.microsoft.com/help/4570609/) [7.9](https://support.microsoft.com/help/4578241/)
-CentOS | 6,5, 6,6, 6,7, 6,8, 6,9, 6,10 </br> 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, 7,7, [7,8](https://support.microsoft.com/help/4564347/), [7,9 verze pre-GA](https://support.microsoft.com/help/4578241/), verze 7,9 s opravou ga je podporovaná z 9,37 </br> 8,0, 8,1, [8,2](https://support.microsoft.com/en-us/help/4570609)
+Red Hat Enterprise Linux | 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6,[7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [7,8, 7,9](https://support.microsoft.com/help/4564347/) [, 8,0](https://support.microsoft.com/help/4578241/), 8,1, [8.2](https://support.microsoft.com/help/4570609/) [8,2, 8,3](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) [.](https://support.microsoft.com/help/4597409)
+CentOS | 6,5, 6,6, 6,7, 6,8, 6,9, 6,10 </br> 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, 7,7, [7,8](https://support.microsoft.com/help/4564347/), [7,9 verze pre-GA](https://support.microsoft.com/help/4578241/), 7,9 (verze ga je podporována z opravy hotfix 9,37 * *), 8,0, 8,1, [8,2](https://support.microsoft.com/en-us/help/4570609)
 Server Ubuntu 14,04 LTS | Zahrnuje podporu pro všechny 14,04. verze *x* ; [Podporované verze jádra](#supported-ubuntu-kernel-versions-for-azure-virtual-machines); 
 Server Ubuntu 16,04 LTS | Zahrnuje podporu pro všechny 16,04. verze *x* ; [Podporovaná verze jádra](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Ubuntu servery s použitím ověřování a přihlášení pomocí hesla a balíčku Cloud-init ke konfiguraci cloudových virtuálních počítačů můžou mít při převzetí služeb při selhání zakázané přihlášení (v závislosti na konfiguraci cloudinit). Přihlášení založené na heslech na virtuálním počítači můžete znovu povolit tím, že resetujete heslo z nabídky nastavení > řešení potíží s >em (u virtuálního počítače, u kterého došlo k převzetí služeb při selhání v Azure Portal.
 Server Ubuntu 18,04 LTS | Zahrnuje podporu pro všechny 18,04. verze *x* ; [Podporovaná verze jádra](#supported-ubuntu-kernel-versions-for-azure-virtual-machines) |
@@ -111,10 +111,10 @@ SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4, SP5  [(podporované verze 
 SUSE Linux Enterprise Server 15 | 15, SP1, SP2[(podporované verze jádra)](#supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | 3<br/><br/> Upgrade replikačních počítačů z aktualizace SP3 na verzi SP4 není podporován. Pokud byl replikovaný počítač upgradován, je nutné zakázat replikaci a po upgradu znovu povolit replikaci.
 SUSE Linux Enterprise Server 11 | OPRAVY
-Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4573888/), [8,0](https://support.microsoft.com/help/4573888/), [8,1](https://support.microsoft.com/help/4573888/)  <br/> Spuštění jádra kompatibilního s Red Hat nebo nedělitelné podnikové jádro verze 3, 4 & 5 (UEK3, UEK4, UEK5)<br/><br/>8.1<br/>Podpora [9,35](https://support.microsoft.com/help/4573888/) pro zbytek RedHat jader je dostupná ve všech jádrech uek a RedHat kernel <= 3.10.0-1062. * v [9,36](https://support.microsoft.com/help/4578241/) .
+Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), [7,8, 7,9](https://support.microsoft.com/help/4573888/) [, 8,0](https://support.microsoft.com/help/4597409) [, 8,1](https://support.microsoft.com/help/4573888/) [(se](https://support.microsoft.com/help/4573888/) spuštěným systémem Red Hat & kompatibilního s UEK3, UEK4, UEK5)<br/><br/>8,1 (běžící na všech jádrech UEK a jádro RedHat <= 3.10.0-1062. * jsou podporovány v [9,35](https://support.microsoft.com/help/4573888/). Podpora pro zbytek jader RedHat je k dispozici v [9,36](https://support.microsoft.com/help/4578241/).)
 
 > [!NOTE]
-> Ujistěte se prosím, že pro verze Linux Azure Site Recovery nepodporuje přizpůsobené image operačního systému. Podporují se jenom ty jádra, které jsou součástí distribuční verze nebo aktualizace dílčí verze distribuce.
+> Pro verze Linux Azure Site Recovery nepodporuje přizpůsobené image operačních systémů. Podporují se jenom ty jádra, které jsou součástí distribuční verze nebo aktualizace dílčí verze distribuce.
 
 * * Poznámka: Pokud chcete, aby se nejnovější jádra pro Linux podporovala během 15 dnů od vydání, Azure Site Recovery na nejnovější verzi agenta mobility opravenou opravou hotfix. Tato oprava je zavedená v systému mezi dvěma verzemi hlavní verze. Pokud chcete aktualizovat na nejnovější verzi agenta mobility (včetně opravy hotfix hotfix), postupujte podle kroků uvedených v [tomto článku](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure). Tato oprava se v tuto chvíli zavedla pro agenty mobility používané ve scénáři zotavení po havárii v Azure.
 

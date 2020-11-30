@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d587c4dbdd8f46d6e098ff96f464d456fffc9ccf
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ad880b7c23c687530a79ca1123474e94c923e150
+ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95529977"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96310387"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Úvod do Azure Defenderu pro registry kontejnerů
 
@@ -85,6 +85,8 @@ Ano. Pokud máte organizaci, kterou je třeba ignorovat, místo toho, aby ji byl
 
 [Seznamte se s vytvářením pravidel, která zakazují zjištění z integrovaného nástroje pro posouzení ohrožení zabezpečení](defender-for-container-registries-usage.md#disable-specific-findings-preview).
 
+### <a name="why-is-security-center-alerting-me-to-vulnerabilities-about-an-image-that-isnt-in-my-registry"></a>Proč Security Center upozorňuje na ohrožení zabezpečení týkající se image, která není v registru?
+Security Center poskytuje posouzení ohrožení zabezpečení pro každý nabízený nebo vyžádaný obrázek v registru. Některé obrázky mohou znovu použít značky z obrázku, který již byl zkontrolován. Můžete například změnit přiřazení značky "poslední" pokaždé, když přidáte obrázek do Digest. V takových případech stále existuje image Old v registru a je možné ji i nadále vyhlašovat její hodnotou Digest. Pokud bitová kopie obsahuje zjištění zabezpečení a je vyžádána, zveřejňuje chyby zabezpečení.
 
 
 ## <a name="next-steps"></a>Další kroky

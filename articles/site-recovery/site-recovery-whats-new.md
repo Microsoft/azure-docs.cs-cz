@@ -3,12 +3,12 @@ title: Co je nového v Azure Site Recovery
 description: Obsahuje souhrn nových funkcí a nejnovější aktualizace služby Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 2e85ee19012f6ae13c18e26b3aa0b5ae28bcaade
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 3667f963eac0ebc719872db00ac069c7da70ec91
+ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341344"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96310353"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co je nového ve službě Site Recovery
 
@@ -22,14 +22,27 @@ Pro Site Recovery komponenty podporujeme N-4 verze, kde N je nejnovější vydan
 
 **Aktualizace** |  **Sjednocené nastavení** | **Vajíčka konfiguračního serveru** | **Agent služby mobility** | **Poskytovatel Site Recovery** | **Agent Recovery Services**
 --- | --- | --- | --- | --- | ---
+[Kumulativní aktualizace 52](https://support.microsoft.com/help/4597409/)  | 9.39.5796.1 | 5.1.6458.0 | 9.39.5796.1 | 5.1.6458.0  | 2.0.9196.0
 [Kumulativní aktualizace 51](https://support.microsoft.com/help/4590304)  | 9.38.5761.1 | 5.1.6400.0 | 9.38.5761.1 | 5.1.6400.0  | 2.0.9193.0
 [Kumulativní aktualizace 50](https://support.microsoft.com/help/4582666/) | 9.37.5724.1 | 5.1.6347.0 | 9.37.5724.1 | 5.1.6347.0  | 2.0.9192.0
 [Kumulativní aktualizace 49](https://support.microsoft.com/help/4578241/) | 9.36.5696.1 | 5.1.6315.0 | 9.36.5696.1 | 5.1.6315.0 | 2.0.9188.0
 [Kumulativní aktualizace 48](https://support.microsoft.com/help/4573888/) | 9.35.5659.1 | 5.1.6200.0 | 9.35.5659.1 | 5.1.6200.0 | 2.0.9186.0
-[Kumulativní aktualizace 47](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | Počítače HyperV – 2.0.9183.0 <br> Počítače VMware – 2.0.9177.0
-
 
 [Přečtěte si další informace](service-updates-how-to.md) o instalaci a podpoře aktualizací.
+
+
+## <a name="updates-november-2020"></a>Aktualizace (listopad 2020)
+
+### <a name="update-rollup-52"></a>Kumulativní aktualizace 52
+
+[Kumulativní aktualizace 52](https://support.microsoft.com/help/4597409/update-rollup-52-for-azure-site-recovery) poskytuje následující aktualizace:
+
+**Aktualizace** | **Podrobnosti**
+--- | ---
+**Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů, jak je popsáno v souhrnu.
+**Opravy a vylepšení problémů** | Řada oprav a vylepšení, jak je popsáno v souhrnu, včetně nové podpory Linux pro službu mobility.
+**Zotavení po havárii virtuálního počítače Azure** | Nyní podporováno pro virtuální počítače se systémem RHEL 8,3 a Oracle Linux 7,9
+**Virtuální počítač VMware/fyzické zotavení po havárii do Azure** | Nyní se podporuje pro virtuální počítače se systémem RHEL 8,3, Oracle Linux 7.9/8.3.
 
 ## <a name="updates-october-2020"></a>Aktualizace (říjen 2020)
 
