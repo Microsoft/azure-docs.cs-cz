@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: f691ec2d6ba873ba8052c5fab35162932668f185
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: c31187e87f18f0ec84cd5b80ccab997d0ba381c3
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496608"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324750"
 ---
 # <a name="migration-guide-db2-to-sql-managed-instance"></a>Průvodce migrací: spravovaná instance DB2 do SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -24,7 +24,7 @@ V této příručce se naučíte migrovat databáze DB2 do spravované instance 
 
 Další scénáře najdete v [Průvodci migrací databáze](https://datamigration.microsoft.com/).
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 K migraci databáze DB2 do spravované instance SQL potřebujete:
 
@@ -138,10 +138,10 @@ Po migraci dat do cílového prostředí všechny aplikace, které dříve využ
 
 Testovací přístup pro migraci databáze se skládá z následujících aktivit:
 
-1. **Vývoj ověřovacích testů** : k otestování migrace databáze je nutné použít dotazy SQL. Je nutné vytvořit ověřovací dotazy ke spuštění proti zdrojové i cílové databázi. Dotazy na ověřování by se měly pokrývat s definovaným oborem.
-1. **Nastavení testovacího prostředí** : testovací prostředí by mělo obsahovat kopii zdrojové databáze a cílovou databázi. Nezapomeňte izolovat testovací prostředí.
-1. **Spustit ověřovací testy** : Spusťte ověřovací testy proti zdroji a cíli a pak Analyzujte výsledky.
-1. **Spustit testy výkonu** : spustit test výkonnosti proti zdroji a cíli a pak analyzovat a porovnat výsledky.
+1. **Vývoj ověřovacích testů**: k otestování migrace databáze je nutné použít dotazy SQL. Je nutné vytvořit ověřovací dotazy ke spuštění proti zdrojové i cílové databázi. Dotazy na ověřování by se měly pokrývat s definovaným oborem.
+1. **Nastavení testovacího prostředí**: testovací prostředí by mělo obsahovat kopii zdrojové databáze a cílovou databázi. Nezapomeňte izolovat testovací prostředí.
+1. **Spustit ověřovací testy**: Spusťte ověřovací testy proti zdroji a cíli a pak Analyzujte výsledky.
+1. **Spustit testy výkonu**: spustit test výkonnosti proti zdroji a cíli a pak analyzovat a porovnat výsledky.
 
    > [!NOTE]
    > Pro pomoc s vývojem a prováděním ověřovacích testů po migraci zvažte řešení kvality dat dostupné od partnera [QuerySurge](https://www.querysurge.com/company/partners/microsoft). 
@@ -149,7 +149,7 @@ Testovací přístup pro migraci databáze se skládá z následujících aktivi
 
 ## <a name="leverage-advanced-features"></a>Využití pokročilých funkcí 
 
-Nezapomeňte využít výhod pokročilých cloudových funkcí nabízených službou Azure SQL Managed instance, jako je [integrovaná vysoká dostupnost](../../database/high-availability-sla.md), [detekce hrozeb](../../database/advanced-data-security.md)a [monitorování a optimalizace vašich úloh](../../database/monitor-tune-overview.md). 
+Nezapomeňte využít výhod pokročilých cloudových funkcí nabízených službou Azure SQL Managed instance, jako je [integrovaná vysoká dostupnost](../../database/high-availability-sla.md), [detekce hrozeb](../../database/azure-defender-for-sql.md)a [monitorování a optimalizace vašich úloh](../../database/monitor-tune-overview.md). 
 
 
 Některé funkce SQL Server jsou dostupné až po změně [úrovně kompatibility databáze](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database) na nejnovější úroveň kompatibility (150). 

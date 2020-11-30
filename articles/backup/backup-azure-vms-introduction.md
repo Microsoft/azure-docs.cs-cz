@@ -3,12 +3,12 @@ title: Informace o zálohování virtuálních počítačů Azure
 description: V tomto článku se dozvíte, jak služba Azure Backup zálohuje virtuální počítače Azure a jak postupovat podle osvědčených postupů.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 30d27f3f9c559fd149bd45f303127e0eec40b878
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 7fa47b83eb8fa06c028079cf47ea0cb46df31860
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173850"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325226"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Přehled zálohování virtuálních počítačů Azure
 
@@ -51,7 +51,7 @@ Když zálohujete virtuální počítače Azure pomocí Azure Backup, jsou virtu
 
 **Šifrování** | **Podrobnosti** | **Podpora**
 --- | --- | ---
-**SSE** | Pomocí SSE Azure Storage poskytuje šifrování v klidovém prostředí tím, že před uložením automaticky šifruje data. Azure Storage také dešifruje data před jejich načtením. Azure Backup podporuje zálohování virtuálních počítačů se dvěma typy Šifrování služby Storage:<li> **SSE s klíči spravovanými platformou**: Toto šifrování je ve výchozím nastavení pro všechny disky ve vašich virtuálních počítačích. Další informace najdete [tady](../virtual-machines/windows/disk-encryption.md#platform-managed-keys).<li> **SSE s použitím klíčů spravovaných zákazníkem**. Pomocí CMK můžete spravovat klíče používané k šifrování disků. Další informace najdete [tady](../virtual-machines/windows/disk-encryption.md#customer-managed-keys). | Azure Backup používá SSE pro šifrování virtuálních počítačů Azure v klidovém prostředí.
+**SSE** | Pomocí SSE Azure Storage poskytuje šifrování v klidovém prostředí tím, že před uložením automaticky šifruje data. Azure Storage také dešifruje data před jejich načtením. Azure Backup podporuje zálohování virtuálních počítačů se dvěma typy Šifrování služby Storage:<li> **SSE s klíči spravovanými platformou**: Toto šifrování je ve výchozím nastavení pro všechny disky ve vašich virtuálních počítačích. Další informace najdete [tady](../virtual-machines/disk-encryption.md#platform-managed-keys).<li> **SSE s použitím klíčů spravovaných zákazníkem**. Pomocí CMK můžete spravovat klíče používané k šifrování disků. Další informace najdete [tady](../virtual-machines/disk-encryption.md#customer-managed-keys). | Azure Backup používá SSE pro šifrování virtuálních počítačů Azure v klidovém prostředí.
 **Azure Disk Encryption** | Azure Disk Encryption šifruje operační systém a datové disky pro virtuální počítače Azure.<br/><br/> Azure Disk Encryption se integruje s šifrovacími klíči BitLockeru (BEKs), které jsou v trezoru klíčů zabezpečené jako tajné klíče. Azure Disk Encryption se taky integruje s klíči šifrovacího klíče Azure Key Vault (KEK). | Azure Backup podporuje zálohování spravovaných a nespravovaných virtuálních počítačů Azure šifrovaných jenom pomocí BEKs nebo s BEKs společně s KEK.<br/><br/> BEKs i KEK se zálohují a šifrují.<br/><br/> Vzhledem k tomu, že se zálohují KEK a BEKs, můžou uživatelé s potřebnými oprávněními v případě potřeby obnovit klíče a tajné kódy zpátky do trezoru klíčů. Tito uživatelé můžou také obnovit zašifrovaný virtuální počítač.<br/><br/> Šifrované klíče a tajné kódy nejde číst neoprávněnými uživateli nebo Azure.
 
 U spravovaných a nespravovaných virtuálních počítačů Azure podporuje zálohování jak virtuální počítače zašifrované jenom s BEKs, nebo virtuální počítače zašifrované pomocí BEKs společně s KEK.

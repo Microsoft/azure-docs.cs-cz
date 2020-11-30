@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: cafb32e5bd91c6b7f3cfef4641828963e0731797
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 46216fe06e3d3425d5b237cdbb7326eed596945a
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496963"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326926"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>Přehled migrace: SQL Server pro SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -61,18 +61,18 @@ K dispozici jsou různé nástroje pro různé úlohy a předvolby uživatele. N
 Vezměte v úvahu obecné pokyny, které vám pomohou vybrat správný model nasazení a vrstvu služby Azure SQL Database. Během nasazování můžete zvolit výpočetní prostředky a prostředky úložiště a pak je později změnit pomocí  [Azure Portal](../../database/scale-resources.md)  bez výpadků aplikace.
 
 
-**Modely nasazení** : Seznámení s úlohou vaší aplikace a vzorem využití pro rozhodování mezi izolovanou databází nebo elastickým fondem. 
+**Modely nasazení**: Seznámení s úlohou vaší aplikace a vzorem využití pro rozhodování mezi izolovanou databází nebo elastickým fondem. 
 
 - [Jediná databáze](../../database/single-database-overview.md) představuje plně spravovanou databázi vhodnou pro většinu moderních cloudových aplikací a mikroslužeb.
 - [Elastický fond](../../database/elastic-pool-overview.md) je kolekce izolovaných databází se sdílenou sadou prostředků, jako je například procesor nebo paměť, a vhodná pro kombinování databází ve fondu s předvídatelnými vzory využití, které mohou efektivně sdílet stejnou sadu prostředků.
 
-**Nákupy modelů** : volba mezi modelem nakupování Vcore, DTU nebo bez serveru. 
+**Nákupy modelů**: volba mezi modelem nakupování Vcore, DTU nebo bez serveru. 
 
 - [Model Vcore](../../database/service-tiers-vcore.md) vám umožňuje vybrat počet virtuální jádra pro vaše Azure SQL Database, což usnadňuje volbu při překladu z místního SQL Server. Toto je jediná možnost, která podporuje ukládání licencí s [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/). 
 - [Model DTU](../../database/service-tiers-dtu.md) vyabstrakce základní výpočetní prostředky, paměť a vstupně-výstupní prostředky, aby bylo možné zajistit míchanou DTU. 
 - [Model bez serveru](../../database/serverless-tier-overview.md) je určený pro úlohy, které vyžadují automatické škálování na vyžádání s využitím výpočetních prostředků, které se účtují za sekundu. Výpočetní vrstva bez serveru automaticky pozastaví databáze během neaktivních období (kde se účtuje jenom úložiště) a automaticky obnoví databáze při návratu aktivity. 
 
-**Úrovně služeb** : vyberte tři úrovně služeb navržené pro různé typy aplikací.
+**Úrovně služeb**: vyberte tři úrovně služeb navržené pro různé typy aplikací.
 
 - [Pro obecné účely/standardní úroveň služeb](../../database/service-tier-general-purpose.md) nabízí vyváženou možnost rozpočtu s výpočetním prostředím a úložištěm vhodným pro doručování středních a úložných aplikací, a to s využitím redundance integrovaných ve vrstvě úložiště, která umožňuje zotavení po selhání. Navrženo pro většinu databázových úloh. 
 - [Pro důležité obchodní informace/Premium Service úrovně](../../database/service-tier-business-critical.md) jsou určené pro vysoce vrstvené aplikace, které vyžadují vysoké sazby za transakce, nízkou latenci a vysokou úroveň odolnosti u sekundárních replik, které jsou k dispozici pro převzetí služeb při selhání, i pro přesměrování zatížení.
@@ -183,7 +183,7 @@ V případě Azure SQL Database jsou k dispozici pouze [Hlavní](/sql/relational
 
 Nezapomeňte využít výhod pokročilých cloudových funkcí, které nabízí SQL Database. Například už se nemusíte starat o správu záloh, protože služba to udělá za vás. Můžete obnovit k jakémukoli [bodu v čase v rámci doby uchování](../../database/recovery-using-backups.md#point-in-time-restore). 
 
-Pokud chcete posílit zabezpečení, zvažte použití [Azure Active Directory ověřování](../../database/authentication-aad-overview.md), [auditování](../../database/auditing-overview.md), [detekce hrozeb](../../database/advanced-data-security.md), [zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security)a [dynamického maskování dat](/sql/relational-databases/security/dynamic-data-masking).
+Pokud chcete posílit zabezpečení, zvažte použití [Azure Active Directory ověřování](../../database/authentication-aad-overview.md), [auditování](../../database/auditing-overview.md), [detekce hrozeb](../../database/azure-defender-for-sql.md), [zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security)a [dynamického maskování dat](/sql/relational-databases/security/dynamic-data-masking).
 
 Kromě pokročilých funkcí správy a zabezpečení SQL Database poskytuje sadu pokročilých nástrojů, které vám pomůžou [monitorovat a ladit vaše úlohy](../../database/monitor-tune-overview.md). [Azure SQL Analytics (Preview)](../../../azure-monitor/insights/azure-sql.md) je pokročilé řešení monitorování cloudu pro monitorování výkonu všech vašich databází v Azure SQL Database škálované a napříč několika předplatnými v jednom zobrazení. Azure SQL Analytics shromažďuje a vizualizuje klíčové metriky výkonu pomocí integrovaných inteligentních funkcí pro řešení potíží s výkonem.
 

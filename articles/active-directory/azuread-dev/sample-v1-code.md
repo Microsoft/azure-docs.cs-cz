@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 484a44a7a9840409e3f5770c743e5cd62e0cef66
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 824ae8d39d934ebc58fc75185e36f5faa11109a9
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910300"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325362"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Ukázka kódu Azure Active Directory (koncový bod verze 1.0)
 
@@ -69,7 +69,7 @@ Platforma | Ukázka |
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Desktopové a mobilní veřejné klientské aplikace, které volají Microsoft Graph nebo webové rozhraní API
 
-Následující ukázky ilustrují veřejné klientské aplikace (deskto/Pmobile aplikace), které přistupují k Microsoft Graph nebo webovému rozhraní API v názvu uživatele. V závislosti na zařízeních a platformách se můžou aplikace přihlašovat uživatelům různými způsoby (toky nebo granty):
+Následující ukázky ilustrují veřejné klientské aplikace (desktopové nebo mobilní aplikace), které přistupují k Microsoft Graph nebo webovému rozhraní API v jména uživatele. V závislosti na zařízeních a platformách se můžou aplikace přihlašovat uživatelům různými způsoby (toky nebo granty):
 
 - Interaktivně
 - V tichém režimu (s integrovaným ověřováním systému Windows ve Windows nebo uživatelským jménem/heslem)
@@ -102,7 +102,7 @@ Webová aplikace ASP.NET  | ![Tento obrázek ukazuje logo .NET Framework.](media
 
 Následující příklad ukazuje, jak chránit node.js webového rozhraní API pomocí služby Azure AD.
 
-V předchozích částech tohoto článku můžete také najít další ukázky, které ilustrují klientskou aplikaci, která **volá** rozhraní ASP.NET nebo ASP.NET Core **Web API** . Tyto ukázky se v této části neuvádějí znovu, ale najdete je v posledním sloupci tabulek výše nebo níže.
+V předchozích částech tohoto článku můžete také najít další ukázky, které ilustrují klientskou aplikaci, která **volá** rozhraní ASP.NET nebo ASP.NET Core **Web API**. Tyto ukázky se v této části neuvádějí znovu, ale najdete je v posledním sloupci tabulek výše nebo níže.
 
 | Platforma | Ukázka |
 |--------|-------------------|

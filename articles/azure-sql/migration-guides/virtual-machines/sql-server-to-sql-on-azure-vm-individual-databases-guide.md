@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 1558c396566b2fcfc098a749407d5e7a28316b6f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3b0fdccd3eaf6e6bd94b595107022f738bdd8382
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019445"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325909"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>Průvodce migrací: SQL Server SQL Server na virtuálních počítačích Azure 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -38,8 +38,8 @@ Informace o dalších strategiích migrace najdete v tématu [Přehled migrace S
 Migrace na SQL Server na virtuálních počítačích Azure vyžaduje následující: 
 
 - [Pomocník s migrací databáze (DMA)](https://www.microsoft.com/download/details.aspx?id=53595).
-- [Azure Migrate projekt](/azure/migrate/create-manage-projects).
-- Připravený cílový [SQL Server na virtuálním počítači Azure](/azure/azure-sql/virtual-machines/windows/create-sql-vm-portal) , který má stejnou nebo větší verzi než zdrojový SQL Server.
+- [Azure Migrate projekt](../../../migrate/create-manage-projects.md).
+- Připravený cílový [SQL Server na virtuálním počítači Azure](../../virtual-machines/windows/create-sql-vm-portal.md) , který má stejnou nebo větší verzi než zdrojový SQL Server.
 - [Připojení mezi Azure a](/azure/architecture/reference-architectures/hybrid-networking)místním prostředím.
 - [Výběr vhodné strategie migrace](sql-server-to-sql-on-azure-vm-migration-overview.md#migrate).
 
@@ -109,7 +109,7 @@ Důrazně doporučujeme, abyste při [následné migraci](#post-migration)nastav
 > Ne všechny verze SQL Server podporují všechny režimy kompatibility. Ověřte, zda vaše [cílová SQL Server verze](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level) podporuje vaši zvolenou kompatibilitu databáze. Například SQL Server 2019 nepodporuje databáze s kompatibilitou úrovně 90 (což je SQL Server 2005). Tyto databáze by vyžadovaly alespoň upgrade na úroveň kompatibility 100.
 >
 
-## <a name="migrate"></a>Migrace
+## <a name="migrate"></a>Migrate
 
 Po dokončení kroků před migrací jste připraveni k migraci uživatelských databází a součástí. Migrujte své databáze pomocí preferované [metody migrace](sql-server-to-sql-on-azure-vm-migration-overview.md#migrate).  
 
@@ -157,8 +157,8 @@ Následující tabulka uvádí komponenty seznamu a Doporučené metody migrace,
 || Uživatelské databáze s FILESTREAM |  Použijte metody [zálohování a obnovení](../../virtual-machines/windows/migrate-to-vm-from-sql-server.md#back-up-and-restore) pro migraci. Přímý přístup do paměti (DMA) nepodporuje databáze s FILESTREAM. |
 | **Zabezpečení** | Přihlášení SQL Server a Windows | K [migraci přihlášení uživatelů](/sql/dma/dma-migrateserverlogins)použijte technologii DMA. |
 || Role SQL Server | Skript s SQL Server Management Studio |
-|| Zprostředkovatelé kryptografických služeb | Doporučujeme [převod na používání služby Azure Key Vault](../../virtual-machines/windows/azure-key-vault-integration-configure.md). Tento postup používá [poskytovatele prostředků virtuálního počítače SQL](../../virtual-machines/windows/sql-vm-resource-provider-register.md). |
-| **Objekty serveru** | Zálohovací zařízení | Nahraďte zálohou databáze pomocí [služby Azure Backup](../../../backup/backup-sql-server-database-azure-vms.md) nebo zapište zálohy do [Azure Storage](../../virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md) (SQL Server 2012 SP1 CU2 +). Tento postup používá [poskytovatele prostředků virtuálního počítače SQL](../../virtual-machines/windows/sql-vm-resource-provider-register.md).|
+|| Zprostředkovatelé kryptografických služeb | Doporučujeme [převod na používání služby Azure Key Vault](../../virtual-machines/windows/azure-key-vault-integration-configure.md). Tento postup používá [poskytovatele prostředků virtuálního počítače SQL](../../virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md). |
+| **Objekty serveru** | Zálohovací zařízení | Nahraďte zálohou databáze pomocí [služby Azure Backup](../../../backup/backup-sql-server-database-azure-vms.md) nebo zapište zálohy do [Azure Storage](../../virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md) (SQL Server 2012 SP1 CU2 +). Tento postup používá [poskytovatele prostředků virtuálního počítače SQL](../../virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md).|
 || Odkazované servery | Skript s SQL Server Management Studio. |
 || Aktivační události serveru | Skript s SQL Server Management Studio. |
 | **Replikace** | Místní publikace | Skript s SQL Server Management Studio. |

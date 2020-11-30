@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
 ms.custom: how-to, racking-python, devx-track-azurecli
-ms.openlocfilehash: d17967c24fbbb127c1d3eaee5acd5b78c3e3b902
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 901e4d458cc2d77d4e7f13c1782b86c8532ca499
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630341"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327164"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Nasazení modelu Machine Learning do Azure Functions (Preview)
 
@@ -28,7 +28,7 @@ Naučte se, jak nasadit model z Azure Machine Learning jako aplikace Function Ap
 
 Pomocí Azure Machine Learning můžete vytvářet image Docker z školicích modelů strojového učení. Azure Machine Learning teď má funkce Preview k sestavování těchto modelů strojového učení do aplikací Function App, které se dají [nasadit do Azure Functions](../azure-functions/functions-deployment-technologies.md#docker-container).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](how-to-manage-workspace.md) .
 * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
@@ -58,7 +58,7 @@ Před nasazením musíte definovat, co je potřeba ke spuštění modelu jako we
 
 Další informace o vstupním skriptu najdete v tématu [Definování kódu bodování](./how-to-deploy-and-where.md#define-an-entry-script) .
 
-* **Závislosti** , například pomocné skripty nebo balíčky python/conda potřebné ke spuštění skriptu vstupu nebo modelu
+* **Závislosti**, například pomocné skripty nebo balíčky python/conda potřebné ke spuštění skriptu vstupu nebo modelu
 
 Tyto entity jsou zapouzdřeny do __Konfigurace odvození__. Odvozená konfigurace odkazuje na vstupní skript a další závislosti.
 
@@ -277,7 +277,7 @@ Jakmile se image načte a aplikace je k dispozici, použijte k aktivaci aplikace
     }
     ```
 
-3. Chcete-li zobrazit výstup vyprodukovaný funkcí, použijte následující příkaz pro výpis vygenerovaných výstupních souborů. Nahraďte `<triggerConnectionString>` připojovacím řetězcem, který se vrátil dříve. V tomto příkladu `output` je název výstupního kontejneru, který jste vytvořili dříve. Pokud jste použili jiný název, nahraďte tuto hodnotu::
+3. Chcete-li zobrazit výstup vyprodukovaný funkcí, použijte následující příkaz pro výpis vygenerovaných výstupních souborů. Nahraďte `<triggerConnectionString>` připojovacím řetězcem, který se vrátil dříve. V tomto příkladu `output` je název výstupního kontejneru, který jste vytvořili dříve. Pokud jste použili jiný název, nahraďte tuto hodnotu:
 
     ```azurecli-interactive
     az storage blob list --container-name output --connection-string <triggerConnectionString> --query '[].name' --output tsv

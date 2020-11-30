@@ -3,12 +3,12 @@ title: Správa životního cyklu virtuálních počítačů řešení Azure VMwa
 description: Naučte se spravovat všechny aspekty životního cyklu virtuálních počítačů řešení Azure VMware pomocí Microsoft Azurech nativních nástrojů.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 5280d362c1e7b1bf33579d051c4cc11adb1b7e59
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ff1032900fa936895f3adfcb0d8a872f24948aca
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545751"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326807"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Správa životního cyklu virtuálních počítačů řešení Azure VMware
 
@@ -61,7 +61,7 @@ Azure Update Management v Azure Automation spravují aktualizace operačního sy
 
 2. **Log Analytics pracovní prostor** umožňuje shromažďování protokolů a shromažďování čítačů výkonu pomocí agenta Log Analytics nebo rozšíření. Pokud chcete vytvořit pracovní prostor Log Analytics, přečtěte si téma [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../azure-monitor/learn/quick-create-workspace.md). Pokud budete chtít, můžete také vytvořit pracovní prostor prostřednictvím rozhraní příkazového [řádku](../azure-monitor/learn/quick-create-workspace-cli.md), [PowerShellu](../azure-monitor/platform/powershell-workspace-configuration.md)nebo [šablony Azure Resource Manager](../azure-monitor/samples/resource-manager-workspace.md).
 
-3. Pokud chcete povolit Azure Update Management pro vaše virtuální počítače, přečtěte si téma [povolení Update Management z účtu Automation](../automation/update-management/update-mgmt-enable-automation-account.md). V tomto procesu propojíte Log Analytics pracovní prostor s vaším účtem Automation. 
+3. Pokud chcete povolit Azure Update Management pro vaše virtuální počítače, přečtěte si téma [povolení Update Management z účtu Automation](../automation/update-management/enable-from-automation-account.md). V tomto procesu propojíte Log Analytics pracovní prostor s vaším účtem Automation. 
  
 4. Po přidání virtuálních počítačů do Azure Update Management můžete [nasadit aktualizace na virtuální počítače a zkontrolovat výsledky](../automation/update-management/deploy-updates.md). 
 

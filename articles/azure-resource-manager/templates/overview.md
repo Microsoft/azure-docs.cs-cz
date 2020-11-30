@@ -3,12 +3,12 @@ title: Přehled šablon
 description: V této části najdete popis výhod používání šablon Azure Resource Manager pro nasazení prostředků.
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 1873c737d17fc8774ddd1276d1375799ca2da35e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 188fd5782795a4fb5456978a2a596cabc6dfd874
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280049"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325056"
 ---
 # <a name="what-are-arm-templates"></a>Co je šablona ARM?
 
@@ -38,7 +38,7 @@ Pokud se snažíte rozhodnout mezi používáním šablon ARM a jedné z další
 
 * **Testování**: pro šablonu se můžete ujistit, že jsou doporučené pokyny, a to tak, že je otestujete pomocí sady nástrojů šablon ARM (ARM-TTK). Tato testovací sada je skript PowerShellu, který si můžete stáhnout z [GitHubu](https://github.com/Azure/arm-ttk). Sada nástrojů usnadňuje vývoj odborných znalostí pomocí jazyka šablon.
 
-* **Náhled změn**: k zobrazení náhledu změn před nasazením šablony můžete použít [operaci citlivostní zpracování](template-deploy-what-if.md) . Díky čemu vidíte, které prostředky se mají vytvořit, aktualizovat nebo odstranit, a všechny vlastnosti prostředků, které se změní. Operace citlivosti kontroluje aktuální stav vašeho prostředí a eliminuje nutnost spravovat stav.
+* **Náhled změn**: k zobrazení náhledu změn před nasazením šablony můžete použít [operaci citlivostní zpracování](template-deploy-what-if.md) . V případě, že zjistíte, které prostředky budou vytvořeny, aktualizovány nebo odstraněny, a jakékoli vlastnosti prostředku, které budou změněny. Operace citlivosti kontroluje aktuální stav vašeho prostředí a eliminuje nutnost spravovat stav.
 
 * **Integrované ověřování**: šablona se nasadí až po úspěšném ověření. Správce prostředků před zahájením nasazení zkontroluje šablonu, aby se zajistilo, že bude nasazení úspěšné. Vaše nasazení je méně pravděpodobným zastavením v částečně dokončeném stavu.
 

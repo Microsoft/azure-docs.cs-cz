@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 2c143c299cec1d48dd5438d5350c818d5cc93800
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2241049e5c3cb5039a73c0f7637f7e3553d2e227
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023714"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326865"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Přehled migrace: SQL Server do spravované instance SQL
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -63,7 +63,7 @@ Některé obecné pokyny, které vám pomůžou zvolit správnou úroveň služb
 Můžete zvolit výpočetní prostředky a prostředky úložiště během nasazování a pak je po použití [Azure Portal](../../database/scale-resources.md) změnit, aniž by došlo k výpadku vaší aplikace. 
 
 > [!IMPORTANT]
-> Jakékoli nesrovnalosti v [požadavcích virtuální sítě spravované instance](/azure/azure-sql/managed-instance/connectivity-architecture-overview#network-requirements) vám můžou zabránit v vytváření nových instancí nebo používání stávajících instancí. Přečtěte si další informace o [vytváření nových](/azure/azure-sql/managed-instance/virtual-network-subnet-create-arm-template?branch=release-ignite-arc-data)   a [konfigurování stávajících](/azure/azure-sql/managed-instance/vnet-existing-add-subnet?branch=release-ignite-arc-data)   sítí. 
+> Jakékoli nesrovnalosti v [požadavcích virtuální sítě spravované instance](../../managed-instance/connectivity-architecture-overview.md#network-requirements) vám můžou zabránit v vytváření nových instancí nebo používání stávajících instancí. Přečtěte si další informace o [vytváření nových](../../managed-instance/virtual-network-subnet-create-arm-template.md?branch=release-ignite-arc-data)   a [konfigurování stávajících](../../managed-instance/vnet-existing-add-subnet.md?branch=release-ignite-arc-data)   sítí. 
 
 ### <a name="sql-server-vm-alternative"></a>Alternativní virtuální počítač SQL Server
 
@@ -88,7 +88,7 @@ V následující tabulce jsou uvedené doporučené nástroje pro migraci:
 
 |Technologie | Popis|
 |---------|---------|
-|[Azure Database Migration Service (DMS)](/azure/dms/tutorial-sql-server-to-managed-instance)  | Služba Azure první strany, která podporuje migraci v režimu offline pro aplikace, které můžou během procesu migrace dovolit výpadky. Na rozdíl od nepřetržité migrace v online režimu spustí migrace offline režimu jednorázové obnovení úplné zálohy databáze ze zdroje do cíle. | 
+|[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md)  | Služba Azure první strany, která podporuje migraci v režimu offline pro aplikace, které můžou během procesu migrace dovolit výpadky. Na rozdíl od nepřetržité migrace v online režimu spustí migrace offline režimu jednorázové obnovení úplné zálohy databáze ze zdroje do cíle. | 
 |[Nativní zálohování a obnovení](../../managed-instance/restore-sample-database-quickstart.md) | Spravovaná instance SQL podporuje obnovení nativních záloh databáze SQL Server (soubory. bak), což usnadňuje možnost migrace pro zákazníky, kteří můžou poskytovat úplné zálohy databází do Azure Storage. Úplné a rozdílové zálohy se také podporují a zdokumentují v [části assety migrace](#migration-assets) dále v tomto článku.| 
 | | |
 
@@ -100,8 +100,8 @@ V následující tabulce jsou uvedeny alternativní nástroje pro migraci:
 |---------|---------|
 |[Transakční replikace](../../managed-instance/replication-transactional-overview.md) | Umožňuje replikovat data ze zdrojových databázových tabulek SQL Server do spravované instance SQL poskytnutím možnosti migrace typu předplatitele vydavatele při zachování konzistentní transakční konzistence. |  |
 |[Hromadná kopie](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| [Nástroj program pro hromadné kopírování (BCP)](/sql/tools/bcp-utility) kopíruje data z instance SQL Server do datového souboru. Pomocí nástroje BCP exportujte data ze zdroje a importujte datový soubor do cílové spravované instance SQL.</br></br> Pro rychlé operace hromadného kopírování pro přesun dat na Azure SQL Database se dá použít [Nástroj pro inteligentní kopírování](/samples/azure-samples/smartbulkcopy/smart-bulk-copy/) , který umožňuje maximalizovat rychlost přenosu tím, že využívá úlohy paralelního kopírování. | 
-|[Průvodce exportem a BACPAC importu](/azure/azure-sql/database/database-import?tabs=azure-powershell)| [BacPac](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) je soubor Windows s `.bacpac` příponou, která zapouzdřuje schéma a data databáze. BACPAC se dá použít k exportu dat ze zdrojového SQL Server a k importu tohoto souboru zpátky do spravované instance Azure SQL.  |  
-|[Azure Data Factory (ADF)](/azure/data-factory/connector-azure-sql-managed-instance)| [Aktivita kopírování](/azure/data-factory/copy-activity-overview) v Azure Data Factory migruje data ze zdrojového SQL Server databáze do spravované instance SQL pomocí integrovaných konektorů a [Integration runtime](/azure/data-factory/concepts-integration-runtime).</br> </br> ADF podporuje široké spektrum [konektorů](/azure/data-factory/connector-overview) pro přesun dat z SQL Server zdrojů do spravované instance SQL. |
+|[Průvodce exportem a BACPAC importu](../../database/database-import.md?tabs=azure-powershell)| [BacPac](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) je soubor Windows s `.bacpac` příponou, která zapouzdřuje schéma a data databáze. BACPAC se dá použít k exportu dat ze zdrojového SQL Server a k importu tohoto souboru zpátky do spravované instance Azure SQL.  |  
+|[Azure Data Factory (ADF)](../../../data-factory/connector-azure-sql-managed-instance.md)| [Aktivita kopírování](../../../data-factory/copy-activity-overview.md) v Azure Data Factory migruje data ze zdrojového SQL Server databáze do spravované instance SQL pomocí integrovaných konektorů a [Integration runtime](../../../data-factory/concepts-integration-runtime.md).</br> </br> ADF podporuje široké spektrum [konektorů](../../../data-factory/connector-overview.md) pro přesun dat z SQL Server zdrojů do spravované instance SQL. |
 | | |
 
 ## <a name="compare-migration-options"></a>Porovnat možnosti migrace
@@ -114,7 +114,7 @@ Následující tabulka porovnává Doporučené možnosti migrace:
 
 |Možnost migrace  |Kdy je použít  |Požadavky  |
 |---------|---------|---------|
-|[Azure Database Migration Service (DMS)](/azure/dms/tutorial-sql-server-to-managed-instance) | – Migrujte jednotlivé databáze nebo více databází se škálováním. </br> – Může během procesu migrace pojmout výpadky. </br> </br> Podporované zdroje: </br> -SQL Server (2005-2019) místní nebo Azure VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP COMPUTE SQL Server virtuální počítač |  – Migrace ve velkém měřítku může být automatizovaná přes [PowerShell](/azure/dms/howto-sql-server-to-azure-sql-mi-powershell). </br> -Doba k dokončení migrace závisí na velikosti databáze a ovlivněná časem zálohování a obnovení. </br> – Může být vyžadováno dostatečné výpadky. |
+|[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | – Migrujte jednotlivé databáze nebo více databází se škálováním. </br> – Může během procesu migrace pojmout výpadky. </br> </br> Podporované zdroje: </br> -SQL Server (2005-2019) místní nebo Azure VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP COMPUTE SQL Server virtuální počítač |  – Migrace ve velkém měřítku může být automatizovaná přes [PowerShell](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md). </br> -Doba k dokončení migrace závisí na velikosti databáze a ovlivněná časem zálohování a obnovení. </br> – Může být vyžadováno dostatečné výpadky. |
 |[Nativní zálohování a obnovení](../../managed-instance/restore-sample-database-quickstart.md) | – Migrujte jednotlivé databáze obchodních aplikací.  </br> – Rychlá a snadná migrace bez samostatné služby nebo nástroje pro migraci  </br> </br> Podporované zdroje: </br> -SQL Server (2005-2019) místní nebo Azure VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP COMPUTE SQL Server virtuální počítač | -Záloha databáze používá více vláken pro optimalizaci přenosu dat do služby Azure Blob Storage, ale šířka pásma a velikost databáze ISV může ovlivnit přenosovou rychlost. </br> -Výpadky by měly pojmout dobu potřebnou k provedení úplného zálohování a obnovení (což je velikost operace s daty).| 
 | | | |
 
@@ -126,8 +126,8 @@ Následující tabulka porovnává alternativní možnosti migrace:
 |---------|---------|---------|
 |[Transakční replikace](../../managed-instance/replication-transactional-overview.md) | – Migrujete průběžně po publikování změn z tabulek zdrojové databáze do cílové tabulky databáze spravované instance SQL. </br> – Úplná nebo částečná migrace databází z vybraných tabulek (podmnožina databáze).  </br> </br> Podporované zdroje: </br> -SQL Server (2012-2019) s některými omezeními </br> – AWS EC2  </br> – GCP COMPUTE SQL Server virtuální počítač | </br> – Instalace je poměrně složitá v porovnání s dalšími možnostmi migrace.   </br> – Poskytuje možnost průběžné replikace pro migraci dat (aniž byste museli přenášet databáze do režimu offline).</br> -Transakční replikace má několik omezení, která je potřeba vzít v úvahu při nastavování vydavatele na zdrojovém SQL Server. Další informace najdete v tématu [omezení pro publikování objektů](/sql/relational-databases/replication/publish/publish-data-and-database-objects#limitations-on-publishing-objects) .  </br> – K dispozici je možnost [monitorování aktivity replikace](/sql/relational-databases/replication/monitor/monitoring-replication) .    |
 |[Hromadná kopie](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| – Migrace úplných nebo částečných migrací dat. </br> – Může vyhovovat výpadkům. </br> </br> Podporované zdroje: </br> -SQL Server (2005-2019) místní nebo Azure VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP COMPUTE SQL Server virtuální počítač   | – Vyžaduje prostoje při exportu dat ze zdroje a importu do cíle. </br> – Formáty souborů a datové typy používané při exportu/importu musí být konzistentní se schématy tabulek. |
-|[Průvodce exportem a BACPAC importu](/azure/azure-sql/database/database-import)| – Migrujte jednotlivé databáze obchodních aplikací. </br>– Hodí se pro menší databáze.  </br>  Nevyžaduje samostatnou službu nebo nástroj pro migraci. </br> </br> Podporované zdroje: </br> -SQL Server (2005-2019) místní nebo Azure VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP COMPUTE SQL Server virtuální počítač  |   </br> – Vyžaduje prostoje, protože data je třeba exportovat ve zdroji a importovat do cílového umístění.   </br> – Formáty souborů a datové typy používané při exportu a importu musí být konzistentní se schématy tabulek, aby se předešlo chybám zkrácení/neshody datových typů. </br> – Doba potřebná k exportu databáze s velkým počtem objektů může být výrazně vyšší. |
-|[Azure Data Factory (ADF)](/azure/data-factory/connector-azure-sql-managed-instance)| – Migrace a transformace dat ze zdrojových SQL Server databází.</br> – Slučují se data z více zdrojů dat do spravované instance Azure SQL, obvykle pro úlohy Business Intelligence (BI).   </br> – Vyžaduje vytvoření kanálů přesunu dat v ADF pro přesun dat ze zdroje do cíle.   </br> - [Náklady](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) jsou důležitým aspektem a vycházejí z aktivačních událostí kanálu, spuštění aktivit, doby trvání přesunu dat atd. |
+|[Průvodce exportem a BACPAC importu](../../database/database-import.md)| – Migrujte jednotlivé databáze obchodních aplikací. </br>– Hodí se pro menší databáze.  </br>  Nevyžaduje samostatnou službu nebo nástroj pro migraci. </br> </br> Podporované zdroje: </br> -SQL Server (2005-2019) místní nebo Azure VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP COMPUTE SQL Server virtuální počítač  |   </br> – Vyžaduje prostoje, protože data je třeba exportovat ve zdroji a importovat do cílového umístění.   </br> – Formáty souborů a datové typy používané při exportu a importu musí být konzistentní se schématy tabulek, aby se předešlo chybám zkrácení/neshody datových typů. </br> – Doba potřebná k exportu databáze s velkým počtem objektů může být výrazně vyšší. |
+|[Azure Data Factory (ADF)](../../../data-factory/connector-azure-sql-managed-instance.md)| – Migrace a transformace dat ze zdrojových SQL Server databází.</br> – Slučují se data z více zdrojů dat do spravované instance Azure SQL, obvykle pro úlohy Business Intelligence (BI).   </br> – Vyžaduje vytvoření kanálů přesunu dat v ADF pro přesun dat ze zdroje do cíle.   </br> - [Náklady](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) jsou důležitým aspektem a vycházejí z aktivačních událostí kanálu, spuštění aktivit, doby trvání přesunu dat atd. |
 | | | |
 
 ## <a name="feature-interoperability"></a>Interoperabilita funkcí 
@@ -136,7 +136,7 @@ Při migraci úloh, které spoléhají na jiné funkce SQL Server, jsou potřeba
 
 #### <a name="sql-server-integration-services"></a>Služba SSIS (SQL Server Integration Services)
 
-Migrujte balíčky služba SSIS (SQL Server Integration Services) (SSIS) a projekty v SSISDB do spravované instance Azure SQL pomocí [Azure Database Migration Service (DMS)](/azure/dms/how-to-migrate-ssis-packages-managed-instance). 
+Migrujte balíčky služba SSIS (SQL Server Integration Services) (SSIS) a projekty v SSISDB do spravované instance Azure SQL pomocí [Azure Database Migration Service (DMS)](../../../dms/how-to-migrate-ssis-packages-managed-instance.md). 
 
 Pro migraci se podporují jenom balíčky SSIS v SSISDB, které začínají na SQL Server 2012. Před migrací převeďte starší balíčky SSIS. Další informace najdete v [kurzu převod projektu](/sql/integration-services/lesson-6-2-converting-the-project-to-the-project-deployment-model) . 
 
@@ -149,7 +149,7 @@ Sestavy SQL Server Reporting Services (SSRS) je možné migrovat na stránkovan�
 
 SQL Server Analysis Services tabulkové modely z SQL Server 2012 a novějších se dají migrovat do Azure Analysis Services, což je model nasazení PaaS pro Analysis Services tabelární model v Azure. Další informace o migraci Prem modelů a jejich Azure Analysis Services najdete v tomto [výukovém kurzu](https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/).
 
-Případně můžete také zvážit migraci místních Analysis Services tabelárních modelů do [Power BI Premium pomocí nových koncových bodů pro čtení a zápis XMLA](https://docs.microsoft.com/power-bi/admin/service-premium-connect-tools). 
+Případně můžete také zvážit migraci místních Analysis Services tabelárních modelů do [Power BI Premium pomocí nových koncových bodů pro čtení a zápis XMLA](/power-bi/admin/service-premium-connect-tools). 
 > [!NOTE]
 > Funkce koncových bodů pro čtení a zápis pro Power BI XMLA je aktuálně v Public Preview a neměla by se považovat za produkční úlohy, dokud nebudou tyto funkce všeobecně dostupné.
 
@@ -161,7 +161,7 @@ Mimo architekturu s vysokou dostupností, která je součástí spravované inst
 
 #### <a name="sql-agent-jobs"></a>Úlohy agenta SQL
 
-K migraci [úloh agenta SQL](/azure/dms/howto-sql-server-to-azure-sql-mi-powershell#offline-migrations)použijte možnost DMS (offline Azure Database Migration Service). V opačném případě skriptujte úlohy v jazyce Transact-SQL (T-SQL) pomocí SQL Server Management Studio a pak je ručně znovu vytvořte na cílové spravované instanci SQL. 
+K migraci [úloh agenta SQL](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md#offline-migrations)použijte možnost DMS (offline Azure Database Migration Service). V opačném případě skriptujte úlohy v jazyce Transact-SQL (T-SQL) pomocí SQL Server Management Studio a pak je ručně znovu vytvořte na cílové spravované instanci SQL. 
 
 > [!IMPORTANT]
 > Azure DMS v současné době podporuje jenom úlohy s kroky v subsystému T-SQL. Úlohy s SSIS kroky balíčku se musí migrovat ručně. 
@@ -193,7 +193,7 @@ Obnovení systémových databází se nepodporuje. Chcete-li migrovat objekty na
 
 Nezapomeňte využít výhod pokročilých cloudových funkcí nabízených službou SQL Managed instance. Například už se nemusíte starat o správu záloh, protože služba to udělá za vás. Můžete obnovit k jakémukoli [bodu v čase v rámci doby uchování](../../database/recovery-using-backups.md#point-in-time-restore). Kromě toho se nemusíte starat o nastavení vysoké dostupnosti, protože [je integrovaná vysoká dostupnost](../../database/high-availability-sla.md). 
 
-Pokud chcete posílit zabezpečení, zvažte použití [Azure Active Directory ověřování](../../database/authentication-aad-overview.md), [auditování](../../managed-instance/auditing-configure.md), [detekce hrozeb](../../database/advanced-data-security.md), [zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security)a [dynamického maskování dat](/sql/relational-databases/security/dynamic-data-masking).
+Pokud chcete posílit zabezpečení, zvažte použití [Azure Active Directory ověřování](../../database/authentication-aad-overview.md), [auditování](../../managed-instance/auditing-configure.md), [detekce hrozeb](../../database/azure-defender-for-sql.md), [zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security)a [dynamického maskování dat](/sql/relational-databases/security/dynamic-data-masking).
 
 Kromě pokročilých funkcí správy a zabezpečení poskytuje spravovaná instance SQL sadu pokročilých nástrojů, které vám pomůžou [monitorovat a ladit vaše úlohy](../../database/monitor-tune-overview.md). [Azure SQL Analytics](../../../azure-monitor/insights/azure-sql.md) umožňuje centralizovaným způsobem monitorovat velkou sadu spravovaných instancí.  [Automatické ladění](/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction)   ve spravovaných instancích nepřetržitě monitoruje výkon statistik spuštění plánu SQL a automaticky opravuje zjištěné problémy s výkonem. 
 

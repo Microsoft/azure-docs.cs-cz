@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 55ce3747aaf105c7e2cbb830b1175769a658fd72
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: ee4abaf3c9f6aa70ba14920711c8917994254649
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496617"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326960"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>Průvodce migrací: SQL Server SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -34,7 +34,7 @@ Další informace o migraci najdete v tématu [Přehled migrace](sql-server-to-s
 
 :::image type="content" source="media/sql-server-to-database-overview/migration-process-flow-small.png" alt-text="Tok procesu migrace":::
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 Chcete-li migrovat SQL Server do Azure SQL Database, ujistěte se, že máte následující požadavky: 
 
@@ -114,7 +114,7 @@ K migraci databáze z SQL Server na Azure SQL Database pomocí DMA použijte ten
 
 1. Stáhněte a nainstalujte [Pomocník s migrací databáze](https://www.microsoft.com/download/details.aspx?id=53595).
 1. Vytvořte nový projekt a vyberte možnost **migrace** jako typ projektu.
-1. Nastavte typ zdrojového serveru na **SQL Server** a typ cílového serveru, který se má **Azure SQL Database** , vyberte obor migrace jako **schéma a data** a vyberte **vytvořit**.
+1. Nastavte typ zdrojového serveru na **SQL Server** a typ cílového serveru, který se má **Azure SQL Database**, vyberte obor migrace jako **schéma a data** a vyberte **vytvořit**.
 1. V projektu migrace zadejte podrobnosti zdrojového serveru, jako je název serveru, přihlašovací údaje pro připojení k serveru a zdrojovou databázi, kterou chcete migrovat.
 1. V podrobnostech cílového serveru zadejte název serveru Azure SQL Database, přihlašovací údaje pro připojení k serveru a cílovou databázi, do které se má migrovat.
 1. Vyberte objekty schématu a nasaďte je do cílového Azure SQL Database.
@@ -165,10 +165,10 @@ Po migraci dat do cílového prostředí všechny aplikace, které dříve využ
 
 Testovací přístup pro migraci databáze se skládá z následujících aktivit:
 
-1. **Vývoj ověřovacích testů** : k otestování migrace databáze je nutné použít dotazy SQL. Je nutné vytvořit ověřovací dotazy ke spuštění proti zdrojové i cílové databázi. Dotazy na ověřování by se měly pokrývat s definovaným oborem.
-1. **Nastavení testovacího prostředí** : testovací prostředí by mělo obsahovat kopii zdrojové databáze a cílovou databázi. Nezapomeňte izolovat testovací prostředí.
-1. **Spustit ověřovací testy** : Spusťte ověřovací testy proti zdroji a cíli a pak Analyzujte výsledky.
-1. **Spustit testy výkonu** : spustit test výkonnosti proti zdroji a cíli a pak analyzovat a porovnat výsledky.
+1. **Vývoj ověřovacích testů**: k otestování migrace databáze je nutné použít dotazy SQL. Je nutné vytvořit ověřovací dotazy ke spuštění proti zdrojové i cílové databázi. Dotazy na ověřování by se měly pokrývat s definovaným oborem.
+1. **Nastavení testovacího prostředí**: testovací prostředí by mělo obsahovat kopii zdrojové databáze a cílovou databázi. Nezapomeňte izolovat testovací prostředí.
+1. **Spustit ověřovací testy**: Spusťte ověřovací testy proti zdroji a cíli a pak Analyzujte výsledky.
+1. **Spustit testy výkonu**: spustit test výkonnosti proti zdroji a cíli a pak analyzovat a porovnat výsledky.
 
    > [!NOTE]
    > Pro pomoc s vývojem a prováděním ověřovacích testů po migraci zvažte řešení kvality dat dostupné od partnera [QuerySurge](https://www.querysurge.com/company/partners/microsoft). 
@@ -176,7 +176,7 @@ Testovací přístup pro migraci databáze se skládá z následujících aktivi
 
 ## <a name="leverage-advanced-features"></a>Využití pokročilých funkcí 
 
-Nezapomeňte využít výhod pokročilých cloudových funkcí, které nabízí SQL Database, jako je [integrovaná vysoká dostupnost](../../database/high-availability-sla.md), [detekce hrozeb](../../database/advanced-data-security.md)a [monitorování a optimalizace vašich úloh](../../database/monitor-tune-overview.md). 
+Nezapomeňte využít výhod pokročilých cloudových funkcí, které nabízí SQL Database, jako je [integrovaná vysoká dostupnost](../../database/high-availability-sla.md), [detekce hrozeb](../../database/azure-defender-for-sql.md)a [monitorování a optimalizace vašich úloh](../../database/monitor-tune-overview.md). 
 
 Některé funkce SQL Server jsou dostupné až po změně [úrovně kompatibility databáze](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database) na nejnovější úroveň kompatibility (150). 
 

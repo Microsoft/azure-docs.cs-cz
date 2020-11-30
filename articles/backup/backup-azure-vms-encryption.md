@@ -3,12 +3,12 @@ title: Zálohování a obnovení šifrovaných virtuálních počítačů Azure
 description: Popisuje postup zálohování a obnovení šifrovaných virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: 67c0e879fe2acf241b1ed08a5658209bf70b1b9c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c4760a54d0200e48b2d6a38c963e9fc23925f7ff
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95978110"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324919"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Zálohování a obnovení šifrovaných virtuálních počítačů Azure
 
@@ -16,13 +16,13 @@ Tento článek popisuje, jak zálohovat a obnovovat virtuální počítače Azur
 
 ## <a name="encryption-using-platform-managed-keys"></a>Šifrování pomocí klíčů spravovaných platformou
 
-Ve výchozím nastavení jsou všechny disky ve vašich virtuálních počítačích automaticky zašifrované, a to pomocí klíčů (PMK) spravovaných platformou (PMK), které používají [šifrování služby Storage](../storage/common/storage-service-encryption.md). Tyto virtuální počítače můžete zálohovat pomocí Azure Backup bez jakýchkoli konkrétních akcí nutných k podpoře šifrování na konci. Další informace o šifrování pomocí klíčů spravovaných platformou [najdete v tomto článku](../virtual-machines/windows/disk-encryption.md#platform-managed-keys).
+Ve výchozím nastavení jsou všechny disky ve vašich virtuálních počítačích automaticky zašifrované, a to pomocí klíčů (PMK) spravovaných platformou (PMK), které používají [šifrování služby Storage](../storage/common/storage-service-encryption.md). Tyto virtuální počítače můžete zálohovat pomocí Azure Backup bez jakýchkoli konkrétních akcí nutných k podpoře šifrování na konci. Další informace o šifrování pomocí klíčů spravovaných platformou [najdete v tomto článku](../virtual-machines/disk-encryption.md#platform-managed-keys).
 
 ![Šifrované disky](./media/backup-encryption/encrypted-disks.png)
 
 ## <a name="encryption-using-customer-managed-keys"></a>Šifrování s využitím klíčů spravovaných zákazníky
 
-Když šifrujete disky pomocí vlastních klíčů (CMK), klíč použitý k šifrování disků je uložený v Azure Key Vault a spravuje je. Šifrování služby Storage (SSE) používající CMK se liší od šifrování Azure Disk Encryption (ADE). ADE používá nástroje pro šifrování operačního systému. SSE šifruje data ve službě úložiště a umožňuje pro vaše virtuální počítače používat libovolný operační systém nebo Image. Další informace o šifrování spravovaných disků pomocí klíčů spravovaných zákazníkem najdete v [tomto článku](../virtual-machines/windows/disk-encryption.md#customer-managed-keys).
+Když šifrujete disky pomocí vlastních klíčů (CMK), klíč použitý k šifrování disků je uložený v Azure Key Vault a spravuje je. Šifrování služby Storage (SSE) používající CMK se liší od šifrování Azure Disk Encryption (ADE). ADE používá nástroje pro šifrování operačního systému. SSE šifruje data ve službě úložiště a umožňuje pro vaše virtuální počítače používat libovolný operační systém nebo Image. Další informace o šifrování spravovaných disků pomocí klíčů spravovaných zákazníkem najdete v [tomto článku](../virtual-machines/disk-encryption.md#customer-managed-keys).
 
 ## <a name="encryption-support-using-ade"></a>Podpora šifrování pomocí ADE
 
@@ -32,8 +32,8 @@ Azure Backup můžou zálohovat a obnovovat virtuální počítače Azure pomoc�
 
 **Typ disku virtuálního počítače** | **ADE (klíče bek/dm-crypt)** | **ADE a KEK**
 --- | --- | ---
-**Nespravovaný** | Yes | Yes
-**Spravované**  | Yes | Yes
+**Nespravovaný** | Ano | Ano
+**Spravované**  | Ano | Ano
 
 - Přečtěte si další informace o [ADE](../security/fundamentals/azure-disk-encryption-vms-vmss.md), [Key Vault](../key-vault/general/overview.md)a [KEK](../virtual-machine-scale-sets/disk-encryption-key-vault.md#set-up-a-key-encryption-key-kek).
 - Přečtěte si [Nejčastější dotazy](../security/fundamentals/azure-disk-encryption-vms-vmss.md) k šifrování disků virtuálních počítačů Azure.
@@ -145,8 +145,8 @@ Následujícím způsobem obnovte šifrované virtuální počítače:
 
 1. [Obnovte disk virtuálního počítače](backup-azure-arm-restore-vms.md#restore-disks).
 2. Znovu vytvořte instanci virtuálního počítače jedním z následujících způsobů:
-    1. Použijte šablonu generovanou během operace obnovení k přizpůsobení nastavení virtuálního počítače a aktivaci nasazení virtuálního počítače. [Přečtěte si další informace](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
-    2. Vytvořte nový virtuální počítač z obnovených disků pomocí PowerShellu. [Přečtěte si další informace](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
+    1. Použijte šablonu generovanou během operace obnovení k přizpůsobení nastavení virtuálního počítače a aktivaci nasazení virtuálního počítače. [Další informace](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
+    2. Vytvořte nový virtuální počítač z obnovených disků pomocí PowerShellu. [Další informace](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
 3. Pro virtuální počítače se systémem Linux přeinstalujte rozšíření ADE, aby byly datové disky otevřené a připojené.
 
 ## <a name="next-steps"></a>Další kroky

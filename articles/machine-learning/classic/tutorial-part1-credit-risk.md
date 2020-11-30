@@ -9,17 +9,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 946435175ea5cd366103bc1254bae0d9afe0926e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 62cecc011980c2d11e6f99895c90b0ced744039a
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325809"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325345"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Kurz 1: předpověď úvěrového rizika – Azure Machine Learning Studio (Classic)
 
-**platí pro:** ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ bez ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
-
+**platí pro:** ![ Toto je značka zaškrtnutí, což znamená, že se tento článek týká Machine Learning Studio (Classic).  ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic)   ![ Toto je X, což znamená, že se tento článek týká Azure Machine Learning.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -40,7 +39,7 @@ V této části kurzu:
 
 Pak můžete tento experiment použít k [proškolování modelů v části 2](tutorial-part2-credit-risk-train.md) a pak [je nasadit v části 3](tutorial-part3-credit-risk-deploy.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá, že jste předtím používali Machine Learning Studio (Classic) alespoň jednou a že máte zkušenosti s koncepty machine learningu. Bere ale v úvahu, že nejste odborníkem ani na jedno.
 
@@ -75,7 +74,7 @@ Pro vývoj prediktivního modelu pro úvěrové riziko budete potřebovat data, 
 
 Použijete soubor s názvem **němčina. data**. Stáhněte si tento soubor na svůj místní pevný disk.  
 
-**Němčina. data** DataSet obsahuje řádky 20 proměnných pro 1000 minulých žadatelů pro kredit. Tyto 20 proměnných představují sadu funkcí datové sady ( *vektor funkce* ), která poskytuje identifikovatelné charakteristiky pro jednotlivé kandidáty na kredit. Další sloupec v každém řádku představuje vypočtené úvěrové riziko žadatele s 700 žadateli, kteří se identifikovali jako nízké úvěrové riziko a 300 jako vysoké riziko.
+**Němčina. data** DataSet obsahuje řádky 20 proměnných pro 1000 minulých žadatelů pro kredit. Tyto 20 proměnných představují sadu funkcí datové sady ( *vektor funkce*), která poskytuje identifikovatelné charakteristiky pro jednotlivé kandidáty na kredit. Další sloupec v každém řádku představuje vypočtené úvěrové riziko žadatele s 700 žadateli, kteří se identifikovali jako nízké úvěrové riziko a 300 jako vysoké riziko.
 
 Web UCI poskytuje popis atributů vektoru funkce pro tato data. Tato data zahrnují finanční informace, historii kreditů, stav zaměstnanosti a osobní údaje. Pro každého žadatele bylo uvedeno binární hodnocení, které označuje, zda se jedná o nízké nebo vysoké úvěrové riziko. 
 
@@ -119,7 +118,7 @@ Jakmile budou data převedena do formátu CSV, je nutné ji odeslat do Machine L
 
 1. Otevřete domovskou stránku Machine Learning Studio (Classic) ( [https://studio.azureml.net](https://studio.azureml.net) ). 
 
-2. ![ ](./media/tutorial-part1-credit-risk/menu.png) V levém horním rohu okna klikněte na nabídku nabídky, klikněte na **Azure Machine Learning** , vyberte **Studio** a přihlaste se.
+2. Klikněte na nabídku s ![ ikonou nabídky – tři skládané čáry.](./media/tutorial-part1-credit-risk/menu.png) v levém horním rohu okna klikněte na **Azure Machine Learning**, vyberte **Studio** a přihlaste se.
 
 3. V dolní části okna klikněte na **+ Nový** .
 
@@ -179,7 +178,7 @@ Dalším krokem v tomto kurzu je vytvořit experiment v Machine Learning Studio 
 
 Můžete zobrazit prvních 100 řádků dat a některé statistické informace pro celou datovou sadu: klikněte na výstupní port datové sady (malý kroužek v dolní části) a vyberte **vizualizovat**.  
 
-Vzhledem k tomu, že datový soubor nepřišel se záhlavími sloupců, Studio (Classic) poskytuje obecné nadpisy (Sloupec1, col2 *atd.* ). Dobré nadpisy nejsou nezbytné pro vytváření modelu, ale usnadňují práci s daty v experimentu. I když nakonec tento model publikujete ve webové službě, budou hlavičky identifikovat sloupce pro uživatele služby.  
+Vzhledem k tomu, že datový soubor nepřišel se záhlavími sloupců, Studio (Classic) poskytuje obecné nadpisy (Sloupec1, col2 *atd.*). Dobré nadpisy nejsou nezbytné pro vytváření modelu, ale usnadňují práci s daty v experimentu. I když nakonec tento model publikujete ve webové službě, budou hlavičky identifikovat sloupce pro uživatele služby.  
 
 Záhlaví sloupců můžete přidat pomocí modulu [Upravit metadata][edit-metadata] .
 

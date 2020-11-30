@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: 06442e861a247f545ca6f22ecc82e5f5dc910553
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ef3f9f8d75049051ad568abf1163014a78b0cda3
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790232"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324733"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace skupin dostupnosti pro SQL Server virtuálních počítačů s RHEL v Azure 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 
 Tento kurz použije Azure CLI k nasazení prostředků v Azure.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
@@ -263,7 +263,7 @@ Po dokončení příkazu u každého virtuálního počítače byste měli získ
 > [!IMPORTANT]
 > Výchozí image, která je vytvořena pomocí příkazu výše, vytvoří ve výchozím nastavení disk s operačním systémem 32 GB. Můžete mít pravděpodobně nedostatek místa v této výchozí instalaci. K `az vm create` Vytvoření disku s operačním systémem pomocí 128 GB jako příkladu můžete použít následující parametr přidaný do výše uvedeného příkazu: `--os-disk-size-gb 128` .
 >
-> Pak můžete [nakonfigurovat Správce logických svazků (LVM)](../../../virtual-machines/linux/configure-lvm.md) , pokud potřebujete rozbalit příslušné svazky složek, aby vyhovovaly vaší instalaci.
+> Pak můžete [nakonfigurovat Správce logických svazků (LVM)](/previous-versions/azure/virtual-machines/linux/configure-lvm) , pokud potřebujete rozbalit příslušné svazky složek, aby vyhovovaly vaší instalaci.
 
 ### <a name="test-connection-to-the-created-vms"></a>Test připojení k vytvořeným virtuálním počítačům
 
@@ -304,7 +304,7 @@ Připojte se ke každému uzlu virtuálního počítače a postupujte podle poky
 1. Aktualizujte a nainstalujte balíčky Pacemaker na všech uzlech pomocí následujících příkazů:
 
     > [!NOTE]
-    > **nmap** se instaluje jako součást tohoto bloku příkazů jako nástroj k vyhledání dostupných IP adres ve vaší síti. Nemusíte instalovat **nmap** , ale bude to užitečné později v tomto kurzu.
+    > **nmap** se instaluje jako součást tohoto bloku příkazů jako nástroj k vyhledání dostupných IP adres ve vaší síti. Nemusíte instalovat **nmap**, ale bude to užitečné později v tomto kurzu.
 
     ```bash
     sudo yum update -y
@@ -493,7 +493,7 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  7. Vyberte **certifikáty a tajné klíče** pro novou registraci aplikace a pak klikněte na **nový tajný klíč klienta** .
  8. Zadejte popis nového klíče (tajný klíč klienta), vyberte možnost **nikdy nevyprší** a klikněte na **Přidat** .
  9. Zapište hodnotu tajného kódu. Používá se jako heslo instančního objektu.
-10. Vyberte **Přehled** . Poznamenejte si ID aplikace. Používá se jako uživatelské jméno (přihlašovací ID v následujících krocích) instančního objektu.
+10. Vyberte **Přehled**. Poznamenejte si ID aplikace. Používá se jako uživatelské jméno (přihlašovací ID v následujících krocích) instančního objektu.
  
 ### <a name="create-a-custom-role-for-the-fence-agent"></a>Vytvoření vlastní role pro agenta plotu
 
@@ -571,7 +571,7 @@ Přiřaďte vlastní roli `Linux Fence Agent Role-<username>` vytvořenou v posl
 5. Klikněte na **Přidat přiřazení role** .
 6. Vyberte roli `Linux Fence Agent Role-<username>` ze seznamu **rolí** .
 7. V seznamu **Vybrat** zadejte název aplikace, kterou jste vytvořili výše. `<resourceGroupName>-app`
-8. Klikněte na **Uložit** .
+8. Klikněte na **Uložit**.
 9. Opakujte výše uvedené kroky pro uzel všechny uzly clusteru.
 
 ### <a name="create-the-stonith-devices"></a>Vytvoření zařízení STONITH

@@ -10,16 +10,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/14/2018
+ms.date: 11/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5f8b87684847089a05341a5a68f6ad3e2ac86b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c29087ee1f74e2abed8c9fb2449a222469c82848
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85355858"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325123"
 ---
 # <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>Řešení potíží s připojením SQL u služby Azure AD Connect
 Tento článek vysvětluje, jak řešit potíže s připojením mezi Azure AD Connect a SQL Server. 
@@ -32,7 +32,9 @@ Pokud se SQL Server nenajde, zobrazí se na následujícím snímku obrazovky Ty
 Otevřete okno PowerShellu a naimportujte modul prostředí PowerShell pro ADSyncTools.
 
 ``` powershell
-Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\AdSyncTools.psm1" 
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+Install-PackageProvider -Name NuGet -MinimumVersion2.8.5.201 -Force
+Import-module -Name "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\AdSyncTools"
 ```
 
 >[!NOTE]
@@ -43,7 +45,7 @@ Nebo nainstalujte [Preview moduly PackageManagement PowerShellu – březen 2016
 - **Spustit funkci PowerShellu**: `Connect-ADSyncDatabase` s následujícími parametry
     - WebServer. Název SQL Server
     - Případě. Volitelné Název instance SQL Server a volitelně číslo portu, který chcete použít. Nezadávejte tento parametr pro použití výchozí instance.
-    - Jmen. Volitelné Uživatelský účet, se kterým se má připojit. Pokud necháte pole prázdné, použije se aktuálně přihlášený uživatel. Pokud se připojujete ke vzdálenému SQL Server mělo by se jednat o vlastní účet služby, který jste vytvořili pro připojení Azure ADConnect SQL. Azure AD Connect používá účet služby Azure AD Connect Sync jako k ověření na vzdáleném SQL serveru.
+    - Jmen. Volitelné Uživatelský účet, se kterým se má připojit. Pokud necháte pole prázdné, použije se aktuálně přihlášený uživatel. Pokud se připojujete ke vzdálenému SQL Server mělo by se jednat o vlastní účet služby, který jste vytvořili pro Azure AD Connect připojení SQL. Azure AD Connect používá účet služby Azure AD Connect Sync jako k ověření na vzdáleném SQL serveru.
     - Heslo. Volitelné Heslo pro zadané uživatelské jméno.
 
 Tato funkce PowerShellu se pokusí připojit k určenému SQL Server a instanci pomocí předaných přihlašovacích údajů nebo použijte přihlašovací údaje aktuálního uživatele. Pokud SQL Server nejde najít, skript se pokusí připojit ke službě SQL Browser a určit povolené protokoly a porty.

@@ -4,12 +4,12 @@ description: Přečtěte si o výchozích Azure Batch kvótách, omezeních a om
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8ca08d43f07633b58cf6f7067c1a8fcd58350678
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: b2039794a0c8a13070c9d81b83869ca4097bd02e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107534"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325960"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -23,15 +23,33 @@ Pokud máte v plánu provozovat produkční úlohy ve službě Batch, možná bu
 
 ## <a name="resource-quotas"></a>Kvóty prostředků
 
-Kvóta je úvěrový limit, nikoli záruka na kapacitu. Pokud máte velké nároky na kapacitu, obraťte se prosím na podporu Azure.
+Kvóta je limit, nikoli záruka na kapacitu. Pokud máte velké nároky na kapacitu, obraťte se prosím na podporu Azure.
 
 Všimněte si také, že kvóty nejsou Garantované hodnoty. Kvóty se můžou lišit v závislosti na změnách ze služby Batch nebo na žádost uživatele o změnu hodnoty kvóty.
 
 [!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
+## <a name="core-quotas"></a>Základní kvóty
+
+### <a name="cores-quotas-in-batch-service-mode"></a>Kvóty jader v režimu služby Batch
+
+Výkon vyhrazených základních kvót se zlepšuje, protože změny jsou k dispozici ve fázích a dokončené pro všechny účty Batch po konci prosince 2020.
+
+Základní kvóty existují pro každou řadu virtuálních počítačů podporovanou službou Batch a zobrazují se na stránce **kvóty** na portálu. Omezení kvót řady virtuálních počítačů je možné aktualizovat pomocí žádosti o podporu, jak je popsáno níže.
+
+S existujícím mechanismem, který je v režimu fáze, se nekontrolují omezení kvóty pro řady virtuálních počítačů, vynutila se jenom celková limit kvót pro účet. To znamená, že může být možné přidělit více jader pro řadu virtuálních počítačů, než je určeno kvótou řady virtuálních počítačů, až do celkového limitu kvóty účtu.
+
+Aktualizovaný mechanismus vynutil kvóty řady virtuálních počítačů navíc k celkové kvótě účtu. V rámci přechodu na nový mechanismus se můžou aktualizovat hodnoty kvót řady virtuálních počítačů, aby se předešlo chybám přidělení – všechny řady virtuálních počítačů používané v posledních měsících budou mít kvótu řady virtuálních počítačů aktualizované tak, aby odpovídala celkové kvótě účtu. Tato změna neumožní použití větší kapacity, než byla již k dispozici.
+
+Je možné zjistit, jestli je povolené vynucení kvóty řady virtuálních počítačů pro účet Batch, a to kontrolou:
+
+* Vlastnost [dedicatedCoreQuotaPerVMFamilyEnforced](/rest/api/batchmanagement/batchaccount/get#batchaccount) rozhraní API účtu Batch.
+
+* Text na stránce **kvóty** účtu Batch na portálu
+
 ### <a name="cores-quotas-in-user-subscription-mode"></a>Kvóty jader v režimu předplatného uživatele
 
-Pokud jste vytvořili [účet Batch](accounts.md) s režimem přidělování fondů nastaveným na **předplatné uživatele**, kvóty se uplatní odlišně. V tomto režimu se virtuální počítače a další prostředky služby Batch vytvářejí přímo ve vašem předplatném při vytvoření fondu. Kvóty Azure Batchch jader se nevztahují na účet vytvořený v tomto režimu. Místo toho se použijí kvóty ve vašem předplatném pro regionální výpočetní jádra a další prostředky.
+Pokud jste vytvořili [účet Batch](accounts.md) s režimem přidělování fondů nastaveným na **předplatné uživatele**, virtuální počítače a další prostředky služby Batch se vytvoří přímo ve vašem předplatném při vytvoření nebo změně velikosti fondu. Kvóty Azure Batch Core se nevztahují a používají se a vynutily kvóty v předplatném pro regionální výpočetní jádra, výpočetní jádra pro jednotlivé řady a další prostředky.
 
 Další informace o těchto kvótách najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
@@ -69,11 +87,11 @@ Další omezení nastavená službou Batch. Na rozdíl od [kvót prostředků](#
 
 Zobrazení kvót účtu Batch v [Azure Portal](https://portal.azure.com):
 
-1. Vyberte **účty Batch**a pak vyberte účet Batch, na který vás zajímáte.
+1. Vyberte **účty Batch** a pak vyberte účet Batch, na který vás zajímáte.
 1. V nabídce účtu Batch vyberte **kvóty** .
 1. Zobrazit kvóty, které jsou aktuálně aplikovány na účet Batch.
 
-    ![Kvóty účtu Batch][account_quotas]
+:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="Kvóty účtu Batch":::
 
 ## <a name="increase-a-quota"></a>Zvýšení kvóty
 
@@ -93,7 +111,7 @@ Můžete požádat o zvýšení kvóty pro účet Batch nebo předplatné pomoc�
     
 1. Oblast **Details** (Podrobnosti) obsahuje:
       
-    1. V části **Zadejte podrobnosti**zadejte umístění, typ kvóty a účet Batch.
+    1. V části **Zadejte podrobnosti** zadejte umístění, typ kvóty a účet Batch.
     
        ![Zvýšení kvóty dávky][quota_increase]
 

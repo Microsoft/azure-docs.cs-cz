@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 39f9a5802d7f10753c8ea81bf414da195e137cc6
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: e2e25f2fb806cb6e88745ffdfefe3dd82c0e9a6d
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93234133"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326536"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Službu Azure Import/Export můžete použít k exportu dat z úložiště objektů blob v Azure.
 
@@ -43,17 +43,17 @@ Musíte:
 Chcete-li vytvořit úlohu exportu v Azure Portal, proveďte následující kroky.
 
 1. Přihlaste se k <https://portal.azure.com/> .
-2. **> úlohy import/export přejít na všechny služby > úložiště** .
+2. **> úlohy import/export přejít na všechny služby > úložiště**.
 
     ![Přejít na úlohy importu/exportu](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
 
-3. Klikněte na **vytvořit úlohu importu/exportu** .
+3. Klikněte na **vytvořit úlohu importu/exportu**.
 
     ![Klikněte na úloha importu/exportu.](./media/storage-import-export-data-from-blobs/export-from-blob2.png)
 
-4. **Základní informace** :
+4. **Základní informace**:
 
-    - Vyberte **exportovat z Azure** .
+    - Vyberte **exportovat z Azure**.
     - Zadejte popisný název úlohy exportu. Použijte název, který zvolíte ke sledování průběhu úloh.
         - Název může obsahovat jenom malá písmena, číslice, spojovníky a podtržítka.
         - Název musí začínat písmenem a nesmí obsahovat mezery.
@@ -62,7 +62,7 @@ Chcete-li vytvořit úlohu exportu v Azure Portal, proveďte následující krok
 
         ![Základy](./media/storage-import-export-data-from-blobs/export-from-blob3.png)
 
-5. V **podrobnostech úlohy** :
+5. V **podrobnostech úlohy**:
 
     - Vyberte účet úložiště, ve kterém se nacházejí data, která se mají exportovat. Na místě, kde se nacházíte, použijte účet úložiště.
     - Umístění dropoff se automaticky vyplní podle oblasti vybraného účtu úložiště.
@@ -72,8 +72,8 @@ Chcete-li vytvořit úlohu exportu v Azure Portal, proveďte následující krok
          ![Exportovat vše](./media/storage-import-export-data-from-blobs/export-from-blob4.png)
 
     - Můžete určit kontejnery a objekty blob k exportu.
-        - **Chcete-li určit objekt BLOB k exportu** : použijte selektor se **stejnou hodnotou** . Zadejte relativní cestu k objektu BLOB počínaje názvem kontejneru. Pro určení kořenového kontejneru použijte *$root* .
-        - **Zadání všech objektů BLOB počínaje předponou** : použijte **začátek s** selektorem. Zadejte předponu začínající lomítkem (/). Prefixem může být Předpona názvu kontejneru, úplný název kontejneru nebo úplný název kontejneru následovaný prefixem názvu objektu BLOB. Aby se předešlo chybám při zpracování, jak je znázorněno na tomto snímku obrazovky, je nutné zadat cesty objektů BLOB v platném formátu. Další informace najdete v tématu [Příklady platných cest objektů BLOB](#examples-of-valid-blob-paths).
+        - **Chcete-li určit objekt BLOB k exportu**: použijte selektor se **stejnou hodnotou** . Zadejte relativní cestu k objektu BLOB počínaje názvem kontejneru. Pro určení kořenového kontejneru použijte *$root* .
+        - **Zadání všech objektů BLOB počínaje předponou**: použijte **začátek s** selektorem. Zadejte předponu začínající lomítkem (/). Prefixem může být Předpona názvu kontejneru, úplný název kontejneru nebo úplný název kontejneru následovaný prefixem názvu objektu BLOB. Aby se předešlo chybám při zpracování, jak je znázorněno na tomto snímku obrazovky, je nutné zadat cesty objektů BLOB v platném formátu. Další informace najdete v tématu [Příklady platných cest objektů BLOB](#examples-of-valid-blob-paths).
 
            ![Exportovat vybrané kontejnery a objekty blob](./media/storage-import-export-data-from-blobs/export-from-blob5.png)
 
@@ -84,7 +84,7 @@ Chcete-li vytvořit úlohu exportu v Azure Portal, proveďte následující krok
    > [!NOTE]
    > Pokud se objekt blob, který se má exportovat, používá během kopírování dat, služba Azure import/export pořizuje snímek objektu BLOB a zkopíruje snímek.
 
-6. V **informace o expedici zpět** :
+6. V **informace o expedici zpět**:
 
     - V rozevíracím seznamu vyberte přepravce. Pokud chcete použít operátor jiného než FedEx/DHL, vyberte z rozevíracího seznamu existující možnost. Kontaktujte Azure Data Box provozní tým `adbops@microsoft.com`  s informacemi, které se týkají přepravce, kterého plánujete použít.
     - Zadejte platné číslo účtu dopravce, který jste vytvořili pomocí tohoto dopravce. Společnost Microsoft používá tento účet k dodávání jednotek zpátky po dokončení úlohy exportu.
@@ -93,7 +93,7 @@ Chcete-li vytvořit úlohu exportu v Azure Portal, proveďte následující krok
         > [!TIP]
         > Místo zadání e-mailové adresy pro jednoho uživatele zadejte skupinu. Tím zajistíte, že budete dostávat oznámení i v případě, že správce opustí.
 
-7. V **souhrnu** :
+7. V **souhrnu**:
 
     - Zkontrolujte podrobnosti úlohy.
     - Poznamenejte si název úlohy a zadáte dodací adresu Azure datacentra pro expedici disků do Azure.
@@ -147,7 +147,7 @@ Pomocí následujících kroků můžete vytvořit úlohu exportu v Azure Portal
     > [!TIP]
     > Místo zadání e-mailové adresy pro jednoho uživatele zadejte skupinu. Tím zajistíte, že budete dostávat oznámení i v případě, že správce opustí.
 
-   Tato úloha exportuje všechny objekty BLOB v účtu úložiště. Objekt BLOB pro export můžete zadat nahrazením této hodnoty pro **--Export** :
+   Tato úloha exportuje všechny objekty BLOB v účtu úložiště. Objekt BLOB pro export můžete zadat nahrazením této hodnoty pro **--Export**:
 
     ```azurecli
     --export blob-path=$root/logo.bmp
@@ -155,7 +155,7 @@ Pomocí následujících kroků můžete vytvořit úlohu exportu v Azure Portal
 
    Tato hodnota parametru exportuje objekt BLOB s názvem *logo.bmp* v kořenovém kontejneru.
 
-   Máte také možnost vybrat všechny objekty BLOB v kontejneru pomocí předpony. Nahraďte tuto hodnotu pro **--Export** :
+   Máte také možnost vybrat všechny objekty BLOB v kontejneru pomocí předpony. Nahraďte tuto hodnotu pro **--Export**:
 
     ```azurecli
     blob-path-prefix=/myiecontainer
@@ -234,7 +234,7 @@ Install-Module -Name Az.ImportExport
     > [!TIP]
     > Místo zadání e-mailové adresy pro jednoho uživatele zadejte skupinu. Tím zajistíte, že budete dostávat oznámení i v případě, že správce opustí.
 
-   Tato úloha exportuje všechny objekty BLOB v účtu úložiště. Objekt BLOB pro export můžete zadat nahrazením této hodnoty pro **-ExportBlobListblobPath** :
+   Tato úloha exportuje všechny objekty BLOB v účtu úložiště. Objekt BLOB pro export můžete zadat nahrazením této hodnoty pro **-ExportBlobListblobPath**:
 
    ```azurepowershell-interactive
    -ExportBlobListblobPath $root\logo.bmp
@@ -242,7 +242,7 @@ Install-Module -Name Az.ImportExport
 
    Tato hodnota parametru exportuje objekt BLOB s názvem *logo.bmp* v kořenovém kontejneru.
 
-   Máte také možnost vybrat všechny objekty BLOB v kontejneru pomocí předpony. Tuto hodnotu nahraďte parametrem **-ExportBlobListblobPath** :
+   Máte také možnost vybrat všechny objekty BLOB v kontejneru pomocí předpony. Tuto hodnotu nahraďte parametrem **-ExportBlobListblobPath**:
 
    ```azurepowershell-interactive
    -ExportBlobListblobPath '/myiecontainer'

@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 06/03/2020
-ms.openlocfilehash: c5392c822c42c2e0ee3f6ce9edffc6229d572165
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c805bacbd4a2219fb79168ad6426efd8b0a390df
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782412"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324512"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Machine Learning Services ve spravované instanci Azure SQL (Preview)
 
@@ -54,11 +54,11 @@ Tato omezená verze Public Preview podléhá [podmínkám Azure Preview](https:/
 
 Pokud se zajímáte o připojení k programu verze Preview a přijmout tyto podmínky, můžete požádat o registraci vytvořením lístku podpory Azure na adrese [**https://azure.microsoft.com/support/create-ticket/**](https://azure.microsoft.com/support/create-ticket/) . 
 
-1. Na stránce **vytvořit lístek podpory** klikněte na **vytvořit incident** .
+1. Na stránce **vytvořit lístek podpory** klikněte na **vytvořit incident**.
 
 1. Na stránce **pomoc a podpora** klikněte na **Nová žádost o podporu** a vytvořte novou lístek.
 
-1. Vyberte následující možnosti:
+1. Zadejte následující možnosti:
    - Typ problému – **technický**
    - Předplatné – *Vyberte své předplatné* .
    - Služba – **spravovaná instance SQL**
@@ -67,16 +67,16 @@ Pokud se zajímáte o připojení k programu verze Preview a přijmout tyto podm
    - Typ problému – **Machine Learning Services pro spravovanou instanci SQL (Preview)**
    - Problémový podtyp – **jiný problém nebo "How to" (otázky** )
 
-1. Klikněte na **Další: řešení** .
+1. Klikněte na **Další: řešení**.
 
-1. Přečtěte si informace o verzi Preview a potom klikněte na **Další: podrobnosti** .
+1. Přečtěte si informace o verzi Preview a potom klikněte na **Další: podrobnosti**.
 
 1. Na této stránce:
-   - U otázky, **kterou se pokoušíte zaregistrovat ve verzi Preview** , vyberte **Ano** . 
+   - U otázky, **kterou se pokoušíte zaregistrovat ve verzi Preview**, vyberte **Ano**. 
    - Jako **Popis** zadejte konkrétní požadavek, včetně názvu logického serveru, oblasti a ID předplatného, které chcete zaregistrovat ve verzi Preview. Podle potřeby zadejte další podrobnosti.
    - Vyberte preferovanou metodu kontaktu. 
 
-1. Až skončíte, klikněte na **Další: Zkontrolujte + vytvořit** a pak klikněte na **vytvořit** .
+1. Až skončíte, klikněte na **Další: Zkontrolujte + vytvořit** a pak klikněte na **vytvořit**.
 
 Po registraci do programu vás Microsoft připojí k verzi Public Preview a povolí službu Machine Learning Services pro vaši stávající nebo novou databázi.
 
@@ -85,6 +85,6 @@ Ve verzi Public Preview se služba Machine Learning Services ve službě SQL Man
 ## <a name="next-steps"></a>Další kroky
 
 - Podívejte se na [klíčové rozdíly od SQL Server Machine Learning Services](machine-learning-services-differences.md).
-- Informace o použití Pythonu v Machine Learning Services najdete v tématu [spuštění skriptů Pythonu](/sql/machine-learning/tutorials/quickstart-python-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&view=sql-server-ver15).
-- Informace o použití R v Machine Learning Services najdete v tématu [spuštění skriptů r](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&view=sql-server-ver15).
+- Informace o použití Pythonu v Machine Learning Services najdete v tématu [spuštění skriptů Pythonu](/sql/machine-learning/tutorials/quickstart-python-create-script?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&view=sql-server-ver15).
+- Informace o použití R v Machine Learning Services najdete v tématu [spuštění skriptů r](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&view=sql-server-ver15).
 - Další informace o strojovém učení na jiných platformách SQL najdete v [dokumentaci ke službě SQL Machine Learning](/sql/machine-learning/).

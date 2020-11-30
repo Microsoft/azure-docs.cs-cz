@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: b138b3eb52a0bfb6dca2ec6fdf0b855223bab698
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1f4d0d5c2d5442d14d68922c4d0c27b45b2b841e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984443"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324716"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Označení obrázků v projektu s popisem 
 
@@ -119,7 +119,7 @@ Nemůžete změnit značku existujícího ohraničovacího rámečku. Pokud udě
 
 Ve výchozím nastavení můžete upravit existující ohraničovací rámečky. Nástroj pro zamčení/odemčení **oblastí** nástroje ![ ](./media/how-to-label-images/lock-bounding-boxes-tool.png) nebo "L" přepíná toto chování. Pokud jsou oblasti zamčené, můžete změnit jenom tvar nebo umístění nového ohraničovacího rámečku.
 
-Chcete-li upravit existující ohraničovací rámeček, použijte nástroj pro manipulaci s oblastmi pro manipulaci s **oblastmi** ![ ](./media/how-to-label-images/regions-tool.png) nebo "M". Přetažením okrajů nebo rohů upravte tvar. Klikněte na vnitřek, abyste mohli přetahovat celý ohraničovací rámeček. Pokud nemůžete upravit oblast, pravděpodobně jste přepnuli nástroj **oblasti uzamčení/odemknutí** .
+Použijte nástroj pro **manipulaci s oblastmi** ![ : ikona nástroje pro manipulaci s oblastmi – čtyři šipky směřující ven od středu, nahoru, doprava, dolů a doleva.](./media/how-to-label-images/regions-tool.png) nebo "M", chcete-li upravit existující ohraničovací rámeček. Přetažením okrajů nebo rohů upravte tvar. Klikněte na vnitřek, abyste mohli přetahovat celý ohraničovací rámeček. Pokud nemůžete upravit oblast, pravděpodobně jste přepnuli nástroj **oblasti uzamčení/odemknutí** .
 
 **Template-based box** ![ ](./media/how-to-label-images/template-box-tool.png) K vytvoření více ohraničujících polí se stejnou velikostí použijte nástroj pro pole šablony založené na šablonách nebo "T". Pokud se v obrázku neobsahují žádná ohraničující pole a aktivujete pole na základě šablon, nástroj vytvoří pole 50 až 50-pixel. Pokud vytvoříte ohraničující rámeček a pak aktivujete pole založené na šablonách, budou mít všechny nové ohraničovací rámečky velikost posledního pole, které jste vytvořili. Po umístění lze změnit velikost polí založených na šablonách. Změna velikosti pole založeného na šablonách mění pouze velikost určitého pole.
 
@@ -143,7 +143,7 @@ Chcete-li změnit značku mnohoúhelníku, vyberte nástroj **přesunout oblast*
 
 Můžete upravit existující mnohoúhelníky. Nástroj **oblasti uzamčení/odemknutí** ![ upraví mnohoúhelníky pomocí nástroje pro uzamknutí/odemknutí oblastí ](./media/how-to-label-images/lock-bounding-boxes-tool.png) nebo "L" přepíná toto chování. Pokud jsou oblasti zamčené, můžete změnit jenom tvar nebo umístění nového mnohoúhelníku.
 
-K úpravě existujícího mnohoúhelníku použijte nástroj **Přidat nebo odebrat body mnohoúhelníku** ![ ](./media/how-to-label-images/add-remove-points-tool.png) nebo "U". Kliknutím na mnohoúhelník přidáte nebo odeberete bod. Pokud nemůžete upravit oblast, pravděpodobně jste přepnuli nástroj **oblasti uzamčení/odemknutí** .
+Použijte nástroj **Přidat nebo odebrat body mnohoúhelníku** ![ Toto je ikona nástroje Přidat nebo odebrat body mnohoúhelníku.](./media/how-to-label-images/add-remove-points-tool.png) nebo "U", chcete-li upravit existující mnohoúhelník. Kliknutím na mnohoúhelník přidáte nebo odeberete bod. Pokud nemůžete upravit oblast, pravděpodobně jste přepnuli nástroj **oblasti uzamčení/odemknutí** .
 
 Chcete-li odstranit *všechny* mnohoúhelníky v aktuální imagi, vyberte nástroj **Odstranit všechny oblasti** nástroj ![ Odstranit všechny oblasti ](./media/how-to-label-images/delete-regions-tool.png) .
 

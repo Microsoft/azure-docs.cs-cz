@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 1459c80c857a436c8369d3ebe89794e0b69c33b1
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 35bed58f95deebb78d8e787c8bc3f522ce7004df
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980877"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326965"
 ---
 # <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Zvýhodněné hybridní využití Azure – způsob použití pro Linux Virtual Machines
 
@@ -155,9 +155,13 @@ Odpověď: Ne, nemůžete. Zvýhodněné hybridní využití Azure podporuje př
 
 Odpověď: Ne, nemůžete. Zvýhodněné hybridní využití Azure podporuje převod jenom na image s průběžnými platbami.
 
-*Otázka: nahráli jsem vlastní RHEL image z Prem (prostřednictvím ASR nebo jinak) do Azure. Můžu převést fakturaci na těchto obrázcích z BYOS na PAYG?*
+*Otázka: nahrál (a) vlastní image RHEL z Prem (prostřednictvím Azure Migrate, ASR nebo jinak) do Azure. Můžu převést fakturaci na těchto obrázcích z BYOS na PAYG?*
 
 Odpověď: Ne, nemůžete. Funkce Zvýhodněné hybridní využití Azure je k dispozici pouze pro image RHEL a SLES v současnosti. 
+
+*Otázka: nahrál (a) vlastní image RHEL z Prem (prostřednictvím Azure Migrate, ASR nebo jinak) do Azure. Musím od Zvýhodněné hybridní využití Azure něco dělat?*
+
+Odpověď: ne. RHEL image se už považují za BYOS a účtují se jenom náklady na infrastrukturu Azure. Zodpovídáte za náklady na předplatná RHEL, stejně jako v případě vašich místních prostředí. 
 
 *Otázka: je možné použít Zvýhodněné hybridní využití Azure na virtuálních počítačích nasazených z webu Marketplace RHEL a imagí SLES SAP?*
 

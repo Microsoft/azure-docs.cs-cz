@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 78f228a5e188bc930a9e7484f4c982ba746331dd
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: e0a45bde32fed651c4b38d203b3c75a6d928e7c5
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357772"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327079"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Přehled Azure Key Vault klíčů, tajných kódů a certifikátů
 
@@ -46,10 +46,10 @@ Tajné kódy|/secrets|Podporováno|Nepodporováno
 Certifikáty|/certificates|Podporováno|Nepodporováno
 Klíče účtu úložiště|/storageaccount|Podporováno|Nepodporováno
 |||
-- **Kryptografické klíče** : podporuje více typů klíčů a algoritmů a umožňuje použití klíčů chráněných softwarem a HSM. Další informace najdete v tématu [o klíčích](../keys/about-keys.md).
+- **Kryptografické klíče**: podporuje více typů klíčů a algoritmů a umožňuje použití klíčů chráněných softwarem a HSM. Další informace najdete v tématu [o klíčích](../keys/about-keys.md).
 - **Tajné** kódy: poskytuje zabezpečené úložiště tajných kódů, jako jsou hesla a databázové připojovací řetězce. Další informace najdete v tématu [o tajných klíčích](../secrets/about-secrets.md).
-- **Certifikáty** : podporuje certifikáty, které jsou postavené na klíčích a tajných klíčích a přidávají funkci automatického obnovení. Další informace najdete v tématu [o certifikátech](../certificates/about-certificates.md).
-- **Klíče účtu Azure Storage** : můžou spravovat klíče účtu Azure Storage za vás. Interně Key Vault možné vypsat (synchronizovat) klíče s účtem Azure Storage a pravidelně je znovu vygenerovat (otočit) klíče. Další informace najdete v tématu [Správa klíčů účtu úložiště pomocí Key Vault](../secrets/overview-storage-keys.md).
+- **Certifikáty**: podporuje certifikáty, které jsou postavené na klíčích a tajných klíčích a přidávají funkci automatického obnovení. Další informace najdete v tématu [o certifikátech](../certificates/about-certificates.md).
+- **Klíče účtu Azure Storage**: můžou spravovat klíče účtu Azure Storage za vás. Interně Key Vault možné vypsat (synchronizovat) klíče s účtem Azure Storage a pravidelně je znovu vygenerovat (otočit) klíče. Další informace najdete v tématu [Správa klíčů účtu úložiště pomocí Key Vault](../secrets/overview-storage-keys.md).
 
 Obecnější informace o Key Vault najdete v tématu [o Azure Key Vault](overview.md). Další informace o spravovaných fondech HSM najdete v tématu Co je [Azure Key Vault spravovaný modul HSM?](../managed-hsm/overview.md) .
 
@@ -75,15 +75,16 @@ Objekty uložené v Key Vault jsou tvořeny verzí pokaždé, když je vytvořen
 
 Objekty v Key Vault lze adresovat zadáním verze nebo vynecháním verze pro operace s aktuální verzí objektu. Například při zadání klíče s názvem `MasterKey` a provedení operací bez určení verze způsobí, že systém použije nejnovější dostupnou verzi. Provádění operací s identifikátorem specifickým pro verzi způsobí, že systém použije určitou konkrétní verzi objektu.  
 
+### <a name="vault-name-and-object-name"></a>Název trezoru a názvu objektu
 Objekty se jednoznačně identifikují v rámci Key Vault pomocí adresy URL. Žádné dva objekty v systému nemají stejnou adresu URL, bez ohledu na geografickou polohu. Úplná adresa URL objektu se nazývá identifikátor objektu. Adresa URL se skládá z předpony, která identifikuje Key Vault, typ objektu, uživatelem poskytnutý název objektu a verzi objektu. Název objektu rozlišuje velká a malá písmena. Identifikátory, které neobsahují verzi objektu, jsou označovány jako základní identifikátory.  
 
 Další informace najdete v tématu [ověřování, žádosti a odpovědi](authentication-requests-and-responses.md) .
 
 Identifikátor objektu má následující obecný formát (v závislosti na typu kontejneru):  
 
-- **Pro trezory** : `https://{vault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
+- **Pro trezory**: `https://{vault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
 
-- **Pro spravované fondy HSM** : `https://{hsm-name}.managedhsm.azure.net/{object-type}/{object-name}/{object-version}`  
+- **Pro spravované fondy HSM**: `https://{hsm-name}.managedhsm.azure.net/{object-type}/{object-name}/{object-version}`  
 
 > [!NOTE]
 > Viz [Podpora typu objektu](#object-types) pro typy objektů podporované jednotlivými typy kontejnerů.

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: pafarley
-ms.openlocfilehash: 392cc06c6e0bce7ec2304da61033fc508d940bbb
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 079d5ea0259a436100b81489043b71a81ec1a330
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93143721"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327215"
 ---
 # <a name="video-moderation-with-the-review-tool"></a>Moderování videa pomocí nástroje pro kontrolu
 
@@ -26,7 +26,7 @@ K dosažení nejlepších výsledků pro vaši firmu použijte nástroj pro [mod
 Na řídicím panelu vyberte některou z front recenzí v rámci typu obsahu videa. Tím se spustí Kontrola a otevře se stránka pro moderování obsahu videa.
 
 > [!div class="mx-imgBorder"]
-> ![Podrobné zobrazení v nástroji pro kontrolu moderování videa](./Review-Tool-User-Guide/images/video-moderation-detailed.png)
+> ![V Content Moderator (Preview) se posuvník zvýrazní a nastaví na 4 recenze. Rozostření všech a černých a bílých přepínačů je zvýrazněno a obě jsou nastaveny.](./Review-Tool-User-Guide/images/video-moderation-detailed.png)
 
 ### <a name="review-count"></a>Review count
 
@@ -55,7 +55,7 @@ V **podrobném** zobrazení se v pravém podokně zobrazí několik karet, kter�
 * Vyberte kartu **Historie** , abyste viděli historii revize, například čas vytvoření a způsob úpravy.
 
 > [!div class="mx-imgBorder"]
-> ![Tlačítko hromadných značek pro moderování videa](./Review-Tool-User-Guide/images/video-moderation-video-details.png)
+> ![Je zvýrazněno pravé podokno a je vybrána karta poznámky. K dispozici je oblast testu s označením přidat poznámku.](./Review-Tool-User-Guide/images/video-moderation-video-details.png)
 
 ## <a name="apply-moderation-tags"></a>Použít značky moderování
 
@@ -63,10 +63,10 @@ Hlavní úlohou kontroly videa je použití nebo odebrání značek moderování
 
 ### <a name="bulk-tagging"></a>Hromadné označování
 
-Panel nástrojů **hromadných značek** umožňuje přidat značky k několika vybraným videím najednou. Vyberte jedno nebo více videí, vyberte značky, které chcete použít, a klikněte na **Odeslat** . 
+Panel nástrojů **hromadných značek** umožňuje přidat značky k několika vybraným videím najednou. Vyberte jedno nebo více videí, vyberte značky, které chcete použít, a klikněte na **Odeslat**. 
 
 > [!div class="mx-imgBorder"]
-> ![Tlačítko hromadných značek pro moderování videa](./Review-Tool-User-Guide/images/video-moderation-bulk-tags.png)
+> ![Tlačítko + je v podokně hromadné značky zvýrazněné.](./Review-Tool-User-Guide/images/video-moderation-bulk-tags.png)
 
 
 ### <a name="key-frame-tagging"></a>Označování klíčových snímků
@@ -77,7 +77,7 @@ Můžete také přidat značky moderování do konkrétních klíčových snímk
 > Pokud služba nemohla extrahovat klíčové snímky, nezobrazí se v podokně dlaždice klíčový rámec **žádné dostupné snímky** a možnost výběru klíčových snímků bude zobrazena šedě. V takovém případě můžete použít pouze značky na video jako celek (pomocí **značek videa +** tlačítko).
 
 > [!div class="mx-imgBorder"]
-> ![Podrobné zobrazení v nástroji pro kontrolu moderování videa](./Review-Tool-User-Guide/images/video-moderation-tagging-options.png)
+> ![Zobrazují se všechny podoken dlaždice, přehrávač videa, značky klíčových snímků a okna značek videí. Značky klíčového snímku + a značky videa + se zvýrazní.](./Review-Tool-User-Guide/images/video-moderation-tagging-options.png)
 
 ## <a name="put-a-review-on-hold"></a>Umístit recenzi na blokování
 
@@ -86,7 +86,7 @@ Tlačítko **blokovat** v dolní části podokna video vám umožní blokovat bl
 Videa, která jsou podržená, můžete zobrazit kliknutím na tlačítko **blokovat** v horní části obrazovky. Na pravé straně se zobrazí podokno blokování. Odtud můžete vybrat více kontrol podržených a buď je uvolnit zpátky do fronty, nebo nastavit čas jejich vypršení platnosti. Po předkonfigurovaném časovém intervalu se kontroly blokování uvolní zpátky do fronty. Vyberte **Uložit** a začněte počítat z aktuálně vybraného času vypršení platnosti.
 
 > [!div class="mx-imgBorder"]
-> ![Podrobné zobrazení v nástroji pro kontrolu moderování videa](./Review-Tool-User-Guide/images/video-moderation-hold.png)
+> ![V podokně video se zvýrazní tlačítko Blokovat. V dolní části podokna se zvýrazní pole se seznamem doba blokování spolu s tlačítky uvolnit a uložit.](./Review-Tool-User-Guide/images/video-moderation-hold.png)
 
 ## <a name="submit-a-review"></a>Odeslat recenzi
 

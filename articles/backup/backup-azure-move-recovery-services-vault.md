@@ -4,12 +4,12 @@ description: Pokyny, jak přesunout Recovery Services trezor mezi předplatnými
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 5a73963970b5fad7b3992d501d9aac5cc7229622
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 12c276b861e7db8e93e60eea7e9cd7f3aba04860
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926678"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325770"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Přesunutí trezoru Recovery Services napříč předplatnými Azure a skupinami prostředků
 
@@ -30,7 +30,7 @@ Podporují se všechny veřejné regiony a oblasti svrchovaného centra, s výji
 - Pokud se virtuální počítač nepřesouvá s Recovery Servicesovým trezorem v rámci předplatných nebo na novou skupinu prostředků, v trezoru zůstanou v trezoru nedotčené, dokud nevyprší jejich platnost.
 - Bez ohledu na to, jestli se virtuální počítač přesune do trezoru, nebo ne, můžete virtuální počítač vždycky obnovit z historie uchovávané zálohy v trezoru.
 - Azure Disk Encryption vyžaduje, aby se Trezor klíčů a virtuální počítače nacházely ve stejné oblasti a předplatném Azure.
-- Postup přesunutí virtuálního počítače se spravovanými disky najdete v tomto [článku](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription).
+- Postup přesunutí virtuálního počítače se spravovanými disky najdete v tomto [článku](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 - Možnosti přesunutí prostředků nasazených přes klasický model se liší v závislosti na tom, zda přesouváte prostředky v rámci předplatného nebo do nového předplatného. Další informace najdete v tomto [článku](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 - Zásady zálohování definované pro trezor se uchovávají po přesunu trezoru mezi předplatnými nebo do nové skupiny prostředků.
 - Můžete přesunout jenom trezor, který obsahuje některý z následujících typů zálohových položek. Všechny zálohované položky typů, které nejsou uvedené níže, se musí zastavit a data se před přesunutím trezoru trvale odstraní.
@@ -42,13 +42,13 @@ Podporují se všechny veřejné regiony a oblasti svrchovaného centra, s výji
 
 > [!NOTE]
 > Přesunutí Recovery Services trezorů pro Azure Backup napříč oblastmi Azure se nepodporuje.<br><br>
-> Pokud jste nakonfigurovali nějaké virtuální počítače (Azure IaaS, Hyper-V, VMware) nebo fyzické počítače pro zotavení po havárii pomocí **Azure Site Recovery** , operace přesunu se zablokuje. Pokud chcete přesunout trezory pro Azure Site Recovery, přečtěte si [Tento článek](../site-recovery/move-vaults-across-regions.md) , kde najdete informace o ručních přesunech trezorů.
+> Pokud jste nakonfigurovali nějaké virtuální počítače (Azure IaaS, Hyper-V, VMware) nebo fyzické počítače pro zotavení po havárii pomocí **Azure Site Recovery**, operace přesunu se zablokuje. Pokud chcete přesunout trezory pro Azure Site Recovery, přečtěte si [Tento článek](../site-recovery/move-vaults-across-regions.md) , kde najdete informace o ručních přesunech trezorů.
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Použití Azure Portal k přesunu Recovery Services trezoru do jiné skupiny prostředků
 
 Přesunutí trezoru Recovery Services a přidružených prostředků do jiné skupiny prostředků:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Otevřete seznam **trezorů Recovery Services** a vyberte trezor, který chcete přesunout. Po otevření řídicího panelu trezoru se zobrazí, jak je znázorněno na následujícím obrázku.
 
    ![Otevřít Recovery Services trezor](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -77,7 +77,7 @@ Přesunutí trezoru Recovery Services a přidružených prostředků do jiné sk
 
 Můžete přesunout Recovery Services trezor a jeho přidružené prostředky do jiného předplatného.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Otevřete seznam trezorů Recovery Services a vyberte trezor, který chcete přesunout. Po otevření řídicího panelu trezoru se zobrazí, jak je znázorněno na následujícím obrázku.
 
     ![Otevřít Recovery Services trezor](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -99,7 +99,7 @@ Můžete přesunout Recovery Services trezor a jeho přidružené prostředky do
 
    ![Přidat předplatné](./media/backup-azure-move-recovery-services/add-subscription.png)
 
-7. Vyberte **, že nástroje a skripty přidružené k přesunutým prostředkům nebudou fungovat, dokud je neaktualizujete tak, aby pro potvrzení používaly nové identifikátory prostředků** , a pak vyberte **OK** .
+7. Vyberte **, že nástroje a skripty přidružené k přesunutým prostředkům nebudou fungovat, dokud je neaktualizujete tak, aby pro potvrzení používaly nové identifikátory prostředků** , a pak vyberte **OK**.
 
 > [!NOTE]
 > Zálohování mezi předplatnými (trezor RS a chráněné virtuální počítače jsou v různých předplatných) není podporovaný scénář. Možnost redundance úložiště z místního redundantního úložiště (LRS) do globálního redundantního úložiště (GRS) a naopak se nedá změnit během operace přesunu trezoru.
@@ -157,9 +157,9 @@ Aby bylo možné chránit úlohy v novém trezoru, bude nutné odstranit aktuál
 
 1. Ve vlastnostech trezoru zakažte obnovitelné odstranění. Chcete-li zakázat obnovitelné odstranění, postupujte podle [těchto kroků](backup-azure-security-feature-cloud.md#disabling-soft-delete-using-azure-portal) .
 
-2. Zastavte ochranu a odstraňte zálohy z aktuálního trezoru. V nabídce řídicího panelu trezoru vyberte **zálohované položky** . Zde uvedené položky, které je třeba přesunout do nového trezoru, je třeba odebrat spolu s jejich zálohovanými daty. Podívejte se, jak [Odstranit chráněné položky v cloudu](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) a [Odstranit chráněné položky místně](backup-azure-delete-vault.md#delete-protected-items-on-premises).
+2. Zastavte ochranu a odstraňte zálohy z aktuálního trezoru. V nabídce řídicího panelu trezoru vyberte **zálohované položky**. Zde uvedené položky, které je třeba přesunout do nového trezoru, je třeba odebrat spolu s jejich zálohovanými daty. Podívejte se, jak [Odstranit chráněné položky v cloudu](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) a [Odstranit chráněné položky místně](backup-azure-delete-vault.md#delete-protected-items-on-premises).
 
-3. Pokud plánujete přesunout službu AFS (sdílené složky Azure), servery SQL nebo SAP HANA servery, budete je muset taky zrušit. V nabídce řídicího panelu trezoru vyberte **infrastruktura zálohování** . Podívejte se, jak [zrušit registraci SQL serveru](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance), [zrušit registraci účtu úložiště přidruženého ke sdíleným složkám Azure](manage-afs-backup.md#unregister-a-storage-account)a [zrušit registraci instance SAP HANA](sap-hana-db-manage.md#unregister-an-sap-hana-instance).
+3. Pokud plánujete přesunout službu AFS (sdílené složky Azure), servery SQL nebo SAP HANA servery, budete je muset taky zrušit. V nabídce řídicího panelu trezoru vyberte **infrastruktura zálohování**. Podívejte se, jak [zrušit registraci SQL serveru](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance), [zrušit registraci účtu úložiště přidruženého ke sdíleným složkám Azure](manage-afs-backup.md#unregister-a-storage-account)a [zrušit registraci instance SAP HANA](sap-hana-db-manage.md#unregister-an-sap-hana-instance).
 
 4. Až budou odebrané ze starého trezoru, pokračujte v konfiguraci záloh pro vaše úlohy v novém trezoru.
 

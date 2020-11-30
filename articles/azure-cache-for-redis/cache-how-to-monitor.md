@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
-ms.openlocfilehash: 93ac9a0b8766da70a55ac04f864fe48106fe8774
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3d19d8f1b6a44f32e92f82e861471ca9b5c8fa41
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536738"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327334"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Monitorování Azure Cache for Redis
 
@@ -23,7 +23,7 @@ Metriky pro instance Azure cache for Redis se shromažďují pomocí příkazu R
 
 Pokud chcete zobrazit metriky mezipaměti, [přejděte](cache-configure.md#configure-azure-cache-for-redis-settings) k instanci mezipaměti v [Azure Portal](https://portal.azure.com).  Azure cache pro Redis poskytuje některé integrované grafy v okně **Přehled** a v okně **metriky Redis** . Jednotlivé grafy je možné přizpůsobit přidáním nebo odebráním metrik a změnou intervalu generování sestav.
 
-![Redis metriky](./media/cache-how-to-monitor/redis-cache-redis-metrics-blade.png)
+![Zobrazuje se šest grafů. Jedním z nich jsou přístupy do mezipaměti a Neúspěšné přístupy do mezipaměti za hodinu.](./media/cache-how-to-monitor/redis-cache-redis-metrics-blade.png)
 
 ## <a name="view-pre-configured-metrics-charts"></a>Zobrazit předem nakonfigurované grafy metrik
 
@@ -34,13 +34,13 @@ Okno **Přehled** obsahuje následující předem nakonfigurované grafy monitor
 
 ### <a name="monitoring-charts"></a>Grafy monitorování
 
-V části **monitorování** v okně **Přehled** jsou k disblokování **a Neúspěšné přístupy** k příkazům, získání **a nastavení** , **připojení** a **Celkový počet příkazů** v grafu.
+V části **monitorování** v okně **Přehled** jsou k disblokování **a Neúspěšné přístupy** k příkazům, získání **a nastavení**, **připojení** a **Celkový počet příkazů** v grafu.
 
 ![Grafy monitorování](./media/cache-how-to-monitor/redis-cache-monitoring-part.png)
 
 ### <a name="usage-charts"></a>Grafy využití
 
-V části **využití** v okně **Přehled** je **Redis zatížení serveru** , **využití paměti** , **Šířka pásma sítě** a grafy **využití procesoru** a zároveň se zobrazuje **cenová úroveň** instance mezipaměti.
+V části **využití** v okně **Přehled** je **Redis zatížení serveru**, **využití paměti**, **Šířka pásma sítě** a grafy **využití procesoru** a zároveň se zobrazuje **cenová úroveň** instance mezipaměti.
 
 ![Grafy využití](./media/cache-how-to-monitor/redis-cache-usage-part.png)
 
@@ -50,7 +50,7 @@ V části **využití** v okně **Přehled** je **Redis zatížení serveru** , 
 
 Pokud chcete zobrazit metriky Redis a vytvářet vlastní grafy pomocí Azure Monitor, klikněte na **metriky** v **nabídce prostředek** a upravte svůj graf pomocí požadovaných metrik, intervalu generování sestav, typu grafu a dalších.
 
-![Redis metriky](./media/cache-how-to-monitor/redis-cache-monitor.png)
+![V levém navigačním podokně contoso55 je metrika možnost v části monitorování a je zvýrazněna. V metrikách je seznam metrik. Jsou vybrány přístupy do mezipaměti a Neúspěšné přístupy do mezipaměti.](./media/cache-how-to-monitor/redis-cache-monitor.png)
 
 Další informace o práci s metrikami pomocí Azure Monitor najdete v tématu [Přehled metrik v Microsoft Azure](../azure-monitor/platform/data-platform.md).
 
@@ -62,13 +62,13 @@ Ve výchozím nastavení se metriky mezipaměti v Azure Monitor [ukládají po d
 
 Konfigurace účtu úložiště pro metriky mezipaměti:
 
-1. Na stránce **mezipaměti Azure pro Redis** pod nadpisem **monitorování** vyberte **Diagnostika** .
-2. Vyberte **+ Přidat nastavení diagnostiky** .
+1. Na stránce **mezipaměti Azure pro Redis** pod nadpisem **monitorování** vyberte **Diagnostika**.
+2. Vyberte **+ Přidat nastavení diagnostiky**.
 3. Pojmenujte nastavení.
-4. Ověřte **archiv na účet úložiště** . Při odesílání diagnostiky do účtu úložiště se vám budou účtovat normální datové sazby za úložiště a transakce.
+4. Ověřte **archiv na účet úložiště**. Při odesílání diagnostiky do účtu úložiště se vám budou účtovat normální datové sazby za úložiště a transakce.
 4. Vyberte **Konfigurovat** a zvolte účet úložiště, do kterého se mají ukládat metriky mezipaměti.
-5. V části **metrika** záhlaví tabulky zaškrtněte políčko vedle položek řádků, které chcete uložit, například **AllMetrics** . Zadejte zásady **uchovávání (dnů)** . Maximální počet dní uchovávání, které můžete zadat, je **365 dní** . Pokud ale chcete zachovat data metrik trvale, nastavte dobu **uchování (dny)** na **0** .
-6. Klikněte na **Uložit** .
+5. V části **metrika** záhlaví tabulky zaškrtněte políčko vedle položek řádků, které chcete uložit, například **AllMetrics**. Zadejte zásady **uchovávání (dnů)** . Maximální počet dní uchovávání, které můžete zadat, je **365 dní**. Pokud ale chcete zachovat data metrik trvale, nastavte dobu **uchování (dny)** na **0**.
+6. Klikněte na **Uložit**.
 
 
 ![Diagnostika Redis](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
@@ -85,7 +85,7 @@ Chcete-li získat přístup k metrikám, můžete je zobrazit v Azure Portal, ja
 
 ## <a name="available-metrics-and-reporting-intervals"></a>Dostupné metriky a intervaly vytváření sestav
 
-Metriky mezipaměti jsou hlášeny pomocí několika intervalů generování sestav, včetně **minulé hodiny** , **dnešního** , **minulého týdne** a **vlastního** . Okno **metriky** pro každý graf metrik zobrazuje průměrnou, minimální a maximální hodnotu každé metriky v grafu a některé metriky zobrazují celkem pro interval generování sestav. 
+Metriky mezipaměti jsou hlášeny pomocí několika intervalů generování sestav, včetně **minulé hodiny**, **dnešního**, **minulého týdne** a **vlastního**. Okno **metriky** pro každý graf metrik zobrazuje průměrnou, minimální a maximální hodnotu každé metriky v grafu a některé metriky zobrazují celkem pro interval generování sestav. 
 
 Každá metrika obsahuje dvě verze. Jedna metrika měří výkon celé mezipaměti a pro mezipaměti, které používají [clusteringu](cache-how-to-premium-clustering.md), druhá verze metriky, která zahrnuje `(Shard 0-9)` do názvu, měří výkon pro jeden horizontálních oddílů v mezipaměti. Například pokud má mezipaměť čtyři horizontálních oddílů, `Cache Hits` je celkový počet přístupů celé mezipaměti a `Cache Hits (Shard 3)` je to pouze počet přístupů k této horizontálních oddílů mezipaměti.
 
@@ -94,7 +94,7 @@ Každá metrika obsahuje dvě verze. Jedna metrika měří výkon celé mezipam�
 > 
 > 
 
-| Metrika | Popis |
+| Metric | Popis |
 | --- | --- |
 | Přístupy do mezipaměti |Počet úspěšných vyhledání klíčů během zadaného intervalu generování sestav. Tento počet se mapuje `keyspace_hits` z příkazu Redis [info](https://redis.io/commands/info) . |
 | Latence mezipaměti (Preview) | Latence mezipaměti se vypočítala na základě latence v mezipaměti pro uzel. Tato metrika se měří v mikrosekundách a má tři dimenze: `Avg` , `Min` , a `Max` , což představuje průměrnou, minimální a maximální latenci mezipaměti v rámci zadaného intervalu generování sestav. |
@@ -138,6 +138,6 @@ Protokoly aktivit poskytují přehled o operacích, které byly provedeny v mezi
 > Protokoly aktivit nezahrnují operace čtení (GET).
 >
 
-Protokoly aktivit pro vaši mezipaměť zobrazíte kliknutím na **protokoly aktivit** v **nabídce prostředek** .
+Protokoly aktivit pro vaši mezipaměť zobrazíte kliknutím na **protokoly aktivit** v **nabídce prostředek**.
 
 Další informace o protokolech aktivit najdete v tématu [Přehled protokolu aktivit Azure](../azure-monitor/platform/platform-logs-overview.md).

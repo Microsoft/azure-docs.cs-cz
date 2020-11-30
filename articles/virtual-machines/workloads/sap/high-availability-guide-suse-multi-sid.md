@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 3827fa7a98cef9358db0ee102925586bce97fae6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cf0703406b71cb56bdd75a04746dfce7db6af471
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188679"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327130"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v SUSE Linux Enterprise Server pro Průvodce pro aplikace SAP s více SID
 
@@ -90,11 +90,11 @@ Než začnete, přečtěte si následující poznámky a dokumenty SAP jako prvn
 * [NetApp aplikace SAP na Microsoft Azure pomocí Azure NetApp Files][anf-sap-applications-azure]
 ## <a name="overview"></a>Přehled
 
-Pro virtuální počítače, které jsou součástí clusteru, musí být velikost, aby bylo možné spouštět všechny prostředky, pokud dojde k převzetí služeb při selhání. Každé rozhraní SAP SID může převzít služby při selhání nezávisle na sobě v clusteru s vysokou dostupností více identifikátorů SID.  Pokud používáte SBD oplocení, můžou být zařízení SBD sdílená mezi několika clustery.  
+U virtuálních počítačů, které jsou součástí clusteru, musí být velikost, aby bylo možné spouštět všechny prostředky, pokud dojde k převzetí služeb při selhání. Každé rozhraní SAP SID může převzít služby při selhání nezávisle na sobě v clusteru s vysokou dostupností více identifikátorů SID.  Pokud používáte SBD oplocení, můžou být zařízení SBD sdílená mezi několika clustery.  
 
 Pro zajištění vysoké dostupnosti vyžaduje SAP NetWeaver sdílené složky systému souborů NFS s vysokou dostupností. V tomto příkladu předpokládáme, že sdílené složky SAP NFS se buď hostují na [souborovém serveru NFS](./high-availability-guide-suse-nfs.md)s vysokou dostupností, který můžou používat víc systémů SAP. Nebo jsou sdílené složky nasazené na [Azure NetApp Files SVAZCÍCH NFS](../../../azure-netapp-files/azure-netapp-files-create-volumes.md).  
 
-![Přehled vysoké dostupnosti SAP NetWeaver](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
+![Cluster Pacemaker zobrazuje podrobné informace o dvou clusterech s více identifikátory SID, msidcl1 a msidcl2.](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
 
 > [!IMPORTANT]
 > Podpora clusteringu s ASCS/olajících pro SAP/s SUSE Linux jako hostovaný operační systém na virtuálních počítačích Azure je omezená na **pět** identifikátorů SID SAP na stejném clusteru. Každé nové SID zvyšuje složitost. Kombinace replikačního serveru fronty SAP 1 a fronty replikačního serveru 2 ve stejném clusteru není **podporována**. Clustering s více SID popisuje instalaci více instancí SAP ASCS/OLAJÍCÍCH s různými identifikátory SID v jednom clusteru Pacemaker. Clustering s vícenásobnými identifikátory SID se aktuálně podporuje jenom pro ASCS/OLAJÍCÍCH.  
@@ -179,7 +179,7 @@ V tomto příkladu předpokládáme, že systém **NW1** už je v clusteru nasaz
 
 Následující položky jsou předpony buď **[A]** – platí pro všechny uzly, **[1]** – platí pouze pro uzel 1 nebo **[2]** – platí pouze pro uzel 2.
 
-### <a name="prerequisites"></a>Předpoklady 
+### <a name="prerequisites"></a>Požadavky 
 
 > [!IMPORTANT]
 > Než budete postupovat podle pokynů k nasazení dalších systémů SAP v clusteru, postupujte podle pokynů pro nasazení prvního systému SAP v clusteru, protože existují kroky, které jsou nezbytné pouze při prvním nasazení systému.  

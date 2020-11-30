@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 0522f677c731aa1cd218a14429791db14179686a
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 5312ee08bad9d0b84e13c53fe4b1de59fad896f1
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496624"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326042"
 ---
 # <a name="migration-guide-db2-to-sql-server-on-azure-vms"></a>Průvodce migrací: DB2 pro SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -25,7 +25,7 @@ Tato příručka k migraci vás seznámí s migrací uživatelských databází 
 Další příručky k migraci najdete v tématu [migrace databáze](https://datamigration.microsoft.com/). 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K migraci databáze DB2 na SQL Server potřebujete:
 
@@ -139,10 +139,10 @@ Po migraci dat do cílového prostředí všechny aplikace, které dříve využ
 
 Testovací přístup pro migraci databáze se skládá z následujících aktivit:
 
-1. **Vývoj ověřovacích testů** : k otestování migrace databáze je nutné použít dotazy SQL. Je nutné vytvořit ověřovací dotazy ke spuštění proti zdrojové i cílové databázi. Dotazy na ověřování by se měly pokrývat s definovaným oborem.
-1. **Nastavení testovacího prostředí** : testovací prostředí by mělo obsahovat kopii zdrojové databáze a cílovou databázi. Nezapomeňte izolovat testovací prostředí.
-1. **Spustit ověřovací testy** : Spusťte ověřovací testy proti zdroji a cíli a pak Analyzujte výsledky.
-1. **Spustit testy výkonu** : spustit test výkonnosti proti zdroji a cíli a pak analyzovat a porovnat výsledky.
+1. **Vývoj ověřovacích testů**: k otestování migrace databáze je nutné použít dotazy SQL. Je nutné vytvořit ověřovací dotazy ke spuštění proti zdrojové i cílové databázi. Dotazy na ověřování by se měly pokrývat s definovaným oborem.
+1. **Nastavení testovacího prostředí**: testovací prostředí by mělo obsahovat kopii zdrojové databáze a cílovou databázi. Nezapomeňte izolovat testovací prostředí.
+1. **Spustit ověřovací testy**: Spusťte ověřovací testy proti zdroji a cíli a pak Analyzujte výsledky.
+1. **Spustit testy výkonu**: spustit test výkonnosti proti zdroji a cíli a pak analyzovat a porovnat výsledky.
 
    > [!NOTE]
    > Pro pomoc s vývojem a prováděním ověřovacích testů po migraci zvažte řešení kvality dat dostupné od partnera [QuerySurge](https://www.querysurge.com/company/partners/microsoft). 
@@ -164,7 +164,7 @@ Tyto prostředky byly vyvinuty jako součást programu data SQL expertem, který
 
 Po migraci si Projděte [příručku ověřování a optimalizace po migraci](/sql/relational-databases/post-migration-validation-and-optimization-guide). 
 
-Matrici služeb a nástrojů společnosti Microsoft, které jsou k dispozici, aby vám pomohla při různých scénářích databáze a migrace dat, a speciálních úlohách najdete v tématu [služby a nástroje pro migraci dat](/azure/dms/dms-tools-matrix).
+Matrici služeb a nástrojů společnosti Microsoft, které jsou k dispozici, aby vám pomohla při různých scénářích databáze a migrace dat, a speciálních úlohách najdete v tématu [služby a nástroje pro migraci dat](../../../dms/dms-tools-matrix.md).
 
 Další příručky k migraci najdete v tématu [migrace databáze](https://datamigration.microsoft.com/). 
 

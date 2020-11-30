@@ -3,12 +3,12 @@ title: Zálohování SQL Server do Azure jako úlohy DPM
 description: Úvod k zálohování SQL Server databází pomocí služby Azure Backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 8130990f86311221ae6d097137a66a6e9b81be73
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 592a51051a0d02a6c1d491db0fe559e2e62babb2
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218081"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327045"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Zálohování SQL Server do Azure jako úlohy DPM
 
@@ -24,7 +24,7 @@ Zálohování databáze SQL Server do Azure a její obnovení z Azure:
 
 >[!NOTE]
 >DPM 2019 UR2 podporuje SQL Server instance clusterů s podporou převzetí služeb při selhání (FCI) pomocí sdílených svazků clusteru (CSV).<br><br>
->Tato funkce podporuje ochranu [SQL Server instance clusteru s podporou převzetí služeb při selhání s prostory úložiště s přímým přístupem v Azure](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure)  a [SQL Server instanci clusteru s podporou převzetí služeb při selhání se sdílenými disky Azure](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure) . Aby bylo možné chránit instanci SQL FCI nasazenou na virtuálních počítačích Azure, musí být server DPM nasazený na virtuálním počítači Azure. 
+>Tato funkce podporuje ochranu [SQL Server instance clusteru s podporou převzetí služeb při selhání s prostory úložiště s přímým přístupem v Azure](../azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md)  a [SQL Server instanci clusteru s podporou převzetí služeb při selhání se sdílenými disky Azure](../azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md) . Aby bylo možné chránit instanci SQL FCI nasazenou na virtuálních počítačích Azure, musí být server DPM nasazený na virtuálním počítači Azure. 
 
 ## <a name="prerequisites-and-limitations"></a>Požadavky a omezení
 
@@ -104,7 +104,7 @@ Pokud chcete chránit SQL Server databáze v Azure, vytvořte nejdřív zásady 
 
     ![Zvolit metodu vytvoření repliky](./media/backup-azure-backup-sql/pg-manual.png)
 
-    Prvotní záložní kopie vyžaduje přenos celého zdroje dat (SQL Server databáze). Data zálohy se přesunou z provozního serveru (SQL Server počítač) na server DPM. Pokud je tato záloha velká, může přenos dat přes síť způsobit zahlcení šířky pásma. Z tohoto důvodu můžou správci zvolit použití vyměnitelných médií k **ručnímu**přenosu prvotní zálohy. Nebo můžou data přenést **automaticky přes síť** v zadaném čase.
+    Prvotní záložní kopie vyžaduje přenos celého zdroje dat (SQL Server databáze). Data zálohy se přesunou z provozního serveru (SQL Server počítač) na server DPM. Pokud je tato záloha velká, může přenos dat přes síť způsobit zahlcení šířky pásma. Z tohoto důvodu můžou správci zvolit použití vyměnitelných médií k **ručnímu** přenosu prvotní zálohy. Nebo můžou data přenést **automaticky přes síť** v zadaném čase.
 
     Po dokončení prvotního zálohování budou zálohy v počátečním záložním kopírování přírůstkově dokončeny. Přírůstkové zálohování je obvykle malé a snadno se přenáší přes síť.
 
@@ -145,7 +145,7 @@ Pokud chcete chránit SQL Server databáze v Azure, vytvořte nejdřív zásady 
 1. Vyberte způsob přenosu prvotní záložní kopie do Azure.
 
     * Možnost **automaticky přes síť** se řídí vaším plánem zálohování a převádí data do Azure.
-    * Další informace o **offline zálohování**najdete v tématu [Přehled zálohování offline](offline-backup-overview.md).
+    * Další informace o **offline zálohování** najdete v tématu [Přehled zálohování offline](offline-backup-overview.md).
 
     Po výběru mechanismu přenosu vyberte možnost **Další**.
 

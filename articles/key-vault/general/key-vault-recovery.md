@@ -8,12 +8,12 @@ author: ShaneBala-keyvault
 ms.author: sudbalas
 manager: ravijan
 ms.date: 09/30/2020
-ms.openlocfilehash: fbeb6f5f223642c09183c149188c6717c1f33a8e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 86190fa307133360c411aafc070412e7d527039e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748503"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324954"
 ---
 # <a name="how-to-enable-soft-delete-and-purge-protection"></a>Postup povolení ochrany proti odstranění a vyprázdnění
 
@@ -23,11 +23,11 @@ Tento článek se zabývá dvěma funkcemi pro obnovení Azure Key Vault a ochra
 
 Ochrana proti odstranění a vyprázdnění je ve dvou různých funkcích pro obnovení trezoru klíčů.
 > [!IMPORTANT]
-> U všech trezorů klíčů je nutné povolit ochranu před odstraněním. Možnost zakázat ochranu proti tichému odstranění bude od prosince 2020 zastaralá. Podívejte se prosím na [ **všechny podrobnosti** .](soft-delete-change.md)
+> U všech trezorů klíčů je nutné povolit ochranu před odstraněním. Možnost zakázat ochranu proti tichému odstranění bude od prosince 2020 zastaralá. Podívejte se prosím na [ **všechny podrobnosti**.](soft-delete-change.md)
 
 **Obnovitelné odstranění** je navrženo tak, aby nedocházelo k nechtěnému odstranění trezoru klíčů a klíčů, tajných kódů a certifikátů uložených v trezoru klíčů. Představte si obnovitelné odstranění podobně jako odpadkový koš. Když odstraníte Trezor klíčů nebo objekt trezoru klíčů, zůstane možné, že bude možné obnovit uživatelsky nastavitelnou dobu uchování nebo výchozí dobu 90 dnů. Trezory klíčů ve stavu tichého odstranění je také možné **Vymazat** , což znamená, že jsou trvale odstraněny. To umožňuje znovu vytvořit trezory klíčů a objekty trezoru klíčů se stejným názvem. Obnovení a odstranění trezorů klíčů a objektů vyžaduje oprávnění zásad zvýšeného přístupu. **Po povolení obnovitelného odstranění ho nejde zakázat.**
 
-Je důležité si uvědomit, že **názvy trezorů klíčů jsou globálně jedinečné** , takže nebudete moct vytvořit Trezor klíčů se stejným názvem jako Trezor klíčů ve stavu tichého odstranění. Podobně jsou názvy klíčů, tajných kódů a certifikátů jedinečné v rámci trezoru klíčů. Nebudete moct vytvořit tajný klíč, klíč nebo certifikát se stejným názvem jako jiný ve stavu tichého odstranění.
+Je důležité si uvědomit, že **názvy trezorů klíčů jsou globálně jedinečné**, takže nebudete moct vytvořit Trezor klíčů se stejným názvem jako Trezor klíčů ve stavu tichého odstranění. Podobně jsou názvy klíčů, tajných kódů a certifikátů jedinečné v rámci trezoru klíčů. Nebudete moct vytvořit tajný klíč, klíč nebo certifikát se stejným názvem jako jiný ve stavu tichého odstranění.
 
 Funkce **Vyčištění ochrany** je navržená tak, aby zabránila odstranění trezoru klíčů, klíčů, tajných kódů a certifikátů prostřednictvím škodlivého programu Insider. Tuto složku si můžete představit jako koš s zámkem na základě času. Během konfigurovatelné doby uchovávání můžete položky kdykoli obnovit. **Trezor klíčů nebudete moct trvale odstranit ani vyprázdnit, dokud dobu uchování neuplyne.** Jakmile doba uchování uplyne, Trezor klíčů nebo objekt trezoru klíčů se vyprázdní automaticky.
 
@@ -44,7 +44,7 @@ Funkce **Vyčištění ochrany** je navržená tak, aby zabránila odstranění 
 1. Ověřte, zda je přepínač vedle možnosti obnovitelné – odstranění nastaven na možnost povolit obnovení.
 1. Pokud není v trezoru klíčů povolené obnovitelné odstranění, klikněte na přepínač a povolte obnovitelné odstranění a klikněte na Uložit.
 
-:::image type="content" source="../media/key-vault-recovery-1.png" alt-text="<snímek obrazovky Azure Portal>":::
+:::image type="content" source="../media/key-vault-recovery-1.png" alt-text="V případě vlastností je měkké odstranění zvýrazněno, jak je hodnota, která má být povolena.":::
 
 ## <a name="grant-access-to-a-service-principal-to-purge-and-recover-deleted-secrets"></a>Udělení přístupu k instančnímu objektu pro vyprázdnění a obnovení odstraněných tajných klíčů
 
@@ -56,7 +56,7 @@ Funkce **Vyčištění ochrany** je navržená tak, aby zabránila odstranění 
 1. Posuňte se do dolní části rozevíracího seznamu a klikněte na tlačítko obnovit a vymazat.
 1. K provedení většiny operací budou mít objekty zabezpečení taky funkce Get a list.
 
-:::image type="content" source="../media/key-vault-recovery-2.png" alt-text="<snímek obrazovky Azure Portal>":::
+:::image type="content" source="../media/key-vault-recovery-2.png" alt-text="V levém navigačním podokně se zvýrazní zásady přístupu. V části zásady přístupu se zobrazuje rozevírací seznam pozice v tajnosti a jsou vybrány čtyři položky: získat, vypsat, obnovit a vyprázdnit.":::
 
 ## <a name="list-recover-or-purge-a-soft-deleted-key-vault"></a>Vypíše, obnoví nebo vyprázdní trezor klíčů s odstraněnými přístředníkem.
 
@@ -72,9 +72,9 @@ Funkce **Vyčištění ochrany** je navržená tak, aby zabránila odstranění 
 1. Pokud chcete obnovit Trezor klíčů, vyberte možnost obnovit v dolní části podokna kontextu.
 1. Pokud chcete trvale odstranit Trezor klíčů, vyberte možnost vyprázdnění.
 
-:::image type="content" source="../media/key-vault-recovery-3.png" alt-text="<snímek obrazovky Azure Portal>":::
+:::image type="content" source="../media/key-vault-recovery-3.png" alt-text="V trezorech klíčů se zvýrazní možnost Správa odstraněných trezorů.":::
 
-:::image type="content" source="../media/key-vault-recovery-4.png" alt-text="<snímek obrazovky Azure Portal>":::
+:::image type="content" source="../media/key-vault-recovery-4.png" alt-text="V části spravovat odstraněné trezory klíčů je zvýrazněný a vybraný jenom seznam trezorů klíčů a tlačítko obnovit je zvýrazněné.":::
 
 ## <a name="list-recover-or-purge-soft-deleted-secrets-keys-and-certificates"></a>Vypíše, obnoví nebo odstraní obnovitelné odstraněné tajné klíče, klíče a certifikáty.
 
@@ -87,7 +87,7 @@ Funkce **Vyčištění ochrany** je navržená tak, aby zabránila odstranění 
 1. Vyberte tajný klíč, klíč nebo certifikát, který chcete spravovat.
 1. V dolní části podokna kontextu vyberte možnost obnovení nebo vymazání.
 
-:::image type="content" source="../media/key-vault-recovery-5.png" alt-text="<snímek obrazovky Azure Portal>":::
+:::image type="content" source="../media/key-vault-recovery-5.png" alt-text="V části klíče se zvýrazní možnost Správa odstraněných klíčů.":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

@@ -3,12 +3,12 @@ title: Transport Layer Security v Azure Backup
 description: Naučte se, jak povolit Azure Backup pro použití protokolu TLS (Transport Protocol Transport Layer Security), který zajistí zabezpečení dat při přenosu přes síť.
 ms.topic: conceptual
 ms.date: 11/01/2020
-ms.openlocfilehash: 9881fd3532cbc7d67c7d5adbce75e02fc62e0bcf
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: ba9c9d91f562f54695a0739908c8a409d14d5852
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280672"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327113"
 ---
 # <a name="transport-layer-security-in-azure-backup"></a>Transport Layer Security v Azure Backup
 
@@ -45,7 +45,7 @@ Následující klíče registru zajišťují, aby byl protokol TLS 1,2 na úrovn
 
 ### <a name="configuring-net-framework"></a>Konfigurace .NET Framework
 
-Následující klíče registru konfigurují .NET Framework pro podporu silné kryptografie. Tady si můžete přečíst další informace o [konfiguraci .NET Framework](https://docs.microsoft.com/dotnet/framework/network-programming/tls#configuring-schannel-protocols-in-the-windows-registry).
+Následující klíče registru konfigurují .NET Framework pro podporu silné kryptografie. Tady si můžete přečíst další informace o [konfiguraci .NET Framework](/dotnet/framework/network-programming/tls#configuring-schannel-protocols-in-the-windows-registry).
 
 ```reg
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
@@ -65,7 +65,7 @@ TLS 1,2 je bezpečnější než u předchozích kryptografických protokolů, ja
 
 ### <a name="what-determines-the-encryption-protocol-used"></a>Co určuje použitý šifrovací protokol?
 
-Nejvyšší verze protokolu podporovaná klientem i serverem se vyjednává k navázání šifrované konverzace. Další informace o protokolu TLS handshake najdete v tématu [Vytvoření zabezpečené relace pomocí protokolu TLS](https://docs.microsoft.com/windows/win32/secauthn/tls-handshake-protocol#establishing-a-secure-session-by-using-tls).
+Nejvyšší verze protokolu podporovaná klientem i serverem se vyjednává k navázání šifrované konverzace. Další informace o protokolu TLS handshake najdete v tématu [Vytvoření zabezpečené relace pomocí protokolu TLS](/windows/win32/secauthn/tls-handshake-protocol#establishing-a-secure-session-by-using-tls).
 
 ### <a name="what-is-the-impact-of-not-enabling-tls-12"></a>Jaký je dopad Nepovolit TLS 1,2?
 
@@ -77,6 +77,6 @@ Kvůli lepšímu zabezpečení proti útokům na downgrade protokolů se Azure B
 
 ## <a name="additional-resources"></a>Další zdroje informací
 
-- [Protokol TLS (Transport Layer Security)](https://docs.microsoft.com/windows/win32/secauthn/transport-layer-security-protocol)
-- [Zajištění podpory pro TLS 1,2 napříč nasazenými operačními systémy](https://docs.microsoft.com/security/engineering/solving-tls1-problem#ensuring-support-for-tls-12-across-deployed-operating-systems)
-- [Osvědčené postupy TLS (Transport Layer Security) s .NET Framework](https://docs.microsoft.com/dotnet/framework/network-programming/tls)
+- [Protokol TLS (Transport Layer Security)](/windows/win32/secauthn/transport-layer-security-protocol)
+- [Zajištění podpory pro TLS 1,2 napříč nasazenými operačními systémy](/security/engineering/solving-tls1-problem#ensuring-support-for-tls-12-across-deployed-operating-systems)
+- [Osvědčené postupy TLS (Transport Layer Security) s .NET Framework](/dotnet/framework/network-programming/tls)

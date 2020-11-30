@@ -15,12 +15,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c64ab815572af0f6c76a5076c9d4cf03586f242d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 57e9c82e5685171cff994aca7985f6a4211f00e7
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784996"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327283"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Doporučení pro ceny SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ Tento článek poskytuje cenové poradenství pro [SQL Server v Azure Virtual Ma
 
 Pokud chcete vyvíjet, testovat nebo sestavovat testování konceptu, pak použijte **edici** s licencí zdarma pro SQL Server Developer. Tato edice obsahuje všechny funkce edice SQL Server Enterprise, což vám umožňuje vytvářet a testovat jakýkoli typ aplikace. V produkčním prostředí však nemůžete edici Developer Edition spustit. Virtuální počítač s SQL Server Developer Edition se účtuje jenom za náklady na virtuální počítač, protože neexistují žádné přidružené licenční náklady SQL Server.
 
-Pokud chcete provozovat odlehčené úlohy v produkčním prostředí (<4 jádra, <1 GB paměti, <10 GB/databáze), použijte zdarma licencovanou **edici SQL Server Express** . Virtuální počítač s SQL Server Express Edition se taky účtuje jenom za náklady na virtuální počítač.
+Pokud chcete provozovat odlehčené úlohy v produkčním prostředí (<4 jádra, <1 GB paměti, <10 GB/databáze), použijte zdarma licencovanou **edici SQL Server Express**. Virtuální počítač s SQL Server Express Edition se taky účtuje jenom za náklady na virtuální počítač.
 
 U těchto vývojových/testovacích a lehkých produkčních úloh můžete také ušetřit peníze tím, že vyberete menší velikost virtuálního počítače, která odpovídá těmto úlohám. DS1v2 může být v některých scénářích dobrou volbou.
 
@@ -58,22 +58,22 @@ Pokud máte neodlehčené provozní úlohy, použijte jednu z následujících e
 | Edice SQL Serveru | Úloha |
 |-----|-----|
 | Web | Malé weby |
-| Standardní | Malá a středně velká zatížení |
+| Standard | Malá a středně velká zatížení |
 | Enterprise | Velké nebo důležité úlohy|
 
-Máte dvě možnosti, jak platíte za SQL Server licencování pro tyto edice: *Plaťte za použití* nebo *využijte vlastní licenci (BYOL)* .
+Máte dvě možnosti, jak platíte za SQL Server licencování pro tyto edice: *Plaťte za použití* nebo *využijte vlastní licenci (BYOL)*.
 
 ## <a name="pay-per-usage"></a>Platit podle využití
 
-**Platba SQL Server licence na použití** (označované také jako **průběžné platby** ) znamená, že cena za sekundu po spuštění virtuálního počítače Azure zahrnuje náklady na SQL Server licenci. Ceny pro různé SQL Server edice (web, Standard, Enterprise) si můžete prohlédnout na stránce s cenami Azure Virtual Machines pro [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) nebo [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux).
+**Platba SQL Server licence na použití** (označované také jako **průběžné platby**) znamená, že cena za sekundu po spuštění virtuálního počítače Azure zahrnuje náklady na SQL Server licenci. Ceny pro různé SQL Server edice (web, Standard, Enterprise) si můžete prohlédnout na stránce s cenami Azure Virtual Machines pro [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) nebo [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux).
 
 Náklady jsou stejné pro všechny verze SQL Server (2012 SP3 až 2019). Náklady na licencování za sekundu závisí na počtu vCPU virtuálních počítačů.
 
 Platba SQL Server licencování na použití se doporučuje pro:
 
-- **Dočasné nebo pravidelné úlohy** . Například aplikace, která potřebuje podporovat událost po dobu několika měsíců každý rok nebo obchodní analýzu v pondělí.
+- **Dočasné nebo pravidelné úlohy**. Například aplikace, která potřebuje podporovat událost po dobu několika měsíců každý rok nebo obchodní analýzu v pondělí.
 
-- **Úlohy s neznámou životností nebo škálováním** . Například aplikace, které nemusí být potřeba během několika měsíců nebo které můžou vyžadovat více nebo méně výpočetní výkon, v závislosti na poptávce.
+- **Úlohy s neznámou životností nebo škálováním**. Například aplikace, které nemusí být potřeba během několika měsíců nebo které můžou vyžadovat více nebo méně výpočetní výkon, v závislosti na poptávce.
 
 Pokud chcete vytvořit virtuální počítač Azure s SQL Server 2017 s jedním z těchto imagí s průběžnými platbami, přečtěte si následující odkazy:
 
@@ -96,7 +96,7 @@ Pokud chcete vytvořit virtuální počítač Azure s SQL Server 2017 s jedním 
 
 ## <a name="bring-your-own-license-byol"></a><a id="byol"></a> Přineste si vlastní licenci (BYOL)
 
-**Uvedení vlastní licence SQL Server prostřednictvím License mobility** , která se také označuje jako **BYOL** , znamená použití stávající SQL Server multilicenčního programu se Software Assurance ve virtuálním počítači Azure. Virtuální počítač s SQL Server pomocí BYOL se účtuje jenom za náklady na provozování virtuálního počítače, ne pro SQL Server licencování, protože jste už získali licence a Software Assurance prostřednictvím multilicenčního programu.
+**Uvedení vlastní licence SQL Server prostřednictvím License mobility**, která se také označuje jako **BYOL**, znamená použití stávající SQL Server multilicenčního programu se Software Assurance ve virtuálním počítači Azure. Virtuální počítač s SQL Server pomocí BYOL se účtuje jenom za náklady na provozování virtuálního počítače, ne pro SQL Server licencování, protože jste už získali licence a Software Assurance prostřednictvím multilicenčního programu.
 
 > [!IMPORTANT]
 > Image BYOL vyžadují smlouva Enterprise se Software Assurance. V tuto chvíli nejsou k dispozici jako součást partnera Azure Cloud Solution partner (CSP). Zákazníci CSP můžou využít vlastní licenci nasazením image s průběžnými platbami a následným povolením [zvýhodněné hybridní využití Azure](licensing-model-azure-hybrid-benefit-ahb-change.md).
@@ -106,9 +106,9 @@ Pokud chcete vytvořit virtuální počítač Azure s SQL Server 2017 s jedním 
 
 Pro poskytování vlastních SQL Server licencování prostřednictvím License Mobility doporučujeme:
 
-- **Nepřetržité úlohy** . Například aplikace, která potřebuje zajistit nepřetržitý provoz obchodních operací.
+- **Nepřetržité úlohy**. Například aplikace, která potřebuje zajistit nepřetržitý provoz obchodních operací.
 
-- **Úlohy se známou životností a škálováním** . Například aplikace, která je nutná pro celý rok a na které poptávku vychází.
+- **Úlohy se známou životností a škálováním**. Například aplikace, která je nutná pro celý rok a na které poptávku vychází.
 
 Pokud chcete používat BYOL s virtuálním počítačem s SQL Server, musíte mít licenci na SQL Server Standard nebo Enterprise a [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1), což je povinná možnost prostřednictvím některých multilicenčních programů a volitelného nákupu s ostatními. Úroveň cen poskytovaná prostřednictvím multilicenčních programů se liší v závislosti na typu smlouvy a množství nebo závazku SQL Server. Ale jako pravidlo, které přináší vlastní licenci pro nepřetržité provozní úlohy, má následující výhody:
 
@@ -136,7 +136,7 @@ Aby nedocházelo k zbytečným nákladům, vyberte optimální velikost virtuál
 
 ### <a name="correctly-size-your-vm"></a><a id="machinesize"></a> Správná velikost virtuálního počítače
 
-Náklady na licencování SQL Server přímo souvisí s počtem vCPU. Vyberte velikost virtuálního počítače, která odpovídá očekávaným potřebám pro procesor, paměť, úložiště a I/O šířku pásma. Úplný seznam možností velikosti počítače najdete v tématu [velikosti virtuálních počítačů s Windows](../../../virtual-machines/sizes.md) a [velikosti virtuálních počítačů](../../../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)se systémem Linux.
+Náklady na licencování SQL Server přímo souvisí s počtem vCPU. Vyberte velikost virtuálního počítače, která odpovídá očekávaným potřebám pro procesor, paměť, úložiště a I/O šířku pásma. Úplný seznam možností velikosti počítače najdete v tématu [velikosti virtuálních počítačů s Windows](../../../virtual-machines/sizes.md) a [velikosti virtuálních počítačů](../../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)se systémem Linux.
 
 Existují nové velikosti počítačů, které dobře fungují s určitými typy SQL Server úloh. Tyto počítače mají na paměti udržování vysoké úrovně paměti, úložiště a vstupně-výstupních propustností, ale mají nižší virtualizovaný počet jader. Zvažte například následující příklad:
 

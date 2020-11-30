@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mokabiru
 ms.date: 11/06/2020
-ms.openlocfilehash: e9fb004df5fdf8a955312ebcf16b8b60fd7c9b6a
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: c47e4c1278f222feac35a2c6ab0b067c916c0217
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592188"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326841"
 ---
 # <a name="migration-performance-sql-server-to-sql-managed-instance-performance-analysis"></a>Výkon migrace: SQL Server k analýze výkonu spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -65,7 +65,7 @@ SQL Managed instance poskytuje pokročilé nástroje pro monitorování a řeše
 -  Statistiky, jako je INSTANCE_LOG_GOVERNOR nebo PAGEIOLATCH, které identifikují vstupně-výstupní problémy s úložištěm, zejména na Pro obecné účely úrovni, kde možná budete muset předem přidělit soubory, abyste získali lepší vstupně-výstupní operace. 
 
 
-## <a name="considerations"></a>Co je potřeba vzít v úvahu  
+## <a name="considerations"></a>Požadavky  
 
 Při porovnávání výkonu Vezměte v úvahu následující skutečnosti: 
 
@@ -86,4 +86,4 @@ Další informace o optimalizaci nového prostředí spravované instance Azure 
 - [Jak zjistit, proč se výkon úloh na spravované instanci Azure SQL liší od SQL Server?](https://medium.com/azure-sqldb-managed-instance/what-to-do-when-azure-sql-managed-instance-is-slower-than-sql-server-dd39942aaadd)
 - [Klíčové příčiny rozdílů mezi výkonem spravované instance SQL a SQL Server](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)
 - [Doporučené postupy a požadavky na výkon úložiště pro spravovanou instanci Azure SQL (Pro obecné účely)](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525)
-- [Monitorování výkonu v reálném čase pro spravovanou instanci Azure SQL (Toto je archivováno, je to zamýšlený cíl?)](https://docs.microsoft.com/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)
+- [Monitorování výkonu v reálném čase pro spravovanou instanci Azure SQL (Toto je archivováno, je to zamýšlený cíl?)](/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)

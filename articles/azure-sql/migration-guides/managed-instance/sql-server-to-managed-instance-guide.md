@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 5c20fbbe25b51160f42f233d30c39ccaec0f5cac
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5d5404537ad107a54bd32110727e5a7d0f74ebea
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026040"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326892"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>Průvodce migrací: SQL Server do spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -99,10 +99,10 @@ Pokud potřebujete porovnat výkon úlohy na spravované instanci SQL s původn�
 
 ### <a name="create-sql-managed-instance"></a>Vytvoření spravované instance SQL 
 
-Na základě informací ve fázi zjišťování a vyhodnocení vytvořte správnou velikost cílové spravované instance SQL. Můžete k tomu použít [Azure Portal](../../managed-instance/instance-create-quickstart.md), [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)nebo [šablonu Azure Resource Manager (ARM)](/azure/azure-sql/managed-instance/create-template-quickstart). 
+Na základě informací ve fázi zjišťování a vyhodnocení vytvořte správnou velikost cílové spravované instance SQL. Můžete k tomu použít [Azure Portal](../../managed-instance/instance-create-quickstart.md), [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)nebo [šablonu Azure Resource Manager (ARM)](../../managed-instance/create-template-quickstart.md). 
 
 
-## <a name="migrate"></a>Migrace
+## <a name="migrate"></a>Migrate
 
 Po dokončení úloh přidružených ke fázi před migrací jste připraveni provést migraci schématu a dat. 
 
@@ -124,7 +124,7 @@ Pokud chcete provádět migrace pomocí DMS, postupujte podle následujících k
 1. Po obnovení databáze klikněte na tlačítko **Spustit přímou migraci**. Proces migrace zkopíruje zálohu protokolu po jeho zpřístupnění ve sdílené síťové složce SMB a obnoví ho v cíli. 
 1. Zastavte veškerý příchozí provoz do zdrojové databáze a aktualizujte připojovací řetězec na novou databázi spravované instance Azure SQL. 
 
-Podrobný kurz této možnosti migrace najdete v článku [migrace SQL Server do spravované instance Azure SQL online pomocí DMS](/azure/dms/tutorial-sql-server-managed-instance-online). 
+Podrobný kurz této možnosti migrace najdete v článku [migrace SQL Server do spravované instance Azure SQL online pomocí DMS](../../../dms/tutorial-sql-server-managed-instance-online.md). 
    
 
 
@@ -144,14 +144,14 @@ K migraci pomocí zálohování a obnovení použijte následující postup:
 
 1. Zálohujte databázi do Azure Blob Storage. Například použijte příkaz [Backup na adresu URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) v [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms). [Nástroj Microsoft Azure](https://go.microsoft.com/fwlink/?LinkID=324399) použijte k podpoře databází starších než SQL Server 2012 SP1 CU2. 
 1. Připojte se ke spravované instanci SQL Azure pomocí SQL Server Management Studio. 
-1. Vytvořte přihlašovací údaje pomocí sdíleného přístupového podpisu pro přístup k účtu služby Azure Blob Storage pomocí záloh databáze. Například:
+1. Vytvořte přihlašovací údaje pomocí sdíleného přístupového podpisu pro přístup k účtu služby Azure Blob Storage pomocí záloh databáze. Příklad:
 
    ```sql
    CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]
    WITH IDENTITY = 'SHARED ACCESS SIGNATURE'
    , SECRET = 'sv=2017-11-09&ss=bfqt&srt=sco&sp=rwdlacup&se=2028-09-06T02:52:55Z&st=2018-09-04T18:52:55Z&spr=https&sig=WOTiM%2FS4GVF%2FEEs9DGQR9Im0W%2BwndxW2CQ7%2B5fHd7Is%3D'
    ```
-1. Obnovte zálohu z kontejneru objektů BLOB služby Azure Storage. Například: 
+1. Obnovte zálohu z kontejneru objektů BLOB služby Azure Storage. Příklad: 
 
     ```sql
    RESTORE DATABASE [TargetDatabaseName] FROM URL =
@@ -160,7 +160,7 @@ K migraci pomocí zálohování a obnovení použijte následující postup:
 
 1. Až se obnovení dokončí, zobrazte databázi v **Průzkumník objektů** v rámci SQL Server Management Studio. 
 
-Další informace o této možnosti migrace najdete v tématu [obnovení databáze do spravované instance Azure SQL pomocí SSMS](https://docs.microsoft.com/azure/azure-sql/managed-instance/restore-sample-database-quickstart).
+Další informace o této možnosti migrace najdete v tématu [obnovení databáze do spravované instance Azure SQL pomocí SSMS](../../managed-instance/restore-sample-database-quickstart.md).
 
 > [!NOTE]
 > Operace obnovení databáze je asynchronní a je opakovaná. Při přerušení připojení nebo vypršení časového limitu může dojít k chybě v SQL Server Management Studio. Azure SQL Database se nadále snaží obnovit databázi na pozadí a průběh obnovy můžete sledovat pomocí zobrazení [Sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) a [Sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) .
@@ -203,7 +203,7 @@ Testovací přístup pro migraci databáze se skládá z následujících aktivi
 
 ## <a name="leverage-advanced-features"></a>Využití pokročilých funkcí 
 
-Nezapomeňte využít výhod pokročilých cloudových funkcí, které nabízí spravovaná instance SQL, jako je [integrovaná vysoká dostupnost](../../database/high-availability-sla.md), [detekce hrozeb](../../database/advanced-data-security.md)a [monitorování a optimalizace vašich úloh](../../database/monitor-tune-overview.md). 
+Nezapomeňte využít výhod pokročilých cloudových funkcí, které nabízí spravovaná instance SQL, jako je [integrovaná vysoká dostupnost](../../database/high-availability-sla.md), [detekce hrozeb](../../database/azure-defender-for-sql.md)a [monitorování a optimalizace vašich úloh](../../database/monitor-tune-overview.md). 
 
 [Azure SQL Analytics](../../../azure-monitor/insights/azure-sql.md) umožňuje centralizovaným způsobem monitorovat velkou sadu spravovaných instancí.
 

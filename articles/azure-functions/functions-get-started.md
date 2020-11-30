@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 11/19/2020
 ms.author: cshoe
 zone_pivot_groups: programming-languages-set-functions-lang-workers
-ms.openlocfilehash: d988bb7ef31df518d50ab9e2e8ffc1dcad4454da
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 78fd13825becfa186960a0dfd3dee83c312c9bcf
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168045"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326943"
 ---
 # <a name="getting-started-with-azure-functions"></a>Začínáme se službou Azure Functions
 
@@ -23,9 +23,9 @@ Začněte tím, že použijete následující zdroje informací.
 
 ::: zone pivot="programming-language-csharp"
 
-| Akce | Zdroje informací |
+| Akce | Zdroje a prostředky |
 | --- | --- |
-| **Vytvoření první funkce** | Pomocí jednoho z následujících nástrojů:<br><br><li>[Visual Studio Code](./functions-create-your-first-function-visual-studio.md)<li>[Visual Studio](./create-first-function-vs-code-csharp.md)<li>[Příkazový řádek](./create-first-function-cli-csharp.md) |
+| **Vytvoření první funkce** | Pomocí jednoho z následujících nástrojů:<br><br><li>[Visual Studio](./functions-create-your-first-function-visual-studio.md)<li>[Visual Studio Code](./create-first-function-vs-code-csharp.md)<li>[Příkazový řádek](./create-first-function-cli-csharp.md) |
 | **Zobrazit spuštěnou funkci** | <li>[Prohlížeč ukázek Azure](/samples/browse/?expanded=azure&languages=csharp&products=azure-functions)<li>[Komunitní knihovna Azure](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=C%23) |
 | **Prozkoumejte Interaktivní kurz**| <li>[Volba nejlepší bezserverové technologie Azure pro obchodní scénář](/learn/modules/serverless-fundamentals/)<li>[Dobře navržený rámec – efektivita výkonu](/learn/modules/azure-well-architected-performance-efficiency/)<li>[Spuštění funkce Azure pomocí triggerů](/learn/modules/execute-azure-function-with-triggers/) <br><br>[Úplný seznam interaktivních kurzů](/learn/browse/?expanded=azure&products=azure-functions)najdete v tématu Microsoft Learn.|
 | **Podrobné informace** | <li>Přečtěte si, jak funkce [automaticky zvyšují nebo zmenšují](./functions-scale.md) instance tak, aby odpovídaly poptávce.<li>Prozkoumejte různé dostupné [metody nasazení](./functions-deployment-technologies.md)<li>Použití integrovaných [nástrojů pro monitorování](./functions-monitoring.md) k analýze vašich funkcí<li>Přečtěte si [referenční informace o jazyce C#](./functions-dotnet-class-library.md)|
@@ -33,7 +33,7 @@ Začněte tím, že použijete následující zdroje informací.
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-| Akce | Zdroje informací |
+| Akce | Zdroje a prostředky |
 | --- | --- |
 | **Vytvoření první funkce** | Pomocí jednoho z následujících nástrojů:<br><br><li>[Visual Studio Code](./create-first-function-vs-code-java.md)<li>[Funkce Java/Maven s terminálem nebo příkazovým řádkem](./create-first-function-cli-java.md)<li>[Gradle](./functions-create-first-java-gradle.md)<li>[Eclipse](./functions-create-maven-eclipse.md)<li>[IntelliJ nápad](./functions-create-maven-intellij.md) |
 | **Zobrazit spuštěnou funkci** | <li>[Prohlížeč ukázek Azure](/samples/browse/?expanded=azure&languages=java&products=azure-functions)<li>[Komunitní knihovna Azure](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=Java) |
@@ -42,7 +42,7 @@ Začněte tím, že použijete následující zdroje informací.
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
-| Akce | Zdroje informací |
+| Akce | Zdroje a prostředky |
 | --- | --- |
 | **Vytvoření první funkce** | Pomocí jednoho z následujících nástrojů:<br><br><li>[Visual Studio Code](./create-first-function-vs-code-node.md)<li>[Node.js terminálu/příkazovém řádku](./create-first-function-cli-java.md) |
 | **Zobrazit spuštěnou funkci** | <li>[Prohlížeč ukázek Azure](/samples/browse/?expanded=azure&languages=javascript%2ctypescript&products=azure-functions)<li>[Komunitní knihovna Azure](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=JavaScript%2CTypeScript) |
@@ -51,7 +51,7 @@ Začněte tím, že použijete následující zdroje informací.
 ::: zone-end
 
 ::: zone pivot="programming-language-powershell"
-| Akce | Zdroje informací |
+| Akce | Zdroje a prostředky |
 | --- | --- |
 | **Vytvoření první funkce** | <li>Použití [Visual Studio Code](./create-first-function-vs-code-powershell.md) |
 | **Zobrazit spuštěnou funkci** | <li>[Prohlížeč ukázek Azure](/samples/browse/?expanded=azure&languages=powershell&products=azure-functions)<li>[Komunitní knihovna Azure](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=PowerShell) |
@@ -60,7 +60,7 @@ Začněte tím, že použijete následující zdroje informací.
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-| Akce | Zdroje informací |
+| Akce | Zdroje a prostředky |
 | --- | --- |
 | **Vytvoření první funkce** | Pomocí jednoho z následujících nástrojů:<br><br><li>[Visual Studio Code](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)<li>[Terminál/příkazový řádek](./create-first-function-cli-csharp.md?pivots=programming-language-python) |
 | **Zobrazit spuštěnou funkci** | <li>[Prohlížeč ukázek Azure](/samples/browse/?expanded=azure&languages=python&products=azure-functions)<li>[Komunitní knihovna Azure](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=Python) |

@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 6eb76c9d8cc8447755e045972a7aceddefd1604a
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ebde8048c26364d77d95b9c7b34f9d1d7a4a20ee
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532966"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326254"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Kurz: Začínáme s Azure Machine Learning v poznámkových blocích Jupyter
 
@@ -80,7 +80,7 @@ Dokončili jste následující postup nastavení experimentu a spustíte kroky v
     > [!IMPORTANT]
     > Poznámkové bloky můžete zobrazit ve složce **Samples** , ale nemůžete z nich spustit Poznámkový blok. Pokud chcete spustit Poznámkový blok, ujistěte se, že jste v části **soubory uživatelů** otevřeli naklonované verze poznámkového bloku.
     
-1. V části **kurzy/image-klasifikace-mnist ručně zapsaných-data** vyberte **kurz – 1. experiment-SDK-ipynb** .
+1. Vyberte soubor **img-Classification-part1-Training. ipynb** ve složce **kurzy/image-klasifikace-mnist ručně zapsaných-data** .
 
     :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="Snímek obrazovky, který zobrazuje složku s otevřenými kurzy.":::
 

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e6f6d1960c07dc23c584dec5bb424f91630fc1bb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 92cd20f9e636c50416a72ec974a33c87da1ae2cb
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785064"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327266"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Důležité informace o zabezpečení pro SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ V následujících částech jsou uvedeny návrhy na promyšlení těchto bodů.
 
 ## <a name="secure-connections"></a>Zabezpečená připojení
 
-Když vytvoříte virtuální počítač s SQL Server s imagí galerie, možnost **připojení SQL Server** vám umožní vybrat **místní (uvnitř virtuálního počítače)** , **privátní (v rámci Virtual Network)** nebo **veřejné (Internet)** .
+Když vytvoříte virtuální počítač s SQL Server s imagí galerie, možnost **připojení SQL Server** vám umožní vybrat **místní (uvnitř virtuálního počítače)**, **privátní (v rámci Virtual Network)** nebo **veřejné (Internet)**.
 
 ![SQL Server připojení](./media/security-considerations-best-practices/sql-vm-connectivity-option.png)
 
@@ -59,7 +59,7 @@ Nakonec zvažte povolení šifrovaných připojení pro instanci databázového 
 
 ## <a name="encryption"></a>Šifrování
 
-Spravované disky nabízejí Server-Side šifrování a Azure Disk Encryption. [Šifrování na straně serveru](../../../virtual-machines/windows/disk-encryption.md) poskytuje šifrování v klidovém prostředí a chrání vaše data, aby splňovala závazky zabezpečení vaší organizace a dodržování předpisů. [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) používá technologii Bitlocker nebo DM-Crypt a integruje se s Azure Key Vault k šifrování disků s operačním systémem a datovými disky. 
+Spravované disky nabízejí Server-Side šifrování a Azure Disk Encryption. [Šifrování na straně serveru](../../../virtual-machines/disk-encryption.md) poskytuje šifrování v klidovém prostředí a chrání vaše data, aby splňovala závazky zabezpečení vaší organizace a dodržování předpisů. [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) používá technologii Bitlocker nebo DM-Crypt a integruje se s Azure Key Vault k šifrování disků s operačním systémem a datovými disky. 
 
 ## <a name="use-a-non-default-port"></a>Použít jiný než výchozí port
 
@@ -84,7 +84,7 @@ Pokud SQL Server naslouchá na portu, který není výchozí, je nutné při př
 
 Nechcete, aby útočníci mohli snadno uhodnout názvy účtů nebo hesla. Následující tipy vám pomůžou:
 
-- Vytvořte jedinečný účet místního správce, který se nejmenuje jako **správce** .
+- Vytvořte jedinečný účet místního správce, který se nejmenuje jako **správce**.
 
 - Používejte složitá silná hesla pro všechny vaše účty. Další informace o tom, jak vytvořit silné heslo, najdete v článku o [vytvoření silného](https://support.microsoft.com/instantanswers/9bd5223b-efbe-aa95-b15a-2fb37bef637d/create-a-strong-password) hesla.
 
@@ -93,7 +93,7 @@ Nechcete, aby útočníci mohli snadno uhodnout názvy účtů nebo hesla. Násl
   - Vytvořte účet SQL s jedinečným názvem, který má členství **sysadmin** . To můžete provést z portálu povolením **ověřování SQL** během zřizování.
 
     > [!TIP] 
-    > Pokud během zřizování nepovolíte ověřování SQL, musíte ručně změnit režim ověřování na **SQL Server a režim ověřování systému Windows** . Další informace najdete v tématu [Změna režimu ověřování serveru](/sql/database-engine/configure-windows/change-server-authentication-mode).
+    > Pokud během zřizování nepovolíte ověřování SQL, musíte ručně změnit režim ověřování na **SQL Server a režim ověřování systému Windows**. Další informace najdete v tématu [Změna režimu ověřování serveru](/sql/database-engine/configure-windows/change-server-authentication-mode).
 
   - Pokud musíte použít přihlašovací jméno **SA** , povolte přihlašovací údaje po zřízení a přiřaďte nové silné heslo.
 

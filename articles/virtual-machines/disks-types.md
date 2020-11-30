@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 0a6b6196888aedfd6aa60c9395ff27611907661a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: ef481b73b6dc42bc35252c08ae8d63b9de95b2ba
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413139"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325090"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Jaké typy disků jsou k dispozici v Azure?
 
@@ -82,7 +82,7 @@ Když zřizujete disk služby Premium Storage na rozdíl od standardního úlož
 
 ## <a name="bursting"></a>Shlukování
 
-SSD úrovně Premium velikosti menší než P30 nyní nabízí shlukování disku a může zvýšit počet IOPS za sekundu na disk až do 3 500 a jejich šířku pásma až 170 MB/s. Shlukování je automatizované a funguje na základě úvěrového systému. Kredity se automaticky shromažďují v intervalu shlukování, když se provoz na disku nachází pod stanoveným cílem výkonu a kredity se automaticky spotřebovávají při nárůstu provozu po cíli až do maximálního limitu shluku. Maximální limit shluku určuje strop & šířky pásma disku, a to i v případě, že máte k dispozici nárůst kreditů. Shlukování disků poskytuje lepší toleranci proti nepředvídatelným změnám vzorů v/v. Můžete ji nejlépe využít pro spouštění a aplikace disku s operačním systémem s nárazové přenosy.    
+SSD úrovně Premium velikosti menší než P30 nyní nabízí shlukování disku a může zvýšit počet IOPS za sekundu na disk až do 3 500 a jejich šířku pásma až do 170 MB/s. Shlukování je automatizované a funguje na základě úvěrového systému. Kredity se automaticky shromažďují v intervalu shlukování, když se provoz na disku nachází pod stanoveným cílem výkonu a kredity se automaticky spotřebovávají při nárůstu provozu po cíli až do maximálního limitu shluku. Maximální limit shluku určuje strop & šířky pásma disku, a to i v případě, že máte k dispozici nárůst kreditů. Shlukování disků poskytuje lepší toleranci proti nepředvídatelným změnám vzorů v/v. Můžete ji nejlépe využít pro spouštění a aplikace disku s operačním systémem s nárazové přenosy.    
 
 Podpora pro rozšíření disků bude ve výchozím nastavení povolená pro nová nasazení použitelných velikostí disků bez nutnosti zásahu uživatele. U stávajících disků s použitelnými velikostmi můžete povolit shlukování pomocí jedné z těchto dvou možností: odpojit a znovu připojit disk nebo zastavit a restartovat připojený virtuální počítač. Pokud je disk připojený k virtuálnímu počítači, který podporuje maximální dobu trvání ve špičce limitu 30 minut, budou se všechny velikosti disků s vyšší úrovní zatížení začínat plným objemem shlukového kreditu. Další informace o tom, jak rozpracovat na discích Azure, najdete v tématu věnovaném [SSD úrovně Premiummu roztržení](linux/disk-bursting.md). 
 
@@ -124,15 +124,15 @@ Při použití spravovaných disků platí následující doporučení pro faktu
 - Přenosy odchozích dat
 - Počet transakcí
 
-**Velikost spravovaného disku** : spravované disky se účtují podle zřízené velikosti. Azure namapuje zřízenou velikost (zaokrouhlenou nahoru) na nejbližší nabízenou velikost disku. Podrobnosti o nabízených velikostech disků najdete v předchozích tabulkách. Každý disk se mapuje na podporovanou nabídku velikosti zřízeného disku a účtuje se odpovídajícím způsobem. Pokud jste například zřídili 200 GiB SSD úrovně Standard, namapuje se na nabídku velikost disku E15 (256 GiB). Fakturace za libovolný zřízený disk se účtuje po hodinách za použití měsíčních cen za nabídku úložiště. Pokud jste například zřídili disk E10 a odstranili jste ho po 20 hodinách, bude se vám účtovat částka nabídky E10 na 20 hodin. To je bez ohledu na množství skutečných dat zapsaných na disk.
+**Velikost spravovaného disku**: spravované disky se účtují podle zřízené velikosti. Azure namapuje zřízenou velikost (zaokrouhlenou nahoru) na nejbližší nabízenou velikost disku. Podrobnosti o nabízených velikostech disků najdete v předchozích tabulkách. Každý disk se mapuje na podporovanou nabídku velikosti zřízeného disku a účtuje se odpovídajícím způsobem. Pokud jste například zřídili 200 GiB SSD úrovně Standard, namapuje se na nabídku velikost disku E15 (256 GiB). Fakturace za libovolný zřízený disk se účtuje po hodinách za použití měsíčních cen za nabídku úložiště. Pokud jste například zřídili disk E10 a odstranili jste ho po 20 hodinách, bude se vám účtovat částka nabídky E10 na 20 hodin. To je bez ohledu na množství skutečných dat zapsaných na disk.
 
-**Snímky** : snímky se účtují na základě použité velikosti. Pokud třeba vytvoříte snímek spravovaného disku s zřízenou kapacitou 64 GiB a skutečná velikost využitých dat je 10 GiB, bude se snímek fakturovat jenom za využitou velikost dat 10 GiB.
+**Snímky**: snímky se účtují na základě použité velikosti. Pokud třeba vytvoříte snímek spravovaného disku s zřízenou kapacitou 64 GiB a skutečná velikost využitých dat je 10 GiB, bude se snímek fakturovat jenom za využitou velikost dat 10 GiB.
 
 Další informace o snímcích najdete v části věnované snímkům v [přehledu spravovaného disku](managed-disks-overview.md).
 
-**Přenosy odchozích dat** : [odchozí přenosy dat](https://azure.microsoft.com/pricing/details/bandwidth/) (data odcházející z datových center Azure) se účtují podle využití šířky pásma.
+**Přenosy odchozích dat**: [odchozí přenosy dat](https://azure.microsoft.com/pricing/details/bandwidth/) (data odcházející z datových center Azure) se účtují podle využití šířky pásma.
 
-**Transakce** : účtuje se počet transakcí, které provedete na standardním spravovaném disku. U standardních SSD se za jednu vstupně-výstupní operaci považuje každá vstupně-výstupní operace menší nebo rovna 256 KiB propustnosti. Vstupně-výstupní operace větší než 256 KiB propustnosti se považují za více než více vstupně-výstupních operací o velikosti 256 KiB. U standardních HDD se každá vstupně-výstupní operace považuje za jedinou transakci, a to bez ohledu na velikost I/O.
+**Transakce**: účtuje se počet transakcí, které provedete na standardním spravovaném disku. U standardních SSD se za jednu vstupně-výstupní operaci považuje každá vstupně-výstupní operace menší nebo rovna 256 KiB propustnosti. Vstupně-výstupní operace větší než 256 KiB propustnosti se považují za více než více vstupně-výstupních operací o velikosti 256 KiB. U standardních HDD se každá vstupně-výstupní operace považuje za jedinou transakci, a to bez ohledu na velikost I/O.
 
 Podrobné informace o cenách pro Managed Disks, včetně nákladů na transakce, najdete v článku [Managed disks ceny](https://azure.microsoft.com/pricing/details/managed-disks).
 

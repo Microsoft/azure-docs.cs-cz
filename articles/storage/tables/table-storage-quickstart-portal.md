@@ -8,12 +8,12 @@ ms.author: tamram
 ms.topic: quickstart
 ms.date: 12/02/2019
 ms.subservice: tables
-ms.openlocfilehash: d592dd6ac705d0f1a0b3ed55e115d06023b0a511
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 93c6cb0f61185457ef0684d2a1ba691a0534aa13
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88236263"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326756"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>Rychlý start: Vytvoření tabulky Azure Storage na webu Azure Portal 
 
@@ -21,7 +21,7 @@ Tento rychlý start ukazuje, jak na webovém portálu Azure Portal vytvářet ta
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli absolvovat tento rychlý start, nejprve na webu [Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) vytvořte účet úložiště Azure. Nápovědu k vytvoření účtu najdete v tématu [Vytvoření účtu úložiště](../common/storage-account-create.md).
 
@@ -31,15 +31,15 @@ K vytvoření tabulky na webu Azure Portal můžete použít službu Table Servi
 
 1. Klikněte na Přehled > Tabulky.
 
-   ![portál Azure](media/table-storage-quickstart-portal/table-storage-quickstart-01.png)
+   ![Na vmamcgestorage účet úložiště se zvýrazní karta Přehled. V podokně Přehled v části služby se zvýrazní tabulky.](media/table-storage-quickstart-portal/table-storage-quickstart-01.png)
 
 2. Klikněte na **+ Tabulka**.
 
-   ![portál Azure](media/table-storage-quickstart-portal/table-storage-quickstart-02.png)
+   ![U Table service pro vmamcgestorage se zvýrazní možnost + Table.](media/table-storage-quickstart-portal/table-storage-quickstart-02.png)
 
 3. Do pole **Název tabulky** zadejte název tabulky a potom klikněte na **OK**. 
 
-   ![portál Azure](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
+   ![Na kartě Přidat tabulku v Table service je tabulka zadána do názvu tabulky a zvýrazní se. Je vybráno a zvýrazněno tlačítko OK.](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
 
 ## <a name="next-steps"></a>Další kroky
 

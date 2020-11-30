@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: d98f2390be3b3f4b3770125185cb33daa5ff6371
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: e2d87d4322ac6b91a19a4775c23ceec75d528030
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93143603"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325328"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>Recenze, pracovní postupy a úlohy pro moderování obsahu
 
@@ -26,7 +26,7 @@ Content Moderator kombinuje moderování počítačů s využitím možností fu
 V recenzi se obsah nahraje do nástroje pro revize. Můžete ji zobrazit kliknutím na její typ obsahu v části karta **Revize** na řídicím panelu. Na obrazovce revize můžete změnit použité značky a podle potřeby použít vlastní značky. Po odeslání recenze se výsledky odešlou do zadaného koncového bodu zpětného volání a obsah se odebere z webu.
 
 > [!div class="mx-imgBorder"]
-> ![Kontrola webu nástroje s vybranými kartami kontrola](./Review-Tool-user-Guide/images/review-tab.png)
+> ![Rozevírací nabídka kontrola je zvýrazněna. Zobrazuje tyto typy obsahu: obrázek, text a video.](./Review-Tool-user-Guide/images/review-tab.png)
 
 ### <a name="manage-reviews"></a>Spravovat recenze
 
@@ -40,7 +40,7 @@ Tlačítko **Akce** se třemi tečkami na každé revizi vám umožní přejít 
 Pomocí panelu nástrojů **hledání** seřadíte recenze podle nejrůznějších kategorií, jako je například stav revize, značky, typ obsahu, subtýmy, přiřazení uživatelé a datum vytvoření/úpravy.
 
 > [!div class="mx-imgBorder"]
-> ![Kontrola webu nástroje s vybranými kartami kontrola](./Review-Tool-user-Guide/images/review-search.png)
+> ![Zobrazí se panel nástrojů hledání. Obsahuje různá pole se seznamem pro zadávání vyhledávacích kritérií, jako je například stav revize a značky.](./Review-Tool-user-Guide/images/review-search.png)
 
 Další informace o tom, jak to provést prostřednictvím kódu programu, najdete v [Průvodci pro kontrolu](./review-tool-user-guide/review-moderated-images.md) a Naučte se vytvářet recenze nebo si přečtěte [Průvodce REST API](./try-review-api-review.md) .
 

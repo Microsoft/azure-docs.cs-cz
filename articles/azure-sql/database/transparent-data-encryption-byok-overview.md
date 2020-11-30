@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 76ecd811ab0bffe20b4bddcc4dc2eacaffaed588
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2a7d77579eaebd3ee951d0184e25937783420806
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308332"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325192"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Transparentní šifrování dat Azure SQL s využitím klíče spravovaného zákazníkem
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -78,7 +78,7 @@ Auditoři můžou pomocí Azure Monitor zkontrolovat protokoly AuditEvent trezor
 
 - Trezor klíčů a SQL Database/spravovaná instance musí patřit ke stejnému Azure Active Directory tenanta. Trezor klíčů mezi klienty a interakce serveru nejsou podporovány. Pokud chcete přesunout prostředky, TDE s integrace se musí překonfigurovat. Přečtěte si další informace o [přesouvání prostředků](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
-- V trezoru klíčů musí být povolená funkce [obnovitelného odstranění](../../key-vault/general/soft-delete-overview.md) . k ochraně před náhodným odstraněním klíče (nebo trezoru klíčů) dojde k odstranění. Obnovitelné odstraněné prostředky se uchovávají po dobu 90 dnů, pokud je zákazník neobnovil nebo nevymazal. Akce *obnovit* a *Odstranit* mají svá vlastní oprávnění přidružená do zásad přístupu trezoru klíčů. Funkce obnovitelného odstranění je ve výchozím nastavení vypnutá a je možné ji povolit prostřednictvím [PowerShellu](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) nebo rozhraní příkazového [řádku](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete). Nelze ji povolit prostřednictvím Azure Portal.  
+- V trezoru klíčů musí být povolená funkce [obnovitelného odstranění](../../key-vault/general/soft-delete-overview.md) . k ochraně před náhodným odstraněním klíče (nebo trezoru klíčů) dojde k odstranění. Obnovitelné odstraněné prostředky se uchovávají po dobu 90 dnů, pokud je zákazník neobnovil nebo nevymazal. Akce *obnovit* a *Odstranit* mají svá vlastní oprávnění přidružená do zásad přístupu trezoru klíčů. Funkce obnovitelného odstranění je ve výchozím nastavení vypnutá a je možné ji povolit prostřednictvím [PowerShellu](../../key-vault/general/key-vault-recovery.md?tabs=azure-powershell) nebo rozhraní příkazového [řádku](../../key-vault/general/key-vault-recovery.md?tabs=azure-cli). Nelze ji povolit prostřednictvím Azure Portal.  
 
 - Udělte serveru nebo spravované instanci přístup k trezoru klíčů (Get, wrapKey, unwrapKey) pomocí jeho Azure Active Directory identity. Při použití Azure Portal se identita Azure AD automaticky vytvoří. Při použití PowerShellu nebo rozhraní příkazového řádku musí být identita Azure AD explicitně vytvořená a měla by se ověřit její dokončení. Podrobné pokyny při používání PowerShellu najdete v tématu [Konfigurace TDE s BYOK](transparent-data-encryption-byok-configure.md) a [Konfigurace TDE s BYOK pro spravovanou instanci SQL](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) .
 
@@ -146,7 +146,7 @@ Níže je uveden seznam dalších kroků požadovaných na portálu, které nep�
 
 Může dojít k tomu, že někdo s dostatečným oprávněním pro přístup k trezoru klíčů omylem zakáže přístup k tomuto klíči pomocí:
 
-- odvolávání oprávnění *Get* , *wrapKey* a *unwrapKey* trezoru klíčů ze serveru
+- odvolávání oprávnění *Get*, *wrapKey* a *unwrapKey* trezoru klíčů ze serveru
 
 - klíč se odstraňuje.
 

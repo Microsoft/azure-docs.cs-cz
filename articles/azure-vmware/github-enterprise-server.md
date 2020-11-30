@@ -3,12 +3,12 @@ title: Nastavení serveru GitHub Enterprise v privátním cloudu řešení Azure
 description: Přečtěte si, jak nastavit server GitHub Enterprise v privátním cloudu řešení Azure VMware.
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: afce212416c7c12631a7f8d388dc991ed957736f
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 00b3acf721dd7f7a1a15bcd0d24eccf3ca27ff58
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949305"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326909"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>Nastavení serveru GitHub Enterprise v privátním cloudu řešení Azure VMware
 
@@ -24,7 +24,13 @@ Stáhněte si [aktuální vydání GitHub Enterprise serveru](https://enterprise
 
 :::image type="content" source="media/github-enterprise-server/github-options.png" alt-text="Vyberte, chcete-li spustit GitHub místně nebo v cloudu.":::  
 
-:::image type="content" source="media/github-enterprise-server/deploy-ova-template.png" alt-text="Vyberte, chcete-li spustit GitHub místně nebo v cloudu." (akce) |
+:::image type="content" source="media/github-enterprise-server/deploy-ova-template.png" alt-text="Nasaďte šablonu pro VAJÍČKy.":::  
+
+Zadejte rozpoznatelný název nového virtuálního počítače, třeba GitHubEnterpriseServer. Do názvu virtuálního počítače nemusíte zahrnout podrobnosti o vydané verzi, protože tyto podrobnosti budou při upgradu instance zastaraly. Vyberte všechna výchozí nastavení Now (brzy tyto podrobnosti Upravme) a počkejte na Import vajíček.
+
+Po importu [Upravte konfiguraci hardwaru](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#creating-the-github-enterprise-server-instance) podle svých potřeb. V našem ukázkovém scénáři budeme potřebovat následující konfiguraci.
+
+| Prostředek | Standardní nastavení | Standardní nastavení + "funkce beta" (akce) |
 | --- | --- | --- |
 | Virtuální procesory | 4 | 8 |
 | Paměť | 32 GB | 61 GB |
@@ -35,11 +41,11 @@ Vaše potřeby se ale můžou lišit. Pokyny k hardwarovým hlediskům najdete v
 
 ## <a name="configuring-the-github-enterprise-server-instance"></a>Konfigurace instance serveru GitHub Enterprise Server
 
-:::image type="content" source="media/github-enterprise-server/install-github-enterprise.png" alt-text="Vyberte, chcete-li spustit GitHub místně nebo v cloudu.":::  
+:::image type="content" source="media/github-enterprise-server/install-github-enterprise.png" alt-text="Nainstalujte GitHub Enterprise.":::  
 
 Jakmile se nově zřízený virtuální počítač zapne, [nakonfigurujte ho přes prohlížeč](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#configuring-the-github-enterprise-server-instance). Bude nutné nahrát soubor s licencí a nastavit heslo konzoly pro správu. Nezapomeňte si toto heslo zapsat někam do trezoru.
 
-:::image type="content" source="media/github-enterprise-server/ssh-access.png" alt-text="Vyberte, chcete-li spustit GitHub místně nebo v cloudu.":::    
+:::image type="content" source="media/github-enterprise-server/ssh-access.png" alt-text="Přístup k prostředí pro správu přes SSH.":::    
 
 Doporučujeme, abyste aspoň tyto kroky provedli:
 
@@ -47,11 +53,11 @@ Doporučujeme, abyste aspoň tyto kroky provedli:
 
 2. [Nakonfigurujte u své instance TLS](https://docs.github.com/en/enterprise/admin/configuration/configuring-tls) , abyste mohli používat certifikát, který je podepsaný důvěryhodnou certifikační autoritou.
 
-:::image type="content" source="media/github-enterprise-server/configuring-your-instance.png" alt-text="Vyberte, chcete-li spustit GitHub místně nebo v cloudu.":::
+:::image type="content" source="media/github-enterprise-server/configuring-your-instance.png" alt-text="Konfigurace instance.":::
 
 Použijte nastavení.  Během restartování instance můžete pokračovat v dalším kroku a **nakonfigurovat BLOB Storage pro akce GitHubu**.
 
-:::image type="content" source="media/github-enterprise-server/create-admin-account.png" alt-text="Vyberte, chcete-li spustit GitHub místně nebo v cloudu.":::
+:::image type="content" source="media/github-enterprise-server/create-admin-account.png" alt-text="Vytvořte účet správce.":::
 
 Po restartování instance vytvořte v instanci nový účet správce. Nezapomeňte si poznamenat také heslo tohoto uživatele.
 
@@ -74,9 +80,9 @@ Pro posílení vaší instance pro produkční použití jsou doporučeny tyto v
 > [!NOTE]
 > Akce GitHubu jsou [v tuto chvíli dostupné jako omezená beta verze na webu GitHub Enterprise Server verze 2,22](https://docs.github.com/en/enterprise/admin/github-actions).
 
-Externí úložiště objektů BLOB je potřeba k povolení akcí GitHubu na serveru GitHub Enterprise (aktuálně dostupného jako "beta" funkce). Toto externí úložiště objektů BLOB se používá v akcích k ukládání artefaktů a protokolů. Akce na serveru GitHub Enterprise Server [podporují službu Azure Blob Storage jako poskytovatele úložiště](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements) (a některé jiné). Proto zřídíme nový účet Azure Storage s [typem účtu úložiště](../storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#types-of-storage-accounts) BlobStorage:
+Externí úložiště objektů BLOB je potřeba k povolení akcí GitHubu na serveru GitHub Enterprise (aktuálně dostupného jako "beta" funkce). Toto externí úložiště objektů BLOB se používá v akcích k ukládání artefaktů a protokolů. Akce na serveru GitHub Enterprise Server [podporují službu Azure Blob Storage jako poskytovatele úložiště](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements) (a některé jiné). Proto zřídíme nový účet Azure Storage s [typem účtu úložiště](../storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-storage-accounts) BlobStorage:
 
-:::image type="content" source="media/github-enterprise-server/storage-account.png" alt-text="Vyberte, chcete-li spustit GitHub místně nebo v cloudu.":::
+:::image type="content" source="media/github-enterprise-server/storage-account.png" alt-text="Zřídit účet Azure Blob Storage.":::
 
 Po dokončení nasazení nového prostředku BlobStorage zkopírujte a poznamenejte si připojovací řetězec (k dispozici v přístupových klíčích). Brzy budete potřebovat tento řetězec.
 
@@ -91,9 +97,9 @@ Teď vytvoříme někde pro akce GitHubu, které se mají spustit; znovu použij
 
 Nejdřív se zřídí nový virtuální počítač v clusteru. Náš virtuální počítač založíme na [nejnovější verzi Ubuntu serveru](http://releases.ubuntu.com/20.04.1/).
 
-:::image type="content" source="media/github-enterprise-server/provision-new-vm.png" alt-text="Vyberte, chcete-li spustit GitHub místně nebo v cloudu.":::
+:::image type="content" source="media/github-enterprise-server/provision-new-vm.png" alt-text="Zřídit nový virtuální počítač.":::
 
-:::image type="content" source="media/github-enterprise-server/provision-new-vm-2.png" alt-text="Vyberte, chcete-li spustit GitHub místně nebo v cloudu.":::
+:::image type="content" source="media/github-enterprise-server/provision-new-vm-2.png" alt-text="Zřídit nový virtuální počítač v kroku 2.":::
 
 Až se virtuální počítač vytvoří, zapněte ho a připojte se k němu přes SSH.
 
@@ -152,7 +158,7 @@ Další spuštění:
 
 Měl by se zobrazit výstup: "Blob Storage je v pořádku.
 
-Teď, když jsou nakonfigurované akce GitHubu, povolte ji pro vaše uživatele. Přihlaste se k instanci serveru GitHub Enterprise Server jako správce a vyberte ![ ikonu rakety.](media/github-enterprise-server/rocket-icon.png) v pravém horním rohu libovolné stránky. Na levém bočním panelu vyberte **Přehled Enterprise**, pak **zásady**, **Akce**a vyberte možnost pro **povolení akcí pro všechny organizace**.
+Teď, když jsou nakonfigurované akce GitHubu, povolte ji pro vaše uživatele. Přihlaste se k instanci serveru GitHub Enterprise Server jako správce a vyberte ![ ikonu rakety.](media/github-enterprise-server/rocket-icon.png) v pravém horním rohu libovolné stránky. Na levém bočním panelu vyberte **Přehled Enterprise**, pak **zásady**, **Akce** a vyberte možnost pro **povolení akcí pro všechny organizace**.
 
 V dalším kroku nakonfigurujte Runner z karty **spouštěče pro samoobslužné hostování** . V rozevíracím seznamu vyberte **Přidat nový** a potom **Nový Runner** .
 
@@ -162,15 +168,15 @@ Na další stránce budete mít k dispozici sadu příkazů, které se mají spu
 
 Zkopírujte `config.sh` příkaz a vložte ho do relace v rámci spouštěče akcí (dříve vytvořené).
 
-:::image type="content" source="media/github-enterprise-server/actions-runner.png" alt-text="Vyberte, chcete-li spustit GitHub místně nebo v cloudu.":::
+:::image type="content" source="media/github-enterprise-server/actions-runner.png" alt-text="Spouštěče akcí.":::
 
 Ke *spuštění* spouštěče použijte příkaz run.sh:
 
-:::image type="content" source="media/github-enterprise-server/run-runner.png" alt-text="Vyberte, chcete-li spustit GitHub místně nebo v cloudu.":::
+:::image type="content" source="media/github-enterprise-server/run-runner.png" alt-text="Spusťte spouštěč.":::
 
 Pokud chcete, aby byl tento spouštěč dostupný pro organizace v podniku, upravte jeho přístup k organizaci:
 
-:::image type="content" source="media/github-enterprise-server/edit-runner-access.png" alt-text="Vyberte, chcete-li spustit GitHub místně nebo v cloudu.":::
+:::image type="content" source="media/github-enterprise-server/edit-runner-access.png" alt-text="Upravte přístup k runneru.":::
 
 V tomto případě je zpřístupníme pro všechny organizace, ale můžete také omezit přístup k podmnožině organizací a dokonce i k určitým úložištím.
 
@@ -182,7 +188,7 @@ Pokud chcete povolit GitHub Connect, postupujte podle kroků v části [Povolen�
 
 Jakmile je připojení GitHubu povolené, vyberte **Server, který se má použít v GitHub.com ve spuštění pracovního postupu** .
 
-:::image type="content" source="media/github-enterprise-server/enable-using-actions.png" alt-text="Vyberte, chcete-li spustit GitHub místně nebo v cloudu.":::
+:::image type="content" source="media/github-enterprise-server/enable-using-actions.png" alt-text="Povolí použití akcí z GitHub.com ve spuštění pracovního postupu.":::
 
 ## <a name="setting-up-and-running-your-first-workflow"></a>Nastavení a spuštění prvního pracovního postupu
 
@@ -190,30 +196,30 @@ Teď jsou akce a připojení GitHubu nastavené, takže tuto práci budeme dát 
 
 V tomto základním pracovním postupu budeme používat `octokit/request-action` jenom k otevření problému na GitHubu pomocí rozhraní API.
 
-:::image type="content" source="media/github-enterprise-server/workflow-example.png" alt-text="Vyberte, chcete-li spustit GitHub místně nebo v cloudu.":::
+:::image type="content" source="media/github-enterprise-server/workflow-example.png" alt-text="Příklad pracovního postupu.":::
 
 >[!NOTE]
 >GitHub.com hostuje akci, ale když ji spustí na serveru GitHub Enterprise, *automaticky* použije rozhraní API serveru GitHub Enterprise.
 
 Pokud se rozhodnete, že připojení GitHubu nepovolíte, můžete použít následující alternativní pracovní postup.
 
-:::image type="content" source="media/github-enterprise-server/workflow-example-2.png" alt-text="Vyberte, chcete-li spustit GitHub místně nebo v cloudu.":::
+:::image type="content" source="media/github-enterprise-server/workflow-example-2.png" alt-text="Alternativní ukázkový pracovní postup.":::
 
 Přejděte do úložiště v instanci a přidejte výše uvedený pracovní postup jako: `.github/workflows/hello-world.yml`
 
-:::image type="content" source="media/github-enterprise-server/workflow-example-3.png" alt-text="Vyberte, chcete-li spustit GitHub místně nebo v cloudu.":::
+:::image type="content" source="media/github-enterprise-server/workflow-example-3.png" alt-text="Další ukázkový pracovní postup.":::
 
 Na kartě **Akce** pro vaše úložiště počkejte, než se pracovní postup spustí.
 
-:::image type="content" source="media/github-enterprise-server/executed-example-workflow.png" alt-text="Vyberte, chcete-li spustit GitHub místně nebo v cloudu.":::
+:::image type="content" source="media/github-enterprise-server/executed-example-workflow.png" alt-text="Spuštěný ukázkový pracovní postup.":::
 
 Můžete ho také sledovat pomocí spouštěče.
 
-:::image type="content" source="media/github-enterprise-server/workflow-processed-by-runner.png" alt-text="Vyberte, chcete-li spustit GitHub místně nebo v cloudu.":::
+:::image type="content" source="media/github-enterprise-server/workflow-processed-by-runner.png" alt-text="Pracovní postup zpracovaný nástrojem Runner":::
 
 Pokud vše úspěšně proběhlo, měli byste v úložišti zobrazit nový problém s názvem Hello World.
 
-:::image type="content" source="media/github-enterprise-server/example-in-repo.png" alt-text="Vyberte, chcete-li spustit GitHub místně nebo v cloudu.":::
+:::image type="content" source="media/github-enterprise-server/example-in-repo.png" alt-text="Příklad v úložišti.":::
 
 Blahopřejeme! Právě jste dokončili pracovní postup prvního pracovního postupu na serveru GitHub Enterprise, který běží na vašem privátním cloudu řešení Azure VMware.
 

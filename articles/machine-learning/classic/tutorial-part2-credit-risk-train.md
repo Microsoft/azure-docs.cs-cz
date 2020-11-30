@@ -9,17 +9,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 59567cf2dc03952a78852f3288e78ba06aa769ee
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 557c624b6ed683f701b6a8d38854cd8604e05b31
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325692"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325260"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Kurz 2: modely úvěrových rizik výukového programu – Azure Machine Learning Studio (Classic)
 
-**platí pro:** ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ bez ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
-
+**platí pro:** ![ Toto je značka zaškrtnutí, což znamená, že se tento článek týká Machine Learning Studio (Classic).  ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic)   ![ Toto je X, což znamená, že se tento článek týká Azure Machine Learning.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 V tomto kurzu se podíváme na proces vývoje řešení prediktivní analýzy. V Machine Learning Studio (Classic) vyvíjíte jednoduchý model.  Model pak nasadíte jako Azure Machine Learning webovou službu.  Tento nasazený model může vytvářet předpovědi s využitím nových dat. Tento kurz je **druhou částí série kurzů s třemi částmi**.
 
@@ -40,7 +39,7 @@ V této části kurzu:
 
 V [třetí části kurzu](tutorial-part3-credit-risk-deploy.md)nasadíte model jako webovou službu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Vyplňte [první část kurzu](tutorial-part1-credit-risk.md).
 
@@ -118,7 +117,7 @@ Teď nakonfigurujte modul [dat Normalize][normalize-data] :
 
 1. Kliknutím vyberte modul [normalizing data][normalize-data] Module. V podokně **vlastnosti** vyberte možnost **tanh –** pro parametr **metody transformace** .
 
-1. Klikněte na tlačítko **Spustit selektor sloupců** , vyberte možnost žádné sloupce pro možnost **začít s** , vyberte možnost **Zahrnout** v prvním rozevíracím seznamu, v rozevíracím seznamu druhý vyberte **typ sloupce** a v rozevíracím seznamu třetí vyberte **číslo** . Tím se určí, že se transformují všechny číselné sloupce (a jenom číselné).
+1. Klikněte na tlačítko **Spustit selektor sloupců**, vyberte možnost žádné sloupce pro možnost **začít s**, vyberte možnost **Zahrnout** v prvním rozevíracím seznamu, v rozevíracím seznamu druhý vyberte **typ sloupce** a v rozevíracím seznamu třetí vyberte **číslo** . Tím se určí, že se transformují všechny číselné sloupce (a jenom číselné).
 
 1. Klikněte na znaménko plus (+) napravo od tohoto řádku – tím se vytvoří řádek rozevíracích seznamů. V prvním rozevíracím seznamu vyberte **vyloučit** , v druhém rozevíracím seznamu vyberte **názvy sloupců** a v textovém poli zadejte "úvěrové riziko". To určuje, že by se měl sloupec úvěrového rizika ignorovat (musíte to udělat, protože tento sloupec je numerický, takže by se transformoval, pokud jste ho nevyloučili).
 

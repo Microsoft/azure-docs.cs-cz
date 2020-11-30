@@ -5,12 +5,12 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: peshultz
-ms.openlocfilehash: 35780f915247e88a5de093594b653ddcebdfb06b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 404103caf376b792d363996664a69f655d5bd202
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89008875"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326008"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Konfigurace klíčů spravovaných zákazníkem pro účet Azure Batch s využitím Azure Key Vault a spravované identity
 
@@ -72,11 +72,11 @@ Při vytváření instance Azure Key Vault s použitím klíčů spravovaných z
 
 ### <a name="add-an-access-policy-to-your-azure-key-vault-instance"></a>Přidání zásady přístupu do instance Azure Key Vault
 
-V Azure Portal po vytvoření Key Vault přidejte v části **zásady přístupu** v části **Nastavení**přístup k účtu Batch pomocí spravované identity. V části **oprávnění klíče**vyberte **získat**, **zabalit klíč** a **Rozbalit klíč**. 
+V Azure Portal po vytvoření Key Vault přidejte v části **zásady přístupu** v části **Nastavení** přístup k účtu Batch pomocí spravované identity. V části **oprávnění klíče** vyberte **získat**, **zabalit klíč** a **Rozbalit klíč**. 
 
 ![Přidat zásady přístupu](./media/batch-customer-managed-key/key-permissions.png)
 
-V poli **Vybrat** v části **hlavní**název zadejte, `principalId` které jste dříve načetli, nebo název účtu Batch.
+V poli **Vybrat** v části **hlavní** název zadejte, `principalId` které jste dříve načetli, nebo název účtu Batch.
 
 ![Zadejte principalId](./media/batch-customer-managed-key/principal-id.png)
 
@@ -86,7 +86,7 @@ V Azure Portal v části **klíč** klikněte na instance Key Vault a vyberte **
 
 ![Vytvoření klíče](./media/batch-customer-managed-key/create-key.png)
 
-Po vytvoření klíče klikněte na nově vytvořený klíč a aktuální verzi a zkopírujte **identifikátor klíče** v části **Properties (vlastnosti** ).  Ujistěte se, že v části **povolené operace**je zaškrtnuto políčko **zalomit klíč** a **Rozbalit klíč** .
+Po vytvoření klíče klikněte na nově vytvořený klíč a aktuální verzi a zkopírujte **identifikátor klíče** v části **Properties (vlastnosti** ).  Ujistěte se, že v části **povolené operace** je zaškrtnuto políčko **zalomit klíč** a **Rozbalit klíč** .
 
 ## <a name="enable-customer-managed-keys-on-azure-batch-account"></a>Povolit pro účet Azure Batch klíče spravované zákazníkem
 
@@ -144,11 +144,10 @@ az batch account set \
   * **Jsou podporovány klíče spravované zákazníkem pro existující účty Batch?** Ne. Klíče spravované zákazníkem jsou podporovány pouze pro nové účty Batch.
   * **Můžu vybrat velikosti klíčů RSA větší než 2048 bitů?** Ano, `3072` podporují se taky velikosti klíčů RSA a `4096` bitů.
   * **Jaké operace jsou k dispozici po odvolání klíče spravovaného zákazníkem?** Jediná povolená operace je účet pro odstranění, pokud Batch ztratí přístup k klíči spravovanému zákazníkem.
-  * **Jak mám obnovit přístup k účtu Batch, pokud omylem odstraníte Key Vault klíč?** Vzhledem k tomu, že je povolená ochrana vyprázdnění a obnovitelné odstranění, můžete obnovit existující klíče. Další informace najdete v tématu [obnovení Azure Key Vault](../key-vault/general/soft-delete-cli.md#recovering-a-key-vault).
+  * **Jak mám obnovit přístup k účtu Batch, pokud omylem odstraníte Key Vault klíč?** Vzhledem k tomu, že je povolená ochrana vyprázdnění a obnovitelné odstranění, můžete obnovit existující klíče. Další informace najdete v tématu [obnovení Azure Key Vault](../key-vault/general/key-vault-recovery.md).
   * **Můžu zakázat klíče spravované zákazníkem?** Typ šifrování účtu Batch můžete kdykoli nastavit zpět na hodnotu spravovaný klíč společnosti Microsoft. Potom můžete tento klíč odstranit nebo změnit.
   * **Jak můžu otočit své klíče?** Klíče spravované zákazníkem se automaticky neotočí. Pokud chcete klíč otočit, aktualizujte identifikátor klíče, ke kterému je účet přidružený.
   * **Po obnovení přístupu, jak dlouho bude trvat, než bude účet Batch fungovat znovu?** Po obnovení přístupu může trvat až 10 minut, než se účet zpřístupní znovu.
   * **Přestože účet Batch není k dispozici, co se stane s prostředky?** Dojde ke ztrátě všech fondů, které jsou spuštěny při přístupu k klíčům spravovaným zákazníkem, i nadále. Uzly se ale převedou do nedostupného stavu a úlohy se zastaví (a znovu se zařadí do fronty). Po obnovení přístupu budou uzly opět k dispozici a úlohy budou restartovány.
   * **Vztahuje se tento mechanismus šifrování na disky virtuálních počítačů ve fondu Batch?** Ne. U fondů konfigurace cloudových služeb se pro operační systém a dočasný disk nepoužívá žádné šifrování. Pro fondy konfigurace virtuálních počítačů se operační systém a všechny zadané datové disky ve výchozím nastavení šifrují pomocí spravovaného klíče platformy Microsoft. V současné době nemůžete pro tyto disky zadat vlastní klíč. Pokud chcete zašifrovat dočasný disk virtuálních počítačů pro fond Batch pomocí spravovaného klíče platformy Microsoft, musíte ve svém fondu [Konfigurace virtuálního počítače](/rest/api/batchservice/pool/add#virtualmachineconfiguration) povolit vlastnost [diskEncryptionConfiguration](/rest/api/batchservice/pool/add#diskencryptionconfiguration) . U vysoce citlivých prostředí doporučujeme povolit dočasné šifrování disku a vyhnout se ukládání citlivých dat na disky s operačním systémem a daty. Další informace najdete v tématu [Vytvoření fondu s povoleným šifrováním disku](./disk-encryption.md) .
   * **Je na účtu Batch k dispozici spravovaná identita přiřazená systémem na výpočetních uzlech?** Ne. Tato spravovaná identita se v tuto chvíli používá jenom pro přístup k Azure Key Vault pro klíč spravovaný zákazníkem.
-  

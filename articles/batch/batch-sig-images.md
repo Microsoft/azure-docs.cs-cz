@@ -4,12 +4,12 @@ description: Vlastní fondy imagí představují účinný způsob konfigurace v
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: c24da435540f62a793620fe6005d176ce10c7b05
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: eb21a9e0d355274142e34fbb5c90a4d293c88ef1
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917779"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327300"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Vytvoření vlastního fondu imagí pomocí Galerie sdílených imagí
 
@@ -58,7 +58,7 @@ V Azure můžete připravit sdílenou image ze spravované image, která se dá 
 - Zobecněný místní virtuální pevný disk nahraný do cloudu
 
 > [!NOTE]
-> Služba Batch v současné době podporuje pouze generalizované sdílené image. V tuto chvíli nemůžete vytvořit vlastní fond imagí z specializované sdílené image.
+> Batch podporuje pouze generalizované sdílené image; specializovanou sdílenou bitovou kopii nelze použít k vytvoření fondu.
 
 Následující kroky ukazují, jak připravit virtuální počítač, pořídit snímek a vytvořit z snímku obrázek.
 

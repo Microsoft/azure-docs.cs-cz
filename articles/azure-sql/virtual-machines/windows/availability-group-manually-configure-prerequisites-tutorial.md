@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 59eae5303d9eca48fa4cec30fe622faf19ffba1f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8572a73586b01967c8aef7f6c4947b5ce96146b4
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961883"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324852"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Kurz: předpoklady pro vytváření skupin dostupnosti v SQL Server v Azure Virtual Machines
 
@@ -46,7 +46,7 @@ Potřebujete mít účet Azure. Můžete si [otevřít bezplatný účet Azure](
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Tuto možnost vyberte **+** , pokud chcete vytvořit nový objekt na portálu.
 
    ![Nový objekt](./media/availability-group-manually-configure-prerequisites-tutorial-/01-portalplus.png)
@@ -144,7 +144,7 @@ Následující tabulka shrnuje nastavení konfigurace sítě:
 
 ## <a name="create-availability-sets"></a>Vytvoření skupin dostupnosti
 
-Před vytvořením virtuálních počítačů je potřeba vytvořit skupiny dostupnosti. Skupiny dostupnosti omezují výpadky plánovaných nebo neplánovaných událostí údržby. Skupina dostupnosti Azure je logickou skupinou prostředků, které Azure umístí do fyzických domén selhání a aktualizačních domén. Doména selhání zajišťuje, že členové skupiny dostupnosti mají samostatné prostředky napájení a sítě. Aktualizační doména zajišťuje, že členové skupiny dostupnosti nejsou zavedeni pro údržbu ve stejnou dobu. Další informace najdete v tématu [Správa dostupnosti virtuálních počítačů](../../../virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json).
+Před vytvořením virtuálních počítačů je potřeba vytvořit skupiny dostupnosti. Skupiny dostupnosti omezují výpadky plánovaných nebo neplánovaných událostí údržby. Skupina dostupnosti Azure je logickou skupinou prostředků, které Azure umístí do fyzických domén selhání a aktualizačních domén. Doména selhání zajišťuje, že členové skupiny dostupnosti mají samostatné prostředky napájení a sítě. Aktualizační doména zajišťuje, že členové skupiny dostupnosti nejsou zavedeni pro údržbu ve stejnou dobu. Další informace najdete v tématu [Správa dostupnosti virtuálních počítačů](../../../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Potřebujete dvě skupiny dostupnosti. Jedna je určena pro řadiče domény. Druhý je pro SQL Server virtuálních počítačů.
 

@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: cb55274800b239cf0e1e942647ae0c65b321b862
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 147c507cde9abf2ef97098c6b41fbbd4d67f02d2
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790045"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324801"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Konfigurace jednoho nebo více naslouchacích skupin dostupnosti Always On – Správce prostředků
 
@@ -64,7 +64,7 @@ Pokud omezíte přístup ke skupině zabezpečení sítě Azure, zajistěte, aby
 Aktuální [Šablona společnosti Microsoft](./availability-group-quickstart-template-configure.md) pro skupinu dostupnosti používá základní nástroj pro vyrovnávání zatížení se základními IP adresami.
 
    > [!NOTE]
-   > Pokud použijete nástroj pro vyrovnávání zatížení a Azure Storage pro disk s kopií cloudu, budete muset nakonfigurovat [koncový bod služby](../../../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network) . 
+   > Pokud použijete nástroj pro vyrovnávání zatížení a Azure Storage pro disk s kopií cloudu, budete muset nakonfigurovat [koncový bod služby](../../../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network) . 
    > 
 
 Příklady v tomto článku určují standardní nástroj pro vyrovnávání zatížení. V příkladech obsahuje skript `-sku Standard` .
@@ -197,9 +197,9 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 
 1. Přejděte na **AlwaysOn High Availability**  >  **Availability Groups**  >  **naslouchací procesy** skupin dostupnosti AlwaysOn vysoké dostupnosti. 
 
-1. Nyní byste měli vidět název naslouchacího procesu, který jste vytvořili v Správce clusteru s podporou převzetí služeb při selhání. Klikněte pravým tlačítkem myši na název naslouchacího procesu a vyberte možnost **vlastnosti** .
+1. Nyní byste měli vidět název naslouchacího procesu, který jste vytvořili v Správce clusteru s podporou převzetí služeb při selhání. Klikněte pravým tlačítkem myši na název naslouchacího procesu a vyberte možnost **vlastnosti**.
 
-1. Do pole **port** zadejte číslo portu pro naslouchací proces skupiny dostupnosti pomocí $EndpointPort, který jste použili dříve (výchozí nastavení je 1433), a pak vyberte **OK** .
+1. Do pole **port** zadejte číslo portu pro naslouchací proces skupiny dostupnosti pomocí $EndpointPort, který jste použili dříve (výchozí nastavení je 1433), a pak vyberte **OK**.
 
 ## <a name="test-the-connection-to-the-listener"></a>Otestování připojení k naslouchacímu procesu
 
@@ -236,7 +236,7 @@ Všimněte si následujících pokynů pro naslouchací proces skupiny dostupnos
   - Plovoucí IP adresy nástroje pro vyrovnávání zatížení pro naslouchací proces AG
   - Základní IP adresa clusteru (je-li k dispozici).
 
-* Pokud používáte standardní nástroj pro vyrovnávání zatížení s Azure Storage pro diskovou kopii cloudu, vytvořte koncový bod služby. Další informace najdete v tématu [udělení přístupu z virtuální sítě](../../../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network).
+* Pokud používáte standardní nástroj pro vyrovnávání zatížení s Azure Storage pro diskovou kopii cloudu, vytvořte koncový bod služby. Další informace najdete v tématu [udělení přístupu z virtuální sítě](../../../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network).
 
 ## <a name="for-more-information"></a>Další informace
 

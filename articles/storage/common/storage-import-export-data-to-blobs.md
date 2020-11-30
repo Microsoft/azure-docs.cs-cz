@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d23560e8ee387ca8bc9cb4bba4211f6c8272addd
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 07f1a6ff5d15ee552680c59c86a194aeabe5b866
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490878"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326382"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Použití služby Azure import/export k importu dat do Azure Blob Storage
 
 Tento článek poskytuje podrobné pokyny, jak pomocí služby importu a exportu v Azure bezpečně importovat velké objemy dat do úložiště objektů BLOB v Azure. Aby bylo možné importovat data do objektů blob Azure, služba vyžaduje, abyste dodali šifrované diskové jednotky obsahující vaše data do datacentra Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než vytvoříte úlohu importu pro přenos dat do Azure Blob Storage, pečlivě zkontrolujte a dokončete následující seznam požadavků pro tuto službu.
 Musíte:
@@ -52,7 +52,7 @@ K přípravě jednotek proveďte následující kroky.
 1. Připojte diskové jednotky k systému Windows přes konektory SATA.
 2. Na každé jednotce vytvořte jeden svazek NTFS. Přiřaďte ke svazku písmeno jednotky. Nepoužívejte mountpoints.
 3. Povolte šifrování BitLockeru na svazku NTFS. Pokud používáte systém Windows Server, postupujte podle pokynů v tématu [Postup povolení nástroje BitLocker v systému Windows server 2012 R2](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
-4. Kopírovat data do šifrovaného svazku. Použijte přetažení nebo příkaz Robocopy nebo jakýkoli takový nástroj pro kopírování. Soubor deníku ( *. jrn* ) se vytvoří ve stejné složce, ve které jste nástroj spustili.
+4. Kopírovat data do šifrovaného svazku. Použijte přetažení nebo příkaz Robocopy nebo jakýkoli takový nástroj pro kopírování. Soubor deníku (*. jrn*) se vytvoří ve stejné složce, ve které jste nástroj spustili.
 
    Je-li jednotka uzamčena a je třeba ji odemknout, postup pro odemknutí se může lišit v závislosti na vašem případu použití.
 
@@ -109,7 +109,7 @@ Provedením následujících kroků vytvořte v Azure Portal úlohu importu.
 
     ![Klikněte na vytvořit úlohu importu/exportu.](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
-4. **Základní informace** :
+4. **Základní informace**:
 
    * Vyberte **importovat do Azure**.
    * Zadejte popisný název úlohy importu. Pomocí názvu můžete sledovat průběh úloh.
@@ -120,7 +120,7 @@ Provedením následujících kroků vytvořte v Azure Portal úlohu importu.
 
      ![Vytvořit úlohu importu – krok 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
-5. V **podrobnostech úlohy** :
+5. V **podrobnostech úlohy**:
 
    * Nahrajte soubory deníku jednotky, které jste získali během kroku přípravy na jednotku. Pokud `waimportexport.exe version1` se použil, nahrajte jeden soubor pro každou jednotku, kterou jste připravili. Pokud velikost souboru deníku přesáhne 2 MB, můžete použít `<Journal file name>_DriveInfo_<Drive serial ID>.xml` také vytvořené se souborem deníku.
    * Vyberte cílový účet úložiště, ve kterém se budou data nacházet.
@@ -128,7 +128,7 @@ Provedením následujících kroků vytvořte v Azure Portal úlohu importu.
 
    ![Vytvoření úlohy importu – krok 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 
-6. V **informace o expedici zpět** :
+6. V **informace o expedici zpět**:
 
    * V rozevíracím seznamu vyberte přepravce. Pokud chcete použít operátor jiného než FedEx/DHL, vyberte z rozevíracího seznamu existující možnost. Kontaktujte Azure Data Box provozní tým `adbops@microsoft.com`  s informacemi, které se týkají přepravce, kterého plánujete použít.
    * Zadejte platné číslo účtu dopravce, který jste vytvořili pomocí tohoto dopravce. Společnost Microsoft používá tento účet k dodávání jednotek zpátky po dokončení úlohy importu. Pokud nemáte číslo účtu, vytvořte účet dopravce [FedEx](https://www.fedex.com/us/oadr/) nebo [DHL](https://www.dhl.com/) .
@@ -139,7 +139,7 @@ Provedením následujících kroků vytvořte v Azure Portal úlohu importu.
 
      ![Vytvořit úlohu importu – krok 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
 
-7. V **souhrnu** :
+7. V **souhrnu**:
 
    * Projděte si informace o úloze uvedené v souhrnu. Poznamenejte si název úlohy a dodací adresu datacentra Azure k dodávání disků zpátky do Azure. Tyto informace se používají později u expedičního štítku.
    * Kliknutím na tlačítko **OK** vytvořte úlohu importu.
@@ -160,7 +160,7 @@ Pomocí následujících kroků vytvořte v Azure CLI úlohu importu.
     az extension add --name import-export
     ```
 
-1. Můžete použít existující skupinu prostředků nebo ji vytvořit. Pokud chcete vytvořit skupinu prostředků, spusťte příkaz [AZ Group Create](/cli/azure/group#az_group_create) :
+1. Můžete použít existující skupinu prostředků nebo ji vytvořit. Skupinu prostředků vytvoříte pomocí příkazu [az group create](/cli/azure/group#az_group_create):
 
     ```azurecli
     az group create --name myierg --location "West US"

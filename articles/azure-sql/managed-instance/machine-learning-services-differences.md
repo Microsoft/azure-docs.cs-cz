@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 10/26/2020
-ms.openlocfilehash: adf454ac697f8cabf4256ebfc5baa5d0d1c76264
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c806c0a13f9f5f13588b780054d1f285beb44802
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782463"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324529"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>Klíčové rozdíly mezi Machine Learning Services ve službách Azure SQL Managed Instance a SQL Server
 
@@ -55,7 +55,7 @@ Machine Learning Services ve spravované instanci SQL a SQL Server podporují [a
 Správa balíčku Pythonu a R funguje odlišně mezi spravovanými instancemi SQL a SQL Server. Jsou to tyto rozdíly:
 
 - Neexistuje žádná podpora pro balíčky, které závisí na externích modulech runtime (jako Java), nebo při instalaci nebo použití nepotřebují přístup k rozhraním API operačního systému.
-- Balíčky můžou provádět odchozí síťová volání (ve verzi Preview se změní z výše). Můžete nastavit správná odchozí pravidla zabezpečení na úrovni [skupiny zabezpečení sítě](/azure/virtual-network/network-security-groups-overview) a povolit odchozí síťová volání.
+- Balíčky můžou provádět odchozí síťová volání (ve verzi Preview se změní z výše). Můžete nastavit správná odchozí pravidla zabezpečení na úrovni [skupiny zabezpečení sítě](../../virtual-network/network-security-groups-overview.md) a povolit odchozí síťová volání.
 
 Další informace o správě balíčků Python a R najdete v těchto tématech:
 
