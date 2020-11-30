@@ -6,21 +6,21 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 09/15/2020
+ms.topic: how-to
+ms.date: 11/20/2020
 ms.author: banders
-ms.openlocfilehash: f773c964d900c45a51eac433c3616a6e4b8978ae
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: fbb69a4449c32f85cc4be438645b654608aa7489
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "92131135"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026552"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>Přidání nebo aktualizace platební karty pro Azure
 
 Tento dokument je určený pro zákazníky, kteří si zaregistrovali Azure online pomocí platební karty.
 
-Na webu Azure Portal můžete změnit výchozí způsob platby na novou platební kartu a aktualizovat podrobnosti o platebních kartách. Pokud chcete provést tyto změny, musíte být [Správce účtu](../understand/subscription-transfer.md#whoisaa).
+Na webu Azure Portal můžete změnit výchozí způsob platby na novou platební kartu a aktualizovat podrobnosti o platebních kartách. Pro provedení těchto změn musíte být [správcem účtu](../understand/subscription-transfer.md#whoisaa) nebo musíte mít správná [oprávnění MCA](understand-mca-roles.md).
 
 Pokud chcete platební kartu odstranit, přečtěte si téma věnované [odstranění způsobu platby pro fakturaci v Azure](delete-azure-payment-method.md).
 
@@ -82,11 +82,11 @@ Pokud dojde k obnovení vaší platební karty a její číslo zůstane stejné,
 
 ## <a name="manage-credit-cards-for-a-microsoft-customer-agreement"></a>Správa platebních karet pro smlouvu se zákazníkem Microsoftu
 
-Následující části se vztahují na zákazníky, kteří mají smlouvu se zákazníkem Microsoftu a zaregistrovali si Azure online pomocí platební karty. [Další informace o postupu při kontrole, jestli máte smlouvu se zákazníkem Microsoftu](#check-the-type-of-your-account).
+Následující části se vztahují na zákazníky, kteří mají smlouvu se zákazníkem Microsoftu a zaregistrovali si Azure online pomocí platební karty, a na zákazníky, kteří mají správná [oprávnění MCA](understand-mca-roles.md). [Další informace o postupu při kontrole, jestli máte smlouvu se zákazníkem Microsoftu](#check-the-type-of-your-account).
 
 ### <a name="change-default-credit-card"></a>Změna výchozí platební karty
 
-Pokud máte smlouvu se zákazníkem Microsoftu, je vaše platební karta přidružená k fakturačnímu profilu. Způsob platby pro určitý fakturační profil může změnit jenom osoba, která provedla registraci v Azure a vytvořila fakturační účet.
+Pokud máte smlouvu se zákazníkem Microsoftu, je vaše platební karta přidružená k fakturačnímu profilu. Způsob platby pro určitý fakturační profil může změnit jenom osoba, která provedla registraci v Azure a vytvořila fakturační účet, nebo osoba se správnými [oprávněními MCA](understand-mca-roles.md).
 
 Pokud chcete jako výchozí způsob platby pro váš fakturační profil nastavit šek nebo bezhotovostní převod, projděte si téma [Úhrada předplatných Azure pomocí faktury](pay-by-invoice.md).
 

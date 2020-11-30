@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperfq1
-ms.openlocfilehash: edcc94050880544a6c2de54ff27f833f1c60f99f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: f18f1184f921aca4f2c1e33ac00dcf14c63b24eb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683641"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95893354"
 ---
 # <a name="azure-ea-portal-administration"></a>Správa portálu Azure EA
 
@@ -146,7 +146,7 @@ Před přenosem vlastnictví se seznamte s těmito zásadami řízení přístup
 - Když provádíte přenosy vlastnictví účtů nebo předplatných mezi dvěma ID organizace ve stejném tenantovi, zachovají se zásady Azure RBAC a přiřazené role správců služeb a spolusprávců.
 - Přenosy vlastnictví účtů nebo předplatných mezi tenanty povedou ke ztrátě nastavených zásad Azure RBAC a přiřazení rolí.
 - Zásady a role správců se nepřenášejí mezi různými adresáři. U správců služeb proběhne aktualizace na vlastníka cílového účtu.
-- Pokud chcete zabránit ztrátě zásad RBAC a přiřazení rolí při převodu předplatného mezi tenanty, ujistěte se, že políčko **Move the subscriptions to the recipient‘s Azure AD tenant** (Přesunout předplatná do tenanta Azure AD příjemce) zůstane **nezaškrtnuté**. Tím se zajistí zachování služeb, rolí RBAC a zásad v aktuálním tenantovi Azure AD a převede se pouze vlastnictví fakturace daného účtu.  
+- Pokud chcete zabránit ztrátě zásad Azure RBAC a přiřazení rolí při převodu předplatného mezi tenanty, ujistěte se, že políčko **Move the subscriptions to the recipient‘s Azure AD tenant** (Přesunout předplatná do tenanta Azure AD příjemce) zůstane **nezaškrtnuté**. Tím se zajistí zachování služeb, rolí Azure a zásad v aktuálním tenantovi Azure AD a převede se pouze vlastnictví fakturace daného účtu.  
     :::image type="content" source="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="Obrázek ukazující nezaškrtnuté políčko pro přesun předplatných do tenanta Azure AD" lightbox="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
 
 
@@ -282,7 +282,7 @@ Na portálu Azure EA můžete spravovat náklady a použití Azure EA. Na portá
 
 Každá role má jinou úroveň přístupu a jiná oprávnění.
 
-Další informace o rolích uživatelů najdete v tématu [Role podnikových uživatelů](https://docs.microsoft.com/azure/manage/understand-ea-roles#enterprise-user-roles).
+Další informace o rolích uživatelů najdete v tématu [Role podnikových uživatelů](/azure/cost-management-billing/manage/understand-ea-roles#enterprise-user-roles).
 
 ## <a name="add-an-azure-ea-account"></a>Přidání účtu Azure EA
 

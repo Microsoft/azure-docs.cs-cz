@@ -7,15 +7,15 @@ ms.reviewer: judupont
 tags: billing, past due, pay now, bill, invoice, pay
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 09/21/2020
+ms.topic: how-to
+ms.date: 11/20/2020
 ms.author: banders
-ms.openlocfilehash: e9ad580ae5e3ffe7a7f5781423f96897272a4844
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 5397bb4ebd5909406d0bae1ef68ec2c6453549d0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90972078"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026331"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Postup placení vyúčtování služeb Microsoft Azure
 
@@ -29,7 +29,7 @@ Pokud máte jako výchozí způsob platby platební kartu, po vygenerování fak
 
 ## <a name="pay-now-in-the-azure-portal"></a>Platba na webu Azure Portal
 
-Abyste mohli platit faktury na webu Azure Portal, musíte být správcem fakturačního účtu. Správce fakturačního účtu je uživatel, který zaregistroval účet MCA.
+Abyste mohli platit faktury na webu Azure Portal, musíte mít správná [oprávnění MCA](../manage/understand-mca-roles.md) nebo musíte být správcem fakturačního účtu. Správce fakturačního účtu je uživatel, který zaregistroval účet MCA.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte **Cost Management a fakturace**.

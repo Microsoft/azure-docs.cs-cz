@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: banders
-ms.openlocfilehash: 7cbb628f6af286141fb1c7b330117ded33142c4f
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 4cc213db19a567f18c5ff483b64a75e3bbeef892
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94744234"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962106"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Přenos předplatných Azure mezi předplatiteli a CSP
 
@@ -58,7 +58,7 @@ Aby bylo možné přenést jakékoli další odběry od partnera CSP do jakékol
 
 1. Vytvořte cílová předplatná Azure.
 1. Ujistěte se, že zdrojová a cílová předplatná jsou ve stejném tenantovi Azure Active Directory (Azure AD). Další informace o změnách tenanta Azure AD najdete v tématu [Přiřazení nebo přidání předplatného Azure do tenanta Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
-    Všimněte si, že změněný adresář neodpovídá předplatnému CSP. Budete například přenášet předplatné z CSP na předplatné s průběžnými platbami. Je potřeba změnit adresář předplatného s průběžnými platbami tak, aby se s tímto shodoval.
+    Upozorňujeme, že možnost změny adresáře se pro předplatné CSP nepodporuje. Budete například přenášet předplatné z CSP na předplatné s průběžnými platbami. Je potřeba změnit adresář předplatného s průběžnými platbami tak, aby se s tímto shodoval.
 
     > [!IMPORTANT]
     >  - Když přidružíte předplatné k jinému adresáři, uživatelé, kteří mají přiřazené role pomocí [Azure RBAC](../../role-based-access-control/role-assignments-portal.md), k němu ztratí přístup. Klasičtí správci předplatných, včetně správců služeb a spolusprávců, také ztratí přístup.

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 11/19/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 72575725c0924b8ec5f9466f4ffbba86bf071db4
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 28637f35294e9c70cbf0e96fb2cdcb1853d2ba39
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631527"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992722"
 ---
 ::: zone target="docs"
 
@@ -74,7 +74,7 @@ Další kroky závisí na tom, kam zařízení vracíte.
 
 ## <a name="ship-data-box-back"></a>Vrácení Data Boxu
 
-Ujistěte se, že se dokončilo kopírování dat do zařízení a úspěšně proběhla **příprava k odeslání** . Postup se liší v závislosti na oblasti, kam zařízení odesíláte.
+Ujistěte se, že se dokončilo kopírování dat do zařízení a úspěšně proběhla **příprava k odeslání**. Postup se liší v závislosti na oblasti, kam zařízení odesíláte.
 
 ::: zone-end
 
@@ -84,7 +84,7 @@ Pokud zařízení vracíte v USA, Kanadě nebo Evropě, proveďte následující
 
 1. Ujistěte se, že je zařízení vypnuté a nejsou k němu zapojené žádné kabely. 
 2. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
-3. Ujistěte se, že se na displeji s elektronickým inkoustem zobrazuje expediční štítek, a naplánujte vyzvednutí přepravcem. Pokud se štítek poškodí, ztratí nebo nezobrazí na displeji s elektronickým inkoustem, obraťte se na podporu Microsoftu. Pokud vám to podpora navrhne, můžete pak na webu Azure Portal přejít do části **Přehled > Stáhnout expediční štítek** . Stáhněte si expediční štítek a připevněte ho na zařízení. 
+3. Ujistěte se, že se na displeji s elektronickým inkoustem zobrazuje expediční štítek, a naplánujte vyzvednutí přepravcem. Pokud se štítek poškodí, ztratí nebo nezobrazí na displeji s elektronickým inkoustem, obraťte se na podporu Microsoftu. Pokud vám to podpora navrhne, můžete pak na webu Azure Portal přejít do části **Přehled > Stáhnout expediční štítek**. Stáhněte si expediční štítek a připevněte ho na zařízení. 
 4. Pokud zařízení vracíte, domluvte si vyzvednutí s UPS. Naplánování vyzvednutí:
 
     * Zavolejte do místní pobočky UPS (bezplatné číslo pro příslušnou zemi/oblast).
@@ -92,7 +92,7 @@ Pokud zařízení vracíte v USA, Kanadě nebo Evropě, proveďte následující
     * Pokud sledovací číslo neuvedete, bude společnost UPS vyžadovat, abyste při vyzvednutí zaplatili dodatečné poplatky.
 
     Místo naplánování vyzvednutí můžete také Data Box dovézt na nejbližší sběrné místo.
-4. Jakmile přepravce vyzvedne a naskenuje Data Box, stav objednávky na portálu se změní na **Vyzvednuto** . Zobrazí se také ID sledování.
+4. Jakmile přepravce vyzvedne a naskenuje Data Box, stav objednávky na portálu se změní na **Vyzvednuto**. Zobrazí se také ID sledování.
 
 ::: zone target="chromeless"
 
@@ -106,18 +106,12 @@ Po dokončení nahrávání do Azure se data z disků Data Boxu vymažou v soula
 
 ::: zone-end
 
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
-
-::: zone-end
-
 ## <a name="australia"></a>[Austrálie](#tab/in-australia)
 
 Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny příchozí zásilky musí mít předchozí oznámení. Při odesílání v Austrálii proveďte následující kroky.
 
 1. Ponechejte si původní obal, ve které jste zařízení obdrželi, pro zpáteční zásilku.
-2. Ujistěte se, že se dokončilo kopírování dat do zařízení a úspěšně proběhla **příprava k odeslání** .
+2. Ujistěte se, že se dokončilo kopírování dat do zařízení a úspěšně proběhla **příprava k odeslání**.
 3. Vypněte zařízení a odpojte kabely.
 4. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
 5. Zarezervujte si vyzvednutí online pomocí [odkazu na DHL](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference).
@@ -131,12 +125,6 @@ Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny 
 ## <a name="erasure-of-data-from-data-box"></a>Vymazání dat z Data Boxu
 
 Po dokončení nahrávání do Azure se data z disků Data Boxu vymažou v souladu se [standardem NIST SP 800-88 Revision 1](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi).
-
-::: zone-end
-
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
 
@@ -182,12 +170,6 @@ Po dokončení nahrávání do Azure se data z disků Data Boxu vymažou v soula
 
 ::: zone-end
 
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
-
-::: zone-end
-
 ## <a name="singapore"></a>[Singapur](#tab/in-singapore)
 
 1. Ponechejte si původní obal, ve které jste zařízení obdrželi, pro zpáteční zásilku.
@@ -223,33 +205,33 @@ Po dokončení nahrávání do Azure se data z disků Data Boxu vymažou v soula
 
 ::: zone-end
 
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
-
-::: zone-end
-
 ## <a name="south-africa"></a>[Jižní Afrika](#tab/in-sa)
 
 1. Pro zpáteční zásilku zabalte zařízení do původní krabice.
 2. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
-3. Pokud chcete objednat vyzvednutí společností DHL:
+3. Poznamenejte si sledovací číslo (je uvedené jako referenční číslo na stránce **Připravit k odeslání** v místním webovém uživatelském rozhraní Data Boxu). Je k dispozici po úspěšném dokončení kroku Příprava k odeslání. Stáhněte si expediční štítek z této stránky a nalepte ho na obal.
+4. Vyžádejte si návratový kód od provozního týmu služby Azure Data Box. Návratový kód je potřeba pro doručení balíčku zpátky do datacentra. Odešlete e-mail na adresu [adbops@microsoft.com](mailto:adbops@microsoft.com). Poznamenejte tento kód na expediční štítek vedle adresy pro vrácení, aby byl jasně viditelný.
+5. Pomocí jedné z následujících metod si objednejte vyzvednutí společností DHL:
+ 
+   * Přejděte na [DHL Express South Africa, **Schedule a Pickup**](https://mydhl.express.dhl/za/en/schedule-pickup.html#/schedule-pickup#label-reference) a objednejte si vyzvednutí online.
+   * Pomocí následující šablony odešlete e-mail na adresu [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com):
 
-    * Zavolejte na kontaktní centrum služeb pro zákazníky na čísle +27(0) 11 9213600, vyberte možnost 1 a potom uveďte číslo nákladového listu.
-    * Při plánování vyzvednutí volejte do 14:00.
-    * Pomocí následující šablony odešlete e-mail na adresu [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com):
+     ```output
+     To: Priority.Support@dhl.com
+     Subject: Pickup request for Microsoft Azure
+     Body: Need pick up for the below shipment
+       *  DHL tracking number: (reference number/waybill number)
+       *  Requested pickup date: yyyy/mm/dd;time:HH MM
+       *  Shipper contact: (company name)
+       *  Contact person: 
+       *  Phone number: 
+       *  Full physical address: 
+       *  Item to be collected: Azure Dt
+     ```
 
-    ```output
-    To: Priority.Support@dhl.com
-    Subject: Pickup request for Microsoft Azure
-    Body: Need pick up for the below shipment
-      *  DHL tracking number (reference number/waybill number)
-      *  Requested pickup date: yyyy/mm/dd;time:HH MM
-    ```
+    * Balíček můžete předat i na nejbližší pobočce DHL.
 
-    * Další možností je donést balíček na nejbližší sběrné místo DHL.
-
-4. Pokud dojde k nějakým problémům, pošlete e-mail na adresu [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) a uveďte podrobnosti o problému, ke kterému došlo. Do řádku Předmět: nezapomeňte uvést číslo nákladového listu. Můžete také zavolat na číslo +27(0)119213902.
+6. Pokud dojde k nějakým problémům, pošlete e-mail na adresu [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) a uveďte podrobnosti o problému, ke kterému došlo. Do řádku Předmět: nezapomeňte uvést číslo nákladového listu. Můžete také zavolat na číslo +27(0)119213902.
 
 ::: zone target="chromeless"
 
@@ -263,17 +245,11 @@ Po dokončení nahrávání do Azure se data z disků Data Boxu vymažou v soula
 
 ::: zone-end
 
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
-
-::: zone-end
-
 ## <a name="hong-kong"></a>[Hongkong](#tab/in-hk)
 
 1. Pro zpáteční zásilku zabalte zařízení do původní krabice.
 2. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
-3. Během pracovní doby (pondělí až pátek, 9:00 až 18:00) zavolejte na zákaznickou linku společnosti **Quantium Solutions** na čísle **(852) 2318 1213** .  
+3. Během pracovní doby (pondělí až pátek, 9:00 až 18:00) zavolejte na zákaznickou linku společnosti **Quantium Solutions** na čísle **(852) 2318 1213**.  
 4. Při žádosti o vyzvednutí uveďte, že se jedná o vyzvednutí pro Microsoft Azure, referenční číslo a také sledovací číslo (nad čárovým kódem) ze zpátečního expedičního štítku.
 5. Obdržíte ústní potvrzení naplánovaného vyzvednutí. Pokud se kurýr k vyzvednutí nedostaví, zavolejte zákaznickou linku společnosti Quantium Solutions a domluvte se na náhradním řešení.
 6. Při rezervaci vyzvednutí u společnosti Quantium zašlete oddělení [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com) potvrzení pomocí následující šablony:
@@ -301,12 +277,6 @@ Pokud byste narazili na nějaké potíže, odešlete oddělení Data Box Operati
 ## <a name="erasure-of-data-from-data-box"></a>Vymazání dat z Data Boxu
  
 Po dokončení nahrávání do Azure se data z disků Data Boxu vymažou v souladu se [standardem NIST SP 800-88 Revision 1](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi).
-
-::: zone-end
-
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
 
@@ -369,8 +339,6 @@ Pokud používáte Data Box ve státní správě USA, v Japonsku, Singapuru, Ind
 
 ::: zone target="chromeless"
 
----
-
 ## <a name="verify-data-upload-to-azure"></a>Ověření nahrání dat do Azure
 
 [!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
@@ -381,7 +349,11 @@ Po dokončení nahrávání do Azure se data z disků Data Boxu vymažou v soula
 
 ::: zone-end
 
+---
+
 ::: zone target="docs"
+
+## <a name="verify-data-upload-to-azure"></a>Ověření nahrání dat do Azure
 
 [!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 

@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 10/01/2020
+ms.date: 11/18/2020
 ms.author: banders
-ms.openlocfilehash: 5aeb9046b8901580e4de37b1735a2d2dddd42fce
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: eef19a6c421a64c3951d35eea78ea84f7e7d97b2
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147449"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887208"
 ---
 # <a name="what-are-azure-reservations"></a>Co jsou rezervace Azure?
 
@@ -90,7 +90,7 @@ Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz 
 - **Rezervovaná instance virtuálního počítače** – Rezervace se vztahuje jenom na náklady na výpočetní funkce virtuálních počítačů a cloudových služeb. Nevztahuje se na další poplatky za software, Windows, sítě nebo úložiště.
 - **Rezervovaná kapacita služby Azure Storage** – Rezervace pokrývá kapacitu úložiště pro účty úložiště úrovně Standard ve službách Blob Storage nebo Azure Data Lake Storage Gen2. Rezervace se nevztahuje na šířku pásma ani rychlost transakcí.
 - **Rezervovaná kapacita služby Azure Cosmos DB** – Rezervace se vztahuje na propustnost zřízenou pro vaše prostředky. Nevztahuje se na poplatky za úložiště a sítě.
-- **Rezervované virtuální jádro služby SQL Database** – Rezervace se vztahuje jenom na náklady na výpočetní funkce. Licence SQL se účtuje samostatně.
+- **Rezervované virtuální jádro služby SQL Database** – Rezervace se vztahuje na SQL Managed Instance i SQL Database ve variantě Elastický fond / Jednoúčelová databáze. Součástí rezervace jsou jenom náklady na výpočetní funkce. Licence SQL se účtuje samostatně. 
 - **Azure Synapse Analytics** – Rezervace se vztahuje na využití cDWU. Nevztahuje se na poplatky za úložiště nebo sítě související s využitím služby Azure Synapse Analytics.
 - **Azure Databricks** – Rezervace se vztahuje pouze na využití DBU. Další poplatky, například za výpočetní prostředky, úložiště a sítě, se účtují zvlášť.
 - **Poplatek za kolek služby App Service** – Rezervace se vztahuje na využití kolku. Nevztahuje se na pracovní procesy, takže všechny další prostředky přidružené ke kolku se účtují samostatně.

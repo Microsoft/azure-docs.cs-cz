@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: banders
-ms.openlocfilehash: 0b3cf0c705048d37d422d62b77dc7d94c5ae13bd
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7bec455b804d1f4b13ab7e13677092077214a121
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149394"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965846"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>Začínáme s aktualizovaným fakturačním účtem Azure
 
@@ -42,7 +42,7 @@ Po aktualizaci účtu se pro každé předplatné automaticky vytvoří faktura�
 
 K rolím ve fakturačních profilech se vážou oprávnění pro zobrazování a správu faktur a způsobů platby. Tyto role by se měly přiřazovat uživatelům, kteří hradí faktury, například členům účetního týmu ve vaší organizaci. Podrobnosti najdete v části [Role a úlohy související s fakturačním profilem](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks). 
 
-Po aktualizaci účtu se pro každé předplatné, pro které jste ostatním poskytli oprávnění [zobrazovat faktury](download-azure-invoice.md#allow-others-to-download-the-your-subscription-invoice), uživatelům, kteří mají roli vlastníka, přispěvatele, čtenáře nebo čtenáře fakturace Azure RBAC, poskytne pro příslušný fakturační profil role čtenáře.
+Po aktualizaci účtu se pro každé předplatné, pro které jste ostatním poskytli oprávnění [zobrazovat faktury](download-azure-invoice.md#allow-others-to-download-the-your-subscription-invoice), uživatelům, kteří mají roli vlastníka, přispěvatele, čtenáře nebo čtenáře fakturace Azure, poskytne pro příslušný fakturační profil role čtenáře.
 
 ## <a name="invoice-sections"></a>Oddíly faktury
 

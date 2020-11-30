@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 11/03/2020
+ms.date: 11/20/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 0aace1041eba771a26bed4c85361ea2551c71ba6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f1d667f55a8be1b701fda6240895dd8f96315cff
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659416"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94986313"
 ---
 ::: zone target="docs"
 
@@ -164,23 +164,28 @@ Při vracení zařízení v Jihoafrické republice proveďte následující krok
 
 2. Zapečeťte přepravní box a zkontrolujte, že zpáteční expediční štítek je vidět.
 
-3. Pokud chcete objednat vyzvednutí společností DHL:
+3. Vyžádejte si návratový kód od provozního týmu služby Azure Data Box. Návratový kód je potřeba pro doručení balíčku zpátky do datacentra. Odešlete e-mail na adresu [adbops@microsoft.com](mailto:adbops@microsoft.com). Poznamenejte tento kód na expediční štítek vedle adresy pro vrácení, aby byl jasně viditelný.
 
-    * Zavolejte na kontaktní centrum služeb pro zákazníky na čísle +27(0) 11 9213600, vyberte možnost 1 a uveďte číslo nákladového listu.
-    * Při plánování vyzvednutí prosím volejte před 14. hodinou jihoafrického času (ZA).  
-    * Pomocí e-mailové šablony níže pošlete e-mail na adresu [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com), aby bylo možné zařídit vyzvednutí:
+4. Pomocí jedné z následujících metod si objednejte vyzvednutí společností DHL:
+   * Přejděte na [DHL Express South Africa, **Schedule a Pickup**](https://mydhl.express.dhl/za/en/schedule-pickup.html#/schedule-pickup#label-reference) a objednejte si vyzvednutí online.
+   * Pomocí následující šablony odešlete e-mail na adresu [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com):
 
-    ```output
-    To: Priority.Support@dhl.com
-    Subject:Pickup request for Microsoft Azure
-    Body:  Need pick up for the below shipment
-    *  DHL tracking number (reference number/waybill number)
-    *  Requested pickup date：yyyy/mm/dd; time: HH MM
-    ```
+     ```output
+     To: Priority.Support@dhl.com
+     Subject: Pickup request for Microsoft Azure
+     Body: Need pick up for the below shipment
+       *  DHL tracking number: (reference number/waybill number)
+       *  Requested pickup date: yyyy/mm/dd;time:HH MM
+       *  Shipper contact: (company name)
+       *  Contact person: 
+       *  Phone number: 
+       *  Full physical address: 
+       *  Item to be collected: Azure Dt
+     ```
 
-    * Další možností je donést balíček na nejbližší sběrné místo DHL.
+    * Balíček můžete předat i na nejbližší pobočce DHL.
 
-4. Pokud dojde k nějakým problémům, pošlete e-mail na adresu [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) a uveďte podrobnosti o problému, ke kterému došlo. Do řádku Předmět: nezapomeňte uvést číslo nákladového listu. Můžete také zavolat na číslo +27(0)119213902.
+5. Pokud dojde k nějakým problémům, pošlete e-mail na adresu [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) a uveďte podrobnosti o problému, ke kterému došlo. Do řádku Předmět: nezapomeňte uvést číslo nákladového listu. Můžete také zavolat na číslo +27(0)119213902.
 
 ### <a name="china"></a>[Čína](#tab/in-china)
 

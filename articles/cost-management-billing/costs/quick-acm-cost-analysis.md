@@ -3,18 +3,18 @@ title: 'Rychlý start: Prozkoumání nákladů na Azure s využitím analýzy n�
 description: Tento rychlý start vám pomůže prozkoumat a analyzovat náklady organizace na Azure pomocí analýzy nákladů.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/26/2020
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contentperfq2
-ms.openlocfilehash: 31a95d8c02ee540fe6b52088159f04535c39ea93
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a7f3c0ea9517f0ce99912f004ac4de07cc981551
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676840"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122665"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý start: Prozkoumání a analýza nákladů pomocí analýzy nákladů
 
@@ -42,7 +42,7 @@ Pokud máte nové předplatné, nemůžete rovnou využívat funkce služby Cost
 
 ## <a name="review-costs-in-cost-analysis"></a>Kontrola nákladů v analýze nákladů
 
-Pokud si chcete zkontrolovat náklady v analýze nákladů, otevřete požadovaný obor na webu Azure Portal a v nabídce vyberte **Analýza nákladů** . Přejděte například na **Předplatná** , vyberte předplatné ze seznamu a pak v nabídce vyberte **Analýza nákladů** . Pomocí možnosti **Obor** můžete v analýze nákladů přepnout na jiný obor.
+Pokud si chcete zkontrolovat náklady v analýze nákladů, otevřete požadovaný obor na webu Azure Portal a v nabídce vyberte **Analýza nákladů**. Přejděte například na **Předplatná**, vyberte předplatné ze seznamu a pak v nabídce vyberte **Analýza nákladů**. Pomocí možnosti **Obor** můžete v analýze nákladů přepnout na jiný obor.
 
 Vybraný obor se použije v celé službě Cost Management v zájmu konsolidace dat a k řízení přístupu k informacím o nákladech. Při použití oborů nevybíráte více oborů. Místo toho vyberete rozsáhlejší obor, který zahrnuje ostatní obory, a potom vyfiltrujete potřebné vnořené obory. Tomuto přístupu je důležité rozumět, protože někteří lidé nemusí mít přístup k jednomu nadřazenému oboru, který pokrývá více vnořených oborů.
 
@@ -70,7 +70,7 @@ Počáteční zobrazení analýzy nákladů zahrnuje následující oblasti.
 
 Prognóza nákladů ukazuje projekci odhadovaných nákladů za vybrané časové období. Tento model je založený na modelu regrese časových řad. K přesné předpovědi nákladů vyžaduje aktuální data o využití a nákladech nejméně za 10 dnů. Pro konkrétní časové období model prognózy vyžaduje stejný objem školicích dat. To znamená, že například projekce na tři měsíce vyžaduje data o využití a nákladech nejméně za tři měsíce.
 
-K zajištění projekce nákladů na jeden rok tento model využívá maximálně šest měsíců školicích dat. Ke změně predikce potřebuje školicí data nejméně za sedm dnů. Předpověď je založená na výrazných změnách, jako jsou prudké nárůsty a poklesy, ve vzorech nákladů a využití. Negeneruje individuální projekce pro jednotlivé položky ve vlastnostech umožňujících **seskupování** . Poskytuje jenom prognózu celkových kumulovaných nákladů. Pokud používáte více měn, model poskytuje prognózu nákladů jenom v USD.
+K zajištění projekce nákladů na jeden rok tento model využívá maximálně šest měsíců školicích dat. Ke změně predikce potřebuje školicí data nejméně za sedm dnů. Předpověď je založená na výrazných změnách, jako jsou prudké nárůsty a poklesy, ve vzorech nákladů a využití. Negeneruje individuální projekce pro jednotlivé položky ve vlastnostech umožňujících **seskupování**. Poskytuje jenom prognózu celkových kumulovaných nákladů. Pokud používáte více měn, model poskytuje prognózu nákladů jenom v USD.
 
 ## <a name="customize-cost-views"></a>Přizpůsobení zobrazení nákladů
 
@@ -82,12 +82,13 @@ Kumulované náklady | Kolik jsme za tento měsíc zatím utratili? Dodržím ro
 Náklady na den | Vyskytl se za posledních 30 dnů nějaký nárůst v nákladech na den?
 Náklady podle služby | Jak se liší naše využití v posledních třech fakturách?
 Náklady podle prostředků | Které prostředky jsou zatím za tento měsíc nejdražšími náklady?
+Podrobnosti o faktuře | Jaké poplatky mám na poslední faktuře?
 
 ![Volič zobrazení ukazující příklad výběru na aktuální měsíc](./media/quick-acm-cost-analysis/view-selector.png)
 
 Existuje ale mnoho případů, kdy budete potřebovat podrobnější analýzu. Přizpůsobení začíná nahoře na stránce, kde můžete vybrat datum.
 
-Analýza nákladů zobrazuje standardně data pro aktuální měsíc. Pomocí voliče dat můžete rychle přepínat na běžné rozsahy kalendářních dat. Mezi příklady patří posledních sedm dní, poslední měsíc, aktuální rok nebo vlastní rozsah kalendářních dat. Předplatná s průběžnými platbami také zahrnují rozsahy dat na základě fakturačního období, které není vázáno na kalendářní měsíc, jako je aktuální fakturační období nebo poslední faktura. Pomocí odkazů **< PŘEDCHOZÍ** a **DALŠÍ >** v horní části nabídky můžete přejít na předchozí nebo další období. Například odkaz **< PŘEDCHOZÍ** může přepnout z období **Posledních 7 dní** na období **Před 8–14 dny** a pak **Před 15–21 dny** .
+Analýza nákladů zobrazuje standardně data pro aktuální měsíc. Pomocí voliče dat můžete rychle přepínat na běžné rozsahy kalendářních dat. Mezi příklady patří posledních sedm dní, poslední měsíc, aktuální rok nebo vlastní rozsah kalendářních dat. Předplatná s průběžnými platbami také zahrnují rozsahy dat na základě fakturačního období, které není vázáno na kalendářní měsíc, jako je aktuální fakturační období nebo poslední faktura. Pomocí odkazů **< PŘEDCHOZÍ** a **DALŠÍ >** v horní části nabídky můžete přejít na předchozí nebo další období. Například odkaz **< PŘEDCHOZÍ** může přepnout z období **Posledních 7 dní** na období **Před 8–14 dny** a pak **Před 15–21 dny**. Nezapomeňte, že když vybíráte vlastní rozsah kalendářních dat, můžete vybrat až celý rok (tj. 1. ledna až 31. prosince).
 
 ![Volič dat ukazující příklad výběru na aktuální měsíc](./media/quick-acm-cost-analysis/date-selector.png)
 
@@ -118,7 +119,7 @@ Tady je zobrazení nákladů na služby Azure za aktuální měsíc.
 
 ![Seskupené denní kumulované zobrazení s příkladem nákladů na služby Azure za poslední měsíc](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
-Ve výchozím nastavení zobrazuje analýza nákladů všechny náklady na využití a nákupy, jak postupně nabíhají a jak je uvidíte ve své faktuře. Označuje se to také jako **skutečné náklady** . Zobrazení skutečných nákladů je ideální pro kontrolu vaší faktury. Špičky v nákladech za nákupy ale můžou být alarmující, pokud si dáváte pozor na anomálie v útratách a jiné změny v nákladech. Pokud chcete špičky způsobené náklady na nákupy rezervací zploštit, přepněte na **amortizační náklady** .
+Ve výchozím nastavení zobrazuje analýza nákladů všechny náklady na využití a nákupy, jak postupně nabíhají a jak je uvidíte ve své faktuře. Označuje se to také jako **skutečné náklady**. Zobrazení skutečných nákladů je ideální pro kontrolu vaší faktury. Špičky v nákladech za nákupy ale můžou být alarmující, pokud si dáváte pozor na anomálie v útratách a jiné změny v nákladech. Pokud chcete špičky způsobené náklady na nákupy rezervací zploštit, přepněte na **amortizační náklady**.
 
 ![Přepnutím ze skutečných nákladů na amortizační je možné zobrazit náklady na nákupy rezervací rozprostřené do celého období a přidělené k prostředkům, které rezervaci využily.](./media/quick-acm-cost-analysis/metric-picker.png)
 
@@ -126,19 +127,19 @@ Amortizační náklady rozdělují nákupy rezervací do denních částek a roz
 
 Vzhledem k rozdílům v započítávání nákladů je důležité mít na vědomí, že v zobrazení skutečných a amortizačních nákladů se zobrazí rozdílné celkové částky. Obecně platí, že celkové náklady v měsících s nákupy rezervací se při přepnutí na amortizační náklady sníží a v měsících po nákupech rezervací se zvýší. Amortizace je v současné době dostupná jenom pro nákupy rezervací a není dostupná pro nákupy přes Azure Marketplace.
 
-Na následujícím obrázku jsou uvedené názvy skupin prostředků. Seskupením podle značek můžete zobrazit celkové náklady pro jednotlivé značky nebo můžete zobrazit všechny značky pro konkrétní prostředek pomocí zobrazení **Náklady podle prostředků** .
+Na následujícím obrázku jsou uvedené názvy skupin prostředků. Seskupením podle značek můžete zobrazit celkové náklady pro jednotlivé značky nebo můžete zobrazit všechny značky pro konkrétní prostředek pomocí zobrazení **Náklady podle prostředků**.
 
 ![Úplná data pro aktuální zobrazení se zobrazenými názvy skupin prostředků](./media/quick-acm-cost-analysis/full-data-set.png)
 
-Při seskupování nákladů podle konkrétního atributu se zobrazí 10 nejvýznamnějších přispěvatelů k nákladům, od nejvyššího k nejnižšímu. Pokud je přispěvatelů více než 10, zobrazí se devět nejvýznamnějších a potom skupina **Ostatní** , která představuje všechny zbývající skupiny dohromady. Při seskupování podle značek se zobrazí skupina **Neoznačeno** pro náklady, které nemají použitý klíč značky. Skupina **Neoznačeno** je vždycky poslední, i když jsou náklady bez značky vyšší než náklady se značkami. Pokud existuje 10 nebo více hodnot značek, budou náklady bez značky součástí skupiny **Ostatní** . Přepnutím do tabulkového zobrazení a změnou úrovně podrobností na **Žádné** můžete zobrazit všechny hodnoty seřazené od nejvyšší částky po nejnižší.
+Při seskupování nákladů podle konkrétního atributu se zobrazí 10 nejvýznamnějších přispěvatelů k nákladům, od nejvyššího k nejnižšímu. Pokud je přispěvatelů více než 10, zobrazí se devět nejvýznamnějších a potom skupina **Ostatní**, která představuje všechny zbývající skupiny dohromady. Při seskupování podle značek se zobrazí skupina **Neoznačeno** pro náklady, které nemají použitý klíč značky. Skupina **Neoznačeno** je vždycky poslední, i když jsou náklady bez značky vyšší než náklady se značkami. Pokud existuje 10 nebo více hodnot značek, budou náklady bez značky součástí skupiny **Ostatní**. Přepnutím do tabulkového zobrazení a změnou úrovně podrobností na **Žádné** můžete zobrazit všechny hodnoty seřazené od nejvyšší částky po nejnižší.
 
-Prostředky virtuálních počítačů, sítě a úložiště typu Classic nesdílejí podrobná data o fakturaci. Při seskupování nákladů jsou sloučené jako **klasické služby** .
+Prostředky virtuálních počítačů, sítě a úložiště typu Classic nesdílejí podrobná data o fakturaci. Při seskupování nákladů jsou sloučené jako **klasické služby**.
 
 Kontingenční grafy pod hlavním grafem zobrazují různá seskupení, která vám poskytnou širší přehled o celkových nákladech za vybrané časové období pro nastavené filtry. Výběrem vlastnosti nebo značky můžete zobrazit agregované náklady podle libovolné dimenze.
 
 ![Příklad kontingenčních grafů](./media/quick-acm-cost-analysis/pivot-charts.png)
 
-Pro jakékoli zobrazení si můžete zobrazit celou datovou sadu. Data se zobrazí podle toho, jaké výběry nebo filtry použijete. Pokud si chcete zobrazit celou datovou sadu, vyberte seznam **Typ grafu** a potom vyberte zobrazení **Tabulka** .
+Pro jakékoli zobrazení si můžete zobrazit celou datovou sadu. Data se zobrazí podle toho, jaké výběry nebo filtry použijete. Pokud si chcete zobrazit celou datovou sadu, vyberte seznam **Typ grafu** a potom vyberte zobrazení **Tabulka**.
 
 ![Data pro aktuální zobrazení v tabulkovém zobrazení](./media/quick-acm-cost-analysis/chart-type-table-view.png)
 
@@ -156,9 +157,58 @@ Pokud chcete nasdílet odkaz na analýzu nákladů, vyberte **Sdílet** v horní
 
 ## <a name="download-usage-data"></a>Stažení dat o využití
 
-Nastávají situace, kdy si potřebujete stáhnout data pro další analýzy, sloučit je se svými vlastními daty nebo je integrovat do svých vlastních systémů. Služba Cost Management nabízí několik různých možností. Pokud potřebujete ad hoc souhrn vysoké úrovně (podobný tomu, co získáte v analýze nákladů), můžete si jako výchozí bod vytvořit zobrazení, jaké potřebujete. Pak si ho stáhněte výběrem možnosti **Exportovat** a pak **Stáhnout data do souboru CSV** nebo **Stáhnout data do Excelu** . Soubor stažený do Excelu poskytuje další kontext o zobrazení, které jste použili k vygenerování staženého souboru, například obor, konfiguraci dotazů, celkovou částku a datum generování.
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-Pokud potřebujete úplnou, neagregovanou datovou sadu, stáhněte si ji z fakturačního účtu. Pak v seznamu služeb v levém navigačním podokně portálu přejděte na **Správa nákladů a fakturace** . V případě potřeby vyberte svůj fakturační účet. Přejděte na **Využití a poplatky** a vyberte ikonu **Stáhnout** pro požadované fakturační období.
+Nastávají situace, kdy si potřebujete stáhnout data pro další analýzy, sloučit je se svými vlastními daty nebo je integrovat do svých vlastních systémů. Služba Cost Management nabízí několik různých možností. Pokud potřebujete ad hoc souhrn vysoké úrovně (podobný tomu, co získáte v analýze nákladů), můžete si jako výchozí bod vytvořit zobrazení, jaké potřebujete. Pak si ho stáhněte výběrem možnosti **Exportovat** a pak **Stáhnout data do souboru CSV** nebo **Stáhnout data do Excelu**. Soubor stažený do Excelu poskytuje další kontext o zobrazení, které jste použili k vygenerování staženého souboru, například obor, konfiguraci dotazů, celkovou částku a datum generování.
+
+Pokud potřebujete úplnou, neagregovanou datovou sadu, stáhněte si ji z fakturačního účtu. Pak v seznamu služeb v levém navigačním podokně portálu přejděte na **Správa nákladů a fakturace**. V případě potřeby vyberte svůj fakturační účet. Přejděte na **Využití a poplatky** a vyberte ikonu **Stáhnout** pro požadované fakturační období.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Začněte přípravou prostředí pro rozhraní příkazového řádku Azure:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Po přihlášení použijte příkaz [az costmanagement query](/cli/azure/ext/costmanagement/costmanagement#ext_costmanagement_az_costmanagement_query) k dotazu na informace o využití vašeho předplatného od začátku měsíce:
+
+```azurecli
+az costmanagement query --timeframe MonthToDate --type Usage \
+   --scope "subscriptions/00000000-0000-0000-0000-000000000000"
+```
+
+Dotaz můžete také zúžit pomocí parametru **--DataSet-Filter** nebo dalších parametrů:
+
+```azurecli
+az costmanagement query --timeframe MonthToDate --type Usage \
+   --scope "subscriptions/00000000-0000-0000-0000-000000000000" \
+   --dataset-filter "{\"and\":[{\"or\":[{\"dimension\":{\"name\":\"ResourceLocation\",\"operator\":\"In\",\"values\":[\"East US\",\"West Europe\"]}},{\"tag\":{\"name\":\"Environment\",\"operator\":\"In\",\"values\":[\"UAT\",\"Prod\"]}}]},{\"dimension\":{\"name\":\"ResourceGroup\",\"operator\":\"In\",\"values\":[\"API\"]}}]}"
+```
+
+Jako parametr **--dataset-filter** je možné použít řetězec JSON nebo `@json-file`.
+
+Máte také možnost použít příkaz [az costmanagement export](/cli/azure/ext/costmanagement/costmanagement/export) a vyexportovat údaje o využití do účtu služby Azure Storage. Data si potom můžete stáhnout odtud.
+
+1. Vytvořte skupinu prostředků nebo použijte stávající skupinu prostředků. Skupinu prostředků vytvoříte pomocí příkazu [az group create](/cli/azure/group#az_group_create):
+
+   ```azurecli
+   az group create --name TreyNetwork --location "East US"
+   ```
+
+1. Vytvořte účet úložiště pro příjem exportů, nebo použijte už existující účet úložiště. Účet vytvoříte příkazem [az storage account create](/cli/azure/storage/account#az_storage_account_create):
+
+   ```azurecli
+   az storage account create --resource-group TreyNetwork --name cmdemo
+   ```
+
+1. Pro vytvoření exportu spusťte příkaz [az costmanagement export create](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_create):
+
+   ```azurecli
+   az costmanagement export create --name DemoExport --type Usage \
+   --scope "subscriptions/00000000-0000-0000-0000-000000000000" --storage-account-id cmdemo \
+   --storage-container democontainer --timeframe MonthToDate --storage-directory demodirectory
+   ```
+
+---
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
