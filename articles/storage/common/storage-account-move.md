@@ -10,10 +10,10 @@ ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: b70beb90fae794eb5512cb8b466524169c4c7b53
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 11/29/2020
 ms.locfileid: "92792986"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Přesunutí účtu Azure Storage do jiné oblasti
@@ -51,11 +51,11 @@ Tato šablona obsahuje nastavení, která popisují váš účet úložiště.
 
 Export šablony pomocí webu Azure Portal:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **všechny prostředky** a pak vyberte svůj účet úložiště.
 
-3. Vyberte > **Nastavení**  >  **Exportovat šablonu** .
+3. Vyberte > **Nastavení**  >  **Exportovat šablonu**.
 
 4. V okně **Exportovat šablonu** vyberte **Stáhnout** .
 
@@ -101,17 +101,17 @@ Upravte šablonu tím, že změníte název a oblast účtu úložiště.
 
 Nasazení šablony pomocí Azure Portal:
 
-1. V Azure Portal vyberte **vytvořit prostředek** .
+1. V Azure Portal vyberte **vytvořit prostředek**.
 
-2. V **části Hledat na Marketplace** zadejte **šablonu Deployment** a potom stiskněte **ENTER** .
+2. V **části Hledat na Marketplace** zadejte **šablonu Deployment** a potom stiskněte **ENTER**.
 
-3. Vyberte **template Deployment** .
+3. Vyberte **template Deployment**.
 
     ![Knihovna šablon Azure Resource Manageru](./media/storage-account-move/azure-resource-manager-template-library.png)
 
-4. Vyberte **Vytvořit** .
+4. Vyberte **Vytvořit**.
 
-5. **V editoru vyberte vytvořit vlastní šablonu** .
+5. **V editoru vyberte vytvořit vlastní šablonu**.
 
 6. Vyberte **načíst soubor** a potom podle pokynů načtěte **template.js** do souboru, který jste stáhli v poslední části.
 
@@ -137,7 +137,7 @@ Nasazení šablony pomocí Azure Portal:
          "location": "centralus"
          }]          
     ```
-    Pokud chcete získat kódy umístění oblastí, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/).  Kód oblasti je název oblasti bez mezer, **střed USA**  =  **centralus** .
+    Pokud chcete získat kódy umístění oblastí, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/).  Kód oblasti je název oblasti bez mezer, **střed USA**  =  **centralus**.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -186,11 +186,11 @@ Nasaďte šablonu a vytvořte nový účet úložiště v cílové oblasti.
 
 2. Zadejte nebo vyberte hodnoty vlastností:
 
-- **Předplatné** : vyberte předplatné Azure.
+- **Předplatné**: vyberte předplatné Azure.
 
-- **Skupina prostředků** : Vyberte **Vytvořit novou** a zadejte název nové skupiny prostředků.
+- **Skupina prostředků**: Vyberte **Vytvořit novou** a zadejte název nové skupiny prostředků.
 
-- **Umístění** : vyberte umístění Azure.
+- **Umístění**: vyberte umístění Azure.
 
 3. Klikněte na **Souhlasím s výše uvedenými podmínkami a ujednáními** a pak klikněte na tlačítko **Vybrat nákup** .
 
@@ -219,7 +219,7 @@ Některé funkce se do šablony neexportují, takže je budete muset přidat do 
 
 Následující tabulka obsahuje seznam těchto funkcí společně s pokyny k jejich přidání do nového účtu úložiště.
 
-| Doporučené    | Pokyny    |
+| Funkce    | Pokyny    |
 |--------|-----------|
 | **Zásady správy životního cyklu** | [Správa životního cyklu úložiště objektů blob v Azure](../blobs/storage-lifecycle-management-concepts.md) |
 | **Statické weby** | [Hostování statického webu v Azure Storage](../blobs/storage-blob-static-website-how-to.md) |
@@ -255,7 +255,7 @@ Pokud chcete potvrdit změny a dokončit přesun účtu úložiště, odstraňte
 
 1. V Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a výběrem možnosti **účty úložiště** zobrazte seznam účtů úložiště.
 
-2. Vyhledejte cílový účet úložiště, který chcete odstranit, a klikněte pravým tlačítkem myši na tlačítko **Další** ( **...** ) na pravé straně seznamu.
+2. Vyhledejte cílový účet úložiště, který chcete odstranit, a klikněte pravým tlačítkem myši na tlačítko **Další** (**...**) na pravé straně seznamu.
 
 3. Vyberte **Odstranit** a potvrďte.
 
