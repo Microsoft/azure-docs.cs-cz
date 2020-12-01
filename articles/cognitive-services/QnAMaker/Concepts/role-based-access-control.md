@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: c3d6e21b45bccbdaeeee350bac79be680783eb24
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ecf81152605d77e1036c9fbf5d3308af2b1fb988
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147522"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346151"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Spolupráce s ostatními autory a editory
 
@@ -42,11 +42,11 @@ Následující diagram znázorňuje tok z pohledu autora pro přihlášení k po
 |3|Rozhraní API služby QnA Maker ověří token.|
 |4 |Rozhraní API služby QnA Maker volá službu Qnamakerem.|
 
-Pokud máte v úmyslu volat [vytváření rozhraní API](../How-To/collaborate-knowledge-base.md), přečtěte si další informace o nastavení ověřování.
+Pokud máte v úmyslu volat [vytváření rozhraní API](../index.yml), přečtěte si další informace o nastavení ověřování.
 
 ## <a name="authenticate-by-qna-maker-portal"></a>Ověřování pomocí portálu QnA Maker
 
-Pokud vytváříte a spolupracujete s portálem QnA Maker, po [Přidání příslušné role k prostředku pro spolupracovníka](../How-To/collaborate-knowledge-base.md)QnA maker portál spravuje všechna přístupová oprávnění.
+Pokud vytváříte a spolupracujete s portálem QnA Maker, po [Přidání příslušné role k prostředku pro spolupracovníka](../index.yml)QnA maker portál spravuje všechna přístupová oprávnění.
 
 ## <a name="authenticate-by-qna-maker-apis-and-sdks"></a>Ověřování pomocí QnA Maker rozhraní API a sad SDK
 
@@ -54,4 +54,4 @@ Pokud vytváříte a spolupracujete s rozhraními API, a to buď prostřednictv�
 
 ## <a name="next-step"></a>Další krok
 
-* Návrh znalostní báze pro [jazyky](design-language-culture.md) a pro [klientské aplikace](integration-with-other-applications.md)
+* Návrh znalostní báze pro [jazyky](../index.yml) a pro [klientské aplikace](../index.yml)

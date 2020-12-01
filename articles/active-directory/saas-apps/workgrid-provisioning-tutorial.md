@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/17/2019
 ms.author: Zhchia
-ms.openlocfilehash: ee656f147bd27ff782121f088a239a7337d81075
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ec39e4796d2a06ad88a8e88ea99b953064eb6d21
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359761"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348326"
 ---
 # <a name="tutorial-configure-workgrid--for-automatic-user-provisioning"></a>Kurz: Konfigurace Workgrid pro Automatické zřizování uživatelů
 
@@ -83,7 +83,7 @@ Pokud chcete nakonfigurovat Workgrid pro Automatické zřizování uživatelů p
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Workgrid** , na panelu výsledků vyberte **Workgrid** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Workgrid**, na panelu výsledků vyberte **Workgrid** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Workgrid v seznamu výsledků](common/search-new-app.png)
 

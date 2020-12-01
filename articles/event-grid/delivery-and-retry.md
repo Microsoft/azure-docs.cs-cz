@@ -3,12 +3,12 @@ title: Azure Event Grid doručování a opakování
 description: Popisuje, jak Azure Event Grid doručuje události a jak zpracovává nedoručené zprávy.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 7bf8fd3a647e28d18a7ca1e658761f9226d1153a
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 9a7bde33e322183f86c3c51d30bb004d06fa1406
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981098"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345349"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Doručování zpráv Event Grid a opakování
 
@@ -54,6 +54,22 @@ az eventgrid event-subscription create \
 Další informace o použití rozhraní příkazového řádku Azure s Event Grid najdete v tématu [Směrování událostí úložiště do webového koncového bodu pomocí Azure CLI](../storage/blobs/storage-blob-event-quickstart.md).
 
 ## <a name="retry-schedule-and-duration"></a>Plán opakování a doba trvání
+
+Pokud EventGrid obdrží při pokusu o doručení události chybu, EventGrid rozhodne, zda má opakovat doručení nebo nedoručené písmeno, nebo událost vyřaďte na základě typu chyby. 
+
+Pokud chyba vrácená koncovým bodem vystavila chybu související se konfigurací, která se nedá opravit s opakováními (například pokud je koncový bod odstraněný), EventGrid buď provede nedoručitelnou událost, nebo událost přenechá, pokud není nakonfigurované žádné nedoručené zprávy.
+
+Níže jsou uvedené typy koncových bodů, pro které opakování neproběhne:
+
+| Typ koncového bodu | Kódy chyb |
+| --------------| -----------|
+| Prostředky Azure | 400 Chybný požadavek, příliš velký entita žádosti 413, 403 zakázáno | 
+| Webhook | 400 Chybný požadavek, je příliš velká entita žádosti 413, 403 zakázáno, 404 Nenalezeno, 401 Neautorizováno |
+ 
+> [!NOTE]
+> Pokud pro koncový bod není nakonfigurované Dead-Letter, události se při výskytu chyb ztratí, takže pokud nechcete, aby se tyto druhy událostí vynechaly, zvažte konfiguraci nedoručených zpráv.
+
+Pokud chyba vrácená koncovým bodem není mezi seznamem výše, EventGrid provede opakování pomocí zásad popsaných níže:
 
 Po doručení zprávy vyčká Event Grid 30 sekund na odpověď. Pokud koncový bod nereagoval po 30 sekundách, zpráva se zařadí do fronty pro opakování. Event Grid používá pro doručování událostí exponenciální zásady opakování omezení rychlosti. Event Grid se pokusy o doručení podle následujícího plánu doručovat na nejlepší úsilí:
 
@@ -256,16 +272,16 @@ Event Grid považuje za úspěšné doručení **pouze** následující kódy od
 
 ### <a name="failure-codes"></a>Kódy chyb
 
-Všechny ostatní kódy, které nejsou ve výše uvedené sadě (200-204), jsou považovány za selhání a budou opakovány. Některé mají konkrétní zásady opakování, které jsou pro ně vázané níže. všechny ostatní se řídí standardním exponenciálním modelem. Je důležité mít na paměti, že kvůli vysoce paralelismuější povaze architektury Event Grid není chování při opakování deterministické. 
+Všechny ostatní kódy, které nejsou ve výše uvedené sadě (200-204), se považují za selhání a v případě potřeby se zopakují. Některé mají konkrétní zásady opakování, které jsou pro ně vázané níže. všechny ostatní se řídí standardním exponenciálním modelem. Je důležité mít na paměti, že kvůli vysoce paralelismuější povaze architektury Event Grid není chování při opakování deterministické. 
 
 | Stavový kód | Chování opakování |
 | ------------|----------------|
-| 400 – Chybný požadavek | Zkuste to znovu po 5 minutách a dalších (nedoručených zpráv hned po nastavení nedoručených zpráv) |
-| 401 – Neautorizováno | Zkusit znovu za 5 minut nebo déle |
-| 403 zakázané | Zkusit znovu za 5 minut nebo déle |
-| 404 Nenalezeno | Zkusit znovu za 5 minut nebo déle |
+| 400 – Chybný požadavek | Nepokusit se znovu |
+| 401 – Neautorizováno | Zkuste to znovu za 5 minut nebo více pro koncové body prostředků Azure. |
+| 403 – Zakázáno | Nepokusit se znovu |
+| 404 Nenalezeno | Zkuste to znovu za 5 minut nebo více pro koncové body prostředků Azure. |
 | 408 – Časový limit žádosti | Opakovat po 2 nebo více minutách |
-| Entita požadavku 413 je moc velká. | Opakovat po 10 sekundách nebo dalších (nedoručené zprávy hned po nastavení nedoručených zpráv) |
+| Entita požadavku 413 je moc velká. | Nepokusit se znovu |
 | 503 – Nedostupná služba | Opakovat po 30 sekundách nebo více |
 | Všichni ostatní | Opakovat po 10 sekundách nebo více |
 

@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d8ec8eec28d66cf93608393ddca45f78460d831
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6c8be064ade8182355c320e948b3b60b846033d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279767"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348054"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: Reference k funkcím
 V Azure AD Connect jsou funkce použity k manipulaci s hodnotou atributu během synchronizace.  
@@ -48,7 +48,7 @@ Typy jsou vyjádřeny pomocí následující syntaxe:
 * **var** – varianta (téměř) jakéhokoli jiného typu
 * **void** – nevrací hodnotu
 
-Funkce s typy **mvbin**, **mvstr**a **mvref** mohou pracovat pouze s více hodnotami atributů. Funkce s funkcí **bin**, **str**a **ref** jak v atributech s jednou hodnotou, tak i s více hodnotami.
+Funkce s typy **mvbin**, **mvstr** a **mvref** mohou pracovat pouze s více hodnotami atributů. Funkce s funkcí **bin**, **str** a **ref** jak v atributech s jednou hodnotou, tak i s více hodnotami.
 
 ## <a name="functions-reference"></a>Reference k funkcím
 
@@ -114,7 +114,7 @@ Funkce s typy **mvbin**, **mvstr**a **mvref** mohou pracovat pouze s více hodno
   * [RandomNum](#randomnum)
 * **Vícenásobný * oceněný**
   * [Zobrazí](#contains)
-  * [Počet](#count)
+  * [Výpočtu](#count)
   * [Položka](#item)
   * [ItemOrNull](#itemornull)
   * [Join](#join) (Spojení)
@@ -703,7 +703,7 @@ Funkce InStr vyhledá první výskyt podřetězce v řetězci.
 
 `num InStr(str stringcheck, str stringmatch)`  
 `num InStr(str stringcheck, str stringmatch, num start)`  
-`num InStr(str stringcheck, str stringmatch, num start , enum compare)`
+`num InStr(str stringcheck, str stringmatch, num start, enum compare)`
 
 * stringcheck: řetězec, který má být prohledán
 * stringmatch: řetězec, který se má najít

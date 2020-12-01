@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 19942e5400be63dfde48b9653282fb93bcb1ec42
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f524eae791ab3944fb326b867e5f6823a35b432c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174811"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348190"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Kurz – sestavení koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure AD
 
@@ -199,29 +199,21 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
   - [Vytvořit uživatele](#create-user) ([žádost o](#request)  /  [odpověď](#response))
   - [Získat uživatele](#get-user) ([žádost o](#request-1)  /  [odpověď](#response-1))
   - [Získat uživatele dotazem](#get-user-by-query) ([žádost o](#request-2)  /  [odpověď](#response-2))
-  - [Získat uživatele podle dotazů – žádné výsledky](#get-user-by-query---zero-results) ([Request](#request-3) 
-/  [odpověď](#response-3)na žádost)
-  - [Aktualizace uživatele [vlastnosti s více hodnotami]](#update-user-multi-valued-properties) ([Request](#request-4)  /   [odpověď](#response-4)na žádost)
-  - [Aktualizace uživatele [vlastnosti s jednou hodnotou]](#update-user-single-valued-properties) ([Request](#request-5) 
-/  [odpověď](#response-5)na žádost) 
-  - [Zakázat uživatele](#disable-user) ([žádost o](#request-14)  / 
- [odpověď](#response-14))
-  - [Odstranit uživatele](#delete-user) ([žádost o](#request-6)  / 
- [odpověď](#response-6))
+  - [Získat uživatele podle dotazů – žádné výsledky](#get-user-by-query---zero-results) ([Request](#request-3)  /  [odpověď](#response-3)na žádost)
+  - [Aktualizace uživatele [vlastnosti s více hodnotami]](#update-user-multi-valued-properties) ([Request](#request-4)  /  [odpověď](#response-4)na žádost)
+  - [Aktualizace uživatele [vlastnosti s jednou hodnotou]](#update-user-single-valued-properties) ([Request](#request-5)  /  [odpověď](#response-5)na žádost) 
+  - [Zakázat uživatele](#disable-user) ([žádost o](#request-14)  /  [odpověď](#response-14))
+  - [Odstranit uživatele](#delete-user) ([žádost o](#request-6)  /  [odpověď](#response-6))
 
 
 [Operace skupiny](#group-operations)
-  - [Vytvořit skupinu](#create-group) ( [Request](#request-7)  /  [odpověď](#response-7)na žádost)
-  - [Získat skupinu](#get-group) ( [Request](#request-8)  /  [odpověď](#response-8)na žádost)
+  - [Vytvořit skupinu](#create-group) ([Request](#request-7)  /  [odpověď](#response-7)na žádost)
+  - [Získat skupinu](#get-group) ([Request](#request-8)  /  [odpověď](#response-8)na žádost)
   - [Získat skupinu podle DisplayName](#get-group-by-displayname) (odpověď na[žádost](#request-9)  /  [Response](#response-9))
-  - [Update Group [atributy nečlenu]](#update-group-non-member-attributes) ([Request](#request-10) /
-  [odpověď](#response-10)na žádost)
-  - [Aktualizace skupiny [přidat členy]](#update-group-add-members) ( [Request](#request-11)  /
- [odpověď](#response-11)na žádost)
-  - [Aktualizace skupiny [odebrat členy]](#update-group-remove-members) ( [Request](#request-12)  /
- [odpověď](#response-12)na žádost)
-  - [Odstranit skupinu](#delete-group) ([Request](#request-13)  /
- [odpověď](#response-13)na žádost)
+  - [Update Group [atributy nečlenu]](#update-group-non-member-attributes) ([Request](#request-10)  /  [odpověď](#response-10)na žádost)
+  - [Aktualizace skupiny [přidat členy]](#update-group-add-members) ([Request](#request-11)  /  [odpověď](#response-11)na žádost)
+  - [Aktualizace skupiny [odebrat členy]](#update-group-remove-members) ([Request](#request-12)  /  [odpověď](#response-12)na žádost)
+  - [Odstranit skupinu](#delete-group) ([Request](#request-13)  /  [odpověď](#response-13)na žádost)
 
 ### <a name="user-operations"></a>Uživatelské operace
 
@@ -229,7 +221,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="create-user"></a>Vytvořit uživatele
 
-###### <a name="request"></a>Žádost
+###### <a name="request"></a>Request
 
 *PO/Users*
 ```json
@@ -287,7 +279,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="get-user"></a>Získání uživatele
 
-###### <a name="request"></a><a name="request-1"></a>Žádost
+###### <a name="request"></a><a name="request-1"></a>Request
 *ZÍSKAT/Users/5d48a0a8e9f04aa38008* 
 
 ###### <a name="response-user-found"></a><a name="response-1"></a>Odpověď (uživatel se našla)
@@ -317,7 +309,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-###### <a name="request"></a>Žádost
+###### <a name="request"></a>Request
 *ZÍSKAT/Users/5171a35d82074e068ce2* 
 
 ###### <a name="response-user-not-found-note-that-the-detail-is-not-required-only-status"></a>Odpověď (uživatel nebyl nalezen. Všimněte si, že podrobnosti nejsou požadovány, pouze stav.)
@@ -334,7 +326,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="get-user-by-query"></a>Získat uživatele podle dotazu
 
-##### <a name="request"></a><a name="request-2"></a>Žádost
+##### <a name="request"></a><a name="request-2"></a>Request
 
 *ZÍSKAT/Users? Filter = userName EQ "Test_User_dfeef4c5-5681 -4387-B016-bdf221e82081"*
 
@@ -375,7 +367,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="get-user-by-query---zero-results"></a>Získat uživatele podle dotazů – žádné výsledky
 
-##### <a name="request"></a><a name="request-3"></a>Žádost
+##### <a name="request"></a><a name="request-3"></a>Request
 
 *ZÍSKAT/Users? Filter = userName EQ "neexistující uživatel"*
 
@@ -395,7 +387,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="update-user-multi-valued-properties"></a>Aktualizace uživatele [vlastnosti s více hodnotami]
 
-##### <a name="request"></a><a name="request-4"></a>Žádost
+##### <a name="request"></a><a name="request-4"></a>Request
 
 *Oprava/Users/6764549bef60420686bc HTTP/1.1*
 ```json
@@ -446,7 +438,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="update-user-single-valued-properties"></a>Aktualizace uživatele [vlastnosti s jednou hodnotou]
 
-##### <a name="request"></a><a name="request-5"></a>Žádost
+##### <a name="request"></a><a name="request-5"></a>Request
 
 *Oprava/Users/5171a35d82074e068ce2 HTTP/1.1*
 ```json
@@ -491,7 +483,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 ### <a name="disable-user"></a>Zakázání uživatele
 
-##### <a name="request"></a><a name="request-14"></a>Žádost
+##### <a name="request"></a><a name="request-14"></a>Request
 
 *Oprava/Users/5171a35d82074e068ce2 HTTP/1.1*
 ```json
@@ -545,7 +537,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 ```
 #### <a name="delete-user"></a>Odstranění uživatele
 
-##### <a name="request"></a><a name="request-6"></a>Žádost
+##### <a name="request"></a><a name="request-6"></a>Request
 
 *Odstranit/Users/5171a35d82074e068ce2 HTTP/1.1*
 
@@ -562,7 +554,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="create-group"></a>Vytvoření skupiny
 
-##### <a name="request"></a><a name="request-7"></a>Žádost
+##### <a name="request"></a><a name="request-7"></a>Request
 
 *POST/Groups HTTP/1.1*
 ```json
@@ -597,7 +589,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="get-group"></a>Získání skupiny
 
-##### <a name="request"></a><a name="request-8"></a>Žádost
+##### <a name="request"></a><a name="request-8"></a>Request
 
 *ZÍSKAT/Groups/40734ae655284ad3abcc? excludedAttributes = Members HTTP/1.1*
 
@@ -619,7 +611,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="get-group-by-displayname"></a>Získat Group by DisplayName
 
-##### <a name="request"></a><a name="request-9"></a>Žádost
+##### <a name="request"></a><a name="request-9"></a>Request
 *GET/Groups? excludedAttributes = Members&Filter = DisplayName EQ "DisplayName" HTTP/1.1*
 
 ##### <a name="response"></a><a name="response-9"></a>Odpověď
@@ -648,7 +640,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="update-group-non-member-attributes"></a>Aktualizovat skupinu [atributy nečlenské]
 
-##### <a name="request"></a><a name="request-10"></a>Žádost
+##### <a name="request"></a><a name="request-10"></a>Request
 
 *Oprava/Groups/fa2ce26709934589afc5 HTTP/1.1*
 ```json
@@ -668,7 +660,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 ### <a name="update-group-add-members"></a>Aktualizace skupiny [přidat členy]
 
-##### <a name="request"></a><a name="request-11"></a>Žádost
+##### <a name="request"></a><a name="request-11"></a>Request
 
 *Oprava/Groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
@@ -691,7 +683,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="update-group-remove-members"></a>Skupina aktualizací [odebrat členy]
 
-##### <a name="request"></a><a name="request-12"></a>Žádost
+##### <a name="request"></a><a name="request-12"></a>Request
 
 *Oprava/Groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
@@ -714,7 +706,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="delete-group"></a>Odstranění skupiny
 
-##### <a name="request"></a><a name="request-13"></a>Žádost
+##### <a name="request"></a><a name="request-13"></a>Request
 
 *Odstranit/Groups/cdb1ce18f65944079d37 HTTP/1.1*
 
@@ -1176,7 +1168,7 @@ Po zahájení počátečního cyklu můžete na levém panelu vybrat **protokoly
 Pokud vytváříte aplikaci, kterou bude používat víc než jeden tenant, můžete je zpřístupnit v galerii aplikací Azure AD. Díky tomu budou moci organizace snadno vyhledat aplikaci a nakonfigurovat zřizování. Publikování aplikace v galerii Azure AD a zpřístupnění pro ostatní je snadné. Podívejte se na tento [postup.](../develop/v2-howto-app-gallery-listing.md) Microsoft bude s vámi spolupracovat na integraci vaší aplikace do naší galerie, testování koncového bodu a [dokumentaci](../saas-apps/tutorial-list.md) k registraci pro zákazníky, kteří budou používat.
 
 ### <a name="gallery-onboarding-checklist"></a>Kontrolní seznam pro registraci galerie
-Postupujte podle níže uvedeného kontrolního seznamu a ujistěte se, že je vaše aplikace rychlá a zákazníci mají hladké prostředí pro nasazení. Informace budou shromažďovány od vás při připojování k galerii. 
+Postupujte podle níže uvedeného kontrolního seznamu, abyste měli jistotu, že je vaše aplikace rychle připojená a že zákazníci mají hladké prostředí pro nasazení. Informace budou shromažďovány od vás při připojování k galerii. 
 > [!div class="checklist"]
 > * Podpora koncového bodu uživatelů a skupin [SCIM 2,0 ](#step-2-understand-the-azure-ad-scim-implementation) (je vyžadována pouze jedna, ale doporučuje se obě)
 > * Podpora aspoň 25 požadavků za sekundu na tenanta, aby se zajistilo zřízení a zrušení zřízení uživatelů a skupin bez prodlení (povinné)

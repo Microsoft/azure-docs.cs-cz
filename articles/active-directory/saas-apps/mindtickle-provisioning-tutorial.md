@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 68d084b7fde7d4c28b1c9b1da1e1c66cb6a63dd8
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: c158358b1c4fcd72d9189d7a991645cb65a4dc83
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359438"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348122"
 ---
 # <a name="tutorial-configure-mindtickle-for-automatic-user-provisioning"></a>Kurz: Konfigurace MindTickle pro Automatické zřizování uživatelů
 
@@ -74,7 +74,7 @@ Pokud chcete nakonfigurovat MindTickle pro Automatické zřizování uživatelů
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **MindTickle** , na panelu výsledků vyberte **MindTickle** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **MindTickle**, na panelu výsledků vyberte **MindTickle** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![MindTickle v seznamu výsledků](common/search-new-app.png)
 

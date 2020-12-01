@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7caeefb741e6916d69894ede3a7c64eb2e8f623f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b79eb842105734f0f6c145884d73f886a02dbbbc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174492"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348154"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>Nejčastější dotazy k samoobslužnému resetování hesla
 
@@ -263,7 +263,7 @@ Tyto nejčastější dotazy jsou rozdělené do následujících částí:
   >
 * **Otázka: Jaké typy účtů jsou pro použití zpětného zápisu hesla k pro?**
 
-  > **A:** Zpětný zápis hesla funguje u uživatelských účtů, které jsou synchronizované z místní služby Active Directory do služby Azure AD, včetně federovaného, synchronizace hodnot hash hesel a Pass-Through uživatelů Autentication.
+  > **A:** Zpětný zápis hesla funguje u uživatelských účtů, které jsou synchronizované z místní služby Active Directory do služby Azure AD, včetně federovaného, synchronizace hodnot hash hesel a Pass-Through uživatelů ověřování.
   >
   >
 * **Otázka: zpětný zápis hesla vynutil zásady hesel moje doména?**

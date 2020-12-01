@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3960b8afeb9d7ecc80aa49fc13eee4977fa5494
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4c4ba11dabc8e805f3604afc2fc4388840ac67cf
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173966"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348530"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Instalace agenta zřizování cloudů Azure AD Connect
 Tento dokument vás provede procesem instalace agenta zřizování služby Azure Active Directory (Azure AD) Connect a jeho počáteční konfigurace v Azure Portal.
@@ -58,11 +58,11 @@ Chcete-li nainstalovat agenta, postupujte podle těchto kroků.
    ![Vytvořit gMSA](media/how-to-install/install-12.png)</br>
  11. Na obrazovce **připojit ke službě Active Directory** vyberte **Přidat adresář**. Pak se přihlaste pomocí účtu správce služby Active Directory. Tato operace přidá váš místní adresář. 
  12. Volitelně můžete spravovat preference řadičů domény, které bude agent používat, a to tak, že vybere **možnost vybrat prioritu řadiče domény** a objednává seznam řadičů domény.   Klikněte na **OK**.
-  ![Pořadí controlllers domény](media/how-to-install/install-2a.png)</br>
+  ![Seřazení řadičů domény](media/how-to-install/install-2a.png)</br>
  13. Vyberte **Další**.
   ![Obrazovka připojit ke službě Active Directory](media/how-to-install/install-3a.png)</br>
  14.  Na obrazovce pro **instalaci agenta** potvrďte nastavení a účet, který se vytvoří, a klikněte na **Potvrdit**.
-  ![Potvrdit settngs](media/how-to-install/install-11.png)</br>
+  ![Potvrdit nastavení](media/how-to-install/install-11.png)</br>
  15. Po dokončení této operace byste měli vidět, **že se instalace agenta dokončila.** Vyberte možnost **ukončit**.
   ![Obrazovka dokončení konfigurace](media/how-to-install/install-4a.png)</br>
 1. Pokud se stále zobrazuje úvodní obrazovka úvodního **balíčku Microsoft Azure AD připojení** , vyberte **Zavřít**.

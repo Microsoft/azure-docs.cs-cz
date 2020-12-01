@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 2f87f5c7e43757db476153db93d6ecc5082dde89
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: ee8d838ba315c2e261a61699948b71a710341165
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376753"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346354"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Osvědčené postupy QnA Maker znalostní bázi Knowledge Base
 
@@ -18,7 +18,7 @@ ms.locfileid: "94376753"
 
 ## <a name="extraction"></a>Extrakce
 
-Služba QnA Maker neustále vylepšuje algoritmy, které extrahují QnAs z obsahu a rozbalí seznam podporovaných formátů souborů a HTML. Postupujte podle [pokynů](../Concepts/content-types.md) pro extrakci dat na základě typu dokumentu.
+Služba QnA Maker neustále vylepšuje algoritmy, které extrahují QnAs z obsahu a rozbalí seznam podporovaných formátů souborů a HTML. Postupujte podle [pokynů](../index.yml) pro extrakci dat na základě typu dokumentu.
 
 Obecně platí, že stránky nejčastějších dotazů by měly být samostatné a nekombinované s dalšími informacemi. Příručky k produktu by měly mít prázdná záhlaví a možnou stránku indexu.
 
@@ -71,7 +71,7 @@ K dispozici jsou některé otázky specifické pro roboty, které jsou součást
 
 Doporučujeme, aby následující funkce CHITEST-chat QnAs konkrétnější:
 
-* Kdo jsi?
+* Kdo jste?
 * Co můžete udělat?
 * Kolik ti je?
 * Kdo vám to vytvořil?
@@ -117,10 +117,10 @@ Díky [metadatům](../How-To/edit-knowledge-base.md) může klientská aplikace 
 
 ### <a name="use-synonyms"></a>Použít synonyma
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
-I když je k dispozici podpora synonym v anglickém jazyce, použijte změnu velikosti písmen bez rozlišení velkých a malých písmen prostřednictvím [rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) pro přidání synonym k klíčovým slovům, která přijímají různé formuláře. Synonyma se přidávají na úrovni služby QnA Maker a **sdílí se všemi bázemi znalostí ve službě**.
+I když je k dispozici podpora synonym v anglickém jazyce, použijte změnu velikosti písmen bez rozlišení velkých a malých písmen prostřednictvím [rozhraní API](/rest/api/cognitiveservices/qnamaker/alterations/replace) pro přidání synonym k klíčovým slovům, která přijímají různé formuláře. Synonyma se přidávají na úrovni služby QnA Maker a **sdílí se všemi bázemi znalostí ve službě**.
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
-I když je k dispozici podpora synonym v anglickém jazyce, použijte změnu velikosti písmen bez rozlišení velkých a malých písmen prostřednictvím [rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) pro přidání synonym k klíčovým slovům, která přijímají různé formuláře. **Pro každou znalostní bázi se přidala** synonyma ve spravovaném QnA maker (Preview).
+I když je k dispozici podpora synonym v anglickém jazyce, použijte změnu velikosti písmen bez rozlišení velkých a malých písmen prostřednictvím [rozhraní API](/rest/api/cognitiveservices/qnamaker/alterations/replace) pro přidání synonym k klíčovým slovům, která přijímají různé formuláře. **Pro každou znalostní bázi se přidala** synonyma ve spravovaném QnA maker (Preview).
 
 |Původní slovo|Synonyma|
 |--|--|
@@ -138,10 +138,10 @@ Například můžete mít dvě samostatné QnAs s následujícími otázkami:
 |kde je *umístění* parkování|
 |kde je *umístění* ATM|
 
-Vzhledem k tomu, že tyto dvě QnAs jsou fráze s velmi podobnými slovy, může tato podobnost způsobit velmi podobné skóre pro mnoho uživatelských dotazů, které jsou fráze, jako  *je například `<x>` umístění*. Místo toho se pokuste jasně odlišit pomocí dotazů, jako  *je "kde je zaparkovaná dávka"* a *"kde je ATM"* , a to tak, že se vyhnete slovám, jako je "umístění", které by mohlo být ve vaší znalostní bázi hodně otázek.
+Vzhledem k tomu, že tyto dvě QnAs jsou fráze s velmi podobnými slovy, může tato podobnost způsobit velmi podobné skóre pro mnoho uživatelských dotazů, které jsou fráze, jako  *je například `<x>` umístění*. Místo toho se pokuste jasně odlišit pomocí dotazů, jako  *je "kde je zaparkovaná dávka"* a *"kde je ATM"*, a to tak, že se vyhnete slovám, jako je "umístění", které by mohlo být ve vaší znalostní bázi hodně otázek.
 
 ## <a name="collaborate"></a>Spolupráce
-QnA Maker umožňuje uživatelům [spolupracovat](../How-to/collaborate-knowledge-base.md) na znalostní bázi. Uživatelé potřebují přístup ke skupině prostředků Azure QnA Maker, aby mohli získat přístup ke znalostní bázi. Některé organizace můžou chtít využívat úpravy a údržbu znalostní báze a pořád budou moct chránit přístup ke svým prostředkům Azure. Tento model schvalovatele editoru se provádí nastavením dvou stejných [služeb QnA maker](../How-to/set-up-qnamaker-service-azure.md) v různých předplatných a výběrem jednoho pro cyklus úprav a testování. Po dokončení testování se obsah znalostní báze přenese pomocí procesu importu a [exportu](../Tutorials/migrate-knowledge-base.md) do QnA maker služby schvalovatele, která nakonec publikuje znalostní bázi a aktualizuje koncový bod.
+QnA Maker umožňuje uživatelům [spolupracovat](../index.yml) na znalostní bázi. Uživatelé potřebují přístup ke skupině prostředků Azure QnA Maker, aby mohli získat přístup ke znalostní bázi. Některé organizace můžou chtít využívat úpravy a údržbu znalostní báze a pořád budou moct chránit přístup ke svým prostředkům Azure. Tento model schvalovatele editoru se provádí nastavením dvou stejných [služeb QnA maker](../How-to/set-up-qnamaker-service-azure.md) v různých předplatných a výběrem jednoho pro cyklus úprav a testování. Po dokončení testování se obsah znalostní báze přenese pomocí procesu importu a [exportu](../Tutorials/migrate-knowledge-base.md) do QnA maker služby schvalovatele, která nakonec publikuje znalostní bázi a aktualizuje koncový bod.
 
 
 

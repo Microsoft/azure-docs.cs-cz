@@ -1,5 +1,5 @@
 ---
-title: Modul AADCloudSyncTools PowerShell pro synchronizaci cloudu Azure AD Connect
+title: Modul AADCloudSyncTools PowerShellu pro zřizování cloudu Azure AD Connect
 description: Tento článek popisuje, jak nainstalovat agenta pro zřizování cloudu Azure AD Connect.
 services: active-directory
 author: billmath
@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 11/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3ce5a7a313ab0f0680558aa60b34e3ebb9b51c9
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: ba71d3eedbb75780c20499daa890556574494a35
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95255103"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348133"
 ---
-# <a name="aadcloudsynctools-powershell-module-for-azure-ad-connect-cloud-sync"></a>Modul AADCloudSyncTools PowerShell pro synchronizaci cloudu Azure AD Connect
+# <a name="aadcloudsynctools-powershell-module-for-azure-ad-connect-cloud-provisioning"></a>Modul AADCloudSyncTools PowerShellu pro zřizování cloudu Azure AD Connect
 
 S vydáním aktualizace Public Preview 2 Společnost Microsoft představila modul prostředí PowerShell pro AADCloudSyncTools.  Tento modul poskytuje sadu užitečných nástrojů, které vám pomůžou se správou nasazení cloudových synchronizací Azure AD Connect.
 

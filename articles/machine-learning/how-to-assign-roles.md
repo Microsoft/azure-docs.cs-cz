@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 11/09/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
-ms.openlocfilehash: 90abd46e73ecb50b5e6de40218571d0ec899752e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8af3da5d04f9aaafc18299f4837660694ee34b51
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012964"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345265"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Správa přístupu k pracovnímu prostoru služby Azure Machine Learning
 
@@ -55,7 +55,7 @@ Pokud jste vlastníkem pracovního prostoru, můžete přidat a odebrat role pro
 - [PowerShell](../role-based-access-control/role-assignments-powershell.md)
 - [Azure CLI](../role-based-access-control/role-assignments-cli.md)
 - [REST API](../role-based-access-control/role-assignments-rest.md)
-- [Šablony Azure Resource Manageru](../role-based-access-control/role-assignments-template.md)
+- [Šablony Azure Resource Manager](../role-based-access-control/role-assignments-template.md)
 
 Pokud jste nainstalovali [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md), můžete k přiřazení rolí uživatelům použít příkazy rozhraní příkazového řádku:
 
@@ -175,7 +175,7 @@ Následující tabulka představuje souhrn Azure Machine Learningch aktivit a op
 | Vytvořit nový výpočetní cluster | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují: `/workspaces/computes/write` |
 | Vytvořit novou výpočetní instanci | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují: `/workspaces/computes/write` |
 | Odeslání libovolného typu běhu | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují: `"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
-| Publikování koncového bodu kanálu | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují: `"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
+| Publikování kanálů a koncových bodů | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují: `"/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
 | Nasazení registrovaného modelu do prostředku AKS/ACI | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují: `"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
 | Bodování před nasazeným koncovým bodem AKS | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role umožňující: `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (Pokud nepoužíváte Azure Active Directory ověřování) nebo `"/workspaces/read"` (Pokud používáte ověřování tokenů) |
 | Přístup k úložišti pomocí interaktivních poznámkových bloků | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují: `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*", "/workspaces/listKeys/action"` |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: fa63cc2c76d8bd47ca80050a369bda7211f5db24
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 98c9012969051e4370239a0f4098e0ea1d7a55a0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896714"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348309"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>Kurz: Azure Active Directory integrace s Zoho 1
 
@@ -30,7 +30,7 @@ Integrace Zoho s jednou pomocí Azure AD vám poskytne následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete nakonfigurovat integraci Azure AD s Zoho, budete potřebovat následující položky:
 
@@ -61,13 +61,13 @@ Pokud chcete nakonfigurovat integraci Zoho do služby Azure AD, musíte do sezna
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Zoho One** , vyberte **Zoho jeden** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Zoho One**, vyberte **Zoho jeden** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![Zoho jednu v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Zoho jednoho na základě testovacího uživatele s názvem **Britta Simon** .
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Zoho jednoho na základě testovacího uživatele s názvem **Britta Simon**.
 Aby se jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Zoho.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Zoho, musíte dokončit tyto stavební bloky:
@@ -85,7 +85,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
 Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Zoho, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace **jedné aplikace Zoho** vyberte **jednotné přihlašování** .
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace **jedné aplikace Zoho** vyberte **jednotné přihlašování**.
 
     ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
@@ -108,7 +108,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Zoho, pr
     > [!NOTE]
     > Hodnota **adresy URL předchozí odpovědi** není reálné číslo. `<saml-identifier>`Hodnota z #step4 **nakonfigurovat jednu část jednotného přihlašování Zoho** , která se vysvětluje později v tomto kurzu.
 
-    c. Klikněte na **nastavit další adresy URL** .
+    c. Klikněte na **nastavit další adresy URL**.
 
     d. Do textového pole **stav přenosu** zadejte adresu URL: `https://one.zoho.com`
 
@@ -147,19 +147,19 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Zoho, pr
 
     ![Zoho jeden podpis](./media/zohoone-tutorial/tutorial_zohoone_save.png)
 
-    a. Do textového pole **Adresa URL pro přihlášení** vložte hodnotu **přihlašovací adresa URL** , kterou jste zkopírovali z Azure Portal.
+    a. Do textového pole **Adresa URL pro přihlášení** vložte hodnotu **přihlašovací adresa URL**, kterou jste zkopírovali z Azure Portal.
 
-    b. Do textového pole **Adresa URL** pro odhlášení vložte hodnotu URL pro **odhlášení** , kterou jste zkopírovali z Azure Portal.
+    b. Do textového pole **Adresa URL** pro odhlášení vložte hodnotu URL pro **odhlášení**, kterou jste zkopírovali z Azure Portal.
 
     c. Klikněte na tlačítko **Procházet** a nahrajte **certifikát (Base64)** , který jste stáhli z Azure Portal.
 
-    d. Klikněte na **Uložit** .
+    d. Klikněte na **Uložit**.
 
 4. Po uložení nastavení ověřování SAML Zkopírujte hodnotu **identifikátoru SAML** a místo toho ji přidejte s **adresou URL odpovědi** `<saml-identifier>` , třeba `https://accounts.zoho.com/samlresponse/one.zoho.com` a vložte vygenerovanou hodnotu do pole **Adresa URL odpovědi** v části **základní konfigurační oddíl SAML** .
 
     ![Zoho jednu SAML](./media/zohoone-tutorial/tutorial_zohoone_samlidenti.png)
 
-5. Přejděte na kartu **domény** a potom klikněte na **Přidat doménu** .
+5. Přejděte na kartu **domény** a potom klikněte na **Přidat doménu**.
 
     ![Zoho jednu doménu](./media/zohoone-tutorial/tutorial_zohoone_domain.png)
 
@@ -169,7 +169,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Zoho, pr
 
     a. Do textového pole **název domény** zadejte Domain, jako je contoso.com.
 
-    b. Klikněte na **Přidat** .
+    b. Klikněte na **Přidat**.
 
     >[!Note]
     >Po přidání domény postupujte podle [těchto](https://www.zoho.com/one/help/admin-guide/domain-verification.html) kroků a ověřte svoji doménu. Po ověření domény použijte název domény v **přihlašovací adrese URL** v **základní části konfigurace SAML** v Azure Portal.
@@ -178,7 +178,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Zoho, pr
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -190,27 +190,27 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon** .
+    a. Do pole **název** zadejte **BrittaSimon**.
   
     b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension` . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit** .
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Zoho One.
 
-1. V Azure Portal vyberte **podnikové aplikace** , vyberte **všechny aplikace** a pak vyberte Zoho ( **jedna** ).
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte Zoho ( **jedna**).
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **Zoho jednu** .
+2. V seznamu aplikace vyberte **Zoho jednu**.
 
     ![Zoho jeden odkaz v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny** .
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
@@ -232,7 +232,7 @@ Pokud chcete uživatelům Azure AD povolit, aby se přihlásili k Zohou, musí s
 
 1. Přihlaste se k Zoho jako správce zabezpečení.
 
-2. Na kartě **Uživatelé** klikněte na **logo uživatele** .
+2. Na kartě **Uživatelé** klikněte na **logo uživatele**.
 
     ![Zoho jednoho uživatele](./media/zohoone-tutorial/tutorial_zohoone_users.png)
 
@@ -240,14 +240,14 @@ Pokud chcete uživatelům Azure AD povolit, aby se přihlásili k Zohou, musí s
 
     ![Zoho jednoho přidat uživatele](./media/zohoone-tutorial/tutorial_zohoone_adduser.png)
     
-    a. Do textového pole **název** zadejte jméno uživatele jako **Britta Simon** .
+    a. Do textového pole **název** zadejte jméno uživatele jako **Britta Simon**.
     
     b. Do textového pole **e-mailová adresa** zadejte e-maily uživatele jako brittasimon@contoso.com .
 
     >[!Note]
     >Vyberte ověřenou doménu ze seznamu domén.
 
-    c. Klikněte na **Přidat** .
+    c. Klikněte na **Přidat**.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
@@ -255,7 +255,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na jednu dlaždici Zoho, měli byste se automaticky přihlásit k Zoho, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

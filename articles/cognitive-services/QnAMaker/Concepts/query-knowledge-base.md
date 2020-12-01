@@ -3,12 +3,12 @@ title: Dotaz na znalostní bázi Knowledge Base – QnA Maker
 description: Je nutné publikovat znalostní bázi. Po publikování se znalostní báze dotazuje na koncový bod předpovědi prostředí runtime pomocí rozhraní generateAnswer API.
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: e8dd056a7b6357b8342d3059e17baa88db92b404
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: d8f986299edee46bf5cace7a9f4c805c29b3ce0c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376708"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346201"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>Dotazování znalostní báze o odpovědích
 
@@ -18,7 +18,7 @@ Je nutné publikovat znalostní bázi. Po publikování se znalostní báze dota
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
 
-Vyškolená a [publikovaná](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA maker znalostní báze obdrží dotaz na uživatele z robota nebo jiné klientské aplikace v [rozhraní API pro GenerateAnswer](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage). Následující diagram znázorňuje proces, když je přijat dotaz uživatele.
+Vyškolená a [publikovaná](../quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) QnA maker znalostní báze obdrží dotaz na uživatele z robota nebo jiné klientské aplikace v [rozhraní API pro GenerateAnswer](../how-to/metadata-generateanswer-usage.md). Následující diagram znázorňuje proces, když je přijat dotaz uživatele.
 
 ![Proces modelu hodnocení pro dotaz na uživatele](../media/qnamaker-concepts-knowledgebase/ranker-v1.png)
 
@@ -28,7 +28,7 @@ Tento proces je vysvětlen v následující tabulce.
 
 |Krok|Účel|
 |--|--|
-|1|Klientská aplikace pošle dotaz uživatele do [rozhraní GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage).|
+|1|Klientská aplikace pošle dotaz uživatele do [rozhraní GenerateAnswer API](../how-to/metadata-generateanswer-usage.md).|
 |2|QnA Maker předzpracovává dotazy uživatelů pomocí rozpoznávání jazyka, pravopisu a dělení slov.|
 |3|Tento předzpracování se provádí pro změnu dotazu uživatele na nejlepší výsledky hledání.|
 |4|Tento změněný dotaz se odešle do indexu služby Azure Kognitivní hledání, který přijímá `top` počet výsledků. Pokud v těchto výsledcích není správná odpověď, zvyšte hodnotu `top` mírně. Obecně platí, že hodnota 10 pro `top` funguje v 90% dotazů.|
@@ -41,7 +41,7 @@ Použité funkce zahrnují, ale nejsou omezené na sémantiku na úrovni aplikac
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
 
-Vyškolená a [publikovaná](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA maker znalostní báze obdrží dotaz na uživatele z robota nebo jiné klientské aplikace v [rozhraní API pro GenerateAnswer](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage). Následující diagram znázorňuje proces, když je přijat dotaz uživatele.
+Vyškolená a [publikovaná](../quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) QnA maker znalostní báze obdrží dotaz na uživatele z robota nebo jiné klientské aplikace v [rozhraní API pro GenerateAnswer](../how-to/metadata-generateanswer-usage.md). Následující diagram znázorňuje proces, když je přijat dotaz uživatele.
 
 ![Proces modelu hodnocení pro dotaz uživatele ve verzi Preview](../media/qnamaker-concepts-knowledgebase/ranker-v2.png)
 
@@ -51,7 +51,7 @@ Tento proces je vysvětlen v následující tabulce.
 
 |Krok|Účel|
 |--|--|
-|1|Klientská aplikace pošle dotaz uživatele do [rozhraní GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage).|
+|1|Klientská aplikace pošle dotaz uživatele do [rozhraní GenerateAnswer API](../how-to/metadata-generateanswer-usage.md).|
 |2|QnA Maker předzpracovává dotazy uživatelů pomocí rozpoznávání jazyka, pravopisu a dělení slov.|
 |3|Tento předzpracování se provádí pro změnu dotazu uživatele na nejlepší výsledky hledání.|
 |4|Tento změněný dotaz se odešle do indexu služby Azure Kognitivní hledání, který přijímá `top` počet výsledků. Pokud v těchto výsledcích není správná odpověď, zvyšte hodnotu `top` mírně. Obecně platí, že hodnota 10 pro `top` funguje v 90% dotazů.|

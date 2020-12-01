@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b3bd6a71898576ac23cdd10c1eb52e1ef3a39b95
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: cfef6ce0fb38f074f854d5ceb77677843e44b91b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336584"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345725"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Použití spravovaných identit přiřazených systémem pro přístup k Azure Cosmos DB datům
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -68,13 +68,13 @@ V tomto scénáři načte aplikace Functions teplotu Aquarium a pak tato data za
 
    :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="Snímek obrazovky s podoknem přiřazení role přidání":::
 
-   * **Role** : vyberte **Přispěvatel účtu DocumentDB** .
-   * **Přiřadit přístup k** : v podčásti **Vybrat spravovanou identitu přiřazenou systémem** vyberte **Function App**.
-   * **Vyberte** : v předplatném se naplní všechny aplikace Function App, které mají **identitu spravovaného systému**. V takovém případě vyberte aplikaci funkcí **FishTankTemperatureService** : 
+   * **Role**: vyberte **Přispěvatel účtu DocumentDB** .
+   * **Přiřadit přístup k**: v podčásti **Vybrat spravovanou identitu přiřazenou systémem** vyberte **Function App**.
+   * **Vyberte**: v předplatném se naplní všechny aplikace Function App, které mají **identitu spravovaného systému**. V takovém případě vyberte aplikaci funkcí **FishTankTemperatureService** : 
 
       :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="Snímek obrazovky s podoknem přiřazení role přidání, které se naplní příklady":::
 
-1. Po výběru aplikace Function App vyberte **Save (Uložit** ).
+1. Po výběru aplikace Function App vyberte **Save (Uložit**).
 
 ### <a name="assign-the-role-using-azure-cli"></a>Přiřazení role pomocí Azure CLI
 
@@ -214,7 +214,7 @@ namespace Monitor
 }
 ```
 
-Teď jste připraveni [nasadit aplikaci Function App](../azure-functions/functions-create-first-function-vs-code.md).
+Teď jste připraveni [nasadit aplikaci Function App](../azure-functions/create-first-function-vs-code-csharp.md).
 
 ## <a name="next-steps"></a>Další kroky
 

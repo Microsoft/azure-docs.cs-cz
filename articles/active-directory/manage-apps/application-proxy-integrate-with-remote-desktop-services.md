@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 03e89b0da25a915a00c70a9a87bd0f675b8e12d6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bfa9367e06c099e21a54ad8c03f8d5ab853aaafb
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997524"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348071"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování Vzdálené plochy pomocí Proxy aplikací služby Azure AD
 
@@ -96,7 +96,7 @@ Připojte se k nasazení služby Vzdálená plocha jako správce a změňte náz
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"
    ```
 
-   **Například:**
+   **Příklad:**
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://remotedesktoptest-aadapdemo.msappproxy.net/`nrequire pre-authentication:i:1"
    ```
@@ -130,7 +130,7 @@ Konfigurace, která je popsaný v tomto článku, je určena pro přístup k VP 
 
 | Metoda ověřování | Podporovaná konfigurace klienta |
 | --------------------- | ------------------------------ |
-| Předběžné ověřování    | RD Web-Windows 7/10 použití aplikace Internet Explorer nebo [Edge chrom v režimu IE](/deployedge/edge-ie-mode) + doplněk RDS ActiveX |
+| Předběžné ověřování    | RD Web-Windows 7/10 použití aplikace Internet Explorer nebo [Edge chrom v režimu IE](/deployedge/edge-ie-mode) + doplněk RDS ActiveX <br /> *Všimněte si, že portál moje aplikace podporuje jenom Edge.* |
 | Předběžné ověřování    | Webový klient služby Vzdálená plocha – webový prohlížeč kompatibilní s HTML5, jako je Microsoft Edge, Internet Explorer 11, Google Chrome, Safari nebo Mozilla Firefox (v 55.0 a novější) |
 | Předávací | Jakýkoli jiný operační systém, který podporuje aplikaci Vzdálená plocha Microsoft |
 

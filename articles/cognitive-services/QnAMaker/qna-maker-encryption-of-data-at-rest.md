@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.author: egeaney
-ms.openlocfilehash: 1ee3c3942ee7d01fa174947f5d9c278cddaf0424
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 19dc0f3a676d5373b28e4b7055050477c426f847
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376909"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345776"
 ---
 # <a name="qna-maker-encryption-of-data-at-rest"></a>QnA Maker šifrování dat v klidovém umístění
 
@@ -26,11 +26,11 @@ Vaše předplatné ve výchozím nastavení používá šifrovací klíče sprav
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
 
-QnA Maker používá podporu CMK z Azure Search. Nakonfigurujte [CMK v Azure Search pomocí Azure Key Vault](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys). Tato instance Azure by měla být přidružená k QnA Maker službě, aby byla povolená CMK.
+QnA Maker používá podporu CMK z Azure Search. Nakonfigurujte [CMK v Azure Search pomocí Azure Key Vault](../../search/search-security-manage-encryption-keys.md). Tato instance Azure by měla být přidružená k QnA Maker službě, aby byla povolená CMK.
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
 
-QnA Maker používá [podporu CMK z Azure Search](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)a automaticky přidružuje poskytnutou CMK k šifrování dat uložených v indexu Azure Search.
+QnA Maker používá [podporu CMK z Azure Search](../../search/search-security-manage-encryption-keys.md)a automaticky přidružuje poskytnutou CMK k šifrování dat uložených v indexu Azure Search.
 
 ---
 
@@ -43,7 +43,7 @@ Služba QnA Maker používá CMK ze služby Azure Search. Pomocí těchto kroků
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
 
-1. Vytvořte novou instanci Azure Search a povolte požadavky uvedené v [požadavcích na klíč spravovaný zákazníkem pro Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys#prerequisites).
+1. Vytvořte novou instanci Azure Search a povolte požadavky uvedené v [požadavcích na klíč spravovaný zákazníkem pro Azure kognitivní hledání](../../search/search-security-manage-encryption-keys.md#prerequisites).
 
    ![Zobrazit nastavení šifrování 1](../media/cognitive-services-encryption/qna-encryption-1.png)
 
@@ -52,8 +52,8 @@ Služba QnA Maker používá CMK ze služby Azure Search. Pomocí těchto kroků
    ![Zobrazit nastavení šifrování 2](../media/cognitive-services-encryption/qna-encryption-2.png)
 
 3. Dále vytvořte nové nastavení aplikace:
-   * **Název** : nastavte na `CustomerManagedEncryptionKeyUrl`
-   * **Hodnota** : použijte hodnotu, kterou jste získali v kroku 1 při vytváření instance Azure Search.
+   * **Název**: nastavte na `CustomerManagedEncryptionKeyUrl`
+   * **Hodnota**: použijte hodnotu, kterou jste získali v kroku 1 při vytváření instance Azure Search.
 
    ![Zobrazit nastavení šifrování 3](../media/cognitive-services-encryption/qna-encryption-3.png)
 
@@ -62,14 +62,14 @@ Služba QnA Maker používá CMK ze služby Azure Search. Pomocí těchto kroků
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
 
 1.  Přejdete na kartu **šifrování** služby QnA maker spravovaná (Preview).
-2.  Vyberte možnost **Customer Managed Keys** . Zadejte podrobnosti o [klíčích spravovaných zákazníkem](https://docs.microsoft.com/azure/storage/common/customer-managed-keys-configure-key-vault?tabs=portal) a klikněte na **Uložit**.
+2.  Vyberte možnost **Customer Managed Keys** . Zadejte podrobnosti o [klíčích spravovaných zákazníkem](../../storage/common/customer-managed-keys-configure-key-vault.md?tabs=portal) a klikněte na **Uložit**.
 
      :::image type="content" source="../media/cognitive-services-encryption/qnamaker-v2-encryption-cmk.png" alt-text="Nastavení CMK spravovaného (Preview) QnA Maker" lightbox="../media/cognitive-services-encryption/qnamaker-v2-encryption-cmk.png":::
 
 3.  Po úspěšném uložení se CMK použije k zašifrování dat uložených v indexu Azure Search.
 
 > [!IMPORTANT]
-> Doporučuje se nastavit CMK v nové službě Azure Kognitivní hledání před tím, než se vytvoří jakékoli znalostní báze. Pokud jste nastavili CMK ve službě QnA Maker se stávajícími znalostními bázemi, můžete k nim ztratit přístup. Přečtěte si další informace o [práci s šifrovaným obsahem](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys#work-with-encrypted-content) v Azure rozpoznávání vyhledávání.
+> Doporučuje se nastavit CMK v nové službě Azure Kognitivní hledání před tím, než se vytvoří jakékoli znalostní báze. Pokud jste nastavili CMK ve službě QnA Maker se stávajícími znalostními bázemi, můžete k nim ztratit přístup. Přečtěte si další informace o [práci s šifrovaným obsahem](../../search/search-security-manage-encryption-keys.md#work-with-encrypted-content) v Azure rozpoznávání vyhledávání.
 
 > [!NOTE]
 > Chcete-li požádat o možnost použití klíčů spravovaných zákazníkem, vyplňte a odešlete [formulář žádosti o Cognitive Services Customer-Managed klíč](https://aka.ms/cogsvc-cmk).
@@ -87,6 +87,6 @@ Vzhledem k tomu, že je služba QnA Maker Portal hostovaná v oblasti Západ USA
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Šifrování v Azure Search pomocí CMKs v Azure Key Vault](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)
-* [Šifrování v klidovém stavu](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
-* [Další informace o Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Šifrování v Azure Search pomocí CMKs v Azure Key Vault](../../search/search-security-manage-encryption-keys.md)
+* [Šifrování v klidovém stavu](../../security/fundamentals/encryption-atrest.md)
+* [Další informace o Azure Key Vault](../../key-vault/general/overview.md)

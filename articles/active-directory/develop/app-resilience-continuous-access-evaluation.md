@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/06/2020
 ms.author: nichola
 ms.reviewer: ''
-ms.openlocfilehash: 975c92256ea0993badde0faf840a939f42901059
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: cf5a7a5902484536d0cf2a1844be469f29e15f4b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95753693"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348462"
 ---
 # <a name="how-to-use-continuous-access-evaluation-enabled-apis-in-your-applications"></a>Jak používat rozhraní API s povoleným vyhodnocováním průběžného přístupu ve vašich aplikacích
 
@@ -35,7 +35,7 @@ Pokud rozhraní API prostředků implementuje CAE a vaše aplikace ji deklaruje,
 
 Prvním krokem je přidání kódu pro zpracování odpovědi z rozhraní API prostředků, které volání přemítne z důvodu CAE. Pomocí CAE budou rozhraní API vracet stav 401 a hlavičku WWW-Authenticate, když přístupový token byl odvolán, nebo rozhraní API zjistí změnu v použité IP adrese. Hlavička WWW-Authenticate obsahuje deklaraci identity, kterou může aplikace použít k získání nového přístupového tokenu.
 
-Například:
+Příklad:
 
 ```console
 HTTP 401; Unauthorized
@@ -57,7 +57,7 @@ Po splnění těchto podmínek může aplikace extrahovat a dekódovat výzvy de
 ```csharp
 if (APIresponse.IsSuccessStatusCode)
 {
-    // . . .
+    // ...
 }
 else
 {
@@ -99,7 +99,7 @@ catch (MsalUiRequiredException)
             .ExecuteAsync()
             .ConfigureAwait(false);
     }
-    // . . .
+    // ...
 ```
 
 Jakmile je vaše aplikace připravená na zpracování výzvy k deklaraci identity vrácené prostředkem CAE, můžete říct, že je vaše aplikace od Microsoftu připravená CAE připravena. Pokud to chcete provést v aplikaci MSAL, Sestavte si veřejného klienta pomocí možností klienta "CP1".

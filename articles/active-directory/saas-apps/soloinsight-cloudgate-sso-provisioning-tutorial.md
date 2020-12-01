@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 1b992150f6013fd597a3e56b243bd6236289b710
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 5c42102c0704d7212411d6b86f4210ad8ecd885c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357993"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96347493"
 ---
 # <a name="tutorial-configure-soloinsight-cloudgate-sso-for-automatic-user-provisioning"></a>Kurz: Konfigurace Soloinsight-CloudGate jednotného přihlašování pro Automatické zřizování uživatelů
 
@@ -80,7 +80,7 @@ Než nakonfigurujete Soloinsight-CloudGate jednotné přihlašování pro Automa
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Soloinsight-CLOUDGATE SSO** , v panelu výsledků vyberte **SOLOINSIGHT-CloudGate SSO** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Soloinsight-CLOUDGATE SSO**, v panelu výsledků vyberte **SOLOINSIGHT-CloudGate SSO** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Soloinsight-CloudGate jednotné přihlašování v seznamu výsledků](common/search-new-app.png)
 

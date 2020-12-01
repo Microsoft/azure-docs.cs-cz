@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 2016d6dfedef68c334758660e9affa0ad9b9d4a3
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 2c159e25195c5f144187268b4355c1078695e809
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505236"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345521"
 ---
 # <a name="whats-new-in-qna-maker"></a>Co je nového v QnA Maker
 
@@ -56,17 +56,17 @@ Přečtěte si, co je nového v QnA Maker.
 
 ### <a name="november-2019"></a>Listopad 2019
 
-* [Podpora cloudu pro státní správu USA](https://docs.microsoft.com/azure/azure-government/documentation-government-services-aiandcognitiveservices#qna-maker) pro QnA maker
-* Funkce [vícenásobného zapnutí](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/multiturn-conversation) v GA
-* [CHITEST – podpora chatu](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base#language-support) dostupná v jazycích úrovně 1
+* [Podpora cloudu pro státní správu USA](../../azure-government/compare-azure-government-global-azure.md#guidance-for-developers) pro QnA maker
+* Funkce [vícenásobného zapnutí](./how-to/multiturn-conversation.md) v GA
+* [CHITEST – podpora chatu](./how-to/chit-chat-knowledge-base.md#language-support) dostupná v jazycích úrovně 1
 
 ### <a name="october-2019"></a>Říjen 2019
 
-* [Explicitně se nastavuje jazyk](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base) pro všechny znalostní báze ve službě QnA maker.
+* [Explicitně se nastavuje jazyk](./index.yml) pro všechny znalostní báze ve službě QnA maker.
 
 ### <a name="september-2019"></a>Září 2019
 
-* Import a export ve [formátu souboru XLS](concepts/content-types.md)
+* Import a export ve [formátu souboru XLS](./index.yml)
 
 ### <a name="june-2019"></a>Červen 2019
 

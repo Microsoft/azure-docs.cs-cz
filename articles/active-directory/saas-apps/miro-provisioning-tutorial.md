@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: Zhchia
-ms.openlocfilehash: 31631209a16024e4414cc19bca37166332b427de
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: d3dee76ada7a9ed48813928937f8f8da8be4add1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359217"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348037"
 ---
 # <a name="tutorial-configure-miro-for-automatic-user-provisioning"></a>Kurz: Konfigurace Miro pro Automatické zřizování uživatelů
 
@@ -70,7 +70,7 @@ Před konfigurací Miro pro Automatické zřizování uživatelů se službou Az
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Miro** , na panelu výsledků vyberte **Miro** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Miro**, na panelu výsledků vyberte **Miro** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Miro v seznamu výsledků](common/search-new-app.png)
 
