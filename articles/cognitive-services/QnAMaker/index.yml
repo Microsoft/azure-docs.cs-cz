@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: Dokumentace ke QnA Makeru
   description: QnA Maker je cloudová služba API, která nad vašimi daty vytváří konverzační vrstvu otázek a odpovědí. QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům. Služba QnA Maker odpovídá na otázky uživatelů v přirozeném jazyce tak, že je porovnává s nejlepší možnou odpovědí v otázkách a odpovědích ve vaší znalostní bázi.
-  ms.openlocfilehash: 487e783aa0c3ac5ad294c34f8522ee54fbfd6aea
-  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+  ms.openlocfilehash: 54c5e8c880020ac4c29dc730902dadef10838390
+  ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 11/21/2020
-  ms.locfileid: "95021333"
+  ms.lasthandoff: 11/30/2020
+  ms.locfileid: "96338078"
 landingContent:
 - title: Informace o službě QnA Maker
   linkLists:
@@ -34,18 +34,12 @@ landingContent:
     links:
     - text: Životní cyklus vývoje
       url: concepts/development-lifecycle-knowledge-base.md
-    - text: Zdroje dat
-      url: concepts/knowledge-base.md
   - linkListType: video
     links:
     - text: Sestavení robota během několika minut
       url: https://channel9.msdn.com/Shows/AI-Show/Build-a-Bot-in-Minutes-with-QnA-Maker
 - title: Vytvoření a úprava znalostní báze
   linkLists:
-  - linkListType: concept
-    links:
-    - text: Co je znalostní báze
-      url: concepts/knowledge-base.md
   - linkListType: get-started
     links:
     - text: 'Rychlý start: Vytvoření nové znalostní báze'
@@ -95,11 +89,11 @@ landingContent:
   - linkListType: get-started
     links:
     - text: 'Portál: Vytvoření robota služby Azure Bot Service'
-      url: tutorials/create-qna-bot.md
+      url: ./quickstarts/create-publish-knowledge-base.md#create-a-bot
     - text: 'Power Apps: Vytvoření robota s podporou QnA Makeru'
       url: tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
     - text: 'Bot Framework: Odbavení mezi aplikacemi QnA Makeru a LUIS'
-      url: https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=cs
+      url: /azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0
     - text: Další ukázky robotů
       url: https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md
 - title: Referenční informace
@@ -109,15 +103,15 @@ landingContent:
     - text: Omezení znalostní báze
       url: limits.md
     - text: Rozhraní API pro vytváření
-      url: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase
+      url: /rest/api/cognitiveservices/qnamaker/knowledgebase
     - text: Generování rozhraní API pro odpovědi
-      url: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/Runtime
+      url: /rest/api/cognitiveservices/qnamaker4.0/Runtime
     - text: Referenční dokumentace k sadě .Net SDK
-      url: https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet
+      url: /dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.6.0#cognitive_services
+      url: /powershell/module/az.cognitiveservices/?view=azps-2.6.0#cognitive_services
     - text: Rozhraní příkazového řádku Azure (CLI)
-      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+      url: /cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
 - title: Nápověda a zpětná vazba
   linkLists:
   - linkListType: reference

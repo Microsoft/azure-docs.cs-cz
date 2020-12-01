@@ -101,7 +101,7 @@
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
     - name: Atributy zabezpečení
-      href: expressroute-security-controls.md
+      href: ./security-baseline.md
     - name: BFD přes ExpressRoute
       href: expressroute-bfd.md
     - name: Požadavky QoS

@@ -95,7 +95,7 @@
         - name: Databáze SQL
           href: ../../azure-sql/database/reserved-capacity-overview.md?toc=%2fazure%2fcost-management-billing%2freservations%2ftoc.json
         - name: Virtuální počítače
-          href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/cost-management-billing/reservations/toc.json
+          href: ../../virtual-machines/prepay-reserved-vm-instances.md?toc=%2fazure%2fcost-management-billing%2freservations%2ftoc.json
     - name: 'Zobrazení, správa a optimalizace po nákupu'
       items:
         - name: Zobrazení rezervací a využití

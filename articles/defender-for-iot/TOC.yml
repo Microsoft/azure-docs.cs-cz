@@ -122,11 +122,11 @@
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností v oblasti zabezpečení pomocí Microsoft Learn
-      href: 'https://docs.microsoft.com/learn/browse/?term=securityS&terms=securityS'
+      href: /learn/browse/?term=securityS&terms=securityS
     - name: Dokumentace ke službě Azure Security Center
-      href: 'https://docs.microsoft.com/azure/security-center/'
+      href: ../security-center/index.yml
     - name: Dokumentace k zabezpečení Azure
-      href: 'https://docs.microsoft.com/azure/security/'
+      href: ../security/index.yml
     - name: Modul zabezpečení Azure RTOS na Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
     - name: 'Blog věnovaný zabezpečení, ochraně osobních údajů a dodržování předpisů v Azure IoT'
