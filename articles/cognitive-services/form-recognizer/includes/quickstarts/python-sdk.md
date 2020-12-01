@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 534916d81cfb4d3ad1e96d2934f43221067fb94f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 12b49bf81328cc405337b682241aef2cd965c3de
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95865252"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356541"
 ---
 > [!IMPORTANT]
 > * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Další informace najdete v referenční dokumentaci níže. 
@@ -138,7 +138,7 @@ Pro rozpoznání obsahu souboru v dané adrese URL použijte `begin_recognize_co
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_getcontent)]
 
 > [!TIP]
-> Můžete také získat obsah z místních imagí. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) , jako je například `begin_recognize_content` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
+> Můžete také získat obsah z místních imagí. Podívejte se na metody [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) , jako je například `begin_recognize_content` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
 
 ### <a name="output"></a>Výstup
 
@@ -170,7 +170,7 @@ V této části se dozvíte, jak rozpoznat a extrahovat společná pole z příj
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
 
 > [!TIP]
-> Můžete také rozpoznat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) , jako je například `begin_recognize_receipts` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
+> Můžete také rozpoznat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) , jako je například `begin_recognize_receipts` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
 
 ### <a name="output"></a>Výstup
 
@@ -205,7 +205,7 @@ V této části se dozvíte, jak rozpoznat a extrahovat společná pole z anglic
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
 
 > [!TIP]
-> Můžete také rozpoznat obrázky místních obchodních karet. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) , jako je například `begin_recognize_business_cards` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
+> Můžete také rozpoznat obrázky místních obchodních karet. Podívejte se na metody [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) , jako je například `begin_recognize_business_cards` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
 
 ## <a name="recognize-invoices"></a>Rozpoznávání faktur
 
@@ -214,7 +214,7 @@ V této části se dozvíte, jak rozpoznat a extrahovat společná pole z prodej
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_invoice)]
 
 > [!TIP]
-> Můžete také rozpoznat místní obrázky faktury. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) , jako je například `begin_recognize_invoices` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
+> Můžete také rozpoznat místní obrázky faktury. Podívejte se na metody [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) , jako je například `begin_recognize_invoices` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
 
 ---
 
@@ -324,7 +324,7 @@ Použijete `begin_recognize_custom_forms_from_url` metodu. Vrácená hodnota je 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_analyze)]
 
 > [!TIP]
-> Můžete také analyzovat místní image. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) , jako je například `begin_recognize_custom_forms` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
+> Můžete také analyzovat místní image. Podívejte se na metody [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) , jako je například `begin_recognize_custom_forms` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
 
 
 ### <a name="output"></a>Výstup
@@ -433,7 +433,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 
 Klientská knihovna pro rozpoznávání formulářů vyvolá výjimky definované v [Azure Core](https://aka.ms/azsdk-python-azure-core).
 
-### <a name="logging"></a>Protokolování
+### <a name="logging"></a>protokolování
 
 Tato knihovna používá [standardní knihovnu protokolování](https://docs.python.org/3/library/logging.html) pro protokolování. Základní informace o relacích HTTP (adresy URL, hlavičky atd.) se zaznamenávají na úrovni informací.
 

@@ -1,5 +1,5 @@
 ---
-title: Integrace standardních modelů
+title: Integrace oborových standardních modelů
 titleSuffix: Azure Digital Twins
 description: Naučte se integrovat standardní modely do DTDL pro digitální vlákna Azure, a to buď pomocí speciálních DTDL ontologie, nebo převedením stávajících ontologie.
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1866e9b233a1379474c061779ada09fd6d119107
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: f5bfe128ddc04e8048bb89a8e39035434dfd2b92
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94338392"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352877"
 ---
 # <a name="integrate-industry-standard-models-with-dtdl-for-azure-digital-twins"></a>Integrace standardních modelů s DTDL pro digitální vlákna Azure
 
@@ -21,9 +21,9 @@ Používání modelů založených na oborových standardech nebo použití stan
 Aby bylo možné použít s digitálními podmnožinami Azure, musí být model reprezentovaný v [**jazyce DTDL (Digital vlákna)**](concepts-models.md)založeném na JSON – ld. Proto tento článek popisuje, jak znázornit standardní modely v DTDL a integraci stávajících konceptů v oboru se sémantikou DTDL, aby je mohli používat digitální vlákna Azure. Model DTDL pak slouží jako zdroj pravdy pro model v rámci digitálních vláken Azure.
 
 Existují tři možné cesty k integraci standardních modelů s DTDL:
-* **Přijmout** : řešení můžete začít s open-source DTDL Ontology, která je sestavená na široce přijímaných oborových standardech. 
-* **Convert** : Pokud už máte existující modely, budete je muset převést na DTDL.
-* **Autor** : můžete vždy vyvíjet vlastní modely DTDL od začátku, jak je popsáno v tématu [*Postupy: Správa vlastních modelů*](how-to-manage-model.md).
+* **Přijmout**: řešení můžete začít s open-source DTDL Ontology, která je sestavená na široce přijímaných oborových standardech. 
+* **Convert**: Pokud už máte existující modely, budete je muset převést na DTDL.
+* **Autor**: můžete vždy vyvíjet vlastní modely DTDL od začátku, jak je popsáno v tématu [*Postupy: Správa vlastních modelů*](how-to-manage-model.md).
 
 ## <a name="adopt-an-open-source-dtdl-ontology"></a>Přijetí Open Source Ontology DTDL
 
@@ -35,7 +35,7 @@ Tyto open source DTDL ontologie také poskytují osvědčené postupy pro využ�
 
 ## <a name="convert-existing-models-to-dtdl"></a>Převod stávajících modelů na DTDL
 
-Většina průmyslových modelů (označovaných také jako **ontologie** ) jsou založené na sémantických webových standardech, jako jsou [Owl](https://www.w3.org/OWL/), [RDF](https://www.w3.org/2001/sw/wiki/RDF)a [RDFS](https://www.w3.org/2001/sw/wiki/RDFS). 
+Většina průmyslových modelů (označovaných také jako **ontologie**) jsou založené na sémantických webových standardech, jako jsou [Owl](https://www.w3.org/OWL/), [RDF](https://www.w3.org/2001/sw/wiki/RDF)a [RDFS](https://www.w3.org/2001/sw/wiki/RDFS). 
 
 Pokud chcete použít model s digitálními podmnožinami Azure, musí být ve formátu DTDL. Tato část popisuje obecné pokyny k návrhu ve formě **vzoru převodu** pro převod RDFch modelů na DTDL, aby je bylo možné použít s digitálními podprocesy Azure. 
 
@@ -111,9 +111,9 @@ K dispozici je ukázková aplikace, která převede soubor modelu založený na 
 
 Ukázka je aplikace příkazového řádku .NET Core s názvem **RdfToDtdlConverter**.
 
-Ukázku můžete získat tady: [**RdfToDtdlConverter**](https://docs.microsoft.com/samples/azure-samples/rdftodtdlconverter/digital-twins-model-conversion-samples/). 
+Ukázku můžete získat tady: [**RdfToDtdlConverter**](/samples/azure-samples/rdftodtdlconverter/digital-twins-model-conversion-samples/). 
 
-Pokud chcete stáhnout kód do počítače, stiskněte tlačítko *Stáhnout ZIP* pod nadpisem na vzorové cílové stránce. Tím se stáhne soubor *zip* pod názvem *RdfToDtdlConverter_sample_application_to_convert_RDF_to_DTDL.zip* , který pak můžete rozbalit a prozkoumat.
+Pokud chcete stáhnout kód do počítače, stiskněte tlačítko *Stáhnout ZIP* pod nadpisem na vzorové cílové stránce. Tím se stáhne soubor *zip* pod názvem *RdfToDtdlConverter_sample_application_to_convert_RDF_to_DTDL.zip*, který pak můžete rozbalit a prozkoumat.
 
 Tuto ukázku můžete použít k zobrazení vzorů převodu v kontextu a k tomu, aby jako stavební blok pro vlastní aplikace prováděl převody modelu podle vašich konkrétních potřeb.
 

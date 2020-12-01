@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: d39e34bd85c4524a6f28d188f977a7ab37eecc58
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e1a8043912c984be46f85bd384a7049da27028b3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445009"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353234"
 ---
 # <a name="active-learning-suggestions"></a>Aktivní návrhy výukových kurzů
 
@@ -137,7 +137,7 @@ QnA Maker potřebuje explicitní zpětnou vazbu, na kterou odpověděla odpově�
 * Obchodní logika, například určení přijatelného rozsahu skóre.
 * Kombinace zpětné vazby uživatelů a obchodní logiky.
 
-Použijte [rozhraní API pro vlak](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/runtime/train) k odeslání správné odpovědi na QnA maker, až ho uživatel vybere.
+Použijte [rozhraní API pro vlak](/rest/api/cognitiveservices/qnamaker4.0/runtime/train) k odeslání správné odpovědi na QnA maker, až ho uživatel vybere.
 
 ## <a name="next-step"></a>Další krok
 

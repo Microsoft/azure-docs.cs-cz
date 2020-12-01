@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.author: tisande
-ms.openlocfilehash: 9176205b93519f0afac0c57f5da8593df6673c0f
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: c78e15a0656abd510bbc241d39ffd026afddfd96
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356616"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353659"
 ---
 # <a name="getting-started-with-sql-queries"></a>Začínáme s příkazy jazyka SQL
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,16 +34,16 @@ Většina úloh pro čtení v Azure Cosmos DB využívá kombinaci obou čtení 
 
 Tady je několik příkladů, jak provádět **dotazy SQL** pomocí každé sady SDK:
 
-- [.NET SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-dotnet-v3sdk-samples#query-examples)
-- [Java SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-java-sdk-samples#query-examples)
-- [Node.js SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-nodejs-samples#item-examples)
-- [Python SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-python-samples#item-examples)
+- [.NET SDK](./sql-api-dotnet-v3sdk-samples.md#query-examples)
+- [Java SDK](./sql-api-java-sdk-samples.md#query-examples)
+- [Node.js SDK](./sql-api-nodejs-samples.md#item-examples)
+- [Python SDK](./sql-api-python-samples.md#item-examples)
 
 Zbývající část tohoto dokumentu ukazuje, jak začít psát dotazy SQL v Azure Cosmos DB. Dotazy SQL je možné spouštět buď pomocí sady SDK, nebo Azure Portal.
 
 ## <a name="upload-sample-data"></a>Nahrání ukázkových dat
 
-Ve vašem účtu Cosmos DB API SQL otevřete [Průzkumník dat](https://docs.microsoft.com/azure/cosmos-db/data-explorer) a vytvořte kontejner s názvem `Families` . Po vytvoření je můžete pomocí prohlížeče datových struktur vyhledat a otevřít. Ve vašem `Families` kontejneru se zobrazí `Items` možnost vpravo pod názvem kontejneru. Tuto možnost otevřete a v řádku nabídek uprostřed obrazovky se zobrazí tlačítko pro vytvoření nové položky. Tato funkce slouží k vytvoření položek JSON níže.
+Ve vašem účtu Cosmos DB API SQL otevřete [Průzkumník dat](./data-explorer.md) a vytvořte kontejner s názvem `Families` . Po vytvoření je můžete pomocí prohlížeče datových struktur vyhledat a otevřít. Ve vašem `Families` kontejneru se zobrazí `Items` možnost vpravo pod názvem kontejneru. Tuto možnost otevřete a v řádku nabídek uprostřed obrazovky se zobrazí tlačítko pro vytvoření nové položky. Tato funkce slouží k vytvoření položek JSON níže.
 
 ### <a name="create-json-items"></a>Vytvoření položek JSON
 

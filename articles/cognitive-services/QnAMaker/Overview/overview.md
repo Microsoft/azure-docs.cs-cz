@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: QNA maker, konverzace s nízkým kódem roboty, konverzace s vícenásobným zahnutím
-ms.openlocfilehash: 6a5ea51086e3ab532966c9cea9eb866334494bba
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 9655f64da455fb7a7124a97e6dc2d1d8437d05b7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874420"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353132"
 ---
 # <a name="what-is-qna-maker"></a>Co je QnA Maker?
 
@@ -22,14 +22,14 @@ QnA Maker se běžně používá k sestavování klientských aplikací v konver
 
 ## <a name="when-to-use-qna-maker"></a>Kdy použít QnA Maker
 
-* **Pokud** máte statické informace – použijte QnA maker, když máte statické informace ve znalostní bázi odpovědí. Tato znalostní báze je vlastní pro vaše potřeby, které jste sestavili s dokumenty, jako jsou [soubory PDF a adresy URL](../concepts/content-types.md).
+* **Pokud** máte statické informace – použijte QnA maker, když máte statické informace ve znalostní bázi odpovědí. Tato znalostní báze je vlastní pro vaše potřeby, které jste sestavili s dokumenty, jako jsou [soubory PDF a adresy URL](../index.yml).
 * **Pokud chcete zadat stejnou odpověď na žádost, dotaz nebo příkaz** – když jiný uživatel odešle stejnou otázku, vrátí se stejná odpověď.
 * **Pokud chcete filtrovat statické informace založené na metadatech meta-informace** – Přidání značek [metadat](../how-to/metadata-generateanswer-usage.md) k poskytnutí dalších možností filtrování, které jsou relevantní pro uživatele klientské aplikace a informace. Mezi běžné informace o metadatech patří funkce [CHITEST-chat](../how-to/chit-chat-knowledge-base.md), typ obsahu nebo formát, účel obsahu a aktuálnost obsahu.
 * **Pokud chcete spravovat konverzaci robota, která zahrnuje statické informace** – vaše znalostní báze přijímá text nebo příkaz v konverzaci uživatele a odpoví na něj. Pokud je odpověď součástí předem stanoveného toku konverzace, který je ve znalostní bázi v [kontextu vícenásobného](../how-to/multiturn-conversation.md)zastavení, může tento tok snadno poskytnout.
 
 ## <a name="what-is-a-knowledge-base"></a>Co je znalostní báze?
 
-QnA Maker [importuje obsah](../concepts/knowledge-base.md) do dvojice otázek a odpovědí ve znalostní bázi. Proces importu extrahuje informace o vztahu mezi částmi strukturovaného a částečně strukturovaného obsahu, aby vyznamenal vztahy mezi páry otázka a odpověď. Tyto páry otázek a odpovědí můžete upravit nebo přidat nové páry.
+QnA Maker [importuje obsah](../index.yml) do dvojice otázek a odpovědí ve znalostní bázi. Proces importu extrahuje informace o vztahu mezi částmi strukturovaného a částečně strukturovaného obsahu, aby vyznamenal vztahy mezi páry otázka a odpověď. Tyto páry otázek a odpovědí můžete upravit nebo přidat nové páry.
 
 Obsah dvojice otázek a odpovědí zahrnuje:
 * Všechny alternativní formy otázky

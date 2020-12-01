@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: makromer
-ms.openlocfilehash: 49d11dfe3d42d99c610fae9fa64079a5fd87501f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: c8b0ae7058aecc1813d720a3fbb2a1a1f967cf40
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96006779"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352593"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Zpracování řádků chyb zkracování SQL v Data Factory datových toků mapování
 
@@ -23,7 +23,7 @@ Běžným scénářem v Data Factory při použití toků dat mapování je psan
 
 Existují dvě primární metody pro řádné zpracování chyb při zápisu dat do jímky databáze v datových tocích ADF:
 
-* Při zpracování dat databáze nastavte [zpracování řádků chyb](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#error-row-handling) jímky na "pokračovat při chybě". Toto je automatizovaná metoda catch-All, která nevyžaduje vlastní logiku v toku dat.
+* Při zpracování dat databáze nastavte [zpracování řádků chyb](./connector-azure-sql-database.md#error-row-handling) jímky na "pokračovat při chybě". Toto je automatizovaná metoda catch-All, která nevyžaduje vlastní logiku v toku dat.
 * Případně postupujte podle následujících kroků a poskytněte protokolování sloupců, které se nevejdou do sloupce cílového řetězce, což umožňuje, aby tok dat pokračoval.
 
 > [!NOTE]

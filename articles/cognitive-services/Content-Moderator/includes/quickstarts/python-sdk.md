@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.custom: cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: bf24d7c5ca88c47d3bfd8067a4e533ed413dde90
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 324f89d2de56666242ed4f6231eff0855ec561b3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92924966"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356473"
 ---
 Začněte s klientskou knihovnou Azure Content Moderator pro Python. Pomocí těchto kroků nainstalujete balíček PiPy a vyzkoušíte ukázkový kód pro základní úlohy. 
 
@@ -65,15 +65,15 @@ Dále vytvořte proměnné pro umístění a klíč koncového bodu prostředku.
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_vars)]
 
 > [!IMPORTANT]
-> Přejděte na Azure Portal. Pokud se prostředek Content Moderator, který jste vytvořili v části **předpoklady** , se úspěšně nasadil, klikněte v části **Další kroky** na tlačítko **Přejít k prostředku** . Klíč a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků** . 
+> Přejděte na Azure Portal. Pokud se prostředek Content Moderator, který jste vytvořili v části **předpoklady** , se úspěšně nasadil, klikněte v části **Další kroky** na tlačítko **Přejít k prostředku** . Klíč a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků**. 
 >
-> Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Například [Trezor klíčů Azure](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
+> Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Například [Trezor klíčů Azure](../../../../key-vault/general/overview.md).
 
 ## <a name="object-model"></a>Objektový model
 
 Následující třídy zpracovávají některé hlavní funkce klientské knihovny Content Moderator Pythonu.
 
-|Název|Description|
+|Název|Popis|
 |---|---|
 |[ContentModeratorClient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python)|Tato třída je potřebná pro všechny funkce Content Moderator. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd.|
 |[ImageModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python)|Tato třída poskytuje funkce pro analýzu obrázků pro obsah pro dospělé, osobní údaje nebo lidské obličeje.|

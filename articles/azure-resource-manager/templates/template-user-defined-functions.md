@@ -1,20 +1,20 @@
 ---
 title: Uživatelsky definované funkce v šablonách
-description: Popisuje, jak definovat a používat uživatelsky definované funkce v šabloně Azure Resource Manager.
+description: Popisuje, jak definovat a používat uživatelsky definované funkce v šabloně Azure Resource Manager (šablona ARM).
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 69f4e98d389cc8dbe5cd3f4b628189676c501106
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0d62abb5362d51a77db872c11416b04dcfb3f97
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84672931"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353472"
 ---
-# <a name="user-defined-functions-in-azure-resource-manager-template"></a>Uživatelsky definované funkce v šabloně Azure Resource Manager
+# <a name="user-defined-functions-in-arm-template"></a>Uživatelsky definované funkce v šabloně ARM
 
 V rámci šablony můžete vytvořit vlastní funkce. Tyto funkce jsou k dispozici pro použití ve vaší šabloně. Uživatelsky definované funkce jsou oddělené od [standardních funkcí šablon](template-functions.md) , které jsou automaticky dostupné v rámci šablony. Vytvářejte vlastní funkce, pokud máte složité výrazy, které se ve vaší šabloně opakovaně používají.
 
-Tento článek popisuje, jak do šablony Azure Resource Manager přidat uživatelsky definované funkce.
+Tento článek popisuje, jak přidat uživatelsky definované funkce v šabloně Azure Resource Manager (šablona ARM).
 
 ## <a name="define-the-function"></a>Definovat funkci
 

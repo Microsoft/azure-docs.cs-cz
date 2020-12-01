@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 94dc70d184de27b1c44f9817686630e04da830f9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9a62576b65be04414580b42377398e27c4aa389c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521658"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353557"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-web-cargo-air"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s využitím webového nákladového vzduchu
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat leteckou službu na webu s Azure Activ
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k webovému leteckému telefonu pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -86,9 +86,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí vlastního přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory pro klienty webu leteckého nákladu](mailto:support@webcargonet.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. . Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
-    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
+    ![The Certificate download link](common/certificatebase64.png)
 
 1. V části **Nastavení leteckého nákladového webu** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
@@ -98,7 +98,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
@@ -110,10 +110,10 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k webovému leteckému vzduchu.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Web nákladní Air**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .

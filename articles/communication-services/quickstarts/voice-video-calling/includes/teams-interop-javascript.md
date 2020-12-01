@@ -5,12 +5,12 @@ ms.author: mikben
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: ab13e02c9154dbfc1bd28872f1bd6f993019a604
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 820659c513674dc04e914c8f1094afab4f5a89e2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94915383"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356456"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -22,7 +22,7 @@ ms.locfileid: "94915383"
 Funkce interoperability týmů je aktuálně v privátní verzi Preview. Pokud chcete povolit tuto funkci pro prostředek komunikačních služeb, pošlete prosím e-mail [acsfeedback@microsoft.com](mailto:acsfeedback@microsoft.com) s:
 
 1. ID předplatného pro předplatné Azure, které obsahuje váš prostředek komunikačních služeb.
-2. ID tenanta vašich týmů. Nejjednodušší způsob, jak to získat, je [získat a sdílet odkaz na tým](https://support.microsoft.com/office/create-a-link-or-a-code-for-joining-a-team-11b0de3b-9288-4cb4-bc49-795e7028296f#:~:text=Create%20a%20link%20If%20you%E2%80%99re%20a%20team%20owner%2C,link%20into%20any%20browser%20to%20join%20the%20team).
+2. ID tenanta vašich týmů. Nejjednodušší způsob, jak to získat, je [získat a sdílet odkaz na tým](https://support.microsoft.com/office/create-a-link-or-a-code-for-joining-a-team-11b0de3b-9288-4cb4-bc49-795e7028296f).
 
 Abyste mohli tuto funkci používat, musíte být členem vlastnící organizace obou entit.
 

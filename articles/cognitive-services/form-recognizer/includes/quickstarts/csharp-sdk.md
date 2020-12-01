@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 2d8b876f01f110a314734e596055831650a6c08b
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: d7577668d87ecaf2d769136d64990f95fc212fe6
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95869310"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356524"
 ---
 > [!IMPORTANT]
 > Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti.
@@ -189,7 +189,7 @@ Pro rozpoznání obsahu souboru v dané adrese URL použijte `StartRecognizeCont
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_getcontent_call)]
 
 > [!TIP]
-> Můžete také získat obsah z místního souboru. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) , jako je například **StartRecognizeContent**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
+> Můžete také získat obsah z místního souboru. Podívejte se na metody [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) , jako je například **StartRecognizeContent**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
 
 Zbývající část tohoto úkolu vytiskne informace o obsahu do konzoly.
 
@@ -239,7 +239,7 @@ Chcete-li rozpoznat účtenky z adresy URL, použijte `StartRecognizeReceiptsFro
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_call)]
 
 > [!TIP]
-> Můžete také rozpoznat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) , jako je například **StartRecognizeReceipts**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
+> Můžete také rozpoznat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) , jako je například **StartRecognizeReceipts**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
 
 Vrácená hodnota je kolekce `RecognizedReceipt` objektů: jedna pro každou stránku v odeslaném dokumentu. Následující kód zpracuje příjem na daném identifikátoru URI a vytiskne hlavní pole a hodnoty do konzoly.
 
@@ -302,7 +302,7 @@ K rozpoznání vizitek z adresy URL použijte `StartRecognizeBusinessCardsFromUr
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_call)]
 
 > [!TIP]
-> Můžete také rozpoznat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) , jako je například **StartRecognizeBusinessCards**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
+> Můžete také rozpoznat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) , jako je například **StartRecognizeBusinessCards**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
 
 Vrácená hodnota je kolekce `RecognizedForm` objektů: jedna pro každou kartu v dokumentu. Následující kód zpracuje vizitku na daném identifikátoru URI a vytiskne hlavní pole a hodnoty do konzoly.
 
@@ -317,7 +317,7 @@ Chcete-li rozpoznat faktury z adresy URL, použijte `StartRecognizeInvoicesFromU
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_invoice_call)]
 
 > [!TIP]
-> Můžete také rozpoznat místní obrázky faktury. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) , jako je například **StartRecognizeInvoices**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
+> Můžete také rozpoznat místní obrázky faktury. Podívejte se na metody [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) , jako je například **StartRecognizeInvoices**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
 
 Vrácená hodnota je kolekce `RecognizedForm` objektů: jedna pro každou fakturu v odeslaném dokumentu. Následující kód zpracuje fakturu na daném identifikátoru URI a vytiskne hlavní pole a hodnoty do konzoly.
 
@@ -471,7 +471,7 @@ Použijete `StartRecognizeCustomFormsFromUri` metodu.
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_analyze)]
 
 > [!TIP]
-> Můžete také analyzovat místní soubor. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) , jako je například **StartRecognizeCustomForms**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
+> Můžete také analyzovat místní soubor. Podívejte se na metody [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) , jako je například **StartRecognizeCustomForms**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
 
 Vrácená hodnota je kolekce `RecognizedForm` objektů: jedna pro každou stránku v odeslaném dokumentu. Následující kód vytiskne výsledky analýzy do konzoly. Vytiskne všechna rozpoznaná pole a odpovídající hodnotu spolu s hodnocením spolehlivosti.
 

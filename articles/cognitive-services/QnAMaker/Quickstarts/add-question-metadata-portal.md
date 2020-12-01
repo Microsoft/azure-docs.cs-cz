@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 930acbd3bbdb8f63b6aa888b292025a76435b289
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: e56d718892d9cfdbfda9068ecd68ef31f7f2ea46
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776744"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353065"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Rychlý Start: Přidání otázek a odpovědí pomocí portálu QnA Maker
 
@@ -20,7 +20,7 @@ Po vytvoření znalostní báze přidejte páry otázek a odpovědí (QnA) s met
 
 |Spojení|Dotazy|Odpověď|Metadata|
 |--|--|--|--|
-|1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
+|1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](../concepts/azure-resources.md) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
 
 Po přidání metadat do páru QnA může klientská aplikace:
@@ -29,7 +29,7 @@ Po přidání metadat do páru QnA může klientská aplikace:
 * Příjem všech odpovědí, ale následné zpracování odpovědí v závislosti na metadatech pro každou odpověď.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Dokončení [předchozího rychlého](./create-publish-knowledge-base.md) startu
 
@@ -37,7 +37,7 @@ Po přidání metadat do páru QnA může klientská aplikace:
 
 1. Přihlaste se k [portálu QnA maker](https://www.qnamaker.ai).
 
-1. Z [předchozího rychlého](../how-to/create-knowledge-base.md)startu vyberte svou stávající znalostní bázi.
+1. Z [předchozího rychlého](./create-publish-knowledge-base.md)startu vyberte svou stávající znalostní bázi.
 
 ## <a name="add-additional-alternatively-phrased-questions"></a>Přidat další otázky s alternativou fráze
 
@@ -56,13 +56,13 @@ Při importu této adresy URL byla vytvořena pouze jedna otázka s jednou odpov
 
 1. Vyberte **Uložit a naučit** se znovu naučit znalostní bázi.
 
-1. Vyberte **test**a pak zadejte otázku, která je blízko jedné z nových alternativních frází, ale není úplně stejná jako při zadávání slov:
+1. Vyberte **test** a pak zadejte otázku, která je blízko jedné z nových alternativních frází, ale není úplně stejná jako při zadávání slov:
 
     `What GB size can a knowledge base be?`
 
     Ve formátu Markdownu se vrátí správná odpověď:
 
-    `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`
+    `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](../concepts/azure-resources.md) for more details.`
 
     Pokud vyberete v části vrácená odpověď možnost **zkontrolovat** , zobrazí se vám další odpovědi, ale ne se stejnou vysokou úrovní spolehlivosti.
 
@@ -76,9 +76,9 @@ Přidání metadat do dvojice otázek a odpovědí umožňuje klientské aplikac
 
 1. Přidejte druhou dvojici otázek a odpovědí bez metadat z [první tabulky v tomto rychlém](#qna-table)startu a potom pokračujte následujícími kroky.
 
-1. Vyberte **Možnosti zobrazení**a pak vyberte **zobrazit metadata**.
+1. Vyberte **Možnosti zobrazení** a pak vyberte **zobrazit metadata**.
 
-1. Pro pár QnA, který jste právě přidali, vyberte **Přidat značky metadat**a pak přidejte název `service` a hodnotu `search` . Vypadá to takto: `service:search` .
+1. Pro pár QnA, který jste právě přidali, vyberte **Přidat značky metadat** a pak přidejte název `service` a hodnotu `search` . Vypadá to takto: `service:search` .
 
 1. Přidejte další značku metadat s názvem `link_in_answer` a hodnotou `false` . Vypadá to takto: `link_in_answer:false` .
 

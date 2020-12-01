@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: af3935bab5cd4d6a2aa4a9e3250f6beec19a8ea4
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 5c8af8ddb7a0870de37b73cbe09965ee63c88ba1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736665"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353744"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Předdefinovaný model faktury pro rozpoznávání formulářů
 
-Nástroj pro rozpoznávání formulářů Azure může analyzovat a extrahovat informace z prodejních faktur pomocí předdefinovaných modelů faktur. Rozhraní API pro fakturaci umožňuje zákazníkům přebírat faktury v nejrůznějších formátech a vracet strukturovaná data pro automatizaci zpracování faktury. Kombinuje naše výkonné funkce [optického rozpoznávání znaků (OCR)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) s fakturací s porozuměním modelem obsáhlého učení pro extrakci klíčových informací z faktur v angličtině. Extrahuje text, tabulky a informace, jako je například zákazník, dodavatel, ID faktury, datum splatnosti faktury, celková hodnota, splatné částky faktury, částka daně, částka pro odeslání, fakturaci a další. Předem připravené fakturační rozhraní API je veřejně dostupné v nástroji pro rozpoznávání formulářů v 2.1 Preview.
+Nástroj pro rozpoznávání formulářů Azure může analyzovat a extrahovat informace z prodejních faktur pomocí předdefinovaných modelů faktur. Rozhraní API pro fakturaci umožňuje zákazníkům přebírat faktury v nejrůznějších formátech a vracet strukturovaná data pro automatizaci zpracování faktury. Kombinuje naše výkonné funkce [optického rozpoznávání znaků (OCR)](../computer-vision/concept-recognizing-text.md) s fakturací s porozuměním modelem obsáhlého učení pro extrakci klíčových informací z faktur v angličtině. Extrahuje text, tabulky a informace, jako je například zákazník, dodavatel, ID faktury, datum splatnosti faktury, celková hodnota, splatné částky faktury, částka daně, částka pro odeslání, fakturaci a další. Předem připravené fakturační rozhraní API je veřejně dostupné v nástroji pro rozpoznávání formulářů v 2.1 Preview.
 
 ## <a name="what-does-the-invoice-service-do"></a>K čemu služba faktur používá?
 
@@ -80,8 +80,8 @@ Služba faktura bude extrahovat pole text, tabulky a 26 faktur. Níže jsou uved
 | CustomerId | řetězec | Referenční ID pro zákazníka | CID – 12345 |  |
 | PurchaseOrder | řetězec | Referenční číslo nákupní objednávky | PO-3333 | |  |
 | InvoiceId | řetězec | ID pro tuto konkrétní fakturu (často se jedná o číslo faktury) | INV-100 | |  |
-| InvoiceDate | datum | Datum vydání faktury | 11/15/2019 | 
-| DueDate | datum | Datum platby za tuto fakturu je splatnost. | 12/15/2019 | 2019-12-15 | 2019-11-15 |
+| InvoiceDate | date | Datum vydání faktury | 11/15/2019 | 
+| DueDate | date | Datum platby za tuto fakturu je splatnost. | 12/15/2019 | 2019-12-15 | 2019-11-15 |
 | Dodavatel | řetězec | Dodavatel, který vytvořil tuto fakturu | SPOLEČNOST CONTOSO LTD. | |
 | VendorAddress | řetězec | Poštovní adresa dodavatele | 123 456th St. New York, NY, 10001 | |
 | VendorAddressRecipient | řetězec | Název přidružený k VendorAddress | Ústředí společnosti Contoso | |
@@ -99,8 +99,8 @@ Služba faktura bude extrahovat pole text, tabulky a 26 faktur. Níže jsou uved
 | ServiceAddressRecipient | řetězec | Název přidružený k ServiceAddress | Služby společnosti Microsoft | |
 | RemittanceAddress | řetězec | Explicitní úhrada nebo platební adresa pro zákazníka | 123 úhrada St New York, NY, 10001 |  |
 | RemittanceAddressRecipient | řetězec | Název přidružený k RemittanceAddress | Fakturace společnosti Contoso |  |
-| ServiceStartDate | datum | První datum období služby (například období služby faktura za nástroj) | 14. 10. 2019 | 2019-10-14 |
-| ServiceEndDate | datum | Koncové datum období služby (například období služby faktura za nástroj) | 11/14/2019 | 2019-11-14 |
+| ServiceStartDate | date | První datum období služby (například období služby faktura za nástroj) | 14. 10. 2019 | 2019-10-14 |
+| ServiceEndDate | date | Koncové datum období služby (například období služby faktura za nástroj) | 11/14/2019 | 2019-11-14 |
 | PreviousUnpaidBalance | číslo | Explicitní dřív neplacený zůstatek | 500,00 $ | 500 |
 
 
@@ -113,4 +113,3 @@ Služba faktura bude extrahovat pole text, tabulky a 26 faktur. Níže jsou uved
 
 * [Co je služba Rozpoznávání formulářů?](./overview.md)
 * [Referenční dokumentace REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeInvoiceAsync)
-

@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: b489964e5ef8ea483cbe203be1ff665078a6d66a
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 60ef490bbba4dca4f01b82967ad6ea8636e7bd4e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95741725"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353693"
 ---
 # <a name="form-recognizer-layout-service"></a>Služba rozložení pro rozpoznávání formulářů
 
-Nástroj pro rozpoznávání formulářů Azure může extrahovat text, tabulky, značky výběru a informace o struktuře z dokumentů pomocí služby rozvržení. Rozhraní API pro rozložení umožňuje zákazníkům pořizovat dokumenty v nejrůznějších formátech a vracet strukturovaná data a reprezentace dokumentu. Kombinuje naše výkonné funkce [optického rozpoznávání znaků (OCR)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) s dokumentem, který popisuje modely hloubkového učení pro extrakci textu, tabulek, značek výběru a struktury dokumentů. 
+Nástroj pro rozpoznávání formulářů Azure může extrahovat text, tabulky, značky výběru a informace o struktuře z dokumentů pomocí služby rozvržení. Rozhraní API pro rozložení umožňuje zákazníkům pořizovat dokumenty v nejrůznějších formátech a vracet strukturovaná data a reprezentace dokumentu. Kombinuje naše výkonné funkce [optického rozpoznávání znaků (OCR)](../computer-vision/concept-recognizing-text.md) s dokumentem, který popisuje modely hloubkového učení pro extrakci textu, tabulek, značek výběru a struktury dokumentů. 
 
 ## <a name="what-does-the-layout-service-do"></a>Co služba rozložení dělá?
 
@@ -96,7 +96,3 @@ Rozložení také extrahuje značky výběru z dokumentů. Extrahované značky 
 
 * [Co je služba Rozpoznávání formulářů?](./overview.md)
 * [Referenční dokumentace REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeLayoutAsync)
-
-
-
-

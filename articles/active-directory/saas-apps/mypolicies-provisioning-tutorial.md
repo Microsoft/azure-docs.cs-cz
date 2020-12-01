@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 55f7b64c9ade91bb2923161d60568e3ea14ee034
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 221f63ab9a7eb3f71a4c730a11565dda64c9edc9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353474"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353579"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Kurz: Konfigurace myPolicies pro Automatické zřizování uživatelů
 
@@ -74,7 +74,7 @@ Pokud chcete nakonfigurovat myPolicies pro Automatické zřizování uživatelů
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **myPolicies** , na panelu výsledků vyberte **myPolicies** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **myPolicies**, na panelu výsledků vyberte **myPolicies** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![myPolicies v seznamu výsledků](common/search-new-app.png)
 
@@ -155,7 +155,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 
 ## <a name="connector-limitations"></a>Omezení konektoru
 
-* myPolicies vždy vyžaduje **uživatelské jméno** , **e-mail** a **externalId**.
+* myPolicies vždy vyžaduje **uživatelské jméno**, **e-mail** a **externalId**.
 * myPolicies nepodporuje pevné odstranění atributů uživatele.
 
 ## <a name="change-log"></a>Protokol změn

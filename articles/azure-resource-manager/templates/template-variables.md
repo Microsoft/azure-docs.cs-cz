@@ -1,18 +1,18 @@
 ---
 title: Proměnné v šablonách
-description: Popisuje definování proměnných v šabloně Azure Resource Manager.
+description: Popisuje definování proměnných v šabloně Azure Resource Manager (šablona ARM).
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 7758451747503cb8c42566dc081a91f84bafa375
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5d9b58d63e96656c45d3494d24099bbeadc46b11
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95915999"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353455"
 ---
-# <a name="variables-in-azure-resource-manager-template"></a>Proměnné v šabloně Azure Resource Manageru
+# <a name="variables-in-arm-template"></a>Proměnné v šabloně ARM
 
-Tento článek popisuje, jak definovat a používat proměnné v šabloně Azure Resource Manager. K zjednodušení šablony můžete použít proměnné. Místo opakujících se složitých výrazů v rámci šablony definujete proměnnou, která obsahuje složitý výraz. Pak na tuto proměnnou odkazujete podle potřeby v rámci šablony.
+Tento článek popisuje, jak definovat a používat proměnné v šabloně Azure Resource Manager (šablona ARM). K zjednodušení šablony můžete použít proměnné. Místo opakujících se složitých výrazů v rámci šablony definujete proměnnou, která obsahuje složitý výraz. Pak na tuto proměnnou odkazujete podle potřeby v rámci šablony.
 
 Správce prostředků vyřeší proměnné před spuštěním operací nasazení. Všude, kde je proměnná v šabloně použitá, ji Resource Manager nahradí vyřešenou hodnotou.
 
@@ -87,7 +87,7 @@ Chcete-li načíst nastavení pro zadané prostředí, použijte proměnnou a pa
 
 Následující příklady ukazují scénáře použití proměnných.
 
-|Template (Šablona)  |Description  |
+|Template (Šablona)  |Popis  |
 |---------|---------|
 | [Definice proměnných](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Ukazuje různé typy proměnných. Šablona neimplementuje žádné prostředky. Vytvoří proměnné hodnoty a vrátí tyto hodnoty. |
 | [konfigurační proměnná](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Ukazuje použití proměnné definující konfigurační hodnoty. Šablona neimplementuje žádné prostředky. Vytvoří proměnné hodnoty a vrátí tyto hodnoty. |
@@ -95,5 +95,5 @@ Následující příklady ukazují scénáře použití proměnných.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o dostupných vlastnostech proměnných naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](template-syntax.md).
+* Další informace o dostupných vlastnostech proměnných najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
 * Doporučení k vytváření proměnných najdete v tématu [osvědčené postupy – proměnné](template-best-practices.md#variables).

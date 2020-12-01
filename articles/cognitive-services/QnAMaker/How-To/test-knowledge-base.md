@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 21984a03947e4f9f60e705955cb1be3b2df8933c
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 273548ec095ce04772438a2d732b914d80d976cc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376121"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353149"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>Otestujte znalostní bázi v QnA Maker
 
@@ -74,7 +74,7 @@ Vyberte **Save (Uložit) a výuka a** zachovejte tuto odpověď. Do znalostní b
 1. Do textového pole zadejte dotaz a vyberte Enter. 
 1. Pro každý dotaz, pokud existuje přesná odpověď nebo krátká odpověď přítomná v průchodu odpovědí, a to společně s doporučeným průchodem odpovědí, který je k dispozici ve znalostní bázi, budete mít také krátkou odpověď na dotaz.
     ![Spravované podokno povoleného testu](../media/qnamaker-how-to-test-knowledge-bases/test-pane-with-managed-detail.png)
-1. Pokud zrušíte výběr **Zobrazit krátkou odpověď** , jako odpověď se vrátí jenom ta nejlepší odpověď ze znalostní báze.
+1. Pokud zrušíte výběr **Zobrazit krátkou odpověď**, jako odpověď se vrátí jenom ta nejlepší odpověď ze znalostní báze.
 
 ### <a name="clear-test-panel"></a>Vymazat testovací panel
 
@@ -263,7 +263,7 @@ Pomocí následujícího grafu pochopíte, jak najít hodnoty polí pro voliteln
     > [!TIP]
     > Pokud chcete zobrazit metadata a ID QnA jednotlivých sad, exportujte znalostní bázi. Vyberte stránku **Nastavení** a pak vyberte **exportovat** jako `.xls` soubor. Najít tento stažený soubor a otevřít v aplikaci Excel revize metadat a ID.
 
-1. Vyberte **Uložit a výuka** , pak vyberte stránku **publikování** a pak vyberte tlačítko **publikovat** . Tyto akce provedou změnu v dávkovém testu. Stáhněte si znalostní bázi ze stránky **Nastavení** .
+1. Vyberte **Uložit a výuka**, pak vyberte stránku **publikování** a pak vyberte tlačítko **publikovat** . Tyto akce provedou změnu v dávkovém testu. Stáhněte si znalostní bázi ze stránky **Nastavení** .
 
     Stažený soubor má správný formát pro metadata a správné ID sady otázek a odpovědí. Tato pole použijte v následující části.
 
@@ -323,4 +323,4 @@ Pokud nebudete nadále používat tuto znalostní bázi, odstraňte znalostní b
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Publikování znalostní báze](./publish-knowledge-base.md)
+> [Publikování znalostní báze](../quickstarts/create-publish-knowledge-base.md)

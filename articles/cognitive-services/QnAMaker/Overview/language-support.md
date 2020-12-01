@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2019
-ms.openlocfilehash: dc910c01c401468a3dae392a6318344bee25efb7
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 5035a81838ace0678f0cbb68ad2b9325de498003
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375634"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353115"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Jazyková podpora pro QnA Maker prostředky a základy znalostní báze
 
@@ -48,7 +48,7 @@ Zvažte použití těchto zdrojů:
 # <a name="qnamaker-managed-preview"></a>[Spravované Qnamakerem (Preview)](#tab/v2)
 ![Nastavení jazyka ve spravovaném QnA Maker](../media/language-support/language-setting-managed.png)
 
-Pokud **nezaškrtnete políčko pro povolení nastavení jazyka na bázi znalostní báze** , vezměte v úvahu tyto informace: 
+Pokud **nezaškrtnete políčko pro povolení nastavení jazyka na bázi znalostní báze**, vezměte v úvahu tyto informace: 
 * Služba QnA Maker a všechny její znalostní báze budou podporovat jenom jeden jazyk.
 * Jazyk se explicitně nastaví, když se vytvoří první znalostní báze služby.
 * Jazyk se určí ze souborů a adres URL přidaných při vytváření znalostní báze.
@@ -140,7 +140,7 @@ Následující seznam obsahuje jazyky podporované QnA Makerm prostředkem.
 |Vietnamština|
 
 ## <a name="query-matching-and-relevance"></a>Shoda a závažnost dotazu
-QnA Maker závisí na [analyzátorech kognitivní hledání jazyka Azure](https://docs.microsoft.com/rest/api/searchservice/language-support) pro poskytování výsledků.
+QnA Maker závisí na [analyzátorech kognitivní hledání jazyka Azure](/rest/api/searchservice/language-support) pro poskytování výsledků.
 
 I když jsou možnosti Azure Kognitivní hledání pro podporované jazyky v nominální hodnotě, QnA Maker má další hodnocení, které je umístěné nad výsledky Azure Search. V tomto modelu hodnocení používáme některé speciální sémantické funkce a funkce založené na slovech v následujících jazycích.
 
@@ -166,4 +166,4 @@ Toto dodatečné hodnocení představuje interní pracovní QnA Maker hodnocení
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Výběr jazyka](../how-to/language-knowledge-base.md)
+> [Výběr jazyka](../index.yml)

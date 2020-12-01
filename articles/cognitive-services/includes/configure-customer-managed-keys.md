@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 17dff6056564b421f0741f55ce8171f3251c94c9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c79846b0a5b675c34e4e7919e9ecd9d591bfefe5
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026328"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356354"
 ---
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Klíče spravované zákazníkem s využitím Azure Key Vaultu
 
@@ -38,8 +38,8 @@ Použití klíčů spravovaných zákazníkem vyžaduje, aby byly v trezoru klí
 
 Informace o tom, jak tyto vlastnosti v existujícím trezoru klíčů povolit, najdete v částech s názvem **Povolení obnovitelného odstranění** a **Povolení funkce vyprázdnit ochranu** v jednom z následujících článků:
 
-- [Jak používat obnovitelné odstranění pomocí prostředí PowerShell](../../key-vault/general/soft-delete-powershell.md).
-- [Jak používat obnovitelné odstranění pomocí rozhraní](../../key-vault/general/soft-delete-cli.md)PŘÍKAZového řádku
+- [Jak používat obnovitelné odstranění pomocí prostředí PowerShell](../../key-vault/general/key-vault-recovery.md).
+- [Jak používat obnovitelné odstranění pomocí rozhraní](../../key-vault/general/key-vault-recovery.md)PŘÍKAZového řádku
 
 Azure Storage šifrování podporují pouze klíče RSA o velikosti 2048. Další informace o klíčích najdete v tématu **Key Vault Keys** v tématu [informace o Azure Key Vaultch klíčích, tajných klíčích a certifikátech](../../key-vault/general/about-keys-secrets-certificates.md).
 

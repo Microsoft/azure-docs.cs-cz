@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b836038aa2f8f60e25c51d1d5674d22497b3ce44
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6b767a2cf4739a0b36b9f5c5c960e3e3ead58262
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "96018952"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353080"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Správa koncových bodů a tras v Azure Digital revláken (rozhraní API a CLI)
 
@@ -94,7 +94,7 @@ Aby bylo možné vytvořit koncový bod s povoleným nemrtvým dopisem, je nutn�
 
 Před nastavením umístění nedoručených zpráv musíte mít účet úložiště s kontejnerem. Při vytváření koncového bodu zadejte adresu URL tohoto kontejneru. Nedoručené písmeno je k dispozici jako adresa URL kontejneru s tokenem SAS. Tento token potřebuje `write` oprávnění pouze pro cílový kontejner v rámci účtu úložiště. Plně vytvořená adresa URL bude ve formátu: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
-Další informace o tokenech SAS najdete v tématu: [udělení omezeného přístupu k Azure Storage prostředkům pomocí sdílených přístupových podpisů (SAS)](/azure/storage/common/storage-sas-overview)
+Další informace o tokenech SAS najdete v tématu: [udělení omezeného přístupu k Azure Storage prostředkům pomocí sdílených přístupových podpisů (SAS)](../storage/common/storage-sas-overview.md)
 
 Další informace o nedoručených písmenech najdete v tématu [*Koncepty: směrování událostí*](concepts-route-events.md#dead-letter-events).
 

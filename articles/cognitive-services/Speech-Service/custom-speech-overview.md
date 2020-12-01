@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 6dbe97d615753f0a90c8ba80aa7afa6dafa15eb2
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 7f8fb0488c863868b1076ad5b3fa7868d1880a6b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658464"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353778"
 ---
 # <a name="what-is-custom-speech"></a>Co je Custom Speech?
 
@@ -31,7 +31,7 @@ Tento diagram zvýrazňuje části, které tvoří [portál Custom Speech](https
 
 1. [Přihlaste se k odběru a vytvořte projekt](#set-up-your-azure-account) – vytvořte účet Azure a přihlaste se k odběru služby Speech. Toto jednotné předplatné vám umožní přístup k převodu řeči na text, převod textu na řeč, rozpoznávání řeči a [Custom Speech Portal](https://speech.microsoft.com/customspeech). Pak pomocí svého předplatného služby Speech vytvořte svůj první Custom Speech projekt.
 
-1. [Nahrání testovacích](how-to-custom-speech-test-data.md) dat – nahrání testovacích dat (zvukové soubory) k vyhodnocení nabídky pro vaše aplikace, nástroje a produkty od Microsoftu na text
+1. [Nahrání testovacích](./how-to-custom-speech-test-and-train.md) dat – nahrání testovacích dat (zvukové soubory) k vyhodnocení nabídky pro vaše aplikace, nástroje a produkty od Microsoftu na text
 
 1. [Kontrola kvality rozpoznávání](how-to-custom-speech-inspect-data.md) – pomocí [Custom Speechového portálu](https://speech.microsoft.com/customspeech) můžete přehrát nahraný zvuk a zkontrolovat kvalitu rozpoznávání řeči vašich testovacích dat. Kvantitativní měření najdete v tématu [Kontrola dat](how-to-custom-speech-inspect-data.md).
 
@@ -101,7 +101,7 @@ Všimněte si, že model můžete upgradovat na vlastní koncový bod řeči bez
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Příprava a testování dat](how-to-custom-speech-test-data.md)
+* [Příprava a testování dat](./how-to-custom-speech-test-and-train.md)
 * [Kontrola dat](how-to-custom-speech-inspect-data.md)
 * [Vyhodnotit a vylepšit přesnost modelu](how-to-custom-speech-evaluate-data.md)
 * [Trénování a nasazení modelu](how-to-custom-speech-train-model.md)

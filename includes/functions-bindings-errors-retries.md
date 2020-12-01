@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/01/2020
 ms.author: glenga
-ms.openlocfilehash: 39c0556350482e171234a3ff9dce0c16ed88d110
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2ccff72be66a88b9bf0a5e9eb9c29ade8397804b
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93406765"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356189"
 ---
 Chyby vyvolané v Azure Functions můžou pocházet z některého z následujících zdrojů:
 
@@ -149,6 +149,27 @@ Tady jsou zásady opakování v *function.js* souboru:
     }
 }
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Tady jsou zásady opakování v *function.js* souboru:
+
+
+```json
+{
+    "disabled": false,
+    "bindings": [
+        {
+            ....
+        }
+    ],
+    "retry": {
+        "strategy": "fixedDelay",
+        "maxRetryCount": 4,
+        "delayInterval": "00:00:10"
+    }
+}
+```
 ---
 
 #### <a name="exponential-backoff-retry"></a>Exponenciální omezení rychlosti opakování
@@ -249,6 +270,27 @@ Tady jsou zásady opakování v *function.js* souboru:
     }
 }
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Tady jsou zásady opakování v *function.js* souboru:
+
+```json
+{
+    "disabled": false,
+    "bindings": [
+        {
+            ....
+        }
+    ],
+    "retry": {
+        "strategy": "exponentialBackoff",
+        "maxRetryCount": 5,
+        "minimumInterval": "00:00:10",
+        "maximumInterval": "00:15:00"
+    }
+}
+```
 ---
 
 |function.jsvlastnost  |Vlastnost atributu | Popis |
@@ -279,7 +321,7 @@ Například pokud jste použili výchozí počet doručování Service Bus 10 a 
 Následující aktivační události podporují opakování ve zdroji triggeru:
 
 * [Azure Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)
-* [Azure Queue Storage](../articles/azure-functions/functions-bindings-storage-queue.md)
+* [Úložiště front Azure](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure Service Bus (fronta/téma)](../articles/azure-functions/functions-bindings-service-bus.md)
 
 Ve výchozím nastavení většina aktivačních událostí opakuje žádost až pětkrát. Po pátém opakování bude úložiště front Azure zapisovat zprávu do [fronty nezpracovatelných](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#poison-messages)zpráv.  Výchozí Service Bus fronty a zásady pro témata zapisují zprávu do [fronty nedoručených](../articles/service-bus-messaging/service-bus-dead-letter-queues.md) zpráv po 10 pokusech.

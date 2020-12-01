@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: c3c42146ba93115e257924c23dc34785c8258533
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 165fb2937db5edfa4f51f62033afaf87cfff83ef
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340443"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353098"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Omezení jedinečnosti klíčů v Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -45,7 +45,7 @@ Jedinečné klíče můžete definovat jenom v případě, že vytvoříte konte
 
 * Existující kontejner nelze aktualizovat tak, aby používal jiný jedinečný klíč. Jinými slovy, po vytvoření kontejneru s jedinečnou zásadou klíče se zásady nedají změnit.
 
-* Chcete-li nastavit jedinečný klíč pro existující kontejner, vytvořte nový kontejner s omezením jedinečného klíče. Pomocí vhodného nástroje pro migraci dat přesuňte data z existujícího kontejneru do nového kontejneru. Pro kontejnery SQL použijte nástroj pro [migraci dat](import-data.md) k přesunutí dat. V případě kontejnerů MongoDB použijte k přesunu dat [mongoimport.exe nebo mongorestore.exe](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json) .
+* Chcete-li nastavit jedinečný klíč pro existující kontejner, vytvořte nový kontejner s omezením jedinečného klíče. Pomocí vhodného nástroje pro migraci dat přesuňte data z existujícího kontejneru do nového kontejneru. Pro kontejnery SQL použijte nástroj pro [migraci dat](import-data.md) k přesunutí dat. V případě kontejnerů MongoDB použijte k přesunu dat [mongoimport.exe nebo mongorestore.exe](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json) .
 
 * Zásada jedinečného klíče může mít maximálně 16 hodnot cesty. Hodnoty mohou být například `/firstName` , `/lastName` a `/address/zipCode` . Každá zásada jedinečného klíče může mít maximálně 10 omezení nebo kombinací jedinečného klíče. Kombinované cesty pro každé omezení jedinečného indexu nesmí překročit 60 bajtů. V předchozím příkladu je jedno omezení jméno, příjmení a e-mailová adresa. Toto omezení využívá 3 z 16 možných cest.
 

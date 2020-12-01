@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: e00fd3d1dac0a18ac7f7377e08ae8d20ae132c56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa0d78d52ec13c91b82e6a8d10720269076f59a1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652605"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353540"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Koncepty triggerů a vazeb Azure Functions.
 
@@ -18,7 +18,7 @@ V tomto článku se seznámíte s koncepty a možnostmi triggerů funkcí a vaze
 
 Aktivační události jsou tím, co způsobí spuštění funkce. Aktivační událost definuje způsob volání funkce a funkce musí mít právě jednu aktivační událost. Aktivační události obsahují související data, která se často poskytují jako datová část funkce. 
 
-Vazba na funkci je způsob deklarativního připojení jiného prostředku ke funkci; vazby mohou být propojeny jako *vstupní vazby*, *výstupní vazby*nebo obojí. Data z vazeb má funkce k dispozici jako parametry.
+Vazba na funkci je způsob deklarativního připojení jiného prostředku ke funkci; vazby mohou být propojeny jako *vstupní vazby*, *výstupní vazby* nebo obojí. Data z vazeb má funkce k dispozici jako parametry.
 
 Můžete kombinovat a párovat různé vazby tak, aby odpovídaly vašim potřebám. Vazby jsou volitelné a funkce může mít jednu nebo více vstupních nebo výstupních vazeb.
 
@@ -88,6 +88,10 @@ Informace o tom, které vazby jsou ve verzi Preview nebo které jsou schválené
 Pomocí následující tabulky můžete najít příklady specifických typů vazeb, které ukazují, jak pracovat s vazbami ve vašich funkcích. Nejprve vyberte kartu jazyk, která odpovídá vašemu projektu. 
 
 [!INCLUDE [functions-bindings-code-example-chooser](../../includes/functions-bindings-code-example-chooser.md)]
+
+## <a name="custom-bindings"></a>Vlastní vazby
+
+Můžete vytvořit vlastní vstupní a výstupní vazby. Vazby musí být vytvořeny v rozhraní .NET, ale lze je spotřebovat z libovolného podporovaného jazyka. Další informace o vytváření vlastních vazeb naleznete v tématu [vytváření vlastních vstupních a výstupních vazeb](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings).
 
 ## <a name="resources"></a>Zdroje a prostředky
 - [Výrazy a vzory vazby](./functions-bindings-expressions-patterns.md)

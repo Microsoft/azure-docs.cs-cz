@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 0be2fecfad4d2a2b829266fa1d9574bcc4c50eee
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 048b53186aa0be388d9d801cd6590d4295a4faa7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376671"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353166"
 ---
 # <a name="plan-your-qna-maker-app"></a>Plánování aplikace QnA Maker
 
@@ -94,13 +94,13 @@ V rámci stejného QnA Maker prostředku teď můžete mít základy znalostní 
 
 ### <a name="ingest-data-sources"></a>Přijímání zdrojů dat
 
-K vytvoření znalostní báze můžete použít jeden z následujících zpracovaných [zdrojů dat](knowledge-base.md) :
+K vytvoření znalostní báze můžete použít jeden z následujících zpracovaných [zdrojů dat](../index.yml) :
 
 * Veřejná adresa URL
 * Privátní adresa URL SharePointu
 * Soubor
 
-Proces přijímání převede [podporované typy obsahu](content-types.md) na Markdownu. Všechny další úpravy *odpovědi* se provádí pomocí Markdownu. Po vytvoření znalostní báze můžete [QnA páry](question-answer-set.md) upravovat na portálu QnA maker s [bohatým vytvářením textu](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer).
+Proces přijímání převede [podporované typy obsahu](../index.yml) na Markdownu. Všechny další úpravy *odpovědi* se provádí pomocí Markdownu. Po vytvoření znalostní báze můžete [QnA páry](question-answer-set.md) upravovat na portálu QnA maker s [bohatým vytvářením textu](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer).
 
 ### <a name="data-format-considerations"></a>Požadavky na formát dat
 
@@ -124,17 +124,17 @@ Měli byste navrhnout svůj postup konverzace s použitím smyčky, aby uživate
 
 Spolupracovníci můžou být jiní vývojáři, kteří sdílejí úplný vývojový zásobník aplikace znalostní báze Knowledge Base nebo můžou být omezené jenom na vytváření znalostní báze.
 
-Vytváření znalostí ve znalostní bázi podporuje několik [oprávnění pro přístup na základě rolí](../how-to/collaborate-knowledge-base.md) , které použijete v Azure Portal k omezení rozsahu schopností spolupracovníka.
+Vytváření znalostí ve znalostní bázi podporuje několik [oprávnění pro přístup na základě rolí](../index.yml) , které použijete v Azure Portal k omezení rozsahu schopností spolupracovníka.
 
 ## <a name="integration-with-client-applications"></a>Integrace s klientskými aplikacemi
 
-Integrace s [klientskými aplikacemi](integration-with-other-applications.md) je zajištěna odesláním dotazu do koncového bodu modulu runtime předpovědi. Do vašeho koncového bodu webové aplikace QnA Maker se pošle dotaz do konkrétní znalostní báze se žádostí o sadu SDK nebo na základě REST.
+Integrace s [klientskými aplikacemi](../index.yml) je zajištěna odesláním dotazu do koncového bodu modulu runtime předpovědi. Do vašeho koncového bodu webové aplikace QnA Maker se pošle dotaz do konkrétní znalostní báze se žádostí o sadu SDK nebo na základě REST.
 
 Aby klientská aplikace správně ověřovala požadavky klienta, musí odeslat správné přihlašovací údaje a ID znalostní báze. Pokud používáte Azure Bot Service, nakonfigurujte tato nastavení jako součást konfigurace robota v Azure Portal.
 
 ### <a name="conversation-flow-in-a-client-application"></a>Tok konverzace v klientské aplikaci
 
-Tok konverzací v [klientské aplikaci](integration-with-other-applications.md), jako je třeba robot Azure, může vyžadovat funkčnost před a po interakci se znalostní bázi.
+Tok konverzací v [klientské aplikaci](../index.yml), jako je třeba robot Azure, může vyžadovat funkčnost před a po interakci se znalostní bázi.
 
 Podporuje vaše klientská aplikace tok konverzace, a to poskytnutím náhradních prostředků pro zpracování následných výzev nebo zahrnutí funkce CHITEST-CHITEST? V takovém případě si tyto návrhy Navrhněte a ujistěte se, že dotaz klientské aplikace je správně zpracován jinou službou nebo při odeslání do znalostní báze.
 
@@ -152,7 +152,7 @@ QnA Maker využívá _aktivní učení_ k vylepšení znalostní báze tím, že
 
 ### <a name="providing-a-default-answer"></a>Zadání výchozí odpovědi
 
-Pokud vaše znalostní báze nenajde odpověď, vrátí _výchozí odpověď_. Tato odpověď se dá nakonfigurovat na stránce **Nastavení** na portálu QnA maker nebo v [rozhraních API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body).
+Pokud vaše znalostní báze nenajde odpověď, vrátí _výchozí odpověď_. Tato odpověď se dá nakonfigurovat na stránce **Nastavení** na portálu QnA maker nebo v [rozhraních API](/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body).
 
 Tato výchozí odpověď se liší od výchozí odpovědi Azure bot. Výchozí odpověď pro Azure bot se konfiguruje v Azure Portal jako součást nastavení konfigurace. Vrátí se, pokud se prahová hodnota skóre nesplní.
 
@@ -197,7 +197,7 @@ Všechny dotazy do znalostní báze jsou uloženy v Application Insights. Využi
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
 
-Ve spravovaném nasazení se telemetrie nabízí prostřednictvím [služby Azure monitor](https://docs.microsoft.com/azure/azure-monitor/). Využijte naše [Nejčastější dotazy](../how-to/get-analytics-knowledge-base.md) a pochopte metriky.
+Ve spravovaném nasazení se telemetrie nabízí prostřednictvím [služby Azure monitor](../../../azure-monitor/index.yml). Využijte naše [Nejčastější dotazy](../how-to/get-analytics-knowledge-base.md) a pochopte metriky.
 
 
 ---
@@ -217,7 +217,7 @@ Každý pár může obsahovat:
 
 ### <a name="devops-development"></a>Vývoj DevOps
 
-Vývoj znalostní báze pro vložení do kanálu DevOps vyžaduje, aby znalostní báze byla během [dávkového testování](../quickstarts/batch-testing.md)izolovaná.
+Vývoj znalostní báze pro vložení do kanálu DevOps vyžaduje, aby znalostní báze byla během [dávkového testování](../index.yml)izolovaná.
 
 Znalostní báze sdílí index Kognitivní hledání se všemi ostatními základy znalostní báze na prostředku QnA Maker. I když je znalostní báze izolována oddílem, sdílení indexu může v porovnání s publikovanou znalostní báze způsobit rozdíl ve skóre.
 

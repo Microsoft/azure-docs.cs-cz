@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: c2a49e10f4407c59a8e4e2bfbb78d889560c7136
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 3bd3ce63339f7eecef520a5496e5c4a3a64efd18
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925013"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356558"
 ---
 > [!IMPORTANT]
 > * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Další informace najdete v referenční dokumentaci níže. 
@@ -26,8 +26,8 @@ ms.locfileid: "92925013"
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Aktuální verze [Node.js](https://nodejs.org/)
-* Objekt blob Azure Storage, který obsahuje sadu školicích dat. Tipy a možnosti pro sestavení sady školicích dat najdete v tématu [Vytvoření školicích dat sady pro vlastní model](../../build-training-data-set.md) . Pro účely tohoto rychlého startu můžete použít soubory ve složce **výuka** [ukázkové sady dat](https://go.microsoft.com/fwlink/?linkid=2090451) (stažení a extrakce *sample_data.zip* ).
-* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" vytvořte prostředek pro rozpoznávání formulářů "  target="_blank"> vytvořením prostředku pro rozpoznávání formulářů <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku** .
+* Objekt blob Azure Storage, který obsahuje sadu školicích dat. Tipy a možnosti pro sestavení sady školicích dat najdete v tématu [Vytvoření školicích dat sady pro vlastní model](../../build-training-data-set.md) . Pro účely tohoto rychlého startu můžete použít soubory ve složce **výuka** [ukázkové sady dat](https://go.microsoft.com/fwlink/?linkid=2090451) (stažení a extrakce *sample_data.zip*).
+* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" vytvořte prostředek pro rozpoznávání formulářů "  target="_blank"> vytvořením prostředku pro rozpoznávání formulářů <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
     * K připojení aplikace k rozhraní API pro rozpoznávání formulářů budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
@@ -70,9 +70,9 @@ Vytvořte proměnné pro koncový bod a klíč Azure prostředku.
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_creds)]
 
 > [!IMPORTANT]
-> Přejděte na Azure Portal. Pokud prostředek [název produktu], který jste vytvořili v části **předpoklady** , se úspěšně nasadil, klikněte v části **Další kroky** na tlačítko **Přejít k prostředku** . Klíč a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků** . 
+> Přejděte na Azure Portal. Pokud prostředek [název produktu], který jste vytvořili v části **předpoklady** , se úspěšně nasadil, klikněte v části **Další kroky** na tlačítko **Přejít k prostředku** . Klíč a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků**. 
 >
-> Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Další informace najdete v článku o [zabezpečení](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) Cognitive Services.
+> Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Další informace najdete v článku o [zabezpečení](../../../cognitive-services-security.md) Cognitive Services.
 
 ## <a name="object-model"></a>Objektový model 
 
@@ -120,7 +120,7 @@ Ověřte objekt klienta pomocí definovaných proměnných předplatného. Použ
 ## <a name="get-assets-for-testing"></a>Získat prostředky pro testování
 
 Také budete muset přidat odkazy na adresy URL pro školení a testování dat.
-* Pokud chcete načíst adresu URL SAS pro vlastní model data školení, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis** . Ujistěte se, že jsou zaškrtnutá oprávnění **číst** a **Zobrazit seznam** , a klikněte na **vytvořit** . Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tento formát: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* Pokud chcete načíst adresu URL SAS pro vlastní model data školení, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Ujistěte se, že jsou zaškrtnutá oprávnění **číst** a **Zobrazit seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tento formát: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 * Použijte ukázku z a příjem fotografií, které jsou uvedené v následujících ukázkách (k dispozici na [GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/test-assets)), nebo můžete pomocí výše uvedeného postupu získat adresu URL SAS jednotlivého dokumentu v úložišti objektů BLOB. 
 
 
@@ -132,7 +132,7 @@ Nástroj pro rozpoznávání formulářů můžete použít k rozpoznávání ta
 
 
 > [!TIP]
-> Můžete také získat obsah z místního souboru. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) , jako je například **beginRecognizeContent** . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) , kde najdete scénáře týkající se místních imagí.
+> Můžete také získat obsah z místního souboru. Podívejte se na metody [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) , jako je například **beginRecognizeContent**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) , kde najdete scénáře týkající se místních imagí.
 
 ### <a name="output"></a>Výstup
 
@@ -159,7 +159,7 @@ Chcete-li rozpoznat potvrzení z identifikátoru URI, použijte `beginRecognizeR
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
 
 > [!TIP]
-> Můžete také rozpoznat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) , jako je například **beginRecognizeReceipts** . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) , kde najdete scénáře týkající se místních imagí.
+> Můžete také rozpoznat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) , jako je například **beginRecognizeReceipts**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) , kde najdete scénáře týkající se místních imagí.
 
 ### <a name="output"></a>Výstup
 
@@ -279,7 +279,7 @@ Použijete `beginRecognizeCustomFormsFromUrl` metodu. Vrácená hodnota je kolek
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_analyze)]
 
 > [!TIP]
-> Můžete také analyzovat místní soubory. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) , jako je například **beginRecognizeCustomForms** . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) , kde najdete scénáře týkající se místních imagí.
+> Můžete také analyzovat místní soubory. Podívejte se na metody [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) , jako je například **beginRecognizeCustomForms**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) , kde najdete scénáře týkající se místních imagí.
 
 
 ### <a name="output"></a>Výstup

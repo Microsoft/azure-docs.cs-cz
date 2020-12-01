@@ -8,19 +8,19 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 3894bf046ed4ee3f068e43dbc5bc5b7f2a1002b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3212acd5015edbb639b8904b885c718d654e5b4
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81681073"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356257"
 ---
 Tato část popisuje, jak provést následující operace úprav pro přímý partnerský vztah.
 
 ### <a name="add-direct-peering-connections"></a>Přidat připojení s přímým partnerským vztahem
 1. Vyberte tlačítko **+ Přidat připojení** a nakonfigurujte nové připojení partnerského vztahu.
     > [!div class="mx-imgBorder"]
-    > ![Zobrazení prostředků partnerského vztahu](../media/setup-direct-modify-addconnection.png)
+    > ![Stránka AshburnPeering-Connections obsahuje seznam připojení. Tlačítko + Přidat připojení je zvýrazněné.](../media/setup-direct-modify-addconnection.png)
 
 1. Vyplňte formulář **přímého partnerského připojení** a vyberte **Uložit**. Nápovědu ke konfiguraci připojení partnerských vztahů najdete v části Postup vytvoření a zřízení přímého partnerského vztahu.
     > [!div class="mx-imgBorder"]

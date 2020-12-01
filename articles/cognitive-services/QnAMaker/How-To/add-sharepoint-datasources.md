@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 0f49621d44b99412b9a6ab0360c30c894a71e5d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c231ac95841043e5576f064e683dd86d9695b108
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776863"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353183"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Přidání zabezpečeného zdroje dat SharePointu do znalostní báze
 
@@ -27,7 +27,7 @@ Pokud správce znalostní báze QnA Maker Knowledge Base není správce služby 
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>Přidání podporovaných typů souborů do znalostní báze Knowledge Base
 
-Z webu služby SharePoint do znalostní báze můžete přidat všechny [typy souborů](../Concepts/content-types.md) podporované QnA maker. Je možné, že budete muset udělit [oprávnění](#permissions) , pokud je prostředek souboru zabezpečený.
+Z webu služby SharePoint do znalostní báze můžete přidat všechny [typy souborů](../index.yml) podporované QnA maker. Je možné, že budete muset udělit [oprávnění](#permissions) , pokud je prostředek souboru zabezpečený.
 
 1. Z knihovny s webem služby SharePoint vyberte nabídku se třemi tečkami v souboru `...` .
 1. Zkopírujte adresu URL souboru.
@@ -119,7 +119,7 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
     [![Hledat QnAMakerPortalSharePoint v seznamu podnikových aplikací](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
 
-1. V části **zabezpečení**pokračujte na **oprávnění**. Vyberte **udělit souhlas správce pro organizaci**.
+1. V části **zabezpečení** pokračujte na **oprávnění**. Vyberte **udělit souhlas správce pro organizaci**.
 
     [![Vybrat ověřeného uživatele pro správce služby Active Directory](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
 
@@ -156,7 +156,7 @@ Use the following steps to transform the SharePoint URL into a sharing token.
 
 ### Add or update a SharePoint File URI to your knowledge base
 
-Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileuri` in the QnA Maker API for [adding a knowledge base](https://go.microsoft.com/fwlink/?linkid=2092179) or [updating a knowledge base](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update). The following fields are mandatory: name, fileuri, filename, source.
+Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileuri` in the QnA Maker API for [adding a knowledge base](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) or [updating a knowledge base](/rest/api/cognitiveservices/qnamaker/knowledgebase/update). The following fields are mandatory: name, fileuri, filename, source.
 
 ```
 {
@@ -188,4 +188,4 @@ Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileu
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Spolupráce na znalostní bázi](collaborate-knowledge-base.md)
+> [Spolupráce na znalostní bázi](../index.yml)

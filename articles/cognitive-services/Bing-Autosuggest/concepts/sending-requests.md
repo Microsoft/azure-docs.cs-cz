@@ -10,19 +10,19 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: a42b282ac2c42480473186f90a542e33781c8a68
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: dd845c0fb877afa76b84eb5c2d86392f763eccf7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364033"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353387"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>Odesílání požadavků do rozhraní API pro automatické návrhy Bingu.
 
 > [!WARNING]
-> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 > Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
-> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Pokud vaše aplikace odesílá dotazy do některého z rozhraní API pro vyhledávání Bingu, můžete pomocí rozhraní API pro automatické návrhy Bingu vylepšit možnosti vyhledávání vašich uživatelů. Rozhraní API pro automatické návrhy Bingu vrátí seznam navrhovaných dotazů na základě částečného řetězce dotazu ve vyhledávacím poli. Do vyhledávacího pole ve vaší aplikaci se jako znaky zadávají v rozevíracím seznamu, kde můžete zobrazit návrhy. V tomto článku se dozvíte víc o odesílání požadavků do tohoto rozhraní API. 
 
@@ -110,7 +110,7 @@ Následující skupina návrhů webu představuje odpověď na výše uvedený p
 
 Pole `displayText` obsahuje navrhovaný dotaz, který můžete použít k vyplnění rozevíracího seznamu vašeho vyhledávacího pole. Musíte zobrazit všechny návrhy, které odpověď obsahuje, v uvedeném pořadí.  
 
-Pokud uživatel vybere dotaz z rozevíracího seznamu, můžete jej použít k volání jedné z [rozhraní API pro vyhledávání Bingu](../../bing-web-search/bing-api-comparison.md?bc=%252fen-us%252fazure%252fbread%252ftoc.json&toc=%252fen-us%252fazure%252fcognitive-services%252fbing-autosuggest%252ftoc.json) a zobrazení výsledků sami nebo můžete uživatele odeslat na stránku výsledků Bingu pomocí vráceného `url` pole.
+Pokud uživatel vybere dotaz z rozevíracího seznamu, můžete jej použít k volání jedné z [rozhraní API pro vyhledávání Bingu](../../bing-web-search/bing-api-comparison.md?bc=%2fen-us%2fazure%2fbread%2ftoc.json&toc=%2fen-us%2fazure%2fcognitive-services%2fbing-autosuggest%2ftoc.json) a zobrazení výsledků sami nebo můžete uživatele odeslat na stránku výsledků Bingu pomocí vráceného `url` pole.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 

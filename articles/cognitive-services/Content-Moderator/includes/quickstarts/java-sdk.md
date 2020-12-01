@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 6f5d1fd8a179f88677ddd6d7b1875f60836ade51
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 30360253c0b1aa34c4af1e5efdf3cf9b4d8baaa0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925021"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356490"
 ---
 Začněte s klientskou knihovnou Azure Content Moderator pro Java. Pomocí těchto kroků nainstalujete balíček Maven a vyzkoušíte ukázkový kód pro základní úlohy. 
 
@@ -48,17 +48,17 @@ V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresá�
 mkdir myapp && cd myapp
 ```
 
-Spusťte `gradle init` příkaz z pracovního adresáře. Tento příkaz vytvoří základní soubory sestavení pro Gradle, včetně *Build. Gradle. kts* , který se používá za běhu k vytvoření a konfiguraci vaší aplikace.
+Spusťte `gradle init` příkaz z pracovního adresáře. Tento příkaz vytvoří základní soubory sestavení pro Gradle, včetně *Build. Gradle. kts*, který se používá za běhu k vytvoření a konfiguraci vaší aplikace.
 
 ```console
 gradle init --type basic
 ```
 
-Po zobrazení výzvy k výběru **DSL** vyberte **Kotlin** .
+Po zobrazení výzvy k výběru **DSL** vyberte **Kotlin**.
 
 ## <a name="install-the-client-library"></a>Instalace klientské knihovny
 
-Vyhledejte *Build. Gradle. kts* a otevřete ho pomocí vašeho preferovaného integrovaného vývojového prostředí (IDE) nebo textového editoru. Pak zkopírujte do následující konfigurace sestavení. Tato konfigurace definuje projekt jako aplikaci Java, jejíž vstupní bod je třídou **ContentModeratorQuickstart** . Importuje knihovnu klienta Content Moderator a také sadu SDK GSON pro serializaci JSON.
+Vyhledejte *Build. Gradle. kts* a otevřete ho pomocí vašeho preferovaného integrovaného vývojového prostředí (IDE) nebo textového editoru. Pak zkopírujte do následující konfigurace sestavení. Tato konfigurace definuje projekt jako aplikaci Java, jejíž vstupní bod je třídou **ContentModeratorQuickstart**. Importuje knihovnu klienta Content Moderator a také sadu SDK GSON pro serializaci JSON.
 
 ```kotlin
 plugins {
@@ -89,7 +89,7 @@ V pracovním adresáři spusťte následující příkaz, který vytvoří zdroj
 mkdir -p src/main/java
 ```
 
-Přejděte do nové složky a vytvořte soubor s názvem *ContentModeratorQuickstart. Java* . Otevřete ho v preferovaném editoru nebo integrovaném vývojovém prostředí a přidejte následující `import` příkazy:
+Přejděte do nové složky a vytvořte soubor s názvem *ContentModeratorQuickstart. Java*. Otevřete ho v preferovaném editoru nebo integrovaném vývojovém prostředí a přidejte následující `import` příkazy:
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imports)]
 
@@ -101,9 +101,9 @@ V třídě **ContentModeratorQuickstart** aplikace vytvořte proměnné pro klí
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_creds)]
 
 > [!IMPORTANT]
-> Přejděte na Azure Portal. Pokud prostředek [název produktu], který jste vytvořili v části **předpoklady** , se úspěšně nasadil, klikněte v části **Další kroky** na tlačítko **Přejít k prostředku** . Klíč a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků** . 
+> Přejděte na Azure Portal. Pokud prostředek [název produktu], který jste vytvořili v části **předpoklady** , se úspěšně nasadil, klikněte v části **Další kroky** na tlačítko **Přejít k prostředku** . Klíč a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků**. 
 >
-> Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Další informace najdete v článku o [zabezpečení](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) Cognitive Services.
+> Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Další informace najdete v článku o [zabezpečení](../../../cognitive-services-security.md) Cognitive Services.
 
 V metodě **Main** aplikace přidejte volání metod používaných v rámci tohoto rychlého startu. Později je budete definovat.
 
@@ -114,7 +114,7 @@ V metodě **Main** aplikace přidejte volání metod používaných v rámci toh
 
 Následující třídy zpracovávají některé hlavní funkce klientské knihovny Content Moderator Java.
 
-|Název|Description|
+|Název|Popis|
 |---|---|
 |[ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable)|Tato třída je potřebná pro všechny funkce Content Moderator. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd.|
 |[ImageModeration](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations?view=azure-java-stable)|Tato třída poskytuje funkce pro analýzu obrázků pro obsah pro dospělé, osobní údaje nebo lidské obličeje.|
@@ -173,7 +173,7 @@ Nakonec uložte vrácené informace v `EvaluationData` seznamu.
 
 ### <a name="print-results"></a>Vytisknout výsledky
 
-Po `while` smyčce přidejte následující kód, který vytiskne výsledky do konzoly a do výstupního souboru, *Src/Main/Resources/ModerationOutput.jsv* .
+Po `while` smyčce přidejte následující kód, který vytiskne výsledky do konzoly a do výstupního souboru, *Src/Main/Resources/ModerationOutput.jsv*.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_printdata)]
 

@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 48162609c27372937337be87d4b8f78af35a46d5
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: d53863ccf71970cca3900707c844a2e5add050fa
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95862753"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356507"
 ---
 > [!IMPORTANT]
 > Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti.
@@ -116,7 +116,7 @@ V třídě **FormRecognizer** aplikace vytvořte proměnné pro klíč a koncov�
 > [!IMPORTANT]
 > Přejděte na Azure Portal. Pokud prostředek [název produktu], který jste vytvořili v části **předpoklady** , se úspěšně nasadil, klikněte v části **Další kroky** na tlačítko **Přejít k prostředku** . Klíč a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků**. 
 >
-> Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Další informace najdete v článku o [zabezpečení](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) Cognitive Services.
+> Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Další informace najdete v článku o [zabezpečení](../../../cognitive-services-security.md) Cognitive Services.
 
 V metodě **Main** aplikace přidejte volání metod používaných v rámci tohoto rychlého startu. Později je budete definovat. Také budete muset přidat odkazy na adresy URL pro školení a testování dat.
 
@@ -199,7 +199,7 @@ Pro rozpoznání obsahu souboru v dané adrese URL použijte metodu **beginRecog
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_getcontent_call)]
 
 > [!TIP]
-> Můžete také získat obsah z místního souboru. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) , jako je například **beginRecognizeContent**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) , kde najdete scénáře týkající se místních imagí.
+> Můžete také získat obsah z místního souboru. Podívejte se na metody [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) , jako je například **beginRecognizeContent**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) , kde najdete scénáře týkající se místních imagí.
 
 Vrácená hodnota je kolekce objektů **FormPage** : jedna pro každou stránku v odeslaném dokumentu. Následující kód projde tyto objekty a vytiskne extrahované páry klíč/hodnota a data tabulky.
 
@@ -232,7 +232,7 @@ Chcete-li rozpoznat potvrzení z identifikátoru URI, použijte metodu **beginRe
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_call)]
 
 > [!TIP]
-> Můžete také rozpoznat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) , jako je například **beginRecognizeReceipts**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) , kde najdete scénáře týkající se místních imagí.
+> Můžete také rozpoznat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) , jako je například **beginRecognizeReceipts**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) , kde najdete scénáře týkající se místních imagí.
 
 Vrácená hodnota je kolekce objektů **RecognizedReceipt** : jedna pro každou stránku v odeslaném dokumentu. Další blok kódu prochází potvrzením a tiskne jejich podrobnosti do konzoly.
 
@@ -272,7 +272,7 @@ K rozpoznání vizitek z adresy URL použijte `beginRecognizeBusinessCardsFromUr
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_call)]
 
 > [!TIP]
-> Můžete také rozpoznat obrázky místních obchodních karet. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) , jako je například **beginRecognizeBusinessCards**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) , kde najdete scénáře týkající se místních imagí.
+> Můžete také rozpoznat obrázky místních obchodních karet. Podívejte se na metody [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) , jako je například **beginRecognizeBusinessCards**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) , kde najdete scénáře týkající se místních imagí.
 
 Vrácená hodnota je kolekce objektů **RecognizedForm** : jedna pro každou kartu v dokumentu. Následující kód zpracuje vizitku na daném identifikátoru URI a vytiskne hlavní pole a hodnoty do konzoly.
 
@@ -287,7 +287,7 @@ K rozpoznání vizitek z adresy URL použijte `beginRecognizeInvoicesFromUrl` me
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_call)]
 
 > [!TIP]
-> Můžete také rozpoznat místní faktury. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) , jako je například **beginRecognizeInvoices**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) , kde najdete scénáře týkající se místních imagí.
+> Můžete také rozpoznat místní faktury. Podívejte se na metody [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) , jako je například **beginRecognizeInvoices**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) , kde najdete scénáře týkající se místních imagí.
 
 Vrácená hodnota je kolekce objektů **RecognizedForm** : jedna pro každou fakturu v dokumentu. Následující kód zpracuje vizitku na daném identifikátoru URI a vytiskne hlavní pole a hodnoty do konzoly.
 
@@ -384,7 +384,7 @@ Použijete metodu **beginRecognizeCustomFormsFromUrl** .
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_analyze_call)]
 
 > [!TIP]
-> Můžete také analyzovat místní soubor. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) , jako je například **beginRecognizeCustomForms**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) , kde najdete scénáře týkající se místních imagí.
+> Můžete také analyzovat místní soubor. Podívejte se na metody [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) , jako je například **beginRecognizeCustomForms**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) , kde najdete scénáře týkající se místních imagí.
 
 Vrácená hodnota je kolekce objektů **RecognizedForm** : jedna pro každou stránku v odeslaném dokumentu. Následující kód vytiskne výsledky analýzy do konzoly. Vytiskne všechna rozpoznaná pole a odpovídající hodnotu spolu s hodnocením spolehlivosti.
 

@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 keywords: dolování textu, analýza míněníí, analýza textu
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 14dfa6111bbda8750b175c8c9b2a96321e1af2c5
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 68f892fea01582b16dad5efd8c86dbf0b578e50f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519400"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353047"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Co je rozhraní API pro analýzu textu?
 
@@ -35,11 +35,11 @@ Tato funkce poskytuje popisky mínění (například "negativní", "neutrální"
 
 Počínaje verzí v 3.1 verze Preview je dolování stanovisek funkcí Analýza mínění. Tato funkce také označovaná jako Analýza mínění založená na aspektech při zpracování přirozeného jazyka (NLP). Tato funkce poskytuje podrobnější informace o stanoviscích souvisejících s aspekty (jako jsou atributy produktů nebo služeb) v textu.
 
-## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
+## <a name="key-phrase-extraction"></a>extrakce klíčových frází,
 
 Pomocí [extrakce klíčových frází](how-tos/text-analytics-how-to-keyword-extraction.md) můžete rychle identifikovat hlavní koncepty v textu. Například v textu "potravina byla Delicious a dostali jsme milované pracovníky", Extrakce klíčových frází vrátí hlavní body pro komunikaci: "jídla" a "milované pracovníky".
 
-## <a name="language-detection"></a>Rozpoznávání jazyka
+## <a name="language-detection"></a>rozpoznávání jazyka,
 
 Rozpoznání jazyka může [detekovat jazyk, ve kterém je vstupní text napsán](how-tos/text-analytics-how-to-language-detection.md) , a nahlásit jeden kód jazyka pro každý dokument odeslaný v žádosti v široké škále jazyků, variant, dialektů a některých regionálních/kulturních jazyků. Kód jazyka se spáruje s skóre spolehlivosti.
 
@@ -82,11 +82,11 @@ Můžete začít používat rozhraní API pro analýzu textu v procesech, a to i
 
 * Vyžaduje se minimální programování:
     * [Extrakce informací v Excelu pomocí Analýza textu a automatizace](tutorials/extract-excel-information.md)
-    * [Použití rozhraní API pro analýzu textu a MS Flow k identifikaci mínění komentářů ve skupině Yammeru](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
+    * [Použití rozhraní API pro analýzu textu a MS Flow k identifikaci mínění komentářů ve skupině Yammeru](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
     * [Integrace Power BI s rozhraní API pro analýzu textu k analýze názoru zákazníků](tutorials/tutorial-power-bi-key-phrases.md)
 * Doporučené programovací prostředí:
-    * [Analýza mínění na streamovaných datech s využitím Azure Databricks](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
-    * [Sestavení aplikace v baňce pro překlad textu, analýza mínění a syntetizace řeči](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
+    * [Analýza mínění na streamovaných datech s využitím Azure Databricks](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
+    * [Sestavení aplikace v baňce pro překlad textu, analýza mínění a syntetizace řeči](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
 
 
 <a name="supported-languages"></a>

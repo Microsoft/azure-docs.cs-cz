@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 10a2ae71d8c26d82a4a730bab3ba16e7c62d1243
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2b27da096ed18170ca8c9d70f31dc955fb74950
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911732"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352826"
 ---
 # <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>Shromažďování vlastních protokolů pomocí agenta Log Analytics v Azure Monitor
 
@@ -30,7 +30,7 @@ Soubory protokolů, které mají být shromažďovány, se musí shodovat s nás
 
 - Soubor protokolu nesmí umožňovat cyklické protokolování nebo otočení v protokolu, kde je soubor přepsán novými položkami.
 - Soubor protokolu musí používat kódování ASCII nebo UTF-8.  Jiné formáty jako UTF-16 se nepodporují.
-- Pro Linux se časové pásmo converesion nepodporuje pro časová razítka v protokolech.
+- Pro Linux se převod časového pásma nepodporuje pro časová razítka v protokolech.
 
 >[!NOTE]
 > V případě, že v souboru protokolu existují duplicitní položky, Azure Monitor bude shromažďovat. Výsledky dotazu ale budou nekonzistentní, kde výsledky filtru zobrazují více událostí, než je počet výsledků. Je důležité, abyste ověřili protokol, abyste zjistili, jestli aplikace, která ji vytvořila, toto chování způsobuje, a pokud je to možné, před vytvořením vlastní definice kolekce protokolů ji vyřešit.  
@@ -78,7 +78,7 @@ Aplikace může například vytvořit soubor protokolu každý den s datem zahrn
 
 Následující tabulka uvádí příklady platných vzorů k určení různých souborů protokolu.
 
-| Description | Cesta |
+| Popis | Cesta |
 |:--- |:--- |
 | Všechny soubory v *c:\Logs.* s příponou. txt v agentovi Windows |C:\Logs. \\ \* . txt |
 | Všechny soubory v *c:\Logs.* s názvem začínajícím protokolem a příponou. txt v agentovi Windows |C:\Logs\log \* . txt |

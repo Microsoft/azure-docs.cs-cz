@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 8e9739b705848edd721c9ebe0d36c25dd5b8d80c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 39b3104f9d6cbc004383bf2c50d07c4dd345fa3c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517771"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353574"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>Kurz: Azure Active Directory integrace se službou UserVoice
 
@@ -30,7 +30,7 @@ Integrace služby UserVoice s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD se službou UserVoice potřebujete následující položky:
 
@@ -130,7 +130,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí služby 
 
 1. V jiném okně webového prohlížeče se přihlaste k webu UserVoice společnosti jako správce.
 
-2. Na panelu nástrojů v horní části klikněte na **Nastavení**a v nabídce vyberte **webový portál** .
+2. Na panelu nástrojů v horní části klikněte na **Nastavení** a v nabídce vyberte **webový portál** .
    
     ![Oddíl nastavení na straně aplikace](./media/uservoice-tutorial/ic777519.png "Nastavení")
 
@@ -156,7 +156,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí služby 
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -180,7 +180,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k UserVoice.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **UserVoice**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **UserVoice**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -241,7 +241,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici UserVoice na přístupovém panelu, měli byste se automaticky přihlásit ke službě UserVoice, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

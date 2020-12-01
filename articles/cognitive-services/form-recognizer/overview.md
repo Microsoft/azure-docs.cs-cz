@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatizované zpracování dat, zpracování dokumentů, automatizované zadávání dat, zpracování formulářů
-ms.openlocfilehash: 05024b8d7f4cf76024d71a79cb1fce489d58ee70
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 39243f4428d055ee5d4491c3e87b4b91213f63f1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519519"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353676"
 ---
 # <a name="what-is-form-recognizer"></a>Co je služba Rozpoznávání formulářů?
 
@@ -76,7 +76,7 @@ Při výuce s povzorovými daty model předává pod dohledem učení o extrakci
 
 Nástroj pro rozpoznávání formulářů používá [rozhraní API pro rozložení](#layout-api) a zjišťuje očekávané velikosti a pozice vytištěných a ručně psaných textových prvků. Pak pomocí uživatelem zadaných popisků zjistí přidružení klíč/hodnota v dokumentech. Doporučujeme použít pět ručně popsaných forem stejného typu (stejné struktury), abyste mohli začít při výuce nového modelu a přidávat další označená data, aby se zlepšila přesnost modelu.
 
-[Začínáme s visačkami pomocí výukového programu](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
+[Začínáme s visačkami pomocí výukového programu](./quickstarts/label-tool.md)
 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]

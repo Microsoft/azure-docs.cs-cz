@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 789dafc61c89515f4b2ef64933262252d1232f16
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ec509cc04db87602b3e29230253d9b363a5e30d5
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357024"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353914"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>Kurz: Konfigurace Figma pro Automatické zřizování uživatelů
 
@@ -87,7 +87,7 @@ Pokud chcete nakonfigurovat Figma pro Automatické zřizování uživatelů pomo
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Figma** , na panelu výsledků vyberte **Figma** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Figma**, na panelu výsledků vyberte **Figma** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Figma v seznamu výsledků](common/search-new-app.png)
 

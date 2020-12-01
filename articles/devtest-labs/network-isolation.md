@@ -3,12 +3,12 @@ title: Izolace sítě v Azure DevTest Labs
 description: Přečtěte si o izolaci sítě v Azure DevTest Labs.
 ms.topic: article
 ms.date: 08/25/2020
-ms.openlocfilehash: aafa6bf94c7963d69bfb67a28a520b811c4fbacf
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 28bfa048a8a6666deb58a8ecfff38779c91d95b8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149162"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352928"
 ---
 # <a name="network-isolation-in-devtest-labs"></a>Izolace sítě v DevTest Labs
 
@@ -74,7 +74,7 @@ V takovém případě úložiště Azure umožní příchozí připojení z při
 
 Můžete také zvolit automatizaci těchto kroků a nakonfigurovat toto nastavení pro více cvičení. 
 
-[Další informace o správě výchozích pravidel přístupu k síti pro Azure Storage pomocí PowerShellu a rozhraní příkazového řádku](../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#powershell)
+[Další informace o správě výchozích pravidel přístupu k síti pro Azure Storage pomocí PowerShellu a rozhraní příkazového řádku](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#powershell)
 
 ## <a name="things-to-remember-while-using-a-lab-in-a-network-isolated-mode"></a>Při používání testovacího prostředí v izolovaném režimu sítě si pamatujte na to, co je potřeba.
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 5185e7d0bd60eec239f1233db7f9789cbefc2c10
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 83917214705546b21553e997ccab11a7511f77fd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006162"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353302"
 ---
 # <a name="manage-qna-maker-resources"></a>Správa prostředků QnA Maker
 
@@ -81,7 +81,7 @@ Postup při upgradu SKU QnA Maker Management:
 
  Pokud vaše znalostní báze potřebuje k poskytování více požadavků z klientské aplikace, upgradujte si App Service cenovou úroveň.
 
-Můžete [navýšení nebo horizontální navýšení](https://docs.microsoft.com/azure/app-service/manage-scale-up) kapacity App Service.
+Můžete [navýšení nebo horizontální navýšení](../../../app-service/manage-scale-up.md) kapacity App Service.
 
 V Azure Portal klikněte na prostředek App Service a podle potřeby vyberte možnost **horizontální navýšení nebo navýšení** **kapacity.**
 
@@ -114,7 +114,7 @@ Služba App Service, která slouží jako modul runtime předpovědi QnA Maker p
 
 Aby se zajistilo, že se aplikace koncového bodu předpovědi načetla i v případě, že nedochází k provozu, nastavte nečinné na Always On.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte a vyberte službu App Service prostředku QnA Maker. Bude mít stejný název jako prostředek QnA Maker, ale bude mít jiný **typ** App Service.
 1. Najděte **Nastavení** a pak vyberte **Konfigurace**.
 1. V podokně Konfigurace vyberte **Obecná nastavení** a pak najít **vždycky zapnuto** **a jako hodnotu** vyberte.
@@ -154,13 +154,13 @@ Hlavním cílem plánu kontinuity podnikových aplikací je vytvořit odolný ko
 
 Nejdůležitější nápad, jak je znázorněno výše, je následující:
 
-1. Nastavte dvě paralelní [QnA maker služby](set-up-qnamaker-service-azure.md) v [spárovaných oblastech Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+1. Nastavte dvě paralelní [QnA maker služby](set-up-qnamaker-service-azure.md) v [spárovaných oblastech Azure](../../../best-practices-availability-paired-regions.md).
 
 1. [Zálohujte](../../../app-service/manage-backup.md) primární QnA maker App Service a [obnovte](../../../app-service/web-sites-restore.md) ji v sekundární instalaci. Tím se zajistí, že obě nastavení budou fungovat se stejným názvem hostitele a klíči.
 
 1. Udržování primárních a sekundárních indexů Azure Search v synchronizaci. Pomocí ukázky na GitHubu [tady](https://github.com/pchoudhari/QnAMakerBackupRestore) zjistíte, jak zálohovat a obnovit indexy Azure.
 
-1. Zazálohujte Application Insights pomocí [průběžného exportu](../../../application-insights/app-insights-export-telemetry.md).
+1. Zazálohujte Application Insights pomocí [průběžného exportu](../../../azure-monitor/app/export-telemetry.md).
 
 1. Po nastavení primárních a sekundárních zásobníků nakonfigurujte pomocí [Traffic Manageru](../../../traffic-manager/traffic-manager-overview.md) dva koncové body a nastavte metodu směrování.
 
@@ -386,4 +386,4 @@ Pokud odstraníte některý z prostředků Azure, které se používají pro va�
 Přečtěte si další informace o službě [App Service](../../../app-service/index.yml) a [službě vyhledávání](../../../search/index.yml).
 
 > [!div class="nextstepaction"]
-> [Naučte se vytvářet s ostatními](../how-to/collaborate-knowledge-base.md)
+> [Naučte se vytvářet s ostatními](../index.yml)

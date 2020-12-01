@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 397aab743da25da3882c66d0fdf32c4c4d202586
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: fa9723b466045ebe7b932f837e0fa7c45c898b6b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356990"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353880"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>Kurz: Konfigurace iPass SmartConnect pro Automatické zřizování uživatelů
 
@@ -73,7 +73,7 @@ Pokud chcete nakonfigurovat iPass SmartConnect pro Automatické zřizování už
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **IPASS SmartConnect** , na panelu výsledků vyberte **IPASS SmartConnect** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **IPASS SmartConnect**, na panelu výsledků vyberte **IPASS SmartConnect** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![iPass SmartConnect v seznamu výsledků](common/search-new-app.png)
 

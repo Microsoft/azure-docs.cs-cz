@@ -10,25 +10,25 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 489a158c49bc6695a460fdef5b92606335a07ef6
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9dabceda17defb24f2a916cd641f625feb551c6a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94365988"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353285"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>Hledání entit pomocí rozhraní API entity Bingu
 
 > [!WARNING]
-> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 > Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
-> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 ## <a name="suggest-search-terms-with-the-bing-autosuggest-api"></a>Navrhněte hledané výrazy pomocí rozhraní API pro automatické návrhy Bingu
 
 Pokud nabízíte vyhledávací pole, do kterého může uživatel zadat hledaný termín, můžete hledání vylepšit s využitím [rozhraní API pro automatické návrhy Bingu](../../bing-autosuggest/get-suggested-search-terms.md). Toto rozhraní API vrací navrhované řetězce dotazů na základě částečné shody hledaných termínů zadávaných uživatelem.
 
-Jakmile uživatel zadá hledaný termín, před nastavením parametru dotazu [q](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) zakódujte termín s použitím kódování URL. Například, pokud uživatel zadá *Marcus Appel* , nastavte `q` k *Marcus + Appel* nebo *Marcus % 20Appel*.
+Jakmile uživatel zadá hledaný termín, před nastavením parametru dotazu [q](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) zakódujte termín s použitím kódování URL. Například, pokud uživatel zadá *Marcus Appel*, nastavte `q` k *Marcus + Appel* nebo *Marcus % 20Appel*.
 
 Pokud hledaný výraz obsahuje chybu pravopisu, odpověď na vyhledávání obsahuje objekt[QueryContext](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext). Objekt zobrazí původní pravopis a opravený pravopis použitý pro vyhledávání Bingu.
 
@@ -194,7 +194,7 @@ Místa zahrnují restaurace, hotely nebo místní firmy. Pole [EntityPresentatio
 > [!NOTE]
 > Odpovědi na entity podporují různé trhy, ale odpovědi na místa podporují pouze obchodní místa v USA. 
 
-Dotazy na místní entity v okolí jako například *restaurace poblíž* vyžadují zadání polohy uživatele, aby mohly poskytnout přesné výsledky. K určení polohy uživatele byste měli pro své žádosti vždy využívat záhlaví X-Search-Location a X-MSEdge ClientIP. Pokud se Bing domnívá, že je pro dotaz výhodné určení polohy uživatele, nastaví `askUserForLocation` pole [QueryContext](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) na hodnotu **true** (pravda). 
+Dotazy na místní entity v okolí jako například *restaurace poblíž* vyžadují zadání polohy uživatele, aby mohly poskytnout přesné výsledky. K určení polohy uživatele byste měli pro své žádosti vždy využívat záhlaví X-Search-Location a X-MSEdge ClientIP. Pokud se Bing domnívá, že je pro dotaz výhodné určení polohy uživatele, nastaví `askUserForLocation` pole [QueryContext](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) na hodnotu **true**(pravda). 
 
 ```json
 {

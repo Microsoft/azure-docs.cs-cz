@@ -10,26 +10,26 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 90b6619a5a0c3d59b09eeb5a5002d15cf0c21e19
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6141bd67681df757536792981d47756a20ed33db
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095896"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353319"
 ---
 # <a name="share-your-custom-search-instance"></a>Sdílení vlastní instance hledání
 
 > [!WARNING]
-> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 > Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
-> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Sdílením instance s členy vašeho týmu můžete snadno umožnit úpravy a testování založené na spolupráci. Svou instanci můžete sdílet s kýmkoli pomocí své e-mailové adresy. Chcete-li sdílet instanci:
 
 - Přihlášení k [vlastnímu vyhledávání](https://customsearch.ai)
 - Výběr instance vlastního vyhledávání
 - Klikněte na ikonu nastavení (zobrazí se jako ozubené kolo). 
-- V části **sdílet vaši instanci** zadejte e-mailovou adresu osoby, se kterou chcete instanci sdílet, a klikněte na **sdílet** . 
+- V části **sdílet vaši instanci** zadejte e-mailovou adresu osoby, se kterou chcete instanci sdílet, a klikněte na **sdílet**. 
 
 Po přidání e-mailové adresy se přidá do seznamu **instance sdílená se** seznamem. Tento postup opakujte pro každou osobu, se kterou chcete instanci sdílet. 
 
