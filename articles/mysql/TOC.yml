@@ -124,6 +124,8 @@
           href: concepts-supported-versions.md
         - name: Omezení
           href: concepts-limits.md
+        - name: Osvědčené provozní postupy
+          href: concept-operation-excellence-best-practices.md
         - name: Cenové úrovně
           items:
             - name: Cenové úrovně
@@ -195,6 +197,10 @@
             - name: Doporučení k výkonu
               href: concepts-performance-recommendations.md
               displayName: recommendation
+            - name: Osvědčené postupy monitorování
+              href: concept-monitoring-best-practices.md
+            - name: Osvědčené postupy z hlediska výkonu
+              href: concept-performance-best-practices.md
         - name: Vývoj aplikací
           items:
             - name: Přehled vývoje aplikací

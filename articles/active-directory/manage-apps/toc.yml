@@ -192,8 +192,16 @@
           href: application-proxy-remove-personal-data.md
         - name: Konfigurace vlastní domény
           href: application-proxy-configure-custom-domain.md
-        - name: Zabezpečení aplikací starší verze s využitím kontrolerů doručování aplikací nebo sítí
-          href: secure-hybrid-access.md
+        - name: Zabezpečení aplikací starší verze
+          items:
+            - name: Zabezpečený hybridní přístup s využitím Azure AD
+              href: secure-hybrid-access.md
+            - name: Integrace F5 a Azure AD
+              href: f5-aad-integration.md
+            - name: Nasazení F5 BIG-IP VE v Azure IaaS
+              href: f5-bigip-deployment-guide.md
+            - name: F5 Big-IP s využitím Azure AD pro virtuální privátní síť bez hesla
+              href: f5-aad-password-less-vpn.md
         - name: Názorné postupy publikování
           items:
             - name: Integrace s proxy aplikací na serveru NDES

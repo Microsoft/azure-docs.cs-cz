@@ -453,7 +453,7 @@
                       href: ../image-version-vm-powershell.md
                     - name: Ze spravovaného disku nebo snímku
                       href: ../image-version-snapshot-powershell.md
-                    - name: Migrace ze spravované image
+                    - name: Klonování spravované image
                       href: ../image-version-managed-image-powershell.md
                     - name: Kopírování z jiné galerie
                       href: ../image-version-another-gallery-powershell.md
@@ -475,7 +475,7 @@
                       href: ../image-version-vm-cli.md
                     - name: Ze spravovaného disku nebo snímku
                       href: ../image-version-snapshot-cli.md
-                    - name: Migrace ze spravované image
+                    - name: Klonování spravované image
                       href: ../image-version-managed-image-cli.md
                     - name: Kopírování z jiné galerie
                       href: ../image-version-another-gallery-cli.md
@@ -701,7 +701,7 @@
           items:
             - name: Přehled
               href: ../maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Rozhraní příkazového řádku
+            - name: CLI
               href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-control-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json

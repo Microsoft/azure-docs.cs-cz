@@ -50,6 +50,8 @@
           href: costs/manage-automation.md
         - name: Cost Management pro partnery
           href: costs/get-started-partners.md
+        - name: Migrace z vytváření sestav EA na rozhraní API Azure Resource Manageru
+          href: costs/migrate-from-enterprise-reporting-to-azure-resource-manager-apis.md
     - name: Reservations
       items:
         - name: Co jsou rezervace Azure?
@@ -327,7 +329,7 @@
             - name: Azure Synapse Analytics
               href: reservations/prepay-sql-data-warehouse-charges.md?toc=/azure/cost-management-billing/toc.json
             - name: Virtuální počítače
-              href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/cost-management-billing/toc.json
+              href: ../virtual-machines/prepay-reserved-vm-instances.md?toc=%2fazure%2fcost-management-billing%2ftoc.json
         - name: 'Zobrazení, správa a optimalizace po nákupu'
           items:
             - name: Zobrazení rezervací a využití

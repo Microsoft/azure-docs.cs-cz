@@ -47,6 +47,8 @@
           href: how-to-legacy-device-symm-key.md
         - name: Používání vlastních zásad přidělování
           href: tutorial-custom-allocation-policies.md
+        - name: Zřízení několika zařízení X. 509
+          href: tutorial-custom-hsm-enrollment-group-x509.md
     - name: 2. Zřízení zařízení v několika centrech
       items:
         - name: Propojení několika center k DPS
