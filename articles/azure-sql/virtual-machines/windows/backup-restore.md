@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: db270224a753f815a2d94e6a1fa79ebbedf49278
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: f3723c792dfe962f2cbf16e3b167faf66c50a92e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94991532"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327453"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Zálohování a obnovení pro SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -93,7 +93,7 @@ Následující části popisují několik možností ručního zálohování a o
 
 ### <a name="backup-to-attached-disks"></a>Zálohování na připojené disky
 
-V případě SQL Server na virtuálních počítačích Azure můžete použít nativní techniky zálohování a obnovení pomocí připojených disků na virtuálním počítači pro cílové záložní soubory. Existuje ale omezení počtu disků, které můžete připojit k virtuálnímu počítači Azure, a to na základě [velikosti virtuálního počítače](../../../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json). Je také potřeba vzít v úvahu režii správy disků.
+V případě SQL Server na virtuálních počítačích Azure můžete použít nativní techniky zálohování a obnovení pomocí připojených disků na virtuálním počítači pro cílové záložní soubory. Existuje ale omezení počtu disků, které můžete připojit k virtuálnímu počítači Azure, a to na základě [velikosti virtuálního počítače](../../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Je také potřeba vzít v úvahu režii správy disků.
 
 Příklad, jak ručně vytvořit úplnou zálohu databáze pomocí SQL Server Management Studio (SSMS) nebo Transact-SQL, najdete v tématu [vytvoření úplné zálohy databáze](/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server).
 

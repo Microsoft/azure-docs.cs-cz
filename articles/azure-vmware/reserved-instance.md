@@ -3,12 +3,12 @@ title: Úspora nákladů pomocí rezervované instance řešení Azure VMware
 description: Naučte se koupit rezervovanou instanci pro řešení Azure VMware.
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: b57e985068adabccecbbdb43dd11bcf6596bf422
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 80780e9718001893b6960220b5004c1c29b2fec5
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578945"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327393"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Úspora nákladů pomocí řešení Azure VMware
 
@@ -22,7 +22,7 @@ Rezervované instance jsou k dispozici s některými výjimkami.
 
 -   **Nedostatečná kvóta** – rezervace vymezená u jednoho nebo sdíleného předplatného musí mít v předplatném k dispozici kvótu hostitelů pro novou rezervovanou instanci. K vyřešení tohoto problému můžete [vytvořit žádost o zvýšení kvóty](enable-azure-vmware-solution.md) .
 
--   **Nárok na nabídku** – budete potřebovat [Azure smlouva Enterprise (EA)](../cost-management-billing/manage/ea-portal-agreements.md) s Microsoftem.
+-   **Nárok na nabídku**– budete potřebovat [Azure smlouva Enterprise (EA)](../cost-management-billing/manage/ea-portal-agreements.md) s Microsoftem.
 
 -   **Omezení kapacity** – Azure omezuje nákup nových rezervací pro skladové jednotky hostitele řešení Azure VMware z důvodu nízké kapacity v oblasti.
 
@@ -55,15 +55,15 @@ Tyto požadavky se vztahují k zakoupení rezervované instance vyhrazeného hos
    | Pole        |  Popis |
    | ------------ | ------------ |
    | Předplatné | Předplatné použité pro platbu za rezervaci. Náklady na kapacitu se účtují pomocí způsobu platby zvoleného pro toto předplatné. Typ předplatného musí být smlouva Enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P), smlouva o zákaznících Microsoftu nebo individuální předplatné s tarify průběžných plateb (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). Poplatky se strhávají z peněžního zůstatku, pokud je k dispozici, nebo se účtují jako nadlimitní využití. U předplatného s tarify průběžných plateb se poplatky účtují na platební kartu předplatného nebo na platební metodu faktury. |
-   | Obor        | Rozsah rezervace může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete:<br><ul><li><b>Rozsah jedné skupiny prostředků</b> – aplikuje slevu na rezervované prostředky jenom na ty, které jsou ve vybrané skupině prostředků.</li><li><b>Rozsah jednoho předplatného</b> – aplikuje slevu na rezervované prostředky ve vybraném předplatném.</li><li><b>Sdílený rozsah</b> – použije slevu rezervace na odpovídající prostředky v oprávněných předplatných, která jsou v účetním kontextu. Pro zákazníky se smlouvou EA je účetním kontextem registrace. U individuálních předplatných se sazbami pro průběžné platby jsou rozsahem fakturace všechna oprávněná předplatná vytvořená správcem účtu.</li></ul>       |
+   | Rozsah        | Rozsah rezervace může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete:<br><ul><li><b>Rozsah jedné skupiny prostředků</b> – aplikuje slevu na rezervované prostředky jenom na ty, které jsou ve vybrané skupině prostředků.</li><li><b>Rozsah jednoho předplatného</b> – aplikuje slevu na rezervované prostředky ve vybraném předplatném.</li><li><b>Sdílený rozsah</b> – použije slevu rezervace na odpovídající prostředky v oprávněných předplatných, která jsou v účetním kontextu. Pro zákazníky se smlouvou EA je účetním kontextem registrace. U individuálních předplatných se sazbami pro průběžné platby jsou rozsahem fakturace všechna oprávněná předplatná vytvořená správcem účtu.</li></ul>       |
    | Oblast       | Oblast Azure, která je pokrytá rezervací.   |
    | Velikost hostitele    | AV36    |
-   | Termín         | Jeden rok nebo tři roky.  |
+   | Označení         | Jeden rok nebo tři roky.  |
    | Množství     | Počet instancí, které se mají koupit v rámci rezervace Množství je počet spuštěných hostitelů řešení Azure VMware, které mohou získat fakturační slevu.    |
 
 ### <a name="buy-reserved-instances-for-a-csp-subscription"></a>Nákup rezervovaných instancí pro předplatné CSP
 
-Poskytovatelé CSP, kteří chtějí koupit rezervované instance pro své zákazníky, musí v [dokumentaci partnerského centra](https://docs.microsoft.com/partner-center/azure-plan-manage)použít proceduru **správce jménem** (administrate). Další informace najdete ve videu [správce za uživatele (administrate)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) .
+Poskytovatelé CSP, kteří chtějí koupit rezervované instance pro své zákazníky, musí v [dokumentaci partnerského centra](/partner-center/azure-plan-manage)použít proceduru **správce jménem** (administrate). Další informace najdete ve videu [správce za uživatele (administrate)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) .
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com).
 
@@ -84,10 +84,10 @@ Poskytovatelé CSP, kteří chtějí koupit rezervované instance pro své záka
    | Pole        |  Popis |
    | ------------ | ------------ |
    | Předplatné | Předplatné použité pro platbu za rezervaci. Náklady na kapacitu se účtují pomocí způsobu platby zvoleného pro toto předplatné. Typ předplatného musí mít nárok na jeden, což je v tomto případě předplatné CSP.|
-   | Obor        | Rozsah rezervace může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete:<br><ul><li><b>Rozsah jedné skupiny prostředků</b> – aplikuje slevu na rezervované prostředky jenom na ty, které jsou ve vybrané skupině prostředků.</li><li><b>Rozsah jednoho předplatného</b> – aplikuje slevu na rezervované prostředky ve vybraném předplatném.</li><li><b>Sdílený rozsah</b> – použije slevu rezervace na odpovídající prostředky v oprávněných předplatných, která jsou v účetním kontextu. Pro zákazníky se smlouvou EA je účetním kontextem registrace. U individuálních předplatných se sazbami pro průběžné platby jsou rozsahem fakturace všechna oprávněná předplatná vytvořená správcem účtu.</li></ul>       |
+   | Rozsah        | Rozsah rezervace může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete:<br><ul><li><b>Rozsah jedné skupiny prostředků</b> – aplikuje slevu na rezervované prostředky jenom na ty, které jsou ve vybrané skupině prostředků.</li><li><b>Rozsah jednoho předplatného</b> – aplikuje slevu na rezervované prostředky ve vybraném předplatném.</li><li><b>Sdílený rozsah</b> – použije slevu rezervace na odpovídající prostředky v oprávněných předplatných, která jsou v účetním kontextu. Pro zákazníky se smlouvou EA je účetním kontextem registrace. U individuálních předplatných se sazbami pro průběžné platby jsou rozsahem fakturace všechna oprávněná předplatná vytvořená správcem účtu.</li></ul>       |
    | Oblast       | Oblast Azure, která je pokrytá rezervací.   |
    | Velikost hostitele    | AV36    |
-   | Termín         | Jeden rok nebo tři roky.  |
+   | Označení         | Jeden rok nebo tři roky.  |
    | Množství     | Počet instancí, které se mají koupit v rámci rezervace Množství je počet spuštěných hostitelů řešení Azure VMware, které mohou získat fakturační slevu.     |
 
 Další informace o tom, jak zobrazit zakoupené rezervace pro zákazníka, najdete v článku [zobrazení rezervací Azure jako poskytovatele Cloud Solution Provider (CSP)](../cost-management-billing/reservations/how-to-view-csp-reservations.md) .
@@ -113,7 +113,7 @@ Tyto změny rezervace můžete provést po nákupu:
 
 Rezervaci můžete také rozdělit do menších bloků dat nebo do rezervací sloučení. Žádná z těchto změn nezpůsobí novou komerční transakci ani nemění koncové datum rezervace.
 
-Podrobnosti o rezervacích spravovaných zprostředkovatelem CSP najdete v tématu [prodej Microsoft Azure rezervacích zákazníkům pomocí partnerských Center, Azure Portal nebo rozhraní API](https://docs.microsoft.com/partner-center/azure-reservations).
+Podrobnosti o rezervacích spravovaných zprostředkovatelem CSP najdete v tématu [prodej Microsoft Azure rezervacích zákazníkům pomocí partnerských Center, Azure Portal nebo rozhraní API](/partner-center/azure-reservations).
 
 
 
@@ -121,7 +121,7 @@ Podrobnosti o rezervacích spravovaných zprostředkovatelem CSP najdete v téma
 >Po zakoupení rezervace nebudete moci provádět tyto typy změn přímo:
 >
 > - Existující oblast rezervace
-> - Skladová položka
+> - SKU
 > - Množství
 > - Doba trvání
 >
@@ -131,4 +131,4 @@ Podrobnosti o rezervacích spravovaných zprostředkovatelem CSP najdete v téma
 
 Rezervace je možné s určitými omezeními zrušit, vyměnit nebo refundovat. Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
-Poskytovatelé CSP můžou zrušit, vyměnit nebo vrátit refundaci s určitými omezeními, která si zakoupili pro zákazníka. Další informace najdete v tématu [Správa, zrušení, výměna nebo refundace Microsoft Azure rezervacích pro zákazníky](https://docs.microsoft.com/partner-center/azure-reservations-manage).
+Poskytovatelé CSP můžou zrušit, vyměnit nebo vrátit refundaci s určitými omezeními, která si zakoupili pro zákazníka. Další informace najdete v tématu [Správa, zrušení, výměna nebo refundace Microsoft Azure rezervacích pro zákazníky](/partner-center/azure-reservations-manage).
