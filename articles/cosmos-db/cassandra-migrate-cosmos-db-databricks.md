@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: 877aa96b189de47d158721df6585cb94ace4a855
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 827abcdb9eb2eb8b7328eb3e3a78f49d51e87e6b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94932898"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349176"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-azure-databricks"></a>Migrace dat z Cassandra do Azure Cosmos DB rozhraní API Cassandra účtu pomocí Azure Databricks
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -114,7 +114,7 @@ DFfromNativeCassandra
 ```
 
 > [!NOTE]
-> `spark.cassandra.output.concurrent.writes`Konfigurace a `connections_per_executor_max` jsou důležité pro zamezení [Omezení četnosti](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/), která se stane, když požadavky na Cosmos DB překračují zřízenou propustnost ([jednotky žádostí](https://docs.microsoft.com/azure/cosmos-db/request-units)). Tato nastavení může být nutné upravit v závislosti na počtu prováděcích modulů v clusteru Spark a potenciálně velikosti (a tedy i nákladů na RU) každého záznamu zapsaného do cílových tabulek.
+> `spark.cassandra.output.concurrent.writes`Konfigurace a `connections_per_executor_max` jsou důležité pro zamezení [Omezení četnosti](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/), která se stane, když požadavky na Cosmos DB překračují zřízenou propustnost ([jednotky žádostí](./request-units.md)). Tato nastavení může být nutné upravit v závislosti na počtu prováděcích modulů v clusteru Spark a potenciálně velikosti (a tedy i nákladů na RU) každého záznamu zapsaného do cílových tabulek.
 
 ## <a name="next-steps"></a>Další kroky
 

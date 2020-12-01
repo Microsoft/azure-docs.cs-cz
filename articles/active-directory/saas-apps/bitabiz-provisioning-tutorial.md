@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 3d17d4dd88e29440304989b8c37eaa81125d1812
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 8eccc3be7da201ee1e2af046c6b515871ef05adc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357551"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350768"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>Kurz: Konfigurace BitaBIZ pro Automatické zřizování uživatelů
 
@@ -83,7 +83,7 @@ Pokud chcete nakonfigurovat BitaBIZ pro Automatické zřizování uživatelů po
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **BitaBIZ** , na panelu výsledků vyberte **BitaBIZ** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **BitaBIZ**, na panelu výsledků vyberte **BitaBIZ** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![BitaBIZ v seznamu výsledků](common/search-new-app.png)
 
@@ -151,7 +151,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 
 ## <a name="connector-limitations"></a>Omezení konektoru
 
-* BitaBIZ vyžaduje **uživatelské jméno** , **e-mail** , **FirstName** a **LastName** jako povinné atributy. 
+* BitaBIZ vyžaduje **uživatelské jméno**, **e-mail**, **FirstName** a **LastName** jako povinné atributy. 
 * BitaBIZ aktuálně nepodporuje pevné odstranění.
 
 ## <a name="additional-resources"></a>Další zdroje informací

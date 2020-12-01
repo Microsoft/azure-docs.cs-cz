@@ -2,14 +2,14 @@
 title: Poskytovatelé prostředků a typy prostředků
 description: Popisuje poskytovatele prostředků, kteří podporují Azure Resource Manager. Popisuje jejich schémata, dostupné verze rozhraní API a oblasti, které mohou hostovat prostředky.
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 702836e0dc98b06ccf6e0eeb0d0f373374c4e783
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a8adbce80d5e8f9ee9df2050d8f43363cbf57dc3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95972534"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352095"
 ---
 # <a name="azure-resource-providers-and-types"></a>Poskytovatelé a typy prostředků Azure
 
@@ -36,6 +36,9 @@ Před použitím poskytovatele prostředků musí být vaše předplatné Azure 
 
 V tomto článku se dozvíte, jak ověřit stav registrace poskytovatele prostředků a jak ho podle potřeby zaregistrovat. Musíte mít oprávnění k provedení `/register/action` operace pro poskytovatele prostředků. Oprávnění je obsaženo v rolích přispěvatel a Owner.
 
+> [!IMPORTANT]
+> Pokud jste připraveni ho použít, zaregistrujte pouze poskytovatele prostředků. Krok registrace umožňuje zachovat v rámci předplatného nejnižší oprávnění. Uživatel se zlými úmysly nemůže použít poskytovatele prostředků, kteří nejsou registrováni.
+
 Kód vaší aplikace by neměl blokovat vytváření prostředků pro poskytovatele prostředků, který je ve stavu **registrace** . Když zaregistrujete poskytovatele prostředků, operace se provádí individuálně pro každou podporovanou oblast. Chcete-li v oblasti vytvořit prostředky, musí být registrace dokončena pouze v této oblasti. Při neblokování poskytovatele prostředků ve stavu registrace může aplikace pokračovat mnohem dřív než čekání na dokončení všech oblastí.
 
 Pokud v předplatném máte typy prostředků od tohoto poskytovatele prostředků, nemůžete zrušit registraci poskytovatele prostředků.
@@ -55,7 +58,7 @@ Pokud chcete zobrazit všechny poskytovatele prostředků a stav registrace pro 
 
     ![Zobrazit poskytovatele prostředků](./media/resource-providers-and-types/show-resource-providers.png)
 
-6. Chcete-li zaregistrovat poskytovatele prostředků, vyberte možnost **Registrovat**. Na předchozím snímku obrazovky se zvýrazní odkaz **zaregistrovat** pro **Microsoft. detail**.
+6. Chcete-li zaregistrovat poskytovatele prostředků, vyberte možnost **Registrovat**. Na předchozím snímku obrazovky se zvýrazní odkaz **zaregistrovat** pro **Microsoft. detail**. Pokud chcete zachovat v předplatném nejnižší oprávnění, zaregistrujte pouze ty poskytovatele prostředků, které jste připraveni použít.
 
 Chcete-li zobrazit informace o konkrétním poskytovateli prostředků:
 
@@ -107,7 +110,7 @@ Pokud chcete zobrazit všechny registrované poskytovatele prostředků pro vaš
  Get-AzResourceProvider -ListAvailable | Where-Object RegistrationState -eq "Registered" | Select-Object ProviderNamespace, RegistrationState | Sort-Object ProviderNamespace
 ```
 
-Chcete-li zaregistrovat poskytovatele prostředků, použijte:
+Pokud chcete zachovat v předplatném nejnižší oprávnění, zaregistrujte pouze ty poskytovatele prostředků, které jste připraveni použít. Chcete-li zaregistrovat poskytovatele prostředků, použijte:
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
@@ -216,7 +219,7 @@ Pokud chcete zobrazit všechny registrované poskytovatele prostředků pro vaš
 az provider list --query "sort_by([?registrationState=='Registered'].{Provider:namespace, Status:registrationState}, &Provider)" --out table
 ```
 
-Chcete-li zaregistrovat poskytovatele prostředků, použijte:
+Pokud chcete zachovat v předplatném nejnižší oprávnění, zaregistrujte pouze ty poskytovatele prostředků, které jste připraveni použít. Chcete-li zaregistrovat poskytovatele prostředků, použijte:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Batch

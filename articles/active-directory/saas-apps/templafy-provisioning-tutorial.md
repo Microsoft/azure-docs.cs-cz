@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 754e23a7d3f4bdf27f273927a5bc3b3658940d90
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: dc4ef937a032a5156164eaee59908c9ee0319fdb
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359225"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350156"
 ---
 # <a name="tutorial-configure-templafy-for-automatic-user-provisioning"></a>Kurz: Konfigurace Templafy pro Automatické zřizování uživatelů
 
@@ -82,7 +82,7 @@ Pokud chcete nakonfigurovat Templafy pro Automatické zřizování uživatelů p
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Templafy** , na panelu výsledků vyberte **Templafy** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Templafy**, na panelu výsledků vyberte **Templafy** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Templafy v seznamu výsledků](common/search-new-app.png)
 

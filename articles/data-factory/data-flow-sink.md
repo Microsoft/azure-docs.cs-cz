@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/17/2020
-ms.openlocfilehash: fa048473f0f285b793dad88c7defdb6189ca1ccd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 63be912986542741359cd5e88227f06905d42647
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023002"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350870"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Transformace jímky v toku dat mapování
 
@@ -100,7 +100,7 @@ Ve výchozím nastavení jsou data zapisována do více umyvadel v nedeterminist
 ![Snímek obrazovky, který ukazuje vlastní řazení jímky.](media/data-flow/custom-sink-ordering.png "Snímek obrazovky, který ukazuje vlastní řazení jímky.")
 
 > [!NOTE]
-> Při použití [vyhledávání uložených v mezipaměti](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder#cached-lookup)se ujistěte, že vaše řazení jímky má jímky v mezipaměti nastavené na 1, nejnižší (nebo první) v pořadí řazení.
+> Při použití [vyhledávání uložených v mezipaměti](./concepts-data-flow-expression-builder.md#cached-lookup)se ujistěte, že vaše řazení jímky má jímky v mezipaměti nastavené na 1, nejnižší (nebo první) v pořadí řazení.
 
 ![Vlastní řazení jímky](media/data-flow/cache-2.png "Vlastní řazení jímky")
 

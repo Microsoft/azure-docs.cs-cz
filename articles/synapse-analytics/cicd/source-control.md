@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 111b2b5b660133c20afdb3c56e1c3e3ed607398c
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: b6cadbf5c3a33c1a954a47f37b33ad8703f40b69
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296994"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350734"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Správa zdrojového kódu v Azure synapse studiu
 
@@ -215,7 +215,7 @@ Pokud větev publikování není synchronizovaná s branou pro spolupráci a obs
 
 1. Překonfigurujte Git se stejnými nastaveními, ale ujistěte se, že je zaškrtnuté políčko **importovat stávající prostředky do úložiště** a vybrat stejnou větev.  
 
-1. Vytvoření žádosti o přijetí změn, která sloučí změny do větve pro spolupráci 
+1. Vytvořte žádost o přijetí změn, aby se změny sloučily do větve spolupráce. 
 
 ## <a name="unsupported-features"></a>Nepodporované funkce
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: jeedes
-ms.openlocfilehash: a0165e5191a8cd499b42c14704fdf4f0d79b3f6b
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b7c1c995ead9a8d66cd11fb4579cc49e12b487df
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358537"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351584"
 ---
 # <a name="tutorial-configure-leapsome-for-automatic-user-provisioning"></a>Kurz: Konfigurace Leapsome pro Automatické zřizování uživatelů
 
@@ -82,7 +82,7 @@ Před konfigurací Leapsome pro Automatické zřizování uživatelů se službo
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Leapsome** , na panelu výsledků vyberte **Leapsome** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Leapsome**, na panelu výsledků vyberte **Leapsome** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Leapsome v seznamu výsledků](common/search-new-app.png)
 

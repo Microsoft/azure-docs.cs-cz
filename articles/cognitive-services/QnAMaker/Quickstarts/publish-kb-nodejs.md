@@ -7,12 +7,12 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-js
 ms.topic: how-to
-ms.openlocfilehash: ef17f08677d715292a8ee49621156d130e2f5a6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 645f9ffb1d907eb576f5414b593ef57679d26daa
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777492"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351142"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Rychlý Start: QnA Maker rozhraní REST API pro Node.js
 
@@ -27,7 +27,7 @@ Pro Node.js použijte QnA Maker rozhraní REST API:
 * Stáhnout znalostní bázi
 * Získat stav operace
 
-[Referenční dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  |  [UkázkyNode.js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
+[Referenční dokumentace](/rest/api/cognitiveservices/qnamaker/knowledgebase)  |  [UkázkyNode.js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -41,9 +41,9 @@ Pro Node.js použijte QnA Maker rozhraní REST API:
 
 ### <a name="create-a-qna-maker-azure-resource"></a>Vytvoření prostředku Azure QnA Maker
 
-Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro QnA Maker pomocí [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) nebo rozhraní příkazového [řádku Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na vašem místním počítači.
+Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro QnA Maker pomocí [Azure Portal](../../cognitive-services-apis-create-account.md) nebo rozhraní příkazového [řádku Azure](../../cognitive-services-apis-create-account-cli.md) na vašem místním počítači.
 
-Po získání klíče z prostředku [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro prostředek s názvem `QNAMAKER_RESOURCE_KEY` a `QNAMAKER_AUTHORING_ENDPOINT` . Použijte hodnoty klíč a koncový bod, které najdete na stránce **rychlý Start** prostředku v Azure Portal.
+Po získání klíče z prostředku [vytvořte proměnné prostředí](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) pro prostředek s názvem `QNAMAKER_RESOURCE_KEY` a `QNAMAKER_AUTHORING_ENDPOINT` . Použijte hodnoty klíč a koncový bod, které najdete na stránce **rychlý Start** prostředku v Azure Portal.
 
 ### <a name="create-a-new-nodejs-application"></a>Vytvoření nové aplikace Node.js
 
@@ -107,13 +107,13 @@ Znalostní báze ukládá páry dotazů a odpovědí, které byly vytvořeny z o
 * **Soubory** – místní soubory, které nevyžadují žádná oprávnění.
 * **Adresy URL** – veřejně dostupné adresy URL
 
-[K vytvoření znalostní báze použijte REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create).
+[K vytvoření znalostní báze použijte REST API](/rest/api/cognitiveservices/qnamaker/knowledgebase/create).
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="createKb":::
 
 ## <a name="replace-a-knowledge-base"></a>Výměna znalostní báze
 
-[K nahrazení znalostní báze použijte REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace).
+[K nahrazení znalostní báze použijte REST API](/rest/api/cognitiveservices/qnamaker/knowledgebase/replace).
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="replaceKb":::
 
@@ -121,13 +121,13 @@ Znalostní báze ukládá páry dotazů a odpovědí, které byly vytvořeny z o
 
 Publikujte znalostní bázi. Díky tomuto procesu je znalostní báze dostupný z koncového bodu předpovědi dotazu HTTP.
 
-[K publikování znalostní báze použijte REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish).
+[K publikování znalostní báze použijte REST API](/rest/api/cognitiveservices/qnamaker/knowledgebase/publish).
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="publishKb":::
 
 ## <a name="download-the-knowledge-base"></a>Stáhnout znalostní bázi Knowledge Base
 
-Ke [stažení znalostní báze použijte REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download).
+Ke [stažení znalostní báze použijte REST API](/rest/api/cognitiveservices/qnamaker/knowledgebase/download).
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="downloadKb":::
 
@@ -135,7 +135,7 @@ Ke [stažení znalostní báze použijte REST API](https://docs.microsoft.com/re
 
 Po dokončení používání znalostní báze ho odstraňte.
 
-[K odstranění znalostní báze použijte REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/delete).
+[K odstranění znalostní báze použijte REST API](/rest/api/cognitiveservices/qnamaker/knowledgebase/delete).
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="deleteKb":::
 
@@ -143,7 +143,7 @@ Po dokončení používání znalostní báze ho odstraňte.
 
 Dlouhotrvající procesy, jako je například proces vytváření, vrací ID operace, které je nutné zkontrolovat pomocí samostatného REST API volání. Tato funkce přijímá tělo odpovědi Create. Důležitý klíč je `operationState` , který určuje, jestli je potřeba pokračovat v dotazování.
 
-Pomocí [REST API můžete monitorovat operace ve znalostní bázi](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails).
+Pomocí [REST API můžete monitorovat operace ve znalostní bázi](/rest/api/cognitiveservices/qnamaker/operations/getdetails).
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="operationDetails":::
 
@@ -171,7 +171,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
->[Kurz: vytvoření a odpověď na databázi znalostí](../tutorials/create-publish-query-in-portal.md)
+>[Kurz: vytvoření a odpověď na databázi znalostí](./create-publish-knowledge-base.md)
 
 * [Co je rozhraní API služby QnA Maker?](../Overview/overview.md)
 * [Úprava znalostní báze](../how-to/edit-knowledge-base.md)

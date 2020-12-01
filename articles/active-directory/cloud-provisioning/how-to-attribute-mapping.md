@@ -11,14 +11,14 @@ ms.date: 09/22/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58b7aa0bf8c82990a00b4e41041145a67ee2f02b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e272c402cac803d10d9998298ce6d3370d0e000
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91637123"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348799"
 ---
-# <a name="azure-ad-connect-cloud-provisioning-attibute-mapping"></a>Azure AD Connect mapování atribut Cloud zřizování
+# <a name="azure-ad-connect-cloud-provisioning-attribute-mapping"></a>Azure AD Connect mapování atributů zřizování cloudu
 
 Azure AD Connect zřízení cloudu zavedlo novou funkci, která vám umožní snadnou mapu atributů mezi místními objekty uživatelů nebo skupin a objekty ve službě Azure AD.  Tato funkce se přidala do konfigurace zřizování cloudu.
 
@@ -54,13 +54,13 @@ Spolu s touto vlastností také mapování atributů podporuje následující at
 ## <a name="using-attribute-mapping"></a>Použití mapování atributů
 Chcete-li použít novou funkci, postupujte podle následujících kroků.
 
- 1.  V Azure Portal vyberte **Azure Active Directory**.
+ 1.  Na portálu Azure Portal vyberte **Azure Active Directory**.
  2.  Vyberte **Azure AD Connect**.
  3.  Vyberte **Spravovat zřizování**.
 
    ![Spravovat zřizování](media/how-to-configure/manage1.png)
  
- 4. V části **Konfigurace**vyberte svou konfiguraci.
+ 4. V části **Konfigurace** vyberte svou konfiguraci.
  5. Vyberte **kliknutím upravit mapování**.  Tím se otevře obrazovka mapování atributů.
 
  ![Přidávání atributů](media/how-to-attribute-mapping/mapping6.png)
@@ -82,10 +82,10 @@ Chcete-li použít novou funkci, postupujte podle následujících kroků.
 ## <a name="test-your-attribute-mapping"></a>Otestování mapování atributů
 K otestování mapování atributů můžete použít [zřizování na vyžádání](how-to-on-demand-provision.md).  Z okna 
 
-1.  V Azure Portal vyberte **Azure Active Directory**.
+1.  Na portálu Azure Portal vyberte **Azure Active Directory**.
 2.  Vyberte **Azure AD Connect**.
 3.  Vyberte **Spravovat zřizování**.
-4. V části **Konfigurace**vyberte svou konfiguraci.
+4. V části **Konfigurace** vyberte svou konfiguraci.
 5. V části **ověřit** klikněte na tlačítko **zřídit uživatele** . 
 6. Na obrazovce zřizování na vyžádání.  Zadejte **rozlišující jméno** uživatele nebo skupiny a klikněte na tlačítko **zřídit** .  
 7. Po dokončení by se měla zobrazit obrazovka úspěšná a 4 zelená zaškrtávací políčka, která označují úspěšné zřízení.  

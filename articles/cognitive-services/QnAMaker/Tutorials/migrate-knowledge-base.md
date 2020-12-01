@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: how-to
 ms.date: 11/09/2020
-ms.openlocfilehash: 4378a648b8b7a545c9e4b638d08592aa32fff3aa
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: c89ab375cb02824a08ff57e6b5278dd9299126ff
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427662"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350921"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrace znalostní báze pomocí exportu a importu
 
@@ -25,7 +25,7 @@ Migrace znalostní báze vyžaduje export z existující znalostní báze a nás
 > [!NOTE]
 > Pomocí následujících pokynů Migrujte stávající znalostní bázi do nové QnA Maker spravované (Preview).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/) .
 * Nastavení nové [služby QnA maker](../How-To/set-up-qnamaker-service-azure.md)
@@ -34,7 +34,7 @@ Migrace znalostní báze vyžaduje export z existující znalostní báze a nás
 1. Přihlaste se k [portálu QnA maker](https://qnamaker.ai).
 1. Vyberte znalostní bázi původu, kterou chcete migrovat.
 
-1. Na stránce **Nastavení** vyberte **exportovat znalostní bázi** a Stáhněte soubor. TSV, který obsahuje obsah vaší zdrojové znalostní báze – otázky, odpovědi, metadata, následné výzvy a názvy zdrojů dat, ze kterých byly extrahovány. ID QnA, která se exportují s dotazy a odpověďmi, se dají použít k aktualizaci konkrétní dvojice QnA pomocí [rozhraní API pro aktualizaci](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update). ID QnA pro konkrétní dvojici QnA zůstane beze změny v rámci více operací exportu.
+1. Na stránce **Nastavení** vyberte **exportovat znalostní bázi** a Stáhněte soubor. TSV, který obsahuje obsah vaší zdrojové znalostní báze – otázky, odpovědi, metadata, následné výzvy a názvy zdrojů dat, ze kterých byly extrahovány. ID QnA, která se exportují s dotazy a odpověďmi, se dají použít k aktualizaci konkrétní dvojice QnA pomocí [rozhraní API pro aktualizaci](/rest/api/cognitiveservices/qnamaker/knowledgebase/update). ID QnA pro konkrétní dvojici QnA zůstane beze změny v rámci více operací exportu.
 
 1. V horní nabídce vyberte **vytvořit znalostní bázi** a pak vytvořte _prázdnou_ znalostní bázi. Je prázdná, protože když ji vytvoříte, nebudete přidávat žádné adresy URL ani soubory. Ty jsou přidány během kroku importu po vytvoření.
 
@@ -59,16 +59,16 @@ Proces migrace je programově dostupný pomocí následujících rozhraní REST 
 
 **Export**
 
-* [Stáhnout rozhraní API znalostní báze Knowledge Base](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/download)
+* [Stáhnout rozhraní API znalostní báze Knowledge Base](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/download)
 
 **Import**
 
-* [Nahradit rozhraní API (znovu načíst se stejným ID znalostní báze)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/replace)
-* [Vytvořit rozhraní API (načíst s novým ID znalostní báze)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/create)
+* [Nahradit rozhraní API (znovu načíst se stejným ID znalostní báze)](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/replace)
+* [Vytvořit rozhraní API (načíst s novým ID znalostní báze)](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/create)
 
 
 ## <a name="chat-logs-and-alterations"></a>Protokoly a změny chatu
-Změny bez rozlišení velkých a malých písmen (synonym) se neimportují automaticky. Použijte [rozhraní v4 API](https://go.microsoft.com/fwlink/?linkid=2092179) pro přesun změn v nové znalostní bázi.
+Změny bez rozlišení velkých a malých písmen (synonym) se neimportují automaticky. Použijte [rozhraní v4 API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) pro přesun změn v nové znalostní bázi.
 
 Neexistuje žádný způsob, jak migrovat protokoly konverzace, protože nová znalostní báze používá Application Insights pro ukládání protokolů chatu.
 

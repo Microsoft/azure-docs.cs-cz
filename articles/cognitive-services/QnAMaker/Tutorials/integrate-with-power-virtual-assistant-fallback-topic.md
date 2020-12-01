@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 11/09/2020
-ms.openlocfilehash: 322db4e1535e763f4c3e7c87afaa370471ba0b66
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 3801bb44fed6bf24788957c41de77c89b3025ae8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376294"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351108"
 ---
 # <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>Kurz: Přidání znalostní báze do virtuálních agentů pro napájení
 Vytvořte a rozšíříte robota [Power Virtual Agents](https://powervirtualagents.microsoft.com/) , abyste získali odpovědi z vaší znalostní báze.
@@ -53,7 +53,7 @@ Tady je přehled kroků připojení agenta v rámci virtuálních agentů k znal
     * Volání akce (pro automatizaci toku).
 * Na portálu pro [automatizaci napájení](https://us.flow.microsoft.com/) :
     * Vyhledat _odpověď pro generování pomocí šablony QnA maker_
-    * Pomocí šablony můžete nakonfigurovat tok pro použití [GenerateAnswer QnA maker](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/).
+    * Pomocí šablony můžete nakonfigurovat tok pro použití [GenerateAnswer QnA maker](/connectors/cognitiveservicesqnamaker/).
         * Informace o QnA Maker publikované znalostní báze Knowledge Base:
             * ID znalostní báze
             * Hostitel koncového bodu QnA Maker prostředku
@@ -200,7 +200,7 @@ Aby mohl agent vyhledat a připojit se ke toku, musí být tok součástí řeš
     :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-selection-action-input.png" alt-text="Částečný snímek obrazovky témata konverzace na plátně pro virtuálním virtuálním agentem výběr vstupní proměnné":::
 
 
-1. Chcete-li správně nastavit výstupní proměnnou na akci QnA Maker, v akci **zprávy** vyberte možnost **UnrecognizedTriggerPhrase** , vyberte ikonu pro vložení proměnné, `{x}` a pak vyberte možnost **FinalAnswer**.
+1. Chcete-li správně nastavit výstupní proměnnou na akci QnA Maker, v akci **zprávy** vyberte možnost **UnrecognizedTriggerPhrase**, vyberte ikonu pro vložení proměnné, `{x}` a pak vyberte možnost **FinalAnswer**.
 
 1. Na panelu nástrojů kontextu vyberte **Uložit** a uložte podrobnosti plátna pro vytváření obsahu pro téma.
 
@@ -219,9 +219,9 @@ Vypadá to, že na plátně finálního agenta se líbí.
     |--|--|--|
     |1|Dobrý den|Spustit konverzaci|
     |2|Hodiny úložiště|Ukázkové téma. To je nakonfigurované pro vás bez jakékoli další práce na vaší straně.|
-    |3|Yes|V reakci na `Did that answer your question?`|
+    |3|Ano|V reakci na `Did that answer your question?`|
     |4|Vynikající|V reakci na `Please rate your experience.`|
-    |5|Yes|V reakci na `Can I help with anything else?`|
+    |5|Ano|V reakci na `Can I help with anything else?`|
     |6|Jak můžu zlepšit výkon propustnosti pro dotaz předpovědi?|Tato otázka spustí záložní akci, která odešle text do vaší znalostní báze na odpověď. Pak se zobrazí odpověď. zelené značky zaškrtnutí u jednotlivých akcí označují úspěch pro každou akci.|
 
     :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png" alt-text="Snímek obrazovky s chatem s plátnem, který indikuje zelenou značku zaškrtnutí u úspěšných akcí":::
@@ -232,7 +232,7 @@ Pokud chcete, aby byl agent dostupný pro všechny členy školy nebo organizace
 
 1. Z navigace na levé straně vyberte **publikovat**. Pak na stránce vyberte **publikovat** .
 
-1. Vyzkoušejte si bot na webu demo (podívejte se na odkaz v části **publikovat** ).
+1. Vyzkoušejte si bot na webu demo (podívejte se na odkaz v části **publikovat**).
 
     Otevře se nová webová stránka s vaším robotem. Zeptejte se na robota stejnou zkušební otázku: `How can I improve the throughput performance for query predictions?`
 
@@ -258,6 +258,6 @@ Až se znalostní báze dokončí, odeberte prostředky QnA Maker v Azure Portal
 [Získání analýz pro znalostní bázi](../How-To/get-analytics-knowledge-base.md)
 
 Přečtěte si další informace:
-* [Power Virtual Agents](https://docs.microsoft.com/power-virtual-agents/)
-* [Power Automate](https://docs.microsoft.com/power-automate/)
-* [Konektor QnA maker](https://us.flow.microsoft.com/connectors/shared_cognitiveservicesqnamaker/qna-maker/) a [Nastavení konektoru](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/)
+* [Power Virtual Agents](/power-virtual-agents/)
+* [Power Automate](/power-automate/)
+* [Konektor QnA maker](https://us.flow.microsoft.com/connectors/shared_cognitiveservicesqnamaker/qna-maker/) a [Nastavení konektoru](/connectors/cognitiveservicesqnamaker/)

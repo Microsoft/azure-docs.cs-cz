@@ -12,19 +12,19 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6b6aea6a3b0856b3db345e20b87d2a12ad055e1
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 077c715616e377d8b296e53fdd5a861f944ab940
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380326"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349499"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>Sestavení klienta hledání konzolové aplikace v C #
 
 > [!WARNING]
-> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 > Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
-> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 V tomto kurzu se dozvíte, jak vytvořit jednoduchou konzolovou aplikaci .NET Core, která umožňuje uživatelům dotazovat se na rozhraní API Bingu pro vyhledávání na webu a zobrazovat seřazené výsledky.
 
@@ -68,7 +68,7 @@ Tento kurz spoléhá na `System.Web` sestavení. Přidejte do projektu odkaz na 
 
 ## <a name="add-some-necessary-using-statements"></a>Přidat některé nezbytné příkazy using
 
-Kód v tomto kurzu vyžaduje tři další příkazy using. Přidejte tyto příkazy pod stávající `using` příkazy v horní části **program.cs** :
+Kód v tomto kurzu vyžaduje tři další příkazy using. Přidejte tyto příkazy pod stávající `using` příkazy v horní části **program.cs**:
 
 ```csharp
 using System.Web;

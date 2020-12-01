@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.openlocfilehash: 6e7e4dd6383b1f264ff2da7893d9f86a3708217d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47b036f558628d51242a78c00d2ee17332816d25
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89227912"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348755"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft Identity Platform a OAuth 2,0 – tok kontrolního výrazu SAML
 Tok kontrolního výrazu SAML 2,0 OAuth vám umožní požádat o přístupový token OAuth pomocí kontrolního výrazu SAML, když klient potřebuje použít stávající vztah důvěryhodnosti. Signatura použitá pro kontrolní výraz SAML zajišťuje ověřování autorizované aplikace. Kontrolní výraz SAML je token zabezpečení XML vydaný zprostředkovatelem identity a spotřebovaný poskytovatelem služeb. Poskytovatel služeb spoléhá na jeho obsah, aby identifikoval Předmět kontrolního výrazu pro účely související se zabezpečením.
@@ -32,7 +32,7 @@ Tok kontrolního výrazu protokolu SAML protokolu OAuth je podporován pouze pro
 ![Tok OAuth](./media/v2-saml-bearer-assertion/1.png)
 
 ## <a name="call-graph-using-saml-bearer-assertion"></a>Graf volání pomocí kontrolního výrazu SAML nosiče
-Teď nám dejte vědět, jak můžeme skutečně načíst kontrolní výraz SAML programově. Tento přístup se testuje pomocí služby AD FS. To ale funguje u libovolného poskytovatele identity, který podporuje návrat programově kontrolního výrazu SAML. Základní proces je: Získání kontrolního výrazu SAML, získání přístupového tokenu a přístup k Microsoft Graph.
+Teď nám dejte vědět, jak můžeme ve skutečnosti načítat kontrolní výraz SAML programově. Tento přístup se testuje pomocí služby AD FS. To ale funguje s jakýmkoli poskytovatelem identity, který podporuje návrat kontrolního výrazu SAML programově. Základní proces je: Získání kontrolního výrazu SAML, získání přístupového tokenu a přístup k Microsoft Graph.
 
 ### <a name="prerequisites"></a>Požadavky
 
@@ -47,8 +47,8 @@ Zaregistrovat aplikaci na [portálu](https://ms.portal.azure.com/#blade/Microsof
     1. **Identifikátor URI pro přesměrování (volitelné)** – vyberte typ aplikace, kterou vytváříte, web nebo veřejný klient (Mobile & Desktop), a pak zadejte identifikátor URI přesměrování (nebo adresu URL odpovědi) pro vaši aplikaci.
     1. Až budete hotovi, vyberte **Zaregistrovat**.
 1. Poznamenejte si ID aplikace (klienta).
-1. V levém podokně vyberte **certifikáty & tajných**kódů. V části **tajné klíče klienta** klikněte na **nový tajný klíč klienta** . Zkopírování nového tajného klíče klienta nebudete moct načíst, když necháte okno opustit.
-1. V levém podokně vyberte **oprávnění rozhraní API** a pak **přidejte oprávnění**. Vyberte **Microsoft Graph**, pak **delegovaná oprávnění**a pak vyberte **úkoly. číst** , protože hodláte používat Graph API Outlooku. 
+1. V levém podokně vyberte **certifikáty & tajných** kódů. V části **tajné klíče klienta** klikněte na **nový tajný klíč klienta** . Zkopírování nového tajného klíče klienta nebudete moct načíst, když necháte okno opustit.
+1. V levém podokně vyberte **oprávnění rozhraní API** a pak **přidejte oprávnění**. Vyberte **Microsoft Graph**, pak **delegovaná oprávnění** a pak vyberte **úkoly. číst** , protože hodláte používat Graph API Outlooku. 
 
 Nainstalovat [post](https://www.getpostman.com/), nástroj potřebný k otestování ukázkových požadavků.  Později můžete převést požadavky na kód.
 
@@ -73,7 +73,7 @@ V tomto kroku načtete token OAuth2 pomocí odpovědi kontrolního výrazu ADFS.
 1. Vytvořte požadavek POST, jak je znázorněno níže s hodnotami hlaviček:
 
     ![POST – požadavek](./media/v2-saml-bearer-assertion/5.png)
-1. V těle žádosti nahraďte **client_id**, **client_secret**a **kontrolní výraz** (kontrolní výraz SAML kódovaný jako base64 získal předchozí krok):
+1. V těle žádosti nahraďte **client_id**, **client_secret** a **kontrolní výraz** (kontrolní výraz SAML kódovaný jako base64 získal předchozí krok):
 
     ![Text požadavku](./media/v2-saml-bearer-assertion/6.png)
 1. Po úspěšné žádosti obdržíte přístupový token z Azure Active Directory.

@@ -3,12 +3,12 @@ title: Shromažďovat & analyzovat protokoly prostředků
 description: Zaznamenává a analyzuje události protokolu prostředků pro Azure Container Registry, jako je například ověřování, vkládání obrázků a vyžádanou image.
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: 63ccb944b9c3de9941acf55ca5ea85fda70a7008
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b05d34e6c50fea3760e30d28f59e55d8c5f211a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87553372"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348581"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Protokoly Azure Container Registry pro vyhodnocení a auditování diagnostiky
 
@@ -24,7 +24,7 @@ Shromažďování dat protokolu prostředků pomocí Azure Monitor může nabýv
 
 V současné době jsou protokolovány následující události na úrovni úložiště pro bitové kopie a jiné artefakty:
 
-* **Push**
+* **Replik**
 * **Spotřeby**
 * **Zrušit označení**
 * **Odstranit** (včetně událostí odstranění úložiště)
@@ -81,7 +81,7 @@ Následující obrázek ukazuje vzorový výstup:
 
 ![Dotazy na data protokolů](media/container-registry-diagnostics-audit-logs/azure-monitor-query.png)
 
-Kurz týkající se použití Log Analytics v Azure Portal najdete v tématu [Začínáme s Azure Monitor Log Analytics](../azure-monitor/log-query/get-started-portal.md)nebo vyzkoušejte [ukázkové prostředí](https://portal.loganalytics.io/demo)Log Analytics. 
+Kurz týkající se použití Log Analytics v Azure Portal najdete v tématu [Začínáme s Azure Monitor Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)nebo vyzkoušejte [ukázkové prostředí](https://portal.loganalytics.io/demo)Log Analytics. 
 
 Další informace o dotazech protokolu najdete v tématu [Přehled dotazů protokolu v Azure monitor](../azure-monitor/log-query/log-query-overview.md).
 
@@ -146,5 +146,5 @@ Události diagnostického protokolu můžete také streamovat do [centra událos
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o použití [Log Analytics](../azure-monitor/log-query/get-started-portal.md) a vytváření [dotazů protokolu](../azure-monitor/log-query/get-started-queries.md).
+* Přečtěte si další informace o použití [Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) a vytváření [dotazů protokolu](../azure-monitor/log-query/get-started-queries.md).
 * Další informace o protokolech platforem, které jsou k dispozici v různých vrstvách Azure, najdete v tématu [Přehled protokolů platformy Azure](../azure-monitor/platform/platform-logs-overview.md) .

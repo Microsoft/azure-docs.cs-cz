@@ -3,12 +3,12 @@ title: Azure Monitor Application Insights Java
 description: Monitorování výkonu aplikací pro aplikace v jazyce Java spuštěné v jakémkoli prostředí bez nutnosti změny kódu. Distribuované trasování a mapa aplikací
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 8423443abac90b87349a4a80fce0ec33a8b686da
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 36e2b419da2bccdf2f5f13227457172cf644994c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444737"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351533"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor monitorování aplikací s kódováním kódu Java Application Insights
 
@@ -139,13 +139,13 @@ Následující tabulka představuje aktuálně podporované vlastní typy teleme
 
 |                     | Mikrometr | Log4j, logback, červenec | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Vlastní události**   |            |                     |  Yes    |
-| **Vlastní metriky**  |  Yes       |                     |  Yes    |
-| **Závislosti**    |            |                     |  Yes    |
-| **Výjimky**      |            |  Yes                |  Yes    |
-| **Page Views**      |            |                     |  Yes    |
-| **Žádosti**        |            |                     |  Yes    |
-| **Trasování**          |            |  Yes                |  Yes    |
+| **Vlastní události**   |            |                     |  Ano    |
+| **Vlastní metriky**  |  Ano       |                     |  Ano    |
+| **Závislosti**    |            |                     |  Ano    |
+| **Výjimky**      |            |  Ano                |  Ano    |
+| **Page Views**      |            |                     |  Ano    |
+| **Žádosti**        |            |                     |  Ano    |
+| **Trasování**          |            |  Ano                |  Ano    |
 
 V tuto chvíli neplánujeme vydání sady SDK pomocí Application Insights 3,0.
 
@@ -228,17 +228,3 @@ Můžete také použít Application Insights Java SDK 2. x:
       telemetryClient.trackException(e);
   }
 ```
-
-## <a name="upgrading-from-application-insights-java-sdk-2x"></a>Upgrade z Application Insights Java SDK 2. x
-
-Pokud v aplikaci již používáte Application Insights Java SDK 2. x, není nutné ji odebrat.
-Agent Java 3,0 ho detekuje a zachytí a koreluje se všemi vlastními telemetriemi, které posíláte prostřednictvím sady Java SDK 2. x, a přitom potlačí všechny automatické kolekce, které provádí Java SDK 2. x, aby nedocházelo k duplicitní telemetrii.
-
-Pokud jste používali agenta Application Insights 2. x, je nutné odebrat `-javaagent:` JVM arg, která odkazovala na agenta 2. x.
-
-> [!NOTE]
-> Sada Java SDK 2. x TelemetryInitializers a TelemetryProcessors se při použití agenta 3,0 nespustí.
-> Mnohé z případů použití, které se dřív vyžadovaly, je možné vyřešit v 3,0 konfigurací [vlastních dimenzí](./java-standalone-config.md#custom-dimensions) nebo konfigurací [procesorů telemetrie](./java-standalone-telemetry-processors.md).
-
-> [!NOTE]
-> 3,0 v jednom JVM ještě nepodporuje více klíčů instrumentace.

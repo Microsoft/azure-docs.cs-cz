@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de255836cb269f5077a417a203e136f9e903f05d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d121e6280b83265a742736f9b8dd3aee96a8b32e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441670"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351755"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Přidání konektoru API do toku uživatele
 
@@ -25,7 +25,7 @@ Pokud chcete použít [konektor API](api-connectors-overview.md), vytvořte nejd
 ## <a name="create-an-api-connector"></a>Vytvoření konektoru API
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com/) jako správce.
-2. V části **služby Azure**vyberte **Azure Active Directory**.
+2. V části **služby Azure** vyberte **Azure Active Directory**.
 3. V nabídce vlevo vyberte **externí identity**.
 4. Vyberte **všechny konektory rozhraní API (Preview)** a pak vyberte **nový konektor API**.
 
@@ -35,7 +35,7 @@ Pokud chcete použít [konektor API](api-connectors-overview.md), vytvořte nejd
 6. Zadejte **adresu URL koncového bodu** pro volání rozhraní API.
 7. Zadejte ověřovací informace pro rozhraní API.
 
-   - V tuto chvíli se podporuje jenom základní ověřování. Pokud chcete použít rozhraní API bez základního ověřování pro vývojové účely, stačí zadat fiktivní **uživatelské jméno** a **heslo** , které může vaše rozhraní API ignorovat. Pro použití s funkcí Azure s klíčem rozhraní API můžete kód zahrnout jako parametr dotazu v **adrese URL koncového bodu** (například https []() ://contoso.azurewebsites.NET/API/Endpoint<b>? Code = 0123456789</b>).
+   - V tuto chvíli se podporuje jenom základní ověřování. Pokud chcete použít rozhraní API bez základního ověřování pro vývojové účely, stačí zadat fiktivní **uživatelské jméno** a **heslo** , které může vaše rozhraní API ignorovat. Pro použití s funkcí Azure s klíčem rozhraní API můžete kód zahrnout jako parametr dotazu v **adrese URL koncového bodu** (například https []() ://contoso.azurewebsites.NET/API/Endpoint <b>? Code = 0123456789</b>).
 
    ![Konfigurace nového konektoru API](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
 8. Vyberte **Uložit**.
@@ -92,10 +92,10 @@ Ve výchozím nastavení se ve všech požadavcích standardně odesílají dekl
 Pomocí těchto kroků přidáte konektor rozhraní API k samoobslužnému uživatelskému toku pro registraci.
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com/) jako správce.
-2. V části **služby Azure**vyberte **Azure Active Directory**.
+2. V části **služby Azure** vyberte **Azure Active Directory**.
 3. V nabídce vlevo vyberte **externí identity**.
 4. Vyberte **toky uživatelů (Preview)** a pak vyberte tok uživatele, do kterého chcete konektor API přidat.
-5. Vyberte možnost **konektory rozhraní API**a potom vyberte koncové body rozhraní API, které chcete vyvolat, v následujících krocích v toku uživatele:
+5. Vyberte možnost **konektory rozhraní API** a potom vyberte koncové body rozhraní API, které chcete vyvolat, v následujících krocích v toku uživatele:
 
    - **Po přihlášení pomocí zprostředkovatele identity**
    - **Před vytvořením uživatele**
@@ -106,7 +106,7 @@ Pomocí těchto kroků přidáte konektor rozhraní API k samoobslužnému uživ
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>Po přihlášení pomocí zprostředkovatele identity
 
-Konektor API v tomto kroku v procesu registrace se vyvolá hned po ověření uživatele u poskytovatele identity (Google, Facebook, Azure AD). Tento krok předchází*_stránku kolekce atributů_** _, což je formulář prezentovaný uživateli ke shromáždění atributů uživatele. 
+Konektor API v tomto kroku v procesu registrace se vyvolá hned po ověření uživatele u poskytovatele identity (Google, Facebook, Azure AD). Tento krok předchází *_stránku kolekce atributů_** _, což je formulář prezentovaný uživateli ke shromáždění atributů uživatele. 
 
 <!-- The following are examples of API connector scenarios you may enable at this step:
 - Use the email or federated identity that the user provided to look up claims in an existing system. Return these claims from the existing system, pre-fill the attribute collection page, and make them available to return in the token.
@@ -244,11 +244,11 @@ Content-type: application/json
 }
 ```
 
-| Parametr                                          | Typ              | Povinné | Popis                                                                                                                                                                                                                                                                            |
+| Parametr                                          | Typ              | Vyžadováno | Popis                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | verze                                            | Řetězec            | Ano      | Verze rozhraní API.                                                                                                                                                                                                                                                                |
 | akce                                             | Řetězec            | Ano      | Hodnota musí být `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | Ne       | Hodnoty mohou být uloženy v adresáři, pokud jsou vybrány jako deklarace _*pro příjem** v konfiguraci konektoru rozhraní API a **uživatelských atributů** pro tok uživatele. Hodnoty mohou být vráceny v tokenu, pokud je vybrána jako **deklarace identity aplikace**.                                              |
+| \<builtInUserAttribute>                            | \<attribute-type> | Ne       | Hodnoty mohou být uloženy v adresáři, pokud jsou vybrány jako deklarace _ *pro příjem** v konfiguraci konektoru rozhraní API a **uživatelských atributů** pro tok uživatele. Hodnoty mohou být vráceny v tokenu, pokud je vybrána jako **deklarace identity aplikace**.                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Ne       | Vrácená deklarace identity nemusí obsahovat `_<extensions-app-id>_` . Hodnoty se ukládají v adresáři, pokud se vybírají jako **deklarace, aby se přijímaly** v konfiguraci konektoru rozhraní API a **atributu uživatele** pro tok uživatele. Vlastní atributy se v tokenu nedají poslat zpátky. |
 
 ### <a name="example-of-a-blocking-response"></a>Příklad blokující odpovědi
@@ -266,7 +266,7 @@ Content-type: application/json
 
 ```
 
-| Parametr   | Typ   | Povinné | Popis                                                                |
+| Parametr   | Typ   | Vyžadováno | Popis                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
 | verze     | Řetězec | Ano      | Verze rozhraní API.                                                    |
 | akce      | Řetězec | Ano      | Hodnota musí být `ShowBlockPage`                                              |
@@ -292,7 +292,7 @@ Content-type: application/json
 }
 ```
 
-| Parametr   | Typ    | Povinné | Popis                                                                |
+| Parametr   | Typ    | Vyžadováno | Popis                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | verze     | Řetězec  | Ano      | Verze rozhraní API.                                                    |
 | akce      | Řetězec  | Ano      | Hodnota musí být `ValidationError` .                                           |

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: f58fe342d66c328bdadf41fc965c2952605aea8e
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 5f149dd6db82b66b45a4c995e2004936481af786
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376569"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352418"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Získání analýz pro znalostní bázi
 
@@ -52,7 +52,7 @@ QnA Maker ukládá všechny protokoly chatu a další telemetrii, pokud jste pov
 
 QnA Maker Managed (Preview) používá diagnostické protokolování Azure k ukládání dat telemetrie a protokolů chatu. Pomocí následujících kroků spusťte Ukázkové dotazy, abyste získali analýzy využití QnA Maker znalostní báze.
 
-1. [Povolte protokolování diagnostiky](https://docs.microsoft.com/azure/cognitive-services/diagnostic-logging) pro službu QnA maker Managed (Preview).
+1. [Povolte protokolování diagnostiky](../../diagnostic-logging.md) pro službu QnA maker Managed (Preview).
 
 2. V předchozím kroku vyberte kromě **auditu, operace RequestResponse a AllMetrics** pro protokolování možnost **trasovat** .
 

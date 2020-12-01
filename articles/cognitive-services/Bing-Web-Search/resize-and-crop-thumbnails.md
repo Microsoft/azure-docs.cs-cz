@@ -11,21 +11,21 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: aahi
-ms.openlocfilehash: ac1b636f644784092b5f68f59d787c328478df69
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a85c5b2333418367742678a529b69c95164eda53
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096916"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350479"
 ---
 # <a name="resize-and-crop-thumbnail-images"></a>Změna velikosti a oříznutí obrázků miniatur
 
 > [!WARNING]
-> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 > Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
-> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-Mezi odpovědi z rozhraní API pro vyhledávání Bingu patří adresy URL k obrázkům miniatur poskytovaných bingem, které můžete měnit velikosti a oříznutí a můžou obsahovat parametry dotazu. Například:
+Mezi odpovědi z rozhraní API pro vyhledávání Bingu patří adresy URL k obrázkům miniatur poskytovaných bingem, které můžete měnit velikosti a oříznutí a můžou obsahovat parametry dotazu. Příklad:
 
 `https://<host>/th?id=AMMS_92772df988...&w=110&h=73&rs=1&qlt=80&cdv=1&pid=16.1`
 

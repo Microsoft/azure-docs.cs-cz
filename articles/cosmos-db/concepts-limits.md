@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: de74d7e3cf854f36d122be6a32c7fb4d449c5fe5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f591a9781cb81ec735d22f4f687f8d413923dc93
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175912"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349125"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
@@ -78,8 +78,8 @@ V části Souhrn jsou zde uvedená minimální omezení pro podávání RU.
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-| Minimální počet ru na kontejner ([zřízený režim vyhrazené propustnosti](databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| Minimální počet ru na databázi ([zřízený režim sdílené propustnosti](databases-containers-items.md#azure-cosmos-containers)) | 400 RU/s pro prvních 25 kontejnerů. Další 100 RU/s pro každý kontejner následně. |
+| Minimální počet ru na kontejner ([zřízený režim vyhrazené propustnosti](./account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| Minimální počet ru na databázi ([zřízený režim sdílené propustnosti](./account-databases-containers-items.md#azure-cosmos-containers)) | 400 RU/s pro prvních 25 kontejnerů. Další 100 RU/s pro každý kontejner následně. |
 
 Cosmos DB podporuje programové škálování propustnosti (RU/s) na kontejner nebo databázi prostřednictvím sad SDK nebo portálu.    
 

@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 7abd67ef072303b7f8156a18c2e3ac34758c03dd
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: bd01eaefa457c5ade10a5f1f4b8389d90ed60adf
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364730"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351942"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>Kurz: Sestavení klienta pro kontrolu pravopisu na webové stránce
 
 > [!WARNING]
-> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 > Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
-> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 V tomto kurzu vytvoříme webovou stránku, která uživatelům umožňuje zadávat dotazy do rozhraní API Bingu pro kontrolu pravopisu. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html).
 
@@ -128,7 +128,7 @@ Podpůrná funkce getSubscriptionKeyLocalStorage se nejprve pokusí načíst kl�
     }
 ```
 
-Pomocná funkce GetSubscriptionKey přijímá jeden parametr, **invalidate** (Zneplatnit). Pokud má **invalidate** hodnotu **true** , funkce getSubscriptionKey odstraní soubor cookie, který obsahuje klíč rozhraní API Bingu pro kontrolu pravopisu. Pokud má **invalidate** hodnotu **false** , funkce getSubscriptionKey vrátí hodnotu klíče rozhraní API Bingu pro kontrolu pravopisu.
+Pomocná funkce GetSubscriptionKey přijímá jeden parametr, **invalidate** (Zneplatnit). Pokud má **invalidate** hodnotu **true**, funkce getSubscriptionKey odstraní soubor cookie, který obsahuje klíč rozhraní API Bingu pro kontrolu pravopisu. Pokud má **invalidate** hodnotu **false**, funkce getSubscriptionKey vrátí hodnotu klíče rozhraní API Bingu pro kontrolu pravopisu.
 
 ```html
     function getSubscriptionKey(invalidate) {
@@ -276,7 +276,7 @@ Vytvořte formulář HTML s textovým polem. Zpracujte `onsubmit` událost a zav
 </form>
 ```
 
-Přidejte značku HTML **div** , kterou používáme pro zobrazení výsledků. Kód JavaScript, který jsme definovali dříve, odkazuje právě na tuto značku **div**.
+Přidejte značku HTML **div**, kterou používáme pro zobrazení výsledků. Kód JavaScript, který jsme definovali dříve, odkazuje právě na tuto značku **div**.
 
 ```html
 <h2>Results</h2>
@@ -289,7 +289,7 @@ Přidejte značku HTML **div** , kterou používáme pro zobrazení výsledků. 
 </html>
 ```
 
-Soubor uložte.
+Uložte soubor.
 
 ## <a name="display-results"></a>Zobrazení výsledků
 

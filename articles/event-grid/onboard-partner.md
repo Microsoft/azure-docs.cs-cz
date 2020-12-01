@@ -3,12 +3,12 @@ title: Připojení jako Azure Event Grid partnera pomocí Azure Portal
 description: Pomocí Azure Portal připojit Azure Event Gridho partnera.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 36fab35923b8a536a9054e5dc4bfa4c5b82172a7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8344fcd822bfcdc67e2c27b200d97fa70dfefdf2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102842"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349382"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner-using-the-azure-portal"></a>Připojení jako Azure Event Grid partner používající Azure Portal
 Tento článek popisuje, jak jsou SaaS poskytovatelé třetích stran, označované také jako vydavatelé událostí nebo partneři, k disEvent Grid, aby mohli publikovat události ze svých služeb a jak jsou tyto události spotřebovány koncovými uživateli.
@@ -20,8 +20,8 @@ Tento článek popisuje, jak jsou SaaS poskytovatelé třetích stran, označova
 V kostce, který umožňuje, aby se události vaší služby využívané uživateli obvykle zahrnuje následující postup:
 
 1. Než se pustíte do dalších kroků, **sdělte svému** týmu, že se stane partnerem služby Event Grid Service.
-1. Vytvořte typ partnerského tématu vytvořením **registrace** . 
-1. Vytvořte **obor názvů** .
+1. Vytvořte typ partnerského tématu vytvořením **registrace**. 
+1. Vytvořte **obor názvů**.
 1. Vytvoření **kanálu událostí** a **partnerského tématu** (jeden krok).
 1. Otestujte funkčnost partnerských událostí na konci.
 
@@ -37,14 +37,14 @@ V tomto článku se dozvíte, jak připojit jako partnera Azure Event Grid pomoc
 ## <a name="communicate-your-interest-in-becoming-a-partner"></a>Informujte svůj zájem o tom, jak se stát partnerem
 Vyplňte [Tento formulář](https://aka.ms/gridpartnerform) a obraťte se na Event Grid týmu na adrese [GridPartner@microsoft.com](mailto:GridPartner@microsoft.com) . Budeme mít konverzaci, která poskytuje podrobné informace o případech použití, osoby, procesu připojování, funkcích, cenách a dalších.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 K dokončení zbývajících kroků se ujistěte, že máte:
 
 - Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 - [Tenant](../active-directory/develop/quickstart-create-new-tenant.md)Azure.
 
 ## <a name="register-a-partner-topic-type-optional"></a>Registrace typu tématu partnera (volitelné)
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V levém navigačním podokně vyberte **všechny služby** a pak na panelu hledání zadejte **Event Grid registrace partnerů** a vyberte je. 
 1. Na stránce **Event Grid registrace partnerů** vyberte **+ Přidat** na panelu nástrojů. 
 
@@ -59,19 +59,19 @@ K dokončení zbývajících kroků se ujistěte, že máte:
     1. V části **typ partnerského prostředku** zadejte podrobnosti o typu prostředku, který se zobrazí na stránce pro **vytvoření partnerského tématu** : 
         1. Jako **název typu partnerského prostředku** zadejte název typu prostředku. Toto bude typ partnerského tématu, které se vytvoří ve vašem předplatném Azure. 
         2. Do pole **Zobrazovaný název** zadejte uživatelsky přívětivé zobrazované jméno typu partnerského tématu (prostředku). 
-        3. Zadejte **Popis typu prostředku** . 
-        4. Zadejte **Popis scénáře** . Měli byste vysvětlit způsoby a scénáře, ve kterých se dají používat témata partnerů pro vaše prostředky.  
+        3. Zadejte **Popis typu prostředku**. 
+        4. Zadejte **Popis scénáře**. Měli byste vysvětlit způsoby a scénáře, ve kterých se dají používat témata partnerů pro vaše prostředky.  
 
-            :::image type="content" source="./media/onboard-partner/create-partner-registration-page.png" alt-text="Přidat odkaz na registraci partnera":::            
+            :::image type="content" source="./media/onboard-partner/create-partner-registration-page.png" alt-text="Vytvořit registraci partnera":::            
 1. V dolní části stránky vyberte **Další: vlastní služba** . Na kartě **Služba pro zákazníky** na stránce **vytvořit registraci partnera** zadejte informace, které budou uživatelé předplatitele používat k tomu, aby vás kontaktovali v případě problémů se zdrojem událostí:
-    1. Zadejte **telefonní číslo** .
+    1. Zadejte **telefonní číslo**.
     1. Zadejte **příponu** telefonního čísla.
     1. Zadejte **adresu URL** webu podpory. 
     
-        :::image type="content" source="./media/onboard-partner/create-partner-registration-customer-service.png" alt-text="Přidat odkaz na registraci partnera":::        
+        :::image type="content" source="./media/onboard-partner/create-partner-registration-customer-service.png" alt-text="Vytvoření registrace partnera – zákaznické služby":::        
 1. Vyberte **Další: značky** v dolní části stránky. 
 1. Na stránce **značky** nakonfigurujte následující hodnoty. 
-    1. Zadejte **název** a **hodnotu** značky, kterou chcete přidat. Tento krok je **nepovinný** . 
+    1. Zadejte **název** a **hodnotu** značky, kterou chcete přidat. Tento krok je **nepovinný**. 
     1. V dolní části stránky vyberte **zkontrolovat + vytvořit** , abyste vytvořili registraci (typ tématu partner).
 
 ## <a name="create-a-partner-namespace"></a>Vytvoření oboru názvů partnera
@@ -79,7 +79,7 @@ K dokončení zbývajících kroků se ujistěte, že máte:
 1. V Azure Portal v levém navigačním panelu vyberte **všechny služby** a pak na panelu hledání zadejte **Event Grid obory názvů partnerů** a pak ho vyberte ze seznamu. 
 1. Na stránce **Event Grid obory názvů partnerů** vyberte **+ Přidat** na panelu nástrojů. 
     
-    :::image type="content" source="./media/onboard-partner/add-partner-namespace-link.png" alt-text="Přidat odkaz na registraci partnera":::
+    :::image type="content" source="./media/onboard-partner/add-partner-namespace-link.png" alt-text="Obory názvů partnerů – přidat odkaz":::
 1. Na stránce **vytvořit základy oboru názvů partnera** zadejte následující informace.
     1. V části **Project Details (podrobnosti projektu** ) proveďte následující kroky: 
         1. Vyberte **předplatné** Azure.
@@ -93,11 +93,11 @@ K dokončení zbývajících kroků se ujistěte, že máte:
         1. V rozevíracím seznamu vyberte **registraci partnera** .
     1. Vyberte **Další: značky** v dolní části stránky.
 
-        :::image type="content" source="./media/onboard-partner/create-partner-namespace-basics-page.png" alt-text="Přidat odkaz na registraci partnera":::
+        :::image type="content" source="./media/onboard-partner/create-partner-namespace-basics-page.png" alt-text="Vytvoření stránky s oborem názvů partnera – základy":::
 1. Na stránce **značky** přidejte značky (volitelné).
-    1. Zadejte **název** a **hodnotu** značky, kterou chcete přidat. Tento krok je **nepovinný** .
+    1. Zadejte **název** a **hodnotu** značky, kterou chcete přidat. Tento krok je **nepovinný**.
     1. V dolní části stránky vyberte **zkontrolovat + vytvořit** .         
-1. Na stránce **Revize + vytvořit** si přečtěte podrobnosti a vyberte **vytvořit** . 
+1. Na stránce **Revize + vytvořit** si přečtěte podrobnosti a vyberte **vytvořit**. 
 
 ## <a name="create-an-event-channel"></a>Vytvoření kanálu událostí
 > [!IMPORTANT]
@@ -105,37 +105,37 @@ K dokončení zbývajících kroků se ujistěte, že máte:
 
 1. Přejít na stránku **Přehled** oboru názvů, který jste vytvořili. 
 
-    :::image type="content" source="./media/onboard-partner/partner-namespace-overview.png" alt-text="Přidat odkaz na registraci partnera":::
+    :::image type="content" source="./media/onboard-partner/partner-namespace-overview.png" alt-text="Obor názvů partnera – stránka přehled":::
     partner-namespace-overview.png
 1. Na panelu nástrojů vyberte **+ kanál událostí** . 
 1. Na stránce **základy vytvoření kanálu událostí** zadejte následující informace. 
     1. V části **Podrobnosti kanálu** proveďte tyto kroky:
         1. Jako **název kanálu událostí** zadejte název kanálu událostí. 
-        1. Zadejte **zdroj** . Podívejte se na [specifikace cloudových událostí 1,0](https://github.com/cloudevents/spec/blob/v1.0/spec.md#source-1) , které vám pomůžou získat představu o vhodné hodnotě pro zdroj. Podívejte se také na [příklad tohoto schématu cloudových událostí](cloud-event-schema.md#sample-event-using-cloudevents-schema).
+        1. Zadejte **zdroj**. Podívejte se na [specifikace cloudových událostí 1,0](https://github.com/cloudevents/spec/blob/v1.0/spec.md#source-1) , které vám pomůžou získat představu o vhodné hodnotě pro zdroj. Podívejte se také na [příklad tohoto schématu cloudových událostí](cloud-event-schema.md#sample-event-using-cloudevents-schema).
         1. Zadejte zdroj (co je to?).
     1. V části **Podrobnosti o cíli** zadejte podrobnosti cílového partnerského tématu, které se vytvoří pro tento kanál událostí. 
         1. Zadejte **ID předplatného** , ve kterém se vytvoří partnerské téma. 
         1. Zadejte **název skupiny prostředků** , ve které se vytvoří prostředek partnerského tématu. 
-        1. Zadejte **název partnerského tématu** . 
+        1. Zadejte **název partnerského tématu**. 
     1. Vyberte **Další: filtry** v dolní části stránky. 
     
-        :::image type="content" source="./media/onboard-partner/create-event-channel-basics-page.png" alt-text="Přidat odkaz na registraci partnera":::
+        :::image type="content" source="./media/onboard-partner/create-event-channel-basics-page.png" alt-text="Vytvoření stránky základy kanálu událostí":::
 1. Na stránce **filtry** přidejte filtry. Proveďte následující kroky:
     1. Filtruje atributy každé události. Dostanou pouze události, které odpovídají všem filtrům. Lze zadat až 25 filtrů. Při porovnávání se nerozlišují malá a velká písmena. Platné klíče používané pro filtry se liší v závislosti na schématu události. V následujícím příkladu,, `eventid` , `source` `eventtype` a `eventtypeversioin` lze použít pro klíče. V datové části dat můžete také použít vlastní vlastnosti pomocí `.` operátoru jako vnořování. Například: `data` , `data.key` , `data.key1.key2` .
     1. Vyberte **Další: Další funkce** v dolní části stránky. 
     
-        :::image type="content" source="./media/onboard-partner/create-event-channel-filters-page.png" alt-text="Přidat odkaz na registraci partnera":::
+        :::image type="content" source="./media/onboard-partner/create-event-channel-filters-page.png" alt-text="Vytvoření stránky filtrů kanálu událostí":::
         create-event-channel-filters-page.png
-1. Na stránce **Další funkce** můžete nastavit **čas vypršení platnosti** a **Popis partnerského tématu** . 
+1. Na stránce **Další funkce** můžete nastavit **čas vypršení platnosti** a **Popis partnerského tématu**. 
     1. **Čas vypršení platnosti** je čas, kdy se bude téma a přidružený kanál událostí automaticky odstraňovat, pokud ho zákazník neaktivuje. V případě, že není zadaný čas, použije se výchozí hodnota 7 dní. Zaškrtnutím políčka zadáte vlastní čas vypršení platnosti. 
     1. Vzhledem k tomu, že toto téma je prostředkem, který není vytvořen uživatelem, **Popis** může uživatelům pomáhat s porozuměním povaze tohoto tématu. Pokud není nastavená žádná hodnota, bude k dispozici obecný popis. Zaškrtněte políčko pro nastavení popisu vlastního tématu partnera. 
-    1. Vyberte **Další: Zkontrolovat a vytvořit** . 
+    1. Vyberte **Další: Zkontrolovat a vytvořit**. 
     
-        :::image type="content" source="./media/onboard-partner/create-event-channel-additional-features-page.png" alt-text="Přidat odkaz na registraci partnera":::
+        :::image type="content" source="./media/onboard-partner/create-event-channel-additional-features-page.png" alt-text="Vytvoření kanálu událostí – stránka dalších funkcí":::
 1. Na stránce **zkontrolovat + vytvořit** zkontrolujte nastavení a vyberte **vytvořit** a vytvořte tak kanál událostí. 
 
 ## <a name="next-steps"></a>Další kroky
-- [Témata o partnerech – přehled](partner-topics-overview.md)
+- [Témata o partnerech – přehled](./partner-events-overview.md)
 - [Formulář pro témata týkající se připojování k partnerům](https://aka.ms/gridpartnerform)
 - [Téma Auth0 partner](auth0-overview.md)
 - [Jak používat téma Auth0 partner](auth0-how-to.md)

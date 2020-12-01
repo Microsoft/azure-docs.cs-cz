@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 11/25/2020
 ms.author: chrande
-ms.openlocfilehash: 56ed1e653547b3c0e3469f820eb33155aedb1bcb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c2165ea6273ad90cfb95242dfe72538c0a5ef64c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187200"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350054"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Úvod do rozhraní Gremlin API v Azure Cosmos DB
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -56,7 +56,7 @@ Níže jsou uvedené odlišné funkce Azure Cosmos DB Gremlin API nabízí:
 
 * **Automatické indexování**
 
-  Ve výchozím nastavení Azure Cosmos DB automaticky indexuje všechny vlastnosti v uzlech (označované také jako vrcholy) a hrany v grafu a neočekává ani nevyžaduje žádné schéma nebo vytváření sekundárních indexů. Přečtěte si další informace o [indexování v Azure Cosmos DB](/azure/cosmos-db/index-overview).
+  Ve výchozím nastavení Azure Cosmos DB automaticky indexuje všechny vlastnosti v uzlech (označované také jako vrcholy) a hrany v grafu a neočekává ani nevyžaduje žádné schéma nebo vytváření sekundárních indexů. Přečtěte si další informace o [indexování v Azure Cosmos DB](./index-overview.md).
 
 * **Kompatibilita s Apache TinkerPop**
 

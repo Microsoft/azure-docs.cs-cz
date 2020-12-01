@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 209caaa40f30e579736f228eaa8aaa7916dccb7c
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: a5003a68047c526996ec2c0065e08d5d5829b8ae
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302391"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351652"
 ---
 # <a name="azure-security-baseline-for-azure-defender-for-iot"></a>Základní plán zabezpečení Azure pro Azure Defender pro IoT
 
@@ -22,7 +22,7 @@ Pokud chcete zjistit, jak se v Azure Defenderu pro IoT kompletně mapuje srovná
 
 ## <a name="identity-management"></a>Správa identit
 
-*Další informace najdete v tématu [Srovnávací test zabezpečení Azure: Správa identit](/azure/security/benchmarks/security-controls-v2-identity-management).*
+*Další informace najdete v tématu [Srovnávací test zabezpečení Azure: Správa identit](../security/benchmarks/security-controls-v2-identity-management.md).*
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1: Standardizace Azure Active Directory jako centrálního systému identit a ověřování
 
@@ -40,7 +40,7 @@ Azure AD podporuje externí identitu, která umožňuje uživatelům bez účet 
 
 - [Vytvoření a konfigurace instance Azure AD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) 
 
-- [Použít externí zprostředkovatele identity pro aplikaci](/azure/active-directory/b2b/identity-providers) 
+- [Použít externí zprostředkovatele identity pro aplikaci](../active-directory/external-identities/identity-providers.md) 
 
 - [Jaké je bezpečné skóre identity v Azure Active Directory](../active-directory/fundamentals/identity-secure-score.md)
 
@@ -99,9 +99,9 @@ Rozšířená ochrana před internetovými útoky (ATP) v Azure je řešení zab
 
 - [Sestavy aktivit auditu v Azure AD](../active-directory/reports-monitoring/concept-audit-logs.md) 
 
-- [Zobrazení rizikových přihlášení Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins) 
+- [Zobrazení rizikových přihlášení Azure AD](../active-directory/identity-protection/overview-identity-protection.md) 
 
-- [Identifikace uživatelů Azure AD označených příznakem rizikové aktivity](/azure/active-directory/reports-monitoring/concept-user-at-risk) 
+- [Identifikace uživatelů Azure AD označených příznakem rizikové aktivity](../active-directory/identity-protection/overview-identity-protection.md) 
 
 - [Monitorování identit a aktivit přístupu uživatelů ve službě Azure Security Center](../security-center/security-center-identity-access.md) 
 
@@ -115,7 +115,7 @@ Rozšířená ochrana před internetovými útoky (ATP) v Azure je řešení zab
 
 ## <a name="privileged-access"></a>Privilegovaný přístup
 
-*Další informace najdete v tématu [Srovnávací test zabezpečení Azure: Privilegovaný přístup](/azure/security/benchmarks/security-controls-v2-privileged-access).*
+*Další informace najdete v tématu [Srovnávací test zabezpečení Azure: Privilegovaný přístup](../security/benchmarks/security-controls-v2-privileged-access.md).*
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2: omezení přístupu pro správu na systémy kritické pro podnikání
 
@@ -141,7 +141,7 @@ Všechny typy ovládacích prvků přístupu by se měly zarovnávat na strategi
 
 Měli byste zajistit, aby pověření (například heslo, certifikát nebo čipová karta) pro účty pro nouzový přístup byla zabezpečená a známá jenom jednotlivcům, kteří jsou oprávněni je používat jenom v nouzi.
 
-- [Správa účtů pro nouzový přístup v Azure AD](/azure/active-directory/users-groups-roles/directory-emergency-access)
+- [Správa účtů pro nouzový přístup v Azure AD](../active-directory/roles/security-emergency-access.md)
 
 **Monitorování služby Azure Security Center:** Neuvedeno
 
@@ -177,7 +177,7 @@ Využijte k přidělování oprávnění předdefinované role a vlastní role v
 
 ## <a name="data-protection"></a>Ochrana dat
 
-*Další informace najdete v tématu [Srovnávací test zabezpečení Azure: Ochrana dat](/azure/security/benchmarks/security-controls-v2-data-protection).*
+*Další informace najdete v tématu [Srovnávací test zabezpečení Azure: Ochrana dat](../security/benchmarks/security-controls-v2-data-protection.md).*
 
 ### <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1: Zjišťování, klasifikace a označování citlivých dat
 
@@ -189,7 +189,7 @@ Služba Azure SQL Information Protection vám může pomoct s klasifikací a ozn
 
 - [Označování citlivých informací s využitím služby Azure Information Protection](/azure/information-protection/what-is-information-protection) 
 
-- [Implementace zjišťování dat Azure SQL](/azure/sql-database/sql-database-data-discovery-and-classification)
+- [Implementace zjišťování dat Azure SQL](../azure-sql/database/data-discovery-and-classification-overview.md)
 
 **Monitorování služby Azure Security Center:** Neuvedeno
 
@@ -231,7 +231,7 @@ Ve výchozím nastavení poskytuje Azure šifrování dat při přenosu mezi dat
 
 ## <a name="asset-management"></a>Správa aktiv
 
-*Další informace najdete v tématu [Srovnávací test zabezpečení Azure: Správa prostředků](/azure/security/benchmarks/security-controls-v2-asset-management).*
+*Další informace najdete v tématu [Srovnávací test zabezpečení Azure: Správa prostředků](../security/benchmarks/security-controls-v2-asset-management.md).*
 
 ### <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1: Zajištění přehledu bezpečnostního týmu o rizicích pro prostředky
 
@@ -289,7 +289,7 @@ Pokud už je nepotřebujete, odeberte prostředky Azure.
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
-*Další informace najdete v tématu [Srovnávací test zabezpečení Azure: Reakce na incidenty](/azure/security/benchmarks/security-controls-v2-incident-response).*
+*Další informace najdete v tématu [Srovnávací test zabezpečení Azure: Reakce na incidenty](../security/benchmarks/security-controls-v2-incident-response.md).*
 
 ### <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1: Příprava – Aktualizace procesu reakce na incidenty pro Azure
 
@@ -371,7 +371,7 @@ Kromě toho můžete prostředky označit pomocí značek a vytvořit systém vy
 
 - [Výstrahy zabezpečení ve službě Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-- [Používání značek k uspořádání prostředků Azure](/azure/azure-resource-manager/resource-group-using-tags)
+- [Používání značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -412,7 +412,7 @@ Postupujte podle pravidel penetračního testování cloudu Microsoftu, abyste z
 
 ## <a name="governance-and-strategy"></a>Zásady správného řízení a strategie
 
-*Další informace najdete v tématu [Srovnávací test zabezpečení Azure: Zásady správného řízení a strategie](/azure/security/benchmarks/security-controls-v2-governance-strategy).*
+*Další informace najdete v tématu [Srovnávací test zabezpečení Azure: Zásady správného řízení a strategie](../security/benchmarks/security-controls-v2-governance-strategy.md).*
 
 ### <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1: Definování strategie správy prostředků a ochrany dat 
 
@@ -437,11 +437,11 @@ Tato strategie by měla zahrnovat zdokumentované pokyny, zásady a standardy pr
 -   Příslušné kryptografické standardy
 
 Další informace najdete na následujících odkazech:
-- [Doporučení pro architekturu zabezpečení Azure – Úložiště, data a šifrování](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
+- [Doporučení pro architekturu zabezpečení Azure – Úložiště, data a šifrování](/azure/architecture/framework/security/storage-data-encryption?amp;bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
 
 - [Základy zabezpečení Azure – Zabezpečení dat v Azure, šifrování a úložiště](../security/fundamentals/encryption-overview.md)
 
-- [Cloud Adoption Framework – Osvědčené postupy šifrování a zabezpečení dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
+- [Cloud Adoption Framework – Osvědčené postupy šifrování a zabezpečení dat v Azure](../security/fundamentals/data-encryption-best-practices.md?amp;bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
 - [Srovnávací test zabezpečení Azure – Správa prostředků](/azure/security/benchmarks/security-controls-v2-asset-management)
 
@@ -592,5 +592,5 @@ Další informace najdete na následujících odkazech:
 
 ## <a name="next-steps"></a>Další kroky
 
-- Projděte si [přehled srovnávacího testu zabezpečení Azure v2](/azure/security/benchmarks/overview).
-- Přečtěte si další informace o [standardních hodnotách zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview).
+- Projděte si [přehled srovnávacího testu zabezpečení Azure v2](../security/benchmarks/overview.md).
+- Přečtěte si další informace o [standardních hodnotách zabezpečení Azure](../security/benchmarks/security-baselines-overview.md).

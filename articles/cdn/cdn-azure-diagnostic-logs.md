@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
-ms.openlocfilehash: e5d84616e70d2a28abf3937b485f4fcf5258c43e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fdb609a243656e2c75159cd2d4e70e2f965ae896
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779403"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352112"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>Diagnostické protokoly – Azure Content Delivery Network
 
@@ -44,7 +44,7 @@ Postupujte podle těchto kroků a povolte protokolování pro Azure CDN koncový
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
-2. V Azure Portal přejděte na **všechny prostředky** , které  ->  **profil-CDN Profile** .
+2. V Azure Portal přejděte na **všechny prostředky**, které  ->  **profil-CDN Profile** .
 
 2. Vyberte koncový bod CDN, pro který chcete povolit diagnostické protokoly:
 
@@ -52,26 +52,26 @@ Postupujte podle těchto kroků a povolte protokolování pro Azure CDN koncový
 
 3. V části **monitorování** vyberte **protokoly diagnostiky** :
 
-    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="Vyberte koncový bod CDN." border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="Vyberte diagnostické protokoly." border="true":::
 
 ### <a name="enable-logging-with-azure-storage"></a>Povolit protokolování pomocí Azure Storage
 
 Pokud chcete použít účet úložiště pro ukládání protokolů, postupujte podle těchto kroků:
 
  >[!NOTE] 
- >K provedení těchto kroků je nutný účet úložiště. Další informace najdete v tématu: **[Vytvoření účtu Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%252fazure%252fstorage%252fblobs%252ftoc.json)** .
+ >K provedení těchto kroků je nutný účet úložiště. Další informace najdete v tématu: **[Vytvoření účtu Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)** .
     
 1. Jako **název nastavení diagnostiky** zadejte název nastavení diagnostického protokolu.
  
-2. Vyberte možnost **archivovat do účtu úložiště** a pak vyberte **CoreAnalytics** . 
+2. Vyberte možnost **archivovat do účtu úložiště** a pak vyberte **CoreAnalytics**. 
 
 3. V poli **Doba uchování (dny)** vyberte počet dnů uchování. Uchovávání nulových dnů ukládá protokoly po neomezenou dobu. 
 
 4. Vyberte předplatné a účet úložiště pro protokoly.
 
-    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="Vyberte koncový bod CDN." border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="Diagnostické protokoly – úložiště." border="true":::
 
-3. Vyberte **Uložit** .
+3. Vyberte **Uložit**.
 
 ### <a name="send-to-log-analytics"></a>Odeslání do Log Analytics
 
@@ -82,13 +82,13 @@ Pokud chcete použít Log Analytics pro protokoly, postupujte podle těchto krok
     
 1. Jako **název nastavení diagnostiky** zadejte název nastavení diagnostického protokolu.
 
-2. Vyberte **Odeslat do Log Analytics** a pak vyberte **CoreAnalytics** . 
+2. Vyberte **Odeslat do Log Analytics** a pak vyberte **CoreAnalytics**. 
 
 3. Vyberte předplatné a Log Analytics pracovní prostor pro protokoly.
 
-   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="Vyberte koncový bod CDN." border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="Diagnostické protokoly – Log Analytics." border="true":::
 
-4. Vyberte **Uložit** .
+4. Vyberte **Uložit**.
 
 ### <a name="stream-to-an-event-hub"></a>Streamovat do centra událostí
 
@@ -99,13 +99,13 @@ Pokud chcete použít centrum událostí pro protokoly, postupujte podle těchto
     
 1. Jako **název nastavení diagnostiky** zadejte název nastavení diagnostického protokolu.
 
-2. Vyberte **Stream do centra událostí** a pak vyberte **CoreAnalytics** . 
+2. Vyberte **Stream do centra událostí** a pak vyberte **CoreAnalytics**. 
 
 3. Vyberte obor názvů pro odběr a centrum událostí pro protokoly.
 
-   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="Vyberte koncový bod CDN." border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="Diagnostické protokoly – centrum událostí." border="true":::
 
-4. Vyberte **Uložit** .
+4. Vyberte **Uložit**.
 
 
 ## <a name="enable-logging-with-powershell"></a>Povolení protokolování prostřednictvím PowerShellu
@@ -190,8 +190,8 @@ Pokud si chcete nástroj stáhnout, přečtěte si téma [Průzkumník služby A
 1.  Otevřít **Průzkumník služby Microsoft Azure Storage**
 2.  Vyhledání účtu úložiště
 3.  Rozbalte uzel **kontejnery objektů BLOB** pod tímto účtem úložiště.
-4.  Vyberte kontejner s názvem *Insights-logs-coreanalytics* .
-5.  Výsledky se zobrazí v pravém podokně, počínaje první úrovní, jako *ResourceID =* . Pokračujte v výběru všech úrovní, dokud soubor nenajdete *PT1H.js* . Vysvětlení cesty najdete v tématu [Formát cesty objektu BLOB](cdn-azure-diagnostic-logs.md#blob-path-format).
+4.  Vyberte kontejner s názvem *Insights-logs-coreanalytics*.
+5.  Výsledky se zobrazí v pravém podokně, počínaje první úrovní, jako *ResourceID =*. Pokračujte v výběru všech úrovní, dokud soubor nenajdete *PT1H.js*. Vysvětlení cesty najdete v tématu [Formát cesty objektu BLOB](cdn-azure-diagnostic-logs.md#blob-path-format).
 6.  Každý objekt BLOB *PT1H.jsv* souboru představuje protokoly analýz na jednu hodinu pro konkrétní koncový bod CDN nebo jeho vlastní doménu.
 7.  Schéma obsahu tohoto souboru JSON je popsané v části schéma základních protokolů analýzy.
 
@@ -229,7 +229,7 @@ Tady je postup, jak můžete použít nástroj:
 
 ## <a name="log-data-delays"></a>Zpoždění dat protokolu
 
-Následující tabulka ukazuje zpoždění dat protokolu pro **Azure CDN Standard od společnosti Microsoft** , **Azure CDN Standard od Akamai** a **Azure CDN úrovně Standard/Premium z Verizon** .
+Následující tabulka ukazuje zpoždění dat protokolu pro **Azure CDN Standard od společnosti Microsoft**, **Azure CDN Standard od Akamai** a **Azure CDN úrovně Standard/Premium z Verizon**.
 
 Zpoždění dat protokolu Microsoft | Zpoždění dat protokolu Verizon | Zpoždění dat protokolu Akamai
 --- | --- | ---
@@ -249,7 +249,7 @@ V následující tabulce je uveden seznam metrik dostupných v základních prot
 Ne všechny metriky jsou dostupné ze všech zprostředkovatelů, i když jsou tyto rozdíly minimální. Tabulka také zobrazuje, zda je daná metrika k dispozici od poskytovatele. Metriky jsou k dispozici pouze pro koncové body CDN, které na ně mají provoz.
 
 
-|Metrika                     | Popis | Partnerský vztah Microsoftu | Verizon | Akamai |
+|Metric                     | Popis | Partnerský vztah Microsoftu | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
 | RequestCountTotal         | Celkový počet přístupů k žádosti v průběhu tohoto období. | Ano | Ano |Ano |
 | RequestCountHttpStatus2xx | Počet všech požadavků, které vedly k 2xx kódu HTTP (například 200, 202). | Ano | Ano |Ano |

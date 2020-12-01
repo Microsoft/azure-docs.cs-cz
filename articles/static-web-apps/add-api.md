@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: e0af8e0674a15c98fadbedfa42f735d269b3de2b
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 53be2ee9b6b3ab46f081747aec58b9c99fc54f0d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920487"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349952"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Přidání rozhraní API do služby Azure static Web Apps Preview pomocí Azure Functions
 
@@ -32,7 +32,7 @@ Do služby Azure static Web Apps můžete přidat rozhraní API bez serveru pros
 
 Následující kroky ukazují, jak vytvořit nové úložiště a klonovat soubory do počítače.
 
-1. Ujistěte se, že jste přihlášeni k GitHubu, a přejděte k https://github.com/staticwebdev/vanilla-basic/generate Vytvoření nového úložiště.
+1. Ujistěte se, že jste přihlášeni k GitHubu, a přejděte k [https://github.com/staticwebdev/vanilla-basic/generate](https://github.com/login?return_to=/staticwebdev/vanilla-basic/generate) Vytvoření nového úložiště.
 1. Do pole _název úložiště_ zadejte **My-Vanilla-API**.
 1. Klikněte na **vytvořit úložiště ze šablony**.
 
@@ -268,7 +268,7 @@ Pokud nechcete, aby se tato aplikace nadále používala k dalšímu použití, 
 1. Klikněte na **skupiny prostředků** .
 1. Vybrat **myResourceGroup**
 1. Na stránce _myResourceGroup_ se ujistěte, že uvedené prostředky jsou ty, které chcete odstranit.
-1. Vybrat **Odstranit**
+1. Vyberte **Odstranit**.
 1. Do textového pole zadejte **myResourceGroup** .
 1. Vyberte **Odstranit**.
 

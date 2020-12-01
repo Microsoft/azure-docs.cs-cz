@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/25/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 8ae8108c52e150625540c8b13fa66a03f985ba5a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8205ecab3abfc7a944c12db1aca2bf594f6cd98f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184616"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349448"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -56,7 +56,7 @@ Tady jsou odkazy na informace, které vám pomůžou začít:
 
 * Pomocí kurzu [připojení aplikace MongoDB k Azure Cosmos DB](connect-mongodb-account.md) se dozvíte, jak získat informace o připojovacím řetězci k účtu.
 * Postupujte podle kurzu [použití studia 3T with Azure Cosmos DB](mongodb-mongochef.md) a Naučte se, jak vytvořit propojení mezi databází Cosmos a aplikací MongoDB v studiu 3T.
-* Postupujte podle kurzu [Import MongoDB data do Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json) a importujte data do databáze Cosmos.
+* Postupujte podle kurzu [Import MongoDB data do Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json) a importujte data do databáze Cosmos.
 * Připojte se k účtu Cosmos pomocí [Robo 3T](mongodb-robomongo.md).
 * Naučte se [konfigurovat předvolby pro čtení globálně distribuovaných aplikací](../cosmos-db/tutorial-global-distribution-mongodb.md).
 * V našem [Průvodci odstraňováním potíží](mongodb-troubleshoot.md) najdete řešení pro běžně nalezené chyby.

@@ -4,12 +4,12 @@ description: Naučte se programově přistupovat k přihlašovacím údajům z K
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 25cb05374fc0667306e2b1004b3cd237413b4409
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: b8b3d2655e79862c068aa48c29c7e89b7df85482
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337487"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350683"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>Zabezpečený přístup ke Key Vaultu s využitím služby Batch
 
@@ -67,7 +67,7 @@ Adresy URL pro aplikaci nejsou důležité, protože je používáme pro příst
 
 ## <a name="grant-rights-to-key-vault"></a>Udělit práva Key Vault
 
-Instanční objekt vytvořený v předchozím kroku potřebuje oprávnění k načtení tajných kódů z Key Vault. Oprávnění lze udělit buď prostřednictvím [Azure Portal](/azure/key-vault/general/assign-access-policy-portal) , nebo pomocí příkazu PowerShellu níže.
+Instanční objekt vytvořený v předchozím kroku potřebuje oprávnění k načtení tajných kódů z Key Vault. Oprávnění lze udělit buď prostřednictvím [Azure Portal](../key-vault/general/assign-access-policy-portal.md) , nebo pomocí příkazu PowerShellu níže.
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"https://batch.mydomain.com' -PermissionsToSecrets 'Get'
@@ -94,7 +94,7 @@ if($psModuleCheck.count -eq 0) {
 
 ## <a name="access-key-vault"></a>Přístup ke službě Key Vault
 
-Nyní jste připraveni získat přístup k Key Vault ve skriptech spuštěných na uzlech služby Batch. Aby bylo možné získat přístup k Key Vault ze skriptu, stačí pro váš skript ověřit službu Azure AD pomocí certifikátu. Pokud to chcete provést v prostředí PowerShell, použijte následující příklady příkazů. Zadejte odpovídající identifikátor GUID pro **kryptografický otisk** , **ID aplikace** (ID objektu služby) a **ID tenanta** (tenant, ve kterém se nachází instanční objekt).
+Nyní jste připraveni získat přístup k Key Vault ve skriptech spuštěných na uzlech služby Batch. Aby bylo možné získat přístup k Key Vault ze skriptu, stačí pro váš skript ověřit službu Azure AD pomocí certifikátu. Pokud to chcete provést v prostředí PowerShell, použijte následující příklady příkazů. Zadejte odpovídající identifikátor GUID pro **kryptografický otisk**, **ID aplikace** (ID objektu služby) a **ID tenanta** (tenant, ve kterém se nachází instanční objekt).
 
 ```powershell
 Add-AzureRmAccount -ServicePrincipal -CertificateThumbprint -ApplicationId

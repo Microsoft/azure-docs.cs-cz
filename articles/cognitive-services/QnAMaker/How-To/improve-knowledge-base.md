@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: dcf912f431d578a6e678801d3dc8f4e11484ea78
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a77083c721328a8df9facd2f4b320b863aa03c68
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997014"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352401"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Přijetí dotazů na aktivní učení ve znalostní bázi Knowledge Base
 
@@ -22,7 +22,7 @@ Aktivní učení mění znalostní bázi nebo Search Service, když schválíte 
 
 ## <a name="turn-on-active-learning"></a>Aktivace aktivního učení
 
-Chcete-li zobrazit navrhované otázky, je nutné [zapnout službu Active Learning](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/active-learning-suggestions) pro váš QnA maker prostředek.
+Chcete-li zobrazit navrhované otázky, je nutné [zapnout službu Active Learning](../concepts/active-learning-suggestions.md) pro váš QnA maker prostředek.
 
 ## <a name="view-suggested-questions"></a>Zobrazit navrhované otázky
 

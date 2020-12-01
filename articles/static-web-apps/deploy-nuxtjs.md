@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: bc11dd6113bbf5b07e19b83735c83e4895e4a796
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 919688a05081c6f0b717fa4a524da769f2a281fd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323591"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351618"
 ---
 # <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps-preview"></a>Nasazení Nuxt.js webů vygenerovaných serverem ve službě Azure static Web Apps Preview
 
 V tomto kurzu se naučíte nasadit [Nuxt.js](https://nuxtjs.org) generovaný statický web do služby [Azure static Web Apps](overview.md). Pokud chcete začít, naučíte se, jak nastavit, nakonfigurovat a nasadit aplikaci Nuxt.js. Během tohoto procesu se naučíte také řešit běžné výzvy, které se často vyskytují při generování statických stránek pomocí Nuxt.js
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/).
 - Účet GitHub. [Vytvořte si účet zdarma](https://github.com/join).
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte nasadit [Nuxt.js](https://nuxtjs.org) generovaný sta
 Můžete nastavit nový Nuxt.js projekt pomocí `create-nuxt-app` . Místo nového projektu můžete v tomto kurzu začít klonovat stávající úložiště. Toto úložiště je nastavené tak, aby předvedlo, jak nasadit dynamickou aplikaci Nuxt.js jako statickou lokalitu.
 
 1. Vytvořte nové úložiště pod účtem GitHub z úložiště šablon.
-1. Přejděte na adresu <http://github.com/staticwebdev/nuxtjs-starter/generate>.
+1. Přejít na [http://github.com/staticwebdev/nuxtjs-starter/generate](https://github.com/login?return_to=/staticwebdev/nuxtjs-starter/generate)
 1. Pojmenování úložiště **nuxtjs-Starter**
 1. Pak na svém počítači naklonujte nové úložiště. Nezapomeňte nahradit <YOUR_GITHUB_ACCOUNT_NAME> název svého účtu.
 
@@ -62,13 +62,13 @@ Přejděte na adresu `http://localhost:3000` a otevřete aplikaci, kde by se mě
 
 Když kliknete na architekturu nebo knihovnu, měla by se zobrazit Stránka s podrobnostmi o vybrané položce:
 
-:::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-details.png" alt-text="Spustit aplikaci Nuxt.js":::
+:::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-details.png" alt-text="Stránka podrobností":::
 
 ## <a name="generate-a-static-website-from-nuxtjs-build"></a>Vygenerování statického webu z Nuxt.js sestavení
 
 Když vytváříte lokalitu Nuxt.js pomocí nástroje `npm run build` , je aplikace sestavena jako tradiční webová aplikace, nikoli jako statická lokalita. Chcete-li vygenerovat statickou lokalitu, použijte následující konfiguraci aplikace.
 
-1. Aktualizujte _package.js_skript sestavení tak, aby vygeneroval pouze statickou lokalitu pomocí `nuxt generate` příkazu:
+1. Aktualizujte _package.js_ skript sestavení tak, aby vygeneroval pouze statickou lokalitu pomocí `nuxt generate` příkazu:
 
     ```json
     "scripts": {
@@ -125,12 +125,12 @@ Následující kroky ukazují, jak propojit aplikaci, kterou jste právě odesla
 1. Klikněte na **Vytvořit**.
 
 1. V rozevíracím seznamu *předplatné* vyberte předplatné nebo použijte výchozí hodnotu.
-1. V rozevíracím seznamu *Skupina prostředků* klikněte na **Nový** odkaz. Do *nového názvu skupiny prostředků*zadejte **mystaticsite** a klikněte na **OK** .
+1. V rozevíracím seznamu *Skupina prostředků* klikněte na **Nový** odkaz. Do *nového názvu skupiny prostředků* zadejte **mystaticsite** a klikněte na **OK** .
 1. Do textového pole **název** zadejte globálně jedinečný název vaší aplikace. Mezi platné znaky patří `a-z` , `A-Z` , `0-9` a `-` . Tato hodnota se používá jako předpona adresy URL vaší statické aplikace ve formátu `https://<APP_NAME>.azurestaticapps.net` .
 1. V rozevíracím seznamu *oblast* vyberte oblast, která je pro vás nejblíže.
 1. V rozevíracím seznamu SKU vyberte **volné** .
 
-   :::image type="content" source="media/deploy-nuxtjs/create-static-web-app.png" alt-text="Spustit aplikaci Nuxt.js":::
+   :::image type="content" source="media/deploy-nuxtjs/create-static-web-app.png" alt-text="Vytvoření statické webové aplikace":::
 
 ### <a name="add-a-github-repository"></a>Přidat úložiště GitHub
 
@@ -141,7 +141,7 @@ Nový účet statického Web Apps potřebuje přístup k úložišti pomocí apl
 1. Vyhledejte a vyberte název úložiště, které jste vytvořili dříve.
 1. Z rozevíracího seznamu *větev* vyberte možnost **Hlavní** jako větev.
 
-   :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="Spustit aplikaci Nuxt.js":::
+   :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="Připojení ke GitHubu":::
 
 ### <a name="configure-the-build-process"></a>Konfigurace procesu sestavení
 
@@ -149,7 +149,7 @@ Statická Web Apps Azure je sestavená tak, aby automaticky provedla běžné ú
 
 1. Chcete-li nakonfigurovat statickou výstupní složku, klikněte na kartu **sestavení** .
 
-      :::image type="content" source="media/deploy-nuxtjs/build-tab.png" alt-text="Spustit aplikaci Nuxt.js":::
+      :::image type="content" source="media/deploy-nuxtjs/build-tab.png" alt-text="Karta sestavení":::
 
 1. Do textového pole *umístění artefaktu aplikace* zadejte text **DIST** .
 
@@ -178,7 +178,7 @@ Vraťte se do terminálu a spusťte následující příkaz `git pull origin mas
 
 Přejděte k nově nasazenému webu a klikněte na jedno z log rozhraní nebo loga knihovny. Místo toho, abyste získali stránku s podrobnostmi, dostanete chybovou stránku 404.
 
-:::image type="content" source="media/deploy-nuxtjs/404-in-production.png" alt-text="Spustit aplikaci Nuxt.js":::
+:::image type="content" source="media/deploy-nuxtjs/404-in-production.png" alt-text="404 na dynamických trasách":::
 
 Důvodem je, Nuxt.js vygenerovali statickou lokalitu, pouze pro domovskou stránku. Nuxt.js může generovat ekvivalentní statické `.html` soubory pro každý `.vue` soubor stránky, ale dojde k výjimce. 
 
@@ -215,7 +215,7 @@ Pokud se jedná o dynamickou stránku, například `_id.vue` nebude mít dostate
 
 2. Nahrajte nové změny do úložiště GitHubu a počkejte pár minut, než akce GitHubu znovu vytvoří váš web. Po dokončení sestavení se zobrazí chyba 404.
 
-   :::image type="content" source="media/deploy-nuxtjs/404-in-production-fixed.png" alt-text="Spustit aplikaci Nuxt.js":::
+   :::image type="content" source="media/deploy-nuxtjs/404-in-production-fixed.png" alt-text="404 na pevných dynamických trasách":::
 
 > [!div class="nextstepaction"]
 > [Nastavení vlastní domény](custom-domain.md)

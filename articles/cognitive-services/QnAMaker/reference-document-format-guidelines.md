@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 04/06/2020
-ms.openlocfilehash: d35ea57a68e500deffa99033b83114ec518dd5e3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1bf6eebcfc43452dd9a62e4a49f9aacbcd517ffc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993801"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352231"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>Pokyny pro formát importovaných dokumentů a adres URL
 
@@ -22,7 +22,7 @@ Po importu souboru nebo adresy URL QnA Maker převádí a ukládá obsah ve [for
 
 Pokud přidáte nebo upravíte svůj obsah přímo ve znalostní bázi, použijte **formátování Markdownu** k vytvoření formátovaného textu nebo změňte obsah formátu Markdownu, který je již v odpovědi. QnA Maker podporuje většinu formátu Markdownu, aby bylo možné do obsahu dostat možnosti formátovaného textu. Klientská aplikace, jako je například robot pro chat, nemusí podporovat stejnou sadu formátů Markdownu. Je důležité otestovat zobrazení odpovědí klientské aplikace.
 
-Podívejte se na úplný seznam [typů obsahu a příklady](./Concepts/content-types.md#file-and-url-data-types).
+Podívejte se na úplný seznam [typů obsahu a příklady](./concepts/data-sources-and-content.md#content-types-of-documents-you-can-add-to-a-knowledge-base).
 
 ## <a name="basic-document-formatting"></a>Základní formátování dokumentu
 
@@ -118,4 +118,4 @@ Import znalostní báze nahrazuje obsah stávající znalostní báze. Import vy
 
 ## <a name="next-steps"></a>Další kroky
 
-Zobrazit úplný seznam [typů obsahu a příklady](./Concepts/content-types.md#file-and-url-data-types)
+Zobrazit úplný seznam [typů obsahu a příklady](./concepts/data-sources-and-content.md#content-types-of-documents-you-can-add-to-a-knowledge-base)

@@ -1,6 +1,6 @@
 ---
-title: Migrace spravované image do galerie sdílených imagí
-description: Naučte se používat Azure PowerShell k migraci spravované image do verze image v galerii sdílených imagí.
+title: Klonování spravované image do galerie sdílených imagí
+description: Naučte se, jak pomocí Azure PowerShell naklonovat spravovanou image do verze image v galerii sdílených imagí.
 author: cynthn
 ms.topic: how-to
 ms.service: virtual-machines
@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1c57d9d283714da6905335fd3167c4f8a69292f8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 92cae59978b172993c779e9a486ff67d82309800
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964877"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349918"
 ---
-# <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>Migrace ze spravované image do image galerie sdílených imagí
+# <a name="clone-a-managed-image-to-a-shared-image-gallery-image"></a>Naklonování spravované image do image galerie sdílených imagí
 
-Pokud máte existující spravovanou bitovou kopii, kterou byste chtěli migrovat do sdílené Galerie imagí, můžete vytvořit image galerie sdílených imagí přímo ze spravované image. Jakmile otestujete novou bitovou kopii, můžete zdrojovou spravovanou bitovou kopii odstranit. Můžete také migrovat ze spravované image do galerie sdílených imagí pomocí [Azure CLI](image-version-managed-image-cli.md).
+Pokud máte existující spravovanou bitovou kopii, kterou byste chtěli klonovat a přesunout do galerie sdílených imagí, můžete vytvořit image galerie sdílených imagí přímo ze spravované image. Jakmile otestujete novou bitovou kopii, můžete zdrojovou spravovanou bitovou kopii odstranit. Můžete také migrovat ze spravované image do galerie sdílených imagí pomocí [Azure CLI](image-version-managed-image-cli.md).
 
 Obrázky v galerii obrázků mají dvě komponenty, které vytvoříme v tomto příkladu:
 - **Definice obrázku** obsahuje informace o imagi a požadavcích na jejich použití. To zahrnuje, zda se jedná o obrázek Windows nebo Linux, specializované nebo zobecněné, poznámky k verzi a minimální a maximální požadavky na paměť. Je definicí typu obrázku. 

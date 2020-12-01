@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: cb828eeb408a170b93ffc73b58f14b3f7a883cc4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: bef5942707c1ded22ba82bdb0d945b9fdb23fffa
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95247230"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349346"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Konfigurace deklarací identity skupin pro aplikace s Azure Active Directory
 
@@ -58,7 +58,7 @@ Pokud však existující aplikace očekává využívání informací o skupině
 
 - Při použití členství ve skupině pro účely autorizace v aplikaci je vhodnější použít identifikátor ObjectID skupiny. Identifikátor ObjectID skupiny je neměnný a jedinečný v Azure Active Directory a k dispozici pro všechny skupiny.
 - Pokud pro autorizaci používáte místní skupinu sAMAccountName, použijte kvalifikované názvy domény;  Nejedná se o nemožnost konfliktu názvů. parametr sAMAccountName může být v rámci domény služby Active Directory jedinečný, ale pokud je více než jedna doména služby Active Directory synchronizována s Azure Active Directory tenant, existuje možnost, že více než jedna skupina bude mít stejný název.
-- Zvažte použití [aplikačních rolí](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) k zajištění vrstvy nepřímých odkazů mezi členstvím ve skupině a aplikací.   Aplikace pak provede interní rozhodnutí o autorizaci na základě role Clams v tokenu.
+- Zvažte použití [aplikačních rolí](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) k zajištění vrstvy nepřímých odkazů mezi členstvím ve skupině a aplikací.   Aplikace pak provede interní rozhodnutí o autorizaci na základě deklarací identity rolí v tokenu.
 - Pokud je aplikace nakonfigurovaná tak, aby získala atributy skupin synchronizované ze služby Active Directory, a skupina tyto atributy neobsahuje, nebude součástí deklarací identity.
 - Deklarace skupiny v tokenech zahrnují vnořené skupiny s výjimkou případů, kdy se používá možnost k omezení deklarací identity skupin na skupiny přiřazené k aplikaci.  Pokud je uživatel členem skupiny GroupB a GroupB je členem skupiny, pak budou deklarace skupiny pro uživatele obsahovat obě skupiny a GroupB. Pokud mají uživatelé organizace velký počet členství ve skupinách, může počet skupin uvedených v tokenu zvětšit velikost tokenu.  Azure Active Directory omezuje počet skupin, které bude generovat v tokenu do 150 pro kontrolní výrazy SAML a 200 pro token JWT.  Pokud je uživatel členem většího počtu skupin, jsou vynechány skupiny a místo toho budou zahrnuty odkazy na koncový bod grafu pro získání informací o skupině.
 
@@ -148,7 +148,7 @@ Platné hodnoty jsou:
 | **Proměnná** | Vygeneruje pouze skupiny, které jsou explicitně přiřazeny k aplikaci a uživatel je členem |
 | **NTato** | Nevrátí se žádné skupiny. (Nejedná se o případ – Sensetive, takže žádná funguje stejně a dá se nastavit přímo v manifestu aplikace.) |
 
-   Například:
+   Příklad:
 
    ```json
    "groupMembershipClaims": "SecurityGroup"

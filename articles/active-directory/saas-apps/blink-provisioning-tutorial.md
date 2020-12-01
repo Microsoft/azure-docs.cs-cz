@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 717500050aff89964ff959a4741aed01533ada70
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 886d6ff1d3437a9d45bdabc68b2bf3ab8cdaa3ef
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357126"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349969"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Kurz: Konfigurace blikání pro Automatické zřizování uživatelů
 
@@ -72,7 +72,7 @@ Před konfigurací blikání pro Automatické zřizování uživatelů pomocí A
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **blikající** , na panelu výsledků vyberte **blikající** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **blikající**, na panelu výsledků vyberte **blikající** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Blikání v seznamu výsledků](common/search-new-app.png)
 

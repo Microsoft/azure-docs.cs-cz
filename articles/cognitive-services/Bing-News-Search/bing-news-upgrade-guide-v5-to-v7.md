@@ -10,19 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: fe9511df5fb290853dbd6cb8d39fed4e289fca4d
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: a114cb24d79189f9e370fae1962f60ca97241d90
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366413"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351363"
 ---
 # <a name="news-search-api-upgrade-guide"></a>Průvodce upgradem rozhraní Vyhledávání zpráv API
 
 > [!WARNING]
-> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 > Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
-> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Tento průvodce upgradem identifikuje změny mezi verzemi 5 a verze 7 rozhraní API Bingu pro vyhledávání zpráv. Tento průvodce vám pomůže identifikovat části aplikace, které potřebujete aktualizovat, aby používaly verzi 7.
 
@@ -95,4 +95,4 @@ Blokované|InvalidRequest. Block
 
 - Pole bylo přidáno `sort` do objektu [News](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) . V `sort` poli se zobrazí pořadí řazení článků. Například články jsou seřazené podle relevance (výchozí) nebo data.
 
-- Byl přidán objekt [SortValue](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) , který definuje pořadí řazení. `isSelected`Pole označuje, zda odpověď použila pořadí řazení. Je-li **nastavena hodnota true** , odpověď použila pořadí řazení. Pokud `isSelected` je **hodnota false** , můžete použít adresu URL v `url` poli pro vyžádání jiného pořadí řazení.
+- Byl přidán objekt [SortValue](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) , který definuje pořadí řazení. `isSelected`Pole označuje, zda odpověď použila pořadí řazení. Je-li **nastavena hodnota true**, odpověď použila pořadí řazení. Pokud `isSelected` je **hodnota false**, můžete použít adresu URL v `url` poli pro vyžádání jiného pořadí řazení.

@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: stevelas
 ms.date: 10/29/2020
 ms.custom: ''
-ms.openlocfilehash: 261604b66d393723b35b472415b8840b047bc36e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 4fba6290b4973e797c13943fc9be4fadb19f3274
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133585"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349278"
 ---
 # <a name="how-to-consume-and-maintain-public-content-with-azure-container-registry-tasks"></a>Jak využívat a spravovat veřejný obsah pomocí Azure Container Registrych úloh
 
@@ -39,7 +39,7 @@ K dokončení tohoto postupu můžete použít Azure Cloud Shell nebo místní i
 
 Tento návod nastaví:
 
-1. Tři **Registry kontejnerů** , které představují:
+1. Tři **Registry kontejnerů**, které představují:
    * Simulované [centrum Docker][docker-hub] ( `publicregistry` ) pro podporu změny základní image
    * Týmový registr ( `contoso` ) pro sdílení privátních obrázků
    * Společnost/sdílený registr ( `baseartifacts` ) pro importovaný veřejný obsah
@@ -47,14 +47,14 @@ Tento návod nastaví:
    1. Sestavení simulované veřejné `node` Image
    1. Import a ověření `node` image do sdíleného registru společnost/tým
    1. Sestavení a nasazení `hello-world` Image
-1. **Definice úloh ACR** , včetně konfigurací pro:
-1. Kolekce **přihlašovacích údajů registru** , které odkazují na Trezor klíčů
+1. **Definice úloh ACR**, včetně konfigurací pro:
+1. Kolekce **přihlašovacích údajů registru**, které odkazují na Trezor klíčů
 1. Kolekce **tajných** kódů, které jsou k dispozici v rámci `acr-task.yaml` , což jsou ukazatele na Trezor klíčů
 1. Kolekce **nakonfigurovaných hodnot** používaných v rámci `acr-task.yaml`
 1. **Trezor klíčů Azure** pro zabezpečení všech tajných kódů
-1. **Instance kontejneru Azure** , která je hostitelem `hello-world` sestavovací aplikace
+1. **Instance kontejneru Azure**, která je hostitelem `hello-world` sestavovací aplikace
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Následující kroky nakonfigurují hodnoty pro prostředky vytvořené a používané v tomto návodu.
 
@@ -751,11 +751,11 @@ V tomto článku. pomocí úloh ACR jste vytvořili pracovní postup automatizov
 
 [install-cli]:                  /cli/azure/install-azure-cli
 [acr]:                          https://aka.ms/acr
-[acr-repo-permissions]:         https://aka.ms/acr/repo-permissions
-[acr-task]:                     https://aka.ms/acr/tasks
+[acr-repo-permissions]:         ./container-registry-repository-scoped-permissions.md
+[acr-task]:                     ./container-registry-tasks-overview.md
 [acr-task-triggers]:            container-registry-tasks-overview.md#task-scenarios
 [acr-task-credentials]:       container-registry-tasks-authentication-managed-identity.md#4-optional-add-credentials-to-the-task
-[acr-tokens]:                   https://aka.ms/acr/tokens
+[acr-tokens]:                   ./container-registry-repository-scoped-permissions.md
 [aci]:                          https://aka.ms/aci
 [alpine-public-image]:          https://hub.docker.com/_/alpine
 [docker-hub]:                   https://hub.docker.com
@@ -766,11 +766,7 @@ V tomto článku. pomocí úloh ACR jste vytvořili pracovní postup automatizov
 [helm-charts]:                  https://helm.sh
 [mcr]:                          https://aka.ms/mcr
 [nginx-public-image]:           https://hub.docker.com/_/nginx
-[oci-artifacts]:                https://aka.ms/acr/artifacts
+[oci-artifacts]:                ./container-registry-oci-artifacts.md
 [oci-consuming-public-content]: https://opencontainers.org/posts/blog/2020-10-30-consuming-public-content/
 [opa]:                          https://www.openpolicyagent.org/
 [quay]:                         https://quay.io
-
-
-
-

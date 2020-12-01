@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 11/19/2020
-ms.openlocfilehash: a79055a77ec73ce2b267bb4f16fa91f37e22ea75
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 82cc58d46061ec7b623d062ab0b0e5a1fdae7ddd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916776"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352214"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Konfigurace prostředí IR v místním prostředí jako proxy serveru pro Azure-SSIS IR v Azure Data Factory
 
@@ -70,7 +70,7 @@ Pokud jste to ještě neudělali, vytvořte propojenou službu Azure Blob Storag
 - V případě **metody ověřování** vyberte **klíč účtu**, **identifikátor URI SAS**, **instanční objekt** nebo **spravovanou identitu**.  
 
 >[!TIP]
->Pokud vyberete metodu **instančního objektu** , udělte instančnímu objektu aspoň roli *Přispěvatel dat objektu BLOB služby Storage* . Další informace najdete v tématu [konektor Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties). Pokud vyberete metodu **spravované identity** , udělte svým službám pro přístup k Azure Blob Storage správné role spravované identitou ADF. Další informace najdete v tématu věnovaném [přístupu k Azure Blob Storage pomocí ověřování Azure Active Directory pomocí spravované identity ADF](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication).
+>Pokud vyberete metodu **instančního objektu** , udělte instančnímu objektu aspoň roli *Přispěvatel dat objektu BLOB služby Storage* . Další informace najdete v tématu [konektor Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties). Pokud vyberete metodu **spravované identity** , udělte svým službám pro přístup k Azure Blob Storage správné role spravované identitou ADF. Další informace najdete v tématu věnovaném [přístupu k Azure Blob Storage pomocí ověřování Azure Active Directory pomocí spravované identity ADF](/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication).
 
 ![Příprava služby Azure Blob Storage – propojená služba pro přípravu](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -157,7 +157,7 @@ Tuto vlastnost můžete povolit také při spuštění existujících balíčků
 
 ## <a name="debug-the-on-premises-and-cloud-staging-tasks"></a>Ladění pracovních úloh místních i cloudových úloh
 
-V místním prostředí IR můžete najít protokoly za běhu ve složce *C:\ProgramData\SSISTelemetry* a protokoly spuštění místních pracovních úloh ve složce *C:\ProgramData\SSISTelemetry\ExecutionLog* .  Můžete najít protokoly spuštění pracovních úloh cloudu ve vašich SSISDB, zadané cesty k souboru protokolování nebo Azure Monitor v závislosti na tom, jestli vaše balíčky uložíte v SSISDB, povolíte [integraci Azure monitor](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#monitor-ssis-operations-with-azure-monitor)atd. Můžete také najít jedinečné identifikátory místních pracovních úloh v protokolech spouštění pracovních úloh cloudu. 
+V místním prostředí IR můžete najít protokoly za běhu ve složce *C:\ProgramData\SSISTelemetry* a protokoly spuštění místních pracovních úloh ve složce *C:\ProgramData\SSISTelemetry\ExecutionLog* .  Můžete najít protokoly spuštění pracovních úloh cloudu ve vašich SSISDB, zadané cesty k souboru protokolování nebo Azure Monitor v závislosti na tom, jestli vaše balíčky uložíte v SSISDB, povolíte [integraci Azure monitor](./monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor)atd. Můžete také najít jedinečné identifikátory místních pracovních úloh v protokolech spouštění pracovních úloh cloudu. 
 
 ![Jedinečné ID první pracovní úlohy](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
@@ -173,7 +173,7 @@ Pracovní úkoly v cloudu, které běží na vašem Azure-SSIS IR, se neúčtuj�
 
 Pokud chcete, aby vaše vlastní komponenty/komponenty třetích stran měly přístup k datům místně pomocí prostředí IR jako proxy pro Azure-SSIS IR, postupujte podle těchto pokynů:
 
-1. Nainstalujte vlastní součásti/komponenty od jiných výrobců, které cílí na SQL Server 2017 na Azure-SSIS IR prostřednictvím [vlastních nastavení Standard/Express](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup).
+1. Nainstalujte vlastní součásti/komponenty od jiných výrobců, které cílí na SQL Server 2017 na Azure-SSIS IR prostřednictvím [vlastních nastavení Standard/Express](./how-to-configure-azure-ssis-ir-custom-setup.md).
 
 1. Vytvořte následující klíče registru DTSPath v místním prostředí IR, pokud už neexistují:
    1. `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` nastavit na `C:\Program Files\Microsoft SQL Server\140\DTS\`
@@ -197,7 +197,7 @@ Pokud potřebujete používat protokol TLS 1,2 a zakažte starší verze protoko
 
 ## <a name="current-limitations"></a>Aktuální omezení
 
-- V současné době jsou podporovány pouze součásti toku dat, které jsou vestavěné/předinstalované v edici Azure-SSIS IR Standard, s výjimkou součástí Hadoop/HDFS/HDInsight, a to s [využitím všech vestavěných/předinstalovaných komponent v Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime).
+- V současné době jsou podporovány pouze součásti toku dat, které jsou vestavěné/předinstalované v edici Azure-SSIS IR Standard, s výjimkou součástí Hadoop/HDFS/HDInsight, a to s [využitím všech vestavěných/předinstalovaných komponent v Azure-SSIS IR](./built-in-preinstalled-components-ssis-integration-runtime.md).
 - V současné době jsou podporovány pouze součásti toku dat Custom/třetích stran, které jsou napsány ve spravovaném kódu (.NET Framework) – ty napsané v nativním kódu (C++) nejsou aktuálně podporovány.
 - Změna hodnot proměnných v místních i cloudových úlohách není momentálně podporovaná.
 - Změna hodnot proměnných typu Object v místních pracovních úlohách se neprojeví v jiných úlohách.

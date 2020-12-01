@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 1933e60892430b907e070ea04f39d8acc86ddac2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f6d9f670a1b85e55ccc8f6cb18645b92927221a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935328"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351635"
 ---
 # <a name="azure-defender-for-iot-edge-security-module"></a>Modul zabezpečení Azure Defenderu pro IoT Edge
 
-[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) poskytuje výkonné funkce pro správu a provádění obchodních pracovních postupů na hraničních zařízeních.
+[Azure IoT Edge](../iot-edge/index.yml) poskytuje výkonné funkce pro správu a provádění obchodních pracovních postupů na hraničních zařízeních.
 Klíčovou součástí, kterou IoT Edge hraje v prostředí IoT, je pro škodlivé objekty actor obzvláště atraktivní.
 
 Modul zabezpečení služby Defender pro IoT poskytuje komplexní řešení zabezpečení pro vaše IoT Edge zařízení.
@@ -39,7 +39,7 @@ Defender for IoT Security Module for IoT Edge nabízí tyto funkce:
 
 - Analýza manifestů nasazení IoT Edge.
 
-- Agreguje nezpracované události zabezpečení do zpráv odesílaných pomocí [centra IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).
+- Agreguje nezpracované události zabezpečení do zpráv odesílaných pomocí [centra IoT Edge](../iot-edge/iot-edge-runtime.md#iot-edge-hub).
 
 - Odeberte konfiguraci pomocí modulu zabezpečení s dvojitou platností.
 

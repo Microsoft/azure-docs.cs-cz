@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: 5fc5045643c9baf67b61d45188c8a2b6ccbc5c23
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: c04bbd5459690262b484582e807569b965a0439b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359812"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349884"
 ---
 # <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>Kurz: Konfigurace Peakon pro Automatické zřizování uživatelů
 
@@ -82,7 +82,7 @@ Pokud chcete nakonfigurovat Peakon pro Automatické zřizování uživatelů pom
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Peakon** , na panelu výsledků vyberte **Peakon** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Peakon**, na panelu výsledků vyberte **Peakon** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Peakon v seznamu výsledků](common/search-new-app.png)
 

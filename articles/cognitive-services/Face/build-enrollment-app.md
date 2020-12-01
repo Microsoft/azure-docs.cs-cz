@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: bd2032d565f5bd1fb430449be8b8c08e222f531d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 085dd18214f795566669fb862bba63b67eb9115d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025747"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350360"
 ---
 # <a name="build-an-enrollment-app-for-android-with-react"></a>Sestavení registrační aplikace pro Android s použitím reakce
 
@@ -74,7 +74,7 @@ Pokud chcete rozšířenou funkci aplikace tak, aby pokryla úplné možnosti re
 
 ### <a name="android"></a>Android
 
-Nejdřív se ujistěte, že je vaše aplikace připravená na produkční nasazení: Odeberte z kódu aplikace všechny klíče nebo tajné klíče a ujistěte se, že jste postupovali s [osvědčenými postupy zabezpečení](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp).
+Nejdřív se ujistěte, že je vaše aplikace připravená na produkční nasazení: Odeberte z kódu aplikace všechny klíče nebo tajné klíče a ujistěte se, že jste postupovali s [osvědčenými postupy zabezpečení](../cognitive-services-security.md?tabs=command-line%2ccsharp).
 
 Až budete připraveni uvolnit aplikaci pro produkční prostředí, vygenerujete soubor APK připravený pro vydání, což je formát souboru balíčku pro aplikace pro Android. Tento soubor APK musí být podepsán pomocí privátního klíče. Pomocí tohoto buildu verze můžete začít distribuovat aplikaci přímo do svých zařízení. 
 

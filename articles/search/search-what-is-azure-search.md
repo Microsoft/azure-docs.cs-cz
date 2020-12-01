@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/24/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 19be1155476ca7c295e2d0311e8285bc2128dd1d
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 1e0294e3d0ec727b8e6a11c5443d413aadca9184
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030760"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352520"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Co je Azure Cognitive Search?
 
@@ -70,7 +70,7 @@ Ucelený průzkum základních funkcí vyhledávání se dá dosáhnout ve čty�
 1. [**Dotazování indexu**](search-query-overview.md) pomocí [Průzkumníka služby Search](search-explorer.md) na portálu, [REST API](search-get-started-rest.md), [.NET SDK](/dotnet/api/azure.search.documents.searchclient.search)nebo jiné sadě SDK.
 
 > [!TIP]
-> Konsolidujte kroky tím, že začnete s [**Průvodcem importem dat**](search-get-started-portal.md) a zdrojem dat Azure pro vytvoření, načtení a dotazování indexu v řádu minut.
+> Minimalizujte kroky tím, že začnete s [**Průvodcem importem dat**](search-get-started-portal.md) a zdrojem dat Azure pro vytvoření, načtení a dotazování indexu v řádu minut.
 
 ## <a name="how-it-compares"></a>Srovnání s ostatními řešeními
 

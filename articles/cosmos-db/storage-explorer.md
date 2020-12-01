@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/23/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 61ae446d180a86b42bc52ac3244b96b7b347b68f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5b09ce48226b3c31efce4966ec776c10931cc391
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010567"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348649"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>Správa prostředků Azure Cosmos DB pomocí Průzkumník služby Azure Storage
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -22,7 +22,7 @@ K připojení k Azure Cosmos DB můžete použít aplikaci Azure Storage Explore
 Použijte stejný nástroj ke správě různých entit Azure na jednom místě. Můžete spravovat Azure Cosmos DB entit, manipulovat s daty, aktualizovat uložené procedury a triggery spolu s dalšími entitami Azure, jako jsou objekty BLOB a fronty služby Storage. Průzkumník služby Azure Storage podporuje účty Cosmos nakonfigurované pro rozhraní API SQL, MongoDB, Graph a Table.
 
 > [!NOTE]
-> Integrace služby Azure Cosmos DB s Průzkumníkem služby Storage je zastaralá. Všechny stávající funkce nebudou odebrány z tohoto vydání nejméně po dobu jednoho roku. Místo toho byste měli používat portál [Azure Portal](https://portal.azure.com/), [desktopovou aplikaci Azure Portal](https://portal.azure.com/App/Download) nebo samostatnou aplikaci [Azure Cosmos Explorer](data-explorer.md). Tyto alternativní možnosti obsahují mnoho nových funkcí, které Průzkumník služby Storage v současnosti nepodporuje.
+> Integrace služby Azure Cosmos DB s Průzkumníkem služby Storage je zastaralá. Všechny stávající funkce nebudou odebrány z tohoto vydání nejméně po dobu jednoho roku. Místo toho byste měli použít [portál Azure Portal](https://portal.azure.com/), [desktopovou aplikaci Azure portal](https://portal.azure.com/App/Download) nebo samostatný [Azure Cosmos DB Explorer](data-explorer.md) . Tyto alternativní možnosti obsahují mnoho nových funkcí, které Průzkumník služby Storage v současnosti nepodporuje.
 
 ## <a name="prerequisites"></a>Požadavky
 

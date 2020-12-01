@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: c7d3dae2b7da2fcc14e86eb4965ebd99fd7bf681
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f1a7bffc05d83b30fe9e5bcd6e17bf6bc0192e1d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88650569"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348938"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Šifrování Azure Data Factory pomocí klíčů spravovaných zákazníkem
 
@@ -47,8 +47,8 @@ V následujícím seznamu najdete popis očíslovaných kroků v diagramu:
 
 Použití klíčů spravovaných zákazníkem s Data Factory vyžaduje, aby byly v Key Vault nastaveny dvě vlastnosti, __obnovitelné odstranění__ a __nemazatelné__. Tyto vlastnosti lze povolit pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI v novém nebo existujícím trezoru klíčů. Informace o tom, jak tyto vlastnosti v existujícím trezoru klíčů povolit, najdete v částech s názvem _Povolení obnovitelného odstranění_ a _Povolení funkce vyprázdnit ochranu_ v jednom z následujících článků:
 
-- [Použití obnovitelného odstranění s využitím PowerShellu](../key-vault/general/soft-delete-powershell.md)
-- [Jak používat obnovitelné odstranění pomocí rozhraní příkazového řádku](../key-vault/general/soft-delete-cli.md)
+- [Použití obnovitelného odstranění s využitím PowerShellu](../key-vault/general/key-vault-recovery.md)
+- [Jak používat obnovitelné odstranění pomocí rozhraní příkazového řádku](../key-vault/general/key-vault-recovery.md)
 
 Pokud vytváříte novou Azure Key Vault prostřednictvím Azure Portal, __obnovitelné odstranění__ a __Nemazat__ lze povolit následujícím způsobem:
 
@@ -56,7 +56,7 @@ Pokud vytváříte novou Azure Key Vault prostřednictvím Azure Portal, __obnov
 
 ### <a name="grant-data-factory-access-to-azure-key-vault"></a>Udělení přístupu Data Factory Azure Key Vault
 
-Ujistěte se, že Azure Key Vault a Azure Data Factory jsou ve stejném tenantovi Azure Active Directory (Azure AD) a ve _stejné oblasti_. Z Azure Key Vault řízení přístupu udělte přístup k Identita spravované služby (MSI) Datové továrny následujícím oprávněním: _Get_, _Unwrap Key_a _Wrap Key_. Tato oprávnění jsou nutná pro povolení klíčů spravovaných zákazníkem v Data Factory.
+Ujistěte se, že Azure Key Vault a Azure Data Factory jsou ve stejném tenantovi Azure Active Directory (Azure AD) a ve _stejné oblasti_. Z Azure Key Vault řízení přístupu udělte přístup k Identita spravované služby (MSI) Datové továrny následujícím oprávněním: _Get_, _Unwrap Key_ a _Wrap Key_. Tato oprávnění jsou nutná pro povolení klíčů spravovaných zákazníkem v Data Factory.
 
   ![Snímek obrazovky povolení Data Factoryho přístupu k Key Vault](media/enable-customer-managed-key/02-access-policy-factory-managed-identities.png)
 
@@ -88,7 +88,7 @@ Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo 
 
 ## <a name="update-key-version"></a>Aktualizovat verzi klíče
 
-Když vytváříte novou verzi klíče, aktualizujte datovou továrnu, aby používala novou verzi. Použijte podobný postup, jak je popsáno v části _Povolení klíčů spravovaných zákazníkem_, včetně:
+Když vytváříte novou verzi klíče, aktualizujte datovou továrnu, aby používala novou verzi. Použijte podobný postup, jak je popsáno v části _povolení Customer-Managed klíčů_, včetně:
 
 1. Vyhledání identifikátoru URI pro novou verzi klíče prostřednictvím portálu Azure Key Vault
 
@@ -100,7 +100,7 @@ Když vytváříte novou verzi klíče, aktualizujte datovou továrnu, aby použ
 
 ## <a name="use-a-different-key"></a>Použít jiný klíč
 
-Chcete-li změnit klíč používaný k šifrování Data Factory, je nutné ručně aktualizovat nastavení v Data Factory. Použijte podobný postup, jak je popsáno v části _Povolení klíčů spravovaných zákazníkem_, včetně:
+Chcete-li změnit klíč používaný k šifrování Data Factory, je nutné ručně aktualizovat nastavení v Data Factory. Použijte podobný postup, jak je popsáno v části _povolení Customer-Managed klíčů_, včetně:
 
 1. Vyhledání identifikátoru URI pro nový klíč pomocí Azure Key Vaultového portálu
 
@@ -110,7 +110,7 @@ Chcete-li změnit klíč používaný k šifrování Data Factory, je nutné ru�
 
 1. Klikněte na __Uložit__ a Data Factory teď bude zašifrovat pomocí nového klíče.
 
-## <a name="disable-customer-managed-keys"></a>Zakázat klíče spravované zákazníkem
+## <a name="disable-customer-managed-keys"></a>Zakázat Customer-Managed klíče
 
 Po povolení funkce klíče spravovaného zákazníkem podle návrhu už nemůžete odebrat speciální krok zabezpečení. Pro šifrování továrny a dat vždycky očekáváme klíč poskytnutý zákazníkem.
 

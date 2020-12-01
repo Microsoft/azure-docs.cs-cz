@@ -10,19 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: a982c150349ca31fdf93a38b38910c3572b14d2f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 72b4755c6f01a10851e79cf274842f1599bc2c55
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078760"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349533"
 ---
 # <a name="what-are-the-bing-search-apis"></a>Co je rozhraní API pro vyhledávání Bingu?
 
 > [!WARNING]
-> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 > Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
-> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Rozhraní API Vyhledávání Bingu umožňuje vytvářet aplikace a služby připojené k webu, které hledají webové stránky, obrázky, zprávy, polohu a další informace bez reklamy. Odesláním žádostí o hledání pomocí Vyhledávání Bingu rozhraní REST API nebo sad SDK získáte relevantní informace a obsah pro hledání na webu. V tomto článku se dozvíte o různých rozhraních API pro vyhledávání Bingu a o tom, jak můžete do svých aplikací a služeb integrovat vyhledávání rozpoznávání. Omezení cen a sazeb se můžou mezi rozhraními API lišit.
 
@@ -36,7 +36,7 @@ Zvažte použití rozhraní API Bingu pro vyhledávání na webu v aplikacích, 
 
 Následující rozhraní API pro vyhledávání Bingu vrátí konkrétní obsah z webu, jako jsou obrázky, novinky, místní firmy a videa.
 
-| Rozhraní API Bingu | Description |
+| Rozhraní API Bingu | Popis |
 | -- | -- |
 | [Vyhledávání entit](../Bing-Entities-Search/overview.md) | Rozhraní API Bingu pro vyhledávání entit vrátí výsledky hledání obsahující entity, které mohou být osoby, místa nebo věci. V závislosti na dotazu vrátí rozhraní API jednu nebo více entit, které budou vyhovovat vyhledávacímu dotazu. Vyhledávací dotaz může zahrnovat zajímavosti jednotlivce, místní firmy, orientačních bodů, cíle a další. |
 | [Vyhledávání obrázků](../Bing-Image-Search/overview.md) | Rozhraní API Bingu pro vyhledávání obrázků vám umožní vyhledat a najít vysoce kvalitní statické a animované obrázky podobné [Bing.com/images](https://www.Bing.com/images). Hledání můžete upřesnit tak, aby obsahovala nebo vyloučila obrázky podle atributu, včetně velikosti, barvy, licence a aktuálnosti. Můžete také Hledat vývojové obrázky, nahrávat obrázky, získat z nich přehledy a zobrazovat náhledy miniatur. |

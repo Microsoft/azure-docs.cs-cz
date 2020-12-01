@@ -7,12 +7,12 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 96cca89b1206aaa7890648def694074a18b2aa17
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 4ab32cd37d732cd9f177363da547edd22bd5af77
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368861"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349261"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services a strojové učení
 
@@ -23,8 +23,8 @@ Cognitive Services poskytuje možnosti strojového učení, které řeší Obecn
 |Kategorie služby|Účel|
 |--|--|
 |[Rozhodnutí](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Sestavujte aplikace, které zveřejňují doporučení pro informované a efektivní rozhodování.|
-|[Jazyk](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Umožněte svým aplikacím, aby zpracovávaly přirozený jazyk s využitím předem sestavených skriptů, vyhodnocovaly subjektivní hodnocení a naučily se rozpoznávat, co uživatelé chtějí.|
-|[Hledání](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Přidejte do svých aplikací rozhraní API pro Vyhledávání Bingu a využijte možnosti pročesávat miliardy webů, obrázků, videí a novinek pomocí jediného volání rozhraní API.|
+|[Jazyk](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Vaše aplikace můžou zpracovávat přirozený jazyk pomocí předem připravených skriptů, vyhodnocovat postoje a učit se rozpoznávat, co uživatelé chtějí.|
+|[Hledání](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Do aplikací můžete přidat rozhraní API pro vyhledávání Bingu a využívat možnost pročesávat miliardy webových stránek, obrázků, videí a novinek pomocí jediného volání rozhraní API.|
 |[Speech](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|Převádějte řeč na text a text na přirozeně znějící řeč. Překládejte z jednoho jazyka do druhého a používejte možnost ověření a rozpoznání mluvčího.|
 |[Obraz](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Využijte možnost rozpoznávat, identifikovat, indexovat a moderovat vaše obrázky, videa a obsah digitálního rukopisu a opatřovat je titulky.|
 ||||
@@ -44,7 +44,7 @@ Machine Learning je koncept, ve kterém spojíte data a algoritmus, abyste mohli
 
 Proces sestavování systému Machine Learning vyžaduje znalost strojového učení nebo vědeckého zpracování dat.
 
-Machine Learning se poskytuje pomocí [Azure Machine Learning (AML) produktů a služeb](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure%252fmachine-learning%252fstudio%252fcontext%252fml-context).
+Machine Learning se poskytuje pomocí [Azure Machine Learning (AML) produktů a služeb](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure%2fmachine-learning%2fstudio%2fcontext%2fml-context).
 
 ## <a name="what-is-a-cognitive-service"></a>Co je služba rozpoznávání?
 
@@ -90,7 +90,7 @@ Následující data kategorizují každou službu podle druhu dat, která povolu
 |Služba rozpoznávání|Nevyžadují se žádné školicí údaje.|Poskytnete některá nebo všechna školicí data.|Shromažďování dat v reálném čase nebo téměř v reálném čase|
 |--|--|--|--|
 |[Detektor anomálií](./Anomaly-Detector/overview.md)|x|x|x|
-|Vyhledávání pomocí služby Bing |x|||
+|Vyhledávání Bingu |x|||
 |[Počítačové zpracování obrazu](./computer-vision/overview.md)|x|||
 |[Content Moderator](./Content-Moderator/overview.md)|x||x|
 |[Custom Vision](./custom-vision-service/overview.md)||x||
@@ -106,7 +106,7 @@ Následující data kategorizují každou službu podle druhu dat, která povolu
 |[Převod řeči na text (STT)](speech-service/speech-to-text.md)|x|x||
 |[Překlad řeči](speech-service/speech-translation.md)|x|||
 |[Analýza textu](./text-analytics/overview.md)|x|||
-|[Překladač](./translator/translator-info-overview.md)|x|||
+|[Translator](./translator/translator-info-overview.md)|x|||
 |[Překladatel – vlastní Překladatel](./translator/custom-translator/overview.md)||x||
 
 * Přizpůsobený modul potřebuje jenom školicí data shromážděná službou (stejně jako v reálném čase) k vyhodnocení vašich zásad a dat. Přizpůsobování nepotřebuje velké historické datové sady pro školení předem nebo Batch. 

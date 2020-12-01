@@ -12,20 +12,20 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.custom: has-adal-ref
-ms.openlocfilehash: ce4cccba678a934780dc987f1441ea658a70f8eb
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 17d78b4d6db9e65868995d8ea7835a0d911e8589
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996624"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348686"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Konfigurace aplikace OpenID/OAuth z Galerie aplikací Azure AD
 
 ## <a name="process-of-adding-an-openid-application-from-the-gallery"></a>Proces přidání aplikace OpenID z Galerie
 
-1. V [Azure Portal](https://portal.azure.com)v levém podokně vyberte možnost **Azure Active Directory**.
+1. Na portálu [Azure Portal](https://portal.azure.com) vyberte **Azure Active Directory**.
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png))
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
 2. Přejít k **podnikovým aplikacím**  >  **všechny aplikace**.
 
@@ -39,17 +39,23 @@ ms.locfileid: "91996624"
 
     ![OpenID v seznamu výsledků](common/search-new-app.png)
 
-    > [!NOTE]
-    > V případě aplikací OpenID Connect a OAuth je tlačítko **Přidat** ve výchozím nastavení zakázané. V tomto případě by měl správce tenanta vybrat tlačítko pro registraci a poskytnout mu souhlas aplikace. Aplikace se pak přidá do tenanta zákazníka, kde můžete provádět konfigurace. Není nutné explicitně přidávat aplikaci.
+
+1. Na stránce název aplikace klikněte na tlačítko **zaregistrovat** se.
 
     ![Tlačítko Přidat](./media/openidoauth-tutorial/addbutton.png)
 
-5. Když vyberete odkaz pro registraci, budete přesměrováni na stránku Azure Active Directory (Azure AD) pro přihlašovací údaje pro přihlášení.
+    > [!NOTE]
+    > V tomto případě by měl správce tenanta vybrat tlačítko pro registraci a poskytnout mu souhlas aplikace. Aplikace se pak přidá do tenanta zákazníka, kde můžete provádět konfigurace. Není nutné explicitně přidávat aplikaci.
+
+5. Budete přesměrováni na stránku pro přihlášení aplikace nebo Azure Active Directory (Azure AD) pro přihlašovací údaje pro přihlášení.
 
 6. Po úspěšném ověření se souhlasem přijměte ze stránky souhlasu. Potom se zobrazí domovská stránka aplikace.
 
     > [!NOTE]
     > Můžete přidat pouze jednu instanci aplikace. Pokud jste už přidali a pokusili jste ho zadat znovu, nepřidá se znovu v tenantovi. Takže můžete logicky použít jenom jednu instanci aplikace v tenantovi.
+
+1. Pomocí níže uvedeného videa přidejte aplikaci OpenID z galerie.
+    >[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4HoNI]
 
 ## <a name="authentication-flow-using-openid-connect"></a>Tok ověřování pomocí OpenID Connect
 
@@ -151,3 +157,7 @@ Správce klienta může zakázat možnost pro běžné uživatele, aby jim souhl
 Parametr *prompt = admin_consent* můžou používat i aplikace, které vyžadují oprávnění, které nevyžadují souhlas správce. Příkladem je aplikace, která vyžaduje prostředí, kde se správce tenanta zaregistruje jednou a žádné další uživatele se k souhlasu od tohoto okamžiku neobjeví.
 
 Představte si, že aplikace vyžaduje souhlas správce a že se správce přihlásí bez odeslání *výzvy = admin_consent* parametr. Když správce úspěšně souhlasí s aplikací, vztahuje se pouze na svůj uživatelský účet. Pravidelným uživatelům se stále nebude možné přihlásit ani vyjádřit souhlas s aplikací. Tato funkce je užitečná v případě, že chcete správci tenanta dát možnost prozkoumat vaši aplikaci předtím, než povolíte přístup k ostatním uživatelům.
+
+## <a name="next-steps"></a>Další kroky
+
+[Nastavení jednotného přihlašování (SSO) založeného na OIDC pro aplikaci ve vašem tenantovi Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal-setup-oidc-sso)

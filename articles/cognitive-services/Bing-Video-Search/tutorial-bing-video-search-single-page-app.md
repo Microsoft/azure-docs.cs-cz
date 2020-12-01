@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: b6d9ec0760cc8d95f712cfc7a5478de1a99465ef
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 76d7f4e31934480be57cd5ac133c1c7e6a9dd364
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379867"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349601"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Kurz: Jednostránková aplikace s vyhledáváním videí
 
 > [!WARNING]
-> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 > Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
-> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 Rozhraní API Bingu pro vyhledávání videí umožňuje hledat na webu a získávat výsledky videí relevantní pro vyhledávací dotaz. V tomto kurzu sestavíme jednostránkovou webovou aplikaci, která používá rozhraní API pro vyhledávání Bingu k zobrazení výsledků hledání na stránce. Aplikace zahrnuje komponenty HTML, CSS a JavaScriptu.
 
 <!-- Remove until it can be replaced with a sanitized version.
@@ -325,7 +325,7 @@ Jak jste už viděli v `renderSearchResults()`, vykreslujeme jenom návrhy `rela
 
 ## <a name="rendering-result-items"></a>Vykreslování položek výsledků
 
-V kódu JavaScriptu může objekt, `searchItemRenderers`, obsahovat funkce *renderers:* , které generují kód HTML pro každý druh výsledku hledání. Stránka vyhledávání videí využívá jenom `videos`. Různé typy rendererů najdete v dalších kurzech.
+V kódu JavaScriptu může objekt, `searchItemRenderers`, obsahovat funkce *renderers:*, které generují kód HTML pro každý druh výsledku hledání. Stránka vyhledávání videí využívá jenom `videos`. Různé typy rendererů najdete v dalších kurzech.
 
 ```javascript
 searchItemRenderers = {

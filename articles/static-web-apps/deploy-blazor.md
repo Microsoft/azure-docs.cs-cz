@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: cshoe
-ms.openlocfilehash: 80a48a948c70db7344ac9cbc20474177309bd909
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0086f7f68fd05d6925d19c7ab457fbc125e36be4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024224"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350224"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>Kurz: Vytvoření statické webové aplikace pomocí Blazor ve statickém Web Apps Azure
 
@@ -64,7 +64,7 @@ Výše uvedená konfigurace zajišťuje, že požadavky na jakoukoli trasu v apl
 V tomto článku se používá úložiště šablon GitHubu, které vám usnadní začít. Šablona obsahuje úvodní aplikaci nasazenou do Azure static Web Apps.
 
 1. Ujistěte se, že jste přihlášeni k GitHubu, a přejděte do následujícího umístění a vytvořte nové úložiště:
-    - https://github.com/staticwebdev/blazor-starter/generate
+    - [https://github.com/staticwebdev/blazor-starter/generate](https://github.com/login?return_to=/staticwebdev/blazor-starter/generate)
 1. Pojmenování úložiště **My-First-static-blazor-App**
 
 ## <a name="create-a-static-web-app"></a>Vytvoření statické webové aplikace

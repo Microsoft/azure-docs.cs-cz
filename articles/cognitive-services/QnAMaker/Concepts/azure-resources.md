@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 46b1cf2681ab5d804035c98d458600de5081c77d
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: cd64c19e7e9af05becd7a6978ceb4d0306112170
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376790"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351891"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Prostředky Azure pro QnA Maker
 
@@ -48,17 +48,17 @@ Když přejdete do vývojové fáze projektu, měli byste zvážit:
 
 Obvykle existují tři parametry, které je třeba vzít v úvahu:
 
-* **Propustnost, kterou potřebujete ze služby** :
-    * Podle svých potřeb vyberte vhodný [plán aplikace](https://azure.microsoft.com/pricing/details/app-service/plans/) pro vaši službu App Service. Aplikaci můžete [škálovat směrem nahoru](https://docs.microsoft.com/azure/app-service/manage-scale-up) nebo dolů.
-    * Mělo by to mít vliv i na výběr skladové položky v Azure **kognitivní hledání** . Další podrobnosti najdete [tady](https://docs.microsoft.com/azure/search/search-sku-tier). Kromě toho možná budete muset nastavit [kapacitu](../../../search/search-capacity-planning.md) kognitivní hledání pomocí replik.
+* **Propustnost, kterou potřebujete ze služby**:
+    * Podle svých potřeb vyberte vhodný [plán aplikace](https://azure.microsoft.com/pricing/details/app-service/plans/) pro vaši službu App Service. Aplikaci můžete [škálovat směrem nahoru](../../../app-service/manage-scale-up.md) nebo dolů.
+    * Mělo by to mít vliv i na výběr skladové položky v Azure **kognitivní hledání** . Další podrobnosti najdete [tady](../../../search/search-sku-tier.md). Kromě toho možná budete muset nastavit [kapacitu](../../../search/search-capacity-planning.md) kognitivní hledání pomocí replik.
 
-* **Velikost a počet znalostí znalostní báze** : vyberte příslušnou skladovou položku [Azure Search](https://azure.microsoft.com/pricing/details/search/) pro váš scénář. Obvykle se na základě počtu různých domén předmětu rozhodnete, že potřebujete požadovaný počet znalostí. Doména předmětu (pro jeden jazyk) by měla být v jedné znalostní bázi.
+* **Velikost a počet znalostí znalostní báze**: vyberte příslušnou skladovou položku [Azure Search](https://azure.microsoft.com/pricing/details/search/) pro váš scénář. Obvykle se na základě počtu různých domén předmětu rozhodnete, že potřebujete požadovaný počet znalostí. Doména předmětu (pro jeden jazyk) by měla být v jedné znalostní bázi.
 
     Můžete publikovat N-1 znalostní báze v určité úrovni, kde N je maximální počet indexů povolených v této vrstvě. Také ověřte maximální velikost a počet dokumentů povolených na jednu úroveň.
 
     Pokud má vaše úroveň například 15 povolených indexů, můžete publikovat 14 báze znalostí (1 index na publikovanou znalostní bázi). Patnáctý index se používá pro všechny znalostní báze pro vytváření a testování.
 
-* **Počet dokumentů jako zdrojů** : bezplatná SKU služby QnA maker Management omezuje počet dokumentů, které můžete spravovat přes portál, a rozhraní API na 3 (velikost 1 MB). Standardní SKU neomezuje počet dokumentů, které můžete spravovat. Další podrobnosti najdete [tady](https://aka.ms/qnamaker-pricing).
+* **Počet dokumentů jako zdrojů**: bezplatná SKU služby QnA maker Management omezuje počet dokumentů, které můžete spravovat přes portál, a rozhraní API na 3 (velikost 1 MB). Standardní SKU neomezuje počet dokumentů, které můžete spravovat. Další podrobnosti najdete [tady](https://aka.ms/qnamaker-pricing).
 
 V následující tabulce jsou uvedeny některé pokyny vysoké úrovně.
 
@@ -72,11 +72,11 @@ V následující tabulce jsou uvedeny některé pokyny vysoké úrovně.
 
 Obvykle existují tři parametry, které je třeba vzít v úvahu:
 
-* **Propustnost, kterou potřebujete ze služby** :
+* **Propustnost, kterou potřebujete ze služby**:
     * QnA Maker Managed (Preview) je bezplatná služba a propustnost se momentálně omezené na 10 TPS pro rozhraní API pro správu i pro předpovědi rozhraní API.
-    * Mělo by to mít vliv i na výběr skladové položky v Azure **kognitivní hledání** . Další podrobnosti najdete [tady](https://docs.microsoft.com/azure/search/search-sku-tier). Kromě toho možná budete muset nastavit [kapacitu](../../../search/search-capacity-planning.md) kognitivní hledání pomocí replik.
+    * Mělo by to mít vliv i na výběr skladové položky v Azure **kognitivní hledání** . Další podrobnosti najdete [tady](../../../search/search-sku-tier.md). Kromě toho možná budete muset nastavit [kapacitu](../../../search/search-capacity-planning.md) kognitivní hledání pomocí replik.
 
-* **Velikost a počet znalostí znalostní báze** : vyberte příslušnou skladovou položku [Azure Search](https://azure.microsoft.com/pricing/details/search/) pro váš scénář. Obvykle se na základě počtu různých domén předmětu rozhodnete, že potřebujete požadovaný počet znalostí. Doména předmětu (pro jeden jazyk) by měla být v jedné znalostní bázi.
+* **Velikost a počet znalostí znalostní báze**: vyberte příslušnou skladovou položku [Azure Search](https://azure.microsoft.com/pricing/details/search/) pro váš scénář. Obvykle se na základě počtu různých domén předmětu rozhodnete, že potřebujete požadovaný počet znalostí. Doména předmětu (pro jeden jazyk) by měla být v jedné znalostní bázi.
 
     V QnA Maker spravovaném (ve verzi Preview) máte možnost nastavit službu QnA Maker pro aktualizací KB v jednom jazyce nebo v několika jazycích. Tento výběr můžete provést při vytvoření první znalostní báze ve službě QnA Maker Managed (Preview).
 
@@ -86,7 +86,7 @@ Obvykle existují tři parametry, které je třeba vzít v úvahu:
 
     Pokud má vaše úroveň například 15 povolených indexů, můžete publikovat 14 základních znalostí stejného jazyka (1 index na publikovanou znalostní bázi). Patnáctý index se používá pro všechny znalostní báze pro vytváření a testování. Pokud se rozhodnete, že budete mít znalostní bázi v různých jazycích, můžete publikovat jenom 7 znalostí znalostní báze.
 
-* **Počet dokumentů jako zdrojů** : QnA maker Managed (Preview) je bezplatná služba a neexistují žádná omezení počtu dokumentů, které můžete přidat jako zdroje. Další podrobnosti najdete [tady](https://aka.ms/qnamaker-pricing).
+* **Počet dokumentů jako zdrojů**: QnA maker Managed (Preview) je bezplatná služba a neexistují žádná omezení počtu dokumentů, které můžete přidat jako zdroje. Další podrobnosti najdete [tady](https://aka.ms/qnamaker-pricing).
 
 V následující tabulce jsou uvedeny některé pokyny vysoké úrovně.
 
@@ -232,7 +232,7 @@ Služba správy QnA Maker se používá jenom pro QnA Maker portál a pro počá
 
 Vaše služba QnA Maker se zabývá dvěma druhy klíčů: **vytváření klíčů** a **klíčů koncových bodů dotazů** , které se používají s modulem runtime hostovaným ve službě App Service.
 
-Pokud hledáte svůj **klíč předplatného** , [terminologie se změnila](#subscription-keys).
+Pokud hledáte svůj **klíč předplatného**, [terminologie se změnila](#subscription-keys).
 
 Tyto klíče použijte při provádění požadavků na službu prostřednictvím rozhraní API.
 
@@ -240,7 +240,7 @@ Tyto klíče použijte při provádění požadavků na službu prostřednictví
 
 |Název|Umístění|Účel|
 |--|--|--|
-|Vytváření klíče|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Tyto klíče se používají pro přístup k [rozhraním API služby QnA maker Management](https://go.microsoft.com/fwlink/?linkid=2092179). Tato rozhraní API umožňují upravovat otázky a odpovědi ve znalostní bázi a publikovat znalostní bázi. Tyto klíče se vytvoří při vytvoření nové služby QnA Maker.<br><br>Tyto klíče najdete na **Cognitive Services** prostředku na stránce **klíče** .|
+|Vytváření klíče|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Tyto klíče se používají pro přístup k [rozhraním API služby QnA maker Management](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase). Tato rozhraní API umožňují upravovat otázky a odpovědi ve znalostní bázi a publikovat znalostní bázi. Tyto klíče se vytvoří při vytvoření nové služby QnA Maker.<br><br>Tyto klíče najdete na **Cognitive Services** prostředku na stránce **klíče** .|
 |Klíč koncového bodu dotazu|[Portál QnA Makeru](https://www.qnamaker.ai)|Tyto klíče se používají k dotazování publikovaného koncového bodu znalostní báze, aby se zobrazila odpověď pro otázku uživatele. Tento koncový bod dotazu obvykle používáte v robotovi chatu nebo v kódu klientské aplikace, který se připojuje ke službě QnA Maker. Tyto klíče se vytvoří při publikování QnA Maker znalostní báze Knowledge Base.<br><br>Tyto klíče najdete na stránce **nastavení služby** . Vyhledá tuto stránku v nabídce uživatele v pravém horním rohu stránky v rozevírací nabídce.|
 
 ### <a name="subscription-keys"></a>Klíče předplatného
@@ -251,11 +251,11 @@ Musíte znát, k čemu má klíč přístup, správu znalostní báze nebo dotaz
 
 ### <a name="recommended-settings-for-network-isolation"></a>Doporučené nastavení pro izolaci sítě
 
-* Chraňte prostředek služby Service od veřejného přístupu [konfigurací virtuální sítě](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal).
+* Chraňte prostředek služby Service od veřejného přístupu [konfigurací virtuální sítě](../../cognitive-services-virtual-networks.md?tabs=portal).
 * Chránit App Service (QnA Runtime) z veřejného přístupu:
     * Povoluje provoz jenom z IP adres služeb rozpoznávání. Ty jsou už součástí značky služby "CognitiveServicesManagement". To se vyžaduje pro vytváření rozhraní API (vytvořit/aktualizovat KB) pro vyvolání služby App Service a aktualizaci služby Azure Search.
     * Ujistěte se, že taky povolíte další vstupní body, jako je robot Service, QnA Maker Portal (může to být váš Corpnet) atd. předpověď přístupu k rozhraní API GenerateAnswer.
-    * Podívejte se na [Další informace o značkách služby.](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+    * Podívejte se na [Další informace o značkách služby.](../../../virtual-network/service-tags-overview.md)
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
 
@@ -309,7 +309,7 @@ V QnA Maker spravovaném (ve verzi Preview) je Správa i předpovědi služeb sp
 
 Vaše služba QnA Maker spravovaná (ve verzi Preview) se zabývá dvěma druhy klíčů: **vytváření klíčů** a **klíče Azure kognitivní hledání** používané pro přístup ke službě v rámci předplatného zákazníka.
 
-Pokud hledáte svůj **klíč předplatného** , [terminologie se změnila](#subscription-keys).
+Pokud hledáte svůj **klíč předplatného**, [terminologie se změnila](#subscription-keys).
 
 Tyto klíče použijte při provádění požadavků na službu prostřednictvím rozhraní API.
 
@@ -317,8 +317,8 @@ Tyto klíče použijte při provádění požadavků na službu prostřednictví
 
 |Název|Umístění|Účel|
 |--|--|--|
-|Vytváření klíče|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Tyto klíče se používají pro přístup k [rozhraním API služby QnA maker Management](https://go.microsoft.com/fwlink/?linkid=2092179). Tato rozhraní API umožňují upravovat otázky a odpovědi ve znalostní bázi a publikovat znalostní bázi. Tyto klíče se vytvoří při vytvoření nové služby QnA Maker.<br><br>Tyto klíče najdete na **Cognitive Services** prostředku na stránce **klíče** .|
-|Klíč správce Azure Kognitivní hledání|[Azure Portal](https://docs.microsoft.com/azure/search/search-security-api-keys)|Tyto klíče se používají ke komunikaci se službou Azure vnímání Search nasazenou v předplatném Azure uživatele. Pokud přidružíte vyhledávání rozpoznávání Azure ke službě QnA Maker Managed (Preview), klíč správce se automaticky předává službě QnA Maker. <br><br>Tyto klíče najdete na prostředku **kognitivní hledání Azure** na stránce **klíče** .|
+|Vytváření klíče|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Tyto klíče se používají pro přístup k [rozhraním API služby QnA maker Management](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase). Tato rozhraní API umožňují upravovat otázky a odpovědi ve znalostní bázi a publikovat znalostní bázi. Tyto klíče se vytvoří při vytvoření nové služby QnA Maker.<br><br>Tyto klíče najdete na **Cognitive Services** prostředku na stránce **klíče** .|
+|Klíč správce Azure Kognitivní hledání|[Azure Portal](../../../search/search-security-api-keys.md)|Tyto klíče se používají ke komunikaci se službou Azure vnímání Search nasazenou v předplatném Azure uživatele. Pokud přidružíte vyhledávání rozpoznávání Azure ke službě QnA Maker Managed (Preview), klíč správce se automaticky předává službě QnA Maker. <br><br>Tyto klíče najdete na prostředku **kognitivní hledání Azure** na stránce **klíče** .|
 
 ### <a name="subscription-keys"></a>Klíče předplatného
 
@@ -328,13 +328,12 @@ Musíte znát, k čemu má klíč přístup, správu znalostní báze nebo dotaz
 
 ### <a name="recommended-settings-for-network-isolation"></a>Doporučené nastavení pro izolaci sítě 
 
-Chraňte prostředek služby Service od veřejného přístupu [konfigurací virtuální sítě](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal).
+Chraňte prostředek služby Service od veřejného přístupu [konfigurací virtuální sítě](../../cognitive-services-virtual-networks.md?tabs=portal).
 
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o QnA Maker [znalostní bázi Knowledge Base](knowledge-base.md)
+* Další informace o QnA Maker [znalostní bázi Knowledge Base](../index.yml)
 * Pochopení [životního cyklu znalostní báze](development-lifecycle-knowledge-base.md)
 * Kontrola [omezení](../limits.md) služby a znalostí znalostní báze
-

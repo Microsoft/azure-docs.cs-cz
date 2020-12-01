@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: 20a3337ab054ca1feefc2f5f08f8e6398417fb9e
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 6f96b74726684d37795c94be74e48611b4145402
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441609"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350207"
 ---
 # <a name="deploy-static-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Nasazení statických Next.js websites ve službě Azure static Web Apps Preview
 
 V tomto kurzu se naučíte nasadit [Next.js](https://nextjs.org) generovaný statický web do služby [Azure static Web Apps](overview.md). Pokud chcete začít, naučíte se, jak nastavit, nakonfigurovat a nasadit aplikaci Next.js. Během tohoto procesu se naučíte také řešit běžné výzvy, které se často vyskytují při generování statických stránek pomocí Next.js
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/).
 - Účet GitHub. [Vytvořte si účet zdarma](https://github.com/join).
@@ -29,9 +29,9 @@ V tomto kurzu se naučíte nasadit [Next.js](https://nextjs.org) generovaný sta
 
 Místo použití rozhraní příkazového řádku Next.js k vytvoření aplikace můžete použít počáteční úložiště, které obsahuje existující aplikaci Next.js. Toto úložiště obsahuje aplikaci Next.js s dynamickými trasami, což zvýrazňuje běžný problém s nasazením. Dynamické trasy vyžadují další konfiguraci nasazení, o které se v průběhu chvilky naučíte.
 
-Začněte vytvořením nového úložiště v rámci účtu GitHub z úložiště šablon. 
+Začněte vytvořením nového úložiště v rámci účtu GitHub z úložiště šablon.
 
-1. Přejděte na adresu <http://github.com/staticwebdev/nextjs-starter/generate>.
+1. Přejít na [https://github.com/staticwebdev/nextjs-starter/generate](https://github.com/login?return_to=/staticwebdev/nextjs-starter/generate)
 1. Pojmenování úložiště **nextjs-Starter**
 1. Pak na svém počítači naklonujte nové úložiště. Ujistěte se, že `<YOUR_GITHUB_ACCOUNT_NAME>` jste nahradili názvem vašeho účtu.
 

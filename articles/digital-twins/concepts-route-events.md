@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d085d59dc1dbe09c014dcaf5aa239805824354f0
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 6559de2b94879ac8643f4945fd5adcf4fc7e1045
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279971"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350819"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Směrování událostí v rámci digitálních vláken Azure a mimo ně
 
@@ -20,7 +20,7 @@ Digitální vlákna Azure využívá **trasy událostí** k posílání dat př�
 
 Existují dva hlavní případy odeslání dat digitálních vláken Azure:
 * Posílání dat z jednoho vlákna v grafu digitálních vláken Azure do jiného. Například pokud se u jedné z digitálních vláken změní vlastnost, můžete chtít odpovídajícím způsobem informovat a aktualizovat další digitální vlákna.
-* Odesílání dat do služeb pro další úložiště nebo zpracování (označované také jako *výstup dat* ). Příklad:
+* Odesílání dat do služeb pro další úložiště nebo zpracování (označované také jako *výstup dat*). Příklad:
   - Nemocnice může chtít odeslat data události z digitálního vlákna Azure do [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md)k zaznamenávání dat časových řad událostí souvisejících s handwashing pro hromadnou analýzu.
   - Společnost, která už používá [Azure Maps](../azure-maps/about-azure-maps.md) , může chtít použít digitální vlákna Azure k vylepšení jejich řešení. Můžou po nastavení digitálních vláken Azure rychle povolit mapu Azure, přenést entity mapy Azure do digitálních vláken Azure jako [digitálních vláken](concepts-twins-graph.md) ve dvojitých grafech nebo spouštět výkonné dotazy využívající jejich Azure Maps a data z digitálního vlákna Azure.
 
@@ -103,7 +103,7 @@ Je-li splněna některá z podmínek, událost je vyřazena nebo byla nedoručen
 
 Před nastavením umístění nedoručených zpráv musíte mít účet úložiště s kontejnerem. Při vytváření koncového bodu zadejte adresu URL tohoto kontejneru. Nedoručené písmeno je k dispozici jako adresa URL kontejneru s tokenem SAS. Tento token potřebuje `write` oprávnění pouze pro cílový kontejner v rámci účtu úložiště. Plně vytvořená adresa URL bude ve formátu: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
-Další informace o tokenech SAS najdete v tématu: [ *udělení omezeného přístupu k Azure Storage prostředkům pomocí sdílených přístupových podpisů (SAS)*](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
+Další informace o tokenech SAS najdete v tématu: [ *udělení omezeného přístupu k Azure Storage prostředkům pomocí sdílených přístupových podpisů (SAS)*](../storage/common/storage-sas-overview.md)
 
 Informace o tom, jak nastavit koncový bod pomocí nedoručených zpráv, najdete v tématu [*Postupy: Správa koncových bodů a tras v digitálních událostech Azure (rozhraní API a rozhraní příkazového řádku)*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering).
 

@@ -8,12 +8,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 4eaa33778287bfcda45547c24e6abe0606b6baa7
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: a952bfa45515b9d35549d03d18fd94103679344d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368793"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349465"
 ---
 # <a name="cognitive-services-development-options"></a>Možnosti vývoje služby Cognitive Services
 
@@ -49,10 +49,10 @@ Pojďme se podívat na různé způsoby, jak můžete pracovat s Cognitive Servi
 
 Klientské knihovny Cognitive Services a rozhraní REST API poskytují přímý přístup k vaší službě. Tyto nástroje poskytují programový přístup k Cognitive Services, jejich základním modelům a v mnoha případech umožňují programově přizpůsobit modely a řešení. 
 
-* **Cíloví uživatelé** : vývojáři a vědečtí data
-* **Výhody** : poskytuje největší flexibilitu při volání služeb z jakéhokoli jazyka a prostředí. 
-* **Uživatelské rozhraní** : pouze není k dispozici kód
-* **Předplatné** : účet Azure + Cognitive Services prostředky
+* **Cíloví uživatelé**: vývojáři a vědečtí data
+* **Výhody**: poskytuje největší flexibilitu při volání služeb z jakéhokoli jazyka a prostředí. 
+* **Uživatelské rozhraní**: pouze není k dispozici kód
+* **Předplatné**: účet Azure + Cognitive Services prostředky
 
 Pokud chcete získat další informace o dostupných klientských knihovnách a rozhraních REST API, Využijte náš [Cognitive Services přehled](index.yml) a seznamte se s jedním z našich rychlých startů pro vize, rozhodování, jazyk a řeč.
 
@@ -60,10 +60,10 @@ Pokud chcete získat další informace o dostupných klientských knihovnách a 
 
 Díky Cognitive Services pro velké objemy dat můžete průběžně zlepšovat inteligentní modely přímo do &trade; výpočtů Apache Spark a SQL. Tyto nástroje uvolňují vývojáře z podrobností o sítích nízké úrovně, aby se mohli soustředit na vytváření inteligentních distribuovaných aplikací. Cognitive Services pro velké objemy dat podporuje následující platformy a konektory: Azure Databricks, Azure synapse, Azure Kubernetes Service a datové konektory.
 
-* **Cíloví uživatelé** : vědečtí data a technici dat
-* **Výhody** : Cognitive Services Azure pro velké objemy dat umožňuje uživatelům kanál terabajtů dat prostřednictvím Cognitive Services pomocí Apache Spark &trade; . Vytváření rozsáhlých inteligentních aplikací s libovolným úložištěm dat je snadné.
-* **Uživatelské rozhraní** : pouze není k dispozici kód
-* **Předplatné** : účet Azure + Cognitive Services prostředky
+* **Cíloví uživatelé**: vědečtí data a technici dat
+* **Výhody**: Cognitive Services Azure pro velké objemy dat umožňuje uživatelům kanál terabajtů dat prostřednictvím Cognitive Services pomocí Apache Spark &trade; . Vytváření rozsáhlých inteligentních aplikací s libovolným úložištěm dat je snadné.
+* **Uživatelské rozhraní**: pouze není k dispozici kód
+* **Předplatné**: účet Azure + Cognitive Services prostředky
 
 Pokud chcete získat další informace o velkých objemech dat pro Cognitive Services, je vhodné začít s [přehledem](./big-data/cognitive-services-for-big-data.md). Pokud jste připraveni začít sestavovat, vyzkoušejte naše ukázky [Pythonu](./big-data/samples-python.md) nebo [Scala](./big-data/samples-scala.md) .
 
@@ -71,46 +71,46 @@ Pokud chcete získat další informace o velkých objemech dat pro Cognitive Ser
 
 [Webové úlohy](../app-service/index.yml) [Azure Functions](../azure-functions/index.yml) a Azure App Service poskytují integrační služby pro první kód navržené pro vývojáře a jsou postavené na [Azure App Services](../app-service/index.yml). Tyto produkty poskytují infrastrukturu bez serveru pro psaní kódu. V tomto kódu můžete volat naše služby pomocí našich klientských knihoven a rozhraní REST API. 
 
-* **Cíloví uživatelé** : vývojáři a vědečtí data
-* **Výhody** : výpočetní služba bez serveru, která umožňuje spuštění kódu aktivovaného událostmi. 
-* **Uživatelské rozhraní** : Ano
-* **Předplatné** : účet Azure + Cognitive Services prostředek + Azure Functions předplatné
+* **Cíloví uživatelé**: vývojáři a vědečtí data
+* **Výhody**: výpočetní služba bez serveru, která umožňuje spuštění kódu aktivovaného událostmi. 
+* **Uživatelské rozhraní**: Ano
+* **Předplatné**: účet Azure + Cognitive Services prostředek + Azure Functions předplatné
 
 ### <a name="azure-logic-apps"></a>Azure Logic Apps 
 
 [Azure Logic Apps](../logic-apps/index.yml) sdílet stejné návrháře a konektory pracovních postupů, jako je Power Automate, ale poskytuje pokročilejší a řídicí prostředí, včetně integrace se sadou Visual Studio a DevOps. Power Automate usnadňuje integraci s vašimi prostředky služeb rozpoznávání prostřednictvím konektorů specifických pro služby, které poskytují proxy nebo obálku kolem rozhraní API. Jedná se o stejné konektory jako ty, které jsou k dispozici v Power automatu. 
 
-* **Cíloví uživatelé** : vývojáři, integrátory, IT specialisté, DevOps
-* **Výhody** : vývojový model Designer-First (deklarativní) poskytující pokročilé možnosti a integraci v řešení s nízkým kódem
-* **Uživatelské rozhraní** : Ano
-* **Předplatné** : účet Azure + Cognitive Services nasazení prostředků a Logic Apps
+* **Cíloví uživatelé**: vývojáři, integrátory, IT specialisté, DevOps
+* **Výhody**: vývojový model Designer-First (deklarativní) poskytující pokročilé možnosti a integraci v řešení s nízkým kódem
+* **Uživatelské rozhraní**: Ano
+* **Předplatné**: účet Azure + Cognitive Services nasazení prostředků a Logic Apps
 
 ### <a name="power-automate"></a>Power Automate 
 
 Power Automate je služba v [Power platformou](/power-platform/) , která vám pomůže vytvářet automatizované pracovní postupy mezi aplikacemi a službami bez psaní kódu. Nabízíme několik konektorů, které usnadňují interakci s vaším prostředkem Cognitive Services v řešení Power Automate. Automatické automatizace je postavená na Logic Apps. 
 
 * **Cíloví** uživatelé: obchodní uživatelé (analytici) a správci služby SharePoint
-* **Výhody** : automatizace opakujících se ručních úloh jednoduše pomocí nahrávání kliknutí myší, klávesových úhozů a zkopírování kroků vložení z plochy.
-* **Nástroje uživatelského rozhraní** : Ano – pouze uživatelské rozhraní
-* **Předplatné** : účet Azure + Cognitive Services prostředek + Power automatizuje předplatné + předplatné Office 365
+* **Výhody**: automatizace opakujících se ručních úloh jednoduše pomocí nahrávání kliknutí myší, klávesových úhozů a zkopírování kroků vložení z plochy.
+* **Nástroje uživatelského rozhraní**: Ano – pouze uživatelské rozhraní
+* **Předplatné**: účet Azure + Cognitive Services prostředek + Power automatizuje předplatné + předplatné Office 365
 
 ### <a name="ai-builder"></a>AI Builder 
 
 [Tvůrce AI](/ai-builder/overview) je schopnost Microsoft Power Platform, kterou můžete využít ke zlepšení výkonu podniku automatizací procesů a předvídání výsledků. Tvůrce AI přináší výkon AI do vašich řešení prostřednictvím prostředí typu Point-to-Click. Mnoho služeb rozpoznávání, jako je například funkce pro rozpoznávání formulářů, Analýza textu a Počítačové zpracování obrazu, je přímo integrováno zde a nemusíte vytvářet vlastní Cognitive Services. 
 
 * **Cíloví** uživatelé: obchodní uživatelé (analytici) a správci služby SharePoint
-* **Výhody** : řešení klíč, které přináší sílu AI prostřednictvím prostředí typu Point-to-Click. Nevyžaduje se žádné kódování ani dovednosti v oblasti datových věd.
-* **Nástroje uživatelského rozhraní** : Ano – pouze uživatelské rozhraní
-* **Odběry** : Tvůrce AI
+* **Výhody**: řešení klíč, které přináší sílu AI prostřednictvím prostředí typu Point-to-Click. Nevyžaduje se žádné kódování ani dovednosti v oblasti datových věd.
+* **Nástroje uživatelského rozhraní**: Ano – pouze uživatelské rozhraní
+* **Odběry**: Tvůrce AI
 
 ### <a name="continuous-integration-and-deployment"></a>Průběžná integrace a nasazování
 
 Ke správě nasazení můžete použít akce Azure DevOps a GitHub. V [níže uvedené části](#continuous-integration-and-delivery-with-devops-and-github-actions) se probírají dva příklady integrace CI/CD, které vám umožní naučit a nasazovat vlastní modely pro rozpoznávání řeči a službu Language UNDERSTANDING (Luis). 
 
-* **Cíloví uživatelé** : vývojáři, odborníci na data a technici na data
-* **Výhody** : umožňuje průběžně upravovat, aktualizovat a nasazovat aplikace a modely programově. Při pravidelném používání vašich dat za účelem vylepšení a aktualizace modelů pro rozpoznávání řeči, vize, jazyk a rozhodování je významná výhoda. 
-* **Nástroje uživatelského rozhraní** : jenom N/a-Code 
-* **Předplatné** : účet Azure + Cognitive Services Resource + GitHub
+* **Cíloví uživatelé**: vývojáři, odborníci na data a technici na data
+* **Výhody**: umožňuje průběžně upravovat, aktualizovat a nasazovat aplikace a modely programově. Při pravidelném používání vašich dat za účelem vylepšení a aktualizace modelů pro rozpoznávání řeči, vize, jazyk a rozhodování je významná výhoda. 
+* **Nástroje uživatelského rozhraní**: jenom N/a-Code 
+* **Předplatné**: účet Azure + Cognitive Services Resource + GitHub
 
 ## <a name="tools-to-customize-and-configure-models"></a>Nástroje pro přizpůsobení a konfiguraci modelů
 
@@ -122,7 +122,7 @@ Jak budete postupovat na cestě při vytváření aplikace nebo pracovního post
 
 Nástroje, které budete používat pro výuku a konfiguraci modelů, se liší od těch, které použijete k volání Cognitive Services. V mnoha případech Cognitive Services, který podporuje přizpůsobení, poskytovat portály a nástroje uživatelského rozhraní navržené tak, aby vám pomohly vyškolit, vyhodnocovat a nasazovat modely. Pojďme se rychle podívat na několik možností:<br><br>
 
-| Pilíř | Služba | Přizpůsobení uživatelského rozhraní | Rychlý start |
+| Pilíř | Služba | Přizpůsobení uživatelského rozhraní | Rychlé zprovoznění |
 |--------|---------|------------------|------------|
 | Obraz | Custom Vision | https://www.customvision.ai/ | [Rychlý start](./custom-vision-service/quickstarts/image-classification.md?pivots=programming-language-csharp) | 
 | Obraz | Rozpoznávání formulářů | Ukázkový nástroj pro popisky | [Rychlý start](./form-recognizer/quickstarts/label-tool.md?tabs=v2-0) |
@@ -133,7 +133,7 @@ Nástroje, které budete používat pro výuku a konfiguraci modelů, se liší 
 | Jazyk | QnA Maker | https://www.qnamaker.ai/ | [Rychlý start](./qnamaker/quickstarts/create-publish-knowledge-base.md) |
 | Jazyk | Překladatel nebo vlastní Překladatel | https://portal.customtranslator.azure.ai/ | [Rychlý start](./translator/custom-translator/quickstart-build-deploy-custom-model.md) |
 | Řeč | Vlastní příkazy | https://speech.microsoft.com/ | [Rychlý start](./speech-service/custom-commands.md) |
-| Řeč | Custom Speech | https://speech.microsoft.com/ | [Rychlý start](./speech-service/how-to-custom-speech.md) |
+| Řeč | Custom Speech | https://speech.microsoft.com/ | [Rychlý start](./speech-service/custom-speech-overview.md) |
 | Řeč | Vlastní hlas | https://speech.microsoft.com/ | [Rychlý start](./speech-service/how-to-custom-voice.md) |  
 
 ### <a name="continuous-integration-and-delivery-with-devops-and-github-actions"></a>Průběžná integrace a doručování s akcemi DevOps a GitHubu

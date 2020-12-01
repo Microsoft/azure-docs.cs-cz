@@ -1,20 +1,20 @@
 ---
 title: Nasadit šablonu – Azure Portal
-description: Přečtěte si, jak si můžete na portálu Azure Portal vytvořit první šablonu Azure Resource Manageru a jak ji nasadit.
+description: Naučte se, jak vytvořit první šablonu Azure Resource Manager (šablonu ARM) pomocí Azure Portal a jak ji nasadit.
 author: mumian
 ms.date: 06/29/2020
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: c132d8337ccb46824b32ab4a6bcfc73bf5d0818b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bdbcecc247a4b5318ba44b92befa7e90ac47aa8c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95978552"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349618"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>Rychlý Start: vytvoření a nasazení šablon ARM pomocí Azure Portal
 
-Naučte se generovat šablonu Azure Resource Manager (ARM) pomocí Azure Portal a proces úpravy a nasazení šablony z portálu. Šablony ARM jsou soubory JSON definující prostředky, které pro vaše řešení potřebujete nasadit. Informace o konceptech spojených s nasazením a správou řešení Azure najdete v tématu [Přehled nasazení šablon](overview.md).
+Naučte se generovat šablonu Azure Resource Manager (šablonu ARM) pomocí Azure Portal a proces úpravy a nasazení šablony z portálu. Šablony ARM jsou soubory JSON definující prostředky, které pro vaše řešení potřebujete nasadit. Informace o konceptech spojených s nasazením a správou řešení Azure najdete v tématu [Přehled nasazení šablon](overview.md).
 
 ![Diagram portálu pro rychlé zprovoznění šablon Správce prostředků](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
@@ -38,7 +38,7 @@ Mnohé zkušení vývojáři šablon používají tuto metodu k vygenerování �
     ![Vytvoření účtu úložiště Azure](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 1. Zadejte následující informace:
 
-    |Name|Hodnota|
+    |Název|Hodnota|
     |----|----|
     |**Skupina prostředků**|Vyberte **vytvořit novou** a zadejte název skupiny prostředků podle svého výběru. Na snímku obrazovky má skupina prostředků název *mystorage1016rg*. Skupina prostředků je kontejner pro prostředky Azure. Skupina prostředků usnadňuje správu prostředků Azure. |
     |**Název**|Dejte účtu úložiště jedinečný název. Název účtu úložiště musí být jedinečný v rámci všech Azure a může obsahovat jenom malá písmena a číslice. Název musí být dlouhý 3 až 24 znaků. Pokud se zobrazí chybová zpráva s názvem "název účtu úložiště" mystorage1016 se už používá ", zkuste použít **&lt; své jméno>&lt; dnešní datum v>MMDD**, například **johndolestorage1016**. Další informace najdete v tématu [pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming).|
@@ -160,7 +160,7 @@ Azure vyžaduje, aby každá služba Azure měla jedinečný název. Nasazení m
 1. Vyberte **Uložit**.
 1. Zadejte tyto hodnoty:
 
-    |Name|Hodnota|
+    |Název|Hodnota|
     |----|----|
     |**Skupina prostředků**|Vyberte název skupiny prostředků, který jste vytvořili v poslední části. |
     |**Oblast**|Vyberte umístění skupiny prostředků. Například **USA – střed**. |

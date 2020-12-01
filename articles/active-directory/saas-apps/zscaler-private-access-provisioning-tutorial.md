@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: a93e2a88201f32ed99698f2bfbab631c81ed8b35
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: da3ad4f70e0cc41fe95327eb74093c1471c877bd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357704"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351567"
 ---
 # <a name="tutorial-configure-zscaler-private-access-zpa-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscaler Private Access (ZPA) pro Automatické zřizování uživatelů
 
@@ -78,7 +78,7 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 
     ![Vytvoření tokenu Zscaler Private Access (ZPA)](media/zscaler-private-access-provisioning-tutorial/token.png)
 
-8.  Pokud chcete najít **adresu URL tenanta** , přejděte do části **Správa > konfigurace IDP**. Klikněte na název nově přidané konfigurace IdP uvedené na stránce.
+8.  Pokud chcete najít **adresu URL tenanta**, přejděte do části **Správa > konfigurace IDP**. Klikněte na název nově přidané konfigurace IdP uvedené na stránce.
 
     ![Název IDP Zscaler Private Access (ZPA)](media/zscaler-private-access-provisioning-tutorial/idpname.png)
 
@@ -105,7 +105,7 @@ Než nakonfigurujete Zscaler Private Access (ZPA) pro Automatické zřizování 
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Zscaler Private Access (ZPA)** , vyberte **Zscaler Private Access (ZPA)** na panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Zscaler Private Access (ZPA)**, vyberte **Zscaler Private Access (ZPA)** na panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Zscaler Private Access (ZPA) v seznamu výsledků](common/search-new-app.png)
 

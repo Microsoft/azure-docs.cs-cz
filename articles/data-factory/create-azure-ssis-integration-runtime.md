@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: effa0d3ba9f7098b691605bfbd76bff9ea3d5e66
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7936699832a09f535729c42b12fec2d5c49a11a0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023427"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350938"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Vytvoření prostředí Azure-SSIS Integration runtime v Azure Data Factory
 
@@ -167,7 +167,7 @@ Pokud zaškrtnete toto políčko, proveďte následující kroky, abyste mohli p
 Vyberte možnost **Testovat připojení** , pokud je to možné, a pokud je to úspěšné, vyberte **Další**.
 
 > [!NOTE]
-   > Pokud používáte Azure SQL Database Server k hostování SSISDB, budou se data ve výchozím nastavení ukládat v geograficky redundantním úložišti pro zálohy. Pokud nechcete, aby byla vaše data replikována v jiných oblastech, postupujte podle pokynů ke [konfiguraci redundance úložiště zálohování pomocí PowerShellu](https://docs.microsoft.com/azure/azure-sql/database/automated-backups-overview?tabs=single-database#configure-backup-storage-redundancy-by-using-powershell).
+   > Pokud používáte Azure SQL Database Server k hostování SSISDB, budou se data ve výchozím nastavení ukládat v geograficky redundantním úložišti pro zálohy. Pokud nechcete, aby byla vaše data replikována v jiných oblastech, postupujte podle pokynů ke [konfiguraci redundance úložiště zálohování pomocí PowerShellu](../azure-sql/database/automated-backups-overview.md?tabs=single-database#configure-backup-storage-redundancy-by-using-powershell).
    
 ##### <a name="creating-azure-ssis-ir-package-stores"></a>Vytváření Azure-SSIS IRch úložišť balíčků
 

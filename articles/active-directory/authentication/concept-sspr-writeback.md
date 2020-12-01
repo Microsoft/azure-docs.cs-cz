@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9781196690c689036bfb69e1fa769112b5f69b2b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: af41f03a1ac0ea65d72d9af47b175bb78f9e1bc2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964974"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348775"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Jak funguje zpětný zápis hesla samoobslužné služby pro resetování hesla v Azure Active Directory?
 
@@ -90,7 +90,7 @@ Zpětný zápis hesla je vysoce Zabezpečená služba. Aby bylo zajištěno, že
 * **Služba pro předávání přes konkrétního tenanta**
    * Při nastavování služby se nastaví předávání Service Bus pro konkrétního tenanta, které je chráněné náhodně generovaným silným heslem, ke kterému má přístup Microsoft nikdy.
 * **Uzamčená, kryptograficky silný šifrovací klíč hesla**
-   * Po vytvoření služby Service Bus Relay se vytvoří silný symetrický klíč that'is, který slouží k šifrování hesla, když se nachází na lince. Tento klíč se používá jenom v tajném úložišti vaší společnosti v cloudu, které je silně uzamčené a auditované, stejně jako jakékoli jiné heslo v adresáři.
+   * Po vytvoření služby Service Bus Relay se vytvoří silný symetrický klíč, který slouží k šifrování hesla při jeho přenosech. Tento klíč se používá jenom v tajném úložišti vaší společnosti v cloudu, které je silně uzamčené a auditované, stejně jako jakékoli jiné heslo v adresáři.
 * **Standardní obor TLS (Transport Layer Security)**
    1. V případě, že dojde k resetování hesla nebo k operaci změny v cloudu, heslo ve formátu prostého textu se zašifruje pomocí veřejného klíče.
    1. Šifrované heslo se umístí do zprávy HTTPS, která se pošle přes zašifrovaný kanál pomocí certifikátů Microsoft TLS/SSL k předávání Service Bus.

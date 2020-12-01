@@ -2,13 +2,13 @@
 title: Kurz – nasazení a konfigurace nástroje VMware HCX
 description: Přečtěte si, jak nasadit a nakonfigurovat řešení VMware HCX pro privátní cloud řešení Azure VMware.
 ms.topic: tutorial
-ms.date: 11/18/2020
-ms.openlocfilehash: afb5c653ce7c4b4a453a4031c5664042357de6c0
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.date: 11/25/2020
+ms.openlocfilehash: e50454c2299ed0f7e249563eecac1935a29a9c47
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95999619"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352455"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Nasazení a konfigurace VMware HCX
 
@@ -16,8 +16,8 @@ V tomto článku se dozvíte, jak nasadit a nakonfigurovat místní konektor VMw
 
 VMware HCX Advanced Connector je předem nasazený v řešení Azure VMware. Podporuje až tři připojení lokality (z místního prostředí do cloudu nebo Cloud do cloudu). Pokud potřebujete více než tři připojení k webu, odešlete [žádost o podporu](https://portal.azure.com/#create/Microsoft.Support) , která povolí doplněk [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) . Doplněk je aktuálně ve verzi Preview. 
 
->[!Note]
->I když nástroj pro konfiguraci VMware Configuration Manageru popisuje, že páry webů jsou maximálně 25 mezi konektorem Prem a správcem cloudu, licence se znovu omezí na 3 pro rozšířené a 10 pro Enterprise Edition.
+>[!TIP]
+>I když nástroj maximální konfigurace VMware popisuje páry webů, které jsou maximálně 25 mezi on-premises Connectorem a správcem cloudu, tato licence omezuje tyto možnosti na tři pro rozšířené a 10 pro Enterprise Edition.
 
 >[!NOTE]
 >VMware HCX Enterprise je k dispozici s řešením Azure VMware jako službou ve verzi Preview. Je zdarma a podléhá podmínkám a ujednáním pro službu verze Preview. Jakmile je podniková služba VMware HCX Enterprise všeobecně dostupná, dostanete 30denní oznámení o tom, že účtování bude přepínat. Také budete mít možnost vypnout nebo odhlásit službu. Neexistuje žádná jednoduchá cesta k downgradu z VMware HCX Enterprise na VMware HCX Advanced. Pokud se rozhodnete downgradovat, budete muset znovu nasadit a nasazovat výpadky.
@@ -62,7 +62,7 @@ Ujistěte se, že vaše místní prostředí vSphere (zdrojové prostředí) spl
 
 * [Všechny požadované porty](https://ports.vmware.com/home/VMware-HCX) jsou otevřené pro komunikaci mezi místními komponentami a Azure VMware Solution SDDC.
 
-### <a name="ip-addresses"></a>IP adresy
+### <a name="ip-addresses"></a>IP adresy,
 
 [!INCLUDE [hcx-network-segments](includes/hcx-network-segments.md)]
    
@@ -79,7 +79,7 @@ Než virtuální zařízení nasadíte do místního serveru vCenter, musíte si
 1. Vyberte **Spravovat**  >  **identitu** a pro identifikaci hesla vyberte **heslo správce vCenter** .
 
    > [!TIP]
-   > Heslo vCenter bylo definováno při nastavování privátního cloudu, jedná se o stejné heslo, které použijete k přihlášení ke službě Azure VMware Solution HCX Manager.
+   > Heslo vCenter bylo definováno při nastavování privátního cloudu. Jedná se o stejné heslo, které použijete k přihlášení ke službě Azure VMware Solution HCX Manager.
 
    :::image type="content" source="media/tutorial-vmware-hcx/hcx-admin-password.png" alt-text="vyhledejte heslo HCX." lightbox="media/tutorial-vmware-hcx/hcx-admin-password.png":::
 
@@ -91,7 +91,7 @@ Než virtuální zařízení nasadíte do místního serveru vCenter, musíte si
 
 ## <a name="deploy-the-vmware-hcx-connector-ova-on-premises"></a>Nasazení vajíček konektoru VMware HCX v místním prostředí
 
-1. V místním serveru vCenter vyberte [šablonu OVF](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-17BEDA21-43F6-41F4-8FB2-E01D275FE9B4.html) pro nasazení konektoru HCX do místního serveru vCenter. 
+1. V místním serveru vCenter vyberte [šablonu OVF](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-17BEDA21-43F6-41F4-8FB2-E01D275FE9B4.html) pro nasazení konektoru VMware HCX do místního serveru vCenter. 
 
    > [!TIP]
    > Vyberete soubor vajíček, který jste si stáhli v předchozí části.  
@@ -111,12 +111,12 @@ Než virtuální zařízení nasadíte do místního serveru vCenter, musíte si
 
    :::image type="content" source="media/tutorial-vmware-hcx/customize-template.png" alt-text="Snímek obrazovky s poli pro přizpůsobení šablony" lightbox="media/tutorial-vmware-hcx/customize-template.png":::
 
-1. Ověřte konfiguraci a potom kliknutím na **Dokončit** NAsaďte vajíčko konektoru HCX.
+1. Ověřte konfiguraci a pak kliknutím na **Dokončit** nasaďte vajíček konektoru VMware HCX.
    
    > [!IMPORTANT]
    > Virtuální zařízení budete muset zapnout ručně.  Po zapnutí počkejte, než se dokročí k dalšímu kroku, počkejte 10-15 minut.
 
-Kompletní přehled tohoto postupu najdete v článku [Řešení Azure VMware: video o nasazení zařízení HCX](https://www.youtube.com/embed/BwSnQeefnso) . 
+Kompletní přehled tohoto postupu najdete v článku [Řešení Azure VMware: video o nasazení zařízení HCX](https://www.youtube.com/embed/UKmSTYrL6AY) . 
 
 
 ## <a name="activate-vmware-hcx"></a>Aktivace VMware HCX
@@ -152,7 +152,7 @@ Po nasazení vajíček konektoru VMware HCX do místního prostředí a spuště
 1. V části **Konfigurace jednotného přihlašování/PSC** zadejte plně kvalifikovaný název domény nebo IP adresu vašeho kontroleru služeb platformy a pak vyberte **pokračovat**.
    
    > [!NOTE]
-   > Obvykle je tato položka stejná jako plně kvalifikovaný název domény nebo IP adresa serveru vCenter.
+   > Obvykle je stejný jako plně kvalifikovaný název domény nebo IP adresa serveru vCenter.
 
 1. Ověřte, zda jsou zadané informace správné, a vyberte možnost **restartovat**.
     
@@ -163,7 +163,7 @@ Po restartování služeb se na obrazovce, která se zobrazí, zobrazí položka
 
 :::image type="content" source="media/tutorial-vmware-hcx/activation-done.png" alt-text="Snímek obrazovky řídicího panelu se stavem zelených vCenter" lightbox="media/tutorial-vmware-hcx/activation-done.png":::  
 
-Ucelený přehled tohoto postupu najdete v [Řešení Azure VMware: Aktivace HCX](https://www.youtube.com/embed/BkAV_TNYxdE) videa.
+Ucelený přehled tohoto postupu najdete v [Řešení Azure VMware: Aktivace HCX](https://www.youtube.com/embed/jzQZawslF8w) videa.
 
    > [!IMPORTANT]
    > Bez ohledu na to, jestli používáte VMware HCX Advanced nebo VMware HCX Enterprise, budete možná muset nainstalovat opravu z [článku znalostní báze](https://kb.vmware.com/s/article/81558)VMware pro systém 81558. 
@@ -174,7 +174,7 @@ Nyní jste připraveni přidat párování webu, vytvořit síťový a výpočet
 
 ### <a name="add-a-site-pairing"></a>Přidání párování webů
 
-Můžete se připojit (spárovat) správce cloudu VMware HCX v řešení Azure VMware pomocí konektoru VMware HCX ve vašem datovém centru. 
+Správce cloudu VMware HCX můžete v řešení Azure VMware připojit nebo spárovat pomocí konektoru VMware HCX ve vašem datovém centru. 
 
 1. Přihlaste se k místnímu serveru vCenter a v části **Domů** vyberte **HCX**.
 
@@ -183,15 +183,16 @@ Můžete se připojit (spárovat) správce cloudu VMware HCX v řešení Azure V
 1. Zadejte adresu URL nebo IP adresu cloudového správce Azure VMware Solution HCX, kterou jste si poznamenali dříve `https://x.x.x.9` , uživatelské jméno řešení Azure VMware cloudadmin@vsphere.local a heslo. Potom vyberte **Připojit**.
 
    > [!NOTE]
-   > Aby bylo možné úspěšně vytvořit pár lokalit, váš konektor HCX musí být schopný směrovat do vaší HCX IP adresy cloudového správce přes port 443.
+   > Chcete-li úspěšně vytvořit pár lokalit:
+   > * Váš konektor VMware HCX musí být schopný směrovat se na vaši IP adresu cloudového správce HCX přes port 443.
    >
-   > Heslo je stejné heslo, které jste použili k přihlášení do vCenter. Toto heslo jste definovali na úvodní obrazovce nasazení.
+   > * Použijte stejné heslo, které jste použili k přihlášení do vCenter. Toto heslo jste definovali na úvodní obrazovce nasazení.
 
-   Zobrazí se obrazovka s informacemi o tom, že váš HCX cloudový správce v řešení Azure VMware a váš místní konektor HCX jsou připojené (spárované).
+   Zobrazí se obrazovka s informacemi o tom, že váš správce cloudu VMware HCX v řešení Azure VMware a váš místní konektor VMware HCX jsou připojené (spárované).
 
-   :::image type="content" source="media/tutorial-vmware-hcx/site-pairing-complete.png" alt-text="Snímek obrazovky zobrazující párování HCX Manageru v řešení Azure VMware a konektoru HCX":::
+   :::image type="content" source="media/tutorial-vmware-hcx/site-pairing-complete.png" alt-text="Snímek obrazovky zobrazující párování HCX Manageru v řešení Azure VMware a konektoru VMware HCX":::
 
-Ucelený přehled tohoto postupu najdete v článku [Řešení Azure VMware: video párování webu HCX](https://www.youtube.com/embed/sKizDCRHOko) .
+Ucelený přehled tohoto postupu najdete v článku [Řešení Azure VMware: video párování webu HCX](https://www.youtube.com/embed/iTJtjbiwvsw) .
 
 ### <a name="create-network-profiles"></a>Vytvoření profilů sítě
 
@@ -212,7 +213,7 @@ Vytvoříte čtyři síťové profily:
 
    :::image type="content" source="media/tutorial-vmware-hcx/example-configurations-network-profile.png" alt-text="Snímek obrazovky s podrobnostmi o novém profilu sítě.":::
 
-Ucelený přehled tohoto postupu najdete v článku [Řešení Azure VMware: video o profilu HCX Network Profile](https://www.youtube.com/embed/NhyEcLco4JY) .
+Ucelený přehled tohoto postupu najdete v článku [Řešení Azure VMware: video o profilu HCX Network Profile](https://www.youtube.com/embed/O0rU4jtXUxc) .
 
 
 ### <a name="create-a-compute-profile"></a>Vytvořit výpočetní profil
@@ -274,18 +275,20 @@ Ucelený přehled tohoto postupu najdete v článku [Řešení Azure VMware: vid
 
    :::image type="content" source="media/tutorial-vmware-hcx/compute-profile-done.png" alt-text="Snímek obrazovky, který zobrazuje informace o výpočetním profilu." lightbox="media/tutorial-vmware-hcx/compute-profile-done.png":::
 
-Úplný přehled tohoto postupu najdete v článku [Řešení Azure VMware: video o COMPUTE Profile](https://www.youtube.com/embed/qASXi5xrFzM) .
+Úplný přehled tohoto postupu najdete v článku [Řešení Azure VMware: video o COMPUTE Profile](https://www.youtube.com/embed/e02hsChI3b8) .
 
 ### <a name="create-a-service-mesh"></a>Vytvoření sítě služby
 
 Teď je čas nakonfigurovat síť mezi místními a SDDC řešení Azure VMware.
 
-   > [!NOTE]
-   > Postup úspěšného vytvoření sítě služby pomocí řešení Azure VMware:
-   >
-   > Porty UDP 500/4500 se otevřou mezi místními adresami profilů pro odchozí připojení (HCX) a adresami síťového profilu pro odchozí připojení Azure VMware Solution HCX Cloud.
-   >
-   > Nezapomeňte zkontrolovat [HCX požadované porty](https://ports.vmware.com/home/VMware-HCX).
+
+
+> [!NOTE]
+> Postup úspěšného vytvoření sítě služby pomocí řešení Azure VMware:
+>
+> * Porty UDP 500/4500 se otevírají mezi místními adresami profilů sítě pro odchozí připojení VMware HCX Connectorem a adresou profilů sítě pro odchozí připojení řešení Azure VMware HCX Cloud.
+>
+> * Nezapomeňte si prohlédnout [požadované porty VMware HCX](https://ports.vmware.com/home/VMware-HCX).
 
 1. V části **infrastruktura** vyberte **Interconnect**  >  **Service mřížka**  >  **vytvořit síť služby**.    
 
@@ -312,6 +315,10 @@ Teď je čas nakonfigurovat síť mezi místními a SDDC řešení Azure VMware.
   
 1. V **rozšířené konfiguraci – zařízení rozšíření sítě škálovat**, zkontrolujte a vyberte **pokračovat**. 
 
+   Můžete mít až osm sítí VLAN na každé zařízení, ale můžete nasadit jiné zařízení a přidat další osm sítí VLAN. Pro další zařízení musíte mít také adresní prostor IP adres a je to jedna IP adresa pro každé zařízení.  Další informace najdete v tématu [omezení konfigurace VMware HCX](https://configmax.vmware.com/guest?vmwareproduct=VMware%20HCX&release=VMware%20HCX&categories=41-0,42-0,43-0,44-0,45-0).
+   
+   :::image type="content" source="media/tutorial-vmware-hcx/extend-networks-increase-vlan.png" alt-text="Snímek obrazovky, který ukazuje, kde zvýšit počet sítí VLAN" lightbox="media/tutorial-vmware-hcx/extend-networks-increase-vlan.png":::
+
 1. V **pokročilých technikách konfigurace a provozu** zkontrolujte a proveďte jakékoli změny, které máte pocit, a pak vyberte **pokračovat**.
 
 1. Přečtěte si náhled topologie a vyberte **pokračovat**.
@@ -332,7 +339,7 @@ Teď je čas nakonfigurovat síť mezi místními a SDDC řešení Azure VMware.
 
    :::image type="content" source="media/tutorial-vmware-hcx/interconnect-appliance-state.png" alt-text="Snímek obrazovky zobrazující výběry pro kontrolu stavu zařízení." lightbox="media/tutorial-vmware-hcx/interconnect-appliance-state.png":::
 
-Kompletní přehled tohoto postupu najdete v článku [Řešení Azure VMware:](https://www.youtube.com/embed/FyZ0d3P_T24) video o síti.
+Kompletní přehled tohoto postupu najdete v článku [Řešení Azure VMware:](https://www.youtube.com/embed/COY3oIws108) video o síti.
 
 ### <a name="optional-create-a-network-extension"></a>Volitelné Vytvoření rozšíření sítě
 
@@ -354,7 +361,7 @@ Pokud chcete z místního prostředí do řešení Azure VMware Rozmístit všec
 
    :::image type="content" source="media/tutorial-vmware-hcx/extension-complete.png" alt-text="Snímek obrazovky zobrazující stav rozšíření je dokončený." lightbox="media/tutorial-vmware-hcx/extension-complete.png":::
 
-Kompletní přehled tohoto postupu najdete v článku [Řešení Azure VMware: video o rozšíření sítě](https://www.youtube.com/embed/cNlp0f_tTr0) .
+Kompletní přehled tohoto postupu najdete v článku [Řešení Azure VMware: video o rozšíření sítě](https://www.youtube.com/embed/gYR0nftKui0) .
 
 
 ## <a name="next-steps"></a>Další kroky
@@ -364,5 +371,5 @@ Pokud je stav tunelového propojení zařízení **zapnutý a zelený** , může
 Další informace o použití HCX najdete v technické dokumentaci k VMware:
 
 * [Dokumentace k VMware HCX](https://docs.vmware.com/en/VMware-HCX/index.html)
-* [Migrace Virtual Machines s využitím VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g).
+* [Migrace Virtual Machines s využitím VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)
 * [HCX požadované porty](https://ports.vmware.com/home/VMware-HCX)

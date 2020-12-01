@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 3f84f3121d9982205ecf51ec64cfe332b6a5ad42
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 786fcd1a0c6d7df2c38a086a830a63f7179d7d40
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947007"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352503"
 ---
 # <a name="quickstart-onboard-azure-defender-for-iot-service-in-iot-hub"></a>Rychlý Start: zprovoznění Azure Defenderu pro službu IoT v IoT Hub
 
-Tento článek popisuje, jak ve stávající IoT Hub povolit službu Defender for IoT. Pokud v tuto chvíli nemáte IoT Hub, přečtěte si téma [vytvoření IoT Hub pomocí Azure Portal](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal) pro začátek.
+Tento článek popisuje, jak ve stávající IoT Hub povolit službu Defender for IoT. Pokud v tuto chvíli nemáte IoT Hub, přečtěte si téma [vytvoření IoT Hub pomocí Azure Portal](../iot-hub/iot-hub-create-through-portal.md) pro začátek.
 
 > [!NOTE]
 > Defender pro IoT aktuálně podporuje jenom centra IoT úrovně Standard.
@@ -30,7 +30,7 @@ Tento článek popisuje, jak ve stávající IoT Hub povolit službu Defender fo
 ## <a name="prerequisites-for-enabling-the-service"></a>Předpoklady pro povolení služby
 
 - Pracovní prostor služby Log Analytics
-  - Ve výchozím nastavení jsou ve vašem Log Analytics pracovním prostoru od programu Defender pro IoT standardně uloženy dva typy informací. **výstrahy** a **doporučení**zabezpečení.
+  - Ve výchozím nastavení jsou ve vašem Log Analytics pracovním prostoru od programu Defender pro IoT standardně uloženy dva typy informací. **výstrahy** a **doporučení** zabezpečení.
   - Můžete zvolit, že chcete přidat úložiště pro další typ informací, **nezpracované události**. Pamatujte, že ukládání **nezpracovaných událostí** v Log Analytics přináší další náklady na úložiště.
 - IoT Hub (úroveň Standard)
 - Splnění všech [požadavků služby](service-prerequisites.md)

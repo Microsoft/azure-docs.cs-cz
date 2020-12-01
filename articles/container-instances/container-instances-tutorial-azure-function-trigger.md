@@ -4,12 +4,12 @@ description: Vytvoření funkce PowerShellu bez serveru aktivovaného protokolem
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ec4b2273f6be6ea4aabed2b660e0b7553f861d0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b94d583ca26b88d093810528d3193f20d765f1d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072039"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349244"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Kurz: použití funkce Azure aktivované protokolem HTTP k vytvoření skupiny kontejnerů
 
@@ -27,15 +27,15 @@ Získáte informace o těchto tématech:
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tématu [Vytvoření první funkce v Azure použijte Visual Studio Code](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell#configure-your-environment) pro požadavky na instalaci a použití Visual Studio Code s rozšířením Azure Functions v operačním systému.
+V tématu [Vytvoření první funkce v Azure použijte Visual Studio Code](../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-powershell#configure-your-environment) pro požadavky na instalaci a použití Visual Studio Code s rozšířením Azure Functions v operačním systému.
 
 Další kroky v tomto článku se používají Azure PowerShell. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure PowerShell][azure-powershell-install] a [přihlášení do Azure](/powershell/azure/get-started-azureps#sign-in-to-azure).
 
 ## <a name="create-a-basic-powershell-function"></a>Vytvoření základní funkce PowerShellu
 
-Postupujte podle kroků v části [Vytvoření první funkce PowerShellu v Azure](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell) a vytvořte funkci PowerShell pomocí šablony triggeru http. Použijte výchozí název funkce Azure **HttpTrigger**. Jak je znázorněno v rychlém startu, otestujte funkci místně a publikujte projekt do aplikace Function App v Azure. Tento příklad je základní funkcí spouštěnou protokolem HTTP, která vrací textový řetězec. V pozdějších krocích v tomto článku upravíte funkci pro vytvoření skupiny kontejnerů.
+Postupujte podle kroků v části [Vytvoření první funkce PowerShellu v Azure](../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-powershell) a vytvořte funkci PowerShell pomocí šablony triggeru http. Použijte výchozí název funkce Azure **HttpTrigger**. Jak je znázorněno v rychlém startu, otestujte funkci místně a publikujte projekt do aplikace Function App v Azure. Tento příklad je základní funkcí spouštěnou protokolem HTTP, která vrací textový řetězec. V pozdějších krocích v tomto článku upravíte funkci pro vytvoření skupiny kontejnerů.
 
-V tomto článku se předpokládá, že publikujete projekt pomocí názvu *myfunctionapp*ve skupině prostředků Azure, která se automaticky jmenuje podle názvu aplikace Function App (také *myfunctionapp*). V pozdějších krocích nahraďte jedinečný název aplikace funkcí a název skupiny prostředků.
+V tomto článku se předpokládá, že publikujete projekt pomocí názvu *myfunctionapp* ve skupině prostředků Azure, která se automaticky jmenuje podle názvu aplikace Function App (také *myfunctionapp*). V pozdějších krocích nahraďte jedinečný název aplikace funkcí a název skupiny prostředků.
 
 ## <a name="enable-an-azure-managed-identity-in-the-function-app"></a>Povolení identity spravované v Azure v aplikaci Function App
 
@@ -97,7 +97,7 @@ Před opětovným publikováním projektu Function App do Azure zajistěte, aby 
 
 Po ověření, že se funkce spustí místně, znovu publikujte projekt do existující aplikace Function App v Azure.
 
-1. V Visual Studio Code otevřete paletu příkazů. Vyhledejte a vyberte `Azure Functions: Deploy to Function App...` .
+1. V nástroji Visual Studio Code otevřete paletu příkazů. Vyhledejte a vyberte `Azure Functions: Deploy to Function App...` .
 1. Vyberte aktuální pracovní složku pro zip a nasazení.
 1. Vyberte předplatné a pak název existující aplikace Function App (*myfunctionapp*). Potvrďte, že chcete přepsat předchozí nasazení.
 

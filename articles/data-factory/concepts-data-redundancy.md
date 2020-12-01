@@ -12,23 +12,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: abnarain
-ms.openlocfilehash: f71fdf66624d67939f915f91c2cc1dbe7553cad7
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 7f95adc264ed91e75eef668b43f674ddeb7d9e89
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94332070"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350020"
 ---
 # <a name="azure-data-factory-data-redundancy"></a>**Azure Data Factory redundanci dat**
 
 Data Azure Data Factory zahrnují metadata (kanály, datové sady, propojené služby, modul runtime integrace a triggery) a data monitorování (spuštění kanálu, triggeru a aktivit). 
 
-Ve všech oblastech (s výjimkou Brazílie – jih a jihovýchodní Asie) se Azure Data Factory data ukládají a replikují do [spárované oblasti](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#azure-regional-pairs) , aby se mohla chránit před ztrátou metadat. V případě selhání regionálních datových Center může společnost Microsoft zahájit místní převzetí služeb při selhání vaší instance Azure Data Factory. Ve většině případů není nutná žádná akce na vaší straně. Po dokončení převzetí služeb při selhání spravovaného společností Microsoft budete mít přístup k vašemu Azure Data Factory v oblasti převzetí služeb při selhání. 
+Ve všech oblastech (s výjimkou Brazílie – jih a jihovýchodní Asie) se Azure Data Factory data ukládají a replikují do [spárované oblasti](../best-practices-availability-paired-regions.md#azure-regional-pairs) , aby se mohla chránit před ztrátou metadat. V případě selhání regionálních datových Center může společnost Microsoft zahájit místní převzetí služeb při selhání vaší instance Azure Data Factory. Ve většině případů není nutná žádná akce na vaší straně. Po dokončení převzetí služeb při selhání spravovaného společností Microsoft budete mít přístup k vašemu Azure Data Factory v oblasti převzetí služeb při selhání. 
 
-Z důvodu požadavků na umístění dat v oblasti Brazílie – jih a jihovýchodní Asie se Azure Data Factory data ukládají [pouze v místní oblasti](https://docs.microsoft.com/azure/storage/common/storage-redundancy#locally-redundant-storage). V jihovýchodní Asie se všechna data ukládají v Singapuru. V oblasti Brazílie – jih jsou všechna data uložená v Brazílii. Když dojde ke ztrátě oblasti z důvodu významné havárie, Microsoft nebude moct obnovit data Azure Data Factory.  
+Z důvodu požadavků na umístění dat v oblasti Brazílie – jih a jihovýchodní Asie se Azure Data Factory data ukládají [pouze v místní oblasti](../storage/common/storage-redundancy.md#locally-redundant-storage). V jihovýchodní Asie se všechna data ukládají v Singapuru. V oblasti Brazílie – jih jsou všechna data uložená v Brazílii. Když dojde ke ztrátě oblasti z důvodu významné havárie, Microsoft nebude moct obnovit data Azure Data Factory.  
 
 > [!NOTE]
-> Převzetí služeb při selhání spravované Microsoftem se nevztahuje na místní prostředí Integration runtime (SHIR), protože tato infrastruktura je obvykle spravovaná zákazníkem. Pokud je SHIR nastavený na virtuálním počítači Azure, doporučuje se využít [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) ke zpracování [převzetí služeb virtuálního počítače Azure](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-architecture) v jiné oblasti.
+> Převzetí služeb při selhání spravované Microsoftem se nevztahuje na místní prostředí Integration runtime (SHIR), protože tato infrastruktura je obvykle spravovaná zákazníkem. Pokud je SHIR nastavený na virtuálním počítači Azure, doporučuje se využít [Azure Site Recovery](../site-recovery/site-recovery-overview.md) ke zpracování [převzetí služeb virtuálního počítače Azure](../site-recovery/azure-to-azure-architecture.md) v jiné oblasti.
 
 
 
@@ -36,7 +36,7 @@ Z důvodu požadavků na umístění dat v oblasti Brazílie – jih a jihových
 
 Abyste měli jistotu, že budete moct sledovat a auditovat změny provedené v metadatech Azure Data Factory, měli byste zvážit nastavení správy zdrojového kódu pro Azure Data Factory. Také vám umožní přístup k souborům JSON metadat pro kanály, datové sady, propojené služby a Trigger. Azure Data Factory vám umožní pracovat s jiným úložištěm Git (Azure DevOps a GitHub). 
 
- Naučte se, jak nastavit [správu zdrojového kódu v Azure Data Factory](https://docs.microsoft.com/azure/data-factory/source-control). 
+ Naučte se, jak nastavit [správu zdrojového kódu v Azure Data Factory](./source-control.md). 
 
 > [!NOTE]
 > V případě havárie (ztráta oblasti) je možné novou datovou továrnu zřídit ručně nebo automatizovaným způsobem. Po vytvoření nové datové továrny můžete své kanály, datové sady a soubory JSON propojených služeb obnovit z existujícího úložiště Git. 
@@ -51,5 +51,5 @@ Azure Data Factory vám umožní přesouvat data mezi úložišti dat umístěn�
 
 ## <a name="see-also"></a>Viz také
 
-- [Regionální páry Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
-- [Zasídlí dat v Azure](https://azure.microsoft.com/global-infrastructure/data-residency/) 
+- [Regionální páry Azure](../best-practices-availability-paired-regions.md)
+- [Zasídlí dat v Azure](https://azure.microsoft.com/global-infrastructure/data-residency/)

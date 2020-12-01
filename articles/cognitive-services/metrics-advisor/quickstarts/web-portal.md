@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: quickstart
 ms.date: 09/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 0afd8fab6072e1563d2b2f277e8a53b56a8161c2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 5dbf98d363429e6d22a0b7719cdc669deebd21a0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048232"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348632"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>Rychlý Start: monitorování první metriky pomocí webového portálu
 
@@ -27,7 +27,7 @@ Při zřizování instance služby Advisor metriky můžete použít rozhraní A
 * Prozkoumejte diagnostické poznatky
 * Vytvoření a přihlášení k odběru výstrah anomálií
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Jakmile budete mít předplatné Azure, <a href="https://go.microsoft.com/fwlink/?linkid=2142156"  title=" vytvořte prostředek Advisoru metriky "  target="_blank"> vytvořením prostředku Advisoru metriky <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal k nasazení instance služby Advisor pro metriky.  
@@ -92,12 +92,12 @@ Po načtení schématu dat a zobrazení jako níže vyberte příslušná pole.
 |Výběr  |Popis  |Poznámky  |
 |---------|---------|---------|
 |**Timestamp**     | Časové razítko datového bodu. Pokud tento parametr vynecháte, poradce metriky použije časové razítko, když se místo toho bude přijímat datový bod. U každého datového kanálu můžete zadat maximálně jeden sloupec jako časové razítko.        | Nepovinný parametr. By měl být zadaný s maximálně jedním sloupcem.       |
-|**Measure**     |  Číselné hodnoty v datovém kanálu. U každého datového kanálu můžete zadat více měr, ale jako míru by měl být vybrán alespoň jeden sloupec.        | By měla být zadána alespoň v jednom sloupci.        |
+|**Míra**     |  Číselné hodnoty v datovém kanálu. U každého datového kanálu můžete zadat více měr, ale jako míru by měl být vybrán alespoň jeden sloupec.        | By měla být zadána alespoň v jednom sloupci.        |
 |**Rozměr**     | Kategorií hodnoty. Kombinace různých hodnot identifikuje konkrétní časovou řadu s jednou dimenzí, například: Country (země), Language (tenant). Jako rozměry můžete vybrat žádný nebo libovolný počet sloupců. Poznámka: Pokud jako dimenzi vybíráte sloupec, který není typu řetězec, buďte opatrní při rozbalení dimenze. | Nepovinný parametr.        |
-|**Ignorovat**     | Ignoruje vybraný sloupec.        |         |
+|**Ohled**     | Ignoruje vybraný sloupec.        |         |
 
 
-:::image type="content" source="../media/schema-configuration.png" alt-text="Nastavení připojení" lightbox="../media/schema-configuration.png":::
+:::image type="content" source="../media/schema-configuration.png" alt-text="Konfigurace schématu" lightbox="../media/schema-configuration.png":::
 
 ### <a name="automatic-roll-up-settings"></a>Nastavení automatického shrnutí
 
@@ -117,7 +117,7 @@ Po použití detekce klikněte na jednu z metrik uvedených v datovém kanálu, 
 - Aktualizace zjišťování konfigurace, aby splňovala očekávané výsledky
 - Nastavení oznámení pro zjištěné anomálie
 
-:::image type="content" source="../media/metric-details.png" alt-text="Nastavení připojení" lightbox="../media/metric-details.png":::
+:::image type="content" source="../media/metric-details.png" alt-text="Podrobnosti metriky" lightbox="../media/metric-details.png":::
 
 ## <a name="view-the-diagnostic-insights"></a>Zobrazit diagnostické přehledy
 
@@ -125,13 +125,13 @@ Po optimalizaci konfigurace zjišťování by nalezené anomálie měly odráže
 
 Pokud chcete zobrazit diagnostické poznatky, klikněte na červené tečky v vizualizacích časových řad, které reprezentují zjištěné anomálie. Zobrazí se okno s odkazem na stránku analýzy incidentů. 
 
-:::image type="content" source="../media/incident-link.png" alt-text="Nastavení připojení" lightbox="../media/incident-link.png":::
+:::image type="content" source="../media/incident-link.png" alt-text="Odkaz na incident" lightbox="../media/incident-link.png":::
 
-Po kliknutí na tento odkaz bude na stránce analýzy incidentů převedená analýza incidentu, která analyzuje odpovídající anomálii a spoustu diagnostických poznatků. V horní části se zobrazí statistické údaje o incidentu, jako je **závažnost**, ovlivnění **anomálií**a **čas spuštění** a **čas ukončení**. 
+Po kliknutí na tento odkaz bude na stránce analýzy incidentů převedená analýza incidentu, která analyzuje odpovídající anomálii a spoustu diagnostických poznatků. V horní části se zobrazí statistické údaje o incidentu, jako je **závažnost**, ovlivnění **anomálií** a **čas spuštění** a **čas ukončení**. 
 
 V dalším kroku se zobrazí anomálie nadřazeného incidentu a automatizovaná Rada pro hlavní příčiny. Tato automatizovaná pomocná událost je vygenerována analýzou stromové struktury všech souvisejících anomálií, včetně odchylek, distribuce a příspěvků nadřazených anomálií. 
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="Nastavení připojení" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="Diagnostika incidentů" lightbox="../media/incident-diagnostic.png":::
 
 Na základě těchto informací už můžete získat přehled o tom, co se děje, a ovlivnit dopad incidentu a také největší možnou hlavní příčinu. Proto by mohla být provedena okamžitá akce pro vyřešení incidentu co nejdříve. 
 
@@ -155,5 +155,5 @@ Po vytvoření zavěšení se v nastavení výstrahy určí, jak se mají posíl
 - [Zprovoznění datových kanálů](../how-tos/onboard-your-data.md)
     - [Správa datových kanálů](../how-tos/manage-data-feeds.md)
     - [Konfigurace pro různé zdroje dat](../data-feeds-from-different-sources.md)
-- [Použití REST API nebo klientských knihoven](rest-api.md)
+- [Použití REST API nebo klientských knihoven](./rest-api-and-client-library.md)
 - [Konfigurace metrik a doladění konfigurace zjišťování](../how-tos/configure-metrics.md)

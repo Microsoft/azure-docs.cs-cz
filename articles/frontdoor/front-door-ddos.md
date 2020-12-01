@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: jodowns
-ms.openlocfilehash: 58efeaebcc9f643c725cde54fcbda6f65c4bd700
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 24a8a559d72eae4dab0b6e740b34890f1d7ff114
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94414724"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350779"
 ---
 # <a name="ddos-protection-on-front-door"></a>DDoS ochrana před dveřmi
 
@@ -36,7 +36,7 @@ Přední dvířka jsou rozsáhlě škálovatelná globálně distribuovaná slu�
 
 ## <a name="caching"></a>Ukládání do mezipaměti
 
-[Možnosti ukládání do mezipaměti pro frontu](./front-door-caching.md) se dají použít k ochraně back-endu z velkých objemů provozu vygenerovaných útokem. Prostředky uložené v mezipaměti budou vráceny z hraničních uzlů front dveří, takže se nebudou předávány do vašeho back-endu. Dokonce i krátká doba vypršení platnosti mezipaměti (v sekundách nebo minutách) na dynamických odpovědích může výrazně snížit zatížení back-end služeb. Další informace o konceptech a vzorcích pro ukládání do mezipaměti najdete v tématu [požadavky na ukládání do](https://docs.microsoft.com/azure/architecture/best-practices/caching) mezipaměti a model doplňování [mezipaměti](https://docs.microsoft.com/azure/architecture/patterns/cache-aside).
+[Možnosti ukládání do mezipaměti pro frontu](./front-door-caching.md) se dají použít k ochraně back-endu z velkých objemů provozu vygenerovaných útokem. Prostředky uložené v mezipaměti budou vráceny z hraničních uzlů front dveří, takže se nebudou předávány do vašeho back-endu. Dokonce i krátká doba vypršení platnosti mezipaměti (v sekundách nebo minutách) na dynamických odpovědích může výrazně snížit zatížení back-end služeb. Další informace o konceptech a vzorcích pro ukládání do mezipaměti najdete v tématu [požadavky na ukládání do](/azure/architecture/best-practices/caching) mezipaměti a model doplňování [mezipaměti](/azure/architecture/patterns/cache-aside).
 
 ## <a name="web-application-firewall-waf"></a>Firewall webových aplikací (WAF)
 

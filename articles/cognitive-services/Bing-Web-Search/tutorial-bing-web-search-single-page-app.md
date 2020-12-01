@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: c47a4fbf51b14d9a13237f77c75dbf2839fb5f80
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: ff54d605fd81fa640314d99359f1aabacf7a469e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381282"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350377"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Kurz: Vytvoření jednostránkové aplikace pomocí rozhraní API Bingu pro vyhledávání na webu
 
 > [!WARNING]
-> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 > Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
-> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Na této jednostránkové aplikaci můžete vidět, jak načíst, analyzovat a zobrazit výsledky vyhledávání z rozhraní API Bingu pro vyhledávání na webu. V tomto kurzu se používají standardní jazyk HTML a šablony stylů CSS a kurz se zaměřuje na kód jazyka JavaScript. Jazyk HTML, šablony stylů CSS a soubory JS jsou k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) s pokyny pro rychlý start.
 
@@ -136,9 +136,9 @@ function bingSearchOptions(form) {
 
 `SafeSearch` je možné nastavit na `strict`, `moderate` nebo `off` a výchozí nastavení pro vyhledávání na webu Bingu je `moderate`. Tento formulář používá zaškrtávací políčko, které má dva stavy: `strict` nebo `moderate` .
 
-Pokud je vybrané kterékoliv ze zaškrtávacích políček **upřednostnění** , přidá se k dotazu parametr `answerCount`. Když je použitý parametr `promote`, vyžaduje se `answerCount`. Aby se vrátily všechny dostupné typy výsledků, je v tomto fragmentu kódu nastavená hodnota `9`.
+Pokud je vybrané kterékoliv ze zaškrtávacích políček **upřednostnění**, přidá se k dotazu parametr `answerCount`. Když je použitý parametr `promote`, vyžaduje se `answerCount`. Aby se vrátily všechny dostupné typy výsledků, je v tomto fragmentu kódu nastavená hodnota `9`.
 > [!NOTE]
-> Upřednostnění typu výsledku *nezaručuje* , že bude tento typ zahrnutý ve výsledcích hledání. Upřednostnění ve srovnání s obvyklým hodnocením spíše zvýší hodnocení daných druhů výsledků. Pokud chcete omezit hledání na konkrétní typy výsledků, použijte parametr dotazu `responseFilter` nebo volejte konkrétnější koncový bod, jako je například Vyhledávání obrázků Bingu nebo Vyhledávání zpráv Bingu.
+> Upřednostnění typu výsledku *nezaručuje*, že bude tento typ zahrnutý ve výsledcích hledání. Upřednostnění ve srovnání s obvyklým hodnocením spíše zvýší hodnocení daných druhů výsledků. Pokud chcete omezit hledání na konkrétní typy výsledků, použijte parametr dotazu `responseFilter` nebo volejte konkrétnější koncový bod, jako je například Vyhledávání obrázků Bingu nebo Vyhledávání zpráv Bingu.
 
 Do skriptu jsou pevně zakódované parametry dotazu `textDecoration` a `textFormat` a díky tomu je hledaný termín ve výsledcích hledání napsaný tučně. Tyto parametry nejsou povinné.
 
@@ -289,7 +289,7 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> Úspěšná žádost HTTP *neznamená* , že bylo úspěšné samotné vyhledávání. Pokud v operaci vyhledávání dojde k chybě, vrátí rozhraní API Bingu pro vyhledávání na webu stavový kód HTTP jiný než 200 a zahrne do odpovědi JSON informace o chybě. Pokud byla u žádosti omezena rychlost, vrátí rozhraní API prázdnou odpověď.
+> Úspěšná žádost HTTP *neznamená*, že bylo úspěšné samotné vyhledávání. Pokud v operaci vyhledávání dojde k chybě, vrátí rozhraní API Bingu pro vyhledávání na webu stavový kód HTTP jiný než 200 a zahrne do odpovědi JSON informace o chybě. Pokud byla u žádosti omezena rychlost, vrátí rozhraní API prázdnou odpověď.
 
 Velká část kódu v obou předchozích funkcích je vyhrazená zpracování chyb. V následujících fázích můžou nastat chyby:
 

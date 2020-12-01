@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: ab729460a676bb5daa8860b3b4a837ec276fc5db
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5894a57e6495ca02002c8f32b893e696c7f5679b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182333"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350700"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Kurz: Konfigurace ServiceNow pro Automatické zřizování uživatelů
 
@@ -31,7 +31,7 @@ Tento kurz popisuje kroky, které je třeba provést v ServiceNow i Azure Active
 > * Zřizování skupin a členství ve skupinách v ServiceNow
 > * [Jednotné přihlašování](servicenow-tutorial.md) k ServiceNow (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

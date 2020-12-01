@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 19137f3384a1b97ae1ae7e3faeb4dc2e0e4fd3bd
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 550418761e91a8292761d7595ff32d939c0d542e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96017793"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350394"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Monitorování služby Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -93,11 +93,11 @@ Všechny metriky pro Azure Cosmos DB jsou v oboru názvů **Cosmos DB Standardn�
 * Oblast
 * StatusCode
 
-Pro referenci se zobrazí seznam [všech metrik prostředků, které jsou podporované v Azure monitor](/azure/azure-monitor/platform/metrics-supported).
+Pro referenci se zobrazí seznam [všech metrik prostředků, které jsou podporované v Azure monitor](../azure-monitor/platform/metrics-supported.md).
 
 ### <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Zobrazit metriky na úrovni operace pro Azure Cosmos DB
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. V levém navigačním panelu vyberte **monitor** a vyberte **metriky**.
 
@@ -127,7 +127,7 @@ Metriky můžete seskupit pomocí možnosti **použít rozdělení** . Napříkl
 
 Data v Azure Monitor protokoly se ukládají v tabulkách, ve kterých každá tabulka má vlastní sadu jedinečných vlastností.
 
-Všechny protokoly prostředků v Azure Monitor mají stejná pole následovaná poli pro konkrétní služby. Společné schéma je popsáno v [Azure monitor schéma protokolu prostředků](../azure-monitor/platform/diagnostic-logs-schema.md#top-level-resource-logs-schema). Seznam typů protokolů prostředků shromážděných pro Azure Cosmos DB naleznete v tématu [monitoring Azure Cosmos DB data reference] ((monitorování-Cosmos-DB-reference. MD # Resource-logs)  
+Všechny protokoly prostředků v Azure Monitor mají stejná pole následovaná poli pro konkrétní služby. Společné schéma je popsáno v [Azure monitor schéma protokolu prostředků](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema). Seznam typů protokolů prostředků shromážděných pro Azure Cosmos DB naleznete v tématu [Monitoring Azure Cosmos DB data reference](monitor-cosmos-db-reference.md#resource-logs).
 
 [Protokol aktivit](/azure/azure-monitor/platform/activity-log) je přihlášení k platformě Azure, které poskytuje přehled o událostech na úrovni předplatného. Můžete ji zobrazit nezávisle nebo ji směrovat do Azure Monitor protokolů, kde můžete provádět mnohem složitější dotazy pomocí Log Analytics.  
 
@@ -172,11 +172,11 @@ Tady jsou některé dotazy, které můžete zadat do panelu hledání v **protok
 
 ## <a name="alerts"></a>Výstrahy
 
-Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech monitorování nacházejí důležité podmínky. Umožňují identifikovat a řešit problémy v systému před tím, než si je vaši zákazníci všimnete. Můžete nastavit výstrahy na [metrikách](/azure/azure-monitor/platform/alerts-metric-overview), [protokolech](/azure/azure-monitor/platform/alerts-unified-log)a [protokolu aktivit](/azure/azure-monitor/platform/activity-log-alerts). Různé typy výstrah mají výhody a nevýhody.
+Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech monitorování nacházejí důležité podmínky. Umožňují identifikovat a řešit problémy v systému před tím, než si je vaši zákazníci všimnete. Můžete nastavit výstrahy na [metrikách](../azure-monitor/platform/alerts-metric-overview.md), [protokolech](../azure-monitor/platform/alerts-unified-log.md)a [protokolu aktivit](../azure-monitor/platform/activity-log-alerts.md). Různé typy výstrah mají výhody a nevýhody.
 
 V následující tabulce jsou například uvedena několik pravidel upozornění pro vaše prostředky. Podrobný seznam pravidel upozornění najdete v Azure Portal. Další informace najdete v článku [Postup konfigurace výstrah](create-alerts.md) .  
 
-| Typ upozornění | Stav | Description  |
+| Typ upozornění | Stav | Popis  |
 |:---|:---|:---|
 |Omezení rychlosti na jednotkách žádosti (výstraha metriky) |Název dimenze: StatusCode, operátor: Equals, hodnoty dimenze: 429  | Upozorní, pokud kontejner nebo databáze překročila zřízenou mez propustnosti. |
 |Převzetí služeb při selhání oblasti |Operator: větší než, typ agregace: počet, prahová hodnota: 1 | Při převzetí služeb při selhání jedné oblasti. Tato výstraha je užitečná, pokud jste nepovolili automatické převzetí služeb při selhání. |

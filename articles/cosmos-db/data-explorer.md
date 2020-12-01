@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: dech
-ms.openlocfilehash: 691a2e56230d312416aed3d68bffd361f1d63558
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d4baa92fe4aa2ed402c394198684c4deec2bf9f1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008578"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348598"
 ---
-# <a name="work-with-data-using-azure-cosmos-explorer"></a>Práce s daty s využitím průzkumníka Azure Cosmos 
+# <a name="work-with-data-using-azure-cosmos-db-explorer"></a>Práce s daty pomocí Azure Cosmos DB Exploreru 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB Explorer je samostatné webové rozhraní, které umožňuje zobrazit a spravovat data uložená v Azure Cosmos DB. Azure Cosmos DB Explorer je ekvivalentní existující kartě **Průzkumník dat** , která je k dispozici v Azure Portal při vytváření účtu Azure Cosmos DB. Klíčovými výhodami pro Azure Cosmos DB Explorer v rámci stávajících Průzkumníku dat jsou tyto:
@@ -42,7 +42,7 @@ Azure Cosmos DB Explorer je samostatné webové rozhraní, které umožňuje zob
 
    Vyberte typ přístupu, se kterým chcete účet otevřít, a klikněte na **otevřít**. Po otevření Průzkumníka je prostředí stejné jako při použití karty Průzkumník dat v Azure Portal.
 
-   :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Otevřít Azure Cosmos DB Explorer":::
+   :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Otevření nástroje Azure Cosmos DB Explorer":::
 
 ## <a name="known-issues"></a>Známé problémy
 

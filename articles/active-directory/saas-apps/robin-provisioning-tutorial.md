@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/12/2019
 ms.author: Zhchia
-ms.openlocfilehash: 6ef4558cc0cbbacb372fc4a4c2b52859517a2635
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 83af1c3bc323546534613e6ff99c731010b103d7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353475"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352129"
 ---
 # <a name="tutorial-configure-robin-for-automatic-user-provisioning"></a>Kurz: Konfigurace dotazování pro Automatické zřizování uživatelů
 
@@ -80,7 +80,7 @@ Před konfigurací dotazování pro Automatické zřizování uživatelů pomoc�
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **dotazování** , v panelu výsledků vyberte **dotazování** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **dotazování**, v panelu výsledků vyberte **dotazování** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Dotazování v seznamu výsledků](common/search-new-app.png)
 

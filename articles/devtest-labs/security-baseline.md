@@ -3,12 +3,12 @@ title: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 description: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 64e5ac46fbeb71706f7b1ae2d3682260e3cbc651
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4ae3886e1c47b1d6835dc348b474e3d9e82a8f41
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993648"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348819"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 
@@ -172,7 +172,7 @@ Kromě toho můžete použít doporučení z Azure Security Center nebo integrov
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Používejte vícefaktorové ověřování pro veškerý přístup založený na Azure Active Directory
 **Doprovodné materiály:** Povolte Azure Active Directory (AD) Multi-Factor Authentication (MFA) a sledujte Azure Security Center doporučení pro správu identit a přístupu.
 
-- [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)  
+- [Povolení vícefaktorového ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)  
 - [Jak monitorovat identitu a přístup v rámci Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Monitorování Azure Security Center:** _ Ano
@@ -184,7 +184,7 @@ _ *Zodpovědnost:** zákazník
 **Doprovodné materiály:** Použití pracovních stanic s privilegovaným přístupem (privilegovaným přístupem) s MFA nakonfigurovaným pro přihlášení a konfiguraci prostředků Azure.
 
 - [Další informace o pracovních stanicích s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations)  
-- [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)  
+- [Povolení vícefaktorového ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)  
 
 **Monitorování Azure Security Center:** NENÍ K DISPOZICI
 
@@ -193,8 +193,8 @@ _ *Zodpovědnost:** zákazník
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: protokolování a upozornění na podezřelou aktivitu z účtů pro správu
 **Doprovodné materiály:** Sestavy zabezpečení Azure Active Directory (Azure AD) můžete použít pro generování protokolů a výstrah v případě, že v prostředí dojde k podezřelé nebo nebezpečné aktivitě. Pomocí Azure Security Center můžete monitorovat aktivitu identity a přístupu.
 
-- [Jak identifikovat uživatele Azure AD označené příznakem rizika pro rizikové aktivity](../active-directory/identity-protection/overview-identity-protection.md)  
-- [Jak monitorovat identitu uživatelů a aktivity přístupu v Azure Security Center](../security-center/security-center-identity-access.md)  
+- [Identifikace uživatelů Azure AD označených příznakem rizikové aktivity](../active-directory/identity-protection/overview-identity-protection.md)  
+- [Monitorování identit a aktivit přístupu uživatelů ve službě Azure Security Center](../security-center/security-center-identity-access.md)  
 
 **Monitorování Azure Security Center:** Momentálně není k dispozici
 
@@ -212,7 +212,7 @@ _ *Zodpovědnost:** zákazník
 ### <a name="39-use-azure-active-directory"></a>3,9: použijte Azure Active Directory
 **Doprovodné materiály:** Jako centrální ověřování a systém autorizací použijte Azure Active Directory (Azure AD). Azure AD chrání data pomocí silného šifrování pro neaktivní a tranzitní data. Azure AD také nasolete, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele.
 
-- [Jak vytvořit a nakonfigurovat instanci Azure AD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)  
+- [Vytvoření a konfigurace instance Azure AD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)  
 
 **Monitorování Azure Security Center:** Momentálně není k dispozici
 
@@ -233,7 +233,7 @@ _ *Zodpovědnost:** zákazník
 
 Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro Azure Active Directory uživatelských účtů a odesláním protokolů auditu a protokolů přihlášení do pracovního prostoru Log Analytics. Výstrahy můžete konfigurovat v rámci Log Analytics pracovního prostoru.
 
-- [Jak integrovat protokoly aktivit Azure do Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)  
+- [Integrace protokolů aktivit Azure do služby Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)  
 
 **Monitorování Azure Security Center:** Momentálně není k dispozici
 
@@ -242,7 +242,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro Azure
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: upozornění na odchylku chování přihlášení k účtu
 **Doprovodné materiály:** Pomocí funkcí Azure Active Directory (Azure AD) pro rizika a ochranu identity můžete nakonfigurovat automatizované odezvy na zjištěné podezřelé akce týkající se identit uživatelů.
 
-- [Jak zobrazit rizikové přihlašování Azure AD](../active-directory/identity-protection/overview-identity-protection.md)  
+- [Zobrazení rizikových přihlášení Azure AD](../active-directory/identity-protection/overview-identity-protection.md)  
 - [Jak nakonfigurovat a povolit zásady rizik ochrany identity](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)  
 
 **Monitorování Azure Security Center:** Momentálně není k dispozici
@@ -288,7 +288,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro Azure
 
 Společnost Microsoft spravuje základní infrastrukturu pro Azure DevTest Labs a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
-- [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
+- [Principy ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center:** Momentálně není k dispozici
 
@@ -308,7 +308,7 @@ Společnost Microsoft spravuje základní infrastrukturu pro Azure DevTest Labs 
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
-- [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
+- [Principy ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center:** Momentálně není k dispozici
 
@@ -329,7 +329,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
-- [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
+- [Principy ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center:** Nelze použít
 
@@ -379,7 +379,7 @@ Microsoft provádí správu ohrožení zabezpečení na podkladových zdrojích,
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: nasazení automatizovaného řešení pro správu oprav operačního systému
 **Doprovodné materiály:** Pomocí Azure Update Management zajistěte, aby byly na virtuálních počítačích s Windows a Linux hostovaných v rámci DevTest Labs nainstalované nejnovější aktualizace zabezpečení. U virtuálních počítačů s Windows ověřte, že je povolená možnost web Windows Update a že se nastaví automatické aktualizace. Toto nastavení není aktuálně k dispozici pro konfiguraci prostřednictvím DevTest Labs, ale správce testovacího prostředí/Správce předplatného může nakonfigurovat toto nastavení u základních výpočetních virtuálních počítačů ve svém předplatném. 
 
-- [Postup konfigurace Update Management pro virtuální počítače v Azure](../automation/update-management/update-mgmt-overview.md)
+- [Postup konfigurace Update Management pro virtuální počítače v Azure](../automation/update-management/overview.md)
 - [Porozumění zásadám zabezpečení Azure monitorovaným Security Center](../security-center/policy-reference.md)
 
 **Monitorování Azure Security Center:** Nelze použít
@@ -393,8 +393,8 @@ Přečtěte si další informace o [objektu pro vytváření imagí DevTest Labs
 
 Jako správce předplatného můžete také pomocí řešení Azure Update Management spravovat aktualizace a opravy pro virtuální počítače DevTest Labs. Update Management spoléhá na místně nakonfigurované úložiště aktualizací, které opraví podporované systémy Windows. Nástroje, jako je System Center Updates Publisher (Updates Publisher), umožňují publikovat vlastní aktualizace do Windows Server Update Services (WSUS). Tento scénář umožňuje Update Management opravit počítače, které používají Configuration Manager jako úložiště aktualizací se softwarem třetích stran.
 
-- [Řešení Update Management v Azure](../automation/update-management/update-mgmt-overview.md)
-- [Správa aktualizací a oprav pro virtuální počítače](../automation/update-management/update-mgmt-overview.md)
+- [Řešení Update Management v Azure](../automation/update-management/overview.md)
+- [Správa aktualizací a oprav pro virtuální počítače](../automation/update-management/overview.md)
 
 _ *Azure Security Center monitorování:** nelze použít
 
@@ -825,7 +825,7 @@ Pokud používáte Azure Disk Encryption, můžete virtuální počítač Azure 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: vytvoření bodování incidentu a postupu stanovení priorit
 **Doprovodné materiály:** Azure Security Center přiřadí každému upozornění závažnosti, které vám pomůžou určit, které výstrahy by se měly prozkoumat jako první. Závažnost je založena na tom, jak se Security Center ve vyhledávání, nebo na analýze, která se používá k vystavení výstrahy, a také na úrovni spolehlivosti, u které došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
 
-Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka pomocí značek a vytvoření názvového systému pro zřetelné identifikaci a kategorizaci prostředků Azure, zejména těch, která zpracovávají citlivá data. Máte zodpovědnost za to, že je možné určit prioritu nápravy výstrah na základě závažnosti prostředků a prostředí Azure, ve kterých došlo k incidentu.
+Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka pomocí značek a vytvoření názvového systému pro zřetelné identifikaci a kategorizaci prostředků Azure, zejména těch, která zpracovávají citlivá data. Je vaší zodpovědností určit prioritu nápravy upozornění v závislosti na důležitosti prostředků Azure a prostředí, ve kterém k incidentu došlo.
 
 - [Výstrahy zabezpečení ve službě Azure Security Center](../security-center/security-center-alerts-overview.md)
 - [Používání značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md)
@@ -856,7 +856,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 **Doprovodné materiály:** Vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce průběžného exportu, které vám pomůžou identifikovat rizika pro prostředky Azure. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat výstrahy do Azure Sentinel.
 
 - [Postup konfigurace průběžného exportu](../security-center/continuous-export.md)
-- [Jak streamovat výstrahy do Azure Sentinel](../sentinel/connect-azure-security-center.md)
+- [Streamování upozornění do služby Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Monitorování Azure Security Center:** Nelze použít
 
@@ -877,7 +877,7 @@ Monitorování Azure Security Center: * * * * nejde použít.
 
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech důležitých zjištění zabezpečení do 60 dnů.
-**Doprovodné materiály:** Využijte pravidla zapojení Microsoftu, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu. Využijte strategii a provádění testování na základě červeného týmového seskupování a živého průniku na cloudové infrastruktuře, služby a aplikace spravované společností Microsoft.
+**Doprovodné materiály:** Využijte pravidla zapojení Microsoftu, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu. Využijte strategii Microsoftu a provádění etického testování průniku a penetračního testování živých webů proti cloudové infrastruktuře, službám a aplikacím spravovaným Microsoftem.
 
 - [Pravidla testování průniku pro zapojení](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 - [Červený tým Microsoftu v cloudu](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
