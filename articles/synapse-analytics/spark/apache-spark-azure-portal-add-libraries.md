@@ -1,5 +1,5 @@
 ---
-title: Správa knihoven pro Apache Spark ve službě Azure synapse Analytics
+title: Spravovat knihovny pro Apache Spark
 description: Naučte se přidávat a spravovat knihovny používané Apache Spark ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.date: 10/16/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 8d478b35b702e02f303358972526c091ceb3657e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 27881b048a738d4de2acb57dcc4c2dad1f4d5b24
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95917121"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435361"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Správa knihoven pro Apache Spark ve službě Azure synapse Analytics
 
@@ -36,7 +36,7 @@ Jakmile identifikujete knihovny, které chcete použít pro aplikaci Spark, mů�
 
 > [!IMPORTANT]
 > - Pokud je balíček, který instalujete, velký nebo trvá jeho instalaci dlouhou dobu, bude to mít vliv na počáteční čas instance Spark.
-> - Balíčky, které vyžadují podporu kompilátoru v době instalace, jako je třeba RSZ, se nepodporují.
+> - Balíčky, které při instalaci vyžadují podporu kompilátoru, jako je GCC, se nepodporují.
 > - Balíčky nemůžou být downgradované, jenom přidané nebo upgradované.
 > - Pokud chcete nainstalovat knihovny, musíte mít oprávnění správce dat objektu BLOB úložiště nebo vlastníka dat objektů BLOB úložiště na primárním účtu úložiště Gen2 propojeném s pracovním prostorem synapse.
 

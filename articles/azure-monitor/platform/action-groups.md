@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 17e01844463b6d18bd7d2c3b56ee86d938682b8e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a2144827cd27c0af6610dabdf5ad205359f550cc
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536315"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435480"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a Správa skupin akcí v Azure Portal
-Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. V rámci předplatného můžete nakonfigurovat až 2 000 skupin akcí.
+Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. 
 
 V tomto článku se dozvíte, jak vytvořit a spravovat skupiny akcí v Azure Portal.
 
@@ -120,7 +120,7 @@ Ve skupině akcí můžete mít omezený počet akcí sady Runbook.
 ### <a name="azure-app-push-notifications"></a>Nabízená oznámení aplikace Azure
 Můžete mít omezený počet akcí aplikace Azure ve skupině akcí.
 
-### <a name="email"></a>E-mailu
+### <a name="email"></a>E-mail
 E-maily budou odeslány z následujících e-mailových adres. Ujistěte se, že je správně nakonfigurováno filtrování e-mailů.
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com

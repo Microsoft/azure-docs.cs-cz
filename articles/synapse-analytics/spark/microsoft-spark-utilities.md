@@ -1,6 +1,6 @@
 ---
-title: Představení nástrojů Microsoft Spark
-description: Kurz použití MSSparkutils v poznámkových blocích Azure synapse Analytics
+title: Seznámení s nástroji Microsoft Spark
+description: 'Kurz: MSSparkutils v poznámkových blocích Azure synapse Analytics'
 author: ruxu
 services: synapse-analytics
 ms.service: synapse-analytics
@@ -10,14 +10,14 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 3c4e062393f9d75d478720041436c2e0f54485a3
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: ff294c0227bb6a830a5aef2379248714a7f2f64a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95795074"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435191"
 ---
-# <a name="introduction-of-microsoft-spark-utilities"></a>Představení nástrojů Microsoft Spark
+# <a name="introduction-to-microsoft-spark-utilities"></a>Seznámení s nástroji Microsoft Spark
 
 Sady nástrojů Microsoft Spark (MSSparkUtils) jsou předplatným balíčkem, který usnadňuje snadné provádění běžných úloh. Pomocí MSSparkUtils můžete pracovat se systémy souborů, získat proměnné prostředí a pracovat s tajnými kódy. MSSparkUtils jsou k dispozici v `PySpark (Python)` `Scala` `.NET Spark (C#)` poznámkových blocích, a a v kanálech synapse.
 

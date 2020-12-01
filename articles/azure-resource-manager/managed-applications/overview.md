@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7641c1e3bc3620b294c2953b993e9179a4875536
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 65b8c21251f092311150a50480f5abecb1ad7c17
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951804"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434562"
 ---
 # <a name="azure-managed-applications-overview"></a>Přehled spravovaných aplikací Azure
 
@@ -49,7 +49,7 @@ Informace o publikování spravované aplikace v katalogu služeb najdete v čl�
 
 Dodavatelé, kteří si chtějí za své služby účtovat poplatky, můžou zpřístupnit spravovanou aplikaci prostřednictvím Azure Marketplace. Jakmile dodavatel publikuje aplikaci, bude dostupná i uživatelům mimo organizaci. Díky tomuto přístupu můžou poskytovatelé spravovaných služeb, nezávislí dodavatelé softwaru a integrátoři systémů nabízet svá řešení všem zákazníkům Azure.
 
-Informace o publikování spravovaných aplikací do Marketplace najdete v tématu [Vytvoření aplikace Marketplace](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md).
+Informace o publikování spravovaných aplikací do Marketplace najdete v tématu [Vytvoření aplikace Marketplace](../../marketplace/create-new-azure-apps-offer.md).
 
 ## <a name="resource-groups-for-managed-applications"></a>Skupiny prostředků pro spravované aplikace
 
@@ -71,7 +71,7 @@ Zákazník má k této skupině prostředků plný přístup a používá ji ke 
 
 Tato skupina prostředků obsahuje všechny prostředky, které spravovaná aplikace potřebuje. Tato skupina prostředků třeba obsahuje virtuální počítače, účty úložiště a virtuální sítě pro dané řešení. Zákazník má k této skupině prostředků omezený přístup, protože nespravuje jednotlivé prostředky spravované aplikace. Přístup vydavatele k této skupině prostředků odpovídá roli stanovené v definici spravované aplikace. Vydavatel si může pro tuto skupinu prostředků vyžádat třeba roli vlastníka nebo přispěvatele. Přístup je buď trvalý, nebo omezený na určitou dobu.
 
-Při publikování [spravované aplikace na webu Marketplace](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)může vydavatel zákazníkům udělit možnost provádět určité akce s prostředky ve spravované skupině prostředků. Vydavatel může například určit, že uživatelé můžou restartovat virtuální počítače. Všechny ostatní akce nad akcí čtení jsou stále odmítnuty. Změny prostředků ve spravované skupině prostředků příjemcem s udělenými akcemi podléhají [Azure Policy](../../governance/policy/overview.md) přiřazení v rámci oboru tenanta klienta, aby zahrnovali spravovanou skupinu prostředků.
+Při publikování [spravované aplikace na webu Marketplace](../../marketplace/create-new-azure-apps-offer.md)může vydavatel zákazníkům udělit možnost provádět určité akce s prostředky ve spravované skupině prostředků. Vydavatel může například určit, že uživatelé můžou restartovat virtuální počítače. Všechny ostatní akce nad akcí čtení jsou stále odmítnuty. Změny prostředků ve spravované skupině prostředků příjemcem s udělenými akcemi podléhají [Azure Policy](../../governance/policy/overview.md) přiřazení v rámci oboru tenanta klienta, aby zahrnovali spravovanou skupinu prostředků.
 
 Když zákazník spravovanou aplikaci odstraní, dojde i k odstranění spravované skupiny prostředků.
 

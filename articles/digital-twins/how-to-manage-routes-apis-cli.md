@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6b767a2cf4739a0b36b9f5c5c960e3e3ead58262
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: fc260736a740362db2c19730afc93dd4f3d22c2e
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353080"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435401"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Správa koncových bodů a tras v Azure Digital revláken (rozhraní API a CLI)
 
@@ -90,18 +90,31 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 Když koncový bod nemůže doručovat událost v určitém časovém období nebo po pokusu o doručení události v určitém počtu opakování, může odeslat nedoručenou událost do účtu úložiště. Tento proces se označuje jako **nedoručené**.
 
-Aby bylo možné vytvořit koncový bod s povoleným nemrtvým dopisem, je nutné použít [rozhraní API ARM](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) k vytvoření koncového bodu. 
-
-Před nastavením umístění nedoručených zpráv musíte mít účet úložiště s kontejnerem. Při vytváření koncového bodu zadejte adresu URL tohoto kontejneru. Nedoručené písmeno je k dispozici jako adresa URL kontejneru s tokenem SAS. Tento token potřebuje `write` oprávnění pouze pro cílový kontejner v rámci účtu úložiště. Plně vytvořená adresa URL bude ve formátu: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
-
-Další informace o tokenech SAS najdete v tématu: [udělení omezeného přístupu k Azure Storage prostředkům pomocí sdílených přístupových podpisů (SAS)](../storage/common/storage-sas-overview.md)
-
 Další informace o nedoručených písmenech najdete v tématu [*Koncepty: směrování událostí*](concepts-route-events.md#dead-letter-events).
 
-#### <a name="configuring-the-endpoint"></a>Konfigurace koncového bodu
+#### <a name="set-up-storage-resources"></a>Nastavení prostředků úložiště
 
-Při vytváření koncového bodu přidejte `deadLetterSecret` do `properties` objektu text v těle žádosti, která obsahuje adresu URL kontejneru a token SAS pro váš účet úložiště.
+Před nastavením umístění nedoručených zpráv musíte mít v účtu Azure nastavený [účet úložiště](../storage/common/storage-account-create.md?tabs=azure-portal) s [kontejnerem](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) . Adresu URL tohoto kontejneru zadáte při pozdějším vytvoření koncového bodu.
+Nedoručené písmeno je k dispozici jako adresa URL kontejneru s [tokenem SAS](../storage/common/storage-sas-overview.md). Tento token potřebuje `write` oprávnění pouze pro cílový kontejner v rámci účtu úložiště. Plně vytvořená adresa URL bude ve formátu: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
+Postupujte podle následujících kroků a nastavte tyto prostředky úložiště ve vašem účtu Azure, abyste se připravili na nastavení připojení koncového bodu v další části.
+
+1. Podle [tohoto článku](../storage/common/storage-account-create.md?tabs=azure-portal) vytvořte účet úložiště a uložte název účtu úložiště pro pozdější použití.
+2. Vytvořte kontejner pomocí [tohoto článku](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) a uložte název kontejneru pro pozdější použití při nastavování připojení mezi kontejnerem a koncovým bodem.
+3. Pak vytvořte token SAS pro váš účet úložiště. Začněte tím, že přejdete na svůj účet úložiště v [Azure Portal](https://ms.portal.azure.com/#home) (můžete ho najít podle názvu pomocí panelu hledání na portálu).
+4. Na stránce účet úložiště zvolte odkaz _sdílený přístupový podpis_ v levém navigačním panelu a vyberte správná oprávnění k vygenerování tokenu SAS.
+5. U _povolených služeb_ a _povolených typů prostředků_ vyberte nastavení, které chcete. Bude nutné vybrat alespoň jedno pole v každé kategorii. U povolených oprávnění zvolte **zápis** (Pokud chcete, můžete také vybrat další oprávnění).
+Nastavte zbývající nastavení, třeba.
+6. Pak vyberte tlačítko _Generovat SAS a připojovací řetězec_ pro vygenerování tokenu SAS. Tím se vygeneruje několik hodnot SAS a připojovacích řetězců dole na stejné stránce pod vybraným nastavením. Posuňte se dolů a zobrazte hodnoty a pomocí ikony kopírovat do schránky Zkopírujte hodnotu **tokenu SAS** . Uložte ho pro pozdější použití.
+
+:::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token.png" alt-text="Stránka účtu úložiště v Azure Portal zobrazující všechna nastavení výběru pro vygenerování tokenu SAS." lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token.png":::
+
+:::image type="content" source="./media/how-to-manage-routes-apis-cli/copy-sas-token.png" alt-text="Kopírovat token SAS pro použití v tajných klíčích nedoručených zpráv" lightbox="./media/how-to-manage-routes-apis-cli/copy-sas-token.png":::
+
+#### <a name="configure-the-endpoint"></a>Konfigurace koncového bodu
+
+Koncové body nedoručených zpráv se vytvářejí pomocí rozhraní Azure Resource Manager API. Při vytváření koncového bodu použijte [dokumentaci rozhraní api Azure Resource Manager](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) k vyplnění požadovaných parametrů požadavku. Přidejte taky `deadLetterSecret` do objektu Properties (vlastnosti) v **těle** žádosti, která obsahuje adresu URL kontejneru a token SAS pro váš účet úložiště.
+      
 ```json
 {
   "properties": {
@@ -113,8 +126,7 @@ Při vytváření koncového bodu přidejte `deadLetterSecret` do `properties` o
   }
 }
 ```
-
-Další informace najdete v dokumentaci k digitálním výsledkům Azure REST API dokumentaci: [koncové body – DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate).
+Další informace o strukturování této žádosti najdete v části digitální vlákna Azure REST API dokumentaci: [koncové body – DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate).
 
 ### <a name="message-storage-schema"></a>Schéma úložiště zpráv
 

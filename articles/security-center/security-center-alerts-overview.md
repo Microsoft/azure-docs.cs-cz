@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: 033f06aa61baf04b5c74fbbe9cc8f925d5d4e3d3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c1406e6a1f2f36c5d42544c52ade3f991fe2ba0a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182304"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433015"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Výstrahy zabezpečení ve službě Azure Security Center
 
@@ -91,11 +91,11 @@ Máte řadu možností, jak zobrazit výstrahy mimo Security Center, včetně t�
 
 - **Stažení sestavy CSV** na řídicím panelu výstrahy poskytuje jednorázový export do sdíleného svazku clusteru.
 - **Průběžný export** z cenové & nastavení umožňuje nakonfigurovat streamy výstrah zabezpečení a doporučení pro Log Analytics pracovních prostorů a Event Hubs. [Další informace o průběžném exportu](continuous-export.md)
-- **Azure Sentinel Connector** streamuje výstrahy Azure Defenderu z Azure Security Center do Azure Sentinel. [Další informace o připojení Azure Security Center s Sentinel](../sentinel/connect-azure-security-center.md)
+- **Azure Sentinel Connector** streamuje výstrahy zabezpečení z Azure Security Center do Azure Sentinel. [Další informace o připojení Azure Security Center s Sentinel](../sentinel/connect-azure-security-center.md)
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o různých typech výstrah, které jsou k dispozici v Security Center. Další informace najdete tady:
+V tomto článku jste se dozvěděli o různých typech výstrah, které jsou k dispozici v Security Center. Další informace naleznete v tématu:
 
 - **Výstrahy zabezpečení v protokolu aktivit Azure** – navíc k dispozici v Azure Portal nebo programově se výstrahy a incidenty zabezpečení auditují jako události v [protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log). Další informace o schématu událostí najdete v tématu [výstrahy zabezpečení v protokolu aktivit Azure](https://go.microsoft.com/fwlink/?linkid=2114113) .

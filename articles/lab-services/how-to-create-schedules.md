@@ -1,16 +1,16 @@
 ---
-title: Vytvořte plán pro učebn Labs v Azure Lab Services | Microsoft Docs
-description: Naučte se vytvářet plány pro učebn Labs v Azure Lab Services tak, aby se virtuální počítače v laboratořích spouštěly v určitou dobu.
+title: Vytvořit plán pro cvičení v Azure Lab Services | Microsoft Docs
+description: Naučte se vytvářet plány pro cvičení v Azure Lab Services tak, aby se virtuální počítače v laboratořích spouštěly v určitou dobu.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4eb4e2459069b61990f51f8d8de76522b736723e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a827c3d9f3022cb7d27ee43c9c95227c44f97e7
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326435"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434021"
 ---
-# <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Vytváření a Správa plánů pro učebn Labs v Azure Lab Services 
+# <a name="create-and-manage-schedules-for-labs-in-azure-lab-services"></a>Vytváření a Správa plánů pro cvičení v Azure Lab Services 
 Plány umožňují nakonfigurovat prostředí učebny tak, aby se virtuální počítače v testovacím prostředí automaticky spouštěly a vypnuly v určitou dobu. Můžete definovat Jednorázový plán nebo plán opakování. Následující postupy vám poskytnou kroky pro vytváření a správu plánů pro prostředí učebny: 
 
 > [!IMPORTANT]
@@ -77,4 +77,4 @@ Viz následující články:
 - [Účty testovacího prostředí se vytvářejí a spravují jako správce.](how-to-manage-lab-accounts.md)
 - [Jako vlastník testovacího prostředí vytvářet a spravovat cvičení](how-to-manage-classroom-labs.md)
 - [Jako vlastník testovacího prostředí konfigurace a řízení využití testovacího prostředí](how-to-configure-student-usage.md)
-- [Jako uživatel testovacího prostředí, Access učeben Labs](how-to-use-classroom-lab.md)
+- [Jako uživatel testovacího prostředí, Access Labs](how-to-use-classroom-lab.md)

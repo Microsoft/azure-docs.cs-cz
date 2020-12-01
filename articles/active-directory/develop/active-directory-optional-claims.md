@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 10/30/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 7eedb9ce30be236e8d47152f0e114b7bc5ae2304
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e71ab0293dade56c14dce7318fc96021a040b102
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348088"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433316"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Postupy: poskytnutí volitelných deklarací identity vaší aplikaci
 
@@ -37,7 +37,7 @@ I když jsou volitelné deklarace identity podporované v tokenech formátu v 1.
 
 | Typ účtu               | tokeny v 1.0 | tokeny v 2.0 |
 |----------------------------|-------------|-------------|
-| Osobní účet Microsoft | –         | Podporováno   |
+| Osobní účet Microsoft | Není k dispozici         | Podporováno   |
 | Účet Azure AD           | Podporováno   | Podporováno   |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>volitelná sada deklarací v 1.0 a v 2.0
@@ -58,7 +58,7 @@ Sada volitelných deklarací, které jsou ve výchozím nastavení k dispozici p
 | `verified_secondary_email` | Zdroj z SecondaryAuthoritativeEmail uživatele   | TOKEN        |           |        |
 | `vnet`                     | Informace o specifikátoru virtuální sítě | TOKEN        |           |      |
 | `fwd`                      | IP adresa.| TOKEN    |   | Přidá původní IPv4 adresu žádajícího klienta (Pokud se nachází uvnitř virtuální sítě). |
-| `ctry`                     | Země nebo oblast uživatele | JWT, SAML |  | Služba Azure AD vrátí `ctry` volitelnou deklaraci identity, pokud je přítomná a hodnota pole je standardní kód země/oblasti se dvěma písmeny, například FR, JP, SZ a tak dále. |
+| `ctry`                     | Země nebo oblast uživatele | TOKEN |  | Služba Azure AD vrátí `ctry` volitelnou deklaraci identity, pokud je přítomná a hodnota pole je standardní kód země/oblasti se dvěma písmeny, například FR, JP, SZ a tak dále. |
 | `tenant_ctry`              | Země tenanta prostředku | TOKEN | | Stejné jako `ctry` s výjimkou nastavenou na úrovni tenanta správcem.  Musí být také standardní hodnota se dvěma písmeny. |
 | `xms_pdl`             | Preferované umístění dat   | TOKEN | | V případě tenantů s více geografickými klienty je preferovaným umístěním dat kód se třemi písmeny ukazující geografickou oblast, ve které se uživatel nachází. Další informace najdete v dokumentaci k [Azure AD Connect o umístění preferovaného data](../hybrid/how-to-connect-sync-feature-preferreddatalocation.md).<br/>Například: `APC` pro Asie a Tichomoří. |
 | `xms_pl`                   | Preferovaný jazyk uživatele  | TOKEN ||Preferovaný jazyk uživatele, pokud je nastavený. Zdroj z jeho domovského tenanta ve scénářích přístupu hosta. Formát LL-CC ("en-US"). |
@@ -235,7 +235,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
 
 **Konfigurace volitelných deklarací skupin prostřednictvím uživatelského rozhraní:**
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
 1. V části **Spravovat** vyberte **Registrace aplikací**.
@@ -248,7 +248,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
 
 **Konfigurace volitelných deklarací skupin pomocí manifestu aplikace:**
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
 1. V seznamu vyberte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity.
@@ -379,7 +379,7 @@ V následujícím příkladu použijete uživatelské rozhraní **Konfigurace to
 
 **Konfigurace uživatelského rozhraní:**
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
@@ -402,7 +402,7 @@ V následujícím příkladu použijete uživatelské rozhraní **Konfigurace to
 
 **Konfigurace manifestu:**
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
 1. V seznamu Najděte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity, a vyberte ji.

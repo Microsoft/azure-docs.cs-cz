@@ -1,14 +1,14 @@
 ---
-title: Konfigurace nastavení využití v učebně Labs Azure Lab Services
+title: Konfigurace nastavení použití v laboratořích Azure Lab Services
 description: Přečtěte si, jak nakonfigurovat počet studentů pro testovací prostředí, jak je zaregistrované v testovacím prostředí, určete počet hodin, po které může virtuální počítač používat, a další.
 ms.topic: article
 ms.date: 11/11/2020
-ms.openlocfilehash: d3100f1a7e67e3b0d403375de02cb3daf5fcfb31
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: e768c74d338cf21eb56660fe3790fc1f0f3ec80d
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555715"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434545"
 ---
 # <a name="add-and-manage-lab-users"></a>Přidání a správa uživatelů testovacího prostředí
 
@@ -20,7 +20,7 @@ V této části přidáte studenty do testovacího prostředí ručně nebo nahr
 
 1. V levém podokně vyberte **Uživatelé**. 
 
-    Ve výchozím nastavení je možnost **omezení přístupu** zapnutá a, pokud se nenacházejí v seznamu uživatelů, Students se v testovacím prostředí nemůže zaregistrovat, i když mají odkaz na registraci. Pomocí registračního odkazu, který odešlete, se můžou do testovacího prostředí zaregistrovat jenom uvedení uživatelé. V tomto postupu přidáte uživatele do seznamu. Alternativně můžete vypnout možnost **omezit přístup** , která umožňuje studentům registraci v testovacím prostředí, pokud mají odkaz na registraci. 
+    Ve výchozím nastavení je možnost **omezení přístupu** zapnutá a, pokud se nenacházejí v seznamu uživatelů, Students se v testovacím prostředí nemůže zaregistrovat, i když mají odkaz na registraci. Pomocí registračního odkazu, který odešlete, se můžou do testovacího prostředí zaregistrovat jenom uvedení uživatelé. V tomto postupu přidáte uživatele do seznamu. Alternativně můžete vypnout možnost **omezit přístup**, která umožňuje studentům registraci v testovacím prostředí, pokud mají odkaz na registraci. 
 
 1. V horní části podokna **Uživatelé** vyberte **Přidat uživatele** a pak vyberte **Přidat podle e-mailové adresy**. 
 
@@ -81,7 +81,7 @@ Tato metoda vám ukáže, jak odeslat e-mail s odkazem na registraci a volitelno
 
 1. V okně **poslat pozvánku e-mailem** zadejte volitelnou zprávu a pak vyberte **Odeslat**. 
 
-    E-mail automaticky obsahuje odkaz na registraci. Pokud chcete odkaz pro registraci získat a uložit samostatně, vyberte tři tečky ( **...** ) v horní části podokna **Uživatelé** a pak vyberte **odkaz na registraci**. 
+    E-mail automaticky obsahuje odkaz na registraci. Pokud chcete odkaz pro registraci získat a uložit samostatně, vyberte tři tečky (**...**) v horní části podokna **Uživatelé** a pak vyberte **odkaz na registraci**. 
 
     ![Okno Odeslat odkaz pro registraci e-mailem](./media/tutorial-setup-classroom-lab/send-email.png)
 
@@ -169,7 +169,7 @@ Pokud chcete nastavit další kvóty, udělejte toto:
 Pokud chcete přidat studenty do testovacího prostředí učebny, použijte jejich e-mailové účty. Studenti můžou mít tyto typy e-mailových účtů:
 
 - E-mailový účet studenta poskytnutý instancí Azure Active Directory vaší univerzity
-- E-mailový účet Microsoft-doména, například *Outlook.com* , *hotmail.com* , *MSN.com* nebo *Live.com*.
+- E-mailový účet Microsoft-doména, například *Outlook.com*, *hotmail.com*, *MSN.com* nebo *Live.com*.
 - E-mailový účet jiný než Microsoft, který poskytuje Yahoo! nebo Google. Tyto typy účtů však musí být propojeny s účet Microsoft.
 - Účet GitHub. Tento účet musí být propojený s účet Microsoft.
 
@@ -207,7 +207,7 @@ Pokud ještě neodkazují svůj účet GitHubu na účet Microsoft, může to ud
 ## <a name="export-a-list-of-users-to-a-csv-file"></a>Export seznamu uživatelů do souboru CSV
 
 1. Přejít do podokna **Uživatelé** .
-1. Na panelu nástrojů vyberte tři tečky ( **...** ) a pak vyberte **exportovat sdílený svazek clusteru**. 
+1. Na panelu nástrojů vyberte tři tečky (**...**) a pak vyberte **exportovat sdílený svazek clusteru**. 
 
     ![Tlačítko "exportovat CSV"](./media/how-to-export-users-virtual-machines-csv/users-export-csv.png)
 
@@ -218,4 +218,4 @@ Viz následující články:
 
 - Pro správce: [vytváření a Správa účtů testovacího prostředí](how-to-manage-lab-accounts.md)
 - Pro vlastníky testovacích prostředí: [vytváření a Správa cvičení](how-to-manage-classroom-labs.md) a [nastavení a publikování šablon](how-to-create-manage-template.md)
-- Pro uživatele testovacího prostředí: [Access učeben Labs](how-to-use-classroom-lab.md)
+- Pro uživatele testovacího prostředí: [Access Labs](how-to-use-classroom-lab.md)

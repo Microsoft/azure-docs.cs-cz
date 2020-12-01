@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 8bedecd4a050c445af0ab0ae0250197369b9173b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f0546a76974e429b625ba03fdf4598da7d32c990
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131407"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433352"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Nejčastější dotazy týkající se přechodu z portál partnerů cloudu do partnerského centra
 
@@ -22,7 +22,7 @@ Portál partnerů cloudu přešla do partnerského centra. Partnerské centrum n
 
 Můžete pokračovat v podnikání v partnerském centru:
 
-| Plošný<img src="" width=200px> | Změny |
+| Oblast<img src="" width=200px> | Změny |
 | --- | --- |
 | Účet | Není potřeba vytvořit nový účet partnerského centra. pomocí svých stávajících přihlašovacích údajů portál partnerů cloudu můžete přihlašovat se k partnerskému centru, kde teď budete spravovat svůj účet, uživatele, oprávnění a fakturaci. Informace o smlouvě o publikování a profilu společnosti se migrují na nový účet partnerského centra spolu s případnými informacemi o profilu výběr, uživatelskými účty a oprávněními a aktivními nabídkami. Další informace najdete v [centru pro správu účtu komerčního tržiště v partnerském centru](partner-center-portal/manage-account.md). |
 | Nabídka prostředí pro publikování a poskytování nabídek | Přesunuli jsme vaše data nabídky z portál partnerů cloudu do partnerského centra. Teď budete mít přístup k Vašim nabídkám v partnerském centru, které nabízí vylepšené uživatelské prostředí a intuitivní rozhraní. Přečtěte si, jak [aktualizovat existující nabídku na komerčním webu Marketplace](partner-center-portal/update-existing-offer.md). |
@@ -58,16 +58,16 @@ Jedná se o rozdíly v sestavě výběr mezi vyřazeným portál partnerů cloud
 
 | Portál Cloud Partner | Partnerské centrum |
 | --- | --- |
-| **Odkaz** : https://cloudpartner.azure.com/ | **Odkaz** : https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory a https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
-| **Navigace** : vytváření sestav o výběrech poskytované ve výběrech Insights | **Navigace** : vytváření sestav o výběrech poskytované v partnerském centru – ikona výběr |
-| **Rozsah** :<ul><li>Transakce pro položku na řádku je viditelná, pro probíhající shromažďování, shromažďování a platby.</li><li>Vytváření sestav – zobrazí všechny položky řádků po vytvoření objednávky nákupu, včetně probíhajícího shromažďování a fakturace probíhá, a stavu kolekce a položek řádků, které ještě nejsou způsobilé k placení.</li></ul> | **Rozsah** :<ul><li>Zobrazuje položky řádků poté, co se považují za oprávněné tržby.</li><li>Zákazníci se nejprve účtují do Microsoftu a potom prodejci uvidí, že sestava výběru začíná.</li><li>Sestava výběru nezobrazuje probíhající shromažďování a probíhá fakturace.</li></ul> |
-| **Transakce není připravená na výběr** : probíhá fakturace. | **Transakce není připravená na výběr** : další odhadovaná platba: stav vyvýběru je v nezpracovaném stavu. |
-| **Stav výběr** : není k dispozici | **Stav výběr** :<ul><li>Nezpracováno: zisk má nárok na platbu.</li><li>Nadcházející: vzdálení bude odesláno vydavateli v nejbližším měsíčním výběrovém.</li><li>Odesláno: platba byla odeslána do vaší banky.</li></ul> |
+| **Odkaz**: https://cloudpartner.azure.com/ | **Odkaz**: https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory a https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
+| **Navigace**: vytváření sestav o výběrech poskytované ve výběrech Insights | **Navigace**: vytváření sestav o výběrech poskytované v partnerském centru – ikona výběr |
+| **Rozsah**:<ul><li>Transakce pro položku na řádku je viditelná, pro probíhající shromažďování, shromažďování a platby.</li><li>Vytváření sestav – zobrazí všechny položky řádků po vytvoření objednávky nákupu, včetně probíhajícího shromažďování a fakturace probíhá, a stavu kolekce a položek řádků, které ještě nejsou způsobilé k placení.</li></ul> | **Rozsah**:<ul><li>Zobrazuje položky řádků poté, co se považují za oprávněné tržby.</li><li>Zákazníci se nejprve účtují do Microsoftu a potom prodejci uvidí, že sestava výběru začíná.</li><li>Sestava výběru nezobrazuje probíhající shromažďování a probíhá fakturace.</li></ul> |
+| **Transakce není připravená na výběr**: probíhá fakturace. | **Transakce není připravená na výběr**: další odhadovaná platba: stav vyvýběru je v nezpracovaném stavu. |
+| **Stav výběr**: není k dispozici | **Stav výběr**:<ul><li>Nezpracováno: zisk má nárok na platbu.</li><li>Nadcházející: vzdálení bude odesláno vydavateli v nejbližším měsíčním výběrovém.</li><li>Odesláno: platba byla odeslána do vaší banky.</li></ul> |
 |||
 
 ## <a name="what-about-offers-i-published-in-the-cloud-partner-portal"></a>Jaké nabídky jsem publikovali v portál partnerů cloudu?
 
-Nabídky byly přesunuty do partnerského centra a budou vám po přihlášení do partnerského centra dostupné, s výjimkou spravované služby Dynamics NAV a Cortana Intelligence nabídek. Pokud byla vaše nabídka živá na komerčním webu Marketplace, bude i nadále živá a zákazníci budou moct nakupovat a nasazovat bez přerušení. Další podrobnosti najdete v další otázce, **jaké nabídky se přesunuly do partnerského centra?** .
+Nabídky byly přesunuty do partnerského centra a budou vám po přihlášení do partnerského centra dostupné, s výjimkou spravované služby Dynamics NAV a Cortana Intelligence nabídek. Pokud byla vaše nabídka živá na komerčním webu Marketplace, bude i nadále živá a zákazníci budou moct nakupovat a nasazovat bez přerušení. Další podrobnosti najdete v další otázce, **jaké nabídky se přesunuly do partnerského centra?**.
 
 ## <a name="what-offers-were-moved-to-partner-center"></a>Jaké nabídky se přesunuly do partnerského centra?
 
@@ -79,7 +79,7 @@ Pro typy nabídek podporované v partnerském centru se všechny nabídky přesu
 | --- | --- | --- |
 | SaaS | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [části plánování nabídky SaaS pro komerční tržiště](plan-saas-offer.md). |
 | Virtuální počítač | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [plánu nabídky virtuálních počítačů](marketplace-virtual-machines.md). |
-| Aplikace Azure | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření nabídky aplikací Azure](partner-center-portal/create-new-azure-apps-offer.md). |
+| Aplikace Azure | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření nabídky aplikací Azure](create-new-azure-apps-offer.md). |
 | Dynamics 365 Business Central | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření nabídky podnikového centra Dynamics 365](partner-center-portal/create-new-business-central-offer.md). |
 | Dynamics 365 pro Customer Engagement & PowerApps | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření Dynamics 365 pro zákaznickou zapojení & nabídky PowerApps](partner-center-portal/create-new-customer-engagement-offer.md). |
 | Dynamics 365 for Operations | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření nabídky Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md). |
@@ -117,7 +117,7 @@ Pokud pracujete v rámci více účtů, v partnerském centru se zobrazí tlač�
 
 ## <a name="how-do-i-create-new-offers"></a>Návody vytvořit nové nabídky?
 
-Přístup k programu komerčního tržiště v [partnerském centru](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) pro vytváření nových nabídek. Na stránce Přehled vyberte **+ Nová nabídka** .
+Přístup k programu komerčního tržiště v [partnerském centru](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) pro vytváření nových nabídek. Na stránce Přehled vyberte **+ Nová nabídka**.
 
 [![Snímek obrazovky se zobrazí v nabídce přehled partnerského centra.](media/cpp-pc-faq/new-offer.png "Zobrazí nabídku s přehledem partnerského centra.")](media/cpp-pc-faq/new-offer.png#lightbox)
 
@@ -127,7 +127,7 @@ Pokud se nemůžete přihlásit ke svému účtu, můžete tady otevřít [líst
 
 ## <a name="where-are-instructions-for-using-partner-center"></a>Kde jsou pokyny pro používání partnerského centra?
 
-Přejít na [komerční dokumentaci k webu Marketplace](index.yml)a pak rozbalte **portál komerčního tržiště v partnerském centru** . Chcete-li zobrazit články s nápovědu pro vytváření nabídek v partnerském centru, rozbalte položku **vytvořit novou nabídku** .
+Přejít na [komerční dokumentaci k webu Marketplace](index.yml)a pak rozbalte **portál komerčního tržiště v partnerském centru**. Chcete-li zobrazit články s nápovědu pro vytváření nabídek v partnerském centru, rozbalte položku **vytvořit novou nabídku**.
 
 ## <a name="what-are-the-publishing-and-offer-management-differences"></a>Jaké jsou rozdíly v publikování a správě nabídek?
 
@@ -135,7 +135,7 @@ Tady je několik rozdílů mezi portál partnerů cloudu a Partnerským centrem.
 
 ### <a name="modular-publishing-capabilities"></a>Modulární možnosti publikování
 
-Partnerské centrum poskytuje modulární možnost publikování, která umožňuje vybrat změny, které chcete publikovat, místo aby se vždy publikovaly všechny aktualizace najednou. Například na následující obrazovce vidíte, že pouze změny vybrané k publikování jsou změny **vlastností** a  **seznamu nabídek** . Změny, které provedete na stránce verze Preview, nebudou publikovány.
+Partnerské centrum poskytuje modulární možnost publikování, která umožňuje vybrat změny, které chcete publikovat, místo aby se vždy publikovaly všechny aktualizace najednou. Například na následující obrazovce vidíte, že pouze změny vybrané k publikování jsou změny **vlastností** a  **seznamu nabídek**. Změny, které provedete na stránce verze Preview, nebudou publikovány.
 
 [![Snímek obrazovky zobrazující stránku pro kontrolu a publikování partnerského centra](media/cpp-pc-faq/review-page.png "Zobrazuje stránku pro kontrolu a publikování partnerského centra.")](media/cpp-pc-faq/review-page.png#lightbox)
 

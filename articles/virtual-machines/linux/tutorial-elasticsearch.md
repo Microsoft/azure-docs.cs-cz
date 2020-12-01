@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: 48fc9f7e021ba5158182344ddfdba3c8eafaf781
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 54ef051b7d8778e2eecd85bef2e57b62239ba114
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659212"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435299"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>Instalace řešení Elastic Stack na virtuální počítač Azure
 
@@ -35,9 +35,9 @@ Co se v tomto kurzu naučíte:
 
  Toto nasazení je vhodné pro základní vývoj s řešením Elastic Stack. Další informace o řešení Elastic Stack, včetně doporučení pro produkční prostředí, najdete v [dokumentaci Elastic](https://www.elastic.co/guide/index.html) a v [Azure Architecture Center](/azure/architecture/elasticsearch/).
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.4 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 

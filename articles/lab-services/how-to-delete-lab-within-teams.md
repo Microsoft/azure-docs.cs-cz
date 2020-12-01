@@ -3,25 +3,25 @@ title: Odstranění Azure Lab Servicesho testovacího prostředí z týmů
 description: Naučte se, jak odstranit Azure Lab Services testovací prostředí z týmů.
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: 1d2fe73d33a88e595f42b47c1e7122dcbdfe1063
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 8d1e20f8f676eb9863187b550a3c0400871d670c
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094332"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433950"
 ---
 # <a name="delete-labs-within-teams"></a>Odstranění cvičení v rámci týmů
 
 Tento článek popisuje, jak odstranit testovací prostředí z aplikace **Azure Lab Services** .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Vytvořte účet služby testovacího prostředí](tutorial-setup-lab-account.md#create-a-lab-account) v Azure Portal.
 * Začněte [a vytvořte testovací prostředí testovacích služeb v rámci týmů](how-to-get-started-create-lab-within-teams.md).
 
 ## <a name="delete-labs"></a>Odstranění testovacích prostředí
 
-Testovací prostředí vytvořené v rámci týmů je možné odstranit na [webu testovacích služeb](https://labs.azure.com) , a to odstraněním testovacího prostředí přímo, jak je popsáno v tématu [Správa učebnních cvičení v Azure Lab Services](how-to-manage-classroom-labs.md). 
+Testovací prostředí vytvořené v rámci týmů je možné odstranit na [webu testovacích služeb](https://labs.azure.com) , a to odstraněním testovacího prostředí přímo, jak je popsáno v tématu [správa cvičení v Azure Lab Services](how-to-manage-classroom-labs.md). 
 
 Odstranění testovacího prostředí se také aktivuje při odstranění týmu. Pokud se tým, ve kterém testovací prostředí vytváří, odstraní, testovací prostředí se automaticky odstraní 24 hodin po aktivaci automatického seznamu uživatelů. 
 

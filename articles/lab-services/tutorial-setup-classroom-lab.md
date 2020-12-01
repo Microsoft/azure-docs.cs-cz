@@ -3,12 +3,12 @@ title: Nastavení testovacího prostředí v učebně v Azure Lab Services | Mic
 description: V tomto kurzu použijete Azure Lab Services k nastavení testovacího prostředí pro učebnu s virtuálními počítači, které používají studenti ve vaší třídě.
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: 1155646d31ddb8a0a3abce025acde5c4cb645f54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8981a03b53b1cfb67b03d89f8a1468511d9b1b93
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336730"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434851"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Kurz: Nastavení testovacího prostředí v učebně 
 V tomto kurzu nastavíte testovací prostředí v učebně pomocí virtuálních počítačů, které používají studenti v učebně.  
@@ -116,7 +116,7 @@ Vytvořte naplánovanou událost pro testovací prostředí, aby se virtuální 
     
     ![Plán v kalendáři](./media/how-to-create-schedules/schedule-calendar.png)
 
-    Další informace o vytváření a správě plánů pro třídu naleznete v tématu [Create and Manage Schedule for učeben Labs](how-to-create-schedules.md).
+    Další informace o vytváření a správě plánů pro třídu naleznete v tématu [Create and Manage Schedule for Labs](how-to-create-schedules.md).
 
 
 ## <a name="add-users-to-the-lab"></a>Přidat uživatele do testovacího prostředí
@@ -143,7 +143,7 @@ Vytvořte naplánovanou událost pro testovací prostředí, aby se virtuální 
 1. Na stránce **Odeslat pozvánku podle e-mailu** zadejte volitelnou zprávu a pak vyberte **Odeslat**. E-mail automaticky obsahuje odkaz na registraci. Tuto registrační odkaz můžete získat tak, že vyberete **... (tři tečky)** na panelu nástrojů a na **odkaz pro registraci**. 
 
     ![Poslat odkaz na registraci e-mailem](./media/tutorial-setup-classroom-lab/send-email.png)
-4. V seznamu **uživatelů** se zobrazí stav **Pozvánka** . Stav by se měl změnit na **odesílání** a pak na ** &lt; datum &gt; odeslání**. 
+4. V seznamu **uživatelů** se zobrazí stav **Pozvánka** . Stav by se měl změnit na **odesílání** a pak na **&lt; datum &gt; odeslání**. 
 
     Další informace o tom, jak přidat studenty do třídy a jak spravovat jejich použití v testovacím prostředí, najdete v tématu [jak nakonfigurovat využití studenta](how-to-configure-student-usage.md).
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 53130e395995b3533a45a96f897a0c6bcf1e4c71
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 2b4710fec43e27235ef6c05abb6018e1af4310d3
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187183"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434936"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Automatické zřizování agentů a rozšíření z Azure Security Center
 
@@ -138,7 +138,7 @@ K ukládání dat událostí zabezpečení systému Windows je vyžadován Azure
 Ukládání dat v Log Analytics může pro úložiště dat nabývat další poplatky. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 
 ### <a name="information-for-azure-sentinel-users"></a>Informace o uživatelích Sentinel Azure 
-Uživatelé služby Azure Sentinel: Všimněte si, že kolekce událostí zabezpečení v rámci jednoho pracovního prostoru se dá nakonfigurovat buď z Azure Security Center, nebo pomocí Azure Sentinel, ale ne z obou. Pokud plánujete přidat službu Azure Sentinel do pracovního prostoru, který už od Azure Security Center získává výstrahy z Azure Defenderu a je nastavená na shromažďovat události zabezpečení, máte dvě možnosti:
+Uživatelé služby Azure Sentinel: Všimněte si, že kolekce událostí zabezpečení v rámci jednoho pracovního prostoru se dá nakonfigurovat buď z Azure Security Center, nebo pomocí Azure Sentinel, ale ne z obou. Pokud plánujete přidat službu Azure Sentinel do pracovního prostoru, který už získává výstrahy od Azure Security Center a je nastavená na shromažďovat události zabezpečení, máte dvě možnosti:
 - Ponechte shromažďování událostí zabezpečení v Azure Security Center tak, jak je. Tyto události budete moct dotazovat a analyzovat v Azure Sentinel i v Azure Defenderu. Nebudete ale moct monitorovat stav připojení konektoru nebo změnit jeho konfiguraci v konfiguraci Azure Sentinel. Pokud je to pro vás důležité, zvažte druhou možnost.
 - Zakažte shromažďování událostí zabezpečení v Azure Security Center (nastavením **událostí zabezpečení systému Windows** na **žádné** v konfiguraci agenta Log Analytics). Pak přidejte konektor události zabezpečení do Azure Sentinel. Stejně jako u první volby budete moct dotazovat a analyzovat události v konfiguraci Azure Sentinel i v Azure Defenderu nebo v programu ASC, ale teď budete moct monitorovat stav připojení konektoru nebo změnit jeho konfiguraci v rámci a jenom v Azure Sentinel.
 
@@ -261,7 +261,7 @@ Vypnutí automatického zřizování agenta:
 >
 
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 -   Informace o tom, jak identifikovat Automatické zřizování problémů, najdete v tématu [monitorování problémů se stavem agenta](security-center-troubleshooting-guide.md#mon-agent).
 

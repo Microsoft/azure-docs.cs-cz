@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 3cbca82ba88baf5ddda2a6d7a6cdd35b62f28b8e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 264d103cd5f1459a6d29a35a1ecefc595285587a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647932"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433984"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>Nastavení testovacího prostředí s virtuálními počítači GPU
 
@@ -115,6 +115,6 @@ Postupujte podle pokynů v části "ověřit instalaci ovladače" v tématu [ins
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:
 
-- [Vytváření a správa testovacích prostředí v učebnách](how-to-manage-classroom-labs.md)
+- [Vytváření a Správa cvičení](how-to-manage-classroom-labs.md)
 - [Typ třídy SOLIDWORKS počítačového návrhu (CAD)](class-type-solidworks.md)
 - [Typ třídy MATLAB (maticová laboratoř)](class-type-matlab.md)

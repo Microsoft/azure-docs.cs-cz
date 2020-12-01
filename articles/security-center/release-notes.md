@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2020
+ms.date: 11/30/2020
 ms.author: memildin
-ms.openlocfilehash: 9b715ea890c7c85161a9e360bc16f9a2a608d64b
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: f26fffe8e6b2be6ede064b4750d012b3e4535c66
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95320996"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433349"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -41,6 +41,7 @@ Aktualizace v listopadu zahrnují:
 - [Vylepšené a rozšířené prostředí pro Automatické zřizování](#auto-provisioning-experience-improved-and-expanded)
 - [Pro průběžný export je teď dostupné zabezpečené skóre (Preview).](#secure-score-is-now-available-in-continuous-export-preview)
 - ["Na vaše počítače by se měly nainstalovat aktualizace systému." teď obsahuje doporučení pro dílčí doporučení](#system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations)
+- [Stránka správy zásad v Azure Portal nyní zobrazuje stav přiřazení výchozích zásad](#policy-management-page-in-the-azure-portal-now-shows-status-of-default-policy-assignments)
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>29 doporučení verze Preview pro zvýšení pokrytí srovnávacích testů zabezpečení Azure
 
@@ -139,7 +140,11 @@ Přečtěte si další informace o [průběžném exportu Security Center dat](c
     | where properties.status.code == "Unhealthy"
     ```
 
+### <a name="policy-management-page-in-the-azure-portal-now-shows-status-of-default-policy-assignments"></a>Stránka správy zásad v Azure Portal nyní zobrazuje stav přiřazení výchozích zásad
 
+Teď můžete vidět, jestli mají vaše předplatné nastavené výchozí zásady Security Center přiřazené, na stránce **zásady zabezpečení** Security Center Azure Portal.
+
+:::image type="content" source="media/release-notes/policy-assignment-info-per-subscription.png" alt-text="Stránka Správa zásad Azure Security Center zobrazuje přiřazení výchozích zásad.":::
 
 ## <a name="october-2020"></a>Říjen 2020
 
@@ -201,7 +206,7 @@ Další informace najdete v [Odebrání standardu z řídicího panelu](update-r
 
 Azure Resource Graph je služba v Azure, která je navržená tak, aby poskytovala efektivní průzkum prostředků s možností škálování v rámci dané sady předplatných, abyste mohli efektivně řídit vaše prostředí. 
 
-Pro Azure Security Center můžete použít ARG a [KQL (Kusto Query Language)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) k dotazování široké škály dat stav zabezpečení. Například:
+Pro Azure Security Center můžete použít ARG a [KQL (Kusto Query Language)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) k dotazování široké škály dat stav zabezpečení. Příklad:
 
 - Využití inventáře prostředků (ARG)
 - Popsali jsme vzorový ARGický dotaz pro [identifikaci účtů bez povoleného vícefaktorového ověřování (MFA)](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled) .
@@ -289,7 +294,7 @@ extract("^(.+)/providers/Microsoft.Security/assessments/.+$",1,id)))))
 ```
 
 Další informace najdete na následujících odkazech:
-- [Jak vytvářet dotazy pomocí Průzkumníka Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
+- [Jak vytvářet dotazy pomocí Průzkumníka Azure Resource Graphu](../governance/resource-graph/first-query-portal.md)
 - [KQL (Kusto Query Language)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)
 
 

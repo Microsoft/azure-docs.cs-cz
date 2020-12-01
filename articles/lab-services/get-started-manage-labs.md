@@ -3,12 +3,12 @@ title: Začínáme s Azure Lab Services
 description: Tento článek popisuje, jak začít s Azure Lab Services.
 ms.topic: article
 ms.date: 11/18/2020
-ms.openlocfilehash: bdc4f4af06d70a1798e7409b78f6b47530ddd7f4
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 6fb0da7f91e0eecdeefecdb6635b657245fda9af
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917099"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434426"
 ---
 # <a name="get-started-with-lab-services"></a>Začínáme se službami testovacího prostředí 
 
@@ -48,7 +48,7 @@ Nejdůležitějším aspektem při správě virtuálních počítačů je to, ž
 
 ### <a name="overview"></a>Přehled
 
-Řídicí panely pro učebn Labs v Azure Lab Services poskytují snímek různých aspektů konkrétního testovacího prostředí, včetně informací o virtuálním počítači, počtu přiřazených a nepřiřazených virtuálních počítačů, počtu registrovaných a neregistrovaných uživatelů a informace o plánech testovacího prostředí. 
+Řídicí panely pro cvičení v Azure Lab Services poskytují snímek různých aspektů konkrétního testovacího prostředí, včetně informací o virtuálním počítači, počtu přiřazených a nepřiřazených virtuálních počítačů, počtu registrovaných a neregistrovaných uživatelů a informace o plánech testovacího prostředí. 
 
 > [!NOTE]
 > I když se většina administrativních aspektů řídicího panelu a [Azure Lab Services Web](https://labs.azure.com/) bude zobrazovat učitelům, můžou oprávnění specifická pro vaši roli ovlivnit vaši možnost upravovat určitá kritéria na řídicím panelu. Pokud narazíte na problém s konkrétním nastavením testovacího prostředí, kontaktujte svého správce CTE.

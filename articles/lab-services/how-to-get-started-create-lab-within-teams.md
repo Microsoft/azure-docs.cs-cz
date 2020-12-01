@@ -3,18 +3,18 @@ title: Začínáme a vytvoření testovacího prostředí Azure Lab Services v r
 description: Naučte se, jak začít a vytvořit Azure Lab Services testovací prostředí v rámci týmů.
 ms.topic: article
 ms.date: 10/08/2020
-ms.openlocfilehash: e17b0be223a1630402fc4f32c692d7ecfe184783
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: cc4ad604bdf250cc6e4ba2c50c2f7143c921e906
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217078"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433967"
 ---
 # <a name="get-started-and-create-a-lab-services-lab-within-teams"></a>Začínáme a vytvoření testovacího prostředí testovacích služeb v rámci týmů
 
 Tento článek ukazuje, jak přidat aplikaci **Azure Lab Services** do týmu a jak vytvořit testovací prostředí v prostředí MS Teams.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu nastavíte testovací prostředí s virtuálními počítači pro váš tým. Pokud chcete nastavit testovací prostředí v účtu testovacího prostředí, musíte být členem jedné z těchto rolí v účtu testovacího prostředí: vlastník, autor testovacího prostředí nebo Přispěvatel. Účet, který jste použili k vytvoření účtu testovacího prostředí, je automaticky přidán do role vlastníka. K vytvoření testovacího prostředí můžete použít uživatelský účet, který jste použili k vytvoření účtu testovacího prostředí.
 
@@ -40,18 +40,18 @@ Jako vlastník týmu můžete přidat **Azure Lab Services** aplikaci přímo do
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/integrate-with-teams/add.png" alt-text="Přidat kartu":::
-1. Vyberte účet služby testovacího prostředí, který chcete použít pro vytváření cvičení učebny v tomto týmu. 
+1. Vyberte účet služby testovacího prostředí, který chcete použít pro vytváření cvičení v tomto týmu. 
 
     Azure Lab Services používá jednotné přihlašování do [Azure Lab Services webu](https://labs.azure.com) a vyžádá si všechny účty testovacího prostředí, ke kterým máte přístup. 
 
-    Zobrazí se účty, které jsou ve stejném tenantovi jako týmy a pro které máte oprávnění **vlastníka**, **přispěvatele**nebo **Tvůrce** . 
+    Zobrazí se účty, které jsou ve stejném tenantovi jako týmy a pro které máte oprávnění **vlastníka**, **přispěvatele** nebo **Tvůrce** . 
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/integrate-with-teams/welcome.png" alt-text="Přidat kartu":::
+    > :::image type="content" source="./media/integrate-with-teams/welcome.png" alt-text="Vítá vás funkce ALS":::
 1. Stiskněte **Uložit** a karta se přidá do kanálu.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/integrate-with-teams/created.png" alt-text="Přidat kartu":::
+    > :::image type="content" source="./media/integrate-with-teams/created.png" alt-text="Byla vytvořena karta ALS":::
 
     Nyní můžete z kanálu vybrat kartu **Azure Lab Services** a začít spravovat laboratoře, jak je popsáno v následujících článcích.
 

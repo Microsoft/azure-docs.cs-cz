@@ -10,16 +10,16 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 1ace40098e1d53c6199accea755ffb6969781663
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: ecb034ae621c935c3ebcd5b480e116c2cb1d864f
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015659"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435531"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Publikování a přihlášení k odběru pomocí Azure IoT Edge
 
-K publikování a odběru zpráv můžete použít zprostředkovatele Azure IoT Edge MQTT. V tomto článku se dozvíte, jak se připojit k tomuto zprostředkovateli, jak publikovat a odebírat zprávy přes uživatelsky definovaná témata a použít IoT Hub primitivních zpráv. Zprostředkovatel IoT Edge MQTT je integrovaný v centru IoT Edge. Další informace najdete v tématu [Možnosti zprostředkování centra IoT Edge](iot-edge-runtime.md).
+K publikování a odběru zpráv můžete použít zprostředkovatele Azure IoT Edge MQTT. V tomto článku se dozvíte, jak se připojit k tomuto zprostředkovateli, publikovat zprávy a přihlásit se k odběru zpráv pomocí uživatelsky definovaných témat a použít IoT Hub primitivních zpráv. Zprostředkovatel IoT Edge MQTT je integrovaný v centru IoT Edge. Další informace najdete v tématu [Možnosti zprostředkování centra IoT Edge](iot-edge-runtime.md).
 
 > [!NOTE]
 > Služba IoT Edge MQTT Broker je aktuálně ve verzi Public Preview.
@@ -27,16 +27,16 @@ K publikování a odběru zpráv můžete použít zprostředkovatele Azure IoT 
 ## <a name="pre-requisites"></a>Požadavky
 
 - Účet Azure s platným předplatným
-- Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) s `azure-iot` nainstalovaným rozšířením CLI. Další informace najdete v tématu věnovaném [postupům pro instalaci rozšíření Azure IoT pro Azure Azure CLI](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-iot).
-- **IoT Hub** SKU buď F1, S1, S2 nebo S3.
+- Rozhraní příkazového [řádku Azure](/cli/azure/) s `azure-iot` nainstalovaným rozšířením CLI. Další informace najdete v tématu věnovaném [postupům pro instalaci rozšíření Azure IoT pro Azure Azure CLI](/cli/azure/azure-cli-reference-for-iot).
+- **IoT Hub** položky SKU buď F1, S1, S2 nebo S3.
 - Mít **IoT Edge zařízení s verzí 1,2 nebo vyšší**. Vzhledem k tomu, že IoT Edge zprostředkovatel MQTT je aktuálně ve verzi Public Preview, nastavte následující proměnné prostředí na hodnotu true v kontejneru edgeHub pro povolení zprostředkovatele MQTT:
 
-   | Název | Hodnota |
+   | Name | Hodnota |
    | - | - |
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__mqttBrokerEnabled` | `true` |
 
-- **Mosquitto klienti** nainstalují na zařízení IoT Edge. V tomto článku se používají oblíbená Mosquitto klienti, kteří zahrnují [MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) a [MOSQUITTO_SUB](https://mosquitto.org/man/mosquitto_sub-1.html). Místo toho se dají použít jiní MQTT klienti. Pokud chcete nainstalovat klienty Mosquitto na zařízení Ubuntu, spusťte následující příkaz:
+- **Mosquitto klienti** nainstalují na zařízení IoT Edge. Tento článek používá oblíbené klienty Mosquitto [MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) a [MOSQUITTO_SUB](https://mosquitto.org/man/mosquitto_sub-1.html). Místo toho se dají použít jiní MQTT klienti. Pokud chcete nainstalovat klienty Mosquitto na zařízení Ubuntu, spusťte následující příkaz:
 
     ```cmd
     sudo apt-get update && sudo apt-get install mosquitto-clients
@@ -62,42 +62,42 @@ Pokud chcete povolit protokol TLS, bude se iniciovat kanál TLS, pokud se klient
 
 ### <a name="authentication"></a>Authentication
 
-Aby se klient MQTT mohl sám ověřit, musí nejdřív odeslat paket připojení ke zprostředkovateli MQTT a iniciovat připojení v jeho názvu. Tento paket nabízí tři části ověřovacích informací: a `client identifier` , `username` a `password` :
+Aby se klient MQTT mohl sám ověřit, musí nejdřív odeslat paket připojení ke zprostředkovateli MQTT a iniciovat připojení v jeho názvu. Tento paket nabízí tři části ověřovacích informací: a `client identifier` , a `username` a `password` :
 
--   `client identifier`Pole je název zařízení nebo modulu v IoT Hub. Používá následující syntaxi:
+- `client identifier`Pole je název zařízení nebo modulu v IoT Hub. Používá následující syntaxi:
 
-    - Pro zařízení: `<device_name>`
+  - Pro zařízení: `<device_name>`
 
-    - Pro modul: `<device_name>/<module_name>`
+  - Pro modul: `<device_name>/<module_name>`
 
    Aby bylo možné se připojit ke zprostředkovateli MQTT, musí být zařízení nebo modul registrován v IoT Hub.
 
-   Všimněte si, že zprostředkovatel nebude umožňovat připojení dvou klientů pomocí stejných přihlašovacích údajů. Zprostředkovatel odpojí již připojeného klienta, pokud se druhý klient připojí pomocí stejných přihlašovacích údajů.
+   Zprostředkovatel neumožní připojení z více klientů pomocí stejných přihlašovacích údajů. Zprostředkovatel odpojí již připojeného klienta, pokud se druhý klient připojí pomocí stejných přihlašovacích údajů.
 
 - `username`Pole je odvozeno z názvu zařízení nebo modulu a název IoTHub, ke kterému zařízení patří, pomocí následující syntaxe:
 
-    - Pro zařízení: `<iot_hub_name>.azure-devices.net/<device_name>/?api-version=2018-06-30`
+  - Pro zařízení: `<iot_hub_name>.azure-devices.net/<device_name>/?api-version=2018-06-30`
 
-    - Pro modul: `<iot_hub_name>.azure-devices.net/<device_name>/<module_name>/?api-version=2018-06-30`
+  - Pro modul: `<iot_hub_name>.azure-devices.net/<device_name>/<module_name>/?api-version=2018-06-30`
 
 - `password`Pole paketu připojení závisí na režimu ověřování:
 
-    - V případě [ověřování symetrických klíčů](how-to-authenticate-downstream-device.md#symmetric-key-authentication) `password` je pole token SAS.
-    - V případě [ověření podepsaného svým držitelem X. 509](how-to-authenticate-downstream-device.md#x509-self-signed-authentication) `password` není pole k dispozici. V tomto režimu ověřování je vyžadován kanál TLS. Aby bylo možné navázat připojení TLS, musí se klient připojit k portu 8883. Během metody handshake TLS zprostředkovatel MQTT požaduje certifikát klienta. Tento certifikát se používá k ověření identity klienta, takže `password` pole není potřeba později po odeslání paketu připojení. Odesláním klientského certifikátu a pole heslo dojde k chybě a připojení bude zavřeno. Knihovny MQTT a klientské knihovny TLS mají obvykle způsob, jak odeslat klientský certifikát při inicializaci připojení. Podrobný příklad najdete v části [použití certifikátu x509 pro ověřování klientů](how-to-authenticate-downstream-device.md#x509-self-signed-authentication).
+  - Při použití [ověřování symetrických klíčů](how-to-authenticate-downstream-device.md#symmetric-key-authentication) `password` je pole token SAS.
+  - Pokud používáte [ověřování pomocí X. 509 podepsané svým držitelem](how-to-authenticate-downstream-device.md#x509-self-signed-authentication), `password` pole není k dispozici. V tomto režimu ověřování je vyžadován kanál TLS. Aby bylo možné navázat připojení TLS, musí se klient připojit k portu 8883. Během metody handshake TLS zprostředkovatel MQTT požaduje certifikát klienta. Tento certifikát se používá k ověření identity klienta, takže `password` pole není potřeba později po odeslání paketu připojení. Odesláním klientského certifikátu a pole heslo dojde k chybě a připojení bude zavřeno. Knihovny MQTT a klientské knihovny TLS mají obvykle způsob, jak odeslat klientský certifikát při inicializaci připojení. Podrobný příklad najdete v části [použití certifikátu x509 pro ověřování klientů](how-to-authenticate-downstream-device.md#x509-self-signed-authentication).
 
 Moduly nasazené pomocí IoT Edge používají [ověřování symetrických klíčů](how-to-authenticate-downstream-device.md#symmetric-key-authentication) a můžou volat místní [rozhraní API pro IoT Edge úlohy](https://github.com/Azure/iotedge/blob/40f10950dc65dd955e20f51f35d69dd4882e1618/edgelet/workload/README.md) , které programově získá token SAS, i když je offline.
 
 ### <a name="authorization"></a>Autorizace
 
-Jakmile se MQTT klient ověří pro IoT Edge centra, musí být autorizovaný pro připojení. Po připojení je potřeba mít oprávnění k publikování nebo přihlášení k odběru určitých témat. Tato autorizace jsou udělována službou IoT Edge hub na základě zásad autorizace. Zásady autorizace jsou sady příkazů vyjádřené jako struktura JSON, která se odesílá do centra IoT Edge prostřednictvím jeho vlákna. Pokud chcete nakonfigurovat zásady autorizace, upravte stav vlákna IoT Edge hub.
+Jakmile je klient MQTT ověřený pro IoT Edge centra, musí mít oprávnění k připojení. Po připojení je potřeba mít oprávnění k publikování nebo přihlášení k odběru určitých témat. Tato autorizace jsou udělována službou IoT Edge hub na základě zásad autorizace. Zásady autorizace jsou sady příkazů vyjádřené jako struktura JSON, která se odesílá do centra IoT Edge prostřednictvím jeho vlákna. Pokud chcete nakonfigurovat zásady autorizace, upravte stav vlákna IoT Edge hub.
 
 > [!NOTE]
 > V rámci verze Public Preview jsou úpravy zásad autorizace zprostředkovatele MQTT k dispozici pouze prostřednictvím sady Visual Studio, Visual Studio Code nebo rozhraní příkazového řádku Azure CLI. Azure Portal v současné době nepodporuje úpravu vláken centra IoT Edge a zásady autorizace.
 
-Každý příkaz zásad autorizace se skládá z kombinace `identities` , `allow` `deny` efektu `operations` a `resources` :
+Každý příkaz zásad autorizace se skládá z kombinace `identities` efektů, `allow` `deny` `operations` a `resources` :
 
 - `identities` Popište předmět zásady. Musí se mapovat na `client identifier` zprávy odesílané klienty v jejich paketu připojení.
-- `allow` nebo `deny` můžete určit, jestli se mají operace povolit nebo zakázat.
+- `allow` nebo `deny` efekty definují, jestli se mají operace povolit nebo zakázat.
 - `operations` Definujte akce, které mají být autorizovány. `mqtt:connect``mqtt:publish`a `mqtt:subscribe` jsou dnes tři podporované akce.
 - `resources` Definujte objekt zásady. Může se jednat o téma nebo vzor tématu definovaný pomocí [zástupných znaků MQTT](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718107).
 
@@ -163,16 +163,18 @@ Níže je uveden příklad zásad autorizace, které explicitně nepovolují, ab
 ```
 
 Při psaní zásad autorizace je potřeba mít na paměti několik věcí:
+
 - Vyžaduje `$edgeHub` schéma s dvojitou verzí 1,2.
 - Ve výchozím nastavení jsou všechny operace odepřeny.
-- Příkazy autorizace jsou vyhodnocovány v pořadí, než se zobrazí v definici JSON. Začne tím `identities` , že prohlíží a pak vybere první příkazy Allow nebo Deny, které odpovídají žádosti. V případě konfliktů mezi příkazy povolit a odepřít se jedná o příkaz Deny.
-- V zásadách autorizace se dá použít několik proměnných (třeba náhrady):
-    - `{{iot:identity}}` představuje identitu aktuálně připojeného klienta. Například `myDevice` v případě zařízení v `myEdgeDevice/SampleModule` případě modulu.
-    - `{{iot:device_id}}` představuje identitu aktuálně připojeného zařízení. Například `myDevice` v případě zařízení v `myEdgeDevice` případě modulu.
-    - `{{iot:module_id}}` představuje identitu aktuálně připojeného modulu. Například v případě zařízení pro případ, že se jedná o `SampleModule` modul.
-    - `{{iot:this_device_id}}` představuje identitu zařízení IoT Edge, na kterém je spuštěná zásada autorizace. Příklad: `myIoTEdgeDevice`.
+- Příkazy autorizace jsou vyhodnocovány v pořadí, v jakém jsou uvedeny v definici JSON. Začne tím `identities` , že prohlíží a pak vybere první příkazy Allow nebo Deny, které odpovídají žádosti. V případě konfliktů mezi příkazy povolit a odepřít se jedná o příkaz Deny.
+- V zásadách autorizace se dá použít několik proměnných (například náhrady):
+    - `{{iot:identity}}` představuje identitu aktuálně připojeného klienta. Například identitu zařízení jako `myDevice` nebo identitu modulu `myEdgeDevice/SampleModule` , například.
+    - `{{iot:device_id}}` představuje identitu aktuálně připojeného zařízení. Například identitu zařízení jako `myDevice` nebo identitu zařízení, na které se modul spouští `myEdgeDevice` .
+    - `{{iot:module_id}}` představuje identitu aktuálně připojeného modulu. Tato proměnná je prázdná pro připojená zařízení nebo identitu modulu, jako je `SampleModule` .
+    - `{{iot:this_device_id}}` představuje identitu zařízení IoT Edge, na kterém je spuštěná zásada autorizace. Například, `myIoTEdgeDevice`.
 
-Autorizace pro témata služby IoT Hub se zpracovává trochu jinak než uživatelsky definovaná témata. Tady jsou klíčové body, které si zapamatujete:
+Ověřování pro témata služby IoT Hub se zpracovává trochu jinak než uživatelsky definovaná témata. Tady jsou klíčové body, které si zapamatujete:
+
 - Zařízení nebo moduly Azure IoT potřebují explicitní autorizační pravidlo pro připojení ke službě IoT Edge hub MQTT Broker. Níže jsou uvedené výchozí zásady autorizace připojení.
 - Zařízení nebo moduly Azure IoT mají ke svým vlastním tématům služby IoT Hub přístup ve výchozím nastavení bez explicitního autorizačního pravidla. V takovém případě se ale autorizace vyplňují z vztahů nadřazenosti a podřízenosti a tyto vztahy musí být nastavené. IoT Edge moduly se automaticky nastaví jako podřízené položky jejich IoT Edge zařízení, ale zařízení musí být explicitně nastavená jako podřízené pro bránu IoT Edge.
 - Zařízení nebo moduly Azure IoT mají přístup k tématům, včetně témat služby IoT Hub, dalších zařízení nebo modulů, které poskytují příslušná explicitní autorizační pravidla.
@@ -310,7 +312,7 @@ Pokud chcete autorizovat vydavatele a předplatitele, upravte IoT Edge centrum p
 
 ### <a name="symmetric-keys-authentication-without-tls"></a>Ověřování symetrických klíčů bez TLS
 
-#### <a name="subscribe"></a>Přihlásit k odběru
+#### <a name="subscribe"></a>Přihlášení k odběru
 
 Připojte klienta **sub_client** MQTT ke zprostředkovateli MQTT a přihlaste se k odběru spuštěním `test_topic` následujícího příkazu na vašem zařízení IoT Edge:
 
@@ -327,7 +329,7 @@ mosquitto_sub \
 
 `<edge_device_address>`  =  `localhost` v tomto příkladu, protože klient je spuštěný na stejném zařízení jako IoT Edge.
 
-Všimněte si, že v tomto prvním příkladu se používá port 1883 (MQTT), třeba bez TLS. Další příklad s portem 8883 (MQTTS), třeba s povoleným protokolem TLS, se zobrazí v další části.
+Všimněte si, že v tomto prvním příkladu se používá port 1883 (MQTT) bez TLS. Další příklad s portem 8883 (MQTTS) s povoleným protokolem TLS je zobrazený v další části.
 
 Klient **sub_client** MQTT je teď spuštěný a čeká na příchozí zprávy `test_topic` .
 
@@ -384,7 +386,7 @@ Aby bylo možné přijímat zdvojené opravy, je nutné, aby se klient přihlás
 
 ### <a name="receive-direct-methods"></a>Příjem přímých metod
 
-Přijetí přímé metody je velmi podobné jako příjem úplných vláken s přidáním, který klient potřebuje k potvrzení, že přijal volání. Nejdřív se přihlaste ke službě IoT Hub – zvláštní téma `$iothub/methods/POST/#` . Poté, co je v tomto tématu přijata přímá metoda, musí klient extrahovat identifikátor požadavku `rid` z dílčího tématu, na kterém je přijata přímá metoda, a nakonec publikovat potvrzovací zprávu ve speciálním tématu služby IoT Hub `$iothub/methods/res/200/<request_id>` .
+Příjem přímé metody je podobný jako příjem úplných vláken s přidáním, který klient potřebuje k potvrzení, že přijal volání. Nejdřív se klient přihlašuje k odběru speciálního tématu ve službě IoT Hub `$iothub/methods/POST/#` . Poté, co je v tomto tématu přijata přímá metoda, musí klient extrahovat identifikátor požadavku `rid` z dílčího tématu, na kterém je přijata přímá metoda, a nakonec publikovat potvrzovací zprávu ve speciálním tématu služby IoT Hub `$iothub/methods/res/200/<request_id>` .
 
 ### <a name="send-direct-methods"></a>Odeslání přímých metod
 
@@ -411,7 +413,7 @@ Most MQTT je možné nakonfigurovat tak, aby se připojil k několika externím 
     - `direction`: buď `in` k přihlášení k odběru témat vzdáleného zprostředkovatele nebo `out` k publikování do témat vzdáleného zprostředkovatele
     - `topic`: model základního tématu, který se má shodovat. K definování tohoto vzoru lze použít [zástupné znaky MQTT](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718107) . Pro tento vzor tématu můžete použít jiné předpony na místním zprostředkovateli a vzdáleném zprostředkovateli.
     - `outPrefix`: Předpona, která se aplikuje na `topic` vzor na vzdáleném zprostředkovateli.
-    - `inPrefix`: Předpona, která je použita na `topic` vzor na místním zprostředkovateli.
+    - `inPrefix`: Předpona, která se aplikuje na `topic` vzor na místním zprostředkovateli.
 
 Níže je uveden příklad konfigurace mostu IoT Edge MQTT, která znovu publikuje všechny zprávy přijaté v tématech `alerts/#` nadřazeného IoT Edge zařízení do podřízeného IoT Edge zařízení ve stejných tématech a znovu publikuje všechny zprávy odeslané v tématech `/local/telemetry/#` podřízeného IoT Edge zařízení do nadřazeného IoT Edge zařízení v tématech `/remote/messages/#` .
 
@@ -437,7 +439,7 @@ Níže je uveden příklad konfigurace mostu IoT Edge MQTT, která znovu publiku
 }
 ```
 Další poznámky k MQTT mostu centra IoT Edge:
-- Protokol MQTT se automaticky použije jako nadřazený protokol, pokud se použije zprostředkovatel MQTT a že se IoT Edge používá ve vnořené konfiguraci, např. se `parent_hostname` zadaným. Další informace o nadřazených protokolech najdete v tématu [cloudová komunikace](iot-edge-runtime.md#cloud-communication). Další informace o vnořených konfiguracích najdete v tématu [připojení zařízení IoT Edge pro příjem dat k bráně Azure IoT Edge](how-to-connect-downstream-iot-edge-device.md#configure-iot-edge-on-devices).
+- Protokol MQTT se automaticky použije jako nadřazený protokol, pokud se použije zprostředkovatel MQTT a že se IoT Edge používá ve vnořené konfiguraci, například se `parent_hostname` zadaným. Další informace o nadřazených protokolech najdete v tématu [cloudová komunikace](iot-edge-runtime.md#cloud-communication). Další informace o vnořených konfiguracích najdete v tématu [připojení zařízení IoT Edge pro příjem dat k bráně Azure IoT Edge](how-to-connect-downstream-iot-edge-device.md#configure-iot-edge-on-devices).
 
 ## <a name="next-steps"></a>Další kroky
 

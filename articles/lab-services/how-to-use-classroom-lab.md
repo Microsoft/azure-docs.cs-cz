@@ -3,12 +3,12 @@ title: Jak získat přístup k testovacímu prostředí v učebně v Azure Lab S
 description: Přečtěte si, jak se zaregistrovat do testovacího prostředí, Zobrazit všechny laboratoře, ke kterým máte přístup, jak spustit nebo zastavit virtuální počítač v testovacím prostředí a jak se připojit k virtuálnímu počítači.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 0c2f0ba5e6a47e00f47a31e08c036ea17ff2507a
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 6d5585082473a363df5f25f331475536544ae828
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946106"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433134"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Jak získat přístup k testovacímu prostředí v učebně v Azure Lab Services
 Tento článek popisuje, jak se zaregistrovat do testovacího prostředí, Zobrazit všechny laboratoře, ke kterým máte přístup, jak spustit nebo zastavit virtuální počítač v testovacím prostředí a jak se připojit k virtuálnímu počítači. 
@@ -70,8 +70,8 @@ Indikátor průběhu na dlaždici zobrazuje počet hodin použitých pro počet 
     ![Indikátor průběhu s modrou barvou](./media/tutorial-connect-vm-in-classroom-lab/progress-bar-blue-color.png)
 
 
-## <a name="view-all-the-classroom-labs"></a>Zobrazit všechna testovací prostředí v učebně
-Po registraci do testovacích prostředí se můžete podívat na všechny laboratoře učebny, a to provedením následujících kroků: 
+## <a name="view-all-the-labs"></a>Zobrazit všechny laboratoře
+Po registraci do testovacích prostředí můžete zobrazit všechny laboratoře pomocí následujících kroků: 
 
 1. Přejděte na [https://labs.azure.com](https://labs.azure.com) . Aplikace Internet Explorer 11 není zatím podporována. 
 2. Přihlaste se ke službě pomocí uživatelského účtu, který jste použili k registraci do testovacího prostředí. 

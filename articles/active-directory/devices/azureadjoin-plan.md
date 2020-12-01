@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3587ef6be9d6c9969dff5d1af2181ed51aea7d29
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3acaf4929158b24ff50655aa18c05b41aeec4b53
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308276"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435446"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Postupy: plánování implementace služby Azure AD JOIN
 
@@ -24,7 +24,7 @@ Služba Azure AD JOIN umožňuje připojit zařízení přímo k Azure AD bez nu
 
 Tento článek poskytuje informace, které potřebujete k plánování vaší implementace služby Azure AD JOIN.
  
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že jste obeznámeni se [správou zařízení v Azure Active Directory](./overview.md).
 
@@ -90,10 +90,12 @@ K připojení zařízení do Azure AD nemůžete použít čipové karty ani ov�
 
 Pokud vytvoříte uživatele v:
 
-- **Místní služba Active Directory** , je třeba je synchronizovat s Azure AD pomocí [Azure AD Connect](../hybrid/how-to-connect-sync-whatis.md). 
-- **Azure AD** , nevyžaduje se žádné další nastavení.
+- **Místní služba Active Directory**, je třeba je synchronizovat s Azure AD pomocí [Azure AD Connect](../hybrid/how-to-connect-sync-whatis.md). 
+- **Azure AD**, nevyžaduje se žádné další nastavení.
 
 Místní hlavní názvy služby (UPN), které se liší od Azure AD UPN, se na zařízeních připojených k Azure AD nepodporují. Pokud uživatelé používají místní hlavní název uživatele (UPN), měli byste naplánovat přechod na použití primárního hlavního názvu uživatele (UPN) ve službě Azure AD.
+
+Změny hlavního názvu uživatele (UPN) jsou podporované jenom při spuštění aktualizace Windows 10 2004. Uživatelé na zařízeních s touto aktualizací nebudou mít po změně svých názvů UPN žádné problémy. Pro zařízení starší než Windows 10 2004 Update by uživatelé měli na svých zařízeních problémy jednotného přihlašování a podmíněného přístupu. K vyřešení tohoto problému se musí přihlásit k Windows prostřednictvím dlaždice "jiný uživatel" pomocí nového hlavního názvu uživatele (UPN). 
 
 ## <a name="assess-your-device-management"></a>Posouzení správy zařízení
 
@@ -187,7 +189,7 @@ Připojení ke vzdálené ploše k zařízením připojeným k Azure AD vyžaduj
 Když se spouští aktualizace Windows 10 2004, můžou uživatelé použít taky vzdálenou plochu ze zařízení s Windows 10 registrovaných v Azure AD na zařízení připojené k Azure AD. 
 
 ## <a name="understand-your-provisioning-options"></a>Informace o možnostech zřizování
-**Poznámka** : zařízení připojená k Azure AD nejde nasadit pomocí nástroje pro přípravu systému (Sysprep) nebo podobných nástrojů pro vytváření bitových kopií.
+**Poznámka**: zařízení připojená k Azure AD nejde nasadit pomocí nástroje pro přípravu systému (Sysprep) nebo podobných nástrojů pro vytváření bitových kopií.
 
 Službu Azure AD JOIN můžete zřídit pomocí následujících přístupů:
 
@@ -199,11 +201,11 @@ Toto je srovnání těchto tří přístupů.
  
 | Prvek | Instalace samoobslužných služeb | Windows Autopilot | Hromadná registrace |
 | --- | --- | --- | --- |
-| Vyžadovat nastavení interakce s uživatelem | Ano | Ano | Ne |
-| Vyžadovat úsilí IT | Ne | Ano | Ano |
+| Vyžadovat nastavení interakce s uživatelem | Yes | Yes | No |
+| Vyžadovat úsilí IT | No | Yes | Ano |
 | Použitelné postupy | Nastavení & OOBE | Jen prostředí prvního spuštění počítače | Jen prostředí prvního spuštění počítače |
 | Práva místního správce udělená primárnímu uživateli | Ano, ve výchozím nastavení | Konfigurovatelné | Ne |
-| Vyžadovat podporu OEM zařízení | Ne | Ano | Ne |
+| Vyžadovat podporu OEM zařízení | No | Yes | No |
 | Podporované verze | 1511 + | 1709 + | 1703 + |
  
 Vyberte si v tabulce výše svůj přístup k nasazení nebo přístupy a Projděte si následující skutečnosti, které vám pomají při přijímání obou přístupů:  
@@ -243,7 +245,7 @@ Pokud požadujete, aby uživatelé prováděli MFA během připojování zaříz
 
 Než budete moct nakonfigurovat nastavení mobility, možná budete muset nejdřív přidat poskytovatele MDM.
 
-**Postup přidání poskytovatele MDM** :
+**Postup přidání poskytovatele MDM**:
 
 1. Na **stránce Azure Active Directory** v části **Spravovat** klikněte na `Mobility (MDM and MAM)` . 
 1. Klikněte na **Přidat aplikaci**.
@@ -261,8 +263,8 @@ V závislosti na rozsahu **nasazení vyberte možnost** **vše nebo vše** .
 
 Na základě vašeho oboru nastane jedna z následujících možností: 
 
-- **Uživatel je v oboru MDM** : Pokud máte předplatné Azure AD Premium, je registrace MDM automatizovaná spolu se službou Azure AD JOIN. Všichni uživatelé s vymezeným oborem musí mít příslušnou licenci pro MDM. Pokud v tomto scénáři registrace MDM selže, vrátí se i služba Azure AD JOIN.
-- **Uživatel není v oboru MDM** : Pokud uživatelé nejsou v oboru MDM, připojení k Azure AD se dokončí bez registrace MDM. Výsledkem je nespravované zařízení.
+- **Uživatel je v oboru MDM**: Pokud máte předplatné Azure AD Premium, je registrace MDM automatizovaná spolu se službou Azure AD JOIN. Všichni uživatelé s vymezeným oborem musí mít příslušnou licenci pro MDM. Pokud v tomto scénáři registrace MDM selže, vrátí se i služba Azure AD JOIN.
+- **Uživatel není v oboru MDM**: Pokud uživatelé nejsou v oboru MDM, připojení k Azure AD se dokončí bez registrace MDM. Výsledkem je nespravované zařízení.
 
 ### <a name="mdm-urls"></a>Adresy URL MDM
 
@@ -284,7 +286,7 @@ MAM se nevztahuje na službu Azure AD JOIN.
 
 Pokud chcete povolit roaming stavu do služby Azure AD, aby uživatelé mohli synchronizovat nastavení napříč zařízeními, přečtěte si téma [povolení Enterprise State Roaming v Azure Active Directory](enterprise-state-roaming-enable.md). 
 
-**Doporučení** : Toto nastavení povolte i pro zařízení připojená k hybridní službě Azure AD.
+**Doporučení**: Toto nastavení povolte i pro zařízení připojená k hybridní službě Azure AD.
 
 ## <a name="configure-conditional-access"></a>Konfigurace podmíněného přístupu
 

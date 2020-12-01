@@ -3,12 +3,12 @@ title: Použití Azure Lab Services pro Hackathon
 description: Tento článek popisuje, jak používat Azure Lab Services pro vytváření testovacích prostředí, která můžete použít ke spuštění hackathony.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8727fad6f37d1365983127a1a514e87e3a5003b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 561351636a37c2cd5c3070dbfef2a3122e5c29b0
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445878"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434256"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>Použít Azure Lab Services pro další Hackathon
 Azure Lab Services je navržená tak, aby byla nenáročná a snadno použitelná, takže můžete rychle vymezit nové prostředí virtuálních počítačů (VM) pro vaši Hackathon.  Pomocí následujícího kontrolního seznamu zajistěte, aby váš Hackathon byl co nejrychleji. Tento kontrolní seznam by měl dokončit vaše IT oddělení nebo vyučující, kteří zodpovídají za vytváření a správu testovacího prostředí Hackathon. 
@@ -51,7 +51,7 @@ Pokud chcete používat služby testovacího prostředí pro Hackathon, ujistět
 
     Automatické **vypnutí**: Pokud je tato možnost povolená, nastavení automatického [vypnutí](how-to-enable-shutdown-disconnect.md) způsobí, že se virtuální počítače s Windows po uplynutí určité doby automaticky vypnou, jakmile se student odpojí od své relace RDP. Standardně je toto nastavení zakázáno.
 
-- **Nakonfigurujte nastavení brány firewall tak, aby povolovala připojení k testovacím virtuálním**počítačům. 
+- **Nakonfigurujte nastavení brány firewall tak, aby povolovala připojení k testovacím virtuálním** počítačům. 
 
     Ujistěte se, že nastavení brány firewall ve škole nebo ve vaší organizaci umožňuje připojení k virtuálním počítačům testovacího prostředí pomocí RDP\SSH.. Další informace najdete v tématu [Průvodce konfigurací nastavení brány firewall vaší sítě](how-to-configure-firewall-settings.md).
 
@@ -86,4 +86,4 @@ Tato část popisuje kroky pro dokončení dne vašeho hackathonu.
         Další informace najdete v tématu Návod, [Jak odesílat pozvánky uživatelům](how-to-configure-student-usage.md?branch=master#send-invitations-to-users) a [připojovat se k virtuálním počítačům se systémem Linux](how-to-use-remote-desktop-linux-student.md?branch=master). 
 
 ## <a name="next-steps"></a>Další kroky
-Začněte vytvořením účtu testovacího prostředí v učebně Labs podle pokynů v článku [kurz: nastavení účtu testovacího prostředí pomocí Azure Lab Services](tutorial-setup-lab-account.md).
+Začněte vytvořením účtu testovacího prostředí v cvičení podle pokynů v článku [kurz: nastavení účtu testovacího prostředí pomocí Azure Lab Services](tutorial-setup-lab-account.md).

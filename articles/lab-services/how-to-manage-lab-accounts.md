@@ -3,20 +3,20 @@ title: Správa účtů testovacího prostředí v Azure Lab Services | Microsoft
 description: Naučte se, jak vytvořit účet testovacího prostředí, Zobrazit všechny účty testovacího prostředí nebo odstranit účet testovacího prostředí v předplatném Azure.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 33e5e42f65fdd34bb37b12947b5173700ad7970c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 65ff28401b73698e320735613b32c96bf3de58f2
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999497"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434086"
 ---
 # <a name="create-and-manage-lab-accounts"></a>Vytvoření a správa účtů testovacího prostředí
-V Azure Lab Services účet testovacího prostředí je kontejner pro spravované typy testovacích prostředí, jako je například učeben Labs. Správce nastaví účet testovacího prostředí pomocí Azure Lab Services a poskytne přístup k vlastníkům testovacího prostředí, kteří můžou v účtu vytvářet Labs. Tento článek popisuje, jak vytvořit účet testovacího prostředí, Zobrazit všechny účty testovacího prostředí nebo odstranit účet testovacího prostředí.
+V Azure Lab Services účet testovacího prostředí je kontejnerem pro spravované typy testovacích prostředí, jako jsou Labs. Správce nastaví účet testovacího prostředí pomocí Azure Lab Services a poskytne přístup k vlastníkům testovacího prostředí, kteří můžou v účtu vytvářet Labs. Tento článek popisuje, jak vytvořit účet testovacího prostředí, Zobrazit všechny účty testovacího prostředí nebo odstranit účet testovacího prostředí.
 
 ## <a name="create-a-lab-account"></a>Vytvoření účtu testovacího prostředí
 Následující kroky ukazují postup vytvoření účtu testovacího prostředí se službou Azure Lab Services pomocí webu Azure Portal. 
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **všechny služby** . V části **DevOps** vyberte **účty testovacího prostředí** . Vyberete-li možnost hvězdička ( `*` ) vedle položky **testovací účty**, přidá se do části **Oblíbené** v nabídce vlevo. Od dalšího okamžiku vyberte **účty testovacího prostředí** v části **Oblíbené**.
 
     ![Všechny služby – účty > Lab](./media/tutorial-setup-lab-account/select-lab-accounts-service.png)
@@ -60,7 +60,7 @@ Následující kroky ukazují postup vytvoření účtu testovacího prostředí
     ![Stránka účtu testovacího prostředí](./media/tutorial-setup-lab-account/lab-account-page.png)
 
 ## <a name="view-lab-accounts"></a>Zobrazit účty testovacího prostředí
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. V nabídce vyberte **všechny prostředky** . 
 3. Vyberte **účty testovacího prostředí** pro daný **typ**. 
     Můžete také filtrovat podle předplatného, skupiny prostředků, umístění a značek. 

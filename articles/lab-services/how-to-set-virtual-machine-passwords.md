@@ -1,14 +1,14 @@
 ---
 title: Nastavte hesla pro virtuální počítače v Azure Lab Services | Microsoft Docs
-description: Naučte se, jak nastavit a resetovat hesla pro virtuální počítače v učebných laboratořích Azure Lab Services.
+description: Naučte se, jak nastavit a resetovat hesla pro virtuální počítače v testovacích prostředích Azure Lab Services.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e24fee26670a664012ec5f0216b0638d6149453f
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 6ae577ee4c0c7e31760e0fb12afeaeac1ef8b7e2
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379685"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434222"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Nastavení a správa fondu virtuálních počítačů 
 V tomto článku se dozvíte, jak provádět následující úlohy:
@@ -102,4 +102,4 @@ Tvůrce testovacího prostředí (Educator) se může připojit k virtuálnímu 
 ## <a name="next-steps"></a>Další kroky
 Další informace o možnostech využití studenta (jako vlastník testovacího prostředí) můžete nakonfigurovat v následujícím článku: [Konfigurace využití studenta](how-to-configure-student-usage.md).
 
-Další informace o tom, jak studenti můžou resetovat hesla pro své virtuální počítače, najdete v tématu [nastavení nebo resetování hesla pro virtuální počítače v učebně Labs (studenti)](how-to-set-virtual-machine-passwords-student.md).
+Další informace o tom, jak studenti můžou resetovat hesla pro své virtuální počítače, najdete v tématu [nastavení nebo resetování hesla pro virtuální počítače v prostředí Labs (studenti)](how-to-set-virtual-machine-passwords-student.md).

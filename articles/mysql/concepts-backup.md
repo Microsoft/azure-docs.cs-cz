@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 4438ceaa7bb4e9c29a05de0481acdad571e3bb64
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 05cc6579d83fe0cd861f3f91b8d44297963f8101
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542333"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433270"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Zálohování a obnovení v Azure Database for MySQL
 
@@ -43,8 +43,6 @@ Zálohování transakčních protokolů probíhá každých pět minut.
 #### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>Servery úložiště pro obecné účely s úložištěm až 16 TB
 
 V podmnožině [oblastí Azure](/azure/mysql/concepts-pricing-tiers#storage)můžou všechny nově zřízené servery podporovat úložiště pro obecné účely až do 16 TB úložišť. Jinými slovy je úložiště s úložištěm až 16 TB výchozím úložištěm pro obecné účely pro všechny [oblasti](concepts-pricing-tiers.md#storage) , kde je podpora podporovaná. Zálohy na těchto 16 TB úložných serverech jsou založené na snímcích. První úplné zálohování snímků je naplánované okamžitě po vytvoření serveru. Tato první úplná záloha snímku se uchová jako základní záloha serveru. Další zálohování snímků je pouze rozdílové.
-
-V podmnožině [oblastí Azure](concepts-pricing-tiers.md#storage)můžou všechny nově zřízené servery podporovat úložiště pro obecné účely až do 16 TB úložišť. Jinými slovy je úložiště s úložištěm až 16 TB výchozím úložištěm pro obecné účely pro všechny [oblasti](concepts-pricing-tiers.md#storage) , kde je podpora podporovaná. Zálohy na těchto 16 TB úložných serverech jsou založené na snímcích. První úplné zálohování snímků je naplánované okamžitě po vytvoření serveru. Tato první úplná záloha snímku se uchová jako základní záloha serveru. Další zálohování snímků je pouze rozdílové.
 
 Rozdílové zálohování snímků se provádí alespoň jednou denně. Rozdílové zálohování snímků se neprovádí podle pevně daného plánu. Rozdílové zálohování snímků probíhá každých 24 hodin, pokud transakční protokol (binlog v MySQL) překračuje 50 GB od poslední rozdílové zálohy. Každý den je možné provést rozdílové zálohování snímků maximálně šestkrát.
 

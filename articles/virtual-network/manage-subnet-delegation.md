@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: d2db8eb5b93d84a5ece182fffbca5870762ee89e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e4f002d038820edf128e3fefb229a0918a8ac55
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84703879"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433506"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Přidání nebo odebrání delegování podsítě
 
@@ -34,14 +34,14 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 V této části vytvoříte virtuální síť a podsíť, které později delegujete na službu Azure.
 
 1. V levé horní části obrazovky vyberte **vytvořit prostředek**  >  **síť**  >  **virtuální síť**.
-1. V nástroji **vytvořit virtuální síť**zadejte nebo vyberte tyto informace:
+1. V nástroji **vytvořit virtuální síť** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Název | Zadejte *MyVirtualNetwork*. |
     | Adresní prostor | Zadejte *10.0.0.0/16*. |
     | Předplatné | Vyberte své předplatné.|
-    | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK**. |
+    | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup* a pak vyberte **OK**. |
     | Umístění | Vyberte **EastUS**.|
     | Název podsítě | Zadejte *mySubnet*. |
     | Podsíť – Rozsah adres | Zadejte *10.0.0.0/24*. |
@@ -60,21 +60,23 @@ V této části delegujete podsíť, kterou jste vytvořili v předchozí část
 
 1. Na panelu hledání na portálu zadejte *myVirtualNetwork*. Jakmile se ve výsledcích hledání zobrazí virtuální síť **myVirtualNetwork**, vyberte ji.
 2. Ve výsledcích hledání vyberte *myVirtualNetwork*.
-3. V části **Nastavení**vyberte **podsítě**a pak vyberte **mySubnet**.
+3. V části **Nastavení** vyberte **podsítě** a pak vyberte **mySubnet**.
 4. Na stránce *mySubnet* vyberte v seznamu **delegování podsítě** ze služeb uvedených v části **delegovat podsíť na službu** (například **Microsoft. DBforPostgreSQL/serversv2**).  
 
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>Odebrání delegování podsítě ze služby Azure
 
 1. Na panelu hledání na portálu zadejte *myVirtualNetwork*. Jakmile se ve výsledcích hledání zobrazí virtuální síť **myVirtualNetwork**, vyberte ji.
 2. Ve výsledcích hledání vyberte *myVirtualNetwork*.
-3. V části **Nastavení**vyberte **podsítě**a pak vyberte **mySubnet**.
+3. V části **Nastavení** vyberte **podsítě** a pak vyberte **mySubnet**.
 4. Na stránce *mySubnet* v seznamu **delegování podsítě** vyberte možnost **žádné** ze služeb uvedených v části **delegovat podsíť na službu**. 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Připravte prostředí pro rozhraní příkazového řádku Azure CLI.
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte použít Azure CLI verze 2.0.28 nebo novější. Pokud chcete najít nainstalovanou verzi, spusťte příkaz `az --version` . Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.28 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 Vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.microsoft.com/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.

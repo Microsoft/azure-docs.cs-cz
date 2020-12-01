@@ -7,15 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: 4125a4493b72fa60203067f3eba1ccebdc820b02
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.custom: azureday1
+ms.openlocfilehash: e07ec17a4e14f0099d82bd444f2ee8d37abe9908
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182967"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434987"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>Kurz: přístup k Microsoft Graph z zabezpečené aplikace jako uživatel
 
@@ -34,7 +35,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Webová aplikace spuštěná v Azure App Service s [povoleným App Servicem ověřováním/autorizačním modulem](scenario-secure-app-authentication-app-service.md).
 
@@ -74,6 +75,8 @@ Uložte nastavení výběrem možnosti **Put**. Toto nastavení může trvat ně
 ## <a name="call-microsoft-graph-net"></a>Volat Microsoft Graph (.NET)
 
 Vaše webová aplikace teď má požadovaná oprávnění a také přidá ID klienta Microsoft Graph do parametrů přihlášení. Pomocí [knihovny Microsoft. identity. Web](https://github.com/AzureAD/microsoft-identity-web/)App Web App získá přístupový token pro ověřování pomocí Microsoft Graph. Ve verzi 1.2.0 a novější se knihovna Microsoft. identity. Web integruje s a může běžet společně s App Service ověřování/autorizací. Microsoft. identity. Web zjistí, že je webová aplikace hostována v App Service a získá přístupový token z modulu ověřování a ověření v App Service. Přístupový token se pak předává spolu s ověřenými žádostmi pomocí rozhraní Microsoft Graph API.
+
+Pokud chcete tento kód zobrazit jako součást ukázkové aplikace, podívejte se na [ukázku v GitHubu](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/2-WebApp-graphapi-on-behalf).
 
 > [!NOTE]
 > Knihovna Microsoft. identity. Web není ve vaší webové aplikaci vyžadována pro základní ověřování/autorizaci nebo pro ověřování požadavků pomocí Microsoft Graph. Je možné [bezpečně volat rozhraní API pro příjem dat](tutorial-auth-aad.md#call-api-securely-from-server-code) pouze s povoleným ověřováním App Service/autorizačním modulem.
