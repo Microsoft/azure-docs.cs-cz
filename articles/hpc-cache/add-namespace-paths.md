@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: a39b6973767b72e69a82750ab8d0d487c733eda0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e525fc0705dffcd4765e6a1f6c5235bdef260fcd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657104"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339672"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>Nastavení agregovaného oboru názvů
 
@@ -83,7 +83,7 @@ Tento seznam uvádí maximální počet cest oboru názvů na jednu konfiguraci.
   * 6 TB cache – 10 cest oboru názvů
   * 23 TB cache – 20 cest oboru názvů
 
-* Propustnost až 5 GB/s:
+* Propustnost až 4 GB/s:
 
   * 6 TB cache – 10 cest oboru názvů
   * 12 TB cache – 10 cest oboru názvů

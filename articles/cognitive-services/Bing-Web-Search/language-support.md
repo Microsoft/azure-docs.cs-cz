@@ -10,19 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: b3ce1fdc0b52db2706f81950fff735cf7f95e52b
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 6de01d2c12454f43a2802b4a7a979b5f74b46f0e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379676"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340267"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Podpora jazyků a oblastí pro rozhraní API Bingu pro vyhledávání na webu
 
 > [!WARNING]
-> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 > Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
-> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Rozhraní API Bingu pro vyhledávání na webu podporuje více než tři desítkové země nebo oblasti, mnoho s více než jedním jazykem. Zadání země nebo oblasti s dotazem vám pomůže Upřesnit výsledky hledání na základě zájmů těchto zemí nebo oblastí. Výsledky můžou zahrnovat odkazy na Bing a tyto odkazy můžou lokalizovat uživatelské prostředí Bingu podle konkrétní země nebo oblasti nebo jazyka.
 
@@ -35,21 +35,21 @@ Alternativně můžete zadat trh s `mkt` parametrem dotazu a kód z tabulky **tr
 |Země|Kód|
 |-------|----|
 |Argentina|AR|
-|Australia|AU|
+|Austrálie|AU|
 |Rakousko|AT|
 |Belgie|BE|
 |Brazílie|BR|
-|Canada|CA|
+|Kanada|CA|
 |Chile|CL|
 |Dánsko|DK|
 |Finsko|FI|
 |Francie|FR|
 |Německo|DE|
 |Hongkong – zvláštní administrativní oblast|HK|
-|India|IN|
+|Indie|IN|
 |Indonésie|ID|
 |Itálie|IT|
-|Japan|JP|
+|Japonsko|JP|
 |Jižní Korea|KR|
 |Malajsie|MY|
 |Mexiko|MX|
@@ -69,30 +69,30 @@ Alternativně můžete zadat trh s `mkt` parametrem dotazu a kód z tabulky **tr
 |Tchaj-wan|TW|
 |Turecko|TR|
 |Spojené království|GB|
-|Česká republika|USA|
+|USA|USA|
 
 ## <a name="markets"></a>Trhy
 
 |Země|Jazyk|Kód trhu|
 |-------|--------|-----------|
 |Argentina|Španělština|ES-AR|
-|Australia|Angličtina|EN-AU|
+|Austrálie|Angličtina|EN-AU|
 |Rakousko|Němčina|de-AT|
 |Belgie|Nizozemština|NL|
 |Belgie|Francouzština|fr – bude|
 |Brazílie|Portugalština|pt-BR|
-|Canada|Angličtina|en-CA|
-|Canada|Francouzština|fr – CA|
+|Kanada|Angličtina|en-CA|
+|Kanada|Francouzština|fr – CA|
 |Chile|Španělština|ES-CL|
 |Dánsko|Dánština|da-DK|
 |Finsko|Finština|fi-FI|
 |Francie|Francouzština|fr-FR|
 |Německo|Němčina|de-DE|
 |Hongkong – zvláštní administrativní oblast|Tradiční čínština|zh – HK|
-|India|Angličtina|en-IN|
+|Indie|Angličtina|en-IN|
 |Indonésie|Angličtina|EN-ID|
 |Itálie|Italština|it-IT|
-|Japan|Japonština|ja-JP|
+|Japonsko|Japonština|ja-JP|
 |Jižní Korea|Korejština|ko-KR|
 |Malajsie|Angličtina|EN – MY|
 |Mexiko|Španělština|ES – MX|
@@ -113,8 +113,8 @@ Alternativně můžete zadat trh s `mkt` parametrem dotazu a kód z tabulky **tr
 |Tchaj-wan|Tradiční čínština|zh-TW|
 |Turecko|Turečtina|tr-TR|
 |Spojené království|Angličtina|en-GB|
-|Česká republika|Angličtina|en-US|
-|Česká republika|Španělština|ES – US|
+|USA|Angličtina|en-US|
+|USA|Španělština|ES – US|
 
 ## <a name="next-steps"></a>Další kroky
 

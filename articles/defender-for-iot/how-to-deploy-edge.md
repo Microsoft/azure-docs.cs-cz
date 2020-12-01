@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: dd68fd79d25e839876180ff25cacfa1ddf64eb2b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 75a9d1267a8824801e3c24fc25c687f29a808187
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368804"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339927"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Nasazení modulu zabezpečení na zařízení IoT Edge
 
@@ -32,9 +32,9 @@ V tomto článku se dozvíte, jak nasadit modul zabezpečení na zařízení IoT
 
 Pomocí následujících kroků nasaďte modul zabezpečení Defender for IoT pro IoT Edge.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
-1. V IoT Hub se ujistěte, že je zařízení [registrované jako IoT Edge zařízení](https://docs.microsoft.com/azure/iot-edge/how-to-manual-provision-symmetric-key#register-a-new-device).
+1. V IoT Hub se ujistěte, že je zařízení [registrované jako IoT Edge zařízení](../iot-edge/how-to-manual-provision-symmetric-key.md#register-a-new-device).
 
 1. Defender pro IoT Edge modul vyžaduje, aby se na zařízení IoT Edge nainstalovala [auditovaná architektura](https://linux.die.net/man/8/auditd) .
 
@@ -57,7 +57,7 @@ Pomocí následujících kroků nasaďte modul zabezpečení Defender for IoT pr
 
 1. Kliknutím na **vytvořit** nakonfigurujete nasazení.
 
-1. Zvolte **předplatné** Azure vašeho IoT Hub a pak vyberte svoji **IoT Hub**.<br>Vyberte **nasadit do zařízení** pro zaměření na jedno zařízení, nebo vyberte **nasadit ve velkém měřítku** , abyste mohli cílit na více zařízení, a klikněte na **vytvořit**. Další informace o nasazení ve velkém měřítku najdete v tématu [nasazení](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor).
+1. Zvolte **předplatné** Azure vašeho IoT Hub a pak vyberte svoji **IoT Hub**.<br>Vyberte **nasadit do zařízení** pro zaměření na jedno zařízení, nebo vyberte **nasadit ve velkém měřítku** , abyste mohli cílit na více zařízení, a klikněte na **vytvořit**. Další informace o nasazení ve velkém měřítku najdete v tématu [nasazení](../iot-edge/how-to-deploy-at-scale.md).
 
     >[!Note]
     >Pokud jste vybrali možnost **nasadit ve škálování**, před pokračováním na kartu **přidat moduly** v následujících pokynech přidejte název a podrobnosti o zařízení.
@@ -105,14 +105,14 @@ Dokončete každý krok, abyste dokončili nasazení IoT Edge pro Defender pro I
      }
    ```
     
-   Další informace o konfiguraci agenta najdete v tématu [Konfigurace agentů zabezpečení](https://docs.microsoft.com/azure/defender-for-iot/how-to-agent-configuration).
+   Další informace o konfiguraci agenta najdete v tématu [Konfigurace agentů zabezpečení](./how-to-agent-configuration.md).
 
 1. Vyberte **Aktualizovat**.
 
 #### <a name="step-2-runtime-settings"></a>Krok 2: nastavení modulu runtime
 
 1. Vyberte **nastavení modulu runtime**.
-1. V části **hraniční centrum**změňte **Obrázek** na **MCR.Microsoft.com/azureiotedge-hub:1.0.8.3**.
+1. V části **hraniční centrum** změňte **Obrázek** na **MCR.Microsoft.com/azureiotedge-hub:1.0.8.3**.
 1. Ověřte, že **Možnosti vytváření** jsou nastavené na následující konfiguraci:
 
     ``` json
@@ -175,7 +175,7 @@ Pokud narazíte na problém, je nejlepším způsobem, jak se dozvědět o stavu
 
 1. Ověřte, zda jsou spuštěny následující kontejnery:
 
-   | Name | OBRÁZEK |
+   | Název | OBRÁZEK |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |

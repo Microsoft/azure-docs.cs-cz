@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 07/28/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 0b0e198075455f697c87ad48741a770e6f78b5a5
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: a42b07254deaf19d253f7523631018bfe7166a57
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542146"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339587"
 ---
 # <a name="azure-dedicated-hosts"></a>Vyhrazení hostitelé Azure
 
@@ -165,6 +165,8 @@ Pro hostitele je definována SKU, která představuje řadu a typ velikosti virt
 
 Typy velikosti a hardwaru se v jednotlivých oblastech liší. Další informace najdete na [stránce s cenami](https://aka.ms/ADHPricing) hostitele.
 
+> [!NOTE]
+> Jakmile je vyhrazený hostitel zřídit, nemůžete změnit velikost nebo typ. Pokud potřebujete jinou velikost typu, budete muset vytvořit nového hostitele.  
 
 ## <a name="host-life-cycle"></a>Životní cyklus hostitele
 

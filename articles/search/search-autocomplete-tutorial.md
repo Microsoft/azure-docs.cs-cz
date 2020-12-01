@@ -1,5 +1,5 @@
 ---
-title: Přidání automatického dokončování a návrhů do vyhledávacího pole
+title: Přidání automatického dokončování do vyhledávacího pole
 titleSuffix: Azure Cognitive Search
 description: Povolte v Azure Kognitivní hledání akce dotazování typu hledání jako, které umožňují navrhovat a formulují žádosti, které automaticky vyplní vyhledávací pole s dokončenými podmínkami nebo frázemi. Můžete také vrátit navrhované shody.
 manager: nitinme
@@ -9,14 +9,14 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 5b498b8f49f2f0636b010e3c4d86f13ad44ac090
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 25c87971455ed3c5f59c92748794720d61e599e3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029009"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339604"
 ---
-# <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Přidání automatického dokončování a návrhů do klientských aplikací
+# <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Přidání automatického dokončování a návrhů do klientských aplikací s využitím Azure Kognitivní hledání
 
 Hledání jako typ je běžná technika pro zlepšení produktivity dotazů inicializovaných uživatelem. V Azure Kognitivní hledání se toto prostředí podporuje prostřednictvím *automatického dokončování*, které dokončuje termín nebo frázi na základě částečného vstupu ("mikro" s "Microsoft"). Druhý uživatel je *návrhem* nebo krátký seznam odpovídajících dokumentů (s ID, který vrací názvy knih s ID, takže můžete propojit stránku s podrobnostmi o dané knize). Automatické dokončování i návrhy jsou u shody v indexu predikátem. Služba nebude nabízet dotazy, které vracejí žádné výsledky.
 

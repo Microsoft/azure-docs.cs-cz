@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 779b29c8d31dffa495926a7f2ca5e1f77870078c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4b9b73e30094ed7d07e19f4b93f2fe8ab8f6af3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319907"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339417"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Rozhraní API koncového bodu služby Azure AD Connect Sync v2 (Public Preview) 
 Společnost Microsoft nasadila nový koncový bod (rozhraní API) pro Azure AD Connect, který vylepšuje výkon operací synchronizační služby Azure Active Directory. Díky použití nového koncového bodu v2 budete mít při exportu a importu do Azure AD patrné zvýšení výkonu. Tento nový koncový bod podporuje následující:
@@ -54,7 +54,7 @@ Následující postup vás provede nasazením koncového bodu v2 pomocí metody 
 2. Po dokončení ověření přepněte **Server v2** tak, aby byl aktivním serverem a **Server v1** jako pracovní server. V tuto chvíli budou velké skupiny, které jsou v oboru, které se mají synchronizovat, zřízené ve službě Azure AD a velké Microsoft 365 sjednocené skupiny se zřídí ve službě AD, pokud je povolen zpětný zápis skupiny.
 3. Ověřte, že **Server v2** provádí a úspěšně zpracovává velké skupiny. V tomto kroku se můžete rozhodnout, že v tomto kroku budete sledovat proces synchronizace za určitou dobu.
   >[!NOTE]
-  > Pokud potřebujete přejít zpátky k předchozí konfiguraci, můžete provést migraci z **verze V2** na **Server v1**zpátky. Vzhledem k tomu, že koncový bod v1 nepodporuje skupiny s více než 50 tis členy, bude následně odstraněna jakákoli velká skupina, která byla zřízena Azure AD Connect v Azure AD nebo v Prem AD. 
+  > Pokud potřebujete přejít zpátky k předchozí konfiguraci, můžete provést migraci z **verze V2** na **Server v1** zpátky. Vzhledem k tomu, že koncový bod v1 nepodporuje skupiny s více než 50 tis členy, bude následně odstraněna jakákoli velká skupina, která byla zřízena Azure AD Connect v Azure AD nebo v Prem AD. 
 4. Jakmile budete mít jistotu, že používáte koncový bod v2, upgradujte **Server v1** a začněte používat koncový bod v2. 
  
 
@@ -155,7 +155,7 @@ Během následného nárůstu na omezení počtu členů skupiny v pravidle **pr
 >[!NOTE]
 > Pokud máte Microsoft 365 sjednocené skupiny, které mají více než 50 tis členové, budou se skupiny číst do Azure AD Connect a pokud je povolen zpětný zápis skupiny, budou zapsány do místní služby AD. 
 
-## <a name="rollback"></a>Návrat 
+## <a name="rollback"></a>Vrácení zpět 
 Pokud jste povolili koncový bod v2 a potřebujete provést vrácení zpět, postupujte takto: 
 
 1. Na serveru Azure AD Connect: a. Volitelné Pořídit zálohu databáze 

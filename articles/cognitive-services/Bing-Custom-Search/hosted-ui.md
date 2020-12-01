@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: d5caa9b4168307bb27022b59415e43b37f30bf67
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: ca3f9da681c60608b5b196b17191f0b4d549f305
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94367382"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338363"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Konfigurace prostředí pro hostované uživatelské rozhraní
 
 > [!WARNING]
-> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 > Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
-> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Vlastní vyhledávání Bingu poskytuje hostované uživatelské rozhraní, které můžete snadno integrovat do webových stránek a webových aplikací jako fragment kódu JavaScriptu. Pomocí portálu Vlastní vyhledávání Bingu můžete nakonfigurovat možnosti rozložení, barvy a hledání uživatelského rozhraní.
 
@@ -105,7 +105,7 @@ Chování hostovaného uživatelského rozhraní můžete nakonfigurovat kliknut
 - Webové výsledky na stránce: počet výsledků hledání na webu, které se mají zobrazit v čase (maximální počet je 50 výsledků na stránku).
 - Titulek obrázku: Určuje, zda jsou obrázky zobrazeny s výsledky hledání.
 
-Pokud kliknete na **Zobrazit pokročilé konfigurace** , zobrazí se následující konfigurace:
+Pokud kliknete na **Zobrazit pokročilé konfigurace**, zobrazí se následující konfigurace:
 
 - Zvýrazňovat slova: Určuje, zda jsou zobrazeny výsledky s vyhledávanými výrazy tučným písmem.
 - Cíl propojení: Určuje, zda se webová stránka otevře na nové kartě prohlížeče (prázdné) nebo na stejné kartě prohlížeče (samo), když uživatel klikne na výsledek hledání.
@@ -115,7 +115,7 @@ Pokud kliknete na **Zobrazit pokročilé konfigurace** , zobrazí se následují
 - Povolené výsledky obrázků: Určuje, zda je povoleno vyhledávání obrázků (v horní části stránky se zobrazí karta obrázky).
 - Výsledky obrázků na stránce: počet výsledků hledání obrázků, které se mají zobrazit v čase (maximální počet je 150 výsledků na stránku).
 
-Pokud kliknete na **Zobrazit pokročilé konfigurace** , zobrazí se následující konfigurace.  
+Pokud kliknete na **Zobrazit pokročilé konfigurace**, zobrazí se následující konfigurace.  
   
 - Povolit filtry: přidá filtry, které může uživatel použít k filtrování imagí, které Bing vrátí. Uživatel může například filtrovat výsledky pouze pro animované soubory GIF.
 
@@ -124,7 +124,7 @@ Pokud kliknete na **Zobrazit pokročilé konfigurace** , zobrazí se následují
 - Povolené výsledky videa: Určuje, jestli je povolené vyhledávání videí (v horní části stránky se zobrazí karta videa).
 - Výsledky videa na stránce: počet výsledků hledání videí, které se mají zobrazit v čase (maximální počet je 150 výsledků na stránku).
 
-Pokud kliknete na **Zobrazit pokročilé konfigurace** , zobrazí se následující konfigurace.  
+Pokud kliknete na **Zobrazit pokročilé konfigurace**, zobrazí se následující konfigurace.  
   
 - Povolit filtry: přidá filtry, které může uživatel použít k filtrování videí, které Bing vrátí. Uživatel může například filtrovat výsledky videí pomocí konkrétního řešení nebo videí zjištěných za posledních 24 hodin.
 
@@ -133,7 +133,7 @@ Pokud kliknete na **Zobrazit pokročilé konfigurace** , zobrazí se následují
 - Nadpis stránky: text zobrazený v oblasti nadpisu stránky výsledků hledání (ne pro rozložení překryvných oken).
 - Motiv panelu nástrojů: Určuje barvu pozadí oblasti nadpisu stránky výsledků hledání.
 
-Pokud kliknete na **Zobrazit pokročilé konfigurace** , zobrazí se následující konfigurace.  
+Pokud kliknete na **Zobrazit pokročilé konfigurace**, zobrazí se následující konfigurace.  
 
 |Sloupec1  |Sloupec2  |
 |---------|---------|

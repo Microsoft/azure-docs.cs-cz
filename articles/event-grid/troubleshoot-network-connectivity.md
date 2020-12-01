@@ -5,12 +5,12 @@ author: batrived
 ms.topic: article
 ms.date: 06/21/2020
 ms.author: batrived
-ms.openlocfilehash: 7b93d7a110889192bb5be6fffa56a73758d6faa2
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: fa119784715b8c88ef3c9f2700b2cac1cc467234
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892311"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339741"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>Řešení potíží s připojením – Azure Event Grid
 
@@ -50,7 +50,7 @@ telnet {sampletopicname}.{region}-{suffix}.eventgrid.azure.net 443
 
 Když pracujete s Azure, někdy je potřeba, abyste v podnikové bráně firewall nebo proxy povolili konkrétní rozsahy IP adres nebo adresy URL pro přístup ke všem službám Azure, které používáte nebo se pokoušíte použít. Ověřte, jestli je povolený provoz na IP adresách, které používá Event Grid. Pro IP adresy, které používá Azure Event Grid: Přečtěte si téma [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519) a [značka služby – AzureEventGrid](network-security.md#service-tags).
 
-V dokumentu [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519) uvádí také IP adresy **podle oblasti** . Rozsahy adres pro **oblast tématu** a **spárované oblasti** ve vaší podnikové bráně firewall nebo proxy serveru můžete použít. V případě spárované oblasti pro oblast si přečtěte téma [provozní kontinuita a zotavení po havárii (BCDR): spárované oblasti Azure](/azure/best-practices-availability-paired-regions). 
+V dokumentu [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519) uvádí také IP adresy **podle oblasti**. Rozsahy adres pro **oblast tématu** a **spárované oblasti** ve vaší podnikové bráně firewall nebo proxy serveru můžete použít. V případě spárované oblasti pro oblast si přečtěte téma [provozní kontinuita a zotavení po havárii (BCDR): spárované oblasti Azure](../best-practices-availability-paired-regions.md). 
 
 > [!NOTE]
 > Do značky služby AzureEventGrid se přidaly nové IP adresy, i když to není obvyklé. Proto je vhodné provést týdenní kontrolu značek služeb.

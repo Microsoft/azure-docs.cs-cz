@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 12f65d0e7f9c380f77fe4189d26fdeafd426295b
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: c5c0f74ed8a5688b20eea4e74f747d3ff6dd0e63
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090790"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339995"
 ---
 # <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel-preview"></a>Připojte data z Defenderu pro IoT do Azure Sentinel (Preview).
 
@@ -26,7 +26,7 @@ Datový konektor Azure Defender pro IoT v Azure Sentinel je momentálně ve verz
 V této příručce se dozvíte, jak připojit Defender pro data IoT do Azure Sentinel.
 
 > [!div class="checklist"]
-> * Předpoklady
+> * Požadavky
 > * Nastavení připojení
 > * Zobrazení výstrah Log Analytics
 
@@ -34,7 +34,7 @@ Připojte výstrahy z Defenderu pro IoT a Streamujte je přímo do Azure Sentine
 
 Díky většímu začlenění Azure Defenderu pro IoT pomocí Azure Sentinel, prvního cloudového SIEMu a první SIEM s nativním IoT a zabezpečením poskytuje Microsoft jednodušší přístup k sjednocenému zabezpečení napříč IT a průmyslovými sítěmi. V kombinaci se strojovým učením s bránou Azure Sentinel umožňuje tato integrace organizacím rychle detekovat útoky s více fázemi, které jsou často mezi sebou i hranicemi. Kromě toho vám Azure Defender pro integraci IoT s možnostmi orchestrace, automatizace a reakce na zabezpečení Azure Sentinel umožňuje automatizovanou reakci a prevenci pomocí integrovaných playbooky s podporou pro společnosti. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít oprávnění **ke čtení** a **zápisu** v pracovním prostoru.
 - V příslušném IoT Hub musí být **povolený** **Defender pro IoT** .
@@ -46,9 +46,9 @@ Díky většímu začlenění Azure Defenderu pro IoT pomocí Azure Sentinel, pr
 
 1. V Azure Sentinel vyberte **datové konektory** a potom klikněte na dlaždici **Defender for IoT** .
 1. V dolní části pravého podokna klikněte na tlačítko **otevřít stránku konektoru**.
-1. Klikněte na **připojit**a vedle každého předplatného IoT Hub, jejichž výstrahy a výstrahy zařízení chcete streamovat do Azure Sentinel.
+1. Klikněte na **připojit** a vedle každého předplatného IoT Hub, jejichž výstrahy a výstrahy zařízení chcete streamovat do Azure Sentinel.
     - Pokud není Defender pro IoT v tomto centru povolený, zobrazí se zpráva s upozorněním na povolení. Kliknutím na odkaz **Povolit** spusťte službu a povolte ji.
-1. Můžete rozhodnout, jestli chcete, aby upozornění z programu Defender pro IoT automaticky generovala incidenty v Azure Sentinel. V části **vytvořit incidenty**vyberte **Povolit** , pokud chcete, aby pravidlo automaticky vytvořilo incidenty z generovaných výstrah.  Toto pravidlo se dá změnit nebo upravit v části **Analýza**  >  **aktivní** pravidla.
+1. Můžete rozhodnout, jestli chcete, aby upozornění z programu Defender pro IoT automaticky generovala incidenty v Azure Sentinel. V části **vytvořit incidenty** vyberte **Povolit** , pokud chcete, aby pravidlo automaticky vytvořilo incidenty z generovaných výstrah.  Toto pravidlo se dá změnit nebo upravit v části **Analýza**  >  **aktivní** pravidla.
 
 > [!NOTE]
 >Po provedení změn připojení může aktualizace seznamu centra trvat 10 sekund nebo déle.
@@ -72,6 +72,6 @@ Po připojení IoT Hub jsou data centra k dispozici v Azure Sentinel přibližn�
 
 V tomto dokumentu jste zjistili, jak připojit Defender pro IoT k Azure Sentinel. Další informace o detekci hrozeb a přístupu k datům zabezpečení najdete v následujících článcích:
 
-- Naučte se, jak pomocí funkce Azure Sentinel [získat přehled o vašich datech a potenciálních hrozbách](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility).
+- Naučte se, jak pomocí funkce Azure Sentinel [získat přehled o vašich datech a potenciálních hrozbách](../sentinel/quickstart-get-visibility.md).
 
 - Informace o [přístupu k datům zabezpečení IoT](how-to-security-data-access.md)

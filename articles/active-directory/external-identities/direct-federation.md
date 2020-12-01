@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb0223b338457ad5eeea0b0bb40593f57a0d3aa
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a23056445331c82aded878a77d1e0e730e4e2ceb
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442078"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339468"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Přímá federace pomocí AD FS a poskytovatelů třetích stran pro uživatele typu Host (Preview)
 
@@ -45,7 +45,7 @@ Pomocí přímé federace se uživatelé typu Host přihlásí k vašemu tenanto
 ## <a name="limitations"></a>Omezení
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>Domény ověřené DNS v Azure AD
-Doména, kterou chcete federovat s **, nesmí být**ve službě Azure AD ověřená DNS. Máte možnost nastavit přímou federaci s nespravovanými (e-mailem nebo "virovými") klienty Azure AD, protože nejsou ověřené DNS.
+Doména, kterou chcete federovat s **, nesmí být** ve službě Azure AD ověřená DNS. Máte možnost nastavit přímou federaci s nespravovanými (e-mailem nebo "virovými") klienty Azure AD, protože nejsou ověřené DNS.
 
 ### <a name="authentication-url"></a>Adresa URL pro ověření
 Přímá federace je povolená jenom pro zásady, ve kterých se doména URL ověřování shoduje s cílovou doménou, nebo kde adresa URL ověřování je jedním z těchto povolených zprostředkovatelů identity (Tento seznam se může změnit):
@@ -150,7 +150,7 @@ Dále nakonfigurujete federaci s poskytovatelem identity nakonfigurovaným v kro
 
     ![Snímek obrazovky zobrazující tlačítko pro přidání nového SAML nebo WS-Fed IdP](media/direct-federation/new-saml-wsfed-idp.png)
 
-4. Na **nové stránce IDP s podporou SAML/WS** vyberte v části **protokol poskytovatele identity**možnost **SAML** nebo **WS**.
+4. Na **nové stránce IDP s podporou SAML/WS** vyberte v části **protokol poskytovatele identity** možnost **SAML** nebo **WS**.
 
     ![Snímek obrazovky zobrazující tlačítko pro analýzu na stránce SAML nebo WS-Fed IdP](media/direct-federation/new-saml-wsfed-idp-parse.png)
 
@@ -195,7 +195,7 @@ Nyní otestujte nastavení přímé federace pozváním nového uživatele typu 
 1. Přejděte na web [Azure Portal](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**. 
 2. Vyberte **externí identity**.
 3. Vybrat **všechny zprostředkovatele identity**
-4. V části **Zprostředkovatelé identit SAML/WS**vyberte poskytovatele.
+4. V části **Zprostředkovatelé identit SAML/WS** vyberte poskytovatele.
 5. V podokně podrobností zprostředkovatele identity aktualizujte hodnoty.
 6. Vyberte **Uložit**.
 

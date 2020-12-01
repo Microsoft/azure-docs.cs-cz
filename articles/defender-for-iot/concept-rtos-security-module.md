@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 9f816b35fd79d3f158ea12fd2c7e1d811823dc8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f521bd593369509fd520831f90ce9c601227f09
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936279"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340046"
 ---
 # <a name="security-module-for-azure-rtos-preview"></a>Modul zabezpečení pro Azure RTO (Preview)
 
@@ -32,7 +32,7 @@ Modul zabezpečení pro Azure RTO běží na pozadí a poskytuje bezproblémové
 
 ## <a name="azure-rtos-netx-duo"></a>Azure RTOS NetX Duo
 
-Azure RTO NetX Duo je Pokročilá sada protokolů TCP/IP v průmyslové úrovni navržená speciálně pro bohaté aplikace v reálném čase i v aplikacích IoT. Azure RTO NetX Duo je duální síťový zásobník IPv4 a IPv6 poskytující bohatou sadu protokolů, včetně zabezpečení a cloudu. Přečtěte si další informace o řešeních [Azure RTO NetX Duo](https://aka.ms/netxduo) .
+Azure RTO NetX Duo je Pokročilá sada protokolů TCP/IP v průmyslové úrovni navržená speciálně pro bohaté aplikace v reálném čase i v aplikacích IoT. Azure RTO NetX Duo je duální síťový zásobník IPv4 a IPv6 poskytující bohatou sadu protokolů, včetně zabezpečení a cloudu. Přečtěte si další informace o řešeních [Azure RTO NetX Duo](/azure/rtos/netx-duo/) .
 
 Modul nabízí následující funkce:
 
@@ -47,11 +47,11 @@ Modul zabezpečení pro Azure RTO je inicializován platformou middleware Azure 
 :::image type="content" source="media/architecture/security-module-state-diagram.png" alt-text="Diagram stavu modulu zabezpečení Azure IoT a tok informací":::
 
 Modul zabezpečení pro Azure RTO sleduje následující aktivitu a informace o zařízení pomocí tří sběračů:
-- Síťová aktivita zařízení **TCP**, **UDP**a **ICM**
+- Síťová aktivita zařízení **TCP**, **UDP** a **ICM**
 - Systémové informace jako **Threadx** a **NetX verze Duo**
 - Události prezenčního signálu
 
-Každá kolekce je propojená se skupinou priorit a každá skupina priorit má svůj vlastní interval s možnými hodnotami **Nízká**, **střední**a **Vysoká**. Intervaly ovlivňují časový interval, ve kterém se data shromažďují a odesílají.
+Každá kolekce je propojená se skupinou priorit a každá skupina priorit má svůj vlastní interval s možnými hodnotami **Nízká**, **střední** a **Vysoká**. Intervaly ovlivňují časový interval, ve kterém se data shromažďují a odesílají.
 
 Každý časový interval se dá nakonfigurovat a konektory IoT můžou být povolené a zakázané, aby bylo možné ještě víc [přizpůsobit vaše řešení](how-to-azure-rtos-security-module.md). 
 
@@ -68,4 +68,3 @@ Modul zabezpečení pro Azure RTO je k dispozici jako bezplatné stažení pro v
 - Začínáme s modulem zabezpečení pro [požadavky a nastavení](quickstart-azure-rtos-security-module.md)Azure RTO
 - Další informace o modulu zabezpečení pro [výstrahy zabezpečení Azure RTO a doporučení pro podporu](concept-rtos-security-alerts-recommendations.md). 
 - Použijte modul zabezpečení pro [referenční rozhraní API](azure-rtos-security-module-api.md)služby Azure RTO.
-

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 8e18b79cc14fe98879ec97361f6e275d8fd918bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2634ed819b8818632c58b9e471b0f26190e5f16b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936870"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339961"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Výběr a nasazení agenta zabezpečení na zařízení IoT
 
@@ -44,16 +44,16 @@ Agent zabezpečení založený na jazyce C má nižší nároky na paměť a je 
 | --- | ----------- | --------- |
 | **Open source** | K dispozici v rámci [licence MIT](https://en.wikipedia.org/wiki/MIT_License) na [GitHubu](https://aka.ms/iot-security-github-c) | K dispozici v rámci [licence MIT](https://en.wikipedia.org/wiki/MIT_License) na [GitHubu](https://aka.ms/iot-security-github-cs) |
 | **Vývojový jazyk**    | C | C# |
-| **Podporované platformy Windows?** | No | Yes |
-| **Požadavky Windows** | --- | [Rozhraní WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
+| **Podporované platformy Windows?** | Ne | Ano |
+| **Požadavky Windows** | --- | [Rozhraní WMI](/windows/desktop/wmisdk/) |
 | **Podporované platformy Linux?** | Ano, x64 a x86 | Ano, pouze x64 |
 | **Předpoklady pro Linux** | libunwind8, libcurl3, UUID – modul runtime, audit, audispd – moduly plug-in | libunwind8, libcurl3, UUID-runtime, audited, audispd-plugins, sudo, netstat, softwaru iptables |
 | **Nároky na disk** | 10,5 MB | 90 MB |
 | **Nároky na paměť (v průměru)** | 5,5 MB | 33 MB |
-| **[Ověřování](concept-security-agent-authentication-methods.md) pro IoT Hub** | Yes | Yes |
-| **[Shromažďování](how-to-agent-configuration.md#supported-security-events) dat zabezpečení** | Yes | Yes |
-| **Agregace událostí** | Yes | Yes |
-| **Vzdálená konfigurace prostřednictvím [modulu zabezpečení je dvojitá](concept-security-module.md) .** | Yes | Yes |
+| **[Ověřování](concept-security-agent-authentication-methods.md) pro IoT Hub** | Ano | Ano |
+| **[Shromažďování](how-to-agent-configuration.md#supported-security-events) dat zabezpečení** | Ano | Ano |
+| **Agregace událostí** | Ano | Ano |
+| **Vzdálená konfigurace prostřednictvím [modulu zabezpečení je dvojitá](concept-security-module.md) .** | Ano | Ano |
 
 ## <a name="security-agent-installation-guidelines"></a>Pokyny k instalaci agenta zabezpečení
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 888fdbb2352c4ac972eac8b24c29d22ce973e04d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3fe3e910134080f6620023f539913454670d093
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936367"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339910"
 ---
 # <a name="get-started-with-azure-defender-for-iot-device-security-agents"></a>Začínáme se službou Azure Defender pro agenty zabezpečení zařízení IoT
 
@@ -31,9 +31,9 @@ Agenti zabezpečení služby IoT pro IoT zpracovávají nezpracované shromažď
 K nasazení a otestování programu Defender pro agenty zabezpečení IoT použijte následující pracovní postup:
 
 1. [Povolit Defender pro službu IoT na IoT Hub](quickstart-onboard-iot-hub.md)
-1. Pokud IoT Hub nemá žádná registrovaná zařízení, [Zaregistrujte nové zařízení](https://docs.microsoft.com/azure/iot-accelerators/quickstart-device-simulation-deploy).
+1. Pokud IoT Hub nemá žádná registrovaná zařízení, [Zaregistrujte nové zařízení](../iot-accelerators/quickstart-device-simulation-deploy.md).
 1. [Vytvořte modul zabezpečení azureiotsecurity](quickstart-create-security-twin.md) pro vaše zařízení.
-1. Pokud chcete nainstalovat agenta na simulovaném zařízení Azure místo instalace na skutečném zařízení, [vystavte si nový virtuální počítač Azure (VM)](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) v dostupné zóně.
+1. Pokud chcete nainstalovat agenta na simulovaném zařízení Azure místo instalace na skutečném zařízení, [vystavte si nový virtuální počítač Azure (VM)](../virtual-machines/linux/quick-create-portal.md) v dostupné zóně.
 1. Nasaďte do svého zařízení IoT nebo nového virtuálního počítače [agenta zabezpečení pro IoT for IoT](how-to-deploy-linux-cs.md) .
 1. Postupujte podle pokynů [trigger_events](https://aka.ms/iot-security-github-trigger-events) a spusťte simulaci neškodných útoků.
 1. Ověřte Defender pro výstrahy IoT v reakci na simulovaný útok v předchozím kroku. Po spuštění skriptu spusťte ověření 5 minut.

@@ -10,19 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: e8747b822916ba2c9ef7b45cc3cbbaa88d16dcb1
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: b2d4eb75002474bbec57753bbf0255cc4c2b4a16
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565785"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338635"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Konfigurace prostředí Vlastní vyhledávání Bingu
 
 > [!WARNING]
-> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 > Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
-> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Vlastní instance vyhledávání umožňuje přizpůsobit možnosti vyhledávání tak, aby zahrnovaly obsah jenom z webů, o kterých se uživatelé setkávají. Místo provádění vyhledávání v rámci webu Bing vyhledává pouze řezy webu, které vás zajímají. Pokud chcete vytvořit vlastní zobrazení webu, použijte [portál](https://www.customsearch.ai) Vlastní vyhledávání Bingu.
 
@@ -89,7 +89,7 @@ Můžete testovat instanci hledání pomocí podokna náhledu na pravé straně 
 
 1. Pod vyhledávacím polem vyberte **Moje instance**. Výsledky hledání můžete porovnat s vyhledáváním v Bingu tak, že vyberete **Bing**. 
 2. Vyberte zabezpečený filtr hledání, který bude na trhu Hledat (viz [parametry dotazu](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
-3. Zadejte dotaz a stisknutím klávesy ENTER nebo kliknutím na ikonu hledání zobrazte výsledky z aktuální konfigurace. Můžete změnit typ hledání, který provedete kliknutím na **Web** , **Obrázek** nebo **video** , abyste získali odpovídající výsledky. 
+3. Zadejte dotaz a stisknutím klávesy ENTER nebo kliknutím na ikonu hledání zobrazte výsledky z aktuální konfigurace. Můžete změnit typ hledání, který provedete kliknutím na **Web**, **Obrázek** nebo **video** , abyste získali odpovídající výsledky. 
 
 <a name="adjustrank"></a>
 

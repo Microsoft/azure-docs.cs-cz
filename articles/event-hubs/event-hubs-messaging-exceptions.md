@@ -3,12 +3,12 @@ title: Azure Event Hubs – výjimky (starší verze)
 description: Tento článek poskytuje seznam výjimek zasílání zpráv Azure Event Hubs a navrhovaných akcí.
 ms.topic: article
 ms.date: 11/02/2020
-ms.openlocfilehash: adaf7242530727a1f77a9662110a43341e57e80a
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 357a87c53023962dd9195a616bd9ce9e01c55bf9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289330"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340963"
 ---
 # <a name="event-hubs-messaging-exceptions---net-legacy"></a>Výjimky zasílání zpráv Event Hubs – .NET (starší verze)
 V této části jsou uvedeny výjimky rozhraní .NET generované rozhraním API .NET Framework. 
@@ -70,7 +70,7 @@ V následující tabulce jsou uvedeny typy výjimek zasílání zpráv a jejich 
 | [Microsoft. ServiceBus. Messaging MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception) <br /><br/> [Microsoft. Azure. EventHubs MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception) | Entita přidružená k operaci neexistuje nebo byla odstraněna. | Ujistěte se, že entita existuje. | Nemůžete to zkusit znovu. |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) | Klient nemůže navázat připojení k centru událostí. |Ujistěte se, že je zadaný název hostitele správný a že je hostitel dosažitelný. | Zkuste to znovu, pokud dojde k problémům s přerušovaným připojením. |
 | [Microsoft. ServiceBus. Messaging výjimka serverbusyexception](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) <br /> <br/>[Microsoft. Azure. EventHubs výjimka serverbusyexception](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) | Služba v tuto chvíli nemůže zpracovat požadavek. | Klient může na určitou dobu počkat a pak operaci zopakovat. <br /> Viz [výjimka serverbusyexception](#serverbusyexception). | Klient může po určitém intervalu opakovat pokus. Pokud výsledkem opakování dojde k jiné výjimce, ověřte chování této výjimky znovu. |
-| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) | Obecná výjimka zasílání zpráv, která může být vyvolána v následujících případech: pokus o vytvoření [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) pomocí názvu nebo cesty, která patří k jinému typu entity (například téma). Byl proveden pokus o odeslání zprávy větší než 1 MB. U serveru nebo služby došlo k chybě během zpracování žádosti. Podrobnosti najdete ve zprávě výjimky. Tato výjimka je obvykle přechodný výjimkou. | Zkontrolujte kód a zajistěte, aby se pro tělo zprávy používaly pouze serializovatelné objekty (nebo použijte vlastní serializátor). Vyhledejte v dokumentaci podporované typy hodnot vlastností a používejte pouze podporované typy. Ověřte vlastnost- [přechodný](/dotnet/api/microsoft.servicebus.messaging.messagingexception) . Pokud má **hodnotu true** , můžete operaci zopakovat. | Chování při opakování není definované a nemusí pomáhat. |
+| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) | Obecná výjimka zasílání zpráv, která může být vyvolána v následujících případech: pokus o vytvoření [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) pomocí názvu nebo cesty, která patří k jinému typu entity (například téma). Byl proveden pokus o odeslání zprávy větší než 1 MB. U serveru nebo služby došlo k chybě během zpracování žádosti. Podrobnosti najdete ve zprávě výjimky. Tato výjimka je obvykle přechodný výjimkou. | Zkontrolujte kód a zajistěte, aby se pro tělo zprávy používaly pouze serializovatelné objekty (nebo použijte vlastní serializátor). Vyhledejte v dokumentaci podporované typy hodnot vlastností a používejte pouze podporované typy. Ověřte vlastnost- [přechodný](/dotnet/api/microsoft.servicebus.messaging.messagingexception) . Pokud má **hodnotu true**, můžete operaci zopakovat. | Chování při opakování není definované a nemusí pomáhat. |
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) | Pokusí se vytvořit entitu s názvem, který už používá jiná entita v daném oboru názvů služby. | Odstraňte existující entitu nebo vyberte jiný název entity, která se má vytvořit. | Nemůžete to zkusit znovu. |
 | [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) | Entita zasílání zpráv dosáhla maximální povolené velikosti. Tato výjimka může nastat, pokud je maximální počet přijímačů (5) již otevřen na úrovni skupiny pro jednotlivé uživatele. | Přiřadíte místo v entitě příjem zpráv z entity nebo jejích podfront. <br /> Viz [QuotaExceededException](#quotaexceededexception) | Pokud se zprávy během této doby odstranily, může to zkusit znovu. |
 | [MessagingEntityDisabledException](/dotnet/api/microsoft.servicebus.messaging.messagingentitydisabledexception) | Požadavek na běhovou operaci u zakázané entity |Aktivujte entitu. | Zkuste to znovu, pokud se entita aktivovala průběžně. |
@@ -107,11 +107,11 @@ K této chybě může dojít z jednoho ze dvou důvodů:
 
 - Zatížení se rovnoměrně nedistribuuje napříč všemi oddíly v centru událostí a jeden oddíl má omezení místní jednotky propustnosti.
     
-    **Řešení** : při revizi strategie distribuce oddílů nebo při pokusu o [EventHubClient. Send (eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) může pomáhat.
+    **Řešení**: při revizi strategie distribuce oddílů nebo při pokusu o [EventHubClient. Send (eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) může pomáhat.
 
 - Obor názvů Event Hubs nemá dostatečný počet jednotek propustnosti (můžete zaškrtnout obrazovku **metriky** v okně Event Hubs oboru názvů v [Azure Portal](https://portal.azure.com) pro potvrzení). Portál zobrazuje agregované informace (1 minuty), ale měříme propustnost v reálném čase, takže se jedná o pouze odhad.
 
-    **Řešení** : zvýšení jednotek propustnosti v oboru názvů vám může pomáhat. 
+    **Řešení**: zvýšení jednotek propustnosti v oboru názvů vám může pomáhat. 
 
     Jednotky propustnosti můžete nakonfigurovat na stránce **škálování** nebo na stránce s **přehledem** na stránce **oboru názvů vaší Event Hubs** v Azure Portal. Nebo můžete použít [Automatické](event-hubs-auto-inflate.md)rozstupné, které se automaticky škálují zvýšením počtu jednotek propustnosti, aby se splnily požadavky na používání.
 
@@ -123,13 +123,13 @@ K této chybě může dojít z jednoho ze dvou důvodů:
     
     Na stránce **Přehled** v části **Zobrazit metriky** přepněte na kartu **propustnost** . Vyberte graf pro otevření v větším okně s 1 minutou na ose x. Podívejte se na vrcholové hodnoty a rozdělte je o 60, abyste získali Příchozí bajty za sekundu nebo odchozí bajty za sekundu. Použijte podobný přístup k výpočtu počtu požadavků za sekundu v časech špičky na kartě **požadavky** . 
 
-    Pokud vidíte hodnoty vyšší než počet počet propustnosti * omezení (1 MB za sekundu pro příchozí nebo 1000 žádosti o přijetí za sekundu, 2 MB za sekundu pro odchozí přenosy), zvyšte počet počet propustnosti pomocí stránky **škálování** (na levé straně) na stránce Event Hubs oboru názvů tak, aby se ručně zvýšila velikost nebo používala funkce [Automatické neploché](event-hubs-auto-inflate.md) Event Hubs. Všimněte si, že automatické rozplochelné může zvyšovat až 20 počet PROPUSTNOSTI. Pokud ho chcete zvýšit na přesně 40 počet propustnosti, odešlete [žádost o podporu](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+    Pokud vidíte hodnoty vyšší než počet počet propustnosti * omezení (1 MB za sekundu pro příchozí nebo 1000 žádosti o přijetí za sekundu, 2 MB za sekundu pro odchozí přenosy), zvyšte počet počet propustnosti pomocí stránky **škálování** (na levé straně) na stránce Event Hubs oboru názvů tak, aby se ručně zvýšila velikost nebo používala funkce [Automatické neploché](event-hubs-auto-inflate.md) Event Hubs. Všimněte si, že automatické rozplochelné může zvyšovat až 20 počet PROPUSTNOSTI. Pokud ho chcete zvýšit na přesně 40 počet propustnosti, odešlete [žádost o podporu](../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ### <a name="error-code-50001"></a>Kód chyby 50001
 
 Tato chyba by se měla vyskytovat zřídka. K tomu dojde, pokud je v kontejneru, který spouští kód pro váš obor názvů, nedostatek procesoru – ne více než několik sekund, než začne Nástroj pro vyrovnávání zatížení Event Hubs začínat.
 
-**Řešení** : omezení volání metody getruntimeinformation –. Azure Event Hubs podporuje až 50 volání za sekundu do GetRuntimeInfo za sekundu. Po dosažení limitu se může zobrazit výjimka podobná té následující:
+**Řešení**: omezení volání metody getruntimeinformation –. Azure Event Hubs podporuje až 50 volání za sekundu do GetRuntimeInfo za sekundu. Po dosažení limitu se může zobrazit výjimka podobná té následující:
 
 ```
 ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.
