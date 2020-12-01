@@ -1,14 +1,14 @@
 ---
 title: Přehled šablon
-description: V této části najdete popis výhod používání šablon Azure Resource Manager pro nasazení prostředků.
+description: V této části najdete popis výhod používání Azure Resource Manager šablon (šablon ARM) pro nasazení prostředků.
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 188fd5782795a4fb5456978a2a596cabc6dfd874
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: e25404fc74456f99a4d41c25786b34b6e1f3edda
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325056"
+ms.locfileid: "96342324"
 ---
 # <a name="what-are-arm-templates"></a>Co je šablona ARM?
 
@@ -16,7 +16,7 @@ Díky přesunu do cloudu mnoho týmů přijalo agilní metody vývoje. Tyto tým
 
 Aby bylo možné tyto výzvy splnit, můžete automatizovat nasazení a používat postupy infrastruktury jako kód. V kódu definujete infrastrukturu, která musí být nasazena. Kód infrastruktury se stal součástí vašeho projektu. Stejně jako kód aplikace ukládáte kód infrastruktury do zdrojového úložiště a jeho verzi. Libovolný tým v týmu může spustit kód a nasadit podobná prostředí.
 
-K implementaci infrastruktury jako kódu pro řešení Azure použijte šablony Azure Resource Manager (ARM). Šablona je soubor JavaScript Object Notation (JSON), který definuje infrastrukturu a konfiguraci pro váš projekt. Tato šablona využívá deklarativní syntaxi, která umožňuje prohlásit, co máte v úmyslu vytvořit, aniž by k tomu bylo nutné psát sekvence programových příkazů. V šabloně určíte prostředky, které chcete nasadit, a vlastnosti těchto prostředků.
+K implementaci infrastruktury jako kódu pro řešení Azure použijte šablony Azure Resource Manager (šablony ARM). Šablona je soubor JavaScript Object Notation (JSON), který definuje infrastrukturu a konfiguraci pro váš projekt. Tato šablona využívá deklarativní syntaxi, která umožňuje prohlásit, co máte v úmyslu vytvořit, aniž by k tomu bylo nutné psát sekvence programových příkazů. V šabloně určíte prostředky, které chcete nasadit, a vlastnosti těchto prostředků.
 
 ## <a name="why-choose-arm-templates"></a>Proč zvolit šablony ARM?
 

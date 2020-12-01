@@ -13,12 +13,12 @@ ms.date: 07/17/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: ea8629e53ec793b4a63c817b6ec83278a2d23871
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 6b5093c5a1a45aed3493fabd7a362b0579998171
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674091"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96343582"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Inicializace klientských aplikací pomocí MSAL.js
 
@@ -28,7 +28,7 @@ Aplikace User-Agent je forma veřejné klientské aplikace, ve které se klients
 
 Další informace o typech klientských aplikací a možnostech konfigurace aplikací najdete v tématu [veřejné a důvěrné klientské aplikace v MSAL](msal-client-applications.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před inicializací aplikace je nejprve nutné [ji zaregistrovat s Azure Portal](scenario-spa-app-registration.md)a vytvořit tak vztah důvěryhodnosti mezi vaší aplikací a platformou Microsoft identity.
 
@@ -36,9 +36,9 @@ Po registraci aplikace budete potřebovat některé nebo všechny následující
 
 | Hodnota | Povinné | Popis |
 |:----- | :------: | :---------- |
-| ID aplikace (klienta) | Povinné | Identifikátor GUID, který jedinečně identifikuje vaši aplikaci v rámci platformy Microsoft identity |
-| Autorita | Volitelné | Adresa URL zprostředkovatele identity ( *instance* ) a *cílová skupina pro přihlášení* k vaší aplikaci. Po zřetězení instance a přihlašování se přihlásí *autorita* . |
-| ID adresáře (tenanta) | Volitelné | Tuto hodnotu zadejte, pokud vytváříte obchodní aplikaci výhradně pro vaši organizaci, která se často označuje jako *aplikace pro jednoho tenanta* . |
+| ID aplikace (klienta) | Vyžadováno | Identifikátor GUID, který jedinečně identifikuje vaši aplikaci v rámci platformy Microsoft identity |
+| Autorita | Volitelné | Adresa URL zprostředkovatele identity ( *instance*) a *cílová skupina pro přihlášení* k vaší aplikaci. Po zřetězení instance a přihlašování se přihlásí *autorita*. |
+| ID adresáře (tenanta) | Volitelné | Tuto hodnotu zadejte, pokud vytváříte obchodní aplikaci výhradně pro vaši organizaci, která se často označuje jako *aplikace pro jednoho tenanta*. |
 | Identifikátor URI pro přesměrování | Volitelné | Pokud vytváříte webovou aplikaci, `redirectUri` Určuje, kde poskytovatel identity (Microsoft Identity Platform) by měl vrátit tokeny zabezpečení, které vydala. |
 
 ## <a name="initialize-msaljs-2x-apps"></a>Inicializace aplikací MSAL.js 2. x
@@ -108,7 +108,7 @@ Vyvolá [handleRedirectPromise][msal-js-handleredirectpromise] , když vaše apl
 Promise nabízí tři možné výsledky:
 
 - `.then` je vyvolána a `tokenResponse` je pravdy: aplikace vrací z operace přesměrování, která byla úspěšná.
-- `.then` je vyvolána a `tokenResponse` je false ( `null` ): aplikace se nevrací z operace přesměrování.
+- `.then` je vyvolána a `tokenResponse` je NEPRAVDA ( `null` ): aplikace se nevrací z operace přesměrování.
 - `.catch` je vyvoláno: aplikace vrací z operace přesměrování a došlo k chybě.
 
 ## <a name="initialize-msaljs-1x-apps"></a>Inicializovat aplikace MSAL.js 1. x

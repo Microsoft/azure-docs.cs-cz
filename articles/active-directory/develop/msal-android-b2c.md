@@ -13,12 +13,12 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.openlocfilehash: 0ad5fab685757d2efd91cd1df0e48a5f1258d17e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c4f47fd771cfb92b3896963c96b39d9eb7d97b8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119874"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344874"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Použití MSAL pro Android s B2C
 
@@ -129,7 +129,7 @@ AcquireTokenSilentParameters parameters = new AcquireTokenSilentParameters.Build
 
         @Override
         public void onError(MsalException exception) {
-            // Token request was unsuccesful, inspect the exception
+            // Token request was unsuccessful, inspect the exception
         }
     })
     .build();
@@ -139,7 +139,7 @@ pca.acquireTokenSilentAsync(parameters);
 
 ## <a name="specify-a-policy"></a>Zadat zásadu
 
-Vzhledem k tomu, že zásady v B2C jsou reprezentovány jako samostatné autority, volání jiné jiné než výchozí je dosaženo zadáním `fromAuthority` klauzule při sestavování `acquireToken` nebo `acquireTokenSilent` parametrech.  Například:
+Vzhledem k tomu, že zásady v B2C jsou reprezentovány jako samostatné autority, volání jiné jiné než výchozí je dosaženo zadáním `fromAuthority` klauzule při sestavování `acquireToken` nebo `acquireTokenSilent` parametrech.  Příklad:
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
@@ -153,7 +153,7 @@ AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
 
 ## <a name="handle-password-change-policies"></a>Zpracování zásad změny hesel
 
-Tok uživatele registrace nebo přihlašování k místnímu účtu zobrazuje**zapomenuté heslo?** . Kliknutím na tento odkaz se automaticky neaktivuje tok uživatele resetování hesla.
+Tok uživatele registrace nebo přihlašování k místnímu účtu zobrazuje **zapomenuté heslo?** . Kliknutím na tento odkaz se automaticky neaktivuje tok uživatele resetování hesla.
 
 Místo toho se kód chyby `AADB2C90118` vrátí do vaší aplikace. Vaše aplikace by měla zpracovat tento kód chyby spuštěním konkrétního toku uživatele, který resetuje heslo.
 

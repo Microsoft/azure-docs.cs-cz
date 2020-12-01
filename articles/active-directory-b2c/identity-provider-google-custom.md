@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/20/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 91a55782492c1b2612652b147e0aca37941bf4db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 635e33223b054aafb1d91c217a44fdd6d9b369b9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388200"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345163"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavte přihlášení pomocí účtu Google pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -34,13 +34,13 @@ V tomto článku se dozvíte, jak povolit přihlášení uživatelům s účtem 
 Pokud chcete povolit přihlášení uživatelům z účtu Google, musíte vytvořit projekt aplikace Google.
 
 1. Přihlaste se ke [konzole pro vývojáře Google](https://console.developers.google.com/) pomocí svých přihlašovacích údajů k účtu.
-2. Zadejte **název projektu**, klikněte na **vytvořit**a potom se ujistěte, že používáte nový projekt.
+2. Zadejte **název projektu**, klikněte na **vytvořit** a potom se ujistěte, že používáte nový projekt.
 3. V nabídce vlevo vyberte **přihlašovací údaje** a potom vyberte **vytvořit přihlašovací údaje > ID klienta OAuth**.
 4. Vyberte možnost **Konfigurovat obrazovku pro vyjádření souhlasu**.
-5. Vyberte nebo zadejte platnou **e-mailovou adresu**, zadejte **název produktu** , který se zobrazí uživatelům, zadejte `b2clogin.com` v **autorizovaných doménách**a pak klikněte na **Uložit**.
-6. V části **Typ aplikace**vyberte **Webová aplikace**.
+5. Vyberte nebo zadejte platnou **e-mailovou adresu**, zadejte **název produktu** , který se zobrazí uživatelům, zadejte `b2clogin.com` v **autorizovaných doménách** a pak klikněte na **Uložit**.
+6. V části **Typ aplikace** vyberte **Webová aplikace**.
 7. Zadejte **název** vaší aplikace.
-8. V **autorizovaných zdrojích JavaScriptu**zadejte `https://your-tenant-name.b2clogin.com` a v **autorizovaných identifikátorech URI pro přesměrování**zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Nahraďte název-tenanta názvem vašeho tenanta. Při zadávání názvu tenanta musíte použít malá písmena, i když je tenant definovaný velkými písmeny v Azure AD B2C.
+8. V **autorizovaných zdrojích JavaScriptu** zadejte `https://your-tenant-name.b2clogin.com` a v **autorizovaných identifikátorech URI pro přesměrování** zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Nahraďte název-tenanta názvem vašeho tenanta. Při zadávání názvu tenanta musíte použít malá písmena, i když je tenant definovaný velkými písmeny v Azure AD B2C.
 8. Klikněte na **Vytvořit**.
 9. Zkopírujte hodnoty **ID klienta** a **tajný klíč klienta**. Obě tyto služby budete potřebovat ke konfiguraci Google jako poskytovatele identity ve vašem tenantovi. Tajný kód klienta je důležité bezpečnostní pověření.
 
@@ -48,15 +48,15 @@ Pokud chcete povolit přihlášení uživatelům z účtu Google, musíte vytvo�
 
 Je potřeba uložit tajný klíč klienta, který jste předtím nahráli ve svém tenantovi Azure AD B2C.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vašeho tenanta.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
 5. Vyberte **klíče zásad** a pak vyberte **Přidat**.
-6. Pro **Možnosti**vyberte možnost `Manual` .
+6. Pro **Možnosti** vyberte možnost `Manual` .
 7. Zadejte **název** klíče zásad. Například, `GoogleSecret`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
-8. Do **tajného klíče**zadejte tajný klíč klienta, který jste předtím nahráli.
-9. Pro **použití klíče**vyberte `Signature` .
+8. Do **tajného klíče** zadejte tajný klíč klienta, který jste předtím nahráli.
+9. Pro **použití klíče** vyberte `Signature` .
 10. Klikněte na **Vytvořit**.
 
 ## <a name="add-a-claims-provider"></a>Přidat zprostředkovatele deklarací identity
@@ -84,7 +84,7 @@ Pokud chcete, aby se uživatelé přihlásili pomocí účtu Google, musíte ú�
             <Item Key="ClaimsEndpoint">https://www.googleapis.com/oauth2/v1/userinfo</Item>
             <Item Key="scope">email profile</Item>
             <Item Key="HttpBinding">POST</Item>
-            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <Item Key="UsePolicyInRedirectUri">false</Item>
             <Item Key="client_id">Your Google application ID</Item>
           </Metadata>
           <CryptographicKeys>
@@ -119,7 +119,7 @@ Pokud chcete, aby se uživatelé přihlásili pomocí účtu Google, musíte ú�
 Teď jste nakonfigurovali zásady tak, aby Azure AD B2C vědět, jak komunikovat s adresářem služby Azure AD. Zkuste nahrát soubor s příponou zásady jenom tak, aby se ověřilo, že zatím nemá žádné problémy.
 
 1. Na stránce **vlastní zásady** ve vašem tenantovi Azure AD B2C vyberte **Odeslat zásadu**.
-2. Pokud existuje, zapněte **zásadu přepsat**a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions.xml* .
+2. Pokud existuje, zapněte **zásadu přepsat** a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions.xml* .
 3. Klikněte na **Odeslat**.
 
 ## <a name="register-the-claims-provider"></a>Registrace zprostředkovatele deklarací identity
@@ -137,7 +137,7 @@ V tuto chvíli je poskytovatel identity nastavený, ale není k dispozici na ž�
 Element **claimsproviderselection.** se podobá tlačítku poskytovatele identity na obrazovce pro registraci a přihlašování. Pokud přidáte element **claimsproviderselection.** pro účet Google, zobrazí se nové tlačítko, když se uživatel na stránce zařadí.
 
 1. Vyhledejte element **OrchestrationStep** , který obsahuje `Order="1"` cestu k uživateli, kterou jste vytvořili.
-2. Pod **ClaimsProviderSelects**přidejte následující element. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `GoogleExchange` :
+2. Pod **ClaimsProviderSelects** přidejte následující element. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `GoogleExchange` :
 
     ```xml
     <ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />

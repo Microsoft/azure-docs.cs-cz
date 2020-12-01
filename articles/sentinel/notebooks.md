@@ -10,14 +10,14 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: ded332813a840892f640aa6f6e48debbfe381b4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5d182276cd77493be5184503a1afc47934bf8ea
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90889297"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344189"
 ---
-# <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Použití poznámkových bloků Jupyter k prolovení bezpečnostních hrozeb
+# <a name="use-jupyter-notebook-to-hunt-for-security-threats"></a>Pro bezpečnostní hrozby použít Jupyter Notebook
 
 Základem Azure Sentinel je úložiště dat; kombinuje dotazování s vysokým výkonem, dynamické schéma a škáluje na obrovské objemy dat. Azure Portal a všechny nástroje Sentinel Azure používají pro přístup k tomuto úložišti dat společné rozhraní API. Stejné rozhraní API je také k dispozici pro externí nástroje, jako jsou [Jupyter](https://jupyter.org/) notebooky a Python. I když je možné na portálu provádět mnoho běžných úloh, Jupyter rozšiřuje rozsah toho, co můžete s těmito daty dělat. Kombinuje plnou programovatelnost s velkou kolekcí knihoven pro strojové učení, vizualizaci a analýzu dat. Tyto atributy Jupyter přesvědčivý Nástroj pro vyšetřování a lov zabezpečení.
 
@@ -54,7 +54,7 @@ Chcete-li použít poznámkové bloky, musíte nejprve vytvořit pracovní prost
     > [!div class="mx-imgBorder"]
     > ![spustit Poznámkový blok pro spuštění pracovního prostoru Azure ml](./media/notebooks/sentinel-notebooks-launch.png)
 
-1. V části **pracovní prostor AzureML**vyberte **vytvořit novou**.
+1. V části **pracovní prostor AzureML** vyberte **vytvořit novou**.
 
     > [!div class="mx-imgBorder"]
     > ![vytvořit pracovní prostor](./media/notebooks/sentinel-notebooks-azureml-create.png)
@@ -89,7 +89,7 @@ Po dokončení nasazení můžete poznámkové bloky spustit v novém pracovním
 
 ## <a name="launch-a-notebook-using-your-azure-ml-workspace"></a>Spuštění poznámkového bloku pomocí pracovního prostoru Azure ML
 
-1. V Azure Portal přejděte na **Azure Sentinel**  >  **Threat management**  >  **poznámkové bloky**služby Azure Sentinel Threat Management, kde vidíte poznámkové bloky, které poskytuje Azure Sentinel.
+1. V Azure Portal přejděte na **Azure Sentinel**  >  **Threat management**  >  **poznámkové bloky** služby Azure Sentinel Threat Management, kde vidíte poznámkové bloky, které poskytuje Azure Sentinel.
 
     > [!TIP]
     > Vyberte možnost **průvodci & zpětnou vazbu** a otevřete tak podokno s další nápovědu a pokyny pro poznámkové bloky.
@@ -140,7 +140,7 @@ Uvítáme zpětnou vazbu, ať už návrhy, žádosti o funkce, přidané poznám
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak začít používat Jupyter poznámkové bloky v Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+V tomto článku jste zjistili, jak začít používat Jupyter Notebook ve službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 
 - [Proaktivní vylovení hrozeb](hunting.md)
 - [Použití záložek k ukládání zajímavých informací při lovu](bookmarks.md)

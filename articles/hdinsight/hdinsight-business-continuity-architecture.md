@@ -8,12 +8,12 @@ keywords: vysoká dostupnost Hadoop
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: c322380d6a41e69baa8f753b84c0bc074f334647
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0275fa4cc46dff8781d73563fd250b1ec62ddd56
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547023"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344109"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Architektury Azure HDInsight pro provozní kontinuitu
 
@@ -50,13 +50,13 @@ Sekundární cluster je obvykle jen pro čtení. Sekundární cluster můžete n
 
 V *aktivní primární službě s sekundární architekturou na vyžádání* aplikace zapisují do aktivní primární oblasti, zatímco v sekundární oblasti nejsou během normálního provozu zřízeny žádné clustery. SQL metastore a Storage v sekundární oblasti jsou trvalé, zatímco cluster HDInsight je spouštěný a nasazený na vyžádání pouze před spuštěním naplánované replikace podregistru.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary.png" alt-text="Architektura podregistru a interaktivních dotazů":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary.png" alt-text="aktivní primární s sekundárním na vyžádání":::
 
 #### <a name="hive-active-primary-with-standby-secondary"></a>Aktivní primární podregistr s sekundárním pohotovostním režimem
 
 V *aktivní primární primární službě s pohotovostním sekundárním* prostředím aplikace zapisují do aktivní primární oblasti a v režimu jen pro čtení se spustí v režimu jen pro čtení během normálního provozu. Během normálního provozu můžete zvolit přesměrování operací čtení specifických pro oblast do sekundárního.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="Architektura podregistru a interaktivních dotazů":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="aktivní primární s sekundárním pohotovostním režimem":::
 
 Další informace o replikaci podregistru a ukázkách kódu najdete [v tématu Apache Hive replikace v clusterech Azure HDInsight](./interactive-query/apache-hive-replication.md) .
 
@@ -85,13 +85,13 @@ Pokud existují konkrétní zákaznické knihovny, které jsou nad rámec toho, 
 
 Aplikace čtou a zapisují do clusterů Spark a podregistr v primární oblasti, zatímco během normálního provozu nejsou v sekundární oblasti zřízeny žádné clustery. SQL metastore, úložiště podregistru a Sparkové úložiště jsou v sekundární oblasti trvalé. Clustery Spark a podregistr se skriptují a nasazují na vyžádání. Replikace podregistru se používá k replikaci úložiště podregistru a metaúložištěí podregistru, zatímco Azure Data Factory je `DistCP` možné použít ke kopírování samostatného úložiště Spark. Clustery podregistrů je potřeba nasadit před každým spuštěním replikace každého podregistru kvůli `DistCp` výpočetnímu prostředí závislosti.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary-spark.png" alt-text="Architektura podregistru a interaktivních dotazů":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary-spark.png" alt-text="aktivní primární s architekturou sekundární Apache Spark na vyžádání":::
 
 #### <a name="spark-active-primary-with-standby-secondary"></a>Spark – aktivní primární s pohotovostním sekundárním
 
 Aplikace čtou a zapisují do clusterů Spark a podregistr v primární oblasti a v pohotovostním režimu se v režimu jen pro čtení spouští v sekundární oblasti během normálního provozu. Během normálního provozu se můžete rozhodnout, že chcete přesměrovat podregistry specifické pro oblast a operace čtení Sparku na sekundární.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary-spark.png" alt-text="Architektura podregistru a interaktivních dotazů":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary-spark.png" alt-text="aktivní primární pohotovostní sekundární Apache Spark ":::
 
 ## <a name="apache-hbase"></a>Apache HBase
 
@@ -131,19 +131,19 @@ V této nastavení mezi různými oblastmi je replikace jednosměrná od primár
 
 Sekundární cluster funguje jako normální cluster HBA, který může hostovat vlastní tabulky a může obsluhovat čtení a zápisy z místních aplikací. Zápisy do replikovaných tabulek nebo tabulek, které jsou nativní pro sekundární, však nebudou replikovány zpět na primární.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-follower.png" alt-text="Architektura podregistru a interaktivních dotazů":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-follower.png" alt-text="Model následného vedoucího procesu HBA":::
 
 #### <a name="hbase-replication--leader--leader-model"></a>Replikace HBA: vedoucí – model vedoucího procesu
 
 Tato nastavení pro různé oblasti jsou velmi podobná jednosměrovém nastavení s tím rozdílem, že replikace probíhá obousměrně mezi primární oblastí a sekundární oblastí. Aplikace můžou používat oba clustery ve čtení – režimy zápisu a aktualizace jsou asynchronně vyměňovanými mezi nimi.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-leader.png" alt-text="Architektura podregistru a interaktivních dotazů":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-leader.png" alt-text="Model vedoucího procesu HBA":::
 
 #### <a name="hbase-replication-multi-region-or-cyclic"></a>Replikace HBA: více oblastí nebo cyklických
 
 Model více oblastí/cyklických replikací je rozšířením replikace HBA a dá se použít k vytvoření globálně redundantní architektury HBA s více aplikacemi, které čtou a zapisují do clusterů specifických pro jednotlivé oblasti. Clustery je možné nastavit v různých kombinacích vedoucí/vedoucího nebo vedoucího/následného procesu v závislosti na obchodních požadavcích.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-cyclic.png" alt-text="Architektura podregistru a interaktivních dotazů":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-cyclic.png" alt-text="Cyklický model HBA":::
 
 ## <a name="apache-kafka"></a>Apache Kafka
 
@@ -151,7 +151,7 @@ Pokud chcete povolit dostupnost mezi oblastmi, HDInsight 4,0 podporuje Kafka ná
 
 V závislosti na době, kdy byla replikace zahájena, může replikace tématu nástroje MirrorMaker vést k různým posunům mezi zdroji a tématy repliky. Clustery HDInsight Kafka také podporují replikaci oddílu tématu, což je funkce vysoké dostupnosti na úrovni jednotlivých clusterů.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-replication.png" alt-text="Architektura podregistru a interaktivních dotazů":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-replication.png" alt-text="Replikace Apache Kafka":::
 
 ### <a name="apache-kafka-architectures"></a>Apache Kafka architektury
 
@@ -172,7 +172,7 @@ Nevýhody:
 * Konečná konzistence mezi tématy mezi aktivními a pasivními clustery.
 * Failbacks na primární může vést k nekonzistenci zpráv v tématech.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-passive.png" alt-text="Architektura podregistru a interaktivních dotazů":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-passive.png" alt-text="Apache Kafka aktivní pasivní model":::
 
 #### <a name="kafka-replication-active--active"></a>Replikace Kafka: aktivní – aktivní
 
@@ -188,7 +188,7 @@ Nevýhody:
 * Problém cyklické replikace je potřeba vyřešit.  
 * Obousměrná replikace vede k vyšším nákladům na výstup pro místní datové přenosy.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-active.png" alt-text="Architektura podregistru a interaktivních dotazů":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-active.png" alt-text="Apache Kafka aktivní aktivní model":::
 
 ## <a name="hdinsight-enterprise-security-package"></a>Balíček zabezpečení podniku HDInsight
 
@@ -198,11 +198,11 @@ Replikace Ranger metastore:
 
 Ranger metastore se používá k trvalému ukládání a obsluze zásad Ranger pro řízení autorizací dat. Doporučujeme, abyste zachovali nezávislé zásady Ranger v primárních a sekundárních a zachovali sekundární jako repliku pro čtení.
   
-Pokud vyžadujete, aby se zásady Ranger synchronizovaly mezi primárními a sekundárními verzemi, použijte [Ranger import/export](https://cwiki.apache.org/confluence/display/RANGER/User+Guide+For+Import-Export#:~:text=Ranger%20has%20introduced%20a%20new,can%20import%20and%20export%20policies.&text=Also%20can%20export%2Fimport%20a,repositories\)%20via%20Ranger%20Admin%20UI) k pravidelnému zálohování a importu zásad Ranger z primární na sekundární.
+Pokud vyžadujete, aby se zásady Ranger synchronizovaly mezi primárními a sekundárními verzemi, použijte [Ranger import/export](https://cwiki.apache.org/confluence/display/RANGER/User+Guide+For+Import-Export) k pravidelnému zálohování a importu zásad Ranger z primární na sekundární.
 
 Replikace zásad Ranger mezi primárním a sekundárním objektem může způsobit, že sekundárnímu modulu bude povolen zápis, což může vést k neúmyslným zápisům na sekundární navýšení nekonzistence dat.  
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hdinsight-enterprise-security-package.png" alt-text="Architektura podregistru a interaktivních dotazů":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hdinsight-enterprise-security-package.png" alt-text="Architektura Balíček zabezpečení podniku HDInsight":::
 
 ## <a name="next-steps"></a>Další kroky
 

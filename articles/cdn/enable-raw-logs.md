@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/25/2020
 ms.author: allensu
-ms.openlocfilehash: 2fbefd3b7761976cffbd6be8714cb849e1253aec
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e73b4b2eefeb26dad4d028f617cbe453dbd1870d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778035"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342443"
 ---
 # <a name="monitoring-metrics-and-raw-logs-for-azure-cdn-from-microsoft"></a>Monitorování metrik a nezpracovaných protokolů pro Azure CDN od Microsoftu
 Pomocí Azure CDN od Microsoftu můžete sledovat prostředky následujícími způsoby, které vám pomůžou při odstraňování problémů, sledování a ladění problémů. 
@@ -28,7 +28,7 @@ Pomocí Azure CDN od Microsoftu můžete sledovat prostředky následujícími z
 > [!IMPORTANT]
 > Pro Azure CDN od Microsoftu je k dispozici funkce HTTP holých protokolů.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete. 
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -40,30 +40,30 @@ Konfigurace nezpracovaných protokolů pro Azure CDN z profilu Microsoftu:
 
 1. V nabídce Azure Portal vyberte **všechny prostředky**  >>  **\<your-CDN-profile>** .
 
-2. V části **monitorování** vyberte **nastavení diagnostiky** .
+2. V části **Monitorování** vyberte **Nastavení diagnostiky**.
 
-3. Vyberte **+ Přidat nastavení diagnostiky** .
+3. Vyberte **+ Přidat nastavení diagnostiky**.
 
     :::image type="content" source="./media/cdn-raw-logs/raw-logs-01.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::
     
     > [!IMPORTANT]
     > Nezpracované protokoly jsou k dispozici pouze na úrovni profilu, přestože jsou k dispozici agregované protokoly stavového kódu HTTP na úrovni koncového bodu.
 
-4. V části **nastavení diagnostiky** zadejte název nastavení diagnostiky v části **název nastavení diagnostiky** .
+4. V části **nastavení diagnostiky** zadejte název nastavení diagnostiky v části **název nastavení diagnostiky**.
 
 5. Vyberte **AzureCdnAccessLog** a nastavte dobu uchování ve dnech.
 
-6. Vyberte **Podrobnosti o cíli** . Možnosti cíle jsou:
+6. Vyberte **Podrobnosti o cíli**. Možnosti cíle jsou:
     * **Odeslání do Log Analytics**
-        * Vyberte **předplatné** a **Log Analytics pracovní prostor** .
+        * Vyberte **předplatné** a **Log Analytics pracovní prostor**.
     * **Archivace do účtu úložiště**
-        * Vyberte **předplatné** a **účet úložiště** .
+        * Vyberte **předplatné** a **účet úložiště**.
     * **Streamování do centra událostí**
-        * Vyberte **předplatné** , **obor názvů centra událostí** , **název centra událostí (nepovinné)** a **název zásady centra událostí** .
+        * Vyberte **předplatné**, **obor názvů centra událostí**, **název centra událostí (nepovinné)** a **název zásady centra událostí**.
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="Nakonfigurujte cíl pro nastavení protokolu." border="true":::
 
-7. Vyberte **Uložit** .
+7. Vyberte **Uložit**.
 
 ## <a name="configuration---azure-powershell"></a>Konfigurace – Azure PowerShell
 
@@ -178,7 +178,7 @@ Azure CDN ze služby společnosti Microsoft aktuálně poskytuje nezpracované p
     ```
 
 ### <a name="sent-to-origin-shield-deprecation"></a>Bylo odesláno do původního základu ochrany.
-Nezpracovaná vlastnost protokolu **isSentToOriginShield** byla zastaralá a nahrazena novým polem **isReceivedFromClient** . Pokud už používáte zastaralé pole, použijte nové pole. 
+Nezpracovaná vlastnost protokolu **isSentToOriginShield** byla zastaralá a nahrazena novým polem **isReceivedFromClient**. Pokud už používáte zastaralé pole, použijte nové pole. 
 
 Nezpracované protokoly obsahují protokoly vygenerované z hraniční sítě CDN (podřízeného bodu POP) i z počátečního štítku. Počátek štítku odkazuje na nadřazené uzly, které jsou strategicky umístěné na celém světě. Tyto uzly komunikují se zdrojovými servery a omezují zatížení provozu na počátku. 
 
@@ -201,7 +201,7 @@ AzureDiagnostics
 ```
 
 > [!IMPORTANT]
-> Funkce HTTP RAW logs je k dispozici automaticky pro všechny profily vytvořené nebo aktualizované po **25. únoru 2020** . Pro profily CDN, které jste vytvořili dřív, by se měl po nastavení protokolování aktualizovat koncový bod CDN. Například jedna může přejít na geografická filtrování v rámci koncových bodů CDN a blokovat každou zemi nebo oblast, která není relevantní pro své úlohy, a pak klikněte na Uložit.
+> Funkce HTTP RAW logs je k dispozici automaticky pro všechny profily vytvořené nebo aktualizované po **25. únoru 2020**. Pro profily CDN, které jste vytvořili dřív, by se měl po nastavení protokolování aktualizovat koncový bod CDN. Například jedna může přejít na geografická filtrování v rámci koncových bodů CDN a blokovat každou zemi nebo oblast, která není relevantní pro své úlohy, a pak klikněte na Uložit.
 
 
 ## <a name="metrics"></a>Metriky
@@ -220,7 +220,7 @@ Další informace najdete v tématu [Azure monitor metriky](../azure-monitor/pla
 | Poměr přístupů do bajtů * | Procento výstupu z mezipaměti CDN vypočítané na celkový výstup.                                      | Koncový bod                                                                                    |
 | RequestCount    | Počet požadavků klientů poskytovaných službou CDN.                                                                     | Koncový bod </br> Země klienta. </br> Oblast klienta. </br> Stav HTTP. </br> Stavová skupina HTTP. |
 | ResponseSize    | Počet bajtů odeslaných jako odpověď z hraniční sítě CDN klientům.                                                  |Koncový bod </br> Země klienta. </br> Oblast klienta. </br> Stav HTTP. </br> Stavová skupina HTTP.                                                                                          |
-| TotalLatency    | Celková doba od žádosti klienta přijatá službou CDN, **dokud se nepošle poslední bajt odpovědi z CDN klientovi** . |Koncový bod </br> Země klienta. </br> Oblast klienta. </br> Stav HTTP. </br> Stavová skupina HTTP.                                                                                             |
+| TotalLatency    | Celková doba od žádosti klienta přijatá službou CDN, **dokud se nepošle poslední bajt odpovědi z CDN klientovi**. |Koncový bod </br> Země klienta. </br> Oblast klienta. </br> Stav HTTP. </br> Stavová skupina HTTP.                                                                                             |
 
 **_Počet úspěšných bajtů v dávce = (výstup z Edge-výstup od počátku)/Egress z Edge_*
 
@@ -233,25 +233,25 @@ Počet vyloučených scénářů v bajtech poměru přístupů:
 
 1. V nabídce Azure Portal vyberte **všechny prostředky**  >>  **\<your-CDN-profile>** .
 
-2. V části **monitorování** vyberte **metriky** :
+2. V části **monitorování** vyberte **metriky**:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="Metriky pro profil CDN" border="true":::
 
 3. Vyberte **Přidat metriku** a vyberte metriku, kterou chcete přidat:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="Přidejte a vyberte metriku pro profil CDN." border="true":::
 
 4. Vyberte **Přidat filtr** a přidejte filtr:
     
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-05.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-05.png" alt-text="Použijte filtr na metriku." border="true":::
 
 5. Pokud chcete zobrazit trend podle různých dimenzí, vyberte **použít** rozdělení:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-06.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-06.png" alt-text="Použijte rozdělení na metriku." border="true":::
 
 6. Vyberte **Nový graf** a přidejte nový graf:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-07.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-07.png" alt-text="Přidejte nový graf do zobrazení metriky." border="true":::
 
 ### <a name="alerts"></a>Výstrahy
 
@@ -259,7 +259,7 @@ Můžete nastavit výstrahy pro Microsoft CDN výběrem **Monitoring**  >>  **v�
 
 Vyberte **nové pravidlo výstrahy** pro metriky uvedené v části metriky:
 
-:::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::
+:::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="Nakonfigurujte výstrahy pro koncový bod CDN." border="true":::
 
 Výstraha se bude účtovat na základě Azure Monitor. Další informace o výstrahách naleznete v tématu [Azure monitor Alerts](../azure-monitor/platform/alerts-overview.md).
 
@@ -270,21 +270,21 @@ Další metriky můžete povolit pomocí Azure Log Analytics a nezpracovaných p
 
 2. Vyberte pracovní prostor Log Analytics, který jste vytvořili:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="Vyberte pracovní prostor Log Analytics." border="true":::   
 
-3. V pracovním prostoru Log Analytics vyberte **protokoly** **obecně** .  Pak vyberte **Začínáme** :
+3. V pracovním prostoru Log Analytics vyberte **protokoly** **obecně** .  Pak vyberte **Začínáme**:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="Pracovní prostor prostředků Log Analytics." border="true":::   
  
-4. Vyberte **profily CDN** .  Vyberte ukázkový dotaz, který se má spustit, nebo zavřete ukázkovou obrazovku a zadejte vlastní dotaz:
+4. Vyberte **profily CDN**.  Vyberte ukázkový dotaz, který se má spustit, nebo zavřete ukázkovou obrazovku a zadejte vlastní dotaz:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="Příklad obrazovky s dotazem." border="true":::   
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="Provádění dotazu." border="true":::   
 
-4. Pokud chcete zobrazit data podle grafu, vyberte **graf** .  Vyberte **Připnout na řídicí panel** , abyste mohli graf připnout na řídicí panel Azure:
+4. Pokud chcete zobrazit data podle grafu, vyberte **graf**.  Vyberte **Připnout na řídicí panel** , abyste mohli graf připnout na řídicí panel Azure:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true"::: 
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="Připnout graf na řídicí panel" border="true"::: 
 
 ## <a name="next-steps"></a>Další kroky
 V tomto článku jste povolili protokoly HTTP Raw pro službu Microsoft CDN.
@@ -295,4 +295,4 @@ Další informace o Azure CDN a dalších službách Azure, které jsou uvedené
 
 * Přečtěte si další informace o [Azure monitor](../azure-monitor/overview.md).
 
-* Nakonfigurujte [Log Analytics v Azure monitor](../azure-monitor/log-query/get-started-portal.md).
+* Nakonfigurujte [Log Analytics v Azure monitor](../azure-monitor/log-query/log-analytics-tutorial.md).

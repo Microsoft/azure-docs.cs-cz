@@ -11,19 +11,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 6fb1bdbad4455b55c3f6cc3b395526f637339847
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 2566b2cf950df915f8ea843c34ea1fb6f8e7ea21
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592154"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342001"
 ---
 # <a name="customize-and-suggest-image-search-queries"></a>Přizpůsobení a návrh dotazů na hledání obrázků
 
 > [!WARNING]
-> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 > Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
-> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 V tomto článku se dozvíte, jak přizpůsobit dotazy a navrhovat hledané výrazy k odeslání do rozhraní API Bingu pro vyhledávání obrázků.
 
@@ -33,9 +33,9 @@ Pokud vaše aplikace obsahuje vyhledávací pole, ve kterém jsou zadány hledan
 
 ## <a name="pivot-the-query"></a>Kontingenční dotaz
 
-Pokud může Bing rozdělit původní vyhledávací dotaz, obsahuje objekt vrácených [obrázků](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) `pivotSuggestions` . Návrhy pivotu se dají uživateli zobrazit jako volitelné hledané výrazy. Například pokud byl původní dotaz na *Microsoft Surface* , Bing může segmentovat dotaz do *Microsoftu* a *Surface* a pro každý z nich navrhovat navržené pivoty. Tyto návrhy se dají uživateli zobrazit jako volitelné výrazy pro dotazování.
+Pokud může Bing rozdělit původní vyhledávací dotaz, obsahuje objekt vrácených [obrázků](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) `pivotSuggestions` . Návrhy pivotu se dají uživateli zobrazit jako volitelné hledané výrazy. Například pokud byl původní dotaz na *Microsoft Surface*, Bing může segmentovat dotaz do *Microsoftu* a *Surface* a pro každý z nich navrhovat navržené pivoty. Tyto návrhy se dají uživateli zobrazit jako volitelné výrazy pro dotazování.
 
-Následující příklad ukazuje návrhy pivotu pro *Microsoft Surface* :  
+Následující příklad ukazuje návrhy pivotu pro *Microsoft Surface*:  
 
 ```json
 {
@@ -106,7 +106,7 @@ The following shows an example of the pivot queries.
 
 ## <a name="expand-the-query"></a>Rozbalí dotaz
 
-Pokud Bing dokáže rozšířením dotazu zúžit původní hledání, bude objekt [Images](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) obsahovat pole `queryExpansions`. Pokud byl například dotaz na *Microsoft Surface* , rozšířené dotazy mohou být:
+Pokud Bing dokáže rozšířením dotazu zúžit původní hledání, bude objekt [Images](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) obsahovat pole `queryExpansions`. Pokud byl například dotaz na *Microsoft Surface*, rozšířené dotazy mohou být:
 - Microsoft surfing **pro 3**.
 - Microsoft Surface **RT**.
 - Microsoft Surface **Phone**.

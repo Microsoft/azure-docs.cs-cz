@@ -11,19 +11,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 3e5041855cc036c278979ba1c87634a61ec68ec7
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 988a1332d03bf2c9563ab0576f7a20ee6b0615aa
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593480"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342052"
 ---
 # <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Získat obrázky z webu pomocí rozhraní API Bingu pro vyhledávání obrázků
 
 > [!WARNING]
-> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 > Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
-> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Když použijete REST API Vyhledávání obrázků Bingu, můžete získat obrázky z webu, které souvisejí s hledaným termínem, odesláním následující žádosti GET:
 
@@ -36,7 +36,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Použijte parametr dotazu [q](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) pro hledaný výraz v kódování URL. Pokud například zadáte *plaveb dinghies* , nastavte `q` na `sailing+dinghies` nebo `sailing%20dinghies` .
+Použijte parametr dotazu [q](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) pro hledaný výraz v kódování URL. Pokud například zadáte *plaveb dinghies*, nastavte `q` na `sailing+dinghies` nebo `sailing%20dinghies` .
 
 > [!IMPORTANT]
 > * Všechny požadavky musí být provedeny ze serveru, nikoli z klienta.

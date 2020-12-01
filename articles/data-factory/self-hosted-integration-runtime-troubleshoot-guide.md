@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: 8195c4d072acce5345fa9752f97713aed22d962f
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 635178999398287649d8630fc5262a385afc48b2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296950"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341763"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Řešení potíží s místním hostováním Integration runtime
 
@@ -752,7 +752,7 @@ Dva možné příčiny tohoto problému:
 - Z důvodu 1 se ujistěte, že je certifikát serveru ADF a jeho řetěz certifikátů důvěryhodný pro počítač, na kterém je nainstalovaný SHIR.
 - Z důvodu 2 buď důvěřujete nahrazené kořenové certifikační autoritě na SHIR počítači, nebo nakonfigurujte proxy server tak, aby nahradil certifikát serveru ADF.
 
-Podrobnosti o důvěřování certifikátu ve Windows najdete v [tomto článku](https://docs.microsoft.com/skype-sdk/sdn/articles/installing-the-trusted-root-certificate) .
+Podrobnosti o důvěřování certifikátu ve Windows najdete v [tomto článku](/skype-sdk/sdn/articles/installing-the-trusted-root-certificate) .
 
 #### <a name="additional-info"></a>Další informace
 Zavádíme nový certifikát SSL, který je podepsaný z DigiCert, zkontrolujte prosím, jestli je globální kořen DigiCertu G2 v důvěryhodné kořenové certifikační autoritě.

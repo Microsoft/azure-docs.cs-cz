@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a4e76e3924b1b14660dce8a3b58f7dd5b2715eec
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e17c390dddcb2af9fdc83b45ae812ef1fff7f1c3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670127"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345078"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu s vlastním uplatněním v Azure Active Directory B2C vlastní zásady
 
@@ -53,7 +53,7 @@ V technickém profilu s vlastním oceněním můžete použít prvky **InputClai
 
 ## <a name="display-claims"></a>Zobrazit deklarace
 
-Funkce Zobrazit deklarace identity je aktuálně ve **verzi Preview** .
+Funkce Zobrazit deklarace identity je aktuálně ve **verzi Preview**.
 
 Element **DisplayClaims** obsahuje seznam deklarací, které mají být zobrazeny na obrazovce pro shromažďování dat od uživatele. Chcete-li předem naplnit hodnoty pro zobrazení deklarací identity, použijte vstupní deklarace, které byly dříve popsány. Element může obsahovat také výchozí hodnotu.
 
@@ -114,7 +114,7 @@ Pokud koncová zásada, která dědí tuto základnu, následně určí `officeN
 </TechnicalProfile>
 ```
 
-`age`Deklarace identity v základních zásadách už není na obrazovce k dispozici uživateli – je to efektivně "skryté". Pokud chcete zobrazit `age` deklaraci identity a shromažďovat věkovou hodnotu od uživatele, musíte přidat `age` **DisplayClaim** .
+`age`Deklarace identity v základních zásadách už není na obrazovce k dispozici uživateli – je to efektivně "skryté". Pokud chcete zobrazit `age` deklaraci identity a shromažďovat věkovou hodnotu od uživatele, musíte přidat `age` **DisplayClaim**.
 
 ## <a name="output-claims"></a>Deklarace výstupů
 
@@ -133,10 +133,10 @@ V technickém profilu s vlastním výkonem vrátí kolekce deklarací identity n
 
 Použijte výstupní deklarace identity v těchto případech:
 
-- **Deklarace identity jsou výstupní transformací deklarací výstupů** .
+- **Deklarace identity jsou výstupní transformací deklarací výstupů**.
 - **Nastavení výchozí hodnoty ve výstupní deklaraci** , aniž by bylo potřeba shromažďovat data od uživatele nebo vracet data z technického profilu ověření. `LocalAccountSignUpWithLogonEmail`Technický profil s vlastním uplatněním nastavuje deklaraci **spuštěnou na SelfAsserted-Input** na `true` .
 - **Technický profil ověření vrací deklarace identity** – váš technický profil může zavolat technický profil ověření, který vrací některé deklarace identity. Je možné, že budete chtít deklarace identity a vrátit je k dalším krokům orchestrace v cestě uživatele. Například když se přihlašujete pomocí místního účtu, technický profil s vlastním uplatněním s názvem `SelfAsserted-LocalAccountSignin-Email` volá technický profil ověření s názvem `login-NonInteractive` . Tento technický profil ověří přihlašovací údaje uživatele a také vrátí profil uživatele. Například "userPrincipalName", "DisplayName", "dodaný" a "příjmení".
-- **Ovládací prvek zobrazení vrací výstupní deklarace** – váš technický profil může mít odkaz na [ovládací prvek zobrazení](display-controls.md). Ovládací prvek zobrazení vrátí některé deklarace identity, například ověřenou e-mailovou adresu. Je možné, že budete chtít deklarace identity a vrátit je k dalším krokům orchestrace v cestě uživatele. Funkce řízení zobrazení je nyní ve **verzi Preview** .
+- **Ovládací prvek zobrazení vrací výstupní deklarace** – váš technický profil může mít odkaz na [ovládací prvek zobrazení](display-controls.md). Ovládací prvek zobrazení vrátí některé deklarace identity, například ověřenou e-mailovou adresu. Je možné, že budete chtít deklarace identity a vrátit je k dalším krokům orchestrace v cestě uživatele. Funkce řízení zobrazení je nyní ve **verzi Preview**.
 
 Následující příklad ukazuje použití technického profilu s vlastním uplatněním, který používá zobrazení deklarací identity a výstupní deklarace identity.
 

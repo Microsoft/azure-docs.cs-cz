@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 47885e64b40db07ca3b4a7380389967a36abbd9e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9117474c3cbf5087a5b63512fcc17c4771bf7aa6
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949832"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96343871"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>Přidání konektoru rozhraní API k toku registrace uživatele (Preview)
 
@@ -26,7 +26,7 @@ Pokud chcete použít [konektor API](api-connectors-overview.md), vytvořte nejd
 
 ## <a name="create-an-api-connector"></a>Vytvoření konektoru API
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V části **služby Azure** vyberte **Azure AD B2C**.
 4. Vyberte možnost **konektory rozhraní API (Preview)** a pak vyberte **nový konektor API**.
 
@@ -89,7 +89,7 @@ Ve výchozím nastavení se ve všech požadavcích standardně odesílají dekl
 
 Pomocí těchto kroků přidáte konektor rozhraní API do uživatelského toku registrace.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V části **služby Azure** vyberte **Azure AD B2C**.
 4. Vyberte **toky uživatelů** a pak vyberte tok uživatele, do kterého chcete konektor API přidat.
 5. Vyberte možnost **konektory rozhraní API** a potom vyberte koncové body rozhraní API, které chcete vyvolat, v následujících krocích v toku uživatele:
@@ -239,8 +239,8 @@ Content-type: application/json
 
 | Parametr                                          | Typ              | Vyžadováno | Popis                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| verze                                            | Řetězec            | Yes      | Verze rozhraní API.                                                                                                                                                                                                                                                                |
-| akce                                             | Řetězec            | Yes      | Hodnota musí být `Continue` .                                                                                                                                                                                                                                                              |
+| verze                                            | Řetězec            | Ano      | Verze rozhraní API.                                                                                                                                                                                                                                                                |
+| akce                                             | Řetězec            | Ano      | Hodnota musí být `Continue` .                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | Ne       | Vrácené hodnoty mohou přepsat hodnoty shromážděné uživatelem. Můžou se taky vracet v tokenu, pokud je vybraný jako deklarace _ * aplikace * *.                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Ne       | Deklarace identity nemusí obsahovat `_<extensions-app-id>_` . Vrácené hodnoty mohou přepsat hodnoty shromážděné uživatelem. Můžou se taky vracet v tokenu, pokud je vybraný jako **deklarace identity aplikace**.  |
 
@@ -260,9 +260,9 @@ Content-type: application/json
 
 | Parametr   | Typ   | Vyžadováno | Popis                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
-| verze     | Řetězec | Yes      | Verze rozhraní API.                                                    |
-| akce      | Řetězec | Yes      | Hodnota musí být `ShowBlockPage`                                              |
-| userMessage | Řetězec | Yes      | Zpráva, která se zobrazí uživateli.                                            |
+| verze     | Řetězec | Ano      | Verze rozhraní API.                                                    |
+| akce      | Řetězec | Ano      | Hodnota musí být `ShowBlockPage`                                              |
+| userMessage | Řetězec | Ano      | Zpráva, která se zobrazí uživateli.                                            |
 
 **Činnost koncového uživatele s blokující odezvou**
 
@@ -286,10 +286,10 @@ Content-type: application/json
 
 | Parametr   | Typ    | Vyžadováno | Popis                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| verze     | Řetězec  | Yes      | Verze rozhraní API.                                                    |
-| akce      | Řetězec  | Yes      | Hodnota musí být `ValidationError` .                                           |
-| status      | Integer | Yes      | `400`Pro odpověď ValidationError musí být hodnota.                        |
-| userMessage | Řetězec  | Yes      | Zpráva, která se zobrazí uživateli.                                            |
+| verze     | Řetězec  | Ano      | Verze rozhraní API.                                                    |
+| akce      | Řetězec  | Ano      | Hodnota musí být `ValidationError` .                                           |
+| status      | Integer | Ano      | `400`Pro odpověď ValidationError musí být hodnota.                        |
+| userMessage | Řetězec  | Ano      | Zpráva, která se zobrazí uživateli.                                            |
 
 > [!NOTE]
 > Stavový kód HTTP musí být kromě hodnoty "stav" v těle odpovědi "400".

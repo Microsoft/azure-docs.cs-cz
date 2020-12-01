@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c14f406e5671e1eefb43f0208044f9945e446267
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a775ce6b7c560783a22697c5dd92288c5d5b7d4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226569"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96343701"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Zápis výrazů pro mapování atributů v Azure Active Directory
 Při konfiguraci zřizování cloudu je jedním z typů mapování atributů, které lze zadat, mapování výrazu. 
@@ -30,7 +30,7 @@ Syntaxe výrazů pro mapování atributů je Reminiscent funkcí jazyk Visual Ba
 
 * Celý výraz musí být definován z funkcí Functions, který se skládá z názvu následovaného argumenty v závorkách: <br>
   *Functions ( `<<argument 1>>` , `<<argument N>>` )*
-* Do sebe můžete vnořovat funkce. Například: <br> *FunctionOne (FunctionTwo ( `<<argument1>>` ))*
+* Do sebe můžete vnořovat funkce. Příklad: <br> *FunctionOne (FunctionTwo ( `<<argument1>>` ))*
 * Do funkcí můžete předat tři různé typy argumentů:
   
   1. Atributy, které musí být uzavřeny do hranatých závorek. Příklad: [attributeName]
@@ -47,7 +47,7 @@ Syntaxe výrazů pro mapování atributů je Reminiscent funkcí jazyk Visual Ba
 |[ConvertFromBase64](#convertfrombase64)|Funkce ConvertFromBase64 převede zadanou hodnotu v kódování Base64 na běžný řetězec.|
 |[ConvertToBase64](#converttobase64)|Funkce ConvertToBase64 převede řetězec na řetězec Unicode base64. |
 |[ConvertToUTF8Hex](#converttoutf8hex)|Funkce ConvertToUTF8Hex převede řetězec na šestnáctkovou hodnotu v kódování UTF8.|
-|[Počet](#count)|Funkce Count vrátí počet prvků v vícehodnotovém atributu.|
+|[Výpočtu](#count)|Funkce Count vrátí počet prvků v vícehodnotovém atributu.|
 |[CStr](#cstr)|Funkce CStr se převede na datový typ String.|
 |[DateFromNum](#datefromnum)|Funkce DateFromNum převede hodnotu ve formátu data AD na typ DateTime.|
 |[DNComponent](#dncomponent)|Funkce DNComponent vrací hodnotu zadané složky DN z levé části.|
@@ -87,7 +87,7 @@ Syntaxe výrazů pro mapování atributů je Reminiscent funkcí jazyk Visual Ba
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu ze zdrojového objektu. |
    | **auditování** |Vyžadováno |Řetězec |Řetězec, který chcete připojit ke konci zdrojové hodnoty. |
@@ -250,7 +250,7 @@ Pokud atribut Account není přítomen, vyvolejte chybu objektu.
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu ze zdrojového objektu. |
    | **inputFormat** |Vyžadováno |Řetězec |Byl očekáván formát zdrojové hodnoty. Podporované formáty najdete v tématu [/dotnet/Standard/Base-Types/Custom-Date-and-Time-Format-Strings](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
@@ -289,7 +289,7 @@ Funkce InStr vyhledá první výskyt podřetězce v řetězci.
 
 `num InStr(str stringcheck, str stringmatch)`  
 `num InStr(str stringcheck, str stringmatch, num start)`  
-`num InStr(str stringcheck, str stringmatch, num start , enum compare)`
+`num InStr(str stringcheck, str stringmatch, num start, enum compare)`
 
 * stringcheck: řetězec, který má být prohledán
 * stringmatch: řetězec, který se má najít
@@ -392,7 +392,7 @@ Pokud je jednou ze zdrojových hodnot atribut s více hodnotami, pak se všechny
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **oddělování** |Vyžadováno |Řetězec |Řetězec, který se používá k oddělení zdrojových hodnot při zřetězení do jednoho řetězce. Může být "", pokud není vyžadován oddělovač. |
    | **source1 ... sourceN** |Povinný, proměnlivý počet pokusů |Řetězec |Řetězcové hodnoty, které se mají spojit dohromady. |
@@ -429,7 +429,7 @@ Vrací objekt `Joh`.
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu. |
    | **Čína** |Vyžadováno |integer |Index ve **zdrojovém** řetězci, ve kterém by měl být spuštěný dílčí řetězec První znak v řetězci bude mít index 1, druhý znak bude mít index 2 atd. |
@@ -443,7 +443,7 @@ Vrací objekt `Joh`.
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **Zdrojová** |Vyžadováno |Řetězec | Obvykle se jedná o křestní jméno nebo název atributu příjmení. |
 
@@ -455,7 +455,7 @@ Vrací objekt `Joh`.
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **Zdrojová** |Vyžadováno |Logický řetězec |Očekávané **zdrojové** hodnoty jsou "true" nebo "false". |
 
@@ -497,7 +497,7 @@ Nahradí hodnoty v rámci řetězce. Funguje různě v závislosti na zadaných 
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu ze **zdrojového** objektu. |
    | **oldValue** |Volitelné |Řetězec |Hodnota, která má být nahrazena ve **zdroji** nebo **šabloně**. |
@@ -522,7 +522,7 @@ Nahradí hodnoty v rámci řetězce. Funguje různě v závislosti na zadaných 
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **uniqueValueRule1 ... uniqueValueRuleN** |Vyžaduje se aspoň 2, bez horní meze. |Řetězec | Seznam pravidel generování jedinečných hodnot, které se mají vyhodnotit |
 
@@ -535,7 +535,7 @@ Nahradí hodnoty v rámci řetězce. Funguje různě v závislosti na zadaných 
 
 **Ukazatelů**<br> 
 
-  | Name | Požadováno/opakování | Typ | Poznámky |
+  | Název | Požadováno/opakování | Typ | Poznámky |
   |--- | --- | --- | --- |
   | **AppRoleAssignments** |Vyžadováno |Řetězec |objekt **[appRoleAssignments]** . |
 
@@ -547,7 +547,7 @@ Nahradí hodnoty v rámci řetězce. Funguje různě v závislosti na zadaných 
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **Zdrojová** |Vyžadováno |Řetězec |**zdrojová** hodnota, která se má aktualizovat |
    | **Oddělovač** |Vyžadováno |Řetězec |Určuje znak, který bude použit k rozdělení řetězce (například: ","). |
@@ -568,7 +568,7 @@ Funkce StringFromSid převede pole bajtů obsahující identifikátor zabezpeče
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **Zdrojová** |Vyžadováno |Řetězec |**zdrojová** hodnota, která se má aktualizovat |
 
@@ -580,7 +580,7 @@ Funkce StringFromSid převede pole bajtů obsahující identifikátor zabezpeče
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **Zdrojová** |Vyžadováno |Řetězec |**Zdrojová** hodnota, která se má ověřit |
    | **Hodnot** |Volitelné |Řetězec |Výchozí hodnota, která se má použít, pokud zdroj neodpovídá žádným klíčům Může být prázdný řetězec (""). |
@@ -595,7 +595,7 @@ Funkce StringFromSid převede pole bajtů obsahující identifikátor zabezpeče
 
 **Ukazatelů**<br> 
 
-   | Name | Požadováno/opakování | Typ | Poznámky |
+   | Název | Požadováno/opakování | Typ | Poznámky |
    | --- | --- | --- | --- |
    | **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu ze zdrojového objektu |
    | **jazykových** |Volitelné |Řetězec |Formát pro název jazykové verze založený na RFC 4646 je *languagecode2-Country/regioncode2*, kde *languagecode2* je kód jazyka dvou písmen a *země/regioncode2* je kód subjazykové verze se dvěma písmeny. Mezi příklady patří ja-JP pro japonštinu (Japonsko) a EN-US pro angličtinu (USA). V případech, kdy kód jazyka se dvěma písmeny není k dispozici, je použit kód o třech písmenech odvozený z ISO 639-2.|
@@ -609,7 +609,7 @@ Funkce StringFromSid převede pole bajtů obsahující identifikátor zabezpeče
 
 **Ukazatelů**<br> 
 
-  | Name | Požadováno/opakování | Typ | Poznámky |
+  | Název | Požadováno/opakování | Typ | Poznámky |
   | --- | --- | --- | --- |
   | **Zdrojová** |Vyžadováno |Řetězec |Obvykle název atributu ze zdrojového objektu. |
   | **jazykových** |Volitelné |Řetězec |Formát pro název jazykové verze založený na RFC 4646 je *languagecode2-Country/regioncode2*, kde *languagecode2* je kód jazyka dvou písmen a *země/regioncode2* je kód subjazykové verze se dvěma písmeny. Mezi příklady patří ja-JP pro japonštinu (Japonsko) a EN-US pro angličtinu (USA). V případech, kdy kód jazyka se dvěma písmeny není k dispozici, je použit kód o třech písmenech odvozený z ISO 639-2.|
@@ -712,7 +712,7 @@ Split ([extensionAttribute5]; ";")
 
 **Vzorový vstup/výstup:** <br>
 
-* **Vstup** (extensionAttribute5): "PermissionSetOne, PermisionSetTwo"
+* **Vstup** (extensionAttribute5): "PermissionSetOne, PermissionSetTwo"
 * **Výstup**: ["PermissionSetOne", "PermissionSetTwo"]
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Datum výstupu jako řetězec v určitém formátu

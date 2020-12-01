@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: dech
-ms.openlocfilehash: 7823c63cf618808cb1ab4400c39f4bc64b7af338
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 1cee4d2ad1bc7f362a045a5991624ec43521b8d2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427526"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341644"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Kurz: Použití nástroje pro migraci dat k migraci dat do Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,7 +24,7 @@ Tento kurz obsahuje pokyny k použití nástroje pro migraci dat do služby Azur
 
 * **[SQL API](./introduction.md)** – k importu dat v malém měřítku můžete použít jakoukoli z možností zdroje, které jsou k dispozici v nástroji pro migraci dat. [Přečtěte si o možnostech migrace pro import dat ve velkém měřítku](cosmosdb-migrationchoices.md).
 * **[Rozhraní API pro tabulky](table-introduction.md)** – k importu dat můžete použít nástroj pro migraci dat nebo [AzCopy](table-import.md#migrate-data-by-using-azcopy) . Další informace najdete v tématu [Import dat pro použití s rozhraním Table API služby Azure Cosmos DB](table-import.md).
-* **[Rozhraní API pro MongoDB](mongodb-introduction.md)** – Nástroj pro migraci dat nepodporuje rozhraní Azure Cosmos DB API pro MongoDB buď jako zdroj, nebo jako cíl. Azure Cosmos DB Pokud chcete migrovat data do nebo z kolekcí v Azure Cosmos DB, přečtěte si téma [Postup migrace dat MongoDB do databáze Cosmos s rozhraním API Azure Cosmos DB pro MongoDB](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json) , kde najdete pokyny. Nástroj pro migraci dat můžete stále použít k exportu dat z MongoDB do kolekcí rozhraní SQL API služby Azure Cosmos DB pro použití s rozhraním SQL API.
+* **[Rozhraní API pro MongoDB](mongodb-introduction.md)** – Nástroj pro migraci dat nepodporuje rozhraní Azure Cosmos DB API pro MongoDB buď jako zdroj, nebo jako cíl. Azure Cosmos DB Pokud chcete migrovat data do nebo z kolekcí v Azure Cosmos DB, přečtěte si téma [Postup migrace dat MongoDB do databáze Cosmos s rozhraním API Azure Cosmos DB pro MongoDB](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json) , kde najdete pokyny. Nástroj pro migraci dat můžete stále použít k exportu dat z MongoDB do kolekcí rozhraní SQL API služby Azure Cosmos DB pro použití s rozhraním SQL API.
 * **[Rozhraní API Cassandra](graph-introduction.md)** – Nástroj pro migraci dat není podporovaným nástrojem pro import pro účty rozhraní API Cassandra. [Přečtěte si o možnostech migrace pro import dat do rozhraní API Cassandra](cosmosdb-migrationchoices.md#azure-cosmos-db-cassandra-api)
 * **[Rozhraní Gremlin API](graph-introduction.md)** – Nástroj pro migraci dat není v tuto chvíli podporovaným nástrojem pro import pro účty rozhraní Gremlin API. [Přečtěte si o možnostech migrace pro import dat do rozhraní Gremlin API.](cosmosdb-migrationchoices.md#other-apis) 
 
@@ -35,7 +35,7 @@ Tento kurz se zabývá následujícími úkony:
 > * Import dat z různých zdrojů dat
 > * Export ze služby Azure Cosmos DB do formátu JSON
 
-## <a name="prerequisites"></a><a id="Prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a><a id="Prerequisites"></a>Požadavky
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že provedete následující kroky:
 
@@ -131,7 +131,7 @@ dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t
 ## <a name="import-from-mongodb"></a><a id="MongoDB"></a>Import z MongoDB
 
 > [!IMPORTANT]
-> Pokud importujete do účtu Cosmos nakonfigurovaného s rozhraním API Azure Cosmos DB pro MongoDB, postupujte podle těchto [pokynů](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json).
+> Pokud importujete do účtu Cosmos nakonfigurovaného s rozhraním API Azure Cosmos DB pro MongoDB, postupujte podle těchto [pokynů](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json).
 
 Pomocí možnosti pro import zdrojového kódu MongoDB můžete importovat z jedné kolekce MongoDB, volitelně filtrovat dokumenty pomocí dotazu a upravit strukturu dokumentu pomocí projekce.  
 
@@ -159,7 +159,7 @@ dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<po
 ## <a name="import-mongodb-export-files"></a><a id="MongoDBExport"></a>Import exportovaných souborů MongoDB
 
 > [!IMPORTANT]
-> Pokud importujete na účet Azure Cosmos DB s podporou MongoDB, postupujte podle těchto [pokynů](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json).
+> Pokud importujete na účet Azure Cosmos DB s podporou MongoDB, postupujte podle těchto [pokynů](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json).
 
 Možnost importu ze zdrojového exportovaného souboru JSON z MongoDB umožňuje importovat jeden nebo několik souborů JSON vygenerovaných nástrojem mongoexport.  
 
@@ -386,7 +386,7 @@ Připojovací řetězec účtu služby Azure Cosmos DB můžete načíst ze str�
 > [!NOTE]
 > Pomocí příkazu Verify se ujistěte, že je instance služby Azure Cosmos DB zadaná v poli připojovacího řetězce přístupná.
 
-Pokud chcete importovat do jedné kolekce, zadejte název kolekce, ze které se mají data importovat, a klikněte na tlačítko Add (Přidat). Pokud chcete importovat do více než jedné kolekce, buď zadejte jednotlivé názvy kolekcí jednotlivě, nebo použijte následující syntaxi k určení více než jedné kolekce: *collection_prefix* [začátek indexu-end index]. Při zadávání více než jedné kolekce pomocí zmíněné syntaxe mějte na paměti následující pokyny:
+Pokud chcete importovat do jedné kolekce, zadejte název kolekce, ze které se mají data importovat, a klikněte na tlačítko Add (Přidat). Pokud chcete importovat do více než jedné kolekce, buď zadejte jednotlivé názvy kolekcí jednotlivě, nebo použijte následující syntaxi k určení více než jedné kolekce: *collection_prefix*[začátek indexu-end index]. Při zadávání více než jedné kolekce pomocí zmíněné syntaxe mějte na paměti následující pokyny:
 
 1. Podporují se pouze vzory pojmenování s rozsahem celých čísel. Například zadáním collection[0-3] se vytvoří následující kolekce: collection0, collection1, collection2, collection3.
 2. Můžete použít zkrácenou syntaxi: collection[3] vytvoří stejnou sadu kolekcí uvedenou v kroku 1.
@@ -445,7 +445,7 @@ Připojovací řetězec pro účet Azure Cosmos DB můžete načíst ze stránky
 > [!NOTE]
 > Pomocí příkazu Verify se ujistěte, že je instance služby Azure Cosmos DB zadaná v poli připojovacího řetězce přístupná.
 
-Chcete-li importovat do jedné kolekce, zadejte název kolekce, do které chcete importovat data, a poté klikněte na tlačítko Přidat. Chcete-li importovat do více než jedné kolekce, zadejte jednotlivé názvy kolekcí jednotlivě. K určení více než jedné kolekce můžete použít také následující syntaxi: *collection_prefix* [začátek indexu-end index]. Při zadávání více než jedné kolekce pomocí zmíněné syntaxe mějte na paměti následující pokyny:
+Chcete-li importovat do jedné kolekce, zadejte název kolekce, do které chcete importovat data, a poté klikněte na tlačítko Přidat. Chcete-li importovat do více než jedné kolekce, zadejte jednotlivé názvy kolekcí jednotlivě. K určení více než jedné kolekce můžete použít také následující syntaxi: *collection_prefix*[začátek indexu-end index]. Při zadávání více než jedné kolekce pomocí zmíněné syntaxe mějte na paměti následující pokyny:
 
 1. Podporují se pouze vzory pojmenování s rozsahem celých čísel. Například zadáním collection[0-3] se vytvoří následující kolekce: collection0, collection1, collection2, collection3.
 2. Můžete použít zkrácenou syntaxi: collection[3] vytvoří stejnou sadu kolekcí uvedenou v kroku 1.

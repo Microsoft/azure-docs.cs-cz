@@ -10,19 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: aahi
-ms.openlocfilehash: 1e6fc68a1e48c9c47cc6a76911f947f2d9916a25
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 78a3c3c2936bfcaf58ea9e46bd3d6a610cdfe436
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379506"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341491"
 ---
 # <a name="sending-search-requests-to-the-bing-video-search-api"></a>Odesílání požadavků hledání do rozhraní API Bingu pro vyhledávání videí
 
 > [!WARNING]
-> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 > Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
-> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Tento článek popisuje parametry a atributy požadavků odeslaných do rozhraní API Bingu pro vyhledávání videí a také objekt odpovědi JSON, který vrátí. 
 
@@ -32,7 +32,7 @@ Tento článek popisuje parametry a atributy požadavků odeslaných do rozhran�
 
 Pokud nabízíte vyhledávací pole, do kterého může uživatel zadat hledaný termín, můžete hledání vylepšit s využitím [rozhraní API pro automatické návrhy Bingu](../../bing-autosuggest/get-suggested-search-terms.md). Toto rozhraní API vrací navrhované řetězce dotazů na základě částečné shody hledaných termínů zadávaných uživatelem.
 
-Jakmile uživatel vstoupí do hledaného termínu, adresa URL ho zakóduje před nastavením parametru dotazu [q](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) . Pokud uživatel například zadá *sailing dinghies* , nastavte parametr `q` na hodnotu `sailing+dinghies` nebo `sailing%20dinghies`.
+Jakmile uživatel vstoupí do hledaného termínu, adresa URL ho zakóduje před nastavením parametru dotazu [q](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) . Pokud uživatel například zadá *sailing dinghies*, nastavte parametr `q` na hodnotu `sailing+dinghies` nebo `sailing%20dinghies`.
 
 ## <a name="sending-a-request"></a>Odesílá se žádost.
 

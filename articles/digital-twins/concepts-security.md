@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 349f57299387b616373bb5fb4d295da8df8ee493
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: d62e7566038af6647cab2992b02184a4ea5ba30b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279901"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344143"
 ---
 # <a name="secure-azure-digital-twins"></a>Zabezpečení digitálních vláken Azure
 
@@ -24,7 +24,7 @@ Digitální vlákna Azure také podporuje šifrování dat v klidovém umístěn
 
 Služba Azure RBAC se poskytuje pro digitální vlákna Azure prostřednictvím integrace s [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD).
 
-Službu Azure RBAC můžete použít k udělení oprávnění *objektu zabezpečení* , který může být uživatel, skupina nebo instanční objekt aplikace. Objekt zabezpečení je ověřený službou Azure AD a při návratu obdrží token OAuth 2,0. Tento token se dá použít k autorizaci žádosti o přístup k instanci digitálních vláken Azure.
+Službu Azure RBAC můžete použít k udělení oprávnění *objektu zabezpečení*, který může být uživatel, skupina nebo instanční objekt aplikace. Objekt zabezpečení je ověřený službou Azure AD a při návratu obdrží token OAuth 2,0. Tento token se dá použít k autorizaci žádosti o přístup k instanci digitálních vláken Azure.
 
 ### <a name="authentication-and-authorization"></a>Ověřování a autorizace
 
@@ -93,7 +93,7 @@ Pokud se uživatel pokusí provést akci, kterou role nepovoluje, může se zobr
 
 **Značka služby** představuje skupinu předpon IP adres z dané služby Azure. Společnost Microsoft spravuje předpony adres, které jsou zahrnuté ve značce služby, a automaticky aktualizuje značku služby, protože se mění adresy. tím se minimalizuje složitost častých aktualizací pravidel zabezpečení sítě. Další informace o značkách služby najdete v tématu  [*značky virtuální sítě*](../virtual-network/service-tags-overview.md). 
 
-Značky služeb můžete použít k definování řízení přístupu k síti u [skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md#security-rules)   nebo [Azure firewall](../firewall/service-tags.md)pomocí značek služby místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (v tomto případě **AzureDigitalTwins** ) v příslušném *zdrojovém*   nebo *cílovém*   poli pravidla můžete povolit nebo odepřít provoz pro odpovídající službu. 
+Značky služeb můžete použít k definování řízení přístupu k síti u [skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md#security-rules)   nebo [Azure firewall](../firewall/service-tags.md)pomocí značek služby místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (v tomto případě **AzureDigitalTwins**) v příslušném *zdrojovém*   nebo *cílovém*   poli pravidla můžete povolit nebo odepřít provoz pro odpovídající službu. 
 
 Níže jsou uvedeny podrobnosti o značce služby **AzureDigitalTwins** .
 
@@ -121,7 +121,7 @@ Digitální vlákna Azure zajišťuje Šifrování neaktivních a přenosových 
 
 ## <a name="cross-origin-resource-sharing-cors"></a>Sdílení prostředků mezi zdroji (CORS)
 
-Digitální vlákna Azure v současné době nepodporuje **sdílení prostředků mezi zdroji (CORS)**. Výsledkem je, že pokud voláte REST API z aplikace v prohlížeči, rozhraní [API Management (APIM)](../api-management/api-management-key-concepts.md) nebo konektor [Power Apps](https://docs.microsoft.com/powerapps/powerapps-overview) , může se zobrazit chyba zásad.
+Digitální vlákna Azure v současné době nepodporuje **sdílení prostředků mezi zdroji (CORS)**. Výsledkem je, že pokud voláte REST API z aplikace v prohlížeči, rozhraní [API Management (APIM)](../api-management/api-management-key-concepts.md) nebo konektor [Power Apps](/powerapps/powerapps-overview) , může se zobrazit chyba zásad.
 
 Chcete-li tuto chybu vyřešit, můžete provést jednu z následujících akcí:
 * Z zprávy vypruhute hlavičku CORS `Access-Control-Allow-Origin` . Tato hlavička uvádí, zda lze odpověď sdílet. 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: db81f8b60cf4883223f6fc084c19c8da1d07bc9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 282d60b1894ffa186a6b5b6b5630aefa9e961572
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388098"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345129"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavení přihlašování pomocí účet Microsoft s využitím vlastních zásad v Azure Active Directory B2C
 
@@ -33,18 +33,18 @@ V tomto článku se dozvíte, jak povolit přihlášení uživatelů ze účet M
 
 Pokud chcete povolit přihlašování pro uživatele pomocí účet Microsoft, musíte zaregistrovat aplikaci v tenantovi Azure AD. Tenant Azure AD není stejný jako váš tenant Azure AD B2C.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 1. Vyberte **Nová registrace**.
 1. Zadejte **název** vaší aplikace. Například *MSAapp1*.
-1. V části **podporované typy účtů**vyberte **účty v jakémkoli adresáři organizace (libovolný adresář Azure AD – víceklientské) a osobní účty Microsoft (např. Skype, Xbox)**.
+1. V části **podporované typy účtů** vyberte **účty v jakémkoli adresáři organizace (libovolný adresář Azure AD – víceklientské) a osobní účty Microsoft (např. Skype, Xbox)**.
 1. V části **identifikátor URI přesměrování (volitelné)** vyberte **Web** a `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/authresp` do textového pole zadejte. Nahraďte `<tenant-name>` názvem vašeho tenanta Azure AD B2C.
 1. Vybrat **registraci**
 1. Poznamenejte si **ID aplikace (klienta)** zobrazené na stránce Přehled aplikace. To budete potřebovat při konfiguraci zprostředkovatele deklarací v pozdější části.
 1. Vybrat **certifikáty & tajných** kódů
 1. Klikněte na **Nový tajný kód klienta**.
-1. Zadejte **Popis** tajného kódu, například *MSA tajný klíč klienta aplikace*a klikněte na tlačítko **Přidat**.
+1. Zadejte **Popis** tajného kódu, například *MSA tajný klíč klienta aplikace* a klikněte na tlačítko **Přidat**.
 1. Poznamenejte si heslo aplikace zobrazené ve sloupci **hodnota** . Tuto hodnotu použijete v další části.
 
 ## <a name="configuring-optional-claims"></a>Konfigurace volitelných deklarací identity
@@ -64,15 +64,15 @@ Pokud chcete získat `family_name` `given_name` deklarace identity a ze služby 
 
 Teď, když jste vytvořili aplikaci v tenantovi Azure AD, musíte do svého tenanta Azure AD B2C Uložit tajný klíč klienta této aplikace.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vašeho tenanta.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
 1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
-1. Pro **Možnosti**vyberte možnost `Manual` .
+1. Pro **Možnosti** vyberte možnost `Manual` .
 1. Zadejte **název** klíče zásad. Například, `MSASecret`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
-1. Do pole **tajný kód**zadejte tajný klíč klienta, který jste si poznamenali v předchozí části.
-1. Pro **použití klíče**vyberte `Signature` .
+1. Do pole **tajný kód** zadejte tajný klíč klienta, který jste si poznamenali v předchozí části.
+1. Pro **použití klíče** vyberte `Signature` .
 1. Klikněte na **Vytvořit**.
 
 ## <a name="add-a-claims-provider"></a>Přidat zprostředkovatele deklarací identity
@@ -100,7 +100,7 @@ Službu Azure AD můžete definovat jako zprostředkovatele deklarací přidán�
             <Item Key="response_mode">form_post</Item>
             <Item Key="scope">openid profile email</Item>
             <Item Key="HttpBinding">POST</Item>
-            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <Item Key="UsePolicyInRedirectUri">false</Item>
             <Item Key="client_id">Your Microsoft application client ID</Item>
           </Metadata>
           <CryptographicKeys>
@@ -138,7 +138,7 @@ Než budete pokračovat, nahrajte upravenou zásadu a potvrďte, že zatím nem�
 
 1. V Azure Portal přejděte na svého tenanta Azure AD B2C a vyberte **rozhraní identity Experience Framework**.
 1. Na stránce **vlastní zásady** vyberte **nahrát vlastní zásadu**.
-1. Pokud existuje, zapněte **zásadu přepsat**a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions.xml* .
+1. Pokud existuje, zapněte **zásadu přepsat** a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions.xml* .
 1. Klikněte na **Odeslat**.
 
 Pokud se na portálu nezobrazí žádné chyby, pokračujte k další části.
@@ -158,7 +158,7 @@ V tomto okamžiku jste nastavili zprostředkovatele identity, ale ještě není 
 Element **claimsproviderselection.** se podobá tlačítku poskytovatele identity na obrazovce pro registraci nebo přihlášení. Pokud přidáte prvek **claimsproviderselection.** pro účet Microsoft, zobrazí se nové tlačítko, když se uživatel na stránce zařadí.
 
 1. V souboru *TrustFrameworkExtensions.xml* vyhledejte element **OrchestrationStep** , který obsahuje cestu k `Order="1"` uživateli, kterou jste vytvořili.
-1. Pod **ClaimsProviderSelects**přidejte následující element. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `MicrosoftAccountExchange` :
+1. Pod **ClaimsProviderSelects** přidejte následující element. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `MicrosoftAccountExchange` :
 
     ```xml
     <ClaimsProviderSelection TargetClaimsExchangeId="MicrosoftAccountExchange" />

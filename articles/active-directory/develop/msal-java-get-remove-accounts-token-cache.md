@@ -13,12 +13,12 @@ ms.date: 11/07/2019
 ms.author: sagonzal
 ms.reviewer: navyasri.canumalla
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 6267c2118b7bac9befb42102d1118faac639bf49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc039e06c8c9d75608b60c2f48e86bc5503e5aec
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87312550"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344857"
 ---
 # <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>Získání a odebrání účtů z mezipaměti tokenů pomocí MSAL pro jazyk Java
 
@@ -39,7 +39,7 @@ Set<IAccount> accounts = pca.getAccounts().join();
 
 ## <a name="remove-accounts-from-the-cache"></a>Odebrání účtů z mezipaměti
 
-Chcete-li odebrat účet z mezipaměti, vyhledejte účet, který je třeba odebrat, a potom zavolejte `PublicClientApplicatoin.removeAccount()` jako v následujícím příkladu:
+Chcete-li odebrat účet z mezipaměti, vyhledejte účet, který je třeba odebrat, a potom zavolejte `PublicClientApplication.removeAccount()` jako v následujícím příkladu:
 
 ```java
 Set<IAccount> accounts = pca.getAccounts().join();
