@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: f12c1f20e01cb67adff2c83c7262f92daf8da969
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 773334787ec7b2706c16e517281d6a60215ad482
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151487"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353013"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Rozhraní API pro automatizaci rezervací Azure
 
@@ -62,7 +62,7 @@ Text požadavku:
 Rezervaci můžete zakoupit také na webu Azure Portal. Další informace najdete v následujících článcích:
 
 Plány služby:
-- [Virtuální počítač](../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json)
+- [Virtuální počítač](../../virtual-machines/prepay-reserved-vm-instances.md?toc=%2fazure%2fbilling%2fTOC.json)
 -  [Databáze Cosmos](../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json)
 - [SQL Database](../../azure-sql/database/reserved-capacity-overview.md?toc=/azure/billing/TOC.json)
 

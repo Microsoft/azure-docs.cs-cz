@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: e302a8459d3092a5543efda7494c68d6660df39d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 625c40ea17cf20449f1be241a1605a80bf6a73f1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690812"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352996"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Softwarové náklady nezahrnuté ve službě Azure Reserved VM Instances
 
@@ -67,7 +67,7 @@ Náklady na každý z těchto měřičů můžete získat prostřednictvím rozh
 Další informace o rezervacích pro Azure najdete v následujících článcích:
 
 - [Co jsou rezervace v Azure?](save-compute-costs-reservations.md)
-- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [Správa rezervací v Azure](manage-reserved-vm-instance.md)
 - [Vysvětlení způsobu uplatnění slevy za rezervaci](../manage/understand-vm-reservation-charges.md)
 - [Vysvětlení využití rezervací u předplatného s průběžnými platbami](understand-reserved-instance-usage.md)

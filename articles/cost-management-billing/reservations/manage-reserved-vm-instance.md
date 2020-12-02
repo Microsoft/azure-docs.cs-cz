@@ -8,12 +8,12 @@ ms.reviewer: yashesvi
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 300ac0996d9dcb9ecb07abd3392447e393c1781b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 050984d58137ec03996572d2de41115073e4ab2b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151623"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338159"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Správa rezervací prostředků Azure
 
@@ -168,7 +168,7 @@ Další informace o rezervacích Azure najdete v následujících článcích:
 - [Co jsou rezervace v Azure?](save-compute-costs-reservations.md)
 
 Zakoupení plánu služby:
-- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../../azure-sql/database/reserved-capacity-overview.md)
 - [Předplacení prostředků Azure Cosmos DB pomocí rezervované kapacity služby Azure Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md)
 

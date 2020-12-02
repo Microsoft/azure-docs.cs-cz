@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 15e45143d1da5ac405b3e408df197ab04b4dea39
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 0f4f4d934361f1e59eceaaccca680f0cf155bb04
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412268"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348955"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Začínáme s portálem Azure Enterprise
 
@@ -44,33 +44,33 @@ Zákazníci Azure se smlouvou Enterprise (EA) můžou přiřazovat pět různýc
 - Správce oddělení (jen pro čtení)
 - Vlastník účtu
 
-Každá role má proměnlivou úroveň uživatelských omezení a oprávnění. Další informace najdete v tématu [Organizační struktura a oprávnění podle role](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-ea-roles#organization-structure-and-permissions-by-role).
+Každá role má proměnlivou úroveň uživatelských omezení a oprávnění. Další informace najdete v tématu [Organizační struktura a oprávnění podle role](./understand-ea-roles.md#organization-structure-and-permissions-by-role).
 
 ## <a name="activate-your-enrollment-create-a-subscription-and-other-administrative-tasks"></a>Aktivace registrace, vytvoření předplatného a další úlohy správy
 
-Další informace o aktivaci registrace, vytvoření oddělení nebo předplatného, přidání správců a vlastníků účtů a dalších úloh správy najdete v tématu [Správa portálu Azure EA](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-administration).
+Další informace o aktivaci registrace, vytvoření oddělení nebo předplatného, přidání správců a vlastníků účtů a dalších úloh správy najdete v tématu [Správa portálu Azure EA](./ea-portal-administration.md).
 
-Pokud se chcete dozvědět víc o převodu předplatného Enterprise na předplatné s průběžnými platbami, přečtěte si téma [Převody Azure Enterprise](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-transfers).
+Pokud se chcete dozvědět víc o převodu předplatného Enterprise na předplatné s průběžnými platbami, přečtěte si téma [Převody Azure Enterprise](./ea-transfers.md).
 
 ## <a name="view-usage-summary-and-download-reports"></a>Zobrazení souhrnu využití a stahování sestav
 
 Můžete spravovat své faktury Azure EA a pracovat s nimi. Faktura slouží jako vaše vyúčtování a měli byste zkontrolovat její přesnost.
 
-Pokud chcete zobrazit souhrn využití, stahovat sestavy a spravovat faktury za registraci, přečtěte si téma [Faktury za smlouvy Azure Enterprise](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-enrollment-invoices).
+Pokud chcete zobrazit souhrn využití, stahovat sestavy a spravovat faktury za registraci, přečtěte si téma [Faktury za smlouvy Azure Enterprise](./ea-portal-enrollment-invoices.md).
 
 ## <a name="now-that-youre-familiar-with-the-basics-here-are-some-additional-links-to-help-you-get-onboarded"></a>Teď, když jste se seznámili se základy, jsou zde některé další odkazy, které vám pomůžou s onboardingem.
 
-Článek [Ceny Azure EA](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-pricing-overview) poskytuje podrobnosti o tom, jak se počítá využití, a prochází poplatky za různé služby Azure v rámci smlouvy Enterprise, kde jsou výpočty složitější.
+Článek [Ceny Azure EA](./ea-pricing-overview.md) poskytuje podrobnosti o tom, jak se počítá využití, a prochází poplatky za různé služby Azure v rámci smlouvy Enterprise, kde jsou výpočty složitější.
 
-Pokud chcete zjistit, jak vám rezervace Azure umožní ušetřit peníze za rezervované instance virtuálních počítačů v rámci smlouvy Enterprise, přečtěte si článek [Rezervované instance virtuálních počítačů Azure EA](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-vm-reservations).
+Pokud chcete zjistit, jak vám rezervace Azure umožní ušetřit peníze za rezervované instance virtuálních počítačů v rámci smlouvy Enterprise, přečtěte si článek [Rezervované instance virtuálních počítačů Azure EA](./ea-portal-vm-reservations.md).
 
-Informace o tom, která rozhraní REST API se mají použít s vaší registrací Azure Enterprise, a vysvětlení, jak vyřešit běžné problémy s rozhraními REST API, najdete v článku [Rozhraní Azure Enterprise REST API](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis).
+Informace o tom, která rozhraní REST API se mají použít s vaší registrací Azure Enterprise, a vysvětlení, jak vyřešit běžné problémy s rozhraními REST API, najdete v článku [Rozhraní Azure Enterprise REST API](./ea-portal-rest-apis.md).
 
-Článek [Smlouvy k Azure EA a jejich změny](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements) popisuje, jak mohou smlouvy Azure EA a jejich změny ovlivnit váš přístup ke službám Azure, jejich používání a úhrady za ně.
+Článek [Smlouvy k Azure EA a jejich změny](./ea-portal-agreements.md) popisuje, jak mohou smlouvy Azure EA a jejich změny ovlivnit váš přístup ke službám Azure, jejich používání a úhrady za ně.
 
-Článek [Azure Marketplace](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-azure-marketplace) vysvětluje, jak partneři a zákazníci EA mohou zobrazovat poplatky za Marketplace a povolit nákupy na Azure Marketplace.
+Článek [Azure Marketplace](./ea-azure-marketplace.md) vysvětluje, jak partneři a zákazníci EA mohou zobrazovat poplatky za Marketplace a povolit nákupy na Azure Marketplace.
 
-Vysvětlení k běžným úlohám, které provádí správce partnerů na portálu Azure EA, najdete v článku [Správa portálu Azure EA pro partnery](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-partner-portal-administration).
+Vysvětlení k běžným úlohám, které provádí správce partnerů na portálu Azure EA, najdete v článku [Správa portálu Azure EA pro partnery](./ea-partner-portal-administration.md).
 
 ## <a name="get-started-on-azure-ea---faq"></a>Začínáme s Azure EA – Nejčastější dotazy
 
@@ -124,7 +124,7 @@ Podle potřeby můžete stejné nákladové středisko použít ke sledování v
 
 Například pokud chcete sledovat náklady na speciální projekt, na kterém se podílí více oddělení, můžete ke sledování využití a nákladů definovat nákladové středisko na úrovni předplatného.
 
-Nákladové středisko není možné definovat na úrovni služby. V případě, že chcete sledovat využití na úrovni služby, můžete využít funkci _značek_ , která je dostupná na úrovni služby.
+Nákladové středisko není možné definovat na úrovni služby. V případě, že chcete sledovat využití na úrovni služby, můžete využít funkci _značek_, která je dostupná na úrovni služby.
 
 ### <a name="how-do-i-track-usage-and-spend-by-different-departments-in-my-organization"></a>Jak můžu sledovat využití a útratu v různých odděleních organizace?
 
@@ -132,7 +132,7 @@ V rámci registrace Azure EA můžete vytvořit libovolný počet oddělení. Ab
 
 Po vytvoření oddělení a předplatných uvidíte v sestavě využití data. Tyto informace vám pomohou sledovat využití a spravovat náklady a útratu na úrovni oddělení.
 
-K datům využití se můžete dostat také v rozhraní API pro generování sestav. Podrobné informace a ukázkový kód najdete v tématu [Rozhraní Azure Enterprise REST API](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis).
+K datům využití se můžete dostat také v rozhraní API pro generování sestav. Podrobné informace a ukázkový kód najdete v tématu [Rozhraní Azure Enterprise REST API](./ea-portal-rest-apis.md).
 
 ### <a name="can-i-set-a-spending-quota-and-get-alerts-as-i-approach-my-limit"></a>Mohu nastavit kvótu útraty a dostávat upozornění, když se budu blížit limitu?
 
@@ -144,7 +144,7 @@ Pokud chcete definovat kvótu útraty, vyberte oddělení a potom ikonu úprav. 
 
 Informace o používání _skupin prostředků_ a _značek_ se sledují na úrovni služby a jsou k dispozici v souboru s podrobnými informacemi o využití (CSV), který si můžete stáhnout. Na portálu Azure Enterprise přejděte na [stažení sestavy využití](https://ea.azure.com/report/downloadusage).
 
-K informacím o využití se dostanete také přes rozhraní API. Podrobné informace a ukázkový kód najdete v tématu [Rozhraní Azure Enterprise REST API](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis).
+K informacím o využití se dostanete také přes rozhraní API. Podrobné informace a ukázkový kód najdete v tématu [Rozhraní Azure Enterprise REST API](./ea-portal-rest-apis.md).
 
 > [!NOTE]
 > Značky můžete používat pouze u prostředků, které podporují operace Azure Resource Manageru. Pokud jste vytvořili virtuální počítač, virtuální síť nebo úložiště prostřednictvím modelu nasazení Classic (například přes portál Classic), nemůžete pro tyto prostředky použít značky. Pokud chcete zajistit podporu označování, musíte tyto prostředky nasadit znovu prostřednictvím Resource Manageru. Všechny ostatní prostředky označování podporují.

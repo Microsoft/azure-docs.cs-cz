@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperfq1
-ms.openlocfilehash: f18f1184f921aca4f2c1e33ac00dcf14c63b24eb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bb8a52a2258143e1c68ca46ac31a8c986b1bcfe7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95893354"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457130"
 ---
 # <a name="azure-ea-portal-administration"></a>Správa portálu Azure EA
 
@@ -282,13 +282,13 @@ Na portálu Azure EA můžete spravovat náklady a použití Azure EA. Na portá
 
 Každá role má jinou úroveň přístupu a jiná oprávnění.
 
-Další informace o rolích uživatelů najdete v tématu [Role podnikových uživatelů](/azure/cost-management-billing/manage/understand-ea-roles#enterprise-user-roles).
+Další informace o rolích uživatelů najdete v tématu [Role podnikových uživatelů](./understand-ea-roles.md#enterprise-user-roles).
 
 ## <a name="add-an-azure-ea-account"></a>Přidání účtu Azure EA
 
 Účet Azure EA je organizační jednotka portálu Azure EA Portal. Slouží ke správě předplatných a také ke generování sestav. Pokud chcete získat přístup ke službám Azure, potřebujete vytvořit účet nebo vám ho někdo musí vytvořit.
 
-Další informace o účtech Azure najdete v tématu [Přidání účtu](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-administration#add-an-account).
+Další informace o účtech Azure najdete v tématu [Přidání účtu](#add-an-account).
 
 ## <a name="enterprise-devtest-offer"></a>Nabídka Enterprise pro vývoj/testování
 
@@ -361,7 +361,7 @@ Odstranění předplatného, ve kterém jste vlastníkem účtu:
 
 Předplatná můžou rušit pouze správci účtů.
 
-Další informace najdete v části [Co se stane po zrušení předplatného?](cancel-azure-subscription.md#what-happens-after-i-cancel-my-subscription).
+Další informace najdete v části [Co se stane po zrušení předplatného?](cancel-azure-subscription.md#what-happens-after-subscription-cancellation).
 
 ## <a name="delete-an-account"></a>Odstranění účtu
 

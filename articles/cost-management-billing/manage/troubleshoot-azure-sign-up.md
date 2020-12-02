@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 91b3b7b71524c76006ad4d431774e05e47fd0266
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 85f6e64cb20a14b9cd03776d138872d6a4191535
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131067"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344483"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Řešení potíží při registraci nového účtu na webu Azure Portal nebo Centru účtů Azure
 
@@ -76,8 +76,8 @@ Pokud chcete tento problém vyřešit, překontrolujte, jestli jsou pravdivá n�
 
 #### <a name="you-see-the-message-your-current-account-type-is-not-supported"></a>Zobrazí se zpráva typu Váš aktuální typ účtu se nepodporuje.
 
-K tomuto problému může dojít, pokud je účet registrován v [nespravovaném adresáři Azure AD](../../active-directory/users-groups-roles/directory-self-service-signup.md) a není v adresáři Azure AD vaší organizace.
-Pokud chcete tento problém vyřešit, zaregistrujte si účet Azure pomocí jiného účtu nebo převezměte nespravovaný adresář služby AD. Další informace najdete v tématu o [převzetí nespravovaného adresáře jako správce v Azure Active Directory](../../active-directory/users-groups-roles/domains-admin-takeover.md).
+K tomuto problému může dojít, pokud je účet registrován v [nespravovaném adresáři Azure AD](../../active-directory/enterprise-users/directory-self-service-signup.md) a není v adresáři Azure AD vaší organizace.
+Pokud chcete tento problém vyřešit, zaregistrujte si účet Azure pomocí jiného účtu nebo převezměte nespravovaný adresář služby AD. Další informace najdete v tématu o [převzetí nespravovaného adresáře jako správce v Azure Active Directory](../../active-directory/enterprise-users/domains-admin-takeover.md).
 
 ## <a name="identity-verification-by-phone"></a>Telefonické ověření identity
 
