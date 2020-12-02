@@ -1,6 +1,6 @@
 ---
-title: Osvědčené postupy pro synapse fond SQL ve službě Azure synapse Analytics (dřív SQL DW)
-description: Doporučení a osvědčené postupy pro vývoj řešení pro fond SQL ve službě Azure synapse Analytics (dřív SQL DW).
+title: Osvědčené postupy pro vyhrazený fond SQL (dřív SQL DW)
+description: Doporučení a osvědčené postupy pro vývoj řešení pro vyhrazený fond SQL (dříve SQL DW) ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: cf841da85dc929366991d6aed8f3d400ab3b31cc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 9802e6553d553aae4f13194dc9951d1a17af6f66
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489638"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462877"
 ---
-# <a name="best-practices-for-synapse-sql-pool-in-azure-synapse-analytics-formerly-sql-dw"></a>Osvědčené postupy pro synapse fond SQL ve službě Azure synapse Analytics (dřív SQL DW)
+# <a name="best-practices-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Osvědčené postupy pro vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics
 
-Tento článek je kolekcí osvědčených postupů, které vám pomůžou dosáhnout optimálního výkonu nasazení [fondu SQL](sql-data-warehouse-overview-what-is.md) .  Účelem tohoto článku je poskytnout vám základní pokyny a zvýraznit důležité oblasti, které se zaměřují.  
+Tento článek je kolekcí osvědčených postupů, které vám pomůžou dosáhnout optimálního výkonu z [vyhrazeného nasazení fondu SQL (dříve SQL DW)](sql-data-warehouse-overview-what-is.md) .  Účelem tohoto článku je poskytnout vám základní pokyny a zvýraznit důležité oblasti, které se zaměřují.  
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>Snižte náklady pomocí pozastavení a škálování
 
@@ -27,7 +27,7 @@ Další informace o snižování nákladů prostřednictvím pozastavování a �
 
 ## <a name="maintain-statistics"></a>Udržujte statistiky
 
-Fond SQL se dá nakonfigurovat tak, aby automaticky zjišťoval a vytvořil statistiku pro sloupce.  Plány dotazů vytvořené optimalizátorem jsou dostupné jenom jako dostupné statistiky.  
+Vyhrazený fond SQL (dřív SQL DW) se dá nakonfigurovat tak, aby automaticky zjišťoval a vytvořil statistiku pro sloupce.  Plány dotazů vytvořené optimalizátorem jsou dostupné jenom jako dostupné statistiky.  
 
 Doporučujeme, abyste povolili AUTO_CREATE_STATISTICS pro vaše databáze a pravidelně aktualizovali statistiku nebo po každém zatížení, abyste zajistili, že statistiky pro sloupce používané ve vašich dotazech jsou vždycky aktuální.
 
@@ -40,7 +40,7 @@ Viz také [Správa statistik tabulek](sql-data-warehouse-tables-statistics.md), 
 
 ## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>Použijte zobrazení dynamických zpráv k monitorování a optimalizaci dotazů
 
-Fond SQL má několik zobrazení dynamické správyů, které lze použít k monitorování provádění dotazů.  Podrobné pokyny, jak se podívat na podrobnosti o spuštěném dotazu, najdete v článku sledování úlohy pomocí zobrazení dynamické správy.  
+Vyhrazený fond SQL (dříve SQL DW) má několik zobrazení dynamické správy, které se dají použít k monitorování provádění dotazů.  Podrobné pokyny, jak se podívat na podrobnosti o spuštěném dotazu, najdete v článku [sledování úlohy pomocí zobrazení dynamické správy](sql-data-warehouse-manage-monitor.md) .  
 
 S rychlým vyhledáváním dotazů v těchto zobrazeních dynamických zpráv může pomoci použití možnosti LABEL v dotazech.
 
@@ -62,7 +62,7 @@ Viz také [INSERT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-
 
 ## <a name="use-polybase-to-load-and-export-data-quickly"></a>Použijte PolyBase k rychlému načítání a exportu dat
 
-Fond SQL podporuje načítání a export dat prostřednictvím několika nástrojů, včetně Azure Data Factory, základů a BCP.  Pro malá množství dat, kde není výkon tak důležitý, by vám měl stačit libovolný nástroj.  Když však načítáte nebo exportujete velká množství dat nebo vyžadujete vysoký výkon, nejlepší volbou je PolyBase.  
+Vyhrazený fond SQL (dřív SQL DW) podporuje načítání a export dat prostřednictvím několika nástrojů, včetně Azure Data Factory, základů a BCP.  Pro malá množství dat, kde není výkon tak důležitý, by vám měl stačit libovolný nástroj.  Když však načítáte nebo exportujete velká množství dat nebo vyžadujete vysoký výkon, nejlepší volbou je PolyBase.  
 
 Základna je navržená tak, aby využila distribuovanou povahu systému a načetla a exportovali velikost dat rychleji než jakýkoli jiný nástroj.  Úlohy funkce PolyBase můžete spustit pomocí příkazů CTAS nebo INSERT INTO.   
 
@@ -74,13 +74,13 @@ Azure Data Factory podporuje také základní zátěže a může dosáhnout podo
 > [!NOTE]
 > Chcete-li maximalizovat propustnost při použití textových souborů gzip, rozdělte soubory do 60 nebo více souborů, čímž maximalizujete paralelismus zátěže.  Pro rychlejší celkovou propustnost zvažte souběžné načítání dat.
 
-Viz také [načtení dat](design-elt-data-loading.md), [Průvodce používáním základny](guidance-for-loading-data.md), [vzorů a strategií načítání fondů SQL](https://blogs.msdn.microsoft.com/sqlcat/20../../), [načítání dat pomocí Azure Data Factory]( ../../data-factory/load-azure-sql-data-warehouse.md), [přesouvání dat pomocí Azure Data Factory](../../data-factory/transform-data-using-machine-learning.md), [Vytvoření externího formátu souboru](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a [Vytvoření tabulky jako Select (CTAS)](sql-data-warehouse-develop-ctas.md).
+Viz také [načtení dat](design-elt-data-loading.md), [Průvodce používáním základních](guidance-for-loading-data.md), [vyhrazených vzorů a strategií načítání fondů SQL](https://blogs.msdn.microsoft.com/sqlcat/20../../), [načítání dat pomocí Azure Data Factory]( ../../data-factory/load-azure-sql-data-warehouse.md), [přesouvání dat pomocí Azure Data Factory](../../data-factory/transform-data-using-machine-learning.md), [Vytvoření externího formátu souboru](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a [Vytvoření tabulky jako Select (CTAS)](sql-data-warehouse-develop-ctas.md).
 
 ## <a name="load-then-query-external-tables"></a>Načtěte a následně dotazujte externí tabulky
 
 Přestože lze PolyBase (také označovanou jako externí tabulky) považovat za nejrychlejší způsob načítání dat, není ideální pro dotazy. Základní tabulky v současné době podporují pouze soubory objektů BLOB v Azure a Azure Data Lake úložiště. Tyto soubory nemají podporu v žádných výpočetních prostředcích.  
 
-V důsledku toho fond SQL nemůže tuto práci přesměrovat, a proto musí číst celý soubor tak, že ho načte do databáze tempdb, aby si data četl.  Proto pokud máte několik dotazů, které budou tato data dotazovat, je lepší data jednou nahrát a nastavit dotazy, aby používaly místní tabulku.
+V důsledku toho vyhrazený fond SQL nemůže tuto práci vyřešit, a proto musí číst celý soubor tak, že ho načte do databáze tempdb, aby bylo možné data číst.  Proto pokud máte několik dotazů, které budou tato data dotazovat, je lepší data jednou nahrát a nastavit dotazy, aby používaly místní tabulku.
 
 Viz také [Průvodce používáním základny](guidance-for-loading-data.md).
 
@@ -101,9 +101,9 @@ Viz také [Přehled tabulek](sql-data-warehouse-tables-overview.md), [distribuce
 
 ## <a name="do-not-over-partition"></a>Nevytvářejte zbytečně moc oddílů
 
-I když je možné rozdělit data na oddíly při údržbě dat prostřednictvím přepínání oddílů nebo optimalizací kontrol pomocí eliminace oddílu, může vaše dotazy zpomalit příliš mnoho oddílů.  Často se jedná o strategii s vysokými členitými podmnožinami, která může fungovat dobře na SQL Server nemusí dobře fungovat ve fondu SQL.  
+I když je možné rozdělit data na oddíly při údržbě dat prostřednictvím přepínání oddílů nebo optimalizací kontrol pomocí eliminace oddílu, může vaše dotazy zpomalit příliš mnoho oddílů.  Často se jedná o strategii vysoké členitosti, která může fungovat dobře, SQL Server nemusí dobře fungovat ve vyhrazeném fondu SQL (dřív SQL DW).  
 
-Pokud máte příliš mnoho oddílů, může se také snížit efektivita clusterovaných indexů columnstore, pokud má každý oddíl méně než 1 milion řádků.  Mějte na paměti, že na pozadí fond SQL rozdělí vaše data do databází 60, takže pokud vytvoříte tabulku s 100 oddíly, výsledkem je to, že se 6000 v těchto případech zobrazí oddíly.  
+Pokud máte příliš mnoho oddílů, může se také snížit efektivita clusterovaných indexů columnstore, pokud má každý oddíl méně než 1 milion řádků.  Mějte na paměti, že na pozadí vyhrazený fond SQL zadělí vaše data do databází 60, takže pokud vytvoříte tabulku s 100 oddíly, výsledkem je to, že se ve skutečnosti budou zobrazovat oddíly 6000.  
 
 Každá úloha je jiná, takže nejlepší rada je, abyste s dělením experimentovali a zjistili, co je pro vaši úlohu nejvhodnější.  Zvažte použití nižší členitosti, než jaká by pro vás byla vhodná v systému SQL Server.  Například místo denního dělení zvažte použití týdenního nebo měsíčního dělení.
 
@@ -145,13 +145,13 @@ Viz také [dočasné tabulky](sql-data-warehouse-tables-temporary.md) [Create Ta
 
 ## <a name="optimize-clustered-columnstore-tables"></a>Optimalizujte clusterované tabulky columnstore
 
-Clusterované indexy columnstore jsou jedním z nejúčinnějších způsobů, jak můžete ukládat data ve fondu SQL.  Ve výchozím nastavení jsou tabulky ve fondu SQL vytvořeny jako clusterované ColumnStore.  Pokud chcete dosáhnout co nejlepšího výkonu dotazů na tabulky columnstore, je důležité mít kvalitní segmenty.  
+Clusterované indexy columnstore jsou jedním z nejúčinnějších způsobů, jak můžete ukládat data do vyhrazeného fondu SQL.  Ve výchozím nastavení jsou tabulky ve vyhrazeném fondu SQL vytvořeny jako clusterované ColumnStore.  Pokud chcete dosáhnout co nejlepšího výkonu dotazů na tabulky columnstore, je důležité mít kvalitní segmenty.  
 
 Když se řádky zapisují do tabulek columnstore při zatížení paměti, může tím utrpět kvalita segmentů columnstore.  Kvalitu segmentů lze změřit podle počtu řádků v komprimované skupině řádků.  Podrobné pokyny k detekci a zlepšení kvality segmentů clusterovaných tabulek columnstore najdete v článku o [příčinách špatné kvality indexu columnstore](sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality) v článku [indexy tabulky](sql-data-warehouse-tables-index.md) .  
 
 Vzhledem k tomu, že jsou důležité segmenty columnstore s vysokou kvalitou, je vhodné použít ID uživatelů, která jsou ve střední nebo velké třídě prostředků pro načítání dat. Použití nižších [jednotek datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md) znamená, že chcete uživateli, který načítá, přiřadit větší třídu prostředků.
 
-Vzhledem k tomu, že tabulky columnstore obecně neobsahují data do komprimovaného segmentu columnstore, dokud nebude existovat více než 1 000 000 řádků na tabulku a každá tabulka fondu SQL je rozdělena do 60 tabulek, jako pravidlo jezdce nebudou tabulky columnstore dávat dotazy, pokud tabulka neobsahuje více než 60 000 000 řádků.  Pro tabulky s méně než 60 miliony řádků může být použití indexu columnstore zbytečné.  Ale také to nemusí vadit.  
+Vzhledem k tomu, že tabulky columnstore obecně neobsahují data do komprimovaného segmentu columnstore, dokud nebude existovat více než 1 000 000 řádků na tabulku a každá vyhrazená tabulka fondu SQL je rozdělena do 60 tabulek, jako pravidlo jezdce nebudou tabulky columnstore dávat dotazy, pokud tabulka neobsahuje více než 60 000 000 řádků.  Pro tabulky s méně než 60 miliony řádků může být použití indexu columnstore zbytečné.  Ale také to nemusí vadit.  
 
 Kromě toho, pokud svá data dělíte, pamatujte na to, že každý oddíl musí mít alespoň 1 milion řádků, abyste využili výhod clusterovaného indexu columnstore.  Pokud má tabulka 100 oddílů, bude muset mít aspoň 6 000 000 000 řádků, abyste využili výhod clusterovaného úložiště sloupců (60 distribuce *100 oddíly* řádky 1 000 000).  
 
@@ -164,7 +164,7 @@ Viz také [Indexy tabulky](sql-data-warehouse-tables-index.md), [Průvodce index
 
 ## <a name="use-larger-resource-class-to-improve-query-performance"></a>Použijte větší třídu prostředků k vylepšení výkonu dotazu
 
-Fond SQL používá skupiny prostředků jako způsob přidělení paměti pro dotazy.  Mimo pole jsou všichni uživatelé přiřazeni k malé třídě prostředků, která uděluje 100 MB paměti na distribuci.  Protože vždy existuje 60 distribucí a každé distribuci je poskytnuto minimálně 100 MB paměti, velikost celkově přidělené paměti v systému je 6 000 MB, tedy téměř 6 GB.  
+Vyhrazený fond SQL používá skupiny prostředků jako způsob přidělení paměti pro dotazy.  Mimo pole jsou všichni uživatelé přiřazeni k malé třídě prostředků, která uděluje 100 MB paměti na distribuci.  Protože vždy existuje 60 distribucí a každé distribuci je poskytnuto minimálně 100 MB paměti, velikost celkově přidělené paměti v systému je 6 000 MB, tedy téměř 6 GB.  
 
 Pro určité dotazy, například velká spojení nebo nahrávání do clusterovaných tabulek columnstore, bude větší přidělení paměti přínosem.  Některé dotazy, jako jsou čistě kontroly, nepřinesou žádnou výhodu.  Použití větších tříd prostředků ale redukuje souběžnost, takže budete chtít tento dopad vzít v úvahu před tím, než všechny uživatele přesunete na velkou třídu prostředků.
 

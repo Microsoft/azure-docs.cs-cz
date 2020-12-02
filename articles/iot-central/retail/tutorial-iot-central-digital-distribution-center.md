@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: a76df67d1ef9d203d5e5d54cb95bb8fc90f70180
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d19310dbd54c8bd5f9854ff86af051b68c5cd378
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980736"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463297"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Kurz: nasazení a procházení šablonou aplikace digitálního distribučního centra
 
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte,
 * Vytvořit aplikaci digital Distribution Center 
 * Procházení aplikací 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * K nasazení této aplikace nejsou nutné žádné konkrétní požadavky.
 * Doporučuje se použít předplatné Azure, ale můžete to zkusit i bez něj.
 
@@ -34,8 +34,7 @@ Aplikaci můžete vytvořit pomocí následujících kroků.
 
 1. Přejděte na web Azure IoT Central Správce aplikací. V levém navigačním panelu vyberte **Build (sestavit** ) a pak klikněte na kartu **maloobchod** .
 
-    > [!div class="mx-imgBorder"]
-    > ![Snímek obrazovky ukazující, jak vybrat šablonu aplikace pro digitální distribuční centrum](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
+    :::image type="content" source="media/tutorial-iot-central-ddc/iotc-retail-homepage.png" alt-text="Šablona aplikace digitálního distribučního centra":::
 
 2. Vyberte kartu **maloobchod** a v části **aplikace Digital Distribution Center** vyberte **vytvořit aplikaci** .
 
@@ -45,11 +44,9 @@ Aplikaci můžete vytvořit pomocí následujících kroků.
    **Informace o fakturaci**: ke zřízení prostředků se vyžaduje adresář, předplatné Azure a podrobnosti o oblasti.
    **Vytvořit**: v dolní části stránky vyberte vytvořit a nasaďte svoji aplikaci.
 
-    > [!div class="mx-imgBorder"]
-    > ![Snímek obrazovky ukazující, jak vytvořit aplikaci ze šablony aplikace digitálního distribučního centra](./media/tutorial-iot-central-ddc/ddc-create.png)
+   :::image type="content" source="media/tutorial-iot-central-ddc/ddc-create.png" alt-text="Snímek obrazovky ukazující, jak vytvořit aplikaci ze šablony aplikace digitálního distribučního centra":::
 
-    > [!div class="mx-imgBorder"]
-    > ![Snímek obrazovky znázorňující možnosti fakturace při vytváření aplikace](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
+   :::image type="content" source="media/tutorial-iot-central-ddc/ddc-create-billinginfo.png" alt-text="Snímek obrazovky znázorňující možnosti fakturace při vytváření aplikace":::
 
 ## <a name="walk-through-the-application-dashboard"></a>Procházení řídicím panelem aplikace 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 10/06/2020
-ms.openlocfilehash: 897f16d84a3e1cf0ca747e90ce621a35ff326b2a
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 2191a4df5b319ec16a4a6116aa99cfac50c87d9b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488974"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462919"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Průvodce publikováním podle typu nabídky
 
@@ -33,7 +33,7 @@ V následující tabulce jsou uvedeny typy nabídek z komerčního tržiště v 
 | [**Azure Application**](plan-azure-application-offer.md) | Existují dva druhy plánů aplikací Azure: _Šablona řešení_ a _spravovaná aplikace_. Oba typy plánů podporují automatizaci nasazení a konfigurace řešení mimo jeden virtuální počítač (VM). Proces poskytování více prostředků, včetně virtuálních počítačů, sítí a prostředků úložiště, můžete automatizovat, abyste mohli poskytovat složitá řešení, například IaaS řešení. Oba typy plánů můžou využívat mnoho různých druhů prostředků Azure, mimo jiné jenom virtuální počítače.<ul><li>Plány **šablon řešení** jsou jedním z hlavních způsobů publikování řešení na komerčním webu Marketplace. Plány šablon řešení se nedají v komerčním tržišti použít, ale můžou se používat k nasazení placených nabídek virtuálních počítačů, které se účtují prostřednictvím komerčního tržiště. Typ plánu šablony řešení použijte, když zákazník bude spravovat řešení a transakce se účtují prostřednictvím jiného plánu.</li><br><li>Plány **spravovaných aplikací** umožňují snadno sestavovat a doručovat plně spravované aplikace klíč pro vaše zákazníky. Mají stejné možnosti jako plány šablon řešení s některými klíčovými rozdíly:</li><ul><li> Prostředky se nasazují do skupiny prostředků a spravují se vydavatelem aplikace. Skupina prostředků se nachází v rámci předplatného zákazníka, ale má k ní přístup určitá identita v rámci tenanta vydavatele.</li><li>Jako vydavatel zadáte náklady na průběžnou podporu řešení a transakce se podporují prostřednictvím komerčního tržiště.</li></ul>Typ plánu spravované aplikace použijte, když vy nebo váš zákazník požadujete, aby bylo řešení spravované partnerem, nebo když nasadíte řešení založené na předplatném.</ul> |
 | [**Kontejner Azure**](marketplace-containers.md) | Pokud je vaše řešení image kontejneru Docker zřízená jako Kubernetes Azure Container Service, použijte typ nabídky kontejneru Azure. |
 | [**Virtuální počítač Azure**](marketplace-virtual-machines.md) | Typ nabídky virtuálního počítače použijte, když nasadíte virtuální zařízení do předplatného přidruženého k vašemu zákazníkovi. |
-| [**Konzultační služba**](consulting-services.md) | Konzultační služby usnadňují propojení zákazníků se službami pro podporu a rozšiřování jejich používání služeb Azure, Dynamics 365 nebo Power Suite.|
+| [**Konzultační služba**](./plan-consulting-service-offer.md) | Konzultační služby usnadňují propojení zákazníků se službami pro podporu a rozšiřování jejich používání služeb Azure, Dynamics 365 nebo Power Suite.|
 | [**Dynamics 365**](appsource-offer-publishing-guide.md) | Můžete publikovat nabídky AppSource, které sestavují nebo rozšířily Dynamics 365 Business Central, Dynamics 365 Customer Engagement, Power Apps a finance a provozní aplikace.|
 | [**Modul IoT Edge**](iot-edge-module.md) | Azure IoT Edge moduly jsou nejmenší výpočetní jednotky spravované IoT Edge a můžou obsahovat služby Microsoftu (například Azure Stream Analytics), služby třetích stran nebo vlastní kód specifický pro řešení. |
 | [**Spravovaná služba**](partner-center-portal/create-new-managed-service-offer.md) | Můžete vytvářet nabídky spravované služby a spravovat předplatné nebo skupiny prostředků delegované zákazníky prostřednictvím [Azure Lighthouse](../lighthouse/overview.md).|

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: trkeya
 ms.author: trkeya
-ms.openlocfilehash: de85e4eb553f623790b472e79f8f97487ba96b48
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 553eba3898a5ea42e5d478603e35e82c68abcab1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95751109"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462904"
 ---
 # <a name="test-drive-technical-configuration"></a>Technická konfigurace testovací verze
 
@@ -38,9 +38,9 @@ Společnost Microsoft může odebrat složitost nastavení testovacích jednotek
 
 - **Název role** (povinné) – zadejte název role zabezpečení, kterou jste definovali ve vlastní testovací jednotce Dynamics 365, která se uživateli přiřadí během zkušební jednotky (například Test-Drive-role).
 
-Chcete-li získat nápovědu k nastavení prostředí Dynamics 365 pro testovací verzi a udělení oprávnění AppSource ke zřízení a zrušení zřízení uživatelů testovacích jednotek ve vašem tenantovi, postupujte podle [těchto pokynů](https://docs.microsoft.com/azure/marketplace/test-drive-azure-subscription-setup).
+Chcete-li získat nápovědu k nastavení prostředí Dynamics 365 pro testovací verzi a udělení oprávnění AppSource ke zřízení a zrušení zřízení uživatelů testovacích jednotek ve vašem tenantovi, postupujte podle [těchto pokynů](./test-drive-azure-subscription-setup.md).
 
-Podrobné pokyny k výpisu a konfiguraci hostovaného testovacího disku najdete na stránce [Podrobná konfigurace pro hostovaný testovací disk](https://docs.microsoft.com/azure/marketplace/test-drive-hosted-detailed-config) .
+Podrobné pokyny k výpisu a konfiguraci hostovaného testovacího disku najdete na stránce [Podrobná konfigurace pro hostovaný testovací disk](./test-drive-hosted-detailed-config.md) .
 
 ## <a name="logic-app-test-drive"></a>Testovací jednotka aplikace logiky
 
@@ -95,7 +95,7 @@ Možnost **výpisy testovacích jednotek** , která se nachází na kartě **tes
 
 Pokud momentálně vytváříte testovací jednotku v partnerském centru, vyberte před pokračováním **Uložit koncept** .
 
-Podrobné pokyny k výpisu a konfiguraci hostovaného testovacího disku najdete na stránce [Podrobná konfigurace pro hostovaný testovací disk](https://docs.microsoft.com/azure/marketplace/test-drive-hosted-detailed-config) .
+Podrobné pokyny k výpisu a konfiguraci hostovaného testovacího disku najdete na stránce [Podrobná konfigurace pro hostovaný testovací disk](./test-drive-hosted-detailed-config.md) .
 
 ## <a name="additional-resources"></a>Další materiály
 

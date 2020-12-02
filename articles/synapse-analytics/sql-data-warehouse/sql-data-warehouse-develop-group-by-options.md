@@ -1,30 +1,30 @@
 ---
 title: Použití možností Group by
-description: Tipy pro implementaci skupin podle možností v synapse fondu SQL
+description: Tipy pro implementaci skupin podle možností pro vyhrazené fondy SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 260bd7cc6402a7cb4ed17d004d0f61b7462c51d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: cdac3b1e502a203c272db75eb4345446b0f7c0c8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213444"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462762"
 ---
-# <a name="group-by-options-in-synapse-sql-pool"></a>Možnosti seskupení v synapse fondu SQL
+# <a name="group-by-options-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Možnosti seskupení pro vyhrazené fondy SQL ve službě Azure synapse Analytics
 
-V tomto článku najdete tipy k implementaci skupin podle možností ve fondu SQL.
+V tomto článku najdete tipy k implementaci skupin podle možností ve vyhrazených fondech SQL.
 
 ## <a name="what-does-group-by-do"></a>Co dělá GROUP BY?
 
-Klauzule [Group by](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL agreguje data na souhrnnou sadu řádků. Seskupit podle obsahuje některé možnosti, které fond SQL nepodporuje. Tyto možnosti mají následující alternativní řešení:
+Klauzule [Group by](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL agreguje data na souhrnnou sadu řádků. Seskupit podle obsahuje některé možnosti, které vyhrazený fond SQL nepodporuje. Tyto možnosti mají následující alternativní řešení:
 
 * Seskupit podle se SOUHRNem
 * SADY SESKUPENÍ
@@ -52,7 +52,7 @@ GROUP BY ROLLUP (
 Pomocí SOUHRNu si předchozí příklad vyžádá následující agregace:
 
 * Země a oblast
-* Country
+* Země
 * Celkový součet
 
 Chcete-li nahradit souhrn a vrátit stejné výsledky, můžete použít příkaz UNION ALL a explicitně zadat požadované agregace:

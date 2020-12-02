@@ -1,6 +1,6 @@
 ---
-title: Průběžná integrace a nasazování
-description: DevOps možnosti databáze na podnikové úrovni pro datové sklady s integrovanou podporou pro průběžnou integraci a nasazování pomocí Azure Pipelines.
+title: Průběžná integrace a nasazování pro vyhrazený fond SQL
+description: DevOps prostředí pro podnikové databáze pro vyhrazený fond SQL ve službě Azure synapse Analytics s integrovanou podporou pro průběžnou integraci a nasazování pomocí Azure Pipelines.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 061be5addd0c236db5d982e6103e3cf455b9c361
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 35f503e7214fa91962c91c35611fc9447302f9fc
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480526"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462806"
 ---
-# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Průběžná integrace a nasazování pro datové sklady
+# <a name="continuous-integration-and-deployment-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Průběžná integrace a nasazování vyhrazeného fondu SQL ve službě Azure synapse Analytics
 
 V tomto jednoduchém kurzu se naučíte integrovat projekt databáze SSDT (SQL Server Data Tools) do Azure DevOps a využít Azure Pipelines k nastavení průběžné integrace a nasazování. Tento kurz je druhým krokem při sestavování kanálu průběžné integrace a nasazování pro datové sklady.
 
@@ -60,7 +60,7 @@ V tomto okamžiku máte jednoduché prostředí, kde jakékoli vrácení se změ
 
 ## <a name="next-steps"></a>Další kroky
 
-- Prozkoumat [architekturu fondu SQL synapse](massively-parallel-processing-mpp-architecture.md)
-- Rychlé [Vytvoření fondu SQL](create-data-warehouse-portal.md)
+- Prozkoumat [vyhrazenou architekturu fondu SQL (dříve SQL DW)](massively-parallel-processing-mpp-architecture.md)
+- Rychlé [vytvoření vyhrazeného fondu SQL (dřív SQL DW)](create-data-warehouse-portal.md)
 - [Načtení ukázkových dat](load-data-from-azure-blob-storage-using-polybase.md)
 - Prozkoumat [videa](sql-data-warehouse-videos.md)

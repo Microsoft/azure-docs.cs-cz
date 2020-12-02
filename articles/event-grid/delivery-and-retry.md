@@ -3,12 +3,12 @@ title: Azure Event Grid doručování a opakování
 description: Popisuje, jak Azure Event Grid doručuje události a jak zpracovává nedoručené zprávy.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 9a7bde33e322183f86c3c51d30bb004d06fa1406
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 51473cf457a1c713e6694edd23c344be8c4d439e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345349"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463245"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Doručování zpráv Event Grid a opakování
 
@@ -57,7 +57,7 @@ Další informace o použití rozhraní příkazového řádku Azure s Event Gri
 
 Pokud EventGrid obdrží při pokusu o doručení události chybu, EventGrid rozhodne, zda má opakovat doručení nebo nedoručené písmeno, nebo událost vyřaďte na základě typu chyby. 
 
-Pokud chyba vrácená koncovým bodem vystavila chybu související se konfigurací, která se nedá opravit s opakováními (například pokud je koncový bod odstraněný), EventGrid buď provede nedoručitelnou událost, nebo událost přenechá, pokud není nakonfigurované žádné nedoručené zprávy.
+Pokud chyba vrácená koncovým bodem nastavila chybu související se konfigurací, která se nedá opravit pomocí opakování (například při odstranění koncového bodu), EventGrid buď neodstraní odkládání události, nebo událost vyřaďte, pokud není nenakonfigurované žádné nedoručené písmeno.
 
 Níže jsou uvedené typy koncových bodů, pro které opakování neproběhne:
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 85f5beb6188b1f6987934f1c39c579d5a3028a5e
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 61ee0b769664d1f574177e27b5b1fb10e9845035
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579483"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463100"
 ---
 # <a name="configure-a-managed-application-plan"></a>Konfigurace plánu spravované aplikace
 
@@ -80,7 +80,7 @@ Každý plán můžete nakonfigurovat tak, aby byl viditelný pro všechny uživ
 
 V části **plán viditelnost** proveďte jednu z následujících akcí:
 
-- Pokud chcete nastavit plán jako veřejný, vyberte možnost **veřejné** (označuje se také jako _přepínač_ ).
+- Pokud chcete nastavit plán jako veřejný, vyberte možnost **veřejné** (označuje se také jako _přepínač_).
 - Pokud chcete nastavit plán jako soukromý, vyberte možnost **Private** a pak přidejte ID předplatného Azure ručně nebo se souborem CSV.
 
 > [!NOTE]
@@ -135,10 +135,10 @@ Pokud chcete pro tento plán povolit přístup JIT, zaškrtněte políčko **Pov
 
 Vyberte buď režim **úplného** nebo **přírůstkového** nasazení.
 
-- V režimu **úplného** nasazení aplikace pro zákazníka dojde k odebrání prostředků ve spravované skupině prostředků, pokud prostředky nejsou definované v [mainTemplate.js](/azure/azure-resource-manager/managed-applications/publish-service-catalog-app?tabs=azure-powershell#create-the-arm-template.md).
+- V režimu **úplného** nasazení aplikace pro zákazníka dojde k odebrání prostředků ve spravované skupině prostředků, pokud prostředky nejsou definované v [mainTemplate.js](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template).
 - V **přírůstkovém** režimu opětovné nasazení aplikace opustí stávající prostředky beze změny.
 
-Další informace o režimech nasazení najdete v tématu [Azure Resource Manager režimy nasazení](/azure/azure-resource-manager/deployment-modes).
+Další informace o režimech nasazení najdete v tématu [Azure Resource Manager režimy nasazení](../azure-resource-manager/templates/deployment-modes.md).
 
 ### <a name="provide-a-notification-endpoint-url"></a>Zadejte adresu URL koncového bodu oznámení.
 
@@ -181,8 +181,8 @@ Po vytvoření jednoho nebo více plánů uvidíte název svého plánu, ID plá
 
 Akce, které jsou k dispozici ve sloupci **Akce** na kartě **Přehled plánu** , se liší v závislosti na stavu plánu a mohou zahrnovat následující:
 
-- Pokud je stav plánu **koncept** , odkaz ve sloupci **Akce** bude vyslovit **Odstranit koncept**.
-- Pokud je stav plánu **Live** , odkaz ve sloupci **Akce** buď **zastaví prodej plánu** , nebo **synchronizuje soukromou cílovou skupinu**. Odkaz **synchronizovat soukromou cílovou skupinu** bude publikovat jenom změny vašich privátních cílových skupin, aniž byste museli publikovat další aktualizace, které jste mohli v této nabídce udělat.
+- Pokud je stav plánu **koncept**, odkaz ve sloupci **Akce** bude vyslovit **Odstranit koncept**.
+- Pokud je stav plánu **Live**, odkaz ve sloupci **Akce** buď **zastaví prodej plánu** , nebo **synchronizuje soukromou cílovou skupinu**. Odkaz **synchronizovat soukromou cílovou skupinu** bude publikovat jenom změny vašich privátních cílových skupin, aniž byste museli publikovat další aktualizace, které jste mohli v této nabídce udělat.
 - Pokud chcete pro tuto nabídku vytvořit další plán, vyberte v horní části karty **Přehled plánu** možnost **+ vytvořit nový plán**. Pak opakujte postup v tématu [Postup vytvoření plánů pro nabídku aplikace Azure](create-new-azure-apps-offer-plans.md). V opačném případě, pokud jste dokončili vytváření plánů, jděte do další části: další kroky.
 
 ## <a name="next-steps"></a>Další kroky

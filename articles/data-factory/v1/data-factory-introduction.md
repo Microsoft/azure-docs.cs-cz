@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 06f308b4e0b2df0487a351ae38f16f3872961cfb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 17765d89cacfb6083df5ac911d2b24d573fba511
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89436252"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463063"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Úvod do služby Azure Data Factory 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -35,7 +35,7 @@ Například herní společnost shromažďuje protokoly generované hrami v cloud
 
 Aby společnost mohla tyto protokoly analyzovat, potřebuje použít referenční data, jako jsou informace o zákaznících, hrách a marketingových kampaních, které jsou uložené v místním úložišti dat. Společnost proto chce ingestovat data z cloudového úložiště dat a referenční data z místního úložiště dat. 
 
-Dále chce data zpracovat pomocí Hadoopu v cloudu (Azure HDInsight). Chtějí publikovat výsledná data do cloudového datového skladu, jako je Azure synapse Analytics (dříve SQL Data Warehouse), nebo do místního úložiště dat, jako je například SQL Server. Společnost chce, aby se tento pracovní postup spouštěl jednou týdně. 
+Dále chce data zpracovat pomocí Hadoopu v cloudu (Azure HDInsight). Chtějí publikovat výsledná data do cloudového datového skladu, jako je Azure synapse Analytics nebo do místního úložiště dat, jako je SQL Server. Společnost chce, aby se tento pracovní postup spouštěl jednou týdně. 
 
 Společnost potřebuje platformu, na které může vytvořit pracovní postup, který bude ingestovat data z místních i cloudových úložišť dat. Společnost také musí mít možnost transformovat nebo zpracovávat data pomocí stávajících výpočetních služeb, jako je Hadoop, a publikovat výsledky do místního nebo cloudového úložiště dat pro využití v aplikacích BI. 
 
@@ -71,7 +71,7 @@ Například můžete shromažďovat data v Azure Data Lake Store a později je t
 ### <a name="transform-and-enrich"></a>Transformace a rozšíření
 Jakmile budou data v centralizovaném úložišti dat v cloudu, můžete je zpracovat nebo transformovat pomocí výpočetních služeb, jako je HDInsight Hadoop, Spark, Data Lake Analytics nebo Machine Learning. Budete chtít spolehlivě produkovat transformovaná data podle udržitelného a řízeného plánu, abyste mohli do produkčních prostředí dodávat důvěryhodná data. 
 
-### <a name="publish"></a>Publikovat 
+### <a name="publish"></a>Publikování 
 Přenášejte transformovaná data z cloudu do místních zdrojů, jako je SQL Server. Případně je můžete uchovávat ve zdrojích cloudového úložiště, aby je mohly využívat nástroje BI, analytické nástroje a další aplikace.
 
 ## <a name="key-components"></a>Klíčové komponenty

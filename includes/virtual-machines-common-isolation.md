@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: sttsinar
 ms.custom: include file
-ms.openlocfilehash: 3d65b574fc1479d000d347020823166a4d4b968b
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: bd31152c6742271658cf4fd7ac2a5e2957651c84
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410572"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96478203"
 ---
 Azure COMPUTE nabízí velikosti virtuálních počítačů, které jsou izolované na konkrétní typ hardwaru a vyhrazené pro jednoho zákazníka. Izolované velikosti fungují v reálném čase a pracují na konkrétní generaci hardwaru a při vyřazení hardwaru budou zastaralé.
 
@@ -25,10 +25,13 @@ Vzhledem k velkému počtu virtuálních počítačů izolované velikosti můž
 Mezi aktuální nabídky izolovaných virtuálních počítačů patří:
 * Standard_E64is_v3
 * Standard_E64i_v3
+* Standard_E80ids_v4
+* Standard_E80is_v4
 * Standard_M128ms
 * Standard_GS5
 * Standard_G5
 * Standard_F72s_v2
+
 
 > [!NOTE]
 > Velikost izolovaného virtuálního počítače má omezený životnost hardwaru. Podrobnosti najdete níže.
@@ -45,7 +48,7 @@ Vzhledem k tomu, že velikosti izolovaného virtuálního počítače jsou velik
 <sup>1</sup>  podrobnosti o Standard_DS15_v2 a Standard_D15_v2 programu pro vyřazení z izolaci najdete v tématu Nejčastější dotazy.
 
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 ### <a name="q-is-the-size-going-to-get-retired-or-only-isolation-feature-is"></a>Otázka: má být vyřazení z provozu nebo pouze funkce izolace?
 Odpověď **: Pokud** velikost virtuálního počítače nemá dolní index "i", bude vyřazena pouze funkce izolace. Pokud není potřeba izolaci, nebude provedena žádná akce a virtuální počítač bude i nadále fungovat podle očekávání. Mezi příklady patří Standard_DS15_v2, Standard_D15_v2, Standard_M128ms atd. Pokud velikost virtuálního počítače zahrnuje i "i" dolní index, je tato velikost vyřazení.
 
@@ -62,7 +65,7 @@ Odpověď **: ne**
 Odpověď **: ne**. Záruky poskytované [úrovněmi odolnosti](../articles/service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) Service Fabric budou i nadále fungovat i po této změně. Pokud požadujete izolaci fyzického hardwaru z jiných důvodů, možná budete muset provést jednu z výše uvedených akcí. 
  
 ### <a name="q-what-are-the-milestones-for-d15_v2-or-ds15_v2-isolation-retirement"></a>Otázka: Jaké jsou milníky pro D15_v2 nebo DS15_v2 vyřazení z izolaci? 
-**A** : 
+**A**: 
  
 | Datum | Akce |
 |---|---| 

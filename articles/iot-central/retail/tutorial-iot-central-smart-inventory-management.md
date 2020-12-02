@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 827d571a6545d0aaffb0f96134fcf094eaa5f26b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1b7069cb723bffd758c3603cc957329dd6d2a9b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980607"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463250"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Kurz: nasazení a procházení šablonou aplikace pro správu inteligentního inventáře
 
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte,
 * vytvořit aplikaci pro správu inteligentních zásob 
 * Procházení aplikací 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * K nasazení této aplikace nejsou nutné žádné konkrétní požadavky.
 * Doporučuje se použít předplatné Azure, ale můžete to zkusit i bez něj.
@@ -35,22 +35,19 @@ Aplikaci můžete vytvořit pomocí následujících kroků.
 
 1. Přejděte na web Azure IoT Central Správce aplikací. V levém navigačním panelu vyberte **Build (sestavit** ) a pak klikněte na kartu **maloobchod** .
 
-    > [!div class="mx-imgBorder"]
-    > ![Snímek obrazovky ukazující, jak vybrat šablonu managementapplication Smart Inventory](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
+    :::image type="content" source="media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png" alt-text="Snímek obrazovky ukazující, jak vybrat šablonu aplikace pro správu inteligentního inventáře":::
 
 2. Vyberte kartu **maloobchod** a v části **Správa inteligentního inventáře** vyberte **vytvořit aplikaci** .
 
 3. Při **vytváření aplikace** se otevře formulář nové aplikace a vyplní se požadované podrobnosti, jak je vidět níže.
-   **Název aplikace**: můžete použít výchozí navrhovaný název nebo zadat popisný název aplikace.
-   **Adresa URL**: můžete použít navrhovanou výchozí adresu URL nebo zadat svou snadno jedinečnou adresu URL. V dalším kroku se doporučuje výchozí nastavení, pokud už předplatné Azure máte. Můžete začít s cenovým tarifem bezplatné zkušební verze na 7 dní a po dobu platnosti bezplatného záznamu můžete kdykoli převést na standardní cenový plán.
-   **Informace o fakturaci**: ke zřízení prostředků se vyžaduje adresář, předplatné Azure a podrobnosti o oblasti.
-   **Vytvořit**: v dolní části stránky vyberte vytvořit a nasaďte svoji aplikaci.
+    **Název aplikace**: můžete použít výchozí navrhovaný název nebo zadat popisný název aplikace.
+    **Adresa URL**: můžete použít navrhovanou výchozí adresu URL nebo zadat svou snadno jedinečnou adresu URL. V dalším kroku se doporučuje výchozí nastavení, pokud už předplatné Azure máte. Můžete začít s cenovým tarifem bezplatné zkušební verze na 7 dní a po dobu platnosti bezplatného záznamu můžete kdykoli převést na standardní cenový plán.
+    **Informace o fakturaci**: ke zřízení prostředků se vyžaduje adresář, předplatné Azure a podrobnosti o oblasti.
+    **Vytvořit**: v dolní části stránky vyberte vytvořit a nasaďte svoji aplikaci.
 
-    > [!div class="mx-imgBorder"]
-    > ![Snímek obrazovky ukazující, jak vytvořit aplikaci ze šablony managementapplication Smart Inventory](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
+    :::image type="content" source="media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png" alt-text="Snímek obrazovky ukazující, jak vytvořit aplikaci ze šablony aplikace pro správu inteligentního inventáře":::
 
-    > [!div class="mx-imgBorder"]
-    > ![Snímek obrazovky znázorňující možnosti fakturace při vytváření aplikace](./media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png)
+    :::image type="content" source="media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png" alt-text="Snímek obrazovky znázorňující možnosti fakturace při vytváření aplikace":::
 
 ## <a name="walk-through-the-application"></a>Procházení aplikací 
 

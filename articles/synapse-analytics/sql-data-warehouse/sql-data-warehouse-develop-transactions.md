@@ -1,5 +1,5 @@
 ---
-title: Použití transakcí v synapse fondu SQL
+title: Použití transakcí ve fondu SQL ve službě Azure synapse Analytics
 description: Tento článek obsahuje tipy pro implementaci transakcí a vývoj řešení v synapse fondu SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 03/22/2019
 ms.author: xiaoyul
+ms.custom: azure-synapse
 ms.reviewer: igorstan
-ms.openlocfilehash: 40a9e5268b7fccc5c01775c10e55eee47f1aaf3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5a3c0863bb35f0988d7928bb9a2857f6aceded6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213376"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463208"
 ---
-# <a name="use-transactions-in-synapse-sql-pool"></a>Použití transakcí v synapse fondu SQL
+# <a name="use-transactions-in-a-sql-pool-in-azure-synapse"></a>Použití transakcí ve fondu SQL ve službě Azure synapse 
 
 Tento článek obsahuje tipy pro implementaci transakcí a vývoj řešení ve fondu SQL.
 
@@ -27,7 +28,7 @@ Jak byste očekávali, fond SQL podporuje transakce jako součást úlohy datov�
 
 ## <a name="transaction-isolation-levels"></a>Úrovně izolace transakce
 
-Fond SQL implementuje transakce v KYSELINě. Úroveň izolace transakční podpory je výchozí pro čtení nepotvrzených.  Můžete ji změnit na čtení POTVRZENé izolace snímku tím, že zapnete možnost READ_COMMITTED_SNAPSHOT Database pro uživatelskou databázi, když se připojíte k hlavní databázi.  
+Fond SQL implementuje transakce v KYSELINě. Úroveň izolace transakční podpory je výchozí pro čtení nepotvrzených.  Můžete ji změnit na čtení POTVRZENé izolace snímku zapnutím možnosti databáze READ_COMMITTED_SNAPSHOT pro uživatelský fond SQL, když se připojíte k hlavní databázi.  
 
 Po povolení se všechny transakce v této databázi spustí v režimu čtení POTVRZENé izolace snímku a nastavení číst nepotvrzené na úrovni relace se nerespektuje. Podrobnosti naleznete v [příkazu ALTER DATABASE set Options (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
 

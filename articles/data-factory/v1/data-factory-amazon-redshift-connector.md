@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 290990e312a7f591539686ecce1eec1ac742dd60
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c0dcaec9c8e9a310af1fd6fc319e0784694610e2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999293"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463083"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Přesun dat z Amazon RedShift pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -34,7 +34,7 @@ Data Factory aktuálně podporuje pouze přesun dat z Amazon RedShift do [podpor
 > [!TIP]
 > Pokud chcete dosáhnout nejlepšího výkonu při kopírování velkých objemů dat z Amazon RedShift, zvažte použití integrovaného příkazu RedShift **Unload** prostřednictvím služby Amazon Simple Storage Service (Amazon S3). Podrobnosti najdete v tématu [použití uvolnění ke kopírování dat z Amazon RedShift](#use-unload-to-copy-data-from-amazon-redshift).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Pokud přesouváte data do místního úložiště dat, nainstalujte [Správa dat bránu](data-factory-data-management-gateway.md) na místní počítač. Udělte bráně přístup ke clusteru Amazon RedShift pomocí IP adresy místního počítače. Pokyny najdete v tématu [autorizace přístupu ke clusteru](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
 * Pokud chcete přesunout data do úložiště dat Azure, přečtěte si část [výpočetní IP adresa a rozsahy SQL používané datacentry Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 
@@ -101,7 +101,7 @@ Alternativně můžete použít typ **RelationalSource** , který zahrnuje Amazo
 
 [**Příkaz Amazon RedShift Unload uvolní**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) výsledky dotazu do jednoho nebo více souborů v Amazon S3. Tento příkaz doporučuje Amazon pro kopírování velkých datových sad z RedShift.
 
-**Příklad: kopírování dat z Amazon RedShift do Azure synapse Analytics (dříve SQL Data Warehouse)**
+**Příklad: kopírování dat z Amazon RedShift do Azure synapse Analytics**
 
 Tento příklad kopíruje data z Amazon RedShift do Azure synapse Analytics. V příkladu se používá příkaz RedShift **Unload** , připravené kopírování dat a Microsoft – základ.
 
@@ -333,7 +333,7 @@ Následující mapování se používají, když aktivita kopírování převede
 | CELÉ ČÍSLO |Int32 |
 | BIGINT |Int64 |
 | NOTACI |Decimal |
-| REÁLNÉ |Jeden |
+| REÁLNÉ |Jednoduché |
 | DVOJITÁ PŘESNOST |dvojité |
 | DATOVÉHO |Řetězec |
 | CHAR |Řetězec |

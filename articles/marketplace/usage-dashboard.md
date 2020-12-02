@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 5e2bdec8b3c628f1d470acb3e27bb18eabbc71ac
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 563ccdb0633f94acccf3ade9faf1c40c28f108ac
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565534"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462936"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Využití v analýzách komerčního marketplace
 
@@ -21,7 +21,7 @@ Tento článek poskytuje informace o řídicím panelu využití v partnerském 
 Pokud chcete získat přístup k řídicímu panelu využití v partnerském centru, vyberte v části **komerční Marketplace** možnost **[analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **využití**.
 
 >[!NOTE]
-> Podrobné definice terminologie analýz najdete v tématu [terminologie a běžné otázky k komerčním](./partner-center-portal/faq-terminology.md)analýzám na webu Marketplace.
+> Podrobné definice terminologie analýz najdete v tématu [terminologie a běžné otázky k komerčním](./analytics-faq.md)analýzám na webu Marketplace.
 
 ## <a name="usage-dashboard"></a>Řídicí panel využití
 
@@ -124,7 +124,7 @@ _**Tabulka 1: slovník datových podmínek**_
 | Typ nabídky | Typ nabídky | Typ nabídky komerčního tržiště. |
 | Typ licence Azure | Typ licence Azure | Typ licenční smlouvy používané zákazníky k nákupu Azure. Označuje se také jako kanál. Možné hodnoty jsou:<ui><li>Program Cloud Solution Provider</li><li>Enterprise</li><li>Enterprise prostřednictvím prodejce</li><li>Průběžné platby</li></ul> |
 | Typ licence Marketplace | Typ licence Marketplace | Způsob fakturace nabídky komerčního obchodu na webu Marketplace. Možné hodnoty jsou:<ul><li>Účtuje se prostřednictvím Azure.</li><li>Přineste si vlastní licenci</li><li>Free</li><li>Microsoft jako prodejce</li></ul> |
-| Skladová položka | Skladová položka | Plán přidružený k této nabídce |
+| SKU | SKU | Plán přidružený k této nabídce |
 | Země zákazníka | Země nebo oblast zákazníka | Název země nebo oblasti, kterou zadal zákazník. Země nebo oblast se může lišit od země nebo oblasti v předplatném Azure zákazníka. |
 | Je verze Preview SKU | Je verze Preview SKU | Hodnota se zobrazí, pokud jste SKU označili jako "Preview". Hodnota bude "Ano", pokud je odpovídajícím způsobem označena skladová jednotka a pouze předplatná Azure, která jsou autorizována, můžete nasadit a použít tuto bitovou kopii. Pokud nebyla položka SKU identifikována jako "Preview", bude hodnota "ne". |
 | Typ fakturace SKU | Typ fakturace SKU | Typ fakturace přidružený k jednotlivým položkám SKU v nabídce Možné hodnoty jsou:<ul><li>Free</li><li>Hrazen</li></ul> |
@@ -171,13 +171,13 @@ Sestavy widgetů a exportu pro nezpracované využití virtuálních počítač�
 
 Karta **měření využití** zobrazuje informace o využití pro typy nabídek, kde je využití měřeno podle dimenze měřiče. Nadlimitní typ SaaS nabídky se teď prezentuje. Karta zobrazuje grafické reprezentace nadlimitních trendů pro využití SaaS měření využívání dat:
 
-- Trend nadlimitního **využití podle dimenze měřiče** : zobrazí měsíční trend nadlimitku pro vybranou dimenzi nabídky. Osa X představuje měsíc a osa Y představuje překročené množství využití. Jednotka měření vlastního měřiče se zobrazí také na ose Y.
+- Trend nadlimitního **využití podle dimenze měřiče**: zobrazí měsíční trend nadlimitku pro vybranou dimenzi nabídky. Osa X představuje měsíc a osa Y představuje překročené množství využití. Jednotka měření vlastního měřiče se zobrazí také na ose Y.
 
     :::image type="content" source="./media/usage-dashboard/metered-usage.png" alt-text="Znázorňuje graf normalizovaného využití virtuálních počítačů na řídicím panelu využití.":::
 
-- Trend nadlimitního využití **podle SKU** : představuje trend množství využití vybrané dimenze měřiče podle SKU nebo plánů. Zobrazí se pět nejlepších plánů s největším množstvím využití vybrané nabídky.
+- Trend nadlimitního využití **podle SKU**: představuje trend množství využití vybrané dimenze měřiče podle SKU nebo plánů. Zobrazí se pět nejlepších plánů s největším množstvím využití vybrané nabídky.
 
-- **Trend** nadlimitního využití zákazníky: přední deska zákazníka představuje skládaný seznam zákazníků s nejvyšším počtem hodin používání a zobrazuje se na _vodicí desce_ , seřazené podle nejvyššího využití vlastního měřiče. Vyberte zákazníka na vedoucím panelu a zobrazte trend využití nadlimitního využití vybrané dimenze měřiče.
+- **Trend** nadlimitního využití zákazníky: přední deska zákazníka představuje skládaný seznam zákazníků s nejvyšším počtem hodin používání a zobrazuje se na _vodicí desce_, seřazené podle nejvyššího využití vlastního měřiče. Vyberte zákazníka na vedoucím panelu a zobrazte trend využití nadlimitního využití vybrané dimenze měřiče.
 
     :::image type="content" source="./media/usage-dashboard/metered-usage-by-customers.png" alt-text="Ukazuje graf měření využití podle zákazníků na řídicím panelu využití.":::
 
@@ -194,4 +194,4 @@ Pokud máte více nabídek, které používají vlastní měřiče, zobrazí se 
 - U virtuálních počítačů nabízí metriky využití a měření fakturace, viz [řídicí panel využití v komerčních obchodech na webu Marketplace](usage-dashboard.md).
 - Seznam vašich žádostí o stažení za posledních 30 dní najdete [v tématu řídicí panel ke stažení v komerčních obchodech na webu Marketplace](./partner-center-portal/downloads-dashboard.md).
 - Chcete-li zobrazit konsolidované zobrazení zpětné vazby od zákazníků pro nabídky Azure Marketplace a Microsoft AppSource, přečtěte si téma [hodnocení & recenze řídicího panelu Analytics v partnerském centru](./partner-center-portal/ratings-reviews.md).
-- Nejčastější dotazy týkající se komerčních analýz na webu Marketplace a ucelený slovník datových podmínek najdete v tématu [terminologie a běžné otázky ke komerčním analýzám na webu Marketplace](./partner-center-portal/faq-terminology.md).
+- Nejčastější dotazy týkající se komerčních analýz na webu Marketplace a ucelený slovník datových podmínek najdete v tématu [terminologie a běžné otázky ke komerčním analýzám na webu Marketplace](./analytics-faq.md).

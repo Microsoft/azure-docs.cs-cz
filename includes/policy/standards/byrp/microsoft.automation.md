@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/20/2020
+ms.date: 12/01/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cff4bfd478f8cdd9b51367e33cf317d7516fce65
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: c2385d07ccb81041bd340a8bec0412a8f14cef56
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94991586"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96478547"
 ---
 ## <a name="azure-security-benchmark"></a>Srovnávací test zabezpečení Azure
 
@@ -22,3 +22,5 @@ Pokud chcete zjistit, jak jsou dostupné Azure Policy vestavěné pro všechny s
 |---|---|---|---|---|
 |Ochrana dat |4.8 |Šifrovat citlivé informace v klidovém umístění |[Proměnné účtu Automation by se měly šifrovat.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3657f5a0-770e-44a3-b44e-9431ba1e9735) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Automation/Automation_AuditUnencryptedVars_Audit.json) |
 
+> [!NOTE]
+> Když vytvoříte proměnnou účtu Automation, můžete své šifrování a úložiště zadat Azure Automation jako zabezpečený prostředek. Po vytvoření proměnné nemůžete změnit její stav šifrování, aniž byste museli znovu vytvořit proměnnou. Pokud máte proměnné účtu Automation, které ukládají citlivé údaje, které ještě nejsou zašifrované, musíte je odstranit a znovu vytvořit jako šifrované proměnné. Azure Security Center doporučení je šifrovat všechny Azure Automation proměnné, jak je popsané v tématu [proměnné účtu Automation by měly být šifrované](../../../../articles/security-center/recommendations-reference.md#recs-computeapp). Pokud máte nešifrované proměnné, které chcete vyloučit z tohoto doporučení zabezpečení, přečtěte si téma [vyloučení prostředku z doporučení a zabezpečeného skóre](../../../../articles/security-center/exempt-resource.md) pro vytvoření pravidla výjimky.

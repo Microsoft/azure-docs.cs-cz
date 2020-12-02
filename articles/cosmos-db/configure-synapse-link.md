@@ -1,26 +1,23 @@
 ---
-title: Konfigurace a použití odkazu na Azure synapse pro Azure Cosmos DB (Preview)
+title: Konfigurace a používání Azure Synapse Linku pro Azure Cosmos DB
 description: Naučte se, jak povolit synapse odkaz pro účty Azure Cosmos DB, vytvořit kontejner s povoleným analytickým úložištěm, připojit databázi Azure Cosmos k synapse pracovnímu prostoru a spustit dotazy.
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: 3355b502033451f58ac2289a81414e62823e459b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 32b64cd0d83c51a77b7bc58bde80e00e1980c233
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175929"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463315"
 ---
-# <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Konfigurace a použití odkazu na Azure synapse pro Azure Cosmos DB (Preview)
+# <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Konfigurace a používání Azure Synapse Linku pro Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 [Odkaz na Azure synapse pro Azure Cosmos DB](synapse-link.md) je cloudová funkce hybridního transakčního a analytického zpracování (HTAP), která umožňuje spouštět analýzy téměř v reálném čase nad provozními daty v Azure Cosmos DB. Synapse Link vytvoří úzkou plynulou integraci mezi Azure Cosmos DB a Azure synapse Analytics.
-
-> [!IMPORTANT]
-> Pokud chcete použít Azure synapse Link, nezapomeňte zřídit účet Azure Cosmos DB & pracovní prostor Azure synapse Analytics v některé z podporovaných oblastí. Odkaz na Azure synapse je v současnosti dostupný v následujících oblastech Azure: USA – středozápad, Východní USA, západ USA 2, Severní Evropa, Západní Evropa, Střed USA – jih, jihovýchodní Asie, Austrálie – východ, východní U2, Velká Británie – jih.
 
 Odkaz Azure synapse je k dispozici pro Azure Cosmos DB kontejnery rozhraní API SQL nebo pro Azure Cosmos DB API pro kolekce Mongo DB. Pomocí následujících kroků spusťte analytické dotazy s odkazem na Azure synapse pro Azure Cosmos DB:
 
@@ -28,8 +25,8 @@ Odkaz Azure synapse je k dispozici pro Azure Cosmos DB kontejnery rozhraní API 
 * [Vytvoření kontejneru Azure Cosmos DB s povoleným analytickým úložištěm](#create-analytical-ttl)
 * [Připojení databáze Azure Cosmos DB k pracovnímu prostoru synapse](#connect-to-cosmos-database)
 * [Dotaz na analytické úložiště pomocí synapse Spark](#query-analytical-store-spark)
-* [Dotazování analytického úložiště s využitím synapse SQL bez serveru](#query-analytical-store-sql-on-demand)
-* [K analýze a vizualizaci dat v Power BI používejte SQL Server bez serveru synapse](#analyze-with-powerbi)
+* [Dotaz na analytické úložiště s využitím fondu SQL bez serveru](#query-analytical-store-sql-on-demand)
+* [Použití fondu SQL bez serveru k analýze a vizualizaci dat v Power BI](#analyze-with-powerbi)
 
 ## <a name="enable-azure-synapse-link-for-azure-cosmos-db-accounts"></a><a id="enable-synapse-link"></a>Povolit Azure synapse Link pro účty Azure Cosmos DB
 
@@ -43,7 +40,7 @@ Odkaz Azure synapse je k dispozici pro Azure Cosmos DB kontejnery rozhraní API 
 
 1. V seznamu funkcí vyberte **odkaz synapse** .
 
-   :::image type="content" source="./media/configure-synapse-link/find-synapse-link-feature.png" alt-text="Najít funkci synapse Link Preview":::
+   :::image type="content" source="./media/configure-synapse-link/find-synapse-link-feature.png" alt-text="Najít funkci propojení synapse":::
 
 1. V dalším kroku se zobrazí výzva, abyste na svém účtu povolili odkaz na synapse. Vyberte **Povolit**. Dokončení tohoto procesu může trvat 1 až 5 minut.
 
@@ -218,11 +215,11 @@ Postupujte podle pokynů v článku [dotaz Azure Cosmos DB analytické úložiš
 
 ## <a name="query-the-analytical-store-using-serverless-sql-pool-in-azure-synapse-analytics"></a><a id="query-analytical-store-sql-on-demand"></a> Dotazování analytického úložiště s využitím fondu SQL bez serveru ve službě Azure synapse Analytics
 
-Fond SQL bez serveru umožňuje zadávat dotazy a analyzovat data ve vašich Azure Cosmos DBch kontejnerech, které jsou povolené pomocí odkazu Azure synapse. Data můžete analyzovat téměř v reálném čase, aniž by to ovlivnilo výkon transakčních úloh. Nabízí známou syntaxi T-SQL pro dotazování dat z analytického úložiště a integrovaného připojení k široké škále nástrojů pro dotazování BI a ad-hoc, a to prostřednictvím rozhraní T-SQL. Další informace najdete v článku s [dotazem na analytické úložiště s synapse SQL bez serveru](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) .
+Fond SQL bez serveru umožňuje zadávat dotazy a analyzovat data ve vašich Azure Cosmos DBch kontejnerech, které jsou povolené pomocí odkazu Azure synapse. Data můžete analyzovat téměř v reálném čase, aniž by to ovlivnilo výkon transakčních úloh. Nabízí známou syntaxi T-SQL pro dotazování dat z analytického úložiště a integrovaného připojení k široké škále nástrojů pro dotazování BI a ad-hoc, a to prostřednictvím rozhraní T-SQL. Další informace najdete v článku [analytické úložiště dotazů pomocí serveru bez serveru](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) .
 
-## <a name="use-synapse-sql-serverless-to-analyze-and-visualize-data-in-power-bi"></a><a id="analyze-with-powerbi"></a>K analýze a vizualizaci dat v Power BI používejte SQL Server bez serveru synapse
+## <a name="use-serverless-sql-pool-to-analyze-and-visualize-data-in-power-bi"></a><a id="analyze-with-powerbi"></a>Použití fondu SQL bez serveru k analýze a vizualizaci dat v Power BI
 
-Můžete vytvořit synapse databázi bez SQL serveru a zobrazení prostřednictvím odkazu synapse pro Azure Cosmos DB. Později můžete zadat dotaz na kontejnery Azure Cosmos a pak vytvořit model s Power BI nad těmito zobrazeními, aby odrážely tento dotaz. Další informace najdete v článku Jak používat [synapse SQL Server bez serveru k analýze Azure Cosmos DB dat pomocí propojení synapse](synapse-link-power-bi.md) .
+Pro Azure Cosmos DB můžete vytvořit databázi fondu SQL bez serveru a zobrazení přes odkaz na synapse. Později můžete zadat dotaz na kontejnery Azure Cosmos a pak vytvořit model s Power BI nad těmito zobrazeními, aby odrážely tento dotaz. Další informace najdete v článku Jak používat [fond SQL bez serveru k analýze Azure Cosmos DB dat pomocí propojení synapse](synapse-link-power-bi.md) .
 
 ## <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 
@@ -238,10 +235,10 @@ Další informace najdete v následujících dokumentech:
 
 * [Odkaz na Azure synapse pro Azure Cosmos DB.](synapse-link.md)
 
-* [Přehled analytického úložiště Azure Cosmos DB.](analytical-store-introduction.md)
+* [Přehled analytického úložiště Azure Cosmos DB](analytical-store-introduction.md)
 
 * [Nejčastější dotazy týkající se Azure Cosmos DB odkaz na synapse.](synapse-link-frequently-asked-questions.md)
 
 * [Apache Spark ve službě Azure synapse Analytics](../synapse-analytics/spark/apache-spark-concepts.md).
 
-* [Podpora běhového prostředí bez SQL serveru ve službě Azure synapse Analytics](../synapse-analytics/sql/on-demand-workspace-overview.md).
+* [Podpora běhového fondu SQL bez serveru ve službě Azure synapse Analytics](../synapse-analytics/sql/on-demand-workspace-overview.md).

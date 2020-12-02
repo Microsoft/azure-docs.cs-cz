@@ -1,30 +1,30 @@
 ---
 title: Použití dynamického SQL
-description: Tipy pro vývojová řešení s využitím dynamického SQL ve fondu SQL synapse
+description: Tipy pro vývojová řešení s využitím dynamického SQL pro vyhrazené fondy SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: bce79b8e18b3ec6f1fd139af280086281bbdda98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 52bc7bdc63f754d52bf4a69097c1dd309a6dc3ec
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213461"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462782"
 ---
-# <a name="dynamic-sql-in-synapse-sql-pool"></a>Dynamický SQL ve fondu synapse SQL
+# <a name="dynamic-sql-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Dynamický SQL pro vyhrazené fondy SQL ve službě Azure synapse Analytics
 
-V tomto článku najdete tipy pro vývojová řešení pomocí dynamického SQL ve fondu SQL.
+V tomto článku najdete tipy pro vývojová řešení pomocí dynamického SQL ve vyhrazených fondech SQL.
 
 ## <a name="dynamic-sql-example"></a>Příklad dynamického SQL
 
-Při vývoji kódu aplikace pro fond SQL může být nutné použít dynamický jazyk SQL k zajištění flexibilních, obecných a modulárních řešení. Fond SQL v tuto chvíli nepodporuje datové typy objektů BLOB.
+Při vývoji kódu aplikace pro vyhrazené fondy SQL může být nutné použít dynamický jazyk SQL k zajištění flexibilních, obecných a modulárních řešení. Vyhrazené fondy SQL momentálně v tuto chvíli nepodporují datové typy objektů BLOB.
 
 Datové typy objektů BLOB nepodporují velikost řetězců, protože datové typy objektů BLOB zahrnují typy varchar (max) a nvarchar (max).
 
