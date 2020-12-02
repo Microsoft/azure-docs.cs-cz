@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: c21b4d746d763f41f4360cf93f67939bcd6dc49f
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8d28a1f2040cfec7b81081754a6abd3bc3e14439
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632681"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511470"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Privátní odkaz Azure pro Azure Data Factory
 
@@ -53,18 +53,45 @@ Komunikace se službou Azure Data Factory přechodem přes privátní odkaz a za
 ![Diagram privátního odkazu pro architekturu Azure Data Factory.](./media/data-factory-private-link/private-link-architecture.png)
 
 Povolení služby privátního propojení pro každý z předchozích komunikačních kanálů nabízí následující funkce:
-- **Podporováno** :
+- **Podporováno**:
    - Datovou továrnu můžete vytvářet a monitorovat ve virtuální síti, i když zablokujete veškerou odchozí komunikaci.
    - Spojení příkazů mezi místním prostředím Integration runtime a službou Azure Data Factory se dá bezpečně provést v prostředí privátní sítě. Přenos dat mezi místním prostředím Integration runtime a službou Azure Data Factory prochází pomocí privátního propojení. 
-- **Aktuálně není podporováno** :
+- **Aktuálně není podporováno**:
    - Interaktivní vytváření, které používá místní prostředí Integration runtime, jako je například test Connection, procházení seznamu složek a seznam tabulek, získání schématu a náhled dat, prochází pomocí privátního odkazu.
-   - Novou verzi prostředí Integration runtime v místním prostředí je možné stáhnout automaticky z webu Microsoft Download Center, pokud povolíte funkci Automatické aktualizace.
+   - Novou verzi prostředí Integration runtime v místním prostředí je možné stáhnout automaticky z webu Microsoft Download Center, pokud povolíte automatické aktualizace.
 
    > [!NOTE]
    > U funkcí, které aktuálně nejsou podporovány, je stále nutné nakonfigurovat dříve uvedenou doménu a port ve virtuální síti nebo v podnikové bráně firewall. 
 
 > [!WARNING]
 > Když vytvoříte propojenou službu, ujistěte se, že vaše přihlašovací údaje jsou uložené v trezoru klíčů Azure. Jinak přihlašovací údaje nebudou fungovat, když povolíte privátní odkaz v Azure Data Factory.
+
+## <a name="dns-changes-for-private-endpoints"></a>Změny DNS u privátních koncových bodů
+Při vytváření privátního koncového bodu se záznam prostředku CNAME DNS pro Data Factory aktualizuje na alias v subdoméně s předponou ' privatelink '. Ve výchozím nastavení vytvoříme také [privátní ZÓNU DNS](https://docs.microsoft.com/azure/dns/private-dns-overview), která odpovídá subdoméně privatelink, a záznamy prostředků DNS pro privátní koncové body.
+
+Při překladu adresy URL koncového bodu objektu pro vytváření dat mimo virtuální síť s privátním koncovým bodem se přeloží na veřejný koncový bod služby Data Factory. Při překladu z virtuální sítě hostující soukromý koncový bod se adresa URL koncového bodu úložiště přeloží na IP adresu privátního koncového bodu.
+
+Pro znázorněný příklad uvedený výše budou záznamy o prostředcích DNS pro Data Factory DataFactory a v případě, že jsou vyřešeny mimo virtuální síť, která je hostitelem privátního koncového bodu, následující:
+
+| Název | Typ | Hodnota |
+| ---------- | -------- | --------------- |
+| Objekt DataFactory. {region}. DataFactory. Azure. NET | CNAME   | Objekt DataFactory. {region}. privatelink. DataFactory. Azure. NET |
+| Objekt DataFactory. {region}. privatelink. DataFactory. Azure. NET | CNAME   | Veřejný koncový bod služby < Data Factory > |
+| Veřejný koncový bod služby < Data Factory >  | A | < veřejné IP adresy služby Data Factory > |
+
+Záznamy o prostředcích DNS pro objekt DataFactory, pokud jsou vyřešené ve virtuální síti hostující soukromý koncový bod, budou:
+
+| Název | Typ | Hodnota |
+| ---------- | -------- | --------------- |
+| Objekt DataFactory. {region}. DataFactory. Azure. NET | CNAME   | Objekt DataFactory. {region}. privatelink. DataFactory. Azure. NET |
+| Objekt DataFactory. {region}. privatelink. DataFactory. Azure. NET   | A | < IP adresu privátního koncového bodu > |
+
+Pokud ve vaší síti používáte vlastní server DNS, klienti musí být schopni přeložit plně kvalifikovaný název domény pro Data Factory koncový bod na IP adresu privátního koncového bodu. Server DNS byste měli nakonfigurovat tak, aby delegoval subdoménu privátního propojení s privátní zónou DNS pro virtuální síť, nebo aby byly nakonfigurovány záznamy A pro objekt DataFactory. {region}. privatelink. DataFactory. Azure. NET s IP adresou privátního koncového bodu.
+
+Další informace o konfiguraci vlastního serveru DNS pro podporu privátních koncových bodů najdete v následujících článcích:
+- [Překlad názvů pro prostředky ve virtuálních sítích Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+- [Konfigurace DNS pro privátní koncové body](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+
 
 ## <a name="set-up-private-link-for-azure-data-factory"></a>Nastavit privátní odkaz pro Azure Data Factory
 Soukromé koncové body lze vytvořit pomocí [Azure Portal](../private-link/create-private-endpoint-portal.md).

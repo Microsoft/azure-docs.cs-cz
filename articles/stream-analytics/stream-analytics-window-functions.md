@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/16/2020
-ms.openlocfilehash: c4ddffa5f9e9ff4b313f05c9cedb3cb207695225
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 4765c0c43cfd9760eb5b4392604bfaeedc69c388
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129699"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511436"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Úvod do Stream Analyticsch funkcí okna
 
@@ -36,7 +36,7 @@ Funkce skákajících oken skáčou v čase dopředu o pevně danou dobu. Je mo�
 
 ## <a name="sliding-window"></a>Posuvné okno
 
-Posuvná okna, na rozdíl od bubnu nebo skákající Windows, jsou výstupní události jenom pro body v čase, kdy se obsah okna skutečně změní. Jinými slovy, když událost vstoupí do okna nebo je ukončí. Každé okno má alespoň jednu událost, například v případě skákající Windows, můžou události patřit do více než jednoho posuvního okna.
+Posuvná okna, na rozdíl od bubnu nebo skákající Windows, jsou výstupní události jenom pro body v čase, kdy se obsah okna skutečně změní. Jinými slovy, když událost vstoupí do okna nebo je ukončí. Každé okno má tedy alespoň jednu událost. Podobně jako skákající okna můžou události patřit do více než jednoho posuvního okna.
 
 ![Posuvné okno Stream Analytics](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 

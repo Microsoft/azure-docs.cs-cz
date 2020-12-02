@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/24/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 1d5047a9be6b4cf53304858d12a0cb7b49b575ca
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c36a88317f71d08094b43d06cc7ba86985a73ca0
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499913"
+ms.locfileid: "96511844"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Co je Azure Cognitive Search?
 
@@ -22,10 +22,11 @@ Azure Kognitivní hledání ([dříve označované jako "Azure Search"](whats-ne
 
 Když vytváříte službu Kognitivní hledání, získáte:
 
-+ vyhledávací modul, který provádí indexování a provádění dotazů
-+ Analýza a transformace obrázků na základě AI během indexování
-+ trvalé úložiště vyhledávacích indexů, které vytvoříte a spravujete
-+ dotazovací jazyk pro vytváření jednoduchých a složitých dotazů
++ Vyhledávací modul, který provádí indexování a provádění dotazů
++ Trvalé úložiště vyhledávacích indexů, které vytvoříte a spravujete
++ Dotazovací jazyk pro vytváření jednoduchých a složitých dotazů
++ Analýzy na základě AI, vytváření prohledávatelných obsahu z imagí, nezpracovaný text, soubory aplikací
++ Integrace se službou Azure data prostřednictvím indexerů hledání, automatizace importu a aktualizace dat
 
 Služba vyhledávání v architektuře je mezi externími úložišti dat, která obsahují vaše neindexovaná data, a klientskou aplikací, která odesílá dotazy do indexu vyhledávání a zpracovává odpověď.
 

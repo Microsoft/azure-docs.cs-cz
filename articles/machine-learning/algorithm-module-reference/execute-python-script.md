@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 10/21/2020
-ms.openlocfilehash: e0da478e221fe392135362cd74cbdd8baca101ef
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 12/02/2020
+ms.openlocfilehash: 360f0ce60a35bc96c6dd8e46d636f07124d01255
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421358"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511912"
 ---
 # <a name="execute-python-script-module"></a>Spustit modul Python Script
 
@@ -37,7 +37,7 @@ Azure Machine Learning používá Anaconda distribuci Pythonu, která zahrnuje m
 
 Úplný seznam najdete v části [předinstalované balíčky Pythonu](#preinstalled-python-packages).
 
-Chcete-li nainstalovat balíčky, které nejsou v předinstalovaném seznamu (například *scikit-různé* ), přidejte do skriptu následující kód: 
+Chcete-li nainstalovat balíčky, které nejsou v předinstalovaném seznamu (například *scikit-různé*), přidejte do skriptu následující kód: 
 
 ```python
 import os
@@ -59,6 +59,36 @@ if spec is None:
 
 > [!WARNING]
 > Modul excute Python Script nepodporuje instalaci balíčků, které jsou závislé na dalších nativních knihovnách, a to pomocí příkazu "apt-get", jako je Java, PyODBC a atd. Důvodem je to, že se tento modul spouští v jednoduchém prostředí s předem nainstalovaným Pythonem a s oprávněními bez oprávnění správce.  
+
+## <a name="access-to-registered-datasets"></a>Přístup k registrovaným datovým sadám
+
+Můžete se podívat na následující vzorový kód pro přístup k [registrovaným datovým sadám](../how-to-create-register-datasets.md) v pracovním prostoru:
+
+```Python
+def azureml_main(dataframe1 = None, dataframe2 = None):
+
+    # Execution logic goes here
+    print(f'Input pandas.DataFrame #1: {dataframe1}')
+    from azureml.core import Run
+    run = Run.get_context(allow_offline=True)
+    ws = run.experiment.workspace
+
+    from azureml.core import Dataset
+    dataset = Dataset.get_by_name(ws, name='test-register-tabular-in-designer')
+    dataframe1 = dataset.to_pandas_dataframe()
+     
+    # If a zip file is connected to the third input port,
+    # it is unzipped under "./Script Bundle". This directory is added
+    # to sys.path. Therefore, if your zip file contains a Python file
+    # mymodule.py you can import it using:
+    # import mymodule
+
+    # Return value must be of a sequence of pandas.DataFrame
+    # E.g.
+    #   -  Single return value: return dataframe1,
+    #   -  Two return values: return dataframe1, dataframe2
+    return dataframe1,
+```
 
 ## <a name="upload-files"></a>Nahrání souborů
 Modul spuštění skriptu Python podporuje nahrávání souborů pomocí [Azure Machine Learning Python SDK](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#upload-file-name--path-or-stream-).

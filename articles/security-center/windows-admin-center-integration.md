@@ -8,16 +8,16 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: memildin
-ms.openlocfilehash: 36f519ce41ccfbfb48ca696ed2a61c6131a75998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca3dd410474af0a42a3cd5b4217c3bba90b8ff1a
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906342"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511980"
 ---
 # <a name="protect-windows-admin-center-resources-with-security-center"></a>Ochrana prostředků centra pro správu Windows pomocí Security Center
 
-Centrum pro správu systému Windows je nástroj pro správu serverů Windows. Pro správce systému je k dispozici jediné místo pro přístup ke většině nejčastěji používaných nástrojů pro správu. V centru pro správu Windows můžete přímo připojit servery na Prem do Azure Security Center. Pak můžete zobrazit souhrn doporučení a výstrah zabezpečení přímo v prostředí centra pro správu systému Windows.
+Centrum pro správu systému Windows je nástroj pro správu serverů Windows. Pro správce systému je k dispozici jediné místo pro přístup ke většině nejčastěji používaných nástrojů pro správu. V centru pro správu Windows můžete své místní servery přímo připojit do Azure Security Center. Pak můžete zobrazit souhrn doporučení a výstrah zabezpečení přímo v prostředí centra pro správu systému Windows.
 
 > [!NOTE]
 > Aby bylo možné povolit integraci centra pro správu systému Windows, musí mít vaše předplatné Azure a přidružený Log Analytics pracovní prostor povolený program Azure Defender.
@@ -29,7 +29,7 @@ Po úspěšné registraci serveru z centra pro správu Windows do Azure Security
 * Zobrazení výstrah zabezpečení a doporučení v rámci rozšíření Security Center v centru pro správu Windows
 * Prohlédněte si stav zabezpečení a získejte další podrobné informace o spravovaných serverech centra pro správu Windows v Security Center v rámci Azure Portal (nebo přes rozhraní API).
 
-Kombinací těchto dvou nástrojů se Security Center, že se jedná o vaše samostatné podokno, kde můžete zobrazit všechny informace o zabezpečení, a to bez ohledu na prostředek: ochrana centra pro správu Windows spravovaného na serverech Prem, virtuálních počítačů a dalších PaaS úloh.
+Kombinací těchto dvou nástrojů se Security Center, že se jedná o vaše samostatné podokno, kde můžete zobrazit všechny informace o zabezpečení, a to bez ohledu na to, jaký je prostředek: ochrana vašeho centra pro správu Windows spravovaná na místních serverech, virtuálních počítačů a dalších PaaS úloh.
 
 ## <a name="onboard-windows-admin-center-managed-servers-into-security-center"></a>Připojit spravované servery centra pro správu systému Windows do Security Center
 

@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: a5c0d8bb47b337b0415565a0b6dad5c6822d0b94
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fd71f4eb56974b93637c23eddc81e5f33ce788b8
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781732"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512150"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -107,6 +107,14 @@ Nahrávání souborů a adresářů pomocí tokenu SAS a zástupných znaků (*)
 ```azcopy
 azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
 ```
+
+Nahrajte soubory a adresáře do Azure Storage účtu a nastavte v objektu BLOB značky kódované řetězce dotazu. 
+
+- K nastavení značek {Key = "bla bla", Val = "foo"} a {Key = "bla bla 2", Val = "bar"} použijte následující syntaxi: `azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
+    
+- Klíče a hodnoty jsou zakódované v adrese URL a páry klíč-hodnota jsou oddělené znakem ampersand (' & ').
+
+- Při nastavování značek u objektů BLOB existují další oprávnění (ne pro značky) v SAS, aniž by služba poskytovala chybu autorizace zpátky.
 
 Stažení jednoho souboru pomocí ověřování OAuth. Pokud jste ještě přihlášeni k AzCopy, spusťte `azcopy login` příkaz před spuštěním následujícího příkazu.
 
@@ -214,9 +222,19 @@ Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kont
 - azcopy cp "https://s3.amazonaws.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
 
+Přenos souborů a adresářů do Azure Storage účtu a nastavení daných značek kódovaných v řetězci dotazu v objektu BLOB. 
+
+- K nastavení značek {Key = "bla bla", Val = "foo"} a {Key = "bla bla 2", Val = "bar"} použijte následující syntaxi: `azcopy cp "https://[account].blob.core.windows.net/[source_container]/[path/to/directory]?[SAS]" "https://[account].blob.core.windows.net/[destination_container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
+        
+- Klíče a hodnoty jsou zakódované v adrese URL a páry klíč-hodnota jsou oddělené znakem ampersand (' & ').
+    
+- Při nastavování značek u objektů BLOB existují další oprávnění (ne pro značky) v SAS, aniž by služba poskytovala chybu autorizace zpátky.
+
 ## <a name="options"></a>Možnosti
 
 **--záloha** Aktivuje systém Windows "SeBackupPrivilege for loades" nebo SeRestorePrivilege for downloads, aby bylo možné AzCopy zobrazit a číst všechny soubory bez ohledu na jejich oprávnění systému souborů a obnovit všechna oprávnění. Vyžaduje, aby účet používající AzCopy již má tato oprávnění (například má oprávnění správce nebo je členem `Backup Operators` skupiny). Tento příznak aktivuje oprávnění, která už účet má.
+
+**--BLOB-Tags** Tagy řetězcové sady objektů BLOB pro kategorizaci dat v účtu úložiště.
 
 **--typ BLOB-** String definuje typ objektu BLOB v cíli. Používá se k nahrávání objektů BLOB a při kopírování mezi účty (výchozí `Detect` ). Platné hodnoty zahrnují `Detect` , `BlockBlob` , `PageBlob` a `AppendBlob` . Při kopírování mezi účty hodnota způsobí, že `Detect` AzCopy použije typ zdrojového objektu BLOB k určení typu cílového objektu BLOB. Při nahrávání souboru určí, `Detect` jestli se jedná o soubor VHD nebo VHDX na základě přípony souboru. Pokud je soubor etherem VHD nebo VHDX, AzCopy soubor považuje za objekt blob stránky. (výchozí "Detect")
 
@@ -304,6 +322,6 @@ Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kont
 
 **--Trusted – řetězec Microsoft-přípony** Určuje další přípony domén, kde se můžou odesílat přihlašovací tokeny Azure Active Directory.  Výchozí formát je `*.core.windows.net;*.core.chinacloudapi.cn;*.core.cloudapi.de;*.core.usgovcloudapi.net`. Zde uvedené jsou přidány do výchozího nastavení. Z důvodu zabezpečení byste měli sem umístit jenom Microsoft Azure domény. Více položek oddělte středníkem.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 - [AzCopy](storage-ref-azcopy.md)

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 046cca4e683a8f14893bf48ac8601b138a7c28a7
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: daa7c657a47414b01197bed3644caefeda98af1c
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630273"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512167"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>Migrace StorSimple 8100 a 8600 do Azure File Sync
 
@@ -175,7 +175,7 @@ K dispozici je několik nastavení replikace. Přečtěte si další informace o
 Vyberte jenom jednu z následujících dvou možností:
 
 * *Místně redundantní úložiště (LRS)*.
-* *Redundantní úložiště zóny (ZRS)* , které není k dispozici ve všech oblastech Azure.
+* *Redundantní úložiště zóny (ZRS)*, které není k dispozici ve všech oblastech Azure.
 
 > [!NOTE]
 > Pouze LRS a ZRS typy redundance jsou kompatibilní s velkými 100-TiB sdílenými sdílenými složkami Azure.
@@ -320,8 +320,8 @@ Na konci fáze 3 budete spouštět úlohy služby transformace dat ze svazků St
 
 K dispozici jsou dvě hlavní strategie pro přístup ke sdíleným složkám Azure:
 
-* **Azure File Sync** : [Nasaďte Azure File Sync](#deploy-azure-file-sync) na místní instanci Windows serveru. Azure File Sync má všechny výhody místní mezipaměti, podobně jako StorSimple.
-* **Přímý přístup ke sdílení** : [nasazení přímého přístupu ke sdílení](#deploy-direct-share-access). Tuto strategii použijte v případě, že váš scénář přístupu pro danou sdílenou složku Azure nebude využívat místní ukládání do mezipaměti, nebo už nebudete mít možnost hostovat místní instanci Windows serveru. Tady budou uživatelé a aplikace dál přistupovat ke sdíleným složkám SMB přes protokol SMB. Tyto sdílené složky už nejsou na místním serveru, ale přímo v cloudu.
+* **Azure File Sync**: [Nasaďte Azure File Sync](#deploy-azure-file-sync) na místní instanci Windows serveru. Azure File Sync má všechny výhody místní mezipaměti, podobně jako StorSimple.
+* **Přímý přístup ke sdílení**: [nasazení přímého přístupu ke sdílení](#deploy-direct-share-access). Tuto strategii použijte v případě, že váš scénář přístupu pro danou sdílenou složku Azure nebude využívat místní ukládání do mezipaměti, nebo už nebudete mít možnost hostovat místní instanci Windows serveru. Tady budou uživatelé a aplikace dál přistupovat ke sdíleným složkám SMB přes protokol SMB. Tyto sdílené složky už nejsou na místním serveru, ale přímo v cloudu.
 
 Měli byste už rozhodnout, která možnost je pro vás nejvhodnější ve [fázi 1](#phase-1-prepare-for-migration) této příručky.
 
@@ -413,13 +413,13 @@ Tento přístup k migraci vyžaduje pro uživatele a aplikace nějaké výpadky.
 
 Když pro sdílenou složku Azure použijete Azure File Sync, je důležité, abyste *před* spuštěním jakékoli místní složky Robocopy zjistili, že jste dokončili stahování celého oboru názvů na server. Doba potřebná ke stažení vašeho oboru názvů závisí na počtu položek ve sdílené složce Azure. Existují dva způsoby, jak určit, zda byl váš obor názvů plně doručen na server.
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 Pomocí Azure Portal můžete zobrazit, kdy váš obor názvů plně dorazil.
 
 * Přihlaste se k Azure Portal a přejít do skupiny synchronizace. Ověřte stav synchronizace pro skupinu synchronizace a koncový bod serveru.
-* Zajímavý směr se stáhne. Pokud je koncový bod serveru nově zřízený, bude se zobrazovat **počáteční synchronizace** , která indikuje, že obor názvů je stále mimo provoz.
-Po provedení změn na cokoli, ale na **počáteční synchronizaci** , se Váš obor názvů na serveru plně naplní. Nyní můžete pokračovat pomocí místní nástroje Robocopy.
+* Zajímavý směr se stáhne. Pokud je koncový bod serveru nově zřízený, bude se zobrazovat **počáteční synchronizace**, která indikuje, že obor názvů je stále mimo provoz.
+Po provedení změn na cokoli, ale na **počáteční synchronizaci**, se Váš obor názvů na serveru plně naplní. Nyní můžete pokračovat pomocí místní nástroje Robocopy.
 
 #### <a name="windows-server-event-viewer"></a>Prohlížeč událostí Windows serveru
 
@@ -427,9 +427,9 @@ Můžete také použít Prohlížeč událostí v instanci systému Windows Serv
 
 1. Otevřete **Prohlížeč událostí** a pokračujte na **aplikace a služby**.
 1. Přejít na a otevřít **Microsoft\FileSync\Agent\Telemetry**.
-1. Vyhledejte nejnovější **událost 9102** , která odpovídá dokončené relaci synchronizace.
+1. Vyhledejte nejnovější **událost 9102**, která odpovídá dokončené relaci synchronizace.
 1. Vyberte **Podrobnosti** a potvrďte, že se díváte na událost, kde je hodnota **SyncDirection** **stažena**.
-1. V době, kdy byl váš obor názvů dokončen ke stažení na server, bude existovat jediná událost se **scénářem** , hodnotou **FullGhostedSync** a **HRESULT**  =  **0**.
+1. V době, kdy byl váš obor názvů dokončen ke stažení na server, bude existovat jediná událost se **scénářem**, hodnotou **FullGhostedSync** a **HRESULT**  =  **0**.
 1. Pokud jste tuto událost nezjistili, můžete také vyhledat další **události 9102** s **SyncDirection**  =  **stažením** a **scénářem**  =  **"RegularSync"**. Hledání jedné z těchto událostí také znamená, že obor názvů se dokončil stahování a synchronizace v pravidelných relacích synchronizace, ať už v tuto chvíli existuje cokoli k synchronizaci.
 
 ### <a name="a-final-robocopy"></a>Poslední příkaz Robocopy
@@ -448,7 +448,7 @@ V tomto okamžiku existují rozdíly mezi místní instancí Windows serveru a z
 Příkaz Robocopy obsahuje několik parametrů. Následující příklad prezentuje dokončený příkaz a seznam důvodů pro výběr těchto parametrů.
 
 ```console
-Robocopy /MT:16 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
+Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
 Pozadí
@@ -475,6 +475,14 @@ Pozadí
    :::column-end:::
    :::column span="1":::
       Provede výstup do okna konzoly. Používá se ve spojení s výstupem do souboru protokolu.
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      /NP
+   :::column-end:::
+   :::column span="1":::
+      Vynechá protokolování průběhu, aby se protokol mohl přečíst.
    :::column-end:::
 :::row-end:::
 :::row:::

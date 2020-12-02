@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 5a35d939c12639770e25c3096c77f13d31310f85
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 90942e4deebdc65fe26ce94f04a15fe2b8c0684c
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492008"
+ms.locfileid: "96512065"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Řešení potíží s výkonem Azure File shares
 
@@ -74,11 +74,12 @@ Pokud je aplikace, kterou používáte, jediným vláknem, může tato instalace
 
 ### <a name="cause"></a>Příčina
 
-Klientský virtuální počítač (VM) se může nacházet v jiné oblasti než sdílení souborů.
+Klientský virtuální počítač (VM) se může nacházet v jiné oblasti než sdílení souborů. Jiným důvodem pro vysokou latenci může být latence v důsledku latence klienta nebo sítě.
 
 ### <a name="solution"></a>Řešení
 
 - Spusťte aplikaci z virtuálního počítače, který se nachází ve stejné oblasti jako sdílená složka.
+- V případě svého účtu úložiště zkontrolujte metriky transakcí **SuccessE2ELatency** a  **SuccessServerLatency** prostřednictvím **Azure monitor** v Azure Portal. Vysoký rozdíl mezi hodnotami metrik SuccessE2ELatency a SuccessServerLatency je indikací latence, která je pravděpodobně způsobena sítí nebo klientem. Viz [metriky transakcí](storage-files-monitoring-reference.md#transaction-metrics) v referenčních informacích k datům monitorování Azure Files.
 
 ## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>Klientovi se nepovedlo dosáhnout maximální propustnosti, kterou síť podporuje.
 
@@ -284,7 +285,7 @@ Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Pře
 
 Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Přehled výstrah v Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 - [Řešení potíží se soubory Azure v systému Windows](storage-troubleshoot-windows-file-connection-problems.md)  
 - [Řešení potíží se soubory Azure v systému Linux](storage-troubleshoot-linux-file-connection-problems.md)  
 - [Nejčastější dotazy ke službě Azure Files](storage-files-faq.md)

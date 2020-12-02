@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: b70a3fe4884ef209e57fbb954c27aa83486b5c98
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: aaeb38b4d46188205841d6a93437533e30061485
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660997"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512085"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Kurz: vytvoření a Správa služby VPN Gateway pomocí PowerShellu
 
@@ -26,7 +26,7 @@ Brány VPN Azure poskytují propojení různých míst mezi zákazníkem a Azure
 
 Následující diagram ukazuje virtuální síť a bránu VPN vytvořené v rámci tohoto kurzu.
 
-:::image type="content" source="./media/vpn-gateway-tutorial-create-gateway-powershell/gateway-diagram.png" alt-text="Diagram virtuální sítě a brány VPN":::
+:::image type="content" source="./media/vpn-gateway-tutorial-create-gateway-powershell/diagram.png" alt-text="Diagram virtuální sítě a brány VPN":::
 
 ## <a name="prerequisites"></a>Požadavky
 

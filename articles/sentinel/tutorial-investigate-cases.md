@@ -14,19 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: c1873e21db1c586453dc9e9fe890268d8797303a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: aa9160f01ed0040123bd8ac932cfd2443f557bb6
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367002"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511725"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Kurz: zkoumání incidentů pomocí služby Azure Sentinel
 
 > [!IMPORTANT]
-> Graf šetření je aktuálně ve verzi Public Preview.
-> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Graf šetření je aktuálně ve **verzi Preview**. Další právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti, najdete v tématu dodatečné [podmínky použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview.
 
 
 Tento kurz vám pomůže prozkoumat incidenty pomocí služby Azure Sentinel. Po připojení zdrojů dat ke službě Azure Sentinel chcete být upozorněni, když dojde k nějaké podezřelé situaci. Pokud to chcete povolit, Azure Sentinel vám umožní vytvářet Pokročilá pravidla výstrah, která generují incidenty, které můžete přiřadit a prozkoumat.
@@ -46,7 +44,7 @@ Incident může zahrnovat více výstrah. Jedná se o agregaci všech relevantn�
 
 ## <a name="how-to-investigate-incidents"></a>Postup při vyšetřování incidentů
 
-1. Vyberte **incidenty**. Na stránce **incidenty** se dozvíte, kolik incidentů máte, kolik jich je otevřených, kolik se vám nastavilo **v průběhu**a kolik se zavřelo. U každého incidentu můžete vidět čas, ke kterému došlo, a stav incidentu. Podívejte se na závažnost, abyste se rozhodli, jaké incidenty se mají zpracovat jako první.
+1. Vyberte **incidenty**. Na stránce **incidenty** se dozvíte, kolik incidentů máte, kolik jich je otevřených, kolik se vám nastavilo **v průběhu** a kolik se zavřelo. U každého incidentu můžete vidět čas, ke kterému došlo, a stav incidentu. Podívejte se na závažnost, abyste se rozhodli, jaké incidenty se mají zpracovat jako první.
 
     ![Zobrazit závažnost incidentu](media/tutorial-investigate-cases/incident-severity.png)
 
@@ -83,7 +81,9 @@ Použití grafu šetření:
 1. Vyberte incident a pak vyberte **prozkoumat**. Tím přejdete do grafu šetření. Graf poskytuje ilustrativní mapu entit přímo připojených k výstraze a dalších prostředků, které jsou propojeny.
 
    > [!IMPORTANT] 
-   > Incident budete moct prozkoumat jenom v případě, že jste při nastavování pravidla Analytics použili pole mapování entit. Graf šetření vyžaduje, aby původní incident zahrnoval entity.
+   > - Incident budete moct prozkoumat jenom v případě, že jste při nastavování pravidla Analytics použili pole mapování entit. Graf šetření vyžaduje, aby původní incident zahrnoval entity.
+   >
+   > - Služba Azure Sentinel aktuálně podporuje vyšetřování **incidentů, které jsou staré až 30 dnů**.
 
    ![Zobrazení mapy](media/tutorial-investigate-cases/map1.png)
 
@@ -123,7 +123,7 @@ Po vyřešení konkrétního incidentu (například když vaše šetření dosá
 
 Po zvolení příslušné klasifikace přidejte do pole **Komentář** nějaký popisný text. To bude užitečné v případě, že se potřebujete vrátit k tomuto incidentu. Až budete hotovi, klikněte na **použít** a incident se uzavře.
 
-:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="Snímek obrazovky, který zvýrazní klasifikace dostupné v seznamu vybrat klasifikace.":::
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="{alt-text}":::
 
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste zjistili, jak začít s vyšetřováním incidentů pomocí služby Azure Sentinel. Přejděte k kurzu, [jak reagovat na hrozby pomocí automatizovaného playbooky](tutorial-respond-threats-playbook.md).

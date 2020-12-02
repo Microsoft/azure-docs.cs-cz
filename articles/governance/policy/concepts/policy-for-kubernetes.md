@@ -1,14 +1,14 @@
 ---
 title: Další informace Azure Policy Kubernetes
 description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů se systémem Kubernetes v Azure nebo místním prostředí.
-ms.date: 09/29/2020
+ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1e85d7af26e52ea38c09ec0c052b5c6a2787bb80
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: e2b9253d8ce60d5dc77d406e3c9d0469539f2c77
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146292"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511327"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Principy Azure Policy pro clustery Kubernetes
 
@@ -25,7 +25,7 @@ Azure Policy pro Kubernetes podporuje následující Clusterová prostředí:
 - [Modul AKS](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
-> Doplňky pro modul AKS a Kubernetes s podporou ARC jsou ve **verzi Preview** . Azure Policy pro Kubernetes podporují jenom fondy uzlů Linux a předdefinované definice zásad. Předdefinované definice zásad jsou v kategorii **Kubernetes** . Definice zásad omezené verze Preview s efektem **EnforceOPAConstraint** a **EnforceRegoPolicy** a související kategorií **služby Kubernetes** jsou _zastaralé_ . Místo toho použijte _audit_ efektů a _Odepřít_ v režimu poskytovatele prostředků `Microsoft.Kubernetes.Data` .
+> Doplňky pro modul AKS a Kubernetes s podporou ARC jsou ve **verzi Preview**. Azure Policy pro Kubernetes podporují jenom fondy uzlů Linux a předdefinované definice zásad. Předdefinované definice zásad jsou v kategorii **Kubernetes** . Definice zásad omezené verze Preview s efektem **EnforceOPAConstraint** a **EnforceRegoPolicy** a související kategorií **služby Kubernetes** jsou _zastaralé_. Místo toho použijte _audit_ efektů a _Odepřít_ v režimu poskytovatele prostředků `Microsoft.Kubernetes.Data` .
 
 ## <a name="overview"></a>Přehled
 
@@ -62,7 +62,7 @@ Na Azure Policy doplňku pro clustery Kubernetes se vztahují následující obe
 Následující omezení platí pouze pro Azure Policy doplněk pro AKS:
 
 - [Zásady zabezpečení AKS pod](../../../aks/use-pod-security-policies.md) a doplněk Azure Policy pro AKS nelze povolit současně. Další informace najdete v tématu [omezení zabezpečení AKS pod](../../../aks/use-pod-security-on-azure-policy.md#limitations).
-- Obory názvů automaticky vyloučené Azure Policy doplněk pro vyhodnocení: _Kube-System_ , _gatekeeper-System_ a _AKS-Periscope_ .
+- Obory názvů automaticky vyloučené Azure Policy doplněk pro vyhodnocení: _Kube-System_, _gatekeeper-System_ a _AKS-Periscope_.
 
 ## <a name="recommendations"></a>Doporučení
 
@@ -122,9 +122,9 @@ Před instalací doplňku Azure Policy nebo povolením jakékoli funkce služby 
 
 Po dokončení výše uvedených požadovaných kroků nainstalujte doplněk Azure Policy v clusteru AKS, který chcete spravovat.
 
-- portál Azure
+- Azure Portal
 
-  1. Spusťte službu AKS v Azure Portal tím, že vyberete **všechny služby** a pak vyhledáte a vyberete **služby Kubernetes** .
+  1. Spusťte službu AKS v Azure Portal tím, že vyberete **všechny služby** a pak vyhledáte a vyberete **služby Kubernetes**.
 
   1. Vyberte jeden z clusterů AKS.
 
@@ -142,7 +142,7 @@ Po dokončení výše uvedených požadovaných kroků nainstalujte doplněk Azu
      > 1. Kliknutím na tlačítko **Povolit doplněk** nainstalujete verzi v2 doplňku.
      > 1. [Přiřaďte verze V2 předdefinovaných zásad zásad v1.](#assign-a-built-in-policy-definition)
 
-- Azure CLI
+- Rozhraní příkazového řádku Azure
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell
@@ -217,7 +217,7 @@ Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby
    |`login.windows.net` |`443` |
    |`dc.services.visualstudio.com` |`443` |
 
-1. Přiřazení role zapisovače dat služby Application Insights (Preview) přiřaďte clusteru Kubernetes s povoleným ARC Azure. Nahraďte `<subscriptionId>` ID předplatného a `<rg>` skupinou prostředků clusteru Kubernetes s povoleným ARC Azure a `<clusterName>` názvem clusteru Kubernetes s povoleným ARC Azure. Udržujte si přehled o vrácených hodnotách _appId_ , _Password_ a _tenant_ pro kroky instalace.
+1. Přiřazení role zapisovače dat služby Application Insights (Preview) přiřaďte clusteru Kubernetes s povoleným ARC Azure. Nahraďte `<subscriptionId>` ID předplatného a `<rg>` skupinou prostředků clusteru Kubernetes s povoleným ARC Azure a `<clusterName>` názvem clusteru Kubernetes s povoleným ARC Azure. Udržujte si přehled o vrácených hodnotách _appId_, _Password_ a _tenant_ pro kroky instalace.
 
    - Azure CLI
 
@@ -384,11 +384,11 @@ Pokud chcete přiřadit definici zásady ke clusteru Kubernetes, musíte mu při
 
 V následujících krocích najdete předdefinované definice zásad pro správu clusteru pomocí Azure Portal:
 
-1. Spusťte službu Azure Policy v Azure Portal. V levém podokně vyberte **všechny služby** a pak vyhledejte a vyberte **zásady** .
+1. Spusťte službu Azure Policy v Azure Portal. V levém podokně vyberte **všechny služby** a pak vyhledejte a vyberte **zásady**.
 
-1. V levém podokně stránky Azure Policy vyberte **definice** .
+1. V levém podokně stránky Azure Policy vyberte **definice**.
 
-1. V rozevíracím seznamu kategorie použijte **možnost Vybrat vše** , pokud chcete filtr vymazat, a pak vyberte **Kubernetes** .
+1. V rozevíracím seznamu kategorie použijte **možnost Vybrat vše** , pokud chcete filtr vymazat, a pak vyberte **Kubernetes**.
 
 1. Vyberte definici zásady a pak klikněte na tlačítko **přiřadit** .
 
@@ -405,18 +405,18 @@ V následujících krocích najdete předdefinované definice zásad pro správu
 
    - **Zakázáno** – neuplatněte zásady v clusteru. Žádosti o přístup Kubernetes s porušením nejsou odepřeny. Výsledky hodnocení dodržování předpisů jsou stále k dispozici. Při zavedení nových definic zásad do spuštěných clusterů je možnost _disabled_ užitečná pro testování definice zásady, protože žádosti o přístup s porušením nejsou zamítnuté.
 
-1. Vyberte **Další** .
+1. Vyberte **Další**.
 
 1. Nastavení **hodnot parametrů**
 
-   - Pokud chcete vyloučit obory názvů Kubernetes ze vyhodnocení zásad, zadejte seznam oborů názvů v **vyloučeních oboru názvů** parametrů. Doporučuje se vyloučit: _Kube-System_ , _gatekeeper-System_ a _Azure-ARC_ .
+   - Pokud chcete vyloučit obory názvů Kubernetes ze vyhodnocení zásad, zadejte seznam oborů názvů v **vyloučeních oboru názvů** parametrů. Doporučuje se vyloučit: _Kube-System_, _gatekeeper-System_ a _Azure-ARC_.
 
-1. Vyberte **Zkontrolovat a vytvořit** .
+1. Vyberte **Zkontrolovat a vytvořit**.
 
 Případně můžete k vyhledání a přiřazení zásad Kubernetes použít rychlý Start [portálu zásad](../assign-policy-portal.md) . Místo ukázky "Auditovat virtuální počítače" vyhledejte definici zásady Kubernetes.
 
 > [!IMPORTANT]
-> Předdefinované definice zásad jsou k dispozici pro clustery Kubernetes ve skupině **Kubernetes** . Seznam předdefinovaných definic zásad najdete v tématu [Kubernetes Samples](../samples/built-in-policies.md#kubernetes).
+> Předdefinované definice zásad jsou k dispozici pro clustery Kubernetes ve skupině **Kubernetes**. Seznam předdefinovaných definic zásad najdete v tématu [Kubernetes Samples](../samples/built-in-policies.md#kubernetes).
 
 ## <a name="policy-evaluation"></a>Vyhodnocení zásad
 
@@ -436,6 +436,14 @@ Každých 15 minut doplněk volá úplnou kontrolu clusteru. Po shromáždění 
 > [!NOTE]
 > Každá sestava dodržování předpisů v Azure Policy pro clustery Kubernetes zahrnuje všechna porušení během posledních 45 minut. Časové razítko indikuje, kdy došlo k porušení.
 
+Další požadavky:
+
+- Pokud je předplatné clusteru zaregistrované ve službě Azure Security Center, Azure Security Center zásady Kubernetes se v clusteru aplikují automaticky.
+
+- Když se v clusteru s existujícími Kubernetes prostředky použije zásada Odepřít, všechny dříve existující prostředky, které nedodržují předpisy nové zásady, budou i nadále běžet. Pokud se prostředek, který nedodržuje předpisy, naplánuje na jiný uzel, zablokuje Server Gatekeeper vytváření prostředků.
+
+- Pokud má cluster zásadu odepřít, která ověřuje prostředky, uživateli se při vytváření nasazení nezobrazí zpráva o zamítnutí. Zvažte například nasazení Kubernetes, které obsahuje replicasets a lusky. Když se uživatel spustí `kubectl describe deployment $MY_DEPLOYMENT` , nevrátí jako součást událostí zprávu o zamítnutí. Ale `kubectl describe replicasets.apps $MY_DEPLOYMENT` vrátí události přidružené k zamítnutí.
+
 ## <a name="logging"></a>protokolování
 
 Jako Kubernetes Controller nebo kontejner se v clusteru Kubernetes udržují protokoly _Azure-Policy_ i _gatekeeper_ . Protokoly se dají zveřejnit na stránce **Přehled** v clusteru Kubernetes.
@@ -453,15 +461,19 @@ kubectl logs <gatekeeper pod name> -n gatekeeper-system
 
 Další informace najdete v tématu [ladění serveru gatekeeper](https://github.com/open-policy-agent/gatekeeper#debugging) v dokumentaci k serveru gatekeeper.
 
+## <a name="troubleshooting-the-add-on"></a>Řešení potíží s doplňkem
+
+Další informace o řešení potíží s doplňkem pro Kubernetes najdete v [části Kubernetes](/azure/governance/policy/troubleshoot/general#add-on-for-kubernetes-general-errors) článku věnovaném řešení potíží s nástrojem Azure Policy.
+
 ## <a name="remove-the-add-on"></a>Odebrání doplňku
 
 ### <a name="remove-the-add-on-from-aks"></a>Odebrání doplňku z AKS
 
 Pokud chcete odebrat doplněk Azure Policy z clusteru AKS, použijte Azure Portal nebo rozhraní příkazového řádku Azure:
 
-- portál Azure
+- Azure Portal
 
-  1. Spusťte službu AKS v Azure Portal tím, že vyberete **všechny služby** a pak vyhledáte a vyberete **služby Kubernetes** .
+  1. Spusťte službu AKS v Azure Portal tím, že vyberete **všechny služby** a pak vyhledáte a vyberete **služby Kubernetes**.
 
   1. Vyberte cluster AKS, ve kterém chcete zakázat doplněk Azure Policy.
 
@@ -469,7 +481,7 @@ Pokud chcete odebrat doplněk Azure Policy z clusteru AKS, použijte Azure Porta
 
   1. Na hlavní stránce vyberte tlačítko **zakázat doplněk** .
 
-- Azure CLI
+- Rozhraní příkazového řádku Azure
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell

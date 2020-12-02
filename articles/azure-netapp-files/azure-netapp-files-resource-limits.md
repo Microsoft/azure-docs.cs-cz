@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/14/2020
+ms.date: 12/01/2020
 ms.author: b-juche
-ms.openlocfilehash: 6963a1f39534573bca39431febe391e89d462875
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: aaffc63690894f43329763064ae89a105274953c
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072777"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511929"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Omezení prostředků pro Azure NetApp Files
 
@@ -31,23 +31,23 @@ Následující tabulka popisuje omezení prostředků pro Azure NetApp Files:
 
 |  Prostředek  |  Výchozí omezení  |  Nastavitelná prostřednictvím žádosti o podporu  |
 |----------------|---------------------|--------------------------------------|
-|  Počet účtů NetApp na oblast Azure   |  10    |  Yes   |
-|  Počet fondů kapacity na účet NetApp   |    25     |   Yes   |
-|  Počet svazků na předplatné   |    500     |   Yes   |
-|  Počet svazků na fond kapacity     |    500   |    Yes     |
-|  Počet snímků na svazek       |    255     |    No        |
-|  Počet podsítí delegovaných pro Azure NetApp Files (Microsoft. NetApp/svazky) na Azure Virtual Network    |   1   |    No    |
-|  Počet využitých IP adres ve virtuální síti (včetně okamžitě virtuální sítě partnerských vztahů) s Azure NetApp Files   |    1000   |    No   |
-|  Minimální velikost jednoho fondu kapacity   |  4 TiB     |    No  |
-|  Maximální velikost jednoho fondu kapacity    |  500 TiB   |   No   |
-|  Minimální velikost jednoho svazku    |    100 GiB    |    No    |
-|  Maximální velikost jednoho svazku     |    100 TiB    |    No    |
-|  Maximální velikost jednoho souboru     |    16 TiB    |    No    |    
-|  Maximální velikost metadat adresáře v jednom adresáři      |    320 MB    |    No    |    
-|  Maximální počet souborů ([maxfiles](#maxfiles)) na jeden svazek     |    100 000 000    |    Yes    |    
-|  Minimální přiřazená propustnost pro ruční svazek technologie QoS     |    1 MiB/s   |    No    |    
-|  Maximální přiřazená propustnost pro ruční svazek technologie QoS     |    soubory MiB 4 500/s    |    No    |    
-|  Počet svazků ochrany dat replikace mezi oblastmi (cílové svazky)     |    5    |    Yes    |     
+|  Počet účtů NetApp na oblast Azure na předplatné  |  10    |  Ano   |
+|  Počet fondů kapacity na účet NetApp   |    25     |   Ano   |
+|  Počet svazků na předplatné   |    500     |   Ano   |
+|  Počet svazků na fond kapacity     |    500   |    Ano     |
+|  Počet snímků na svazek       |    255     |    Ne        |
+|  Počet podsítí delegovaných pro Azure NetApp Files (Microsoft. NetApp/svazky) na Azure Virtual Network    |   1   |    Ne    |
+|  Počet využitých IP adres ve virtuální síti (včetně okamžitě virtuální sítě partnerských vztahů) s Azure NetApp Files   |    1000   |    Ne   |
+|  Minimální velikost jednoho fondu kapacity   |  4 TiB     |    Ne  |
+|  Maximální velikost jednoho fondu kapacity    |  500 TiB   |   Ne   |
+|  Minimální velikost jednoho svazku    |    100 GiB    |    Ne    |
+|  Maximální velikost jednoho svazku     |    100 TiB    |    Ne    |
+|  Maximální velikost jednoho souboru     |    16 TiB    |    Ne    |    
+|  Maximální velikost metadat adresáře v jednom adresáři      |    320 MB    |    Ne    |    
+|  Maximální počet souborů ([maxfiles](#maxfiles)) na jeden svazek     |    100 000 000    |    Ano    |    
+|  Minimální přiřazená propustnost pro ruční svazek technologie QoS     |    1 MiB/s   |    Ne    |    
+|  Maximální přiřazená propustnost pro ruční svazek technologie QoS     |    soubory MiB 4 500/s    |    Ne    |    
+|  Počet svazků ochrany dat replikace mezi oblastmi (cílové svazky)     |    5    |    Ano    |     
 
 Další informace najdete v tématu [Nejčastější dotazy ke správě kapacity](azure-netapp-files-faqs.md#capacity-management-faqs).
 
@@ -89,7 +89,7 @@ Z Azure Portal rovina navigace:
         |  Fond    |  *ID předplatného, identifikátor URI účtu NetApp*  |  *Požadované nové maximální číslo **fondu***   |  *Jaký scénář nebo případ použití se žádostí vyzve?*  |
         |  Svazek  |  *ID předplatného, identifikátor URI účtu NetApp, identifikátor URI fondu kapacity*   |  *Požadované nové maximální číslo **svazku***     |  *Jaký scénář nebo případ použití se žádostí vyzve?*  |
         |  Maxfiles  |  *ID předplatného, identifikátor URI účtu NetApp, identifikátor URI fondu kapacit, identifikátor URI svazku*   |  *Požadované nové maximální číslo **maxfiles***     |  *Jaký scénář nebo případ použití se žádostí vyzve?*  |    
-        |  Svazky pro ochranu dat replikace mezi oblastmi  |  *ID předplatného, identifikátor URI cílového účtu NetApp, identifikátor URI cílového fondu kapacit, identifikátor URI zdrojového NetApp, identifikátor URI zdrojového zdroje, identifikátor URI zdrojového svazku*   |  *Vyžádal se nový maximální počet **svazků pro ochranu dat replikace mezi oblastmi (cílové svazky)** .*     |  *Jaký scénář nebo případ použití se žádostí vyzve?*  |    
+        |  Svazky pro ochranu dat replikace mezi oblastmi  |  *ID předplatného, identifikátor URI cílového účtu NetApp, identifikátor URI cílového fondu kapacit, identifikátor URI zdrojového NetApp, identifikátor URI zdrojového zdroje, identifikátor URI zdrojového svazku*   |  * Požadovaný nový maximální počet **svazků pro ochranu dat replikace mezi oblastmi (cílové svazky)** _     |  _What scénář nebo se v případě případu použití zobrazí požadavek? *  |    
 
     2. Zadejte odpovídající způsob podpory a zadejte informace o kontraktu.
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 12/01/2020
 ms.author: b-juche
-ms.openlocfilehash: 9740506da2c03996db756175551867ed43575a7c
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 682a97738e94c2a8188b4976a229d6a850a5b6ac
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488175"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511997"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
@@ -31,7 +31,7 @@ Musíte mít už nastavený fond kapacity.
 Podsíť musí být delegovaná na Azure NetApp Files.  
 [Delegování podsítě na službu Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
 
-## <a name="requirements-for-active-directory-connections"></a>Požadavky na připojení služby Active Directory
+## <a name="requirements-for-active-directory-connections"></a>Požadavky na připojení Active Directory
 
  Před vytvořením svazku SMB musíte vytvořit připojení ke službě Active Directory. Požadavky na připojení služby Active Directory jsou následující: 
 
@@ -45,7 +45,7 @@ Podsíť musí být delegovaná na Azure NetApp Files.
     |    Webové služby AD    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    Není k dispozici       |    Odpověď na ozvěnu    |
+    |    ICMPv4             |    –       |    Odpověď na ozvěnu    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -84,7 +84,7 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 
 * Azure NetApp Files podporuje [podepisování LDAP](/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server), které umožňuje zabezpečený přenos dat protokolu LDAP mezi službou Azure NetApp Files a cílovými [řadiči domény služby Active Directory](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview). Pokud budete postupovat podle pokynů v poradenské službě Microsoft Advisor [ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023) pro podepisování LDAP, měli byste povolit funkci podepisování ldap v Azure NetApp Files kontrolou pole **podepisování LDAP** v okně [připojit se ke službě Active Directory](#create-an-active-directory-connection) . 
 
-    Konfigurace [vazby kanálu LDAP](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry) nemá žádný vliv na službu Azure NetApp Files. 
+    Samotná konfigurace [vazby kanálu LDAP](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry) nemá žádný vliv na službu Azure NetApp Files. Pokud ale použijete vazbu kanálu LDAP i zabezpečený protokol LDAP (například LDAPs nebo `start_tls` ), vytvoření svazku SMB se nezdaří.
 
 Další informace o službě AD najdete v tématu Azure NetApp Files [nejčastějších dotazů k protokolu SMB](./azure-netapp-files-faqs.md#smb-faqs) . 
 
@@ -119,10 +119,10 @@ Pro Azure NetApp Files se vztahují další požadavky na AADDS:
 
 Při vytváření připojení ke službě Active Directory si všimněte následujících specifických možností pro AADDS:
 
-* V nabídce AADDS najdete informace pro **primární DNS** , **sekundární DNS** a **název domény DNS služby AD** .  
+* V nabídce AADDS najdete informace pro **primární DNS**, **sekundární DNS** a **název domény DNS služby AD** .  
 Pro servery DNS se ke konfiguraci připojení služby Active Directory použijí dvě IP adresy. 
 * **Cesta k organizační jednotce** je `OU=AADDC Computers` .  
-Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod **účtem NetApp** :
+Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod **účtem NetApp**:
 
   ![Cesta organizační jednotky](../media/azure-netapp-files/azure-netapp-files-org-unit-path.png)
 

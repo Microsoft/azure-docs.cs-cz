@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/20/2020
+ms.date: 12/01/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 65bd5a89d132a575817480d0609109a3f379e969
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f0cb7d4ebe428da4a370433b3e90a829f30489db
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833958"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512201"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Nejčastější dotazy k aplikaci Microsoft Authenticator
 
@@ -32,6 +32,14 @@ Aplikace Microsoft Authenticator nahradila Azure Authenticator aplikaci a při p
 **Otázka**: zaregistruji zařízení, které přijímá přístup společnosti nebo služby k zařízení?
 
 Odpověď **: registrace** zařízení dává vašemu zařízení přístup ke službám vaší organizace a neumožňuje vaší organizaci přístup k vašemu zařízení.
+
+## <a name="too-many-app-permissions"></a>Příliš mnoho oprávnění aplikace
+
+**Otázka**: Proč aplikace požaduje mnoho oprávnění?
+
+Odpověď **: zde** je úplný seznam oprávnění, která mohou být požádána o jejich použití v aplikaci. Konkrétní oprávnění, která vidíte, budou záviset na typu telefonu, který máte.
+
+- **Umístění:** Někdy vaše organizace chce znát vaše umístění, než vám umožní přístup k určitým prostředkům. Aplikace bude požadovat toto oprávnění pouze v případě, že vaše organizace má zásady vyžadující umístění. 
 
 ### <a name="legacy-apns-support-deprecated"></a>Starší verze podpory služby APNs je zastaralá.
 
@@ -110,7 +118,7 @@ Odpověď **: můžete** nastavit oznámení pro svůj pracovní nebo školní �
 
 Odpověď **: ne**, oznámení fungují pouze s účty Microsoft a účty Azure Active Directory. Pokud vaše práce nebo škola používá účty Azure AD, může tuto funkci vypnout.
 
-### <a name="backup-and-recovery"></a>Backup a obnovení
+### <a name="backup-and-recovery"></a>Zálohování a obnova
 
 **Otázka**: Mám nové zařízení nebo obnovilo zařízení ze zálohy. Návody nastavit moje účty znovu v ověřovateli?
 

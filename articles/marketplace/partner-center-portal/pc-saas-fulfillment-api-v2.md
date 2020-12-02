@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d6449a00886b7366bcd1f6e2fcec910fd3cb38db
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1ea326cc4537176c0ddcff070f4dc3b3f77f4b58
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461047"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512031"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>Rozhraní API pro splnění SaaS verze 2 na komerčním webu Marketplace
 
@@ -20,7 +20,7 @@ Tento článek obsahuje podrobnosti o rozhraních API, která umožňují partne
 
 ## <a name="managing-the-saas-subscription-life-cycle"></a>Správa životního cyklu předplatného SaaS
 
-Komerční tržiště spravuje celý životní cyklus předplatného SaaS po jeho nákupu koncovým uživatelem.  Používá cílovou stránku, rozhraní API pro plnění, rozhraní API pro provoz a Webhook jako mechanismus pro řízení skutečného SaaS předplatného, použití, aktualizací a zrušení.  Faktura koncového uživatele vychází ze stavu předplatného SaaS, které Microsoft udržuje. 
+Komerční tržiště spravuje celý životní cyklus předplatného SaaS po jeho nákupu koncovým uživatelem. Používá cílovou stránku, rozhraní API pro plnění, rozhraní API pro provoz a Webhook jako mechanismus pro řízení skutečného SaaS předplatného, použití, aktualizací a zrušení. Faktura koncového uživatele vychází ze stavu předplatného SaaS, které Microsoft udržuje. 
 
 ### <a name="states-of-a-saas-subscription"></a>Stavy předplatného SaaS
 
@@ -44,11 +44,11 @@ Příkladem takového volání je `https://contoso.com/signup?token=<blob>` , ž
 
 Adresa URL cílové stránky musí být spuštěná a běžet každý den, každý den a připravena přijímat nová volání od Microsoftu. Pokud cílová stránka přestane být k dispozici, zákazníci se nebudou moci zaregistrovat ke službě SaaS a začít ji používat.
 
-Dále musí vydavatel předat *token* zpět společnosti Microsoft voláním [rozhraní SaaS Resolve API](#resolve-a-purchased-subscription)a zadáním tokenu jako hodnoty `x-ms-marketplace-token header` parametru Header.  V důsledku volání rozhraní API se vyměňují tokeny, abyste získali podrobnosti o nákupu SaaS, jako je jedinečné ID nákupu, zakoupeného ID nabídky a ID zakoupeného plánu.
+Dále musí vydavatel předat *token* zpět společnosti Microsoft voláním [rozhraní SaaS Resolve API](#resolve-a-purchased-subscription)a zadáním tokenu jako hodnoty `x-ms-marketplace-token header` parametru Header. V důsledku volání rozhraní API se vyměňují tokeny, abyste získali podrobnosti o nákupu SaaS, jako je jedinečné ID nákupu, zakoupeného ID nabídky a ID zakoupeného plánu.
 
 Na cílové stránce by měl být Zákazník přihlášený k novému nebo existujícímu účtu SaaS prostřednictvím jednotného přihlašování (SSO) Azure Active Directory (Azure AD).
 
-Vydavatel by měl implementovat jednotné přihlašování a poskytovat tak uživatelské prostředí, které Microsoft pro tento tok vyžaduje. Při konfiguraci jednotného přihlašování se ujistěte, že používáte aplikaci Azure AD s více klienty, a povolíte jak pracovní, tak školní účty nebo osobní účty Microsoft.  Tento požadavek se vztahuje pouze na cílovou stránku pro uživatele, kteří jsou přesměrováni na službu SaaS, pokud už se k ní přihlásili pomocí přihlašovacích údajů Microsoftu. Jednotné přihlašování není vyžadováno pro všechna přihlášení ke službě SaaS.
+Vydavatel by měl implementovat jednotné přihlašování a poskytovat tak uživatelské prostředí, které Microsoft pro tento tok vyžaduje. Při konfiguraci jednotného přihlašování se ujistěte, že používáte aplikaci Azure AD s více klienty, a povolíte jak pracovní, tak školní účty nebo osobní účty Microsoft. Tento požadavek se vztahuje pouze na cílovou stránku pro uživatele, kteří jsou přesměrováni na službu SaaS, pokud už se k ní přihlásili pomocí přihlašovacích údajů Microsoftu. Jednotné přihlašování není vyžadováno pro všechna přihlášení ke službě SaaS.
 
 > [!NOTE]
 >Pokud SSO vyžaduje, aby správce mohl udělit oprávnění k aplikaci, popis nabídky v partnerském centru musí zveřejnit tento přístup na úrovni správce. Toto zveřejnění je v rozporu se [zásadami certifikace na komerčním webu](/legal/marketplace/certification-policies#10003-authentication-options).
@@ -82,11 +82,11 @@ Aktualizovat se dá jenom aktivní předplatné. I když se předplatné aktuali
 
 ##### <a name="update-initiated-from-the-commercial-marketplace"></a>Aktualizace iniciovaná z komerčního tržiště
 
-V tomto toku zákazník změní plán předplatného nebo množství stanic z Azure Portal nebo centra pro správu Microsoft 365.  
+V tomto toku zákazník změní plán předplatného nebo množství stanic z Azure Portal nebo centra pro správu Microsoft 365.
 
-1. Po zadání aktualizace Microsoft zavolá adresu URL Webhooku vydavatele, nakonfigurovanou v poli **Webhook připojení** v partnerském centru, s příslušnou hodnotou pro *akci* a další relevantní parametry.  
+1. Po zadání aktualizace Microsoft zavolá adresu URL Webhooku vydavatele, nakonfigurovanou v poli **Webhook připojení** v partnerském centru, s příslušnou hodnotou pro *akci* a další relevantní parametry. 
 1. Strana vydavatele by měla provést požadované změny ve službě SaaS a po dokončení voláním [stavu aktualizace rozhraní API provozu](#update-the-status-of-an-operation)informovat společnost Microsoft.
-1. Pokud je oprava odeslána se stavem *selhání* , proces aktualizace se nedokončí na straně Microsoftu.  Předplatné SaaS zachová stávající plán a množství míst.
+1. Pokud je oprava odeslána se stavem *selhání* , proces aktualizace se nedokončí na straně Microsoftu. Předplatné SaaS zachová stávající plán a množství míst.
 
 > [!NOTE]
 > Po přijetí oznámení Webhooku by měl Vydavatel vyvolat opravu pro [aktualizaci stavu rozhraní API operace](#update-the-status-of-an-operation) s odpovědí na selhání nebo úspěšnost *během 10 sekund okna* . Pokud se do 10 sekund neobdrží oprava stavu operace, plán změny se *automaticky opraví jako úspěšný*. 
@@ -101,7 +101,7 @@ V tomto toku zákazník změní plán předplatného nebo množství míst zakou
 
 1. Před provedením požadované změny na straně vydavatele musí kód vydavatele volat [rozhraní API pro změnu plánu](#change-the-plan-on-the-subscription) a/nebo [rozhraní API změny množství](#change-the-quantity-of-seats-on-the-saas-subscription) . 
 
-1. Microsoft použije změnu u předplatného a pak pošle vydavateli pomocí **Webhooku připojení** , aby se projevila stejná změna.  
+1. Microsoft použije změnu u předplatného a pak pošle vydavateli pomocí **Webhooku připojení** , aby se projevila stejná změna.
 
 1. Teprve potom by měl Vydavatel provést požadovanou změnu předplatného SaaS a informovat společnost Microsoft, když se změna provede voláním [stavu aktualizace rozhraní API operace](#update-the-status-of-an-operation).
 
@@ -113,7 +113,7 @@ Pořadí volání rozhraní API pro scénář aktualizace, který je iniciován 
 
 Tento stav indikuje, že platba zákazníka za službu SaaS nebyla přijata. Vydavatel bude upozorněn na tuto změnu ve stavu předplatného SaaS od Microsoftu. Oznámení se provádí prostřednictvím volání Webhooku s parametrem *Action* nastaveným na *pozastaveno*.
 
-Vydavatel může nebo nemusí provádět změny ve službě SaaS na straně vydavatele. Doporučujeme, aby tento Vydavatel tyto informace k dispozici pro pozastaveného zákazníka a omezení nebo zablokoval přístup zákazníka ke službě SaaS.  Existuje pravděpodobnost, že platba nebude nikdy přijata.
+Vydavatel může nebo nemusí provádět změny ve službě SaaS na straně vydavatele. Doporučujeme, aby tento Vydavatel tyto informace k dispozici pro pozastaveného zákazníka a omezení nebo zablokoval přístup zákazníka ke službě SaaS. Existuje pravděpodobnost, že platba nebude nikdy přijata.
 
 Microsoft uděluje zákazníkovi 30denní dobu odkladu před automatickým zrušením předplatného. Když je předplatné v *pozastaveném* stavu:
 
@@ -126,32 +126,32 @@ Stav předplatného se změní na pozastaveno na straně Microsoftu předtím, n
 
 Tato akce indikuje, že platební nástroj zákazníka se znovu stane platným, platba za předplatné SaaS a předplatné se obnoví. V tomto případě: 
 
-1. Společnost Microsoft volá Webhook s parametrem *Akce* nastaveným na hodnotu *obnovit* .  
+1. Společnost Microsoft volá Webhook s parametrem *Akce* nastaveným na hodnotu *obnovit* .
 1. Vydavatel se ujistěte, že odběr je na straně vydavatele opět plně funkční.
-1. Vydavatel volá [rozhraní API pro operaci opravy](#update-the-status-of-an-operation) se stavem úspěch.  
+1. Vydavatel volá [rozhraní API pro operaci opravy](#update-the-status-of-an-operation) se stavem úspěch.
 1. Proces obnovení je úspěšný a u předplatného SaaS se zákazníkovi účtuje znovu. 
 
 Pokud je oprava odeslána se stavem *selhání* , proces obnovení se nedokončí na straně Microsoftu a předplatné zůstane *pozastaveno*.
 
-Obnovit lze pouze pozastavené předplatné.  Pozastavené předplatné SaaS zůstane v *pozastaveném* stavu, když ho znovu vystavíte.  Po dokončení této operace se stav předplatného stane *aktivní*.
+Obnovit lze pouze pozastavené předplatné. Pozastavené předplatné SaaS zůstane v *pozastaveném* stavu, když ho znovu vystavíte. Po dokončení této operace se stav předplatného stane *aktivní*.
 
 #### <a name="renewed-subscribed"></a>Obnoveno (*odebírané*)
 
-Předplatné SaaS se od Microsoftu automaticky obnoví na konci období předplatného v měsíci nebo roce.  Výchozí nastavení automatického obnovování *platí pro všechna* předplatná SaaS. Aktivní předplatná SaaS se budou obnovovat běžným tempo. Společnost Microsoft neupozorní vydavatele na obnovení předplatného. Zákazník může vypnout automatické obnovení předplatného SaaS prostřednictvím portálu pro správu Microsoft 365 nebo prostřednictvím Azure Portal.  V tomto případě se předplatné SaaS na konci aktuálního fakturačního období automaticky zruší.  Zákazníci si také můžou předplatné SaaS kdykoli zrušit.
+Předplatné SaaS se od Microsoftu automaticky obnoví na konci období předplatného v měsíci nebo roce. Výchozí nastavení automatického obnovování *platí pro všechna* předplatná SaaS. Aktivní předplatná SaaS se budou obnovovat běžným tempo. Společnost Microsoft neupozorní vydavatele na obnovení předplatného. Zákazník může vypnout automatické obnovení předplatného SaaS prostřednictvím portálu pro správu Microsoft 365. V tomto případě se předplatné SaaS na konci aktuálního fakturačního období automaticky zruší. Zákazníci si také můžou předplatné SaaS kdykoli zrušit.
 
-Automaticky se obnoví pouze aktivní odběry.  Předplatná zůstávají aktivní během procesu obnovení a pokud je automatické obnovení úspěšné.  Po obnovení se počáteční a koncové datum období předplatného aktualizuje na data nového období.
+Automaticky se obnoví pouze aktivní odběry. Předplatná zůstávají aktivní během procesu obnovení a pokud je automatické obnovení úspěšné. Po obnovení se počáteční a koncové datum období předplatného aktualizuje na data nového období.
 
 Pokud automatické obnovení selže kvůli problému s platbou, předplatné se *pozastaví* a pošle se vydavateli oznámení.
 
 #### <a name="canceled-unsubscribed"></a>Zrušeno (*odhlášeno*) 
 
-Předplatné dostanou tento stav v reakci na explicitní akci zákazníka nebo CSP zrušením předplatného z webu vydavatele, Azure Portal nebo centra pro správu Microsoft 365.  Předplatné je taky možné implicitně zrušit, protože se v důsledku nedoplatku poplatků po dobu 30 dnů účtuje jako *pozastavený* stav.
+Předplatné dostanou tento stav v reakci na explicitní akci zákazníka nebo CSP zrušením předplatného z webu vydavatele, Azure Portal nebo centra pro správu Microsoft 365. Předplatné je taky možné implicitně zrušit, protože se v důsledku nedoplatku poplatků po dobu 30 dnů účtuje jako *pozastavený* stav.
 
 Poté, co vydavatel obdrží volání Webhooku zrušení, by měl uchovávat zákaznická data pro obnovení na vyžádání po dobu alespoň sedmi dnů. Data zákazníků se pak dají odstranit jenom vy.
 
 Předplatné SaaS se dá kdykoli zrušit v rámci svého životního cyklu. Po zrušení předplatného se nedá znovu aktivovat.
 
-## <a name="api-reference"></a>API – referenční informace
+## <a name="api-reference"></a>referenční dokumentace k rozhraní API
 
 Tato část popisuje rozhraní API pro odběr a Operations SaaS.
 
@@ -163,7 +163,7 @@ Tato část popisuje rozhraní API pro odběr a Operations SaaS.
 * Získejte seznam aplikací čekajících na operace, které čekají na potvrzení vydavatelem.
 
 > [!NOTE]
-> Verze TLS verze 1,2 bude brzy vynutila jako minimální verze komunikace pomocí protokolu HTTPS. Ujistěte se, že ve svém kódu používáte tuto verzi protokolu TLS.  Protokoly TLS verze 1,0 a 1,1 budou brzy zastaralé.
+> Verze TLS verze 1,2 bude brzy vynutila jako minimální verze komunikace pomocí protokolu HTTPS. Ujistěte se, že ve svém kódu používáte tuto verzi protokolu TLS. Protokoly TLS verze 1,0 a 1,1 budou brzy zastaralé.
 
 ### <a name="subscription-apis"></a>Rozhraní API pro předplatné
 
