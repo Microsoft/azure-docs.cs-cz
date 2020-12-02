@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 7b7362d9315d8228e56dc85b2da22e0d507fa8ae
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ef5b065425fa05d016c1b1c1688cc28508f32d30
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339785"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462054"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -46,8 +46,9 @@ Ne. Připojení k síti VPN libovolné rychlosti můžete koupit od svého posky
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>Pokud platíte za okruh ExpressRoute dané šířky pásma, mám možnost použít více než mi vyřízenou šířku pásma?
 
-Ano, můžete použít až dvojnásobek limitu šířky pásma, který jste využívali, pomocí šířky pásma dostupného pro sekundární připojení okruhu ExpressRoute. Integrovaná redundance vašeho okruhu je nakonfigurovaná pomocí primárních a sekundárních připojení, z nichž každá má vyřízenou šířku pásma až po dva směrovače Microsoft Enterprise Edge (směrovači msee). Šířka pásma dostupná prostřednictvím sekundárního připojení se dá v případě potřeby použít pro další provoz. Vzhledem k tomu, že sekundární připojení je určeno pro redundanci, není zaručeno a nemělo by se používat k dalšímu provozu po delší dobu. Další informace o tom, jak používat oba připojeních k přenosu provozu, najdete [tady](./expressroute-optimize-routing.md#solution-use-as-path-prepending).
-Pokud plánujete, že k přenosu provozu budete používat jenom primární připojení, je šířka pásma pro připojení pevně daná a pokus o přepřihlášení k odběru způsobí zvýšení počtu paketů. Pokud provoz přes bránu ExpressRoute, je šířka pásma pro SKU pevná a nedá se roztékat.
+Ano, můžete použít až dvojnásobek limitu šířky pásma, který jste využívali, pomocí šířky pásma dostupného pro sekundární připojení okruhu ExpressRoute. Integrovaná redundance vašeho okruhu je nakonfigurovaná pomocí primárních a sekundárních připojení, z nichž každá má vyřízenou šířku pásma až po dva směrovače Microsoft Enterprise Edge (směrovači msee). Šířka pásma dostupná prostřednictvím sekundárního připojení se dá v případě potřeby použít pro další provoz. Vzhledem k tomu, že sekundární připojení je určeno pro redundanci, není zaručeno a nemělo by se používat k dalšímu provozu po delší dobu. Další informace o tom, jak používat oba připojeních k přenosu provozu, najdete v tématu [použití jako nedokončené cesty](./expressroute-optimize-routing.md#solution-use-as-path-prepending).
+
+Pokud máte v úmyslu používat k přenosu provozu pouze primární připojení, je šířka pásma pro připojení pevná a při pokusu o její přehlášení dojde k vyššímu poklesu paketů. Pokud provoz přes bránu ExpressRoute, je pevná šířka pásma pro SKU brány a nemůže být roztékat. Šířku pásma jednotlivých SKU brány najdete v tématu [informace o branách virtuální sítě ExpressRoute](expressroute-about-virtual-network-gateways.md#aggthroughput).
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>Můžu současně použít stejné privátní síťové připojení k virtuální síti a dalším službám Azure?
 

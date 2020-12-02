@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to, data4ml
-ms.openlocfilehash: e97546e678b3b7bf7932600ea53d09557493685c
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 554c815e6384115d56611e497f49a2c97ed15e38
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359863"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461431"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Připojení k datům pomocí Azure Machine Learning studia
 
@@ -35,9 +35,9 @@ Pro prostředí prvního kódu si přečtěte následující články, které po
 * [Připojte se ke službám úložiště Azure s úložištěm dat](how-to-access-data.md). 
 * [Vytvořte Azure Machine Learning datové sady](how-to-create-register-datasets.md). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
 - Přístup k [Azure Machine Learning Studiu](https://ml.azure.com/).
 
@@ -60,7 +60,7 @@ V několika krocích se Azure Machine Learning Studiu vytvoří nové úložišt
 1. Vyberte **+ nové úložiště dat**.
 1. Vyplňte formulář pro vytvoření a registraci nového úložiště dat. Formulář se inteligentně aktualizuje na základě vašich výběrů pro typ úložiště Azure a typ ověřování. V [části přístup k úložišti a oprávněním](#access-validation) se dozvíte, kde najít přihlašovací údaje pro ověřování, které potřebujete k naplnění tohoto formuláře.
 
-Následující příklad ukazuje, jak formulář vypadá při vytváření **úložiště dat objektů BLOB v Azure** :
+Následující příklad ukazuje, jak formulář vypadá při vytváření **úložiště dat objektů BLOB v Azure**:
 
 ![Formulář pro nové úložiště dat](media/how-to-connect-data-ui/new-datastore-form.png)
 
@@ -134,7 +134,7 @@ Aby bylo zajištěno zabezpečené připojení ke službě Azure Storage, Azure 
 
 ### <a name="virtual-network"></a>Virtuální síť
 
-Pokud je váš účet úložiště dat ve **virtuální síti** , jsou potřeba další kroky konfigurace, abyste zajistili, že Azure Machine Learning má přístup k vašim datům. Pokud chcete zajistit, aby se při vytváření a registraci úložiště dat používaly příslušné kroky konfigurace, přečtěte si téma [izolace sítě & ochraně osobních údajů](how-to-enable-studio-virtual-network.md) .  
+Pokud je váš účet úložiště dat ve **virtuální síti**, jsou potřeba další kroky konfigurace, abyste zajistili, že Azure Machine Learning má přístup k vašim datům. Pokud chcete zajistit, aby se při vytváření a registraci úložiště dat používaly příslušné kroky konfigurace, přečtěte si téma [izolace sítě & ochraně osobních údajů](how-to-enable-studio-virtual-network.md) .  
 
 ### <a name="access-validation"></a>Ověření přístupu
 
@@ -160,7 +160,7 @@ Klíč účtu, token SAS a informace o instančním objektu najdete na svém [Az
 
 ### <a name="permissions"></a>Oprávnění
 
-V případě kontejneru objektů blob Azure a Azure Data Lake úložiště Gen 2 se ujistěte, že přihlašovací údaje mají přístup ke **čtečce dat objektů BLOB úložiště** . Přečtěte si další informace o [čtečce dat objektů BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader). Výchozí token SAS účtu nemá žádná oprávnění. 
+V případě kontejneru objektů blob Azure a Azure Data Lake úložiště Gen 2 se ujistěte, že přihlašovací údaje mají přístup ke **čtečce dat objektů BLOB úložiště** . Přečtěte si další informace o [čtečce dat objektů BLOB úložiště](../role-based-access-control/built-in-roles.md#storage-blob-data-reader). Výchozí token SAS účtu nemá žádná oprávnění. 
 * Pro **přístup ke čtení** dat musí mít přihlašovací údaje pro ověřování minimální oprávnění seznam a čtení pro kontejnery a objekty. 
 
 * Pro **přístup k zápisu** dat se vyžadují taky oprávnění zapisovat a přidat.

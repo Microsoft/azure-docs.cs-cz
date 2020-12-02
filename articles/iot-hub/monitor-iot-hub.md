@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 11/06/2020
-ms.openlocfilehash: dc239843c4ed597949b4ba00c44ec84fc70741a8
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 2fabf75f74ccf57f57e7b47720ceda8885420842
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357602"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460913"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Monitorování IoT Hub Azure
 
@@ -29,9 +29,9 @@ Informace, které jsou uvedeny v podokně Přehled, jsou užitečné, ale předs
 
 ## <a name="what-is-azure-monitor"></a>Co je Azure Monitor?
 
-Azure IoT Hub vytváří data monitorování pomocí [Azure monitor](/azure/azure-monitor/overview), což je plná služba pro monitorování zásobníku v Azure, která poskytuje kompletní sadu funkcí pro monitorování prostředků Azure kromě prostředků v jiných cloudech a místních prostředích.
+Azure IoT Hub vytváří data monitorování pomocí [Azure monitor](../azure-monitor/overview.md), což je plná služba pro monitorování zásobníku v Azure, která poskytuje kompletní sadu funkcí pro monitorování prostředků Azure kromě prostředků v jiných cloudech a místních prostředích.
 
-Začněte s článkem [monitorování prostředků Azure pomocí Azure monitor](/azure/azure-monitor/insights/monitor-azure-resource), který popisuje následující koncepty:
+Začněte s článkem [monitorování prostředků Azure pomocí Azure monitor](../azure-monitor/insights/monitor-azure-resource.md), který popisuje následující koncepty:
 
 - Co je Azure Monitor?
 - Náklady spojené s monitorováním
@@ -43,7 +43,7 @@ Následující části jsou uvedené v tomto článku, které popisují konkrét
 
 ## <a name="monitoring-data"></a>Data monitorování
 
-Azure IoT Hub shromažďuje stejné typy dat monitorování jako další prostředky Azure, které jsou popsané v tématu [monitorování dat z prostředků Azure](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data-from-Azure-resources).
+Azure IoT Hub shromažďuje stejné typy dat monitorování jako další prostředky Azure, které jsou popsané v tématu [monitorování dat z prostředků Azure](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data).
 
 Podrobné informace o metrikách a protokolech, které vytvořila služba Azure IoT Hub, najdete v tématu [monitorování referenčních dat Azure IoT Hub](monitor-iot-hub-reference.md) .
 
@@ -67,31 +67,31 @@ Následující snímek obrazovky ukazuje nastavení diagnostiky pro směrování
 
 :::image type="content" source="media/monitor-iot-hub/diagnostic-setting-portal.png" alt-text="Podokno nastavení diagnostiky pro Centrum IoT":::
 
-Podrobný postup pro vytvoření nastavení diagnostiky pomocí Azure Portal, CLI nebo PowerShellu najdete v tématu [Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik platforem v Azure](/azure/azure-monitor/platform/diagnostic-settings) . Při vytváření nastavení diagnostiky určíte, které kategorie protokolů se mají shromáždit. Kategorie pro Azure IoT Hub najdete v části [protokoly prostředků v referenčních informacích k datům monitorování azure IoT Hub](monitor-iot-hub-reference.md#resource-logs).
+Podrobný postup pro vytvoření nastavení diagnostiky pomocí Azure Portal, CLI nebo PowerShellu najdete v tématu [Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik platforem v Azure](../azure-monitor/platform/diagnostic-settings.md) . Při vytváření nastavení diagnostiky určíte, které kategorie protokolů se mají shromáždit. Kategorie pro Azure IoT Hub najdete v části [protokoly prostředků v referenčních informacích k datům monitorování azure IoT Hub](monitor-iot-hub-reference.md#resource-logs).
 
 Při směrování IoT Hub metriky platforem do jiných umístění mějte na paměti, že:
 
 - Následující metriky platformy nelze exportovat prostřednictvím nastavení diagnostiky: *připojená zařízení (Preview)* a *Celkový počet zařízení (Preview)*.
 
-- Multidimenzionální metriky, například některé [metriky směrování](monitor-iot-hub-reference.md#routing-metrics), jsou aktuálně exportovány jako ploché jednorozměrné metriky agregované napříč hodnotami dimenzí. Další podrobnosti najdete v tématu [Export metrik platforem do jiných umístění](/azure/azure-monitor/platform/metrics-supported#exporting-platform-metrics-to-other-locations).
+- Multidimenzionální metriky, například některé [metriky směrování](monitor-iot-hub-reference.md#routing-metrics), jsou aktuálně exportovány jako ploché jednorozměrné metriky agregované napříč hodnotami dimenzí. Další podrobnosti najdete v tématu [Export metrik platforem do jiných umístění](../azure-monitor/platform/metrics-supported.md#exporting-platform-metrics-to-other-locations).
 
 ## <a name="analyzing-metrics"></a>Analýza metrik
 
-Metriky pro Azure IoT Hub můžete analyzovat pomocí metrik z jiných služeb Azure pomocí Průzkumníka metrik, a to tak, že v nabídce **Azure monitor** otevřete **metriky** . Podrobnosti o použití tohoto nástroje najdete v tématu [Začínáme s Azure Průzkumník metrik](/azure/azure-monitor/platform/metrics-getting-started) .
+Metriky pro Azure IoT Hub můžete analyzovat pomocí metrik z jiných služeb Azure pomocí Průzkumníka metrik, a to tak, že v nabídce **Azure monitor** otevřete **metriky** . Podrobnosti o použití tohoto nástroje najdete v tématu [Začínáme s Azure Průzkumník metrik](../azure-monitor/platform/metrics-getting-started.md) .
 
 V Azure Portal můžete v levém podokně služby IoT Hub vybrat **metriky** a ve výchozím nastavení otevřít Průzkumníka **metrik ve výchozím** nastavení metriky platforem vydávané službou IoT Hub:
 
 :::image type="content" source="media/monitor-iot-hub/metrics-portal.png" alt-text="Stránka Průzkumníka metrik pro Centrum IoT":::
 
-Seznam metrik platforem shromážděných pro Azure IoT Hub najdete v tématu [metriky v referenčních informacích k datům monitorování azure IoT Hub](monitor-iot-hub-reference.md#metrics). Seznam metrik platforem shromážděných pro všechny služby Azure najdete v tématu [podporované metriky s Azure monitor](/azure/azure-monitor/platform/metrics-supported).
+Seznam metrik platforem shromážděných pro Azure IoT Hub najdete v tématu [metriky v referenčních informacích k datům monitorování azure IoT Hub](monitor-iot-hub-reference.md#metrics). Seznam metrik platforem shromážděných pro všechny služby Azure najdete v tématu [podporované metriky s Azure monitor](../azure-monitor/platform/metrics-supported.md).
 
 Pro IoT Hub metriky platforem, které jsou shromažďovány v jednotkách Count, nemusí být některé agregace dostupné nebo použitelné. Další informace najdete v tématu [podporované agregace v referenčních informacích monitorování Azure IoT Hub](monitor-iot-hub-reference.md#supported-aggregations).
 
-Některé metriky IoT Hub, jako jsou [metriky směrování](monitor-iot-hub-reference.md#routing-metrics), jsou multidimenzionální. Pro tyto metriky můžete použít [filtry](/azure/azure-monitor/platform/metrics-charts#apply-filters-to-charts) a [rozdělit](/azure/azure-monitor/platform/metrics-charts#apply-splitting-to-a-chart) je do grafů na základě dimenze.
+Některé metriky IoT Hub, jako jsou [metriky směrování](monitor-iot-hub-reference.md#routing-metrics), jsou multidimenzionální. Pro tyto metriky můžete použít [filtry](../azure-monitor/platform/metrics-charts.md#apply-filters-to-charts) a [rozdělit](../azure-monitor/platform/metrics-charts.md#apply-splitting-to-a-chart) je do grafů na základě dimenze.
 
 ## <a name="analyzing-logs"></a>Analýza protokolů
 
-Data v Azure Monitor protokoly se ukládají v tabulkách, kde každá tabulka má svou vlastní sadu jedinečných vlastností. Data v těchto tabulkách jsou přidružená k Log Analyticsmu pracovnímu prostoru a lze je dotazovat v Log Analytics. Další informace o protokolech Azure Monitor najdete v tématu [Přehled protokolů Azure monitor](/azure/azure-monitor/platform/data-platform-logs) v dokumentaci k Azure monitor. 
+Data v Azure Monitor protokoly se ukládají v tabulkách, kde každá tabulka má svou vlastní sadu jedinečných vlastností. Data v těchto tabulkách jsou přidružená k Log Analyticsmu pracovnímu prostoru a lze je dotazovat v Log Analytics. Další informace o protokolech Azure Monitor najdete v tématu [Přehled protokolů Azure monitor](../azure-monitor/platform/data-platform-logs.md) v dokumentaci k Azure monitor. 
 
 Chcete-li směrovat data do protokolů Azure Monitor, je nutné vytvořit nastavení diagnostiky k odeslání protokolů prostředků nebo metriky platformy do pracovního prostoru Log Analytics. Další informace najdete v tématu [shromažďování a směrování](#collection-and-routing).
 
@@ -101,17 +101,17 @@ V Azure Portal můžete v levém podokně služby IoT Hub vybrat **protokoly** *
 
 Seznam tabulek používaných Azure Monitor protokolů a Queryable podle Log Analytics naleznete [v tématu Azure monitor logs tabulky v referenčních informacích k monitorování Azure IoT Hub](monitor-iot-hub-reference.md#azure-monitor-logs-tables).
 
-Všechny protokoly prostředků v Azure Monitor mají stejná pole následovaná poli pro konkrétní služby. Společné schéma je popsáno v [Azure monitor schéma protokolu prostředků](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-schema#top-level-resource-logs-schema). Schéma a kategorie protokolů prostředků shromážděných pro Azure IoT Hub najdete v [protokolech prostředků v referenčních informacích k monitorování azure IoT Hub](monitor-iot-hub-reference.md#resource-logs).
+Všechny protokoly prostředků v Azure Monitor mají stejná pole následovaná poli pro konkrétní služby. Společné schéma je popsáno v [Azure monitor schéma protokolu prostředků](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema). Schéma a kategorie protokolů prostředků shromážděných pro Azure IoT Hub najdete v [protokolech prostředků v referenčních informacích k monitorování azure IoT Hub](monitor-iot-hub-reference.md#resource-logs).
 
-[Protokol aktivit](/azure/azure-monitor/platform/activity-log) je protokol platformy v Azure, který poskytuje přehled o událostech na úrovni předplatného. Můžete ji zobrazit nezávisle nebo ji směrovat do Azure Monitor protokolů, kde můžete provádět mnohem složitější dotazy pomocí Log Analytics.  
+[Protokol aktivit](../azure-monitor/platform/activity-log.md) je protokol platformy v Azure, který poskytuje přehled o událostech na úrovni předplatného. Můžete ji zobrazit nezávisle nebo ji směrovat do Azure Monitor protokolů, kde můžete provádět mnohem složitější dotazy pomocí Log Analytics.  
 
 Při směrování IoT Hub metriky platformy do protokolů Azure Monitor mějte na paměti, že:
 
 - Následující metriky platformy nelze exportovat prostřednictvím nastavení diagnostiky: *připojená zařízení (Preview)* a *Celkový počet zařízení (Preview)*.
 
-- Multidimenzionální metriky, například některé [metriky směrování](monitor-iot-hub-reference.md#routing-metrics), jsou aktuálně exportovány jako ploché jednorozměrné metriky agregované napříč hodnotami dimenzí. Další podrobnosti najdete v tématu [Export metrik platforem do jiných umístění](/azure/azure-monitor/platform/metrics-supported#exporting-platform-metrics-to-other-locations).
+- Multidimenzionální metriky, například některé [metriky směrování](monitor-iot-hub-reference.md#routing-metrics), jsou aktuálně exportovány jako ploché jednorozměrné metriky agregované napříč hodnotami dimenzí. Další podrobnosti najdete v tématu [Export metrik platforem do jiných umístění](../azure-monitor/platform/metrics-supported.md#exporting-platform-metrics-to-other-locations).
 
-Některé běžné dotazy s IoT Hub najdete v tématu [Ukázky dotazů Kusto](#sample-kusto-queries). Podrobné informace o použití Log Analyticsch dotazů najdete [v tématu Přehled dotazů protokolu v Azure monitor](/azure/azure-monitor/log-query/log-query-overview).
+Některé běžné dotazy s IoT Hub najdete v tématu [Ukázky dotazů Kusto](#sample-kusto-queries). Podrobné informace o použití Log Analyticsch dotazů najdete [v tématu Přehled dotazů protokolu v Azure monitor](../azure-monitor/log-query/log-query-overview.md).
 
 ### <a name="sdk-version-in-iot-hub-logs"></a>Verze sady SDK v protokolu IoT Hub
 
@@ -152,7 +152,7 @@ AzureDiagnostics
 ### <a name="sample-kusto-queries"></a>Ukázkové dotazy Kusto
 
 > [!IMPORTANT]
-> Když vyberete **protokoly** v nabídce IoT hub, Log Analytics se otevře s oborem dotazu nastaveným na aktuální centrum IoT. To znamená, že dotazy protokolu budou zahrnovat pouze data z tohoto prostředku. Pokud chcete spustit dotaz, který obsahuje data z jiných služeb Azure hub nebo dat z jiných služeb Azure, vyberte z nabídky **Azure monitor** **protokoly** . Podrobnosti najdete [v tématu Rozsah dotazů protokolu a časový rozsah v Azure Monitor Log Analytics](/azure/azure-monitor/log-query/scope/) .
+> Když vyberete **protokoly** v nabídce IoT hub, Log Analytics se otevře s oborem dotazu nastaveným na aktuální centrum IoT. To znamená, že dotazy protokolu budou zahrnovat pouze data z tohoto prostředku. Pokud chcete spustit dotaz, který obsahuje data z jiných služeb Azure hub nebo dat z jiných služeb Azure, vyberte z nabídky **Azure monitor** **protokoly** . Podrobnosti najdete [v tématu Rozsah dotazů protokolu a časový rozsah v Azure Monitor Log Analytics](../azure-monitor/log-query/scope.md) .
 
 Níže jsou uvedené dotazy, které vám pomůžou s monitorováním služby IoT Hub.
 
@@ -288,13 +288,13 @@ class Program
 
 ## <a name="alerts"></a>Výstrahy
 
-Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech monitorování nacházejí důležité podmínky. Umožňují identifikovat a řešit problémy v systému před tím, než si je vaši zákazníci všimnete. Můžete nastavit výstrahy na [metrikách](/azure/azure-monitor/platform/alerts-metric-overview), [protokolech](/azure/azure-monitor/platform/alerts-unified-log)a [protokolu aktivit](/azure/azure-monitor/platform/activity-log-alerts). Různé typy výstrah mají výhody a nevýhody.
+Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech monitorování nacházejí důležité podmínky. Umožňují identifikovat a řešit problémy v systému před tím, než si je vaši zákazníci všimnete. Můžete nastavit výstrahy na [metrikách](../azure-monitor/platform/alerts-metric-overview.md), [protokolech](../azure-monitor/platform/alerts-unified-log.md)a [protokolu aktivit](../azure-monitor/platform/activity-log-alerts.md). Různé typy výstrah mají výhody a nevýhody.
 
 Při vytváření pravidla výstrahy na základě metrik platforem mějte na paměti, že pro IoT Hub metriky platforem, které jsou shromažďovány v jednotkách Count, nemusí být některé agregace dostupné nebo použitelné. Další informace najdete v tématu [podporované agregace v referenčních informacích monitorování Azure IoT Hub](monitor-iot-hub-reference.md#supported-aggregations).
 
 ## <a name="monitor-per-device-disconnects-with-event-grid"></a>Monitorování se odpojí podle Event Grid
 
-Azure Monitor poskytuje metriky, *připojená zařízení* , pomocí kterých můžete monitorovat počet zařízení připojených k vaší IoT Hub a aktivovat upozornění, když počet připojených zařízení klesne pod prahovou hodnotu. I když to může být pro některé scénáře dostačující, [Azure Event Grid](/azure/event-grid/) poskytuje řešení pro monitorování s nízkou latencí a zařízením, které můžete použít ke sledování připojení zařízení pro kritická zařízení a infrastrukturu.
+Azure Monitor poskytuje metriky, *připojená zařízení*, pomocí kterých můžete monitorovat počet zařízení připojených k vaší IoT Hub a aktivovat upozornění, když počet připojených zařízení klesne pod prahovou hodnotu. I když to může být pro některé scénáře dostačující, [Azure Event Grid](../event-grid/index.yml) poskytuje řešení pro monitorování s nízkou latencí a zařízením, které můžete použít ke sledování připojení zařízení pro kritická zařízení a infrastrukturu.
 
 Pomocí Event Grid se můžete přihlásit k odběru událostí IoT Hub [ **DeviceConnected** a **DeviceDisconnected**](iot-hub-event-grid.md#event-types) a aktivovat výstrahy a monitorovat stav připojení zařízení. Event Grid poskytuje mnohem nižší latenci události než Azure Monitor a můžete monitorovat podle jednotlivých zařízení a nemusíte tak mít celkový počet připojených zařízení. Tyto faktory se Event Grid upřednostňovanou metodou pro monitorování připojení pro kritická zařízení a infrastrukturu. Pro monitorování připojení zařízení v produkčním prostředí důrazně doporučujeme použít Event Grid.
 
@@ -304,4 +304,4 @@ Podrobnější informace o monitorování připojení zařízení pomocí Event 
 
 - Odkazy na metriky, protokoly a další důležité hodnoty vytvořené nástrojem [název služby] najdete v tématu [monitorování referenčních informací o službě Azure IoT Hub](monitor-iot-hub-reference.md) .
 
-- Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](/azure/azure-monitor/insights/monitor-azure-resource) .
+- Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](../azure-monitor/insights/monitor-azure-resource.md) .

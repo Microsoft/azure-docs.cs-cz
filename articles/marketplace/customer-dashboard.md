@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 9821cc8905caa9576662a192fc704c53b35af82d
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 878fa181ff09d547ef6594a238e9c1d883cc89b7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564867"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460478"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel zákazníci na komerčním webu Marketplace Analytics
 
@@ -21,7 +21,7 @@ Tento článek poskytuje informace o řídicím panelu zákazníci v partnerské
 Pokud chcete získat přístup k řídicímu panelu zákazníci v partnerském centru, vyberte v části **komerční Marketplace** možnost **[analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **zákazníky**.
 
 >[!NOTE]
-> Podrobné definice terminologie analýz najdete v tématu [terminologie a běžné otázky k komerčním](./partner-center-portal/faq-terminology.md)analýzám na webu Marketplace.
+> Podrobné definice terminologie analýz najdete v tématu [terminologie a běžné otázky k komerčním](./analytics-faq.md)analýzám na webu Marketplace.
 
 ## <a name="customers-dashboard"></a>Řídicí panel zákazníků
 
@@ -58,7 +58,7 @@ V této části najdete trend růstu vašich zákazníků pro vybrané období v
 
 [![Znázorňuje widgety zákazníků na stránce Customers.](./media/customer-dashboard/customers-widget.png)](./media/customer-dashboard/customers-widget.png#lightbox)
 
-Existují tři _typy zákazníků_ : nový, existující a změněný.
+Existují tři _typy zákazníků_: nový, existující a změněný.
 
 - Nový zákazník získal jednu nebo více vašich nabídek poprvé ve vybraném měsíci.
 - Stávající zákazník získal jednu nebo více nabídek před vybraným měsícem.
@@ -180,4 +180,4 @@ Filtry stránky Customers jsou aplikovány na úrovni stránky Customers. Může
 - U virtuálních počítačů nabízí metriky využití a měření fakturace, viz [řídicí panel využití v komerčních obchodech na webu Marketplace](./usage-dashboard.md).
 - Seznam vašich žádostí o stažení za posledních 30 dní najdete [v tématu řídicí panel ke stažení v komerčních obchodech na webu Marketplace](./partner-center-portal/downloads-dashboard.md).
 - Chcete-li zobrazit konsolidované zobrazení zpětné vazby od zákazníků pro nabídky Azure Marketplace a Microsoft AppSource, přečtěte si téma [hodnocení & recenze řídicího panelu Analytics v partnerském centru](./partner-center-portal/ratings-reviews.md).
-- Nejčastější dotazy týkající se komerčních analýz na webu Marketplace a ucelený slovník datových podmínek najdete v tématu [terminologie a běžné otázky ke komerčním analýzám na webu Marketplace](./partner-center-portal/faq-terminology.md).
+- Nejčastější dotazy týkající se komerčních analýz na webu Marketplace a ucelený slovník datových podmínek najdete v tématu [terminologie a běžné otázky ke komerčním analýzám na webu Marketplace](./analytics-faq.md).

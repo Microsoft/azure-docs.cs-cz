@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: a879ac81859c855bb7b7bc2eddb1e3c9b62adb34
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 31298be4d50c7f562e2e2b9adbf889b165b197e5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321401"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461858"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Odebrání ochrany transparentní šifrování dat (TDE) pomocí prostředí PowerShell
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -35,13 +35,13 @@ Mějte na paměti, že jakmile se ochrana TDE odstraní v Key Vault až do 10 mi
 Tato příručka přechází přes dvě přístupy v závislosti na požadovaném výsledku po napadené reakci na incidenty:
 
 - Aby databáze v Azure SQL Database/Azure synapse Analytics byly **nedostupné**.
-- Aby databáze v Azure SQL Database nebo Azure Azure synapse Analytics (dříve SQL Data Warehouse) **nepřístupné**.
+- Aby databáze v Azure SQL Database nebo Azure Azure synapse Analytics **nepřístupné**.
 
 ## <a name="prerequisites"></a>Předpoklady
 
 - Musíte mít předplatné Azure a mít oprávnění správce k tomuto předplatnému.
 - Musíte mít nainstalovanou a spuštěnou Azure PowerShell.
-- V tomto průvodci se předpokládá, že už používáte klíč z Azure Key Vault jako ochranu TDE pro Azure SQL Database nebo Azure synapse (dřív SQL Data Warehouse). Další informace najdete v tématu [transparentní šifrování dat s podporou BYOK](transparent-data-encryption-byok-overview.md) .
+- V tomto průvodci se předpokládá, že už používáte klíč z Azure Key Vault jako ochranu TDE pro Azure SQL Database nebo Azure synapse. Další informace najdete v tématu [transparentní šifrování dat s podporou BYOK](transparent-data-encryption-byok-overview.md) .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: bb978f30104b1e38bd8930ccb058c4057d394e51
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: d6c3dbc28da7bee0bc24a6dc24608c78e480c20e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899657"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462159"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Extrakce, transformace a načítání (ETL) ve velkém měřítku
 
@@ -86,7 +86,7 @@ Pro nahrávání datových sad v rozsahu terabajtů může být latence sítě v
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Azure synapse Analytics (dřív SQL DW) je vhodným výběrem pro uložení připravených výsledků. Azure HDInsight můžete použít k provádění těchto služeb pro Azure synapse Analytics.
+Azure synapse Analytics je vhodná volba k uložení připravených výsledků. Azure HDInsight můžete použít k provádění těchto služeb pro Azure synapse Analytics.
 
 Azure synapse Analytics je relační úložiště databáze optimalizované pro analytické úlohy. Škáluje se v závislosti na dělených tabulkách. Tabulky mohou být rozděleny mezi více uzlů. Uzly jsou vybrány v době vytváření. Můžou se škálovat po faktu, ale to je aktivní proces, který může vyžadovat přesun dat. Další informace najdete v tématu [Správa výpočetních prostředků ve službě Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 

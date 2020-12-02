@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4100640fd619d9d971ac1c7083eedef8e2125fc3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 5506a54193efc813927663533ddfd89be3ddf40a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738283"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461300"
 ---
-# <a name="azure-synapse-workspace-managed-identity-preview"></a>Spravovaná identita v pracovním prostoru Azure synapse (Preview)
+# <a name="azure-synapse-workspace-managed-identity"></a>Spravovaná identita pracovního prostoru Azure Synapse
 
 V tomto článku se dozvíte o spravované identitě v pracovním prostoru Azure synapse.
 
@@ -25,9 +25,9 @@ Spravovaná identita pro prostředky Azure je funkcí Azure Active Directory. Ta
 
 Spravované identity pro prostředky Azure jsou novým názvem pro službu, která se dřív jmenovala jako Identita spravované služby (MSI). Další informace najdete v tématu [spravované identity](../../active-directory/managed-identities-azure-resources/overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
 
-## <a name="azure-synapse-workspace-managed-identity"></a>Spravovaná identita v pracovním prostoru Azure synapse
+## <a name="azure-synapse-workspace-managed-identity"></a>Spravovaná identita pracovního prostoru Azure Synapse
 
-Při vytváření pracovního prostoru se vytvoří spravovaná identita přiřazená systémem pro váš pracovní prostor Azure synapse.
+Při vytvoření pracovního prostoru Azure Synapse se pro pracovní prostor vytvoří spravovaná identita přiřazená systémem.
 
 >[!NOTE]
 >Tato identita spravovaná pracovním prostorem se bude v ostatních částech tohoto dokumentu označovat jako spravovaná identita.
@@ -48,11 +48,11 @@ Spusťte **Azure synapse Studio** a v levém navigačním panelu vyberte kartu *
 
 ![Vytvoření propojené služby 1](./media/synapse-workspace-managed-identity/workspace-managed-identity-2.png)
 
-V okně **Nová propojená služba** zadejte *Azure Data Lake Storage Gen2* . V níže uvedeném seznamu vyberte typ prostředku **Azure Data Lake Storage Gen2** a zvolte **pokračovat** .
+V okně **Nová propojená služba** zadejte *Azure Data Lake Storage Gen2*. V níže uvedeném seznamu vyberte typ prostředku **Azure Data Lake Storage Gen2** a zvolte **pokračovat**.
 
 ![Vytvoření propojené služby 2](./media/synapse-workspace-managed-identity/workspace-managed-identity-3.png)
 
-V dalším okně vyberte možnost **spravovaná identita** pro **metodu ověřování** . Zobrazí se **název** spravované identity a **ID objektu** .
+V dalším okně vyberte možnost **spravovaná identita** pro **metodu ověřování**. Zobrazí se **název** spravované identity a **ID objektu**.
 
 ![Vytvoření propojené služby 3](./media/synapse-workspace-managed-identity/workspace-managed-identity-4.png)
 

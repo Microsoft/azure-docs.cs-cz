@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý Start: Konfigurace izolace úloh – portál'
-description: Ke konfiguraci izolace úloh použijte Azure Portal.
+description: Pomocí Azure Portal můžete nakonfigurovat izolaci úloh pro vyhrazený fond SQL.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 30862a0c16995e143df72f2a243419819941f54e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 302249b7d8490e43b841116c52500e686626433d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85213036"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460615"
 ---
-# <a name="quickstart-configure-synapse-sql-pool-workload-isolation-using-a-workload-group-in-the-azure-portal"></a>Rychlý Start: Konfigurace izolace úloh synapse fondu SQL pomocí skupiny úloh v Azure Portal
+# <a name="quickstart-configure-dedicated-sql-pool-workload-isolation-using-a-workload-group-in-the-azure-portal"></a>Rychlý Start: Konfigurace vyhrazené úlohy fondu SQL pomocí skupiny úloh v Azure Portal
 
 V tomto rychlém startu nakonfigurujete [izolaci úloh](sql-data-warehouse-workload-isolation.md) vytvořením skupiny úloh pro rezervaci prostředků.  Pro účely tohoto kurzu vytvoříme skupinu úloh pro volání načítání dat `DataLoads` . Skupina úloh bude rezervovat 20% systémových prostředků.  Díky 20% izolaci pro zatížení dat jsou zaručené prostředky, které jim umožňují vysáhnout SLA.  Po vytvoření skupiny úloh [vytvořte klasifikátor úloh](quickstart-create-a-workload-classifier-portal.md) pro přiřazení dotazů do této skupiny úloh.
 
@@ -28,35 +28,35 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 > [!NOTE]
-> Vytvoření instance fondu SQL ve službě Azure synapse Analytics může mít za následek novou fakturovatelnou službu.  Další informace najdete v tématu [ceny služby Azure synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Vytvoření vyhrazené instance fondu SQL ve službě Azure synapse Analytics může mít za následek novou fakturovatelnou službu.  Další informace najdete v tématu [ceny služby Azure synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 ## <a name="prerequisites"></a>Předpoklady
 
-V tomto rychlém startu se předpokládá, že již máte instanci fondu SQL v synapse SQL a máte kontrolu nad oprávněními databáze. Pokud ho potřebujete vytvořit, postupujte podle pokynů v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) a vytvořte datový sklad s názvem **mySampleDataWarehouse**.
+V tomto rychlém startu se předpokládá, že v synapse SQL už máte vyhrazenou instanci fondu SQL a že máte oprávnění k řízení databáze. Pokud ho potřebujete vytvořit, použijte [rychlý Start: vytvoření vyhrazeného fondu SQL – portál](../quickstart-create-sql-pool-portal.md) pro vytvoření datového skladu s názvem **mySampleDataWarehouse**.
 
 >[!IMPORTANT] 
->Aby bylo možné konfigurovat správu úloh, musí být váš fond SQL online. 
+>Aby bylo možné nakonfigurovat správu úloh, musí být váš vyhrazený fond SQL online. 
 
 ## <a name="configure-workload-isolation"></a>Konfigurovat izolaci úloh
-Prostředky fondu SQL je možné izolovat a rezervovat pro konkrétní úlohy vytvořením skupin úloh.  Další podrobnosti o tom, jak skupiny úloh vám pomůžou při správě vašich úloh, najdete v dokumentaci k konceptu [izolace úloh](sql-data-warehouse-workload-isolation.md) .  Rychlý Start pro [Vytvoření a připojení – portál](create-data-warehouse-portal.md) vytvořil **mySampleDataWarehouse** a inicializoval ho pomocí 400 DWU. Následující kroky vytvoří skupinu úloh v **mySampleDataWarehouse**.
+
+Vyhrazené prostředky fondu SQL je možné izolovat a rezervovat pro konkrétní úlohy vytvořením skupin úloh.  Další podrobnosti o tom, jak skupiny úloh vám pomůžou při správě vašich úloh, najdete v dokumentaci k konceptu [izolace úloh](sql-data-warehouse-workload-isolation.md) .  Rychlý Start pro [Vytvoření a připojení – portál](create-data-warehouse-portal.md) vytvořil **mySampleDataWarehouse** a inicializuje ho na DW100c. Následující kroky vytvoří skupinu úloh v **mySampleDataWarehouse**.
 
 Vytvoření skupiny úloh s izolací 20%:
-1.  Na levé straně Azure Portal klikněte na **Azure synapse Analytics (dřív SQL DW)** .
-2.  Vyberte **mySampleDataWarehouse** ze stránky **Azure synapse Analytics (dříve SQL DW)** . Otevře se fond SQL.
-3.  Klikněte na **Správa úloh**.
-4.  Klikněte na **Nová skupina úloh**.
-5.  Klikněte na **vlastní**.
+1.  Přejděte na stránku **mySampleDataWarehouse** vyhrazený fond SQL..
+1.  Vyberte možnost  **Správa úloh**.
+1.  Vyberte **Nová skupina úloh**.
+1.  Vyberte možnost **vlastní**.
 
     ![Kliknout na vlastní](./media/quickstart-configure-workload-isolation-portal/create-wg.png)
 
-6.  Jako `DataLoads` **skupinu úloh**zadejte.
+6.  Jako `DataLoads` **skupinu úloh** zadejte.
 7.  Zadejte `20` pro **min. Resources%**.
 8.  Zadejte `5` pro **min. Resources% na požadavek**.
 9.  Zadejte `100` pro **prostředky Cap%**.
-10.   Klikněte na **Uložit**.
+10. Zadejte **Uložit**.
 
    ![Kliknutí na Uložit](./media/quickstart-configure-workload-isolation-portal/configure-wg.png)
 
@@ -83,17 +83,13 @@ Pokud chcete odstranit `DataLoads` skupinu úloh vytvořenou v tomto kurzu:
 
 Pomocí těchto kroků vyčistěte prostředky.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)a vyberte svůj datový sklad.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a vyberte vyhrazený fond SQL.
 
     ![Vyčištění prostředků](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
 2. Pokud chcete pozastavit výpočetní prostředky, vyberte tlačítko **pozastavit** . Když je datový sklad pozastavený, zobrazí se tlačítko **Spustit**.  Pokud chcete pokračovat v výpočetních prostředích, vyberte **Spustit**.
 
 3. Pokud chcete odebrat datový sklad, aby se vám neúčtovaly výpočetní výkon nebo úložiště, vyberte **Odstranit**.
-
-4. Pokud chcete odebrat vytvořený SQL Server, vyberte na předchozím obrázku **sqlpoolservername.Database.Windows.NET** a pak vyberte **Odstranit**.  S tímto odstraněním buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
-
-5. Pokud chcete odebrat skupinu prostředků, vyberte **myResourceGroup**a pak vyberte **Odstranit skupinu prostředků**.
 
 ## <a name="next-steps"></a>Další kroky
 

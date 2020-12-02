@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: c177de3a862370f4d1daa19c6560950b66b18352
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b36bb34f4c9081d807998cb8287797443625a6b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826835"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460292"
 ---
 # <a name="azure-stack-edge-pro-technical-specifications"></a>Technické specifikace Azure Stack Edge pro
 
@@ -34,7 +34,7 @@ Pole programovatelné brány (FPGA) je součástí každého zařízení Azure S
 
 | Specifikace           | Hodnota                  |
 |-------------------------|----------------------------|
-| FPGA   | Intel Arria 10 <br> Dostupné modely neuronové sítě (DNN) jsou stejné jako ty, které [podporuje instance cloudu FPGA](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure).|
+| FPGA   | Intel Arria 10 <br> Dostupné modely neuronové sítě (DNN) jsou stejné jako ty, které [podporuje instance cloudu FPGA](../machine-learning/how-to-deploy-fpga-web-service.md#fpga-support-in-azure).|
 
 ## <a name="power-supply-unit-specifications"></a>Specifikace jednotek napájení
 
@@ -43,7 +43,7 @@ Zařízení Azure Stack Edge pro má dvě 100-240 V jednotkách napájení (PSUs
 | Specifikace           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maximální výstupní výkon    | 750 W                     |
-| Frequency               | 50/60 Hz                   |
+| Frekvence               | 50/60 Hz                   |
 | Výběr rozsahu napětí | Automatické rozsahy: 100-240 V AC |
 | Horká, připojitelná           | Yes                        |
 
@@ -60,13 +60,13 @@ The following table lists the typical power consumption data (actual values may 
 
 Vaše zařízení Azure Stack Edge pro má 6 síťových rozhraní PORT1-PORT6.
 
-| Specifikace           | Description                 |
+| Specifikace           | Popis                 |
 |-------------------------|----------------------------|
 |  Síťová rozhraní    | 2× rozhraní 1 GbE, z nichž jedno slouží pro správu, uživatelé ho nemohou konfigurovat a používá se pro počáteční instalaci. Druhé rozhraní je uživatelsky konfigurovatelné, dá se použít k přenosu dat a je ve výchozím nastavení DHCP. <br>2× rozhraní 25 GbE – mohou fungovat také jako rozhraní 10 GbE. Tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická. <br> 2× rozhraní 25 GbE – tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická.                  |
 
 Používají se síťové adaptéry: 
 
-| Specifikace           | Description                 |
+| Specifikace           | Popis                 |
 |-------------------------|----------------------------|
 |Karta dceřiné sítě (rNDC) |Adaptér QLogic FastLinQ 41264 Dual Port 25GbE SFP +, Dual Port 10 GbE LOM, rNDC|
 |Síťový adaptér PCI |Adaptér 41262 FastLinQ Zwei porty 25Gbit/s SFP28|

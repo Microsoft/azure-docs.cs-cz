@@ -8,12 +8,12 @@ ms.date: 11/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: daae45c9eca45022225ea47aa048815d5eff70c4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 035cf5be4471cad7ac11eb8ce9a8a0ecb13a68da
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964503"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462365"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>Řešení potíží s IoT Edgem zařízením
 
@@ -81,7 +81,7 @@ Pokyny k aktualizaci zařízení najdete v tématu [aktualizace démona zabezpe�
 
 ## <a name="verify-the-installation-of-iot-edge-on-your-devices"></a>Ověření instalace IoT Edge na zařízeních
 
-Instalaci IoT Edge můžete ověřit na svých zařízeních tím, že [monitoruje nevlákenný modul edgeAgent](https://docs.microsoft.com/azure/iot-edge/how-to-monitor-module-twins).
+Instalaci IoT Edge můžete ověřit na svých zařízeních tím, že [monitoruje nevlákenný modul edgeAgent](./how-to-monitor-module-twins.md).
 
 Chcete-li získat nejnovější edgeAgent modul, spusťte následující příkaz z [Azure Cloud Shell](https://shell.azure.com/):
 
@@ -89,7 +89,7 @@ Chcete-li získat nejnovější edgeAgent modul, spusťte následující příka
    az iot hub module-twin show --device-id <edge_device_id> --module-id $edgeAgent --hub-name <iot_hub_name>
    ```
 
-Tento příkaz zobrazí výstup všech [hlášených vlastností](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub)edgeAgent. Tady je několik užitečných sledování stavu zařízení:
+Tento příkaz zobrazí výstup všech [hlášených vlastností](./module-edgeagent-edgehub.md)edgeAgent. Tady je několik užitečných sledování stavu zařízení:
 
 * Běhový stav
 * čas spuštění za běhu

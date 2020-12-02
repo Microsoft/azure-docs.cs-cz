@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 2705e3d724530e879dd02346392f17fda274913a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: bb28c517e353af6b8c1ee0cad788ff41b971918c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675320"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460867"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Získat data o počasí od partnerů počasí
 
@@ -94,18 +94,18 @@ Jak začít získávat data o počasí na FarmBeats DataHub:
 
    Zřizování prostředků trvá přibližně 10 až 15 minut.
 
-3. Ověřte stav objektu/partner, který jste vytvořili v předchozím kroku. Pokud chcete zkontrolovat stav, udělejte požadavek GET na rozhraní/partner API a zkontrolujte stav objektu partnera. Jakmile FarmBeats zřídí partnera úspěšně, stav je nastaven na **aktivní** .
+3. Ověřte stav objektu/partner, který jste vytvořili v předchozím kroku. Pokud chcete zkontrolovat stav, udělejte požadavek GET na rozhraní/partner API a zkontrolujte stav objektu partnera. Jakmile FarmBeats zřídí partnera úspěšně, stav je nastaven na **aktivní**.
 
-4. V rozhraní/JobType API udělejte požadavek GET. Projděte si úlohy počasí, které jste vytvořili dříve, v procesu přidání partnera. V úkolech počasí má pole **Pipeline** následující formát: **partner-name_partner-type_job-Name** .
+4. V rozhraní/JobType API udělejte požadavek GET. Projděte si úlohy počasí, které jste vytvořili dříve, v procesu přidání partnera. V úkolech počasí má pole **Pipeline** následující formát: **partner-name_partner-type_job-Name**.
 
       Vaše FarmBeats instance teď má aktivní datový partner pro počasí. Můžete spouštět úlohy pro vyžádání dat o počasí pro konkrétní umístění (zeměpisná šířka a délka) a rozsah dat. Typy úloh budou mít podrobné informace o tom, jaké parametry jsou potřeba ke spouštění úloh počasí.
 
       Například pro DTN se vytvoří následující typy úloh:
    
-      - **get_dtn_daily_observations** : Získejte každodenní poznámky k umístění a časovému období.
-      - **get_dtn_daily_forecasts** : Získejte denní předpovědi pro určité umístění a časové období.
-      - **get_dtn_hourly_observations** : Získejte hodinové pozorování pro určité umístění a časové období.
-      - **get_dtn_hourly_forecasts** : Získejte hodinové prognózy pro určité umístění a časové období.
+      - **get_dtn_daily_observations**: Získejte každodenní poznámky k umístění a časovému období.
+      - **get_dtn_daily_forecasts**: Získejte denní předpovědi pro určité umístění a časové období.
+      - **get_dtn_hourly_observations**: Získejte hodinové pozorování pro určité umístění a časové období.
+      - **get_dtn_hourly_forecasts**: Získejte hodinové prognózy pro určité umístění a časové období.
 
 6. Poznamenejte si ID a parametry typů úloh.
 
@@ -125,7 +125,7 @@ Jak začít získávat data o počasí na FarmBeats DataHub:
        }
    ```
 
-   Pokud například chcete spustit **get_dtn_daily_observations** , použijte následující datovou část:
+   Pokud například chcete spustit **get_dtn_daily_observations**, použijte následující datovou část:
 
    ```json
    { 
@@ -141,7 +141,7 @@ Jak začít získávat data o počasí na FarmBeats DataHub:
    }
    ```
 
-8. Předchozí krok spustí úlohy počasí podle definice v Docker partnera a ingestuje data o počasí do FarmBeats. Stav úlohy můžete zjistit tak, že na/Jobs. vytvoříte požadavek GET. V odpovědi vyhledejte **CurrentState** . Po dokončení bude **CurrentState** nastaveno na hodnotu **úspěšné** .
+8. Předchozí krok spustí úlohy počasí podle definice v Docker partnera a ingestuje data o počasí do FarmBeats. Stav úlohy můžete zjistit tak, že na/Jobs. vytvoříte požadavek GET. V odpovědi vyhledejte **CurrentState**. Po dokončení bude **CurrentState** nastaveno na hodnotu **úspěšné**.
 
 ## <a name="query-ingested-weather-data"></a>Dotázat se na data ingestovaná počasí
 
@@ -221,7 +221,7 @@ Pokud chcete řešit problémy s chybami úloh, [Podívejte se do protokolů úl
 |     DockerDetails – imageName         |          Název bitové kopie Docker. Například docker.io/mydockerimage (Image in hub.docker.com) nebo myazureacr.azurecr.io/mydockerimage (obrázek v Azure Container Registry) a tak dále. Pokud není k dispozici žádný registr, výchozí hodnota je hub.docker.com.      |
 |          DockerDetails - imageTag             |         Název značky obrázku Docker Výchozí hodnota je "nejnovější".     |
 |  DockerDetails – přihlašovací údaje      |  Přihlašovací údaje pro přístup k soukromému Docker. Partner poskytne přihlašovací údaje.   |
-|  DockerDetails - azureBatchVMDetails - batchVMSKU     |    Azure Batch SKU virtuálního počítače. Další informace najdete v tématu [všechny dostupné virtuální počítače se systémem Linux](../../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json). <BR> <BR> Platné hodnoty jsou ' Small ', ' ExtraLarge ', ' large ', ' A8 ', ' Medium ', ' a5 ', ' A6 ', ' A7 ', ' STANDARD_D1 ', ' STANDARD_D2 ', ' STANDARD_D3 ', ' STANDARD_D4 ', ' STANDARD_D11 ', ' STANDARD_D12 ', ' STANDARD_D13 ', ' STANDARD_D14 ', ' A10 ', ' A11 ', ' STANDARD_D1_V2 ', ' STANDARD_D2_V2 ', ' STANDARD_D3_V2 ', ' STANDARD_D4_V2 ', ' STANDARD_D11_V2 ', ' STANDARD_D12_V2 ', ' STANDARD_D13_V2 ', ' STANDARD_D14_V2 ', ' STANDARD_G1 '; ' STANDARD_G2 ' , ' STANDARD_G5 ', ' STANDARD_D5_V2 ', ' BASIC_A1 ', ' BASIC_A2 ', ' BASIC_A3 ', ' BASIC_A4 ', ' STANDARD_A1 ', ' STANDARD_A2 ', ' STANDARD_A3 ', ' STANDARD_A4 ', ' STANDARD_A5 ', ' STANDARD_A6 ', ' STANDARD_A7 ', ' STANDARD_A8 ', ' STANDARD_A9 ', ' STANDARD_A10 ', ' STANDARD_A11 ', ' STANDARD_D15_V2 ', ' STANDARD_F1 ', ' STANDARD_F2 ', ' STANDARD_F4 ', ' STANDARD_F8 ', ' STANDARD_F16 ', ' STANDARD_NV6 ', ' STANDARD_NV12 ', ' STANDARD_NV24 ', ' STANDARD_NC6 ', ' STANDARD_NC12 ', ' STANDARD_NC24 ', ' STANDARD_NC24r ', ' ' , ' STANDARD_H8 ', ' STANDARD_H8m ', ' STANDARD_H16 ', ' STANDARD_H16m ', ' STANDARD_H16mr ', ' STANDARD_H16r ', ' STANDARD_A1_V2 ', ' STANDARD_A2_V2 ', ' STANDARD_A4_V2 ', ' STANDARD_A8_V2 ', ' STANDARD_A2m_V2 ', ' STANDARD_A4m_V2 ', ' STANDARD_A8m_V2 ', ' STANDARD_M64ms ', ' STANDARD_M128s ', ' STANDARD_D2_V3 ', ' ', ' ' a ' '. *Výchozí hodnota je ' STANDARD_D2_V2 '.*  |
+|  DockerDetails - azureBatchVMDetails - batchVMSKU     |    Azure Batch SKU virtuálního počítače. Další informace najdete v tématu [všechny dostupné virtuální počítače se systémem Linux](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). <BR> <BR> Platné hodnoty jsou ' Small ', ' ExtraLarge ', ' large ', ' A8 ', ' Medium ', ' a5 ', ' A6 ', ' A7 ', ' STANDARD_D1 ', ' STANDARD_D2 ', ' STANDARD_D3 ', ' STANDARD_D4 ', ' STANDARD_D11 ', ' STANDARD_D12 ', ' STANDARD_D13 ', ' STANDARD_D14 ', ' A10 ', ' A11 ', ' STANDARD_D1_V2 ', ' STANDARD_D2_V2 ', ' STANDARD_D3_V2 ', ' STANDARD_D4_V2 ', ' STANDARD_D11_V2 ', ' STANDARD_D12_V2 ', ' STANDARD_D13_V2 ', ' STANDARD_D14_V2 ', ' STANDARD_G1 '; ' STANDARD_G2 ' , ' STANDARD_G5 ', ' STANDARD_D5_V2 ', ' BASIC_A1 ', ' BASIC_A2 ', ' BASIC_A3 ', ' BASIC_A4 ', ' STANDARD_A1 ', ' STANDARD_A2 ', ' STANDARD_A3 ', ' STANDARD_A4 ', ' STANDARD_A5 ', ' STANDARD_A6 ', ' STANDARD_A7 ', ' STANDARD_A8 ', ' STANDARD_A9 ', ' STANDARD_A10 ', ' STANDARD_A11 ', ' STANDARD_D15_V2 ', ' STANDARD_F1 ', ' STANDARD_F2 ', ' STANDARD_F4 ', ' STANDARD_F8 ', ' STANDARD_F16 ', ' STANDARD_NV6 ', ' STANDARD_NV12 ', ' STANDARD_NV24 ', ' STANDARD_NC6 ', ' STANDARD_NC12 ', ' STANDARD_NC24 ', ' STANDARD_NC24r ', ' ' , ' STANDARD_H8 ', ' STANDARD_H8m ', ' STANDARD_H16 ', ' STANDARD_H16m ', ' STANDARD_H16mr ', ' STANDARD_H16r ', ' STANDARD_A1_V2 ', ' STANDARD_A2_V2 ', ' STANDARD_A4_V2 ', ' STANDARD_A8_V2 ', ' STANDARD_A2m_V2 ', ' STANDARD_A4m_V2 ', ' STANDARD_A8m_V2 ', ' STANDARD_M64ms ', ' STANDARD_M128s ', ' STANDARD_D2_V3 ', ' ', ' ' a ' '. *Výchozí hodnota je ' STANDARD_D2_V2 '.*  |
 |    DockerDetails - azureBatchVMDetails - dedicatedComputerNodes   |  Počet vyhrazených uzlů počítače na jeden fond Batch. Výchozí hodnota je 1. |
 |    DockerDetails - azureBatchVMDetails - nodeAgentSKUID          |    ID SKU agenta uzlu Azure Batch. V současné době je podporován pouze agent uzlu Batch. Node. Ubuntu 18,04.    |
 | DockerDetails - partnerCredentials | Přihlašovací údaje pro volání partnerského rozhraní API v Docker Partner poskytuje tyto informace na základě podporovaného autorizačního mechanismu; například uživatelské jméno a heslo nebo klíče rozhraní API. |

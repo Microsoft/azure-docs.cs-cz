@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: 4fdbf3bf1d9f740654fa694de03315b876116429
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1e286b2329cb98d580bbf64071ff8767db304a00
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784877"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461878"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Řešení rozdílů v jazyce Transact-SQL během migrace na SQL Database
 
@@ -45,7 +45,7 @@ Základní příkazy DDL (Data Definition Language) jsou k dispozici, ale někte
 Kromě příkazů jazyka Transact-SQL, které souvisejí s nepodporovanými funkcemi popsanými v [Azure SQL Database porovnání funkcí](features-comparison.md), nejsou podporovány následující příkazy a skupiny příkazů. Pokud vaše databáze, která má být migrována, používá některou z následujících funkcí, proveďte znovu analýzu jazyka T-SQL pro odstranění těchto funkcí a příkazů T-SQL.
 
 - Kolace systémových objektů
-- Související s připojením: příkazy Endpoint. SQL Database nepodporuje ověřování systému Windows, ale podporuje podobné ověřování Azure Active Directory. Některé typy ověřování vyžadují nejnovější verzi SQL Server Management Studia (SSMS). Další informace najdete v tématu [připojení k SQL Database nebo Azure Azure synapse Analytics (dříve SQL Data Warehouse) pomocí Azure Active Directoryho ověřování](authentication-aad-overview.md).
+- Související s připojením: příkazy Endpoint. SQL Database nepodporuje ověřování systému Windows, ale podporuje podobné ověřování Azure Active Directory. Některé typy ověřování vyžadují nejnovější verzi SQL Server Management Studia (SSMS). Další informace najdete v tématu [připojení k SQL Database nebo Azure Azure synapse Analytics pomocí ověřování Azure Active Directory](authentication-aad-overview.md).
 - Mezidatabázové dotazy, které používají tři nebo čtyři názvy částí (mezidatabázové dotazy jen pro čtení jsou podporované prostřednictvím [dotazů do Elastic Database](elastic-query-overview.md)).
 - Mezidatabázové řetězení vlastnictví, nastavení `TRUSTWORTHY`
 - `EXECUTE AS LOGIN` Místo toho použijte EXECUTE AS USER.
@@ -82,7 +82,7 @@ Další informace o syntaxi a používání jazyka Transact-SQL, včetně přík
 
 ### <a name="about-the-applies-to-tags"></a>Informace o značkách „Platí pro“
 
-Odkaz v jazyce Transact-SQL zahrnuje články týkající se SQL Server verzí 2008 pro stávající. Pod nadpisem článku najdete panel ikon, seznam čtyř SQL Server platforem a indikace použitelnosti. Například skupiny dostupnosti byly zavedeny v SQL Serveru 2012. Článek [vytvořit skupinu dostupnosti](/sql/t-sql/statements/create-availability-group-transact-sql) označuje, že se příkaz vztahuje na **SQL Server (počínaje 2012)** . Příkaz se nevztahuje na SQL Server 2008, SQL Server 2008 R2, Azure SQL Database, Azure Azure synapse Analytics (dříve SQL Data Warehouse) nebo paralelní datový sklad.
+Odkaz v jazyce Transact-SQL zahrnuje články týkající se SQL Server verzí 2008 pro stávající. Pod nadpisem článku najdete panel ikon, seznam čtyř SQL Server platforem a indikace použitelnosti. Například skupiny dostupnosti byly zavedeny v SQL Serveru 2012. Článek [vytvořit skupinu dostupnosti](/sql/t-sql/statements/create-availability-group-transact-sql) označuje, že se příkaz vztahuje na **SQL Server (počínaje 2012)**. Příkaz se nevztahuje na SQL Server 2008, SQL Server 2008 R2, Azure SQL Database, Azure Azure synapse Analytics nebo paralelní datový sklad.
 
 V některých případech je možné v produktu použít obecný předmět článku, ale existují drobné rozdíly mezi produkty. Rozdíly jsou podle potřeby uvedeny v různých umístěních v článku. V některých případech je možné v produktu použít obecný předmět článku, ale existují drobné rozdíly mezi produkty. Rozdíly jsou podle potřeby uvedeny v různých umístěních v článku. Například článek vytvořit aktivační událost je k dispozici v SQL Database. Ale možnost **všechny servery** pro aktivační události na úrovni serveru označuje, že triggery na úrovni serveru nejde v SQL Database použít. Místo toho použijte triggery na úrovni databáze.
 

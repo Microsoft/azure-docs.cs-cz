@@ -151,7 +151,7 @@
           href: iot-accelerators-remote-monitoring-telefonica-sim.md
     - name: Průmyslové IoT
       items:
-        - name: Připojená továrna
+        - name: Propojená továrna
           items:
             - name: Použití řídicího panelu
               href: iot-accelerators-connected-factory-dashboard.md
@@ -255,7 +255,7 @@
       href: /azure/architecture/reference-architectures/iot
       items:
         - name: Stáhnout
-          href: 'https://aka.ms/iotrefarchitecture'
+          href: /azure/architecture/reference-architectures/iot
         - name: Implementace partnerů
           items:
             - name: Intel CLP (Connected Logistics Platform)
@@ -264,7 +264,7 @@
               href: 'https://www.azureiotsolutions.com/Accelerators#description/edge-dynamometer-analysis'
             - name: Řešení pro digitální reklamní panely
               href: 'https://www.azureiotsolutions.com/Accelerators#description/digital-signage-solution'
-    - name: Nejčastější dotazy
+    - name: Časté otázky
       href: iot-accelerators-faq.md
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-iot-suite'

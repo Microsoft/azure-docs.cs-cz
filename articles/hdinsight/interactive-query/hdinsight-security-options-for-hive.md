@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/02/2020
-ms.openlocfilehash: 8573ba99b7aef13025b4f175640ac9583ad5a679
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f8296018a9534d5e2ce5dd7b84ebcad49cac00b3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545952"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460025"
 ---
 # <a name="security-options-for-hive-in-azure-hdinsight"></a>Možnosti zabezpečení pro podregistr ve službě Azure HDInsight
 
@@ -41,6 +41,6 @@ Povolení protokolu SSL Hiveserver2 se nedoporučuje pro clustery Standard a ESP
 
 ## <a name="next-steps"></a>Další kroky
 * [Přehled ověřování HiveServer2](https://cwiki.apache.org/confluence/display/Hive/Setting+up+HiveServer2#SettingUpHiveServer2-Authentication/SecurityConfiguration)
-* [Přehled autorizace HiveServer2](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Authorization#:~:text=%20Overview%20of%20Authorization%20Modes%20%201%201,and%20Apache%20Sentry%20are%20apache%20projects...%20More%20)
+* [Přehled autorizace HiveServer2](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Authorization)
 * [Povolení ověřování v registru založeného na standardech SQL](https://community.cloudera.com/t5/Community-Articles/Getting-started-with-SQLStdAuth/ta-p/244263)
 * [Apache Ranger s podregistrem](../domain-joined/apache-domain-joined-run-hive.md)

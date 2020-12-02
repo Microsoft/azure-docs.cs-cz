@@ -3,12 +3,12 @@ title: Azure Lab Services – příručka pro správce | Microsoft Docs
 description: Tato příručka pomáhá správcům, kteří vytvářejí a spravují účty testovacího prostředí pomocí Azure Lab Services.
 ms.topic: article
 ms.date: 10/20/2020
-ms.openlocfilehash: 08d2fea719ad67f666ea9da09721dc3f7ab54768
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3ad3ee38a6c08a6af85822d76012cc6dfc34ff4e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999276"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462465"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – příručka pro správce
 Správci informačních technologií (IT), kteří spravují cloudové prostředky vysoké školy, jsou obvykle odpovědni za nastavení účtu testovacího prostředí pro svou školu. Po nastavení účtu testovacího prostředí můžou správci nebo pedagogy vytvořit Labs, které jsou obsažené v rámci účtu. Tento článek poskytuje podrobný přehled o prostředcích Azure, které se týkají, a pokyny pro jejich vytváření.
@@ -167,14 +167,14 @@ Když správci nebo tvůrci testovacího prostředí vytvoří testovací prost�
 
 | Velikost | Specifikace | Řada | Navrhované použití |
 | ---- | ----- | ------ | ------------- |
-| Malá| <ul><li>2 &nbsp; jádra</li><li>3,5 gigabajtů (GB) RAM</li> | [Standard_A2_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Nejvhodnější pro příkazový řádek, otevírání webového prohlížeče, webové servery s nízkým provozem, malé až střední databáze. |
-| Střední | <ul><li>4 &nbsp; jádra</li><li>7 &nbsp; GB &nbsp; paměti RAM</li> | [Standard_A4_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Nejvhodnější pro relační databáze, ukládání do mezipaměti v paměti a analýzy. |
-| Střední (vnořená virtualizace) | <ul><li>4 &nbsp; jádra</li><li>16 &nbsp; GB &nbsp; paměti RAM</li></ul> | [Standard_D4s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#dsv3-series) | Nejvhodnější pro relační databáze, ukládání do mezipaměti v paměti a analýzy.
+| Malá| <ul><li>2 &nbsp; jádra</li><li>3,5 gigabajtů (GB) RAM</li> | [Standard_A2_v2](../virtual-machines/av2-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Nejvhodnější pro příkazový řádek, otevírání webového prohlížeče, webové servery s nízkým provozem, malé až střední databáze. |
+| Střední | <ul><li>4 &nbsp; jádra</li><li>7 &nbsp; GB &nbsp; paměti RAM</li> | [Standard_A4_v2](../virtual-machines/av2-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Nejvhodnější pro relační databáze, ukládání do mezipaměti v paměti a analýzy. |
+| Střední (vnořená virtualizace) | <ul><li>4 &nbsp; jádra</li><li>16 &nbsp; GB &nbsp; paměti RAM</li></ul> | [Standard_D4s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#dsv3-series) | Nejvhodnější pro relační databáze, ukládání do mezipaměti v paměti a analýzy.
 | Velká | <ul><li>8 &nbsp; jader</li><li>16 &nbsp; GB &nbsp; paměti RAM</li></ul>  | [Standard_A8_v2](../virtual-machines/av2-series.md) | Nejvhodnější pro aplikace, které vyžadují rychlejší procesory, lepší výkon místních disků, velké databáze a velké mezipaměti paměti.  Tato velikost také podporuje vnořenou virtualizaci. |
-| Velký (vnořená virtualizace) | <ul><li>8 &nbsp; jader</li><li>32 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#dsv3-series) | Nejvhodnější pro aplikace, které vyžadují rychlejší procesory, lepší výkon místních disků, velké databáze a velké mezipaměti paměti. |
+| Velký (vnořená virtualizace) | <ul><li>8 &nbsp; jader</li><li>32 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#dsv3-series) | Nejvhodnější pro aplikace, které vyžadují rychlejší procesory, lepší výkon místních disků, velké databáze a velké mezipaměti paměti. |
 | Malý grafický procesor (vizualizace) | <ul><li>6 &nbsp; jader</li><li>56 &nbsp; GB &nbsp; RAM</li>  | [Standard_NV6](../virtual-machines/nv-series.md) | Nejvhodnější pro vzdálenou vizualizaci, streamování, hraní a kódování pomocí platforem, jako je OpenGL a DirectX. |
 | Malý grafický procesor (COMPUTE) | <ul><li>6 &nbsp; jader</li><li>56 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_NC6](../virtual-machines/nc-series.md) |Nejvhodnější pro aplikace náročné na počítač, jako je AI a obsáhlý Learning. |
-| Střední GPU (vizualizace) | <ul><li>12 &nbsp; jader</li><li>112 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Nejvhodnější pro vzdálenou vizualizaci, streamování, hraní a kódování pomocí platforem, jako je OpenGL a DirectX. |
+| Střední GPU (vizualizace) | <ul><li>12 &nbsp; jader</li><li>112 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Nejvhodnější pro vzdálenou vizualizaci, streamování, hraní a kódování pomocí platforem, jako je OpenGL a DirectX. |
 
 ## <a name="manage-identity"></a>Správa identity
 

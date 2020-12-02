@@ -1,5 +1,5 @@
 ---
-title: Dotazování souborů JSON pomocí neserverového fondu SQL (Preview)
+title: Dotazování souborů JSON pomocí SQL fondu bez serveru
 description: V této části se dozvíte, jak číst soubory JSON pomocí neserverového fondu SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: azaricstefan
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: d071bbabf630dd326ae46f4c840f8e60f957f9fe
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 5703e4ac3d4a545041c7d258f0b1f0e7c79a33b5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685626"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462605"
 ---
-# <a name="query-json-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Dotazování souborů JSON pomocí neserverového fondu SQL (Preview) ve službě Azure synapse Analytics
+# <a name="query-json-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Dotazování souborů JSON pomocí neserverového fondu SQL ve službě Azure synapse Analytics
 
-V tomto článku se dozvíte, jak napsat dotaz pomocí neserverového fondu SQL (Preview) ve službě Azure synapse Analytics. Cílem dotazu je přečíst soubory JSON pomocí [OpenRowset](develop-openrowset.md). 
+V tomto článku se dozvíte, jak napsat dotaz pomocí neserverového fondu SQL ve službě Azure synapse Analytics. Cílem dotazu je přečíst soubory JSON pomocí [OpenRowset](develop-openrowset.md). 
 - Standardní soubory JSON, kde je více dokumentů JSON uloženo jako pole JSON.
 - Soubory JSON s hodnotami oddělenými řádky, kde jsou dokumenty JSON oddělené znakem nového řádku. Společná rozšíření pro tyto typy souborů jsou `jsonl` , `ldjson` a `ndjson` .
 

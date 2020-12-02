@@ -1,7 +1,7 @@
 ---
 title: Řízení přístupu k síti
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: Přehled správy a řízení přístupu k síti pro Azure SQL Database a Azure synapse Analytics (dřív SQL Data Warehouse).
+description: Přehled správy a řízení přístupu k síti pro Azure SQL Database a Azure synapse Analytics.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,16 +12,16 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: be327fabdffc0f98dc0449b51e7e4d73651d80d8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 90bc57af3aaf0d11cd354bfe7163014f836a72e8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789484"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460014"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL Database a Azure synapse Analytics – ovládací prvky přístupu k síti
 
-Když vytvoříte logický SQL Server z [Azure Portal](single-database-create-quickstart.md) pro Azure SQL Database a Azure synapse Analytics, výsledkem je veřejný koncový bod ve formátu *yourservername.Database.Windows.NET* .
+Když vytvoříte logický SQL Server z [Azure Portal](single-database-create-quickstart.md) pro Azure SQL Database a Azure synapse Analytics, výsledkem je veřejný koncový bod ve formátu *yourservername.Database.Windows.NET*.
 
 Pomocí následujících ovládacích prvků přístupu k síti můžete selektivně dovolit přístup k databázi prostřednictvím veřejného koncového bodu:
 
@@ -34,7 +34,7 @@ Privátní přístup k databázi nástroje můžete také z [virtuálních sít�
 - Privátní odkaz: pomocí této funkce můžete vytvořit privátní koncový bod pro [logický SQL Server](logical-servers.md) v konkrétní virtuální síti.
 
 > [!IMPORTANT]
-> Tento článek se *nevztahuje na* **spravovanou instanci SQL** . Další informace o konfiguraci sítě najdete v tématu [připojení ke spravované instanci Azure SQL](../managed-instance/connect-application-instance.md) .
+> Tento článek se *nevztahuje na* **spravovanou instanci SQL**. Další informace o konfiguraci sítě najdete v tématu [připojení ke spravované instanci Azure SQL](../managed-instance/connect-application-instance.md) .
 
 V níže uvedeném videu najdete nejdůležitější vysvětlení těchto ovládacích prvků přístupu a jejich možnosti:
 
@@ -42,13 +42,13 @@ V níže uvedeném videu najdete nejdůležitější vysvětlení těchto ovlád
 
 ## <a name="allow-azure-services"></a>Povolení služeb Azure
 
-Ve výchozím nastavení se při vytváření nového logického SQL serveru [z Azure Portal](single-database-create-quickstart.md)toto nastavení nastaví na **vypnuto** . Toto nastavení se zobrazí, pokud je povoleno připojení pomocí koncového bodu veřejné služby.
+Ve výchozím nastavení se při vytváření nového logického SQL serveru [z Azure Portal](single-database-create-quickstart.md)toto nastavení nastaví na **vypnuto**. Toto nastavení se zobrazí, pokud je povoleno připojení pomocí koncového bodu veřejné služby.
 
 Toto nastavení můžete také změnit přes podokno brány firewall po vytvoření logického SQL serveru následujícím způsobem.
   
 ![Snímek obrazovky s bránou firewall serveru pro správu][2]
 
-Když nastavíte **on** , Server umožňuje komunikaci ze všech prostředků v rámci hranice Azure, která může nebo nemusí být součástí vašeho předplatného.
+Když nastavíte **on**, Server umožňuje komunikaci ze všech prostředků v rámci hranice Azure, která může nebo nemusí být součástí vašeho předplatného.
 
 V mnoha případech je nastavení **on** přísnější než to, co nejvíc zákazníci chtějí. Toto nastavení můžete nastavit na **vypnuto** a nahradit ho více omezujícími pravidly FIREWALLU protokolu IP nebo pomocí pravidel brány firewall virtuální sítě. 
 
@@ -110,7 +110,7 @@ Brána firewall založená na protokolu IP je funkcí logického SQL serveru v A
 
 ## <a name="virtual-network-firewall-rules"></a>Pravidla brány firewall virtuální sítě
 
-Kromě pravidel protokolu IP je možné pomocí brány firewall serveru definovat *pravidla virtuální sítě* .  
+Kromě pravidel protokolu IP je možné pomocí brány firewall serveru definovat *pravidla virtuální sítě*.  
 Další informace najdete v tématu [koncové body a pravidla služby virtuální sítě pro Azure SQL Database](vnet-service-endpoint-rule-overview.md) nebo Sledujte toto video:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--Demo--Vnet-Firewall-Rules-for-SQL-Database/player?WT.mc_id=dataexposed-c9-niner]
@@ -121,9 +121,9 @@ Při zkoumání pravidel brány firewall virtuální sítě Pamatujte na tyto s�
 
 **Virtuální síť:** Můžete mít virtuální sítě přidružené k vašemu předplatnému Azure.
 
-**Podsíť:** Virtuální síť obsahuje **podsítě** . Všechny virtuální počítače Azure, které jste přiřadili k podsítím. Jedna podsíť může obsahovat několik virtuálních počítačů nebo jiných výpočetních uzlů. Výpočetní uzly, které jsou mimo vaši virtuální síť, nemají přístup k virtuální síti, pokud nenastavíte zabezpečení tak, aby umožňovalo přístup.
+**Podsíť:** Virtuální síť obsahuje **podsítě**. Všechny virtuální počítače Azure, které jste přiřadili k podsítím. Jedna podsíť může obsahovat několik virtuálních počítačů nebo jiných výpočetních uzlů. Výpočetní uzly, které jsou mimo vaši virtuální síť, nemají přístup k virtuální síti, pokud nenastavíte zabezpečení tak, aby umožňovalo přístup.
 
-**Koncový bod služby virtuální sítě:** [Koncový bod služby virtuální sítě](../../virtual-network/virtual-network-service-endpoints-overview.md) je podsíť, jejíž hodnoty vlastností zahrnují jeden nebo více formálních názvů typů služeb Azure. V tomto článku se zajímá název typu **Microsoft. SQL** , který odkazuje na službu Azure s názvem SQL Database.
+**Koncový bod služby virtuální sítě:** [Koncový bod služby virtuální sítě](../../virtual-network/virtual-network-service-endpoints-overview.md) je podsíť, jejíž hodnoty vlastností zahrnují jeden nebo více formálních názvů typů služeb Azure. V tomto článku se zajímá název typu **Microsoft. SQL**, který odkazuje na službu Azure s názvem SQL Database.
 
 **Pravidlo virtuální sítě:** Pravidlo virtuální sítě pro váš server je podsíť, která je uvedená v seznamu řízení přístupu (ACL) vašeho serveru. Aby byl v seznamu ACL pro vaši databázi v SQL Database, podsíť musí obsahovat název typu **Microsoft. SQL** . Pravidlo virtuální sítě instruuje server, aby přijímal komunikaci z každého uzlu, který je v podsíti.
 
@@ -140,7 +140,7 @@ Pravidla virtuální sítě jsou jednodušší alternativou ke zřízení a spr�
 
 ## <a name="private-link"></a>Private Link
 
-Privátní odkaz vám umožní připojit se k serveru prostřednictvím **privátního koncového bodu** . Privátní koncový bod je privátní IP adresa v konkrétní [virtuální síti](../../virtual-network/virtual-networks-overview.md) a podsíti.
+Privátní odkaz vám umožní připojit se k serveru prostřednictvím **privátního koncového bodu**. Privátní koncový bod je privátní IP adresa v konkrétní [virtuální síti](../../virtual-network/virtual-networks-overview.md) a podsíti.
 
 ## <a name="next-steps"></a>Další kroky
 

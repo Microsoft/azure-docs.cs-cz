@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: overview
 ms.date: 07/09/2020
 ms.author: marhamil
-ms.openlocfilehash: 1b08925db12edffdaf5c85f1fa6f5934a412d81f
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: aaade03edbbb109656fb7371a063cdc2512c5a20
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363302"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461624"
 ---
 # <a name="azure-cognitive-services-for-big-data"></a>Cognitive Services Azure pro velké objemy dat
 
@@ -35,8 +35,8 @@ Cognitive Services pro velké objemy dat může využívat služby z libovolné 
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Počítačové zpracování obrazu](../computer-vision/index.yml "Computer Vision")| Služba Počítačové zpracování obrazu poskytuje přístup k pokročilým algoritmům pro zpracování imagí a vracení informací. |
-|[Rozpoznávání tváře](../face/index.yml "Tvář")| Služba obličeje poskytuje přístup k pokročilým algoritmům obličeje a umožňuje detekci a rozpoznávání atributů obličeje. |
+|[Počítačové zpracování obrazu](../computer-vision/index.yml "Počítačové zpracování obrazu")| Služba Počítačové zpracování obrazu poskytuje přístup k pokročilým algoritmům pro zpracování imagí a vracení informací. |
+|[Rozpoznávání tváře](../face/index.yml "Rozpoznávání tváře")| Služba obličeje poskytuje přístup k pokročilým algoritmům obličeje a umožňuje detekci a rozpoznávání atributů obličeje. |
 
 ### <a name="speech"></a>Řeč
 
@@ -56,7 +56,7 @@ Cognitive Services pro velké objemy dat může využívat služby z libovolné 
 |:-----------|:------------------|
 |[Analýza textu](../text-analytics/index.yml "Analýza textu")| Služba Analýza textu zajišťuje zpracování v přirozeném jazyce přes nezpracovaný text pro analýzu míněníí, extrakci klíčových frází a rozpoznávání jazyka.|
 
-### <a name="search"></a>Search
+### <a name="search"></a>Hledat
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
@@ -84,11 +84,11 @@ Cognitive Services pro velké objemy dat vyžaduje Apache Spark. Existuje někol
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-[Azure synapse Analytics](/azure/databricks/data/data-sources/azure/synapse-analytics) (dříve SQL Data Warehouse) je jako podnikový datový sklad, který využívá obrovský paralelní zpracování. Pomocí analýzy synapse můžete rychle spouštět složité dotazy napříč petabajty daty. Azure synapse Analytics poskytuje spravované fondy Spark pro spouštění úloh Sparku s intuitivním Jupyter Notebookovým rozhraním.
+[Azure synapse Analytics](/azure/databricks/data/data-sources/azure/synapse-analytics) je jako podnikový datový sklad, který využívá obrovský paralelní zpracování. Pomocí analýzy synapse můžete rychle spouštět složité dotazy napříč petabajty daty. Azure synapse Analytics poskytuje spravované fondy Spark pro spouštění úloh Sparku s intuitivním Jupyter Notebookovým rozhraním.
 
 ### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-[Služba Azure Kubernetes Service (AKS)](../../aks/index.yml) orchestruje kontejnery Docker a distribuované aplikace v obrovské škále. AKS je spravovaná nabídka Kubernetes, která zjednodušuje používání Kubernetes v Azure. Kubernetes může umožnit jemně odstupňované řízení škály, latence a sítě pro rozpoznávání. Pokud však Apache Spark neznáte, doporučujeme použít Azure Databricks nebo synapse Analytics.
+[Služba Azure Kubernetes Service (AKS)](../../aks/index.yml) orchestruje kontejnery Docker a distribuované aplikace v obrovské škále. AKS je spravovaná nabídka Kubernetes, která zjednodušuje používání Kubernetes v Azure. Kubernetes může umožnit jemně odstupňované řízení škály, latence a sítě pro rozpoznávání. Pokud však Apache Spark neznáte, doporučujeme použít Azure Databricks nebo Azure synapse Analytics.
 
 ### <a name="data-connectors"></a>Datové konektory
 

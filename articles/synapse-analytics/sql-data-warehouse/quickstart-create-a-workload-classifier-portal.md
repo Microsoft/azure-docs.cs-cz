@@ -11,14 +11,14 @@ ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 691cdcb525f8e9e3d1fb914372b9f62366f4bfba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4c761404ab5a95bc0189407cc97ce779b66356fe
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85213019"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460720"
 ---
-# <a name="quickstart-create-a-synapse-sql-pool-workload-classifier-using-the-azure-portal"></a>Rychlý Start: vytvoření klasifikátoru úloh synapse fondu SQL pomocí Azure Portal
+# <a name="quickstart-create-a-dedicated-sql-pool-workload-classifier-using-the-azure-portal"></a>Rychlý Start: vytvoření vyhrazeného klasifikátoru úloh fondu SQL pomocí Azure Portal
 
 V tomto rychlém startu vytvoříte [klasifikátor úloh](sql-data-warehouse-workload-classification.md) pro přiřazení dotazů ke skupině úloh.  Klasifikátor přiřadí požadavky od `ELTLogin` uživatele SQL do `DataLoads` skupiny úloh.   Postupujte podle kurzu [rychlý Start: Konfigurace izolace úloh](quickstart-configure-workload-isolation-portal.md) a vytvořte `DataLoads` skupinu úloh.  V tomto kurzu se vytvoří klasifikátor úloh s možností WLM_LABEL, aby bylo možné lépe klasifikovat požadavky správně.  Třídění bude také přiřazovat `HIGH` [význam úloh](sql-data-warehouse-workload-importance.md) i pro tyto požadavky.
 
@@ -28,19 +28,19 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 > [!NOTE]
-> Vytvoření instance fondu SQL ve službě Azure synapse Analytics může mít za následek novou fakturovatelnou službu.  Další informace najdete v tématu [ceny služby Azure synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Vytvoření vyhrazené instance fondu SQL ve službě Azure synapse Analytics může mít za následek novou fakturovatelnou službu.  Další informace najdete v tématu [ceny služby Azure synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 ## <a name="prerequisites"></a>Předpoklady
 
-V tomto rychlém startu se předpokládá, že již máte instanci fondu SQL v synapse SQL a máte kontrolu nad oprávněními databáze. Pokud ho potřebujete vytvořit, postupujte podle pokynů v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) a vytvořte datový sklad s názvem **mySampleDataWarehouse**.
+V tomto rychlém startu se předpokládá, že už máte vyhrazenou instanci fondu SQL, ke které máte oprávnění řízení databáze. Pokud ho potřebujete vytvořit, použijte [Vytvoření a připojení – portál](create-data-warehouse-portal.md) pro vytvoření vyhrazeného fondu SQL s názvem **mySampleDataWarehouse**.
 <br><br>
 Skupina úloh `DataLoads` existuje.  Informace o vytvoření skupiny úloh najdete v kurzu [rychlý Start: Konfigurace izolace úloh](quickstart-configure-workload-isolation-portal.md) .
 <br><br>
 >[!IMPORTANT] 
->Aby bylo možné konfigurovat správu úloh, musí být váš fond SQL online. 
+>Aby bylo možné nakonfigurovat správu úloh, musí být váš vyhrazený fond SQL online. 
 
 
 ## <a name="create-a-login-for-eltlogin"></a>Vytvoření přihlašovacích údajů pro ELTLogin
@@ -72,27 +72,26 @@ END
 Klasifikace umožňuje směrovat požadavky na základě sady pravidel na skupinu úloh.  V části [rychlý Start: Konfigurace kurzu pro izolaci úloh](quickstart-configure-workload-isolation-portal.md) jsme vytvořili `DataLoads` skupinu úloh.  Nyní vytvoříte klasifikátor úloh pro směrování dotazů do `DataLoads` skupiny úloh.
 
 
-1.  Na levé straně Azure Portal klikněte na **Azure synapse Analytics (dřív SQL DW)** .
-2.  Vyberte **mySampleDataWarehouse** ze stránky **Azure synapse Analytics (dříve SQL DW)** . Otevře se fond SQL.
-3.  Klikněte na **Správa úloh**.
+1.  Přejděte na stránku **mySampleDataWarehouse** vyhrazený fond SQL.
+3.  Vyberte možnost **Správa úloh**.
 
     ![Klikněte na nabídku](./media/quickstart-create-a-workload-classifier-portal/menu.png)
 
-4.  Klikněte na **nastavení & klasifikátory** na pravé straně `DataLoads` skupiny úloh.
+4.  Vyberte **nastavení & třídění** na pravé straně `DataLoads` skupiny úloh.
 
     ![Kliknutí na Vytvořit](./media/quickstart-create-a-workload-classifier-portal/settings-classifiers.png)
 
-5. Klikněte na **klasifikátory**.
-6. Klikněte na **Přidat klasifikátor**.
+5. Vyberte  **nenakonfigurované** ve sloupci klasifikátory.
+6. Vyberte **+ Přidat třídění**.
 
     ![Klikněte na tlačítko Přidat.](./media/quickstart-create-a-workload-classifier-portal/add-wc.png)
 
-7.  `ELTLoginDataLoads`Jako **název**zadejte.
+7.  `ELTLoginDataLoads`Jako **název** zadejte.
 8.  Zadejte `ELTLogin` pro **člena**.
 9.  Vyberte možnost `High` pro **důležitost požadavku**.  *Volitelné*, Normální důležitost je výchozí.
 10. Zadejte `fact_loads` pro **popisek**.
-11. Klikněte na **Přidat**.
-12. Klikněte na **Uložit**.
+11. Vyberte **Přidat**.
+12. Vyberte **Uložit**.
 
     ![Klikněte na konfigurace.](./media/quickstart-create-a-workload-classifier-portal/config-wc.png)
 
@@ -135,8 +134,6 @@ WHERE [label] = 'fact_loads'
 ORDER BY submit_time DESC
 ```
 
-
-
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Postup odstranění `ELTLoginDataLoads` klasifikátoru úloh vytvořeného v tomto kurzu:
@@ -152,24 +149,20 @@ Postup odstranění `ELTLoginDataLoads` klasifikátoru úloh vytvořeného v tom
 
     ![Kliknutí na Uložit](./media/quickstart-create-a-workload-classifier-portal/delete-save-wc.png)
 
-Účtují se vám poplatky za jednotky datového skladu a data uložená v datovém skladu. Výpočetní prostředky a prostředky úložiště se účtují odděleně.
+Účtují se vám poplatky za jednotky datového skladu a data uložená ve vašem vyhrazeném fondu SQL. Výpočetní prostředky a prostředky úložiště se účtují odděleně.
 
-- Pokud chcete zachovat data v úložišti, můžete pozastavit výpočetní prostředky v době, kdy datový sklad nepoužíváte. Když pozastavíte výpočetní prostředky, bude se vám účtovat jenom úložiště dat. Až budete připraveni pracovat s daty, obnovte výpočetní výkon.
-- Pokud chcete zamezit budoucím poplatkům, můžete datový sklad odstranit.
+- Pokud chcete uchovávat data v úložišti, můžete pozastavit výpočetní prostředky, když nepoužíváte vyhrazený fond SQL. Když pozastavíte výpočetní prostředky, bude se vám účtovat jenom úložiště dat. Až budete připraveni pracovat s daty, obnovte výpočetní výkon.
+- Pokud chcete odebrat budoucí poplatky, můžete odstranit vyhrazený fond SQL.
 
 Pomocí těchto kroků vyčistěte prostředky.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)a vyberte svůj datový sklad.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a vyberte vyhrazený fond SQL.
 
     ![Vyčištění prostředků](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. Pokud chcete pozastavit výpočetní prostředky, vyberte tlačítko **pozastavit** . Když je datový sklad pozastavený, zobrazí se tlačítko **Spustit**.  Pokud chcete pokračovat v výpočetních prostředích, vyberte **Spustit**.
+2. Pokud chcete pozastavit výpočetní prostředky, vyberte tlačítko **pozastavit** . Když je vyhrazený fond SQL pozastaven, zobrazí se tlačítko **Start** .  Pokud chcete pokračovat v výpočetních prostředích, vyberte **Spustit**.
 
-3. Pokud chcete odebrat datový sklad, aby se vám neúčtovaly výpočetní výkon nebo úložiště, vyberte **Odstranit**.
-
-4. Pokud chcete odebrat vytvořený SQL Server, vyberte na předchozím obrázku **sqlpoolservername.Database.Windows.NET** a pak vyberte **Odstranit**.  S tímto odstraněním buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
-
-5. Pokud chcete odebrat skupinu prostředků, vyberte **myResourceGroup**a pak vyberte **Odstranit skupinu prostředků**.
+3. Pokud chcete odebrat vyhrazený fond SQL, abyste vám neúčtovali výpočetní výkon nebo úložiště, vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

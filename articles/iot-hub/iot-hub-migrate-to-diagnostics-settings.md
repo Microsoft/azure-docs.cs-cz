@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: eb53e7052db6d4de365864184b9bd2e6585b7e2d
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: dfd819d82f5e35183802e33e5d423cad4de36c38
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412104"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461581"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-azure-monitor-resource-logs"></a>Migrace IoT Hub z monitorování operací na protokoly prostředků Azure Monitor
 
@@ -49,9 +49,9 @@ Chcete-li aktualizovat IoT Hub v Azure Portal, nejprve vytvořte nastavení diag
 
 1. Vyberte **Uložit** a nastavení se uloží.
 
-Nové nastavení se projeví přibližně po dobu 10 minut. Pak se protokoly zobrazí v nakonfigurovaném cíli. Další informace o konfiguraci diagnostiky najdete v tématu [shromažďování a využívání dat protokolů z prostředků Azure](/azure/azure-monitor/platform/platform-logs-overview).
+Nové nastavení se projeví přibližně po dobu 10 minut. Pak se protokoly zobrazí v nakonfigurovaném cíli. Další informace o konfiguraci diagnostiky najdete v tématu [shromažďování a využívání dat protokolů z prostředků Azure](../azure-monitor/platform/platform-logs-overview.md).
 
-Podrobnější informace o tom, jak vytvořit nastavení diagnostiky, včetně PowerShellu a rozhraní příkazového řádku Azure, najdete v tématu [nastavení diagnostiky](/azure/azure-monitor/platform/diagnostic-settings) v dokumentaci k Azure monitor.
+Podrobnější informace o tom, jak vytvořit nastavení diagnostiky, včetně PowerShellu a rozhraní příkazového řádku Azure, najdete v tématu [nastavení diagnostiky](../azure-monitor/platform/diagnostic-settings.md) v dokumentaci k Azure monitor.
 
 ### <a name="turn-off-operations-monitoring"></a>Vypnout monitorování operací
 

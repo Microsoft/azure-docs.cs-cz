@@ -1,34 +1,34 @@
 ---
 title: Použití smyček T-SQL
-description: Tipy pro vývoj řešení pomocí smyček T-SQL a nahrazení kurzorů ve fondu synapse SQL
+description: Tipy pro vývoj řešení pomocí smyček T-SQL a nahrazení kurzorů pro vyhrazené fondy SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 25dad01a54b6ffe08656379340f58e0fe70ec666
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 3477b3095414248afa9fbc7417ab707c94f35546
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213410"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462725"
 ---
-# <a name="using-t-sql-loops-in-synapse-sql-pool"></a>Použití smyček T-SQL ve fondu synapse SQL
+# <a name="using-t-sql-loops-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Používání smyček T-SQL pro vyhrazené fondy SQL ve službě Azure synapse Analytics
 
-V tomto článku jsou uvedené tipy pro vývoj řešení fondů SQL pomocí smyček T-SQL a nahrazování kurzorů.
+V tomto článku najdete tipy pro vývoj řešení pro vyhrazený fond SQL pomocí smyček T-SQL a nahrazení kurzorů.
 
 ## <a name="purpose-of-while-loops"></a>Účel smyčky WHILe
 
-Synapse fond SQL podporuje smyčku [while](/sql/t-sql/language-elements/while-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) pro opakované provádění bloků příkazů. Tato smyčka WHILe pokračuje, dokud jsou zadané podmínky pravdivé nebo dokud kód konkrétně neukončí smyčku pomocí klíčového slova BREAK.
+Vyhrazené fondy SQL ve službě Azure synapse podporují smyčku [while](/sql/t-sql/language-elements/while-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) pro opakované provádění bloků příkazů. Tato smyčka WHILe pokračuje, dokud jsou zadané podmínky pravdivé nebo dokud kód konkrétně neukončí smyčku pomocí klíčového slova BREAK.
 
 Smyčky jsou užitečné pro nahrazování kurzorů definovaných v kódu SQL. Naštěstí jsou téměř všechny kurzory, které jsou napsány v kódu SQL, určeny pro rychlý posun, jen pro čtení. Takže zatímco smyčky jsou skvělou alternativou pro nahrazování kurzorů.
 
-## <a name="replacing-cursors-in-synapse-sql-pool"></a>Výměna kurzorů ve fondu SQL synapse
+## <a name="replacing-cursors-in-dedicated-sql-pool"></a>Nahrazování kurzorů ve vyhrazeném fondu SQL
 
 Předtím, než začnete v hlavě, byste si ale měli zeptat na následující otázku: "chcete, aby se tento kurzor přepsal pro použití operací založených na nastavení?"
 

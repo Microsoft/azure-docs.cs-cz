@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: škálování výpočetních prostředků ve službě Azure synapse Analytics – T-SQL'
-description: Škálujte výpočetní prostředky ve službě Azure synapse Analytics pomocí T-SQL a SQL Server Management Studio (SSMS). Kapacitu výpočetních prostředků můžete horizontálně navýšit, abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
+title: 'Rychlý Start: škálování výpočetních prostředků ve vyhrazeném fondu SQL (dřív SQL DW) – T-SQL'
+description: Škálovat výpočetní prostředky ve vyhrazeném fondu SQL (dřív SQL DW) pomocí T-SQL a SQL Server Management Studio (SSMS). Kapacitu výpočetních prostředků můžete horizontálně navýšit, abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
 services: synapse-analytics
 author: Antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d11474a3f3b5d8c314f67260fddbbe0a98fe5196
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 37033e3c5f388d1a55a122899114914e661565f6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91569907"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460232"
 ---
-# <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>Rychlý Start: škálování výpočetních prostředků ve službě Azure synapse Analytics pomocí T-SQL
+# <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-t-sql"></a>Rychlý Start: škálování COMPUTE pro vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics pomocí T-SQL
 
-Škálujte výpočetní prostředky ve službě Azure synapse Analytics (dříve SQL DW) pomocí T-SQL a SQL Server Management Studio (SSMS). Kapacitu výpočetních prostředků můžete [horizontálně navýšit](sql-data-warehouse-manage-compute-overview.md), abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
+Škálovat výpočetní prostředky ve vyhrazeném fondu SQL (dřív SQL DW) pomocí T-SQL a SQL Server Management Studio (SSMS). Kapacitu výpočetních prostředků můžete [horizontálně navýšit](sql-data-warehouse-manage-compute-overview.md), abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -28,9 +28,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).
 
-## <a name="create-a-data-warehouse"></a>Vytvoření datového skladu
+## <a name="create-a-dedicated-sql-pool-formerly-sql-dw"></a>Vytvoření vyhrazeného fondu SQL (dřív SQL DW)
 
-Pomocí postupu v článku [Rychlý start: Vytvoření a připojení – portál](create-data-warehouse-portal.md) vytvořte datový sklad s názvem **mySampleDataWarehouse**. Dokončete rychlý Start, abyste měli jistotu, že máte pravidlo brány firewall a můžete se připojit k vašemu datovému skladu z SQL Server Management Studio.
+Použijte [rychlý Start: vytvoření a připojení – portál](create-data-warehouse-portal.md) pro vytvoření vyhrazeného fondu SQL (dřív SQL DW) s názvem **mySampleDataWarehouse**. Dokončete rychlý Start, abyste měli jistotu, že máte pravidlo brány firewall a můžete se připojit k vašemu vyhrazenému fondu SQL (dřív SQL DW) z SQL Server Management Studio.
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Připojení k serveru jako správce serveru
 
@@ -48,7 +48,7 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
    | Přihlásit | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
    | Heslo | Heslo pro účet správce serveru | Heslo, které jste zadali při vytváření serveru. |
 
-    ![Připojit k serveru](./media/quickstart-scale-compute-tsql/connect-to-server.png)
+    ![Připojení k serveru](./media/quickstart-scale-compute-tsql/connect-to-server.png)
 
 3. Klikněte na **Připojit**. V aplikaci SSMS se otevře okno Průzkumníka objektů.
 
@@ -58,11 +58,11 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
 
 ## <a name="view-service-objective"></a>Zobrazení cíle služby
 
-Nastavení cíle služby obsahuje množství jednotek datového skladu pro datový sklad.
+Nastavení cíle služby obsahuje počet jednotek datového skladu pro vyhrazený fond SQL (dřív SQL DW).
 
-Pokud se chcete podívat na aktuální jednotky svého datového skladu, postupujte takto:
+Zobrazení aktuálních jednotek datového skladu pro vyhrazený fond SQL (dříve SQL DW):
 
-1. V části připojení k **mySampleDataWarehouseservername.Database.Windows.NET**rozbalte **systémové databáze**.
+1. V části připojení k **mySampleDataWarehouseservername.Database.Windows.NET** rozbalte **systémové databáze**.
 2. Klikněte pravým tlačítkem na **master** a vyberte **New Query** (Nový dotaz). Otevře se nové okno dotazu.
 3. Spusťte následující dotaz pro výběr ze zobrazení dynamické správy sys.database_service_objectives.
 
@@ -85,7 +85,7 @@ Pokud se chcete podívat na aktuální jednotky svého datového skladu, postupu
 
 ## <a name="scale-compute"></a>Škálování výpočetního výkonu
 
-V Azure synapse můžete zvýšit nebo snížit výpočetní prostředky tím, že upravíte jednotky datového skladu. Podle postupu v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) jste vytvořili **mySampleDataWarehouse** a inicializovali ho se 400 jednotkami datového skladu. V následujícím postupu upravíte jednotky datového skladu pro **mySampleDataWarehouse**.
+Ve vyhrazeném fondu SQL (dříve SQL DW) můžete zvýšit nebo snížit výpočetní prostředky tím, že upravíte jednotky datového skladu. Podle postupu v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) jste vytvořili **mySampleDataWarehouse** a inicializovali ho se 400 jednotkami datového skladu. V následujícím postupu upravíte jednotky datového skladu pro **mySampleDataWarehouse**.
 
 Změna jednotek datového skladu:
 
@@ -130,13 +130,13 @@ Pokud se chcete dotázat na stav změny objektu služby:
 
     ![Stav operace](./media/quickstart-scale-compute-tsql/polling-output.png)
 
-## <a name="check-data-warehouse-state"></a>Kontrola stavu datového skladu
+## <a name="check-dedicated-sql-pool-formerly-sql-dw-state"></a>Ověřte stav vyhrazeného fondu SQL (dříve SQL DW).
 
-Když je datový sklad pozastavený, nemůžete se k němu připojit pomocí T-SQL. Pokud se chcete podívat na stav datového skladu, můžete použít powershellovou rutinu. Příklad najdete v tématu [Zkontrolujte stav datového skladu – PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state).
+Pokud je vyhrazený fond SQL (dřív SQL DW) pozastaven, nemůžete se k němu připojit pomocí T-SQL. Pokud chcete zobrazit aktuální stav vyhrazeného fondu SQL (dřív SQL DW), můžete použít rutinu PowerShellu. Příklad najdete v tématu o [kontrole vyhrazeného fondu SQL (dříve SQL DW) stavu – PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state).
 
 ## <a name="check-operation-status"></a>Kontrola stavu operace
 
-Pokud chcete vracet informace o různých operacích správy ve službě Azure synapse, spusťte na [Sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV následující dotaz. Vrátí se například operace a její stav, který bude IN_PROGRESS nebo COMPLETED.
+Pokud chcete vracet informace o různých operacích správy ve vyhrazeném fondu SQL (dřív SQL DW), spusťte na [Sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV následující dotaz. Vrátí se například operace a její stav, který bude IN_PROGRESS nebo COMPLETED.
 
 ```sql
 SELECT *
@@ -150,7 +150,7 @@ AND
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď už víte, jak škálovat výpočetní prostředky pro datový sklad. Další informace o Azure synapse najdete v kurzu načtení dat.
+Nyní jste zjistili, jak škálovat výpočetní prostředky pro vyhrazený fond SQL (dřív SQL DW). Další informace o službě Azure synapse Analytics najdete v kurzu načtení dat.
 
 > [!div class="nextstepaction"]
->[Načtení dat do služby Azure synapse Analytics](load-data-from-azure-blob-storage-using-polybase.md)
+>[Načtení dat do vyhrazeného fondu SQL](load-data-from-azure-blob-storage-using-polybase.md)

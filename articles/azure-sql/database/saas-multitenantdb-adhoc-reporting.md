@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/30/2018
-ms.openlocfilehash: 262c54c3eb47c8539dce89c01f32c7feb1884b7c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 800592b7a8b263fea2883fdd3e030f78f72647dd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792731"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459918"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-databases-azure-sql-database"></a>Spouštění analytických dotazů ad hoc napříč více databázemi (Azure SQL Database)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -47,7 +47,7 @@ Aplikace SaaS můžou analyzovat obrovské množství dat tenantů, která se uk
 
 V jedné databázi s více tenanty je přístup k těmto datům jednoduchý, ale třeba v případě distribuce mezi tisícovky databází se situace komplikuje. Jedním z přístupů je použití [elastického dotazu](elastic-query-overview.md), který umožňuje dotazování napříč distribuovanou sadou databází se společným schématem. Tyto databáze je možné distribuovat v různých skupinách prostředků a předplatných. Ještě jedno společné přihlášení musí mít přístup k extrakci dat ze všech databází. Elastický dotaz používá jednu *hlavu* databáze, ve které jsou definovány externí tabulky, které zrcadlí tabulky nebo zobrazení v distribuovaných databázích (tenant). Dotazy odeslané do této hlavní databáze se kompilují a vzniká plán distribuovaného dotazu, který zajistí předávání částí dotazu potřebným tenantským databázím. Elastický dotaz používá k určení umístění všech databází tenanta mapu horizontálních oddílů v databázi katalogu. Nastavení a dotaz jsou jednoduché pomocí [jazyka Transact-SQL](/sql/t-sql/language-reference)Standard a podporují dotazování ad hoc z nástrojů, jako je Power BI a Excel.
 
-Díky distribuci dotazů napříč databázemi klientů poskytuje elastický dotaz okamžitý přehled o živých provozních datech. Jelikož však elastický dotaz vyžádá data z potenciálně velkého počtu databází, může být v některých případech vyšší latence než u ekvivalentních dotazů odeslaných do jediné víceklientské databáze. Nezapomeňte navrhnout dotazy pro minimalizaci vrácených dat. Elastický dotaz je často vhodný pro dotazování malých objemů dat v reálném čase, a to na rozdíl od vytváření často používaných nebo složitých analytických dotazů nebo sestav. Pokud dotazy nebudou dobře fungovat, podívejte se na [plán spuštění](/sql/relational-databases/performance/display-an-actual-execution-plan) , kde zjistíte, jaká část dotazu byla do vzdálené databáze přesunuta. A vyhodnoťte, kolik dat je vráceno. Dotazy, které vyžadují složité analytické zpracování, mohou být lépe obsluhovány uložením extrahovaných dat tenanta do databáze optimalizované pro analytické dotazy. SQL Database a Azure synapse Analytics (dříve SQL Data Warehouse) by mohli hostovat analytickou databázi.
+Díky distribuci dotazů napříč databázemi klientů poskytuje elastický dotaz okamžitý přehled o živých provozních datech. Jelikož však elastický dotaz vyžádá data z potenciálně velkého počtu databází, může být v některých případech vyšší latence než u ekvivalentních dotazů odeslaných do jediné víceklientské databáze. Nezapomeňte navrhnout dotazy pro minimalizaci vrácených dat. Elastický dotaz je často vhodný pro dotazování malých objemů dat v reálném čase, a to na rozdíl od vytváření často používaných nebo složitých analytických dotazů nebo sestav. Pokud dotazy nebudou dobře fungovat, podívejte se na [plán spuštění](/sql/relational-databases/performance/display-an-actual-execution-plan) , kde zjistíte, jaká část dotazu byla do vzdálené databáze přesunuta. A vyhodnoťte, kolik dat je vráceno. Dotazy, které vyžadují složité analytické zpracování, mohou být lépe obsluhovány uložením extrahovaných dat tenanta do databáze optimalizované pro analytické dotazy. SQL Database a Azure synapse Analytics by mohly hostovat analytickou databázi.
 
 Tento vzor analýzy je vysvětlen v [kurzu analýzy tenanta](saas-multitenantdb-tenant-analytics.md).
 
@@ -60,7 +60,7 @@ V úložišti GitHubu [WingtipTicketsSaaS-MultitenantDB](https://github.com/micr
 Pokud chcete spouštět dotazy pro zajímavější datovou sadu, vytvořte pomocí generátoru lístků data o prodeji lístku.
 
 1. V *prostředí POWERSHELL ISE* otevřete... \\ Výukové moduly \\ provozní analýzy \\ ad hoc vytváření sestav \\ *Demo-AdhocReporting.ps1* skriptu a nastavte následující hodnoty:
-   * **$DemoScenario** = 1, **vykoupit lístky pro události na všech místě** .
+   * **$DemoScenario** = 1, **vykoupit lístky pro události na všech místě**.
 2. Stisknutím klávesy **F5** spusťte skript a vygenerujte prodej lístku. Po spuštění skriptu pokračujte postupem v tomto kurzu. Data lístku se dotazují v části *Run ad hoc distribuované dotazy* , takže počkejte, než se generátor lístků dokončí.
 
 ## <a name="explore-the-tenant-tables"></a>Prozkoumat tabulky tenantů 
@@ -74,7 +74,7 @@ Pro dosažení tohoto modelu všechny tabulky tenantů obsahují sloupec *VenueI
 Toto cvičení nasadí databázi *adhocreporting* . Toto je hlavní databáze, která obsahuje schéma používané pro dotazování napříč všemi databázemi tenanta. Databáze je nasazená na stávající Server katalogu, což je server, který se používá pro všechny databáze související se správou v ukázkové aplikaci.
 
 1. Otevřít... \\ Výukové moduly \\ provozní analýzy \\ ad hoc vytváření sestav \\ *Demo-AdhocReporting.ps1* v *PowerShellu ISE* a nastavte následující hodnoty:
-   * **$DemoScenario** = 2, **nasadit databázi ad hoc Analytics** .
+   * **$DemoScenario** = 2, **nasadit databázi ad hoc Analytics**.
 
 2. Stisknutím klávesy **F5** spusťte skript a vytvořte databázi *adhocreporting* .
 
@@ -84,7 +84,7 @@ V další části přidáte schéma do databáze, aby bylo možné je použít k
 
 Tento cvičení přidá schéma (externí definice zdroje dat a externí tabulky) do databáze generování sestav ad hoc, která umožňuje dotazování napříč všemi databázemi tenanta.
 
-1. Otevřete SQL Server Management Studio a připojte se k databázi vytváření sestav ad hoc, kterou jste vytvořili v předchozím kroku. Název databáze je *adhocreporting* .
+1. Otevřete SQL Server Management Studio a připojte se k databázi vytváření sestav ad hoc, kterou jste vytvořili v předchozím kroku. Název databáze je *adhocreporting*.
 2. Otevřete. ..\Learning Modules\Operational Analytics\Adhoc Reporting \ *Initialize-AdhocReportingDB. SQL* v SSMS.
 3. Zkontrolujte skript SQL a Všimněte si následujícího:
 
@@ -96,7 +96,7 @@ Tento cvičení přidá schéma (externí definice zdroje dat a externí tabulky
 
     ![vytvořit externí zdroj dat](./media/saas-multitenantdb-adhoc-reporting/create-external-data-source.png)
 
-   Externí tabulky, které odkazují na tabulky tenantů, jsou definovány s **distribucí = horizontálně dělené (VenueId)** . Tato funkce směruje dotaz na konkrétní *VenueId* do příslušné databáze a vylepšuje výkon pro mnoho scénářů, jak je znázorněno v další části.
+   Externí tabulky, které odkazují na tabulky tenantů, jsou definovány s **distribucí = horizontálně dělené (VenueId)**. Tato funkce směruje dotaz na konkrétní *VenueId* do příslušné databáze a vylepšuje výkon pro mnoho scénářů, jak je znázorněno v další části.
 
     ![Vytvoření externích tabulek](./media/saas-multitenantdb-adhoc-reporting/external-tables.png)
 
@@ -116,10 +116,10 @@ Teď, když je nastavená databáze *adhocreporting* , pokračujte a spusťte n�
 
 Po kontrole plánu spuštění najeďte na ikony plánu a vyhledejte podrobnosti. 
 
-1. V *SSMS* otevřete... \\ Výukové moduly \\ provozní analýzy \\ ad hoc vytváření sestav \\ *demo-AdhocReportingQueries. SQL* .
+1. V *SSMS* otevřete... \\ Výukové moduly \\ provozní analýzy \\ ad hoc vytváření sestav \\ *demo-AdhocReportingQueries. SQL*.
 2. Ujistěte se, že jste připojení k databázi **adhocreporting** .
 3. Vyberte nabídku **dotazu** a klikněte na **Zahrnout skutečný plán spuštění** .
-4. Zvýrazněte, *která místa jsou aktuálně registrována?* dotaz a stiskněte klávesu **F5** .
+4. Zvýrazněte, *která místa jsou aktuálně registrována?* dotaz a stiskněte klávesu **F5**.
 
    Dotaz vrátí celý seznam míst, který ilustruje, jak rychle a snadno se má dotazovat napříč všemi klienty a vracet data z každého tenanta.
 
@@ -127,7 +127,7 @@ Po kontrole plánu spuštění najeďte na ikony plánu a vyhledejte podrobnosti
 
    ![Vyberte * z dbo. Místa](./media/saas-multitenantdb-adhoc-reporting/query1-plan.png)
 
-5. Vyberte další dotaz a stiskněte klávesu **F5** .
+5. Vyberte další dotaz a stiskněte klávesu **F5**.
 
    Tento dotaz spojuje data z databází tenanta a místní tabulky *VenueTypes* (místní, protože se jedná o tabulku v databázi *adhocreporting* ).
 
@@ -135,7 +135,7 @@ Po kontrole plánu spuštění najeďte na ikony plánu a vyhledejte podrobnosti
 
    ![Spojit se se vzdálenými a místními daty](./media/saas-multitenantdb-adhoc-reporting/query2-plan.png)
 
-6. Teď vyberte, *ve kterém dnu byly nejvíc prodávané lístky?* dotaz, a stiskněte klávesu **F5** .
+6. Teď vyberte, *ve kterém dnu byly nejvíc prodávané lístky?* dotaz, a stiskněte klávesu **F5**.
 
    Tento dotaz provede trochu složitější spojování a agregaci. Je důležité si uvědomit, že většina zpracování je prováděna vzdáleně a znovu se vrátí pouze ty řádky, které potřebujeme, a vrátíme jenom jeden řádek pro součtový počet prodejů v rámci lístku pro každý den.
 

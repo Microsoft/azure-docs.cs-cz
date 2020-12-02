@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: Vytvoření fondu Apache Spark bez serveru (Preview) pomocí synapse studia'
+title: 'Rychlý Start: Vytvoření fondu Apache Spark bez serveru pomocí aplikace synapse Studio'
 description: Pomocí kroků v této příručce vytvořte Apache Spark fond bez serveru s využitím synapse studia.
 services: synapse-analytics
 author: saveenr
@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 10/16/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 313ad0c620fe06158e96c208ae265702134b58d1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d280e96b354f38a86545ed5f6bcaa6c9a314c46b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324182"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462035"
 ---
-# <a name="quickstart-create-a-serverless-apache-spark-pool-preview-using-synapse-studio"></a>Rychlý Start: Vytvoření fondu Apache Spark bez serveru (Preview) pomocí synapse studia
+# <a name="quickstart-create-a-serverless-apache-spark-pool-using-synapse-studio"></a>Rychlý Start: Vytvoření fondu Apache Spark bez serveru pomocí aplikace synapse Studio
 
 Azure synapse Analytics nabízí různé analytické moduly, které vám pomůžou ingestovat, transformovat, modelovat, analyzovat a obsluhovat vaše data. Fond Apache Spark nabízí Open Source výpočetní funkce pro velké objemy dat. Po vytvoření fondu Apache Spark ve vašem pracovním prostoru synapse se data dají načíst, namodelovat, zpracovávat a zpracovávat, abyste získali přehledy.  
 
@@ -100,7 +100,7 @@ Podle následujících kroků odstraňte fond Apache Spark z pracovního prostor
 Pokud chcete fond Apache Spark odstranit, postupujte takto:
 
 1. Přejděte na fondy Apache Spark v centru pro správu v nástroji synapse Studio.
-1. Vyberte tři tečky vedle fondu Apache, který se má odstranit (v tomto případě **contosospark** ), aby se zobrazily příkazy pro fond Apache Spark.
+1. Vyberte tři tečky vedle fondu Apache, který se má odstranit (v tomto případě **contosospark**), aby se zobrazily příkazy pro fond Apache Spark.
 
     ![Výpis fondů Apache Spark s vybraným nedávno vytvořeným fondem.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-29.png)
 

@@ -10,17 +10,17 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0897ca35dd5ae1b7209a36aee4bd5335d4ea4d25
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 2ff2d9708642c347a829de290d45849d8629807f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681527"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462351"
 ---
 # <a name="connect-to-synapse-sql"></a>Připojení k synapse SQL
 Připojte se k funkci synapse SQL ve službě Azure synapse Analytics.
 
-## <a name="supported-tools-for-serverless-sql-pool-preview"></a>Podporované nástroje pro fond SQL bez serveru (Preview)
+## <a name="supported-tools-for-serverless-sql-pool"></a>Podporované nástroje pro fond SQL bez serveru
 
 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) se plně podporuje od verze 1.18.0. SSMS je částečně podporovaná od verze 18,5, můžete ji použít jenom pro připojení a dotazování.
 
@@ -46,7 +46,7 @@ Plně kvalifikovaný název serveru zjistíte následujícím způsobem:
 
 ![Úplný název serveru](./media/connect-overview/server-connect-example.png)
 
-## <a name="serverless-sql-pool"></a>**Bezserverový fond SQL**
+## <a name="serverless-sql-pool"></a>**fond SQL bez serveru**
 
 ![Úplný fond SQL bez názvového serveru](./media/connect-overview/server-connect-example-sqlod.png)
 

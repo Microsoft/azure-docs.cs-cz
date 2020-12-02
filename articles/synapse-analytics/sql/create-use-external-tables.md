@@ -1,6 +1,6 @@
 ---
-title: Vytváření a používání externích tabulek v neserverovém fondu SQL (Preview)
-description: V této části se dozvíte, jak vytvářet a používat externí tabulky ve fondu SQL bez serveru (Preview).
+title: Vytváření a používání externích tabulek ve fondu SQL bez serveru
+description: V této části se dozvíte, jak vytvářet a používat externí tabulky ve fondu SQL bez serveru.
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0a52db131311d9956cf7217d910f22c3a4f07738
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5dcd4b7b76752ca5396fc68afc8d4c8e4e1edca5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314729"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462297"
 ---
-# <a name="create-and-use-external-tables-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Vytváření a používání externích tabulek pomocí SQL fondu bez serveru (Preview) ve službě Azure synapse Analytics
+# <a name="create-and-use-external-tables-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Vytváření a používání externích tabulek pomocí neserverového fondu SQL ve službě Azure synapse Analytics
 
-V této části se dozvíte, jak vytvářet a používat [externí tabulky](develop-tables-external-tables.md) ve fondu SQL bez serveru (Preview). Externí tabulky jsou užitečné, pokud chcete řídit přístup k externím datům ve fondu SQL bez serveru a pokud chcete používat nástroje, jako je například Power BI, ve spojení s SQL fondem bez serveru. Externí tabulky mají přístup ke dvěma typům úložiště:
+V této části se dozvíte, jak vytvářet a používat [externí tabulky](develop-tables-external-tables.md) ve fondu SQL bez serveru. Externí tabulky jsou užitečné, pokud chcete řídit přístup k externím datům ve fondu SQL bez serveru a pokud chcete používat nástroje, jako je například Power BI, ve spojení s SQL fondem bez serveru. Externí tabulky mají přístup ke dvěma typům úložiště:
 - Veřejné úložiště, kde uživatelé přistupují k souborům veřejného úložiště.
 - Chráněné úložiště, kde uživatelé přistupují k souborům úložiště pomocí pověření SAS, identity Azure AD nebo spravované identity pracovního prostoru synapse.
 

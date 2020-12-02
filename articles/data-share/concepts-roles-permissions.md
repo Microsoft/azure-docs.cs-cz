@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: efb86dbcbe7619ff6727c5e7374835dc3fc7d731
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: ed4b4d9c1de1e9024e8ea86d4661b42d6c68b0ae
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220495"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460987"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Role a požadavky pro Azure Data Share 
 
@@ -43,7 +43,7 @@ Pro sdílení založené na SQL je potřeba vytvořit uživatele SQL z externíh
 |**Typ SQL Database**|**Oprávnění uživatele Zprostředkovatel dat SQL**|**Oprávnění uživatele SQL pro příjemce dat**|
 |---|---|---|
 |Azure SQL Database | db_datareader | db_datareader, db_datawriter db_ddladmin
-|Azure Synapse Analytics (dříve SQL DW) | db_datareader | db_datareader, db_datawriter db_ddladmin
+|Azure Synapse Analytics | db_datareader | db_datareader, db_datawriter db_ddladmin
 |
 
 ### <a name="data-provider"></a>Poskytovatel dat
@@ -59,13 +59,13 @@ Chcete-li vytvořit přiřazení role pro spravovanou identitu prostředku sdíl
 1. Přejděte do úložiště dat Azure.
 1. Vyberte **Access Control (IAM)**.
 1. Vyberte **Přidat přiřazení role**.
-1. V části *role*vyberte roli v tabulce přiřazení role výše (například pro účet úložiště vyberte možnost *čtečka dat objektů BLOB úložiště*).
-1. V části *Vybrat*zadejte název vašeho prostředku Azure Data Share.
+1. V části *role* vyberte roli v tabulce přiřazení role výše (například pro účet úložiště vyberte možnost *čtečka dat objektů BLOB úložiště*).
+1. V části *Vybrat* zadejte název vašeho prostředku Azure Data Share.
 1. Klikněte na *Uložit*.
 
 Další informace o přiřazení rolí najdete [v tématu Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment). Pokud sdílíte data pomocí rozhraní REST API, můžete přiřazení rolí vytvořit pomocí rozhraní API tak, že na [REST API přidáte nebo odeberete přiřazení rolí Azure pomocí](../role-based-access-control/role-assignments-rest.md). 
 
-Pro zdroje založené na SQL je potřeba vytvořit uživatele SQL z externího poskytovatele v SQL Database se stejným názvem jako s prostředkem sdílené složky Azure při připojování k SQL Database pomocí ověřování Azure Active Directory. Tomuto uživateli musí být uděleno oprávnění *db_datareader* . Ukázkový skript spolu s dalšími předpoklady pro sdílení na základě SQL najdete v kurzu [sdílení z Azure SQL Database nebo synapse Analytics](how-to-share-from-sql.md) . 
+Pro zdroje založené na SQL je potřeba vytvořit uživatele SQL z externího poskytovatele v SQL Database se stejným názvem jako s prostředkem sdílené složky Azure při připojování k SQL Database pomocí ověřování Azure Active Directory. Tomuto uživateli musí být uděleno oprávnění *db_datareader* . Ukázkový skript spolu s dalšími předpoklady pro sdílení založené na SQL najdete v kurzu [sdílení z Azure SQL Database nebo Azure synapse Analytics](how-to-share-from-sql.md) . 
 
 ### <a name="data-consumer"></a>Příjemce dat
 Aby bylo možné přijímat data, musí mít spravovaná identita prostředku zdroje dat uživatele udělen přístup k cílovému úložišti dat Azure. Například v případě účtu úložiště má spravovaná identita prostředku sdílení dat přiřazenou roli Přispěvatel dat objektů BLOB úložiště. 
@@ -79,13 +79,13 @@ Chcete-li vytvořit přiřazení role pro spravovanou identitu prostředku sdíl
 1. Přejděte do úložiště dat Azure.
 1. Vyberte **Access Control (IAM)**.
 1. Vyberte **Přidat přiřazení role**.
-1. V části *role*vyberte roli v tabulce přiřazení role výše (například pro účet úložiště vyberte možnost *čtečka dat objektů BLOB úložiště*).
-1. V části *Vybrat*zadejte název vašeho prostředku Azure Data Share.
+1. V části *role* vyberte roli v tabulce přiřazení role výše (například pro účet úložiště vyberte možnost *čtečka dat objektů BLOB úložiště*).
+1. V části *Vybrat* zadejte název vašeho prostředku Azure Data Share.
 1. Klikněte na *Uložit*.
 
 Další informace o přiřazení rolí najdete [v tématu Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment). Pokud přijímáte data pomocí rozhraní REST API, můžete přiřazení rolí vytvořit pomocí rozhraní API tak, že na [REST API přidáte nebo odeberete přiřazení rolí Azure pomocí](../role-based-access-control/role-assignments-rest.md). 
 
-V případě cíle založeného na jazyce SQL je nutné vytvořit uživatele SQL z externího poskytovatele v SQL Database se stejným názvem jako s prostředkem sdílené složky Azure při připojování k databázi SQL pomocí ověřování Azure Active Directory. Tento uživatel musí mít udělená oprávnění *db_datareader, db_datawriter db_ddladmin* . Ukázkový skript spolu s dalšími předpoklady pro sdílení na základě SQL najdete v kurzu [sdílení z Azure SQL Database nebo synapse Analytics](how-to-share-from-sql.md) . 
+V případě cíle založeného na jazyce SQL je nutné vytvořit uživatele SQL z externího poskytovatele v SQL Database se stejným názvem jako s prostředkem sdílené složky Azure při připojování k databázi SQL pomocí ověřování Azure Active Directory. Tento uživatel musí mít udělená oprávnění *db_datareader, db_datawriter db_ddladmin* . Ukázkový skript spolu s dalšími předpoklady pro sdílení založené na SQL najdete v kurzu [sdílení z Azure SQL Database nebo Azure synapse Analytics](how-to-share-from-sql.md) . 
 
 ## <a name="resource-provider-registration"></a>Registrace poskytovatele prostředků 
 

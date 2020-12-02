@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: be3b82765f2f5268a75147e8e1ef6de34aeb8ff2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d1ff372009c6158f2148847dd77126bcb4d189f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441064"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461230"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Hromadné kopírování z databáze pomocí řídicí tabulky
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Pokud chcete kopírovat data z datového skladu v Oracle serveru, Netezza, Teradata nebo SQL Server do služby Azure synapse Analytics (dřív SQL Data Warehouse), musíte načíst velké objemy dat z více tabulek. Data musí být obvykle rozdělená do oddílů v každé tabulce, takže můžete načíst řádky s více vlákny paralelně z jedné tabulky. Tento článek popisuje šablonu, která se má použít v těchto scénářích.
+Pokud chcete kopírovat data z datového skladu v Oracle serveru, Netezza, Teradata nebo SQL Server do služby Azure synapse Analytics, musíte načíst velké objemy dat z více tabulek. Data musí být obvykle rozdělená do oddílů v každé tabulce, takže můžete načíst řádky s více vlákny paralelně z jedné tabulky. Tento článek popisuje šablonu, která se má použít v těchto scénářích.
 
  >! Poznámka: Pokud chcete kopírovat data z malého počtu tabulek s relativně malým objemem dat do služby Azure synapse Analytics, je efektivnější použít [nástroj Kopírování dat Azure Data Factory](copy-data-tool.md). Šablona popsaná v tomto článku je více, než kolik jich v tomto scénáři potřebujete.
 
@@ -48,7 +48,7 @@ Poslední tři parametry, které definují cestu v cílovém úložišti, jsou v
 
 ## <a name="how-to-use-this-solution-template"></a>Jak používat tuto šablonu řešení
 
-1. Umožňuje vytvořit v SQL Server nebo Azure SQL Database tabulku ovládacího prvku pro uložení seznamu oddílů zdrojové databáze pro hromadnou kopii. V následujícím příkladu je ve zdrojové databázi pět oddílů. Tři oddíly jsou pro *datasource_table*a dva jsou pro *project_table*. Sloupec *LastModifytime* se používá k vytvoření oddílů dat v tabulce *datasource_table* ze zdrojové databáze. Dotaz, který se používá ke čtení prvního oddílu, je SELECT * FROM datasource_table, kde LastModifytime >= ' ' 2015-01-01 00:00:00 ' ' a LastModifytime <= ' ' 2015-12-31 23:59:59.999 ' '. Podobný dotaz můžete použít ke čtení dat z jiných oddílů.
+1. Umožňuje vytvořit v SQL Server nebo Azure SQL Database tabulku ovládacího prvku pro uložení seznamu oddílů zdrojové databáze pro hromadnou kopii. V následujícím příkladu je ve zdrojové databázi pět oddílů. Tři oddíly jsou pro *datasource_table* a dva jsou pro *project_table*. Sloupec *LastModifytime* se používá k vytvoření oddílů dat v tabulce *datasource_table* ze zdrojové databáze. Dotaz, který se používá ke čtení prvního oddílu, je SELECT * FROM datasource_table, kde LastModifytime >= ' ' 2015-01-01 00:00:00 ' ' a LastModifytime <= ' ' 2015-12-31 23:59:59.999 ' '. Podobný dotaz můžete použít ke čtení dat z jiných oddílů.
 
      ```sql
             Create table ControlTableForTemplate
@@ -86,7 +86,7 @@ Poslední tři parametry, které definují cestu v cílovém úložišti, jsou v
 
     ![Kontrola kanálu](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
 
-7. Vyberte **ladit**, zadejte **parametry**a pak vyberte **Dokončit**.
+7. Vyberte **ladit**, zadejte **parametry** a pak vyberte **Dokončit**.
 
     ![Klikněte na * * ladit * *.](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png)
 

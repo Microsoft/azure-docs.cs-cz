@@ -1,6 +1,6 @@
 ---
 title: Skóre modelů strojového učení s předpovídat
-description: Naučte se pomocí funkce PREDIKTIVNÍho jazyka T-SQL v synapse SQL určit skóre modelů strojového učení.
+description: Naučte se, jak pomocí funkce PREDIKTIVNÍho jazyka T-SQL ve vyhrazeném fondu SQL určit skóre modelů strojového učení.
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a8caf6cd5072b4c098adff57194784491c92bb0a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7b35997e763434d7ae4d849c33d358d1593d7e33
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325382"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460543"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>Skóre modelů strojového učení s předpovídat
 
-Synapse SQL nabízí možnost skóre modelů strojového učení pomocí známého jazyka T-SQL. Pomocí jazyka T- [SQL můžete](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)přenést stávající modely strojového učení s historickými daty a určit jejich skóre v rámci zabezpečených hranic datového skladu. Funkce PREDIKTIVNÍho přebírá model [ONNX (Open neuronové Network Exchange)](https://onnx.ai/) a data jako vstupy. Tato funkce eliminuje krok přesunu cenných dat mimo datový sklad pro účely bodování. Cílem je umožnit odborníkům v oblasti dat snadno nasadit modely strojového učení pomocí známého rozhraní T-SQL a zároveň bez problémů spolupracovat s odborníky přes data, kteří pracují se správnou architekturou pro jejich úkoly.
+Vyhrazený fond SQL nabízí možnost skóre modelů strojového učení pomocí známého jazyka T-SQL. Pomocí jazyka T- [SQL můžete](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)přenést stávající modely strojového učení s historickými daty a určit jejich skóre v rámci zabezpečených hranic datového skladu. Funkce PREDIKTIVNÍho přebírá model [ONNX (Open neuronové Network Exchange)](https://onnx.ai/) a data jako vstupy. Tato funkce eliminuje krok přesunu cenných dat mimo datový sklad pro účely bodování. Cílem je umožnit odborníkům v oblasti dat snadno nasadit modely strojového učení pomocí známého rozhraní T-SQL a zároveň bez problémů spolupracovat s odborníky přes data, kteří pracují se správnou architekturou pro jejich úkoly.
 
 > [!NOTE]
 > Tato funkce není v současnosti podporovaná v SQL fondu bez serveru.
@@ -31,9 +31,9 @@ Tato funkce vyžaduje, aby byl model vyškolený mimo synapse SQL. Jakmile model
 
 ## <a name="training-the-model"></a>Školení modelu
 
-Synapse SQL očekává předem vyškolený model. Při výuce modelu strojového učení, který se používá k provádění předpovědi v synapse SQL, mějte na paměti následující faktory.
+Vyhrazený fond SQL očekává předem vyškolený model. Při školení modelu strojového učení, který se používá k provádění předpovědi ve vyhrazeném fondu SQL, mějte na paměti následující faktory.
 
-- Synapse SQL podporuje pouze modely formátu ONNX. ONNX je open source formát modelu, který umožňuje výměnu modelů mezi různými architekturami, aby bylo možné vzájemnou funkční spolupráci. Stávající modely můžete převést do formátu ONNX pomocí platforem, které ji buď nativně podporují, nebo převádění dostupných balíčků. Například balíček [skriptu sklearn-Onnx](https://github.com/onnx/sklearn-onnx) převádí modely scikit-učení na Onnx. [Úložiště GitHub ONNX](https://github.com/onnx/tutorials#converting-to-onnx-format) nabízí seznam podporovaných rozhraní a příkladů.
+- Vyhrazený fond SQL podporuje jenom modely formátu ONNX. ONNX je open source formát modelu, který umožňuje výměnu modelů mezi různými architekturami, aby bylo možné vzájemnou funkční spolupráci. Stávající modely můžete převést do formátu ONNX pomocí platforem, které ji buď nativně podporují, nebo převádění dostupných balíčků. Například balíček [skriptu sklearn-Onnx](https://github.com/onnx/sklearn-onnx) převádí modely scikit-učení na Onnx. [Úložiště GitHub ONNX](https://github.com/onnx/tutorials#converting-to-onnx-format) nabízí seznam podporovaných rozhraní a příkladů.
 
    Pokud používáte [automatizované ml](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) pro školení, nezapomeňte nastavit parametr *enable_onnx_compatible_models* na hodnotu true, aby se vytvořil model formátu Onnx. [Automatizovaný Machine Learning Poznámkový blok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) ukazuje příklad použití AutoML k vytvoření modelu strojového učení ve formátu ONNX.
 
@@ -47,7 +47,7 @@ Synapse SQL očekává předem vyškolený model. Při výuce modelu strojového
 
 ## <a name="loading-the-model"></a>Načítání modelu
 
-Model je uložený v uživatelské tabulce synapse SQL jako šestnáctkový řetězec. Další sloupce, například ID a popis, mohou být přidány v tabulce modelů pro identifikaci modelu. Jako datový typ sloupce modelu použijte varbinary (max). Zde je příklad kódu pro tabulku, která se dá použít pro ukládání modelů:
+Model je uložený v uživatelské tabulce vyhrazeného fondu SQL jako šestnáctkový řetězec. Další sloupce, například ID a popis, mohou být přidány v tabulce modelů pro identifikaci modelu. Jako datový typ sloupce modelu použijte varbinary (max). Zde je příklad kódu pro tabulku, která se dá použít pro ukládání modelů:
 
 ```sql
 -- Sample table schema for storing a model and related data
@@ -66,7 +66,7 @@ GO
 
 ```
 
-Jakmile je model převeden na šestnáctkový řetězec a na zadanou definici tabulky, použijte k načtení modelu v tabulce SQL synapse [příkaz Kopírovat](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) nebo základ. Následující ukázka kódu používá k načtení modelu příkaz Copy.
+Po převodu modelu na šestnáctkový řetězec a zadanou definici tabulky použijte [příkaz Kopírovat](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) nebo základ pro načtení modelu do vyhrazené tabulky fondu SQL. Následující ukázka kódu používá k načtení modelu příkaz Copy.
 
 ```sql
 -- Copy command to load hexadecimal string of the model from Azure Data Lake storage location

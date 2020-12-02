@@ -1,6 +1,6 @@
 ---
-title: Dotazy na soubory Parquet s využitím fondu SQL bez serveru (Preview)
-description: V tomto článku se naučíte, jak zadávat dotazy na soubory Parquet pomocí neserverového fondu SQL (Preview).
+title: Dotazy na soubory Parquet s využitím fondu SQL bez serveru
+description: V tomto článku se dozvíte, jak zadávat dotazy na Parquet soubory s využitím fondu SQL bez serveru.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 97b34d85e4628c0ef01dd02d3a9be85da7f8291e
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 20bfbaeea48711a680877e4d5d8f618e84eb12d7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685609"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462575"
 ---
-# <a name="query-parquet-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Dotazování souborů Parquet pomocí SQL fondu bez serveru (Preview) ve službě Azure synapse Analytics
+# <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Dotazování souborů Parquet pomocí fondu SQL bez serveru v Azure synapse Analytics
 
-V tomto článku se dozvíte, jak napsat dotaz pomocí neserverového fondu SQL (Preview), který načte soubory Parquet.
+V tomto článku se dozvíte, jak napsat dotaz pomocí neserverového fondu SQL, který bude číst soubory Parquet.
 
 ## <a name="quickstart-example"></a>Příklad rychlého startu
 
@@ -38,8 +38,8 @@ from openrowset(
 Ujistěte se, že máte přístup k tomuto souboru. Pokud je soubor chráněný pomocí klíče SAS nebo vlastní identity Azure, budete muset nastavit [přihlašovací údaje na úrovni serveru pro přihlášení SQL](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential).
 
 > [!IMPORTANT]
-> Ujistěte se, že používáte určitou databázovou kolaci UTF-8 (například `Latin1_General_100_CI_AS_SC_UTF8` ), protože řetězcové hodnoty v souborech PARQUET jsou kódovány pomocí kódování UTF-8.
-> Neshoda mezi kódováním textu v souboru PARQUET a kolaci může způsobit neočekávané chyby při konverzi.
+> Ujistěte se, že používáte kolaci databáze UTF-8 (například `Latin1_General_100_CI_AS_SC_UTF8` ), protože řetězcové hodnoty v souborech PARQUET jsou kódovány pomocí kódování UTF-8.
+> Neshoda mezi kódováním textu v souboru PARQUET a kolací může způsobit neočekávané chyby při konverzi.
 > Výchozí kolaci aktuální databáze můžete snadno změnit pomocí následujícího příkazu T-SQL: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 ### <a name="data-source-usage"></a>Využití zdroje dat
@@ -81,7 +81,7 @@ from openrowset(
 
 V následujících částech se můžete podívat, jak se dotazovat na různé typy souborů PARQUET.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Prvním krokem je **Vytvoření databáze** se zdrojem dat, který odkazuje na účet úložiště [NYC Yellow taxislužby](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) . Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří zdroje dat, přihlašovací údaje v oboru databáze a formáty externích souborů, které jsou použity v těchto ukázkách.
 

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2020
-ms.openlocfilehash: 010ca40f4f3aacd6353aecd150e944672cc09066
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a559a51feafa310a4645282dc6368f520fc6b972
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097500"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459614"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na více oblastí ve službě Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,14 +26,14 @@ V systému zápisy ve více oblastech zvyšuje netto dostupná ru pro operace z�
 
 ### <a name="example"></a>Příklad
 
-Vezměte v úvahu, že máte kontejner v Západní USA nakonfigurovaný pro zápisy v jedné oblasti, zřízený s propustností 10 000 RU/s a ukládá 1 TB dat v tomto měsíci. Předpokládejme, že přidáte oblast, Východní USA se stejným úložištěm a propustností a chcete mít možnost zapisovat do kontejnerů v obou oblastech z vaší aplikace. Vaše celkové měsíční faktury (za předpokladu 31 dnů) v měsíci jsou následující:
+Vezměte v úvahu, že máte kontejner v Západní USA nakonfigurovaný pro zápisy v jedné oblasti, zřízený s propustností 10 000 RU/s a za tento měsíc ukládá 0,5 TB dat. Předpokládejme, že přidáte oblast, Východní USA se stejným úložištěm a propustností a chcete mít možnost zapisovat do kontejnerů v obou oblastech z vaší aplikace. Vaše nové celkové měsíční vyúčtování (za předpokladu 730 hodin za měsíc) bude následující:
 
 |**Položka**|**Využití (měsíčně)**|**Rychlost**|**Měsíční náklady**|
 |----|----|----|----|
-|Faktura za propustnost pro kontejner v Západní USA (oblasti pro jednu oblast zápisu) |10 000 RU/s * 24 hodin × 31 dnů |$0,008 za 100 RU/s za hodinu |$584,06 |
-|Faktura za propustnost pro kontejner v 2 oblastech – Západní USA & Východní USA (více oblastí zápisu) |2 * 10 000 RU/s * 24 hodin × 31 dnů|$0,016 za 100 RU/s za hodinu |$2 336,26 |
-|Faktura za úložiště pro kontejner v Západní USA |1 TB (nebo 1 024 GB) |0,25/GB |$256 |
-|Faktura za úložiště pro 2 oblasti – Západní USA & Východní USA |2 * 1 TB (nebo 3 072 GB) |0,25/GB |$768 |
+|Faktura za propustnost pro kontejner v Západní USA (oblast pro jedno zápis) |10 000 RU/s × 730 hodin |$0,008 za 100 RU/s za hodinu |$584 |
+|Faktura za propustnost pro kontejner v 2 oblastech – Západní USA & Východní USA (více oblastí zápisu) |2 * 10 000 RU/s × 730 hodin |$0,016 za 100 RU/s za hodinu |$2 336 |
+|Faktura za úložiště pro kontejner v Západní USA |0,5 TB (nebo 512 GB) |0,25/GB |$128 |
+|Faktura za úložiště pro kontejner v 2 oblastech – Západní USA & Východní USA |2 × 0,5 TB (nebo 1 024 GB) |0,25/GB |$256 |
 
 ## <a name="improve-throughput-utilization-on-a-per-region-basis"></a>Zvýšení využití propustnosti na základě jednotlivých oblastí
 

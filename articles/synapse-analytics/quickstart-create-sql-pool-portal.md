@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: vytvoření vyhrazeného fondu SQL (ve verzi Preview) pomocí Azure Portal'
+title: 'Rychlý Start: vytvoření vyhrazeného fondu SQL pomocí Azure Portal'
 description: Pomocí následujících kroků v této příručce vytvořte nový vyhrazený fond SQL pomocí Azure Portal.
 services: synapse-analytics
 author: julieMSFT
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: b558e34d3f5d224515eee669dfa7b8f2c6bbb3cd
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3537b126adf082c8b00a02d999789d8a32b3f51d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541007"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462020"
 ---
-# <a name="quickstart-create-a-dedicated-sql-pool-preview-using-the-azure-portal"></a>Rychlý Start: vytvoření vyhrazeného fondu SQL (ve verzi Preview) pomocí Azure Portal
+# <a name="quickstart-create-a-dedicated-sql-pool-using-the-azure-portal"></a>Rychlý Start: vytvoření vyhrazeného fondu SQL pomocí Azure Portal
 
 Azure synapse Analytics nabízí různé analytické moduly, které vám pomůžou ingestovat, transformovat, modelovat a analyzovat vaše data. Vyhrazený fond SQL nabízí výpočetní a úložné funkce založené na T-SQL. Po vytvoření vyhrazeného fondu SQL ve vašem pracovním prostoru synapse se dají data načíst, namodelovat, zpracovávat a doručovat za účelem rychlejšího analytického přehledu.
 
@@ -24,7 +24,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit vyhrazený fond SQL v pracovn
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Pracovní prostor synapse](./quickstart-create-workspace.md)
@@ -86,7 +86,7 @@ Pomocí následujících kroků odstraňte vyhrazený fond SQL z pracovního pro
 Pokud chcete odstranit vyhrazený fond SQL, proveďte následující kroky:
 
 1. V okně pracovního prostoru přejděte do okna fondy SQL.
-1. Vyberte vyhrazený fond SQL, který se má odstranit (v tomto případě **contosowdw** ).
+1. Vyberte vyhrazený fond SQL, který se má odstranit (v tomto případě **contosowdw**).
 1. Po výběru stiskněte **Odstranit**
 1. Potvrďte odstranění a stisknutím tlačítka **Odstranit** ![ vyhrazený fond SQL klikněte na přehled – zvýrazňování potvrzení odstranění.](media/quickstart-create-sql-pool/create-sql-pool-portal-11.png)
 1. Po úspěšném dokončení procesu nebude vyhrazený fond SQL nadále uveden v prostředcích pracovního prostoru.

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: trkeya
 author: trkeya
-ms.openlocfilehash: 0b445f9d4fdda0b1fac9dcdb4344533cfd7d37a9
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: fd3fa04d2d7e868476838788dd9cf0e27c07aeca
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491235"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461753"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager testovacích jednotek
 
@@ -37,7 +37,7 @@ Informace o **hostované** nebo testovací jednotce **Aplikace logiky** najdete 
 - **Test drive Azure Resource Manager šablona** – nahrajte soubor. zip obsahující šablonu Azure Resource Manager. Další informace o vytvoření šablony Azure Resource Manager v článku rychlý Start [vytváření a nasazování Azure Resource Manager šablon pomocí Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
     > [!note]
-    > Pro úspěšné publikování je důležité ověřit formátování šablony ARM. Existují dva způsoby, jak to provést (1) pomocí [Nástroje pro online rozhraní API](https://docs.microsoft.com/rest/api/resources/deployments/validate) nebo (2) s [testovacím nasazením](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal).
+    > Pro úspěšné publikování je důležité ověřit formátování šablony ARM. Existují dva způsoby, jak to provést (1) pomocí [Nástroje pro online rozhraní API](/rest/api/resources/deployments/validate) nebo (2) s [testovacím nasazením](../azure-resource-manager/templates/deploy-portal.md).
 
 - **Doba trvání testovacích jednotek** (požadováno) – zadejte počet hodin, po který bude testovací jednotka aktivní. Testovací jednotka se po skončení tohoto časového období ukončí automaticky. Používejte pouze celá čísla (například "2" hodiny jsou platné, "1,5" není).
 
@@ -76,7 +76,7 @@ Pro parametry můžete použít libovolný platný název; testovací jednotka r
 | Typ metadat   | Typ parametru  | Popis     | Ukázková hodnota    |
 |---|---|---|---|
 | **identifikátor**     | řetězec          | Základní identifikátor URI balíčku pro nasazení| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
-| **username**    | řetězec          | Nové náhodné uživatelské jméno.| admin68876      |
+| **jmen**    | řetězec          | Nové náhodné uživatelské jméno.| admin68876      |
 | **heslo**    | zabezpečený řetězec    | Nové náhodné heslo | LP! ACS \^ 2kH     |
 | **ID relace**   | řetězec          | Jedinečný identifikátor relace testovacích jednotek (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
@@ -300,7 +300,7 @@ Poslední část, která se má dokončit, je umožnit automatické nasazení te
 
    ![Předplatná Azure](media/test-drive/azure-subscriptions.png)
 
-2. Získejte **ID tenanta Azure AD**. Pokud už máte ID tenanta k dispozici, najdete ho v **Azure Active Directory**  >  **vlastnosti**  >  **ID adresáře** :
+2. Získejte **ID tenanta Azure AD**. Pokud už máte ID tenanta k dispozici, najdete ho v **Azure Active Directory**  >  **vlastnosti**  >  **ID adresáře**:
 
    ![Vlastnosti Azure Active Directory](media/test-drive/azure-active-directory-properties.png)
 
@@ -336,7 +336,7 @@ Poslední část, která se má dokončit, je umožnit automatické nasazení te
 
    1. Vyberte **Uložit**.
 
-7. Vygenerujte **aplikace Azure AD** ověřovací klíč. V části **klíče** přidejte **Popis klíče** , nastavte dobu trvání na bez **platnosti** (v případě, že vypršela platnost testovací jednotky v produkčním prostředí) a pak vyberte **Uložit**. Zkopírujte tuto hodnotu a vložte ji do pole požadovaných testovacích jednotek.
+7. Vygenerujte **aplikace Azure AD** ověřovací klíč. V části **klíče** přidejte **Popis klíče**, nastavte dobu trvání na bez **platnosti** (v případě, že vypršela platnost testovací jednotky v produkčním prostředí) a pak vyberte **Uložit**. Zkopírujte tuto hodnotu a vložte ji do pole požadovaných testovacích jednotek.
 
 ![Zobrazuje klíče pro aplikaci Azure AD.](media/test-drive/azure-ad-app-keys.png)
 

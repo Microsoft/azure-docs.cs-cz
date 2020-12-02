@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 11/03/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 44d17bafe534fea2d408c92a3a01efb699250a78
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: afebb6a67b4c8a33e812c0e51ff225f16cd35356
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95974421"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461464"
 ---
 # <a name="ingest-data-into-a-dedicated-sql-pool"></a>Ingestování dat do vyhrazeného fondu SQL
 
 V tomto článku se dozvíte, jak ingestovat data z Azure Data Lake účtu úložiště Gen 2 do vyhrazeného fondu SQL ve službě Azure synapse Analytics.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet úložiště Azure**: Azure Data Lake Storage Gen 2 použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště, přečtěte si článek [vytvoření Azure Storage účtu](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , kde najdete kroky pro jeho vytvoření.
@@ -73,4 +73,4 @@ V tomto kroku ručně aktivujete kanál publikovaný v předchozím kroku.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o integraci dat pro synapse Analytics najdete v článku ingestování [dat do Azure Data Lake Storage Gen2 ](data-integration-data-lake.md) článku.
+Další informace o integraci dat pro Azure synapse Analytics najdete v článku ingestování [dat do Azure Data Lake Storage Gen2 ](data-integration-data-lake.md) článku.

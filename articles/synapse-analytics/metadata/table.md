@@ -1,6 +1,6 @@
 ---
 title: Sdílené tabulky metadat
-description: Azure synapse Analytics poskytuje sdílený model metadat, ve kterém při vytváření tabulky v neserverovém fondu Apache Spark bude přístupný z fondu SQL bez serveru (Preview) a vyhrazeného fondu SQL bez duplikování dat.
+description: Azure synapse Analytics poskytuje sdílený model metadat, ve kterém při vytváření tabulky v neserverovém fondu Apache Spark bude přístupný z fondu SQL bez serveru a vyhrazeného fondu SQL bez duplikování dat.
 services: sql-data-warehouse
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,18 +10,17 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f269217908bea4b5e8ef3c0004a9cec9d5d682c7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9ee18edd563d94a85dedf48b7a4d6df394c09707
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314538"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461393"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Sdílené tabulky metadat Azure synapse Analytics
 
-[!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Azure synapse Analytics umožňuje různým výpočetním modulům pracovních prostorů sdílet databáze a tabulky založené na Parquet mezi jeho fondy Apache Spark (Preview) a SQL fondem bez serveru (Preview).
+Azure synapse Analytics umožňuje různým výpočetním modulům pracovních prostorů sdílet databáze a tabulky založené na Parquet mezi jeho fondy Apache Spark a neserverovým fondem SQL.
 
 Jakmile se databáze vytvoří pomocí úlohy Sparku, můžete v ní vytvářet tabulky pomocí Sparku, která jako formát úložiště používá Parquet. Tyto tabulky budou okamžitě k dispozici pro dotazování pomocí všech fondů Sparku v pracovním prostoru Azure synapse. Lze je také použít ze všech úloh Spark podléhajících oprávněním.
 
@@ -87,9 +86,9 @@ Tabulky Spark poskytují různé datové typy než synapse moduly SQL. V násled
 
 Databáze a tabulky Spark i jejich synchronizované reprezentace v modulu SQL budou zabezpečeny na základní úrovni úložiště. Vzhledem k tomu, že aktuálně nemají oprávnění k samotným objektům, lze objekty zobrazit v Průzkumníku objektů.
 
-Objekt zabezpečení, který vytváří spravovanou tabulku, se považuje za vlastníka této tabulky a má všechna práva k tabulce a také základní složky a soubory. Kromě toho se vlastník databáze automaticky stane spoluvlastníkem tabulky.
+Objekt zabezpečení, který vytvoří spravovanou tabulku, se považuje za vlastníka tabulky a má všechna práva k tabulce i k základním složkám a souborům. Vlastník databáze se navíc automaticky stane spoluvlastníkem tabulky.
 
-Pokud vytvoříte externí tabulku Spark nebo SQL s předávacím ověřováním, data budou zabezpečena pouze na úrovni složky a souboru. Pokud někdo zadá dotaz na tento typ externí tabulky, identita zabezpečení odesílatele dotazu se předává do systému souborů, ve kterém se budou kontrolovat přístupová práva.
+Pokud vytvoříte externí tabulku Sparku nebo SQL s předávacím ověřováním, zabezpečení dat probíhá pouze na úrovni složek a souborů. Pokud někdo odešle dotaz na tento typ externí tabulky, identita zabezpečení odesílatele dotazu se předá do systému souborů, který zkontroluje přístupová práva.
 
 Další informace o tom, jak nastavit oprávnění pro složky a soubory, najdete v tématu [sdílená databáze Azure synapse Analytics](database.md).
 

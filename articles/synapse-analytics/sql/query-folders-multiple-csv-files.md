@@ -1,6 +1,6 @@
 ---
-title: Složky dotazů a více souborů pomocí neserverového fondu SQL (Preview)
-description: Fond SQL bez serveru (Preview) podporuje čtení více souborů nebo složek pomocí zástupných znaků, které jsou podobné zástupným znakům používaným v operačním systému Windows.
+title: Složky dotazů a více souborů s využitím fondu SQL bez serveru
+description: Fond SQL bez serveru podporuje čtení více souborů nebo složek pomocí zástupných znaků, které jsou podobné zástupným znakům používaným v operačním systému Windows.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,20 +9,20 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9d15d681a114b0f364e8e33adc786b4d0ba7df0e
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 83c4d88e1a87f6b546e26dd55da338a36f16ebe4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684555"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462625"
 ---
 # <a name="query-folders-and-multiple-files"></a>Dotazování složek a několika souborů  
 
-V tomto článku se dozvíte, jak napsat dotaz pomocí neserverového fondu SQL (Preview) ve službě Azure synapse Analytics.
+V tomto článku se dozvíte, jak napsat dotaz pomocí neserverového fondu SQL ve službě Azure synapse Analytics.
 
 Fond SQL bez serveru podporuje čtení více souborů nebo složek pomocí zástupných znaků, které jsou podobné zástupným znakům používaným v operačním systému Windows. Větší flexibilita je však k dispozici, protože je povoleno více zástupných znaků.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Prvním krokem je **Vytvoření databáze** , ve které budete spouštět dotazy. Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří zdroje dat, přihlašovací údaje v oboru databáze a formáty externích souborů, které jsou použity v těchto ukázkách.
 

@@ -3,18 +3,18 @@ title: Nastavení připojení pro Azure SQL Database a Azure synapse Analytics
 description: V tomto článku se dozvíte, jak zvolit verzi protokolu TLS (Transport Layer Security) a proxy server oproti přesměrování Azure SQL Database a Azure synapse Analytics.
 services: sql-database
 ms.service: sql-database
-titleSuffix: Azure SQL Database and Azure Synapse Analytics (formerly SQL Data Warehouse)
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.topic: how-to
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: 9856d71a6398bcea5b979788846afce17e7955f7
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e3422f468d1355245fb31e8f04d5f8625f583c37
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412969"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462184"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Nastavení připojení Azure SQL
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -33,7 +33,7 @@ Nastavení připojení jsou přístupná z obrazovky **brány firewall a virtuá
 
 ## <a name="deny-public-network-access"></a>Odepření přístupu k veřejné síti
 
-Když je možnost **Odepřít přístup k veřejné síti** nastavená na **Ano** , povolí se jenom připojení prostřednictvím privátních koncových bodů. Pokud toto nastavení není **(výchozí** ), můžou se zákazníci připojit pomocí veřejných koncových bodů (s pravidly brány firewall na základě IP adresy nebo pomocí pravidel brány firewall na základě virtuální sítě) nebo privátních koncových bodů (pomocí privátního odkazu Azure), jak je uvedeno v [přehledu přístupu k síti](network-access-controls-overview.md).
+Když je možnost **Odepřít přístup k veřejné síti** nastavená na **Ano**, povolí se jenom připojení prostřednictvím privátních koncových bodů. Pokud toto nastavení není **(výchozí** ), můžou se zákazníci připojit pomocí veřejných koncových bodů (s pravidly brány firewall na základě IP adresy nebo pomocí pravidel brány firewall na základě virtuální sítě) nebo privátních koncových bodů (pomocí privátního odkazu Azure), jak je uvedeno v [přehledu přístupu k síti](network-access-controls-overview.md).
 
  ![Diagram znázorňující, že možnost Odepřít přístup k veřejné síti je nastavená na Ano, a když je odepřený přístup k veřejné síti nastavený na ne.][2]
 
@@ -48,7 +48,7 @@ Please set up private endpoints and retry the operation.
 > [!NOTE]
 > Pokud chcete definovat pravidla brány firewall virtuální sítě na logickém serveru, který už je nakonfigurovaný pomocí privátních koncových bodů, nastavte **Odepřít přístup k veřejné síti** na **ne**.
 
-Když je možnost **Odepřít přístup k veřejné síti** nastavená na **Ano** , povolí se jenom připojení prostřednictvím privátních koncových bodů. Všechna připojení prostřednictvím veřejných koncových bodů budou odepřena s chybovou zprávou podobnou této:  
+Když je možnost **Odepřít přístup k veřejné síti** nastavená na **Ano**, povolí se jenom připojení prostřednictvím privátních koncových bodů. Všechna připojení prostřednictvím veřejných koncových bodů budou odepřena s chybovou zprávou podobnou této:  
 
 ```output
 Error 47073
@@ -57,7 +57,7 @@ The public network interface on this server is not accessible.
 To connect to this server, use the Private Endpoint from inside your virtual network.
 ```
 
-Je-li **odepřen přístup k veřejné síti** nastaven na **hodnotu Ano** , všechny pokusy o přidání nebo aktualizaci pravidel brány firewall budou odepřeny s chybovou zprávou podobnou této:
+Je-li **odepřen přístup k veřejné síti** nastaven na **hodnotu Ano**, všechny pokusy o přidání nebo aktualizaci pravidel brány firewall budou odepřeny s chybovou zprávou podobnou této:
 
 ```output
 Error 42101
@@ -104,12 +104,12 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 
 Minimální verze [protokolu TLS (Transport Layer Security)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) umožňuje zákazníkům zvolit, jakou verzi TLS SQL Database používá.
 
-V současné době podporujeme TLS 1,0, 1,1 a 1,2. Nastavení minimální verze protokolu TLS zajistí, že se budou podporovat novější verze TLS. Například volbou verze TLS větší než 1,1 znamená, že jsou přijímána pouze připojení k TLS 1,1 a 1,2 a připojení k TLS 1,0 jsou odmítnuta. Po otestování ověření, že aplikace podporuje, doporučujeme nastavit minimální verzi protokolu TLS na 1,2. Tato verze zahrnuje opravy chyb zabezpečení v předchozích verzích a je nejvyšší verzí TLS, která je v Azure SQL Database podporovaná.
+V současné době podporujeme protokoly TLS 1.0, 1.1 a 1.2. Nastavení minimální verze protokolu TLS zajišťuje podporu novějších verzí protokolu TLS. Například výběrem vyšší verze protokolu TLS než 1.1 se zajistí, že se budou přijímat pouze připojení přes protokol TLS 1.1 a 1.2 a připojení přes protokol TLS 1.0 se budou zamítat. Po otestování, že vaše aplikace podporují protokol TLS 1.2, doporučujeme nastavit minimální verzi protokolu TLS na tuto verzi. Tato verze obsahuje opravy ohrožení zabezpečení v předchozích verzích a představuje nejvyšší podporovanou verzi protokolu TLS ve službě Azure SQL Database.
 
 > [!IMPORTANT]
 > Výchozí hodnotou pro minimální verzi TLS je povolení všech verzí. Po vykonání verze TLS se nemůžete vrátit k výchozímu nastavení.
 
-Pro zákazníky s aplikacemi, které spoléhají na starší verze TLS, doporučujeme nastavit minimální verzi TLS podle požadavků vašich aplikací. Pro zákazníky, kteří spoléhají na aplikace, aby se připojovali pomocí nešifrovaného připojení, doporučujeme nenastavit žádnou minimální verzi TLS.
+Zákazníkům s aplikacemi, které se spoléhají na starší verze protokolu TLS, doporučujeme nastavit minimální verzi protokolu TLS podle požadavků konkrétních aplikací. Zákazníkům využívajícím aplikace, které se připojují pomocí nešifrovaného připojení, doporučujeme nenastavovat žádnou minimální verzi protokolu TLS.
 
 Další informace najdete v tématu [požadavky na TLS pro SQL Database připojení](connect-query-content-reference-guide.md#tls-considerations-for-database-connectivity).
 

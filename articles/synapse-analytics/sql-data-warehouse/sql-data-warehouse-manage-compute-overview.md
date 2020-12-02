@@ -1,6 +1,6 @@
 ---
-title: Správa výpočetních prostředků pro fond SQL
-description: Přečtěte si o možnostech horizontálního snížení kapacity ve fondu SQL Azure synapse Analytics. Horizontální navýšení kapacity úpravou DWU nebo snížení nákladů díky pozastavení datového skladu.
+title: Správa výpočetních prostředků pro vyhrazený fond SQL (dřív SQL DW)
+description: Přečtěte si o možnostech škálování výkonu vyhrazeného fondu SQL (dřív SQL DW) ve službě Azure synapse Analytics. Nahorizontální navýšení kapacity úpravou DWU nebo snížení nákladů díky pozastavení vyhrazeného fondu SQL.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,28 +11,28 @@ ms.date: 11/12/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 90815d52e6884efe6cff9a7860c093b4b5c1bc94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 300759b4ab6f806c02e748ff4c9a63a6a772bff4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85204537"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461084"
 ---
-# <a name="manage-compute-in-azure-synapse-analytics-data-warehouse"></a>Správa výpočetních prostředků ve službě Azure synapse Analytics Data Warehouse
+# <a name="manage-compute-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Správa výpočetních prostředků pro vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics
 
-Přečtěte si o správě výpočetních prostředků ve fondu SQL Azure synapse Analytics. Snižte náklady tím, že pozastavíte fond SQL, nebo Škálujte datový sklad tak, aby splňoval nároky na výkon.
+Přečtěte si o správě výpočetních prostředků vyhrazeného fondu SQL (dřív SQL DW) ve službě Azure synapse Analytics. Snižte náklady tím, že pozastavíte vyhrazený fond SQL, nebo můžete škálovat vyhrazený fond SQL tak, aby splňoval požadavky na výkon.
 
 ## <a name="what-is-compute-management"></a>Co je Správa výpočtů?
 
-Architektura datového skladu odděluje úložiště a výpočetní prostředky, což umožňuje nezávisle škálovat jednotlivé služby. V důsledku toho je možné škálovat výpočty tak, aby byly splněny požadavky na výkon nezávisle na úložišti dat. Můžete také pozastavit výpočetní prostředky a obnovit jejich chod. V důsledku přirozeného důsledku této architektury je [fakturace](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) za výpočetní prostředky a úložiště oddělená. Pokud nebudete datový sklad nějakou dobu potřebovat, můžete ušetřit náklady na výpočetní výkon pozastavením výpočetních prostředků.
+Architektura vyhrazeného fondu SQL (dříve SQL DW) odděluje úložiště a výpočetní prostředky, což umožňuje nezávisle škálovat jednotlivé služby. V důsledku toho je možné škálovat výpočty tak, aby byly splněny požadavky na výkon nezávisle na úložišti dat. Můžete také pozastavit výpočetní prostředky a obnovit jejich chod. V důsledku přirozeného důsledku této architektury je [fakturace](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) za výpočetní prostředky a úložiště oddělená. Pokud nepotřebujete použít vyhrazený fond SQL (dřív než SQL DW) pro určitou dobu, můžete ušetřit náklady na výpočetní prostředky tím, že pozastavíte výpočetní výkon.
 
 ## <a name="scaling-compute"></a>Škálování výpočetních prostředků
 
-Změnou nastavení [jednotek datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md) pro váš fond SQL můžete škálovat nebo škálovat zpět výpočetní výkon. Výkon načítání a dotazování se může lineárně zvyšovat, stačí přidávat další jednotky datového skladu.
+Výpočetní prostředky můžete škálovat nebo škálovat zpátky tak, že upravíte nastavení [jednotek datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md) pro vyhrazený fond SQL (dřív SQL DW). Výkon načítání a dotazování se může lineárně zvyšovat, stačí přidávat další jednotky datového skladu.
 
 Postup pro horizontální navýšení kapacity najdete v serychlých startech [Azure Portal](quickstart-scale-compute-portal.md), [PowerShellu](quickstart-scale-compute-powershell.md)nebo [T-SQL](quickstart-scale-compute-tsql.md) . Můžete také provádět operace škálování na více instancí s [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
-Aby bylo možné provést operaci škálování, fond SQL nejprve ukončuje všechny příchozí dotazy a vrátí zpět transakce, aby bylo zajištěno konzistentní stav. Ke škálování dojde až po odvolání transakcí. V případě operace škálování systém odpojí vrstvu úložiště od výpočetních uzlů, přidá výpočetní uzly a pak znovu připojí vrstvu úložiště k výpočetní vrstvě. Každý fond SQL je uložený jako 60 distribuce, které jsou rovnoměrně distribuovány do výpočetních uzlů. Přidání dalších výpočetních uzlů zvyšuje výpočetní výkon. Vzhledem k tomu, že se počet výpočetních uzlů zvyšuje, počet distribucí na výpočetní uzel se sníží a poskytuje pro dotazy efektivnější výpočetní výkon. Podobně snížení jednotek datového skladu snižuje počet výpočetních uzlů, což snižuje výpočetní prostředky pro dotazy.
+Vyhrazený fond SQL (dříve SQL DW) nejprve zastavuje všechny příchozí dotazy a potom vrátí transakce, aby zajistil konzistentní stav. Ke škálování dojde až po odvolání transakcí. V případě operace škálování systém odpojí vrstvu úložiště od výpočetních uzlů, přidá výpočetní uzly a pak znovu připojí vrstvu úložiště k výpočetní vrstvě. Každý vyhrazený fond SQL (dřív SQL DW) je uložený jako 60 distribuce, které jsou rovnoměrně distribuovány do výpočetních uzlů. Přidání dalších výpočetních uzlů zvyšuje výpočetní výkon. Vzhledem k tomu, že se počet výpočetních uzlů zvyšuje, počet distribucí na výpočetní uzel se sníží a poskytuje pro dotazy efektivnější výpočetní výkon. Podobně snížení jednotek datového skladu snižuje počet výpočetních uzlů, což snižuje výpočetní prostředky pro dotazy.
 
 Následující tabulka ukazuje, jak se mění počet distribucí na výpočetní uzel při změně jednotek datového skladu.  DW30000c poskytuje 60 výpočetních uzlů a dosahuje mnohem vyššího výkonu dotazů než DW100c.
 
@@ -57,11 +57,11 @@ Následující tabulka ukazuje, jak se mění počet distribucí na výpočetní
 
 ## <a name="finding-the-right-size-of-data-warehouse-units"></a>Zjištění správné velikosti jednotek datového skladu
 
-Pokud chcete zobrazit výhody výkonu při horizontálním navýšení kapacity, zvláště u větších jednotek datového skladu, budete chtít použít aspoň jednu datovou sadu o velikosti 1 TB. Pokud chcete najít nejlepší počet jednotek datového skladu pro váš fond SQL, zkuste horizontální navýšení kapacity a zmenšení kapacity. Po načtení dat spusťte několik dotazů s různými počty jednotek datového skladu. Vzhledem k tomu, že škálování je rychlé, můžete vyzkoušet různé úrovně výkonu za hodinu nebo méně.
+Pokud chcete zobrazit výhody výkonu při horizontálním navýšení kapacity, zvláště u větších jednotek datového skladu, budete chtít použít aspoň jednu datovou sadu o velikosti 1 TB. Pokud chcete najít nejlepší počet jednotek datového skladu pro vyhrazený fond SQL (dřív SQL DW), zkuste horizontální navýšení kapacity a zmenšení kapacity. Po načtení dat spusťte několik dotazů s různými počty jednotek datového skladu. Vzhledem k tomu, že škálování je rychlé, můžete vyzkoušet různé úrovně výkonu za hodinu nebo méně.
 
 Doporučení pro vyhledání nejlepšího počtu jednotek datového skladu:
 
-- Pro fond SQL ve vývoji Začněte výběrem menšího počtu jednotek datového skladu.  Dobrým výchozím bodem je DW400c nebo DW200c.
+- Pro vyhrazený fond SQL (dřív SQL DW) ve vývoji Začněte výběrem menšího počtu jednotek datového skladu.  Dobrým výchozím bodem je DW400c nebo DW200c.
 - Monitorujte výkon aplikace a sledujte počet vybraných jednotek datového skladu v porovnání s výkonem, které sledujete.
 - Předpokládejme Lineární škálování a určete, kolik potřebujete zvýšit nebo snížit jednotky datového skladu.
 - Pokračujte v provádění úprav, dokud nedosáhnete optimální úrovně výkonu pro vaše podnikové požadavky.
@@ -86,21 +86,21 @@ Přidávají se jednotky datového skladu, které zvyšují paralelismus. Pokud 
 ## <a name="pausing-and-resuming-compute"></a>Pozastavení a obnovení výpočetních prostředků
 
 Pozastavení výpočetního prostředí způsobí odpojení vrstvy úložiště od výpočetních uzlů. Výpočetní prostředky jsou vydávány z vašeho účtu. Při pozastavení výpočtů se vám neúčtují poplatky za výpočetní výkon. Obnovení služby COMPUTE znovu připojí úložiště k výpočetním uzlům a obnoví poplatky za výpočetní výkon.
-Když pozastavíte fond SQL:
+Když pozastavíte vyhrazený fond SQL (dříve SQL DW):
 
 - Výpočetní a paměťové prostředky se vrátí do fondu dostupných prostředků v datovém centru.
 - Náklady na jednotku datového skladu jsou po dobu trvání pozastavení nulové.
 - Úložiště dat není ovlivněno a vaše data zůstanou nedotčena.
 - Všechny spuštěné nebo zařazené operace byly zrušeny.
 
-Po obnovení fondu SQL:
+Když obnovíte vyhrazený fond SQL (dřív SQL DW):
 
-- Fond SQL získává výpočetní a paměťové prostředky pro nastavení jednotek datového skladu.
+- Vyhrazený fond SQL (dříve SQL DW) získává výpočetní a paměťové prostředky pro nastavení jednotek datového skladu.
 - Poplatky za výpočetní prostředky pro vaše jednotky datového skladu se obnoví.
 - Data budou k dispozici.
-- Po online fondu SQL je nutné restartovat dotazy úloh.
+- Až bude vyhrazený fond SQL (dřív SQL DW) online, musíte restartovat dotazy na úlohy.
 
-Pokud chcete, aby byl váš fond SQL vždy přístupný, zvažte jeho horizontální zmenšování na nejmenší velikost, nikoli na jeho pozastavení.
+Pokud chcete vždy používat vyhrazený fond SQL (dříve SQL DW), zvažte jeho horizontální zmenšování na nejmenší velikost, nikoli na jeho pozastavení.
 
 Postup pozastavení a obnovení najdete v tématu rychlé starty [Azure Portal](pause-and-resume-compute-portal.md)nebo [PowerShellu](pause-and-resume-compute-powershell.md) . Můžete také použít [pozastavení REST API](sql-data-warehouse-manage-compute-rest-api.md#pause-compute) nebo [obnovení REST API](sql-data-warehouse-manage-compute-rest-api.md#resume-compute).
 
@@ -108,7 +108,7 @@ Postup pozastavení a obnovení najdete v tématu rychlé starty [Azure Portal](
 
 Před zahájením operace pozastavení nebo škálování doporučujeme povolit dokončení stávajících transakcí.
 
-Když pozastavíte nebo zmenšíte svůj fond SQL na pozadí, vaše dotazy se po zahájení žádosti o pozastavení nebo škálování zruší. Zrušení jednoduchého dotazu SELECT je rychlá operace a nemá téměř žádný vliv na čas potřebný k pozastavení nebo škálování instance.  Nicméně zastavení transakčních dotazů, které upravují data nebo strukturu dat, může trvat mnohem déle. **Transakční dotazy se podle definice musí dokončit v celém rozsahu, nebo musí vrátit zpět provedené změny.** Vracení dokončené práce transakčního dotazu zpět může trvat stejně dlouho nebo dokonce déle, než původní změna, kterou dotaz prováděl. Například pokud zrušíte dotaz, který odstraňoval řádky a už hodinu běžel, může systému hodinu trvat, než odstraněné řádky vloží zpět. Pokud spustíte pozastavení nebo škálování zatímco probíhají transakce, může to vypadat, že vaše pozastavení nebo škálování trvá dlouho, protože pozastavení a škálování musí počkat na dokončení odvolání transakce, než budou moci pokračovat.
+Když pozastavíte nebo zmenšíte svůj vyhrazený fond SQL (dřív SQL DW), vaše dotazy se po zahájení žádosti o pozastavení nebo škálování zruší. Zrušení jednoduchého dotazu SELECT je rychlá operace a nemá téměř žádný vliv na čas potřebný k pozastavení nebo škálování instance.  Nicméně zastavení transakčních dotazů, které upravují data nebo strukturu dat, může trvat mnohem déle. **Transakční dotazy se podle definice musí dokončit v celém rozsahu, nebo musí vrátit zpět provedené změny.** Vracení dokončené práce transakčního dotazu zpět může trvat stejně dlouho nebo dokonce déle, než původní změna, kterou dotaz prováděl. Například pokud zrušíte dotaz, který odstraňoval řádky a už hodinu běžel, může systému hodinu trvat, než odstraněné řádky vloží zpět. Pokud spustíte pozastavení nebo škálování zatímco probíhají transakce, může to vypadat, že vaše pozastavení nebo škálování trvá dlouho, protože pozastavení a škálování musí počkat na dokončení odvolání transakce, než budou moci pokračovat.
 
 Viz také [porozumění transakcím](sql-data-warehouse-develop-transactions.md)a [optimalizace transakcí](sql-data-warehouse-develop-best-practices-transactions.md).
 
@@ -116,13 +116,13 @@ Viz také [porozumění transakcím](sql-data-warehouse-develop-transactions.md)
 
 Informace o automatizaci operací správy výpočtů najdete v tématu [Správa výpočtů pomocí Azure Functions](manage-compute-with-azure-functions.md).
 
-Dokončení operací škálování na více instancí, pozastavení a obnovení může trvat několik minut. Pokud používáte automatické škálování, pozastavení nebo obnovení, doporučujeme, abyste před pokračováním v jiné akci implementovali logiku pro zajištění, že byly dokončeny určité operace. Kontrola stavu fondu SQL prostřednictvím různých koncových bodů umožňuje správně implementovat automatizaci takových operací.
+Dokončení operací škálování na více instancí, pozastavení a obnovení může trvat několik minut. Pokud používáte automatické škálování, pozastavení nebo obnovení, doporučujeme, abyste před pokračováním v jiné akci implementovali logiku pro zajištění, že byly dokončeny určité operace. Kontrola vyhrazeného fondu SQL (dříve SQL DW) prostřednictvím různých koncových bodů umožňuje správně implementovat automatizaci takových operací.
 
-Pokud chcete zjistit stav fondu SQL, Projděte si rychlý Start pro [PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) nebo [T-SQL](quickstart-scale-compute-tsql.md#check-data-warehouse-state) . Stav fondu SQL můžete také ověřit pomocí [REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state).
+Pokud chcete kontrolovat vyhrazený fond SQL (dřív SQL DW), přečtěte si téma rychlý Start pro [PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) nebo [T-SQL](quickstart-scale-compute-tsql.md#check-dedicated-sql-pool-formerly-sql-dw-state) . Můžete také kontrolovat vyhrazený fond SQL (dříve SQL DW) pomocí [REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state).
 
 ## <a name="permissions"></a>Oprávnění
 
-Škálování fondu SQL vyžaduje oprávnění popsaná v [příkazu ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Pozastavení a obnovení vyžadují oprávnění [přispěvatele databáze SQL](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#sql-db-contributor) , konkrétně Microsoft. SQL/servery/databáze/akce.
+Škálování vyhrazeného fondu SQL (dříve SQL DW) vyžaduje oprávnění popsaná v [příkazu ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Pozastavení a obnovení vyžadují oprávnění [přispěvatele databáze SQL](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#sql-db-contributor) , konkrétně Microsoft. SQL/servery/databáze/akce.
 
 ## <a name="next-steps"></a>Další kroky
 

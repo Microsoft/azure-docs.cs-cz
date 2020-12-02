@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: e84afc949a84da90a4799d7db3b3e7ad3e0057a3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3fc7a7f137701590e4bddd791a3fdd2d1eaeca4a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323530"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461610"
 ---
 # <a name="quickstart-create-a-new-serverless-apache-spark-pool-using-the-azure-portal"></a>Rychlý Start: vytvoření nového fondu Apache Spark bez serveru pomocí Azure Portal
 
@@ -89,7 +89,7 @@ Pomocí následujících kroků odstraňte fond Apache Spark z pracovního prost
 Pokud chcete fond Apache Spark odstranit, postupujte takto:
 
 1. Přejděte do okna fondy Apache Spark v pracovním prostoru.
-2. Vyberte fond Apache Spark, který se má odstranit (v tomto případě **contosospark** ).
+2. Vyberte fond Apache Spark, který se má odstranit (v tomto případě **contosospark**).
 3. Stiskněte klávesu **Delete**.
  ![Výpis fondů Apache Spark s vybraným nedávno vytvořeným fondem.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-08.png)
 4. Potvrďte odstranění a stiskněte tlačítko **Odstranit** .
@@ -99,4 +99,4 @@ Pokud chcete fond Apache Spark odstranit, postupujte takto:
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace najdete v tématu [rychlý Start: vytvoření poznámkového bloku Apache Spark](quickstart-apache-spark-notebook.md).
-- Další informace najdete v tématu [rychlý Start: vytvoření vyhrazeného fondu SQL synapse pomocí Azure Portal](quickstart-create-sql-pool-portal.md).
+- Další informace najdete v tématu [rychlý Start: vytvoření vyhrazeného fondu SQL pomocí Azure Portal](quickstart-create-sql-pool-portal.md).

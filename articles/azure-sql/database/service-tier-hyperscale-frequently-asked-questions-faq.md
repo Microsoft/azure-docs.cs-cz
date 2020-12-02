@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: 400dd66827e82c1ede496526c49977e6f5383487
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4ea1982e7545f4ac39a5ecd15dc9e19a582ae31c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780185"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459630"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database Nejčastější dotazy k škálování
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -118,7 +118,7 @@ Ano, [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/prici
 
 Pokud aktuálně spouštíte interaktivní analytické dotazy pomocí SQL Server jako datový sklad, škálovatelná možnost je skvělým způsobem, protože můžete hostovat malé a střední velikosti datových skladů (například o více TB až 100 TB) za nižší náklady a můžete migrovat své SQL Server úlohy datového skladu do škálování s minimálními změnami kódu T-SQL.
 
-Pokud pracujete s analýzou dat ve velkém měřítku se složitými dotazy a nižšími sazbami pro ingestování vyšší než 100 MB/s nebo s využitím paralelního datového skladu (PDW), Teradata nebo dalších hromadně paralelního zpracování (MPP), může to být nejlepší volbou Azure synapse Analytics (dříve SQL Data Warehouse).
+Pokud pracujete s analýzou dat ve velkém měřítku s využitím složitých dotazů a rychlostmi příjmu vyššími než 100 MB/s nebo s využitím paralelního datového skladu (PDW), Teradata nebo dalších hromadně paralelního zpracování (MPP), může to být nejlepší volbou Azure synapse Analytics.
   
 ## <a name="hyperscale-compute-questions"></a>Dotazy na výpočetní výkon s škálovatelným škálováním
 

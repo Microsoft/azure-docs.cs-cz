@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 37239f9c7857a8e72bb293cfa3caeb429962a542
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 095f2c3ed17042bb616fb091d1af52a64c913709
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363336"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460508"
 ---
 # <a name="getting-started"></a>Začínáme
 
@@ -37,13 +37,13 @@ Cloudové Cognitive Services jsou inteligentní algoritmy hostované v Azure. Ty
 
 Pokud vaše aplikace nebo úloha používá velké datové sady, vyžaduje privátní sítě nebo nemůže kontaktovat Cloud, nemusí být komunikace s Cloud Services možná. V takové situaci mají kontejnery Cognitive Services tyto výhody:
 
-* **Nízká konektivita** : Cognitive Services s využitím kontejnerů můžete nasadit v jakémkoli výpočetním prostředí, a to jak v cloudu, tak i na off. Pokud vaše aplikace nemůže kontaktovat Cloud, zvažte nasazení Cognitive Services kontejnerů ve vaší aplikaci.
+* **Nízká konektivita**: Cognitive Services s využitím kontejnerů můžete nasadit v jakémkoli výpočetním prostředí, a to jak v cloudu, tak i na off. Pokud vaše aplikace nemůže kontaktovat Cloud, zvažte nasazení Cognitive Services kontejnerů ve vaší aplikaci.
 
-* **Nízká latence** : vzhledem k tomu, že kontejnery služeb nevyžadují komunikaci s přenosovou cestou do cloudu nebo z něj, jsou odpovědi vraceny s mnohem nižší latencí.
+* **Nízká latence**: vzhledem k tomu, že kontejnery služeb nevyžadují komunikaci s přenosovou cestou do cloudu nebo z něj, jsou odpovědi vraceny s mnohem nižší latencí.
 
-* **Ochrana osobních údajů a zabezpečení dat** : do privátních sítí můžete nasazovat kontejnery služby, aby citlivá data nezůstala síť.
+* **Ochrana osobních údajů a zabezpečení dat**: do privátních sítí můžete nasazovat kontejnery služby, aby citlivá data nezůstala síť.
 
-* **Vysoká škálovatelnost** : kontejnerové služby nemají omezení přenosové rychlosti a spouštějí se na počítačích spravovaných uživatelem. Takže můžete škálovat Cognitive Services bez ukončení pro zpracování mnohem větších úloh.
+* **Vysoká škálovatelnost**: kontejnerové služby nemají omezení přenosové rychlosti a spouštějí se na počítačích spravovaných uživatelem. Takže můžete škálovat Cognitive Services bez ukončení pro zpracování mnohem větších úloh.
 
 Podle [této příručky](../cognitive-services-container-support.md?tabs=luis) vytvořte službu pro vyvnímání z kontejneru.
 
@@ -65,14 +65,14 @@ Azure Databricks je analytická platforma založená na Apache Spark s nastaven�
     * Instalace knihovny do clusteru  
       <img src="media/install-library.png" alt="Install Library on Cluster" width="50%"/>
 
-### <a name="synapse-analytics-optional"></a>Synapse Analytics (volitelné)
+### <a name="azure-synapse-analytics-optional"></a>Azure synapse Analytics (volitelné)
 
-Volitelně můžete pomocí synapse Analytics vytvořit cluster Spark. Azure synapse Analytics přináší dohromady podnikové datové sklady a analýzy velkých objemů dat. Poskytuje vám volnost v dotazování na data podle vašich podmínek, a to s využitím škálovatelných nebo zřízených prostředků na vyžádání bez serveru. Pokud chcete začít používat synapse Analytics, postupujte takto:
+Volitelně můžete pomocí synapse Analytics vytvořit cluster Spark. Azure synapse Analytics přináší dohromady podnikové datové sklady a analýzy velkých objemů dat. Poskytuje vám volnost v dotazování na data podle vašich podmínek, a to s využitím škálovatelných nebo zřízených prostředků na vyžádání bez serveru. Pokud chcete začít používat Azure synapse Analytics, postupujte takto:
 
 1. [Vytvořte pracovní prostor synapse (Preview)](../../synapse-analytics/quickstart-create-workspace.md).
 1. [Pomocí Azure Portal vytvořte nový fond Apache Spark bez serveru (Preview)](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md).
 
-V synapse Analytics se ve výchozím nastavení nainstalují velké objemy dat pro Cognitive Services.
+Ve výchozím nastavení je ve službě Azure synapse Analytics nainstalovaná velká data pro Cognitive Services.
 
 ### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 

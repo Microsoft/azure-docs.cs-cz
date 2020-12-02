@@ -1,6 +1,6 @@
 ---
-title: Vytváření a používání zobrazení v neserverovém fondu SQL (Preview)
-description: V této části se dozvíte, jak vytvářet a používat zobrazení k zabalení dotazů na SQL fond bez serveru (Preview). Zobrazení vám umožní tyto dotazy znovu použít. Zobrazení jsou nutná také v případě, že chcete používat nástroje, jako je například Power BI, společně s fondem SQL bez serveru.
+title: Vytváření a používání zobrazení ve fondu SQL bez serveru
+description: V této části se dozvíte, jak vytvářet a používat zobrazení k zabalení dotazů na fond SQL bez serveru. Zobrazení vám umožní tyto dotazy znovu použít. Zobrazení jsou nutná také v případě, že chcete používat nástroje, jako je například Power BI, společně s fondem SQL bez serveru.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 302cf97db7c1d2ba489a84b6be912816d20f6091
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 0948c7c82d7577bae07057bff9d1be4d7e09f978
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685558"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462288"
 ---
-# <a name="create-and-use-views-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Vytváření a používání zobrazení pomocí SQL fondu bez serveru (Preview) ve službě Azure synapse Analytics
+# <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Vytváření a používání zobrazení pomocí neserverového fondu SQL ve službě Azure synapse Analytics
 
-V této části se dozvíte, jak vytvářet a používat zobrazení k zabalení dotazů na SQL fond bez serveru (Preview). Zobrazení vám umožní tyto dotazy znovu použít. Zobrazení jsou nutná také v případě, že chcete používat nástroje, jako je například Power BI, společně s fondem SQL bez serveru.
+V této části se dozvíte, jak vytvářet a používat zobrazení k zabalení dotazů na fond SQL bez serveru. Zobrazení vám umožní tyto dotazy znovu použít. Zobrazení jsou nutná také v případě, že chcete používat nástroje, jako je například Power BI, společně s fondem SQL bez serveru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Prvním krokem je vytvoření databáze, ve které se zobrazení vytvoří, a inicializace objektů potřebných k ověření v Azure Storage spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Všechny dotazy v tomto článku se spustí v ukázkové databázi.
 

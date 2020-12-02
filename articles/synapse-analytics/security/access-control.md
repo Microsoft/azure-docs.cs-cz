@@ -1,6 +1,6 @@
 ---
 title: Správa přístupu k pracovním prostorům, datům a kanálům
-description: Naučte se spravovat řízení přístupu k pracovním prostorům, datům a kanálům v pracovním prostoru Azure synapse Analytics (Preview).
+description: Naučte se spravovat řízení přístupu k pracovním prostorům, datům a kanálům v Azure synapse Analytics.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5d95ddcc610fb0350f47e0e5b494cbd16b95468c
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: c4304aeadf2950c1a91ee50ba9ecd895b2561b41
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95255222"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461343"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Správa přístupu k pracovním prostorům, datům a kanálům
 
-Naučte se spravovat řízení přístupu k pracovním prostorům, datům a kanálům v pracovním prostoru Azure synapse Analytics (Preview).
+Naučte se spravovat řízení přístupu k pracovním prostorům, datům a kanálům v Azure synapse Analytics.
 
 > [!NOTE]
 > V případě GA se Azure RBAC bude vyvíjet prostřednictvím zavedení rolí Azure, které jsou specifické pro synapse.
@@ -171,7 +171,7 @@ Pokud chcete uživateli udělit přístup k **jedné** databázi SQL, postupujte
 
 Po vytvoření uživatelů ověřte, že se můžete dotazovat na účet úložiště pomocí serveru SQL bez serveru.
 
-## <a name="access-control-to-workspace-pipeline-runs"></a>Řízení přístupu k běhu kanálu pracovního prostoru
+## <a name="access-control-to-workspace-pipeline-runs"></a>Řízení přístupu ke spuštěním kanálu v pracovním prostoru
 
 ### <a name="workspace-managed-identity"></a>Identita spravovaná pracovním prostorem
 

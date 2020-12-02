@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 919b8fb89e9189df7cb1964cbe0149dc6945ad2d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e0309b4c96b2ae25eb568e390717ba76cfd84fa5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323200"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461311"
 ---
-# <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Vytvoření spravovaného privátního koncového bodu ke zdroji dat (Preview)
+# <a name="create-a-managed-private-endpoint-to-your-data-source"></a>Vytvoření spravovaného privátního koncového bodu ke zdroji dat
 
 Tento článek vás seznámí s postupem vytvoření spravovaného privátního koncového bodu pro zdroj dat v Azure. Další informace najdete v tématu [spravované privátní koncové body](./synapse-workspace-managed-private-endpoints.md) .
 

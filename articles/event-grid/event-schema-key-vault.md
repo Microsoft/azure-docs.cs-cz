@@ -3,12 +3,12 @@ title: Azure Key Vault jako zdroj Event Grid
 description: V této části najdete popis vlastností a schématu poskytnutých pro Azure Key Vault události Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: b3d961228429c1f84e45c1df9147fa1687ab5074
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 605502794f2f3aa4f4edd14b49efda5003b91146
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324072"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460397"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Azure Key Vault jako zdroj Event Grid
 
@@ -20,7 +20,7 @@ Tento článek poskytuje vlastnosti a schéma pro události v [Azure Key Vault](
 
 Účet Azure Key Vault generuje následující typy událostí:
 
-| Úplný název události | Zobrazovaný název události | Description |
+| Úplný název události | Zobrazovaný název události | Popis |
 | ---------- | ----------- |---|
 | Microsoft. klíčů trezor. CertificateNewVersionCreated | Nově vytvořená verze certifikátu | Aktivuje se při vytvoření nového certifikátu nebo verze nového certifikátu. |
 | Microsoft. klíčů trezor. CertificateNearExpiry | Brzo vyprší platnost certifikátu | Aktivuje se v případě vypršení platnosti aktuální verze certifikátu. (Událost se aktivuje 30 dní před datem vypršení platnosti.) |
@@ -64,7 +64,7 @@ Následující příklad ukazuje schéma pro **Microsoft. SecretNewVersionCreate
 
 Událost má následující data nejvyšší úrovně:
 
-| Vlastnost | Typ | Description |
+| Vlastnost | Typ | Popis |
 | ---------- | ----------- |---|
 | id | řetězec | ID objektu, který aktivoval tuto událost |
 | vaultName | řetězec | Název trezoru klíčů u objektu, který aktivoval tuto událost |
@@ -85,5 +85,5 @@ Událost má následující data nejvyšší úrovně:
 
 * Úvod do Azure Event Grid najdete v tématu [co je Event Grid?](overview.md).
 * Další informace o tom, jak vytvořit předplatné Azure Event Grid, najdete v tématu [Event Grid schématu předplatného](subscription-creation-schema.md).
-* Další informace o trezoru klíčů najdete v tématu [co je Azure Key Vault?](../key-vault/general/overview.md)
+* Další informace o Key Vault najdete v tématu [co je Azure Key Vault?](../key-vault/general/overview.md)
 

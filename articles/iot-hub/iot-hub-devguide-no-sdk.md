@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 3968f19329536169c3fb3eb1fbbaff99e99c293d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ae8b01522a248b8b1dbdd255a9fcd55f16cf2369
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079641"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461708"
 ---
 # <a name="develop-without-using-an-azure-iot-hub-sdk"></a>Vývoj bez použití sady Azure IoT Hub SDK
 
@@ -44,11 +44,11 @@ Než začnete s vývojem, měli byste mít důkladné znalosti o IoT Hub a funkc
 
 Nápovědu k používání následujících protokolů bez sady Azure IoT SDK:
 
-* Zařízení nebo back-endové aplikace v **AMQP**najdete v tématu [Podpora AMQP](iot-hub-amqp-support.md).
+* Zařízení nebo back-endové aplikace v **AMQP** najdete v tématu [Podpora AMQP](iot-hub-amqp-support.md).
 
-* Aplikace pro zařízení v **MQTT**najdete v tématu [Podpora MQTT](iot-hub-mqtt-support.md). Většina tohoto tématu pracuje přímo s použitím protokolu MQTT. Obsahuje také informace o použití [úložiště ukázek IoT MQTT](https://github.com/Azure-Samples/IoTMQTTSample). Toto úložiště obsahuje ukázky jazyka C, které používají knihovnu Mosquitto zatmění k posílání zpráv do IoT Hub.
+* Aplikace pro zařízení v **MQTT** najdete v tématu [Podpora MQTT](iot-hub-mqtt-support.md). Většina tohoto tématu pracuje přímo s použitím protokolu MQTT. Obsahuje také informace o použití [úložiště ukázek IoT MQTT](https://github.com/Azure-Samples/IoTMQTTSample). Toto úložiště obsahuje ukázky jazyka C, které používají knihovnu Mosquitto zatmění k posílání zpráv do IoT Hub.
 
-* Zařízení nebo back-endové aplikace na **https**najdete v [rozhraních REST api pro Azure IoT Hub](https://docs.microsoft.com/rest/api/iothub/). Mějte na paměti, jak je uvedeno v článku [požadavky pro vývoj](#development-prerequisites), takže nemůžete použít ověřování certifikační autority (CA) X. 509 s protokolem HTTPS.
+* Zařízení nebo back-endové aplikace na **https** najdete v [rozhraních REST api pro Azure IoT Hub](/rest/api/iothub/). Mějte na paměti, jak je uvedeno v článku [požadavky pro vývoj](#development-prerequisites), takže nemůžete použít ověřování certifikační autority (CA) X. 509 s protokolem HTTPS.
 
 U zařízení se důrazně doporučuje používat MQTT, pokud ho vaše zařízení podporuje.
 

@@ -3,14 +3,14 @@ title: Správa proměnných v Azure Automation
 description: Tento článek popisuje, jak pracovat s proměnnými v sadách Runbook a konfiguracích DSC.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 10/05/2020
+ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4749fcb6698ff1716f2cae257cc0efad458bf9a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5be0d45843eed8c7c0d7d9b6dc4655de01e914c3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766195"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461454"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Správa proměnných v Azure Automation
 
@@ -26,10 +26,10 @@ Proměnné automatizace jsou užitečné pro následující scénáře:
 
 Azure Automation uchovává proměnné a zpřístupňuje je i v případě, že dojde k chybě Runbooku nebo konfigurace DSC. Toto chování umožňuje, aby jedna konfigurace sady Runbook nebo DSC nastavila hodnotu, kterou používá jiná sada Runbook nebo stejná sada Runbook nebo konfigurace DSC při příštím spuštění.
 
-Azure Automation ukládá každou šifrovanou proměnnou bezpečně. Když vytvoříte proměnnou, můžete její šifrování a úložiště zadat Azure Automation jako zabezpečený prostředek. Po vytvoření proměnné nemůžete změnit její stav šifrování, aniž byste museli znovu vytvořit proměnnou. Azure Security Center doporučení je šifrovat všechny Azure Automation proměnné, jak je popsané v tématu [proměnné účtu Automation by měly být šifrované](../../security-center/recommendations-reference.md#recs-computeapp).
+Azure Automation ukládá každou šifrovanou proměnnou bezpečně. Když vytvoříte proměnnou, můžete její šifrování a úložiště zadat Azure Automation jako zabezpečený prostředek. Po vytvoření proměnné nemůžete změnit její stav šifrování, aniž byste museli znovu vytvořit proměnnou. Pokud máte proměnné účtu Automation, které ukládají citlivé údaje, které ještě nejsou zašifrované, musíte je odstranit a znovu vytvořit jako šifrované proměnné. Azure Security Center doporučení je šifrovat všechny Azure Automation proměnné, jak je popsané v tématu [proměnné účtu Automation by měly být šifrované](../../security-center/recommendations-reference.md#recs-computeapp). Pokud máte nešifrované proměnné, které chcete vyloučit z tohoto doporučení zabezpečení, přečtěte si téma [vyloučení prostředku z doporučení a zabezpečeného skóre](../../security-center/exempt-resource.md) pro vytvoření pravidla výjimky.
 
 >[!NOTE]
->Zabezpečené prostředky v Azure Automation zahrnují přihlašovací údaje, certifikáty, připojení a šifrované proměnné. Tyto prostředky jsou zašifrované a uložené v Azure Automation pomocí jedinečného klíče, který se generuje pro každý účet Automation. Azure Automation ukládá klíč do Key Vault spravovaném systémem. Před uložením zabezpečeného assetu Automation načte klíč z Key Vault a pak ho použije k zašifrování prostředku. 
+>Zabezpečené prostředky v Azure Automation zahrnují přihlašovací údaje, certifikáty, připojení a šifrované proměnné. Tyto prostředky jsou zašifrované a uložené v Azure Automation pomocí jedinečného klíče, který se generuje pro každý účet Automation. Azure Automation ukládá klíč do Key Vault spravovaném systémem. Před uložením zabezpečeného assetu Automation načte klíč z Key Vault a pak ho použije k zašifrování prostředku.
 
 ## <a name="variable-types"></a>Typy proměnných
 
@@ -65,7 +65,7 @@ Rutiny v následující tabulce vytvářejí a spravují proměnné automatizace
 
 Interní rutiny v následující tabulce se používají pro přístup k proměnným v sadách Runbook a konfiguracích DSC. Tyto rutiny se dodávají s globálním modulem `Orchestrator.AssetManagement.Cmdlets` . Další informace najdete v tématu [interní rutiny](modules.md#internal-cmdlets).
 
-| Interní rutina | Description |
+| Interní rutina | Popis |
 |:---|:---|
 |`Get-AutomationVariable`|Načte hodnotu existující proměnné.|
 |`Set-AutomationVariable`|Nastaví hodnotu pro existující proměnnou.|
@@ -84,7 +84,7 @@ Write-output "The encrypted value of the variable is: $mytestencryptvar"
 
 Funkce v následující tabulce se používají pro přístup k proměnným v sadě Runbook Python 2.
 
-|Python 2 – funkce|Description|
+|Python 2 – funkce|Popis|
 |:---|:---|
 |`automationassets.get_automation_variable`|Načte hodnotu existující proměnné. |
 |`automationassets.set_automation_variable`|Nastaví hodnotu pro existující proměnnou. |

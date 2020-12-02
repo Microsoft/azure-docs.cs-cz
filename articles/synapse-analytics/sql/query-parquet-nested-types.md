@@ -1,6 +1,6 @@
 ---
-title: Dotazování vnořených typů Parquet pomocí neserverového fondu SQL (Preview)
-description: V tomto článku se naučíte, jak zadávat dotazy na vnořené typy Parquet pomocí neserverového fondu SQL (Preview).
+title: Dotazování na vnořené typy Parquet pomocí SQL fondu bez serveru
+description: V tomto článku se naučíte, jak zadávat dotazy na vnořené typy Parquet pomocí SQL fondu bez serveru.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 426c95638422fa4260508aa81bb47a7c9565e6eb
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 91f612ba7f19deb739dbb6004e275ea044a5a3d3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685711"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462560"
 ---
-# <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Dotazování vnořených typů v souborech Parquet a JSON pomocí neserverového fondu SQL (Preview) ve službě Azure synapse Analytics
+# <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Dotazování vnořených typů v souborech Parquet a JSON pomocí neserverového fondu SQL ve službě Azure synapse Analytics
 
-V tomto článku se dozvíte, jak napsat dotaz pomocí SQL fondu bez serveru (Preview) ve službě Azure synapse Analytics. Dotaz načte vnořené typy Parquet.
+V tomto článku se dozvíte, jak napsat dotaz pomocí SQL fondu bez serveru ve službě Azure synapse Analytics. Dotaz načte vnořené typy Parquet.
 Vnořené typy jsou komplexní struktury, které představují objekty nebo pole. Vnořené typy mohou být uloženy v: 
 - [Parquet](query-parquet-files.md), kde můžete mít více složitých sloupců, které obsahují pole a objekty.
 - Hierarchické [soubory JSON](query-json-files.md), kde můžete číst SLOŽITÝ dokument JSON jako jeden sloupec.
@@ -47,7 +47,7 @@ FROM
 > [!IMPORTANT]
 > V tomto příkladu se používá soubor z otevřené datové sady COVID-19. [Tady si můžete prohlédnout licenci a strukturu dat](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Prvním krokem je vytvoření databáze, ve které se vytvoří zdroj dat. Pak inicializujete objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v databázi. Skript instalačního programu vytvoří zdroje dat, přihlašovací údaje v rozsahu databáze a formáty externích souborů, které jsou použity v ukázkách.
 

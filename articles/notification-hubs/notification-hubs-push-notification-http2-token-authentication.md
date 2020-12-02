@@ -16,12 +16,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e8258aeef33be9192608f0d4cb29b46f08da64e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f8de6389a04448579672b84e91f0bb4dd0f4ce2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89010626"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460470"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>Ověřování založené na tokenech (HTTP/2) na APNS
 
@@ -52,7 +52,7 @@ Pokud chcete povolit ověřování na základě tokenu, budete potřebovat násl
 
 ### <a name="key-identifier"></a>Identifikátor klíče
 
-Identifikátor klíče se dá získat ze stránky **klíče** v části **certifikáty, identifikátory & profily**ve vašem účtu Apple Developer:
+Identifikátor klíče se dá získat ze stránky **klíče** v části **certifikáty, identifikátory & profily** ve vašem účtu Apple Developer:
 
 ![Certifikáty](./media/notification-hubs-push-notification-http2-token-authentification/keys.png)
 
@@ -78,7 +78,7 @@ Přihlašovací údaje založené na tokenech se skládají z následujících p
 
 * **ID klíče**: identifikátor privátního klíče vygenerovaného na portálu pro vývojáře Apple; například `2USFGKSKLT` .
 * **ID týmu**: taky se označuje jako předpona nebo předpona aplikace. Toto je identifikátor organizace na portálu pro vývojáře Apple. například `S4V3D7CHJR` .
-* **ID sady**: označuje se taky jako ID aplikace. Toto je identifikátor sady prostředků pro aplikaci. například `com.example.myapp` . Všimněte si, že pro mnoho aplikací můžete použít jeden klíč. Tato hodnota se mapuje na `apns-topic` hlavičku HTTP při odesílání oznámení a používá se k zacílení na konkrétní aplikaci. Všimněte si, že hodnotu explicitně nemůžete nastavit `apns-topic` .
+* **ID sady**: označuje se taky jako ID aplikace. Toto je identifikátor sady prostředků pro aplikaci. například `com.example.myapp` . Všimněte si, že pro jednu aplikaci můžete použít jenom jeden klíč. Tato hodnota se mapuje na `apns-topic` hlavičku HTTP při odesílání oznámení a používá se k zacílení na konkrétní aplikaci. Hodnotu explicitně nemůžete nastavit `apns-topic` .
 * **Token**: taky se označuje jako klíč nebo privátní klíč. To se získá ze souboru. P8 vygenerovaného na portálu pro vývojáře Apple. Klíč musí mít povolený APN (který je při generování klíče vybraný na portálu pro vývojáře Apple). Hodnota musí mít záhlaví nebo zápatí PEM z něj odstraněna, až ji dodáte na portál NH nebo rozhraní API.
 * **Koncový bod**: Toto je přepínač v okně Notification Hubsového portálu a pole řetězce v rozhraní API. Platné hodnoty jsou `https://api.development.push.apple.com:443/3/device` nebo `https://api.sandbox.push.apple.com:443/3/device` . Notification Hubs používá tuto hodnotu pro prostředí produkčního prostředí nebo izolovaného prostoru (sandbox) pro odesílání oznámení. To se musí shodovat s `aps-environment` oprávněním v aplikaci, jinak se vygenerované tokeny zařízení APNs neshodují s prostředím a oznámení se nepodaří odeslat.
 

@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: 0314f5e55a476cd1cd1f8a31bd918e0ebb64c75f
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 611d2163e242d7851398821344c3ed595df364cb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95254234"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460263"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>Prozkoumejte centrum synapse Knowledge Center
 
@@ -55,6 +55,9 @@ Vyberte jednu z metod a otevřete **Centrum znalostí**.
 1. Zobrazí se nový skript SQL.
 1. Klikněte na **Spustit** .
 1. Tím se vytvoří několik tabulek pro všechna data NYC taxislužby a načtou se pomocí příkazu T-SQL COPY.
+
+    > [!NOTE] 
+    > Pokud používáte ukázkovou galerii pro skript SQL s vyhrazeným fondem SQL (dřív SQL DW), budete moct použít jenom existující vyhrazený fond SQL (dřív SQL DW).
 
 ## <a name="next-steps"></a>Další kroky
 

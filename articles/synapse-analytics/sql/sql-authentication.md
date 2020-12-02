@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 460fed7244ba8094da41ae6b5b8161de3d9efe65
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: efa160eb422658aeeb2eea3ad3c1d305b4b9f8be
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317268"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462410"
 ---
 # <a name="sql-authentication"></a>Ověřování SQL
 
@@ -22,14 +22,14 @@ Azure synapse Analytics má dva SQL Form-faktory, které vám umožňují řídi
 
 K autorizaci synapse SQL můžete použít dva typy autorizace:
 
-- Azure Active Directory autorizaci
+- Autorizace Azure Active Directory
 - Autorizace SQL
 
 Azure Active Directory umožňuje mít jedno místo pro správu uživatelů. Autorizace SQL umožňuje starším aplikacím, aby používaly synapse SQL, dobře známým způsobem.
 
 ## <a name="administrative-accounts"></a>Účty pro správu
 
-Jako správci fungují dva účty pro správu ( **Správce serveru** a **Správce Active Directory** ). Pro identifikaci těchto účtů správců pro váš SQL Server otevřete Azure Portal a přejděte na kartu vlastnosti synapse SQL.
+Jako správci fungují dva účty pro správu (**Správce serveru** a **Správce Active Directory**). Pro identifikaci těchto účtů správců pro váš SQL Server otevřete Azure Portal a přejděte na kartu vlastnosti synapse SQL.
 
 ![Správci SQL serveru](./media/sql-authentication/sql-admins.png)
 
@@ -51,7 +51,7 @@ Jako správci fungují dva účty pro správu ( **Správce serveru** a **Správc
 - Může přidat nebo odebrat členy do `dbmanager` rolí a `loginmanager` .
 - Může zobrazit `sys.sql_logins` systémovou tabulku.
 
-## <a name="serverless-sql-pool-preview"></a>[Neserverový fond SQL (Preview)](#tab/serverless)
+## <a name="serverless-sql-pool"></a>[Bezserverový fond SQL](#tab/serverless)
 
 Chcete-li spravovat uživatele, kteří mají přístup k fondu SQL bez serveru, můžete použít následující pokyny.
 
@@ -127,7 +127,7 @@ Nyní se uživatel může připojit k `master` databázi a může vytvářet nov
 
 ### <a name="login-managers"></a>Správci přihlášení
 
-Druhou správní rolí je role správce přihlášení. Členové této role mohou v hlavní databázi vytvářet nová přihlášení. Pokud chcete, můžete použít stejný postup (vytvořit přihlášení a uživatele a přidat uživatele do role **loginmanager** ) a povolit tak uživateli vytvářet nová přihlášení v hlavní databázi. Obvykle přihlášení nejsou nutná, protože společnost Microsoft doporučuje používat uživatele databáze s omezením, které se ověřují na úrovni databáze namísto použití uživatelů na základě přihlašovacích údajů. Další informace najdete v tématu [Uživatelé databáze s omezením – zajištění přenositelnosti databáze](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Druhou správní rolí je role správce přihlášení. Členové této role mohou v hlavní databázi vytvářet nová přihlášení. Pokud chcete, můžete použít stejný postup (vytvořit přihlášení a uživatele a přidat uživatele do role **loginmanager**) a povolit tak uživateli vytvářet nová přihlášení v hlavní databázi. Obvykle přihlášení nejsou nutná, protože společnost Microsoft doporučuje používat uživatele databáze s omezením, které se ověřují na úrovni databáze namísto použití uživatelů na základě přihlašovacích údajů. Další informace najdete v tématu [Uživatelé databáze s omezením – zajištění přenositelnosti databáze](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ---
 
@@ -187,7 +187,7 @@ Efektivní správa přístupů využívá oprávnění přiřazená skupinám a 
 
 - Pokud používáte ověřování SQL Serveru, vytvořte v databázi uživatele databáze s omezením. Přidejte jednoho nebo více uživatelů databáze do [databázové role](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) a potom této databázové roli přiřaďte [oprávnění](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-Mezi databázové role patří například předdefinované role **db_owner** , **db_ddladmin** , **db_datawriter** , **db_datareader** , **db_denydatawriter** a **db_denydatareader**. Role **db_owner** se obvykle používá k udělení úplných oprávnění pouze několika uživatelům. Ostatní pevné databázové role jsou užitečné pro rychlé vytvoření jednoduché databáze ve vývojovém prostředí, ale nedoporučují se pro většinu databází v produkčním prostředí. 
+Mezi databázové role patří například předdefinované role **db_owner**, **db_ddladmin**, **db_datawriter**, **db_datareader**, **db_denydatawriter** a **db_denydatareader**. Role **db_owner** se obvykle používá k udělení úplných oprávnění pouze několika uživatelům. Ostatní pevné databázové role jsou užitečné pro rychlé vytvoření jednoduché databáze ve vývojovém prostředí, ale nedoporučují se pro většinu databází v produkčním prostředí. 
 
 Pevná databázová role **db_datareader** například uděluje přístup pro čtení pro všechny tabulky v databázi, což je obvykle více, než je skutečně nezbytné. 
 

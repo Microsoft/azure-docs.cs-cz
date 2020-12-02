@@ -1,6 +1,6 @@
 ---
-title: Dotazování na úložiště dat s neserverovým fondem SQL (Preview)
-description: Tento článek popisuje, jak zadat dotaz na Azure Storage pomocí prostředku (Preview) bez serveru ve službě Azure synapse Analytics.
+title: Dotazování na úložiště dat s neserverovým fondem SQL
+description: Tento článek popisuje, jak zadat dotaz na Azure Storage pomocí prostředku fondu SQL bez serveru v rámci služby Azure synapse Analytics.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 81a892b10996686cf58d45867e3d889505b5d3d9
-ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
+ms.openlocfilehash: 967250cf29d1f0248f296cb545a764bd8e611773
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96299577"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462656"
 ---
-# <a name="query-storage-files-with-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Dotazování souborů úložiště s SQL fondem bez serveru (Preview) ve službě Azure synapse Analytics
+# <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Dotazování souborů úložiště s neserverovým fondem SQL ve službě Azure synapse Analytics
 
-Neserverový fond SQL (Preview) umožňuje dotazovat data v Data Lake. Nabízí oblast dotazu T-SQL, která se vejde na částečně strukturované a nestrukturované datové dotazy. Pro dotazování jsou podporovány následující aspekty T-SQL:
+Fond SQL bez serveru umožňuje dotazovat se na data ve službě Data Lake. Nabízí oblast dotazu T-SQL, která se vejde na částečně strukturované a nestrukturované datové dotazy. Pro dotazování jsou podporovány následující aspekty T-SQL:
 
 - Celý [Výběr](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) oblasti plochy, včetně většiny [funkcí a operátorů SQL](overview-features.md)
 - Možnost vytvořit externí tabulku jako SELECT ([CETAS](develop-tables-cetas.md)) vytvoří [externí tabulku](develop-tables-external-tables.md) a potom exportuje paralelně výsledky příkazu SELECT jazyka Transact-SQL pro Azure Storage.
@@ -219,10 +219,10 @@ Můžete najít Ukázky dotazů pro přístup k elementům z opakujících se sl
 
 Můžete se dozvědět více o dotazování různých typů dat pomocí ukázkových dotazů.
 
-### <a name="tools"></a>nástroje
+### <a name="tools"></a>Nástroje
 
 Nástroje, které potřebujete k vydávání dotazů:
-    - Azure synapse Studio (Preview)
+    - Azure synapse Studio 
     - Azure Data Studio
     - SQL Server Management Studio
 

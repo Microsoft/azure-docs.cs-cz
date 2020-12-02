@@ -11,19 +11,19 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 09/21/2020
+ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: ab974b0f68e831e672329f8af5ae1cb6a5fdbd4c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c3f1209c2c903399617bd60258cc152a6ce90b80
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672081"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462115"
 ---
 # <a name="data-discovery--classification"></a>Zjišťování a klasifikace dat
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Klasifikace & Discovery dat je integrovaná do Azure SQL Database, spravované instance Azure SQL a Azure synapse Analytics. Poskytuje pokročilé možnosti pro zjišťování, klasifikaci, označování a vytváření sestav citlivých dat ve vašich databázích.
+Klasifikace & Discovery dat je integrovaná do Azure SQL Database, spravované instance Azure SQL a Azure synapse Analytics. Poskytuje pokročilé možnosti pro zjišťování, klasifikaci, označování a oznamování citlivých dat ve vašich databázích.
 
 Vaše nejvíc citlivá data můžou zahrnovat obchodní, finanční, zdravotní péče nebo osobní údaje. Zjišťování a klasifikace těchto dat může hrát kontingenční roli v přístupu k ochraně informací ve vaší organizaci. Může sloužit jako infrastruktura na:
 
@@ -55,8 +55,8 @@ Tato část popisuje kroky pro:
 
 Klasifikace obsahuje dva atributy metadat:
 
-- **Labels** : hlavní atributy klasifikace, které slouží k definování úrovně citlivosti dat uložených ve sloupci.  
-- **Typy informací** : atributy, které poskytují podrobnější informace o typu dat uložených ve sloupci.
+- **Labels**: hlavní atributy klasifikace, které slouží k definování úrovně citlivosti dat uložených ve sloupci.  
+- **Typy informací**: atributy, které poskytují podrobnější informace o typu dat uložených ve sloupci.
 
 ### <a name="define-and-customize-your-classification-taxonomy"></a>Definování a přizpůsobení taxonomie klasifikace
 
@@ -77,7 +77,9 @@ Po definování zásad v rámci organizace můžete dál klasifikovat jednotliv�
 
 1. Přejděte na web [Azure Portal](https://portal.azure.com).
 
-1. V podokně Azure SQL Database klikněte na položku **zjišťování dat & klasifikace** pod záhlavím zabezpečení. Karta Přehled obsahuje souhrn aktuálního stavu klasifikace databáze. Souhrn obsahuje podrobný seznam všech klasifikovaných sloupců, které můžete také filtrovat a zobrazovat pouze konkrétní části schématu, typy informací a popisky. Pokud jste zatím neklasifikované žádné sloupce, [přejděte ke kroku 4](#step-4).
+1. V podokně Azure SQL Database klikněte na položku **zjišťování dat & klasifikace** pod záhlavím **zabezpečení** . Karta Přehled obsahuje souhrn aktuálního stavu klasifikace databáze. Souhrn obsahuje podrobný seznam všech klasifikovaných sloupců, které můžete také filtrovat a zobrazovat pouze konkrétní části schématu, typy informací a popisky. Pokud jste zatím neklasifikované žádné sloupce, [přejděte ke kroku 4](#step-4).
+
+    ![Přehled](./media/data-discovery-and-classification-overview/data-discovery-and-classification.png)
 
 1. Chcete-li stáhnout sestavu ve formátu aplikace Excel, v horní nabídce podokna vyberte **exportovat** .
 
@@ -91,7 +93,9 @@ Po definování zásad v rámci organizace můžete dál klasifikovat jednotliv�
 
    - Chcete-li přijmout doporučení pro určitý sloupec, zaškrtněte políčko v levém sloupci příslušného řádku. Pokud chcete všechna doporučení označit jako přijato, zaškrtněte políčko vlevo v záhlaví tabulky doporučení.
 
-   - Chcete-li použít vybraná doporučení, vyberte možnost **přijmout vybraná doporučení** .
+   - Chcete-li použít vybraná doporučení, vyberte možnost **přijmout vybraná doporučení**.
+
+   ![Doporučení pro klasifikaci](./media/data-discovery-and-classification-overview/recommendation.png)
 
 1. Sloupce můžete také klasifikovat ručně, jako alternativu nebo kromě klasifikace založené na doporučeních:
 
@@ -101,7 +105,10 @@ Po definování zásad v rámci organizace můžete dál klasifikovat jednotliv�
 
    1. V dolní části okna kontextu vyberte **Přidat klasifikaci** .
 
-1. Pokud chcete dokončit klasifikaci a trvale označit (označit) sloupce databáze s novými metadaty klasifikace, vyberte **Uložit** v horní nabídce okna.
+   ![Ruční přidání klasifikace](./media/data-discovery-and-classification-overview/manually-add-classification.png)
+
+
+1. Pokud chcete dokončit klasifikaci a trvale označit (označit) sloupce databáze s novými metadaty klasifikace, vyberte **Uložit** na stránce **klasifikace** .
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>Auditování přístupu k citlivým datům
 

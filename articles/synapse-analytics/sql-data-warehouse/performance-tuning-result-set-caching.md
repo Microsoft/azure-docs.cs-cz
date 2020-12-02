@@ -1,6 +1,6 @@
 ---
 title: Ladění výkonu s využitím ukládání sad výsledků do mezipaměti
-description: Přehled funkcí pro ukládání do mezipaměti sady výsledků pro synapse fond SQL ve službě Azure synapse Analytics
+description: Přehled funkcí pro ukládání do mezipaměti sady výsledků pro vyhrazený fond SQL ve službě Azure synapse Analytics
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 933ec541e358f1839c1b4d24acd19e439ea26375
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2b54277d0306244dc4ab6740fdd30e52668dd63c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541277"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460766"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Ladění výkonu s využitím ukládání sad výsledků do mezipaměti
 
-Pokud je povoleno ukládání sady výsledků do mezipaměti, synapse SQL automaticky ukládá do mezipaměti výsledky dotazu v uživatelské databázi pro opakované použití.  To umožňuje následným provedením dotazů získat výsledky přímo z trvalé mezipaměti, aby se ještě nevyžadovalo jejich recompute.   Ukládání sady výsledků do mezipaměti vylepšuje výkon dotazů a snižuje využití prostředků v výpočetním prostředí.  Dotazy, které používají sadu výsledků uložených v mezipaměti, nepoužívají žádné přihrádky souběžnosti, a proto se nepočítají proti stávajícím limitům souběžnosti. Z důvodu zabezpečení mají uživatelé přístup k výsledkům uloženým v mezipaměti pouze v případě, že mají stejná oprávnění k přístupu k datům, jako uživatelé, kteří vytvářejí výsledky v mezipaměti.  
+Pokud je povoleno ukládání sady výsledků do mezipaměti, vyhrazený fond SQL automaticky ukládá do mezipaměti výsledky dotazu v uživatelské databázi pro opakované použití.  To umožňuje následným provedením dotazů získat výsledky přímo z trvalé mezipaměti, aby se ještě nevyžadovalo jejich recompute.   Ukládání sady výsledků do mezipaměti vylepšuje výkon dotazů a snižuje využití prostředků v výpočetním prostředí.  Dotazy, které používají sadu výsledků uložených v mezipaměti, nepoužívají žádné přihrádky souběžnosti, a proto se nepočítají proti stávajícím limitům souběžnosti. Z důvodu zabezpečení mají uživatelé přístup k výsledkům uloženým v mezipaměti pouze v případě, že mají stejná oprávnění k přístupu k datům, jako uživatelé, kteří vytvářejí výsledky v mezipaměti.  
 
 ## <a name="key-commands"></a>Klíčové příkazy
 
@@ -47,7 +47,7 @@ Když je pro databázi zapnuté ukládání výsledků do mezipaměti, výsledky
 > - Pokud data ve sloupcích ORDER BY nejsou jedinečná, pro řádky se stejnými hodnotami ve sloupcích ORDER by neexistuje žádné garanteed pořadí řádků bez ohledu na to, jestli je povolená nebo zakázaná mezipaměť sady výsledků.
 
 > [!IMPORTANT]
-> Operace pro vytvoření mezipaměti sady výsledků a načtení dat z mezipaměti se vyskytují v uzlu Control instance synapse fondu SQL.
+> Operace pro vytvoření mezipaměti sady výsledků a načtení dat z mezipaměti se vyskytují v uzlu řízení vyhrazené instance fondu SQL.
 > Když je ukládání sady výsledků do mezipaměti zapnuté, spuštění dotazů, které vracejí velkou sadu výsledků (například >GB), může způsobit vysoké omezení na řídicím uzlu a zpomalit celkovou reakci na dotaz na instanci.  Tyto dotazy se běžně používají při zkoumání dat nebo při operacích ETL. Aby nedošlo k přerušení řídicího uzlu a mohl by dojít k problémům s výkonem, měli by uživatelé před spuštěním těchto typů dotazů vypnout ukládání sady výsledků do mezipaměti v databázi.  
 
 Spustit tento dotaz pro dobu, kterou zadalo operace ukládání sady výsledků do mezipaměti pro dotaz:
@@ -85,7 +85,7 @@ WHERE request_id = <'Your_Query_Request_ID'>
 
 Maximální velikost mezipaměti sady výsledků je 1 TB na databázi.  Dojde-li ke změně podkladových dat dotazu, dojde k automatickému zrušení platnosti výsledků v mezipaměti.  
 
-Vyřazení mezipaměti je spravováno službou synapse SQL automaticky podle tohoto plánu:
+Vyřazení mezipaměti se automaticky spravuje vyhrazeným fondem SQL za tímto plánem:
 
 - Každých 48 hodin, pokud se sada výsledků nepoužila nebo byla zrušena její platnost.
 - Když mezipaměť sady výsledků blíží maximální velikost.

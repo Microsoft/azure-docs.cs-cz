@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 01e9787d9b812334d959ce6ae9b929ec8734ffb5
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 6d8ec3633fec79fc4fdc04986c8b94c671ae9d1a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030471"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460306"
 ---
 # <a name="ev4-and-esv4-series"></a>Řada Ev4 a Esv4
 
@@ -71,8 +71,11 @@ Velikosti řady Esv4-Series běží na Intel &reg; Xeon &reg; Platinum 8272CL (C
 | Standard_E32s_v4 | 32 | 256 | Jenom vzdálené úložiště | 32 | 51200/768  | 8|16000 |
 | Standard_E48s_v4 | 48 | 384 | Jenom vzdálené úložiště | 32 | 76800/1152 | 8|24000 |
 | Standard_E64s_v4 <sup>1</sup> | 64 | 504| Jenom vzdálené úložiště | 32 | 80000/1200 | 8|30000 |
+| Standard_E80is_v4 <sup>1, 2</sup> | 80 | 504 | Jenom vzdálené úložiště | 32 | 80000/1200 | 8|30000 |
 
-<sup>1</sup> [jsou k dispozici 1 omezené základní velikosti](./constrained-vcpu.md).
+počet [dostupných jader s omezením](./constrained-vcpu.md): <sup>1</sup> .
+
+<sup>2</sup> instance je izolovaná na hardwaru vyhrazeném pro jediného zákazníka.
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

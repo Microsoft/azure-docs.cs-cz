@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/18/2019
+ms.date: 11/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6a6b39d540427b7c3400fded62431c914db23bb3
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 2cff67dde7cfe9e015cd25b26811410ce6e686e9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327317"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462547"
 ---
 # <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Průvodce výkonem SQL Serveru ve službě Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,9 +29,9 @@ Tento článek poskytuje pokyny pro optimalizaci SQL Serverho výkonu v Microsof
 
 ## <a name="overview"></a>Přehled
 
- Při spouštění SQL Server v Azure Virtual Machines doporučujeme, abyste dál používali stejné možnosti optimalizace výkonu databáze, které platí pro SQL Server v místních serverových prostředích. Výkon relační databáze ve veřejném cloudu však závisí na řadě faktorů, jako je velikost virtuálního počítače nebo konfigurace datových disků.
+Při spouštění SQL Server v Azure Virtual Machines doporučujeme, abyste dál používali stejné možnosti optimalizace výkonu databáze, které platí pro SQL Server v místních serverových prostředích. Výkon relační databáze ve veřejném cloudu však závisí na řadě faktorů, jako je velikost virtuálního počítače nebo konfigurace datových disků.
 
-[SQL Server Image zřízené v Azure Portal](sql-vm-create-portal-quickstart.md) postupují v části Obecné doporučené postupy konfigurace úložiště (Další informace o tom, jak je úložiště nakonfigurované) najdete v tématu [konfigurace úložiště pro SQL Server virtuální počítače (VM)](storage-configuration.md). Po zřízení zvažte použití dalších optimalizací popsaných v tomto článku. Založte své možnosti na vaše úlohy a ověřte je prostřednictvím testování.
+[SQL Server Image zřízené v Azure Portal](sql-vm-create-portal-quickstart.md) postupují podle obecných osvědčených [postupů konfigurace](storage-configuration.md)úložiště. Po zřízení zvažte použití dalších optimalizací popsaných v tomto článku. Založte své možnosti na vaše úlohy a ověřte je prostřednictvím testování.
 
 > [!TIP]
 > Mezi optimalizací a optimalizací výkonu je typicky kompromis. Tento článek se zaměřuje na získání *nejlepšího* výkonu pro SQL Server v Azure Virtual Machines. Pokud vaše úloha je méně náročná, možná nebudete potřebovat každou níže uvedenou optimalizaci. Při hodnocení těchto doporučení Vezměte v úvahu požadavky na výkon, náklady a vzory úloh.
@@ -42,21 +42,165 @@ Následuje rychlý kontrolní seznam pro optimální výkon SQL Server v Azure V
 
 | Oblast | Optimalizace |
 | --- | --- |
-| [Velikost virtuálního počítače](#vm-size-guidance) | – Používejte velikosti virtuálních počítačů 4 nebo více vCPU, jako je [E4S_v3](../../../virtual-machines/ev3-esv3-series.md) nebo vyšší nebo [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md) nebo vyšší.<br/><br/> - [Řada ES, EAS, DS a Das](../../../virtual-machines/sizes-general.md) nabízí optimální vCPU poměr paměti nutný pro výkon úloh OLTP. <br/><br/> - [Řada M](../../../virtual-machines/m-series.md) nabízí nejvyšší vCPU poměr paměti nutný k zajištění kritického výkonu a je ideální pro úlohy datového skladu. <br/><br/> – Pomocí [kontrolního seznamu požadavků na výkon aplikace](../../../virtual-machines/premium-storage-performance.md#application-performance-requirements-checklist) Shromážděte požadavky na [vstupně](../../../virtual-machines/premium-storage-performance.md#iops)-výstupní operace cílového zatížení, [propustnost](../../../virtual-machines/premium-storage-performance.md#throughput) a [latence](../../../virtual-machines/premium-storage-performance.md#latency) v době špičky a pak vyberte [Velikost virtuálního počítače](../../../virtual-machines/sizes-general.md) , která se může škálovat na požadavky výkonu vaší úlohy.|
-| [Storage](#storage-guidance) | – Podrobné testování výkonu SQL Server v Azure Virtual Machines pomocí srovnávacích testů TPC-E a TPC_C najdete v blogu věnovaném [optimalizaci výkonu OLTP](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794). <br/><br/> – Použijte [prémiové SSD](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794) pro nejlepší ceny a výkonnostní výhody. Nakonfigurujte [mezipaměť jen pro čtení](../../../virtual-machines/premium-storage-performance.md#disk-caching) pro datové soubory a žádnou mezipaměť pro soubor protokolu. <br/><br/> – Použijte [disky Ultra](../../../virtual-machines/disks-types.md#ultra-disk) , pokud zatížení vyžaduje méně než 1 MS úložiště. Další informace najdete v tématu [migrace na disk s Ultra](storage-migrate-to-ultradisk.md) . <br/><br/> – Shromažďování požadavků na latenci úložiště pro soubory SQL Server dat, protokolů a dočasné databáze [monitorováním aplikace](../../../virtual-machines/premium-storage-performance.md#application-performance-requirements-checklist) před volbou typu disku. Pokud se vyžadují <latence úložiště 1 ms, použijte Ultra disks, v opačném případě použijte disk SSD úrovně Premium. Pokud se pro soubor protokolu a ne pro datové soubory vyžadují nízké latence, [zajistěte, aby byl Ultra disk](../../../virtual-machines/disks-enable-ultra-ssd.md) v požadovaném IOPS a úrovně propustnosti jenom pro soubor protokolu. <br/><br/> -  Pro SQL Server instanci clusteru s podporou převzetí služeb při selhání se u [souborů úrovně Premium](failover-cluster-instance-premium-file-share-manually-configure.md) doporučuje sdílené úložiště. Soubory úrovně Premium nepodporují ukládání do mezipaměti a nabízejí omezený výkon v porovnání s disky SSD úrovně Premium. Pro samostatné instance SQL vyberte na discích úrovně Premium disky spravované přes prémiové sdílené složky. ale Využijte prémiové sdílené složky pro sdílené úložiště instance clusteru s podporou převzetí služeb při selhání, aby se usnadnila údržba a flexibilní škálovatelnost. <br/><br/> – Standardní úložiště se doporučuje jenom pro účely vývoje a testování nebo pro záložní soubory a neměla by se používat pro produkční úlohy. <br/><br/> – Udržujte [účet úložiště](../../../storage/common/storage-account-create.md) a SQL Server virtuální počítač ve stejné oblasti.<br/><br/> – Zakažte v účtu úložiště [geograficky redundantní úložiště](../../../storage/common/storage-redundancy.md) Azure (geografickou replikaci).  |
-| [Disky](#disks-guidance) | – Použijte minimálně 2 [disky SSD úrovně Premium](../../../virtual-machines/disks-types.md#premium-ssd) (1 pro soubor protokolu a 1 pro datové soubory). <br/><br/> – Pro úlohy, které vyžadují <1 MS/v v/v, povolte akcelerátor zápisu pro řady M a zvažte použití SSD úrovně Ultra disků pro řady ES a DS. <br/><br/> -Povolit [ukládání do mezipaměti jen pro čtení](../../../virtual-machines/premium-storage-performance.md#disk-caching) na discích, které hostují datové soubory.<br/><br/> – Přidání dalších 20% kapacity IOPS/propustnosti, než kolik jich vyžaduje při [konfiguraci úložiště pro SQL Server dat, protokolů a souborů tempdb](storage-configuration.md) <br/><br/> – Nepoužívejte operační systém nebo dočasné disky pro úložiště databáze nebo protokolování.<br/><br/> – Nepovolujte ukládání do mezipaměti na discích hostujících soubor protokolu.  **Důležité**: při změně nastavení mezipaměti pro disk Azure Virtual Machines zastavte službu SQL Server.<br/><br/> – Proložením několika datových disků Azure získáte vyšší propustnost úložiště.<br/><br/> – Formát s dokumentovanými velikostmi přidělení. <br/><br/> Na místní jednotku SSD umístěte databázi TempDB `D:\` pro klíčové SQL Server úlohy (po výběru správné velikosti virtuálního počítače). Pokud vytvoříte virtuální počítač z Azure Portal nebo šablon Azure pro rychlý Start a [umístíte dočasnou databázi na místní disk](https://techcommunity.microsoft.com/t5/SQL-Server/Announcing-Performance-Optimized-Storage-Configuration-for-SQL/ba-p/891583) , pak nebudete potřebovat žádnou další akci. pro všechny ostatní případy postupujte podle pokynů v blogu pro  [použití SSD k uložení databáze tempdb](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) , aby nedocházelo k chybám po restartování. Pokud kapacita místního disku není dostatečná pro velikost dočasné databáze, umístěte dočasnou databázi [do fondu úložiště](../../../virtual-machines/premium-storage-performance.md) , který je umístěn na discích SSD úrovně Premium s [ukládáním do mezipaměti jen pro čtení](../../../virtual-machines/premium-storage-performance.md#disk-caching). |
-| [I/O](#io-guidance) |-Povolit kompresi stránky databáze.<br/><br/> – Povolí okamžitou inicializaci souborů pro datové soubory.<br/><br/> – Omezuje automatické zvětšování databáze.<br/><br/> -Zakázat automatického zmenšení databáze.<br/><br/> – Přesuňte všechny databáze na datové disky, včetně systémových databází.<br/><br/> – SQL Server přesunutí adresářů protokolů chyb a trasovacích souborů do datových disků.<br/><br/> – Nakonfigurujte výchozí zálohu a umístění souborů databáze.<br/><br/> - [Povolí uzamčené stránky v paměti](/sql/database-engine/configure-windows/enable-the-lock-pages-in-memory-option-windows?view=sql-server-2017).<br/><br/> – Použijte opravy výkonu SQL Server. |
+| [Velikost virtuálního počítače](#vm-size-guidance) | – Používejte velikosti virtuálních počítačů 4 nebo více vCPU, jako je [Standard_M8-4ms](/../../virtual-machines/m-series), [E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series)nebo [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15) nebo vyšší. <br/><br/> – Použijte [paměťově optimalizované](../../../virtual-machines/sizes-memory.md) velikosti virtuálních počítačů pro dosažení optimálního výkonu SQL Server úloh. <br/><br/> – [DSv2 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md), [Edsv4](../../../virtual-machines/edv4-edsv4-series.md) Series, [M-](../../../virtual-machines/m-series.md)a [Mv2-](../../../virtual-machines/mv2-series.md) Series nabízí optimální poměr mezi pamětí a Vcore potřebný pro úlohy OLTP. Oba virtuální počítače řady M nabízejí nejvyšší poměr paměti k vCore, který je potřeba pro důležité úlohy, a je taky ideální pro úlohy datového skladu. <br/><br/> – Pro důležité úlohy a úlohy datového skladu může být vyžadován vyšší poměr vCore paměti. <br/><br/> – Využití imagí virtuálních počítačů Azure Marketplace jako nastavení SQL Server a možnosti úložiště jsou nakonfigurovány pro optimální výkon SQL Server. <br/><br/> – Shromážděte charakteristiky výkonu cílového zatížení a použijte je k určení vhodné velikosti virtuálních počítačů pro vaši firmu.|
+| [Storage](#storage-guidance) | – Podrobné testování výkonu SQL Server v Azure Virtual Machines pomocí srovnávacích testů TPC-E a TPC_C najdete v blogu věnovaném [optimalizaci výkonu OLTP](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794). <br/><br/> – Použijte [prémiové SSD](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794) pro nejlepší ceny a výkonnostní výhody. Nakonfigurujte [mezipaměť jen pro čtení](../../../virtual-machines/premium-storage-performance.md#disk-caching) pro datové soubory a žádnou mezipaměť pro soubor protokolu. <br/><br/> – Použijte [disky Ultra](../../../virtual-machines/disks-types.md#ultra-disk) , pokud zatížení vyžaduje méně než 1 – MS úložiště. Další informace najdete v tématu [migrace na disk s Ultra](storage-migrate-to-ultradisk.md) . <br/><br/> – Shromažďování požadavků na latenci úložiště pro soubory SQL Server dat, protokolů a dočasné databáze [monitorováním aplikace](../../../virtual-machines/premium-storage-performance.md#application-performance-requirements-checklist) před volbou typu disku. Pokud se vyžadují < 1 – MS úložiště, použijte Ultra disks, v opačném případě použijte disk SSD úrovně Premium. Pokud se pro soubor protokolu a ne pro datové soubory vyžadují nízké latence, [zajistěte, aby byl Ultra disk](../../../virtual-machines/disks-enable-ultra-ssd.md) v požadovaném IOPS a úrovně propustnosti jenom pro soubor protokolu. <br/><br/>  – Standardní úložiště se doporučuje jenom pro účely vývoje a testování nebo pro záložní soubory a neměla by se používat pro produkční úlohy. <br/><br/> – Udržujte [účet úložiště](../../../storage/common/storage-account-create.md) a SQL Server virtuální počítač ve stejné oblasti.<br/><br/> – Zakažte v účtu úložiště [geograficky redundantní úložiště](../../../storage/common/storage-redundancy.md) Azure (geografickou replikaci).  |
+| [Disky](#disks-guidance) | – Použijte minimálně 2 [disky SSD úrovně Premium](../../../virtual-machines/disks-types.md#premium-ssd) (1 pro soubor protokolu a 1 pro datové soubory). <br/><br/> – Pro úlohy, které vyžadují < 1-MS v/v/v, povolte akcelerátor zápisu pro řady M a zvažte použití SSD úrovně Ultra disků pro řady ES a DS. <br/><br/> -Povolit [ukládání do mezipaměti jen pro čtení](../../../virtual-machines/premium-storage-performance.md#disk-caching) na discích, které hostují datové soubory.<br/><br/> – Přidání dalších 20% kapacity IOPS/propustnosti, než kolik jich vyžaduje při [konfiguraci úložiště pro SQL Server dat, protokolů a souborů tempdb](storage-configuration.md) <br/><br/> – Nepoužívejte operační systém nebo dočasné disky pro úložiště databáze nebo protokolování.<br/><br/> – Nepovolujte ukládání do mezipaměti na discích hostujících soubor protokolu.  **Důležité**: při změně nastavení mezipaměti pro disk Azure Virtual Machines zastavte službu SQL Server.<br/><br/> – Proložením několika datových disků Azure získáte vyšší propustnost úložiště.<br/><br/> – Formát s dokumentovanými velikostmi přidělení. <br/><br/> Na místní jednotku SSD umístěte databázi TempDB `D:\` pro klíčové SQL Server úlohy (po výběru správné velikosti virtuálního počítače). Pokud vytvoříte virtuální počítač z Azure Portal nebo šablon Azure pro rychlý Start a [umístíte dočasnou databázi na místní disk](https://techcommunity.microsoft.com/t5/SQL-Server/Announcing-Performance-Optimized-Storage-Configuration-for-SQL/ba-p/891583), pak nebudete potřebovat žádnou další akci. pro všechny ostatní případy postupujte podle pokynů v blogu pro  [použití SSD k uložení databáze tempdb](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-TempDB-and-buffer-pool-extensions/) , aby nedocházelo k chybám po restartování. Pokud kapacita místního disku není dostatečná pro velikost dočasné databáze, umístěte dočasnou databázi [do fondu úložiště](../../../virtual-machines/premium-storage-performance.md) , který je umístěn na discích SSD úrovně Premium s [ukládáním do mezipaměti jen pro čtení](../../../virtual-machines/premium-storage-performance.md#disk-caching). |
+| [I/O](#io-guidance) |-Povolit kompresi stránky databáze.<br/><br/> – Povolí okamžitou inicializaci souborů pro datové soubory.<br/><br/> – Omezuje automatické zvětšování databáze.<br/><br/> -Zakázat automatického zmenšení databáze.<br/><br/> – Přesuňte všechny databáze na datové disky, včetně systémových databází.<br/><br/> – SQL Server přesunutí adresářů protokolů chyb a trasovacích souborů do datových disků.<br/><br/> – Nakonfigurujte výchozí zálohu a umístění souborů databáze.<br/><br/> - [Povolí uzamčené stránky v paměti](/sql/database-engine/configure-windows/enable-the-lock-pages-in-memory-option-windows).<br/><br/> – Vyhodnoťte a nainstalujte [nejnovější kumulativní aktualizace](/sql/database-engine/install-windows/latest-updates-for-microsoft-sql-server) pro nainstalovanou verzi SQL Server. |
 | [Specifické pro jednotlivé funkce](#feature-specific-guidance) | – Zálohování přímo do Azure Blob Storage.<br/><br/>– Použijte [zálohy snímků souborů](/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure) pro databáze větší než 12 TB. <br/><br/>– Použijte více souborů dočasné databáze, 1 soubor na jádro a až 8 souborů.<br/><br/>-Nastavit maximální velikost paměti serveru v 90% nebo až 50 GB zbývajících pro operační systém. <br/><br/>– Povolte měkký NUMA. |
 
+
+<br/>
 Další informace o *tom, jak* a *Proč* provádět tyto optimalizace, najdete v podrobnostech a pokynech uvedených v následujících částech.
+<br/><br/>
+
+## <a name="getting-started"></a>Začínáme
+
+Pokud vytváříte novou SQL Server na virtuálním počítači Azure a nemigrujete aktuální zdrojový systém, vytvořte nový virtuální počítač s SQL Server na základě požadavků dodavatele.  Požadavky na dodavatele pro SQL Server virtuální počítač jsou stejné jako ty, které byste nasadili místně. 
+
+Pokud vytváříte nový virtuální počítač SQL Server s novou aplikací vytvořenou pro Cloud, můžete snadno nastavit velikost vašich SQL Server virtuálních počítačů jako vývoj vašich požadavků na data a využití.
+Spusťte vývojová prostředí s nižší vrstvou D-Series, B-Series nebo Av2-Series a rozšiřte prostředí v čase. 
+
+Doporučené minimum pro produkční prostředí OLTP je 4 vCore, 32 GB paměti a poměr paměti až vCore 8. U nových prostředí začněte se 4 vCore počítači a škálujte na 8, 16, 32 virtuální jádra nebo víc, když se změní vaše požadavky na data a výpočetní prostředky. U OLTP propustnosti cílí na cílové SQL Server virtuální počítače, které mají 5000 vstupně-výstupních operací pro každou vCore. 
+
+Pomocí SQL Server imagí virtuálního počítače Marketplace s konfigurací úložiště na portálu. Díky tomu bude snazší vytvořit fondy úložiště potřebné k získání velikosti, IOPS a propustnosti potřebných pro vaše úlohy. Je důležité zvolit SQL Server virtuální počítače, které podporují Storage úrovně Premium a Storage úrovně Premium. Další informace najdete v části [úložiště](#storage-guidance) . 
+
+SQL Server datový sklad a kritická prostředí se často musí škálovat nad rámec 8 paměti až do vCore poměru. Pro střední prostředí můžete zvolit poměr 16 jader k paměti a poměr od 32 do paměti pro rozsáhlejší prostředí datového skladu. 
+
+SQL Server prostředí datového skladu často využívají paralelní zpracování větších počítačů. Z tohoto důvodu jsou řady M-Series a Mv2-Series silné možnosti pro rozsáhlejší prostředí datového skladu.
 
 ## <a name="vm-size-guidance"></a>Pokyny pro velikost virtuálního počítače
 
-Začněte shromažďováním požadavků na propustnost procesoru, paměti a úložiště v časech špičky. Čítače výkonu \LogicalDisk\Disk čtení/s a \LogicalDisk\Disk zápisy na disk/s se dají použít ke shromažďování požadavků na čtení a zápis IOPS a čítač \LogicalDisk\Disk bajtů/s se dá použít ke shromažďování [požadavků na propustnost úložiště](../../../virtual-machines/premium-storage-performance.md#disk-caching) pro soubory dat, protokolů a dočasné databáze. Po definování požadavků na vstupně-výstupní operace a propustnost ve špičce jsou vyhodnoceny velikosti virtuálních počítačů, které tuto kapacitu nabízí. Pokud například vaše úloha vyžaduje 20 000 vstupně-výstupních vstupně-výstupních operací a 10 000 vstupně-výstupních operací zápisu ve špičce, můžete buď vybrat možnost E16s_v3 (s až 32 KB a 25600 neuložených vstupně-výstupních operací), nebo M16_s (s až 20 KB a 10 000 IOPS) a 2 P30 disky. Ujistěte se, že rozumíte požadavkům na propustnost a IOPS zatížení, protože virtuální počítače mají jiné limity škálování pro vstupně-výstupní operace a propustnost.<br/><br/>[DSv_3](../../../virtual-machines/dv3-dsv3-series.md) a [Es_v3-Series](../../../virtual-machines/ev3-esv3-series.md) se hostují na hardware pro obecné účely s procesory Intel Haswell nebo Broadwell. [Řada M-Series](../../../virtual-machines/m-series.md) nabízí nejvyšší počet vCPU a paměť pro největší SQL Server zatížení a je hostovaný na paměťově optimalizovaném hardwaru s využitím řady procesorů Skylake. Tyto řady virtuálních počítačů podporují Prémiové úložiště, což se doporučuje pro nejlepší výkon s mezipamětí pro čtení na úrovni hostitele. Řady Es_v3 i M jsou také dostupné v [omezených základních velikostech](../../../virtual-machines/constrained-vcpu.md), což šetří peníze pro úlohy s nižšími nároky na výpočetní výkon a vysokou kapacitu úložiště. 
+Použijte konfiguraci vCPU a paměti ze zdrojového počítače jako základní hodnotu pro migraci aktuální místní SQL Server databáze do SQL Server na virtuálních počítačích Azure. Přepněte si základní licenci do Azure, abyste mohli využít výhod [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) a ušetřit náklady na SQL Server licencování.
+
+**Microsoft doporučuje pro produkční SQL Server zátěžový poměr paměti a 8 jako výchozí bod.** Pro neprodukční úlohy jsou přijatelné i menší poměry. 
+
+Vyberte [paměťově optimalizovanou](../../../virtual-machines/sizes-memory.md), [obecné účely](../../../virtual-machines/sizes-general.md), [optimalizované úložiště](../../../virtual-machines/sizes-storage.md)nebo velikost virtuálního počítače s [omezením vCore](../../../virtual-machines/constrained-vcpu.md) , která je nejoptimální pro SQL Server výkon na základě vaší úlohy (OLTP nebo datového skladu). 
+
+### <a name="memory-optimized"></a>Optimalizované z hlediska paměti
+
+[Paměťově optimalizované velikosti virtuálních počítačů](../../../virtual-machines/sizes-memory.md) jsou primárním cílem pro SQL Server virtuální počítače a doporučené volby od Microsoftu. Paměťově optimalizované virtuální počítače nabízí silnější poměry paměti k procesoru a možnosti střední až velké mezipaměti. 
+
+#### <a name="m-and-mv2-series"></a>Řady M a Mv2
+
+[Řada M-Series](../../../virtual-machines/m-series.md) nabízí počty Vcore a paměť pro některé z největších SQL Server úloh.  
+
+[Mv2-Series](../../../virtual-machines/mv2-series.md) má nejvyšší počet vCoreů a paměť a doporučuje se pro důležité úlohy datového skladu. Instance Mv2-Series jsou paměťově optimalizované velikosti virtuálních počítačů, které poskytují bezkonkurenční výpočetní výkon pro podporu velkých databází v paměti a úloh s vysokým poměrem paměti na procesor, který je ideální pro servery relačních databází, velké mezipaměti a analýzu v paměti.
+
+[Standard_M64ms](../../../virtual-machines/m-series.md) má například poměr 28 paměti k vCore.
+
+Některé funkce řady M a Mv2-Series atraktivní pro SQL Server výkon zahrnují [Prémiové úložiště](../../../virtual-machines/premium-storage-performance.md) a podporu pro [ukládání do mezipaměti služby Premium Storage](../../../virtual-machines/premium-storage-performance.md#disk-caching) , podpora [Ultra disků](../../../virtual-machines/disks-enable-ultra-ssd.md) a [akcelerace zápisu](../../../virtual-machines/how-to-enable-write-accelerator.md).
+
+#### <a name="edsv4-series"></a>Edsv4-Series
+
+[Edsv4-Series](../../../virtual-machines/edv4-edsv4-series.md) je určená pro aplikace náročné na paměť. Tyto virtuální počítače mají rozsáhlou kapacitu místního úložiště SSD, silný počet IOPS na místní disk, až 504 GiB paměti RAM a vylepšený výpočetní výkon v porovnání s předchozími Ev3/Esv3 formáty s virtuálními počítači Gen2. U těchto virtuálních počítačů je skoro konzistentní poměr paměti k vCore, který je ideální pro standardní SQL Server úlohy. 
+
+Tato série virtuálních počítačů je ideální pro podnikové aplikace náročné na paměť a aplikace, které využívají nízkou latenci, vysoce rychlé místní úložiště.
+
+Virtuální počítače řady Edsv4-series podporují [Prémiové úložiště](../../../virtual-machines/premium-storage-performance.md)a [ukládání do mezipaměti služby Storage úrovně Premium](../../../virtual-machines/premium-storage-performance.md#disk-caching).
+
+#### <a name="dsv2-series-11-15"></a>DSv2-Series 11-15
+
+[DSv2-series 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15) má stejnou konfiguraci paměti a disku jako předchozí řada D-Series. Tato série má konzistentní poměr paměti k procesoru 7 ve všech virtuálních počítačích. 
+
+[DSv2-series 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15) podporuje [úložiště Premium Storage](../../../virtual-machines/premium-storage-performance.md) a [Storage úrovně Premium](../../../virtual-machines/premium-storage-performance.md#disk-caching), což se důrazně doporučuje pro optimální výkon.
+
+### <a name="general-purpose"></a>Pro obecné účely
+
+[Velikosti virtuálních počítačů pro obecné účely](../../../virtual-machines/sizes-general.md) jsou navržené tak, aby poskytovaly vyvážené poměry paměti až Vcore pro menší úlohy na úrovni vstupu, jako je vývoj a testování, webové servery a menší databázové servery. 
+
+Z důvodu menšího poměru paměti k vCore s virtuálními počítači pro obecné účely je důležité pečlivě monitorovat čítače výkonu založené na paměti, abyste zajistili, že SQL Server dokáže získat paměť vyrovnávací paměti, kterou potřebuje. Další informace najdete v části [směrný plán výkonu paměti](#memory) . 
+
+Vzhledem k tomu, že počáteční doporučení pro produkční úlohy je poměr vCore k paměti 8, minimální doporučená konfigurace pro virtuální počítač s obecným účelem se systémem SQL Server je 4 vCPU a 32 GB paměti. 
+
+#### <a name="ddsv4-series"></a>Řada Ddsv4
+
+[Ddsv4-Series](../../../virtual-machines/ddv4-ddsv4-series.md) nabízí uspokojivou kombinaci vCPU, paměti a dočasného disku, ale s menší podporou Vcore paměti. 
+
+Virtuální počítače s Ddsv4 zahrnují nižší latenci a vyšší rychlost místního úložiště.
+
+Tyto počítače jsou ideální pro souběžná nasazení SQL a aplikace, která vyžadují rychlý přístup k dočasnému úložišti a relačním databázím oddělení. Na všech virtuálních počítačích v této sérii je standardní vCore poměr paměti a 4. 
+
+Z tohoto důvodu se doporučuje využít D8ds_v4 jako počáteční virtuální počítač v této sérii s 8 virtuální jádra a 32 GB paměti. Největším počítačem je D64ds_v4, který má 64 virtuální jádra a 256 GB paměti.
+
+Virtuální počítače [řady Ddsv4-Series](../../../virtual-machines/ddv4-ddsv4-series.md) podporují [Prémiové úložiště](../../../virtual-machines/premium-storage-performance.md) a [úložiště Premium Storage](../../../virtual-machines/premium-storage-performance.md#disk-caching).
+
+> [!NOTE]
+> [Ddsv4-Series](../../../virtual-machines/ddv4-ddsv4-series.md) nemá poměr paměti až Vcore, který se doporučuje pro SQL Server úlohy. V takovém případě zvažte použití těchto virtuálních počítačů pouze pro menší úlohy aplikací a vývoje.
+
+#### <a name="b-series"></a>Řady B-Series
+
+Velikosti virtuálních počítačů s [nízkou](../../../virtual-machines/sizes-b-series-burstable.md) zátěží jsou ideální pro úlohy, které nepotřebují konzistentní výkon, jako je například kontrola konceptu a velmi malé aplikace a vývojové servery. 
+
+Většina velikostí virtuálních počítačů [řady B-Series](../../../virtual-machines/sizes-b-series-burstable.md) má Vcore poměr paměti 4. Největší z těchto počítačů je [Standard_B20ms](../../../virtual-machines/sizes-b-series-burstable.md) s 20 virtuální jádra a 80 GB paměti.
+
+Tato řada je jedinečná, protože aplikace mají možnost rozrůznit se v pracovní době s rozdílnými kredity **, které se** liší podle velikosti počítačů. 
+
+Po vyčerpání kreditů se virtuální počítač vrátí do výkonu základního počítače.
+
+Výhoda B-Series je úspory výpočtů, které byste mohli dosáhnout v porovnání s jinými velikostmi virtuálních počítačů v jiných řadách, zejména pokud potřebujete výpočetní výkon v průběhu dne.
+
+Tato série podporuje [Premium Storage](../../../virtual-machines/premium-storage-performance.md), ale **nepodporuje** [mezipaměť Premium Storage](../../../virtual-machines/premium-storage-performance.md#disk-caching).
+
+> [!NOTE] 
+> [Řady B-Series](../../../virtual-machines/sizes-b-series-burstable.md) neobsahují poměr Vcore k paměti 8, který je doporučený pro úlohy SQL Server. V takovém případě zvažte použití těchto virtuálních počítačů pro menší aplikace, webové servery a vývojové úlohy.
+
+#### <a name="av2-series"></a>Av2-series
+
+Virtuální počítače [řady Av2-Series](../../../virtual-machines/av2-series.md) jsou nejvhodnější pro úlohy na úrovni vstupu, jako je vývoj a testování, webové servery s nízkým provozem, malé až středně střední databáze aplikací a testování konceptů.
+
+Pro tyto tři virtuální počítače mají dobrý poměr paměti k virtuální jádra (virtuální jádra a 16GBs paměti), [Standard_A4m_v2](../../../virtual-machines/av2-series.md) (4 virtuální jádra a 32GBs paměti) a [Standard_A8m_v2](../../../virtual-machines/av2-series.md) (8 64GBs a vCore paměti). [Standard_A2m_v2](../../../virtual-machines/av2-series.md) 
+
+Tyto virtuální počítače jsou osvědčenými možnostmi pro menší vývojové a testovací SQL Server počítače. 
+
+[Standard_A8m_v2](../../../virtual-machines/av2-series.md) 8 Vcore může být vhodnou možností pro malé aplikační a webové servery.
+
+> [!NOTE] 
+> Av2 Series nepodporuje Prémiové úložiště, a proto se nedoporučuje pro produkční SQL Server úlohy ani s virtuálními počítači, které mají poměr paměti k vCore 8.
+
+### <a name="storage-optimized"></a>Optimalizované z hlediska úložiště
+
+[Velikosti virtuálních počítačů optimalizované pro úložiště](../../../virtual-machines/sizes-storage.md) jsou určené pro konkrétní případy použití. Tyto virtuální počítače jsou speciálně navržené pomocí optimalizované propustnosti disku a vstupně-výstupních operací. Tato série virtuálních počítačů je určená pro scénáře s velkými objemy dat, datové sklady a velké transakční databáze. 
+
+#### <a name="lsv2-series"></a>Řada Lsv2
+
+[Lsv2-Series](../../../virtual-machines/lsv2-series.md) nabízí vysokou propustnost, nízkou latenci a místní úložiště NVMe. Virtuální počítače řady Lsv2-Series jsou optimalizované tak, aby používaly místní disk na uzlu připojeném přímo k virtuálnímu počítači namísto použití trvalých datových disků. 
+
+Tyto virtuální počítače jsou silné možnosti pro úlohy s velkým objemem dat, datového skladu, generování sestav a ETL. Vysoká propustnost a IOPs místního úložiště NVMe je vhodný případ pro zpracování souborů, které se načtou do vaší databáze, a dalších scénářů, ve kterých se zdrojová data dají znovu vytvořit ze zdrojového systému nebo jiných úložišť, jako je Azure Blob Storage nebo Azure Data Lake. [Lsv2-Series](../../../virtual-machines/lsv2-series.md) Virtuální počítače můžou také zvýšit výkon svého disku po dobu až 30 minut.
+
+Tyto virtuální počítače mají velikost od 8 do 80 vCPU s 8 GiB paměti na vCPU a pro každých 8 vCPU, 1,92 TB z NVMe SSD. To znamená, že pro největší virtuální počítač této řady je [L80s_v2](../../../virtual-machines/lsv2-series.md), že je k dispozici 80 vCPU a 640 BIB paměti s 10x 1.92 TB NVMe úložiště.  Mezi všemi těmito virtuálními počítači je konzistentní vCore poměr paměti a 8.
+
+Úložiště NVMe je dočasné, což znamená, že při restartování virtuálního počítače dojde ke ztrátě dat na těchto discích.
+
+Lsv2 a ls series podporují [Prémiové úložiště](../../../virtual-machines/premium-storage-performance.md), ale úložiště Premium Storage nepatří do mezipaměti. Vytvoření místní mezipaměti pro zvýšení IOPs není podporováno. 
+
+> [!WARNING]
+> Ukládání datových souborů na dočasné úložiště NVMe může způsobit ztrátu dat, když se virtuální počítač oddělí. 
+
+### <a name="constrained-vcores"></a>Omezené virtuální jádra
+
+Vysoce výkonné SQL Server úlohy často potřebují větší množství paměti, vstupně-výstupních operací a propustnosti bez vyššího počtu vCore. 
+
+Většina úloh OLTP jsou aplikační databáze řízené velkým počtem menších transakcí. U úloh OLTP je čtení nebo úpravy pouze malého množství dat, ale objem transakcí řízený počty uživatelů je mnohem vyšší. Je důležité mít k dispozici SQL Server paměť pro plány ukládání do mezipaměti, ukládat nedávno dostupná data a zajistit, aby fyzické čtení bylo možné rychle načíst do paměti. 
+
+Tato OLTP prostředí vyžadují větší množství paměti, rychlé úložiště a šířku pásma I/O, která je nutná k optimálnímu výkonu. 
+
+Azure nabízí velikosti virtuálních počítačů s [omezenými vCPU počty](../../../virtual-machines/constrained-vcpu.md), aby se zachovala Tato úroveň výkonu bez vyšších licenčních nákladů na SQL Server. 
+
+Tato operace pomáhá řídit náklady na licencování tím, že snižuje dostupné virtuální jádra a současně zachovává stejnou šířku pásma, úložiště a I/O v nadřazeném virtuálním počítači.
+
+Počet vCPU může být omezený na jednu čtvrtinu původní velikosti virtuálního počítače. Omezení virtuální jádra k dispozici pro virtuální počítač, dosáhne vyššího poměru paměti až vCore.
+
+Tyto nové velikosti virtuálních počítačů mají příponu, která určuje počet aktivních vCPU, aby je bylo snazší identifikovat. 
+
+Například [M64-32ms](../../../virtual-machines/constrained-vcpu.md) vyžaduje licencování pouze 32 SQL Server virtuální jádra s pamětí, v/v a propustností [M64ms](../../../virtual-machines/m-series.md) a [M64-16MS](../../../virtual-machines/constrained-vcpu.md) vyžaduje licencování pouze 16 virtuální jádra.  I když má [M64-16MS](../../../virtual-machines/constrained-vcpu.md) čtvrtinu SQL Server licenčních nákladů na M64ms, budou náklady na výpočetní výkon virtuálního počítače stejné.
+
+> [!NOTE] 
+> - Středně velké zátěže datového skladu můžou mít stále nárok na [omezené virtuální počítače s Vcore](../../../virtual-machines/constrained-vcpu.md), ale úlohy datového skladu se běžně charakterizují menším počtem uživatelů a procesy, které řeší větší objemy dat prostřednictvím plánů dotazů, které běží paralelně. 
+> - Náklady na výpočetní výkon, včetně licencování operačního systému, budou zůstat stejné jako u nadřazeného virtuálního počítače. 
 
 ## <a name="storage-guidance"></a>Pokyny k ukládání
 
-Podrobné testování výkonu SQL Server v Azure Virtual Machines pomocí srovnávacích testů TPC-E a TPC_C najdete v blogu věnovaném [optimalizaci výkonu OLTP](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794). 
+Podrobné testování výkonu SQL Server v Azure Virtual Machines pomocí srovnávacích testů TPC-E a TPC-C najdete v blogu věnovaném [optimalizaci OLTP výkonu](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794). 
 
 Azure Blob cache s Premium SSD se doporučuje pro všechny produkční úlohy. 
 
@@ -85,7 +229,7 @@ Výchozí zásady ukládání do mezipaměti na disku s operačním systémem js
 
 Dočasná Úložná jednotka označená jako jednotka **D** není trvale nastavená na službu Azure Blob Storage. Neukládejte soubory uživatelské databáze ani soubory protokolů transakcí uživatele na jednotce **D**:.
 
-Pro nejdůležitější SQL Server úlohy umístěte databázi TempDB na místní `D:\` jednotku SSD (po výběru správné velikosti virtuálního počítače). Pokud vytvoříte virtuální počítač z Azure Portal nebo šablon Azure pro rychlý Start a [umístíte dočasnou databázi na místní disk](https://techcommunity.microsoft.com/t5/SQL-Server/Announcing-Performance-Optimized-Storage-Configuration-for-SQL/ba-p/891583), pak nebudete potřebovat žádnou další akci. pro všechny ostatní případy postupujte podle pokynů v blogu pro  [použití SSD k uložení databáze tempdb](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) , aby nedocházelo k chybám po restartování. Pokud kapacita místního disku není dostatečná pro velikost dočasné databáze, umístěte dočasnou databázi [do fondu úložiště](../../../virtual-machines/premium-storage-performance.md) , který je umístěn na discích SSD úrovně Premium s [ukládáním do mezipaměti jen pro čtení](../../../virtual-machines/premium-storage-performance.md#disk-caching).
+Pro nejdůležitější SQL Server úlohy umístěte databázi TempDB na místní `D:\` jednotku SSD (po výběru správné velikosti virtuálního počítače). Pokud vytvoříte virtuální počítač z Azure Portal nebo šablon Azure pro rychlý Start a [umístíte dočasnou databázi na místní disk](https://techcommunity.microsoft.com/t5/SQL-Server/Announcing-Performance-Optimized-Storage-Configuration-for-SQL/ba-p/891583), pak nebudete potřebovat žádnou další akci. pro všechny ostatní případy postupujte podle pokynů v blogu pro  [použití SSD k uložení databáze tempdb](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-TempDB-and-buffer-pool-extensions/) , aby nedocházelo k chybám po restartování. Pokud kapacita místního disku není dostatečná pro velikost dočasné databáze, umístěte dočasnou databázi [do fondu úložiště](../../../virtual-machines/premium-storage-performance.md) , který je umístěn na discích SSD úrovně Premium s [ukládáním do mezipaměti jen pro čtení](../../../virtual-machines/premium-storage-performance.md#disk-caching).
 
 Pro virtuální počítače, které podporují prémiové SSD, můžete databázi TempDB taky ukládat na disk, který podporuje Premium SSD s povoleným ukládáním do mezipaměti pro čtení.
 
@@ -142,7 +286,7 @@ Pro virtuální počítače, které podporují prémiové SSD, můžete databáz
      > [!WARNING]
      > Při změně nastavení mezipaměti disků Azure Virtual Machines zastavte službu SQL Server, abyste se vyhnuli možnosti poškození databáze.
 
-* **Velikost alokační jednotky NTFS**: při formátování datového disku se doporučuje použít velikost alokační jednotky 64-KB pro data a soubory protokolů i pro databázi tempdb. Pokud je databáze TempDB umístěná na dočasném disku (D:\ jednotka) výkon získaný využitím této jednotky převažuje nad nutností velikosti alokační jednotky na 64 KB. 
+* **Velikost alokační jednotky NTFS**: při formátování datového disku se doporučuje použít velikost alokační jednotky 64-KB pro data a soubory protokolů i pro databázi tempdb. Pokud je databáze TempDB umístěná na dočasném disku (D:\ jednotka) výkon získaný využitím této jednotky převyšuje nutnost velikosti alokační jednotky 64-KB. 
 
 * **Osvědčené postupy správy disků**: při odebrání datového disku nebo změně jeho typu mezipaměti zastavte službu SQL Server během změny. Při změně nastavení ukládání do mezipaměti na disku s operačním systémem Azure zastaví virtuální počítač, změní typ mezipaměti a restartuje virtuální počítač. Když se změní nastavení mezipaměti datového disku, virtuální počítač se neukončí, ale datový disk se během změny odpojí z virtuálního počítače a pak se znovu připojí.
 
@@ -210,10 +354,61 @@ Příznaky přetížených systémů mohou zahrnovat, ale nejsou omezeny na vyč
 
 
 
+## <a name="collect-performance-baseline"></a>Shromažďování standardních hodnot výkonu
+
+Pro účely pokročilejšího přístupu můžete shromáždit čítače výkonu pomocí programu PerfMon/LogMan a zachytit statistiku SQL Server čekání a lépe porozumět obecným tlakům a potenciálním kritickým bodům zdrojového prostředí. 
+
+Začněte shromažďováním výkonu procesoru, paměti, [vstupně](../../../virtual-machines/premium-storage-performance.md#iops)-výstupních operací, [propustnosti](../../../virtual-machines/premium-storage-performance.md#throughput)a [latence](../../../virtual-machines/premium-storage-performance.md#latency) zdrojové úlohy v době špičky podle [kontrolního seznamu výkonu aplikace](../../../virtual-machines/premium-storage-performance.md#application-performance-requirements-checklist). 
+
+Shromažďovat data během špičky, jako jsou úlohy v průběhu běžného pracovního dne, ale také i jiné procesy vysokého zatížení, jako je například každodenní zpracování, a víkendové úlohy ETL. Zvažte horizontální navýšení kapacity prostředků pro velmi náročné úlohy, jako je například zpracování na konci čtvrtletí, a po dokončení úlohy se pak provede škálování. 
+
+Pomocí analýzy výkonu můžete vybrat [Velikost virtuálního počítače](../../../virtual-machines/sizes-memory.md) , která se může škálovat na požadavky na výkon vašich úloh.
+
+
+### <a name="iops-and-throughput"></a>IOPS a propustnost
+
+SQL Server výkon závisí silně na vstupně-výstupním subsystému. Pokud se vaše databáze nevejde do fyzické paměti, SQL Server trvale přinášejí stránky databáze do fondu vyrovnávacích pamětí a z něj. Datové soubory pro SQL Server by měly být zpracovány jinak. Přístup k souborům protokolu je sekvenční s výjimkou případů, kdy je potřeba transakci vrátit, kde se náhodně přistupuje k datovým souborům, včetně TempDB. Pokud máte pomalý vstupně-výstupní podsystém, mohou uživatelé zaznamenat problémy s výkonem, jako jsou například pomalé doby odezvy a úlohy, které nejsou dokončeny kvůli časovým limitům. 
+
+Virtuální počítače s Azure Marketplace mají soubory protokolu na fyzickém disku, který je ve výchozím nastavení oddělený od datových souborů. Počet a velikost datových souborů databáze TempDB vyhovují osvědčeným postupům a jsou zaměřeny na dočasný D:/ jednotka... 
+
+Následující čítače výkonu mohou napomoci ověření propustnosti vstupně-výstupních operací vyžadovaných vaším SQL Server: 
+* **\LogicalDisk\Disk čtení za sekundu** (čtení a zápis IOPS)
+* **\LogicalDisk\Disk zápisy na disk/s** (čtení a zápis IOPS) 
+* **\LogicalDisk\Disk bajty/s** (požadavky na propustnost pro soubory dat, protokoly a soubory tempdb)
+
+Pomocí požadavků na vstupně-výstupní operace a propustnosti na úrovních špičky vyhodnoťte velikosti virtuálních počítačů, které odpovídají kapacitě z vašich měření. 
+
+Pokud vaše úloha vyžaduje 20 000 vstupně-výstupních vstupně-výstupních operací a 10 000 vstupně-výstupních operací za sekundu, můžete buď zvolit E16s_v3 (s až 32 KB a 25600 neuložených vstupně-výstupních operací), nebo M16_s (s až 20 KB a 10 000 IOPS) a 2 P30 disky vykládané pomocí prostorů úložiště. 
+
+Ujistěte se, že rozumíte požadavkům na propustnost a IOPS zatížení, protože virtuální počítače mají jiné limity škálování pro vstupně-výstupní operace a propustnost.
+
+### <a name="memory"></a>Paměť
+
+Sledujte jak externí paměť použitou v operačním systému, tak i paměť, kterou používá interně SQL Server. Identifikace přítlaku pro jednu z komponent bude mít za problém s velikostí virtuálních počítačů a k identifikaci příležitostí pro optimalizaci. 
+
+Následující čítače výkonu vám pomůžou ověřit stav paměti virtuálního počítače s SQL Server: 
+* [\Memory\Available MB](/azure/monitoring/infrastructure-health/vmhealth-windows/winserver-memory-availmbytes)
+* [\SQLServer: paměť Manager\Target serveru paměti (KB)](/sql/relational-databases/performance-monitor/sql-server-buffer-manager-object)
+* [\SQLServer: paměť Manager\Total serveru paměti (KB)](/sql/relational-databases/performance-monitor/sql-server-buffer-manager-object)
+* [\SQLServer: buffer Manager\Lazy zápisy paměti/s](/sql/relational-databases/performance-monitor/sql-server-buffer-manager-object)
+* [\SQLServer: buffer \ přečtené stránky Life očekávané](/sql/relational-databases/performance-monitor/sql-server-buffer-manager-object)
+
+### <a name="compute--processing"></a>Výpočty/zpracování
+
+Výpočetní prostředí v Azure se spravuje jinak než v místním prostředí. Místní servery jsou během několika let sestaveny bez upgradu z důvodu režie správy a nákladů na získání nového hardwaru. Virtualizace zmírnit některé z těchto problémů, ale aplikace jsou optimalizované tak, aby využívaly největší výhody základního hardwaru, což znamená, že jakákoli významná změna spotřeby prostředků vyžaduje nové vyrovnávání zatížení celého fyzického prostředí. 
+
+Nejedná se o výzvu v Azure, kde je snadné dosáhnout nového virtuálního počítače na jiné sérii hardwaru a dokonce i v jiné oblasti. 
+
+V Azure chcete využít výhod co nejvíc prostředků virtuálních počítačů, proto by měly být virtuální počítače Azure nakonfigurované tak, aby co nejvíce ovlivnily co největší procesor, aniž by to mělo vliv na zatížení. 
+
+Následující čítače výkonu vám pomůžou ověřit výpočetní stav SQL Server virtuálního počítače:
+* **Čas procesoru \Processor Information (_Total) \%**
+* **Čas procesoru \Process (soubor sqlservr) \%**
+
+> [!NOTE] 
+> V ideálním případě se snažte vyzkoušet používání 80% vašich výpočetních prostředků s špičkami vyššími než 90%, ale nedosáhnou 100% za jakékoli trvalé časové období. V podstatě budete chtít jenom zřídit výpočetní výkon aplikací a potom naplánovat horizontální nebo nižší navýšení kapacity podle potřeb firmy. 
 
 ## <a name="next-steps"></a>Další kroky
-
-Další informace o úložišti a výkonu najdete v tématu [pokyny ke konfiguraci úložiště pro SQL Server v Azure Virtual Machines](/archive/blogs/sqlserverstorageengine/storage-configuration-guidelines-for-sql-server-on-azure-vm)
 
 Osvědčené postupy zabezpečení najdete v tématu [požadavky na zabezpečení pro SQL Server v Azure Virtual Machines](security-considerations-best-practices.md).
 

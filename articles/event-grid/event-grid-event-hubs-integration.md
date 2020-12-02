@@ -4,15 +4,15 @@ description: 'Kurz: popisuje, jak pomocí Azure Event Grid a Event Hubs migrovat
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e6dfcac17d79edd417af07179224fdf922906c4e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 42a2f7fd557970328f6d88b08e296317cecd8c66
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841350"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462153"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Kurz: streamování velkých objemů dat do datového skladu
-Azure [Event Grid](overview.md) je inteligentní služba Směrování událostí, která umožňuje reagovat na oznámení (události) z aplikací a služeb. Například může aktivovat funkci Azure Functions pro zpracování Event Hubs dat zachycených do úložiště objektů BLOB v Azure nebo v Azure Data Lake Storage a migrovat data do jiných úložišť dat. V [ukázce Event Hubs a Event Grid Integration Sample](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) se dozvíte, jak používat Event Hubs se Event Grid k bezproblémové migraci zachycených Event Hubs dat z úložiště objektů blob do služby Azure synapse Analytics (dříve SQL Data Warehouse).
+Azure [Event Grid](overview.md) je inteligentní služba Směrování událostí, která umožňuje reagovat na oznámení (události) z aplikací a služeb. Například může aktivovat funkci Azure Functions pro zpracování Event Hubs dat zachycených do úložiště objektů BLOB v Azure nebo v Azure Data Lake Storage a migrovat data do jiných úložišť dat. Tato [Event Hubs a Event Grid Integration Sample](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) vám ukáže, jak používat Event Hubs se Event Grid k bezproblémové migraci zachycených Event Hubs dat z úložiště objektů blob do Azure synapse Analytics.
 
 ![Přehled aplikace](media/event-grid-event-hubs-integration/overview.png)
 
@@ -27,8 +27,8 @@ Tento diagram znázorňuje pracovní postup řešení, které sestavíte v tomto
 V tomto článku proveďte následující kroky:
 
 > [!div class="checklist"]
-> * Použití šablony Azure Resource Manager k nasazení infrastruktury: centra událostí, účet úložiště, aplikace Function App, synapse Analytics.
-> * Vytvořte tabulku v datovém skladu.
+> * Použití šablony Azure Resource Manager k nasazení infrastruktury: centra událostí, účet úložiště, aplikace Function App, vyhrazený fond SQL.
+> * Vytvořte tabulku ve vyhrazeném fondu SQL.
 > * Přidejte kód do aplikace Function App.
 > * Přihlaste se k odběru události. 
 > * Spusťte aplikaci, která odesílá data do centra událostí.
@@ -56,7 +56,7 @@ V tomto kroku nasadíte požadovanou infrastrukturu pomocí [šablony Správce p
 
 ### <a name="launch-azure-cloud-shell-in-azure-portal"></a>Spustit Azure Cloud Shell v Azure Portal
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 2. V horní části vyberte tlačítko **Cloud Shell** .
 
     ![portál Azure](media/event-grid-event-hubs-integration/azure-portal.png)
@@ -118,7 +118,7 @@ V tomto kroku nasadíte požadovanou infrastrukturu pomocí [šablony Správce p
     3.  Stisknutím klávesy **ENTER** v okně Cloud Shell spusťte příkaz. Tento proces může chvíli trvat, protože vytváříte spoustu prostředků. V důsledku příkazu se ujistěte, že nedošlo k žádným chybám. 
     
 
-### <a name="use-azure-powershell"></a>Použití Azure Powershell
+### <a name="use-azure-powershell"></a>Použití Azure PowerShellu
 
 1. V Azure Cloud Shell přepněte do režimu PowerShell. V levém horním rohu Azure Cloud Shell vyberte šipku dolů a vyberte **PowerShell**.
 
