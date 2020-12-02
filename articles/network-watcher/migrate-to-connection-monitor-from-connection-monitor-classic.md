@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: eed68ff7e6b002e7a5985b336686b646a1a9acee
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a97f3bf3a479d956747755a421d7946f7aafd4f1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522943"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494235"
 ---
 # <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>Migrace na monitorování připojení z monitoru připojení (klasický)
 
@@ -64,5 +64,5 @@ Po zahájení migrace proběhne následující změny:
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o monitorování připojení najdete v těchto tématech:
-* [Migrace z Network Performance Monitor na monitorování připojení](/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor)
+* [Migrace z Network Performance Monitor na monitorování připojení](./migrate-to-connection-monitor-from-network-performance-monitor.md)
 * [Vytvoření monitorování připojení pomocí Azure Portal](./connection-monitor-create-using-portal.md)

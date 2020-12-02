@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: Java, jakartaee, JavaEE, mikroprofile, Open-svoboda, WebSphere-svoboda, ARO, OpenShift, Red Hat
-ms.openlocfilehash: 41891b58942efbfd705747cc16219185f2a2daa2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0c17c911d1eefe646785314a26b6a9b1e964ca67
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018388"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493933"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>Nasazení aplikace v jazyce Java s otevřeným nástrojem svobody/WebSphere Svoboda v clusteru Azure Red Hat OpenShift 4
 
@@ -20,31 +20,31 @@ V této příručce se dozvíte, jak spustit aplikaci v jazyce Java, Java EE, [J
 
 [!INCLUDE [aro-support](includes/aro-support.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K úspěšnému procházení tohoto průvodce dokončete následující požadavky.
 
 > [!NOTE]
-> Pro vytvoření a spuštění clusteru OpenShift vyžaduje Azure Red Hat OpenShift minimálně 40 jader. Výchozí kvóta prostředků Azure pro nové předplatné Azure nesplňuje tento požadavek. Pokud chcete požádat o zvýšení limitu prostředků, přečtěte si část [standardní kvóta: zvýšení limitů podle řady virtuálních počítačů](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests). Všimněte si, že předplatné bezplatné zkušební verze nemá nárok na zvýšení kvóty, [upgradujte na předplatné](https://docs.microsoft.com/azure/cost-management-billing/manage/upgrade-azure-subscription) s průběžnými platbami a teprve potom si vyžádáte zvýšení kvóty.
+> Pro vytvoření a spuštění clusteru OpenShift vyžaduje Azure Red Hat OpenShift minimálně 40 jader. Výchozí kvóta prostředků Azure pro nové předplatné Azure nesplňuje tento požadavek. Pokud chcete požádat o zvýšení limitu prostředků, přečtěte si část [standardní kvóta: zvýšení limitů podle řady virtuálních počítačů](../azure-portal/supportability/per-vm-quota-requests.md). Všimněte si, že předplatné bezplatné zkušební verze nemá nárok na zvýšení kvóty, [upgradujte na předplatné](../cost-management-billing/manage/upgrade-azure-subscription.md) s průběžnými platbami a teprve potom si vyžádáte zvýšení kvóty.
 
 1. Připravte místní počítač s nainstalovaným operačním systémem, který má systém UNIX (například Ubuntu, macOS).
 1. Nainstalujte implementaci Java SE systémem (například [AdoptOpenJDK OpenJDK 8 LTS/OpenJ9](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=openj9)).
 1. Nainstalujte [Maven](https://maven.apache.org/download.cgi) 3.5.0 nebo vyšší.
 1. Nainstalujte [Docker](https://docs.docker.com/get-docker/) pro váš operační systém.
-1. Nainstalujte rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 2.0.75 nebo novější.
+1. Nainstalujte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) 2.0.75 nebo novější.
 1. Kontrolu a instalaci, [`envsubst`](https://command-not-found.com/envsubst) Pokud není předem nainstalován v operačním systému.
 1. Naklonujte kód pro tuto ukázku v místním systému. Ukázka je na [GitHubu](https://github.com/Azure-Samples/open-liberty-on-aro).
-1. Postupujte podle pokynů v tématu [Vytvoření clusteru Azure Red Hat OpenShift 4](/azure/openshift/tutorial-create-cluster).
+1. Postupujte podle pokynů v tématu [Vytvoření clusteru Azure Red Hat OpenShift 4](./tutorial-create-cluster.md).
 
    I když je krok získat tajný klíč pro získání dat Red Hat označený jako volitelný, **je tento článek povinný**.  Tajný klíč pro vyžádání umožňuje vašemu clusteru Azure Red Hat OpenShift najít otevřený operátor svoboda.
 
    Pokud máte v úmyslu spouštět aplikace náročné na paměť v clusteru, určete správnou velikost virtuálního počítače pro pracovní uzly pomocí `--worker-vm-size` parametru. Například `Standard_E4s_v3` minimální velikost virtuálního počítače pro instalaci operátoru Elasticsearch v clusteru. Další informace naleznete v tématu:
 
-   * [Rozhraní příkazového řádku Azure pro vytvoření clusteru](https://docs.microsoft.com/cli/azure/aro?view=azure-cli-latest&preserve-view=true#az-aro-create)
-   * [Podporované velikosti virtuálních počítačů pro paměťově optimalizované](/azure/openshift/support-policies-v4#memory-optimized)
+   * [Rozhraní příkazového řádku Azure pro vytvoření clusteru](/cli/azure/aro?preserve-view=true&view=azure-cli-latest#az-aro-create)
+   * [Podporované velikosti virtuálních počítačů pro paměťově optimalizované](./support-policies-v4.md#memory-optimized)
    * [Předpoklady pro instalaci operátoru Elasticsearch](https://docs.openshift.com/container-platform/4.3/logging/cluster-logging-deploying.html#cluster-logging-deploy-eo-cli_cluster-logging-deploying)
 
-1. Pomocí postupu v části [připojení k clusteru Azure Red Hat OpenShift 4](/azure/openshift/tutorial-connect-cluster)se připojte ke clusteru.
+1. Pomocí postupu v části [připojení k clusteru Azure Red Hat OpenShift 4](./tutorial-connect-cluster.md)se připojte ke clusteru.
    * Nezapomeňte postupovat podle kroků v části "instalace rozhraní CLI OpenShift", protože použijete `oc` příkaz později v tomto článku.
    * Poznamenejte si adresu URL konzoly clusteru, která vypadá nějak takto `https://console-openshift-console.apps.<random>.<region>.aroapp.io/` :.
    * Poznamenejte si `kubeadmin` přihlašovací údaje.
@@ -314,7 +314,7 @@ oc delete -f openlibertyapplication.yaml
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pomocí kroků v tomto kurzu odstraňte cluster ARO [: odstranění clusteru Azure Red Hat OpenShift 4](/azure/openshift/tutorial-delete-cluster)
+Pomocí kroků v tomto kurzu odstraňte cluster ARO [: odstranění clusteru Azure Red Hat OpenShift 4](./tutorial-delete-cluster.md)
 
 ## <a name="next-steps"></a>Další kroky
 

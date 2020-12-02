@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 53a10123bf3304ab9c949146d7cad6b904c8323d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: c87290b36ec77e834a0d0fcd99e9a8bdb05675b5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317209"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494694"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Práce s předchozí verzí Azure Migrate
 
@@ -31,13 +31,13 @@ Existují dvě verze služby Azure Migrate:
 
 ## <a name="upgrade-between-versions"></a>Upgrade mezi verzemi
 
-Nemůžete upgradovat projekty nebo součásti v předchozí verzi na novou verzi. Musíte [vytvořit nový Azure Migrate projekt](create-manage-projects.md)a přidat do něj [Nástroje pro posouzení a migraci](how-to-add-tool-first-time.md) . Pomocí kurzů můžete pochopit, jak jsou dostupné nástroje pro posouzení a migraci. Pokud byl pracovní prostor Log Analytics připojený k klasickému projektu, můžete ho po odstranění klasického projektu připojit k projektu aktuální verze.
+Nemůžete upgradovat projekty nebo součásti v předchozí verzi na novou verzi. Musíte [vytvořit nový Azure Migrate projekt](create-manage-projects.md)a přidat do něj [Nástroje pro posouzení a migraci](./create-manage-projects.md) . Pomocí kurzů můžete pochopit, jak jsou dostupné nástroje pro posouzení a migraci. Pokud byl pracovní prostor Log Analytics připojený k klasickému projektu, můžete ho po odstranění klasického projektu připojit k projektu aktuální verze.
 
 ## <a name="find-projects-from-previous-version"></a>Najít projekty z předchozí verze
 
 Vyhledat projekty z předchozí verze následujícím způsobem:
 
-1. V Azure Portal > **všechny služby**vyhledejte a vyberte **Azure Migrate**. 
+1. V Azure Portal > **všechny služby** vyhledejte a vyberte **Azure Migrate**. 
 2. Na řídicím panelu Azure Migrate existuje oznámení a odkaz pro přístup k původním Azure Migratem projektům.
 3. Klikněte na odkaz pro otevření klasických projektů.
 
@@ -45,7 +45,7 @@ Vyhledat projekty z předchozí verze následujícím způsobem:
 
 Vyhledejte a odstraňte projekty z předchozí verze následujícím způsobem:
 
-1. V Azure Portal > **všechny služby**vyhledejte a vyberte **Azure Migrate**. 
+1. V Azure Portal > **všechny služby** vyhledejte a vyberte **Azure Migrate**. 
 2. Na řídicím panelu Azure Migrate existuje oznámení a odkaz pro přístup k původním Azure Migratem projektům.
 3. Klikněte na odkaz pro otevření klasických projektů.
 4. Vyberte projekt, který chcete odstranit, a odstraňte ho. 
@@ -85,7 +85,7 @@ Počítač se přesune pouze do pozdější fáze, pokud předá předchozí. Na
 
 Zobrazení Připravenost pro Azure v posouzení zobrazuje stav připravenosti jednotlivých virtuálních počítačů.
 
-**Připravenosti** | **Stav** | **Podrobnosti**
+**Připravenosti** | **State** | **Podrobnosti**
 --- | --- | ---
 Připraveno pro Azure | Žádné problémy s kompatibilitou Počítač se dá migrovat tak, jak je, do Azure, a spustí se v Azure s plnou podporou Azure. | U virtuálních počítačů, které jsou pro migraci vhodné, doporučí Azure Migrate velikost virtuálního počítače v Azure.
 Připraveno pro Azure s podmínkou | Počítač se může spustit v Azure, ale nemusí mít plnou podporu Azure. Například počítač se starší verzí Windows serveru, který se v Azure nepodporuje. | Azure Migrate vysvětluje problémy s připraveností a poskytuje kroky k nápravě.
@@ -207,7 +207,7 @@ K nastavení vizualizace závislosti přidružíte pracovní prostor Log Analyti
 
 Pokud chcete použít vizualizaci závislostí, přidružte pracovní prostor Log Analytics k projektu migrace. Pracovní prostor můžete vytvořit nebo připojit pouze ve stejném předplatném, ve kterém je vytvořen projekt migrace.
 
-1. Pokud chcete k projektu připojit Log Analytics pracovní prostor, klikněte v **přehledu**> **Essentials**na **vyžaduje konfiguraci**.
+1. Pokud chcete k projektu připojit Log Analytics pracovní prostor, klikněte v **přehledu**> **Essentials** na **vyžaduje konfiguraci**.
 2. Můžete vytvořit nový pracovní prostor nebo připojit stávající:
   - Chcete-li vytvořit nový pracovní prostor, zadejte název. Pracovní prostor se vytvoří v oblasti ve stejném [geografickém regionu Azure](https://azure.microsoft.com/global-infrastructure/geographies/) jako projekt migrace.
   - Když připojíte existující pracovní prostor, můžete vybrat ze všech dostupných pracovních prostorů ve stejném předplatném jako projekt migrace. V seznamu jsou uvedeny pouze ty pracovní prostory, které byly vytvořeny v [podporované Service map oblasti](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions). Pokud chcete připojit pracovní prostor, ujistěte se, že máte přístup čtenář k pracovnímu prostoru.
@@ -219,7 +219,7 @@ Pokud chcete použít vizualizaci závislostí, přidružte pracovní prostor Lo
 
 Po nakonfigurování pracovního prostoru můžete stáhnout a nainstalovat agenty na každý místní počítač, který chcete vyhodnotit. Kromě toho, pokud máte počítače bez připojení k Internetu, je potřeba stáhnout a nainstalovat [Log Analytics bránu](../azure-monitor/platform/gateway.md) .
 
-1. V části **Přehled**klikněte na možnost **Spravovat**  >  **počítače**a vyberte požadovaný počítač.
+1. V části **Přehled** klikněte na možnost **Spravovat**  >  **počítače** a vyberte požadovaný počítač.
 2. Ve sloupci **závislosti** klikněte na možnost **instalovat agenty**.
 3. Na stránce **závislosti** Stáhněte a nainstalujte Microsoft Monitoring Agent (MMA) a na každý virtuální počítač, který chcete vyhodnotit, agenta závislostí.
 4. Zkopírujte ID a klíč pracovního prostoru. Budete je potřebovat při instalaci MMA na místním počítači.
@@ -234,8 +234,8 @@ Instalace agenta na počítač s Windows:
 
 1. Dvakrát klikněte na staženého agenta.
 2. Na **úvodní** stránce klikněte na **Další**. Na stránce **licenční podmínky** **kliknutím na Souhlasím** přijměte licenci.
-3. V části **cílová složka**ponechejte nebo upravte výchozí instalační složku > **Další**.
-4. V **Možnosti nastavení agenta**vyberte **Azure Log Analytics**  >  **Další**.
+3. V části **cílová složka** ponechejte nebo upravte výchozí instalační složku > **Další**.
+4. V **Možnosti nastavení agenta** vyberte **Azure Log Analytics**  >  **Další**.
 5. Kliknutím na **Přidat** přidejte nový pracovní prostor Log Analytics. Vložte do ID a klíče pracovního prostoru, který jste zkopírovali z portálu. Klikněte na **Next** (Další).
 
 Agenta můžete nainstalovat z příkazového řádku nebo pomocí automatizované metody, jako je Configuration Manager. [Přečtěte si další informace](../azure-monitor/platform/log-analytics-agent.md#installation-options) o použití těchto metod k instalaci agenta MMA.
@@ -303,12 +303,12 @@ Data závislostí zachycená Service Map jsou k dispozici pro dotazování v pra
 Spuštění dotazů Kusto:
 
 1. Po instalaci agentů přejděte na portál a klikněte na **Přehled**.
-2. V části **Přehled**přejděte na oddíl **základy** projektu a klikněte na název pracovního prostoru zadaný vedle možnosti **pracovní prostor OMS**.
+2. V části **Přehled** přejděte na oddíl **základy** projektu a klikněte na název pracovního prostoru zadaný vedle možnosti **pracovní prostor OMS**.
 3. Na stránce Log Analytics pracovní prostor klikněte na **Obecné**  >  **protokoly**.
 4. Napište dotaz pro shromažďování dat závislosti pomocí protokolů Azure Monitor. V další části najdete Ukázkové dotazy.
 5. Spusťte dotaz kliknutím na spustit. 
 
-[Přečtěte si další informace](../azure-monitor/log-query/get-started-portal.md) o tom, jak zapisovat dotazy Kusto. 
+[Přečtěte si další informace](../azure-monitor/log-query/log-analytics-tutorial.md) o tom, jak zapisovat dotazy Kusto. 
 
 ### <a name="sample-azure-monitor-logs-queries"></a>Ukázka dotazů v protokolu Azure Monitor
 

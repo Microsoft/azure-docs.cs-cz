@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: b6fed24c7de87424bde94b864d4a9db91828a510
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0d4630cad94a30e0dd53785c512e452d7b4a7d38
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315788"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494439"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Řešení potíží s Azure Migrate zařízením a zjišťováním
 
@@ -31,7 +31,7 @@ Pokud se zobrazí chyba "zadaný soubor manifestu je neplatný: Neplatná polož
 2. Pokud se nasazení stále nedaří a k nasazení souboru OVF používáte klienta VMware vSphere, zkuste ho nasadit prostřednictvím webového klienta vSphere. Pokud nasazení ještě neproběhne úspěšně, zkuste použít jiný webový prohlížeč.
 3. Pokud používáte webového klienta vSphere a pokusíte se ho nasadit na vCenter Server 6,5 nebo 6,7, zkuste nasadit VAJÍČKu přímo na hostiteli ESXi:
    - Připojte se k hostiteli ESXi přímo (místo vCenter Server) s webovým klientem ( *IP adresa hostitele* https://<>/UI).
-   - V **domovském**  >  **inventáři**vyberte **soubor**  >  **nasadit šablonu OVF**. Přejděte k VAJÍČKám a dokončete nasazení.
+   - V **domovském**  >  **inventáři** vyberte **soubor**  >  **nasadit šablonu OVF**. Přejděte k VAJÍČKám a dokončete nasazení.
 4. Pokud se nasazení stále nedaří, obraťte se na podporu Azure Migrate.
 
 ## <a name="cant-connect-to-the-internet"></a>Nejde se připojit k Internetu.
@@ -80,7 +80,7 @@ Pokud se zobrazí tato chyba připojení, možná se nebudete moci připojit k v
     - [Přečtěte si další informace](./migrate-appliance.md#appliance---vmware) o požadovaných rolích a oprávněních Azure.
 - Chyba 60039, "zařízení se nemusí úspěšně zaregistrovat do Azure Migrate projektu" může dojít v případě, že se registrace nezdaří, protože Azure Migrate projekt, který se použil k registraci zařízení, se nepovedlo najít.
     - V Azure Portal a ověřte, zda projekt existuje ve skupině prostředků.
-    - Pokud projekt neexistuje, vytvořte ve skupině prostředků nový Azure Migrate projekt a znovu zaregistrujte zařízení. [Přečtěte si, jak](./how-to-add-tool-first-time.md#create-a-project-and-add-a-tool) vytvořit nový projekt.
+    - Pokud projekt neexistuje, vytvořte ve skupině prostředků nový Azure Migrate projekt a znovu zaregistrujte zařízení. [Přečtěte si, jak](./create-manage-projects.md#create-a-project-for-the-first-time) vytvořit nový projekt.
 
 ## <a name="error-6003060031-key-vault-management-operation-failed"></a>Chyba 60030/60031: operace správy Key Vault nebyla úspěšná.
 
@@ -157,8 +157,8 @@ Pokud to nefunguje a chystáte se zjišťovat servery VMware:
 
 Pokud se zjištěné virtuální počítače nezobrazí na portálu nebo pokud jsou data virtuálního počítače zastaralá, počkejte několik minut. Na portálu trvá až 30 minut, než se změny zjištěných konfiguračních dat virtuálního počítače zobrazí na portálu. Může trvat několik hodin, než se změny dat aplikace zobrazí. Pokud po této době žádná data neexistují, zkuste aktualizovat následujícím způsobem.
 
-1. V **Servers**  >  **Azure Migrate servery vyhodnocování serveru**vyberte **Přehled**.
-2. V části **Spravovat**vyberte **Agent Health**.
+1. V **Servers**  >  **Azure Migrate servery vyhodnocování serveru** vyberte **Přehled**.
+2. V části **Spravovat** vyberte **Agent Health**.
 3. Vyberte **aktualizovat agenta**.
 4. Počkejte na dokončení operace aktualizace. Nyní byste měli vidět aktuální informace.
 
@@ -179,8 +179,8 @@ Tento stav se zobrazí, pokud selhalo nahrávání sdíleného svazku clusteru z
 ## <a name="do-not-see-application-details-even-after-updating-guest-credentials"></a>Nevidíte podrobnosti o aplikacích ani po aktualizaci přihlašovacích údajů hostů.
 Zjišťování aplikací se spouští každých 24 hodin. Chcete-li zobrazit podrobnosti okamžitě, proveďte aktualizaci následujícím způsobem. To může trvat několik minut v závislosti na ne. zjištěných virtuálních počítačů.
 
-1. V **Servers**  >  **Azure Migrate servery vyhodnocování serveru**vyberte **Přehled**.
-2. V části **Spravovat**vyberte **Agent Health**.
+1. V **Servers**  >  **Azure Migrate servery vyhodnocování serveru** vyberte **Přehled**.
+2. V části **Spravovat** vyberte **Agent Health**.
 3. Vyberte **aktualizovat agenta**.
 4. Počkejte na dokončení operace aktualizace. Nyní byste měli vidět aktuální informace.
 

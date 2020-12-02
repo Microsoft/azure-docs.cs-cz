@@ -6,12 +6,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
-ms.openlocfilehash: f2245e13f348706f662055408196ea7a26484811
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: af9254bc536dedc425aac53199665ae399e60a5a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314647"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494405"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Řešení problémů s projekty Azure Migrate
 
@@ -19,7 +19,7 @@ Tento článek vám pomůže při řešení potíží při vytváření a správ
 
 ## <a name="how-to-add-new-project"></a>Jak přidat nový projekt?
 
-V předplatném můžete mít více Azure Migratech projektů. [Naučte](how-to-add-tool-first-time.md) se, jak poprvé vytvořit projekt, nebo [Přidat další](create-manage-projects.md#create-additional-projects) projekty.
+V předplatném můžete mít více Azure Migratech projektů. [Naučte](./create-manage-projects.md) se, jak poprvé vytvořit projekt, nebo [Přidat další](create-manage-projects.md#create-additional-projects) projekty.
 
 ## <a name="what-azure-permissions-are-needed"></a>Jaká oprávnění Azure potřebujete?
 
@@ -40,13 +40,13 @@ V jednom projektu můžete vyhodnotit až 35 000 virtuálních počítačů VMwa
 
 ## <a name="can-i-upgrade-old-project"></a>Můžu upgradovat starý projekt?
 
-Projekty z předchozí verze Azure Migrate nelze aktualizovat. Musíte [vytvořit nový projekt](how-to-add-tool-first-time.md)a přidat do něj nástroje.
+Projekty z předchozí verze Azure Migrate nelze aktualizovat. Musíte [vytvořit nový projekt](./create-manage-projects.md)a přidat do něj nástroje.
 
 ## <a name="cant-create-a-project"></a>Nejde vytvořit projekt.
 
 Pokud se pokusíte vytvořit projekt a dojde k chybě při nasazení:
 
-- Zkuste projekt znovu vytvořit pro případ, že se jedná o přechodnou chybu. V **nasazení**klikněte na **znovu nasadit** a zkuste to znovu.
+- Zkuste projekt znovu vytvořit pro případ, že se jedná o přechodnou chybu. V **nasazení** klikněte na **znovu nasadit** a zkuste to znovu.
 - Ověřte, jestli máte v předplatném oprávnění Přispěvatel nebo Owner.
 - Pokud nasazujete v nově přidané geografické oblasti, počkejte krátkou dobu a pak to zkuste znovu.
 - Pokud se zobrazí chybová zpráva "požadavky musí obsahovat hlavičky identity uživatele", může to znamenat, že nemáte přístup k tenantovi Azure Active Directory (Azure AD) organizace. V tomto případě:
@@ -61,7 +61,7 @@ Chcete-li odstranit projekt, [postupujte podle těchto pokynů](create-manage-pr
 
 ## <a name="added-tools-dont-show"></a>Přidané nástroje se nezobrazují
 
-Ujistěte se, že máte vybraný správný projekt. V centru Azure Migrate > **serverech** nebo v části **databáze**klikněte v pravém horním rohu obrazovky na **změnit** u pole **migrovat projekt (změnit)** . Vyberte správné předplatné a název projektu > **OK**. Stránka by se měla aktualizovat pomocí přidaných nástrojů vybraného projektu.
+Ujistěte se, že máte vybraný správný projekt. V centru Azure Migrate > **serverech** nebo v části **databáze** klikněte v pravém horním rohu obrazovky na **změnit** u pole **migrovat projekt (změnit)** . Vyberte správné předplatné a název projektu > **OK**. Stránka by se měla aktualizovat pomocí přidaných nástrojů vybraného projektu.
 
 ## <a name="next-steps"></a>Další kroky
 
