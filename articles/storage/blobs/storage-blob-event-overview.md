@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: dineshm
-ms.openlocfilehash: e67a323e03ae8ac0a0e34df1f7cc1ee4fe0901d3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 00a7a081f29458ae81d8d8ea4dd8f7abef42f78f
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95901498"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519004"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reakce na události služby Blob Storage
 
@@ -29,7 +29,7 @@ Pokud chcete vyzkoušet události služby Blob Storage, podívejte se na někter
 
 |Pokud chcete použít tento nástroj:    |Viz tento článek: |
 |--|-|
-|portál Azure    |[Rychlý Start: směrování událostí služby Blob Storage do webového koncového bodu pomocí Azure Portal](../../event-grid/blob-event-quickstart-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Portal    |[Rychlý Start: směrování událostí služby Blob Storage do webového koncového bodu pomocí Azure Portal](../../event-grid/blob-event-quickstart-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |PowerShell    |[Rychlý Start: směrování událostí úložiště do webového koncového bodu pomocí PowerShellu](./storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Azure CLI    |[Rychlý Start: směrování událostí úložiště do webového koncového bodu pomocí Azure CLI](./storage-blob-event-quickstart.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
@@ -58,7 +58,7 @@ Podívejte se na článek o [schématu událostí služby Blob Storage](../../ev
 
 ## <a name="filtering-events"></a>Filtrování událostí
 
-Události objektů BLOB [lze filtrovat](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) podle typu události, názvu kontejneru nebo názvu objektu, který byl vytvořen nebo odstraněn. Filtry v Event Grid se shodují na začátku nebo konci předmětu, aby události s odpovídajícím subjektem přešly na odběratele.
+Události objektů BLOB [lze filtrovat](/cli/azure/eventgrid/event-subscription) podle typu události, názvu kontejneru nebo názvu objektu, který byl vytvořen nebo odstraněn. Filtry v Event Grid se shodují na začátku nebo konci předmětu, aby události s odpovídajícím subjektem přešly na odběratele.
 
 Další informace o tom, jak používat filtry, najdete v tématu [filtrování událostí pro Event Grid](../../event-grid/how-to-filter-events.md).
 
@@ -96,7 +96,7 @@ Aplikace, které zpracovávají události služby Blob Storage, by měly dodržo
 > [!div class="checklist"]
 > * Vzhledem k tomu, že je možné nakonfigurovat více předplatných pro směrování událostí ke stejné obslužné rutině události, je důležité, abyste nepředpokládali události z konkrétního zdroje, ale pokud chcete zkontrolovat téma zprávy, abyste měli jistotu, že pochází z účtu úložiště, který očekáváte.
 > * Podobně ověřte, zda je typ eventType, který je připraven ke zpracování, a nepředpokládá se, že všechny události, které obdržíte, budou takové typy, které očekáváte.
-> * Jakmile se zprávy můžou dorazit po nějaké prodlevě, použijte pole ETag k pochopení, jestli jsou informace o objektech pořád aktuální. Informace o tom, jak používat pole ETag, najdete v tématu [Správa souběžnosti v úložišti objektů BLOB](../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage). 
+> * Jakmile se zprávy můžou dorazit po nějaké prodlevě, použijte pole ETag k pochopení, jestli jsou informace o objektech pořád aktuální. Informace o tom, jak používat pole ETag, najdete v tématu [Správa souběžnosti v úložišti objektů BLOB](../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage).
 > * Vzhledem k tomu, že zprávy mohou docházet mimo pořadí, použijte pole Sequencer k pochopení pořadí událostí na konkrétním objektu. Pole Sequencer je řetězcová hodnota, která představuje logickou sekvenci událostí pro libovolný konkrétní název objektu BLOB. Standardní porovnání řetězců můžete použít k pochopení relativní posloupnosti dvou událostí u stejného názvu objektu BLOB.
 > * Události úložiště zaručují, že se po doručení nejméně jednou doručí předplatitelům, což zajistí, aby byly všechny zprávy na výstupu. Kvůli opakování nebo dostupnosti předplatných ale může občas dojít k duplicitním zprávám. Pokud se chcete dozvědět víc o doručování zpráv a zkusit to znovu, přečtěte si téma [Event Grid doručování zpráv](../../event-grid/delivery-and-retry.md).
 > * Pomocí pole blobType můžete pochopit, jaký typ operací je u objektu BLOB povolený, a jaké typy klientských knihoven byste měli použít pro přístup k objektu BLOB. Platné hodnoty jsou buď `BlockBlob` nebo `PageBlob` . 

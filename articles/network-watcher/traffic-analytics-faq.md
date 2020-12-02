@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: 25f4ae0dbfd7827a36dede6a889c342ea490e273
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f27f2a6319bf2648546a62c2566d938db657738f
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94948472"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518460"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu nejčastějších dotazech
 
@@ -401,3 +401,6 @@ Stránka topologie virtuální podsítě obsahuje dvě hlavní části:
 - Chcete-li přejít na jiné zvýrazněné uzly v zobrazení topologie, použijte `Shift+Right arrow` klávesu pro dopředný pohyb. 
 - Na zvýrazněných uzlech se fokus přesune do **pole informační nástroj** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko **Další podrobnosti** v **poli informační nástroj**. Chcete-li se dále pohybovat uvnitř zobrazení **pole** , použijte `Right arrow` klávesy a a `Left arrow` přejděte k části vpřed a zpět v uvedeném pořadí. Stisknutí `Enter` má stejný efekt jako v **poli informační nástroj** vyberte tlačítko s fokusem.
 - Na výběr všech takových uzlů můžete všechny své připojení navštívit tak, že stisknete `Shift+Left arrow` klávesu. Fokus se přesune do **pole informační nástroj** daného připojení. V jakémkoli okamžiku se dá fokus přesunout zpátky na uzel stisknutím klávesy `Shift+Right arrow` znovu.
+
+## <a name="are-classic-nsgs-supported"></a>Jsou podporovány klasické skupin zabezpečení sítě?
+Ne, Analýza provozu nepodporuje klasický NSG. Doporučuje se migrovat prostředky IaaS z modelu Classic na Azure Resource Manager, protože klasické prostředky budou [zastaralé](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation). V tomto článku najdete informace [o tom, jak provést migraci](https://docs.microsoft.com/azure/virtual-machines/migration-classic-resource-manager-overview).

@@ -2,15 +2,15 @@
 title: Vytvoření a nasazení specifikace šablony
 description: Naučte se vytvořit specifikaci šablony ze šablony ARM. Pak nasaďte specifikaci šablony do skupiny prostředků v rámci vašeho předplatného.
 author: tfitzmac
-ms.date: 11/17/2020
+ms.date: 12/01/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 8439b1de5a69b3e5bfc22e10f089938da921c1cb
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 03cf2013f1cec9722af5d7e72285d9f11d8a6bc1
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94747498"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518953"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Rychlý Start: vytvoření a nasazení specifikace šablony (Preview)
 
@@ -21,15 +21,37 @@ V tomto rychlém startu se dozvíte, jak zabalit šablonu Azure Resource Manager
 Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> Specifikace šablony jsou momentálně ve verzi Preview. Pokud ho chcete použít, musíte nainstalovat nejnovější verzi PowerShellu nebo rozhraní příkazového řádku Azure CLI. Pro Azure PowerShell použijte [verzi 5.0.0 nebo novější](/powershell/azure/install-az-ps). Pro rozhraní příkazového řádku Azure použijte [verzi 2.14.2 nebo novější](/cli/azure/install-azure-cli).
+> Specifikace šablony jsou momentálně ve verzi Preview. Pokud ho chcete použít s Azure PowerShell, musíte nainstalovat [verzi 5.0.0 nebo novější](/powershell/azure/install-az-ps). Pokud ho chcete použít v Azure CLI, použijte [verzi 2.14.2 nebo novější](/cli/azure/install-azure-cli).
 
 ## <a name="create-template-spec"></a>Vytvořit specifikaci šablony
 
-Specifikace šablony je typ prostředku s názvem **Microsoft. Resources/templateSpecs**. K vytvoření specifikace šablony můžete použít Azure PowerShell, Azure CLI nebo šablonu ARM. Ve všech možnostech potřebujete šablonu ARM, která je zabalena do specifikace šablony.
+Specifikace šablony je typ prostředku s názvem **Microsoft. Resources/templateSpecs**. K vytvoření specifikace šablony můžete použít Azure Portal, Azure PowerShell, Azure CLI nebo šablonu ARM. Ve všech možnostech potřebujete šablonu ARM, která je zabalena do specifikace šablony.
 
 Pomocí PowerShellu a rozhraní příkazového řádku je šablona ARM předána jako parametr příkazu. Šablona ARM, která se zabalí v rámci specifikace šablony, je vložená do definice specifikace šablony.
 
 Níže jsou uvedené možnosti.
+
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. V horní části obrazovky v části **Hledat prostředky, služby a dokumenty** zadejte **specifikace šablony** a pak vyberte **specifikace šablony**.
+1. Vyberte **vytvořit šablonu – specifikace**.
+1. Vyberte nebo zadejte následující hodnoty:
+
+    - **Název**: zadejte název specifikace šablony.  Například **storageSpec**
+    - **Předplatné**: vyberte předplatné Azure, které se používá k vytvoření specifikace šablony.
+    - **Skupina prostředků**: vyberte **vytvořit novou** a potom zadejte nový název skupiny prostředků.  Například **templateSpecRG**.
+    - **Umístění:**: Vyberte umístění pro skupinu prostředků. Například  **západní USA 2**.
+    - **Verze**: Zadejte verzi pro specifikaci šablony. Například **1,0** nebo **v 1.0**.
+
+1. Vyberte **Další: upravit šablonu**.
+1. Obsah šablony nahraďte následujícím kódem JSON:
+
+    :::code language="json" source="~/quickstart-templates/101-storage-account-create/azuredeploy.json":::
+
+    Toto je šablona, která bude zabalena v rámci specifikace šablony.
+1. Vyberte **zkontrolovat + vytvořit**.
+1. Vyberte **Vytvořit**.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -203,7 +225,23 @@ Níže jsou uvedené možnosti.
 
 ## <a name="deploy-template-spec"></a>Nasadit specifikaci šablony
 
-Nyní můžete nasadit specifikaci šablony. Nasazení specifikace šablony je stejně jako nasazení šablony, kterou obsahuje, s tím rozdílem, že předáte ID prostředku specifikace šablony. Použijete stejné příkazy pro nasazení a v případě potřeby předáte hodnoty parametrů pro specifikaci šablony.
+Nyní můžete nasadit specifikaci šablony. Nasazení specifikace šablony je stejně jako nasazení šablony, kterou obsahuje, s výjimkou toho, že předáte ID prostředku specifikace šablony v Azure PowerShell nebo v rozhraní příkazového řádku Azure CLI. Použijete stejné příkazy pro nasazení a v případě potřeby předáte hodnoty parametrů pro specifikaci šablony.
+
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+1. Z Azure Portal otevřete skupinu prostředků, kterou jste vytvořili v posledním postupu.  Například **templateSpecRG**.
+1. Vyberte specifikaci šablony, kterou jste vytvořili. Například **storageSpec**.
+1. Vyberte **Nasadit**.
+1. Vyberte nebo zadejte následující hodnoty:
+
+    - **Předplatné**: vyberte předplatné Azure pro vytvoření prostředku.
+    - **Skupina prostředků**: vyberte **vytvořit novou** a potom zadejte **storageRG**.
+    - **Typ účtu úložiště**: vyberte **Standard_GRS**.
+
+    Vytvoříte novou skupinu prostředků a šablonu nasadíte v rámci specifikace šablony do nové skupiny prostředků.
+
+1. Vyberte **Zkontrolovat a vytvořit**.
+1. Vyberte **Vytvořit**.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0408d43fe897882fe09f6dd61a22d46349f2978e
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: d205cff71b962afb9ead8271ee0c220fa1e2242f
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95974387"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518766"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Kurz: volání rozhraní Microsoft Graph API z desktopové aplikace pro Windows
 
@@ -57,7 +57,7 @@ MSAL spravuje ukládání do mezipaměti a aktualizace přístupových tokenů z
 
 Tato příručka používá následující balíčky NuGet:
 
-|Knihovna|Description|
+|Knihovna|Popis|
 |---|---|
 |[Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Knihovna Microsoft Authentication Library (MSAL.NET)|
 
@@ -259,6 +259,7 @@ V této části použijete MSAL k získání tokenu pro rozhraní Microsoft Grap
                 DisplayBasicTokenInfo(authResult);
                 this.SignOutButton.Visibility = Visibility.Visible;
             }
+        }
         }
     ```
 

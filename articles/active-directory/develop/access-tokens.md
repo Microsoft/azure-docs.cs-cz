@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: b1ce076befc325fef7717c0404b31dadff952af6
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 909c8910a86734b0a34787f75c233975cd3503c3
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433287"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518239"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Tokeny přístupu Microsoft Identity Platform
 
@@ -75,7 +75,7 @@ JWTs (webové tokeny JSON) jsou rozdělené na tři části:
 
 Jednotlivé součásti jsou oddělené tečkou ( `.` ) a samostatně kódovaným znakem base64.
 
-Deklarace identity jsou přítomny pouze v případě, že existuje hodnota pro její vyplnění. Vaše aplikace by neměla mít závislost na přítomné deklaraci. Mezi příklady patří `pwd_exp` (ne každý tenant vyžaduje, aby vyprší platnost hesla) a `family_name` ([pověření klienta] (v2-OAuth2-Client-creds-grant-Flow.MD) jsou pojmenovány aplikace, které nemají názvy). Deklarace identity použité pro ověření přístupového tokenu budou vždy k dispozici.
+Deklarace identity jsou přítomny pouze v případě, že existuje hodnota pro její vyplnění. Vaše aplikace by neměla mít závislost na přítomné deklaraci. Mezi příklady patří `pwd_exp` (ne každý tenant vyžaduje vypršení platnosti hesla) a `family_name` (toky[přihlašovacích údajů klienta](v2-oauth2-client-creds-grant-flow.md) jsou v zastoupení aplikací, které nemají názvy). Deklarace identity použité pro ověření přístupového tokenu budou vždy k dispozici.
 
 Některé deklarace identity se používají k usnadnění zabezpečených tokenů Azure AD v případě opakovaného použití. Ty jsou označené jako nepoužívané pro veřejnou spotřebu v popisu jako "neprůhledné". Tyto deklarace identity můžou nebo nemusí být v tokenu, a nové můžou být přidané bez předchozího upozornění.
 

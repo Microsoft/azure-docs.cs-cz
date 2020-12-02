@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ac87e8394eaa609f7c57eaf9d83fe11a2bdb04f6
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6d9abc67035b4581a028d8e59ef080b4f1ffa5b9
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435820"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519038"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Šifrování dat pro Azure Database for MySQL pomocí rozhraní příkazového řádku Azure
 
@@ -24,7 +24,7 @@ Naučte se používat rozhraní příkazového řádku Azure k nastavení a spr�
 * Vytvořte Trezor klíčů a klíč, který se použije pro klíč spravovaný zákazníkem. V trezoru klíčů taky povolte možnost Vymazat ochranu a obnovitelné odstranění.
 
   ```azurecli-interactive
-  az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true -enable-purge-protection true
+  az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
   ```
 
 * Ve vytvořeném Azure Key Vault vytvořte klíč, který bude použit pro šifrování dat Azure Database for MySQL.
@@ -55,7 +55,8 @@ Naučte se používat rozhraní příkazového řádku Azure k nastavení a spr�
   * Žádné datum vypršení platnosti
   * Nezakázáno
   * Provádění operací **získat**, **zalamovat** a **rozbalení**
-  * atribut recoverylevel je nastaven na **obnovitelné**.
+  * atribut recoverylevel je nastavený na **obnovitelné** (vyžaduje se obnovitelné odstranění s dobou uchování nastavenou na 90 dní).
+  * Vymazání ochrany povoleno
 
 Výše uvedené atributy klíče můžete ověřit pomocí následujícího příkazu:
 

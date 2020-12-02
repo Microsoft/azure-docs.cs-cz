@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1cb882ac1051c41f4d887a9ff4dd8cd64bc9f56c
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: a439ce5cd56bde5f9a60a1d99f5299bd16c81f8b
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593599"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519072"
 ---
 # <a name="create-an-account-sas-with-net"></a>Vytvoření SAS účtu pomocí .NET
 
@@ -67,8 +67,6 @@ static string GetAccountSASToken()
 Pokud chcete použít SAS účtu pro přístup k rozhraním API na úrovni služby pro Blob service, Sestavte objekt klienta Blob service pomocí SAS a koncového bodu BLOB Storage pro váš účet úložiště.
 
 ### <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
-
-
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_UseAccountSAS":::
 

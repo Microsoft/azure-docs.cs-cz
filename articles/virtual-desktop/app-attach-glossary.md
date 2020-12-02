@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6107ffea4fe4d615a42973ab1b231ca9f6b5241f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 7132eae073f3d53a104536076ae801ec9ff93e5f
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674954"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518664"
 ---
 # <a name="msix-app-attach-glossary"></a>Glosář připojení aplikace MSIX
 
@@ -109,6 +109,18 @@ Defázování upozorní operační systém, že balíček MSIX nebo aplikace, kt
 ## <a name="cim"></a>CIM
 
 . CIM je nová přípona souboru přidružená k systému souborů kompozitních imagí (CimFS). Připojení a odpojení souborů CIM je rychlejší pro soubory VHD. CIM také spotřebovává méně procesoru a paměti než virtuální pevný disk.
+
+Soubor CIM je soubor s příponou. Rozšíření CIM obsahující metadata a alespoň šest dalších souborů, které obsahují skutečná data. Soubory v souboru CIM nemají rozšíření. V následující tabulce je seznam ukázkových souborů, které byste našli v modelu CIM:
+
+| Název souboru | Rozšíření | Velikost |
+|-----------|-----------|------|
+| VIRTUÁLNÍ čipové karty | CIM | 1 kB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | Není k dispozici | 27 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_1 | Není k dispozici | 20 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_2 | Není k dispozici | 42 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | Není k dispozici | 428 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_1 | Není k dispozici | 217 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_2 | Není k dispozici | 264 132 KB |
 
 Následující tabulka představuje porovnání výkonu mezi VHD a CimFS. Tato čísla byla výsledkem testovacího běhu s 500 300 MB souborů v každém formátu spuštěném na DSv4 počítači.
 

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 11/20/2020
-ms.openlocfilehash: 9d6970331024ea0cd08e890cc62507d9eb230678
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 12/2/2020
+ms.openlocfilehash: 99b5e7bee93ffee14585f048506104ec313b9bff
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016325"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518520"
 ---
 # <a name="co-sell-partner-engagement"></a>Zapojení partnerů do společného prodeje
 
@@ -24,7 +24,7 @@ Program pro společný prodej je dostupný pro **software sestavený s duševní
 
     ![Diagram znázorňující, jakým způsobem se dá společný prodej při sdílení, přijímání a přijímání potenciálních zákazníků spravovaných společností Microsoft.](./media/marketplace-publishers-guide/marketplace-co-sell-v2.png)
 
-- **Společný prodej motivovaní** Řešení IP můžou získat pobídky pro prodejce v terénu, když se prodávají ve spolupráci s prodejními týmy Microsoftu, a navíc k výhodám Marketplace uvedeným níže.</li></ul>
+- **Společný prodej motivovaní** Nabídky IP adres můžou získat pobídky pro prodejce v terénu, když se prodávají ve spolupráci s prodejními týmy Microsoftu, a navíc k výhodám Marketplace uvedeným níže.</li></ul>
 
 ## <a name="marketplace-benefits-for-incentivized-offers"></a>Výhody Marketplace pro nabídky motivovaní
 
@@ -67,7 +67,7 @@ Svůj společný prodej přímo v partnerském centru začněte podle následuj�
 
     :::image type="content" source="media/co-sell/co-sell-listing-section.png" alt-text="Tento obrázek ukazuje část výpis na kartě spoluprodej.":::  
 
-1. Zadejte podrobnosti o vaší nabídce a dokumentaci k odeslání do části **dokumenty** . Prodejci Microsoftu použijí tyto informace k doporučení a prodeji vaší nabídky. (*Požadováno: zákaznická balíček One-pager a zákaznická prezentace.*)
+1. Zadejte podrobnosti o vaší nabídce a dokumentaci k odeslání do části **dokumenty** . Prodejci Microsoftu použijí tyto informace k doporučení a prodeji vaší nabídky. *(Požadováno: řešení/nabídka a nabídka pro rozteč na jednom pageru a řešení/nabídka Vyžaduje se pro dosažení společného prodejního stavu motivovaní Azure s IP adresami: diagram referenční architektury.)*
 
     :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="Tento obrázek ukazuje část dokumenty na kartě spoluprodej.":::
 

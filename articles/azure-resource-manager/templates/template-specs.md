@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: e919db24a70b0ed69aca6977865cc76c0c9c5845
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: dd7616bdc07aee86ac56a2f2fe0ac282838c58b4
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182457"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518851"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager specifikace šablon (Preview)
 
@@ -21,7 +21,7 @@ Specifikace šablony je typ prostředku pro uložení šablony Azure Resource Ma
 K nasazení specifikace šablony použijte standardní nástroje Azure, jako je PowerShell, Azure CLI, Azure Portal, REST a další podporované sady SDK a klienti. Použijete stejné příkazy jako pro šablonu.
 
 > [!NOTE]
-> Specifikace šablony jsou momentálně ve verzi Preview. Pokud ho chcete použít, musíte nainstalovat nejnovější verzi PowerShellu nebo rozhraní příkazového řádku Azure CLI. Pro Azure PowerShell použijte [verzi 5.0.0 nebo novější](/powershell/azure/install-az-ps). Pro rozhraní příkazového řádku Azure použijte [verzi 2.14.2 nebo novější](/cli/azure/install-azure-cli).
+> Specifikace šablony jsou momentálně ve verzi Preview. Pokud ho chcete použít s Azure PowerShell, musíte nainstalovat [verzi 5.0.0 nebo novější](/powershell/azure/install-az-ps). Pokud ho chcete použít v Azure CLI, použijte [verzi 2.14.2 nebo novější](/cli/azure/install-azure-cli).
 
 ## <a name="why-use-template-specs"></a>Proč používat specifikace šablon?
 

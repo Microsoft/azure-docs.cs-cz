@@ -8,24 +8,28 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a63d7f067665836910b91b2911db522f0a92bbb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73fb9bf436c043e903977fafbb5a502e2edc5488
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88556235"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518681"
 ---
 # <a name="msix-app-attach-faq"></a>DOTAZY k připojení aplikace MSIX
 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se připojení aplikace MSIX k virtuálnímu počítači s Windows.
 
+## <a name="whats-the-difference-between-msix-and-msix-app-attach"></a>Jaký je rozdíl mezi připojením aplikace MSIX a MSIX?
+
+MSIX je formát balení pro aplikace, zatímco připojení aplikace MSIX je funkce, která poskytuje balíčky MSIX do nasazení.
+
 ## <a name="does-msix-app-attach-use-fslogix"></a>Připojí aplikace MSIX použít FSLogix?
 
-Připojení aplikace MSIX nepoužívá FSLogix. Připojení aplikace a FSLogix jsou ale navržené tak, aby poskytovaly bezproblémové uživatelské prostředí.
+Připojení aplikace MSIX nepoužívá FSLogix. Připojení k aplikaci MSIX a FSLogix jsou však navržená tak, aby poskytovaly bezproblémové uživatelské prostředí.
 
 ## <a name="can-i-use-msix-app-attach-outside-of-windows-virtual-desktop"></a>Můžu použít připojení aplikace MSIX mimo virtuální plochu Windows?
 
-Ano, MSIX App Attach je funkce, která je součástí Windows 10 Enterprise a dá se používat mimo virtuální plochu Windows. Není však k dispozici žádná rovina správy pro připojení aplikace MSIX mimo virtuální plochu Windows.
+K dispozici jsou rozhraní API pro Windows 10 Enterprise, která se připojují k aplikaci Power MSIX. Tato rozhraní API se dají používat mimo virtuální počítač s Windows. Není však k dispozici žádná rovina správy pro připojení aplikace MSIX mimo virtuální plochu Windows.
 
 ## <a name="how-do-i-get-an-msix-package"></a>Návody získat balíček MSIX?
 
@@ -33,8 +37,41 @@ Dodavatel softwaru vám poskytne balíček MSIX. Balíčky, které nejsou MSIX, 
 
 ## <a name="which-operating-systems-support-msix-app-attach"></a>Které operační systémy podporují připojení aplikace MSIX?
 
-Více relací pro Windows 10 Enterprise a Windows 10 Enterprise.
+Windows 10 Enterprise a Windows 10 Enterprise multi-session verze 2004 nebo novější.
+
+## <a name="is-msix-app-attach-currently-generally-available"></a>Je připojení aplikace MSIX aktuálně všeobecně dostupné?
+
+Připojení aplikace MSIX je součástí Windows 10 Enterprise a Windows 10 Enterprise multi-session verze 2004 nebo novější. Oba operační systémy jsou v současnosti všeobecně dostupné. 
+
+## <a name="can-i-use-msix-app-attach-outside-of-windows-virtual-desktop"></a>Můžu použít připojení aplikace MSIX mimo virtuální plochu Windows?
+
+Rozhraní API pro připojení aplikací MSIX a MSIX jsou součástí více relací Windows 10 Enterprise a Windows 10 Enterprise, verze 2004 a novější. V tuto chvíli neposkytujeme software pro správu pro připojení aplikace MSIX mimo virtuální plochu Windows.
+
+## <a name="can-i-run-two-versions-of-the-same-application-at-the-same-time"></a>Můžu ve stejnou chvíli spustit dvě verze stejné aplikace?
+
+Aby dvě verze stejných aplikací MSIX běžely současně, musí být řada balíčků MSIX definovaná v souboru appxmanifest.xml pro každou aplikaci odlišná.
+
+## <a name="should-i-disable-auto-update-when-using-msix-app-attach"></a>Mám při použití aplikace MSIX připojit automatickou aktualizaci?
+
+Ano. Připojení aplikace MSIX nepodporuje automatické aktualizace pro aplikace MSIX.
+
+## <a name="how-do-permissions-work-with-msix-app-attach"></a>Jak fungují oprávnění s připojením aplikace MSIX?
+
+Všechny virtuální počítače v hostitelském fondu, který používá připojení aplikace MSIX, musí mít oprávnění ke čtení sdílené složky, kde jsou uložené image MSIX. Pokud se používá také soubory Azure, bude jim potřeba udělit oprávnění řízení přístupu na základě role (RBAC) i nové oprávnění systému souborů NTFS (Technology File System).
+
+## <a name="can-i-use-msix-app-attach-for-http-or-https"></a>Můžu použít připojení aplikace MSIX pro HTTP nebo HTTPs?
+
+Všechny virtuální počítače, které jsou součástí fondu hostitelů, který používá připojení aplikace MSIX, musí mít oprávnění ke čtení sdílené složky, kde jsou uložené image MSIX. Pokud se používají soubory Azure, musí být udělená oprávnění RBAC a NTFS.
+
+## <a name="can-i-restage-the-same-msix-application"></a>Můžu znovu připravit stejnou aplikaci MSIX?
+
+Ano. Můžete znovu připravit aplikace, které jste již znovu připravili, a nemělo by dojít k chybám.
+
+## <a name="does-msix-app-attach-support-self-signed-certificates"></a>Podporuje aplikace MSIX připojení certifikátů podepsaných svým držitelem?
+
+Používání aplikace MSIX připojit přes protokol HTTP nebo HTTPs není aktuálně podporováno.
+
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se chcete dozvědět víc o připojení aplikace MSIX, podívejte se na náš [Přehled](what-is-app-attach.md) [Glosář](app-attach-glossary.md). V opačném případě začněte s [nastavením připojit k aplikaci](app-attach.md).
+Pokud se chcete dozvědět víc o připojení aplikace MSIX, podívejte se na náš [Přehled](what-is-app-attach.md) a [Glosář](app-attach-glossary.md). V opačném případě začněte s [nastavením připojit k aplikaci](app-attach.md).

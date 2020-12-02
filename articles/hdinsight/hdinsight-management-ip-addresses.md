@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 35f2f82b4fe6862f0d023a70b32c964698b0c0eb
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 682db0ef52e624a23d95aa18a007f05a78f39677
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547805"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518783"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>IP adresy pro správu služby HDInsight
 
@@ -32,7 +32,7 @@ Následující části popisují konkrétní IP adresy, které musí být povole
 
 ## <a name="azure-dns-service"></a>Služba Azure DNS
 
-Pokud používáte službu DNS poskytovanou službou Azure, povolte přístup z __168.63.129.16__ na portu 53. Další informace najdete v dokumentu [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) . Pokud používáte vlastní server DNS, přeskočte tento krok.
+Pokud používáte službu DNS poskytovanou službou Azure, povolte přístup k __168.63.129.16__ na portu 53 pro TCP i UDP. Další informace najdete v dokumentu [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) . Pokud používáte vlastní server DNS, přeskočte tento krok.
 
 ## <a name="health-and-management-services-all-regions"></a>Služby stavu a správy: všechny oblasti
 
@@ -57,7 +57,7 @@ Povolte provoz z IP adres uvedených pro služby stavu a správy Azure HDInsight
 | Asie | Východní Asie | 23.102.235.122</br>52.175.38.134 | \*: 443 | Příchozí |
 | &nbsp; | Southeast Asia | 13.76.245.160</br>13.76.136.249 | \*: 443 | Příchozí |
 | Austrálie | Austrálie – východ | 104.210.84.115</br>13.75.152.195 | \*: 443 | Příchozí |
-| &nbsp; | Austrálie – jihovýchod | 13.77.2.56</br>13.77.2.94 | \*: 443 | Příchozí |
+| &nbsp; | Australia Southeast | 13.77.2.56</br>13.77.2.94 | \*: 443 | Příchozí |
 | Brazílie | Brazil South | 191.235.84.104</br>191.235.87.113 | \*: 443 | Příchozí |
 | Kanada | Kanada – východ | 52.229.127.96</br>52.229.123.172 | \*: 443 | Příchozí |
 | &nbsp; | Střední Kanada | 52.228.37.66</br>52.228.45.222 |\*: 443 | Příchozí |
@@ -78,8 +78,8 @@ Povolte provoz z IP adres uvedených pro služby stavu a správy Azure HDInsight
 | &nbsp; | Jižní Korea – jih | 52.231.203.16</br>52.231.205.214 | \*: 443 | Příchozí
 | Spojené království | Spojené království – západ | 51.141.13.110</br>51.141.7.20 | \*: 443 | Příchozí |
 | &nbsp; | Spojené království – jih | 51.140.47.39</br>51.140.52.16 | \*: 443 | Příchozí |
-| USA | Střední USA | 13.89.171.122</br>13.89.171.124 | \*: 443 | Příchozí |
-| &nbsp; | USA – východ | 13.82.225.233</br>40.71.175.99 | \*: 443 | Příchozí |
+| Spojené státy | Střední USA | 13.89.171.122</br>13.89.171.124 | \*: 443 | Příchozí |
+| &nbsp; | East US | 13.82.225.233</br>40.71.175.99 | \*: 443 | Příchozí |
 | &nbsp; | USA – středosever | 157.56.8.38</br>157.55.213.99 | \*: 443 | Příchozí |
 | &nbsp; | USA – středozápad | 52.161.23.15</br>52.161.10.167 | \*: 443 | Příchozí |
 | &nbsp; | USA – západ | 13.64.254.98</br>23.101.196.19 | \*: 443 | Příchozí |

@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 3ac0540856d8cb8ccba6f1d176292d634d2dc80f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc15c8deb7aea3256cc0077fbdc3ce1a2492b1b2
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856598"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519021"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>Konfigurace zásad WAF pro jednotlivé lokality pomocí Azure PowerShell
 
@@ -28,7 +28,7 @@ V tomto článku získáte informace o těchto tématech:
 * Nastavit síť
 * Vytvoření zásady WAF
 * Vytvořit aplikační bránu se zapnutým Firewallem webových aplikací
-* Použijte globálně zásadu WAF, pro jednotlivé lokality a pro identifikátor URI (Preview).
+* Použití globálně WAF zásad, pro jednotlivé lokality a pro identifikátor URI 
 * Vytvoření škálovací sady virtuálních počítačů
 * Vytvoření účtu úložiště a konfigurace diagnostiky
 * Otestování aplikační brány
@@ -249,7 +249,7 @@ $appgw = New-AzApplicationGateway `
   -FirewallPolicy $wafPolicyGlobal
 ```
 
-### <a name="apply-a-per-uri-policy-preview"></a>Použití zásad pro identifikátor URI (Preview)
+### <a name="apply-a-per-uri-policy"></a>Použití zásad pro identifikátor URI
 
 Pokud chcete použít zásadu pro identifikátor URI, stačí vytvořit novou zásadu a použít ji na konfiguraci pravidla cesty. 
 

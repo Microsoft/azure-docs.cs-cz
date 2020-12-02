@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 87dff3bbb4a7ff5e40a06d1b63bdc38987d727fe
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f9b9681b08f5864dc34bbf1c35dc6919129c24cb
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492688"
+ms.locfileid: "96518800"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Azure Database for MySQL šifrování dat pomocí klíče spravovaného zákazníkem
 
@@ -61,7 +61,7 @@ Když je server nakonfigurovaný tak, aby používal klíč spravovaný zákazn�
 Níže jsou uvedené požadavky na konfiguraci Key Vault:
 
 * Key Vault a Azure Database for MySQL musí patřit do stejného tenanta Azure Active Directory (Azure AD). Interakce mezi Key Vault klienty a servery nejsou podporovány. Přesunutí prostředku Key Vault vyžaduje překonfigurování šifrování dat.
-* Povolte [Soft-Delete] ((.. /Key-Vault/General/Soft-Delete-Overview.MD) na Trezor klíčů s dobou uchování nastavenou na **90 dní**, aby se při odstranění náhodného klíče (nebo Key Vault) chránily před ztrátou dat. Obnovitelné odstraněné prostředky se ve výchozím nastavení uchovávají po dobu 90 dnů, pokud se doba uchovávání explicitně nenastavuje na <= 90 dní. Akce obnovit a odstranit mají vlastní oprávnění přidružená v zásadách přístupu Key Vault. Funkce obnovitelného odstranění je ve výchozím nastavení vypnutá, ale můžete ji povolit prostřednictvím PowerShellu nebo rozhraní příkazového řádku Azure CLI (Všimněte si, že ji nemůžete povolit prostřednictvím Azure Portal).
+* Povolte funkci [obnovitelného odstranění](../key-vault/general/soft-delete-overview.md) v trezoru klíčů s dobou uchování nastavenou na **90 dní**, abyste chránili před ztrátou dat v případě, že dojde k odstranění náhodného klíče (nebo Key Vault). Obnovitelné odstraněné prostředky se ve výchozím nastavení uchovávají po dobu 90 dnů, pokud se doba uchovávání explicitně nenastavuje na <= 90 dní. Akce obnovit a odstranit mají vlastní oprávnění přidružená v zásadách přístupu Key Vault. Funkce obnovitelného odstranění je ve výchozím nastavení vypnutá, ale můžete ji povolit prostřednictvím PowerShellu nebo rozhraní příkazového řádku Azure CLI (Všimněte si, že ji nemůžete povolit prostřednictvím Azure Portal).
 * Povolte funkci [mazání ochrany](../key-vault/general/soft-delete-overview.md#purge-protection) v trezoru klíčů s dobou uchování nastavenou na **90 dní**. Ochranu vyprázdnění je možné povolit jenom v případě, že je povolené obnovitelné odstranění. Dá se zapnout přes Azure CLI nebo PowerShell. Pokud je zapnutá ochrana vyprázdnění, trezor nebo objekt ve stavu odstraněno nelze odstranit, dokud neuplyne doba uchování. Obnovitelné odstraněné trezory a objekty je stále možné obnovit, aby se zajistilo, že budou dodrženy zásady uchovávání informací. 
 * Udělte Azure Database for MySQL přístup k trezoru klíčů pomocí oprávnění Get, wrapKey a unwrapKey pomocí jeho jedinečné spravované identity. V Azure Portal se jedinečná identita služby automaticky vytvoří, když je v MySQL povolené šifrování dat. Podrobné pokyny najdete v tématu [Konfigurace šifrování dat pro MySQL](howto-data-encryption-portal.md) , podrobné pokyny, pokud používáte Azure Portal.
 
@@ -70,8 +70,8 @@ Níže jsou uvedené požadavky na konfiguraci klíče spravovaného zákazníke
 * Klíč spravovaný zákazníkem, který se má použít k šifrování klíč DEK, může být jenom asymetrická, RSA 2048.
 * Datum aktivace klíče (Pokud je nastaveno) musí být datum a čas v minulosti. Datum vypršení platnosti nebylo nastaveno.
 * Klíč musí být v *povoleném* stavu.
-* Klíč musí mít [obnovitelné odstranění](../key-vault/general/soft-delete-overview.md) s dobou uchování nastavenou na **90 dní**.
-* Marie musí mít [povolenou ochranu vyprázdnění](../key-vault/general/soft-delete-overview.md#purge-protection).
+* Klíč musí mít [obnovitelné odstranění](../key-vault/general/soft-delete-overview.md) s dobou uchování nastavenou na **90 dní**. Tím se implicitně nastaví požadovaný klíčový atribut recoveryLevel: "obnovitelné". Pokud je doba uchování nastavená na < 90 dní, recoveryLevel: "CustomizedRecoverable", který není požadavkem, aby bylo možné nastavit dobu uchování na **90 dní**.
+* Klíč musí mít [povolenou ochranu vyprázdnění](../key-vault/general/soft-delete-overview.md#purge-protection).
 * Pokud [importujete existující klíč](/rest/api/keyvault/ImportKey/ImportKey) do trezoru klíčů, nezapomeňte ho zadat v podporovaných formátech souborů ( `.pfx` , `.byok` , `.backup` ).
 
 ## <a name="recommendations"></a>Doporučení

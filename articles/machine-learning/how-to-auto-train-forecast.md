@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 8c6a27f0cfaafe7e6c1181651e672d0e828af855
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 605e8cd57ab5863c1011082f0f2dbd93d078980b
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444479"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518936"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatické učení modelu prognózy časových řad
 
@@ -286,19 +286,19 @@ Podívejte se na příklad kódu Pythonu s využitím [agregované agregační f
 
 ### <a name="short-series-handling"></a>Zpracování krátkých řad
 
-Automatizované ML považuje časovou řadu za **krátkou řadu** , pokud není k dispozici dostatek datových bodů, aby bylo možné provádět fáze vlaků a ověření modelu vývoje. Počet datových bodů se u každého experimentu liší a závisí na max_horizon, počtu rozdělení křížového ověření a délce lookbackí modelu, což je maximální historie, která je potřeba k vytvoření funkcí časové řady. Přesný výpočet najdete v [dokumentaci short_series_handling_config reference](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration).
+Automatizované ML považuje časovou řadu za **krátkou řadu** , pokud není k dispozici dostatek datových bodů, aby bylo možné provádět fáze vlaků a ověření modelu vývoje. Počet datových bodů se u každého experimentu liší a závisí na max_horizon, počtu rozdělení křížového ověření a délce lookbackí modelu, což je maximální historie, která je potřeba k vytvoření funkcí časové řady. Přesný výpočet najdete v [dokumentaci short_series_handling_configuration reference](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration).
 
-Automatizované ML nabízí ve výchozím nastavení krátké zpracování řady s `short_series_handling_config` parametrem v `ForecastingParameters` objektu. 
+Automatizované ML nabízí ve výchozím nastavení krátké zpracování řady s `short_series_handling_configuration` parametrem v `ForecastingParameters` objektu. 
 
-Aby bylo možné povolit krátkodobé zpracování řad, je `freq` nutné definovat i parametr. Chcete-li změnit výchozí chování, `short_series_handling_config = auto` , aktualizujte `short_series_handling_config` parametr v `ForecastingParameter` objektu.  
+Aby bylo možné povolit krátkodobé zpracování řad, je `freq` nutné definovat i parametr. Pro definování hodinové frekvence nastavíme `freq='H'` . [Tady si můžete](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)prohlédnout možnosti řetězce četnosti. Chcete-li změnit výchozí chování, `short_series_handling_configuration = 'auto'` , aktualizujte `short_series_handling_configuration` parametr v `ForecastingParameter` objektu.  
 
 ```python
 from azureml.automl.core.forecasting_parameters import ForecastingParameters
 
 forecast_parameters = ForecastingParameters(time_column_name='day_datetime', 
                                             forecast_horizon=50,
-                                            short_series_handling_config='auto',
-                                            freq = '7',
+                                            short_series_handling_configuration='auto',
+                                            freq = 'H',
                                             target_lags='auto')
 ```
 Následující tabulka shrnuje dostupná nastavení pro `short_series_handling_config` .
@@ -306,7 +306,7 @@ Následující tabulka shrnuje dostupná nastavení pro `short_series_handling_c
 |Nastavení|Popis
 |---|---
 |`auto`| Toto je výchozí chování pro krátkodobé zpracování řad. <li> *Pokud jsou všechny řady krátké*, dosadí data. <br> <li> *Pokud ne všechny řady jsou krátké*, vyřaďte krátké řady. 
-|`pad`| Pokud `short_series_handling_config = pad` a pak automatizovaná ml přidá do každé krátké řady fiktivní hodnoty. Následující seznam uvádí typy sloupců a jejich čalounění: <li>Sloupce objektů s hodnoty NaN <li> Číselné sloupce s 0 <li> Logické a logické sloupce s hodnotou false <li> Cílový sloupec je doplněn náhodnými hodnotami se střední hodnotou nula a směrodatnou odchylku 1. 
+|`pad`| Pokud `short_series_handling_config = pad` a pak automatizovaná ml přidá náhodné hodnoty na každou nalezenou krátkou řadu. Následující seznam uvádí typy sloupců a jejich čalounění: <li>Sloupce objektů s hodnoty NaN <li> Číselné sloupce s 0 <li> Logické a logické sloupce s hodnotou false <li> Cílový sloupec je doplněn náhodnými hodnotami se střední hodnotou nula a směrodatnou odchylku 1. 
 |`drop`| Pokud `short_series_handling_config = drop` je, pak automatizované ml ponechá krátkou řadu a nebude se používat pro školení nebo předpovědi. Předpovědi pro tyto řady vrátí NaN.
 |`None`| Žádná řada není doplněna nebo vyřazena.
 

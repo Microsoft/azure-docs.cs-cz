@@ -4,12 +4,12 @@ description: Naučte se škálovat webovou aplikaci prostředků, cloudovou slu�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 5af60befeda9f0ed4ed76f7ab8449e94950352fb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: dbfffd98cd05e3ab2efbbe33e05da208fdc05600
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186571"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518698"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Začínáme s automatické škálování v Azure
 Tento článek popisuje, jak nastavit nastavení automatického škálování pro váš prostředek v portál Microsoft Azure.
@@ -136,7 +136,7 @@ Po zadání cesty pro kontrolu stavu App Service otestuje cestu k cestě všech 
 > [!NOTE]
 > Pamatujte, že váš plán App Service musí být škálované na 2 nebo více instancí, aby mohlo dojít k vyloučení nástroje pro vyrovnávání zatížení. Pokud máte jenom 1 instanci, neodebere se z nástroje pro vyrovnávání zatížení, i když není v pořádku. 
 
-Zbývající instance v pořádku můžou vyskytnout zvýšené zatížení. Aby nedošlo k zahlcení zbývajících instancí, nebudou vyloučeny žádné více než polovina instancí. Pokud je například plán App Service škálované na 4 instance a 3 z nich není v pořádku, bude při rotaci nástroje pro vyrovnávání zatížení vyloučeno maximálně 2. Ostatní 2 instance (1 v pořádku a 1 poškozený) budou i nadále přijímat požadavky. V nejhorším případě, kdy nejsou všechny instance v pořádku, se nevylučují žádné. Pokud chcete toto chování přepsat, můžete `WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` nastavení aplikace nastavit na hodnotu mezi `0` a `100` . Nastavení této hodnoty na vyšší znamená, že se odeberou víc instancí, které nejsou v pořádku (výchozí hodnota je 50).
+Zbývající instance v pořádku můžou vyskytnout zvýšené zatížení. Aby nedošlo k zahlcení zbývajících instancí, nebudou vyloučeny žádné více než polovina instancí. Pokud je například plán App Service škálované na 4 instance a 3 z nich není v pořádku, bude při rotaci nástroje pro vyrovnávání zatížení vyloučeno maximálně 2. Ostatní 2 instance (1 v pořádku a 1 poškozený) budou i nadále přijímat požadavky. V nejhorším případě, kdy nejsou všechny instance v pořádku, se nevylučují žádné. Pokud chcete toto chování přepsat, můžete `WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` nastavení aplikace nastavit na hodnotu mezi `0` a `100` . Nastavení této hodnoty na vyšší znamená, že se odeberou víc instancí, které nejsou v pořádku (výchozí hodnota je 50).
 
 Pokud instance zůstane po jednu hodinu v nesprávném stavu, bude nahrazena novou instancí. V jednom z nich bude za hodinu nahrazena maximálně jedna instance, a to s maximálním počtem tří instancí za den a App Service.
 

@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 838276c47085a3c7ad0f7c0a35a2578b13eb5026
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 57948cf705d2a58b4f8e19e56121115ba33362ad
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511263"
+ms.locfileid: "96518630"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Nejčastější dotazy k Azure synapse Analytics
 
@@ -22,7 +22,7 @@ V této příručce najdete nejčastější dotazy k Azure synapse Analytics.
 
 ## <a name="general"></a>Obecné
 
-### <a name="q-what-rbac-roles-exist-and-how-do-i-use-them-to-secure-a-synapse-workspace"></a>Otázka: Jaké role RBAC existují a jak je mohu použít k zabezpečení pracovního prostoru synapse?
+### <a name="q-how-can-i-use-rbac-roles-to-secure-my-workspace"></a>Otázka: Jak můžu použít role RBAC k zabezpečení pracovního prostoru?
 
 Odpověď: Azure synapse zavádí řadu rolí a oborů, které jim přiřadí. tím se zjednoduší zabezpečení vašeho pracovního prostoru.
 
@@ -36,16 +36,16 @@ Synapse role RBAC:
 * Synapse – operátor COMPUTE (Preview)
 * Uživatel s přihlašovacími údaji synapse (Preview)
 
-Rozsahy RBAC synapse:
-* Pracovní prostor 
-* Fond Spark
-* Prostředí Integration Runtime
-* Propojená služba
-* Přihlašovací údaj
+Pokud chcete zabezpečit svůj pracovní prostor synapse, přiřaďte role RBAC těmto oborům RBAC:
+* Pracovní prostory
+* Fondy Spark
+* Prostředí Integration runtime
+* Propojené služby
+* Přihlašovací údaje
 
 Kromě toho mají vyhrazené fondy SQL stejné funkce zabezpečení, které znáte a máte rádi.
 
-### <a name="q-how-can-i-cost-control-for-the-capabilities-inside-a-synapse-workspace-such-as-dedicated-sql-pools-serverless-spark-pools-and-serverless-sql-pools"></a>Otázka: Jak můžu řídit náklady na možnosti v pracovním prostoru synapse, jako jsou vyhrazené fondy SQL, neserverové fondy Sparku a fondy SQL bez serveru?
+### <a name="q-how-do-i-control-cont-dedicated-sql-pools-serverless-sql-pools-and-serverless-spark-pools"></a>Otázka: Návody řízení vyhrazených fondů SQL, neserverových fondů SQL a fondů Spark bez serveru?
 
 Odpověď: jako výchozí bod funguje Azure synapse s integrovanou analýzou nákladů a cenovými výstrahami dostupnými na úrovni předplatného Azure.
 

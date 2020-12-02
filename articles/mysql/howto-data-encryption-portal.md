@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9de4a4534551c4a41b2c81c1d10fecf6118ff868
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 00670746c1686bca354adc989ddce6c9dd336491
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434511"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519055"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Šifrování dat pro Azure Database for MySQL pomocí Azure Portal
 
@@ -44,7 +44,8 @@ Naučte se používat Azure Portal k nastavení a správě šifrování dat pro 
   * Žádné datum vypršení platnosti
   * Nezakázáno
   * Provádění operací **získat**, **zalamovat** a **rozbalení**
-  * atribut recoverylevel je nastaven na **obnovitelné**.
+  * atribut recoverylevel je nastavený na **obnovitelné** (vyžaduje se obnovitelné odstranění s dobou uchování nastavenou na 90 dní).
+  * Vymazání ochrany povoleno
 
 Výše uvedené atributy klíče můžete ověřit pomocí následujícího příkazu:
 

@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: d3e38de191557f0602d1b544c6590018f98405b0
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: f15a739904c28361a60210a0cc4606c7048d0f53
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560787"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518970"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Co je firewall webových aplikací Azure v Azure Application Gateway?
 
@@ -22,9 +22,6 @@ Firewall webových aplikací Azure (WAF) v Azure Application Gateway poskytuje c
 WAF on Application Gateway vychází ze [základní sady pravidel (počítačový systém)](https://owasp.org/www-project-modsecurity-core-rule-set/) 3,1, 3,0 nebo 2.2.9 z otevřeného projektu webové aplikace Security (OWASP). WAF se automaticky aktualizuje, aby zahrnovala ochranu proti novým chybám zabezpečení bez nutnosti další konfigurace. 
 
 Všechny níže uvedené funkce WAF existují v zásadách WAF. Můžete vytvořit více zásad a můžete je přidružit k Application Gateway, jednotlivým posluchačům nebo k pravidlům směrování na základě cesty na Application Gateway. Tímto způsobem můžete v případě potřeby mít v případě potřeby samostatné zásady pro každou lokalitu za vaším Application Gateway. Další informace o zásadách WAF najdete v tématu [Vytvoření zásady WAF](create-waf-policy-ag.md).
-
-   > [!NOTE]
-   > Zásady WAF podle identifikátoru URI jsou v Public Preview. To znamená, že tato funkce podléhá dodatečným podmínkám používání společnosti Microsoft. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ![Diagram Application Gateway WAF](../media/ag-overview/waf1.png)
 
@@ -122,8 +119,8 @@ Pokud je zapnutá ochrana robota, do protokolu brány firewall se zaprotokolují
 
 Application Gateway WAF lze nakonfigurovat tak, aby běžela v následujících dvou režimech:
 
-* **Detekční režim** : monitoruje a protokoluje všechny výstrahy hrozeb. Diagnostiku protokolování pro Application Gateway zapnete v části **Diagnostika** . Musíte se také ujistit, že je vybraný a zapnutý protokol WAF. Firewall webových aplikací neblokuje příchozí požadavky, když pracuje v režimu detekce.
-* **Režim prevence** : blokuje vniknutí a útoky, které pravidla zjišťují. Útočník obdrží výjimku "403 neoprávněný přístup" a připojení je zavřené. Režim prevence zaznamenává takové útoky do protokolů WAF.
+* **Detekční režim**: monitoruje a protokoluje všechny výstrahy hrozeb. Diagnostiku protokolování pro Application Gateway zapnete v části **Diagnostika** . Musíte se také ujistit, že je vybraný a zapnutý protokol WAF. Firewall webových aplikací neblokuje příchozí požadavky, když pracuje v režimu detekce.
+* **Režim prevence**: blokuje vniknutí a útoky, které pravidla zjišťují. Útočník obdrží výjimku "403 neoprávněný přístup" a připojení je zavřené. Režim prevence zaznamenává takové útoky do protokolů WAF.
 
 > [!NOTE]
 > Doporučuje se spouštět nově nasazené WAF v režimu detekce po krátkou dobu v produkčním prostředí. Díky tomu získáte možnost získat [protokoly brány firewall](../../application-gateway/application-gateway-diagnostics.md#firewall-log) a aktualizovat všechny výjimky nebo [vlastní pravidla](./custom-waf-rules-overview.md) před přechodem do režimu prevence. To může přispět k omezení výskytu neočekávaného blokovaného provozu.
@@ -134,12 +131,12 @@ OWASP má dva režimy pro rozhodnutí, jestli se má blokovat provoz: režim vyh
 
 V tradičním režimu se provoz, který odpovídá libovolnému pravidlu, považuje za nezávisle na ostatních shodách pravidla. Tento režim je snadno srozumitelný. Ale nedostatek informací o tom, kolik pravidel odpovídá konkrétní žádosti, je omezení. Proto byl zaveden režim bodování anomálií. Ve výchozím nastavení je to pro OWASP 3. *x*.
 
-V režimu bodování anomálií není přenos, který odpovídá libovolnému pravidlu, okamžitě zablokován, pokud je brána firewall v režimu prevence. Pravidla mají určitou závažnost: *kritická* , *Chyba* , *Upozornění* *nebo upozornění*. Tato závažnost má vliv na číselnou hodnotu pro požadavek, který se označuje jako skóre anomálií. Například jedno pravidlo *Upozornění* bude odpovídat 3 do skóre. Jedna *kritická* shoda pravidla přispívá 5.
+V režimu bodování anomálií není přenos, který odpovídá libovolnému pravidlu, okamžitě zablokován, pokud je brána firewall v režimu prevence. Pravidla mají určitou závažnost: *kritická*, *Chyba*, *Upozornění* *nebo upozornění*. Tato závažnost má vliv na číselnou hodnotu pro požadavek, který se označuje jako skóre anomálií. Například jedno pravidlo *Upozornění* bude odpovídat 3 do skóre. Jedna *kritická* shoda pravidla přispívá 5.
 
 |Závažnost  |Hodnota  |
 |---------|---------|
 |Kritické     |5|
-|Chyba        |4|
+|Chybová        |4|
 |Upozornění      |3|
 |Šestiměsíční       |2|
 

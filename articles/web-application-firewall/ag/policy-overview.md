@@ -7,21 +7,16 @@ author: winthrop28
 ms.service: web-application-firewall
 ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: b546b043b856fd6ec69acd63fd69a01c48d0553b
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 59ca0b85ba2aff29bdb2ad3379c1054041d2b4cb
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990121"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518732"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Přehled zásad firewallu webových aplikací Azure (WAF)
 
 Zásady firewallu webových aplikací obsahují všechna nastavení a konfigurace WAF. Patří sem vyloučení, vlastní pravidla, spravovaná pravidla atd. Tyto zásady jsou pak přidruženy k aplikační bráně (globálním), naslouchacímu procesu (na pracovišti) nebo pravidlu založenému na cestě (pro identifikátor URI), aby se mohly projevit.
-
-> [!NOTE]
-> Zásady firewallu webových aplikací (WAF) Azure pro jednotlivé identifikátory URI jsou v Public Preview.
-> 
-> Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, mohou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Počet zásad, které můžete vytvořit, není nijak omezený. Když vytváříte zásadu, musí být přidružená k aplikační bráně, aby se projevila. Dá se přidružit k libovolné kombinaci aplikačních bran, posluchačů a pravidel založených na cestách.
 

@@ -13,12 +13,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 9ecac482c138447a3a9dc99193fb131b688993e4
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 28bacb923578fa0c631aa7b5092e0d11f98b1dcf
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556603"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518409"
 ---
 # <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Použití Azure Portal ke konfiguraci skupiny dostupnosti (Preview) pro SQL Server na virtuálním počítači Azure 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -32,7 +32,7 @@ Tato funkce je aktuálně ve verzi Preview.
 I když tento článek používá Azure Portal ke konfiguraci prostředí skupiny dostupnosti, je taky možné to udělat pomocí [PowerShellu nebo Azure CLI](availability-group-az-commandline-configure.md), [šablon Azure pro rychlý Start](availability-group-quickstart-template-configure.md)nebo [ručně](availability-group-manually-configure-tutorial.md) . 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci skupiny dostupnosti Always On pomocí Azure Portal musíte mít následující požadavky: 
 
@@ -59,7 +59,7 @@ Pokud už cluster máte, přeskočte tuto část a přejděte na místo toho, ab
 
 Pokud ještě nemáte existující cluster, vytvořte ho pomocí Azure Portal s těmito kroky:
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 1. Přejděte ke zdroji [virtuálních počítačů SQL](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) . 
 1. V části **Nastavení** vyberte **Vysoká dostupnost** . 
 1. Vyberte **+ nový cluster s podporou převzetí služeb při selhání ve Windows serveru** a otevřete stránku **konfigurovat cluster Windows s podporou převzetí**  
@@ -90,7 +90,7 @@ Pokud už máte ve svém prostředí SQL Server VM nakonfigurovaný cluster, mů
 
 To můžete provést pomocí těchto kroků:
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 1. Přejděte ke zdroji [virtuálních počítačů SQL](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) . 
 1. V části **Nastavení** vyberte **Vysoká dostupnost** . 
 1. Vyberte připojit **existující cluster s podporou převzetí služeb při selhání se systémem Windows Server** a otevřete stránku **clusteru se systémem Windows Server failover cluster** . 
@@ -100,14 +100,11 @@ To můžete provést pomocí těchto kroků:
 1. Zkontrolujte nastavení clusteru. 
 1. Pokud chcete pokračovat, vyberte **použít** pro připojení clusteru a pak na výzvu vyberte **Ano** .
 
-
-
-
 ## <a name="create-availability-group"></a>Vytvořit skupinu dostupnosti
 
 Po vytvoření nebo zprovoznění clusteru vytvořte skupinu dostupnosti pomocí Azure Portal. To můžete provést pomocí těchto kroků:
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 1. Přejděte ke zdroji [virtuálních počítačů SQL](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) . 
 1. V části **Nastavení** vyberte **Vysoká dostupnost** . 
 1. Vyberte **+ Nová skupina dostupnosti Always On** a otevřete stránku **vytvořit skupinu dostupnosti** .
@@ -146,7 +143,7 @@ K přidání databází do skupiny dostupnosti pomocí SQL Server Management Stu
 1. Otevřete SQL Server Management Studio (SSMS).
 1. Připojte se k instanci SQL Server. 
 1. V **Průzkumník objektů** rozbalte možnost **vždy na vysokou dostupnost** .
-1. Rozbalte **skupiny dostupnosti** , klikněte pravým tlačítkem na vaši skupinu dostupnosti a vyberte **Přidat databázi...**.
+1. Rozbalte **skupiny dostupnosti**, klikněte pravým tlačítkem na vaši skupinu dostupnosti a vyberte **Přidat databázi...**.
 
    :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="V Průzkumníku objektů klikněte pravým tlačítkem na skupinu dostupnosti a vyberte Přidat databázi.":::
 
@@ -162,7 +159,7 @@ Po přidání databáze můžete zjistit stav skupiny dostupnosti v Azure Portal
 
 Pokud chcete do clusteru přidat další SQL Server virtuálních počítačů, postupujte takto: 
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 1. Přejděte ke zdroji [virtuálních počítačů SQL](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) . 
 1. V části **Nastavení** vyberte **Vysoká dostupnost** . 
 1. Vyberte **konfigurovat cluster s podporou převzetí služeb při selhání Windows serveru** a otevřete stránku **konfigurovat cluster Windows Server failover cluster** . 
@@ -171,7 +168,7 @@ Pokud chcete do clusteru přidat další SQL Server virtuálních počítačů, 
 
 1. Rozbalte možnost **přihlašovací údaje clusteru s podporou převzetí služeb při selhání systému Windows Server** a zadejte účty používané pro službu SQL Server, operátora clusteru a spouštěcí účty clusteru. 
 1. Vyberte SQL Server virtuálních počítačů, které chcete přidat do clusteru. 
-1. Vyberte **Apply** (Použít). 
+1. Vyberte **Použít**. 
 
 Stav nasazení můžete zjistit v **protokolu aktivit** , který je přístupný z ikony zvonku v horním navigačním panelu. 
 
@@ -207,7 +204,7 @@ Dále odeberte metadata clusteru z rozšíření agenta SQL IaaS:
 # Remove the cluster from the SQL VM RP metadata
 # example: az sql vm group delete --name Cluster --resource-group SQLVM-RG
 
-az sql vm group delete --name <cluster name> Cluster --resource-group <resource group name>
+az sql vm group delete --name <cluster name> --resource-group <resource group name>
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -235,12 +232,12 @@ Dále odeberte metadata clusteru z rozšíření agenta SQL IaaS:
 # Remove the cluster metadata
 # example: Remove-AzSqlVMGroup -ResourceGroupName "SQLVM-RG" -Name "Cluster"
 
-Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster name> "
+Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster name>"
 ```
 
 ---
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Pokud narazíte na problémy, můžete zkontrolovat historii nasazení a zkontrolovat běžné chyby i jejich rozlišení. 
 
@@ -250,7 +247,7 @@ Změny clusteru a skupiny dostupnosti prostřednictvím portálu se provádějí
 
 Chcete-li zobrazit protokoly pro nasazení a vyhledat historii nasazení, postupujte podle následujících kroků:
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejděte do skupiny prostředků.
 1. V části **Nastavení** vyberte **nasazení** .
 1. Pokud chcete získat další informace o nasazení, vyberte nasazení, které vás zajímá. 
