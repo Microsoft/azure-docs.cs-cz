@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/21/2020
-ms.openlocfilehash: 1e71d3883b8dacefa9b501ee3a9a0533d5c7d515
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 12/02/2020
+ms.openlocfilehash: 57b4b6f3f49e9b82ada4b37c8e2de0697781e063
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592664"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510586"
 ---
 # <a name="execute-r-script-module"></a>Spustit modul skriptu R
 
@@ -78,25 +78,27 @@ azureml_main <- function(dataframe1, dataframe2){
  > [!NOTE]
  > Před instalací balíčku ověřte, jestli už existuje, takže nebudete instalaci opakovat. Opakování instalací může způsobit vypršení požadavků webové služby.     
 
+## <a name="access-to-registered-dataset"></a>Přístup k registrované datové sadě
+
+Můžete se podívat na následující vzorový kód pro přístup k [registrovaným datovým sadám](../how-to-create-register-datasets.md) v pracovním prostoru:
+
+```R
+azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+  run = get_current_run()
+  ws = run$experiment$workspace
+  dataset = azureml$core$dataset$Dataset$get_by_name(ws, "YOUR DATASET NAME")
+  dataframe2 <- dataset$to_pandas_dataframe()
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
 ## <a name="uploading-files"></a>Nahrání souborů
 Modul spuštění skriptu jazyka R podporuje nahrávání souborů pomocí Azure Machine Learning R SDK.
 
 Následující příklad ukazuje, jak nahrát soubor obrázku do skriptu spustit R:
 ```R
-
-# R version: 3.5.1
-# The script MUST contain a function named azureml_main,
-# which is the entry point for this module.
-
-# Note that functions dependent on the X11 library,
-# such as "View," are not supported because the X11 library
-# is not preinstalled.
-
-# The entry point function MUST have two input arguments.
-# If the input port is not connected, the corresponding
-# dataframe argument will be null.
-#   Param<dataframe1>: a R DataFrame
-#   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){
   print("R script run.")
 
@@ -119,22 +121,6 @@ Po dokončení spuštění kanálu můžete zobrazit náhled obrázku v pravém 
 > [!div class="mx-imgBorder"]
 > ![Náhled nahraného obrázku](media/module/upload-image-in-r-script.png)
 
-## <a name="access-to-registered-dataset"></a>Přístup k registrované datové sadě
-
-Můžete se podívat na následující vzorový kód pro přístup k [registrovaným datovým sadám](../how-to-create-register-datasets.md) v pracovním prostoru:
-
-```R
-    azureml_main <- function(dataframe1, dataframe2){
-  print("R script run.")
-  run = get_current_run()
-  ws = run$experiment$workspace
-  dataset = azureml$core$dataset$Dataset$get_by_name(ws, "YOUR DATASET NAME")
-  dataframe2 <- dataset$to_pandas_dataframe()
-  # Return datasets as a Named List
-  return(list(dataset1=dataframe1, dataset2=dataframe2))
-}
-```
-
 ## <a name="how-to-configure-execute-r-script"></a>Jak nakonfigurovat skript spouštěný v jazyce R
 
 Modul spuštění skriptu jazyka R obsahuje vzorový kód jako výchozí bod.
@@ -147,11 +133,11 @@ Datové sady uložené v návrháři se při načtení s tímto modulem automati
 
 1. Připojte všechny vstupy, které skript potřebuje. Vstupy jsou volitelné a můžou obsahovat data a další kód R.
 
-    * **DataSet1.** : odkazuje na první vstup jako `dataframe1` . Vstupní datová sada musí být naformátovaná jako soubor CSV, TSV nebo ARFF. Můžete také připojit Azure Machine Learning datovou sadu.
+    * **DataSet1.**: odkazuje na první vstup jako `dataframe1` . Vstupní datová sada musí být naformátovaná jako soubor CSV, TSV nebo ARFF. Můžete také připojit Azure Machine Learning datovou sadu.
 
-    * **Dataset2** : odkázat na druhý vstup jako `dataframe2` . Tato datová sada musí být také naformátovaná jako soubor CSV, TSV nebo ARFF nebo jako datová sada Azure Machine Learning.
+    * **Dataset2**: odkázat na druhý vstup jako `dataframe2` . Tato datová sada musí být také naformátovaná jako soubor CSV, TSV nebo ARFF nebo jako datová sada Azure Machine Learning.
 
-    * **Sada skriptů** : třetí vstup přijímá soubory. zip. Soubor ZIP může obsahovat více souborů a více typů souborů.
+    * **Sada skriptů**: třetí vstup přijímá soubory. zip. Soubor ZIP může obsahovat více souborů a více typů souborů.
 
 1. Do textového pole **skript jazyka r** zadejte nebo vložte platný skript r.
 

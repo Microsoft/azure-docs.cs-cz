@@ -11,16 +11,16 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 7b35997e763434d7ae4d849c33d358d1593d7e33
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ce77a169e28e21aa37be2a49997a58ee42c93807
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460543"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510824"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>Skóre modelů strojového učení s předpovídat
 
-Vyhrazený fond SQL nabízí možnost skóre modelů strojového učení pomocí známého jazyka T-SQL. Pomocí jazyka T- [SQL můžete](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)přenést stávající modely strojového učení s historickými daty a určit jejich skóre v rámci zabezpečených hranic datového skladu. Funkce PREDIKTIVNÍho přebírá model [ONNX (Open neuronové Network Exchange)](https://onnx.ai/) a data jako vstupy. Tato funkce eliminuje krok přesunu cenných dat mimo datový sklad pro účely bodování. Cílem je umožnit odborníkům v oblasti dat snadno nasadit modely strojového učení pomocí známého rozhraní T-SQL a zároveň bez problémů spolupracovat s odborníky přes data, kteří pracují se správnou architekturou pro jejich úkoly.
+Vyhrazený fond SQL nabízí možnost skóre modelů strojového učení pomocí známého jazyka T-SQL. Pomocí jazyka T- [SQL můžete](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)přenést stávající modely strojového učení s historickými daty a určit jejich skóre v rámci zabezpečených hranic datového skladu. Funkce PREDIKTIVNÍho přebírá model [ONNX (Open neuronové Network Exchange)](https://onnx.ai/) a data jako vstupy. Tato funkce eliminuje krok přesunu cenných dat mimo datový sklad pro účely bodování. Cílem je umožnit odborníkům v oblasti dat snadno nasadit modely strojového učení pomocí známého rozhraní T-SQL a zároveň bez problémů spolupracovat s odborníky přes data, kteří pracují se správnou architekturou pro jejich úkoly.
 
 > [!NOTE]
 > Tato funkce není v současnosti podporovaná v SQL fondu bez serveru.
@@ -66,7 +66,7 @@ GO
 
 ```
 
-Po převodu modelu na šestnáctkový řetězec a zadanou definici tabulky použijte [příkaz Kopírovat](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) nebo základ pro načtení modelu do vyhrazené tabulky fondu SQL. Následující ukázka kódu používá k načtení modelu příkaz Copy.
+Po převodu modelu na šestnáctkový řetězec a zadanou definici tabulky použijte [příkaz Kopírovat](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) nebo základ pro načtení modelu do vyhrazené tabulky fondu SQL. Následující ukázka kódu používá k načtení modelu příkaz Copy.
 
 ```sql
 -- Copy command to load hexadecimal string of the model from Azure Data Lake storage location
@@ -80,17 +80,17 @@ WITH (
 
 ## <a name="scoring-the-model"></a>Bodování modelu
 
-Jakmile se model a data načtou do datového skladu, použijte k vyhodnocení modelu funkci **předpověď T-SQL** . Ujistěte se, že nová vstupní data jsou ve stejném formátu jako školicí data použitá k vytvoření modelu. Předpověď T-SQL přebírá dva vstupy: model a nové vstupní data bodování a generuje nové sloupce pro výstup. Model lze zadat jako proměnnou, literál nebo skalární sub_query. Použijte [s common_table_expression](https://docs.microsoft.com/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-ver15) k určení pojmenované sady výsledků pro datový parametr.
+Jakmile se model a data načtou do datového skladu, použijte k vyhodnocení modelu funkci **předpověď T-SQL** . Ujistěte se, že nová vstupní data jsou ve stejném formátu jako školicí data použitá k vytvoření modelu. Předpověď T-SQL přebírá dva vstupy: model a nové vstupní data bodování a generuje nové sloupce pro výstup. Model lze zadat jako proměnnou, literál nebo skalární sub_query. Použijte [s common_table_expression](https://docs.microsoft.com/sql/t-sql/queries/with-common-table-expression-transact-sql?view=azure-sqldw-latest&preserve-view=true) k určení pojmenované sady výsledků pro datový parametr.
 
-Následující příklad ukazuje vzorový dotaz pomocí funkce předpovědi. Vytvoří se další sloupec s názvem *skóre* a datovým typem *float* , který obsahuje výsledky předpovědi. Všechny sloupce vstupních dat a výstupní prediktivní sloupce jsou k dispozici pro zobrazení pomocí příkazu SELECT. Další podrobnosti najdete v tématu [předpověď (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest).
+Následující příklad ukazuje vzorový dotaz pomocí funkce předpovědi. Vytvoří se další sloupec s názvem *skóre* a datovým typem *float* , který obsahuje výsledky předpovědi. Všechny sloupce vstupních dat a výstupní prediktivní sloupce jsou k dispozici pro zobrazení pomocí příkazu SELECT. Další podrobnosti najdete v tématu [předpověď (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true).
 
 ```sql
 -- Query for ML predictions
 SELECT d.*, p.Score
 FROM PREDICT(MODEL = (SELECT Model FROM Models WHERE Id = 1),
-DATA = dbo.mytable AS d) WITH (Score float) AS p;
+DATA = dbo.mytable AS d, RUNTIME = ONNX) WITH (Score float) AS p;
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o funkci předpověď naleznete v tématu [předpověď (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest).
+Další informace o funkci předpověď naleznete v tématu [předpověď (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true).

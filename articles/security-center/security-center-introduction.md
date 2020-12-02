@@ -1,6 +1,6 @@
 ---
 title: Co je Azure Security Center? | Microsoft Docs
-description: Tato stránka popisuje klíčové výhody Security Center – zjišťuje stav zabezpečení a zlepšuje se s využitím cloudových a premch prostředků.
+description: Tato stránka popisuje klíčové výhody Security Center – zjišťuje stav zabezpečení a vylepšuje je s využitím cloudových a místních prostředků.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: d62ed31a68d9469a1bd1fc66e479b0f91db2f916
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 0a1cac0fe61ea13a18224ea5992b5c7c1ba69d8a
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372264"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510331"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
 
@@ -37,9 +37,9 @@ Azure Security Center řeší tři nejnaléhavější nároky na zabezpečení:
 
 Kvůli ochraně před těmito hrozbami poskytuje Security Center nástroje, které umožňují:
 
--   **Posílit zabezpečení stav** : Security Center vyhodnocuje vaše prostředí a umožní vám pochopit stav vašich prostředků a to, jestli jsou zabezpečené.
+-   **Posílit zabezpečení stav**: Security Center vyhodnocuje vaše prostředí a umožní vám pochopit stav vašich prostředků a to, jestli jsou zabezpečené.
 
--   **Ochrana před hrozbami** : Security Center posuzuje vaše úlohy a vyvolává doporučení prevence hrozeb a výstrahy zabezpečení.
+-   **Ochrana před hrozbami**: Security Center posuzuje vaše úlohy a vyvolává doporučení prevence hrozeb a výstrahy zabezpečení.
 
 -   **Rychleji se zabezpečit:** Ve službě Security Center probíhá vše rychlostí cloudu. Vzhledem k nativní integraci je nasazení služby Security Center jednoduché a poskytuje pro služby Azure automatické zřizování a ochranu.
 

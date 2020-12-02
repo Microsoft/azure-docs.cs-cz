@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 10/01/2020
 ms.author: inhenkel
-ms.openlocfilehash: 23baa6ed92aa01251b4c7ccf34ef784910a0321f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 14544f58bcda56a55cef33de8fe0a70d5859b589
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019830"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510943"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services V2 vs. v3
 
@@ -80,7 +80,6 @@ Rozhraní V3 API má následující mezery v souvislosti s rozhraním API v2. Uz
     * Sešity prostředků
     * Překryvy
     * Jej
-    * Sprite miniatur
     * Vložení tiché zvukové stopy, když vstup nemá žádný zvuk
     * Vložení stop videa, když vstup nemá žádné video
 * Živé události s překódováním v současné době nepodporují vložení do středu a vložení značek AD prostřednictvím volání rozhraní API. 
@@ -115,7 +114,7 @@ Následující tabulka ukazuje, jak vlastnosti [assetu](/rest/api/media/assets/c
 
 Aby bylo možné chránit vaše prostředky v klidovém stavu, prostředky by měly být šifrovány šifrováním na straně úložiště. Následující tabulka ukazuje, jak funguje šifrování na straně úložiště v Media Services:
 
-|Možnost šifrování|Description|Media Services v2|Media Services v3|
+|Možnost šifrování|Popis|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Media Services šifrování úložiště|Šifrování AES-256, klíč spravovaný pomocí Media Services.|Podporováno<sup>(1)</sup>|Nepodporováno<sup>(2)</sup>|
 |[Šifrování služby Storage pro neaktivní neaktivní data](../../storage/common/storage-service-encryption.md)|Šifrování na straně serveru, které nabízí Azure Storage, klíč spravuje Azure nebo zákazník.|Podporováno|Podporováno|

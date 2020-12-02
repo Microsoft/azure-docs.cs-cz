@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: c1d21d88ed49cb14aa9f964791154f001a40fbe2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 10dff18f7b9db7273fcd6ec92bcca5970bb83b08
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499573"
+ms.locfileid: "96510365"
 ---
 # <a name="java-code-samples-for-azure-cognitive-search"></a>Ukázky kódu Java pro Azure Kognitivní hledání
 
@@ -25,7 +25,7 @@ Přečtěte si o ukázkách kódu Java, které ukazují funkce a funkce Azure Ko
 | [Azure-Samples/Azure-Search-Java-Samples](https://github.com/Azure-Samples/azure-search-java-samples) | Ukázky kódu, které doprovázejí články s postupy. **Ukázky v tomto úložišti ještě nejsou aktualizované na používání sady Azure SDK pro jazyk Java**. V současné době tyto ukázky volají rozhraní REST API v kódu Java.|
 
 > [!Tip]
-> Vyzkoušejte si [prohlížeč ukázek](/samples/browse/?languages=csharp&products=azure-cognitive-search) , kde najdete ukázky kódu Microsoftu v GitHubu, filtrované podle produktu, služby a jazyka.
+> Vyzkoušejte si [prohlížeč ukázek](/samples/browse/?languages=java&products=azure-cognitive-search) , kde najdete ukázky kódu Microsoftu v GitHubu, filtrované podle produktu, služby a jazyka.
 
 ## <a name="java-sdk-samples"></a>Ukázky Java SDK
 

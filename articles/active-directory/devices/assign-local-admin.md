@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0903828b04922104a9dd93ac79459bf73644f35c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f705150f927a08b5ca2f91b702ee0853766ac23a
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365829"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511113"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Jak spravovat místní skupinu Administrators na zařízeních připojených k Azure AD
 
@@ -72,14 +72,19 @@ Správci zařízení mají přiřazená všechna zařízení připojená k Azure
 >[!NOTE]
 > Tato funkce je aktuálně ve verzi Preview.
 
+
 Počínaje aktualizací Windows 10 2004 můžete pomocí skupin Azure AD spravovat oprávnění správce na zařízeních připojených k Azure AD pomocí zásad [skupiny s omezeným přístupem](/windows/client-management/mdm/policy-csp-restrictedgroups) (MDM). Tato zásada vám umožní přiřadit jednotlivé uživatele nebo skupiny Azure AD k místní skupině Administrators na zařízení připojeném k Azure AD a poskytnout tak členitost pro konfiguraci samostatných správců pro různé skupiny zařízení. 
 
-V současné době není v Intune žádné uživatelské rozhraní pro správu této zásady a je potřeba je nakonfigurovat pomocí [vlastního nastavení OMA-URI](/mem/intune/configuration/custom-settings-windows-10). Několik důležitých informací pro tyto zásady: 
+>[!NOTE]
+> Spouští se aktualizace Windows 10 20H2, doporučujeme místo zásad skupin s omezenými oprávněními používat zásady [místních uživatelů a skupin](/windows/client-management/mdm/policy-csp-localusersandgroups) .
+
+
+V současné době není v Intune žádné uživatelské rozhraní pro správu těchto zásad a je potřeba je nakonfigurovat pomocí [vlastního nastavení OMA-URI](/mem/intune/configuration/custom-settings-windows-10). Několik důležitých informací pro použití některé z těchto zásad: 
 
 - Přidání skupin Azure AD prostřednictvím zásad vyžaduje identifikátor SID skupiny, který se dá získat spuštěním rozhraní API skupin. Identifikátor SID je definován vlastností `securityIdentifier` v rozhraní API skupin.
-- Když se vynutila zásada skupin s omezeným přístupem, všechny aktuální členy skupiny, které nejsou v seznamu členů, se odeberou. Aby tyto zásady vynutily nové členy nebo skupiny, odstraní stávající správce konkrétně uživatele, který se připojil k zařízení, roli Správce zařízení a roli globálního správce ze zařízení. Chcete-li se vyhnout odebrání stávajících členů, je třeba je nakonfigurovat jako součást seznamu členů v zásadě skupiny s omezeným přístupem. 
-- Tyto zásady platí jenom pro následující známé skupiny na zařízeních s Windows 10 – správci, uživatelé, hosty, Power Users, Uživatelé vzdálené plochy a uživatelé vzdálené správy. 
-- Správa místních správců pomocí zásad omezených skupin není platná pro připojené k hybridní službě Azure AD nebo k zařízením registrovaným v Azure AD.
+- Když se vynutila zásada skupin s omezeným přístupem, všechny aktuální členy skupiny, které nejsou v seznamu členů, se odeberou. Aby tyto zásady vynutily nové členy nebo skupiny, odstraní stávající správce konkrétně uživatele, který se připojil k zařízení, roli Správce zařízení a roli globálního správce ze zařízení. Chcete-li se vyhnout odebrání stávajících členů, je třeba je nakonfigurovat jako součást seznamu členů v zásadě skupiny s omezeným přístupem. Toto omezení se řeší, pokud používáte zásady místních uživatelů a skupin, které umožňují přírůstkové aktualizace členství ve skupinách.
+- Oprávnění správce pomocí obou zásad se vyhodnocují jenom pro následující známé skupiny na zařízeních s Windows 10 – správci, uživatelé, hosty, Power Users, Uživatelé vzdálené plochy a uživatelé vzdálené správy. 
+- Správa místních správců pomocí skupin Azure AD není platná pro připojení k hybridní službě Azure AD nebo zařízením registrovaným v Azure AD.
 - Zásady skupin s omezeným přístupem existovaly před aktualizací Windows 10 2004, ale nepodporují skupiny Azure AD jako členy místní skupiny správců zařízení. 
 
 ## <a name="manage-regular-users"></a>Správa běžných uživatelů

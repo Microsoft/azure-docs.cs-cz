@@ -6,25 +6,28 @@ author: euangMS
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: spark
-ms.date: 04/15/2020
+ms.date: 11/19/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 178fc12fe8e8e20af8deb40c62990c279af4ab64
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e0bdfa4a451269e82b73194e921f9067d848868e
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452836"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511079"
 ---
 # <a name="introduction"></a>Úvod
 
-Azure synapse Apache Spark pro synapse SQL Connector je navržený tak, aby efektivně přenesl data mezi fondy Apache Spark serverů bez serveru a fondy SQL v Azure synapse. Azure synapse Apache Spark pro synapse SQL Connector funguje jenom na vyhrazených fondech SQL, ale nefunguje s fondem SQL bez serveru.
+Azure synapse Apache Spark pro synapse SQL Connector je navržený tak, aby efektivně přenesl data mezi fondy Apache Spark serverů bez serveru a vyhrazené fondy SQL ve službě Azure synapse. Azure synapse Apache Spark pro synapse SQL Connector funguje jenom na vyhrazených fondech SQL, ale nefunguje s fondem SQL bez serveru.
+
+> [!WARNING]
+> Název funkce **sqlanalytics ()** byl změněn na **synapsesql ()**. Funkce sqlanalytics bude i nadále fungovat, ale bude zastaralá.  Změňte prosím všechny odkazy z **sqlanalytics ()** na **synapsesql ()** , aby se zabránilo jakémukoli přerušení v budoucnosti.
 
 ## <a name="design"></a>Návrh
 
 Přenos dat mezi fondy Spark a fondy SQL se dá provést pomocí JDBC. Nicméně u dvou distribuovaných systémů, jako jsou Spark a SQL, je JDBC kritickým bodem pro přenos dat pomocí sériového přenosu dat.
 
-Azure synapse Apache Spark fond až synapse SQL Connector je implementace zdroje dat pro Apache Spark. Používá Azure Data Lake Storage Gen2 a základnu ve vyhrazených fondech SQL k efektivnímu přenosu dat mezi clusterem Spark a instancí SQL synapse.
+Azure synapse Apache Spark fond až synapse SQL Connector je implementace zdroje dat pro Apache Spark. Používá Azure Data Lake Storage Gen2 a základnu ve vyhrazených fondech SQL k efektivnímu přenosu dat mezi clusterem Spark a synapse vyhrazenou instancí SQL.
 
 ![Architektura konektoru](./media/synapse-spark-sqlpool-import-export/arch1.png)
 
@@ -37,8 +40,10 @@ Z tohoto důvodu není nutné vytvářet přihlašovací údaje ani je zadat v r
 ## <a name="constraints"></a>Omezení
 
 - Tento konektor funguje pouze v Scala.
+- Informace o pySpark najdete v části [použití Pythonu](#use-pyspark-with-the-connector) .
+- Tento konektor nepodporuje dotazování zobrazení SQL.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Musí být členem role **db_exporter** v databázi nebo ve fondu SQL, do které chcete přenést data.
 - Musí být členem role Přispěvatel dat objektů BLOB úložiště ve výchozím účtu úložiště.
@@ -80,7 +85,7 @@ Příkazy import nejsou vyžadovány, jsou předem importovány pro prostředí 
 #### <a name="read-api"></a>Rozhraní API pro čtení
 
 ```scala
-val df = spark.read.sqlanalytics("<DBName>.<Schema>.<TableName>")
+val df = spark.read.synapsesql("<DBName>.<Schema>.<TableName>")
 ```
 
 Výše uvedené rozhraní API bude fungovat pro interní (spravované) i externí tabulky ve fondu SQL.
@@ -88,7 +93,7 @@ Výše uvedené rozhraní API bude fungovat pro interní (spravované) i extern�
 #### <a name="write-api"></a>Zapisovat rozhraní API
 
 ```scala
-df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
+df.write.synapsesql("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 Rozhraní Write API vytvoří tabulku ve vyhrazeném fondu SQL a potom vyvolá základ, aby data načetla.  Tabulka nesmí existovat ve vyhrazeném fondu SQL, jinak se vrátí chyba oznamující, že objekt s názvem již existuje...
@@ -101,7 +106,7 @@ Hodnoty TableType
 Tabulka spravovaná fondem SQL
 
 ```scala
-df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
+df.write.synapsesql("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 ```
 
 Externí tabulka fondu SQL
@@ -130,7 +135,7 @@ EXTERNÍ objekt PŘIHLAŠOVACÍch údajů není nutný při použití Azure Acti
 df.write.
     option(Constants.DATA_SOURCE, <DataSourceName>).
     option(Constants.FILE_FORMAT, <FileFormatName>).
-    sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.EXTERNAL)
+    synapsesql("<DBName>.<Schema>.<TableName>", Constants.EXTERNAL)
 
 ```
 
@@ -149,7 +154,7 @@ df.write.
 ```scala
 val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
-sqlanalytics("<DBName>.<Schema>.<TableName>")
+synapsesql("<DBName>.<Schema>.<TableName>")
 ```
 
 #### <a name="write-api"></a>Zapisovat rozhraní API
@@ -157,7 +162,7 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 ```scala
 df.write.
 option(Constants.SERVER, "samplews.database.windows.net").
-sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
+synapsesql("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 ### <a name="use-sql-auth-instead-of-azure-ad"></a>Použití ověřování SQL místo Azure AD
@@ -171,7 +176,7 @@ val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
 option(Constants.USER, <SQLServer Login UserName>).
 option(Constants.PASSWORD, <SQLServer Login Password>).
-sqlanalytics("<DBName>.<Schema>.<TableName>")
+synapsesql("<DBName>.<Schema>.<TableName>")
 ```
 
 #### <a name="write-api"></a>Zapisovat rozhraní API
@@ -181,10 +186,10 @@ df.write.
 option(Constants.SERVER, "samplews.database.windows.net").
 option(Constants.USER, <SQLServer Login UserName>).
 option(Constants.PASSWORD, <SQLServer Login Password>).
-sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
+synapsesql("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-### <a name="use-the-pyspark-connector"></a>Použití konektoru PySpark
+### <a name="use-pyspark-with-the-connector"></a>Použití PySpark s konektorem
 
 > [!NOTE]
 > Tento příklad je dán pouze v případě, že máte na paměti poznámkové bloky zachovány.
@@ -203,7 +208,7 @@ Spusťte v poznámkovém bloku PySpark Scala buňku pomocí MAGICS:
 %%spark
 val scala_df = spark.sqlContext.sql ("select * from pysparkdftemptable")
 
-scala_df.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
+scala_df.write.synapsesql("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 ```
 
 Podobně ve scénáři čtení si přečtěte data pomocí Scala a zapište je do dočasné tabulky a pomocí Spark SQL v PySpark se Dotazujte dočasnou tabulku do datového rámce.
@@ -234,6 +239,7 @@ V účtu úložiště ADLS Gen2 připojeném k pracovnímu prostoru musíte být
 
 > [!IMPORTANT]
 > Pokud nechcete, ujistěte se, že nevyberete možnost výchozí.
+
 
 ## <a name="next-steps"></a>Další kroky
 

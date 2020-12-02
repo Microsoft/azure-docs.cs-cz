@@ -1,14 +1,14 @@
 ---
 title: Odstraňování běžných chyb
 description: Naučte se řešit problémy s vytvářením definic zásad, různých SDK a doplňku pro Kubernetes.
-ms.date: 10/30/2020
+ms.date: 12/01/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 74b622dd41fb28e845a35780e5d06588189ec029
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: f3667988d527100507d308887338278e1200d454
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146275"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510994"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Řešení chyb pomocí Azure Policy
 
@@ -56,7 +56,7 @@ Nejdřív počkejte odpovídající dobu, než se vyhodnocení dokončí, a výs
 
 #### <a name="issue"></a>Problém
 
-Prostředek není ve stavu vyhodnocení, buď _kompatibilní_ , nebo _nekompatibilní_ , který je pro tento prostředek očekávaný.
+Prostředek není ve stavu vyhodnocení, buď _kompatibilní_ , nebo _nekompatibilní_, který je pro tento prostředek očekávaný.
 
 #### <a name="cause"></a>Příčina
 
@@ -88,14 +88,14 @@ Prostředek, na kterém se očekává, Azure Policy není a v [protokolu aktivit
 
 #### <a name="cause"></a>Příčina
 
-Přiřazení zásad bylo nakonfigurováno pro [EnforcementMode](../concepts/assignment-structure.md#enforcement-mode) _zakázané_ . V době, kdy je režim vynucení zakázaný, není účinek zásad vynucený a v protokolu aktivit není žádný záznam.
+Přiřazení zásad bylo nakonfigurováno pro [EnforcementMode](../concepts/assignment-structure.md#enforcement-mode) _zakázané_. V době, kdy je režim vynucení zakázaný, není účinek zásad vynucený a v protokolu aktivit není žádný záznam.
 
 #### <a name="resolution"></a>Řešení
 
 Pomocí těchto kroků můžete vyřešit vynucení přiřazení zásad:
 
 1. Nejdřív počkejte odpovídající dobu, než se vyhodnocení dokončí, a výsledky dodržování předpisů budou k dispozici v Azure Portal nebo SDK. Chcete-li zahájit novou zkušební kontrolu pomocí Azure PowerShell nebo REST API, přečtěte si téma [Kontrola vyhodnocení na vyžádání](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
-1. Ověřte, zda jsou parametry přiřazení a rozsah přiřazení správně nastaveny a zda je _povolená_ možnost **enforcementMode** . 
+1. Ověřte, zda jsou parametry přiřazení a rozsah přiřazení správně nastaveny a zda je _povolená_ možnost **enforcementMode** .
 1. Zkontrolujte [režim definice zásad](../concepts/definition-structure.md#mode):
    - Režim All pro všechny typy prostředků.
    - Režim "indexovaný", pokud definice zásad kontroluje značky nebo umístění.
@@ -190,24 +190,6 @@ Podrobný popis najdete v tomto blogovém příspěvku:
 
 ## <a name="add-on-for-kubernetes-general-errors"></a>Doplněk pro obecné chyby Kubernetes
 
-### <a name="scenario-add-on-doesnt-work-with-aks-clusters-on-version-119-preview"></a>Scénář: doplněk nefunguje s clustery AKS ve verzi 1,19 (Preview).
-
-#### <a name="issue"></a>Problém
-
-Clustery verze 1,19 vrátí tuto chybu prostřednictvím řadiče serveru gatekeeper a Webhooku zásad:
-
-```
-2020/09/22 20:06:55 http: TLS handshake error from 10.244.1.14:44282: remote error: tls: bad certificate
-```
-
-#### <a name="cause"></a>Příčina
-
-AKS clusers na verzi 1,19 (Preview) ještě není kompatibilní s doplňkem Azure Policy.
-
-#### <a name="resolution"></a>Řešení
-
-Nepoužívejte Kubernetes 1,19 (Preview) s doplňkem Azure Policy. Doplněk lze použít s libovolnou podporovanou všeobecně dostupnou verzí, například 1,16, 1,17 nebo 1,18.
-
 ### <a name="scenario-add-on-is-unable-to-reach-the-azure-policy-service-endpoint-due-to-egress-restrictions"></a>Scénář: doplněk se nemůže spojit s koncovým bodem služby Azure Policy, protože neplatí omezení pro výstup.
 
 #### <a name="issue"></a>Problém
@@ -239,9 +221,9 @@ Doplněk se nemůže připojit ke koncovému bodu služby Azure Policy a vrátí
 
 #### <a name="cause"></a>Příčina
 
-K této chybě dochází, když je v clusteru nainstalovaný příkaz _Add-pod-identity_ a _Kube – systémová_ lusky nejsou vyloučené v _AAD-pod-identity_ .
+K této chybě dochází, když je v clusteru nainstalovaný příkaz _Add-pod-identity_ a _Kube – systémová_ lusky nejsou vyloučené v _AAD-pod-identity_.
 
-Lusky spravované identity (NMI) v poli _AAD-pod-identity_ mění uzly softwaru iptables tak, aby zachytil volání koncového bodu metadat instance Azure. Tato instalace znamená, že všechny požadavky na koncový bod metadat jsou zachyceny NMI i v případě, že pole pod nepoužívá _identitu AAD-pod-identity_ .
+Lusky spravované identity (NMI) v poli _AAD-pod-identity_ mění uzly softwaru iptables tak, aby zachytil volání koncového bodu metadat instance Azure. Tato instalace znamená, že všechny požadavky na koncový bod metadat jsou zachyceny NMI i v případě, že pole pod nepoužívá _identitu AAD-pod-identity_.
 **AzurePodIdentityException** CRD je možné nakonfigurovat tak, aby informovala _AAD-pod-identity_ , že všechny požadavky na koncový bod metadat pocházející z objektu pod, který odpovídá popiskům definovaným v CRD, by měly být proxy bez jakéhokoli zpracování v NMI.
 
 #### <a name="resolution"></a>Řešení
@@ -277,10 +259,19 @@ spec:
 
 #### <a name="issue"></a>Problém
 
-Doplněk se může připojit ke koncovému bodu služby Azure Policy, ale zobrazí se následující chyba:
+Doplněk se může připojit ke koncovému bodu služby Azure Policy, ale v protokolech doplňku se zobrazí jedna z následujících chyb:
 
 ```
-The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See https://aka.ms/policy-register-subscription for how to register subscriptions.
+The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See
+https://aka.ms/policy-register-subscription for how to register subscriptions.
+```
+
+nebo
+
+```
+policyinsightsdataplane.BaseClient#CheckDataPolicyCompliance: Failure responding to request:
+StatusCode=500 -- Original Error: autorest/azure: Service returned an error. Status=500
+Code="InternalServerError" Message="Encountered an internal server error."
 ```
 
 #### <a name="cause"></a>Příčina
@@ -289,9 +280,9 @@ The resource provider 'Microsoft.PolicyInsights' is not registered in subscripti
 
 #### <a name="resolution"></a>Řešení
 
-Zaregistrujte `Microsoft.PolicyInsights` poskytovatele prostředků. Pokyny najdete v tématu [registrace poskytovatele prostředků](../../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
+Zaregistrujte `Microsoft.PolicyInsights` poskytovatele prostředků v rámci předplatného clusteru. Pokyny najdete v tématu [registrace poskytovatele prostředků](../../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 
-### <a name="scenario-the-subscript-is-disabled"></a>Scénář: dolní index je zakázaný.
+### <a name="scenario-the-subscription-is-disabled"></a>Scénář: předplatné je zakázané.
 
 #### <a name="issue"></a>Problém
 
@@ -307,7 +298,7 @@ Tato chyba znamená, že předplatné bylo zjištěno problematické a přidal s
 
 #### <a name="resolution"></a>Řešení
 
-Obraťte se na tým funkcí, `azuredg@microsoft.com` aby mohl tento problém prozkoumat a vyřešit. 
+Obraťte se na tým funkcí, `azuredg@microsoft.com` aby mohl tento problém prozkoumat a vyřešit.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -315,4 +306,4 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 - Získejte odpovědi od odborníků prostřednictvím [Microsoft Q&A](/answers/topics/azure-policy.html).
 - Spojte se s nástrojem [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure s správnými zdroji: odpověďmi, podporou a odborníky.
-- Pokud potřebujete další pomoc, můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu** .
+- Pokud potřebujete další pomoc, můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
