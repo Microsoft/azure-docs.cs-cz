@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperfq2
-ms.openlocfilehash: 7fa6beacf4456145e312494a72dad321dfef3754
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ca8a36584c09d850ed1daab8cba301b244f76526
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843923"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447023"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Nastavení ověřování pro prostředky a pracovní postupy služby Azure Machine Learning
 
@@ -67,7 +67,7 @@ Nejjednodušší způsob, jak vytvořit SP a udělit přístup k vašemu pracovn
 
     Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, udělá to a načte přihlašovací stránku. V opačném případě je nutné otevřít prohlížeč a postupovat podle pokynů v příkazovém řádku. Pokyny zahrnují procházení [https://aka.ms/devicelogin](https://aka.ms/devicelogin) a zadávání autorizačního kódu.
 
-    Pokud máte více předplatných Azure, můžete `az account set -s <subscription name or ID>` k nastavení předplatného použít příkaz. Další informace najdete v tématu [použití více předplatných Azure](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
+    Pokud máte více předplatných Azure, můžete `az account set -s <subscription name or ID>` k nastavení předplatného použít příkaz. Další informace najdete v tématu [použití více předplatných Azure](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
 
     Další metody ověřování najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest).
 
@@ -184,7 +184,7 @@ Většina příkladů v dokumentaci a vzorcích používá interaktivní ověřo
 > interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
 > ```
 
-Při použití rozhraní příkazového řádku Azure CLI se `az login` k ověření relace CLI používá příkaz. Další informace najdete v tématu [Začínáme s Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
+Při použití rozhraní příkazového řádku Azure CLI se `az login` k ověření relace CLI používá příkaz. Další informace najdete v tématu [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli).
 
 > [!TIP]
 > Pokud sadu SDK používáte z prostředí, ve kterém jste předtím provedli interaktivní ověřování pomocí Azure CLI, můžete použít `AzureCliAuthentication` třídu k ověření v pracovním prostoru pomocí pověření uložených v mezipaměti rozhraní příkazového řádku:

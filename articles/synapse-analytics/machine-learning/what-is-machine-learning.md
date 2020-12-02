@@ -9,16 +9,14 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 382ba871f95b3b36c3f819de8d582ba2c5dc358a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 20f095a058434c36373c30ed2a633db12643814d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316092"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448282"
 ---
-# <a name="machine-learning-capabilities-in-azure-synapse-analytics-workspaces-preview"></a>Funkce Machine Learning ve službě Azure synapse Analytics (verze Preview pro pracovní prostory)
-
-[!INCLUDE [preview](../includes/note-preview.md)]
+# <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Funkce Machine Learning ve službě Azure synapse Analytics
 
 Azure synapse Analytics nabízí různé možnosti strojového učení. Tento článek poskytuje přehled o tom, jak můžete Machine Learning použít v kontextu služby Azure synapse.
 
@@ -48,11 +46,11 @@ Díky [Azure Data Factory](/azure/data-factory/introduction)nativně integrovan�
 
 Důležitou součástí procesu strojového učení je pochopit data pomocí průzkumu a vizualizací.
 
-V závislosti na tom, kde jsou data uložená, nabízí synapse sadu různých nástrojů, které můžete prozkoumat a připravit pro účely analýzy a strojového učení. Jedním z nejrychlejších způsobů, jak začít s průzkumem dat, je použití Apache Spark nebo synapse fondů bez SQL serveru přímo nad daty v Data Lake.
+V závislosti na tom, kde jsou data uložená, nabízí synapse sadu různých nástrojů, které můžete prozkoumat a připravit pro účely analýzy a strojového učení. Jedním z nejrychlejších způsobů, jak začít s průzkumem dat, je použití Apache Spark nebo neserverových fondů SQL přímo nad daty v Data Lake.
 
 * [Apache Spark pro Azure synapse](../spark/apache-spark-overview.md) nabízí funkce pro transformaci, přípravu a prohlížení vašich dat ve velkém měřítku. Tyto fondy Spark nabízí nástroje, jako je PySpark/Python, Scala a .NET, pro zpracování dat ve velkém měřítku. S využitím výkonných knihoven vizualizací se můžete seznámit s zkoumáním dat a lépe tak lépe pochopit data. [Přečtěte si další informace o tom, jak prozkoumat a vizualizovat data v synapse pomocí Sparku](../get-started-analyze-spark.md).
 
-* [Synapse fondy bez serveru SQL](../sql/on-demand-workspace-overview.md) nabízejí způsob, jak prozkoumat data pomocí TSQL přímo přes data Lake. Synapse fondy bez SQL serveru nabízejí také některé integrované vizualizace v synapse studiu. [Přečtěte si další informace o tom, jak prozkoumat data s synapse fondy bez SQL serveru](../get-started-analyze-sql-on-demand.md).
+* [Fondy SQL serveru](../sql/on-demand-workspace-overview.md) nabízejí způsob, jak prozkoumat data pomocí TSQL přímo přes data Lake. Fondy SQL bez serveru nabízejí také některé integrované vizualizace v synapse studiu. [Přečtěte si další informace o tom, jak prozkoumat data s využitím fondů SQL bez serveru](../get-started-analyze-sql-on-demand.md).
 
 ### <a name="modeling"></a>Modelování
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: c27f6ef47b8e4db83ceb63e308e318803800f8a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c12935a4b0b9cbbf088ba7b9c5ea804be0ce85a1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890721"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447355"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí Azure CLI a Pythonu
 
@@ -45,7 +45,7 @@ Shrnutí nejvyšší úrovně pracovního postupu nasazení je následující:
 
 Podrobné vysvětlení diagramu pracovního postupu najdete v tématu [nasazení virtuálních počítačů na zařízení Azure Stack Edge pro pomocí Azure PowerShell](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md). Informace o tom, jak se připojit k Azure Resource Manager, najdete v tématu [připojení k Azure Resource Manager pomocí Azure PowerShell](azure-stack-edge-j-series-connect-resource-manager.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure Stack Edge pro pomocí Azure CLI a Pythonu, musíte se ujistit, že jste dokončili požadavky uvedené v následujících krocích:
 
@@ -53,7 +53,7 @@ Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure
 
 2. Bylo povoleno síťové rozhraní pro výpočetní výkon. Tato IP adresa síťového rozhraní se používá k vytvoření virtuálního přepínače pro nasazení virtuálního počítače. Následující kroky vás provedou procesem:
 
-    1. Přejít na **výpočetní**výkon. Vyberte síťové rozhraní, které budete používat k vytvoření virtuálního přepínače.
+    1. Přejít na **výpočetní** výkon. Vyberte síťové rozhraní, které budete používat k vytvoření virtuálního přepínače.
 
         > [!IMPORTANT] 
         > Pro výpočetní výkon můžete nakonfigurovat jenom jeden port.
@@ -117,7 +117,7 @@ Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure
 
 ### <a name="verify-profile-and-install-azure-cli"></a>Ověřit profil a nainstalovat rozhraní příkazového řádku Azure
 
-<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
+<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
 
 1. Nainstalujte rozhraní příkazového řádku Azure CLI do svého klienta. V tomto příkladu se nainstalovalo rozhraní příkazového řádku Azure CLI 2.0.80. Pokud chcete ověřit verzi rozhraní příkazového řádku Azure CLI, spusťte `az --version` příkaz.
 
@@ -147,7 +147,7 @@ Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure
     PS C:\windows\system32>
     ```
 
-    Pokud nemáte rozhraní příkazového řádku Azure CLI, Stáhněte a nainstalujte rozhraní příkazového [řádku Azure CLI ve Windows](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest). Azure CLI můžete spustit pomocí příkazového řádku Windows nebo pomocí Windows PowerShellu.
+    Pokud nemáte rozhraní příkazového řádku Azure CLI, Stáhněte a nainstalujte rozhraní příkazového [řádku Azure CLI ve Windows](/cli/azure/install-azure-cli-windows?view=azure-cli-latest). Azure CLI můžete spustit pomocí příkazového řádku Windows nebo pomocí Windows PowerShellu.
 
 2. Poznamenejte si umístění Pythonu pro rozhraní příkazového řádku. To je potřeba k určení umístění důvěryhodného kořenového úložiště certifikátů pro Azure CLI.
 
@@ -308,7 +308,7 @@ Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
     ```
 
-4. Přihlaste se k prostředí Azure Stack Edge pro pomocí `az login` příkazu. K prostředí Azure Stack Edge pro se můžete přihlásit buď jako uživatel, nebo jako [instanční objekt](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
+4. Přihlaste se k prostředí Azure Stack Edge pro pomocí `az login` příkazu. K prostředí Azure Stack Edge pro se můžete přihlásit buď jako uživatel, nebo jako [instanční objekt](../active-directory/develop/app-objects-and-service-principals.md).
 
    Pomocí těchto kroků se přihlaste jako *uživatel*:
 

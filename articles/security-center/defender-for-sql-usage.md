@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: d37c362da484a2a7e400da8f87dd0a37f0f80d3a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: a80747a88087e1ad3a70f198a260e41a6848e34f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436721"
+ms.locfileid: "96445654"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender pro servery SQL na počítačích 
 
@@ -108,7 +108,7 @@ Výsledky posouzení ohrožení zabezpečení můžete zobrazit přímo z Securi
     V každém zobrazení jsou kontroly zabezpečení seřazené podle **závažnosti**. Kliknutím na konkrétní kontrolu zabezpečení zobrazíte podokno podrobností s **popisem**, postupem jeho **opravte** a dalšími souvisejícími informacemi, jako je třeba **dopad** nebo **Srovnávací test**.
 
 ## <a name="azure-defender-for-sql-alerts"></a>Výstrahy Azure Defenderu pro SQL
-Výstrahy jsou generovány neobvyklými a potenciálně škodlivými pokusy o přístup k počítačům SQL nebo jejich zneužití. Tyto události mohou aktivovat výstrahy zobrazené v [části výstrahy pro SQL Database a Azure synapse Analytics (dříve SQL Data Warehouse) na stránce referenčních informací o výstrahách](alerts-reference.md#alerts-sql-db-and-warehouse).
+Výstrahy jsou generovány neobvyklými a potenciálně škodlivými pokusy o přístup k počítačům SQL nebo jejich zneužití. Tyto události mohou aktivovat výstrahy zobrazené v [části výstrahy pro SQL Database a Azure synapse Analytics na referenční stránce výstrahy](alerts-reference.md#alerts-sql-db-and-warehouse).
 
 ## <a name="explore-and-investigate-security-alerts"></a>Prozkoumat a prozkoumat výstrahy zabezpečení
 
@@ -128,7 +128,7 @@ Výstrahy pro Azure Defender pro SQL jsou k dispozici na stránce výstrahy Secu
 
 Související materiály najdete v následujícím článku:
 
-- [Výstrahy zabezpečení pro SQL Database a Azure synapse Analytics (dřív SQL Data Warehouse)](alerts-reference.md#alerts-sql-db-and-warehouse)
+- [Výstrahy zabezpečení pro SQL Database a Azure synapse Analytics](alerts-reference.md#alerts-sql-db-and-warehouse)
 - [Nastavení e-mailových oznámení pro upozornění zabezpečení](security-center-provide-security-contact-details.md)
 - [Další informace o Sentinel Azure](../sentinel/index.yml)
 - [Balíček zabezpečení dat Azure Security Center](../azure-sql/database/azure-defender-for-sql.md)

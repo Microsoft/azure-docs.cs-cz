@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 39a1f41d97b1f4576d5877e4f35c99b3e189e3b2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f65c1d6fda09d7762a59fb5a932a72ad706a767a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314506"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448027"
 ---
 # <a name="partitioning-tables-in-dedicated-sql-pool"></a>Dělení tabulek ve vyhrazeném fondu SQL
 
@@ -30,7 +30,7 @@ Dělení může přinést údržbu dat a výkon dotazů. Bez ohledu na to, jestl
 
 ### <a name="benefits-to-loads"></a>Výhody načtení
 
-Hlavní výhodou dělení ve vyhrazeném fondu SQL je vylepšit efektivitu a výkon načítání dat pomocí odstranění oddílu, přepínání a sloučení. Ve většině případů jsou data rozdělená na sloupec data, který je úzce svázaný s pořadím, ve kterém jsou data načtena do databáze. Jednou z největších výhod používání oddílů pro zachování dat je zamezení protokolování transakcí. I když stačí vkládat, aktualizovat nebo odstraňovat data, může být nejjednodušším přístupem, přičemž při vytváření oddílů během procesu načítání může podstatně dojít k výraznému zlepšení výkonu.
+Hlavní výhodou dělení ve vyhrazeném fondu SQL je vylepšit efektivitu a výkon načítání dat pomocí odstranění oddílu, přepínání a sloučení. Ve většině případů jsou data rozdělená na sloupec data, který je úzce svázaný s pořadím, ve kterém jsou data načtena do fondu SQL. Jednou z největších výhod používání oddílů pro zachování dat je zamezení protokolování transakcí. I když stačí vkládat, aktualizovat nebo odstraňovat data, může být nejjednodušším přístupem, přičemž při vytváření oddílů během procesu načítání může podstatně dojít k výraznému zlepšení výkonu.
 
 Přepínání oddílů lze použít pro rychlé odebrání nebo nahrazení oddílu tabulky.  Například tabulka faktů prodeje může obsahovat jenom data za posledních 36 měsíců. Na konci každého měsíce se z tabulky odstraní nejstarší měsíc prodejních dat.  Tato data je možné odstranit pomocí příkazu DELETE a odstranit data po nejstarší měsíc. 
 
@@ -355,7 +355,7 @@ Chcete-li se vyhnout definici tabulky z **rusting** v systému správy zdrojové
     DROP TABLE #partitions;
     ```
 
-V rámci tohoto přístupu kód ve správě zdrojového kódu zůstává statický a hodnoty hranic pro oddíly můžou být dynamické; vývoj databáze v průběhu času.
+V rámci tohoto přístupu kód ve správě zdrojového kódu zůstává statický a hodnoty hranic pro oddíly můžou být dynamické; vývoj s fondem SQL v průběhu času.
 
 ## <a name="next-steps"></a>Další kroky
 

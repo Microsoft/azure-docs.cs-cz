@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 212e5fb62043c2ffe2b8876249a6aad1d224411d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 3d7e6357fd8f1091509cbf27875c028d3af310cb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685847"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445917"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webu Azure Portal
 
@@ -26,7 +26,7 @@ Další informace o najdete v tématu.
 - [Přehled Key Vault](../general/overview.md)
 - [Přehled tajných klíčů](about-secrets.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete získat přístup k Azure Key Vault, budete potřebovat předplatné Azure. Pokud ještě předplatné nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -45,13 +45,13 @@ Pokud chcete do trezoru přidat tajný klíč, postupujte podle následujících
 1. Klikněte na **Vygenerovat/importovat**.
 1. Na obrazovce **Vytvoření tajného kódu** zvolte následující hodnoty:
     - **Možnosti nahrání:** Ruční
-    - **Název**: zadejte název tajného kódu. Název tajného kódu musí být v rámci Key Vault jedinečný. Název musí být řetězec znaků 1-127, který začíná písmenem a obsahuje pouze 0-9, a-z, A-Z a-. Další informace o pojmenování najdete v tématu [Key Vault objektů, identifikátorů a verzí](https://docs.microsoft.com/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning) .
+    - **Název**: zadejte název tajného kódu. Název tajného kódu musí být v rámci Key Vault jedinečný. Název musí být řetězec znaků 1-127, který začíná písmenem a obsahuje pouze 0-9, a-z, A-Z a-. Další informace o pojmenování najdete v tématu [Key Vault objektů, identifikátorů a verzí](../general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning) .
     - **Hodnota**: zadejte hodnotu tajného kódu. Key Vault rozhraní API akceptuje a vrací tajné hodnoty jako řetězce. 
     - U ostatních hodnot ponechte jejich výchozí nastavení. Klikněte na **Vytvořit**.
 
 Jakmile se zobrazí zpráva o úspěšném vytvoření tajného kódu, můžete na něj kliknout v seznamu. 
 
-Další informace o atributech tajných kódů najdete v tématu [o Azure Key Vault tajných klíčů](https://docs.microsoft.com/azure/key-vault/secrets/about-secrets) .
+Další informace o atributech tajných kódů najdete v tématu [o Azure Key Vault tajných klíčů](./about-secrets.md) .
 
 ## <a name="retrieve-a-secret-from-key-vault"></a>Načtení tajného kódu z Key Vault
 
@@ -75,7 +75,7 @@ Až nebudete prostředky potřebovat, odstraňte jejich skupinu. Tím odstranít
 3. Do pole **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ:** zadejte název vaší skupiny prostředků a vyberte **Odstranit**.
 
 > [!NOTE]
-> Je důležité si všimnout, že když se odstraní tajný klíč, klíč, certifikát nebo Trezor klíčů, zůstane možné, že se po konfigurovatelnou dobu 7 až 90 kalendářních dnů obnoví obnovitelné období. Pokud není zadána žádná konfigurace, výchozí doba obnovení bude nastavena na 90 dní. Tato operace uživatelům poskytne dostatek času na oznámení nechtěného odstranění tajného klíče a na reakci. Další informace o odstranění a obnovení trezorů klíčů a objektů trezoru klíčů najdete v tématu [přehled Azure Key Vaultho obnovitelného odstranění](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) .
+> Je důležité si všimnout, že když se odstraní tajný klíč, klíč, certifikát nebo Trezor klíčů, zůstane možné, že se po konfigurovatelnou dobu 7 až 90 kalendářních dnů obnoví obnovitelné období. Pokud není zadána žádná konfigurace, výchozí doba obnovení bude nastavena na 90 dní. Tato operace uživatelům poskytne dostatek času na oznámení nechtěného odstranění tajného klíče a na reakci. Další informace o odstranění a obnovení trezorů klíčů a objektů trezoru klíčů najdete v tématu [přehled Azure Key Vaultho obnovitelného odstranění](../general/soft-delete-overview.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

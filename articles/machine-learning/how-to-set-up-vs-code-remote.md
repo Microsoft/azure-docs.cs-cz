@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: jmartens
 author: j-martens
 ms.date: 11/16/2020
-ms.openlocfilehash: 2abad31173992a891e908bdbb61c37e905907d69
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 0afbf32f80a3d19f6db457f398a213a634cfa3d4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697574"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447061"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Připojení k Azure Machine Learning výpočetní instance v Visual Studio Code (Preview)
 
@@ -41,7 +41,7 @@ Připojení k výpočetní instanci:
 1. Po načtení integrovaného poznámkového bloku vyberte **Jupyter Server**.
 
     > [!div class="mx-imgBorder"]
-    > ![Rozevírací seznam spustit Azure Machine Learning vzdálený notebook serveru Jupyter](media/how-to-set-up-vs-code-remote/launch-server-selection-dropdown.png)
+    > ![Rozevírací seznam pro spuštění Azure Machine Learning vzdáleného Jupyter Notebook serveru](media/how-to-set-up-vs-code-remote/launch-server-selection-dropdown.png)
 
     Případně můžete také použít paletu příkazů:
 
@@ -58,7 +58,7 @@ Připojení k výpočetní instanci:
 > [!IMPORTANT]
 > Aby bylo možné navázat spojení, je **nutné** spustit buňku.
 
-V tuto chvíli můžete dál spouštět buňky v Jupyter poznámkovém bloku.
+V tuto chvíli můžete pokračovat v práci s buňkami v Jupyter Notebook.
 
 > [!TIP]
 > Můžete také pracovat se soubory skriptu Pythonu (. py), které obsahují Jupyter buňky kódu. Další informace najdete v tématu [interaktivní dokumentace k Visual Studio Code Pythonu](https://code.visualstudio.com/docs/python/jupyter-support-py).

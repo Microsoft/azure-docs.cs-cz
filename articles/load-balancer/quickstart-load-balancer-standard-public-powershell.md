@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 11/22/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 9f443b15cd427dd31c2ffa95af8d1124f1169881
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 9081ba0aae14c39d70e62818dc13aa4d92c91986
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302639"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445950"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Rychlý Start: vytvoření veřejného nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure PowerShell
 
 Začněte s Azure Load Balancer pomocí Azure PowerShell k vytvoření veřejného nástroje pro vyrovnávání zatížení a tří virtuálních počítačů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Azure PowerShell lokálně nainstalované nebo Azure Cloud Shell
@@ -239,7 +239,7 @@ V této části vytvoříte tři virtuální počítače pro back-end fond nást
 
 * Vytvořte tři síťová rozhraní pomocí [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface).
 
-* Pomocí [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential)nastavte uživatelské jméno a heslo správce pro virtuální počítače.
+* Pomocí [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential)nastavte uživatelské jméno a heslo správce pro virtuální počítače.
 
 * Vytvořte virtuální počítače pomocí:
     * [New-AzVM](/powershell/module/az.compute/new-azvm)

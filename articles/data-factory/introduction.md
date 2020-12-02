@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 730141d22b318d79c8c2b7d995b98ee1c311aaf5
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 77420939c25401c170007d3971d63ca9c5b2d04c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491269"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446199"
 ---
 # <a name="what-is-azure-data-factory"></a>Co je služba Azure Data Factory?
 
@@ -28,7 +28,7 @@ Představte si například herní společnost, která shromažďuje petabajty he
 
 Aby společnost mohla tyto protokoly analyzovat, potřebuje použít referenční data, jako jsou informace o zákaznících, hrách a marketingových kampaních, které jsou uložené v místním úložišti dat. Společnost chce využít tato data z místního úložiště dat a zkombinovat je s dalšími daty protokolů, která má uložená v cloudovém úložišti dat. 
 
-Aby bylo možné extrahovat přehledy, hodlá zpracovávat připojená data pomocí clusteru Spark v cloudu (Azure HDInsight) a publikovat transformovaná data do cloudového datového skladu, jako je například Azure synapse Analytics (dříve SQL Data Warehouse), abyste mohli snadno sestavovat sestavu nad ní. Chce tento pracovní postup automatizovat a monitorovat a spravovat ho podle denního plánu. Chce ho také provádět, když se soubory dostanou do kontejneru úložiště objektů blob.
+Aby bylo možné extrahovat přehledy, je hodlá zpracovávat připojená data pomocí clusteru Spark v cloudu (Azure HDInsight) a publikovat transformovaná data do cloudového datového skladu, jako je Azure synapse Analytics, a jednoduše tak vytvořit sestavu nad ní. Chce tento pracovní postup automatizovat a monitorovat a spravovat ho podle denního plánu. Chce ho také provádět, když se soubory dostanou do kontejneru úložiště objektů blob.
 
 Právě v takových scénářích práce s daty nachází uplatnění platforma Azure Data Factory. Jedná se o *cloudovou službu ETL a integraci dat, která umožňuje vytvářet pracovní postupy řízené daty pro orchestraci přesunu dat a transformaci dat ve velkém měřítku*. Pomocí služby Azure Data Factory můžete vytvářet a plánovat pracovní postupy řízené daty (označované jako kanály), které dokáží ingestovat data z různorodých úložišť dat. Můžete vytvářet složité procesy ETL, které vizuálně transformují data pomocí toků dat nebo pomocí výpočetních služeb, jako jsou Azure HDInsight Hadoop, Azure Databricks a Azure SQL Database. 
 
@@ -63,7 +63,7 @@ Jakmile úspěšně sestavíte a nasadíte kanál integrace dat, který ze zprac
 
 ## <a name="top-level-concepts"></a>Koncepty nejvyšší úrovně
 Předplatné Azure může obsahovat jednu nebo více instancí služby Azure Data Factory (neboli datových továren). Azure Data Factory se skládá z níže uvedených klíčových komponent.
-- Kanály
+- Pipelines
 - Aktivity
 - Datové sady
 - Propojené služby
@@ -93,7 +93,7 @@ Propojené služby slouží ve službě Data Factory ke dvěma účelům:
 
 - Představuje **úložiště dat** , které zahrnuje, ale není omezené na, SQL Server databázi, databázi Oracle, sdílenou složku nebo účet úložiště objektů BLOB v Azure. Seznam podporovaných úložišť dat najdete v článku [Aktivita kopírování](copy-activity-overview.md).
 
-- Představují **výpočetní prostředek** , který může hostovat provádění aktivity. Například aktivita HDInsightHive se spouští na clusteru HDInsight Hadoop. Seznam aktivit transformace a podporovaných výpočetních prostředí najdete v článku o [transformaci dat](transform-data.md).
+- Představují **výpočetní prostředek**, který může hostovat provádění aktivity. Například aktivita HDInsightHive se spouští na clusteru HDInsight Hadoop. Seznam aktivit transformace a podporovaných výpočetních prostředí najdete v článku o [transformaci dat](transform-data.md).
 
 ### <a name="triggers"></a>Aktivační události
 Aktivační události jsou jednotkou zpracování, která určuje, kdy se má zahájit provádění kanálu. Pro různé typy událostí existují různé typy aktivačních událostí.
@@ -119,7 +119,7 @@ Tady jsou důležité dokumenty dalších kroků k prozkoumání:
 
 - [Datové sady a propojené služby](concepts-datasets-linked-services.md)
 - [Kanály a aktivity](concepts-pipelines-activities.md)
-- [Prostředí Integration Runtime](concepts-integration-runtime.md)
+- [Prostředí Integration runtime](concepts-integration-runtime.md)
 - [Mapování toků dat](concepts-data-flow-overview.md)
 - [Uživatelské rozhraní Data Factory na webu Azure Portal](quickstart-create-data-factory-portal.md)
 - [Nástroj pro kopírování dat na webu Azure Portal](quickstart-create-data-factory-copy-data-tool.md)

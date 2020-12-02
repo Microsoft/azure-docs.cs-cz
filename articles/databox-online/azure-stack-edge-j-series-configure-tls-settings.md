@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 9a6b0910fcfd2a632f2520a2fe683b15592017cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15e2d7a144b54f443b8298b20dbfacf78a50f9e1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891175"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447544"
 ---
 # <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-pro-device"></a>Konfigurace TLS 1,2 na klientech Windows, kteří přistupují k zařízení Azure Stack Edge pro
 
@@ -38,11 +38,11 @@ Proveďte následující kroky a nakonfigurujte TLS 1,2 na vašem klientovi.
 
 Pokud chcete pro své prostředí nastavit protokol TLS 1,2 pro systém, postupujte podle pokynů v těchto dokumentech:
 
-- [Obecné – jak povolit TLS 1,2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12)
-- [Jak povolit TLS 1,2 na klientech](https://docs.microsoft.com/configmgr/core/plan-design/security/enable-tls-1-2-client)
-- [Postup povolení protokolu TLS 1,2 na serverech lokality a vzdálených systémech lokality](https://docs.microsoft.com/configmgr/core/plan-design/security/enable-tls-1-2-server)
-- [Protokoly v TLS/SSL (Schannel SSP)](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-ecc-curve-order)
-- [Šifrovací sady](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12): konkrétně [Konfigurace pořadí šifrovacích sad TLS](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order) , ujistěte se, že jste si vypíšete aktuální šifrovací sady a v následujícím seznamu předřadíte všechny chybějící:
+- [Obecné – jak povolit TLS 1,2](/windows-server/security/tls/tls-registry-settings#tls-12)
+- [Jak povolit TLS 1,2 na klientech](/configmgr/core/plan-design/security/enable-tls-1-2-client)
+- [Postup povolení protokolu TLS 1,2 na serverech lokality a vzdálených systémech lokality](/configmgr/core/plan-design/security/enable-tls-1-2-server)
+- [Protokoly v TLS/SSL (Schannel SSP)](/windows-server/security/tls/manage-tls#configuring-tls-ecc-curve-order)
+- [Šifrovací sady](/windows-server/security/tls/tls-registry-settings#tls-12): konkrétně [Konfigurace pořadí šifrovacích sad TLS](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order) , ujistěte se, že jste si vypíšete aktuální šifrovací sady a v následujícím seznamu předřadíte všechny chybějící:
 
     - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
     - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
@@ -68,7 +68,7 @@ Pokud chcete pro své prostředí nastavit protokol TLS 1,2 pro systém, postupu
     New-ItemProperty -Path "$HklmSoftwarePath\Policies\Microsoft\Cryptography\Configuration\SSL\00010002" -Name "EccCurves" -PropertyType MultiString -Value @("NistP256", "NistP384")
     ```
     
-    - [Nastavte minimální velikost výměny klíčů RSA na 2048](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#keyexchangealgorithm---client-rsa-key-sizes).
+    - [Nastavte minimální velikost výměny klíčů RSA na 2048](/windows-server/security/tls/tls-registry-settings#keyexchangealgorithm---client-rsa-key-sizes).
 
 
 

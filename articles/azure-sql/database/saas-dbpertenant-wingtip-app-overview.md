@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 3abfffcfb47a9530b6a04762624eee9d6ee9bc81
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 09651ed5c7472c12d82108fdbd450cca6e84349f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780457"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447092"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Úvod do víceklientské aplikace SaaS, která používá model databáze na tenanta s Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,10 +37,10 @@ Při procházení kurzů a práci s aplikací se zaměřte na vzory SaaS, které
 
 ## <a name="sql-database-wingtip-saas-tutorials"></a>Kurzy SQL Database Wingtip SaaS
 
-Po nasazení aplikace si Prozkoumejte následující kurzy, které se sestavují při počátečním nasazení. Tyto kurzy projednávají běžné SaaS vzory, které využívají integrované funkce SQL Database, Azure synapse Analytics (dřív SQL Data Warehouse) a další služby Azure. Mezi kurzy patří skripty PowerShellu s podrobnými vysvětleními. Vysvětlení zjednodušují porozumění a implementaci stejných vzorů správy SaaS ve vašich aplikacích.
+Po nasazení aplikace si Prozkoumejte následující kurzy, které se sestavují při počátečním nasazení. Tyto kurzy projednávají běžné SaaS vzory, které využívají integrované funkce SQL Database, Azure synapse Analytics a dalších služeb Azure. Mezi kurzy patří skripty PowerShellu s podrobnými vysvětleními. Vysvětlení zjednodušují porozumění a implementaci stejných vzorů správy SaaS ve vašich aplikacích.
 
 
-| Tutoriál | Popis |
+| Kurz | Popis |
 |:--|:--|
 | [Doprovodné materiály a tipy pro SQL Database víceklientské aplikace SaaS App](saas-tenancy-wingtip-app-guidance-tips.md) | Stáhněte a spusťte PowerShellové skripty pro přípravu částí aplikace. |
 |[Nasazení a zkoumání aplikace Wingtip SaaS](./saas-dbpertenant-get-started-deploy.md)|  Nasaďte a prozkoumejte aplikaci Wingtip SaaS s vaším předplatným Azure. |

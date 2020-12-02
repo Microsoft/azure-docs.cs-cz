@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 745d0df07b6d0d01acf0d564df8c242e16f3f56d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b49659f67e779b6eb8079492b47fef9419ca6b1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890983"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447519"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-device"></a>Vytváření vlastních imagí virtuálních počítačů pro zařízení Azure Stack Edge pro
 
@@ -42,7 +42,7 @@ K vytvoření image virtuálního počítače s Windows proveďte následující
     
         `c:\windows\system32\sysprep\sysprep.exe /oobe /generalize /shutdown /mode:vm`
    
-       Můžete se také podívat na [Přehled nástroje Sysprep (Příprava systému)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
+       Můžete se také podívat na [Přehled nástroje Sysprep (Příprava systému)](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
 Pomocí tohoto virtuálního pevného disku teď vytvoříte a nasadíte virtuální počítač na zařízení Azure Stack Edge pro.
 
@@ -71,12 +71,12 @@ Chcete-li vytvořit bitovou kopii virtuálního počítače se systémem Linux, 
 
 Pomocí tohoto virtuálního pevného disku teď vytvoříte a nasadíte virtuální počítač na zařízení Azure Stack Edge pro. Vlastní image pro Linux můžete vytvořit pomocí následujících dvou Azure Marketplace imagí:
 
-|Název položky  |Description  |Publisher  |
+|Název položky  |Popis  |Publisher  |
 |---------|---------|---------|
 |[Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.ubuntuserver) |Ubuntu Server je nejoblíbenější Linux pro cloudová prostředí na světě.|Canonical|
 |[Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian) |Debian GNU/Linux je jednou z nejoblíbenějších distribucí systému Linux.     |credativ|
 
-Úplný seznam Azure Marketplacech imagí, které by mohly fungovat (dosud netestované), najdete v [Azure Marketplace položkách, které jsou k dispozici pro Azure Stack hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910).
+Úplný seznam Azure Marketplacech imagí, které by mohly fungovat (dosud netestované), najdete v [Azure Marketplace položkách, které jsou k dispozici pro Azure Stack hub](/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910).
 
 
 ## <a name="next-steps"></a>Další kroky

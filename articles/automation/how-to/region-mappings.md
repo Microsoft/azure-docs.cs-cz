@@ -1,16 +1,16 @@
 ---
 title: Podporované oblasti pro propojený pracovní prostor Log Analytics
 description: Tento článek popisuje podporovaná mapování oblastí mezi účtem služby Automation a pracovním prostorem Log Analytics v souvislosti s některými funkcemi Azure Automation.
-ms.date: 10/19/2020
+ms.date: 12/01/2020
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 23e5293301a2fc311565d0c1c8ec5fd92bebe9b2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 25ddf562f92ca96a505432a58f137657a2bbc4bd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183562"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446964"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Podporované oblasti pro propojený pracovní prostor Log Analytics
 
@@ -31,6 +31,7 @@ V následující tabulce jsou uvedena podporovaná mapování:
 |---|---|
 |**USA**||
 |EastUS<sup>1</sup>|EastUS2|
+|EastUS2<sup>2</sup>|EastUS|
 |WestUS2|WestUS2|
 |SouthCentralUS|SouthCentralUS|
 |WestCentralUS|WestCentralUS|
@@ -40,7 +41,7 @@ V následující tabulce jsou uvedena podporovaná mapování:
 |AustraliaSoutheast|AustraliaSoutheast|
 |SoutheastAsia|SoutheastAsia|
 |CentralIndia|CentralIndia|
-|ChinaEast2<sup>2</sup>|ChinaEast2|
+|ChinaEast2<sup>3</sup>|ChinaEast2|
 |JapanEast|JapanEast|
 |**Evropa**||
 |UKSouth|UKSouth|
@@ -48,11 +49,13 @@ V následující tabulce jsou uvedena podporovaná mapování:
 |SwitzerlandNorth|SwitzerlandNorth|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
-|USGovArizona<sup>2</sup>|USGovArizona|
+|USGovArizona<sup>3</sup>|USGovArizona|
 
 <sup>1</sup> mapování EastUS pro Log Analytics pracovní prostory na účty Automation není přesné mapování oblastí na oblast, ale je to správné mapování.
 
-<sup>2</sup> v této oblasti je podporovaná jenom Update Management a další funkce, jako je Change Tracking a inventář, nejsou v tuto chvíli k dispozici.
+<sup>2</sup> mapování EastUS2 pro Log Analytics pracovní prostory na účty Automation není přesné mapování oblastí na oblast, ale jedná se o správné mapování.
+
+<sup>3</sup> v této oblasti je podporovaná jenom Update Management a další funkce, jako je Change Tracking a inventář, nejsou v tuto chvíli k dispozici.
 
 ## <a name="unlink-a-workspace"></a>Zrušit propojení pracovního prostoru
 

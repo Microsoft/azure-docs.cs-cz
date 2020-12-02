@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 3087c209b844d691173edbbd8a993c1d0aae319b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be7d477d08b025fd450bfa859e8eb677ba680143
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903640"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446382"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>Řešení potíží s pořadím Azure Stack Edge pro
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 
 ![Nepodporované předplatné nebo oblast](media/azure-stack-edge-troubleshoot-ordering/azure-stack-edge-troubleshoot-ordering-01.png)
 
-**Navrhované řešení:**  Ujistěte se, že jste použili podporované předplatné, jako je například [Microsoft smlouva Enterprise (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)nebo [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/). Předplatná s průběžnými platbami se nepodporují. Další informace najdete v tématu [Azure Stack požadavky na prostředky Edge](azure-stack-edge-deploy-prep.md#prerequisites).
+**Navrhované řešení:**  Ujistěte se, že jste použili podporované předplatné, jako je například [Microsoft smlouva Enterprise (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](/partner-center/azure-plan-lp)nebo [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/). Předplatná s průběžnými platbami se nepodporují. Další informace najdete v tématu [Azure Stack požadavky na prostředky Edge](azure-stack-edge-deploy-prep.md#prerequisites).
 
 Je možné, že Microsoft může v jednotlivých případech umožnit upgrade typu předplatného. Obraťte se na [podporu Microsoftu](https://azure.microsoft.com/support/options/) , aby mohli pochopit vaše potřeby a patřičně upravit tato omezení.
 
@@ -53,7 +53,7 @@ Je možné, že Microsoft může v jednotlivých případech umožnit upgrade ty
 
     ![Registrace poskytovatele prostředků](media/azure-stack-edge-troubleshoot-ordering/azure-stack-edge-troubleshoot-ordering-02.png)
 
-Pokud nemáte oprávnění vlastníka nebo přispěvatele k registraci poskytovatele prostředků, zobrazí se následující chyba: * &lt; název předplatného předplatného nemá &gt; oprávnění registrovat poskytovatele prostředků: Microsoft. DataBoxEdge.*
+Pokud nemáte oprávnění vlastníka nebo přispěvatele k registraci poskytovatele prostředků, zobrazí se následující chyba: *&lt; název předplatného předplatného nemá &gt; oprávnění registrovat poskytovatele prostředků: Microsoft. DataBoxEdge.*
 
 Další informace najdete v tématu [registrace poskytovatelů prostředků](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
 
@@ -61,7 +61,7 @@ Další informace najdete v tématu [registrace poskytovatelů prostředků](azu
 
 **Chyba:** V Azure Portal vyberte předplatné, které se má použít pro Azure Stack Edge pro nebo Data Box Gateway, a zobrazí se následující chyba:
 
-*Poskytovatelé prostředků: Microsoft. DataBoxEdge není registrovaný pro název předplatného předplatného &lt; &gt; a nemáte oprávnění registrovat poskytovatele prostředků pro &lt; název &gt; *předplatného předplatného.
+*Poskytovatelé prostředků: Microsoft. DataBoxEdge není registrovaný pro název předplatného předplatného &lt; &gt; a nemáte oprávnění registrovat poskytovatele prostředků pro &lt; název &gt;* předplatného předplatného.
 
 **Navrhované řešení:** Zvyšte přístup k předplatnému nebo vyhledejte někoho s oprávněním vlastníka nebo přispěvatele k registraci poskytovatele prostředků.
 

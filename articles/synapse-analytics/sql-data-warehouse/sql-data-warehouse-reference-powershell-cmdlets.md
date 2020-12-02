@@ -1,6 +1,6 @@
 ---
-title: Rozhraní REST API & PowerShellu
-description: Najděte si hlavní rutiny PowerShellu pro fond SQL synapse Analytics pro Azure, včetně toho, jak pozastavit a obnovit databázi.
+title: Rozhraní API REST & pro vyhrazený fond SQL (dřív SQL DW)
+description: Hlavní rutiny PowerShellu pro vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics, včetně toho, jak pozastavit a obnovit databázi.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: aaf290fac71fec0ff4106e3f8a1895dd65b94e09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb26ac0071a50095f8e93ce0cc25da0055bdbac8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072889"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448219"
 ---
-# <a name="powershell--rest-apis-for-azure-synapse-analytics-sql-pool"></a>Rozhraní API REST & PowerShellu pro fond SQL Azure synapse Analytics
+# <a name="powershell--rest-apis-for-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Prostředí PowerShell & rozhraní REST API pro vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics 
 
-Mnohé úlohy správy fondu SQL Azure synapse Analytics se dají spravovat pomocí rutin Azure PowerShell nebo rozhraní REST API.  Níže jsou uvedeny některé příklady použití příkazů PowerShellu k automatizaci běžných úloh ve vašem fondu SQL.  Některé dobré příklady REST najdete v článku [Správa škálovatelnosti pomocí REST](sql-data-warehouse-manage-compute-rest-api.md).
+Mnoho vyhrazených úloh správy fondů SQL se dá spravovat pomocí rutin Azure PowerShell nebo rozhraní REST API.  Níže uvádíme několik příkladů použití příkazů PowerShellu k automatizaci běžných úloh ve vyhrazeném fondu SQL (dřív SQL DW).  Některé dobré příklady REST najdete v článku [Správa škálovatelnosti pomocí REST](sql-data-warehouse-manage-compute-rest-api.md).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

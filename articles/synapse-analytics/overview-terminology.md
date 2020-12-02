@@ -1,5 +1,5 @@
 ---
-title: Terminologie – Azure synapse Analytics (ve verzi Preview pracovních prostorů)
+title: Terminologie – Azure synapse Analytics
 description: Referenční příručka pro uživatele prostřednictvím Azure synapse Analytics
 services: synapse-analytics
 author: saveenr
@@ -9,16 +9,14 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 60c3fc6688dc4a25faf5ed94df25055e29d34403
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 7f0ca83c194aae6f4a8d04d70c2d4f3746ad2ca5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309813"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446708"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Terminologie Azure synapse Analytics
-
-[!INCLUDE [preview](includes/note-preview.md)]
 
 Tento dokument vás provede základními koncepty analýzy Azure synapse.
 
@@ -46,7 +44,7 @@ Existují dva způsoby, jak v rámci synapse použít Spark:
 * **Poznámkové bloky Spark** pro práci s datovými vědy a inženýry, které používají Scala, PySpark, C# a SparkSQL
 * **Definice úloh Sparku** pro spouštění úloh služby Batch Spark pomocí souborů JAR
 
-## <a name="pipelines"></a>Kanály
+## <a name="pipelines"></a>Pipelines
 
 Kanály představují způsob, jakým Azure synapse zajišťuje integraci dat – umožňuje přesun dat mezi službami a orchestrace aktivit.
 

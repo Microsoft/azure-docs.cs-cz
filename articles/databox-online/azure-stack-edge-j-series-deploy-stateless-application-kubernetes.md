@@ -8,24 +8,24 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 91a2d08bf9eea2f5af0f6893712515cb2feeab8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6356089daed02270a14903639afee8001153b195
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890729"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447385"
 ---
 # <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Nasazení bezstavové aplikace Kubernetes přes kubectl na zařízení GPU Azure Stack Edge pro
 
 Tento článek popisuje, jak nasadit bezstavovou aplikaci pomocí příkazů kubectl v existujícím clusteru Kubernetes. Tento článek vás také provede procesem vytvoření a nastavení lusků v bezstavových aplikacích.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct vytvořit cluster Kubernetes a použít `kubectl` Nástroj příkazového řádku, musíte zajistit, aby:
 
 - Máte přihlašovací údaje pro přihlášení k zařízení Azure Stack Edge pro s jedním uzlem.
 
-- Prostředí Windows PowerShell 5,0 nebo novější je nainstalováno v klientském systému Windows pro přístup k zařízení Azure Stack Edge pro. Můžete mít i jiné klienty s podporovaným operačním systémem. Tento článek popisuje postup při použití klienta systému Windows. Pokud si chcete stáhnout nejnovější verzi Windows PowerShellu, přečtěte si část [instalace Windows PowerShellu](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+- Prostředí Windows PowerShell 5,0 nebo novější je nainstalováno v klientském systému Windows pro přístup k zařízení Azure Stack Edge pro. Můžete mít i jiné klienty s podporovaným operačním systémem. Tento článek popisuje postup při použití klienta systému Windows. Pokud si chcete stáhnout nejnovější verzi Windows PowerShellu, přečtěte si část [instalace Windows PowerShellu](/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
 
 - Na zařízení Azure Stack Edge pro je povolené výpočetní prostředky. Pokud chcete povolit výpočetní prostředky, v místním uživatelském rozhraní zařízení se dostanete na stránku **COMPUTE** . Pak vyberte síťové rozhraní, které chcete povolit pro výpočetní prostředky. Vyberte **Povolit**. Povolení výpočetních výsledků při vytváření virtuálního přepínače na zařízení v tomto síťovém rozhraní. Další informace najdete v tématu [Povolení služby COMPUTE Network na Azure Stack Edge pro](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
 

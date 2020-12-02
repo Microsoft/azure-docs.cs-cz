@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: 2bbc57d8ddc004c1926da7e0037efdc1fcf2d76e
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 55e5a587a0ad02fa1f8993027b46162a14a58832
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95318095"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448236"
 ---
 # <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-using-data-collection-rules-preview"></a>Konfigurace monitorování v Azure Monitor pro virtuální počítače stav hosta pomocí pravidel shromažďování dat (Preview)
 [Azure monitor pro virtuální počítače stav hosta](vminsights-health-overview.md) umožňuje zobrazit stav virtuálního počítače podle definice sady měření výkonu, které jsou odebírány v pravidelných intervalech. Tento článek popisuje, jak můžete upravit výchozí monitorování napříč několika virtuálními počítači pomocí pravidel shromažďování dat.
@@ -49,9 +49,9 @@ Následující tabulka uvádí výchozí konfiguraci jednotlivých monitorů. Ta
 
 | Monitorování | Povoleno | Zobrazení výstrah | Upozornění | Kritické | Frekvence vyhodnocování | Lookback | Typ vyhodnocení | Minimální ukázka | Maximální počet vzorků |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Využití procesoru  | Ano | Ne | Žádné | \> 90%    | 60 s | 240 sec | Minimum | 2 | 3 |
-| Dostupná paměť | Ano | Ne | Žádné | \< 100 MB | 60 s | 240 sec | Maximum | 2 | 3 |
-| Systém souborů      | Ano | Ne | Žádné | \< 100 MB | 60 s | 120 sec | Maximum | 1 | 1 |
+| Využití procesoru  | Pravda | Nepravda | Žádné | \> 90%    | 60 s | 240 sec | Minimum | 2 | 3 |
+| Dostupná paměť | Pravda | Nepravda | Žádné | \< 100 MB | 60 s | 240 sec | Maximum | 2 | 3 |
+| Systém souborů      | Pravda | Nepravda | Žádné | \< 100 MB | 60 s | 120 sec | Maximum | 1 | 1 |
 
 
 ## <a name="overrides"></a>Přepsání
@@ -122,7 +122,7 @@ Obsahuje nastavení pro rozšíření.
 | Prvek | Povinné | Popis |
 |:---|:---|:---|
 | `schemaVersion` | Ano | Řetězec definovaný společností Microsoft pro reprezentaci očekávaného schématu elementu. V současné době musí být nastavené na 1,0. |
-| `contentVersion` | Ne | Řetězec definovaný uživatelem pro sledování různých verzí konfigurace stavu (v případě potřeby). |
+| `contentVersion` | No | Řetězec definovaný uživatelem pro sledování různých verzí konfigurace stavu (v případě potřeby). |
 | `healthRuleOverrides` | Yes | Pole `healthRuleOverride` prvků, které se má použít pro výchozí konfiguraci. |
 
 ## <a name="healthrulesoverrides-element"></a>element healthRulesOverrides
@@ -144,9 +144,9 @@ Obsahuje jeden nebo více `healthRuleOverride` prvků, které definují přepsá
 |:---|:---|:---|
 | `scopes` | Ano | Seznam jednoho nebo více oborů, které určují virtuální počítače, na které se toto přepsání vztahuje. I když je DCR přidružená k virtuálnímu počítači, musí virtuální počítač spadat do oboru, aby bylo přepsání použito. |
 | `monitors` | Yes | Seznam jednoho nebo více řetězců, které definují, které monitory budou toto přepsání přijímat.  |
-| `monitorConfiguration` | Ne | Konfigurace monitorování včetně stavů a způsobu jejich výpočtu. |
-| `alertConfiguration` | Ne | Konfigurace výstrah pro monitorování. |
-| `isEnabled` | Ne | Určuje, zda je monitorování povoleno nebo nikoli. Zakázané přepínače monitoru pro speciální *zakázaný* stav a stav zakázáno, pokud nejsou znovu povoleny. Pokud tento parametr vynecháte, bude monitorování dědit jeho stav z nadřazeného monitorování v hierarchii. |
+| `monitorConfiguration` | No | Konfigurace monitorování včetně stavů a způsobu jejich výpočtu. |
+| `alertConfiguration` | No | Konfigurace výstrah pro monitorování. |
+| `isEnabled` | No | Určuje, zda je monitorování povoleno nebo nikoli. Zakázané přepínače monitoru pro speciální *zakázaný* stav a stav zakázáno, pokud nejsou znovu povoleny. Pokud tento parametr vynecháte, bude monitorování dědit jeho stav z nadřazeného monitorování v hierarchii. |
 
 
 ## <a name="scopes-element"></a>Scope – element
@@ -227,12 +227,12 @@ V případě, že je v intervalu lookback méně vzorků než `minSamples` , mon
 | Prvek | Povinné | Popis | 
 |:---|:---|:---|
 | `evaluationFrequencySecs` | No | Definuje četnost pro vyhodnocení stavu. Každé monitorování je vyhodnoceno v době spuštění agenta a v pravidelných intervalech, které jsou definovány tímto parametrem poté. |
-| `lookbackSecs`   | Ne | Velikost okna lookback v sekundách |
-| `evaluationType` | Ne | `min` – převzít minimální hodnotu z celé sady vzorků<br>`max` -přijmout maximální hodnotu z celé sady vzorků<br>`avg` – přebírat průměr hodnot sady ukázek<br>`all` – Porovná každou jednotlivou hodnotu v množině prahových hodnot. Monitoruje stav přepínačů, pokud a pouze v případě, že všechny ukázky v sadě nastavují mezní podmínku. |
-| `minSamples`     | Ne | Minimální počet hodnot, které se mají použít k výpočtu hodnoty. |
-| `maxSamples`     | Ne | Maximální počet hodnot, které se mají použít pro výpočet hodnoty. |
-| `warningCondition`  | Ne | Prahová a srovnávací logika pro podmínku upozornění |
-| `criticalCondition` | Ne | Prahová a srovnávací logika pro kritickou podmínku. |
+| `lookbackSecs`   | No | Velikost okna lookback v sekundách |
+| `evaluationType` | No | `min` – převzít minimální hodnotu z celé sady vzorků<br>`max` -přijmout maximální hodnotu z celé sady vzorků<br>`avg` – přebírat průměr hodnot sady ukázek<br>`all` – Porovná každou jednotlivou hodnotu v množině prahových hodnot. Monitoruje stav přepínačů, pokud a pouze v případě, že všechny ukázky v sadě nastavují mezní podmínku. |
+| `minSamples`     | No | Minimální počet hodnot, které se mají použít k výpočtu hodnoty. |
+| `maxSamples`     | No | Maximální počet hodnot, které se mají použít pro výpočet hodnoty. |
+| `warningCondition`  | No | Prahová a srovnávací logika pro podmínku upozornění |
+| `criticalCondition` | No | Prahová a srovnávací logika pro kritickou podmínku. |
 
 
 ## <a name="warningcondition-element"></a>element warningCondition
@@ -249,8 +249,8 @@ Definuje logiku prahové hodnoty a porovnání pro podmínku upozornění. Pokud
 | Vlastnost | Povinné | Popis | 
 |:---|:---|:---|
 | `isEnabled` | No | Určuje, zda je povolena podmínka. Pokud je nastavená **hodnota false**, je podmínka zakázaná, i když je možné nastavit mezní hodnoty a vlastnosti operátoru. |
-| `threshold` | Ne | Definuje prahovou hodnotu pro porovnání vyhodnocené hodnoty. |
-| `operator`  | Ne | Definuje relační operátor pro použití ve výrazu prahové hodnoty. Možné hodnoty: >, <, >=, <=, = =. |
+| `threshold` | No | Definuje prahovou hodnotu pro porovnání vyhodnocené hodnoty. |
+| `operator`  | No | Definuje relační operátor pro použití ve výrazu prahové hodnoty. Možné hodnoty: >, <, >=, <=, = =. |
 
 
 ## <a name="criticalcondition-element"></a>element criticalCondition
@@ -267,110 +267,12 @@ Definuje logiku prahové hodnoty a porovnání pro kritickou podmínku. Pokud te
 | Vlastnost | Povinné | Popis | 
 |:---|:---|:---|
 | `isEnabled` | No | Určuje, zda je povolena podmínka. Pokud je nastavená **hodnota false**, je podmínka zakázaná, i když je možné nastavit mezní hodnoty a vlastnosti operátoru. |
-| `threshold` | Ne | Definuje prahovou hodnotu pro porovnání vyhodnocené hodnoty. |
-| `operator`  | Ne | Definuje relační operátor pro použití ve výrazu prahové hodnoty. Možné hodnoty: >, <, >=, <=, = =. |
+| `threshold` | No | Definuje prahovou hodnotu pro porovnání vyhodnocené hodnoty. |
+| `operator`  | No | Definuje relační operátor pro použití ve výrazu prahové hodnoty. Možné hodnoty: >, <, >=, <=, = =. |
 
 ## <a name="sample-data-collection-rule"></a>Pravidlo shromažďování ukázkových dat
-Následující pravidlo kolekce ukázkových dat ukazuje příklad přepsání ke konfiguraci monitorování.
+Pravidlo shromažďování ukázkových dat, které povoluje monitorování hostů, najdete v tématu [Povolení virtuálního počítače pomocí šablony Správce prostředků](vminsights-health-enable.md#enable-a-virtual-machine-using-resource-manager-template).
 
-
-```json
-{
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "defaultHealthDataCollectionRuleName": {
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the name of the data collection rule to create."
-      },
-      "defaultValue": "Microsoft-VMInsights-Health"
-    },
-    "destinationWorkspaceResourceId": {
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the Azure resource ID of the Log Analytics workspace to use to store virtual machine health data."
-      }
-    },
-    "dataCollectionRuleLocation": {
-      "type": "string",
-      "metadata": {
-        "description": "The location code in which the data collection rule should be deployed. Examples: eastus, westeurope, etc"
-      }
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Insights/dataCollectionRules",
-      "name": "[parameters('defaultHealthDataCollectionRuleName')]",
-      "location": "[parameters('dataCollectionRuleLocation')]",
-      "apiVersion": "2019-11-01-preview",
-      "properties": {
-        "description": "Data collection rule for VM Insights health.",
-        "dataSources": {
-          "performanceCounters": [
-              {
-                  "name": "VMHealthPerfCounters",
-                  "streams": [ "Microsoft-Perf" ],
-                  "scheduledTransferPeriod": "PT1M",
-                  "samplingFrequencyInSeconds": 60,
-                  "counterSpecifiers": [
-                      "\\LogicalDisk(*)\\% Free Space",
-                      "\\Memory\\Available Bytes",
-                      "\\Processor(_Total)\\% Processor Time"
-                  ]
-              }
-          ],
-          "extensions": [
-            {
-              "name": "Microsoft-VMInsights-Health",
-              "streams": [
-                "Microsoft-HealthStateChange"
-              ],
-              "extensionName": "HealthExtension",
-              "extensionSettings": {
-                "schemaVersion": "1.0",
-                "contentVersion": "",
-                "healthRuleOverrides": [
-                  {
-                    "scopes": [ "*" ],
-                    "monitors": ["root"],
-                    "alertConfiguration": {
-                      "isEnabled": true
-                    }
-                  }
-                ]
-              },
-              "inputDataSources": [
-                  "VMHealthPerfCounters"
-              ]
-
-            }
-          ]
-        },
-        "destinations": {
-          "logAnalytics": [
-            {
-              "workspaceResourceId": "[parameters('destinationWorkspaceResourceId')]",
-              "name": "Microsoft-HealthStateChange-Dest"
-            }
-          ]
-        },                  
-        "dataFlows": [
-          {
-            "streams": [
-              "Microsoft-HealthStateChange"
-            ],
-            "destinations": [
-              "Microsoft-HealthStateChange-Dest"
-            ]
-          }
-        ]
-      }
-    }
-  ]
-}
-```
 
 ## <a name="next-steps"></a>Další kroky
 

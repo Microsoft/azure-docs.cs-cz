@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 5cf406dc0577f477858dd8a6570f7975747112e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 048f2585d8e9ac1b10293083bda0900e7ce468bb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891240"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447599"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Připojení k Azure Resource Manager na zařízení Azure Stack Edge pro
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Azure Resource Manager poskytuje vrstvu pro správu, která umožňuje vytvářet, aktualizovat a odstraňovat prostředky v předplatném Azure. Zařízení Azure Stack Edge pro podporuje stejná Azure Resource Manager rozhraní API k vytváření, aktualizaci a odstraňování virtuálních počítačů v místním předplatném. Tato podpora vám umožní spravovat zařízení způsobem konzistentním s cloudem. 
+Azure Resource Manager nabízí vrstvu správy, která umožňuje vytvářet, aktualizovat a odstraňovat prostředky ve vašem předplatném Azure. Zařízení Azure Stack Edge pro podporuje stejná Azure Resource Manager rozhraní API k vytváření, aktualizaci a odstraňování virtuálních počítačů v místním předplatném. Tato podpora vám umožní spravovat zařízení způsobem konzistentním s cloudem. 
 
 V tomto kurzu se dozvíte, jak se připojit k místním rozhraním API na zařízení Azure Stack Edge pro prostřednictvím Azure Resource Manager pomocí Azure PowerShell.
 
@@ -36,9 +36,9 @@ Následující tabulka shrnuje různé koncové body, které jsou vystavené na 
 
 | # | Koncový bod | Podporované protokoly | Použitý port | Použití |
 | --- | --- | --- | --- | --- |
-| 1. | Azure Resource Manager | HTTPS | 443 | Připojení k Azure Resource Manager pro automatizaci |
-| 2. | Služba tokenů zabezpečení | HTTPS | 443 | Ověření prostřednictvím přístupu a aktualizací tokenů |
-| 3. | Blob | HTTPS | 443 | Připojení k úložišti objektů BLOB přes REST |
+| 1. | Azure Resource Manager | https | 443 | Připojení k Azure Resource Manager pro automatizaci |
+| 2. | Služba tokenů zabezpečení | https | 443 | Ověření prostřednictvím přístupu a aktualizací tokenů |
+| 3. | Objekt blob | https | 443 | Připojení k úložišti objektů BLOB přes REST |
 
 
 ## <a name="connecting-to-azure-resource-manager-workflow"></a>Připojení k pracovnímu postupu Azure Resource Manager
@@ -57,7 +57,7 @@ Proces připojení k místním rozhraním API zařízení pomocí Azure Resource
 
 V následujících částech najdete podrobné informace o každém z výše uvedených kroků v části připojení k Azure Resource Manager.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že klient, který se používá pro připojení k zařízení přes Azure Resource Manager, používá protokol TLS 1,2. Další informace najdete [v konfiguraci TLS 1,2 na klientském počítači se systémem Windows přístup k zařízení Azure Stack Edge pro](azure-stack-edge-j-series-configure-tls-settings.md).
 
@@ -138,9 +138,9 @@ Váš klient Windows musí splňovat následující požadavky:
 
     Porovnejte **Hlavní** verzi a ujistěte se, že je 5,0 nebo novější.
 
-    Pokud máte zastaralou verzi, přečtěte si [Upgrade existujícího Windows PowerShellu](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell).
+    Pokud máte zastaralou verzi, přečtěte si [Upgrade existujícího Windows PowerShellu](/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell).
 
-    Pokud nemáte \' prostředí PowerShell 5,0, postupujte podle pokynů k [instalaci prostředí Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6).
+    Pokud nemáte \' prostředí PowerShell 5,0, postupujte podle pokynů k [instalaci prostředí Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6).
 
     Ukázkový výstup najdete níž.
 
@@ -175,11 +175,11 @@ Váš klient Windows musí splňovat následující požadavky:
     PSGallery                 Trusted              https://www.powershellgallery.com/api/v2
     ```
     
-Pokud vaše úložiště není důvěryhodné nebo potřebujete další informace, přečtěte si téma [ověření dostupnosti Galerie prostředí PowerShell](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install?view=azs-1908#2-validate-the-powershell-gallery-accessibility).
+Pokud vaše úložiště není důvěryhodné nebo potřebujete další informace, přečtěte si téma [ověření dostupnosti Galerie prostředí PowerShell](/azure-stack/operator/azure-stack-powershell-install?view=azs-1908#2-validate-the-powershell-gallery-accessibility).
 
 ## <a name="step-4-set-up-azure-powershell-on-the-client"></a>Krok 4: nastavení Azure PowerShell na klientovi 
 
-<!--1. Verify the API profile of the client and identify which version of the Azure PowerShell modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
+<!--1. Verify the API profile of the client and identify which version of the Azure PowerShell modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
 
 1. Do svého klienta nainstalujete Azure PowerShell moduly, které budou fungovat s vaším zařízením.
 
@@ -297,9 +297,9 @@ Ověřte, jestli je název koncového bodu vyřešený na klientovi, který pou�
 Nastavte prostředí Azure Resource Manager a ověřte, že zařízení komunikuje s klientem prostřednictvím Azure Resource Manager pracuje správně. Pro toto ověření proveďte následující kroky:
 
 
-1. Pomocí `Add-AzureRmEnvironment` rutiny zajistěte, aby komunikace prostřednictvím Azure Resource Manager fungovala správně a aby volání rozhraní API procházela prostřednictvím portu vyhrazeného pro Azure Resource Manager-443.
+1. Pomocí rutiny `Add-AzureRmEnvironment` se ujistěte, že komunikace přes Azure Resource Manager funguje správně a že volání rozhraní API procházejí přes port 443 vyhrazený pro Azure Resource Manager.
 
-    `Add-AzureRmEnvironment`Rutina přidá koncové body a metadata, aby bylo možné Azure Resource Manager rutiny připojit s novou instancí Azure Resource Manager. 
+    Rutina `Add-AzureRmEnvironment` přidá koncové body a metadata, aby se rutiny Azure Resource Manageru mohly připojit k nové instanci Azure Resource Manageru. 
 
 
     > [!IMPORTANT]
@@ -319,7 +319,7 @@ Nastavte prostředí Azure Resource Manager a ověřte, že zařízení komuniku
     AzDBE https://management.dbe-n6hugc2ra.microsoftdatabox.com https://login.dbe-n6hugc2ra.microsoftdatabox.com/adfs/
     ```
 
-2. Nastavte prostředí jako Azure Stack Edge pro a port, který se má použít pro Azure Resource Manager volání jako 443. Prostředí definujete dvěma způsoby:
+2. Nastavte prostředí na Azure Stack Edge Pro a port, který se má používat k volání Azure Resource Manageru, nastavte na 443. Prostředí definujete dvěma způsoby:
 
     - Nastavte prostředí. Zadejte následující příkaz:
 
@@ -327,13 +327,13 @@ Nastavte prostředí Azure Resource Manager a ověřte, že zařízení komuniku
     Set-AzureRMEnvironment -Name <Environment Name>
     ```
     
-    Další informace najdete na webu [set-AzureRMEnvironment](https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0).
+    Další informace najdete na webu [set-AzureRMEnvironment](/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0).
 
     - Definujte prostředí vložené pro každou rutinu, kterou spustíte. Tím zajistíte, že všechna volání rozhraní API procházejí přes správné prostředí. Ve výchozím nastavení by volání procházela přes Azure Public, ale chcete, aby procházela s prostředím, které jste nastavili pro Azure Stack hraniční zařízení pro.
 
     - Přečtěte si další informace o [tom, jak přepnout prostředí AzureRM](#switch-environments).
 
-2. Voláním rozhraní API místních zařízení ověřte připojení k Azure Resource Manager. 
+2. Zavoláním rozhraní API místního zařízení ověřte připojení k Azure Resource Manageru. 
 
     1. Tyto přihlašovací údaje jsou určené pro účet místního počítače a používají se výhradně pro přístup přes rozhraní API.
 

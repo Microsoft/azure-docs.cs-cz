@@ -1,6 +1,6 @@
 ---
-title: Použití funkce OPENROWSET ve fondu SQL bez serveru (Preview)
-description: Tento článek popisuje syntaxi OPENROWSET ve fondu SQL bez serveru (Preview) a vysvětluje, jak používat argumenty.
+title: Použití funkce OPENROWSET v SQL fondu bez serveru
+description: Tento článek popisuje syntaxi funkce OPENROWSET v SQL fondu bez serveru a vysvětluje, jak používat argumenty.
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 90a5afb19c9ba5061b9304c739914262bcdbee15
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 97ee6c17d62a924686e3e4f4717d7bb7f4375988
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122722"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446686"
 ---
-# <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Použití funkce OPENROWSET s použitím fondu SQL bez serveru (Preview) ve službě Azure synapse Analytics
+# <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Použití funkce OPENROWSET s použitím fondu SQL bez serveru ve službě Azure synapse Analytics
 
-`OPENROWSET(BULK...)`Funkce umožňuje přístup k souborům v Azure Storage. `OPENROWSET` funkce přečte obsah vzdáleného zdroje dat (například soubor) a vrátí obsah jako sadu řádků. V rámci prostředku fondu SQL bez serveru (Preview) je k dispozici zprostředkovatel hromadné sady řádků OPENROWSET voláním funkce OPENROWSET a určením hromadné možnosti.  
+`OPENROWSET(BULK...)`Funkce umožňuje přístup k souborům v Azure Storage. `OPENROWSET` funkce přečte obsah vzdáleného zdroje dat (například soubor) a vrátí obsah jako sadu řádků. V rámci prostředku fondu SQL bez serveru je k dispozici zprostředkovatel hromadné sady řádků OPENROWSET voláním funkce OPENROWSET a určením hromadné možnosti.  
 
 Na `OPENROWSET` funkci lze odkazovat v `FROM` klauzuli dotazu, jako by šlo o název tabulky `OPENROWSET` . Podporuje hromadné operace prostřednictvím integrovaného HROMADNÉho poskytovatele, který umožňuje číst data ze souboru a vracet je jako sadu řádků.
 

@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: d9e0da9e24a0bd32047d029879c4f0e110dc0c16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef840b3d9db4e82eeecea37079a08ccb0858a77b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320791"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448535"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Správa úloh Kubernetes na zařízení Azure Stack Edge pro
 
-Na zařízení Azure Stack Edge pro se vytvoří cluster Kubernetes při konfiguraci výpočetní role. Po vytvoření clusteru Kubernetes je možné kontejnery aplikace nasadit do clusteru Kubernetes v části lusky. Existují různé způsoby, jak nasazovat úlohy do clusteru Kubernetes. 
+Na zařízení Azure Stack Edge pro se vytvoří cluster Kubernetes při konfiguraci výpočetní role. Po vytvoření clusteru Kubernetes je možné kontejnery aplikace nasadit do clusteru Kubernetes v části lusky. Úlohy můžete do clusteru Kubernetes nasazovat různými způsoby. 
 
 Tento článek popisuje různé metody, které je možné použít k nasazení úloh na zařízení Azure Stack Edge pro.
 
@@ -49,11 +49,11 @@ Existují tři hlavní způsoby nasazení vašich úloh. Každá z těchto metod
 
 - **Místní nasazení**: Toto nasazení probíhá prostřednictvím přístupového nástroje příkazového řádku `kubectl` , který umožňuje nasazení Kubernetes `yamls` . Ke clusteru Kubernetes se dostanete na Azure Stack Edge pro pomocí `kubeconfig` souboru. Další informace najdete v pro [přístup ke clusteru Kubernetes prostřednictvím kubectl](azure-stack-edge-gpu-create-kubernetes-cluster.md).
 
-- **Nasazení IoT Edge**: Jedná se prostřednictvím IoT Edge, které se připojují ke službě Azure IoT Hub. Pomocí oboru názvů se připojíte ke clusteru Kubernetes na zařízení Azure Stack Edge pro `iotedge` . Agenti IoT Edge nasazená v tomto oboru názvů zodpovídají za připojení k Azure. Konfiguraci použijete `IoT Edge deployment.json` pomocí Azure DEVOPS CI/CD. Správa oboru názvů a IoT Edge se provádí prostřednictvím operátoru cloudu.
+- **Nasazení IoT Edge**: Jedná se prostřednictvím IoT Edge, které se připojují ke službě Azure IoT Hub. Pomocí oboru názvů se připojíte ke clusteru Kubernetes na zařízení Azure Stack Edge pro `iotedge` . Agenti IoT Edge nasazení v tomto oboru názvů zodpovídají za připojení k Azure. Konfiguraci použijete `IoT Edge deployment.json` pomocí Azure DEVOPS CI/CD. Správa oboru názvů a IoT Edge se provádí prostřednictvím operátoru cloudu.
 
 - **Nasazení Kubernetes s povoleným Azure ARC**: Kubernetes ARC Azure je hybridní Nástroj pro správu, který vám umožní nasadit aplikace do clusterů Kubernetes. Připojíte se ke clusteru Kubernetes na zařízení Azure Stack Edge pro pomocí `azure-arc namespace` . Agenti nasazených v tomto oboru názvů zodpovídají za připojení k Azure. Konfiguraci nasazení použijete pomocí správy konfigurace založené na GitOps. 
     
-    Služba Azure ARC s povoleným Kubernetes vám také umožní použít Azure Monitor pro kontejnery k zobrazení a monitorování clusteru. Další informace najdete v tom, [co je Azure ARC Enabled Kubernetes?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview).
+    Služba Azure ARC s povoleným Kubernetes vám také umožní použít Azure Monitor pro kontejnery k zobrazení a monitorování clusteru. Další informace najdete v tom, [co je Azure ARC Enabled Kubernetes?](../azure-arc/kubernetes/overview.md).
 
 ## <a name="choose-the-deployment-type"></a>Zvolit typ nasazení
 

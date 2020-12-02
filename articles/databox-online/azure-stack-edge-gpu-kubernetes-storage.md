@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 11/04/2020
 ms.author: alkohli
-ms.openlocfilehash: ff2a473ca008e9b283d03ebb05f35122473d778a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34165071238ca3edf78ab9cca43639c23ce5ed2a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899262"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448696"
 ---
 # <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Správa úložiště Kubernetes na zařízení GPU Azure Stack Edge pro
 
@@ -41,9 +41,9 @@ Pro pochopení, jak je úložiště spravované pro Kubernetes, je potřeba poch
 
 Zřizování úložiště může být statické nebo dynamické. Jednotlivé typy zřizování jsou popsány v následujících částech.
 
-## <a name="staticprovisioning"></a>Statické zřizování
+## <a name="static-provisioning"></a>Statické zřizování
 
-Správci clusteru Kubernetes můžou úložiště staticky zřídit. V takovém případě můžou použít back-end úložiště založené na systému souborů SMB/NFS nebo používat disky iSCSI připojené místně přes síť v místním prostředí nebo dokonce používat soubory Azure nebo disky Azure v cloudu. Tento typ úložiště se ve výchozím nastavení nezřizuje a Správci clusterů musí plánování a správu tohoto zřizování naplánovat. 
+Správci clusteru Kubernetes můžou staticky zřídit úložiště. V takovém případě můžou použít back-end úložiště založené na systému souborů SMB/NFS nebo používat disky iSCSI připojené místně přes síť v místním prostředí nebo dokonce používat soubory Azure nebo disky Azure v cloudu. Tento typ úložiště se ve výchozím nastavení nezřizuje a Správci clusterů musí plánování a správu tohoto zřizování naplánovat. 
  
 Tady je diagram, který znázorňuje, jak se v Kubernetes spotřebovávají staticky zřízené úložiště: 
 
@@ -58,7 +58,7 @@ Dojde k následujícím krokům:
 1. **Připojit PVC k kontejneru**: Jakmile je trvalý virtuální okruh VÁZANÝ na souč_hod, můžete připojit tento virtuální okruh k cestě ve vašem kontejneru. Když logika aplikace v kontejneru přečte/zapisuje z nebo do této cesty, data se zapisují do úložiště SMB.
  
 
-## <a name="dynamicprovisioning"></a>Dynamické zřizování
+## <a name="dynamic-provisioning"></a>Dynamické zřizování
 
 Tady je diagram, který znázorňuje, jak se v Kubernetes spotřebovávají staticky zřízené úložiště: 
 
@@ -104,6 +104,26 @@ spec:
 ```
 
 Další informace najdete v tématu [nasazení stavové aplikace prostřednictvím statického zřizování na Azure Stack Edge pro prostřednictvím kubectl](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
+
+Pro přístup ke stejnému staticky zřízenému úložišti jsou příslušné možnosti připojení svazku pro vazby úložiště pro IoT následující. `/home/input`Je cesta, ke které je svazek přístupný v rámci kontejneru.
+
+```
+{
+"HostConfig": {
+"Mounts": [
+{
+"Target": "/home/input",
+"Source": "<nfs-or-smb-share-name-here>",
+"Type": "volume"
+},
+{
+"Target": "/home/output",
+"Source": "<nfs-or-smb-share-name-here>",
+"Type": "volume"
+}]
+}
+}
+```
 
 Azure Stack Edge pro má taky Kubernetes s `StorageClass` názvem `ase-node-local` , který používá úložiště datového disku připojené k uzlu. To `StorageClass` podporuje dynamické zřizování. `StorageClass`V aplikacích pod můžete vytvořit odkaz a pro vás bude automaticky vytvořena souč_hod. Další informace najdete v tématu [Kubernetes na řídicím panelu](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) pro dotaz na `ase-node-local StorageClass` .
 

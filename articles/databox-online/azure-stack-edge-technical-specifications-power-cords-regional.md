@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 76d8c84fd1dd403c88e8261cf49e3620f3a6ec14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18de1f445990f167041c755aa5e7d909819319b1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903625"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446459"
 ---
 # <a name="azure-stack-edge-pro-power-cord-specifications"></a>Specifikace napájecí šňůry Azure Stack Edge pro
 
@@ -76,7 +76,7 @@ Pomocí následující tabulky můžete najít správné specifikace kabelů pro
 |Indie|250|10|IS694 3x 0,75|JE 1293|C13|1830|
 |Indonésie|250|10|H05Z1Z1 3x 0,75|CEE 7|C13|1830|
 |Irsko|250|5|H05VV-F 3x 0,75|BS 1363/SS145/A|C13|1800|
-|Izrael|250|2,5|H05VV-F 3x 1,00|V 32|C13|2000|
+|Izrael|250|2.5|H05VV-F 3x 1,00|V 32|C13|2000|
 |Itálie|250|10|H05VV-F 3x 0,75|CEI 23-50|C13|1800|
 |Jamajka|125|10|SVE 18/3|NEMA 5 – 15P|C13|1830|
 |Japan|125|15|VCTF 3x 2,00|JIS B 8303|C13|2300|
@@ -158,4 +158,4 @@ Pomocí následující tabulky můžete najít správné specifikace kabelů pro
 
 ## <a name="next-steps"></a>Další kroky
 
-[Technické specifikace Azure Stack Edge pro](data-box-edge-technical-specifications-compliance.md)
+[Technické specifikace Azure Stack Edge pro](./azure-stack-edge-technical-specifications-compliance.md)

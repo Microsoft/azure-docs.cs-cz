@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy k Azure synapse Analytics (pracovní prostory Preview)
-description: Nejčastější dotazy ke službě Azure synapse Analytics (pracovní prostory verze Preview)
+title: Nejčastější dotazy k Azure synapse Analytics
+description: Nejčastější dotazy k Azure synapse Analytics
 services: synapse-analytics
 author: saveenr
 ms.service: synapse-analytics
@@ -9,22 +9,20 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5acfc8c01f375164979e1fb051563fcfb2da3bd3
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 05fef320d558de30830f76031d3b96262ae29f07
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436252"
+ms.locfileid: "96445800"
 ---
-# <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Nejčastější dotazy ke službě Azure synapse Analytics (pracovní prostory ve verzi Preview)
+# <a name="azure-synapse-analytics-frequently-asked-questions"></a>Nejčastější dotazy k Azure synapse Analytics
 
 V této příručce najdete nejčastější dotazy k Azure synapse Analytics.
 
-[!INCLUDE [preview](includes/note-preview.md)]
-
 ## <a name="general"></a>Obecné
 
-### <a name="q-what-rbac-roles-exist-and-how-i-use-them-to-secure-a-synapse-workspace"></a>Otázka: Jaké role RBAC existují a jak je používám k zabezpečení pracovního prostoru synapse?
+### <a name="q-what-rbac-roles-exist-and-how-do-i-use-them-to-secure-a-synapse-workspace"></a>Otázka: Jaké role RBAC existují a jak je mohu použít k zabezpečení pracovního prostoru synapse?
 
 Odpověď: Azure synapse zavádí řadu rolí a oborů, které jim přiřadí. tím se zjednoduší zabezpečení vašeho pracovního prostoru.
 

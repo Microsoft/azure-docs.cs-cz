@@ -11,22 +11,22 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: cb10eb0f89ce37bc484c8570995ebaa098c696f1
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 492d1370a228fc4fc80880102899c9207a514f57
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541296"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447185"
 ---
 # <a name="configure-and-submit-training-runs"></a>Konfigurace a odesílání trénovacích spuštění
 
-V tomto článku se dozvíte, jak nakonfigurovat a odeslat Azure Machine Learning běhy pro výuku vašich modelů.
+V tomto článku se dozvíte, jak nakonfigurovat a odeslat Azure Machine Learning běhy pro výuku vašich modelů. Fragmenty kódu vysvětlují klíčové části Konfigurace a odeslání školicího skriptu.  Pak můžete použít jeden z [ukázkových poznámkových bloků](#notebooks) a najít kompletní pracovní příklady.
 
 Po školení je běžné začít na místním počítači a později škálovat na cloudový cluster. Pomocí Azure Machine Learning můžete skript spustit na různých výpočetních cílech, aniž byste museli měnit školicí skript.
 
 Vše, co potřebujete udělat, je definovat prostředí pro každý cíl výpočtů v rámci **Konfigurace spuštění skriptu**.  Pak, pokud chcete spustit experiment pro školení na jiném cílovém výpočetním prostředí, zadejte konfiguraci spuštění pro výpočetní výkon.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 * [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0)
@@ -38,10 +38,10 @@ Vše, co potřebujete udělat, je definovat prostředí pro každý cíl výpoč
 
 Odešlete experiment školení s objektem ScriptRunConfig.  Tento objekt obsahuje:
 
-* **source_directory** : zdrojový adresář, který obsahuje školicí skript.
-* **skript** : školicí skript, který se má spustit
-* **compute_target** : výpočetní cíl, na kterém se má spustit
-* **prostředí** : prostředí, které se má použít při spuštění skriptu.
+* **source_directory**: zdrojový adresář, který obsahuje školicí skript.
+* **skript**: školicí skript, který se má spustit
+* **compute_target**: výpočetní cíl, na kterém se má spustit
+* **prostředí**: prostředí, které se má použít při spuštění skriptu.
 * a některé další konfigurovatelné možnosti (Další informace najdete v [referenční dokumentaci](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) )
 
 ## <a name="train-your-model"></a><a id="submit"></a>Trénování modelu
@@ -94,7 +94,7 @@ Další informace a podrobnosti o prostředích najdete v tématu [vytvoření &
   
 ### <a name="local-compute-target"></a><a name="local"></a>Místní cíl výpočtů
 
-Pokud je váš cíl výpočetní služby vaším **místním počítačem** , zodpovídáte za zajištění dostupnosti všech potřebných balíčků v prostředí Pythonu, ve kterém se skript spouští.  Použijte `python.user_managed_dependencies` k použití aktuálního prostředí Python (nebo Pythonu na cestě, kterou zadáte).
+Pokud je váš cíl výpočetní služby vaším **místním počítačem**, zodpovídáte za zajištění dostupnosti všech potřebných balíčků v prostředí Pythonu, ve kterém se skript spouští.  Použijte `python.user_managed_dependencies` k použití aktuálního prostředí Python (nebo Pythonu na cestě, kterou zadáte).
 
 ```python
 from azureml.core import Environment
@@ -164,7 +164,7 @@ run.wait_for_completion(show_output=True)
 
 Když spustíte školicí kurz, kde zdrojový adresář je místní úložiště Git, informace o úložišti se ukládají v historii spuštění. Další informace najdete v tématu [integrace Gitu pro Azure Machine Learning](concept-train-model-git-integration.md).
 
-## <a name="notebook-examples"></a>Příklady poznámkových bloků
+## <a name="notebook-examples"></a><a name="notebooks"></a>Příklady poznámkových bloků
 
 Příklady konfigurace spuštění různých školicích scénářů najdete v těchto poznámkových blocích:
 * [Školení pro různé cíle výpočtů](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)

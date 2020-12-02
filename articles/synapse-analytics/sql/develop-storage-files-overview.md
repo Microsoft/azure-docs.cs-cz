@@ -1,6 +1,6 @@
 ---
-title: Přístup k souborům v úložišti v neserverovém fondu SQL (Preview)
-description: Popisuje dotazování souborů úložiště pomocí neserverového fondu SQL (Preview) ve službě Azure synapse Analytics.
+title: Přístup k souborům v úložišti v SQL fondu bez serveru
+description: Popisuje dotazování souborů úložiště pomocí neserverového fondu SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 64148cd8fd467be6a5f09ee723e230bdc8181d2d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 82a4ded3a64a8a8bbc62f99a8854eb6d2b5f0d0b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685677"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446572"
 ---
-# <a name="access-external-storage-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Přístup k externímu úložišti pomocí neserverového fondu SQL (Preview) ve službě Azure synapse Analytics
+# <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Přístup k externímu úložišti pomocí neserverového fondu SQL ve službě Azure synapse Analytics
 
 Tento dokument popisuje, jak můžou uživatelé číst data ze souborů uložených na Azure Storage ve fondu SQL bez serveru. Uživatelé mají k dispozici následující možnosti pro přístup k úložišti:
 
@@ -178,7 +178,7 @@ Volající musí mít následující oprávnění pro čtení dat:
 
 V následující tabulce jsou uvedena požadovaná oprávnění pro výše uvedené operace.
 
-| Dotazy | Požadovaná oprávnění|
+| Dotaz | Požadovaná oprávnění|
 | --- | --- |
 | OPENROWSET (BULK) bez DataSource | `ADMINISTER BULK OPERATIONS``ADMINISTER DATABASE BULK OPERATIONS`přihlašovací údaje, nebo přihlášení SQL musí mít přihlašovací údaje:: \<URL> pro úložiště chráněné přes SAS. |
 | OPENROWSET (hromadné) se zdrojem dat bez přihlašovacích údajů | `ADMINISTER BULK OPERATIONS` nebo `ADMINISTER DATABASE BULK OPERATIONS` , |

@@ -6,18 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 11/04/2020
 ms.author: alkohli
-ms.openlocfilehash: b66a184abce53c31fade19fc9e10ffe4c7ff8415
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 38dcb32b2993838f8c3f13334e0bc44e9146f113
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532439"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448580"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>Správa režimu přístupu, napájení a připojení pro grafický procesor Azure Stack Edge pro
 
 Tento článek popisuje, jak spravovat režim přístupu, napájení a připojení pro Azure Stack Edge pro pomocí zařízení GPU. Tyto operace se provádějí prostřednictvím místního webového uživatelského rozhraní nebo Azure Portal.
+
+Tento článek se týká Azure Stackch PROCESORů Edge pro, Azure Stack Edge pro R a Azure Stack hraničních zařízení R.
+
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -31,6 +34,8 @@ V tomto článku získáte informace o těchto tématech:
 ## <a name="manage-device-access"></a>Správa přístupu k zařízení
 
 Přístup k vašemu zařízení Azure Stack Edge pro je ovládán použitím hesla zařízení. Heslo můžete změnit prostřednictvím místního webového uživatelského rozhraní. Můžete také resetovat heslo zařízení v Azure Portal.
+
+Přístup k datům na discích zařízení se taky řídí pomocí klíčů pro zašifrování.
 
 ### <a name="change-device-password"></a>Změna hesla zařízení
 
@@ -54,6 +59,40 @@ Pracovní postup Resetování nevyžaduje, aby uživatel nahrál staré heslo a 
 
 2. Zadejte nové heslo a potvrďte ho. Zadané heslo musí mít 8 až 16 znaků. Heslo musí obsahovat 3 z následujících znaků: velká písmena, malá písmena, číslice a speciální znaky. Vyberte **Resetovat**.
 
+    ![Resetování hesla 2](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
+
+### <a name="manage-access-to-device-data"></a>Správa přístupu k datům zařízení
+
+V případě zařízení Azure Stack Edge pro R a Azure Stack hraničních zařízení R se přístup k datům zařízení ovládá pomocí klíčů zašifrovaného šifrování pro jednotky zařízení. Po úspěšném nakonfigurování zařízení pro šifrování v klidovém prostředí bude možnost Otočit klíče šifrování s příponou REST k dispozici v místním uživatelském rozhraní zařízení. 
+
+Tato operace vám umožní změnit klíče pro svazky BitLockeru `HcsData` a `HcsInternal` a všechny vlastní šifrovací jednotky na vašem zařízení.
+
+Pomocí těchto kroků otočíte klíče šifrování s příponou.
+
+1. V místním uživatelském rozhraní zařízení, **navštivte stránku Začínáme** . Na dlaždici **zabezpečení** vyberte možnost **šifrování-zapnuto: otočit klíče** . Tato možnost je k dispozici až po úspěšné konfiguraci klíčů pro šifrování s příponou REST.
+
+    ![Vyberte možnost Otočit klíče pro šifrování – na stránce Začínáme.](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-1.png)
+
+1. Můžete použít vlastní klíče BitLockeru nebo použít systémem generované klíče.  
+
+    Pokud chcete zadat svůj vlastní klíč, zadejte řetězec s délkou "32" dlouhého řetězce v kódování Base-64. Vstup se podobá tomu, co byste zadali při prvním nastavování šifrování v klidovém čase.
+
+    ![Přineste si vlastní klíč k šifrování.](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-2.png)
+
+    Můžete se také rozhodnout použít systémový klíč vygenerovaný systémem.
+
+    ![Použít systémově generované šifrování – klávesa on-REST](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-3.png)
+
+1. Vyberte **Použít**. Ochrany pomocí klíče se otočí.
+
+    ![Použít nové šifrování a klíč na REST](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-4.png)
+
+1. Po zobrazení výzvy ke stažení a uložení souboru klíče vyberte **Stáhnout a pokračovat**. 
+
+    ![Stažení a pokračování souboru klíče](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-5.png)
+
+    Uložte `.json` soubor klíče na bezpečné místo. Tento soubor slouží k usnadnění případného budoucího obnovení zařízení.
+
     ![Snímek obrazovky se zobrazí v dialogovém okně Resetovat heslo zařízení.](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>Správa přístup k prostředků
@@ -69,7 +108,7 @@ Při generování aktivačního klíče pro zařízení Azure Stack Edge pro neb
 
 Měli byste mít `User` přístup k Tenantovi služby Active Directory, jak potřebujete `Read all directory objects` . Nemůžete být uživatel typu Host, protože k němu nemají oprávnění `Read all directory objects` . Pokud jste Host, pak operace, jako je generace aktivačního klíče, vytvoření sdílené složky na zařízení Azure Stack Edge pro, vytvoření uživatele, konfigurace hraniční výpočetní role, resetování hesla zařízení selže.
 
-Další informace o tom, jak poskytnout uživatelům přístup k Microsoft Graph rozhraní API, najdete v tématu [Microsoft Graph oprávnění](https://docs.microsoft.com/graph/permissions-reference).
+Další informace o tom, jak poskytnout uživatelům přístup k Microsoft Graph rozhraní API, najdete v tématu [Microsoft Graph oprávnění](/graph/permissions-reference).
 
 ### <a name="register-resource-providers"></a>Registrovat poskytovatele prostředků
 
@@ -115,7 +154,7 @@ Kromě výchozího režimu s plným připojením může být zařízení také s
 Chcete-li změnit režim zařízení, postupujte podle následujících kroků:
 
 1. V místním webovém uživatelském rozhraní zařízení, navštivte **konfigurační > Cloud**.
-2. V rozevíracím seznamu vyberte režim, ve kterém má být zařízení provozováno. Můžete vybrat z **úplně připojeného** , **částečně připojeného** a **úplného odpojení**. Pokud chcete zařízení spustit v režimu částečně odpojeno, povolte **správu Azure Portal**.
+2. V rozevíracím seznamu vyberte režim, ve kterém má být zařízení provozováno. Můžete vybrat z **úplně připojeného**, **částečně připojeného** a **úplného odpojení**. Pokud chcete zařízení spustit v režimu částečně odpojeno, povolte **správu Azure Portal**.
 
  
 ## <a name="manage-power"></a>Správa napájení

@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Technical Support'
 - fasttrack-edit
 - iot
-ms.openlocfilehash: b179bb3566cc19b8033a56348db34cd1f05cee10
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 81558526500f3c01e975d9a963b4a6a98ec6d753
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506392"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446410"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Monitorování, diagnostika a řešení potíží odpojení pomocí Azure IoT Hub
 
@@ -34,7 +34,7 @@ V obou případech se tyto možnosti omezí na to, co IoT Hub může sledovat, p
 
 ## <a name="event-grid-vs-azure-monitor"></a>Event Grid vs. Azure Monitor
 
-Event Grid poskytuje řešení pro monitorování s nízkou latencí pro zařízení, které můžete použít ke sledování připojení zařízení pro kritická zařízení a infrastrukturu. Azure Monitor poskytuje metriku, *připojená zařízení* , pomocí kterých můžete monitorovat počet zařízení připojených k vaší IoT Hub a aktivovat výstrahu, když číslo klesne pod statickou prahovou hodnotu.
+Event Grid poskytuje řešení pro monitorování s nízkou latencí pro zařízení, které můžete použít ke sledování připojení zařízení pro kritická zařízení a infrastrukturu. Azure Monitor poskytuje metriku, *připojená zařízení*, pomocí kterých můžete monitorovat počet zařízení připojených k vaší IoT Hub a aktivovat výstrahu, když číslo klesne pod statickou prahovou hodnotu.
 
 Při rozhodování, jestli použít Event Grid nebo Azure Monitor pro konkrétní scénář zvažte následující:
 
@@ -58,7 +58,7 @@ V následujících tématech najdete další informace o monitorování událost
 
 * Kurz týkající se řazení událostí připojení zařízení najdete v tématu [pořadí událostí připojení zařízení z Azure IoT Hub pomocí Azure Cosmos DB](iot-hub-how-to-order-connection-state-events.md).
 
-* Kurz posílání e-mailových oznámení najdete v tématu [posílání e-mailových oznámení o událostech Azure IoT Hub pomocí Event Grid a Logic Apps](/azure/event-grid/publish-iot-hub-events-to-logic-apps) v dokumentaci k Event Grid.
+* Kurz posílání e-mailových oznámení najdete v tématu [posílání e-mailových oznámení o událostech Azure IoT Hub pomocí Event Grid a Logic Apps](../event-grid/publish-iot-hub-events-to-logic-apps.md) v dokumentaci k Event Grid.
 
 ## <a name="azure-monitor-route-connection-events-to-logs"></a>Azure Monitor: směrování událostí připojení do protokolů
 
@@ -94,7 +94,7 @@ Po vytvoření nastavení diagnostiky pro směrování IoT Hubch protokolů pros
 
 1. V části **monitorování** v levém podokně Centra IoT vyberte **protokoly**.
 
-1. Pokud chcete izolovat protokoly chyb připojení pro IoT Hub, zadejte v editoru dotazů následující dotaz a pak vyberte **Spustit** :
+1. Pokud chcete izolovat protokoly chyb připojení pro IoT Hub, zadejte v editoru dotazů následující dotaz a pak vyberte **Spustit**:
 
     ```kusto
     AzureDiagnostics

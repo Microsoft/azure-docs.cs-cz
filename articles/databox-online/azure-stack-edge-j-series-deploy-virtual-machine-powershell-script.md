@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: cd877a91c7c082ce7845394f2636857f33b7940f
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 957274e6080ab4b77e6528386fe0b24b2d877219
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578752"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447312"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí skriptu Azure PowerShell
 
@@ -21,7 +21,7 @@ ms.locfileid: "94578752"
 
 V tomto kurzu se dozvíte, jak vytvořit a spravovat virtuální počítač na zařízení Azure Stack Edge pro pomocí skriptu Azure PowerShell.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure Stack Edge pro pomocí tohoto skriptu, musíte se ujistit, že jste dokončili požadavky uvedené v následujících krocích:
 
@@ -83,7 +83,7 @@ Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure
 
     `Uninstall-Module -Name Azure.Storage`
 
-5. Stáhněte si do svého klienta Windows [AzCopy 10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#download-azcopy) . Poznamenejte si toto umístění, protože ho předáte jako parametr při spuštění skriptu.
+5. Stáhněte si do svého klienta Windows [AzCopy 10](../storage/common/storage-use-azcopy-v10.md#download-azcopy) . Poznamenejte si toto umístění, protože ho předáte jako parametr při spuštění skriptu.
 
 6. Ujistěte se, že je na vašem klientovi Windows spuštěný protokol TLS 1,2 nebo novější.
 

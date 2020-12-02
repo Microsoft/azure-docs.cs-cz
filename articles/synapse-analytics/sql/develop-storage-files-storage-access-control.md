@@ -1,6 +1,6 @@
 ---
-title: Řízení přístupu k účtu úložiště pro fond SQL bez serveru (Preview)
-description: Popisuje, jak synapse fond SQL (Preview) bez serveru přistupuje k Azure Storage a jak řídit přístup k úložišti pro fond SQL bez serveru ve službě Azure Analytics.
+title: Řízení přístupu k účtu úložiště pro fond SQL bez serveru
+description: Popisuje způsob, jakým fond SQL bez serveru přistupuje k Azure Storage a jak můžete řídit přístup k úložišti pro fond SQL bez serveru ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 958f371a0018d20331e73d0eabba9354614d121c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 631aaf3c6a99e093f6ed59089f7ce99803f3f054
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315734"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446625"
 ---
-# <a name="control-storage-account-access-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Řízení přístupu účtu úložiště pro fond SQL bez serveru (Preview) ve službě Azure synapse Analytics
+# <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Řízení přístupu k účtu úložiště pro fond SQL bez serveru ve službě Azure synapse Analytics
 
 Dotaz na fond SQL bez serveru čte soubory přímo z Azure Storage. Oprávnění pro přístup k souborům v Azure Storage se řídí na dvou úrovních:
 - **Úroveň úložiště** – uživatel by měl mít oprávnění k přístupu k základním souborům úložiště. Správce úložiště by měl objektu zabezpečení služby Azure AD umožňovat čtení a zápis souborů nebo generování klíče SAS, který se bude používat pro přístup k úložišti.
@@ -33,7 +33,7 @@ Uživatel, který byl přihlášen k fondu SQL bez serveru, musí mít autorizac
 
 ### <a name="user-identity"></a>[Identita uživatele](#tab/user-identity)
 
-**Identita uživatele** , známá taky jako "předávací služba Azure AD", je typ autorizace, kde se k autorizaci přístupu k datům používá identita uživatele Azure AD, který je přihlášený k fondu SQL bez serveru. Před přístupem k datům musí správce Azure Storage udělit oprávnění k uživateli Azure AD. Jak je uvedeno v následující tabulce, není podporováno pro typ uživatele SQL.
+**Identita uživatele**, známá taky jako "předávací služba Azure AD", je typ autorizace, kde se k autorizaci přístupu k datům používá identita uživatele Azure AD, který je přihlášený k fondu SQL bez serveru. Před přístupem k datům musí správce Azure Storage udělit oprávnění k uživateli Azure AD. Jak je uvedeno v následující tabulce, není podporováno pro typ uživatele SQL.
 
 > [!IMPORTANT]
 > Abyste mohli používat vaši identitu pro přístup k datům, musíte mít roli vlastníka dat objektu BLOB úložiště/Přispěvatel/čtenář.
@@ -49,7 +49,7 @@ Uživatel, který byl přihlášen k fondu SQL bez serveru, musí mít autorizac
 Token SAS můžete získat tak, že přejdete na **účet úložiště > Azure Portal – > sdílený přístup – > konfigurace oprávnění – > generovat SAS a připojovací řetězec.**
 
 > [!IMPORTANT]
-> Při vygenerování tokenu SAS obsahuje znak otazníku (?) na začátku tokenu. Pokud chcete použít token ve fondu SQL bez serveru, musíte při vytváření přihlašovacích údajů odebrat otazník (?). Například:
+> Při vygenerování tokenu SAS obsahuje znak otazníku (?) na začátku tokenu. Pokud chcete použít token ve fondu SQL bez serveru, musíte při vytváření přihlašovacích údajů odebrat otazník (?). Příklad:
 >
 > Token SAS:? sv = 2018-03-28&SS = bfqt&SRT aplikace = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = https&SIG = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
 
@@ -144,7 +144,7 @@ Uživatelé SQL nemůžou k přístupu k úložišti používat ověřování Az
 
 Následující skript vytvoří přihlašovací údaje na úrovni serveru, které můžou používat `OPENROWSET` funkce pro přístup k jakémukoli souboru v úložišti Azure pomocí tokenu SAS. Vytvořte toto přihlašovací údaje, aby se povolil objekt zabezpečení SQL, který spustí `OPENROWSET` funkci pro čtení souborů chráněných pomocí klíče SAS v úložišti Azure, které odpovídají adrese URL v názvu přihlašovacích údajů.
 
-Exchange < *mystorageaccountname* > s vaším skutečným názvem účtu úložiště a> < *mystorageaccountcontainername* s aktuálním názvem kontejneru:
+Exchange <*mystorageaccountname*> s vaším skutečným názvem účtu úložiště a> <*mystorageaccountcontainername* s aktuálním názvem kontejneru:
 
 ```sql
 CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]

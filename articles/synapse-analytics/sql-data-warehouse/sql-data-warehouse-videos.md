@@ -11,16 +11,16 @@ ms.date: 02/15/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b0b3a924008d4180c045455aecda8ec109845939
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: eaf41e903f1a55dd85c6b6282617564a32087707
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321006"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447825"
 ---
-# <a name="azure-synapse-analytics---dedicated-sql-pool-videos"></a>Videa ke službě Azure synapse Analytics – vyhrazená videa ke fondu SQL
+# <a name="azure-synapse-analytics---dedicated-sql-pool--formerly-sql-dw-videos"></a>Azure synapse Analytics – vyhrazený fond SQL (dříve SQL DW) – videa
 
-Podívejte se na nejnovější videa o vyhrazeném fondu SQL a seznamte se s novými funkcemi a vylepšeními výkonu. 
+Podívejte se na nejnovější vyhrazená videa fondu SQL (dřív SQL DW) a seznamte se s novými funkcemi a vylepšeními výkonu. 
 
 Začněte tím, že vyberete níže uvedené video s přehledem, kde se dozvíte o nových aktualizacích vyhrazeného fondu SQL. Seznamte se také s tím, jak se dají vzory moderních datových skladů použít k řešení reálných scénářů, jako je kybernetická.
 </br>

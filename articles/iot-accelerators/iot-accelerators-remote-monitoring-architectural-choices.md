@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1bd08596a30db7322a72b4269fddfe0b9df19119
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27a65d8a499f6eba130dc9537de3cb2b3dc3abe8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61447165"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446760"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>Volby architektury vzdáleného monitorování
 
@@ -23,7 +23,7 @@ Akcelerátor řešení vzdáleného monitorování Azure IoT je open source s li
 - Správa zařízení
 - Zpracování streamů
 
-Řešení vzdáleného monitorování se řídí doporučenou [referenční architekturou Azure IoT](https://aka.ms/iotrefarchitecture).
+Řešení vzdáleného monitorování se řídí doporučenou [referenční architekturou Azure IoT](/azure/architecture/reference-architectures/iot).
 
 Tento článek popisuje klíčovou architekturu a technické možnosti provedené v jednotlivých subsystémech vzdáleného monitorování. Technické možnosti, které Microsoft provedl v řešení vzdáleného monitorování, ale nejsou jediným způsobem implementace řešení pro vzdálené monitorování IoT. Tuto technickou implementaci byste měli brát v úvahu jako základ pro sestavení úspěšné aplikace a měli byste ji upravit na:
 
@@ -86,4 +86,4 @@ Mezi alternativy k Docker patří hostování mikroslužeb v PaaS službách, ja
 
 * [Sem](https://www.azureiotsolutions.com/)nasaďte řešení vzdáleného monitorování.
 * Prozkoumejte kód GitHubu v [jazycích C#](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) a [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/).  
-* Další informace o referenční architektuře IoT [najdete tady](https://aka.ms/iotrefarchitecture).
+* Další informace o referenční architektuře IoT [najdete tady](/azure/architecture/reference-architectures/iot).

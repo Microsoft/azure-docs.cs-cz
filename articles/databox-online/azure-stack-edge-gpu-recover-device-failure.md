@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 91efdac9d17e679226f10012bbff9b5b6676ff0e
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: bf4d0a845b7f26c82ba3940d6613a33bcacf9187
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205574"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448327"
 ---
 # <a name="recover-from-a-failed-azure-stack-edge-pro-gpu-device"></a>Obnovení z neúspěšného Azure Stackového zařízení pro grafické procesory 
 
@@ -81,7 +81,7 @@ Pokud chcete připravit na potenciální selhání zařízení, možná jste nas
 
 | Řešení zálohování        | Podporovaný operační systém   | Referenční informace                                                                |
 |-------------------------|----------------|--------------------------------------------------------------------------|
-| Agent Microsoft Azure Recovery Services (MARS) pro Azure Backup | Windows        | [Informace o agentovi Mars](/azure/backup/backup-azure-about-mars)    |
+| Agent Microsoft Azure Recovery Services (MARS) pro Azure Backup | Windows        | [Informace o agentovi Mars](../backup/backup-azure-about-mars.md)    |
 | Cohesity                | Windows, Linux | [Stručně Microsoft Azure integrace, řešení zálohování a obnovení](https://www.cohesity.com/solution/cloud/azure) <br>Podrobnosti získáte od Cohesity.                          |
 | CommVault               | Windows, Linux | https://www.commvault.com/azure <br> Podrobnosti získáte od CommVault.
 | Veritas                 | Windows, Linux | http://veritas.com/azure <br> Podrobnosti získáte od společnosti Veritas.                    |

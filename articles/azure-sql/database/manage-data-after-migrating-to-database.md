@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: fe49dce276a15d9d7bc8ddaa5618c0e43dec62e9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b34ac24cb26bf5db4a49a5ad5b531deb252f4695
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841219"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446124"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Nový DBA v cloudu – Správa Azure SQL Database po migraci
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -106,7 +106,7 @@ V SQL Database jsou k dispozici dvě metody ověřování:
 
 Tradiční ověřování systému Windows není podporováno. Azure Active Directory (Azure AD) je centralizovaná služba pro správu identit a přístupu. Díky tomu můžete snadno poskytnout přístup s jednotným přihlašováním (SSO) všem pracovníkům ve vaší organizaci. To znamená, že přihlašovací údaje se sdílejí napříč všemi službami Azure pro jednodušší ověřování. 
 
-Azure AD podporuje [Multi-Factor Authentication Azure AD](authentication-mfa-ssms-overview.md) a [několik kliknutí](../../active-directory/hybrid/how-to-connect-install-express.md) na Azure AD se dá integrovat do služby Windows Server Active Directory. Ověřování SQL funguje stejně, jako byste ji používali v minulosti. Zadejte uživatelské jméno a heslo a můžete ověřovat uživatele na všech databázích na daném serveru. Tato možnost také umožňuje SQL Database a Azure synapse Analytics (dříve SQL Data Warehouse) k poskytování Multi-Factor Authentication a uživatelských účtů hostů v doméně služby Azure AD. Pokud již máte místní službu Active Directory, můžete federovat adresář s Azure Active Directory pro rozšiřování adresáře do Azure.
+Azure AD podporuje [Multi-Factor Authentication Azure AD](authentication-mfa-ssms-overview.md) a [několik kliknutí](../../active-directory/hybrid/how-to-connect-install-express.md) na Azure AD se dá integrovat do služby Windows Server Active Directory. Ověřování SQL funguje stejně, jako byste ji používali v minulosti. Zadejte uživatelské jméno a heslo a můžete ověřovat uživatele na všech databázích na daném serveru. To také umožňuje SQL Database a služba Azure synapse Analytics nabízí Multi-Factor Authentication a uživatelské účty hostů v doméně služby Azure AD. Pokud již máte místní službu Active Directory, můžete federovat adresář s Azure Active Directory pro rozšiřování adresáře do Azure.
 
 |**Pokud...**|**SQL Database/Azure synapse Analytics**|
 |---|---|
@@ -172,7 +172,7 @@ V případě ochrany citlivých dat v letadlech a v klidovém prostředí SQL Da
 |**Vlastnosti**|**Funkce Always Encrypted**|**Transparentní šifrování dat**|
 |---|---|---|
 |**Rozsah šifrování**|Od začátku do konce|Data na REST|
-|**Server má přístup k citlivým datům**|Ne|Ano, protože šifrování je pro neaktivní neaktivní data|
+|**Server má přístup k citlivým datům**|No|Ano, protože šifrování je pro neaktivní neaktivní data|
 |**Povolené operace T-SQL**|Porovnání rovnosti|Dostupná je celá oblast T-SQL Surface.|
 |**Změny aplikací, které jsou nutné k použití této funkce**|Minimální|Velmi minimální|
 |**Členitost šifrování**|Úroveň sloupce|úrovni databáze|

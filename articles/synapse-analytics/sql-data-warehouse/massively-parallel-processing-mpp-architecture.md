@@ -1,6 +1,6 @@
 ---
-title: Architektura Azure synapse Analytics (dříve SQL DW)
-description: Přečtěte si, jak Azure synapse Analytics (dřív SQL DW) kombinuje funkce distribuovaného zpracování dotazů s Azure Storage pro zajištění vysokého výkonu a škálovatelnosti.
+title: Vyhrazená architektura fondu SQL (dříve SQL DW)
+description: Přečtěte si, jak vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics kombinuje funkce distribuovaného zpracování dotazů s Azure Storage pro zajištění vysokého výkonu a škálovatelnosti.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,49 +10,44 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1d32aa011e9e816f97b050d43f9558af0cf82e90
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 45c7f89f773095a102429c07f7441223de3c2dec
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319649"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448261"
 ---
-# <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architektura Azure synapse Analytics (dříve SQL DW)
+# <a name="dedicated-sql-pool-formerly-sql-dw-architecture-in-azure-synapse-analytics"></a>Vyhrazená architektura fondu SQL (dříve SQL DW) ve službě Azure synapse Analytics
 
-Azure Synapse je neomezená analytická služba, která spojuje podnikové skladování dat a analýzy velkých objemů dat. Dává vám možnost dotazovat se na data podle toho, jak vám to vyhovuje, s využitím bezserverové architektury na vyžádání, nebo zřízených prostředků, a to ve velkém měřítku. Azure Synapse spojuje tyto dva světy do sjednoceného prostředí, které nabízí příjem, přípravu, správu a obsluhu dat pro aktuální potřeby BI a strojového učení.
+Azure Synapse Analytics je analytická služba, která spojuje podnikové datové sklady s analýzou velkých objemů dat. Poskytuje vám volnost v dotazování na data podle vašich podmínek.
 
- Azure synapse má čtyři součásti:
+> [!NOTE]
+>Prozkoumejte [dokumentaci ke službě Azure synapse Analytics](../overview-what-is.md).
+>
 
-- Synapse SQL: kompletní analýzy založené na T-SQL
-
-  - Vyhrazený fond SQL (placený za DWU zřízený) – všeobecně dostupné
-  - Fond SQL bez serveru (placený za TB zpracovaných) – (Preview)
-- Spark: hluboce integrované Apache Spark (Preview)
-- Integrace dat: integrace hybridních dat (Preview)
-- Studio: jednotné uživatelské prostředí.  (Preview)
 
 > [!VIDEO https://www.youtube.com/embed/PlyQ8yOb8kc]
 
 ## <a name="synapse-sql-architecture-components"></a>Komponenty architektury synapse SQL
 
-[Synapse SQL](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse) využívá architekturu pro horizontální navýšení kapacity k distribuci výpočetního zpracování dat napříč více uzly. Jednotka škálování je abstrakce výpočetního výkonu, který se označuje jako [jednotka datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md). Výpočetní prostředky jsou oddělené od úložiště, což umožňuje škálovat výpočetní prostředky nezávisle na datech v systému.
+[Vyhrazený fond SQL (dříve SQL DW)](sql-data-warehouse-overview-what-is.md) využívá architekturu škálování na více instancí k distribuci výpočetního zpracování dat napříč více uzly. Jednotka škálování je abstrakce výpočetního výkonu, který se označuje jako [jednotka datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md). Výpočetní prostředky jsou oddělené od úložiště, což umožňuje škálovat výpočetní prostředky nezávisle na datech v systému.
 
-![Architektura Synapse SQL](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
+![Vyhrazená architektura fondu SQL (dříve SQL DW)](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-Synapse SQL používá architekturu založenou na uzlech. Aplikace připojují a vydávají příkazy T-SQL do řídicího uzlu, který je jediným bodem záznamu pro synapse SQL. Řídicí uzel je hostitelem distribuovaného dotazovacího stroje, který optimalizuje dotazy pro paralelní zpracování, a poté předává operace do výpočetních uzlů, aby fungovaly paralelně.
+Vyhrazený fond SQL (dříve SQL DW) používá architekturu založenou na uzlech. Aplikace připojují a vydávají příkazy T-SQL do řídicího uzlu. Řídicí uzel je hostitelem distribuovaného dotazovacího stroje, který optimalizuje dotazy pro paralelní zpracování, a poté předává operace do výpočetních uzlů, aby fungovaly paralelně.
 
 Výpočetní uzly ukládají veškerá data uživatelů ve službě Azure Storage a spouští paralelní dotazy. DMS (Data Movement Service) je interní služba na úrovni systému, která podle potřeby přesunuje data mezi uzly, aby bylo možné spouštět dotazy paralelně a získat přesné výsledky.
 
-S odděleným úložištěm a výpočetním prostředím může při použití synapse fondu SQL jeden:
+S odděleným úložištěm a výpočetním prostředím může při použití vyhrazeného fondu SQL (dříve SQL DW) jedna:
 
 - Bez ohledu na požadavky na úložiště se výpočetní výkon nezávisle mění.
-- Zvětšete nebo zmenšete výpočetní výkon v rámci fondu SQL (datový sklad) bez přesouvání dat.
+- Zvětšete nebo zmenšete výpočetní výkon v rámci vyhrazeného fondu SQL (dříve SQL DW) bez přesouvání dat.
 - pozastavit výpočetní kapacitu a zachovat neporušená data, zatímco platíte pouze za úložiště,
 - obnovit výpočetní kapacitu za provozu.
 
 ### <a name="azure-storage"></a>Azure Storage
 
-Synapse SQL využívá Azure Storage k zabezpečení vašich uživatelských dat.  Vzhledem k tomu, že vaše data jsou uložená a spravovaná pomocí Azure Storage, pro vaši spotřebu úložiště se účtuje samostatně. Data se horizontálně dělené do **distribucí** za účelem optimalizace výkonu systému. Můžete zvolit, který vzor horizontálního dělení se má použít k distribuci dat při definování tabulky. Jsou podporovány tyto horizontálního dělení vzory:
+Vyhrazený fond SQL (dřív SQL DW) využívá Azure Storage k zabezpečení vašich uživatelských dat.  Vzhledem k tomu, že vaše data jsou uložená a spravovaná pomocí Azure Storage, pro vaši spotřebu úložiště se účtuje samostatně. Data se horizontálně dělené do **distribucí** za účelem optimalizace výkonu systému. Můžete zvolit, který vzor horizontálního dělení se má použít k distribuci dat při definování tabulky. Jsou podporovány tyto horizontálního dělení vzory:
 
 - Hodnoty hash
 - Kruhové dotazování
@@ -76,7 +71,7 @@ Služba pro přesun dat (DMS) je technologie pro přenos dat, která koordinuje 
 
 Distribuce představuje základní jednotku úložiště a zpracování paralelních dotazů, které se spouští u distribuovaných dat. Když SQL synapse spustí dotaz, bude tato práce rozdělená na 60 menších dotazů, které běží paralelně.
 
-Každý z těchto 60 dotazů běží v jedné z distribucí dat. Každý výpočetní uzel spravuje jednu nebo více distribucí 60. Fond SQL s maximálními výpočetními prostředky má jednu distribuci na výpočetní uzel. Fond SQL s minimálními výpočetními prostředky má všechny distribuce v jednom výpočetním uzlu.  
+Každý z těchto 60 dotazů běží v jedné z distribucí dat. Každý výpočetní uzel spravuje jednu nebo více distribucí 60. Vyhrazený fond SQL (dříve SQL DW) s maximálními výpočetními prostředky má jednu distribuci na výpočetní uzel. Vyhrazený fond SQL (dříve SQL DW) s minimálními výpočetními prostředky má všechny distribuce v jednom výpočetním uzlu.  
 
 ## <a name="hash-distributed-tables"></a>Distribuované zatřiďovací tabulky (distribuce hodnot hash)
 
@@ -112,7 +107,7 @@ Následující diagram znázorňuje replikovanou tabulku uloženou v mezipaměti
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když víte o Azure synapse, se dozvíte, jak rychle [vytvořit fond SQL](create-data-warehouse-portal.md) a [načíst ukázková data](load-data-from-azure-blob-storage-using-polybase.md). Pokud s Azure začínáte, můžete využít [Glosář Azure](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), kde najdete potřebnou terminologii. Nebo se podívejte na některé z těchto dalších prostředků Azure synapse.  
+Teď, když víte o službě Azure synapse, se dozvíte, jak rychle [vytvořit vyhrazený fond SQL (dřív SQL DW)](create-data-warehouse-portal.md) a [načíst ukázková data](load-data-from-azure-blob-storage-using-polybase.md). Pokud s Azure začínáte, můžete využít [Glosář Azure](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), kde najdete potřebnou terminologii. Nebo se podívejte na některé z těchto dalších prostředků Azure synapse.  
 
 - [Úspěšné zákaznické implementace](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
 - [Blogy](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)

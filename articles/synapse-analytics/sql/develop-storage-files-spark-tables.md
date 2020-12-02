@@ -1,6 +1,6 @@
 ---
-title: Synchronizovat Apache Spark pro definice externích tabulek ve fondu SQL bez serveru (Preview)
-description: Přehled postupu dotazování na tabulky Spark pomocí neserverového fondu SQL (Preview)
+title: Synchronizovat Apache Spark pro definice externích tabulek ve fondu SQL bez serveru
+description: Přehled postupu dotazování na tabulky Spark pomocí SQL fondu bez serveru
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: ea4e7cd009be8a78faa0dcfab44371a350b6a200
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 057a69881b8b407e5d75fa3510ca1c3eb1830bc7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315824"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446494"
 ---
-# <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-serverless-sql-pool-preview"></a>Synchronizace Apache Spark pro definice externích tabulek Azure synapse ve fondu SQL bez serveru (Preview)
+# <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-serverless-sql-pool"></a>Synchronizace Apache Spark pro definice externích tabulek Azure synapse ve fondu SQL bez serveru
 
-Fond SQL bez serveru (Preview) může automaticky synchronizovat metadata z Apache Spark. Databáze fondu SQL bez serveru se vytvoří pro každou databázi existující ve fondech Apache Spark bez serveru (Preview). 
+Fond SQL bez serveru může automaticky synchronizovat metadata z Apache Spark. Databáze fondu SQL bez serveru se vytvoří pro každou databázi existující v Apache Spark fondech bez serveru. 
 
 Pro každou externí tabulku Spark založenou na Parquet a nacházející se v Azure Storage se vytvoří externí tabulka v neserverové databázi fondu SQL. V takovém případě můžete vypnout fondy Spark a i nadále dotazovat externí tabulky Spark z SQL fondu bez serveru.
 

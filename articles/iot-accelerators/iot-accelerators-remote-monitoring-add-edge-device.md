@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: de060be7ace84ea309b71087a50fd572091bed43
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 88d732cc3feaa2c9a528443d4a783227f3d8e641
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004785"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446801"
 ---
 # <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>Přidání zařízení IoT Edge do akcelerátoru řešení vzdáleného monitorování
 
@@ -34,9 +34,9 @@ Na panelu **nové zařízení** vyberte **IoT Edge zařízení**. Můžete ponec
 
 Je také možné zaregistrovat IoT Edge zařízení přímo s instancí IoT Hub v akcelerátoru řešení. Než začnete s některým z těchto pokynů, musíte znát název služby IoT Hub v akcelerátoru řešení:
 
-- [Registrovat nové zařízení Azure IoT Edge z Azure Portal](../iot-edge/how-to-register-device.md#register-in-the-azure-portal)
-- [Registrace nového zařízení Azure IoT Edge pomocí Azure CLI](../iot-edge/how-to-register-device.md#register-with-the-azure-cli)
-- [Registrovat nové zařízení Azure IoT Edge z Visual Studio Code](../iot-edge/how-to-register-device.md#register-with-visual-studio-code)
+- [Registrovat nové zařízení Azure IoT Edge z Azure Portal](../iot-edge/how-to-manual-provision-symmetric-key.md?tabs=azure-portal%2Cwindows)
+- [Registrace nového zařízení Azure IoT Edge pomocí Azure CLI](../iot-edge/how-to-manual-provision-symmetric-key.md?tabs=azure-cli%2Cwindows)
+- [Registrovat nové zařízení Azure IoT Edge z Visual Studio Code](../iot-edge/how-to-manual-provision-symmetric-key.md?tabs=visual-studio-code%2Cwindows)
 
 Když zaregistrujete zařízení přímo do centra IoT v akcelerátoru řešení vzdáleného monitorování, zobrazí se na stránce **Device Explorer** ve webovém uživatelském rozhraní.
 
@@ -44,11 +44,11 @@ Když zaregistrujete zařízení přímo do centra IoT v akcelerátoru řešení
 
 Předtím, než budete moci nasadit moduly do hraničního zařízení, je nutné na reálné zařízení nainstalovat modul runtime IoT Edge. Následující příručky s postupy vám ukážou, jak nainstalovat modul runtime na běžných platformách zařízení:
 
-- [Instalace modulu runtime Azure IoT Edge v systému Linux (x64)](../iot-edge/how-to-install-iot-edge-linux.md)
-- [Instalace modulu runtime Azure IoT Edge v systému Linux (ARM32v7/armhf)](../iot-edge/how-to-install-iot-edge-linux.md)
-- [Instalace modulu runtime Azure IoT Edge ve Windows pro použití s kontejnery Windows](../iot-edge/how-to-install-iot-edge-windows.md)
-- [Instalace modulu runtime Azure IoT Edge ve Windows pro použití s kontejnery pro Linux](../iot-edge/how-to-install-iot-edge-windows-with-linux.md)
-- [Instalace modulu runtime IoT Edge v systému Windows IoT Core](../iot-edge/how-to-install-iot-edge-windows.md)
+- [Instalace modulu runtime Azure IoT Edge v systému Linux (x64)](../iot-edge/how-to-install-iot-edge.md)
+- [Instalace modulu runtime Azure IoT Edge v systému Linux (ARM32v7/armhf)](../iot-edge/how-to-install-iot-edge.md)
+- [Instalace modulu runtime Azure IoT Edge ve Windows pro použití s kontejnery Windows](../iot-edge/how-to-install-iot-edge.md)
+- [Instalace modulu runtime Azure IoT Edge ve Windows pro použití s kontejnery pro Linux](../iot-edge/how-to-install-iot-edge.md)
+- [Instalace modulu runtime IoT Edge v systému Windows IoT Core](../iot-edge/how-to-install-iot-edge.md)
 
 ## <a name="next-steps"></a>Další kroky
 

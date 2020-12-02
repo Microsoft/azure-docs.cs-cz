@@ -1,6 +1,6 @@
 ---
 title: Řešení potíží s připojením
-description: Řešení potíží s připojením ve vyhrazeném fondu SQL.
+description: Řešení potíží s připojením ve vyhrazeném fondu SQL (dříve SQL DW).
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,47 +11,47 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-csharp
-ms.openlocfilehash: 82b9f988ef4a7f4a53cd0b451da28642b53bcb65
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ea99c2ce1963ec58649fd4c2fbb4d98768da8c6f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308370"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447973"
 ---
-# <a name="troubleshooting-connectivity-issues-in-dedicated-sql-pool"></a>Řešení potíží s připojením ve vyhrazeném fondu SQL
+# <a name="troubleshooting-connectivity-issues-in-dedicated-sql-pool-formerly-sql-dw"></a>Řešení potíží s připojením ve vyhrazeném fondu SQL (dříve SQL DW)
 
-V tomto článku jsou uvedené běžné techniky řešení potíží, které se připojují k vaší vyhrazené databázi fondu SQL.
+V tomto článku jsou uvedené běžné techniky řešení potíží, které se připojují k vaší vyhrazené databázi fondu SQL (dřív SQL DW).
 
 ## <a name="check-service-availability"></a>Ověřit dostupnost služby
 
-Zkontrolujte, zda je služba k dispozici. V Azure Portal přejdete do vyhrazeného fondu SQL, ke kterému se pokoušíte připojit. Na levém panelu obsahu klikněte na **diagnostikovat a řešte problémy**.
+Zkontrolujte, zda je služba k dispozici. V Azure Portal přejdete do vyhrazeného fondu SQL (dříve SQL DW), ke kterému se pokoušíte připojit. Na levém panelu obsahu klikněte na **diagnostikovat a řešte problémy**.
 
 ![Vybrat stav prostředku](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-Tady se zobrazí stav vyhrazeného fondu SQL. Pokud služba není zobrazená jako **dostupná** , Projděte si další kroky.
+Tady se zobrazí stav vyhrazeného fondu SQL (dřív SQL DW). Pokud služba není zobrazená jako **dostupná**, Projděte si další kroky.
 
 ![Služba k dispozici](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-Pokud váš stav prostředku ukazuje, že vaše vyhrazená instance fondu SQL je pozastavená nebo se mění, postupujte podle pokynů pro obnovení instance.
+Pokud váš stav prostředku ukazuje, že váš vyhrazený fond SQL (dřív SQL DW) je pozastaven nebo se škálováním, postupujte podle pokynů pro obnovení instance.
 
-![Snímek obrazovky ukazuje instanci služby SQL Data Warehouse, která je pozastavená nebo škálovatelná.](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png)
+![Snímek obrazovky ukazuje instanci vyhrazeného fondu SQL, která je pozastavená nebo škálovatelná.](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png)
 Další informace o Resource Health najdete tady.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Zkontrolujte pozastavené operace nebo operace škálování
 
-Podívejte se na portál a zjistěte, jestli je vaše vyhrazená instance fondu SQL pozastavená nebo škálovatelná.
+Podívejte se na portál a zjistěte, jestli je váš vyhrazený fond SQL (dřív SQL DW) pozastaven nebo se škálováním.
 
 ![Snímek obrazovky ukazuje, jak ověřit, zda je datový sklad pozastaven.](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-Pokud vidíte, že vaše služba je pozastavená nebo je škálovatelná, zkontrolujte, že se během plánu údržby nezobrazuje. Na portálu vašeho vyhrazeného *fondu SQL se zobrazí* vybraný plán údržby.
+Pokud vidíte, že vaše služba je pozastavená nebo je škálovatelná, zkontrolujte, že se během plánu údržby nezobrazuje. Na portálu pro vyhrazený fond SQL (dříve SQL *DW) se* zobrazí vybraný plán údržby.
 
 ![Přehled plánu údržby](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-V opačném případě obraťte se na správce IT a ověřte, že tato údržba není naplánovaná událost. Chcete-li obnovit vyhrazenou instanci fondu SQL, postupujte podle [těchto kroků](pause-and-resume-compute-portal.md).
+V opačném případě obraťte se na správce IT a ověřte, že tato údržba není naplánovaná událost. Chcete-li obnovit vyhrazenou instanci fondu SQL (dříve SQL DW), postupujte podle [těchto kroků](pause-and-resume-compute-portal.md).
 
 ## <a name="check-your-firewall-settings"></a>Zkontrolujte nastavení brány firewall
 
-Vyhrazená databáze fondu SQL komunikuje přes port 1433.Pokud se pokoušíte připojit z podnikové sítě, vaše brána firewall možná nepovoluje odchozí přenosy přes port 1433. V takovém případě se nemůžete připojit k [logickému serveru](../../azure-sql/database/logical-servers.md) , dokud vaše IT oddělení neotevře port 1433. Další informace o konfiguracích brány firewall najdete [tady](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules).
+Vyhrazená databáze fondu SQL (dříve SQL DW) komunikuje přes port 1433.Pokud se pokoušíte připojit z podnikové sítě, vaše brána firewall možná nepovoluje odchozí přenosy přes port 1433. V takovém případě se nemůžete připojit k [logickému serveru](../../azure-sql/database/logical-servers.md) , dokud vaše IT oddělení neotevře port 1433. Další informace o konfiguracích brány firewall najdete [tady](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules).
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>Zkontrolujte nastavení virtuální sítě / koncového bodu služby
 
@@ -61,7 +61,7 @@ Pokud dochází k chybám 40914 a 40615, přečtěte si [Popis chyby a rozlišen
 
 ### <a name="software"></a>Software
 
-Ujistěte se, že používáte nejnovější nástroje pro připojení k vyhrazenému fondu SQL:
+Ujistěte se, že používáte nejnovější nástroje pro připojení k vašemu vyhrazenému fondu SQL (dřív SQL DW):
 
 - SSMS
 - Azure Data Studio
@@ -106,7 +106,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>Problémy s přerušovaným připojením
 
-Zkontrolujte, jestli je server hodně zatížený a existuje na něm vysoký počet požadavků ve frontě. Možná budete muset škálovat vyhrazený fond SQL pro další prostředky.
+Zkontrolujte, jestli je server hodně zatížený a existuje na něm vysoký počet požadavků ve frontě. Pro další prostředky možná budete muset škálovat vyhrazený fond SQL (dříve SQL DW).
 
 ## <a name="common-error-messages"></a>Běžné chybové zprávy
 
