@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 8b3212dd7e1544d734c0f409bd4bcdf8ec22fbc2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 4e914b7b49393964f17cc6d9515cb2f4a3bebd2e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147615"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499981"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Principy a použití sad SDK služby Azure IoT Hub.
 
@@ -54,6 +54,14 @@ Sada SDK pro zařízení Azure IoT Hub pro .NET:
 * [Referenční materiály k rozhraní API](/dotnet/api/microsoft.azure.devices?view=azure-dotnet)
 * [Odkaz na modul](/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)
 
+
+Sada Azure IoT Hub SDK pro zařízení Embedded C (ANSI C-C99):
+* [Sestavení vložené sady C SDK](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot#build)
+* [Zdrojový kód](https://github.com/Azure/azure-sdk-for-c)
+* [Graf velikosti](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot#size-chart) omezených zařízení
+* [Referenční materiály k rozhraní API](https://azuresdkdocs.blob.core.windows.net/$web/c/docs/1.0.0/index.html)
+
+
 Sada SDK pro zařízení Azure IoT Hub pro jazyk C (ANSI C-C99):
 
 * Instalace z [apt-get, MBED, Arduino IDE nebo iOS](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md#packages-and-libraries)
@@ -88,7 +96,7 @@ Sada SDK pro zařízení Azure IoT Hub pro Python:
 Sada SDK pro zařízení Azure IoT Hub pro iOS:
 
 * Instalace z [CocoaPod](https://cocoapods.org/pods/AzureIoTHubClient)
-* [Ukázky](https://github.com/Azure-Samples/azure-iot-samples-ios)
+* [ukázky](https://github.com/Azure-Samples/azure-iot-samples-ios)
 * Reference k rozhraní API: viz [Reference k rozhraní API jazyka C](/azure/iot-hub/iot-c-sdk-ref/)
 
 ## <a name="azure-iot-hub-service-sdks"></a>Sady SDK pro služby Azure IoT Hub
@@ -132,7 +140,7 @@ Podpora sady SDK služby Azure IoT je k dispozici v jazycích vyšší úrovně 
 Sada Azure IoT Hub Service SDK pro iOS:
 
 * Instalace z [CocoaPod](https://cocoapods.org/pods/AzureIoTHubServiceClient)
-* [Ukázky](https://github.com/Azure-Samples/azure-iot-samples-ios)
+* [ukázky](https://github.com/Azure-Samples/azure-iot-samples-ios)
 
 > [!NOTE]
 > V souborech Readme v úložištích GitHub najdete informace o používání správců balíčků pro konkrétní platformu k instalaci binárních souborů a závislostí na vašem vývojovém počítači.

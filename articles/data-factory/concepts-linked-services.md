@@ -3,20 +3,20 @@ title: Propojené služby v Azure Data Factory
 description: Přečtěte si o propojených službách v Data Factory. Propojené služby propojí výpočetní a datové úložiště s datovou továrnou.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 3d49422af01e38884b5d8ff871fbe84254938944
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 172694363b482edf6d463aa74b85e81c91fa6a9c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89434108"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500100"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Propojené služby v Azure Data Factory
 
@@ -32,7 +32,7 @@ Pokud s Data Factory začínáte, přečtěte si téma [Úvod do Azure Data Fact
 
 ## <a name="overview"></a>Přehled
 
-Objekt pro vytváření dat může mít jeden nebo víc kanálů. **Kanál** je logické seskupení **aktivit** , které dohromady provádějí úlohu. Aktivity v kanálu definují akce, které se mají provádět s daty. Aktivitu kopírování můžete například použít ke kopírování dat z SQL Server do úložiště objektů BLOB v Azure. Pak můžete použít aktivitu podregistru, která spouští skript podregistru v clusteru Azure HDInsight ke zpracování dat z úložiště objektů blob za účelem vytvoření výstupních dat. Nakonec můžete použít druhou aktivitu kopírování ke zkopírování výstupních dat do služby Azure synapse Analytics (dříve SQL Data Warehouse), a to nad tím, která řešení pro vytváření sestav business intelligence (BI) jsou sestavená. Další informace o kanálech a aktivitách najdete v tématu [kanály a aktivity](concepts-pipelines-activities.md) v Azure Data Factory.
+Objekt pro vytváření dat může mít jeden nebo víc kanálů. **Kanál** je logické seskupení **aktivit** , které dohromady provádějí úlohu. Aktivity v kanálu definují akce, které se mají provádět s daty. Aktivitu kopírování můžete například použít ke kopírování dat z SQL Server do úložiště objektů BLOB v Azure. Pak můžete použít aktivitu podregistru, která spouští skript podregistru v clusteru Azure HDInsight ke zpracování dat z úložiště objektů blob za účelem vytvoření výstupních dat. Nakonec můžete použít druhou aktivitu kopírování ke zkopírování výstupních dat do služby Azure synapse Analytics, nad kterou jsou sestavená řešení pro vytváření sestav business intelligence (BI). Další informace o kanálech a aktivitách najdete v tématu [kanály a aktivity](concepts-pipelines-activities.md) v Azure Data Factory.
 
 Nyní je **datovou sadou** pojmenované zobrazení dat, která jednoduše odkazují na data, která chcete ve svých **aktivitách** použít jako vstupy a výstupy.
 

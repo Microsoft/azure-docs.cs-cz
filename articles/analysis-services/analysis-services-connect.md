@@ -4,16 +4,16 @@ description: Naučte se, jak se připojit k serveru Analysis Services v Azure a 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 93b1e9a2ea052a39e891cf9084b632f434c341df
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 4abe1e9c6f9d7b62792936f816b9c46a937be41a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013691"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499420"
 ---
 # <a name="connecting-to-servers"></a>Připojení k serverům
 
@@ -21,7 +21,7 @@ V tomto článku se dozvíte, jak se připojit k serveru pomocí aplikací pro m
 
 ## <a name="client-libraries"></a>Klientské knihovny
 
-[Získat nejnovější klientské knihovny](/analysis-services/client-libraries?view=azure-analysis-services-current)
+[Získat nejnovější klientské knihovny](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true)
 
 Všechna připojení k serveru bez ohledu na typ vyžadují aktualizované knihovny AMO, ADOMD.NET a klienta OLEDB pro připojení k serveru Analysis Services a jeho rozhraní. V případě aplikací SSMS, Visual Studio, Excel 2016 a novějších a Power BI jsou nejnovější klientské knihovny nainstalovány nebo aktualizovány pomocí měsíčních vydání. V některých případech je však možné, že aplikace nebude mít nejnovější verzi. Například při zpoždění aktualizace zásad nebo Microsoft 365 aktualizace jsou na odloženém kanálu.
 
@@ -39,7 +39,7 @@ Při vytváření Analysis Servicesho serveru v Azure zadáte jedinečný název
 
 ### <a name="get-the-server-name"></a>Získání názvu serveru
 
-V **Azure Portal** > serveru > **Přehled**  >  **název serveru**zkopírujte celý název serveru. Pokud se k tomuto serveru připojí jiní uživatelé ve vaší organizaci, můžete tento název serveru sdílet s nimi. Při zadávání názvu serveru se musí použít celá cesta.
+V **Azure Portal** > serveru > **Přehled**  >  **název serveru** zkopírujte celý název serveru. Pokud se k tomuto serveru připojí jiní uživatelé ve vaší organizaci, můžete tento název serveru sdílet s nimi. Při zadávání názvu serveru se musí použít celá cesta.
 
 ![Získání názvu serveru v Azure](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
@@ -79,9 +79,9 @@ Se staršími verzemi Excelu se uživatelé můžou k serveru Azure Analysis Ser
 
 ## <a name="connect-as-a-linked-server-from-sql-server"></a>Připojit jako propojený server z SQL Server
 
-SQL Server se může připojit k prostředku Azure Analysis Services jako [propojený server](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine) zadáním MSOLAP jako zprostředkovatele zdrojů dat. Před konfigurací připojení připojeného serveru nezapomeňte nainstalovat nejnovější [klientskou knihovnu MSOLAP](/analysis-services/client-libraries?view=azure-analysis-services-current) (poskytovatele). 
+SQL Server se může připojit k prostředku Azure Analysis Services jako [propojený server](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine) zadáním MSOLAP jako zprostředkovatele zdrojů dat. Před konfigurací připojení připojeného serveru nezapomeňte nainstalovat nejnovější [klientskou knihovnu MSOLAP](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true) (poskytovatele). 
 
-U připojení k serveru Azure Analysis Services musí být poskytovatel MSOLAP vytvořen mimo SQL Server proces. Při konfiguraci možností propojeného serveru se ujistěte, že **není vybraná**možnost **zakázat zpracování** .
+U připojení k serveru Azure Analysis Services musí být poskytovatel MSOLAP vytvořen mimo SQL Server proces. Při konfiguraci možností propojeného serveru se ujistěte, že **není vybraná** možnost **zakázat zpracování** .
 
 Pokud je vybrána možnost **Povolení dezpracovávání** a instance poskytovatele je vytvořena v procesu SQL Server, vrátí se následující chyba:
 

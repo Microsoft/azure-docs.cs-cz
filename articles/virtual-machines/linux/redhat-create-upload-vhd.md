@@ -8,19 +8,19 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: guybo
-ms.openlocfilehash: cc8d4458de5f3bbf1eaf111aa10f1377f3c9d46a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c352b9e6b067724fbfc00bf5b0338baf8514421
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292294"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500491"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Příprava virtuálního počítače založeného na Red Hat pro Azure
 V tomto článku se dozvíte, jak připravit virtuální počítač s Red Hat Enterprise Linux (RHEL) pro použití v Azure. Verze RHEL, které jsou pokryté v tomto článku, jsou 6.7 + a 7.1 +. Hypervisory pro přípravu, které jsou pokryté v tomto článku, jsou Hyper-V, virtuální počítač založený na jádrech (KVM) a VMware. Další informace o požadavcích na způsobilost pro účast v programu cloudového přístupu Red Hat najdete na [webu Cloud Access Red Hat](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) a [na platformě Azure s RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). Způsob automatizace vytváření RHEL imagí najdete v tématu [Azure image Builder](./image-builder-overview.md).
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>Příprava virtuálního počítače založeného na Red Hat pomocí Správce technologie Hyper-V
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 V této části se předpokládá, že už jste získali soubor ISO z webu Red Hat a nainstalovali jste image RHEL na virtuální pevný disk (VHD). Další podrobnosti o tom, jak použít Správce technologie Hyper-V k instalaci image operačního systému, najdete v tématu [instalace role Hyper-v a konfigurace virtuálního počítače](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
 **Poznámky k instalaci RHEL**
@@ -28,7 +28,7 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
 * Azure nepodporuje formát VHDX. Azure podporuje jenom pevný virtuální pevný disk. Správce technologie Hyper-V můžete použít k převedení disku na formát VHD, nebo můžete použít rutinu Convert-VHD. Pokud používáte VirtualBox, při vytváření disku vyberte **pevnou velikost** na rozdíl od výchozí dynamicky přidělené možnosti.
 * Azure podporuje virtuální počítače Gen1 (Boot Boot) & Gen2 (UEFI Boot).
 * Maximální velikost povolená pro virtuální pevný disk je 1 023 GB.
-* Správce logických svazků (LVM) je podporován a lze jej použít na disku s operačním systémem nebo na datových discích ve virtuálních počítačích Azure. Obecně se ale doporučuje místo LVM použít standardní oddíly na disku s operačním systémem. Tento postup se vyhne konfliktu LVM názvů s klonovanými virtuálními počítači, zejména pokud někdy budete potřebovat k řešení potíží disk s operačním systémem připojit k jinému stejnému virtuálnímu počítači. Viz také dokumentace k  [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
+* Správce logických svazků (LVM) je podporován a lze jej použít na disku s operačním systémem nebo na datových discích ve virtuálních počítačích Azure. Obecně se ale doporučuje místo LVM použít standardní oddíly na disku s operačním systémem. Tento postup se vyhne konfliktu LVM názvů s klonovanými virtuálními počítači, zejména pokud někdy budete potřebovat k řešení potíží disk s operačním systémem připojit k jinému stejnému virtuálnímu počítači. Viz také dokumentace k  [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 * Podpora jádra pro připojení systémů souborů formátu Universal Disk Format (UDF) je povinná. Při prvním spuštění v Azure, médium ve formátu UDF, které je připojené k hostu, předává konfiguraci zřizování virtuálnímu počítači se systémem Linux. Agent Azure Linux musí být schopný připojit systém souborů UDF ke čtení konfigurace a zřídit virtuální počítač.
 * Nekonfigurujte odkládací oddíl na disku s operačním systémem. Agent pro Linux se dá nakonfigurovat tak, aby na dočasném disku prostředků vytvořil odkládací soubor.  Další informace o tomto postupu najdete v následujících krocích.
 * Všechny virtuální pevné disky v Azure musí mít virtuální velikost zarovnaná na 1 MB. Při převodu z nezpracovaného disku na virtuální pevný disk je nutné před převodem zajistit, aby velikost nezpracovaného disku byla násobkem 1 MB. Další podrobnosti najdete v následujících krocích. Další informace najdete v [poznámkách k instalaci pro Linux](create-upload-generic.md#general-linux-installation-notes) .
@@ -195,7 +195,7 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
     # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Chcete-li provést tuto úpravu, otevřete `/etc/default/grub` v textovém editoru a upravte `GRUB_CMDLINE_LINUX` parametr. Například:
+1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Chcete-li provést tuto úpravu, otevřete `/etc/default/grub` v textovém editoru a upravte `GRUB_CMDLINE_LINUX` parametr. Příklad:
 
     ```config-grub
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -294,7 +294,7 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
 
    Změňte druhé pole uživatele root z "!!" do šifrovaného hesla.
 
-1. Z image QCOW2 vytvořte virtuální počítač v KVM. Nastavte typ disku na **QCOW2**a nastavte model zařízení rozhraní virtuální sítě na **virtio**. Pak spusťte virtuální počítač a přihlaste se jako kořenový adresář.
+1. Z image QCOW2 vytvořte virtuální počítač v KVM. Nastavte typ disku na **QCOW2** a nastavte model zařízení rozhraní virtuální sítě na **virtio**. Pak spusťte virtuální počítač a přihlaste se jako kořenový adresář.
 
 1. Vytvořte nebo upravte `/etc/sysconfig/network` soubor a přidejte následující text:
 
@@ -490,7 +490,7 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
 
    Změnit druhé pole kořenového uživatele z "!!" do šifrovaného hesla.
 
-1. Z image QCOW2 vytvořte virtuální počítač v KVM. Nastavte typ disku na **QCOW2**a nastavte model zařízení rozhraní virtuální sítě na **virtio**. Pak spusťte virtuální počítač a přihlaste se jako kořenový adresář.
+1. Z image QCOW2 vytvořte virtuální počítač v KVM. Nastavte typ disku na **QCOW2** a nastavte model zařízení rozhraní virtuální sítě na **virtio**. Pak spusťte virtuální počítač a přihlaste se jako kořenový adresář.
 
 1. Vytvořte nebo upravte `/etc/sysconfig/network` soubor a přidejte následující text:
 
@@ -525,7 +525,7 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
     # subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Chcete-li tuto konfiguraci provést, otevřete `/etc/default/grub` v textovém editoru a upravte `GRUB_CMDLINE_LINUX` parametr. Například:
+1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Chcete-li tuto konfiguraci provést, otevřete `/etc/default/grub` v textovém editoru a upravte `GRUB_CMDLINE_LINUX` parametr. Příklad:
 
     ```config-grub
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -664,7 +664,7 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
     ```
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>Příprava virtuálního počítače založeného na Red Hat z VMware
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 V této části se předpokládá, že jste už nainstalovali virtuální počítač s RHEL ve VMware. Podrobnosti o tom, jak nainstalovat operační systém ve VMware, najdete v tématu [Instalační příručka k hostovanému operačnímu systému VMware](https://partnerweb.vmware.com/GOSIG/home.html).
 
 * Při instalaci operačního systému Linux doporučujeme místo LVM použít standardní oddíly, což je často výchozí nastavení pro mnoho instalací. Tím se zabrání konfliktům LVM názvů s klonováným virtuálním počítačem, zejména pokud se disk s operačním systémem někdy potřebuje připojit k jinému virtuálnímu počítači, aby se mohl problém vyřešit. LVM nebo RAID se dá použít na datových discích, pokud jsou preferované.
@@ -723,7 +723,7 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
     # subscription-manager repos --enable=rhel-6-server-extras-rpms
     ```
 
-1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Provedete to tak, `/etc/default/grub` že otevřete v textovém editoru a upravíte `GRUB_CMDLINE_LINUX` parametr. Například:
+1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Provedete to tak, `/etc/default/grub` že otevřete v textovém editoru a upravíte `GRUB_CMDLINE_LINUX` parametr. Příklad:
 
     ```config-grub
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
@@ -864,7 +864,7 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
     # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Chcete-li provést tuto úpravu, otevřete `/etc/default/grub` v textovém editoru a upravte `GRUB_CMDLINE_LINUX` parametr. Například:
+1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Chcete-li provést tuto úpravu, otevřete `/etc/default/grub` v textovém editoru a upravte `GRUB_CMDLINE_LINUX` parametr. Příklad:
 
     ```config-grub
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -1112,7 +1112,7 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
 
 1. Umístěte soubor Kickstart, ke kterému má instalační systém přístup.
 
-1. Ve Správci technologie Hyper-V vytvořte nový virtuální počítač. Na stránce **připojit virtuální pevný disk** vyberte možnost **připojit virtuální pevný disk později**a dokončete Průvodce novým virtuálním počítačem.
+1. Ve Správci technologie Hyper-V vytvořte nový virtuální počítač. Na stránce **připojit virtuální pevný disk** vyberte možnost **připojit virtuální pevný disk později** a dokončete Průvodce novým virtuálním počítačem.
 
 1. Otevřete nastavení virtuálního počítače:
 

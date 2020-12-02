@@ -7,15 +7,15 @@ ms.service: data-factory
 services: data-factory
 documentationcenter: ''
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: 40fa6bce67aa6c5643e4a153da610dce65907b56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70be8d8be48f2b1e1cc275c06e4abff09e3e62f6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88036332"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498570"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Role a oprávnění pro službu Azure Data Factory
 
@@ -59,7 +59,7 @@ Oprávnění pro Azure Repos a GitHub jsou nezávislá na oprávněních Data Fa
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Vlastní scénáře a vlastní role
 
-Někdy může být nutné udělit různým uživatelům služby Data Factory různé úrovně přístupu. Například:
+Někdy může být nutné udělit různým uživatelům služby Data Factory různé úrovně přístupu. Příklad:
 - Možná budete potřebovat skupinu, kde uživatelé mají oprávnění pouze pro konkrétní objekt pro vytváření dat.
 - Nebo možná budete potřebovat skupinu, kde uživatelé můžou monitorovat jenom objekt pro vytváření dat (nebo továrny), ale nemůžou ho upravovat.
 

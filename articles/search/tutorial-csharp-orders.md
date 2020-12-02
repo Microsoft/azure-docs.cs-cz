@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/02/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 5fe8bf70374a2eec639a0a9365f7d227cf259d06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a55a330f6f4fefb86f2c056cd0ca3b2ba5f4b29
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667244"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499590"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>Kurz: seřazení výsledků hledání pomocí sady .NET SDK
 
@@ -121,7 +121,7 @@ Není nutné upravovat žádné modely, aby bylo možné řazení povolit. Jenom
     ```
 
     > [!Tip]
-    > Prohlížeče obvykle ukládají soubory CSS do mezipaměti a to může vést k použití starého souboru CSS a vaše úpravy se ignorují. Dobrým způsobem, jak to zaokrouhlit, je přidat řetězec dotazu s parametrem verze na odkaz. Například:
+    > Prohlížeče obvykle ukládají soubory CSS do mezipaměti a to může vést k použití starého souboru CSS a vaše úpravy se ignorují. Dobrým způsobem, jak to zaokrouhlit, je přidat řetězec dotazu s parametrem verze na odkaz. Příklad:
     >
     >```html
     >   <link rel="stylesheet" href="~/css/hotels.css?v1.1" />
@@ -135,7 +135,7 @@ Není nutné upravovat žádné modely, aby bylo možné řazení povolit. Jenom
     Select = new[] { "HotelName", "Description", "Rating"},
     ```
 
-1. Otevřete zobrazení (index. cshtml) a nahraďte smyčku vykreslování (** &lt; !--Zobrazit data hotelu.-- &gt; **) pomocí následujícího kódu.
+1. Otevřete zobrazení (index. cshtml) a nahraďte smyčku vykreslování (**&lt; !--Zobrazit data hotelu.-- &gt;**) pomocí následujícího kódu.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -965,7 +965,7 @@ Pojďme se podívat na tři příklady profilů vyhodnocování a vzít v úvahu
 
 ### <a name="resources"></a>Zdroje a prostředky
 
-Další informace najdete v následujících tématech [přidání profilů vyhodnocování do indexu služby Azure kognitivní hledání](/azure/search/index-add-scoring-profiles).
+Další informace najdete v následujících tématech [přidání profilů vyhodnocování do indexu služby Azure kognitivní hledání](./index-add-scoring-profiles.md).
 
 ## <a name="takeaways"></a>Shrnutí
 

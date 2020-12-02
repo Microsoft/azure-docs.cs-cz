@@ -4,12 +4,12 @@ description: Přečtěte si o partnerech Azure Monitor a o tom, jak můžete zí
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: d603e130d4e65667edb34121a4c89b7b0e02b819
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 6e707e77f4618d71cb2fa3f32b05895b97658f76
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636737"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500236"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integrace partnerů ve službě Azure Monitor
 
@@ -263,7 +263,7 @@ Snižte počet incidentů a MTTR platformou NOW na AIOps, abyste vyloučili šum
 
 ![Logo SignalFX](./media/partners/signalfx.png)
 
-SignalFx je vedoucí v reálném čase, který je součástí provozní logiky pro DevOps řízené daty. Služba zjišťuje a shromažďuje metriky napříč všemi komponentami v cloudu. Nahrazuje tradiční nástroje bodu a poskytuje přehled o dnešních dynamických prostředích v reálném čase. Platforma SaaS je optimalizována pro architektury založené na široce škálovatelné SignalFx platformě a podporuje architektury založené na mikroslužbách a poskytuje výkonnou vizualizaci, proaktivní výstrahy a možnosti třídění v rámci organizací všech velikostí. SignalFx se integruje přímo s Azure Monitor a také prostřednictvím open source konektorů, jako je *telegraf* , *Statistika* a *shromažďovat* , aby poskytovaly nejlepší z řídicích panelů tříd, analýz a výstrah pro Azure.
+SignalFx je vedoucí v reálném čase, který je součástí provozní logiky pro DevOps řízené daty. Služba zjišťuje a shromažďuje metriky napříč všemi komponentami v cloudu. Nahrazuje tradiční nástroje bodu a poskytuje přehled o dnešních dynamických prostředích v reálném čase. Platforma SaaS je optimalizována pro architektury založené na široce škálovatelné SignalFx platformě a podporuje architektury založené na mikroslužbách a poskytuje výkonnou vizualizaci, proaktivní výstrahy a možnosti třídění v rámci organizací všech velikostí. SignalFx se integruje přímo s Azure Monitor a také prostřednictvím open source konektorů, jako je *telegraf*, *Statistika* a *shromažďovat* , aby poskytovaly nejlepší z řídicích panelů tříd, analýz a výstrah pro Azure.
 
 [Dokumentace k signalfx](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-azure)
 
@@ -310,6 +310,20 @@ Sumo Logic je zabezpečená cloudová služba pro analýzu dat v cloudu, která 
 Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy tím, že současně optimalizuje výkon, náklady a dodržování předpisů v reálném čase. Turbonomic pomáhá organizacím v jejich Azure pružně pružně tím, že trvale optimalizuje nemovitosti k zajištění toho, aby aplikace neustále získaly prostředky, které vyžadují k dodávání své smlouvy SLA, a ještě více napříč výpočetními, úložnými a síťovými vrstvami pro IaaS a PaaS. Organizace můžou simulovat migrace, správně škálovat úlohy a vyřadit prostředky Datacenter, aby se zodpovědnou migrace do Azure včas v rámci rozpočtu a zároveň zajišťovaly výkon i dodržování předpisů. Turbonomic je založené na rozhraní API a běží jako virtuální počítač bez agenta v Azure a v místním prostředí.
 
 [Úvod do Turbonomic](https://turbonomic.com/)
+
+## <a name="partner-tools-with-event-hub-integration"></a>Partnerské nástroje s integrací centra událostí
+
+Použití Azure Monitor ke směrování dat monitorování do centra událostí Azure vám umožní snadnou integraci s některými externími nástroji pro SIEM a monitorování. Na následujících partnerech se říká integrace prostřednictvím centra událostí. 
+
+| Nástroj | Hostovaná v Azure | Popis |
+|:---|:---| :---|
+|  IBM QRadar | No | Protokol Microsoft Azure DSM a Microsoft Azure centra událostí je k dispozici ke stažení na [webu podpory IBM](https://www.ibm.com/support). Další informace o integraci s Azure najdete v části [QRADAR DSM Configuration](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0). |
+| Splunk | No | [Microsoft Azure Add-On pro Splunk](https://splunkbase.splunk.com/app/3757/) je open source projekt dostupný v Splunkbase. <br><br> Pokud do instance Splunk nemůžete nainstalovat doplněk, pokud například používáte proxy server nebo běží v cloudu Splunk, můžete tyto události pře do kolektoru událostí Splunk HTTP pomocí [funkce Azure Functions pro Splunk](https://github.com/Microsoft/AzureFunctionforSplunkVS), která se aktivuje novými zprávami v centru událostí. |
+| SumoLogic | No | Pokyny k nastavení SumoLogic pro využívání dat z centra událostí jsou k dispozici v tématu [shromáždění protokolů pro aplikaci Azure audit z centra událostí](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
+| ArcSight | No | ArcSight Azure Event hub Smart Connector je k dispozici jako součást [kolekce inteligentních konektorů ArcSight](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852). |
+| Server syslogu | No | Pokud chcete streamovat data Azure Monitor přímo na server syslog, můžete použít [řešení založené na funkci Azure Functions](https://github.com/miguelangelopereira/azuremonitor2syslog/).
+| LogRhythm | No| Pokyny k nastavení LogRhythm pro shromažďování protokolů z centra událostí jsou k dispozici [zde](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/). 
+|Logz.io | Yes | Další informace najdete v tématu [Začínáme s monitorováním a protokolováním pomocí LOGZ.IO pro aplikace Java běžící v Azure](/azure/developer/java/fundamentals/java-get-started-with-logzio) .
 
 
 ## <a name="next-steps"></a>Další kroky

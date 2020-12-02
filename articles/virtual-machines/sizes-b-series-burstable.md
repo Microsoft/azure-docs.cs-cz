@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: dc6706d4ec9090c59d4dd668d2ae1dd3ce7d188a
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 819654ef88584cb91d6032e46256258aaed524fd
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928038"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500304"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Velikosti virtuálních počítačů řady B-Series
 
@@ -21,7 +21,7 @@ Virtuální počítače řady B-Series jsou ideální pro úlohy, které nepotř
 
 Řada B-obsahuje následující velikosti virtuálních počítačů:
 
-[Výpočetní jednotka Azure (ACU)](./acu.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json): liší se *<br>
+[Výpočetní jednotka Azure (ACU)](./acu.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json): liší se *<br>
 [Premium Storage](premium-storage-performance.md): podporováno<br>
 [Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): nepodporováno<br>
 [Migrace za provozu](maintenance-and-updates.md): podporováno<br>
@@ -98,7 +98,7 @@ Odpověď **: po** vyčerpání kreditů se virtuální počítač vrátí k vý
 
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>Otázka: jak získáte 135% výkonnost směrného plánu z virtuálního počítače?
 
-Odpověď **: 135** % se sdílí mezi 8 vCPU a tvoří velikost virtuálního počítače. Například pokud vaše aplikace používá 4 až 8 jader pracujících na dávkovém zpracování a každý z těchto 4 vCPU běží na 30% využití, celková velikost výkonu procesoru virtuálního počítače by byla rovna 120%.  To znamená, že váš virtuální počítač bude sestavovat kredit na základě 15% rozdílu od vašeho směrného výkonu.  Ale také to znamená, že pokud máte k dispozici kredity, může stejný virtuální počítač použít 100% ze všech 8 vCPUů, takže virtuální počítač má maximální výkon procesoru 800%.
+Odpověď **: 135**% se sdílí mezi 8 vCPU a tvoří velikost virtuálního počítače. Například pokud vaše aplikace používá 4 až 8 jader pracujících na dávkovém zpracování a každý z těchto 4 vCPU běží na 30% využití, celková velikost výkonu procesoru virtuálního počítače by byla rovna 120%.  To znamená, že váš virtuální počítač bude sestavovat kredit na základě 15% rozdílu od vašeho směrného výkonu.  Ale také to znamená, že pokud máte k dispozici kredity, může stejný virtuální počítač použít 100% ze všech 8 vCPUů, takže virtuální počítač má maximální výkon procesoru 800%.
 
 ### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>Otázka: Jak můžu monitorovat zůstatek a spotřebu svého kreditu?
 
@@ -110,7 +110,7 @@ Další informace o tom, jak získat přístup k datům metrik pro Azure, najdet
 
 Odpověď: míra akumulace a spotřeby virtuálních počítačů je nastavená **tak,** že virtuální počítač, na kterém běží přesně jeho základní úroveň výkonu, nebude ani kumulace ani spotřeba kreditů.  Virtuální počítač bude mít čisté zvýšení kreditů vždy, když je spuštěný pod základní úrovní výkonu a bude mít čistý pokles v kreditech, kdykoli virtuální počítač využívá procesor větší, než je základní úroveň výkonu.
 
-**Příklad** : nasadím virtuální počítač s využitím B1msé velikosti pro moji malou dobu a aplikaci pro databázi docházky. Tato velikost umožňuje, aby moje aplikace používala až 20% vCPU jako můj směrný plán, což je 0,2 kreditů za minutu, které můžu použít nebo banku.
+**Příklad**: nasadím virtuální počítač s využitím B1msé velikosti pro moji malou dobu a aplikaci pro databázi docházky. Tato velikost umožňuje, aby moje aplikace používala až 20% vCPU jako můj směrný plán, což je 0,2 kreditů za minutu, které můžu použít nebo banku.
 
 Moje aplikace je zaneprázdněna na začátku a konci mého pracovního dne zaměstnanců, mezi 7:00-9:00 a 4:00-6:13:00. V průběhu dalších 20 hodin dne je moje aplikace obvykle při nečinnosti, a to pouze pomocí 10% vCPU. V době mimo špičku získáme 0,2 kreditů za minutu, ale spotřebujete jenom 0. l kredity za minutu, takže můj virtuální počítač bude bankou 0,1 x 60 = 6 kreditů za hodinu.  Po dobu 20 hodin, u kterých jsem mimo špičku, budu k dis120 kredity bank.  
 
@@ -128,7 +128,7 @@ například ve výše uvedeném případě je váš směrný plán 20% a pokud v
 
 ### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>Otázka: podporuje B-Series Premium Storage datové disky?
 
-Odpověď **: Ano** , všechny velikosti řady B-Series podporují Premium Storage datových disků.
+Odpověď **: Ano**, všechny velikosti řady B-Series podporují Premium Storage datových disků.
 
 ### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>Otázka: Proč je můj zbývající kredit nastavený na 0 po opětovném nasazení nebo zastavení/spuštění?
 

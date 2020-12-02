@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: erhopf
-ms.openlocfilehash: a3ff2a1f92cabb61f58d70b732738e613afa7cd9
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 87bc411903604a7068f346604853a2a61c9a6f1c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025629"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499182"
 ---
 # <a name="inspect-custom-speech-data"></a>Kontrola dat služby Custom Speech
 
@@ -99,9 +99,9 @@ Soubory exportované do dat budou použity jako značka – Nová datová sada a
 
 - [Vyhodnocení dat](how-to-custom-speech-evaluate-data.md)
 - [Trénování modelu](how-to-custom-speech-train-model.md)
-- [Vylepšení modelu](how-to-custom-speech-improve-accuracy.md)
-- [Nasazení modelu](how-to-custom-speech-deploy-model.md)
+- [Vylepšení modelu](./how-to-custom-speech-evaluate-data.md)
+- [Nasazení modelu](./how-to-custom-speech-train-model.md)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Příprava testovacích dat pro Custom Speech](./how-to-custom-speech-test-and-train.md)

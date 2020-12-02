@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 730a29ff579ce6a1970ceafad5891611b52c059d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7ed2a672f0f7149240e799b5529a7a3a6836a702
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972284"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499301"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>Migrace prostředků IaaS do Azure Resource Manager do 1. března 2023 
 
@@ -45,12 +45,12 @@ Začněte plánovat migraci na Azure Resource Manager dnes.
    - [K zobrazení](../governance/resource-graph/concepts/work-with-data.md) seznamu všech virtuálních počítačů označených příznakem (Classic) a souvisejících informací pro vybraná předplatná se můžete dotazovat také pomocí [portálu](https://portal.azure.com/#blade/HubsExtension/ArgQueryBlade/query/resources%0A%7C%20where%20type%20%3D%3D%20%22microsoft.classiccompute%2Fvirtualmachines%22) Azure Resource Graph. 
    - Od 8. února 2020 jsme odeslali e-maily vlastníkům předplatného seznam všech předplatných, která obsahují tyto virtuální počítače (Classic). Použijte je prosím k sestavení tohoto seznamu. 
 
-1. [Přečtěte si další informace](./windows/migration-classic-resource-manager-overview.md) o migraci virtuálních počítačů se systémem [Linux](./linux/migration-classic-resource-manager-plan.md) a [Windows](./windows/migration-classic-resource-manager-plan.md) (Classic) na Azure Resource Manager. Další informace najdete v tématu [Nejčastější dotazy k migraci z modelu Classic na Azure Resource Manager](./migration-classic-resource-manager-faq.md).
+1. [Přečtěte si další informace](./migration-classic-resource-manager-overview.md) o migraci virtuálních počítačů se systémem [Linux](./migration-classic-resource-manager-plan.md) a [Windows](./migration-classic-resource-manager-plan.md) (Classic) na Azure Resource Manager. Další informace najdete v tématu [Nejčastější dotazy k migraci z modelu Classic na Azure Resource Manager](./migration-classic-resource-manager-faq.md).
 
-1. Pro migraci stávajících virtuálních počítačů se třemi jednoduchými kroky doporučujeme spustit plánování pomocí [Nástroje pro migraci podpory platformy](./windows/migration-classic-resource-manager-overview.md) : Ověřte, připravte a potvrďte. Tento nástroj je navržený tak, aby se virtuální počítače migrovali do minimálního výpadku. 
+1. Pro migraci stávajících virtuálních počítačů se třemi jednoduchými kroky doporučujeme spustit plánování pomocí [Nástroje pro migraci podpory platformy](./migration-classic-resource-manager-overview.md) : Ověřte, připravte a potvrďte. Tento nástroj je navržený tak, aby se virtuální počítače migrovali do minimálního výpadku. 
 
    1. První krok, ověřit, nemá žádný vliv na stávající nasazení a obsahuje seznam všech nepodporovaných scénářů migrace. 
-   1. Projděte si [seznam alternativních řešení](./windows/migration-classic-resource-manager-overview.md#unsupported-features-and-configurations) a opravte nasazení a připravte ho na migraci. 
+   1. Projděte si [seznam alternativních řešení](./migration-classic-resource-manager-overview.md#unsupported-features-and-configurations) a opravte nasazení a připravte ho na migraci. 
    1. V ideálním případě, když jsou všechny chyby ověřování opraveny, neměli byste během postupu přípravy a potvrzení narazit na žádné problémy. Po úspěšném potvrzení se nasazení migruje za provozu do Azure Resource Manager a pak se dá spravovat prostřednictvím nových rozhraní API vystavených Azure Resource Manager. 
 
    Pokud nástroj pro migraci není vhodný pro migraci, můžete prozkoumat [jiné výpočetní nabídky](/azure/architecture/guide/technology-choices/compute-decision-tree) pro migraci. Vzhledem k tomu, že existuje spousta nabídek Azure COMPUTE a liší se od sebe, nemůžeme jim poskytnout cestu k migraci podporovanou platformou.  

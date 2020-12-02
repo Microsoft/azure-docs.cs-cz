@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 952fbcac27e1d44c9417066549261d878d02b6b7
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 219fe2d9d8ac46ba3dbeebe6aaae9dddc0883aa0
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94904713"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500406"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager v systému Linux
 
@@ -47,7 +47,7 @@ Tyto klasické prostředky IaaS se během migrace podporují.
 
 | Služba | Konfigurace |
 | --- | --- |
-| Azure AD Domain Services | [Virtuální sítě, které obsahují službu Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/migrate-from-classic-vnet) |
+| Azure AD Domain Services | [Virtuální sítě, které obsahují službu Azure AD Domain Services](../active-directory-domain-services/migrate-from-classic-vnet.md) |
 
 ## <a name="supported-scopes-of-migration"></a>Podporované obory migrace
 Existují čtyři různé způsoby, jak dokončit migraci výpočetních, síťových a úložných prostředků:
@@ -88,7 +88,7 @@ Pokud váš účet úložiště nemá žádné přidružené disky nebo Virtual 
 > Model nasazení Správce prostředků nemá koncept klasických imagí a disků. Když se účet úložiště migruje, klasické image a disky se v Správce prostředkůovém zásobníku nezobrazí, ale záložní virtuální pevné disky zůstanou v účtu úložiště.
 
 Následující snímky obrazovky ukazují, jak upgradovat klasický účet úložiště na účet služby Azure Resource Manager Storage pomocí Azure Portal:
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Přejděte na svůj účet úložiště.
 3. V části **Nastavení** klikněte na možnost **migrovat do ARM**.
 4. Kliknutím na **ověřit** určete proveditelnost migrace.
@@ -136,7 +136,7 @@ Následující konfigurace se aktuálně nepodporují.
 | Compute | Cloudové služby, které obsahují webové a pracovní role | To se v tuto chvíli nepodporuje. |
 | Compute | Cloudové služby, které obsahují více než jednu skupinu dostupnosti nebo více skupin dostupnosti. |To se v tuto chvíli nepodporuje. Před migrací prosím přesuňte Virtual Machines do stejné skupiny dostupnosti. |
 | Compute | Virtuální počítač s rozšířením Azure Security Center | Azure Security Center do Virtual Machines automaticky nainstaluje rozšíření pro monitorování jejich zabezpečení a vyvolávání výstrah. Tato rozšíření se většinou nainstalují automaticky, pokud je u předplatného povolená zásada Azure Security Center. Pokud chcete migrovat Virtual Machines, zakažte v předplatném zásadu Security Center, která odebere rozšíření monitorování Security Center z Virtual Machines. |
-| Compute | Virtuální počítač s příponou Backup nebo Snapshot | Tato rozšíření jsou nainstalována na virtuálním počítači nakonfigurovaném pomocí služby Azure Backup. I když migrace těchto virtuálních počítačů není podporovaná, postupujte podle pokynů [, abyste](/azure/virtual-machines/windows/migration-classic-resource-manager-faq#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault) zachovali zálohy, které byly podniknuty před migrací.  |
+| Compute | Virtuální počítač s příponou Backup nebo Snapshot | Tato rozšíření jsou nainstalována na virtuálním počítači nakonfigurovaném pomocí služby Azure Backup. I když migrace těchto virtuálních počítačů není podporovaná, postupujte podle pokynů [, abyste](./migration-classic-resource-manager-faq.md#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault) zachovali zálohy, které byly podniknuty před migrací.  |
 | Compute | Virtuální počítač s rozšířením Azure Site Recovery | Tato rozšíření jsou nainstalována na virtuálním počítači nakonfigurovaném pomocí služby Azure Site Recovery. I když migrace úložiště použitá v Site Recovery funguje, bude to mít vliv na aktuální replikaci. Po migraci úložiště je nutné zakázat a povolit replikaci virtuálního počítače. |
 | Síť |Virtuální sítě, které obsahují virtuální počítače a webové role nebo role pracovního procesu |To se v tuto chvíli nepodporuje. Před migrací prosím přesuňte webové a pracovní role do jejich vlastních Virtual Network. Po migraci klasického Virtual Network se migrované Azure Resource Manager Virtual Network můžou navázat s klasickou Virtual Networkou a dosáhnout podobné konfigurace jako předtím.|
 | Síť | Klasické okruhy Express Route |To se v tuto chvíli nepodporuje. Tyto okruhy se musí před zahájením migrace IaaS migrovat na Azure Resource Manager. Další informace najdete v tématu [Přesun okruhů ExpressRoute z modelu nasazení Classic do modelu nasazení Správce prostředků](../expressroute/expressroute-move.md).|

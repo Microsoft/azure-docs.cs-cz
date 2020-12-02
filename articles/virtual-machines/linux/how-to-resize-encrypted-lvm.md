@@ -7,12 +7,12 @@ ms.subservice: security
 ms.topic: article
 ms.author: jofrance
 ms.date: 09/21/2020
-ms.openlocfilehash: ddd6097fffbc02c9b7b027bcb712e20cc47f2f96
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 732a2ef3c6c33d0b17deaf3b9bdc5d1ac5e5934c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487955"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498910"
 ---
 # <a name="how-to-resize-logical-volume-management-devices-that-use-azure-disk-encryption"></a>Postup změny velikosti zařízení pro správu logických svazků, která používají Azure Disk Encryption
 
@@ -32,7 +32,7 @@ Tento proces změny velikosti můžete použít v následujících prostředích
 
 V tomto článku se předpokládá, že máte následující:
 
-- Existující konfigurace LVM Další informace najdete v tématu [Konfigurace LVM na virtuálním počítači se systémem Linux](configure-lvm.md).
+- Existující konfigurace LVM Další informace najdete v tématu [Konfigurace LVM na virtuálním počítači se systémem Linux](/previous-versions/azure/virtual-machines/linux/configure-lvm).
 
 - Disky, které jsou již zašifrované pomocí Azure Disk Encryption. Další informace najdete v tématu [Konfigurace LVM a RAID na šifrovaných zařízeních](how-to-configure-lvm-raid-on-crypt.md).
 

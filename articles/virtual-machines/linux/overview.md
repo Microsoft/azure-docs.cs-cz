@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 95e4ac884e0eda3b4f469484226962e3fd2e2eea
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 54982189a5da584c7daf66855ffb655e403a455a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375376"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500508"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Virtuální počítače s Linuxem v Azure
 
@@ -114,7 +114,7 @@ Azure podporuje pro [Cloud-init](https://cloud-init.io/) napříč většinou Li
 * [Přehled Virtual Network](../../virtual-network/virtual-networks-overview.md)
 * [IP adresy v Azure](../../virtual-network/public-ip-addresses.md)
 * [Otevření portů k virtuálnímu počítači s Linuxem v Azure](nsg-quickstart.md)
-* [Vytvoření plně kvalifikovaného názvu domény (FQDN) na webu Azure Portal](portal-create-fqdn.md)
+* [Vytvoření plně kvalifikovaného názvu domény (FQDN) na webu Azure Portal](../create-fqdn.md)
 
 
 ## <a name="data-residency"></a>Rezidence dat

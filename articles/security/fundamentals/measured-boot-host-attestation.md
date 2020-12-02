@@ -8,19 +8,19 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
-ms.openlocfilehash: 73ae811c17a578cafc557b0cda9e98b101dd5c03
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: f4906d4e0590df047bac4ee15cb0e996a59c3d5b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557651"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498859"
 ---
 # <a name="measured-boot-and-host-attestation"></a>Měřené ověření spouštění a ověřování hostitele
 Tento článek popisuje, jak společnost Microsoft zajišťuje integritu a zabezpečení hostitelů prostřednictvím měřeného spuštění a ověření identity hostitele.
 
 ## <a name="measured-boot"></a>Měřené spuštění
 
-Čip TPM ( [Trusted Platform Module](https://docs.microsoft.com/windows/security/information-protection/tpm/trusted-platform-module-top-node) ) je neoprávněně zabezpečená součást auditu, která poskytuje firmware dodaný důvěryhodnou třetí stranou. Protokol konfigurace spouštění obsahuje měření zřetězená algoritmem hash zaznamenaná v registrech konfigurace platforem (PCR) v případě, že hostitel poslední provede sekvenci zavádění. Následující obrázek znázorňuje proces zaznamenávání. Přírůstkové přidání dříve vyhashního měření do hodnoty hash další měření a spuštění algoritmu hash pro sjednocení má za úkol řetězení hodnot hash.
+Čip TPM ( [Trusted Platform Module](/windows/security/information-protection/tpm/trusted-platform-module-top-node) ) je neoprávněně zabezpečená součást auditu, která poskytuje firmware dodaný důvěryhodnou třetí stranou. Protokol konfigurace spouštění obsahuje měření zřetězená algoritmem hash zaznamenaná v registrech konfigurace platforem (PCR) v případě, že hostitel poslední provede sekvenci zavádění. Následující obrázek znázorňuje proces zaznamenávání. Přírůstkové přidání dříve vyhashního měření do hodnoty hash další měření a spuštění algoritmu hash pro sjednocení má za úkol řetězení hodnot hash.
 
 ![Diagram, který ukazuje řetězení hodnot hash služby ověření identity hostitele.](./media/measured-boot-host-attestation/hash-chaining.png)
 
@@ -56,6 +56,6 @@ Další informace o tom, co máme k zajištění integrity a zabezpečení platf
 
 - [Zabezpečení firmwaru](firmware.md)
 - [Zabezpečené spouštění](secure-boot.md)
-- [Cerberus projektu](project-cerberus.md)
+- [Project Cerberus](project-cerberus.md)
 - [Šifrování neaktivních uložených dat](encryption-atrest.md)
 - [Zabezpečení hypervisoru](hypervisor.md)

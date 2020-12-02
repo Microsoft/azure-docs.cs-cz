@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 565b781b5015f82cafe4e47be2170f2327660821
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8f60c83417e9c614ca30f140e6acbbf08e5643cf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971587"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500644"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Připojení datového disku k virtuálnímu počítači se systémem Linux pomocí portálu 
 V tomto článku se dozvíte, jak připojit nové i stávající disky k virtuálnímu počítači se systémem Linux prostřednictvím Azure Portal. [Datový disk můžete také připojit k virtuálnímu počítači s Windows v Azure Portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -20,19 +20,19 @@ V tomto článku se dozvíte, jak připojit nové i stávající disky k virtuá
 Než připojíte disky k VIRTUÁLNÍmu počítači, přečtěte si tyto tipy:
 
 * Velikost virtuálního počítače určuje, kolik datových disků můžete připojit. Podrobnosti najdete v tématu [velikosti pro virtuální počítače](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Disky připojené k virtuálním počítačům jsou ve skutečnosti soubory VHD uložené v Azure. Podrobnosti najdete v našem [úvodu ke spravovaným diskům](../managed-disks-overview.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json).
+* Disky připojené k virtuálním počítačům jsou ve skutečnosti soubory VHD uložené v Azure. Podrobnosti najdete v našem [úvodu ke spravovaným diskům](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Po připojení disku se musíte [připojit k virtuálnímu počítači se systémem Linux a připojit nový disk](#connect-to-the-linux-vm-to-mount-the-new-disk).
 
 
 ## <a name="find-the-virtual-machine"></a>Najít virtuální počítač
 1. Pokud chcete najít virtuální počítač, otevřete [Azure Portal](https://portal.azure.com/) . Vyhledejte a vyberte **virtuální počítače**.
 2. V seznamu vyberte virtuální počítač.
-3. Na stránce **virtuální počítače** v části **Nastavení**vyberte **disky**.
+3. Na stránce **virtuální počítače** v části **Nastavení** vyberte **disky**.
 
 
 ## <a name="attach-a-new-disk"></a>Připojit nový disk
 
-1. V podokně **disky** v části **datové disky**vyberte **vytvořit a připojit nový disk**.
+1. V podokně **disky** v části **datové disky** vyberte **vytvořit a připojit nový disk**.
 
 1. Zadejte název spravovaného disku. Zkontrolujte výchozí nastavení a podle potřeby aktualizujte **Typ úložiště**, **Velikost (GIB)**, **šifrování** a **ukládání do mezipaměti hostitele** .
    
@@ -43,7 +43,7 @@ Než připojíte disky k VIRTUÁLNÍmu počítači, přečtěte si tyto tipy:
 
 
 ## <a name="attach-an-existing-disk"></a>Připojení stávajícího disku
-1. V podokně **disky** v části **datové disky**vyberte  **připojit existující disky**.
+1. V podokně **disky** v části **datové disky** vyberte  **připojit existující disky**.
 1. Klikněte na rozevírací nabídku pro **název disku** a vyberte disk ze seznamu dostupných spravovaných disků. 
 
 1. Kliknutím na **Save (Uložit** ) připojte existující spravovaný disk a aktualizujte konfiguraci virtuálních počítačů:

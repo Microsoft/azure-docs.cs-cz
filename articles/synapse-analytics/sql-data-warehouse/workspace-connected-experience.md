@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/23/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: f3c40e4c7b00a5c78872a60af25e3b19fe08f324
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5efb1df378df323585bc0ca1094451cdb095fe4e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466797"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499777"
 ---
 # <a name="enabling-synapse-workspace-features-on-an-existing-dedicated-sql-pool-formerly-sql-dw"></a>Povolení funkcí synapse pracovního prostoru v existujícím vyhrazeném fondu SQL (dřív SQL DW)
 
@@ -44,7 +44,7 @@ Následující informace budou platit při používání vyhrazené databáze SQ
 
 - **Zabezpečení sítě** Pokud je pracovní prostor synapse, který jste povolili ve stávajícím vyhrazeném fondu SQL (dřív ve službě SQL DW), povolený pro ochranu infiltrování dat. Vytvořte připojení spravovaného privátního koncového bodu z pracovního prostoru k logickému SQL serveru. Schvalte požadavek na připojení privátního koncového bodu, aby bylo možné povolit komunikaci mezi serverem a pracovním prostorem.
 - **Studio** Fondy SQL v **datových rozbočovačích** s povoleným vyhrazeným fondem SQL (dříve SQL DW) se dají identifikovat pomocí tipu nástroje v datovém centru. 
-- **vytváření nového vyhrazeného fondu SQL (dřív SQL DW)** Nové vyhrazené fondy SQL se dají vytvořit přes pracovní prostor synapse a Studio po povolení funkce pracovního prostoru a zřízení nového fondu na logickém SQL serveru. Nové prostředky se zobrazí na portálu a Studio po dokončení zřizování.      
+- **Vytváření nového vyhrazeného fondu SQL (dřív SQL DW)** Nové vyhrazené fondy SQL se dají vytvořit přes pracovní prostor synapse a Studio po povolení funkce pracovního prostoru a zřízení nového fondu na logickém SQL serveru. Nové prostředky se zobrazí na portálu a Studio po dokončení zřizování.      
 
 ## <a name="next-steps"></a>Další kroky
 Povolení [funkcí pracovního prostoru synapse](workspace-connected-create.md) ve stávajícím vyhrazeném fondu SQL (dřív SQL DW)

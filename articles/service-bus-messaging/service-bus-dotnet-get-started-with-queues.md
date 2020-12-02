@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 11/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1976848f9c91b5fd5e136e027b83456bbbe0b3b4
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 15e5d257259bb4dfc98528cb726dbd2cc1f9a903
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317431"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498723"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>Posílání zpráv a příjem zpráv z Azure Service Bus front (.NET)
 V tomto kurzu vytvoříte konzolovou aplikaci .NET Core pro posílání zpráv a příjem zpráv z fronty Service Bus pomocí balíčku **Azure. Messaging. ServiceBus** . 
@@ -289,5 +289,4 @@ Podívejte se na následující dokumentaci a ukázky:
 
 - [Klientská knihovna Azure Service Bus pro .NET – soubor Readme](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus)
 - [Ukázky na GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)
-- [Referenční dokumentace k rozhraní .NET API](https://docs.microsoft.com/dotnet/api/azure.messaging.servicebus?view=azure-dotnet-preview&preserve-view=true)
-
+- [Referenční dokumentace k rozhraní .NET API](/dotnet/api/azure.messaging.servicebus?preserve-view=true&view=azure-dotnet-preview)

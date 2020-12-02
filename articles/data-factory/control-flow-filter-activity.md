@@ -3,26 +3,26 @@ title: Filtrovat aktivitu v Azure Data Factory
 description: Aktivita filtru filtruje vstupy.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: 2c8ada22b4492bef0239b6f811d5a7bd58e58510
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 650d55ede8e6099252858c9118c8705f59ab6780
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417211"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498536"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Filtrovat aktivitu v Azure Data Factory
 Můžete použít aktivitu filtru v kanálu k použití výrazu filtru na vstupní pole. 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -37,12 +37,12 @@ Můžete použít aktivitu filtru v kanálu k použití výrazu filtru na vstupn
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požaduje se
+Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-name | Název `Filter` aktivity | Řetězec | Ano
-typ | Musí být nastavené na **Filter**. | Řetězec | Ano
-pomocné | Podmínka, která se má použít pro filtrování vstupu. | Výraz | Ano
-položek | Vstupní pole, ve kterém se má použít filtr | Výraz | Ano
+name | Název `Filter` aktivity | Řetězec | Yes
+typ | Musí být nastavené na **Filter**. | Řetězec | Yes
+pomocné | Podmínka, která se má použít pro filtrování vstupu. | Výraz | Yes
+položek | Vstupní pole, ve kterém se má použít filtr | Výraz | Yes
 
 ## <a name="example"></a>Příklad
 

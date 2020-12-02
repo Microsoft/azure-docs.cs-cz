@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: d068365cc8197a579c0b043d3fff2da3d54eb803
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ab6408621616a4be62631391456f73e90fced752
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686841"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498995"
 ---
 # <a name="net-c-code-samples-for-azure-cognitive-search"></a>Ukázky kódu .NET (C#) pro Azure Kognitivní hledání
 
 Přečtěte si o ukázkách kódu v jazyce C#, které ukazují funkce a funkce Azure Kognitivní hledání. Primární úložiště jsou následující:
 
-| Repository | Description |
+| Repository | Popis |
 |------------|-------------|
 | [Azure-SDK – for-NET/SDK/Search/Azure.Search.Documents/Samples/](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/search/Azure.Search.Documents/samples) | Ukázky vytvářené týmem Azure SDK, které se dodávají s klientskou knihovnou Azure.Search.Documents v sadě SDK Můžete si také projít [testy jednotek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/search/Azure.Search.Documents/tests) klientské knihovny, abyste viděli, jak jsou volána různá rozhraní API. |
 | [Azure-Samples/Azure-Search-dotnet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) | Ukázky, které jsou přiložené k článkům v dokumentaci, včetně [toho, jak používat klientskou knihovnu .NET](search-howto-dotnet-sdk.md).|
@@ -32,7 +32,7 @@ Přečtěte si o ukázkách kódu v jazyce C#, které ukazují funkce a funkce A
 
 Sada Azure SDK pro .NET zahrnuje řadu ukázek a [ukázek Readme](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/samples/README.md) , které popisují každé z nich. Tento seznam je k dispozici pro vaše pohodlí.
 
-| ukázky | Description |
+| ukázky | Popis |
 |---------|-------------|
 | ["Hello World", synchronně](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/samples/Sample01a_HelloWorld.md) | Ukazuje, jak vytvořit klienta, ověřit a zpracovat chyby pomocí synchronních metod.|
 | ["Hello World", asynchronně](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/samples/Sample01b_HelloWorldAsync.md) | Ukazuje, jak vytvořit klienta, ověřit a zpracovat chyby pomocí asynchronních metod.  |
@@ -44,9 +44,9 @@ Sada Azure SDK pro .NET zahrnuje řadu ukázek a [ukázek Readme](https://github
 
 ## <a name="documentation-samples"></a>Ukázky v dokumentaci
 
-Následující ukázky mají přidružený článek v [dokumentaci k Azure kognitivní hledání](https://docs.microsoft.com/azure/search/).
+Následující ukázky mají přidružený článek v [dokumentaci k Azure kognitivní hledání](./index.yml).
 
-| ukázky | Description |
+| ukázky | Popis |
 |---------|-------------|
 | [rychlý Start](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart) | Zdrojový kód pro [rychlý Start: vytvoření indexu vyhledávání ](search-get-started-dotnet.md).  |
 | [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)  | Zdrojový kód pro [použití klientské knihovny .NET](search-howto-dotnet-sdk.md) |
@@ -60,9 +60,9 @@ Následující ukázky mají přidružený článek v [dokumentaci k Azure kogni
 
 ## <a name="standalone-samples-and-solutions"></a>Samostatné ukázky a řešení
 
-| ukázky | Description |
+| ukázky | Popis |
 |---------|-------------|
 | [Azure – vyhledávání – dovednosti](https://github.com/Azure-Samples/azure-search-power-skills)  | Zdrojový kód pro spotřební vlastní dovednosti, které můžete začlenit do získaných řešení.  |
-| [Akcelerátor řešení pro dolování znalostí](https://docs.microsoft.com/samples/azure-samples/azure-search-knowledge-mining/azure-search-knowledge-mining/) | Obsahuje šablony, podpůrné soubory a analytické sestavy, které vám pomůžou s prototypem uceleného řešení dolování.  |
+| [Akcelerátor řešení pro dolování znalostí](/samples/azure-samples/azure-search-knowledge-mining/azure-search-knowledge-mining/) | Obsahuje šablony, podpůrné soubory a analytické sestavy, které vám pomůžou s prototypem uceleného řešení dolování.  |
 | [Úložiště vyhledávacích aplikací Covid-19](https://github.com/liamca/covid19search) | Úložiště zdrojového kódu pro [vyhledávací aplikaci Covidou](https://covid19search.azurewebsites.net/) založené na kognitivní hledání – 19 |
 | [JFK](https://github.com/Microsoft/AzureSearch_JFK_Files) | Přečtěte si další informace o [řešení JFK](https://www.microsoft.com/ai/ai-lab-jfk-files). |

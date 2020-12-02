@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 435cb1d52b5505f4f29bd0c31986a1f7f72208fd
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e298cb0d1a2c510a096f8ead03f8af7e39c206a8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412863"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498927"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection – navrhování odolných řešení
 
@@ -54,7 +54,7 @@ V případě [Azure App Service](../../app-service/overview.md)vyberte [plán Ap
 
 Cílem důkladné obrany je spravovat rizika pomocí různých obrannou linií strategií. Vrstvení zabezpečení v aplikaci omezuje možnost úspěšného útoku. Doporučujeme, abyste pro své aplikace implementovali zabezpečené návrhy pomocí integrovaných možností platformy Azure.
 
-Například riziko útoku se zvyšuje s velikostí ( *oblastí Surface* ) aplikace. Oblast povrchu můžete zmenšit pomocí seznamu schválení a uzavřít tak vystavený adresní prostor IP adres a naslouchající porty, které nejsou potřebné v nástrojích pro vyrovnávání zatížení ([Azure Load Balancer](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) a [Azure Application Gateway](../../application-gateway/application-gateway-create-probe-portal.md)). [Skupiny zabezpečení sítě (skupin zabezpečení sítě)](../../virtual-network/network-security-groups-overview.md) představují jiný způsob, jak omezit plochu pro útok.
+Například riziko útoku se zvyšuje s velikostí (*oblastí Surface*) aplikace. Oblast povrchu můžete zmenšit pomocí seznamu schválení a uzavřít tak vystavený adresní prostor IP adres a naslouchající porty, které nejsou potřebné v nástrojích pro vyrovnávání zatížení ([Azure Load Balancer](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) a [Azure Application Gateway](../../application-gateway/application-gateway-create-probe-portal.md)). [Skupiny zabezpečení sítě (skupin zabezpečení sítě)](../../virtual-network/network-security-groups-overview.md) představují jiný způsob, jak omezit plochu pro útok.
 [Značky služeb](../../virtual-network/network-security-groups-overview.md#service-tags) a [skupiny zabezpečení aplikací](../../virtual-network/network-security-groups-overview.md#application-security-groups) můžete použít k minimalizaci složitosti při vytváření pravidel zabezpečení a konfiguraci zabezpečení sítě, jako přirozené rozšíření struktury aplikace.
 
 Služby Azure ve [virtuální síti](../../virtual-network/virtual-networks-overview.md) byste měli nasazovat, kdykoli to bude možné. Tento postup umožňuje prostředkům služby komunikovat prostřednictvím privátních IP adres. Provoz služeb Azure z virtuální sítě ve výchozím nastavení používá veřejné IP adresy jako zdrojové IP adresy. Použití [koncových bodů služby](../../virtual-network/virtual-network-service-endpoints-overview.md) přepne provoz služby na používání privátních adres virtuální sítě jako zdrojových IP adres při přístupu ke službě Azure z virtuální sítě.
@@ -113,7 +113,7 @@ Pokud je veřejná IP adresa v rámci útoku, hodnota pro metriku **v rámci út
 
 Pro tuto metriku doporučujeme nakonfigurovat výstrahu. Pak budete upozorněni, když dojde k aktivnímu zmírnění DDoS na vaší veřejné IP adrese.
 
-Další informace najdete v tématu [správa Azure DDoS Protection Standard pomocí Azure Portal](../../virtual-network/manage-ddos-protection.md).
+Další informace najdete v tématu [správa Azure DDoS Protection Standard pomocí Azure Portal](../../ddos-protection/manage-ddos-protection.md).
 
 #### <a name="web-application-firewall-for-resource-attacks"></a>Firewall webových aplikací pro útoky na prostředky
 
@@ -179,7 +179,7 @@ Pro váš tým DDoS Response doporučujeme používat pro simulaci cvičení jak
 
 ### <a name="alerts-during-an-attack"></a>Výstrahy během útoku
 
-Azure DDoS Protection Standard identifikuje a zmírnit útoky DDoS bez zásahu uživatele. Chcete-li dostávat oznámení, když dojde k aktivnímu zmírnění chráněné veřejné IP adresy, můžete [nakonfigurovat výstrahu](../../virtual-network/manage-ddos-protection.md) u metriky **v části útok DDoS nebo ne**. Můžete se rozhodnout, že vytvoříte výstrahy pro ostatní metriky DDoS, abyste porozuměli rozsahu útoku, zahození provozu a dalším podrobnostem.
+Azure DDoS Protection Standard identifikuje a zmírnit útoky DDoS bez zásahu uživatele. Chcete-li dostávat oznámení, když dojde k aktivnímu zmírnění chráněné veřejné IP adresy, můžete [nakonfigurovat výstrahu](../../ddos-protection/manage-ddos-protection.md) u metriky **v části útok DDoS nebo ne**. Můžete se rozhodnout, že vytvoříte výstrahy pro ostatní metriky DDoS, abyste porozuměli rozsahu útoku, zahození provozu a dalším podrobnostem.
 
 #### <a name="when-to-contact-microsoft-support"></a>Kdy kontaktovat podporu Microsoftu
 
@@ -260,7 +260,7 @@ Tato referenční architektura ukazuje konfiguraci DDoS Protection standard pro 
 
 V této architektuře je provoz určený pro cluster HDInsight z Internetu směrován do veřejné IP adresy přidružené k nástroji pro vyrovnávání zatížení brány HDInsight. Nástroj pro vyrovnávání zatížení brány pak pošle provoz na hlavní uzly nebo pracovní uzly přímo. Vzhledem k tomu, že je ve virtuální síti HDInsight povolený DDoS Protection Standard, všechny veřejné IP adresy ve virtuální síti získají DDoS ochranu pro vrstvu 3 a 4. Tuto referenční architekturu je možné kombinovat s referenčními architekturami N-vrstvých a více oblastí.
 
-Další informace o této referenční architektuře najdete v tématu věnovaném [rozšiřování Azure HDInsight pomocí dokumentace k azure Virtual Network](../../hdinsight/hdinsight-plan-virtual-network-deployment.md?toc=%252fazure%252fvirtual-network%252ftoc.json) .
+Další informace o této referenční architektuře najdete v tématu věnovaném [rozšiřování Azure HDInsight pomocí dokumentace k azure Virtual Network](../../hdinsight/hdinsight-plan-virtual-network-deployment.md?toc=%2fazure%2fvirtual-network%2ftoc.json) .
 
 
 > [!NOTE]
@@ -270,4 +270,4 @@ Další informace o této referenční architektuře najdete v tématu věnovan�
 
 * [Sdílená odpovědnost v cloudu](shared-responsibility.md)
 * [Stránka Azure DDoS Protection produktu](https://azure.microsoft.com/services/ddos-protection/)
-* [Dokumentace k Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md)
+* [Dokumentace k Azure DDoS Protection](../../ddos-protection/ddos-protection-overview.md)

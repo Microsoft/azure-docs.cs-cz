@@ -4,15 +4,15 @@ description: Přečtěte si, jak se připojit k serveru Azure Analysis Services 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c91cfe24aa7a5dd224fd1aed31b6b0dee44e687f
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: fccb919a7eac79080fefeac70326b8aa7a967622
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352809"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499466"
 ---
 # <a name="connect-with-excel"></a>Propojení s Excelem
 
@@ -42,5 +42,5 @@ Připojení k serveru v Excelu je podporované pomocí získat data v Excelu 201
 
 ## <a name="see-also"></a>Viz také
 
-[Klientské knihovny](/analysis-services/client-libraries?view=azure-analysis-services-current)   
+[Klientské knihovny](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true)   
 [Správa serveru](analysis-services-manage.md)

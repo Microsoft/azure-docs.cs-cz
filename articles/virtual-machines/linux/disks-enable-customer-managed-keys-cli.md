@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 2acc95190454de2ffdd81a05a6e6cf166a9a6549
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b6001048d087a50a610b19d6fbdf33529f7210b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88814126"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499709"
 ---
 # <a name="use-the-azure-cli-to-enable-server-side-encryption-with-customer-managed-keys-for-managed-disks"></a>Použití rozhraní příkazového řádku Azure pro povolení šifrování na straně serveru pomocí klíčů spravovaných zákazníkem pro spravované disky
 
-Pokud zvolíte možnost použití šifrování na straně serveru (SSE) pro spravované disky, umožňuje vám Azure Disk Storage spravovat vlastní klíče. Koncepční informace o SSE se spravovanými klíči zákazníků a s jinými typy šifrování spravovaného disku najdete v části [klíče spravované zákazníkem](disk-encryption.md#customer-managed-keys) v článku věnovaném šifrování disku.
+Pokud zvolíte možnost použití šifrování na straně serveru (SSE) pro spravované disky, umožňuje vám Azure Disk Storage spravovat vlastní klíče. Koncepční informace o SSE se spravovanými klíči zákazníků a s jinými typy šifrování spravovaného disku najdete v části [klíče spravované zákazníkem](../disk-encryption.md#customer-managed-keys) v článku věnovaném šifrování disku.
 
 ## <a name="restrictions"></a>Omezení
 

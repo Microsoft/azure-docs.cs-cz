@@ -7,17 +7,17 @@ ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: devx-track-js
-ms.openlocfilehash: 56bed63a9030135966a208dd1ad9b4c45cde328d
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: aac3b6339c318c76e9b0c9abd0bc3778f2563a6f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95811699"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498689"
 ---
 # <a name="quickstart-service-bus-topics-and-subscriptions-with-nodejs-and-the-preview-azureservice-bus-package"></a>Rychlý Start: Service Bus témata a předplatná pomocí Node.js a balíčku Azure/Service-Bus verze Preview
 V tomto kurzu se naučíte používat [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) balíček v programu JavaScriptu k posílání zpráv do Service Busho tématu a přijímání zpráv z Service Bus předplatného do tohoto tématu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Postupujte podle kroků v [rychlém startu: pomocí Azure Portal vytvořte Service Bus téma a odběry tématu](service-bus-quickstart-topics-subscriptions-portal.md). Poznamenejte si připojovací řetězec, název tématu a název předplatného. Pro tento rychlý Start budete používat jenom jedno předplatné. 
 
@@ -208,4 +208,4 @@ Podívejte se na následující dokumentaci a ukázky:
 
 - [Klientská knihovna Azure Service Bus pro Python](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
 - [Ukázky](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples). Složka **JavaScriptu** obsahuje ukázky JavaScriptu a v **TypeScript** jsou ukázky TypeScriptu. 
-- [Referenční dokumentace k Azure-ServiceBus](https://docs.microsoft.com/javascript/api/overview/azure/service-bus)
+- [Referenční dokumentace k Azure-ServiceBus](/javascript/api/overview/azure/service-bus)

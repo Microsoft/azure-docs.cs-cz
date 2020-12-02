@@ -3,12 +3,12 @@ title: Přehled AMQP 1,0 v Azure Service Bus
 description: Přečtěte si, jak Azure Service Bus podporuje rozšířený protokol řízení front zpráv (AMQP) (AMQP), což je otevřený standardní protokol.
 ms.topic: article
 ms.date: 11/20/2020
-ms.openlocfilehash: 85943344fd8f20cf3a73af5d637b65676584f93f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: e585fcc905d1651d49008b623b01a6c2f8a04fcc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96022166"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498774"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Podpora AMQP 1,0 v Service Bus
 Cloudová služba Azure Service Bus jako svůj primární způsob komunikace používá [Rozšířený Protokol AMQP (Message Queueing Protocol) 1,0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) . Společnost Microsoft spolupracuje s partnery v celém odvětví, od zákazníků a dodavatelů konkurenčních zprostředkovatelů zasílání zpráv, aby bylo možné vyvíjet a vyvíjet AMQP za poslední desetiletí, a to s novými rozšířeními vyvinutými v [technickém výboru Oasis AMQP](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp). AMQP 1,0 je standard ISO a IEC ([iso 19464:20149](https://www.iso.org/standard/64955.html)). 
@@ -64,11 +64,11 @@ Následující obrázek znázorňuje ukázkové nasazení, ve kterém klienti Ja
 
 Všechny podporované Service Bus klientské knihovny dostupné prostřednictvím sady Azure SDK používají AMQP 1,0.
 
-- [Azure Service Bus pro .NET](https://docs.microsoft.com/dotnet/api/overview/azure/service-bus?view=azure-dotnet&preserve-view=true)
-- [Knihovny Azure Service Bus pro Java](https://docs.microsoft.com/java/api/overview/azure/servicebus?view=azure-java-stable&preserve-view=true)
+- [Azure Service Bus pro .NET](/dotnet/api/overview/azure/service-bus?preserve-view=true&view=azure-dotnet)
+- [Knihovny Azure Service Bus pro Java](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
 - [Poskytovatel Azure Service Bus pro Java JMS 2,0](how-to-use-java-message-service-20.md)
-- [Azure Service Bus moduly pro JavaScript a TypeScript](https://docs.microsoft.com/javascript/api/overview/azure/service-bus?view=azure-node-latest&preserve-view=true)
-- [Knihovny Azure Service Bus pro Python](https://docs.microsoft.com/python/api/overview/azure/servicebus?view=azure-python&preserve-view=true)
+- [Azure Service Bus moduly pro JavaScript a TypeScript](/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
+- [Knihovny Azure Service Bus pro Python](/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
 
 [!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
 
@@ -76,7 +76,7 @@ Kromě toho můžete Service Bus použít z libovolného zásobníku protokolu k
 
 [!INCLUDE [messaging-oss-amqp-stacks.md](../../includes/messaging-oss-amqp-stacks.md)]
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 * AMQP 1,0 je otevřený a spolehlivý protokol pro zasílání zpráv, který můžete použít k vytváření hybridních aplikací pro různé platformy. AMQP 1,0 je OASIS Standard.
 
 ## <a name="next-steps"></a>Další kroky
@@ -89,4 +89,4 @@ Jste připraveni na další informace? Navštivte následující odkazy:
 [0]: ./media/service-bus-amqp-overview/service-bus-amqp-1.png
 [Použití Service Bus z rozhraní .NET s AMQP]: service-bus-amqp-dotnet.md
 [Použití Service Bus z Java s AMQP]: ./service-bus-java-how-to-use-jms-api-amqp.md
-[Instalace Apache Qpid Proton-C na virtuálním počítači Azure Linux]:: 
+[Instalace Apache Qpid Proton-C na virtuálním počítači Azure Linux]::

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: b0871b6365d78129cd6fdaec82fee14e2b0a7a4b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 4fb20b221858c4717d67e0777afbe5c067c00a69
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693439"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499607"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat v Azure Kognitivní hledání
 
@@ -66,7 +66,7 @@ Obě vlastnosti můžete nastavit pomocí portálu, PowerShellu nebo příkazů 
 
 1. Na stránce **Přehled** v části **základy** Povolte ochranu **obnovitelného odstranění** a **vyprázdnění**.
 
-### <a name="using-powershell"></a>Pomocí prostředí PowerShell
+### <a name="using-powershell"></a>Použití PowerShellu
 
 1. Spusťte `Connect-AzAccount` a nastavte přihlašovací údaje Azure.
 
@@ -96,7 +96,7 @@ Obě vlastnosti můžete nastavit pomocí portálu, PowerShellu nebo příkazů 
 
 ### <a name="using-azure-cli"></a>Použití Azure CLI
 
-+ Pokud máte nainstalováno rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli), můžete spuštěním následujícího příkazu povolit požadované vlastnosti.
++ Pokud máte nainstalováno rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli), můžete spuštěním následujícího příkazu povolit požadované vlastnosti.
 
    ```azurecli-interactive
    az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --enable-purge-protection
@@ -173,7 +173,7 @@ Přístupová oprávnění by mohla být v daném okamžiku odvolána. Po odvol�
 
 ## <a name="5---encrypt-content"></a>5. šifrování obsahu
 
-Chcete-li přidat klíč spravovaný zákazníkem na mapě, zdroj dat, dovednosti, indexer nebo mapu synonym, je nutné použít [REST API vyhledávání](https://docs.microsoft.com/rest/api/searchservice/) nebo sadu SDK. Portál nevystavuje mapy synonym ani vlastnosti šifrování. Při použití platných indexů rozhraní API, zdrojů dat, dovednosti, indexerů a mapování synonym podporují vlastnost **EncryptionKey** nejvyšší úrovně.
+Chcete-li přidat klíč spravovaný zákazníkem na mapě, zdroj dat, dovednosti, indexer nebo mapu synonym, je nutné použít [REST API vyhledávání](/rest/api/searchservice/) nebo sadu SDK. Portál nevystavuje mapy synonym ani vlastnosti šifrování. Při použití platných indexů rozhraní API, zdrojů dat, dovednosti, indexerů a mapování synonym podporují vlastnost **EncryptionKey** nejvyšší úrovně.
 
 V tomto příkladu se používá REST API s hodnotami pro Azure Key Vault a Azure Active Directory:
 
@@ -196,7 +196,7 @@ V tomto příkladu se používá REST API s hodnotami pro Azure Key Vault a Azur
 
 ## <a name="example-index-encryption"></a>Příklad: šifrování indexu
 
-Pomocí [REST API Create index kognitivní hledání Azure](https://docs.microsoft.com/rest/api/searchservice/create-index)vytvořte zašifrovaný index. Pomocí `encryptionKey` vlastnosti určete, který šifrovací klíč se má použít.
+Pomocí [REST API Create index kognitivní hledání Azure](/rest/api/searchservice/create-index)vytvořte zašifrovaný index. Pomocí `encryptionKey` vlastnosti určete, který šifrovací klíč se má použít.
 > [!Note]
 > Žádná z těchto podrobností trezoru klíčů není považována za tajnou a lze ji snadno načíst procházením příslušné Azure Key Vault klíčovou stránkou v Azure Portal.
 
@@ -239,7 +239,7 @@ Nyní můžete odeslat požadavek na vytvoření indexu a pak začít používat
 
 ### <a name="synonym-map-encryption"></a>Šifrování mapování synonym
 
-Vytvořte šifrovanou mapu synonym pomocí [mapování vytvořit synonymum Azure Kognitivní hledání REST API](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). Pomocí `encryptionKey` vlastnosti určete, který šifrovací klíč se má použít.
+Vytvořte šifrovanou mapu synonym pomocí [mapování vytvořit synonymum Azure Kognitivní hledání REST API](/rest/api/searchservice/create-synonym-map). Pomocí `encryptionKey` vlastnosti určete, který šifrovací klíč se má použít.
 
 ```json
 {
@@ -263,7 +263,7 @@ Nyní můžete odeslat požadavek na vytvoření mapy synonym a pak ho začít p
 
 ## <a name="example-data-source-encryption"></a>Příklad: šifrování zdroje dat
 
-Vytvořte zašifrovaný zdroj dat pomocí [Vytvoření zdroje dat (Azure Kognitivní hledání REST API)](https://docs.microsoft.com/rest/api/searchservice/create-data-source). Pomocí `encryptionKey` vlastnosti určete, který šifrovací klíč se má použít.
+Vytvořte zašifrovaný zdroj dat pomocí [Vytvoření zdroje dat (Azure Kognitivní hledání REST API)](/rest/api/searchservice/create-data-source). Pomocí `encryptionKey` vlastnosti určete, který šifrovací klíč se má použít.
 
 ```json
 {
@@ -289,7 +289,7 @@ Nyní můžete odeslat požadavek na vytvoření zdroje dat a pak ho začít pou
 
 ## <a name="example-skillset-encryption"></a>Příklad: šifrování dovednosti
 
-Vytvořte šifrované dovednosti pomocí [REST API Azure kognitivní hledání pro vytvoření dovednosti](https://docs.microsoft.com/rest/api/searchservice/create-skillset). Pomocí `encryptionKey` vlastnosti určete, který šifrovací klíč se má použít.
+Vytvořte šifrované dovednosti pomocí [REST API Azure kognitivní hledání pro vytvoření dovednosti](/rest/api/searchservice/create-skillset). Pomocí `encryptionKey` vlastnosti určete, který šifrovací klíč se má použít.
 
 ```json
 {
@@ -315,7 +315,7 @@ Nyní můžete odeslat žádost o vytvoření dovednosti a pak ji začít použ�
 
 ## <a name="example-indexer-encryption"></a>Příklad: šifrování indexeru
 
-Pomocí [REST API Create indexeru pro Azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice/create-indexer)vytvořte zašifrovaný indexer. Pomocí `encryptionKey` vlastnosti určete, který šifrovací klíč se má použít.
+Pomocí [REST API Create indexeru pro Azure kognitivní hledání](/rest/api/searchservice/create-indexer)vytvořte zašifrovaný indexer. Pomocí `encryptionKey` vlastnosti určete, který šifrovací klíč se má použít.
 
 ```json
 {

@@ -1,6 +1,6 @@
 ---
-title: Vlastní role správců v Azure Active Directory | Microsoft Docs
-description: Naučte se pochopit vlastní role Azure AD v Azure Active Directory (Azure AD) s řízením přístupu na základě rolí a obory prostředků.
+title: Přehled Azure Active Directory řízení přístupu na základě role (RBAC)
+description: Naučte se pochopit části přiřazení rolí a omezeného rozsahu v Azure Active Directory.
 services: active-directory
 author: curtand
 manager: daveba
@@ -8,25 +8,26 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: overview
-ms.date: 11/05/2020
+ms.date: 11/20/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0785d8070a60ae7594ea0b182a0238bf6b4b6a58
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4f694a46fddbc84968b3267842aa19108d051590
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95899458"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499233"
 ---
-# <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Vlastní role správců v Azure Active Directory (Preview)
+# <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Přehled řízení přístupu na základě role v Azure Active Directory
 
-Tento článek popisuje, jak pochopit vlastní role Azure AD v Azure Active Directory (Azure AD) s řízením přístupu na základě role a obory prostředků. Vlastní role Azure AD surfují základní oprávnění [předdefinovaných rolí](permissions-reference.md), abyste mohli vytvářet a organizovat vlastní role. Tento přístup vám umožní udělit přístup podrobnějším způsobem než předdefinované role, kdykoli je budete potřebovat. Tato první verze vlastních rolí Azure AD zahrnuje možnost vytvořit roli pro přiřazení oprávnění pro správu registrací aplikací. V průběhu času se přidají další oprávnění k prostředkům organizace, jako jsou podnikové aplikace, uživatelé a zařízení.  
+Tento článek popisuje, jak porozumět řízení přístupu na základě role Azure Active Directory (Azure AD). Role Azure AD umožňují vašim správcům udělit podrobnější oprávnění, implementovat se zásadou nejnižší úrovně oprávnění. Integrované a vlastní role Azure AD fungují v konceptech podobných těm, které najdete v [systému řízení přístupu na základě role pro prostředky Azure](../../role-based-access-control/overview.md) (role Azure). [Rozdíl mezi těmito dvěma systémy řízení přístupu na základě rolí](../../role-based-access-control/rbac-and-directory-admin-roles.md) :
 
-Navíc vlastní role Azure AD podporují přiřazení na základě jednotlivých prostředků, kromě tradičních přiřazení v rámci organizace. Tento přístup vám dává možnost udělit přístup ke správě některých prostředků (například registrace jedné aplikace) bez poskytnutí přístupu ke všem prostředkům (registrace všech aplikací).
+- Role Azure AD řídí přístup k prostředkům Azure AD, jako jsou uživatelé, skupiny a aplikace, pomocí Graph API
+- Role Azure řídí přístup k prostředkům Azure, jako jsou virtuální počítače nebo úložiště, pomocí správy prostředků Azure.
 
-Řízení přístupu na základě role Azure AD je funkce Public Preview služby Azure AD a je dostupná pro placený plán licencí Azure AD. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+Oba systémy obsahují podobně použité definice rolí a přiřazení rolí. Oprávnění role Azure AD se ale nedají použít ve vlastních rolích Azure ani naopak.
 
 ## <a name="understand-azure-ad-role-based-access-control"></a>Principy řízení přístupu na základě role v Azure AD
 
@@ -41,22 +42,18 @@ Integrované a vlastní role Azure AD fungují v konceptech podobně jako [říz
 Níže jsou uvedené kroky vysoké úrovně, které Azure AD používá k určení, jestli máte přístup k prostředku správy. Tyto informace slouží k řešení problémů s přístupem.
 
 1. Uživatel (nebo instanční objekt) získá token pro Microsoft Graph koncový bod služby Azure AD Graph.
-
 1. Uživatel vytvoří volání rozhraní API Azure Active Directory (Azure AD) přes Microsoft Graph nebo Azure AD Graph pomocí vydaného tokenu.
-
 1. V závislosti na okolnostech využívá Azure AD jednu z následujících akcí:
-
-    - Vyhodnotí členství uživatelů v rolích na základě [deklarace identity WIDS](../../active-directory-b2c/access-tokens.md) v přístupovém tokenu uživatele.
-    - Načte všechna přiřazení rolí, která platí pro uživatele, a to buď přímo, nebo prostřednictvím členství ve skupině, na prostředek, na kterém se akce provádí.
-
+   - Vyhodnotí členství uživatelů v rolích na základě [deklarace identity WIDS](../../active-directory-b2c/access-tokens.md) v přístupovém tokenu uživatele.
+   - Načte všechna přiřazení rolí, která platí pro uživatele, a to buď přímo, nebo prostřednictvím členství ve skupině, na prostředek, na kterém se akce provádí.
 1. Azure AD určuje, jestli je akce v volání rozhraní API zahrnutá v rolích, které má uživatel pro tento prostředek.
 1. Pokud uživatel nemá roli s akcí v požadovaném oboru, přístup se neudělí. Pokud ne, přístup je udělen.
 
-### <a name="role-assignments"></a>Přiřazení rolí
+## <a name="role-assignment"></a>Přiřazení role
 
-Přiřazení role je objekt, který připojuje definici role k uživateli v konkrétním oboru za účelem udělení přístupu k prostředkům Azure AD. Přístup se uděluje vytvořením přiřazení role a odvolává se odebráním přiřazení role. V jádru se přiřazení role skládá ze tří prvků:
+Přiřazení role je prostředek služby Azure AD, který připojuje *definici role* k *uživateli* v konkrétním *oboru* za účelem udělení přístupu k prostředkům služby Azure AD. Přístup se uděluje vytvořením přiřazení role a odvolává se odebráním přiřazení role. V jádru se přiřazení role skládá ze tří prvků:
 
-- Uživatel (osoba, která má profil uživatele v Azure Active Directory)
+- Uživatel služby Azure AD
 - Definice role
 - Obor prostředku
 
@@ -68,7 +65,7 @@ Následující diagram znázorňuje příklad přiřazení role. V tomto příkl
 
 ### <a name="security-principal"></a>Objekt zabezpečení
 
-Objekt zabezpečení představuje uživatele, kterému se má přiřadit přístup k prostředkům služby Azure AD. *Uživatel* je osoba, která má profil uživatele v Azure Active Directory.
+Objekt zabezpečení představuje uživatele, kterému se má přiřadit přístup k prostředkům služby Azure AD. Uživatel je osoba, která má profil uživatele v Azure Active Directory.
 
 ### <a name="role"></a>Role
 
@@ -81,15 +78,12 @@ Definice role neboli role je kolekce oprávnění. Definice role obsahuje seznam
 
 Obor je omezení povolených akcí pro určitý prostředek služby Azure AD v rámci přiřazení role. Když přiřadíte roli, můžete zadat obor, který omezí přístup správce ke konkrétnímu prostředku. Pokud například chcete vývojářům udělit vlastní roli, ale jenom ke správě konkrétní registrace aplikace, můžete do přiřazení role zahrnout konkrétní registraci aplikace jako obor.
 
-  > [!Note]
-  > Vlastní role se dají přiřadit v oboru adresáře a v oboru prostředků. Ještě se nedají přiřadit v oboru administrativní jednotky.
-  > Předdefinované role lze přiřadit v oboru adresáře a v některých případech i v oboru administrativní jednotky. Ještě se nedají přiřadit k oboru prostředků Azure AD.
-
 ## <a name="required-license-plan"></a>Požadovaný licenční plán
 
 [!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
+- [Principy rolí Azure AD](concept-understand-roles.md)
 - Vytváření přiřazení vlastních rolí pomocí [Azure Portal, Azure AD PowerShellu a Graph API](custom-create.md)
 - [Zobrazení přiřazení pro vlastní roli](custom-view-assignments.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/17/2018
 ms.author: ramankum
-ms.openlocfilehash: a02b55adf4ac1838e9fcb98b9dffcfbd2b4b52d4
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a41d7ebbebbc1bac2d78c064bffab5e4cd4fad23
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969895"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500372"
 ---
 # <a name="exportcopy-the-vhd-of-a-managed-disk-to-a-storage-account-in-different-region-with-powershell-windows"></a>Export/zkopírování VHD spravovaného disku do účtu úložiště v jiné oblasti pomocí PowerShellu (Windows)
 
@@ -47,7 +47,7 @@ Tento skript k vygenerování identifikátoru URI SAS spravovaného disku a zkop
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vytvoření spravovaného disku z virtuálního pevného disku](./virtual-machines-powershell-sample-create-managed-disk-from-vhd.md?toc=%252fpowershell%252fmodule%252ftoc.json)
+[Vytvoření spravovaného disku z virtuálního pevného disku](./virtual-machines-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
 [Vytvoření virtuálního počítače ze spravovaného disku](./virtual-machines-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 

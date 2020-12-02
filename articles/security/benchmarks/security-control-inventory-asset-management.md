@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7a5cd7a6019451b27b509aa7f486540c04c29ee2
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 464439516ee86d2fb6f900c3fcaf179095192acf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412642"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498876"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>Řízení zabezpečení: inventář a Správa prostředků
 
@@ -76,7 +76,7 @@ Pomocí Azure Policy můžete umístit omezení typu prostředků, které se daj
 
 Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazovat nebo zjišťovat prostředky.  Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí jsou schválené.
 
-- [Konfigurace a Správa Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+- [Jak nakonfigurovat a spravovat Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Jak vytvářet dotazy pomocí Azure graphu](../../governance/resource-graph/first-query-portal.md)
 
@@ -100,7 +100,7 @@ K identifikaci veškerého softwaru nainstalovaného v Virtual Machines použijt
 
 - [Jak používat monitorování integrity souborů](../../security-center/security-center-file-integrity-monitoring.md)
 
-- [Pochopení Change Tracking Azure](../../automation/change-tracking.md)
+- [Pochopení Change Tracking Azure](../../automation/change-tracking/overview.md)
 
 - [Jak povolit inventář virtuálních počítačů Azure](../../automation/automation-tutorial-installed-software.md)
 
@@ -122,7 +122,7 @@ Použijte Azure Security Center Adaptivní řízení aplikací, abyste zajistili
 
 Pomocí Azure Policy můžete omezit, které služby můžete ve vašem prostředí zřídit.
 
-- [Konfigurace a Správa Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+- [Jak nakonfigurovat a spravovat Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../../governance/policy/samples/index.md)
 

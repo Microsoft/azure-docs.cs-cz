@@ -6,21 +6,21 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 11/13/2018
 ms.author: guybo
-ms.openlocfilehash: 1d4d055c0cd20d1b9598c408753334458d709276
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5d99e6ec0beb6eaf83f9c664683c33fc1b71e3f0
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660623"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500542"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Příprava virtuálního pevného disku Debian pro Azure
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V této části se předpokládá, že jste už nainstalovali operační systém Debian Linux ze souboru. ISO staženého z [webu Debian](https://www.debian.org/distrib/) na virtuální pevný disk. Pro vytváření souborů. VHD existuje víc nástrojů. Hyper-V je jenom jeden příklad. Pokyny k používání technologie Hyper-V najdete v tématu [instalace role Hyper-v a konfigurace virtuálního počítače](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
 ## <a name="installation-notes"></a>Poznámky k instalaci
 * Další tipy k přípravě Linux pro Azure najdete v tématu [Obecné poznámky k instalaci pro Linux](create-upload-generic.md#general-linux-installation-notes) .
 * Novější formát VHDX se v Azure nepodporuje. Disk můžete převést na formát VHD pomocí Správce technologie Hyper-V nebo rutiny **Convert-VHD** .
-* Při instalaci systému Linux doporučujeme místo LVM použít standardní oddíly (často se jedná o výchozí nastavení pro mnoho instalací). Tím se vyhnete LVM názvům v konfliktu s klonovanými virtuálními počítači, zejména pokud se disk s operačním systémem někdy potřebuje připojit k jinému virtuálnímu počítači pro řešení potíží. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) se můžou použít na datových discích, pokud jsou preferované.
+* Při instalaci systému Linux doporučujeme místo LVM použít standardní oddíly (často se jedná o výchozí nastavení pro mnoho instalací). Tím se vyhnete LVM názvům v konfliktu s klonovanými virtuálními počítači, zejména pokud se disk s operačním systémem někdy potřebuje připojit k jinému virtuálnímu počítači pro řešení potíží. [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) se můžou použít na datových discích, pokud jsou preferované.
 * Nekonfigurujte odkládací oddíl na disku s operačním systémem. Agent Azure Linux se dá nakonfigurovat tak, aby na dočasném disku prostředků vytvořil odkládací soubor. Další informace najdete v následujících krocích.
 * Všechny virtuální pevné disky v Azure musí mít virtuální velikost zarovnaná na 1 MB. Při převodu z nezpracovaného disku na virtuální pevný disk je nutné před převodem zajistit, aby velikost nezpracovaného disku byla násobkem 1 MB. Další informace najdete v [poznámkách k instalaci systému Linux](create-upload-generic.md#general-linux-installation-notes).
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 5ea820af6d5258b9a98856c9d5243a84d32d931f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 102d4916caf9dcae577006b6b847979f98ab3673
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461673"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499896"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Seznámení se službou Azure Defender pro SQL
 
@@ -25,7 +25,7 @@ Azure Defender pro SQL zahrnuje dva plány Azure Defenderu, které rozšiřuje [
 |----|:----|
 |Stav vydaných verzí:|**Azure Defender pro servery Azure SQL Database** – všeobecně dostupné (GA)<br>**Azure Defender pro SQL servery na počítačích** – Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Stanov|Dva plány, které tvoří **Azure Defender pro SQL** , se účtují, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
-|Chráněné verze SQL:|SQL na virtuálních počítačích Azure – [Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) a [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md)<br>[Servery SQL s povoleným obloukem](https://docs.microsoft.com/sql/sql-server/azure-arc/overview) (zahrnuje místní SQL servery)<br>[Jednoduché databáze](../azure-sql/database/single-database-overview.md) a [elastické fondy](../azure-sql/database/elastic-pool-overview.md) Azure SQL<br>[Spravovaná instance Azure SQL](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Vyhrazený fond SQL Azure synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
+|Chráněné verze SQL:|SQL na virtuálních počítačích Azure – [Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) a [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md)<br>[Servery SQL s povoleným obloukem](/sql/sql-server/azure-arc/overview) (zahrnuje místní SQL servery)<br>[Jednoduché databáze](../azure-sql/database/single-database-overview.md) a [elastické fondy](../azure-sql/database/elastic-pool-overview.md) Azure SQL<br>[Spravovaná instance Azure SQL](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Vyhrazený fond SQL Azure synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
 |Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov|
 |||
 

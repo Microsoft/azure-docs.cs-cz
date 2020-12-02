@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: 4b7950759914724234ec89e6eaee13b48e735ec9
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: d0ffd786d3fb6bb5f0d70095d947c81caa070518
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024309"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499131"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migrace z Zpracování řeči Bingu do služby pro rozpoznávání řeči
 
@@ -79,7 +79,7 @@ Začínáme se sadou Speech SDK:
 
 Zákazníci s Zpracování řeči Bingu by měli kontaktovat zákaznickou podporu otevřením [lístku podpory](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Pokud vaše podpora vyžaduje [plán technické podpory](https://azure.microsoft.com/support/plans/), můžete nás taky kontaktovat.
 
-Podporu služby Speech SDK a rozhraní API najdete na [stránce podpory](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext)služby pro rozpoznávání řeči.
+Podporu služby Speech SDK a rozhraní API najdete na [stránce podpory](../cognitive-services-support-options.md?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext%253fcontext%253d%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)služby pro rozpoznávání řeči.
 
 ## <a name="next-steps"></a>Další kroky
 

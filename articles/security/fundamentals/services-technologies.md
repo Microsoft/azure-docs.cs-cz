@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: a4cc6e31e49243af8fa52ac568bcbba660bcde7e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8a33e9d462f3105bfee295ac82384a38325f7c7c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842732"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498791"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Služby a technologie zabezpečení dostupné v Azure
 
@@ -91,5 +91,5 @@ V průběhu času se tento seznam změní a rozroste stejně jako Azure. Nezapom
 | [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md)| Globální nástroj pro vyrovnávání zatížení DNS.|
 | [Azure Application proxy](../../active-directory/manage-apps/application-proxy.md)| Ověřuje se front-end, který se používá k zabezpečení vzdáleného přístupu pro webové aplikace hostované v místním prostředí. |
 |[Azure Firewall](../../firewall/overview.md)|Spravovaná cloudová služba zabezpečení sítě, která chrání vaše prostředky Azure Virtual Network.|
-|[Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md)|V kombinaci s osvědčenými postupy pro návrh aplikace poskytuje ochranu před DDoS útoky.|
+|[Azure DDoS Protection](../../ddos-protection/ddos-protection-overview.md)|V kombinaci s osvědčenými postupy pro návrh aplikace poskytuje ochranu před DDoS útoky.|
 |[Koncové body služby Virtual Network](../../virtual-network/virtual-network-service-endpoints-overview.md)|Rozšiřuje privátní adresní prostor vaší virtuální sítě a identitu vaší virtuální sítě do služeb Azure přes přímé připojení.|

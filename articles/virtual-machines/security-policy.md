@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 83d291ae72e79ec3600015fac07ee4ab80fe5df4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b7f6d30ffa849f78b0f7baa2d84e4fb01f3bf192
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843549"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500338"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Zásady zabezpečení a používání virtuálních počítačů v Azure
 
@@ -41,7 +41,7 @@ Služba Azure Managed disks automaticky šifruje vaše data ve výchozím nastav
 
 Pro šifrování spravovaného disku můžete spoléhat na klíče spravované platformou, nebo můžete šifrování spravovat pomocí vlastních klíčů. Pokud se rozhodnete spravovat šifrování pomocí vlastních klíčů, můžete zadat *klíč spravovaný zákazníkem* , který se použije k šifrování a dešifrování všech dat ve službě Managed disks. 
 
-Další informace o šifrování na straně serveru najdete v článcích pro [Windows](windows/disk-encryption.md) nebo [Linux](linux/disk-encryption.md).
+Další informace o šifrování na straně serveru najdete v článcích pro [Windows](./disk-encryption.md) nebo [Linux](./disk-encryption.md).
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
@@ -73,4 +73,4 @@ Pomocí [řízení přístupu na základě role v Azure (Azure RBAC)](../role-ba
 
 
 ## <a name="next-steps"></a>Další kroky
-- Projděte si kroky pro monitorování zabezpečení virtuálních počítačů pomocí Azure Security Center pro [Linux](../security/fundamentals/overview.md) nebo [Windows](windows/tutorial-azure-security.md).
+- Projděte si kroky pro monitorování zabezpečení virtuálních počítačů pomocí Azure Security Center pro [Linux](../security/fundamentals/overview.md) nebo [Windows](./tutorial-azure-security.md).

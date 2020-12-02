@@ -10,12 +10,12 @@ ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.reviewer: cynthn
-ms.openlocfilehash: 0bc56159d0e9a616d8da8dfe1ec3c128f60ef44a
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 95ba93c4a5d71e6813c1bee144c983e1dfd8c89d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342985"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500321"
 ---
 # <a name="security-recommendations-for-virtual-machines-in-azure"></a>Doporučení zabezpečení pro virtuální počítače v Azure
 
@@ -24,35 +24,35 @@ Tento článek obsahuje doporučení zabezpečení pro Azure Virtual Machines. T
 
 Některá z doporučení tohoto článku můžete automaticky řešit pomocí Azure Security Center. Azure Security Center je první linií ochrany vašich prostředků v Azure. Pravidelně analyzuje stav zabezpečení vašich prostředků Azure, aby identifikovala potenciální ohrožení zabezpečení. Pak doporučí řešení chyb zabezpečení. Další informace najdete v tématu [doporučení zabezpečení v Azure Security Center](../security-center/security-center-recommendations.md).
 
-Obecné informace o Azure Security Center najdete v tématu [co je Azure Security Center?](../security-center/security-center-intro.md).
+Obecné informace o Azure Security Center najdete v tématu [co je Azure Security Center?](../security-center/security-center-introduction.md).
 
 ## <a name="general"></a>Obecné
 
 | Doporučení | Komentáře | Security Center |
 |-|----|--|
 | Při vytváření vlastních imagí virtuálních počítačů použijte nejnovější aktualizace. | Před vytvořením imagí nainstalujte nejnovější aktualizace pro operační systém a pro všechny aplikace, které budou součástí vaší image.  | - |
-| Udržujte své virtuální počítače v aktuálním prostředí. | Řešení [Update Management](../automation/update-management/update-mgmt-overview.md) v Azure Automation můžete použít ke správě aktualizací operačního systému pro počítače se systémem Windows a Linux v Azure. | [Ano](../security-center/security-center-apply-system-updates.md) |
+| Udržujte své virtuální počítače v aktuálním prostředí. | Řešení [Update Management](../automation/update-management/overview.md) v Azure Automation můžete použít ke správě aktualizací operačního systému pro počítače se systémem Windows a Linux v Azure. | [Ano](../security-center/asset-inventory.md) |
 | Zálohujte své virtuální počítače. | [Azure Backup](../backup/backup-overview.md) pomáhá chránit data aplikací a má minimální provozní náklady. Chyby aplikací můžou poškodit vaše data a lidské chyby můžou do vašich aplikací zavádět chyby. Azure Backup chrání vaše virtuální počítače se systémem Windows a Linux. | - |
-| Pro zajištění vyšší odolnosti a dostupnosti použijte více virtuálních počítačů. | Pokud váš virtuální počítač spouští aplikace, které musí být vysoce dostupné, použijte několik virtuálních počítačů nebo [skupin dostupnosti](../virtual-machines/windows/manage-availability.md). | - |
+| Pro zajištění vyšší odolnosti a dostupnosti použijte více virtuálních počítačů. | Pokud váš virtuální počítač spouští aplikace, které musí být vysoce dostupné, použijte několik virtuálních počítačů nebo [skupin dostupnosti](./manage-availability.md). | - |
 | Proveďte strategii pro provozní kontinuitu a zotavení po havárii (BCDR). | Azure Site Recovery vám umožní vybírat z různých možností, které jsou navržené pro podporu kontinuity podnikových služeb. Podporuje různé scénáře replikace a převzetí služeb při selhání. Další informace najdete v tématu  [o Site Recovery](../site-recovery/site-recovery-overview.md). | - |
 
 ## <a name="data-security"></a>Zabezpečení dat
 
 | Doporučení | Komentáře | Security Center |
 |-|----|--|
-| Zašifrujte disky operačního systému. | [Azure Disk Encryption](../security/azure-security-disk-encryption-overview.md) vám pomůže s šifrováním disků virtuálních počítačů s Windows a Linux IaaS. Bez nezbytných klíčů nelze obsah šifrovaných disků číst. Šifrování disku chrání uložená data před neoprávněným přístupem, které by jinak bylo možné při kopírování disku.| [Ano](../security-center/security-center-apply-disk-encryption.md) |
-| Šifrování datových disků. | [Azure Disk Encryption](../security/azure-security-disk-encryption-overview.md) vám pomůže s šifrováním disků virtuálních počítačů s Windows a Linux IaaS. Bez nezbytných klíčů nelze obsah šifrovaných disků číst. Šifrování disku chrání uložená data před neoprávněným přístupem, které by jinak bylo možné při kopírování disku.| -  |
+| Zašifrujte disky operačního systému. | [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) vám pomůže s šifrováním disků virtuálních počítačů s Windows a Linux IaaS. Bez nezbytných klíčů nelze obsah šifrovaných disků číst. Šifrování disku chrání uložená data před neoprávněným přístupem, které by jinak bylo možné při kopírování disku.| [Ano](../security-center/asset-inventory.md) |
+| Šifrování datových disků. | [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) vám pomůže s šifrováním disků virtuálních počítačů s Windows a Linux IaaS. Bez nezbytných klíčů nelze obsah šifrovaných disků číst. Šifrování disku chrání uložená data před neoprávněným přístupem, které by jinak bylo možné při kopírování disku.| -  |
 | Omezte nainstalovaný software. | Omezte nainstalovaný software na to, co je potřeba k úspěšnému nasazení vašeho řešení. Tyto zásady pomáhají omezit plochu útoku na vaše řešení. | - |
-| Používejte antivirový program nebo antimalwarový software. | V Azure můžete použít antimalwarový software od dodavatelů zabezpečení, jako jsou Microsoft, Symantec, Trend Micro a Kaspersky. Tento software pomáhá chránit vaše virtuální počítače před škodlivými soubory, adwarem a dalšími hrozbami. Microsoft Antimalware můžete nasadit na základě úloh vaší aplikace. Microsoft Antimalware je k dispozici jenom pro počítače s Windows. Použijte buď základní zabezpečení, nebo pokročilou vlastní konfiguraci. Další informace najdete v tématu [Microsoft Antimalware pro Azure Cloud Services a Virtual Machines](../security/azure-security-antimalware.md). | - |
+| Používejte antivirový program nebo antimalwarový software. | V Azure můžete použít antimalwarový software od dodavatelů zabezpečení, jako jsou Microsoft, Symantec, Trend Micro a Kaspersky. Tento software pomáhá chránit vaše virtuální počítače před škodlivými soubory, adwarem a dalšími hrozbami. Microsoft Antimalware můžete nasadit na základě úloh vaší aplikace. Microsoft Antimalware je k dispozici jenom pro počítače s Windows. Použijte buď základní zabezpečení, nebo pokročilou vlastní konfiguraci. Další informace najdete v tématu [Microsoft Antimalware pro Azure Cloud Services a Virtual Machines](../security/fundamentals/antimalware.md). | - |
 | Bezpečné ukládání klíčů a tajných kódů | Zjednodušte správu tajných kódů a klíčů tím, že svým vlastníkům vaší aplikace poskytnete zabezpečenou, centrálně spravovanou možnost. Tato Správa snižuje riziko náhodného narušení nebo nevracení. Azure Key Vault můžou bezpečně ukládat klíče v modulech hardwarového zabezpečení (HSM), které jsou certifikované pro FIPS 140-2 úrovně 2. Pokud k ukládání klíčů a tajných kódů potřebujete použít standard FIPs 140,2 úrovně 3, můžete použít [vyhrazený modul HSM Azure](../dedicated-hsm/overview.md). | - |
 
 ## <a name="identity-and-access-management"></a>Správa identit a přístupu 
 
 | Doporučení | Komentáře | Security Center |
 |-|----|--|
-| Centralizace ověřování virtuálních počítačů. | Ověřování virtuálních počítačů s Windows a Linuxem můžete centralizovat pomocí [Azure Active Directory ověřování](../active-directory/develop/authentication-scenarios.md). | - |
+| Centralizace ověřování virtuálních počítačů. | Ověřování virtuálních počítačů s Windows a Linuxem můžete centralizovat pomocí [Azure Active Directory ověřování](../active-directory/develop/authentication-vs-authorization.md). | - |
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 | Doporučení | Komentáře | Security Center |
 |-|----|--|
@@ -67,4 +67,4 @@ Obecné informace o Azure Security Center najdete v tématu [co je Azure Securit
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o požadavcích na zabezpečení najdete u svého poskytovatele aplikace. Další informace o vývoji zabezpečených aplikací najdete v [dokumentaci k zabezpečení vývoje](../security/fundamentals/abstract-develop-secure-apps.md).
+Další informace o požadavcích na zabezpečení najdete u svého poskytovatele aplikace. Další informace o vývoji zabezpečených aplikací najdete v [dokumentaci k zabezpečení vývoje](https://azure.microsoft.com/resources/develop-secure-applications-on-azure/).

@@ -421,7 +421,7 @@
         - name: Migrovat pomocí rozhraní příkazového řádku
           href: ../migration-classic-resource-manager-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Běžné chyby při migraci
-          href: migration-classic-resource-manager-errors.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../migration-classic-resource-manager-errors.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Komunitní nástroje pro migraci
           href: ../migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Nejčastější dotazy
@@ -594,7 +594,7 @@
             - name: Vytvoření opevněného hostitelského počítače
               items:
                 - name: Portál
-                  href: ../../bastion/bastion-create-host-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                  href: ../../bastion/tutorial-create-host-portal.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
                 - name: PowerShell
                   href: ../../bastion/bastion-create-host-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                 - name: Rozhraní příkazového řádku
@@ -750,7 +750,7 @@
           items:
             - name: Přehled
               href: ../maintenance-control.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-            - name: CLI
+            - name: Rozhraní příkazového řádku
               href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-control-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json

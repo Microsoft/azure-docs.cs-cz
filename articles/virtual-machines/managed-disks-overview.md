@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperfq1
-ms.openlocfilehash: 839ba1f8a5215c9059cfeff6e2158165b154f1f7
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 3b0acd683309ceb105c49dc5b0bd493ce2e461b9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289358"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500423"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Úvod ke spravovaným diskům Azure
 
@@ -71,7 +71,7 @@ Managed disks nabízí dva různé druhy šifrování. První je šifrování na
 
 Šifrování na straně serveru poskytuje šifrování v klidovém prostředí a chrání vaše data, aby splňovala závazky zabezpečení vaší organizace a dodržování předpisů. Šifrování na straně serveru je ve výchozím nastavení povolené pro všechny spravované disky, snímky a image ve všech oblastech, kde jsou dostupné spravované disky. (Dočasné disky na druhé straně nejsou šifrovány šifrováním na straně serveru, pokud nepovolíte šifrování na hostiteli; viz [role disku: dočasné disky](#temporary-disk)).
 
-Můžete buď dovolit, aby Azure spravoval vaše klíče za vás, jedná se o klíče spravované platformou, nebo můžete klíče spravovat sami, jedná se o klíče spravované zákazníkem. Podrobnosti najdete v článku [o šifrování na straně serveru Azure Disk Storage](windows/disk-encryption.md) .
+Můžete buď dovolit, aby Azure spravoval vaše klíče za vás, jedná se o klíče spravované platformou, nebo můžete klíče spravovat sami, jedná se o klíče spravované zákazníkem. Podrobnosti najdete v článku [o šifrování na straně serveru Azure Disk Storage](./disk-encryption.md) .
 
 
 #### <a name="azure-disk-encryption"></a>Azure Disk Encryption
@@ -96,7 +96,7 @@ Tento disk má maximální kapacitu 4 095 GiB.
 
 ### <a name="temporary-disk"></a>Dočasný disk
 
-Většina virtuálních počítačů obsahuje dočasný disk, což není spravovaný disk. Dočasný disk poskytuje krátkodobé úložiště pro aplikace a procesy a je určen pouze k ukládání dat, jako jsou například stránky nebo soubory odkládacích souborů. Data na dočasném disku mohou být ztracena během [události údržby](./manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#understand-vm-reboots---maintenance-vs-downtime) nebo při [opětovném nasazení virtuálního počítače](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json). Během úspěšného standardního restartování virtuálního počítače se uchovávají data na dočasném disku. Další informace o virtuálních počítačích bez dočasných disků najdete v tématu [velikosti virtuálních počítačů Azure bez místního dočasného disku](azure-vms-no-temp-disk.md).
+Většina virtuálních počítačů obsahuje dočasný disk, což není spravovaný disk. Dočasný disk poskytuje krátkodobé úložiště pro aplikace a procesy a je určen pouze k ukládání dat, jako jsou například stránky nebo soubory odkládacích souborů. Data na dočasném disku mohou být ztracena během [události údržby](./manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) nebo při [opětovném nasazení virtuálního počítače](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json). Během úspěšného standardního restartování virtuálního počítače se uchovávají data na dočasném disku. Další informace o virtuálních počítačích bez dočasných disků najdete v tématu [velikosti virtuálních počítačů Azure bez místního dočasného disku](azure-vms-no-temp-disk.md).
 
 Na virtuálních počítačích se systémem Azure Linux je dočasný disk typicky/dev/sdb a na virtuálních počítačích s Windows dočasný disk je ve výchozím nastavení D: Pokud na hostiteli nepovolíte šifrování, dočasný disk není zašifrovaný šifrováním na straně serveru.
 

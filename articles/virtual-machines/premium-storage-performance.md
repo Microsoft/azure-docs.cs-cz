@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 6519f9d549c513e03400366447812a170f9ab41c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: acdddcd95883d13393838a47281fb888ac2f9274
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978658"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500389"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: návrh pro vysoký výkon
 
@@ -68,7 +68,7 @@ Proto je důležité určit optimální propustnost a hodnoty IOPS, které vaše
 
 ## <a name="latency"></a>Latence
 
-Latence je doba, kterou aplikace potřebuje k přijetí jediné žádosti, odeslání na disky úložiště a odeslání odpovědi klientovi. Toto je kritická míra výkonu aplikace kromě vstupně-výstupních operací a propustnosti. Latence disku služby Premium Storage je čas potřebný k načtení informací o požadavku a jeho předání zpět do vaší aplikace. Premium Storage poskytuje konzistentní nízkou latenci. Disky Premium jsou navržené tak, aby pro většinu vstupně-výstupních operací poskytovaly jednorázové latence milisekund. Pokud povolíte ukládání do mezipaměti hostitele jen pro čtení na disky Premium Storage, můžete získat mnohem nižší latenci čtení. V další části o *optimalizaci výkonu aplikace*probereme další podrobnosti o ukládání disku do mezipaměti.
+Latence je doba, kterou aplikace potřebuje k přijetí jediné žádosti, odeslání na disky úložiště a odeslání odpovědi klientovi. Toto je kritická míra výkonu aplikace kromě vstupně-výstupních operací a propustnosti. Latence disku služby Premium Storage je čas potřebný k načtení informací o požadavku a jeho předání zpět do vaší aplikace. Premium Storage poskytuje konzistentní nízkou latenci. Disky Premium jsou navržené tak, aby pro většinu vstupně-výstupních operací poskytovaly jednorázové latence milisekund. Pokud povolíte ukládání do mezipaměti hostitele jen pro čtení na disky Premium Storage, můžete získat mnohem nižší latenci čtení. V další části o *optimalizaci výkonu aplikace* probereme další podrobnosti o ukládání disku do mezipaměti.
 
 Při optimalizaci aplikace za účelem získání vyššího počtu vstupně-výstupních operací a propustnosti bude ovlivněna latence vaší aplikace. Po optimalizaci výkonu aplikace vždy vyhodnoťte latenci aplikace, aby nedošlo k neočekávanému chování vysoké latence.
 
@@ -169,7 +169,7 @@ Velikost v/v je jedním z důležitějších faktorů. Velikost vstupně-výstup
 
 Některé aplikace umožňují změnit jejich vstupně-výstupní operace, zatímco některé aplikace ne. SQL Server například určuje optimální velikost vstupně-výstupních operací a neposkytuje uživatelům žádné ovladače ke změně. Na druhé straně Oracle poskytuje parametr s názvem [ \_ \_ velikost bloku DB](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) , pomocí kterého můžete nakonfigurovat velikost vstupně-výstupních požadavků databáze.
 
-Pokud používáte aplikaci, která vám neumožňuje změnit velikost vstupně-výstupních operací, použijte pokyny v tomto článku k optimalizaci klíčového ukazatele výkonu, který je pro vaši aplikaci nejrelevantnější. Příklad:
+Pokud používáte aplikaci, která vám neumožňuje změnit velikost vstupně-výstupních operací, použijte pokyny v tomto článku k optimalizaci klíčového ukazatele výkonu, který je pro vaši aplikaci nejrelevantnější. Třeba
 
 * Aplikace OLTP generuje miliony malých a náhodných vstupně-výstupních požadavků. Chcete-li tyto typy požadavků na vstupně-výstupní operace zpracovat, je nutné navrhnout infrastrukturu aplikace a získat vyšší IOPS.  
 * Aplikace datového skladu generuje velké a sekvenční vstupně-výstupní požadavky. Chcete-li tyto typy požadavků na vstupně-výstupní operace zpracovat, je nutné navrhnout infrastrukturu vaší aplikace, abyste dosáhli vyšší šířky pásma nebo propustnosti.
@@ -222,7 +222,7 @@ Pokud však používáte stejnou aplikaci na Premium Storage, budete potřebovat
 
 Následující tabulka shrnuje rozpis nákladů tohoto scénáře pro Standard a Premium Storage.
 
-| &nbsp; | **Standard** | **Premium** |
+| &nbsp; | **Standard** | **Nárok** |
 | --- | --- | --- |
 | **Náklady na virtuální počítač za měsíc** |$1 570,58 (standardní \_ D14) |$1 003,66 (standardní \_ DS13) |
 | **Náklady na disky za měsíc** |$1 638,40 (32 × 1 TB disků) |$544,34 (4 x P30 disky) |
@@ -307,9 +307,9 @@ V takovém případě můžete tyto pokyny použít k SQL Server spuštění na 
 
 Pro všechny disky Premium SSD nebo Ultra můžete pro systémy souborů na disku zakázat "překážky", aby se zlepšil výkon, když je známo, že neexistují žádné mezipaměti, které by mohly přijít o data.  Pokud je ukládání do mezipaměti disku Azure nastaveno na jen pro čtení nebo žádné, můžete zakázat bariéry.  Pokud je však ukládání do mezipaměti nastaveno na jen pro čtení, musí zůstat bariéry povolené, aby se zajistila odolnost proti zápisu  Ve výchozím nastavení jsou překážky standardně povolené, ale v závislosti na typu systému souborů můžete zakázat bariéry pomocí jedné z následujících metod:
 
-* Pro **reiserFS**použijte možnost připojení bariéra = None a zakažte překážky.  Chcete-li explicitně povolit bariéry, použijte bariéru = flush.
-* Pro **ext3/ext4**použijte k zakázání bariéry možnost bariéra = 0.  Chcete-li explicitně povolit bariéry, použijte bariéru = 1.
-* Pro **XFS**zakažte překážky pomocí možnosti připojit k připojení.  Chcete-li explicitně povolit bariéry, použijte bariéru.  Všimněte si, že v novějších verzích jádra systému Linux je návrh systému souborů XFS vždycky zajištěna odolnost a zákaz bariéry nemá žádný vliv.  
+* Pro **reiserFS** použijte možnost připojení bariéra = None a zakažte překážky.  Chcete-li explicitně povolit bariéry, použijte bariéru = flush.
+* Pro **ext3/ext4** použijte k zakázání bariéry možnost bariéra = 0.  Chcete-li explicitně povolit bariéry, použijte bariéru = 1.
+* Pro **XFS** zakažte překážky pomocí možnosti připojit k připojení.  Chcete-li explicitně povolit bariéry, použijte bariéru.  Všimněte si, že v novějších verzích jádra systému Linux je návrh systému souborů XFS vždycky zajištěna odolnost a zákaz bariéry nemá žádný vliv.  
 
 ## <a name="disk-striping"></a>Diskové svazky
 
@@ -319,7 +319,7 @@ Ve Windows můžete pomocí prostorů úložiště prokládat disky společně. 
 
 Důležité: pomocí Správce serveru uživatelského rozhraní můžete pro prokládaný svazek nastavit celkový počet sloupců o velikosti až 8. Při připojování více než osmi disků použijte PowerShell k vytvoření svazku. Pomocí prostředí PowerShell můžete nastavit počet sloupců, které se rovnají počtu disků. Například pokud je v jedné sadě Stripe nastavený 16 disků; v parametru *NumberOfColumns* rutiny *New-VirtualDisk* prostředí PowerShell zadejte 16 sloupců.
 
-V systému Linux pomocí nástroje MDADM propojte disky společně. Podrobný postup pro proložení disků v systému Linux najdete v tématu [Konfigurace softwarového pole RAID v systému Linux](linux/configure-raid.md).
+V systému Linux pomocí nástroje MDADM propojte disky společně. Podrobný postup pro proložení disků v systému Linux najdete v tématu [Konfigurace softwarového pole RAID v systému Linux](/previous-versions/azure/virtual-machines/linux/configure-raid).
 
 *Velikost pruhu*  
 Důležitou konfigurací při proložení disku je velikost pruhu. Velikost nebo velikost bloku je nejmenší datový blok, který aplikace může adresovat na prokládaný svazek. Velikost pruhu, kterou nakonfigurujete, závisí na typu aplikace a jeho vzoru požadavků. Pokud zvolíte špatnou velikost pruhu, může to vést k chybnému zarovnání v/v, což vede ke snížení výkonu aplikace.

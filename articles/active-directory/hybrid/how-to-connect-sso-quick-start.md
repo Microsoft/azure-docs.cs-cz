@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fde2052078e0131e720411f91aa8ae7484338252
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40d77f4ebb897884f03377e6d9f1243a6d436766
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295018"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500202"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý Start
 
@@ -37,7 +37,7 @@ Ujistěte se, že jsou splněné následující požadavky:
 
 * **Nastavení serveru Azure AD Connect**: Pokud jako metodu přihlašování použijete [předávací ověřování](how-to-connect-pta.md) , nevyžaduje se žádná další Kontrola požadavků. Pokud jako metodu přihlašování použijete [synchronizaci hodnot hash hesel](how-to-connect-password-hash-synchronization.md) , a pokud je mezi Azure AD Connect a službou Azure AD brána firewall, zajistěte, aby:
    - Použijete 1.1.644.0 nebo novější verzi Azure AD Connect. 
-   - Pokud vaše brána firewall nebo proxy server povolí, přidejte připojení do seznamu povolených adres URL ** \* . msappproxy.NET** přes port 443. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně. Tato požadovaná součást platí pouze v případě, že funkci povolíte. Nepožaduje se pro vlastní přihlášení uživatelů.
+   - Pokud vaše brána firewall nebo proxy server povolí, přidejte připojení do seznamu povolených adres URL **\* . msappproxy.NET** přes port 443. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně. Tato požadovaná součást platí pouze v případě, že funkci povolíte. Nepožaduje se pro vlastní přihlášení uživatelů.
 
     >[!NOTE]
     >Azure AD Connect verze 1.1.557.0, 1.1.558.0, 1.1.561.0 a 1.1.614.0 mají problém týkající se synchronizace hodnot hash hesel. Pokud nehodláte použít synchronizaci hodnot hash hesel ve spojení s předávacím ověřováním, přečtěte si [poznámky k verzi Azure AD Connect](./reference-connect-version-history.md) , _kde najdete další_ informace.
@@ -107,7 +107,7 @@ Bezproblémovou přihlašování pro uživatele můžete postupně zavádět pom
 Kromě toho musíte povolit nastavení zásad zóny intranetu **s názvem povolit aktualizace stavového řádku prostřednictvím skriptu** prostřednictvím zásady skupiny. 
 
 >[!NOTE]
-> Následující pokyny fungují pouze pro Internet Explorer a Google Chrome ve Windows (Pokud sdílí sadu adres URL důvěryhodných webů s Internet Explorerem). V další části najdete pokyny k nastavení Mozilla Firefox a Google Chrome v macOS.
+> Následující pokyny fungují pouze pro Internet Explorer, Microsoft Edge a Google Chrome ve Windows (Pokud sdílí sadu adres URL důvěryhodných webů s Internet Explorerem). V další části najdete pokyny k nastavení Mozilla Firefox a Google Chrome v macOS.
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Proč je potřeba upravit nastavení intranetové zóny uživatelů?
 
@@ -124,7 +124,7 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
 
 1. Otevřete nástroj Editor pro správu zásad skupiny.
 2. Upravte zásady skupiny, které se aplikují na některé nebo všechny uživatele. V tomto příkladu se používá **výchozí zásada domény**.
-3. Přejděte do části zásady **Konfigurace uživatele**  >  **Policy**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Internet Explorer**  >  Stránka zabezpečení**ovládacích panelů Internetu**  >  **Security Page**. Pak vyberte **seznam přiřazení lokality k zóně**.
+3. Přejděte na **zásady konfigurace uživatele**  >  **Policies**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Internet Explorer**  >  Stránka zabezpečení **ovládacích panelů Internetu** aplikace Internet Explorer  >  **Security Page**. Pak vyberte **seznam přiřazení lokality k zóně**.
     ![Snímek obrazovky se zvolenou stránkou zabezpečení se seznamem pro přiřazení na webu k zóně](./media/how-to-connect-sso-quick-start/sso6.png)
 4. Povolte tuto zásadu a v dialogovém okně zadejte následující hodnoty:
    - **Název hodnoty**: adresa URL služby Azure AD, na které se předávají lístky protokolu Kerberos.
@@ -144,7 +144,7 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
 
     ![Snímek obrazovky zobrazující okno zobrazit obsah s vybraným přiřazením zóny](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. Přejděte do části zásady **Konfigurace uživatele**  >  **Policy**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Internet Explorer Internet Explorer**  >  Stránka zabezpečení**ovládací panel**  >  **stránky**  >  **intranetu**. Pak vyberte možnost **Povolení aktualizací stavového řádku prostřednictvím skriptu**.
+6. Přejděte do části zásady **Konfigurace uživatele**  >  **Policies**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Internet Explorer Internet Explorer**  >  Stránka zabezpečení **ovládací panel**  >  **stránky**  >  **intranetu**. Pak vyberte možnost **Povolení aktualizací stavového řádku prostřednictvím skriptu**.
 
     ![Snímek obrazovky zobrazující stránku intranetová zóna s vybraným příkazem pro povolení aktualizací stavového řádku prostřednictvím skriptu.](./media/how-to-connect-sso-quick-start/sso11.png)
 
@@ -161,10 +161,10 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
     ![Snímek obrazovky s vybraným registrem a položkou registru](./media/how-to-connect-sso-quick-start/sso15.png)
 
 4. Do příslušných polí zadejte následující hodnoty a klikněte na **OK**.
-   - **Cesta ke klíči**: ***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon***
-   - **Název hodnoty**: ***https***
-   - **Typ hodnoty**: ***REG_DWORD***
-   - **Data hodnoty**: ***00000001***
+   - **Cesta ke klíči**: **_Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon_* _
+   - _* Název hodnoty * *: **_https_*_
+   - _* Typ hodnoty * *: **_REG_DWORD_*_
+   - _* Data hodnoty * *: **_00000001_*_
  
      ![Snímek obrazovky se zobrazeným oknem "nové vlastnosti registru".](./media/how-to-connect-sso-quick-start/sso16.png)
  
@@ -176,7 +176,7 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
 
 Mozilla Firefox nepoužívá automatické ověřování pomocí protokolu Kerberos. Každý uživatel musí do svého nastavení Firefox ručně přidat adresu URL služby Azure AD pomocí následujících kroků:
 1. Spusťte Firefox a `about:config` do adresního řádku zadejte. Zavřete všechna oznámení, která vidíte.
-2. Vyhledejte **síť. vyjednat-auth. Trusted-URI** preference. Tato předvolby obsahuje seznam důvěryhodných lokalit prohlížeče Firefox pro ověřování protokolem Kerberos.
+2. Vyhledejte rozhraní _ *Network. Negotiate-auth. Trusted-URI** preference. Tato předvolby obsahuje seznam důvěryhodných lokalit prohlížeče Firefox pro ověřování protokolem Kerberos.
 3. Klikněte pravým tlačítkem a vyberte **Upravit**.
 4. `https://autologon.microsoftazuread-sso.com`Do pole zadejte.
 5. Vyberte **OK** a pak znovu otevřete prohlížeč.

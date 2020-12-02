@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ad97a822aaa6477616a6661a579df6c4ec82729
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f65ab02e06319519548eaa2c02120691a0ceef02
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919422"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498553"
 ---
 # <a name="build-resilience-in-your-identity-and-access-management-infrastructure"></a>Odolnost sestavení v infrastruktuře pro správu identit a přístupu
 
@@ -40,11 +40,11 @@ V souvislosti s infrastrukturou identity je odolnost schopnost dlouhodobě ruši
 
 ## <a name="why-worry-about-disruption"></a>Proč se obávat přerušení?
 
-V případě, že se některé součásti v řetězení volání služby Azure AD nezdařily, může každé volání systému ověřování prorušovat. To znamená, že pokud má kterákoli část vaší infrastruktury problémovou práci, může dojít k přerušení, protože uživatelé nemají přístup k aplikacím, které potřebují. Proto je omezení počtu volání ověřování a počtu závislostí v těchto voláních důležité pro vaši odolnost. Vývojáři aplikací mohou vyhodnotit určitou kontrolu nad tím, jak často jsou tokeny požadovány. Můžete například spolupracovat s vývojáři, abyste zajistili, že používají identity spravované službou Azure AD pro své aplikace bez ohledu na to, kde je to možné. 
+Každé volání systému ověřování je ovlivněno přerušením, pokud se nějaká komponenta volání nezdařila. Pokud dojde k narušení ověřování z důvodu selhání základních součástí, nebudou uživatelé přistupovat ke svým aplikacím. Proto je omezení počtu volání ověřování a počtu závislostí v těchto voláních důležité pro vaši odolnost. Vývojáři aplikací mohou vyhodnotit určitou kontrolu nad tím, jak často jsou tokeny požadovány. Můžete například spolupracovat s vývojáři, abyste zajistili, že používají identity spravované službou Azure AD pro své aplikace bez ohledu na to, kde je to možné. 
 
 V ověřovacím systému založeném na tokenech, jako je Azure AD, musí aplikace uživatele (klient) získat token zabezpečení ze systému identity, aby mohl získat přístup k aplikaci nebo jinému prostředku. Během období platnosti může klient při přístupu k aplikaci použít stejný token několikrát.
 
-Po vypršení platnosti tokenu, který aplikaci prezentuje, aplikace odmítne token a klient musí získat nový token z Azure AD. Získání nového tokenu potenciálně vyžaduje zásah uživatele, například výzvy k zadání přihlašovacích údajů. Omezení frekvence volání ověřování s využitím delších životností tokenů snižuje toto riziko. Je však nutné vyvážit životnost tokenu s rizikem vytvořeným menším počtem vyhodnocení zásad. Další informace o správě životností tokenů najdete v tomto článku o [optimalizaci výzev k opakovanému ověření](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime).
+Po vypršení platnosti tokenu, který aplikaci prezentuje, aplikace odmítne token a klient musí získat nový token z Azure AD. Získání nového tokenu potenciálně vyžaduje zásah uživatele, například výzvy k zadání přihlašovacích údajů nebo splnění jiných požadavků na ověřovací systém. Omezení frekvence volání ověřování s využitím delších tokenů snižuje nepotřebnou interakci. Je však nutné vyvážit životnost tokenu s rizikem vytvořeným menším počtem vyhodnocení zásad. Další informace o správě životností tokenů najdete v tomto článku o [optimalizaci výzev k opakovanému ověření](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime).
 
 ## <a name="ways-to-increase-resilience"></a>Způsoby, jak zvýšit odolnost
 Následující diagram znázorňuje šest konkrétních způsobů, kterými můžete zvýšit odolnost. Jednotlivé metody jsou podrobně vysvětleny v článcích, které jsou propojeny v dalších krocích tohoto článku.

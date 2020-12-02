@@ -8,17 +8,17 @@ ms.topic: quickstart
 ms.date: 11/18/2020
 ms.author: spelluru
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 2b54b167413b0fcbe7022eab4bbbf34b37225be5
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 7275e33e44c20ece6eb7d620e2c1e8032be41a7b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95810578"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498655"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-python"></a>Posílání zpráv a příjem zpráv z front Azure Service Bus (Python)
 V tomto článku se dozvíte, jak pomocí Pythonu odesílat zprávy a přijímat zprávy z Azure Service Busch front. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Předplatné Azure. Můžete aktivovat výhody pro [předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Pokud nemáte frontu, ve které byste mohli pracovat, postupujte podle kroků v tématu [použití Azure Portal k vytvoření fronty Service Bus](service-bus-quickstart-portal.md) . Poznamenejte si **připojovací řetězec** pro obor názvů Service Bus a název **fronty** , kterou jste vytvořili.
 - Python 2,7 nebo vyšší s nainstalovaným balíčkem [Python Azure Service Bus](https://pypi.python.org/pypi/azure-servicebus) . Další informace najdete v příručce pro [instalaci Pythonu](/azure/developer/python/azure-sdk-install). 
@@ -208,5 +208,4 @@ Podívejte se na následující dokumentaci a ukázky:
 - [Ukázky](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples). 
     - Složka **sync_samples** obsahuje ukázky, které ukazují, jak pracovat s Service Bus synchronním způsobem. V tomto rychlém startu jste použili tuto metodu. 
     - Složka **async_samples** obsahuje ukázky, které ukazují, jak pracovat s Service Bus asynchronním způsobem. 
-- [Referenční dokumentace k Azure-ServiceBus](https://docs.microsoft.com/python/api/azure-servicebus/azure.servicebus?view=azure-python-preview&preserve-view=true)
-
+- [Referenční dokumentace k Azure-ServiceBus](/python/api/azure-servicebus/azure.servicebus?preserve-view=true&view=azure-python-preview)

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: fceef1fa9f79ead0ffbbfd7de17b21b750659fc9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1e3551834e7664d5036fa8a5e0497e5a37f61c2f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370232"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498502"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimalizace virtuálního počítače s Linuxem v Azure
 Vytváření virtuálních počítačů se systémem Linux je snadné z příkazového řádku nebo z portálu. V tomto kurzu se dozvíte, jak zajistit, že jste ho nastavili tak, aby optimalizoval jeho výkon na platformě Microsoft Azure. V tomto tématu se používá virtuální počítač s Ubuntu serverem, ale můžete také vytvořit virtuální počítač se systémem Linux pomocí [vlastních imagí jako šablon](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -150,9 +150,9 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 Ubuntu 18,04 s jádrem optimalizovaným pro Azure používá vstupně-výstupní plánovače s více frontami. V tomto scénáři `none` je místo toho vhodný výběr `noop` . Další informace najdete v tématu [Ubuntu v/v plánovače](https://wiki.ubuntu.com/Kernel/Reference/IOSchedulers).
 
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>Použití softwarového pole RAID k dosažení vyššího vstupně-funkční operace
-Pokud vaše úlohy vyžadují víc IOps než jeden disk, budete muset použít softwarovou konfiguraci RAID o více discích. Vzhledem k tomu, že Azure už provádí odolnost disku v místní vrstvě prostředků infrastruktury, dosahuje nejvyšší úrovně výkonu z konfigurace prokládání RAID-0.  Zřizování a vytváření disků v prostředí Azure a jejich připojení k VIRTUÁLNÍmu počítači se systémem Linux před vytvořením oddílů, formátování a připojení jednotek.  Další podrobnosti o konfiguraci nastavení RAID softwaru na VIRTUÁLNÍm počítači Linux v Azure najdete v dokumentu **[Konfigurace softwarového pole RAID v systému Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** .
+Pokud vaše úlohy vyžadují víc IOps než jeden disk, budete muset použít softwarovou konfiguraci RAID o více discích. Vzhledem k tomu, že Azure už provádí odolnost disku v místní vrstvě prostředků infrastruktury, dosahuje nejvyšší úrovně výkonu z konfigurace prokládání RAID-0.  Zřizování a vytváření disků v prostředí Azure a jejich připojení k VIRTUÁLNÍmu počítači se systémem Linux před vytvořením oddílů, formátování a připojení jednotek.  Další podrobnosti o konfiguraci nastavení RAID softwaru na VIRTUÁLNÍm počítači Linux v Azure najdete v dokumentu **[Konfigurace softwarového pole RAID v systému Linux](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** .
 
-Jako alternativu k tradiční konfiguraci RAID se taky můžete rozhodnout nainstalovat Správce logických svazků (LVM), aby se nakonfigurovali řada fyzických disků na jeden prokládaný svazek logického úložiště. V této konfiguraci jsou čtení a zápisy distribuované na více disků, které jsou obsažené ve skupině svazků (podobně jako RAID0). Z důvodů výkonu je pravděpodobně vhodné proložit logické svazky tak, aby čtení a zápis využily všechny připojené datové disky.  Další podrobnosti o konfiguraci prokládaného logického svazku na VIRTUÁLNÍm počítači Linux v Azure najdete v části **[Konfigurace LVM na virtuálním počítači Linux v Azure](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** Documentation.
+Jako alternativu k tradiční konfiguraci RAID se taky můžete rozhodnout nainstalovat Správce logických svazků (LVM), aby se nakonfigurovali řada fyzických disků na jeden prokládaný svazek logického úložiště. V této konfiguraci jsou čtení a zápisy distribuované na více disků, které jsou obsažené ve skupině svazků (podobně jako RAID0). Z důvodů výkonu je pravděpodobně vhodné proložit logické svazky tak, aby čtení a zápis využily všechny připojené datové disky.  Další podrobnosti o konfiguraci prokládaného logického svazku na VIRTUÁLNÍm počítači Linux v Azure najdete v části **[Konfigurace LVM na virtuálním počítači Linux v Azure](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** Documentation.
 
 ## <a name="next-steps"></a>Další kroky
 Mějte na paměti, že stejně jako u všech diskusí optimalizace je potřeba provést testy před a po každé změně, aby se projevil dopad změny.  Optimalizace je podrobný proces, který má různé výsledky v různých počítačích ve vašem prostředí.  To, co pro jednu konfiguraci funguje, nemusí fungovat pro jiné.
@@ -160,4 +160,4 @@ Mějte na paměti, že stejně jako u všech diskusí optimalizace je potřeba p
 Některé užitečné odkazy na další prostředky:
 
 * [Uživatelská příručka nástroje Azure Linux Agent](../extensions/agent-linux.md)
-* [Konfigurace softwarového pole RAID v systému Linux](configure-raid.md)
+* [Konfigurace softwarového pole RAID v systému Linux](/previous-versions/azure/virtual-machines/linux/configure-raid)

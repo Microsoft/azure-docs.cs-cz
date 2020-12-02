@@ -8,16 +8,16 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 6b523ac306feef2e4c82b3739096b26158c55fc3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 5c0336b80bee1cd5eb76d0ce3d5f99c7296a8467
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741724"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499760"
 ---
 # <a name="use-the-azure-cli-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Použití rozhraní příkazového řádku Azure k povolení kompletního šifrování pomocí šifrování na hostiteli
 
-Pokud povolíte šifrování na hostiteli, data uložená na hostiteli virtuálního počítače se zašifrují v klidovém stavu a toky se zašifrují do služby úložiště. Koncepční informace o šifrování na hostiteli a také o dalších typech šifrování spravovaného disku najdete v tématu [šifrování v rámci hostitele – koncové šifrování pro data virtuálních počítačů](disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
+Pokud povolíte šifrování na hostiteli, data uložená na hostiteli virtuálního počítače se zašifrují v klidovém stavu a toky se zašifrují do služby úložiště. Koncepční informace o šifrování na hostiteli a také o dalších typech šifrování spravovaného disku najdete v tématu [šifrování v rámci hostitele – koncové šifrování pro data virtuálních počítačů](../disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
 
 ## <a name="restrictions"></a>Omezení
 
@@ -187,7 +187,7 @@ az vmss show -n $vmssName \
 
 Starší verze virtuálních počítačů se nepodporují. Seznam podporovaných velikostí virtuálních počítačů najdete v těchto verzích:
 
-Volání [rozhraní API SKU prostředku](/rest/api/compute/resourceskus/list) a kontrola, zda `EncryptionAtHostSupported` je funkce nastavena na **hodnotu true** .
+Volání [rozhraní API SKU prostředku](/rest/api/compute/resourceskus/list) a kontrola, zda `EncryptionAtHostSupported` je funkce nastavena na **hodnotu true**.
 
 ```json
     {

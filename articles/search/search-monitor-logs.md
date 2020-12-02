@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 52230d6b13c4210e0ff8e85d0a3efe39af55f6e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6fcf5980cf64b5fc088dfa295ef6221ffda6de9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935054"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499930"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Shromažďování a analýza dat protokolu pro Azure Kognitivní hledání
 
@@ -25,11 +25,11 @@ Při nastavování diagnostického protokolování budete požádáni o zadání
 
 | Prostředek | Použití |
 |----------|----------|
-| [Odeslání do pracovního prostoru služby Log Analytics](../azure-monitor/learn/tutorial-resource-logs.md) | Události a metriky se odesílají do Log Analytics pracovního prostoru, který se dá dotazovat na portálu, aby vracel podrobné informace. Úvod najdete v tématu Začínáme [s protokoly Azure monitor](../azure-monitor/log-query/get-started-portal.md) . |
+| [Odeslání do pracovního prostoru služby Log Analytics](../azure-monitor/learn/tutorial-resource-logs.md) | Události a metriky se odesílají do Log Analytics pracovního prostoru, který se dá dotazovat na portálu, aby vracel podrobné informace. Úvod najdete v tématu Začínáme [s protokoly Azure monitor](../azure-monitor/log-query/log-analytics-tutorial.md) . |
 | [Archivace s úložištěm objektů BLOB](../storage/blobs/storage-blobs-overview.md) | Události a metriky se archivují do kontejneru objektů BLOB a ukládají se do souborů JSON. Protokoly můžou být poměrně podrobné (za hodinu a minutu), které jsou užitečné pro zkoumání konkrétního incidentu, ale ne pro vyšetřování otevřeného a nedokončeného. K zobrazení nezpracovaného souboru protokolu nebo Power BI k agregaci a vizualizaci dat protokolu použijte Editor JSON.|
 | [Streamování do centra událostí](../event-hubs/index.yml) | Události a metriky se streamují do služby Azure Event Hubs. Tuto možnost vyberte jako alternativní službu pro shromažďování dat pro velmi velké protokoly. |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Vytvářejte prostředky předem, abyste při konfiguraci diagnostického protokolování mohli vybrat jednu nebo víc.
 
@@ -68,7 +68,7 @@ Pro úložiště objektů BLOB trvá jednu hodinu, než se kontejnery zobrazí v
 
 Dvě tabulky obsahují protokoly a metriky pro Azure Kognitivní hledání: **AzureDiagnostics** a **AzureMetrics**.
 
-1. V části **monitorování**vyberte **protokoly**.
+1. V části **monitorování** vyberte **protokoly**.
 
 1. Do okna dotazu zadejte **AzureMetrics** . Spusťte tento jednoduchý dotaz, abyste se seznámili s daty shromážděnými v této tabulce. Posuňte se v tabulce, abyste zobrazili metriky a hodnoty. Všimněte si, že počet záznamů v horní části a pokud vaše služba shromažďuje metriky pro určitou chvíli, možná budete chtít upravit časový interval, abyste získali spravovatelnou datovou sadu.
 
@@ -120,7 +120,7 @@ AzureDiagnostics
 
 Události zaznamenané v Azure Monitor zahrnují i ty, které souvisejí s indexováním a dotazy. Tabulka **AzureDiagnostics** v Log Analytics shromažďuje provozní data týkající se dotazů a indexování.
 
-| OperationName | Description |
+| OperationName | Popis |
 |---------------|-------------|
 | ServiceStats | Tato operace je rutinním voláním metody [Get Service STATISTICS](/rest/api/searchservice/get-service-statistics), která je volána přímo nebo implicitně k naplnění stránky přehledu portálu při načtení nebo aktualizaci. |
 | Dotaz. Search |  Dotazy na požadavky na index najdete v tématu [monitorování dotazů](search-monitor-queries.md) pro informace o protokolovaných dotazech.|

@@ -11,16 +11,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: axelg
-ms.openlocfilehash: 9e3b376cfaf5379acaf92713c42509471200d066
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: fc609b60c9d5d4d4734c3d73cbda87935b533caf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95549928"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500253"
 ---
 # <a name="troubleshooting-azure-linux-guest-agent"></a>Řešení potíží s agentem hosta v Azure Linux
 
-[Agent hosta Azure Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) je agent virtuálního počítače (VM). Umožňuje virtuálnímu počítači komunikovat s řadičem prostředků infrastruktury (základní fyzický server, na kterém je hostovaný virtuální počítač), na IP adrese 168.63.129.16. Tato IP adresa je virtuální veřejná IP adresa, která usnadňuje komunikaci. Další informace najdete v tématu [co je IP adresa 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md).
+[Agent hosta Azure Linux](../extensions/agent-linux.md) je agent virtuálního počítače (VM). Umožňuje virtuálnímu počítači komunikovat s řadičem prostředků infrastruktury (základní fyzický server, na kterém je hostovaný virtuální počítač), na IP adrese 168.63.129.16. Tato IP adresa je virtuální veřejná IP adresa, která usnadňuje komunikaci. Další informace najdete v tématu [co je IP adresa 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 
 ## <a name="checking-agent-status-and-version"></a>Kontroluje se stav a verze agenta.
 

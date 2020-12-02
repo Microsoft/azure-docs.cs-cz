@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: d15f58a2d87483e8e2fd6711481bfe8866ca1548
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 74e1dc12be9bfec57d76357a335b46a55912f6df
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920606"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500270"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>Řešení potíží s galeriemi sdílených imagí v Azure
 
@@ -137,7 +137,7 @@ Pokud máte problémy s prováděním jakýchkoli operací v galeriích sdílen�
 
 *Typ účtu úložiště ZRS se v této oblasti nepodporuje.*  
 **Příčina**: v oblasti, která ji ještě nepodporuje, jste zvolili standardní úložiště ZRS (zóna – redundantní úložiště).  
-**Alternativní řešení**: Změňte typ účtu úložiště na **Premium \_ LRS** nebo **standard \_ LRS**. V naší dokumentaci najdete nejnovější [seznam oblastí](/azure/storage/common/storage-redundancy#zone-redundant-storage) s povoleným ZRS Preview.
+**Alternativní řešení**: Změňte typ účtu úložiště na **Premium \_ LRS** nebo **standard \_ LRS**. V naší dokumentaci najdete nejnovější [seznam oblastí](../storage/common/storage-redundancy.md#zone-redundant-storage) s povoleným ZRS Preview.
 
 ## <a name="creating-or-updating-image-versions"></a>Vytváření a aktualizace verzí imagí ##
 

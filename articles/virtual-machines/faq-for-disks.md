@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d6cf0ba06293a073fc8fbe26e2386f1852429002
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: dcfef81f2d7f3413489490d97c143fdec7e11bed
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843991"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499318"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disků virtuálních počítačů Azure IaaS a spravovaných a nespravovaných disků Premium
 
@@ -151,7 +151,7 @@ Rezervace disku Azure nabízí možnost koupit SSD úrovně Premium v zadaných 
 Rezervace se provádějí ve formě disků, mimo kapacitu. Jinými slovy, když rezervujete disk P80 (32 TiB), získáte jeden P80 disk, takže nemůžete tuto specifickou rezervaci rozdělit do dvou menších disků P70 (16 TiB). Můžete samozřejmě vyhradit tolik disků, kolik jich budete chtít, a to včetně dvou samostatných disků P70 (16 TiB).
 
 **Jak se používá rezervace disku Azure?**    
-Rezervace disků sleduje model podobný vyhrazeným instancím virtuálních počítačů. Rozdíl mezi tím, že se rezervace disku nedá použít u různých SKU, zatímco instance virtuálního počítače může. Další informace o instancích virtuálních počítačů najdete v tématu [úspory nákladů pomocí Azure Reserved VM Instances](./linux/prepay-reserved-vm-instances.md) .     
+Rezervace disků sleduje model podobný vyhrazeným instancím virtuálních počítačů. Rozdíl mezi tím, že se rezervace disku nedá použít u různých SKU, zatímco instance virtuálního počítače může. Další informace o instancích virtuálních počítačů najdete v tématu [úspory nákladů pomocí Azure Reserved VM Instances](./prepay-reserved-vm-instances.md) .     
 
 **Můžu použít svoje úložiště dat zakoupené prostřednictvím rezervovaného disku Azure v několika oblastech?**    
 Rezervace disků Azure se kupuje pro konkrétní oblast a SKU (jako je P30 v Východní USA 2), a proto se nedá použít mimo tyto konstrukce. U všech potřeb diskových úložišť, které jsou v jiných oblastech nebo SKU, si vždycky můžete koupit další rezervované disky Azure.    

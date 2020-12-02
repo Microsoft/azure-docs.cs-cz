@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0e1b7aa0eb56d5668b6561b36a0f63e719974573
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 69cef4c17fd17219f0221c509775ad3fd6a80a27
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698892"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498978"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-the-javascript-sdk"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání pomocí sady JavaScript SDK
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "94698892"
 > * [REST](search-get-started-rest.md)
 
 
-Pomocí [JavaScriptu/TYPSCRIPT SDK pro Azure kognitivní hledání](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme) vytvořit aplikaci Node.js v JavaScriptu, která vytvoří, načte a dotazuje index vyhledávání.
+Pomocí [JavaScriptu/TYPSCRIPT SDK pro Azure kognitivní hledání](/javascript/api/overview/azure/search-documents-readme) vytvořit aplikaci Node.js v JavaScriptu, která vytvoří, načte a dotazuje index vyhledávání.
 
 Tento článek ukazuje, jak vytvořit aplikaci krok za krokem. Alternativně můžete [stáhnout zdrojový kód a data](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) a spustit aplikaci z příkazového řádku.
 
@@ -80,7 +80,7 @@ Začněte tím, že otevřete VS Code a jeho [integrovaný terminál](https://co
     ```
      Přijměte výchozí hodnoty, s výjimkou licence, kterou byste měli nastavit na hodnotu MIT. 
 
-3. Nainstalujte `@azure/search-documents` [sadu SDK pro Azure kognitivní hledání v jazyce JavaScript/Typscript](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme).
+3. Nainstalujte `@azure/search-documents` [sadu SDK pro Azure kognitivní hledání v jazyce JavaScript/Typscript](/javascript/api/overview/azure/search-documents-readme).
 
     ```cmd
     npm install @azure/search-documents

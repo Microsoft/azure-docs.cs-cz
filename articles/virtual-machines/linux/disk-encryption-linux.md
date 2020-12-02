@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e8f71b277a4f4b538d501b1fa825bc6ec43428c8
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: d2c9d810fb3bd86d68518e1ad20088a57d538bbe
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359387"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500576"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Scénáře použití služby Azure Disk Encryption na virtuálních počítačích se systémem Linux
 
@@ -201,7 +201,7 @@ Následující tabulka uvádí Správce prostředků parametry šablony pro exis
 | keyVaultName | Název trezoru klíčů, do kterého se má šifrovací klíč nahrát Můžete ji získat pomocí rutiny `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` nebo příkazu rozhraní příkazového řádku Azure CLI `az keyvault list --resource-group "MyKeyVaultResourceGroupName"` .|
 | keyVaultResourceGroup | Název skupiny prostředků, která obsahuje Trezor klíčů. |
 |  keyEncryptionKeyURL | Adresa URL klíčového šifrovacího klíče, který se používá k šifrování šifrovacího klíče. Tento parametr je nepovinný, pokud v rozevíracím seznamu UseExistingKek vyberete **nokek** . Pokud v rozevíracím seznamu UseExistingKek vyberete možnost **KEK** , musíte zadat hodnotu _keyEncryptionKeyURL_ . |
-| volumeType | Typ svazku, na kterém se operace šifrování provádí. Platné hodnoty jsou _operační systém_ , _data_ a _vše_. 
+| volumeType | Typ svazku, na kterém se operace šifrování provádí. Platné hodnoty jsou _operační systém_, _data_ a _vše_. 
 | forceUpdateTag | Pokaždé, když je potřeba vynutit spuštění operace, předat jedinečnou hodnotu, třeba identifikátor GUID. |
 | location | Umístění pro všechny prostředky |
 
@@ -413,8 +413,8 @@ Azure Disk Encryption nefunguje pro následující scénáře, funkce a technolo
 - Virtuální počítač s "vnořenými přípojnými body"; To znamená, že několik přípojných bodů v jedné cestě (například "/1stmountpoint/data/2stmountpoint").
 - Virtuální počítač s datovou jednotkou připojenou nad složku operačního systému.
 - Virtuální počítače řady M-Series s Akcelerátor zápisu disky.
-- Použití ADE na virtuální počítač, který obsahuje disky šifrované pomocí [šifrování na straně serveru s klíči spravovanými zákazníkem](disk-encryption.md) (SSE + CMK). Použití SSE + CMK na datový disk na virtuálním počítači zašifrovaném pomocí ADE je také nepodporovaný scénář.
-- Migrace virtuálního počítače, který je zašifrovaný pomocí ADE nebo který byl **někdy** ZAŠIFROVANÝ pomocí ADE, na [šifrování na straně serveru pomocí klíčů spravovaných zákazníkem](disk-encryption.md).
+- Použití ADE na virtuální počítač, který obsahuje disky šifrované pomocí [šifrování na straně serveru s klíči spravovanými zákazníkem](../disk-encryption.md) (SSE + CMK). Použití SSE + CMK na datový disk na virtuálním počítači zašifrovaném pomocí ADE je také nepodporovaný scénář.
+- Migrace virtuálního počítače, který je zašifrovaný pomocí ADE nebo který byl **někdy** ZAŠIFROVANÝ pomocí ADE, na [šifrování na straně serveru pomocí klíčů spravovaných zákazníkem](../disk-encryption.md).
 - [Velikosti virtuálních počítačů Azure bez místního dočasného disku](../azure-vms-no-temp-disk.md); konkrétně dv4, Dsv4, Ev4 a Esv4.
 
 ## <a name="next-steps"></a>Další kroky

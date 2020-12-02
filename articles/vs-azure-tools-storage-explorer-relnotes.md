@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: a53f947eb2a44cc8773be8ee2b2bd03ca899be22
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7c250f1351d83d213c5c7af5b00d7a648c5d8bc6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95520998"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499658"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Zpráva k vydání verze Průzkumníka služby Microsoft Azure Storage
 
@@ -168,7 +168,7 @@ Pokud si chcete stáhnout předchozí verze Průzkumník služby Storage, může
   * Automaticky aktualizovat #1526
   * Povolit AzCopy
   * AzCopy (SAS): Pokud existují další nastavení, která byste chtěli přidat, [otevřete prosím problém na GitHubu](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=) s popisem nastavení, které chcete zobrazit.
-* Průzkumník služby Storage teď podporuje Managed Disks. Můžete:
+* Průzkumník služby Storage teď podporuje Managed Disks. Máte následující možnosti:
   * Nahrání místního virtuálního pevného disku na nový disk
   * Stažení disku
   * Kopírování a vkládání disků napříč skupinami prostředků a oblastmi
@@ -242,7 +242,7 @@ Nahrávání, stahování a kopírování disků v různých oblastech využív�
     * Doba trvání SAS AzCopy
 
     Pokud jsou k dispozici další nastavení, která byste chtěli přidat, [otevřete prosím problém na GitHubu s popisem nastavení, které chcete zobrazit](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=).
-* Průzkumník služby Storage teď podporuje Managed Disks. Můžete:
+* Průzkumník služby Storage teď podporuje Managed Disks. Máte následující možnosti:
     * Nahrání místního virtuálního pevného disku na nový disk
     * Stažení disku
     * Kopírování a vkládání disků napříč skupinami prostředků a oblastmi
@@ -559,7 +559,7 @@ Nahrávání, stahování a kopírování disků v různých oblastech využív�
         
 ### <a name="new"></a>Nová
 
-* Nyní můžete použít Průzkumník služby Storage pro přístup k datům objektu BLOB prostřednictvím [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json). Pokud jste přihlášeni a Průzkumník služby Storage není možné načíst klíče pro váš účet úložiště, použije se k ověření při interakci s daty token OAuth.
+* Nyní můžete použít Průzkumník služby Storage pro přístup k datům objektu BLOB prostřednictvím [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Pokud jste přihlášeni a Průzkumník služby Storage není možné načíst klíče pro váš účet úložiště, použije se k ověření při interakci s daty token OAuth.
 * Průzkumník služby Storage teď podporuje účty úložiště ADLS Gen2. Když Průzkumník služby Storage zjistí, že je pro účet úložiště povolený hierarchický obor názvů, zobrazí se vedle názvu svého účtu úložiště zpráva "(ADLS Gen2 Preview). Průzkumník služby Storage je schopný zjistit, jestli je v případě přihlášení povolený hierarchický obor názvů, nebo jestli jste k účtu úložiště připojili název a klíč. Pro ADLS Gen2 účty úložiště můžete použít Průzkumník služby Storage k těmto akcím:
   * Vytváření a odstraňování kontejnerů
   * Správa vlastností kontejneru a oprávnění (levá strana)
@@ -628,7 +628,7 @@ Nahrávání, stahování a kopírování disků v různých oblastech využív�
         
 ### <a name="new"></a>Nová
 
-* Nyní můžete použít Průzkumník služby Storage pro přístup k datům objektu BLOB prostřednictvím [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json). Pokud jste přihlášeni a Průzkumník služby Storage není možné načíst klíče pro váš účet úložiště, použije se k ověření při interakci s daty token OAuth.
+* Nyní můžete použít Průzkumník služby Storage pro přístup k datům objektu BLOB prostřednictvím [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Pokud jste přihlášeni a Průzkumník služby Storage není možné načíst klíče pro váš účet úložiště, použije se k ověření při interakci s daty token OAuth.
 * Průzkumník služby Storage teď podporuje účty úložiště ADLS Gen2. Když Průzkumník služby Storage zjistí, že je pro účet úložiště povolený hierarchický obor názvů, zobrazí se vedle názvu svého účtu úložiště zpráva "(ADLS Gen2 Preview). Průzkumník služby Storage je schopný zjistit, jestli je v případě přihlášení povolený hierarchický obor názvů, nebo jestli jste k účtu úložiště připojili název a klíč. Pro ADLS Gen2 účty úložiště můžete použít Průzkumník služby Storage k těmto akcím:
   * Vytváření a odstraňování kontejnerů
   * Správa vlastností kontejneru a oprávnění (levá strana)
@@ -683,7 +683,7 @@ Nahrávání, stahování a kopírování disků v různých oblastech využív�
 
 ### <a name="new"></a>Nová
 
-* Nyní můžete použít Průzkumník služby Storage pro přístup k datům objektu BLOB prostřednictvím [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json). Pokud jste přihlášeni a Průzkumník služby Storage není možné načíst klíče pro váš účet úložiště, použije se k ověření při interakci s daty token OAuth.
+* Nyní můžete použít Průzkumník služby Storage pro přístup k datům objektu BLOB prostřednictvím [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Pokud jste přihlášeni a Průzkumník služby Storage není možné načíst klíče pro váš účet úložiště, použije se k ověření při interakci s daty token OAuth.
 * Průzkumník služby Storage teď podporuje účty úložiště ADLS Gen2. Když Průzkumník služby Storage zjistí, že je pro účet úložiště povolený hierarchický obor názvů, zobrazí se vedle názvu svého účtu úložiště zpráva "(ADLS Gen2 Preview). Průzkumník služby Storage je schopný zjistit, jestli je v případě přihlášení povolený hierarchický obor názvů, nebo jestli jste k účtu úložiště připojili název a klíč. Pro ADLS Gen2 účty úložiště můžete použít Průzkumník služby Storage k těmto akcím:
   * Vytváření a odstraňování kontejnerů
   * Správa vlastností kontejneru a oprávnění (levá strana)
@@ -810,7 +810,7 @@ Nakonec bude podpora pro použití AzCopy se sdílenými složkami přizvána v 
    * Přizpůsobte zobrazovaný název prostředku, který chcete připojit. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Připojte se k několika místním emulátorům pomocí různých portů. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Přidejte připojené prostředky k rychlému přístupu. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Můžete:
+* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Máte následující možnosti:
    * Zásadu obnovitelného odstranění můžete nakonfigurovat kliknutím pravým tlačítkem myši na uzel kontejnery objektů BLOB pro váš účet úložiště.
    * V editoru objektů BLOB vyberte aktivní a odstraněné objekty BLOB a v rozevíracím seznamu vedle navigačního panelu zobrazte měkké odstraněné objekty blob.
    * Obnovit obnovitelné odstraněné objekty blob.
@@ -866,7 +866,7 @@ Nakonec bude podpora pro použití AzCopy se sdílenými složkami přizvána v 
    * Přizpůsobte zobrazovaný název prostředku, který chcete připojit. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Připojte se k několika místním emulátorům pomocí různých portů. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Přidejte připojené prostředky k rychlému přístupu. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Můžete:
+* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Máte následující možnosti:
    * Zásadu obnovitelného odstranění můžete nakonfigurovat kliknutím pravým tlačítkem myši na uzel kontejnery objektů BLOB pro váš účet úložiště.
    * V editoru objektů BLOB vyberte aktivní a odstraněné objekty BLOB a v rozevíracím seznamu vedle navigačního panelu zobrazte měkké odstraněné objekty blob.
    * Obnovit obnovitelné odstraněné objekty blob.
@@ -921,7 +921,7 @@ Nakonec bude podpora pro použití AzCopy se sdílenými složkami přizvána v 
    * Přizpůsobte zobrazovaný název prostředku, který chcete připojit. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Připojte se k několika místním emulátorům pomocí různých portů. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Přidejte připojené prostředky k rychlému přístupu. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Můžete:
+* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Máte následující možnosti:
    * Zásadu obnovitelného odstranění můžete nakonfigurovat kliknutím pravým tlačítkem myši na uzel kontejnery objektů BLOB pro váš účet úložiště.
    * V editoru objektů BLOB vyberte aktivní a odstraněné objekty BLOB a v rozevíracím seznamu vedle navigačního panelu zobrazte měkké odstraněné objekty blob.
    * Obnovit obnovitelné odstraněné objekty blob.
@@ -981,7 +981,7 @@ Nakonec bude podpora pro použití AzCopy se sdílenými složkami přizvána v 
    * Přizpůsobte zobrazovaný název prostředku, který chcete připojit. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Připojte se k několika místním emulátorům pomocí různých portů. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Přidejte připojené prostředky k rychlému přístupu. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Můžete:
+* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Máte následující možnosti:
    * Zásadu obnovitelného odstranění můžete nakonfigurovat kliknutím pravým tlačítkem myši na uzel kontejnery objektů BLOB pro váš účet úložiště.
    * V editoru objektů BLOB vyberte aktivní a odstraněné objekty BLOB a v rozevíracím seznamu vedle navigačního panelu zobrazte měkké odstraněné objekty blob.
    * Obnovit obnovitelné odstraněné objekty blob.

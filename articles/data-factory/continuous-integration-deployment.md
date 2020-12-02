@@ -5,18 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: aef85b263a142c001d47bac4aed7a71066e26dae
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a7d392412aa481d9541cd4987cfb4c18d04dafa0
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350445"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500151"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Průběžná integrace a doručování v Azure Data Factory
 
@@ -305,7 +305,7 @@ Tady je příklad toho, co může šablona Parametrizace vypadat jako:
 ```
 Zde je vysvětlení, jak je předchozí šablona vytvořena, rozdělená podle typu prostředku.
 
-#### <a name="pipelines"></a>Kanály
+#### <a name="pipelines"></a>Pipelines
     
 * Vlastnost v cestě `activities/typeProperties/waitTimeInSeconds` je parametrizovaná. Všechny aktivity v kanálu, které mají vlastnost na úrovni kódu s názvem `waitTimeInSeconds` (například `Wait` aktivita), jsou parametrizované jako číslo s výchozím názvem. V šabloně Správce prostředků ale nebude mít výchozí hodnotu. Během nasazení Správce prostředků se bude jednat o povinný vstup.
 * Podobně je vlastnost s názvem `headers` (například v `Web` aktivitě) Parametrizovaná s typem `object` (JObject). Má výchozí hodnotu, která je stejná jako hodnota zdrojové továrny.

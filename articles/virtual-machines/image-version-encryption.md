@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: b19dab8dffaa0c9c888e8a9974a43cbb48006fd7
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 0f5eb6a2964cdb679c2a83bd9d9b6296e3e962ed
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504318"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499284"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Verze Preview: použití klíčů spravovaných zákazníkem pro šifrování imagí
 
@@ -23,7 +23,7 @@ Pro šifrování imagí můžete spoléhat na klíče spravované platformou neb
 
 Šifrování na straně serveru prostřednictvím klíčů spravovaných zákazníkem používá Azure Key Vault. Můžete buď importovat [klíče RSA](../key-vault/keys/hsm-protected-keys.md) do trezoru klíčů, nebo vygenerovat nové klíče RSA v Azure Key Vault.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento článek vyžaduje, abyste již v každé oblasti, kam chcete replikovat bitovou kopii, nastavili šifrování disku:
 
@@ -220,6 +220,6 @@ Virtuální počítač můžete vytvořit z verze image a pomocí klíčů sprav
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [šifrování disků na straně serveru](./windows/disk-encryption.md).
+Přečtěte si další informace o [šifrování disků na straně serveru](./disk-encryption.md).
 
 Informace o tom, jak dokoupit informace o plánu nákupu, najdete v tématu [zadání informací o plánu nákupu Azure Marketplace při vytváření imagí](marketplace-images.md).

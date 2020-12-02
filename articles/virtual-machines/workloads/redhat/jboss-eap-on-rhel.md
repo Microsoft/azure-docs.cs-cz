@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 8a4df7bf-be49-4198-800e-db381cda98f5
 ms.date: 10/30/2020
-ms.openlocfilehash: ce07a0667b1fd4b439f061966e4ee0b1112578c4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: bab84b12c871c621b5a317ba8b47f9b18c91bff3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413203"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500185"
 ---
 # <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>Nasazení podnikových aplikací v jazyce Java do Azure pomocí protokolu JBoss EAP na Red Hat Enterprise Linux
 
@@ -31,7 +31,7 @@ JBoss EAP a RHEL obsahují všechno, co potřebujete k sestavování, spouštěn
 
   Pokud nemáte nárok na protokol EAP, Získejte před zahájením [zkušební předplatné JBoss EAP](https://access.redhat.com/products/red-hat-jboss-enterprise-application-platform/evaluation) . Pokud chcete vytvořit nové předplatné Red Hat, navštivte [zákaznický portál Red Hat](https://access.redhat.com/) a nastavte účet.
 
-* Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/overview)
+* Rozhraní příkazového [řádku Azure](/cli/azure/overview)
 
 * RHEL možnosti. Vyberte si průběžné platby (PAYG) nebo Přineste si vlastní předplatné (BYOS). Pomocí BYOS je třeba před nasazením šablony pro rychlé zprovoznění aktivovat image [Red Hat Cloud Access](https://access.redhat.com/) RHEL Gold.
 
@@ -123,7 +123,7 @@ Tento spouštěcí skript používá soubor EAP_HOME/bin/Standalone.conf k nasta
 
 Podrobnosti o dostupných samostatných konfiguračních souborech a jejich použití najdete v tématu [samostatné konfigurační soubory serveru pro eap 7,2](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.2/html/configuration_guide/jboss_eap_management#standalone_server_configuration_files) nebo [samostatné soubory konfigurace serveru pro EAP 7,3](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.3/html/configuration_guide/jboss_eap_management#standalone_server_configuration_files). 
 
-K zahájení JBoss protokolu EAP s jinou konfigurací použijte `--server-config` argument. Zde je příklad:
+K zahájení JBoss protokolu EAP s jinou konfigurací použijte `--server-config` argument. Příklad:
     
  ```
  $EAP_HOME/bin/standalone.sh --server-config=standalone-full.xml
@@ -164,9 +164,9 @@ Pokud chcete používat BYOS pro RHEL operační systém, musíte mít platné p
 
    1. Počkejte, až budou image Red Hat Gold dostupné ve vašem předplatném Azure. Tyto image jsou obvykle k dispozici do tří hodin od odeslání.
     
-3. Přijměte Azure Marketplace podmínky a ujednání pro Image BYOS pro RHEL. Tento proces můžete dokončit spuštěním následujících příkazů rozhraní příkazového řádku Azure. Další informace najdete v tématu [RHEL BYOS Gold images v](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos) dokumentaci k Azure. Je důležité, abyste spustili nejnovější verzi rozhraní příkazového řádku Azure CLI.
+3. Přijměte Azure Marketplace podmínky a ujednání pro Image BYOS pro RHEL. Tento proces můžete dokončit spuštěním následujících příkazů rozhraní příkazového řádku Azure. Další informace najdete v tématu [RHEL BYOS Gold images v](./byos.md) dokumentaci k Azure. Je důležité, abyste spustili nejnovější verzi rozhraní příkazového řádku Azure CLI.
 
-   1. Otevřete relaci Azure CLI a ověřte ji pomocí svého účtu Azure. Pomoc najdete v tématu [přihlášení pomocí Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli).
+   1. Otevřete relaci Azure CLI a ověřte ji pomocí svého účtu Azure. Pomoc najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli).
 
    1. Spuštěním následujícího příkazu rozhraní příkazového řádku ověřte, jestli jsou image RHEL BYOS ve vašem předplatném k dispozici. Pokud tady žádné výsledky nezískáte, ujistěte se, že je pro image RHEL BYOS aktivované předplatné Azure.
    
@@ -203,7 +203,7 @@ Protokol EAP JBoss je k dispozici v Azure pouze prostřednictvím modelu BYOS. P
   New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri <raw link to the template which can be obtained from github>
   ```
  
-  Informace o instalaci a konfiguraci Azure PowerShell najdete v [dokumentaci k prostředí PowerShell](https://docs.microsoft.com/powershell/azure/).  
+  Informace o instalaci a konfiguraci Azure PowerShell najdete v [dokumentaci k prostředí PowerShell](/powershell/azure/).  
 
 - Rozhraní příkazového **řádku Azure** Nasaďte šablonu spuštěním následujících příkazů:
 
@@ -215,7 +215,7 @@ Protokol EAP JBoss je k dispozici v Azure pouze prostřednictvím modelu BYOS. P
   az group deployment create --resource-group <my-resource-group> --template-uri <raw link to the template which can be obtained from github>
   ```
 
-  Podrobnosti o instalaci a konfiguraci rozhraní příkazového řádku Azure najdete v tématu [instalace rozhraní](https://docs.microsoft.com/cli/azure/install-azure-cli)příkazového řádku.
+  Podrobnosti o instalaci a konfiguraci rozhraní příkazového řádku Azure najdete v tématu [instalace rozhraní](/cli/azure/install-azure-cli)příkazového řádku.
 
 - **Azure Portal.** Do Azure Portal můžete nasadit pomocí přechodu na šablony Azure pro rychlý Start, jak je uvedeno v následující části. Po práci v rychlém startu vyberte tlačítko **nasadit do Azure** nebo **Procházet na GitHubu** .
 
@@ -231,10 +231,10 @@ Můžete začít pomocí jedné z následujících šablon pro rychlý Start pro
 
 ## <a name="resource-links"></a>Odkazy na prostředky
 
-* [Zvýhodněné hybridní využití Azure](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
-* [Konfigurace aplikace Java pro Azure App Service](https://docs.microsoft.com/azure/app-service/configure-language-java)
+* [Zvýhodněné hybridní využití Azure](../../windows/hybrid-use-benefit-licensing.md)
+* [Konfigurace aplikace Java pro Azure App Service](../../../app-service/configure-language-java.md)
 * [JBoss EAP na Azure Red Hat OpenShift](https://azure.microsoft.com/services/openshift/)
-* [JBoss EAP na Azure App Service Linux](https://docs.microsoft.com/azure/app-service/quickstart-java)
+* [JBoss EAP na Azure App Service Linux](../../../app-service/quickstart-java.md)
 * [Nasazení protokolu JBoss EAP na Azure App Service](https://github.com/JasonFreeberg/jboss-on-app-service)
 
 ## <a name="next-steps"></a>Další kroky
@@ -242,6 +242,6 @@ Můžete začít pomocí jedné z následujících šablon pro rychlý Start pro
 * Přečtěte si další informace o [JBoss EAP 7,2](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/).
 * Přečtěte si další informace o [JBoss EAP 7,3](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.3/).
 * Přečtěte si další informace o [správě předplatných Red Hat](https://access.redhat.com/products/red-hat-subscription-management).
-* Přečtěte si o [úlohách Red Hat v Azure](https://aka.ms/rhel-docs).
+* Přečtěte si o [úlohách Red Hat v Azure](./overview.md).
 * Nasaďte [JBoss EAP na virtuálním počítači s RHEL nebo v sadě škálování virtuálního počítače z Azure Marketplace](https://aka.ms/AMP-JBoss-EAP).
 * Nasaďte [JBoss EAP na virtuálním počítači s RHEL nebo na sadu virtuálních počítačů s využitím šablon Azure pro rychlý Start](https://aka.ms/Quickstart-JBoss-EAP).

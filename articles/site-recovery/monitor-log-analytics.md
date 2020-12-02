@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 7d11fa8605d9cd5f335b6be56097caf7a5222bbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3d3ce8218030bc8ba6c59b26b7360bf2299e02a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006937"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499811"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Monitorování Site Recovery s využitím protokolů Azure Monitoru
 
@@ -36,7 +36,7 @@ Zde je seznam toho, co k tomu potřebujete:
 
 - Aspoň jeden počítač chráněný v úložišti Recovery Services.
 - Log Analytics pracovní prostor pro ukládání protokolů Site Recovery. [Přečtěte si o](../azure-monitor/learn/quick-create-workspace.md) nastavení pracovního prostoru.
-- Základní informace o tom, jak zapisovat, spouštět a analyzovat dotazy protokolu v Log Analytics. [Další informace](../azure-monitor/log-query/get-started-portal.md).
+- Základní informace o tom, jak zapisovat, spouštět a analyzovat dotazy protokolu v Log Analytics. [Další informace](../azure-monitor/log-query/log-analytics-tutorial.md).
 
 Než začnete, doporučujeme, abyste si přečtěte [běžné otázky týkající se monitorování](monitoring-common-questions.md) .
 
@@ -46,7 +46,7 @@ Než začnete, doporučujeme, abyste si přečtěte [běžné otázky týkajíc�
 
     ![Snímek obrazovky znázorňující možnost Přidat nastavení diagnostiky](./media/monitoring-log-analytics/add-diagnostic.png)
 
-2. V okně **nastavení diagnostiky**zadejte název a zaškrtněte políčko **Odeslat do Log Analytics**.
+2. V okně **nastavení diagnostiky** zadejte název a zaškrtněte políčko **Odeslat do Log Analytics**.
 3. Vyberte odběr Azure Monitor protokoly a pracovní prostor Log Analytics.
 4. V přepínači vyberte **Azure Diagnostics** .
 5. V seznamu protokol vyberte všechny protokoly s předponou **AzureSiteRecovery**. Pak klikněte na **OK**.

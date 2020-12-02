@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c02b6bcb6587313f84c4b900fba49df540d12c07
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0418c11d84fb82ac4a4b181289f032407a29f92e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966356"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500661"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault rozšíření virtuálního počítače pro Windows
 
@@ -36,9 +36,9 @@ Rozšíření virtuálního počítače Key Vault je podporované taky na vlastn
 - PEM
 
 ## <a name="prerequisities"></a>Konfigurátoru
-  - Key Vault instance s certifikátem Viz [vytvoření Key Vault](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)
-  - Virtuální počítač/VMSS musí mít přiřazenou [spravovanou identitu](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) .
-  - Zásady přístupu Key Vault musí být nastavené s tajnými klíči `get` a `list` oprávněním pro SPRAVOVANOU identitu VM/VMSS k načtení části certifikátu tajného klíče. Další informace najdete v tématu [ověření Key Vault](/azure/key-vault/general/authentication) a [přiřazení zásad Key Vault přístupu](/azure/key-vault/general/assign-access-policy-cli).
+  - Key Vault instance s certifikátem Viz [vytvoření Key Vault](../../key-vault/general/quick-create-portal.md)
+  - Virtuální počítač/VMSS musí mít přiřazenou [spravovanou identitu](../../active-directory/managed-identities-azure-resources/overview.md) .
+  - Zásady přístupu Key Vault musí být nastavené s tajnými klíči `get` a `list` oprávněním pro SPRAVOVANOU identitu VM/VMSS k načtení části certifikátu tajného klíče. Další informace najdete v tématu [ověření Key Vault](../../key-vault/general/authentication.md) a [přiřazení zásad Key Vault přístupu](../../key-vault/general/assign-access-policy-cli.md).
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
@@ -90,7 +90,7 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 
 | Name | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
-| apiVersion | 2019-07-01 | datum |
+| apiVersion | 2019-07-01 | date |
 | vydavatel | Microsoft.Azure.KeyVault | řetězec |
 | typ | KeyVaultForWindows | řetězec |
 | typeHandlerVersion | 1,0 | int |
@@ -111,7 +111,7 @@ Rozšíření virtuálních počítačů Azure je možné nasadit pomocí šablo
 Konfigurace JSON pro rozšíření virtuálního počítače musí být vnořená v rámci fragmentu prostředků virtuálního počítače v šabloně, konkrétně `"resources": []` objekt pro šablonu virtuálního počítače a v případě sady škálování virtuálního počítače v `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` objektu Object.
 
  > [!NOTE]
-> Rozšíření virtuálních počítačů by vyžadovalo přiřazení spravované identity systému nebo uživatele k ověření do trezoru klíčů.  Další informace najdete v tématu [ověření Key Vault a přiřazení zásad Key Vault přístupu.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+> Rozšíření virtuálních počítačů by vyžadovalo přiřazení spravované identity systému nebo uživatele k ověření do trezoru klíčů.  Další informace najdete v tématu [ověření Key Vault a přiřazení zásad Key Vault přístupu.](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 > 
 
 ```json

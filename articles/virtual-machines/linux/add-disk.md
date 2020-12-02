@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 7098744fe012c994e311696a376cd7ed0dc9ac53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9520196c8dce9ea511c2f3b799bd12b34c6f988f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89076612"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499743"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Přidání disku do virtuálního počítače s Linuxem
 
@@ -34,7 +34,7 @@ az vm disk attach \
 
 ## <a name="attach-an-existing-disk"></a>Připojení stávajícího disku
 
-Pokud chcete připojit stávající disk, najděte ID disku a předejte ho příkazu [AZ VM disk Attach](/cli/azure/vm/disk?view=azure-cli-latest) . Následující příklady dotazů na disk s názvem *myDataDisk* v *myResourceGroup*ho připojí k virtuálnímu počítači s názvem *myVM*:
+Pokud chcete připojit stávající disk, najděte ID disku a předejte ho příkazu [AZ VM disk Attach](/cli/azure/vm/disk?view=azure-cli-latest) . Následující příklady dotazů na disk s názvem *myDataDisk* v *myResourceGroup* ho připojí k virtuálnímu počítači s názvem *myVM*:
 
 ```azurecli
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
@@ -70,7 +70,7 @@ sdb     1:0:1:0      14G
 sdc     3:0:0:0      50G
 ```
 
-Tady `sdc` je disk, který chceme, protože je 50G. Pokud si nejste jistí, který disk je založený jenom na velikosti, můžete přejít na stránku virtuálního počítače na portálu, vybrat **disky**a zkontrolovat číslo logické jednotky disku v části **datové disky**. 
+Tady `sdc` je disk, který chceme, protože je 50G. Pokud si nejste jistí, který disk je založený jenom na velikosti, můžete přejít na stránku virtuálního počítače na portálu, vybrat **disky** a zkontrolovat číslo logické jednotky disku v části **datové disky**. 
 
 
 ### <a name="format-the-disk"></a>Naformátovat disk
@@ -182,4 +182,4 @@ Existují dva způsoby, jak na svém VIRTUÁLNÍm počítači se systémem Linux
 ## <a name="next-steps"></a>Další kroky
 
 * Pokud chcete mít jistotu, že je váš virtuální počítač se systémem Linux nakonfigurovaný správně, Projděte si doporučení [optimalizace výkonu počítačů se systémem Linux](optimization.md) .
-* Kapacitu úložiště můžete rozšířit přidáním dalších disků a [konfigurací RAID](configure-raid.md) pro další výkon.
+* Kapacitu úložiště můžete rozšířit přidáním dalších disků a [konfigurací RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) pro další výkon.

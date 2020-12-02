@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/30/2017
 ms.author: vikdesai
-ms.openlocfilehash: 5df56b304463ab981026fbe0c82d831d83d702c3
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: f23d1fb0162abf05fba97c2f6fb02be9238fabd2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93380147"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500355"
 ---
 # <a name="save-costs-with-azure-reserved-vm-instances-linux"></a>Úspora nákladů pomocí Azure Reserved VM Instances (Linux)
 
@@ -60,7 +60,7 @@ Když je nastavení zapnuté a položka *ConsumedService* má některou z násle
 - Microsoft.MachineLearningServices
 - Microsoft.Kusto
 
-V datech využití si zkontrolujte hodnotu *ConsumedService* , abyste zjistili, jestli má dané využití nárok na slevy za rezervace.
+V datech využití si zkontrolujte hodnotu *ConsumedService*, abyste zjistili, jestli má dané využití nárok na slevy za rezervace.
 
 Další informace o flexibilitě velikosti instance najdete v tématu [Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů](reserved-vm-instance-size-flexibility.md).
 
@@ -86,7 +86,7 @@ Rezervované instance virtuálních počítačů jsou k dispozici pro většinu 
 
 ## <a name="buy-a-reserved-vm-instance"></a>Nákup rezervované instance virtuálního počítače
 
-Rezervovanou instanci virtuálního počítače můžete koupit v [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D). Za rezervaci se platí [předem nebo prostřednictvím měsíčních plateb](../cost-management-billing/reservations/monthly-payments-reservations.md).
+Rezervovanou instanci virtuálního počítače můžete koupit v [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D). Za rezervaci se platí [předem nebo prostřednictvím měsíčních plateb](../cost-management-billing/reservations/prepare-buy-reservation.md).
 Tyto požadavky se vztahují k zakoupení rezervované instance virtuálního počítače:
 
 - Musíte být v roli vlastníka alespoň pro jedno předplatné EA nebo předplatné s tarifem průběžných plateb.
@@ -95,7 +95,7 @@ Tyto požadavky se vztahují k zakoupení rezervované instance virtuálního po
 
 Postup zakoupení instance:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyberte **Všechny služby** > **Rezervace**.
 1. Pokud chcete koupit novou rezervaci, vyberte **Přidat** a pak klikněte na **Virtuální počítač**.
 1. Vyplňte požadovaná pole. Na získání slevy za rezervace mají nárok spuštěné instance virtuálních počítačů, které odpovídají vybraným atributům. Skutečný počet instancí virtuálních počítačů, které slevu získají, závisí na vybraném rozsahu a množství.
@@ -110,7 +110,7 @@ Pokud máte smlouvu EA, můžete k rychlému přidání dalších instancí pou�
 |Oblast    |Oblast Azure, která je pokrytá rezervací.|    
 |Velikost virtuálního počítače     |Velikost instancí virtuálních počítačů.|
 |Optimalizovat pro     |Ve výchozím nastavení je vybraná flexibilita velikosti instancí virtuálních počítačů. Klikněte na **Upřesnit nastavení** a změňte hodnotu flexibilita velikosti instance tak, aby se na jiné virtuální počítače ve stejné [skupině velikostí virtuálních počítačů](reserved-vm-instance-size-flexibility.md)použili sleva rezervace. Při použití priority kapacity se pro vaše nasazení upřednostňuje kapacita datového centra. Nabízí další důvěru ve vaší schopnosti spouštět instance virtuálních počítačů, když je potřebujete. Priorita kapacity je dostupná jenom v případě, že obor rezervací je jedno předplatné. |
-|Termín        |Jeden rok nebo tři roky. K dispozici je také 5 let, který je k dispozici pouze pro virtuální počítače s HBv2.|
+|Pojem        |Jeden rok nebo tři roky. K dispozici je také 5 let, který je k dispozici pouze pro virtuální počítače s HBv2.|
 |Množství    |Počet instancí zakoupených v rámci rezervace. Množství je počet spuštěných instancí virtuálních počítačů, které můžou získat fakturační slevu. Pokud například používáte 10 Standard_D2 virtuálních počítačů v Východní USA, pak zadáte množství jako 10 pro maximalizaci výhod všech spuštěných virtuálních počítačů. |
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]
@@ -158,6 +158,4 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
     - [Vysvětlení využití rezervací u předplatného s průběžnými platbami](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
     - [Vysvětlení využití rezervací u smlouvy Enterprise](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
     - [Náklady na software pro Windows nezahrnuté v rezervacích](../cost-management-billing/reservations/reserved-instance-windows-software-costs.md)
-    - [Rezervace Azure v programu Partner Center Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)
-
-
+    - [Rezervace Azure v programu Partner Center Cloud Solution Provider (CSP)](/partner-center/azure-reservations)

@@ -3,20 +3,20 @@ title: Spustit aktivitu kanálu v Azure Data Factory
 description: Zjistěte, jak můžete pomocí aktivity spustit kanál vyvolat jeden Data Factory kanál z jiného kanálu Data Factory.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 4bd667a2302136b5e12d2e4e548c9e8863715621
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7df636bbdc85b9fcdcbfef260daca905f9949d8c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81415282"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500037"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Spustit aktivitu kanálu v Azure Data Factory
 
@@ -26,7 +26,7 @@ Aktivita spuštění kanálu umožňuje kanálu služby Data Factory volat jiný
 
 
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -64,11 +64,11 @@ Aktivita spuštění kanálu umožňuje kanálu služby Data Factory volat jiný
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požaduje se
+Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-name | Název aktivity spustit kanál | Řetězec | Ano
-typ | Musí být nastavené na: **ExecutePipeline**. | Řetězec | Ano
-kanálu | Odkaz na kanál na závislý kanál, který tento kanál vyvolá Objekt odkazu na kanál má dva vlastnosti: **odkaz** a **typ**. Vlastnost FileReference Určuje název kanálu odkazu. Vlastnost Type musí být nastavená na PipelineReference. | PipelineReference | Ano
+name | Název aktivity spustit kanál | Řetězec | Yes
+typ | Musí být nastavené na: **ExecutePipeline**. | Řetězec | Yes
+kanálu | Odkaz na kanál na závislý kanál, který tento kanál vyvolá Objekt odkazu na kanál má dva vlastnosti: **odkaz** a **typ**. Vlastnost FileReference Určuje název kanálu odkazu. Vlastnost Type musí být nastavená na PipelineReference. | PipelineReference | Yes
 parameters | Parametry, které se mají předat vyvolanému kanálu | Objekt JSON, který mapuje názvy parametrů na hodnoty argumentu | No
 waitOnCompletion | Definuje, zda provádění aktivit čeká na dokončení zpracování závislého kanálu. Výchozí hodnota je false. | Logická hodnota | No
 

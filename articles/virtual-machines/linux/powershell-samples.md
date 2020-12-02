@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 6d20f02b846c7ae47aef395694aef2bc5732957e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cc11c21eda243df1298286c4745588bc492e955d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978641"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498485"
 ---
 # <a name="azure-vm-powershell-samples-for-creating-and-managing-linux-vms"></a>Ukázky PowerShellu pro virtuální počítače Azure pro vytváření a správu virtuálních počítačů se systémem Linux
 
@@ -36,6 +36,6 @@ Následující tabulka obsahuje odkazy na ukázky skriptů PowerShellu pro vytv�
 | [Kopírování snímku do stejného nebo jiného předplatného](../scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Zkopíruje snímek do stejného nebo jiného předplatného, které je ve stejné oblasti jako nadřazený snímek. |
 |**Monitorování virtuálních počítačů**||
 | [Monitorování virtuálního počítače s využitím protokolů Azure Monitoru](./../scripts/virtual-machines-linux-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Vytvoří virtuální počítač, nainstaluje agenta Log Analytics a zaregistruje virtuální počítač v pracovním prostoru Log Analytics.  |
-| [Kopírování spravovaného disku do stejného nebo jiného předplatného](../scripts/virtual-machines-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Zkopíruje spravovaný disk do stejného nebo jiného předplatného, které je ve stejné oblasti jako nadřazený spravovaný disk.
+| [Kopírování spravovaného disku do stejného nebo jiného předplatného](../scripts/virtual-machines-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Zkopíruje spravovaný disk do stejného nebo jiného předplatného, které je ve stejné oblasti jako nadřazený spravovaný disk.
 | [Shromažďování podrobností o všech virtuálních počítačích v rámci předplatného s využitím PowerShellu](../scripts/virtual-machines-powershell-sample-collect-vm-details.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Vytvoří sdílený svazek clusteru, který obsahuje název virtuálního počítače, název skupiny prostředků, oblast, Virtual Network, podsíť, privátní IP adresu, typ operačního systému a veřejnou IP adresu virtuálních počítačů v zadaném předplatném.
 | | |

@@ -10,12 +10,12 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9010ff582f05e81e17e280e20f180ceccf0e746f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a43eb2537ebc09ffcb524a4426d7a8c9bec560b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81733207"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499998"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Vývoj pro omezená zařízení pomocí sady Azure IoT C SDK
 
@@ -30,7 +30,10 @@ Sada C SDK je k dispozici ve formě balíčku z apt-get, NuGet a MBED. Chcete-li
 
 Sestavte sadu C SDK pro omezená zařízení.
 
-### <a name="prerequisites"></a>Požadavky
+> [!NOTE]
+> Vložená sada C SDK je alternativou pro omezená zařízení, která podporují přístup k síti BYON (Přineste si vlastní síť). Vývojáři IoT mají volnost v navýšení klienta MQTT, TLS a zásuvky pro vytvoření řešení zařízení. [Přečtěte si další informace o vložené sadě C SDK](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot).
+
+### <a name="prerequisites"></a>Předpoklady
 
 Postupujte podle pokynů v [Průvodci nastavením sady c SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) a připravte vývojové prostředí pro sestavení sady C SDK. Předtím, než se dostanete k kroku sestavování pomocí cmake, můžete vyvolat příznaky cmake a odebrat nepoužívané funkce.
 

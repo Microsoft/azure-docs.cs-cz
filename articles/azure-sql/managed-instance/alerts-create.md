@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: a5a2336728d4507544fa621961c2f346746c2bb9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a85bf6510163c47fa39bdb28debff806e1812f58
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792646"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499267"
 ---
 # <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>Vytváření upozornění pro službu Azure SQL Managed Instance pomocí webu Azure Portal
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -66,7 +66,7 @@ Pro konfiguraci výstrah jsou k dispozici následující metriky spravované ins
 
 2. V části monitorování vyberte položku nabídky **metriky** .
 
-   ![Monitorování](./media/alerts-create/mi-alerting-menu-annotated.png)
+   ![Sledování](./media/alerts-create/mi-alerting-menu-annotated.png)
   
 3. V rozevírací nabídce vyberte jednu z metrik, pro kterou chcete nastavit upozornění (v tomto příkladu se zobrazuje využité místo pro úložiště).
 

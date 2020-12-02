@@ -6,14 +6,14 @@ ms.subservice: sizes
 author: mimckitt
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 10/02/2020
+ms.date: 11/01/2020
 ms.author: mimckitt
-ms.openlocfilehash: 45bcfdb544d3951feb40a821b601ce60ecc0feaf
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 90bc98d63b45e43c9325eed4fe019b18f52d0de8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356769"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500287"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Předchozí generace velikostí virtuálních počítačů
 
@@ -64,7 +64,7 @@ MB/s = 10^6 bajtů za sekundu a GiB = 1024^3 bajtů.
 
 ## <a name="nvv2-series"></a>NVv2-Series
 
-**Doporučení pro novější velikost** : [NVv3-Series](nvv3-series.md)
+**Doporučení pro novější velikost**: [NVv3-Series](nvv3-series.md)
 
 Virtuální počítače řady NVv2-Series využívají technologii [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU a technologii NVIDIA Grid s procesory Intel Broadwell. Tyto virtuální počítače jsou určené pro akcelerované grafické aplikace GPU a virtuální plochy, kde si zákazníci chtějí vizualizovat svá data, simulovat výsledky pro zobrazení, práci na CAD nebo vykreslování a streamování obsahu. Tyto virtuální počítače navíc můžou spouštět úlohy s jednoduchou přesností, jako je například kódování a vykreslování. Virtuální počítače s NVv2 podporují Premium Storage a přidávají se s dvojnásobnou paměťovou pamětí (RAM) ve srovnání s jejím předchůdcem (řady NV).  
 
@@ -86,7 +86,7 @@ Další informace o změně velikosti virtuálního počítače se systémem Lin
 
 ### <a name="basic-a"></a>Basic A  
 
-**Doporučení pro novější velikost** : [Av2-Series](av2-series.md)
+**Doporučení pro novější velikost**: [Av2-Series](av2-series.md)
 
 Premium Storage: nepodporováno
 
@@ -116,7 +116,7 @@ V klasickém modelu nasazení se některé názvy virtuálních počítačů s p
 
 ### <a name="a-series"></a>A-Series  
 
-**Doporučení pro novější velikost** : [Av2-Series](av2-series.md)
+**Doporučení pro novější velikost**: [Av2-Series](av2-series.md)
 
 ACU: 50–100
 
@@ -141,7 +141,7 @@ Ukládání Premium Storage do mezipaměti: nepodporováno
 
 ### <a name="a-series---compute-intensive-instances"></a>A-series – Instance náročné na výpočetní výkon  
 
-**Doporučení pro novější velikost** : [Av2-Series](av2-series.md)
+**Doporučení pro novější velikost**: [Av2-Series](av2-series.md)
 
 ACU: 225
 
@@ -161,13 +161,13 @@ Velikosti A8-A11 a H-series se také označují jako *náročné na výpočetní
 <sup>1</sup> V případě aplikací MPI je v síti FDR InfiniBand povolena vyhrazená síť s back-end službou RDMA, která zajišťuje extrémně nízkou latenci a vysokou šířku pásma.  
 
 > [!NOTE]
-> Virtuální počítače A8 – A11 jsou plánovány k vyřazení na 3/2021. Důrazně doporučujeme nevytvářet žádné nové virtuální počítače A8 – A11. Migrujte všechny stávající virtuální počítače A8-A11 do novějších a výkonných vysoce výkonných výpočetních počítačů, jako je například H, zaplnění, HC, HBv2, a také obecné účely výpočetních virtuálních počítačů, jako jsou například D, E a F, pro lepší cenový výkon. Další informace najdete v tématu [Průvodce migrací HPC](https://azure.microsoft.com/resources/hpc-migration-guide/).
+> [Virtuální počítače A8 – A11 jsou plánovány k vyřazení na 3/2021](https://azure.microsoft.com/updates/a8-a11-azure-virtual-machine-sizes-will-be-retired-on-march-1-2021/). Důrazně doporučujeme nevytvářet žádné nové virtuální počítače A8 – A11. Migrujte všechny stávající virtuální počítače A8-A11 do novějších a výkonných vysoce výkonných výpočetních počítačů, jako je například H, zaplnění, HC, HBv2, a také obecné účely výpočetních virtuálních počítačů, jako jsou například D, E a F, pro lepší cenový výkon. Další informace najdete v tématu [Průvodce migrací HPC](https://azure.microsoft.com/resources/hpc-migration-guide/).
 
 <br>
 
 ### <a name="d-series"></a>D-series  
 
-**Doporučení pro novější velikost** : [Dav4-Series](dav4-dasv4-series.md), [dv4-](dv4-dsv4-series.md) Series a [Ddv4-Series](ddv4-ddsv4-series.md)
+**Doporučení pro novější velikost**: [Dav4-Series](dav4-dasv4-series.md), [dv4-](dv4-dsv4-series.md) Series a [Ddv4-Series](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1</sup>
 
@@ -188,7 +188,7 @@ Ukládání Premium Storage do mezipaměti: nepodporováno
 
 ### <a name="d-series---memory-optimized"></a>Řady D-Series – optimalizované pro paměť  
 
-**Doporučení pro novější velikost** : [Dav4-Series](dav4-dasv4-series.md), [dv4-](dv4-dsv4-series.md) Series a [Ddv4-Series](ddv4-ddsv4-series.md)
+**Doporučení pro novější velikost**: [Dav4-Series](dav4-dasv4-series.md), [dv4-](dv4-dsv4-series.md) Series a [Ddv4-Series](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1</sup>
 
@@ -209,7 +209,7 @@ Ukládání Premium Storage do mezipaměti: nepodporováno
 
 ### <a name="preview-dc-series"></a>Verze Preview: DC-Series
 
-**Doporučení pro novější velikost** : [DCsv2-Series](dcv2-series.md)
+**Doporučení pro novější velikost**: [DCsv2-Series](dcv2-series.md)
 
 Premium Storage: podporováno
 
@@ -224,12 +224,12 @@ DC-Series využívá nejnovější generaci procesorů Intel XEON s 2176G s vyu�
 
 > [!IMPORTANT]
 >
-> Virtuální počítače DC-Series jsou [virtuální počítače generace 2](./linux/generation-2.md#creating-a-generation-2-vm) a podporují jenom `Gen2` image.
+> Virtuální počítače DC-Series jsou [virtuální počítače generace 2](./generation-2.md#creating-a-generation-2-vm) a podporují jenom `Gen2` image.
 
 
 ### <a name="ds-series"></a>DS-series  
 
-**Doporučení pro novější velikost** : [Dasv4-Series](dav4-dasv4-series.md), [Dsv4-](dv4-dsv4-series.md) Series a [Ddsv4-Series](ddv4-ddsv4-series.md)
+**Doporučení pro novější velikost**: [Dasv4-Series](dav4-dasv4-series.md), [Dsv4-](dv4-dsv4-series.md) Series a [Ddsv4-Series](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1</sup>
 
@@ -250,7 +250,7 @@ Ukládání Premium Storage do mezipaměti: podporováno
 
 ### <a name="ds-series---memory-optimized"></a>DS-Series – optimalizovaná paměť  
 
-**Doporučení pro novější velikost** : [Dasv4-Series](dav4-dasv4-series.md), [Dsv4-](dv4-dsv4-series.md) Series a [Ddsv4-Series](ddv4-ddsv4-series.md)
+**Doporučení pro novější velikost**: [Dasv4-Series](dav4-dasv4-series.md), [Dsv4-](dv4-dsv4-series.md) Series a [Ddsv4-Series](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1, 2</sup>
 
@@ -272,7 +272,7 @@ Ukládání Premium Storage do mezipaměti: podporováno
 
 ### <a name="ls-series"></a>Řada Ls
 
-**Doporučení pro novější velikost** : [Lsv2-Series](lsv2-series.md)
+**Doporučení pro novější velikost**: [Lsv2-Series](lsv2-series.md)
 
 Řada Ls-series nabízí až 32 virtuálních procesorů a využívá [řadu procesorů Intel® Xeon® E5 v3](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html). Řada Ls-series má stejný výkon procesoru jako řady G/GS-series a 8 GiB paměti na virtuální procesor.
 
@@ -297,7 +297,7 @@ Maximální propustnost disku dostupná pro virtuální počítače ls-series m�
 
 ### <a name="gs-series"></a>Řady GS
 
-**Doporučení pro novější velikost** : [Easv4-Series](eav4-easv4-series.md), [Esv4-Series](ev4-esv4-series.md), [Edsv4-Series](edv4-edsv4-series.md) a [M-Series](m-series.md)
+**Doporučení pro novější velikost**: [Easv4-Series](eav4-easv4-series.md), [Esv4-Series](ev4-esv4-series.md), [Edsv4-Series](edv4-edsv4-series.md) a [M-Series](m-series.md)
 
 ACU: 180 – 240 <sup>1</sup>
 
@@ -323,7 +323,7 @@ jsou k dispozici <sup>3</sup> omezené základní velikosti.
 
 ### <a name="g-series"></a>G-series
 
-**Doporučení pro novější velikost** : [Eav4-Series](eav4-easv4-series.md), [Ev4-](ev4-esv4-series.md) Series a [Edv4-](edv4-edsv4-series.md) Series a [M-Series](m-series.md)
+**Doporučení pro novější velikost**: [Eav4-Series](eav4-easv4-series.md), [Ev4-](ev4-esv4-series.md) Series a [Edv4-](edv4-edsv4-series.md) Series a [M-Series](m-series.md)
 
 ACU: 180–240
 
@@ -343,7 +343,7 @@ Ukládání Premium Storage do mezipaměti: nepodporováno
 <br>
 
 ### <a name="nv-series"></a>Řada NV
-**Doporučení pro novější velikost** : [NVv3-Series](nvv3-series.md) a [NVv4-Series](nvv4-series.md)
+**Doporučení pro novější velikost**: [NVv3-Series](nvv3-series.md) a [NVv4-Series](nvv4-series.md)
 
 Virtuální počítače řady NV využívají technologii [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU a technologii NVIDIA Grid pro aplikace s akcelerovanými pracovními plochami a virtuálními plochami, kde zákazníci mohou vizualizovat svá data nebo simulace. Uživatelé mohou vizualizovat své pracovní postupy náročné na grafiku na instancích NV a získat tak vynikající možnosti grafiky a také spouštět úlohy s jednoduchou přesností, jako je například kódování a vykreslování. Virtuální počítače řady NV využívají i procesory Intel Xeon E5-2690 V3 (Haswell).
 
@@ -367,7 +367,7 @@ Aktualizace pro zachování paměti: nepodporováno
 <br>
 
 ### <a name="nc-series"></a>Řada NC
-**Doporučení k novější velikosti** : [NC T4 V3-Series](nct4-v3-series.md)
+**Doporučení k novější velikosti**: [NC T4 V3-Series](nct4-v3-series.md)
 
 Virtuální počítače řady NC-Series jsou napájené kartou [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) a procesorem Intel Xeon E5-2690 V3 (Haswell). Uživatelé můžou zpracovávejte data rychleji tím, že využívají CUDA pro aplikace pro průzkumy energie, simulace havárií, trasování paprsků, hloubkové učení a další. Konfigurace NC24r poskytuje síťové rozhraní s nízkou latencí a vysokou propustností optimalizované pro vysoce provázané úlohy paralelního zpracování.
 
@@ -394,7 +394,7 @@ Virtuální počítače řady NC-Series jsou napájené kartou [NVIDIA Tesla K80
 
 
 ### <a name="ncv2-series"></a>Řada NCv2
-**Doporučení k novější velikosti** : [NC T4 V3-Series](nct4-v3-series.md) a [NC V100 V3-Series](ncv3-series.md)
+**Doporučení k novější velikosti**: [NC T4 V3-Series](nct4-v3-series.md) a [NC V100 V3-Series](ncv3-series.md)
 
 Virtuální počítače řady NCv2-Series využívají grafické procesory NVIDIA Tesla P100. Tyto GPU můžou poskytnout více než dvojnásobný výpočetní výkon řady NC-Series. Zákazníci můžou využít těchto aktualizovaných GPU pro tradiční úlohy HPC, jako je modelování zásobníku, sekvence DNA, analýza bílkovin, simulace Monte Carlo a další. Kromě GPU využívají virtuální počítače řady NCv2-Series také procesory Intel Xeon E5-2690 v4 (Broadwell).
 
@@ -422,7 +422,7 @@ Konfigurace NC24rs v2 poskytuje síťové rozhraní s nízkou latencí a vysokou
 <br>
 
 ### <a name="nd-series"></a>Řada ND
-**Doporučení k novější velikosti** : [NDv2-Series](ndv2-series.md) a [NC V100 V3-Series](ncv3-series.md)
+**Doporučení k novější velikosti**: [NDv2-Series](ndv2-series.md) a [NC V100 V3-Series](ncv3-series.md)
 
 Virtuální počítače řady ND-Series jsou nově přidané do rodiny GPU navržené pro AI a pro úlohy s hloubkovým učením. Nabízí vynikající výkon pro školení a odvozování. Instance ND jsou napájené pomocí [NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) GPU a procesorů Intel Xeon E5-2690 v4 (Broadwell). Tyto instance poskytují vynikající výkon pro operace s plovoucí desetinnou čárkou s jednoduchou přesností pro úlohy AI s využitím Microsoft Cognitive Toolkit, TensorFlow, Caffe a dalších platforem. Řada ND-Series také nabízí mnohem větší velikost paměti GPU (24 GB), což umožňuje přizpůsobit mnohem větší neuronové modely .NET. Podobně jako řada NC-Series nabízí konfiguraci se sekundární sítí s nízkou latencí a vysokou propustností prostřednictvím RDMA a InfiniBand konektivitu, takže můžete spouštět rozsáhlé školicí úlohy zahrnující mnoho GPU.
 

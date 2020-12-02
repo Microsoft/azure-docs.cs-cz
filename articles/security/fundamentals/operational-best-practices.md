@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 98ba7c63e057e1f6b1f37a6529b6e94e2f514d6d
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 86874a60d48ddcbdaca5ae779ad554ee58cc233b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701027"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498842"
 ---
 # <a name="azure-operational-security-best-practices"></a>Osvědčené postupy pro provozní zabezpečení Azure
 Tento článek poskytuje sadu provozních osvědčených postupů pro ochranu vašich dat, aplikací a dalších prostředků v Azure.
@@ -195,7 +195,7 @@ Použití [koncových bodů služby](../../virtual-network/virtual-network-servi
 
 Často se v Azure zobrazují místní prostředky zákazníků, které získávají útok na jejich prostředky. Pokud připojujete místní prostředí k Azure, minimalizujete tím expozici místních prostředků veřejnému Internetu.
 
-Azure má dvě [nabídky služeb](../../virtual-network/ddos-protection-overview.md) DDoS, které poskytují ochranu před síťovými útoky:
+Azure má dvě [nabídky služeb](../../ddos-protection/ddos-protection-overview.md) DDoS, které poskytují ochranu před síťovými útoky:
 
 - Základní ochrana je ve výchozím nastavení integrovaná do Azure bez dalších nákladů. Škálování a kapacita globálně nasazené sítě Azure zajišťuje obranu proti běžným útokům na síťové vrstvy prostřednictvím nepřetržitého monitorování provozu a zmírnění rizik v reálném čase. Základní nevyžaduje žádné změny konfigurace nebo aplikace uživatele a pomáhá chránit všechny služby Azure, včetně služeb PaaS Services, jako je Azure DNS.
 - Úroveň Standard Protection poskytuje pokročilé funkce zmírnění DDoS proti síťovým útokům. Automaticky se vyladěna tak, aby chránila vaše konkrétní prostředky Azure. Při vytváření virtuálních sítí se tato ochrana snadno povoluje. Lze ji také provést po vytvoření a nevyžaduje žádné změny aplikace nebo prostředků.

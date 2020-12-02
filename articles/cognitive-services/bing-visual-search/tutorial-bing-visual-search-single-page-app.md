@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 03/27/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: b9458f6080759f0948d103f7fe3d131f6a4c4e37
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b1ca88cd654b7bf373bee60b1e9b7a2e7a129fa2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092717"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499012"
 ---
 # <a name="tutorial-create-a-visual-search-single-page-web-app"></a>Kurz: Vytvoření webové aplikace Vizuální vyhledávání jednostránkového stránkování
 
 > [!WARNING]
-> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 > Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
-> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Rozhraní API pro vizuální vyhledávání Bingu vrátí přehledy pro obrázek. Můžete buď nahrát obrázek, nebo zadat adresu URL k jednomu. Přehledy jsou vizuálně podobné obrázky, nákupní zdroje, webové stránky, které obsahují obrázek, a další. Přehledy vrácené rozhraní API pro vizuální vyhledávání Bingu jsou podobné těm, které jsou zobrazené na Bing.com/images.
 

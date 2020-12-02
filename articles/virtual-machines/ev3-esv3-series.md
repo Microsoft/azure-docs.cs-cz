@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: daberry
-ms.openlocfilehash: 250223c5c15a0179fe105e66e7004f8920c5eb34
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 07564955e9cfa6931e461df00ef50a237a66b9b3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637611"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500678"
 ---
 # <a name="ev3-and-esv3-series"></a>Řada Ev3 a Esv3
 
@@ -80,7 +80,7 @@ jsou k dispozici <sup>1</sup> omezené základní velikosti.
 
 <sup>2</sup> instance je izolovaná na hardwaru vyhrazeném pro jediného zákazníka.
 
-<sup>3</sup> virtuální počítače řady Esv3- [Series můžou zvýšit](linux/disk-bursting.md) výkon svých disků a získat až 30 minut až po dobu až 30 minut.
+<sup>3</sup> virtuální počítače řady Esv3- [Series můžou zvýšit](./disk-bursting.md) výkon svých disků a získat až 30 minut až po dobu až 30 minut.
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

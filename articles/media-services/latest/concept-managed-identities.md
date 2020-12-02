@@ -8,20 +8,20 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.author: inhenkel
-ms.openlocfilehash: a0ded2a1ad5cd590ab5715edebde2ab19e399e8d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d0811e8f9183ee334d413bcad69f2c7b32023be3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686732"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499352"
 ---
 # <a name="managed-identities-and-trusted-storage-with-media-services"></a>Spravované identity a důvěryhodné úložiště pomocí Media Services
 
-Media Services lze použít se [spravovanými identitami](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) k povolení důvěryhodného úložiště. Když vytváříte účet Media Services, musíte ho přidružit k účtu úložiště. Media Services mají přístup k tomuto účtu úložiště pomocí ověřování systému. Media Services ověří, že účet Media Services a účet úložiště jsou ve stejném předplatném, a ověří, že uživatel přidávající přidružení má přístup k účtu úložiště s Azure Resource Manager RBAC.
+Media Services lze použít se [spravovanými identitami](../../active-directory/managed-identities-azure-resources/overview.md) k povolení důvěryhodného úložiště. Když vytváříte účet Media Services, musíte ho přidružit k účtu úložiště. Media Services mají přístup k tomuto účtu úložiště pomocí ověřování systému. Media Services ověří, že účet Media Services a účet úložiště jsou ve stejném předplatném, a ověří, že uživatel přidávající přidružení má přístup k účtu úložiště s Azure Resource Manager RBAC.
 
 ## <a name="trusted-storage"></a>Důvěryhodné úložiště
 
-Pokud ale chcete použít bránu firewall k zabezpečení svého účtu úložiště, musíte použít spravované ověřování identity. Umožňuje Media Services získat přístup k účtu úložiště, který byl nakonfigurován s bránou firewall nebo omezením virtuální sítě prostřednictvím důvěryhodného přístupu k úložišti.  Další informace o důvěryhodných službách Microsoftu najdete v tématu [konfigurace Azure Storage bran firewall a virtuálních sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services).
+Pokud ale chcete použít bránu firewall k zabezpečení svého účtu úložiště, musíte použít spravované ověřování identity. Umožňuje Media Services získat přístup k účtu úložiště, který byl nakonfigurován s bránou firewall nebo omezením virtuální sítě prostřednictvím důvěryhodného přístupu k úložišti.  Další informace o důvěryhodných službách Microsoftu najdete v tématu [konfigurace Azure Storage bran firewall a virtuálních sítí](../../storage/common/storage-network-security.md#trusted-microsoft-services).
 
 ## <a name="media-services-managed-identity-scenarios"></a>Spravované scénáře identity služby Media Services
 
@@ -57,4 +57,4 @@ Tyto kurzy zahrnují jak výše uvedené scénáře.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jaké spravované identity můžou dělat pro vás a vaše aplikace Azure, najdete v tématu [spravované identity Azure AD](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Další informace o tom, jaké spravované identity můžou dělat pro vás a vaše aplikace Azure, najdete v tématu [spravované identity Azure AD](../../active-directory/managed-identities-azure-resources/overview.md).

@@ -3,18 +3,18 @@ title: Kanály a aktivity v Azure Data Factory
 description: Seznamte se s kanály a aktivitami v Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 93d741d22ac03c132954a48731451f891042d7b4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ceaced5860976b0fa9f84903804700f778ed9550
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003054"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500070"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Kanály a aktivity v Azure Data Factory
 
@@ -57,7 +57,7 @@ Aktivita transformace dat | Výpočetní prostředí
 [Streamování Hadoop](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
 [Azure Machine Learning Studio (klasické) aktivity: dávkové provádění a aktualizace prostředku](transform-data-using-machine-learning.md) | Virtuální počítač Azure
-[Uložená procedura](transform-data-using-stored-procedure.md) | Azure SQL, Azure synapse Analytics (dříve SQL Data Warehouse) nebo SQL Server
+[Uložená procedura](transform-data-using-stored-procedure.md) | Azure SQL, Azure synapse Analytics nebo SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [Vlastní aktivita](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Poznámkový blok Databricks](transform-data-databricks-notebook.md) | Azure Databricks
@@ -69,7 +69,7 @@ Další informace najdete v článku [Aktivity transformace dat](transform-data.
 ## <a name="control-flow-activities"></a>Aktivity toku řízení
 Podporují se následující aktivity toku řízení:
 
-Aktivita řízení | Description
+Aktivita řízení | Popis
 ---------------- | -----------
 [Připojit proměnnou](control-flow-append-variable-activity.md) | Přidejte hodnotu do existující proměnné pole.
 [Spustit kanál](control-flow-execute-pipeline-activity.md) | Aktivita spuštění kanálu umožňuje kanálu služby Data Factory volat jiný kanál.
@@ -182,7 +182,7 @@ Zásady ovlivňují chování aktivity za běhu a nabízejí možnosti konfigura
 }
 ```
 
-Název JSON | Description | Povolené hodnoty | Vyžadováno
+Název JSON | Popis | Povolené hodnoty | Vyžadováno
 --------- | ----------- | -------------- | --------
 timeout | Určuje časový limit pro spuštění aktivity. | Časový interval | Ne. Výchozí hodnota časového limitu je 7 dní.
 retry | Maximální počet opakovaných pokusů. | Integer | Ne. Výchozí hodnota je 0.

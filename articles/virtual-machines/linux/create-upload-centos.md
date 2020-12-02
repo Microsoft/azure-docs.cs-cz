@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: guybo
-ms.openlocfilehash: 90b29944315b8a72a4ef95adbfc681a0ab276b00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aefad880d788502ece0e3ba246a06a7529a3cab9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533054"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499692"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Příprava virtuálního počítače založeného na CentOS pro Azure
 
@@ -21,7 +21,7 @@ Naučte se vytvořit a nahrát virtuální pevný disk Azure (VHD), který obsah
 * [Příprava virtuálního počítače s CentOS 7.0 pro Azure](#centos-70)
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste už nainstalovali CentOS (nebo podobný odvozený) operační systém Linux na virtuální pevný disk. Pro vytváření souborů. VHD, například virtualizačního řešení, jako je například Hyper-V, existuje více nástrojů. Pokyny najdete v tématu [instalace role Hyper-V a konfigurace virtuálního počítače](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
@@ -29,7 +29,7 @@ V tomto článku se předpokládá, že jste už nainstalovali CentOS (nebo podo
 
 * Další tipy k přípravě Linux pro Azure najdete v tématu [Obecné poznámky k instalaci pro Linux](create-upload-generic.md#general-linux-installation-notes) .
 * Formát VHDX není v Azure podporovaný, jenom **pevný virtuální pevný disk**.  Disk můžete převést na formát VHD pomocí Správce technologie Hyper-V nebo rutiny Convert-VHD. Pokud používáte VirtualBox, znamená to, že při vytváření disku vyberete **pevnou velikost** na rozdíl od výchozího dynamicky přiděleného disku.
-* Při instalaci systému Linux *doporučujeme* místo LVM použít standardní oddíly (často se jedná o výchozí nastavení pro mnoho instalací). Tím se vyhnete konfliktům LVM názvů s klonovanými virtuálními počítači, zejména pokud se disk s operačním systémem někdy potřebuje připojit k jinému stejnému virtuálnímu počítači pro řešení potíží. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) se můžou používat na datových discích.
+* Při instalaci systému Linux *doporučujeme* místo LVM použít standardní oddíly (často se jedná o výchozí nastavení pro mnoho instalací). Tím se vyhnete konfliktům LVM názvů s klonovanými virtuálními počítači, zejména pokud se disk s operačním systémem někdy potřebuje připojit k jinému stejnému virtuálnímu počítači pro řešení potíží. [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) se můžou používat na datových discích.
 * Vyžaduje se podpora jádra pro připojení systémů souborů UDF. Při prvním spuštění v Azure se konfigurace zřizování předává virtuálnímu počítači Linux přes médium ve formátu UDF, které je připojené k hostu. Agent Azure Linux musí být schopný připojit systém souborů UDF ke čtení konfigurace a zřídit virtuální počítač.
 * Verze jádra systému Linux pod 2.6.37 nepodporují architekturu NUMA na technologii Hyper-V s většími velikostmi virtuálních počítačů. Tento problém se týká především starších distribucí pomocí nadřazeného jádra Red Hat 2.6.32 a byl opraven v RHEL 6,6 (kernel-2.6.32-504). Systémy s vlastními jádry staršími než 2.6.37 nebo jádry založenými na RHEL, které jsou starší než 2.6.32-504, musí nastavit parametr boot v `numa=off` příkazovém řádku jádra v souboru GRUB. conf. Další informace najdete v článku Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
 * Nekonfigurujte odkládací oddíl na disku s operačním systémem. Agent pro Linux se dá nakonfigurovat tak, aby na dočasném disku prostředků vytvořil odkládací soubor.  Další informace o tomto postupu najdete v následujících krocích.

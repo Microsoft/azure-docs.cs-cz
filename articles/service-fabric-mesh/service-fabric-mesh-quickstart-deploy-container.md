@@ -5,12 +5,12 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/27/2018
 ms.topic: quickstart
-ms.openlocfilehash: 0c6bb8ba680612acbd497598b3e56efa5c28244a
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: c81b53b68c689f4b890d2ff628f38b734aea63dc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146241"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499879"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Rychlý start: Nasazení aplikace Hello World do služby Service Fabric Mesh
 
@@ -45,7 +45,7 @@ az group create --name myResourceGroup --location eastus
 >[!NOTE]
 > Od 2. listopadu 2020 se [limity četnosti stahování vztahují](https://docs.docker.com/docker-hub/download-rate-limit/) na anonymní a ověřené požadavky na Docker Hub z účtů bezplatného plánu Docker a vynutila IP adresa. 
 > 
-> Tyto šablony využívají veřejné image z Docker Hub. Počítejte s tím, že je možné omezit rychlost. Další podrobnosti najdete v tématu [ověřování pomocí Docker Hub](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub).
+> Tyto šablony využívají veřejné image z Docker Hub. Počítejte s tím, že je možné omezit rychlost. Další podrobnosti najdete v tématu [ověřování pomocí Docker Hub](../container-registry/buffer-gate-public-content.md#authenticate-with-docker-hub).
 
 Vytvořte aplikaci ve skupině prostředků pomocí příkazu `az mesh deployment create`.  Spusťte následující příkazy:
 
