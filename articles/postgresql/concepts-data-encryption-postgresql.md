@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 078b0fe63cf89f2736a8707ad561c798c4818317
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 23961a03d1da1137d92ecd3b8003241120b11d80
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242411"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493779"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL šifrování dat s jedním serverem pomocí klíče spravovaného zákazníkem
 
@@ -35,9 +35,9 @@ Key Vault je cloudový externí systém pro správu klíčů. Je vysoce dostupn�
 
 ## <a name="terminology-and-description"></a>Terminologie a popis
 
-**Šifrovací klíč dat (klíč DEK)** : symetrický AES256 klíč, který slouží k šifrování oddílu nebo bloku dat. Šifrování každého bloku dat jiným klíčem usnadňuje útokům na kryptografickou analýzu. Poskytovatel prostředků nebo instance aplikace, která šifruje a šifruje konkrétní blok, vyžaduje přístup k DEKs. Při nahrazení klíč DEK novým klíčem musí být znovu zašifrována pouze data v jeho přidruženém bloku s novým klíčem.
+**Šifrovací klíč dat (klíč DEK)**: symetrický AES256 klíč, který slouží k šifrování oddílu nebo bloku dat. Šifrování každého bloku dat jiným klíčem usnadňuje útokům na kryptografickou analýzu. Poskytovatel prostředků nebo instance aplikace, která šifruje a šifruje konkrétní blok, vyžaduje přístup k DEKs. Při nahrazení klíč DEK novým klíčem musí být znovu zašifrována pouze data v jeho přidruženém bloku s novým klíčem.
 
-Klíč **šifrovacího klíče (KEK)** : šifrovací klíč používaný k šifrování DEKs. KEK, který nikdy neopouští Key Vault, umožňuje, aby se DEKs sám zašifroval a řídil. Entita, která má přístup k KEK, může být jiná než entita, která vyžaduje klíč dek. Vzhledem k tomu, že KEK je vyžadován k dešifrování DEKs, je KEK v podstatě jediným bodem, pomocí kterého je DEKs možné efektivně odstranit odstraněním KEK.
+Klíč **šifrovacího klíče (KEK)**: šifrovací klíč používaný k šifrování DEKs. KEK, který nikdy neopouští Key Vault, umožňuje, aby se DEKs sám zašifroval a řídil. Entita, která má přístup k KEK, může být jiná než entita, která vyžaduje klíč dek. Vzhledem k tomu, že KEK je vyžadován k dešifrování DEKs, je KEK v podstatě jediným bodem, pomocí kterého je DEKs možné efektivně odstranit odstraněním KEK.
 
 DEKs šifrované pomocí KEK se ukládají samostatně. Pouze entita s přístupem k KEK může dešifrovat tyto DEKs. Další informace najdete v tématu [zabezpečení v šifrování v klidovém umístění](../security/fundamentals/encryption-atrest.md).
 
@@ -47,9 +47,9 @@ DEKs šifrované pomocí KEK se ukládají samostatně. Pouze entita s přístup
 
 Aby mohl server PostgreSQL používat pro šifrování klíč DEK klíče, které jsou uložené v Key Vault, správce Key Vault poskytuje následující přístupová práva k serveru:
 
-* **Get** : pro načtení veřejné části a vlastností klíče v trezoru klíčů.
-* **wrapKey** : aby bylo možné zašifrovat klíč dek. Šifrovaný klíč DEK je uložený v Azure Database for PostgreSQL.
-* **unwrapKey** : aby bylo možné dešifrovat klíč dek. Azure Database for PostgreSQL potřebuje dešifrovací klíč DEK k šifrování nebo dešifrování dat.
+* **Get**: pro načtení veřejné části a vlastností klíče v trezoru klíčů.
+* **wrapKey**: aby bylo možné zašifrovat klíč dek. Šifrovaný klíč DEK je uložený v Azure Database for PostgreSQL.
+* **unwrapKey**: aby bylo možné dešifrovat klíč dek. Azure Database for PostgreSQL potřebuje dešifrovací klíč DEK k šifrování nebo dešifrování dat.
 
 Správce trezoru klíčů může také [Povolit protokolování událostí auditu Key Vault](../azure-monitor/insights/key-vault-insights-overview.md), aby se mohly auditovat později.
 
@@ -93,8 +93,8 @@ Když nakonfigurujete šifrování dat pomocí klíče spravovaného zákazníke
 
 * Pokud vytvoříme bod v čase obnovení serveru pro váš Azure Database for PostgreSQL pro jeden server, který má povolené šifrování dat, nově vytvořený server bude v *nepřístupovém* stavu. Stav serveru můžete opravit pomocí [Azure Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) nebo [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers).
 * Pokud vytvoříme repliku pro čtení pro váš Azure Database for PostgreSQL jeden server, který má povolené šifrování dat, server repliky bude v *nepřístupovém* stavu. Stav serveru můžete opravit pomocí [Azure Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) nebo [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers).
-* Pokud odstraníte Trezor klíčů, Azure Database for PostgreSQL jediný server nebude moci získat přístup k tomuto klíči a přesune se do *nedostupného* stavu. Obnovte [Key Vault](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) a znovu ověřte šifrování dat, aby byl server *dostupný*.
-* Pokud klíč odstraníme z trezoru klíčů, Azure Database for PostgreSQL jeden server nebude moci získat přístup ke klíči a přesune se do *nedostupného* stavu. Obnovte [klíč](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) a znovu ověřte šifrování dat *pro zpřístupnění serveru.*
+* Pokud odstraníte Trezor klíčů, Azure Database for PostgreSQL jediný server nebude moci získat přístup k tomuto klíči a přesune se do *nedostupného* stavu. Obnovte [Key Vault](../key-vault/general/key-vault-recovery.md) a znovu ověřte šifrování dat, aby byl server *dostupný*.
+* Pokud klíč odstraníme z trezoru klíčů, Azure Database for PostgreSQL jeden server nebude moci získat přístup ke klíči a přesune se do *nedostupného* stavu. Obnovte [klíč](../key-vault/general/key-vault-recovery.md) a znovu ověřte šifrování dat *pro zpřístupnění serveru.*
 * Pokud klíč uložený ve službě Azure webrecovery vyprší, klíč se stane neplatným a Azure Database for PostgreSQL jeden server se převede do stavu *nepřístupné* . Rozšíříte datum vypršení platnosti klíče pomocí rozhraní příkazového [řádku](/cli/azure/keyvault/key#az-keyvault-key-set-attributes) a pak znovu ověříte šifrování dat, aby byl server *dostupný*.
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>Odvolání přístupu k náhodnému klíči z Key Vault

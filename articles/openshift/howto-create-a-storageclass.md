@@ -8,12 +8,12 @@ author: grantomation
 ms.author: b-grodel
 keywords: ARO, OpenShift, AZ ARO, Red Hat, CLI, Azure File
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: a3e2a994311334d410aeffd55e7f6febaa85d6e4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: db87e61166da87300a5e1fb8433a42f3f47cf832
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842664"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493820"
 ---
 # <a name="create-an-azure-files-storageclass-on-azure-red-hat-openshift-4"></a>Vytvoření třídy Azure Files Storage v Azure Red Hat OpenShiftu 4
 
@@ -23,7 +23,7 @@ V tomto článku vytvoříte StorageClass pro Azure Red Hat OpenShift 4, který 
 > * Nastavte požadované součásti a nainstalujte potřebné nástroje.
 > * Vytvoření Azure Red Hat OpenShift 4 StorageClass se službou Azure File provision
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.6.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.6.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="before-you-begin"></a>Než začnete
 

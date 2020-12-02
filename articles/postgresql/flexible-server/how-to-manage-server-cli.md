@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 06341f8630684519a456d5ef89144ae3c0934b23
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 278f8f816909a7e365d7e45d04c5169950e79a65
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423143"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493674"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-by-using-the-azure-cli"></a>Správa Azure Database for PostgreSQL flexibilního serveru pomocí Azure CLI
 
@@ -43,7 +43,7 @@ az account set --subscription <subscription id>
 
 ## <a name="scale-compute-and-storage"></a>Škálování výpočetních prostředků a úložiště
 
-Pomocí následujícího příkazu můžete snadno škálovat výpočetní vrstvu, virtuální jádra a úložiště. Seznam všech operací serveru, které můžete spustit, najdete v tématu [AZ Postgres Flexible-Server](https://docs.microsoft.com/cli/azure/postgres/flexible-server) Overview.
+Pomocí následujícího příkazu můžete snadno škálovat výpočetní vrstvu, virtuální jádra a úložiště. Seznam všech operací serveru, které můžete spustit, najdete v tématu [AZ Postgres Flexible-Server](/cli/azure/postgres/flexible-server) Overview.
 
 ```azurecli-interactive
 az postgres flexible-server update --resource-group myresourcegroup --name mydemoserver --sku-name Standard_D4ds_v3 --storage-size 6144
@@ -104,7 +104,7 @@ Existuje řada aplikací, které můžete použít pro připojení k vašemu ser
     CREATE DATABASE postgresdb;
     ```
 
-3. Na příkazovém řádku spusťte následující příkaz, který přepne připojení na nově vytvořenou databázi **postgresdb** :
+3. Na příkazovém řádku spusťte následující příkaz, který přepne připojení na nově vytvořenou databázi **postgresdb**:
 
     ```bash
     \c postgresdb
@@ -131,7 +131,7 @@ az postgres flexible-server update --resource-group myresourcegroup --name mydem
 
 ## <a name="delete-a-server"></a>Odstranění serveru
 
-Pokud chcete odstranit Azure Database for PostgreSQL flexibilní Server, spusťte příkaz [AZ Postgres Flexible-Server Delete](https://docs.microsoft.com/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) .
+Pokud chcete odstranit Azure Database for PostgreSQL flexibilní Server, spusťte příkaz [AZ Postgres Flexible-Server Delete](/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) .
 
 ```azurecli-interactive
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver
