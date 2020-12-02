@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: 02fd0a4c7d931f439ab85af8d90de323105e21f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c45445415f3eaa7cb0f9069dd5f64b57c19e5836
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096695"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437146"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Migrace stovek terabajtů dat do Azure Cosmos DB 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,9 +31,9 @@ Stávající nástroje pro migraci dat na Azure Cosmos DB mají určitá omezen�
 
  * **Omezené možnosti horizontálního** navýšení kapacity: aby bylo možné migrovat terabajty dat do Azure Cosmos DB co nejrychleji a efektivně spotřebovat celou zřízenou propustnost, klienti migrace by měli mít možnost horizontálního navýšení kapacity navýšit na neomezenou dobu.  
 
-* **Nedostatek sledování průběhu a vracení se změnami** : je důležité sledovat průběh migrace a vracet se změnami při migraci velkých datových sad. V opačném případě všechny chyby, ke kterým dojde během migrace, zastaví migraci a vy budete muset proces začít od začátku. Nepovedlo se vám neproduktivní restartování celého procesu migrace, až 99% z něj už je dokončený.  
+* **Nedostatek sledování průběhu a vracení se změnami**: je důležité sledovat průběh migrace a vracet se změnami při migraci velkých datových sad. V opačném případě všechny chyby, ke kterým dojde během migrace, zastaví migraci a vy budete muset proces začít od začátku. Nepovedlo se vám neproduktivní restartování celého procesu migrace, až 99% z něj už je dokončený.  
 
-* **Nedostatek fronty nedoručených zpráv** : v rámci velkých datových sad může v některých případech dojít k problémům s částmi zdrojových dat. Kromě toho může docházet k přechodným problémům s klientem nebo sítí. Některé z těchto případů by nemělo způsobit selhání celé migrace. I když většina nástrojů pro migraci má robustní možnosti opakovaného pokusů, které chrání před přerušovanými problémy, není vždy dostatek. Pokud je například méně než 0,01% zdrojových datových dokumentů větší než 2 MB, způsobí to, že zápis dokumentu selže v Azure Cosmos DB. V ideálním případě je vhodné, aby nástroj pro migraci zachoval tyto "neúspěšné" dokumenty do jiné fronty nedoručených zpráv, která může být zpracována po migraci. 
+* **Nedostatek fronty nedoručených zpráv**: v rámci velkých datových sad může v některých případech dojít k problémům s částmi zdrojových dat. Kromě toho může docházet k přechodným problémům s klientem nebo sítí. Některé z těchto případů by nemělo způsobit selhání celé migrace. I když většina nástrojů pro migraci má robustní možnosti opakovaného pokusů, které chrání před přerušovanými problémy, není vždy dostatek. Pokud je například méně než 0,01% zdrojových datových dokumentů větší než 2 MB, způsobí to, že zápis dokumentu selže v Azure Cosmos DB. V ideálním případě je vhodné, aby nástroj pro migraci zachoval tyto "neúspěšné" dokumenty do jiné fronty nedoručených zpráv, která může být zpracována po migraci. 
 
 Mnohé z těchto omezení se stanovují pro nástroje, jako je Azure Data Factory, služby Azure Data Migration Services. 
 
@@ -142,12 +142,6 @@ Po dokončení požadovaných součástí můžete migrovat data pomocí násled
 6. Některé z těchto chyb mohou být způsobeny nesprávnými dokumenty ve zdrojových datech. Ty by měly být identifikovány a opraveny. Dále byste měli znovu spustit krok importu u neúspěšných oddílů a znovu je přijmout. 
 
 Po dokončení migrace můžete ověřit, že je počet dokumentů v Azure Cosmos DB stejný jako počet dokumentů ve zdrojové databázi. V tomto příkladu je celková velikost v Azure Cosmos DB zapnula na 65 terabajty. Po migraci je možné indexování selektivně zapnout a ru se dá snížit na úroveň požadovanou operacemi úloh.
-
-## <a name="contact-the-azure-cosmos-db-team"></a>Kontaktovat tým Azure Cosmos DB
-I když můžete postupovat podle tohoto průvodce k úspěšné migraci velkých datových sad do Azure Cosmos DB pro velké objemy migrace se doporučuje získat od Azure Cosmos DBho produktového týmu, abyste ověřili modelování dat a obecnou kontrolu architektury. V závislosti na datové sadě a úloze může produktový tým také navrhovat další optimalizace výkonu a nákladů, které by vám mohly platit. Chcete-li kontaktovat tým Azure Cosmos DB pro pomoc s migrací ve velkém rozsahu, můžete otevřít lístek podpory pod typem problému "Obecné poradenství" a "velké (TB +) migrace", jak je uvedeno níže.
-
-:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="Nastavení nástroje pro migraci":::
-
 
 ## <a name="next-steps"></a>Další kroky
 

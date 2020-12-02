@@ -3,12 +3,12 @@ title: Azure Lighthouse a spravované aplikace Azure
 description: Seznamte se s tím, jak můžou Azure Lighthouse a spravované aplikace Azure pomáhat při povolování různých scénářích a způsobu jejich použití společně.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 144917716da38cc99078f663cc2f4cb8ba0199c8
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b3d6c83a50f1da006f2618f7f4ff59759dac2555
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014983"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436517"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse a spravované aplikace Azure
 
@@ -35,7 +35,7 @@ Ve spravované aplikaci se prostředky používané aplikací společně seskupu
 
 Spravované aplikace podporují [přizpůsobené prostředí Azure Portal](../../azure-resource-manager/managed-applications/concepts-view-definition.md) a [integraci s vlastními poskytovateli](../../azure-resource-manager/managed-applications/tutorial-create-managed-app-with-custom-provider.md). Tyto možnosti se dají využít k zajištění přizpůsobeného a integrovaného prostředí, které zákazníkům usnadňuje provádění některých úloh správy.
 
-Spravované aplikace je možné [publikovat na Azure Marketplace](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md), a to buď jako soukromou nabídku pro konkrétního zákazníka, nebo jako veřejné nabídky, které si můžou koupit víc zákazníků. Můžou je taky doručovat uživatelům v rámci vaší organizace [publikováním spravovaných aplikací do katalogu služeb](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md). Katalog služeb i instance Marketplace můžete nasadit pomocí šablon ARM, které můžou zahrnovat jedinečný identifikátor partnera pro komerční tržiště, aby bylo možné sledovat jeho [přidělení](../../marketplace/azure-partner-customer-usage-attribution.md).
+Spravované aplikace je možné [publikovat na Azure Marketplace](../../marketplace/create-new-azure-apps-offer.md), a to buď jako soukromou nabídku pro konkrétního zákazníka, nebo jako veřejné nabídky, které si můžou koupit víc zákazníků. Můžou je taky doručovat uživatelům v rámci vaší organizace [publikováním spravovaných aplikací do katalogu služeb](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md). Katalog služeb i instance Marketplace můžete nasadit pomocí šablon ARM, které můžou zahrnovat jedinečný identifikátor partnera pro komerční tržiště, aby bylo možné sledovat jeho [přidělení](../../marketplace/azure-partner-customer-usage-attribution.md).
 
 Spravované aplikace Azure se obvykle používají pro konkrétního zákazníka, který je možné dosáhnout prostřednictvím řešení klíč, které je plně spravované poskytovatelem služeb.
 

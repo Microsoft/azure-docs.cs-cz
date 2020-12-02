@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f327749d1bdfb8cf2cba00cf4c5f68b4b2b77999
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 50a65583c41dd94b174a33432afcf42b31e67df0
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379549"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437044"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Kurz: vytvoření spravované aplikace s vlastními akcemi a prostředky
 
@@ -27,7 +27,7 @@ Tento kurz obsahuje následující kroky:
 > * Nasazení instance spravované aplikace
 > * Provádění vlastních akcí a vytváření vlastních prostředků
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete znát tyto informace:
 
@@ -41,7 +41,7 @@ K dokončení tohoto kurzu potřebujete znát tyto informace:
 
 V tomto kurzu vytvoříte spravovanou aplikaci a její spravovanou skupinu prostředků, která bude obsahovat vlastní instanci poskytovatele, účet úložiště a funkci. Funkce Azure použitá v tomto příkladu implementuje rozhraní API, které zpracovává vlastní operace poskytovatele pro akce a prostředky. Účet Azure Storage se používá jako základní úložiště pro prostředky vlastního zprostředkovatele.
 
-Definice uživatelského rozhraní pro vytvoření instance spravované aplikace zahrnuje `funcname` a `storagename` vstupní prvky. Název a název funkce účtu úložiště musí být globálně jedinečné. Ve výchozím nastavení se soubory funkcí nasazují z [balíčku ukázkové funkce](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip), ale můžete ho změnit přidáním elementu Input pro odkaz na balíček v *createUiDefinition.js* :
+Definice uživatelského rozhraní pro vytvoření instance spravované aplikace zahrnuje `funcname` a `storagename` vstupní prvky. Název a název funkce účtu úložiště musí být globálně jedinečné. Ve výchozím nastavení se soubory funkcí nasazují z [balíčku ukázkové funkce](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip), ale můžete ho změnit přidáním elementu Input pro odkaz na balíček v *createUiDefinition.js*:
 
 ```json
 {
@@ -74,7 +74,7 @@ Definice uživatelského rozhraní pro vytvoření instance spravované aplikace
 }
 ```
 
-a výstup v *createUiDefinition.js* :
+a výstup v *createUiDefinition.js*:
 
 ```json
   "funcname": "[steps('applicationSettings').funcname]",
@@ -254,8 +254,8 @@ az managedapp definition create \
 
 3. Zadejte hodnoty pro vytvoření definice katalogu služeb:
 
-    * Zadejte jedinečný **název** pro definici katalogu služeb, **Zobrazovaný název** a *Popis* (volitelné).
-    * Vyberte **předplatné** , **skupinu prostředků** a **umístění** , kde se vytvoří definice aplikace. Můžete použít stejnou skupinu prostředků, která se používá pro balíček zip, nebo vytvořit novou skupinu prostředků.
+    * Zadejte jedinečný **název** pro definici katalogu služeb, **Zobrazovaný název** a *Popis*(volitelné).
+    * Vyberte **předplatné**, **skupinu prostředků** a **umístění** , kde se vytvoří definice aplikace. Můžete použít stejnou skupinu prostředků, která se používá pro balíček zip, nebo vytvořit novou skupinu prostředků.
     * V případě **identifikátoru URI souboru balíčku** zadejte cestu k souboru zip, který jste vytvořili v předchozím kroku.
 
     ![Zadat hodnoty](./media/tutorial-create-managed-app-with-custom-provider/add-service-catalog-managed-application.png)
@@ -314,7 +314,7 @@ az managedapp create \
 
 4. Zadejte hodnoty pro vytvoření instance spravované aplikace z definice katalogu služeb:
 
-    * Vyberte **předplatné** , **skupinu prostředků** a **umístění** , kde se vytvoří instance aplikace.
+    * Vyberte **předplatné**, **skupinu prostředků** a **umístění** , kde se vytvoří instance aplikace.
     * Zadejte jedinečný název funkce Azure a název Azure Storage účtu.
 
     ![Nastavení aplikace](./media/tutorial-create-managed-app-with-custom-provider/application-settings.png)
@@ -353,6 +353,6 @@ Pokud máte dotazy týkající se Azure Managed Applications, zkuste požádat o
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o publikování spravované aplikace na webu Azure Marketplace najdete v tématu [Spravované aplikace Azure v Marketplace](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md).
+Informace o publikování spravované aplikace na webu Azure Marketplace najdete v tématu [Spravované aplikace Azure v Marketplace](../../marketplace/create-new-azure-apps-offer.md).
 
 Přečtěte si další informace o [vlastních poskytovatelích Azure](../custom-providers/overview.md).

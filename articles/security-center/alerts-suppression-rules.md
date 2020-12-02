@@ -1,6 +1,6 @@
 ---
 title: Pomocí pravidel pro potlačení výstrah můžete potlačit falešně pozitivní nebo jiné nepotřebné výstrahy zabezpečení v Azure Security Center.
-description: Tento článek vysvětluje, jak používat pravidla potlačení Azure Security Center ke skrytí upozornění na nechtěném programu Azure Defender.
+description: Tento článek vysvětluje, jak používat pravidla potlačení Azure Security Center ke skrytí upozornění na nechtěné zabezpečení.
 author: memildin
 manager: rkarlin
 services: security-center
@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: b954d6ed29074aa9261611f0d1bb79b5917d03f2
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 4f5049d1589b741e60db69c782107cab1f047b77
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372655"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436789"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Potlačit výstrahy z Azure Defenderu
 
@@ -60,11 +60,11 @@ Postup vytvoření pravidla přímo v Azure Portal:
 
 1. V horní části stránky Upozornění zabezpečení služby Security Center
 
-    - Vyhledejte konkrétní výstrahu, kterou už nechcete vidět, a z nabídky se třemi tečkami (...) pro výstrahu vyberte **vytvořit pravidlo potlačení** :
+    - Vyhledejte konkrétní výstrahu, kterou už nechcete vidět, a z nabídky se třemi tečkami (...) pro výstrahu vyberte **vytvořit pravidlo potlačení**:
 
         [![* * Vytvořit pravidlo potlačení * * možnost](media/alerts-suppression-rules/auto-dismiss-future-option.png)](media/alerts-suppression-rules/auto-dismiss-future-option.png#lightbox)
 
-    - Případně vyberte odkaz **pravidla potlačení** v horní části stránky a na stránce Pravidla potlačení vyberte **vytvořit nové pravidlo potlačení** :
+    - Případně vyberte odkaz **pravidla potlačení** v horní části stránky a na stránce Pravidla potlačení vyberte **vytvořit nové pravidlo potlačení**:
 
         ![Tlačítko vytvořit nové pravidlo potlačení * *](media/alerts-suppression-rules/create-new-suppression-rule.png)
 
@@ -127,9 +127,9 @@ Pravidla pro potlačení výstrah můžete vytvořit, zobrazit nebo odstranit po
 
 Příslušné metody HTTP pro pravidla potlačení v REST API jsou:
 
-- **Put** : pro vytvoření nebo aktualizaci pravidla potlačení v zadaném předplatném.
+- **Put**: pro vytvoření nebo aktualizaci pravidla potlačení v zadaném předplatném.
 
-- **Získat** :
+- **Získat**:
 
     - K vypsání všech pravidel nakonfigurovaných pro zadané předplatné. Tato metoda vrací pole příslušných pravidel.
 
@@ -137,7 +137,7 @@ Příslušné metody HTTP pro pravidla potlačení v REST API jsou:
 
     - Chcete-li simulovat dopad pravidla potlačení, stále ve fázi návrhu. Toto volání identifikuje, který z vašich stávajících výstrah by byl vypnutý, pokud bylo pravidlo aktivní.
 
-- **Odstranit** : odstraní stávající pravidlo (ale nemění stav výstrah, které mu už zavřelo).
+- **Odstranit**: odstraní stávající pravidlo (ale nemění stav výstrah, které mu už zavřelo).
 
 Úplné podrobnosti a příklady použití najdete v [dokumentaci k rozhraní API](/rest/api/securitycenter/). 
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: 2f262b328efcc341c93f1e5c31cab8cbd3ecbf6b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5a2238f5c1561abb1e11d69aa6d0bfe761097c64
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184633"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437299"
 ---
 # <a name="azure-monitor-for-networks"></a>Azure Monitor pro sítě
 Azure Monitor pro sítě poskytuje komplexní přehled o [stavu](../../service-health/resource-health-checks-resource-types.md) a [metrikách](../platform/metrics-supported.md) pro všechny nasazené síťové prostředky, a to bez nutnosti konfigurace. Poskytuje taky přístup k funkcím monitorování sítě, jako je [monitorování připojení](../../network-watcher/connection-monitor-preview.md), [protokolování toku pro skupiny zabezpečení sítě (skupin zabezpečení sítě)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md), a [Analýza provozu](../../network-watcher/traffic-analytics.md). A poskytuje další funkce [diagnostiky](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) sítě.
@@ -26,7 +26,7 @@ Azure Monitor pro sítě je členěné kolem těchto klíčových komponent moni
 
 Stránka **přehled** Azure monitor pro sítě poskytuje snadný způsob vizualizace inventáře síťových prostředků spolu se stavem prostředků a výstrahami. Je rozdělená do čtyř klíčových funkčních oblastí: hledání a filtrování, stav prostředku a metriky, výstrahy a zobrazení závislostí.
 
-[ ![ Snímek obrazovky zobrazující stránku s přehledem](media/network-insights-overview/overview.png)](media/network-insights-overview/overview.png)#lightbox)
+[![Snímek obrazovky znázorňující stránku Přehled](media/network-insights-overview/overview.png)](media/network-insights-overview/overview.png#lightbox)
 
 ### <a name="search-and-filtering"></a>Hledání a filtrování
 Zobrazení stavu prostředku a výstrah můžete přizpůsobit pomocí filtrů, jako je **předplatné**, **Skupina prostředků** a **typ**.
@@ -108,7 +108,7 @@ Diagnostická sada poskytuje přístup ke všem diagnostickým funkcím dostupn�
 
 ![Snímek obrazovky zobrazující kartu diagnostická sada](media/network-insights-overview/azure-monitor-for-networks-diagnostic-toolkit.png)
 
-## <a name="troubleshooting"></a>Poradce při potížích 
+## <a name="troubleshooting"></a>Řešení potíží 
 
 Obecné pokyny k odstraňování potíží najdete v článku věnovaném [řešení potíží](troubleshoot-workbooks.md)s vyhrazenými sešity na základě článků.
 

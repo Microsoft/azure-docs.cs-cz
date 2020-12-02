@@ -9,12 +9,12 @@ ms.service: industrial-iot
 ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 075f6f83e5af43cde3886f637a8ee326309e4218
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1c12b1c7fd393227cb22d011f8b88f914cfded59
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015039"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445485"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>Nasazení OPC vyzdvojeného modulu a závislostí od začátku
 
@@ -113,11 +113,11 @@ Všechny moduly jsou nasazeny pomocí manifestu nasazení.  Příklad manifestu 
 
 Nejjednodušší způsob, jak nasadit moduly do zařízení Azure IoT Edge brány, je prostřednictvím Azure Portal.  
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 1. Nasaďte zdvojené [závislosti](howto-opc-twin-deploy-dependencies.md) OPC a získá výsledný `.env` soubor. Poznamenejte si nasazenou `hub name` `PCS_IOTHUBREACT_HUB_NAME` proměnnou ve výsledném `.env` souboru.
 
-2. Zaregistrujte a spusťte bránu pro [Linux](../iot-edge/how-to-install-iot-edge-linux.md) nebo [Windows](../iot-edge/how-to-install-iot-edge-windows.md) IoT Edge a poznamenejte si ji `device id` .
+2. Zaregistrujte a spusťte bránu pro [Linux](../iot-edge/how-to-install-iot-edge.md) nebo [Windows](../iot-edge/how-to-install-iot-edge.md) IoT Edge a poznamenejte si ji `device id` .
 
 ### <a name="deploy-to-an-edge-device"></a>Nasazení do hraničního zařízení
 
@@ -180,7 +180,7 @@ Nejjednodušší způsob, jak nasadit moduly do zařízení Azure IoT Edge brán
 
 ## <a name="deploying-using-azure-cli"></a>Nasazení pomocí Azure CLI
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 1. Nainstalujte nejnovější verzi [rozhraní příkazového řádku Azure (AZ)](/cli/azure/?view=azure-cli-latest) z [tohoto místa](/cli/azure/install-azure-cli?view=azure-cli-latest).
 

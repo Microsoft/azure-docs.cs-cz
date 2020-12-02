@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: e29aeb7570ad6daba9d6fc652291471fa246bf0a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: b75964f8cfc41efc35858284dbffded3aa406eb6
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674634"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436058"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Rozhraní API pro fakturaci měření na webu Marketplace
 
@@ -20,7 +20,7 @@ Rozhraní API měřeného účtování by se měla použít, když Vydavatel vyt
 
 Další informace o vytváření vlastních dimenzí měření pro SaaS najdete v tématu [SaaS měřených faktur](saas-metered-billing.md).
 
-Další informace o vytváření vlastních dimenzí měření pro nabídku aplikací Azure s plánem spravované aplikace najdete v [části technická konfigurace v tématu Vytvoření nové nabídky aplikací Azure](create-new-azure-apps-offer.md#technical-configuration).
+Další informace o vytváření vlastních dimenzí měření pro nabídku aplikací Azure s plánem spravované aplikace najdete v tématu [konfigurace Azure Application Offer Details Setup](../create-new-azure-apps-offer.md#configure-your-azure-application-offer-setup-details).
 
 ## <a name="enforcing-tls-12-note"></a>Poznámka k vynucení TLS 1,2
 
@@ -34,7 +34,7 @@ Pro každou hodinu kalendářního dne se dá vygenerovat jenom jedna událost p
 
 Pro každou hodinu kalendářního dne a prostředku se dá vygenerovat jenom jedna událost použití. Pokud se více než jedna jednotka spotřebovává za hodinu, pak se nashromáždí všechny spotřebované jednotky za hodinu a pak se vygeneruje v jedné události. Události využívání se dají vygenerovat jenom za posledních 24 hodin. Pokud událost využití vygenerujete kdykoli mezi 8:00 a 8:59:59 (a je přijata) a poslat další událost pro stejný den mezi 8:00 a 8:59:59, bude odmítnuta jako duplicitní.
 
-**Příspěvek** : `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**Příspěvek**: `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *Parametry dotazu:*
 

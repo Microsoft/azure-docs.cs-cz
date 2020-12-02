@@ -6,16 +6,16 @@ author: brahmnes
 ms.author: bfung
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6928da704236c4bb5492f99a4a5327bf297a323d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d111379cbeb0ea4eeac9ea0868b6d263a0a540c
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84676834"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435718"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Povolit Snapshot Debugger pro aplikace .NET v Azure App Service
 
-Snapshot Debugger v současné době funguje pro aplikace ASP.NET a ASP.NET Core, které běží na Azure App Service v plánech služby Windows.
+Snapshot Debugger v současné době funguje pro aplikace ASP.NET a ASP.NET Core, které běží na Azure App Service v plánech služby Windows. Při použití ladicího programu Snapshot doporučujeme, abyste aplikaci spustili v úrovni služeb Basic nebo vyšší. Pro většinu aplikací nemá úroveň Free a Shared Service dostatek paměti pro ukládání snímků.
 
 ## <a name="enable-snapshot-debugger"></a><a id="installation"></a> Povolit Snapshot Debugger
 Pokud chcete povolit Snapshot Debugger pro aplikaci, postupujte podle následujících pokynů. Pokud používáte jiný typ služby Azure, najdete tady pokyny k povolení Snapshot Debugger na jiných podporovaných platformách:
@@ -33,7 +33,7 @@ Application Insights Snapshot Debugger je předem nainstalován jako součást m
 
    ![Povolení App Insights na portálu App Services](./media/snapshot-debugger/applicationinsights-appservices.png)
 
-3. Podle pokynů na stránce vytvořte nový prostředek nebo vyberte existující prostředek App Insights, abyste mohli svoji aplikaci monitorovat. Také se ujistěte, že jsou **zapnuté**oba přepínače pro Snapshot Debugger.
+3. Podle pokynů na stránce vytvořte nový prostředek nebo vyberte existující prostředek App Insights, abyste mohli svoji aplikaci monitorovat. Také se ujistěte, že jsou **zapnuté** oba přepínače pro Snapshot Debugger.
 
    ![Přidat rozšíření webu App Insights][Enablement UI]
 
@@ -43,7 +43,7 @@ Application Insights Snapshot Debugger je předem nainstalován jako součást m
 
 ## <a name="disable-snapshot-debugger"></a>Zakázat Snapshot Debugger
 
-Použijte stejný postup jako u **možnost povolit Snapshot Debugger**, ale u Snapshot Debugger **vypnout**přepínač obou přepínačů.
+Použijte stejný postup jako u **možnost povolit Snapshot Debugger**, ale u Snapshot Debugger **vypnout** přepínač obou přepínačů.
 Doporučujeme, abyste Snapshot Debugger povolili ve všech aplikacích, abyste usnadnili diagnostiku výjimek aplikací.
 
 ## <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
-ms.openlocfilehash: 647256949d1f8f13439a0a5db87f3b02d697d32b
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 20d38e5caee67ca8bb13877d3162401fa245dc2d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95318129"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444779"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Povolit stav hosta Azure Monitor pro virtuální počítače (Preview)
 Azure Monitor pro virtuální počítače stav hosta umožňuje zobrazit stav virtuálního počítače podle definice sady měření výkonu, které jsou odebírány v pravidelných intervalech. Tento článek popisuje, jak povolit tuto funkci ve vašem předplatném a jak povolit monitorování hostů pro každý virtuální počítač.
@@ -46,7 +46,7 @@ Azure Monitor pro virtuální počítače stav hosta má ve verzi Public Preview
   - Východní USA 2 EUAP
   - Oblast Západní Evropa
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Aby bylo možné Azure Monitor pro virtuální počítače, musí být virtuální počítač připojen.
 - Uživatel, který spouští kroky připojování, musí mít minimální přístup na úrovni přispěvatele k předplatnému, kde se nachází pravidlo pro virtuální počítače a shromažďování dat.
@@ -87,7 +87,7 @@ K povolení virtuálních počítačů pomocí Azure Resource Manager se vyžadu
 > [!NOTE]
 > Pokud povolíte virtuální počítač pomocí Azure Portal, vytvoří se pro vás pravidlo shromažďování dat popsané tady. V takovém případě tento krok nemusíte provádět.
 
-Konfigurace monitorování v Azure Monitor pro virtuální počítače stav hosta je uložená v [pravidlech shromažďování dat (DCR)](../platform/data-collection-rule-overview.md). Nainstalujte pravidlo shromažďování dat definované v šabloně Správce prostředků níže, abyste povolili všechna monitorování pro virtuální počítače s rozšířením stavu hosta. Každý virtuální počítač s rozšířením stavu hosta bude potřebovat přidružení s tímto pravidlem.
+Konfigurace monitorování v Azure Monitor pro virtuální počítače stav hosta je uložená v [pravidlech shromažďování dat (DCR)](../platform/data-collection-rule-overview.md). Každý virtuální počítač s rozšířením stavu hosta bude potřebovat přidružení s tímto pravidlem.
 
 > [!NOTE]
 > Můžete vytvořit další pravidla shromažďování dat pro úpravu výchozí konfigurace monitorování, jak je popsáno v tématu [Configure monitoring in Azure monitor pro virtuální počítače Host Health (Preview)](vminsights-health-configure.md).
@@ -115,7 +115,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
 
 ---
 
-
+Pravidlo shromažďování dat definované v níže uvedené šabloně Správce prostředků umožňuje všem monitorům pro virtuální počítače s rozšířením stavu hosta. Musí zahrnovat zdroje dat pro každý z čítačů výkonu používaných monitory.
 
 ```json
 {
@@ -138,7 +138,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
     "dataCollectionRuleLocation": {
       "type": "string",
       "metadata": {
-        "description": "The location code in which the data colleciton rule should be deployed. Examples: eastus, westeurope, etc"
+        "description": "The location code in which the data collection rule should be deployed. Examples: eastus, westeurope, etc"
       }
     }
   },
@@ -151,6 +151,19 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
       "properties": {
         "description": "Data collection rule for VM Insights health.",
         "dataSources": {
+          "performanceCounters": [
+              {
+                  "name": "VMHealthPerfCounters",
+                  "streams": [ "Microsoft-Perf" ],
+                  "scheduledTransferPeriod": "PT1M",
+                  "samplingFrequencyInSeconds": 60,
+                  "counterSpecifiers": [
+                      "\\LogicalDisk(*)\\% Free Space",
+                      "\\Memory\\Available Bytes",
+                      "\\Processor(_Total)\\% Processor Time"
+                  ]
+              }
+          ],
           "extensions": [
             {
               "name": "Microsoft-VMInsights-Health",
@@ -170,7 +183,11 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
                     }
                   }
                 ]
-              }
+              },
+              "inputDataSources": [
+                  "VMHealthPerfCounters"
+              ]
+
             }
           ]
         },
@@ -181,7 +198,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
               "name": "Microsoft-HealthStateChange-Dest"
             }
           ]
-        },
+        },                  
         "dataFlows": [
           {
             "streams": [
@@ -205,7 +222,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-      "healthDataCollectionRuleResourceId": {
+      "destinationWorkspaceResourceId": {
         "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"
       },
       "dataCollectionRuleLocation": {
@@ -217,7 +234,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
 
 
 
-## <a name="install-guest-health-extension-and-associate-with-data-collection-rule"></a>Nainstalovat rozšíření pro stav hosta a přidružit k pravidlu shromažďování dat
+### <a name="install-guest-health-extension-and-associate-with-data-collection-rule"></a>Nainstalovat rozšíření pro stav hosta a přidružit k pravidlu shromažďování dat
 Pomocí následující šablony Správce prostředků povolte virtuálnímu počítači stav hosta. Tím se nainstaluje rozšíření pro stav hosta a vytvoří se přidružení s pravidlem shromažďování dat. Tuto šablonu můžete nasadit pomocí libovolné [metody nasazení pro správce prostředků šablony](../../azure-resource-manager/templates/deploy-powershell.md).
 
 
@@ -370,9 +387,6 @@ az deployment group create --name GuestHealthDeployment --resource-group my-reso
       },
       "healthDataCollectionRuleResourceId": {
         "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/Microsoft.Insights/dataCollectionRules/Microsoft-VMInsights-Health"
-      },
-      "healthExtensionVersion": {
-        "value": "private-preview"
       }
   }
 }

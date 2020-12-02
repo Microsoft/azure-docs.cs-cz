@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 2ea9fdcb11bd88755c0972fa166d1d94068ce60e
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: 64fa6c72e3bc37276dd108e3981bbefb5a2021a7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638788"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444525"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Nejčastější dotazy týkající se shromažďování dat, agentů a pracovních prostorů
 
@@ -86,12 +86,12 @@ Umístění výchozího pracovního prostoru závisí na vaší oblasti Azure:
 - Pro virtuální počítače v Austrálii je umístění pracovního prostoru Austrálie.
 
 
-## <a name="what-data-is-collected-by-the-log-analytics-agent"></a>Jaká data shromažďuje agent Log Analytics?
+## <a name="what-security-events-are-collected-by-the-log-analytics-agent"></a>Jaké události zabezpečení shromažďuje agent Log Analytics?
 
-Úplný seznam aplikací a služeb monitorovaných agentem najdete v tématu [co je monitorované pomocí Azure monitor?](../azure-monitor/monitor-reference.md#azure-services).
+Úplný seznam událostí zabezpečení shromažďovaných agentem najdete v tématu [typy událostí, které se ukládají do nastavení "běžné" a "minimální" bezpečnostní události zabezpečení?](security-center-enable-data-collection.md#what-event-types-are-stored-for-common-and-minimal).
 
 > [!IMPORTANT]
-> Pamatujte na to, že u některých služeb, jako je například Azure Firewall, pokud jste povolili protokolování a vybrali prostředek konverzace, které se mají protokolovat (například nastavením protokolu na *verbose* ), může se stát, že se v Log Analytics potřebuje úložiště pracovních prostorů významné dopady. 
+> Pamatujte na to, že u některých služeb, jako je například Azure Firewall, pokud jste povolili protokolování a vybrali prostředek konverzace, které se mají protokolovat (například nastavením protokolu na *verbose*), může se stát, že se v Log Analytics potřebuje úložiště pracovních prostorů významné dopady. 
 
 
 ## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Můžu odstranit výchozí pracovní prostory vytvořené pomocí Security Center?
@@ -129,7 +129,7 @@ Vyberte existující pracovní prostor Log Analytics:
     - Vyberte **Ano** , pokud chcete, aby se nové nastavení pracovního prostoru **projevilo na všech virtuálních počítačích**. Kromě toho se každý virtuální počítač připojený k Security Center vytvořenému pracovnímu prostoru znovu připojí k novému cílovému pracovnímu prostoru.
 
     > [!NOTE]
-    > Pokud vyberete **Ano** , neodstraňujte žádné pracovní prostory vytvořené pomocí Security Center, dokud se všechny virtuální počítače znovu nepřipojí k novému cílovému pracovnímu prostoru. Tato operace se nezdařila, pokud je pracovní prostor odstraněn příliš brzy.
+    > Pokud vyberete **Ano**, neodstraňujte žádné pracovní prostory vytvořené pomocí Security Center, dokud se všechny virtuální počítače znovu nepřipojí k novému cílovému pracovnímu prostoru. Tato operace se nezdařila, pokud je pracovní prostor odstraněn příliš brzy.
 
 
 ## <a name="what-if-the-log-analytics-agent-was-already-installed-as-an-extension-on-the-vm"></a>Co když už je agent Log Analytics na virtuálním počítači nainstalovaný jako rozšíření?<a name="mmaextensioninstalled"></a>
@@ -250,7 +250,7 @@ Pokud jste ho povolili, ale teď ho chcete zakázat:
 
 ## <a name="how-do-i-enable-data-collection"></a>Návody Povolit shromažďování dat?
 
-V zásadách zabezpečení můžete v rámci svého předplatného Azure Povolit shromažďování dat. Pro povolení shromažďování dat. [Přihlaste se k Azure Portal](https://portal.azure.com), vyberte **procházet** , vyberte **Security Center** a vyberte **zásady zabezpečení**. Vyberte předplatné, pro které chcete povolit Automatické zřizování. Když vyberete zásadu zabezpečení předplatného, otevře se **kolekce dat** . V části **Automatické zřizování** vyberte **zapnuto**.
+V zásadách zabezpečení můžete v rámci svého předplatného Azure Povolit shromažďování dat. Pro povolení shromažďování dat. [Přihlaste se k Azure Portal](https://portal.azure.com), vyberte **procházet**, vyberte **Security Center** a vyberte **zásady zabezpečení**. Vyberte předplatné, pro které chcete povolit Automatické zřizování. Když vyberete zásadu zabezpečení předplatného, otevře se **kolekce dat** . V části **Automatické zřizování** vyberte **zapnuto**.
 
 
 ## <a name="what-happens-when-data-collection-is-enabled"></a>Co se stane, když je povolené shromažďování dat?

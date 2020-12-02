@@ -3,12 +3,12 @@ title: Uživatelsky definované funkce v šablonách
 description: Popisuje, jak definovat a používat uživatelsky definované funkce v šabloně Azure Resource Manager (šablona ARM).
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: c0d62abb5362d51a77db872c11416b04dcfb3f97
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 12199aca788438e4558ed2c607b866f0dc723e2a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353472"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436959"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>Uživatelsky definované funkce v šabloně ARM
 
@@ -103,8 +103,7 @@ Při definování uživatelské funkce existují určitá omezení:
 * Funkce nemůže používat [odkazovou](template-functions-resource.md#reference) funkci ani žádnou z funkcí [seznamu](template-functions-resource.md#list) .
 * Parametry pro funkci nemohou mít výchozí hodnoty.
 
-
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o dostupných vlastnostech uživatelsky definovaných funkcí naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](template-syntax.md).
-* Seznam dostupných funkcí šablon naleznete v tématu [Azure Resource Manager Functions Template](template-functions.md).
+* Další informace o dostupných vlastnostech uživatelsky definovaných funkcí najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
+* Seznam dostupných funkcí šablon najdete v tématu [funkce šablon ARM](template-functions.md).

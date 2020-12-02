@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 3728fdd07172f2402ddb1dc7434ddb1993b984b1
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e9e630f4199e0bfb67509f008f403c0a7a490887
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95999871"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436687"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Obchodní partneři na webu Marketplace a přidělení zákaznického využití
 
@@ -32,7 +32,7 @@ Označení zákaznického využití podporuje tři možnosti nasazení:
 >
 >- Přidělení zákaznického využití je pro nová nasazení a nepodporuje označení existujících prostředků, které už byly nasazené.
 >
->- Pro nabídky [aplikací Azure](./partner-center-portal/create-new-azure-apps-offer.md) publikované do Azure Marketplace se vyžaduje přidělení zákaznického využití.
+>- Pro nabídky [aplikací Azure](./create-new-azure-apps-offer.md) publikované do Azure Marketplace se vyžaduje přidělení zákaznického využití.
 >
 >- Ne všechny služby Azure jsou kompatibilní se zákaznickým využitím. Služba Azure Kubernetes Services (AKS) a VM Scale Sets v současnosti známé problémy, které způsobují v hlášení o využití.
 
@@ -64,7 +64,7 @@ Identifikátory GUID musí být zaregistrované v partnerském centru, aby bylo 
 Po přidání identifikátoru GUID do šablony nebo uživatelského agenta a registraci identifikátoru GUID v partnerském centru jsou sledována budoucí nasazení.
 
 > [!NOTE]
-> Pokud publikujete nabídku [aplikace Azure](./partner-center-portal/create-new-azure-apps-offer.md) , která Azure Marketplace prostřednictvím partnerského centra, všechny nové GUID používané v šabloně se při nahrání šablony automaticky zaregistrují do vašeho profilu partnerského centra.  
+> Pokud publikujete nabídku [aplikace Azure](./create-new-azure-apps-offer.md) , která Azure Marketplace prostřednictvím partnerského centra, všechny nové GUID používané v šabloně se při nahrání šablony automaticky zaregistrují do vašeho profilu partnerského centra.  
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard).
 
@@ -90,7 +90,7 @@ Mnohé z partnerských řešení se nasazují pomocí Azure Resource Manager ša
 > [!NOTE]
 > Další informace o vytváření a publikování šablon řešení najdete v tématu.
 > * [Vytvořte a nasaďte první šablonu správce prostředků](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
->* [Nabídka aplikací Azure](./partner-center-portal/create-new-azure-apps-offer.md)
+>* [Nabídka aplikací Azure](./create-new-azure-apps-offer.md)
 >* Video: [sestavování šablon řešení a spravovaných aplikací pro Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603).
 
 

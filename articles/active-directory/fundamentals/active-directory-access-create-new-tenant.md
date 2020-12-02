@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c7225adcfe970d17f8f86afdd15e36e2ba76de3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eeea88d8c21ba754fbeadbb24891126b639616c7
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91287011"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437226"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Rychlý Start: vytvoření nového tenanta v Azure Active Directory
 Pomocí portálu Azure Active Directory (Azure AD) můžete provádět všechny úlohy správy, včetně vytvoření nového tenanta pro vaši organizaci. 
@@ -33,37 +33,41 @@ Po přihlášení k webu Azure Portal můžete vytvořit nového tenanta pro svo
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/)vaší organizace.
 
-1. V nabídce webu Azure Portal vyberte **Vytvořit prostředek**.  
+1. V nabídce Azure Portal vyberte možnost **Azure Active Directory**.  
 
-    ![Azure Active Directory vytvořit stránku prostředků](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+    <kbd>![Azure Active Directory – Stránka s přehledem – vytvoření tenanta](media/active-directory-access-create-new-tenant/azure-ad-portal.png)</kbd>  
 
-1. Vyhledejte a vyberte **Azure Active Directory**.
+1. Vyberte **vytvořit tenanta**.
 
-    Zobrazí se stránka **Vytvořit adresář**.
+1. Na kartě základy vyberte typ tenanta, který chcete vytvořit, buď **Azure Active Directory** , nebo **Azure Active Directory (B2C)**.
 
-    ![Stránka pro vytvoření služby Azure Active Directory](media/active-directory-access-create-new-tenant/azure-ad-create-new-tenant.png)
+1. Vyberte **Další: Konfigurace** , která se má přesunout na kartu konfigurace.
 
-1.  Na stránce **Vytvořit adresář** zadejte následující informace:
+    <kbd>![Azure Active Directory – vytvoření stránky tenanta – karta konfigurace ](media/active-directory-access-create-new-tenant/azure-ad-create-new-tenant.png)</kbd>
+
+1.  Na kartě Konfigurace zadejte následující informace:
     
-    - Do pole _Název organizace_ zadejte **Contoso**.
+    - Do pole **název organizace** zadejte _organizace contoso_ .
 
-    - Do pole _Počáteční název domény_ zadejte **Contoso**.
+    - Do pole **počáteční název domény** zadejte _Contosoorg_ .
 
     - V poli _Země nebo oblast_ ponechte možnost **USA**.
 
-1. Vyberte **Vytvořit**.
+1. Vyberte **Další: zkontrolovat + vytvořit**. Zkontrolujte informace, které jste zadali, a pokud jsou informace správné, vyberte **vytvořit**.
+
+    <kbd>![Azure Active Directory – kontrola a vytvoření stránky tenanta](media/active-directory-access-create-new-tenant/azure-ad-review.png)</kbd>
 
 Váš nový tenant se vytvoří s doménu contoso.onmicrosoft.com.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud nebudete tuto aplikaci nadále používat, můžete klienta odstranit pomocí následujících kroků:
 
-- Ujistěte se, že jste přihlášeni k adresáři, který chcete odstranit pomocí filtru **Directory + Subscription** na webu Azure Portal, a v případě potřeby přepnete do cílového adresáře.
+- Ujistěte se, že jste přihlášeni k adresáři, který chcete odstranit, pomocí filtru **Directory + Subscription** v Azure Portal a v případě potřeby přepnete do cílového adresáře.
 - Vyberte **Azure Active Directory** a pak na stránce **Contoso - přehled** vyberte **Odstranit adresář**.
 
     Tím odstraníte tenanta a k němu přidružené informace.
 
-    ![Stránka s přehledem se zvýrazněným tlačítkem odstranit adresář](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)
+    <kbd>![Stránka s přehledem se zvýrazněným tlačítkem odstranit adresář](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)</kbd>
 
 ## <a name="next-steps"></a>Další kroky
 - Změňte nebo přidejte další názvy domén, viz [Přidání vlastního názvu domény do Azure Active Directory](add-custom-domain.md)

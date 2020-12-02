@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 38133a63d65e45a4d1c83e9752dcaa01a86da33e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e0736e58983d4c28b8f2f4a20241cd36ac84fdfa
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782888"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445363"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Co je logický SQL Server v Azure SQL Database a Azure synapse?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -26,7 +26,7 @@ V Azure SQL Database a Azure synapse Analytics je server logická konstrukce, kt
 
 Tento server se liší od instance SQL Server, kterou můžete znát v místním světě. Konkrétně neexistují žádné záruky týkající se umístění databází nebo databáze datového skladu ve vztahu k serveru, který je spravuje. Kromě toho ani Azure SQL Database ani Azure synapse nevystavují žádné funkce nebo funkce přístupu na úrovni instance. Naproti tomu jsou databáze instancí ve spravované instanci fyzicky společně se stejným způsobem, jakým jste obeznámeni s SQL Server v místním prostředí nebo na světě virtuálních počítačů.
 
-Když vytváříte server, zadáváte přihlašovací účet serveru a heslo, které má práva správce k hlavní databázi na daném serveru a všechny databáze vytvořené na tomto serveru. Tento počáteční účet je přihlašovací účet SQL. Azure SQL Database a synapse Analytics podporují ověřování SQL a Azure Active Directory ověřování pro ověřování. Informace o přihlašovacích údajích a ověřování najdete [v tématu Správa databází a přihlášení v Azure SQL Database](logins-create-manage.md). Ověřování systému Windows se nepodporuje.
+Když vytváříte server, zadáváte přihlašovací účet serveru a heslo, které má práva správce k hlavní databázi na daném serveru a všechny databáze vytvořené na tomto serveru. Tento počáteční účet je přihlašovací účet SQL. Azure SQL Database a Azure synapse Analytics podporují ověřování SQL a Azure Active Directory ověřování pro ověřování. Informace o přihlašovacích údajích a ověřování najdete [v tématu Správa databází a přihlášení v Azure SQL Database](logins-create-manage.md). Ověřování systému Windows se nepodporuje.
 
 Server v SQL Database a Azure synapse:
 

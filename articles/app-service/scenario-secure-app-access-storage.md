@@ -7,15 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: c596b0d218c0b935fa1f3e971067160e52d87af1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.custom: azureday1
+ms.openlocfilehash: 72b1d4fe864c23c0ac065e47d96ab0c78866defa
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183120"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435837"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>Kurz: přístup k Azure Storage z webové aplikace
 
@@ -37,7 +38,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Webová aplikace spuštěná v Azure App Service s [povoleným App Servicem ověřováním/autorizačním modulem](scenario-secure-app-authentication-app-service.md).
 
@@ -210,6 +211,8 @@ az role assignment create --assignee $spID --role 'Storage Blob Data Contributor
 ## <a name="access-blob-storage-net"></a>Přístup Blob Storage (.NET)
 
 Třída [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) slouží k získání přihlašovacích údajů tokenu pro váš kód k autorizaci požadavků na Azure Storage. Vytvořte instanci třídy [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) , která pomocí spravované identity načte tokeny a připojí je k klientovi služby. Následující příklad kódu získá pověření ověřeného tokenu a použije ho k vytvoření objektu klienta služby, který nahraje nový objekt BLOB.
+
+Pokud chcete tento kód zobrazit jako součást ukázkové aplikace, podívejte se na [ukázku v GitHubu](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/1-WebApp-storage-managed-identity).
 
 ### <a name="install-client-library-packages"></a>Nainstalovat balíčky klientské knihovny
 

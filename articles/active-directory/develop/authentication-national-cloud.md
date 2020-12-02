@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: negoe
-ms.reviewer: negoe,celested
+ms.reviewer: marsma, negoe,celested
 ms.custom: aaddev,references_regions
-ms.openlocfilehash: d27498748f03fb101d165351ec80c77d57f78f1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da1ea6462d22242d23629bcec192d7760314dfed
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88141495"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444805"
 ---
 # <a name="national-clouds"></a>Národní cloudy
 
@@ -60,8 +60,8 @@ V následující tabulce jsou uvedené základní adresy URL pro koncové body s
 
 Pomocí základní adresy URL specifické pro danou oblast můžete vymezit požadavky na ověřování Azure AD nebo koncové body tokenu. Například pro Azure Německo:
 
-  - Běžný koncový bod autorizace je `https://login.microsoftonline.de/common/oauth2/v2.0/authorize` .
-  - Společný koncový bod tokenu je `https://login.microsoftonline.de/common/oauth2/v2.0/token` .
+- Běžný koncový bod autorizace je `https://login.microsoftonline.de/common/oauth2/v2.0/authorize` .
+- Společný koncový bod tokenu je `https://login.microsoftonline.de/common/oauth2/v2.0/token` .
 
 U aplikací pro jednoho tenanta nahraďte "Common" v předchozích adresách URL ID tenanta nebo názvem. Příklad: `https://login.microsoftonline.de/contoso.com`.
 
@@ -76,9 +76,10 @@ Pokud se chcete dozvědět, jak vytvořit aplikaci pomocí platformy Microsoft i
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace:
+Naučte se používat [Microsoft Authentication Library (MSAL) v národním cloudovém prostředí](msal-national-cloud.md).
+
+Dokumentace k národnímu cloudu:
 
 - [Azure Government](../../azure-government/index.yml)
 - [Azure (Čína) 21Vianet](/azure/china/)
 - [Azure (Německo)](../../germany/index.yml)
-- [Základy ověřování Azure AD](./authentication-vs-authorization.md)

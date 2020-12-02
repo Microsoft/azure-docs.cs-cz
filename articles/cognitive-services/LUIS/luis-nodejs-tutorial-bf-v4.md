@@ -1,17 +1,17 @@
 ---
 title: 'Kurz: Language Understanding robot Node.js v4'
-description: Pomocí Node.js sestavíte v tomto kurzu v tomto kurzu integraci robota v rámci jazyka porozumění (LUIS). Tento chatovací robot používá k rychlé implementaci řešení robota aplikaci Human Resources. K vytvoření robota se používá Bot Framework ve verzi 4 a Web App Bot Azure.
+description: V tomto kurzu můžete vytvořit robota chatu integrovanou s jazykem LUIS (Language porozumění). Tento chatovací robot používá k rychlé implementaci řešení robota aplikaci Human Resources.
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/23/2020
+ms.date: 11/30/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: d070a03a81f70cdbf2c721cc67a3bc40c5d731fc
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: dd5f97f2b1c2ad51dda3446412cd936e45c5982e
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018731"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436891"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Kurz: použití robota webové aplikace s povolenou službou Language Understanding v Node.js
 

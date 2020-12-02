@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: ad990f10c611c5ca5bb8a8d053ee4d59b6f05c83
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: dccb734ef4eaa9f22b70488918f14ad94f723453
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326994"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437129"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Načtení protokolů z nasazení IoT Edge
 
@@ -33,7 +33,7 @@ I když není to nutné, pro zajištění nejlepší kompatibility s touto funkc
 <{Log Level}> {Timestamp} {Message Text}
 ```
 
-`{Log Level}` musí následovat po [formátu úrovně závažnosti SYSLOG](https://wikipedia.org/wiki/Syslog#Severity_lnevel) a `{Timestamp}` měla by být naformátovaná jako `yyyy-mm-dd hh:mm:ss.fff zzz` .
+`{Log Level}` musí následovat po [formátu úrovně závažnosti SYSLOG](https://wikipedia.org/wiki/Syslog#Severity_level) a `{Timestamp}` měla by být naformátovaná jako `yyyy-mm-dd hh:mm:ss.fff zzz` .
 
 [Třída protokolovacího nástroje v IoT Edge](https://github.com/Azure/iotedge/blob/master/edge-util/src/Microsoft.Azure.Devices.Edge.Util/Logger.cs) slouží jako kanonická implementace.
 

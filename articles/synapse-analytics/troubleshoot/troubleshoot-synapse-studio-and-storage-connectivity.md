@@ -1,22 +1,22 @@
 ---
-title: Řešení potíží s připojením mezi synapse Studio a úložištěm
-description: Řešení potíží s připojením mezi synapse Studio a úložištěm
+title: Řešení potíží s připojením mezi službou Synapse Studio a úložištěm
+description: Řešení potíží s připojením mezi službou Synapse Studio a úložištěm
 author: saveenr
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0b8a64d24242e6fb34c963b14429fdfee2398f62
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: cee6d030a9639a7203a32a3c0957733cecb1f8b6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557675"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445326"
 ---
-# <a name="troubleshoot-connectivity-between-azure-synapse-analytics-synapse-studio-and-storage"></a>Řešení potíží s připojením mezi Azure synapse Analytics synapse Studio a Storage
+# <a name="troubleshoot-connectivity-between-azure-synapse-analytics-synapse-studio-and-storage"></a>Řešení potíží s připojením mezi funkcí Synapse Studio služby Azure Synapse Analytics a úložištěm
 
-V synapse studiu (Preview) můžete prozkoumat datové prostředky, které se nacházejí v propojeném úložišti. Tato příručka vám pomůže vyřešit problémy s připojením při pokusu o přístup k datovým prostředkům. 
+V synapse studiu můžete prozkoumat datové prostředky, které se nacházejí v propojeném úložišti. Tato příručka vám pomůže vyřešit problémy s připojením při pokusu o přístup k datovým prostředkům. 
 
 ## <a name="case-1-storage-account-lacks-proper-permissions"></a>Případ #1: účet úložiště nemá správná oprávnění.
 
@@ -26,7 +26,7 @@ Podrobná chybová zpráva se může lišit, ale obecný význam chybové zpráv
 
 ![Potíže s připojením úložiště 1](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue.1.png)
 
-**Řešení** : Pokud chcete přiřadit účet ke správné roli, přečtěte si téma [použití Azure Portal k přiřazení role Azure pro přístup k datům objektů BLOB a front](../../storage/common/storage-auth-aad-rbac-portal.md) .
+**Řešení**: Pokud chcete přiřadit účet ke správné roli, přečtěte si téma [použití Azure Portal k přiřazení role Azure pro přístup k datům objektů BLOB a front](../../storage/common/storage-auth-aad-rbac-portal.md) .
 
 
 ## <a name="case-2-failed-to-send-the-request-to-storage-server"></a>Případ #2: odeslání požadavku na server úložiště se nezdařilo
@@ -39,13 +39,13 @@ Je možné, že tento problém může nastat z několika důvodů:
 
 ### <a name="the-storage-resource-is-behind-a-vnet-and-a-storage-private-endpoint-needs-to-configure"></a>Prostředek úložiště je za virtuální sítí a privátní koncový bod úložiště musí být nakonfigurovaný.
 
-**Řešení** : v tomto případě musíte pro svůj účet úložiště nakonfigurovat privátní koncový bod úložiště. Postup konfigurace privátního koncového bodu úložiště pro virtuální síť najdete v tématu [použití Azure Portal k přiřazení role Azure pro přístup k datům objektů BLOB a front](../security/how-to-connect-to-workspace-from-restricted-network.md).
+**Řešení**: v tomto případě musíte pro svůj účet úložiště nakonfigurovat privátní koncový bod úložiště. Postup konfigurace privátního koncového bodu úložiště pro virtuální síť najdete v tématu [použití Azure Portal k přiřazení role Azure pro přístup k datům objektů BLOB a front](../security/how-to-connect-to-workspace-from-restricted-network.md).
 
 \<storage-account-name\>Po nakonfigurování privátního koncového bodu úložiště můžete pomocí příkazu "nslookup. DFS.Core.Windows.NET" ověřit připojení. Měl by vracet řetězec podobný řetězci: " \<storage-account-name\> . privatelink.DFS.Core.Windows.NET".
 
 ### <a name="the-storage-resource-is-not-behind-a-vnet-but-the-blob-service-azure-ad-endpoint-is-not-accessible-due-to-firewall-configured"></a>Prostředek úložiště není za virtuální sítí, ale koncový bod služby Blob service (Azure AD) není dostupný kvůli nakonfigurované bráně firewall.
 
-**Řešení** : v tomto případě je potřeba otevřít účet úložiště v Azure Portal. V levém navigačním panelu přejděte dolů na **support + Troubleshooting** a vyberte **kontrolu připojení** a ověřte stav připojení **BLOB Service (Azure AD)** . Pokud k ní nemáte přístup, postupujte podle pokynů Průvodce povýšením a ověřte konfiguraci **bran firewall a virtuálních sítí** na stránce vašeho účtu úložiště. Další informace o branách firewall úložiště najdete v tématu [konfigurace Azure Storage bran firewall a virtuálních sítí](../../storage/common/storage-network-security.md).
+**Řešení**: v tomto případě je potřeba otevřít účet úložiště v Azure Portal. V levém navigačním panelu přejděte dolů na **support + Troubleshooting** a vyberte **kontrolu připojení** a ověřte stav připojení **BLOB Service (Azure AD)** . Pokud k ní nemáte přístup, postupujte podle pokynů Průvodce povýšením a ověřte konfiguraci **bran firewall a virtuálních sítí** na stránce vašeho účtu úložiště. Další informace o branách firewall úložiště najdete v tématu [konfigurace Azure Storage bran firewall a virtuálních sítí](../../storage/common/storage-network-security.md).
 
 ### <a name="other-issues-to-check"></a>Další problémy ke kontrole 
 

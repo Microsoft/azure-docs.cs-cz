@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 53a30f92adaf25d87897e98834cda2d5f92b874c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 03825e0f091df01b98355dd6789eb5c9cb2897b0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012267"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444546"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -43,7 +43,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
     + Vylepšená dokumentace pro `OutputDatasetConfig.register_on_complete` , aby zahrnovala chování, co se stane, když tento název už existuje.
     + Výsledkem zadání vstupních a výstupních názvů datových sad, které mají potenciál kolize se společnými proměnnými prostředí, bude nyní obsahovat upozornění.
     + Parametr s předaným účelu `grant_workspace_access` při registraci úložišť dat Nastavte ho tak, aby měl `True` přístup k datům za virtuální sítí z Machine Learning Studio.
-      [Další informace](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
+      [Další informace](./how-to-enable-studio-virtual-network.md)
     + Rozhraní API propojené služby je upřesněné. Místo poskytnutí ID prostředku máme 3 samostatné parametry sub_id, RG a název definovaný v konfiguraci.
     + Aby mohli zákazníci povolit řešení potíží s poškozením tokenu, povolte synchronizaci tokenu pracovního prostoru jako veřejné metody.
     + Tato změna umožňuje použít jako hodnotu pro script_param prázdný řetězec.
@@ -109,8 +109,8 @@ Přečtěte si další informace o [označování segmentace instancí imagí](h
 
 ### <a name="azure-machine-learning-studio-notebooks-experience-october-update"></a>Prostředí poznámkových bloků Azure Machine Learning Studio (říjen Update)
 + **Nové funkce**
-  + [Plná podpora virtuální sítě](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
-  + [Detailní režim](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#focus-mode)
+  + [Plná podpora virtuální sítě](./how-to-enable-studio-virtual-network.md)
+  + [Detailní režim](./how-to-run-jupyter-notebooks.md#focus-mode)
   + Ukládat poznámkové bloky CTRL + S
   + Čísla řádků
 
@@ -797,7 +797,7 @@ Teď můžete vytvářet, upravovat a sdílet notebooky a soubory ve strojovém 
 
 Z studia získáte přístup k následujícím webovým nástrojům pro vytváření obsahu:
     
-| Webový nástroj  |     Description  |
+| Webový nástroj  |     Popis  |
 |---|---|
 | Notebooky Azure ML Studio   |     První vytváření obsahu pro soubory poznámkových bloků a podpora všech operací, které jsou dostupné v sadě SDK Azure ML Python SDK. | 
 
@@ -1309,7 +1309,7 @@ Z studia můžete provádět výukové, testovací, nasazování a správu Azure
 
 Z studia získáte přístup k následujícím webovým nástrojům pro vytváření obsahu:
 
-| Webový nástroj | Description | 
+| Webový nástroj | Popis | 
 |-|-|-|
 | Virtuální počítač poznámkového bloku (Preview) | Plně spravovaná cloudová pracovní stanice | 
 | [Automatizované Machine Learning](tutorial-first-experiment-automated-ml.md) (Preview) | Neexistují žádné zkušenosti s kódem pro automatizaci vývoje modelů strojového učení. | 

@@ -10,16 +10,16 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/17/2020
-ms.openlocfilehash: f55e266b548ea3b43a50d9500a427dfe1199b73f
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: b1339a0ab5be9004643cf2e9f86203eba9a2cc72
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699759"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445057"
 ---
 # <a name="get-started-with-azure-synapse-analytics"></a>Začínáme s Azure synapse Analytics
 
-Tento kurz představuje podrobný návod pro hlavní funkce služby Azure synapse Analytics. Tento kurz je ideálním výchozím bodem pro někoho, kdo chce pomocí klíčových scénářů služby Azure synapse Analytics začít prohlídku s průvodcem. Po provedení kroků v tomto kurzu budete mít plně funkční pracovní prostor synapse, ve kterém můžete začít analyzovat data pomocí vyhrazeného fondu SQL, bez serveru SQL nebo Apache Spark.
+Tento kurz představuje podrobný návod pro hlavní funkce služby Azure synapse Analytics. Tento kurz je ideálním výchozím bodem pro někoho, kdo chce pomocí klíčových scénářů služby Azure synapse Analytics začít prohlídku s průvodcem. Po provedení kroků v tomto kurzu budete mít synapse pracovní prostor. V tomto kurzu taky najdete postup, jak [Povolit pracovní prostor pro vyhrazený fond SQL (dřív SQL DW)](./sql-data-warehouse/workspace-connected-create.md). Po vytvoření pracovního prostoru můžete začít s analýzou dat pomocí vyhrazeného fondu SQL, fondu SQL bez serveru nebo fondu Apache Spark bez serveru.
 
 Postupujte podle kroků *v uvedeném pořadí* a Projděte si spoustu možností a Naučte se, jak využít základní funkce.
 

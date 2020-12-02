@@ -1,24 +1,27 @@
 ---
 title: Power BI a neserverový fond SQL pro analýzu Azure Cosmos DB dat pomocí odkazu synapse
-description: Naučte se, jak vytvořit synapse databázi bez SQL serveru a zobrazení prostřednictvím odkazu synapse pro Azure Cosmos DB, dotazování kontejnerů Azure Cosmos DB a následné sestavení modelu pomocí Power BI těchto zobrazení.
+description: Naučte se, jak vytvořit databázi fondu SQL bez serveru a zobrazení přes synapse odkaz pro Azure Cosmos DB, dotazovat kontejnery Azure Cosmos DB a pak vytvořit model pomocí Power BI nad těmito zobrazeními.
 author: ArnoMicrosoft
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 11/30/2020
 ms.author: acomet
-ms.openlocfilehash: 55a73ada39f4f48aeb22c5482bd85d1092d54c35
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 959070ca431c3397779a2a22c16f03b3adebbb35
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342245"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444503"
 ---
-# <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>Použití Power BI a synapse fondu SQL bez serveru k analýze dat Azure Cosmos DB pomocí propojení synapse (Preview) 
+# <a name="use-power-bi-and-serverless-synapse-sql-pool-preview-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>Použití Power BI a synapse fondu SQL (ve verzi Preview) k analýze Azure Cosmos DB dat pomocí propojení synapse 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 V tomto článku se dozvíte, jak vytvořit databázi fondu SQL bez serveru a zobrazení přes synapse odkaz pro Azure Cosmos DB. Provedete dotaz na kontejnery Azure Cosmos DB a potom sestavíte model pomocí Power BI nad těmito zobrazeními, aby odrážely dotaz.
 
 V tomto scénáři použijete zástupné údaje o prodeji na Surface produktů v partnerském prodejnovém obchodě. Výnosy za obchod budete analyzovat na základě blízkosti velkých domácností a dopadu reklamy na konkrétní týden. V tomto článku vytvoříte dvě zobrazení s názvem **RetailSales** a **StoreDemographics** a dotaz mezi nimi. Z tohoto úložiště [GitHubu](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) můžete získat ukázková data produktu.
+
+> [!IMPORTANT]
+> Podpora synapse fondu SQL bez serveru pro odkaz na Azure synapse pro Azure Cosmos DB je v současnosti ve verzi Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -55,7 +58,7 @@ Create database RetailCosmosDB
 
 Dále vytvořte více zobrazení napříč různými synapse odkazy s povolenými kontejnery Azure Cosmos. Zobrazení vám umožní použít T-SQL k připojení a dotazování Azure Cosmos DB dat v různých kontejnerech.  Při vytváření zobrazení nezapomeňte vybrat databázi **RetailCosmosDB** .
 
-Následující skripty ukazují, jak vytvořit zobrazení na každém kontejneru. Pro zjednodušení používáme funkci [automatického odvození schématu](analytical-store-introduction.md#analytical-schema) synapse SQL serveru bez synapse propojení s povolenými kontejnery:
+Následující skripty ukazují, jak vytvořit zobrazení na každém kontejneru. Pro jednoduchost použijte funkci [automatického odvození schématu](analytical-store-introduction.md#analytical-schema) pro fond SQL bez serveru přes kontejnery s povoleným odkazem synapse:
 
 
 ### <a name="retailsales-view"></a>RetailSales zobrazení:
@@ -118,7 +121,7 @@ Potom otevřete Power BI plochu a připojte se k koncovému bodu SQL bez serveru
 
 1. Vyberte upřednostňovanou metodu ověřování, například Azure AD.
 
-1. Vyberte databázi **RetailCosmosDB** a zobrazení **RetailSales** , **StoreDemographics** .
+1. Vyberte databázi **RetailCosmosDB** a zobrazení **RetailSales**, **StoreDemographics** .
 
 1. Vyberte **načíst** , pokud chcete načíst dvě zobrazení do režimu přímých dotazů.
 

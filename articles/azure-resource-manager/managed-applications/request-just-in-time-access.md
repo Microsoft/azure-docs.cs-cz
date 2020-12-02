@@ -5,12 +5,12 @@ author: MSEvanhi
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: evanhi
-ms.openlocfilehash: 5e1a929924e2c291e0044da99f3ae5d7d1c3b894
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f839eb04e0c036b5059e35fac16d9c702646cbd7
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371557"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435684"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Povolení a vyžádat přístup za běhu pro Azure Managed Applications
 
@@ -72,7 +72,7 @@ Při vytváření vaší nabídky v partnerském centru se ujistěte, že jste p
 
 1. Přihlaste se na komerční portál pro Marketplace v [partnerském centru](https://partner.microsoft.com/dashboard/commercial-marketplace/overview).
 
-1. Pokyny k vytvoření nové spravované aplikace najdete v postupu v části [Vytvoření nabídky aplikací Azure](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md).
+1. Pokyny k vytvoření nové spravované aplikace najdete v postupu v části [Vytvoření nabídky aplikací Azure](../../marketplace/create-new-azure-apps-offer.md).
 
 1. Na stránce **Technická konfigurace** zaškrtněte políčko **Povolit přístup za běhu (just-in-time)** .
 
@@ -88,7 +88,7 @@ Odeslání požadavku na přístup JIT:
 
 1. Pro spravovanou aplikaci vyberte **přístup JIT** , ke kterému potřebujete získat přístup.
 
-1. Vyberte **oprávněné role**a u požadované role vyberte ve sloupci Akce možnost **aktivovat** .
+1. Vyberte **oprávněné role** a u požadované role vyberte ve sloupci Akce možnost **aktivovat** .
 
    ![Aktivovat žádost o přístup](./media/request-just-in-time-access/send-request.png)
 

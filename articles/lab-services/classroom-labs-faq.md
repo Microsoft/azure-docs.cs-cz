@@ -1,17 +1,17 @@
 ---
-title: Laboratoře učeben v Azure Lab Services – nejčastější dotazy | Microsoft Docs
-description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se učebn Labs v Azure Lab Services.
+title: Laboratoře v Azure Lab Services – nejčastější dotazy | Microsoft Docs
+description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Labs v Azure Lab Services.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ca35d70bc1106e46df4e3c68889b03679fd54b86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 757af8f30e9a71a3889d9f625c87a002af2e1302
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85443294"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437180"
 ---
-# <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Laboratoře učebny v Azure Lab Services – nejčastější dotazy (FAQ)
-Získejte odpovědi na některé nejčastější dotazy týkající se učebn Labs v Azure Lab Services. 
+# <a name="labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Cvičení v Azure Lab Services – nejčastější dotazy (FAQ)
+Získejte odpovědi na některé z nejběžnějších otázek o Labs v Azure Lab Services. 
 
 ## <a name="quotas"></a>Kvóty
 
@@ -29,13 +29,14 @@ Ne. Ne všechny virtuální počítače. Pouze virtuální počítače, které j
 ## <a name="lab-accounts"></a>Účty testovacího prostředí
 
 ### <a name="why-am-i-not-able-to-create-a-lab-because-of-unavailability-of-the-address-range"></a>Proč není možné vytvořit testovací prostředí z důvodu nedostupnosti rozsahu adres? 
-Vývojové laboratoře můžou vytvořit testovací virtuální počítače v rámci rozsahu IP adres, který zadáte při vytváření účtu testovacího prostředí v Azure Portal. Když je poskytnutý rozsah adres, každé testovací prostředí, které se vytvoří po přidělené IP adrese pro virtuální počítače v testovacím prostředí, se 512. Rozsah adres pro účet testovacího prostředí musí být dostatečně velký, aby vyhovoval všem laboratořím, které v rámci účtu testovacího prostředí máte v úmyslu vytvořit. 
+
+Laboratoře můžou vytvářet testovací virtuální počítače v rámci rozsahu IP adres, který zadáte při vytváření účtu testovacího prostředí v Azure Portal. Když je poskytnutý rozsah adres, každé testovací prostředí, které se vytvoří po přidělené IP adrese pro virtuální počítače v testovacím prostředí, se 512. Rozsah adres pro účet testovacího prostředí musí být dostatečně velký, aby vyhovoval všem laboratořím, které v rámci účtu testovacího prostředí máte v úmyslu vytvořit. 
 
 Například pokud máte blok z/19-10.0.0.0/19, tento rozsah adres bude vyhovovat 8192 IP adres a 16 Labs (8192/512 = 16 Labs). V tomto případě se vytvoření testovacího prostředí v testovacím prostředí 17 nezdařilo.
 
 ### <a name="what-port-ranges-should-i-open-on-my-organizations-firewall-setting-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Jaké rozsahy portů mám otevřít v nastavení brány firewall mojí organizace pro připojení k virtuálním počítačům testovacího prostředí přes RDP/SSH?
 
-Porty jsou: 49152 – 65535. Laboratoře učebny se nachází za nástrojem pro vyrovnávání zatížení. Každé testovací prostředí má jednu veřejnou IP adresu a každý virtuální počítač v testovacím prostředí má jedinečný port. 
+Porty jsou: 49152 – 65535. Labs za nástrojem pro vyrovnávání zatížení. Každé testovací prostředí má jednu veřejnou IP adresu a každý virtuální počítač v testovacím prostředí má jedinečný port. 
 
 Na kartě **fond virtuálních počítačů** na domovské stránce domovské stránky testovacího prostředí v Azure Portal můžete zobrazit také soukromou IP adresu každého virtuálního počítače. Pokud znovu publikujete testovací prostředí, veřejná IP adresa testovacího prostředí se nemění, ale privátní IP adresa a číslo portu každého virtuálního počítače v testovacím prostředí se můžou změnit. Další informace najdete v článku [nastavení brány firewall pro Azure Lab Services](how-to-configure-firewall-settings.md).
 

@@ -2,13 +2,13 @@
 title: Poskytovatelé prostředků podle služeb Azure
 description: Vypíše všechny obory názvů poskytovatele prostředků pro Azure Resource Manager a zobrazí službu Azure pro tento obor názvů.
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 7c8e535978bff38146caee1a3b5177d5befaa6a1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 11/30/2020
+ms.openlocfilehash: fffac8fef8742cf1f151de06ba6b528035a6668d
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185857"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436823"
 ---
 # <a name="resource-providers-for-azure-services"></a>Poskytovatelé prostředků pro služby Azure
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | --------------------------- | ------------- |
 | Microsoft. AAD | [Azure Active Directory Domain Services](../../active-directory-domain-services/index.yml) |
 | Microsoft. addons | Core |
-| Microsoft. ADHybridHealthService<sup>1</sup> | [Azure Active Directory](../../active-directory/index.yml) |
+| Microsoft. ADHybridHealthService – [registrováno](#registration) | [Azure Active Directory](../../active-directory/index.yml) |
 | Microsoft. Advisor | [Azure Advisor](../../advisor/index.yml) |
 | Microsoft. AlertsManagement | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft. AnalysisServices | [Azure Analysis Services](../../analysis-services/index.yml) |
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. AppConfiguration | [Azure App Configuration](../../azure-app-configuration/index.yml) |
 | Microsoft. AppPlatform | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
 | Microsoft. Attestation | Služba Azure Attestation |
-| Microsoft. Authorization<sup>1</sup> | [Azure Resource Manager](../index.yml) |
+| Microsoft. Authorization – [zaregistrováno](#registration) | [Azure Resource Manager](../index.yml) |
 | Microsoft. Automation | [Automation](../../automation/index.yml) |
 | Microsoft. AutonomousSystems | [Autonomní systémy](https://www.microsoft.com/ai/autonomous-systems) |
 | Microsoft. AVS | [Azure VMware Solution](../../azure-vmware/index.yml) |
@@ -37,7 +37,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. AzureStack | Core |
 | Microsoft. AzureStackHCI | [Azure Stack HCI](/azure-stack/hci/overview) |
 | Microsoft.Batch | [Batch](../../batch/index.yml) |
-| Microsoft. fakturace<sup>1</sup> | [Cost Management a fakturace](/azure/billing/) |
+| Microsoft. fakturace – [zaregistrováno](#registration) | [Cost Management a fakturace](/azure/billing/) |
 | Microsoft. BingMaps | [Mapy Bingu](/BingMaps/#pivot=main&panel=BingMapsAPI) |
 | Microsoft. blockchain | [Služba Azure Blockchain](../../blockchain/workbench/index.yml) |
 | Microsoft. BlockchainTokens | [Azure Blockchain Tokens](https://azure.microsoft.com/services/blockchain-tokens/) |
@@ -52,15 +52,15 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. ClassicInfrastructureMigrate | Migrace modelu nasazení Classic |
 | Microsoft. ClassicNetwork | Virtuální síť modelu nasazení Classic |
 | Microsoft. ClassicStorage | Úložiště modelu nasazení Classic |
-| Microsoft. ClassicSubscription<sup>1</sup> | Model nasazení Classic |
+| Microsoft. ClassicSubscription – [registrováno](#registration) | Model nasazení Classic |
 | Microsoft. Cognitiveservices Account | [Cognitive Services](../../cognitive-services/index.yml) |
-| Microsoft. Commerce<sup>1</sup> | Core |
+| Microsoft. Commerce – [zaregistrováno](#registration) | Core |
 | Microsoft.Compute | [Virtual Machines](../../virtual-machines/index.yml)<br />[Virtual Machine Scale Sets](../../virtual-machine-scale-sets/index.yml) |
-| Microsoft. spotřeba<sup>1</sup> | [Správa nákladů](/azure/cost-management/) |
+| Microsoft. spotřeba – [zaregistrováno](#registration) | [Správa nákladů](/azure/cost-management/) |
 | Microsoft. ContainerInstance | [Container Instances](../../container-instances/index.yml) |
 | Microsoft. ContainerRegistry | [Container Registry](../../container-registry/index.yml) |
 | Microsoft. ContainerService | [Azure Kubernetes Service (AKS)](../../aks/index.yml) |
-| Microsoft. CostManagement<sup>1</sup> | [Správa nákladů](/azure/cost-management/) |
+| Microsoft. CostManagement – [registrováno](#registration) | [Správa nákladů](/azure/cost-management/) |
 | Microsoft. CostManagementExports | [Správa nákladů](/azure/cost-management/) |
 | Microsoft. CustomerLockbox | [Customer Lockbox pro Microsoft Azure](../../security/fundamentals/customer-lockbox-overview.md) |
 | Microsoft. CustomProviders | [Vlastní poskytovatelé Azure](../custom-providers/overview.md) |
@@ -90,7 +90,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. EnterpriseKnowledgeGraph | Podnikový graf znalostní báze |
 | Microsoft. EventGrid | [Event Grid](../../event-grid/index.yml) |
 | Microsoft. EventHub | [Event Hubs](../../event-hubs/index.yml) |
-| Microsoft. Features<sup>1</sup> | [Azure Resource Manager](../index.yml) |
+| Microsoft. Features – [zaregistrováno](#registration) | [Azure Resource Manager](../index.yml) |
 | Microsoft. GuestConfiguration | [Azure Policy](../../governance/policy/index.yml) |
 | Microsoft. HanaOnAzure | [SAP HANA ve velkých instancích Azure](../../virtual-machines/workloads/sap/hana-overview-architecture.md) |
 | Microsoft. HardwareSecurityModules | [Azure Dedicated HSM](../../dedicated-hsm/index.yml) |
@@ -120,7 +120,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. Maps | [Azure Maps](../../azure-maps/index.yml) |
 | Microsoft. Marketplace | Core |
 | Microsoft. MarketplaceApps | Core |
-| Microsoft. MarketplaceOrdering<sup>1</sup> | Core |
+| Microsoft. MarketplaceOrdering – [registrováno](#registration) | Core |
 | Microsoft. Media | [Media Services](../../media-services/index.yml) |
 | Microsoft. Microservices4Spring | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
 | Microsoft. migruje | [Azure Migrate](../../migrate/migrate-services-overview.md) |
@@ -135,7 +135,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. OperationsManagement | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft. peering | [Azure Peering Service](../../peering-service/index.yml) |
 | Microsoft. PolicyInsights | [Azure Policy](../../governance/policy/index.yml) |
-| Microsoft. Portal<sup>1</sup> | [Azure Portal](../../azure-portal/index.yml) |
+| Microsoft. Portal – [zaregistrováno](#registration) | [Azure Portal](../../azure-portal/index.yml) |
 | Microsoft. PowerBI | [Power BI](/power-bi/power-bi-overview) |
 | Microsoft. PowerBIDedicated | [Power BI Embedded](/azure/power-bi-embedded/) |
 | Microsoft. PowerPlatform | [Power Platform](/power-platform/) |
@@ -144,15 +144,15 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. RecoveryServices | [Azure Site Recovery](../../site-recovery/index.yml) |
 | Microsoft. RedHatOpenShift | [Azure Red Hat OpenShift](../../virtual-machines/linux/openshift-get-started.md) |
 | Microsoft. Relay | [Azure Relay](../../azure-relay/relay-what-is-it.md) |
-| Microsoft. ResourceGraph<sup>1</sup> | [Azure Resource Graph](../../governance/resource-graph/index.yml) |
+| Microsoft. ResourceGraph – [registrováno](#registration) | [Azure Resource Graph](../../governance/resource-graph/index.yml) |
 | Microsoft. ResourceHealth | [Azure Service Health](../../service-health/index.yml) |
-| Microsoft. Resources<sup>1</sup> | [Azure Resource Manager](../index.yml) |
+| Microsoft. Resources – [zaregistrováno](#registration) | [Azure Resource Manager](../index.yml) |
 | Microsoft. SaaS | Core |
 | Microsoft. Scheduler | [Scheduler](../../scheduler/index.yml) |
 | Microsoft. Search | [Azure Cognitive Search](../../search/index.yml) |
 | Microsoft.Security | [Centrum zabezpečení](../../security-center/index.yml) |
 | Microsoft. SecurityInsights | [Azure Sentinel](../../sentinel/index.yml) |
-| Microsoft. SerialConsole<sup>1</sup> | [Sériová konzola Azure pro Windows](../../virtual-machines/troubleshooting/serial-console-windows.md) |
+| Microsoft. SerialConsole – [registrováno](#registration) | [Sériová konzola Azure pro Windows](../../virtual-machines/troubleshooting/serial-console-windows.md) |
 | Microsoft.ServiceBus | [Service Bus](/azure/service-bus/) |
 | Microsoft. ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
 | Microsoft. ServiceFabricMesh | [Service Fabric Mesh](../../service-fabric-mesh/index.yml) |
@@ -168,7 +168,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. StorSimple | [StorSimple](../../storsimple/index.yml) |
 | Microsoft. StreamAnalytics | [Azure Stream Analytics](../../stream-analytics/index.yml) |
 | Microsoft. Subscription | Core |
-| Microsoft. support<sup>1</sup> | Core |
+| Microsoft. support – [zaregistrováno](#registration) | Core |
 | Microsoft. synapse | [Azure Synapse Analytics](/azure/sql-data-warehouse/) |
 | Microsoft. TimeSeriesInsights | [Azure Time Series Insights](../../time-series-insights/index.yml) |
 | Microsoft. token | Token |
@@ -181,9 +181,14 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. WindowsDefenderATP | [Rozšířená ochrana před internetovými útoky v programu Microsoft Defender](../../security-center/security-center-wdatp.md) |
 | Microsoft. WindowsESU | Rozšířené aktualizace zabezpečení |
 | Microsoft. WindowsIoT | [Windows 10 IoT Core Services](/windows-hardware/manufacture/iot/iotcoreservicesoverview) |
-| Microsoft. monitor zátěže byl<sup>1</sup> | [Azure Monitor](../../azure-monitor/index.yml) |
+| Microsoft. monitor zátěže byl | [Azure Monitor](../../azure-monitor/index.yml) |
 
-<sup>1</sup> registrováno ve výchozím nastavení
+## <a name="registration"></a>Registrace
+
+Poskytovatelé prostředků, které jsou označeni jako **registrované** , jsou ve výchozím nastavení registrovány pro vaše předplatné. Chcete-li použít jiné poskytovatele prostředků, je nutné [je zaregistrovat](resource-providers-and-types.md). Řada poskytovatelů prostředků se ale zaregistrovala za vás, když provádíte určité akce. Pokud například vytvoříte prostředek prostřednictvím portálu, portál automaticky zaregistruje všechny neregistrované poskytovatele prostředků, které jsou potřeba. Když nasadíte prostředky prostřednictvím [šablony Azure Resource Manager](../templates/overview.md), zaregistrují se taky další vyžadovaná poskytovatelé prostředků.
+
+> [!IMPORTANT]
+> Pokud jste připraveni ho použít, zaregistrujte pouze poskytovatele prostředků. Krok registrace umožňuje zachovat v rámci předplatného nejnižší oprávnění. Uživatel se zlými úmysly nemůže použít poskytovatele prostředků, kteří nejsou registrováni.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -4,23 +4,23 @@ description: V tomto rychlém startu vytvoříte základní části aplikace, z�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/19/2020
-ms.openlocfilehash: 74866c65111fae9e6fb3b79d9b59819b14b03c16
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/30/2020
+ms.openlocfilehash: a5443dce9fc8bc028232f66f45b537a46858f35a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131449"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436670"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rychlý Start: vytvoření nové aplikace na portálu LUIS
 
-V tomto rychlém startu vytvoříte novou aplikaci na portálu LUIS. Nejdřív vytvořte základní části aplikace, **záměrů** a **entit** . Pak otestujte aplikaci zadáním ukázkového uživatele utterance na interaktivním panelu testů, který získá předpokládaný záměr.
+V tomto rychlém startu vytvoříte novou aplikaci na portálu LUIS. Nejdřív vytvořte základní části aplikace, **záměrů** a **entit**. Pak otestujte aplikaci zadáním ukázkového uživatele utterance na interaktivním panelu testů, který získá předpokládaný záměr.
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-an-app"></a>Vytvoření aplikace
 
-Pokud chcete vytvořit aplikaci, klikněte na  **+ Nová aplikace** . 
+Pokud chcete vytvořit aplikaci, vyberte **+ Nová aplikace**. 
 
 V okně, které se zobrazí, zadejte následující informace:
 
@@ -28,10 +28,10 @@ V okně, které se zobrazí, zadejte následující informace:
 |---------|---------|
 |Název     | Název vaší aplikace. Například "domácí automatizace". Povinná hodnota.        |
 |Kultura     | Jazyk, který vaše aplikace chápe a mluví. Povinná hodnota.   |
-|Description | Popis vaší aplikace Nepovinný parametr.
+|Popis | Popis vaší aplikace Nepovinný parametr.
 |Prostředek předpovědi | Předpověď prostředku, který bude přijímat dotazy. Nepovinný parametr. |
 
-Vyberte **Hotovo** .
+Vyberte **Hotovo**.
 
 >[!NOTE]
 >Jakmile se aplikace vytvoří, nemůžete změnit její jazykovou verzi.
@@ -53,17 +53,17 @@ Dvě různé _záměry_ aplikace jsou v souladu s následujícími záměry:
 
 Chcete-li vytvořit záměry, proveďte následující kroky:
 
-1. Po vytvoření aplikace se ujistěte, že jste na stránce **záměry** v části **sestavení** . Vyberte **Vytvořit** .
+1. Po vytvoření aplikace se ujistěte, že jste na stránce **záměry** v části **sestavení** . Vyberte **Vytvořit**.
 
    [![Snímek obrazovky s výběrem možnosti ' vytvořit ' pro vytvoření nového záměru](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
-1. Zadejte název záměru `FindForm` a potom vyberte **Hotovo** .
+1. Zadejte název záměru `FindForm` a potom vyberte **Hotovo**.
 
 ## <a name="add-an-example-utterance"></a>Přidat příklad utterance
 
 Můžete přidat příklad projevy po vytvoření záměrů. Příkladem projevy je text, který uživatel zadá do robota chatu nebo jiné klientské aplikace. Namapují záměr textu uživatele na LUIS záměr. Pro tento příklad `FindForm` záměru aplikace bude vzorový projevy obsahovat číslo formuláře. Klientská aplikace potřebuje ke splnění požadavku uživatele číslo formuláře, takže je důležité ho zahrnout do utterance.
 
-Na stránce **záměry** pro `FindForm` přidejte následující příklad projevy v části **příklad utterance** , 
+Na stránce **záměry** pro `FindForm` přidejte následující příklad projevy v části **příklad utterance**, 
 
 |#|Ukázkové promluvy|
 |--|--|
@@ -102,7 +102,7 @@ Chcete-li vrátit číslo formuláře v odpovědi předpovědi modulu runtime, �
 
 1. Zadejte název `FormNumber` , vyberte typ entity **Regex** .
 
-1. `hrf-[0-9]{6}`Do pole **Regex** zadejte regulární výraz. Tato položka odpovídá znakům literálu, `hrf-` a umožňuje zadat přesně šest číslic a pak vybrat **vytvořit** .
+1. `hrf-[0-9]{6}`Do pole **Regex** zadejte regulární výraz. Tato položka odpovídá znakům literálu, `hrf-` a umožňuje zadat přesně šest číslic a pak vybrat **vytvořit**.
 
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky s vytvořením entity regulárního výrazu](./media/get-started-portal-build-app/create-regular-expression-entity.png)

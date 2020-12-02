@@ -1,18 +1,18 @@
 ---
 title: Kanál CI/CD s Azure DevOps Starter-Azure IoT Edge | Microsoft Docs
 description: Azure DevOps Starter usnadňuje začátek práce v Azure. Pomůže vám spustit Azure IoT Edge aplikaci podle vašeho výběru v několika rychlých krocích.
-author: shizn
+author: kgremban
 ms.author: kgremban
 ms.date: 08/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d57c1828b9456851d37a65b88eb5f8ea860a80fe
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 97dc0fe5a3720a41dd63583c222762d832d636ea
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045852"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436993"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>Vytvoření kanálu CI/CD pro IoT Edge s využitím Azure DevOps Starter
 
@@ -26,13 +26,13 @@ DevOps Starter vytvoří kanál CI/CD v Azure DevOps. Můžete vytvořit novou o
 
 1. Přihlaste se k webu [Microsoft Azure Portal](https://portal.azure.com).
 
-1. V levém podokně vyberte **vytvořit prostředek**a pak vyhledejte **DevOps Starter**.  
+1. V levém podokně vyberte **vytvořit prostředek** a pak vyhledejte **DevOps Starter**.  
 
 1. Vyberte **Vytvořit**.
 
 ## <a name="create-a-new-application-pipeline"></a>Vytvořit nový kanál aplikace
 
-1. Vaše moduly Azure IoT Edge můžou být napsané v [jazycích C#](tutorial-csharp-module.md), [Node.js](tutorial-node-module.md), [Python](tutorial-python-module.md), [C](tutorial-c-module.md) a [Java](tutorial-java-module.md). Vyberte preferovaný jazyk pro spuštění nové aplikace: **.NET**, **Node.js**, **Python**, **C**nebo **Java**. Pokračujte výběrem tlačítka **Další**.
+1. Vaše moduly Azure IoT Edge můžou být napsané v [jazycích C#](tutorial-csharp-module.md), [Node.js](tutorial-node-module.md), [Python](tutorial-python-module.md), [C](tutorial-c-module.md) a [Java](tutorial-java-module.md). Vyberte preferovaný jazyk pro spuštění nové aplikace: **.NET**, **Node.js**, **Python**, **C** nebo **Java**. Pokračujte výběrem tlačítka **Další**.
 
    ![Vyberte jazyk pro vytvoření nové aplikace.](./media/how-to-devops-starter/select-language.png)
 
@@ -74,14 +74,14 @@ DevOps Starter vytvořil úložiště Git pro váš projekt v Azure Repos. V té
 
    ![Zobrazit úložiště vygenerované v Azure Repos](./media/how-to-devops-starter/view-repositories.png)
 
-> [!NOTE]
-> Následující kroky vás provedou použitím webového prohlížeče k provedení změn kódu. Pokud chcete úložiště klonovat místně, vyberte v pravém horním rohu okna **klonovat** . K naklonování úložiště Git v Visual Studio Code nebo preferovaném vývojovém nástroji použijte poskytnutou adresu URL.
+   > [!NOTE]
+   > Následující kroky vás provedou použitím webového prohlížeče k provedení změn kódu. Pokud chcete úložiště klonovat místně, vyberte v pravém horním rohu okna **klonovat** . K naklonování úložiště Git v Visual Studio Code nebo preferovaném vývojovém nástroji použijte poskytnutou adresu URL.
 
 2. Úložiště již obsahuje kód pro modul s názvem **FilterModule** na základě jazyka aplikace, který jste zvolili v procesu vytváření. Otevřete **moduly/FilterModule/module.jsv** souboru.
 
    ![Otevřít module.jsv souboru v Azure Repos](./media/how-to-devops-starter/open-module-json.png)
 
-3. Všimněte si, že tento soubor používá v parametru **Version** [proměnné buildu Azure DevOps](/azure/devops/pipelines/build/variables?view=vsts#build-variables) . Tato konfigurace zajišťuje, že se nová verze modulu vytvoří při každém spuštění nového buildu.
+3. Všimněte si, že tento soubor používá v parametru **Version** [proměnné buildu Azure DevOps](/azure/devops/pipelines/build/variables#build-variables) . Tato konfigurace zajišťuje, že se nová verze modulu vytvoří při každém spuštění nového buildu.
 
 ## <a name="examine-the-cicd-pipeline"></a>Kontrola kanálu CI/CD
 
@@ -101,7 +101,7 @@ V předchozích částech Azure DevOps Starter automaticky nakonfigurovali úpln
 
    ![Úprava podrobností kanálu](./media/how-to-devops-starter/edit-build-pipeline.png)
 
-5. Vyberte **uložit & frontu**a potom vyberte **Uložit**. Je volitelné komentovat.
+5. Vyberte **uložit & frontu** a potom vyberte **Uložit**. Je volitelné komentovat.
 
 6. V nabídce kanálu sestavení vyberte **triggery** . DevOps Starter automaticky vytvořil Trigger CI a každé potvrzení do úložiště spustí nové sestavení.  Volitelně můžete zvolit, které větve se do procesu CI zahrnou nebo se z něj vyloučí.
 
@@ -109,7 +109,7 @@ V předchozích částech Azure DevOps Starter automaticky nakonfigurovali úpln
 
 8. Vyberte **Historie**. Panel Historie obsahuje záznam o auditu nedávných změn v sestavení. Azure Pipelines sleduje všechny změny provedené v kanálu sestavení a umožňuje porovnat verze.
 
-9. Až budete s prozkoumáním kanálu sestavení hotovi, přejděte na odpovídající kanál verze. V části **kanály**vyberte **releases (verze** ) a pak vyberte **Upravit** . zobrazí se podrobnosti o kanálu.
+9. Až budete s prozkoumáním kanálu sestavení hotovi, přejděte na odpovídající kanál verze. V části **kanály** vyberte **releases (verze** ) a pak vyberte **Upravit** . zobrazí se podrobnosti o kanálu.
 
     ![Zobrazit kanál verze](media/how-to-devops-starter/release-pipeline.png)
 

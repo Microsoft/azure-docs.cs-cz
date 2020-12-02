@@ -1,19 +1,19 @@
 ---
 title: Průběžná integrace a průběžné nasazování pro Azure IoT Edge zařízení – Azure IoT Edge
 description: Pomocí YAML-Azure IoT Edge s Azure DevOps nastavte průběžnou integraci a průběžné nasazování Azure Pipelines
-author: shizn
+author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 57031d4ccdfdba73b8b36c8dc943280a8280ffcc
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 444ab8ccfe5a8441a4fd7d280e33d8e929d9387d
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048521"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435885"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices"></a>Průběžná integrace a průběžné nasazování pro Azure IoT Edge zařízení
 
@@ -32,15 +32,15 @@ V tomto článku se naučíte, jak používat integrované [úlohy Azure IoT Edg
 
 Pokud není uvedeno jinak, postupy v tomto článku nezkoumá všechny funkce dostupné prostřednictvím parametrů úlohy. Další informace najdete v následujících článcích:
 
-* [Verze úlohy](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-versions)
+* [Verze úlohy](/azure/devops/pipelines/process/tasks?tabs=yaml#task-versions)
 * **Pokročilá** – Pokud je k dispozici, zadejte moduly, které nechcete sestavit.
-* [Možnosti ovládacích prvků](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-control-options)
-* [Proměnné prostředí](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#environment-variables)
-* [Výstupní proměnné](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#use-output-variables-from-tasks)
+* [Možnosti ovládacích prvků](/azure/devops/pipelines/process/tasks?tabs=yaml#task-control-options)
+* [Proměnné prostředí](/azure/devops/pipelines/process/variables?tabs=yaml#environment-variables)
+* [Výstupní proměnné](/azure/devops/pipelines/process/variables?tabs=yaml#use-output-variables-from-tasks)
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
-* Úložiště Azure Repos. Pokud ho ještě nemáte, můžete [v projektu vytvořit nové úložiště Git](/azure/devops/repos/git/create-new-repo?tabs=new-nav&view=vsts). V tomto článku jsme vytvořili úložiště s názvem **IoTEdgeRepo**.
+* Úložiště Azure Repos. Pokud ho ještě nemáte, můžete [v projektu vytvořit nové úložiště Git](/azure/devops/repos/git/create-new-repo). V tomto článku jsme vytvořili úložiště s názvem **IoTEdgeRepo**.
 * Řešení IoT Edge potvrzené a vložené do úložiště. Chcete-li vytvořit nové ukázkové řešení pro testování tohoto článku, postupujte podle kroků v tématu [vývoj a ladění modulů v Visual Studio Code](how-to-vs-code-develop-module.md) nebo [vývoj a ladění modulů C# v aplikaci Visual Studio](./how-to-visual-studio-develop-module.md). V tomto článku jsme vytvořili řešení v našem úložišti s názvem **IoTEdgeSolution**, které obsahuje kód pro modul s názvem **filtermodule**.
 
    Pro tento článek stačí, když je složka řešení vytvořená IoT Edge šablonami v Visual Studio Code nebo v aplikaci Visual Studio. Než budete pokračovat, nemusíte tento kód sestavovat, předávat, nasazovat ani ladit. Tyto procesy nastavíte v Azure Pipelines.
@@ -50,7 +50,7 @@ Pokud není uvedeno jinak, postupy v tomto článku nezkoumá všechny funkce do
 * Registr kontejnerů, kde můžete vkládat image modulu. Můžete použít [Azure Container Registry](../container-registry/index.yml) nebo v registru třetí strany.
 * Aktivní Azure [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) s aspoň dvěma IoT Edgemi zařízeními pro testování samostatných fází testování a produkčního nasazení. Pomocí článků rychlý Start můžete vytvořit zařízení IoT Edge v systému [Linux](quickstart-linux.md) nebo [Windows](quickstart.md) .
 
-Další informace o použití Azure Repos naleznete v tématu [sdílení kódu v aplikaci Visual Studio a Azure Repos](/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts)
+Další informace o použití Azure Repos naleznete v tématu [sdílení kódu v aplikaci Visual Studio a Azure Repos](/azure/devops/repos/git/share-your-code-in-git-vs)
 
 ## <a name="create-a-build-pipeline-for-continuous-integration"></a>Vytvoření kanálu sestavení pro kontinuální integraci
 
@@ -64,7 +64,7 @@ V této části vytvoříte nový kanál sestavení. Nakonfigurujete, aby se kan
 
     ![Vytvoření nového kanálu sestavení pomocí tlačítka nový kanál](./media/how-to-continuous-integration-continuous-deployment/add-new-pipeline.png)
 
-3. Na stránce **kde je váš kód?** vyberte **Azure Repos Git `YAML` **. Pokud chcete použít klasický editor k vytvoření kanálů sestavení projektu, přečtěte si článek [Průvodce klasickým editorem](how-to-continuous-integration-continuous-deployment-classic.md).
+3. Na stránce **kde je váš kód?** vyberte **Azure Repos Git `YAML`**. Pokud chcete použít klasický editor k vytvoření kanálů sestavení projektu, přečtěte si článek [Průvodce klasickým editorem](how-to-continuous-integration-continuous-deployment-classic.md).
 
 4. Vyberte úložiště, pro které vytváříte kanál.
 
@@ -112,13 +112,13 @@ V této části vytvoříte nový kanál sestavení. Nakonfigurujete, aby se kan
        | --- | --- |
        | Zdrojová složka | Zdrojová složka, ze které se má kopírovat. Prázdné je kořen úložiště. Použijte proměnné, pokud soubory nejsou v úložišti. Příklad: `$(agent.builddirectory)`.
        | Obsah | Přidejte dva řádky: `deployment.template.json` a `**/module.json` . |
-       | Cílová složka | Zadejte proměnnou `$(Build.ArtifactStagingDirectory)` . Informace o popisu najdete v tématu věnovaném [proměnným sestavení](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables) . |
+       | Cílová složka | Zadejte proměnnou `$(Build.ArtifactStagingDirectory)` . Informace o popisu najdete v tématu věnovaném [proměnným sestavení](/azure/devops/pipelines/build/variables?tabs=yaml#build-variables) . |
 
    * Úkol: **publikování artefaktů sestavení**
 
        | Parametr | Popis |
        | --- | --- |
-       | Cesta pro publikování | Zadejte proměnnou `$(Build.ArtifactStagingDirectory)` . Informace o popisu najdete v tématu věnovaném [proměnným sestavení](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables) . |
+       | Cesta pro publikování | Zadejte proměnnou `$(Build.ArtifactStagingDirectory)` . Informace o popisu najdete v tématu věnovaném [proměnným sestavení](/azure/devops/pipelines/build/variables?tabs=yaml#build-variables) . |
        | Název artefaktu | Zadejte výchozí název: `drop` |
        | Umístění publikování artefaktu | Použít výchozí umístění: `Azure Pipelines` |
 

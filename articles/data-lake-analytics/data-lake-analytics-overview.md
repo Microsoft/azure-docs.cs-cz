@@ -7,12 +7,12 @@ ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: e49dd110c85573c034d593940e4d19a5466a1511
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 4a6ef2821080982e2b34108703bd80574443244a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220121"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445517"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Co je Azure Data Lake Analytics?
 
@@ -47,7 +47,7 @@ Služba Data Lake Analytics je nákladově efektivní řešení pro spouštění
 
 ## <a name="works-with-all-your-azure-data"></a>Možnost práce se všemi daty Azure
   
-Data Lake Analytics spolupracuje s Azure Data Lake Storage pro nejvyšší výkon, propustnost a paralelní zpracování a funguje s Azure Storagemi objekty blob, Azure SQL Database a Azure synapse Analytics (dříve SQL Data Warehouse).
+Data Lake Analytics spolupracuje s Azure Data Lake Storage pro nejvyšší výkon, propustnost a paralelní zpracování a spolupracuje s objekty blob Azure Storage Azure SQL Database a Azure synapse Analytics.
 
 
 ## <a name="next-steps"></a>Další kroky

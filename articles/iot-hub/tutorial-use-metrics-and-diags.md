@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: d59e37cdcb6f530b08e980cf75d8834aed332252
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a16dbeedc2362f4a263d59a673dbb4358f7ba034
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315196"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436483"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>Kurz: nastavení a použití metrik a protokolů ve službě IoT Hub
 
@@ -40,11 +40,11 @@ V tomto kurzu provedete následující úlohy:
 > * Zobrazení grafu metrik na řídicím panelu.
 > * Zobrazit IoT Hub chyby a operace v protokolech Azure Monitor.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Ve vývojovém počítači potřebujete .NET Core SDK 2,1 nebo vyšší. Sadu .NET Core SDK pro různé platformy si můžete stáhnout z webu [.NET](https://www.microsoft.com/net/download/all).
+- Ve vývojovém počítači potřebujete .NET Core SDK 2,1 nebo vyšší. Sadu .NET Core SDK pro různé platformy si můžete stáhnout z webu [.NET](https://www.microsoft.com/net/download/all).
 
   Aktuální verzi C# na počítači používaném pro vývoj můžete ověřit pomocí následujícího příkazu:
 
@@ -52,11 +52,11 @@ V tomto kurzu provedete následující úlohy:
   dotnet --version
   ```
 
-* E-mailový účet, který může přijímat poštu.
+- E-mailový účet, který může přijímat poštu.
 
-* Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto kurzu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+- Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto kurzu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="set-up-resources"></a>Příprava prostředků
 
@@ -68,7 +68,7 @@ Tady jsou požadované kroky.
 
 2. Vytvořte centrum IoT.
 
-3. Vytvořte pracovní prostor Log Analytics.
+3. Vytvoříte pracovní prostor služby Log Analytics
 
 4. Zaregistrujte identitu zařízení pro simulované zařízení, které odesílá zprávy do služby IoT Hub. Uložte připojovací řetězec zařízení, který se použije ke konfiguraci simulovaného zařízení.
 
@@ -170,7 +170,7 @@ Teď použijeme Průzkumníka metrik k vytvoření grafu, který bude zobrazovat
 
 1. V levém podokně Centra IoT vyberte v části **monitorování** možnost **metriky** .
 
-1. V horní části obrazovky vyberte **posledních 24 hodin (automaticky)**. V rozevíracím seznamu, který se zobrazí, vyberte **Poslední 4 hodiny** pro **časový rozsah** , nastavte **časové rozlišení** na **1 minutu** a v poli **čas zobrazení** vyberte **místní** . Pokud chcete tato nastavení uložit, vyberte **použít** . Nastavení by teď mělo vystavovat **místní čas: poslední 4 hodiny (1 minuta)**.
+1. V horní části obrazovky vyberte **posledních 24 hodin (automaticky)**. V rozevíracím seznamu, který se zobrazí, vyberte **Poslední 4 hodiny** pro **časový rozsah**, nastavte **časové rozlišení** na **1 minutu** a v poli **čas zobrazení** vyberte **místní** . Pokud chcete tato nastavení uložit, vyberte **použít** . Nastavení by teď mělo vystavovat **místní čas: poslední 4 hodiny (1 minuta)**.
 
    :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-select-time-range.png" alt-text="Snímek obrazovky zobrazující nastavení času metrik":::
 
@@ -225,17 +225,17 @@ Nastavení výstrah metrik:
 
     1. V podokně **Konfigurovat logiku signálu** nastavte nebo potvrďte následující pole v části **Logical Alert** (graf můžete ignorovat):
 
-       **Prahová hodnota** :  *static*.
+       **Prahová hodnota**:  *static*.
 
-       **Operátor** : je *větší než*.
+       **Operátor**: je *větší než*.
 
-       **Typ agregace** : *celkem*.
+       **Typ agregace**: *celkem*.
 
-       **Prahová hodnota** : 1000.
+       **Prahová hodnota**: 1000.
 
-       **Členitost agregace (period)** : *5 minut*.
+       **Členitost agregace (period)**: *5 minut*.
 
-       **Frekvence hodnocení** : *každou 1 minutu*
+       **Frekvence hodnocení**: *každou 1 minutu*
 
         :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-set-conditions.png" alt-text="Snímek obrazovky s nastavením podmínek upozornění":::
 
@@ -285,17 +285,17 @@ Nastavení výstrah metrik:
 
     * V podokně **Konfigurovat logiku signálu** nastavte nebo potvrďte následující pole (Tento graf můžete ignorovat):
 
-       **Prahová hodnota** :  *static*.
+       **Prahová hodnota**:  *static*.
 
-       **Operátor** : je *větší než*.
+       **Operátor**: je *větší než*.
 
-       **Typ agregace** : *Maximum*.
+       **Typ agregace**: *Maximum*.
 
-       **Prahová hodnota** : 4000.
+       **Prahová hodnota**: 4000.
 
-       **Členitost agregace (period)** : *1 minuta*.
+       **Členitost agregace (period)**: *1 minuta*.
 
-       **Frekvence hodnocení** : *každou 1 minutu*
+       **Frekvence hodnocení**: *každou 1 minutu*
 
        Tato nastavení nastavují signál, který se aktivuje, když počet zpráv dosáhne 4000. Metrika se vyhodnocuje každou minutu.
 

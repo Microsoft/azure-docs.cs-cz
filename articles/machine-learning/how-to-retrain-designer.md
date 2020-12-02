@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d8ef4d9f768d6fdcf976c9317d1abec3d4533824
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: d754674fe3aa65fa9fd8540b05083979ce96aff8
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554797"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437112"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer"></a>Přeučení modelů pomocí návrháře Azure Machine Learning
 
@@ -47,7 +47,11 @@ Kanál použitý v tomto článku je upravená verze [předpovědi pro příjem]
 
 ## <a name="create-a-pipeline-parameter"></a>Vytvoření parametru kanálu
 
-Vytvořte parametry kanálu pro dynamické nastavení proměnných za běhu. V tomto příkladu změníte cestu školicích dat z pevné hodnoty na parametr, abyste mohli model přeškolit na různá data.
+Parametry kanálu slouží k vytváření univerzálních kanálů, které je možné znovu odeslat později pomocí různých hodnot parametrů. Některé běžné scénáře aktualizují datové sady nebo některé parametry technologie Hyper-v pro přeškolení. Vytvořte parametry kanálu pro dynamické nastavení proměnných za běhu. 
+
+Parametry kanálu lze přidat do zdrojů dat nebo parametrů modulu v kanálu. Po odeslání kanálu lze zadat hodnoty těchto parametrů.
+
+V tomto příkladu změníte cestu školicích dat z pevné hodnoty na parametr, abyste mohli model přeškolit na různá data. V závislosti na vašem případu použití můžete také přidat další parametry modulu jako parametry kanálu.
 
 1. Vyberte modul **Import dat** .
 
@@ -60,31 +64,22 @@ Vytvořte parametry kanálu pro dynamické nastavení proměnných za běhu. V t
 
 1. MouseOver pole **cesta** a vyberte tři tečky nad polem **cesta** , která se zobrazí.
 
-    ![Snímek obrazovky, který ukazuje, jak vytvořit parametr kanálu](media/how-to-retrain-designer/add-pipeline-parameter.png)
-
 1. Vyberte možnost **Přidat do parametru kanálu**.
 
 1. Zadejte název parametru a výchozí hodnotu.
 
-   > [!NOTE]
-   > Parametry kanálu můžete zkontrolovat a upravit výběrem ikony **Nastavení** ozubeného kola vedle názvu konceptu kanálu. 
+   ![Snímek obrazovky, který ukazuje, jak vytvořit parametr kanálu](media/how-to-retrain-designer/add-pipeline-parameter.png)
 
 1. Vyberte **Uložit**.
 
+   > [!NOTE]
+   > Parametr modulu můžete také odpojit od parametru kanálu v podokně podrobností modulu, podobně jako přidání parametrů kanálu.
+   >
+   > Parametry kanálu můžete zkontrolovat a upravit výběrem ikony **Nastavení** ozubeného kola vedle názvu konceptu kanálu. 
+   >    - Po odpojení můžete parametr kanálu odstranit v podokně **upravena vlastním nastavením** .
+   >    - V podokně **Nastavení** můžete také přidat parametr kanálu a pak ho použít na některém z parametrů modulu.
+
 1. Odešlete běh kanálu.
-
-## <a name="find-a-trained-model"></a>Najít trained model
-
-Návrhář uloží výstup kanálu včetně školených modelů do výchozího účtu úložiště pracovního prostoru. K vyškolené modely můžete také přistupovat přímo v Návrháři:
-
-1. Počkejte na dokončení běhu kanálu.
-1. Vyberte modul **vlakového modelu** .
-1. V podokně podrobností modulu napravo od plátna vyberte **výstupy + protokoly**.
-1. Model můžete najít v **dalších výstupech** společně s protokoly spuštění.
-1. Případně vyberte ikonu **Zobrazit výstup** . Odtud můžete postupovat podle pokynů v dialogovém okně a přejít přímo do úložiště dat. 
-
-> [!div class="mx-imgBorder"]
-> ![Snímek obrazovky, který ukazuje stažení naučeného modelu](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="publish-a-training-pipeline"></a>Publikování školicího kanálu
 

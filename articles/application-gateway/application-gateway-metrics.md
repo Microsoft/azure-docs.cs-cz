@@ -2,17 +2,17 @@
 title: Azure Monitor metriky pro Application Gateway
 description: Naučte se používat metriky k monitorování výkonu služby Application Gateway.
 services: application-gateway
-author: abshamsft
+author: surajmb
 ms.service: application-gateway
 ms.topic: article
 ms.date: 06/06/2020
-ms.author: absha
-ms.openlocfilehash: c072e7c1339a2217a3c167be3237029bd71429c2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.author: surmb
+ms.openlocfilehash: be629d9f8441ad40fe15f005f4aeb0ec5565a7ec
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397735"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437061"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriky pro Application Gateway
 
@@ -40,7 +40,7 @@ Application Gateway poskytuje několik vestavěných metrik časování vztahuj�
 
   Časový interval mezi začátky navázání připojení k back-endu serveru a příjem prvního bajtu hlavičky odpovědi 
 
-  To bude odpovídat součtu *času připojení back-endu* , času, který požadavek přijal pro přístup k back-endu z Application Gateway, což je čas, který aplikace back-end zavedla k tomu, aby reagovala na Application Gateway z back-endu.
+  To bude odpovídat součtu *času připojení back-endu*, času, který požadavek přijal pro přístup k back-endu z Application Gateway, což je čas, který aplikace back-end zavedla k tomu, aby reagovala na Application Gateway z back-endu.
 
 - **Doba odezvy posledního bajtu back-endu**
 
@@ -52,7 +52,7 @@ Application Gateway poskytuje několik vestavěných metrik časování vztahuj�
 
   Průměrná doba, kterou trvá, než se požadavek přijme, zpracuje a pošle odpověď. 
 
-  Toto je interval od času, kdy Application Gateway obdrží první bajt požadavku HTTP na čas, kdy byl klientovi odeslán poslední bajt odpovědi. To zahrnuje dobu zpracování trvání Application Gateway, *čas odezvy back-endu posledního bajtu* , čas potřebný Application Gateway k odeslání všech odpovědí a času *odezvy klienta*.
+  Toto je interval od času, kdy Application Gateway obdrží první bajt požadavku HTTP na čas, kdy byl klientovi odeslán poslední bajt odpovědi. To zahrnuje dobu zpracování trvání Application Gateway, *čas odezvy back-endu posledního bajtu*, čas potřebný Application Gateway k odeslání všech odpovědí a času *odezvy klienta*.
 
 - **Čas odezvy klienta**
 
@@ -62,7 +62,7 @@ Application Gateway poskytuje několik vestavěných metrik časování vztahuj�
 
 Tyto metriky se dají použít k určení, jestli je pozorovaná zpomalení z důvodu klientské sítě, Application Gateway výkonu, back-end sítě a back-endu TCP zásobníku, výkonu aplikace back-endu nebo velikosti velkých souborů.
 
-Například pokud dojde k špičkám ve trendu *prvního bajtu doby odezvy back-endu* , ale trend *času připojení back-* endu je stabilní, pak je možné odvodit, že brána Application Gateway na latenci back-endu a čas potřebný k navázání připojení je stabilní, a špička je způsobena nárůstem doby odezvy back-end aplikace. Na druhé straně platí, že pokud je špička v *back-endu doba odezvy prvního bajtu* přidružená k odpovídajícímu špičku v *době připojení back-endu* , je možné odvodit, že síť mezi Application Gateway a back-end serverem nebo zásobníkem protokolu TCP back-end serveru byla sytost. 
+Například pokud dojde k špičkám ve trendu *prvního bajtu doby odezvy back-endu* , ale trend *času připojení back-* endu je stabilní, pak je možné odvodit, že brána Application Gateway na latenci back-endu a čas potřebný k navázání připojení je stabilní, a špička je způsobena nárůstem doby odezvy back-end aplikace. Na druhé straně platí, že pokud je špička v *back-endu doba odezvy prvního bajtu* přidružená k odpovídajícímu špičku v *době připojení back-endu*, je možné odvodit, že síť mezi Application Gateway a back-end serverem nebo zásobníkem protokolu TCP back-end serveru byla sytost. 
 
 Pokud si všimnete špičky v *době, kdy uplynula doba odezvy back-endu* , ale *Doba odezvy prvního bajtu* je stabilní, je možné ji odvodit, protože se požaduje větší požadovaný soubor.
 
@@ -162,7 +162,7 @@ Pro Application Gateway jsou k dispozici následující metriky:
 
 - **Neúspěšné žádosti**
 
-  Počet požadavků, které Application Gateway obsluhovány s kódy chyb 5xx serveru. To zahrnuje 5xx kódy, které jsou generovány z Application Gateway, a také kódy 5xx, které jsou generovány z back-endu. Počet požadavků může být dále filtrován tak, aby zobrazoval počet pro každý nebo konkrétní back-end fond – kombinace nastavení http.
+  Počet požadavků, které selhaly kvůli problémům s připojením. Tento počet zahrnuje požadavky, které selhaly kvůli překročení nastavení HTTP "časový limit požadavku" a požadavků, které selhaly kvůli problémům s připojením mezi aplikační bránou a back-end. Tento počet neobsahuje chyby z důvodu nedostupnosti bezproblémového back-endu. odpovědi na 4xx a 5xx z back-endu se také nepovažují za součást této metriky.
 
 - **Stav odpovědi**
 
@@ -214,11 +214,11 @@ Následující příklad vás provede vytvořením pravidla upozornění, které
 
 2. Na stránce **Přidat pravidlo** vyplňte oddíly název, podmínka a Notify a vyberte **OK**.
 
-   * V selektoru **podmínky** vyberte jednu ze čtyř hodnot: **větší než** , **větší než nebo rovno** , **menší** nebo **rovno nebo menší než**.
+   * V selektoru **podmínky** vyberte jednu ze čtyř hodnot: **větší než**, **větší než nebo rovno**, **menší** nebo **rovno nebo menší než**.
 
    * V selektoru **období** vyberte období od pěti minut po 6 hodin.
 
-   * Pokud vyberete možnost **vlastníci, přispěvatelé a čtenáři e-mailu** , může být e-mail dynamický v závislosti na uživatelích, kteří k tomuto prostředku mají přístup. Jinak můžete v poli **Další e-mailové zprávy správce** zadat čárkami oddělený seznam uživatelů.
+   * Pokud vyberete možnost **vlastníci, přispěvatelé a čtenáři e-mailu**, může být e-mail dynamický v závislosti na uživatelích, kteří k tomuto prostředku mají přístup. Jinak můžete v poli **Další e-mailové zprávy správce** zadat čárkami oddělený seznam uživatelů.
 
    ![Přidat stránku pravidla][7]
 

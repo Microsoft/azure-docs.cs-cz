@@ -7,15 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: bdd6dbf790bcf2ec97be33504e51ca3db2eb3ef7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.custom: azureday1
+ms.openlocfilehash: facc6a4ab8344f9f72fc7abc27433c18ab435504
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182984"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436534"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-app"></a>Kurz: přístup k Microsoft Graph z zabezpečené aplikace jako aplikace
 
@@ -35,7 +36,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Webová aplikace spuštěná v Azure App Service s [povoleným App Servicem ověřováním/autorizačním modulem](scenario-secure-app-authentication-app-service.md).
 
@@ -120,6 +121,8 @@ V části **Přehled** vyberte **oprávnění** a zobrazí se jim přidaná opr�
 ## <a name="call-microsoft-graph-net"></a>Volat Microsoft Graph (.NET)
 
 Třída [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) slouží k získání přihlašovacích údajů tokenu pro váš kód k autorizaci požadavků na Microsoft Graph. Vytvořte instanci třídy [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) , která pomocí spravované identity načte tokeny a připojí je k klientovi služby. Následující příklad kódu získá pověření ověřeného tokenu a použije ho k vytvoření objektu klienta služby, který získá uživatele ve skupině.
+
+Pokud chcete tento kód zobrazit jako součást ukázkové aplikace, podívejte se na [ukázku v GitHubu](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/3-WebApp-graphapi-managed-identity).
 
 ### <a name="install-the-microsoftgraph-client-library-package"></a>Instalace balíčku klientské knihovny Microsoft. Graph
 

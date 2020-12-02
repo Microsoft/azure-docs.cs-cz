@@ -3,12 +3,12 @@ title: Azure Monitor Application Insights Java
 description: Monitorování výkonu aplikací pro aplikace v jazyce Java spuštěné v jakémkoli prostředí bez nutnosti změny kódu. Distribuované trasování a mapa aplikací
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 36e2b419da2bccdf2f5f13227457172cf644994c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7046e4a1aeeda5e537208c79858c95c79e188348
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351533"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437197"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor monitorování aplikací s kódováním kódu Java Application Insights
 
@@ -127,104 +127,124 @@ V `applicationinsights.json` souboru můžete také nakonfigurovat:
 * Mikroměřič (včetně metriky pohánějícího spouštěcího zařízení)
 * JMX metriky
 
-## <a name="sending-custom-telemetry-from-your-application"></a>Odesílá se vlastní telemetrie z vaší aplikace.
+## <a name="send-custom-telemetry-from-your-application"></a>Odeslání vlastní telemetrie z vaší aplikace
 
 Naším cílem v 3.0 + je umožnění odesílání vlastní telemetrie pomocí standardních rozhraní API.
 
-Podporujeme mikroměřiče, rozhraní OpenTelemetry API a oblíbená rozhraní protokolování. Application Insights Java 3,0 automaticky zachytí telemetrii a koreluje je spolu se všemi automaticky shromážděnými telemetriemi.
+Podporuje mikroměřiče, oblíbená rozhraní protokolování a zatím Application Insights Java 2. x SDK.
+Application Insights Java 3,0 automaticky zachycuje telemetrii poslaná pomocí těchto rozhraní API a koreluje ji s automatickou shromážděnou telemetrie.
 
 ### <a name="supported-custom-telemetry"></a>Podporovaná vlastní telemetrie
 
-Následující tabulka představuje aktuálně podporované vlastní typy telemetrie, které můžete povolit pro doplnění agenta Java 3,0. Pro sumarizaci jsou vlastní metriky podporovány prostřednictvím mikroměřiče, vlastní výjimky a trasování lze povolit prostřednictvím protokolovacích rozhraní a jakýkoli typ vlastní telemetrie je podporován prostřednictvím [Application Insights Java 2. x SDK](#sending-custom-telemetry-using-application-insights-java-sdk-2x). 
+Následující tabulka představuje aktuálně podporované vlastní typy telemetrie, které můžete povolit pro doplnění agenta Java 3,0. Pro sumarizaci jsou vlastní metriky podporovány prostřednictvím mikroměřiče, vlastní výjimky a trasování lze povolit prostřednictvím protokolovacích rozhraní a jakýkoli typ vlastní telemetrie je podporován prostřednictvím [Application Insights Java 2. x SDK](#send-custom-telemetry-using-application-insights-java-2x-sdk).
 
 |                     | Mikrometr | Log4j, logback, červenec | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Vlastní události**   |            |                     |  Ano    |
-| **Vlastní metriky**  |  Ano       |                     |  Ano    |
-| **Závislosti**    |            |                     |  Ano    |
-| **Výjimky**      |            |  Ano                |  Ano    |
-| **Page Views**      |            |                     |  Ano    |
-| **Žádosti**        |            |                     |  Ano    |
-| **Trasování**          |            |  Ano                |  Ano    |
+| **Vlastní události**   |            |                     |  Yes    |
+| **Vlastní metriky**  |  Yes       |                     |  Yes    |
+| **Závislosti**    |            |                     |  Yes    |
+| **Výjimky**      |            |  Yes                |  Yes    |
+| **Page Views**      |            |                     |  Yes    |
+| **Žádosti**        |            |                     |  Yes    |
+| **Trasování**          |            |  Yes                |  Yes    |
 
 V tuto chvíli neplánujeme vydání sady SDK pomocí Application Insights 3,0.
 
-Application Insights Java 3,0 již naslouchá telemetrie, která je odeslána do Application Insights Java SDK 2. x. Tato funkce je důležitou součástí článku upgradu pro existující uživatele 2. x a vyplní důležitou mezeru v naší podpoře vlastní telemetrie, dokud není rozhraní OpenTelemetry API GA.
+Application Insights Java 3,0 již naslouchá telemetrie, která je odeslána do sady Application Insights Java 2. x SDK. Tato funkce je důležitou součástí článku upgradu pro existující uživatele 2. x a vyplní důležitou mezeru v naší podpoře vlastní telemetrie, dokud není rozhraní OpenTelemetry API GA.
 
-## <a name="sending-custom-telemetry-using-application-insights-java-sdk-2x"></a>Odesílání vlastní telemetrie pomocí Application Insights Java SDK 2. x
+### <a name="send-custom-metrics-using-micrometer"></a>Odesílání vlastních metrik pomocí mikroměřiče
+
+Přidat mikroměřič do aplikace:
+
+```xml
+<dependency>
+  <groupId>io.micrometer</groupId>
+  <artifactId>micrometer-core</artifactId>
+  <version>1.6.1</version>
+</dependency>
+```
+
+Použití [globálního registru](https://micrometer.io/docs/concepts#_global_registry) mikroměřiče k vytvoření měřiče:
+
+```java
+static final Counter counter = Metrics.counter("test_counter");
+```
+
+a používá se pro záznam metrik:
+
+```java
+counter.increment();
+```
+
+### <a name="send-custom-traces-and-exceptions-using-your-favorite-logging-framework"></a>Posílání vlastních trasování a výjimek pomocí oblíbeného protokolovacího rozhraní
+
+Log4j, Logback a Java. util. protokolování je automaticky instrumentované a protokolování se provádí pomocí těchto protokolovacích rozhraní, které se automaticky shromáždí jako telemetrie trasování a výjimek.
+
+Ve výchozím nastavení je protokolování shromažďováno pouze v případě, že je protokolování provedeno na úrovni informací nebo výše.
+Postup změny této úrovně najdete v [možnostech konfigurace](./java-standalone-config.md#auto-collected-logging) .
+
+Pokud chcete připojovat vlastní dimenze k protokolům, můžete použít [log4j 1 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html), [log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)nebo [Logback MDC](http://logback.qos.ch/manual/mdc.html)a Application Insights Java 3,0 budou tyto vlastnosti MDC automaticky zachytit jako vlastní rozměry na telemetrii trasování a telemetrie výjimek.
+
+### <a name="send-custom-telemetry-using-application-insights-java-2x-sdk"></a>Odeslání vlastní telemetrie pomocí Application Insights Java 2. x SDK
 
 Přidejte `applicationinsights-core-2.6.0.jar` do své aplikace (všechny 2. x verze jsou podporovány Application Insights Java 3,0, ale Využijte možnost nejnovější, pokud máte možnost použít):
 
 ```xml
-  <dependency>
-    <groupId>com.microsoft.azure</groupId>
-    <artifactId>applicationinsights-core</artifactId>
-    <version>2.6.0</version>
-  </dependency>
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-core</artifactId>
+  <version>2.6.0</version>
+</dependency>
 ```
 
 Vytvořte TelemetryClient:
 
   ```java
-private static final TelemetryClient telemetryClient = new TelemetryClient();
+static final TelemetryClient telemetryClient = new TelemetryClient();
 ```
 
-a používají se k odesílání vlastní telemetrie.
+a použít ho k odeslání vlastní telemetrie:
 
-### <a name="events"></a>Události
+##### <a name="events"></a>Události
 
-  ```java
+```java
 telemetryClient.trackEvent("WinGame");
 ```
-### <a name="metrics"></a>Metriky
 
-Telemetrii metriky můžete poslat pomocí [mikroměřiče](https://micrometer.io):
+##### <a name="metrics"></a>Metriky
 
 ```java
-  Counter counter = Metrics.counter("test_counter");
-  counter.increment();
+telemetryClient.trackMetric("queueLength", 42.0);
 ```
 
-Můžete také použít Application Insights Java SDK 2. x:
+##### <a name="dependencies"></a>Závislosti
 
 ```java
-  telemetryClient.trackMetric("queueLength", 42.0);
+boolean success = false;
+long startTime = System.currentTimeMillis();
+try {
+    success = dependency.call();
+} finally {
+    long endTime = System.currentTimeMillis();
+    RemoteDependencyTelemetry telemetry = new RemoteDependencyTelemetry();
+    telemetry.setTimestamp(new Date(startTime));
+    telemetry.setDuration(new Duration(endTime - startTime));
+    telemetryClient.trackDependency(telemetry);
+}
 ```
 
-### <a name="dependencies"></a>Závislosti
+##### <a name="logs"></a>Protokoly
 
 ```java
-  boolean success = false;
-  long startTime = System.currentTimeMillis();
-  try {
-      success = dependency.call();
-  } finally {
-      long endTime = System.currentTimeMillis();
-      RemoteDependencyTelemetry telemetry = new RemoteDependencyTelemetry();
-      telemetry.setTimestamp(new Date(startTime));
-      telemetry.setDuration(new Duration(endTime - startTime));
-      telemetryClient.trackDependency(telemetry);
-  }
+telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
 ```
 
-### <a name="logs"></a>Protokoly
-Vlastní telemetrii protokolu můžete odeslat prostřednictvím oblíbeného protokolovacího rozhraní.
-
-Můžete také použít Application Insights Java SDK 2. x:
+##### <a name="exceptions"></a>Výjimky
 
 ```java
-  telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
-```
-
-### <a name="exceptions"></a>Výjimky
-Můžete odesílat vlastní telemetrii výjimek prostřednictvím oblíbeného protokolovacího rozhraní.
-
-Můžete také použít Application Insights Java SDK 2. x:
-
-```java
-  try {
-      ...
-  } catch (Exception e) {
-      telemetryClient.trackException(e);
-  }
+try {
+    ...
+} catch (Exception e) {
+    telemetryClient.trackException(e);
+}
 ```

@@ -6,16 +6,16 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a8d6481bdf3476f8f91c437138f4b6f1ebd1f1de
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 4114dd712028895da03835a2730ebd7a6ab971a4
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058195"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436874"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Kurz: použití robota webové aplikace s povoleným Language Understanding v jazyce C #
 
-Použijte jazyk C# k sestavení robota pro chat integrovaný s jazykem porozumění (LUIS). Robot má vytvořenou službu Azure [Web App bot](https://docs.microsoft.com/azure/bot-service/) Resource a [bot Framework verze](https://github.com/Microsoft/botbuilder-dotnet) v4.
+Použijte jazyk C# k sestavení robota pro chat integrovaný s jazykem porozumění (LUIS). Robot má vytvořenou službu Azure [Web App bot](/azure/bot-service/) Resource a [bot Framework verze](https://github.com/Microsoft/botbuilder-dotnet) v4.
 
 **V tomto kurzu se naučíte:**
 
@@ -49,10 +49,10 @@ Použijte jazyk C# k sestavení robota pro chat integrovaný s jazykem porozumě
     |Bot template (Šablona robota)|Nastavení Bot Frameworku – viz následující tabulka|
     |LUIS App location (Umístění aplikace LUIS)|Musí být stejné jako oblast prostředků LUIS|`westus`|
     |Plán/umístění služby App Service|Neměňte z poskytnuté výchozí hodnoty.|
-    |Application Insights|Neměňte z poskytnuté výchozí hodnoty.|
-    |ID a heslo aplikace od Microsoftu|Neměňte z poskytnuté výchozí hodnoty.|
+    |Application Insights|Neměňte ze zadané výchozí hodnoty.|
+    |ID a heslo aplikace od Microsoftu|Neměňte ze zadané výchozí hodnoty.|
 
-1. V **šabloně robota**vyberte následující a pak klikněte na tlačítko **Vybrat** pod těmito nastaveními:
+1. V **šabloně robota** vyberte následující a pak klikněte na tlačítko **Vybrat** pod těmito nastaveními:
 
     |Nastavení|Účel|Výběr|
     |--|--|--|
@@ -336,4 +336,4 @@ V aplikaci Visual Studio 2019 začněte robot. Otevře se okno prohlížeče s w
 Podívejte se na další [ukázky](https://github.com/microsoft/botframework-solutions) s konverzací roboty.
 
 > [!div class="nextstepaction"]
-> [Vytvoření aplikace Language Understanding s vlastní doménou předmětu](luis-quickstart-intents-only.md)
+> [Vytvoření aplikace Language Understanding s vlastní doménou předmětu](./tutorial-intents-only.md)

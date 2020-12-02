@@ -10,20 +10,20 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: f0121a264c3fcf4cba1de72a1b9b81c1af66e82a
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 278c842d6e6f73bff5468f601eea77f8b140a07c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96297096"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444428"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>Kurz: použití spravované identity pro připojení Key Vault k webové aplikaci Azure v .NET
 
-[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) poskytuje způsob ukládání přihlašovacích údajů a dalších tajných kódů s vyšším zabezpečením. Váš kód ale musí ověřit, aby se Key Vault načíst. [Spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md) usnadňují řešení tohoto problému tím, že službám Azure poskytne automaticky spravovanou identitu ve službě Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD, včetně Key Vault, bez nutnosti zobrazovat přihlašovací údaje v kódu.
+[Azure Key Vault](./overview.md) poskytuje způsob ukládání přihlašovacích údajů a dalších tajných kódů s vyšším zabezpečením. Váš kód ale musí ověřit, aby se Key Vault načíst. [Spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md) usnadňují řešení tohoto problému tím, že službám Azure poskytne automaticky spravovanou identitu ve službě Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD, včetně Key Vault, bez nutnosti zobrazovat přihlašovací údaje v kódu.
 
 V tomto kurzu použijete spravovanou identitu k ověření webové aplikace Azure pomocí trezoru klíčů Azure. Použijete [klientskou knihovnu Azure Key Vault verze 4 pro .NET](/dotnet/api/overview/azure/key-vault) a [Azure CLI](/cli/azure/get-started-with-azure-cli). Stejné základní principy platí při použití vývojového jazyka dle vašeho výběru, Azure PowerShell a/nebo Azure Portal.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 Co budete potřebovat k dokončení tohoto rychlého startu:
 
@@ -31,8 +31,8 @@ Co budete potřebovat k dokončení tohoto rychlého startu:
 * [Sada .NET Core 3,1 SDK (nebo novější)](https://dotnet.microsoft.com/download/dotnet-core/3.1).
 * Instalace [Gitu](https://www.git-scm.com/downloads) .
 * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) nebo [Azure PowerShell](/powershell/azure/).
-* [Azure Key Vault.](https://docs.microsoft.com/azure/key-vault/general/overview) Trezor klíčů můžete vytvořit pomocí [Azure Portal](quick-create-portal.md), rozhraní příkazového [řádku Azure](quick-create-cli.md)nebo [Azure PowerShell](quick-create-powershell.md).
-* Key Vault [tajný klíč](https://docs.microsoft.com/azure/key-vault/secrets/about-secrets). Tajný klíč můžete vytvořit pomocí [Azure Portal](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal), [PowerShellu](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-powershell)nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-cli).
+* [Azure Key Vault.](./overview.md) Trezor klíčů můžete vytvořit pomocí [Azure Portal](quick-create-portal.md), rozhraní příkazového [řádku Azure](quick-create-cli.md)nebo [Azure PowerShell](quick-create-powershell.md).
+* Key Vault [tajný klíč](../secrets/about-secrets.md). Tajný klíč můžete vytvořit pomocí [Azure Portal](../secrets/quick-create-portal.md), [PowerShellu](../secrets/quick-create-powershell.md)nebo rozhraní příkazového [řádku Azure CLI](../secrets/quick-create-cli.md).
 
 ## <a name="create-a-net-core-app"></a>Vytvoření aplikace .NET Core
 V tomto kroku nastavíte místní projekt .NET Core.
@@ -62,7 +62,7 @@ Uvidíte zprávu „Hello World!“, Zpráva z ukázkové aplikace zobrazené na
 
 ## <a name="deploy-the-app-to-azure"></a>Nasadit aplikaci do Azure
 
-V tomto kroku nasadíte aplikaci .NET Core pro Azure App Service pomocí místního Gitu. Další informace o tom, jak vytvořit a nasadit aplikace, najdete v tématu [Vytvoření webové aplikace v ASP.NET Core v Azure](https://docs.microsoft.com/azure/app-service/quickstart-dotnetcore).
+V tomto kroku nasadíte aplikaci .NET Core pro Azure App Service pomocí místního Gitu. Další informace o tom, jak vytvořit a nasadit aplikace, najdete v tématu [Vytvoření webové aplikace v ASP.NET Core v Azure](../../app-service/quickstart-dotnetcore.md).
 
 ### <a name="configure-the-local-git-deployment"></a>Konfigurace místního nasazení Git
 
@@ -99,7 +99,7 @@ az group create --name "myResourceGroup" -l "EastUS"
 
 ### <a name="create-an-app-service-plan"></a>Vytvoření plánu služby App Service
 
-Pomocí příkazu Azure CLI [AZ AppService Plan Create](/cli/azure/appservice/plan) vytvořte [plán App Service](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) . Následující příklad vytvoří plán App Service s názvem `myAppServicePlan` v `FREE` cenové úrovni:
+Pomocí příkazu Azure CLI [AZ AppService Plan Create](/cli/azure/appservice/plan) vytvořte [plán App Service](../../app-service/overview-hosting-plans.md) . Následující příklad vytvoří plán App Service s názvem `myAppServicePlan` v `FREE` cenové úrovni:
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
@@ -125,7 +125,7 @@ Po vytvoření plánu App Service se v Azure CLI zobrazí podobné informace jak
 } 
 </pre>
 
-Další informace najdete v článku [Správa plánu služby App Service v Azure](https://docs.microsoft.com/azure/app-service/app-service-plan-manage).
+Další informace najdete v článku [Správa plánu služby App Service v Azure](../../app-service/app-service-plan-manage.md).
 
 ### <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
@@ -249,7 +249,7 @@ Pokud chcete vaší webové aplikaci udělit oprávnění k **získání** a **v
 az keyvault set-policy --name "<your-keyvault-name>" --object-id "<principalId>" --secret-permissions get list
 ```
 
-Zásady přístupu můžete také přiřadit pomocí [Azure Portal](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal) nebo [PowerShellu](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-powershell).
+Zásady přístupu můžete také přiřadit pomocí [Azure Portal](./assign-access-policy-portal.md) nebo [PowerShellu](./assign-access-policy-powershell.md).
 
 ### <a name="modify-the-app-to-access-your-key-vault"></a>Úprava aplikace pro přístup k trezoru klíčů
 
@@ -274,7 +274,7 @@ using Azure.Security.KeyVault.Secrets;
 using Azure.Core;
 ```
 
-Přidejte následující řádky před `app.UseEndpoints` voláním, aktualizujte identifikátor URI tak, aby odrážely `vaultUri` váš Trezor klíčů. Tento kód používá  [DefaultAzureCredential ()](/dotnet/api/azure.identity.defaultazurecredential) k ověření pro Key Vault, které používá token ze spravované identity k ověření. Další informace o ověřování pro Key Vault najdete v [příručce pro vývojáře](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code). Kód také používá exponenciální omezení rychlosti pro opakování v případě omezení Key Vault. Další informace o Key Vault omezeních transakcí najdete v tématu [pokyny k omezování Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview-throttling).
+Přidejte následující řádky před `app.UseEndpoints` voláním, aktualizujte identifikátor URI tak, aby odrážely `vaultUri` váš Trezor klíčů. Tento kód používá  [DefaultAzureCredential ()](/dotnet/api/azure.identity.defaultazurecredential) k ověření pro Key Vault, které používá token ze spravované identity k ověření. Další informace o ověřování pro Key Vault najdete v [příručce pro vývojáře](./developers-guide.md#authenticate-to-key-vault-in-code). Kód také používá exponenciální omezení rychlosti pro opakování v případě omezení Key Vault. Další informace o Key Vault omezeních transakcí najdete v tématu [pokyny k omezování Azure Key Vault](./overview-throttling.md).
 
 ```csharp
 SecretClientOptions options = new SecretClientOptions()
@@ -322,10 +322,8 @@ Místo, kde jste si viděli "Hello World!", by se teď měla zobrazit hodnota zo
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Použití Azure Key Vault s aplikacemi nasazenými do virtuálního počítače v .NET](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
+- [Použití Azure Key Vault s aplikacemi nasazenými do virtuálního počítače v .NET](./tutorial-net-virtual-machine.md)
 - Další informace o [spravovaných identitách pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md)
 - Další informace o [spravovaných identitách pro App Service](../../app-service/overview-managed-identity.md?tabs=dotnet)
-- Zobrazit [příručku pro vývojáře](https://docs.microsoft.com/azure/key-vault/general/developers-guide)
-- [Zabezpečený přístup k trezoru klíčů](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault)
-
-
+- Zobrazit [příručku pro vývojáře](./developers-guide.md)
+- [Zabezpečený přístup k trezoru klíčů](./secure-your-key-vault.md)
