@@ -8,12 +8,12 @@ ms.date: 11/02/2020
 author: parthpandyaMSFT
 ms.author: parthp
 ms.custom: contperfq2
-ms.openlocfilehash: ccdc87d03181bad1aba4dd362a651fa42381343a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 39a9b363c847b615bfbe049b4b47628e8688c607
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95542282"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458122"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Vytvoření účtu obchodního tržiště v partnerském centru
 
@@ -114,7 +114,7 @@ V partnerském centru jste nyní vytvořili účet komerčního tržiště. Pokr
 >
 >Jednotlivé účty slouží vývojářům, kteří pracují sami. Účty společnosti jsou pro organizace a firmy. Účty společnosti poskytují přístup k odesílání aplikací s dalšími funkcemi.
 >
-> Abychom zjistili, že máte oprávnění k nastavení účtu pro vaši společnost, vyžadujeme po registraci další ověření účtů společnosti. Toto ověření může trvat několik dní až pár týdnů a často zahrnuje telefonní hovor vaší společnosti. Oba typy účtů umožňují odesílat aplikace, doplňky a služby. Další informace najdete v tématu [typy účtů, umístění a poplatky](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees).
+> Abychom zjistili, že máte oprávnění k nastavení účtu pro vaši společnost, vyžadujeme po registraci další ověření účtů společnosti. Toto ověření může trvat několik dní až pár týdnů a často zahrnuje telefonní hovor vaší společnosti. Oba typy účtů umožňují odesílat aplikace, doplňky a služby. Další informace najdete v tématu [typy účtů, umístění a poplatky](/windows/uwp/publish/account-types-locations-and-fees).
 
 Když se zaregistrujete do programu pro komerční tržiště se stejným účtem, jaký má vývojářský program, můžete v levém podokně partnerského centra Zobrazit všechna existující přihlášení k programu.
 

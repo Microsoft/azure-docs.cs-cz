@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 8f85e9c77cc6fed7e2763f694664332b124d0780
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9089fee7565633b198043efeed929fc7446437d5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561790"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458292"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Přehledy Marketplace v analýzách komerčního marketplace
 
@@ -20,7 +20,7 @@ Tento článek poskytuje informace o řídicím panelu přehledů Marketplace v 
 
 Pokud chcete získat přístup k řídicímu panelu **přehledů Marketplace** v partnerském centru, vyberte v části komerční Marketplace možnost **[analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **přehledy Marketplace**.
 
-Podrobné definice terminologie analýz najdete v tématu [terminologie a běžné otázky k komerčním](./partner-center-portal/faq-terminology.md)analýzám na webu Marketplace.
+Podrobné definice terminologie analýz najdete v tématu [terminologie a běžné otázky k komerčním](./analytics-faq.md)analýzám na webu Marketplace.
 
 ## <a name="marketplace-insights-dashboard"></a>Řídicí panel přehledů Marketplace
 
@@ -54,29 +54,29 @@ Výběr rozsahu měsíce můžete najít v pravém horním rohu každé stránky
 
 V tabulce **Návštěvníci** služby Marketplace Insights se zobrazuje počet _návštěv stránek_ a _jedinečných návštěvníků_ pro vybrané období výpočtu.
 
-**Návštěvy stránky** : Toto číslo představuje počet odlišných uživatelských relací na stránce seznamu nabídek (Stránka s podrobnostmi o produktu) pro vybrané období výpočtu. Indikátory červeného a zeleného procenta reprezentují procentuální nárůst počtu návštěv stránky. Graf trendu představuje počet návštěv stránek v měsíci na měsíc.
+**Návštěvy stránky**: Toto číslo představuje počet odlišných uživatelských relací na stránce seznamu nabídek (Stránka s podrobnostmi o produktu) pro vybrané období výpočtu. Indikátory červeného a zeleného procenta reprezentují procentuální nárůst počtu návštěv stránky. Graf trendu představuje počet návštěv stránek v měsíci na měsíc.
 
-**Jedineční návštěvníci** : Toto číslo představuje počet jedinečných návštěvníků během vybraného období výpočtu pro nabídky v Azure Marketplace a AppSource. Návštěvník, který navštívil jednu nebo více stránek s podrobnostmi o produktu, bude počítat jako jeden jedinečný návštěvník.
+**Jedineční návštěvníci**: Toto číslo představuje počet jedinečných návštěvníků během vybraného období výpočtu pro nabídky v Azure Marketplace a AppSource. Návštěvník, který navštívil jednu nebo více stránek s podrobnostmi o produktu, bude počítat jako jeden jedinečný návštěvník.
 
 [![Znázorňuje návštěvníky grafu na řídicím panelu přehledů Marketplace.](./media/insights-dashboard/visitors.png)](./media/insights-dashboard/visitors.png#lightbox)
 
 ### <a name="call-to-actions-trend"></a>Volání akcí trendu
 
-Toto číslo představuje počet volání kliknutí **na tlačítko akce** na stránce seznam nabídek (Stránka s podrobnostmi o produktu). _Volání akce_ se počítá, když uživatel vybere tlačítka **získat nyní** , **bezplatná zkušební verze** , **Kontaktní osoba** nebo **testovací jednotka** .
+Toto číslo představuje počet volání kliknutí **na tlačítko akce** na stránce seznam nabídek (Stránka s podrobnostmi o produktu). _Volání akce_ se počítá, když uživatel vybere tlačítka **získat nyní**, **bezplatná zkušební verze**, **Kontaktní osoba** nebo **testovací jednotka** .
 
 [![Znázorňuje volání grafu akce na řídicím panelu přehledů Marketplace.](./media/insights-dashboard/call-to-actions-trend.png)](./media/insights-dashboard/call-to-actions-trend.png#lightbox)
 
 ### <a name="page-visits-and-call-to-actions-against-offers-referral-domains-and-campaign-ids"></a>Návštěvy stránky a volání akcí proti nabídkám, referenčním doménám a ID kampaní
 
-**Referenční domény** : výběr konkrétní referenční domény zobrazuje měsíční trend návštěv stránky a volání akce v grafu napravo.
+**Referenční domény**: výběr konkrétní referenční domény zobrazuje měsíční trend návštěv stránky a volání akce v grafu napravo.
 
 :::image type="content" source="./media/insights-dashboard/referral-domain.png" alt-text="Znázorňuje graf referenční domény na řídicím panelu přehledů Marketplace.":::
 
-**Nabídky** : vyberte konkrétní nabídku pro zobrazení měsíčního trendu návštěv stránek a volání akce v grafu napravo.
+**Nabídky**: vyberte konkrétní nabídku pro zobrazení měsíčního trendu návštěv stránek a volání akce v grafu napravo.
 
 :::image type="content" source="./media/insights-dashboard/offer-alias.png" alt-text="Znázorňuje graf aliasů nabídky na řídicím panelu přehledů Marketplace.":::
 
-**ID kampaní** : výběrem konkrétního ID kampaně byste měli být schopni pochopit úspěch kampaně. U každé kampaně byste měli být schopni zobrazit měsíční trend návštěv stránek a volání, která se v grafu napravují na akci.
+**ID kampaní**: výběrem konkrétního ID kampaně byste měli být schopni pochopit úspěch kampaně. U každé kampaně byste měli být schopni zobrazit měsíční trend návštěv stránek a volání, která se v grafu napravují na akci.
 
 :::image type="content" source="./media/insights-dashboard/campaign.png" alt-text="Znázorňuje graf kampaně na řídicím panelu přehledů Marketplace.":::
 
@@ -112,4 +112,4 @@ Tato tabulka obsahuje seznam návštěv stránky a volání akcí pro vybrané s
 - Podrobné informace o vašich zákaznících, včetně trendů růstu, najdete [v tématu řídicí panel zákazníka v analytickém obchodě na komerčním webu](./customer-dashboard.md).
 - Seznam vašich žádostí o stažení za posledních 30 dní najdete [v tématu řídicí panel ke stažení v komerčních obchodech na webu Marketplace](./partner-center-portal/downloads-dashboard.md).
 - Chcete-li zobrazit konsolidované zobrazení zpětné vazby od zákazníků pro nabídky Azure Marketplace a AppSource, přečtěte si téma [hodnocení & kontroly řídicího panelu Analytics v partnerském centru](./partner-center-portal/ratings-reviews.md).
-- Nejčastější dotazy týkající se komerčních analýz na webu Marketplace a ucelený slovník datových podmínek najdete v tématu [terminologie a běžné otázky ke komerčním analýzám na webu Marketplace](./partner-center-portal/faq-terminology.md).
+- Nejčastější dotazy týkající se komerčních analýz na webu Marketplace a ucelený slovník datových podmínek najdete v tématu [terminologie a běžné otázky ke komerčním analýzám na webu Marketplace](./analytics-faq.md).

@@ -1,6 +1,6 @@
 ---
-title: Použít Azure Stream Analytics
-description: Tipy pro použití Azure Stream Analytics s datovým skladem v Azure synapse pro vývoj řešení v reálném čase.
+title: Použít Azure Stream Analytics ve vyhrazeném fondu SQL
+description: Tipy pro použití Azure Stream Analytics s vyhrazeným fondem SQL ve službě Azure synapse pro vývoj řešení v reálném čase.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 9/25/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 3ead3393218255808eb67983251fcf9f2561c82c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8fbe546beb1004214e544f8eb160884c0f64ef9e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020176"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458229"
 ---
-# <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Použití Azure Stream Analytics se službou Azure Synapse Analytics
+# <a name="use-azure-stream-analytics-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Použití Azure Stream Analytics s vyhrazeným fondem SQL ve službě Azure synapse Analytics
 
 Azure Stream Analytics je plně spravovaná služba, která poskytuje vysoce dostupná a škálovatelná komplexní zpracování událostí přes streamovaná data v cloudu s nízkou latencí. Základní informace najdete v tématu [Úvod do Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Pak můžete zjistit, jak vytvořit ucelené řešení pomocí Stream Analytics pomocí kurzu Začínáme s [Azure Stream Analytics](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) .
 
-V tomto článku se dozvíte, jak používat datový sklad jako výstupní jímku pro příjem dat s vysokou propustností s Azure Stream Analytics úlohami.
+V tomto článku se dozvíte, jak použít vyhrazený fond SQL jako výstupní jímku pro příjem dat s vysokou propustností s Azure Stream Analytics úlohami.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Azure Stream Analytics úlohy – Chcete-li vytvořit úlohu Azure Stream Analytics, postupujte podle kroků v kurzu [Začínáme s Azure Stream Analytics](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) :  
 
@@ -32,9 +32,9 @@ V tomto článku se dozvíte, jak používat datový sklad jako výstupní jímk
     2. Konfigurace a spuštění aplikace generátoru událostí
     3. Zřízení Stream Analytics úlohy
     4. Zadat vstup a dotaz úlohy
-* Synapse vyhrazený fond SQL pro datový sklad – Chcete-li vytvořit nový datový sklad, postupujte podle kroků v [rychlém startu a vytvořte nový datový sklad](create-data-warehouse-portal.md).
+* Vyhrazený fond SQL – Chcete-li vytvořit nový vyhrazený fond SQL, postupujte podle kroků v [rychlém startu: vytvoření vyhrazeného fondu SQL](../quickstart-create-sql-pool-portal.md).
 
-## <a name="specify-streaming-output-to-point-to-your-data-warehouse"></a>Zadejte výstup streamování, který odkazuje na datový sklad.
+## <a name="specify-streaming-output-to-point-to-your-dedicated-sql-pool"></a>Zadejte výstup streamování, který odkazuje na vyhrazený fond SQL.
 
 ### <a name="step-1"></a>Krok 1
 
@@ -52,8 +52,8 @@ Zadejte tyto hodnoty:
 
 * *Alias pro výstup*: zadejte popisný název pro tento výstup úlohy.
 * *Předplatné*:
-  * Pokud je váš datový sklad ve stejném předplatném, jaké má Stream Analytics úloha, klikněte na ***Vyberte Azure synapse Analytics z vašich předplatných** _.
-  _ Pokud je váš datový sklad v jiném předplatném, klikněte na možnost zadat nastavení služby Azure synapse Analytics ručně.
+  * Pokud je vyhrazený fond SQL ve stejném předplatném, jaké má Stream Analytics úloha, klikněte na ***Vyberte Azure synapse Analytics z vašich předplatných** _.
+  _ Pokud je vyhrazený fond SQL v jiném předplatném, klikněte na možnost zadat nastavení Azure synapse Analytics ručně.
 * *Databáze*: v rozevíracím seznamu vyberte cílovou databázi.
 * *Uživatelské jméno*: zadejte uživatelské jméno účtu, který má pro databázi oprávnění k zápisu.
 * *Heslo*: zadejte heslo pro zadaný uživatelský účet.
@@ -64,7 +64,7 @@ Zadejte tyto hodnoty:
 
 ### <a name="step-4"></a>Krok 4
 
-Než budete moct spustit test, budete muset vytvořit tabulku v datovém skladu.  Spusťte následující skript pro vytváření tabulek pomocí SQL Server Management Studio (SSMS) nebo podle vašeho výběru nástroje pro dotazování.
+Než budete moct spustit test, budete muset vytvořit tabulku ve vyhrazeném fondu SQL.  Spusťte následující skript pro vytváření tabulek pomocí SQL Server Management Studio (SSMS) nebo podle vašeho výběru nástroje pro dotazování.
 
 ```sql
 CREATE TABLE SensorLog
@@ -123,4 +123,4 @@ V podokně spuštění úlohy klikněte na tlačítko _ *_Start_**.
 ## <a name="next-steps"></a>Další kroky
 
 Přehled integrace najdete v tématu [integrace dalších služeb](sql-data-warehouse-overview-integrate.md).
-Další tipy pro vývoj najdete v tématu věnovaném [rozhodování o návrhu a technikům kódování pro datové sklady](sql-data-warehouse-overview-develop.md).
+Další tipy pro vývoj najdete v tématu [věnovaném rozhodování a technikům kódování pro vyhrazený fond SQL](sql-data-warehouse-overview-develop.md).

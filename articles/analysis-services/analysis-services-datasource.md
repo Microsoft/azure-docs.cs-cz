@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 174ad4692d043390e6773a98e31f0985d75c8e2e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 61efc7719b071ff4e8e5c0e07534b72a2883aff1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018810"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458866"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Podporované zdroje dat ve službě Azure Analysis Services
 
@@ -65,10 +65,10 @@ Zdroje dat a konektory zobrazené v průvodci získáním dat nebo importu tabul
 |Databáze PostgreSQL   | Yes | No | <sup>[6](#tab1400b)</sup> |
 |Objekty Salesforce|  Ano | No | <sup>[6](#tab1400b)</sup> |
 |Sestavy Salesforce |Ano | No | <sup>[6](#tab1400b)</sup> |
-|SAP HANA     |  Ano | No |  |
+|SAP HANA     |  Yes | No |  |
 |SAP Business Warehouse    |  Yes | No | <sup>[6](#tab1400b)</sup> |
 |Sharepointový seznam      |   Ano | No | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
-|SQL Server |Ano   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
+|SQL Server |Yes   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |SQL Server datový sklad |Yes   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |Databáze Sybase     |  Yes | No |  |
 |Teradata | Yes  | Yes  | <sup>[10pruhový](#teradata)</sup> |
@@ -88,7 +88,7 @@ Připojení k místním zdrojům dat z Azure Analysis Services serveru vyžaduje
 
 ## <a name="understanding-providers"></a>Principy zprostředkovatelů
 
-Při vytváření tabelárních projektů 1400 a vyšších modelů v aplikaci Visual Studio ve výchozím nastavení neurčíte poskytovatele dat při připojování ke zdroji dat pomocí **získat data**. Tabelární 1400 a vyšší modely používají konektory [Power Query](/power-query/power-query-what-is-power-query) ke správě připojení, datových dotazů a hybridních webových aplikací mezi zdrojem dat a Analysis Services. Někdy se v nastaveních vlastností připojení označují jako *strukturovaná* připojení zdrojů dat. Můžete však povolit starší zdroje dat pro projekt modelu v aplikaci Visual Studio. Pokud je tato možnost povolená, můžete použít **Průvodce importem tabulky** pro připojení k určitým zdrojům dat, které jsou tradičně podporované v tabulkovém 1200 a nižších modelech jako *starší verze*nebo zdroje dat *poskytovatele* . Pokud je zadaný jako zdroj dat zprostředkovatele, můžete zadat konkrétního poskytovatele dat a další rozšířené vlastnosti připojení. Můžete se třeba připojit k SQL Server instanci datového skladu nebo dokonce k Azure SQL Database jako k staršímu zdroji dat. Pak můžete vybrat ovladač OLE DB pro poskytovatele dat SQL Server MSOLEDBSQL. V takovém případě může poskytovatel dat OLE DB poskytovat lepší výkon prostřednictvím konektoru Power Query. 
+Při vytváření tabelárních projektů 1400 a vyšších modelů v aplikaci Visual Studio ve výchozím nastavení neurčíte poskytovatele dat při připojování ke zdroji dat pomocí **získat data**. Tabelární 1400 a vyšší modely používají konektory [Power Query](/power-query/power-query-what-is-power-query) ke správě připojení, datových dotazů a hybridních webových aplikací mezi zdrojem dat a Analysis Services. Někdy se v nastaveních vlastností připojení označují jako *strukturovaná* připojení zdrojů dat. Můžete však povolit starší zdroje dat pro projekt modelu v aplikaci Visual Studio. Pokud je tato možnost povolená, můžete použít **Průvodce importem tabulky** pro připojení k určitým zdrojům dat, které jsou tradičně podporované v tabulkovém 1200 a nižších modelech jako *starší verze* nebo zdroje dat *poskytovatele* . Pokud je zadaný jako zdroj dat zprostředkovatele, můžete zadat konkrétního poskytovatele dat a další rozšířené vlastnosti připojení. Můžete se třeba připojit k SQL Server instanci datového skladu nebo dokonce k Azure SQL Database jako k staršímu zdroji dat. Pak můžete vybrat ovladač OLE DB pro poskytovatele dat SQL Server MSOLEDBSQL. V takovém případě může poskytovatel dat OLE DB poskytovat lepší výkon prostřednictvím konektoru Power Query. 
 
 Při použití Průvodce importem tabulky v aplikaci Visual Studio připojení k jakémukoli zdroji dat vyžaduje poskytovatele dat. Pro vás je vybraný výchozí zprostředkovatel dat. V případě potřeby můžete změnit zprostředkovatele dat. Typ poskytovatele, který zvolíte, může záviset na výkonu, bez ohledu na to, jestli model používá úložiště v paměti nebo DirectQuery a které Analysis Services platforma, do které model nasazujete.
 
@@ -98,7 +98,7 @@ Chcete-li povolit zdroje dat poskytovatele, v aplikaci Visual Studio klikněte n
 
 ![Povolit starší zdroje dat](media/analysis-services-datasource/aas-enable-legacy-datasources.png)
 
-Se zapnutými staršími zdroji dat v **Průzkumníkovi tabulkových modelů**klikněte pravým tlačítkem na **zdroje dat**  >  **Importovat ze zdroje dat (starší verze)**.
+Se zapnutými staršími zdroji dat v **Průzkumníkovi tabulkových modelů** klikněte pravým tlačítkem na **zdroje dat**  >  **Importovat ze zdroje dat (starší verze)**.
 
 ![Starší zdroje dat v Průzkumníkovi tabulkových modelů](media/analysis-services-datasource/aas-import-legacy-datasources.png)
 
@@ -120,7 +120,7 @@ Pro cloudové zdroje dat:
 
 ## <a name="oauth-credentials"></a>Přihlašovací údaje OAuth
 
-Pro tabelární modely na úrovni kompatibility 1400 a vyšší s použitím režimu v paměti, Azure SQL Database, Azure synapse (dříve SQL Data Warehouse), Dynamics 365 a SharePointového seznamu podporují přihlašovací údaje OAuth. Azure Analysis Services spravuje aktualizace tokenu pro zdroje dat OAuth, aby nedocházelo k vypršení časových limitů pro dlouhotrvající operace aktualizace. Pokud chcete generovat platné tokeny, nastavte přihlašovací údaje pomocí Power Query.
+Pro tabelární modely na úrovni kompatibility 1400 a vyšší s použitím režimu v paměti, Azure SQL Database, Azure synapse, Dynamics 365 a SharePointového seznamu se podporují přihlašovací údaje OAuth. Azure Analysis Services spravuje aktualizace tokenu pro zdroje dat OAuth, aby nedocházelo k vypršení časových limitů pro dlouhotrvající operace aktualizace. Pokud chcete generovat platné tokeny, nastavte přihlašovací údaje pomocí Power Query.
 
 Režim přímého dotazu není u přihlašovacích údajů OAuth podporován.
 

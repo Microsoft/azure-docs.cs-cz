@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 59f68909e2f3704fea5c38e3f1535f5996b284ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2620b52c426871b0ec85e3db237be2d373d42f1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87097343"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458705"
 ---
 # <a name="add-tags-to-digital-twins"></a>Přidání značek do digitálních vláken 
 
@@ -69,13 +69,13 @@ Po přidání značek do digitálních vláken lze značky použít k filtrován
 Tady je dotaz, který získá všechny vlákna označené jako "Red": 
 
 ```sql
-select * from digitaltwins where is_defined(tags.red) 
+SELECT * FROM digitaltwins WHERE is_defined(tags.red) 
 ```
 
 Můžete také kombinovat značky pro složitější dotazy. Tady je dotaz pro získání všech vláken, která jsou kulatá a ne červená: 
 
 ```sql
-select * from digitaltwins where not is_defined(tags.red) and is_defined(tags.round) 
+SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND is_defined(tags.round) 
 ```
 
 ## <a name="value-tags"></a>Značky hodnot 
@@ -127,13 +127,13 @@ Stejně jako u značek značek můžete použít značky hodnot k filtrování v
 Z výše uvedeného příkladu `red` se používá jako značka značky. Tady je dotaz, který získá všechny vlákna označené jako "Red": 
 
 ```sql
-select * from digitaltwins where is_defined(tags.red) 
+SELECT * FROM digitaltwins WHERE is_defined(tags.red) 
 ```
 
 Tady je dotaz pro získání všech entit, které jsou malé (značka hodnoty), a ne červeně: 
 
 ```sql
-select * from digitaltwins where not is_defined(tags.red) and tags.size = 'small' 
+SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND tags.size = 'small' 
 ```
 
 ## <a name="next-steps"></a>Další kroky

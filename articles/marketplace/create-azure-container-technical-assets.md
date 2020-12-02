@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 11/30/2020
-ms.openlocfilehash: 30f9eac0a0e88092a243b4d9421d2a4f33b07841
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 014bcd6fc519c267cdf17e9e98b850425c25ead6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95758978"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459324"
 ---
 # <a name="prepare-your-azure-container-technical-assets"></a>Příprava technických prostředků kontejneru Azure
 
@@ -20,7 +20,7 @@ Tento článek poskytuje technické prostředky a doporučení, které vám pom�
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Informace o rychlých startech, kurzech a ukázkách najdete v [dokumentaci k Azure Container Instances](/azure/container-instances/).
+Informace o rychlých startech, kurzech a ukázkách najdete v [dokumentaci k Azure Container Instances](../container-instances/index.yml).
 
 ## <a name="fundamental-technical-knowledge"></a>Základní technické poznatky
 
@@ -43,7 +43,7 @@ Vyberte jedno z následujících skriptovacích prostředí, které vám pomůž
 
 Doporučujeme přidat tyto nástroje do vašeho vývojového prostředí:
 
-- [Průzkumník služby Azure Storage](/azure/vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
+- [Průzkumník služby Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
   - Rozšíření: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - Přípona: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -55,9 +55,9 @@ Projděte si dostupné nástroje na stránce [Azure vývojářské nástroje](ht
 
 Nemůžete nasadit image, která se Azure Container Instances z místního registru.
 
-- Pokud už máte pracovní kontejner v místním registru, vytvořte registr Azure a nahrajte image kontejneru do Azure Container Registry. Další informace najdete v tématu [kurz: sestavování a nasazování imagí kontejnerů v cloudu s Azure Container Registry úkoly](/azure/container-registry/container-registry-tutorial-quick-task.md).
+- Pokud už máte pracovní kontejner v místním registru, vytvořte registr Azure a nahrajte image kontejneru do Azure Container Registry. Další informace najdete v tématu [kurz: sestavování a nasazování imagí kontejnerů v cloudu s Azure Container Registry úkoly](../container-registry/container-registry-tutorial-quick-task.md).
 
-- Pokud ještě nemáte image kontejneru a potřebujete kontejnerizace stávající aplikaci nebo vytvořit novou aplikaci založenou na kontejnerech, naklonujte zdrojový kód aplikace z GitHubu, vytvořte image kontejneru ze zdroje aplikace a otestujte image v místním prostředí Docker. Další informace najdete v tématu [kurz: vytvoření image kontejneru pro nasazení do Azure Container Instances](/azure/container-instances/container-instances-tutorial-prepare-app.md).
+- Pokud ještě nemáte image kontejneru a potřebujete kontejnerizace stávající aplikaci nebo vytvořit novou aplikaci založenou na kontejnerech, naklonujte zdrojový kód aplikace z GitHubu, vytvořte image kontejneru ze zdroje aplikace a otestujte image v místním prostředí Docker. Další informace najdete v tématu [kurz: vytvoření image kontejneru pro nasazení do Azure Container Instances](../container-instances/container-instances-tutorial-prepare-app.md).
 
 ## <a name="next-steps"></a>Další kroky
 

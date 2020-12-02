@@ -1,5 +1,5 @@
 ---
-title: Zabezpečení pracovního prostoru synapse (Preview)
+title: Zabezpečení pracovního prostoru Synapse
 description: Tento článek vás seznámí s tím, jak pomocí rolí a řízení přístupu řídit aktivity a přístup k datům v pracovním prostoru synapse.
 services: synapse-analytics
 author: matt1883
@@ -9,20 +9,20 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 79a4db1f7d4be88260ea41ce1090007bc66cc7c8
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 25e191af919c5880045a6c4c7c79b675cf02520e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556025"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458713"
 ---
-# <a name="secure-your-synapse-workspace-preview"></a>Zabezpečení pracovního prostoru synapse (Preview) 
+# <a name="secure-your-synapse-workspace"></a>Zabezpečení pracovního prostoru Synapse 
 
 V tomto článku se naučíte, jak používat role a řízení přístupu k řízení aktivit a přístupu k datům. Pomocí těchto pokynů je zjednodušené řízení přístupu v Azure synapse Analytics. Stačí přidat a odebrat uživatele pouze do jedné ze tří skupin zabezpečení.
 
 ## <a name="overview"></a>Přehled
 
-Pokud chcete zabezpečit pracovní prostor synapse (Preview), postupujte podle vzoru konfigurace následujících položek:
+Pokud chcete zabezpečit pracovní prostor synapse, postupujte podle vzoru pro konfiguraci následujících položek:
 
 - Role Azure (například předdefinovaná jako vlastník, přispěvatel atd.)
 - Role synapse – tyto role jsou jedinečné pro synapse a nejsou založené na rolích Azure. Existují tři z těchto rolí:

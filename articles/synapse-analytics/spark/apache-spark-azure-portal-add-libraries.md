@@ -9,16 +9,16 @@ ms.date: 10/16/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 27881b048a738d4de2acb57dcc4c2dad1f4d5b24
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 62610e1b86671021e66891ae232bacbd4b3e40ed
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435361"
+ms.locfileid: "96458814"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Správa knihoven pro Apache Spark ve službě Azure synapse Analytics
 
-Knihovny poskytují opakovaně použitelný kód, který můžete chtít zahrnout do svých programů nebo projektů. Pokud chcete vašim aplikacím zpřístupnit třetí stranu nebo místně sestavený kód, můžete knihovnu nainstalovat na jeden z vašich Apache Spark fondů bez serveru (Preview). Jakmile je knihovna nainstalována pro fond Spark, je k dispozici pro všechny relace používající stejný fond. 
+Knihovny poskytují opakovaně použitelný kód, který můžete chtít zahrnout do svých programů nebo projektů. Pokud chcete vašim aplikacím zpřístupnit třetí stranu nebo místně sestavený kód, můžete knihovnu nainstalovat na jeden z vašich Apache Spark fondů bez serveru. Jakmile je knihovna nainstalována pro fond Spark, je k dispozici pro všechny relace používající stejný fond. 
 
 ## <a name="before-you-begin"></a>Než začnete
 - Pokud chcete nainstalovat a aktualizovat knihovny, musíte mít oprávnění správce **dat objektu BLOB úložiště** nebo **vlastníka dat objektů BLOB úložiště** v primárním účtu úložiště Gen2, který je propojený s pracovním prostorem Azure synapse Analytics.
@@ -26,11 +26,11 @@ Knihovny poskytují opakovaně použitelný kód, který můžete chtít zahrnou
 ## <a name="default-installation"></a>Výchozí instalace
 Apache Spark ve službě Azure synapse Analytics má úplnou instalaci Anacondas a další knihovny. Seznam úplných knihoven najdete na stránce [podpora Apache Spark verzí](apache-spark-version-support.md). 
 
-Po spuštění instance Spark budou automaticky zahrnuty tyto knihovny. Další Python a vlastní sestavené balíčky je možné přidat na úrovni fondu Spark (Preview).
+Po spuštění instance Spark budou automaticky zahrnuty tyto knihovny. Další Python a vlastní sestavené balíčky je možné přidat na úrovni fondu Spark.
 
 
 ## <a name="manage-python-packages"></a>Spravovat balíčky Pythonu
-Jakmile identifikujete knihovny, které chcete použít pro aplikaci Spark, můžete je nainstalovat do fondu Spark (Preview). 
+Jakmile identifikujete knihovny, které chcete použít pro aplikaci Spark, můžete je nainstalovat do fondu Spark. 
 
  K upgradu virtuálního prostředí se dá použít soubor *requirements.txt* (výstup z `pip freeze` příkazu). Balíčky uvedené v tomto souboru pro instalaci nebo upgrade se stáhnou z PyPi v době spuštění fondu. Tento soubor požadavků se používá při každém vytvoření instance Spark z tohoto fondu Spark.
 
@@ -54,7 +54,7 @@ alabaster==0.7.10
 Při vývoji aplikace Spark můžete zjistit, že je potřeba aktualizovat existující nebo nainstalovat nové knihovny. Knihovny lze aktualizovat během nebo po vytvoření fondu.
 
 #### <a name="install-packages-during-pool-creation"></a>Instalovat balíčky během vytváření fondu
-Instalace knihoven do fondu Spark (ve verzi Preview) během vytváření fondu:
+Instalace knihoven do fondu Spark během vytváření fondu:
    
 1. Přejděte do pracovního prostoru Azure synapse Analytics z Azure Portal.
    
@@ -66,7 +66,7 @@ Instalace knihoven do fondu Spark (ve verzi Preview) během vytváření fondu:
  
 
 #### <a name="install-packages-from-the-synapse-workspace"></a>Instalace balíčků z pracovního prostoru synapse
-Aktualizace nebo přidání dalších knihoven do fondu Spark (Preview) na portálu Azure synapse Analytics:
+Aktualizace nebo přidání dalších knihoven do fondu Spark z portálu Azure synapse Analytics:
 
 1.  Přejděte do pracovního prostoru Azure synapse Analytics z Azure Portal.
    
@@ -79,7 +79,7 @@ Aktualizace nebo přidání dalších knihoven do fondu Spark (Preview) na port�
     ![Přidání knihoven Pythonu v synapse](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-update.png)
    
 #### <a name="install-packages-from-the-azure-portal"></a>Instalovat balíčky z Azure Portal
-Postup instalace knihovny do fondu Spark (ve verzi Preview) přímo z Azure Portal:
+Postup instalace knihovny do fondu Spark přímo z Azure Portal:
    
  1. Přejděte do pracovního prostoru Azure synapse Analytics z Azure Portal.
    

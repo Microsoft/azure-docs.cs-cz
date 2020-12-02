@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: zkoumání a analýza datových laků pomocí serveru SQL bez serveru synapse'
-description: V tomto kurzu se dozvíte, jak snadno provést analýzu průzkumného data s kombinací různých otevřených datových sad Azure s využitím fondu SQL bez serveru (Preview) a vizualizace výsledků v synapse studiu pro Azure synapse Analytics.
+title: 'Kurz: použití fondu SQL bez serveru k analýze otevřených datových sad Azure v Azure synapse studiu'
+description: V tomto kurzu se dozvíte, jak snadno provést analýzu průzkumnéch dat s kombinací různých otevřených datových sad Azure pomocí fondu SQL bez serveru a vizualizace výsledků v Azure synapse studiu.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 11/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: af6fc75b5de22fc77313932ca17ce695e889dad3
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 7b2d4953b3a42c5d66fca4a67b4a6d0f13700a35
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95237952"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459126"
 ---
-# <a name="tutorial-explore-and-analyze-data-lakes-with-serverless-sql-pool-preview"></a>Kurz: zkoumání a analýza datových laků pomocí neserverového fondu SQL (Preview)
+# <a name="tutorial-explore-and-analyze-data-lakes-with-serverless-sql-pool"></a>Kurz: zkoumání a analýza datových laků pomocí neserverového fondu SQL
 
 V tomto kurzu se dozvíte, jak provádět analýzu dat průzkumného zpracování. Budete kombinovat různé otevřené datové sady Azure s využitím fondu SQL bez serveru. Výsledky pak vizualizujete v synapse studiu pro Azure synapse Analytics.
 

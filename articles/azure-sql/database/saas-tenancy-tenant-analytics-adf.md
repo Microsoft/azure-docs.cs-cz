@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 97dc53c9870112dc5d547ab477e54f15f802cc05
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: dc47c996748b126841cbeff1ea3f6f18f423951f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310639"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457646"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Prozkoumejte SaaS Analytics pomocí Azure SQL Database, Azure synapse Analytics, Data Factory a Power BI
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,7 +45,7 @@ Aplikace SaaS uchovávají potenciálně obrovské množství dat tenantů v clo
 
 Přístup k datům pro všechny klienty je jednoduchý, pokud jsou všechna data v jediné databázi s více klienty. Ale přístup je složitější v případě distribuované škály v tisících databází. Jedním ze způsobů, jak zkrotit složitosti, je extrahovat data do analytické databáze nebo datového skladu pro dotaz.
 
-V tomto kurzu se seznámíte s komplexním scénářem analýzy pro aplikaci Wingtip Tickets. První [Azure Data Factory (ADF)](../../data-factory/introduction.md) se používá jako nástroj orchestrace k extrakci obchodních lístků a souvisejících dat z každé databáze tenanta. Tato data se načtou do pracovních tabulek v analytickém úložišti. Úložiště analýzy může být buď SQL Database, nebo vyhrazený fond SQL. V tomto kurzu se jako úložiště analýzy používá [Azure synapse Analytics (dříve SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) .
+V tomto kurzu se seznámíte s komplexním scénářem analýzy pro aplikaci Wingtip Tickets. První [Azure Data Factory (ADF)](../../data-factory/introduction.md) se používá jako nástroj orchestrace k extrakci obchodních lístků a souvisejících dat z každé databáze tenanta. Tato data se načtou do pracovních tabulek v analytickém úložišti. Úložiště analýzy může být buď SQL Database, nebo vyhrazený fond SQL. V tomto kurzu se jako úložiště analýzy používá [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) .
 
 V dalším kroku se extrahovaná data transformují a načtou do sady tabulek se [schématy hvězdiček](https://www.wikipedia.org/wiki/Star_schema) . Tabulky sestávají z centrální tabulky faktů a souvisejících tabulek dimenzí:
 
@@ -85,9 +85,9 @@ V tomto kurzu se seznámíte s analýzou údajů o prodeji lístků. V tomto kro
 
 ### <a name="deploy-azure-synapse-analytics-data-factory-and-blob-storage"></a>Nasazení Azure synapse Analytics, Data Factory a Blob Storage
 
-V aplikaci Wingtip Tickets jsou transakční data tenantů distribuována přes mnoho databází. Azure Data Factory (ADF) se používá k organizování extrakce, načítání a transformace (ELT) těchto dat do datového skladu. Aby se data načetla do služby Azure synapse Analytics (dříve SQL Data Warehouse), nástroj ADF extrahuje data do zprostředkujících souborů objektů BLOB a potom pomocí [základu](../../synapse-analytics/sql-data-warehouse/design-elt-data-loading.md) načte data do datového skladu.
+V aplikaci Wingtip Tickets jsou transakční data tenantů distribuována přes mnoho databází. Azure Data Factory (ADF) se používá k organizování extrakce, načítání a transformace (ELT) těchto dat do datového skladu. Pokud chcete data do služby Azure synapse Analytics efektivně načíst, extrahuje ADF data do zprostředkujících souborů objektů BLOB a potom pomocí [základu](../../synapse-analytics/sql-data-warehouse/design-elt-data-loading.md) načte data do datového skladu.
 
-V tomto kroku nasadíte další prostředky používané v tomto kurzu: vyhrazený fond SQL nazvaný _tenantanalytics_ , Azure Data Factory s názvem _dbtodwload- \<user\>_ a účet úložiště Azure s názvem _wingtipstaging \<user\>_. Účet úložiště se používá k dočasnému blokování extrahovaných datových souborů jako objektů BLOB předtím, než se načtou do datového skladu. Tento krok také nasadí schéma datového skladu a definuje kanály ADF, které orchestrují proces ELT.
+V tomto kroku nasadíte další prostředky používané v tomto kurzu: vyhrazený fond SQL nazvaný _tenantanalytics_, Azure Data Factory s názvem _dbtodwload- \<user\>_ a účet úložiště Azure s názvem _wingtipstaging \<user\>_. Účet úložiště se používá k dočasnému blokování extrahovaných datových souborů jako objektů BLOB předtím, než se načtou do datového skladu. Tento krok také nasadí schéma datového skladu a definuje kanály ADF, které orchestrují proces ELT.
 
 1. V prostředí PowerShell ISE otevřete soubor *. ..\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1* a nastavte:
     - **$DemoScenario**  =  **2** . nasazení datového skladu Analytics klienta, úložiště objektů BLOB a objektu pro vytváření dat
@@ -107,8 +107,8 @@ V Průzkumník objektů:
 1. Rozbalte uzel databáze a zobrazte seznam databází tenantů.
 1. Rozbalte *Catalog-DPT- &lt; User &gt;* Server.
 1. Ověřte, že se zobrazuje úložiště analýzy obsahující následující objekty:
-    1. Tabulky **raw_Tickets** , **raw_Customers** , **raw_Events** a **raw_Venues** uchovávají nezpracovaná extrahovaná data z databází tenantů.
-    1. Tabulky schématu hvězdiček jsou **fact_Tickets** , **dim_Customers** , **dim_Venues** , **dim_Events** a **dim_Dates**.
+    1. Tabulky **raw_Tickets**, **raw_Customers**, **raw_Events** a **raw_Venues** uchovávají nezpracovaná extrahovaná data z databází tenantů.
+    1. Tabulky schématu hvězdiček jsou **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events** a **dim_Dates**.
     1. Uložená procedura, **sp_transformExtractedData** slouží k transformaci dat a jejich načtení do tabulek se schématem hvězdiček.
 
 ![Snímek obrazovky zobrazuje Průzkumník objektů s rozbalenými tabulkami k zobrazení různých databázových objektů.](./media/saas-tenancy-tenant-analytics-adf/DWtables.JPG)
@@ -138,7 +138,7 @@ Pomocí následujících kroků spusťte datovou továrnu:
 
 ## <a name="extract-load-and-transform-data"></a>Extrakce, načítání a transformace dat
 
-Azure Data Factory slouží k orchestraci extrakce, načítání a transformace dat. V tomto kurzu extrahujete data ze čtyř různých zobrazení SQL ze všech databází klientů: **rawTickets** , **rawCustomers** , **rawEvents** a **rawVenues**. Mezi tato zobrazení patří ID místa, takže můžete odlišit data z jednotlivých míst v datovém skladu. Data se načtou do odpovídajících pracovních tabulek v datovém skladu: **raw_Tickets** , **raw_customers** , **raw_Events** a **raw_Venue**. Uložená procedura pak transformuje nezpracovaná data a naplní tabulky schématu hvězdiček: **fact_Tickets** , **dim_Customers** , **dim_Venues** , **dim_Events** a **dim_Dates**.
+Azure Data Factory slouží k orchestraci extrakce, načítání a transformace dat. V tomto kurzu extrahujete data ze čtyř různých zobrazení SQL ze všech databází klientů: **rawTickets**, **rawCustomers**, **rawEvents** a **rawVenues**. Mezi tato zobrazení patří ID místa, takže můžete odlišit data z jednotlivých míst v datovém skladu. Data se načtou do odpovídajících pracovních tabulek v datovém skladu: **raw_Tickets**, **raw_customers**, **raw_Events** a **raw_Venue**. Uložená procedura pak transformuje nezpracovaná data a naplní tabulky schématu hvězdiček: **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events** a **dim_Dates**.
 
 V předchozí části jste nasadili a inicializovali nezbytné prostředky Azure, včetně datové továrny. Nasazená Datová továrna zahrnuje kanály, datové sady, propojené služby atd., které se vyžadují k extrakci, načtení a transformaci dat tenanta. Pojďme tyto objekty dále prozkoumat a pak aktivovat kanál pro přesun dat z databází klientů do datového skladu.
 
@@ -157,7 +157,7 @@ Tři vnořené kanály jsou: SQLDBToDW, DBCopy a TableCopy.
 
 **Kanál 2 – DBCopy** vyhledá názvy zdrojových tabulek a sloupců z konfiguračního souboru uloženého v úložišti objektů BLOB.  Kanál **TableCopy** se pak spustí pro každou ze čtyř tabulek: TicketFacts, CustomerFacts, EventFacts a VenueFacts. Aktivita **[foreach](../../data-factory/control-flow-for-each-activity.md)** se spouští paralelně pro všechny 20 databází. ADF umožňuje souběžně běžet maximálně 20 iterací cyklů. Zvažte vytvoření více kanálů pro další databáze.
 
-**Kanál 3 – TableCopy** používá čísla verzí řádků v SQL Database ( _rowversion_ ) k identifikaci řádků, které byly změněny nebo aktualizovány. Tato aktivita vyhledá počáteční a koncovou verzi řádku pro extrakci řádků ze zdrojových tabulek. Tabulka **CopyTracker** uložená v každé databázi tenanta sleduje poslední řádek extrahovaný z každé zdrojové tabulky v každém spuštění. Nové nebo změněné řádky se zkopírují do odpovídajících pracovních tabulek v datovém skladu: **raw_Tickets** , **raw_Customers** , **raw_Venues** a **raw_Events**. Nakonec je verze poslední řádek uložená v tabulce **CopyTracker** , která se použije jako počáteční verze řádku pro další extrakci.
+**Kanál 3 – TableCopy** používá čísla verzí řádků v SQL Database (_rowversion_) k identifikaci řádků, které byly změněny nebo aktualizovány. Tato aktivita vyhledá počáteční a koncovou verzi řádku pro extrakci řádků ze zdrojových tabulek. Tabulka **CopyTracker** uložená v každé databázi tenanta sleduje poslední řádek extrahovaný z každé zdrojové tabulky v každém spuštění. Nové nebo změněné řádky se zkopírují do odpovídajících pracovních tabulek v datovém skladu: **raw_Tickets**, **raw_Customers**, **raw_Venues** a **raw_Events**. Nakonec je verze poslední řádek uložená v tabulce **CopyTracker** , která se použije jako počáteční verze řádku pro další extrakci.
 
 Existují také tři parametrizované propojené služby, které propojí datovou továrnu se zdrojovými databázemi SQL, cílovým vyhrazeným fondem SQL a zprostředkujícím úložištěm objektů BLOB. Na kartě **Autor** klikněte na **připojení** a Prozkoumejte propojené služby, jak je znázorněno na následujícím obrázku:
 
@@ -167,7 +167,7 @@ Vzhledem k třem propojeným službám existují tři datové sady, které odkaz
   
 ### <a name="data-warehouse-pattern-overview"></a>Přehled vzoru datového skladu
 
-Azure synapse (dříve SQL Data Warehouse) se používá jako úložiště analýzy k provádění agregace pro data tenanta. V této ukázce se používá základ k načtení dat do datového skladu. Nezpracovaná data se načítají do pracovních tabulek, které mají sloupec identity, aby bylo možné sledovat řádky, které byly transformované na tabulky se schématy hvězdiček. Následující obrázek znázorňuje vzor načítání: ![ diagram znázorňuje vzor načítání databázových tabulek.](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
+Azure synapse se používá jako úložiště analýzy k provádění agregace pro data tenanta. V této ukázce se používá základ k načtení dat do datového skladu. Nezpracovaná data se načítají do pracovních tabulek, které mají sloupec identity, aby bylo možné sledovat řádky, které byly transformované na tabulky se schématy hvězdiček. Následující obrázek znázorňuje vzor načítání: ![ diagram znázorňuje vzor načítání databázových tabulek.](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
 
 V tomto příkladu se používají tabulky dimenzí typu s pomalou změnou (SCD). Každá dimenze má definován náhradní klíč pomocí sloupce identity. Jako osvědčený postup je předem vyplněna tabulka dimenze kalendářních dat za účelem úspory času. Pro ostatní tabulky dimenzí CREATE TABLE jako vyberte... (CTAS) příkaz slouží k vytvoření dočasné tabulky obsahující existující upravené a neupravené řádky spolu s náhradními klíči. To se provádí s IDENTITY_INSERT = ON. Nové řádky jsou potom vloženy do tabulky pomocí IDENTITY_INSERT = OFF. U snadného vrácení se změnami se přejmenuje stávající tabulka dimenzí a dočasná tabulka se přejmenuje, aby se stala novou tabulkou dimenzí. Před každým spuštěním se stará tabulka dimenzí odstraní.
 
@@ -204,7 +204,7 @@ Pomocí následujících kroků se připojte k Power BI a importujte zobrazení,
 1. Spusťte Power BI Desktop.
 2. Na pásu karet domů vyberte **získat data** a pak klikněte na **Další...** z nabídky.
 3. V okně **získat data** vyberte **Azure SQL Database**.
-4. V okně přihlášení k databázi zadejte název vašeho serveru ( **Catalog-DPT- &lt; User &gt; . Database.Windows.NET** ). Vyberte možnost **importovat** do **režimu připojení dat** a pak klikněte na tlačítko **OK**.
+4. V okně přihlášení k databázi zadejte název vašeho serveru (**Catalog-DPT- &lt; User &gt; . Database.Windows.NET**). Vyberte možnost **importovat** do **režimu připojení dat** a pak klikněte na tlačítko **OK**.
 
     ![přihlášení k Power BI](./media/saas-tenancy-tenant-analytics-adf/powerBISignIn.PNG)
 
@@ -212,9 +212,9 @@ Pomocí následujících kroků se připojte k Power BI a importujte zobrazení,
 
     ![databáze – přihlášení](./media/saas-tenancy-tenant-analytics-adf/databaseSignIn.PNG)
 
-6. V podokně **navigátor** v části analytická databáze vyberte tabulky schématu hvězdiček: **fact_Tickets** , **dim_Events** , **dim_Venues** , **dim_Customers** a **dim_Dates**. Pak vyberte **načíst**.
+6. V podokně **navigátor** v části analytická databáze vyberte tabulky schématu hvězdiček: **fact_Tickets**, **dim_Events**, **dim_Venues**, **dim_Customers** a **dim_Dates**. Pak vyberte **načíst**.
 
-Blahopřejeme! Data byla úspěšně načtena do Power BI. Teď Prozkoumejte zajímavé vizualizace, abyste získali přehled o vašich klientech. Podívejme se, jak Analytics může poskytnout některá doporučení řízená daty do obchodního týmu Wingtip Tickets. Doporučení můžou přispět k optimalizaci obchodního modelu a prostředí pro zákazníky.
+Gratulujeme! Data byla úspěšně načtena do Power BI. Teď Prozkoumejte zajímavé vizualizace, abyste získali přehled o vašich klientech. Podívejme se, jak Analytics může poskytnout některá doporučení řízená daty do obchodního týmu Wingtip Tickets. Doporučení můžou přispět k optimalizaci obchodního modelu a prostředí pro zákazníky.
 
 Začněte analýzou dat o prodeji lístků, abyste viděli variaci využití v rámci míst. Vyberte možnosti zobrazené v Power BI k vykreslení pruhového grafu celkového počtu lístků prodávaných každým jejich konáním. (Kvůli náhodné variaci generátoru lístků se vaše výsledky můžou lišit.)
 
@@ -256,7 +256,7 @@ Výše uvedený diagram znázorňuje, že i když většina míst prodává víc
 
 ## <a name="embedding-analytics-in-your-apps"></a>Vkládání analýz do vašich aplikací
 
-Tento kurz se zaměřuje na analýzy mezi klienty, které slouží ke zlepšení porozumění jejich klientům od dodavatele softwaru. Analýzy také poskytují informace o _klientech_ , které jim pomůžou efektivněji spravovat jejich podnikání.
+Tento kurz se zaměřuje na analýzy mezi klienty, které slouží ke zlepšení porozumění jejich klientům od dodavatele softwaru. Analýzy také poskytují informace o _klientech_, které jim pomůžou efektivněji spravovat jejich podnikání.
 
 V příkladu lístků Wingtip jste dříve zjistili, že prodej lístku by měl být v úmyslu podřídit předvídatelné vzory. Tento přehled se dá využít k tomu, aby se zvýšila situace, kdy se podíváme na místo. Možná máte příležitost využít techniky strojového učení k předpovědi prodeje lístků pro události. Účinky cenové změny by mohly být také modelovány, aby bylo možné odhadnout dopad nabídky slev. Power BI Embedded mohl být integrován do aplikace pro správu událostí, aby bylo možné vizualizovat předpokládaný prodej, včetně dopadu slev na celkový počet prodaných míst a tržby na události s nízkým prodejem. Pomocí Power BI Embedded můžete dokonce integrovat slevu na ceny za lístky přímo v prostředí vizualizace.
 
@@ -272,7 +272,7 @@ V tomto kurzu jste se naučili:
 > - Dotazování analytického datového skladu.
 > - Pomocí Power BI pro vizualizaci dat zvýrazněte trendy v datech tenanta a udělejte doporučení na vylepšení.
 
-Blahopřejeme!
+Gratulujeme!
 
 ## <a name="additional-resources"></a>Další zdroje informací
 

@@ -1,6 +1,6 @@
 ---
-title: Správa a monitorování důležitosti úloh
-description: Naučte se spravovat a monitorovat důležitost na úrovni požadavků ve službě Azure synapse Analytics.
+title: Správa a monitorování důležitosti úloh ve vyhrazeném fondu SQL
+description: Přečtěte si, jak spravovat a monitorovat vyhrazený fond SQL pro důležitost požadavků na úrovni požadavku pro Azure synapse Analytics.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 43006456142728287ddf4adba1fbb9b45f5ccc89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb0a5fbf33b48521882646bf8fb5eb3fe5dacca6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85211965"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459214"
 ---
-# <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>Správa a monitorování důležitosti úloh v Azure synapse Analytics
+# <a name="manage-and-monitor-workload-importance-in-dedicated-sql-pool-for-azure-synapse-analytics"></a>Správa a monitorování důležitosti úloh ve vyhrazeném fondu SQL pro Azure synapse Analytics
 
-Správa a monitorování synapse důležitosti na úrovni požadavků SQL ve službě Azure synapse pomocí zobrazení zobrazení dynamické správy a katalogu
+Správa a monitorování vyhrazené úrovně požadavků fondu SQL ve službě Azure synapse pomocí zobrazení zobrazení dynamické správy a katalogu
 
 ## <a name="monitor-importance"></a>Důležitost monitorování
 

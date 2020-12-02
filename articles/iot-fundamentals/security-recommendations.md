@@ -12,12 +12,12 @@ ms.custom:
 - security-recommendations
 - amqp
 - mqtt
-ms.openlocfilehash: 5a7fc2a5a5a6be7695fa816f28e3cdf61c5839f2
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a1de3a71253b1a82b4423bff279fbf3f7e378da4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92208260"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457604"
 ---
 # <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Doporučení zabezpečení pro nasazení Azure Internet věcí (IoT)
 
@@ -40,7 +40,7 @@ Některá doporučení obsažená v tomto článku můžete automaticky monitoro
 
 | Doporučení | Komentáře | Podporováno v ASC |
 |-|----|--|
-| Definování řízení přístupu pro centrum | [Pochopení a definování typu přístupu ke](iot-security-deployment.md#securing-the-cloud) každé komponentě bude mít vaše řešení IoT Hub, a to na základě funkcí. Povolená oprávnění jsou *Read*, *RegistryReadWrite*, *ServiceConnect*a *DeviceConnect*registru. Výchozí [zásady sdíleného přístupu ve službě IoT Hub](../iot-hub/iot-hub-devguide-security.md#access-control-and-permissions) vám pomůžou také definovat oprávnění pro jednotlivé komponenty na základě její role. | - |
+| Definování řízení přístupu pro centrum | [Pochopení a definování typu přístupu ke](iot-security-deployment.md#securing-the-cloud) každé komponentě bude mít vaše řešení IoT Hub, a to na základě funkcí. Povolená oprávnění jsou *Read*, *RegistryReadWrite*, *ServiceConnect* a *DeviceConnect* registru. Výchozí [zásady sdíleného přístupu ve službě IoT Hub](../iot-hub/iot-hub-devguide-security.md#access-control-and-permissions) vám pomůžou také definovat oprávnění pro jednotlivé komponenty na základě její role. | - |
 | Definování řízení přístupu pro back-endové služby | Data ingestovaná pomocí řešení IoT Hub můžou využívat jiné služby Azure, jako jsou [Cosmos DB](../cosmos-db/index.yml), [Stream Analytics](../stream-analytics/index.yml), [App Service](../app-service/index.yml), [Logic Apps](../logic-apps/index.yml)a [BLOB Storage](../storage/blobs/storage-blobs-introduction.md). Ujistěte se, že rozumíte a povolíte odpovídající přístupová oprávnění pro tyto služby. | - |
 
 ## <a name="data-protection"></a>Ochrana dat
@@ -58,13 +58,13 @@ Některá doporučení obsažená v tomto článku můžete automaticky monitoro
 | Ochrana přístupu k zařízením | Udržujte hardwarové porty ve vašich zařízeních na minimum, aby nedocházelo k nežádoucímu přístupu. Kromě toho mechanismy sestavení pro prevenci nebo detekci fyzické manipulace se zařízením. Podrobnosti najdete v článku [osvědčené postupy zabezpečení IoT](iot-security-best-practices.md) . | - |
 | Sestavit zabezpečený hardware | Zahrňte funkce zabezpečení, jako je šifrované úložiště nebo čip TPM (Trusted Platform Module), aby se zařízení a infrastruktura lépe zabezpečily. Udržujte operační systém zařízení a ovladače upgradovány na nejnovější verze a v případě, že je to možné místo, nainstalujte antivirové a antimalwarové funkce. Přečtěte si [architekturu zabezpečení IoT](iot-security-architecture.md) , abyste zjistili, jak to může přispět k zmírnění několika bezpečnostních hrozeb. | - |
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 | Doporučení | Komentáře | Podporováno v ASC |
 |-|----|--|
 | Monitorování neoprávněného přístupu k vašim zařízením |  Pomocí funkce protokolování v operačním systému zařízení můžete monitorovat veškerá porušení zabezpečení nebo fyzické falšování zařízení nebo jeho portů. | - |
-| Monitorování řešení IoT z cloudu | Monitorujte celkový stav IoT Hub řešení pomocí [metrik v Azure monitor](../iot-hub/iot-hub-metrics.md). | - |
-| Nastavení diagnostiky | Pozorně sledujte své operace protokolováním událostí ve vašem řešení a poté odesláním diagnostických protokolů Azure Monitor, abyste získali přehled o výkonu. Další informace najdete [v tématu monitorování a Diagnostika problémů ve službě IoT Hub](../iot-hub/iot-hub-monitor-resource-health.md) . | - |
+| Monitorování řešení IoT z cloudu | Monitorujte celkový stav IoT Hub řešení pomocí [metrik v Azure monitor](../iot-hub/monitor-iot-hub.md). | - |
+| Nastavení diagnostiky | Pozorně sledujte své operace protokolováním událostí ve vašem řešení a poté odesláním diagnostických protokolů Azure Monitor, abyste získali přehled o výkonu. Další informace najdete [v tématu monitorování a Diagnostika problémů ve službě IoT Hub](../iot-hub/monitor-iot-hub.md) . | - |
 
 ## <a name="next-steps"></a>Další kroky
 

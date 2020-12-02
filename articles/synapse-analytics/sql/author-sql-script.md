@@ -1,6 +1,6 @@
 ---
-title: Skripty SQL v Azure synapse Studio (Preview)
-description: Seznámení se skripty SQL pro Azure synapse Studio (Preview)
+title: Skripty SQL v synapse studiu
+description: Seznámení se skripty synapse Studio SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: pimorano
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: 3f3009799889bd6b118f586676e22338d821d37c
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 077815d117af0328a3466346727e135caaf8ff21
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635281"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457998"
 ---
-# <a name="using-sql-scripts-in-azure-synapse-studio-preview"></a>Používání skriptů SQL v Azure synapse Studio (Preview)
+# <a name="synapse-studio-sql-scripts-in-azure-synapse-analytics"></a>Skripty synapse Studio SQL ve službě Azure synapse Analytics 
 
-Azure synapse Studio (Preview) poskytuje webové rozhraní pro skripty SQL, které vám umožní vytvářet dotazy SQL. Můžete se připojit ke fondu SQL (Preview). 
+Synapse Studio poskytuje webové rozhraní pro skripty SQL, které vám umožní vytvářet dotazy SQL. 
 
 ## <a name="begin-authoring-in-sql-script"></a>Začít vytvářet vytváření skriptů SQL 
 

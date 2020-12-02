@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: e6708874fee3e15349b4389f1ecafa3d48a628dd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2fbc74304cdb71d9cb3e1ea476af8c92eb99b7e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95917171"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458829"
 ---
 # <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>Kurz: spouštění experimentů pomocí automatizovaného ML a Apache Spark
 
@@ -72,7 +72,7 @@ df = spark.read.parquet(wasbs_path)
 
 ```
 
-3. V závislosti na velikosti vašeho fondu Spark (Preview) mohou být nezpracovaná data příliš velká nebo mohou trvat příliš dlouho, než budou fungovat. Tato data můžete filtrovat dolů na menší hodnotu pomocí ```start_date``` ```end_date``` filtrů a. Tím se aplikuje filtr, který vrací měsíc dat. Jakmile máme filtrovaný datový rámec, spustíme také ```describe()``` funkci na novém dataframe pro zobrazení souhrnných statistik pro každé pole. 
+3. V závislosti na velikosti vašeho fondu Spark může být nezpracovaná data příliš velká nebo mohou trvat příliš dlouho, než budou fungovat. Tato data můžete filtrovat dolů na menší hodnotu pomocí ```start_date``` ```end_date``` filtrů a. Tím se aplikuje filtr, který vrací měsíc dat. Jakmile máme filtrovaný datový rámec, spustíme také ```describe()``` funkci na novém dataframe pro zobrazení souhrnných statistik pro každé pole. 
 
    Na základě souhrnných statistik jsme zjistili, že v datech jsou nějaké nesrovnalosti a odlehlé hodnoty. Statistiky například ukazují, že minimální vzdálenost pro cestu je menší než 0. Budeme muset odfiltrovat tyto nepravidelné datové body.
    

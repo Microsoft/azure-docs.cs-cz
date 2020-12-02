@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
-ms.openlocfilehash: 0267d09bc23f9aa5c1f5981ddf9386f3827c75d3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b40144079304b6981ff8faf251a345dbb163ecac
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92754403"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459295"
 ---
 # <a name="how-to-configure-your-consulting-service-offer-properties"></a>Postup konfigurace vlastností nabídek konzultačních služeb
 
@@ -25,24 +25,24 @@ Na kartě **vlastnosti** vaší nabídky v partnerském centru budete definovat 
 
 V rozevíracím seznamu **primární produkt** vyberte produkt společnosti Microsoft, který bude zaměřen na nabídku konzultační služby. Vybraný produkt vám určí, jestli bude vaše nabídka publikovaná Microsoft AppSource nebo Azure Marketplace.
 
-* Pokud vyberete Azure, tato nabídka bude uvedená v Azure Marketplace. Vyberte až tři **oblasti řešení** . Díky tomu budou zákazníci moci najít vaši nabídku.
-* Pokud primární produkt *není Azure,* nabídka se publikuje na AppSource. Vyberte alespoň jeden a až tři produkty, které jsou k **dispozici** . Díky tomu budou zákazníci moci najít vaši nabídku.
+* Pokud vyberete Azure, tato nabídka bude uvedená v Azure Marketplace. Vyberte až tři **oblasti řešení**. Díky tomu budou zákazníci moci najít vaši nabídku.
+* Pokud primární produkt *není Azure,* nabídka se publikuje na AppSource. Vyberte alespoň jeden a až tři produkty, které jsou k **dispozici**. Díky tomu budou zákazníci moci najít vaši nabídku.
 
 ## <a name="select-the-consulting-service-type"></a>Vyberte typ konzultační služby
 
 V rozevíracím seznamu **typ konzultační služby** vyberte typ konzultační služby, kterou zákazníkům nabízíte. K dispozici jsou tyto typy:
 
-* **Posouzení** : vyhodnocení prostředí zákazníka pro určení použitelnosti řešení a odhad nákladů a časové osy jeho implementace.
-* **Přehled** : Úvod do řešení nebo služby pomocí platforem, ukázek a příkladů zákazníků.
-* **Implementace** : kompletní instalace, která má za následek plně funkční řešení.
-* **Ověření koncepce** : implementace omezeného rozsahu, která určuje, jestli řešení splňuje požadavky zákazníka.
-* **Workshop** : interaktivní zapojení na místě zákazníka. Může zahrnovat školení, stručné hodnocení, posouzení nebo ukázky založené na datech a prostředí zákazníka.
+* **Posouzení**: vyhodnocení prostředí zákazníka pro určení použitelnosti řešení a odhad nákladů a časové osy jeho implementace.
+* **Přehled**: Úvod do řešení nebo služby pomocí platforem, ukázek a příkladů zákazníků.
+* **Implementace**: kompletní instalace, která má za následek plně funkční řešení.
+* **Ověření koncepce**: implementace omezeného rozsahu, která určuje, jestli řešení splňuje požadavky zákazníka.
+* **Workshop**: interaktivní zapojení na místě zákazníka. Může zahrnovat školení, stručné hodnocení, posouzení nebo ukázky založené na datech a prostředí zákazníka.
 
 ## <a name="select-relevant-industries"></a>Vybrat relevantní odvětví
 
 Informace v této části nám pomáhají kategorizovat nabídku, aby ji zákazníci mohli snadno najít v online obchodech Microsoftu.
 
-* Pokud jste jako primární produkt vybrali Azure, vyberte až šest **oborů** . Seznamte se s [osvědčenými postupy v nabídce](./gtm-offer-listing-best-practices.md), kde najdete úplný seznam oborů.
+* Pokud jste jako primární produkt vybrali Azure, vyberte až šest **oborů**. Seznamte se s [osvědčenými postupy v nabídce](./gtm-offer-listing-best-practices.md), kde najdete úplný seznam oborů.
 * Pokud jste vybrali jiný produkt než Azure, máte možnost vybrat si až dva **obory** a dva **dílčí obory** pro jednotlivé obory. Seznamte se s [osvědčenými postupy](./gtm-offer-listing-best-practices.md), které nabízí úplný seznam odvětví a dílčích odvětví.
 
 ## <a name="select-your-competencies"></a>Výběr vašich kompetencí
@@ -50,7 +50,7 @@ Informace v této části nám pomáhají kategorizovat nabídku, aby ji zákazn
 Vyberte až tři kompetence, které jsou relevantní pro oblast služeb vaší nabídky. Váš výběr se zobrazí zákazníkům v seznamu nabídek.
 
 > [!IMPORTANT]
-> Nejméně jedna kompetence může být požadavek na publikování vaší nabídky v závislosti na jejím primárním produktu. Podrobnosti najdete v tématu [zásady certifikace](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services) .
+> Nejméně jedna kompetence může být požadavek na publikování vaší nabídky v závislosti na jejím primárním produktu. Podrobnosti najdete v tématu [zásady certifikace](/legal/marketplace/certification-policies#800-consulting-services) .
 
 Než budete pokračovat, uložte koncept.
 

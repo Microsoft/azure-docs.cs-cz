@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: d29fa6454839b0c34830374282b8abb5fa6e4c51
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8df7a2ecd2a6732a011267eb0efe00e8eaf2bef4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313403"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458750"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Apache Spark v základních konceptech služby Azure synapse Analytics
 
@@ -22,17 +22,17 @@ Apache Spark je paralelní procesor pro zpracování, který podporuje zpracová
 
 Azure synapse usnadňuje vytváření a konfiguraci možností Sparku v Azure. Azure synapse poskytuje odlišnou implementaci těchto funkcí Sparku, které jsou popsány zde.
 
-## <a name="spark-pools-preview"></a>Fondy Sparku (Preview)
+## <a name="spark-pools"></a>Fondy Spark
 
-V Azure Portal se vytvoří Apache Spark fond bez serveru (Preview). Je to definice fondu Spark, který při vytvoření instance slouží k vytvoření instance Sparku, která zpracovává data. Když se vytvoří fond Sparku, existuje jenom jako metadata a žádné prostředky se nespotřebovává, neúčtují ani neúčtují. Fond Spark má řadu vlastností, které řídí charakteristiky instance Spark. Tyto vlastnosti zahrnují, ale nejsou omezené na název, velikost, chování škálování, doba do živého.
+V Azure Portal se vytvoří fond Apache Spark bez serveru. Je to definice fondu Spark, který při vytvoření instance slouží k vytvoření instance Sparku, která zpracovává data. Když se vytvoří fond Sparku, existuje jenom jako metadata a žádné prostředky se nespotřebovává, neúčtují ani neúčtují. Fond Spark má řadu vlastností, které řídí charakteristiky instance Spark. Tyto vlastnosti zahrnují, ale nejsou omezené na název, velikost, chování škálování, doba do živého.
 
 Protože se k vytváření fondů Sparku nevztahují žádné dolary nebo náklady na prostředky, je možné jakékoli číslo vytvořit s libovolným počtem různých konfigurací. Oprávnění lze také použít na fondy Spark, které uživatelům umožňují mít přístup pouze k některým a jiným uživatelům.
 
 Osvědčeným postupem je vytvořit menší fondy Sparku, které se dají použít pro vývoj a ladění a pak větší pro spouštění produkčních úloh.
 
-Můžete si přečíst, jak vytvořit fond Spark a zobrazit všechny jeho vlastnosti. Začněte [s fondy Spark v synapse Analytics](../quickstart-create-apache-spark-pool-portal.md) .
+Můžete si přečíst, jak vytvořit fond Spark a zobrazit všechny jeho vlastnosti. Začněte [s fondy Spark ve službě Azure synapse Analytics](../quickstart-create-apache-spark-pool-portal.md) .
 
-## <a name="spark-instances"></a>Instance Spark
+## <a name="spark-instances"></a>Instance Sparku
 
 Instance Spark se vytvoří, když se připojíte ke fondu Spark, vytvoříte relaci a spustíte úlohu. Protože k jednomu fondu Spark může mít přístup více uživatelů, vytvoří se nová instance Spark pro každého uživatele, který se připojí. 
 

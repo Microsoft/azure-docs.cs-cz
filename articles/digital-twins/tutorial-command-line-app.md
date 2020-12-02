@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d7c95317667999ac17803f08575e68641100b967
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a9d8c42432d619ab120afd0bd5734f6fa269b514
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023248"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458097"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Kurz: prozkoumání digitálních vláken Azure pomocí ukázkové klientské aplikace
 
@@ -47,9 +47,9 @@ V okně aplikace Visual Studio, kde je otevřen projekt _**AdtE2ESample**_ , pou
 
 Vyberte možnost *Room.jszapnuto* a otevřete ji v okně pro úpravy a změňte ji následujícími způsoby:
 
-* **Aktualizujte číslo verze**, abyste označili, že poskytujete aktualizovanou verzi tohoto modelu. Provedete to tak, že změníte *1* na konci `@id` hodnoty na *2*. Bude fungovat i číslo větší než aktuální číslo verze.
-* **Upravit vlastnost**. Změňte název `Humidity` vlastnosti na *HumidityLevel* (nebo něco jiného, pokud chcete. Pokud používáte něco jiného než *HumidityLevel*, pamatujte na to, co jste použili, a místo *HumidityLevel* v průběhu tohoto kurzu ho budete používat.
-* **Přidejte vlastnost**. Pod `HumidityLevel` vlastností, která končí na řádku 15, vložte následující kód pro přidání `RoomName` vlastnosti do místnosti:
+1. **Aktualizujte číslo verze**, abyste označili, že poskytujete aktualizovanou verzi tohoto modelu. Provedete to tak, že změníte *1* na konci `@id` hodnoty na *2*. Bude fungovat i číslo větší než aktuální číslo verze.
+1. **Upravit vlastnost**. Změňte název `Humidity` vlastnosti na *HumidityLevel* (nebo něco jiného, pokud chcete. Pokud používáte něco jiného než *HumidityLevel*, pamatujte na to, co jste použili, a místo *HumidityLevel* v průběhu tohoto kurzu ho budete používat.
+1. **Přidejte vlastnost**. Pod `HumidityLevel` vlastností, která končí na řádku 15, vložte následující kód pro přidání `RoomName` vlastnosti do místnosti:
 
     ```json
     ,
@@ -59,13 +59,13 @@ Vyberte možnost *Room.jszapnuto* a otevřete ji v okně pro úpravy a změňte 
       "schema": "string"
     }
     ```
-* **Přidejte relaci**. Pod `RoomName` vlastnost, kterou jste právě přidali, vložte následující kód pro přidání možnosti pro tento typ vlákna do formuláře *obsahuje* relace s jinými nezávislostmi:
+1. **Přidejte relaci**. Pod `RoomName` vlastnost, kterou jste právě přidali, vložte následující kód pro přidání možnosti pro tento typ vlákna do formuláře *obsahuje* relace s jinými nezávislostmi:
 
     ```json
     ,
     {
       "@type": "Relationship",
-      "name": "contains",
+      "name": "contains"
     }
     ```
 
