@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: a68501bd1189993b4dd0c2acdecaa7434fa51dcc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d2446e866c0e12d50a0759373682f4f62bc4bba0
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488030"
+ms.locfileid: "96512218"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor protokolovat vyhrazené clustery
 
-Azure Monitor protokolovat vyhrazené clustery: možnost nasazení, která umožňuje rozšířené možnosti pro Azure Monitor protokolovat zákazníky. Zákazníci s vyhrazenými clustery můžou zvolit pracovní prostory, které se mají hostovat na těchto clusterech.
+Azure Monitor protokolovat vyhrazené clustery: možnost nasazení, která umožňuje pokročilým funkcím pro Azure Monitor protokolovat zákazníky. Zákazníci s vyhrazenými clustery můžou zvolit pracovní prostory, které se mají hostovat na těchto clusterech.
 
-Mezi funkce, které vyžadují vyhrazené clustery, patří:
+Mezi možnosti, které vyžadují vyhrazené clustery, patří:
 
 - **[Klíče spravované zákazníkem](../platform/customer-managed-keys.md)** – Šifrujte data clusteru pomocí klíčů, které jsou k dispozici a kontrolovány zákazníkem.
 - **[Bezpečnostní modul](../platform/customer-managed-keys.md#customer-lockbox-preview)** – zákazníci můžou řídit žádostem o data přístup inženýrům podpory Microsoftu.
@@ -52,7 +52,7 @@ Existují dva režimy fakturace pro použití v clusteru. Tyto parametry mohou b
 
 2. **Pracovní prostory**: náklady na rezervaci kapacity pro váš cluster se úměrně připočítají k pracovním prostorům v clusteru (po zaúčtování pro přidělení podle uzlu z [Azure Security Center](../../security-center/index.yml) pro každý pracovní prostor.)
 
-Pamatujte na to, že pokud váš pracovní prostor používá starší verzi na cenové úrovni uzlů, bude při propojení s clusterem účtován na základě dat přijatých v rámci rezervace kapacity clusteru a již na jeden uzel. Pro přidělení dat jednotlivých uzlů z Azure Security Center bude nadále použito.
+Pokud váš pracovní prostor používá starší verzi na cenové úrovni jednotlivých uzlů, bude při propojení s clusterem účtován na základě dat přijatých v rámci rezervace kapacity clusteru a již na jeden uzel. Pro přidělení dat jednotlivých uzlů z Azure Security Center bude nadále použito.
 
 Další podrobnosti najdete [tady]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters): Log Analytics vyhrazené clustery k dispozici.
 

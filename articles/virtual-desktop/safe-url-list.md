@@ -1,21 +1,21 @@
 ---
-title: Seznam bezpečných adres URL pro virtuální počítače s Windows – Azure
-description: Seznam adres URL, které byste měli odblokovat, aby bylo zajištěno, že nasazení virtuálních klientů Windows funguje tak, jak má.
+title: Požadovaný seznam adres URL pro virtuální počítač s Windows – Azure
+description: Seznam adres URL, které musíte odblokovat, abyste měli jistotu, že vaše nasazení virtuálních klientů Windows funguje tak, jak je zamýšlené.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 12/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3d19a60fd6a22eb9245722c6ff69d3b39c05d29e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6b3fdc18a04dadf4bf1cf380c7bb51d21f826633
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023169"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512337"
 ---
-# <a name="safe-url-list"></a>Seznam bezpečných adres URL
+# <a name="required-url-list"></a>Seznam požadovaných adres URL
 
-Budete muset odblokovat určité adresy URL, aby nasazení virtuálních klientů Windows fungovalo správně. Tento článek uvádí tyto adresy URL, takže víte, které z nich jsou bezpečné.
+Aby bylo možné nasadit a používat virtuální počítač s Windows, musíte odblokovat určité adresy URL, aby k nim měli přístup vaše virtuální počítače, aby k nim měli přístup kdykoli. V tomto článku jsou uvedené požadované adresy URL, které potřebujete odblokovat.
 
 ## <a name="virtual-machines"></a>Virtuální počítače
 
@@ -53,7 +53,7 @@ Virtuální počítače Azure, které vytvoříte pro virtuální počítač s W
 |*. servicebus.usgovcloudapi.net|443|Přenosy agenta|AzureCloud|
 |* xt.table.core.usgovcloudapi.net|443|Přenosy agenta|AzureCloud|
 |Kms.core.usgovcloudapi.net|1688|Aktivace Windows|Internet|
-|mrsglobalstugviffx.core.usgovcloudapi.net|443|Aktualizace zásobníku agenta a SXS|AzureCloud|
+|mrsglobalstugviffx.blob.core.usgovcloudapi.net|443|Aktualizace zásobníku agenta a SXS|AzureCloud|
 |wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Podpora Azure Portal|AzureCloud|
 | 169.254.169.254 | 80 | [Koncový bod služby metadat instance Azure](../virtual-machines/windows/instance-metadata-service.md) | – |
 | 168.63.129.16 | 80 | [Monitorování stavu hostitele relace](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | – |
@@ -68,10 +68,14 @@ Následující tabulka uvádí volitelné adresy URL, ke kterým můžou mít vi
 |*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Žádné|
 |login.windows.net|443|Přihlaste se ke službám Microsoft Online Services Microsoft 365|login.microsoftonline.us|
 |*. sfx.ms|443|Aktualizace klientského softwaru OneDrivu|oneclient.sfx.ms|
-|*. digicert.com|443|Ověření odvolání certifikátu|Žádné|
+|*. digicert.com|443|Kontrola odvolání certifikátu|Žádné|
+|*. azure-dns.com|443|Azure DNS rozlišení|Žádné|
+|*. azure-dns.net|443|Azure DNS rozlišení|Žádné|
 
 >[!NOTE]
 >Virtuální klient Windows aktuálně neobsahuje seznam rozsahů IP adres, které můžete odblokovat, aby se povolil síťový provoz. V tuto chvíli podporujeme jenom odblokování specifických adres URL.
+>
+>Pokud používáte bránu firewall nové generace (NGFW), budete muset použít dynamický seznam, který se konkrétně provede pro IP adresy Azure, abyste se ujistili, že se můžete připojit.
 >
 >Seznam bezpečných adres URL pro Office, včetně požadovaných adres URL souvisejících s Azure Active Directory, najdete v tématu [adresy URL a rozsahy IP adres pro office 365](/office365/enterprise/urls-and-ip-address-ranges).
 >

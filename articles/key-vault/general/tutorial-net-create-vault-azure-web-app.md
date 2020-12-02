@@ -10,20 +10,20 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 278c842d6e6f73bff5468f601eea77f8b140a07c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 473ed1f14d77470e31c2f14665a12542a70a2a98
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444428"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512294"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>Kurz: použití spravované identity pro připojení Key Vault k webové aplikaci Azure v .NET
 
 [Azure Key Vault](./overview.md) poskytuje způsob ukládání přihlašovacích údajů a dalších tajných kódů s vyšším zabezpečením. Váš kód ale musí ověřit, aby se Key Vault načíst. [Spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md) usnadňují řešení tohoto problému tím, že službám Azure poskytne automaticky spravovanou identitu ve službě Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD, včetně Key Vault, bez nutnosti zobrazovat přihlašovací údaje v kódu.
 
-V tomto kurzu použijete spravovanou identitu k ověření webové aplikace Azure pomocí trezoru klíčů Azure. Použijete [klientskou knihovnu Azure Key Vault verze 4 pro .NET](/dotnet/api/overview/azure/key-vault) a [Azure CLI](/cli/azure/get-started-with-azure-cli). Stejné základní principy platí při použití vývojového jazyka dle vašeho výběru, Azure PowerShell a/nebo Azure Portal.
+V tomto kurzu použijete spravovanou identitu k ověření webové aplikace Azure pomocí trezoru klíčů Azure. Použijete [klientskou knihovnu Azure Key Vault tajných klíčů pro .NET](/dotnet/api/overview/azure/key-vault) a [Azure CLI](/cli/azure/get-started-with-azure-cli). Stejné základní principy platí při použití vývojového jazyka dle vašeho výběru, Azure PowerShell a/nebo Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Co budete potřebovat k dokončení tohoto rychlého startu:
 
@@ -253,9 +253,11 @@ Zásady přístupu můžete také přiřadit pomocí [Azure Portal](./assign-acc
 
 ### <a name="modify-the-app-to-access-your-key-vault"></a>Úprava aplikace pro přístup k trezoru klíčů
 
+V tomto kurzu použijete pro demonstrační účely [knihovnu klienta Azure Key Vault tajných klíčů](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.secrets-readme) . Můžete také použít [Azure Key Vault klientské knihovny certifikátů](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.certificates-readme)nebo [Azure Key Vault klíčovou knihovnu klienta](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.keys-readme).
+
 #### <a name="install-the-packages"></a>Nainstalovat balíčky
 
-V okně terminálu nainstalujte Azure Key Vault klientskou knihovnu pro balíčky .NET:
+V okně terminálu nainstalujte pro balíčky klientské knihovny .NET a Azure identity klienta Azure Key Vault tajnou klíčovou knihovnu:
 
 ```console
 dotnet add package Azure.Identity
@@ -318,12 +320,11 @@ git push azure master
 http://<your-webapp-name>.azurewebsites.net
 ```
 
-Místo, kde jste si viděli "Hello World!", by se teď měla zobrazit hodnota zobrazeného tajného kódu: "úspěch!"
+Místo, kde jste si viděli "Hello World!", by se teď měla zobrazit hodnota zobrazeného tajného kódu.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Použití Azure Key Vault s aplikacemi nasazenými do virtuálního počítače v .NET](./tutorial-net-virtual-machine.md)
 - Další informace o [spravovaných identitách pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md)
-- Další informace o [spravovaných identitách pro App Service](../../app-service/overview-managed-identity.md?tabs=dotnet)
 - Zobrazit [příručku pro vývojáře](./developers-guide.md)
 - [Zabezpečený přístup k trezoru klíčů](./secure-your-key-vault.md)

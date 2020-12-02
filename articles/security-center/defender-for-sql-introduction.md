@@ -3,30 +3,32 @@ title: Azure Defender pro SQL – výhody a funkce
 description: Přečtěte si o výhodách a funkcích Azure Defenderu pro SQL.
 author: memildin
 ms.author: memildin
-ms.date: 11/22/2020
+ms.date: 11/30/2020
 ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 102d4916caf9dcae577006b6b847979f98ab3673
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c2fc1bf065bce3ca844c5284168d8ff96fa065bf
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499896"
+ms.locfileid: "96512235"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Seznámení se službou Azure Defender pro SQL
 
 Azure Defender pro SQL zahrnuje dva plány Azure Defenderu, které rozšiřuje [balíček zabezpečení dat](../azure-sql/database/azure-defender-for-sql.md) Azure Security Center, aby se vaše databáze a data nacházely tam, kde jsou umístěné. 
 
+> [!VIDEO https://www.youtube.com/embed/V7RdB6RSVpc]
+
 ## <a name="availability"></a>Dostupnost
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|**Azure Defender pro servery Azure SQL Database** – všeobecně dostupné (GA)<br>**Azure Defender pro SQL servery na počítačích** – Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|Stav vydaných verzí:|**Azure Defender pro servery Azure SQL Database** – všeobecně dostupné (GA)<br>**Azure Defender pro SQL servery na počítačích** – všeobecně dostupné (GA) |
 |Stanov|Dva plány, které tvoří **Azure Defender pro SQL** , se účtují, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
-|Chráněné verze SQL:|SQL na virtuálních počítačích Azure – [Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) a [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md)<br>[Servery SQL s povoleným obloukem](/sql/sql-server/azure-arc/overview) (zahrnuje místní SQL servery)<br>[Jednoduché databáze](../azure-sql/database/single-database-overview.md) a [elastické fondy](../azure-sql/database/elastic-pool-overview.md) Azure SQL<br>[Spravovaná instance Azure SQL](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Vyhrazený fond SQL Azure synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov|
+|Chráněné verze SQL:|[SQL na virtuálních počítačích Azure](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[Servery SQL s podporou ARC Azure](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)<br>Místní SQL servery na počítačích s Windows bez ARC Azure<br>[Jednoduché databáze](../azure-sql/database/single-database-overview.md) a [elastické fondy](../azure-sql/database/elastic-pool-overview.md) Azure SQL<br>[Spravovaná instance Azure SQL](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Vyhrazený fond SQL Azure synapse Analytics (dříve SQL DW)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
 |||
 
 ## <a name="what-does-azure-defender-for-sql-protect"></a>Co je Azure Defender pro SQL Protect?
@@ -34,11 +36,15 @@ Azure Defender pro SQL zahrnuje dva plány Azure Defenderu, které rozšiřuje [
 **Azure Defender pro SQL** se skládá ze dvou samostatných plánů Azure Defenderu:
 
 - **Azure Defender pro servery Azure SQL Database** chrání:
-  - [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md)
-  - [Spravovaná instance Azure SQL](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)
-  - [Vyhrazený fond SQL ve službě Azure synapse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+    - [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md)
+    - [Spravovaná instance Azure SQL](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)
+    - [Vyhrazený fond SQL ve službě Azure synapse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
-- **Azure Defender pro SQL servery na počítačích (ve verzi Preview)** rozšiřuje ochranu vašich serverů SQL Azure Native, aby plně podporovala hybridní prostředí a chránila SQL servery (všechny podporované verze) hostované v Azure, v jiných cloudových prostředích a i v místních počítačích.
+- **Azure Defender pro servery SQL na počítačích** rozšiřuje ochranu pro vaše servery SQL nativní pro Azure tak, aby plně podporovala hybridní prostředí a chránila SQL servery (všechny podporované verze) hostované v Azure, v jiných cloudových prostředích a dokonce i v místních počítačích:
+    - [SQL Server na virtuálních počítačích](https://azure.microsoft.com/services/virtual-machines/sql-server/)
+    - Místní SQL servery:
+        - [SQL Server s podporou služby Azure Arc (Preview)](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)
+        - [SQL Server běžící na počítačích s Windows bez ARC Azure](../azure-monitor/platform/agent-windows.md)
 
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-sql"></a>Jaké jsou výhody Azure Defenderu pro SQL?
@@ -52,11 +58,11 @@ Tyto dva plány zahrnují funkce pro identifikaci a zmírnění potenciálních 
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-sql-provide"></a>Jaký typ výstrah poskytuje Azure Defender pro SQL?
 
-Výstrahy zabezpečení se aktivují, když dojde k těmto akcím:
+Výstrahy zabezpečení pro analýzu hrozeb se aktivují, když jsou:
 
 - **Potenciální útoky prostřednictvím INJEKTÁŽE SQL** – včetně zjištěných chyb, když aplikace generují chybný příkaz SQL v databázi
 - **Přístup k databázi neobvyklé a vzory dotazů** – například neobvykle vysoký počet neúspěšných pokusů o přihlášení s různými přihlašovacími údaji (pokus o útok hrubou silou)
-- **Podezřelá aktivita databáze** – například změna cíle úložiště exportu pro operaci importu a exportu SQL
+- **Podezřelá databázová aktivita** – například oprávněný uživatel, který přistupuje k SQL Server z napadeného počítače, který se přenáší na Server c&s kryptografickým přístupem.
 
 Výstrahy obsahují podrobnosti o incidentu, který je aktivoval, a doporučení ohledně toho, jak tyto hrozby prozkoumat a opravit.
 
@@ -66,8 +72,10 @@ Výstrahy obsahují podrobnosti o incidentu, který je aktivoval, a doporučení
 
 V tomto článku jste se dozvěděli o Azure Defenderu pro SQL.
 
+> [!div class="nextstepaction"]
+> [Kontrola ohrožení zabezpečení v SQL serverech pomocí Azure Defenderu](defender-for-sql-usage.md)
+
 Související materiály najdete v následujících článcích: 
 
-- [Jak povolit Azure Defender pro servery SQL na počítačích](defender-for-sql-usage.md)
 - [Jak povolit Azure Defender pro servery SQL Database](../azure-sql/database/azure-defender-for-sql.md)
-- [Seznam upozornění v programu Azure Defender pro SQL](alerts-reference.md#alerts-sql-db-and-warehouse)
+- [Seznam výstrah zabezpečení pro SQL Server](alerts-reference.md#alerts-sql-db-and-warehouse)
