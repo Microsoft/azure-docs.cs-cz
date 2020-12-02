@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/24/2020
-ms.openlocfilehash: c7a2373f0cf7005e465c2d3bd42817b3394a84de
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 27b0485fdd7b3c352a85fe7eb39fba33c53bf727
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510266"
+ms.locfileid: "96519208"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Zrychlené zápisy služby Azure HDInsight pro Apache HBase
 
@@ -36,7 +36,7 @@ Funkce akcelerované zápisy řeší potíže s vyšší latencí zápisu způso
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>Jak povolit urychlené zápisy pro adaptéry HBA v HDInsight
 
-Pokud chcete vytvořit nový cluster HBA s funkcí akcelerované zápisy, postupujte podle kroků v části [Nastavení clusterů v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) , dokud nedosáhnete **kroku 3, úložiště**. V části **Nastavení metastore** zaškrtněte políčko vedle **Povolit urychlení zápisů HBA**. Pak pokračujte zbývajícími kroky pro vytvoření clusteru.
+Pokud chcete vytvořit nový cluster HBA s funkcí akcelerované zápisy, postupujte podle kroků v části [Nastavení clusterů ve službě HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Na kartě **základy** vyberte typ clusteru jako HBA, zadejte verzi součásti a potom klikněte na zaškrtávací políčko vedle **povolit akceleraci zapisování HBA**. Pak pokračujte zbývajícími kroky pro vytvoření clusteru.
 
 ![Povolit možnost urychleného zápisu pro HDInsight Apache HBA](./media/apache-hbase-accelerated-writes/azure-portal-create-hbase-wals.png)
 

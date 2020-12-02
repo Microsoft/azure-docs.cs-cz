@@ -1,5 +1,5 @@
 ---
-title: Nepovedlo se vytvořit Poznámkový blok Jupyter ve službě Azure HDInsight.
+title: Nepovedlo se vytvořit Jupyter Notebook ve službě Azure HDInsight
 description: Přečtěte si o krocích při řešení potíží a možných řešeních pro problémy při komunikaci s clustery Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,20 +7,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/11/2020
-ms.openlocfilehash: 50a77e240315796d0d4c98fc8fba8edfc9cd2b7d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 41eefd18419969c6e8c54ba68ce6c0d1eeb7832b
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545527"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519191"
 ---
-# <a name="unable-to-create-jupyter-notebook-in-azure-hdinsight"></a>Nepovedlo se vytvořit Poznámkový blok Jupyter ve službě Azure HDInsight.
+# <a name="unable-to-create-jupyter-notebook-in-azure-hdinsight"></a>Nepovedlo se vytvořit Jupyter Notebook ve službě Azure HDInsight
 
 Tento článek popisuje postup řešení potíží a možná řešení potíží při komunikaci s clustery Azure HDInsight.
 
 ## <a name="issue"></a>Problém
 
-Při spuštění poznámkového bloku Jupyter se zobrazí chybová zpráva, která obsahuje:
+Při spuštění Jupyter Notebook obdržíte chybovou zprávu, která obsahuje:
 
 ```error
 Cannot convert notebook to v5 because that version doesn't exist
@@ -50,7 +50,7 @@ Neshoda verzí.
     version_info = (4, 0, 3)
     ```
 
-    Uložte změny zadáním **CTRL + X** , **Y** a **ENTER** .
+    Uložte změny zadáním **CTRL + X**, **Y** a **ENTER**.
 
 1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net/#/main/services/JUPYTER` umístění, kde `CLUSTERNAME` je název vašeho clusteru.
 
