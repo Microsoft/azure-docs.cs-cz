@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/22/2019
 ms.author: negoe
-ms.reviewer: nacanuma
+ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 566c429fc70ae3f0fc18f024b745d8142535932c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2f631ad650b20110084ff902043447f26c2d4ab3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348403"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453593"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Použití MSAL v národním cloudovém prostředí
 
@@ -34,7 +34,7 @@ Zahrnutí globálního cloudu Azure Active Directory (Azure AD) je nasazeno v n�
 
 Tato příručka ukazuje, jak se přihlásit k pracovním a školním účtům, získat přístupový token a volat rozhraní API Microsoft Graph v [cloudovém prostředí Azure Government](https://azure.microsoft.com/global-infrastructure/government/) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že splňujete tyto požadavky.
 
@@ -70,7 +70,7 @@ Povolení aplikace MSAL.js pro cloudy svrchovaného prostředí:
 
 ### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.us/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.us/).
 
    Pokud chcete najít Azure Portal koncových bodů pro jiné národní cloudy, přečtěte si téma [koncové body registrace aplikace](authentication-national-cloud.md#app-registration-endpoints).
 
@@ -150,9 +150,9 @@ Povolení aplikace Python MSAL pro cloudy svrchovaného prostředí:
     "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
     ```
 
-- Pro volání Microsoft graphu se vyžaduje konkrétní adresa URL koncového bodu grafu, která závisí na tom, který Cloud používáte. Pokud chcete najít Microsoft Graph koncových bodů pro všechny národní cloudy, přečtěte si téma [Microsoft Graph a kořenové koncové body služby Graph Exploreru](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
+- Volání rozhraní Microsoft Graph API vyžaduje adresu URL koncového bodu specifickou pro Cloud, který používáte. Pokud chcete najít Microsoft Graph koncových bodů pro všechny národní cloudy, přečtěte si téma [Microsoft Graph a kořenové koncové body služby Graph Exploreru](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 
-    Tady je příklad koncového bodu grafu s rozsahem:
+    Tady je příklad koncového bodu Microsoft Graph s oborem:
 
     ```json
     "endpoint" : "https://graph.microsoft.us/v1.0/me"
@@ -173,7 +173,7 @@ Tady je příklad autority:
 "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
 ```
 
-- Pro volání Microsoft graphu se vyžaduje konkrétní adresa URL koncového bodu grafu, která závisí na tom, který Cloud používáte. Pokud chcete najít Microsoft Graph koncových bodů pro všechny národní cloudy, přečtěte si téma [Microsoft Graph a kořenové koncové body služby Graph Exploreru](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
+- Volání rozhraní Microsoft Graph API vyžaduje adresu URL koncového bodu specifickou pro Cloud, který používáte. Pokud chcete najít Microsoft Graph koncových bodů pro všechny národní cloudy, přečtěte si téma [Microsoft Graph a kořenové koncové body služby Graph Exploreru](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 
 Tady je příklad koncového bodu grafu s rozsahem:
 
@@ -222,9 +222,10 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace:
+Seznam koncových bodů URL Azure Portal a koncových bodů tokenu pro každý Cloud najdete v tématu věnovaném [národním koncovým bodům cloudového ověřování](authentication-national-cloud.md) .
 
-- [Ověřování v národních cloudech](authentication-national-cloud.md)
+Dokumentace k národnímu cloudu:
+
 - [Azure Government](../../azure-government/index.yml)
 - [Azure (Čína) 21Vianet](/azure/china/)
 - [Azure (Německo)](../../germany/index.yml)

@@ -2,19 +2,21 @@
 title: Poskytovatelé prostředků podle služeb Azure
 description: Vypíše všechny obory názvů poskytovatele prostředků pro Azure Resource Manager a zobrazí službu Azure pro tento obor názvů.
 ms.topic: conceptual
-ms.date: 11/30/2020
-ms.openlocfilehash: fffac8fef8742cf1f151de06ba6b528035a6668d
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.date: 12/01/2020
+ms.openlocfilehash: faea6badc24d0152e94fc507cafdb15932d1ea3e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436823"
+ms.locfileid: "96452634"
 ---
 # <a name="resource-providers-for-azure-services"></a>Poskytovatelé prostředků pro služby Azure
 
 V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostředků na služby Azure.
 
 ## <a name="match-resource-provider-to-service"></a>Spárovat poskytovatele prostředků se službou
+
+Poskytovatelé prostředků označených jako **registrované** jsou ve výchozím nastavení registrováni pro vaše předplatné. Další informace najdete v tématu [registrace](#registration).
 
 | Obor názvů poskytovatele prostředků | Služba Azure |
 | --------------------------- | ------------- |

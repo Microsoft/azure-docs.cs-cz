@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperfq2
-ms.openlocfilehash: 9aa1156da48ba39672d59858d0640619581329ee
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 45b177bd35af9748ff80ecc38f2d1c803c10546e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981115"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452810"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Dotazování na vyzdvojený graf digitálních vláken Azure
 
@@ -258,7 +258,7 @@ SELECT Consumer.name AS consumerName, Edge.prop1 AS first, Edge.prop2 AS second,
 FROM DIGITALTWINS Factory
 JOIN Consumer RELATED Factory.customer Edge
 WHERE Factory.$dtId = 'ABC'
-AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)"
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)
 ```
 
 Zde je podobný dotaz, který se dotazuje stejné sady jako v předchozím příkladu, ale projektuje pouze vlastnost *Consumer.Name* jako `consumerName` a projekty, které tvoří kompletní *objekt pro vytváření* , jako dvojitou hodnotu.
@@ -311,7 +311,7 @@ Představte si například scénář, ve kterém *budovy* obsahují *podlahu* a 
 
 Můžete **zkombinovat** libovolný z výše uvedených typů dotazu pomocí operátorů kombinace pro zahrnutí více podrobností v jednom dotazu. Tady jsou některé další příklady složených dotazů, které dotazují na více než jeden typ zdvojeného popisovače najednou.
 
-| Popis | Dotazy |
+| Popis | Dotaz |
 | --- | --- |
 | Ze zařízení, která jsou v *místnosti 123* , se vrátí zařízení MxChip, která obsluhují roli operátora. | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contoso:com:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
 | Získejte vlákna, která mají relaci s názvem, *obsahuje* další nevlákenný identifikátor *ID1* | `SELECT Room`<br>`FROM DIGITALTWINS Room`<br>`JOIN Thermostat RELATED Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |

@@ -1,37 +1,37 @@
 ---
-title: 'Rychlý Start: odebrání registrované aplikace z platformy Microsoft Identity Platform | Azure'
+title: 'Postupy: odebrání registrované aplikace z platformy Microsoft Identity Platform | Azure'
 titleSuffix: Microsoft identity platform
-description: V tomto rychlém startu se dozvíte, jak odebrat aplikaci registrovanou na platformě Microsoft identity.
+description: V tomto postupu se naučíte, jak odebrat aplikaci registrovanou na platformě Microsoft identity.
 services: active-directory
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
+ms.topic: how-to
 ms.workload: identity
-ms.date: 05/08/2019
+ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: aa0662ae0b1caa63938f5e07aea10b9af60661d3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.reviewer: marsma, aragra, lenalepa, sureshja
+ms.openlocfilehash: edfed8ca361d456e622096e23079d5887f96ab30
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173256"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452992"
 ---
-# <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Rychlý Start: odebrání aplikace registrované s platformou Microsoft identity
+# <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Jak odebrat aplikaci registrovanou na platformě Microsoft identity
 
 Podnikoví vývojáři a poskytovatelé softwaru jako služby (SaaS), kteří mají zaregistrované aplikace na platformě Microsoft Identity Platform, můžou potřebovat odebrat registraci aplikace.
 
-V tomto rychlém startu se naučíte:
+V následujících částech se dozvíte, jak:
 
 * Odebrání aplikace vytvořené vámi nebo vaší organizací
 * Odebrání aplikace vytvořené jinou organizací
 
 ## <a name="prerequisites"></a>Předpoklady
 
-* Dokončení [rychlého startu: registrace aplikace s platformou Microsoft Identity](quickstart-register-app.md)
+* [Aplikace zaregistrovaná v Tenantovi Azure AD](quickstart-register-app.md)
 
 ## <a name="remove-an-application-authored-by-you-or-your-organization"></a>Odebrání aplikace vytvořené vámi nebo vaší organizací
 
@@ -53,7 +53,4 @@ Pokud chcete odebrat přístup aplikace k vašemu adresáři (po udělení souhl
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o aplikačních a instančních objektech na platformě Microsoft identity:
-
-> [!div class="nextstepaction"]
-> [Instanční objekty aplikace a služby v Azure Active Directory](app-objects-and-service-principals.md)
+Přečtěte si další informace o [aplikacích a instančních objektech](app-objects-and-service-principals.md) v platformě Microsoft identity.

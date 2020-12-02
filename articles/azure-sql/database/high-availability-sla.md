@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: sstein, sashan
 ms.date: 10/28/2020
-ms.openlocfilehash: 6b6ae2ffca420dc126d56c0f1cfed9188dec0e47
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e5e58f8592fcf8627870c3a574335bbe34394064
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185602"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452460"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Vysoká dostupnost pro Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -112,7 +112,7 @@ Další informace o vysoké dostupnosti v měřítku najdete v tématu [Vysoká 
 
 ## <a name="accelerated-database-recovery-adr"></a>Urychlené obnovení databáze (ADR)
 
-[Zrychlené obnovení databáze (ADR)](../accelerated-database-recovery.md) je nová funkce databázového stroje, která významně vylepšuje dostupnost databáze, zejména v případě dlouhotrvajících transakcí. Pravidla automatického nasazení jsou v tuto chvíli k dispozici pro Azure SQL Database, Azure SQL Managed instance a Azure synapse Analytics (dřív SQL Data Warehouse).
+[Zrychlené obnovení databáze (ADR)](../accelerated-database-recovery.md) je nová funkce databázového stroje, která významně vylepšuje dostupnost databáze, zejména v případě dlouhotrvajících transakcí. Pravidla automatického nasazení jsou v tuto chvíli k dispozici pro Azure SQL Database, Azure SQL Managed instance a Azure synapse Analytics.
 
 ## <a name="testing-application-fault-resiliency"></a>Testování odolnosti proti chybám aplikace
 

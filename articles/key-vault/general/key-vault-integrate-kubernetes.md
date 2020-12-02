@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: b7d587f2be5141f7de82e9294b1fdb9fba4a6a41
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: c628ba780ae64fceb32322fdb2004d69e2ebf24b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488637"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452745"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Kurz: konfigurace a spuštění poskytovatele Azure Key Vault pro ovladač tajných klíčů úložiště pro Kubernetes
 
@@ -81,7 +81,7 @@ Dokončete části Vytvoření skupiny prostředků, vytvoření clusteru AKS a 
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
-1. Pokud chcete zobrazit metadata clusteru AKS, který jste vytvořili, použijte následující příkaz. Zkopírujte **principalId** , **ClientID** , **SubscriptionId** a **nodeResourceGroup** pro pozdější použití. Pokud se nevytvořil cluster s DOTAZem s povolenými spravovanými identitami, bude mít hodnota **principalId** a **ClientID** hodnotu null. 
+1. Pokud chcete zobrazit metadata clusteru AKS, který jste vytvořili, použijte následující příkaz. Zkopírujte **principalId**, **ClientID**, **SubscriptionId** a **nodeResourceGroup** pro pozdější použití. Pokud se nevytvořil cluster s DOTAZem s povolenými spravovanými identitami, bude mít hodnota **principalId** a **ClientID** hodnotu null. 
 
     ```azurecli
     az aks show --name contosoAKSCluster --resource-group contosoResourceGroup
@@ -121,21 +121,21 @@ Chcete-li vytvořit vlastní objekt SecretProviderClass s parametry specifickým
 
 V ukázkovém souboru SecretProviderClass YAML vyplňte chybějící parametry. Jsou vyžadovány následující parametry:
 
-* **userAssignedIdentityID** : # [povinné] Pokud používáte instanční objekt, pomocí ID klienta určete, která spravovaná identita přiřazená uživatelem se má použít. Pokud jako spravovanou identitu virtuálního počítače používáte identitu přiřazenou uživatelem, zadejte ID klienta identity. Pokud je hodnota prázdná, použije se ve výchozím nastavení identita přiřazená systémem na virtuálním počítači. 
+* **userAssignedIdentityID**: # [povinné] Pokud používáte instanční objekt, pomocí ID klienta určete, která spravovaná identita přiřazená uživatelem se má použít. Pokud jako spravovanou identitu virtuálního počítače používáte identitu přiřazenou uživatelem, zadejte ID klienta identity. Pokud je hodnota prázdná, použije se ve výchozím nastavení identita přiřazená systémem na virtuálním počítači. 
 * název **trezoru klíčů: název** vašeho trezoru klíčů
-* **objekty** : kontejner pro všechen tajný obsah, který chcete připojit.
-    * **ObjectName** : název tajného obsahu
-    * **ObjectType** : typ objektu (tajný kód, klíč, certifikát)
+* **objekty**: kontejner pro všechen tajný obsah, který chcete připojit.
+    * **ObjectName**: název tajného obsahu
+    * **ObjectType**: typ objektu (tajný kód, klíč, certifikát)
 * skupina **prostředků: název** skupiny prostředků # [požadováno pro Version < 0.0.4] skupiny prostředků trezoru klíčů.
-* **SubscriptionId** : ID předplatného vašeho trezoru klíčů # [požadováno pro Version < 0.0.4] ID předplatného trezoru klíčů.
-* **tenantID** : ID klienta nebo ID adresáře vašeho trezoru klíčů
+* **SubscriptionId**: ID předplatného vašeho trezoru klíčů # [požadováno pro Version < 0.0.4] ID předplatného trezoru klíčů.
+* **tenantID**: ID klienta nebo ID adresáře vašeho trezoru klíčů
 
 Dokumentace všech povinných polí je k dispozici zde: [odkaz](https://github.com/Azure/secrets-store-csi-driver-provider-azure#create-a-new-azure-key-vault-resource-or-use-an-existing-one)
 
 Aktualizovaná šablona je uvedena v následujícím kódu. Stáhněte si ho jako soubor YAML a vyplňte požadovaná pole. V tomto příkladu je Trezor klíčů **contosoKeyVault5**. Má dva tajné klíče, **secret1** a **secret2**.
 
 > [!NOTE] 
-> Pokud používáte spravované identity, nastavte hodnotu **usePodIdentity** na *true* a jako dvojici uvozovek ( **""** ) nastavte hodnotu **userAssignedIdentityID** . 
+> Pokud používáte spravované identity, nastavte hodnotu **usePodIdentity** na *true* a jako dvojici uvozovek (**""**) nastavte hodnotu **userAssignedIdentityID** . 
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
@@ -362,4 +362,4 @@ Ověřte, zda se zobrazuje obsah tajného klíče.
 
 Informace o tom, jak zajistit, aby se váš Trezor klíčů mohl obnovit, najdete v těchto tématech:
 > [!div class="nextstepaction"]
-> [Zapnout obnovitelné odstranění](./soft-delete-cli.md)
+> [Zapnout obnovitelné odstranění](./key-vault-recovery.md)

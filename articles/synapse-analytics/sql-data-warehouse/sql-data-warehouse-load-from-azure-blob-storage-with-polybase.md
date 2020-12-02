@@ -1,26 +1,26 @@
 ---
-title: Načtení maloobchodních dat Contoso do synapse SQL
-description: K načtení dvou tabulek z maloobchodních dat společnosti Contoso do synapse SQL použijte příkazy jazyka T-SQL.
+title: Načtení maloobchodních dat contoso na vyhrazené fondy SQL
+description: K načtení dvou tabulek z maloobchodních dat společnosti Contoso do vyhrazených fondů SQL použijte příkazy jazyka T-SQL.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/17/2018
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 904ce55f376e42156b014056b1226512b2784742
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbe61444404b16a09a1e0d2bdead72ac53a60744
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461693"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452882"
 ---
-# <a name="load-contoso-retail-data-to-synapse-sql"></a>Načtení maloobchodních dat Contoso do synapse SQL 
+# <a name="load-contoso-retail-data-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Načtení maloobchodních dat Contoso do vyhrazených fondů SQL ve službě Azure synapse Analytics
 
-V tomto kurzu se naučíte používat příkazy jazyka T-SQL k načtení dvou tabulek z maloobchodních dat společnosti Contoso do synapse SQL.
+V tomto kurzu se naučíte používat příkazy jazyka T-SQL k načtení dvou tabulek z maloobchodních dat společnosti Contoso do vyhrazených fondů SQL.
 
 V tomto kurzu provedete tyto kroky:
 
@@ -30,11 +30,11 @@ V tomto kurzu provedete tyto kroky:
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Ke spuštění tohoto kurzu potřebujete účet Azure, který už má synapse SQL. Pokud nemáte zřízen datový sklad, přečtěte si téma [vytvoření datového skladu a nastavení pravidla brány firewall na úrovni serveru](create-data-warehouse-portal.md).
+Ke spuštění tohoto kurzu potřebujete účet Azure, který už má vyhrazený fond SQL. Pokud nemáte zřízen datový sklad, přečtěte si téma [vytvoření datového skladu a nastavení pravidla brány firewall na úrovni serveru](create-data-warehouse-portal.md).
 
 ## <a name="configure-the-data-source"></a>Konfigurace zdroje dat
 
-Základna používá externí objekty T-SQL k definování umístění a atributů externích dat. Definice externích objektů jsou uloženy v synapse SQL. Data jsou ukládána externě.
+Základna používá externí objekty T-SQL k definování umístění a atributů externích dat. Definice externích objektů jsou uloženy ve vyhrazených fondech SQL. Data jsou ukládána externě.
 
 ## <a name="create-a-credential"></a>Vytvoření přihlašovacích údajů
 
@@ -274,7 +274,7 @@ ORDER BY
 
 ## <a name="optimize-columnstore-compression"></a>Optimalizace komprese columnstore
 
-Ve výchozím nastavení synapse SQL ukládá tabulku jako clusterovaný index columnstore. Po dokončení načtení se některé řádky dat nemusí do columnstore komprimovat.  Existují různé důvody, proč k tomu může dojít. Další informace najdete v tématu [Správa indexů columnstore](sql-data-warehouse-tables-index.md).
+Ve výchozím nastavení jsou vyhrazené fondy SQL uloženy v tabulce jako clusterovaný index columnstore. Po dokončení načtení se některé řádky dat nemusí do columnstore komprimovat.  Existují různé důvody, proč k tomu může dojít. Další informace najdete v tématu [Správa indexů columnstore](sql-data-warehouse-tables-index.md).
 
 Pro optimalizaci výkonu dotazů a komprese columnstore po načtení znovu sestavte tabulku, aby index columnstore vynutil komprimaci všech řádků.
 

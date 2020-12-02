@@ -12,17 +12,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: 72af066cbff809521c34bb8db88ab0b3e5092fc4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ce528e268e0ed1e34f53e32196bceef5ad8a2fcb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841100"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452487"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Pravidla brány firewall pro Azure SQL Database a Azure synapse
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Když vytvoříte nový server v Azure SQL Database nebo v Azure synapse Analytics s názvem *MySQLServer*, brána firewall na úrovni serveru blokuje veškerý přístup k veřejnému koncovému bodu pro server (který je přístupný na *MySQLServer.Database.Windows.NET*). Pro zjednodušení se *SQL Database* používá pro odkazování na SQL Database a Azure synapse Analytics (dříve SQL Data Warehouse).
+Když vytvoříte nový server v Azure SQL Database nebo v Azure synapse Analytics s názvem *MySQLServer*, brána firewall na úrovni serveru blokuje veškerý přístup k veřejnému koncovému bodu pro server (který je přístupný na *MySQLServer.Database.Windows.NET*). Pro zjednodušení se *SQL Database* používá k odkazování na SQL Database a Azure synapse Analytics.
 
 > [!IMPORTANT]
 > Tento článek se *nevztahuje na* *spravovanou instanci SQL Azure*. Informace o konfiguraci sítě najdete v tématu [připojení aplikace ke spravované instanci Azure SQL](../managed-instance/connect-application-instance.md).
@@ -111,7 +111,7 @@ Abyste mohli vytvářet a spravovat pravidla firewallu protokolu IP pro Azure SQ
 - v roli [Správce zabezpečení SQL](../../role-based-access-control/built-in-roles.md#sql-security-manager)
 - vlastník prostředku, který obsahuje SQL Server Azure
 
-## <a name="create-and-manage-ip-firewall-rules"></a>Vytvoření a Správa pravidel brány firewall protokolu IP
+## <a name="create-and-manage-ip-firewall-rules"></a>Vytváření a správa pravidel firewallu protokolu IP
 
 První nastavení brány firewall na úrovni serveru můžete vytvořit pomocí [Azure Portal](https://portal.azure.com/) nebo programově pomocí [Azure POWERSHELL](/powershell/module/az.sql), [Azure CLI](/cli/azure/sql/server/firewall-rule)nebo Azure [REST API](/rest/api/sql/firewallrules/createorupdate). Můžete vytvářet a spravovat další pravidla brány firewall protokolu IP na úrovni serveru pomocí těchto metod nebo jazyka Transact-SQL.
 

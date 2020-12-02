@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: cd0fd7ac004d07b71a69a3e59c9cfd4727d98eb6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 28b34ecaf51406b35c67d3838714691390f5adf7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184667"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453050"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Kurz: vytvoření hierarchie zařízení IoT Edge (Preview)
 
@@ -50,10 +50,10 @@ V tomto kurzu se pro jednoduchost používá dvě hierarchie zařízení. Jedno 
 Pokud chcete vytvořit hierarchii IoT Edgech zařízení, budete potřebovat:
 
 * Počítač (Windows nebo Linux) s připojením k Internetu.
-* Dvě zařízení se systémem Linux nakonfigurovaná jako zařízení IoT Edge. Pokud nemáte dostupná zařízení, můžete použít [virtuální počítače Azure](https://docs.microsoft.com/azure/virtual-machines/linux/).
-* Účet Azure s platným předplatným. Pokud ještě nemáte [předplatné Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* Dvě zařízení se systémem Linux nakonfigurovaná jako zařízení IoT Edge. Pokud nemáte dostupná zařízení, můžete použít [virtuální počítače Azure](../virtual-machines/linux/index.yml).
+* Účet Azure s platným předplatným. Pokud ještě nemáte [předplatné Azure](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing), vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) v Azure úrovně Free nebo Standard.
-* Azure CLI v 2.3.1 s nainstalovaným rozšířením Azure IoT v 0.10.6 nebo novějším. V tomto kurzu se používá [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). Pokud Azure Cloud Shell neznáte, [Projděte si podrobnosti v rychlém](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#use-azure-cloud-shell)startu.
+* Azure CLI v 2.3.1 s nainstalovaným rozšířením Azure IoT v 0.10.6 nebo novějším. V tomto kurzu se používá [Azure Cloud Shell](../cloud-shell/overview.md). Pokud Azure Cloud Shell neznáte, [Projděte si podrobnosti v rychlém](./quickstart-linux.md#use-azure-cloud-shell)startu.
 
 Tento scénář můžete vyzkoušet také pomocí skriptu [Azure IoT Edge pro průmyslovou ukázku IoT](https://aka.ms/iotedge-nested-sample), který nasadí virtuální počítače Azure jako předem nakonfigurovaná zařízení pro simulaci prostředí továrny.
 
@@ -311,7 +311,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
 1. Do modulu Edge hub přidejte následující proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
@@ -324,7 +324,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
 1. Na kartě proměnné prostředí zadejte následující dvojici název-hodnota proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | - | - |
     | `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
 
@@ -482,7 +482,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
 1. Do modulu Edge hub přidejte následující proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |

@@ -1,14 +1,14 @@
 ---
 title: Přehled agenta připojeného počítače systému Windows
 description: Tento článek poskytuje podrobný přehled dostupného agenta serverů s podporou ARC Azure, který podporuje monitorování virtuálních počítačů hostovaných v hybridních prostředích.
-ms.date: 09/30/2020
+ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8a66f99f535013b8aac52fdee43b91a8c734b10a
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 1bc9546e6db35153424ba670f8157adb86d19b71
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577579"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452954"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Přehled agenta serverů s podporou ARC Azure
 
@@ -31,7 +31,7 @@ Balíček agenta připojeného počítače Azure obsahuje několik logických so
     * Přiřazení hosta je uloženo místně po dobu 14 dnů. Pokud se agent připojeného počítače připojí ke službě za 14 dní, znovu se použije přiřazení zásad.
     * Přiřazení se odstraní po 14 dnech a po 14 dnech se znovu nepřiřazují k počítači.
 
-* Agent rozšíření spravuje rozšíření virtuálních počítačů, včetně instalace, odinstalace a upgradu. Rozšíření se stáhnou z Azure a zkopírují se do `%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads` složky ve Windows a pro Linux do `/opt/GC_Ext/downloads` . V systému Windows je rozšíření nainstalováno v následující cestě `%SystemDrive%\Packages\Plugins\<extension>` a v systému Linux je rozšíření nainstalováno do nástroje `/var/lib/waagent/<extension>` .
+* Agent rozšíření spravuje rozšíření virtuálních počítačů, včetně instalace, odinstalace a upgradu. Rozšíření se stáhnou z Azure a zkopírují se do `%SystemDrive%\%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads` složky ve Windows a pro Linux do `/opt/GC_Ext/downloads` . V systému Windows je rozšíření nainstalováno v následující cestě `%SystemDrive%\Packages\Plugins\<extension>` a v systému Linux je rozšíření nainstalováno do nástroje `/var/lib/waagent/<extension>` .
 
 ## <a name="download-agents"></a>Stáhnout agenty
 
@@ -43,7 +43,7 @@ Balíček agenta připojeného počítače Azure pro Windows a Linux si můžete
 
 Agenta připojeného počítače Azure pro Windows a Linux se dá upgradovat na nejnovější verzi ručně nebo automaticky v závislosti na vašich požadavcích. Další informace najdete [tady](manage-agent.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="supported-operating-systems"></a>Podporované operační systémy
 
@@ -170,9 +170,9 @@ Po instalaci agenta připojeného počítače pro Windows se aplikují následuj
     |%ProgramData%\AzureConnectedMachineAgent |Obsahuje konfigurační soubory agenta.|
     |%ProgramData%\AzureConnectedMachineAgent\Tokens |Obsahuje získané tokeny.|
     |%ProgramData%\AzureConnectedMachineAgent\Config |Obsahuje konfigurační soubor agenta, který ve `agentconfig.json` službě zaznamenává informace o registraci.|
-    |%SystemDrive%\Program Files\ArcConnectedMachineAgent\ExtensionService\GC | Instalační cesta obsahující soubory agenta konfigurace hosta |
+    |%ProgramFiles%\ArcConnectedMachineAgent\ExtensionService\GC | Instalační cesta obsahující soubory agenta konfigurace hosta |
     |%ProgramData%\GuestConfig |Obsahuje zásady (použité) z Azure.|
-    |%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads | Rozšíření se stáhnou z Azure a zkopírují se sem.|
+    |%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads | Rozšíření se stáhnou z Azure a zkopírují se sem.|
 
 * Následující služby systému Windows se v cílovém počítači vytvoří během instalace agenta.
 
@@ -183,7 +183,7 @@ Po instalaci agenta připojeného počítače pro Windows se aplikují následuj
 
 * Během instalace agenta se vytvoří následující proměnné prostředí.
 
-    |Název |Výchozí hodnota |Popis |
+    |Name |Výchozí hodnota |Popis |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -196,14 +196,14 @@ Po instalaci agenta připojeného počítače pro Windows se aplikují následuj
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |Obsahuje výstup příkazů nástroje azcmagent, pokud je použit argument verbose (-v).|
     |%ProgramData%\GuestConfig\ gc_agent_logs \ gc_agent. log |Zaznamenává údaje o aktivitě služby DSC.<br> zejména připojení mezi službou HIMDS a Azure Policy.|
     |% Složka ProgramData% \GuestConfig\gc_agent_logs\gc_agent_telemetry.txt |Zaznamenává údaje týkající se telemetrie služby DSC a podrobného protokolování.|
-    |%SystemDrive%\ProgramData\GuestConfig\ ext_mgr_logs|Zaznamenává údaje o komponentě agenta rozšíření.|
-    |%SystemDrive%\ProgramData\GuestConfig\ extension_logs\<Extension>|Zaznamenává údaje z nainstalovaného rozšíření.|
+    |%ProgramData%\GuestConfig\ ext_mgr_logs|Zaznamenává údaje o komponentě agenta rozšíření.|
+    |%ProgramData%\GuestConfig\ extension_logs\<Extension>|Zaznamenává údaje z nainstalovaného rozšíření.|
 
 * Vytvoří se **aplikace rozšíření hybridního agenta** pro místní skupinu zabezpečení.
 
 * Během odinstalace agenta nejsou odebrány následující artefakty.
 
-    * *%ProgramData%\AzureConnectedMachineAgent\Log
+    * %ProgramData%\AzureConnectedMachineAgent\Log
     * %ProgramData%\AzureConnectedMachineAgent a podadresáře
     * %ProgramData%\GuestConfig
 
@@ -245,7 +245,7 @@ Po instalaci agenta připojeného počítače pro Linux se aplikují následují
 
 * Během instalace agenta se vytvoří následující proměnné prostředí. Tyto proměnné jsou nastaveny v `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Název |Výchozí hodnota |Popis |
+    |Name |Výchozí hodnota |Popis |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||

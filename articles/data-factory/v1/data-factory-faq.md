@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: de4661bcfd7106d515480e39dc4660f44f469a3d
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 81c1b84bff04e62f2dabeb3880f4103112139ee0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631695"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453567"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory – často kladené otázky
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "92631695"
 
 ## <a name="general-questions"></a>Obecné otázky
 ### <a name="what-is-azure-data-factory"></a>Co je služba Azure Data Factory?
-Data Factory je cloudová služba pro integraci dat, která **automatizuje přesun a transformaci dat** . Stejně jako továrna, která používá zařízení k převzetí surovin a jejich transformaci na dokončené produkty, Data Factory orchestruje existující služby, které shromažďují nezpracovaná data a transformují je na informace připravené k použití.
+Data Factory je cloudová služba pro integraci dat, která **automatizuje přesun a transformaci dat**. Stejně jako továrna, která používá zařízení k převzetí surovin a jejich transformaci na dokončené produkty, Data Factory orchestruje existující služby, které shromažďují nezpracovaná data a transformují je na informace připravené k použití.
 
 Data Factory umožňuje vytvářet pracovní postupy řízené daty k přesouvání dat mezi místními i cloudovým úložištěm dat a také zpracovávat a transformovat data pomocí výpočetních služeb, jako je Azure HDInsight a Azure Data Lake Analytics. Po vytvoření kanálu, který provede akci, kterou potřebujete, můžete naplánovat jeho pravidelné spuštění (každou hodinu, každý den, každý týden atd.).   
 
@@ -41,7 +41,7 @@ Podrobnosti o cenách pro Azure Data Factory najdete na [stránce s podrobnostmi
 * Návod, jak **transformovat data** pomocí aktivity podregistru HDInsight. Viz [procesní data spuštěním skriptu registru v clusteru Hadoop](data-factory-build-your-first-pipeline.md) .
 
 ### <a name="what-is-the-data-factorys-region-availability"></a>Jaká je dostupnost oblasti Data Factory?
-Data Factory je k dispozici v **USA – západ** a **Severní Evropa** . Výpočetní služby a služby úložiště, které používají datové továrny, můžou být v jiných oblastech. Viz [podporované oblasti](data-factory-introduction.md#supported-regions).
+Data Factory je k dispozici v **USA – západ** a **Severní Evropa**. Výpočetní služby a služby úložiště, které používají datové továrny, můžou být v jiných oblastech. Viz [podporované oblasti](data-factory-introduction.md#supported-regions).
 
 ### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Jaká jsou omezení počtu datových továren/kanálů/aktivit/datových sad?
 V článku limity [, kvóty a omezení předplatného a služeb Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) najdete v části **omezení Azure Data Factory** .
@@ -72,7 +72,7 @@ Následující tabulka uvádí seznam výpočetních prostředí podporovaných 
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
 | [Azure Machine Learning Studio (klasický)](data-factory-compute-linked-services.md#azure-machine-learning-studio-classic-linked-service) |[Aktivity studia (Classic): dávkové provádění a aktualizace prostředku](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[U-SQL Data Lake Analytics](data-factory-usql-activity.md) |
-| [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure synapse Analytics (dříve SQL Data Warehouse)](data-factory-compute-linked-services.md#azure-synapse-analytics-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Uložená procedura](data-factory-stored-proc-activity.md) |
+| [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure Synapse Analytics](data-factory-compute-linked-services.md#azure-synapse-analytics-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Uložená procedura](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Jak Azure Data Factory porovnat s služba SSIS (SQL Server Integration Services) (SSIS)? 
 Podívejte se na prezentaci [Azure Data Factory vs. SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) z některého z našich odborníků MVP (nejvíc vyhodnocených profesionálů): Reza rad. Některé nedávné změny v Data Factory nemusí být uvedeny v balíčku snímků. Nepřetržitě přidáváme další možnosti pro Azure Data Factory. Nepřetržitě přidáváme další možnosti pro Azure Data Factory. Tyto aktualizace budeme začlenit do porovnání technologií pro integraci dat od Microsoftu po celý tento rok.   
@@ -141,7 +141,7 @@ V příkladu výše otherLinkedServiceName1 a otherLinkedServiceName2 představu
 ### <a name="why-are-my-input-slices-not-in-ready-state"></a>Proč nejsou moje vstupní řezy ve stavu připraveno?
 Společná chyba nenastavuje vlastnost **External** na vstupní datovou sadu na **true** , když vstupní data jsou externí pro objekt pro vytváření dat (nevyráběné objektem pro vytváření dat).
 
-V následujícím příkladu stačí nastavit vlastnost **External** na hodnotu true v **DataSet1.** .  
+V následujícím příkladu stačí nastavit vlastnost **External** na hodnotu true v **DataSet1.**.  
 
 **DataFactory1** Kanál 1: DataSet1.-> Activity1-> Dataset2-> "Activity2"-> dataset3 Pipeline 2: dataset3-> activity3-> dataset4
 

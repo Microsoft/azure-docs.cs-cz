@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
-ms.openlocfilehash: c53f78702aeb5404bd353274ddb29b9356229fae
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ab9e122ba0b2b50203a2d66ae14f03f3b6300f96
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145769"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452339"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>Předpověď počasí s využitím dat ze senzorů ze služby IoT Hub v Azure Machine Learning Studio (Classic)
 
@@ -46,7 +46,7 @@ Naučíte se, jak pomocí Azure Machine Learning Studio (Classic) provádět př
   - Azure IoT Hub v rámci vašeho předplatného.
   - Klientská aplikace, která odesílá zprávy do služby Azure IoT Hub.
 - Účet [Azure Machine Learning Studio (Classic)](https://studio.azureml.net/) .
-- Účet [Azure Storage](../storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#types-of-storage-accounts), účet pro **obecné účely v2** , je upřednostňovaný, ale budou fungovat i všechny Azure Storage účty, které podporují službu Azure Blob Storage.
+- Účet [Azure Storage](../storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-storage-accounts), účet pro **obecné účely v2** , je upřednostňovaný, ale budou fungovat i všechny Azure Storage účty, které podporují službu Azure Blob Storage.
 
 > [!Note]
 > Tento článek používá Azure Stream Analytics a několik dalších placených služeb. Další poplatky se účtují v Azure Stream Analytics, když se data musí přenést napříč oblastmi Azure. Z tohoto důvodu by bylo vhodné zajistit, aby se vaše skupina prostředků, IoT Hub a účet Azure Storage a pracovní prostor Machine Learning Studio (Classic) a Azure Stream Analyticsá úloha v tomto kurzu přidala do stejné oblasti Azure. Místní podporu pro Azure Machine Learning Studio (Classic) a další služby Azure najdete na [stránce dostupnost produktu Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-studio&regions=all).
@@ -106,7 +106,7 @@ V této části ověříte model, nastavíte prediktivní webovou službu založ
 
    ![Spusťte experiment a ověřte postup.](media/iot-hub-weather-forecast-machine-learning/run-experiment.png)
 
-1. Vyberte **nastavit**  >  **prediktivní webovou službu**webové služby. Otevře se diagram prediktivního experimentu.
+1. Vyberte **nastavit**  >  **prediktivní webovou službu** webové služby. Otevře se diagram prediktivního experimentu.
 
    ![Nasazení modelu předpovědi počasí v Azure Machine Learning Studio (Classic)](media/iot-hub-weather-forecast-machine-learning/predictive-experiment.png)
 
@@ -154,7 +154,7 @@ V této části ověříte model, nastavíte prediktivní webovou službu založ
 
 1. Otevřete Stream Analytics úlohu.
 1. V části **Topologie úlohy** vyberte **Vstupy**.
-1. V podokně **vstupy** vyberte **Přidat vstup streamu**a pak v rozevírací nabídce vyberte **IoT Hub** . V podokně **Nový vstup** zvolte **ze svých předplatných možnost vybrat IoT Hub** a zadejte následující informace:
+1. V podokně **vstupy** vyberte **Přidat vstup streamu** a pak v rozevírací nabídce vyberte **IoT Hub** . V podokně **Nový vstup** zvolte **ze svých předplatných možnost vybrat IoT Hub** a zadejte následující informace:
 
    **Vstupní alias**: jedinečný alias pro vstup.
 
@@ -175,7 +175,7 @@ V této části ověříte model, nastavíte prediktivní webovou službu založ
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
 1. V části **Topologie úlohy** vyberte **Výstupy**.
-1. V podokně **výstupy** vyberte **Přidat**a v rozevíracím seznamu vyberte **BLOB Storage/Data Lake Storage** . V podokně **Nový výstup** zvolte **ze svých předplatných možnost vybrat úložiště** a zadejte následující informace:
+1. V podokně **výstupy** vyberte **Přidat** a v rozevíracím seznamu vyberte **BLOB Storage/Data Lake Storage** . V podokně **Nový výstup** zvolte **ze svých předplatných možnost vybrat úložiště** a zadejte následující informace:
 
    **Alias pro výstup:** Jedinečný alias pro výstup.
 
@@ -193,8 +193,8 @@ V této části ověříte model, nastavíte prediktivní webovou službu založ
 
 ### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>Přidání funkce do úlohy Stream Analytics pro volání webové služby, kterou jste nasadili
 
-1. V části **topologie úlohy**vyberte **funkce**.
-1. V podokně **funkce** vyberte **Přidat**a v rozevíracím seznamu vyberte **Azure ml Studio** . (Ujistěte se, že jste vybrali **azure ml Studio**, nikoli **službu Azure ml**.) V podokně **Nový funkce** vyberte možnost **zadat nastavení funkce Azure Machine Learning ručně** a zadejte následující informace:
+1. V části **topologie úlohy** vyberte **funkce**.
+1. V podokně **funkce** vyberte **Přidat** a v rozevíracím seznamu vyberte **Azure ml Studio** . (Ujistěte se, že jste vybrali **azure ml Studio**, nikoli **službu Azure ml**.) V podokně **Nový funkce** vyberte možnost **zadat nastavení funkce Azure Machine Learning ručně** a zadejte následující informace:
 
    **Alias funkce**: zadejte `machinelearning` .
 
@@ -215,7 +215,7 @@ V této části ověříte model, nastavíte prediktivní webovou službu založ
    WITH machinelearning AS (
       SELECT EventEnqueuedUtcTime, temperature, humidity, machinelearning(temperature, humidity) as result from [YourInputAlias]
    )
-   Select System.Timestamp time, CAST (result.[temperature] AS FLOAT) AS temperature, CAST (result.[humidity] AS FLOAT) AS humidity, CAST (result.[scored probabilities] AS FLOAT ) AS 'probabalities of rain'
+   Select System.Timestamp time, CAST (result.[temperature] AS FLOAT) AS temperature, CAST (result.[humidity] AS FLOAT) AS humidity, CAST (result.[scored probabilities] AS FLOAT ) AS 'probabalities of rain'
    Into [YourOutputAlias]
    From machinelearning
    ```

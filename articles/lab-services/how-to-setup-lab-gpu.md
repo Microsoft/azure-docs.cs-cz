@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 264d103cd5f1459a6d29a35a1ecefc595285587a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 8293ed1bfb53895b9631d9730fb75a2364457180
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433984"
+ms.locfileid: "96452378"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>Nastavení testovacího prostředí s virtuálními počítači GPU
 
@@ -37,7 +37,7 @@ Velikosti GPU pro *vizualizaci* jsou určené pro aplikace náročné na grafiku
 | Velikost | Cores | Paměť RAM | Popis | 
 | ---- | ----- | --- | ----------- | 
 | Malý grafický procesor (vizualizace) | -&nbsp;6 &nbsp; jader<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NV6](../virtual-machines/nv-series.md) | Tato velikost je nejvhodnější pro vzdálenou vizualizaci, streamování, hraní a kódování využívající architektury, jako je OpenGL a DirectX. |
-| Střední GPU (vizualizace) | -&nbsp;12 &nbsp; jader<br>-&nbsp;112 &nbsp; GB &nbsp; RAM  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Tato velikost je nejvhodnější pro vzdálenou vizualizaci, streamování, hraní a kódování využívající architektury, jako je OpenGL a DirectX. |
+| Střední GPU (vizualizace) | -&nbsp;12 &nbsp; jader<br>-&nbsp;112 &nbsp; GB &nbsp; RAM  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Tato velikost je nejvhodnější pro vzdálenou vizualizaci, streamování, hraní a kódování využívající architektury, jako je OpenGL a DirectX. |
 
 > [!NOTE]
 > Některé z těchto velikostí virtuálních počítačů se v seznamu nemusí zobrazovat při vytváření testovacího prostředí učebny. Seznam se naplní na základě aktuální kapacity umístění testovacího prostředí. Pokud tvůrce účtu testovacího prostředí [umožňuje tvůrcům testovacího prostředí vybrat umístění pro testovací prostředí](allow-lab-creator-pick-lab-location.md), můžete zkusit zvolit jiné umístění pro testovací prostředí a zjistit, jestli je velikost virtuálního počítače dostupná. Dostupnost virtuálních počítačů najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/regions/services/?products=virtual-machines).
@@ -76,7 +76,7 @@ Chcete-li ručně nainstalovat ovladače pro velikost procesoru výpočetní GPU
 1. Po instalaci ovladačů a dalšího softwaru, který je pro vaši třídu nutný, vyberte **publikovat** a vytvořte virtuální počítače studentů.
 
 > [!NOTE]
-> Pokud používáte bitovou kopii systému Linux, po stažení instalačního programu nainstalujte ovladače podle pokynů v tématu [install CUDA Drivers on Linux](../virtual-machines/linux/n-series-driver-setup.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#install-cuda-drivers-on-n-series-vms).
+> Pokud používáte bitovou kopii systému Linux, po stažení instalačního programu nainstalujte ovladače podle pokynů v tématu [install CUDA Drivers on Linux](../virtual-machines/linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#install-cuda-drivers-on-n-series-vms).
 
 #### <a name="install-the-visualization-gpu-drivers"></a>Instalace ovladačů GPU pro vizualizaci
 
@@ -86,7 +86,7 @@ Chcete-li ručně nainstalovat ovladače pro velikost grafického procesoru vizu
 1. Po vytvoření testovacího prostředí se připojte k virtuálnímu počítači šablony a nainstalujte příslušné ovladače.
 1. Nainstalujte ovladače mřížky poskytované Microsoftem na VIRTUÁLNÍm počítači šablony podle pokynů pro váš operační systém:
    -  [Ovladače Windows NVIDIA GRID](../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers)
-   -  [Ovladače pro MŘÍŽKu NVIDIA pro Linux](../virtual-machines/linux/n-series-driver-setup.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#nvidia-grid-drivers)
+   -  [Ovladače pro MŘÍŽKu NVIDIA pro Linux](../virtual-machines/linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#nvidia-grid-drivers)
   
 1. Restartujte šablonu virtuálního počítače.
 1. Podle pokynů v části [ověření nainstalovaných ovladačů](how-to-setup-lab-gpu.md#validate-the-installed-drivers) ověřte, jestli jsou ovladače správně nainstalované.

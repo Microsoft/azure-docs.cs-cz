@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 02/05/2020
 ms.author: dobett
-ms.openlocfilehash: 1afb24a0e3e78acb1d44185843538bd55c491edf
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7ff8193e87d138878d95e783d144d445436e7a08
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976772"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453010"
 ---
 # <a name="what-is-the-right-iot-solution-for-your-business"></a>Jaké je správné řešení IoT pro vaši firmu?
 
@@ -75,4 +75,4 @@ Komplexnější vysvětlení různých služeb a platforem a způsobu jejich pou
 
 Další informace o klíčových atributech úspěšných řešení IoT najdete v dokumentu White Paper s [8 atributy úspěšných řešení IoT](https://aka.ms/8attributes) .
 
-Podrobné informace o architektuře IoT najdete v článku [Referenční architektura IoT v Microsoft Azure](https://aka.ms/iotrefarchitecture).
+Podrobné informace o architektuře IoT najdete v článku [Referenční architektura IoT v Microsoft Azure](/azure/architecture/reference-architectures/iot).

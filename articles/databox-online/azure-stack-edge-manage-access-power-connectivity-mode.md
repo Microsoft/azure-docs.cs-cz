@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 9636c76caf2302b872a2ecbb8e2e4bacfc1408a6
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 6455e4c9fa9460e47e3be7c860f89be540a514b0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952127"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453072"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro"></a>Správa přístupu, napájení a režimu připojení pro Azure Stack Edge pro
 
@@ -68,7 +68,7 @@ Při generování aktivačního klíče pro zařízení Azure Stack Edge pro neb
 
 Měli byste mít `User` přístup k Tenantovi služby Active Directory, jak potřebujete `Read all directory objects` . Nemůžete být uživatel typu Host, protože k němu nemají oprávnění `Read all directory objects` . Pokud jste Host, pak operace, jako je generace aktivačního klíče, vytvoření sdílené složky na zařízení Azure Stack Edge pro, vytvoření uživatele, konfigurace hraniční výpočetní role, resetování hesla zařízení selže.
 
-Další informace o tom, jak poskytnout uživatelům přístup k Microsoft Graph rozhraní API, najdete v tématu [Microsoft Graph oprávnění](https://docs.microsoft.com/graph/permissions-reference).
+Další informace o tom, jak poskytnout uživatelům přístup k Microsoft Graph rozhraní API, najdete v tématu [Microsoft Graph oprávnění](/graph/permissions-reference).
 
 ### <a name="register-resource-providers"></a>Registrovat poskytovatele prostředků
 
@@ -114,7 +114,7 @@ Kromě výchozího režimu s plným připojením může být zařízení také s
 Chcete-li změnit režim zařízení, postupujte podle následujících kroků:
 
 1. V místním webovém uživatelském rozhraní vašeho zařízení přejít na **konfigurace > nastavení cloudu**.
-2. V rozevíracím seznamu vyberte režim, ve kterém má být zařízení provozováno. Můžete vybrat z **úplně připojeného**, **částečně připojeného**a **úplného odpojení**. Pokud chcete zařízení spustit v režimu částečně odpojeno, povolte **správu Azure Portal**.
+2. V rozevíracím seznamu vyberte režim, ve kterém má být zařízení provozováno. Můžete vybrat z **úplně připojeného**, **částečně připojeného** a **úplného odpojení**. Pokud chcete zařízení spustit v režimu částečně odpojeno, povolte **správu Azure Portal**.
 
     ![Režim připojení](media/azure-stack-edge-manage-access-power-connectivity-mode/connectivity-mode.png)
  

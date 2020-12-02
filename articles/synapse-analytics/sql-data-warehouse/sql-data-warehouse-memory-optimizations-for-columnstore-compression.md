@@ -1,6 +1,6 @@
 ---
-title: Zvýšení výkonu indexu columnstore
-description: Snižte nároky na paměť nebo Zvětšete dostupnou paměť a maximalizujte počet řádků v rámci jednotlivých skupiny řádků.
+title: Zvýšení výkonu indexu columnstore pro vyhrazený fond SQL
+description: Snižte nároky na paměť nebo Zvětšete dostupnou paměť a maximalizujte počet řádků v rámci jednotlivých skupiny řádků ve vyhrazeném fondu SQL.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 5308599f43788b35dbe278ddbbea2253c2f94cb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6984ad41c07f7790a746dbd197c18dce2aa83e2f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797764"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453723"
 ---
-# <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maximalizace kvality skupiny řádků pro columnstore
+# <a name="maximizing-rowgroup-quality-for-columnstore-indexes-in-dedicated-sql-pool"></a>Maximalizace kvality skupiny řádků pro indexy columnstore ve vyhrazeném fondu SQL 
 
 Kvalita skupiny řádků se určuje podle počtu řádků v skupiny řádků. Zvýšení dostupné paměti může maximalizovat počet řádků, které index columnstore komprimuje do každého skupiny řádků.  Tyto metody použijte ke zlepšení míry komprese a výkonu dotazů pro indexy columnstore.
 
@@ -99,7 +99,7 @@ Maximální požadovaná paměť pro komprimaci jednoho skupiny řádků je při
 
 Dlouhé řetězce jsou komprimovány pomocí kompresní metody navržené pro komprimaci textu. Tato metoda komprese používá *slovník* k ukládání textových vzorců. Maximální velikost slovníku je 16 MB. Pro každý sloupec s dlouhým řetězcem v skupiny řádků je k dispozici pouze jeden slovník.
 
-Podrobné informace o požadavcích na paměť columnstore najdete v tématu škálování synapse ve službě Video [– škálování fondu SQL: konfigurace a pokyny](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
+Podrobné informace o požadavcích na paměť columnstore najdete v tématu [škálování vyhrazeného fondu SQL videa: konfigurace a pokyny](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
 
 ## <a name="ways-to-reduce-memory-requirements"></a>Způsoby snížení požadavků na paměť
 
@@ -122,7 +122,7 @@ Další požadavky na paměť pro kompresi řetězce:
 
 ### <a name="avoid-over-partitioning"></a>Vyhnout se přerozdělování
 
-Indexy columnstore vytvoří jeden nebo více rowgroups na oddíl. U fondu SQL ve službě Azure synapse Analytics se počet oddílů rychle roste, protože data jsou distribuována a každá distribuce je rozdělená na oddíly.
+Indexy columnstore vytvoří jeden nebo více rowgroups na oddíl. U vyhrazeného fondu SQL ve službě Azure synapse Analytics počet oddílů rychle roste, protože data jsou distribuována a každá distribuce je rozdělená na oddíly.
 
 Pokud má tabulka příliš mnoho oddílů, nemusí být pro vyplnění rowgroups dostatek řádků. Nedostatek řádků nevytváří tlak paměti během komprese. Ale vede k rowgroups, které nedosahují nejlepšího výkonu dotazů columnstore.
 
@@ -165,4 +165,4 @@ Chcete-li zvýšit udělení paměti pro zátěžový dotaz, můžete buď zvý�
 
 ## <a name="next-steps"></a>Další kroky
 
-Další způsoby, jak vylepšit výkon pro fond SQL, najdete v tématu [Přehled výkonu](cheat-sheet.md).
+Další způsoby, jak vylepšit výkon pro vyhrazený fond SQL, najdete v tématu [Přehled výkonu](cheat-sheet.md).

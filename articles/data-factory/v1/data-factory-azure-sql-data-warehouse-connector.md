@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat do/z Azure synapse Analytics (dříve SQL Data Warehouse)
-description: Přečtěte si, jak kopírovat data do/z Azure synapse Analytics (dříve SQL Data Warehouse) pomocí Azure Data Factory
+title: Kopírování dat do/z Azure synapse Analytics
+description: Přečtěte si, jak kopírovat data do a z Azure synapse Analytics pomocí Azure Data Factory
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 55582fb8c4fc80ab005a01ec015035963404e639
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 0d071599b72f6a71bdff815f514311fb87f53d5b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637407"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452362"
 ---
-# <a name="copy-data-to-and-from-azure-synapse-analytics-formerly-sql-data-warehouse-using-azure-data-factory"></a>Kopírování dat z a do služby Azure synapse Analytics (dříve SQL Data Warehouse) pomocí Azure Data Factory
+# <a name="copy-data-to-and-from-azure-synapse-analytics-using-azure-data-factory"></a>Kopírování dat do a z Azure synapse Analytics pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](data-factory-azure-sql-data-warehouse-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-azure-sql-data-warehouse.md)
@@ -37,12 +37,12 @@ Data **z Azure synapse Analytics** můžete kopírovat do následujících úlo�
 
 [!INCLUDE [data-factory-supported-sinks](../../../includes/data-factory-supported-sinks.md)]
 
-Data z následujících úložišť dat můžete kopírovat do služby **Azure synapse Analytics** :
+Data z následujících úložišť dat můžete kopírovat do služby **Azure synapse Analytics**:
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 > [!TIP]
-> Při kopírování dat z SQL Server nebo Azure SQL Database do služby Azure synapse Analytics, pokud tabulka v cílovém úložišti neexistuje, Data Factory možné automaticky vytvořit tabulku v synapse Analytics pomocí schématu tabulky ve zdrojovém úložišti dat. Podrobnosti najdete v tématu [Automatické vytváření tabulek](#auto-table-creation) .
+> Pokud při kopírování dat z SQL Server nebo Azure SQL Database do služby Azure synapse Analytics neexistuje tabulka v cílovém úložišti, Data Factory může automaticky vytvořit tabulku v Azure synapse Analytics pomocí schématu tabulky ve zdrojovém úložišti dat. Podrobnosti najdete v tématu [Automatické vytváření tabulek](#auto-table-creation) .
 
 ## <a name="supported-authentication-type"></a>Typ podporovaného ověřování
 Konektor Azure synapse Analytics podporuje základní ověřování.
@@ -50,13 +50,13 @@ Konektor Azure synapse Analytics podporuje základní ověřování.
 ## <a name="getting-started"></a>Začínáme
 Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data do/z analýzy Azure synapse pomocí různých nástrojů/rozhraní API.
 
-Nejjednodušší způsob, jak vytvořit kanál, který kopíruje data do/z Azure synapse Analytics, je použít Průvodce kopírováním dat. Rychlý návod k vytváření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: načtení dat do analýzy synapse pomocí Data Factory](../load-azure-sql-data-warehouse.md) .
+Nejjednodušší způsob, jak vytvořit kanál, který kopíruje data do/z Azure synapse Analytics, je použít Průvodce kopírováním dat. Rychlý návod k vytváření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: načtení dat do služby Azure synapse Analytics pomocí Data Factory](../load-azure-sql-data-warehouse.md) .
 
-K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager template** , **.NET API** a **REST API** . Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
-1. Vytvořte **datovou továrnu** . Datová továrna může obsahovat jeden nebo více kanálů. 
+1. Vytvořte **datovou továrnu**. Datová továrna může obsahovat jeden nebo více kanálů. 
 2. Vytvořte **propojené služby** , které propojí vstupní a výstupní úložiště dat s datovou továrnou. Pokud například kopírujete data z úložiště objektů BLOB v Azure do služby Azure synapse Analytics, vytvoříte dvě propojené služby, které propojí váš účet služby Azure Storage a Azure synapse Analytics s datovou továrnou. Vlastnosti propojených služeb, které jsou specifické pro Azure synapse Analytics, najdete v části [vlastnosti propojených služeb](#linked-service-properties) . 
 3. Vytvořte datové **sady** , které reprezentují vstupní a výstupní data pro operaci kopírování. V příkladu uvedeném v posledním kroku vytvoříte datovou sadu pro určení kontejneru objektů BLOB a složky, která obsahuje vstupní data. A vytvoříte další datovou sadu pro určení tabulky v Azure synapse Analytics, která obsahuje data zkopírovaná z úložiště objektů BLOB. Vlastnosti datové sady, které jsou specifické pro Azure synapse Analytics, najdete v části [Vlastnosti datové sady](#dataset-properties) .
 4. Vytvořte **kanál** s aktivitou kopírování, která převezme datovou sadu jako vstup a datovou sadu jako výstup. V předchozím příkladu použijete jako jímku aktivity kopírování BlobSource jako zdroj a SqlDWSink. Podobně pokud kopírujete z Azure synapse Analytics do Azure Blob Storage, v aktivitě kopírování použijete SqlDWSource a BlobSink. Vlastnosti aktivity kopírování, které jsou specifické pro Azure synapse Analytics, najdete v části [vlastnosti aktivity kopírování](#copy-activity-properties) . Podrobnosti o tom, jak používat úložiště dat jako zdroj nebo jímku, získáte kliknutím na odkaz v předchozí části úložiště dat.
@@ -70,8 +70,8 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 
 | Vlastnost | Popis | Povinné |
 | --- | --- | --- |
-| typ |Vlastnost Type musí být nastavená na: **AzureSqlDW** . |Ano |
-| připojovací řetězec |Zadejte informace potřebné pro připojení ke službě Azure synapse Analytics instance pro vlastnost connectionString. Podporuje se jenom základní ověřování. |Ano |
+| typ |Vlastnost Type musí být nastavená na: **AzureSqlDW** . |Yes |
+| připojovací řetězec |Zadejte informace potřebné pro připojení ke službě Azure synapse Analytics instance pro vlastnost connectionString. Podporuje se jenom základní ověřování. |Yes |
 
 > [!IMPORTANT]
 > Nakonfigurujte [bránu Azure SQL Database firewall](/previous-versions/azure/ee621782(v=azure.100)#ConnectingFromAzure) a databázový server, aby měly [služby Azure přístup k serveru](/previous-versions/azure/ee621782(v=azure.100)#ConnectingFromAzure). Pokud navíc kopírujete data do Azure synapse Analytics z oblasti mimo Azure, včetně z místních zdrojů dat pomocí brány služby Data Factory, nakonfigurujte pro počítač, který odesílá data do Azure synapse Analytics, vhodný rozsah IP adres.
@@ -83,7 +83,7 @@ Oddíl typeProperties se liší pro každý typ datové sady a poskytuje informa
 
 | Vlastnost | Popis | Povinné |
 | --- | --- | --- |
-| tableName |Název tabulky nebo zobrazení v databázi Azure synapse Analytics, na kterou odkazuje propojená služba |Ano |
+| tableName |Název tabulky nebo zobrazení v databázi Azure synapse Analytics, na kterou odkazuje propojená služba |Yes |
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 Úplný seznam sekcí & vlastností dostupných pro definování aktivit najdete v článku [vytvoření kanálů](data-factory-create-pipelines.md) . Pro všechny typy aktivit jsou k dispozici vlastnosti, jako je název, popis, vstupní a výstupní tabulka a zásada.
@@ -94,13 +94,13 @@ Oddíl typeProperties se liší pro každý typ datové sady a poskytuje informa
 V takovém případě se vlastnosti dostupné v části typeProperties v aktivitě liší podle typu aktivity. U aktivity kopírování se liší v závislosti na typech zdrojů a jímky.
 
 ### <a name="sqldwsource"></a>SqlDWSource
-Pokud je zdroj typu **SqlDWSource** , jsou v oddílu **typeProperties** k dispozici následující vlastnosti:
+Pokud je zdroj typu **SqlDWSource**, jsou v oddílu **typeProperties** k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Povinné |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| sqlReaderQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: SELECT * FROM MyTable. |Ne |
-| sqlReaderStoredProcedureName |Název uložené procedury, která čte data ze zdrojové tabulky. |Název uložené procedury Poslední příkaz SQL musí být příkaz SELECT v uložené proceduře. |Ne |
-| storedProcedureParameters |Parametry pro uloženou proceduru. |Páry název-hodnota. Názvy a malá písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. |Ne |
+| sqlReaderQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: SELECT * FROM MyTable. |No |
+| sqlReaderStoredProcedureName |Název uložené procedury, která čte data ze zdrojové tabulky. |Název uložené procedury Poslední příkaz SQL musí být příkaz SELECT v uložené proceduře. |No |
+| storedProcedureParameters |Parametry pro uloženou proceduru. |Páry název-hodnota. Názvy a malá písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. |No |
 
 Pokud je pro SqlDWSource zadaný **sqlReaderQuery** , aktivita kopírování spustí tento dotaz proti zdroji Azure synapse Analytics, aby získala data.
 
@@ -142,17 +142,17 @@ GO
 ### <a name="sqldwsink"></a>SqlDWSink
 **SqlDWSink** podporuje následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Povinné |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| sqlWriterCleanupScript |Zadejte dotaz pro aktivitu kopírování, která se má provést, aby se vyčistila data konkrétního řezu. Podrobnosti najdete v části s možností [opakování](#repeatability-during-copy). |Příkaz dotazu. |Ne |
-| allowPolyBase |Označuje, zda použít základ (je-li k dispozici) místo mechanismu BULKINSERT. <br/><br/> **Použití základny je doporučeným způsobem, jak načíst data do služby Azure synapse Analytics.** Omezení a podrobnosti najdete v části [použití základu k načtení dat do služby Azure synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) . |Pravda <br/>False (výchozí) |Ne |
-| polyBaseSettings |Skupina vlastností, které lze zadat, je-li vlastnost **allowPolybase** nastavena na **hodnotu true** . |&nbsp; |Ne |
-| rejectValue |Určuje počet nebo procento řádků, které lze odmítnout před tím, než se dotaz nezdařil. <br/><br/>Další informace o možnostech odmítnutí základní třídy najdete v části **argumenty** v tématu [vytvoření externí tabulky (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql) . |0 (výchozí), 1, 2,... |Ne |
-| rejectType |Určuje, zda je možnost rejectValue zadána jako hodnota literálu nebo jako procento. |Hodnota (výchozí), procenta |Ne |
+| sqlWriterCleanupScript |Zadejte dotaz pro aktivitu kopírování, která se má provést, aby se vyčistila data konkrétního řezu. Podrobnosti najdete v části s možností [opakování](#repeatability-during-copy). |Příkaz dotazu. |No |
+| allowPolyBase |Označuje, zda použít základ (je-li k dispozici) místo mechanismu BULKINSERT. <br/><br/> **Použití základny je doporučeným způsobem, jak načíst data do služby Azure synapse Analytics.** Omezení a podrobnosti najdete v části [použití základu k načtení dat do služby Azure synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) . |Pravda <br/>False (výchozí) |No |
+| polyBaseSettings |Skupina vlastností, které lze zadat, je-li vlastnost **allowPolybase** nastavena na **hodnotu true**. |&nbsp; |No |
+| rejectValue |Určuje počet nebo procento řádků, které lze odmítnout před tím, než se dotaz nezdařil. <br/><br/>Další informace o možnostech odmítnutí základní třídy najdete v části **argumenty** v tématu [vytvoření externí tabulky (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql) . |0 (výchozí), 1, 2,... |No |
+| rejectType |Určuje, zda je možnost rejectValue zadána jako hodnota literálu nebo jako procento. |Hodnota (výchozí), procenta |No |
 | Rejecttype rejectsamplevalue |Určuje počet řádků, které se mají načíst před tím, než základ přepočítá procento odmítnutých řádků. |1, 2,... |Ano, pokud **rejectType** je **procento** |
-| useTypeDefault |Určuje, jak se mají zpracovat chybějící hodnoty v textových souborech s oddělovači, když základ dat načte data z textového souboru.<br/><br/>Přečtěte si další informace o této vlastnosti z oddílu argumenty v tématu [Create External File Format (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql). |True, false (výchozí) |Ne |
+| useTypeDefault |Určuje, jak se mají zpracovat chybějící hodnoty v textových souborech s oddělovači, když základ dat načte data z textového souboru.<br/><br/>Přečtěte si další informace o této vlastnosti z oddílu argumenty v tématu [Create External File Format (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql). |True, false (výchozí) |No |
 | writeBatchSize |Když velikost vyrovnávací paměti dosáhne writeBatchSize, vloží data do tabulky SQL. |Integer (počet řádků) |Ne (výchozí: 10000) |
-| writeBatchTimeout |Počkejte, než se operace dávkového vložení dokončí předtím, než vyprší časový limit. |timespan<br/><br/> Příklad: "00:30:00" (30 minut). |Ne |
+| writeBatchTimeout |Počkejte, než se operace dávkového vložení dokončí předtím, než vyprší časový limit. |timespan<br/><br/> Příklad: "00:30:00" (30 minut). |No |
 
 #### <a name="sqldwsink-example"></a>Příklad SqlDWSink
 
@@ -193,14 +193,14 @@ Základ analýzy Azure synapse Analytics přímo podporuje službu Azure Blob a 
 
 Pokud nejsou splněny požadavky, Azure Data Factory zkontroluje nastavení a automaticky se vrátí k BULKINSERT mechanismu přesunu dat.
 
-1. **Zdrojová propojená služba** je typu: **AzureStorage** nebo **AzureDataLakeStore s ověřováním instančního objektu** .
-2. **Vstupní datová sada** je typu: **azureblobu** nebo **AzureDataLakeStore** a typ formátu v části `type` vlastnosti je **OrcFormat** , **ParquetFormat** nebo **TextFormat** s následujícími konfiguracemi:
+1. **Zdrojová propojená služba** je typu: **AzureStorage** nebo **AzureDataLakeStore s ověřováním instančního objektu**.
+2. **Vstupní datová sada** je typu: **azureblobu** nebo **AzureDataLakeStore** a typ formátu v části `type` vlastnosti je **OrcFormat**, **ParquetFormat** nebo **TextFormat** s následujícími konfiguracemi:
 
-   1. `rowDelimiter` musí být **\n** .
-   2. `nullValue` je nastaven na **prázdný řetězec** ("") nebo `treatEmptyAsNull` je nastaven na **hodnotu true** .
-   3. `encodingName` je nastavená na **UTF-8** , což je **výchozí** hodnota.
+   1. `rowDelimiter` musí být **\n**.
+   2. `nullValue` je nastaven na **prázdný řetězec** ("") nebo `treatEmptyAsNull` je nastaven na **hodnotu true**.
+   3. `encodingName` je nastavená na **UTF-8**, což je **výchozí** hodnota.
    4. `escapeChar`nejsou `quoteChar` `firstRowAsHeader` zadány,, a `skipLineCount` .
-   5. `compression` nemůže být **žádná komprese** , **gzip** nebo **Deflate** .
+   5. `compression` nemůže být **žádná komprese**, **gzip** nebo **Deflate**.
 
       ```JSON
       "typeProperties": {
@@ -220,7 +220,7 @@ Pokud nejsou splněny požadavky, Azure Data Factory zkontroluje nastavení a au
       ```
 
 3. `skipHeaderLineCount`V části **BlobSource** nebo **AzureDataLakeStore** není žádné nastavení pro aktivitu kopírování v kanálu.
-4. `sliceIdentifierColumnName`V rámci **SqlDWSink** neexistuje žádné nastavení pro aktivitu kopírování v kanálu. (Základ základů zaručuje, že všechna data jsou aktualizována nebo dokud není v jednom spuštění aktualizována žádná aktualizace. Chcete-li dosáhnout **opakovatelnosti** , můžete použít `sqlWriterCleanupScript` ).
+4. `sliceIdentifierColumnName`V rámci **SqlDWSink** neexistuje žádné nastavení pro aktivitu kopírování v kanálu. (Základ základů zaručuje, že všechna data jsou aktualizována nebo dokud není v jednom spuštění aktualizována žádná aktualizace. Chcete-li dosáhnout **opakovatelnosti**, můžete použít `sqlWriterCleanupScript` ).
 5. `columnMapping`V přidružené aktivitě kopírování se nepoužívá žádný.
 
 ### <a name="staged-copy-using-polybase"></a>Připravené kopírování pomocí základu
@@ -511,7 +511,7 @@ Data se zapisují do nového objektu BLOB každou hodinu (frekvence: hodina, int
 
 **Aktivita kopírování v kanálu s SqlDWSource a BlobSink:**
 
-Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady a má naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **SqlDWSource** a typ **jímky** je nastavený na **BlobSink** . Dotaz SQL zadaný pro vlastnost **SqlReaderQuery** vybere data během uplynulé hodiny ke zkopírování.
+Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady a má naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **SqlDWSource** a typ **jímky** je nastavený na **BlobSink**. Dotaz SQL zadaný pro vlastnost **SqlReaderQuery** vybere data během uplynulé hodiny ke zkopírování.
 
 ```JSON
 {
@@ -695,7 +695,7 @@ Ukázka zkopíruje data do tabulky s názvem "MyTable" ve službě Azure synapse
 ```
 **Aktivita kopírování v kanálu s BlobSource a SqlDWSink:**
 
-Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady a má naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **BlobSource** a typ **jímky** je nastavený na **SqlDWSink** .
+Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady a má naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **BlobSource** a typ **jímky** je nastavený na **SqlDWSink**.
 
 ```JSON
 {

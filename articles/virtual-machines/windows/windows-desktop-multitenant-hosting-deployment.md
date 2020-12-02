@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: ceb8b8b31963317ccbbd1aee9f1b2606afc5a5db
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5631cbdd0b1eae343899be2147720d980e605dbb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010245"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452710"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Jak nasadit Windows 10 v Azure s právy pro hostování s více klienty 
 Pro zákazníky s Windows 10 Enterprise E3/E5 podle uživatele nebo přístup k virtuálnímu počítači s Windows na úrovni uživatele (licence pro předplatné uživatele nebo licence k předplatnému uživatele) umožňuje víceklientské hostování pro Windows 10 přístup k cloudu a spouštění Windows 10 Virtual Machines v Azure bez placení na jinou licenci. Další informace najdete v tématu hostování s více [klienty pro Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
@@ -32,6 +32,15 @@ Pro prostředí PowerShell, rozhraní příkazového řádku a Azure Resource Ma
 | Windows 10 pro N  | MicrosoftWindowsDesktop | Windows-10  | RS2-ProN  |
 | Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS3-Pro   |
 | Windows 10 pro N  | MicrosoftWindowsDesktop | Windows-10  | RS3-ProN  |
+
+## <a name="qualify-for-multi-tenant-hosting-rights"></a>Nárok na práva hostování více tenantů 
+Aby bylo možné získat oprávnění pro hostování více tenantů a spouštět image Windows 10 na uživatelích Azure, musí mít jedno z následujících předplatných: 
+
+-   Microsoft 365 E3/E5/F3/a3/a5
+-   Windows 10 Enterprise E3/E5 
+-   Windows 10 vzdělávání a3/a5
+-   Windows VDA E3/E5
+
 
 ## <a name="uploading-windows-10-vhd-to-azure"></a>Nahrání virtuálního pevného disku s Windows 10 do Azure
 Pokud nahráváte zobecněný virtuální pevný disk s Windows 10, pamatujte na to, že ve výchozím nastavení není ve Windows 10 povolený vestavěný účet správce. Pokud chcete povolit integrovaný účet správce, zahrňte jako součást rozšíření vlastních skriptů následující příkaz.

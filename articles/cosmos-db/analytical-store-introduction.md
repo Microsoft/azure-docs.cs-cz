@@ -1,24 +1,21 @@
 ---
-title: Co je Azure Cosmos DB analytické úložiště (Preview)?
+title: Co je Azure Cosmos DB analytické úložiště?
 description: Přečtěte si o Azure Cosmos DB transakční (založený na řádku) a analytickém (sloupcovém) úložišti. Výhody analytického úložiště, dopad na výkon pro rozsáhlé úlohy a automatickou synchronizaci dat z transakčního úložiště do analytického úložiště
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 9cde9586d453632ceaa61de7c095a5f95d1ea2e4
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 5dc233348188791404f826870b235d2bdfa4c202
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337402"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452850"
 ---
-# <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Co je Azure Cosmos DB analytické úložiště (Preview)?
+# <a name="what-is-azure-cosmos-db-analytical-store"></a>Co je Azure Cosmos DB analytické úložiště?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
-
-> [!IMPORTANT]
-> Azure Cosmos DB analytické úložiště je momentálně ve verzi Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 Azure Cosmos DB analytické úložiště je plně izolované úložiště sloupců, které umožňuje rozsáhlou analýzu před provozními daty v Azure Cosmos DB, aniž by to mělo dopad na vaše transakční úlohy. 
 
@@ -36,7 +33,7 @@ Kanály ETL jsou také složité při zpracování aktualizací provozních dat 
 
 Azure Cosmos DB analytické úložiště řeší problémy se složitostí a latencí, ke kterým dochází v tradičních kanálech ETL. Azure Cosmos DB analytické úložiště může automaticky synchronizovat vaše provozní data do samostatného úložiště sloupce. Formát úložiště sloupců je vhodný pro provádění rozsáhlých analytických dotazů optimalizovaným způsobem, což vede k lepší latenci takových dotazů.
 
-Pomocí odkazu na Azure synapse teď můžete vytvářet HTAP řešení bez ETL tím, že přímo propojíte s Azure Cosmos DB analytické úložiště z analýzy synapse. Umožňuje provozovat rozsáhlé analýzy v reálném čase pro vaše provozní data.
+Pomocí odkazu na Azure synapse teď můžete vytvářet HTAP řešení bez ETL tím, že přímo propojíte s Azure Cosmos DB analytické úložiště z Azure synapse Analytics. Umožňuje provozovat rozsáhlé analýzy v reálném čase pro vaše provozní data.
 
 ## <a name="features-of-analytical-store"></a>Funkce analytického úložiště 
 
@@ -153,7 +150,7 @@ Tady je mapa všech datových typů vlastností a jejich reprezentace přípon v
 | dvojité |  ". float64" |    24,99|
 | Pole | ". Array" |    ["a", "b"]|
 |Binární | . Binary |0|
-|Logická hodnota    | . bool   |Ano|
+|Logická hodnota    | . bool   |Pravda|
 |Int32  | . Int32  |123|
 |Int64  | ". Int64"  |255486129307|
 |Null   | ". null"   | null|
@@ -181,10 +178,10 @@ Ověřování pomocí analytického úložiště je stejné jako transakční ú
 
 Analytické úložiště je optimalizováno pro zajištění škálovatelnosti, pružnosti a výkonu pro analytické úlohy bez jakékoli závislosti na výpočetních časech. Technologie úložiště je samoobslužně spravovaná pro optimalizaci vašich úloh analýzy bez ručního úsilí.
 
-Díky oddělení analytického úložného systému z výpočetního systému se data v Azure Cosmos DB analytickém úložišti dají dotazovat souběžně z různých běhových modulů, které Azure synapse Analytics podporuje. Od dnešního dne podporuje synapse Analytics Apache Spark a SQL Server bez Azure Cosmos DB analytického úložiště.
+Díky oddělení analytického úložného systému z výpočetního systému se data v Azure Cosmos DB analytickém úložišti dají dotazovat souběžně z různých běhových modulů, které Azure synapse Analytics podporuje. Od dnešního dne podporuje Azure synapse Analytics Apache Spark fond SQL bez serveru s využitím Azure Cosmos DB analytického úložiště.
 
 > [!NOTE]
-> Z analytického úložiště se dá číst jenom pomocí synapse analýzy běhu. Data můžete zapsat zpátky do transakčního úložiště jako obsluhující vrstvu.
+> Z analytického úložiště se můžete číst jenom pomocí doby běhu Azure synapse Analytics. Data můžete zapsat zpátky do transakčního úložiště jako obsluhující vrstvu.
 
 ## <a name="pricing"></a><a id="analytical-store-pricing"></a> Stanov
 
@@ -194,10 +191,7 @@ Analytické úložiště sleduje cenový model založený na spotřebě, kde se 
 
 * Analytické operace zápisu: plně spravovaná synchronizace aktualizací provozních dat do analytického úložiště z transakčního úložiště (Automatická synchronizace)
 
-* Analytické operace čtení: operace čtení provedené na analytickém úložišti z synapse Analytics Spark a za běhu bez SQL serveru.
-
-> [!NOTE]
-> Služba Azure Cosmos DB Analytical Store je aktuálně dostupná ve verzi Public Preview bez jakýchkoli poplatků.
+* Analytické operace čtení: operace čtení prováděné s analytickým úložištěm z fondu Azure synapse Analytics Spark a bez serveru SQL pro provoz.
 
 Ceny za analytické úložiště jsou oddělené od cenového modelu úložiště transakcí. V analytickém úložišti neexistuje koncept zřízené ru. Úplné podrobnosti o cenovém modelu pro analytické úložiště najdete na [stránce s cenami Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/).
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: fe911ac8985f9997125eb5149348b50a7fa83222
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 702a59f768bfe978e1a7708d91c6b6b1bb9c92fe
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109251"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452247"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Použití Azure Data Lake Storage Gen1 pro požadavky na velké objemy dat
 
@@ -130,5 +130,5 @@ Pomocí kombinace služeb můžete vytvářet vizuální reprezentace dat ulože
 
 ![Vizualizovat data v Data Lake Storage Gen1](./media/data-lake-store-data-scenarios/visualize-data.png "Vizualizovat data v Data Lake Storage Gen1")
 
-* [K přesunu dat z Data Lake Storage Gen1 do služby Azure synapse Analytics (dříve SQL Data Warehouse)](../data-factory/copy-activity-overview.md) můžete začít pomocí Azure Data Factory.
+* [K přesunu dat z Data Lake Storage Gen1 do Azure synapse Analytics](../data-factory/copy-activity-overview.md) můžete začít pomocí Azure Data Factory.
 * Potom můžete [integrovat Power BI s Azure synapse Analytics](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect) a vytvořit tak vizuální reprezentaci dat.

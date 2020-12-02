@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 117b0db4f04c3fd631f6692d288945019507f5c6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 819f84eeb7540050fb001111690fb6d2ba484b2a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632800"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452299"
 ---
 # <a name="managed-identity-for-data-factory"></a>Spravovaná identita pro Data Factory
 
@@ -32,7 +32,7 @@ Při vytváření datové továrny je možné vytvořit spravovanou identitu spo
 Spravovaná identita pro Data Factory přináší následující funkce:
 
 - [Ukládat přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md). v takovém případě se pro ověřování Azure Key Vault používá spravovaná identita Data Factory.
-- Konektory, včetně služby [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure SQL Database](connector-azure-sql-database.md)a [analýzy Azure synapse (dříve SQL Data Warehouse)](connector-azure-sql-data-warehouse.md).
+- Konektory, včetně služby [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure SQL Database](connector-azure-sql-database.md)a [Azure synapse Analytics](connector-azure-sql-data-warehouse.md).
 - [Webové aktivity](control-flow-web-activity.md).
 
 ## <a name="generate-managed-identity"></a>Generovat spravovanou identitu
@@ -79,7 +79,7 @@ V textu žádosti volejte pod rozhraním API část identita:
 PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2018-06-01
 ```
 
-**Text žádosti** : přidejte "identity": {"Type": "SystemAssigned"}.
+**Text žádosti**: přidejte "identity": {"Type": "SystemAssigned"}.
 
 ```json
 {
@@ -92,7 +92,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-**Odpověď** : spravovaná identita se vytvoří automaticky a v části Identita se odpovídajícím způsobem naplní.
+**Odpověď**: spravovaná identita se vytvoří automaticky a v části Identita se odpovídajícím způsobem naplní.
 
 ```json
 {
@@ -117,7 +117,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 
 ### <a name="generate-managed-identity-using-an-azure-resource-manager-template"></a>Generování spravované identity pomocí šablony Azure Resource Manager
 
-**Šablona** : přidejte "identity": {"Type": "SystemAssigned"}.
+**Šablona**: přidejte "identity": {"Type": "SystemAssigned"}.
 
 ```json
 {
@@ -201,7 +201,7 @@ Volání pod rozhraním API v žádosti:
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}?api-version=2018-06-01
 ```
 
-**Odpověď** : zobrazí se odpověď, jak je znázorněno v následujícím příkladu. V části Identita se odpovídajícím způsobem naplní.
+**Odpověď**: zobrazí se odpověď, jak je znázorněno v následujícím příkladu. V části Identita se odpovídajícím způsobem naplní.
 
 ```json
 {

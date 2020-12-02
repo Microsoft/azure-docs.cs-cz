@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9e00e0e5a34eecd6974e8919ce0d0e16f48757f3
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ba444a497fa4fccab6b8dec1fadb3383420e4d49
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540963"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452978"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních dvojčat
 
@@ -23,7 +23,7 @@ Tento článek se zaměřuje na správu digitálních vláken; Chcete-li pracova
 > [!TIP]
 > Všechny funkce sady SDK přicházejí v synchronních a asynchronních verzích.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
@@ -86,7 +86,7 @@ Console.WriteLine("The twin is created successfully");
 ```
 
 >[!NOTE]
-> `BasicDigitalTwin` objekty jsou dodávány s `Id` polem. Toto pole můžete nechat prázdné, ale pokud přidáte hodnotu ID, musí se shodovat s parametrem ID předaným `CreateOrReplaceDigitalTwinAsync()` volání. Například:
+> `BasicDigitalTwin` objekty jsou dodávány s `Id` polem. Toto pole můžete nechat prázdné, ale pokud přidáte hodnotu ID, musí se shodovat s parametrem ID předaným `CreateOrReplaceDigitalTwinAsync()` volání. Příklad:
 >
 >```csharp
 >twin.Id = "myRoomId";
@@ -99,7 +99,7 @@ Můžete získat přístup k podrobnostem jakéhokoliv digitálního vlákna vol
 ```csharp
 object result = await client.GetDigitalTwin(id);
 ```
-Toto volání vrátí dvojitá data jako typ objektu silně typovaného typu, jako je například `BasicDigitalTwin` . Tady je příklad toho, jak se má použít k zobrazení podrobností o zdvojených událostech:
+Toto volání vrátí dvojitá data jako typ objektu silně typovaného typu, jako je například `BasicDigitalTwin` . `BasicDigitalTwin` je pomocná třída serializace, která je součástí sady SDK, která vrátí základní a vlastnosti s dvojitou analýzou. Tady je příklad toho, jak se má použít k zobrazení podrobností o zdvojených událostech:
 
 ```csharp
 Response<BasicDigitalTwin> twin = client.GetDigitalTwin("myRoomId");
@@ -117,7 +117,7 @@ Po načtení vlákna s metodou se vrátí pouze vlastnosti, které byly nastaven
 
 Chcete-li načíst více vláken pomocí jediného volání rozhraní API, přečtěte si příklady rozhraní API pro dotazování v tématu [*Postupy: vytvoření dotazu na nevlákenný graf*](how-to-query-graph.md).
 
-Vezměte v úvahu následující model (napsaný v [digitálním DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL), který definuje *měsíc* :
+Vezměte v úvahu následující model (napsaný v [digitálním DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL), který definuje *měsíc*:
 
 ```json
 {
@@ -176,21 +176,7 @@ Definované vlastnosti digitálního vlákna jsou vráceny jako vlastnosti nejvy
     - Stav synchronizace pro každou zapisovatelnou vlastnost. To je nejužitečnější pro zařízení, kde je možné, že služba a zařízení mají Rozbíhající se stavy (například když je zařízení offline). V současné době se tato vlastnost vztahuje pouze na fyzická zařízení připojená k IoT Hub. S daty v části metadata je možné pochopit úplný stav vlastnosti a také poslední změněná časová razítka. Další informace o stavu synchronizace najdete v [tomto IoT Hub kurzu](../iot-hub/tutorial-device-twins.md) synchronizace stavu zařízení.
     - Metadata specifická pro službu, například z IoT Hub nebo z digitálních vláken Azure. 
 
-Můžete analyzovat vrácený formát JSON pro vlákna pomocí knihovny analýzy JSON dle vašeho výběru, například `System.Text.Json` .
-
-Můžete také použít třídu pomocníka serializace `BasicDigitalTwin` , která je součástí sady SDK, což vrátí základní a vlastnosti ve formě předem analyzovaných formulářů. Tady je příklad:
-
-```csharp
-Response<BasicDigitalTwin> twin = client.GetDigitalTwin(twin_Id);
-Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-foreach (string prop in twin.Contents.Keys)
-{
-    if (twin.Contents.TryGetValue(prop, out object value))
-        Console.WriteLine($"Property '{prop}': {value}");
-}
-```
-
-Další informace o pomocných třídách serializace najdete v tématu [*Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure*](how-to-use-apis-sdks.md).
+Můžete si přečíst další informace o pomocných třídách serializace, jako `BasicDigitalTwin` v tématu [*Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure*](how-to-use-apis-sdks.md).
 
 ## <a name="view-all-digital-twins"></a>Zobrazit všechny digitální vlákna
 

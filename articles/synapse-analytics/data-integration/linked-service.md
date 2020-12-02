@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: feabfe505601276269c2774e3b39dd5cbaa32087
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fb3c7dd7b3d7e8e42e230eedcd0d1b43af104327
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022917"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452529"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Zabezpečení propojené služby pomocí privátních odkazů
 
 V tomto článku se dozvíte, jak zabezpečit propojenou službu v synapse pomocí privátního koncového bodu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet Azure Storage**: Azure Data Lake Gen 2 použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště, přečtěte si článek [vytvoření Azure Storage účtu](../../storage/blobs/data-lake-storage-quickstart-create-account.md) , kde najdete kroky pro jeho vytvoření. Ujistěte se, že účet úložiště má k přístupu přístup synapse Studio IP a že povolujete přístup jenom **vybraným sítím** k účtu úložiště. Nastavení v okně **brány firewall a virtuální sítě** by mělo vypadat jako na obrázku níže.
@@ -69,7 +69,7 @@ Nyní jste navázali zabezpečené a privátní připojení mezi synapse a propo
 ## <a name="next-steps"></a>Další kroky
 
 
-Další porozumění spravovanému privátnímu koncovému bodu v synapse Analytics najdete v tématu [spravované privátní koncové body](../security/synapse-workspace-managed-private-endpoints.md).
+Další porozumění spravovanému privátnímu koncovému bodu ve službě Azure synapse Analytics najdete v tématu [spravované privátní koncové body](../security/synapse-workspace-managed-private-endpoints.md).
 
 
-Další informace o integraci dat pro synapse Analytics najdete v článku ingestování [dat do data Lake](data-integration-data-lake.md) .
+Další informace o integraci dat pro Azure synapse Analytics najdete v tématu ingestování [dat do data Lake](data-integration-data-lake.md) článku.

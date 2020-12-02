@@ -1,6 +1,6 @@
 ---
 title: Typy řazení datového skladu
-description: Typy kolace podporované pro vyhrazený fond SQL ve službě Azure synapse Analytics.
+description: Typy kolace podporované pro vyhrazený fond SQL (dříve SQL DW) ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: antvgski
 manager: igorstan
@@ -11,16 +11,16 @@ ms.date: 12/04/2019
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8d76d70c4c84f1d63d4643e1fba3f66d3541beff
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 39b89f8d303c10eead63839420141a74d3d3c74c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305251"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452760"
 ---
-# <a name="database-collation-support-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Podpora řazení databáze pro vyhrazený fond SQL ve službě Azure synapse Analytics 
+# <a name="database-collation-support-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Podpora řazení databáze pro vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics 
 
-Výchozí kolaci databáze můžete změnit z Azure Portal při vytváření nové vyhrazené databáze fondu SQL. Díky této možnosti je ještě snazší vytvořit novou databázi pomocí jedné z podporovaných databázových kola 3800.
+Výchozí kolaci databáze můžete změnit z Azure Portal při vytváření nového vyhrazeného fondu SQL (dřív SQL DW). Díky této možnosti je ještě snazší vytvořit novou databázi pomocí jedné z podporovaných databázových kola 3800.
 
 Kolace poskytují národní prostředí, znakovou stránku, pořadí řazení a pravidla citlivosti znaků pro datové typy založené na znacích. Po výběru budou všechny sloupce a výrazy, které vyžadují informace o kolaci, dědit zvolenou kolaci z nastavení databáze. Výchozí dědičnost lze přepsat explicitním uvedením jiné kolace pro datový typ založený na znacích.
 

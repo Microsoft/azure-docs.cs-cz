@@ -1,6 +1,6 @@
 ---
-title: Import a export dat mezi servery Apache Spark fondy bez serveru (Preview) a fondy SQL
-description: Tento článek poskytuje informace o tom, jak používat vlastní konektor pro přesun dat mezi vyhrazenými fondy SQL a fondy bez serveru Apache Spark (Preview).
+title: Import a export dat mezi Apache Spark fondy bez serveru a fondy SQL
+description: Tento článek poskytuje informace o tom, jak používat vlastní konektor pro přesun dat mezi vyhrazenými fondy SQL a fondy bez serveru Apache Spark.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: ee82fbaa9687e064747908600c7e5c9017f8f1a9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 178fc12fe8e8e20af8deb40c62990c279af4ab64
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323892"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452836"
 ---
 # <a name="introduction"></a>Úvod
 
-Azure synapse Apache Spark pro synapse SQL Connector je navržený tak, aby efektivně přenesl data mezi fondy Apache Spark serverů bez serveru (Preview) a fondy SQL ve službě Azure synapse. Azure synapse Apache Spark pro synapse SQL Connector funguje jenom na vyhrazených fondech SQL, ale nefunguje s fondem SQL bez serveru.
+Azure synapse Apache Spark pro synapse SQL Connector je navržený tak, aby efektivně přenesl data mezi fondy Apache Spark serverů bez serveru a fondy SQL v Azure synapse. Azure synapse Apache Spark pro synapse SQL Connector funguje jenom na vyhrazených fondech SQL, ale nefunguje s fondem SQL bez serveru.
 
 ## <a name="design"></a>Návrh
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 742c69709eee19a37abdb3e5330cd7fb8ce315b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65584b2a6a3bdfbb863c26dac688b20279c4b54d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89436387"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452282"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Přidání odolnosti proti chybám v aktivitě kopírování přeskočením nekompatibilních řádků
 
@@ -48,7 +48,7 @@ Aktivita kopírování podporuje tři scénáře zjišťování, přeskočení a
     Příklad: kopírování dat z SQL serveru do databáze SQL. Primární klíč je definovaný v databázi SQL jímky, ale ve zdrojovém SQL serveru není definovaný žádný takový primární klíč. Duplicitní řádky, které existují ve zdroji, nelze zkopírovat do jímky. Aktivita kopírování kopíruje do jímky pouze první řádek zdrojových dat. Následné zdrojové řádky, které obsahují duplicitní hodnotu primárního klíče, jsou zjištěny jako nekompatibilní a jsou vynechány.
 
 >[!NOTE]
->Tato funkce se nepoužije, když je aktivita kopírování nakonfigurovaná tak, aby vyvolala mechanismus pro načítání externích dat, včetně služby [Azure synapse Analytics (dříve SQL Data Warehouse)](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) , kterou používáme jako základ nebo pro [uvolnění](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift) Pokud chcete načíst data do Azure synapse Analytics pomocí základu, použijte pro aktivitu kopírování "[polyBaseSettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)" nativní podporu odolné vůči chybám.
+>Tato funkce se nepoužije, když je aktivita kopírování nakonfigurovaná tak, aby vyvolala mechanismus načítání externích dat, včetně [základu služby Azure synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) nebo zrušení [načtení služby Amazon RedShift](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift). Pokud chcete načíst data do Azure synapse Analytics pomocí základu, použijte pro aktivitu kopírování "[polyBaseSettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)" nativní podporu odolné vůči chybám.
 
 ## <a name="configuration"></a>Konfigurace
 Následující příklad poskytuje definici JSON pro konfiguraci přeskočení nekompatibilních řádků v aktivitě kopírování:
@@ -71,12 +71,12 @@ Následující příklad poskytuje definici JSON pro konfiguraci přeskočení n
 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| **enableSkipIncompatibleRow** | Povolit přeskočení nekompatibilních řádků během kopírování nebo ne. | Ano<br/>False (výchozí) | No |
+| **enableSkipIncompatibleRow** | Povolit přeskočení nekompatibilních řádků během kopírování nebo ne. | Pravda<br/>False (výchozí) | No |
 | **redirectIncompatibleRowSettings** | Skupina vlastností, které lze zadat, pokud chcete protokolovat nekompatibilní řádky. | &nbsp; | No |
 | **linkedServiceName** | Propojená služba Azure Storage k uložení protokolu, který obsahuje vynechané řádky. | Název propojené služby [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) nebo [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) , která odkazuje na instanci úložiště, kterou chcete použít k uložení souboru protokolu. | No |
 | **dílčí** | Cesta k souboru protokolu, který obsahuje vynechané řádky. | Zadejte cestu k úložišti objektů blob, kterou chcete použít k protokolování nekompatibilních dat. Pokud cestu nezadáte, služba vytvoří kontejner. | No |
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 Po dokončení aktivity kopírování můžete v části monitorování zobrazit počet vynechaných řádků:
 
 ![Monitorování přeskočilo nekompatibilní řádky.](./media/data-factory-copy-activity-fault-tolerance/skip-incompatible-rows-monitoring.png)

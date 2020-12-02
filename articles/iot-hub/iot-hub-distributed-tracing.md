@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: efc4d07e9e3a64a36f2ecf3fa0000379bef380f9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f8d37cf8f23de1d0535c7a9ff4a95ac217eddf74
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538574"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452392"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Trasování zpráv ze zařízení do cloudu Azure IoT pomocí distribuované trasování (Preview)
 
@@ -35,7 +35,7 @@ Povolení distribuovaného trasování pro IoT Hub vám dává možnost:
 
 V tomto článku použijete [sadu SDK pro zařízení Azure IoT pro jazyk C](iot-hub-device-sdk-c-intro.md) s distribuovaným trasováním. Podpora distribuovaného trasování pro ostatní sady SDK stále probíhá.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Verze Preview distribuovaného trasování je momentálně podporovaná jenom pro centra IoT vytvořená v následujících oblastech:
 
@@ -55,17 +55,17 @@ V této části nakonfigurujete IoT Hub k protokolování atributů distribuovan
 
 1. V [Azure Portal](https://portal.azure.com/)přejděte do služby IoT Hub.
 
-1. V levém podokně Centra IoT přejděte dolů k části **monitorování** a klikněte na **nastavení diagnostiky** .
+1. V levém podokně Centra IoT přejděte dolů k části **monitorování** a klikněte na **nastavení diagnostiky**.
 
-1. Klikněte na **Přidat nastavení diagnostiky** .
+1. Klikněte na **Přidat nastavení diagnostiky**.
 
-1. Do pole **název** zadejte název nového nastavení diagnostiky. Například **DistributedTracingSettings** .
+1. Do pole **název** zadejte název nového nastavení diagnostiky. Například **DistributedTracingSettings**.
 
 1. Vyberte jednu nebo více z následujících možností, které určují, kam bude protokolování odesláno:
 
-    - **Archivovat do účtu úložiště** : Nakonfigurujte účet úložiště tak, aby obsahoval informace o protokolování.
-    - **Streamování do centra událostí** : Konfigurace centra událostí tak, aby obsahovalo informace o protokolování.
-    - **Odeslat do Log Analytics** : Nakonfigurujte pracovní prostor Log Analytics tak, aby obsahoval informace o protokolování.
+    - **Archivovat do účtu úložiště**: Nakonfigurujte účet úložiště tak, aby obsahoval informace o protokolování.
+    - **Streamování do centra událostí**: Konfigurace centra událostí tak, aby obsahovalo informace o protokolování.
+    - **Odeslat do Log Analytics**: Nakonfigurujte pracovní prostor Log Analytics tak, aby obsahoval informace o protokolování.
 
 1. V části **protokol** vyberte operace, pro které chcete informace o protokolování.
 
@@ -183,7 +183,7 @@ Tyto pokyny se týkají vytváření ukázek ve Windows. Další prostředí nal
 
 **Není triviální** k zobrazení náhledu funkce distribuované trasování bez použití sady C SDK. Proto se tento přístup nedoporučuje.
 
-Nejdřív je nutné implementovat všechny primitivní IoT Hub protokolu ve zprávách pomocí Průvodce vývojem [pro vytváření a čtení zpráv IoT Hub](iot-hub-devguide-messages-construct.md). Pak upravte vlastnosti protokolu ve zprávách MQTT/AMQP na `tracestate` hodnotu přidat jako **systémovou vlastnost** . Konkrétně:
+Nejdřív je nutné implementovat všechny primitivní IoT Hub protokolu ve zprávách pomocí Průvodce vývojem [pro vytváření a čtení zpráv IoT Hub](iot-hub-devguide-messages-construct.md). Pak upravte vlastnosti protokolu ve zprávách MQTT/AMQP na `tracestate` hodnotu přidat jako **systémovou vlastnost**. Konkrétně:
 
 * V případě MQTT přidejte `%24.tracestate=timestamp%3d1539243209` do tématu zprávy, kde `1539243209` by měla být nahrazena časem vytvoření zprávy ve formátu časového razítka systému UNIX. Příklad naleznete v tématu implementace [v sadě C SDK](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761) .
 * Pro AMQP přidejte `key("tracestate")` a `value("timestamp=1539243209")` jako anotaci zpráv. Referenční implementaci najdete [tady](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527).
@@ -196,19 +196,19 @@ Chcete-li změnit procento zpráv, které mají být trasovány z cloudu, je nut
 
 ### <a name="update-using-the-portal"></a>Aktualizace pomocí portálu
 
-1. V [Azure Portal](https://portal.azure.com/)přejděte do svého centra IoT a pak klikněte na **zařízení IoT** .
+1. V [Azure Portal](https://portal.azure.com/)přejděte do svého centra IoT a pak klikněte na **zařízení IoT**.
 
 1. Klikněte na své zařízení.
 
-1. Vyhledejte možnost **Povolit distribuované trasování (Preview)** a pak vyberte **Povolit** .
+1. Vyhledejte možnost **Povolit distribuované trasování (Preview)** a pak vyberte **Povolit**.
 
     ![Povolit distribuované trasování v Azure Portal](./media/iot-hub-distributed-tracing/azure-portal.png)
 
 1. Vyberte **vzorkovací frekvenci** mezi 0 a 100%.
 
-1. Klikněte na **Uložit** .
+1. Klikněte na **Uložit**.
 
-1. Počkejte několik sekund a pak stiskněte tlačítko **aktualizovat** . po úspěšném potvrzení zařízení se zobrazí ikona synchronizace se symbolem zaškrtnutí.
+1. Počkejte několik sekund a pak stiskněte tlačítko **aktualizovat**. po úspěšném potvrzení zařízení se zobrazí ikona synchronizace se symbolem zaškrtnutí.
 
 1. Vraťte se do okna konzoly pro aplikaci zprávy telemetrie. Ve vlastnostech aplikace se zobrazí zprávy odesílané `tracestate` ve službě.
 
@@ -222,7 +222,7 @@ Chcete-li změnit procento zpráv, které mají být trasovány z cloudu, je nut
 
 1. Otevřete VS Code a [nastavte připojovací řetězec IoT Hub](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit#user-content-prerequisites).
 
-1. Rozbalte zařízení a vyhledejte **Nastavení distribuované trasování (Preview)** . V takovém případě klikněte na možnost **aktualizovat nastavení distribuovaného trasování (Preview)** dílčího uzlu.
+1. Rozbalte zařízení a vyhledejte **Nastavení distribuované trasování (Preview)**. V takovém případě klikněte na možnost **aktualizovat nastavení distribuovaného trasování (Preview)** dílčího uzlu.
 
     ![Povolit distribuované trasování v rozšíření Azure IoT Hub](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
 
@@ -252,7 +252,7 @@ Pokud chcete aktualizovat konfiguraci pro vzorkování distribuovaného trasová
 | Název elementu | Požaduje se | Typ | Popis |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | Ano | Integer | Pro zapnutí a vypnutí vzorkování se aktuálně podporují dvě hodnoty režimu. `1` je zapnuto a, `2` je vypnuto. |
-| `sampling_rate` | Ano | Integer | Tato hodnota je procento. Povolují se jenom hodnoty z `0` na `100` (včetně).  |
+| `sampling_rate` | Yes | Integer | Tato hodnota je procento. Povolují se jenom hodnoty z `0` na `100` (včetně).  |
 
 ## <a name="query-and-visualize"></a>Dotazování a vizualizace
 
@@ -295,7 +295,7 @@ Následující obrázek ukazuje distribuované trasování v mapě aplikace se t
 
 ### <a name="context"></a>Kontext
 
-Mnoho řešení IoT, včetně naší vlastní [referenční architektury](https://aka.ms/iotrefarchitecture) (jenom v angličtině), obvykle sleduje variantu [architektury mikroslužeb](/azure/architecture/microservices/). Díky větší složitosti řešení IoT skončíte s využitím desítek a více mikroslužeb. Tyto mikroslužby můžou nebo nemusí být z Azure. Určení, kde se zprávy IoT vyřazuje nebo zpomalují, můžou být náročné. Máte například řešení IoT, které využívá 5 různých služeb Azure a 1500 aktivních zařízení. Každé zařízení odesílá 10 zpráv typu zařízení-Cloud za sekundu (celkem 15 000 zpráv za sekundu), ale Všimněte si, že vaše webová aplikace zobrazuje pouze 10 000 zpráv za sekundu. Kde se jedná o problém? Jak najít příčinou?
+Mnoho řešení IoT, včetně naší vlastní [referenční architektury](/azure/architecture/reference-architectures/iot) (jenom v angličtině), obvykle sleduje variantu [architektury mikroslužeb](/azure/architecture/microservices/). Díky větší složitosti řešení IoT skončíte s využitím desítek a více mikroslužeb. Tyto mikroslužby můžou nebo nemusí být z Azure. Určení, kde se zprávy IoT vyřazuje nebo zpomalují, můžou být náročné. Máte například řešení IoT, které využívá 5 různých služeb Azure a 1500 aktivních zařízení. Každé zařízení odesílá 10 zpráv typu zařízení-Cloud za sekundu (celkem 15 000 zpráv za sekundu), ale Všimněte si, že vaše webová aplikace zobrazuje pouze 10 000 zpráv za sekundu. Kde se jedná o problém? Jak najít příčinou?
 
 ### <a name="distributed-tracing-pattern-in-microservice-architecture"></a>Model distribuovaného trasování v architektuře mikroslužeb
 

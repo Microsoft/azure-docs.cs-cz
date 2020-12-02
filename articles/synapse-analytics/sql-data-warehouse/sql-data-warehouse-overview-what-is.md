@@ -1,6 +1,6 @@
 ---
-title: Co je Azure synapse Analytics (dřív SQL DW)?
-description: Azure synapse Analytics (dřív SQL DW) je bezlimitní analytická služba, která přináší dohromady podnikové datové sklady a analýzu velkých objemů dat.
+title: Co je vyhrazený fond SQL (dřív SQL DW)?
+description: Vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics je podniková funkce datového skladu v Azure synapse Analytics.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,37 +10,30 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 8840791c7b18d1efa499c2826a6eaf041a6da787
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2f9ab6dacde0259905368d8a0cb788dde77bbfb2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317484"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453636"
 ---
-# <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Co je Azure synapse Analytics (dřív SQL DW)?
+# <a name="what-is-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Co je vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics?
+
+Azure Synapse Analytics je analytická služba, která spojuje podnikové datové sklady s analýzou velkých objemů dat. Vyhrazený fond SQL (dřív SQL DW) odkazuje na funkce podnikových dat v datovém skladu, které jsou k dispozici ve službě Azure synapse Analytics.
+
+
+
+![Vyhrazený fond SQL (dřív SQL DW) ve vztahu k Azure synapse](./media/sql-data-warehouse-overview-what-is/dedicated-sql-pool.png)
+
+
+
+Vyhrazený fond SQL (dříve SQL DW) představuje kolekci analytických prostředků, které jsou zřízené při používání synapse SQL. Velikost vyhrazeného fondu SQL (dříve SQL DW) je určená jednotkami datového skladu (DWU).
+
+Po vytvoření vyhrazeného fondu SQL můžete importovat velké objemy dat pomocí jednoduchých [základních](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dotazů T-SQL a pak využít sílu modulu distribuovaných dotazů ke spouštění vysoce výkonných analýz. Při integraci a analýze dat se vyhrazený fond SQL (dřív SQL DW) stane jedinou verzí pravdy, kterou vaše firma může počítat pro rychlejší a robustnější přehledy.
 
 > [!NOTE]
->Prozkoumejte [dokumentaci ke službě Azure synapse (pracovní prostory Preview)](../overview-what-is.md).
->
-
-Azure synapse je analytická služba, která přináší dohromady podnikové datové sklady a analýzu velkých objemů dat. Dává vám možnost dotazovat se na data podle toho, jak vám to vyhovuje, s využitím bezserverové architektury na vyžádání, nebo zřízených prostředků, a to ve velkém měřítku. Azure Synapse spojuje tyto dva světy do sjednoceného prostředí, které nabízí příjem, přípravu, správu a obsluhu dat pro aktuální potřeby BI a strojového učení.
-
-Azure synapse má čtyři součásti:
-
-- Synapse SQL: kompletní analýzy založené na T-SQL – všeobecně dostupná
-  - Vyhrazený fond SQL (placený za DWU zřízený)
-  - Fond SQL bez serveru (platí pro počet zpracovaných za TB) (Preview)
-- Spark: hluboce integrované Apache Spark (Preview)
-- Kanály synapse: integrace hybridních dat (Preview)
-- Studio: jednotné uživatelské prostředí. (Preview)
-
-## <a name="dedicated-sql-pool-in-azure-synapse"></a>Vyhrazený fond SQL ve službě Azure synapse
-
-Vyhrazený fond SQL odkazuje na funkce podnikových datových skladů, které jsou všeobecně dostupné v Azure synapse.
-
-Vyhrazený fond SQL představuje kolekci analytických prostředků, které se zřídí při používání synapse SQL. Velikost vyhrazeného fondu SQL je určena jednotkami datového skladu (DWU).
-
-Naimportujte velké objemy dat pomocí jednoduchých [základních](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dotazů T-SQL a potom Využijte sílu modulu distribuovaných dotazů ke spouštění vysoce výkonných analýz. Při integraci a analýze dat se synapse SQL stane jedinou verzí pravdy, kterou vaše firma může počítat pro rychlejší a robustnější přehledy. 
+>Prozkoumejte [dokumentaci ke službě Azure synapse Analytics](../overview-what-is.md).
+> 
 
 ## <a name="key-component-of-a-big-data-solution"></a>Klíčová součást řešení pro velké objemy dat
 
@@ -48,9 +41,9 @@ Datové sklady jsou klíčovou součástí cloudového a komplexního řešení 
 
 ![Řešení datového skladu](./media/sql-data-warehouse-overview-what-is/data-warehouse-solution.png)
 
-V cloudovém datovém řešení se data ingestují do velkoobjemových úložišť dat z nejrůznějších zdrojů. Jakmile jsou data ve velkoobjemovém úložišti dat, můžou se připravit a vytrénovat pomocí Hadoopu, Sparku a algoritmů strojového učení. Když jsou data připravená na složitou analýzu, vyhrazený fond SQL používá základnu k dotazování na úložiště s velkými objemy dat. Základ používá standardní dotazy T-SQL k převedení dat do vyhrazených tabulek fondu SQL.
+V cloudovém datovém řešení se data ingestují do velkoobjemových úložišť dat z nejrůznějších zdrojů. Jakmile jsou data ve velkoobjemovém úložišti dat, můžou se připravit a vytrénovat pomocí Hadoopu, Sparku a algoritmů strojového učení. Když jsou data připravená na složitou analýzu, vyhrazený fond SQL používá základnu k dotazování na úložiště s velkými objemy dat. Základ používá standardní dotazy T-SQL k přenesení dat do vyhrazených tabulek fondu SQL (dříve SQL DW).
 
-Vyhrazený fond SQL ukládá data v relačních tabulkách s sloupcovým úložištěm. Tento formát výrazně snižuje náklady na úložiště dat a zvyšuje výkon dotazů. Po uložení dat můžete provádět analýzy v masivním měřítku. V porovnání s tradičními databázovými systémy se analytické dotazy dokončí v řádu sekund namísto minut nebo v řádu hodin namísto dnů.
+Vyhrazený fond SQL (dříve SQL DW) ukládá data v relačních tabulkách s sloupcovým úložištěm. Tento formát výrazně snižuje náklady na úložiště dat a zvyšuje výkon dotazů. Po uložení dat můžete provádět analýzy v masivním měřítku. V porovnání s tradičními databázovými systémy se analytické dotazy dokončí v řádu sekund namísto minut nebo v řádu hodin namísto dnů.
 
 Výsledky analýz můžou jít do aplikací nebo databází pro generování sestav po celém světě. Obchodní analytici pak můžou získávat přehledy, které jim umožní provádět informovaná obchodní rozhodnutí.
 

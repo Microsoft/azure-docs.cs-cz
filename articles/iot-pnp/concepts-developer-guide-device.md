@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 8d8da39f038f465030a2dced092ab1b008e30e5e
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 3aa236570e518b142adb8382387a8cdea4fc08a0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511417"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453268"
 ---
 # <a name="iot-plug-and-play-device-developer-guide"></a>Příručka pro vývojáře pro IoT technologie Plug and Play zařízení
 
@@ -67,8 +67,8 @@ Po dokončení implementace zařízení nebo modulu použijte [Azure IoT Explore
 Teď, když jste se naučili o službě IoT technologie Plug and Play pro vývoj zařízení, tady je několik dalších prostředků:
 
 - [Jazyk DTDL (Digital autodefinition Definition Language)](https://github.com/Azure/opendigitaltwins-dtdl)
-- [Sada SDK pro zařízení jazyka C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
-- [REST API IoT](https://docs.microsoft.com/rest/api/iothub/device)
+- [Sada SDK pro zařízení jazyka C](/azure/iot-hub/iot-c-sdk-ref/)
+- [REST API IoT](/rest/api/iothub/device)
 - [Komponenty modelu](concepts-components.md)
 - [Instalace a použití nástrojů pro tvorbu DTDL](howto-use-dtdl-authoring-tools.md)
 - [Příručka pro vývojáře služby IoT technologie Plug and Play](concepts-developer-guide-service.md)

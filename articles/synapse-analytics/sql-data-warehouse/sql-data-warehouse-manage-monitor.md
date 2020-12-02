@@ -1,6 +1,6 @@
 ---
-title: Monitorování zatížení fondu SQL pomocí zobrazení dynamické správy
-description: Naučte se monitorovat úlohy fondu SQL ve službě Azure synapse Analytics a provádění dotazů pomocí zobrazení dynamické správy.
+title: Monitorování vyhrazené úlohy fondu SQL pomocí zobrazení dynamické správy
+description: Naučte se monitorovat úlohy vyhrazeného fondu SQL ve službě Azure synapse Analytics a provádění dotazů pomocí zobrazení dynamické správy.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 03/24/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: 70ce0d6aada2b03646500720b0eba980a1f2d8f8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 1992c3d525fc1f5a098e1969887a752233d47990
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515725"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453804"
 ---
-# <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>Monitorování úloh fondu SQL ve službě Azure synapse Analytics pomocí zobrazení dynamické správy
+# <a name="monitor-your-azure-synapse-analytics-dedicated-sql-pool-workload-using-dmvs"></a>Monitorování vyhrazené úlohy fondu SQL ve službě Azure synapse Analytics pomocí zobrazení dynamické správy
 
 Tento článek popisuje, jak pomocí zobrazení dynamické správy (zobrazení dynamické správy) monitorovat vaše úlohy, včetně zkoumání provádění dotazů ve fondu SQL.
 
@@ -176,7 +176,7 @@ WHERE waits.request_id = 'QID####'
 ORDER BY waits.object_name, waits.object_type, waits.state;
 ```
 
-Pokud dotaz aktivně čeká na prostředky z jiného dotazu, bude stav **AcquireResources**.  Pokud dotaz obsahuje všechny požadované prostředky, bude **udělen**stav.
+Pokud dotaz aktivně čeká na prostředky z jiného dotazu, bude stav **AcquireResources**.  Pokud dotaz obsahuje všechny požadované prostředky, bude **udělen** stav.
 
 ## <a name="monitor-tempdb"></a>Monitorování databáze tempdb
 

@@ -5,12 +5,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 68d8270c4ca3cff07f3a70c6022b963f750ad4e9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 774f9e485c58712ea8648a148c92b6f9ef6a58c0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022097"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452605"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Rychlý Start: použití Azure Service Bus front s jazykem Java k posílání a přijímání zpráv
 
@@ -18,9 +18,10 @@ ms.locfileid: "96022097"
 V tomto kurzu se naučíte vytvářet aplikace v jazyce Java pro posílání zpráv a příjem zpráv z fronty Azure Service Bus. 
 
 > [!WARNING]
->  V tomto rychlém startu se používá aktuální všeobecně dostupný balíček Azure-ServiceBus. Pro rychlý Start, který používá nový balíček Azure-Messaging-ServiceBus, který je ve **verzi Preview**, najdete informace v tématu [posílání a přijímání zpráv pomocí Azure-Messaging-ServiceBus](service-bus-java-how-to-use-queues.md). 
+>  V tomto rychlém startu se používají staré balíčky Azure-ServiceBus. Rychlý Start, který používá nejnovější balíček Azure-Messaging-ServiceBus, najdete v tématu [posílání a přijímání zpráv pomocí Azure-Messaging-ServiceBus](service-bus-java-how-to-use-queues.md). 
 
-## <a name="prerequisites"></a>Požadavky
+
+## <a name="prerequisites"></a>Předpoklady
 1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. Pokud nemáte frontu, ve které byste mohli pracovat, postupujte podle kroků v tématu [použití Azure Portal k vytvoření fronty Service Bus](service-bus-quickstart-portal.md) .
     1. Přečtěte si rychlý **přehled** Service Busch **front**. 

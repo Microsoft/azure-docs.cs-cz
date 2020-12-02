@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: d013af82a862f1bc6b5324e7523aeea5593a4f94
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 31ae5b780bf451e29a97f04202f804db27fc387a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030658"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452932"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Nejčastější dotazy k rozhraní Azure API pro FHIR
 
@@ -31,7 +31,7 @@ Ano, data se ukládají do spravovaných databází v Azure. Rozhraní API Azure
 V tuto chvíli podporujeme Microsoft Azure Active Directory jako zprostředkovatele identity.
 
 ### <a name="what-is-the-recovery-point-objective-rpo-for-the-azure-api-for-fhir"></a>Jaký je cíl bodu obnovení (RPO) pro Azure API pro FHIR?
-Rozhraní Azure API pro FHIR se zálohuje Cosmos DB jako náš poskytovatel trvalosti. Z tohoto důvodu se RPO pro službu rovná [Cosmos dB (jedna oblast)](https://docs.microsoft.com/azure/cosmos-db/consistency-levels) a < 240 minut.
+Rozhraní Azure API pro FHIR se zálohuje Cosmos DB jako náš poskytovatel trvalosti. Z tohoto důvodu se RPO pro službu rovná [Cosmos dB (jedna oblast)](../cosmos-db/consistency-levels.md) a < 240 minut.
 
 ### <a name="what-fhir-version-do-you-support"></a>Jakou verzi FHIR podporujete?
 

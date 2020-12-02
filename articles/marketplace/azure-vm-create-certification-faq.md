@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 5124e7084a8e878e54e594424ec0926410f002ca
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: eb290b8c154c40388bfb3e7f9cbac7b645aa9609
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682481"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452687"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Řešení potíží s certifikací virtuálního počítače
 
@@ -140,7 +140,7 @@ Stáhněte si [sadu nástrojů Microsoft Certification Toolkit](azure-vm-image-t
 
 V následující tabulce jsou uvedeny testovací případy pro Linux, které sada nástrojů spustí. Ověření testu je uvedeno v popisu.
 
-|Scénář|Testovací případ|Description|
+|Scénář|Testovací případ|Popis|
 |---|---|---|
 |1|Bash historii|Před vytvořením image virtuálního počítače by se měly vymazat soubory historie bash.|
 |2|Verze agenta pro Linux|Je potřeba nainstalovat agenta Azure Linux 2.2.41 nebo novější.|
@@ -148,7 +148,7 @@ V následující tabulce jsou uvedeny testovací případy pro Linux, které sad
 |4|Odkládací oddíl na disku s operačním systémem|Ověřuje, že se na disku s operačním systémem odkládací oddíly nevytváří.|
 |5|Kořenový oddíl na disku s operačním systémem|Vytvořte jeden kořenový oddíl pro disk s operačním systémem.|
 |6|Verze OpenSSL|Verze OpenSSL by měla být v 0.9.8 nebo novější.|
-|7|Verze Pythonu|Doporučujeme Python verze 2,6 nebo novější.|
+|7|Python version (Verze Pythonu)|Doporučujeme Python verze 2,6 nebo novější.|
 |8|Interval – aktivní klient|Nastavte ClientAliveInterval na 180. V případě potřeby je možné aplikaci nastavit z 30 na 235. Pokud pro koncové uživatele povolíte SSH, musí být tato hodnota nastavena, jak je vysvětleno.|
 |9|Architektura operačního systému|Podporují se jen 64bitové operační systémy.|
 |10|Automatická aktualizace|Určuje, jestli je povolená Automatická aktualizace agenta pro Linux.|
@@ -169,7 +169,7 @@ V následující tabulce najdete běžné chyby, které se můžou zobrazit při
 
 V následující tabulce jsou uvedeny testovací případy systému Windows, které sada nástrojů spustí, spolu s popisem ověření testu:
 
-|Scénář |Testovací případy|Description|
+|Scénář |Testovací případy|Popis|
 |---|---|---|---|
 |1|Architektura operačního systému|Azure podporuje jenom 64 operačních systémů.|
 |2|Závislost uživatelského účtu|Spuštění aplikace by nemělo být závislé na účtu správce.|
@@ -474,7 +474,7 @@ Pokud se mají znovu použít všechny image z Azure Marketplace, musí být vir
 
 * Pro **Windows** můžete zobecnit bitové kopie systému Windows pomocí nástroje `sysreptool` .
 
-  Další informace o tomto `sysreptool` nástroji najdete v tématu [Přehled nástroje pro přípravu systému (Sysprep)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
+  Další informace o tomto `sysreptool` nástroji najdete v tématu [Přehled nástroje pro přípravu systému (Sysprep)](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
 ## <a name="datadisk-errors"></a>Chyby datadisk
 
