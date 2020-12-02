@@ -12,25 +12,25 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4e6b0afab5c86131575d0e3d12b9984a8463f5a3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 68c9e594201f0d0689a289e13f2c4ebf909c2f87
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321098"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457094"
 ---
 # <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>Načtení 1 TB do Azure synapse Analytics za 15 minut s Data Factory
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [kopírování dat do nebo z analýzy Azure synapse Analytics (dřív SQL Data Warehouse) pomocí Data Factory](../connector-azure-sql-data-warehouse.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [kopírování dat do nebo z analýzy Azure synapse pomocí Data Factory](../connector-azure-sql-data-warehouse.md).
 
 
 [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) je cloudová, škálovatelná databáze, která dokáže zpracovávat obrovské objemy dat, a to jak v relačních, tak i i v nerelačních.  Azure synapse Analytics je postavená na výkonné paralelní zpracování (MPP) a je optimalizovaná pro úlohy podnikového datového skladu.  Nabízí cloudovou flexibilitu, díky které můžete nezávisle škálovat úložiště a výpočetní výkon.
 
 Začínáme se službou Azure synapse Analytics je teď snazší než kdykoli dřív, pomocí **Azure Data Factory**.  Azure Data Factory je plně spravovaná cloudová služba pro integraci dat, která se dá použít k naplnění Azure synapse Analytics daty z vašeho stávajícího systému a šetří vám tak cenné časy při vyhodnocování Azure synapse Analytics a vytváření analytických řešení. Tady jsou klíčové výhody načítání dat do služby Azure synapse Analytics pomocí Azure Data Factory:
 
-* **Snadné nastavení** : 5 – intuitivní průvodce bez nutnosti skriptování.
-* **Bohatá Podpora úložiště dat** : Integrovaná podpora pro bohatou sadu místních a cloudových úložišť dat.
-* **Zabezpečení a dodržování předpisů** : data se přenáší přes protokol HTTPS nebo ExpressRoute a přítomnost globální služby zajišťuje, že vaše data nikdy neopustí zeměpisnou hranici.
+* **Snadné nastavení**: 5 – intuitivní průvodce bez nutnosti skriptování.
+* **Bohatá Podpora úložiště dat**: Integrovaná podpora pro bohatou sadu místních a cloudových úložišť dat.
+* **Zabezpečení a dodržování předpisů**: data se přenáší přes protokol HTTPS nebo ExpressRoute a přítomnost globální služby zajišťuje, že vaše data nikdy neopustí zeměpisnou hranici.
 * **Neparalelní výkon pomocí základny** – základem je nejúčinnější způsob, jak přesouvat data do Azure synapse Analytics. Pomocí funkce pracovního objektu blob můžete dosáhnout vysoké rychlosti načítání ze všech typů úložišť dat kromě úložiště objektů BLOB v Azure, které základem podporuje standardně.
 
 V tomto článku se dozvíte, jak pomocí Průvodce kopírováním Data Factory načíst data z Azure Blob Storage do Azure synapse Analytics za méně než 15 minut při překročení propustnosti 1,2 GB/s.
@@ -116,7 +116,7 @@ Tento článek poskytuje podrobné pokyny pro přesouvání dat do služby Azure
 3. V podokně **Nová datová továrna** :
 
    1. Jako **název** zadejte **LoadIntoSQLDWDataFactory** .
-       Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chyba: **název objektu pro vytváření dat "LoadIntoSQLDWDataFactory" není k dispozici** , změňte název objektu pro vytváření dat (třeba na yournameLoadIntoSQLDWDataFactory) a zkuste to znovu. V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.  
+       Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chyba: **název objektu pro vytváření dat "LoadIntoSQLDWDataFactory" není k dispozici**, změňte název objektu pro vytváření dat (třeba na yournameLoadIntoSQLDWDataFactory) a zkuste to znovu. V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.  
    2. Vyberte své **předplatné** Azure.
    3. Pro skupinu prostředků proveďte jeden z následujících kroků:
       1. Vyberte možnost **Použít existující** a vyberte existující skupinu prostředků.
@@ -137,7 +137,7 @@ Tento článek poskytuje podrobné pokyny pro přesouvání dat do služby Azure
 ## <a name="step-1-configure-data-loading-schedule"></a>Krok 1: Konfigurace plánu načítání dat
 Prvním krokem je konfigurace plánu načítání dat.  
 
-Na stránce **Vlastnosti** :
+Na stránce **Vlastnosti**:
 
 1. Jako **název úlohy** zadejte **CopyFromBlobToAzureSqlDataWarehouse** .
 2. Vyberte možnost **spustit hned** .   

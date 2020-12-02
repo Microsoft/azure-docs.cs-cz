@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6372976d85c7fdce2a729047d3ae36911412ecf1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7c4985e32371f029285733117721931e09a30e67
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019663"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456956"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – reference skriptování JSON
 > [!NOTE]
@@ -98,7 +98,7 @@ Následující tabulka popisuje vlastnosti v rámci definice JSON aktivity:
 ### <a name="policies"></a>Zásady
 Zásady ovlivňují chování aktivity za běhu, konkrétně při zpracování řezu tabulky. Podrobnosti jsou uvedeny v následující tabulce.
 
-| Vlastnost | Povolené hodnoty | Výchozí hodnota | Description |
+| Vlastnost | Povolené hodnoty | Výchozí hodnota | Popis |
 | --- | --- | --- | --- |
 | souběžnost |Integer <br/><br/>Maximální hodnota: 10 |1 |Počet souběžných spuštění aktivity.<br/><br/>Určuje počet paralelních spuštění aktivit, ke kterým může dojít v různých řezech. Například pokud aktivita potřebuje projít velkou sadou dostupných dat, větší hodnota souběžnosti zrychluje zpracování dat. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Určuje pořadí datových řezů, které jsou zpracovávány.<br/><br/>Například pokud máte 2 řezy (jedna se děje na 16:00 a druhý na 17:00), a obě jsou vyřízeny. Pokud nastavíte executionPriorityOrder na NewestFirst, řez se nejprve zpracuje v 5 odp. Podobně pokud nastavíte executionPriorityORder na OldestFIrst, bude zpracován řez ve 4 PM. |
@@ -377,7 +377,7 @@ Kliknutím na odkaz pro úložiště, které vás zajímáte, uvidíte schémata
 | &nbsp; |Azure Data Lake Store |
 | &nbsp; |[Azure Cosmos DB](#azure-cosmos-db) |
 | &nbsp; |[Azure SQL Database](#azure-sql-database) |
-| &nbsp; |[Azure Synapse Analytics (dříve SQL Data Warehouse)](#azure-synapse-analytics) |
+| &nbsp; |[Azure Synapse Analytics](#azure-synapse-analytics) |
 | &nbsp; |[Azure Cognitive Search](#azure-cognitive-search) |
 | &nbsp; |[Azure Table storage](#azure-table-storage) |
 | **Databáze** |[Amazon Redshift](#amazon-redshift) |
@@ -1224,7 +1224,7 @@ Pokud kopírujete data do služby Azure synapse Analytics, nastavte **typ jímky
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |Zadejte dotaz pro aktivitu kopírování, která se má provést, aby se vyčistila data konkrétního řezu. |Příkaz dotazu. |No |
-| allowPolyBase |Označuje, zda použít základ (je-li k dispozici) místo mechanismu BULKINSERT. <br/><br/> **Použití základny je doporučeným způsobem, jak načíst data do synapse Analytics.** |Ano <br/>False (výchozí) |No |
+| allowPolyBase |Označuje, zda použít základ (je-li k dispozici) místo mechanismu BULKINSERT. <br/><br/> **Použití základny je doporučeným způsobem, jak načíst data do služby Azure synapse Analytics.** |Pravda <br/>False (výchozí) |No |
 | polyBaseSettings |Skupina vlastností, které lze zadat, je-li vlastnost **allowPolybase** nastavena na **hodnotu true**. |&nbsp; |No |
 | rejectValue |Určuje počet nebo procento řádků, které lze odmítnout před tím, než se dotaz nezdařil. <br/><br/>Další informace o možnostech odmítnutí základní třídy najdete v části **argumenty** v tématu [vytvoření externí tabulky (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql) . |0 (výchozí), 1, 2,... |No |
 | rejectType |Určuje, zda je možnost rejectValue zadána jako hodnota literálu nebo jako procento. |Hodnota (výchozí), procenta |No |
@@ -4937,7 +4937,7 @@ Vytvoříte propojenou službu Azure Machine Learning Studio (Classic) pro regis
 ### <a name="linked-service"></a>Propojená služba
 Následující tabulka uvádí popis vlastností použitých v definici Azure JSON propojené služby pro Studio (Classic).
 
-| Vlastnost | Popis | Povinné |
+| Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | Typ |Vlastnost Type by měla být nastavená na: **AzureML**. |Yes |
 | mlEndpoint |Adresa URL dávkového vyhodnocování |Yes |
@@ -4965,7 +4965,7 @@ Vytvoříte propojenou službu **Azure Data Lake Analytics** , abyste propojili 
 
 Následující tabulka uvádí popis vlastností použitých v definici JSON propojené služby Azure Data Lake Analytics.
 
-| Vlastnost | Popis | Povinné |
+| Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | Typ |Vlastnost Type by měla být nastavená na: **AzureDataLakeAnalytics**. |Yes |
 | accountName |Azure Data Lake Analytics název účtu. |Yes |
@@ -5057,7 +5057,7 @@ Další informace najdete v článku [konektor SQL Server](data-factory-sqlserve
 
 ## <a name="data-transformation-activities"></a>AKTIVITY TRANSFORMACE DAT
 
-Aktivita | Description
+Aktivita | Popis
 -------- | -----------
 [Aktivita v podregistru HDInsight](#hdinsight-hive-activity) | Aktivita podregistru HDInsight v Data Factoryovém kanálu spouští dotazy na podregistry ve vašem clusteru HDInsight založeném na systému Windows/Linux nebo na vyžádání.
 [Aktivita prasete v HDInsight](#hdinsight-pig-activity) | Aktivita prasete v HDInsight v kanálu Data Factory spouští dotazy na prasaty na vašem clusteru HDInsight založeném na systému Windows/Linux nebo na vyžádání.

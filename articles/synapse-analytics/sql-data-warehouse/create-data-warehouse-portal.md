@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: vytvoření a dotazování synapse fondu SQL (Azure Portal)'
-description: Vytvoření a dotazování synapse fondu SQL pomocí Azure Portal
+title: 'Rychlý Start: vytvoření a dotazování vyhrazeného fondu SQL (Azure Portal)'
+description: Vytvoření a dotazování vyhrazeného fondu SQL pomocí Azure Portal
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 05/28/2019
 ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 470892aa46d3f75ce8e17200f7d0549ae14b0e86
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3d4884fd64c773647f78a98dc7aeb1063d539edf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023782"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456748"
 ---
-# <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Rychlý Start: vytvoření a dotazování synapse fondu SQL pomocí Azure Portal
+# <a name="quickstart-create-and-query-a-dedicated-sql-pool-in-azure-synapse-analytics-using-the-azure-portal"></a>Rychlý Start: vytvoření a dotazování vyhrazeného fondu SQL ve službě Azure synapse Analytics pomocí Azure Portal
 
-Rychle vytvářejte a Dotazujte synapse fond SQL (datový sklad) ve službě Azure synapse Analytics (dřív SQL DW) pomocí Azure Portal.
+Rychle vytvářejte a Dotazujte synapse fond SQL (datový sklad) ve službě Azure synapse Analytics pomocí Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -33,7 +33,7 @@ Rychle vytvářejte a Dotazujte synapse fond SQL (datový sklad) ve službě Azu
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-sql-pool"></a>Vytvoření fondu SQL
 
@@ -118,7 +118,7 @@ Nyní se můžete připojit k serveru a jeho fondům SQL pomocí této IP adresy
 
 Získejte plně kvalifikovaný název serveru pro váš server v Azure Portal. Tento plně kvalifikovaný název použijete později při připojování k serveru.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 2. V nabídce na levé straně vyberte **Azure synapse Analytics** a na stránce **Azure synapse Analytics** vyberte svůj.
 

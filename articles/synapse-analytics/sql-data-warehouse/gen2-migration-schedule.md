@@ -1,6 +1,6 @@
 ---
-title: Migrace fondu SQL do Gen2
-description: Pokyny pro migraci stávajícího fondu SQL na Gen2 a plán migrace podle oblasti.
+title: Migrace vyhrazeného fondu SQL (dřív SQL DW) do Gen2
+description: Pokyny pro migraci existujícího vyhrazeného fondu SQL (dříve SQL DW) do Gen2 a plánu migrace podle oblasti.
 services: synapse-analytics
 author: mlee3gsd
 ms.author: anjangsh
@@ -12,16 +12,16 @@ ms.topic: article
 ms.subservice: sql-dw
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: eebde4470ba2635a5287cb3b0103fa49e0e243e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 512775369bd7787c6228c6d452be0e236ddf5cc2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440996"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456328"
 ---
-# <a name="upgrade-your-sql-pool-to-gen2"></a>Upgradujte svůj fond SQL na Gen2
+# <a name="upgrade-your-dedicated-sql-pool-formerly-sql-dw-to-gen2"></a>Upgrade vyhrazeného fondu SQL (dříve SQL DW) na Gen2
 
-Společnost Microsoft pomáhá snižovat náklady na úroveň vstupu na spuštění fondu SQL.  Pro fond SQL jsou nyní k dispozici nižší výpočetní vrstvy, které umožňují zpracování náročných dotazů. Přečtěte si úplné oznámení o [podpoře výpočetních vrstev pro Gen2](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/). Nová nabídka je k dispozici v oblastech uvedených v následující tabulce. V případě podporovaných oblastí je možné existující Gen1 fondy SQL upgradovat na Gen2 prostřednictvím těchto skupin:
+Společnost Microsoft pomáhá snižovat náklady na úroveň vstupu na používání vyhrazeného fondu SQL (dříve SQL DW).  Pro vyhrazený fond SQL (dřív SQL DW) jsou teď dostupné nižší výpočetní úrovně, které umožňují zpracování náročných dotazů. Přečtěte si úplné oznámení o [podpoře výpočetních vrstev pro Gen2](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/). Nová nabídka je k dispozici v oblastech uvedených v následující tabulce. Pro podporované oblasti je možné upgradovat stávající Gen1 fond SQL (dřív SQL DW) na Gen2 prostřednictvím:
 
 - **Proces automatického upgradu:** Automatické upgrady se nespustí hned po tom, co je služba dostupná v určité oblasti.  Když automatické upgrady začnou v konkrétní oblasti, během vybraného plánu údržby budou provedeny jednotlivé upgrady datového skladu.
 - [**Samoobslužný upgrade na Gen2:**](#self-upgrade-to-gen2) Můžete řídit, kdy se má upgradovat, a to provedením samočinného upgradu na Gen2. Pokud vaše oblast ještě není podporovaná, můžete ji obnovit z bodu obnovení přímo do instance Gen2 v podporované oblasti.
@@ -43,9 +43,9 @@ Následující tabulka shrnuje podle oblasti v případě, že bude k dispozici 
 
 ## <a name="automatic-upgrade-process"></a>Proces automatického upgradu
 
-V závislosti na grafu dostupnosti naplánujeme automatizované upgrady pro instance Gen1. Aby nedošlo k neočekávanému přerušení dostupnosti fondu SQL, automatizované upgrady se naplánují během plánu údržby. Možnost vytvoření nové instance Gen1 se zakáže v oblastech, které provádějí automatický upgrade na Gen2. Po dokončení automatických upgradů se Gen1 přestane používat. Další informace o plánech najdete v tématu [zobrazení plánu údržby.](maintenance-scheduling.md#view-a-maintenance-schedule)
+V závislosti na grafu dostupnosti naplánujeme automatizované upgrady pro instance Gen1. Aby nedošlo k neočekávanému přerušení dostupnosti vyhrazeného fondu SQL (dříve SQL DW), automatizované upgrady se naplánují během plánu údržby. Možnost vytvoření nové instance Gen1 se zakáže v oblastech, které provádějí automatický upgrade na Gen2. Po dokončení automatických upgradů se Gen1 přestane používat. Další informace o plánech najdete v tématu [zobrazení plánu údržby.](maintenance-scheduling.md#view-a-maintenance-schedule)
 
-Proces upgradu bude při restartu vašeho fondu SQL zahrnovat krátké přerušení připojení (přibližně 5 min).  Po restartování fondu SQL bude plně dostupný k použití. Nicméně může docházet ke snížení výkonu v době, kdy proces upgradu pokračuje v upgradu datových souborů na pozadí. Celková doba snížení výkonu se bude lišit v závislosti na velikosti datových souborů.
+Proces upgradu bude zahrnovat krátké odpojení (přibližně 5 minut), jako je restartování vyhrazeného fondu SQL (dříve SQL DW).  Po restartování vyhrazeného fondu SQL (dříve SQL DW) bude plně dostupný k použití. Nicméně může docházet ke snížení výkonu v době, kdy proces upgradu pokračuje v upgradu datových souborů na pozadí. Celková doba snížení výkonu se bude lišit v závislosti na velikosti datových souborů.
 
 Proces upgradu datového souboru můžete také urychlit spuštěním [příkazu ALTER index Rebuild](sql-data-warehouse-tables-index.md) ve všech primárních tabulkách columnstore s použitím větších tříd objektů slo a prostředků po restartování.
 
@@ -54,12 +54,12 @@ Proces upgradu datového souboru můžete také urychlit spuštěním [příkazu
 
 ## <a name="self-upgrade-to-gen2"></a>Samoobslužný upgrade na Gen2
 
-Pomocí následujících kroků můžete v existujícím Gen1 fondu SQL vybrat možnost samoobslužný upgrade. Pokud se rozhodnete pro vlastní upgrade, je nutné jej dokončit před zahájením procesu automatického upgradu ve vaší oblasti. Tím zajistíte, že předejdete jakémukoli riziku automatických upgradů, které způsobují konflikt.
+Vlastní upgrade můžete provést pomocí následujících kroků na stávajícím Gen1 fondu SQL (dřív SQL DW). Pokud se rozhodnete pro vlastní upgrade, je nutné jej dokončit před zahájením procesu automatického upgradu ve vaší oblasti. Tím zajistíte, že předejdete jakémukoli riziku automatických upgradů, které způsobují konflikt.
 
-Při provádění samoobslužného upgradu jsou k dispozici dvě možnosti.  Můžete buď upgradovat aktuální fond SQL, nebo můžete obnovit Gen1 fond SQL do instance Gen2.
+Při provádění samoobslužného upgradu jsou k dispozici dvě možnosti.  Můžete buď upgradovat svůj aktuální vyhrazený fond SQL (dřív SQL DW), nebo můžete obnovit vyhrazený fond SQL Gen1 (dříve SQL DW) do instance Gen2.
 
-- [Upgrade na místě](upgrade-to-latest-generation.md) – Tato možnost provede upgrade stávajícího Gen1 fondu SQL na Gen2. Proces upgradu bude při restartu vašeho fondu SQL zahrnovat krátké přerušení připojení (přibližně 5 min).  Po restartování fondu SQL bude plně dostupný k použití. Pokud při upgradu dojde k problémům, otevřete [žádost o podporu](sql-data-warehouse-get-started-create-support-ticket.md) a referenční informace "Gen2 upgrade" jako možnou příčinu.
-- [Upgrade z bodu obnovení](sql-data-warehouse-restore-points.md) – vytvořte uživatelem definovaný bod obnovení v aktuálním Gen1 fondu SQL a pak ho obnovte přímo do instance Gen2. Existující fond SQL Gen1 zůstane na svém místě. Po dokončení obnovení bude váš fond SQL Gen2 plně dostupný pro použití.  Po spuštění všech procesů testování a ověřování na obnovené instanci Gen2 je možné odstranit původní instanci Gen1.
+- [Upgrade na místě](upgrade-to-latest-generation.md) – Tato možnost provede upgrade stávajícího Gen1 fondu SQL (dříve SQL DW) na Gen2. Proces upgradu bude zahrnovat krátké odpojení (přibližně 5 minut), jako je restartování vyhrazeného fondu SQL (dříve SQL DW).  Po restartování bude plně k dispozici pro použití. Pokud při upgradu dojde k problémům, otevřete [žádost o podporu](sql-data-warehouse-get-started-create-support-ticket.md) a referenční informace "Gen2 upgrade" jako možnou příčinu.
+- [Upgrade z bodu obnovení](sql-data-warehouse-restore-points.md) – vytvořte uživatelem definovaný bod obnovení ve vašem aktuálním vyhrazeném fondu SQL Gen1 (dříve SQL DW) a pak ho obnovte přímo do instance Gen2. Existující vyhrazený fond SQL Gen1 (dříve SQL DW) zůstane v platnosti. Po dokončení obnovení bude váš vyhrazený Gen2 fond SQL (dřív SQL DW) plně dostupný pro použití.  Po spuštění všech procesů testování a ověřování na obnovené instanci Gen2 je možné odstranit původní instanci Gen1.
 
   - Krok 1: Vytvořte z Azure Portal [bod obnovení definovaný uživatelem](sql-data-warehouse-restore-active-paused-dw.md).
   - Krok 2: při obnovení z bodu obnovení definovaného uživatelem nastavte úroveň výkonu na upřednostňovanou Gen2 úroveň.
@@ -71,7 +71,7 @@ Chcete-li urychlit proces migrace dat na pozadí, můžete ihned vynutit přesun
 > [!NOTE]
 > Příkaz ALTER index Rebuild je offline operace a tabulky nebudou k dispozici, dokud se znovu nedokončí sestavení.
 
-Pokud narazíte na nějaké problémy s fondem SQL, vytvořte [žádost o podporu](sql-data-warehouse-get-started-create-support-ticket.md) a jako možnou příčinu Reference "Gen2 upgrade".
+Pokud narazíte na nějaké problémy s vaším vyhrazeným fondem SQL (dřív SQL DW), vytvořte [žádost o podporu](sql-data-warehouse-get-started-create-support-ticket.md) a jako možnou příčinu Reference "Gen2 upgrade".
 
 Další informace najdete v tématu [upgrade na Gen2](upgrade-to-latest-generation.md).
 
@@ -89,12 +89,12 @@ Další informace najdete v tématu [upgrade na Gen2](upgrade-to-latest-generati
 
 - Odpověď: můžete upgradovat na místě nebo upgradovat z bodu obnovení.
 
-  - Upgrade na místě způsobí, že se váš fond SQL přestane pozastavit a obnoví.  Proces na pozadí bude pokračovat, i když je fond SQL online.  
+  - Upgrade na místě způsobí, že váš vyhrazený fond SQL (dřív SQL DW) bude chvíli pozastaven a bude pokračovat.  Proces na pozadí bude pokračovat, i když bude vyhrazený fond SQL (dřív SQL DW) online.  
   - Pokud provádíte upgrade prostřednictvím bodu obnovení, trvá to déle, protože upgrade projde procesem úplného obnovení.
 
 **Otázka: jak dlouho bude automatický upgrade trvat?**
 
-- Odpověď: skutečný výpadek upgradu je pouze čas potřebný k pozastavení a obnovení služby, což je 5 až 10 minut. Po krátkém výpadku proces na pozadí spustí migraci úložiště. Doba, po kterou proces na pozadí závisí na velikosti vašeho fondu SQL.
+- Odpověď: skutečný výpadek upgradu je pouze čas potřebný k pozastavení a obnovení služby, což je 5 až 10 minut. Po krátkém výpadku proces na pozadí spustí migraci úložiště. Doba pro proces na pozadí závisí na velikosti vyhrazeného fondu SQL (dříve SQL DW).
 
 **Otázka: kdy bude tento automatický upgrade probíhat?**
 
@@ -110,7 +110,7 @@ Další informace najdete v tématu [upgrade na Gen2](upgrade-to-latest-generati
 
 **Otázka: můžu zakázat geografickou zálohu?**
 
-- Odpověď: Ne. Geografické zálohování je podniková funkce pro zachování dostupnosti fondu SQL v případě, že oblast nebude k dispozici. Pokud máte další obavy, otevřete [žádost o podporu](sql-data-warehouse-get-started-create-support-ticket.md) .
+- Odpověď: Ne. Geografická záloha je podniková funkce pro zachování vyhrazené dostupnosti fondu SQL (dříve SQL DW) v případě, že oblast nebude k dispozici. Pokud máte další obavy, otevřete [žádost o podporu](sql-data-warehouse-get-started-create-support-ticket.md) .
 
 **Otázka: existuje rozdíl v syntaxi T-SQL mezi Gen1 a Gen2?**
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 10/28/2020
-ms.openlocfilehash: 2a648b4f4c614fc64fa7817102215720e51abe7f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d303a5d5b9779a2003b12d063c97c36a90576dd3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095593"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456620"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Možnost spoluprodeje v Partnerském centru
 
@@ -60,7 +60,7 @@ Typy řešení usnadňují definování scénářů, na které je vaše nabídka
 
 Můžete přidat až tři oblasti řešení pro vaši nabídku. Pro každou oblast řešení můžete zvolit až dvě podoblasti řešení. Pokud chcete vybrat více podkategorií, použijte `Ctrl` klíč (ve Windows) nebo klíč příkazu (na MacOS).
 
-## <a name="documents"></a>Dokumenty
+## <a name="documents"></a>dokumenty.
 
 Máte možnost poskytnout dokumentaci, kterou Microsoft bude používat k získání dalších informací o vaší nabídce, a vyhodnotit, co vyhovuje vašim potřebám zákazníků.
 
@@ -83,10 +83,10 @@ Kontakty můžete zadat stažením šablony CSV z partnerského centra, vyplněn
 
 Můžete také exportovat existující seznam kontaktů nabídky a následně provést změny v tomto souboru.
 
-* *Název (povinné)* : jméno kontaktu.
-* *E-mailová adresa (povinné)* : e-mailová adresa kontaktu
-* *Pozice úlohy (povinné)* : pracovní pozice.
-* *Role (povinné)* : použijte některou z následujících rolí.
+* *Název (povinné)*: jméno kontaktu.
+* *E-mailová adresa (povinné)*: e-mailová adresa kontaktu
+* *Pozice úlohy (povinné)*: pracovní pozice.
+* *Role (povinné)*: použijte některou z následujících rolí.
 
     | **Role**    | **Popis**  |
     | :------------------- | :-------------------|
@@ -108,7 +108,7 @@ Diagram referenční architektury je model, který představuje infrastrukturu, 
 
 Dokument lze vytvořit pomocí několika nástrojů. Doporučujeme aplikaci Microsoft Visio, protože má několik vzorníků, které jsou znázorněny v modelech architektury Azure.
 
-Užitečným výchozím bodem pro vytváření diagramů referenční architektury je využití [modelů architektury Azure](https://docs.microsoft.com/azure/architecture/browse/).
+Užitečným výchozím bodem pro vytváření diagramů referenční architektury je využití [modelů architektury Azure](/azure/architecture/browse/).
 
 ### <a name="typical-components-of-a-reference-architecture-diagram"></a>Typické součásti diagramu referenční architektury
 - Cloudové služby, které hostují a komunikují s vaší nabídkou, včetně těch, které generují využití Azure

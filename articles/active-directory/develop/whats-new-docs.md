@@ -5,22 +5,36 @@ description: Nová a aktualizovaná dokumentace platformy Microsoft Identity Pla
 services: active-directory
 author: mmacy
 manager: CelesteDG
-ms.date: 11/03/2020
+ms.date: 12/01/2020
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: d5865810dafef9ce2bb525a8f1b6cdbdb1a86566
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 108cd5f74b7b560534baf8f55f7d07ebb6557e7f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322558"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457145"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft Identity Platform Docs: co je nového
 
 Vítají vás novinky v dokumentaci k platformě Microsoft Identity Platform. V tomto článku jsou uvedené nové dokumenty, které se přidaly, a ty, které měly v posledních třech měsících významné aktualizace.
+
+## <a name="november-2020"></a>Listopad 2020
+
+### <a name="new-articles"></a>Nové články
+
+- [Jak používat rozhraní API pro průběžné vyhodnocení s povoleným hodnocením ve vašich aplikacích](app-resilience-continuous-access-evaluation.md)
+
+### <a name="updated-articles"></a>Aktualizované články
+
+- [Tokeny přístupu Microsoft Identity Platform](access-tokens.md)
+- [Možnosti konfigurace aplikace (MSAL)](msal-client-application-configuration.md)
+- [Postupy: poskytnutí volitelných deklarací identity vaší aplikaci](active-directory-optional-claims.md)
+- [Publikování aplikace v galerii aplikací Azure AD](v2-howto-app-gallery-listing.md)
+- [Postupy: Přidání rolí aplikace do aplikace a jejich přijetí v tokenu](howto-add-app-roles-in-azure-ad-apps.md)
 
 ## <a name="october-2020"></a>Říjen 2020
 
@@ -67,23 +81,3 @@ Vítají vás novinky v dokumentaci k platformě Microsoft Identity Platform. V 
 - [Rychlý Start: Konfigurace klientské aplikace pro přístup k webovému rozhraní API](quickstart-configure-app-access-web-apis.md)
 - [Rychlý Start: Konfigurace aplikace k vystavení webového rozhraní API](quickstart-configure-app-expose-web-apis.md)
 - [Rychlý Start: registrace aplikace s platformou Microsoft identity](quickstart-register-app.md)
-
-## <a name="august-2020"></a>Srpen 2020
-
-### <a name="new-articles"></a>Nové články
-
-- [Migrace aplikací pro Android, které používají zprostředkovatele z ADAL.NET na MSAL.NET](msal-net-migration-android-broker.md)
-- [Zpracování výjimek a chyb v MSAL pro Android](msal-android-handling-exceptions.md)
-
-### <a name="updated-articles"></a>Aktualizované články
-
-- [Migrace aplikací pro iOS, které používají Microsoft Authenticator z ADAL.NET na MSAL.NET](msal-net-migration-ios-broker.md)
-- [Použití Microsoft Authenticator nebo Portál společnosti Intune v aplikacích Xamarin](msal-net-use-brokers-with-xamarin-apps.md)
-- [Požadavky na konfiguraci a tipy pro řešení potíží pro Xamarin Android s MSAL.NET](msal-net-xamarin-android-considerations.md)
-- [Konfigurace mobilní aplikace, která volá webová rozhraní API](scenario-mobile-app-configuration.md)
-- [Postupy: přizpůsobení deklarací, které byly vygenerovány v tokenech pro konkrétní aplikaci v tenantovi (Preview)](active-directory-claims-mapping.md)
-- [Přihlašovací údaje ověřovacího certifikátu aplikace Microsoft Identity Platform](active-directory-certificate-credentials.md)
-- [Omezení a omezení URI pro přesměrování (adresa URL odpovědi)](reply-url.md)
-- [Rychlý Start: Konfigurace aplikace k vystavení webového rozhraní API](quickstart-configure-app-expose-web-apis.md)
-- [Videa k platformě Microsoft Identity Platform](identity-videos.md)
-- [Rychlý Start: volání webového rozhraní API ASP.NET chráněného technologií Microsoft Identity Platform](quickstart-v2-dotnet-native-aspnet.md)

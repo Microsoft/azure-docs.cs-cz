@@ -1,6 +1,6 @@
 ---
-title: Samoobslužný fond SQL bez serveru (Preview) samoobslužná ochrana
-description: Tato část obsahuje informace, které vám můžou pomoct vyřešit problémy s neserverovým fondem SQL (Preview).
+title: Samoobslužná ochrana fondu SQL bez serveru
+description: Tato část obsahuje informace, které vám pomůžou při řešení problémů s fondem SQL bez serveru.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,23 +9,23 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: aefdb90c3e6c8d3abc3924ecebb2aa46739e99ad
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 12ff369cb931eb36014b7c9598b036afdc158750
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682617"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457192"
 ---
-# <a name="self-help-for-serverless-sql-pool-preview"></a>Samoobslužná ochrana pro fond SQL bez serveru (Preview)
+# <a name="self-help-for-serverless-sql-pool"></a>Samoobslužná ochrana pro fond SQL bez serveru
 
-Tento článek obsahuje informace o řešení nejčastějších problémů s SQL fondem bez serveru (Preview) ve službě Azure synapse Analytics.
+Tento článek obsahuje informace o řešení nejčastějších problémů s neserverovým fondem SQL ve službě Azure synapse Analytics.
 
 ## <a name="serverless-sql-pool-is-grayed-out-in-synapse-studio"></a>V synapse studiu je šedý fond SQL bez serveru šedý.
 
 Pokud synapse Studio nemůže navázat připojení k fondu SQL bez serveru, všimnete si, že fond SQL bez serveru je šedý nebo zobrazuje stav "offline". K tomuto problému obvykle dochází, když dojde k jednomu z následujících případů:
 
-1) Vaše síť brání komunikaci s back-endu Azure synapse. Nejčastějším případem je, že je port 1443 zablokovaný. Pokud chcete získat, aby fond SQL bez serveru fungoval, odblokujte tento port. Další problémy by mohly zabránit tomu, aby fond SQL bez serveru fungoval, a [Další informace najdete v kompletní příručce pro odstraňování potíží](../troubleshoot/troubleshoot-synapse-studio.md).
-2) Nemáte oprávnění k přihlášení do fondu SQL bez serveru. Pokud chcete získat přístup, jeden z správců pracovního prostoru Azure synapse by vás měl přidat do role správce pracovního prostoru nebo správce SQL. [Další informace najdete v kompletní příručce k řízení přístupu](access-control.md).
+1) Vaše síť brání komunikaci s back-endu Azure synapse. Nejčastější příčinou je blokování portu 1443. Pokud chcete získat, aby fond SQL bez serveru fungoval, odblokujte tento port. Další problémy by mohly zabránit tomu, aby fond SQL bez serveru fungoval, a [Další informace najdete v kompletní příručce pro odstraňování potíží](../troubleshoot/troubleshoot-synapse-studio.md).
+2) Nemáte oprávnění k přihlášení do fondu SQL bez serveru. Pokud chcete získat přístup, jeden ze správců pracovního prostoru Azure Synapse by vás měl přidat do role správce pracovního prostoru nebo správce SQL. [Další informace najdete v úplném průvodci řízením přístupu](access-control.md).
 
 ## <a name="query-fails-because-file-cannot-be-opened"></a>Dotaz se nezdařil, protože soubor nelze otevřít.
 
@@ -37,7 +37,7 @@ Pokud se dotaz nezdařil s chybovou zprávou "Tento dotaz nelze provést z důvo
 
 - Zajistěte, aby byly použity datové typy přiměřených velikostí. Také určete schéma pro soubory Parquet pro sloupce řetězců, protože budou ve výchozím nastavení VARCHAR (8000). 
 
-- Pokud vaše dotazy cílí na soubory CSV, zvažte [vytvoření statistiky](develop-tables-statistics.md#statistics-in-serverless-sql-pool-preview). 
+- Pokud vaše dotazy cílí na soubory CSV, zvažte [vytvoření statistiky](develop-tables-statistics.md#statistics-in-serverless-sql-pool). 
 
 - Pokud chcete optimalizovat dotaz, přejděte k [osvědčeným postupům pro výkon pro fond SQL bez serveru](best-practices-sql-on-demand.md) .  
 

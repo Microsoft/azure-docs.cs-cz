@@ -1,37 +1,37 @@
 ---
 title: Místo ETL ELT design
-description: Implementace flexibilních strategií načítání dat pro synapse fond SQL ve službě Azure synapse Analytics
+description: Implementujte flexibilní strategie načítání dat pro vyhrazené fondy SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 05/13/2020
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 0533e76863d01675cee7aaca79e32821e5efc749
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8b75345743bb398458752d03f853738df713b4f9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92507799"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456443"
 ---
-# <a name="data-loading-strategies-for-synapse-sql-pool"></a>Strategie načítání dat do fondu Synapse SQL
+# <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Strategie načítání dat pro vyhrazený fond SQL ve službě Azure synapse Analytics
 
-Tradiční fondy SQL SMP používají pro načítání dat proces extrakce, transformace a načítání (ETL). Synapse SQL v rámci služby Azure synapse Analytics využívá architekturu distribuovaného zpracování dotazů, která využívá škálovatelnost a flexibilitu výpočetních prostředků a prostředků úložiště.
+Tradiční vyhrazené fondy SQL SMP používají pro načítání dat proces extrakce, transformace a načítání (ETL). Synapse SQL v rámci služby Azure synapse Analytics využívá architekturu distribuovaného zpracování dotazů, která využívá škálovatelnost a flexibilitu výpočetních prostředků a prostředků úložiště.
 
 Použití procesu extrakce, načítání a transformace (ELT) využívá integrované funkce pro zpracování distribuovaných dotazů a eliminuje prostředky potřebné pro transformaci dat před jejich načtením.
 
-I když fond SQL podporuje mnoho metod načítání, včetně oblíbených SQL Server možností, jako je [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a [rozhraní SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), nejrychlejší a nejškálovatelný způsob načítání dat je prostřednictvím základních externích tabulek a [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+I když vyhrazené fondy SQL podporují mnoho metod načítání, včetně oblíbených SQL Server možností, jako je [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a [rozhraní SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), nejrychlejší a nejškálovatelný způsob načítání dat je prostřednictvím základních externích tabulek a [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 Pomocí základu a příkazu Kopírovat můžete přistupovat k externím datům uloženým ve službě Azure Blob Storage nebo Azure Data Lake Store prostřednictvím jazyka T-SQL. Pro největší flexibilitu při nasazování doporučujeme použít příkaz COPY.
 
 
 ## <a name="what-is-elt"></a>Co je ELT?
 
-Extrahování, načítání a transformace (ELT) je proces, při kterém se data extrahují ze zdrojového systému, načtou do fondu SQL a pak se transformují.
+Extrahování, načítání a transformace (ELT) je proces, při kterém se data extrahují ze zdrojového systému, načtou do vyhrazeného fondu SQL a pak se transformují.
 
 Základní kroky pro implementaci ELT jsou:
 
@@ -62,7 +62,7 @@ Nástroje a služby, které můžete použít k přesunu dat do Azure Storage:
 
 - Služba [Azure ExpressRoute](../../expressroute/expressroute-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) vylepšuje propustnost, výkon a předvídatelnost sítě. ExpressRoute je služba, která směruje vaše data prostřednictvím vyhrazeného privátního připojení k Azure. Připojení ExpressRoute nesměrují data prostřednictvím veřejného Internetu. Připojení nabízejí spolehlivější, rychlejší rychlost, nižší latenci a vyšší zabezpečení než typická připojení přes veřejný Internet.
 - [Nástroj AzCopy](../../storage/common/storage-choose-data-transfer-solution.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) přesouvá data Azure Storage přes veřejný Internet. To funguje, pokud jsou velikosti vašich dat menší než 10 TB. Pokud chcete pravidelně provádět zátěž s AZCopy, otestujte rychlost sítě a zjistěte, jestli je přijatelné.
-- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) má bránu, kterou můžete nainstalovat na svůj místní server. Pak můžete vytvořit kanál pro přesun dat z místního serveru až do Azure Storage. Pokud chcete použít Data Factory s fondem SQL, přečtěte si téma [načítání dat pro fond SQL](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) má bránu, kterou můžete nainstalovat na svůj místní server. Pak můžete vytvořit kanál pro přesun dat z místního serveru až do Azure Storage. Pokud chcete použít Data Factory s vyhrazenými fondy SQL, přečtěte si téma [načítání dat pro vyhrazené fondy SQL](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ## <a name="3-prepare-the-data-for-loading"></a>3. Příprava dat pro načtení
 
@@ -70,9 +70,9 @@ Možná budete muset před načtením připravit a vyčistit data v účtu úlo�
 
 ### <a name="define-the-tables"></a>Definování tabulek
 
-Při použití příkazu COPY musíte nejprve definovat tabulky, do kterých načítáte, do fondu SQL.
+Při použití příkazu COPY musíte nejprve definovat tabulky, do kterých načítáte, do vyhrazeného fondu SQL.
 
-Pokud používáte základnu, musíte před načtením definovat externí tabulky ve svém fondu SQL. Základ používá pro definování a přístup k datům v Azure Storage externí tabulky. Externí tabulka je podobná zobrazení databáze. Externí tabulka obsahuje schéma tabulky a odkazuje na data, která jsou uložená mimo fond SQL.
+Pokud používáte základnu, je nutné před načtením definovat externí tabulky ve vyhrazeném fondu SQL. Základ používá pro definování a přístup k datům v Azure Storage externí tabulky. Externí tabulka je podobná zobrazení databáze. Externí tabulka obsahuje schéma tabulky a odkazuje na data, která jsou uložená mimo vyhrazený fond SQL.
 
 Definování externích tabulek zahrnuje určení zdroje dat, formátu textových souborů a definic tabulek. Odkazy jazyka T-SQL odkazují na články, které budete potřebovat:
 
@@ -130,12 +130,12 @@ Pokud používáte základnu, externí objekty definovány musí zarovnat řádk
 Formátování textových souborů:
 
 - Pokud vaše data pocházejí z nerelačního zdroje, je nutné je transformovat na řádky a sloupce. Bez ohledu na to, jestli jsou data z relačního nebo nerelačního zdroje, musí být data transformovaná tak, aby odpovídala definicím sloupců pro tabulku, do které plánujete načíst data.
-- Umožňuje formátovat data v textovém souboru tak, aby odpovídala sloupcům a datovým typům v cílové tabulce. Chybné zarovnání mezi datovými typy v externích textových souborech a v tabulce fondu SQL způsobuje, že během načítání budou řádky odmítnuty.
+- Umožňuje formátovat data v textovém souboru tak, aby odpovídala sloupcům a datovým typům v cílové tabulce. Chybné zarovnání mezi datovými typy v externích textových souborech a vyhrazenou tabulkou fondu SQL způsobuje, že se řádky během načítání odmítnou.
 - Oddělte pole v textovém souboru ukončovacím znakem.  Nezapomeňte použít znak nebo sekvenci znaků, které se ve zdrojových datech nenašly. Použijte ukončovací znak, který jste zadali pomocí nástroje [Create External File Format](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="4-load-the-data-using-polybase-or-the-copy-statement"></a>4. načtěte data pomocí základu nebo příkazu COPY.
 
-Osvědčeným postupem je načíst data do pracovní tabulky. Pracovní tabulky umožňují zpracovávat chyby bez rušivého vlivu na provozní tabulky. Přípravná tabulka vám také nabídne možnost použít architekturu paralelního zpracování fondu SQL pro transformaci dat před vložením dat do provozních tabulek.
+Osvědčeným postupem je načíst data do pracovní tabulky. Pracovní tabulky umožňují zpracovávat chyby bez rušivého vlivu na provozní tabulky. Pracovní tabulka vám také umožní využít vyhrazenou architekturu paralelního zpracování fondu SQL pro transformaci dat před vložením dat do provozních tabulek.
 
 ### <a name="options-for-loading"></a>Možnosti načítání
 

@@ -11,12 +11,12 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 036cb15cf16b5f90dc17ccdce378a073a398d403
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0cf40990d59aff984226244f520e6f8f937713fd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86181331"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456486"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>Pokyny k návrhu pro použití replikovaných tabulek ve fondu SQL synapse
 
@@ -24,15 +24,15 @@ Tento článek obsahuje doporučení pro návrh replikovaných tabulek ve schém
 
 > [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-V tomto článku se předpokládá, že máte zkušenosti s koncepty distribuce dat a přesunu dat ve fondu SQL.Další informace najdete v článku o [architektuře](massively-parallel-processing-mpp-architecture.md) .
+V tomto článku se předpokládá, že máte zkušenosti s koncepty distribuce dat a přesunu dat ve fondu SQL.  Další informace najdete v článku o [architektuře](massively-parallel-processing-mpp-architecture.md) .
 
-Jako součást návrhu tabulky Pochopte co nejvíce dat a způsob dotazování na data.Zvažte například tyto otázky:
+Jako součást návrhu tabulky Pochopte co nejvíce dat a způsob dotazování na data.  Zvažte například tyto otázky:
 
 - Jak velká je tabulka?
 - Jak často je tabulka aktualizována?
-- Mám tabulky faktů a dimenzí v databázi fondu SQL?
+- Mám tabulky faktů a dimenzí ve fondu SQL?
 
 ## <a name="what-is-a-replicated-table"></a>Co je replikovaná tabulka?
 
@@ -51,8 +51,8 @@ Při použití replikované tabulky zvažte následující:
 
 Replikované tabulky nemůžou poskytovat nejlepší výkon dotazů v těchto případech:
 
-- Tabulka obsahuje časté operace vložení, aktualizace a odstranění.Operace jazyka DML (data Language) vyžadují opětovné sestavení replikované tabulky.Opakované sestavování může způsobit pomalejší výkon.
-- Databáze fondu SQL se často škáluje. Při škálování databáze fondu SQL se změní počet výpočetních uzlů, které vycházejí z opakovaného sestavování replikované tabulky.
+- Tabulka obsahuje časté operace vložení, aktualizace a odstranění. Operace jazyka DML (data Language) vyžadují opětovné sestavení replikované tabulky. Opakované sestavování může způsobit pomalejší výkon.
+- Fond SQL se často škáluje. Škálování fondu SQL změní počet výpočetních uzlů, které způsobí opakované sestavení replikované tabulky.
 - Tabulka má velký počet sloupců, ale datové operace obvykle mají přístup pouze k malému počtu sloupců. V tomto scénáři může být místo replikace celé tabulky efektivnější, aby se tabulka rozšíří a potom se vytvořil index na často používaných sloupcích. Když dotaz vyžaduje přesun dat, přesune SQL fond pouze data pro požadované sloupce.
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>Použití replikovaných tabulek s jednoduchými predikáty dotazů
@@ -174,8 +174,8 @@ Tento dotaz používá [Sys.pdw_replicated_table_cache_state](/sql/relational-da
 
 ```sql
 SELECT [ReplicatedTable] = t.[name]
-  FROM sys.tables t  
-  JOIN sys.pdw_replicated_table_cache_state c  
+  FROM sys.tables t  
+  JOIN sys.pdw_replicated_table_cache_state c  
     ON c.object_id = t.object_id
   JOIN sys.pdw_table_distribution_properties p
     ON p.object_id = t.object_id

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: ca167a2ae313c29581d40fe921a8742b9b6b61fe
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 983b1a5e024a44733fab418a67375f232e66cfe4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686051"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457165"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Možnosti identit a přístupu pro Azure Kubernetes Service (AKS)
 
@@ -46,7 +46,7 @@ ClusterRole funguje stejným způsobem jako udělení oprávnění k prostředk�
 
 ### <a name="rolebindings-and-clusterrolebindings"></a>RoleBindings a ClusterRoleBindings
 
-Jakmile jsou role definované pro udělení oprávnění k prostředkům, přiřaďte tato oprávnění Kubernetes RBAC k *RoleBinding*. Pokud se váš cluster AKS [integruje s Azure Active Directory](#azure-active-directory-integration), vazby jsou tím, jak jsou těmto uživatelům služby Azure AD udělena oprávnění k provádění akcí v rámci clusteru, viz jak v [řízení přístupu k prostředkům clusteru pomocí řízení přístupu založeného na rolích Kubernetes a Azure Active Directory identit](azure-ad-rbac.md).
+Jakmile jsou role definované pro udělení oprávnění k prostředkům, přiřaďte tato oprávnění Kubernetes RBAC k *RoleBinding*. Pokud se váš cluster AKS [integruje s Azure Active Directory (Azure AD)](#azure-active-directory-integration), vazby jsou tím, jak se těmto uživatelům Azure AD uděluje oprávnění k provádění akcí v rámci clusteru, najdete v tématu Jak [řídit přístup k prostředkům clusteru pomocí řízení přístupu založeného na rolích Kubernetes a Azure Active Directory identit](azure-ad-rbac.md).
 
 Vazby role slouží k přiřazení rolí pro daný obor názvů. Tento přístup umožňuje logicky oddělit jeden AKS cluster s uživateli, kteří mají jenom přístup k prostředkům aplikace v jejich přiřazeném oboru názvů. Pokud potřebujete navazovat role napříč celým clusterem nebo prostředky clusteru mimo daný obor názvů, můžete místo toho použít *ClusterRoleBindings*.
 
@@ -144,6 +144,22 @@ AKS poskytuje následující čtyři předdefinované role. Jsou podobné [integ
 | Správce clusteru RBAC služby Azure Kubernetes  | Umožňuje přístupu super uživatele k provedení jakékoli akce u libovolného prostředku. Poskytuje plnou kontrolu nad všemi prostředky v clusteru a ve všech oborech názvů. |
 
 **Pokud chcete zjistit, jak povolit Azure RBAC pro autorizaci Kubernetes, [Přečtěte si sem](manage-azure-rbac.md).**
+
+## <a name="summary"></a>Shrnutí
+
+Tato tabulka shrnuje způsoby, kterými se uživatelé můžou Kubernetes ověřit, když je povolená integrace služby Azure AD.  Ve všech případech je sekvence příkazů uživatele následující:
+1. Spusťte `az login` ověřování v Azure.
+1. Spusťte `az aks get-credentials` ke stažení pověření pro cluster do `.kube/config` .
+1. Spusťte `kubectl` příkazy (první z nich může aktivovat ověřování založené na prohlížeči pro ověření v clusteru, jak je popsáno v následující tabulce).
+
+Udělená role, na kterou odkazuje druhý sloupec, je udělení role Azure RBAC zobrazené na kartě **Access Control** v Azure Portal. Skupina Azure AD pro správu clusteru se zobrazuje na kartě **Konfigurace** na portálu (nebo s názvem parametru `--aad-admin-group-object-ids` v Azure CLI).
+
+| Popis        | Požadováno udělení role| Skupiny Azure AD pro správu clusteru | Kdy je použít |
+| -------------------|------------|----------------------------|-------------|
+| Starší přihlašovací údaje správce pomocí klientského certifikátu| **Role správce Azure Kubernetes**. Tato role umožňuje `az aks get-credentials` použití s `--admin` příznakem, který do uživatele stáhne [starší certifikát Správce clusteru (mimo Azure AD)](control-kubeconfig-access.md) `.kube/config` . Toto je jediný účel role správce Azure Kubernetes.|neuvedeno|Pokud jste trvale zablokovali přístup k platné skupině Azure AD s přístupem k vašemu clusteru.| 
+| Azure AD s ručním (cluster) RoleBindings| **Role uživatele Azure Kubernetes**. Roli "uživatel" lze `az aks get-credentials` použít bez `--admin` příznaku. (Toto je jediný účel "role uživatele Azure Kubernetes".) Výsledkem je, že na clusteru s podporou Azure AD je stažení [prázdné položky](control-kubeconfig-access.md) do `.kube/config` , která aktivuje ověřování založené na prohlížeči při prvním použití nástrojem `kubectl` .| Uživatel není v žádné z těchto skupin. Vzhledem k tomu, že uživatel není ve všech skupinách správců clusteru, budou jeho práva řízena výhradně všemi RoleBindings nebo ClusterRoleBindings, které byly nastaveny pomocí Správce clusterů. (Cluster) RoleBindings je [navržený jako uživatelé Azure AD nebo skupiny Azure AD](azure-ad-rbac.md) `subjects` . Pokud žádné takové vazby nejsou nastavené, uživatel nebude moct excute žádné `kubectl` příkazy.|Pokud chcete jemně odstupňované řízení přístupu a nepoužíváte Azure RBAC pro autorizaci Kubernetes. Všimněte si, že uživatel, který nastavuje vazby, se musí přihlásit jednou z dalších metod uvedených v této tabulce.|
+| Azure AD podle člena skupiny správců| Stejný jako výše uvedený|Uživatel je členem jedné ze skupin, které jsou zde uvedeny. AKS automaticky generuje ClusterRoleBinding, který váže všechny uvedené skupiny k `cluster-admin` roli Kubernetes. Takže uživatelé v těchto skupinách můžou spouštět všechny `kubectl` příkazy jako `cluster-admin` .|Pokud chcete uživatelům pohodlně udělit úplná práva správce a _nepoužíváte_ pro autorizaci KUBERNETES Azure RBAC.|
+| Azure AD s Azure RBAC pro autorizaci Kubernetes|Dvě role: první, **role uživatele Azure Kubernetes** (jak je uvedeno výše). Druhý, jedna z "Azure Kubernetes Service **RBAC**..." výše uvedené role nebo vlastní alternativy.|Pole role správce na kartě konfigurace není důležité, pokud je povolená možnost Azure RBAC pro Kubernetes autorizaci.|Pro autorizaci Kubernetes používáte Azure RBAC. Tento přístup poskytuje jemně odstupňovaný ovládací prvek bez nutnosti nastavovat RoleBindings nebo ClusterRoleBindings.|
 
 ## <a name="next-steps"></a>Další kroky
 
