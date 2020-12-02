@@ -3,8 +3,8 @@ title: Vyvolat program MapReduce z Azure Data Factory
 description: Naučte se zpracovávat data spuštěním programů MapReduce v clusteru Azure HDInsight z objektu pro vytváření dat Azure.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: c34db93f-570a-44f1-a7d6-00390f4dc0fa
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 089a2e6a0b90c1682e2ebdd146626c93cec35f77
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8bdcaf20330a3700681fd96f858370dd7dcdf4c7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636846"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495425"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Vyvolat programy MapReduce z Data Factory
 > [!div class="op_single_selector" title1="Aktivity transformace"]
@@ -49,7 +49,7 @@ Podrobnosti o spouštění skriptů na bázi vepřového a podregistru v cluster
 ## <a name="json-for-hdinsight-mapreduce-activity"></a>JSON pro aktivitu MapReduce služby HDInsight
 V definici JSON aktivity HDInsight: 
 
-1. Nastavte **typ** **aktivity** na **HDInsight** .
+1. Nastavte **typ** **aktivity** na **HDInsight**.
 2. Zadejte název třídy pro vlastnost **ClassName** .
 3. Zadejte cestu k souboru JAR včetně názvu souboru pro vlastnost **jarFilePath** .
 4. Zadejte propojenou službu, která odkazuje na Blob Storage Azure, která obsahuje soubor JAR pro vlastnost **jarLinkedService** .   
@@ -183,7 +183,7 @@ Kanál v tomto příkladu má pouze jednu aktivitu typu: HDInsightMapReduce. Mez
 
 | Vlastnost | Poznámky |
 |:--- |:--- |
-| typ |Typ musí být nastaven na **HDInsightMapReduce** . |
+| typ |Typ musí být nastaven na **HDInsightMapReduce**. |
 | NázevTřídy |Název třídy je: **WORDCOUNT** |
 | jarFilePath |Cesta k souboru jar obsahujícímu třídu Pokud zkopírujete/vložíte následující kód, nezapomeňte změnit název clusteru. |
 | jarLinkedService |Azure Storage propojená služba, která obsahuje soubor JAR. Tato propojená služba odkazuje na úložiště, které je přidružené ke clusteru HDInsight. |

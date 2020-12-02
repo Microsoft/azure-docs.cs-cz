@@ -3,20 +3,20 @@ title: Vytváření prediktivních datových kanálů pomocí Azure Data Factory
 description: Popisuje, jak vytvořit vytváření prediktivních kanálů pomocí Azure Data Factory a Azure Machine Learning Studio (Classic).
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: ce3175a015b7a5813f62c639fdadbeea367bbc22
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 481b801d481f32ef84279be2d8bd6089670a01b1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631763"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496515"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Vytváření prediktivních kanálů pomocí Azure Machine Learning Studio (Classic) a Azure Data Factory
 
@@ -40,9 +40,9 @@ ms.locfileid: "92631763"
 ### <a name="azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasický)
 [Azure Machine Learning Studio (Classic)](https://azure.microsoft.com/documentation/services/machine-learning/) umožňuje sestavovat, testovat a nasazovat řešení prediktivní analýzy. Z hlediska vysoké úrovně je to provedeno ve třech krocích:
 
-1. **Vytvořte školicí experiment** . Tento krok provedete pomocí Azure Machine Learning Studio (Classic). Studio (Classic) je vizuální vývojové prostředí pro týmovou spolupráci, které slouží k výuce a testování modelu prediktivní analýzy pomocí školicích dat.
-2. **Převeďte ji na prediktivní experiment** . Jakmile se model vyškole pomocí stávajících dat a jste připraveni ho použít k vyhodnocení nových dat, připravujete a zjednodušte experimenty pro bodování.
-3. **Nasaďte ji jako webovou službu** . Experiment bodování můžete publikovat jako webovou službu Azure. Pomocí tohoto koncového bodu webové služby můžete odesílat data do svého modelu a výsledky přijetí výsledků předpovědi z tohoto modelu.
+1. **Vytvořte školicí experiment**. Tento krok provedete pomocí Azure Machine Learning Studio (Classic). Studio (Classic) je vizuální vývojové prostředí pro týmovou spolupráci, které slouží k výuce a testování modelu prediktivní analýzy pomocí školicích dat.
+2. **Převeďte ji na prediktivní experiment**. Jakmile se model vyškole pomocí stávajících dat a jste připraveni ho použít k vyhodnocení nových dat, připravujete a zjednodušte experimenty pro bodování.
+3. **Nasaďte ji jako webovou službu**. Experiment bodování můžete publikovat jako webovou službu Azure. Pomocí tohoto koncového bodu webové služby můžete odesílat data do svého modelu a výsledky přijetí výsledků předpovědi z tohoto modelu.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 Data Factory je cloudová služba pro integraci dat, která orchestruje a automatizuje **Přesun** a **transformaci** dat. Pomocí Azure Data Factory můžete vytvářet řešení pro integraci dat, která mohou ingestovat data z různých úložišť dat, transformovat a zpracovávat je, a výsledná data publikovat do úložišť dat.
@@ -59,7 +59,7 @@ Prediktivní modely v studiu bodování studia (Classic) se v průběhu času mu
 1. Publikujte experimenty školení (ne prediktivní experiment) jako webovou službu. Tento krok provedete v nástroji Studio (Classic) jako při zveřejnění prediktivního experimentu jako webové služby v předchozím scénáři.
 2. K vyvolání webové služby pro experimentální experimenty použijte aktivitu spustit v rámci dávkového zpracování studia (Classic). V podstatě můžete použít aktivitu spustit dávku Studio (Classic) k vyvolání webové služby pro cvičení webové služby a bodování.
 
-Až budete s přeškolením hotovi, aktualizujte webovou službu bodování (prediktivní experiment vystavený jako webovou službu) s nově vyškolený model pomocí **aktivity aktualizace prostředku Azure Machine Learning Studio (Classic)** . Podrobnosti najdete v tématu [aktualizace modelů pomocí článku Aktualizace prostředku aktivity](data-factory-azure-ml-update-resource-activity.md) .
+Až budete s přeškolením hotovi, aktualizujte webovou službu bodování (prediktivní experiment vystavený jako webovou službu) s nově vyškolený model pomocí **aktivity aktualizace prostředku Azure Machine Learning Studio (Classic)**. Podrobnosti najdete v tématu [aktualizace modelů pomocí článku Aktualizace prostředku aktivity](data-factory-azure-ml-update-resource-activity.md) .
 
 ## <a name="invoking-a-web-service-using-batch-execution-activity"></a>Vyvolání webové služby pomocí aktivity spuštění služby Batch
 Azure Data Factory slouží k orchestraci přesunu a zpracování dat a následnému provádění dávek pomocí studia (Classic). Tady je postup nejvyšší úrovně:
@@ -80,7 +80,7 @@ V tomto scénáři zpřístupňuje webová služba Studio (Classic) předpovědi
 > [!IMPORTANT]
 > Pokud webová služba používá více vstupů, použijte namísto použití **webServiceInput** vlastnost **webServiceInputs** . Viz část [Webová služba vyžaduje více vstupů](#web-service-requires-multiple-inputs) pro příklad použití vlastnosti webServiceInputs.
 >
-> Datové sady, na které odkazují vlastnosti **webServiceInput** / **webServiceInputs** a **webServiceOutputs** (v **typeProperties** ), musí být zahrnuté i do **vstupů** a **výstupů** aktivit.
+> Datové sady, na které odkazují vlastnosti **webServiceInput** / **webServiceInputs** a **webServiceOutputs** (v **typeProperties**), musí být zahrnuté i do **vstupů** a **výstupů** aktivit.
 >
 > V experimentu studia (Classic), vstupní a výstupní porty webové služby a globální parametry mají výchozí názvy ("input1", "input2"), které můžete přizpůsobit. Názvy, které použijete pro nastavení webServiceInputs, webServiceOutputs a globalParameters, se musí přesně shodovat s názvy v experimentech. Pokud chcete ověřit očekávané mapování, můžete zobrazit ukázkovou datovou část požadavku na stránce s nápovědu pro spuštění dávky pro koncový bod studia (Classic).
 >
@@ -137,7 +137,7 @@ Tento příklad používá Azure Storage k uložení vstupních i výstupních d
 
 Před přechodem do tohoto příkladu doporučujeme projít si [sestavení prvního kanálu pomocí Data Factory][adf-build-1st-pipeline] kurzu. Pomocí editoru Data Factory můžete v tomto příkladu vytvořit Data Factory artefakty (propojené služby, datové sady, kanál).
 
-1. Vytvořte **propojenou službu** pro vaši **Azure Storage** . Pokud jsou vstupní a výstupní soubory v různých účtech úložiště, potřebujete dvě propojené služby. Tady je příklad JSON:
+1. Vytvořte **propojenou službu** pro vaši **Azure Storage**. Pokud jsou vstupní a výstupní soubory v různých účtech úložiště, potřebujete dvě propojené služby. Tady je příklad JSON:
 
     ```JSON
     {
@@ -150,7 +150,7 @@ Před přechodem do tohoto příkladu doporučujeme projít si [sestavení prvn�
       }
     }
     ```
-2. Vytvořte **vstupní** Azure Data Factory **datovou sadu** . Na rozdíl od některých jiných Data Factory datových sad musí tyto datové sady obsahovat hodnoty **FolderPath** i **filename** . Pomocí dělení můžete způsobit, že každé spuštění dávky (každý datový řez) zpracuje nebo vytváří jedinečné vstupní a výstupní soubory. Možná budete muset zahrnout některé nadřazené aktivity pro transformaci vstupu do formátu souboru CSV a umístit ho do účtu úložiště pro každý řez. V takovém případě nebudete zahrnovat nastavení **externích** a **externalData** , která jsou uvedená v následujícím příkladu, a váš DecisionTreeInputBlob by byl výstupní datovou sadou jiné aktivity.
+2. Vytvořte **vstupní** Azure Data Factory **datovou sadu**. Na rozdíl od některých jiných Data Factory datových sad musí tyto datové sady obsahovat hodnoty **FolderPath** i **filename** . Pomocí dělení můžete způsobit, že každé spuštění dávky (každý datový řez) zpracuje nebo vytváří jedinečné vstupní a výstupní soubory. Možná budete muset zahrnout některé nadřazené aktivity pro transformaci vstupu do formátu souboru CSV a umístit ho do účtu úložiště pro každý řez. V takovém případě nebudete zahrnovat nastavení **externích** a **externalData** , která jsou uvedená v následujícím příkladu, a váš DecisionTreeInputBlob by byl výstupní datovou sadou jiné aktivity.
 
     ```JSON
     {
@@ -182,7 +182,7 @@ Před přechodem do tohoto příkladu doporučujeme projít si [sestavení prvn�
     }
     ```
 
-    Vstupní soubor CSV musí obsahovat řádek záhlaví sloupce. Pokud používáte **aktivitu kopírování** k vytvoření nebo přesunutí sdíleného svazku clusteru do úložiště objektů blob, měli byste nastavit vlastnost jímky **blobWriterAddHeader** na **hodnotu true** . Příklad:
+    Vstupní soubor CSV musí obsahovat řádek záhlaví sloupce. Pokud používáte **aktivitu kopírování** k vytvoření nebo přesunutí sdíleného svazku clusteru do úložiště objektů blob, měli byste nastavit vlastnost jímky **blobWriterAddHeader** na **hodnotu true**. Příklad:
 
     ```JSON
     sink:
@@ -192,8 +192,8 @@ Před přechodem do tohoto příkladu doporučujeme projít si [sestavení prvn�
     }
     ```
 
-    Pokud soubor CSV neobsahuje řádek záhlaví, může se zobrazit následující chyba: **Chyba v aktivitě: Chyba při čtení řetězce. Neočekávaný token: metodě StartObject. Cesta ' ', řádek 1, pozice 1** .
-3. Vytvořte **výstupní** Azure Data Factory **datovou sadu** . Tento příklad používá dělení k vytvoření jedinečné výstupní cesty pro každé spuštění řezu. Bez dělení by aktivita mohla soubor přepsat.
+    Pokud soubor CSV neobsahuje řádek záhlaví, může se zobrazit následující chyba: **Chyba v aktivitě: Chyba při čtení řetězce. Neočekávaný token: metodě StartObject. Cesta ' ', řádek 1, pozice 1**.
+3. Vytvořte **výstupní** Azure Data Factory **datovou sadu**. Tento příklad používá dělení k vytvoření jedinečné výstupní cesty pro každé spuštění řezu. Bez dělení by aktivita mohla soubor přepsat.
 
     ```JSON
     {
@@ -234,7 +234,7 @@ Před přechodem do tohoto příkladu doporučujeme projít si [sestavení prvn�
       }
     }
     ```
-4. Vytvořte **propojenou službu** typu: **AzureMLLinkedService** , která poskytuje adresu URL pro spuštění klíče rozhraní API a dávky modelu.
+4. Vytvořte **propojenou službu** typu: **AzureMLLinkedService**, která poskytuje adresu URL pro spuštění klíče rozhraní API a dávky modelu.
 
     ```JSON
     {
@@ -301,7 +301,7 @@ Před přechodem do tohoto příkladu doporučujeme projít si [sestavení prvn�
       }
       ```
 
-      **Počáteční** i **koncové** hodnoty data a času musí být ve [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Například: 2014-10-14T16:32:41Z. **Koncový** čas je nepovinný. Pokud nezadáte hodnotu vlastnosti **End** , vypočítá se jako " **Start + 48 hodiny".** Pokud chcete kanál spouštět bez omezení, zadejte vlastnosti **end** hodnotu **9999-09-09** . Podrobné informace o vlastnostech JSON najdete v tématu [JSON Scripting Reference](/previous-versions/azure/dn835050(v=azure.100)) (Referenční příručka skriptování JSON).
+      **Počáteční** i **koncové** hodnoty data a času musí být ve [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Například: 2014-10-14T16:32:41Z. **Koncový** čas je nepovinný. Pokud nezadáte hodnotu vlastnosti **End** , vypočítá se jako "**Start + 48 hodiny".** Pokud chcete kanál spouštět bez omezení, zadejte vlastnosti **end** hodnotu **9999-09-09**. Podrobné informace o vlastnostech JSON najdete v tématu [JSON Scripting Reference](/previous-versions/azure/dn835050(v=azure.100)) (Referenční příručka skriptování JSON).
 
       > [!NOTE]
       > Zadání vstupu pro aktivitu AzureMLBatchExecution je volitelné.
@@ -347,7 +347,7 @@ V rámci předávání hodnot pro parametry webové služby můžete také použ
 ### <a name="using-a-reader-module-to-read-data-from-multiple-files-in-azure-blob"></a>Použití modulu čtenáře ke čtení dat z více souborů v objektu blob Azure
 Kanály velkých objemů dat s aktivitami, jako je například prase a podregistr, mohou způsobit jeden nebo více výstupních souborů bez rozšíření. Když například zadáte externí tabulku podregistru, data pro tabulku externího podregistru můžete uložit do Azure Blob Storage s následujícím názvem 000000_0. Modul čtečky můžete použít ve experimentu ke čtení více souborů a jejich použití pro předpovědi.
 
-Při použití modulu Reader v experimentu (klasickém) studia můžete jako vstup zadat objekt blob Azure. Soubory v úložišti objektů BLOB v Azure můžou být výstupní soubory (například: 000000_0), které jsou vyráběny pomocí nástroje pro vepřové soubory a skripty v HDInsight spuštěné v HDInsight. Modul čtečky umožňuje číst soubory (bez rozšíření) konfigurací **cesty ke kontejneru, adresáři nebo objektu BLOB** . **Cesta ke kontejneru** odkazuje na kontejner a **adresář nebo objekt BLOB** odkazuje na složku, která obsahuje soubory, jak je znázorněno na následujícím obrázku. Hvězdička, která je, \* ) **Určuje, že všechny soubory v kontejneru/složce (tj. data/aggregateddata/Year = 2014/month-6/ \* )** jsou čteny jako součást experimentu.
+Při použití modulu Reader v experimentu (klasickém) studia můžete jako vstup zadat objekt blob Azure. Soubory v úložišti objektů BLOB v Azure můžou být výstupní soubory (například: 000000_0), které jsou vyráběny pomocí nástroje pro vepřové soubory a skripty v HDInsight spuštěné v HDInsight. Modul čtečky umožňuje číst soubory (bez rozšíření) konfigurací **cesty ke kontejneru, adresáři nebo objektu BLOB**. **Cesta ke kontejneru** odkazuje na kontejner a **adresář nebo objekt BLOB** odkazuje na složku, která obsahuje soubory, jak je znázorněno na následujícím obrázku. Hvězdička, která je, \* ) **Určuje, že všechny soubory v kontejneru/složce (tj. data/aggregateddata/Year = 2014/month-6/ \* )** jsou čteny jako součást experimentu.
 
 ![Vlastnosti objektu BLOB v Azure](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 
@@ -405,7 +405,7 @@ Při použití modulu Reader v experimentu (klasickém) studia můžete jako vst
 Ve výše uvedeném příkladu JSON:
 
 * Nasazená webová služba Studio (Classic) používá ke čtení a zápisu dat z/do Azure SQL Database modul pro čtení a zápis. Tato webová služba zpřístupňuje následující čtyři parametry: název databázového serveru, název databáze, název uživatelského účtu serveru a heslo uživatelského účtu serveru.
-* **Počáteční** i **koncové** hodnoty data a času musí být ve [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Například: 2014-10-14T16:32:41Z. **Koncový** čas je nepovinný. Pokud nezadáte hodnotu vlastnosti **End** , vypočítá se jako " **Start + 48 hodiny".** Pokud chcete kanál spouštět bez omezení, zadejte vlastnosti **end** hodnotu **9999-09-09** . Podrobné informace o vlastnostech JSON najdete v tématu [JSON Scripting Reference](/previous-versions/azure/dn835050(v=azure.100)) (Referenční příručka skriptování JSON).
+* **Počáteční** i **koncové** hodnoty data a času musí být ve [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Například: 2014-10-14T16:32:41Z. **Koncový** čas je nepovinný. Pokud nezadáte hodnotu vlastnosti **End** , vypočítá se jako "**Start + 48 hodiny".** Pokud chcete kanál spouštět bez omezení, zadejte vlastnosti **end** hodnotu **9999-09-09**. Podrobné informace o vlastnostech JSON najdete v tématu [JSON Scripting Reference](/previous-versions/azure/dn835050(v=azure.100)) (Referenční příručka skriptování JSON).
 
 ### <a name="other-scenarios"></a>Další scénáře
 #### <a name="web-service-requires-multiple-inputs"></a>Webová služba vyžaduje více vstupů.
@@ -545,7 +545,7 @@ Moduly pro čtení a modul pro zápis webové služby Azure Machine Learning Stu
 
 
 ## <a name="updating-models-using-update-resource-activity"></a>Aktualizace modelů pomocí aktivity aktualizovat prostředek
-Až budete s přeškolením hotovi, aktualizujte webovou službu bodování (prediktivní experiment vystavený jako webovou službu) s nově vyškolený model pomocí **aktivity aktualizace prostředku Azure Machine Learning Studio (Classic)** . Podrobnosti najdete v tématu [aktualizace modelů pomocí článku Aktualizace prostředku aktivity](data-factory-azure-ml-update-resource-activity.md) .
+Až budete s přeškolením hotovi, aktualizujte webovou službu bodování (prediktivní experiment vystavený jako webovou službu) s nově vyškolený model pomocí **aktivity aktualizace prostředku Azure Machine Learning Studio (Classic)**. Podrobnosti najdete v tématu [aktualizace modelů pomocí článku Aktualizace prostředku aktivity](data-factory-azure-ml-update-resource-activity.md) .
 
 ### <a name="reader-and-writer-modules"></a>Moduly pro čtení a zápis
 Běžným scénářem použití parametrů webové služby je použití čteček a zapisovače Azure SQL. Modul čtečky se používá k načtení dat do experimentu ze služeb pro správu dat mimo Studio (Classic). Modul zapisovače ukládá data z experimentů do služeb pro správu dat mimo Studio (Classic).

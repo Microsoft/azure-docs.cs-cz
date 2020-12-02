@@ -3,8 +3,8 @@ title: Monitorování a Správa datových kanálů – Azure
 description: Naučte se používat aplikaci pro monitorování a správu k monitorování a správě datových továrn a kanálů Azure.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: f3f07bc4-6dc3-4d4d-ac22-0be62189d578
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e378c1e25fb434e689eadd91e9e8562ffe7e61fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afab2b03d31045b9f49f357b49d15368cde898da
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570092"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495697"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Monitorování a Správa kanálů Azure Data Factory pomocí aplikace pro monitorování a správu
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Měla by se zobrazit otevřená aplikace pro monitorování a správu v samostat
 ![Monitorování a správa aplikací](./media/data-factory-monitor-manage-app/AppLaunched.png)
 
 > [!NOTE]
-> Pokud zjistíte, že webový prohlížeč je zablokovaný při autorizaci..., zrušte zaškrtnutí políčka **Blokovat soubory cookie a data lokality třetích stran** – nebo ho nechte zaškrtnuté, vytvořte výjimku pro **Login.microsoftonline.com**a pak zkuste aplikaci znovu otevřít.
+> Pokud zjistíte, že webový prohlížeč je zablokovaný při autorizaci..., zrušte zaškrtnutí políčka **Blokovat soubory cookie a data lokality třetích stran** – nebo ho nechte zaškrtnuté, vytvořte výjimku pro **Login.microsoftonline.com** a pak zkuste aplikaci znovu otevřít.
 
 
 V seznamu okna aktivit v prostředním podokně se zobrazí okno aktivity pro každé spuštění aktivity. Například pokud máte po dobu pěti hodin naplánováno spuštění aktivity naplánované na každou hodinu, zobrazí se pět oken aktivit, která jsou přidružena k pěti datovým řezům. Pokud v seznamu nevidíte okna aktivit, postupujte takto:
@@ -58,7 +58,7 @@ V seznamu okna aktivit v prostředním podokně se zobrazí okno aktivity pro ka
 Pokud nemáte Data Factory aplikaci k testování těchto kroků, postupujte podle kurzu: [zkopírování dat z BLOB Storage do SQL Database pomocí Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="understand-the-monitoring-and-management-app"></a>Pochopení aplikace pro monitorování a správu
-Vlevo jsou tři karty: **Průzkumník prostředků**, **zobrazení monitorování**a **výstrahy**. Ve výchozím nastavení je vybrána první karta (**Průzkumník prostředků**).
+Vlevo jsou tři karty: **Průzkumník prostředků**, **zobrazení monitorování** a **výstrahy**. Ve výchozím nastavení je vybrána první karta (**Průzkumník prostředků**).
 
 ### <a name="resource-explorer"></a>Průzkumník prostředků
 Zobrazí se následující:
@@ -66,7 +66,7 @@ Zobrazí se následující:
 * **Zobrazení stromové struktury** Průzkumník prostředků v levém podokně.
 * **Zobrazení diagramu** v horní části v prostředním podokně.
 * Seznam **oken aktivit** v dolní části podokna v prostředním podokně.
-* **Vlastnosti**, **Průzkumník okna aktivity**a karty **skriptu** v pravém podokně.
+* **Vlastnosti**, **Průzkumník okna aktivity** a karty **skriptu** v pravém podokně.
 
 V Průzkumník prostředků se ve stromovém zobrazení zobrazí všechny prostředky (kanály, datové sady, propojené služby) ve službě Data Factory. Když vyberete objekt v Průzkumník prostředků:
 
@@ -159,7 +159,7 @@ Okna aktivit můžou být v jednom z následujících stavů:
 
 <table>
 <tr>
-    <th align="left">Status</th><th align="left">SubStatus</th><th align="left">Description</th>
+    <th align="left">Status</th><th align="left">SubStatus</th><th align="left">Popis</th>
 </tr>
 <tr>
     <td rowspan="8">Čekající</td><td>ScheduleTime</td><td>Čas nepřijde o spuštění okna aktivity.</td>
@@ -266,7 +266,7 @@ Na panelu příkazů změňte nastavení **čas spuštění** a čas **ukončen�
 >
 >
 
-V **seznamu okna aktivit**klikněte na název sloupce (například: stav).
+V **seznamu okna aktivit** klikněte na název sloupce (například: stav).
 
 ![Nabídka sloupce seznamu oken aktivity](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 
@@ -286,7 +286,7 @@ Pomocí stejného překryvného okna můžete filtry vymazat. Chcete-li vymazat 
 
 ## <a name="perform-batch-actions"></a>Provést akce dávky
 ### <a name="rerun-selected-activity-windows"></a>Znovu spustit vybraná okna aktivity
-Vyberte okno aktivity, klikněte na šipku dolů u prvního tlačítka panelu příkazů a vyberte **znovu**spustit  /  **znovu s možností nadřazený v kanálu**. Když vyberete možnost **znovu spustit s nadřazeným kanálem v kanálu, znovu** se spustí také všechna okna s nadřazenými aktivitami.
+Vyberte okno aktivity, klikněte na šipku dolů u prvního tlačítka panelu příkazů a vyberte **znovu** spustit  /  **znovu s možností nadřazený v kanálu**. Když vyberete možnost **znovu spustit s nadřazeným kanálem v kanálu, znovu** se spustí také všechna okna s nadřazenými aktivitami.
     ![Znovu spustit okno aktivity](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
 V seznamu můžete také vybrat několik oken aktivit a znovu je spustit. Můžete chtít filtrovat okna aktivit na základě stavu (například **selhání**) – a pak znovu spustit okna nezdařené aktivity po opravě problému, který způsobí selhání okna aktivity. Podrobnosti o oknech aktivity filtrování v seznamu najdete v následující části.  

@@ -3,8 +3,8 @@ title: Transformace dat pomocí aktivity podregistru – Azure
 description: Přečtěte si, jak můžete použít aktivitu podregistru v Azure Data Factory v1 ke spouštění dotazů na podregistr na vyžádání nebo vlastní cluster HDInsight.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: 80083218-743e-4da8-bdd2-60d1c77b1227
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 0271029814071b3a692209d3a2015cfdbe5fa941
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 6a337ad4d623ef73657d473974248cbefd016ba3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616769"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495544"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Transformuje data pomocí aktivity podregistru v Azure Data Factory 
 > [!div class="op_single_selector" title1="Aktivity transformace"]
@@ -74,15 +74,15 @@ Aktivita podregistru HDInsight v Data Factoryovém [kanálu](data-factory-create
 ## <a name="syntax-details"></a>Podrobnosti syntaxe
 | Vlastnost | Popis | Povinné |
 | --- | --- | --- |
-| name |Název aktivity |Ano |
-| description |Text popisující, k čemu se aktivita používá |Ne |
-| typ |HDinsightHive |Ano |
-| vztahují |Vstupy spotřebované aktivitou podregistru |Ne |
-| činnosti |Výstupy vytvářené aktivitou podregistru |Ano |
-| linkedServiceName |Odkaz na cluster HDInsight registrovaný jako propojená služba v Data Factory |Ano |
-| script |Zadat vložený skript podregistru |Ne |
-| scriptPath |Uložte skript podregistru do úložiště objektů BLOB v Azure a zadejte cestu k souboru. Použijte vlastnost Script nebo scriptPath. Nelze použít současně. V názvu souboru se rozlišují malá a velká písmena. |Ne |
-| definuje |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu pro podregistr pomocí příkazu ' hiveconf '. |Ne |
+| name |Název aktivity |Yes |
+| description |Text popisující, k čemu se aktivita používá |No |
+| typ |HDinsightHive |Yes |
+| vztahují |Vstupy spotřebované aktivitou podregistru |No |
+| činnosti |Výstupy vytvářené aktivitou podregistru |Yes |
+| linkedServiceName |Odkaz na cluster HDInsight registrovaný jako propojená služba v Data Factory |Yes |
+| script |Zadat vložený skript podregistru |No |
+| scriptPath |Uložte skript podregistru do úložiště objektů BLOB v Azure a zadejte cestu k souboru. Použijte vlastnost Script nebo scriptPath. Nelze použít současně. V názvu souboru se rozlišují malá a velká písmena. |No |
+| definuje |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu pro podregistr pomocí příkazu ' hiveconf '. |No |
 
 ## <a name="example"></a>Příklad
 Podívejme se na příklad analýzy herních protokolů, u kterých chcete zjistit čas strávený uživateli, kteří hry zahájili při hraní her, které vaše společnost spustila. 

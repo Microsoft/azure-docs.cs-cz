@@ -3,20 +3,20 @@ title: Případ použití – profilace zákazníků
 description: Přečtěte si, jak Azure Data Factory použít k vytvoření pracovního postupu řízeného daty (kanálu) pro profilování herních zákazníků.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 63c31312070fbac99959d833344ccf04760bb8e4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 313050035694eaeabaefc8e09383ec3a887eb32b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637883"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495918"
 ---
 # <a name="use-case---customer-profiling"></a>Případ použití – profilace zákazníků
 Azure Data Factory je jedna z mnoha služeb, které se používají k implementaci Cortana Intelligence Suite akcelerátorů řešení.  Další informace o Cortana Intelligence najdete v [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics). V tomto dokumentu popisujeme jednoduchý případ použití, který vám pomůžeme začít s porozuměním, jak Azure Data Factory řešit běžné problémy s analýzou.

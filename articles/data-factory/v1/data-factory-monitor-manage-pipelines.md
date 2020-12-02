@@ -3,20 +3,20 @@ title: Monitorování a Správa kanálů pomocí Azure Portal a PowerShellu
 description: Naučte se, jak pomocí Azure Portal a Azure PowerShell monitorovat a spravovat datové továrny Azure a kanály, které jste vytvořili.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 4473df318f65c0e0097aed298d0be57e3bca382b
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 2a30c755bc19849ad3a821cbbc75b787a3b0bb98
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636931"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495833"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorování a Správa kanálů Azure Data Factory pomocí Azure Portal a PowerShellu
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ Pomocí Azure Portal můžete:
 Tato část také popisuje, jak se řez datové sady přechází z jednoho stavu do jiného.   
 
 ### <a name="navigate-to-your-data-factory"></a>Přejděte do objektu pro vytváření dat.
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. V nabídce na levé straně klikněte na **Datové továrny** . Pokud ho nevidíte, klikněte na **Další služby >** a potom klikněte na **Datové továrny** v kategorii **Intelligence + Analytics** .
 
    ![Procházet všechny > datové továrny](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
@@ -87,7 +87,7 @@ Dvojitým kliknutím na **OutputBlobTable** v **diagramu** můžete zobrazit vš
 
 <table>
 <tr>
-    <th align="left">Stav</th><th align="left">Podstav</th><th align="left">Popis</th>
+    <th align="left">State</th><th align="left">Podstav</th><th align="left">Popis</th>
 </tr>
 <tr>
     <td rowspan="8">Čekající</td><td>ScheduleTime</td><td>Čas nepřijde, aby se řez spouštěl.</td>
@@ -105,7 +105,7 @@ Dvojitým kliknutím na **OutputBlobTable** v **diagramu** můžete zobrazit vš
 <td>ActivityResume</td><td>Aktivita je pozastavena a nemůže tyto řezy spustit, dokud nebude aktivita obnovena.</td>
 </tr>
 <tr>
-<td>Retry</td><td>Probíhá opakování provádění aktivity.</td>
+<td>Zkusit znovu</td><td>Probíhá opakování provádění aktivity.</td>
 </tr>
 <tr>
 <td>Ověřování</td><td>Ověřování ještě nebylo zahájeno.</td>
@@ -163,9 +163,9 @@ Když nasadíte datovou továrnu a kanály mají platné aktivní období, datov
 
 Tok přechodu stavu datové sady ve službě Data Factory je následující: čekání-> probíhající/probíhající (ověřování) – > připraveno nebo selhalo.
 
-Řez začíná ve stavu **čekání** a čeká na splnění předběžných podmínek, než se spustí. Pak se aktivita začne spouštět a řez přejde **do stavu probíhá** . Spuštění aktivity může být úspěšné nebo neúspěšné. Řez je na základě výsledku provedení označený jako **připravený** nebo **neúspěšný** .
+Řez začíná ve stavu **čekání** a čeká na splnění předběžných podmínek, než se spustí. Pak se aktivita začne spouštět a řez přejde **do stavu probíhá** . Spuštění aktivity může být úspěšné nebo neúspěšné. Řez je na základě výsledku provedení označený jako **připravený** nebo **neúspěšný**.
 
-Řez můžete obnovit tak, aby se zpátky ze stavu **připraveno** nebo **nezdařilo** do **čekání** . Můžete také označit stav řezu k **přeskočení** , což zabrání aktivitě v provádění a nezpracovávání řezu.
+Řez můžete obnovit tak, aby se zpátky ze stavu **připraveno** nebo **nezdařilo** do **čekání** . Můžete také označit stav řezu k **přeskočení**, což zabrání aktivitě v provádění a nezpracovávání řezu.
 
 ## <a name="pause-and-resume-pipelines"></a>Pozastavení a obnovení kanálů
 Své kanály můžete spravovat pomocí Azure PowerShell. Můžete například pozastavit a obnovit kanály spuštěním rutin Azure PowerShell. 
@@ -205,7 +205,7 @@ Azure Data Factory poskytuje bohatě funkční možnosti pro ladění a odstraň
 Pokud se spuštění aktivity v kanálu nezdaří, datová sada vytvořená kanálem je v chybovém stavu kvůli selhání. Chyby v Azure Data Factory můžete ladit a řešit pomocí následujících metod.
 
 #### <a name="use-the-azure-portal-to-debug-an-error"></a>Použití Azure Portal k ladění chyby
-1. V okně **tabulka** klikněte na řez problému, u kterého je **stav** nastavený na **neúspěšné** .
+1. V okně **tabulka** klikněte na řez problému, u kterého je **stav** nastavený na **neúspěšné**.
 
    ![Okno tabulky s průřezem problému](./media/data-factory-monitor-manage-pipelines/table-blade-with-error.png)
 2. V okně **datový řez** klikněte na spuštěnou aktivitu, která se nezdařila.
@@ -216,8 +216,8 @@ Pokud se spuštění aktivity v kanálu nezdaří, datová sada vytvořená kan�
    ![Okno podrobností o spuštění aktivit s chybou](./media/data-factory-monitor-manage-pipelines/activity-run-details-with-error.png)     
 
 #### <a name="use-powershell-to-debug-an-error"></a>Použití PowerShellu k ladění chyby
-1. Spusťte **PowerShell** .
-2. Chcete-li zobrazit řezy a jejich stavy, spusťte příkaz **Get-AzDataFactorySlice** . Měl by se zobrazit řez se stavem **selhalo** .        
+1. Spusťte **PowerShell**.
+2. Chcete-li zobrazit řezy a jejich stavy, spusťte příkaz **Get-AzDataFactorySlice** . Měl by se zobrazit řez se stavem **selhalo**.        
 
     ```powershell   
     Get-AzDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
@@ -309,7 +309,7 @@ Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Da
 
     ![Vytvoření nové výstrahy](media/data-factory-monitor-manage-pipelines/v1alerts-image2.png)
 
-3.  Definujte **podmínku upozornění** . (V poli **filtrovat podle typu prostředku** je třeba vybrat **Datové továrny** .) Můžete také zadat hodnoty pro **dimenze** .
+3.  Definujte **podmínku upozornění**. (V poli **filtrovat podle typu prostředku** je třeba vybrat **Datové továrny** .) Můžete také zadat hodnoty pro **dimenze**.
 
     ![Definování podmínky upozornění – výběr cíle](media/data-factory-monitor-manage-pipelines/v1alerts-image3.png)
 
@@ -317,11 +317,11 @@ Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Da
 
     ![Definování podmínky upozornění – Přidání logiky výstrah](media/data-factory-monitor-manage-pipelines/v1alerts-image5.png)
 
-4.  Zadejte **Podrobnosti výstrahy** .
+4.  Zadejte **Podrobnosti výstrahy**.
 
     ![Zadejte podrobnosti výstrahy.](media/data-factory-monitor-manage-pipelines/v1alerts-image6.png)
 
-5.  Definujte **skupinu akcí** .
+5.  Definujte **skupinu akcí**.
 
     ![Definujte skupinu akcí – vytvořit novou skupinu akcí.](media/data-factory-monitor-manage-pipelines/v1alerts-image7.png)
 

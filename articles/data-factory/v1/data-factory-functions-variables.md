@@ -2,20 +2,20 @@
 title: Data Factory funkce a systémové proměnné
 description: Poskytuje seznam funkcí Azure Data Factory a systémových proměnných.
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: cbc7fd22915af1c9645d915a9898679a3a7c30d0
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9b5f91655367e866858a04b941cec4ee61dfe180
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631508"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495646"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory – funkce a systémové proměnné
 > [!NOTE]
@@ -61,7 +61,7 @@ Funkce v datové továrně můžete použít spolu se systémovými proměnnými
    
     $ $ není potřeba pro zadání výrazů vstupních závislostí.     
 
-V následující ukázce je vlastnost **sqlReaderQuery** v souboru JSON přiřazena k hodnotě vrácené `Text.Format` funkcí. Tato ukázka také používá systémovou proměnnou s názvem **WindowStart** , která představuje čas spuštění okna spuštění aktivity.
+V následující ukázce je vlastnost **sqlReaderQuery** v souboru JSON přiřazena k hodnotě vrácené `Text.Format` funkcí. Tato ukázka také používá systémovou proměnnou s názvem **WindowStart**, která představuje čas spuštění okna spuštění aktivity.
 
 ```json
 {
@@ -75,7 +75,7 @@ Viz téma [vlastní formátovací řetězce pro datum a čas](/dotnet/standard/b
 ### <a name="functions"></a>Functions
 V následujících tabulkách jsou uvedeny všechny funkce v Azure Data Factory:
 
-| Kategorie | Function | Parametry | Popis |
+| Kategorie | Funkce | Parametry | Popis |
 | --- | --- | --- | --- |
 | Čas |AddHours (X, Y) |X: datum a čas <br/><br/>Y: int |Přidá Y hodiny do daného času X. <br/><br/>Příklad: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
 | Čas |AddMinutes (X, Y) |X: datum a čas <br/><br/>Y: int |Přidá Y minuty do X.<br/><br/>Příklad: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |

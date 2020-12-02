@@ -3,20 +3,20 @@ title: Sestavení prvního objektu pro vytváření dat (Azure Portal)
 description: V tomto kurzu vytvoříte pomocí editoru služby Data Factory na webu Azure Portal ukázkový kanál služby Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: e948962a73137f78ec26a01c1d2f54d883e76783
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 360fbc3e1bfe7890f1f3b05899eb95ce7a3a72c2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637441"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496615"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Kurz: Vytvoření první datové továrny pomocí webu Azure Portal
 > [!div class="op_single_selector"]
@@ -52,13 +52,13 @@ Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál může 
 
 Pokud chcete vytvořit datovou továrnu, postupujte následovně:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
-1. Vyberte **Nový**  >  **data a analýzy**  >  **Data Factory** .
+1. Vyberte **Nový**  >  **data a analýzy**  >  **Data Factory**.
 
    ![Okno Vytvořit](./media/data-factory-build-your-first-pipeline-using-editor/create-blade.png)
 
-1. V okně **Nová datová továrna** v části **Název** zadejte **GetStartedDF** .
+1. V okně **Nová datová továrna** v části **Název** zadejte **GetStartedDF**.
 
    ![Okno Nový objekt pro vytváření dat](./media/data-factory-build-your-first-pipeline-using-editor/new-data-factory-blade.png)
 
@@ -70,19 +70,19 @@ Pokud chcete vytvořit datovou továrnu, postupujte následovně:
    >
 1. V části **Předplatné** vyberte předplatné Azure, ve kterém chcete datovou továrnu vytvořit.
 
-1. Vyberte existující skupinu prostředků nebo vytvořte novou. Pro účely tohoto kurzu vytvořte skupinu prostředků **ADFGetStartedRG** .
+1. Vyberte existující skupinu prostředků nebo vytvořte novou. Pro účely tohoto kurzu vytvořte skupinu prostředků **ADFGetStartedRG**.
 
 1. V části **Umístění** vyberte umístění datové továrny. V rozevíracím seznamu jsou uvedené pouze oblasti podporované službou Data Factory.
 
-1. Zaškrtněte políčko **Připnout na řídicí panel** .
+1. Zaškrtněte políčko **Připnout na řídicí panel**.
 
-1. Vyberte **Vytvořit** .
+1. Vyberte **Vytvořit**.
 
    > [!IMPORTANT]
    > Pokud chcete vytvářet instance služby Data Factory, musíte být členem role [Přispěvatel Data Factory](../../role-based-access-control/built-in-roles.md#data-factory-contributor) na úrovni předplatného nebo skupiny prostředků.
    >
    >
-1. Na řídicím panelu se zobrazí následující dlaždice se stavem **Nasazování datové továrny** :    
+1. Na řídicím panelu se zobrazí následující dlaždice se stavem **Nasazování datové továrny**:    
 
    ![Stav nasazování datové továrny](./media/data-factory-build-your-first-pipeline-using-editor/creating-data-factory-image.png)
 
@@ -98,11 +98,11 @@ V tomto kroku s datovou továrnou propojíte svůj účet služby Azure Storage 
 ### <a name="create-a-storage-linked-service"></a>Vytvoření propojené služby Storage
 V tomto kroku s datovou továrnou propojíte svůj účet úložiště. V tomto kurzu použijete k uložení vstupních a výstupních dat a souboru skriptu HQL stejný účet úložiště.
 
-1. V okně **Datová továrna** pro **GetStartedDF** vyberte **Vytvořit a nasadit** . Zobrazí se editor služby Data Factory.
+1. V okně **Datová továrna** pro **GetStartedDF** vyberte **Vytvořit a nasadit**. Zobrazí se editor služby Data Factory.
 
    ![Dlaždice Vytvořit a nasadit](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-author-deploy.png)
 
-1. Vyberte **Nové úložiště dat** a zvolte **Azure Storage** .
+1. Vyberte **Nové úložiště dat** a zvolte **Azure Storage**.
 
    ![Okno Nové úložiště dat](./media/data-factory-build-your-first-pipeline-using-editor/new-data-store-azure-storage-menu.png)
 
@@ -116,14 +116,14 @@ V tomto kroku s datovou továrnou propojíte svůj účet úložiště. V tomto 
 
     ![Tlačítko Nasadit](./media/data-factory-build-your-first-pipeline-using-editor/deploy-button.png)
 
-   Po úspěšném nasazení propojené služby okno Koncept-1 zmizí. Ve stromovém zobrazení na levé straně se zobrazí **AzureStorageLinkedService** .
+   Po úspěšném nasazení propojené služby okno Koncept-1 zmizí. Ve stromovém zobrazení na levé straně se zobrazí **AzureStorageLinkedService**.
 
     ![AzureStorageLinkedService](./media/data-factory-build-your-first-pipeline-using-editor/StorageLinkedServiceInTree.png)    
 
 ### <a name="create-an-hdinsight-linked-service"></a>Vytvoření propojené služby HDInsight
 V tomto kroku propojíte se svým objektem pro vytváření dat cluster HDInsight na vyžádání. Cluster HDInsight se vytváří automaticky za běhu. Až dokončí zpracování, po určité zadané době nečinnosti se odstraní.
 
-1. V editoru Data Factory vyberte **více**  >  **nových výpočetních**  >  **clusterů HDInsight na vyžádání** .
+1. V editoru Data Factory vyberte **více**  >  **nových výpočetních**  >  **clusterů HDInsight na vyžádání**.
 
     ![Nový výpočet](./media/data-factory-build-your-first-pipeline-using-editor/new-compute-menu.png)
 
@@ -159,9 +159,9 @@ V tomto kroku propojíte se svým objektem pro vytváření dat cluster HDInsigh
 
      b. Místo clusteru HDInsight na vyžádání můžete použít také vlastní cluster HDInsight. Další informace najdete v tématu [Propojená služba HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service).
 
-     c. Cluster HDInsight vytvoří výchozí kontejner v úložišti objektů blob, které jste zadali ve vlastnosti JSON ( **linkedServiceName** ). Při odstranění clusteru HDInsight neprovede odstranění tohoto kontejneru. Toto chování je záměrné. Díky propojené službě HDInsight na vyžádání se cluster HDInsight vytvoří pokaždé, když se zpracuje určitý řez, pokud neexistuje aktivní cluster ( **timeToLive** ). Po dokončení zpracování se cluster automaticky odstraní.
+     c. Cluster HDInsight vytvoří výchozí kontejner v úložišti objektů blob, které jste zadali ve vlastnosti JSON (**linkedServiceName**). Při odstranění clusteru HDInsight neprovede odstranění tohoto kontejneru. Toto chování je záměrné. Díky propojené službě HDInsight na vyžádání se cluster HDInsight vytvoří pokaždé, když se zpracuje určitý řez, pokud neexistuje aktivní cluster (**timeToLive**). Po dokončení zpracování se cluster automaticky odstraní.
 
-     Po zpracování dalších řezů se v úložišti objektů blob zobrazí spousta kontejnerů. Pokud je nepotřebujete k řešení potíží s úlohami, můžete je odstranit, abyste snížili náklady na úložiště. Názvy těchto kontejnerů se řídí vzorem: "ADF **yourdatafactoryname** - **linkedservicename** -DateTimeStamp." K odstranění kontejnerů z úložiště objektů blob můžete použít nástroje, jako je například [Průzkumník služby Azure Storage](https://storageexplorer.com/).
+     Po zpracování dalších řezů se v úložišti objektů blob zobrazí spousta kontejnerů. Pokud je nepotřebujete k řešení potíží s úlohami, můžete je odstranit, abyste snížili náklady na úložiště. Názvy těchto kontejnerů se řídí vzorem: "ADF **yourdatafactoryname** - **linkedservicename**-DateTimeStamp." K odstranění kontejnerů z úložiště objektů blob můžete použít nástroje, jako je například [Průzkumník služby Azure Storage](https://storageexplorer.com/).
 
      Další informace najdete v tématu [Propojená služba HDInsight na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
 
@@ -169,7 +169,7 @@ V tomto kroku propojíte se svým objektem pro vytváření dat cluster HDInsigh
 
     ![Možnost Nasadit](./media/data-factory-build-your-first-pipeline-using-editor/ondemand-hdinsight-deploy.png)
 
-1. Zkontrolujte, jestli se v zobrazení stromu vlevo zobrazuje služba **AzureStorageLinkedService** i služba **HDInsightOnDemandLinkedService** .
+1. Zkontrolujte, jestli se v zobrazení stromu vlevo zobrazuje služba **AzureStorageLinkedService** i služba **HDInsightOnDemandLinkedService**.
 
     ![Snímek obrazovky zobrazující, že AzureStorageLinkedService a HDInsightOnDemandLinkedService jsou propojeny dohromady.](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png)
 
@@ -177,11 +177,11 @@ V tomto kroku propojíte se svým objektem pro vytváření dat cluster HDInsigh
 V tomto kroku vytvoříte datové sady, které představují vstupní a výstupní data pro zpracování Hive. Tyto datové sady odkazují na službu AzureStorageLinkedService, kterou jste vytvořili v dřívější části tohoto kurzu. Propojená služba odkazuje na účet úložiště. Datové sady určují kontejner, složku a název souboru v úložišti, který obsahuje vstupní a výstupní data.   
 
 ### <a name="create-the-input-dataset"></a>Vytvoření vstupní datové sady
-1. V editoru Data Factory vyberte **Další**  >  **Nová datová sada**  >  **úložiště objektů BLOB v Azure** .
+1. V editoru Data Factory vyberte **Další**  >  **Nová datová sada**  >  **úložiště objektů BLOB v Azure**.
 
     ![Nová datová sada](./media/data-factory-build-your-first-pipeline-using-editor/new-data-set.png)
 
-1. Následující fragment kódu zkopírujte a vložte ho do okna Koncept-1. V tomto fragmentu kódu JSON vytvoříte datovou sadu **AzureBlobInput** , která představuje vstupní data pro aktivitu v kanálu. Kromě toho určíte, že se vstupní data nacházejí v kontejneru objektů blob **adfgetstarted** ve složce **inputdata** .
+1. Následující fragment kódu zkopírujte a vložte ho do okna Koncept-1. V tomto fragmentu kódu JSON vytvoříte datovou sadu **AzureBlobInput**, která představuje vstupní data pro aktivitu v kanálu. Kromě toho určíte, že se vstupní data nacházejí v kontejneru objektů blob **adfgetstarted** ve složce **inputdata**.
 
     ```JSON
     {
@@ -210,14 +210,14 @@ V tomto kroku vytvoříte datové sady, které představují vstupní a výstupn
 
    | Vlastnost | Vnořeno pod | Popis |
    |:--- |:--- |:--- |
-   | typ | properties |Vlastnost type je nastavená na hodnotu **AzureBlob** , protože se data nacházejí v úložišti objektů blob. |
+   | typ | properties |Vlastnost type je nastavená na hodnotu **AzureBlob**, protože se data nacházejí v úložišti objektů blob. |
    | linkedServiceName | formát |Odkazuje na službu AzureStorageLinkedService, kterou jste vytvořili dříve. |
    | folderPath | typeProperties | Určuje kontejner objektů blob a složku obsahující vstupní objekty blob. | 
    | fileName | typeProperties |Tato vlastnost je nepovinná. Pokud tuto vlastnost vynecháte, vyberou se všechny soubory v cestě folderPath. V tomto kurzu se zpracovává jenom soubor input.log. |
-   | typ | formát |Soubory protokolů jsou v textovém formátu, proto použijte hodnotu **TextFormat** . |
+   | typ | formát |Soubory protokolů jsou v textovém formátu, proto použijte hodnotu **TextFormat**. |
    | columnDelimiter | formát |Sloupce v souborech protokolů jsou oddělené znakem čárky (`,`). |
-   | frequency/interval | dostupnosti |Frekvence je nastavená na hodnotu **Month** (Měsíc) a interval je **1** , takže vstupní řezy jsou dostupné jednou za měsíc. |
-   | external | properties | Pokud vstupní data negeneruje tento kanál, je tato vlastnost nastavená na hodnotu **true** . V tomto kurzu se soubor input.log pomocí tohoto kanálu negeneruje, takže je tato vlastnost nastavená na hodnotu **true** . |
+   | frequency/interval | dostupnosti |Frekvence je nastavená na hodnotu **Month** (Měsíc) a interval je **1**, takže vstupní řezy jsou dostupné jednou za měsíc. |
+   | external | properties | Pokud vstupní data negeneruje tento kanál, je tato vlastnost nastavená na hodnotu **true**. V tomto kurzu se soubor input.log pomocí tohoto kanálu negeneruje, takže je tato vlastnost nastavená na hodnotu **true**. |
 
     Další informace o těchto vlastnostech JSON najdete v tématu [Konektor Azure Blob](data-factory-azure-blob-connector.md#dataset-properties).
 
@@ -226,9 +226,9 @@ V tomto kroku vytvoříte datové sady, které představují vstupní a výstupn
 ### <a name="create-the-output-dataset"></a>Vytvoření výstupní datové sady
 Nyní vytvoříte výstupní datovou sadu, která bude představovat výstupní data uložená v úložišti objektů blob.
 
-1. V editoru Data Factory vyberte **Další**  >  **Nová datová sada**  >  **úložiště objektů BLOB v Azure** .
+1. V editoru Data Factory vyberte **Další**  >  **Nová datová sada**  >  **úložiště objektů BLOB v Azure**.
 
-1. Následující fragment kódu zkopírujte a vložte ho do okna Koncept-1. V tomto fragmentu kódu JSON vytvoříte datovou sadu **AzureBlobOutput** , která určí strukturu dat generovaných skriptem Hive. Určíte také, že se výsledky budou ukládat do kontejneru objektů blob **adfgetstarted** do složky **partitioneddata** . Část **availability** určuje, že se výstupní sada generuje jednou měsíčně.
+1. Následující fragment kódu zkopírujte a vložte ho do okna Koncept-1. V tomto fragmentu kódu JSON vytvoříte datovou sadu **AzureBlobOutput**, která určí strukturu dat generovaných skriptem Hive. Určíte také, že se výsledky budou ukládat do kontejneru objektů blob **adfgetstarted** do složky **partitioneddata**. Část **availability** určuje, že se výstupní sada generuje jednou měsíčně.
 
     ```JSON
     {
@@ -261,7 +261,7 @@ Nyní vytvoříte výstupní datovou sadu, která bude představovat výstupní 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
 V tomto kroku vytvoříte svůj první kanál s aktivitou HDInsight Hive. Vstupní řez je k dispozici jednou měsíčně (frekvence je měsíc a interval je 1). Výstupní řez se generuje jednou měsíčně. Vlastnost scheduler pro aktivitu je také nastavená na monthly (měsíčně). Nastavení výstupní datové sady a vlastnosti scheduler se musí shodovat. V současnosti určuje plán výstupní datová sada, takže musíte výstupní datovou sadu vytvořit i v případě, že aktivita negeneruje žádný výstup. Pokud aktivita nemá žádný vstup, vstupní datovou sadu vytvářet nemusíte. Vysvětlení vlastností použitých v následujícím fragmentu kódu JSON najdete na konci této části.
 
-1. V editoru Data Factory vyberte **Další**  >  **Nový kanál** .
+1. V editoru Data Factory vyberte **Další**  >  **Nový kanál**.
 
     ![Možnost Nový kanál](./media/data-factory-build-your-first-pipeline-using-editor/new-pipeline-button.png)
 
@@ -319,13 +319,13 @@ V tomto kroku vytvoříte svůj první kanál s aktivitou HDInsight Hive. Vstupn
 
     V tomto fragmentu kódu JSON vytvoříte kanál sestávající z jediné aktivity, která pomocí Hive zpracovává data v clusteru HDInsight.
 
-    Soubor skriptu Hive **partitionweblogs.hql** je uložený v účtu úložiště, který určuje služba scriptLinkedService s názvem **AzureStorageLinkedService1** . Najdete ho ve složce **script** v kontejneru **adfgetstarted** .
+    Soubor skriptu Hive **partitionweblogs.hql** je uložený v účtu úložiště, který určuje služba scriptLinkedService s názvem **AzureStorageLinkedService1**. Najdete ho ve složce **script** v kontejneru **adfgetstarted**.
 
     Část **defines** slouží k určení nastavení modulu runtime, která se předají skriptu Hive jako hodnoty konfigurace Hive. Příkladem jsou ${hiveconf:inputtable} a ${hiveconf:partitionedtable}.
 
     Vlastnosti kanálu **start** a **end** určují období aktivity kanálu.
 
-    V kódu JSON aktivity určujete, že má skript Hive běžet ve výpočetní službě určené vlastností **linkedServiceName** : **HDInsightOnDemandLinkedService** .
+    V kódu JSON aktivity určujete, že má skript Hive běžet ve výpočetní službě určené vlastností **linkedServiceName**: **HDInsightOnDemandLinkedService**.
 
    > [!NOTE]
    > Další informace o vlastnostech JSON použitých v příkladu najdete v části JSON kanálu v tématu [Kanály a aktivity ve službě Data Factory](data-factory-create-pipelines.md).
@@ -333,13 +333,13 @@ V tomto kroku vytvoříte svůj první kanál s aktivitou HDInsight Hive. Vstupn
    >
 1. Zkontrolujte:
 
-   a. Jestli ve složce **inputdata** v kontejneru **adfgetstarted** v úložišti objektů blob existuje soubor **input.log** .
+   a. Jestli ve složce **inputdata** v kontejneru **adfgetstarted** v úložišti objektů blob existuje soubor **input.log**.
 
-   b. Jestli ve složce **script** v kontejneru **adfgetstarted** v úložišti objektů blob existuje soubor **partitionweblogs.hql** . Pokud tyto soubory nevidíte, proveďte kroky v části Požadavky v tématu [Přehled kurzu](data-factory-build-your-first-pipeline.md).
+   b. Jestli ve složce **script** v kontejneru **adfgetstarted** v úložišti objektů blob existuje soubor **partitionweblogs.hql**. Pokud tyto soubory nevidíte, proveďte kroky v části Požadavky v tématu [Přehled kurzu](data-factory-build-your-first-pipeline.md).
 
    c. Jestli jste položku **storageaccountname** v kódu JSON kanálu nahradili názvem svého účtu úložiště.
 
-1. Vyberte **Nasadit** na panelu příkazů a nasaďte kanál. Vzhledem k tomu, že časy **start** a **end** jsou nastavené na minulost a vlastnost **isPaused** je nastavená na **false** , kanál (aktivita v kanálu) se spustí ihned po nasazení.
+1. Vyberte **Nasadit** na panelu příkazů a nasaďte kanál. Vzhledem k tomu, že časy **start** a **end** jsou nastavené na minulost a vlastnost **isPaused** je nastavená na **false**, kanál (aktivita v kanálu) se spustí ihned po nasazení.
 
 1. Zkontrolujte, jestli se kanál objevil v zobrazení stromu.
 
@@ -349,7 +349,7 @@ V tomto kroku vytvoříte svůj první kanál s aktivitou HDInsight Hive. Vstupn
 
 ## <a name="monitor-a-pipeline"></a>Monitorování kanálu
 ### <a name="monitor-a-pipeline-by-using-the-diagram-view"></a>Monitorování kanálu s využitím zobrazení diagramu
-1. V okně **Datová továrna** vyberte **Diagram** .
+1. V okně **Datová továrna** vyberte **Diagram**.
 
     ![Dlaždice Diagram](./media/data-factory-build-your-first-pipeline-using-editor/diagram-tile.png)
 
@@ -357,27 +357,27 @@ V tomto kroku vytvoříte svůj první kanál s aktivitou HDInsight Hive. Vstupn
 
     ![Zobrazení diagramu](./media/data-factory-build-your-first-pipeline-using-editor/diagram-view-2.png)
 
-1. Pokud chcete zobrazit všechny aktivity v kanálu, klikněte na kanál v diagramu pravým tlačítkem a vyberte **Otevřít kanál** .
+1. Pokud chcete zobrazit všechny aktivity v kanálu, klikněte na kanál v diagramu pravým tlačítkem a vyberte **Otevřít kanál**.
 
     ![Nabídka Otevřít kanál](./media/data-factory-build-your-first-pipeline-using-editor/open-pipeline-menu.png)
 
-1. Zkontrolujte, jestli se v kanálu zobrazí **Aktivita Hive** .
+1. Zkontrolujte, jestli se v kanálu zobrazí **Aktivita Hive**.
 
     ![Zobrazení Otevřít kanál](./media/data-factory-build-your-first-pipeline-using-editor/open-pipeline-view.png)
 
-    Pokud se chcete vrátit do předchozího zobrazení, v nabídce v horní části vyberte **Datová továrna** .
+    Pokud se chcete vrátit do předchozího zobrazení, v nabídce v horní části vyberte **Datová továrna**.
 
-1. V zobrazení **Diagram** dvakrát klikněte na datovou sadu **AzureBlobInput** . Zkontrolujte, jestli je řez ve stavu **Připraveno** . Než se řez zobrazí ve stavu **Připraveno** , může to několik minut trvat. Pokud se to do nějaké doby nestane, zkontrolujte, jestli je vstupní soubor ( **input.log** ) umístěný ve správném kontejneru ( **adfgetstarted** ) a složce ( **inputdata** ).
+1. V zobrazení **Diagram** dvakrát klikněte na datovou sadu **AzureBlobInput**. Zkontrolujte, jestli je řez ve stavu **Připraveno**. Než se řez zobrazí ve stavu **Připraveno**, může to několik minut trvat. Pokud se to do nějaké doby nestane, zkontrolujte, jestli je vstupní soubor (**input.log**) umístěný ve správném kontejneru (**adfgetstarted**) a složce (**inputdata**).
 
    ![Vstupní řez ve stavu Připraveno](./media/data-factory-build-your-first-pipeline-using-editor/input-slice-ready.png)
 
-1. Zavřete okno **AzureBlobInput** .
+1. Zavřete okno **AzureBlobInput**.
 
-1. V zobrazení **Diagram** dvakrát klikněte na datovou sadu **AzureBlobOutput** . Uvidíte, že se řez právě zpracovává.
+1. V zobrazení **Diagram** dvakrát klikněte na datovou sadu **AzureBlobOutput**. Uvidíte, že se řez právě zpracovává.
 
    ![Probíhající zpracování datové sady](./media/data-factory-build-your-first-pipeline-using-editor/dataset-blade.png)
 
-1. Po dokončení zpracování se řez zobrazí ve stavu **Připraveno** .
+1. Po dokončení zpracování se řez zobrazí ve stavu **Připraveno**.
 
    ![Datová sada ve stavu Připraveno](./media/data-factory-build-your-first-pipeline-using-editor/dataset-slice-ready.png)  
 
@@ -386,7 +386,7 @@ V tomto kroku vytvoříte svůj první kanál s aktivitou HDInsight Hive. Vstupn
    >
    >
 
-1. Až bude řez ve stavu **Připraveno** , zkontrolujte, jestli se ve složce **partitioneddata** v kontejneru **adfgetstarted** ve vašem úložišti objektů blob nachází výstupní data.  
+1. Až bude řez ve stavu **Připraveno**, zkontrolujte, jestli se ve složce **partitioneddata** v kontejneru **adfgetstarted** ve vašem úložišti objektů blob nachází výstupní data.  
 
    ![Výstupní data](./media/data-factory-build-your-first-pipeline-using-editor/three-ouptut-files.png)
 
@@ -402,18 +402,18 @@ V tomto kroku vytvoříte svůj první kanál s aktivitou HDInsight Hive. Vstupn
    Další informace najdete v tématu [Monitorování a správa kanálů pomocí oken na webu Azure Portal](data-factory-monitor-manage-pipelines.md).
 
 > [!IMPORTANT]
-> Po úspěšném zpracování řezu se vstupní soubor odstraní. Proto pokud chcete znovu spustit řez nebo znovu spustit kurz, nahrajte vstupní soubor ( **input. log** ) do složky **InputData** v kontejneru **adfgetstarted** .
+> Po úspěšném zpracování řezu se vstupní soubor odstraní. Proto pokud chcete znovu spustit řez nebo znovu spustit kurz, nahrajte vstupní soubor (**input. log**) do složky **InputData** v kontejneru **adfgetstarted** .
 >
 >
 
 ### <a name="monitor-a-pipeline-by-using-the-monitor--manage-app"></a>Monitorování kanálu pomocí aplikace pro monitorování a správu
 K monitorování kanálů můžete použít také aplikaci pro monitorování a správu. Další informace o použití této aplikace najdete v tématu [Monitorování a správa kanálů Data Factory pomocí aplikace pro monitorování a správu](data-factory-monitor-manage-app.md).
 
-1. Na domovské stránce vaší datové továrny vyberte dlaždici **Monitorování a správa** .
+1. Na domovské stránce vaší datové továrny vyberte dlaždici **Monitorování a správa**.
 
     ![Dlaždice Monitorování a správa](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-tile.png)
 
-1. V aplikaci pro monitorování a správu změňte hodnoty **Čas spuštění** a **Čas ukončení** tak, aby odpovídaly času spuštění a ukončení vašeho kanálu. Vyberte **Použít** .
+1. V aplikaci pro monitorování a správu změňte hodnoty **Čas spuštění** a **Čas ukončení** tak, aby odpovídaly času spuštění a ukončení vašeho kanálu. Vyberte **Použít**.
 
     ![Aplikace pro monitorování a správu](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-app.png)
 
@@ -421,7 +421,7 @@ K monitorování kanálů můžete použít také aplikaci pro monitorování a 
 
     ![Seznam Okna aktivit](./media/data-factory-build-your-first-pipeline-using-editor/activity-window-details.png)
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 V tomto kurzu jste vytvořili datovou továrnu, která zpracovává data pomocí skriptu Hive v clusteru HDInsight Hadoop. Pomocí editoru služby Data Factory na webu Azure Portal jste provedli následující:  
 
 * Vytvoření datové továrny
@@ -437,7 +437,7 @@ V tomto článku jste vytvořili kanál s aktivitou transformace (aktivita HDIns
 ## <a name="see-also"></a>Viz také
 | Téma | Popis |
 |:--- |:--- |
-| [Kanály](data-factory-create-pipelines.md) |Tento článek vám pomůže pochopit kanály a aktivity ve službě Data Factory a porozumět tomu, jak se dají ve vaší situaci nebo firmě použít k sestavení kompletních pracovních postupů založených na datech. |
+| [Pipelines](data-factory-create-pipelines.md) |Tento článek vám pomůže pochopit kanály a aktivity ve službě Data Factory a porozumět tomu, jak se dají ve vaší situaci nebo firmě použít k sestavení kompletních pracovních postupů založených na datech. |
 | [Datové sady](data-factory-create-datasets.md) |Tento článek vám pomůže pochopit datové sady ve službě Data Factory. |
 | [Plánování a provádění](data-factory-scheduling-and-execution.md) |Tento článek vysvětluje aspekty plánování a spouštění aplikačního modelu služby Data Factory. |
 | [Monitorování a správa kanálů pomocí aplikace pro monitorování a správu](data-factory-monitor-manage-app.md) |Tento článek popisuje, jak monitorovat, spravovat a ladit kanály pomocí aplikace pro monitorování a správu. |
