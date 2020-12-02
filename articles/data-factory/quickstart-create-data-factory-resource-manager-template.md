@@ -5,18 +5,18 @@ services: data-factory
 ms.service: data-factory
 tags: azure-resource-manager
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan, jingwang
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 07/16/2020
-ms.openlocfilehash: eb423ebd354adeb8273755d34323b283d53eb8b5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0a9c4f6d9e98e721370f54dfbe261025cf186b6c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87283890"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497482"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>Rychlý Start: vytvoření Azure Data Factory pomocí šablony ARM
 
@@ -94,23 +94,23 @@ Další příklady šablon Azure Data Factory najdete v [galerii šablon rychlý
 
 1. Vyberte **Přejít do skupiny prostředků**.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-go-to-resource-group.png" alt-text="Nasadit šablonu ADF ARM":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-go-to-resource-group.png" alt-text="Skupina prostředků":::
 
 2.  Ověřte, že je vytvořený Azure Data Factory.
     1. Vaše Azure Data Factory název je ve formátu-DataFactory \<uniqueid\> .
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-sample.png" alt-text="Nasadit šablonu ADF ARM":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-sample.png" alt-text="Ukázka Data Factory":::
 
 2. Ověřte, že je účet úložiště vytvořený.
     1. Název účtu úložiště je ve formátu úložiště \<uniqueid\> .
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="Nasadit šablonu ADF ARM":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="Účet úložiště":::
 
 3. Vyberte účet úložiště, který jste vytvořili, a pak vyberte **kontejnery**.
     1. Na stránce **kontejnery** vyberte kontejner objektů blob, který jste vytvořili.
         1. Název kontejneru objektů BLOB je v objektu Format-BLOB \<uniqueid\> .
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="Nasadit šablonu ADF ARM":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="Kontejner objektů blob":::
 
 ### <a name="upload-a-file"></a>Nahrání souboru
 
@@ -126,7 +126,7 @@ Další příklady šablon Azure Data Factory najdete v [galerii šablon rychlý
 
 6. Vyberte ikonu **Zavřít** ( **X**) pro zavření stránky **nahrát objekt BLOB** .
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-upload-blob-file.png" alt-text="Nasadit šablonu ADF ARM":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-upload-blob-file.png" alt-text="Odeslat soubor do vstupní složky":::
 
 Nechejte stránku kontejneru otevřenou, protože ji můžete použít k ověření výstupu na konci tohoto rychlého startu.
 
@@ -136,19 +136,19 @@ Nechejte stránku kontejneru otevřenou, protože ji můžete použít k ověře
 
 2. Vyberte dlaždici **Author & monitor** . 
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author-monitor-tile.png" alt-text="Nasadit šablonu ADF ARM":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author-monitor-tile.png" alt-text="& monitorování autora":::
 
 2. Vyberte kartu **Autor** :::image type="icon" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author.png" border="false"::: .
 
 3. Vyberte kanál vytvořený-ArmtemplateSampleCopyPipeline.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-pipelines.png" alt-text="Nasadit šablonu ADF ARM":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-pipelines.png" alt-text="Kanál šablony ARM":::
 
 4. Vyberte možnost **Přidat**  >  **aktivační událost nyní**.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-trigger-now.png" alt-text="Nasadit šablonu ADF ARM":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-trigger-now.png" alt-text="Trigger":::
 
-5. V pravém podokně v části **spuštění kanálu**vyberte **OK**.
+5. V pravém podokně v části **spuštění kanálu** vyberte **OK**.
 
 ### <a name="monitor-the-pipeline"></a>Monitorování kanálu
 
@@ -156,7 +156,7 @@ Nechejte stránku kontejneru otevřenou, protože ji můžete použít k ověře
 
 2. Zobrazí se spuštění aktivit související s příslušným spuštěním kanálu. V tomto rychlém startu má kanál pouze jednu aktivitu typu Kopírování. V takovém případě se zobrazí spuštění této aktivity.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-successful-run.png" alt-text="Nasadit šablonu ADF ARM":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-successful-run.png" alt-text="Úspěšné spuštění":::
 
 ### <a name="verify-the-output-file"></a>Ověření výstupního souboru
 
@@ -168,7 +168,7 @@ Kanál automaticky vytvoří výstupní složku v kontejneru objektů BLOB. Poto
 
 3. Potvrďte, že je do výstupní složky zkopírovaný soubor **emp.txt**. 
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-output.png" alt-text="Nasadit šablonu ADF ARM":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-output.png" alt-text="Výstup":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -80,6 +80,8 @@
       href: observability.md
     - name: CI/CD s využitím šablon ARM
       href: devops-api-development-templates.md
+    - name: Obnovitelné odstranění
+      href: soft-delete.md
 - name: Návody
   items:
     - name: Definování rozhraní API

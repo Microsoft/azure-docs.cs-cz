@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: tutorial
 ms.date: 10/18/2020
-ms.openlocfilehash: 93bbd84c25f02ac1653a46ebb4a70c1dfa90c744
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: c8a5b682e2ac4879d2181bdb069cf554bad512d9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94687230"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498281"
 ---
 # <a name="tutorial-use-customer-managed-keys-or-byok-with-media-services-rest-api"></a>Kurz: použití klíčů spravovaných zákazníkem nebo BYOK s využitím Media Services REST API
 
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte používat metodu post pro:
 
 Pokud nemáte předplatné Azure, [Vytvořte si bezplatný zkušební účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. Zaregistrujte instanční objekt s příslušnými oprávněními.
 1. Nainstalujte [post](https://www.postman.com).
@@ -43,8 +43,8 @@ Pokud nemáte předplatné Azure, [Vytvořte si bezplatný zkušební účet](ht
 
 ### <a name="register-a-service-principal-with-the-needed-permissions"></a>Registrace instančního objektu s potřebnými oprávněními
 
-1. [Vytvoření instančního objektu](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
-1. Přejít na [možnost 2: vytvořením nového tajného klíče aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#authentication-two-options) získáte tajný klíč objektu služby.
+1. [Vytvoření instančního objektu](../../active-directory/develop/howto-create-service-principal-portal.md).
+1. Přejít na [možnost 2: vytvořením nového tajného klíče aplikace](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options) získáte tajný klíč objektu služby.
 
    > [!IMPORTANT]
    >Zkopírujte a uložte tajný klíč pro pozdější použití. Po opuštění stránky tajného kódu na portálu nemůžete získat přístup ke tajnému kódu.

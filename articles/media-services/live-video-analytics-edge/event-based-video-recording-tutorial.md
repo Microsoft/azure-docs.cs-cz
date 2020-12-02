@@ -3,12 +3,12 @@ title: Kurz pro nahrávání a přehrávání videa založeného na událostech 
 description: V tomto kurzu se naučíte používat Azure Live video Analytics na Azure IoT Edge k nahrání záznamu videa založeného na událostech do cloudu a jeho přehrání z cloudu.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 03c97854673b369db9fe1cb026161a1e81a6bf31
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 84f6ef813fb1b2cc425e096212010717d0561aef
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346635"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498298"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Kurz: nahrávání videa založeného na událostech do cloudu a přehrávání z cloudu
 
@@ -36,7 +36,7 @@ Než začnete, přečtěte si tyto články:
 * [Postup úpravy nasazení. * .template.js](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 * Oddíl, [jak deklarovat trasy v manifestu nasazení IoT Edge](../../iot-edge/module-composition.md#declare-routes)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předpoklady pro tento kurz:
 
@@ -52,7 +52,7 @@ Na konci tohoto postupu budete mít v předplatném Azure nasazené relevantní 
 * Azure IoT Hub
 * Účet služby Azure Storage
 * Účet Azure Media Services
-* Virtuální počítač Linux v Azure s nainstalovaným [modulem runtime IoT Edge](../../iot-edge/how-to-install-iot-edge-linux.md)
+* Virtuální počítač Linux v Azure s nainstalovaným [modulem runtime IoT Edge](../../iot-edge/how-to-install-iot-edge.md)
 
 ## <a name="concepts"></a>Koncepty
 
@@ -86,8 +86,8 @@ Než začnete, ověřte, že jste dokončili třetí odrážku v části [požad
 
 Z zájmu tohoto kurzu jsou soubory:
 
-* **~/clouddrive/lva-Sample/Edge-Deployment/.env** : obsahuje vlastnosti, které Visual Studio Code používá k nasazení modulů do hraničního zařízení.
-* **~/clouddrive/lva-sample/appsetting.json** : používá Visual Studio Code ke spuštění ukázkového kódu.
+* **~/clouddrive/lva-Sample/Edge-Deployment/.env**: obsahuje vlastnosti, které Visual Studio Code používá k nasazení modulů do hraničního zařízení.
+* **~/clouddrive/lva-sample/appsetting.json**: používá Visual Studio Code ke spuštění ukázkového kódu.
 
 Budete potřebovat soubory pro tyto kroky.
 
@@ -132,10 +132,10 @@ V Visual Studio Code přejděte na src/Edge. Zobrazí se soubor. ENV, který jst
 
 Otevřete src/Edge/deployment.objectCounter.template.jsna. V části **modulů** jsou čtyři položky, které odpovídají položkám uvedeným v předchozích částech "koncepty":
 
-* **lvaEdge** : Toto je Live video Analytics v modulu IoT Edge.
-* **yolov3** : Jedná se o modul AI sestavený pomocí modelu Yolo v3.
-* **rtspsim** : Toto je simulátor RTSP.
-* **objectCounter** : Jedná se o modul, který hledá konkrétní objekty ve výsledcích z yolov3.
+* **lvaEdge**: Toto je Live video Analytics v modulu IoT Edge.
+* **yolov3**: Jedná se o modul AI sestavený pomocí modelu Yolo v3.
+* **rtspsim**: Toto je simulátor RTSP.
+* **objectCounter**: Jedná se o modul, který hledá konkrétní objekty ve výsledcích z yolov3.
 
 Pro modul objectCounter se podívejte na řetězec ($ {MODULes. objectCounter}), který se používá pro hodnotu image. Vychází z [kurzu](../../iot-edge/tutorial-develop-for-linux.md) vývoje IoT Edge modulu. Visual Studio Code automaticky rozpozná, že kód pro modul objectCounter je pod položkou src/Edge/Module/objectCounter. 
 
@@ -207,7 +207,7 @@ Pokud se chcete podívat na události z modulu objectCounter a ve službě Live 
 
     `"topologyName" : "EVRtoAssetsOnObjDetect"`
 1. Spusťte ladicí relaci výběrem F5. V okně **terminálu** se zobrazí zprávy, které se vytisknou.
-1. operations.jsv souboru začíná s voláními GraphTopologyList a GraphInstanceList. Pokud jste vyčistili prostředky po předchozích rychlých startech nebo kurzech, tato akce vrátí prázdné seznamy a pozastaví se, abyste vybrali možnost **zadat** , jak je znázorněno níže:
+1. operations.jsv souboru začíná s voláními GraphTopologyList a GraphInstanceList. Pokud jste vyčistili prostředky po předchozích rychlých startech nebo kurzech, tato akce vrátí prázdné seznamy a pozastaví se, abyste vybrali možnost **zadat**, jak je znázorněno níže:
 
     ```
     --------------------------------------------------------------------------
@@ -424,4 +424,4 @@ Pokud máte v úmyslu vyzkoušet ostatní kurzy, přihlaste se k prostředkům, 
 ## <a name="next-steps"></a>Další kroky
 
 * Místo používání simulátoru RTSP použijte [fotoaparát IP](https://en.wikipedia.org/wiki/IP_camera) s podporou pro RTSP. V případě, že hledáte zařízení, která jsou v souladu s profily G, S nebo T, můžete vyhledat kamery s podporou protokolu RTSP na [stránce ONVIF – vyhovujících produktů](https://www.onvif.org/conformant-products/) .
-* Použijte zařízení AMD64 nebo x64 Linux (vs. pomocí virtuálního počítače Azure Linux). Toto zařízení musí být ve stejné síti jako kamera IP. Postupujte podle pokynů v části [Instalace modulu runtime Azure IoT Edge v systému Linux](../../iot-edge/how-to-install-iot-edge-linux.md). Pak postupujte podle pokynů v tématu [nasazení prvního IoT Edge modulu do](../../iot-edge/quickstart-linux.md) rychlého startu zařízení s nástrojem Virtual Linux a zaregistrujte zařízení ve službě Azure IoT Hub.
+* Použijte zařízení AMD64 nebo x64 Linux (vs. pomocí virtuálního počítače Azure Linux). Toto zařízení musí být ve stejné síti jako kamera IP. Postupujte podle pokynů v části [Instalace modulu runtime Azure IoT Edge v systému Linux](../../iot-edge/how-to-install-iot-edge.md). Pak postupujte podle pokynů v tématu [nasazení prvního IoT Edge modulu do](../../iot-edge/quickstart-linux.md) rychlého startu zařízení s nástrojem Virtual Linux a zaregistrujte zařízení ve službě Azure IoT Hub.

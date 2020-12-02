@@ -1,19 +1,19 @@
 ---
-title: Fresnelova poklesu efekt
+title: Fresnelův efekt
 description: Stránka s vysvětlením funkcí pro Fresnelova poklesu materiálový efekt
 author: jumeder
 ms.author: jumeder
 ms.date: 11/09/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0596d118d1f3c09bc295891f023fe9990f3f1e05
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: c8ecd3afc95cf4b8054cd7db3530c15afebea3ce
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557704"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498230"
 ---
-# <a name="fresnel-effect"></a>Fresnelova poklesu efekt
+# <a name="fresnel-effect"></a>Fresnelův efekt
 
 Funkce materiálu Fresnelova poklesu účinku je nefyzicky Opravná, ad hoc efekt. Tato funkce je založena na fyzickém pozorování objektů, které se v těchto úhlech stávají více odrážejí. Fresnelova poklesu odraz je už fyzicky zahrnutý v [materiálovém modelu PBR](../../overview/features/pbr-materials.md) používaném ve vzdáleném vykreslování Azure. Funkce Fresnelova poklesu účinku je naopak pouze doplňková Barva efektu bez závislosti na [indikátorech](../../overview/features/lights.md) nebo v [prostředí nebe](../../overview/features/sky.md).
 
@@ -21,7 +21,7 @@ Fresnelova poklesu efekt dává ovlivněným objektům barevné roztéká kolem 
 
 ## <a name="enabling-the-fresnel-effect"></a>Povolení Fresnelova poklesuho efektu
 
-Chcete-li použít funkci Fresnelova poklesu účinek, je nutné ji povolit na příslušných materiálech. Můžete ji povolit nastavením FresnelEffect bitu [PbrMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures) pro [materiál PBR](../../overview/features/pbr-materials.md). Stejný vzor platí pro [ColorMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering) a [barevný materiál](../../overview/features/color-materials.md). V části Ukázky kódu najdete ukázku použití.
+Chcete-li použít funkci Fresnelova poklesu účinek, je nutné ji povolit na příslušných materiálech. Můžete ji povolit nastavením FresnelEffect bitu [PbrMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures) pro [materiál PBR](../../overview/features/pbr-materials.md). Stejný vzor platí pro [ColorMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering) a [barevný materiál](../../overview/features/color-materials.md). V části Ukázky kódu najdete ukázku použití.
 
 Po povolení se efekt Fresnelova poklesu okamžitě zobrazí. Ve výchozím nastavení bude září bílá (1, 1, 1, 1) a mít exponent 1. Tato nastavení můžete přizpůsobit pomocí níže uvedených parametrů setter.
 
@@ -93,10 +93,10 @@ void SetFresnelEffect(ApiHandle<AzureSession> session, ApiHandle<Material> mater
 
 ## <a name="api-documentation"></a>Dokumentace k rozhraní API
 
-* [C# PbrMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures)
-* [PbrMaterialFeatures C++](https://docs.microsoft.com/cpp/api/remote-rendering/pbrmaterialfeatures)
-* [C# ColorMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.colormaterialfeatures)
-* [ColorMaterialFeatures C++](https://docs.microsoft.com/cpp/api/remote-rendering/colormaterialfeatures)
+* [C# PbrMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures)
+* [PbrMaterialFeatures C++](/cpp/api/remote-rendering/pbrmaterialfeatures)
+* [C# ColorMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering.colormaterialfeatures)
+* [ColorMaterialFeatures C++](/cpp/api/remote-rendering/colormaterialfeatures)
 
 ## <a name="next-steps"></a>Další kroky
 

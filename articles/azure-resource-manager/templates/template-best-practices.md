@@ -2,13 +2,13 @@
 title: Osvědčené postupy pro šablony
 description: Popisuje doporučené přístupy k vytváření Azure Resource Manager šablon. Nabízí návrhy, aby se předešlo běžným problémům při používání šablon.
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 1121c66e0bcd7de39afd5bea85866fd9ad007ce4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/01/2020
+ms.openlocfilehash: c62bde8fc8cfc79330d13b7b2ff4f778dadf1339
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87809251"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497975"
 ---
 # <a name="arm-template-best-practices"></a>Osvědčené postupy pro šablonu ARM
 
@@ -87,8 +87,6 @@ Informace v této části mohou být užitečné při práci s [parametry](templ
    },
    ```
 
-* Nepoužívejte parametr pro verzi rozhraní API pro typ prostředku. Vlastnosti a hodnoty prostředků se mohou lišit podle čísla verze. Technologie IntelliSense v editoru kódu nemůže určit správné schéma, pokud je verze rozhraní API nastavena na parametr. Místo toho je třeba v šabloně pevně nakódovat verzi rozhraní API.
-
 * Používejte `allowedValues` zřídka. Použijte ji pouze v případě, že je nutné zajistit, aby některé hodnoty nebyly zahrnuty do povolených možností. Pokud používáte `allowedValues` moc široce, můžete zablokovat platná nasazení tím, že seznam nezůstane v aktuálním stavu.
 
 * Pokud název parametru ve vaší šabloně odpovídá parametru v příkazu PowerShell Deployment, Správce prostředků vyřeší tento konflikt názvů přidáním přípony **FromTemplate** do parametru Template. Například pokud zahrnete parametr s názvem **ResourceGroupName** v šabloně, je v konfliktu s parametrem **ResourceGroupName** v rutině [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) . Během nasazování budete vyzváni k zadání hodnoty pro **ResourceGroupNameFromTemplate**.
@@ -146,8 +144,6 @@ Následující informace můžou být užitečné při práci s [proměnnými](t
 
 * Použijte proměnné pro hodnoty, které vytváříte ze složitých uspořádání funkcí šablon. Pokud se složitý výraz zobrazuje pouze v proměnných, šablona je snazší číst.
 
-* Nepoužívejte proměnné pro `apiVersion` prostředek. Verze rozhraní API Určuje schéma prostředku. Často nemůžete změnit verzi, aniž byste museli měnit vlastnosti prostředku.
-
 * V části **proměnné** v šabloně nemůžete použít [odkazovou](template-functions-resource.md#reference) funkci. **Odkazovaná** funkce odvozuje svou hodnotu z běhového stavu prostředku. Proměnné jsou však při počáteční analýze šablony vyřešeny. Sestavte hodnoty, které vyžadují **odkazovou** funkci přímo v **části** **Resources** nebo Outputs šablony.
 
 * Přidejte proměnné pro názvy prostředků, které musí být jedinečné.
@@ -155,6 +151,16 @@ Následující informace můžou být užitečné při práci s [proměnnými](t
 * Pomocí [smyčky kopírování v proměnných](copy-variables.md) vytvořte opakovaný vzor objektů JSON.
 
 * Odeberte nepoužité proměnné.
+
+## <a name="api-version"></a>Verze rozhraní API
+
+Nastavte `apiVersion` vlastnost na pevně kódovanou verzi rozhraní API pro daný typ prostředku. Při vytváření nové šablony doporučujeme pro typ prostředku použít nejnovější verzi rozhraní API. Chcete-li zjistit dostupné hodnoty, přečtěte si téma [Reference k šabloně](/azure/templates/).
+
+Pokud vaše šablona funguje podle očekávání, doporučujeme, abyste dál používali stejnou verzi rozhraní API. Pomocí stejné verze rozhraní API se nemusíte starat o zásadní změny, které by mohly být představené v novějších verzích.
+
+Nepoužívejte parametr pro verzi rozhraní API. Vlastnosti a hodnoty prostředků se mohou lišit podle verze rozhraní API. Technologie IntelliSense v editoru kódu nemůže určit správné schéma, pokud je verze rozhraní API nastavena na parametr. Pokud předáte verzi rozhraní API, která neodpovídá vlastnostem ve vaší šabloně, nasazení se nezdaří.
+
+Nepoužívejte proměnné pro verzi rozhraní API. Konkrétně Nepoužívejte [funkci poskytovatelé](template-functions-resource.md#providers) k dynamickému získání verzí rozhraní API během nasazování. Dynamicky načtená verze rozhraní API nemusí odpovídat vlastnostem ve vaší šabloně.
 
 ## <a name="resource-dependencies"></a>Závislosti prostředků
 

@@ -10,12 +10,12 @@ ms.date: 11/03/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 5f772bd996b126a4cd7182a2ce088c2d3edc8e7d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 683f0e070ad77add62ed76eabd70b42ba15f012e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312030"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498128"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Vynutila minimální požadovanou verzi protokolu TLS (Transport Layer Security) pro požadavky na účet úložiště.
 
@@ -35,7 +35,7 @@ Když vynutili minimální verzi protokolu TLS pro váš účet úložiště, ri
 
 K protokolování požadavků na účet Azure Storage a určení verze TLS, kterou klient používá, můžete použít Azure Storage přihlášení Azure Monitor (Preview). Další informace najdete v tématu [monitorování Azure Storage](../blobs/monitor-blob-storage.md).
 
-Azure Storage přihlášení Azure Monitor podporuje použití dotazů protokolu k analýze dat protokolu. K dotazování protokolů můžete použít pracovní prostor Azure Log Analytics. Další informace o dotazech protokolu najdete v tématu [kurz: Začínáme s Log Analytics dotazy](../../azure-monitor/log-query/get-started-portal.md).
+Azure Storage přihlášení Azure Monitor podporuje použití dotazů protokolu k analýze dat protokolu. K dotazování protokolů můžete použít pracovní prostor Azure Log Analytics. Další informace o dotazech protokolu najdete v tématu [kurz: Začínáme s Log Analytics dotazy](../../azure-monitor/log-query/log-analytics-tutorial.md).
 
 Pokud chcete protokolovat data Azure Storage pomocí Azure Monitor a analyzovat je pomocí Azure Log Analytics, musíte nejdřív vytvořit nastavení diagnostiky, které indikuje, jaké typy požadavků a pro které služby úložiště chcete data protokolovat. Chcete-li v Azure Portal vytvořit nastavení diagnostiky, postupujte takto:
 
@@ -91,7 +91,7 @@ Pokud jste si jisti, že provoz od klientů používajících starší verze pro
 
 Pokud chcete nakonfigurovat minimální verzi TLS pro účet úložiště, nastavte pro tento účet verzi **MinimumTlsVersion** . Tato vlastnost je k dispozici pro všechny účty úložiště, které jsou vytvořeny pomocí modelu nasazení Azure Resource Manager. Další informace o modelu nasazení Azure Resource Manager najdete v tématu [Přehled účtu úložiště](storage-account-overview.md).
 
-Vlastnost **MinimumTlsVersion** není nastavena ve výchozím nastavení a nevrací hodnotu, dokud ji explicitně nenastavíte.  Pokud má vlastnost hodnotu **null** , bude účet úložiště umožňovat požadavky odeslané protokolem TLS verze 1,0 nebo vyšší.
+Vlastnost **MinimumTlsVersion** není nastavena ve výchozím nastavení a nevrací hodnotu, dokud ji explicitně nenastavíte.  Pokud má vlastnost hodnotu **null**, bude účet úložiště umožňovat požadavky odeslané protokolem TLS verze 1,0 nebo vyšší.
 
 # <a name="portal"></a>[Azure Portal](#tab/portal)
 
@@ -173,7 +173,7 @@ Pokud chcete nakonfigurovat minimální verzi TLS pro účet úložiště se ša
 
 1. V Azure Portal klikněte na možnost **vytvořit prostředek**.
 1. V **části Hledat na Marketplace** zadejte **šablonu Deployment** a potom stiskněte **ENTER**.
-1. Zvolte **template Deployment (nasadit pomocí vlastních šablon) (Preview)** , zvolte **vytvořit** a potom **v editoru zvolte sestavit vlastní šablonu**.
+1. Zvolte **template Deployment (nasadit pomocí vlastních šablon) (Preview)**, zvolte **vytvořit** a potom **v editoru zvolte sestavit vlastní šablonu**.
 1. V editoru šablon vložte následující JSON pro vytvoření nového účtu a nastavte minimální verzi TLS na TLS 1,2. Nezapomeňte nahradit zástupné symboly v lomených závorkách vlastními hodnotami.
 
     ```json

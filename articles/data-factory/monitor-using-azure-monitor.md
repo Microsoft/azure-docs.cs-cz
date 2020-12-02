@@ -3,20 +3,20 @@ title: Monitorování datových továren pomocí Azure Monitor
 description: Naučte se používat Azure Monitor k monitorování kanálů Data Factory/Azure povolením diagnostických protokolů s informacemi z Data Factory.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: af274c9c50b514befb4a3ce5930877edf964d976
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 35d2073dca21b4a0d48a43bed9933bb7549cf8f3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638087"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497890"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Monitorování a Data Factory výstrah pomocí Azure Monitor
 
@@ -34,9 +34,9 @@ Další informace najdete v tématu [přehled Azure monitor](../azure-monitor/ov
 
 Data Factory ukládá data o běhu kanálů jenom za 45 dní. Použijte Azure Monitor, pokud chcete uchovávat data delší dobu. S monitorováním můžete směrovat diagnostické protokoly pro analýzu na více různých cílů.
 
-* **Účet úložiště** : uložte diagnostické protokoly do účtu úložiště pro auditování nebo ruční kontrolu. Nastavení diagnostiky můžete použít k určení doby uchování ve dnech.
-* **Centrum událostí** : Streamujte protokoly do Azure Event Hubs. Protokoly se stanou vstupem do řešení partner Service nebo vlastní analýzy, jako je Power BI.
-* **Log Analytics** : Analyzujte protokoly pomocí Log Analytics. Data Factory integrace s Azure Monitor je užitečná v následujících scénářích:
+* **Účet úložiště**: uložte diagnostické protokoly do účtu úložiště pro auditování nebo ruční kontrolu. Nastavení diagnostiky můžete použít k určení doby uchování ve dnech.
+* **Centrum událostí**: Streamujte protokoly do Azure Event Hubs. Protokoly se stanou vstupem do řešení partner Service nebo vlastní analýzy, jako je Power BI.
+* **Log Analytics**: Analyzujte protokoly pomocí Log Analytics. Data Factory integrace s Azure Monitor je užitečná v následujících scénářích:
   * Chcete zapisovat komplexní dotazy na bohatou sadu metrik, která je publikována nástrojem Data Factory k monitorování. Můžete vytvářet vlastní výstrahy na těchto dotazech prostřednictvím monitorování.
   * Chcete monitorovat napříč datovými továrnami. Data z několika datových továrn můžete směrovat do jednoho pracovního prostoru monitorování.
 
@@ -46,19 +46,19 @@ Můžete použít také účet úložiště nebo obor názvů centra událostí,
 
 Vytvořte nebo přidejte nastavení diagnostiky pro datovou továrnu.
 
-1. Na portálu klikněte na monitorování. Vyberte **Nastavení**  >  **diagnostiky** .
+1. Na portálu klikněte na monitorování. Vyberte **Nastavení**  >  **diagnostiky**.
 
 1. Vyberte objekt pro vytváření dat, pro který chcete nastavit nastavení diagnostiky.
 
-1. Pokud ve vybrané datové továrně žádná nastavení neexistují, budete vyzváni k vytvoření nastavení. Vyberte **zapnout diagnostiku** .
+1. Pokud ve vybrané datové továrně žádná nastavení neexistují, budete vyzváni k vytvoření nastavení. Vyberte **zapnout diagnostiku**.
 
    ![Vytvořit nastavení diagnostiky, pokud neexistuje žádné nastavení](media/data-factory-monitor-oms/monitor-oms-image1.png)
 
-   Pokud v datové továrně existují nastavení, zobrazí se seznam nastavení, která jsou už nakonfigurovaná u objektu pro vytváření dat. Vyberte **Přidat nastavení diagnostiky** .
+   Pokud v datové továrně existují nastavení, zobrazí se seznam nastavení, která jsou už nakonfigurovaná u objektu pro vytváření dat. Vyberte **Přidat nastavení diagnostiky**.
 
    ![Pokud existují nastavení, přidejte nastavení diagnostiky.](media/data-factory-monitor-oms/add-diagnostic-setting.png)
 
-1. Zadejte název nastavení, vyberte **Odeslat do Log Analytics** a pak vyberte pracovní prostor z **pracovního prostoru Log Analytics** .
+1. Zadejte název nastavení, vyberte **Odeslat do Log Analytics** a pak vyberte pracovní prostor z **pracovního prostoru Log Analytics**.
 
     * V režimu _diagnostiky Azure_ se protokoly diagnostiky flowují do tabulky _AzureDiagnostics_ .
 
@@ -75,14 +75,14 @@ Vytvořte nebo přidejte nastavení diagnostiky pro datovou továrnu.
 
       Můžete vybrat různé protokoly, které jsou relevantní pro vaše úlohy, pro odeslání do Log Analytics tabulek. Pokud například nepoužíváte služba SSIS (SQL Server Integration Services) (SSIS) vůbec, nemusíte vybírat žádné protokoly SSIS. Pokud chcete protokolovat SSIS Integration Runtime (IR) operace spuštění/zastavení/údržby, můžete vybrat SSIS INFRAČERVENé protokoly. Pokud vyvoláte SSIS spuštění balíčků prostřednictvím T-SQL v SQL Server Management Studio (SSMS), SQL Server agenta nebo jiných určených nástrojů, můžete vybrat protokoly balíčku SSIS. Pokud vyvoláte spouštění balíčků SSIS prostřednictvím aktivit balíčku Execute SSIS v kanálech ADF, můžete vybrat všechny protokoly.
 
-    * Vyberete-li možnost _AllMetrics_ , budou k dispozici různé metriky ADF, které vám umožní monitorovat nebo vyvolávat výstrahy, včetně metrik pro aktivity ADF, kanál a triggery spuštění a také pro operace SSIS IR a spuštění balíčku SSIS.
+    * Vyberete-li možnost _AllMetrics_, budou k dispozici různé metriky ADF, které vám umožní monitorovat nebo vyvolávat výstrahy, včetně metrik pro aktivity ADF, kanál a triggery spuštění a také pro operace SSIS IR a spuštění balíčku SSIS.
 
    ![Pojmenujte nastavení a vyberte pracovní prostor Log-Analytics.](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
     > [!NOTE]
-    > Vzhledem k tomu, že tabulka protokolů Azure nemůže mít více než 500 sloupců, **důrazně doporučujeme** vybrat _režim specifický pro daný prostředek_ . Další informace najdete v tématu [Log Analytics známá omezení](../azure-monitor/platform/resource-logs.md#column-limit-in-azurediagnostics).
+    > Vzhledem k tomu, že tabulka protokolů Azure nemůže mít více než 500 sloupců, **důrazně doporučujeme** vybrat _režim specifický pro daný prostředek_. Další informace najdete v tématu [Log Analytics známá omezení](../azure-monitor/platform/resource-logs.md#column-limit-in-azurediagnostics).
 
-1. Vyberte **Uložit** .
+1. Vyberte **Uložit**.
 
 Po chvíli se nové nastavení zobrazí v seznamu nastavení pro tuto datovou továrnu. Diagnostické protokoly se do tohoto pracovního prostoru streamují ihned po vygenerování nových dat událostí. Mezi při vygenerování události a jejím zobrazením v Log Analytics může uplynout až 15 minut.
 
@@ -94,7 +94,7 @@ Toto řešení poskytuje souhrn celkového stavu vašich Data Factory, s možnos
 * Možnost přejít k podrobnostem o spuštění aktivit Data Factory podle typu
 * Souhrn kanálu nejvyšší úrovně Data Factory, chyb aktivit
 
-1. Přejít na **Azure Marketplace** , vyberte **analytický** filtr a vyhledejte **Azure Data Factory Analytics (Preview)** .
+1. Přejít na **Azure Marketplace**, vyberte **analytický** filtr a vyhledejte **Azure Data Factory Analytics (Preview)** .
 
    ![Přejděte na "Azure Marketplace", zadejte "analytický filtr" a vyberte "Azure Data Factory Analytics (Preview").](media/data-factory-monitor-oms/monitor-oms-image3.png)
 
@@ -102,7 +102,7 @@ Toto řešení poskytuje souhrn celkového stavu vašich Data Factory, s možnos
 
    ![Podrobnosti o Azure Data Factory Analytics (Preview)](media/data-factory-monitor-oms/monitor-oms-image4.png)
 
-1. Vyberte **vytvořit** a pak vytvořte nebo vyberte **pracovní prostor Log Analytics** .
+1. Vyberte **vytvořit** a pak vytvořte nebo vyberte **pracovní prostor Log Analytics**.
 
    ![Vytváření nového řešení](media/data-factory-monitor-oms/monitor-log-analytics-image-5.png)
 
@@ -127,7 +127,7 @@ Můžete vizualizovat předchozí metriky, zobrazit dotazy za těmito metrikami,
 ![Grafická reprezentace kanálu spouštěná službou Data Factory](media/data-factory-monitor-oms/monitor-oms-image8.png)
 
 > [!NOTE]
-> Azure Data Factory Analytics (Preview) odesílá diagnostické protokoly do cílových tabulek _specifických pro prostředky_ . Můžete zapisovat dotazy z následujících tabulek: _ADFPipelineRun_ , _ADFTriggerRun_ a _ADFActivityRun_ .
+> Azure Data Factory Analytics (Preview) odesílá diagnostické protokoly do cílových tabulek _specifických pro prostředky_ . Můžete zapisovat dotazy z následujících tabulek: _ADFPipelineRun_, _ADFTriggerRun_ a _ADFActivityRun_.
 
 ## <a name="data-factory-metrics"></a>Data Factory metriky
 
@@ -446,7 +446,7 @@ Další informace najdete v tématu [nastavení diagnostiky](/rest/api/monitor/d
 | --- | --- | --- | --- |
 | **Obsah** |Řetězec | Úroveň diagnostických protokolů. Pro protokoly spuštění aktivit nastavte vlastnost hodnota na 4. | `4` |
 | **ID** |Řetězec | Jedinečné ID pro sledování konkrétního požadavku. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **time** | Řetězec | Čas události ve formátu TimeSpan UTC `YYYY-MM-DDTHH:MM:SS.00000Z` . | `2017-06-28T21:00:27.3534352Z` |
+| **interval** | Řetězec | Čas události ve formátu TimeSpan UTC `YYYY-MM-DDTHH:MM:SS.00000Z` . | `2017-06-28T21:00:27.3534352Z` |
 |**activityRunId**| Řetězec| ID spuštění aktivity. | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
 |**pipelineRunId**| Řetězec| ID spuštění kanálu | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |**Prostředku**| Řetězec | ID přidružené k prostředku datové továrny | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
@@ -492,7 +492,7 @@ Další informace najdete v tématu [nastavení diagnostiky](/rest/api/monitor/d
 | --- | --- | --- | --- |
 | **Obsah** |Řetězec | Úroveň diagnostických protokolů. Pro protokoly spuštění aktivit nastavte vlastnost hodnota na 4. | `4` |
 | **ID** |Řetězec | Jedinečné ID pro sledování konkrétního požadavku. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **time** | Řetězec | Čas události ve formátu TimeSpan UTC `YYYY-MM-DDTHH:MM:SS.00000Z` . | `2017-06-28T21:00:27.3534352Z` |
+| **interval** | Řetězec | Čas události ve formátu TimeSpan UTC `YYYY-MM-DDTHH:MM:SS.00000Z` . | `2017-06-28T21:00:27.3534352Z` |
 |**runId**| Řetězec| ID spuštění kanálu | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |**Prostředku**| Řetězec | ID přidružené k prostředku datové továrny | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |**kategorií**| Řetězec | Kategorie diagnostických protokolů. Nastavte hodnotu vlastnosti na `PipelineRuns` . | `PipelineRuns` |
@@ -535,7 +535,7 @@ Další informace najdete v tématu [nastavení diagnostiky](/rest/api/monitor/d
 | --- | --- | --- | --- |
 | **Obsah** |Řetězec | Úroveň diagnostických protokolů. Pro protokoly spuštění aktivit nastavte vlastnost hodnota na 4. | `4` |
 | **ID** |Řetězec | Jedinečné ID pro sledování konkrétního požadavku. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **time** | Řetězec | Čas události ve formátu TimeSpan UTC `YYYY-MM-DDTHH:MM:SS.00000Z` . | `2017-06-28T21:00:27.3534352Z` |
+| **interval** | Řetězec | Čas události ve formátu TimeSpan UTC `YYYY-MM-DDTHH:MM:SS.00000Z` . | `2017-06-28T21:00:27.3534352Z` |
 |**triggerId**| Řetězec| ID spuštění triggeru. | `08587023010602533858661257311` |
 |**Prostředku**| Řetězec | ID přidružené k prostředku datové továrny | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |**kategorií**| Řetězec | Kategorie diagnostických protokolů. Nastavte hodnotu vlastnosti na `PipelineRuns` . | `PipelineRuns` |
@@ -570,7 +570,7 @@ Tady jsou atributy protokolu SSIS a operace spuštění/zastavení/údržby IR.
 
 | Vlastnost                   | Typ   | Popis                                                   | Příklad                        |
 | -------------------------- | ------ | ------------------------------------------------------------- | ------------------------------ |
-| **time**                   | Řetězec | Čas události ve formátu UTC: `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| **interval**                   | Řetězec | Čas události ve formátu UTC: `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | Řetězec | Název vaší operace SSIS IR                            | `Start/Stop/Maintenance` |
 | **kategorií**               | Řetězec | Kategorie diagnostických protokolů                               | `SSISIntegrationRuntimeLogs` |
 | **ID**          | Řetězec | Jedinečné ID pro sledování konkrétní operace             | `f13b159b-515f-4885-9dfa-a664e949f785Deprovision0059035558` |
@@ -610,7 +610,7 @@ Tady jsou atributy protokolu podmínek souvisejících se zprávami o událostec
 
 | Vlastnost                   | Typ   | Popis                                                          | Příklad                        |
 | -------------------------- | ------ | -------------------------------------------------------------------- | ------------------------------ |
-| **time**                   | Řetězec | Čas události ve formátu UTC: `YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
+| **interval**                   | Řetězec | Čas události ve formátu UTC: `YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | Řetězec | Tato nastavení se nastaví na `YourSSISIRName-SSISPackageEventMessageContext`       | `mysqlmissisir-SSISPackageEventMessageContext` |
 | **kategorií**               | Řetězec | Kategorie diagnostických protokolů                                      | `SSISPackageEventMessageContext` |
 | **ID**          | Řetězec | Jedinečné ID pro sledování konkrétní operace                    | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
@@ -660,7 +660,7 @@ Tady jsou atributy protokolu událostí, které jsou vygenerované SSIS spoušt�
 
 | Vlastnost                   | Typ   | Popis                                                        | Příklad                        |
 | -------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
-| **time**                   | Řetězec | Čas události ve formátu UTC: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
+| **interval**                   | Řetězec | Čas události ve formátu UTC: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | Řetězec | Tato nastavení se nastaví na `YourSSISIRName-SSISPackageEventMessages`           | `mysqlmissisir-SSISPackageEventMessages` |
 | **kategorií**               | Řetězec | Kategorie diagnostických protokolů                                    | `SSISPackageEventMessages` |
 | **ID**          | Řetězec | Jedinečné ID pro sledování konkrétní operace                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
@@ -709,7 +709,7 @@ Tady jsou atributy protokolu spustitelných statistik generovaných spouštění
 
 | Vlastnost                   | Typ   | Popis                                                      | Příklad                        |
 | -------------------------- | ------ | ---------------------------------------------------------------- | ------------------------------ |
-| **time**                   | Řetězec | Čas události ve formátu UTC: `YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
+| **interval**                   | Řetězec | Čas události ve formátu UTC: `YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | Řetězec | Tato nastavení se nastaví na `YourSSISIRName-SSISPackageExecutableStatistics`  | `mysqlmissisir-SSISPackageExecutableStatistics` |
 | **kategorií**               | Řetězec | Kategorie diagnostických protokolů                                  | `SSISPackageExecutableStatistics` |
 | **ID**          | Řetězec | Jedinečné ID pro sledování konkrétní operace                | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
@@ -754,7 +754,7 @@ Tady jsou atributy protokolu běhových statistik pro součásti toku dat, kter�
 
 | Vlastnost                   | Typ   | Popis                                                         | Příklad                        |
 | -------------------------- | ------ | ------------------------------------------------------------------- | ------------------------------ |
-| **time**                   | Řetězec | Čas události ve formátu UTC: `YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
+| **interval**                   | Řetězec | Čas události ve formátu UTC: `YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | Řetězec | Tato nastavení se nastaví na `YourSSISIRName-SSISPackageExecutionComponentPhases` | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
 | **kategorií**               | Řetězec | Kategorie diagnostických protokolů                                     | `SSISPackageExecutionComponentPhases` |
 | **ID**          | Řetězec | Jedinečné ID pro sledování konkrétní operace                   | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
@@ -802,7 +802,7 @@ Tady jsou atributy protokolu pohybů dat prostřednictvím každé nohy kanálů
 
 | Vlastnost                     | Typ   | Popis                                                        | Příklad                        |
 | ---------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
-| **time**                     | Řetězec | Čas události ve formátu UTC: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
+| **interval**                     | Řetězec | Čas události ve formátu UTC: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**            | Řetězec | Tato nastavení se nastaví na `YourSSISIRName-SSISPackageExecutionDataStatistics` | `mysqlmissisir-SSISPackageExecutionDataStatistics` |
 | **kategorií**                 | Řetězec | Kategorie diagnostických protokolů                                    | `SSISPackageExecutionDataStatistics` |
 | **ID**            | Řetězec | Jedinečné ID pro sledování konkrétní operace                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
@@ -836,8 +836,8 @@ Log Analytics dědí schéma z monitorování s následujícími výjimkami:
     | $. Properties. Vstup | Vstup | Dynamická |
     | $. Properties. Výkonem | Výstup | Dynamická |
     | $. Properties. Chyba. errorCode | ErrorCode | int |
-    | $. Properties. Chyba. zpráva | Chybová | string |
-    | $. Properties. Chyba | Chybová | Dynamická |
+    | $. Properties. Chyba. zpráva | Chybová | řetězec |
+    | $. Properties. Chyba | Chyba | Dynamická |
     | $. Properties. Předchůdci | Předchůdci | Dynamická |
     | $. Properties. Ukazatelů | Parametry | Dynamická |
     | $.properties.SystemParameters | Třídy SystemParameters | Dynamická |

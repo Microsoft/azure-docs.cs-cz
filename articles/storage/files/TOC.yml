@@ -80,7 +80,7 @@
     - name: Šifrování neaktivních uložených dat
       href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Šifrování neaktivních uložených dat s využitím klíčů spravovaných zákazníkem
-      href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+      href: ../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Nabídky pro dodržování předpisů
       href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Nejčastější dotazy

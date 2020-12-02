@@ -4,12 +4,12 @@ description: Naučte se používat Azure Custom Vision k vytvoření kontejnerov
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 685aab603b2589a97b4c80ef0f8c5860617f1147
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b4d9f82d99542bde216f0eaa1459d0f6c1a52659
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358258"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498332"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Kurz: Analýza živého videa pomocí živé analýzy videí v IoT Edge a Azure Custom Vision
 
@@ -49,7 +49,7 @@ Než začnete, přečtěte si následující články:
 * [Kurz: vývoj modulu IoT Edge](../../iot-edge/tutorial-develop-for-linux.md)
 * [Postup úpravy nasazení. * .template.js](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 
 ::: zone pivot="programming-language-csharp"
@@ -194,7 +194,7 @@ Klikněte pravým tlačítkem na zařízení Live video Analytics a vyberte **Sp
 
 Pokud otevřete topologii grafu pro tento kurz v prohlížeči, uvidíte, že hodnota `inferencingUrl` je nastavená na `http://cv:80/image` . Toto nastavení znamená, že odvozený server vrátí výsledky po zjištění hraček nákladní auta, pokud existují, v živém videu.
 
-1. V Visual Studio Code otevřete kartu **rozšíření** (nebo vyberte **CTRL + SHIFT + X** ) a vyhledejte IoT Hub Azure.
+1. V Visual Studio Code otevřete kartu **rozšíření** (nebo vyberte **CTRL + SHIFT + X**) a vyhledejte IoT Hub Azure.
 1. Klikněte pravým tlačítkem a vyberte **nastavení rozšíření**.
 
     > [!div class="mx-imgBorder"]
@@ -391,6 +391,6 @@ Pokud máte v úmyslu vyzkoušet ostatní kurzy nebo rychlé starty, přihlaste 
 Přečtěte si další výzvy pro pokročilé uživatele:
 
 * Místo používání simulátoru RTSP použijte [kameru IP](https://en.wikipedia.org/wiki/IP_camera) , která má podporu pro RTSP. Můžete vyhledat kamery protokolu IP, které podporují protokol RTSP na stránce ONVIF, která je v [souladu](https://www.onvif.org/conformant-products/) s těmito produkty. Vyhledejte zařízení, která jsou v souladu s profily G, S nebo T.
-* Místo virtuálního počítače Azure Linux použijte zařízení AMD64 nebo x64 Linux. Toto zařízení musí být ve stejné síti jako kamera IP. Můžete postupovat podle pokynů v tématu [Instalace modulu runtime Azure IoT Edge v systému Linux](../../iot-edge/how-to-install-iot-edge-linux.md).
+* Místo virtuálního počítače Azure Linux použijte zařízení AMD64 nebo x64 Linux. Toto zařízení musí být ve stejné síti jako kamera IP. Můžete postupovat podle pokynů v tématu [Instalace modulu runtime Azure IoT Edge v systému Linux](../../iot-edge/how-to-install-iot-edge.md).
 
 Pak zařízení Zaregistrujte v Azure IoT Hub podle pokynů v tématu [nasazení prvního modulu IoT Edge na zařízení s Virtual Linux](../../iot-edge/quickstart-linux.md).

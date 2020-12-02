@@ -1,19 +1,19 @@
 ---
 title: Transformace dat pomocí toku dat mapování
 description: V tomto kurzu najdete podrobné pokyny pro použití Azure Data Factory k transformaci dat pomocí toku dat s mapováním.
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/09/2019
-ms.openlocfilehash: fa516f577254f827a6437697df82010bd9b631ee
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: b0f564f68a638e7efd1cd1ce9116a26f4d19f277
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555906"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497040"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Transformace dat s využitím mapování toků dat
 
@@ -32,7 +32,7 @@ V tomto kurzu provedete následující kroky:
 > * Testovací spuštění kanálu
 > * Monitorování aktivity toku dat
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet služby Azure Storage**. ADLS Storage použijete jako *zdrojová* úložiště a úložiště dat *jímky* . Pokud účet úložiště nemáte, přečtěte si téma [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md), kde najdete postup jeho vytvoření.
 
@@ -43,7 +43,7 @@ Soubor, který v tomto kurzu transformuje, je MoviesDB.csv, který najdete [tady
 V tomto kroku vytvoříte datovou továrnu a otevřete Data Factory UX pro vytvoření kanálu v datové továrně.
 
 1. Otevřete **Microsoft Edge** nebo **Google Chrome**. V současné době je Data Factory uživatelské rozhraní podporováno pouze ve webových prohlížečích Microsoft Edge a Google Chrome.
-2. V nabídce vlevo vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  **Data Factory** :
+2. V nabídce vlevo vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  **Data Factory**:
 
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -131,7 +131,7 @@ Po vytvoření toku dat se automaticky pošle na plátno toku dat. V tomto kroku
 
     Pokud máte aktivní cluster ladění, můžete svoji logiku ověřit kliknutím na **aktualizovat** , aby se zobrazil výstup výrazu v porovnání s použitými vstupy. Existuje více než jedna správná odpověď na to, jak tuto logiku můžete dosáhnout pomocí jazyka výrazů toku dat.
 
-    ![Filtr](media/tutorial-data-flow/filter2.png)
+    ![Filtrovat](media/tutorial-data-flow/filter2.png)
 
     Až budete s vaším výrazem hotovi, klikněte na **Uložit a dokončit** .
 
@@ -190,7 +190,7 @@ Kanál můžete ladit před jeho publikováním. V tomto kroku budete aktivovat 
     ![Snímek obrazovky, který zobrazuje podokno monitorování, kde vidíte počet řádků a čas strávený v jednotlivých krocích transformace.](media/tutorial-data-flow/pipeline3.png)
 1. Kliknutím na transformaci získáte podrobné informace o sloupcích a vytváření oddílů dat.
 
-    ![Monitorování](media/tutorial-data-flow/pipeline4.png)
+    ![Sledování](media/tutorial-data-flow/pipeline4.png)
 
 Pokud jste postupovali podle tohoto kurzu správně, měli byste do složky jímky zapsat 83 řádků a 2 sloupce. Správnost dat můžete ověřit kontrolou úložiště objektů BLOB.
 

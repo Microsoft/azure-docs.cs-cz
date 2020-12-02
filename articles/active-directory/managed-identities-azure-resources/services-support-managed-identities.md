@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: eee711917a732bfc24b10db82c75786fd9734b57
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: c77f0e93e9f0084f335df39d2878871d66af0aac
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555681"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498026"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity prostředků Azure
 
@@ -85,7 +85,7 @@ Kubernetes s povoleným ARC Azure aktuálně [podporuje identitu přiřazenou sy
 Pokud jste vaše předplatné přesunuli na nového tenanta, přečtěte si následující dokument, který překonfiguruje spravovanou identitu:
 * [Opravit poškozený účet automanage](../../automanage/repair-automanage-account.md)
 
-### <a name="azure-blueprints"></a>Azure Blueprints
+### <a name="azure-blueprints"></a>Azure Blueprint
 
 |Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -253,7 +253,7 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Policy (v oblastech, 
 - [Azure Portal](../../governance/policy/tutorials/create-and-manage.md#assign-a-policy)
 - [PowerShell](../../governance/policy/how-to/remediate-resources.md#create-managed-identity-with-powershell)
 - [Azure CLI](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create)
-- [Šablony Azure Resource Manageru](/azure/templates/microsoft.authorization/policyassignments)
+- [Šablony Azure Resource Manager](/azure/templates/microsoft.authorization/policyassignments)
 - [REST](/rest/api/resources/policyassignments/create)
 
 
@@ -291,15 +291,15 @@ Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti A
 
 |Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Preview | Preview |
-| Přiřazená uživatelem | ![K dispozici][check] | ![K dispozici][check] | Preview | Preview |
+| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Preview | ![K dispozici][check] |
+| Přiřazená uživatelem | ![K dispozici][check] | ![K dispozici][check] | Preview | ![K dispozici][check] |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure Virtual Machine Scale Sets (v oblastech, kde je dostupná), podívejte se na následující seznam:
 
 - [Azure Portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Šablony Azure Resource Manageru](qs-configure-template-windows-vm.md)
+- [Šablony Azure Resource Manager](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 
 
@@ -308,15 +308,15 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Virtual Machine Scale
 
 | Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Preview | Preview |
-| Přiřazená uživatelem | ![K dispozici][check] | ![K dispozici][check] | Preview | Preview |
+| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Preview | ![K dispozici][check] |
+| Přiřazená uživatelem | ![K dispozici][check] | ![K dispozici][check] | Preview | ![K dispozici][check] |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure Virtual Machines (v oblastech, kde je dostupná), podívejte se na následující seznam:
 
 - [Azure Portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Šablony Azure Resource Manageru](qs-configure-template-windows-vm.md)
+- [Šablony Azure Resource Manager](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 - [Sady Azure SDK](qs-configure-sdk-windows-vm.md)
 

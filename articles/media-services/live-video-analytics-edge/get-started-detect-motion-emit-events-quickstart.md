@@ -3,12 +3,12 @@ title: Začínáme se službou Live video Analytics v IoT Edge – Azure
 description: V tomto rychlém startu se dozvíte, jak začít pracovat se službou Live video Analytics na IoT Edge. Naučte se detekovat pohyb v živém streamu videa.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 2d426952e92951185c43b68266196a6764f4f601
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e67c717a4476ab9191471483d9aa8e8f222cd750
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125009"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498264"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Rychlý Start: Začínáme – Live video Analytics na IoT Edge
 
@@ -39,7 +39,7 @@ Tento kurz vyžaduje následující prostředky Azure:
 * IoT Hub
 * Účet úložiště
 * Účet Azure Media Services
-* Virtuální počítač Linux v Azure s nainstalovaným [modulem runtime IoT Edge](../../iot-edge/how-to-install-iot-edge-linux.md)
+* Virtuální počítač Linux v Azure s nainstalovaným [modulem runtime IoT Edge](../../iot-edge/how-to-install-iot-edge.md)
 
 Pro tento rychlý Start doporučujeme, abyste k nasazení požadovaných prostředků ve vašem předplatném Azure použili [skript pro nastavení prostředků Live video Analytics](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) . To můžete provést pomocí těchto kroků:
 
@@ -48,7 +48,11 @@ Pro tento rychlý Start doporučujeme, abyste k nasazení požadovaných prostř
 1. V rozevírací nabídce na levé straně okna Cloud Shell vyberte **bash** jako své prostředí.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstarts/env-selector.png" alt-text="Analýza živých videí na základě detekce pohybu"
+    > :::image type="content" source="./media/quickstarts/env-selector.png" alt-text="Výběr prostředí":::
+1. Spusťte následující příkaz.
+
+    ```
+    bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
 Pokud se skript úspěšně dokončí, měli byste vidět všechny požadované prostředky v rámci vašeho předplatného. Ve výstupu skriptu obsahuje tabulka prostředků název centra IoT. Vyhledejte typ prostředku `Microsoft.Devices/IotHubs` a poznamenejte si jeho název. Tento název budete potřebovat v dalším kroku. 
@@ -80,17 +84,17 @@ Podle těchto pokynů se připojte ke službě IoT Hub pomocí rozšíření Azu
 1. Klikněte pravým tlačítkem a vyberte **nastavení rozšíření**.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Analýza živých videí na základě detekce pohybu":::
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Nastavení rozšíření":::
 1. Vyhledejte a povolte možnost zobrazit podrobnou zprávu.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Analýza živých videí na základě detekce pohybu":::
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Zobrazit podrobnou zprávu":::
 1. Vyberte **Zobrazit**  >  **Průzkumníka**. Případně vyberte CTRL + SHIFT + E.
 1. V levém dolním rohu karty **Průzkumník** vyberte **Azure IoT Hub**.
 1. Kliknutím na ikonu **Další možnosti** zobrazíte kontextovou nabídku. Pak vyberte **nastavit IoT Hub připojovací řetězec**.
 1. Po zobrazení vstupního pole zadejte připojovací řetězec IoT Hub. V Cloud Shell můžete získat připojovací řetězec z *~/clouddrive/lva-sample/appsettings.jsna*.
 
-Pokud je připojení úspěšné, zobrazí se seznam hraničních zařízení. Měli byste vidět aspoň jedno zařízení s názvem **lva-Sample-Device**. Pomocí místní nabídky teď můžete spravovat zařízení IoT Edge a pracovat s Azure IoT Hub. Chcete-li zobrazit moduly nasazené na hraničním zařízení, v části **lva-Sample-Device**rozbalte uzel **moduly** .
+Pokud je připojení úspěšné, zobrazí se seznam hraničních zařízení. Měli byste vidět aspoň jedno zařízení s názvem **lva-Sample-Device**. Pomocí místní nabídky teď můžete spravovat zařízení IoT Edge a pracovat s Azure IoT Hub. Chcete-li zobrazit moduly nasazené na hraničním zařízení, v části **lva-Sample-Device** rozbalte uzel **moduly** .
 
 ![lva – uzel Sample-Device](./media/quickstarts/lva-sample-device-node.png)
 

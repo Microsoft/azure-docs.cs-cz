@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 154a7b17fc09c55e83b65eef8d479904c36e87eb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: eddee58d70cf621bd6c82d54fe75434f4e596d9e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791184"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498162"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Kurz: migrace místních dat do cloudového úložiště pomocí AzCopy
 
@@ -44,13 +44,13 @@ Prvním krokem je vytvoření kontejneru, protože objekty blob se musí vždy n
 Podle těchto pokynů vytvořte kontejner:
 
 1. Na hlavní stránce vyberte tlačítko **Účty úložiště** a pak vyberte účet úložiště, který jste vytvořili.
-2. V části **Služby** vyberte **Objekty blob** a pak vyberte **Kontejner** .
+2. V části **Služby** vyberte **Objekty blob** a pak vyberte **Kontejner**.
 
    ![Snímek obrazovky znázorňující vytvoření kontejneru](media/storage-azcopy-migrate-on-premises-data/CreateContainer.png)
  
 Názvy kontejnerů musí začínat písmenem nebo číslicí. Můžou obsahovat pouze písmena, číslice a znak spojovníku (-). Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-## <a name="download-azcopy"></a>Stáhnout AzCopy
+## <a name="download-azcopy"></a>Stažení nástroje AzCopy
 
 Stáhněte si spustitelný soubor AzCopy v10 za účelem.
 
@@ -176,7 +176,7 @@ Pokud chcete ověřit správné spouštění plánované úlohy nebo úlohy Cron
 
 Další informace o způsobech přesunu místních dat do služby Azure Storage a naopak najdete na následujícím odkazu:
 
-* [Přesunout data do a z Azure Storage](./storage-choose-data-transfer-solution.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).  
+* [Přesunout data do a z Azure Storage](./storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).  
 
 Další informace o AzCopy najdete v některém z těchto článků:
 

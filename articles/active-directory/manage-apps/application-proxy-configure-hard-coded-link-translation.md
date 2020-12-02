@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ad45d5f0e313c06619fa9c998515e434de957ea
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 08c4020fc03f89b2c583a2458c70e18ecbbe0ba1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997558"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498060"
 ---
 # <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>Přesměrování pevně zakódovaných odkazů pro aplikace publikované s Azure Proxy aplikací služby AD
 
@@ -86,28 +86,28 @@ Existují dva běžné typy interních propojení v místních aplikacích:
 - **Relativní interní odkazy** , které odkazují na sdílený prostředek v místní struktuře souborů, jako je `/claims/claims.html` . Tyto odkazy automaticky fungují v aplikacích, které jsou publikovány prostřednictvím proxy aplikace, a fungují i bez překladu propojení. 
 - **Pevně zakódované interní odkazy** na jiné místní aplikace, jako jsou `http://expenses` nebo publikované soubory `http://expenses/logo.jpg` . Funkce překladu propojení funguje na pevně zakódovaných interních odkazech a mění je tak, aby odkazovaly na externí adresy URL, ke kterým musí přejít vzdálení uživatelé.
 
-Úplný seznam značek kódu HTML, na kterých proxy aplikací podporuje překlad odkazů pro zahrnutí:
-* pro
-* kazet
-* base
-* .
-* div
-* Uložit
-* tvar
-* rámec
-* záhlaví
-* html
-* iframe
-* obrázek
-* vstup
-* odkaz
-* MenuItem
-* meta
-* object
-* script
-* source
-* track
-* Video
+Úplný seznam atributů ve značkách kódu HTML, na kterých proxy aplikací podporuje překlad odkazů pro zahrnutí:
+* a (href)
+* zvuk (src)
+* Base (href)
+* tlačítko (formaction)
+* div (data-Background; Style; data-src)
+* Vložit (src)
+* formulář (akce)
+* rámec (src)
+* Head (profil)
+* HTML (manifest)
+* IFRAME (longdesc, src)
+* IMG (longdesc, src)
+* vstup (formaction, src, Value)
+* odkaz (href)
+* MenuItem (ikona)
+* meta (obsah)
+* objekt (archivní, data, základ kódu)
+* skript (src)
+* zdroj (src)
+* sledovat (src)
+* video (src, plakát)
 
 Kromě toho je v rámci šablony stylů CSS také přeložen atribut URL.
 

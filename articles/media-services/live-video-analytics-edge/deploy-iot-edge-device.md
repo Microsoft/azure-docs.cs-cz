@@ -3,12 +3,12 @@ title: Nasazení Live video Analytics na zařízení IoT Edge – Azure
 description: V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video Analytics na zařízení IoT Edge. To byste měli udělat například v případě, že máte přístup k místnímu počítači se systémem Linux nebo jste vytvořili účet Azure Media Services.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: a64fc11d7afa70d5200fdbd24bd3facdb8a95a7e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 4fa4a9643976ba513b025706cacec26b2a50afb5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019575"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498315"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Nasazení Live video Analytics na zařízení IoT Edge
 
@@ -18,13 +18,13 @@ V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video A
 > Podpora pro zařízení ARM64 je k dispozici v Live video Analytics na IoT Edge sestaveních `1.0.4` a novějších.
 > Podpora spouštění Azure IoT Edge runtime na zařízeních ARM64 je ve [verzi Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Zařízení s platformou X86-64 nebo ARM64, které používá některý z [podporovaných operačních systémů Linux](../../iot-edge/support.md#operating-systems) .
 * Předplatné Azure, ke kterému máte [oprávnění vlastníka](../../role-based-access-control/built-in-roles.md#owner)
 * [Vytvoření a nastavení IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
-* [Registrace zařízení IoT Edge](../../iot-edge/how-to-register-device.md)
-* [Instalace modulu runtime Azure IoT Edge v systémech Linux založených na distribuci Debian](../../iot-edge/how-to-install-iot-edge-linux.md)
+* [Registrace zařízení IoT Edge](../../iot-edge/how-to-manual-provision-symmetric-key.md)
+* [Instalace modulu runtime Azure IoT Edge v systémech Linux založených na distribuci Debian](../../iot-edge/how-to-install-iot-edge.md)
 * [Vytvoření účtu Azure Media Services](../latest/create-account-howto.md)
 
     * Použijte jednu z těchto oblastí: Východní USA 2, Východní USA, Střed USA, Střed USA – sever, Japonsko – východ, Západní USA, Západní USA 2, Středozápadní USA, Kanada – východ, Velká Británie – jih, Francie – střed, Francie – jih, Švýcarsko – sever, Švýcarsko – západ a Japonsko – západ.
@@ -99,7 +99,7 @@ Azure Portal vás provede vytvořením manifestu nasazení a vložením nasazen�
 
 #### <a name="configure-a-deployment-manifest"></a>Konfigurace manifestu nasazení
 
-Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nasadit, způsob, jakým jsou toky dat mezi moduly a požadované vlastnosti v modulu vlákna. Azure Portal má průvodce, který vás provede vytvořením manifestu nasazení. Obsahuje tři kroky uspořádané do karet: **moduly**, **trasy**a **Revize + vytvořit**.
+Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nasadit, způsob, jakým jsou toky dat mezi moduly a požadované vlastnosti v modulu vlákna. Azure Portal má průvodce, který vás provede vytvořením manifestu nasazení. Obsahuje tři kroky uspořádané do karet: **moduly**, **trasy** a **Revize + vytvořit**.
 
 #### <a name="add-modules"></a>Přidat moduly
 
@@ -113,7 +113,7 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nas
     ![Snímek obrazovky se zobrazí na kartě nastavení modulu.](./media/deploy-iot-edge-device/add.png)
     
     > [!TIP]
-    > Nevybírejte možnost **Přidat** , dokud neurčíte hodnoty v **nastavení modulu**, **možnosti vytvoření kontejneru**a **Dvojitá nastavení modulu** , jak je popsáno v tomto postupu.
+    > Nevybírejte možnost **Přidat** , dokud neurčíte hodnoty v **nastavení modulu**, **možnosti vytvoření kontejneru** a **Dvojitá nastavení modulu** , jak je popsáno v tomto postupu.
     
     > [!WARNING]
     > Azure IoT Edge rozlišuje velká a malá písmena, když provádíte volání modulů. Poznamenejte si přesný řetězec, který použijete jako název modulu.

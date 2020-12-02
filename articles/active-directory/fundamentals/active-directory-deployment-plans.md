@@ -2,59 +2,27 @@
 title: Plány nasazení – Azure Active Directory | Microsoft Docs
 description: Kompletní pokyny, jak nasadit mnoho možností Azure Active Directory.
 services: active-directory
-author: ajburnle
+author: BarbaraSelden
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/20/2019
-ms.author: ajburnle
+ms.date: 12/01/2020
+ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2a7c2813919321227bfcdc4ee43ca15186b89df
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 069cf348bb6d0432d02a8350bc0847c2b155f90a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836814"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498077"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Plány nasazení Azure Active Directory
 Hledáte kompletní pokyny k nasazení funkcí Azure Active Directory (Azure AD)? Plány nasazení Azure AD vás seznámí s obchodní hodnotou, požadavky na plánování a provozními postupy potřebnými k úspěšnému nasazení běžných funkcí služby Azure AD.
 
 Na kterékoli stránce plánu použijte možnost Tisk v prohlížeči do formátu PDF a vytvořte aktuální offline verzi dokumentace.
-## <a name="include-the-right-stakeholders"></a>Zahrnutí správných zúčastněných stran
-
-Při zahájení plánování nasazení nové funkce je důležité zahrnout klíčové účastníky v rámci vaší organizace. Doporučujeme identifikovat a zdokumentovat osobu nebo lidi, kteří splňují jednotlivé role, a pracovat s nimi k určení jejich zapojení do projektu.  
-
-Role můžou zahrnovat následující: 
-
-|Role |Popis |
-|-|-|
-|Koncový uživatel|Zástupce skupiny uživatelů, pro které bude tato funkce implementována. Aplikace často zobrazuje náhled změn v pilotním programu.
-|Správce podpory IT|Podporuje zástupce organizace, který poskytuje vstup o podpoře této změny z perspektivy technické podpory.  
-|Architekt identity nebo globální správce Azure|Zástupce týmu správy identit se účtuje podle toho, jak se tato změna rovná s infrastrukturou správy základní identity ve vaší organizaci.|
-|Vlastník firemních aplikací |Celkový obchodní vlastník ovlivněných aplikací, které můžou zahrnovat správu přístupu.Může také poskytnout vstup na uživatelské prostředí a užitečnost této změny z perspektivy koncového uživatele.
-|Vlastník zabezpečení|Zástupce z bezpečnostního týmu, který se může odhlásit, že plán bude splňovat požadavky na zabezpečení vaší organizace.|
-|Správce dodržování předpisů|Osoba v rámci vaší organizace odpovědná za zajištění souladu s podnikovými, průmyslovými nebo vládními požadavky.|
-
-**Úrovně zapojení můžou zahrnovat:**
-
-- Esponsible **R** pro implementaci plánu a výsledku projektu 
-
-- **Pproval plánu** a výsledku projektu 
-
-- Ontributor plánování a výsledek projektu **C** 
-
-- **Nformed plán** a výsledek projektu
-
-
-## <a name="best-practices-for-a-pilot"></a>Osvědčené postupy pro pilotní nasazení
-Pilotní nasazení vám umožní testovat malou skupinu před zapnutím funkce pro každého. Ujistěte se, že jako součást testování je každý případ použití v rámci vaší organizace důkladně testován. Je vhodné cílit na konkrétní skupinu pilotních uživatelů, než to zavedete do vaší organizace jako celek.
-
-V první vlny, cílení na IT, použitelnost a další vhodné uživatele, kteří můžou testovat a poskytovat zpětnou vazbu. Tato zpětná vazba by se měla použít k dalšímu vývoji komunikace a pokynů, které odesíláte uživatelům, a k získání přehledu o typech problémů, které mohou pracovníci podpory vidět. 
-
-Rozšiřování zavedení na větší skupiny uživatelů by mělo být provedeno zvýšením rozsahu cílových skupin. To se dá udělat prostřednictvím [členství v dynamické skupině](../enterprise-users/groups-dynamic-membership.md)nebo ručním přidáním uživatelů do cílových skupin.
 
 
 ## <a name="deploy-authentication"></a>Nasazení ověřování
@@ -98,3 +66,36 @@ Rozšiřování zavedení na větší skupiny uživatelů by mělo být proveden
 | [Privileged Identity Management](../privileged-identity-management/pim-deployment-plan.md)| Azure AD Privileged Identity Management (PIM) pomáhá spravovat privilegované administrativní role napříč službami Azure AD, prostředky Azure a dalšími online službami Microsoftu. PIM poskytuje řešení, jako je přístup za běhu, pracovní postupy schvalování žádostí a plně integrované recenze přístupu, abyste mohli identifikovat, odhalit a zabránit škodlivým aktivitám privilegovaných rolí v reálném čase. |
 | [Vytváření sestav a monitorování](../reports-monitoring/plan-monitoring-and-reporting.md)| Návrh řešení pro vytváření sestav a monitorování Azure AD závisí na vašich právních a provozních požadavcích a na vašich stávajících prostředích a procesech. Tento článek nabízí různé možnosti návrhu a provede vás se správnou strategií nasazení. |
 | [Kontroly přístupu](../governance/deploy-access-reviews.md) | Kontroly přístupu jsou důležitou součástí vaší strategie zásad správného řízení, která vám umožní znát a spravovat, kdo má přístup, a k čemu mají přístup. Tento článek vám pomůže s plánováním a nasazením kontrol přístupu, abyste dosáhli požadovaného postures zabezpečení a spolupráce. |
+
+## <a name="include-the-right-stakeholders"></a>Zahrnutí správných zúčastněných stran
+
+Při zahájení plánování nasazení nové funkce je důležité zahrnout klíčové účastníky v rámci vaší organizace. Doporučujeme identifikovat a zdokumentovat osobu nebo lidi, kteří splňují jednotlivé role, a pracovat s nimi k určení jejich zapojení do projektu.  
+
+Role můžou zahrnovat následující: 
+
+|Role |Popis |
+|-|-|
+|Koncový uživatel|Zástupce skupiny uživatelů, pro které bude tato funkce implementována. Aplikace často zobrazuje náhled změn v pilotním programu.
+|Správce podpory IT|Podporuje zástupce organizace, který poskytuje vstup o podpoře této změny z perspektivy technické podpory.  
+|Architekt identity nebo globální správce Azure|Zástupce týmu správy identit se účtuje podle toho, jak se tato změna rovná s infrastrukturou správy základní identity ve vaší organizaci.|
+|Vlastník firemních aplikací |Celkový obchodní vlastník ovlivněných aplikací, které můžou zahrnovat správu přístupu.Může také poskytnout vstup na uživatelské prostředí a užitečnost této změny z perspektivy koncového uživatele.
+|Vlastník zabezpečení|Zástupce z bezpečnostního týmu, který se může odhlásit, že plán bude splňovat požadavky na zabezpečení vaší organizace.|
+|Správce dodržování předpisů|Osoba v rámci vaší organizace odpovědná za zajištění souladu s podnikovými, průmyslovými nebo vládními požadavky.|
+
+**Úrovně zapojení můžou zahrnovat:**
+
+- Esponsible **R** pro implementaci plánu a výsledku projektu 
+
+- **Pproval plánu** a výsledku projektu 
+
+- Ontributor plánování a výsledek projektu **C** 
+
+- **Nformed plán** a výsledek projektu
+
+
+## <a name="best-practices-for-a-pilot"></a>Osvědčené postupy pro pilotní nasazení
+Pilotní nasazení vám umožní testovat malou skupinu před zapnutím funkce pro každého. Ujistěte se, že jako součást testování je každý případ použití v rámci vaší organizace důkladně testován. Je vhodné cílit na konkrétní skupinu pilotních uživatelů, než to zavedete do vaší organizace jako celek.
+
+V první vlny, cílení na IT, použitelnost a další vhodné uživatele, kteří můžou testovat a poskytovat zpětnou vazbu. Tato zpětná vazba by se měla použít k dalšímu vývoji komunikace a pokynů, které odesíláte uživatelům, a k získání přehledu o typech problémů, které mohou pracovníci podpory vidět. 
+
+Rozšiřování zavedení na větší skupiny uživatelů by mělo být provedeno zvýšením rozsahu cílových skupin. To se dá udělat prostřednictvím [členství v dynamické skupině](../enterprise-users/groups-dynamic-membership.md)nebo ručním přidáním uživatelů do cílových skupin.
