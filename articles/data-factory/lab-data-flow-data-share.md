@@ -1,18 +1,18 @@
 ---
 title: Integrace dat pomocí Azure Data Factory a sdílení dat Azure
 description: Kopírování, transformace a sdílení dat pomocí Azure Data Factory a sdílení dat Azure
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 11f4e7c50acc8256722949a50760c574d3b9d9e9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0a578f1edb51efd5f0905e663d42bf5a6fbfc783
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318245"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489017"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Integrace dat pomocí Azure Data Factory a sdílení dat Azure
 
@@ -22,7 +22,7 @@ V případě, že se zákazníci nastoupili na jejich moderní projekty datovéh
 
 Aby bylo možné vytvořit komplexní pohled na vaše data, díky vylepšením, která jsou v Azure Data Factory, umožníte vašim inženýrům dat spolehlivě přinášet do podniku více dat a tím i větší hodnotu. Sdílená složka Azure vám umožní provádět sdílení firmy způsobem, který se řídí.
 
-V této dílně použijete Azure Data Factory (ADF) k ingestování dat z Azure SQL Database do Azure Data Lake Storage Gen2 (ADLS Gen2). Jakmile budete data nakládat do jezera, budete je transformovat prostřednictvím mapování toků dat, nativní transformace služby Data Factory a zajímka do Azure synapse Analytics (dřív SQL DW). Pak nasdílíte tabulku s transformovanými daty spolu s dalšími daty pomocí Azure Data Share. 
+V této dílně použijete Azure Data Factory (ADF) k ingestování dat z Azure SQL Database do Azure Data Lake Storage Gen2 (ADLS Gen2). Jakmile budete data nakládat do jezera, budete je transformovat prostřednictvím mapování toků dat, nativní transformace služby Data Factory a zajímka do Azure synapse Analytics. Pak nasdílíte tabulku s transformovanými daty spolu s dalšími daty pomocí Azure Data Share. 
 
 Data použitá v tomto testovacím prostředí jsou v New Yorku City taxislužby data. Pokud ho chcete importovat do databáze v SQL Database, Stáhněte si [soubor taxislužby-data BacPac](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac).
 
@@ -30,15 +30,15 @@ Data použitá v tomto testovacím prostředí jsou v New Yorku City taxislužby
 
 * **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-* **Azure SQL Database** : Pokud nemáte databázi SQL, přečtěte si, jak [vytvořit účet databáze SQL](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal) .
+* **Azure SQL Database**: Pokud nemáte databázi SQL, přečtěte si, jak [vytvořit účet databáze SQL](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal) .
 
-* **Azure Data Lake Storage Gen2 účet úložiště** : Pokud nemáte účet úložiště adls Gen2, přečtěte si, jak [vytvořit účet úložiště adls Gen2](../storage/common/storage-account-create.md).
+* **Azure Data Lake Storage Gen2 účet úložiště**: Pokud nemáte účet úložiště adls Gen2, přečtěte si, jak [vytvořit účet úložiště adls Gen2](../storage/common/storage-account-create.md).
 
-* **Azure synapse Analytics (dřív SQL DW)** : Pokud nemáte Azure synapse Analytics (dřív SQL DW), zjistěte, jak [vytvořit instanci Azure synapse Analytics](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
+* **Azure synapse Analytics (dřív SQL DW)**: Pokud nemáte Azure synapse Analytics (dřív SQL DW), zjistěte, jak [vytvořit instanci Azure synapse Analytics](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
 
-* **Azure Data Factory** : Pokud jste ještě nevytvořili datovou továrnu, přečtěte si téma Jak [vytvořit datovou továrnu](./quickstart-create-data-factory-portal.md).
+* **Azure Data Factory**: Pokud jste ještě nevytvořili datovou továrnu, přečtěte si téma Jak [vytvořit datovou továrnu](./quickstart-create-data-factory-portal.md).
 
-* **Sdílená složka Azure** : Pokud jste nevytvořili sdílenou složku, přečtěte si téma Jak [vytvořit sdílenou složku dat](../data-share/share-your-data.md#create-a-data-share-account).
+* **Sdílená složka Azure**: Pokud jste nevytvořili sdílenou složku, přečtěte si téma Jak [vytvořit sdílenou složku dat](../data-share/share-your-data.md#create-a-data-share-account).
 
 ## <a name="set-up-your-azure-data-factory-environment"></a>Nastavení Azure Data Factoryho prostředí
 
@@ -280,7 +280,7 @@ Tok dat, který byl vytvořen v tomto kroku, se doplní do datové sady ' TripDa
 1. Zavolejte svou datovou sadu ' AggregatedTaxiData '. Jako propojená služba vyberte SQLDW. Vyberte **vytvořit novou tabulku** a pojmenujte novou tabulku dbo. AggregateTaxiData. Po dokončení klikněte na OK.
 
     ![Jímka portálu 4](media/lab-data-flow-data-share/sink4.png)
-1. Přejít na kartu **Nastavení** jímky. Vzhledem k tomu, že vytváříme novou tabulku, musíme v rámci akce tabulky vybrat možnost **znovu vytvořit tabulku** . Zrušte výběr možnosti **Povolit přípravu** , která přepíná, zda vkládáme řádek po řádku nebo v dávce.
+1. Přejít na kartu **Nastavení** jímky. Vzhledem k tomu, že vytváříme novou tabulku, musíme v rámci akce tabulky vybrat možnost **znovu vytvořit tabulku** . Zrušte výběr možnosti **Povolit přípravu**, která přepíná, zda vkládáme řádek po řádku nebo v dávce.
 
     ![Jímka portálu 5](media/lab-data-flow-data-share/sink5.png)
 
@@ -308,7 +308,7 @@ Právě jste dokončili část Data Factory tohoto testovacího prostředí. Pok
 
 ## <a name="share-data-using-azure-data-share"></a>Sdílení dat pomocí Azure Data Share
 
-V této části se dozvíte, jak nastavit novou sdílenou složku pomocí Azure Portal. Tato akce zahrnuje vytvoření nové sdílené složky, která bude obsahovat datové sady z Azure Data Lake Store Gen2 a Azure synapse Analytics (dřív SQL Data Warehouse). Potom nakonfigurujete plán snímků, který poskytne spotřebitelům dat možnost automaticky aktualizovat data, která jsou s nimi sdílená. Potom budete pozvat příjemce do sdílené složky dat. 
+V této části se dozvíte, jak nastavit novou sdílenou složku pomocí Azure Portal. Tato akce zahrnuje vytvoření nové sdílené složky, která bude obsahovat datové sady z Azure Data Lake Store Gen2 a Azure synapse Analytics. Potom nakonfigurujete plán snímků, který poskytne spotřebitelům dat možnost automaticky aktualizovat data, která jsou s nimi sdílená. Potom budete pozvat příjemce do sdílené složky dat. 
 
 Jakmile vytvoříte sdílenou složku dat, přepnete Hats a stane se *příjemcem dat*. Jako příjemce dat provedete postup přijetí pozvánky ke sdílení dat a nakonfigurujete, kam chcete data přijímat a mapování datových sad na jiná umístění úložiště. Potom budete aktivovat snímek, který bude kopírovat data, která s vámi sdílí, do zadaného cíle. 
 
@@ -342,7 +342,7 @@ Jakmile vytvoříte sdílenou složku dat, přepnete Hats a stane se *příjemce
 
     ![Přidat datovou sadu 1](media/lab-data-flow-data-share/add-dataset.png)
 
-1. Vyberte **Azure synapse Analytics** (dříve SQL Data Warehouse) a vyberte tabulku ze služby Azure synapse Analytics, na kterou se proložily transformace ADF.
+1. Vyberte **Azure synapse Analytics** a vyberte tabulku z Azure synapse Analytics, na kterou se proložily vaše transformace ADF.
 
     ![Přidat datovou sadu SQL](media/lab-data-flow-data-share/add-dataset-sql.png)
 

@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 06/19/2020
-ms.openlocfilehash: 304e1ab475213bde2644c8241905408ade5672ed
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 193e7bd78046a1d73cb55171c15c9cb6a7278297
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489960"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490036"
 ---
 # <a name="what-is-a-test-drive"></a>Co je testovací verze?
 
@@ -24,7 +24,7 @@ Vaše zákazníci mají i z testovacích jednotek. Tím, že jim umožníte vyzk
 
 Testovací jednotky jsou spravované instance, které spouštějí vaše řešení nebo aplikace na vyžádání pro zákazníky, kteří si je vyžádají. Jakmile je instance testovací jednotky přiřazená, je k dispozici pro daného zákazníka za nastavené období. Po skončení období se pak odstraní a vytvoří se místo pro jiného zákazníka.
 
-Jako vydavatel spravujete a konfigurujete nastavení testovacích jednotek v partnerském centru. Podrobnosti technické konfigurace se liší v závislosti na typu nabídky. Podrobné pokyny najdete v [technické konfiguraci testovacích jednotek](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration).
+Jako vydavatel spravujete a konfigurujete nastavení testovacích jednotek v partnerském centru. Podrobnosti technické konfigurace se liší v závislosti na typu nabídky. Podrobné pokyny najdete v [technické konfiguraci testovacích jednotek](./test-drive-technical-configuration.md).
 
 Potenciální zákazníci zjišťují vaši zkušební verzi jako výzva na vaší nabídce na [AppSource](https://appsource.microsoft.com/en-US/). Poskytují své kontaktní údaje a souhlasím s podmínkami vaší nabídky a zásadami ochrany osobních údajů. potom získáte přístup k předkonfigurovanému prostředí a vyzkoušíte ho po určitou dobu. Zákazníci obdrží praktickou zkušební verzi klíčových funkcí vašeho produktu a výhod a dostanete cenného zákazníka.
 
@@ -43,7 +43,7 @@ Na komerčním webu Marketplace jsou k dispozici různé testovací jednotky pro
 - Aplikace logiky (jenom v režimu podpory)
 - Power BI
 
-Podrobnosti o konfiguraci jedné z těchto testovacích jednotek najdete v tématu [Technická konfigurace testovacích](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration)jednotek. 
+Podrobnosti o konfiguraci jedné z těchto testovacích jednotek najdete v tématu [Technická konfigurace testovacích](./test-drive-technical-configuration.md)jednotek. 
 
 ### <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager testovacích jednotek
 
@@ -65,7 +65,7 @@ Hostovaná testovací jednotka odebere složitost nastavení tím, že umožní 
 
 ### <a name="logic-app-test-drive"></a>Testovací jednotka aplikace logiky
 
-Tento typ testovacích jednotek není hostitelem Microsoft a používá šablony Azure Resource Manager (ARM) pro typy nabídek Dynamics AX/CRM. K vytvoření požadovaných prostředků ve vašem předplatném Azure budete muset spustit šablonu ARM. Testovací jednotka aplikace logiky je momentálně zapnutá jenom v režimu podpory a Microsoft nedoporučuje podrobnosti o konfiguraci testovacích jednotek aplikace logiky, viz [Technická konfigurace testovacích jednotek](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration).
+Tento typ testovacích jednotek není hostitelem Microsoft a používá šablony Azure Resource Manager (ARM) pro typy nabídek Dynamics AX/CRM. K vytvoření požadovaných prostředků ve vašem předplatném Azure budete muset spustit šablonu ARM. Testovací jednotka aplikace logiky je momentálně zapnutá jenom v režimu podpory a Microsoft nedoporučuje podrobnosti o konfiguraci testovacích jednotek aplikace logiky, viz [Technická konfigurace testovacích jednotek](./test-drive-technical-configuration.md).
 
 ### <a name="power-bi-test-drive"></a>Power BI testovacích jednotek
 

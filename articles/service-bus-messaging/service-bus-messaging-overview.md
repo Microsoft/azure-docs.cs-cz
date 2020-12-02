@@ -3,12 +3,12 @@ title: Přehled přenosu zpráv ve službě Azure Service Bus | Dokumentace Micr
 description: Tento článek poskytuje podrobný přehled Azure Service Bus, plně spravovaného zprostředkovatele zpráv Enterprise Integration.
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: bb894800482cb2b7b4e5d699ab050bd5c93ad038
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ca04b4a41489fba61e7c0ee2bb3f4f7f0b8b80f4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345299"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489475"
 ---
 # <a name="what-is-azure-service-bus"></a>Co je Azure Service Bus?
 Microsoft Azure Service Bus je plně spravovaný zprostředkovatel podnikových zpráv s frontami zpráv a tématy pro veřejné odběry. Service Bus slouží k tomu, aby bylo možné oddělit aplikace a služby od sebe od sebe, a nabízí následující výhody:
@@ -23,9 +23,9 @@ Data se mezi různými aplikacemi a službami přenáší pomocí *zpráv*. Zpr�
 Mezi běžné scénáře zasílání zpráv patří:
 
 * *Zasílání zpráv*. Přenos obchodních dat, jako jsou prodejní nebo nákupní objednávky, deníky nebo pohyby inventáře.
-* *Oddělit aplikace*. Zlepšení spolehlivosti a škálovatelnosti aplikací a služeb. Producent a zákazník nemusí být online nebo k dispozici ve stejnou dobu. [Zatížení je na úrovni](https://docs.microsoft.com/azure/architecture/patterns/queue-based-load-leveling) , takže špičky provozu overtax službu. 
-* *Vyrovnávání zatížení*. Umožněte, aby více [konkurenčních příjemců](https://docs.microsoft.com/azure/architecture/patterns/competing-consumers) četlo z fronty současně a každý z nich získal exkluzivní vlastnictví pro konkrétní zprávy. 
-* *Témata a odběry*. Povolit vztahy 1:*n* mezi [vydavateli a předplatiteli](https://docs.microsoft.com/azure/architecture/patterns/publisher-subscriber)a umožnit tak odběratelům vybrat konkrétní zprávy z publikovaného datového proudu zpráv.
+* *Oddělit aplikace*. Zlepšení spolehlivosti a škálovatelnosti aplikací a služeb. Producent a zákazník nemusí být online nebo k dispozici ve stejnou dobu. [Zatížení je na úrovni](/azure/architecture/patterns/queue-based-load-leveling) , takže špičky provozu overtax službu. 
+* *Vyrovnávání zatížení*. Umožněte, aby více [konkurenčních příjemců](/azure/architecture/patterns/competing-consumers) četlo z fronty současně a každý z nich získal exkluzivní vlastnictví pro konkrétní zprávy. 
+* *Témata a odběry*. Povolit vztahy 1:*n* mezi [vydavateli a předplatiteli](/azure/architecture/patterns/publisher-subscriber)a umožnit tak odběratelům vybrat konkrétní zprávy z publikovaného datového proudu zpráv.
 * *Transakce*. Umožňuje provést několik operací, a to vše v oboru atomické transakce. Například následující operace lze provést v oboru transakce.  
 
     1. Získá zprávu z jedné fronty.
@@ -138,11 +138,11 @@ Z důvodu ochrany před nežádoucími přenosy Service Bus poskytuje [funkce za
 
 Plně podporované Service Bus klientské knihovny jsou k dispozici prostřednictvím sady Azure SDK.
 
-- [Azure Service Bus pro .NET](https://docs.microsoft.com/dotnet/api/overview/azure/service-bus?view=azure-dotnet&preserve-view=true)
-- [Knihovny Azure Service Bus pro Java](https://docs.microsoft.com/java/api/overview/azure/servicebus?view=azure-java-stable&preserve-view=true)
+- [Azure Service Bus pro .NET](/dotnet/api/overview/azure/service-bus?preserve-view=true&view=azure-dotnet)
+- [Knihovny Azure Service Bus pro Java](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
 - [Poskytovatel Azure Service Bus pro Java JMS 2,0](how-to-use-java-message-service-20.md)
-- [Azure Service Bus moduly pro JavaScript a TypeScript](https://docs.microsoft.com/javascript/api/overview/azure/service-bus?view=azure-node-latest&preserve-view=true)
-- [Knihovny Azure Service Bus pro Python](https://docs.microsoft.com/python/api/overview/azure/servicebus?view=azure-python&preserve-view=true)
+- [Azure Service Bus moduly pro JavaScript a TypeScript](/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
+- [Knihovny Azure Service Bus pro Python](/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
 
 [Azure Service Bus ' primární protokol je AMQP 1,0](service-bus-amqp-overview.md) a dá se použít z libovolného klienta protokolu kompatibilního s AMQP 1,0. Několik Open Source klientů AMQP má ukázky, které explicitně ukazují interoperabilitu Service Bus. Přečtěte si [Průvodce protokolem AMQP 1,0](service-bus-amqp-protocol-guide.md) , který vám pomůže pochopit, jak používat funkce Service Bus s klienty AMQP 1,0 přímo.
 

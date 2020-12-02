@@ -1,7 +1,7 @@
 ---
 title: Přehled Custom Speech – služba Speech
 titleSuffix: Azure Cognitive Services
-description: Custom Speech je sada online nástrojů, která vám umožní vyhodnotit a vylepšit přesnost řeči na text pro vaše aplikace, nástroje a produkty. Vše, co bude trvat, je několik testovací zvukové soubory. Pomocí odkazů níže můžete začít vytvářet vlastní prostředí pro text v textu.
+description: Custom Speech je sada online nástrojů, která vám umožní vyhodnotit a vylepšit přesnost řeči na text v aplikacích, nástrojích a produktech od Microsoftu.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -10,67 +10,67 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 7f8fb0488c863868b1076ad5b3fa7868d1880a6b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 96b8e4031520e1a0540fca7d84b3f9ae1cca9c22
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353778"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490342"
 ---
 # <a name="what-is-custom-speech"></a>Co je Custom Speech?
 
-[Custom Speech](https://aka.ms/customspeech) je sada nástrojů založených na uživatelském rozhraní, které vám umožní vyhodnotit a vylepšit přesnost řeči na text pro vaše aplikace a produkty od Microsoftu. Vše, co bude trvat, je několik testovací zvukové soubory. Pomocí odkazů níže můžete začít vytvářet vlastní prostředí pro text v textu.
+[Custom Speech](https://aka.ms/customspeech) je sada nástrojů založených na uživatelském rozhraní, které vám umožní vyhodnotit a vylepšit přesnost řeči na text pro vaše aplikace a produkty od Microsoftu. Vše, co bude trvat, je několik testovací zvukové soubory. Podle odkazů v tomto článku můžete začít vytvářet vlastní prostředí pro práci s mluveným textem.
 
 ## <a name="whats-in-custom-speech"></a>Co je v Custom Speech?
 
-Abyste mohli provádět cokoli s Custom Speech, budete potřebovat účet Azure a předplatné služby Speech. Jakmile budete mít účet, můžete si nechat data, naučit a testovat vaše modely, kontrolovat kvalitu rozpoznávání, hodnotit přesnost a nakonec nasazovat a používat vlastní model řeči na text.
+Abyste mohli provádět cokoli s Custom Speech, budete potřebovat účet Azure a předplatné služby Speech. Po použití účtu můžete data využít, naučit a testovat vaše modely, kontrolovat kvalitu rozpoznávání, hodnotit přesnost a nakonec nasazovat a používat vlastní model řeči na text.
 
 Tento diagram zvýrazňuje části, které tvoří [portál Custom Speech](https://aka.ms/customspeech). Pomocí odkazů níže můžete získat další informace o jednotlivých krocích.
 
-![Zvýrazní různé komponenty, které tvoří portál Custom Speech.](./media/custom-speech/custom-speech-overview.png)
+![Diagram, který zvýrazní komponenty, které tvoří portál Custom Speech.](./media/custom-speech/custom-speech-overview.png)
 
-1. [Přihlaste se k odběru a vytvořte projekt](#set-up-your-azure-account) – vytvořte účet Azure a přihlaste se k odběru služby Speech. Toto jednotné předplatné vám umožní přístup k převodu řeči na text, převod textu na řeč, rozpoznávání řeči a [Custom Speech Portal](https://speech.microsoft.com/customspeech). Pak pomocí svého předplatného služby Speech vytvořte svůj první Custom Speech projekt.
+1. [Přihlaste se k odběru a vytvořte projekt](#set-up-your-azure-account). Vytvořte účet Azure a přihlaste se k odběru služby Speech. Toto jednotné předplatné vám umožní přístup k převodu řeči na text, převod textu na řeč, rozpoznávání řeči a [Custom Speech Portal](https://speech.microsoft.com/customspeech). Pak pomocí svého předplatného služby Speech vytvořte svůj první Custom Speech projekt.
 
-1. [Nahrání testovacích](./how-to-custom-speech-test-and-train.md) dat – nahrání testovacích dat (zvukové soubory) k vyhodnocení nabídky pro vaše aplikace, nástroje a produkty od Microsoftu na text
+1. [Nahrajte testovací data](./how-to-custom-speech-test-and-train.md). Nahrajte testovací data (zvukové soubory), abyste v aplikaci, nástrojích a produktech vyhodnotili nabídku Microsoft Speech to-text pro vaše aplikace, nástroje a produkty.
 
-1. [Kontrola kvality rozpoznávání](how-to-custom-speech-inspect-data.md) – pomocí [Custom Speechového portálu](https://speech.microsoft.com/customspeech) můžete přehrát nahraný zvuk a zkontrolovat kvalitu rozpoznávání řeči vašich testovacích dat. Kvantitativní měření najdete v tématu [Kontrola dat](how-to-custom-speech-inspect-data.md).
+1. [Kontrola kvality rozpoznávání](how-to-custom-speech-inspect-data.md). Použijte [portál Custom Speech](https://speech.microsoft.com/customspeech) k přehrání nahraného zvuku a kontrole kvality rozpoznávání řeči vašich testovacích dat. Kvantitativní měření najdete v tématu [Kontrola dat](how-to-custom-speech-inspect-data.md).
 
-1. [Vyhodnotit a vylepšit přesnost](how-to-custom-speech-evaluate-data.md) – vyhodnotit a vylepšit přesnost modelu řeči na text. [Portál Custom Speech](https://speech.microsoft.com/customspeech) poskytne *Četnost chyb slov*, která se dá použít k určení, jestli je potřeba další školení. Pokud jste spokojeni s přesností, můžete použít rozhraní API služby Speech přímo. Pokud byste chtěli zlepšit přesnost relativních průměrů 5% až 20%, použijte na portálu kartu **školení** k nahrání dalších školicích dat, jako jsou přepisy popisků a související text.
+1. [Vyhodnotit a zlepšit přesnost](how-to-custom-speech-evaluate-data.md). Vyhodnotit a vylepšit přesnost modelu řeči na text. [Portál Custom Speech](https://speech.microsoft.com/customspeech) poskytne *Četnost chyb slov*, kterou můžete použít k určení, jestli je potřeba další školení. Pokud jste spokojeni s přesností, můžete použít rozhraní API služby Speech přímo. Pokud chcete zlepšit přesnost relativních průměrů 5 až 20%, použijte na portálu kartu **školení** k nahrání dalších školicích dat, jako jsou přepisy popisků a související text.
 
-1. [Výuka a nasazení modelu](how-to-custom-speech-train-model.md) – Vylepšete přesnost vašeho modelu řeči na text tím, že zadáte písemné přepisy (10 – 1000 hodin) a související text (<200 MB) spolu s daty testovacího testu. Tato data pomáhají naučit model řeči na text. Po školení, opětovném testování a pokud jste s výsledkem spokojeni, můžete model nasadit do vlastního koncového bodu.
+1. [Výuka a nasazení modelu](how-to-custom-speech-train-model.md) Vylepšete přesnost vašeho modelu řeči na text tím, že zadáte psané přepisy (10 až 1 000 hodin) a související text (<200 MB) spolu s daty testovacího testu. Tato data pomáhají naučit model řeči na text. Po školení proveďte test. Pokud jste s výsledkem spokojeni, můžete model nasadit do vlastního koncového bodu.
 
 ## <a name="set-up-your-azure-account"></a>Nastavení účtu Azure
 
-Předtím, než budete moci použít [portál Custom Speech](https://speech.microsoft.com/customspeech) k vytvoření vlastního modelu, je nutné předplatné služby Azure Account a Speech Service. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](overview.md#try-the-speech-service-for-free).
+Než budete moct pomocí [portálu Custom Speech](https://speech.microsoft.com/customspeech) vytvořit vlastní model, musíte mít účet Azure a předplatné služby Speech Service. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](overview.md#try-the-speech-service-for-free).
 
 > [!NOTE]
-> Ujistěte se prosím, že jste vytvořili standardní odběry (S0), bezplatné předplatné (F0) se nepodporuje.
+> Ujistěte se prosím, že jste vytvořili předplatné Standard (S0). Bezplatné předplatné (F0) se nepodporuje.
 
 Po vytvoření účtu Azure a předplatného služby Speech se budete muset přihlásit k [portálu Custom Speech](https://speech.microsoft.com/customspeech) a připojit své předplatné.
 
 1. Přihlaste se k [portálu Custom Speech](https://aka.ms/custom-speech).
-1. Vyberte předplatné, na kterém je potřeba pracovat, a vytvořte projekt řeči.
-1. Pokud chcete upravit předplatné, použijte ikonu **ozubeného kola** , která se nachází v horním navigačním panelu.
+1. Vyberte předplatné, ve kterém potřebujete pracovat, a vytvořte projekt řeči.
+1. Pokud chcete upravit své předplatné, vyberte v horní nabídce tlačítko ozubeného kola.
 
 ## <a name="how-to-create-a-project"></a>Jak vytvořit projekt
 
-Obsah, který je podobný datům, modelům, testům a koncovým bodům, je uspořádán do **projektů** na [portálu Custom Speech](https://speech.microsoft.com/customspeech). Každý projekt je specifický pro doménu a zemi/jazyk. Můžete například vytvořit projekt pro volání Center, která používají angličtinu v USA.
+Obsah, který je podobný datům, modelům, testům a koncovým bodům, je uspořádán do *projektů* na [portálu Custom Speech](https://speech.microsoft.com/customspeech). Každý projekt je specifický pro doménu a zemi/jazyk. Můžete například vytvořit projekt pro volání Center, která používají angličtinu v USA.
 
-Pokud chcete vytvořit svůj první projekt, vyberte **Speech-to-text/Custom Speech** a pak klikněte na **Nový projekt**. Postupujte podle pokynů průvodce a vytvořte projekt. Po vytvoření projektu by se vám měly zobrazit čtyři karty: **data**, **testování**, **školení** a **nasazení**. Pomocí odkazů uvedených v [následujících krocích](#next-steps) se dozvíte, jak používat jednotlivé karty.
+Pokud chcete vytvořit svůj první projekt, vyberte **Převod řeči na text/vlastní řeč** a pak vyberte **Nový projekt**. Postupujte podle pokynů průvodce a vytvořte projekt. Po vytvoření projektu byste měli vidět čtyři karty: **data**, **testování**, **školení** a **nasazení**. Pomocí odkazů uvedených v [následujících krocích](#next-steps) se dozvíte, jak používat jednotlivé karty.
 
 > [!IMPORTANT]
 > [Portál Custom Speech](https://aka.ms/custom-speech) se nedávno aktualizoval. Pokud jste vytvořili předchozí data, modely, testy a publikované koncové body na portálu CRIS.ai nebo pomocí rozhraní API, je potřeba vytvořit nový projekt na novém portálu pro připojení k těmto starým entitám.
 
 ## <a name="model-lifecycle"></a>Životní cyklus modelu
 
-Vlastní řeč používá **základní modely** i **vlastní modely**. Každý jazyk má jeden nebo více **základních modelů**. Obecně platí, že když se do služby normálního rozpoznávání řeči uvolní nový model řeči, naimportuje se také do služby Custom Speech jako nový **základní model**. Obvykle se aktualizují každých 3-6 měsíců a starší modely se v průběhu času stanou méně užitečné, protože nejnovější model obvykle má vyšší přesnost.
+Custom Speech používá *základní modely* i *vlastní modely*. Každý jazyk má jeden nebo více základních modelů. Obecně platí, že když se do služby normálního rozpoznávání řeči uvolní nový model řeči, naimportuje se také do služby Custom Speech jako nový základní model. Aktualizují se každých 3 až 6 měsíců. Starší modely obvykle jsou méně užitečné v průběhu času, protože nejnovější model obvykle má vyšší přesnost.
 
-Naproti tomu **vlastní modely** se vytvářejí tak, že se vybraný základní model přizpůsobí konkrétnímu scénáři zákazníka. Až se vám dokončí vaše potřeby, můžete po delší dobu používat konkrétní vlastní model, ale doporučujeme, abyste pravidelně aktualizovali na nejnovější základní model a přepracovali s dalšími daty.
+Naproti tomu vlastní modely se vytvářejí tak, že se vybraný základní model přizpůsobí konkrétnímu scénáři zákazníka. Můžete používat konkrétní vlastní model po dlouhou dobu, jakmile budete mít ten, který vyhovuje vašim potřebám. Doporučujeme, abyste pravidelně aktualizovali na nejnovější základní model a v průběhu času znovu provedli další data. 
 
 K dalším klíčovým podmínkám souvisejícím s životním cyklem modelu patří:
 
-* **Přizpůsobení**: přebírání základního modelu a jeho přizpůsobení do vaší domény/scénáře pomocí textových dat nebo zvukových dat
-* **Dekódování**: použití modelu a provádění rozpoznávání řeči (dekódování zvuků do textu)
+* **Přizpůsobení**: Vytvoření základního modelu a jeho přizpůsobení do vaší domény/scénáře pomocí textových dat nebo zvukových dat.
+* **Dekódování**: použití modelu a provádění rozpoznávání řeči (dekódování zvuků do textu).
 * **Koncový bod**: uživatelsky specifické nasazení buď základního modelu, nebo vlastního modelu, který je přístupný *jenom* pro daného uživatele.
 
 ### <a name="expiration-timeline"></a>Časová osa vypršení platnosti
@@ -79,16 +79,16 @@ Nové modely a nové funkce budou k dispozici a starší, ale méně přesné mo
 
 **Základní modely** 
 
-* Přizpůsobení: k dispozici po dobu 1 roku. Po importu modelu je k vytvoření vlastních modelů k dispozici po dobu 1 roku. Po 1 roce se musí vytvořit nové vlastní modely z novější verze základního modelu.  
-* Dekódování: k dispozici po 2 letech po importu. To znamená, že můžete vytvořit koncový bod a pomocí tohoto modelu Batch přepisovat 2 roky. 
-* Koncové body: k dispozici na stejné časové ose jako dekódování
+* Přizpůsobení: k dispozici po dobu jednoho roku. Po importu modelu je možné vytvořit vlastní modely v jednom roce. Po jednom roce se musí vytvořit nové vlastní modely z novější verze základního modelu.  
+* Dekódování: k dispozici po dobu dvou let po importu. Takže můžete vytvořit koncový bod a pomocí tohoto modelu Batch přepisovat dva roky. 
+* Koncové body: k dispozici na stejné časové ose jako dekódování.
 
 **Vlastní modely**
 
-* Dekódování: k dispozici po 2 letech po vytvoření modelu. To znamená, že můžete použít vlastní model po dobu 2 let (Batch/reálný/testování) po jeho vytvoření. Po 2 letech **byste měli svůj model přeškolit**, protože většina často základní model bude pro přizpůsobení zastaralá.  
-* Koncové body: k dispozici na stejné časové ose jako dekódování
+* Dekódování: je k dispozici po dobu dvou let po vytvoření modelu. Takže můžete použít vlastní model po dobu dvou let (Batch/reálný/testování) po jeho vytvoření. Po dvou letech *byste si měli svůj model přeškolit* , protože základní model se obvykle už pro přizpůsobení nepoužívá.  
+* Koncové body: k dispozici na stejné časové ose jako dekódování.
 
-Když vyprší platnost základního modelu nebo vlastního modelu, vždycky se vrátí k **nejnovější verzi základního modelu**. Vaše implementace proto nebude nikdy přerušena, ale může být méně přesné pro *vaše konkrétní data* , pokud je dosaženo vypršení vlastních modelů. Vypršení platnosti modelu můžete zobrazit na následujících místech na portálu Custom Speech:
+Když vyprší platnost základního modelu nebo vlastního modelu, vždycky se vrátí k *nejnovější verzi základního modelu*. Vaše implementace tak nebude nikdy přerušena, ale může být méně přesné pro *vaše konkrétní data* , pokud je dosaženo vypršení vlastních modelů. Vypršení platnosti modelu můžete zobrazit na následujících místech na portálu Custom Speech:
 
 * Souhrn školení modelů
 * Podrobnosti školení modelů

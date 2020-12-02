@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 205a290d2483a032ed6b5579dbedd555f9f6d02f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 00d0aa10f2beda3d7b8508e5ca823e020dc79d95
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005516"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489135"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Příprava infrastruktury Azure pro SAP HA pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdíleného disku pro SAP ASCS/SCS
 
@@ -175,7 +175,7 @@ Uvedená konfigurace se spoléhá na [skupiny umístění v blízkosti Azure (PP
 > Skupiny umístění v blízkosti Azure jsou předpokladem pro použití sdíleného disku Azure.
  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s instalací, přečtěte si tento článek:
 
@@ -203,7 +203,7 @@ Názvy hostitelů a IP adresy pro uvedený scénář jsou:
 SAP ASCS, SAP SCS a nový ERS2 SAP použijte virtuální název hostitele a virtuální IP adresy. V Azure musí [Nástroj pro vyrovnávání zatížení](../../../load-balancer/load-balancer-overview.md) používat virtuální IP adresu. Důrazně doporučujeme použít službu [Load Balancer úrovně Standard](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md). 
 
 > [!IMPORTANT]
-> Plovoucí IP adresa není ve scénářích Vyrovnávání zatížení podporována u sekundární konfigurace IP adresy NIC. Podrobnosti najdete v tématu [omezení nástroje pro vyrovnávání zatížení Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). Pokud pro virtuální počítač potřebujete další IP adresu, nasaďte druhou síťovou kartu.    
+> Plovoucí IP adresa není ve scénářích Vyrovnávání zatížení podporována u sekundární konfigurace IP adresy NIC. Podrobnosti najdete v tématu [omezení nástroje pro vyrovnávání zatížení Azure](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Pokud pro virtuální počítač potřebujete další IP adresu, nasaďte druhou síťovou kartu.    
 
 
 Následující seznam uvádí konfiguraci nástroje pro vyrovnávání zatížení (A) SCS/OLAJÍCÍCH. Konfigurace pro SAP ASCS i ERS2 se provádí ve stejném nástroji pro vyrovnávání zatížení Azure.  

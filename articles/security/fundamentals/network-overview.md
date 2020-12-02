@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 526947c4d2db9fd87727fdd60c33bcaa9e75c6ff
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 8a82fd6e6dc1bea0804c429f3af46884f004de69
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699861"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489764"
 ---
-# <a name="azure-network-security-overview"></a>Přehled zabezpečení sítě Azure
+# <a name="azure-network-security-overview"></a>Přehled zabezpečení sítě v Azure
 
 Zabezpečení sítě je možné definovat jako proces ochrany prostředků před neoprávněným přístupem nebo útokem pomocí ovládacích prvků pro síťový provoz. Cílem je zajistit, aby byl povolen pouze legitimní provoz. Azure zahrnuje robustní síťovou infrastrukturu pro podporu požadavků vaší aplikace a připojení služby. Mezi prostředky umístěnými v Azure, mezi místními a hostovanými prostředky Azure a a z Internetu a Azure se může připojit k síti.
 
@@ -332,7 +332,7 @@ Společnost Microsoft poskytuje jako součást platformy Azure DDoS Protection o
 
 Další informace:
 
-* [Přehled ochrany DDOS](../../virtual-network/ddos-protection-overview.md)
+* [Přehled ochrany DDOS](../../ddos-protection/ddos-protection-overview.md)
 
 ## <a name="azure-front-door"></a>Azure Front Door
 

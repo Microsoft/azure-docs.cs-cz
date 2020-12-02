@@ -3,16 +3,16 @@ title: Azure Service Bus syntaxe akce SQL pravidla předplatného | Microsoft Do
 description: Tento článek poskytuje referenci pro syntaxi akce pravidla SQL. Akce jsou napsány v syntaxi založené na jazyku SQL, která je provedena proti zprávě.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: a156a9d8f18a7763f03c63b56681fa25ce6de289
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 7ce3332fb1a2025e89135e5e42e72d4afe1e7a5e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95808841"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489390"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>Syntaxe akce SQL pravidla předplatného
 
-*Akce SQL* slouží k manipulaci s metadaty zprávy poté, co byla vybrána zpráva pomocí filtru pravidla předplatného. Jedná se o textový výraz, který se zachází na podmnožinu standardu SQL-92. Výrazy akce se používají s `sqlExpression` prvkem vlastnosti ' Action ' Service Bus `Rule` v [šabloně Azure Resource Manager](service-bus-resource-manager-namespace-topic-with-rule.md)nebo v `az servicebus topic subscription rule create` argumentu příkazu rozhraní příkazového řádku Azure CLI [`--action-sql-expression`](https://docs.microsoft.com/cli/azure/servicebus/topic/subscription/rule?view=azure-cli-latest&preserve-view=true#az_servicebus_topic_subscription_rule_create) a několika funkcemi sady SDK, které umožňují správu pravidel předplatného.
+*Akce SQL* slouží k manipulaci s metadaty zprávy poté, co byla vybrána zpráva pomocí filtru pravidla předplatného. Jedná se o textový výraz, který se zachází na podmnožinu standardu SQL-92. Výrazy akce se používají s `sqlExpression` prvkem vlastnosti ' Action ' Service Bus `Rule` v [šabloně Azure Resource Manager](service-bus-resource-manager-namespace-topic-with-rule.md)nebo v `az servicebus topic subscription rule create` argumentu příkazu rozhraní příkazového řádku Azure CLI [`--action-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create) a několika funkcemi sady SDK, které umožňují správu pravidel předplatného.
   
   
 ```  

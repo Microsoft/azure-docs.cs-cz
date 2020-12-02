@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 550418761e91a8292761d7595ff32d939c0d542e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9410a38f7bc7a787fc439b5ad51f4a49f76771f8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350394"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488778"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Monitorování služby Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -83,7 +83,7 @@ Metriky a protokoly, které můžete shromažďovat, jsou popsány v následují
 
 Azure Cosmos DB poskytuje vlastní prostředí pro práci s metrikami. Metriky pro Azure Cosmos DB můžete analyzovat pomocí metrik z jiných služeb Azure pomocí Průzkumníka metrik, a to tak, že v nabídce **Azure monitor** otevřete **metriky** . Podrobnosti o použití tohoto nástroje najdete v tématu [Začínáme s Azure Průzkumník metrik](../azure-monitor/platform/metrics-getting-started.md) . Můžete také rezervovat, jak monitorovat [latenci na straně serveru](monitor-server-side-latency.md), [využití jednotky požadavku](monitor-request-unit-usage.md)a [normalizované využití jednotek požadavků](monitor-normalized-request-units.md) pro prostředky Azure Cosmos DB.
 
-Seznam metrik platforem shromážděných pro Azure Cosmos DB naleznete v článku [monitorování Azure Cosmos DBch referenčních dat metriky] monitor-Cosmos-DB-reference. MD # Metrics).
+Seznam metrik platforem shromážděných pro Azure Cosmos DB najdete v článku [monitorování Azure Cosmos DB dat metriky](monitor-cosmos-db-reference.md#metrics) .
 
 Všechny metriky pro Azure Cosmos DB jsou v oboru názvů **Cosmos DB Standardní metriky**. Při přidávání filtru do grafu můžete použít následující dimenze s těmito metrikami:
 
@@ -97,7 +97,7 @@ Pro referenci se zobrazí seznam [všech metrik prostředků, které jsou podpor
 
 ### <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Zobrazit metriky na úrovni operace pro Azure Cosmos DB
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. V levém navigačním panelu vyberte **monitor** a vyberte **metriky**.
 

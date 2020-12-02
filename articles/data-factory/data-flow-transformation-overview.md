@@ -1,18 +1,18 @@
 ---
 title: Přehled transformace toku dat
 description: Přehled různých transformací dostupných v toku mapování dat
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 6fe85db6612a16099f61cb52fe9c5864882f35b3
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 9d44890e84e97a413543a4291d1331fee0f04841
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892923"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490869"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>Přehled transformace toku dat
 
@@ -20,7 +20,7 @@ ms.locfileid: "92892923"
 
 Níže je uveden seznam transformací aktuálně podporovaných v mapování toku dat. Kliknutím na jednotlivé transformace se dozvíte podrobnosti o konfiguraci.
 
-| Název | Kategorie | Popis |
+| Name | Kategorie | Popis |
 | ---- | -------- | ----------- |
 | [Agregace](data-flow-aggregate.md) | Modifikátor schématu | Definujte různé typy agregací, jako například SUM, MIN, MAX a COUNT seskupené podle existujících nebo počítaných sloupců. | 
 | [Změna řádku](data-flow-alter-row.md) | Modifikátor řádku | Nastavení zásad vložení, odstranění, aktualizace a Upsert na řádcích |
@@ -39,6 +39,6 @@ Níže je uveden seznam transformací aktuálně podporovaných v mapování tok
 | [Seřadit](data-flow-sort.md) | Modifikátor řádku | Seřadit příchozí řádky v aktuálním datovém proudu |
 | [Zdroj](data-flow-source.md) | - | Zdroj dat pro tok dat |
 | [Náhradní klíč](data-flow-surrogate-key.md) | Modifikátor schématu | Přidání přírůstku hodnoty libovolného klíče, který nepatří do zaměstnání |
-| [Sjednocení](data-flow-union.md) | Několik vstupů/výstupů | Kombinování více datových proudů svisle |
+| [Sjednocovací](data-flow-union.md) | Několik vstupů/výstupů | Kombinování více datových proudů svisle |
 | [Převést na řádky](data-flow-unpivot.md) | Modifikátor schématu | Kontingenční sloupce do hodnot řádků |
 | [Okno](data-flow-window.md) | Modifikátor schématu |  Definujte agregace sloupců na základě okna v datových proudech. |

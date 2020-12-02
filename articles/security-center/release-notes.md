@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/30/2020
 ms.author: memildin
-ms.openlocfilehash: f26fffe8e6b2be6ede064b4750d012b3e4535c66
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 5ac96d703ea646d26b84d6d6486d9ee44ad87cd2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433349"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490121"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -129,7 +129,7 @@ Přečtěte si další informace o [průběžném exportu Security Center dat](c
 
 - Obohacená data pro doporučení z Azure Resource graphu (ARG). ARG je služba Azure, která je navržená tak, aby poskytovala efektivní průzkum prostředků. ARG můžete použít k dotazování škálování v rámci dané sady předplatných, abyste mohli efektivně řídit vaše prostředí. 
 
-    Pro Azure Security Center můžete použít ARG a [KQL (Kusto Query Language)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) k dotazování široké škály dat stav zabezpečení.
+    Pro Azure Security Center můžete použít ARG a [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) k dotazování široké škály dat stav zabezpečení.
 
     Pokud jste dřív uvedli toto doporučení v ARG, jsou dostupné jenom informace o tom, že je potřeba na počítači opravit doporučení. Následující dotaz rozšířené verze vrátí všechny chybějící aktualizace systému seskupené podle počítače.
 
@@ -172,7 +172,7 @@ Hlavní možnosti:
 
 [Přečtěte si další informace o nasazení integrovaného skeneru ohrožení zabezpečení do hybridních počítačů](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines).
 
-[Přečtěte si další informace o serverech s podporou ARC Azure](https://docs.microsoft.com/azure/azure-arc/servers/).
+[Přečtěte si další informace o serverech s podporou ARC Azure](../azure-arc/servers/index.yml).
 
 
 ### <a name="azure-firewall-recommendation-added-preview"></a>Přidala se Azure Firewall doporučení (Preview).
@@ -206,7 +206,7 @@ Další informace najdete v [Odebrání standardu z řídicího panelu](update-r
 
 Azure Resource Graph je služba v Azure, která je navržená tak, aby poskytovala efektivní průzkum prostředků s možností škálování v rámci dané sady předplatných, abyste mohli efektivně řídit vaše prostředí. 
 
-Pro Azure Security Center můžete použít ARG a [KQL (Kusto Query Language)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) k dotazování široké škály dat stav zabezpečení. Příklad:
+Pro Azure Security Center můžete použít ARG a [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) k dotazování široké škály dat stav zabezpečení. Příklad:
 
 - Využití inventáře prostředků (ARG)
 - Popsali jsme vzorový ARGický dotaz pro [identifikaci účtů bez povoleného vícefaktorového ověřování (MFA)](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled) .
@@ -295,7 +295,7 @@ extract("^(.+)/providers/Microsoft.Security/assessments/.+$",1,id)))))
 
 Další informace najdete na následujících odkazech:
 - [Jak vytvářet dotazy pomocí Průzkumníka Azure Resource Graphu](../governance/resource-graph/first-query-portal.md)
-- [KQL (Kusto Query Language)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)
+- [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/)
 
 
 ## <a name="september-2020"></a>Září 2020

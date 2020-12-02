@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2020
 ms.author: terrylan
-ms.openlocfilehash: dfacf124f8db0e5323c9abff56c4a78f85f6f014
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af61b6ee1e69d175f47170df30f75832033d61d5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816129"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489713"
 ---
 # <a name="penetration-testing"></a>Testování průniku
 
@@ -46,7 +46,7 @@ Mezi standardní testy, které můžete provádět:
 Jeden typ testu pera, který nemůžete provést, je libovolný druh útoku DOS [(Denial of Service)](https://en.wikipedia.org/wiki/Denial-of-service_attack) . Tento test zahrnuje inicializaci samotného útoku DoS nebo provádění souvisejících testů, které mohou určit, Ukázat nebo simulovat jakýkoli typ útoku DoS.
 
 >[!Note]
->Microsoft spolupracuje s cloudem BreakingPoint a vytváří rozhraní, ve kterém můžete vygenerovat provoz proti DDoS Protection veřejné IP adresy pro simulace. Další informace o simulaci cloudu zarážky najdete v tématu [ověření DDoS detekce](../../virtual-network/manage-ddos-protection.md#validate-ddos-detection).
+>Microsoft spolupracuje s cloudem BreakingPoint a vytváří rozhraní, ve kterém můžete vygenerovat provoz proti DDoS Protection veřejné IP adresy pro simulace. Další informace o simulaci cloudu zarážky najdete v tématu [ověření DDoS detekce](../../ddos-protection/manage-ddos-protection.md#validate-and-test).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,13 +5,13 @@ author: Rodrigossz
 ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/09/2020
-ms.openlocfilehash: 0791ed6882feedeab47b75eff6a69bf0a49ab7ee
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 11/30/2020
+ms.openlocfilehash: 82133f990c1714276aa13ff22c3f19d0993d16df
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341282"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488710"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Nejčastější dotazy k Azure Synapse Linku pro Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -22,7 +22,7 @@ Odkaz na Azure synapse pro Azure Cosmos DB vytvoří těsnou integraci mezi Azur
 
 ### <a name="is-azure-synapse-link-supported-for-all-azure-cosmos-db-apis"></a>Je připojení Azure synapse podporované pro všechna Azure Cosmos DB rozhraní API?
 
-Ve verzi Public Preview se podporuje odkaz Azure synapse pro rozhraní API Azure Cosmos DB SQL (Core) a pro rozhraní Azure Cosmos DB API pro MongoDB. 
+Odkaz na Azure synapse se podporuje pro rozhraní API Azure Cosmos DB SQL (Core) a pro Azure Cosmos DB API pro MongoDB. 
 
 ### <a name="is-azure-synapse-link-supported-for-multi-region-azure-cosmos-db-accounts"></a>Podporuje se propojení Azure synapse pro Azure Cosmos DB účty ve více oblastech?
 
@@ -32,7 +32,7 @@ Když plánujete nakonfigurovat Azure Cosmos DB účet ve více oblastech s podp
 
 ### <a name="can-i-choose-to-enable-azure-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>Můžu povolit připojení Azure synapse jenom pro určitou oblast a ne pro všechny oblasti v nastavení účtu s více oblastmi?
 
-Pokud je v rámci verze Preview povolený odkaz Azure synapse pro účet ve více oblastech, vytvoří se analytické úložiště ve všech oblastech. Podkladová data jsou optimalizována pro propustnost a transakční konzistenci v transakčním úložišti.
+Pokud je pro účet ve více oblastech povolený odkaz Azure synapse, vytvoří se analytické úložiště ve všech oblastech. Podkladová data jsou optimalizována pro propustnost a transakční konzistenci v transakčním úložišti.
 
 ### <a name="is-backup-and-restore-supported-for-azure-synapse-link-enabled-accounts"></a>Podporuje se zálohování a obnovení pro účty s povoleným propojením Azure synapse?
 
@@ -42,9 +42,13 @@ Když je na databázovém účtu povoleno propojení synapse, Azure Cosmos DB bu
 
 ### <a name="can-i-disable-the-azure-synapse-link-feature-for-my-azure-cosmos-db-account"></a>Můžu pro svůj Azure Cosmos DB účet zakázat funkci odkazu na Azure synapse?
 
-V současné době není možné po povolení funkce Synapse Link na úrovni účtu tuto funkci zakázat. Mějte na paměti, že pokud je funkce Synapse Link povolená na úrovni účtu a neexistují žádné kontejnery s povoleným analytickým úložištěm, na fakturaci to nebude mít žádný vliv. 
+V současné době není možné po povolení funkce Synapse Link na úrovni účtu tuto funkci zakázat. Mějte na paměti, že pokud je funkce Synapse Link povolená na úrovni účtu a neexistují žádné kontejnery s povoleným analytickým úložištěm, na fakturaci to nebude mít žádný vliv.
 
 Pokud potřebujete tuto funkci vypnout, máte 2 možnosti. První možností je odstranit účet Azure Cosmos DB a vytvořit nový a v případě potřeby migrovat data. Druhou možností je otevřít lístek podpory a požádat o pomoc s migrací dat do jiného účtu.
+
+### <a name="does-analytical-store-have-any-impact-on-cosmos-db-transactional-slas"></a>Má analytické úložiště nějaký dopad na Cosmos DB transakčního SLA?
+
+Ne, neexistuje žádný dopad.
 
 ## <a name="azure-cosmos-db-analytical-store"></a>Azure Cosmos DB analytické úložiště
 
@@ -73,7 +77,7 @@ Ano, odstranění a aktualizace dat v transakčním úložišti se projeví v an
 K analytickému úložišti můžete přistupovat a spouštět pro něj dotazy pouze pomocí různých modulů runtime, které poskytuje Azure Synapse Analytics. K dotazování a analýzám analytického úložiště je možné použít:
 
 * Synapse Spark s plnou podporou pro Scala, Python, SparkSQL a C#. Synapse Spark je zcela zásadní pro scénáře přípravy dat a datových věd.
-* SQL bez serveru s jazykem T-SQL a podporou známých nástrojů BI (například Power BI Premium atd.)
+* Fond SQL bez serveru s jazykem T-SQL a podporou pro známé nástroje BI (například Power BI Premium atd.)
 
 ### <a name="can-i-connect-to-analytical-store-from-synapse-sql-provisioned"></a>Můžu se připojit k analytickému úložišti z synapse SQL zřízené?
 
@@ -121,7 +125,12 @@ Všechny transakční aktualizace a odstranění jsou zkopírovány do analytick
 
 ### <a name="what-is-the-billing-model-of-azure-synapse-link-for-azure-cosmos-db"></a>Jaký je model fakturace pro Azure Cosmos DB odkaz na Azure synapse?
 
-[Azure Cosmos DB analytické úložiště](analytical-store-introduction.md) je k dispozici ve verzi Public Preview bez jakýchkoli poplatků za analytické úložiště do 30. srpna 2020. Synapse Spark a synapse SQL se účtují prostřednictvím [spotřeby služby synapse](https://azure.microsoft.com/pricing/details/synapse-analytics/).
+Model fakturace propojení Azure synapse zahrnuje náklady vzniklé pomocí Azure Cosmos DBho analytického úložiště a modulu runtime synapse. Další informace najdete v článcích o cenách služby [Azure Cosmos DB Analytics Store](analytical-store-introduction.md#analytical-store-pricing) a [cenách Azure synapse Analytics](https://azure.microsoft.com/pricing/details/synapse-analytics/) .
+
+### <a name="what-is-the-billing-impact-if-i-enable-synapse-link-in-my-azure-cosmos-db-database-account"></a>Jaký je dopad na fakturaci, když povolím synapse odkaz v účtu databáze Azure Cosmos DB?
+
+Žádné Bude se vám účtovat jenom když vytvoříte kontejner analytického úložiště s povolenými daty a začnete načítat data.
+
 
 ## <a name="security"></a>Zabezpečení
 
@@ -136,10 +145,10 @@ Ověřování pomocí analytického úložiště je stejné jako transakční ú
 |Modul runtime Azure synapse |Aktuální podpora |
 |---------|---------|
 |Fondy Azure synapse Spark | Čtení, zápis (prostřednictvím transakčního úložiště), tabulka, dočasné zobrazení |
-|Fondy bez SQL serveru s Azure synapse    | Číst, zobrazit |
+|Synapse fond SQL bez serveru Azure    | Číst, zobrazit |
 |Zřízený SQL Azure synapse   |  Není k dispozici |
 
-### <a name="do-my-azure-synapse-spark-tables-sync-with-my-azure-synapse-sql-serverless-tables-the-same-way-they-do-with-azure-data-lake"></a>Synchronizují se moje tabulky Azure synapse Spark s tabulkami Azure synapse SQL bez serveru stejným způsobem jako s Azure Data Lake?
+### <a name="do-my-azure-synapse-spark-tables-sync-with-my-azure-synapse-serverless-sql-pool-tables-the-same-way-they-do-with-azure-data-lake"></a>Synchronizují se moje tabulky Azure synapse Spark s tabulkami fondu SQL bez serveru Azure synapse stejným způsobem jako s Azure Data Lake?
 
 Tato funkce v současné době není k dispozici.
 

@@ -162,6 +162,8 @@
           href: expressroute-howto-coexist-resource-manager.md
         - name: Vytvoření zónově redundantní brány virtuální sítě v zónách dostupnosti Azure
           href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md?toc=%2fazure%2fexpressroute%2ftoc.json
+    - name: Plánování a správa nákladů
+      href: plan-manage-cost.md
     - name: Přechod z modelu nasazení Classic na Resource Manager
       items:
         - name: Přesun okruhu z modelu nasazení Classic do Resource Manager

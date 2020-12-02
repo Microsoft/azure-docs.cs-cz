@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: c00af3a128685dfbd2435b65fe4d00107ca22ba4
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: f4784cc2e1b0276caf8326df8fad93b12f0d551d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94744353"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490070"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Analýza videosouborů a zvukových souborů pomocí Azure Media Services
 
@@ -45,9 +45,9 @@ Media Services aktuálně podporuje následující předdefinované předvolby a
 |**Název předvolby**|**Scénář**|**Podrobnosti**|
 |---|---|---|
 |[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Analýza standardu zvuk|Přednastavení používá předdefinovanou sadu operací analýzy založených na AI, včetně přepisu řeči. V současné době přednastavení podporuje zpracování obsahu pomocí jedné zvukové stopy, která obsahuje řeč v jednom jazyce. Jazyk pro datovou část zvuku ve vstupu můžete určit pomocí formátu BCP-47 pro ' Language tag-region '. Podporované jazyky jsou angličtina ("en-US" a "en-GB"), španělština (ES-ES a ES-MX), francouzština (' fr-FR '), italština (' IT-IT '), japonština (' IT-Japonsko '), portugalština (' pt-BR '), čínština (' zh-CN '), němčina (' de-DE '), Arabština (' ar-EG ' a ' ar-SY '), ruština (' ru-RU '), hindština (' Hi-IN ') a korejština (' ko-KR ').<br/><br/> Pokud jazyk není zadán nebo je nastaven na hodnotu null, automatické rozpoznávání jazyka zvolí první nalezený jazyk a pokračuje s vybraným jazykem po dobu trvání souboru. Funkce automatického rozpoznávání jazyka aktuálně podporuje angličtinu, čínštinu, francouzštinu, němčinu, italštinu, japonštinu, španělštinu, ruštinu a portugalštinu. Po zjištění prvního jazyka nepodporuje dynamické přepínání mezi jazyky. Funkce automatického rozpoznávání jazyka funguje nejlépe se zvukovým záznamem, který má jasně discernible řeč. Pokud automatické zjišování jazyka nenajde jazyk, přepis se vrátí do angličtiny.|
-|[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Analýza základního zvuku|Tento režim provádí přepis a generování VTT souboru titulků a titulků v textu. Výstup tohoto režimu zahrnuje soubor JSON Insights, včetně informací o klíčových slovech, přepisu a časování. V tomto režimu nejsou zahrnuté automatické rozpoznávání jazyka a diarizationy mluvčího. Seznam podporovaných jazyků je k dispozici [zde](https://go.microsoft.com/fwlink/?linkid=2109463) .|
-|[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Analýza zvuku a videa|Extrahuje přehledy (bohatá metadata) z zvukového i videa a vytvoří výstup souboru formátu JSON. Můžete určit, jestli chcete při zpracování videosouboru jenom extrahovat zvukové poznatky. Další informace najdete v tématu [Analýza videa](analyze-videos-tutorial-with-api.md).|
-|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|Zjištění plošek přítomných ve videu|Popisuje nastavení, která se mají použít při analýze videa pro detekci všech plošek přítomných.|
+|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Analýza základního zvuku|Tento režim provádí přepis a generování VTT souboru titulků a titulků v textu. Výstup tohoto režimu zahrnuje soubor JSON Insights, včetně informací o klíčových slovech, přepisu a časování. V tomto režimu nejsou zahrnuté automatické rozpoznávání jazyka a diarizationy mluvčího. Seznam podporovaných jazyků je k dispozici [zde](#built-in-presets) .|
+|[VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Analýza zvuku a videa|Extrahuje přehledy (bohatá metadata) z zvukového i videa a vytvoří výstup souboru formátu JSON. Můžete určit, jestli chcete při zpracování videosouboru jenom extrahovat zvukové poznatky. Další informace najdete v tématu [Analýza videa](analyze-videos-tutorial-with-api.md).|
+|[FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset)|Zjištění plošek přítomných ve videu|Popisuje nastavení, která se mají použít při analýze videa pro detekci všech plošek přítomných.|
 
 ### <a name="audioanalyzerpreset-standard-mode"></a>Standardní režim AudioAnalyzerPreset
 

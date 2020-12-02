@@ -342,7 +342,7 @@
 - name: Potíže s migrací a přesunem
   items:
     - name: Migrace Azure Resource Manageru (ASM do ARM) – nejčastější dotazy
-      href: ../windows/migration-classic-resource-manager-overview.md
+      href: ../migration-classic-resource-manager-overview.md
 - name: Plánovaná údržba
   items:
     - name: Přehled

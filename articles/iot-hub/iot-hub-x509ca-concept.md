@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: c707f6108c73a268bcac18c45afb70ae17185bb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 877200cbafbe68fa6161025572abfddad651e172
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308108"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490716"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>Konceptuální porozumění certifikátům CA X. 509 v oboru IoT
 
@@ -40,6 +40,8 @@ Rozlišující atribut ověřování CA X. 509 je vztah 1: n, který má certifi
 Dalším důležitým atributem ověřování CA X. 509 je zjednodušení logistiky dodavatelského řetězce. Zabezpečené ověřování zařízení vyžaduje, aby každé zařízení mělo v rámci vztahu důvěryhodnosti jedinečný tajný klíč jako klíč. V ověřování na základě certifikátů je tento tajný klíč soukromým klíčem. Typický výrobní tok zařízení zahrnuje několik kroků a starají. Zabezpečená správa privátních klíčů zařízení napříč několika starají a udržování důvěry je obtížná a nákladná. Pomocí certifikačních autorit se tento problém vyřeší tím, že se každý implicitní správce podepíše do kryptografického řetězce důvěry, ale nebudete ho pověřit pomocí privátních klíčů zařízení. Každý implicitní správce v nástroji zase podepisuje zařízení podle příslušného kroku výrobního toku. Celkový výsledek je optimální dodavatelský řetězec s integrovanou zodpovědností prostřednictvím použití kryptografického řetězu důvěryhodnosti. Je potřeba poznamenat, že tento proces má při ochraně svých jedinečných privátních klíčů největší zabezpečení. K tomuto účelu doporučujeme používat hardwarové moduly hardwarového zabezpečení (HSM) schopné interně generovat privátní klíče, které nikdy neuvidí den.
 
 Tento článek nabízí ucelený pohled na použití ověřování CA X. 509, od nastavení dodavatelských řetězců až po připojení zařízení, přičemž při použití reálného světa se přesvědčit porozumění.
+
+Skupiny registrací můžete použít taky v Azure IoT Hub Device Provisioning Service (DPS), abyste mohli zpracovávat zřizování zařízení do Center. Další informace o použití DPS ke zřízení zařízení s certifikátem X. 509 najdete v tématu [kurz: zřízení více zařízení x. 509 pomocí skupin](../iot-dps/tutorial-custom-hsm-enrollment-group-x509.md)registrací.
 
 ## <a name="introduction"></a>Úvod
 
@@ -75,7 +77,7 @@ Proces vytvoření Self-Signed certifikátu certifikační autority X. 509 se po
 
 ## <a name="register-the-x509-certificate-to-iot-hub"></a>Zaregistrujte certifikát X. 509, aby bylo možné IoT Hub
 
-Společnost-X potřebuje zaregistrovat certifikační autoritu X. 509, aby IoT Hub, kde bude sloužit k ověřování inteligentních pomůcek (Smart-X-widgetů) při jejich připojení. Jedná se o jednorázový proces, který umožňuje ověřit a spravovat libovolný počet zařízení s Smart-X widgetem. Tento proces je jednou z důvodu vztahu 1:1 mezi certifikátem autority a zařízeními a také představuje jednu z hlavních výhod použití metody ověřování CA X. 509. Alternativou je nahrání individuálních kryptografických otisků certifikátů pro každé a každé zařízení s inteligentními X a widgety, které přidávají provozním nákladům.
+Společnost-X potřebuje zaregistrovat certifikační autoritu X. 509, aby IoT Hub, kde bude sloužit k ověřování inteligentních pomůcek (Smart-X-widgetů) při jejich připojení. Jedná se o jednorázový proces, který umožňuje ověřit a spravovat libovolný počet zařízení s Smart-X widgetem. Jedná se o jednorázový proces, protože vztah 1: n mezi certifikátem certifikační autority a certifikáty zařízení, které jsou podepsány certifikátem certifikační autority nebo zprostředkujícím certifikátem. Tento vztah představuje jednu z hlavních výhod použití metody ověřování CA X. 509. Alternativou je nahrání individuálních kryptografických otisků certifikátů pro každé a každé zařízení s inteligentními X a widgety, které přidávají provozním nákladům.
 
 Registrace certifikátu certifikační autority X. 509 je proces se dvěma kroky, nahrání certifikátu a důkazem o vlastnictví certifikátu.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 09/15/2020
-ms.openlocfilehash: 52cb5ac5423aac0599ba2827667ee670dde286a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01232aa101e2964354acfbeb6cea341a0da33ca6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331654"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489883"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Customer Lockbox pro Microsoft Azure
 
@@ -64,7 +64,7 @@ Customer Lockbox v současné době podporuje žádosti o přístup ke vzdálen�
 - Škálovací sada virtuálních počítačů – Windows a Linux
 
 > [!NOTE]
-> IaaS klasické instance nejsou podporovány Customer Lockbox. Pokud máte úlohy spuštěné v IaaS klasických instancích, doporučujeme, abyste je migrovali z modelu nasazení Classic do Správce prostředků. Pokyny najdete v tématu [Platformou podporovaná migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](../../virtual-machines/windows/migration-classic-resource-manager-overview.md).
+> IaaS klasické instance nejsou podporovány Customer Lockbox. Pokud máte úlohy spuštěné v IaaS klasických instancích, doporučujeme, abyste je migrovali z modelu nasazení Classic do Správce prostředků. Pokyny najdete v tématu [Platformou podporovaná migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](../../virtual-machines/migration-classic-resource-manager-overview.md).
 
 #### <a name="detailed-audit-logs"></a>Podrobné protokoly auditu
 
@@ -109,7 +109,7 @@ Následující kroky popisují typický pracovní postup pro Customer Lockbox po
 
     ![Azure Customer Lockbox – zobrazení žádosti, která čeká na vyřízení](./media/customer-lockbox-overview/customer-lockbox-pending-requests.png)
 
-10. Určený schvalovatel taky může vybrat **ID žádosti o službu** a zobrazit žádost o lístek podpory, kterou vytvořil původní uživatel. Tyto informace poskytují kontext pro důvody, proč se zabývají podpora Microsoftu, a historii nahlášeného problému. Například:
+10. Určený schvalovatel taky může vybrat **ID žádosti o službu** a zobrazit žádost o lístek podpory, kterou vytvořil původní uživatel. Tyto informace poskytují kontext pro důvody, proč se zabývají podpora Microsoftu, a historii nahlášeného problému. Příklad:
 
     ![Azure Customer Lockbox – zobrazení žádosti o lístek podpory](./media/customer-lockbox-overview/customer-lockbox-support-ticket.png)
 

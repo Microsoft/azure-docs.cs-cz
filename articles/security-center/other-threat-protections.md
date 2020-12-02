@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: d03416f390abb8656ac1aed81419864443122ce6
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 7d59c0e751054522f4c54fe059f19aa0a941464e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122420"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489993"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Další ochrana před hrozbami v Azure Security Center
 I integrované [ochrany v Azure defenderu](azure-defender.md)Azure Security Center taky nabízí následující možnosti ochrany před hrozbami.
@@ -65,7 +65,7 @@ Seznam výstrah Azure Resource Manager (Preview) najdete v [referenční tabulce
 
 Výstrahy Azure Cosmos DB jsou generovány neobvyklými a potenciálně škodlivými pokusy o přístup k účtům Azure Cosmos DB nebo jejich zneužití.
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 * [Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB (Preview)](../cosmos-db/cosmos-db-advanced-threat-protection.md)
 * [Seznam výstrah ochrany před hrozbami pro Azure Cosmos DB (Preview)](alerts-reference.md#alerts-azurecosmos)
@@ -89,7 +89,7 @@ Je známo, že je možné snadno spustit útok s cílem odepření služeb (DDoS
 
 Útok DDoS se pokusí vyčerpat prostředky aplikace, takže aplikace nebude k dispozici oprávněným uživatelům. Útoky DDoS můžou cílit na libovolný koncový bod, ke kterému se dá získat přístup přes Internet.
 
-Pokud chcete chránit před útoky DDoS, Zakupte si licenci pro Azure DDoS Protection a ujistěte se, že jste si jisti osvědčenými postupy pro návrh aplikace. DDoS Protection poskytuje různé úrovně služeb. Další informace najdete v tématu [přehled Azure DDoS Protection](../virtual-network/ddos-protection-overview.md).
+Pokud chcete chránit před útoky DDoS, Zakupte si licenci pro Azure DDoS Protection a ujistěte se, že jste si jisti osvědčenými postupy pro návrh aplikace. DDoS Protection poskytuje různé úrovně služeb. Další informace najdete v tématu [přehled Azure DDoS Protection](../ddos-protection/ddos-protection-overview.md).
 
 Seznam výstrah Azure DDoS Protection najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-azureddos).
 

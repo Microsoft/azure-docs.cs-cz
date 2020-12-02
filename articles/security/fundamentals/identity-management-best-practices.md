@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 94cb40522a9e463fea2efae329daf910b5386cdd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: bf593eab54233ab65435585485dd8e3940f5addb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832598"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489815"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Osvědčené postupy zabezpečení správy identit a řízení přístupu v Azure
 
@@ -229,12 +229,12 @@ Zabezpečení privilegovaného přístupu je důležitým prvním krokem k ochra
 
 Privilegované účty jsou účty, které spravují a spravují systémy IT. Internetoví útočníci cílí na tyto účty, aby získali přístup k datům a systémům organizace. Aby bylo možné zabezpečit privilegovaný přístup, měli byste izolovat účty a systémy od rizika vystaveného uživateli se zlými úmysly.
 
-Doporučujeme vyvinout a postupovat podle plánu zabezpečení privilegovaného přístupu proti internetovým útočníkům. Informace o vytvoření podrobného plánu pro zabezpečení identit a přístupu, které jsou spravované nebo nahlášené ve službě Azure AD, Microsoft Azure, Microsoft 365 a dalších cloudových službách, najdete [v popisu zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](../../active-directory/users-groups-roles/directory-admin-roles-secure.md).
+Doporučujeme vyvinout a postupovat podle plánu zabezpečení privilegovaného přístupu proti internetovým útočníkům. Informace o vytvoření podrobného plánu pro zabezpečení identit a přístupu, které jsou spravované nebo nahlášené ve službě Azure AD, Microsoft Azure, Microsoft 365 a dalších cloudových službách, najdete [v popisu zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](../../active-directory/roles/security-planning.md).
 
-Následující shrnuje osvědčené postupy, které najdete v článku [zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](../../active-directory/users-groups-roles/directory-admin-roles-secure.md):
+Následující shrnuje osvědčené postupy, které najdete v článku [zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](../../active-directory/roles/security-planning.md):
 
 **Osvědčený postup**: Správa, řízení a sledování přístupu k privilegovaným účtům.   
-**Podrobnosti**: zapněte [Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md). Po zapnutí Privileged Identity Management obdržíte e-mailové zprávy s oznámením o změnách role privilegovaného přístupu. Tato oznámení poskytují včasné upozornění, když se do vašeho adresáře přidají další uživatelé do vysoce privilegovaných rolí.
+**Podrobnosti**: zapněte [Azure AD Privileged Identity Management](../../active-directory/roles/security-planning.md). Po zapnutí Privileged Identity Management obdržíte e-mailové zprávy s oznámením o změnách role privilegovaného přístupu. Tato oznámení poskytují včasné upozornění, když se do vašeho adresáře přidají další uživatelé do vysoce privilegovaných rolí.
 
 **Osvědčený postup**: Ujistěte se, že všechny kritické účty správců jsou spravované účty Azure AD.
 **Podrobnosti**: Odeberte všechny uživatelské účty z klíčových rolí správce (například účty Microsoft, jako je hotmail.com, live.com a Outlook.com).
@@ -261,10 +261,10 @@ Následující shrnuje osvědčené postupy, které najdete v článku [zabezpe�
 **Osvědčený postup**: Definujte aspoň dva účty pro nouzový přístup.   
 **Podrobnosti**: účty pro nouzový přístup umožňují organizacím omezit privilegovaný přístup v existujícím prostředí Azure Active Directory. Tyto účty jsou vysoce privilegované a nepřiřazují se konkrétním jednotlivcům. Účty pro nouzový přístup jsou omezeny na scénáře, ve kterých nelze použít běžné účty pro správu. Organizace musí omezit využívání účtu na nouzový účet jenom na nezbytné množství času.
 
-Vyhodnoťte účty, které jsou přiřazeny nebo mají nárok na roli globálního správce. Pokud nevidíte žádné účty pouze cloudu, které používají `*.onmicrosoft.com` doménu (určené pro nouzový přístup), vytvořte je. Další informace najdete v tématu [Správa účtů pro správu pro nouzový přístup ve službě Azure AD](../../active-directory/users-groups-roles/directory-emergency-access.md).
+Vyhodnoťte účty, které jsou přiřazeny nebo mají nárok na roli globálního správce. Pokud nevidíte žádné účty pouze cloudu, které používají `*.onmicrosoft.com` doménu (určené pro nouzový přístup), vytvořte je. Další informace najdete v tématu [Správa účtů pro správu pro nouzový přístup ve službě Azure AD](../../active-directory/roles/security-emergency-access.md).
 
 **Osvědčený postup**: v případě nouze je potřeba mít na začátku proces "break sklo".
-**Podrobnosti**: postupujte podle kroků v části [zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](../../active-directory/users-groups-roles/directory-admin-roles-secure.md).
+**Podrobnosti**: postupujte podle kroků v části [zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](../../active-directory/roles/security-planning.md).
 
 **Osvědčený postup**: vyžadovat, aby všechny kritické účty správců byly bez hesla (preferované), nebo vyžadovat Multi-Factor Authentication.
 **Podrobnosti**: pomocí [aplikace Microsoft Authenticator](../../active-directory/authentication/howto-authentication-passwordless-phone.md) se přihlaste k jakémukoli účtu Azure AD bez použití hesla. Stejně jako ve [Windows Hello pro firmy](/windows/security/identity-protection/hello-for-business/hello-identity-verification)používá Microsoft Authenticator k povolení přihlašovacích údajů uživatele, které jsou svázané se zařízením, a používá biometrické ověřování nebo PIN kód.
@@ -284,25 +284,25 @@ Vyžadovat Multi-Factor Authentication Azure AD při přihlašování pro všech
 **Podrobnosti**: Microsoft 365 simulátoru útoku nebo nabídky třetí strany ke spouštění reálných scénářů útoku ve vaší organizaci. To vám může pomáhat najít ohrožené uživatele předtím, než dojde k reálnému útoku.
 
 **Osvědčený postup**: proveďte kroky pro zmírnění nejčastěji používaných technik útoku.  
-**Podrobnosti**: [Identifikujte účty Microsoft v rolích pro správu, které je potřeba přepnout na pracovní nebo školní účty](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts) .  
+**Podrobnosti**: [Identifikujte účty Microsoft v rolích pro správu, které je potřeba přepnout na pracovní nebo školní účty](../../active-directory/roles/security-planning.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts) .  
 
-[Zajistěte samostatné uživatelské účty a přesměrování pošty pro účty globálních správců.](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)  
+[Zajistěte samostatné uživatelské účty a přesměrování pošty pro účty globálních správců.](../../active-directory/roles/security-planning.md)  
 
-[Ujistěte se, že se nedávno změnila hesla účtů pro správu.](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
+[Ujistěte se, že se nedávno změnila hesla účtů pro správu.](../../active-directory/roles/security-planning.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
 
-[Zapnout synchronizaci hodnot hash hesel](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)  
+[Zapnout synchronizaci hodnot hash hesel](../../active-directory/roles/security-planning.md#turn-on-password-hash-synchronization)  
 
-[Vyžadovat Multi-Factor Authentication pro uživatele ve všech privilegovaných rolích a také vyexponovaných uživatelů](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
+[Vyžadovat Multi-Factor Authentication pro uživatele ve všech privilegovaných rolích a také vyexponovaných uživatelů](../../active-directory/roles/security-planning.md#require-multi-factor-authentication-for-users-in-privileged-roles-and-exposed-users)  
 
-[Získat Microsoft 365 zabezpečeného skóre (Pokud používáte Microsoft 365)](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#obtain-your-office-365-secure-score-if-using-office-365)  
+[Získat Microsoft 365 zabezpečeného skóre (Pokud používáte Microsoft 365)](../../active-directory/roles/security-planning.md#obtain-your-microsoft-365-secure-score-if-using-microsoft-365)  
 
-[Přečtěte si pokyny pro zabezpečení Microsoft 365 (Pokud používáte Microsoft 365).](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
+[Přečtěte si pokyny pro zabezpečení Microsoft 365 (Pokud používáte Microsoft 365).](../../active-directory/roles/security-planning.md#review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365)  
 
-[Konfigurace monitorování aktivity Microsoft 365 (při použití Microsoft 365)](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#configure-office-365-activity-monitoring-if-using-office-365)  
+[Konfigurace monitorování aktivity Microsoft 365 (při použití Microsoft 365)](../../active-directory/roles/security-planning.md#configure-microsoft-365-activity-monitoring-if-using-microsoft-365)  
 
-[Navázání vlastníků plánů pro incidenty nebo naléhavé reakce](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#establish-incidentemergency-response-plan-owners)  
+[Navázání vlastníků plánů pro incidenty nebo naléhavé reakce](../../active-directory/roles/security-planning.md#establish-incidentemergency-response-plan-owners)  
 
-[Zabezpečení místních privilegovaných účtů pro správu](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)
+[Zabezpečení místních privilegovaných účtů pro správu](../../active-directory/roles/security-planning.md#turn-on-password-hash-synchronization)
 
 Pokud jste nezabezpečili privilegovaný přístup, možná zjistíte, že máte příliš mnoho uživatelů v rolích s vysokou úrovní oprávnění a jsou zranitelnější vůči útokům. Škodlivé objekty actor, včetně nejčastějších útočníků, často cílí na účty správců a další prvky privilegovaného přístupu k získání přístupu k citlivým datům a systémům pomocí krádeže přihlašovacích údajů.
 

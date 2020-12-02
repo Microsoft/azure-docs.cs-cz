@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 12/01/2020
 ms.author: victorh
-ms.openlocfilehash: 3c09e75a98e5342ab54710e05466755d86705b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 923c6b685d20ff68788e7d9cfcb45ebaecb535e3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399427"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490104"
 ---
 # <a name="what-are-security-partner-providers"></a>Kdo jsou poskytovatelé partnerů pro zabezpečení?
 
@@ -22,7 +22,7 @@ S rychlou konfigurací můžete zabezpečit centrum s podporovaným partnerem za
 
 Můžete nasadit zabezpečená centra nakonfigurovaná s partnerem zabezpečení podle vašeho výběru ve více oblastech Azure, abyste získali připojení a zabezpečení pro uživatele kdekoli na celém světě v těchto oblastech. Díky možnosti použít nabídku partnera zabezpečení pro provoz aplikace Internet/SaaS a Azure Firewall privátních přenosů v zabezpečených centrech teď můžete začít sestavovat hraniční zabezpečení v Azure, které je blízko globálně distribuovaných uživatelů a aplikací.
 
-Podporovaní partneři zabezpečení jsou **ZScaler**, **Check Point** (Preview) a **iboss** (Preview).
+Podporovaní partneři zabezpečení jsou **Zscaler**, **[Check Point](check-point-overview.md)** a **iboss**.
 
 ![Poskytovatelé partnerů pro zabezpečení](media/trusted-security-partners/trusted-security-partners.png)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2020
 ms.author: memildin
-ms.openlocfilehash: 0e853a4ce1e3891ddffd2f9fb1315da49a896933
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 3cd536d051f3e227ba86429ae3f1633bf6c2e82f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433167"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490529"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Skóre zabezpečení ve službě Azure Security Center
 
@@ -80,7 +80,7 @@ Příklady nástrojů postavených na rozhraní API pro zajištění skóre najd
 
 ### <a name="get-your-secure-score-from-azure-resource-graph-arg"></a>Získat zabezpečené skóre z Azure Resource graphu (ARG)
 
-Azure Resource Graph poskytuje okamžitý přístup k informacím o prostředcích napříč vašimi cloudovým prostředím pomocí robustních funkcí filtrování, seskupování a řazení. Jedná se o rychlý a efektivní způsob dotazování informací v rámci předplatných Azure prostřednictvím Azure Portal. [Přečtěte si další informace o Azure Resource graphu](https://docs.microsoft.com/azure/governance/resource-graph/).
+Azure Resource Graph poskytuje okamžitý přístup k informacím o prostředcích napříč vašimi cloudovým prostředím pomocí robustních funkcí filtrování, seskupování a řazení. Jedná se o rychlý a efektivní způsob dotazování informací v rámci předplatných Azure prostřednictvím Azure Portal. [Přečtěte si další informace o Azure Resource graphu](../governance/resource-graph/index.yml).
 
 Pro přístup k zabezpečenému skóre pro více předplatných s ARG:
 
