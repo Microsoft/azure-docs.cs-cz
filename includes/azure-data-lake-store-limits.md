@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 09/30/2020
 ms.author: twooley
 ms.custom: include file
-ms.openlocfilehash: 297641bbaccb44739d67fdd26f0c1f64062bba46
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7098f23e9b5b6f56fbbe761335afc65375aea680
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95561919"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509345"
 ---
 **Azure Data Lake Storage Gen2** není vyhrazený typ služby nebo účtu úložiště. Je to nejnovější verze schopností, které jsou vyhrazeny pro analýzy velkých objemů dat.  Tyto možnosti jsou dostupné v účtu úložiště pro obecné účely v2 nebo BlockBlobStorage a můžete je získat tím, že v účtu povolíte funkci **hierarchického oboru názvů** . Cílení na škálování najdete v těchto článcích. 
 
 - [Cíle škálování pro úložiště objektů BLOB](../articles/storage/blobs/scalability-targets.md#scale-targets-for-blob-storage).
-- [Cíle škálování pro účty úložiště úrovně Standard](../articles/storage/common/scalability-targets-standard-account.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#scale-targets-for-standard-storage-accounts).
+- [Cíle škálování pro účty úložiště úrovně Standard](../articles/storage/common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#scale-targets-for-standard-storage-accounts).
 
 **Azure Data Lake Storage Gen1** je vyhrazená služba. Pro úlohy analýzy velkých objemů dat je to škálovatelné úložiště na úrovni podniku. Můžete použít Data Lake Storage Gen1 k zachycení dat libovolné velikosti, typu a rychlosti příjmu na jednom místě pro provozní a průzkumné analýzy. Množství dat, která můžete ukládat v účtu Data Lake Storage Gen1, není nijak omezené.
 
