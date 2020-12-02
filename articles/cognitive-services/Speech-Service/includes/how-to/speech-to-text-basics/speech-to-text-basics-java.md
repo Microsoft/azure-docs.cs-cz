@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 3564bf0db3e85ed1d2d1716fd50e48838a94d40a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4a06d40c3052fef9a484dc98220a0ad7cccd33bb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025436"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509260"
 ---
 Jednou z klíčových funkcí služby Speech je možnost rozpoznávat a přepisovat lidské řeči (často se označuje jako převod řeči na text). V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitních převodů řeči na text.
 
@@ -263,5 +263,5 @@ phraseList.clear();
 
 Seznamy frází jsou pouze jedním z možností, jak zlepšit přesnost rozpoznávání. Můžete také: 
 
-* [Zlepšení přesnosti s využitím služby Custom Speech](../../../how-to-custom-speech.md)
+* [Zlepšení přesnosti s využitím služby Custom Speech](../../../custom-speech-overview.md)
 * [Zlepšení přesnosti s využitím modelů tenantů](../../../tutorial-tenant-model.md)

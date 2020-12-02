@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: ad9f3a115ed226b492a08dae29db61029d9098eb
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 03cf20e5c796a7092dc16c466934f377c945ad48
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95558845"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509488"
 ---
 Účet úložiště je sdílený fond úložiště, ve kterém můžete nasazovat sdílené složky Azure nebo jiné prostředky úložiště, jako jsou objekty blob nebo fronty. Účet úložiště může obsahovat neomezený počet sdílených složek. Sdílená složka může obsahovat neomezený počet souborů až do výše maximální kapacity účtu úložiště.
 
@@ -30,7 +30,7 @@ Vytvoření účtu úložiště:
     > [!NOTE]
     > V tomto rychlém startu se vytvoří standardní sdílená složka, ale pokud jste chtěli použít sdílené složky Premium, vyberte místo toho možnost **Premium** .
 
-1. V části **Druh účtu** vyberte **StorageV2**. Další informace o různých druzích účtů úložiště najdete v článku [Vysvětlení účtů úložiště Azure](../articles/storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
+1. V části **Druh účtu** vyberte **StorageV2**. Další informace o různých druzích účtů úložiště najdete v článku [Vysvětlení účtů úložiště Azure](../articles/storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
     > [!NOTE]
     > V tomto rychlém startu se vytvoří účet pro obecné účely v2. Pokud jste chtěli použít sdílené složky Premium, vyberte místo toho možnost **úložiště** souborů.

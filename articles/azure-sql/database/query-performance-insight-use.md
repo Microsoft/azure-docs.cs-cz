@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: c88b777e08bc165caefa14fe28d43c498e3fefcd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a016781e5b05c8f43c043bf1f3368a58064e43ad
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790368"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501256"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Query Performance Insight pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,8 +41,8 @@ Query Performance Insight vyžaduje, aby [úložiště dotazů](/sql/relational-
 
 Pro použití Query Performance Insight potřebujete následující oprávnění [řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md) :
 
-* Aby bylo možné zobrazit nejlepší dotazy a grafy náročné na prostředky, je nutné, aby byl **Čtenář** , **vlastník** , **Přispěvatel** , **Přispěvatel databáze SQL** nebo **SQL Server oprávnění přispěvatele** .
-* K zobrazení textu dotazu jsou nutná oprávnění **vlastník** , **Přispěvatel** , **Přispěvatel databáze SQL** nebo **SQL Server oprávnění přispěvatele** .
+* Aby bylo možné zobrazit nejlepší dotazy a grafy náročné na prostředky, je nutné, aby byl **Čtenář**, **vlastník**, **Přispěvatel**, **Přispěvatel databáze SQL** nebo **SQL Server oprávnění přispěvatele** .
+* K zobrazení textu dotazu jsou nutná oprávnění **vlastník**, **Přispěvatel**, **Přispěvatel databáze SQL** nebo **SQL Server oprávnění přispěvatele** .
 
 ## <a name="use-query-performance-insight"></a>Použití nástroje Query Performance Insight
 
@@ -85,9 +85,9 @@ Ve výchozím nastavení Query Performance Insight zobrazuje pět nejlepších d
    >
    > Pro přesnější porovnání (až jednu minutu) zvažte vytvoření vlastního grafu využití DTU:
    >
-   > 1. V Azure Portal vyberte **Azure SQL Database**  >  **monitorování** .
-   > 2. Vyberte **Metriky** .
-   > 3. Vyberte **+ přidat graf** .
+   > 1. V Azure Portal vyberte **Azure SQL Database**  >  **monitorování**.
+   > 2. Vyberte **Metriky**.
+   > 3. Vyberte **+ přidat graf**.
    > 4. Vyberte procento DTU v grafu.
    > 5. Kromě toho vyberte v levé horní nabídce **Poslední 24 hodiny** a změňte ji na jednu minutu.
    >
@@ -160,7 +160,7 @@ Dlouhotrvající dotazy mají největší potenciál na uzamykání prostředků
 Identifikace dlouhotrvajících dotazů:
 
 1. Otevřete **vlastní** kartu v Query Performance Insight pro vybranou databázi.
-2. Změňte metriky na **Trvání** .
+2. Změňte metriky na **Trvání**.
 3. Vyberte počet dotazů a interval sledování.
 4. Vyberte agregační funkci:
 
@@ -177,9 +177,9 @@ Identifikace dlouhotrvajících dotazů:
    >
    > Pokud chcete pochopit využití DTU databáze s více podrobnostmi (až 1 minutu), zvažte vytvoření vlastního grafu v Azure Portal:
    >
-   > 1. Vyberte **Azure SQL Database**  >  **monitorování** .
-   > 2. Vyberte **Metriky** .
-   > 3. Vyberte **+ přidat graf** .
+   > 1. Vyberte **Azure SQL Database**  >  **monitorování**.
+   > 2. Vyberte **Metriky**.
+   > 3. Vyberte **+ přidat graf**.
    > 4. Vyberte procento DTU v grafu.
    > 5. Kromě toho vyberte v levé horní nabídce **Poslední 24 hodiny** a změňte ji na jednu minutu.
    >
@@ -197,7 +197,7 @@ Mnoho webů založených na datech má například vysoce přístup k databázi 
 Identifikujte často spouštěné dotazy ("konverzace"):
 
 1. Otevřete **vlastní** kartu v Query Performance Insight pro vybranou databázi.
-2. Změňte metriky na **počet spuštění** .
+2. Změňte metriky na **počet spuštění**.
 3. Vyberte počet dotazů a interval sledování.
 4. Kliknutím na tlačítko **přejít >** zobrazíte přizpůsobené zobrazení.
 
@@ -238,14 +238,14 @@ Druhý případ nastane, pokud není úložiště dotazů povolené, nebo nejsou
 
 Existují dva typy zásad uchovávání informací:
 
-* **Na základě velikosti** : Pokud je tato zásada nastavená na hodnotu **automaticky** , vyčistí data automaticky při dosažení maximální velikosti.
-* **Čas na základě** : ve výchozím nastavení je tato zásada nastavená na 30 dní. Pokud dojde místo na úložišti dotazů, odstraní se informace o dotazu starší než 30 dní.
+* **Na základě velikosti**: Pokud je tato zásada nastavená na hodnotu **automaticky**, vyčistí data automaticky při dosažení maximální velikosti.
+* **Čas na základě**: ve výchozím nastavení je tato zásada nastavená na 30 dní. Pokud dojde místo na úložišti dotazů, odstraní se informace o dotazu starší než 30 dní.
 
 Zásady zachytávání můžete nastavit na:
 
-* **Vše** : úložiště dotazů zachycuje všechny dotazy.
-* **Automatické** : úložiště dotazů ignoruje nečasté dotazy a dotazy s nevýznamnou kompilací a dobou trvání spuštění. Prahové hodnoty pro počet spuštění, dobu trvání kompilace a dobu běhu jsou interně určeny. Toto je výchozí možnost.
-* **Žádné** : úložiště dotazů zastaví zachytávání nových dotazů, ale statistiky za běhu pro už zachycené dotazy se shromažďují stále.
+* **Vše**: úložiště dotazů zachycuje všechny dotazy.
+* **Automatické**: úložiště dotazů ignoruje nečasté dotazy a dotazy s nevýznamnou kompilací a dobou trvání spuštění. Prahové hodnoty pro počet spuštění, dobu trvání kompilace a dobu běhu jsou interně určeny. Toto je výchozí možnost.
+* **Žádné**: úložiště dotazů zastaví zachytávání nových dotazů, ale statistiky za běhu pro už zachycené dotazy se shromažďují stále.
 
 Doporučujeme nastavit všechny zásady na **Automatické** a zásady čištění na 30 dní, a to spuštěním následujících příkazů z [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) nebo Azure Portal. (Nahraďte `YourDB` názvem databáze.)
 

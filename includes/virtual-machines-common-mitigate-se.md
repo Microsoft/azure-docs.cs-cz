@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/12/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 8594ce713a8675505e0ee3051018b05992b160a9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a9146099951aba223a7b201c1613e1ec0ba617d4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027558"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509224"
 ---
 **Poslední aktualizace dokumentu**: 12. listopadu 2019 10:00 AM PST.
 
@@ -21,7 +21,7 @@ Zveřejnění [nové třídy chyb zabezpečení procesoru](https://portal.msrc.m
 
 Společnost Microsoft nasadila zmírnění hrozeb napříč všemi našimi Cloud Services. Je chráněná infrastruktura, která spouští Azure a izoluje úlohy zákazníka od sebe navzájem. To znamená, že potenciální útočník používající stejnou infrastrukturu nemůže vaše aplikace napadnout pomocí těchto ohrožení zabezpečení.
 
-Azure používá [zachovávání údržby paměti](../articles/virtual-machines/maintenance-and-updates.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json%252c%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json%253ftoc%253d%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#maintenance-that-doesnt-require-a-reboot) , kdykoli je to možné, k minimalizaci dopadu na zákazníky a eliminaci nutnosti restartování. Azure bude tyto metody používat při provádění aktualizací v hostiteli a ochraně našich zákazníků.
+Azure používá [zachovávání údržby paměti](../articles/virtual-machines/maintenance-and-updates.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json%252c%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json%253ftoc%253d%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#maintenance-that-doesnt-require-a-reboot) , kdykoli je to možné, k minimalizaci dopadu na zákazníky a eliminaci nutnosti restartování. Azure bude tyto metody používat při provádění aktualizací v hostiteli a ochraně našich zákazníků.
 
 Další informace o integraci zabezpečení do všech aspektů Azure najdete na webu [dokumentace k zabezpečení Azure](../articles/security/index.yml) . 
 

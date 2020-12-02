@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: reference
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 0c89dc28a330e319e18a6289e5f6759c56e46ae8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 139673e46421aa0dc19298697872fbff5fe587af
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791269"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501205"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Rozšířené události v Azure SQL Database 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -81,7 +81,7 @@ Funkce Rozšířené události je podporována v několika [zobrazeních katalog
 | **sys.database_event_session_targets** |Vrátí řádek pro každý cíl události pro relaci události. |
 | **sys.database_event_sessions** |Vrátí řádek pro každou relaci události v databázi. |
 
-V Microsoft SQL Server podobné pohledy v katalogu mají názvy, které obsahují *. \_ Server* místo *. Database \_* . Vzor názvu je jako **Sys.server_event_%** .
+V Microsoft SQL Server podobné pohledy v katalogu mají názvy, které obsahují *. \_ Server* místo *. Database \_*. Vzor názvu je jako **Sys.server_event_%**.
 
 ## <a name="new-dynamic-management-views-dmvs"></a>Nová zobrazení dynamické správy [(zobrazení dynamické správy)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)
 
@@ -97,7 +97,7 @@ Azure SQL Database má [zobrazení dynamické správy (zobrazení dynamické spr
 
 V Microsoft SQL Server jsou podobná zobrazení katalogu pojmenována bez *\_ databázové* části názvu, například:
 
-- místo názvu **Sys.dm_xe_sessions** .<br/>**Sys.dm_xe_database_sessions** .
+- místo názvu **Sys.dm_xe_sessions**.<br/>**Sys.dm_xe_database_sessions**.
 
 ### <a name="dmvs-common-to-both"></a>Zobrazení dynamické správy společné pro obojí
 

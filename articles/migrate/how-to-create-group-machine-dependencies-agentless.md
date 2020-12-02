@@ -3,12 +3,12 @@ title: Nastavení analýzy závislostí bez agentů v serveru Azure Migrate Asse
 description: Nastavte analýzu závislostí bez agentů v Azure Migrate Server Assessment.
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 8893b0f41bb7a06c02a6c2aa28002980144b582a
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 722ad4cc27132815c1416331aaf0691754ccee05
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337689"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500780"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>Analýza závislostí počítačů (bez agentů)
 
@@ -31,7 +31,7 @@ Tento článek popisuje, jak nastavit analýzu závislostí bez agentů v Azure 
 
 - [Zkontrolujte](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) podporované operační systémy a požadovaná oprávnění.
 - Ujistěte se, že:
-    - Mít Azure Migrate projekt. Pokud to neuděláte, [vytvořte](how-to-add-tool-first-time.md) ho hned teď.
+    - Mít Azure Migrate projekt. Pokud to neuděláte, [vytvořte](./create-manage-projects.md) ho hned teď.
     - Ověřte, že jste [přidali](how-to-assess.md) Azure Migrate: Nástroj pro vyhodnocení serveru do projektu.
     - Nastavte [zařízení Azure Migrate](migrate-appliance.md) pro zjišťování místních počítačů. [Nastavte zařízení](how-to-set-up-appliance-vmware.md) pro virtuální počítače VMware. Zařízení zjišťuje místní počítače a odesílá data o metadatech a výkonu Azure Migrate: posouzení serveru.
 - Ověřte, že na každém virtuálním počítači, který chcete analyzovat, je nainstalovaný nástroj VMware (novější než 10,2).
@@ -49,7 +49,7 @@ Přidejte uživatelský účet do zařízení.
 1. Otevřete aplikaci pro správu zařízení. 
 2. Přejděte na panel **poskytnout podrobnosti vCenter** .
 3. V nabídce **zjistit aplikaci a závislosti na virtuálních počítačích** klikněte na **Přidat přihlašovací údaje** .
-3. Vyberte **operační systém** , zadejte popisný název účtu a heslo pro **uživatelské jméno** / **Password** .
+3. Vyberte **operační systém**, zadejte popisný název účtu a heslo pro **uživatelské jméno** / **Password** .
 6. Klikněte na **Uložit**.
 7. Klikněte na **Uložit a spusťte zjišťování**.
 

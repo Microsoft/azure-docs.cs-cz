@@ -8,12 +8,12 @@ ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 661d4ba575eafa4e261a1c92c1112a259b95eac7
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: e8bb97196fcceea0c86f58fe4a63146e681c427e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683587"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500729"
 ---
 # <a name="enable-shared-disk"></a>Povolení sdíleného disku
 
@@ -27,7 +27,7 @@ Pokud hledáte koncepční informace o spravovaných discích, které mají povo
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
-Sdílené disky podporují více operačních systémů. Podporované operační systémy najdete v částech [Windows](windows/disks-shared.md#windows) a [Linux](linux/disks-shared.md#linux) článku konceptu.
+Sdílené disky podporují více operačních systémů. Podporované operační systémy najdete v částech [Windows](./disks-shared.md#windows) a [Linux](./disks-shared.md#linux) článku konceptu.
 
 ## <a name="disk-sizes"></a>Velikosti disků
 

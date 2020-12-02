@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: REST
-ms.openlocfilehash: 0d248fa57d5288cedae8dc46441739575c48c129
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 26492ba71726cefe863b27162dd901c945c3ddb7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94918139"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509362"
 ---
 <!--Create a copyAllNonInterleave transform with REST-->
 
 Následující příkaz Azure REST vytvoří transformaci pomocí `copyAllBitrateNonInterleaved` z `#Microsoft.Media.BuiltInStandardEncoderPreset` přednastavení. Nahraďte hodnoty `subscriptionID` , `resourceGroup` a `accountName` hodnotami, se kterými právě pracujete. Nastavte transformaci názvu nastavením `transformName` . 
 
-Pokud chcete zobrazit všechny dostupné transformace REST API, přečtěte si téma [transformace-Create nebo Update](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#definitions).
+Pokud chcete zobrazit všechny dostupné transformace REST API, přečtěte si téma [transformace-Create nebo Update](/rest/api/media/transforms/createorupdate#definitions).
 
 ```REST
 PUT https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroup}}/providers/Microsoft.Media/mediaServices/{{accountName}}/transforms/{{transformName}}?api-version=2020-05-01

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ac75ab31f8c9cdd9405115db4f5c35d28707e29f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 06d20dd47ceb71b51e226d662892eab06b072685
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950359"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500933"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Úlohy SAP v Azure: kontrolní seznam pro plánování a nasazení
 
@@ -243,8 +243,8 @@ V této fázi můžete shromažďovat, co jste se seznámili a zjistili během n
     - Azure Premium Storage se používá pro disky citlivé na latenci nebo kde se vyžaduje [smlouva SLA s jedním virtuálním počítačem 99,9%](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) .
     - Azure Akcelerátor zápisu je nasazený správně.
         - Ujistěte se, že se v rámci virtuálních počítačů, prostorů úložiště nebo sad prokládaných svazků správně vytvořily na discích, které vyžadují Akcelerátor zápisu.
-        - Ověřte [konfiguraci softwarového pole RAID v systému Linux](../../linux/configure-raid.md).
-        - Ověřte [konfiguraci LVM na virtuálních počítačích se systémem Linux v Azure](../../linux/configure-lvm.md).
+        - Ověřte [konfiguraci softwarového pole RAID v systému Linux](/previous-versions/azure/virtual-machines/linux/configure-raid).
+        - Ověřte [konfiguraci LVM na virtuálních počítačích se systémem Linux v Azure](/previous-versions/azure/virtual-machines/linux/configure-lvm).
     - Služby [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/) se používají výhradně.
     - Virtuální počítače se nasadily do správných skupin dostupnosti a Zóny dostupnosti.
     - [Akcelerace sítě Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) je povolená na virtuálních počítačích, které se používají v aplikační vrstvě SAP a ve vrstvě SAP DBMS.

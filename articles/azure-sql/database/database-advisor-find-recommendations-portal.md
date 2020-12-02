@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 6ad8f3e146c13e7b88752b8ef6d514346542ce26
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 748ac448ad8bf5c06e5be8b7a4a8b00a9b7af84b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672271"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500882"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Najít a použít doporučení pro výkon
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,11 +25,11 @@ Pomocí Azure Portal můžete najít doporučení k výkonu, která můžou opti
 
 ## <a name="viewing-recommendations"></a>Zobrazení doporučení
 
-Pokud chcete zobrazit a použít doporučení pro výkon, budete potřebovat správné oprávnění [řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md) v Azure. **Čtenář** , oprávnění **Přispěvatel SQL DB** jsou nutná k zobrazení doporučení a **vlastníka** , oprávnění **přispěvatele databáze SQL** jsou vyžadována ke spuštění všech akcí; vytvořit nebo vyřadit indexy a zrušit vytváření indexů.
+Pokud chcete zobrazit a použít doporučení pro výkon, budete potřebovat správné oprávnění [řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md) v Azure. **Čtenář**, oprávnění **Přispěvatel SQL DB** jsou nutná k zobrazení doporučení a **vlastníka**, oprávnění **přispěvatele databáze SQL** jsou vyžadována ke spuštění všech akcí; vytvořit nebo vyřadit indexy a zrušit vytváření indexů.
 
 Pomocí následujících kroků můžete najít doporučení týkající se výkonu Azure Portal:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Přejít na **všechny služby**  >  **databáze SQL** a vyberte svou databázi.
 3. Přejděte do **doporučení ke zvýšení výkonu** a zobrazte dostupná doporučení pro vybranou databázi.
 
@@ -86,9 +86,9 @@ Pokud seznam doporučení obsahuje položky, které chcete ze seznamu odebrat, m
 
 V případě potřeby můžete zahozené položky přidat zpátky do seznamu **doporučení** :
 
-1. Na stránce **doporučení** klikněte na **Zobrazit zahozené** .
+1. Na stránce **doporučení** klikněte na **Zobrazit zahozené**.
 2. Výběrem zahozené položky ze seznamu zobrazíte její podrobnosti.
-3. Volitelně můžete kliknutím na **Zrušit zrušení** přidat index zpátky do hlavního seznamu **doporučení** .
+3. Volitelně můžete kliknutím na **Zrušit zrušení** přidat index zpátky do hlavního seznamu **doporučení**.
 
 > [!NOTE]
 > Upozorňujeme, že pokud je povolené SQL Database [Automatické ladění](automatic-tuning-overview.md) a pokud jste ze seznamu ručně zrušili doporučení, toto doporučení se nikdy nepoužije automaticky. Zrušení doporučení je praktický způsob, jak uživatelům povolit automatické ladění v případech, kdy se vyžaduje, aby konkrétní doporučení nebylo použito.
@@ -98,7 +98,7 @@ V případě potřeby můžete zahozené položky přidat zpátky do seznamu **d
 
 Databázi můžete nastavit tak, aby automaticky implementovala doporučení. Jakmile budou doporučení k dispozici, automaticky se aplikují. Stejně jako u všech doporučení, která spravuje služba, platí, že pokud je dopad na výkon záporný, doporučení se vrátí.
 
-1. Na stránce **doporučení** klikněte na **automatizovat** :
+1. Na stránce **doporučení** klikněte na **automatizovat**:
 
    ![Nastavení Poradce](./media/database-advisor-find-recommendations-portal/settings.png)
 2. Vyberte akce, které chcete automatizovat:
@@ -112,13 +112,13 @@ Po výběru požadované konfigurace klikněte na použít.
 
 ### <a name="manually-apply-recommendations-through-t-sql"></a>Ruční použití doporučení prostřednictvím T-SQL
 
-Vyberte libovolné doporučení a pak klikněte na **Zobrazit skript** . Spusťte tento skript pro vaši databázi, abyste mohli doporučení použít ručně.
+Vyberte libovolné doporučení a pak klikněte na **Zobrazit skript**. Spusťte tento skript pro vaši databázi, abyste mohli doporučení použít ručně.
 
 *Ručně prováděné indexy nejsou monitorovány a ověřovány pro dopad na výkon služby* , takže je navrženo, že tyto indexy po vytvoření sledujete a v případě potřeby je upravíte nebo odstraníte. Podrobnosti o vytváření indexů najdete v tématu [Create index (Transact-SQL)](/sql/t-sql/statements/create-index-transact-sql). Ručně použitá doporučení budou navíc aktivní a budou se zobrazovat v seznamu doporučení 24-48 hodin. předtím, než je systém automaticky stáhne. Pokud byste chtěli doporučení odebrat dřív, můžete ho ručně zahodit.
 
 ### <a name="canceling-recommendations"></a>Rušení doporučení
 
-Doporučení, která jsou ve stavu **čekání** , **ověřování** nebo **úspěch** , lze zrušit. Doporučení se stavem **provádění** nelze zrušit.
+Doporučení, která jsou ve stavu **čekání**, **ověřování** nebo **úspěch** , lze zrušit. Doporučení se stavem **provádění** nelze zrušit.
 
 1. Vyberte doporučení v oblasti **Historie ladění** a otevřete stránku s **podrobnostmi o doporučení** .
 2. Kliknutím na tlačítko **Storno** přerušte proces použití doporučení.
@@ -133,7 +133,7 @@ Použití doporučení nemusí okamžitě probíhat. Portál poskytuje podrobné
 | Zpracovávan |Doporučení se používá. |
 | Opětovné |Doporučení se úspěšně nastavilo a služba měří výhody. |
 | Success |Doporučení se úspěšně použilo a byly měřeny výhody. |
-| Chybová |Během procesu použití doporučení došlo k chybě. Může to být přechodný problém nebo pravděpodobně Změna schématu tabulky a skript již není platný. |
+| Chyba |Během procesu použití doporučení došlo k chybě. Může to být přechodný problém nebo pravděpodobně Změna schématu tabulky a skript již není platný. |
 | Vrací |Doporučení bylo použito, ale bylo považováno za nevýkonné a automaticky se vrátí. |
 | Vrátit |Doporučení bylo vráceno. |
 
@@ -156,7 +156,7 @@ Po úspěšném dokončení implementace doporučení (v současné době platí
 
 ![Sledovat dopad na výkon](./media/database-advisor-find-recommendations-portal/query-insights.png)
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Azure SQL Database poskytuje doporučení pro zlepšení výkonu databáze. Díky skriptům T-SQL získáte pomoc při optimalizaci databáze a nakonec se zlepší výkon dotazů.
 

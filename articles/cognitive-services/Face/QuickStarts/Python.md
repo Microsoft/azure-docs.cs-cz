@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 8a7812bfcbedc8307557b4fb0623cb8a72913419
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 5c58742bd04f21ea501fde95798245c81442e24c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95743034"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501171"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Rychlý Start: detekce plošek v obrázku pomocí REST API obličeje a Pythonu
 
@@ -34,9 +34,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
     * K připojení aplikace k Face API budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
-## <a name="run-the-jupyter-notebook"></a>Spuštění poznámkového bloku Jupyter
+## <a name="run-the-jupyter-notebook"></a>Spusťte Jupyter Notebook
 
-Tento rychlý start můžete otevřít jako poznámkový blok Jupyter na webu [MyBinder](https://mybinder.org). Chcete-li spustit aplikaci Binder, vyberte tlačítko níže. Pak postupujte podle pokynů v poznámkovém bloku.
+Tento rychlý Start můžete spustit jako Jupyter Notebook v [MyBinder](https://mybinder.org). Chcete-li spustit aplikaci Binder, vyberte tlačítko níže. Pak postupujte podle pokynů v poznámkovém bloku.
 
 [![Vazba](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=FaceAPI.ipynb)
 
@@ -85,7 +85,7 @@ params = {
 }
 ```
 
-Odpověď teď obsahuje atributy obličeje. Například:
+Odpověď teď obsahuje atributy obličeje. Příklad:
 
 ```json
 [

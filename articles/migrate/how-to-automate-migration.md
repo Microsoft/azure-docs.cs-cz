@@ -6,18 +6,18 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/30/2020
 ms.author: rahugup
-ms.openlocfilehash: e1b34db7f2473e16d3ebde11376652f654f2f778
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 4ef4d3989f063e9d31718bc7143662c4f20cc90b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377951"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500814"
 ---
 # <a name="scale-migration-of-vmware-vms"></a>Škálování migrace virtuálních počítačů VMware 
 
-Tento článek vám pomůže pochopit, jak používat skripty k migraci velkého počtu virtuálních počítačů VMware pomocí metody bez agenta. Pokud chcete škálovat migrace, použijte [Azure Migrate modul PowerShellu](https://aka.ms/azuremigratepowershellvmware). 
+Tento článek vám pomůže pochopit, jak používat skripty k migraci velkého počtu virtuálních počítačů VMware pomocí metody bez agenta. Pokud chcete škálovat migrace, použijte [Azure Migrate modul PowerShellu](./tutorial-migrate-vmware-powershell.md). 
 
-Azure Migrate skripty pro automatizaci migrace VMware jsou k dispozici ke stažení na webu pro [Azure PowerShell Samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) na GitHubu. Skripty se dají použít k migraci virtuálních počítačů VMware do Azure pomocí metody migrace bez agenta. Následující příkazy Azure Migrate PowerShellu používané v těchto skriptech jsou popsané [tady](https://aka.ms/azuremigratepowershellvmware).
+Azure Migrate skripty pro automatizaci migrace VMware jsou k dispozici ke stažení na webu pro [Azure PowerShell Samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) na GitHubu. Skripty se dají použít k migraci virtuálních počítačů VMware do Azure pomocí metody migrace bez agenta. Následující příkazy Azure Migrate PowerShellu používané v těchto skriptech jsou popsané [tady](./tutorial-migrate-vmware-powershell.md).
 
 ## <a name="current-limitations"></a>Aktuální omezení
 - Tyto skripty podporují migraci virtuálních počítačů VMware se všemi disky. Skripty můžete aktualizovat, pokud chcete selektivně replikovat disky připojené k virtuálnímu počítači VMware. 
@@ -26,7 +26,7 @@ Azure Migrate skripty pro automatizaci migrace VMware jsou k dispozici ke staže
 ## <a name="prerequisites"></a>Předpoklady
 
 - [Dokončete kurz zjišťování](tutorial-discover-vmware.md) , abyste mohli připravit Azure a VMware pro migraci.
-- Doporučujeme, abyste dokončili druhý kurz pro [vyhodnocení virtuálních počítačů VMware](tutorial-assess-vmware.md) před jejich migrací do Azure.
+- Doporučujeme, abyste dokončili druhý kurz pro [vyhodnocení virtuálních počítačů VMware](./tutorial-assess-vmware-azure-vm.md) před jejich migrací do Azure.
 - Máte `Az` modul Azure PowerShell. Pokud potřebujete nainstalovat nebo upgradovat Azure PowerShell, postupujte podle pokynů v tomto [Průvodci a nainstalujte a nakonfigurujte Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="install-azure-migrate-powershell-module"></a>Instalace modulu Azure Migrate PowerShellu
@@ -123,4 +123,4 @@ Pokud chcete spustit skript pro spuštění replikace virtuálních počítačů
 ".\AzMigrate_StartReplication.ps1" .\Input.csv 
 ```
 
-Další informace o použití Azure PowerShell pro migraci virtuálních počítačů VMware pomocí Azure Migrate najdete v tomto [kurzu](https://aka.ms/azuremigratepowershellvmware).
+Další informace o použití Azure PowerShell pro migraci virtuálních počítačů VMware pomocí Azure Migrate najdete v tomto [kurzu](./tutorial-migrate-vmware-powershell.md).

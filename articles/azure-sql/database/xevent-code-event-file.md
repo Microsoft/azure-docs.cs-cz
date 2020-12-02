@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
 ms.topic: sample
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 06/06/2020
-ms.openlocfilehash: 9674b7188251312056812ac8e1dcae5885579e2a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d7a57f98551cf91ed87858caba0907471bcf6b12
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791303"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501222"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Cílový kód souboru události pro rozšířené události v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -54,7 +54,7 @@ V tomto tématu se zobrazuje příklad dvoufázové fáze kódu:
 
 - Musíte mít nainstalované [Azure PowerShell moduly](https://go.microsoft.com/?linkid=9811175) .
 
-  - Moduly poskytují příkazy, jako je například- **New-AzStorageAccount** .
+  - Moduly poskytují příkazy, jako je například- **New-AzStorageAccount**.
 
 ## <a name="phase-1-powershell-code-for-azure-storage-container"></a>Fáze 1: kód PowerShellu pro kontejner Azure Storage
 
@@ -62,7 +62,7 @@ Toto prostředí PowerShell je fáze 1 ukázky kódu ve dvou fázích.
 
 Skript začíná příkazy pro vyčištění po možném předchozím spuštění a je rerunnable.
 
-1. Vložte skript prostředí PowerShell do jednoduchého textového editoru, jako je například Notepad.exe, a tento skript uložte jako soubor s příponou **. ps1** .
+1. Vložte skript prostředí PowerShell do jednoduchého textového editoru, jako je například Notepad.exe, a tento skript uložte jako soubor s příponou **. ps1**.
 2. Spusťte PowerShell ISE jako správce.
 3. Na příkazovém řádku zadejte<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>a potom stiskněte klávesu ENTER.
 4. V prostředí PowerShell ISE otevřete soubor **. ps1** . Spusťte skript.
@@ -258,7 +258,7 @@ Skript prostředí PowerShell vytiskl po ukončení několik pojmenovaných hodn
 6. Uložte a spusťte skript.
 
 > [!WARNING]
-> Hodnota klíče SAS generovaná předchozím skriptem PowerShellu může začínat znakem "?". (otazník). Při použití klíče SAS v následujícím skriptu T-SQL je nutné *Odebrat úvodní znak "?"* . V opačném případě může být vaše úsilí blokováno zabezpečením.
+> Hodnota klíče SAS generovaná předchozím skriptem PowerShellu může začínat znakem "?". (otazník). Při použití klíče SAS v následujícím skriptu T-SQL je nutné *Odebrat úvodní znak "?"*. V opačném případě může být vaše úsilí blokováno zabezpečením.
 
 ### <a name="transact-sql-code"></a>Kód Transact-SQL
 
@@ -506,9 +506,9 @@ Vysvětlení pokročilých možností zobrazení dat z rozšířených událost�
 
 Předpokládejme, že jste chtěli spustit předchozí ukázku jazyka Transact-SQL v Microsoft SQL Server.
 
-- Pro jednoduchost byste chtěli zcela nahradit použití kontejneru Azure Storage jednoduchým souborem, jako je například *C:\myeventdata.XEL* . Soubor se zapíše na místní pevný disk počítače, který je hostitelem SQL Server.
+- Pro jednoduchost byste chtěli zcela nahradit použití kontejneru Azure Storage jednoduchým souborem, jako je například *C:\myeventdata.XEL*. Soubor se zapíše na místní pevný disk počítače, který je hostitelem SQL Server.
 - Pro **Vytvoření hlavního klíče** a **Vytvoření přihlašovacích údajů** nepotřebujete žádný druh příkazů jazyka Transact-SQL.
-- V příkazu **vytvořit relaci události** v klauzuli **Add Target** byste nahradili hodnotu http přiřazenou **souboru filename =** řetězcem s úplnými cestami, jako je *C:\myfile.XEL* .
+- V příkazu **vytvořit relaci události** v klauzuli **Add Target** byste nahradili hodnotu http přiřazenou **souboru filename =** řetězcem s úplnými cestami, jako je *C:\myfile.XEL*.
   
   - Nemusíte mít žádný účet Azure Storage.
 

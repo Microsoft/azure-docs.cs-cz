@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 7f1acc44a80d5ef70145997698a928e6f9ce0d48
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: a460d77a032f36505c8036bc60aa37017f630e55
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888874"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501137"
 ---
 # <a name="what-is-azure-iot-hub"></a>Co je Azure IoT Hub?
 
@@ -91,6 +91,7 @@ Pomocí sady integrovaných funkcí můžete spravovat zařízení připojená k
 Pomocí knihoven ze sady [SDK pro zařízení Azure IoT](./iot-hub-devguide-sdks.md) můžete vytvářet aplikace, které se spouští na vašich zařízeních a komunikují se službou IoT Hub. Mezi podporované platformy patří několik distribucí Linuxu, Windows a operační systémy pracující v reálném čase. Mezi podporované jazyky patří:
 
 * C
+* Vložené C
 * C#
 * Java
 * Python
@@ -120,7 +121,7 @@ Pro každé předplatné Azure platí výchozí omezení kvót, která brání z
 
 * [Omezování služby IoT Hub a vy](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
 
-## <a name="iot-hub-on-azure-stack-hub-preview"></a>IoT Hub v centru Azure Stack (Preview)
+## <a name="iot-hub-on-azure-stack-hub-preview"></a>IoT Hub v Azure Stack Hubu (Preview)
 
 IoT Hub v centru Azure Stack (Preview) můžete vytvářet hybridní řešení IoT. IoT Hub je spravovaná služba, která slouží jako centrální Centrum zpráv pro obousměrnou komunikaci mezi aplikací IoT a zařízeními, která spravuje. Pomocí IoT Hub v centru Azure Stack můžete vytvářet řešení IoT s spolehlivou a zabezpečenou komunikací mezi zařízeními IoT a místními řešeními.
 

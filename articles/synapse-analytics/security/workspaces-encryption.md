@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 11/19/2020
 ms.author: nanditav
 ms.reviewer: jrasnick
-ms.openlocfilehash: a6ea3925f3b6bc786be6a4855b2f3bfb6b402d70
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d9a9d3c303739e68b5b8ef28053d6cf0b071f955
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455173"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501052"
 ---
 # <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Šifrování pracovních prostorů služby Azure synapse Analytics
 
@@ -47,13 +47,13 @@ Data v následujících součástech synapse se šifrují pomocí klíče spravo
 Pracovní prostory je možné nakonfigurovat tak, aby v době vytváření pracovního prostoru povolily dvojité šifrování pomocí klíče spravovaného zákazníkem. Pokud vytváříte nový pracovní prostor, zaškrtněte na kartě zabezpečení možnost Povolit dvojité šifrování pomocí klíče spravovaného zákazníkem. Můžete zvolit, že chcete zadat identifikátor URI identifikátoru klíče nebo vybrat ze seznamu trezorů klíčů ve **stejné oblasti** jako pracovní prostor. Key Vault musí mít **povolenou ochranu vyprázdnění**.
 
 > [!IMPORTANT]
-> V současné době se nastavení konfigurace pro dvojité šifrování po vytvoření pracovního prostoru nedá změnit.
+> Po vytvoření pracovního prostoru nelze změnit nastavení konfigurace pro dvojité šifrování.
 
 :::image type="content" source="./media/workspaces-encryption/workspaces-encryption.png" alt-text="Tento diagram znázorňuje možnost, kterou je třeba vybrat, aby byl pracovní prostor pro dvojité šifrování s klíčem spravovaným zákazníkem povolen.":::
 
 ### <a name="key-access-and-workspace-activation"></a>Přístup k klíči a aktivace pracovního prostoru
 
-Model šifrování Azure synapse pomocí klíčů spravovaných zákazníkem vyžaduje, aby se v pracovním prostoru při přístupu k klíčům v Azure Key Vault zašifroval a dešifroval podle potřeby. Klíče jsou k pracovnímu prostoru přístupné buď prostřednictvím zásad přístupu, nebo Azure Key Vault přístupu RBAC ([Preview](../../key-vault/general/rbac-guide.md)). Při udělování oprávnění prostřednictvím zásad přístupu Azure Key Vault vyberte možnost pouze aplikace při vytváření zásad.
+Model šifrování Azure synapse pomocí klíčů spravovaných zákazníkem vyžaduje, aby se v pracovním prostoru při přístupu k klíčům v Azure Key Vault zašifroval a dešifroval podle potřeby. Klíče jsou k pracovnímu prostoru přístupné buď prostřednictvím zásad přístupu, nebo Azure Key Vault přístupu RBAC ([Preview](../../key-vault/general/rbac-guide.md)). Při udělování oprávnění prostřednictvím zásad přístupu Azure Key Vault zvolte možnost [pouze aplikace](../../key-vault/general/secure-your-key-vault.md#key-vault-authentication-options) při vytváření zásad (vyberte spravovanou identitu pracovního prostoru a nepřidejte ji jako autorizovanou aplikaci).
 
  Aby bylo možné pracovní prostor aktivovat, musí být v trezoru klíčů udělena oprávnění, která potřebuje. Tato fáze přístupu k aktivaci pracovního prostoru zajišťuje, aby data v pracovním prostoru byla zašifrovaná pomocí klíče spravovaného zákazníkem. Upozorňujeme, že šifrování může být pro vyhrazené fondy SQL povolené nebo zakázané – ve výchozím nastavení není každý fond povolený šifrování.
 
@@ -76,6 +76,9 @@ Po vytvoření pracovního prostoru (s povoleným dvojitým šifrováním) zůst
 Můžete změnit klíč spravovaný zákazníkem, který slouží k šifrování dat ze stránky **šifrování** v Azure Portal. V tomto případě můžete vybrat nový klíč pomocí identifikátoru klíče nebo vybrat z trezorů klíčů, ke kterým máte přístup, ve stejné oblasti jako pracovní prostor. Pokud zvolíte klíč v jiném trezoru klíčů z těch, které se dřív používaly, přidělte spravovanému pracovnímu prostoru oprávnění "získat", "Zalamovat" a "rozbalit" do nového trezoru klíčů. Pracovní prostor ověří svůj přístup k novému trezoru klíčů a všechna data v pracovním prostoru budou znovu zašifrována pomocí nového klíče.
 
 :::image type="content" source="./media/workspaces-encryption/workspace-encryption-management.png" alt-text="Tento diagram znázorňuje část šifrování pracovního prostoru v Azure Portal.":::
+
+>[!IMPORTANT]
+>Při změně šifrovacího klíče pracovního prostoru si klíč zachovejte, dokud ho nenahradíte v pracovním prostoru novým klíčem. To umožňuje dešifrovat data se starým klíčem předtím, než se znovu zašifruje pomocí nového klíče.
 
 Zásady Azure Key trezorů pro automatické, pravidelné střídání klíčů nebo akce na klíčích mají za následek vytváření nových verzí klíčů. Můžete zvolit, aby se všechna data v pracovním prostoru znovu zašifroval na nejnovější verzi aktivního klíče. Chcete-li znovu zašifrovat, změňte klíč v Azure Portal na dočasný klíč a pak přepněte zpět na klíč, který chcete použít pro šifrování. Chcete-li například aktualizovat šifrování dat pomocí nejnovější verze služby Active Key Klíč1, změňte klíč spravovaný zákazníkem na dočasný klíč, key2. Počkejte na dokončení šifrování pomocí key2. Pak přepněte klíč spravovaný zákazníkem pracovního prostoru zpátky na Klíč1 – data v pracovním prostoru se znovu zašifrují pomocí nejnovější verze Klíč1.
 
