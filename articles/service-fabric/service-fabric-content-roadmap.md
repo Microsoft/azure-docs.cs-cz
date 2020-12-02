@@ -3,12 +3,12 @@ title: Další informace o Azure Service Fabric
 description: Přečtěte si o základních konceptech a hlavních oblastech Azure Service Fabric. Poskytuje rozšířený přehled Service Fabric a vytváření mikroslužeb.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 07b41f10430592e6035bfe0179cb717d0bc5c8b0
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 36215dd3419050cf498a749b5caf927c3c4e275a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681733"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485446"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Chcete se dozvědět o Service Fabric?
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Service Fabric má ale velkou oblast povrchu, ale máme spoustu informací.  Tento článek obsahuje stručný přehled Service Fabric a popisuje základní koncepty, programovací modely, životní cyklus aplikací, testování, clustery a monitorování stavu. Přečtěte si [Přehled](service-fabric-overview.md) a [co jsou mikroslužby?](service-fabric-overview-microservices.md) Úvod do Service Fabric, jak se dá použít k vytváření mikroslužeb. Tento článek neobsahuje úplný seznam obsahu, ale obsahuje odkaz na přehled a zahájení práce pro každou oblast Service Fabric. 
@@ -51,7 +51,7 @@ Následující diagram znázorňuje vztah mezi aplikacemi a instancemi služby, 
 
 Repliky jednotlivých oddílů jsou rozloženy v uzlech clusteru, což umožňuje [škálovat](service-fabric-concepts-scalability.md)stav pojmenované služby. Vzhledem k rostoucímu množství dat, zvětšování oddílů a Service Fabric přerovnává oddíly mezi uzly, aby bylo možné efektivně využívat hardwarové prostředky. Pokud do clusteru přidáte nové uzly, Service Fabric bude znovu vyrovnávat repliky oddílů v rámci většího počtu uzlů. Celkový výkon aplikace vylepšuje a kolizí pro přístup k snížení velikosti paměti. Pokud se uzly v clusteru nepoužívají efektivně, můžete snížit počet uzlů v clusteru. Service Fabric znovu vyrovnává repliky oddílů napříč sníženým počtem uzlů, aby bylo možné lépe využívat hardware na každém uzlu.
 
-V rámci oddílu mají instance bez příslušnosti instance, zatímco stavová služba má repliky. Obvykle pouze bezstavové služby s názvem mají vždy jeden oddíl, protože nemají žádný interní stav, i když [existují výjimky](https://docs.microsoft.com/azure/service-fabric/service-fabric-concepts-partitioning#partition-service-fabric-stateless-services). Instance oddílu poskytují [dostupnost](service-fabric-availability-services.md). Pokud dojde k chybě jedné instance, ostatní instance budou fungovat normálně a pak Service Fabric vytvoří novou instanci. Stavové pojmenované služby udržují stav v rámci replik a každý oddíl má vlastní sadu replik. Operace čtení a zápisu se provádějí v jedné replice (označované jako primární). Změny stavu z operací zápisu se replikují do více dalších replik (označované jako aktivní sekundární). Pokud by se replika nezdařila, Service Fabric vytvoří novou repliku z existujících replik.
+V rámci oddílu mají instance bez příslušnosti instance, zatímco stavová služba má repliky. Obvykle pouze bezstavové služby s názvem mají vždy jeden oddíl, protože nemají žádný interní stav, i když [existují výjimky](./service-fabric-concepts-partitioning.md#partition-service-fabric-stateless-services). Instance oddílu poskytují [dostupnost](service-fabric-availability-services.md). Pokud dojde k chybě jedné instance, ostatní instance budou fungovat normálně a pak Service Fabric vytvoří novou instanci. Stavové pojmenované služby udržují stav v rámci replik a každý oddíl má vlastní sadu replik. Operace čtení a zápisu se provádějí v jedné replice (označované jako primární). Změny stavu z operací zápisu se replikují do více dalších replik (označované jako aktivní sekundární). Pokud by se replika nezdařila, Service Fabric vytvoří novou repliku z existujících replik.
 
 ## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>Bezstavové a stavové mikroslužby pro Service Fabric
 Service Fabric umožňuje sestavovat aplikace, které se skládají z mikroslužeb nebo kontejnerů. Bezstavové mikroslužby (například brány protokolů a webové proxy) si mimo požadavek a odpověď ze služby neudržují měnitelný stav. Role pracovních procesů služby Azure Cloud Services jsou příkladem stavové služby. Stavové mikroslužby (například uživatelské účty, databáze, zařízení, nákupní košíky a fronty) si udržují měnitelný a autoritativní stav i mimo požadavek a odpověď. Dnešní aplikace v internetovém měřítku se skládají z kombinace bezstavových a stavových mikroslužeb. 

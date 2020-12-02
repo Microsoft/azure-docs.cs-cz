@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 01574407801c0a6b0a5e0ddc438af4d3965dc090
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9960f15f2f91b51b73727ab421eb58dddc5bb2b3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131543"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485565"
 ---
 # <a name="service-fabric-releases"></a>Verze Service Fabric
 
@@ -18,7 +18,7 @@ ms.locfileid: "93131543"
 - <a href="https://github.com/Azure/service-fabric-issues" target="blank">Sledování problémů</a> 
 - <a href="/azure/service-fabric/service-fabric-support" target="blank">Možnosti podpory</a> 
 - <a href="/azure/service-fabric/service-fabric-versions" target="blank">Podporované verze</a> 
-- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Vzorky kódu</a>
+- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Ukázky kódu</a>
 
 V tomto článku najdete další informace o nejnovějších vydáních a aktualizacích Service Fabric runtime a sadách SDK.
 
@@ -29,17 +29,17 @@ S radostí oznamujeme, že vydání služby Service Fabric runtime od verze 7,2 
 ## <a name="what-is-new-in-service-fabric-7"></a>Co je nového v-Service Fabric 7.?
 Tato verze je nahraná s využitím klíčových funkcí a vylepšení. Některé klíčové funkce jsou zvýrazněné níže:
 ## <a name="key-announcements-in-72"></a>Oznámení na klíč v 7,2
-- **Verze Preview** : [**Service Fabric spravované clustery**](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-managed-clusters-are-now-in-public-preview/ba-p/1721572) jsou teď ve verzi Public Preview. Service Fabric spravovaných clusterů se snaží zjednodušit nasazování a správu clusteru zapouzdřením základních prostředků, které tvoří Service Fabric cluster do jednoho prostředku ARM. Další podrobnosti najdete v tématu [přehled Service Fabric spravovaného clusteru](https://docs.microsoft.com/azure/service-fabric/overview-managed-cluster).
-- **Preview** : [**Podpora bezstavových služeb s větším počtem instancí, než je počet uzlů**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies) , je teď ve verzi Public Preview. Zásady umístění umožňují vytvoření více bezstavových instancí oddílu na uzlu.
+- **Verze Preview**: [**Service Fabric spravované clustery**](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-managed-clusters-are-now-in-public-preview/ba-p/1721572) jsou teď ve verzi Public Preview. Service Fabric spravovaných clusterů se snaží zjednodušit nasazování a správu clusteru zapouzdřením základních prostředků, které tvoří Service Fabric cluster do jednoho prostředku ARM. Další podrobnosti najdete v tématu [přehled Service Fabric spravovaného clusteru](./overview-managed-cluster.md).
+- **Preview**: [**Podpora bezstavových služeb s větším počtem instancí, než je počet uzlů**](./service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) , je teď ve verzi Public Preview. Zásady umístění umožňují vytvoření více bezstavových instancí oddílu na uzlu.
 - [**FabricObserver (FO) 3,0**](https://aka.ms/sf/fabricobserver) je nyní k dispozici.
     - Nyní můžete spustit FabricObserver v clusterech se systémy Linux a Windows.
     - Nyní můžete vytvářet vlastní moduly plug-in pro pozorovatele. Podrobnosti a kód najdete v [souboru Readme modulů plug](https://github.com/microsoft/service-fabric-observer/blob/master/Documentation/Plugins.md) -in a v [projektu ukázkového modulu plug-in](https://github.com/microsoft/service-fabric-observer/tree/master/SampleObserverPlugin) .
     - Nyní můžete změnit jakékoli nastavení pozorovatele prostřednictvím upgradu parametrů aplikace. To znamená, že už nebudete muset znovu nasazovat a upravovat konkrétní nastavení pozorovatele. Podívejte se prosím na [ukázku](https://github.com/microsoft/service-fabric-observer/blob/master/Documentation/Using.md#parameterUpdates).
 - [**Podpora imagí kontejnerů Ubuntu 18,04 OneBox**](https://hub.docker.com/_/microsoft-service-fabric-onebox).
-- **Preview** : [ **referenční informace o trezoru klíčů pro aplikace Service Fabric podporují **jenom tajné klíče se správou verzí** . Tajné kódy bez verzí nejsou podporovány.**](https://docs.microsoft.com/azure/service-fabric/service-fabric-keyvault-references)
+- **Preview**: [ **referenční informace o trezoru klíčů pro aplikace Service Fabric podporují **jenom tajné klíče se správou verzí**. Tajné kódy bez verzí nejsou podporovány.**](./service-fabric-keyvault-references.md)
 - SF SDK vyžaduje nejnovější VS 2019 Update 16.7.6 nebo 16,8 Preview 4, aby bylo možné vytvořit nové projekty bezstavového/stavového/aktéru rozhraní .NET Framework. Pokud nemáte nejnovější aktualizaci VS Update, po vytvoření projektu služby použijte Správce balíčků k instalaci Microsoft. ServiceFabric. Services (verze 4.2. x) pro stavové a bezstavové projekty a Microsoft. ServiceFabric. Actors (verze 4.2. x) pro projekty actor z nuget.org.
-- **RunToCompletion** : Service Fabric podporuje koncept běhu do dokončování pro spustitelné soubory typu Host. V případě této aktualizace, jakmile se replika spustí, se uvolní prostředky clusteru přidělené této replice.
-- [**Podpora zásad správného řízení prostředků je vylepšená**](https://docs.microsoft.com/azure/service-fabric/service-fabric-resource-governance): povolení požadavků a omezení pro prostředky procesoru a paměti.
+- **RunToCompletion**: Service Fabric podporuje koncept běhu do dokončování pro spustitelné soubory typu Host. V případě této aktualizace, jakmile se replika spustí, se uvolní prostředky clusteru přidělené této replice.
+- [**Podpora zásad správného řízení prostředků je vylepšená**](./service-fabric-resource-governance.md): povolení požadavků a omezení pro prostředky procesoru a paměti.
 
 ### <a name="service-fabric-72-releases"></a>Verze Service Fabric 7,2
 | Datum vydání | Vydat | Další informace |
@@ -72,14 +72,14 @@ Jsme rádi, že oznamujeme další vydání Service Fabric. Tato verze je nahran
 
 ### <a name="improve-application-life-cycle-experience"></a>Zlepšení prostředí pro životní cyklus aplikací
 
-- **[Verze Preview: vyprázdnit požadavek](./service-fabric-application-upgrade-advanced.md#avoid-connection-drops-during-stateless-service-planned-downtime)** : během plánované údržby služby, jako jsou například upgrady služby nebo deaktivace uzlu, byste chtěli dovolit službám bezproblémové vyprazdňování připojení. Tato funkce přidá dobu zpoždění ukončení instance v konfiguraci služby. Během plánovaných operací SF odstraní adresu služby ze zjišťování a pak před vypnutím služby počká tuto dobu.
-- **[Automatické zjišťování a vyrovnávání podclusterů](./cluster-resource-manager-subclustering.md)** : k subclusterování dochází, když služby s různým omezením umístění mají společnou [metriku zatížení](./service-fabric-cluster-resource-manager-metrics.md). Pokud se zatížení různých sad uzlů výrazně liší, Cluster Service Fabric Správce prostředků se domnívá, že cluster je nevyvážený, a to i v případě, že má nejlepší možný zůstatek z důvodu omezení umístění. V důsledku toho se pokusí cluster znovu vyvážit, což může způsobit zbytečné přesuny služeb (vzhledem k tomu, že nerovnováha není možné podstatně zlepšit). Od této verze se Správce prostředků clusteru pokusí automaticky detekovat tyto typy konfigurací a porozumět tomu, kdy se nerovnováha dá opravit prostřednictvím přesunu, a když místo toho by měla opustit pouze takové věci, protože není možné provést žádné podstatné zlepšení.  
+- **[Verze Preview: vyprázdnit požadavek](./service-fabric-application-upgrade-advanced.md#avoid-connection-drops-during-stateless-service-planned-downtime)**: během plánované údržby služby, jako jsou například upgrady služby nebo deaktivace uzlu, byste chtěli dovolit službám bezproblémové vyprazdňování připojení. Tato funkce přidá dobu zpoždění ukončení instance v konfiguraci služby. Během plánovaných operací SF odstraní adresu služby ze zjišťování a pak před vypnutím služby počká tuto dobu.
+- **[Automatické zjišťování a vyrovnávání podclusterů](./cluster-resource-manager-subclustering.md)**: k subclusterování dochází, když služby s různým omezením umístění mají společnou [metriku zatížení](./service-fabric-cluster-resource-manager-metrics.md). Pokud se zatížení různých sad uzlů výrazně liší, Cluster Service Fabric Správce prostředků se domnívá, že cluster je nevyvážený, a to i v případě, že má nejlepší možný zůstatek z důvodu omezení umístění. V důsledku toho se pokusí cluster znovu vyvážit, což může způsobit zbytečné přesuny služeb (vzhledem k tomu, že nerovnováha není možné podstatně zlepšit). Od této verze se Správce prostředků clusteru pokusí automaticky detekovat tyto typy konfigurací a porozumět tomu, kdy se nerovnováha dá opravit prostřednictvím přesunu, a když místo toho by měla opustit pouze takové věci, protože není možné provést žádné podstatné zlepšení.  
 - [**Různé náklady na přesun pro sekundární repliky**](./service-fabric-cluster-resource-manager-movement-cost.md): zavedli jsme novou hodnotu pro přesunutí VeryHigh, která v některých scénářích poskytuje větší flexibilitu, která definuje, jestli se mají pro sekundární repliky použít samostatné náklady na přesun.
 - Pro kontejnerové aplikace je povolen mechanismus [**živého testování**](./probes-codepackage.md) . Funkce sonda živého testu oznamuje živý kontejnerové aplikace a pokud neodpoví včas, bude mít za následek restartování.
 - [**Spustit pro služby pro doplňování**](./run-to-completion.md)**
 
 ### <a name="image-store-improvements"></a>Vylepšení Image Store
- - Service Fabric 7,1 používá **vlastní přenos k zabezpečení přenosu souborů mezi uzly ve výchozím nastavení** . Závislost na sdílené složce SMB je odebrána z verze 7,1. Zabezpečené sdílené složky protokolu SMB jsou pořád existující v uzlech, které obsahují Image Store replice služby pro výběr zákazníka, aby se odhlásily od výchozího nastavení a aby je bylo možné upgradovat a downgradovat na starou verzi.
+ - Service Fabric 7,1 používá **vlastní přenos k zabezpečení přenosu souborů mezi uzly ve výchozím nastavení**. Závislost na sdílené složce SMB je odebrána z verze 7,1. Zabezpečené sdílené složky protokolu SMB jsou pořád existující v uzlech, které obsahují Image Store replice služby pro výběr zákazníka, aby se odhlásily od výchozího nastavení a aby je bylo možné upgradovat a downgradovat na starou verzi.
        
  ### <a name="reliable-collections-improvements"></a>Vylepšení spolehlivých kolekcí
 
@@ -110,13 +110,13 @@ Toto je nejnovější vydaná verze Service Fabric a je načtená s klíčovými
 ### <a name="key-announcements"></a>Oznámení klíčů
  - [**Podpora KeyVaultReference pro aplikační tajné klíče (Preview)**](./service-fabric-keyvault-references.md): Service Fabric aplikace, které mají povolené [spravované identity](./concepts-managed-identity.md) , teď můžou přímo odkazovat na adresu URL Key Vault tajných klíčů jako na proměnnou prostředí, parametr aplikace nebo přihlašovací údaje úložiště kontejnerů. Service Fabric bude tajný klíč automaticky přeložit pomocí spravované identity aplikace. 
      
-- **Vylepšená bezpečnost upgradu pro bezstavové služby** : Pokud chcete zaručit dostupnost během upgradu aplikace, zavedli jsme nové konfigurace, abychom definovali [minimální počet instancí bezstavových služeb](/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet) , které se budou považovat za dostupné. Dřív byla tato hodnota 1 pro všechny služby a nedá se změnit. Díky této nové kontrole bezpečnosti pro jednotlivé služby můžete zajistit, aby vaše služby během upgradování aplikace, upgrady clusterů a jiné údržby zachovaly minimální počet instancí, a další údržbu, která spoléhá na kontrolu stavu a bezpečnosti Service Fabric.
+- **Vylepšená bezpečnost upgradu pro bezstavové služby**: Pokud chcete zaručit dostupnost během upgradu aplikace, zavedli jsme nové konfigurace, abychom definovali [minimální počet instancí bezstavových služeb](/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet) , které se budou považovat za dostupné. Dřív byla tato hodnota 1 pro všechny služby a nedá se změnit. Díky této nové kontrole bezpečnosti pro jednotlivé služby můžete zajistit, aby vaše služby během upgradování aplikace, upgrady clusterů a jiné údržby zachovaly minimální počet instancí, a další údržbu, která spoléhá na kontrolu stavu a bezpečnosti Service Fabric.
   
 - [**Omezení prostředků pro uživatelské služby**](./service-fabric-resource-governance.md#enforcing-the-resource-limits-for-user-services): uživatelé můžou nastavit omezení prostředků pro uživatelské služby na uzlu, aby se předešlo scénářům, jako je vyčerpání prostředků Service Fabric systémových služeb. 
   
 - [**Velmi vysoké náklady na přesun služeb**](./service-fabric-cluster-resource-manager-movement-cost.md) pro typ repliky. Repliky s velmi vysokými náklady na přesun budou přesunuty pouze v případě porušení omezení v clusteru, které nelze opravit jiným způsobem. Další informace o tom, kdy je využití "velmi vysoké" nákladů na přesunutí přijatelné a další okolnosti, najdete v odkazovaném dokumentu.
   
--  **Další bezpečnostní kontroly clusteru** : v této verzi jsme představili konfigurovatelnou kontrolu bezpečnosti kvora uzlů pro počáteční uzly. To vám umožní přizpůsobit, kolik počátečních uzlů musí být k dispozici během životního cyklu clusteru a scénářů správy. Operace, které by mohly převzít cluster pod konfigurovanou hodnotou, jsou zablokované. Dnes výchozí hodnota je vždy kvorum počátečních uzlů, například pokud máte 7 počátečních uzlů, operace, která by poznamenala méně než 5 počátečních uzlů, bude ve výchozím nastavení blokována. V důsledku této změny byste mohli nastavit minimální bezpečnou hodnotu 6, která by v jednom okamžiku umožňovala snížit pouze jeden uzel počáteční hodnoty.
+-  **Další bezpečnostní kontroly clusteru**: v této verzi jsme představili konfigurovatelnou kontrolu bezpečnosti kvora uzlů pro počáteční uzly. To vám umožní přizpůsobit, kolik počátečních uzlů musí být k dispozici během životního cyklu clusteru a scénářů správy. Operace, které by mohly převzít cluster pod konfigurovanou hodnotou, jsou zablokované. Dnes výchozí hodnota je vždy kvorum počátečních uzlů, například pokud máte 7 počátečních uzlů, operace, která by poznamenala méně než 5 počátečních uzlů, bude ve výchozím nastavení blokována. V důsledku této změny byste mohli nastavit minimální bezpečnou hodnotu 6, která by v jednom okamžiku umožňovala snížit pouze jeden uzel počáteční hodnoty.
    
 - Přidání podpory pro [**správu služby zálohování a obnovení v Service Fabric Explorer**](./service-fabric-backuprestoreservice-quickstart-azurecluster.md). Díky tomu jsou možné následující aktivity přímo z SFX: zjišťování služby zálohování a obnovení, vytváření zásad zálohování, povolení automatického zálohování, provádění záloh ad hoc, spouštění operací obnovení a procházení stávajících záloh.
 
@@ -152,7 +152,7 @@ V Service Fabric 6,5 je nový co je:
 
 - Byly přidány [události životního cyklu repliky](service-fabric-diagnostics-event-generation-operational.md#replica-events) pro stavové služby.
 
-- [Lepší viditelnost stavu počátečního uzlu](service-fabric-understand-and-troubleshoot-with-system-health-reports.md#seed-node-status), včetně upozornění na úrovni clusteru, pokud je počáteční uzel v pořádku ( *dolů* , *odebrán* nebo *Neznámý* ).
+- [Lepší viditelnost stavu počátečního uzlu](service-fabric-understand-and-troubleshoot-with-system-health-reports.md#seed-node-status), včetně upozornění na úrovni clusteru, pokud je počáteční uzel v pořádku (*dolů*, *odebrán* nebo *Neznámý*).
 
 - [Service Fabric Nástroj pro zotavení po havárii](https://github.com/Microsoft/Service-Fabric-AppDRTool) umožňuje Service Fabric stavové služby rychle obnovit v případě, že dojde k havárii primárního clusteru. Data z primárního clusteru se průběžně synchronizují v sekundárním úsporném režimu pomocí pravidelného zálohování a obnovování.
 
