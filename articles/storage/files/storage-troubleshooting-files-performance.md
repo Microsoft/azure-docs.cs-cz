@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: a49dbdace01396656c3114df0bc0d4589aff57c1
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 5a35d939c12639770e25c3096c77f13d31310f85
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916487"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492008"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Řešení potíží s výkonem Azure File shares
 
@@ -196,7 +196,7 @@ Nedávné změny v nastaveních vícekanálové konfigurace protokolu SMB bez op
 
 ### <a name="cause"></a>Příčina  
 
-Vysoké číslo oznámení změny souborů u sdílených složek může způsobit výrazné vysoké latence. K tomu obvykle dochází u webů hostovaných ve sdílených složkách s hlubokou vnořenou strukturou adresářů. Typickým scénářem je webová aplikace hostovaná službou IIS, kde je pro každý adresář ve výchozí konfiguraci nastaveno oznámení o změně souboru. Každá změna ([ReadDirectoryChangesW](https://docs.microsoft.com/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) ve sdílené složce, která je klientem SMB registrována pro vložení oznámení o změně ze souborové služby do klienta, který přebírá systémové prostředky, a vystavuje zhoršený počet změn. To může způsobit omezení sdílení a proto má za následek vyšší latenci na straně klienta. 
+Vysoké číslo oznámení změny souborů u sdílených složek může způsobit výrazné vysoké latence. K tomu obvykle dochází u webů hostovaných ve sdílených složkách s hlubokou vnořenou strukturou adresářů. Typickým scénářem je webová aplikace hostovaná službou IIS, kde je pro každý adresář ve výchozí konfiguraci nastaveno oznámení o změně souboru. Každá změna ([ReadDirectoryChangesW](/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) ve sdílené složce, která je klientem SMB registrována pro vložení oznámení o změně ze souborové služby do klienta, který přebírá systémové prostředky, a vystavuje zhoršený počet změn. To může způsobit omezení sdílení a proto má za následek vyšší latenci na straně klienta. 
 
 K potvrzení můžete použít metriky Azure na portálu – 
 

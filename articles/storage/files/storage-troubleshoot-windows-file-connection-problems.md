@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e446ec08d63c44566b2f45c1427999536d0be703
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: aef332e54fa650e1abbebe671560238d7eb318de
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188713"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492042"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Řešení potíží se soubory Azure v systému Windows (SMB)
 
@@ -147,7 +147,7 @@ K chybě 1816 dochází po dosažení horní meze souběžných otevřených pop
 
 ### <a name="solution"></a>Řešení
 
-Snižte počet souběžných otevřených popisovačů uzavřením některých popisovačů a potom akci opakujte. Další informace najdete v tématu [Kontrolní seznam pro výkon a škálovatelnost Microsoft Azure Storage](../blobs/storage-performance-checklist.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
+Snižte počet souběžných otevřených popisovačů uzavřením některých popisovačů a potom akci opakujte. Další informace najdete v tématu [Kontrolní seznam pro výkon a škálovatelnost Microsoft Azure Storage](../blobs/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 Pokud chcete zobrazit otevřené popisovače pro sdílenou složku, adresář nebo soubor, použijte rutinu PowerShellu [Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) .  
 
@@ -262,7 +262,7 @@ Při pokusu o přenos souborů do služby Azure File Service se může zobrazit 
 - Pokud nemáte konkrétní minimální požadavky na vstupně-výstupní operace, doporučujeme použít 1 MiB jako velikost vstupně-výstupních operací pro zajištění optimálního výkonu.
 -   Pokud znáte konečnou velikost souboru, který rozšiřujete o zápisy, a váš software nemá problémy s kompatibilitou, pokud nezapsaný konec souboru obsahuje nuly, nastavte velikost souboru předem místo toho, aby každý zápis nastavil rozšíření zápisu.
 -   Použijte pravou metodu kopírování:
-    -   Použijte [AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) pro jakýkoli přenos mezi dvěma sdílenými složkami souborů.
+    -   Použijte [AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) pro jakýkoli přenos mezi dvěma sdílenými složkami souborů.
     -   Použijte příkaz [Robocopy](./storage-files-deployment-guide.md#robocopy) mezi sdílenými složkami na místním počítači.
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>Předpoklady pro Windows 8.1 nebo Windows Server 2012 R2
@@ -401,7 +401,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 Tato rutina provádí následující kontroly v posloupnosti a poskytuje pokyny k selhání:
 1. CheckADObjectPasswordIsCorrect: Ujistěte se, že heslo nakonfigurované na identitě AD, které představuje účet úložiště, odpovídá účtu úložiště kerb1 nebo kerb2 Key. Pokud není heslo správné, můžete heslo resetovat spuštěním rutiny [Update-AzStorageAccountADObjectPassword](./storage-files-identity-ad-ds-update-password.md) . 
 2. CheckADObject: potvrďte, že ve službě Active Directory existuje objekt, který představuje účet úložiště, a má správný název SPN (hlavní název služby). Pokud hlavní název služby není správně nastavený, spusťte rutinu Set-AD vrácenou v rutině ladění a nakonfigurujte hlavní název služby (SPN).
-3. CheckDomainJoined: Ověřte, zda je klientský počítač připojen k doméně služby AD. Pokud Váš počítač není připojený k doméně AD, přečtěte si tento [článek](/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK) , kde najdete pokyny k připojení k doméně.
+3. CheckDomainJoined: Ověřte, zda je klientský počítač připojen k doméně služby AD. Pokud Váš počítač není připojený k doméně AD, přečtěte si tento [článek](/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain) , kde najdete pokyny k připojení k doméně.
 4. CheckPort445Connectivity: Ověřte, že je pro připojení SMB otevřený port 445. Pokud požadovaný port není otevřený, přečtěte si další informace o problémech s připojením se soubory Azure v tématu [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) nástroje pro řešení potíží.
 5. CheckSidHasAadUser: Ověřte, že se přihlášený uživatel služby AD synchronizuje do Azure AD. Pokud chcete vyhledat konkrétního uživatele služby AD, který je synchronizovaný s Azure AD, můžete ve vstupních parametrech zadat-UserName a-Domain. 
 6. CheckGetKerberosTicket: Pokuste se získat lístek protokolu Kerberos pro připojení k účtu úložiště. Pokud není k dispozici platný token protokolu Kerberos, spusťte rutinu příkaz Klist (získat CIFS/Storage-Account-Name. File. Core. Windows. NET a prověřte kód chyby pro hlavní-příčinu selhání načtení lístku.

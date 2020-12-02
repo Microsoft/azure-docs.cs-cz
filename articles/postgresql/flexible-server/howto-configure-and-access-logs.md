@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 319b7a40a87d29454b22a26088df313ef524dc56
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3b54fe1ffd49c12db82a038ad449190a0049133f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545816"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492348"
 ---
 # <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>Konfigurace a přístup k protokolům v Azure Database for PostgreSQLm flexibilním serveru
 
@@ -22,21 +22,21 @@ Protokoly PostgreSQL jsou k dispozici na všech uzlech flexibilního serveru. Pr
 
 ## <a name="configure-diagnostic-settings"></a>Konfigurace nastavení diagnostiky
 
-Nastavení diagnostiky pro server Postgres můžete povolit pomocí Azure Portal, CLI, REST API a PowerShellu. Kategorie protokolu, která se má vybrat, je **PostgreSQLLogs** .
+Nastavení diagnostiky pro server Postgres můžete povolit pomocí Azure Portal, CLI, REST API a PowerShellu. Kategorie protokolu, která se má vybrat, je **PostgreSQLLogs**.
 
 Postup povolení protokolů prostředku pomocí Azure Portal:
 
 1. Na portálu přejděte v navigační nabídce serveru Postgres na *nastavení diagnostiky* .
    
-2. Vyberte *Přidat nastavení diagnostiky* .
+2. Vyberte *Přidat nastavení diagnostiky*.
    :::image type="content" source="media/howto-logging/diagnostic-settings.png" alt-text="Tlačítko Přidat nastavení diagnostiky":::
 
 3. Pojmenujte toto nastavení. 
 
 4. Vyberte preferovaný koncový bod (účet úložiště, centrum událostí a Log Analytics). 
 
-5. Vyberte typ protokolu **PostgreSQLLogs** .
-   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="Tlačítko Přidat nastavení diagnostiky":::
+5. Vyberte typ protokolu **PostgreSQLLogs**.
+   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="Zvolit protokoly PostgreSQL":::
 
 7. Uložte nastavení.
 
@@ -71,5 +71,5 @@ Výše uvedený dotaz zobrazí výsledky za posledních 6 hodin pro všechny př
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Začínáme s dotazy Log Analytics](../../azure-monitor/log-query/get-started-portal.md)
+- [Začínáme s dotazy Log Analytics](../../azure-monitor/log-query/log-analytics-tutorial.md)
 - Další informace o [službě Azure Event Center](../../event-hubs/event-hubs-about.md)

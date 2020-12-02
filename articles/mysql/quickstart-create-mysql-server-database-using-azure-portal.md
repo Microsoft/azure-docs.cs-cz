@@ -7,29 +7,29 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: 4282294ff54fd3da3f764f53efc8b040b9522191
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f71bcc1fd3b92a32a3e6d9fa056bae7131a663bd
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542248"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492603"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Rychlý Start: vytvoření serveru Azure Database for MySQL pomocí Azure Portal
 
 Azure Database for MySQL je spravovaná služba, pomocí které můžete spouštět, spravovat a škálovat vysoce dostupné databáze MySQL v cloudu. V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit Azure Database for MySQL jeden server. Také se dozvíte, jak se připojit k serveru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Vyžaduje se předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="create-an-azure-database-for-mysql-single-server"></a>Vytvoření jednoho serveru Azure Database for MySQL
-1. Chcete-li vytvořit databázi MySQL s jedním serverem, otevřete [Azure Portal](https://portal.azure.com/) . Vyhledejte a vyberte **Azure Database for MySQL** :
+1. Chcete-li vytvořit databázi MySQL s jedním serverem, otevřete [Azure Portal](https://portal.azure.com/) . Vyhledejte a vyberte **Azure Database for MySQL**:
 
    >[!div class="mx-imgBorder"]
    > :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/find-azure-mysql-in-portal.png" alt-text="Najít Azure Database for MySQL":::
 
 1. Vyberte **Přidat**.
 
-2. Na stránce **vybrat možnost nasazení Azure Database for MySQL** vyberte  **jeden server** :
+2. Na stránce **vybrat možnost nasazení Azure Database for MySQL** vyberte  **jeden server**:
    >[!div class="mx-imgBorder"]
    > :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/choose-singleserver.png" alt-text="Snímek obrazovky, který zobrazuje jednu možnost serveru.":::
 
@@ -45,9 +45,9 @@ Vyžaduje se předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvo
    Název serveru | **mydemoserver** | Zadejte jedinečný název. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí obsahovat 3 až 63 znaků.
    Zdroj dat |**Žádný** | Pokud chcete vytvořit nový server úplně od začátku, vyberte **Žádný**. **Zálohování** vyberte jenom v případě, že obnovujete z geografické zálohy existujícího serveru.
    Umístění |Vaše požadované umístění | Vyberte umístění ze seznamu.
-   Verze | Nejnovější hlavní verze| Použijte nejnovější hlavní verzi. Zobrazit [všechny podporované verze](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions).
+   Verze | Nejnovější hlavní verze| Použijte nejnovější hlavní verzi. Zobrazit [všechny podporované verze](../postgresql/concepts-supported-versions.md).
    Výpočty + úložiště | Použít výchozí| Výchozí cenová úroveň je **pro obecné účely** se **4 virtuální jádra** a **100 GB** úložiště. Uchovávání záloh je nastaveno na **7 dní** s možností **geograficky redundantního** zálohování.<br/>Projděte si stránku s [cenami](https://azure.microsoft.com/pricing/details/mysql/) a aktualizujte výchozí nastavení, pokud potřebujete.
-   Uživatelské jméno správce | **mydemoadmin** | Zadejte uživatelské jméno správce serveru. Pro uživatelské jméno správce nemůžete použít **azure_superuser** , **admin** , **Administrator** , **root** , **Guest** ani **Public** .
+   Uživatelské jméno správce | **mydemoadmin** | Zadejte uživatelské jméno správce serveru. Pro uživatelské jméno správce nemůžete použít **azure_superuser**, **admin**, **Administrator**, **root**, **Guest** ani **Public** .
    Heslo | Heslo | Nové heslo pro uživatele správce serveru. Heslo musí mít délku 8 až 128 znaků a obsahovat kombinaci velkých a malých písmen, číslic a jiných než alfanumerických znaků (!, $, #,% a tak dále).
   
 
@@ -67,7 +67,7 @@ Vyžaduje se předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvo
 
 Ve výchozím nastavení je nový server chráněný bránou firewall. Chcete-li se připojit, musíte poskytnout přístup k vaší IP adrese provedením těchto kroků:
 
-1. V levém podokně svého prostředku serveru použijte **zabezpečení připojení** . Pokud si nejste jisti, jak prostředek najít, přečtěte si téma [Postup otevření prostředku](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources).
+1. V levém podokně svého prostředku serveru použijte **zabezpečení připojení** . Pokud si nejste jisti, jak prostředek najít, přečtěte si téma [Postup otevření prostředku](../azure-resource-manager/management/manage-resources-portal.md#open-resources).
 
    >[!div class="mx-imgBorder"]
    > :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/add-current-ip-firewall.png" alt-text="Snímek obrazovky zobrazující stránku pravidla brány firewall > zabezpečení připojení":::
@@ -151,9 +151,9 @@ Chcete-li odstranit server, můžete vybrat položku **Odstranit** na stránce *
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
->[Vytvoření aplikace v PHP ve Windows pomocí MySQL](../app-service/app-service-web-tutorial-php-mysql.md) <br/>
+>[Vytvoření aplikace v PHP ve Windows pomocí MySQL](../app-service/tutorial-php-mysql-app.md) <br/>
 
 > [!div class="nextstepaction"]
->[Sestavení aplikace PHP v systému Linux pomocí MySQL](../app-service/containers/tutorial-php-mysql-app.md)<br/><br/>
+>[Sestavení aplikace PHP v systému Linux pomocí MySQL](../app-service/tutorial-php-mysql-app.md?pivots=platform-linux%3fpivots%3dplatform-linux)<br/><br/>
 
 [Nemůžete najít, co hledáte? Dejte nám prosím jistotu.](https://aka.ms/mysql-doc-feedback)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 171ae04a70f3639981e74d20d260a03359a0f2c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f5653e4c184e88bce86026681dde1aee9e14d49
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187434"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491413"
 ---
 # <a name="what-is-routing-preference-preview"></a>Co je předvolby směrování (Preview)?
 
@@ -30,7 +30,7 @@ Předvolby směrování Azure vám umožní zvolit způsob přenosu tras mezi Az
 
 ## <a name="routing-via-microsoft-global-network"></a>Směrování prostřednictvím globální sítě Microsoft
 
-Při směrování provozu přes *globální síť Microsoftu*se provoz doručuje přes jednu z největších sítí na celém světě, která pokrývá více než 160 000 mil na vláknu s více než 165 body přítomnosti (pop). Síť je dobře zřízena s několika redundantními vlákny a zajišťuje tak mimořádně vysokou spolehlivost a dostupnost. Technologie provozu je spravovaná softwarem, který je definovaný pro síťový adaptér WAN, který zajišťuje výběr cest s nízkou latencí pro provoz a nabízí špičkový výkon sítě.
+Při směrování provozu přes *globální síť Microsoftu* se provoz doručuje přes jednu z největších sítí na celém světě, která pokrývá více než 160 000 mil na vláknu s více než 165 body přítomnosti (pop). Síť je dobře zřízena s několika redundantními vlákny a zajišťuje tak mimořádně vysokou spolehlivost a dostupnost. Technologie provozu je spravovaná softwarem, který je definovaný pro síťový adaptér WAN, který zajišťuje výběr cest s nízkou latencí pro provoz a nabízí špičkový výkon sítě.
 
 ![Směrování prostřednictvím globální sítě Microsoft](media/routing-preference-overview/route-via-microsoft-global-network.png)
 
@@ -60,7 +60,7 @@ Veřejná IP adresa s volbou předvolby směrování "globální síť Microsoft
 * Azure Kubernetes Service (AKS)
 * Internetový nástroj pro vyrovnávání zatížení
 * Application Gateway
-* Brána Azure Firewall
+* Azure Firewall
 
 Pro úložiště primární koncové body vždy používají **globální síť Microsoft**. Můžete povolit sekundární koncové body s **internetem** podle vašeho výběru pro směrování provozu. Podporované služby úložiště:
 
@@ -70,19 +70,7 @@ Pro úložiště primární koncové body vždy používají **globální síť 
 * Azure DataLake
 
 ## <a name="pricing"></a>Ceny
-Cenový rozdíl mezi oběma možnostmi se odráží v ceně za přenos dat z Internetu. Směrování prostřednictvím služby **Microsoft Global Network** Data Transfer je stejné jako aktuální cena za internetovou cenu. Nejnovější informace o cenách najdete na [stránce s cenami na šířku pásma Azure](https://azure.microsoft.com/pricing/details/bandwidth/) . Směrování přes **veřejný Internet** je levnější, jak je uvedeno v následující tabulce:
-
-| Zdrojová oblast pro výstup | 0-5 GB/měsíc | 5 GB – 10 TB/měsíc | 10-50 TB/měsíc | 50-150 TB/měsíc | 150-500 TB/měsíc |
-| --- | --- | --- | --- | --- | --- |
-| Zóna 1 | $0/GB | $0.085/GB | $0.065/GB | $0.06/GB | $0.04/GB |
-| Zóna 2 | $0/GB | $0,11/GB | $0.075/GB | $0,07/GB | $0.06/GB  |
-
-[Kontaktujte nás](https://azure.microsoft.com/overview/sales-number/) pro měsíční objemy přes 500 TB.
-* Zóna 1 – střední Austrálie, Austrálie – střed 2, Kanada – střed, Kanada – východ, Severní Evropa, Západní Evropa, Francie – střed, Francie – jih, Německo – sever (Public), Německo – středozápad (veřejný), Norsko – východ, Švýcarsko – sever, Švýcarsko – západ, Velká Británie – jih, Velká Británie – západ, střed USA, východní USA, východní USA 2, Střed USA – sever, Střed USA – jih, Západní USA, západní USA 2, středozápadní USA, a.
-
-* Zóna 2 – Východní Asie, jihovýchodní Asie, Austrálie – východ, Austrálie – jihovýchod, Střed Indie, Jižní Indie, Západní Indie, Japonsko – východ, Japonsko – západ, Korea – střed a Jižní Korea.
-
-* Zóna 3 – Brazílie – jih, Jižní Afrika – sever, Jižní Afrika – západ, Spojené arabské emiráty střed a Spojené arabské emiráty sever.
+Cenový rozdíl mezi oběma možnostmi se odráží v ceně za přenos dat z Internetu. Směrování prostřednictvím služby **Microsoft Global Network** Data Transfer je stejné jako aktuální cena za internetovou cenu. Nejnovější informace o cenách najdete na [stránce s cenami na šířku pásma Azure](https://azure.microsoft.com/pricing/details/bandwidth/) . 
 
 ## <a name="availability"></a>Dostupnost
 

@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 8ceb6d4dddb76148be1e82ebc8c1994886a11da3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcdc05ae696a207546eb62160fe89ea38d307058
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362810"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492263"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Řešení běžných chyb a upozornění v indexeru v Azure Kognitivní hledání
 
@@ -166,9 +166,9 @@ Indexer byl načten a zpracován indexerem, ale z důvodu neshody v konfiguraci 
 | Důvod | Podrobnosti/příklad
 | --- | ---
 | Datový typ polí extrahovaných indexerem není kompatibilní s datovým modelem odpovídajícího pole cílového indexu. | Datové pole '_data_' v dokumentu s klíčem ' 888 ' má neplatnou hodnotu ' typu ' EDM. String ' '. Očekával se typ Collection (EDM. String). |
-| Nepovedlo se extrahovat žádnou entitu JSON z řetězcové hodnoty. | Hodnotu typu EDM. String pole_data_nelze analyzovat jako objekt JSON. Chyba: po analýze hodnoty byl zjištěn neočekávaný znak: ' '. Cesta '_cesta_', řádek 1, pozice 3162. ' |
-| Extrakce kolekce entit JSON z řetězcové hodnoty se nezdařila.  | Hodnotu typu EDM. String pole_data_nelze analyzovat jako pole JSON. Chyba: po analýze hodnoty byl zjištěn neočekávaný znak: ' '. Cesta ' [0] ', řádek 1, pozice 27. ' |
-| Ve zdrojovém dokumentu byl zjištěn neznámý typ. | Neznámý typ_Unknown_nejde indexovat. |
+| Nepovedlo se extrahovat žádnou entitu JSON z řetězcové hodnoty. | Hodnotu typu EDM. String pole _data_ nelze analyzovat jako objekt JSON. Chyba: po analýze hodnoty byl zjištěn neočekávaný znak: ' '. Cesta '_cesta_', řádek 1, pozice 3162. ' |
+| Extrakce kolekce entit JSON z řetězcové hodnoty se nezdařila.  | Hodnotu typu EDM. String pole _data_ nelze analyzovat jako pole JSON. Chyba: po analýze hodnoty byl zjištěn neočekávaný znak: ' '. Cesta ' [0] ', řádek 1, pozice 27. ' |
+| Ve zdrojovém dokumentu byl zjištěn neznámý typ. | Neznámý typ _Unknown_ nejde indexovat. |
 | Ve zdrojovém dokumentu se použil nekompatibilní zápis pro geografické body. | Řetězcové literály Well bodu nejsou podporovány. Místo toho prosím použijte literály bodu injson. |
 
 Ve všech těchto případech odkazujete na [podporované typy dat](/rest/api/searchservice/supported-data-types) a [mapování datových typů pro indexery](/rest/api/searchservice/data-type-map-for-indexers-in-azure-search) , abyste se ujistili, že schéma indexů sestavíte správně a že jste nastavili odpovídající [mapování polí indexeru](search-indexer-field-mappings.md). Chybová zpráva bude obsahovat podrobnosti, které mohou přispět ke sledování zdroje neshody.
@@ -348,8 +348,8 @@ Chcete-li toto upozornění obejít, určete, co je kódování textu tohoto obj
 
 ## <a name="warning-cosmos-db-collection-x-has-a-lazy-indexing-policy-some-data-may-be-lost"></a>Upozornění: Cosmos DB kolekce X má zásady opožděného indexování. Některá data mohou být ztracena.
 
-Kolekce s zásadami [opožděného](/azure/cosmos-db/index-policy#indexing-mode) indexování se nedají dotazovat konzistentně, takže v indexeru chybí data. Pokud chcete toto upozornění obejít, změňte zásady indexování na konzistentní.
+Kolekce s zásadami [opožděného](../cosmos-db/index-policy.md#indexing-mode) indexování se nedají dotazovat konzistentně, takže v indexeru chybí data. Pokud chcete toto upozornění obejít, změňte zásady indexování na konzistentní.
 
 ## <a name="warning-the-document-contains-very-long-words-longer-than-64-characters-these-words-may-result-in-truncated-andor-unreliable-model-predictions"></a>Upozornění: dokument obsahuje velmi dlouhá slova (delší než 64 znaků). Tato slova můžou být v důsledku zkrácení nebo nespolehlivého modelu předpovědi.
 
-Toto upozornění se předává z Analýza textu služby.  V některých případech je bezpečné ignorovat toto upozornění, například když váš dokument obsahuje dlouhou adresu URL (což nejspíš není klíčová fráze nebo mínění, atd.).  Počítejte s tím, že pokud je slovo delší než 64 znaků, bude zkráceno na 64 znaků, které mohou ovlivnit předpovědi modelu.  
+Toto upozornění se předává z Analýza textu služby.  V některých případech je bezpečné ignorovat toto upozornění, například když váš dokument obsahuje dlouhou adresu URL (což nejspíš není klíčová fráze nebo mínění, atd.).  Počítejte s tím, že pokud je slovo delší než 64 znaků, bude zkráceno na 64 znaků, které mohou ovlivnit předpovědi modelu.

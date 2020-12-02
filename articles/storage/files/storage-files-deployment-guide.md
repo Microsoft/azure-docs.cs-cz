@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 53111ccd634c516d0db10c0e2dd41768aba43f41
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: a0415133bf3168c846e1105efe992c2c48c57ff2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629236"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492178"
 ---
 # <a name="how-to-deploy-azure-files"></a>Nasazení služby Soubory Azure
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní průmyslový protokol SMB. V tomto článku se dozvíte, jak prakticky nasadit soubory Azure v rámci vaší organizace.
@@ -22,7 +22,7 @@ Důrazně doporučujeme, abyste načetli [plánování pro nasazení souborů Az
 ## <a name="prerequisites"></a>Předpoklady
 V tomto článku se předpokládá, že jste už dokončili následující kroky:
 
-- Vytvořili jste účet Azure Storage s požadovanými možnostmi odolnosti a šifrování v oblasti, kterou si přejete. Podrobné pokyny k vytvoření účtu úložiště najdete v tématu [Vytvoření účtu úložiště](../common/storage-account-create.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) .
+- Vytvořili jste účet Azure Storage s požadovanými možnostmi odolnosti a šifrování v oblasti, kterou si přejete. Podrobné pokyny k vytvoření účtu úložiště najdete v tématu [Vytvoření účtu úložiště](../common/storage-account-create.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
 - Vytvořili jste sdílenou složku Azure s požadovanou kvótou v účtu úložiště. Podrobné pokyny, jak vytvořit sdílenou složku, najdete v tématu věnovaném [Vytvoření sdílené složky](storage-how-to-create-file-share.md) .
 
 ## <a name="transfer-data-into-azure-files"></a>Přenos dat do souborů Azure
@@ -63,7 +63,7 @@ Následující kroky budou importovat data z místního umístění do sdílené
     "F:\shares\scratch\","MyAzureFileShare/",file,rename,"None",None
     ```
 
-    Může být zadáno více sdílených složek s účtem úložiště. Další informace najdete v tématu [Příprava souboru CSV s datovou sadou](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) .
+    Může být zadáno více sdílených složek s účtem úložiště. Další informace najdete v tématu [Příprava souboru CSV s datovou sadou](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
 
 5. Vytvořte soubor CSV driveset. V souboru CSV driveset jsou uvedené disky, které jsou k dispozici pro místního exportního agenta. Například následující driveset soubory CSV obsahují seznam `X:` , `Y:` a `Z:` jednotky, které mají být použity v místní úloze exportu:
 
@@ -74,7 +74,7 @@ Následující kroky budou importovat data z místního umístění do sdílené
     Z,Format,SilentMode,Encrypt,
     ```
     
-    Další informace najdete v tématu [Příprava souboru CSV driveset](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) .
+    Další informace najdete v tématu [Příprava souboru CSV driveset](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
 
 6. Pomocí [nástroje WAImportExport](https://www.microsoft.com/download/details.aspx?id=55280) zkopírujte data na jeden nebo více pevných disků.
 
@@ -120,7 +120,7 @@ AzCopy je nástroj příkazového řádku určený ke kopírování dat do a ze 
     azcopy --source <path-to-local-share> --destination https://<storage-account>.file.core.windows.net/<file-share>/ --dest-key <storage-account-key> --recursive
     ```
 
-    AzCopy má významný počet možností pro úpravu chování kopírování podle potřeby. Další informace najdete v tématu [Začínáme s AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
+    AzCopy má významný počet možností pro úpravu chování kopírování podle potřeby. Další informace najdete v tématu [Začínáme s AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 ## <a name="automatically-mount-on-needed-pcsservers"></a>Automaticky připojit k potřebným počítačům nebo serverům
 Pokud chcete nahradit místní sdílenou složku, je vhodné tyto sdílené složky předem připojit na počítačích, na kterých se bude používat. To lze provést automaticky v seznamu počítačů.

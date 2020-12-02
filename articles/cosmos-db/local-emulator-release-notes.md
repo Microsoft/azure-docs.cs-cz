@@ -1,22 +1,22 @@
 ---
-title: Stažení a poznámky k verzi emulátoru Azure Cosmos
-description: Získejte poznámky k verzi emulátoru Azure Cosmos pro různé verze a informace ke stažení.
+title: Stažení a poznámky k verzi pro Azure Cosmos DB emulátoru
+description: Získejte poznámky k verzi Azure Cosmos DB emulátoru pro různé verze a informace ke stažení.
 ms.service: cosmos-db
 ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: e9f28aeb2a47c2ce7b439cbe46dcc39df3011c33
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 42259b36f1a9bfe243df47cc08b33fe8c46d819d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95997150"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493062"
 ---
-# <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Emulátor Azure Cosmos – poznámky k verzi a informace ke stažení
+# <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB emulátor – poznámky k verzi a informace o stažení
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Tento článek obsahuje poznámky k verzi emulátoru Azure Cosmos se seznamem aktualizací funkcí, které byly provedeny v jednotlivých verzích. Obsahuje také nejnovější verzi emulátoru, která se má stáhnout a použít.
+Tento článek ukazuje poznámky k verzi emulátoru Azure Cosmos DB se seznamem aktualizací funkcí, které byly provedeny v jednotlivých verzích. Obsahuje také nejnovější verzi emulátoru, která se má stáhnout a použít.
 
 ## <a name="download"></a>Stáhnout
 

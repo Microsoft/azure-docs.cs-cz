@@ -6,16 +6,16 @@ author: su-jie
 ms.author: sujie
 ms.date: 4/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 756604b71efd1715ae3b4ca3d5eebf0fdfa41e34
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 988b9d364f09a4c88bcaab1fe81ae80c8de5d4d9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129792"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491566"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>IntelliSense v Azure Stream Analyticsch nástrojích pro Visual Studio Code
 
-Technologie IntelliSense je k dispozici pro [Stream Analytics dotazovací jazyk](/stream-analytics-query/stream-analytics-query-language-reference?bc=https%253a%252f%252fdocs.microsoft.com%252fazure%252fbread%252ftoc.json&toc=https%253a%252f%252fdocs.microsoft.com%252fazure%252fstream-analytics%252ftoc.json) v [Azure Stream Analytics nástrojích pro vs Code](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa&ssr=false#overview). IntelliSense je podpora dokončování kódu, která zahrnuje několik funkcí: seznam členů, informace o parametrech, rychlé informace a dokončování slov. Funkce IntelliSense se někdy nazývají jiné názvy, například "dokončování kódu", "asistent obsahu" a "porady při psaní kódu".
+Technologie IntelliSense je k dispozici pro [Stream Analytics dotazovací jazyk](/stream-analytics-query/stream-analytics-query-language-reference?bc=https%253a%2f%2fdocs.microsoft.com%2fazure%2fbread%2ftoc.json&toc=https%253a%2f%2fdocs.microsoft.com%2fazure%2fstream-analytics%2ftoc.json) v [Azure Stream Analytics nástrojích pro vs Code](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa&ssr=false#overview). IntelliSense je podpora dokončování kódu, která zahrnuje několik funkcí: seznam členů, informace o parametrech, rychlé informace a dokončování slov. Funkce IntelliSense se někdy nazývají jiné názvy, například "dokončování kódu", "asistent obsahu" a "porady při psaní kódu".
 
 ![Ukázka IntelliSense](./media/vs-code-intellisense/intellisense.gif)
 
@@ -37,7 +37,7 @@ Stream Analytics nástroje pro VS Code IntelliSense nabízí různé typy doplň
 |Dokončení     |  Typ       |
 | ----- | ------- |
 | Klíčová slova | `keyword`
-| Funkce | `build-in function`, `user defined function`  |
+| Functions | `build-in function`, `user defined function`  |
 | Název sady dat| `input`, `output`, `intermediate result set`|
 | Název sloupce sady dat|`input`, `intermediate result set`|
 

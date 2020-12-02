@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: ARO, OpenShift, AZ ARO, Red Hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: 9eac34d643ba0df4be79a064858c580c884de727
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: a4b22036612aac3d2b67e299881ba11b896979e5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078557"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492399"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-restore"></a>Vytvoření clusteru Azure Red Hat OpenShift 4 – obnovení clusterové aplikace
 
@@ -23,7 +23,7 @@ V tomto článku připravíte své prostředí, aby se vytvořilo obnovení clus
 > * Nastavte požadované součásti a nainstalujte potřebné nástroje.
 > * Vytvoření obnovení aplikace Azure Red Hat OpenShift 4
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.6.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.6.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -88,5 +88,3 @@ V tomto článku se obnovila Clusterová aplikace Azure Red Hat OpenShift 4. Nau
 V dalším článku se dozvíte víc o podporovaných prostředcích Azure Red Hat OpenShift 4.
 
 * [Podporované prostředky pro Azure Red Hat OpenShift v4](supported-resources.md)
-
-

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: f31a883a2b10f37d6a4a7a91fff37739e340ac60
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 73d88f69057dc6fe39f6329e89eb72ecebf853f0
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348844"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491974"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>Používání úložiště Queue z C++
 
@@ -23,7 +23,7 @@ ms.locfileid: "93348844"
 
 ## <a name="overview"></a>Přehled
 
-Tato příručka vám ukáže, jak provádět běžné scénáře pomocí služby Azure Queue Storage. Ukázky jsou napsané v C++ a využívají [klientskou knihovnu služby Azure Storage pro C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md). Mezi zahrnuté scénáře patří **vkládání** , **prohlížení** , **získávání** a **odstraňování** zpráv fronty a **vytváření a odstraňování front**.
+Tato příručka vám ukáže, jak provádět běžné scénáře pomocí služby Azure Queue Storage. Ukázky jsou napsané v C++ a využívají [klientskou knihovnu služby Azure Storage pro C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md). Mezi zahrnuté scénáře patří **vkládání**, **prohlížení**, **získávání** a **odstraňování** zpráv fronty a **vytváření a odstraňování front**.
 
 > [!NOTE]
 > Tato příručka je určená pro klientskou knihovnu služby Azure Storage pro C++ verze 1.0.0 nebo novější. Doporučená verze klientské knihovny služby Storage je 2.2.0, která je k dispozici přes [NuGet](https://www.nuget.org/packages/wastorage) nebo [GitHub](https://github.com/Azure/azure-storage-cpp/).
@@ -60,7 +60,7 @@ Do horní části souboru C++ přidejte následující příkazy include, u kter
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Nastavení připojovacího řetězce služby Azure Storage
 
-Klient úložiště Azure používá připojovací řetězec úložiště k uložení koncových bodů a přihlašovacích údajů pro přístup ke službám správy dat. Při spuštění v klientské aplikaci musíte zadat připojovací řetězec úložiště v následujícím formátu s použitím názvu účtu úložiště a přístupového klíče úložiště pro účet úložiště, který je uvedený v [Azure Portal](https://portal.azure.com) pro hodnoty *account* a *AccountKey* . Informace o účtech úložiště a přístupových klíčích najdete v tématu [informace o Azure Storagech účtech](../common/storage-account-create.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json). Tento příklad ukazuje deklaraci statického pole pro uložení připojovacího řetězce:
+Klient úložiště Azure používá připojovací řetězec úložiště k uložení koncových bodů a přihlašovacích údajů pro přístup ke službám správy dat. Při spuštění v klientské aplikaci musíte zadat připojovací řetězec úložiště v následujícím formátu s použitím názvu účtu úložiště a přístupového klíče úložiště pro účet úložiště, který je uvedený v [Azure Portal](https://portal.azure.com) pro hodnoty *account* a *AccountKey* . Informace o účtech úložiště a přístupových klíčích najdete v tématu [informace o Azure Storagech účtech](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json). Tento příklad ukazuje deklaraci statického pole pro uložení připojovacího řetězce:
 
 ```cpp
 // Define the connection-string with your values.
@@ -181,7 +181,7 @@ std::wcout << U("Changed message content: ") << changed_message.content_as_strin
 
 ## <a name="how-to-de-queue-the-next-message"></a>Postupy: zrušení zařazení další zprávy do fronty
 
-Váš kód vyřazuje zprávy z fronty ve dvou krocích. Když zavoláte **get_message** , dostanete další zprávu ve frontě. Zpráva vrácená z **get_message** bude neviditelná pro jakýkoliv jiný kód, který čte zprávy z této fronty. Chcete-li dokončit odebrání zprávy z fronty, je nutné také volat **delete_message**. Tento dvoukrokový proces odebrání zprávy zaručuje, aby v případě, že se vašemu kódu nepodaří zprávu zpracovat z důvodu selhání hardwaru nebo softwaru, mohla stejnou zprávu získat jiná instance vašeho kódu a bylo možné to zkusit znovu. Váš kód volá **delete_message** hned po zpracování zprávy.
+Váš kód vyřazuje zprávy z fronty ve dvou krocích. Když zavoláte **get_message**, dostanete další zprávu ve frontě. Zpráva vrácená z **get_message** bude neviditelná pro jakýkoliv jiný kód, který čte zprávy z této fronty. Chcete-li dokončit odebrání zprávy z fronty, je nutné také volat **delete_message**. Tento dvoukrokový proces odebrání zprávy zaručuje, aby v případě, že se vašemu kódu nepodaří zprávu zpracovat z důvodu selhání hardwaru nebo softwaru, mohla stejnou zprávu získat jiná instance vašeho kódu a bylo možné to zkusit znovu. Váš kód volá **delete_message** hned po zpracování zprávy.
 
 ```cpp
 // Retrieve storage account from connection-string.

@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: e60ba773c5ef750f027c2e0b1528409c71eeb4b8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 650ee1fc9e0e1941a7a3655bca1c75950ab878dd
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011690"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492110"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 [Soubory Azure](storage-files-introduction.md) se dají nasadit dvěma hlavními způsoby: přímým připojením sdílených složek Azure bez serveru nebo ukládáním do mezipaměti sdílených složek Azure v místním prostředí pomocí Azure File Sync. Kterou možnost nasazení zvolíte, změní se to, co je potřeba vzít v úvahu při plánování nasazení. 
@@ -99,13 +99,13 @@ Pro většinu sdílených složek doporučujeme zapnout obnovitelné odstraněn�
 Další informace o obnovitelném odstranění najdete v tématu [prevence náhodného odstranění dat](./storage-files-prevent-file-share-deletion.md).
 
 ### <a name="backup"></a>Backup
-Sdílenou složku Azure můžete zálohovat pomocí [snímků sdílené složky](./storage-snapshots-files.md), které jsou určené jen pro čtení, jako kopie vaší sdílené složky v časovém okamžiku. Snímky jsou přírůstkové, což znamená, že obsahují pouze tolik dat, kolik bylo od předchozího snímku změněno. Můžete mít až 200 snímků na sdílenou složku a uchovávat je až po dobu 10 let. Tyto snímky můžete buď ručně vzít v Azure Portal, prostřednictvím PowerShellu nebo rozhraní příkazového řádku (CLI), nebo můžete použít [Azure Backup](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json). Snímky se ukládají v rámci sdílené složky, což znamená, že pokud odstraníte sdílenou složku, vaše snímky se taky odstraní. Pokud chcete ochránit zálohy snímků před náhodným odstraněním, ujistěte se, že je pro vaši sdílenou složku povolené obnovitelné odstranění.
+Sdílenou složku Azure můžete zálohovat pomocí [snímků sdílené složky](./storage-snapshots-files.md), které jsou určené jen pro čtení, jako kopie vaší sdílené složky v časovém okamžiku. Snímky jsou přírůstkové, což znamená, že obsahují pouze tolik dat, kolik bylo od předchozího snímku změněno. Můžete mít až 200 snímků na sdílenou složku a uchovávat je až po dobu 10 let. Tyto snímky můžete buď ručně vzít v Azure Portal, prostřednictvím PowerShellu nebo rozhraní příkazového řádku (CLI), nebo můžete použít [Azure Backup](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Snímky se ukládají v rámci sdílené složky, což znamená, že pokud odstraníte sdílenou složku, vaše snímky se taky odstraní. Pokud chcete ochránit zálohy snímků před náhodným odstraněním, ujistěte se, že je pro vaši sdílenou složku povolené obnovitelné odstranění.
 
-[Azure Backup pro sdílené složky Azure](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) zpracovává plánování a uchovávání snímků. Funkce dědečka-otce-syn (GFS) znamenají, že můžete provádět denní, týdenní, měsíční a roční snímky, z nichž každá má svou vlastní jedinečnou dobu uchování. Azure Backup také orchestruje povolení obnovitelného odstranění a provede zámek proti odstranění na účtu úložiště, jakmile bude pro zálohování nakonfigurované všechny sdílené soubory. A konečně Azure Backup poskytuje určité klíčové možnosti monitorování a upozorňování, které zákazníkům umožňují získat konsolidované zobrazení jejich záložního vlastnictví.
+[Azure Backup pro sdílené složky Azure](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) zpracovává plánování a uchovávání snímků. Funkce dědečka-otce-syn (GFS) znamenají, že můžete provádět denní, týdenní, měsíční a roční snímky, z nichž každá má svou vlastní jedinečnou dobu uchování. Azure Backup také orchestruje povolení obnovitelného odstranění a provede zámek proti odstranění na účtu úložiště, jakmile bude pro zálohování nakonfigurované všechny sdílené soubory. A konečně Azure Backup poskytuje určité klíčové možnosti monitorování a upozorňování, které zákazníkům umožňují získat konsolidované zobrazení jejich záložního vlastnictví.
 
 V Azure Portal můžete pomocí Azure Backup provádět obnovení na úrovni položek i sdílené složky. Stačí vybrat bod obnovení (konkrétní snímek), konkrétní soubor nebo adresář, pokud je to relevantní, a pak umístění (originál nebo alternativní), na které chcete provést obnovení. Služba Backup zpracovává kopírování dat snímku a zobrazuje průběh obnovení na portálu.
 
-Další informace o zálohování najdete v tématu [informace o zálohování sdílených složek Azure](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
+Další informace o zálohování najdete v tématu [informace o zálohování sdílených složek Azure](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 ### <a name="advanced-threat-protection-for-azure-files-preview"></a>Rozšířená ochrana před internetovými útoky pro soubory Azure (Preview)
 Rozšířená ochrana před internetovými útoky (ATP) pro Azure Storage poskytuje další úroveň inteligentního zabezpečení, která poskytuje výstrahy, když detekuje aktivitu neobvyklé na účtu úložiště, například neobvyklé pokusy o přístup k účtu úložiště. ATP také spustí analýzu reputace hodnoty hash malwaru a upozorní na známý malware. ATP můžete nakonfigurovat na úrovni předplatného nebo účtu úložiště prostřednictvím Azure Security Center. 

@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
-ms.openlocfilehash: 6411e019d77b219e40bd91da973e00afda0ff18b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 047da0224cdbdb534ad9080faee4fd48da3840c5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965481"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492450"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Úvod k řešení potíží s připojením v Azure Network Watcher
 
 Funkce řešení potíží s připojením Network Watcher poskytuje možnost kontrolovat přímé připojení TCP z virtuálního počítače k virtuálnímu počítači (VM), plně kvalifikovanému názvu domény (FQDN), identifikátoru URI nebo adrese IPv4. Scénáře sítě jsou složité, jsou implementované pomocí skupin zabezpečení sítě, bran firewall, tras definovaných uživatelem a prostředků poskytovaných Azure. Složité konfigurace usnadňují řešení potíží s připojením náročné. Network Watcher pomáhá zkrátit dobu, po kterou můžete najít a zjistit problémy s připojením. Vrácené výsledky mohou poskytnout přehled o tom, zda je problém s připojením způsoben platformou nebo problémem s konfigurací uživatele. Připojení se dá zkontrolovat pomocí [PowerShellu](network-watcher-connectivity-powershell.md), rozhraní příkazového [řádku Azure](network-watcher-connectivity-cli.md)a [REST API](network-watcher-connectivity-rest.md).
 
 > [!IMPORTANT]
-> Řešení potíží s připojením vyžaduje, aby virtuální počítač, ze kterého řešení řešíte, byl `AzureNetworkWatcherExtension` nainstalován rozšíření virtuálního počítače. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/extensions/network-watcher-windows.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/extensions/network-watcher-linux.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json). V cílovém koncovém bodě není rozšíření vyžadováno.
+> Řešení potíží s připojením vyžaduje, aby virtuální počítač, ze kterého řešení řešíte, byl `AzureNetworkWatcherExtension` nainstalován rozšíření virtuálního počítače. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/extensions/network-watcher-windows.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/extensions/network-watcher-linux.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). V cílovém koncovém bodě není rozšíření vyžadováno.
 
 ## <a name="response"></a>Odpověď
 

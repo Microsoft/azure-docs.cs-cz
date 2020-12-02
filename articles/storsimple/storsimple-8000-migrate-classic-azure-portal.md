@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: a2d4aa8845472812cf1874b380c6cbf1e91e2149
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 523788dc727fc5fa32b2f57250fb738352ff6d31
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014818"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491516"
 ---
 # <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>Migrace předplatných a účtů úložiště přidružených ke službě Správce zařízení StorSimple
 
@@ -35,7 +35,7 @@ Možná budete muset přesunout službu StorSimple k nové registraci nebo k nov
 |Můžu přenášet vlastnictví předplatného Azure do jiného adresáře? | Yes       | No       | Přidružit existující předplatné k adresáři služby Azure AD | Projděte si téma [přidružení existujícího předplatného k adresáři služby Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md). Správné zobrazení všech komponent může trvat až 10 minut.|
 | StorSimple zařízení z jedné služby StorSimple Device Manager do jiné služby v jiné oblasti?      | No        | Yes            | Žádný, ruční proces |Stejné jako výše.|
 | Účet úložiště do nového předplatného nebo skupiny prostředků?     | Yes        | No             |Přesunout účet úložiště do jiného předplatného nebo skupiny prostředků |Pokud se po přesunutí aktualizují přístupové klíče účtu úložiště, bude uživatel muset ručně nakonfigurovat přístupové klíče pro migrovaný účet úložiště prostřednictvím služby StorSimple Device Manager.|
-| Klasický účet úložiště pro účet úložiště Azure Resource Manager      | Yes        | No             |Migrace z modelu Classic na Azure Resource Manager |<li>Podrobné pokyny, jak migrovat účet úložiště z klasického na Azure Resource Manager, najdete v článku [migrace klasického účtu úložiště](../virtual-machines/windows/migration-classic-resource-manager-ps.md#step-52-migrate-a-storage-account).</li><li> Pokud po migraci dojde k aktualizaci přístupových klíčů účtu úložiště, bude muset uživatel synchronizovat přístupové klíče pro migrovaný účet úložiště prostřednictvím služby StorSimple Device Manager. K tomu je potřeba zajistit, aby zařízení StorSimple nadále fungovala normálně a byla schopná vrstvy primárních a zálohovaných dat do Azure. Podrobné pokyny týkající se synchronizace přístupových klíčů najdete v tématu [pracovní postup rotace](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts).</li><li> Pokud se v případě StorSimple Cloud Appliance migruje klasický účet úložiště, ale základní virtuální počítač zůstane v klasickém nasazení, zařízení by mělo správně fungovat. Pokud se migruje základní virtuální počítač pro cloudové zařízení, funkce deaktivace a odstranění nebudou fungovat.</li><li> Musíte vytvořit nová StorSimple cloudová zařízení v Azure Portal a pak převzít služby při selhání ze staršího cloudového zařízení. V novém Azure Portal nemůžete vytvořit StorSimple Cloud Appliance pomocí klasického účtu úložiště, musí mít účet úložiště Azure Resource Manager. Další informace najdete na webu [nasazení a správa StorSimple Cloud Appliance](storsimple-8000-cloud-appliance-u2.md).</li>|
+| Klasický účet úložiště pro účet úložiště Azure Resource Manager      | Yes        | No             |Migrace z modelu Classic na Azure Resource Manager |<li>Podrobné pokyny, jak migrovat účet úložiště z klasického na Azure Resource Manager, najdete v článku [migrace klasického účtu úložiště](../virtual-machines/migration-classic-resource-manager-ps.md#step-52-migrate-a-storage-account).</li><li> Pokud po migraci dojde k aktualizaci přístupových klíčů účtu úložiště, bude muset uživatel synchronizovat přístupové klíče pro migrovaný účet úložiště prostřednictvím služby StorSimple Device Manager. K tomu je potřeba zajistit, aby zařízení StorSimple nadále fungovala normálně a byla schopná vrstvy primárních a zálohovaných dat do Azure. Podrobné pokyny týkající se synchronizace přístupových klíčů najdete v tématu [pracovní postup rotace](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts).</li><li> Pokud se v případě StorSimple Cloud Appliance migruje klasický účet úložiště, ale základní virtuální počítač zůstane v klasickém nasazení, zařízení by mělo správně fungovat. Pokud se migruje základní virtuální počítač pro cloudové zařízení, funkce deaktivace a odstranění nebudou fungovat.</li><li> Musíte vytvořit nová StorSimple cloudová zařízení v Azure Portal a pak převzít služby při selhání ze staršího cloudového zařízení. V novém Azure Portal nemůžete vytvořit StorSimple Cloud Appliance pomocí klasického účtu úložiště, musí mít účet úložiště Azure Resource Manager. Další informace najdete na webu [nasazení a správa StorSimple Cloud Appliance](storsimple-8000-cloud-appliance-u2.md).</li>|
 
 ## <a name="datacenter-changes"></a>Změny datového centra
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 3f159a11dc9607daf479c13f6612cab0175dae0c
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 282e1ef98a3c0d6e152b56a180a639c86d004af9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94634884"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493096"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Vytvoření účtu Video Indexer připojeného k Azure
 
@@ -45,7 +45,7 @@ Pokud přecházíte ze *zkušební verze* na *placený* účet video indexer, m�
 
     Tento člen budete používat při připojování účtu Video Indexer k Azure.
 
-    Tento uživatel by měl být členem v předplatném Azure pomocí role **vlastníka** nebo role **Správce přístupu** **přispěvatele** i uživatele. Uživatele lze přidat dvakrát se dvěma rolemi. Jednou s přispěvatelem a jednou u správce přístupu uživatele. Další informace najdete v tématu [zobrazení přístupu uživatele k prostředkům Azure](https://docs.microsoft.com/azure/role-based-access-control/check-access).
+    Tento uživatel by měl být členem v předplatném Azure pomocí role **vlastníka** nebo role **Správce přístupu** **přispěvatele** i uživatele. Uživatele lze přidat dvakrát se dvěma rolemi. Jednou s přispěvatelem a jednou u správce přístupu uživatele. Další informace najdete v tématu [zobrazení přístupu uživatele k prostředkům Azure](../../role-based-access-control/check-access.md).
 
     ![řízení přístupu](./media/create-account/access-control-iam.png)
 
@@ -53,7 +53,7 @@ Pokud přecházíte ze *zkušební verze* na *placený* účet video indexer, m�
 
 * Zaregistrujte poskytovatele prostředků EventGrid pomocí Azure Portal.
 
-    V [Azure Portal](https://portal.azure.com/)přejít na **předplatná** -> [předplatné]-> **ResourceProviders**.
+    V [Azure Portal](https://portal.azure.com/)přejít na **předplatná**-> [předplatné]->**ResourceProviders**.
 
     Vyhledejte **Microsoft. Media** a **Microsoft. EventGrid**. Pokud není ve stavu registrováno, klikněte na **zaregistrovat**. Registrace může trvat několik minut.
 
@@ -127,7 +127,7 @@ Pokud se připojení k Azure nepovedlo, můžete se pokusit problém vyřešit r
     2. Vyberte [metodu ověřování instančního objektu](../previous/media-services-portal-get-started-with-aad.md).
     3. Získat ID klienta a tajný klíč klienta
 
-        Po výběru **Možnosti** -> **klíče** , přidat **Popis** , stiskněte **Uložit** a hodnota klíče se naplní.
+        Po výběru **Možnosti** -> **klíče**, přidat **Popis**, stiskněte **Uložit** a hodnota klíče se naplní.
 
         Pokud klíč vyprší, vlastník účtu bude muset kontaktovat Video Indexer podporu, aby se klíč obnovil.
 
@@ -167,7 +167,7 @@ Vyberte nastavení účtu-> **Settings**  ->  **Odstranit tento účet**.
 
 Účet se trvale odstraní během 90 dnů.
 
-## <a name="considerations"></a>Co je potřeba vzít v úvahu
+## <a name="considerations"></a>Požadavky
 
 Platí následující Azure Media Services související s požadavky:
 
@@ -180,7 +180,7 @@ Platí následující Azure Media Services související s požadavky:
     ![Koncový bod streamování Media Services](./media/create-account/ams-streaming-endpoint.png)
 
     Koncové body streamování mají značný čas spuštění. Proto může trvat několik minut od chvíle, kdy jste svůj účet připojili k Azure, dokud vaše videa nebude možné streamovat a sledovat v Video Indexer webové aplikaci.
-* Pokud se připojíte ke stávajícímu účtu Media Services, Video Indexer nemění výchozí konfiguraci koncového bodu streamování. Pokud není spuštěný **koncový bod streamování** , nemůžete sledovat videa z tohoto účtu Media Services nebo v video indexer.
+* Pokud se připojíte ke stávajícímu účtu Media Services, Video Indexer nemění výchozí konfiguraci koncového bodu streamování. Pokud není spuštěný **koncový bod streamování**, nemůžete sledovat videa z tohoto účtu Media Services nebo v video indexer.
 * Pokud se připojíte automaticky, Video Indexer nastaví **rezervované jednotky** médií na 10 jednotek S3:
 
     ![Rezervované jednotky Media Services](./media/create-account/ams-reserved-units.png)

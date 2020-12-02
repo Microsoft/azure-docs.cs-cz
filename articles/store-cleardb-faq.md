@@ -12,12 +12,12 @@ ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: references_regions
-ms.openlocfilehash: cecb3a150de8c19d390cafbd163f287520c3a91d
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 25cc4dfaabee58a47cc33fe4be8dc7375bc804d2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519028"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491638"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Nejčastější dotazy k databázím MySql v ClearDB s Azure App Service
 Tato Nejčastější dotazy vám kladou odpovědi na nejčastější dotazy týkající se používání a nákupu databází MySQL ClearDB pro Azure Web Apps.
@@ -33,7 +33,7 @@ Nejnovější informace o této službě najdete v tématu [ClearDB](https://w2.
 Pro hostování MySQL v Azure máte několik dalších možností:
 * [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/)
 * [Cluster MySQL běžící na virtuálním počítači Azure](https://github.com/azure/azure-quickstart-templates/tree/master/mysql-replication)
-* [Jedna instance MySQL spuštěná na virtuálním počítači Azure](/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%252fazure%252fvirtual-machines%252fwindows%252fclassic%252ftoc.json)
+* [Jedna instance MySQL spuštěná na virtuálním počítači Azure](/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 
 ## <a name="do-i-need-a-credit-card-for-the-web-app--mysql-template-in-the-azure-marketplace"></a>Potřebuji pro šablonu Web App + MySQL v Azure Marketplace platební kartu?
@@ -48,7 +48,7 @@ To závisí na typu předplatného, které používáte. Tady jsou některé bě
 Výchozí možnost databáze je Titan, což je $3,50. Neúčtujeme vám náklady během vytváření databáze a můžete si omylem koupit databázi, kterou jste nechtěli zavádět. Snažíme se najít způsob, jak vylepšit prostředí, ale až potom musíte zaškrtnout všechny vybrané cenové úrovně pro webovou aplikaci a databázi před tím, než kliknete na **vytvořit** a spustit nasazení prostředků.
 
 ## <a name="i-am-running-mysql-on-my-own-azure-virtual-machine-can-i-connect-my-azure-web-app-to-my-database"></a>Spouštím MySQL na mém vlastním virtuálním počítači Azure. Můžu připojit svou webovou aplikaci Azure k databázi?
-Ano. Webovou aplikaci můžete připojit k databázi, pokud váš virtuální počítač Azure má vzdálený přístup k vaší webové aplikaci. Další informace najdete v tématu [Instalace MySQL na virtuálním počítači](/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%252fazure%252fvirtual-machines%252fwindows%252fclassic%252ftoc.json).
+Ano. Webovou aplikaci můžete připojit k databázi, pokud váš virtuální počítač Azure má vzdálený přístup k vaší webové aplikaci. Další informace najdete v tématu [Instalace MySQL na virtuálním počítači](/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="in-which-countriesregions-are-cleardb-premium-mysql-clusters-supported"></a>Ve kterých zemích nebo oblastech jsou podporované clustery ClearDB Premium MySQL?
 Clustery ClearDB Premium MySQL jsou dostupné ve všech oblastech Azure po celém světě s výjimkou Indie, Austrálie, Brazílie – jih a Číny.

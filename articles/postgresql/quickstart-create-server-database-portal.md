@@ -7,18 +7,18 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/18/2020
-ms.openlocfilehash: 42e15da2fd31d163bc8822a347101704b27e1222
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 000ab3e3911c65554622a48d34abda79d60411df
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913388"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492382"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-portal"></a>Rychlý Start: vytvoření serveru Azure Database for PostgreSQL pomocí Azure Portal
 
 Azure Database for PostgreSQL je spravovaná služba, pomocí které spouštíte, spravujete a škálujete vysoce dostupné databáze PostgreSQL v cloudu. V tomto rychlém startu se dozvíte, jak vytvořit jeden Azure Database for PostgreSQL Server a jak se k němu připojit.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Vyžaduje se předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Vytvoření serveru Azure Database for PostgreSQL
@@ -44,8 +44,8 @@ Pokud chcete vytvořit databázi Azure Database for PostgreSQL jednoho serveru, 
    |Předplatné|název vašeho předplatného|Vyberte požadované předplatné Azure.|
    |Skupina prostředků|*myresourcegroup*| Nová nebo existující skupina prostředků z vašeho předplatného.|
    |Název serveru |*mydemoserver*|Jedinečný název, který identifikuje váš server Azure Database for PostgreSQL. Název domény *Postgres.Database.Azure.com* je připojen k názvu serveru, který zadáte. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí obsahovat 3 až 63 znaků.|
-   |Zdroj dat | Žádná | Pokud chcete vytvořit nový server úplně od začátku, vyberte **Žádný**. **Zálohování** vyberte jenom v případě, že obnovujete z geografické zálohy existujícího serveru.|
-   |Uživatelské jméno správce |*myadmin*| Zadejte uživatelské jméno správce serveru. Nemůže začínat **pg_** a tyto hodnoty nejsou povolené: **azure_superuser** , **azure_pg_admin** , **admin** , **Administrator** , **root** , **Guest** ani **Public**.|
+   |Zdroj dat | Žádné | Pokud chcete vytvořit nový server úplně od začátku, vyberte **Žádný**. **Zálohování** vyberte jenom v případě, že obnovujete z geografické zálohy existujícího serveru.|
+   |Uživatelské jméno správce |*myadmin*| Zadejte uživatelské jméno správce serveru. Nemůže začínat **pg_** a tyto hodnoty nejsou povolené: **azure_superuser**, **azure_pg_admin**, **admin**, **Administrator**, **root**, **Guest** ani **Public**.|
    |Heslo |vaše heslo| Nové heslo pro uživatele správce serveru. Musí obsahovat 8 až 128 znaků ze tří z následujících kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0 – 9) a jiné než alfanumerické znaky (například!, $, #,%).|
    |Umístění|Vaše požadované umístění| V rozevíracím seznamu vyberte umístění.|
    |Verze|Nejnovější hlavní verze| Nejnovější hlavní verze PostgreSQL, pokud nemáte jiné specifické požadavky.|
@@ -55,7 +55,7 @@ Pokud chcete vytvořit databázi Azure Database for PostgreSQL jednoho serveru, 
    > [!NOTE]
    > Zvažte použití cenové úrovně Basic, pokud je pro vaše zatížení vhodné světlé výpočetní prostředky a vstupně-výstupní operace. Upozorňujeme, že servery vytvořené v cenové úrovni Basic se nemůžou později škálovat na Pro obecné účely nebo paměť optimalizované pro paměť.
 
-5. Vyberte možnost **zkontrolovat + vytvořit** a zkontrolujte výběr. Vyberte **Vytvořit** , aby se server zřídil. Tato operace může trvat několik minut.
+5. Vyberte možnost **zkontrolovat + vytvořit** a zkontrolujte výběr. Vyberte **Vytvořit**, aby se server zřídil. Tato operace může trvat několik minut.
     > [!NOTE]
     > Vytvoří se prázdná databáze **Postgres**. Najdete v ní také databázi **azure_maintenance** , která se používá k oddělení procesů spravované služby od uživatelských akcí. Nemůžete získat přístup k databázi **azure_maintenance** .
 
@@ -65,7 +65,7 @@ Pokud chcete vytvořit databázi Azure Database for PostgreSQL jednoho serveru, 
 [Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/postgres-doc-feedback)
 
 ## <a name="configure-a-firewall-rule"></a>Konfigurace pravidla brány firewall
-Ve výchozím nastavení není server, který vytvoříte, veřejně přístupný. Musíte udělit oprávnění k vaší IP adrese. Přejděte na prostředek serveru v Azure Portal a vyberte **zabezpečení připojení** z nabídky na levé straně pro prostředek serveru. Pokud si nejste jistí, jak najít prostředek, přečtěte si téma [otevření prostředků](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources).
+Ve výchozím nastavení není server, který vytvoříte, veřejně přístupný. Musíte udělit oprávnění k vaší IP adrese. Přejděte na prostředek serveru v Azure Portal a vyberte **zabezpečení připojení** z nabídky na levé straně pro prostředek serveru. Pokud si nejste jistí, jak najít prostředek, přečtěte si téma [otevření prostředků](../azure-resource-manager/management/manage-resources-portal.md#open-resources).
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/quickstart-create-database-portal/add-current-ip-firewall.png" alt-text="Snímek obrazovky, který zobrazuje pravidla brány firewall pro zabezpečení připojení.":::

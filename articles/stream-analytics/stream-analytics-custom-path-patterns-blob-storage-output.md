@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 72718285ff83a23acd21a5e29001ea96e1f061c8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 9763a0ac3cba15dcfd66b8fad83230e2b0eb356b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95531351"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491668"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics vlastní dělení výstupu objektů BLOB
 
@@ -25,7 +25,7 @@ Vlastní pole nebo vstupní atributy zlepšují pracovní postupy pro zpracován
 
 ### <a name="partition-key-options"></a>Možnosti klíče oddílu
 
-Klíč oddílu nebo název sloupce, který se používá k dělení vstupních dat, můžou obsahovat alfanumerické znaky s pomlčkami, podtržítky a mezerami. Pokud se nepoužívají ve spojení s aliasy, není možné použít vnořená pole jako klíč oddílu. Klíč oddílu musí být NVARCHAR (MAX), BIGINT, FLOAT nebo BIT (úroveň kompatibility 1,2 nebo vyšší). Další informace najdete v tématu [Azure Stream Analytics datových typů](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
+Klíč oddílu nebo název sloupce, který se používá k dělení vstupních dat, můžou obsahovat alfanumerické znaky s pomlčkami, podtržítky a mezerami. Pokud se nepoužívají ve spojení s aliasy, není možné použít vnořená pole jako klíč oddílu. Klíč oddílu musí být NVARCHAR (MAX), BIGINT, FLOAT nebo BIT (úroveň kompatibility 1,2 nebo vyšší). Další informace najdete v tématu [Azure Stream Analytics datových typů](/stream-analytics-query/data-types-azure-stream-analytics).
 
 ### <a name="example"></a>Příklad
 

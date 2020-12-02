@@ -6,12 +6,12 @@ ms.author: jiangma
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 0a6449e6b728ee690dd6ddee192868aaeb3511ad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9ed53721b66dc03bad24e0510e0c8a970c61aec1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911035"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492416"
 ---
 # <a name="configure-built-in-container-registry-for-azure-red-hat-openshift-4"></a>Konfigurace integrovaného registru kontejnerů pro Azure Red Hat OpenShift 4
 
@@ -26,9 +26,9 @@ V tomto článku nakonfigurujete integrovaný registr imagí kontejneru pro clus
 
 ## <a name="before-you-begin"></a>Než začnete
 
-V tomto článku se předpokládá, že máte existující cluster ARO. Pokud potřebujete cluster ARO, Projděte si kurz ARO a [vytvořte cluster Azure Red Hat OpenShift 4](/azure/openshift/tutorial-create-cluster). Nezapomeňte vytvořit cluster s `--pull-secret` argumentem na `az aro create` .  To je nezbytné pro konfiguraci ověřování Azure Active Directory a integrovaného registru kontejnerů.
+V tomto článku se předpokládá, že máte existující cluster ARO. Pokud potřebujete cluster ARO, Projděte si kurz ARO a [vytvořte cluster Azure Red Hat OpenShift 4](./tutorial-create-cluster.md). Nezapomeňte vytvořit cluster s `--pull-secret` argumentem na `az aro create` .  To je nezbytné pro konfiguraci ověřování Azure Active Directory a integrovaného registru kontejnerů.
 
-Jakmile budete mít cluster, připojte se ke clusteru pomocí postupu v části [připojení k clusteru Azure Red Hat OpenShift 4](/azure/openshift/tutorial-connect-cluster).
+Jakmile budete mít cluster, připojte se ke clusteru pomocí postupu v části [připojení k clusteru Azure Red Hat OpenShift 4](./tutorial-connect-cluster.md).
    * Nezapomeňte postupovat podle kroků v části "instalace rozhraní CLI OpenShift", protože použijete `oc` příkaz později v tomto článku.
    * Poznamenejte si adresu URL konzoly clusteru, která vypadá nějak takto `https://console-openshift-console.apps.<random>.<region>.aroapp.io/` :. Hodnoty pro `<random>` a `<region>` budou použity později v tomto článku.
    * Poznamenejte si `kubeadmin` přihlašovací údaje. Budou také použity později v tomto článku.

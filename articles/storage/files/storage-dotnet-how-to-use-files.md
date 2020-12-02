@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0196330df01f98e216c39bcc689eac2bde2f4cd9
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e112060db4a44884d3094a939b03ff106ba72e65
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629338"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492195"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Vývoj pro Soubory Azure pomocí .NET
 
@@ -316,7 +316,7 @@ Další informace o vytváření a používání sdílených přístupových pod
 
 Od verze 5. x klientské knihovny souborů Azure můžete zkopírovat soubor do jiného souboru, soubor do objektu BLOB nebo objekt blob do souboru.
 
-AzCopy můžete použít také ke kopírování jednoho souboru do jiného nebo ke zkopírování objektu blob do souboru nebo jiným způsobem. Viz Začínáme [s AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
+AzCopy můžete použít také ke kopírování jednoho souboru do jiného nebo ke zkopírování objektu blob do souboru nebo jiným způsobem. Viz Začínáme [s AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 > [!NOTE]
 > Pokud kopírujete objekt blob do souboru nebo soubor do objektu blob, musíte použít sdílený přístupový podpis (SAS) k ověření přístupu ze zdrojovému objektu, a to i když kopírujete v rámci jednoho účtu úložiště.
@@ -624,10 +624,10 @@ Další informace o službě soubory Azure najdete v následujících zdrojích 
 
 ### <a name="tooling-support-for-file-storage"></a>Podpora nástrojů pro úložiště File
 
-- [Začínáme s nástrojem AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)
+- [Začínáme s nástrojem AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 - [Řešení potíží se službou Azure Files ve Windows](./storage-troubleshoot-windows-file-connection-problems.md)
 
-### <a name="reference"></a>Reference
+### <a name="reference"></a>Referenční informace
 
 - [Rozhraní API služby Azure Storage pro .NET](/dotnet/api/overview/azure/storage)
 - [Rozhraní REST API služby File Service](/rest/api/storageservices/File-Service-REST-API)

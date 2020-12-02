@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 554b3ad1dbe1e736300387aefde195b9054ab326
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 87dff3bbb4a7ff5e40a06d1b63bdc38987d727fe
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437095"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492688"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Azure Database for MySQL šifrování dat pomocí klíče spravovaného zákazníkem
 
@@ -97,8 +97,8 @@ Když nakonfigurujete šifrování dat pomocí klíče spravovaného zákazníke
 
 * Když vytvoříme bod v čase obnovení serveru pro váš Azure Database for MySQL, u kterého je povolené šifrování dat, nově vytvořený server bude v *nedostupném* stavu. Tuto chybu můžete vyřešit pomocí [Azure Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) nebo rozhraní příkazového [řádku](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers).
 * Pokud pro váš Azure Database for MySQL vytvoříme repliku pro čtení, která má povolené šifrování dat, server repliky bude v *nepřístupovém* stavu. Tuto chybu můžete vyřešit pomocí [Azure Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) nebo rozhraní příkazového [řádku](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers).
-* Pokud odstraníte Trezor klíčů, Azure Database for MySQL nebude moci získat přístup k tomuto klíči a bude přesunut do *nedostupného* stavu. Obnovte [Key Vault](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) a znovu ověřte šifrování dat, aby byl server *dostupný*.
-* Pokud klíč odstraníme z trezoru klíčů, Azure Database for MySQL nebude moct získat přístup k tomuto klíči a přesune se do *nedostupného* stavu. Obnovte [klíč](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) a znovu ověřte šifrování dat *pro zpřístupnění serveru.*
+* Pokud odstraníte Trezor klíčů, Azure Database for MySQL nebude moci získat přístup k tomuto klíči a bude přesunut do *nedostupného* stavu. Obnovte [Key Vault](../key-vault/general/key-vault-recovery.md) a znovu ověřte šifrování dat, aby byl server *dostupný*.
+* Pokud klíč odstraníme z trezoru klíčů, Azure Database for MySQL nebude moct získat přístup k tomuto klíči a přesune se do *nedostupného* stavu. Obnovte [klíč](../key-vault/general/key-vault-recovery.md) a znovu ověřte šifrování dat *pro zpřístupnění serveru.*
 * Pokud klíč uložený ve službě Azure webrecovery vyprší, klíč se stane neplatným a Azure Database for MySQL přejde do *nedostupného* stavu. Rozšíříte datum vypršení platnosti klíče pomocí rozhraní příkazového [řádku](/cli/azure/keyvault/key#az-keyvault-key-set-attributes) a pak znovu ověříte šifrování dat, aby byl server *dostupný*.
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>Odvolání přístupu k náhodnému klíči z Key Vault

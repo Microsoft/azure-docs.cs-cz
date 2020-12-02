@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: troubleshooting
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: jrasnick, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: ce5bf86073b2c478108e264010bb3c213c214368
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6ea17f04538e3444b1baddaa8862add2cfbbaa9c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791745"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493419"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Zjistitelné typy kritických bodů výkonu dotazů ve službě Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -27,8 +27,8 @@ K detekci těchto typů problémů s výkonem můžete použít Azure SQL Databa
 
 ![Stavy úlohy](./media/identify-query-performance-issues/workload-states.png)
 
-**Problémy související se spouštěním** : spuštěné související problémy se obecně vztahují k problémům s kompilací, které mají za následek nedostatečné nebo nevyužité prostředky, a to s tím související problémy při kompilaci.
-**Problémy související s čekáním** : čekání související problémy se obecně týkají:
+**Problémy související se spouštěním**: spuštěné související problémy se obecně vztahují k problémům s kompilací, které mají za následek nedostatečné nebo nevyužité prostředky, a to s tím související problémy při kompilaci.
+**Problémy související s čekáním**: čekání související problémy se obecně týkají:
 
 - Zámky (blokování)
 - I/O
@@ -68,7 +68,7 @@ Několik alternativních řešení může zmírnit problémy PSP. Každé řeše
 
 - Použijte [znovu zkompilování](/sql/t-sql/queries/hints-transact-sql-query) nápovědy pro dotaz při každém spuštění dotazu. Toto řešení usnadňuje dobu kompilace a zvýšenou kapacitu procesoru pro lepší kvalitu plánu. `RECOMPILE`Možnost není často dostupná pro úlohy, které vyžadují vysokou propustnost.
 - Použijte pomocný parametr dotazu [Option (optimize for.](/sql/t-sql/queries/hints-transact-sql-query) ..) pro přepsání skutečné hodnoty parametru s typickou hodnotou parametru, která vytvoří plán, který je dostatečně dobrý pro většinu možností hodnoty parametru. Tato možnost vyžaduje dobrou představu o optimálních hodnotách parametrů a přidružených vlastnostech plánu.
-- Použijte pomocný parametr dotazu [Option (optimalizovat pro neznámý)](/sql/t-sql/queries/hints-transact-sql-query) pro přepsání skutečné hodnoty parametru a místo toho použijte průměr vektoru hustoty. To lze provést také zachycením hodnot příchozích parametrů v místních proměnných a následným použitím místních proměnných v predikátech namísto použití samotných parametrů. Pro tuto opravu musí být průměrná hustota *dostatečně dobrá* .
+- Použijte pomocný parametr dotazu [Option (optimalizovat pro neznámý)](/sql/t-sql/queries/hints-transact-sql-query) pro přepsání skutečné hodnoty parametru a místo toho použijte průměr vektoru hustoty. To lze provést také zachycením hodnot příchozích parametrů v místních proměnných a následným použitím místních proměnných v predikátech namísto použití samotných parametrů. Pro tuto opravu musí být průměrná hustota *dostatečně dobrá*.
 - Pomocí pomocného parametru dotazu [DISABLE_PARAMETER_SNIFFING](/sql/t-sql/queries/hints-transact-sql-query) zakažte pouze sledování parametrů.
 - Použijte pomocný parametr dotazu [KEEPFIXEDPLAN](/sql/t-sql/queries/hints-transact-sql-query) k zabránění rekompilacím v mezipaměti. V tomto alternativním řešení se předpokládá, že v mezipaměti již existuje dobrý společný plán. Můžete také zakázat automatické aktualizace statistiky, aby se snížila pravděpodobnost, že bude dobrý plán vyřazený a bude zkompilován nový špatný plán.
 - Vynutit plán explicitním použitím pomocného parametru dotazu [použít plán](/sql/t-sql/queries/hints-transact-sql-query) tak, že přepíšete dotaz a přidáte pomocný parametr do textu dotazu. Nebo nastavte konkrétní plán pomocí úložiště dotazů nebo povolením [automatického ladění](../azure-sql/database/automatic-tuning-overview.md).
@@ -137,13 +137,13 @@ Použijete-li pomocný parametr RECOMPILE, plán nebude uložen do mezipaměti.
 
 Opětovná kompilace (nebo nová kompilace po vyřazení mezipaměti) může stále vést k vytvoření plánu provádění dotazů, který je totožný s původní. Při změně plánu z předchozího nebo původního plánu jsou tato vysvětlení pravděpodobná:
 
-- **Změna fyzického návrhu** : například nově vytvořené indexy efektivněji pokrývají požadavky dotazu. Nové indexy lze použít pro novou kompilaci, pokud se nástroj Optimalizátor dotazů rozhodne, že použití tohoto nového indexu je více optimální než použití struktury dat, která byla původně vybrána pro první verzi provedení dotazu. Všechny fyzické změny v odkazovaných objektech mohou mít za následek novou volbu plánu v době kompilace.
+- **Změna fyzického návrhu**: například nově vytvořené indexy efektivněji pokrývají požadavky dotazu. Nové indexy lze použít pro novou kompilaci, pokud se nástroj Optimalizátor dotazů rozhodne, že použití tohoto nového indexu je více optimální než použití struktury dat, která byla původně vybrána pro první verzi provedení dotazu. Všechny fyzické změny v odkazovaných objektech mohou mít za následek novou volbu plánu v době kompilace.
 
-- **Rozdíly mezi prostředky serveru** : Pokud se plán v jednom systému liší od plánu v jiném systému, může být dostupnost prostředků, například počet dostupných procesorů, ovlivněna tím, který plán se vygeneruje. Pokud má například jeden systém více procesorů, může být zvolen paralelní plán.
+- **Rozdíly mezi prostředky serveru**: Pokud se plán v jednom systému liší od plánu v jiném systému, může být dostupnost prostředků, například počet dostupných procesorů, ovlivněna tím, který plán se vygeneruje. Pokud má například jeden systém více procesorů, může být zvolen paralelní plán.
 
-- **Různé statistiky** : statistiky spojené s odkazovanými objekty se možná změnily nebo můžou být v nepodstatném rozdílu od statistik původních systémů. Pokud se změní Statistika a provede se opětovná kompilace, používá Optimalizátor dotazů statistiku, která začíná od okamžiku jejich změny. Změny distribuce a četnosti dat revidované statistiky se mohou lišit od původní kompilace. Tyto změny slouží k vytvoření odhadů mohutnosti. ( *Odhady mohutnosti* jsou počet řádků, které se mají přesměrovat do logického stromu dotazů.) Změny odhadů mohutnosti můžou vést k volbě různých fyzických operátorů a přidružených objednávek operací. I drobné změny statistik můžou mít za následek změnu plánu spuštění dotazu.
+- **Různé statistiky**: statistiky spojené s odkazovanými objekty se možná změnily nebo můžou být v nepodstatném rozdílu od statistik původních systémů. Pokud se změní Statistika a provede se opětovná kompilace, používá Optimalizátor dotazů statistiku, která začíná od okamžiku jejich změny. Změny distribuce a četnosti dat revidované statistiky se mohou lišit od původní kompilace. Tyto změny slouží k vytvoření odhadů mohutnosti. (*Odhady mohutnosti* jsou počet řádků, které se mají přesměrovat do logického stromu dotazů.) Změny odhadů mohutnosti můžou vést k volbě různých fyzických operátorů a přidružených objednávek operací. I drobné změny statistik můžou mít za následek změnu plánu spuštění dotazu.
 
-- **Změnila se úroveň kompatibility databáze nebo verze Estimator** : změny úrovně kompatibility databáze mohou umožňovat nové strategie a funkce, které mohou mít za následek jiný plán spouštění dotazů. Kromě úrovně kompatibility databáze může mít zakázaný nebo povolený příznak trasování 4199 nebo změněný stav QUERY_OPTIMIZER_HOTFIXES konfigurace s rozsahem databáze také v době kompilace vliv výběru plánu spouštění dotazů. Tento plán ovlivňují také příznaky trasování 9481 (vynutit starší verze CE) a 2312 (vynutit výchozí CE).
+- **Změnila se úroveň kompatibility databáze nebo verze Estimator**: změny úrovně kompatibility databáze mohou umožňovat nové strategie a funkce, které mohou mít za následek jiný plán spouštění dotazů. Kromě úrovně kompatibility databáze může mít zakázaný nebo povolený příznak trasování 4199 nebo změněný stav QUERY_OPTIMIZER_HOTFIXES konfigurace s rozsahem databáze také v době kompilace vliv výběru plánu spouštění dotazů. Tento plán ovlivňují také příznaky trasování 9481 (vynutit starší verze CE) a 2312 (vynutit výchozí CE).
 
 ## <a name="resource-limits-issues"></a>Problémy s omezením prostředků
 
@@ -173,11 +173,11 @@ Pokud se plán spouštění dotazů nespustí jinak, ale využití procesoru se 
 
 Nemusíte vždycky snadno identifikovat změnu objemu úloh, která je příčinou potíží procesoru. Vezměte v úvahu tyto faktory:
 
-- **Změnilo se využití prostředků** : můžete například zvážit situaci, kdy se využití CPU v delší době zvýšilo na 80 procent. Samotný využití procesoru neznamená, že se změnil objem úloh. Regrese v plánu provádění dotazů a změny v distribuci dat můžou přispět i k využívání prostředků i v případě, že aplikace provádí stejnou úlohu.
+- **Změnilo se využití prostředků**: můžete například zvážit situaci, kdy se využití CPU v delší době zvýšilo na 80 procent. Samotný využití procesoru neznamená, že se změnil objem úloh. Regrese v plánu provádění dotazů a změny v distribuci dat můžou přispět i k využívání prostředků i v případě, že aplikace provádí stejnou úlohu.
 
-- **Vzhled nového dotazu** : aplikace může v různých časech zařídit novou sadu dotazů.
+- **Vzhled nového dotazu**: aplikace může v různých časech zařídit novou sadu dotazů.
 
-- **Zvýšení nebo snížení počtu požadavků** : Tento scénář je nejzjevnější míra zatížení. Počet dotazů nemusí vždy odpovídat více využití prostředků. Tato metrika je však stále významným signálem za předpokladu, že jiné faktory nejsou změněny.
+- **Zvýšení nebo snížení počtu požadavků**: Tento scénář je nejzjevnější míra zatížení. Počet dotazů nemusí vždy odpovídat více využití prostředků. Tato metrika je však stále významným signálem za předpokladu, že jiné faktory nejsou změněny.
 
 Pomocí Intelligent Insights můžete zjistit [zvýšení zatížení](database/intelligent-insights-troubleshoot-performance.md#workload-increase) a [naplánovat regrese](database/intelligent-insights-troubleshoot-performance.md#plan-regression).
 
@@ -185,7 +185,7 @@ Pomocí Intelligent Insights můžete zjistit [zvýšení zatížení](database/
 
 Po zrušení neoptimálního plánu a problémů *souvisejících* s výkonem, které souvisejí s problémy se spouštěním, je problém s výkonem většinou u dotazů čekání na určitý prostředek. Problémy související s čekáním můžou způsobovat tyto příčiny:
 
-- **Blokování** :
+- **Blokování**:
 
   Jeden dotaz může obsahovat zámek objektů v databázi, zatímco se jiní pokusí o přístup ke stejným objektům. Blokování dotazů můžete identifikovat pomocí [zobrazení dynamické správy](database/monitoring-with-dmvs.md#monitoring-blocked-queries) nebo [Intelligent Insights](database/intelligent-insights-troubleshoot-performance.md#locking).
 - **Vstupně-výstupní problémy**

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c9a68661a89f53c5aa27bdd046b5bc09a47db400
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 092320db9b7fe2b1f3fe142f84ad201d40dc6e2e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556620"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492280"
 ---
-# <a name="azure-data-encryption-at-rest"></a>Šifrování neaktivních uložených dat v Azure
+# <a name="azure-data-encryption-at-rest"></a>Šifrování dat Azure v klidovém umístění
 
 Microsoft Azure obsahuje nástroje pro ochranu dat v souladu s požadavky vaší společnosti na zabezpečení a dodržování předpisů. Tento dokument se zaměřuje na:
 

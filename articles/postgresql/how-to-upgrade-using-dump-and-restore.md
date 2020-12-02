@@ -6,18 +6,18 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: e756e033c8e5b2508dca9bde76ad16be26a940fa
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 42bbe1c9f4056ae0dae0ccd59b452db90a7c63c5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505780"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493657"
 ---
 # <a name="upgrade-your-postgresql-database-using-dump-and-restore"></a>Upgrade databáze PostgreSQL pomocí výpisu a obnovení
 
 Server PostgreSQL nasazený v Azure Database for PostgreSQL-Single server můžete upgradovat tak, že databáze migrujete na server vyšší hlavní verze pomocí následujících metod.
 * Metoda **offline** s použitím PostgreSQL [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) a [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) , které při migraci dat způsobí výpadky. Tento dokument řeší tuto metodu upgradu/migrace.
-* **Online** metoda využívající [Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal) (DMS). Tato metoda poskytuje zkrácenou migraci za výpadky a udržuje cílovou databázi v synchronizaci se zdrojem a vy můžete vybrat, kdy se má vydělenit. Existuje však několik požadavků a omezení, které je potřeba vyřešit pomocí DMS. Podrobnosti najdete v dokumentaci k [DMS](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal). 
+* **Online** metoda využívající [Database Migration Service](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) (DMS). Tato metoda poskytuje zkrácenou migraci za výpadky a udržuje cílovou databázi v synchronizaci se zdrojem a vy můžete vybrat, kdy se má vydělenit. Existuje však několik požadavků a omezení, které je potřeba vyřešit pomocí DMS. Podrobnosti najdete v dokumentaci k [DMS](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md). 
 
  V následující tabulce jsou některá doporučení založená na velikostech a scénářích databáze.
 
@@ -28,7 +28,7 @@ Server PostgreSQL nasazený v Azure Database for PostgreSQL-Single server může
 | Malé a střední databáze (10 GB až 100 GB) | X | X |
 | Velké databáze (> 100 GB) |  | X |
 | Může umožnit výpadkům upgradovat (bez ohledu na velikost databáze). | X |  |
-| Je možné adresovat [požadavky](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal#prerequisites)DMS, včetně restartování? |  | X |
+| Je možné adresovat [požadavky](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md#prerequisites)DMS, včetně restartování? |  | X |
 | Může během procesu upgradu zabránit v DDLs a neprotokolovaných tabulkách? | |  X |
 
 Tato příručka obsahuje několik metod offline migrace a příklady, které ukazují, jak můžete migrovat ze zdrojového serveru na cílový server, na kterém běží vyšší verze PostgreSQL.
@@ -66,7 +66,7 @@ V této příručce se k ilustraci s příklady používají následující zdro
  | ------- | ------- |
  | Zdrojový server (v 9,5) | pg-95.postgres.database.azure.com |
  | Zdrojová databáze | bench5gb |
- | Velikost zdrojové databáze | 5 GB |
+ | Velikost zdrojové databáze | 5 GB |
  | Zdrojové uživatelské jméno | pg@pg-95 |
  | Cílový server (V11) | pg-11.postgres.database.azure.com |
  | Cílová databáze | bench5gb |
@@ -115,9 +115,9 @@ Pokud nemáte klienta PostgreSQL nebo chcete použít Azure Cloud Shell, můžet
 
 | **Velikost databáze** | **Přibližně doba trvání** | 
 | ----- | ------ |
-| 1 GB  | 1-2 minut |
-| 5 GB | 8-10 minut |
-| 10 GB | 15-20 minut |
+| 1 GB  | 1-2 minut |
+| 5 GB | 8-10 minut |
+| 10 GB | 15-20 minut |
 | 50 GB | 1 – 1,5 hodiny |
 | 100 GB | 2,5 – 3 hodiny|
    

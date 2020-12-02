@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 7/13/2020
-ms.openlocfilehash: fac0db7f8c94113ff87d1c0a3091e4c0cbd5ed2b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: f8840d5115cb552ed203705d37f8c692b3418947
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489842"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492331"
 ---
 # <a name="logs-in-azure-database-for-postgresql---hyperscale-citus"></a>Protokoly v Azure Database for PostgreSQL – Citus (škálování)
 
@@ -24,15 +24,15 @@ Chcete-li získat přístup k protokolům PostgreSQL pro koordinátor Citus () n
 
 :::image type="content" source="media/howto-hyperscale-logging/choose-node.png" alt-text="seznam uzlů":::
 
-Pro vybraný uzel otevřete **nastavení diagnostiky**a klikněte na **+ Přidat nastavení diagnostiky**.
+Pro vybraný uzel otevřete **nastavení diagnostiky** a klikněte na **+ Přidat nastavení diagnostiky**.
 
-:::image type="content" source="media/howto-hyperscale-logging/diagnostic-settings.png" alt-text="seznam uzlů":::
+:::image type="content" source="media/howto-hyperscale-logging/diagnostic-settings.png" alt-text="Tlačítko Přidat nastavení diagnostiky":::
 
 Vyberte název nového nastavení diagnostiky a zaškrtněte políčko **PostgreSQLLogs** .  Vyberte cílové umístění, do kterých mají být protokoly přijímány.
 
-:::image type="content" source="media/howto-hyperscale-logging/diagnostic-create-setting.png" alt-text="seznam uzlů":::
+:::image type="content" source="media/howto-hyperscale-logging/diagnostic-create-setting.png" alt-text="Zvolit protokoly PostgreSQL":::
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Začínáme s dotazy Log Analytics](../azure-monitor/log-query/get-started-portal.md)
+- [Začínáme s dotazy Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)
 - Další informace o [službě Azure Event Center](../event-hubs/event-hubs-about.md)
