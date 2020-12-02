@@ -9,16 +9,16 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 10/16/2020
-ms.openlocfilehash: b20f2ce88695cb68de496d126c5e3cd52f9eb6c8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 38b0f23a44a16125726e7810b2045d244a2e6b06
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316131"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454651"
 ---
 # <a name="quickstart-create-a-serverless-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Rychlý Start: Vytvoření fondu Apache Spark bez serveru ve službě Azure synapse Analytics pomocí nástrojů pro web
 
-V tomto rychlém startu se dozvíte, jak vytvořit fond Apache Spark bez serveru (Preview) ve službě Azure synapse pomocí webových nástrojů. Pak se naučíte připojit se ke fondu Apache Spark a spouštět dotazy Spark SQL proti souborům a tabulkám. Apache Spark umožňuje rychlou analýzu dat a clusterové výpočty s využitím zpracování v paměti. Informace o Sparku ve službě Azure synapse najdete v tématu [Přehled: Apache Spark v Azure synapse](./spark/apache-spark-overview.md).
+V tomto rychlém startu se dozvíte, jak pomocí webových nástrojů vytvořit fond Apache Spark bez serveru ve službě Azure synapse. Pak se naučíte připojit se ke fondu Apache Spark a spouštět dotazy Spark SQL proti souborům a tabulkám. Apache Spark umožňuje rychlou analýzu dat a clusterové výpočty s využitím zpracování v paměti. Informace o Sparku ve službě Azure synapse najdete v tématu [Přehled: Apache Spark v Azure synapse](./spark/apache-spark-overview.md).
 
 > [!IMPORTANT]
 > Faktura za instance Spark se účtuje poměrnou rychlostí za minutu, ať už je používáte, nebo ne. Ujistěte se, že jste instanci Spark po dokončení používání vypnuli, nebo nastavte krátký časový limit. Další informace najdete v části **Vyčištění prostředků** tohoto článku.

@@ -1,6 +1,6 @@
 ---
 title: Omezení paměti a souběžnosti
-description: Prohlédněte si limity paměti a souběžnosti přidělené různým úrovním výkonu a třídám prostředků ve službě Azure synapse Analytics.
+description: Prohlédněte si limity paměti a souběžnosti přidělené různým úrovním výkonu a třídám prostředků pro vyhrazený fond SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 5b72694f93ed5b712a0f684887df5b69a7b35c72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb0ad93fb4a1269b4cca02b114c0427f0c44a31b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441676"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455349"
 ---
-# <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Omezení paměti a souběžnosti pro Azure synapse Analytics
+# <a name="memory-and-concurrency-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Omezení paměti a souběžnosti pro vyhrazený fond SQL ve službě Azure synapse Analytics
 
 Prohlédněte si limity paměti a souběžnosti přidělené různým úrovním výkonu a třídám prostředků ve službě Azure synapse Analytics.  
 

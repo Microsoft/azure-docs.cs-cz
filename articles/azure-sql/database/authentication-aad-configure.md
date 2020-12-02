@@ -12,18 +12,18 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: c5caf48dd4e2860ec5f4815eb38629ad66391a2c
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 5558480f568e802637deb30c9f1b41c00826c9b5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990104"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454503"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurace a Správa ověřování Azure AD pomocí Azure SQL
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-V tomto článku se dozvíte, jak vytvořit a naplnit instanci služby Azure Active Directory (Azure AD), a pak použít Azure AD s [Azure SQL Database](sql-database-paas-overview.md), [spravovanou instancí SQL Azure](../managed-instance/sql-managed-instance-paas-overview.md)a [analýzou azure synapse Analytics (dříve SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Přehled najdete v tématu [Azure Active Directory Authentication](authentication-aad-overview.md).
+V tomto článku se dozvíte, jak vytvořit a naplnit instanci Azure Active Directory (Azure AD), a pak použít Azure AD s [Azure SQL Database](sql-database-paas-overview.md), [spravovanou instancí SQL Azure](../managed-instance/sql-managed-instance-paas-overview.md)a [analýzou Azure synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Přehled najdete v tématu [Azure Active Directory Authentication](authentication-aad-overview.md).
 
 ## <a name="azure-ad-authentication-methods"></a>Metody ověřování Azure AD
 

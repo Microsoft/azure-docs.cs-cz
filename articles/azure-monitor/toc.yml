@@ -255,7 +255,7 @@
               href: log-query/query-audit.md
             - name: Optimalizace dotazů
               href: log-query/query-optimization.md
-            - name: Funkce
+            - name: Functions
               href: log-query/functions.md
             - name: Analýza textových dat
               href: log-query/parse-text.md
@@ -1143,6 +1143,8 @@
               href: platform/workbooks-tree-visualizations.md
             - name: Graph
               href: platform/workbooks-graph-visualizations.md
+            - name: Mapa
+              href: platform/workbooks-map-visualizations.md
             - name: Plástvový
               href: platform/workbooks-honey-comb.md
             - name: Složený pruhový

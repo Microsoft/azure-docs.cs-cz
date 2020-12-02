@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 2597aa1f0589fea75af0a3ac41244e3718d5eb3e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a5d84b936679cdd5ebd5bec4938d6db7fcb641e7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307956"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455506"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>Rychlý Start: vytvoření nové propojené služby Azure Machine Learning v synapse
 
-V tomto rychlém startu připojíte pracovní prostor synapse Analytics k pracovnímu prostoru Azure Machine Learning. Propojení těchto pracovních prostorů vám umožní využít Azure Machine Learning z různých prostředí v synapse.
+V tomto rychlém startu připojíte pracovní prostor Azure synapse Analytics k pracovnímu prostoru Azure Machine Learning. Propojení těchto pracovních prostorů vám umožní využít Azure Machine Learning z různých prostředí v synapse.
 
 Například tento odkaz na pracovní prostor Azure Machine Learning umožňuje tyto prostředí:
 
@@ -80,4 +80,4 @@ V tomto kroku se vytvoří nový instanční objekt. Pokud chcete použít exist
 ## <a name="next-steps"></a>Další kroky
 
 - [Kurz: Průvodce bodování modelu Machine Learning – vyhrazený fond SQL](tutorial-sql-pool-model-scoring-wizard.md)
-- [Funkce Machine Learning ve službě Azure synapse Analytics (verze Preview pro pracovní prostory)](what-is-machine-learning.md)
+- [Funkce Machine Learning ve službě Azure synapse Analytics](what-is-machine-learning.md)

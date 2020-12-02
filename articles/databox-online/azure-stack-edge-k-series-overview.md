@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 4bae9e28a22a99d092db2bf887f0cd790e04c52a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 23ec79b7e3989c9749edf98d930ad8305324c9da
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91318551"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453999"
 ---
 # <a name="what-is-the-azure-stack-edge-mini-r"></a>Co je Azure Stack hraniční Mini R?
 
@@ -45,7 +45,7 @@ Azure Stack hraniční Mini R má následující možnosti:
 
 Tady jsou různé scénáře, kdy Azure Stack hraniční Mini R je možné použít pro rychlé Machine Learning (ML) Inferencing na okrajích a předzpracování dat před jejich odesláním do Azure.
 
-- Při **odvozování pomocí Azure Machine Learning** – s Azure Stackou hraniční zkratkou R můžete spouštět modely ml a získat tak rychlé výsledky, na jejichž základě se můžete před odesláním dat do cloudu začít zpracovávat. Úplnou datovou sadu lze volitelně přenést, aby bylo možné pokračovat v přeučení a vylepšení modelů ML. Další informace o tom, jak používat hardwarové akcelerované modely Azure ML na Azure Stack hraničních zařízeních v R, najdete v tématu [nasazení hardwarových akcelerovaných modelů Azure ml na Azure Stack Edge Mini r](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
+- Při **odvozování pomocí Azure Machine Learning** – s Azure Stackou hraniční zkratkou R můžete spouštět modely ml a získat tak rychlé výsledky, na jejichž základě se můžete před odesláním dat do cloudu začít zpracovávat. Úplnou datovou sadu lze volitelně přenést, aby bylo možné pokračovat v přeučení a vylepšení modelů ML. Další informace o tom, jak používat hardwarové akcelerované modely Azure ML na Azure Stack hraničních zařízeních v R, najdete v tématu [nasazení hardwarových akcelerovaných modelů Azure ml na Azure Stack Edge Mini r](../machine-learning/how-to-deploy-fpga-web-service.md#deploy-to-a-local-edge-server).
 
 - Před odesláním do Azure můžete data transformovat **data pomocí** možností výpočtů, jako jsou kontejnery nebo virtuální počítače, a vytvořit tak další napadnutelnou datovou sadu. Předzpracování lze použít k těmto účelům:
 
@@ -83,5 +83,3 @@ Azure Stack fyzické zařízení, které je na hraničních zařízeních, a cí
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si téma [požadavky na systém pro Azure Stack na Mini R](azure-stack-edge-gpu-system-requirements.md).
-
-

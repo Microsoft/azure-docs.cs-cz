@@ -8,22 +8,22 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 00b4f38f4a2a44b88718224db2b2442033816f83
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3cbd9fd697bbae8779f5b2b9fa4ab817efce30ac
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313888"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454640"
 ---
-# <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>Pravidla brány firewall protokolu IP pro Azure synapse Analytics (Preview)
+# <a name="azure-synapse-analytics-ip-firewall-rules"></a>Pravidla brány firewall protokolu IP pro Azure synapse Analytics
 
 Tento článek vysvětluje pravidla brány firewall protokolu IP a naučíte se, jak je nakonfigurovat ve službě Azure synapse Analytics.
 
 ## <a name="ip-firewall-rules"></a>Pravidla brány firewall protokolu IP
 
-Pravidla brány firewall protokolu IP udělují nebo zamítají přístup k vašemu pracovnímu prostoru synapse na základě zdrojové IP adresy jednotlivých požadavků. Pro svůj pracovní prostor můžete nakonfigurovat pravidla brány firewall protokolu IP. Pravidla brány firewall protokolu IP nakonfigurovaná na úrovni pracovního prostoru se vztahují na všechny veřejné koncové body pracovního prostoru (vyhrazené fondy SQL, fond SQL bez serveru a vývoj).
+Pravidla firewallu protokolu IP udělují nebo odepírají přístup k pracovnímu prostoru Synapse v závislosti na zdrojové IP adrese každého požadavku. Pro svůj pracovní prostor můžete nakonfigurovat pravidla firewallu protokolu IP. Pravidla brány firewall protokolu IP nakonfigurovaná na úrovni pracovního prostoru se vztahují na všechny veřejné koncové body pracovního prostoru (vyhrazené fondy SQL, fond SQL bez serveru a vývoj).
 
-## <a name="create-and-manage-ip-firewall-rules"></a>Vytvoření a Správa pravidel brány firewall protokolu IP
+## <a name="create-and-manage-ip-firewall-rules"></a>Vytváření a správa pravidel firewallu protokolu IP
 
 Existují dva způsoby, jak pravidla brány firewall protokolu IP přidat do pracovního prostoru synapse. Pokud chcete do svého pracovního prostoru přidat bránu firewall protokolu IP, vyberte **zabezpečení + sítě** a zaškrtněte políčko během vytváření pracovního prostoru vytvořit **připojení ze všech IP adres** .
 

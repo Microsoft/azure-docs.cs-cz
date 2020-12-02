@@ -1,6 +1,6 @@
 ---
-title: List tahák pro Azure synapse Analytics (dřív SQL DW)
-description: Najděte odkazy a osvědčené postupy pro rychlé vytvoření řešení Azure synapse Analytics (dříve SQL DW).
+title: Tahák list pro vyhrazený fond SQL (dříve SQL DW)
+description: Najděte odkazy a osvědčené postupy pro rychlé vytvoření vyhrazeného fondu SQL (dřív SQL DW) ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,18 +10,18 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 648f06ef1af5d6dce9fa3583c6358d3bd173f209
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a236cf99d3131e83619cfab06e8ec028938a87ba
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319673"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454624"
 ---
-# <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>List tahák pro Azure synapse Analytics (dřív SQL DW)
+# <a name="cheat-sheet-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytic"></a>Tahák list pro vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics
 
-Tento tahák list poskytuje užitečné tipy a osvědčené postupy pro vytváření řešení Azure synapse.
+Tento tahák list poskytuje užitečné tipy a osvědčené postupy pro vytváření vyhrazených řešení fondu SQL (dřív SQL DW).
 
-Následující obrázek znázorňuje proces návrhu datového skladu:
+Následující obrázek znázorňuje proces návrhu datového skladu s vyhrazeným fondem SQL (dříve SQL DW):
 
 ![Nákres](./media/cheat-sheet/picture-flow.png)
 
@@ -121,13 +121,13 @@ Skupiny prostředků se používají jako způsob přidělování paměti pro do
 
 Pokud si všimnete, že dotazy trvají příliš dlouho, zkontrolujte, jestli vaši uživatelé nepoužívají velké třídy prostředků. Velké třídy prostředků využívají velké množství slotů souběžnosti. Můžou způsobit hromadění dalších dotazů ve frontě.
 
-Nakonec, při použití Gen2 [fondu SQL](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse), každá třída prostředků získá 2,5 krát více paměti než Gen1.
+Nakonec při použití Gen2 [vyhrazeného fondu SQL (dříve SQL DW)](sql-data-warehouse-overview-what-is.md)každá třída prostředků získá 2,5 krát více paměti než Gen1.
 
 Další informace o práci s [třídami prostředků a souběžností](resource-classes-for-workload-management.md).
 
 ## <a name="lower-your-cost"></a>Snížení nákladů
 
-Klíčovou funkcí služby Azure synapse je schopnost [Spravovat výpočetní prostředky](sql-data-warehouse-manage-compute-overview.md). Můžete pozastavit fond SQL, pokud ho nepoužíváte, a zastavit tak účtování výpočetních prostředků. Prostředky můžete škálovat s ohledem na své požadavky na výkon. K pozastavení můžete použít [Azure Portal](pause-and-resume-compute-portal.md) nebo [PowerShell](pause-and-resume-compute-powershell.md). Ke škálování můžete použít [Azure Portal](quickstart-scale-compute-portal.md), [Powershell](quickstart-scale-compute-powershell.md), jazyk [T-SQL](quickstart-scale-compute-tsql.md) nebo rozhraní [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
+Klíčovou funkcí služby Azure synapse je schopnost [Spravovat výpočetní prostředky](sql-data-warehouse-manage-compute-overview.md). Vyhrazený fond SQL (dřív SQL DW) můžete pozastavit, když ho nepoužíváte, což zastaví fakturaci výpočetních prostředků. Prostředky můžete škálovat s ohledem na své požadavky na výkon. K pozastavení můžete použít [Azure Portal](pause-and-resume-compute-portal.md) nebo [PowerShell](pause-and-resume-compute-powershell.md). Ke škálování použijte [Azure Portal](quickstart-scale-compute-portal.md), [PowerShell](quickstart-scale-compute-powershell.md), [T-SQL](quickstart-scale-compute-tsql.md)nebo [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
 Automatické škálování teď můžete provádět kdykoli díky Azure Functions:
 
@@ -137,8 +137,8 @@ Automatické škálování teď můžete provádět kdykoli díky Azure Function
 
 Služby SQL Database a Azure Analysis Services doporučujeme zvážit v hvězdicovité architektuře. Toto řešení může zajistit izolaci úloh mezi různými skupinami uživatelů a zároveň využívat pokročilé funkce zabezpečení ve službách SQL Database a Azure Analysis Services. Tímto způsobem můžete uživatelům poskytnout neomezenou souběžnost.
 
-Přečtěte si další informace o [typických architekturách, které využijí Azure synapse](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/).
+Přečtěte si víc o [typických architekturách, které využívají vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/).
 
-Nasazení proveďte v jednom z fondů SQL kliknutím na své paprsky v databázích SQL:
+Nasaďte v jednom kliknutím své paprsky v databázích SQL z vyhrazeného fondu SQL (dřív SQL DW):
 
 [![Obrázek znázorňující tlačítko s názvem "nasadit do Azure".](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json)

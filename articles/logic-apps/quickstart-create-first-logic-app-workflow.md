@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/30/2020
-ms.openlocfilehash: 7433c51b45b0d8459ad1959b29f61660537b8851
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 9d402599c4d6732ce92b8c64af6f660bcedbc4ba
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337453"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455061"
 ---
 # <a name="quickstart-create-your-first-logic-apps-workflow---azure-portal"></a>Rychlý Start: vytvoření prvního pracovního postupu Logic Apps – Azure Portal
 
@@ -28,7 +28,7 @@ Pokud se chcete dozvědět, jak vytvořit a spravovat svou první aplikaci logik
 * [Vytváření a Správa aplikací logiky v Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md)
 * [Vytváření a Správa aplikací logiky v aplikaci Visual Studio](quickstart-create-logic-apps-with-visual-studio.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ho ještě nemáte, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * E-mailový účet ze služby, kterou podporuje Logic Apps (například Office 365 Outlook nebo Outlook.com). Další podporované poskytovatele e-mailu najdete [v seznamu konektorů](/connectors/).
@@ -54,7 +54,7 @@ Pokud se chcete dozvědět, jak vytvořit a spravovat svou první aplikaci logik
     
    | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
-   | **Name** | <*Logic-App-Name*> | Název vaší aplikace logiky, který musí být jedinečný napříč oblastmi. Název může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `(` , `)` ) a tečky ( `.` ). Tento příklad používá "moji-First-Logic-App". |
+   | **Název** | <*Logic-App-Name*> | Název vaší aplikace logiky, který musí být jedinečný napříč oblastmi. Název může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `(` , `)` ) a tečky ( `.` ). Tento příklad používá "moji-First-Logic-App". |
    | **Předplatné** | <*Azure – předplatné – název*> | Název vašeho předplatného Azure. |
    | **Skupina prostředků** | <*Azure-Resource-Group-Name*> | Název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md#terminology) , ve které vytváříte aplikaci logiky Název skupiny prostředků musí být v různých oblastech jedinečný. V tomto příkladu se používá "My-First-LA-RG". |
    | **Umístění** | <*Oblast Azure*> | Oblast Azure, kam se mají ukládat informace o aplikaci logiky V tomto příkladu se používá "Západní USA". |
@@ -112,7 +112,7 @@ Vaše aplikace logiky je teď živá, ale neprovádí žádnou jinou než kontro
 
 ## <a name="add-the-send-email-action"></a>Přidat akci "Odeslat e-mail"
 
-Po [Přidání triggeru pro aplikaci logiky](#add-rss-trigger)musíte přidat [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts) , která určí odpověď v případě, že aplikace logiky zkontroluje informační kanál RSS a zobrazí se nová položka. Můžete také vytvářet aplikace logiky s mnohem složitějšími akcemi, jako je například v kurzu [zpracování e-mailů pomocí Logic Apps, Azure functions a Azure Storage](/azure/logic-apps/tutorial-process-email-attachments-workflow).
+Po [Přidání triggeru pro aplikaci logiky](#add-rss-trigger)musíte přidat [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts) , která určí odpověď v případě, že aplikace logiky zkontroluje informační kanál RSS a zobrazí se nová položka. Můžete také vytvářet aplikace logiky s mnohem složitějšími akcemi, jako je například v kurzu [zpracování e-mailů pomocí Logic Apps, Azure functions a Azure Storage](./tutorial-process-email-attachments-workflow.md).
 
 > [!NOTE]
 > V tomto příkladu se jako e-mailová služba používá Office 365 Outlook. Pokud používáte jinou podporovanou e-mailovou službu ve vaší aplikaci logiky, uživatelské rozhraní může vypadat jinak. Základní koncepty pro připojení k jiné e-mailové službě zůstávají ale stejné.
@@ -154,7 +154,7 @@ Po [Přidání triggeru pro aplikaci logiky](#add-rss-trigger)musíte přidat [a
 
       ![Snímek obrazovky návrháře Logic Apps zobrazující akci "Odeslat e-mail" a kurzor do pole vlastnosti Subject.](./media/quickstart-create-first-logic-app-workflow/send-email-subject.png)
 
-   1. V seznamu **Přidat dynamický obsah** vyberte **Název informačního kanálu** , který je výstupem triggeru, **když se publikuje položka informačního kanálu**. Vaše e-mailové oznámení pomocí tohoto výstupu Získá název položky RSS.
+   1. V seznamu **Přidat dynamický obsah** vyberte **Název informačního kanálu**, který je výstupem triggeru, **když se publikuje položka informačního kanálu**. Vaše e-mailové oznámení pomocí tohoto výstupu Získá název položky RSS.
 
       ![Snímek obrazovky návrháře Logic Apps zobrazující akci "Odeslat e-mail" a kurzor v poli vlastnosti Subject s otevřeným dynamickým obsahem a vybraným výstupem "název informačního kanálu".](./media/quickstart-create-first-logic-app-workflow/send-email-subject-dynamic-content.png)
 
@@ -167,7 +167,7 @@ Po [Přidání triggeru pro aplikaci logiky](#add-rss-trigger)musíte přidat [a
 
       ![Snímek obrazovky návrháře Logic Apps, ve kterém se zobrazuje akce Odeslat e-mail a příklad předmětu e-mailu s zahrnutou vlastností "název informačního kanálu".](./media/quickstart-create-first-logic-app-workflow/send-email-feed-title.png)
 
-      Pokud se v Návrháři objeví smyčka "pro každou", pak jste vybrali token pro pole; Příklad: **kategorie-Item** token. Pro tyto typy tokenů návrhář automaticky přidá tuto smyčku okolo akce, která obsahuje referenci na příslušný token. Aplikace logiky tak provede stejnou akci pro každou položku pole. Pokud chcete smyčku odebrat, vyberte na záhlaví smyčky **tři tečky** ( **...** ) a pak vyberte **Odstranit**.
+      Pokud se v Návrháři objeví smyčka "pro každou", pak jste vybrali token pro pole; Příklad: **kategorie-Item** token. Pro tyto typy tokenů návrhář automaticky přidá tuto smyčku okolo akce, která obsahuje referenci na příslušný token. Aplikace logiky tak provede stejnou akci pro každou položku pole. Pokud chcete smyčku odebrat, vyberte na záhlaví smyčky **tři tečky** (**...**) a pak vyberte **Odstranit**.
 
    1. Do pole **text** zadejte obsah pro text e-mailu. V tomto příkladu obsahuje obsah tři vlastnosti s popisným textem pro každý z nich: `Title:` , vlastnost **title informačního** kanálu `Date published:` , **informační kanál publikovaný ve** vlastnosti a `Link:` , vlastnost **odkazu na primární informační kanál** . Pokud chcete do textového pole přidat prázdné řádky, stiskněte Shift + Enter.
 

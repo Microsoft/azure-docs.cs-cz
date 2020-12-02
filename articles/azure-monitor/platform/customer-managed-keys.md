@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/18/2020
-ms.openlocfilehash: c2a9dbb5fa821d408835cd1bcbf3e6afdade36e1
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 17648b9bc973285764bb0bd6242506122a043780
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317482"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454268"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Klíč spravovaný zákazníkem v Azure Monitoru 
 
@@ -80,15 +80,15 @@ Některé kroky konfigurace běží asynchronně, protože je nepůjde rychle do
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-–
+Není k dispozici
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-–
+Není k dispozici
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-–
+Není k dispozici
 
 # <a name="rest"></a>[REST](#tab/rest)
 
@@ -155,7 +155,7 @@ Operace je asynchronní a její dokončení může chvíli trvat.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-–
+Není k dispozici
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -279,7 +279,7 @@ Propojení účtu úložiště pro *dotaz* k vašemu pracovnímu prostoru – do
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-–
+Není k dispozici
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -323,7 +323,7 @@ Propojení účtu úložiště s *upozorněními* k vašemu pracovnímu prostoru
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-–
+Není k dispozici
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -375,7 +375,7 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
   
   # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-  –
+  Není k dispozici
 
   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -437,7 +437,7 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
 
   # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-  –
+  Není k dispozici
 
   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -470,7 +470,7 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
 
   # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-  –
+  Není k dispozici
 
   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -511,15 +511,15 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
 
   # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-  –
+  Není k dispozici
 
   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-  –
+  Není k dispozici
 
   # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-  –
+  Není k dispozici
 
   # <a name="rest"></a>[REST](#tab/rest)
 
@@ -545,7 +545,7 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
 
   # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-  –
+  Není k dispozici
 
   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -574,7 +574,7 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
 
   # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-  –
+  Není k dispozici
 
   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -605,7 +605,7 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
 
   # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-  –
+  Není k dispozici
 
   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -656,6 +656,12 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
 
 - Odkaz na pracovní prostor na cluster se nezdaří, pokud je propojený s jiným clusterem.
 
+- V Číně momentálně není k dispozici bezpečnostní modul. 
+
+- Pro clustery vytvořené z října 2020 se v podporovaných oblastech automaticky nakonfiguruje [dvojité šifrování](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) . Můžete ověřit, jestli je váš cluster nakonfigurovaný pro dvojité šifrování, požadavkem GET v clusteru a `"isDoubleEncryptionEnabled"` hodnotou vlastnosti – `true` pro clustery se zapnutým šifrováním s dvojitým šifrováním. 
+  - Pokud vytvoříte cluster a obdržíte chybu "<název oblasti> nepodporuje pro clustery dvojité šifrování", můžete cluster stále vytvořit bez šifrování. `"properties": {"isDoubleEncryptionEnabled": false}`Do textu žádosti REST přidejte vlastnost.
+  - Nastavení dvojitého šifrování nelze změnit po vytvoření clusteru.
+
 ## <a name="troubleshooting"></a>Řešení potíží
 
 - Chování při Key Vault dostupnosti
@@ -682,10 +688,6 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
 - Některé operace jsou dlouhé a jejich dokončení může chvíli trvat – jedná se o vytvoření clusteru, aktualizaci klíčů clusteru a odstranění clusteru. Stav operace můžete zjistit dvěma způsoby:
   1. Pokud používáte REST, zkopírujte hodnotu adresy URL Azure-AsyncOperation z odpovědi a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
   2. Odešlete požadavek GET do clusteru nebo pracovního prostoru a sledujte odpověď. Například nepropojený pracovní prostor nebude mít *clusterResourceId* v části *funkce*.
-
-- Pro clustery vytvořené z října 2020 se v podporovaných oblastech automaticky nakonfiguruje [dvojité šifrování](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) . Můžete ověřit, jestli je váš cluster nakonfigurovaný pro dvojité šifrování, požadavkem GET v clusteru a `"isDoubleEncryptionEnabled"` hodnotou vlastnosti – `true` pro clustery se zapnutým šifrováním s dvojitým šifrováním. 
-  - Pokud vytvoříte cluster a obdržíte chybu "<název oblasti> nepodporuje pro clustery dvojité šifrování", můžete cluster stále vytvořit bez šifrování. Přidejte `"properties": {"isDoubleEncryptionEnabled": false}` do textu žádosti REST.
-  - Nastavení dvojitého šifrování nelze změnit po vytvoření clusteru.
 
 - Chybové zprávy
   

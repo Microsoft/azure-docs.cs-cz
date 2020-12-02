@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 87f27f316914f3efce5a750f50471c65dceca84e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9863ed24da9e427f885a4794bda7e103b0c1cc8e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127837"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455446"
 ---
 # <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>Rozhraní API pro odeslání partnerského centra pro zprovoznění aplikací Azure v partnerském centru
 
@@ -43,7 +43,7 @@ Pokud chcete použít rozhraní API pro odesílání Microsoft Store, musíte ap
 1. V partnerském centru [přidružte účet partnerského centra vaší organizace k adresáři Azure AD vaší organizace](/windows/uwp/publish/associate-azure-ad-with-partner-center).
 1. Potom na stránce **Uživatelé** v části **Nastavení účtu** v partnerském centru [přidejte aplikaci Azure AD](/windows/uwp/publish/add-users-groups-and-azure-ad-applications#add-azure-ad-applications-to-your-partner-center-account) , která představuje aplikaci nebo službu, kterou budete používat pro přístup k odeslání účtu partnerského centra. Ujistěte se, že tuto aplikaci přiřadíte roli **správce** . Pokud aplikace ještě v adresáři Azure AD neexistuje, můžete [vytvořit novou aplikaci Azure AD v partnerském centru](/windows/uwp/publish/add-users-groups-and-azure-ad-applications#create-a-new-azure-ad-application-account-in-your-organizations-directory-and-add-it-to-your-partner-center-account).
 1. Vraťte se na stránku **Uživatelé** , klikněte na název vaší aplikace Azure AD, přejděte do nastavení aplikace a zkopírujte **ID TENANTA** a hodnoty **ID klienta** .
-1. Klikněte na **Přidat nový klíč** . Na následující obrazovce Zkopírujte hodnotu **klíče** . Po opuštění této stránky nebudete moct znovu získat přístup k těmto informacím. Další informace najdete v tématu [Správa klíčů pro aplikaci Azure AD](/windows/uwp/publish/add-users-groups-and-azure-ad-applications#manage-keys).
+1. Klikněte na **Přidat nový klíč**. Na následující obrazovce Zkopírujte hodnotu **klíče** . Po opuštění této stránky nebudete moct znovu získat přístup k těmto informacím. Další informace najdete v tématu [Správa klíčů pro aplikaci Azure AD](/windows/uwp/publish/add-users-groups-and-azure-ad-applications#manage-keys).
 
 ### <a name="step-2-obtain-an-azure-ad-access-token"></a>Krok 2: získání přístupového tokenu Azure AD
 
@@ -73,5 +73,5 @@ https://apidocs.microsoft.com/services/partneringestion/
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte se vytvořit [technický Asset virtuálního počítače Azure](create-azure-container-technical-assets.md)
-* Zjistěte, jak vytvořit [nabídku kontejneru Azure](create-azure-container-offer.md) .
+* Naučte se vytvořit [technický Asset virtuálního počítače Azure](../create-azure-container-technical-assets.md)
+* Zjistěte, jak vytvořit [nabídku kontejneru Azure](../create-azure-container-offer.md) .

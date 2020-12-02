@@ -12,20 +12,20 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 094e40fe55e1ba51b0539d740ecb449a8327d6a6
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4f90299daed46d06dad9ab37103e3b8f53763ed4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841236"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454383"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Konfigurace služby Multi-Factor Authentication pro SQL Server Management Studio a Azure AD
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-V tomto článku se dozvíte, jak používat službu Multi-Factor Authentication služby Azure Active Directory (Azure AD) s SQL Server Management Studio (SSMS). Azure AD MFA se dá použít při připojení SSMS nebo SqlPackage.exe k [Azure SQL Database](sql-database-paas-overview.md), [spravované instanci Azure SQL](../managed-instance/sql-managed-instance-paas-overview.md) a [azure synapse Analytics (dřív SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Přehled služby Multi-Factor Authentication najdete v tématech [univerzální ověřování pomocí SQL Database, spravovaná instance SQL a Azure synapse (podpora SSMS pro MFA)](../database/authentication-mfa-ssms-overview.md).
+V tomto článku se dozvíte, jak používat službu Multi-Factor Authentication služby Azure Active Directory (Azure AD) s SQL Server Management Studio (SSMS). Azure AD MFA se dá použít při připojení SSMS nebo SqlPackage.exe k [Azure SQL Database](sql-database-paas-overview.md), [spravované instanci Azure SQL](../managed-instance/sql-managed-instance-paas-overview.md) a [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Přehled služby Multi-Factor Authentication najdete v tématech [univerzální ověřování pomocí SQL Database, spravovaná instance SQL a Azure synapse (podpora SSMS pro MFA)](../database/authentication-mfa-ssms-overview.md).
 
 > [!IMPORTANT]
-> Databáze v Azure SQL Database, Azure SQL Managed instance a Azure synapse (dříve SQL Data Warehouse) se ve zbývající části tohoto článku společně označují jako databáze a server odkazuje na [Server](logical-servers.md) , který je hostitelem databází pro Azure SQL Database a Azure synapse.
+> Databáze v Azure SQL Database, Azure SQL Managed instance a Azure synapse se ve zbývající části tohoto článku společně nazývají databáze a server odkazuje na [Server](logical-servers.md) , který je hostitelem databází pro Azure SQL Database a Azure synapse.
 
 ## <a name="configuration-steps"></a>Postup konfigurace
 

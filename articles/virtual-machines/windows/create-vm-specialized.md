@@ -7,18 +7,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 3df7d3d01dcd5e5b097eba53ef0dae29e86fd0a5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cddc7f4f453f22b0cb36b1d3a1e9c2fba2dcabaf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973253"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455088"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Vytvoření virtuálního počítače s Windows ze specializovaného disku pomocí PowerShellu
 
 Vytvořte nový virtuální počítač připojením specializovaného spravovaného disku jako disku s operačním systémem. Specializovaný disk je kopií virtuálního pevného disku (VHD) ze stávajícího virtuálního počítače, který obsahuje uživatelské účty, aplikace a další údaje o stavu z původního virtuálního počítače. 
-
-Při použití specializovaného virtuálního pevného disku k vytvoření nového virtuálního počítače si nový virtuální počítač zachová název počítače původního virtuálního počítače. Další informace specifické pro počítač jsou také uchovávány, a v některých případech mohou tyto duplicitní informace způsobovat problémy. Při kopírování virtuálního počítače si pamatujte na typy informací specifických pro konkrétní počítač, na kterých aplikace závisí.
 
 Máte několik možností:
 * [Použijte existující spravovaný disk](#option-1-use-an-existing-disk). Tato možnost je užitečná, pokud máte virtuální počítač, který nefunguje správně. Pokud chcete vytvořit nový virtuální počítač, můžete virtuální počítač odstranit a pak znovu použít spravovaný disk. 
@@ -28,6 +26,11 @@ Máte několik možností:
 Pomocí Azure Portal můžete také [vytvořit nový virtuální počítač ze specializovaného virtuálního pevného disku](create-vm-specialized-portal.md).
 
 V tomto článku se dozvíte, jak používat spravované disky. Pokud máte starší verzi nasazení, která vyžaduje použití účtu úložiště, přečtěte si téma [Vytvoření virtuálního počítače ze specializovaného virtuálního pevného disku v účtu úložiště](/previous-versions/azure/virtual-machines/windows/sa-create-vm-specialized).
+
+> [!IMPORTANT]
+> 
+> Při použití specializovaného disku k vytvoření nového virtuálního počítače si nový virtuální počítač zachová název počítače původního virtuálního počítače. Další informace specifické pro počítač (např. CMID) jsou také uchovávány, a v některých případech mohou tyto duplicitní informace způsobovat problémy. Při kopírování virtuálního počítače si pamatujte na typy informací specifických pro konkrétní počítač, na kterých aplikace závisí.  
+> Proto nepoužívejte specializovaný disk, pokud chcete vytvořit více virtuálních počítačů. Místo toho můžete pro rozsáhlejší nasazení [vytvořit image](capture-image-resource.md) a pak [pomocí této image vytvořit víc virtuálních počítačů](create-vm-generalized-managed.md).
 
 Doporučujeme omezit počet souběžných nasazení na 20 virtuálních počítačů z jednoho virtuálního pevného disku nebo snímku. 
 
@@ -150,7 +153,7 @@ Vytvořte sítě a další prostředky virtuálních počítačů, které má no
 
 Vytvořte [virtuální síť](../../virtual-network/virtual-networks-overview.md) a podsíť pro virtuální počítač.
 
-1. Vytvořte podsíť. Tento příklad vytvoří podsíť s názvem *mySubNet*ve skupině prostředků *myDestinationResourceGroup*a nastaví předponu adresy podsítě na *10.0.0.0/24*.
+1. Vytvořte podsíť. Tento příklad vytvoří podsíť s názvem *mySubNet* ve skupině prostředků *myDestinationResourceGroup* a nastaví předponu adresy podsítě na *10.0.0.0/24*.
    
     ```powershell
     $subnetName = 'mySubNet'
