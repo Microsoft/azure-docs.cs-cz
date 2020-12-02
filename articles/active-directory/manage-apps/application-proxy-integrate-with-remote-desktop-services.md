@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bfa9367e06c099e21a54ad8c03f8d5ab853aaafb
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bfe8af8c30bbc2bc66c363fbd85f6764a48c28a1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348071"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488064"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování Vzdálené plochy pomocí Proxy aplikací služby Azure AD
 
@@ -96,7 +96,7 @@ Připojte se k nasazení služby Vzdálená plocha jako správce a změňte náz
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"
    ```
 
-   **Příklad:**
+   **Například:**
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://remotedesktoptest-aadapdemo.msappproxy.net/`nrequire pre-authentication:i:1"
    ```
@@ -130,9 +130,11 @@ Konfigurace, která je popsaný v tomto článku, je určena pro přístup k VP 
 
 | Metoda ověřování | Podporovaná konfigurace klienta |
 | --------------------- | ------------------------------ |
-| Předběžné ověřování    | RD Web-Windows 7/10 použití aplikace Internet Explorer nebo [Edge chrom v režimu IE](/deployedge/edge-ie-mode) + doplněk RDS ActiveX <br /> *Všimněte si, že portál moje aplikace podporuje jenom Edge.* |
+| Předběžné ověřování    | RD Web-Windows 7/10 použití aplikace Internet Explorer * nebo [Edge chrom v režimu IE](/deployedge/edge-ie-mode) + doplněk RDS ActiveX |
 | Předběžné ověřování    | Webový klient služby Vzdálená plocha – webový prohlížeč kompatibilní s HTML5, jako je Microsoft Edge, Internet Explorer 11, Google Chrome, Safari nebo Mozilla Firefox (v 55.0 a novější) |
 | Předávací | Jakýkoli jiný operační systém, který podporuje aplikaci Vzdálená plocha Microsoft |
+
+* Pokud se portál moje aplikace používá pro přístup k aplikaci vzdálené plochy, vyžaduje se režim IE Chromu.  
 
 Tok předběžného ověřování nabízí více výhod zabezpečení než tok průchodu. S předběžným ověřením můžete použít funkce ověřování Azure AD, jako je jednotné přihlašování, podmíněný přístup a dvoustupňové ověřování pro vaše místní prostředky. Zajistěte také, aby vaše síť dosáhla pouze ověřeného provozu.
 

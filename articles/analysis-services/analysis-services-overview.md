@@ -4,16 +4,16 @@ description: Přečtěte si o Azure Analysis Services plně spravovaná platform
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/19/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 496b2ea7272be96774d4bd0900fc35c6de8cf9eb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e70d02c02ba9a3f14d1659851919fbccf71776d1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457785"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487350"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je Azure Analysis Services?
 
@@ -243,7 +243,7 @@ Služba Azure Analysis Services také podporuje používání [zobrazení dynami
 
 Konkrétní dokumentace pro službu Azure Analysis Services je uvedená zde. K vyhledání článků použijte obsah na levé straně obrazovky prohlížeče. 
 
-Vzhledem k tomu, že tabulkové modely v Azure Analysis Services jsou v datových sadách SQL Server Analysis Services a Power BI Premium mnohem stejné jako tabelární modely, existuje rozsáhlá knihovna sdílených dat, koncepčních, procedurálních, vývojářských a referenčních článků v [Analysis Services dokumentaci](/analysis-services/?view=azure-analysis-services-current). Články v dokumentaci ke sdílenému Analysis Services ukazují, jestli se vztahují také na Azure Analysis Services na hlavičku pod názvem. Můžete také použít selektor verzí nad obsahem a zobrazit jenom ty články, které se vztahují na platformu, kterou používáte.
+Vzhledem k tomu, že tabulkové modely v Azure Analysis Services jsou v datových sadách SQL Server Analysis Services a Power BI Premium mnohem stejné jako tabelární modely, existuje rozsáhlá knihovna sdílených dat, koncepčních, procedurálních, vývojářských a referenčních článků v [Analysis Services dokumentaci](/analysis-services/?view=azure-analysis-services-current&preserve-view=true). Články v dokumentaci ke sdílenému Analysis Services ukazují, jestli se vztahují také na Azure Analysis Services na hlavičku pod názvem. Můžete také použít selektor verzí nad obsahem a zobrazit jenom ty články, které se vztahují na platformu, kterou používáte.
 
 ![Sdílená dokumentace](./media/analysis-services-overview/aas-overview-applies-to.png)
 

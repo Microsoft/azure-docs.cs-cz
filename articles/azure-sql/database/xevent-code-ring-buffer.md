@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
 ms.topic: sample
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: d73efd7a64d0118cea11ca9b0a35f659ce7fee6a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a646588616b874e40b1ed2a5a0b5e691b075075d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791286"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487299"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Cílový kód cyklické vyrovnávací paměti pro rozšířené události v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,10 +28,10 @@ Chcete vytvořit kompletní ukázku kódu pro nejsnadnější rychlý způsob, j
 Toto téma představuje ukázku kódu Transact-SQL, který:
 
 1. Vytvoří tabulku s daty, která se mají demonstrovat.
-2. Vytvoří relaci pro existující rozšířenou událost, konkrétně **SqlServer.sql_statement_starting** .
+2. Vytvoří relaci pro existující rozšířenou událost, konkrétně **SqlServer.sql_statement_starting**.
 
-   * Událost je omezená na příkazy SQL, které obsahují konkrétní řetězec aktualizace: **příkaz jako% Update tabEmployee%** .
-   * Rozhodne odeslat výstup události do cíle typu Ring buffer, konkrétně  **package0.ring_buffer** .
+   * Událost je omezená na příkazy SQL, které obsahují konkrétní řetězec aktualizace: **příkaz jako% Update tabEmployee%**.
+   * Rozhodne odeslat výstup události do cíle typu Ring buffer, konkrétně  **package0.ring_buffer**.
 3. Spustí relaci události.
 4. Vydává několik jednoduchých příkazů SQL UPDATE.
 5. Vydá příkaz SQL SELECT, který načte výstup události z kruhové vyrovnávací paměti.
@@ -218,9 +218,9 @@ GO
 
 Použili jsme `ssms.exe` ke spuštění ukázky kódu.
 
-Pokud chcete zobrazit výsledky, klikneme na buňku pod záhlavím sloupce **target_data_XML** .
+Pokud chcete zobrazit výsledky, klikneme na buňku pod záhlavím sloupce **target_data_XML**.
 
-Pak v podokně výsledků kliknete na buňku pod záhlavím sloupce **target_data_XML** . Tím kliknete na tlačítko vytvořit další kartu soubor v ssms.exe, ve které byl obsah buňky výsledku zobrazen jako XML.
+Pak v podokně výsledků kliknete na buňku pod záhlavím sloupce **target_data_XML**. Tím kliknete na tlačítko vytvořit další kartu soubor v ssms.exe, ve které byl obsah buňky výsledku zobrazen jako XML.
 
 Výstup je zobrazen v následujícím bloku. Vypadá to dlouhou dobu, ale je to jen dva **\<event>** prvky.
 

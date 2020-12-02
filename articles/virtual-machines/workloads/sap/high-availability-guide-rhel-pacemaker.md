@@ -13,14 +13,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 09/29/2020
+ms.date: 12/01/2020
 ms.author: radeltch
-ms.openlocfilehash: 6e906e6c86d615852191e2fd65a2b1a58695ed34
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b111dae035e7a055628642fe7c460734199ff608
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968549"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486338"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Nastavení Pacemaker na Red Hat Enterprise Linux v Azure
 
@@ -69,6 +69,7 @@ Nejprve si přečtěte následující poznámky a dokumenty SAP:
   * [Instalace a konfigurace Red Hat Enterprise Linux 7,4 (a novější) High-Availability clusteru v Microsoft Azure](https://access.redhat.com/articles/3252491)
   * [Co je třeba zvážit při přijímání RHEL 8 – vysoké dostupnosti a clusterů](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/high-availability-and-clusters_considerations-in-adopting-rhel-8)
   * [Konfigurace SAP S/4HANA ASCS/OLAJÍCÍCH pomocí samostatného serveru fronty 2 (ENSA2) v Pacemaker v RHEL 7,6](https://access.redhat.com/articles/3974941)
+  * [RHEL pro nabídky SAP v Azure](https://access.redhat.com/articles/5456301)
 
 ## <a name="cluster-installation"></a>Instalace clusteru
 
@@ -80,7 +81,7 @@ Nejprve si přečtěte následující poznámky a dokumenty SAP:
 
 Následující položky jsou předpony buď **[A]** – platí pro všechny uzly, **[1]** – platí pouze pro uzel 1 nebo **[2]** – platí pouze pro uzel 2.
 
-1. **[A]** zaregistrovat. Tento krok není nutný, pokud používáte image s podporou RHEL 8. x HA.  
+1. **[A]** zaregistrovat. Tento krok není nutný, pokud používáte image RHEL SAP s podporou vysoké dostupnosti.  
 
    Zaregistrujte virtuální počítače a připojte je ke fondu, který obsahuje úložiště pro RHEL 7.
 
@@ -90,9 +91,9 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   Připojením fondu k imagi Azure Marketplace PAYG RHEL se vám bude efektivně považovat za vaše využití RHEL: jednou pro PAYG image a jednou pro RHEL nárok ve fondu, který připojíte. Pro zmírnění tohoto problému Azure teď poskytuje image RHEL BYOS. Další informace najdete [tady](../redhat/byos.md).
+   Připojením fondu k imagi Azure Marketplace PAYG RHEL se vám bude efektivně považovat za vaše využití RHEL: jednou pro PAYG image a jednou pro RHEL nárok ve fondu, který připojíte. Pro zmírnění tohoto problému Azure teď poskytuje image RHEL BYOS. Další informace najdete [tady](../redhat/byos.md).  
 
-1. **[A]** povolte RHEL pro úložiště SAP. Tento krok není nutný, pokud používáte image s podporou RHEL 8. x HA.  
+1. **[A]** povolte RHEL pro úložiště SAP. Tento krok není nutný, pokud používáte image RHEL SAP s podporou vysoké dostupnosti.  
 
    Aby bylo možné nainstalovat požadované balíčky, povolte následující úložiště.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 86f3ef8ccac83cdc939cff5572dd81e78137d396
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 83da8cbf3a87570cfb967e0a6c8da3f0f2ed1766
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968719"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486738"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referenční architektury pro Oracle Database Enterprise Edition v Azure
 
@@ -207,12 +207,12 @@ Během počátečního požadavku se aplikační server připojí k horizontáln
 
 Při nasazování úloh Oracle do Azure se společnost Microsoft postará o všechny opravy na úrovni operačního systému hostitele. Veškerá plánovaná údržba na úrovni operačního systému je zákazníkům předem sdělena, aby umožnila této plánované údržbě zákazníkům. Dva servery ze dvou různých Zóny dostupnosti se nikdy neopravují současně. Další informace o údržbě virtuálních počítačů a opravách najdete v tématu [Správa dostupnosti virtuálních počítačů](../../manage-availability.md) . 
 
-Opravy operačního systému virtuálního počítače můžete automatizovat pomocí [Azure Automation Update Management](../../../automation/update-management/update-mgmt-overview.md). Oprava a údržba databáze Oracle může být automatizovaná a naplánovaná pomocí [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) nebo [Azure Automation Update Management](../../../automation/update-management/update-mgmt-overview.md) k minimalizaci prostojů. Podívejte se na [průběžné doručování a modré/zelené nasazení](/azure/devops/learn/what-is-continuous-delivery) , které vám pomůžou pochopit, jak se dá používat v kontextu databází Oracle.
+Opravy operačního systému virtuálního počítače můžete automatizovat pomocí [Azure Automation Update Management](../../../automation/update-management/overview.md). Oprava a údržba databáze Oracle může být automatizovaná a naplánovaná pomocí [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) nebo [Azure Automation Update Management](../../../automation/update-management/overview.md) k minimalizaci prostojů. Podívejte se na [průběžné doručování a modré/zelené nasazení](/azure/devops/learn/what-is-continuous-delivery) , které vám pomůžou pochopit, jak se dá používat v kontextu databází Oracle.
 
 ## <a name="architecture-and-design-considerations"></a>Požadavky na architekturu a návrh
 
 - Zvažte použití [optimalizovaného paměťového optimalizovaného virtuálního počítače](../../sizes-memory.md) s [omezenými jádry vCPU](../../../virtual-machines/constrained-vcpu.md) pro váš virtuální počítač Oracle Database, který šetří náklady na licencování a maximalizuje výkon. Pro výkon a dostupnost použijte více disků Premium nebo Ultra (spravované disky).
-- Při použití spravovaných disků se může při restartování změnit název disku nebo zařízení. Doporučuje se místo názvu použít UUID zařízení, abyste zajistili, že vaše připojení budou v rámci restartování trvalá. Další informace najdete [tady](../../../virtual-machines/linux/configure-raid.md#add-the-new-file-system-to-etcfstab).
+- Při použití spravovaných disků se může při restartování změnit název disku nebo zařízení. Doporučuje se místo názvu použít UUID zařízení, abyste zajistili, že vaše připojení budou v rámci restartování trvalá. Další informace najdete [tady](/previous-versions/azure/virtual-machines/linux/configure-raid#add-the-new-file-system-to-etcfstab).
 - Pomocí zón dostupnosti můžete dosáhnout vysoké dostupnosti v oblasti.
 - Zvažte použití disků Ultra (Pokud je k dispozici) nebo prémiových disků pro vaši databázi Oracle.
 - Zvažte nastavení pohotovostní databáze Oracle v jiné oblasti Azure pomocí ochrany dat Oracle.

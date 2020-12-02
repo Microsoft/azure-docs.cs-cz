@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: a430333f57b3734e5977db5c104c8f6d37bfd3c4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 27cf5fef027b1e4786c0ff77f9f673bafea15f98
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949084"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487265"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -26,7 +26,7 @@ Jazyková podpora se liší podle funkcí služby Speech. Následující tabulka
 
 Sada Microsoft Speech SDK i REST API podporují následující jazyky (národní prostředí). 
 
-Pro zvýšení přesnosti se přizpůsobení nabídne pro podmnožinu jazyků prostřednictvím nahrávání **zvuku a přepisu s popiskem** nebo **souvisejícího textu: věty**. Další informace o přizpůsobení najdete v tématu [Začínáme s Custom Speech](how-to-custom-speech.md).
+Pro zvýšení přesnosti se přizpůsobení nabídne pro podmnožinu jazyků prostřednictvím nahrávání **zvuku a přepisu s popiskem** nebo **souvisejícího textu: věty**. Další informace o přizpůsobení najdete v tématu [Začínáme s Custom Speech](./custom-speech-overview.md).
 
 <!--
 To get the AM and ML bits:
@@ -138,7 +138,7 @@ Neuronové hlasy se dají použít k zajištění většího přirozeného a pou
 |---|---|---|---|---|
 | Arabština (Egypt) | `ar-EG` | Female | `ar-EG-SalmaNeural` | Obecné |
 | Arabština (Saúdská Arábie) | `ar-SA` | Female | `ar-SA-ZariyahNeural` | Obecné |
-| Bulharština (Bulgary) | `bg-BG` | Female | `bg-BG-KalinaNeural` <sup>Nová</sup> | Obecné |
+| Bulharština (Bulgary) | `bg-BG` | Female | `bg-BG-KalinaNeural` <sup>Nový</sup> | Obecné |
 | katalánština (Španělsko) | `ca-ES` | Female | `ca-ES-AlbaNeural` | Obecné |
 | Čínština (kantonština, tradiční) | `zh-HK` | Female | `zh-HK-HiuGaaiNeural` | Obecné |
 | Čínština (Mandarin, zjednodušená) | `zh-CN` | Female | `zh-CN-XiaoxiaoNeural` | Obecné, více dostupných stylů hlasu [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
@@ -146,64 +146,64 @@ Neuronové hlasy se dají použít k zajištění většího přirozeného a pou
 | Čínština (Mandarin, zjednodušená) | `zh-CN` | Male   | `zh-CN-YunyangNeural` | Optimalizováno pro čtení zpráv,<br /> více dostupných stylů hlasu [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
 | Čínština (Mandarin, zjednodušená) | `zh-CN` | Male   | `zh-CN-YunyeNeural` | Optimalizováno pro mluvený popis scénáře |
 | Čínština (tchajwanský mandarinka) | `zh-TW` | Female | `zh-TW-HsiaoYuNeural` | Obecné |
-| chorvatština (Chorvatsko) | `hr-HR` | Female | `hr-HR-GabrijelaNeural` <sup>Nová</sup> | Obecné |
-| Čeština (Čeština) | `cs-CZ` | Female | `cs-CZ-VlastaNeural` <sup>Nová</sup>    | Obecné |
+| chorvatština (Chorvatsko) | `hr-HR` | Female | `hr-HR-GabrijelaNeural` <sup>Nový</sup> | Obecné |
+| Čeština (Čeština) | `cs-CZ` | Female | `cs-CZ-VlastaNeural` <sup>Nový</sup>    | Obecné |
 | dánština (Dánsko) | `da-DK` | Female | `da-DK-ChristelNeural` | Obecné |
 | nizozemština (Nizozemsko) | `nl-NL` | Female | `nl-NL-ColetteNeural` | Obecné |
 | Angličtina (Austrálie) | `en-AU` | Female | `en-AU-NatashaNeural` | Obecné |
-| Angličtina (Austrálie) | `en-AU` | Male   | `en-AU-WilliamNeural` <sup>Nová</sup>  | Obecné |
+| Angličtina (Austrálie) | `en-AU` | Male   | `en-AU-WilliamNeural` <sup>Nový</sup>  | Obecné |
 | Angličtina (Kanada) | `en-CA` | Female | `en-CA-ClaraNeural` | Obecné |
 | Angličtina (Indie) | `en-IN` | Female | `en-IN-NeerjaNeural` | Obecné |
-| Angličtina (Irsko) | `en-IE` | Female | `en-IE-EmilyNeural` <sup>Nová</sup> | Obecné |
+| Angličtina (Irsko) | `en-IE` | Female | `en-IE-EmilyNeural` <sup>Nový</sup> | Obecné |
 | Angličtina (Spojené království) | `en-GB` | Female | `en-GB-LibbyNeural` | Obecné |
 | Angličtina (Spojené království) | `en-GB` | Female | `en-GB-MiaNeural` | Obecné |
-| Angličtina (Spojené království) | `en-GB` | Male | `en-GB-RyanNeural` <sup>Nová</sup> | Obecné |
+| Angličtina (Spojené království) | `en-GB` | Male | `en-GB-RyanNeural` <sup>Nový</sup> | Obecné |
 | Angličtina (Spojené státy) | `en-US` | Female | `en-US-AriaNeural` | Obecné, více dostupných stylů hlasu [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
 | Angličtina (Spojené státy) | `en-US` | Male | `en-US-GuyNeural` | Obecné |
-| Angličtina (Spojené státy) | `en-US` | Female | `en-US-JennyNeural` <sup>Nová</sup> | Obecné, více dostupných stylů hlasu [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Angličtina (Spojené státy) | `en-US` | Female | `en-US-JennyNeural` <sup>Nový</sup> | Obecné, více dostupných stylů hlasu [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
 | finština (Finsko) | `fi-FI` | Female | `fi-FI-NooraNeural` | Obecné |
 | Francouzština (Kanada) | `fr-CA` | Female | `fr-CA-SylvieNeural` | Obecné |
-| Francouzština (Kanada) | `fr-CA` | Male | `fr-CA-JeanNeural` <sup>Nová</sup> | Obecné |
+| Francouzština (Kanada) | `fr-CA` | Male | `fr-CA-JeanNeural` <sup>Nový</sup> | Obecné |
 | francouzština (Francie) | `fr-FR` | Female | `fr-FR-DeniseNeural` | Obecné |
-| francouzština (Francie) | `fr-FR` | Male | `fr-FR-HenriNeural` <sup>Nová</sup> | Obecné |
-| Francouzština (Švýcarsko) | `fr-CH` | Female | `fr-CH-ArianeNeural` <sup>Nová</sup> | Obecné |
-| Němčina (Rakousko) | `de-AT` | Female | `de-AT-IngridNeural` <sup>Nová</sup> | Obecné |
+| francouzština (Francie) | `fr-FR` | Male | `fr-FR-HenriNeural` <sup>Nový</sup> | Obecné |
+| Francouzština (Švýcarsko) | `fr-CH` | Female | `fr-CH-ArianeNeural` <sup>Nový</sup> | Obecné |
+| Němčina (Rakousko) | `de-AT` | Female | `de-AT-IngridNeural` <sup>Nový</sup> | Obecné |
 | němčina (Německo) | `de-DE` | Female | `de-DE-KatjaNeural` | Obecné |
-| němčina (Německo) | `de-DE` | Male | `de-DE-ConradNeural` <sup>Nová</sup> | Obecné |
-| Němčina (Švýcarsko) | `de-CH` | Female | `de-CH-LeniNeural` <sup>Nová</sup> | Obecné |
-| Řečtina (Řecko) | `el-GR` | Female | `el-GR-AthinaNeural` <sup>Nová</sup> | Obecné |
-| Hebrejština (Izrael) | `he-IL` | Female | `he-IL-HilaNeural` <sup>Nová</sup> | Obecné |
+| němčina (Německo) | `de-DE` | Male | `de-DE-ConradNeural` <sup>Nový</sup> | Obecné |
+| Němčina (Švýcarsko) | `de-CH` | Female | `de-CH-LeniNeural` <sup>Nový</sup> | Obecné |
+| Řečtina (Řecko) | `el-GR` | Female | `el-GR-AthinaNeural` <sup>Nový</sup> | Obecné |
+| Hebrejština (Izrael) | `he-IL` | Female | `he-IL-HilaNeural` <sup>Nový</sup> | Obecné |
 | hindština (Indie) | `hi-IN` | Female | `hi-IN-SwaraNeural` | Obecné |
-| Maďarština (Maďarsko) | `hu-HU` | Female | `hu-HU-NoemiNeural` <sup>Nová</sup> | Obecné |
-| Indonéština (Indonésie) | `id-ID` | Male | `id-ID-ArdiNeural` <sup>Nová</sup> | Obecné |
+| Maďarština (Maďarsko) | `hu-HU` | Female | `hu-HU-NoemiNeural` <sup>Nový</sup> | Obecné |
+| Indonéština (Indonésie) | `id-ID` | Male | `id-ID-ArdiNeural` <sup>Nový</sup> | Obecné |
 | italština (Itálie) | `it-IT` | Female | `it-IT-ElsaNeural` | Obecné |
-| italština (Itálie) | `it-IT` | Female | `it-IT-IsabellaNeural` <sup>Nová</sup> | Obecné |
-| italština (Itálie) | `it-IT` | Male | `it-IT-DiegoNeural` <sup>Nová</sup> | Obecné |
+| italština (Itálie) | `it-IT` | Female | `it-IT-IsabellaNeural` <sup>Nový</sup> | Obecné |
+| italština (Itálie) | `it-IT` | Male | `it-IT-DiegoNeural` <sup>Nový</sup> | Obecné |
 | japonština (Japonsko) | `ja-JP` | Female | `ja-JP-NanamiNeural` | Obecné |
-| japonština (Japonsko) | `ja-JP` | Male | `ja-JP-KeitaNeural` <sup>Nová</sup> | Obecné |
+| japonština (Japonsko) | `ja-JP` | Male | `ja-JP-KeitaNeural` <sup>Nový</sup> | Obecné |
 | korejština (Jižní Korea) | `ko-KR` | Female | `ko-KR-SunHiNeural` | Obecné |
-| korejština (Jižní Korea) | `ko-KR` | Male | `ko-KR-InJoonNeural` <sup>Nová</sup> | Obecné |
-| malajština (Malajsie) | `ms-MY` | Female | `ms-MY-YasminNeural` <sup>Nová</sup> | Obecné |
+| korejština (Jižní Korea) | `ko-KR` | Male | `ko-KR-InJoonNeural` <sup>Nový</sup> | Obecné |
+| malajština (Malajsie) | `ms-MY` | Female | `ms-MY-YasminNeural` <sup>Nový</sup> | Obecné |
 | Norština, Bokmål (Norsko) | `nb-NO` | Female | `nb-NO-IselinNeural` | Obecné |
 | polština (Polsko) | `pl-PL` | Female | `pl-PL-ZofiaNeural` | Obecné |
 | Portugalština (Brazílie) | `pt-BR` | Female | `pt-BR-FranciscaNeural` | Obecné, více dostupných stylů hlasu [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
-| Portugalština (Brazílie) | `pt-BR` | Male | `pt-BR-AntonioNeural` <sup>Nová</sup> | Obecné |
+| Portugalština (Brazílie) | `pt-BR` | Male | `pt-BR-AntonioNeural` <sup>Nový</sup> | Obecné |
 | portugalština (Portugalsko) | `pt-PT` | Female | `pt-PT-FernandaNeural` | Obecné |
-| rumunština (Rumunsko) | `ro-RO` | Female | `ro-RO-AlinaNeural` <sup>Nová</sup> | Obecné |
+| rumunština (Rumunsko) | `ro-RO` | Female | `ro-RO-AlinaNeural` <sup>Nový</sup> | Obecné |
 | ruština (Rusko) | `ru-RU` | Female | `ru-RU-DariyaNeural` | Obecné |
-| slovenština (Slovensko) | `sk-SK` | Female | `sk-SK-ViktoriaNeural` <sup>Nová</sup> | Obecné |
-| slovinština (Slovinsko) | `sl-SI` | Female | `sl-SI-PetraNeural` <sup>Nová</sup> | Obecné |
+| slovenština (Slovensko) | `sk-SK` | Female | `sk-SK-ViktoriaNeural` <sup>Nový</sup> | Obecné |
+| slovinština (Slovinsko) | `sl-SI` | Female | `sl-SI-PetraNeural` <sup>Nový</sup> | Obecné |
 | Španělština (Mexiko) | `es-MX` | Female | `es-MX-DaliaNeural` | Obecné |
-| Španělština (Mexiko) | `es-MX` | Male | `es-MX-JorgeNeural` <sup>Nová</sup> | Obecné |
+| Španělština (Mexiko) | `es-MX` | Male | `es-MX-JorgeNeural` <sup>Nový</sup> | Obecné |
 | Španělština (Španělsko) | `es-ES` | Female | `es-ES-ElviraNeural` | Obecné |
-| Španělština (Španělsko) | `es-ES` | Male | `es-ES-AlvaroNeural` <sup>Nová</sup> | Obecné |
+| Španělština (Španělsko) | `es-ES` | Male | `es-ES-AlvaroNeural` <sup>Nový</sup> | Obecné |
 | švédština (Švédsko) | `sv-SE` | Female | `sv-SE-HilleviNeural` | Obecné |
-| Tamilština (Indie) | `ta-IN` | Female | `ta-IN-PallaviNeural` <sup>Nová</sup> | Obecné |
-| Telugština (Indie) | `te-IN` | Female | `te-IN-ShrutiNeural` <sup>Nová</sup> | Obecné |
+| Tamilština (Indie) | `ta-IN` | Female | `ta-IN-PallaviNeural` <sup>Nový</sup> | Obecné |
+| Telugština (Indie) | `te-IN` | Female | `te-IN-ShrutiNeural` <sup>Nový</sup> | Obecné |
 | thajština (Thajsko) | `th-TH` | Female | `th-TH-AcharaNeural` | Obecné |
-| thajština (Thajsko) | `th-TH` | Female | `th-TH-PremwadeeNeural` <sup>Nová</sup> | Obecné |
+| thajština (Thajsko) | `th-TH` | Female | `th-TH-PremwadeeNeural` <sup>Nový</sup> | Obecné |
 | turečtina (Turecko) | `tr-TR` | Female | `tr-TR-EmelNeural` | Obecné |
-| Vietnamština (Vietnam) | `vi-VN` <sup>Nová</sup> | Female | `vi-VN-HoaiMyNeural` | Obecné|
+| Vietnamština (Vietnam) | `vi-VN` <sup>Nový</sup> | Female | `vi-VN-HoaiMyNeural` | Obecné|
 
 #### <a name="neural-voices-in-preview"></a>Hlasy neuronové ve verzi Preview
 
@@ -211,16 +211,16 @@ Níže jsou hlasy neuronové ve verzi Public Preview.
 
 | Jazyk                         | Národní prostředí  | Pohlaví | Název hlasu                             | Podpora stylů |
 |----------------------------------|---------|--------|----------------------------------------|---------------|
-| Čínština (Mandarin, zjednodušená) | `zh-CN` | Male   | `zh-CN-YunxiNeural` <sup>Nová</sup> | Obecné, více stylů dostupných [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
-| Čínština (Mandarin, zjednodušená) | `zh-CN` | Female | `zh-CN-XiaohanNeural` <sup>Nová</sup> | Obecné, více stylů dostupných [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
-| Čínština (Mandarin, zjednodušená) | `zh-CN` | Female | `zh-CN-XiaoxuanNeural` <sup>Nová</sup> | Obecné, více aktérů rolí a [stylů dostupných pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
-| Čínština (Mandarin, zjednodušená) | `zh-CN` | Female | `zh-CN-XiaomoNeural` <sup>Nová</sup> | Obecné, více aktérů rolí a [stylů dostupných pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
-| Čínština (Mandarin, zjednodušená) | `zh-CN` | Female | `zh-CN-XiaoruiNeural` <sup>Nová</sup> | Vrchní hlas, více stylů dostupných [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
-| Estonština (Estonsko) | `et-EE` | Female | `et-EE-AnuNeural` <sup>Nová</sup> | Obecné |
-| Gaelština (Irsko) | `ga-IE` | Female | `ga-IE-OrlaNeural` <sup>Nová</sup> | Obecné |
-| litevština (Litva) | `lt-LT` | Female | `lt-LT-OnaNeural` <sup>Nová</sup> | Obecné |
-| lotyština (Lotyšsko) | `lv-LV` | Female | `lv-LV-EveritaNeural` <sup>Nová</sup> | Obecné |
-| Maltština (Malta) | `mt-MT` | Female | `mt-MT-GraceNeural` <sup>Nová</sup> | Obecné |
+| Čínština (Mandarin, zjednodušená) | `zh-CN` | Male   | `zh-CN-YunxiNeural` <sup>Nový</sup> | Obecné, více stylů dostupných [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Čínština (Mandarin, zjednodušená) | `zh-CN` | Female | `zh-CN-XiaohanNeural` <sup>Nový</sup> | Obecné, více stylů dostupných [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Čínština (Mandarin, zjednodušená) | `zh-CN` | Female | `zh-CN-XiaoxuanNeural` <sup>Nový</sup> | Obecné, více aktérů rolí a [stylů dostupných pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Čínština (Mandarin, zjednodušená) | `zh-CN` | Female | `zh-CN-XiaomoNeural` <sup>Nový</sup> | Obecné, více aktérů rolí a [stylů dostupných pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Čínština (Mandarin, zjednodušená) | `zh-CN` | Female | `zh-CN-XiaoruiNeural` <sup>Nový</sup> | Vrchní hlas, více stylů dostupných [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Estonština (Estonsko) | `et-EE` | Female | `et-EE-AnuNeural` <sup>Nový</sup> | Obecné |
+| Gaelština (Irsko) | `ga-IE` | Female | `ga-IE-OrlaNeural` <sup>Nový</sup> | Obecné |
+| litevština (Litva) | `lt-LT` | Female | `lt-LT-OnaNeural` <sup>Nový</sup> | Obecné |
+| lotyština (Lotyšsko) | `lv-LV` | Female | `lv-LV-EveritaNeural` <sup>Nový</sup> | Obecné |
+| Maltština (Malta) | `mt-MT` | Female | `mt-MT-GraceNeural` <sup>Nový</sup> | Obecné |
 
 > [!IMPORTANT]
 > Hlasy ve verzi Public Preview jsou dostupné jenom ve třech oblastech služby: Východní USA, Západní Evropa a jihovýchodní Asie.
@@ -435,4 +435,4 @@ V následující tabulce najdete podporované jazyky pro různá rozhraní API r
 ## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření bezplatného účtu Azure](https://azure.microsoft.com/free/cognitive-services/)
-* [Přečtěte si téma rozpoznávání řeči v jazyce C. #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)
+* [Přečtěte si téma rozpoznávání řeči v jazyce C. #](./get-started-speech-to-text.md?pivots=programming-language-chsarp)

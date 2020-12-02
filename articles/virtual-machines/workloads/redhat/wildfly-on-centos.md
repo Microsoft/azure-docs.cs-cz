@@ -8,18 +8,18 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 7aa21ef8-9cfb-43e0-bfda-3f10a2a2f3ef
 ms.date: 10/23/2020
-ms.openlocfilehash: 842913b8e9f83ff3b188976da55aef7c909518ca
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: ddd6f277bc71467060aa2279d93f9410a1327dde
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359914"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486602"
 ---
 # <a name="quickstart-wildfly-on-centos-8"></a>Rychlý Start: WildFly na CentOS 8
 
 V tomto rychlém startu se dozvíte, jak nasadit samostatný uzel WildFly virtuálního počítače CentOS 8. Je ideální pro vývoj a testování podnikových aplikací v jazyce Java v Azure. K nasazení tohoto rychlého startu není předplatné aplikačního serveru nutné.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. Pokud nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si [účet zdarma vytvořit](https://azure.microsoft.com/pricing/free-trial).
 
@@ -63,7 +63,7 @@ Image Azure CentOS 8 je image virtuálního počítače s průběžnými platbam
 
 Šablonu můžete nasadit následujícími třemi způsoby:
 
-- Použití PowerShellu – nasaďte šablonu spuštěním následujících příkazů: (informace o instalaci a konfiguraci Azure PowerShell najdete v [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) ).
+- Použití PowerShellu – nasaďte šablonu spuštěním následujících příkazů: (informace o instalaci a konfiguraci Azure PowerShell najdete v [Azure PowerShell](/powershell/azure/) ).
 
     ```
     New-AzResourceGroup -Name <resource-group-name> -Location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment
@@ -73,7 +73,7 @@ Image Azure CentOS 8 je image virtuálního počítače s průběžnými platbam
     New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json
     ```
     
-- Použití rozhraní příkazového řádku Azure – Nasaďte tuto šablonu spuštěním následujících příkazů: (podrobnosti o instalaci a konfiguraci Command-Line rozhraní Azure pro víc platforem najdete v části [příkazový řádek Azure pro více platforem](https://docs.microsoft.com/cli/azure/install-azure-cli) ).
+- Použití rozhraní příkazového řádku Azure – Nasaďte tuto šablonu spuštěním následujících příkazů: (podrobnosti o instalaci a konfiguraci Command-Line rozhraní Azure pro víc platforem najdete v části [příkazový řádek Azure pro více platforem](/cli/azure/install-azure-cli) ).
 
     ```
     az group create --name <resource-group-name> --location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment
@@ -92,7 +92,7 @@ Image Azure CentOS 8 je image virtuálního počítače s průběžnými platbam
 ## <a name="resource-links"></a>Odkazy na prostředky
 
 * Další informace o [WildFly 18](https://docs.wildfly.org/18/)
-* Další informace o [distribucích systému Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)
+* Další informace o [distribucích systému Linux v Azure](../../linux/endorsed-distros.md)
 * [Dokumentace k Azure pro vývojáře v jazyce Java](https://github.com/JasonFreeberg/jboss-on-app-service)
 
 ## <a name="next-steps"></a>Další kroky

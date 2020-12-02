@@ -10,19 +10,19 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 2a9c6b924f564c96c6018fbc395ad226a383280f
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9791d99598fe3d043c42a37e2f4993edd6c5b3ba
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364645"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487129"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Referenční informace o rozhraní API pro vyhledávání místních obchodních v7 Bingu
 
 > [!WARNING]
-> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 > Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
-> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Rozhraní API pro místní vyhledávání v obchodu pošle vyhledávací dotaz do Bingu a získá výsledky, které zahrnují restaurace, hotely nebo jiné místní firmy. V případě míst může dotaz zadat název místní firmy nebo kategorii (například restaurace v blízkosti mě). Mezi výsledky entit patří osoby, místa nebo věci. Místo v tomto kontextu patří obchodní entity, státy, země/oblasti atd.  
 
@@ -55,7 +55,7 @@ Tento požadavek musí používat protokol HTTPS.
 ## <a name="headers"></a>Hlavičky  
 Následují hlavičky, které může obsahovat požadavek a odpověď.  
   
-|Záhlaví|Popis|  
+|Hlavička|Popis|  
 |------------|-----------------|  
 |Přijmout|Nepovinná hlavička požadavku.<br /><br /> Výchozí typ média je Application/JSON. Chcete-li určit, že odpověď používá [JSON-ld](https://json-ld.org/), nastavte hlavičku Accept na Application/ld + JSON.|  
 |<a name="acceptlanguage"></a>Accept-Language|Nepovinná hlavička požadavku.<br /><br /> Čárkami oddělený seznam jazyků pro řetězce uživatelského rozhraní. Seznam je v sestupném pořadí podle priority. Další informace včetně očekávaného formátu najdete v [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Tato hlavička a parametr dotazu [setLang](#setlang) se vzájemně vylučují &mdash; nezadávejte obojí.<br /><br /> Pokud tuto hlavičku nastavíte, musíte zadat také parametr dotazu cc. K určení trhu, pro který se mají vracet výsledky, Bing použije první podporovaný jazyk, který najde v seznamu, a zkombinuje ho s hodnotou parametru `cc`. Pokud seznam jazyků podporovaný jazyk neobsahuje, Bing najde nejbližší jazyk a trh, který požadavek podporuje, nebo pro výsledky použije agregovaný nebo výchozí trh. Pokud chcete zjistit, který trh Bing použil, podívejte se do hlavičky BingAPIs-Market.<br /><br /> Tuto hlavičku a parametr dotazu `cc` použijte jenom v případě, že zadáte více jazyků. Jinak použijte parametry dotazu [mkt](#mkt) a [setLang](#setlang).<br /><br /> Řetězec uživatelského rozhraní je řetězec, který se používá jako popisek v uživatelském rozhraní. V objektech odpovědí JSON je několik řetězců uživatelského rozhraní. Zadaný jazyk použijí všechny odkazy na vlastnosti Bing.com v objektech odpovědi.|  
@@ -76,7 +76,7 @@ Následují hlavičky, které může obsahovat požadavek a odpověď.
 Požadavek může obsahovat následující parametry dotazu. Požadované parametry najdete v požadovaném sloupci. Je nutné zadat adresu URL pro kódování parametrů dotazu.  
   
   
-|Název|Hodnota|Typ|Vyžadováno|  
+|Name|Hodnota|Typ|Vyžadováno|  
 |----------|-----------|----------|--------------|
 |<a name="count"></a>výpočtu|Počet výsledků, které se mají vrátit, počínaje indexem určeného `offset` parametrem.|Řetězec|No|   
 |<a name="localCategories"></a>localCategories|Seznam možností definujících hledání podle obchodních kategorií.  Zobrazit [Hledání kategorií místních obchodů](local-categories.md)|Řetězec|No|  
@@ -113,7 +113,7 @@ Definuje chybu, ke které došlo.
 ### <a name="errorresponse"></a>ErrorResponse  
 Objekt nejvyšší úrovně, který odpověď zahrnuje v případě, že se požadavek nezdařil.  
   
-|Název|Hodnota|Typ|  
+|Name|Hodnota|Typ|  
 |----------|-----------|----------|  
 |_type|Zadejte pomocný parametr.|Řetězec|  
 |<a name="errors"></a>vyskytl|Seznam chyb popisujících důvody, proč se žádost nezdařila.|[Chyba](#error)[]|  
@@ -123,7 +123,7 @@ Objekt nejvyšší úrovně, který odpověď zahrnuje v případě, že se pož
 ### <a name="license"></a>Licence  
 Definuje licenci, za kterou se dá text nebo fotka použít.  
   
-|Název|Hodnota|Typ|  
+|Name|Hodnota|Typ|  
 |----------|-----------|----------|  
 |name|Název licence.|Řetězec|  
 |url|Adresa URL webu, kde může uživatel získat další informace o licenci.<br /><br /> K vytvoření hypertextového odkazu použijte název a adresu URL.|Řetězec|  
@@ -132,7 +132,7 @@ Definuje licenci, za kterou se dá text nebo fotka použít.
 ### <a name="link"></a>Odkaz  
 Definuje součásti hypertextového odkazu.  
   
-|Název|Hodnota|Typ|  
+|Name|Hodnota|Typ|  
 |----------|-----------|----------|  
 |_type|Zadejte pomocný parametr.|Řetězec|  
 |text|Zobrazený text|Řetězec|  
@@ -146,7 +146,7 @@ Definuje vydavatele.
   
 Všimněte si, že Vydavatel může poskytnout svůj název nebo web nebo obojí.  
   
-|Název|Hodnota|Typ|  
+|Name|Hodnota|Typ|  
 |----------|-----------|----------|  
 |name|Název vydavatele|Řetězec|  
 |url|Adresa URL webu vydavatele<br /><br /> Všimněte si, že vydavatel nemusí poskytovat Web.|Řetězec|  
@@ -156,7 +156,7 @@ Všimněte si, že Vydavatel může poskytnout svůj název nebo web nebo obojí
 ### <a name="place"></a>Místo  
 Definuje informace o místních firmách, jako je restaurace nebo Hotel.  
   
-|Název|Hodnota|Typ|  
+|Name|Hodnota|Typ|  
 |----------|-----------|----------|  
 |_type|Zadejte pomocný parametr typu, který může být nastaven na jednu z následujících možností:<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>Restaurací</ul><li>|Řetězec|  
 |adresa|Poštovní adresa místa, kde se entita nachází.|PostalAddress|  
@@ -173,28 +173,28 @@ Definuje kontext dotazu, který Bing použil pro požadavek.
 |Element|Popis|Typ|  
 |-------------|-----------------|----------|  
 |adultIntent|Logická hodnota, která označuje, zda má zadaný dotaz záměr k dospělému. Hodnota je **true** , pokud má dotaz záměr k dospělému; v opačném případě **false**.|Logická hodnota|  
-|alterationOverrideQuery|Řetězec dotazu, který se má použít k vynucení použití původního řetězce v Bingu. Například pokud je řetězec dotazu *Saling downwind* , řetězec přepisu řetězce dotazu bude *+ Saling downwind*. Nezapomeňte zakódovat řetězec dotazu, který má za následek *% 2Bsaling + downwind*.<br /><br /> Toto pole je zahrnuto pouze v případě, že původní řetězec dotazu obsahuje pravopisnou chybu.|Řetězec|  
+|alterationOverrideQuery|Řetězec dotazu, který se má použít k vynucení použití původního řetězce v Bingu. Například pokud je řetězec dotazu *Saling downwind*, řetězec přepisu řetězce dotazu bude *+ Saling downwind*. Nezapomeňte zakódovat řetězec dotazu, který má za následek *% 2Bsaling + downwind*.<br /><br /> Toto pole je zahrnuto pouze v případě, že původní řetězec dotazu obsahuje pravopisnou chybu.|Řetězec|  
 |alteredQuery|Řetězec dotazu, který Bing používá k provedení dotazu. Bing používá změněný řetězec dotazu, pokud původní řetězec dotazu obsahoval pravopisné chyby. Například pokud je řetězec dotazu `saling downwind` , změněný řetězec dotazu bude `sailing downwind` .<br /><br /> Toto pole je zahrnuto pouze v případě, že původní řetězec dotazu obsahuje pravopisnou chybu.|Řetězec|  
 |askUserForLocation|Logická hodnota, která určuje, zda Bing vyžaduje umístění uživatele, aby poskytovalo přesné výsledky. Pokud jste zadali umístění uživatele pomocí hlaviček [x-MSEdge-IP adresa klienta](#clientip) a [x-Search-Location](#location) , můžete toto pole ignorovat.<br /><br /> Pro dotazy na umístění, jako je "dnešní počasí" nebo "Restaurace v mém okolí", které potřebují umístění uživatele, aby poskytovaly přesné výsledky, je toto pole nastaveno na **hodnotu true**.<br /><br /> Pro dotazy na umístění, které zahrnují umístění (například "povětrnostní počasí"), je toto pole nastaveno na **hodnotu NEPRAVDA**. Toto pole je také nastaveno na **hodnotu false** u dotazů, které nejsou v umístění, například "nejlepší prodejci".|Logická hodnota|  
 |originalQuery|Řetězec dotazu, jak je uveden v požadavku.|Řetězec|  
 
 ### <a name="identifiable"></a>Identifikovatelné údaje
 
-|Název|Hodnota|Typ|  
+|Name|Hodnota|Typ|  
 |-------------|-----------------|----------|
 |id|Identifikátor prostředku|Řetězec|
  
 ### <a name="rankinggroup"></a>Klasifikace
 Definuje skupinu výsledků hledání, jako je například hlavní.
 
-|Název|Hodnota|Typ|  
+|Name|Hodnota|Typ|  
 |-------------|-----------------|----------|
 |položek|Seznam výsledků hledání, které se mají zobrazit ve skupině|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Definuje položku výsledku hledání, která se má zobrazit.
 
-|Název|Hodnota|Typ|  
+|Name|Hodnota|Typ|  
 |-------------|-----------------|----------|
 |resultIndex|Index položky vycházející z nuly v odpovědi, která se má zobrazit Pokud tato položka neobsahuje toto pole, zobrazí všechny položky v odpovědi. Můžete například zobrazit všechny články v odpovědi na zprávy.|Integer|
 |answerType|Odpověď obsahující položku, která se má zobrazit Například zprávy.<br /><br />Pomocí typu vyhledejte odpověď v objektu SearchResponse. Typ je název pole SearchResponse.<br /><br /> Typ odpovědi však použijte pouze v případě, že tento objekt obsahuje pole hodnota. v opačném případě tuto chybu ignorujte.|Řetězec|
@@ -204,7 +204,7 @@ Definuje položku výsledku hledání, která se má zobrazit.
 ### <a name="rankingresponse"></a>RankingResponse  
 Definuje, kde má být obsah stránky výsledků hledání umístěn a v jakém pořadí.  
   
-|Název|Hodnota|  
+|Name|Hodnota|  
 |----------|-----------|  
 |<a name="ranking-mainline"></a>hlavní|Výsledky hledání, které se mají zobrazit v hlavní|  
 |<a name="ranking-pole"></a>prut|Výsledky hledání, které by měly být uváděny jako nejužitečnější způsob zpracování (například zobrazené nad hlavní a postranní panel).|  
@@ -215,7 +215,7 @@ Definuje objekt nejvyšší úrovně, který odpověď zahrnuje, když je požad
   
 Všimněte si, že pokud by služba způsobila útok DoS (Denial of Service), požadavek bude úspěšný (kód stavu HTTP je 200 OK); tělo odpovědi však bude prázdné.  
   
-|Název|Hodnota|Typ|  
+|Name|Hodnota|Typ|  
 |----------|-----------|----------|  
 |_type|Zadejte pomocný parametr typu, který je nastavený na SearchResponse.|Řetězec|  
 |zadá|Seznam entit, které jsou relevantní pro vyhledávací dotaz.|Objekt JSON|  

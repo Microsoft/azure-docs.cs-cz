@@ -14,21 +14,20 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/16/2020
+ms.date: 12/01/2020
 ms.author: radeltch
-ms.openlocfilehash: a6b62e9c894c25b2c3cd064524881ae5db51ec5a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9c9979699b5bcb3636adc0f9b58331568ea9cad1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968532"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486298"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích SAP pro vysokou dostupnost
 
 Oborem tohoto článku je popis konfigurací, které umožní odchozí připojení k veřejným koncovým bodům. Konfigurace jsou hlavně v kontextu vysoké dostupnosti s Pacemaker pro SUSE/RHEL.  
 
-Pokud používáte Pacemaker s agentem Azure plot v řešení vysoké dostupnosti, musí mít virtuální počítače odchozí připojení k rozhraní API pro správu Azure.  
-Článek obsahuje několik možností, které vám umožní vybrat možnost, která je pro váš scénář nejvhodnější.  
+Pokud používáte Pacemaker s agentem Azure plot v řešení vysoké dostupnosti, musí mít virtuální počítače odchozí připojení k rozhraní API pro správu Azure. Článek obsahuje několik možností, které vám umožní vybrat možnost, která je pro váš scénář nejvhodnější.  
 
 ## <a name="overview"></a>Přehled
 
@@ -42,12 +41,12 @@ Pokud se virtuální počítače bez veřejných IP adres nacházejí v back-end
 
 Pokud je virtuálnímu počítači přiřazená veřejná IP adresa nebo se virtuální počítač nachází v back-endu nástroje pro vyrovnávání zatížení s veřejnou IP adresou, bude mít odchozí připojení k veřejným koncovým bodům.  
 
-Systémy SAP často obsahují citlivá podniková data. Je zřídka přijatelné pro virtuální počítače hostující systémy SAP, aby měly veřejné IP adresy. Ve stejnou chvíli existují scénáře, které by vyžadovaly odchozí připojení z virtuálního počítače do veřejných koncových bodů.  
+Systémy SAP často obsahují citlivá podniková data. Je zřídka přijatelné pro virtuální počítače hostující systémy SAP, aby byly přístupné prostřednictvím veřejných IP adres. Ve stejnou chvíli existují scénáře, které by vyžadovaly odchozí připojení z virtuálního počítače do veřejných koncových bodů.  
 
 Příklady scénářů, které vyžadují přístup k veřejnému koncovému bodu Azure, jsou:  
-- Použití agenta Azure plot jako ochranného mechanismu v clusterech Pacemaker
-- Azure Backup
-- Azure Site Recovery  
+- Agent Azure plot vyžaduje přístup k **Management.Azure.com** a **Login.microsoftonline.com**  
+- [Azure Backup](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#set-up-network-connectivity)
+- [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls)  
 - Použití veřejného úložiště pro opravy operačního systému
 - Tok dat aplikace SAP může vyžadovat odchozí připojení k veřejnému koncovému bodu.
 
@@ -70,7 +69,7 @@ Nejprve si přečtěte následující dokumenty:
 * [Virtuální sítě – uživatelsky definovaná pravidla](../../../virtual-network/virtual-networks-udr-overview.md#user-defined) – koncepce a pravidla směrování Azure  
 * [Značky služby skupin zabezpečení](../../../virtual-network/network-security-groups-overview.md#service-tags) – jak zjednodušit skupiny zabezpečení sítě a konfiguraci brány firewall pomocí značek služeb
 
-## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>Další externí Standard Load Balancer Azure pro odchozí připojení k Internetu
+## <a name="option-1-additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>Možnost 1: další externí Standard Load Balancer Azure pro odchozí připojení k Internetu
 
 Jedna z možností pro dosažení odchozího připojení k veřejným koncovým bodům, aniž by bylo možné povolit příchozí připojení k virtuálnímu počítači z veřejného koncového bodu, je vytvořit druhý nástroj pro vyrovnávání zatížení s veřejnou IP adresou, přidat virtuální počítače do back-endu pro druhý nástroj pro vyrovnávání zatížení a definovat pouze [odchozí pravidla](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules).  
 Pomocí [skupin zabezpečení sítě](../../../virtual-network/network-security-groups-overview.md) můžete řídit veřejné koncové body, které jsou přístupné pro odchozí volání z virtuálního počítače.  
@@ -120,7 +119,7 @@ Konfigurace by vypadala takto:
 
    Další informace o skupinách zabezpečení sítě Azure najdete v tématu [skupiny zabezpečení ](../../../virtual-network/network-security-groups-overview.md). 
 
-## <a name="azure-firewall-for-outbound-connections-to-internet"></a>Azure Firewall pro odchozí připojení k Internetu
+## <a name="option-2-azure-firewall-for-outbound-connections-to-internet"></a>Možnost 2: Azure Firewall pro odchozí připojení k Internetu
 
 Další možností, jak dosáhnout odchozího připojení k veřejným koncovým bodům, aniž byste povolili příchozí připojení k virtuálnímu počítači z veřejných koncových bodů, je Azure Firewall. Azure Firewall je spravovaná služba s integrovanou vysokou dostupností a může zahrnovat víc Zóny dostupnosti.  
 Budete taky muset nasadit [uživatelem definovanou trasu](../../../virtual-network/virtual-networks-udr-overview.md#custom-routes)přidruženou k podsíti, ve které jsou nasazené virtuální počítače a Azure Load Balancer, přejít na bránu Azure firewall a směrovat provoz přes Azure firewall.  
@@ -170,7 +169,7 @@ Architektura by vypadala takto:
    1. Název trasy: ToMyAzureFirewall, předpona adresy: **0.0.0.0/0**. Typ dalšího segmentu směrování: vyberte virtuální zařízení. Adresa dalšího segmentu směrování: zadejte privátní IP adresu brány firewall, kterou jste nakonfigurovali: **11.97.1.4**.  
    1. Uložit
 
-## <a name="using-proxy-for-pacemaker-calls-to-azure-management-api"></a>Volání rozhraní API pro správu Azure pomocí proxy serveru Pacemaker
+## <a name="option-3-using-proxy-for-pacemaker-calls-to-azure-management-api"></a>Možnost 3: použití proxy serveru pro volání Pacemaker do Azure Management API
 
 Proxy server můžete použít k povolení volání Pacemaker do veřejného koncového bodu rozhraní API pro správu Azure.  
 
@@ -221,9 +220,9 @@ Pokud chcete, aby služba Pacemaker komunikovala s rozhraním API pro správu Az
      sudo pcs property set maintenance-mode=false
      ```
 
-## <a name="other-solutions"></a>Další řešení
+## <a name="other-options"></a>Další možnosti
 
-Pokud je odchozí provoz směrován přes bránu firewall jiného výrobce:
+Pokud je odchozí přenos směrován prostřednictvím třetí strany, proxy serveru brány firewall založené na adrese URL:
 
 - Pokud používáte Azure plot agent, ujistěte se, že konfigurace brány firewall umožňuje odchozí připojení k rozhraní API pro správu Azure: `https://management.azure.com` a `https://login.microsoftonline.com`   
 - Pokud používáte infrastrukturu aktualizace veřejného cloudu Azure SUSE k instalaci aktualizací a oprav, přečtěte si téma [infrastruktura aktualizace veřejného cloudu azure 101](https://suse.com/c/azure-public-cloud-update-infrastructure-101/) .

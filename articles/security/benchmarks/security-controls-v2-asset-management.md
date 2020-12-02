@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c553652d4d8abd16b4e5fd4ff896e42bdba103ad
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 8602450ef7df7f728fc5bdcda4f46ae30058fc94
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408970"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487792"
 ---
 # <a name="security-control-v2-asset-management"></a>Řízení zabezpečení v2: Správa prostředků
 
 Správa prostředků pokrývá ovládací prvky pro zajištění viditelnosti zabezpečení a zásad správného řízení pro prostředky Azure. To zahrnuje doporučení týkající se oprávnění pro bezpečnostní pracovníky, přístup k zabezpečení inventáře prostředků a správu schválení pro služby a prostředky (inventarizace, sledování a opravy).
 
-## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>DOP. 1: Zajistěte, aby měl tým zabezpečení přehled o rizicích pro prostředky
+## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1: Zajištění přehledu o rizicích u prostředků pro bezpečnostní tým
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
@@ -26,87 +26,87 @@ Správa prostředků pokrývá ovládací prvky pro zajištění viditelnosti za
 
 Ujistěte se, že jsou bezpečnostním týmům udělená oprávnění čtenáře zabezpečení ve vašem tenantovi Azure a předplatných, aby mohli monitorovat bezpečnostní rizika pomocí Azure Security Center. 
 
-V závislosti na tom, jak jsou strukturované zodpovědnosti týmu zabezpečení, může být monitorování rizik zabezpečení zodpovědností centrálního týmu zabezpečení nebo místního týmu. V takovém případě musí být přehledy a rizika zabezpečení vždy agregované centrálně v rámci organizace. 
+V závislosti na nastavení struktury odpovědnosti bezpečnostních týmů může být monitorování bezpečnostních rizik odpovědností centrálního nebo místního bezpečnostního týmu. Přehledy zabezpečení a bezpečnostní rizika se však v rámci organizace musí vždy agregovat centrálně. 
 
-Oprávnění čtenář zabezpečení je možné využít široce pro celého tenanta (kořenovou skupinu pro správu) nebo vymezenou pro skupiny pro správu nebo konkrétní předplatná. 
+Oprávnění Čtenář zabezpečení je možné přidělit pro celého tenanta (kořenová skupina pro správu) nebo je vymezit na konkrétní skupiny pro správu nebo konkrétní předplatná. 
 
-Poznámka: k získání přehledu o úlohách a službách může být potřeba další oprávnění. 
+Poznámka: K získání přehledu o úlohách a službách se můžou vyžadovat další oprávnění. 
 
-- [Přehled role čtecího modulu zabezpečení](../../role-based-access-control/built-in-roles.md#security-reader)
+- [Přehled role Čtenář zabezpečení](../../role-based-access-control/built-in-roles.md#security-reader)
 
-- [Přehled služby Azure Skupiny pro správu](../../governance/management-groups/overview.md)
+- [Přehled skupin pro správu Azure](../../governance/management-groups/overview.md)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
 - [Správa dodržování předpisů zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-## <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>DOP. 2: Ujistěte se, že má tým zabezpečení přístup k inventáři prostředků a metadatům.
+## <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>AM-2: Zajištění přístupu k inventáři a metadatům prostředků pro bezpečnostní tým
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
 | DOP. 2 | 1,1, 1,2, 1,4, 1,5, 9,1, 12,1 | CM-8, PM-5 |
 
-Ujistěte se, že týmy zabezpečení mají přístup k průběžně aktualizovaným inventáři prostředků v Azure. Týmy zabezpečení často potřebují tento inventář, aby vyhodnotili potenciální expozici své organizace vznikajícím rizikům a jako vstup pro průběžná vylepšení zabezpečení. 
+Ujistěte se, že týmy zabezpečení mají přístup k průběžně aktualizovaným inventáři prostředků v Azure. Bezpečnostní týmy tento inventář často potřebují k tomu, aby vyhodnotily potenciální slabá místa organizace vůči vznikajícím rizikům, a jako vstup pro průběžná vylepšování zabezpečení. 
 
 Funkce inventáře Azure Security Center a Azure Resource Graph se můžou dotazovat na všechny prostředky v předplatných, včetně služeb Azure, aplikací a síťových prostředků.  
 
-Logicky organizovat prostředky podle taxonomie vaší organizace pomocí značek a dalších metadat v Azure (název, popis a kategorie).  
+Uspořádejte logicky prostředky podle taxonomie vaší organizace pomocí značek i dalších metadat v Azure (název, popis a kategorie).  
 
-- [Jak vytvářet dotazy pomocí Průzkumníka Azure Resource graphu](../../governance/resource-graph/first-query-portal.md)
+- [Jak vytvářet dotazy pomocí Průzkumníka Azure Resource Graphu](../../governance/resource-graph/first-query-portal.md)
 
 - [Správa inventáře Azure Security Center prostředků](../../security-center/asset-inventory.md)
 
-- [Další informace o označování prostředků najdete v průvodci pro pojmenování a označení prostředku.](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%252fazure%252fazure-resource-manager%252fmanagement%252ftoc.json)
+- [Další informace o označování prostředků najdete v průvodci pro pojmenování a označení prostředku.](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
 - [Správa dodržování předpisů zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-## <a name="am-3-use-only-approved-azure-services"></a>AM-3: Používejte jenom schválené služby Azure.
+## <a name="am-3-use-only-approved-azure-services"></a>AM-3: Používání jenom schválených služeb Azure
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
 | DOP. 3 | 2,3, 2,4 | CM-7, CM-8 |
 
-Pomocí Azure Policy můžete auditovat a omezovat, které služby můžou uživatelé zřídit ve vašem prostředí. Pomocí Azure Resource graphu se můžete dotazovat a zjišťovat prostředky v rámci svých předplatných.  Pomocí Azure Monitor můžete také vytvořit pravidla pro aktivaci výstrah při zjištění neschválené služby.
+Pomocí Azure Policy můžete auditovat a omezovat služby, které můžou uživatelé zřídit ve vašem prostředí. Pomocí Azure Resource Graphu se můžete dotazovat na prostředky v rámci jejich předplatných a zjišťovat je.  Pomocí Azure Monitoru můžete také vytvořit pravidla pro aktivaci upozornění při zjištění neschválené služby.
 
 - [Konfigurace a Správa Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../../governance/policy/samples/index.md)
 
-- [Jak vytvářet dotazy pomocí Průzkumníka Azure Resource graphu](../../governance/resource-graph/first-query-portal.md)
+- [Jak vytvářet dotazy pomocí Průzkumníka Azure Resource Graphu](../../governance/resource-graph/first-query-portal.md)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Správa dodržování předpisů zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
 - [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
 
-## <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>DOP. 4: zajištění zabezpečení správy životního cyklu prostředků
+## <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>AM-4: Zajištění zabezpečení správy životního cyklu prostředků
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
 | DOP. 4 | 2,3, 2,4, 2,5 | CM-7, CM-8, CM-10, CM-11 |
 
-Stanovte nebo aktualizujte zásady zabezpečení, které řeší procesy správy životního cyklu prostředků pro potenciálně vysoce ovlivněné změny. Mezi tyto úpravy patří změny: zprostředkovatelé identity a přístup, citlivost dat, konfigurace sítě a přiřazení oprávnění správce.
+Stanovte nebo aktualizujte zásady zabezpečení, které řeší procesy správy životního cyklu prostředků pro potenciálně vysoce ovlivněné změny. Mezi tyto úpravy patří změny zprostředkovatelů identit a přístupu, citlivosti dat, konfigurace sítě nebo přiřazení oprávnění správce.
 
-Odeberte prostředky Azure, když už je nepotřebujete.
+Pokud už je nepotřebujete, odeberte prostředky Azure.
 
 - [Odstranění prostředku a skupiny prostředků Azure](../../azure-resource-manager/management/delete-resource-group.md)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -124,9 +124,9 @@ Pomocí podmíněného přístupu Azure AD omezte schopnost uživatelů komuniko
 
 - [Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manageru](../../role-based-access-control/conditional-access-azure-management.md)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
 
@@ -154,9 +154,9 @@ K vyhledání a identifikaci neschváleného softwaru můžete také použít ř
 
 - [Řízení spouštění skriptu PowerShellu v prostředích Windows](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 

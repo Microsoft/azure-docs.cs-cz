@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/07/2020
+ms.date: 12/01/2020
 ms.author: memildin
-ms.openlocfilehash: 6b54f02b39e233dcf35f0d18682ca102883d76c3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 85dffd4d96a78bab9dd890d9ad37572f3e524f06
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791864"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487928"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>Konfigurace e-mailových oznámení pro výstrahy zabezpečení 
 
@@ -31,9 +31,9 @@ Pokud chcete definovat vlastní předvolby pro e-maily oznámení, stránka nast
 
 Aby nedošlo k únavě výstrah, Security Center omezí objem odchozích e-mailů. U každého předplatného Security Center odesílá:
 
-- maximálně **čtyři** e-maily za den pro výstrahy **s vysokou závažností**
-- maximálně **dva** e-maily za den pro upozornění **středních závažnosti**
-- maximálně **jeden** e-mail za den pro upozornění **s nízkou závažností**
+- maximálně jeden e-mail za **6 hodin** (4 e-maily za den) pro výstrahy **s vysokou závažností**
+- maximálně jeden e-mail za **12 hodin** (2 e-maily za den) pro výstrahy se **střední závažností**
+- maximálně jeden e-mail za **24 hodin** pro upozornění **s nízkou závažností**
 
 :::image type="content" source="./media/security-center-provide-security-contacts/email-notification-settings.png" alt-text="Konfigurace podrobností o kontaktu, který bude dostávat e-maily o výstrahách zabezpečení." :::
  
@@ -44,7 +44,7 @@ Aby nedošlo k únavě výstrah, Security Center omezí objem odchozích e-mail�
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|Free|
 |Požadované role a oprávnění:|**Správce zabezpečení**<br>**Vlastník předplatného** |
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 
@@ -52,20 +52,19 @@ Aby nedošlo k únavě výstrah, Security Center omezí objem odchozích e-mail�
 
 Můžete posílat e-mailová oznámení jednotlivcům nebo všem uživatelům s konkrétními rolemi Azure.
 
-1. V oblasti **nastavení & ceny** Security Center vyberte příslušné předplatné a zvolte **e-mailová oznámení** .
+1. V oblasti **nastavení & ceny** Security Center vyberte příslušné předplatné a zvolte **e-mailová oznámení**.
 
 1. Určete příjemce oznámení pomocí jedné nebo obou těchto možností:
 
     - V rozevíracím seznamu vyberte z dostupných rolí.
     - Zadejte konkrétní e-mailové adresy oddělené čárkami. Počet e-mailových adres, které můžete zadat, není nijak omezený.
 
-1. Pokud chcete u svého předplatného použít kontaktní informace zabezpečení, vyberte **Uložit** .
+1. Pokud chcete u svého předplatného použít kontaktní informace zabezpečení, vyberte **Uložit**.
 
 
-## <a name="next-steps"></a>Další kroky
-
+## <a name="see-also"></a>Viz také
 Další informace o výstrahách zabezpečení najdete na následujících stránkách:
 
 - [Výstrahy zabezpečení – referenční průvodce](alerts-reference.md)– Přečtěte si o výstrahách zabezpečení, které se můžou zobrazit v modulu Azure Security Center ochrany před internetovými útoky.
 - [Správa a reakce na výstrahy zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md)– Přečtěte si, jak spravovat výstrahy zabezpečení a reagovat na ně.
-- [Automatizace odpovědí na aktivační události Security Center](workflow-automation.md)– pomocí automatizace můžete reagovat na Security Center triggery s vlastní logikou oznámení.
+- [Automatizace pracovního postupu](workflow-automation.md)– automatizace odpovědí na výstrahy pomocí vlastní logiky oznámení

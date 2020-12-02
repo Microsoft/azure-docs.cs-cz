@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 6ddce9bd8eaa57571cd3c3eac660806340db4b74
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: b6aaad9cce330d755fb69f8be48737f9a8f6c4a7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408664"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487741"
 ---
 # <a name="security-control-v2-network-security"></a>Řízení zabezpečení v2: zabezpečení sítě
 
@@ -40,9 +40,9 @@ Pomocí ověřování Azure můžete zjistit použití starších nezabezpečen�
 
 - [Sešit nezabezpečených protokolů služby Azure Sentinel](../../sentinel/quickstart-get-visibility.md#use-built-in-workbooks)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -68,9 +68,9 @@ Pokud chcete propojit dvě nebo víc virtuálních sítí v Azure společně, po
 
 - [Azure Private Link](../../private-link/private-link-service-overview.md)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -78,7 +78,7 @@ Pokud chcete propojit dvě nebo víc virtuálních sítí v Azure společně, po
 
 - [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
-## <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3: vytvoření přístupu privátní sítě ke službám Azure
+## <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3: Zřízení přístupu privátní sítě ke službám Azure
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
@@ -92,9 +92,9 @@ Soukromý přístup je kromě ověřování a zabezpečení provozu nabízených
 
 - [Vysvětlení koncových bodů služby Virtual Network](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -120,11 +120,11 @@ Chraňte prostředky Azure před útoky z externích sítí, včetně útoků di
 
 - [Jak nasadit Azure WAF](../../web-application-firewall/overview.md)
 
-- [Správa Azure DDoS Protection Standard pomocí Azure Portal](../../virtual-network/manage-ddos-protection.md)
+- [Správa Azure DDoS Protection Standard pomocí Azure Portal](../../ddos-protection/manage-ddos-protection.md)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 Žádné
 
@@ -144,9 +144,9 @@ Poznámka: Pokud máte regulativní nebo jiný požadavek na použití IDENTIFIK
 
 - [EDR schopnost služby Microsoft Defender ATP](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -170,9 +170,9 @@ Skupiny zabezpečení aplikací můžete použít také ke zjednodušení složi
 
 - [Pochopení a použití skupin zabezpečení aplikací](../../virtual-network/network-security-groups-overview.md#application-security-groups)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -196,9 +196,9 @@ Pokud se jako autoritativní služba DNS používá Azure DNS, zajistěte, aby b
 
 - [Zabránit položkám DNS v dangling a vyhnout se převzetí subdomény](../fundamentals/subdomain-takeover.md)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

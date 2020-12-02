@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bd69f239a1c65040c44da776186ab8d955f5e333
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3a232f8e8c35e265a8243ac79e465c03f6b9650e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693174"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487860"
 ---
 # <a name="security-control-network-security"></a>Řízení zabezpečení: zabezpečení sítě
 
@@ -76,7 +76,7 @@ Použijte Azure Security Center k přístupu k síti jenom v čase, abyste mohli
 
 Pomocí Azure Security Center adaptivního posílení zabezpečení sítě doporučujeme doporučit konfigurace NSG, které omezují porty a zdrojové IP adresy na základě skutečného provozu a analýzy hrozeb.
 
-- [Jak nakonfigurovat DDoS Protection](../../virtual-network/manage-ddos-protection.md)
+- [Jak nakonfigurovat DDoS Protection](../../ddos-protection/manage-ddos-protection.md)
 
 - [Postup nasazení Azure Firewall](../../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -150,7 +150,7 @@ Definování a implementace standardních konfigurací zabezpečení pro síťov
 
 Pomocí Azure modrotisky můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou šablony Azure Resource Manageru, ovládací prvky a zásady služby Azure RBAC v rámci jedné definice podrobného plánu. Můžete použít podrobný plán na nová předplatná a vyladit řízení a správu prostřednictvím správy verzí.
 
-- [Konfigurace a Správa Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+- [Jak nakonfigurovat a spravovat Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Ukázky Azure Policy pro sítě](../../governance/policy/samples/built-in-policies.md#network)
 

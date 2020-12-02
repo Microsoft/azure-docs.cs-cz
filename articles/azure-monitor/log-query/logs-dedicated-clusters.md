@@ -6,24 +6,23 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: d261640dfdb59b2b06cfe3066fca26640a0bed54
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: a68501bd1189993b4dd0c2acdecaa7434fa51dcc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874640"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488030"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor protokolovat vyhrazené clustery
 
-Azure Monitor protokoly vyhrazených clusterů je možnost nasazení, která je k dispozici pro lepší obsluhu zákazníků s vysokým objemem. Zákazníci, kteří ingestují více než 4 TB dat za den, budou používat vyhrazené clustery. Zákazníci s vyhrazenými clustery můžou zvolit pracovní prostory, které se mají hostovat na těchto clusterech.
+Azure Monitor protokolovat vyhrazené clustery: možnost nasazení, která umožňuje rozšířené možnosti pro Azure Monitor protokolovat zákazníky. Zákazníci s vyhrazenými clustery můžou zvolit pracovní prostory, které se mají hostovat na těchto clusterech.
 
-Kromě podpory pro velký objem, existují další výhody používání vyhrazených clusterů:
+Mezi funkce, které vyžadují vyhrazené clustery, patří:
 
-- **Omezení četnosti** – zákazník může mít vyšší [omezení přenosové rychlosti](../service-limits.md#data-ingestion-volume-rate) , jenom u vyhrazeného clusteru.
-- **Funkce** – některé podnikové funkce jsou dostupné jenom na vyhrazených clusterech – konkrétně na základě zákaznických klíčů (CMK) a podpory bezpečnostního modulu. 
-- **Konzistence** – zákazníci mají své vlastní vyhrazené prostředky, takže neovlivňují jiné zákazníky, kteří používají stejnou sdílenou infrastrukturu.
-- **Cenová efektivita** – může být výhodnější použít vyhrazený cluster, protože přidělené úrovně rezervace kapacity berou v úvahu veškerou kombinaci clusterů a platí pro všechny své pracovní prostory, i když jsou některé z nich malé a nemají nárok na zlevněnou slevu kapacity.
-- Dotazy **mezi pracovními prostory** fungují rychleji, pokud jsou všechny pracovní prostory ve stejném clusteru.
+- **[Klíče spravované zákazníkem](../platform/customer-managed-keys.md)** – Šifrujte data clusteru pomocí klíčů, které jsou k dispozici a kontrolovány zákazníkem.
+- **[Bezpečnostní modul](../platform/customer-managed-keys.md#customer-lockbox-preview)** – zákazníci můžou řídit žádostem o data přístup inženýrům podpory Microsoftu.
+- **[Dvojité šifrování](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)** chrání proti scénáři, kdy může dojít k ohrožení jednoho z šifrovacích algoritmů nebo klíčů. V takovém případě bude další vrstva šifrování nadále chránit vaše data.
+- **[Více pracovních prostorů](../log-query/cross-workspace-query.md)** – Pokud zákazník používá více než jeden pracovní prostor pro produkční prostředí, může být vhodné použít vyhrazený cluster. Dotazy mezi jednotlivými pracovními prostory budou spouštěny rychleji, pokud jsou všechny pracovní prostory ve stejném clusteru. Je také možné, že používání vyhrazeného clusteru je výhodnější, protože přidělené úrovně rezervace kapacity berou v úvahu veškerou kombinaci clusterů a platí pro všechny pracovní prostory, i když jsou některé z nich malé a nemají nárok na slevu za rezervaci kapacity.
 
 Vyhrazené clustery vyžadují, aby se zákazníci zavázali využívat kapacitu alespoň 1 TB příjmu dat za den. Migrace do vyhrazeného clusteru je jednoduchá. Nedochází ke ztrátě dat nebo přerušení služeb. 
 
@@ -184,7 +183,7 @@ Update-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -Cl
 > [!NOTE]
 > Pomocí opravy můžete aktualizovat *SKU* prostředků *clusteru* , *keyVaultProperties* nebo *billingType* .
 
-Například: 
+Příklad: 
 
 *Call*
 

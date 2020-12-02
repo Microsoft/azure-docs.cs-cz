@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: mohitku
 ms.reviewer: tyao
-ms.openlocfilehash: a24f9e78de34b17977a1876cbefb473cc2610db0
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 4c710792dd7966fad76b33954fdf7c2253cf18f0
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95549946"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488234"
 ---
 # <a name="tuning-web-application-firewall-waf-for-azure-front-door"></a>Ladění firewallu webových aplikací (WAF) pro přední dveře Azure
  
@@ -136,7 +136,7 @@ Jednou z výhod použití seznamu vyloučení je, že pro daný požadavek už n
  
 Je důležité vzít v úvahu, že vyloučení jsou globální nastavení. To znamená, že nakonfigurované vyloučení se bude vztahovat na veškerý provoz procházející vaším WAF, ne jenom na konkrétní webovou aplikaci nebo identifikátor URI. Například to může být problém, pokud *1 = 1* je platný požadavek v těle určité webové aplikace, ale ne pro jiné pod stejnou zásadou WAF. Pokud má smysl použít pro různé aplikace různé seznamy vyloučení, zvažte použití různých zásad WAF pro každou aplikaci a jejich použití pro všechny front-endové aplikace.
  
-Při konfiguraci seznamů vyloučení pro spravovaná pravidla se můžete rozhodnout vyloučit všechna pravidla v sadě pravidel, všechna pravidla v rámci skupiny pravidel nebo individuální pravidlo. Seznam vyloučení se dá nakonfigurovat pomocí [PowerShellu](https://docs.microsoft.com/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-4.7.0&viewFallbackFrom=azps-3.5.0), rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext_front_door_az_network_front_door_waf_policy_managed_rules_exclusion_add), [rozhraní REST API](https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)nebo Azure Portal.
+Při konfiguraci seznamů vyloučení pro spravovaná pravidla se můžete rozhodnout vyloučit všechna pravidla v sadě pravidel, všechna pravidla v rámci skupiny pravidel nebo individuální pravidlo. Seznam vyloučení se dá nakonfigurovat pomocí [PowerShellu](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-4.7.0&viewFallbackFrom=azps-3.5.0), rozhraní příkazového [řádku Azure CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext_front_door_az_network_front_door_waf_policy_managed_rules_exclusion_add), [rozhraní REST API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)nebo Azure Portal.
 
 * Vyloučení na úrovni pravidla
   * Použití vyloučení na úrovni pravidla znamená, že zadaná vyloučení nebudou analyzována pouze proti tomuto konkrétnímu pravidlu, zatímco budou stále analyzována všemi ostatními pravidly v sadě pravidel. Toto je nejpřesnější úroveň pro vyloučení a dá se použít k vyladění spravované sady pravidel na základě informací, které najdete v protokolech WAF při řešení potíží s událostí.
@@ -193,7 +193,7 @@ Zakázání pravidla je výhodou v případě, že jste si jisti, že všechny p
  
 Zakázání pravidla ale představuje globální nastavení, které platí pro všechny hostitele front-endu přidružené k zásadám WAF. Pokud se rozhodnete zakázat pravidlo, může dojít k ohrožení zabezpečení vystavené bez ochrany nebo zjišťování pro žádné jiné servery front-end přidružené k zásadám WAF.
  
-Pokud chcete zakázat spravované pravidlo pomocí Azure PowerShell, přečtěte si [`PSAzureManagedRuleOverride`](https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject?view=azps-4.7.0&preserve-view=true) dokumentaci k objektu. Pokud chcete použít rozhraní příkazového řádku Azure, přečtěte si [`az network front-door waf-policy managed-rules override`](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/override?view=azure-cli-latest&preserve-view=true) dokumentaci.
+Pokud chcete zakázat spravované pravidlo pomocí Azure PowerShell, přečtěte si [`PSAzureManagedRuleOverride`](/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject?preserve-view=true&view=azps-4.7.0) dokumentaci k objektu. Pokud chcete použít rozhraní příkazového řádku Azure, přečtěte si [`az network front-door waf-policy managed-rules override`](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/override?preserve-view=true&view=azure-cli-latest) dokumentaci.
 
 ![Pravidla WAF](../media/waf-front-door-tuning/waf-rules.png)
 

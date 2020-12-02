@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 17b978d3f4faebd3870868bceeea4572288ecb07
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 647009854ef5a0c0811fc303914f724272f1a3f5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965353"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486653"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Průvodce nasazením platformy SAP BusinessObjects BI pro Linux v Azure
 
@@ -615,7 +615,7 @@ Pro jiné nasazení systému DBMS pro databázi CMS si přečtěte téma [Průvo
 
 Služba úložiště souborů (FRS) odkazuje na adresáře na disku, kde jsou uložené obsahy, jako jsou sestavy, celé části a připojení. Sdílí se mezi všemi aplikačními servery tohoto systému. Proto je nutné zajistit, aby byl vysoce dostupný.
 
-V Azure můžete buď zvolit [soubory Azure Premium](../../../storage/files/storage-files-introduction.md) nebo [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) pro sdílenou složku, které jsou navržené tak, aby byly vysoce dostupné a vysoce odolnější. Další informace najdete v části [redundance](https://docs.microsoft.com/azure/storage/files/storage-files-planning#redundancy) pro soubory Azure.
+V Azure můžete buď zvolit [soubory Azure Premium](../../../storage/files/storage-files-introduction.md) nebo [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) pro sdílenou složku, které jsou navržené tak, aby byly vysoce dostupné a vysoce odolnější. Další informace najdete v části [redundance](../../../storage/files/storage-files-planning.md#redundancy) pro soubory Azure.
 
 > [!NOTE]
 > Protokol SMB pro soubory Azure je všeobecně dostupný, ale podpora protokolu NFS pro soubory Azure je aktuálně ve verzi Preview. Další informace najdete v tématu [Podpora NFS 4,1 pro soubory Azure je teď ve verzi Preview](https://azure.microsoft.com/en-us/blog/nfs-41-support-for-azure-files-is-now-in-preview/) .
@@ -667,7 +667,7 @@ Služba Azure Site Recovery se dá použít k replikaci Virtual Machines spušt�
 
   Můžete použít replikaci Azure NetApp Files mezi oblastmi, která je aktuálně ve [verzi Preview](https://azure.microsoft.com/en-us/blog/azure-netapp-files-cross-region-replication-and-new-enhancements-in-preview/) , která používá technologii® NetApp SnapMirror. Takže pouze změněné bloky jsou odesílány přes síť v komprimovaném, efektivním formátu. Tato proprietární technologie minimalizuje množství dat potřebných pro replikaci napříč oblastmi, které šetří náklady na přenos dat. Také zkracuje dobu replikace, takže můžete dosáhnout menšího cíle bodu obnovení (RPO). Další informace najdete v tématu [požadavky a předpoklady pro použití replikace mezi oblastmi](../../../azure-netapp-files/cross-region-replication-requirements-considerations.md) .
 
-- **Soubory Azure Premium** podporují jenom místně redundantní (LRS) a redundantní úložiště zóny (ZRS). V případě strategie zotavení po havárii souborů Azure Premium můžete pomocí [AzCopy](../../../storage/common/storage-use-azcopy-v10.md) nebo [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/) zkopírovat soubory do jiného účtu úložiště v jiné oblasti. Další informace najdete v tématu [zotavení po havárii a převzetí služeb při selhání účtu úložiště](../../../storage/common/storage-disaster-recovery-guidance.md) .
+- **Soubory Azure Premium** podporují jenom místně redundantní (LRS) a redundantní úložiště zóny (ZRS). V případě strategie zotavení po havárii souborů Azure Premium můžete pomocí [AzCopy](../../../storage/common/storage-use-azcopy-v10.md) nebo [Azure PowerShell](/powershell/module/az.storage/) zkopírovat soubory do jiného účtu úložiště v jiné oblasti. Další informace najdete v tématu [zotavení po havárii a převzetí služeb při selhání účtu úložiště](../../../storage/common/storage-disaster-recovery-guidance.md) .
 
 #### <a name="cms-database"></a>Databáze CMS
 
@@ -695,4 +695,4 @@ Následuje doporučení pro zotavení po havárii jednotlivých vrstev používa
 - [Nastavení zotavení po havárii pro nasazení aplikace ve více vrstvách SAP](../../../site-recovery/site-recovery-sap.md)
 - [Plánování a implementace Azure Virtual Machines pro SAP](planning-guide.md)
 - [Nasazení Azure Virtual Machines pro SAP](deployment-guide.md)
-- [Nasazení Azure Virtual Machines DBMS pro SAP](dbms-guide.md)
+- [Nasazení Azure Virtual Machines DBMS pro SAP](./dbms_guide_general.md)
