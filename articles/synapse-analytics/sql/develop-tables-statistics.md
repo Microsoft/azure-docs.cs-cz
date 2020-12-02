@@ -11,16 +11,16 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: b3e1c4b8dec0e62bb2a77939a36e38b61837033a
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: 52e3ea3e07a81495f64f70f72686154a02a654af
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638848"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451793"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistika v synapse SQL
 
-V tomto článku najdete doporučení a příklady pro vytváření a aktualizaci statistik pro optimalizaci dotazů pomocí prostředků SQL synapse: vyhrazený fond SQL a SQL Server bez serveru (Preview).
+V tomto článku najdete doporučení a příklady pro vytváření a aktualizaci statistik pro optimalizaci dotazů pomocí prostředků SQL synapse: vyhrazený fond SQL a fond SQL bez serveru.
 
 ## <a name="statistics-in-dedicated-sql-pool"></a>Statistika ve vyhrazeném fondu SQL
 
@@ -245,7 +245,7 @@ Chcete-li vytvořit objekt statistiky s více sloupci, použijte předchozí př
 > [!NOTE]
 > Histogram, který se používá k odhadu počtu řádků ve výsledku dotazu, je k dispozici pouze pro první sloupec uvedený v definici objektu statistice.
 
-V tomto příkladu je histogram v *\_ kategorii produktu*. Statistiky mezi sloupci se počítají podle *\_ kategorií produktů* a *\_ sub_category produktů* :
+V tomto příkladu je histogram v *\_ kategorii produktu*. Statistiky mezi sloupci se počítají podle *\_ kategorií produktů* a *\_ sub_category produktů*:
 
 ```sql
 CREATE STATISTICS stats_2cols
@@ -254,7 +254,7 @@ CREATE STATISTICS stats_2cols
     WITH SAMPLE = 50 PERCENT;
 ```
 
-Vzhledem k tomu, že existuje korelace mezi *\_ kategorií produktů* a *\_ \_ podkategoriím produktu* , může být objekt statistiky s více sloupci užitečný, pokud jsou k těmto sloupcům přistupovaly ve stejnou dobu.
+Vzhledem k tomu, že existuje korelace mezi *\_ kategorií produktů* a *\_ \_ podkategoriím produktu*, může být objekt statistiky s více sloupci užitečný, pokud jsou k těmto sloupcům přistupovaly ve stejnou dobu.
 
 #### <a name="create-statistics-on-all-columns-in-a-table"></a>Vytvořit statistiku pro všechny sloupce v tabulce
 
@@ -557,7 +557,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 - Vlastní chyba 2767 není podporována.
 
 
-## <a name="statistics-in-serverless-sql-pool-preview"></a>Statistika ve fondu SQL bez serveru (Preview)
+## <a name="statistics-in-serverless-sql-pool"></a>Statistika ve fondu SQL bez serveru
 
 Statistiky se pro konkrétní datovou sadu (cestu v úložišti) vytvoří na konkrétní sloupec.
 
@@ -566,7 +566,7 @@ Statistiky se pro konkrétní datovou sadu (cestu v úložišti) vytvoří na ko
 
 ### <a name="why-use-statistics"></a>Proč používat statistiku
 
-Čím více bez serveru SQL (Preview) ví o vašich datech, tím rychleji může na něm provádět dotazy. Shromažďování statistických údajů o vašich datech je jedním z nejdůležitějších věcí, které můžete udělat k optimalizaci vašich dotazů. 
+Čím více serverů SQL Server ví o vašich datech, tím rychleji může provádět dotazy na něj. Shromažďování statistických údajů o vašich datech je jedním z nejdůležitějších věcí, které můžete udělat k optimalizaci vašich dotazů. 
 
 Optimalizátor dotazů fondu SQL bez serveru je modul pro optimalizaci na základě nákladů. Porovnává náklady na různé plány dotazů a pak zvolí plán s nejnižšími náklady. Ve většině případů si zvolí plán, který se spustí nejrychleji. 
 

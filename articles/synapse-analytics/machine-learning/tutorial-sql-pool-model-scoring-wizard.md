@@ -9,14 +9,14 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: f5c5edc067b3f7b525fd129462c48ca50fdafc8f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 605a5f2f74ca6fb46d851c41f60001c48a95be95
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314040"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450878"
 ---
-# <a name="tutorial-machine-learning-model-scoring-wizard-for-dedicated-sql-pools"></a>Kurz: Průvodce bodování modelu Machine Learning pro vyhrazené fondy SQL
+# <a name="tutorial-machine-learning-model-scoring-wizard-preview-for-dedicated-sql-pools"></a>Kurz: Průvodce bodování modelu Machine Learning (Preview) pro vyhrazené fondy SQL
 
 Naučte se snadno rozšířit data ve vyhrazených fondech SQL pomocí prediktivních modelů strojového učení.  Modely, které vaše datové specialisty vytvářejí, jsou teď snadno dostupné pro odborníky na data pro prediktivní analýzy. Data Professional v synapse můžete jednoduše vybrat model z registru Azure Machine Learning modelu pro nasazení v synapse fondech SQL a spustit předpovědi pro rozšíření dat.
 
@@ -31,8 +31,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před 
 ## <a name="prerequisites"></a>Předpoklady
 
 - [Pracovní prostor synapse Analytics](../get-started-create-workspace.md) s účtem úložiště adls Gen2 nakonfigurovaný jako výchozí úložiště. Musíte být **přispěvatelem dat objektů BLOB úložiště** adls Gen2 systému souborů, se kterými pracujete.
-- Vyhrazený fond SQL ve vašem pracovním prostoru synapse Analytics. Podrobnosti najdete v tématu [vytvoření vyhrazeného fondu SQL](../quickstart-create-sql-pool-studio.md).
-- V pracovním prostoru synapse Analytics Azure Machine Learning propojenou službu. Podrobnosti najdete v tématu [vytvoření propojené služby Azure Machine Learning v synapse](quickstart-integrate-azure-machine-learning.md).
+- Vyhrazený fond SQL ve vašem pracovním prostoru Azure synapse Analytics. Podrobnosti najdete v tématu [vytvoření vyhrazeného fondu SQL](../quickstart-create-sql-pool-studio.md).
+- Azure Machine Learning propojená služba v pracovním prostoru Azure synapse Analytics. Podrobnosti najdete v tématu [vytvoření propojené služby Azure Machine Learning v synapse](quickstart-integrate-azure-machine-learning.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -149,4 +149,4 @@ Před spuštěním všech buněk v poznámkovém bloku ověřte, zda je instance
 ## <a name="next-steps"></a>Další kroky
 
 - [Rychlý Start: vytvoření nové propojené služby Azure Machine Learning v synapse](quickstart-integrate-azure-machine-learning.md)
-- [Funkce Machine Learning ve službě Azure synapse Analytics (verze Preview pro pracovní prostory)](what-is-machine-learning.md)
+- [Funkce Machine Learning ve službě Azure synapse Analytics](what-is-machine-learning.md)

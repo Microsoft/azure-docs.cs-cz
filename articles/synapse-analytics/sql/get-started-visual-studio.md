@@ -9,20 +9,20 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: a284e453a621860c0aebf68bef13d30e77971f88
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ef8e2a3d1a6b78e8f2b6b9a900ed2485c1a4a5d7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686153"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451601"
 ---
-# <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Připojení k synapse SQL pomocí sady Visual Studio a SSDT
+# <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Připojení k Synapse SQL pomocí sady Visual Studio a SSDT
 
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](get-started-visual-studio.md)
-> * [Sqlcmd](get-started-connect-sqlcmd.md) 
+> * [sqlcmd](get-started-connect-sqlcmd.md) 
 > * [SSMS](get-started-ssms.md)
 > 
 > 
@@ -30,9 +30,9 @@ ms.locfileid: "94686153"
 Pomocí sady Visual Studio se můžete dotazovat na vyhrazený fond SQL pomocí Azure synapse Analytics. Tato metoda používá rozšíření SQL Server Data Tools (SSDT) v aplikaci Visual Studio 2019. 
 
 > [!NOTE]
-> SSDT není podporován fondem SQL serveru (Preview).
+> SSDT není podporován fondem SQL bez serveru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li použít tento kurz, musíte mít následující komponenty:
 

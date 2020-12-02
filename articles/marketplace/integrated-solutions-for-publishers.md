@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: 2e976b895c6aa63b73c55b458668c00b64c6f960
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 705b0f02682b6aa41cb5c8e77d8da39faa5edb1f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91660900"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450123"
 ---
 # <a name="publish-an-integrated-solution"></a>Publikování integrovaného řešení
 
-Tento článek vysvětluje celkový proces a požadavky pro publikování integrovaného řešení na komerčním webu Marketplace. V rámci jedné sady prostředků nabízí integrované řešení v kombinaci s nasazením a podporou partnera služeb od dodavatelů softwaru technologii řešení typu Point-to-Solution. Partner služeb obsahuje nabídku Microsoft AppSource nebo Azure Marketplace jako [konzultační službu](./consulting-services.md).
+Tento článek vysvětluje celkový proces a požadavky pro publikování integrovaného řešení na komerčním webu Marketplace. V rámci jedné sady prostředků nabízí integrované řešení v kombinaci s nasazením a podporou partnera služeb od dodavatelů softwaru technologii řešení typu Point-to-Solution. Partner služeb obsahuje nabídku Microsoft AppSource nebo Azure Marketplace jako [konzultační službu](./plan-consulting-service-offer.md).
 
 Integrovaná řešení mají za cíl řešit konkrétní potřeby zákazníků nebo jejich scénář. Zprostředkovatelé začínají tím, že porozumí oborový problém nebo složité body. Potom integrují dvě nebo více nejlepších technologií, aby mohli pro zákazníky vytvořit sjednocené a opakované prostředí pro nasazení. Poskytovatelé můžou rychle získat a spustit zákazníky. Nabízejí jeden kontaktní bod zákazníkům, který poskytuje relevantní přizpůsobení, konzultace a podporu řešení. Výsledkem je integrované řešení, včetně technologií a služeb.
 
@@ -65,7 +65,7 @@ Po schválení vašeho jmenování použijte prostředky propojeného programu k
     * Cílové zákazníky
     * Pozice hodnoty
     * Ceny
-    * Licensing
+    * Licencování
     * podmínky a ujednání
     * Přístup k podpoře
     * Marketingové aktivity
@@ -77,7 +77,7 @@ Po schválení vašeho jmenování použijte prostředky propojeného programu k
     * Architektura řešení
     * Authentication
     * Uživatelské rozhraní
-    * Monitorování
+    * Sledování
     * Mechanismus nasazení
     * Rozhraní API
     * Sjednocené úložiště dat
@@ -104,7 +104,7 @@ Po schválení vašeho jmenování použijte prostředky propojeného programu k
 
 ## <a name="publish-your-integrated-solution"></a>Publikování integrovaného řešení
 
-Až dokončíte technickou integraci a marketingovou dokumentaci, přečtěte si příručku pro vydavatele pro [konzultační služby Microsoft AppSource a Azure Marketplace](./consulting-services.md). Pomocí tohoto prostředku určete, zda bude řešení Publikováno v Microsoft AppSource nebo Azure Marketplace. Použijte také průvodce pro přípravu vašich artefaktů publikování a dokončení procesu publikování.
+Až dokončíte technickou integraci a marketingovou dokumentaci, přečtěte si příručku pro vydavatele pro [konzultační služby Microsoft AppSource a Azure Marketplace](./plan-consulting-service-offer.md). Pomocí tohoto prostředku určete, zda bude řešení Publikováno v Microsoft AppSource nebo Azure Marketplace. Použijte také průvodce pro přípravu vašich artefaktů publikování a dokončení procesu publikování.
 
 I když pro konzultační nabídky služeb je k dispozici pět typů služeb, integrované řešení musí být buď důkaz konceptu, nebo plná implementace.
 

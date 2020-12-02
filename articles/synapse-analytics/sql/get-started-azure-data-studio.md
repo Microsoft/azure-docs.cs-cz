@@ -1,6 +1,6 @@
 ---
-title: Připojení k synapse SQL pomocí Azure Data Studio (Preview)
-description: Pomocí Azure Data Studio (Preview) se můžete připojit k SQL Azure synapse Analytics a dotazovat se na něj synapse.
+title: Připojení k synapse SQL pomocí Azure Data Studio
+description: Pomocí Azure Data Studio se můžete připojit a dotazovat SQL synapse v Azure synapse Analytics.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,24 +9,24 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3af28ef575f770a5b8c3fb73ade1f9c53be66843
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 580dfe779ff0f550524781076d3e27805ffd6689
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685745"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451654"
 ---
-# <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Připojení k synapse SQL pomocí Azure Data Studio (Preview)
+# <a name="connect-to-synapse-sql-with-azure-data-studio"></a>Připojení k synapse SQL pomocí Azure Data Studio
 
 > [!div class="op_single_selector"]
 >
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> * [Sqlcmd](get-started-connect-sqlcmd.md)
+> * [sqlcmd](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-K připojení a dotazování SQL synapse v Azure synapse Analytics můžete použít [Azure Data Studio (Preview)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) . 
+[Azure Data Studio)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) můžete použít pro připojení k SQL serveru a dotazování synapse v Azure synapse Analytics. 
 
 ## <a name="connect"></a>Připojit
 
@@ -42,7 +42,7 @@ Připojení vyžaduje následující parametry:
 * **Databáze:** Název databáze
 
 > [!NOTE]
-> Chcete-li použít **fond SQL bez serveru (Preview)** , adresa URL by měla vypadat takto:
+> Pokud byste chtěli použít **fond SQL bez serveru** , adresa URL by měla vypadat takto:
 >
 > - `<Azure Synapse workspace name>`-ondemand.sql.azuresynapse.net.
 >
@@ -71,7 +71,7 @@ Následující snímek obrazovky ukazuje **Podrobnosti připojení** pomocí **p
 
 Po úspěšném přihlášení byste měli vidět řídicí panel podobný tomuto: ![ řídicí panel](./media/get-started-azure-data-studio/4-dashboard.png)
 
-## <a name="query"></a>Dotazy
+## <a name="query"></a>Dotaz
 
 Po připojení můžete dotazovat synapse SQL pomocí podporovaných příkazů [jazyka Transact-SQL (T-SQL)](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) na instanci. Začněte tím, že vyberete **Nový dotaz** v zobrazení řídicího panelu.
 
@@ -93,6 +93,6 @@ Prozkoumejte další způsoby, jak se připojit k synapse SQL:
 - [SSMS](get-started-ssms.md)
 - [Power BI](get-started-power-bi-professional.md)
 - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Sqlcmd](get-started-connect-sqlcmd.md)
+- [sqlcmd](get-started-connect-sqlcmd.md)
 
 Další informace najdete na webu [použití Azure Data Studio k připojení a dotazování dat pomocí vyhrazeného fondu SQL ve službě Azure synapse Analytics](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-dw). 

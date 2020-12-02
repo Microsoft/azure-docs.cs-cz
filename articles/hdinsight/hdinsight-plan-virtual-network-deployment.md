@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 05/04/2020
-ms.openlocfilehash: 60bb16b0a4fd2e710d0d5fddc6cf82916f2f66af
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 750e8cc59f196fda6bf3a816885c3c0b29a69a56
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741416"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451910"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Plánování virtuální sítě pro Azure HDInsight
 
@@ -69,7 +69,7 @@ Pomocí kroků v této části zjistíte, jak přidat novou službu HDInsight do
 
     Pokud chcete najít stávající konfiguraci zabezpečení, použijte následující Azure PowerShell nebo příkazy rozhraní příkazového řádku Azure CLI:
 
-    * skupiny zabezpečení sítě,
+    * Skupiny zabezpečení sítě
 
         Nahraďte `RESOURCEGROUP` názvem skupiny prostředků, která obsahuje virtuální síť, a pak zadejte příkaz:
 
@@ -148,7 +148,7 @@ Chcete-li povolit překlad názvů mezi virtuální sítí a prostředky v přip
 
          * Předejte všechny ostatní požadavky na místní server DNS. Místní DNS zpracovává všechny další požadavky na překlad IP adres, dokonce i požadavky na internetové prostředky, jako je Microsoft.com.
 
-     * __Místní DNS__ : předejte požadavky na příponu DNS virtuální sítě na vlastní server DNS. Vlastní server DNS se pak přepošle do rekurzivního překladače Azure.
+     * __Místní DNS__: předejte požadavky na příponu DNS virtuální sítě na vlastní server DNS. Vlastní server DNS se pak přepošle do rekurzivního překladače Azure.
 
        Tato konfigurace směruje požadavky na plně kvalifikované názvy domén, které obsahují příponu DNS virtuální sítě na vlastní server DNS. Všechny ostatní požadavky (i u veřejných internetových adres) jsou zpracovávány místním serverem DNS.
 
@@ -212,4 +212,4 @@ Při vytváření clusteru HDInsight se vytvoří taky Nástroj pro vyrovnáván
 * Další informace o virtuálních sítích Azure najdete v tématu [Přehled azure Virtual Network](../virtual-network/virtual-networks-overview.md).
 * Další informace o skupinách zabezpečení sítě najdete v tématu [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md).
 * Další informace o trasách definovaných uživatelem najdete v tématu [trasy definované uživatelem a předávání IP](../virtual-network/virtual-networks-udr-overview.md).
-* Další informace o řízení provozu najdete v tématu [řízení síťového provozu](./control-network-traffic.md).
+* Další informace o řízení provozu, včetně integrace brány firewall, najdete v tématu [řízení síťového provozu](./control-network-traffic.md).

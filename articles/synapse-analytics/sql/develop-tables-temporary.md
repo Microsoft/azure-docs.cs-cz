@@ -10,18 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: dd285e8029d8e140380b0f90c60081d0e1f8dd56
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 06faa1da71331c299245a93af96166880e7732de
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305044"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451780"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Dočasné tabulky v synapse SQL
 
 Tento článek obsahuje základní pokyny k používání dočasných tabulek a zvýrazňuje principy dočasných tabulek úrovně relace v rámci synapse SQL. 
 
-Prostředky vyhrazeného fondu SQL i serveru SQL (ve verzi Preview) můžou využívat dočasné tabulky. Neserverový fond SQL má omezení popsaná na konci tohoto článku. 
+Prostředky vyhrazený fondem SQL i servery bez serveru můžou využívat dočasné tabulky. Neserverový fond SQL má omezení popsaná na konci tohoto článku. 
 
 ## <a name="temporary-tables"></a>Dočasné tabulky
 
@@ -33,7 +33,7 @@ Ve vyhrazeném prostředku fondu SQL nabízí dočasné tabulky přínos pro zv�
 
 ### <a name="create-a-temporary-table"></a>Vytvoření dočasné tabulky
 
-Dočasné tabulky jsou vytvářeny pomocí předpony názvu tabulky s `#` příponou.  Například:
+Dočasné tabulky jsou vytvářeny pomocí předpony názvu tabulky s `#` příponou.  Příklad:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -226,7 +226,7 @@ Vyhrazený fond SQL má omezení implementace pro dočasné tabulky:
 - V dočasných tabulkách nelze vytvořit zobrazení.
 - Dočasné tabulky lze vytvořit pouze pomocí distribuce hash nebo kruhové dotazování.  Distribuce replikované dočasné tabulky není podporována. 
 
-## <a name="temporary-tables-in-serverless-sql-pool-preview"></a>Dočasné tabulky v neserverovém fondu SQL (Preview)
+## <a name="temporary-tables-in-serverless-sql-pool"></a>Dočasné tabulky ve fondu SQL bez serveru
 
 Dočasné tabulky ve fondu SQL bez serveru jsou podporované, ale jejich použití je omezené. Nelze je použít v dotazech, které cílí na soubory. 
 

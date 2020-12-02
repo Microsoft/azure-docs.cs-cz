@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: dfc812771f0eeb8dcb0d95bdad1e76ed0b12297e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: c56d83e551265f3fb4de106cb8fa77efd6dcbabc
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92754371"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452125"
 ---
 # <a name="how-to-plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>Jak naplánovat nabídku konzultační služby na komerčním webu Marketplace
 
@@ -27,16 +27,16 @@ Konzultační nabídky služby se publikují jako seznam **kontaktů** . To znam
 
 ## <a name="primary-products-and-online-stores"></a>Primární produkty a online obchody
 
-Každá konzultační nabídka služeb by se měla zaměřit na produkt společnosti Microsoft, který se nazývá **primární produkt** . Primární produkt, který vyberete v partnerském centru, určuje, jestli se vaše nabídka publikuje do Microsoft AppSource nebo Azure Marketplace.
+Každá konzultační nabídka služeb by se měla zaměřit na produkt společnosti Microsoft, který se nazývá **primární produkt**. Primární produkt, který vyberete v partnerském centru, určuje, jestli se vaše nabídka publikuje do Microsoft AppSource nebo Azure Marketplace.
 
 * Pokud je primárním produktem konzultační služby Azure, nabídka bude uvedená v Azure Marketplace.
 * Pokud primární produkt není Azure, nabídka bude uvedená v AppSource.
 
 Další informace o rozdílech mezi AppSource a Azure Marketplace najdete v článku [online obchody pro obchod na webu Marketplace](./overview.md#commercial-marketplace-online-stores).
 
-## <a name="eligibility-requirements"></a>Požadavky na způsobilost
+## <a name="eligibility-requirements"></a>Požadavky na nárok
 
-Abychom zákazníkům předvedli odbornost v terénu, musíte před publikováním nabídky konzultační služby splnit sadu požadavků na způsobilost. Požadavky závisí na produktu v jádru vaší nabídky. Úplný seznam požadavků na způsobilost pro každý primární produkt je v [zásadách certifikace pro konzultační služby](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services).
+Abychom zákazníkům předvedli odbornost v terénu, musíte před publikováním nabídky konzultační služby splnit sadu požadavků na způsobilost. Požadavky závisí na produktu v jádru vaší nabídky. Úplný seznam požadavků na způsobilost pro každý primární produkt je v [zásadách certifikace pro konzultační služby](/legal/marketplace/certification-policies#800-consulting-services).
 
 > [!NOTE]
 > U některých primárních produktů musíte mít v oblasti řešení zlatou nebo stříbrné kompetence Microsoftu. Další informace najdete v tématu [Microsoft Partner Network kompetence](https://partner.microsoft.com/membership/competencies).
@@ -45,11 +45,11 @@ Abychom zákazníkům předvedli odbornost v terénu, musíte před publikován�
 
 Komerční tržiště podporuje pět typů konzultačních služeb:
 
-* **Posouzení** : vyhodnocení prostředí zákazníka pro určení použitelnosti řešení a odhad nákladů a časové osy jeho implementace.
-* **Přehled** : Úvod do řešení nebo služby pomocí platforem, ukázek a příkladů zákazníků.
-* **Implementace** : kompletní instalace, která má za následek plně funkční řešení.
-* **Ověření koncepce** : implementace omezeného rozsahu, která určuje, jestli řešení splňuje požadavky zákazníka.
-* **Workshop** : interaktivní zapojení na místě zákazníka. Může zahrnovat školení, stručné hodnocení, posouzení nebo ukázky založené na datech a prostředí zákazníka.
+* **Posouzení**: vyhodnocení prostředí zákazníka pro určení použitelnosti řešení a odhad nákladů a časové osy jeho implementace.
+* **Přehled**: Úvod do řešení nebo služby pomocí platforem, ukázek a příkladů zákazníků.
+* **Implementace**: kompletní instalace, která má za následek plně funkční řešení.
+* **Ověření koncepce**: implementace omezeného rozsahu, která určuje, jestli řešení splňuje požadavky zákazníka.
+* **Workshop**: interaktivní zapojení na místě zákazníka. Může zahrnovat školení, stručné hodnocení, posouzení nebo ukázky založené na datech a prostředí zákazníka.
 
 Vaše služba by měla mít pevnou a předem stanovenou dobu trvání až 10 týdnů. Trvání služby je nutné provést v seznamu nabídek explicitně.
 
@@ -84,7 +84,7 @@ Když vytvoříte nabídku konzultační služby v partnerském centru, zadáte 
 
 Abyste mohli snadněji vytvořit nabídku, připravte si některé z těchto položek předem. Pokud není uvedeno jinak, jsou vyžadovány následující položky.
 
-**Název** : Tento název se zobrazí jako název vaší nabídky na komerčním webu Marketplace. Název může být ve vaší společnosti. Nemůže obsahovat Emoji (Pokud se nejedná o symboly ochranných známek a autorských práv) a musí být omezené na 50 znaků. Název musí obsahovat dobu trvání a typ služby nabídky k maximalizaci optimalizace vyhledávacích vyhledávačů (SEO). Požadovaný formát je *Název: doba trvání + typ* . Nepoužívejte název vaší společnosti, pokud to není ani název produktu. Tady je několik příkladů:
+**Název**: Tento název se zobrazí jako název vaší nabídky na komerčním webu Marketplace. Název může být ve vaší společnosti. Nemůže obsahovat Emoji (Pokud se nejedná o symboly ochranných známek a autorských práv) a musí být omezené na 50 znaků. Název musí obsahovat dobu trvání a typ služby nabídky k maximalizaci optimalizace vyhledávacích vyhledávačů (SEO). Požadovaný formát je *Název: doba trvání + typ*. Nepoužívejte název vaší společnosti, pokud to není ani název produktu. Tady je několik příkladů:
 
 |Neříká se |Vyslovte . |
 |---|---|
@@ -92,9 +92,9 @@ Abyste mohli snadněji vytvořit nabídku, připravte si některé z těchto pol
 |Workshop na inteligentních informačních oznámeních |Inteligentní informační zprávy: 1 – týden Workshop |
 |Ověření koncepce migrace SQL Server podle společnosti Contoso |Migrace SQL: 3 – týden – ověření konceptu |
 
-**Shrnutí výsledků hledání** : popište účel nebo cíl vaší nabídky na 200 znaků nebo méně. Tento souhrn se používá ve výsledcích hledání ve výpisech z komerčního tržiště. Neměl by být stejný jako název. Zvažte zahrnutí nejdůležitějších klíčových slov SEO.
+**Shrnutí výsledků hledání**: popište účel nebo cíl vaší nabídky na 200 znaků nebo méně. Tento souhrn se používá ve výsledcích hledání ve výpisech z komerčního tržiště. Neměl by být stejný jako název. Zvažte zahrnutí nejdůležitějších klíčových slov SEO.
 
-**Popis** : Tento popis se zobrazí v seznamu komerčního tržiště. Vezměte v úvahu zahrnutí hodnot do hlavní výhody, zamýšlené uživatelské základny a libovolné kategorie nebo oborové přidružení.
+**Popis**: Tento popis se zobrazí v seznamu komerčního tržiště. Vezměte v úvahu zahrnutí hodnot do hlavní výhody, zamýšlené uživatelské základny a libovolné kategorie nebo oborové přidružení.
 
 Při psaní popisu použijte tato kritéria podle typu služby:
 
@@ -119,13 +119,13 @@ K formátování popisu můžete použít značky HTML. Do tohoto pole můžete 
 
 **Hledaná klíčová slova** (volitelné): Poskytněte až tři klíčová slova pro hledání, která můžou zákazníci použít k vyhledání vaší nabídky v online obchodech. Nemusíte zahrnovat **název** a **Popis** nabídky.
 
-**Doba trvání** : vaše konzultační nabídka služeb musí mít předem stanovenou dobu trvání až 10 týdnů.
+**Doba trvání**: vaše konzultační nabídka služeb musí mít předem stanovenou dobu trvání až 10 týdnů.
 
-**Kontaktní informace** : v partnerském centru budete požádáni o zadání jména, e-mailové adresy a telefonního čísla dvou osob ve vaší společnosti (může to být jeden z těchto dvou kontaktů). Tyto informace budeme používat ke komunikaci s vámi o vaší nabídce. Tyto informace se zákazníkům nezobrazují, ale můžou být poskytovány partnerům Cloud Solution Provider (CSP).
+**Kontaktní informace**: v partnerském centru budete požádáni o zadání jména, e-mailové adresy a telefonního čísla dvou osob ve vaší společnosti (může to být jeden z těchto dvou kontaktů). Tyto informace budeme používat ke komunikaci s vámi o vaší nabídce. Tyto informace se zákazníkům nezobrazují, ale můžou být poskytovány partnerům Cloud Solution Provider (CSP).
 
-**Podpůrné dokumenty** : Nahrajte aspoň jeden a až tři dokumenty PDF pro zákazníky, které poskytují informace o vaší nabídce. Můžou to být například dokumenty White Paper nebo brožury.
+**Podpůrné dokumenty**: Nahrajte aspoň jeden a až tři dokumenty PDF pro zákazníky, které poskytují informace o vaší nabídce. Můžou to být například dokumenty White Paper nebo brožury.
 
-**Média Marketplace – loga** : Zadejte soubor PNG pro logo o velikosti v angličtině. Partnerské centrum bude používat k vytvoření malého loga. Můžete volitelně nahradit malé logo jiným obrázkem později.
+**Média Marketplace – loga**: Zadejte soubor PNG pro logo o velikosti v angličtině. Partnerské centrum bude používat k vytvoření malého loga. Můžete volitelně nahradit malé logo jiným obrázkem později.
 
 * Velký (od 216 x 216 do 350 × 350 px, požadováno)
 * Malý (48 x 48 px, volitelné)
@@ -139,7 +139,7 @@ Postupujte podle těchto pokynů pro vaše loga:
 * Pokud použijete průhledné pozadí, ujistěte se, že text ani logo nejsou bílé, černé nebo modré.
 * Vyhněte se přechodům v logu nebo na pozadí. Na logo neumisťujte žádný text, a to ani název vaší společnosti nebo název značky.
 
-**Media Marketplace – snímky obrazovky** : přidejte aspoň jednu a až pět imagí, které předvádí vaši nabídku. Všechny obrázky musí mít velikost 1280 × 720 pixelů a v. Formát PNG.
+**Media Marketplace – snímky obrazovky**: přidejte aspoň jednu a až pět imagí, které předvádí vaši nabídku. Všechny obrázky musí mít velikost 1280 × 720 pixelů a v. Formát PNG.
 
 **Média Marketplace – videa** (volitelné): můžete přidat až čtyři videa, která předvádí vaši nabídku. Videa musí být hostována na YouTube nebo Vimeo a mají miniaturu (soubor PNG 1280 x 720).
 

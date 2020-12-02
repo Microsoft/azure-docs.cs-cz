@@ -1,6 +1,6 @@
 ---
 title: Sdílená databáze
-description: Azure synapse Analytics poskytuje sdílený model metadat, ve kterém se vytváří databáze ve fondu Apache Spark bez serveru, zpřístupní ho z fondu SQL bez serveru (Preview) a modulů SQL fondů.
+description: Azure synapse Analytics poskytuje sdílený model metadat, ve kterém se vytváří databáze ve fondu Apache Spark bez serveru, takže bude přístupný z fondu SQL bez serveru a z fondů SQL.
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,20 +10,18 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e17eb44a5f4f4aace9ce9d541b8218b35db0f5d3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 14ae8b8670db53761d085bc019711e829633601b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317834"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451810"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Sdílená databáze Azure synapse Analytics
 
-Azure synapse Analytics umožňuje různým výpočetním modulům pracovních prostorů sdílet databáze a tabulky mezi svým serverem Apache Sparkch fondů bez serveru (Preview) a modulem SQL Pool (Preview) bez serveru.
+Azure synapse Analytics umožňuje různým výpočetním modulům pracovních prostorů sdílet databáze a tabulky mezi svými fondy Apache Spark serverů bez serveru a neserverovým fondem SQL.
 
-[!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
-
-Databáze vytvořená pomocí úlohy Spark se bude zobrazovat se stejným názvem jako všechny aktuální a budoucí fondy Spark (Preview) v pracovním prostoru, včetně neserverového fondu SQL.
+Databáze vytvořená pomocí úlohy Spark se bude zobrazovat se stejným názvem jako všechny aktuální a budoucí fondy Sparku v pracovním prostoru, včetně neserverového fondu SQL.
 
 Výchozí databáze Spark, která je volána `default` , bude také viditelná v kontextu fondu SQL bez serveru jako databáze s názvem `default` .
 
@@ -48,7 +46,7 @@ Pokud se například `mydb` v pracovním prostoru Azure synapse vytvoří datab�
 
 Databáze a tabulky Spark spolu s jejich synchronizovanými reprezentacemi v modulu SQL budou zabezpečeny na základní úrovni úložiště.
 
-Objekt zabezpečení, který vytváří databázi, je považován za vlastníka této databáze a má všechna práva k databázi a jejím objektům.
+Objekt zabezpečení, který vytvoří databázi, se považuje za vlastníka databáze a má všechna práva k databázi a jejím objektům.
 
 Chcete-li objektu zabezpečení, například uživateli nebo skupině zabezpečení, získat přístup k databázi, zadejte příslušnou složku POSIX a oprávnění k souborům v `warehouse` adresáři. 
 

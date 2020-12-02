@@ -7,33 +7,33 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 07/12/2019
-ms.author: anjangsh
+ms.date: 11/13/2020
+ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7496cedd127182482bccf97909cc0a0a4a78253f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4683bd84873506483209f4a0eb3751a1b163ed48
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313422"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449849"
 ---
 # <a name="geo-restore-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Geografické obnovení vyhrazeného fondu SQL ve službě Azure synapse Analytics
 
-V tomto článku se dozvíte, jak obnovit vyhrazený fond SQL z geografické zálohy prostřednictvím Azure Portal a PowerShellu.
+V tomto článku se dozvíte, jak obnovit vyhrazený fond SQL (dřív SQL DW) z geografické zálohy prostřednictvím Azure Portal a PowerShellu.
 
 ## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**Ověřte svoji kapacitu DTU.** Každý vyhrazený fond SQL je hostovaný [logickým SQL serverem](../../azure-sql/database/logical-servers.md) (například MyServer.Database.Windows.NET), který má výchozí kvótu DTU. Ověřte, zda má systém SQL Server dostatek zbývajících kvót DTU pro obnovenou databázi. Informace o tom, jak vypočítat potřebné DTU nebo požádat o více DTU, najdete v tématu [vyžádání změny kvóty DTU](sql-data-warehouse-get-started-create-support-ticket.md).
+**Ověřte svoji kapacitu DTU.** Každý vyhrazený fond SQL (dřív SQL DW) je hostovaný [logickým SQL serverem](../../azure-sql/database/logical-servers.md) (například MyServer.Database.Windows.NET), který má výchozí kvótu DTU. Ověřte, zda má systém SQL Server dostatek zbývajících kvót DTU pro obnovenou databázi. Informace o tom, jak vypočítat potřebné DTU nebo požádat o více DTU, najdete v tématu [vyžádání změny kvóty DTU](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>Obnovení z geografické oblasti Azure prostřednictvím PowerShellu
 
 K obnovení z geografické zálohy použijte rutinu [Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) .
 
 > [!NOTE]
-> K Gen2 můžete použít geografické obnovení. Provedete to tak, že jako volitelný parametr zadáte Gen2 ServiceObjectiveName (např. DW1000 **c** ).
+> K Gen2 můžete použít geografické obnovení. Provedete to tak, že jako volitelný parametr zadáte Gen2 ServiceObjectiveName (např. DW1000 **c**).
 >
 
 1. Než začnete, nezapomeňte [nainstalovat Azure PowerShell](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
@@ -74,28 +74,24 @@ Pokud je zdrojová databáze povolena TDE, obnovená databáze bude TDE povolena
 
 ## <a name="restore-from-an-azure-geographical-region-through-azure-portal"></a>Obnovení z geografické oblasti Azure prostřednictvím Azure Portal
 
-Pomocí níže uvedených kroků obnovte vyhrazený fond SQL z geografické zálohy:
+Pomocí níže uvedeného postupu obnovte vyhrazený fond SQL (dřív SQL DW) z geografické zálohy:
 
 1. Přihlaste se ke svému účtu [Azure Portal](https://portal.azure.com/) .
-2. Klikněte na **+ Vytvořit prostředek**.
+1. Vyhledejte **vyhrazené fondy SQL (dříve SQL DW)**.
 
-   ![Nový datový sklad](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
+   ![Nový DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
-3. Klikněte na **databáze** a potom na **Azure synapse Analytics (dřív SQL DW)**.
-
-   ![Nový DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
-
-4. Vyplňte informace požadované na kartě **základy** a klikněte na **Další: Další nastavení**.
+1. Klikněte na Přidat a vyplňte informace požadované na kartě **základy** a klikněte na **Další: Další nastavení**.
 
    ![Základy](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 
-5. Pro možnost **použít existující datový** parametr vyberte **zálohovat** a v možnostech posouvání vyberte příslušnou zálohu. Klikněte na **Zkontrolovat a vytvořit**.
+1. Pro možnost **použít existující datový** parametr vyberte **zálohovat** a v možnostech posouvání vyberte příslušnou zálohu. Klikněte na **Zkontrolovat a vytvořit**.
 
    ![zálohování](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
 
-6. Po obnovení datového skladu ověřte, zda je **stav** online.
+1. Po obnovení datového skladu ověřte, zda je **stav** online.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Obnovení existujícího vyhrazeného fondu SQL](sql-data-warehouse-restore-active-paused-dw.md)
-- [Obnovení odstraněného vyhrazeného fondu SQL](sql-data-warehouse-restore-deleted-dw.md)
+- [Obnovení existujícího vyhrazeného fondu SQL (dřív SQL DW)](sql-data-warehouse-restore-active-paused-dw.md)
+- [Obnovení odstraněného vyhrazeného fondu SQL (dřív SQL DW)](sql-data-warehouse-restore-deleted-dw.md)

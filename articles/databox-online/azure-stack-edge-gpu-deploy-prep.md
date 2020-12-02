@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 46c5271c8ded970442d1ae4022573473997d98af
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: cdfd012d5015e156439a1afa89e818bf82b64dc6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426992"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449334"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>Kurz: Příprava na nasazení Azure Stack Edge pro s grafickým procesorem 
 
@@ -58,7 +58,7 @@ Teď můžete začít shromažďovat informace týkající se konfigurace softwa
 Před nasazením zařízení je potřeba shromáždit informace ke konfiguraci softwaru na zařízení Azure Stack Edge pro. Když se některé z těchto informací předem připravují, pomůže vám to zjednodušit proces nasazení zařízení ve vašem prostředí. Pomocí [kontrolního seznamu konfigurace nasazení Azure Stack Edge pro](azure-stack-edge-gpu-deploy-checklist.md) si poznamenejte podrobnosti konfigurace při nasazování zařízení.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Níže jsou uvedené požadavky na konfiguraci pro váš Azure Stack hraniční prostředek, vaše zařízení Azure Stack Edge pro a síť datacenter.
 
@@ -66,7 +66,7 @@ Níže jsou uvedené požadavky na konfiguraci pro váš Azure Stack hraniční 
 
 Než začnete, ujistěte se, že:
 
-- Vaše předplatné Microsoft Azure je povolené pro prostředek Azure Stack Edge. Ujistěte se, že jste použili podporované předplatné, jako je například [Microsoft smlouva Enterprise (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)nebo [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/). Předplatná s průběžnými platbami se nepodporují. Pokud chcete zjistit, jaký typ předplatného Azure máte, přečtěte si téma [co je nabídka Azure?](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer).
+- Vaše předplatné Microsoft Azure je povolené pro prostředek Azure Stack Edge. Ujistěte se, že jste použili podporované předplatné, jako je například [Microsoft smlouva Enterprise (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](/partner-center/azure-plan-lp)nebo [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/). Předplatná s průběžnými platbami se nepodporují. Pokud chcete zjistit, jaký typ předplatného Azure máte, přečtěte si téma [co je nabídka Azure?](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer).
 - Máte oprávnění vlastníka nebo přispěvatele na úrovni skupiny prostředků pro Azure Stack hraniční pro/Data Box Gateway, IoT Hub a Azure Storage prostředky.
 
     - Pokud chcete vytvořit Azure Stack hraničního nebo Data Box Gatewayho prostředku, měli byste mít oprávnění jako Přispěvatel (nebo vyšší) vymezené na úrovni skupiny prostředků. 
@@ -74,7 +74,7 @@ Než začnete, ujistěte se, že:
         - Pokud chcete zaregistrovat poskytovatele prostředků, v Azure Portal přejít na **domovskou > předplatná > > poskytovatelé prostředků vašich předplatných**. 
         - Vyhledejte konkrétního poskytovatele prostředků, například `Microsoft.DataBoxEdge` a zaregistrujte poskytovatele prostředků. 
     - Pokud chcete vytvořit prostředek účtu úložiště, musíte pro něj znovu použít rozsah přístupu přispěvatele nebo vyšší úrovně. Azure Storage je ve výchozím nastavení registrovaný poskytovatel prostředků.
-- Správce nebo uživatel má přístup k Azure Active Directory Graph API pro generování aktivačního klíče nebo operací s přihlašovacími údaji, jako je vytvoření sdílené složky, který používá účet úložiště. Další informace najdete v tématu [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
+- Správce nebo uživatel má přístup k Azure Active Directory Graph API pro generování aktivačního klíče nebo operací s přihlašovacími údaji, jako je vytvoření sdílené složky, který používá účet úložiště. Další informace najdete v tématu [Azure Active Directory Graph API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 
 
 ### <a name="for-the-azure-stack-edge-pro-device"></a>Pro zařízení Azure Stack Edge pro
@@ -113,7 +113,7 @@ Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal násl
 
     ![Vytvoření prostředku 1](media/azure-stack-edge-gpu-deploy-prep/create-resource-1.png)
 
-4. Vyberte typ zařízení. V části **Azure Stack Edge pro**zvolte **Azure Stack Edge pro s grafickým procesorem** a pak zvolte **Vybrat**. Pokud se zobrazí nějaké problémy nebo nemůžete vybrat typ zařízení, přejděte k tématu [řešení potíží s pořadím](azure-stack-edge-troubleshoot-ordering.md).
+4. Vyberte typ zařízení. V části **Azure Stack Edge pro** zvolte **Azure Stack Edge pro s grafickým procesorem** a pak zvolte **Vybrat**. Pokud se zobrazí nějaké problémy nebo nemůžete vybrat typ zařízení, přejděte k tématu [řešení potíží s pořadím](azure-stack-edge-troubleshoot-ordering.md).
 
     ![Vytvoření prostředku 3](media/azure-stack-edge-gpu-deploy-prep/create-resource-3.png)
 
@@ -126,7 +126,7 @@ Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal násl
     |Nastavení  |Hodnota  |
     |---------|---------|
     |Předplatné    |Tato hodnota se vyplní automaticky na základě dřívějšího výběru. Předplatné je propojené s vaším fakturačním účtem. |
-    |Skupina prostředků  |Vyberte existující skupinu nebo vytvořte novou.<br>Další informace o [skupinách prostředků Azure](../azure-resource-manager/resource-group-overview.md).     |
+    |Skupina prostředků  |Vyberte existující skupinu nebo vytvořte novou.<br>Další informace o [skupinách prostředků Azure](../azure-resource-manager/management/overview.md).     |
 
 7. Zadejte nebo vyberte následující **Podrobnosti o instanci**.
 
@@ -149,7 +149,7 @@ Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal násl
 
 9. Vyberte **Další: značky**. Volitelně můžete zadat značky pro kategorizaci prostředků a konsolidaci fakturace. Vyberte **Další: Zkontrolovat a vytvořit**.
 
-10. Na kartě **Revize + vytvořit** si přečtěte **Podrobnosti o cenách**, **podmínky použití**a podrobnosti k vašemu prostředku. Zaškrtněte pole se seznamem pro **uživatele, kteří si prošli podmínka ochrany osobních údajů**.
+10. Na kartě **Revize + vytvořit** si přečtěte **Podrobnosti o cenách**, **podmínky použití** a podrobnosti k vašemu prostředku. Zaškrtněte pole se seznamem pro **uživatele, kteří si prošli podmínka ochrany osobních údajů**.
 
     ![Vytvoření prostředku 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png) 
 
@@ -207,6 +207,3 @@ Přejděte k dalšímu kurzu, kde se dozvíte, jak nainstalovat Azure Stack Edge
 
 > [!div class="nextstepaction"]
 > [Nainstalovat Azure Stack Edge pro](./azure-stack-edge-gpu-deploy-install.md)
-
-
-

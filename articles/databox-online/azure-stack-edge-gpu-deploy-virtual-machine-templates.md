@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 11/16/2020
 ms.author: alkohli
-ms.openlocfilehash: d0d02532f39d676772e5ee5d6414b802faffba7c
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 93df80cd6fcd6f5553ea509a4778a155299bb057
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505933"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449064"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro prostřednictvím šablon
 
@@ -76,7 +76,7 @@ Tyto požadavky nakonfigurujte pro vytváření prostředků, které se budou po
     
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků Azure pomocí příkazu [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure, jako je například účet úložiště, disk a spravovaný disk.
+Vytvořte skupinu prostředků Azure pomocí příkazu [New-AzureRmResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure, jako je například účet úložiště, disk a spravovaný disk.
 
 > [!IMPORTANT]
 > Všechny prostředky se vytvoří ve stejném umístění jako zařízení a umístění je nastavené na **DBELocal**.
@@ -149,7 +149,7 @@ V typickém prostředí byste měli nakonfigurovat DNS tak, aby všechny účty 
 
 ### <a name="optional-install-certificates"></a>Volitelné Instalace certifikátů
 
-Pokud se připojíte přes Průzkumník služby Storage pomocí *protokolu HTTP* , tento krok přeskočte. Pokud používáte *protokol HTTPS* , musíte v Průzkumník služby Storage nainstalovat příslušné certifikáty. V takovém případě nainstalujte certifikát koncového bodu objektu BLOB. Další informace najdete v tématu Vytvoření a nahrání certifikátů v tématu [Správa certifikátů](azure-stack-edge-j-series-manage-certificates.md). 
+Pokud se připojíte přes Průzkumník služby Storage pomocí *protokolu HTTP*, tento krok přeskočte. Pokud používáte *protokol HTTPS*, musíte v Průzkumník služby Storage nainstalovat příslušné certifikáty. V takovém případě nainstalujte certifikát koncového bodu objektu BLOB. Další informace najdete v tématu Vytvoření a nahrání certifikátů v tématu [Správa certifikátů](azure-stack-edge-j-series-manage-certificates.md). 
 
 ### <a name="create-and-upload-a-vhd"></a>Vytvoření a nahrání virtuálního pevného disku
 
@@ -189,13 +189,13 @@ Zkopírujte všechny bitové kopie disků, které se mají použít, do objektů
 
     ![Připojit k Azure Storage 2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-2.png)
 
-6. Do pole **připojit s názvem a klíč** zadejte **zobrazované jméno** , **název účtu úložiště** , Azure Storage **klíč účtu**. Vyberte **jinou** doménu úložiště a pak zadejte `<device name>.<DNS domain>` připojovací řetězec. Pokud jste certifikát nenainstalovali v Průzkumník služby Storage, podívejte se na možnost **použít protokol HTTP** . Vyberte **Další**.
+6. Do pole **připojit s názvem a klíč** zadejte **zobrazované jméno**, **název účtu úložiště**, Azure Storage **klíč účtu**. Vyberte **jinou** doménu úložiště a pak zadejte `<device name>.<DNS domain>` připojovací řetězec. Pokud jste certifikát nenainstalovali v Průzkumník služby Storage, podívejte se na možnost **použít protokol HTTP** . Vyberte **Další**.
 
     ![Připojit s názvem a klíčem](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-name-key-1.png)
 
 7. Zkontrolujte **Souhrn připojení** a vyberte **připojit**.
 
-8. Účet úložiště se zobrazí v levém podokně. Vyberte a rozbalte účet úložiště. Vyberte **kontejnery objektů BLOB** , klikněte pravým tlačítkem a vyberte **vytvořit kontejner objektů BLOB**. Zadejte název kontejneru objektů BLOB.
+8. Účet úložiště se zobrazí v levém podokně. Vyberte a rozbalte účet úložiště. Vyberte **kontejnery objektů BLOB**, klikněte pravým tlačítkem a vyberte **vytvořit kontejner objektů BLOB**. Zadejte název kontejneru objektů BLOB.
 
 9. Vyberte kontejner, který jste právě vytvořili, a v pravém podokně vyberte **nahrát > nahrát soubory**. 
 
@@ -249,7 +249,7 @@ Soubor `CreateImageAndVnet.parameters.json` má následující parametry:
               "value": "<Operating system corresponding to the VHD you upload can be Windows or Linux>"
         },
         "imageName": {
-            "value": "<Name for the VM iamge>"
+            "value": "<Name for the VM image>"
         },
         "imageUri": {
               "value": "<Path to the VHD that you uploaded in the Storage account>"
@@ -441,7 +441,7 @@ Přiřaďte příslušné parametry `CreateVM.parameters.json` pro zařízení A
 
 1. Zadejte jedinečný název, název síťového rozhraní a název ipconfig. 
 1. Zadejte uživatelské jméno, heslo a podporovanou velikost virtuálního počítače.
-1. Zadejte stejný název pro **VnetName** , **Subnet** a **ImageName** , jak je uvedeno v parametrech pro `CreateImageAndVnet.parameters.json` . Pokud jste například předali VnetName, Subnet a ImageName jako **vnet1** , **SUBNET1** a **image1** , ponechte tyto hodnoty stejné i pro parametry v této šabloně.
+1. Zadejte stejný název pro **VnetName**, **Subnet** a **ImageName** , jak je uvedeno v parametrech pro `CreateImageAndVnet.parameters.json` . Pokud jste například předali VnetName, Subnet a ImageName jako **vnet1**, **SUBNET1** a **image1**, ponechte tyto hodnoty stejné i pro parametry v této šabloně.
 1. Teď budete potřebovat statickou IP adresu, která se přiřadí k virtuálnímu počítači ve výše definované síti podsítě. Nahraďte **PrivateIPAddress** touto adresou v souboru parametrů. Pokud chcete VIRTUÁLNÍmu počítači získat IP adresu z místního serveru DCHP, ponechte tuto `privateIPAddress` hodnotu prázdnou.  
     
     ```json
@@ -629,4 +629,4 @@ To verify if the environment variable for AzCopy was set correctly, take the fol
 
 ## <a name="next-steps"></a>Další kroky
 
-[Rutiny Azure Resource Manager](https://docs.microsoft.com/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Rutiny Azure Resource Manager](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)

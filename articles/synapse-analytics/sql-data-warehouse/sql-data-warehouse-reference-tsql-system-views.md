@@ -1,6 +1,6 @@
 ---
-title: Systémová zobrazení pro vyhrazený fond SQL
-description: Obsahuje odkazy na dokumentaci k systémovým zobrazením vyhrazeného fondu SQL ve službě Azure synapse Analytics.
+title: Systémová zobrazení pro vyhrazený fond SQL (dříve SQL DW)
+description: Obsahuje odkazy na dokumentaci k systémovým zobrazením pro vyhrazený fond SQL (dříve SQL DW) ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 01/06/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 81ce875b5ee9baa96fe9aaa9fa4ea99a730d307e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9149238099704a3567a8d7f34eddbc99ee8f304e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313359"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449907"
 ---
-# <a name="system-views-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Systémová zobrazení pro vyhrazený fond SQL ve službě Azure synapse Analytics
+# <a name="system-views-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Systémová zobrazení pro vyhrazený fond SQL (dříve SQL DW) ve službě Azure synapse Analytics
 
-Obsahuje odkazy na dokumentaci pro příkazy jazyka T-SQL podporované ve vyhrazeném fondu SQL.
+Obsahuje odkazy na dokumentaci pro příkazy jazyka T-SQL podporované ve vyhrazeném fondu SQL (dříve SQL DW).
 
-## <a name="dedicated-sql-pool-catalog-views"></a>Zobrazení katalogu vyhrazeného fondu SQL
+## <a name="dedicated-sql-pool-formerly-sql-dw-catalog-views"></a>Vyhrazený fond SQL (dříve SQL DW) zobrazení katalogu
 
 * [sys.pdw_column_distribution_properties](/sql/relational-databases/system-catalog-views/sys-pdw-column-distribution-properties-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.pdw_distributions](/sql/relational-databases/system-catalog-views/sys-pdw-distributions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -48,7 +48,7 @@ Obsahuje odkazy na dokumentaci pro příkazy jazyka T-SQL podporované ve vyhraz
 * [sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.workload_management_workload_groups](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-groups-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="dedicated-sql-pool-dynamic-management-views-dmvs"></a>Zobrazení dynamické správy vyhrazeného fondu SQL (zobrazení dynamické správy)
+## <a name="dedicated-sql-pool-formerly-sql-dw-dynamic-management-views-dmvs"></a>Vyhrazený fond SQL (dříve SQL DW) zobrazení dynamické správy (zobrazení dynamické správy)
 
 * [sys.dm_pdw_dms_cores](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-cores-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_pdw_dms_external_work](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-external-work-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -70,9 +70,9 @@ Obsahuje odkazy na dokumentaci pro příkazy jazyka T-SQL podporované ve vyhraz
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="sql-server-dmvs-applicable-to-dedicated-sql-pool"></a>SQL Server zobrazení dynamické správy vztahující se k vyhrazenému fondu SQL
+## <a name="sql-server-dmvs-applicable-to-dedicated-sql-pool-formerly-sql-dw"></a>SQL Server zobrazení dynamické správy vztahující se k vyhrazenému fondu SQL (dříve SQL DW)
 
-Následující zobrazení dynamické správy platí pro vyhrazený fond SQL, ale je nutné ho spustit připojením k **Hlavní** databázi.
+Následující zobrazení dynamické správy platí pro vyhrazený fond SQL (dřív SQL DW), ale musí se spustit připojením k **Hlavní** databázi.
 
 * [sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -152,16 +152,16 @@ Následující zobrazení dynamické správy platí pro vyhrazený fond SQL, ale
 * [sys. Types](/sql/relational-databases/system-catalog-views/sys-types-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [zobrazení sys. views](/sql/relational-databases/system-catalog-views/sys-views-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="sql-server-dmvs-available-in-dedicated-sql-pool"></a>SQL Server zobrazení dynamické správy k dispozici ve vyhrazeném fondu SQL
+## <a name="sql-server-dmvs-available-in-dedicated-sql-pool-formerly-sql-dw"></a>SQL Server zobrazení dynamické správy k dispozici ve vyhrazeném fondu SQL (dříve SQL DW)
 
-Vyhrazený fond SQL zpřístupňuje mnoho SQL Serverch zobrazení dynamické správy (zobrazení dynamické správy). Tato zobrazení, při dotazování ve vyhrazeném fondu SQL, hlásí stav databází SQL spuštěných v distribucích.
+Vyhrazený fond SQL (dříve SQL DW) zveřejňuje mnoho zobrazení SQL Server dynamické správy (zobrazení dynamické správy). Tato zobrazení, při dotazování ve vyhrazeném fondu SQL (dříve SQL DW), hlásí stav databází SQL spuštěných v distribucích.
 
-Vyhrazený fond SQL a paralelní datový sklad (PDW) používají stejná systémová zobrazení. Každý DMV má sloupec s názvem pdw_node_id, což je identifikátor pro výpočetní uzel.
+Vyhrazený fond SQL (dříve SQL DW) a paralelní datový sklad (PDW) používají stejná systémová zobrazení. Každý DMV má sloupec s názvem pdw_node_id, což je identifikátor pro výpočetní uzel.
 
 > [!NOTE]
 > Chcete-li použít tato zobrazení, vložte do názvu ' pdw_nodes_ ', jak je znázorněno v následující tabulce:
 
-| DMV název ve vyhrazeném fondu SQL | SQL Server článek Transact-SQL|
+| Název DMV ve vyhrazeném fondu SQL (dřív SQL DW) | SQL Server článek Transact-SQL|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
@@ -223,9 +223,9 @@ Vyhrazený fond SQL a paralelní datový sklad (PDW) používají stejná systé
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-session-transactions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-top-version-generators-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-dedicated-sql-pool"></a>SQL Server 2016 zobrazení dynamické správy je k dispozici ve vyhrazeném fondu SQL
+## <a name="sql-server-2016-polybase-dmvs-available-in-dedicated-sql-pool-formerly-sql-dw"></a>SQL Server 2016 zobrazení dynamické správy je k dispozici ve vyhrazeném fondu SQL (dříve SQL DW).
 
-Následující zobrazení dynamické správy platí pro vyhrazený fond SQL, ale je nutné ho spustit připojením k **Hlavní** databázi.
+Následující zobrazení dynamické správy platí pro vyhrazený fond SQL (dřív SQL DW), ale musí se spustit připojením k **Hlavní** databázi.
 
 * [sys.dm_exec_compute_node_errors](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-errors-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_exec_compute_node_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-status-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -252,4 +252,4 @@ Následující zobrazení dynamické správy platí pro vyhrazený fond SQL, ale
 
 ## <a name="next-steps"></a>Další kroky
 
-Další referenční informace najdete v tématu [příkazy t-SQL ve vyhrazeném fondu SQL](sql-data-warehouse-reference-tsql-statements.md)a [prvcích jazyka t-SQL ve vyhrazeném fondu SQL](sql-data-warehouse-reference-tsql-language-elements.md).
+Další referenční informace najdete v tématu [příkazy t-SQL ve vyhrazeném fondu SQL (dřív SQL DW)](sql-data-warehouse-reference-tsql-statements.md)a [prvcích jazyka t-SQL ve vyhrazeném fondu SQL (dřív SQL DW)](sql-data-warehouse-reference-tsql-language-elements.md).

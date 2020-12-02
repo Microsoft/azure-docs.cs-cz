@@ -1,6 +1,6 @@
 ---
 title: Připojení k synapse SQL pomocí sqlcmd
-description: Použijte nástroj příkazového řádku Sqlcmd pro připojení a dotazování fondu SQL bez serveru (Preview) a vyhrazeného fondu SQL.
+description: Pomocí nástroje příkazového řádku Sqlcmd se můžete připojit k fondu SQL a vyhrazenému fondu SQL bez serveru a dotazování.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,23 +9,23 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43fae026f91e4430fbce0d01141a86a913db089d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 88ee95789bdc1c6ee9884a021067318caab203d4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686136"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451645"
 ---
 # <a name="connect-to-synapse-sql-with-sqlcmd"></a>Připojení k synapse SQL pomocí sqlcmd
 
 > [!div class="op_single_selector"]
-> * [Azure Data Studio (Preview)](get-started-azure-data-studio.md)
+> * [Azure Data Studio)](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md)
+> * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-Nástroj příkazového řádku [Sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) můžete použít k připojení a dotazování fondu SQL bez serveru (Preview) a vyhrazeného fondu SQL v synapse SQL.  
+Nástroj příkazového řádku [Sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) můžete použít k připojení a dotazování fondu SQL bez serveru a vyhrazeného fondu SQL v synapse SQL.  
 
 ## <a name="1-connect"></a>1. připojení
 Chcete-li začít s nástrojem [Sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), otevřete příkazový řádek a zadejte příkaz **Sqlcmd** následovaný připojovacím řetězcem pro vaši databázi SQL synapse. Připojovací řetězec bude muset mít následující parametry:
@@ -41,7 +41,7 @@ Chcete-li použít ověřování SQL Server, je nutné přidat parametry uživat
 
 Připojovací řetězec může vypadat jako v následujícím příkladu:
 
-**Fond SQL bez serveru**
+**Bezserverový fond SQL**
 
 ```sql
 C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P Enter_Your_Password_Here -I
@@ -59,7 +59,7 @@ Chcete-li používat integrované ověřování v Azure Active Directory, je tř
 
 Připojovací řetězec může vypadat jako v následujících příkladech:
 
-**Fond SQL bez serveru**
+**Bezserverový fond SQL**
 
 ```
 C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -G -I

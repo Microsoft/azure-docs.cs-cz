@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b362e1aecfa2cd4e5677230fcb94113b27a44ec6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 94c1bed8d94f73bc7794037b307618f4c36c4518
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637458"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450599"
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
 > [!NOTE]
@@ -63,12 +63,12 @@ Zde je tok dat vysoké úrovně pro a shrnutí kroků pro kopírování pomocí 
 ### <a name="considerations-for-using-gateway"></a>Předpoklady pro používání brány
 * Jednu instanci brány pro správu dat lze použít pro více místních zdrojů dat. **Jedna instance brány je ale vázaná jenom na jednu objekt pro vytváření dat Azure** a nedá se sdílet s jinou datovou továrnou.
 * V jednom počítači může být nainstalovaná **jenom jedna instance brány pro správu dat** . Předpokládejme, že máte dva datové továrny, které potřebují přístup k místním zdrojům dat, musíte nainstalovat brány do dvou místních počítačů. Jinými slovy, brána je vázaná na konkrétní objekt pro vytváření dat.
-* **Brána nemusí být ve stejném počítači jako zdroj dat** . Nicméně když se brána přiblíží ke zdroji dat, zkracuje se čas, kdy se brána připojí ke zdroji dat. Doporučujeme nainstalovat bránu na počítač, který je jiný než ten, který je hostitelem místního zdroje dat. Když je brána a zdroj dat na různých počítačích, brána nesoutěží o prostředky se zdrojem dat.
-* Můžete mít **několik bran na různých počítačích, které se připojují ke stejnému místnímu zdroji dat** . Například můžete mít dvě brány, které obsluhují dva datové továrny, ale stejný místní zdroj dat je zaregistrován u obou datových továrn.
+* **Brána nemusí být ve stejném počítači jako zdroj dat**. Nicméně když se brána přiblíží ke zdroji dat, zkracuje se čas, kdy se brána připojí ke zdroji dat. Doporučujeme nainstalovat bránu na počítač, který je jiný než ten, který je hostitelem místního zdroje dat. Když je brána a zdroj dat na různých počítačích, brána nesoutěží o prostředky se zdrojem dat.
+* Můžete mít **několik bran na různých počítačích, které se připojují ke stejnému místnímu zdroji dat**. Například můžete mít dvě brány, které obsluhují dva datové továrny, ale stejný místní zdroj dat je zaregistrován u obou datových továrn.
 * Pokud již máte v počítači nainstalovánu bránu, která obsluhuje **Power BI** scénář, nainstalujte **samostatnou bránu pro Azure Data Factory** na jiném počítači.
-* Brána se musí používat i v případě, že používáte **ExpressRoute** .
-* Považovat zdroj dat za místní zdroj dat (který je za bránou firewall) i v případě, že používáte **ExpressRoute** . Bránu použijte k navázání připojení mezi službou a zdrojem dat.
-* **Bránu musíte použít** i v případě, že je úložiště dat v cloudu na **virtuálním počítači Azure s IaaS** .
+* Brána se musí používat i v případě, že používáte **ExpressRoute**.
+* Považovat zdroj dat za místní zdroj dat (který je za bránou firewall) i v případě, že používáte **ExpressRoute**. Bránu použijte k navázání připojení mezi službou a zdrojem dat.
+* **Bránu musíte použít** i v případě, že je úložiště dat v cloudu na **virtuálním počítači Azure s IaaS**.
 
 ## <a name="installation"></a>Instalace
 ### <a name="prerequisites"></a>Předpoklady
@@ -92,18 +92,18 @@ Bránu pro správu dat je možné nainstalovat následujícími způsoby:
 
 ### <a name="install-the-gateway-from-download-center"></a>Instalace brány z webu Download Center
 1. Přejděte na [stránku pro stažení brány Microsoft Správa dat](https://www.microsoft.com/download/details.aspx?id=39717).
-2. Klikněte na tlačítko **Stáhnout** , vyberte **64** verze (32-bit není podporován) a klikněte na tlačítko **Další** .
+2. Klikněte na tlačítko **Stáhnout**, vyberte **64** verze (32-bit není podporován) a klikněte na tlačítko **Další**.
 3. Spusťte soubor **MSI** přímo nebo ho uložte na pevný disk a spusťte příkaz.
-4. Na **úvodní** stránce vyberte **jazyk** a klikněte na tlačítko **Další** .
-5. **Přijměte** licenční smlouvu End-User a klikněte na **Další** .
-6. Vyberte **složku** pro instalaci brány a klikněte na **Další** .
-7. Na stránce **připraveno k instalaci** klikněte na **nainstalovat** .
+4. Na **úvodní** stránce vyberte **jazyk** a klikněte na tlačítko **Další**.
+5. **Přijměte** licenční smlouvu End-User a klikněte na **Další**.
+6. Vyberte **složku** pro instalaci brány a klikněte na **Další**.
+7. Na stránce **připraveno k instalaci** klikněte na **nainstalovat**.
 8. Instalaci dokončíte kliknutím na **Dokončit** .
 9. Získat klíč z Azure Portal. Podrobné pokyny najdete v další části.
 10. Na stránce **zaregistrovat bránu** **Správa dat brány Configuration Manager** na vašem počítači spusťte následující kroky:
     1. Vložte klíč do textu.
     2. Volitelně můžete kliknutím na **Zobrazit klíč brány** zobrazit text klíče.
-    3. Klikněte na **Zaregistrovat** .
+    3. Klikněte na **Zaregistrovat**.
 
 ### <a name="register-gateway-using-key"></a>Registrovat bránu pomocí klíče
 #### <a name="if-you-havent-already-created-a-logical-gateway-in-the-portal"></a>Pokud jste na portálu ještě nevytvořili logickou bránu
@@ -116,10 +116,10 @@ Pokud chcete vytvořit bránu na portálu a získat klíč ze stránky **Konfigu
 2. Na stránce **propojené služby** vyberte logickou **bránu** , kterou jste vytvořili na portálu.
 
     ![logická brána](media/data-factory-data-management-gateway/data-factory-select-gateway.png)
-3. Na stránce **Brána dat** klikněte na **Stáhnout a nainstalujte bránu dat** .
+3. Na stránce **Brána dat** klikněte na **Stáhnout a nainstalujte bránu dat**.
 
     ![Odkaz ke stažení na portálu](media/data-factory-data-management-gateway/download-and-install-link-on-portal.png)
-4. Na stránce **Konfigurace** klikněte na možnost **znovu vytvořit klíč** . Po pečlivém čtení klikněte na tlačítko Ano u zprávy s upozorněním.
+4. Na stránce **Konfigurace** klikněte na možnost **znovu vytvořit klíč**. Po pečlivém čtení klikněte na tlačítko Ano u zprávy s upozorněním.
 
     ![Tlačítko pro opětovné vytvoření klíče](media/data-factory-data-management-gateway/recreate-key-button.png)
 5. Klikněte na tlačítko Kopírovat vedle klíče. Klíč se zkopíruje do schránky.
@@ -158,7 +158,7 @@ Na úrovni brány Windows Firewall jsou tyto Odchozí porty obvykle povoleny. Po
 #### <a name="copy-data-from-a-source-data-store-to-a-sink-data-store"></a>Kopírování dat ze zdrojového úložiště dat do úložiště dat jímky
 Zajistěte, aby byla pravidla brány firewall správně povolená na podnikovém firewallu, bráně Windows Firewall na počítači brány a samotném úložišti dat. Povolení těchto pravidel umožní, aby se brána úspěšně připojovala ke zdroji a jímky. Povolte pravidla pro každé úložiště dat, které je součástí operace kopírování.
 
-Pokud například chcete kopírovat z **místního úložiště dat do jímky Azure SQL Database nebo do jímky Azure synapse Analytics (dřív SQL Data Warehouse)** , proveďte následující kroky:
+Pokud například chcete kopírovat z **místního úložiště dat do jímky Azure SQL Database nebo do jímky Azure synapse Analytics**, proveďte následující kroky:
 
 * Povolí odchozí komunikaci **TCP** na portu **1433** pro bránu firewall systému Windows i pro podnikovou bránu firewall.
 * Nakonfigurujte nastavení brány firewall logického SQL serveru tak, aby se do seznamu povolených IP adres přidala IP adresa počítače brány.
@@ -179,16 +179,16 @@ Brána používá proxy server k připojení ke cloudové službě. Při počát
 
 Existují tři možnosti konfigurace:
 
-* **Nepoužívat proxy** : Brána explicitně nepoužívá žádný proxy server pro připojení ke cloudovým službám.
-* **Použít systémový proxy server** : Brána používá nastavení proxy serveru, které je nakonfigurované v diahost.exe.config a diawp.exe.config. Pokud v diahost.exe.config a diawp.exe.config není nakonfigurovaný žádný proxy server, brána se připojí ke cloudové službě přímo bez přechodu přes proxy server.
-* **Použití vlastního proxy serveru** : Nakonfigurujte nastavení proxy serveru http tak, aby se používalo pro bránu, místo použití konfigurací v diahost.exe.config a diawp.exe.config. Adresa a port jsou požadovány. Uživatelské jméno a heslo jsou nepovinné v závislosti na nastavení ověřování proxy serveru. Všechna nastavení se šifrují pomocí certifikátu přihlašovacích údajů brány a ukládají se místně na hostitelském počítači brány.
+* **Nepoužívat proxy**: Brána explicitně nepoužívá žádný proxy server pro připojení ke cloudovým službám.
+* **Použít systémový proxy server**: Brána používá nastavení proxy serveru, které je nakonfigurované v diahost.exe.config a diawp.exe.config. Pokud v diahost.exe.config a diawp.exe.config není nakonfigurovaný žádný proxy server, brána se připojí ke cloudové službě přímo bez přechodu přes proxy server.
+* **Použití vlastního proxy serveru**: Nakonfigurujte nastavení proxy serveru http tak, aby se používalo pro bránu, místo použití konfigurací v diahost.exe.config a diawp.exe.config. Adresa a port jsou požadovány. Uživatelské jméno a heslo jsou nepovinné v závislosti na nastavení ověřování proxy serveru. Všechna nastavení se šifrují pomocí certifikátu přihlašovacích údajů brány a ukládají se místně na hostitelském počítači brány.
 
 Po uložení aktualizovaných nastavení proxy serveru se služba hostitel brány pro správu dat automaticky restartuje.
 
 Pokud chcete zobrazit nebo aktualizovat nastavení proxy serveru po úspěšné registraci brány, použijte Správa dat Configuration Manager brány.
 
-1. Spusťte **Configuration Manager Správa dat brány** .
-2. Přepněte na kartu **Nastavení** .
+1. Spusťte **Configuration Manager Správa dat brány**.
+2. Přepněte na kartu **Nastavení**.
 3. Kliknutím na **změnit** odkaz v části **proxy HTTP** otevřete dialogové okno **nastavit proxy server http** .
 4. Po kliknutí na tlačítko **Další** se zobrazí dialogové okno s upozorněním, které žádá o vaše oprávnění k uložení nastavení proxy serveru a k restartování služby Hostitel brány.
 
@@ -205,7 +205,7 @@ Proxy server HTTP můžete zobrazit a aktualizovat pomocí nástroje Configurati
 Pokud vyberete možnost **použít systémové proxy** serveru pro proxy server http, brána použije nastavení proxy serveru v diahost.exe.config a diawp.exe.config. Pokud v diahost.exe.config a diawp.exe.config není zadaný žádný proxy server, brána se připojí ke cloudové službě přímo bez přechodu přes proxy server. Následující postup poskytuje pokyny k aktualizaci diahost.exe.config souboru.
 
 1. V Průzkumníku souborů proveďte bezpečnou kopii *C: \\ \\ Program Files \\ Microsoft Správa dat Gateway \\ 2,0 \\ Shared \\diahost.exe.config* k zálohování původního souboru.
-2. Spusťte Notepad.exe spuštěno jako správce a otevřete textový soubor *C: \\ \\ Program Files \\ Microsoft Správa dat Gateway \\ 2,0 \\ Shared \\diahost.exe.config* . Najdete výchozí značku pro system.net, jak je znázorněno v následujícím kódu:
+2. Spusťte Notepad.exe spuštěno jako správce a otevřete textový soubor *C: \\ \\ Program Files \\ Microsoft Správa dat Gateway \\ 2,0 \\ Shared \\diahost.exe.config*. Najdete výchozí značku pro system.net, jak je znázorněno v následujícím kódu:
 
     ```
     <system.net>
@@ -228,7 +228,7 @@ Pokud vyberete možnost **použít systémové proxy** serveru pro proxy server 
     ```
     <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
     ```
-3. Uložte konfigurační soubor do původního umístění a pak znovu spusťte službu hostitel Správa dat brány, která změny vezme. Restartování služby: pomocí apletu služby v Ovládacích panelech nebo z **Správa dat brány Configuration Manager** > klikněte na tlačítko **Zastavit službu** a pak klikněte na **Spustit službu** . Pokud se služba nespustí, je pravděpodobně přidána nesprávná syntaxe značky XML do konfiguračního souboru aplikace, který byl upraven.
+3. Uložte konfigurační soubor do původního umístění a pak znovu spusťte službu hostitel Správa dat brány, která změny vezme. Restartování služby: pomocí apletu služby v Ovládacích panelech nebo z **Správa dat brány Configuration Manager** > klikněte na tlačítko **Zastavit službu** a pak klikněte na **Spustit službu**. Pokud se služba nespustí, je pravděpodobně přidána nesprávná syntaxe značky XML do konfiguračního souboru aplikace, který byl upraven.
 
 > [!IMPORTANT]
 > Nezapomeňte **aktualizovat diahost.exe.config i diawp.exe.config** .
@@ -311,7 +311,7 @@ Funkci Automatické aktualizace můžete zakázat nebo povolit provedením násl
 Jakmile bránu nainstalujete, můžete spustit Správa dat Configuration Manager brány jedním z následujících způsobů:
 
 1. V okně **hledání** zadejte pro přístup k tomuto nástroji **Správa dat bránu** .
-2. Spusťte spustitelný *ConfigManager.exe* ve složce: *C: \\ \\ Program Files \\ Microsoft Správa dat brána \\ 2,0 \\ Shared* .
+2. Spusťte spustitelný *ConfigManager.exe* ve složce: *C: \\ \\ Program Files \\ Microsoft Správa dat brána \\ 2,0 \\ Shared*.
 
 ### <a name="home-page"></a>Domovská stránka
 Domovská stránka vám umožní provést následující akce:
@@ -336,7 +336,7 @@ Tato funkce bude v budoucnu povolena. V nadcházejících aktualizacích (v 3.4 
 ### <a name="diagnostics-page"></a>Stránka diagnostiky
 Stránka Diagnostika umožňuje provést následující akce:
 
-* Povolit podrobné **protokolování** , zobrazit protokoly v prohlížeči událostí a odeslat protokoly společnosti Microsoft v případě selhání.
+* Povolit podrobné **protokolování**, zobrazit protokoly v prohlížeči událostí a odeslat protokoly společnosti Microsoft v případě selhání.
 * **Otestujte připojení** ke zdroji dat.
 
 ### <a name="help-page"></a>Stránka nápovědy
@@ -378,7 +378,7 @@ Role | Existují dva typy rolí v bráně pro více uzlů – dispečer a pracov
 Na této stránce se zobrazí některá nastavení, která jsou smysluplnější, když v bráně existují dva nebo více uzlů (scénář horizontálního navýšení kapacity). Podrobnosti o nastavení brány pro více uzlů najdete v tématu [Správa dat brány – vysoká dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md) .
 
 ### <a name="gateway-status"></a>Stav brány
-Následující tabulka uvádí možné stavy **uzlu brány** :
+Následující tabulka uvádí možné stavy **uzlu brány**:
 
 Status  | Komentáře a scénáře
 :------- | :------------------
@@ -388,7 +388,7 @@ Inovován | Uzel se automaticky aktualizuje.
 Omezeně | Kvůli problému s připojením. Důvodem může být problém s portem HTTP 8050, potížím s připojením k Service Bus nebo problémy s synchronizací přihlašovacích údajů.
 Inactive | Uzel je v konfiguraci odlišnou od konfigurace jiných majoritní uzlů.<br/><br/> Uzel může být neaktivní, pokud se nemůže připojit k jiným uzlům.
 
-Následující tabulka uvádí možné stavy **logické brány** . Stav brány závisí na stavech uzlů brány.
+Následující tabulka uvádí možné stavy **logické brány**. Stav brány závisí na stavech uzlů brány.
 
 Status | Komentáře
 :----- | :-------
@@ -414,7 +414,7 @@ V této části najdete postup přesunutí klienta brány z jednoho počítače 
 2. V části **brány dat** stránky **propojených služeb** vyberte svou bránu.
 
     ![Stránka propojených služeb s vybranou branou](./media/data-factory-data-management-gateway/LinkedServiceBladeWithGateway.png)
-3. Na stránce **Brána dat** klikněte na **Stáhnout a nainstalujte bránu dat** .
+3. Na stránce **Brána dat** klikněte na **Stáhnout a nainstalujte bránu dat**.
 
     ![Stáhnout odkaz na bránu](./media/data-factory-data-management-gateway/DownloadGatewayLink.png)
 4. Na stránce **Konfigurace** klikněte na možnost **Stáhnout a nainstalovat bránu data Gateway** a postupujte podle pokynů k instalaci brány dat na počítač.
@@ -430,7 +430,7 @@ V této části najdete postup přesunutí klienta brány z jednoho počítače 
 
     ![Kopírovat klíč a zaregistrovat](./media/data-factory-data-management-gateway/CopyKeyAndRegister.png)
 8. Kliknutím na **Registrovat** zaregistrujete bránu v cloudové službě.
-9. Na kartě **Nastavení** klikněte na **změnit** a vyberte stejný certifikát, který se použil pro starou bránu, zadejte **heslo** a klikněte na **Dokončit** .
+9. Na kartě **Nastavení** klikněte na **změnit** a vyberte stejný certifikát, který se použil pro starou bránu, zadejte **heslo** a klikněte na **Dokončit**.
 
    ![Zadat certifikát](./media/data-factory-data-management-gateway/SpecifyCertificate.png)
 
@@ -443,8 +443,8 @@ Chcete-li zašifrovat přihlašovací údaje v editoru Data Factory, proveďte n
 1. Na **počítači brány** spusťte webový prohlížeč a přejděte na [Azure Portal](https://portal.azure.com). V případě potřeby vyhledejte datovou továrnu, otevřete datovou továrnu na stránce **Data Factory** a potom kliknutím na **vytvořit & nasazení** spusťte Data Factory Editor.
 2. Kliknutím na existující **propojenou službu** ve stromovém zobrazení zobrazte její definici JSON nebo vytvořte propojenou službu, která vyžaduje bránu pro správu dat (například: SQL Server nebo Oracle).
 3. V editoru JSON zadejte název brány do pole vlastnost **brány** .
-4. Zadejte název serveru pro vlastnost **zdroj dat** v **připojovacím řetězci** .
-5. Zadejte název databáze pro vlastnost **počáteční katalog** v **připojovacím řetězci** .
+4. Zadejte název serveru pro vlastnost **zdroj dat** v **připojovacím řetězci**.
+5. Zadejte název databáze pro vlastnost **počáteční katalog** v **připojovacím řetězci**.
 6. Na panelu příkazů klikněte na tlačítko **Šifrovat** , které spouští aplikaci **Správce přihlašovacích údajů** po kliknutí. Mělo by se zobrazit dialogové okno **nastavení pověření** .
 
     ![Dialogové okno Nastavení přihlašovacích údajů](./media/data-factory-data-management-gateway/setting-credentials-dialog.png)
@@ -494,7 +494,7 @@ Tato část popisuje, jak vytvořit a zaregistrovat bránu pomocí rutin Azure P
     ```powershell
     $MyDMG = New-AzDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF –Description <desc>
     ```
-    **Příklad příkazu a výstupu** :
+    **Příklad příkazu a výstupu**:
 
     ```
     PS C:\> $MyDMG = New-AzDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF –Description "gateway for walkthrough"
@@ -512,7 +512,7 @@ Tato část popisuje, jak vytvořit a zaregistrovat bránu pomocí rutin Azure P
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. V Azure PowerShell přepněte do složky: *C: \\ \\ Program Files \\ Microsoft Integration runtime \\ 3,0 \\ PowerShellScript \\* . Spusťte *RegisterGateway.ps1* přidružené k místní proměnné **$Key** , jak je znázorněno v následujícím příkazu. Tento skript zaregistruje klientského agenta nainstalovaného na vašem počítači pomocí logické brány, kterou jste vytvořili dříve.
+1. V Azure PowerShell přepněte do složky: *C: \\ \\ Program Files \\ Microsoft Integration runtime \\ 3,0 \\ PowerShellScript \\*. Spusťte *RegisterGateway.ps1* přidružené k místní proměnné **$Key** , jak je znázorněno v následujícím příkazu. Tento skript zaregistruje klientského agenta nainstalovaného na vašem počítači pomocí logické brány, kterou jste vytvořili dříve.
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
@@ -525,7 +525,7 @@ Tato část popisuje, jak vytvořit a zaregistrovat bránu pomocí rutin Azure P
     ```powershell
     .\RegisterGateway.ps1 $MyDMG.Key -IsRegisterOnRemoteMachine true
     ```
-2. Pomocí rutiny **Get-AzDataFactoryGateway** můžete získat seznam bran ve vaší datové továrně. Pokud se **stav** zobrazuje **online** , znamená to, že je vaše brána připravená k použití.
+2. Pomocí rutiny **Get-AzDataFactoryGateway** můžete získat seznam bran ve vaší datové továrně. Pokud se **stav** zobrazuje **online**, znamená to, že je vaše brána připravená k použití.
 
     ```powershell        
     Get-AzDataFactoryGateway -DataFactoryName <dataFactoryName> -ResourceGroupName ADF

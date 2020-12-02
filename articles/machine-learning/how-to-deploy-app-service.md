@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 491fa39bed9e73a41f5a29a9040df052b6945552
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 5f3861d43715ed68116d25206efe4347ea96805c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578021"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452145"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Nasazení modelu Machine Learning do Azure App Service (Preview)
 
@@ -29,7 +29,7 @@ Naučte se nasadit model z Azure Machine Learning jako webovou aplikaci v Azure 
 Pomocí Azure Machine Learning můžete vytvářet image Docker z školicích modelů strojového učení. Tato image obsahuje webovou službu, která přijímá data, odesílá je do modelu a pak vrátí odpověď. Azure App Service lze použít k nasazení bitové kopie a k dispozici jsou následující funkce:
 
 * Rozšířené [ověřování](../app-service/configure-authentication-provider-aad.md) pro rozšířené zabezpečení. Metody ověřování zahrnují Azure Active Directory i Multi-Factor auth.
-* [Automatické škálování](../azure-monitor/platform/autoscale-get-started.md?toc=%252fazure%252fapp-service%252ftoc.json) bez nutnosti opětovného nasazení.
+* [Automatické škálování](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json) bez nutnosti opětovného nasazení.
 * [Podpora TLS](../app-service/configure-ssl-certificate-in-code.md) pro zabezpečenou komunikaci mezi klienty a službou.
 
 Další informace o funkcích poskytovaných nástrojem Azure App Service najdete v [přehledu App Service](../app-service/overview.md).
@@ -37,7 +37,7 @@ Další informace o funkcích poskytovaných nástrojem Azure App Service najdet
 > [!IMPORTANT]
 > Pokud potřebujete mít možnost protokolovat data bodování používaná s nasazeným modelem nebo výsledky bodování, měli byste je místo toho nasadit do služby Azure Kubernetes. Další informace najdete v tématu [shromažďování dat v produkčních modelech](how-to-enable-data-collection.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](how-to-manage-workspace.md) .
 * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
@@ -70,7 +70,7 @@ Před nasazením musíte definovat, co je potřeba ke spuštění modelu jako we
 
     Další informace o vstupních skriptech najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
-* **Závislosti** , například pomocné skripty nebo balíčky python/conda potřebné ke spuštění skriptu vstupu nebo modelu
+* **Závislosti**, například pomocné skripty nebo balíčky python/conda potřebné ke spuštění skriptu vstupu nebo modelu
 
 Tyto entity jsou zapouzdřeny do __Konfigurace odvození__. Odvozená konfigurace odkazuje na vstupní skript a další závislosti.
 
@@ -271,7 +271,7 @@ print(response.json())
 ## <a name="next-steps"></a>Další kroky
 
 * Naučte se konfigurovat webovou aplikaci v dokumentaci k [App Service v systému Linux](/azure/app-service/containers/) .
-* Další informace o škálování najdete v [Seznámení s automatickým škálováním v Azure](../azure-monitor/platform/autoscale-get-started.md?toc=%252fazure%252fapp-service%252ftoc.json).
+* Další informace o škálování najdete v [Seznámení s automatickým škálováním v Azure](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json).
 * [V Azure App Service použijte certifikát TLS/SSL](../app-service/configure-ssl-certificate-in-code.md).
 * [Nakonfigurujte aplikaci App Service, aby používala Azure Active Directory přihlášení](../app-service/configure-authentication-provider-aad.md).
 * [Využití modelu ML nasazeného jako webové služby](how-to-consume-web-service.md)

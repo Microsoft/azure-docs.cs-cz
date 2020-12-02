@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: a3715abdebce319979d867d12764a22b4ed16c35
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c452d51018ef3f204cd7281971c07fb6337d39bf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323630"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449709"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Pokyny pro návrh distribuovaných tabulek pomocí vyhrazeného fondu SQL ve službě Azure synapse Analytics
 
@@ -44,7 +44,7 @@ Tabulka distribuovaná algoritmem hash distribuuje řádky tabulky napříč vý
 
 ![Distribuovaná tabulka](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "Distribuovaná tabulka")  
 
-Vzhledem k tomu, že identické hodnoty vždycky vycházejí z hodnoty hash na stejnou distribuci, má datový sklad integrované znalosti o umístěních řádků. Ve vyhrazeném fondu SQL se tato znalost používá k minimalizaci přesunu dat během dotazů, což zvyšuje výkon dotazů.
+Vzhledem k tomu, že identické hodnoty vždycky vycházejí z hodnoty hash na stejnou distribuci, SQL Analytics má integrované znalosti o umístěních řádků. Ve vyhrazeném fondu SQL se tato znalost používá k minimalizaci přesunu dat během dotazů, což zvyšuje výkon dotazů.
 
 Tabulky distribuované pomocí algoritmu hash fungují dobře u velkých tabulek faktů ve schématu hvězdičky. Mohou mít velmi velký počet řádků a stále dosahovat vysokého výkonu. K dispozici jsou samozřejmě některé faktory návrhu, které vám pomohou získat výkon, který je distribuován distribuovaným systémům. Výběr dobrého distribučního sloupce je jedním z těchto aspektů, které jsou popsány v tomto článku.
 

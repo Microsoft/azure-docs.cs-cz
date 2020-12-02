@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a2597a4bc6c5ed44f0e0050be3f69d7e840665e5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c4fe512ff6db24498148ffa724c3144a2f61823f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323844"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451714"
 ---
 # <a name="use-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Použití transakcí s vyhrazeným fondem SQL ve službě Azure synapse Analytics
 
@@ -27,7 +27,7 @@ Jak očekáváte, vyhrazený fond SQL podporuje transakce jako součást úlohy 
 
 ## <a name="transaction-isolation-levels"></a>Úrovně izolace transakce
 
-Fond SQL implementuje transakce v KYSELINě. Úroveň izolace transakční podpory je výchozí pro čtení nepotvrzených.  Můžete ji změnit na čtení POTVRZENé izolace snímku tím, že zapnete možnost READ_COMMITTED_SNAPSHOT Database pro uživatelskou databázi, když se připojíte k hlavní databázi.  
+Vyhrazený fond SQL implementuje transakce v KYSELINě. Úroveň izolace transakční podpory je výchozí pro čtení nepotvrzených.  Můžete ji změnit na čtení POTVRZENé izolace snímku tím, že zapnete možnost READ_COMMITTED_SNAPSHOT Database pro uživatelskou databázi, když se připojíte k hlavní databázi.  
 
 Po povolení se všechny transakce v této databázi spustí v režimu čtení POTVRZENé izolace snímku a nastavení číst nepotvrzené na úrovni relace se nerespektuje. Podrobnosti naleznete v [příkazu ALTER DATABASE set Options (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest&preserve-view=true) .
 
@@ -89,7 +89,7 @@ Chcete-li optimalizovat a minimalizovat množství dat zapsaných do protokolu, 
 
 ## <a name="transaction-state"></a>Stav transakce
 
-Fond SQL používá funkci XACT_STATE () k ohlášení neúspěšné transakce pomocí hodnoty 2. Tato hodnota znamená, že transakce se nezdařila a je označena pouze pro vrácení zpět.
+Vyhrazený fond SQL používá funkci XACT_STATE () k ohlášení neúspěšné transakce pomocí hodnoty 2. Tato hodnota znamená, že transakce se nezdařila a je označena pouze pro vrácení zpět.
 
 > [!NOTE]
 > Použití-2 funkcí XACT_STATE k označení neúspěšné transakce představuje jiné chování pro SQL Server. SQL Server používá hodnotu-1 pro reprezentaci transakce nesvěřené. SQL Server může tolerovat některé chyby v transakci, aniž by bylo nutné je označit jako nepotvrzené. Například `SELECT 1/0` by došlo k chybě, ale nevynucují transakci do nepotvrzeného stavu. SQL Server také povoluje čtení v nesvěřené transakci. Vyhrazený fond SQL ho ale neumožňuje. Pokud dojde k chybě uvnitř vyhrazené transakce fondu SQL, automaticky vstoupí do stavu-2 a dokud se příkaz nevrátí zpět, nebude možné provést žádné další příkazy SELECT. Je proto důležité zkontrolovat, zda kód aplikace používá XACT_STATE (), protože může být nutné provést úpravy kódu.
@@ -193,7 +193,7 @@ THROW je moderní implementace pro vyvolávání výjimek ve vyhrazeném fondu S
 
 ## <a name="limitations"></a>Omezení
 
-Fond SQL má několik dalších omezení týkajících se transakcí. Jsou to tyto:
+Vyhrazený fond SQL má několik dalších omezení, která se vztahují na transakce. Jsou to tyto:
 
 * Žádné distribuované transakce
 * Nejsou povolené žádné vnořené transakce.
@@ -204,4 +204,4 @@ Fond SQL má několik dalších omezení týkajících se transakcí. Jsou to ty
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o optimalizaci transakcí naleznete v tématu [osvědčené postupy pro transakce](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). K dispozici jsou i další Příručky k osvědčeným postupům pro [fond SQL](best-practices-sql-pool.md) a [SQL Server bez serveru (Preview)](best-practices-sql-on-demand.md).
+Další informace o optimalizaci transakcí naleznete v tématu [osvědčené postupy pro transakce](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). K dispozici jsou i další Příručky k osvědčeným postupům pro [vyhrazený fond SQL](best-practices-sql-pool.md) a [SQL Server bez serveru](best-practices-sql-on-demand.md).

@@ -1,6 +1,6 @@
 ---
 title: Zabezpečení přihlašovacích údajů pro přístup k propojeným službám v Apache Spark pro Azure synapse Analytics
-description: Tento článek poskytuje základní informace o tom, jak bezpečně integrovat Apache Spark pro analýzy synapse s jinými službami pomocí propojených služeb a knihovny tokenů.
+description: Tento článek poskytuje základní informace o tom, jak bezpečně integrovat Apache Spark pro Azure synapse Analytics s dalšími službami pomocí propojených služeb a knihovny tokenů.
 services: synapse-analytics
 author: mlee3gsd
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 08/26/2020
 ms.author: martinle
 ms.reviewer: euang
-ms.openlocfilehash: 1cdb010e34674d52ebe2135ad1591a163a078708
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d542e6ef784d763e406aad28231431cbc382fbfd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324945"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450917"
 ---
 # <a name="securing-your-credentials-through-linked-services-with-the-tokenlibrary"></a>Zabezpečení přihlašovacích údajů prostřednictvím propojených služeb pomocí TokenLibrary
 Přístup k datům z externích zdrojů je běžným vzorem. Pokud externí zdroj dat nepovoluje anonymní přístup, je nutné zabezpečit připojení pomocí přihlašovacích údajů, tajného klíče nebo připojovacího řetězce.  

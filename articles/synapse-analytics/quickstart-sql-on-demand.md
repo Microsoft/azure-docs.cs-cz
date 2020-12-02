@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý Start: použití fondu SQL bez serveru'
-description: V tomto rychlém startu se dozvíte, jak snadné je dotazování různých typů souborů pomocí SQL fondu bez serveru (Preview).
+description: V tomto rychlém startu se dozvíte, jak snadné je dotazování různých typů souborů pomocí fondu SQL bez serveru.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,22 +9,22 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 270942392e028964c7e9b1c110e4d9f118bd4953
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: e75bab664bdd0d6a4ac898905226c9956f62b4ff
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682972"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450511"
 ---
 # <a name="quickstart-use-serverless-sql-pool"></a>Rychlý Start: použití fondu SQL bez serveru
 
-Synapse fond SQL bez serveru (Preview) je služba pro dotazování bez serveru, která umožňuje spouštět dotazy SQL na souborech umístěných v Azure Storage. V tomto rychlém startu se dozvíte, jak zadávat dotazy na různé typy souborů pomocí SQL fondu bez serveru. Podporované formáty jsou uvedeny ve funkci [OpenRowset](sql/develop-openrowset.md).
+Synapse fond SQL bez serveru je služba dotazů bez serveru, která umožňuje spouštět dotazy SQL na souborech umístěných v Azure Storage. V tomto rychlém startu se dozvíte, jak zadávat dotazy na různé typy souborů pomocí SQL fondu bez serveru. Podporované formáty jsou uvedeny ve funkci [OpenRowset](sql/develop-openrowset.md).
 
 V tomto rychlém startu se zobrazí dotazování: CSV, Apache Parquet a soubory JSON.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Zvolit klienta SQL pro vydávání dotazů:
+Vyberte si klienta SQL pro vydávání dotazů:
 
 - [Azure synapse Studio](quickstart-synapse-studio.md) je webový nástroj, který můžete použít k procházení souborů v úložišti a vytváření dotazů SQL.
 - [Azure Data Studio](sql/get-started-azure-data-studio.md) je klientský nástroj, který umožňuje spouštět dotazy a poznámkové bloky SQL v databázi na vyžádání.

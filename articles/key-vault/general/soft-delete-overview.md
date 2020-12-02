@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 09/30/2020
-ms.openlocfilehash: c8ae10fa059bb9cfd32b95f9bc6d21f30ad9f880
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 184003e42a14e786cc52c4f585c6781f7b9fe0e7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744198"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452181"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Přehled obnovitelného odstranění ve službě Azure Key Vault
 
@@ -27,7 +27,7 @@ Funkce obnovitelného odstranění Key Vault umožňuje obnovení odstraněných
 
 ## <a name="supporting-interfaces"></a>Podpůrná rozhraní
 
-Funkce obnovitelného odstranění je k dispozici prostřednictvím [REST API](/rest/api/keyvault/), rozhraní [Azure CLI](soft-delete-cli.md), [Azure PowerShell](soft-delete-powershell.md)a [.NET/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) a také [šablony ARM](/azure/templates/microsoft.keyvault/2019-09-01/vaults).
+Funkce obnovitelného odstranění je k dispozici prostřednictvím [REST API](/rest/api/keyvault/), rozhraní [Azure CLI](./key-vault-recovery.md), [Azure PowerShell](./key-vault-recovery.md)a [.NET/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) a také [šablony ARM](/azure/templates/microsoft.keyvault/2019-09-01/vaults).
 
 ## <a name="scenarios"></a>Scénáře
 
@@ -41,7 +41,7 @@ Trezory klíčů Azure jsou sledované prostředky spravované pomocí Azure Res
 
 Pokud je povolené obnovitelné odstranění, prostředky označené jako odstraněné prostředky se uchovávají po určenou dobu (ve výchozím nastavení jsou to 90 dny). Služba dále poskytuje mechanismus pro obnovování odstraněného objektu, v podstatě zrušení odstranění.
 
-Při vytváření nového trezoru klíčů je ve výchozím nastavení zapnuté obnovitelné odstranění. Trezor klíčů můžete vytvořit bez obnovitelného odstranění prostřednictvím rozhraní příkazového [řádku Azure](soft-delete-cli.md) nebo [Azure PowerShell](soft-delete-powershell.md). Po povolení obnovitelného odstranění u trezoru klíčů ho nejde zakázat.
+Při vytváření nového trezoru klíčů je ve výchozím nastavení zapnuté obnovitelné odstranění. Trezor klíčů můžete vytvořit bez obnovitelného odstranění prostřednictvím rozhraní příkazového [řádku Azure](./key-vault-recovery.md) nebo [Azure PowerShell](./key-vault-recovery.md). Po povolení obnovitelného odstranění u trezoru klíčů ho nejde zakázat.
 
 Výchozí doba uchování je 90 dní, ale během vytváření trezoru klíčů je možné nastavit interval zásad uchovávání informací na hodnotu od 7 do 90 dnů pomocí Azure Portal. Zásady uchovávání informací o vyprázdnění ochrany používají stejný interval. Po nastavení se interval zásad uchovávání dat nedá změnit.
 
@@ -49,7 +49,7 @@ Nemůžete znovu použít název trezoru klíčů, který byl odstraněn, dokud 
 
 ### <a name="purge-protection"></a>Vyprázdnit ochranu
 
-Vyprázdnit ochranu je volitelné Key Vault chování a není **ve výchozím nastavení povolené**. Ochranu vyprázdnění je možné povolit jenom v případě, že je povolené obnovitelné odstranění.  Dá se zapnout přes rozhraní příkazového [řádku](soft-delete-cli.md#enabling-purge-protection) nebo [PowerShellu](soft-delete-powershell.md#enabling-purge-protection).
+Vyprázdnit ochranu je volitelné Key Vault chování a není **ve výchozím nastavení povolené**. Ochranu vyprázdnění je možné povolit jenom v případě, že je povolené obnovitelné odstranění.  Dá se zapnout přes rozhraní příkazového [řádku](./key-vault-recovery.md?tabs=azure-cli) nebo [PowerShellu](./key-vault-recovery.md?tabs=azure-powershell).
 
 Pokud je zapnutá ochrana vyprázdnění, trezor nebo objekt ve stavu odstraněno nelze odstranit, dokud neuplyne doba uchování. Obnovitelné odstraněné trezory a objekty je stále možné obnovit, aby se zajistilo, že budou dodrženy zásady uchovávání informací.
 
@@ -63,7 +63,7 @@ Výjimky jsou:
 - Když je předplatné Azure označené jako *neodstranitelné*. V takovém případě může provedení samotného odstranění provést pouze služba, a to v rámci plánovaného procesu. 
 - Když je tato možnost `--enable-purge-protection flag` povolená v samotném trezoru. V takovém případě bude Key Vault čekat na 90 dní od okamžiku, kdy byl původní tajný objekt označen pro odstranění, aby se objekt trvale odstranil.
 
-Postup najdete v tématu [použití Key Vault obnovitelného odstranění pomocí rozhraní příkazového řádku: vymazání trezoru klíčů](soft-delete-cli.md#purging-a-key-vault) nebo [použití Key Vault obnovitelného odstranění pomocí prostředí PowerShell: vymazání trezoru klíčů](soft-delete-powershell.md#purging-a-key-vault).
+Postup najdete v tématu [použití Key Vault obnovitelného odstranění pomocí rozhraní příkazového řádku: vymazání trezoru klíčů](./key-vault-recovery.md?tabs=azure-cli#key-vault-cli) nebo [použití Key Vault obnovitelného odstranění pomocí prostředí PowerShell: vymazání trezoru klíčů](./key-vault-recovery.md?tabs=azure-powershell#key-vault-powershell).
 
 ### <a name="key-vault-recovery"></a>Obnovení trezoru klíčů
 
@@ -71,7 +71,7 @@ Po odstranění trezoru klíčů vytvoří služba v rámci předplatného prost
 
 ### <a name="key-vault-object-recovery"></a>Obnovení objektu trezoru klíčů
 
-Po odstranění objektu trezoru klíčů, jako je třeba klíč, služba umístí objekt do odstraněného stavu, takže nebude přístupný pro žádné operace načítání. V tomto stavu může být objekt trezoru klíčů uveden pouze v seznamu, obnoven nebo vynuceně/trvale odstraněn. Chcete-li zobrazit objekty, použijte příkaz Azure CLI `az keyvault key list-deleted` (jak je popsáno v tématu [jak používat Key Vault obnovitelného odstranění pomocí](soft-delete-cli.md)rozhraní příkazového řádku), nebo `-InRemovedState` parametr Azure PowerShell (jak je popsáno v tématu [Jak používat Key Vault obnovitelného odstranění pomocí prostředí PowerShell](soft-delete-powershell.md#secrets)).  
+Po odstranění objektu trezoru klíčů, jako je třeba klíč, služba umístí objekt do odstraněného stavu, takže nebude přístupný pro žádné operace načítání. V tomto stavu může být objekt trezoru klíčů uveden pouze v seznamu, obnoven nebo vynuceně/trvale odstraněn. Chcete-li zobrazit objekty, použijte příkaz Azure CLI `az keyvault key list-deleted` (jak je popsáno v tématu [jak používat Key Vault obnovitelného odstranění pomocí](./key-vault-recovery.md)rozhraní příkazového řádku), nebo `-InRemovedState` parametr Azure PowerShell (jak je popsáno v tématu [Jak používat Key Vault obnovitelného odstranění pomocí prostředí PowerShell](./key-vault-recovery.md?tabs=azure-powershell#key-vault-powershell)).  
 
 Ve stejnou dobu Key Vault naplánovat odstranění podkladových dat odpovídajících odstraněnému trezoru klíčů nebo objektu trezoru klíčů, který se spustí po předem určeném intervalu uchování. Záznam DNS odpovídající trezoru se zachovává i po dobu trvání intervalu uchování.
 
@@ -99,5 +99,5 @@ Obecně platí, že pokud je objekt (Trezor klíčů nebo klíč nebo tajný kl�
 
 Následující dvě příručky nabízejí základní scénáře použití pro použití obnovitelného odstranění.
 
-- [Jak používat obnovitelné odstranění Key Vaultu s využitím PowerShellu](soft-delete-powershell.md) 
-- [Jak používat obnovitelné odstranění Key Vaultu s využitím CLI](soft-delete-cli.md)
+- [Jak používat obnovitelné odstranění Key Vaultu s využitím PowerShellu](./key-vault-recovery.md) 
+- [Jak používat obnovitelné odstranění Key Vaultu s využitím CLI](./key-vault-recovery.md)

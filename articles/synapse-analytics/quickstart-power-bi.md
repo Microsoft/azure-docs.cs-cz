@@ -9,16 +9,16 @@ ms.subservice: business-intelligence
 ms.date: 10/27/2020
 ms.author: jocaplan
 ms.reviewer: jrasnick
-ms.openlocfilehash: 36334142595d4a6bd4865a690f154279967a70d5
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 996233e2526b8b69c13abd4340ead4c5e2175916
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746301"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450668"
 ---
 # <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-workspace"></a>Rychlý Start: propojení pracovního prostoru Power BI k pracovnímu prostoru synapse
 
-V tomto rychlém startu se dozvíte, jak připojit Power BI pracovní prostor k pracovnímu prostoru analýzy synapse a vytvořit nové sestavy Power BI a datové sady z synapse studia (Preview).
+V tomto rychlém startu se dozvíte, jak připojit Power BI pracovní prostor k pracovnímu prostoru Azure synapse Analytics a vytvořit tak nové sestavy Power BI a datové sady z synapse studia.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
@@ -29,19 +29,19 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před 
 
 ## <a name="link-power-bi-workspace-to-your-synapse-workspace"></a>Propojení pracovního prostoru Power BI k pracovnímu prostoru synapse
 
-1. Od synapse studia klikněte na **Spravovat** .
+1. Od synapse studia klikněte na **Spravovat**.
 
     ![Synapse Studio klikněte na spravovat.](media/quickstart-link-powerbi/synapse-studio-click-manage.png)
 
-2. V části **externí připojení** klikněte na **propojené služby** .
+2. V části **externí připojení** klikněte na **propojené služby**.
 
     ![Propojené služby jsou zvýrazněné.](media/quickstart-link-powerbi/manage-click-linked-services.png)
 
-3. Klikněte na **+ Nový** .
+3. Klikněte na **+ Nový**.
 
     ![A zvýrazní se nová propojená služba.](media/quickstart-link-powerbi/new-highlighted.png)
 
-4. Klikněte **Power BI** a klikněte na **pokračovat** .
+4. Klikněte **Power BI** a klikněte na **pokračovat**.
 
     ![Zobrazuje se Power BI propojená služba.](media/quickstart-link-powerbi/powerbi-linked-service.png)
 
@@ -49,13 +49,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před 
 
     ![Zobrazují se nastavení propojené služby Power BI.](media/quickstart-link-powerbi/workspace-link-dialog.png)
 
-6. Klikněte na **Vytvořit** .
+6. Klikněte na **Vytvořit**.
 
 ## <a name="view-power-bi-workspace-in-synapse-studio"></a>Zobrazit Power BI pracovní prostor v synapse studiu
 
 Po propojení pracovních prostorů můžete procházet Power BI datové sady, upravovat nebo vytvářet nové sestavy Power BI z synapse studia.
 
-1. Klikněte na tlačítko **vývoj** .
+1. Klikněte na tlačítko **vývoj**.
 
     ![Synapse Studio klikněte na vývoj.](media/quickstart-link-powerbi/synapse-studio-click-develop.png)
 

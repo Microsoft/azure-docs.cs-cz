@@ -1,6 +1,6 @@
 ---
 title: Poznámkové bloky synapse Studio
-description: V tomto článku se dozvíte, jak vytvořit a vyvíjet notebooky Azure synapse Studio (Preview), abyste mohli provádět přípravu a vizualizaci dat.
+description: V tomto článku se dozvíte, jak vytvořit a vyvíjet notebooky Azure synapse Studio, které umožňují přípravu a vizualizaci dat.
 services: synapse analytics
 author: ruixinxu
 ms.service: synapse-analytics
@@ -10,16 +10,16 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: c35ee7bcdefa5091d9c887430182638f066cb9fa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bfb822481e00e84fa17bd4b1fcb58c1d4b89a124
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95900877"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450862"
 ---
-# <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Vytváření, vývoj a Správa poznámkových bloků synapse Studio (Preview) v Azure synapse Analytics
+# <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Vytváření, vývoj a údržba poznámkových bloků synapse Studio v Azure synapse Analytics
 
-Poznámkový blok synapse Studio (Preview) je webové rozhraní, které umožňuje vytvářet soubory, které obsahují živý kód, vizualizace a mluvený text. Poznámkové bloky jsou vhodné místo pro ověřování nápadů a k získání přehledu z vašich dat můžete využít rychlé experimenty. Poznámkové bloky se také často používají při přípravě dat, vizualizaci dat, strojovém učení a dalších scénářích s velkými objemy dat.
+Poznámkový blok synapse Studio je webové rozhraní, které umožňuje vytvářet soubory, které obsahují živý kód, vizualizace a mluvený text. Poznámkové bloky jsou vhodné místo pro ověřování nápadů a k získání přehledu z vašich dat můžete využít rychlé experimenty. Poznámkové bloky se také často používají při přípravě dat, vizualizaci dat, strojovém učení a dalších scénářích s velkými objemy dat.
 
 Pomocí poznámkového bloku Azure synapse Studio můžete:
 
@@ -33,7 +33,7 @@ Tento článek popisuje, jak používat notebooky v Azure synapse Studio.
 ## <a name="preview-of-the-new-notebook-experience"></a>Náhled nového prostředí poznámkového bloku
 Synapse tým přenesl novou součást poznámkových bloků do synapse studia, aby poskytoval konzistentní prostředí poznámkového bloku pro zákazníky Microsoftu a maximalizoval možnosti zjistitelnosti, produktivity, sdílení a spolupráce. Nové prostředí poznámkového bloku je připravené na verzi Preview. Pokud ho chcete zapnout, podívejte se na tlačítko **funkce ve verzi Preview** na panelu nástrojů Poznámkový blok. Následující tabulka zachycuje porovnání funkcí mezi existujícím poznámkovým blokem (označovaným jako "klasický notebook") s novou verzí Preview.  
 
-|Funkce|Klasický notebook|Náhled poznámkového bloku|
+|Příznak|Klasický notebook|Náhled poznámkového bloku|
 |--|--|--|
 |% běh| Nepodporováno | &#9745;|
 |% Historie| Nepodporováno |&#9745;
@@ -104,7 +104,7 @@ V rozevíracím seznamu na horním panelu příkazů můžete nastavit primárn�
 
 V jednom poznámkovém bloku můžete použít více jazyků zadáním správného příkazu jazyka Magic na začátku buňky. V následující tabulce jsou uvedeny příkazy Magic pro přepínání jazyků buněk.
 
-|Magic – příkaz |Jazyk | Description |  
+|Magic – příkaz |Jazyk | Popis |  
 |---|------|-----|
 |%% pyspark| Python | Spustí dotaz **Pythonu** v kontextu Sparku.  |
 |%% Spark| Scala | Spustí dotaz **Scala** proti kontextu Spark.  |  
@@ -549,8 +549,8 @@ Pomocí následujících klávesových zkratek můžete v režimu úprav snadně
 
 ## <a name="next-steps"></a>Další kroky
 - [Podívejte se na ukázkové poznámkové bloky synapse](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
-- [Rychlý Start: Vytvoření fondu Apache Spark (ve verzi Preview) ve službě Azure synapse Analytics pomocí nástrojů pro web](../quickstart-apache-spark-notebook.md)
+- [Rychlý Start: Vytvoření fondu Apache Spark ve službě Azure synapse Analytics pomocí nástrojů pro web](../quickstart-apache-spark-notebook.md)
 - [Co je Apache Spark ve službě Azure synapse Analytics](apache-spark-overview.md)
-- [Použití .NET pro Apache Spark s Azure synapse Analytics](spark-dotnet.md)
+- [Použití .NET pro Apache Spark se službou Azure Synapse Analytics](spark-dotnet.md)
 - [Dokumentace k rozhraní .NET pro Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: bf7e99f6e6201afefd316deafe37e38088fb9fae
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 0bd6300f4b9dbcf76b5447a0fb58502b7aebf311
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187115"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451428"
 ---
 # <a name="what-is-azure-sql-database"></a>Co je Azure SQL Database?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -200,7 +200,7 @@ SQL Database zjednodušuje a zefektivňuje vytváření a správu aplikací. SQL
 |[Azure Data Studio](/sql/azure-data-studio/)|Databázový Nástroj pro různé platformy, který běží na Windows, macOS a Linux.|
 |[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)|Bezplatná klientská aplikace ke stažení pro správu jakékoli infrastruktury SQL, od SQL Server po SQL Database.|
 |[Nástroje pro SQL Server dat v aplikaci Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt)|Bezplatná klientská aplikace ke stažení pro vývoj SQL Server relačních databází, databází v Azure SQL Database, balíčků integračních služeb, Analysis Services datových modelů a sestav služby Reporting Services.|
-|[Visual Studio Code](https://code.visualstudio.com/docs)|Bezplatný a Open Source Editor kódu pro Windows, macOS a Linux. Podporuje rozšíření, včetně [rozšíření MSSQL](https://aka.ms/mssql-marketplace) pro dotazování Microsoft SQL Server, Azure SQL Database a Azure Azure synapse Analytics (dříve SQL Data Warehouse).|
+|[Visual Studio Code](https://code.visualstudio.com/docs)|Bezplatný a Open Source Editor kódu pro Windows, macOS a Linux. Podporuje rozšíření, včetně [rozšíření MSSQL](https://aka.ms/mssql-marketplace) pro dotazování Microsoft SQL Server, Azure SQL Database a Azure Azure synapse Analytics.|
 
 SQL Database podporuje vytváření aplikací pomocí jazyků Python, Java, Node.js, PHP, Ruby a .NET v systémech macOS, Linux a Windows. SQL Database podporuje stejné [knihovny připojení](connect-query-content-reference-guide.md#libraries) jako SQL Server.
 

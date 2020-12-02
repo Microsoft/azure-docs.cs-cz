@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: ba903793844e44b26931a70183860c983adaf18a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52f0bcbb332b5d5e47440accff9d9895dcef7056
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743399"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449371"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>Kurz: instalace Azure Stack Edge pro s grafickým procesorem
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Stojan připojit zařízení
 > * Zapojení kabeláže zařízení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Požadavky pro instalaci fyzického zařízení jsou následující:
 
@@ -86,7 +86,7 @@ Zařízení musí být nainstalované na standardním racku na 19 palců. Pomoc�
 > Zařízení Azure Stack Edge pro musí být připojená do racku pro správnou operaci.
 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Než začnete, přečtěte si pokyny pro bezpečnost v brožuře o zabezpečení, ochraně životního prostředí a regulativní informace. Tato brožura byla dodávána se zařízením.
 - Zahajte instalaci kolejnic do vyhrazeného místa, které je nejblíže k dolnímu okraji skříňky racku.
@@ -117,7 +117,7 @@ Vyhledejte komponenty pro instalaci sestavení se sadou pro železnici:
 ### <a name="install-and-remove-tooled-rails-threaded-hole-racks"></a>Instalace a odebrání nástrojů na železnici (racky s vlákny)
 
 > [!TIP]
-> Tato možnost je vydaná, protože vyžaduje nástroj (_Screwdriver s plochou_obdobu) pro instalaci a odebrání kolejnic do závitových otvorů v rackech.
+> Tato možnost je vydaná, protože vyžaduje nástroj (_Screwdriver s plochou_ obdobu) pro instalaci a odebrání kolejnic do závitových otvorů v rackech.
 
 1. Odeberte PIN kódy z front-a zadních závorek pomocí Screwdriver s plochou čárkou.
 2. Umožňuje načíst a otočit podsestavení západky kolejnice a odebrat je z montážní hranaté závorky.
@@ -228,7 +228,7 @@ Proveďte následující kroky, které zařízení zapojte do sítě pro napáje
 7. Připojte jeden nebo několik portů PORT 2, PORT 3, PORT 4, PORT 5 nebo PORT 6 k internetu nebo síti datacentra.
 
     - Pokud se připojujete k portu 2, použijte síťový kabel RJ-45 s konektorem 1 GbE.
-    - Pro síťová rozhraní 10/25 až GbE použijte kabely SFP + Copper.
+    - Pro síťová rozhraní 10/25 až GbE použijte kabely SFP + Copper nebo vlákno. Pokud používáte Fiber, použijte adaptér optický na SFP.
 
 ## <a name="next-steps"></a>Další kroky
 

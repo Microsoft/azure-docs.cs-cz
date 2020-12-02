@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: ceecaf88f87a94473011eb48e944db7a011b3acc
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 943f1361a2a9d6bf8d891f8b4f2137b8738f0836
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563779"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450760"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Objednávky v analýzách komerčního marketplace
 
@@ -21,7 +21,7 @@ Tento článek poskytuje informace o řídicím panelu objednávky v partnerské
 Pokud chcete získat přístup k řídicímu panelu objednávky v partnerském centru, vyberte v části **komerční Marketplace** možnost **[analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **objednávky**.
 
 >[!NOTE]
-> Podrobné definice terminologie analýz najdete v tématu [terminologie a běžné otázky k komerčním](./partner-center-portal/faq-terminology.md)analýzám na webu Marketplace.
+> Podrobné definice terminologie analýz najdete v tématu [terminologie a běžné otázky k komerčním](./analytics-faq.md)analýzám na webu Marketplace.
 
 ## <a name="orders-dashboard"></a>Řídicí panel objednávek
 
@@ -69,9 +69,9 @@ Existují dva objednávky: _aktivní_ a _zrušené_.
 
 Nabídky SaaS můžou používat jeden ze dvou modelů cen s každým plánem: paušální sazba (založená na lokalitě) nebo na uživatele (na základě pracovních stanic).
 
-- **Paušální sazba** : Povolte přístup k vaší nabídce s jednou měsíční nebo roční sazbou za paušální cenu. Tato situace se někdy označuje jako ceny na základě lokality.
-- **Na uživatele** : Povolte přístup k vaší nabídce s cenou na základě počtu uživatelů, kteří mají přístup k nabídce nebo zabírat křesla. Pomocí tohoto modelu založeného na využití můžete nastavit minimální a maximální počet uživatelů, které plán podporuje. Můžete vytvořit více plánů pro konfiguraci různých cenových bodů na základě počtu uživatelů. Tato pole jsou volitelná. Pokud je ponecháno bez výběru, počet uživatelů bude interpretován jako neomezený (minimální počet 1 a maximální počet, jak může vaše služba podporovat). Tato pole je možné upravovat v rámci aktualizace vašeho plánu.
-- **Měřená fakturace** : podle ceny za paušální cenu. Pomocí tohoto cenového modelu můžete volitelně definovat měřené plány, které používají rozhraní API služby pro měření softwaru Marketplace k účtování zákazníků na využití, na které se nevztahuje paušální sazba.
+- **Paušální sazba**: Povolte přístup k vaší nabídce s jednou měsíční nebo roční sazbou za paušální cenu. Tato situace se někdy označuje jako ceny na základě lokality.
+- **Na uživatele**: Povolte přístup k vaší nabídce s cenou na základě počtu uživatelů, kteří mají přístup k nabídce nebo zabírat křesla. Pomocí tohoto modelu založeného na využití můžete nastavit minimální a maximální počet uživatelů, které plán podporuje. Můžete vytvořit více plánů pro konfiguraci různých cenových bodů na základě počtu uživatelů. Tato pole jsou volitelná. Pokud je ponecháno bez výběru, počet uživatelů bude interpretován jako neomezený (minimální počet 1 a maximální počet, jak může vaše služba podporovat). Tato pole je možné upravovat v rámci aktualizace vašeho plánu.
+- **Měřená fakturace**: podle ceny za paušální cenu. Pomocí tohoto cenového modelu můžete volitelně definovat měřené plány, které používají rozhraní API služby pro měření softwaru Marketplace k účtování zákazníků na využití, na které se nevztahuje paušální sazba.
 
 Další informace o tom, jak naplánovat vyúčtování na pracovišti, v lokalitě a na základě měření, najdete v tématu [plánování nabídky SaaS pro komerční tržiště](plan-saas-offer.md).
 
@@ -121,7 +121,7 @@ Tabulka Podrobnosti objednávky zobrazuje číslovaný seznam 1 000 hlavních ob
 | Typ nabídky | Typ nabídky | Typ nabídky komerčního tržiště. |
 | Typ licence Azure | Typ licence Azure | Typ licenční smlouvy používané zákazníky k nákupu Azure. Označuje se také jako kanál. Možné hodnoty jsou:<ul><li>Program Cloud Solution Provider</li><li>Enterprise</li><li>Enterprise prostřednictvím prodejce</li><li>Průběžné platby</li></ul> |
 | Typ licence Marketplace | Typ licence Marketplace | Způsob fakturace nabídky komerčního obchodu na webu Marketplace. Různé hodnoty jsou:<ul><li>Účtuje se prostřednictvím Azure.</li><li>Přineste si vlastní licenci</li><li>Free</li><li>Microsoft jako prodejce</li></ul> |
-| Skladová položka | Skladová položka | Plán přidružený k nabídce |
+| SKU | SKU | Plán přidružený k nabídce |
 | Země zákazníka | Země nebo oblast zákazníka | Název země nebo oblasti, kterou zadal zákazník. Země nebo oblast se může lišit od země nebo oblasti v předplatném Azure zákazníka. |
 | Je verze Preview SKU | Je verze Preview SKU | Tato hodnota vám umožní zjistit, jestli jste SKU označili jako "Preview". Hodnota bude "Ano", pokud je odpovídajícím způsobem označena skladová jednotka a pouze předplatná Azure, která jsou autorizována, můžete nasadit a použít tuto bitovou kopii. Pokud nebyla položka SKU identifikována jako "Preview", bude hodnota "ne". |
 | ID objednávky | ID objednávky | Jedinečný identifikátor objednávky zákazníka pro vaši komerční službu Marketplace Nabídky založené na využití virtuálních počítačů nejsou přidruženy k objednávce. |
@@ -135,7 +135,7 @@ Tabulka Podrobnosti objednávky zobrazuje číslovaný seznam 1 000 hlavních ob
 | Název nabídky | Název nabídky | Název nabídky komerčního tržiště. |
 | Datum ukončení zkušební verze | Datum ukončení zkušební verze | Datum ukončení zkušebního období pro tuto objednávku skončí nebo skončí. |
 | ID zákazníka | ID zákazníka | Jedinečný identifikátor přiřazený k zákazníkovi. Zákazník může mít nula nebo více Azure Marketplace předplatných. |
-| ID fakturačního účtu | ID fakturačního účtu | Identifikátor účtu, ve kterém se vygenerovala faktura Map _ *ID fakturačního účtu* * na **CustomerID** pro připojení sestavy transakcí výběr se sestavami zákazník, objednávka a využití. |
+| ID fakturačního účtu | ID fakturačního účtu | Identifikátor účtu, ve kterém se vygenerovala faktura Map _ *ID fakturačního účtu** na **CustomerID** pro připojení sestavy transakcí výběr se sestavami zákazník, objednávka a využití. |
 | AssetCount | Počet assetů | Počet prostředků přidružených k ID objednávky. |
 ||||
 
@@ -154,4 +154,4 @@ Filtry stránky **objednávky** jsou aplikovány na úrovni stránky objednávky
 - U virtuálních počítačů nabízí metriky využití a měření fakturace, viz [řídicí panel využití v komerčních obchodech na webu Marketplace](./usage-dashboard.md).
 - Seznam vašich žádostí o stažení za posledních 30 dní najdete [v tématu řídicí panel ke stažení v komerčních obchodech na webu Marketplace](./partner-center-portal/downloads-dashboard.md).
 - Chcete-li zobrazit konsolidované zobrazení zpětné vazby od zákazníků pro nabídky Azure Marketplace a AppSource, přečtěte si téma [hodnocení & kontroly řídicího panelu Analytics v partnerském centru](./partner-center-portal/ratings-reviews.md).
-- Nejčastější dotazy týkající se komerčních analýz na webu Marketplace a ucelený slovník datových podmínek najdete v tématu [terminologie a běžné otázky ke komerčním analýzám na webu Marketplace](./partner-center-portal/faq-terminology.md).
+- Nejčastější dotazy týkající se komerčních analýz na webu Marketplace a ucelený slovník datových podmínek najdete v tématu [terminologie a běžné otázky ke komerčním analýzám na webu Marketplace](./analytics-faq.md).

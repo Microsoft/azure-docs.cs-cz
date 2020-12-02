@@ -6,12 +6,12 @@ ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 26b155484dafac4a63fe2a6c7ff292ee8bbacbc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ce9183fad50c43ea7070f5fa09e0d445caf89df
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317204"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451252"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Kurz: vytvoření grafu metrik v Azure Monitor
 Průzkumník metrik je funkce Azure Monitor v Azure Portal, která umožňuje vytvářet grafy z hodnot metriky, vizuálně sladit trendy a zkoumat špičky a neshodné hodnoty metriky. Pomocí Průzkumníka metrik můžete prozkoumat stav a využití vašich prostředků Azure nebo vykreslit grafy z vlastních metrik. 
@@ -27,7 +27,7 @@ Následuje video, které zobrazuje rozsáhlejší scénář, než postup uveden�
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4qO59]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete prostředek Azure, který se má monitorovat. Můžete použít libovolný prostředek v předplatném Azure, které podporuje metriky. Chcete-li zjistit, zda prostředek podporuje metriky, přejděte do příslušné nabídky v Azure Portal a ověřte, zda je v této nabídce v části **monitorování** k dispozici možnost **metriky** .
 
@@ -50,7 +50,7 @@ Můžete otevřít Průzkumníka metrik buď z nabídky Azure Monitor, nebo z na
 
     ![Vyberte metriku](media/tutorial-metrics-explorer/metric-picker.png)
 
-4. Volitelně můžete změnit **agregaci**metriky. To definuje, jak se hodnoty metriky agregují napříč časovými rozlišeními grafu. Pokud je například časové rozlišení nastaveno na 15 minut a agregace je nastavena na součet, pak každý bod v grafu bude součtem všech shromážděných hodnot za každých 15 minut segmentů.
+4. Volitelně můžete změnit **agregaci** metriky. To definuje, jak se hodnoty metriky agregují napříč časovými rozlišeními grafu. Pokud je například časové rozlišení nastaveno na 15 minut a agregace je nastavena na součet, pak každý bod v grafu bude součtem všech shromážděných hodnot za každých 15 minut segmentů.
 
     ![Snímek obrazovky zobrazuje graf s názvem součet příchozího přenosu dat pro contosoretailweb.](media/tutorial-metrics-explorer/chart.png)
 
@@ -85,5 +85,5 @@ Můžete přizpůsobit styl grafu, název a upravit pokročilá nastavení grafu
 Teď, když jste se naučili pracovat s metrikami v Azure Monitor, Naučte se používat metriky k posílání proaktivní výstrah.
 
 > [!div class="nextstepaction"]
-> [Vytváření, zobrazení a správa upozornění na metriky pomocí služby Azure Monitor](../platform/alerts-metric.md)
+> [Vytváření, zobrazení a správa upozornění na metriky pomocí služby Azure Monitor](../platform/metrics-charts.md#create-alert-rules)
 

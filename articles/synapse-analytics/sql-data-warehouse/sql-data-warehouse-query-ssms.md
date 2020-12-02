@@ -1,6 +1,6 @@
 ---
-title: Připojení přes SSMS
-description: Pomocí SQL Server Management Studio (SSMS) se můžete připojit k vyhrazenému fondu SQL a dotazovat se na něj v Azure synapse Analytics.
+title: Připojení k vyhrazenému fondu SQL (dříve SQL DW) pomocí SSMS
+description: Pomocí SQL Server Management Studio (SSMS) se můžete připojit a zadat dotaz na vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,34 +11,34 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c2fab8f02f31897a2e3d38094b9bd365f8e921e9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 950cb4c40a534f252ec8b0daa5a57eb87c098450
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325334"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450472"
 ---
-# <a name="connect-to-a-dedicated-sql-pool-in-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>Připojení k vyhrazenému fondu SQL ve službě Azure synapse Analytics pomocí SQL Server Management Studio (SSMS)
+# <a name="connect-to-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>Připojení k vyhrazenému fondu SQL (dřív SQL DW) ve službě Azure synapse Analytics pomocí SQL Server Management Studio (SSMS)
 
 > [!div class="op_single_selector"]
 >
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [Sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
+> * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
-Pomocí SQL Server Management Studio (SSMS) se můžete připojit k datovému skladu a dotazovat se na něj v rámci Azure synapse.
+Pomocí SQL Server Management Studio (SSMS) se můžete připojit k vyhrazenému fondu SQL a dotazovat se na něj (dřív SQL DW).
 
 ## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li použít tento kurz, potřebujete:
 
-* Existující vyhrazený fond SQL. Pokud ho chcete vytvořit, přečtěte si téma [vytvoření vyhrazeného fondu SQL](create-data-warehouse-portal.md).
+* Existující vyhrazený fond SQL. Pokud ho chcete vytvořit, přečtěte si téma [vytvoření vyhrazeného fondu SQL (dřív SQL DW)](create-data-warehouse-portal.md).
 * SQL Server Management Studio (SSMS) nainstalováno. Pokud ho ještě nemáte, [Stáhněte si SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) zdarma.
-* Plně kvalifikovaný název serveru SQL. Tyto informace najdete v tématu [připojení k vyhrazenému fondu SQL](sql-data-warehouse-connect-overview.md).
+* Plně kvalifikovaný název serveru SQL. Tyto informace najdete v tématu [vyhrazený fond SQL (dřív SQL DW)](sql-data-warehouse-connect-overview.md).
 
-## <a name="1-connect-to-your-dedicated-sql-pool"></a>1. Připojte se k vyhrazenému fondu SQL.
+## <a name="1-connect-to-your-dedicated-sql-pool-formerly-sql-dw"></a>1. Připojte se k vyhrazenému fondu SQL (dřív SQL DW).
 
 1. Otevřete aplikaci SSMS.
 2. Otevřete Průzkumník objektů výběrem **File**  >  **Průzkumník objektů připojit k** souboru.
@@ -48,9 +48,9 @@ Chcete-li použít tento kurz, potřebujete:
 
    ![Připojení k serveru](./media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
 
-   * **Název serveru** Zadejte **název serveru** , který jste si zjistili.
+   * **Název serveru** Zadejte **název serveru**, který jste si zjistili.
    * **Ověřování**. Vyberte **Ověřování serveru SQL Server** nebo **Integrované ověřování Active Directory**.
-   * **Uživatelské jméno** a **Heslo** : Pokud jste výše vybrali možnost Ověřování serveru SQL Server, zadejte uživatelské jméno a heslo.
+   * **Uživatelské jméno** a **Heslo**: Pokud jste výše vybrali možnost Ověřování serveru SQL Server, zadejte uživatelské jméno a heslo.
    * Klikněte na **Připojit**.
 4. Pokud chcete SQL server Azure prozkoumat, rozbalte ho. Můžete se podívat, které databáze jsou k tomuto serveru přidružené. Rozbalte položku AdventureWorksDW a podívejte se na tabulky v ukázkové databázi.
 

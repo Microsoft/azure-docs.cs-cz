@@ -11,17 +11,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 97be3bf0ecec20c4bf2e1633f893c9aa0d9ba49d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2ff8f6134f74e0eda355342a7282e8be81a3d8df
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020278"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450226"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Použití koncových bodů a pravidel služby virtuální sítě pro servery v Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-*Pravidla virtuální sítě* jsou jedna funkce zabezpečení brány firewall, která určuje, jestli Server pro vaše databáze a elastické fondy v [Azure SQL Database](sql-database-paas-overview.md) nebo pro databáze v [Azure synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) přijímá komunikaci, která se odesílají z konkrétních podsítí ve virtuálních sítích. Tento článek vysvětluje, proč je funkce pravidla virtuální sítě někdy nejlepší volbou pro bezpečné povolení komunikace s databází v Azure SQL Database a Azure synapse Analytics (dřív SQL Data Warehouse).
+*Pravidla virtuální sítě* jsou jedna funkce zabezpečení brány firewall, která určuje, jestli Server pro vaše databáze a elastické fondy v [Azure SQL Database](sql-database-paas-overview.md) nebo pro databáze v [Azure synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) přijímá komunikaci, která se odesílají z konkrétních podsítí ve virtuálních sítích. Tento článek vysvětluje, proč je funkce pravidla virtuální sítě někdy nejlepší volbou pro bezpečné povolení komunikace s databází v Azure SQL Database a Azure synapse Analytics.
 
 > [!NOTE]
 > Tento článek se týká Azure SQL Database a Azure synapse Analytics. Pro zjednodušení pojem "Database" odkazuje jak na databáze Azure SQL Database, tak na Azure synapse Analytics. Podobně všechny odkazy na server se odkazují na [logický SQL Server](logical-servers.md) , který je hostitelem Azure SQL Database a Azure synapse Analytics.
@@ -111,7 +111,7 @@ Ve službě Azure Storage je implementovaná stejná funkce, která umožňuje o
 
 Základ a příkaz COPY se běžně používá k načtení dat do služby Azure synapse Analytics z účtů Azure Storage pro příjem dat s vysokou propustností. Pokud účet Azure Storage, ze kterého načítáte data, přistupuje jenom k sadě virtuálních sítí VNet, připojení při použití základny a příkazu COPY pro účet úložiště dojde k přerušení. Pokud chcete povolit scénáře importu a exportu pomocí kopírování a základu s připojením služby Azure synapse Analytics k Azure Storage, která je zabezpečená pro virtuální síť, postupujte podle následujících kroků:
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
 - Pomocí tohoto [průvodce](/powershell/azure/install-az-ps) nainstalujte Azure PowerShell.
 - Pokud máte účet úložiště pro obecné účely verze 1 nebo účet úložiště objektů blob, musíte nejprve pomocí tohoto [průvodce](../../storage/common/storage-account-upgrade.md) upgradovat na účet úložiště pro obecné účely verze 2.
@@ -228,7 +228,7 @@ Rutiny PowerShellu pro akce virtuální sítě SQL volají interně volání roz
 
 - [Pravidla Virtual Network: operace][rest-api-virtual-network-rules-operations-862r]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *typu* koncového bodu služby, který je relevantní pro Azure SQL Database.
 
@@ -239,7 +239,7 @@ Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *t
 
 ## <a name="azure-portal-steps"></a>Azure Portal kroky
 
-1. Přihlaste se na [Azure Portal][http-azure-portal-link-ref-477t].
+1. Přihlaste se k [portálu Azure Portal][http-azure-portal-link-ref-477t].
 
 2. Vyhledejte a vyberte **SQL servery** a pak vyberte svůj server. V části **zabezpečení** vyberte možnost **brány firewall a virtuální sítě**.
 

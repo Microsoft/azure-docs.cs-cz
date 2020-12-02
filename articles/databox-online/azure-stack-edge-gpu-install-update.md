@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 10/13/2020
+ms.date: 11/30/2020
 ms.author: alkohli
-ms.openlocfilehash: b0377d7b209da76b03a115dc82831eeb00e1ff95
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 8d17528728c5519244210217b35d6cd6a3afe715
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047076"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449020"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>Aktualizace GPU Azure Stack Edge pro 
 
@@ -22,9 +22,9 @@ Tento článek popisuje kroky potřebné k instalaci aktualizace na Azure Stack 
 Postup popsaný v tomto článku byl proveden s použitím jiné verze softwaru, ale proces zůstane stejný jako aktuální verze softwaru.
 
 > [!IMPORTANT]
-> - Aktualizace **2010** odpovídá verzi **2.1.1377.2170** softwaru na vašem zařízení. Další informace o této aktualizaci najdete v [poznámkách k verzi](azure-stack-edge-gpu-2009-release-notes.md).
+> - Aktualizace **2011** je aktuální aktualizace. <!--and corresponds to **2.1.1377.2170** software version on your device.--> Další informace o této aktualizaci najdete v [poznámkách k verzi](azure-stack-edge-gpu-2011-release-notes.md).
 >
-> - Mějte na paměti, že při instalaci aktualizace nebo opravy hotfix dojde k restartování zařízení. Tato aktualizace vyžaduje, abyste postupně použili dvě aktualizace. Nejdřív použijte aktualizace softwaru zařízení a pak Kubernetes aktualizace. Vzhledem k tom, že Azure Stack Edge pro je zařízení s jedním uzlem, dojde k přerušení všech vstupně-výstupních operací a v zařízení dojde k výpadku až 30 minut od aktualizace softwaru zařízení.
+> - Mějte na paměti, že při instalaci aktualizace nebo opravy hotfix dojde k restartování zařízení. Tato aktualizace obsahuje aktualizace softwaru zařízení a aktualizace Kubernetes. Vzhledem k tom, že Azure Stack Edge pro je zařízení s jedním uzlem, dojde k přerušení všech vstupně-výstupních operací a vaše zařízení bude mít za následek výpadek až 30 minut.
 
 Chcete-li nainstalovat aktualizace do zařízení, je třeba nejprve nakonfigurovat umístění serveru aktualizací. Po nakonfigurování serveru aktualizací můžete aktualizace použít prostřednictvím uživatelského rozhraní Azure Portal nebo místního webového uživatelského rozhraní.
 
@@ -32,11 +32,11 @@ Každý z těchto kroků je popsaný v následujících částech.
 
 ## <a name="configure-update-server"></a>Konfigurace serveru aktualizací
 
-1. V místním webovém uživatelském rozhraní přejdete na **Configuration**  >  **Server aktualizace**konfigurace. 
+1. V místním webovém uživatelském rozhraní přejdete na **Configuration**  >  **Server aktualizace** konfigurace. 
    
     ![Konfigurace aktualizací 1](./media/azure-stack-edge-gpu-install-update/configure-update-server-1.png)
 
-2. V rozevíracím seznamu **Vyberte typ serveru aktualizací**zvolte možnost z Microsoft Update Server (výchozí) nebo Windows Server Update Services.  
+2. V rozevíracím seznamu **Vyberte typ serveru aktualizací** zvolte možnost z Microsoft Update Server (výchozí) nebo Windows Server Update Services.  
    
     Pokud se aktualizuje z Windows Server Update Services, zadejte identifikátor URI serveru. Server na tomto identifikátoru URI nasadí aktualizace do všech zařízení připojených k tomuto serveru.
 
@@ -44,11 +44,11 @@ Každý z těchto kroků je popsaný v následujících částech.
     
     Server WSUS se používá ke správě a distribuci aktualizací prostřednictvím konzoly pro správu. Server WSUS může být také zdrojem aktualizací pro další servery WSUS v organizaci. Serveru WSUS, který slouží jako zdroj aktualizací, se říká nadřazený server. V případě implementace WSUS musí být aspoň jeden server WSUS ve vaší síti schopný se připojit k Microsoft Update získat dostupné informace o aktualizacích. Jako správce se můžete rozhodnout v závislosti na zabezpečení sítě a konfiguraci – kolik dalších serverů WSUS se připojuje přímo k Microsoft Update.
     
-    Další informace najdete na webu [Windows Server Update Services (WSUS)](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) .
+    Další informace najdete na webu [Windows Server Update Services (WSUS)](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) .
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-Doporučujeme nainstalovat aktualizace prostřednictvím Azure Portal. Zařízení automaticky vyhledává aktualizace jednou denně. Až budou aktualizace k dispozici, zobrazí se na portálu oznámení. Pak můžete stáhnout a nainstalovat aktualizace. 
+Doporučujeme nainstalovat aktualizace prostřednictvím Azure Portal. Zařízení automaticky vyhledává aktualizace jednou denně. Až budou aktualizace k dispozici, zobrazí se na portálu oznámení. Pak můžete aktualizace stáhnout a nainstalovat. 
 
 > [!NOTE]
 > Než budete pokračovat v instalaci aktualizací, ujistěte se, že je zařízení v pořádku a zobrazuje se stav **online** .
@@ -84,19 +84,19 @@ Doporučujeme nainstalovat aktualizace prostřednictvím Azure Portal. Zařízen
 
     ![Verze softwaru po aktualizaci 7](./media/azure-stack-edge-gpu-install-update/portal-update-6.png)
 
-    Pokud se rozhodnete stahovat pouze aktualizace, vyberte oznámení a otevřete okno **aktualizace zařízení** . Vyberte **Nainstalovat**.
+    Pokud se rozhodnete stahovat pouze aktualizace, vyberte oznámení a otevřete okno **aktualizace zařízení** . Vyberte **Install** (Nainstalovat).
   
     ![Verze softwaru po aktualizaci 8](./media/azure-stack-edge-gpu-install-update/portal-update-7.png)
 
-5. Zobrazí se oznámení o tom, že probíhá instalace.
+5. Zobrazí se oznámení o tom, že probíhá instalace. 
 
     ![Verze softwaru po aktualizaci 9](./media/azure-stack-edge-gpu-install-update/portal-update-8.png)
-
+ 
     Portál také zobrazí informační výstrahu, která indikuje, že instalace probíhá. Zařízení přejde do režimu offline a je v režimu údržby.
-    
+   
     ![Verze softwaru po aktualizaci 10](./media/azure-stack-edge-gpu-install-update/portal-update-9.png)
 
-6. Vzhledem k tomu, že se jedná o zařízení s jedním uzlem, po instalaci aktualizací se zařízení restartuje. Kritická výstraha při restartování bude znamenat, že dojde ke ztrátě prezenčního signálu zařízení.
+6. Vzhledem k tomu, že se jedná o zařízení s jedním uzlem, po instalaci aktualizací se zařízení restartuje. Kritická výstraha během restartování indikuje, že prezenční signál zařízení je ztracený.
 
     ![Verze softwaru po aktualizaci 11](./media/azure-stack-edge-gpu-install-update/portal-update-10.png)
 
@@ -117,27 +117,25 @@ Doporučujeme nainstalovat aktualizace prostřednictvím Azure Portal. Zařízen
 
     ![Verze softwaru po aktualizaci 14](./media/azure-stack-edge-gpu-install-update/portal-update-15.png)
 
-9. Zobrazí se oznámení, že aktualizace jsou k dispozici. Jedná se o aktualizace Kubernetes. Vyberte oznámení nebo na horním panelu příkazů vyberte **aktualizovat zařízení** .
+<!--9. You will again see a notification that updates are available. These are the Kubernetes updates. Select the notification or select **Update device** from the top command bar.
 
-    ![Verze softwaru po aktualizaci 15](./media/azure-stack-edge-gpu-install-update/portal-update-16.png)
+    ![Software version after update 15](./media/azure-stack-edge-gpu-install-update/portal-update-16.png)
 
-10. Stáhněte si aktualizace Kubernetes. Uvidíte, že velikost balíčku se v porovnání s předchozím balíčkem aktualizace liší.
+10. Download the Kubernetes updates. You can see that the package size is different when compared to the previous update package.
 
-    ![Verze softwaru po aktualizaci 16](./media/azure-stack-edge-gpu-install-update/portal-update-17.png)
+    ![Software version after update 16](./media/azure-stack-edge-gpu-install-update/portal-update-17.png)
 
-    Proces instalace je stejný jako u aktualizací zařízení. Nejprve se stáhnou aktualizace.
+    The process of installation is identical to that of device updates. First the updates are downloaded.
 
-    ![Verze softwaru po aktualizaci 17](./media/azure-stack-edge-gpu-install-update/portal-update-18.png)    
+    ![Software version after update 17](./media/azure-stack-edge-gpu-install-update/portal-update-18.png)    
     
-11. Po stažení aktualizací můžete nainstalovat aktualizace. 
+11. Once the updates are downloaded, you can then install the updates. 
 
-    ![Verze softwaru po aktualizaci 18](./media/azure-stack-edge-gpu-install-update/portal-update-19.png)
+    ![Software version after update 18](./media/azure-stack-edge-gpu-install-update/portal-update-19.png)
 
-    Po instalaci aktualizací se zařízení přepne do režimu údržby. Zařízení se nerestartuje na aktualizace Kubernetes. 
+    As the updates are installed, the device is put into maintenance mode. The device does not restart for the Kubernetes updates. -->
 
-    Po úspěšné instalaci aktualizací Kubernetes se oznámení banner zmizí, protože nejsou potřeba žádné další aktualizace. Vaše zařízení teď má nejnovější verzi softwaru a Kubernetes zařízení.
-
-    ![Verze softwaru po aktualizaci 19](./media/azure-stack-edge-gpu-install-update/portal-update-20.png)
+Po úspěšné instalaci softwaru zařízení a aktualizací Kubernetes se oznámení banneru zmizí. Vaše zařízení teď má nejnovější verzi softwaru a Kubernetes zařízení.
 
 
 ## <a name="use-the-local-web-ui"></a>Použití místního webového uživatelského rozhraní
@@ -161,9 +159,9 @@ Chcete-li stáhnout aktualizaci z katalogu Microsoft Update, proveďte následuj
 
     ![Prohledávání katalogu](./media/azure-stack-edge-gpu-install-update/download-update-1.png)
 
-2. Do vyhledávacího pole katalogu Microsoft Update zadejte číslo opravy hotfix nebo podmínek pro aktualizaci, kterou chcete stáhnout, do znalostní báze (KB). Zadejte například **Azure Stack Edge pro**a pak klikněte na **Hledat**.
+2. Do vyhledávacího pole katalogu Microsoft Update zadejte číslo opravy hotfix nebo podmínek pro aktualizaci, kterou chcete stáhnout, do znalostní báze (KB). Zadejte například **Azure Stack Edge pro** a pak klikněte na **Hledat**.
    
-    Seznam aktualizací se zobrazí jako **Azure Stack Edge update 2010**.
+    Seznam aktualizací se zobrazí jako **Azure Stack Edge update 2011**.
    
     <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)-->
 
@@ -198,7 +196,7 @@ Dokončení tohoto postupu trvá přibližně 20 minut. Provedením následujíc
 
 5. Spustí se aktualizace. Po úspěšné aktualizaci zařízení se restartuje. Místní uživatelské rozhraní není v tuto dobu k dispozici.
    
-6. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, **Maintenance**navštivte web  >  **aktualizace softwaru**údržba. V aktuální verzi by se měla zobrazit zobrazená verze softwaru **2.1.1377.2170**.
+6. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, **Maintenance** navštivte web  >  **aktualizace softwaru** údržba. V aktuální verzi by se zobrazila verze zobrazeného softwaru **Azure Stack Edge 2011**.
 
    <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)--> 
 
@@ -212,7 +210,7 @@ Dokončení tohoto postupu trvá přibližně 20 minut. Provedením následujíc
 
 9. Po zobrazení výzvy k potvrzení vyberte **Ano** a pokračujte. 
 
-10. Po úspěšné instalaci aktualizace Kubernetes se na zobrazený software v **údržbě**  >  **aktualizace softwaru**nemění. 
+10. Po úspěšné instalaci aktualizace Kubernetes se na zobrazený software v **údržbě**  >  **aktualizace softwaru** nemění. 
 
 
 ## <a name="next-steps"></a>Další kroky

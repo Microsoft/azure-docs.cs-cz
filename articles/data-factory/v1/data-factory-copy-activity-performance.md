@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1ac55dcb9b9b2fff42e66d496dfa8ac64603d955
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 5910b94dba03f105197a94cf1ea1805f45249f3f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636200"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451348"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Průvodce laděním a výkonem aktivity kopírování
 
@@ -32,7 +32,7 @@ Aktivita kopírování Azure Data Factory poskytuje prvotřídní řešení pro 
 
 Azure poskytuje sadu řešení pro datové úložiště a datové sklady na podnikové úrovni a aktivita kopírování nabízí vysoce optimalizované prostředí pro načítání dat, které se dá snadno nakonfigurovat a nastavit. Jenom s jednou aktivitou kopírování můžete dosáhnout těchto akcí:
 
-* Načítání dat do služby **Azure synapse Analytics** při **1,2 GB/** s. Návod s případem použití najdete v tématu [načtení 1 TB do služby Azure synapse Analytics (dříve SQL Data Warehouse) za 15 minut a Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+* Načítání dat do služby **Azure synapse Analytics** při **1,2 GB/** s. Návod s případem použití najdete v tématu [načtení 1 TB do služby Azure synapse Analytics za 15 minut s Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 * Načtení dat do **úložiště objektů BLOB v Azure** v **1,0 GB/** s
 * Načtení dat do **Azure Data Lake Store** při **1,0 GB/** s
 
@@ -80,9 +80,9 @@ Jako referenční informace zobrazuje následující tabulka číslo propustnost
 > Vyšší propustnost můžete dosáhnout využitím více jednotek přesunu dat (DMUs) než výchozí maximální DMUs, což je 32 pro spuštění aktivity kopírování z cloudu do cloudu. Například s 100 DMUs můžete dosáhnout kopírování dat z objektu blob Azure do Azure Data Lake Store při **1,0 GB/** s. Podrobnosti o této funkci a podporovaném scénáři najdete v části [jednotky pro přesun dat v cloudu](#cloud-data-movement-units) . Kontaktujte [podporu Azure](https://azure.microsoft.com/support/) a požádejte o další DMUs.
 
 ## <a name="parallel-copy"></a>Paralelní kopírování
-Můžete číst data ze zdroje nebo zapisovat data do cíle **paralelně v rámci spuštění aktivity kopírování** . Tato funkce zlepšuje propustnost operace kopírování a zkracuje dobu potřebnou k přesunu dat.
+Můžete číst data ze zdroje nebo zapisovat data do cíle **paralelně v rámci spuštění aktivity kopírování**. Tato funkce zlepšuje propustnost operace kopírování a zkracuje dobu potřebnou k přesunu dat.
 
-Toto nastavení se liší od vlastnosti **souběžnosti** v definici aktivity. Vlastnost **Concurrency** určuje, kolik **souběžných aktivit kopírování se spustí** pro zpracování dat z různých oken aktivit (od 1 do 2 dop, 2 am a 3 dop. 3 dop. a tak dále). Tato funkce je užitečná při provádění historických zátěží. Možnost paralelní kopírování se vztahuje na **spuštění jedné aktivity** .
+Toto nastavení se liší od vlastnosti **souběžnosti** v definici aktivity. Vlastnost **Concurrency** určuje, kolik **souběžných aktivit kopírování se spustí** pro zpracování dat z různých oken aktivit (od 1 do 2 dop, 2 am a 3 dop. 3 dop. a tak dále). Tato funkce je užitečná při provádění historických zátěží. Možnost paralelní kopírování se vztahuje na **spuštění jedné aktivity**.
 
 Pojďme se podívat na vzorový scénář. V následujícím příkladu je třeba zpracovat více řezů z minulosti. Data Factory spustí instanci aktivity kopírování (spuštění aktivity) pro každý řez:
 
@@ -128,7 +128,7 @@ Chcete-li přepsat toto výchozí nastavení, zadejte hodnotu vlastnosti **cloud
 ```
 
 > [!NOTE]
-> Pokud potřebujete více cloudových DMUs pro vyšší propustnost, obraťte se na [podporu Azure](https://azure.microsoft.com/support/). Nastavení 8 a výše teď funguje jenom v případě, že **zkopírujete víc souborů z BLOB Storage/Data Lake Store/Amazon S3/Cloud FTP/cloudu SFTP do BLOB Storage/Data Lake Store/Azure SQL Database** .
+> Pokud potřebujete více cloudových DMUs pro vyšší propustnost, obraťte se na [podporu Azure](https://azure.microsoft.com/support/). Nastavení 8 a výše teď funguje jenom v případě, že **zkopírujete víc souborů z BLOB Storage/Data Lake Store/Amazon S3/Cloud FTP/cloudu SFTP do BLOB Storage/Data Lake Store/Azure SQL Database**.
 >
 
 ### <a name="parallelcopies"></a>parallelCopies
@@ -166,7 +166,7 @@ Výchozí chování by mělo být obvykle vám poskytne nejlepší propustnost. 
 ```
 Ukazuje na poznámku:
 
-* Při kopírování dat mezi úložišti založeném na souborech Určuje **parallelCopies** paralelismus na úrovni souboru. K zablokování v rámci jednoho souboru dojde automaticky a transparentně a je navržena tak, aby používala nejvhodnější velikost bloku dat pro daný typ zdrojového úložiště dat, aby se data načetla paralelně a kolmo k parallelCopies. Skutečný počet paralelních kopií, které služba přesunu dat používá pro operaci kopírování v době běhu, není vyšší než počet souborů, které máte. Pokud je chování kopírování **mergeFile** , aktivita kopírování nemůže využít paralelismus na úrovni souborů.
+* Při kopírování dat mezi úložišti založeném na souborech Určuje **parallelCopies** paralelismus na úrovni souboru. K zablokování v rámci jednoho souboru dojde automaticky a transparentně a je navržena tak, aby používala nejvhodnější velikost bloku dat pro daný typ zdrojového úložiště dat, aby se data načetla paralelně a kolmo k parallelCopies. Skutečný počet paralelních kopií, které služba přesunu dat používá pro operaci kopírování v době běhu, není vyšší než počet souborů, které máte. Pokud je chování kopírování **mergeFile**, aktivita kopírování nemůže využít paralelismus na úrovni souborů.
 * Když zadáte hodnotu vlastnosti **parallelCopies** , zvažte zvýšení zátěže v úložišti dat zdroje a jímky a na bránu, pokud se jedná o hybridní kopii. K tomu dochází hlavně v případě, že máte více aktivit nebo souběžných spuštění stejných aktivit, které se spouštějí ve stejném úložišti dat. Pokud si všimnete, že úložiště dat nebo brána jsou zahlcené zatížením, snižte hodnotu **parallelCopies** k uvolnění zátěže.
 * Když kopírujete data z úložišť, která nejsou založená na souborech pro úložiště, která jsou založená na souborech, služba přesunu dat ignoruje vlastnost **parallelCopies** . I v případě, že je zadán paralelismu, v tomto případě se nepoužije.
 
@@ -183,9 +183,9 @@ Je **důležité** si uvědomit, že se vám budou účtovat poplatky podle celk
 ## <a name="staged-copy"></a>Připravené kopírování
 Když kopírujete data ze zdrojového úložiště dat do úložiště dat jímky, můžete použít úložiště objektů BLOB jako dočasné pracovní úložiště. Příprava je užitečná hlavně v následujících případech:
 
-1. Chcete ingestovat **data z různých úložišť dat do služby Azure synapse Analytics prostřednictvím základu** . Azure synapse Analytics používá základ jako mechanismus vysoké propustnosti k načtení velkého množství dat do Azure synapse Analytics. Zdrojová data ale musí být v úložišti objektů BLOB a musí splňovat další kritéria. Při načítání dat z jiného úložiště dat než do úložiště objektů blob můžete aktivovat kopírování dat prostřednictvím dočasného pracovního úložiště objektů BLOB. V takovém případě Data Factory provádí požadované transformace dat, aby se zajistilo, že splňuje požadavky základny. Pak použije základnu k načtení dat do služby Azure synapse Analytics. Další podrobnosti najdete v tématu [použití základny k načtení dat do služby Azure synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics). Návod s případem použití najdete v tématu [načtení 1 TB do služby Azure synapse Analytics za 15 minut s Azure Data Factory](data-factory-load-sql-data-warehouse.md).
-2. **Někdy nějakou dobu trvá, než se provedou hybridní přesun dat (tj. kopírování mezi místním úložištěm dat a cloudovým úložištěm dat) prostřednictvím pomalého síťového připojení** . Aby bylo možné zvýšit výkon, můžete data místně zkomprimovat, aby bylo přesouvání dat do pracovního úložiště dat v cloudu trvat kratší dobu. Pak můžete data z přípravného úložiště dekomprimovat předtím, než je načtete do cílového úložiště dat.
-3. **Z důvodu podnikových zásad IT nechcete v bráně firewall otevírat jiné porty než port 80 a port 443** . Když například kopírujete data z místního úložiště dat do jímky Azure SQL Database nebo do jímky služby Azure synapse Analytics, musíte aktivovat odchozí komunikaci TCP na portu 1433 pro bránu Windows Firewall i firemní bránu firewall. V tomto scénáři můžete bránu využít k prvnímu kopírování dat do pracovní instance úložiště objektů BLOB přes protokol HTTP nebo HTTPS na portu 443. Pak načtěte data do SQL Database nebo Azure synapse Analytics z přípravy úložiště objektů BLOB. V tomto toku nemusíte povolit port 1433.
+1. Chcete ingestovat **data z různých úložišť dat do služby Azure synapse Analytics prostřednictvím základu**. Azure synapse Analytics používá základ jako mechanismus vysoké propustnosti k načtení velkého množství dat do Azure synapse Analytics. Zdrojová data ale musí být v úložišti objektů BLOB a musí splňovat další kritéria. Při načítání dat z jiného úložiště dat než do úložiště objektů blob můžete aktivovat kopírování dat prostřednictvím dočasného pracovního úložiště objektů BLOB. V takovém případě Data Factory provádí požadované transformace dat, aby se zajistilo, že splňuje požadavky základny. Pak použije základnu k načtení dat do služby Azure synapse Analytics. Další podrobnosti najdete v tématu [použití základny k načtení dat do služby Azure synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics). Návod s případem použití najdete v tématu [načtení 1 TB do služby Azure synapse Analytics za 15 minut s Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+2. **Někdy nějakou dobu trvá, než se provedou hybridní přesun dat (tj. kopírování mezi místním úložištěm dat a cloudovým úložištěm dat) prostřednictvím pomalého síťového připojení**. Aby bylo možné zvýšit výkon, můžete data místně zkomprimovat, aby bylo přesouvání dat do pracovního úložiště dat v cloudu trvat kratší dobu. Pak můžete data z přípravného úložiště dekomprimovat předtím, než je načtete do cílového úložiště dat.
+3. **Z důvodu podnikových zásad IT nechcete v bráně firewall otevírat jiné porty než port 80 a port 443**. Když například kopírujete data z místního úložiště dat do jímky Azure SQL Database nebo do jímky služby Azure synapse Analytics, musíte aktivovat odchozí komunikaci TCP na portu 1433 pro bránu Windows Firewall i firemní bránu firewall. V tomto scénáři můžete bránu využít k prvnímu kopírování dat do pracovní instance úložiště objektů BLOB přes protokol HTTP nebo HTTPS na portu 443. Pak načtěte data do SQL Database nebo Azure synapse Analytics z přípravy úložiště objektů BLOB. V tomto toku nemusíte povolit port 1433.
 
 ### <a name="how-staged-copy-works"></a>Jak funguje dvoufázové kopírování
 Když aktivujete pracovní funkci, nejdřív se data zkopírují ze zdrojového úložiště dat do pracovního úložiště dat (Přineste si vlastní). V dalším kroku se data zkopírují z pracovního úložiště dat do úložiště dat jímky. Data Factory pro vás automaticky spravuje tok se dvěma fázemi. Po dokončení přesunu dat Data Factory taky vyčistit dočasná data z pracovního úložiště.
@@ -205,12 +205,12 @@ V současné době nemůžete kopírovat data mezi dvěma místními úložišti
 ### <a name="configuration"></a>Konfigurace
 Nakonfigurujte nastavení **enableStaging** v aktivitě kopírování a určete, jestli se mají data v úložišti objektů BLOB připravit, než je načtete do cílového úložiště dat. Pokud nastavíte **enableStaging** na hodnotu true, určete další vlastnosti uvedené v následující tabulce. Pokud ho ještě nemáte, musíte vytvořit propojenou službu Azure Storage nebo sdílený přístupový podpis s úložištěm pro přípravu.
 
-| Vlastnost | Popis | Výchozí hodnota | Povinné |
+| Vlastnost | Popis | Výchozí hodnota | Vyžadováno |
 | --- | --- | --- | --- |
-| **enableStaging** |Určete, zda chcete kopírovat data prostřednictvím dočasného přípravného úložiště. |Nepravda |Ne |
+| **enableStaging** |Určete, zda chcete kopírovat data prostřednictvím dočasného přípravného úložiště. |Nepravda |No |
 | **linkedServiceName** |Zadejte název propojené služby [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) nebo [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) , která odkazuje na instanci úložiště, kterou používáte jako dočasné pracovní úložiště. <br/><br/> Úložiště se sdíleným přístupovým podpisem se nedá použít k načtení dat do služby Azure synapse Analytics prostřednictvím základu. Můžete ho použít ve všech ostatních scénářích. |Není k dispozici |Ano, pokud je **enableStaging** nastavené na true |
-| **dílčí** |Zadejte cestu k úložišti objektů blob, kterou chcete, aby obsahovala zpracovaná data. Pokud cestu nezadáte, služba vytvoří kontejner pro ukládání dočasných dat. <br/><br/> Zadejte cestu pouze v případě, že používáte úložiště se sdíleným přístupovým podpisem, nebo pokud chcete, aby byla dočasná data v určitém umístění. |Není k dispozici |Ne |
-| **Hodnotou EnableCompression** |Určuje, zda mají být data před zkopírováním do cíle komprimována. Toto nastavení snižuje objem přenášených dat. |Nepravda |Ne |
+| **dílčí** |Zadejte cestu k úložišti objektů blob, kterou chcete, aby obsahovala zpracovaná data. Pokud cestu nezadáte, služba vytvoří kontejner pro ukládání dočasných dat. <br/><br/> Zadejte cestu pouze v případě, že používáte úložiště se sdíleným přístupovým podpisem, nebo pokud chcete, aby byla dočasná data v určitém umístění. |Není k dispozici |No |
+| **Hodnotou EnableCompression** |Určuje, zda mají být data před zkopírováním do cíle komprimována. Toto nastavení snižuje objem přenášených dat. |Nepravda |No |
 
 Tady je ukázková definice aktivity kopírování s vlastnostmi popsanými v předchozí tabulce:
 
@@ -248,14 +248,14 @@ Tady je ukázková definice aktivity kopírování s vlastnostmi popsanými v p�
 ## <a name="performance-tuning-steps"></a>Postup ladění výkonu
 Doporučujeme, abyste provedli následující kroky, abyste mohli vyladit výkon služby Data Factory s aktivitou kopírování:
 
-1. **Vytvořte směrný plán** . Během fáze vývoje otestujte kanál pomocí aktivity kopírování na reprezentativní ukázce dat. K omezení množství dat, se kterými pracujete, můžete použít [model průřezu](data-factory-scheduling-and-execution.md) Data Factory.
+1. **Vytvořte směrný plán**. Během fáze vývoje otestujte kanál pomocí aktivity kopírování na reprezentativní ukázce dat. K omezení množství dat, se kterými pracujete, můžete použít [model průřezu](data-factory-scheduling-and-execution.md) Data Factory.
 
-   Shromažďovat dobu provádění a výkonnostní charakteristiky pomocí aplikace pro **monitorování a správu** . Na domovské stránce Data Factory vyberte **Monitor & spravovat** . Ve stromovém zobrazení vyberte **výstupní datovou sadu** . V seznamu **okna aktivit** vyberte spuštění aktivity kopírování. **Okna aktivity** zobrazují dobu trvání aktivity kopírování a velikost kopírovaných dat. Propustnost je uvedena v **Průzkumníkovi okna aktivity** . Další informace o aplikaci najdete v tématu [monitorování a Správa kanálů Azure Data Factory pomocí aplikace pro monitorování a správu](data-factory-monitor-manage-app.md).
+   Shromažďovat dobu provádění a výkonnostní charakteristiky pomocí aplikace pro **monitorování a správu**. Na domovské stránce Data Factory vyberte **Monitor & spravovat** . Ve stromovém zobrazení vyberte **výstupní datovou sadu**. V seznamu **okna aktivit** vyberte spuštění aktivity kopírování. **Okna aktivity** zobrazují dobu trvání aktivity kopírování a velikost kopírovaných dat. Propustnost je uvedena v **Průzkumníkovi okna aktivity**. Další informace o aplikaci najdete v tématu [monitorování a Správa kanálů Azure Data Factory pomocí aplikace pro monitorování a správu](data-factory-monitor-manage-app.md).
 
    ![Podrobnosti o spuštění aktivit](./media/data-factory-copy-activity-performance/mmapp-activity-run-details.png)
 
    Později v tomto článku můžete porovnat výkon a konfiguraci scénáře, abyste mohli kopírovat [odkaz na výkon](#performance-reference) aktivity z našich testů.
-2. **Diagnostikujte a Optimalizujte výkon** . Pokud výkon, který sledujete, nesplňuje vaše očekávání, je nutné určit kritické body výkonu. Pak Optimalizujte výkon, abyste odebrali nebo snížili vliv kritických míst. Úplný popis nástroje pro diagnostiku výkonu překračuje rámec tohoto článku, ale tady jsou některé běžné požadavky:
+2. **Diagnostikujte a Optimalizujte výkon**. Pokud výkon, který sledujete, nesplňuje vaše očekávání, je nutné určit kritické body výkonu. Pak Optimalizujte výkon, abyste odebrali nebo snížili vliv kritických míst. Úplný popis nástroje pro diagnostiku výkonu překračuje rámec tohoto článku, ale tady jsou některé běžné požadavky:
 
    * Funkce výkonu:
      * [Paralelní kopírování](#parallel-copy)
@@ -269,12 +269,12 @@ Doporučujeme, abyste provedli následující kroky, abyste mohli vyladit výkon
    * [Komprese](#considerations-for-compression)
    * [Mapování sloupců](#considerations-for-column-mapping)
    * [Další důležité informace](#other-considerations)
-3. **Rozšiřte konfiguraci na celou datovou sadu** . Až budete spokojeni s výsledky spuštění a výkonem, můžete rozšířit aktivní období definice a kanálu, abyste pokryli celou datovou sadu.
+3. **Rozšiřte konfiguraci na celou datovou sadu**. Až budete spokojeni s výsledky spuštění a výkonem, můžete rozšířit aktivní období definice a kanálu, abyste pokryli celou datovou sadu.
 
 ## <a name="considerations-for-data-management-gateway"></a>Předpoklady pro Správa dat bránu
-**Nastavení brány** : Doporučujeme, abyste pro hostování Správa dat brány použili vyhrazený počítač. Podívejte se na téma informace týkající se [použití Správa dat brány](data-factory-data-management-gateway.md#considerations-for-using-gateway).
+**Nastavení brány**: Doporučujeme, abyste pro hostování Správa dat brány použili vyhrazený počítač. Podívejte se na téma informace týkající se [použití Správa dat brány](data-factory-data-management-gateway.md#considerations-for-using-gateway).
 
-**Monitorování brány a horizontální navýšení kapacity** : jedna logická brána s jedním nebo více uzly brány může obsluhovat více souběžně spuštěných aktivit kopírování. Můžete zobrazit snímek využití prostředků téměř v reálném čase (CPU, paměť, síť (v/v) atd.) na počítači brány a také počet souběžných úloh, které běží v Azure Portal, a to v tématu [monitorování brány na portálu](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal). Pokud máte těžkou potřebu při přesunu hybridních dat, ať už s velkým počtem souběžných spuštění aktivit kopírování nebo s velkým objemem dat, která se mají kopírovat, zvažte možnost [horizontálního navýšení kapacity nebo horizontálního navýšení](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations) kapacity, aby bylo možné lépe využívat svůj prostředek, nebo zřídit více prostředků pro zajištění kopie
+**Monitorování brány a horizontální navýšení kapacity**: jedna logická brána s jedním nebo více uzly brány může obsluhovat více souběžně spuštěných aktivit kopírování. Můžete zobrazit snímek využití prostředků téměř v reálném čase (CPU, paměť, síť (v/v) atd.) na počítači brány a také počet souběžných úloh, které běží v Azure Portal, a to v tématu [monitorování brány na portálu](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal). Pokud máte těžkou potřebu při přesunu hybridních dat, ať už s velkým počtem souběžných spuštění aktivit kopírování nebo s velkým objemem dat, která se mají kopírovat, zvažte možnost [horizontálního navýšení kapacity nebo horizontálního navýšení](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations) kapacity, aby bylo možné lépe využívat svůj prostředek, nebo zřídit více prostředků pro zajištění kopie
 
 ## <a name="considerations-for-the-source"></a>Požadavky na zdroj
 ### <a name="general"></a>Obecné
@@ -287,16 +287,16 @@ Pokud kopírujete data z úložiště objektů blob do služby Azure synapse Ana
 ### <a name="file-based-data-stores"></a>Úložiště dat na základě souborů
 *(Zahrnuje úložiště objektů blob, Data Lake Store, Amazon S3, místní souborové systémy a místní HDFS)*
 
-* **Průměrná velikost souboru a počet souborů** : aktivita kopírování přenáší data v jednom souboru. U stejného množství dat, která se mají přesunout, je celková propustnost nižší, pokud se data skládají z mnoha malých souborů namísto několika velkých souborů z důvodu fáze Bootstrap pro každý soubor. Proto pokud je to možné, zkombinujte malé soubory do větších souborů, abyste získali vyšší propustnost.
-* **Formát souboru a komprese** : Další způsoby, jak zvýšit výkon, naleznete v části [požadavky na serializaci a deserializaci](#considerations-for-serialization-and-deserialization) a [požadavky pro kompresní](#considerations-for-compression) oddíly.
+* **Průměrná velikost souboru a počet souborů**: aktivita kopírování přenáší data v jednom souboru. U stejného množství dat, která se mají přesunout, je celková propustnost nižší, pokud se data skládají z mnoha malých souborů namísto několika velkých souborů z důvodu fáze Bootstrap pro každý soubor. Proto pokud je to možné, zkombinujte malé soubory do větších souborů, abyste získali vyšší propustnost.
+* **Formát souboru a komprese**: Další způsoby, jak zvýšit výkon, naleznete v části [požadavky na serializaci a deserializaci](#considerations-for-serialization-and-deserialization) a [požadavky pro kompresní](#considerations-for-compression) oddíly.
 * Pro **místní scénář souborového systému** , ve kterém se **Správa dat brána** vyžaduje, si přečtěte část [požadavky na Správa dat Gateway](#considerations-for-data-management-gateway) .
 
 ### <a name="relational-data-stores"></a>Relační úložiště dat
 *(Zahrnuje SQL Database; Azure synapse Analytics; Amazon RedShift; SQL Server databází; a databáze Oracle, MySQL, DB2, Teradata, Sybase a PostgreSQL atd.)*
 
-* **Datový vzor** : vaše schéma tabulky ovlivňuje propustnost kopírování. Velikost velkého řádku nabízí lepší výkon než velikost malého řádku, aby bylo možné zkopírovat stejné množství dat. Důvodem je, že databáze může efektivněji načíst méně dávkových dat, která obsahují méně řádků.
-* **Dotaz nebo uložená procedura** : Optimalizujte logiku dotazu nebo uložené procedury, kterou zadáte ve zdroji aktivity kopírování, aby se data načetla efektivněji.
-* U **místních relačních databází** , jako jsou SQL Server a Oracle, které vyžadují použití **brány Správa dat** , si přečtěte část požadavky na Správa dat Gateway.
+* **Datový vzor**: vaše schéma tabulky ovlivňuje propustnost kopírování. Velikost velkého řádku nabízí lepší výkon než velikost malého řádku, aby bylo možné zkopírovat stejné množství dat. Důvodem je, že databáze může efektivněji načíst méně dávkových dat, která obsahují méně řádků.
+* **Dotaz nebo uložená procedura**: Optimalizujte logiku dotazu nebo uložené procedury, kterou zadáte ve zdroji aktivity kopírování, aby se data načetla efektivněji.
+* U **místních relačních databází**, jako jsou SQL Server a Oracle, které vyžadují použití **brány Správa dat**, si přečtěte část požadavky na Správa dat Gateway.
 
 ## <a name="considerations-for-the-sink"></a>Předpoklady pro jímku
 ### <a name="general"></a>Obecné
@@ -304,40 +304,40 @@ Ujistěte se, že základní úložiště dat není zahlcené jinými úlohami, 
 
 V případě úložišť dat Microsoft najdete témata týkající se [monitorování a ladění](#performance-reference) , která jsou specifická pro úložiště dat. Tato témata vám pomůžou pochopit charakteristiky výkonu úložiště dat a minimalizovat dobu odezvy a maximalizovat propustnost.
 
-Pokud kopírujete data z **úložiště objektů BLOB** do služby **Azure synapse Analytics** , zvažte použití **základny** pro zvýšení výkonu. Podrobnosti najdete v tématu [použití základu k načtení dat do služby Azure synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) . Návod s případem použití najdete v tématu [načtení 1 TB do služby Azure synapse Analytics za 15 minut s Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+Pokud kopírujete data z **úložiště objektů BLOB** do služby **Azure synapse Analytics**, zvažte použití **základny** pro zvýšení výkonu. Podrobnosti najdete v tématu [použití základu k načtení dat do služby Azure synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) . Návod s případem použití najdete v tématu [načtení 1 TB do služby Azure synapse Analytics za 15 minut s Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 
 ### <a name="file-based-data-stores"></a>Úložiště dat na základě souborů
 *(Zahrnuje úložiště objektů blob, Data Lake Store, Amazon S3, místní souborové systémy a místní HDFS)*
 
-* **Chování při kopírování** : Pokud kopírujete data z jiného souborového úložiště dat, aktivita kopírování má tři možnosti prostřednictvím vlastnosti **copyBehavior** . Zachovává hierarchii, sloučení hierarchie nebo sloučení souborů. Buď se zachováním nebo plochou vyrovnávání hierarchie dochází pouze ke zvýšení výkonu, ale sloučení souborů způsobí zvýšení režie výkonu.
-* **Formát a komprese souborů** : Další způsoby, jak zvýšit výkon, najdete v částech [požadavky na serializaci a deserializaci](#considerations-for-serialization-and-deserialization) a [předpoklady pro komprimaci](#considerations-for-compression) .
-* **Úložiště objektů BLOB** : úložiště objektů BLOB v současné době podporuje pro optimalizaci přenosu a propustnosti dat pouze objekty blob bloku.
-* V případě scénářů pro **místní souborové systémy** , které vyžadují použití **brány Správa dat** , přečtěte si část [požadavky na Správa dat bránu](#considerations-for-data-management-gateway) .
+* **Chování při kopírování**: Pokud kopírujete data z jiného souborového úložiště dat, aktivita kopírování má tři možnosti prostřednictvím vlastnosti **copyBehavior** . Zachovává hierarchii, sloučení hierarchie nebo sloučení souborů. Buď se zachováním nebo plochou vyrovnávání hierarchie dochází pouze ke zvýšení výkonu, ale sloučení souborů způsobí zvýšení režie výkonu.
+* **Formát a komprese souborů**: Další způsoby, jak zvýšit výkon, najdete v částech [požadavky na serializaci a deserializaci](#considerations-for-serialization-and-deserialization) a [předpoklady pro komprimaci](#considerations-for-compression) .
+* **Úložiště objektů BLOB**: úložiště objektů BLOB v současné době podporuje pro optimalizaci přenosu a propustnosti dat pouze objekty blob bloku.
+* V případě scénářů pro **místní souborové systémy** , které vyžadují použití **brány Správa dat**, přečtěte si část [požadavky na Správa dat bránu](#considerations-for-data-management-gateway) .
 
 ### <a name="relational-data-stores"></a>Relační úložiště dat
 *(Zahrnuje SQL Database, analýzy Azure synapse, databáze SQL Server a databáze Oracle)*
 
-* **Chování při kopírování** : v závislosti na vlastnostech, které jste nastavili pro **sqlSink** , aktivita kopírování zapisuje data do cílové databáze různými způsoby.
+* **Chování při kopírování**: v závislosti na vlastnostech, které jste nastavili pro **sqlSink**, aktivita kopírování zapisuje data do cílové databáze různými způsoby.
   * Ve výchozím nastavení používá služba přesunu dat rozhraní API hromadného kopírování k vkládání dat v režimu připojení, který poskytuje nejlepší výkon.
   * Pokud nakonfigurujete uloženou proceduru v jímky, databáze použije data v jednom řádku, nikoli jako hromadné zatížení. Výkon se výrazně sníží. Pokud je vaše datová sada velká (Pokud je k dispozici), zvažte přechod na použití vlastnosti **sqlWriterCleanupScript** .
   * Pokud nakonfigurujete vlastnost **sqlWriterCleanupScript** pro každé spuštění aktivity kopírování, služba spustí skript a potom k vložení dat použijeme rozhraní API pro hromadné kopírování. Pokud například chcete přepsat celou tabulku nejnovějšími daty, můžete před hromadnou načtením nových dat ze zdroje zadat skript, který nejprve odstraní všechny záznamy.
-* **Velikost datového vzoru a dávky** :
+* **Velikost datového vzoru a dávky**:
   * Vaše schéma tabulky ovlivňuje propustnost kopírování. Chcete-li zkopírovat stejné množství dat, velikost velkého řádku vám poskytne lepší výkon než velikost malého řádku, protože databáze může efektivněji potvrzovat méně dávkám dat.
   * Aktivita kopírování vloží data do řady dávek. Počet řádků v dávce můžete nastavit pomocí vlastnosti **writeBatchSize** . Pokud vaše data obsahují malé řádky, můžete nastavit vlastnost **writeBatchSize** s vyšší hodnotou, abyste využili nižší nároky na dávku a vyšší propustnost. Pokud je velikost řádku dat velká, buďte při zvýšení **writeBatchSize** opatrní. Vysoká hodnota může vést k selhání kopírování způsobenému přetížením databáze.
-* U **místních relačních databází** , jako jsou SQL Server a Oracle, které vyžadují použití **brány Správa dat** , si přečtěte část [požadavky na Správa dat Gateway](#considerations-for-data-management-gateway) .
+* U **místních relačních databází** , jako jsou SQL Server a Oracle, které vyžadují použití **brány Správa dat**, si přečtěte část [požadavky na Správa dat Gateway](#considerations-for-data-management-gateway) .
 
 ### <a name="nosql-stores"></a>NoSQL obchody
 *(Zahrnuje úložiště tabulek a Azure Cosmos DB)*
 
-* Pro **úložiště tabulek** :
-  * **Oddíl** : zápis dat do prokládaných oddílů výrazně snižuje výkon. Seřaďte zdrojová data podle klíče oddílu, aby byla data do jednoho oddílu po druhém vložena, nebo upravte logiku tak, aby data zapisovala do jednoho oddílu.
-* Pro **Azure Cosmos DB** :
-  * **Velikost dávky** : vlastnost **writeBatchSize** nastaví počet paralelních požadavků na službu Azure Cosmos DB k vytváření dokumentů. Při zvýšení **writeBatchSize** můžete očekávat lepší výkon, protože se do Azure Cosmos DB odesílají další paralelní požadavky. Sledujte ale omezení při psaní do Azure Cosmos DB (chybová zpráva je "frekvence požadavků je velká"). Různé faktory můžou způsobit omezování, včetně velikosti dokumentu, počtu podmínek v dokumentech a zásad indexování cílových kolekcí. Abyste dosáhli vyšší propustnosti kopírování, zvažte použití lepší kolekce, například S3.
+* Pro **úložiště tabulek**:
+  * **Oddíl**: zápis dat do prokládaných oddílů výrazně snižuje výkon. Seřaďte zdrojová data podle klíče oddílu, aby byla data do jednoho oddílu po druhém vložena, nebo upravte logiku tak, aby data zapisovala do jednoho oddílu.
+* Pro **Azure Cosmos DB**:
+  * **Velikost dávky**: vlastnost **writeBatchSize** nastaví počet paralelních požadavků na službu Azure Cosmos DB k vytváření dokumentů. Při zvýšení **writeBatchSize** můžete očekávat lepší výkon, protože se do Azure Cosmos DB odesílají další paralelní požadavky. Sledujte ale omezení při psaní do Azure Cosmos DB (chybová zpráva je "frekvence požadavků je velká"). Různé faktory můžou způsobit omezování, včetně velikosti dokumentu, počtu podmínek v dokumentech a zásad indexování cílových kolekcí. Abyste dosáhli vyšší propustnosti kopírování, zvažte použití lepší kolekce, například S3.
 
 ## <a name="considerations-for-serialization-and-deserialization"></a>Předpoklady pro serializaci a deserializaci
 Serializace a deserializace může nastat, pokud je vstupní datová sada nebo výstupní datová sada soubor. Viz [podporované formáty souborů a komprese](data-factory-supported-file-and-compression-formats.md) s podrobnostmi o podporovaných formátech souborů podle aktivity kopírování.
 
-**Chování při kopírování** :
+**Chování při kopírování**:
 
 * Kopírování souborů mezi úložišti dat založených na souborech:
   * Pokud vstupní a výstupní sady dat mají stejnou hodnotu nebo nastavení formátu souboru, služba přesunu dat provede binární kopii bez jakékoli serializace nebo deserializace. Ve srovnání s scénářem se zobrazí vyšší propustnost, při které se nastavení formátu zdrojových souborů a souborů jímky liší od sebe.
@@ -345,16 +345,16 @@ Serializace a deserializace může nastat, pokud je vstupní datová sada nebo v
   * Pokud vstupní a výstupní sady dat mají různé formáty souborů nebo různé konfigurace, jako jsou oddělovače, služba přesunu dat deserializace zdrojová data do streamu, transformuje a pak je zavolá do formátu výstupu, který jste určili. Výsledkem této operace je mnohem výraznější režie na výkon ve srovnání s jinými scénáři.
 * Pokud kopírujete soubory do nebo z úložiště dat, které není založené na souborech (například z úložiště založeného na souborech do relačního úložiště), je nutný krok serializace nebo deserializace. Výsledkem tohoto kroku je výrazné režie na výkon.
 
-**Formát souboru** : formát souboru, který zvolíte, může ovlivnit výkon kopírování. Například Avro je kompaktní binární formát, který ukládá metadata s daty. Má širokou podporu ekosystému Hadoop pro zpracování a dotazování. Avro je však dražší pro serializaci a deserializaci, což vede k nižší propustnosti kopírování v porovnání s formátem textu. Formát souboru si vyberete v komplexní toku zpracování. Začněte s tím, na jakém formuláři jsou data uložená, zdrojová úložiště dat nebo se mají extrahovat z externích systémů. nejlepší formát pro úložiště, analytické zpracování a dotazování; a v jakém formátu mají být data exportována do tržiště dat pro vytváření sestav a nástrojů pro vizualizaci. Někdy může být formát souboru, který je v optimálním formátu pro čtení a výkon zápisu, při zvážení celého procesu analýzy dobrý volbou.
+**Formát souboru**: formát souboru, který zvolíte, může ovlivnit výkon kopírování. Například Avro je kompaktní binární formát, který ukládá metadata s daty. Má širokou podporu ekosystému Hadoop pro zpracování a dotazování. Avro je však dražší pro serializaci a deserializaci, což vede k nižší propustnosti kopírování v porovnání s formátem textu. Formát souboru si vyberete v komplexní toku zpracování. Začněte s tím, na jakém formuláři jsou data uložená, zdrojová úložiště dat nebo se mají extrahovat z externích systémů. nejlepší formát pro úložiště, analytické zpracování a dotazování; a v jakém formátu mají být data exportována do tržiště dat pro vytváření sestav a nástrojů pro vizualizaci. Někdy může být formát souboru, který je v optimálním formátu pro čtení a výkon zápisu, při zvážení celého procesu analýzy dobrý volbou.
 
 ## <a name="considerations-for-compression"></a>Předpoklady pro kompresi
 Když je vstupní nebo výstupní sada dat soubor, můžete nastavit aktivitu kopírování, která provádí kompresi nebo dekompresi při zápisu dat do cíle. Když zvolíte kompresi, provedete si kompromis mezi vstupem a výstupem (v/v) a CPU. Komprese nákladů na data extra ve výpočetních prostředcích. V takovém případě se ale zkracuje I síťové vstupně-výstupní operace a úložiště. V závislosti na vašich datech se může zobrazit zvýšení celkové propustnosti kopírování.
 
-**Kodek** : aktivita kopírování podporuje typy komprese GZip, bzip2 a deflate. Azure HDInsight může pro zpracování využívat všechny tři typy. Každý Kompresní kodek má výhody. BZIP2 má například nejnižší propustnost kopírování, ale získáte nejlepší výkon dotazů na podregistr s bzip2, protože ho můžete rozdělit ke zpracování. Nástroj gzip je nejvyváženější možnost a používá se nejčastěji. Vyberte kodek, který nejlépe vyhovuje vašemu kompletnímu scénáři.
+**Kodek**: aktivita kopírování podporuje typy komprese GZip, bzip2 a deflate. Azure HDInsight může pro zpracování využívat všechny tři typy. Každý Kompresní kodek má výhody. BZIP2 má například nejnižší propustnost kopírování, ale získáte nejlepší výkon dotazů na podregistr s bzip2, protože ho můžete rozdělit ke zpracování. Nástroj gzip je nejvyváženější možnost a používá se nejčastěji. Vyberte kodek, který nejlépe vyhovuje vašemu kompletnímu scénáři.
 
-**Úroveň** : můžete si vybrat ze dvou možností pro každý Kompresní kodek: nejrychlejší komprimovaný a optimálně komprimovaný. Nejrychlejší komprimovaná možnost komprimuje data co nejrychleji, a to i v případě, že výsledný soubor není optimálně komprimován. Optimálně komprimovaná možnost stráví více času komprimace a poskytuje minimální množství dat. Můžete otestovat obě možnosti, abyste viděli, která poskytuje lepší celkový výkon pro váš případ.
+**Úroveň**: můžete si vybrat ze dvou možností pro každý Kompresní kodek: nejrychlejší komprimovaný a optimálně komprimovaný. Nejrychlejší komprimovaná možnost komprimuje data co nejrychleji, a to i v případě, že výsledný soubor není optimálně komprimován. Optimálně komprimovaná možnost stráví více času komprimace a poskytuje minimální množství dat. Můžete otestovat obě možnosti, abyste viděli, která poskytuje lepší celkový výkon pro váš případ.
 
-**Zvážení** : Pokud chcete kopírovat velké množství dat mezi místním úložištěm a cloudem, zvažte použití dočasného úložiště BLOB s kompresí. Použití dočasného úložiště je užitečné v případě, že je šířka pásma vaší podnikové sítě a služeb Azure omezující faktor a vy chcete, aby byla vstupní datová sada a výstupní sada dat v nekomprimované podobě. Konkrétně je možné rozdělit jednu aktivitu kopírování na dvě aktivity kopírování. První kopie aktivity kopírování ze zdroje do dočasného nebo přípravného objektu BLOB v komprimované podobě. Druhá aktivita kopírování kopíruje komprimovaná data z přípravy a pak je dekomprimuje během zápisu do jímky.
+**Zvážení**: Pokud chcete kopírovat velké množství dat mezi místním úložištěm a cloudem, zvažte použití dočasného úložiště BLOB s kompresí. Použití dočasného úložiště je užitečné v případě, že je šířka pásma vaší podnikové sítě a služeb Azure omezující faktor a vy chcete, aby byla vstupní datová sada a výstupní sada dat v nekomprimované podobě. Konkrétně je možné rozdělit jednu aktivitu kopírování na dvě aktivity kopírování. První kopie aktivity kopírování ze zdroje do dočasného nebo přípravného objektu BLOB v komprimované podobě. Druhá aktivita kopírování kopíruje komprimovaná data z přípravy a pak je dekomprimuje během zápisu do jímky.
 
 ## <a name="considerations-for-column-mapping"></a>Pokyny pro mapování sloupců
 Vlastnost **ColumnMappings** v aktivitě kopírování můžete nastavit tak, aby se namapovala vše nebo podmnožina vstupních sloupců na výstupní sloupce. Poté, co služba přesunu dat přečte data ze zdroje, musí před zápisem dat do jímky provést mapování sloupce na data. Toto dodatečné zpracování omezuje propustnost kopírování.
@@ -367,49 +367,49 @@ Pokud je velikost dat, která chcete zkopírovat, Velká, můžete upravit obcho
 Buďte opatrní na počet datových sad a aktivit kopírování, které vyžadují, Data Factory, aby se současně konektor do stejného úložiště dat. Mnoho souběžných úloh kopírování může omezit úložiště dat a vést ke snížení výkonu, provádění interních opakovaných pokusů úloh kopírování a v některých případech na selhání.
 
 ## <a name="sample-scenario-copy-from-a-sql-server-database-to-blob-storage"></a>Ukázkový scénář: kopírování z databáze SQL Server do úložiště objektů BLOB
-**Scénář** : kanál je sestavený tak, aby kopíroval data z databáze SQL Server do úložiště objektů BLOB ve formátu CSV. Aby bylo možné úlohu kopírování urychlit, soubory CSV by se měly zkomprimovat do formátu bzip2.
+**Scénář**: kanál je sestavený tak, aby kopíroval data z databáze SQL Server do úložiště objektů BLOB ve formátu CSV. Aby bylo možné úlohu kopírování urychlit, soubory CSV by se měly zkomprimovat do formátu bzip2.
 
-**Testování a analýza** : propustnost aktivity kopírování je menší než 2 MB/s, což je mnohem pomalejší než srovnávací test výkonnosti.
+**Testování a analýza**: propustnost aktivity kopírování je menší než 2 MB/s, což je mnohem pomalejší než srovnávací test výkonnosti.
 
-**Analýza a optimalizace výkonu** : Pokud chcete vyřešit potíže s výkonem, Podívejme se na to, jak se data zpracovávají a přesunují.
+**Analýza a optimalizace výkonu**: Pokud chcete vyřešit potíže s výkonem, Podívejme se na to, jak se data zpracovávají a přesunují.
 
-1. **Čtení dat** : Brána otevře připojení k SQL Server a odešle dotaz. SQL Server odpoví odesláním datového proudu do brány prostřednictvím intranetu.
-2. **Serializace a komprimace dat** : Brána serializovat datový proud do formátu CSV a komprimuje data do datového proudu bzip2.
-3. **Zápis dat** : Brána nahrává datový proud bzip2 do úložiště objektů BLOB prostřednictvím Internetu.
+1. **Čtení dat**: Brána otevře připojení k SQL Server a odešle dotaz. SQL Server odpoví odesláním datového proudu do brány prostřednictvím intranetu.
+2. **Serializace a komprimace dat**: Brána serializovat datový proud do formátu CSV a komprimuje data do datového proudu bzip2.
+3. **Zápis dat**: Brána nahrává datový proud bzip2 do úložiště objektů BLOB prostřednictvím Internetu.
 
-Jak vidíte, data se zpracovávají a přesunují v sekvenčním režimu streamování: SQL Server > LAN > bráně > síti WAN > BLOB Storage. **Celkový výkon je ověřovaný minimální propustností v rámci kanálu** .
+Jak vidíte, data se zpracovávají a přesunují v sekvenčním režimu streamování: SQL Server > LAN > bráně > síti WAN > BLOB Storage. **Celkový výkon je ověřovaný minimální propustností v rámci kanálu**.
 
 ![Tok dat](./media/data-factory-copy-activity-performance/case-study-pic-1.png)
 
 Problém s výkonem může způsobovat jeden nebo více následujících faktorů:
 
-* **Zdroj** : SQL Server sám o sobě má nízkou propustnost z důvodu vysokého zatížení.
-* **Brána Správa dat** :
-  * **LAN** : Brána se nachází daleko z SQL Server počítače a má připojení s malou šířkou pásma.
-  * **Brána** : Brána dosáhla svých omezení zatížení k provedení následujících operací:
-    * **Serializace** : serializace datového proudu do formátu CSV má pomalou propustnost.
-    * **Komprese** : zvolili jste pomalu Kompresní kodek (například bzip2, což je 2,8 MB/s Core i7).
-  * **WAN** : šířka pásma mezi podnikovou sítí a službami Azure je nízká (například T1 = 1 544 KB/s). T2 = 6 312 kb/s).
-* **Jímka** : úložiště objektů BLOB má nízkou propustnost. (Tento scénář je nepravděpodobný, protože smlouva SLA zaručuje minimálně 60 MB/s.)
+* **Zdroj**: SQL Server sám o sobě má nízkou propustnost z důvodu vysokého zatížení.
+* **Brána Správa dat**:
+  * **LAN**: Brána se nachází daleko z SQL Server počítače a má připojení s malou šířkou pásma.
+  * **Brána**: Brána dosáhla svých omezení zatížení k provedení následujících operací:
+    * **Serializace**: serializace datového proudu do formátu CSV má pomalou propustnost.
+    * **Komprese**: zvolili jste pomalu Kompresní kodek (například bzip2, což je 2,8 MB/s Core i7).
+  * **WAN**: šířka pásma mezi podnikovou sítí a službami Azure je nízká (například T1 = 1 544 KB/s). T2 = 6 312 kb/s).
+* **Jímka**: úložiště objektů BLOB má nízkou propustnost. (Tento scénář je nepravděpodobný, protože smlouva SLA zaručuje minimálně 60 MB/s.)
 
 V takovém případě může komprese dat bzip2 zpomalit celý kanál. Přepnutí do kompresního kodeku gzip může být tímto kritickým bodem velmi jednoduché.
 
 ## <a name="sample-scenarios-use-parallel-copy"></a>Ukázkové scénáře: použití paralelního kopírování
 **Scénář I:** Zkopírujte soubory o velikosti 1 000 1 MB z místního systému souborů do úložiště objektů BLOB.
 
-**Analýza a optimalizace výkonu** : Pokud jste například nainstalovali bránu na čtyřjádrový počítač, Data Factory používá 16 paralelních kopií k přesouvání souborů ze systému souborů do úložiště objektů BLOB souběžně. Toto paralelní provádění by mělo mít za následek vysokou propustnost. Můžete také explicitně zadat počet souběžných kopií. Když kopírujete mnoho malých souborů, paralelní kopie významně pomůžou snížit propustnost pomocí prostředků efektivněji.
+**Analýza a optimalizace výkonu**: Pokud jste například nainstalovali bránu na čtyřjádrový počítač, Data Factory používá 16 paralelních kopií k přesouvání souborů ze systému souborů do úložiště objektů BLOB souběžně. Toto paralelní provádění by mělo mít za následek vysokou propustnost. Můžete také explicitně zadat počet souběžných kopií. Když kopírujete mnoho malých souborů, paralelní kopie významně pomůžou snížit propustnost pomocí prostředků efektivněji.
 
 ![Scénář 1](./media/data-factory-copy-activity-performance/scenario-1.png)
 
-**Scénář II** : Zkopírujte 20 objektů BLOB o velikosti 500 MB z úložiště objektů blob do služby Data Lake Store Analytics a pak Optimalizujte výkon.
+**Scénář II**: Zkopírujte 20 objektů BLOB o velikosti 500 MB z úložiště objektů blob do služby Data Lake Store Analytics a pak Optimalizujte výkon.
 
-**Analýza a optimalizace výkonu** : v tomto scénáři data Factory kopírují data z úložiště objektů Blob do data Lake Store pomocí jedné kopie ( **parallelCopies** set to 1) a jednotek pro přesun dat s jedním cloudem. Propustnost, kterou sledujete, se blíží k tomuto, která je popsána v [části referenční informace o výkonu](#performance-reference).
+**Analýza a optimalizace výkonu**: v tomto scénáři data Factory kopírují data z úložiště objektů Blob do data Lake Store pomocí jedné kopie (**parallelCopies** set to 1) a jednotek pro přesun dat s jedním cloudem. Propustnost, kterou sledujete, se blíží k tomuto, která je popsána v [části referenční informace o výkonu](#performance-reference).
 
 ![Scénář 2](./media/data-factory-copy-activity-performance/scenario-2.png)
 
-**Scénář III** : velikost jednotlivých souborů je větší než desítka MB a celková velikost svazku je velká.
+**Scénář III**: velikost jednotlivých souborů je větší než desítka MB a celková velikost svazku je velká.
 
-**Analýza a zvýšení výkonu** : zvyšování **parallelCopies** nemá za následek lepší výkon kopírování v důsledku omezení prostředků v rámci jedné cloudové DMU. Místo toho byste měli zadat více cloudových DMUs a získat další prostředky k přesunu dat. Nezadávejte hodnotu vlastnosti **parallelCopies** . Data Factory zpracovává paralelismus za vás. V takovém případě, pokud nastavíte **cloudDataMovementUnits** na 4, dojde k propustnosti přibližně čtyřikrát.
+**Analýza a zvýšení výkonu**: zvyšování **parallelCopies** nemá za následek lepší výkon kopírování v důsledku omezení prostředků v rámci jedné cloudové DMU. Místo toho byste měli zadat více cloudových DMUs a získat další prostředky k přesunu dat. Nezadávejte hodnotu vlastnosti **parallelCopies** . Data Factory zpracovává paralelismus za vás. V takovém případě, pokud nastavíte **cloudDataMovementUnits** na 4, dojde k propustnosti přibližně čtyřikrát.
 
 ![Scénář 3](./media/data-factory-copy-activity-performance/scenario-3.png)
 

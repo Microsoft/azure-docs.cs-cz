@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 291a5850540ea7d7d24a4a544c1eb65183df8ffb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a5c5f9a4033b70a664071d6077a69f38c905093
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667737"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452226"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Osvědčené postupy pro používání Azure Data Lake Storage Gen1
 
@@ -37,7 +37,7 @@ Když je skupině zabezpečení přiřazena oprávnění, přidání nebo odebr�
 
 ### <a name="security-for-groups"></a>Zabezpečení pro skupiny
 
-Jak je popsáno, když uživatelé potřebují přístup k Data Lake Storage Gen1, je nejvhodnější použít skupiny zabezpečení Azure Active Directory. Některé doporučené skupiny, které je třeba začít používat, mohou být **ReadOnlyUsers**, **WriteAccessUsers**a **FullAccessUsers** pro kořen účtu a dokonce oddělené pro klíčové podsložky. Pokud existují nějaké jiné očekávané skupiny uživatelů, které by mohly být později přidány, ale ještě nebyly identifikovány, můžete zvážit vytvoření fiktivních skupin zabezpečení, které mají přístup k určitým složkám. Použití skupiny zabezpečení zajišťuje, že později nepotřebujete dlouhou dobu zpracování pro přiřazení nových oprávnění k tisícům souborů.
+Jak je popsáno, když uživatelé potřebují přístup k Data Lake Storage Gen1, je nejvhodnější použít skupiny zabezpečení Azure Active Directory. Některé doporučené skupiny, které je třeba začít používat, mohou být **ReadOnlyUsers**, **WriteAccessUsers** a **FullAccessUsers** pro kořen účtu a dokonce oddělené pro klíčové podsložky. Pokud existují nějaké jiné očekávané skupiny uživatelů, které by mohly být později přidány, ale ještě nebyly identifikovány, můžete zvážit vytvoření fiktivních skupin zabezpečení, které mají přístup k určitým složkám. Použití skupiny zabezpečení zajišťuje, že později nepotřebujete dlouhou dobu zpracování pro přiřazení nových oprávnění k tisícům souborů.
 
 ### <a name="security-for-service-principals"></a>Zabezpečení instančních objektů
 
@@ -49,7 +49,7 @@ Data Lake Storage Gen1 podporuje možnost zapnout bránu firewall a omezit pří
 
 ![Nastavení brány firewall v Data Lake Storage Gen1](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "Nastavení brány firewall v Data Lake Storage Gen1")
 
-Po povolení brány firewall budou mít přístup k Data Lake Storage Gen1 jenom služby Azure, jako je HDInsight, Data Factory, Azure synapse Analytics (dřív SQL Data Warehouse) atd. Kvůli překladu interních síťových adres, které používá Azure, Data Lake Storage Gen1 firewall neumožňuje omezit konkrétní služby na IP adresu a je určený jenom pro omezení koncových bodů mimo Azure, jako je místní.
+Jakmile je brána firewall povolená, budou mít přístup k Data Lake Storage Gen1 jenom služby Azure, jako je HDInsight, Data Factory, Azure synapse Analytics atd. Kvůli překladu interních síťových adres, které používá Azure, Data Lake Storage Gen1 firewall neumožňuje omezit konkrétní služby na IP adresu a je určený jenom pro omezení koncových bodů mimo Azure, jako je místní.
 
 ## <a name="performance-and-scale-considerations"></a>Požadavky na výkon a škálování
 
@@ -114,7 +114,7 @@ Pro distribuované kopírování je Distcp nástroj příkazového řádku pro L
 
 ### <a name="use-azure-data-factory-to-schedule-copy-jobs"></a>Plánování úloh kopírování pomocí Azure Data Factory
 
-Azure Data Factory lze také použít k plánování úloh kopírování pomocí **aktivity kopírování**a je možné ji dokonce nastavit na frekvenci prostřednictvím **Průvodce kopírováním**. Mějte na paměti, že Azure Data Factory má limit DMUsch přenosů dat v cloudu, a nakonec si zajistěte, aby propustnost a výpočet pro úlohy s velkým objemem dat byly omezené. Kromě toho Azure Data Factory aktuálně nenabízí rozdílové aktualizace mezi účty Data Lake Storage Gen1, takže složky jako tabulky podregistru by vyžadovaly replikaci úplné kopie. Další informace o kopírování pomocí Data Factory najdete v [Průvodci optimalizací aktivity kopírování](../data-factory/copy-activity-performance.md) .
+Azure Data Factory lze také použít k plánování úloh kopírování pomocí **aktivity kopírování** a je možné ji dokonce nastavit na frekvenci prostřednictvím **Průvodce kopírováním**. Mějte na paměti, že Azure Data Factory má limit DMUsch přenosů dat v cloudu, a nakonec si zajistěte, aby propustnost a výpočet pro úlohy s velkým objemem dat byly omezené. Kromě toho Azure Data Factory aktuálně nenabízí rozdílové aktualizace mezi účty Data Lake Storage Gen1, takže složky jako tabulky podregistru by vyžadovaly replikaci úplné kopie. Další informace o kopírování pomocí Data Factory najdete v [Průvodci optimalizací aktivity kopírování](../data-factory/copy-activity-performance.md) .
 
 ### <a name="adlcopy"></a>AdlCopy
 
@@ -138,7 +138,7 @@ Pro další upozorňování v reálném čase a lepší kontrolu nad tím, kde s
 
 ### <a name="turn-on-debug-level-logging-in-hdinsight"></a>Zapnutí protokolování na úrovni ladění v HDInsight
 
-Pokud Data Lake Storage Gen1 přesouvání protokolu není zapnuté, Azure HDInsight také poskytuje způsob, jak zapnout [protokolování na straně klienta pro data Lake Storage Gen1](data-lake-store-performance-tuning-mapreduce.md) prostřednictvím log4j. V konfiguraci **Ambari**  >  **nitě**  >  **Konfigurace**  >  **Advanced nitě-log4j**musíte nastavit následující vlastnost:
+Pokud Data Lake Storage Gen1 přesouvání protokolu není zapnuté, Azure HDInsight také poskytuje způsob, jak zapnout [protokolování na straně klienta pro data Lake Storage Gen1](data-lake-store-performance-tuning-mapreduce.md) prostřednictvím log4j. V konfiguraci **Ambari**  >  **nitě**  >  **Konfigurace**  >  **Advanced nitě-log4j** musíte nastavit následující vlastnost:
 
 `log4j.logger.com.microsoft.azure.datalake.store=DEBUG`
 

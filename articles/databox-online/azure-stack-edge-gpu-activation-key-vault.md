@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 8957d8982a3bfe1da2811dc10d0c3e77a72fc288
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ec7a32739940d53d976e73a7e170df96a0acc245
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367597"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449518"
 ---
 # <a name="azure-key-vault-integration-with-azure-stack-edge"></a>Azure Key Vault integrace s Azure Stack Edge 
 
@@ -49,7 +49,7 @@ Pro Azure Stack hraničního prostředku se během procesu generování aktivač
 
 - Aby se zabránilo nechtěnému odstranění, je v trezoru klíčů povolen zámek prostředků. V trezoru klíčů je taky povolené obnovitelné odstranění, které umožňuje obnovení trezoru klíčů během 90 dnů, pokud dojde k náhodnému odstranění. Další informace najdete v tématu [přehled Azure Key Vaultho obnovitelného odstranění](../key-vault/general/soft-delete-overview.md) .
 
-    Pokud se Trezor klíčů omylem odstraní a doba trvání ochrany vyprázdnění 90 dnů uplynula, postupujte podle těchto kroků a [obnovte Trezor klíčů](../key-vault/general/soft-delete-powershell.md#recovering-a-key-vault). 
+    Pokud se Trezor klíčů omylem odstraní a doba trvání ochrany vyprázdnění 90 dnů uplynula, postupujte podle těchto kroků a [obnovte Trezor klíčů](../key-vault/general/key-vault-recovery.md#list-recover-or-purge-soft-deleted-secrets-keys-and-certificates). 
 
 - Pokud jste už existující prostředek Azure Stack Edge předtím, než se Azure Key Vault integruje s Azure Stackm hraničním prostředkem, nebudete mít vliv na. Stávající Azure Stack hraničního prostředku můžete dál používat. 
 
@@ -73,4 +73,3 @@ When you generate an activation key, the following events occur:
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o tom, jak [vygenerovat aktivační klíč](azure-stack-edge-gpu-deploy-prep.md#get-the-activation-key).
-

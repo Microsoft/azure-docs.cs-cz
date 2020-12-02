@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/01/2020
+ms.date: 11/12/2020
 ms.author: alkohli
-ms.openlocfilehash: c38b0b1d3a2e71502ac86bf46771ecfb637ba15d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 342f6a2c4761104823694f2181b3ffa8726a441e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952212"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449424"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Povolení Azure ARC v clusteru Kubernetes na zařízení GPU Azure Stack Edge pro
 
 V tomto článku se dozvíte, jak povolit Azure ARC v existujícím clusteru Kubernetes na zařízení Azure Stack Edge pro. 
 
-Tento postup je určený pro uživatele, kteří si zkontrolovali [úlohy Kubernetes na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-kubernetes-workload-management.md) a jsou obeznámeni s koncepty, [co je Azure ARC Enabled Kubernetes (Preview)?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview).
+Tento postup je určený pro uživatele, kteří si zkontrolovali [úlohy Kubernetes na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-kubernetes-workload-management.md) a jsou obeznámeni s koncepty, [co je Azure ARC Enabled Kubernetes (Preview)?](../azure-arc/kubernetes/overview.md).
 
 
 ## <a name="prerequisites"></a>Předpoklady
@@ -39,14 +39,13 @@ Než budete moct povolit Azure ARC v clusteru Kubernetes, ujistěte se, že jste
 
 1. Máte klientský systém Windows, který se bude používat pro přístup k zařízení Azure Stack Edge pro.
   
-    - Na klientovi běží Windows PowerShell 5,0 nebo novější. Nejnovější verzi Windows PowerShellu si stáhnete tak, že přejdete na [nainstalovat Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+    - Na klientovi běží Windows PowerShell 5,0 nebo novější. Nejnovější verzi Windows PowerShellu si stáhnete tak, že přejdete na [nainstalovat Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows).
     
     - Můžete mít i jiné klienty s [podporovaným operačním systémem](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) . Tento článek popisuje postup při použití klienta systému Windows. 
     
 1. Dokončili jste postup popsaný v tématu [přístup ke clusteru Kubernetes na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-create-kubernetes-cluster.md). Máte:
     
-    - Nainstalováno `kubectl` na klienta  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
-    
+    - Nainstalováno `kubectl` na klienta.    
     - Ujistěte se, že `kubectl` verze klienta není ve verzi Kubernetes Master spuštěná na vašem zařízení Azure Stack Edge pro. 
       - Slouží `kubectl version` ke kontrole verze kubectl spuštěné v klientovi. Poznamenejte si plnou verzi.
       - V místním uživatelském rozhraní zařízení Azure Stack Edge pro, přejít na **Software Update** a poznamenejte si číslo verze Kubernetes serveru. 
@@ -55,7 +54,6 @@ Než budete moct povolit Azure ARC v clusteru Kubernetes, ujistěte se, že jste
       
       - Ověřte, že tyto dvě verze jsou kompatibilní. 
 
-<!-- az cli version requirements-->
 
 ## <a name="register-kubernetes-resource-providers"></a>Registrovat poskytovatele prostředků Kubernetes
 
@@ -90,7 +88,7 @@ Poskytovatele prostředků můžete registrovat také prostřednictvím `az cli`
 
     `az ad sp create-for-rbac --skip assignment --name "<Informative name for service principal>"`  
 
-    Informace o tom, jak se přihlásit ke službě `az cli` , můžete [Spustit Cloud Shell v Azure Portal](../cloud-shell/quickstart-powershell.md?view=azure-cli-latest#start-cloud-shell)
+    Informace o tom, jak se přihlásit ke službě `az cli` , můžete [Spustit Cloud Shell v Azure Portal](../cloud-shell/quickstart-powershell.md#start-cloud-shell)
 
     Zde je příklad. 
     
@@ -129,7 +127,7 @@ Poskytovatele prostředků můžete registrovat také prostřednictvím `az cli`
     }
     PS /home/user>
     ```
-    Další informace o tom, jak vytvořit instanční objekt a provést přiřazení role, najdete v postupu v tématu [Vytvoření instančního objektu s podporou ARC Azure](https://docs.microsoft.com/azure/azure-arc/kubernetes/create-onboarding-service-principal).
+    Další informace o tom, jak vytvořit instanční objekt a provést přiřazení role, najdete v postupu v tématu [Vytvoření instančního objektu s podporou ARC Azure](../azure-arc/kubernetes/create-onboarding-service-principal.md).
 
 
 ## <a name="enable-arc-on-kubernetes-cluster"></a>Povolení služby Arc v clusteru Kubernetes
@@ -142,7 +140,10 @@ Pomocí těchto kroků nakonfigurujete cluster Kubernetes pro správu ARC Azure:
 
     `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>" -ClientSecret "<Password of service principal>"`
 
-    Pokud chcete nasadit Azure ARC na zařízení Azure Stack Edge pro, ujistěte se, že používáte [podporovanou oblast pro Azure ARC](../azure-arc/kubernetes/overview.md#supported-regions). Azure ARC je momentálně ve verzi Preview. Pomocí příkazu můžete také zjistit přesný název oblasti, která se má předat rutině `az account list-locations` .
+
+    > [!NOTE]
+    > - Pokud chcete na svém zařízení nasadit ARC Azure, ujistěte se, že používáte [podporovanou oblast pro Azure ARC](../azure-arc/kubernetes/overview.md#supported-regions). 
+    > - Pomocí `az account list-locations` příkazu můžete zjistit přesný název umístění, který se má předat `Set-HcsKubernetesAzureArcAgent` rutině. Názvy umístění jsou obvykle formátované bez mezer.
     
     Tady je příklad:
    
@@ -221,6 +222,9 @@ Pro odebrání správy ARC Azure použijte následující postup:
 
     `Remove-HcsKubernetesAzureArcAgent` 
 
+
+> [!NOTE]
+> Ve výchozím nastavení platí, že při `yamls` odstranění prostředku z úložiště Git se odpovídající prostředky neodstraní z clusteru Kubernetes. Musíte nastavit `--sync-garbage-collection`  v Arc OperatorParams, aby bylo možné odstranit prostředky při odstranění z úložiště Git. Další informace najdete v tématu [Odstranění konfigurace](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters) .
 
 ## <a name="next-steps"></a>Další kroky
 

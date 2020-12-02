@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 595b3a57594401df6b61db1fcf8ee16be98ef364
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 50429696c4cbe10c4723f6d4bb9c9499d9b775c5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95900413"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450415"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Kurz: Vytvoření aplikace Machine Learning pomocí Apache Spark MLlib a Azure synapse Analytics
 
@@ -71,7 +71,7 @@ V následujících krocích vyvíjíte model, který předpovídá, jestli konkr
 
 Vzhledem k tomu, že nezpracovaná data jsou ve formátu Parquet, můžete pomocí kontextu Spark načíst soubor do paměti jako datový rámec přímo. Zatímco následující kód používá výchozí možnosti, je možné vynutit mapování datových typů a dalších atributů schématu v případě potřeby.
 
-1. Spusťte následující řádky a vytvořte tak datový rámec Spark vložením kódu do nové buňky. To načte data prostřednictvím rozhraní API Open DataSet. Po přijetí všech těchto dat se vygeneruje přibližně 1 500 000 000 řádků. V závislosti na velikosti vašeho fondu Apache Spark bez serveru (Preview) mohou být nezpracovaná data příliš velká nebo mohou trvat příliš dlouho, než budou fungovat. Tato data můžete filtrovat dolů na něco menšího. Následující příklad kódu používá start_date a end_date k použití filtru, který vrací jeden měsíc dat.
+1. Spusťte následující řádky a vytvořte tak datový rámec Spark vložením kódu do nové buňky. To načte data prostřednictvím rozhraní API Open DataSet. Po přijetí všech těchto dat se vygeneruje přibližně 1 500 000 000 řádků. V závislosti na velikosti vašeho fondu Apache Spark bez serveru může být nezpracovaná data příliš velká nebo mohou trvat příliš dlouho, než budou fungovat. Tato data můžete filtrovat dolů na něco menšího. Následující příklad kódu používá start_date a end_date k použití filtru, který vrací jeden měsíc dat.
 
     ```python
     from azureml.opendatasets import NycTlcYellow

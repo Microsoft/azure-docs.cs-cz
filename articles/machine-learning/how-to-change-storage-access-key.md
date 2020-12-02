@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 02772ff6279ee813b86f92984742ba8301bdf74e
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 78829ae52d74cf6ec58c12779c51bca9a98e0af1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357942"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450796"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Znovu vygenerovat přístupové klíče účtu úložiště
 
@@ -27,9 +27,9 @@ Z bezpečnostních důvodů možná budete muset změnit přístupové klávesy 
 
 > [!IMPORTANT]
 
-> Přihlašovací údaje registrované pro úložiště dat se ukládají do Azure Key Vault přidružených k pracovnímu prostoru. Pokud máte v Key Vault povoleno [obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) , v tomto článku najdete pokyny k aktualizaci přihlašovacích údajů. Pokud zrušíte registraci úložiště dat a pokusíte se ho znovu zaregistrovat pod stejným názvem, tato akce se nezdaří. Pokud chcete v tomto scénáři povolit obnovitelné odstranění, přečtěte si téma [Zapnutí obnovitelného odstranění pro existující Trezor klíčů]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault) .
+> Přihlašovací údaje registrované pro úložiště dat se ukládají do Azure Key Vault přidružených k pracovnímu prostoru. Pokud máte v Key Vault povoleno [obnovitelné odstranění](../key-vault/general/soft-delete-overview.md) , v tomto článku najdete pokyny k aktualizaci přihlašovacích údajů. Pokud zrušíte registraci úložiště dat a pokusíte se ho znovu zaregistrovat pod stejným názvem, tato akce se nezdaří. Pokud chcete v tomto scénáři povolit obnovitelné odstranění, přečtěte si téma [Zapnutí obnovitelného odstranění pro existující Trezor klíčů]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](how-to-manage-workspace.md) .
 
@@ -111,7 +111,7 @@ Chcete-li aktualizovat Azure Machine Learning pro použití nového klíče, pou
         Tento příkaz automaticky synchronizuje nové klíče pro účet služby Azure Storage, který používá pracovní prostor.
 
 1. Úložiště dat, která používají účet úložiště, můžete znovu zaregistrovat pomocí sady SDK nebo [Azure Machine Learning studia](https://ml.azure.com).
-    1. **Chcete-li znovu zaregistrovat úložiště dat prostřednictvím sady Python SDK** , použijte hodnoty z oddílu [co je potřeba aktualizovat](#whattoupdate) a klíč z kroku 1 s následujícím kódem. 
+    1. **Chcete-li znovu zaregistrovat úložiště dat prostřednictvím sady Python SDK**, použijte hodnoty z oddílu [co je potřeba aktualizovat](#whattoupdate) a klíč z kroku 1 s následujícím kódem. 
     
         Protože `overwrite=True` je zadán, tento kód přepíše existující registraci a aktualizuje ji, aby používala nový klíč.
     
@@ -133,12 +133,12 @@ Chcete-li aktualizovat Azure Machine Learning pro použití nového klíče, pou
         
         ```
     
-    1. Pokud **Chcete úložiště dat znovu zaregistrovat přes Studio** , vyberte **úložiště dat** v levém podokně studia. 
+    1. Pokud **Chcete úložiště dat znovu zaregistrovat přes Studio**, vyberte **úložiště dat** v levém podokně studia. 
         1. Vyberte úložiště dat, které chcete aktualizovat.
         1. V levém horním rohu vyberte tlačítko pro **aktualizaci přihlašovacích údajů** . 
         1. Pomocí nového přístupového klíče z kroku 1 Naplňte formulář a klikněte na **Uložit**.
         
-            Pokud aktualizujete přihlašovací údaje pro vaše **výchozí úložiště dat** , proveďte tento krok a opakujte krok 2b a znovu synchronizujte nový klíč s výchozím úložištěm dat pracovního prostoru. 
+            Pokud aktualizujete přihlašovací údaje pro vaše **výchozí úložiště dat**, proveďte tento krok a opakujte krok 2b a znovu synchronizujte nový klíč s výchozím úložištěm dat pracovního prostoru. 
 
 ## <a name="next-steps"></a>Další kroky
 

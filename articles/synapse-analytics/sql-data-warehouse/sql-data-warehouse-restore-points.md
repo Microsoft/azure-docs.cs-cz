@@ -1,6 +1,6 @@
 ---
 title: Uživatelem definované body obnovení
-description: Postup vytvoření bodu obnovení pro vyhrazený fond SQL
+description: Postup vytvoření bodu obnovení pro vyhrazený fond SQL (dříve SQL DW).
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9d7266e0b84ae57682ddcfe7195be9574a702c74
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5b8888a29d7dda94e4fc9c35b27056036bc6c463
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313249"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449762"
 ---
-# <a name="user-defined-restore-points-for-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Uživatelem definované body obnovení pro vyhrazený fond SQL ve službě Azure synapse Analytics
+# <a name="user-defined-restore-points-for-a-dedicated-sql-pool-formerly-sql-dw"></a>Uživatelem definované body obnovení pro vyhrazený fond SQL (dřív SQL DW)
 
-V tomto článku se naučíte, jak vytvořit nový bod obnovení definovaný uživatelem pro vyhrazený fond SQL ve službě Azure synapse Analytics pomocí PowerShellu a Azure Portal.
+V tomto článku se dozvíte, jak vytvořit nový bod obnovení definovaný uživatelem pro vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics pomocí PowerShellu a Azure Portal.
 
 ## <a name="create-user-defined-restore-points-through-powershell"></a>Vytvoření uživatelem definovaných bodů obnovení prostřednictvím PowerShellu
 
@@ -62,9 +62,9 @@ Uživatelem definované body obnovení lze také vytvořit prostřednictvím Azu
 
 1. Přihlaste se ke svému účtu [Azure Portal](https://portal.azure.com/) .
 
-2. Přejděte do vyhrazeného fondu SQL, pro který chcete vytvořit bod obnovení.
+2. Přejděte do vyhrazeného fondu SQL (dříve SQL DW), pro který chcete vytvořit bod obnovení.
 
-3. V levém podokně vyberte **Přehled** a vyberte **+ nový bod obnovení**. Pokud není vybráno tlačítko nový bod obnovení, ujistěte se, že vyhrazený fond SQL není pozastaven.
+3. V levém podokně vyberte **Přehled** a vyberte **+ nový bod obnovení**. Pokud není tlačítko nový bod obnovení zapnuté, ujistěte se, že vyhrazený fond SQL (dřív SQL DW) není pozastavený.
 
     ![Nový bod obnovení](./media/sql-data-warehouse-restore-points/creating-restore-point-01.png)
 
@@ -74,7 +74,6 @@ Uživatelem definované body obnovení lze také vytvořit prostřednictvím Azu
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Obnovení existujícího vyhrazeného fondu SQL](sql-data-warehouse-restore-active-paused-dw.md)
-- [Obnovení odstraněného vyhrazeného fondu SQL](sql-data-warehouse-restore-deleted-dw.md)
-- [Obnovení z vyhrazeného fondu SQL geografického zálohování](sql-data-warehouse-restore-from-geo-backup.md)
-
+- [Obnovení existujícího vyhrazeného fondu SQL (dřív SQL DW)](sql-data-warehouse-restore-active-paused-dw.md)
+- [Obnovení odstraněného vyhrazeného fondu SQL (dřív SQL DW)](sql-data-warehouse-restore-deleted-dw.md)
+- [Obnovení z vyhrazeného fondu SQL geografického zálohování (dříve SQL DW)](sql-data-warehouse-restore-from-geo-backup.md)

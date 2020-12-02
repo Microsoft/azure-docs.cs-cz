@@ -1,6 +1,6 @@
 ---
-title: Typy dat tabulky ve vyhrazeném fondu SQL
-description: Doporučení pro definování typů tabulkových dat ve vyhrazeném fondu SQL
+title: Typy dat tabulky ve vyhrazeném fondu SQL (dříve SQL DW)
+description: Doporučení pro definování datových typů tabulek pro vyhrazený fond SQL (dříve SQL DW) ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 01/06/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 5bb1d10978171b93ee697b37ee9ac0702d3f898c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6526ae2c15bd53af69854309632c83fa65af8d85
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313070"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449691"
 ---
-# <a name="table-data-types-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Datové typy tabulek pro vyhrazený fond SQL ve službě Azure synapse Analytics 
+# <a name="table-data-types-for-dedicated-sql-pool-formerly--sql-dw-in-azure-synapse-analytics"></a>Datové typy tabulek pro vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics 
 
 Tento článek obsahuje doporučení pro definování typů dat tabulky ve vyhrazeném fondu SQL.
 
 ## <a name="supported-data-types"></a>Podporované datové typy
 
-Vyhrazený fond SQL podporuje nejběžněji používané datové typy. Seznam podporovaných datových typů najdete v tématu [datové typy](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#DataTypes) v příkazu CREATE TABLE.
+Vyhrazený fond SQL (dříve SQL DW) podporuje nejčastěji používané datové typy. Seznam podporovaných datových typů najdete v tématu [datové typy](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#DataTypes) v příkazu CREATE TABLE.
 
 ## <a name="minimize-row-length"></a>Minimalizovat délku řádku
 
@@ -51,7 +51,7 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
 
 ## <a name="workarounds-for-unsupported-data-types"></a><a name="unsupported-data-types"></a>Alternativní řešení pro nepodporované datové typy
 
-Následující seznam obsahuje datové typy, které vyhrazený fond SQL nepodporuje, a poskytuje užitečné alternativy pro nepodporované datové typy.
+Následující seznam obsahuje datové typy, které vyhrazený fond SQL (dřív SQL DW) nepodporuje, a poskytuje užitečné alternativy pro nepodporované datové typy.
 
 | Nepodporovaný datový typ | Alternativní řešení |
 | --- | --- |

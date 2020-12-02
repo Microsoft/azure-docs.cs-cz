@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: b25bae460ff11c3dab84e80524acd2eaf878561c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: fb7672a0d7bdd14415a51f2296c281e92cf5542a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184684"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450658"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Rychlý Start: vytvoření pracovního prostoru synapse
 Tento rychlý Start popisuje kroky pro vytvoření pracovního prostoru Azure synapse pomocí Azure Portal.
@@ -22,7 +22,7 @@ Tento rychlý Start popisuje kroky pro vytvoření pracovního prostoru Azure sy
 ## <a name="create-a-synapse-workspace"></a>Vytvoření pracovního prostoru Synapse
 
 1. Otevřete [Azure Portal](https://portal.azure.com)a v horní části vyhledejte **synapse**.
-1. Ve výsledcích hledání v části **služby** vyberte **Azure synapse Analytics (pracovní prostory verze Preview)**.
+1. Ve výsledcích hledání v části **služby** vyberte **Azure synapse Analytics**.
 1. Vyberte **Přidat** a vytvořte pracovní prostor.
 1. Na kartě **základy** dejte pracovnímu prostoru jedinečný název. V tomto dokumentu použijeme **mysworkspace** .
 1. K vytvoření pracovního prostoru potřebujete účet ADLSGEN2. Nejjednodušší volbou je vytvoření nového. Pokud chcete znovu použít stávající, musíte provést nějakou další konfiguraci. 
@@ -34,7 +34,7 @@ Tento rychlý Start popisuje kroky pro vytvoření pracovního prostoru Azure sy
 1. Vyberte **Zkontrolovat a vytvořit** > **Vytvořit**. Váš pracovní prostor je připravený během několika minut.
 
 > [!NOTE]
-> Po vytvoření pracovního prostoru Azure synapse nebudete moct pracovní prostor přesunout do jiného tenanta Azure Active Directory. Pokud to uděláte prostřednictvím migrace předplatného nebo jinými akcemi, můžete ztratit přístup k artefaktům v pracovním prostoru.  
+> Po vytvoření pracovního prostoru Azure synapse nebudete moct pracovní prostor přesunout do jiného tenanta Azure Active Directory. Pokud to uděláte prostřednictvím migrace předplatného nebo jiné akce, můžete ztratit přístup k artefaktům v tomto pracovním prostoru.  
 
 ## <a name="open-synapse-studio"></a>Otevřít synapse Studio
 
@@ -43,7 +43,7 @@ Po vytvoření pracovního prostoru Azure synapse máte dva způsoby, jak otevř
 * Otevřete pracovní prostor synapse ve [Azure Portal](https://portal.azure.com). V horní části **přehledu** vyberte **Spustit synapse Studio**.
 * Přejít na adresu `https://web.azuresynapse.net` a přihlaste se do svého pracovního prostoru.
 
-## <a name="prepare-an-existing-storage-account-for-use-with-synapse-analytics"></a>Příprava existujícího účtu úložiště pro použití s synapse Analytics
+## <a name="prepare-an-existing-storage-account-for-use-with-azure-synapse-analytics"></a>Příprava existujícího účtu úložiště pro použití s Azure synapse Analytics
 
 1. Otevřete web [Azure Portal](https://portal.azure.com).
 1. Přejít na existující účet úložiště ADLSGEN2

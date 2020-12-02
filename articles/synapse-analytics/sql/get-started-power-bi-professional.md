@@ -1,6 +1,6 @@
 ---
 title: Připojení k synapse SQL pomocí Power BI Professional
-description: V tomto kurzu provedeme kroky, jak připojit Power BI Desktop k fondu SQL bez serveru (Preview).
+description: V tomto kurzu provedeme kroky, jak připojit Power BIou plochu k fondu SQL bez serveru.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: c26e2bd27c0c3187768252fd922c31a2cc23d735
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: b33edb99109b7516e1792497a936031cf954bc15
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682084"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451615"
 ---
 # <a name="connect-to-serverless-sql-pool-with-power-bi-professional"></a>Připojení k fondu SQL bez serveru pomocí Power BI Professional
 
@@ -23,12 +23,12 @@ ms.locfileid: "94682084"
 > - [Azure Data Studio](get-started-azure-data-studio.md)
 > - [Power BI](get-started-power-bi-professional.md)
 > - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> - [Sqlcmd](../sql/get-started-connect-sqlcmd.md)
+> - [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > - [SSMS](get-started-ssms.md)
 
-V tomto kurzu provedeme kroky pro připojení Power BIho desktopu k fondu SQL bez serveru (Preview).
+V tomto kurzu provedeme kroky pro připojení Power BIho desktopu k fondu SQL bez serveru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K vystavování dotazů potřebujete následující nástroje:
 
