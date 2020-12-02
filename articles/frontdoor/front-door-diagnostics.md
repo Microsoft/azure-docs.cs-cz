@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
-ms.author: duau
-ms.openlocfilehash: d533b8fed47b1790cc35429613179f440f1fac51
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 11/23/2020
+ms.author: yuajia
+ms.openlocfilehash: cd99be40700ab1c34176f2bf7497e4debf5cd424
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961744"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483793"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Monitorování metrik a protokolů v frontách Azure na předních dveřích
 
@@ -61,7 +61,7 @@ Diagnostické protokoly poskytují obsáhlé informace o operacích a chybách, 
 
 Protokoly aktivit poskytují přehled o operacích provedených v prostředcích Azure. Diagnostické protokoly poskytují přehled o operacích, které váš prostředek dokončil. Další informace najdete v tématu [Azure monitor diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md).
 
-:::image type="content" source="./media/front-door-diagnostics/diagnostic-log.png" alt-text="Protokol aktivit":::
+:::image type="content" source="./media/front-door-diagnostics/diagnostic-log.png" alt-text="Diagnostické protokoly":::
 
 Konfigurace diagnostických protokolů pro vaše přední dveře:
 
@@ -91,10 +91,11 @@ Přední dveře aktuálně poskytují protokoly diagnostiky (v dávce po hodiná
 | RulesEngineMatchNames | Názvy pravidel, která požadavek odpovídá. |
 | Tato SecurityProtocol | Verze protokolu TLS/SSL používaná požadavkem nebo hodnotou null, pokud není šifrování. |
 | SentToOriginShield </br> (nepoužívané) * v **následující části najdete poznámky k** vyřazení.| Pokud má hodnotu true, znamená to, že žádost byla zodpovězena z počáteční mezipaměti ochrany před hraničním rozhraním pop. Počáteční ochrana je nadřazená mezipaměť, která se používá ke zvýšení poměru přístupů do mezipaměti. |
-| isReceivedFromClient | Pokud má hodnotu true, znamená to, že požadavek pochází z klienta. Pokud je hodnota false, je požadavek na hranu (podřízený bod POP) neúspěšný a reaguje na počátek ochrany (nadřazený bod POP). 
+| isReceivedFromClient | Pokud má hodnotu true, znamená to, že požadavek pochází z klienta. Pokud je hodnota false, je požadavek na hranu (podřízený bod POP) neúspěšný a reaguje na počátek ochrany (nadřazený bod POP). |
 | TimeTaken | Doba od prvního bajtu žádosti do posledního bajtu odpovědi v sekundách. |
 | TrackingReference | Jedinečný referenční řetězec, který identifikuje požadavek, který je obsluhován předními dvířky, je také odeslán jako hlavička X-Azure-ref na klienta. Vyžaduje se pro hledání podrobností v protokolech přístupu pro konkrétní požadavek. |
 | UserAgent | Typ prohlížeče, který klient použil. |
+| Nastavena | Toto pole obsahuje konkrétní typ chyby pro další řešení potíží. </br> Mezi možné hodnoty patří: </br> **Chyba**: indikuje, že se nenašla žádná chyba. </br> **CertificateError**: Chyba obecného certifikátu SSL.</br> **CertificateNameCheckFailed**: název hostitele v certifikátu SSL je neplatný nebo neodpovídá. </br> **ClientDisconnected**: požadavek se nezdařil z důvodu připojení k síti klienta. </br> **UnspecifiedClientError**: došlo k obecné chybě klienta. </br> **InvalidRequest**: neplatný požadavek. Může to být způsobeno chybnou hlavičkou, textem a adresou URL. </br> **DNSFailure**: selhání serveru DNS. </br> **DNSNameNotResolved**: nepovedlo se přeložit název nebo adresu serveru. </br> **OriginConnectionAborted**: spojení s počátkem bylo náhle zastaveno. </br> **OriginConnectionError**: Chyba obecného připojení k původnímu zdroji. </br> **OriginConnectionRefused**: připojení k původnímu zdroji nebylo možné navázat. </br> **OriginError**: Chyba obecného původce </br> **OriginInvalidResponse**: počátek vrátil neplatnou nebo nerozpoznanou odpověď. </br> **OriginTimeout**: vypršel časový limit pro vypršení platnosti žádosti o zdroj. </br> **ResponseHeaderTooBig**: původ vrátil příliš velkou velikost hlavičky odpovědi. </br> **RestrictedIP**: požadavek byl zablokován kvůli omezené IP adrese. </br> **SSLHandshakeError**: nepovedlo se navázat spojení se zdrojem z důvodu selhání protřepení SSL. </br> **UnspecifiedError**: došlo k chybě, která se nevešla do žádné chyby v tabulce. |
 
 ### <a name="sent-to-origin-shield-deprecation"></a>Bylo odesláno do původního základu ochrany.
 Nezpracovaná vlastnost protokolu **isSentToOriginShield** byla zastaralá a nahrazena novým polem **isReceivedFromClient**. Pokud už používáte zastaralé pole, použijte nové pole. 
@@ -120,12 +121,12 @@ Pokud je hodnota false, znamená to, že požadavek reaguje od počátku ochrany
 
 | Scénáře | Počet položek protokolu | POP | BackendHostname | isReceivedFromClient | CacheStatus |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Pravidlo směrování bez povoleného ukládání do mezipaměti | 1 | Hraniční kód POP | Back-end, kde byl požadavek předán | Ano | CONFIG_NOCACHE |
-| Pravidlo směrování s povoleným ukládáním do mezipaměti. Přístup do mezipaměti na hraničním okně Edge | 1 | Hraniční kód POP | Obsahovat | Ano | KLEPNUTÍ |
-| Pravidlo směrování s povoleným ukládáním do mezipaměti. Neúspěšné přístupy do mezipaměti na hraničním zařízení POP, ale přístupy do mezipaměti v nadřazené mezipaměti | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. název hostitele POP nadřazené mezipaměti</br>2. prázdné | 1. true</br>2. false | 1. NEÚSPĚŠNÉ</br>2. PŘÍSTUPŮ |
-| Pravidlo směrování s povoleným ukládáním do mezipaměti. Neúspěšné přístupy do mezipaměti na hraničním bodu POP, ale částečné přístupy do mezipaměti v nadřazené mezipaměti | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. název hostitele POP nadřazené mezipaměti</br>2. back-end, který pomáhá naplnit mezipaměť | 1. true</br>2. false | 1. NEÚSPĚŠNÉ</br>2. PARTIAL_HIT |
+| Pravidlo směrování bez povoleného ukládání do mezipaměti | 1 | Hraniční kód POP | Back-end, kde byl požadavek předán | Pravda | CONFIG_NOCACHE |
+| Pravidlo směrování s povoleným ukládáním do mezipaměti. Přístup do mezipaměti na hraničním okně Edge | 1 | Hraniční kód POP | Obsahovat | Pravda | KLEPNUTÍ |
+| Pravidlo směrování s povoleným ukládáním do mezipaměti. Neúspěšné přístupy do mezipaměti na hraničním místě POP, ale přístupů do mezipaměti v nadřazené mezipaměti | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. název hostitele POP nadřazené mezipaměti</br>2. prázdné | 1. true</br>2. false | 1. NEÚSPĚŠNÉ</br>2. PŘÍSTUPŮ |
+| Pravidlo směrování s povoleným ukládáním do mezipaměti. Při ukládání do mezipaměti došlo na hraničním bodu POP, ale při ČÁSTEČNÉm přístupu do mezipaměti v nadřazené mezipaměti POP | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. název hostitele POP nadřazené mezipaměti</br>2. back-end, který pomáhá naplnit mezipaměť | 1. true</br>2. false | 1. NEÚSPĚŠNÉ</br>2. PARTIAL_HIT |
 | Pravidlo směrování s povoleným ukládáním do mezipaměti. Ukládat PARTIAL_HIT mezipaměti na hraničním bodu POP, ale v mezipaměti se nachází v nadřazené mezipaměti | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. true</br>2. false | 1. PARTIAL_HIT</br>2. PŘÍSTUPŮ |
-| Pravidlo směrování s povoleným ukládáním do mezipaměti. Neúspěšné přístupy do mezipaměti na úrovni odebrány na hraničních i nadřazených paměťech | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. true</br>2. false | 1. NEÚSPĚŠNÉ</br>2. NEÚSPĚŠNÉ |
+| Pravidlo směrování s povoleným ukládáním do mezipaměti. Neúspěšné přístupy do mezipaměti na hraničních i nadřazených položkách mezipaměti | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. true</br>2. false | 1. NEÚSPĚŠNÉ</br>2. NEÚSPĚŠNÉ |
 
 > [!NOTE]
 > V případě scénářů pro ukládání do mezipaměti bude hodnota pro stav mezipaměti partial_hit, když se některé bajty pro požadavek dostanou z hraničního zařízení na okraji předních dveří nebo z mezipaměti ochrany počáteční paměti, zatímco některé z bajtů se dodávají od počátku pro velké objekty.

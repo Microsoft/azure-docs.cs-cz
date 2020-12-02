@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/20/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 38f6cf039de2404c7b3eeecc74ee33233f4a2058
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5638b60b60f3952ab40fa000e457082f4748ac35
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965285"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484341"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Důvody pro nasazení Azure Virtual Machines DBMS pro úlohy SAP
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -160,8 +160,8 @@ Pokud požadavek na IOPS překročí, co může jeden virtuální pevný disk po
 >
 > Pro vytvoření softwarového pole RAID v systému Linux jsou podporovány pouze MDADM a Správce logických svazků (LVM). Další informace naleznete v tématu:
 >
-> - [Konfigurace softwarového pole RAID v systému Linux](../../linux/configure-raid.md) pomocí MDADM
-> - [Konfigurace LVM na virtuálním počítači se systémem Linux v Azure](../../linux/configure-lvm.md) pomocí LVM
+> - [Konfigurace softwarového pole RAID v systému Linux](/previous-versions/azure/virtual-machines/linux/configure-raid) pomocí MDADM
+> - [Konfigurace LVM na virtuálním počítači se systémem Linux v Azure](/previous-versions/azure/virtual-machines/linux/configure-lvm) pomocí LVM
 >
 >
 

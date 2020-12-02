@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/06/2020
 ms.author: nichola
 ms.reviewer: ''
-ms.openlocfilehash: cf5a7a5902484536d0cf2a1844be469f29e15f4b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 86c379316737b7718b62165a6feb93ca3a0e9954
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348462"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484035"
 ---
 # <a name="how-to-use-continuous-access-evaluation-enabled-apis-in-your-applications"></a>Jak používat rozhraní API s povoleným vyhodnocováním průběžného přístupu ve vašich aplikacích
 
@@ -27,9 +27,9 @@ V tomto článku se dozvíte, jak ve svých aplikacích používat rozhraní API
 
 ## <a name="implementation-considerations"></a>Důležité informace o implementaci
 
-Aby bylo možné používat hodnocení průběžného přístupu, musí být aplikace i rozhraní API prostředků, ke kterým přistupuje, zapnuté CAE. Příprava kódu pro použití prostředku s povoleným CAE ale nebrání v používání rozhraní API, která nejsou povolená CAE. 
+Aby bylo možné používat hodnocení průběžného přístupu, musí být aplikace i rozhraní API prostředků, ke kterým přistupuje, zapnuté CAE. Příprava kódu pro použití prostředku s povoleným CAE ale nebrání v používání rozhraní API, která nejsou povolená CAE.
 
-Pokud rozhraní API prostředků implementuje CAE a vaše aplikace ji deklaruje, může zpracovávat CAE, vaše aplikace získá tokeny CAE pro daný prostředek. Z tohoto důvodu, pokud deklarujete aplikaci CAE připravená, musí aplikace zpracovat výzvu CAE deklarací identity pro všechna rozhraní API prostředků, která přijímají tokeny přístupu Microsoft Identity Access. Pokud CAE odezvy v těchto voláních rozhraní API nezpracováváte, může vaše aplikace končit smyčkou opakováním volání rozhraní API s tokenem, který je stále v vráceném životnosti tokenu, ale byl odvolán z důvodu CAE. 
+Pokud rozhraní API prostředků implementuje CAE a vaše aplikace ji deklaruje, může zpracovávat CAE, vaše aplikace získá tokeny CAE pro daný prostředek. Z tohoto důvodu, pokud deklarujete aplikaci CAE připravená, musí aplikace zpracovat výzvu CAE deklarací identity pro všechna rozhraní API prostředků, která přijímají tokeny přístupu Microsoft Identity Access. Pokud CAE odezvy v těchto voláních rozhraní API nezpracováváte, může vaše aplikace končit smyčkou opakováním volání rozhraní API s tokenem, který je stále v vráceném životnosti tokenu, ale byl odvolán z důvodu CAE.
 
 ## <a name="the-code"></a>Kód
 
@@ -116,4 +116,4 @@ Aplikaci můžete testovat přihlášením uživatele k aplikaci a následným p
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v tématu [vyhodnocení průběžného přístupu](/conditional-access/concept-continuous-access-evaluation.md).
+Další informace najdete v tématu [vyhodnocení průběžného přístupu](../conditional-access/concept-continuous-access-evaluation.md).

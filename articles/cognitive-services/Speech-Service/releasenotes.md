@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: e786c4caae13ffaa541697d083158e17d42383fb
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: c6cc033e4814553020957310224a8ed4cdacbc8e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122565"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483950"
 ---
 # <a name="speech-service-release-notes"></a>Poznámky k verzi služby Speech Service
 
@@ -40,14 +40,13 @@ ms.locfileid: "96122565"
 
 **Nové funkce**
 - **Linux**: Přidání podpory pro Debian 10 a Ubuntu 20,04 LTS.
-- **Python/cíl-C**: Přidání podpory pro `KeywordRecognizer` rozhraní API. [Tady](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-keyword-basics)je dokumentace.
+- **Python/cíl-C**: Přidání podpory pro `KeywordRecognizer` rozhraní API. [Tady](./custom-keyword-basics.md)je dokumentace.
 - **C++/Java/C #**: Přidání podpory pro nastavení jakékoli `HttpHeader` hodnoty klíč/hodnota prostřednictvím `ServicePropertyChannel::HttpHeader` .
-- **JavaScript**: Přidání podpory pro `ConversationTranscriber` rozhraní API. Přečtěte si dokumentaci [sem](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-conversation-transcription?pivots=programming-language-javascript). 
-- **C++/c #**: Přidání nové `AudioDataStream FromWavFileInput` metody (pro čtení. Soubory WAV) [zde (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/audiodatastream) a [zde (C#)](
-https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet).
--  **C++/c #/Java/Python/Objective-C/SWIFT**: přidání `stopSpeakingAsync()` metody pro zastavení syntézy textu na řeč. Přečtěte si referenční [dokumentaci zde (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace), sem ( [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet)), sem ( [Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech), [sem (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)a [sem (cíl-C/SWIFT)](https://docs.microsoft.com/objectivec/cognitive-services/speech/).
-- **C#, C++, Java**: přidání `FromDialogServiceConnector()` funkce do `Connection` třídy, která se dá použít k monitorování událostí připojení a odpojení pro `DialogServiceConnector` . Přečtěte si referenční dokumentaci [zde (C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet), [sem (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)a [sem (Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection).
-- **C++/c #/Java/Python/Objective-C/SWIFT**: Přidání podpory pro posouzení výslovnosti, která vyhodnocuje výslovnost řeči a dává mluvčí názory na přesnost a Fluency mluveného zvuku. Přečtěte si dokumentaci [zde](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment).
+- **JavaScript**: Přidání podpory pro `ConversationTranscriber` rozhraní API. Přečtěte si dokumentaci [sem](./how-to-use-conversation-transcription.md?pivots=programming-language-javascript). 
+- **C++/c #**: Přidání nové `AudioDataStream FromWavFileInput` metody (pro čtení. Soubory WAV) [zde (C++)](/cpp/cognitive-services/speech/audiodatastream) a [zde (C#)](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet).
+-  **C++/c #/Java/Python/Objective-C/SWIFT**: přidání `stopSpeakingAsync()` metody pro zastavení syntézy textu na řeč. Přečtěte si referenční [dokumentaci zde (C++)](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace), sem ( [C#](/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet)), sem ( [Java)](/java/api/com.microsoft.cognitiveservices.speech), [sem (Python)](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)a [sem (cíl-C/SWIFT)](/objectivec/cognitive-services/speech/).
+- **C#, C++, Java**: přidání `FromDialogServiceConnector()` funkce do `Connection` třídy, která se dá použít k monitorování událostí připojení a odpojení pro `DialogServiceConnector` . Přečtěte si referenční dokumentaci [zde (C#)](/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet), [sem (C++)](/cpp/cognitive-services/speech/connection)a [sem (Java)](/java/api/com.microsoft.cognitiveservices.speech.connection).
+- **C++/c #/Java/Python/Objective-C/SWIFT**: Přidání podpory pro posouzení výslovnosti, která vyhodnocuje výslovnost řeči a dává mluvčí názory na přesnost a Fluency mluveného zvuku. Přečtěte si dokumentaci [zde](how-to-pronunciation-assessment.md).
 
 **Zásadní změna**
 - **JavaScript**: PullAudioOutputStream. Read () má změnu návratového typu z interního příslibu na nativní příslib JavaScriptu.
@@ -83,7 +82,7 @@ https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audioda
 Buďte v pořádku!
 
 ## <a name="speech-cli-also-known-as-spx-2020-october-release"></a>Rozpoznávání řeči (označované také jako SPX): 2020 – říjen vydaná verze
-SPX je rozhraní příkazového řádku, které používá službu Azure Speech Service bez psaní kódu. Nejnovější verzi si [můžete stáhnout tady](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-basics). <br>
+SPX je rozhraní příkazového řádku, které používá službu Azure Speech Service bez psaní kódu. Nejnovější verzi si [můžete stáhnout tady](./spx-basics.md). <br>
 
 **Nové funkce**
 - `spx csr dataset upload --kind audio|language|acoustic` – vytvoření datových sad z místních dat, nikoli jenom z adres URL

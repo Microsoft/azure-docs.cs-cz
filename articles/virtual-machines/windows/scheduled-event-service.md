@@ -7,12 +7,12 @@ ms.subservice: monitoring
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: 0806c6e0ed89c2c0f4712ec985599810119fcf89
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0d1edde5ac1b83feab458eb5d12d524163d3ffb1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015515"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483296"
 ---
 # <a name="monitoring-scheduled-events"></a>Scheduled Events monitorování
 
@@ -29,7 +29,7 @@ V tomto článku Vás provedeme procesem zaznamenání údržby Scheduled Events
 
 ![Diagram znázorňující životní cyklus události](./media/notifications/events.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto příkladu budete muset vytvořit [virtuální počítač s Windows ve skupině dostupnosti](tutorial-availability-sets.md). Scheduled Events poskytují oznámení o změnách, které můžou ovlivnit některý z virtuálních počítačů ve vaší skupině dostupnosti, cloudové službě, sadě škálování virtuálních počítačů nebo samostatných virtuálních počítačích. Budeme používat [službu](https://github.com/microsoft/AzureScheduledEventsService) , která se dotazuje na naplánované události na jednom z virtuálních počítačů, které se budou chovat jako kolektor, a získat tak události pro všechny ostatní virtuální počítače ve skupině dostupnosti.    
 
@@ -132,7 +132,7 @@ Tím se na virtuální počítač nainstaluje [Agent Microsoft Monitoring Agent]
 ## <a name="creating-an-alert-rule-with-azure-monitor"></a>Vytvoření pravidla výstrahy pomocí Azure Monitor 
 
 
-Po vložení událostí do Log Analytics můžete spustit následující [dotaz](../../azure-monitor/log-query/get-started-portal.md) , který vyhledá události plánu.
+Po vložení událostí do Log Analytics můžete spustit následující [dotaz](../../azure-monitor/log-query/log-analytics-tutorial.md) , který vyhledá události plánu.
 
 1. V horní části stránky vyberte **protokoly** a vložte následující text do textového pole:
 

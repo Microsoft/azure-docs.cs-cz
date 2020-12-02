@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 867124a08bbad88b7dac5386ee6bc1c9c4d99c12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 420259929afc50b2884bf075212402d80b6b52f4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85549898"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483534"
 ---
 # <a name="create-a-group-for-assessment"></a>Vytvořit skupinu pro posouzení
 
@@ -35,14 +35,14 @@ Můžete vytvořit skupinu ve stejné době, kdy [vytvoříte posouzení](how-to
 
 Pokud chcete vytvořit skupinu ručně mimo vytváření posouzení, udělejte toto:
 
-1. V projektu Azure Migrate > **Přehled**klikněte na možnost **zhodnotit a migrovat servery**. V **Azure Migrate: vyhodnocování serveru**, klikněte na **skupiny** .
+1. V projektu Azure Migrate > **Přehled** klikněte na možnost **zhodnotit a migrovat servery**. V **Azure Migrate: vyhodnocování serveru**, klikněte na **skupiny** .
     - Pokud jste ještě nepřidali Azure Migrate: Nástroj pro vyhodnocení serveru, klikněte na tlačítko a přidejte ho. [Další informace](how-to-assess.md).
-    - Pokud jste ještě nevytvořili projekt Azure Migrate, [Přečtěte si další informace](how-to-add-tool-first-time.md).
+    - Pokud jste ještě nevytvořili projekt Azure Migrate, [Přečtěte si další informace](./create-manage-projects.md).
 
     ![Vybrat skupiny](./media/how-to-create-a-group/select-groups.png)
 
 2. Klikněte na ikonu **skupiny** .
-3. V části **vytvořit skupinu**zadejte název skupiny a do pole **název zařízení**vyberte zařízení Azure Migrate, které používáte pro zjišťování počítačů.
+3. V části **vytvořit skupinu** zadejte název skupiny a do pole **název zařízení** vyberte zařízení Azure Migrate, které používáte pro zjišťování počítačů.
 4. V seznamu počítač vyberte počítače, které chcete přidat do skupiny > **vytvořit**.
 
     ![Vytvoření skupiny](./media/how-to-create-a-group/create-group.png)
@@ -66,7 +66,7 @@ Pokud jste už [nastavili mapování závislostí](how-to-create-group-machine-d
 
     - Pokud jste již nastavili mapování závislostí, otevřete na stránce skupina kliknutím na možnost **Zobrazit závislosti** mapu závislostí skupiny.
 
-3. Po kliknutí na **Zobrazit závislosti**se v mapě závislosti skupin zobrazí následující:
+3. Po kliknutí na **Zobrazit závislosti** se v mapě závislosti skupin zobrazí následující:
 
     - Příchozí (klienti) a odchozí (servery) připojení TCP k a ze všech počítačů ve skupině, ve které jsou nainstalováni agenti závislostí.
     - Závislé počítače, které nemají nainstalované agenty závislosti, jsou seskupeny podle čísel portů.
@@ -89,4 +89,3 @@ Pokud jste už [nastavili mapování závislostí](how-to-create-group-machine-d
 ## <a name="next-steps"></a>Další kroky
 
 Naučte se nastavit a používat [Mapování závislostí](how-to-create-group-machine-dependencies.md) k vytváření vysoce důvěryhodných skupin.
-

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: 5bb40ec930731b58d457500d83b66c7a187b44d8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: bcb912a24dfb2a5e78719cf9010fd23afe0df185
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957431"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484392"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>Řešení Azure monitor pro SAP (Preview)
 
@@ -35,7 +35,7 @@ Podporované databáze:
 - Databáze SAP HANA
 - Microsoft SQL Server
 
-Azure Monitor pro řešení SAP využívají sílu stávajících [Azure Monitorch](../../../azure-monitor/overview.md) funkcí, jako jsou například Log Analytics a [sešity](../../../azure-monitor/platform/workbooks-overview.md) , k zajištění dalších možností monitorování. Zákazníci můžou vytvářet [vlastní vizualizace](../../../azure-monitor/platform/workbooks-overview.md#getting-started) úpravou výchozích sešitů poskytovaných Azure monitor pro řešení SAP, psát [vlastní dotazy](../../../azure-monitor/log-query/get-started-portal.md) a vytvářet [vlastní výstrahy](../../../azure-monitor/learn/tutorial-response.md) pomocí Azure Log Analytics Workspace, využívat výhod [flexibilního období uchovávání](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) a připojovat data monitorování k systému lístků.
+Azure Monitor pro řešení SAP využívají sílu stávajících [Azure Monitorch](../../../azure-monitor/overview.md) funkcí, jako jsou například Log Analytics a [sešity](../../../azure-monitor/platform/workbooks-overview.md) , k zajištění dalších možností monitorování. Zákazníci můžou vytvářet [vlastní vizualizace](../../../azure-monitor/platform/workbooks-overview.md#getting-started) úpravou výchozích sešitů poskytovaných Azure monitor pro řešení SAP, psát [vlastní dotazy](../../../azure-monitor/log-query/log-analytics-tutorial.md) a vytvářet [vlastní výstrahy](../../../azure-monitor/learn/tutorial-response.md) pomocí Azure Log Analytics Workspace, využívat výhod [flexibilního období uchovávání](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) a připojovat data monitorování k systému lístků.
 
 ## <a name="what-data-does-azure-monitor-for-sap-solutions-collect"></a>Jaká data Azure Monitor pro shromažďování řešení SAP?
 

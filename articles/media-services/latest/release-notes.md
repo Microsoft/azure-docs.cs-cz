@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: cdc6cbbea8b222007d94ecac99902bc4498a42fe
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 4ddb02bbcf284566550517f8fa343a728e2275a9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505253"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483623"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
@@ -51,7 +51,7 @@ Další informace o režimu základní zvukové analyzátory najdete v tématu [
 
 Po zastavení živých událostí jsou nyní povoleny aktualizace většiny vlastností. Kromě toho můžou uživatelé zadat předponu pro statický název hostitele pro vstupní a náhledové adresy URL pro aktivní událost. VanityUrl je nyní volána `useStaticHostName` pro lepší reflektování záměru vlastnosti.
 
-Živé události teď mají pohotovostní stav.  Podívejte [se na živé události a živé výstupy v Media Services](https://docs.microsoft.com/azure/media-services/latest/live-events-outputs-concept).
+Živé události teď mají pohotovostní stav.  Podívejte [se na živé události a živé výstupy v Media Services](./live-events-outputs-concept.md).
 
 Živá událost podporuje příjem různých vstupních poměrů stran. Režim Stretch umožňuje zákazníkům určit chování roztažení výstupu.
 

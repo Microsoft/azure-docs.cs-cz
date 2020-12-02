@@ -9,14 +9,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/22/2020
+ms.date: 11/30/2020
 ms.author: allensu
-ms.openlocfilehash: 169889dbb87d00fdde44ff72c0d2004c331604ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c593cda7761ce1defa6bdb31e0dbb528b9e5eca
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87073035"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483984"
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>Analýza vzorů využití Azure CDN
 
@@ -31,7 +31,7 @@ Se standardním profilem Microsoftu můžete povolit nezpracované protokoly a v
 
 Pomocí Azure Log Analytics můžete zobrazit metriky monitorování a nastavit výstrahy. 
 
-Další informace najdete v tématu [Azure CDN nezpracovaných protokolů HTTP](enable-raw-logs.md).
+Další informace najdete v tématu [Azure CDN nezpracovaných protokolů HTTP](monitoring-and-access-log.md).
 
 
 ## <a name="core-analytics-via-azure-diagnostic-logs"></a>Základní analýzy prostřednictvím diagnostických protokolů Azure
@@ -50,7 +50,7 @@ Vlastní sestavy zobrazují počet přístupů nebo dat přenesených u každéh
 
 ## <a name="azure-cdn-premium-from-verizon-reports"></a>Azure CDN Premium ze sestav Verizon
 
-S **Azure CDN Premium z Verizon**můžete také získat přístup k následujícím sestavám:
+S **Azure CDN Premium z Verizon** můžete také získat přístup k následujícím sestavám:
    * [Rozšířené sestavy HTTP](cdn-advanced-http-reports.md)
    * [Statistiky v reálném čase](cdn-real-time-stats.md)
    * [Azure CDN výkon hraničního uzlu](cdn-edge-performance.md)
@@ -61,6 +61,4 @@ V tomto článku jste se dozvěděli o různých možnostech sestav analýzy pro
 Další informace o Azure CDN a dalších službách Azure, které jsou uvedené v tomto článku, najdete v tématech:
 
 * [Co je Azure CDN?](cdn-overview.md)
-* [Azure CDN nezpracovaných protokolů HTTP](enable-raw-logs.md)
-
-
+* [Azure CDN nezpracovaných protokolů HTTP](monitoring-and-access-log.md)

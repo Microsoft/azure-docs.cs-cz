@@ -3,12 +3,12 @@ title: Objevte aplikace, role a funkce na místních serverech pomocí Azure Mig
 description: Naučte se zjišťovat aplikace, role a funkce na místních serverech pomocí vyhodnocení Azure Migrate serveru.
 ms.topic: article
 ms.date: 06/10/2020
-ms.openlocfilehash: 6bdc26ac3a27026183e889bf258e2e1a5dadebfb
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 960877ac4eab4d8f23b5616dc04628142964b46a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315197"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483449"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Objevte aplikace pro počítače, role a funkce
 
@@ -23,14 +23,14 @@ Zjišťování inventáře aplikací, rolí a funkcí, které běží na místn�
 ## <a name="before-you-start"></a>Než začnete
 
 - Ujistěte se, že jste udělali toto:
-    - Byl [vytvořen](how-to-add-tool-first-time.md) Azure Migrate projekt.
+    - Byl [vytvořen](./create-manage-projects.md) Azure Migrate projekt.
     - [Přidání](how-to-assess.md) nástroje Azure Migrate: Nástroj pro vyhodnocení serveru do projektu.
 - Kontrola [požadavků a podpory zjišťování aplikací](migrate-support-matrix-vmware.md#vmware-requirements)
 - Ujistěte se, že virtuální počítače, ve kterých spouštíte zjišťování aplikací, mají nainstalované prostředí PowerShell verze 2,0 nebo novější a nástroje VMware (novější než 10.2.0) jsou nainstalované.
 - Ověřte [požadavky](migrate-appliance.md) na nasazení zařízení Azure Migrate.
 
 
-## <a name="deploy-the-azure-migrate-appliance"></a>Nasazení zařízení Azure Migrate
+## <a name="deploy-the-azure-migrate-appliance"></a>Nasazení zařízení se službou Azure Migrate
 
 1. [Projděte si](migrate-appliance.md#appliance---vmware) požadavky na nasazení zařízení Azure Migrate.
 2. Zkontrolujte adresy URL Azure, které bude zařízení potřebovat pro přístup k [veřejným](migrate-appliance.md#public-cloud-urls) a [státním cloudům](migrate-appliance.md#government-cloud-urls).
@@ -54,7 +54,7 @@ Přidejte uživatelský účet následujícím způsobem:
 
 1. Otevřete aplikaci pro správu zařízení. 
 2. Přejděte na panel **poskytnout podrobnosti vCenter** .
-3. V nabídce **zjistit aplikaci a závislosti na virtuálních počítačích**klikněte na **Přidat přihlašovací údaje** .
+3. V nabídce **zjistit aplikaci a závislosti na virtuálních počítačích** klikněte na **Přidat přihlašovací údaje** .
 3. Vyberte **operační systém**, zadejte popisný název účtu a heslo pro **uživatelské jméno** / **Password** .
 6. Klikněte na **Uložit**.
 7. Klikněte na **Uložit a spusťte zjišťování**.
@@ -66,14 +66,14 @@ Přidejte uživatelský účet následujícím způsobem:
 
 Pokud jste po dokončení zjišťování zadali přihlašovací údaje pro zjišťování aplikací, můžete zkontrolovat a vyexportovat inventář aplikací v Azure Portal.
 
-1. V **Azure Migrate-servery**  >  **Azure Migrate: vyhodnocování serveru**klikněte na zobrazený počet a otevřete stránku **zjištěné servery** .
+1. V **Azure Migrate-servery**  >  **Azure Migrate: vyhodnocování serveru** klikněte na zobrazený počet a otevřete stránku **zjištěné servery** .
 
     > [!NOTE]
     > V této fázi můžete také volitelně nastavit analýzu závislostí pro zjištěné počítače, abyste mohli vizualizovat závislosti mezi počítači, které chcete vyhodnotit. [Přečtěte si další informace](concepts-dependency-visualization.md) o analýze závislostí.
 
-2. V části **zjištěné aplikace**klikněte na zobrazený počet.
-3. V **inventáři aplikací**můžete zkontrolovat zjištěné aplikace, role a funkce.
-4. Pokud chcete exportovat inventář, klikněte na stránce **zjištěné servery**na **exportovat inventář aplikací**.
+2. V části **zjištěné aplikace** klikněte na zobrazený počet.
+3. V **inventáři aplikací** můžete zkontrolovat zjištěné aplikace, role a funkce.
+4. Pokud chcete exportovat inventář, klikněte na stránce **zjištěné servery** na **exportovat inventář aplikací**.
 
 Inventář aplikací je exportovaný a stažený ve formátu aplikace Excel. V listu **inventáře aplikací** se zobrazí všechny zjištěné aplikace napříč všemi počítači.
 

@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 8c037d35c2df4572800d2519347aa113a86cde36
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 7258b37c9d92f25227eac678dde77963e644e64b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434834"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483313"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>Kurz: Vytvoření aplikace pro vzdálené vykreslování Azure připravené pro komerční zpracování
 
@@ -23,7 +23,7 @@ V tomto kurzu získáte informace o těchto tématech:
 > * Optimalizace uživatelského prostředí kolem času načítání relace
 > * Okolnosti týkající se latence sítě
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Tento kurz sestaví [kurz: zabezpečení vzdáleného vykreslování Azure a úložiště modelu](../security/security.md).
 
@@ -54,7 +54,7 @@ Za tímto účelem Azure nabízí službu s názvem označování prostředků, 
 
 Další informace o pojmenování a označování prostředků je dobrým místem, kde začínáte:
 
-* [Rozhodovací příručka pro pojmenování a označování prostředků](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%252fazure%252fazure-resource-manager%252fmanagement%252ftoc.json)
+* [Rozhodovací příručka pro pojmenování a označování prostředků](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
 ### <a name="diagnostics"></a>Diagnostika
 

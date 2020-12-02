@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 11/23/2020
 ms.author: trbye
-ms.openlocfilehash: 291ac7804109b098b556e38c57ca493ba74f1b14
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3b20773de62f036b507f1612f2b38d613d54ba2f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183090"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485191"
 ---
 # <a name="what-is-the-speech-service"></a>Co je služba Speech?
 
@@ -30,14 +30,14 @@ Následující funkce jsou součástí služby Speech. Pomocí odkazů v této t
 |---------|---------|-------------|-----|------|
 | [Převod řeči na text](speech-to-text.md) | Převod řeči na text v reálném čase | Převod řeči na text transcribes nebo přeloží zvukové streamy nebo místní soubory na text v reálném čase, který mohou aplikace, nástroje nebo zařízení spotřebovat nebo zobrazit. Použití převodu řeči na text s [Language Understanding (Luis)](../luis/index.yml) k odvození záměrů uživatele z přepisu řeči a fungování hlasových příkazů. | [Ano](./speech-sdk.md) | [Ano](#reference-docs) |
 | | [Dávkové zpracování řeči na text](batch-transcription.md) | Batch Speech-to-text umožňuje asynchronní převod řeči na text s velkými objemy zvukového zvuku, který je uložený v Azure Blob Storage. Kromě převodu zvukového zvuku na text, Batch Speech-to-text také umožňuje diarization a mínění-Analysis. | No | [Ano](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
-| | [Konverzace s více zařízeními](multi-device-conversation.md) | Připojení více zařízení nebo klientů v rámci konverzace pro odesílání hlasových a textových zpráv s jednoduchou podporou pro přepis a překlady| Ano | No |
-| | [Přepis konverzace](./conversation-transcription.md) | Umožňuje rozpoznávání řeči v reálném čase, identifikaci mluvčího a diarization. Je ideální pro zdlouhavého přepisování schůzky na osobu s možností odlišit reproduktory. | Ano | No |
+| | [Konverzace s více zařízeními](multi-device-conversation.md) | Připojení více zařízení nebo klientů v rámci konverzace pro odesílání hlasových a textových zpráv s jednoduchou podporou pro přepis a překlady| Yes | No |
+| | [Přepis konverzace](./conversation-transcription.md) | Umožňuje rozpoznávání řeči v reálném čase, identifikaci mluvčího a diarization. Je ideální pro zdlouhavého přepisování schůzky na osobu s možností odlišit reproduktory. | Yes | No |
 | | [Vytváření modelů Custom Speech](#customize-your-speech-experience) | Pokud používáte převod řeči na text pro rozpoznávání a přepis v jedinečném prostředí, můžete vytvořit a vyškolit vlastní modely akustického, jazyka a výslovnosti pro řešení hluku nebo slovníku specifického pro konkrétní obor. | No | [Ano](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
 | [Převod textu na řeč](text-to-speech.md) | Převod textu na řeč | Převod textu na řeč převede vstupní text na syntetizované rozpoznávání řeči pomocí [jazyka SSML (Speech syntézy)](speech-synthesis-markup.md). Vyberte si ze standardních hlasů a hlasy neuronové (viz [Podpora jazyků](language-support.md)). | [Ano](./speech-sdk.md) | [Ano](#reference-docs) |
 | | [Vytváření vlastních hlasů](#customize-your-speech-experience) | Vytvářejte vlastní hlasová písma, která jsou jedinečná pro vaši značku nebo produkt. | No | [Ano](#reference-docs) |
 | [Překlad řeči](speech-translation.md) | Překlad řeči | Překlad řeči umožňuje překlady řeči v reálném čase pro aplikace, nástroje a zařízení v reálném čase. Použijte tuto službu pro překlad řeči a převod řeči na text. | [Ano](./speech-sdk.md) | No |
 | [Hlasoví asistenti](voice-assistants.md) | Hlasoví asistenti | Hlasové asistenti, kteří používají službu pro rozpoznávání řeči, umožňují vývojářům vytvářet pro své aplikace a prostředí přirozené rozhraní pro konverzaci podobné člověku. Služba hlasového asistenta poskytuje rychlou a spolehlivou interakci mezi zařízením a implementací pomocníka, která používá kanál s přímým přístupem na platformě bot nebo integrované vlastní příkazy (Preview) pro dokončení úkolu. | [Ano](voice-assistants.md) | No |
-| [Rozpoznávání mluvčího](speaker-recognition-overview.md) | Identifikace & ověření mluvčího | Služba rozpoznávání mluvčího poskytuje algoritmy pro ověřování a identifikaci mluvčích podle jejich jedinečných vlastností hlasu. Rozpoznávání mluvčího slouží k zodpovězení otázky "kdo se mluví?". | Ano | [Ano](/rest/api/speakerrecognition/) |
+| [Rozpoznávání mluvčího](speaker-recognition-overview.md) | Identifikace & ověření mluvčího | Služba rozpoznávání mluvčího poskytuje algoritmy pro ověřování a identifikaci mluvčích podle jejich jedinečných vlastností hlasu. Rozpoznávání mluvčího slouží k zodpovězení otázky "kdo se mluví?". | Yes | [Ano](/rest/api/speakerrecognition/) |
 
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
@@ -49,7 +49,7 @@ Pro následující kroky potřebujete účet Microsoft i účet Azure. Pokud nem
 Jakmile budete mít účet Microsoft, navštivte [stránku registrace do Azure](https://azure.microsoft.com/free/ai/), vyberte **začít zdarma** a vytvořte nový účet Azure pomocí účet Microsoft. Tady je video o [tom, jak se zaregistrovat k bezplatnému účtu Azure](https://www.youtube.com/watch?v=GWT2R1C_uUU).
 
 > [!NOTE]
-> Když si zaregistruje bezplatný účet Azure, najdete ho v kreditu služby $200, který můžete použít k placenému předplatnému služby Speech, a to po dobu až 30 dnů. Vaše služby Azure jsou zakázané, když váš kredit skončí nebo končí na konci 30 dnů. Pokud chcete dál využívat služby Azure, musíte upgradovat svůj účet. Další informace najdete v tématu [Postup upgradu bezplatného účtu Azure](https://docs.microsoft.com/azure/cost-management-billing/manage/upgrade-azure-subscription). 
+> Když si zaregistruje bezplatný účet Azure, najdete ho v kreditu služby $200, který můžete použít k placenému předplatnému služby Speech, a to po dobu až 30 dnů. Vaše služby Azure jsou zakázané, když váš kredit skončí nebo končí na konci 30 dnů. Pokud chcete dál využívat služby Azure, musíte upgradovat svůj účet. Další informace najdete v tématu [Postup upgradu bezplatného účtu Azure](../../cost-management-billing/manage/upgrade-azure-subscription.md). 
 >
 > Služba Speech má dvě úrovně služeb: Free (F0) a předplatné (S0), které mají různá omezení a výhody. Pokud používáte bezplatnou úroveň služby řeči s nízkým objemem, můžete si toto bezplatné předplatné ponechat i po vypršení bezplatné zkušební verze nebo kreditu služby. Další informace najdete v tématu [Cognitive Services Price-Speech Service](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
@@ -70,8 +70,8 @@ Postup přidání prostředku služby řeči (bezplatná nebo placená úroveň)
 1. Vyberte **vytvořit** a potom:
 
    - Zadejte jedinečný název nového prostředku. Název vám pomůže rozlišovat mezi několika předplatnými vázanými na stejnou službu.
-   - Vyberte předplatné Azure, ke kterému je přiřazen nový prostředek, abyste zjistili, jak se účtují poplatky. Tady je úvodní informace o [tom, jak vytvořit předplatné Azure](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription#create-a-subscription-in-the-azure-portal) v Azure Portal.
-   - Vyberte [oblast](regions.md) , ve které se prostředek použije. Azure je globální cloudová platforma, která je obecně dostupná v mnoha oblastech po celém světě. Pokud chcete dosáhnout nejlepšího výkonu, vyberte oblast, která je pro vás nejblíže nebo kde se vaše aplikace spouští. Služba Speech Service pro nákup se liší od různých oblastí. Ujistěte se, že jste vytvořili prostředek v podporované oblasti. Podívejte se [na podporu oblastí pro hlasové služby](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-to-text-text-to-speech-and-translation).
+   - Vyberte předplatné Azure, ke kterému je přiřazen nový prostředek, abyste zjistili, jak se účtují poplatky. Tady je úvodní informace o [tom, jak vytvořit předplatné Azure](../../cost-management-billing/manage/create-subscription.md#create-a-subscription-in-the-azure-portal) v Azure Portal.
+   - Vyberte [oblast](regions.md) , ve které se prostředek použije. Azure je globální cloudová platforma, která je obecně dostupná v mnoha oblastech po celém světě. Pokud chcete dosáhnout nejlepšího výkonu, vyberte oblast, která je pro vás nejblíže nebo kde se vaše aplikace spouští. Služba Speech Service pro nákup se liší od různých oblastí. Ujistěte se, že jste vytvořili prostředek v podporované oblasti. Podívejte se [na podporu oblastí pro hlasové služby](./regions.md#speech-to-text-text-to-speech-and-translation).
    - Vyberte cenovou úroveň Free (F0) nebo Place (S0). Pokud chcete získat kompletní informace o cenách a kvótách využití pro každou úroveň, vyberte **Zobrazit úplné podrobnosti o cenách** nebo si prohlédněte [ceny služby Speech Services](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/). Omezení prostředků najdete v tématu [omezení pro Azure Cognitive Services](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cognitive-services-limits).
    - Vytvořte novou skupinu prostředků pro toto předplatné řeči nebo přiřaďte předplatné k existující skupině prostředků. Skupiny prostředků vám pomůžou udržovat vaše různá předplatná Azure uspořádaná.
    - Vyberte **Vytvořit**. Tím přejdete na přehled nasazení a zobrazíte zprávy o průběhu nasazení.  
@@ -112,7 +112,7 @@ Až budete mít možnost začít pracovat se službou Speech, vyzkoušejte naše
 
 - [Kurz: rozpoznávání záměrů z řeči pomocí sady Speech SDK a LUIS, C #](how-to-recognize-intents-from-speech-csharp.md)
 - [Kurz: hlasový vstup pro robota pomocí sady Speech SDK, C #](tutorial-voice-enable-your-bot-speech-sdk.md)
-- [Kurz: sestavení aplikace v baňce pro překlad textu, analýza mínění a syntetizace přeloženého textu na řeč, REST](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%252fazure%252fcognitive-services%252fspeech-service%252fbreadcrumb%252ftoc.json%252c%252fen-us%252fazure%252fbread%252ftoc.json&toc=%252fazure%252fcognitive-services%252fspeech-service%252ftoc.json%252c%252fen-us%252fazure%252fcognitive-services%252fspeech-service%252ftoc.json)
+- [Kurz: sestavení aplikace v baňce pro překlad textu, analýza mínění a syntetizace přeloženého textu na řeč, REST](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json%252c%2fen-us%2fazure%2fbread%2ftoc.json&toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json%252c%2fen-us%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json)
 
 ## <a name="get-sample-code"></a>Získání vzorového kódu
 

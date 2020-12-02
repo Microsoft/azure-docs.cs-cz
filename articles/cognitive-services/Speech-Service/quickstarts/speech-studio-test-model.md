@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/04/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 9101944a567df5000d3584ed48eff24e4c5e0057
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 572b3b3459e1d837130f3c987d45ee45629f37ad
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89565799"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485072"
 ---
 # <a name="test-a-model-using-an-audio-file-in-speech-studio"></a>Testování modelu pomocí zvukového souboru v studiu řeči
 
@@ -23,7 +23,7 @@ V tomto postupu použijete Speech Studio k převodu řeči ze zvukového souboru
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Než použijete portál Speech, [postupujte podle těchto pokynů a vytvořte účet Azure a přihlaste se k odběru služby Speech](../how-to-custom-speech.md#set-up-your-azure-account). Toto jednotné předplatné vám umožní přístup k převodu řeči na text, převod textu na řeč, rozpoznávání řeči a Custom Speech Portal.
+Než použijete portál Speech, [postupujte podle těchto pokynů a vytvořte účet Azure a přihlaste se k odběru služby Speech](../custom-speech-overview.md#set-up-your-azure-account). Toto jednotné předplatné vám umožní přístup k převodu řeči na text, převod textu na řeč, rozpoznávání řeči a Custom Speech Portal.
 
 ## <a name="download-an-audio-file"></a>Stažení zvukového souboru
 
@@ -59,7 +59,7 @@ Jakmile aplikace Speech Studio zpracuje obsah souboru zip, můžete přehrát zd
 Soubory, které popisují přepisy, si můžete stáhnout mnohem podrobněji. Soubory obsahují lexikální formu rozpoznávání řeči ve zvukových souborech a soubory JSON, které obsahují informace o posunu, trvání a přepisu každého slova. Tyto soubory zobrazíte pomocí následujícího postupu.
 
 1. Klikněte na tlačítko **Stáhnout**.
-2. V dialogu pro stažení zrušte výběr **zvuku**a klikněte na **Stáhnout**.
+2. V dialogu pro stažení zrušte výběr **zvuku** a klikněte na **Stáhnout**.
 3. Extrahujte stažený soubor zip a prověřte extrahované soubory.
 
 ## <a name="next-steps"></a>Další kroky

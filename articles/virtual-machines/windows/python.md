@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: devx-track-python
-ms.openlocfilehash: 402a61b4b5335c19d75cd1182243783453a0e7fa
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a7117d30eb1774753f21e82ad5f812a7309d8386
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974851"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483092"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Vytváření a správa virtuálních počítačů s Windows v Azure pomocí Pythonu
 
@@ -38,7 +38,7 @@ Provedení těchto kroků trvá přibližně 20 minut.
 
 ## <a name="install-packages"></a>Nainstalovat balíčky
 
-1. V Průzkumník řešení v části *myPythonProject*klikněte pravým tlačítkem na **prostředí Python**a pak vyberte **Přidat virtuální prostředí**.
+1. V Průzkumník řešení v části *myPythonProject* klikněte pravým tlačítkem na **prostředí Python** a pak vyberte **Přidat virtuální prostředí**.
 2. Na obrazovce Přidat virtuální prostředí přijměte výchozí název *ENV*, ujistěte se, že je pro základní překladač vybraný *Python 3,6 (64)* , a pak klikněte na **vytvořit**.
 3. Klikněte pravým tlačítkem na prostředí *ENV* , které jste vytvořili, klikněte na **instalovat balíček Pythonu**, do vyhledávacího pole zadejte *Azure* a pak stiskněte ENTER.
 
@@ -88,7 +88,7 @@ Než zahájíte tento krok, ujistěte se, že máte [instanční objekt služby 
         return credentials
     ```
 
-    Nahraďte **ID aplikace**, **ověřovací klíč**a **ID tenanta** hodnotami, které jste předtím shromáždili při vytvoření Azure Active Directory instančního objektu.
+    Nahraďte **ID aplikace**, **ověřovací klíč** a **ID tenanta** hodnotami, které jste předtím shromáždili při vytvoření Azure Active Directory instančního objektu.
 
 5. Chcete-li zavolat funkci, kterou jste přidali dříve, přidejte tento kód pod příkaz **if** na konci souboru. py:
 
@@ -492,7 +492,7 @@ Při rozhodování o velikosti vašeho virtuálního počítače je třeba vzít
 
 ### <a name="add-a-data-disk-to-the-vm"></a>Přidání datového disku k virtuálnímu počítači
 
-Virtuální počítače mohou mít jeden nebo více [datových disků](../managed-disks-overview.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) , které jsou uloženy jako VHD.
+Virtuální počítače mohou mít jeden nebo více [datových disků](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , které jsou uloženy jako VHD.
 
 1. Chcete-li přidat datový disk k virtuálnímu počítači, přidejte tuto funkci za proměnné v souboru. py: 
 

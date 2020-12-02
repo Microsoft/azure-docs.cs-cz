@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 5a2d7f9f60253916eae808a7f65bc4b4b289bd67
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3f4791c5cbcf731e118bac4bf692adcad7e9ff44
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694776"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483585"
 ---
 # <a name="using-snat-for-outbound-connections"></a>Použití SNAT pro odchozí připojení
 
@@ -109,7 +109,7 @@ Pokud je nakonfigurován [scénář 2](#scenario2) níže, bude hostitel pro ka�
 
  | Přidružení | Metoda | Protokoly IP |
  | ------------ | ------ | ------------ |
- |Žádná </br> Základní nástroj pro vyrovnávání zatížení | [SNAT](#snat) s dynamickou IP adresou na úrovni instance| TCP </br> UDP | 
+ |Žádné </br> Základní nástroj pro vyrovnávání zatížení | [SNAT](#snat) s dynamickou IP adresou na úrovni instance| TCP </br> UDP | 
 
  #### <a name="description"></a>Popis
 
@@ -182,8 +182,6 @@ Další informace o službě Azure Virtual Network NAT najdete v tématu [co je 
 
 ## <a name="constraints"></a>Omezení
 
-*   Pokud se přijme nebo pošle **TCP RST** , budou porty vydány po 15 sekundách.
-*   Pokud se přijme nebo pošle **FINACK** , porty se uvolní po 240 sekund.
 *   Když je připojení nečinné, protože se neodesílají žádné nové pakety, porty se uvolní po 4 až 120 minutách.
   * Tato prahová hodnota se dá nakonfigurovat prostřednictvím odchozích pravidel.
 *   Každá IP adresa poskytuje 64 000 portů, které se dají použít pro SNAT.

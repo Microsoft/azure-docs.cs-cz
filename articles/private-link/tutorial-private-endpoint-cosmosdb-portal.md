@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: a544d0c5fafbdaf9d272fed552fb38eda613292f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: c9866ac2c14e4deb29326ffdd1a93a7d8eae1ea3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522137"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484800"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>Kurz: připojení k účtu Azure Cosmos pomocí privátního koncového bodu Azure
 
@@ -53,7 +53,7 @@ Hostitel bastionu se bude používat k zabezpečenému připojení k virtuální
     | Skupina prostředků   | Vybrat **myResourceGroup** |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
-    | Region           | Vyberte **východní USA** |
+    | Oblast           | Vyberte **východní USA** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
 
@@ -104,7 +104,7 @@ V této části vytvoříte virtuální počítač, který se použije k otestov
     | Skupina prostředků | Vybrat **myResourceGroup** |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM** |
-    | Region | Vyberte **východní USA** |
+    | Oblast | Vyberte **východní USA** |
     | Možnosti dostupnosti | Vyberte možnost **nepožaduje se žádná redundance infrastruktury** . |
     | Image | Vyberte **Windows Server 2019 Datacenter – Gen1** |
     | Instance Azure Spot | Vybrat **ne** |
@@ -248,7 +248,7 @@ V této části použijete virtuální počítač, který jste vytvořili v pře
 
     Pro název Cosmos DB účtu se vrátí privátní IP adresa **10.1.0.5** .  Tato adresa je v podsíti virtuální sítě, kterou jste vytvořili dříve.
 
-9. Nainstalujte na virtuální počítač [Průzkumník služby Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%252fazure%252fstorage%252fblobs%252ftoc.json) .
+9. Nainstalujte na virtuální počítač [Průzkumník služby Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) .
 
 10. Po instalaci **Průzkumník služby Microsoft Azure Storage** vyberte **Dokončit** .  Ponechte zaškrtnuté políčko pro otevření aplikace.
 

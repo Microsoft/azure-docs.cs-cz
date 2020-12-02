@@ -7,12 +7,12 @@ ms.manager: carmonm
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
-ms.openlocfilehash: 01f30305529e7f142be0ca6ddffa0f5a12a235bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89b795011460ee2803d07d14b9c2abe9c8ffca55
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260019"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483347"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>Migrace virtuálních počítačů VMware na virtuální počítače Azure s povoleným šifrováním na straně serveru a zákaznickými klíči
 
@@ -22,12 +22,12 @@ Prostředí portálu pro migraci Azure Migrate serveru umožňuje [migrovat virt
 
 Příklady v tomto článku se používají [Azure PowerShell](/powershell/azure/new-azureps-module-az) k provedení úloh potřebných k vytvoření a nasazení Správce prostředků šablony.
 
-[Přečtěte si další informace](../virtual-machines/windows/disk-encryption.md) o šifrování na straně serveru (SSE) se spravovanými klíči Customer (CMK) pro spravované disky.
+[Přečtěte si další informace](../virtual-machines/disk-encryption.md) o šifrování na straně serveru (SSE) se spravovanými klíči Customer (CMK) pro spravované disky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Přečtěte si kurz](tutorial-migrate-vmware.md) migrace virtuálních počítačů VMware do Azure s replikací bez agentů, abyste pochopili požadavky na nástroj.
-- [Postupujte podle těchto pokynů](how-to-add-tool-first-time.md) a vytvořte projekt Azure Migrate a přidejte do projektu nástroj pro **migraci serveru Azure Migrate: Server** .
+- [Postupujte podle těchto pokynů](./create-manage-projects.md) a vytvořte projekt Azure Migrate a přidejte do projektu nástroj pro **migraci serveru Azure Migrate: Server** .
 - [Podle těchto pokynů](how-to-set-up-appliance-vmware.md) nastavte zařízení Azure Migrate pro VMware v místním prostředí a dokončete zjišťování.
 
 ## <a name="prepare-for-replication"></a>Příprava na replikaci

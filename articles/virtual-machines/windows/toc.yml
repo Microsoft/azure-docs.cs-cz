@@ -300,7 +300,7 @@
         - name: Rezervované instance
           items:
             - name: Předplacení pro virtuální počítače
-              href: prepay-reserved-vm-instances.md
+              href: ../prepay-reserved-vm-instances.md
             - name: Co jsou rezervace Azure?
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
             - name: Flexibilita velikosti instance virtuálního počítače
@@ -570,7 +570,7 @@
             - name: Vytvoření opevněného hostitelského počítače
               items:
                 - name: Portál
-                  href: ../../bastion/bastion-create-host-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  href: ../../bastion/tutorial-create-host-portal.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
                 - name: PowerShell
                   href: ../../bastion/bastion-create-host-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                 - name: Rozhraní příkazového řádku
@@ -650,6 +650,7 @@
         - name: Prohození disku operačního systému
           href: os-disk-swap.md
         - name: Označení virtuálního počítače
+          href: time-sync.md
           items:
             - name: Portál
               href: ../tag-portal.md
@@ -660,7 +661,6 @@
             - name: Template (Šablona)
               href: ../tag-template.md
             - name: Časová synchronizace
-          href: time-sync.md
         - name: Spouštění skriptů na virtuálním počítači
           href: run-scripts-in-vm.md
           items:
@@ -701,7 +701,7 @@
           items:
             - name: Přehled
               href: ../maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: CLI
+            - name: Rozhraní příkazového řádku
               href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-control-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -863,8 +863,6 @@
           href: install-mongodb.md
         - name: SAP v Azure
           href: ../workloads/sap/get-started.md
-        - name: Cluster MATLAB
-          href: matlab-mdcs-cluster.md
         - name: Visual Studio
           href: using-visual-studio-vm.md
         - name: Vysokovýkonné výpočetní prostředí (HPC)

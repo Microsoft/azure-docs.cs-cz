@@ -7,14 +7,14 @@ ms.service: data-factory
 services: data-factory
 documentationcenter: ''
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
-ms.openlocfilehash: f1f81af715bc4b2248a24076f3b12a74d0ee73e3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+author: dcstwh
+ms.author: weetok
+ms.openlocfilehash: 9b28fb24439354e09e5262281a99cd9dc0153a04
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102064"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485242"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iterativní vývoj a ladění pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -27,7 +27,7 @@ Po dobu osmi minut a ukázku této funkce se podívejte na toto video:
 
 ## <a name="debugging-a-pipeline"></a>Ladění kanálu
 
-Při vytváření plátna kanálu můžete své aktivity testovat pomocí možnosti **ladění** . Při spuštění testů není nutné publikovat změny do objektu pro vytváření dat před výběrem příkazu **ladit** . Tato funkce je užitečná ve scénářích, ve kterých se chcete ujistit, že změny fungují podle očekávání, než aktualizujete pracovní postup datové továrny.
+Při vytváření plátna kanálu můžete své aktivity testovat pomocí možnosti **ladění** . Při spuštění testů není nutné publikovat změny do objektu pro vytváření dat před výběrem příkazu **ladit**. Tato funkce je užitečná ve scénářích, ve kterých se chcete ujistit, že změny fungují podle očekávání, než aktualizujete pracovní postup datové továrny.
 
 ![Možnost ladění na plátně kanálu](media/iterative-development-debugging/iterative-development-1.png)
 
@@ -44,7 +44,7 @@ Po úspěšném spuštění testu přidejte do kanálu další aktivity a pokra�
 
 ### <a name="setting-breakpoints"></a>Nastavení zarážek
 
-Azure Data Factory umožňuje ladit kanál, dokud nedosáhnete určité aktivity na plátně kanálu. Umístěte zarážku na aktivitu, do které chcete testovat, a vyberte **ladit** . Data Factory zajistí, že se test spustí pouze do aktivity zarážky na plátně kanálu. Tento *ladicí program* je použitelný, dokud nechcete testovat celý kanál, ale pouze podmnožinu aktivit uvnitř kanálu.
+Azure Data Factory umožňuje ladit kanál, dokud nedosáhnete určité aktivity na plátně kanálu. Umístěte zarážku na aktivitu, do které chcete testovat, a vyberte **ladit**. Data Factory zajistí, že se test spustí pouze do aktivity zarážky na plátně kanálu. Tento *ladicí program* je použitelný, dokud nechcete testovat celý kanál, ale pouze podmnožinu aktivit uvnitř kanálu.
 
 ![Zarážky na plátně kanálu](media/iterative-development-debugging/iterative-development-3.png)
 

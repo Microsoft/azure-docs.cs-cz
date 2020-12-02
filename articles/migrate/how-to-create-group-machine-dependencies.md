@@ -3,12 +3,12 @@ title: Nastavení analýzy závislostí na základě agenta v serveru Azure Migr
 description: Tento článek popisuje, jak nastavit analýzu závislostí založenou na agentech v serveru Azure Migrate Assessment.
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 58c1aeea00ae033def0f45d220c12d13cc28b4b2
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 1ab5d639d68b5ce2298f907ef8346488e16b4020
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302850"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483466"
 ---
 # <a name="set-up-dependency-visualization"></a>Nastavení Vizualizace závislostí
 
@@ -21,7 +21,7 @@ Tento článek popisuje, jak nastavit analýzu závislostí založenou na agente
     - [Fyzické servery](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)
     - [Virtuální počítače Hyper-V](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements).
 - Ujistěte se, že:
-    - Mít Azure Migrate projekt. Pokud to neuděláte, [vytvořte](how-to-add-tool-first-time.md) ho hned teď.
+    - Mít Azure Migrate projekt. Pokud to neuděláte, [vytvořte](./create-manage-projects.md) ho hned teď.
     - Ověřte, že jste [přidali](how-to-assess.md) Azure Migrate: Nástroj pro vyhodnocení serveru do projektu.
     - Nastavte [zařízení Azure Migrate](migrate-appliance.md) pro zjišťování místních počítačů. Zařízení zjišťuje místní počítače a odesílá data o metadatech a výkonu Azure Migrate: posouzení serveru. Nastavení zařízení pro:
         - [VMware](how-to-set-up-appliance-vmware.md) Vztahuje.
@@ -147,7 +147,7 @@ Po vytvoření skupiny doporučujeme nainstalovat agenty do všech počítačů 
 Data závislosti zachycená Service Map můžete dotazovat v pracovním prostoru Log Analytics přidruženém k projektu Azure Migrate. Log Analytics slouží k zápisu a spouštění dotazů protokolu Azure Monitor.
 
 - [Naučte se](../azure-monitor/insights/service-map.md#log-analytics-records) Hledat Service map data v Log Analytics.
-- [Získejte přehled](../azure-monitor/log-query/get-started-queries.md)  o psaní dotazů protokolu v [Log Analytics](../azure-monitor/log-query/get-started-portal.md).
+- [Získejte přehled](../azure-monitor/log-query/get-started-queries.md)  o psaní dotazů protokolu v [Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md).
 
 Spusťte dotaz na data závislostí následujícím způsobem:
 

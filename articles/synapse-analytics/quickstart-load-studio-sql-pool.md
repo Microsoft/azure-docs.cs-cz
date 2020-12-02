@@ -9,24 +9,24 @@ ms.topic: quickstart
 ms.date: 11/16/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8d70a45b89142f6f9c6990fdbb4b79751c82275f
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 312c57c103bf733bc72c5de1d22ab3239d5b5e96
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95237472"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484652"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>Rychlý Start: hromadné načítání pomocí synapse SQL
 
-Načítání dat nebylo nikdy snazší při použití Průvodce hromadným zatížením v nástroji synapse Studio. Tento průvodce vás provede vytvořením skriptu T-SQL s [příkazem Copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) pro hromadné načtení dat. 
+Načítání dat je snadné pomocí Průvodce hromadným zatížením v synapse studiu. Průvodce hromadným zatížením vás provede vytvořením skriptu T-SQL s [příkazem Copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) pro hromadné načtení dat. 
 
 ## <a name="entry-points-to-the-bulk-load-wizard"></a>Vstupní body Průvodce hromadnou zátěží
 
-Teď můžete snadno hromadně načítat data pomocí vyhrazených fondů SQL, a to jednoduše tak, že kliknete pravým tlačítkem na následující oblasti v rámci synapse studia:
+Data můžete snadno hromadně načítat pomocí vyhrazených fondů SQL, a to jednoduše tak, že kliknete pravým tlačítkem na následující oblasti v rámci synapse studia:
 
 - Soubor nebo složka z účtu služby Azure Storage připojeného k vašemu pracovnímu prostoru ![ kliknutím pravým tlačítkem myši na soubor nebo složku z účtu úložiště](./sql/media/bulk-load/bulk-load-entry-point-0.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Tento průvodce vygeneruje příkaz COPY, který používá předávací službu Azure AD pro ověřování. Váš [uživatel Azure AD musí mít přístup](
 ./sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples.md#d-azure-active-directory-authentication) k pracovnímu prostoru, který má aspoň roli Azure data BLOB úložiště pro účet adls Gen2. 

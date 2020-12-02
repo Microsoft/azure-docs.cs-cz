@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: rajosh
-ms.openlocfilehash: 834fd32d17c4a5ff112dd11a331a59336d7cbcb7
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: f9fdff54cbd795c6aeda1708dcae8d00022a6a43
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315257"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483500"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Vytvoření posouzení řešení Azure VMware (AVS)
 
@@ -21,7 +21,7 @@ Tento článek popisuje, jak vytvořit vyhodnocení řešení Azure VMware (AVS)
 
 ## <a name="before-you-start"></a>Než začnete
 
-- Ujistěte se, že jste [vytvořili](how-to-add-tool-first-time.md) projekt Azure Migrate.
+- Ujistěte se, že jste [vytvořili](./create-manage-projects.md) projekt Azure Migrate.
 - Pokud jste již vytvořili projekt, ujistěte se, že jste [přidali](how-to-assess.md) Azure Migrate: nástroj Server Assessment Tool.
 - Chcete-li vytvořit posouzení, je třeba nastavit zařízení Azure Migrate pro [VMware](how-to-set-up-appliance-vmware.md), které zjišťuje místní počítače a odesílá data o metadatech a výkonu do Azure Migrate: posouzení serveru. [Další informace](migrate-appliance.md).
 - [Metadata serveru](./tutorial-discover-import.md) můžete také importovat ve formátu hodnot oddělených čárkami (CSV).
@@ -58,7 +58,7 @@ Spusťte posouzení řešení Azure VMware (AVS) následujícím způsobem:
 
     ![Snímek obrazovky ukazuje Azure Migrate servery s vyhodnocením vybraným v části nástroje pro posouzení.](./media/how-to-create-assessment/assess.png)
 
-3. V okně **vyhodnotit servery**vyberte typ posouzení jako "Azure VMware Solution (AVS)", vyberte zdroj zjišťování a zadejte název posouzení.
+3. V okně **vyhodnotit servery** vyberte typ posouzení jako "Azure VMware Solution (AVS)", vyberte zdroj zjišťování a zadejte název posouzení.
 
     ![Základní informace o posouzení](./media/how-to-create-avs-assessment/assess-servers-avs.png)
 
@@ -68,7 +68,7 @@ Spusťte posouzení řešení Azure VMware (AVS) následujícím způsobem:
 
 5. Kliknutím na **Další** přejděte do části **Vybrat počítače, které se mají posoudit**. V části **Vybrat nebo vytvořit skupinu** vyberte **Vytvořit novou** a zadejte název skupiny. Skupina sdružuje jeden nebo více virtuálních počítačů pro posouzení.
 
-6. V části **přidat počítače do skupiny**vyberte virtuální počítače, které chcete do skupiny přidat.
+6. V části **přidat počítače do skupiny** vyberte virtuální počítače, které chcete do skupiny přidat.
 
 7. Kliknutím na **Další** přejděte do části **Zkontrolovat a vytvořit posouzení** a zkontrolujte podrobnosti o posouzení.
 
@@ -93,15 +93,15 @@ Posouzení řešení Azure VMware (AVS) popisuje:
 
 ### <a name="view-an-assessment"></a>Zobrazení posouzení
 
-1. V případě **migrace**  >   na**serverech**klikněte na **posouzení** v **Azure Migrate: posouzení serveru**.
+1. V případě **migrace**  >   na **serverech** klikněte na **posouzení** v **Azure Migrate: posouzení serveru**.
 
-2. V **posouzení**klikněte na posouzení a otevřete ho.
+2. V **posouzení** klikněte na posouzení a otevřete ho.
 
     ![Souhrn posouzení pro funkci AVS](./media/how-to-create-avs-assessment/avs-assessment-summary.png)
 
 ### <a name="review-azure-vmware-solution-avs-readiness"></a>Kontrola připravenosti řešení Azure VMware (AVS)
 
-1. V **Azure Readiness**ověřte, jestli jsou virtuální počítače připravené k migraci na službu AVS.
+1. V **Azure Readiness** ověřte, jestli jsou virtuální počítače připravené k migraci na službu AVS.
 
 2. Zkontrolujte stav virtuálního počítače:
     - **Připraveno k funkci AVS**: počítač se dá migrovat tak, jak je, do Azure (AVS) bez jakýchkoli změn. Spustí se v programu AVS s plnou podporou AVS.

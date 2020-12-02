@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: bd8da9ae7e31fb60ba0ca553f5aa304ccd3621d2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d9e5f9b531fc28caf8f3162a70318927d40bb923
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127174"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483058"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>Instalace Micro Micro Enterprise Server 5,0 a Enterprise Developer 5,0 v Azure
 
@@ -42,12 +42,12 @@ Než začnete, podívejte se na tyto požadavky:
     > [!Note]
     > Pro řízení přístupu k virtuálním počítačům je k dispozici několik možností:
     > -   Osvědčeným postupem je nastavit [Azure bastionu](https://azure.microsoft.com/services/azure-bastion/).
-    > -   Tunelové propojení typu [site-to-site sítě VPN](../../../../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md) .
+    > -   Tunelové propojení typu [site-to-site sítě VPN](../../../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) .
     > -   Virtuální počítač JumpBox.
 
 ## <a name="install-enterprise-server"></a>Instalace Enterprise Serveru
 
-1.  Pro lepší zabezpečení a možnosti správy zvažte vytvoření nové skupiny prostředků jenom pro tento projekt, například **RGMicroFocusEntServer** . První část názvu v Azure použijte k výběru typu prostředku, který usnadňuje vymístění v seznamu.
+1.  Pro lepší zabezpečení a možnosti správy zvažte vytvoření nové skupiny prostředků jenom pro tento projekt, například **RGMicroFocusEntServer**. První část názvu v Azure použijte k výběru typu prostředku, který usnadňuje vymístění v seznamu.
 
 2.  Vytvoří virtuální počítač. Z Azure Marketplace vyberte požadovaný virtuální počítač a požadovaný operační systém. Tady je doporučené nastavení:
 
@@ -87,7 +87,7 @@ Po instalaci nezapomeňte zkontrolovat všechny další aktualizace, jako je tř
 
 1.  Začněte se správou licencí na Micro-Focus.
 
-2.  Vyberte možnost **Spustit** \> **Nástroj** Správa licencí správce licencí na úrovni Micro \> **License Administration** a pak klikněte na kartu **instalovat** . Zvolte typ licenčního formátu, který se má nahrát: licenční soubor nebo kód s kódem 16 znaků. Například pro soubor v **souboru s licencí** přejděte do souboru *, který `mflic` jste předtím nahráli na virtuální počítač, a vyberte **instalovat licence** .
+2.  Vyberte možnost **Spustit** \> **Nástroj** Správa licencí správce licencí na úrovni Micro \> **License Administration** a pak klikněte na kartu **instalovat** . Zvolte typ licenčního formátu, který se má nahrát: licenční soubor nebo kód s kódem 16 znaků. Například pro soubor v **souboru s licencí** přejděte do souboru *, který `mflic` jste předtím nahráli na virtuální počítač, a vyberte **instalovat licence**.
 
     ![Snímek obrazovky se zobrazí dialogové okno Správa licencí Micro box, kde můžete vybrat instalovat licence.](media/install-image-3.png)
 
@@ -97,9 +97,9 @@ Po instalaci nezapomeňte zkontrolovat všechny další aktualizace, jako je tř
 
 ## <a name="install-enterprise-developer-on-the-developer-machine"></a>Instalace Enterprise Developer na počítač pro vývojáře
 
-1.  Vyberte skupinu prostředků vytvořenou dříve (například **RGMicroFocusEntServer** ) a pak vyberte vývojářskou image.
+1.  Vyberte skupinu prostředků vytvořenou dříve (například **RGMicroFocusEntServer**) a pak vyberte vývojářskou image.
 
-2.  Pokud se chcete přihlásit k virtuálnímu počítači, v části **Přehled** vyberte **připojit** . Toto přihlášení spustí relaci protokolu RDP. Přihlaste se pomocí přihlašovacích údajů, které jste vytvořili pro virtuální počítač.
+2.  Pokud se chcete přihlásit k virtuálnímu počítači, v části **Přehled** vyberte **připojit**. Toto přihlášení spustí relaci protokolu RDP. Přihlaste se pomocí přihlašovacích údajů, které jste vytvořili pro virtuální počítač.
 
 3.  Z relace RDP načtěte následující dva soubory (Pokud chcete, můžete je přetáhnout):
 
@@ -117,7 +117,7 @@ Po instalaci nezapomeňte zkontrolovat všechny další aktualizace, jako je tř
 
 6.  Spusťte Správce licencí Micro Focus stejně jako u podnikového serveru. Vyberte možnost **Spustit** \> Nástroj Správa licencí správce licencí od **Micro Manageru** \> **License Administration** a klikněte na kartu **instalovat** .
 
-7.  Vyberte typ licenčního formátu, který se má nahrát: soubor s licencí nebo kód licenčního kódu o 16 znacích. Například pro soubor v **souboru s licencí** přejděte do souboru, který `mflic` jste nahráli na virtuální počítač, a vyberte  **instalovat licence** .
+7.  Vyberte typ licenčního formátu, který se má nahrát: soubor s licencí nebo kód licenčního kódu o 16 znacích. Například pro soubor v **souboru s licencí** přejděte do souboru, který `mflic` jste nahráli na virtuální počítač, a vyberte  **instalovat licence**.
 
     ![Dialogové okno Správa licencí Micro Focus](media/install-image-7.png)
 

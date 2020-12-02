@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 4487aeba72cc71a31871169c0647efbff34ee068
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9b35a3cbe23af91f7f0b8aceecfb8ba3c9720461
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968617"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484409"
 ---
 # <a name="red-hat-enterprise-linux-in-place-upgrades"></a>Red Hat Enterprise Linux místní upgrady
 
@@ -35,7 +35,7 @@ Než začnete s upgradem, pamatujte na následující skutečnosti.
 >[!Important] 
 > Než začnete s upgradem, pořídit snímek image.
 
-* Ujistěte se, že používáte nejnovější verzi RHEL 7. V současné době je nejnovější verze RHEL 7,9. Pokud používáte uzamčenou verzi a nemůžete upgradovat na RHEL 7,9, postupujte podle [těchto kroků a přepněte do úložiště jiného typu než EUS (podpora rozšířené aktualizace)](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock).
+* Ujistěte se, že používáte nejnovější verzi RHEL 7. V současné době je nejnovější verze RHEL 7,9. Pokud používáte uzamčenou verzi a nemůžete upgradovat na RHEL 7,9, postupujte podle [těchto kroků a přepněte do úložiště jiného typu než EUS (podpora rozšířené aktualizace)](./redhat-rhui.md#switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock).
 
 * Spusťte následující příkaz, který zkontroluje upgrade a zjistí, jestli se úspěšně nedokončí. Příkaz by měl generovat soubor */var/log/leapp/leapp-report.txt* . Tento soubor vysvětluje proces, co se děje, a to, jestli je upgrade možné.
 

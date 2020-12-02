@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: erhopf
-ms.openlocfilehash: 5c4f02eff06c08f1829f9f1c74d1dcb09ee57905
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a562c28235608d4a2425455b5543a76c99374f80
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024785"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483810"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>Služba Speech: co je nového v docs
 
@@ -32,7 +32,7 @@ Pokud se chcete dozvědět o aktualizacích služby Speech, sady Speech SDK, Spe
 
 ### <a name="new-articles"></a>Nové články
 
-* [Zlepšení modelu pro Custom Speech](how-to-custom-speech-improve-accuracy.md)
+* [Zlepšení modelu pro Custom Speech](./how-to-custom-speech-evaluate-data.md)
 
 ### <a name="updated-articles"></a>Aktualizované články
 
@@ -44,7 +44,7 @@ Pokud se chcete dozvědět o aktualizacích služby Speech, sady Speech SDK, Spe
 * [Rychlý Start: asynchronní Shrnutí pro dlouhý formát zvuku v Pythonu (Preview)](./long-audio-api.md) – aktualizováno s podporou pro veřejné hlasy neuronové a přidružené parametry.
 * [Rychlý Start: rozpoznávání řeči ze zvukového souboru](./get-started-speech-to-text.md) – pokyny pro JavaScript byly přidány do dokumentace.
 * [Rychlý Start: rozpoznávání řeči pomocí](./get-started-speech-to-text.md) instrukcí pro přidání mikrofonu a JavaScriptu k dokumentaci.
-* [Rychlý Start: rozpoznávání řeči uložené ve službě BLOB Storage](quickstarts/from-blob.md) – přidání instrukcí JavaScriptu do dokumentace
+* [Rychlý Start: rozpoznávání řeči uložené ve službě BLOB Storage](./batch-transcription.md) – přidání instrukcí JavaScriptu do dokumentace
 * [Rychlý Start: rozpoznávání řeči, záměrů a entit pomocí Language Understanding (LUIS)](quickstarts/intent-recognition.md)
 * [Rychlý Start: Nastavení vývojového prostředí](quickstarts/setup-platform.md) – přidání instrukcí JavaScriptu do dokumentace
 * [Rychlý Start: syntetizace řeči do zvukového souboru](./get-started-text-to-speech.md) – přidání instrukcí JavaScriptu do dokumentace
@@ -58,7 +58,7 @@ Tyto problémy byly otevřeny v květnu. V této tabulce je uveden uživatel, kt
 
 Tato tabulka je aktualizována měsíčně a pouze odrážejí problémy otevřené v květnu.  
 
-|ID|Uživatel|Popis|Otevřít|Stav|Typ|
+|ID|Uživatel|Popis|Otevřít|State|Typ|
 | :--- | :--- | :--- | :--- | :--- | :--- |
 |[56045](https://github.com/MicrosoftDocs/azure-docs/issues/56045)|rhalaly|Aktivita byla vyřazena, protože chybí koncový bod robota.|2020-05-31|Uzavřeno|Problém|
 |[56038](https://github.com/MicrosoftDocs/azure-docs/issues/56038)|rhalaly|Chybné publikační kroky pro robot|2020-05-31|Otevřít|Problém|

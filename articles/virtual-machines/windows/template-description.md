@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 0a2a386264be0ec13e29b7a7546926819c5d931a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 228814db76ea14fa8b74c0c5d634e5afd6d54ac6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012727"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483041"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuální počítače v šabloně Resource Manageru
 
@@ -282,7 +282,7 @@ Při definování prostředku virtuálního počítače se používá několik p
 
 ## <a name="disks-and-images"></a>Disky a image
    
-V Azure můžou soubory VHD představovat [disky nebo Image](../managed-disks-overview.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json). Pokud je operační systém v souboru VHD specializovaný jako na konkrétní virtuální počítač, nazývá se to disk. Pokud je operační systém v souboru VHD zobecněný, aby se mohl vytvořit mnoho virtuálních počítačů, označuje se jako obrázek.   
+V Azure můžou soubory VHD představovat [disky nebo Image](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Pokud je operační systém v souboru VHD specializovaný jako na konkrétní virtuální počítač, nazývá se to disk. Pokud je operační systém v souboru VHD zobecněný, aby se mohl vytvořit mnoho virtuálních počítačů, označuje se jako obrázek.   
     
 ### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>Vytvoření nových virtuálních počítačů a nových disků z image platformy
 

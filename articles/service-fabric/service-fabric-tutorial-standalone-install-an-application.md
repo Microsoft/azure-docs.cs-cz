@@ -4,12 +4,12 @@ description: V tomto kurzu se dozvíte, jak nainstalovat aplikaci do samostatné
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 0b35bd02af5e1c90cac2e94d31dfca2344f3cc85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae946321b34f12c816a717db4a3d07f57feefe52
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840621"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485356"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Kurz: Nasazení aplikace do samostatného clusteru Service Fabric
 
@@ -17,7 +17,7 @@ Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostř
 
 Tento kurz je třetí částí série.  Service Fabric samostatné clustery nabízejí možnost zvolit si vlastní prostředí a vytvořit cluster jako součást libovolného operačního systému, jakéhokoli cloudu s přístupem k Service Fabric. V tomto kurzu se dozvíte, jak vytvořit infrastrukturu AWS potřebnou k hostování tohoto samostatného clusteru.
 
-V tomto článku se dozvíte, jak:
+V tomto článku se naučíte:
 
 > [!div class="checklist"]
 > * Stažení ukázkové aplikace
@@ -50,7 +50,7 @@ Jakmile je aplikace stažená, můžete ji do clusteru nasadit přímo ze sady V
 
 4. V Průzkumníku řešení klikněte pravým tlačítkem na projekt aplikace `Voting` a zvolte **Publikovat**.
 
-5. Vyberte rozevírací seznam pro **Koncový bod připojení** a zadejte veřejný název DNS jednoho z uzlů v clusteru.  Například, `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. V Azure se plně kvalifikovaný název domény (FQDN) neposkytuje automaticky, ale dá se snadno [nastavit na stránce s přehledem virtuálního počítače.](../virtual-machines/linux/portal-create-fqdn.md)
+5. Vyberte rozevírací seznam pro **Koncový bod připojení** a zadejte veřejný název DNS jednoho z uzlů v clusteru.  Například, `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. V Azure se plně kvalifikovaný název domény (FQDN) neposkytuje automaticky, ale dá se snadno [nastavit na stránce s přehledem virtuálního počítače.](../virtual-machines/create-fqdn.md)
 
 6. Otevřete váš preferovaný prohlížeč a zadejte adresu clusteru (koncový bod připojení, tato aplikace se nasadí na port 8080 – například ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080).
 

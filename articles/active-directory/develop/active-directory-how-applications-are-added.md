@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/26/2019
+ms.date: 12/01/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: bccdb830fba4d55266dc9eff8f06c5ac4e3f2a34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e37065e6fa61f3784d1a6165bd88c515bdfc29f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706179"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484103"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Jak a proč se aplikace přidávají do Azure AD
 
@@ -118,6 +118,7 @@ Do Azure AD se přidají aplikace, které budou využívat jednu nebo víc služ
 * Řízení přístupu na základě rolí – pomocí adresáře definujte aplikační role k provádění kontrol autorizace na základě rolí v aplikaci.
 * Autorizační služba OAuth – používá Microsoft 365 a další aplikace Microsoftu k autorizaci přístupu k rozhraním API nebo prostředkům.
 * Publikování a proxy aplikací – publikování aplikace z privátní sítě na Internet
+* Atributy rozšíření schématu adresáře – [rozšíření schématu instančního objektu a objektů uživatelů](active-directory-schema-extensions.md) pro ukládání dalších dat v Azure AD 
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>Kdo má oprávnění přidávat aplikace do své instance Azure AD?
 

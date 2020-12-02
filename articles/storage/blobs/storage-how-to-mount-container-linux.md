@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: 0de8d8d5ff0f14d0268dbcca743f4d06ed877903
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 331ceb6124463604989116ce84bc73acd8cfb22f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544390"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483245"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Postup připojení úložiště objektů BLOB jako systému souborů pomocí blobfuse
 
@@ -30,7 +30,7 @@ V této příručce se dozvíte, jak používat blobfuse a jak připojit kontejn
 ## <a name="install-blobfuse-on-linux"></a>Instalace blobfuse v systému Linux
 Blobfuse binární soubory jsou k dispozici v [úložištích softwaru společnosti Microsoft pro Linux](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) pro distribuce Ubuntu a RHEL. Pokud chcete na tyto distribuce nainstalovat blobfuse, nakonfigurujte v seznamu jedno z úložišť. Binární soubory ze zdrojového kódu můžete sestavit i v následujících [krocích Azure Storage instalace](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) , pokud pro vaši distribuci nejsou k dispozici žádné binární soubory.
 
-Blobfuse podporuje instalaci na Ubuntu 14,04, 16,04 a 18,04. Spusťte tento příkaz, abyste se ujistili, že máte nasazenou jednu z těchto verzí:
+Blobfuse podporuje instalaci na Ubuntu 14,04, 16,04, 18,04 a 20,04. Spusťte tento příkaz, abyste se ujistili, že máte nasazenou jednu z těchto verzí:
 ```
 lsb_release -a
 ```
