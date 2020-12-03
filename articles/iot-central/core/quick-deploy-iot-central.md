@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: a156150c2cd28964658fa8529181a70ef546b78f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a2d48a6f4e451e2a9b4140618c7c590293cb5ef5
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457332"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548524"
 ---
 # <a name="quickstart---create-an-azure-iot-central-application"></a>Rychlý Start – vytvoření aplikace IoT Central v Azure
 
@@ -29,7 +29,7 @@ Vytvoření nové aplikace Azure IoT Central z **vlastní šablony aplikace** :
 
 1. Přejděte na stránku **sestavení** :
 
-    ![Sestavení stránky aplikace IoT](media/quick-deploy-iot-central/iotcentralcreate-new-application.png)
+    :::image type="content" source="media/quick-deploy-iot-central/iotcentralcreate-new-application.png" alt-text="Sestavení stránky aplikace IoT":::
 
 1. Vyberte **vlastní aplikace** a ujistěte se, že je vybraná Šablona **vlastní aplikace** .
 
@@ -37,9 +37,9 @@ Vytvoření nové aplikace Azure IoT Central z **vlastní šablony aplikace** :
 
 1. Azure IoT Central také na základě názvu aplikace vygeneruje jedinečnou předponu **adresy URL aplikace** . Tuto adresu URL použijete pro přístup k aplikaci. Pokud chcete, změňte tuto předponu adresy URL na něco srozumitelnější.
 
-    ![Stránka pro vytvoření aplikace v Azure IoT Central](media/quick-deploy-iot-central/iotcentralcreate-custom.png)
+    :::image type="content" source="media/quick-deploy-iot-central/iotcentralcreate-custom.png" alt-text="Stránka pro vytvoření aplikace v Azure IoT Central":::
 
-    ![Informace o fakturaci IoT Central Azure](media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png)
+    :::image type="content" source="media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png" alt-text="Informace o fakturaci IoT Central Azure":::
 
     > [!NOTE]
     > Pokud jste na předchozí stránce vybrali **vlastní aplikaci** , zobrazí se rozevírací nabídka **šablony aplikace** . Rozevírací seznam může zobrazit další šablony, které vám zpřístupnil vaše organizace.
@@ -57,7 +57,7 @@ Vytvoření nové aplikace Azure IoT Central z **vlastní šablony aplikace** :
 
 1. Přečtěte si podmínky a ujednání a v dolní části stránky vyberte **vytvořit** . Po několika minutách IoT Central aplikace je připravená k použití:
 
-    ![Aplikace Azure IoT Central](media/quick-deploy-iot-central/iotcentral-application.png)
+    :::image type="content" source="media/quick-deploy-iot-central/iotcentral-application.png" alt-text="Aplikace Azure IoT Central":::
 
 ## <a name="next-steps"></a>Další kroky
 

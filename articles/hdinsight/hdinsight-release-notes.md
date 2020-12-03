@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: d4983ecd1b8afe1ec6bd3cc31df8b711cebaddf1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 00b5d220cdbc511a309d55cfca2049508049fa30
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350258"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549000"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Poznámky k verzi Azure HDInsight
 
@@ -46,8 +46,9 @@ Typ clusteru HDInsight 3,6 ML Services bude na konci podpory od prosince 31 2020
 ### <a name="disabled-vm-sizes"></a>Zakázané velikosti virtuálních počítačů
 Od listopadu 16 2020 bude HDInsight zablokuje novým zákazníkům vytváření clusterů pomocí standand_A8, standand_A9, standand_A10 a standand_A11 velikostí virtuálních počítačů. Stávající zákazníci, kteří použili tyto velikosti virtuálních počítačů v posledních třech měsících, to neovlivní. Počínaje formulářem leden 9 2021 bude HDInsight blokovat všem zákazníkům vytváření clusterů pomocí standand_A8, standand_A9, standand_A10 a standand_A11 velikostí virtuálních počítačů. Existující clustery se spustí, jak je. Zvažte přechod na HDInsight 4,0, aby se předešlo potenciálnímu přerušení systému/podpory.
 
-### <a name="behavior-changes"></a>Změny chování
-Žádná změna chování pro tuto verzi.
+## <a name="behavior-changes"></a>Změny chování
+### <a name="add-nsg-rule-checking-before-scaling-operation"></a>Přidat kontrolu pravidel NSG před operací škálování
+HDInsight přidal skupiny zabezpečení sítě (skupin zabezpečení sítě) a uživatelsky definované trasy (udr), která má kontrolu nad operací škálování. Stejné ověřování se provádí pro škálování clusteru Kromě vytváření clusteru. Toto ověření pomáhá zabránit nepředvídatelným chybám. Pokud ověření neprojde, škálování se nezdařilo. Další informace o tom, jak správně nakonfigurovat skupin zabezpečení sítě a udr, najdete v tématu věnovaném [IP adresám správy HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
 
 ## <a name="upcoming-changes"></a>Nadcházející změny
 V nadcházejících verzích dojde k následujícím změnám.

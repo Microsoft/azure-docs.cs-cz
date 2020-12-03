@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 11/13/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4105698198e6fb7f4e3d3526ff9590ebca4898f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47a2aae39be93361e1e0e581efb56cc678b444cd
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612162"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549085"
 ---
 # <a name="object-replication-for-block-blobs"></a>Replikace objektů pro objekty blob bloku
 
@@ -43,14 +43,36 @@ Replikace objektů vyžaduje, aby byly také povoleny následující funkce Azur
 
 Povolení změny kanálu a správy verzí objektů BLOB může mít za následek další náklady. Další podrobnosti najdete na [stránce s cenami Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
+## <a name="how-object-replication-works"></a>Jak funguje replikace objektů
+
+Replikace objektů asynchronně kopíruje objekty blob bloku v kontejneru podle pravidel, která nakonfigurujete. Obsah objektu blob, všechny verze přidružené k objektu BLOB a metadata a vlastnosti objektu BLOB se zkopírují ze zdrojového kontejneru do cílového kontejneru.
+
+> [!IMPORTANT]
+> Vzhledem k tomu, že jsou data objektů blob bloku replikována asynchronně, není zdrojový účet a cílový účet hned synchronizován. V tuto chvíli není k dispozici žádná smlouva SLA, jak dlouho trvá replikace dat do cílového účtu. Stav replikace zdrojového objektu blob můžete zjistit, abyste zjistili, jestli je replikace dokončená. Další informace najdete v tématu o [kontrole stavu replikace objektu BLOB](object-replication-configure.md#check-the-replication-status-of-a-blob).
+
+### <a name="blob-versioning"></a>Správa verzí objektů BLOB
+
+Replikace objektů vyžaduje, aby byla ve zdrojovém i cílovém účtu povolená Správa verzí objektů BLOB. Když se upraví replikovaný objekt BLOB ve zdrojovém účtu, vytvoří se ve zdrojovém účtu nová verze objektu blob, která odráží předchozí stav objektu BLOB před úpravou. Aktuální verze (nebo základní objekt BLOB) ve zdrojovém účtu odráží nejnovější aktualizace. Aktualizovaná aktuální verze i nová předchozí verze jsou replikovány do cílového účtu. Další informace o tom, jak operace zápisu ovlivňují verze objektů blob, najdete v tématu [Správa verzí při operacích zápisu](versioning-overview.md#versioning-on-write-operations).
+
+Když je objekt BLOB ve zdrojovém účtu odstraněný, aktuální verze objektu BLOB se zachytí v předchozí verzi a pak se odstraní. Všechny předchozí verze objektu BLOB zůstanou zachované i po odstranění aktuální verze. Tento stav je replikován do cílového účtu. Další informace o tom, jak operace odstranění ovlivňují verze objektů blob, najdete v tématu [Správa verzí při operacích odstranění](versioning-overview.md#versioning-on-delete-operations).
+
+### <a name="snapshots"></a>Snímky
+
+Replikace objektů nepodporuje snímky objektů BLOB. Žádné snímky v objektu BLOB ve zdrojovém účtu se nereplikují do cílového účtu.
+
+### <a name="blob-tiering"></a>Vrstvení objektů BLOB
+
+Replikace objektů je podporovaná, když jsou zdrojové a cílové účty na horké nebo studené úrovni. Zdrojové a cílové účty můžou být v různých úrovních. Replikace objektů ale selže, pokud se objekt BLOB v buď zdrojovém nebo cílovém účtu přesunul do archivní úrovně. Další informace o úrovních objektů BLOB najdete v tématu [úrovně přístupu pro Azure Blob Storage – horká, studená a archivní](storage-blob-storage-tiers.md).
+
+### <a name="immutable-blobs"></a>Neměnné objekty blob
+
+Replikace objektů nepodporuje neměnné objekty blob. Pokud má zdrojový nebo cílový kontejner zásady uchovávání informací na základě času nebo právní blokování, replikace objektu se nezdařila. Další informace o neměnných objektech blob najdete v tématu [ukládání důležitých podnikových dat objektů BLOB s neměnném úložištěm](storage-blob-immutable-storage.md).
+
 ## <a name="object-replication-policies-and-rules"></a>Zásady a pravidla replikace objektů
 
 Když konfigurujete replikaci objektů, vytvoříte zásadu replikace, která určuje zdrojový a cílový účet úložiště. Zásada replikace obsahuje jedno nebo více pravidel, která určují zdrojový kontejner a cílový kontejner, a označuje, které objekty blob bloku ve zdrojovém kontejneru budou replikovány.
 
 Po nakonfigurování replikace objektů Azure Storage pravidelně kontrolovat kanál změny pro zdrojový účet a asynchronně replikuje všechny operace zápisu nebo odstranění do cílového účtu. Latence replikace závisí na velikosti replikované objekty blob bloku.
-
-> [!IMPORTANT]
-> Vzhledem k tomu, že jsou data objektů blob bloku replikována asynchronně, není zdrojový účet a cílový účet hned synchronizován. V tuto chvíli není k dispozici žádná smlouva SLA, jak dlouho trvá replikace dat do cílového účtu.
 
 ### <a name="replication-policies"></a>Zásady replikace
 

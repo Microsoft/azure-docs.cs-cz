@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 690a5cef2141af75412eaca207a16c59b37aa3ac
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: c9bc614aa044ace0224086c7f18b54783757711a
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93335377"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549136"
 ---
 # <a name="spatial-functions-azure-cosmos-db"></a>Prostorové funkce (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Cosmos DB podporuje následující integrované funkce pro geoprostorové dotazování (OGC) Open Geospatial Consortium (). 
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkce
 
 Následující skalární funkce provádějí operaci na vstupní hodnotě prostorového objektu a vracejí numerickou nebo logickou hodnotu.  
 
@@ -40,4 +40,4 @@ Následující skalární funkce provádějí operaci na vstupní hodnotě prost
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
 - [Úvod do služby Azure Cosmos DB](introduction.md)
 - [Uživatelsky definované funkce](sql-query-udfs.md)
-- [Agregace](sql-query-aggregates.md)
+- [Agregace](sql-query-aggregate-functions.md)

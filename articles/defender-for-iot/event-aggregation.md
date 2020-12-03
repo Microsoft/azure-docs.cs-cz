@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 12/03/2020
 ms.author: mlottner
-ms.openlocfilehash: aec750d246ce99fa65431e23ef68e70418db0017
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f7575697706363c082a4e6374b3df7a49e65cdf
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936876"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548847"
 ---
 # <a name="defender-for-iot-event-aggregation"></a>Defender pro agregaci událostí IoT
 
-Defender pro agenty zabezpečení IoT shromažďuje data a systémové události z místního zařízení a odesílá tato data do cloudu Azure pro zpracování a analýzu. Agent zabezpečení shromažďuje mnoho typů událostí zařízení, včetně nového procesu a událostí nového připojení. Události nového procesu a nového připojení se můžou na zařízení v druhé době často vyskytnout a i když jsou důležité pro robustní a komplexní zabezpečení, může se stát, že počet agentů zabezpečení zprávy bude nuceně zasílat nebo překročit vaši kvótu IoT Hub a omezení nákladů. Tyto události však obsahují vysoce cenné informace o zabezpečení, které jsou zásadní pro ochranu zařízení.
+Defender pro agenty zabezpečení IoT shromažďují data a systémové události z místního zařízení a odesílají tato data do cloudu Azure pro zpracování a analýzu. Agent zabezpečení shromažďuje mnoho typů událostí zařízení, včetně nového procesu a událostí nového připojení. Události nového procesu a nového připojení se můžou na zařízení v druhé době často vyskytnout a i když jsou důležité pro robustní a komplexní zabezpečení, může se stát, že počet agentů zabezpečení zprávy bude nuceně zasílat nebo překročit vaši kvótu IoT Hub a omezení nákladů. Tyto události však obsahují vysoce cenné informace o zabezpečení, které jsou zásadní pro ochranu zařízení.
 
 Chcete-li snížit další kvótu a náklady a zachovat chráněná zařízení, Defender pro agenty IoT agreguje tyto typy událostí.
 
@@ -44,7 +44,7 @@ Aby se snížilo nároky na paměť agenta, pokaždé, když agent shromáždí 
 
 Události se považují za identické jenom v případě, že jsou splněné následující podmínky:
 
-* ProcessCreate události – když je **příkazový řádek**, **spustitelný soubor**, **username**a **UserID** , je stejný
+* ProcessCreate události – když je **příkazový řádek**, **spustitelný soubor**, **username** a **UserID** , je stejný
 * ConnectionCreate události – když se příkaz **CommandLine**, **userId**, **směr**, **místní adresa**, **Vzdálená adresa**, * * protokol a **cílový port** shodují
 * ProcessTerminate události – když je stav **spustitelného souboru** a **ukončení** shodný
 
@@ -52,8 +52,8 @@ Události se považují za identické jenom v případě, že jsou splněné ná
 
 Během agregace se vlastnosti události, které nejsou agregované, zahodí a zobrazují se v Log Analytics s hodnotou 0.
 
-* Události ProcessCreate- **ProcessID**a **parentProcessId** jsou nastaveny na 0.
-* Události ConnectionCreate- **ProcessID**a **zdrojový port** jsou nastaveny na 0.
+* Události ProcessCreate- **ProcessID** a **parentProcessId** jsou nastaveny na 0.
+* Události ConnectionCreate- **ProcessID** a **zdrojový port** jsou nastaveny na 0.
 
 ## <a name="event-aggregation-based-alerts"></a>Výstrahy založené na agregaci událostí
 

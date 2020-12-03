@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
-ms.openlocfilehash: 89c13566c3710e56a4cd737d9aa03c6fb57edc93
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 73fea1e1928cf4e1bd5342aa0a4c885ccb5cf137
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542724"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548167"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>Poznámky k verzi pro Microsoft. ApplicationInsights. SnapshotCollector
 
@@ -22,6 +22,11 @@ V případě zpráv o chybách a zpětná vazba otevřete problém na GitHubu. h
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
+## <a name="1374"></a>[1.3.7.4](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.4)
+Bod vydaný k vyřešení problému zjištěného při testování Azure App Service scénář připojení typu nekódování.
+### <a name="changes"></a>Změny
+- Cíl netcoreapp 3.0 teď závisí na Microsoft. ApplicationInsights. AspNetCore >= 2.1.1 (dřív >= 2.1.2).
+
 ## <a name="1373"></a>[1.3.7.3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.3)
 Bod vydání, který řeší několik problémů s vysokým dopadem.
 ### <a name="bug-fixes"></a>Opravy chyb
@@ -30,9 +35,9 @@ Bod vydání, který řeší několik problémů s vysokým dopadem.
 
 ## <a name="137"></a>[1.3.7](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7)
 ### <a name="changes"></a>Změny
-Cíl netcoreapp 2.0 SnapshotCollector závisí na Microsoft. ApplicationInsights. AspNetCore >= 2.1.1 (znovu). Tím se vrátí chování před 1.3.5. Snažili jsme se upgradovat v 1.3.6, ale podařilo přerušit některé scénáře Azure App Service.
+- Cíl netcoreapp 2.0 SnapshotCollector závisí na Microsoft. ApplicationInsights. AspNetCore >= 2.1.1 (znovu). Tím se vrátí chování před 1.3.5. Snažili jsme se upgradovat v 1.3.6, ale podařilo přerušit některé scénáře Azure App Service.
 ### <a name="new-features"></a>Nové funkce
-Snapshot Collector přečte a analyzuje ConnectionString z proměnné prostředí APPLICATIONINSIGHTS_CONNECTION_STRING nebo z TelemetryConfiguration. Primárně se používá k nastavení koncového bodu pro připojení ke službě snímku. Další informace najdete v dokumentaci k [připojovacím řetězcům](./sdk-connection-string.md).
+- Snapshot Collector přečte a analyzuje ConnectionString z proměnné prostředí APPLICATIONINSIGHTS_CONNECTION_STRING nebo z TelemetryConfiguration. Primárně se používá k nastavení koncového bodu pro připojení ke službě snímku. Další informace najdete v dokumentaci k [připojovacím řetězcům](./sdk-connection-string.md).
 ### <a name="bug-fixes"></a>Opravy chyb
 - Přepnuto na použití HttpClient pro všechny cíle s výjimkou Net45, protože v některých prostředích došlo k selhání WebRequest v důsledku nekompatibilního tato SecurityProtocol (vyžaduje TLS 1,2).
 
@@ -60,20 +65,20 @@ Snapshot Collector přečte a analyzuje ConnectionString z proměnné prostřed�
 - Přidávání kolekce snímků bylo snazší pomocí AddSnapshotCollector (). Další informace najdete [tady](./snapshot-debugger-appservice.md).
 - Pro ověřování bloků objektů BLOB použijte nastavení FISMA MD5. Tím se vyhnete výchozímu šifrovacímu algoritmu MD5 .NET, který není k dispozici, když je operační systém nastaven na režim kompatibilní se standardem FIPS.
 - Při deoptimalizaci volání funkcí ignorovat .NET Framework snímky. Toto chování může být řízeno nastavením konfigurace DeoptimizeIgnoredModules.
-- Přidejte `DeoptimizeMethodCount` nastavení konfigurace, které umožňuje deoptimalizaci více než jednoho volání funkce. Další informace
+- Přidejte `DeoptimizeMethodCount` nastavení konfigurace, které umožňuje deoptimalizaci více než jednoho volání funkce. Další informace najdete tady.
 
 ## <a name="134"></a>[1.3.4](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.4)
 - Povolí strukturované klíče instrumentace.
 - Zvýšit robustní SnapshotUploader – pokračovat v spouštění i v případě, že staré protokoly odeslání nejde přesunout.
 - Opětovné povolení generování sestav další telemetrie, když se SnapshotUploader.exe okamžitě ukončí (byla zakázána v 1.3.3).
 - Zjednodušení interní telemetrie.
-- _Experimentální funkce_ : plány kolekce snímkovací bod: Add "snapshotOnFirstOccurence". Další informace najdete [tady](https://gist.github.com/alexaloni/5b4d069d17de0dabe384ea30e3f21dfe).
+- _Experimentální funkce_: plány kolekce snímkovací bod: Add "snapshotOnFirstOccurence". Další informace najdete [tady](https://gist.github.com/alexaloni/5b4d069d17de0dabe384ea30e3f21dfe).
 
 ## <a name="133"></a>[1.3.3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.3)
 - Opravili jsme chybu, která způsobila, že SnapshotUploader.exe přestala reagovat a Nenahrávat snímky pro aplikace .NET Core.
 
 ## <a name="132"></a>[1.3.2](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.2)
-- _Experimentální funkce_ : plány kolekce snímkovací bod. Další informace najdete [tady](https://gist.github.com/alexaloni/5b4d069d17de0dabe384ea30e3f21dfe).
+- _Experimentální funkce_: plány kolekce snímkovací bod. Další informace najdete [tady](https://gist.github.com/alexaloni/5b4d069d17de0dabe384ea30e3f21dfe).
 - SnapshotUploader.exe ukončí, když modul runtime uvolní třídu AppDomain, ze které je načteno SnapshotCollector, namísto čekání na ukončení procesu. Tím se zlepší spolehlivost sběrače při hostování ve službě IIS.
 - Přidejte konfiguraci pro povolení více instancí SnapshotCollector, které používají stejný klíč instrumentace ke sdílení stejného SnapshotUploader procesu: ShareUploaderProcess (standardně `true` ).
 - Ohlásit další telemetrii, když se SnapshotUploader.exe okamžitě ukončí.

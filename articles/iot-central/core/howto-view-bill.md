@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 8f46c402c8c25a144cd4c12137aeabfdfa31e096
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 50d0119b08d2c76a5f6111e485408ebcdace83c6
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463161"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549017"
 ---
 # <a name="manage-your-bill-in-an-iot-central-application"></a>Správa vyúčtování v aplikaci IoT Central
 
@@ -34,11 +34,11 @@ K dokončení tohoto samoobslužného procesu použijte následující postup:
 
 1. V části **Správa** přejdete na stránku s **cenami** .
 
-    ![Stav zkušební verze](media/howto-view-bill/freetrialbilling.png)
+    :::image type="content" source="media/howto-view-bill/freetrialbilling.png" alt-text="Stav zkušební verze":::
 
 1. Vyberte **převést na placený plán**.
 
-    ![Převést zkušební verzi](media/howto-view-bill/convert.png)
+    :::image type="content" source="media/howto-view-bill/convert.png" alt-text="Převést zkušební verzi":::
 
 1. Vyberte odpovídající Azure Active Directory a pak předplatné Azure, které chcete použít pro vaši aplikaci, která používá placený plán.
 
@@ -55,7 +55,7 @@ V části s cenami můžete kdykoli upgradovat nebo downgradovat cenové tarify 
 
 1. V části **Správa** přejdete na stránku s **cenami** .
 
-    ![Upgradovat plán prcing](media/howto-view-bill/pricing.png)
+    :::image type="content" source="media/howto-view-bill/pricing.png" alt-text="Aktualizace cenového plánu":::
 
 1. Vyberte **plán** a pak vyberte **Uložit** pro upgrade nebo downgrade.
 

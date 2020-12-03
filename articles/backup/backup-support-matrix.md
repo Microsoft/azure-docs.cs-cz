@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Ba
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: ae2eb97f214204b813564b6373c4e9dc176f483c
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 70a81b42ad2fb417902a627afb1651d572844648
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555432"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548507"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
 
@@ -56,7 +56,7 @@ Co je se podporuje, pokud chcete zálohovat místní počítače:
 
 ### <a name="azure-vm-limits"></a>Omezení virtuálních počítačů Azure
 
-**Počtu** | **Podrobnosti**
+**Omezení** | **Podrobnosti**
 --- | ---
 **Datové disky virtuálních počítačů Azure** | Podívejte se na [podporu pro zálohování virtuálních počítačů Azure](./backup-support-matrix-iaas.md#vm-storage-support).
 **Velikost datového disku virtuálního počítače Azure** | Velikost jednotlivých disků může být až 32 TB a pro všechny disky ve virtuálním počítači je v kombinaci maximálně 256 TB.
@@ -114,10 +114,10 @@ Azure Backup podporuje šifrování pro data v přenosu a na REST.
 
 **Počítač** | **Při přenosu** | **V klidovém umístění**
 --- | --- | ---
-**Místní počítače s Windows bez DPM/MABS** | ![Yes][green] | ![Yes][green]
-**Virtuální počítače Azure** | ![Yes][green] | ![Yes][green]
-**Místní počítače s Windows nebo virtuální počítače Azure s DPM** | ![Yes][green] | ![Yes][green]
-**Místní počítače s Windows nebo virtuální počítače Azure s MABS** | ![Yes][green] | ![Yes][green]
+**Místní počítače s Windows bez DPM/MABS** | ![Ano][green] | ![Ano][green]
+**Virtuální počítače Azure** | ![Ano][green] | ![Ano][green]
+**Místní počítače s Windows nebo virtuální počítače Azure s DPM** | ![Ano][green] | ![Ano][green]
+**Místní počítače s Windows nebo virtuální počítače Azure s MABS** | ![Ano][green] | ![Ano][green]
 
 ## <a name="compression-support"></a>Kompresní podpora
 
@@ -130,7 +130,7 @@ Zálohování podporuje komprimaci provozu zálohování, jak je shrnuto v násl
 --- | --- | ---
 **Přímá záloha místních počítačů s Windows** | Není k dispozici | ![Ano][green]
 **Zálohování virtuálních počítačů Azure pomocí rozšíření virtuálního počítače** | Není k dispozici | Není k dispozici
-**Zálohování místních nebo Azure počítačů pomocí MABS/DPM** | ![Yes][green] | ![Yes][green]
+**Zálohování místních nebo Azure počítačů pomocí MABS/DPM** | ![Ano][green] | ![Ano][green]
 
 ## <a name="retention-limits"></a>Omezení uchování
 
@@ -150,8 +150,8 @@ Azure Backup přidal funkci obnovení mezi oblastmi k posílení dostupnosti dat
 
 | Typ správy zálohování | Podporováno                                                    | Podporované oblasti |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Virtuální počítač Azure               | Yes.   Podporováno pro šifrované virtuální počítače a virtuální počítače s méně než 4 TB disků | Všechny veřejné oblasti Azure a cloudy svrchovan.  |
-| SQL/SAP HANA | Yes                                                          | Všechny veřejné oblasti s výjimkou Francie |
+| Virtuální počítač Azure               | Ano.   Podporováno pro šifrované virtuální počítače a virtuální počítače s méně než 4 TB disků | Všechny veřejné oblasti Azure.  |
+| SQL/SAP HANA | Ano                                                          | Všechny veřejné oblasti s výjimkou Francie |
 | Agent MARS/místní  | Ne                                                           | –               |
 | AFS (sdílené složky Azure)                 | Ne                                                           | –               |
 

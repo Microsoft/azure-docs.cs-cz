@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 12/02/2020
 ms.author: jlian
-ms.openlocfilehash: fdc106a1a446f51d309ac4317062c8fd20204bae
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: f79b03884109ffbd856ff4f60909565daeb0e792
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413390"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549105"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Podpora IoT Hub pro virtuální sítě s privátním odkazem a spravovanou identitou
 
@@ -36,7 +36,7 @@ Tento článek popisuje, jak dosáhnout těchto cílů pomocí [privátního pro
 
 ## <a name="ingress-connectivity-to-iot-hub-using-azure-private-link"></a>Připojení příchozího připojení k IoT Hub pomocí privátního propojení Azure
 
-Privátní koncový bod je privátní IP adresa přidělená v rámci virtuální sítě vlastněné zákazníkem, přes kterou je prostředek Azure dostupný. Prostřednictvím privátního odkazu Azure můžete nastavit privátní koncový bod pro službu IoT Hub, abyste umožnili službám ve vaší virtuální síti přístup k IoT Hub bez nutnosti odeslání provozu do veřejného koncového bodu IoT Hub. Obdobně můžou vaše místní zařízení používat připojení [VPN (Virtual Private Network)](../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [ExpressRoute](https://azure.microsoft.com/services/expressroute/) peering k získání připojení k vaší virtuální síti a k vašemu IoT Hub (prostřednictvím svého privátního koncového bodu). V důsledku toho můžete omezit nebo zcela blokovat připojení k veřejným koncovým bodům služby IoT Hub pomocí [IoT Hub filtru IP](./iot-hub-ip-filtering.md) a [konfigurací směrování Neodesílat žádná data do předdefinovaného koncového bodu](#built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint). Tento přístup udržuje připojení k vašemu rozbočovači pomocí privátního koncového bodu pro zařízení. Hlavním soustředěním tohoto nastavení je zařízení v místní síti. Tato instalace se nedoporučuje pro zařízení nasazená v síti se sítí na stejné úrovni.
+Privátní koncový bod je privátní IP adresa přidělená v rámci virtuální sítě vlastněné zákazníkem, přes kterou je prostředek Azure dostupný. Prostřednictvím privátního odkazu Azure můžete nastavit privátní koncový bod pro službu IoT Hub, abyste umožnili službám ve vaší virtuální síti přístup k IoT Hub bez nutnosti odeslání provozu do veřejného koncového bodu IoT Hub. Obdobně můžou vaše místní zařízení používat připojení [VPN (Virtual Private Network)](../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [ExpressRoute](https://azure.microsoft.com/services/expressroute/) peering k získání připojení k vaší virtuální síti a k vašemu IoT Hub (prostřednictvím svého privátního koncového bodu). V důsledku toho můžete omezit nebo zcela blokovat připojení k veřejným koncovým bodům služby IoT Hub pomocí [IoT Hub filtr IP adres](./iot-hub-ip-filtering.md) nebo [přepínač přístupu k veřejné síti](iot-hub-public-network-access.md). Tento přístup udržuje připojení k vašemu rozbočovači pomocí privátního koncového bodu pro zařízení. Hlavním soustředěním tohoto nastavení je zařízení v místní síti. Tato instalace se nedoporučuje pro zařízení nasazená v síti se sítí na stejné úrovni.
 
 ![Engress virtuální sítě IoT Hub](./media/virtual-network-support/virtual-network-ingress.png)
 
@@ -50,13 +50,13 @@ Než budete pokračovat, ujistěte se, že jsou splněné následující předpo
 
 Privátní koncový bod funguje pro IoT Hub rozhraní API zařízení (jako jsou zprávy typu zařízení-Cloud) a také rozhraní API služby (například vytváření a aktualizace zařízení).
 
-1. V Azure Portal vyberte **sítě** , **připojení privátních koncových bodů** a klikněte na **koncový bod + Private**.
+1. V Azure Portal vyberte **sítě**, **připojení privátních koncových bodů** a klikněte na **koncový bod + Private**.
 
     :::image type="content" source="media/virtual-network-support/private-link.png" alt-text="Snímek obrazovky s informacemi o tom, kam přidat privátní koncový bod pro IoT Hub":::
 
 1. Zadejte předplatné, skupinu prostředků, název a oblast pro vytvoření nového privátního koncového bodu v nástroji. V ideálním případě by se měl privátní koncový bod vytvořit ve stejné oblasti jako vaše centrum.
 
-1. Klikněte na **Další: prostředek** , zadejte předplatné pro svůj prostředek IoT Hub a jako typ prostředku vyberte **Microsoft. Devices/IotHubs** , jako **prostředek** IoT Hub název a jako cílový podprostředek **iotHub** .
+1. Klikněte na **Další: prostředek**, zadejte předplatné pro svůj prostředek IoT Hub a jako typ prostředku vyberte **Microsoft. Devices/IotHubs** , jako **prostředek** IoT Hub název a jako cílový podprostředek **iotHub** .
 
 1. Klikněte na **Další: Konfigurace** a zadejte virtuální síť a podsíť pro vytvoření privátního koncového bodu v nástroji. V případě potřeby vyberte možnost integrace s privátní zónou DNS Azure.
 
@@ -64,17 +64,12 @@ Privátní koncový bod funguje pro IoT Hub rozhraní API zařízení (jako jsou
 
 1. Kliknutím na tlačítko **zkontrolovat + vytvořit** vytvořte prostředek privátního propojení.
 
-### <a name="built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint"></a>Vestavěný koncový bod kompatibilní s centrem událostí nepodporuje přístup prostřednictvím privátního koncového bodu.
+### <a name="built-in-event-hub-compatible-endpoint"></a>Vestavěný koncový bod kompatibilní s centrem událostí 
 
-[Předdefinovaný koncový bod kompatibilní](iot-hub-devguide-messages-read-builtin.md) s centrem událostí nepodporuje přístup prostřednictvím privátního koncového bodu. Po nakonfigurování je privátní koncový bod služby IoT Hub určen jenom pro připojení příchozího přenosu dat. Zpracování dat z integrovaného koncového bodu kompatibilního s centrem událostí se dá provést jenom přes veřejný Internet. 
+[Předdefinovaný koncový bod kompatibilní](iot-hub-devguide-messages-read-builtin.md) s centrem událostí je možné také použít přes soukromý koncový bod. Pokud je nakonfigurováno privátní propojení, mělo by se pro integrovaný koncový bod zobrazit další připojení privátního koncového bodu. Je to u `servicebus.windows.net` v plně kvalifikovaném názvu domény.
 
-[Filtr IP](iot-hub-ip-filtering.md) IoT Hub také neřídí veřejný přístup k předdefinovanému koncovému bodu. Pokud chcete zcela zablokovat přístup k veřejné síti ke službě IoT Hub, musíte: 
+:::image type="content" source="media/virtual-network-support/private-built-in-endpoint.png" alt-text="Obrázek zobrazující dva soukromé koncové body, které jsou dány pro každý IoT Hub privátní odkaz":::
 
-1. Konfigurace přístupu k privátnímu koncovému bodu pro IoT Hub
-1. Vypnout [přístup k veřejné síti](iot-hub-public-network-access.md) nebo použít filtr IP k blokování všech IP adres
-1. Zastavení používání integrovaného koncového bodu centra událostí [nastavením směrování na Neodesílat data](iot-hub-devguide-messages-d2c.md)
-1. Vypnutí [záložní trasy](iot-hub-devguide-messages-d2c.md#fallback-route)
-1. Konfigurace odchozího přenosu dat na jiné prostředky Azure pomocí [důvěryhodné služby Microsoftu](#egress-connectivity-from-iot-hub-to-other-azure-resources)
 
 ### <a name="pricing-for-private-link"></a>Ceny za soukromé odkazy
 
@@ -174,7 +169,7 @@ IoT Hub může směrovat zprávy do účtu úložiště ve vlastnictví zákazn�
 
 1. V Azure Portal přejděte na kartu **řízení přístupu (IAM)** účtu úložiště a v části **Přidat přiřazení role** klikněte na **Přidat** .
 
-2. Vyberte **Přispěvatel dat objektu BLOB úložiště** ( [*ne* přispěvatel nebo přispěvatel účtu úložiště](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) jako **role** , **uživatel služby Azure AD, skupinu nebo instanční objekt,** jako **přiřazení přístupu k** a v rozevíracím seznamu vyberte název prostředku IoT Hub. Klikněte na tlačítko **Uložit**.
+2. Vyberte **Přispěvatel dat objektu BLOB úložiště** ([*ne* přispěvatel nebo přispěvatel účtu úložiště](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) jako **role**, **uživatel služby Azure AD, skupinu nebo instanční objekt,** jako **přiřazení přístupu k** a v rozevíracím seznamu vyberte název prostředku IoT Hub. Klikněte na tlačítko **Uložit**.
 
 3. V účtu úložiště přejděte na kartu **brány firewall a virtuální sítě** a povolte možnost **Povolit přístup z vybraných sítí** . V seznamu **výjimek** zaškrtněte políčko pro **Povolení přístupu k tomuto účtu úložiště důvěryhodným službám Microsoftu**. Klikněte na tlačítko **Uložit**.
 
@@ -192,7 +187,7 @@ IoT Hub je možné nakonfigurovat tak, aby směroval zprávy do oboru názvů ce
 
 1. V Azure Portal přejděte na kartu IAM (Event hub **Access Control)** a v části **Přidat přiřazení role** klikněte na **Přidat** .
 
-2. Vyberte **Event Hubs datový odesílatel** jako **role** , **uživatel služby Azure AD, skupinu nebo instanční objekt,** jako **přiřazení přístupu k** a vyberte název prostředku IoT Hub v rozevíracím seznamu. Klikněte na tlačítko **Uložit**.
+2. Vyberte **Event Hubs datový odesílatel** jako **role**, **uživatel služby Azure AD, skupinu nebo instanční objekt,** jako **přiřazení přístupu k** a vyberte název prostředku IoT Hub v rozevíracím seznamu. Klikněte na tlačítko **Uložit**.
 
 3. Na kartě centra událostí přejděte na kartu **brány firewall a virtuální sítě** a povolte možnost **Povolit přístup z vybraných sítí** . V seznamu **výjimek** zaškrtněte políčko, aby **důvěryhodné služby Microsoftu měly přístup k** centrům událostí. Klikněte na tlačítko **Uložit**.
 
@@ -210,7 +205,7 @@ IoT Hub je možné nakonfigurovat tak, aby směroval zprávy do oboru názvů sl
 
 1. V Azure Portal přejděte na kartu **řízení přístupu (IAM)** služby Service Bus a v části **Přidat přiřazení role** klikněte na **Přidat** .
 
-2. Vyberte možnost **odesílatel dat Service Bus** jako **role** , **uživatel služby Azure AD, skupinu nebo instanční objekt,** jako **přiřazení přístupu k** a v rozevíracím seznamu vyberte název prostředku IoT Hub. Klikněte na tlačítko **Uložit**.
+2. Vyberte možnost **odesílatel dat Service Bus** jako **role**, **uživatel služby Azure AD, skupinu nebo instanční objekt,** jako **přiřazení přístupu k** a v rozevíracím seznamu vyberte název prostředku IoT Hub. Klikněte na tlačítko **Uložit**.
 
 3. Přejděte na kartu **brány firewall a virtuální sítě** ve službě Service Bus a povolte možnost **Povolit přístup z vybraných sítí** . V seznamu **výjimek** zaškrtněte políčko pro **Povolení přístupu ke službě Service Bus důvěryhodným službám Microsoftu**. Klikněte na tlačítko **Uložit**.
 
@@ -230,13 +225,13 @@ Funkce nahrávání souborů IoT Hub umožňuje zařízením nahrávat soubory d
 
 1. V Azure Portal přejděte na kartu **řízení přístupu (IAM)** účtu úložiště a v části **Přidat přiřazení role** klikněte na **Přidat** .
 
-2. Vyberte **Přispěvatel dat objektu BLOB úložiště** ( [*ne* přispěvatel nebo přispěvatel účtu úložiště](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) jako **role** , **uživatel služby Azure AD, skupinu nebo instanční objekt,** jako **přiřazení přístupu k** a v rozevíracím seznamu vyberte název prostředku IoT Hub. Klikněte na tlačítko **Uložit**.
+2. Vyberte **Přispěvatel dat objektu BLOB úložiště** ([*ne* přispěvatel nebo přispěvatel účtu úložiště](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) jako **role**, **uživatel služby Azure AD, skupinu nebo instanční objekt,** jako **přiřazení přístupu k** a v rozevíracím seznamu vyberte název prostředku IoT Hub. Klikněte na tlačítko **Uložit**.
 
 3. V účtu úložiště přejděte na kartu **brány firewall a virtuální sítě** a povolte možnost **Povolit přístup z vybraných sítí** . V seznamu **výjimek** zaškrtněte políčko pro **Povolení přístupu k tomuto účtu úložiště důvěryhodným službám Microsoftu**. Klikněte na tlačítko **Uložit**.
 
 4. Na stránce prostředku IoT Hub přejděte na kartu **nahrávání souborů** .
 
-5. Na stránce, která se zobrazí, vyberte kontejner, který chcete použít ve svém úložišti objektů blob, nakonfigurujte **Nastavení oznamování souborů** , **TTL SAS** , **výchozí hodnotu TTL** a **maximální počet doručení** podle potřeby. Jako **typ ověřování** vyberte na **základě identity** na koncový bod úložiště. Klikněte na tlačítko **Vytvořit**. Pokud se v tomto kroku zobrazí chyba, dočasně nastavte účet úložiště tak, aby povoloval přístup ze **všech sítí** , a pak to zkuste znovu. Po dokončení konfigurace nahrávání souboru můžete na účtu úložiště nakonfigurovat bránu firewall.
+5. Na stránce, která se zobrazí, vyberte kontejner, který chcete použít ve svém úložišti objektů blob, nakonfigurujte **Nastavení oznamování souborů**, **TTL SAS**, **výchozí hodnotu TTL** a **maximální počet doručení** podle potřeby. Jako **typ ověřování** vyberte na **základě identity** na koncový bod úložiště. Klikněte na tlačítko **Vytvořit**. Pokud se v tomto kroku zobrazí chyba, dočasně nastavte účet úložiště tak, aby povoloval přístup ze **všech sítí**, a pak to zkuste znovu. Po dokončení konfigurace nahrávání souboru můžete na účtu úložiště nakonfigurovat bránu firewall.
 
 Teď je koncový bod úložiště pro nahrání souborů nastavený tak, aby používal identitu přiřazenou systémem vašeho rozbočovače a měl oprávnění pro přístup k vašemu prostředku úložiště Navzdory omezením brány firewall.
 
@@ -248,7 +243,7 @@ Tato funkce vyžaduje připojení z IoT Hub k účtu úložiště. Aby bylo mož
 
 1. V Azure Portal přejděte na kartu **řízení přístupu (IAM)** účtu úložiště a v části **Přidat přiřazení role** klikněte na **Přidat** .
 
-2. Vyberte **Přispěvatel dat objektu BLOB úložiště** ( [*ne* přispěvatel nebo přispěvatel účtu úložiště](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) jako **role** , **uživatel služby Azure AD, skupinu nebo instanční objekt,** jako **přiřazení přístupu k** a v rozevíracím seznamu vyberte název prostředku IoT Hub. Klikněte na tlačítko **Uložit**.
+2. Vyberte **Přispěvatel dat objektu BLOB úložiště** ([*ne* přispěvatel nebo přispěvatel účtu úložiště](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) jako **role**, **uživatel služby Azure AD, skupinu nebo instanční objekt,** jako **přiřazení přístupu k** a v rozevíracím seznamu vyberte název prostředku IoT Hub. Klikněte na tlačítko **Uložit**.
 
 3. V účtu úložiště přejděte na kartu **brány firewall a virtuální sítě** a povolte možnost **Povolit přístup z vybraných sítí** . V seznamu **výjimek** zaškrtněte políčko pro **Povolení přístupu k tomuto účtu úložiště důvěryhodným službám Microsoftu**. Klikněte na tlačítko **Uložit**.
 

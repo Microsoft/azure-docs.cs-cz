@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak vytvořit a nakonfigurovat trezor
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: c7e7509f18e7511cd60099a70785b4e2c890afad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ef3d464c051f15d656a4a60937bb05ac496ee52d
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019289"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548422"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Vytvoření a konfigurace trezoru Recovery Services
 
@@ -65,7 +65,7 @@ Vzhledem k tomu, že tento proces je na úrovni úložiště, jsou k dispozici [
 >Než začnete:
 >
 >- Seznam podporovaných spravovaných typů a oblastí najdete v [matici podpory](backup-support-matrix.md#cross-region-restore) .
->- Funkce obnovení mezi oblastmi (CRR) je teď zobrazená ve všech veřejných oblastech Azure a cloudech svrchovaného.
+>- Funkce obnovení mezi oblastmi (CRR) je teď v současnosti zobrazená ve všech veřejných oblastech Azure.
 >- CRR je funkce výslovných přihlášení na úrovni trezoru pro libovolný trezor GRS (ve výchozím nastavení vypnutý).
 >- Po odsouhlasení může trvat až 48 hodin, než se zálohované položky zpřístupní v sekundárních oblastech.
 >- V současné době se CRR pro virtuální počítače Azure podporují jenom pro virtuální počítače Azure Resource Manageru Azure. Klasické virtuální počítače Azure se nepodporují.  Když další typy správy podporují CRR, pak se **automaticky** zaregistrují.

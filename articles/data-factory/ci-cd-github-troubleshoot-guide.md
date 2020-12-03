@@ -7,13 +7,13 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: troubleshooting
-ms.date: 11/27/2020
-ms.openlocfilehash: e0b4b31a1d732cbd5cbfaa9b6e5e021caa3adf01
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.date: 12/03/2020
+ms.openlocfilehash: d5cf39cf91b69574fc1423cfe0942b567cf9a278
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301955"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548201"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>Řešení potíží s CI-CD, Azure DevOps a GitHubem v ADF 
 
@@ -58,7 +58,7 @@ Kanál CI/CD se nezdařil s následující chybou:
 
 #### <a name="recommendation"></a>Doporučení
 
-K této chybě dochází, protože často odstraňujeme Trigger, který je parametrizovaný, takže parametry nebudou v šabloně ARM dostupné (protože aktivační událost už neexistuje). Vzhledem k tomu, že parametr už není v šabloně ARM, musíme aktualizovat přepsané parametry v kanálu DevOps. Jinak se při každé změně parametrů v šabloně ARM musí aktualizovat přepsané parametry v kanálu DevOps (v úloze nasazení).
+K této chybě dochází, protože často odstraňujeme Trigger, který je parametrizovaný, takže parametry nebudou k dispozici v šabloně ARM (protože aktivační událost už neexistuje). Vzhledem k tomu, že parametr už není v šabloně ARM, musíme aktualizovat přepsané parametry v kanálu DevOps. Jinak se při každé změně parametrů v šabloně ARM musí aktualizovat přepsané parametry v kanálu DevOps (v úloze nasazení).
 
 ### <a name="updating-property-type-is-not-supported"></a>Aktualizace typu vlastnosti není podporovaná.
 
@@ -107,7 +107,7 @@ Při pokusu o publikování změn Data Factory se zobrazí následující chybov
 
 Ododpojili jste konfiguraci Gitu a znovu ji nastavili s vybraným příznakem importovat prostředky, který nastaví Data Factory jako "synchronizované". To znamená, že se nemění žádné změny k publikování.
 
-**Řešení**
+#### <a name="resolution"></a>Řešení
 
 Odpojte konfiguraci Gitu a znovu ji nastavte a ujistěte se, že jste zaškrtli políčko importovat existující prostředky.
 

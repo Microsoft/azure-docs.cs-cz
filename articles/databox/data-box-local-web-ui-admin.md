@@ -6,34 +6,28 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 09/23/2020
+ms.date: 12/01/2020
 ms.author: alkohli
-ms.openlocfilehash: f5bcb5c42661c375372d4d0b17571d784152dd5f
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 751ac870996fa1a2805bb018c991f85525fd797d
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337283"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548940"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Použití místního webového uživatelského rozhraní ke správě Data Box a Data Box Heavy
 
 Tento článek popisuje některé úlohy konfigurace a správy prováděné na Data Box a Data Box Heavy zařízeních. Zařízení Data Box a Data Box Heavy můžete spravovat prostřednictvím uživatelského rozhraní Azure Portal a místního webového uživatelského rozhraní pro dané zařízení. Tento článek se zaměřuje na úlohy prováděné pomocí místního webového uživatelského rozhraní.
 
-Místní webové uživatelské rozhraní pro Data Box a pro Data Box Heavy se používá pro počáteční konfiguraci zařízení. Pomocí místního webového uživatelského rozhraní můžete také vypnout nebo restartovat zařízení, spustit diagnostické testy, aktualizovat software, zobrazit kopie protokolů a vygenerovat balíček protokolu pro podpora Microsoftu. Na zařízení Data Box Heavy se dvěma nezávislými uzly můžete přistupovat ke dvěma samostatným místním webovým uživatelská rozhraníám, které odpovídají každému uzlu zařízení.
-
-Tento článek obsahuje následující návody:
-
-- Generování balíčku pro podporu
-- Vypnutí nebo restartování zařízení
-- Stažení kusovníku nebo souborů manifestu
-- Zobrazení dostupné kapacity zařízení
-- Přeskočení ověření kontrolního součtu
+Místní webové uživatelské rozhraní pro Data Box a pro Data Box Heavy se používá pro počáteční konfiguraci zařízení. Můžete také použít místní webové uživatelské rozhraní k vypnutí nebo restartování zařízení, spuštění diagnostických testů, aktualizace softwaru, zobrazení kopírování protokolů, mazání místních dat ze zařízení a vygenerování balíčku pro podporu pro podpora Microsoftu. Na zařízení Data Box Heavy se dvěma nezávislými uzly můžete přistupovat ke dvěma samostatným místním webovým uživatelská rozhraníám, které odpovídají každému uzlu zařízení.
 
 [!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="generate-support-package"></a>Generování balíčku pro podporu
 
-Pokud budete mít se zařízením jakékoliv problémy, můžete vytvořit ze systémových protokolů balíček pro podporu. Podpora Microsoftu používá tento balíček k řešení příslušných potíží. Chcete-li vytvořit balíček pro podporu, proveďte následující kroky:
+Pokud budete mít se zařízením jakékoliv problémy, můžete vytvořit ze systémových protokolů balíček pro podporu. Podpora Microsoftu používá tento balíček k řešení příslušných potíží.
+
+Chcete-li vytvořit balíček pro podporu, proveďte následující kroky:
 
 1. V místním webovém uživatelském rozhraní klikněte na **kontaktovat podporu** a vyberte **vytvořit balíček pro podporu**.
 
@@ -51,9 +45,29 @@ Pokud budete mít se zařízením jakékoliv problémy, můžete vytvořit ze sy
 
     ![Vytvoření balíčku pro podporu 5](media/data-box-local-web-ui-admin/create-support-package-5.png)
 
+## <a name="erase-local-data-from-your-device"></a>Mazání místních dat ze zařízení
+
+Místní webové uživatelské rozhraní můžete použít k mazání místních dat ze zařízení, než je vrátíte do datacentra Azure.
+
+> [!IMPORTANT]
+> Mazání dat nelze vrátit zpět. Než smažete místní data ze zařízení, nezapomeňte soubory zálohovat.
+
+Pokud chcete vymazat místní data ze zařízení, proveďte tyto kroky:
+
+1. V místním webovém uživatelském rozhraní přejdete na **Vymazat data**.
+2. Zadejte heslo zařízení a vyberte **Vymazat data**.
+
+    ![Možnost smazání dat pro zařízení](media/data-box-local-web-ui-admin/erase-local-data-1.png)
+
+3. Na příkazovém řádku s potvrzením klikněte na **Ano** a pokračujte. Mazání dat může trvat až 50 minut.
+
+   Před vymazáním ze zařízení nezapomeňte zálohovat místní data. Mazání dat nelze vrátit zpět.
+
+    ![Výzva k vymazání dat – výzva k potvrzení](media/data-box-local-web-ui-admin/erase-local-data-2.png)
+
 ## <a name="shut-down-or-restart-your-device"></a>Vypnutí nebo restartování zařízení
 
-Zařízení můžete vypnout nebo restartovat pomocí místního webového uživatelského rozhraní. Doporučujeme před restartováním přepnout sdílené složky na hostiteli a potom na zařízení do offline režimu. Tím se minimalizuje jakákoli možnost poškození dat. Zajistěte, aby kopírování dat neprobíhalo při vypnutí zařízení.
+Zařízení můžete vypnout nebo restartovat pomocí místního webového uživatelského rozhraní. Doporučujeme, abyste před restartováním převedli sdílené složky na hostiteli a pak na zařízení. Tím se minimalizuje jakákoli možnost poškození dat. Zajistěte, aby kopírování dat neprobíhalo při vypnutí zařízení.
 
 Pokud chcete zařízení vypnout, proveďte následující kroky.
 
@@ -104,7 +118,7 @@ Než začnete, postupujte podle těchto kroků a Stáhněte soubory kusovníku n
     |---------|---------|---------|
     |utSAC1_202006051000_BlockBlob-BOM.txt     |Objekty blob bloku         |SMB/NFS         |
     |utSAC1_202006051000_PageBlob-BOM.txt     |Objekty blob stránky         |SMB/NFS         |
-    |utSAC1_202006051000_AzFile-BOM.txt    |Azure Files         |SMB/NFS         |
+    |utSAC1_202006051000_AzFile-BOM.txt    |Soubory Azure         |SMB/NFS         |
     |utsac1_PageBlock_Rest-BOM.txt     |Objekty blob stránky         |REST        |
     |utsac1_BlockBlock_Rest-BOM.txt    |Objekty blob bloku         |REST         |
 
@@ -168,7 +182,7 @@ Dostupnou a využitou kapacitu zařízení můžete zobrazit na řídicím panel
 
 Při přípravě na dodávání se pro vaše data generují kontrolní součty ve výchozím nastavení. Ve výjimečných případech v závislosti na datovém typu (malé velikosti souborů) může být výkon pomalý. V takových případech můžete kontrolní součet přeskočit.
 
-Výpočet kontrolního součtu během Příprava na odeslání je proveden pouze pro objednávky importu, nikoli pro objednávky exportu. 
+Výpočet kontrolního součtu během Příprava na odeslání je proveden pouze pro objednávky importu, nikoli pro objednávky exportu.
 
 Důrazně doporučujeme kontrolní součet nezakazovat, pokud to výrazně neovlivňuje výkon.
 

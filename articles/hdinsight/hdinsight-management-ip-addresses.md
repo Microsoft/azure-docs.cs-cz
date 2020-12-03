@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 682db0ef52e624a23d95aa18a007f05a78f39677
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 9fa38e045bbe29e5d45587adf0d277c1414fee4c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518783"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549034"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>IP adresy pro správu služby HDInsight
 
-V tomto článku jsou uvedené IP adresy, které používají služby Azure HDInsight Health a Management Services. Pokud používáte skupiny zabezpečení sítě (skupin zabezpečení sítě) nebo uživatelsky definované trasy (udr), budete možná muset přidat některou z těchto IP adres do seznamu povolených adres pro příchozí síťový provoz.
+V tomto článku jsou uvedené IP adresy, které používají služby Azure HDInsight Health a Management Services. Pokud používáte skupiny zabezpečení sítě (skupin zabezpečení sítě) nebo uživatelsky definované trasy (udr), možná budete muset přidat některé z těchto IP adres do seznamu povolených adres pro příchozí síťový provoz.
 
 ## <a name="introduction"></a>Úvod
  
@@ -27,6 +27,8 @@ V tomto článku jsou uvedené IP adresy, které používají služby Azure HDIn
 Pokud k řízení příchozího provozu do clusteru HDInsight používáte skupiny zabezpečení sítě (skupin zabezpečení sítě) nebo uživatelsky definované trasy (udr), musíte zajistit, aby váš cluster mohl komunikovat s důležitými službami stavu a správy Azure.  Některé z těchto IP adres pro tyto služby jsou specifické pro jednotlivé oblasti a některé z nich se vztahují na všechny oblasti Azure. Možná budete muset povolit provoz také ze služby Azure DNS, pokud nepoužíváte vlastní DNS.
 
 Pokud potřebujete IP adresy pro oblast, která zde není uvedená, můžete k vyhledání IP adres pro vaši oblast použít [rozhraní API zjišťování značek služby](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) . Pokud nemůžete používat rozhraní API, Stáhněte si [soubor JSON pro tag služby](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) a vyhledejte požadovanou oblast.
+
+HDInsight provádí ověřování těchto pravidel s vytvářením a škálováním clusteru, aby nedocházelo k dalším chybám. Pokud ověření neprojde, vytváření a škálování se nezdaří.
 
 Následující části popisují konkrétní IP adresy, které musí být povoleny.
 
