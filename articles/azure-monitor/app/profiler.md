@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4f5328bbe21bb5f4a7947d5a495f4a0c8759c8da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41aec98c2a8776ae128389679ad0acb324596ec4
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87315633"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546824"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profilování aplikací v reálném čase Azure App Service s využitím Application Insights
 
@@ -58,7 +58,7 @@ Pokud chcete Profiler povolit pro jiné cloudy, můžete použít následující
 
 |Nastavení aplikace    | Hodnoty pro státní správu USA| Čína – Cloud |   
 |---------------|---------------------|-------------|
-|ApplicationInsightsProfilerEndpoint         | `https://agent.serviceprofiler.azure.us`    | `https://profiler.applicationinsights.azure.cn` |
+|ApplicationInsightsProfilerEndpoint         | `https://profiler.monitor.azure.us`    | `https://profiler.monitor.azure.cn` |
 |ApplicationInsightsEndpoint | `https://dc.applicationinsights.us` | `https://dc.applicationinsights.azure.cn` |
 
 ## <a name="disable-profiler"></a>Zakázat Profiler

@@ -5,31 +5,32 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 11/30/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b87881ad5533724f08de3b2f348d1487f763ab04
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0f9ea8b1c1346deee9fed591493607270f18ad5b
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442163"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547759"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Doporučené postupy Azure Active Directory B2B
 Tento článek obsahuje doporučení a osvědčené postupy pro spolupráci B2B (Business-to-Business) v Azure Active Directory (Azure AD).
 
    > [!IMPORTANT]
-   > **Od 31. března 2021**přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované účty a klienty Azure AD. V přípravě doporučujeme zákazníkům, aby se přihlásili k [e-mailu ověřování jednorázovým heslem](one-time-passcode.md). Uvítáme vaše názory na tuto funkci Public Preview a zajímáme si vytváření ještě více způsobů, jak spolupracovat.
+   > **Od března 2021** přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované ("virové" nebo "just-in-time") účty a klienty Azure AD. V tuto chvíli bude funkce jednorázového e-mailového hesla zapnutá pro všechny existující klienty a ve výchozím nastavení povolená pro nové klienty. Povolujeme funkci jednorázového hesla e-mailu, protože pro uživatele typu Host nabízí bezproblémové záložní metody ověřování. Nicméně máte možnost tuto funkci zakázat, pokud se rozhodnete ji nepoužívat. Podrobnosti najdete v tématu [ověřování hesla jednorázovým e-mailem](one-time-passcode.md)
+
 
 ## <a name="b2b-recommendations"></a>Doporučení B2B
 | Doporučení | Komentáře |
 | --- | --- |
 | Optimální prostředí přihlašování federovat pomocí zprostředkovatelů identity | Kdykoli je to možné, federovat přímo s poskytovateli identity, aby pozvaní uživatelé mohli přihlašovat se ke sdíleným aplikacím a prostředkům, aniž by museli vytvářet účty Microsoft (účty spravované služby) nebo účty Azure AD. Pomocí [funkce Google Federation](google-federation.md) můžete uživatelům typu Host B2B, aby se přihlásili pomocí svých účtů Google. Nebo můžete použít [funkci přímé federace (Preview)](direct-federation.md) k nastavení přímé federace s libovolnou organizací, jejíž zprostředkovatel identity (IDP) podporuje protokol SAML 2,0 nebo WS-Fed. |
-| Pro hosty B2B, kteří se nemůžou ověřit jiným způsobem, použijte funkci jednorázového hesla (Preview) e-mailu. | Funkce [jednorázového hesla (Preview) e-mailu](one-time-passcode.md) ověřuje uživatele typu Host B2B, když se nemůžou ověřit jiným způsobem jako Azure AD, účet Microsoft (MSA) nebo Google Federation. Když uživatel typu Host uplatňuje pozvánku nebo přistupuje ke sdílenému prostředku, může požádat o dočasný kód, který se pošle na svou e-mailovou adresu. Pak tento kód zadá, aby bylo možné pokračovat v přihlašování. |
+| Použití funkce pro jednorázové heslo e-mailu pro hosty B2B, kteří se nemůžou ověřit jiným způsobem | Funkce [jednorázového hesla pro e-mail](one-time-passcode.md) ověřuje uživatele typu Host B2B, když se nemůžou ověřit jiným způsobem jako Azure AD, účet Microsoft (MSA) nebo Google Federation. Když uživatel typu Host uplatňuje pozvánku nebo přistupuje ke sdílenému prostředku, může požádat o dočasný kód, který se pošle na svou e-mailovou adresu. Pak tento kód zadá, aby bylo možné pokračovat v přihlašování. |
 | Přidání firemního brandingu na přihlašovací stránku | Přihlašovací stránku můžete přizpůsobit tak, aby byla intuitivnější pro uživatele typu Host B2B. Podívejte se na téma Jak [Přidat Branding společnosti pro přihlášení a přístup ke stránkám na panelu](../fundamentals/customize-branding.md). |
 | Přidejte prohlášení o zásadách ochrany osobních údajů do prostředí pro vyplňování uživatelů typu hosta B2B. | Adresu URL prohlášení o zásadách ochrany osobních údajů vaší organizace můžete přidat do prvního procesu uplatnění pozvánky na pozvání, aby pozvaní uživatelé museli před pokračováním souhlasit s vašimi podmínkami ochrany osobních údajů. Viz [Postup: Přidání informací o ochraně osobních údajů vaší organizace v Azure Active Directory](../fundamentals/active-directory-properties-area.md). |
 | Použití funkce Hromadná Pozvánka (Preview) k pozvání více uživatelů typu Host pro B2B ve stejnou dobu | Pomocí funkce hromadné pozvánky ve verzi Preview v Azure Portal můžete do vaší organizace pozvat více uživatelů typu Host. Tato funkce umožňuje odeslat soubor CSV pro vytvoření uživatelů typu Host B2B a hromadně odesílat pozvánky. Přečtěte si [kurz pro hromadné pozvání uživatelů B2B](tutorial-bulk-invite.md). |

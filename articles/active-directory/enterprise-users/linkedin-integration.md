@@ -5,19 +5,20 @@ services: active-directory
 author: curtand
 manager: daveba
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 158d8731965533b20917a25b72227a92c9638fa7
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 5ffa937f91af7078b28331a655f99397d3821def
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95488449"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545889"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Integrace připojení k účtu LinkedIn v Azure Active Directory
 
@@ -93,7 +94,7 @@ Pokud chcete použít skupinu z kroku 2 jako vybranou skupinu v nastavení přip
 1. Vytvořte objekt Zásady skupiny s následujícím nastavením: **Konfigurace uživatele**  >  **šablony pro správu**  >  **systém Microsoft Office 2016**  >  **různé**  >  **Zobrazit funkce LinkedInu v aplikacích Office**.
 1. Vyberte možnost **povoleno** nebo **zakázáno**.
   
-   State | Účinek
+   Stav | Účinek
    ------ | ------
    **Povoleno** | Nastavení **Zobrazit funkce LinkedInu v aplikacích Office** v možnostech Office 2016 je povolené. Uživatelé ve vaší organizaci můžou používat funkce LinkedInu v aplikacích Office 2016.
    **Zakázáno** | Nastavení **Zobrazit funkce LinkedInu v aplikacích Office** v možnostech Office 2016 je zakázané a koncoví uživatelé toto nastavení nemůžou změnit. Uživatelé ve vaší organizaci nemůžou ve svých aplikacích Office 2016 používat funkce LinkedIn.

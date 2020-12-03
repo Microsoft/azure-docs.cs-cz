@@ -10,16 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: bead348e64fcee4cc5b790f975c9da5200ee796b
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: acc19d9a04909dcf0e79c93e0c8a3fb8225ee1b4
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422395"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546896"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Seznamte se se základy rozpoznávání řeči v rozhraní příkazového řádku
 
-V tomto článku se seznámíte se základními vzory používání funkce Speech CLI, což je nástroj příkazového řádku pro použití služby Speech bez psaní kódu. Můžete rychle otestovat hlavní funkce služby Speech, aniž byste museli vytvářet vývojová prostředí nebo psát kód, abyste zjistili, jestli je možné vaše případy použití vhodně splnit. Kromě toho je prostředí příkazového řádku pro rozpoznávání řeči připravené na produkční prostředí a je možné ho použít k automatizaci jednoduchých pracovních postupů ve službě pro rozpoznávání řeči pomocí `.bat` skriptů nebo prostředí.
+V tomto článku se seznámíte se základními vzory používání funkce Speech CLI, což je nástroj příkazového řádku pro použití služby Speech bez psaní kódu. Můžete rychle otestovat hlavní funkce služby Speech, aniž byste museli vytvářet vývojová prostředí nebo psát kód, abyste zjistili, jestli je možné vaše případy použití vhodně splnit. Rozhraní příkazového řádku pro rozpoznávání řeči je připravené pro práci a je možné ho použít k automatizaci jednoduchých pracovních postupů ve službě pro rozpoznávání řeči pomocí `.bat` skriptů nebo prostředí.
+
+V tomto článku se předpokládá, že máte praktické znalosti z příkazového řádku, terminálu nebo PowerShellu.
 
 [!INCLUDE [](includes/spx-setup.md)]
 
@@ -45,11 +47,24 @@ Zadejte následující příkaz pro zobrazení možností příkazu rozpoznat:
 spx help recognize
 ```
 
-Teď použijte službu Speech k provedení některých funkcí rozpoznávání řeči pomocí výchozího mikrofonu, a to spuštěním následujícího příkazu.
+Teď použijeme rozpoznávání řeči k rozpoznávání řeči pomocí výchozího mikrofonu vašeho systému. 
+
+>[!WARNING]
+> Pokud používáte kontejner Docker, tento příkaz nebude fungovat.
+
+Spusťte tento příkaz:
 
 ```shell
 spx recognize --microphone
 ```
+
+Pomocí rozhraní příkazového řádku pro rozpoznávání řeči můžete také rozpoznávat řeč ze zvukového souboru.
+
+```shell
+spx recognize --file /path/to/file.wav
+```
+> [!TIP]
+> Pokud rozpoznávání řeči rozpoznáváte ze zvukového souboru v kontejneru Docker, ujistěte se, že je zvukový soubor umístěný v adresáři, který jste připojili v předchozím kroku.
 
 Po zadání příkazu zahájí SPX naslouchání zvuku na aktuálním aktivním vstupním zařízení a zastaví se po stisknutí klávesy `ENTER` . Zaznamenaný hlas se pak rozpozná a převede na text ve výstupu konzoly. Syntéza textu na řeč je také snadné používat rozhraní příkazového řádku pro rozpoznávání řeči. 
 

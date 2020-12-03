@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 8ae1e2ade5d8a942779fe31e324cd23756ee39ae
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 68d9a64e388d24f2067f47282945b9561d807535
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079206"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545923"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostika a řešení potíží při používání sady .NET SDK služby Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -56,7 +56,7 @@ Kontrola [metrik portálu](./monitor-cosmos-db.md) vám pomůže určit, jestli 
 
 ## <a name="common-error-status-codes"></a>Běžné chybové kódy stavu <a id="error-codes"></a>
 
-| Stavový kód | Description | 
+| Stavový kód | Popis | 
 |----------|-------------|
 | 400 | Chybný požadavek (závisí na chybové zprávě)| 
 | 401 | [Neautorizováno](troubleshoot-unauthorized.md) | 
@@ -116,7 +116,7 @@ Pokud narazíte na následující chybu: `Unable to load DLL 'Microsoft.Azure.Co
 ## <a name="next-steps"></a>Další kroky
 
 * Informace o zásadách výkonu pro [.NET V3](performance-tips-dotnet-sdk-v3-sql.md) a [.NET v2](performance-tips.md)
-* Další informace o sadách [Java SDK založených na reaktorech](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md)
+* Další informace o sadách [Java SDK založených na reaktorech](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-pattern-guide.md)
 
  <!--Anchors-->
 [Common issues and workarounds]: #common-issues-workarounds

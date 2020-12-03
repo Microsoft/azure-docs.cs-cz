@@ -4,48 +4,44 @@ description: Řešení potíží s webovými testy v Azure Application Insights.
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 04/28/2020
+ms.date: 11/19/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 0ac8dd189bee1c1d4f5a7a4d0f7de68b085fbc56
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 368c45433247c441631bdf79bfc9caa28a41f1b4
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015328"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546742"
 ---
-# <a name="troubleshooting"></a>Řešení potíží
+# <a name="troubleshooting"></a>Poradce při potížích
 
 Tento článek vám pomůže vyřešit běžné problémy, ke kterým může dojít při použití monitorování dostupnosti.
 
-## <a name="ssltls-errors"></a>Chyby SSL/TLS
+## <a name="troubleshooting-report-steps-for-ping-tests"></a>Řešení potíží s kroky sestav pro testy příkazů pro testování
 
-|Příznak/chybová zpráva| Možné příčiny|
-|--------|------|
-|Nejde vytvořit zabezpečený kanál SSL/TLS.  | Verze SSL. Podporují se jenom TLS 1,0, 1,1 a 1,2. **Protokolu SSLv3 se nepodporuje.**
-|Vrstva záznamu TLSv 1.2: výstraha (úroveň: závažná, popis: chybný záznam v počítači MAC)| [Další informace](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake)najdete v tématu věnovaném vláknu stackexchange.
-|Neúspěšná adresa URL je CDN (Content Delivery Network) | To může být způsobeno chybnou konfigurací v síti CDN. |  
+Sestava Poradce při potížích umožňuje snadno diagnostikovat běžné problémy, které způsobují selhání **testů testu** .
 
-### <a name="possible-workaround"></a>Možná alternativní řešení
+![Animace navigace na kartě dostupnosti výběrem chyby v podrobnostech o chybě pro koncovou transakci zobrazíte zprávu o řešení potíží.](./media/troubleshoot-availability/availability-to-troubleshooter.gif)
 
-* Pokud jsou adresy URL, u kterých dochází k problému, vždy závislé prostředky, doporučuje se zakázat **zpracování závislých požadavků** pro webový test.
-
-## <a name="test-fails-only-from-certain-locations"></a>Test se nezdařil pouze z určitých umístění
-
-|Příznak/chybová zpráva| Možné příčiny|
-|----|---------|
-|Pokus o připojení se nezdařil, protože připojená strana nereagovala po určitém časovém intervalu správně.  | Testovací agenti v určitých umístěních jsou blokovány bránou firewall.|
-|    |K opětovnému směrování určitých IP adres dochází prostřednictvím (nástroje pro vyrovnávání zatížení, správci geografického provozu a Azure Express Route). 
-|    |Pokud používáte Azure ExpressRoute, existují scénáře, kdy se pakety můžou vyřadit v případech, kdy [dojde k asymetrickému směrování](../../expressroute/expressroute-asymmetric-routing.md).|
-
-## <a name="test-failure-with-a-protocol-violation-error"></a>Selhání testu s chybou porušení protokolu
-
-|Příznak/chybová zpráva| Možné příčiny| Možná řešení |
-|----|---------|-----|
-|Server potvrdil narušení protokolu. Oddíl = ResponseHeader detail = CR musí být následován znakem LF. | K tomu dochází, když jsou zjištěna chybná záhlaví. Konkrétně některá záhlaví nemusí používat znaky CRLF k označení konce řádku, což porušuje specifikaci protokolu HTTP. Application Insights vynucuje tuto specifikaci HTTP a neúspěšné odpovědi s nesprávně vytvořenými záhlavími.| a. Pokud chcete opravit chybné servery, obraťte se na poskytovatele hostitele webu nebo poskytovatele CDN. <br> b. V případě, že neúspěšné požadavky jsou prostředky (například soubory stylu, obrázky, skripty), můžete zvážit zakázání analýzy závislých požadavků. Mějte na paměti, že pokud to uděláte, ztratíte možnost sledovat dostupnost těchto souborů.
+1. Na kartě Dostupnost prostředku Application Insights vyberte celkový nebo jeden z testů dostupnosti.
+2. Vyberte **neúspěšné** a potom test pod položkou "přejít k" na levé straně nebo vyberte jeden z bodů v bodovém grafu.
+3. Na stránce s podrobnostmi o transakci na konci vyberte událost v části "souhrn sestavy řešení potíží" vyberte **[přejít ke kroku]** . zobrazí se zpráva o odstraňování potíží.
 
 > [!NOTE]
-> Adresa URL nemusí selhat v prohlížečích, které mají odlehčené ověřování hlaviček protokolu HTTP. Podrobné vysvětlení tohoto problému najdete v tomto blogovém příspěvku: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+>  Pokud je k dispozici krok opětovného použití připojení, nebude k dispozici postup překladu DNS, vytváření připojení a přenos TLS.
 
+|Krok | Chybová zpráva | Možná příčina |
+|-----|---------------|----------------|
+| Opakované použití připojení | neuvedeno | Obvykle závisí na dřív navázaném připojení, což znamená, že je krok webového testu závislý. Proto by nebyl nutný žádný krok DNS, připojení nebo SSL. |
+| Překlad DNS | Vzdálený název se nedal přeložit: "vaše adresa URL" | Proces překladu DNS se nezdařil, pravděpodobně v důsledku nesprávně konfigurovaných záznamů DNS nebo dočasných selhání serveru DNS. |
+| Vytváření připojení | Pokus o připojení se nezdařil, protože připojená strana nereagovala po určitém časovém intervalu správně. | Obecně to znamená, že váš server neodpovídá na požadavek HTTP. Běžným řešením je, že naše testovací agenti jsou na serveru zablokované bránou firewall. Pokud byste chtěli testovat v rámci Virtual Network Azure, měli byste do svého prostředí přidat značku služby dostupnosti.|
+| Přenos TLS  | Klient a server nemohou komunikovat, protože nemají společný algoritmus.| Podporují se jenom TLS 1,0, 1,1 a 1,2. Protokol SSL není podporován. Tento krok neověřuje certifikáty SSL a vytváří jenom zabezpečené připojení. Tento krok se zobrazí jenom v případě, že dojde k chybě. |
+| Příjem hlavičky odpovědi | Nelze načíst data z přenosového připojení. Připojení bylo ukončeno. | Server potvrdil chybu protokolu v hlavičce odpovědi. Například připojení zavřené serverem, když odpověď není úplná. |
+| Přijímání textu odpovědi | Nelze načíst data z přenosového připojení: připojení bylo ukončeno. | Server potvrdil chybu protokolu v těle odpovědi. Například připojení zavřené serverem, když odpověď není plně přečtená nebo je velikost bloku dat v těle odpovědi v bloku chybná. |
+| Ověření limitu přesměrování | Tato webová stránka má příliš mnoho přesměrování. Tato smyčka se tady ukončí, protože tento požadavek překročil limit pro automatické přesměrování. | U každého testu je omezení 10 přesměrování. |
+| Ověření kódu stavu | `200 - OK` neodpovídá očekávanému stavu `400 - BadRequest` . | Vrácený stavový kód, který se počítá jako úspěch. 200 je kód, který označuje, že byla vrácena normální webová stránka. |
+| Ověření obsahu | Povinný text Hello se v odpovědi neobjevil. | Řetězec není v odpovědi přesně rozlišovat velká a malá písmena, například řetězec "Welcome!". Musí se jednat o prostý řetězec bez zástupných znaků (například hvězdička). Pokud se změní obsah stránky, možná budete muset řetězec aktualizovat. Shoda obsahu podporuje pouze anglické znaky. |
+  
 ## <a name="common-troubleshooting-questions"></a>Běžné otázky k odstraňování potíží
 
 ### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>Web vypadá v pořádku, ale vidím selhání testu Proč mi Application Insights upozorňování?
@@ -54,7 +50,7 @@ Tento článek vám pomůže vyřešit běžné problémy, ke kterým může doj
 
    * Pokud chcete snížit lichá hluku z přechodné síťové výkyvů atd., zkontrolujte, že je zaškrtnuté políčko Povolit opakování pro konfiguraci selhání testu. Můžete také testovat z více umístění a spravovat prahovou hodnotu pravidla výstrahy, aby se zabránilo problémům specifickým pro konkrétní umístění, což způsobuje neoprávněné výstrahy.
 
-   * Kliknutím na kteroukoli z těchto červených teček v možnosti dostupnosti nebo jakékoli chybě dostupnosti z Průzkumníka služby Search zobrazíte podrobnosti o tom, proč jsme chybu nahlásili. Výsledek testu, společně s korelační telemetrie na straně serveru (Pokud je povolen), by měl pomáhat pochopit, proč se test nezdařil. Běžné příčiny přechodných problémů jsou problémy se sítí nebo připojením.
+   * Kliknutím na kteroukoli z těchto červených teček z prostředí bodového sezobrazení bodového grafu dostupnosti nebo jakékoli chybě dostupnosti z Průzkumníka služby Search zobrazíte podrobnosti o tom, proč jsme chybu nahlásili. Výsledek testu, společně s korelační telemetrie na straně serveru (Pokud je povolen), by měl pomáhat pochopit, proč se test nezdařil. Běžné příčiny přechodných problémů jsou problémy se sítí nebo připojením.
 
    * Vypršel časový limit testu? Testy jsme přerušili po 2 minutách. Pokud váš test příkazů nebo testování více kroků trvá déle než 2 minuty, pošleme vám zprávu jako chybu. Zvažte rozdělení testu na násobky, které mohou být dokončeny v kratší dobu.
 
@@ -134,4 +130,3 @@ Pokud potřebujete upozornit uživatele na základě jejich rolí, použijte nov
 
 * [Testování webu ve více krocích](availability-multistep.md)
 * [Testy adresy URL pro příkazy URL](monitor-web-app-availability.md)
-

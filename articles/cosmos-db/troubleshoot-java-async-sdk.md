@@ -10,12 +10,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: 4ec2deaf3149e174cce201d0bbad8a55d156d30f
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: b39a74bd06f942cf21d201c8cef48bc6dfc57d46
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95998327"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548082"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>Řešení potíží při použití Azure Cosmos DB Async Java SDK v2 s účty SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "95998327"
 > 
 
 > [!IMPORTANT]
-> Nejedná *se o* nejnovější sadu Java SDK pro Azure Cosmos DB. Projekt byste měli upgradovat na [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) a pak si přečtěte [Průvodce odstraňováním potíží](troubleshoot-java-sdk-v4-sql.md)Azure Cosmos DB Java SDK v4. Postupujte podle pokynů v tématu [migrace do Azure Cosmos DB příručka Java SDK v4](migrate-java-v4-sdk.md) a příručka [vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) Guide to upgrade. 
+> Nejedná *se o* nejnovější sadu Java SDK pro Azure Cosmos DB. Projekt byste měli upgradovat na [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) a pak si přečtěte [Průvodce odstraňováním potíží](troubleshoot-java-sdk-v4-sql.md)Azure Cosmos DB Java SDK v4. Postupujte podle pokynů v tématu [migrace do Azure Cosmos DB příručka Java SDK v4](migrate-java-v4-sdk.md) a příručka [vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) Guide to upgrade. 
 >
 > Tento článek popisuje řešení potíží pouze Azure Cosmos DB Async Java SDK v2. Další informace najdete v [poznámkách k verzi](sql-api-sdk-async-java.md)Azure Cosmos DB ASYNC Java SDK v2, v tématu [úložiště Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) a [tipy ke zvýšení výkonu](performance-tips-async-java.md) .
 >

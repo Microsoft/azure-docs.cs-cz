@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 11/30/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5a983931bd372931eacff2f7b21f3358f536046
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8a249102de6a5bff7354e339e604b7d2efebd4fb
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362922"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546162"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Povolení externí spolupráce B2B a správa toho, kdo může zvát hosty
 
@@ -41,19 +41,22 @@ Ve výchozím nastavení mohou všichni uživatelé, včetně hostů, pozvat už
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce tenanta.
 2. Vyberte **Azure Active Directory**.
-3. Vyberte externí **identity**externí  >  **nastavení spolupráce**.
+3. Vyberte externí **identity** externí  >  **nastavení spolupráce**.
 
 4. V části **omezení přístupu uživatele typu Host (Preview)** vyberte úroveň přístupu, kterou mají mít uživatelé typu Host:
+  
+    ![Nastavení omezení přístupu uživatele typu Host](./media/delegate-invitations/guest-user-access.png)
 
    - **Uživatelé typu Host mají stejný přístup jako členové (nejvíc včetně)**: Tato možnost dává hostům stejný přístup k prostředkům a datům Azure AD jako členské uživatele.
 
    - **Uživatelé typu Host mají omezený přístup k vlastnostem a členstvím objektů adresáře**: (výchozí) Toto nastavení blokuje hosty z určitých úloh adresáře, jako je vytváření výčtu uživatelů, skupin nebo jiných prostředků adresáře. Hosté můžou zobrazit členství všech neskrytých skupin.
 
    - **Přístup uživatelů typu Host je omezený na vlastnosti a členství svých objektů adresáře (nejvíce omezující)**: s tímto nastavením můžou hosté přistupovat jenom k vlastním profilům. Hosté nemají povoleno zobrazovat profily, skupiny nebo členství v jiných uživatelích.
-  
-    ![Nastavení omezení přístupu uživatele typu Host](./media/delegate-invitations/guest-user-access.png)
 
-5. V části **nastavení pozvánky hosta**vyberte odpovídající nastavení:
+
+5. V části **nastavení pozvánky hosta** vyberte odpovídající nastavení:
+
+    ![Nastavení pozvánky hosta](./media/delegate-invitations/guest-invite-settings.png)
 
    - **Správci a uživatelé v roli Pozvánka hosta může pozvat**: Pokud chcete správcům a uživatelům v roli "pozvání hosta" umožnit pozvat hosty, nastavte tuto zásadu na **Ano**.
 
@@ -61,17 +64,31 @@ Ve výchozím nastavení mohou všichni uživatelé, včetně hostů, pozvat už
 
    - **Hosté můžou pozvat**: Pokud chcete, aby hosty mohli pozvat další hosty, nastavte tuto zásadu na **Ano**.
 
-   - **Povolení e-mailu One-Time hesla pro hosty (Preview)**: Další informace o funkci jednorázového hesla najdete v tématu [e-mailové ověřování hesla jednorázovým heslem (Preview)](one-time-passcode.md).
-
-   - **Povolit samoobslužnou registraci hosta prostřednictvím toků uživatelů (Preview)**: Další informace o tomto nastavení najdete v tématu [Přidání uživatelského toku samoobslužné registrace do aplikace (Preview)](self-service-sign-up-user-flow.md).
-
    > [!NOTE]
    > Pokud je možné, že **členové můžou pozvat** na možnost **ne** a **Správci a uživatelé v roli pozvat pozvánky hosta** je nastavená na **Ano**, uživatelé v roli **pozvání hosta** budou mít i nadále možnost pozvat hosty.
 
-    ![Nastavení pozvánky hosta](./media/delegate-invitations/guest-invite-settings.png)
+6. V části **e-mail jednorázového hesla pro hosty** vyberte příslušné nastavení (Další informace najdete v tématu [ověřování e-mailu s jednorázovým heslem](one-time-passcode.md)):
 
-6. V části **omezení spolupráce**zvolte, jestli chcete povolit nebo odepřít pozvánky k zadaným doménám. Další informace najdete v tématu [Povolení nebo blokování pozvánek uživatelům B2B z konkrétních organizací](allow-deny-list.md).
+   ![Nastavení jednorázového hesla pro e-mail](./media/delegate-invitations/email-otp-settings.png)
 
+   - **Automaticky povolit jednorázové e-mailové heslo pro hosty v březnu 2021**. Výchozí Pokud funkce jednorázového hesla pro e-mail ještě není pro vašeho tenanta povolená, bude automaticky zapnutá v březnu 2021. Pokud chcete povolit funkci v daném čase, není nutná žádná další akce. Pokud jste tuto funkci již povolili nebo zakázali, tato možnost nebude k dispozici.
+
+   - **Povolte jednorázové e-mailové heslo pro hosty**, které jsou teď platné. Zapne pro vašeho tenanta funkci jednorázového hesla pro e-mail.
+
+   - **Zakažte jednorázové e-mailové heslo pro hosty**. Vypne funkci jednorázového hesla e-mailu pro vašeho tenanta a zabrání funkci v zapnutí v březnu 2021.
+
+   > [!NOTE]
+   > Místo výše uvedených možností se zobrazí následující přepínač, pokud jste tuto funkci povolili nebo zakázali, nebo pokud jste se dříve přihlásili k verzi Preview:
+   >
+   >![Povolit přístup k jednorázovému heslu pro odesílání e-mailů](media/delegate-invitations/enable-email-otp-opted-in.png)
+
+7. V části **Povolit samoobslužnou registraci hostů pomocí toků uživatelů (Preview)** vyberte **Ano** , pokud chcete mít možnost vytvářet uživatelské toky, které umožní uživatelům zaregistrovat se k aplikacím. Další informace o tomto nastavení najdete v tématu [Přidání uživatelského toku samoobslužné registrace do aplikace (Preview)](self-service-sign-up-user-flow.md).
+
+    ![Samoobslužná registrace pomocí nastavení toků uživatelů](./media/delegate-invitations/self-service-sign-up-setting.png)
+
+7. V části **omezení spolupráce** zvolte, jestli chcete povolit nebo odepřít pozvánky k zadaným doménám. Další informace najdete v tématu [Povolení nebo blokování pozvánek uživatelům B2B z konkrétních organizací](allow-deny-list.md).
+
+    ![Nastavení omezení spolupráce](./media/delegate-invitations/collaboration-restrictions.png)
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>Přiřazení role pozvánky hosta uživateli
 
 Pomocí role pozvat hosta můžete dát jednotlivým uživatelům možnost pozvat hosty bez přiřazení globálního správce nebo jiné role správce. Přiřaďte roli pozvánky hosta jednotlivcům. Pak se ujistěte, že jste nastavili **správce a uživatelé v roli pozvání hosta, který může pozvat** na **Ano**.

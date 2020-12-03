@@ -7,14 +7,14 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 09/08/2020
 ms.topic: how-to
-ms.author: a-sakand
-author: skandil
-ms.openlocfilehash: d801971ca62c416c66608b40aab3e8052fe941a1
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.author: nitinme
+author: nitinme
+ms.openlocfilehash: ae51dca466a9aaf489ba4628e13a5e13de25b9bc
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931406"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546858"
 ---
 # <a name="sign-in-to-luis-portal"></a>Přihlášení k portálu LUIS
 
@@ -36,7 +36,7 @@ Když se poprvé přihlásíte na portál LUIS, určete typ účtu pomocí násl
 
 Účet přidružený k předplatnému Azure vám umožňuje vybrat předplatné a prostředek, který chcete použít.
 
-:::image type="content" source="media/sign-in/resource-selection.png" alt-text="Částečný snímek obrazovky s LUIS navigačním panelem pomocí ikony Azure":::
+:::image type="content" source="media/sign-in/resource-selection.png" alt-text="Částečný snímek obrazovky portálu LUIS s rozevíracími seznamy pro výběr předplatného a vytváření prostředků":::
 
 ## <a name="sign-in-with-account-associated-with-an-azure-subscription"></a>Přihlášení pomocí účtu přidruženého k předplatnému Azure
 
@@ -50,11 +50,11 @@ Když se poprvé přihlásíte na portál LUIS, určete typ účtu pomocí násl
 
     [Přečtěte si další informace o vytváření a počátečních klíčích](luis-how-to-azure-subscription.md#luis-resources). Oba prostředky poskytují 1 000 000 bezplatné transakce vytváření a 1000 bezplatné transakce koncového bodu předpovědi.
 
-    :::image type="content" source="media/sign-in/signup-landing-page.png" alt-text="Částečný snímek obrazovky s LUIS navigačním panelem pomocí ikony Azure":::
+    :::image type="content" source="media/sign-in/signup-landing-page.png" alt-text="Částečný snímek obrazovky pro výběr typu Language Understanding prostředek pro vytváření obsahu.":::
 
 1. Použít existující prostředek pro vytváření obsahu
 
-    :::image type="content" source="media/sign-in/signup-choose-resource.png" alt-text="Částečný snímek obrazovky s LUIS navigačním panelem pomocí ikony Azure":::
+    :::image type="content" source="media/sign-in/signup-choose-resource.png" alt-text="Zvolit prostředek pro vytváření":::
 
     Pokud už máte LUIS vytváření prostředků ve vašem předplatném a přiřadíte ho k účtu LUIS během přihlašování, vyberte možnost **použít existující prostředek pro vytváření obsahu** a zadejte následující informace:
 
@@ -67,9 +67,9 @@ Když se poprvé přihlásíte na portál LUIS, určete typ účtu pomocí násl
 
 1. Vytvořit nový prostředek pro vytváření
 
-    :::image type="content" source="media/sign-in/signup-create-resource.png" alt-text="Částečný snímek obrazovky s LUIS navigačním panelem pomocí ikony Azure":::
+    :::image type="content" source="media/sign-in/signup-create-resource.png" alt-text="Vytvořit prostředek pro vytváření":::
 
-    Při **vytváření nového prostředku pro vytváření obsahu**zadejte následující informace:
+    Při **vytváření nového prostředku pro vytváření obsahu** zadejte následující informace:
 
     * **Tenant** – tenant, ke kterému je předplatné Azure přidružené. Nebudete moci přepnout klienty ze stávajícího okna. Klienty můžete přepínat výběrem miniatury vpravo, která obsahuje vaše iniciály na horním panelu.
     * **Název prostředku** – vlastní název, který zvolíte, se používá jako součást adresy URL pro vytváření vašich transakcí. Název prostředku může obsahovat jenom alfanumerické znaky, '-' a nemůže začínat ani končit znakem '-'. Pokud název obsahuje nějaké jiné symboly, vytvoření prostředku se nezdaří.
@@ -78,7 +78,7 @@ Když se poprvé přihlásíte na portál LUIS, určete typ účtu pomocí násl
 
 1. Po zvolení cesty může trvat několik sekund, než se zobrazí znaménko "váš účet se úspěšně migrovali". Dokončete výběrem možnosti **pokračovat**.
 
-    :::image type="content" source="media/sign-in/signup-confirm-2.png" alt-text="Částečný snímek obrazovky s LUIS navigačním panelem pomocí ikony Azure":::
+    :::image type="content" source="media/sign-in/signup-confirm-2.png" alt-text="Potvrdit vytváření prostředku":::
 
     > [!Note]
     > Pokud máte předplatné a alespoň jeden prostředek pro vytváření v této oblasti, který je stejný jako ten, který se na portále přihlašujete, můžete se automaticky přihlásit k LUIS migrováním a přidruženým k prostředku, aniž byste museli zvolit cestu, na kterou se chcete dostat.
@@ -90,9 +90,9 @@ Když se poprvé přihlásíte na portál LUIS, určete typ účtu pomocí násl
 
 1. Dokončete výběrem možnosti **pokračovat**. Automaticky se přihlásíte pomocí zkušební verze nebo počátečního klíče. To znamená, že nakonec budete muset [migrovat svůj účet](luis-migration-authoring.md#migration-steps) a propojit své aplikace s prostředky pro vytváření obsahu. Aby se proces migrace mohl absolvovat, musíte se přihlásit k [bezplatné zkušební verzi Azure](https://azure.microsoft.com/free/).
 
-    :::image type="content" source="media/sign-in/signup-no-subscription.png" alt-text="Částečný snímek obrazovky s LUIS navigačním panelem pomocí ikony Azure":::
+    :::image type="content" source="media/sign-in/signup-no-subscription.png" alt-text="Žádný scénář předplatného":::
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 * Pokud vytvoříte prostředek pro vytváření obsahu z Azure Portal v jiné oblasti než na portálu, ke kterému jste se přihlásili, bude zdroj pro vytváření šedý.
 * Při vytváření nového prostředku se ujistěte, že název prostředku obsahuje pouze alfanumerické znaky, '-' a nemůže začínat ani končit znakem '-'. V opačném případě selže.

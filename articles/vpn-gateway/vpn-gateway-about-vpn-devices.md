@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/01/2020
+ms.date: 12/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 92f589e6a587febc10a4b407fe3616aca42d27d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae498b39a421db19f0d4e0a8daca58730321b58c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318943"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546807"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>O zařízeních VPN a o parametrech protokolu IPsec/IKE pro připojení typu Site-to-Site ke službě VPN Gateway
 
@@ -59,7 +59,7 @@ Informace o konfiguraci zařízení VPN najdete v odkazech odpovídajících př
 | Juniper |SSG |ScreenOS 6.2 |Podporováno |[Konfigurační skript](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |MX |JunOS 12. x|Podporováno |[Konfigurační skript](vpn-gateway-download-vpndevicescript.md) |
 | Partnerský vztah Microsoftu |Služba Směrování a vzdálený přístup |Windows Server 2012 |Není kompatibilní |Podporováno |
-| Open Systems AG |Mission Control Security Gateway |Není k dispozici |[Průvodce konfigurací](https://open-systems.com/wp-content/uploads/2019/12/OpenSystems-AzureVPNSetup-Installation-Guide.pdf) |Není kompatibilní |
+| Open Systems AG |Mission Control Security Gateway |– |[Průvodce konfigurací](https://open-systems.com/wp-content/uploads/2019/12/OpenSystems-AzureVPNSetup-Installation-Guide.pdf) |Není kompatibilní |
 | Palo Alto Networks |Všechna zařízení se systémem PAN-OS |PAN-OS<br>PolicyBased: 6.1.5 nebo novější<br>RouteBased: 7.1.4 |Podporováno |[Průvodce konfigurací](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
 | Sentrium (vývojář) | VyOS | VyOS 1.2.2 | (netestováno) | [Průvodce konfigurací ](https://vyos.readthedocs.io/en/latest/appendix/examples/azure-vpn-bgp.html)|
 | ShareTech | UTM příští generace (řada NU) | 9.0.1.3 | Není kompatibilní | [Průvodce konfigurací](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
@@ -112,13 +112,11 @@ Po stažení ukázky konfigurace zařízení VPN budete muset nahradit některé
 | &lt;SP_AzureGatewayIpAddress&gt; |Tato informace je specifická pro vaši virtuální síť a najdete ji v Portálu pro správu jako **IP adresa brány**. |
 | &lt;SP_PresharedKey&gt; |Tato informace je specifická pro vaši virtuální síť a najdete ji v Portálu pro správu jako Správa klíče. |
 
-## <a name="ipsecike-parameters"></a><a name="ipsec"></a>Parametry protokolu IPsec/IKE
+## <a name="default-ipsecike-parameters"></a><a name="ipsec"></a>Výchozí parametry protokolu IPsec/IKE
 
-> [!IMPORTANT]
-> 1. Následující tabulky obsahují kombinaci algoritmů a parametrů, které služba Azure VPN Gateway používá ve výchozí konfiguraci. Pro brány sítě VPN založené na trasách a vytvořené pomocí modelu nasazení správy prostředků Azure můžete zadat vlastní zásadu pro každé jednotlivé připojení. Podrobné pokyny najdete v tématu [Konfigurace zásad IPsec/IKE](vpn-gateway-ipsecikepolicy-rm-powershell.md).
->
-> 2. Kromě toho musíte uchytit **MSS** protokolu TCP na **1350**. Pokud vaše zařízení nepodporuje uchycení MSS, můžete místo toho nastavit **MTU** na rozhraní tunelu na **1400** bajtů.
->
+Níže uvedené tabulky obsahují kombinace algoritmů a parametrů, které Azure VPN Gateway používá ve výchozí konfiguraci (**výchozí zásady**). Pro brány sítě VPN založené na trasách a vytvořené pomocí modelu nasazení správy prostředků Azure můžete zadat vlastní zásadu pro každé jednotlivé připojení. Podrobné pokyny najdete v tématu [Konfigurace zásad IPsec/IKE](vpn-gateway-ipsecikepolicy-rm-powershell.md).
+
+Kromě toho je potřeba, abyste v **1350** zasvorki TCP **MSS** . Pokud vaše zařízení nepodporuje uchycení MSS, můžete místo toho nastavit **MTU** na rozhraní tunelu na **1400** bajtů.
 
 V následujících tabulkách:
 
@@ -144,7 +142,7 @@ V následujících tabulkách:
 | Algoritmy šifrování a hash |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |[Nabídky RouteBased QM SA](#RouteBasedOffers) |
 | Životnost SA (čas)            |3 600 sekund  |27 000 sekund                               |
 | Životnost SA (bajty)           |102 400 000 kB |102 400 000 kB                               |
-| Metoda Perfect Forward Secrecy (PFS) |No             |[Nabídky RouteBased QM SA](#RouteBasedOffers) |
+| Metoda Perfect Forward Secrecy (PFS) |Ne             |[Nabídky RouteBased QM SA](#RouteBasedOffers) |
 | Detekce mrtvých partnerských zařízení (DPD)     |Nepodporováno  |Podporováno                                    |
 
 

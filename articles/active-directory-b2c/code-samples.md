@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b52bfc14906d8e47c804ae15ee898f6ca00784af
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8642f4284770df54704a4e7066054d3bb4640486
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503840"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545863"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Ukázky kódu pro Azure Active Directory B2C
 
@@ -68,15 +68,25 @@ Následující tabulky obsahují odkazy na ukázky kódu pro využití webových
 | [Node.js](https://github.com/Azure-Samples/active-directory-nodejs-external-identities-api-connector-azure-function-validate)   | Tato Node.js ukázka Azure Functions ukazuje, jak omezit podepisování na konkrétní e-mailové domény a ověřit informace zadané uživatelem.  |
 | [Python](https://github.com/Azure-Samples/active-directory-python-external-identities-api-connector-azure-function-validate)    | Tato ukázka Azure Functions v Pythonu ukazuje, jak omezit podepisování na konkrétní e-mailové domény a ověřit informace zadané uživatelem.    |
 
-### <a name="identity-verification-with-api-connectors"></a>Ověření identity pomocí konektorů rozhraní API
+
+### <a name="automated-fraud-protection-services--captcha"></a>Automatické služby ochrany před podvody & CAPTCHA
+| Ukázka                                                                                                            | Popis                                                                                                                          |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [Podvod a ochrana před zneužitím v Arkose Labs](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose) | V této ukázce se dozvíte, jak pomocí služby Arkose Labs a ochrany před zneužitím chránit uživatele při registraci uživatelů. |
+| [reCAPTCHA](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-captcha) | V této ukázce se dozvíte, jak chránit uživatele pomocí reCAPTCHA výzvy k tomu, abyste zabránili automatizovanému zneužití. |
+
+
+### <a name="identity-verification"></a>Ověření identity
 
 | Ukázka                                                                                                            | Popis                                                                                                                          |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| [IDology](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-idology-identity-verification) | V této ukázce se dozvíte, jak ověřit identitu uživatele v rámci samoobslužné registrace pomocí konektoru rozhraní API pro integraci s IDology. |
-| [Experian](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-experian-identity-verification) | V této ukázce se dozvíte, jak ověřit identitu uživatele v rámci samoobslužné registrace pomocí konektoru rozhraní API pro integraci s Experian. |
+| [IDology](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-idology-identity-verification) | V této ukázce se dozvíte, jak ověřit identitu uživatele v rámci vašich registračních toků pomocí konektoru rozhraní API pro integraci s IDology. |
+| [Experian](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-experian-identity-verification) | V této ukázce se dozvíte, jak ověřit identitu uživatele v rámci vašich registračních toků pomocí konektoru rozhraní API pro integraci s Experian. |
 
-### <a name="community-samples"></a>Ukázky komunity
+
+### <a name="other"></a>Další
 
 | Ukázka                                                                                                            | Popis                                                                                                                          |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [Kód pozvánky](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-invitation-code) | Tato ukázka demonstruje, jak omezit registraci na konkrétní cílové skupiny pomocí kódů pozvánky.|
 | [Ukázky komunitních konektorů API](https://github.com/azure-ad-b2c/api-connector-samples) | Toto úložiště má komunitu udržované vzorky scénářů povolených konektory rozhraní API.|

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 6f80d41001d11c52a00454ea2a593f3f1fce32db
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: da88b8554d6c3214da9a386613538c237a318f73
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027952"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546895"
 ---
 ## <a name="download-and-install"></a>Stažení a instalace
 
@@ -53,15 +53,19 @@ Pomocí těchto kroků nainstalujete rozhraní příkazového řádku pro rozpoz
 
 Zadáním `spx` zobrazíte nápovědu k rozhraní příkazového řádku pro rozpoznávání řeči.
 
-#### <a name="docker-install"></a>[Instalace Docker](#tab/dockerinstall)
+#### <a name="docker-install-windows-linux-macos"></a>[Instalace Docker (Windows, Linux, macOS)](#tab/dockerinstall)
 
-> [!NOTE]
-> <a href="https://www.docker.com/get-started" target="_blank">Docker Desktop pro vaši platformu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> musí být nainstalovaný.
+Pomocí těchto kroků nainstalujete rozhraní příkazového řádku rozpoznávání řeči do kontejneru Docker:
 
-Pomocí těchto kroků nainstalujete rozhraní příkazového řádku rozpoznávání řeči v kontejneru Docker:
-
-1. Do nového příkazového řádku nebo terminálu zadejte tento příkaz:  `docker pull msftspeech/spx`
-2. Zadejte tento příkaz. Měli byste vidět informace o nápovědě pro rozhraní příkazového řádku pro rozpoznávání řeči: `docker run -it --rm msftspeech/spx help`
+1. <a href="https://www.docker.com/get-started" target="_blank">Nainstalovat Docker Desktop <span class="docon docon-navigate-external x-hidden-focus"></span> </a> pro vaši platformu, pokud ještě není nainstalovaná.
+2. Do nového příkazového řádku nebo terminálu zadejte tento příkaz:
+   ```shell   
+   docker pull msftspeech/spx
+   ```
+3. Zadejte tento příkaz. Měli byste vidět informace o nápovědě pro rozhraní příkazového řádku pro rozpoznávání řeči:
+   ```shell 
+   docker run -it --rm msftspeech/spx help
+   ```
 
 ### <a name="mount-a-directory-in-the-container"></a>Připojit adresář v kontejneru
 
@@ -72,7 +76,7 @@ V systému Windows zadejte tento příkaz pro vytvoření místního adresáře.
 
 `mkdir c:\spx-data`
 
-Případně můžete v systému Linux nebo Mac zadat tento příkaz v terminálu a vytvořit adresář a zobrazit jeho absolutní cestu:
+Nebo v systému Linux nebo macOS zadejte tento příkaz v terminálu a vytvořte adresář a podívejte se na jeho absolutní cestu:
 
 ```bash
 mkdir ~/spx-data
@@ -86,13 +90,17 @@ Při volání funkce Speech CLI budete používat absolutní cestu.
 
 Tato dokumentace ukazuje příkaz rozpoznávání řeči, který se `spx` používá v instalacích bez Docker.
 Při volání `spx` příkazu v kontejneru Docker musíte připojit adresář v kontejneru k systému souborů, kde může rozhraní příkazového řádku pro rozpoznávání řeči ukládat a vyhledávat konfigurační hodnoty a číst a zapisovat soubory.
+
 V systému Windows budou vaše příkazy začínat takto:
 
-`docker run -it -v c:\spx-data:/data --rm msftspeech/spx`
+```shell
+docker run -it -v c:\spx-data:/data --rm msftspeech/spx
+```
 
-V systému Linux nebo Mac se příkazy začnou podobat této:
-
-`sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx`
+V systému Linux nebo macOS se příkazy začnou podobat této:
+```shell   
+sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx
+```
 
 > [!NOTE]
 > Nahraďte `/ABSOLUTE_PATH` absolutní cestou zobrazenou `pwd` příkazem v předchozí části.
@@ -100,12 +108,43 @@ V systému Linux nebo Mac se příkazy začnou podobat této:
 Chcete-li použít `spx` příkaz nainstalovaný v kontejneru, vždy zadejte úplný příkaz, následovaný parametry vaší žádosti.
 Například v systému Windows tento příkaz nastaví klíč:
 
-`docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY`
+```shell
+docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY
+```
 
-> [!NOTE]
-> Při spuštění funkce Speech CLI v kontejneru Docker nemůžete použít mikrofon ani mluvčí počítač.
-> Pokud chcete tato zařízení používat, předejte zvukové soubory do a z rozhraní příkazového řádku pro záznam/přehrávání mimo kontejner Docker.
-> Nástroj Speech CLI má přístup k místnímu adresáři, který jste nastavili v předchozích krocích.
+> [!WARNING]
+> Při spuštění funkce Speech CLI v kontejneru Docker nemůžete použít mikrofon počítače. Můžete si však přečíst a Uložit zvukové soubory do místního připojeného adresáře. 
+
+### <a name="optional-create-a-command-line-shortcut"></a>Volitelné: Vytvoření zástupce příkazového řádku
+
+Pokud používáte rozhraní příkazového řádku pro rozpoznávání řeči z kontejneru Docker v systému Linux nebo macOS, můžete vytvořit zástupce. 
+
+Pomocí těchto pokynů vytvořte zástupce:
+1. Otevřete `.bash_profile` v oblíbeném textovém editoru. Příklad:
+   ```shell
+   nano ~/.bash_profile
+   ```
+2. Dále přidejte tuto funkci do `.bash_profile` . Ujistěte se, že tuto funkci aktualizujete se správnou cestou k připojenému adresáři:
+   ```shell   
+   spx(){
+       sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx
+   }
+   ```
+3. Zdroj profilu:
+   ```shell
+   source ~/.bash_profile
+   ```
+4. Místo spuštění můžete hned `sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx` napsat jenom `spx` argumenty a. Příklad: 
+   ```shell
+   // Get some help
+   spx help recognize
+
+   // Recognize speech from an audio file 
+   spx recognize --file /mounted/directory/file.wav
+   ```
+
+> [!WARNING]
+> Pokud změníte připojený adresář, na který se odkazuje Docker, budete muset funkci aktualizovat v `.bash_profile` .
 
 ***
 

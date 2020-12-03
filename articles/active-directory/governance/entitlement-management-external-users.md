@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dd1234e13f77f1ea95327a0a489e9a97cdc0ffd
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0fae7a62f062478c5fee45d172b88d0132f3a8f8
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362497"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546127"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Řízení přístupu pro externí uživatele ve správě nároků Azure AD
 
@@ -51,13 +51,13 @@ Následující diagram a kroky poskytují přehled o tom, jak mají externí už
 
 1. Pošlete odkaz na [portál pro přístup](entitlement-management-access-package-settings.md) k vašemu kontaktu v externí organizaci, kterou můžou sdílet s uživateli, aby si vyžádali balíček pro přístup.
 
-1. Externí uživatel (v tomto příkladu**žadatel a** ) používá odkaz Můj portál přístupu k [vyžádání přístupu](entitlement-management-request-access.md) k balíčku přístupu. Způsob přihlášení uživatele závisí na typu ověřování adresáře nebo domény definované v připojené organizaci.
+1. Externí uživatel (v tomto příkladu **žadatel a** ) používá odkaz Můj portál přístupu k [vyžádání přístupu](entitlement-management-request-access.md) k balíčku přístupu. Způsob přihlášení uživatele závisí na typu ověřování adresáře nebo domény definované v připojené organizaci.
 
 1. Schvalovatel [žádost schválí](entitlement-management-request-approve.md) (nebo se žádost automaticky schválí).
 
 1. Požadavek přejde do [stavu doručování](entitlement-management-process.md).
 
-1. Pomocí procesu pozvání B2B se ve vašem adresáři vytvoří uživatelský účet hosta (v tomto příkladu**žadatel a (host)** ). Pokud je definovaný seznam [povolených nebo zakázaných](../external-identities/allow-deny-list.md) seznamů, použije se nastavení list.
+1. Pomocí procesu pozvání B2B se ve vašem adresáři vytvoří uživatelský účet hosta (v tomto příkladu **žadatel a (host)** ). Pokud je definovaný seznam [povolených nebo zakázaných](../external-identities/allow-deny-list.md) seznamů, použije se nastavení list.
 
 1. Uživatel typu host má přiřazený přístup ke všem prostředkům v balíčku pro přístup. Může trvat nějakou dobu, než se změny provedou v Azure AD a dalších online službách Microsoftu nebo připojených aplikacích SaaS. Další informace najdete v tématu [Změna použití změn](entitlement-management-access-package-resources.md#when-changes-are-applied).
 
@@ -84,7 +84,7 @@ Aby uživatelé mimo vaši organizaci mohli žádat o přístup k balíčkům a 
 - Pokud hostům umožníte pozvat ostatní hosty do vašeho adresáře, znamená to, že se pozvánky hostů můžou vyskytnout mimo správu nároků. Doporučujeme nastavit možnost **hostů může pozvat** na **ne** , aby bylo možné pouze správně řídit pozvánky.
 - Pokud používáte seznam povolených B2B, je nutné zajistit, aby se do seznamu přidala všechny domény, které chcete partnerům s použitím správy oprávnění použít. Případně, pokud používáte seznam s odepřenými seznamem B2B, je nutné zajistit, aby se do seznamu nepřidala žádná doména, se kterou chcete partnerovi přidružit.
 - Pokud vytvoříte zásadu správy nároků pro **všechny uživatele** (všechny připojené organizace a všichni noví uživatelé) a uživatel nepatří do připojené organizace ve vašem adresáři, při vyžádání balíčku se automaticky vytvoří připojená organizace. Nastavení seznamu povolených a zakázaných přihlášení B2B bude mít přednost. Proto nezapomeňte zahrnout domény, které chcete zahrnout do této zásady, do svého seznamu povolených použití, pokud používáte seznam pro odepření, a vyloučit je ze seznamu odepřených.
-- Pokud chcete vytvořit zásadu správy nároků, která bude obsahovat **všechny uživatele** (všechny připojené organizace a všichni noví externí uživatelé), musíte nejdřív pro svůj adresář povolit jednorázové ověřování heslem e-Time. Další informace najdete v tématu [ověřování e-mailového hesla s jedním časem (Preview)](../external-identities/one-time-passcode.md#opting-in-to-the-preview).
+- Pokud chcete vytvořit zásadu správy nároků, která bude obsahovat **všechny uživatele** (všechny připojené organizace a všichni noví externí uživatelé), musíte nejdřív pro svůj adresář povolit jednorázové ověřování heslem e-Time. Další informace najdete v tématu [ověřování e-mailového hesla s jedním časem (Preview)](../external-identities/one-time-passcode.md).
 - Další informace o externích nastaveních spolupráce Azure AD B2B najdete v tématu [Povolení externí spolupráce B2B a Správa toho, kdo může pozvat hosty](../external-identities/delegate-invitations.md).
 
     ![Nastavení externí spolupráce Azure AD](./media/entitlement-management-external-users/collaboration-settings.png)

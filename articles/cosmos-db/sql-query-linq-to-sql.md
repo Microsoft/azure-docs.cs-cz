@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: tisande
-ms.openlocfilehash: 35f212ea246e03be02fa082ef1b55dcb7cae1575
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 122c95fe9ac017ad7a6957dcdb8323837be34f21
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538644"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545379"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL překlad
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -25,7 +25,7 @@ Zprostředkovatel dotazů podporuje následující skalární výrazy:
 
 - Konstantní hodnoty, včetně konstantních hodnot primitivních datových typů v době vyhodnocení dotazu.
   
-- Výrazy indexů vlastností nebo pole, které odkazují na vlastnost objektu nebo prvku pole. Například:
+- Výrazy indexů vlastností nebo pole, které odkazují na vlastnost objektu nebo prvku pole. Příklad:
   
   ```
     family.Id;
@@ -34,7 +34,7 @@ Zprostředkovatel dotazů podporuje následující skalární výrazy:
     family.children[n].grade; //n is an int variable
   ```
   
-- Aritmetické výrazy, včetně běžných aritmetických výrazů pro numerické a logické hodnoty. Úplný seznam najdete v tématu [Azure Cosmos DB specifikace SQL](sql-query-system-functions.md).
+- Aritmetické výrazy, včetně běžných aritmetických výrazů pro numerické a logické hodnoty. Úplný seznam najdete v tématu [Azure Cosmos DB specifikace SQL](sql-query-aggregate-functions.md).
   
   ```
     2 * family.children[0].grade;
@@ -81,19 +81,19 @@ using (FeedIterator<Book> setIterator = container.GetItemLinqQueryable<Book>()
 
 Zprostředkovatel LINQ zahrnutý v sadě SQL .NET SDK podporuje následující operátory:
 
-- **Vyberte** : posunutí projekce pro [Výběr](sql-query-select.md), včetně konstrukce objektu.
-- **Kde** : filtry se překládají na [WHERE](sql-query-where.md)a podporují překlad mezi `&&` , a `||` `!` operátory SQL
-- **Operátor SelectMany** : umožňuje odvinutí polí do klauzule [Join](sql-query-join.md) . Použijte k řetězení nebo vnořování výrazů k filtrování prvků pole.
-- **OrderBy** a **OrderByDescending** : PŘELOŽÍ na [pořadí pomocí](sql-query-order-by.md) ASC nebo DESC.
-- **Count** , **Sum** , **min** , **Max** a **Average** operátory pro [agregaci](sql-query-aggregates.md)a jejich asynchronní ekvivalenty **CountAsync** , **SumAsync** , **MinAsync** , **MaxAsync** a **AverageAsync**.
-- **CompareTo** : přeloží porovnávání rozsahů. Běžně se používá pro řetězce, protože nejsou srovnatelné v rozhraní .NET.
+- **Vyberte**: posunutí projekce pro [Výběr](sql-query-select.md), včetně konstrukce objektu.
+- **Kde**: filtry se překládají na [WHERE](sql-query-where.md)a podporují překlad mezi `&&` , a `||` `!` operátory SQL
+- **Operátor SelectMany**: umožňuje odvinutí polí do klauzule [Join](sql-query-join.md) . Použijte k řetězení nebo vnořování výrazů k filtrování prvků pole.
+- **OrderBy** a **OrderByDescending**: PŘELOŽÍ na [pořadí pomocí](sql-query-order-by.md) ASC nebo DESC.
+- **Count**, **Sum**, **min**, **Max** a **Average** operátory pro [agregaci](sql-query-aggregate-functions.md)a jejich asynchronní ekvivalenty **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync** a **AverageAsync**.
+- **CompareTo**: přeloží porovnávání rozsahů. Běžně se používá pro řetězce, protože nejsou srovnatelné v rozhraní .NET.
 - **Přeskočte** a **proveďte** následující kroky: přeloží se na [posun a omezení](sql-query-offset-limit.md) pro omezení výsledků dotazu a stránkování.
-- **Matematické funkce** : podporuje překlad z rozhraní .NET,,,,, `Abs` `Acos` `Asin` `Atan` `Ceiling` `Cos` , `Exp` , `Floor` ,, `Log` `Log10` , `Pow` , `Round` , `Sign` , `Sin` , `Sqrt` , `Tan` a `Truncate` na ekvivalentní [integrované matematické funkce](sql-query-mathematical-functions.md).
-- **Řetězcové funkce** : podporuje překlad z rozhraní .NET `Concat` , `Contains` ,,,, `Count` `EndsWith` `IndexOf` `Replace` ,,,,, `Reverse` `StartsWith` `SubString` `ToLower` `ToUpper` , `TrimEnd` a `TrimStart` na ekvivalentní [integrované řetězcové funkce](sql-query-string-functions.md).
-- **Funkce pole** : podporuje převod z rozhraní .NET `Concat` , `Contains` a `Count` do ekvivalentních [integrovaných funkcí pole](sql-query-array-functions.md).
-- **Funkce geoprostorového rozšíření** : podporuje překlad z metod zástupných procedur `Distance` , `IsValid` , `IsValidDetailed` a `Within` na ekvivalentní [vestavěné geoprostorové funkce](sql-query-geospatial-query.md).
-- **Uživatelsky definovaná funkce rozšíření** : podporuje převod z metody zástupné procedury `UserDefinedFunctionProvider.Invoke` na odpovídající [uživatelsky definovanou funkci](sql-query-udfs.md).
-- **Různé** : podporuje překlad `Coalesce` a podmíněných [operátorů](sql-query-operators.md). Lze převést `Contains` na řetězec obsahuje, ARRAY_CONTAINS nebo v, v závislosti na kontextu.
+- **Matematické funkce**: podporuje překlad z rozhraní .NET,,,,, `Abs` `Acos` `Asin` `Atan` `Ceiling` `Cos` , `Exp` , `Floor` ,, `Log` `Log10` , `Pow` , `Round` , `Sign` , `Sin` , `Sqrt` , `Tan` a `Truncate` na ekvivalentní [integrované matematické funkce](sql-query-mathematical-functions.md).
+- **Řetězcové funkce**: podporuje překlad z rozhraní .NET `Concat` , `Contains` ,,,, `Count` `EndsWith` `IndexOf` `Replace` ,,,,, `Reverse` `StartsWith` `SubString` `ToLower` `ToUpper` , `TrimEnd` a `TrimStart` na ekvivalentní [integrované řetězcové funkce](sql-query-string-functions.md).
+- **Funkce pole**: podporuje převod z rozhraní .NET `Concat` , `Contains` a `Count` do ekvivalentních [integrovaných funkcí pole](sql-query-array-functions.md).
+- **Funkce geoprostorového rozšíření**: podporuje překlad z metod zástupných procedur `Distance` , `IsValid` , `IsValidDetailed` a `Within` na ekvivalentní [vestavěné geoprostorové funkce](sql-query-geospatial-query.md).
+- **Uživatelsky definovaná funkce rozšíření**: podporuje převod z metody zástupné procedury `UserDefinedFunctionProvider.Invoke` na odpovídající [uživatelsky definovanou funkci](sql-query-udfs.md).
+- **Různé**: podporuje překlad `Coalesce` a podmíněných [operátorů](sql-query-operators.md). Lze převést `Contains` na řetězec obsahuje, ARRAY_CONTAINS nebo v, v závislosti na kontextu.
 
 ## <a name="examples"></a>Příklady
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 982f4a9cdf3984bae79cd11dad2bd637a1772f05
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 58a907a2ae17966f50a037f49a807ac0a3ad6867
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348496"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545822"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Funkce BLOB Storage dostupné v Azure Data Lake Storage Gen2
 
@@ -35,21 +35,20 @@ Následující tabulka ukazuje, jak jsou jednotlivé funkce úložiště objekt�
 |Příkazy prostředí PowerShell pro úložiště objektů BLOB|Obecná dostupnost|Obecná dostupnost|[Rychlý Start: nahrání, stažení a výpis objektů BLOB pomocí PowerShellu](storage-quickstart-blobs-powershell.md)|
 |Příkazy Azure CLI služby Blob Storage|Obecná dostupnost|Obecná dostupnost|[Rychlý Start: vytvoření, stažení a výpis objektů BLOB pomocí Azure CLI](storage-quickstart-blobs-cli.md)|
 |Rozhraní API pro úložiště objektů BLOB|Obecná dostupnost|Obecná dostupnost|[Rychlý start: Klientská knihovna úložiště objektů blob Azure verze 12 pro .NET](storage-quickstart-blobs-dotnet.md)<br>[Rychlý Start: Správa objektů BLOB pomocí sady Java V12 SDK](storage-quickstart-blobs-java.md)<br>[Rychlý Start: Správa objektů BLOB pomocí sady Python V12 SDK](storage-quickstart-blobs-python.md)<br>[Rychlý Start: Správa objektů BLOB pomocí sady JavaScript V12 SDK v Node.js](storage-quickstart-blobs-nodejs.md)|
-|Diagnostické protokoly|Obecná dostupnost|Preview |[Protokolování analýz služby Azure Storage](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Diagnostické protokoly|Obecná dostupnost|Preview |[Protokolování Analýzy úložiště Azure](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Archivní úroveň přístupu|Obecná dostupnost|Nepodporováno|[Azure Blob Storage: Horká, studená a archivní úroveň přístupu](storage-blob-storage-tiers.md)|
 |Zásady správy životního cyklu (vrstvení)|Obecná dostupnost|Zatím nepodporováno|[Správa životního cyklu úložiště objektů blob v Azure](storage-lifecycle-management-concepts.md)|
 |Zásady správy životního cyklu (odstranit objekt BLOB)|Obecná dostupnost|Obecná dostupnost|[Správa životního cyklu úložiště objektů blob v Azure](storage-lifecycle-management-concepts.md)|
 |Přihlašování Azure Monitor|Preview |Preview|[Azure Storage monitorování](./monitor-blob-storage.md)|
-|Snímky|Preview|Preview|[Snímky objektů BLOB](snapshots-overview.md)|
-|Statické weby|Preview|Preview|[Hostování statického webu ve službě Azure Storage](storage-blob-static-website.md)|
-|Neměnné úložiště|Preview|Preview|[Ukládání důležitých podnikových dat objektů BLOB s neměnném úložištěm](storage-blob-immutable-storage.md)|
+|Snímky|Preview<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Preview<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Snímky objektů BLOB](snapshots-overview.md)|
+|Statické weby|Preview<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Preview<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Hostování statického webu ve službě Azure Storage](storage-blob-static-website.md)|
+|Neměnné úložiště|Preview<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Preview<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Ukládání důležitých podnikových dat objektů BLOB s neměnném úložištěm](storage-blob-immutable-storage.md)|
 |Obnovitelné odstranění kontejneru|Preview|Preview|[Obnovitelné odstranění pro kontejnery (Preview)](soft-delete-container-overview.md)|
 |Inventář Azure Storage|Preview|Preview|[Použití inventáře Azure Storage pro správu dat objektů BLOB (Preview)](blob-inventory.md)|
 |Obnovitelné odstranění objektu BLOB|Zatím nepodporováno|Zatím nepodporováno|[Obnovitelné odstranění pro objekty blob](storage-blob-soft-delete.md)|
-|Obnovitelné odstranění objektu BLOB|Zatím nepodporováno|Zatím nepodporováno|[Obnovitelné odstranění pro objekty blob](./soft-delete-blob-overview.md)|
 |Blobfuse|Obecná dostupnost|Obecná dostupnost|[Postup připojení úložiště objektů BLOB jako systému souborů pomocí blobfuse](storage-how-to-mount-container-linux.md)|
+|Anonymní veřejný přístup |Obecná dostupnost|Obecná dostupnost| Viz téma [Konfigurace anonymního veřejného přístupu pro čtení pro kontejnery a objekty blob](anonymous-read-access-configure.md).|
 |Převzetí služeb při selhání účtu spravovaného zákazníkem|Zatím nepodporováno|Zatím nepodporováno|[Zotavení po havárii a převzetí služeb při selhání účtu](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Seznam ACL kontejneru objektů BLOB|Nepodporováno<div role="complementary" aria-labelledby="blob-container-ACL"><sup>1</sup></div>|Nepodporováno<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Podívejte se na související poznámku pod touto tabulkou.|
 |Klíče poskytované zákazníky|Zatím nepodporováno|Zatím nepodporováno|[Zadání šifrovacího klíče pro požadavek na úložiště objektů BLOB](encryption-customer-provided-keys.md)|
 |Vlastní domény|Zatím nepodporováno|Zatím nepodporováno|[Mapování vlastní domény na koncový bod služby Azure Blob Storage](storage-custom-domain-name.md)|
 |Obory šifrování|Zatím nepodporováno|Zatím nepodporováno|[Vytváření a Správa oborů šifrování (Preview)](encryption-scope-manage.md)|
@@ -57,11 +56,9 @@ Následující tabulka ukazuje, jak jsou jednotlivé funkce úložiště objekt�
 |Replikace objektů|Zatím nepodporováno|Zatím nepodporováno|[Konfigurace replikace objektů pro objekty blob bloku](object-replication-configure.md)|
 |Správa verzí objektů BLOB|Zatím nepodporováno|Zatím nepodporováno|[Povolení a správa verzí objektů BLOB](versioning-enable.md)|
 
-<div id="blob-container-ACL"><sup>1</sup> můžete nastavit seznamy ACL pro kořenovou složku kontejneru, ale ne samotný kontejner.</div><br>
+<div id="preview-form"><sup>1</sup> Pokud chcete používat snímky, neměnné úložiště nebo statické weby s Data Lake Storage Gen2, musíte se zaregistrovat ve verzi Preview, a to tak, že tento <a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>formulář</a>dokončíte.  </div>
 
-<div id="preview-form"><sup>2</sup> . Pokud chcete používat snímky, neměnné úložiště nebo statické weby s Data Lake Storage Gen2, musíte se zaregistrovat ve verzi Preview, a to tak, že tento <a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>formulář</a>dokončíte.  </div>
-
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 - [Známé problémy s Azure Data Lake Storage Gen2](data-lake-storage-known-issues.md)
 - [Služby Azure, které podporují Azure Data Lake Storage Gen2](data-lake-storage-supported-azure-services.md)

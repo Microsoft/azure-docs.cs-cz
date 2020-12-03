@@ -14,12 +14,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c82ea3328938b42a26df03c7e83776e1a1a69b20
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 48c996b6c7d0024b256908565c57032fe3e18514
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557639"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545634"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>Registrace SQL Server virtuálního počítače s rozšířením agenta SQL IaaS
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -40,7 +40,7 @@ Abyste mohli využít rozšíření agenta SQL IaaS, musíte nejdřív [zaregist
 > [!IMPORTANT]
 > Rozšíření agenta SQL IaaS shromažďuje data pro účely výslovného účelu poskytování dobrovolných výhod při používání SQL Server v rámci Azure Virtual Machines. Microsoft nebude tato data používat pro audity licencování bez předchozího souhlasu zákazníka. Další informace najdete v tématu [SQL Server ochrany osobních údajů](/sql/sql-server/sql-server-privacy#non-personal-data) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete zaregistrovat SQL Server virtuální počítač s rozšířením, budete potřebovat: 
 
@@ -59,7 +59,7 @@ Pokud chcete zaregistrovat SQL Server virtuální počítač s rozšířením ag
 1. Přejít na **předplatná** a vyberte předplatné, které vás zajímá.  
 1. Na stránce **předplatná** pokračujte na **rozšíření**. 
 1. Zadejte **SQL** do filtru k uvedení rozšíření souvisejících s SQL. 
-1. V závislosti na požadované akci vyberte **Registrovat** , **znovu zaregistrovat** nebo **zrušit registraci** pro poskytovatele  **Microsoft. SqlVirtualMachine** . 
+1. V závislosti na požadované akci vyberte **Registrovat**, **znovu zaregistrovat** nebo **zrušit registraci** pro poskytovatele  **Microsoft. SqlVirtualMachine** . 
 
    ![Úprava zprostředkovatele](./media/sql-agent-extension-manually-register-single-vm/select-resource-provider-sql.png)
 
@@ -104,7 +104,7 @@ Registrace virtuálního počítače s SQL Server v jednoduchém režimu pomocí
 
   ```azurecli-interactive
   # Register Enterprise or Standard self-installed VM in Lightweight mode
-  az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type PAYG 
+  az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type <license_type> 
   ```
 
 
@@ -119,7 +119,7 @@ Zaregistrujte SQL Server virtuální počítač v jednoduchém režimu s Azure P
           
   # Register SQL VM with 'Lightweight' SQL IaaS agent
   New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
-    -LicenseType PAYG -SqlManagementType LightWeight  
+    -LicenseType <license_type>  -SqlManagementType LightWeight  
   ```
 
 ---
@@ -140,7 +140,7 @@ Pokud chcete virtuální počítač SQL Server zaregistrovat přímo v plném re
 
 ### <a name="noagent-management-mode"></a>Režim správy neagentů 
 
-SQL Server 2008 a 2008 R2 nainstalované v systému Windows Server 2008 ( _ne R2_ ) je možné zaregistrovat pomocí rozšíření agenta SQL IaaS v [režimu neagent](sql-server-iaas-agent-extension-automate-management.md#management-modes). Tato možnost zaručuje dodržování předpisů a umožňuje monitorovat SQL Server virtuálním počítačem v Azure Portal s omezenými funkcemi.
+SQL Server 2008 a 2008 R2 nainstalované v systému Windows Server 2008 (_ne R2_) je možné zaregistrovat pomocí rozšíření agenta SQL IaaS v [režimu neagent](sql-server-iaas-agent-extension-automate-management.md#management-modes). Tato možnost zaručuje dodržování předpisů a umožňuje monitorovat SQL Server virtuálním počítačem v Azure Portal s omezenými funkcemi.
 
 
 Jako **typ licence** zadejte buď: `AHUB` , `PAYG` , nebo `DR` . Pro **nabídku image** zadejte buď `SQL2008-WS2008` nebo `SQL2008R2-WS2008`
@@ -186,14 +186,14 @@ $sqlvm.SqlManagementType
 
 ## <a name="upgrade-to-full"></a>Upgradovat na úplný  
 
-SQL Server virtuálních počítačů, které mají rozšíření v *prostém* režimu, se může upgradovat na _úplnou_ pomocí Azure Portal, rozhraní příkazového řádku Azure nebo Azure PowerShell. SQL Server virtuálních počítačů v režimu bez _agenta_ se může upgradovat na _úplnou_ po upgradu operačního systému na Windows 2008 R2 a novější. Není možné nadowngradovat – k tomu je potřeba [zrušit registraci](#unregister-from-extension) virtuálního počítače s SQL Server z rozšíření agenta SQL IaaS. Tím dojde k odebrání prostředku **virtuálního počítače SQL** _resource_ , ale neodstraní se skutečný virtuální počítač. 
+SQL Server virtuálních počítačů, které mají rozšíření v *prostém* režimu, se může upgradovat na _úplnou_ pomocí Azure Portal, rozhraní příkazového řádku Azure nebo Azure PowerShell. SQL Server virtuálních počítačů v režimu bez _agenta_ se může upgradovat na _úplnou_ po upgradu operačního systému na Windows 2008 R2 a novější. Není možné nadowngradovat – k tomu je potřeba [zrušit registraci](#unregister-from-extension) virtuálního počítače s SQL Server z rozšíření agenta SQL IaaS. Tím dojde k odebrání prostředku **virtuálního počítače SQL** _resource_, ale neodstraní se skutečný virtuální počítač. 
 
 
 ### <a name="azure-portal"></a>portál Azure
 
 Chcete-li upgradovat rozšíření na režim úplného použití Azure Portal, postupujte podle následujících kroků: 
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Přejít na prostředek [virtuálních počítačů SQL](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) . 
 1. Vyberte svůj virtuální počítač SQL Server a vyberte **Přehled**. 
 1. V případě SQL Server virtuálních počítačů pomocí agenta nebo režimu zjednodušeného IaaS vyberte možnost **jediný typ licence a aktualizace edice jsou k dispozici ve zprávě rozšíření SQL IaaS** .
@@ -236,10 +236,10 @@ Můžete ověřit, jestli se váš SQL Server virtuální počítač už zaregis
 
 Chcete-li ověřit stav registrace pomocí Azure Portal, postupujte podle následujících kroků: 
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 1. Přejít na [virtuální počítače s SQL Server](manage-sql-vm-portal.md).
 1. Ze seznamu vyberte svůj virtuální počítač SQL Server. Pokud zde SQL Server váš virtuální počítač, pravděpodobně nebyl zaregistrován s rozšířením agenta SQL IaaS. 
-1. Zobrazit hodnotu v části **stav** Pokud **Status** je stav **úspěšný** , je virtuální počítač SQL Server zaregistrovaný s rozšířením agenta SQL IaaS úspěšně. 
+1. Zobrazit hodnotu v části **stav** Pokud **Status** je stav **úspěšný**, je virtuální počítač SQL Server zaregistrovaný s rozšířením agenta SQL IaaS úspěšně. 
 
    ![Ověřit stav pomocí registrace SQL RP](./media/sql-agent-extension-manually-register-single-vm/verify-registration-status.png)
 
@@ -278,7 +278,7 @@ Zrušení registrace virtuálního počítače SQL s rozšířením agenta SQL I
 
 Chcete-li zrušit registraci SQL Serverho virtuálního počítače z rozšíření pomocí Azure Portal, postupujte podle následujících kroků:
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejděte k prostředku virtuálního počítače SQL. 
   
    ![Prostředek virtuálních počítačů SQL](./media/sql-agent-extension-manually-register-single-vm/sql-vm-manage.png)

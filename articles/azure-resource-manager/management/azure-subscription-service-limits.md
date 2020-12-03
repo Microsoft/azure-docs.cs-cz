@@ -3,12 +3,12 @@ title: Omezení a kvóty předplatného Azure
 description: Poskytuje seznam běžných limitů, kvót a omezení předplatného a služeb Azure. Tento článek obsahuje informace o tom, jak zvýšit limity spolu s maximálními hodnotami.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 810d503f1abdc14ad2d255a89aebe7c10954a889
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4d56c5c3fd33d1cda05e23d5bc53e7540428671b
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186197"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547844"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 
@@ -148,7 +148,7 @@ Nejnovější hodnoty pro Azure Machine Learning výpočetních kvót najdete na
 
 ## <a name="azure-monitor-limits"></a>Omezení Azure Monitor
 
-### <a name="alerts"></a>Výstrahy
+### <a name="alerts"></a>Upozornění
 
 [!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-alerts.md)]
 
@@ -312,6 +312,10 @@ Následující tabulka se vztahuje na SKU V1, v2, Standard a WAF, pokud není uv
 
 [!INCLUDE [private-link-limits](../../../includes/private-link-limits.md)]
 
+## <a name="purview-limits"></a>Omezení dosah
+
+Nejnovější hodnoty pro kvóty Azure dosah najdete na [stránce věnované kvótám Azure dosah](../../purview/how-to-manage-quotas.md) .
+
 ### <a name="traffic-manager-limits"></a>Omezení Traffic Manager
 
 [!INCLUDE [traffic-manager-limits](../../../includes/traffic-manager-limits.md)]
@@ -442,7 +446,7 @@ Pro nasazení prostředků pomocí galerií sdílených imagí existují omezen�
 
 [!INCLUDE [virtual-machine-scale-sets-limits](../../../includes/azure-virtual-machine-scale-sets-limits.md)]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * [Pochopení omezení a zvýšení počtu Azure](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Velikosti virtuálních počítačů a cloudových služeb pro Azure](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

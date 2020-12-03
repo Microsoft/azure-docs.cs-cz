@@ -3,12 +3,12 @@ title: Zálohování a obnovení šifrovaných virtuálních počítačů Azure
 description: Popisuje postup zálohování a obnovení šifrovaných virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: c4760a54d0200e48b2d6a38c963e9fc23925f7ff
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: ee7fedffd58ffb9e98f8c412833d151eb1a95530
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324919"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547147"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Zálohování a obnovení šifrovaných virtuálních počítačů Azure
 
@@ -22,7 +22,11 @@ Ve výchozím nastavení jsou všechny disky ve vašich virtuálních počítač
 
 ## <a name="encryption-using-customer-managed-keys"></a>Šifrování s využitím klíčů spravovaných zákazníky
 
-Když šifrujete disky pomocí vlastních klíčů (CMK), klíč použitý k šifrování disků je uložený v Azure Key Vault a spravuje je. Šifrování služby Storage (SSE) používající CMK se liší od šifrování Azure Disk Encryption (ADE). ADE používá nástroje pro šifrování operačního systému. SSE šifruje data ve službě úložiště a umožňuje pro vaše virtuální počítače používat libovolný operační systém nebo Image. Další informace o šifrování spravovaných disků pomocí klíčů spravovaných zákazníkem najdete v [tomto článku](../virtual-machines/disk-encryption.md#customer-managed-keys).
+Při šifrování disků pomocí klíčů spravovaných zákazníkem (CMK) se klíč používaný k šifrování disků ukládá do Azure Key Vault a spravuje je. Šifrování služby Storage (SSE) používající CMK se liší od šifrování Azure Disk Encryption (ADE). ADE používá nástroje pro šifrování operačního systému. SSE šifruje data ve službě úložiště a umožňuje pro vaše virtuální počítače používat libovolný operační systém nebo Image.
+
+Nemusíte provádět žádné explicitní akce pro zálohování nebo obnovení virtuálních počítačů, které používají klíče spravované zákazníkem k šifrování svých disků. Data záloh pro tyto virtuální počítače uložená v trezoru se budou šifrovat stejnými metodami jako [šifrování použité v trezoru](encryption-at-rest-with-cmk.md).
+
+Další informace o šifrování spravovaných disků pomocí klíčů spravovaných zákazníkem najdete v [tomto článku](../virtual-machines/disk-encryption.md#customer-managed-keys).
 
 ## <a name="encryption-support-using-ade"></a>Podpora šifrování pomocí ADE
 

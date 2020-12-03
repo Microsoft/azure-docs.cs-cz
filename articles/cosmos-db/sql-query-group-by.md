@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: tisande
-ms.openlocfilehash: 71314e6999031f52ebbfc582b43684ab5a17a261
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: d9cafc100ddd4b553577c447e82334e6ee7d1b6d
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93338794"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545413"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Klauzule GROUP BY v Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -41,7 +41,7 @@ Klauzule GROUP BY rozděluje výsledky dotazu podle hodnot jedné nebo více zad
 
 ## <a name="remarks"></a>Poznámky
   
-  Pokud dotaz používá klauzuli GROUP BY, klauzule SELECT může obsahovat pouze podmnožinu vlastností a systémových funkcí obsažených v klauzuli GROUP BY. Jedna výjimka je [agregovaná systémová funkce](sql-query-aggregates.md), která se může objevit v klauzuli SELECT bez zahrnutí v klauzuli Group by. Do klauzule SELECT můžete také vždy zahrnout hodnoty literálu.
+  Pokud dotaz používá klauzuli GROUP BY, klauzule SELECT může obsahovat pouze podmnožinu vlastností a systémových funkcí obsažených v klauzuli GROUP BY. Jedinou výjimkou jsou [agregační funkce](sql-query-aggregate-functions.md), které se mohou objevit v klauzuli SELECT bez zahrnutí v klauzuli Group by. Do klauzule SELECT můžete také vždy zahrnout hodnoty literálu.
 
   Klauzule GROUP BY musí být za klauzulí SELECT, FROM a WHERE a před klauzulí LIMITu POSUNu. V tuto chvíli nemůžete použít klauzuli GROUP BY s klauzulí ORDER BY, ale to je plánováno.
 
@@ -192,4 +192,4 @@ Výsledky jsou následující:
 
 - [Začínáme](sql-query-getting-started.md)
 - [Klauzule SELECT](sql-query-select.md)
-- [Agregační funkce](sql-query-aggregates.md)
+- [Agregační funkce](sql-query-aggregate-functions.md)

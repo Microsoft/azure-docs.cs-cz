@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java, contperfq2
-ms.openlocfilehash: 1f57e14893e6f43b98b0e45cc2bd2d49e31271d0
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bfbf764aaf1061808d128d16e8a96b08e75fcfe6
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350343"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545566"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB Async Java SDK v2
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "96350343"
 
 
 > [!IMPORTANT]  
-> Nejedná *se o* nejnovější sadu Java SDK pro Azure Cosmos DB. Projekt byste měli upgradovat na [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) a pak si přečtěte příručku Azure Cosmos DB Java SDK v4 – [Průvodce tipy pro výkon](performance-tips-java-sdk-v4-sql.md). Postupujte podle pokynů v tématu [migrace do Azure Cosmos DB příručka Java SDK v4](migrate-java-v4-sdk.md) a příručka [vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) Guide to upgrade. 
+> Nejedná *se o* nejnovější sadu Java SDK pro Azure Cosmos DB. Projekt byste měli upgradovat na [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) a pak si přečtěte příručku Azure Cosmos DB Java SDK v4 – [Průvodce tipy pro výkon](performance-tips-java-sdk-v4-sql.md). Postupujte podle pokynů v tématu [migrace do Azure Cosmos DB příručka Java SDK v4](migrate-java-v4-sdk.md) a příručka [vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) Guide to upgrade. 
 > 
 > Tipy ke zvýšení výkonu v tomto článku jsou pouze pro Azure Cosmos DB Async Java SDK v2. Další informace najdete v [poznámkách k verzi](sql-api-sdk-async-java.md)Azure Cosmos DB ASYNC Java SDK v2, [úložišti Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)a Azure Cosmos DB asynchronní [příručce k odstraňování potíží](troubleshoot-java-async-sdk.md) se sadou Java SDK v2.
 >
@@ -262,7 +262,7 @@ _ **Implementovat omezení rychlosti v intervalech getRetryAfterInMilliseconds**
 
     Další informace najdete v tématu [Azure Cosmos DB zásady indexování](./index-policy.md).
 
-## <a name="throughput"></a><a id="measure-rus"></a>Propustnost
+## <a name="throughput"></a><a id="measure-rus"></a>Zvyšují
 
 * **Měření a optimalizace pro nižší jednotky žádostí za sekundu použití**
 

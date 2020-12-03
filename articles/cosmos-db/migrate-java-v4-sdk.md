@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b33524acd09cbf565127dc81ef2b5bfa16b4504d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 6bbf87689b577eda7de491744156e63eaa3b440c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339753"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546875"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Migrace aplikace na používání sady Azure Cosmos DB Java SDK v4
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -33,7 +33,7 @@ Tento článek vysvětluje, jak upgradovat stávající aplikaci Java, která po
 
 V následující tabulce jsou uvedeny různé Azure Cosmos DB Java SDK, název balíčku a informace o verzi:
 
-| Java SDK| Datum vydání | Sada rozhraní API   | Maven jar  | Název balíčku Java  |Referenční dokumentace ke knihovně API   | Zpráva k vydání verze  |
+| Java SDK| Datum vydání | Sada rozhraní API   | Maven jar  | Název balíčku Java  |Referenční informace k rozhraním API   | Poznámky k verzi  |
 |-------|------|-----------|-----------|--------------|-------------|---------------------------|
 | Async 2. x. x  | Červen 2018    | Asynchronní (RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [Rozhraní API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Zpráva k vydání verze](sql-api-sdk-async-java.md) |
 | Synchronizace 2. x. x     | Září 2018    | Sync   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [Rozhraní API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Zpráva k vydání verze](sql-api-sdk-java.md)  |
@@ -46,9 +46,9 @@ Níže jsou uvedené klíčové rozdíly v implementaci mezi různými sadami SD
 
 ### <a name="rxjava-is-replaced-with-reactor-in-azure-cosmos-db-java-sdk-versions-3xx-and-40"></a>RxJava se nahrazuje třídou Reactor v Azure Cosmos DB Java SDK verze 3. x. x a 4,0
 
-Pokud nejste obeznámeni s asynchronním programováním nebo reaktivním programováním, přečtěte si [Průvodce vzorem reaktoru](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md) pro Úvod do asynchronního programování a reaktoru projektu. Tato příručka může být užitečná, pokud jste v minulosti používali Azure Cosmos DB synchronizaci sady Java SDK 2. x. x nebo Azure Cosmos DB Java SDK 3. x. x Sync API.
+Pokud nejste obeznámeni s asynchronním programováním nebo reaktivním programováním, přečtěte si [Průvodce vzorem reaktoru](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-pattern-guide.md) pro Úvod do asynchronního programování a reaktoru projektu. Tato příručka může být užitečná, pokud jste v minulosti používali Azure Cosmos DB synchronizaci sady Java SDK 2. x. x nebo Azure Cosmos DB Java SDK 3. x. x Sync API.
 
-Pokud jste používali Azure Cosmos DB Async Java SDK 2. x. x a plánujete migrovat na sadu 4,0 SDK, přečtěte si článek [Průvodce RxJava a příručka](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) k převádění RxJava kódu na použití reaktoru.
+Pokud jste používali Azure Cosmos DB Async Java SDK 2. x. x a plánujete migrovat na sadu 4,0 SDK, přečtěte si článek [Průvodce RxJava a příručka](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) k převádění RxJava kódu na použití reaktoru.
 
 ### <a name="azure-cosmos-db-java-sdk-v4-has-direct-connectivity-mode-in-both-async-and-sync-apis"></a>Azure Cosmos DB Java SDK V4 má přímý režim připojení v rozhraních API Async i Sync.
 
@@ -66,9 +66,9 @@ Níže jsou uvedené změny úrovně rozhraní API v Azure Cosmos DB Java SDK 4.
 
   * **Java SDK 4,0** : všechny třídy patří do rozhraní API pro synchronizaci, pokud není název třídy připojen pomocí `Async` After `Cosmos` .
 
-  * **Java SDK 3. x. x** : všechny třídy patří do ASYNCHRONNÍHO rozhraní API, pokud není název třídy připojen pomocí `Async` After `Cosmos` .
+  * **Java SDK 3. x. x**: všechny třídy patří do ASYNCHRONNÍHO rozhraní API, pokud není název třídy připojen pomocí `Async` After `Cosmos` .
 
-  * **Async Java SDK 2. x. x** : názvy tříd jsou podobné synchronizaci sady Java SDK 2. x. x, ale název začíná na *Async*.
+  * **Async Java SDK 2. x. x**: názvy tříd jsou podobné synchronizaci sady Java SDK 2. x. x, ale název začíná na *Async*.
 
 ### <a name="hierarchical-api-structure"></a>Hierarchická struktura rozhraní API
 
@@ -376,5 +376,5 @@ SalesOrder salesOrder = new SalesOrder(
 ## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření aplikace Java](create-sql-api-java.md) pro správu Azure Cosmos DB dat rozhraní SQL API pomocí sady v4 SDK
-* Další informace o sadách [Java SDK založených na reaktorech](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md)
-* Přečtěte si, jak převést asynchronní kód RxJava na reactoring Async Code pomocí třídy [actor vs RxJava Guide](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) .
+* Další informace o sadách [Java SDK založených na reaktorech](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-pattern-guide.md)
+* Přečtěte si, jak převést asynchronní kód RxJava na reactoring Async Code pomocí třídy [actor vs RxJava Guide](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) .

@@ -12,20 +12,18 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 12/01/2020
 ms.author: barclayn
 ROBOTS: NOINDEX,NOFOLLOW
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f899a6c1b4f359f7e8d6e1e05389aa697b4f1bd7
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 247b3c1b4341eff11069a6af324fff5cf1fba62c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359693"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546586"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>Kurz: Použití spravované identity přiřazené uživatelem na virtuálním počítači s Linuxem pro přístup k Azure Resource Manageru
-
-[!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
 Tento kurz vysvětluje, jak vytvořit spravovanou identitu přiřazenou uživatelem, přiřadit ji k virtuálnímu počítači s Linuxem a pak ji použít pro přístup k rozhraní API Azure Resource Manageru. Spravované identity pro prostředky Azure se spravují automaticky v Azure. Umožňují ověřování ve službách, které podporují ověřování Azure AD, bez nutnosti vložení přihlašovacích údajů do kódu. 
 
@@ -37,7 +35,7 @@ V tomto kurzu se naučíte:
 > * Udělení přístupu spravované identitě přiřazené uživatelem ke skupině prostředků v Azure Resource Manageru 
 > * Získání přístupového tokenu pomocí spravované identity přiřazené uživatelem a jeho použití k volání Azure Resource Manageru 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Porozumění spravovaným identitám. Pokud ještě neznáte funkci spravovaných identit pro prostředky Azure, podívejte se na tento [přehled](overview.md). 
 - Účet Azure, [Zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/).
@@ -117,7 +115,7 @@ Ve zbývající části kurzu použijeme k práci dříve vytvořený virtuáln�
 K dokončení tohoto postupu potřebujete klienta SSH. Pokud používáte Windows, můžete použít klienta SSH v [subsystému Windows pro Linux](/windows/wsl/about). 
 
 1. Přihlaste se k webu Azure [Portal](https://portal.azure.com).
-2. Na portálu přejděte na **Virtuální počítače** , přejděte ke svému virtuálnímu počítači s Linuxem a v části **Přehled** klikněte na **Připojit**. Zkopírujte řetězec pro připojení k vašemu virtuálnímu počítači.
+2. Na portálu přejděte na **Virtuální počítače**, přejděte ke svému virtuálnímu počítači s Linuxem a v části **Přehled** klikněte na **Připojit**. Zkopírujte řetězec pro připojení k vašemu virtuálnímu počítači.
 3. Připojte se vybraným klientem SSH k virtuálnímu počítači. Pokud používáte Windows, můžete použít klienta SSH v [subsystému Windows pro Linux](/windows/wsl/about). Pokud potřebujete pomoc při konfiguraci klíčů klienta SSH, přečtěte si, [jak na počítači s Windows v Azure používat klíče SSH](~/articles/virtual-machines/linux/ssh-from-windows.md) nebo [jak na linuxových virtuálních počítačích v Azure vytvářet a používat pár veřejného a privátního klíče SSH](~/articles/virtual-machines/linux/mac-create-ssh-keys.md).
 4. V okně terminálu pomocí nástroje CURL odešlete do koncového bodu identity služby Azure Instance Metadata Service (IMDS) žádost o přístupový token Azure Resource Manageru.  
 
