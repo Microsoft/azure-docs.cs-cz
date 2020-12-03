@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 30c26fcc48b1051944c181c0d24ae9e3c89ce477
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 6de0fc52ae265a47ca7f52d46e5f44b74c1277aa
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565819"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530914"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Základy ověřování služby Key Vault
 
@@ -116,8 +116,6 @@ Přiřazení role Key Vault jsou sada předdefinovaných přiřazení rolí Azur
 * Oprávnění Azure RBAC je možné spravovat ve škálování tím, že uživatelům umožníte přiřadit tyto role na předplatné, skupinu prostředků nebo jednotlivé úrovně trezoru klíčů. Uživatel bude mít oprávnění roviny dat pro všechny trezory klíčů v rámci rozsahu přiřazení Azure RBAC. Tím se eliminuje nutnost přiřazení individuálních oprávnění zásad přístupu na uživatele a aplikace na Trezor klíčů.
 
 * Oprávnění Azure RBAC jsou kompatibilní s Privileged Identity Management nebo PIM. Díky tomu můžete nakonfigurovat řízení přístupu za běhu pro privilegované role, jako je Key Vault správce. Jedná se o osvědčené postupy zabezpečení a následuje zabezpečení s nejnižšími oprávněními eliminující stálý přístup k vašim trezorům klíčů.
-
-* Oprávnění Azure RBAC jsou kompatibilní s podrobnými oprávněními pro jednotlivé objekty, takže můžete uživatele omezit jenom na provádění operací na některých objektech trezoru klíčů. To umožňuje více aplikacím sdílet jeden Trezor klíčů a zároveň stále izolovat přístup mezi aplikacemi.
 
 Další informace o službě Azure RBAC pro Key Vault najdete v následujících dokumentech:
 

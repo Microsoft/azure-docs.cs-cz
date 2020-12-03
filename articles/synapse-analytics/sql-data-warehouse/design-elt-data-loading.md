@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 8b75345743bb398458752d03f853738df713b4f9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 64ba24eb0eab581310122908fc05d1d671ac1d40
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456443"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531569"
 ---
 # <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Strategie načítání dat pro vyhrazený fond SQL ve službě Azure synapse Analytics
 
@@ -119,8 +119,9 @@ Při načítání souborů Parquet použít následující mapování typů dat 
 | [Komplexní typ](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23maps&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=FiThqXxjgmZBVRyigHzfh5V7Z%2BPZHjud2IkUUM43I7o%3D&reserved=0) |                  MAPY                  |   varchar(max)   |
 
 >[!IMPORTANT] 
-> - Vyhrazené fondy SQL momentálně v současné době nepodporují Parquet datové typy s přesností mikroorganismů a NANO. 
-> - Při neshodě typů mezi Parquet a SQL nebo v případě, že máte nepodporované datové typy Parquet, může dojít k následující chybě:  **"HdfsBridge:: recordReaderFillBuffer-došlo k neočekávané chybě, při naplňování vyrovnávací paměti čtecího modulu nahrávání: ClassCastException:..."**
+>- Vyhrazené fondy SQL momentálně v současné době nepodporují Parquet datové typy s přesností mikroorganismů a NANO. 
+>- Při neshodě typů mezi Parquet a SQL nebo v případě, že máte nepodporované datové typy Parquet, může dojít k následující chybě: **"HdfsBridge:: recordReaderFillBuffer-došlo k neočekávané chybě, při naplňování vyrovnávací paměti čtecího modulu nahrávání: ClassCastException:..."**
+>- Načtení hodnoty mimo rozsah 0-127 do sloupce tinyint pro formát souborů Parquet a ORC není podporováno.
 
 Příklad vytváření externích objektů najdete v tématu [Vytvoření externích tabulek](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables?tabs=sql-pool).
 

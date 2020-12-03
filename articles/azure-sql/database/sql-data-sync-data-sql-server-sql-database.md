@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: c77001707eda7c208ad19a014a1f0cff2b85b25d
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: b23b5a81fdff8a05742092f517128e08723103fc
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736472"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531135"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Co je Synchronizace dat SQL pro Azure?
 
@@ -63,10 +63,8 @@ Synchronizace dat není preferovaným řešením pro následující scénáře:
 | Zotavení po havárii | [Geograficky redundantní zálohy Azure](automated-backups-overview.md) |
 | Čtení stupnice | [Použití replik jen pro čtení k vyrovnávání zatížení úloh dotazů jen pro čtení (Preview)](read-scale-out.md) |
 | ETL (OLTP až OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) nebo [služba SSIS (SQL Server Integration Services)](/sql/integration-services/sql-server-integration-services) |
-| Migrace z SQL Server do Azure SQL Database | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
+| Migrace z SQL Server do Azure SQL Database Synchronizace dat SQL však lze použít po dokončení migrace, aby bylo zajištěno, že je zdroj a cíl udržovány synchronizované.  | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
 |||
-
-
 
 ## <a name="how-it-works"></a>Jak to funguje
 
@@ -150,7 +148,7 @@ Zřizování a rušení zřizování během vytváření skupiny synchronizace, 
 
 #### <a name="unsupported-column-types"></a>Nepodporované typy sloupců
 
-Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení ani systémem. Například:
+Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení ani systémem. Příklad:
 
 - Vypočítané sloupce.
 - Systémem generované sloupce pro dočasné tabulky.

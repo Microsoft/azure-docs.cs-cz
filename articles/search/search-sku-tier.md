@@ -7,25 +7,49 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 0acd0d1d463280cddc8c1f4bb389a056d474ea38
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.date: 12/01/2020
+ms.openlocfilehash: 1b23d6c7952e60ee693bb481fec04d358654632c
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101269"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530489"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Výběr cenové úrovně pro Azure Kognitivní hledání
 
-Při vytváření služby Azure Kognitivní hledání se [prostředek](search-create-service-portal.md) vytvoří v cenové úrovni, která je pevná pro dobu života služby. Mezi vrstvy patří optimalizace Free, Basic, Standard a Storage. Optimalizované úložiště Standard a Storage jsou k dispozici v několika konfiguracích a kapacitě.
+Při [vytváření vyhledávací služby](search-create-service-portal.md)se volí cenová úroveň, která je pevná pro dobu života služby. Vybraná úroveň určuje:
 
-Většina zákazníků začíná na bezplatné úrovni, takže může službu vyhodnotit. Po vyhodnocení je běžné vytvořit druhou službu na jedné z vyšších úrovní vývoje a produkčních nasazení.
++ Množství indexů a jiných objektů (maximální limity)
++ Velikost a rychlost oddílů (fyzické úložiště)
++ Fakturovatelná sazba, pevné náklady, které se také pohybují s počtem používaných oddílů a replik
+
+Kromě toho přináší několik [prémiových funkcí](#premium-features) požadavky na úroveň.
+
+## <a name="tier-descriptions"></a>Popisy vrstev
+
+Mezi vrstvy patří optimalizace **Free**, **Basic**, **Standard** a **Storage**. Optimalizované úložiště Standard a Storage jsou k dispozici v několika konfiguracích a kapacitě.
+
+Následující snímek obrazovky z Azure Portal zobrazuje dostupné úrovně minus ceny (které najdete na portálu a na [stránce s cenami](https://azure.microsoft.com/pricing/details/search/). 
+
+![Cenové úrovně Azure Kognitivní hledání](media/search-sku-tier/tiers.png "Cenové úrovně Azure Kognitivní hledání")
+
+**Free** vytvoří omezené vyhledávací služby pro menší projekty, jako jsou spuštěné kurzy a ukázky kódu. Interně jsou repliky a oddíly sdíleny mezi více odběratelů. Nemůžete škálovat bezplatnou službu nebo spouštět významné úlohy.
+
+**Základní** a **standardní** jsou nejčastěji používané Fakturovatelné úrovně s výchozím nastavením **Standard** . Díky vyhrazeným prostředkům v rámci vašeho řízení můžete nasazovat větší projekty, optimalizovat výkon a zvýšit kapacitu.
+
+Některé úrovně jsou optimalizované pro určité typy práce. Například **Standard 3 vysoká hustota (S3 HD)** je *hostující režim* pro S3, kde je základní hardware optimalizovaný pro velký počet menších indexů a je určený pro víceklientské scénáře. S3 HD má stejné poplatky za jednotku jako S3, ale hardware je optimalizovaný pro rychlé čtení souborů na velkém počtu menších indexů.
+
+Vrstvy **optimalizované pro úložiště** nabízejí větší kapacitu úložiště s nižší cenou za TB než úrovně Standard. Primární kompromis je vyšší latence dotazů, které byste měli ověřit pro konkrétní požadavky na aplikaci. Další informace o požadavcích na výkon této úrovně najdete v tématu věnovaném [důležitým informacím o výkonu a optimalizaci](search-performance-optimization.md).
+
+Další informace o různých úrovních najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/search/), v článku [omezení služby v Azure kognitivní hledání](search-limits-quotas-capacity.md) a na stránce portálu při zřizování služby.
+
+<a name="premium-features"></a>
 
 ## <a name="feature-availability-by-tier"></a>Dostupnost funkcí podle úrovně
 
 Následující tabulka popisuje omezení funkcí souvisejících s vrstvami.
 
-| Funkce | Omezení |
+| Příznak | Omezení |
 |---------|-------------|
 | [Indexery](search-indexer-overview.md) | Indexery nejsou k dispozici na S3 HD.  |
 | [Obohacení AI](search-security-manage-encryption-keys.md) | Běží na bezplatné úrovni, ale nedoporučuje se. |
@@ -35,34 +59,13 @@ Následující tabulka popisuje omezení funkcí souvisejících s vrstvami.
 
 Většina funkcí je dostupná na všech úrovních, včetně bezplatných funkcí, ale funkce náročné na prostředky nemusí fungovat správně, pokud jim neposkytnete dostatečnou kapacitu. Například [rozšíření AI](cognitive-search-concept-intro.md) má dlouhodobě běžící dovednosti, které vyprší časový limit bezplatné služby, pokud není datová sada malá.
 
-## <a name="tiers"></a>Úrovně
-
-Úrovně se liší:
-
-+ Množství indexů a indexerů (maximální limity)
-+ Velikost a rychlost oddílů (fyzické úložiště)
-
-Vybraná úroveň určuje fakturovatelnou sazbu. Následující snímek obrazovky z Azure Portal zobrazuje dostupné úrovně minus ceny (které najdete na portálu a na [stránce s cenami](https://azure.microsoft.com/pricing/details/search/). Nejběžnějšími úrovněmi jsou **bezplatné**, **základní**a **standardní** úrovně.
-
-**Free** vytvoří omezené vyhledávací služby pro menší projekty, včetně rychlých startů a kurzů. Interně jsou repliky a oddíly sdíleny mezi více odběratelů. Nemůžete škálovat bezplatnou službu nebo spouštět významné úlohy.
-
-**Základní** a **standardní** jsou nejčastěji používané Fakturovatelné úrovně s výchozím nastavením **Standard** . Díky vyhrazeným prostředkům v rámci vašeho řízení můžete nasazovat větší projekty, optimalizovat výkon a nastavit kapacitu.
-
-![Cenové úrovně Azure Kognitivní hledání](media/search-sku-tier/tiers.png "Cenové úrovně Azure Kognitivní hledání")
-
-Některé úrovně jsou optimalizované pro určité typy práce. Například **Standard 3 vysoká hustota (S3 HD)** je *hostující režim* pro S3, kde je základní hardware optimalizovaný pro velký počet menších indexů a je určený pro víceklientské scénáře. S3 HD má stejné poplatky za jednotku jako S3, ale hardware je optimalizovaný pro rychlé čtení souborů na velkém počtu menších indexů.
-
-Vrstvy **optimalizované pro úložiště** nabízejí větší kapacitu úložiště s nižší cenou za TB než úrovně Standard. Primární kompromis je vyšší latence dotazů, které byste měli ověřit pro konkrétní požadavky na aplikaci.  Další informace o požadavcích na výkon této úrovně najdete v tématu věnovaném [důležitým informacím o výkonu a optimalizaci](search-performance-optimization.md).
-
-Další informace o různých úrovních najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/search/), v článku [omezení služby v Azure kognitivní hledání](search-limits-quotas-capacity.md) a na stránce portálu při zřizování služby.
-
 ## <a name="billable-events"></a>Fakturovatelné události
 
 K řešení postavenému na Azure Kognitivní hledání může doplatit tyto náklady následujícími způsoby:
 
-+ Náklady na samotnou službu, která běží nepřetržitě, při minimální konfiguraci (jeden oddíl a replika)
++ [Náklady](#service-costs) na samotnou službu, která běží nepřetržitě, při minimální konfiguraci (jeden oddíl a replika) při základní sazbě
 
-+ Přidání kapacity (repliky nebo oddíly)
++ Přidejte kapacitu (repliky nebo oddíly), kde se náklady zvyšují po přírůstcích Fakturovatelné sazby.
 
 + Poplatky za šířku pásma (odchozí přenos dat)
 
@@ -149,7 +152,7 @@ Ve službě Azure Kognitivní hledání je kapacita strukturovaná jako *repliky
 
 ### <a name="evaluating-capacity"></a>Vyhodnocování kapacity
 
-Kapacita a náklady na provoz služby se dostanou rukou. Vrstvy ukládají omezení na dvou úrovních: úložiště a prostředky. Měli byste si myslet na oba, protože podle toho, co se vám limit dosahuje, je platný limit.
+Kapacita a náklady na provoz služby se dostanou rukou. Vrstvy ukládají omezení na dvou úrovních: úložiště a obsah (například počet indexů). Měli byste si myslet na oba, protože podle toho, co se vám limit dosahuje, je platný limit.
 
 Obchodní požadavky obvykle určují počet indexů, které budete potřebovat. Například je možné, že budete potřebovat globální index pro velké úložiště dokumentů. Případně je možné, že budete potřebovat více indexů na základě oblastí, aplikací nebo Business mezery.
 

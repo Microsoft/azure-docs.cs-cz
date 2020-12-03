@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4fb20b221858c4717d67e0777afbe5c067c00a69
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8295e619cfda0d4b83a7356d5fd21d4b80f83849
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499607"
+ms.locfileid: "96530880"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat v Azure Kognitivní hledání
 
-Azure Kognitivní hledání automaticky šifruje indexovaný obsah v klidovém [provozu pomocí klíčů spravovaných službou](../security/fundamentals/encryption-atrest.md#azure-encryption-at-rest-components). Pokud potřebujete další ochranu, můžete výchozí šifrování doplnit o další vrstvu šifrování pomocí klíčů, které vytvoříte a spravujete v Azure Key Vault. Tento článek vás provede jednotlivými kroky nastavení šifrování CMK.
+Azure Kognitivní hledání automaticky šifruje indexovaný obsah v klidovém [provozu pomocí klíčů spravovaných službou](../security/fundamentals/encryption-atrest.md#azure-encryption-at-rest-components). Pokud potřebujete další ochranu, můžete výchozí šifrování doplnit o další vrstvu šifrování pomocí klíčů, které vytvoříte a spravujete v Azure Key Vault. Tento článek vás provede jednotlivými kroky nastavení šifrování klíče spravovaného zákazníkem.
 
-Šifrování CMK závisí na [Azure Key Vault](../key-vault/general/overview.md). Můžete vytvořit vlastní šifrovací klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování šifrovacích klíčů. Pomocí Azure Key Vault můžete také auditovat použití klíče, pokud [povolíte protokolování](../key-vault/general/logging.md).  
+Šifrování klíče spravovaného zákazníkem závisí na [Azure Key Vault](../key-vault/general/overview.md). Můžete vytvořit vlastní šifrovací klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování šifrovacích klíčů. Pomocí Azure Key Vault můžete také auditovat použití klíče, pokud [povolíte protokolování](../key-vault/general/logging.md).  
 
 Šifrování pomocí klíčů spravovaných zákazníkem se používá pro jednotlivé indexy nebo mapy synonym při vytváření těchto objektů a není zadáno na samotné úrovni služby vyhledávání. Šifrovat lze pouze nové objekty. Nemůžete zašifrovat obsah, který už existuje.
 
@@ -31,7 +31,7 @@ Klíče nemusí být ve stejném trezoru klíčů. Jedna vyhledávací služba m
 
 ## <a name="double-encryption"></a>Dvojité šifrování
 
-Pro služby vytvořené od 1. srpna 2020 a v určitých oblastech zahrnuje rozsah šifrování CMK dočasné disky a poskytuje [Úplné šifrování s dvojitou přesností](search-security-overview.md#double-encryption), které jsou aktuálně k dispozici v těchto oblastech: 
+Pro služby vytvořené od 1. srpna 2020 a v určitých oblastech zahrnuje rozsah šifrování klíče spravovaného zákazníkem dočasné disky, [které jsou v](search-security-overview.md#double-encryption)současné době dostupné v těchto oblastech: 
 
 + Západní USA 2
 + East US
@@ -39,13 +39,13 @@ Pro služby vytvořené od 1. srpna 2020 a v určitých oblastech zahrnuje rozsa
 + USA (Gov) – Virginia
 + USA (Gov) – Arizona
 
-Pokud používáte jinou oblast nebo službu vytvořenou před 1. srpna, bude šifrování CMK omezené jenom na datový disk, a to s výjimkou dočasných disků, které služba používá.
+Pokud používáte jinou oblast nebo službu vytvořenou před 1. srpna, pak se šifrování spravovaného klíče omezí jenom na datový disk, a to s výjimkou dočasných disků, které služba používá.
 
 ## <a name="prerequisites"></a>Předpoklady
 
 V tomto scénáři se používají následující nástroje a služby.
 
-+ [Azure kognitivní hledání](search-create-service-portal.md) na [Fakturovatelné úrovni](search-sku-tier.md#tiers) (Basic nebo vyšší, v libovolné oblasti).
++ [Azure kognitivní hledání](search-create-service-portal.md) na [Fakturovatelné úrovni](search-sku-tier.md#tier-descriptions) (Basic nebo vyšší, v libovolné oblasti).
 + [Azure Key Vault](../key-vault/general/overview.md)můžete Trezor klíčů vytvořit pomocí [Azure Portal](../key-vault//general/quick-create-portal.md), rozhraní příkazového [řádku Azure](../key-vault//general/quick-create-cli.md)nebo [Azure PowerShell](../key-vault//general/quick-create-powershell.md). ve stejném předplatném jako Azure Kognitivní hledání. V trezoru klíčů musí být povolená **Ochrana před** **příčtením a odstraněním** .
 + [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md). Pokud ho nemáte, [nastavte nového tenanta](../active-directory/develop/quickstart-create-new-tenant.md).
 
@@ -56,7 +56,7 @@ Měli byste mít vyhledávací aplikaci, která může vytvořit zašifrovaný o
 
 ## <a name="1---enable-key-recovery"></a>1 – povolit obnovení klíče
 
-Vzhledem k povaze šifrování u klíčů spravovaných zákazníkem nemůže nikdo načíst vaše data, pokud se odstraní klíč trezoru klíčů Azure. Aby nedošlo ke ztrátě dat způsobené náhodným odstraněním Key Vault klíčů, musí být v trezoru klíčů povolená ochrana před odstraněním a vymazáním. Možnost obnovitelného odstranění je ve výchozím nastavení povolená, takže dojde k problémům jenom v případě, že jste ho záměrně zakázali. Ve výchozím nastavení není ochrana vyprázdnění povolená, ale vyžaduje se pro šifrování Azure Kognitivní hledání CMK. Další informace najdete v tématu přehledy ochrany proti [tichému odstranění](../key-vault/general/soft-delete-overview.md) a [vyprázdnění](../key-vault/general/soft-delete-overview.md#purge-protection) .
+Vzhledem k povaze šifrování u klíčů spravovaných zákazníkem nemůže nikdo načíst vaše data, pokud se odstraní klíč trezoru klíčů Azure. Aby nedošlo ke ztrátě dat způsobené náhodným odstraněním Key Vault klíčů, musí být v trezoru klíčů povolená ochrana před odstraněním a vymazáním. Možnost obnovitelného odstranění je ve výchozím nastavení povolená, takže dojde k problémům jenom v případě, že jste ho záměrně zakázali. Ve výchozím nastavení není ochrana vyprázdnění povolena, ale je vyžadována pro šifrování klíče spravovaného zákazníkem v Kognitivní hledání. Další informace najdete v tématu přehledy ochrany proti [tichému odstranění](../key-vault/general/soft-delete-overview.md) a [vyprázdnění](../key-vault/general/soft-delete-overview.md#purge-protection) .
 
 Obě vlastnosti můžete nastavit pomocí portálu, PowerShellu nebo příkazů rozhraní příkazového řádku Azure CLI.
 
@@ -377,7 +377,7 @@ Mezi podmínky, které vám zabrání v přijetí tohoto zjednodušeného přís
 
 ## <a name="work-with-encrypted-content"></a>Práce s šifrovaným obsahem
 
-S šifrováním CMK zjistíte latenci pro indexování i dotazy z důvodu nadbytečného šifrování/dešifrování. Azure Kognitivní hledání neprotokoluje aktivitu šifrování, ale můžete monitorovat přístup k klíčům prostřednictvím protokolování trezoru klíčů. Doporučujeme [Povolit protokolování](../key-vault/general/logging.md) jako součást konfigurace trezoru klíčů.
+Pomocí klíčového šifrování spravovaného zákazníkem si všimnete latence indexování i dotazů z důvodu nadbytečného šifrování/dešifrování. Azure Kognitivní hledání neprotokoluje aktivitu šifrování, ale můžete monitorovat přístup k klíčům prostřednictvím protokolování trezoru klíčů. Doporučujeme [Povolit protokolování](../key-vault/general/logging.md) jako součást konfigurace trezoru klíčů.
 
 V průběhu času se očekává, že dojde k rotaci klíčů. Při každém otočení klíčů je důležité postupovat podle tohoto pořadí:
 

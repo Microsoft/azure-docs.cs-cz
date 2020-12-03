@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 12/02/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 6374164bb5049742d63a669b4c1e552c93967977
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 396d6f69673f8758d8d1302f8d10b8a92e5f50b4
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173375"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530745"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Publikování aplikace v galerii aplikací Azure AD
 
@@ -168,14 +168,25 @@ Další informace o WS-Fed v ASP.NET Core najdete v tématu [ověřování uživ
 
 Vytvořte webovou aplikaci, která má přihlašovací stránku HTML. Zajistěte, aby vaše aplikace podporovala ověřování formuláře, aby bylo možné provést jednotné přihlašování, aby bylo zajištěno fungování jednotného přihlašování podle očekávání.
 
+## <a name="step-3---implement-scim-user-provisioning-in-your-app"></a>Krok 3 – implementace SCIMho zřizování uživatelů v aplikaci
+Podpora zřizování [SCIM](https://aka.ms/scimoverview) je nepovinná, ale důrazně se doporučuje, abyste mohli aplikaci sestavovat. Podpora standardu SCIM je snadná a umožňuje zákazníkům automaticky vytvářet a aktualizovat uživatelské účty v aplikaci, aniž by se museli spoléhat na ruční procesy, jako je například nahrávání souborů CSV. Kromě toho můžou zákazníci automatizovat odebrání uživatelů a zachování členství ve skupinách, což se nedá udělat pomocí řešení, jako je SAML JIT. 
 
-## <a name="step-3---create-your-azure-tenant-and-test-your-app"></a>Krok 3 – vytvoření tenanta Azure a testování aplikace
+### <a name="learn-about-scim"></a>Další informace o SCIM
+Další informace o standardech SCIM a výhodách pro vaše zákazníky najdete v tématu [zřizování pomocí SCIM – Začínáme](https://aka.ms/scimoverview).
+
+### <a name="understand-the-azure-ad-scim-implementation"></a>Porozumění implementaci Azure AD SCIM
+Další informace o implementaci Azure AD SCIM najdete v tématu [Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure AD](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups).
+
+### <a name="implement-scim"></a>Implementovat SCIM
+Azure AD poskytuje [referenční kód](https://aka.ms/scimoverview) , který vám pomůže vytvořit SCIM koncový bod. K dispozici je také mnoho knihoven a odkazů třetích stran, které najdete na GitHubu.  
+
+## <a name="step-4---create-your-azure-tenant-and-test-your-app"></a>Krok 4 – Vytvoření tenanta Azure a testování vaší aplikace
 
 K otestování vaší aplikace budete potřebovat tenanta Azure AD. Informace o nastavení vývojového prostředí najdete v tématu [rychlý Start: nastavení tenanta](quickstart-create-new-tenant.md).
 
 Další možností je, že tenant služby Azure AD přináší každé předplatné Microsoft 365. Pokud chcete nastavit bezplatné Microsoft 365 vývojové prostředí, přečtěte si téma [zapojení do programu Microsoft 365 Developer](/office/developer-program/microsoft-365-developer-program).
 
-Jakmile budete mít tenanta, musíte povolit a otestovat přístup pro jednotné přihlašování. 
+Jakmile budete mít tenanta, budete muset vyzkoušet jednotné přihlašování a [zřizování](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client). 
 
 V **případě aplikací OIDC nebo Oath** [Zaregistrujte svoji aplikaci](quickstart-register-app.md) jako víceklientské aplikace. V části Podporované typy účtů vyberte účty v možnosti organizační adresář a osobní účet Microsoft.
 
@@ -184,7 +195,7 @@ V **případě aplikací OIDC nebo Oath** [Zaregistrujte svoji aplikaci](quickst
 V případě potřeby můžete také [převést aplikaci s jedním klientem na více tenantů](howto-convert-app-to-be-multi-tenant.md) .
 
 
-## <a name="step-4---create-and-publish-documentation"></a>Krok 4 – Vytvoření a publikování dokumentace
+## <a name="step-5---create-and-publish-documentation"></a>Krok 5 – Vytvoření a publikování dokumentace
 
 ### <a name="documentation-on-your-site"></a>Dokumentace na vašem webu
 
@@ -206,13 +217,14 @@ Doporučujeme, aby vaše dokumentace na webu obsahovala minimálně následujíc
 * Postup testování pro uživatele pilotního nasazení
 * Informace o řešení potíží, včetně chybových kódů a zpráv
 * Mechanismy podpory pro zákazníky
+* Podrobnosti o koncovém bodu SCIM, včetně podporovaných prostředků a atributů
 
 ### <a name="documentation-on-the-microsoft-site"></a>Dokumentace na webu společnosti Microsoft
 
 Při vytváření seznamu aplikací pomocí Azure Active Directory Galerie aplikací, která také publikuje vaši aplikaci v Azure Marketplace, společnost Microsoft vygeneruje dokumentaci pro naše vzájemné zákazníky, kteří vysvětlují podrobný proces. [Tady](../saas-apps/tutorial-list.md)vidíte příklad. Tato dokumentace je vytvořena na základě odeslání do galerie a můžete ji snadno aktualizovat, pokud provedete změny aplikace pomocí účtu GitHub.
 
 
-## <a name="step-5---submit-your-app"></a>Krok 5 – odeslání aplikace
+## <a name="step-6---submit-your-app"></a>Krok 6 – odeslání aplikace
 
 Po otestování, že integrace aplikace funguje se službou Azure AD, odešlete žádost o aplikaci na [portál Microsoft Application Network](https://microsoft.sharepoint.com/teams/apponboarding/Apps).
 
@@ -262,7 +274,7 @@ Pokud chcete přidat aplikaci do seznamu v galerii pomocí jednotného přihlaš
 
 ![Výpis aplikace pro jednotné přihlašování do galerie](./media/howto-app-gallery-listing/passwordsso.png)
 
-Pokud implementujete koncový bod [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2,0 pro zřizování uživatelů, vyberte možnost, jak je zobrazeno. 
+Pokud implementujete koncový bod [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2,0 pro zřizování uživatelů, vyberte možnost, jak je zobrazeno. Když zadáváte schéma v žádosti o registraci, postupujte prosím podle [pokynů pro stažení](https://docs.microsoft.com/azure/active-directory/app-provisioning/export-import-provisioning-configuration) schématu. Pro sestavení aplikace Galerie použijeme schéma, které jste nakonfigurovali při testování aplikace mimo galerii. 
 
    ![Požadavek na zřizování uživatelů](./media/howto-app-gallery-listing/user-provisioning.png)
 
@@ -301,7 +313,7 @@ Tady je postup pro aplikace vyžadované zákazníky.
 Pro všechny eskalace odešlete e-mail do [týmu pro integraci jednotného přihlašování služby Azure AD](mailto:SaaSApplicationIntegrations@service.microsoft.com)a budeme co nejdříve reagovat.
 
 
-## <a name="step-6---join-the-microsoft-partner-network"></a>Krok 6 – připojení k síti Microsoft Partner Network
+## <a name="step-7---join-the-microsoft-partner-network"></a>Krok 7 – připojení k síti Microsoft Partner Network
 Microsoft Partner Network poskytuje okamžitý přístup k exkluzivním prostředkům, programům, nástrojům a připojením. Pokud se chcete připojit k síti a vytvořit svůj přejít k plánu trhu, přečtěte si téma věnované [přístupu ke komerčním zákazníkům](https://partner.microsoft.com/explore/commercial#gtm).
 
 

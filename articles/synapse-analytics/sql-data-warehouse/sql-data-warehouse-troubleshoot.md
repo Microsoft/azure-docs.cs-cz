@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6da80ec4c9c3c4e6c95eb1c9001596ffe3dd5711
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c69df88828a179cf1dce7bd35ac19c518b07903d
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447844"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530710"
 ---
 # <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Řešení potíží s vyhrazeným fondem SQL (dříve SQL DW) ve službě Azure synapse Analytics
 
@@ -32,7 +32,7 @@ V tomto článku jsou uvedené běžné problémy při odstraňování potíží
 | – Blokováno bránou firewall                                          | Vyhrazený fond SQL (dřív SQL DW) je chráněný branami firewall, aby bylo zajištěno, že přístup k databázi bude mít jenom známé IP adresy. Brány firewall jsou ve výchozím nastavení zabezpečené, což znamená, že před připojením musíte explicitně povolit a IP adresu nebo rozsah adres.  Pokud chcete bránu firewall nakonfigurovat pro přístup, postupujte podle pokynů v tématu [Konfigurace přístupu k bráně firewall serveru pro IP adresu vašeho klienta](create-data-warehouse-portal.md) v [pokynech k zřizování](create-data-warehouse-portal.md). |
 | Nejde se připojit pomocí nástroje nebo ovladače.                           | Vyhrazený fond SQL (dřív SQL DW) doporučuje používat [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [SSDT pro Visual Studio](sql-data-warehouse-install-visual-studio.md)nebo [Sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) k dotazování na data. Další informace o ovladačích a připojení k Azure synapse najdete v tématu [ovladače pro Azure synapse](sql-data-warehouse-connection-strings.md) a [připojení k Azure synapse](sql-data-warehouse-connect-overview.md) articles. |
 
-## <a name="tools"></a>Nástroje
+## <a name="tools"></a>nástroje
 
 | Problém                                                        | Řešení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
@@ -45,6 +45,7 @@ V tomto článku jsou uvedené běžné problémy při odstraňování potíží
 | Problém                                                        | Řešení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Export prázdných řetězců pomocí CETAS bude mít za následek hodnoty NULL v souborech Parquet a ORC. Poznámka: Pokud exportujete prázdné řetězce ze sloupců s omezeními bez hodnoty NULL, CETAS bude mít za následek zamítnuté záznamy a export může potenciálně selhat. | Odeberte prázdné řetězce nebo problematický sloupec v příkazu SELECT vaší CETAS. |
+| Načtení hodnoty mimo rozsah 0-127 do sloupce tinyint pro formát souborů Parquet a ORC není podporováno. | Zadejte pro cílový sloupec větší datový typ.           |
 
 ## <a name="performance"></a>Výkon
 

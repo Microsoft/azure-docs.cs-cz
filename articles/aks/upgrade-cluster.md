@@ -4,12 +4,12 @@ description: Zjistěte, jak upgradovat cluster Azure Kubernetes Service (AKS), a
 services: container-service
 ms.topic: article
 ms.date: 11/17/2020
-ms.openlocfilehash: 262905c9f840850795ba9555912e81eca61369d1
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 30ad80727c238ae7e415039adf3e4eb75dbbc1b5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683229"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531339"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Upgrade clusteru Azure Kubernetes Service (AKS)
 
@@ -121,6 +121,64 @@ Name          Location    ResourceGroup    KubernetesVersion    ProvisioningStat
 myAKSCluster  eastus      myResourceGroup  1.13.10               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
 ```
 
+## <a name="set-auto-upgrade-channel-preview"></a>Nastavení kanálu pro automatické upgrady (Preview)
+
+Kromě ručního upgradu clusteru můžete na svém clusteru nastavit kanál automatického upgradu. K dispozici jsou následující kanály upgradu:
+
+* *žádné*, což zakáže automatické upgrady a udržuje cluster v aktuální verzi Kubernetes. Toto je výchozí nastavení a používá se, pokud není zadána žádná možnost.
+* *Oprava*, která bude automaticky upgradovat cluster na nejnovější podporovanou verzi opravy, když bude k dispozici a zůstane stejná podverze. Pokud je například v clusteru spuštěná verze *1.17.7* a verze *1.17.9*, *1.18.4*, *1.18.6* a *1.19.1* , váš cluster se upgraduje na *1.17.9*.
+* *stabilní*, která bude automaticky upgradovat cluster na nejnovější podporovanou verzi opravy v podverzi *n-1*, kde *n* je nejnovější podporovaná dílčí verze. Pokud je například v clusteru spuštěná verze *1.17.7* a verze *1.17.9*, *1.18.4*, *1.18.6* a *1.19.1* , váš cluster se upgraduje na *1.18.6*.
+* *rychlá*, která bude automaticky upgradovat cluster na nejnovější podporovanou verzi opravy na nejnovější verzi, která je k dispozici. V případech, kdy je cluster ve verzi Kubernetes, která je v podverzi *n-2* , kde *n* je nejnovější podporovaná dílčí verze, cluster nejprve upgraduje na nejnovější podporovanou verzi opravy v *N-1* dílčí verzi. Pokud je například v clusteru spuštěná verze *1.17.7* a verze *1.17.9*, *1.18.4*, *1.18.6* a *1.19.1* , je váš cluster nejdřív upgradován na *1.18.6* a pak se upgraduje na *1.19.1*.
+
+> [!NOTE]
+> Automatický upgrade clusteru se aktualizuje jenom na verze GA Kubernetes a nebude se aktualizovat na verze Preview.
+
+Automatické upgradování clusteru probíhá stejným způsobem jako ruční upgrade clusteru. Další podrobnosti najdete v tématu [upgrade clusteru AKS][upgrade-cluster].
+
+Automatický upgrade clusteru pro clustery AKS je funkce ve verzi Preview.
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+Příznak funkce Zaregistrujte `AutoUpgradePreview` pomocí příkazu [AZ Feature Register][az-feature-register] , jak je znázorněno v následujícím příkladu:
+
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n AutoUpgradePreview
+```
+
+Zobrazení stavu v *registraci* trvá několik minut. Pomocí příkazu [AZ Feature list][az-feature-list] ověřte stav registrace:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AutoUpgradePreview')].{Name:name,State:properties.state}"
+```
+
+Až budete připraveni, aktualizujte registraci poskytovatele prostředků *Microsoft. ContainerService* pomocí příkazu [AZ Provider Register][az-provider-register] :
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+Pomocí příkazu [AZ Extension Add přidejte][az-extension-add] do instalace rozšíření *AKS-Preview* a potom vyhledejte všechny dostupné aktualizace pomocí příkazu [AZ Extension Update][az-extension-update] :
+
+```azurecli-interactive
+# Install the aks-preview extension
+az extension add --name aks-preview
+
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
+
+K nastavení kanálu automatického upgradu při vytváření clusteru použijte parametr pro *automatické upgrady* , podobně jako v následujícím příkladu.
+
+```azurecli-interactive
+az aks create --resource-group myResourceGroup --name myAKSCluster --auto-upgrade-channel stable --generate-ssh-keys
+```
+
+Pokud chcete nastavit kanál automatického upgradu na existujícím clusteru, aktualizujte parametr *automatického upgradu na kanál* podobný následujícímu příkladu.
+
+```azurecli-interactive
+az aks update --resource-group myResourceGroup --name myAKSCluster --auto-upgrade-channel stable
+```
+
 ## <a name="next-steps"></a>Další kroky
 
 Tento článek vám ukázal, jak upgradovat existující cluster AKS. Další informace o nasazení a správě clusterů AKS najdete v tématu o sadě kurzů.
@@ -137,6 +195,10 @@ Tento článek vám ukázal, jak upgradovat existující cluster AKS. Další in
 [az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
 [az-aks-upgrade]: /cli/azure/aks#az-aks-upgrade
 [az-aks-show]: /cli/azure/aks#az-aks-show
-[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[upgrade-cluster]:  #upgrade-an-aks-cluster

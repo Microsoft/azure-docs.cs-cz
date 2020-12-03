@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 55a1255ffa82aec8ea7b9e1ec2bbc6746b9b0636
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: bae214fb8eff9747bf3f79323d8eb9ce1cb6cdb7
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523436"
+ms.locfileid: "96531594"
 ---
 # <a name="synapse-rbac-roles"></a>Synapse role RBAC
 
@@ -28,12 +28,11 @@ Pro uživatele, kteří znají role synapse RBAC poskytované v rámci verze Pre
 - **Nové obory nižší úrovně** jsou představené pro několik rolí.  Tyto obory umožňují omezit role na konkrétní prostředky nebo objekty.
 
 >[!Note]
->- Nové role a rozsahy nižší úrovně jsou momentálně ve verzi Preview.  
->- Role správce Apache Spark a správce SQL budou v budoucí verzi nadále vycházet z nových rolí RBAC synapse.  Doporučujeme, abyste přijali nové role Preview, které jsou plně podporované, a poskytli nám zpětnou vazbu na jejich použití.
+>- **Nové role a rozsahy nižší úrovně jsou momentálně ve verzi Preview**.  Doporučujeme používat tyto nové role a obory, které jsou plně podporované, a poskytovat zpětnou vazbu k jejich použití.
 
 ## <a name="built-in-synapse-rbac-roles-and-scopes"></a>Předdefinované role a obory synapse RBAC
 
-V následující tabulce jsou popsány jednotlivé předdefinované role a obory, ve kterých lze tyto role použít.
+Následující tabulka popisuje předdefinované role a obory, ve kterých se dají použít.
 
 >[!Note]
 > Uživatelé s rolí synapse RBAC v jakémkoli oboru mají automaticky roli uživatele synapse v oboru pracovního prostoru. 

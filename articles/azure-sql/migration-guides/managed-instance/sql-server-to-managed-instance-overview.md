@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 2241049e5c3cb5039a73c0f7637f7e3553d2e227
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 878d59445dde839ca9e702ac0c49af676e48a42f
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326865"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531186"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Přehled migrace: SQL Server do spravované instance SQL
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -63,7 +63,7 @@ Některé obecné pokyny, které vám pomůžou zvolit správnou úroveň služb
 Můžete zvolit výpočetní prostředky a prostředky úložiště během nasazování a pak je po použití [Azure Portal](../../database/scale-resources.md) změnit, aniž by došlo k výpadku vaší aplikace. 
 
 > [!IMPORTANT]
-> Jakékoli nesrovnalosti v [požadavcích virtuální sítě spravované instance](../../managed-instance/connectivity-architecture-overview.md#network-requirements) vám můžou zabránit v vytváření nových instancí nebo používání stávajících instancí. Přečtěte si další informace o [vytváření nových](../../managed-instance/virtual-network-subnet-create-arm-template.md?branch=release-ignite-arc-data)   a [konfigurování stávajících](../../managed-instance/vnet-existing-add-subnet.md?branch=release-ignite-arc-data)   sítí. 
+> Jakékoli nesrovnalosti v [požadavcích virtuální sítě spravované instance](../../managed-instance/connectivity-architecture-overview.md#network-requirements) vám můžou zabránit v vytváření nových instancí nebo používání stávajících instancí. Přečtěte si další informace o [vytváření nových](../../managed-instance/virtual-network-subnet-create-arm-template.md)   a [konfigurování stávajících](../../managed-instance/vnet-existing-add-subnet.md?branch=release-ignite-arc-data)   sítí. 
 
 ### <a name="sql-server-vm-alternative"></a>Alternativní virtuální počítač SQL Server
 

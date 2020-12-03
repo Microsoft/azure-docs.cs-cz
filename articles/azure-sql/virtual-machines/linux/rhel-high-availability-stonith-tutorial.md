@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: ef3f9f8d75049051ad568abf1163014a78b0cda3
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 9a6faec2542337eedbe4aafb69f1061582f92cc7
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324733"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531560"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace skupin dostupnosti pro SQL Server virtuálních počítačů s RHEL v Azure 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -1132,6 +1132,34 @@ Abychom zajistili, že se konfigurace úspěšně provedla, otestujeme převzet�
     sudo pcs resource move ag_cluster-clone <VM2> --master
     ```
 
+   Můžete také zadat další možnost, aby dočasné omezení vytvořené pro přesunutí prostředku na požadovaný uzel bylo automaticky zakázáno a není nutné provádět kroky 2 a 3 níže.
+
+   **RHEL 7**
+
+    ```bash
+    sudo pcs resource move ag_cluster-master <VM2> --master lifetime=30S
+    ```
+
+   **RHEL 8**
+
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master lifetime=30S
+    ```
+
+   Další alternativou pro automatizaci kroků 2 a 3 níže, které zruší dočasné omezení v příkazu pro přesunutí prostředku, je spojením více příkazů na jednom řádku. 
+
+   **RHEL 7**
+
+    ```bash
+    sudo pcs resource move ag_cluster-master <VM2> --master && sleep 30 && pcs resource clear ag_cluster-master
+    ```
+
+   **RHEL 8**
+
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master && sleep 30 && pcs resource clear ag_cluster-clone
+    ```
+    
 2. Pokud znovu zkontrolujete vaše omezení, uvidíte, že se kvůli ručnímu převzetí služeb při selhání přidalo jiné omezení:
     
     **RHEL 7**

@@ -5,12 +5,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: jpalma
-ms.openlocfilehash: e8214345bd1c328f0996f8aa8a2a8bb402a76e8d
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 83d7d48922806334e2b49494fe0ef1d15e1a7a6a
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309592"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531475"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Upgrade image uzlu služby Azure Kubernetes (AKS)
 
@@ -158,12 +158,12 @@ az aks nodepool show \
 
 - Informace o nejnovějších imagích uzlů najdete v [poznámkách k vydání verze AKS](https://github.com/Azure/AKS/releases) .
 - Přečtěte si, jak upgradovat verzi Kubernetes pomocí [upgradu clusteru AKS][upgrade-cluster].
-- [Použití aktualizací zabezpečení a jádra pro uzly Linux ve službě Azure Kubernetes Service (AKS)][security-update]
+- [Automatické použití upgradu clusteru a fondu uzlů s akcemi GitHubu][github-schedule]
 - Přečtěte si další informace o více fondech uzlů a o tom, jak upgradovat fondy uzlů pomocí [vytváření a správy fondů více uzlů][use-multiple-node-pools].
 
 <!-- LINKS - internal -->
 [upgrade-cluster]: upgrade-cluster.md
-[security-update]: node-updates-kured.md
+[github-schedule]: node-upgrade-github-actions.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [max-surge]: upgrade-cluster.md#customize-node-surge-upgrade
 [az-extension-add]: /cli/azure/extension#az-extension-add
