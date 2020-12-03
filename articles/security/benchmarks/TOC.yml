@@ -129,6 +129,8 @@
       href: ../../load-balancer/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Machine Learning
       href: ../../machine-learning/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Managed Applications
+      href: ../../azure-resource-manager/managed-applications/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Monitor
       href: ../../azure-monitor/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Migrate Learning
@@ -201,7 +203,7 @@
       href: ../../site-recovery/security-baseline.md
     - name: Standardní hodnoty pro Stream Analytics
       href: ../../stream-analytics/security-baseline.md
-    - name: Standardní hodnoty zabezpečení pro Synapse Analytics
+    - name: Standardní hodnoty zabezpečení pro Azure Synapse Analytics
       href: ../../synapse-analytics/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Traffic Manager
       href: ../../traffic-manager/security-baseline.md

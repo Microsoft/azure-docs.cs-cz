@@ -1,12 +1,12 @@
-- name: Azure Synapse (dříve SQL DW)
-  href: index.yml
-- name: Přepnutí na Azure Synapse (pracovní prostory ve verzi Preview)
+- name: Vyhrazený fond SQL (dříve SQL DW)
+  href: sql-data-warehouse-overview-what-is.md
+- name: Přepnutí na Azure Synapse
   href: ../overview-what-is.md
 - name: Přehled
   items:
-    - name: Co je Azure Synapse Analytics?
+    - name: Co je vyhrazený fond SQL?
       href: sql-data-warehouse-overview-what-is.md
-    - name: Architektura služby Azure Synapse Analytics
+    - name: Architektura vyhrazených fondů SQL
       href: massively-parallel-processing-mpp-architecture.md
     - name: Jednotky datového skladu
       href: what-is-a-data-warehouse-unit-dwu-cdwu.md
@@ -74,6 +74,12 @@
           href: pause-and-resume-compute-powershell.md
 - name: Koncepty
   items:
+    - name: Prostředí pracovních prostorů Synapse
+      items:
+        - name: Přehled
+          href: workspace-connected-experience.md
+        - name: Podporované oblasti
+          href: workspace-connected-regions.md
     - name: Zabezpečení
       items:
         - name: Přehled
@@ -272,6 +278,10 @@
           href: sql-data-warehouse-overview-integrate.md
 - name: Návody
   items:
+    - name: Prostředí pracovních prostorů Synapse
+      items:
+        - name: Vytvoření pracovního prostoru Synapse
+          href: workspace-connected-create.md
     - name: Zabezpečení
       items:
         - name: Konfigurace ověřování Azure AD
@@ -384,9 +394,9 @@
       items:
         - name: Úplný přehled
           href: /sql/t-sql/language-reference?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
-        - name: Elementy jazyka TSQL v Azure Synapse Analytics
+        - name: Elementy jazyka T-SQL
           href: sql-data-warehouse-reference-tsql-language-elements.md
-        - name: Příkazy TSQL v Azure Synapse Analytics
+        - name: Příkazy jazyka T-SQL
           href: sql-data-warehouse-reference-tsql-statements.md
     - name: Systémová zobrazení
       href: sql-data-warehouse-reference-tsql-system-views.md
@@ -394,6 +404,9 @@
       href: sql-data-warehouse-reference-powershell-cmdlets.md
     - name: Rozhraní REST API
       href: sql-data-warehouse-manage-compute-rest-api.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

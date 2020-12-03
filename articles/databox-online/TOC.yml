@@ -49,7 +49,105 @@
               href: azure-stack-edge-gpu-technical-specifications-compliance.md
             - name: Specifikace napájecího kabelu
               href: azure-stack-edge-technical-specifications-power-cords-regional.md
-        - name: Vysvětlení platformy Kubernetes (Preview)
+- name: Azure Stack Edge Pro R
+  items:
+    - name: Přehled
+      items:
+        - name: Co je Azure Stack Edge Pro R?
+          href: azure-stack-edge-j-series-overview.md
+    - name: Koncepty
+      items:
+        - name: Připravené zabezpečení
+          href: azure-stack-edge-pro-r-safety.md
+        - name: Kontrola požadavků
+          href: azure-stack-edge-pro-r-system-requirements.md
+        - name: Pochopení limitů
+          href: azure-stack-edge-pro-r-limits.md
+        - name: Přehled zabezpečení
+          href: azure-stack-edge-pro-r-security.md
+        - name: Kontrola specifikací
+          href: azure-stack-edge-pro-r-technical-specifications-compliance.md
+    - name: Kurzy
+      items:
+        - name: 0. Zajištění kontrolního seznamu
+          href: azure-stack-edge-pro-r-deploy-checklist.md
+        - name: '1. Objednání, příprava'
+          href: azure-stack-edge-pro-r-deploy-prep.md
+        - name: 2. Instalace
+          href: azure-stack-edge-pro-r-deploy-install.md
+        - name: 3. Připojení
+          href: azure-stack-edge-pro-r-deploy-connect.md
+        - name: 4. Konfigurace sítě
+          href: azure-stack-edge-pro-r-deploy-configure-network-compute-web-proxy.md
+        - name: 5. Konfigurace zařízení
+          href: azure-stack-edge-pro-r-deploy-set-up-device-update-time.md
+        - name: 6. Konfigurace zabezpečení
+          href: azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md
+        - name: 7. Aktivace
+          href: azure-stack-edge-pro-r-deploy-activate.md
+        - name: 8. Konfigurace výpočetních funkcí
+          href: azure-stack-edge-gpu-deploy-configure-compute.md
+    - name: Postup
+      items:
+        - name: Konfigurace VPN (Preview)
+          items:
+            - name: Konfigurace přes Azure PowerShell
+              href: azure-stack-edge-mini-r-configure-vpn-powershell.md
+            - name: Konfigurace pro BCDR
+              href: azure-stack-edge-pro-r-configure-vpn-bcdr.md
+- name: Azure Stack Edge Mini R
+  items:
+    - name: Přehled
+      items:
+        - name: Co je Azure Stack Edge Mini R?
+          href: azure-stack-edge-k-series-overview.md
+    - name: Koncepty
+      items:
+        - name: Připravené zabezpečení
+          href: azure-stack-edge-mini-r-safety.md
+        - name: Kontrola požadavků
+          href: azure-stack-edge-mini-r-system-requirements.md
+        - name: Pochopení limitů
+          href: azure-stack-edge-mini-r-limits.md
+        - name: Přehled zabezpečení
+          href: azure-stack-edge-pro-r-security.md
+        - name: Kontrola specifikací
+          href: azure-stack-edge-mini-r-technical-specifications-compliance.md
+    - name: Kurzy
+      items:
+        - name: 0. Zajištění kontrolního seznamu
+          href: azure-stack-edge-mini-r-deploy-checklist.md
+        - name: '1. Objednání, příprava'
+          href: azure-stack-edge-mini-r-deploy-prep.md
+        - name: 2. Instalace
+          href: azure-stack-edge-mini-r-deploy-install.md
+        - name: 3. Připojení
+          href: azure-stack-edge-mini-r-deploy-connect.md
+        - name: 4. Konfigurace sítě
+          href: azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy.md
+        - name: 5. Konfigurace zařízení
+          href: azure-stack-edge-mini-r-deploy-set-up-device-update-time.md
+        - name: 6. Konfigurace zabezpečení
+          href: azure-stack-edge-mini-r-deploy-configure-certificates-vpn-encryption.md
+        - name: 7. Aktivace
+          href: azure-stack-edge-mini-r-deploy-activate.md
+        - name: 8. Konfigurace výpočetních funkcí
+          href: azure-stack-edge-gpu-deploy-configure-compute.md
+    - name: Postup
+      items:
+        - name: Konfigurace VPN (Preview)
+          items:
+            - name: Konfigurace přes Azure PowerShell
+              href: azure-stack-edge-mini-r-configure-vpn-powershell.md
+            - name: Konfigurace pro BCDR
+              href: azure-stack-edge-pro-r-configure-vpn-bcdr.md
+        - name: Správa Wi-Fi
+          href: azure-stack-edge-mini-r-manage-wifi.md
+- name: 'Sdílení Pro GPU, Pro R, Mini R'
+  items:
+    - name: Sdílené koncepty
+      items:
+        - name: Vysvětlení protokolu Kubernetes
           items:
             - name: Co je Kubernetes?
               href: azure-stack-edge-gpu-kubernetes-overview.md
@@ -63,7 +161,9 @@
               href: azure-stack-edge-gpu-kubernetes-workload-management.md
         - name: Zobrazení integrace Key Vaultu
           href: azure-stack-edge-gpu-activation-key-vault.md
-    - name: Postup
+        - name: Povolení aktivního protokolování
+          href: azure-stack-edge-gpu-proactive-log-collection.md
+    - name: Sdílené postupy
       items:
         - name: Nasazení ukázek IoT Edge
           items:
@@ -73,12 +173,14 @@
               href: azure-stack-edge-gpu-deploy-sample-module.md
             - name: Modul GPU přes marketplace
               href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
-        - name: Nasazení úloh Kubernetes (Preview)
+        - name: Nasazení úloh Kubernetes
           items:
             - name: Přes kubectl
               items:
                 - name: Přístup ke clusteru Kubernetes
                   href: azure-stack-edge-gpu-create-kubernetes-cluster.md
+                - name: Zrychlení výpočetních prostředků
+                  href: azure-stack-edge-gpu-deploy-compute-acceleration.md
                 - name: Bezstavová aplikace
                   href: azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md
                 - name: Stavová aplikace zřízená staticky
@@ -107,6 +209,8 @@
               href: azure-stack-edge-j-series-configure-tls-settings.md
         - name: Nasazování virtuálních počítačů (Preview)
           items:
+            - name: Nasazování virtuálních počítačů – Azure Portal
+              href: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
             - name: Nasazování virtuálních počítačů – šablony
               href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
             - name: Nasazování virtuálních počítačů – rutiny Azure PowerShellu
@@ -129,6 +233,8 @@
               href: azure-stack-edge-j-series-certificate-troubleshooting.md
         - name: Správy výpočetních funkcí Edge
           href: azure-stack-edge-j-series-manage-compute.md
+        - name: Správa registru kontejnerů Edge
+          href: azure-stack-edge-gpu-edge-container-registry.md
         - name: Správa brány úložiště
           items:
             - name: 'Přidání, připojení ke sdílené složce'
@@ -165,6 +271,8 @@
               href: azure-stack-edge-monitor.md
             - name: Použití řídicího panelu Kubernetes
               href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
+            - name: Pomocí Azure Monitoru
+              href: azure-stack-edge-gpu-enable-azure-monitor.md
         - name: Řešení potíží
           items:
             - name: Potíže se zařízeními
@@ -175,13 +283,15 @@
               href: azure-stack-edge-gpu-troubleshoot-activation.md
             - name: Kontaktovat podporu Microsoftu
               href: azure-stack-edge-contact-microsoft-support.md
-    - name: "Poznámky k\_verzi"
+    - name: Sdílené poznámky k verzi
       items:
-        - name: 2009 – GA
+        - name: 2011 – aktuální
+          href: azure-stack-edge-gpu-2011-release-notes.md
+        - name: 2010
           href: azure-stack-edge-gpu-2009-release-notes.md
-        - name: 2008 – Preview
+        - name: 2008
           href: azure-stack-edge-gpu-2008-release-notes.md
-    - name: Referenční informace
+    - name: Sdílené reference
       items:
         - name: 'Role IoT Edge přes API, SDK nebo PowerShell'
           href: azure-stack-edge-gpu-iot-edge-api-update.md
@@ -279,18 +389,6 @@
           href: /rest/api/databoxedgegateway
         - name: .NET SDK
           href: /dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet
-- name: Azure Stack Edge Pro R
-  items:
-    - name: Přehled
-      items:
-        - name: Co je Azure Stack Edge Pro R?
-          href: azure-stack-edge-j-series-overview.md
-- name: Azure Stack Edge Mini R
-  items:
-    - name: Přehled
-      items:
-        - name: Co je Azure Stack Edge Mini R?
-          href: azure-stack-edge-k-series-overview.md
 - name: Data Box Gateway
   items:
     - name: Přehled

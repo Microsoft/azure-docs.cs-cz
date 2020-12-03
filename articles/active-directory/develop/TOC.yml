@@ -1,30 +1,26 @@
 - name: Dokumentace k platformě Microsoft Identity Platform
   href: index.yml
 - name: Přehled
+  expanded: true
   items:
     - name: Co je Microsoft Identity Platform?
       href: v2-overview.md
     - name: Novinky v dokumentaci
       href: whats-new-docs.md
 - name: Rychlé starty
-  expanded: true
   items:
-    - name: Nastavení tenanta
-      href: quickstart-create-new-tenant.md
-    - name: Konfigurace aplikace
+    - name: Příprava na vývoj
       items:
-        - name: Registrace aplikace
+        - name: Získání tenanta služby Azure AD
+          href: quickstart-create-new-tenant.md
+        - name: Registrace aplikace nebo webového rozhraní API
           href: quickstart-register-app.md
-        - name: Konfigurace aplikace pro zveřejnění webového rozhraní API
+        - name: Zveřejnění oborů v registraci webového rozhraní API
           href: quickstart-configure-app-expose-web-apis.md
-        - name: Konfigurace aplikace pro přístup k webovému rozhraní API
+        - name: Udělení oprávnění s vymezeným oborem pro webové rozhraní API
+          displayName: 'permissions, scp, scp claims'
           href: quickstart-configure-app-access-web-apis.md
-        - name: Úprava účtů podporovaných aplikací
-          href: quickstart-modify-supported-accounts.md
-        - name: Odebrání aplikace
-          href: quickstart-remove-app.md
-    - name: Jednostránkové aplikace
-      displayName: SPA
+    - name: Jednostránková aplikace (SPA)
       items:
         - name: Úhlová
           href: quickstart-v2-angular.md
@@ -32,7 +28,7 @@
           href: quickstart-v2-javascript-auth-code.md
         - name: JavaScript – implicitní tok
           href: quickstart-v2-javascript.md
-    - name: Webové aplikace
+    - name: Webová aplikace
       items:
         - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
@@ -41,19 +37,18 @@
         - name: Node.js – MSAL | Preview
           href: quickstart-v2-nodejs-webapp-msal.md
         - name: Node.js – Passport.js
-          href: quickstart-v2-nodejs-webapp.md
           displayName: OIDC
         - name: Java
           href: quickstart-v2-java-webapp.md
         - name: Python
           href: quickstart-v2-python-webapp.md
-    - name: Webová rozhraní API
+    - name: Web API
       items:
         - name: ASP.NET
           href: quickstart-v2-dotnet-native-aspnet.md
-        - name: Jádro ASP.NET
+        - name: ASP.NET Core
           href: quickstart-v2-aspnet-core-web-api.md
-    - name: Mobilní a desktopové aplikace
+    - name: Mobilní a desktopové
       items:
         - name: Android
           href: quickstart-v2-android.md
@@ -64,7 +59,7 @@
           href: quickstart-v2-uwp.md
         - name: Windows Desktop .NET
           href: quickstart-v2-windows-desktop.md
-    - name: Aplikace démonů
+    - name: Proces démon nebo back-endová služba
       items:
         - name: Konzola .NET Core (proces démon)
           href: quickstart-v2-netcore-daemon.md
@@ -72,8 +67,7 @@
           href: quickstart-v2-python-daemon.md
 - name: Kurzy
   items:
-    - name: Jednostránkové aplikace
-      displayName: SPA
+    - name: Jednostránková aplikace (SPA)
       items:
         - name: Úhlová
           href: tutorial-v2-angular.md
@@ -83,13 +77,13 @@
           href: tutorial-v2-javascript-auth-code.md
         - name: JavaScript – implicitní tok
           href: tutorial-v2-javascript-spa.md
-    - name: Webové aplikace
+    - name: Webová aplikace
       items:
         - name: ASP.NET
           href: tutorial-v2-asp-webapp.md
         - name: Blazor Server
           href: tutorial-blazor-server.md
-    - name: Mobilní a desktopové aplikace
+    - name: Mobilní a desktopové
       items:
         - name: Android
           href: tutorial-v2-android.md
@@ -102,7 +96,7 @@
           href: tutorial-v2-windows-desktop.md
         - name: Použití režimu sdíleného zařízení v aplikaci pro Android
           href: tutorial-v2-shared-device-mode.md
-    - name: Aplikace démonů
+    - name: Proces démon nebo back-endová služba
       items:
         - name: Webová aplikace démona ASP.NET
           href: tutorial-v2-aspnet-daemon-web-app.md
@@ -120,21 +114,37 @@
           href: security-tokens.md
         - name: Aplikační model
           href: application-model.md
-        - name: Tok přihlášení k aplikaci
-          href: app-sign-in-flow.md
+    - name: Knihovny ověřování
+      displayName: 'msal, microsoft.identity.web'
+      items:
+        - name: Microsoft Authentication Library (MSAL)
+          href: msal-overview.md
+        - name: Webová knihovna Microsoft Identity
+          href: microsoft-identity-web.md
+          displayName: 'auth, library, .NET Core, msal'
     - name: Toky ověřování a scénáře aplikací
       displayName: Auth flows
       href: authentication-flows-app-scenarios.md
+    - name: Aplikace a instanční objekty
+      href: app-objects-and-service-principals.md
     - name: Osvědčené postupy pro platformu identit
       href: identity-platform-integration-checklist.md
-    - name: Mobilní jednotné přihlašování (SSO)
-      href: mobile-sso-support-overview.md
-      displayName: 'android, ios'
-    - name: Scénáře aplikací
+    - name: Oprávnění a souhlas
+      displayName: Scopes
+      href: v2-permissions-and-consent.md
+    - name: Podmíněný přístup
+      href: v2-conditional-access-dev-guide.md
+    - name: Automatické zřizování uživatelů (SCIM)
+      href: ../app-provisioning/user-provisioning.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
+- name: Postupy
+  items:
+    - name: Integrace scénáře aplikace
       displayName: App scenarios
       items:
         - name: Cílová skupina přihlášení
           href: v2-supported-account-types.md
+        - name: Tok přihlášení k aplikaci
+          href: app-sign-in-flow.md
         - name: Jednostránková aplikace
           displayName: SPA
           items:
@@ -267,11 +277,33 @@
               href: scenario-mobile-call-api.md
             - name: Přechod k produkčnímu prostředí
               href: scenario-mobile-production.md
-    - name: Microsoft Authentication Library (MSAL)
+    - name: Práce s knihovnou Microsoft Authentication Library
+      displayName: MSAL
       items:
-        - name: Přehled
-          href: msal-overview.md
-        - name: .NET
+        - Name: Všechny platformy
+          items:
+            - name: Podporované toky ověřování
+              href: msal-authentication-flows.md
+            - name: Získání tokenů a jejich uložení v mezipaměti
+              href: msal-acquire-cache-tokens.md
+            - name: Veřejné a důvěrné klientské aplikace
+              href: msal-client-applications.md
+            - name: Konfigurace aplikací
+              href: msal-client-application-configuration.md
+            - name: Sdílená zařízení
+              href: msal-shared-devices.md
+              displayName: 'shared device mode, firstline worker, frontline worker, flw'
+            - name: Zpracování změn souborů cookie SameSite v prohlížeči Chrome
+              href: howto-handle-samesite-cookie-changes-chrome-browser.md
+            - name: Rozsahy pro webové rozhraní API přijímající tokeny v1.0
+              href: msal-v1-app-scopes.md
+            - name: Migrace aplikací z ADAL na MSAL
+              href: msal-migration.md
+              displayName: migration
+            - name: Národní cloudy a MSAL
+              href: msal-national-cloud.md
+              displayName: 'china, germany, gov, 21vianet'
+        - name: MSAL.NET
           displayName: 'xamarin, ASP.NET Core'
           items:
             - name: Inicializace aplikací
@@ -294,7 +326,103 @@
               href: msal-handling-exceptions.md?tabs=dotnet
             - name: Protokolování
               href: msal-logging.md?tabs=dotnet
-        - name: Android
+            - name: Získání tokenu z mezipaměti
+              href: msal-net-acquire-token-silently.md
+            - name: Serializace mezipaměti tokenů
+              href: msal-net-token-cache-serialization.md
+            - name: Vymazání mezipaměti tokenů
+              href: msal-net-clear-token-cache.md
+            - name: Vytvoření instance veřejné klientské aplikace
+              href: msal-net-instantiate-public-client-config-options.md
+            - name: Vytvoření instance důvěrného klienta s využitím možností
+              href: msal-net-instantiate-confidential-client-config-options.md
+            - name: Získání souhlasu pro několik prostředků
+              href: msal-net-user-gets-consent-for-multiple-resources.md
+            - name: Poskytnutí vlastního klienta HttpClient
+              href: msal-net-provide-httpclient.md
+        - name: MSAL.js (JavaScript a Node.js)
+          items:
+            - name: Jak se vyhnout opětovnému načítání stránek
+              href: msal-js-avoid-page-reloads.md
+            - name: Předání vlastního stavu v požadavcích na ověření
+              href: msal-js-pass-custom-state-authentication-request.md
+            - name: Chování výzvy
+              href: msal-js-prompt-behavior.md
+            - name: Migrace SPA z implicitní varianty do toku ověřovacího kódu
+              href: migrate-spa-implicit-to-auth-code.md
+              displayName: 'authorization, single-page app, 2.0'
+            - name: Inicializace aplikací – JavaScript
+              href: msal-js-initializing-client-applications.md
+            - name: Integrace s Azure AD B2C
+              href: msal-b2c-overview.md
+            - name: Migrace na MSAL.js
+              href: msal-compare-msal-js-and-adal-js.md
+            - name: Jednotné přihlašování s využitím MSAL.js
+              href: msal-js-sso.md
+            - name: Důležité informace – IE
+              href: msal-js-use-ie-browser.md
+            - name: Známé problémy – IE a Microsoft Edge
+              href: msal-js-known-issues-ie-edge-browsers.md
+            - name: Zpracování chyb a výjimek
+              href: msal-handling-exceptions.md?tabs=javascript
+            - name: Protokolování
+              href: msal-logging.md?tabs=javascript
+        - name: MSAL pro iOS a MacOS
+          items:
+            - name: Rozdíly v MSAL pro iOS a macOS
+              href: msal-differences-ios-macos.md
+            - name: Konfigurace klíčenky
+              href: howto-v2-keychain-objc.md
+            - name: Přizpůsobení prohlížečů a webových zobrazení
+              href: customize-webviews.md
+            - name: Vyžádání vlastních deklarací identity
+              href: request-custom-claims.md
+            - name: Konfigurace URI přesměrování
+              href: redirect-uris-ios.md
+            - name: Integrace s Azure AD B2C
+              href: config-authority.md#b2c
+            - name: Migrace na MSAL.iOS/macOS
+              href: migrate-objc-adal-msal.md
+            - name: Režim sdíleného zařízení pro zařízení s iOS
+              href: msal-ios-shared-devices.md
+              displayName: 'firstline worker, frontline worker, flw'
+            - name: Jednotné přihlašování mezi aplikacemi MSAL
+              href: single-sign-on-macos-ios.md
+            - name: Jednotné přihlašování mezi aplikacemi MSAL a ADAL
+              href: sso-between-adal-msal-apps-macos-ios.md
+            - name: Řešení potíží s protokolem SSL (MSAL iOS/macOS)
+              href: ssl-issues.md
+            - name: Zpracování chyb a výjimek
+              href: msal-handling-exceptions.md?tabs=iosmacos
+            - name: Protokolování
+              href: msal-logging.md?tabs=swift
+        - name: MSAL pro Python
+          items:
+            - name: Serializace mezipaměti vlastních tokenů
+              href: msal-python-token-cache-serialization.md
+            - name: Migrace na MSAL pro Python
+              href: migrate-python-adal-msal.md
+            - name: Podpora ADFS v MSAL pro Python
+              href: msal-python-adfs-support.md
+            - name: Zpracování chyb a výjimek
+              href: msal-handling-exceptions.md?tabs=python
+            - name: Protokolování
+              href: msal-logging.md?tabs=python
+        - name: MSAL pro Javu
+          items:
+            - name: Serializace mezipaměti vlastních tokenů
+              href: msal-java-token-cache-serialization.md
+            - name: Získání a odebrání účtů z mezipaměti tokenů
+              href: msal-java-get-remove-accounts-token-cache.md
+            - name: Migrace na MSAL pro Javu
+              href: migrate-adal-msal-java.md
+            - name: Podpora ADFS v MSAL pro Javu
+              href: msal-java-adfs-support.md
+            - name: Zpracování chyb a výjimek
+              href: msal-handling-exceptions.md?tabs=java
+            - name: Protokolování
+              href: msal-logging.md?tabs=java
+        - name: MSAL pro Android
           items:
             - name: Účty a profily tenantů
               href: accounts-overview.md
@@ -314,92 +442,107 @@
               displayName: 'android, mobile'
             - name: Protokolování
               href: msal-logging.md?tabs=android
-        - name: iOS a macOS
+    - name: Přizpůsobení tokenů a deklarací identity
+      items:
+        - name: Konfigurace deklarace identity role
+          href: active-directory-enterprise-app-role-management.md
+        - name: Přizpůsobení deklarací identity s využitím webu Azure Portal
+          href: active-directory-saml-claims-customization.md
+        - name: Přizpůsobení deklarací identity s využitím PowerShellu
+          href: active-directory-claims-mapping.md
+        - name: Konfigurace volitelných deklarací identity
+          href: active-directory-optional-claims.md
+        - name: Použití atributů rozšíření schématu adresáře v deklaracích identity
+          href: active-directory-schema-extensions.md
+        - name: Konfigurace životnosti tokenů
+          href: configure-token-lifetimes.md
+        - name: Použití rozhraní API pro nepřetržité vyhodnocování přístupu
+          href: app-resilience-continuous-access-evaluation.md
+          displayName: cae
+    - name: Zpracování omezení souborů cookie prohlížeče
+      items:
+        - name: Zpracování ITP v Safari
+          href: reference-third-party-cookies-spas.md
+        - name: Zpracování změn souborů cookie SameSite v Chromu
+          href: howto-handle-samesite-cookie-changes-chrome-browser.md
+    - name: Ověřování aplikací a služeb
+      items:
+        - name: Vytvoření instančního objektu s využitím Azure PowerShellu
+          href: howto-authenticate-service-principal-powershell.md
+        - name: Vytvoření instančního objektu s využitím webu Azure Portal
+          href: howto-create-service-principal-portal.md
+    - name: Přijímání přihlášení z více tenantů
+      items:
+        - name: Úprava účtů podporovaných aplikací
+          href: quickstart-modify-supported-accounts.md
+        - name: Povolení víceklientských přihlášení
+          href: howto-convert-app-to-be-multi-tenant.md
+        - name: Konfigurace domény vydavatele
+          displayName: 'verified domain, verified publisher domain'
+          href: howto-configure-publisher-domain.md
+    - name: Autorizace přístupu k aplikacím a prostředkům
+      items:
+        - name: Omezení aplikace na sadu uživatelů
+          href: howto-restrict-your-app-to-a-set-of-users.md
+        - name: Přidání rolí aplikace ve vaší aplikaci
+          href: howto-add-app-roles-in-azure-ad-apps.md
+    - name: Použití rozhraní Microsoft Graph API
+      href: microsoft-graph-intro.md
+    - name: Uvedení aplikace na trh
+      items:
+        - name: Postup podle pokynů pro branding
+          displayName: Add branding
+          href: howto-add-branding-in-azure-ad-apps.md
+        - name: Konfigurace podmínek služby a prohlášení o ochraně osobních údajů
+          href: howto-add-terms-of-service-privacy-statement.md
+        - name: Konfigurace ověření vydavatele pro vaši aplikaci
           items:
-            - name: Integrace s Azure AD B2C
-              href: config-authority.md#b2c
-            - name: Migrace na MSAL.iOS/macOS
-              href: migrate-objc-adal-msal.md
-            - name: Režim sdíleného zařízení pro zařízení s iOS
-              href: msal-ios-shared-devices.md
-              displayName: 'firstline worker, frontline worker, flw'
-            - name: Jednotné přihlašování mezi aplikacemi MSAL
-              href: single-sign-on-macos-ios.md
-            - name: Jednotné přihlašování mezi aplikacemi MSAL a ADAL
-              href: sso-between-adal-msal-apps-macos-ios.md
-            - name: Řešení potíží s protokolem SSL (MSAL iOS/macOS)
-              href: ssl-issues.md
-            - name: Zpracování chyb a výjimek
-              href: msal-handling-exceptions.md?tabs=iosmacos
-            - name: Protokolování
-              href: msal-logging.md?tabs=swift
-        - name: Java
-          items:
-            - name: Migrace na MSAL pro Javu
-              href: migrate-adal-msal-java.md
-            - name: Podpora ADFS v MSAL pro Javu
-              href: msal-java-adfs-support.md
-            - name: Zpracování chyb a výjimek
-              href: msal-handling-exceptions.md?tabs=java
-            - name: Protokolování
-              href: msal-logging.md?tabs=java
-        - name: JavaScript a Node.js
-          items:
-            - name: Inicializace aplikací – JavaScript
-              href: msal-js-initializing-client-applications.md
-            - name: Integrace s Azure AD B2C
-              href: msal-b2c-overview.md
-            - name: Migrace na MSAL.js
-              href: msal-compare-msal-js-and-adal-js.md
-            - name: Jednotné přihlašování s využitím MSAL.js
-              href: msal-js-sso.md
-            - name: Důležité informace – IE
-              href: msal-js-use-ie-browser.md
-            - name: Známé problémy – IE a Microsoft Edge
-              href: msal-js-known-issues-ie-edge-browsers.md
-            - name: Zpracování chyb a výjimek
-              href: msal-handling-exceptions.md?tabs=javascript
-            - name: Protokolování
-              href: msal-logging.md?tabs=javascript
-        - name: Python
-          items:
-            - name: Migrace na MSAL pro Python
-              href: migrate-python-adal-msal.md
-            - name: Podpora ADFS v MSAL pro Python
-              href: msal-python-adfs-support.md
-            - name: Zpracování chyb a výjimek
-              href: msal-handling-exceptions.md?tabs=python
-            - name: Protokolování
-              href: msal-logging.md?tabs=python
-        - Name: Všechny platformy
-          items:
-            - name: Podporované toky ověřování
-              href: msal-authentication-flows.md
-            - name: Získání tokenů a jejich uložení v mezipaměti
-              href: msal-acquire-cache-tokens.md
-            - name: Veřejné a důvěrné klientské aplikace
-              href: msal-client-applications.md
-            - name: Konfigurace aplikací
-              href: msal-client-application-configuration.md
-            - name: Sdílená zařízení
-              href: msal-shared-devices.md
-              displayName: 'shared device mode, firstline worker, frontline worker, flw'
-            - name: Zpracování změn souborů cookie SameSite v prohlížeči Chrome
-              href: howto-handle-samesite-cookie-changes-chrome-browser.md
-            - name: Rozsahy pro webové rozhraní API přijímající tokeny v1.0
-              href: msal-v1-app-scopes.md
-            - name: Migrace aplikací z ADAL na MSAL
-              href: msal-migration.md
-              displayName: migration
-    - name: Webová knihovna Microsoft Identity
-      href: microsoft-identity-web.md
-      displayName: 'auth, library, .NET Core'
+            - name: Označení aplikace jako ověřené vydavatelem
+              href: mark-app-as-publisher-verified.md
+            - name: Řešení potíží s ověřením vydavatele
+              href: troubleshoot-publisher-verification.md
+        - name: Publikování na App Service
+          href: v2-howto-get-appsource-certified.md
+        - name: Publikování v galerii aplikací Azure AD
+          href: v2-howto-app-gallery-listing.md
+        - name: Publikování na řídicí panel prodejce Office 365
+          href: /office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store
+    - name: Práce se sadou Visual Studio
+      items:
+        - name: Použití připojené služby Active Directory
+          href: vs-active-directory-add-connected-service.md
+        - name: Začínáme s projekty .NET MVC
+          href: vs-active-directory-dotnet-getting-started.md
+        - name: Co se stalo s mým projektem .NET MVC?
+          href: vs-active-directory-dotnet-what-happened.md
+        - name: Začínáme s projekty WebAPI
+          href: vs-active-directory-webapi-getting-started.md
+        - name: Co se stalo s mým projektem WebAPI?
+          href: vs-active-directory-webapi-what-happened.md
+        - name: Diagnostika chyb při ověřování
+          href: vs-active-directory-error.md
+    - name: Odebrání registrace aplikace
+      href: quickstart-remove-app.md
+- name: Referenční informace
+  items:
+    - name: Glosář
+      href: developer-glossary.md
+    - name: Konfigurace aplikací
+      displayName: App configuration
+      items:
+        - name: Jak a proč se aplikace přidávají do Azure AD
+          href: active-directory-how-applications-are-added.md
+        - name: Omezení pro adresu URL odpovědi / identifikátor URI přesměrování
+          href: reply-url.md
+        - name: Rozdíly v ověřování podle podporovaných typů účtů
+          href: supported-accounts-validation.md
+        - name: Aplikace s jedním a více tenanty
+          href: single-and-multi-tenant-apps.md
+        - name: Ověření vydavatele
+          href: publisher-verification-overview.md
     - name: Protokoly pro ověřování
       displayName: Auth protocol
       items:
-        - name: Typy aplikací a OAuth 2.0
-          displayName: 'App types, OAuth'
-          href: v2-app-types.md
         - name: Protokoly OAuth 2.0 a OpenID Connect
           items:
             - name: OAuth 2.0 a OpenID Connect
@@ -445,27 +588,30 @@
               href: active-directory-saml-protocol-reference.md
             - name: Tokeny SAML
               href: reference-saml-tokens.md
-    - name: Konfigurace aplikací
-      displayName: App configuration
-      items:
-        - name: Aplikace a instanční objekty
-          displayName: 'Apps, service principals'
-          href: app-objects-and-service-principals.md
-        - name: Jak a proč se aplikace přidávají do Azure AD
-          href: active-directory-how-applications-are-added.md
-        - name: Omezení pro adresu URL odpovědi / identifikátor URI přesměrování
-          href: reply-url.md
-        - name: Rozdíly v ověřování podle podporovaných typů účtů
-          href: supported-accounts-validation.md
-        - name: Aplikace s jedním a více tenanty
-          href: single-and-multi-tenant-apps.md
-        - name: Ověření vydavatele
-          href: publisher-verification-overview.md
+    - name: Typy aplikací a OAuth 2.0
+      displayName: 'App types, OAuth'
+      href: v2-app-types.md
+    - name: Manifest aplikace
+      href: reference-app-manifest.md
+      displayName: app manifest
+    - name: Konfigurační soubor MSAL Androidu
+      href: msal-configuration.md
+    - name: Knihovny ověřování
+      displayName: 'MSAL, auth library, SDK'
+      href: reference-v2-libraries.md
+    - name: Rozhraní API identity a přístupu v Microsoft Graphu
+      href: /graph/api/resources/azure-ad-overview
+    - name: Kódy chyb autorizace a ověřování
+      displayName: AADSTS
+      href: reference-aadsts-error-codes.md
+    - name: Změny způsobující chyby
+      href: reference-breaking-changes.md
+    - name: Mobilní jednotné přihlašování (SSO)
+      href: mobile-sso-support-overview.md
+      displayName: 'android, ios'
     - name: Oprávnění a souhlas
       displayName: Scopes
       items:
-        - name: Typy oprávnění a souhlas
-          href: v2-permissions-and-consent.md
         - name: Rámec pro udělení souhlasu
           href: consent-framework.md
         - name: Souhlas správce
@@ -473,24 +619,23 @@
         - name: Prostředí udělení souhlasu pro aplikace
           displayName: App consent experiences
           href: application-consent-experience.md
-    - name: Podmíněný přístup
-      href: v2-conditional-access-dev-guide.md
-    - name: Národní cloudy
-      items:
-        - name: Přehled
-          href: authentication-national-cloud.md
-        - name: Authentication
-          href: msal-national-cloud.md
+    - name: Koncové body ověřování národního cloudu
+      href: authentication-national-cloud.md
+      displayName: 'china, germany, gov, 21vianet'
     - name: Automatické zřizování uživatelů (SCIM)
       items:
-        - name: Co je automatické zřizování uživatelů?
-          href: ../app-provisioning/user-provisioning.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
         - name: Vývoj a integrace koncového bodu SCIM
           href: ../app-provisioning/use-scim-to-provision-users-and-groups.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
         - name: Běžné scénáře zřizování
           href: ../app-provisioning/scim-graph-scenarios.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
         - name: Automatizace konfigurace s využitím MS Graphu
-          href: /graph/application-provisioning-configure-api?bc=%2fazure%2factive-directory%2fdevelop%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fdevelop%2ftoc.json
+          href: ../app-provisioning/application-provisioning-configure-api.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
+- name: Zdroje
+  items:
+    - name: Videa
+      href: identity-videos.md
+    - name: Blog vývojářů platformy Microsoft Identity Platform
+      href: 'https://developer.microsoft.com/en-us/identity/blogs/'
     - name: Články nápovědy pro Azure Portal
       items:
         - name: Výchozí nastavení životnosti tokenů pro aplikaci vyvinutou na míru
@@ -519,158 +664,6 @@
           href: active-directory-how-to-integrate.md
         - name: Konfigurace jednotného přihlašování pro aplikaci
           href: registration-config-sso-how-to.md
-- name: Návody
-  items:
-    - name: Authentication
-      items:
-        - name: Konfigurace deklarace identity role
-          href: active-directory-enterprise-app-role-management.md
-        - name: Přizpůsobení deklarací identity – Portal
-          href: active-directory-saml-claims-customization.md
-        - name: Přizpůsobení deklarací identity – PowerShell
-          href: active-directory-claims-mapping.md
-        - name: Konfigurace volitelných deklarací identity
-          href: active-directory-optional-claims.md
-        - name: Použití atributů rozšíření schématu adresáře v deklaracích identity
-          href: active-directory-schema-extensions.md
-        - name: Konfigurace životnosti tokenů
-          href: configure-token-lifetimes.md
-        - name: Zpracování změn souborů cookie SameSite v prohlížeči Chrome
-          href: howto-handle-samesite-cookie-changes-chrome-browser.md
-        - name: Zpracování ITP v Safari
-          href: reference-third-party-cookies-spas.md
-        - name: Použití rozhraní API pro nepřetržité vyhodnocování přístupu
-          href: app-resilience-continuous-access-evaluation.md
-    - name: Konfigurace aplikací
-      displayName: App configuration
-      items:
-        - name: Převedení aplikace pro jednoho tenanta na aplikaci pro více tenantů
-          href: howto-convert-app-to-be-multi-tenant.md
-        - name: Vytvoření instančního objektu
-          items:
-            - name: Použití Azure Powershell
-              href: howto-authenticate-service-principal-powershell.md
-            - name: Použití webu Azure Portal
-              href: howto-create-service-principal-portal.md
-        - name: Omezení aplikace na sadu uživatelů
-          href: howto-restrict-your-app-to-a-set-of-users.md
-        - name: Přidání rolí aplikace ve vaší aplikaci
-          href: howto-add-app-roles-in-azure-ad-apps.md
-        - name: Postup podle pokynů pro branding
-          displayName: Add branding
-          href: howto-add-branding-in-azure-ad-apps.md
-        - name: Konfigurace domény vydavatele
-          href: howto-configure-publisher-domain.md
-          displayName: 'verified domain, verified publisher domain'
-        - name: Konfigurace podmínek služby a prohlášení o ochraně osobních údajů
-          href: howto-add-terms-of-service-privacy-statement.md
-        - name: Konfigurace ověření vydavatele pro vaši aplikaci
-          items:
-            - name: Označení aplikace jako ověřené vydavatelem
-              href: mark-app-as-publisher-verified.md
-            - name: Řešení potíží s ověřením vydavatele
-              href: troubleshoot-publisher-verification.md
-    - name: Práce s knihovnou Microsoft Authentication Library
-      displayName: MSAL
-      items:
-        - name: MSAL.NET
-          items:
-            - name: Získání tokenu z mezipaměti
-              href: msal-net-acquire-token-silently.md
-            - name: Serializace mezipaměti tokenů
-              href: msal-net-token-cache-serialization.md
-            - name: Vymazání mezipaměti tokenů
-              href: msal-net-clear-token-cache.md
-            - name: Vytvoření instance veřejné klientské aplikace
-              href: msal-net-instantiate-public-client-config-options.md
-            - name: Vytvoření instance důvěrného klienta s využitím možností
-              href: msal-net-instantiate-confidential-client-config-options.md
-            - name: Získání souhlasu pro několik prostředků
-              href: msal-net-user-gets-consent-for-multiple-resources.md
-            - name: Poskytnutí vlastního klienta HttpClient
-              href: msal-net-provide-httpclient.md
-        - name: MSAL.js
-          items:
-            - name: Jak se vyhnout opětovnému načítání stránek
-              href: msal-js-avoid-page-reloads.md
-            - name: Předání vlastního stavu v požadavcích na ověření
-              href: msal-js-pass-custom-state-authentication-request.md
-            - name: Chování výzvy
-              href: msal-js-prompt-behavior.md
-            - name: Migrace SPA z implicitní varianty do toku ověřovacího kódu
-              href: migrate-spa-implicit-to-auth-code.md
-              displayName: 'authorization, single-page app, 2.0'
-        - name: MSAL pro iOS a MacOS
-          items:
-            - name: Rozdíly v MSAL pro iOS a macOS
-              href: msal-differences-ios-macos.md
-            - name: Konfigurace klíčenky
-              href: howto-v2-keychain-objc.md
-            - name: Přizpůsobení prohlížečů a webových zobrazení
-              href: customize-webviews.md
-            - name: Vyžádání vlastních deklarací identity
-              href: request-custom-claims.md
-            - name: Konfigurace URI přesměrování
-              href: redirect-uris-ios.md
-        - name: MSAL pro Python
-          items:
-            - name: Serializace mezipaměti vlastních tokenů
-              href: msal-python-token-cache-serialization.md
-        - name: MSAL pro Javu
-          items:
-            - name: Serializace mezipaměti vlastních tokenů
-              href: msal-java-token-cache-serialization.md
-            - name: Získání a odebrání účtů z mezipaměti tokenů
-              href: msal-java-get-remove-accounts-token-cache.md
-    - name: Použití rozhraní Microsoft Graph API
-      href: microsoft-graph-intro.md
-    - name: Práce se sadou Visual Studio
-      items:
-        - name: Použití připojené služby Active Directory
-          href: vs-active-directory-add-connected-service.md
-        - name: Začínáme s projekty .NET MVC
-          href: vs-active-directory-dotnet-getting-started.md
-        - name: Co se stalo s mým projektem .NET MVC?
-          href: vs-active-directory-dotnet-what-happened.md
-        - name: Začínáme s projekty WebAPI
-          href: vs-active-directory-webapi-getting-started.md
-        - name: Co se stalo s mým projektem WebAPI?
-          href: vs-active-directory-webapi-what-happened.md
-        - name: Diagnostika chyb při ověřování
-          href: vs-active-directory-error.md
-    - name: Uvedení aplikace na trh
-      items:
-        - name: Publikování na App Service
-          href: v2-howto-get-appsource-certified.md
-        - name: Publikování v galerii aplikací Azure AD
-          href: v2-howto-app-gallery-listing.md
-        - name: Publikování na řídicí panel prodejce Office 365
-          href: /office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store
-- name: Referenční informace
-  items:
-    - name: Manifest aplikace
-      href: reference-app-manifest.md
-      displayName: app manifest
-    - name: Konfigurační soubor MSAL Androidu
-      href: msal-configuration.md
-    - name: Knihovny ověřování
-      displayName: 'MSAL, auth library, SDK'
-      href: reference-v2-libraries.md
-    - name: Rozhraní API identity a přístupu v Microsoft Graphu
-      href: /graph/api/resources/azure-ad-overview
-    - name: Kódy chyb autorizace a ověřování
-      displayName: AADSTS
-      href: reference-aadsts-error-codes.md
-    - name: Změny způsobující chyby
-      href: reference-breaking-changes.md
-- name: Zdroje a prostředky
-  items:
-    - name: Glosář
-      href: developer-glossary.md
-    - name: Videa
-      href: identity-videos.md
-    - name: Blog vývojářů platformy Microsoft Identity Platform
-      href: 'https://developer.microsoft.com/en-us/identity/blogs/'
     - name: Blog k Azure AD
       href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
     - name: Plány Azure do budoucna

@@ -45,7 +45,7 @@
       items:
         - name: Sdílení z Azure Storage
           href: how-to-share-from-storage.md
-        - name: Sdílení z Azure SQL Database nebo Synapse Analytics
+        - name: Sdílení z Azure SQL Database nebo Azure Synapse Analytics
           href: how-to-share-from-sql.md
         - name: Sdílení z Azure Data Exploreru
           href: /azure/data-explorer/data-share

@@ -106,6 +106,8 @@
       href: azure-advisor.md
     - name: Řešení doporučení
       href: azure-advisor-recommendations.md
+    - name: Použití Azure Monitoru pro Windows Virtual Desktop
+      href: azure-monitor.md
     - name: Nastavení plánu zotavení po havárii
       href: disaster-recovery.md
 - name: Koncepty
@@ -150,6 +152,8 @@
           href: app-attach-glossary.md
         - name: Nejčastější dotazy
           href: app-attach-faq.md
+    - name: Glosář Azure Monitoru
+      href: azure-monitor-glossary.md
     - name: Umístění dat
       href: data-locations.md
 - name: Řešení potíží
@@ -170,6 +174,8 @@
       href: troubleshoot-powershell.md
     - name: Diagnostika problémů s výkonem grafiky
       href: remotefx-graphics-performance-counters.md
+    - name: Azure Monitor
+      href: troubleshoot-azure-monitor.md
 - name: Referenční informace
   items:
     - name: Osvědčené postupy zabezpečení

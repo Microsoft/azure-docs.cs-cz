@@ -617,7 +617,7 @@
                           items:
                             - name: S využitím SQL Database
                               href: database/saas-tenancy-tenant-analytics.md
-                            - name: S využitím Azure Synapse Analytics (dříve SQL Data Warehouse)
+                            - name: S využitím Azure Synapse Analytics
                               href: database/saas-tenancy-tenant-analytics-adf.md
                     - name: Zotavení po havárii s využitím geografického obnovení
                       href: database/saas-dbpertenant-dr-geo-restore.md

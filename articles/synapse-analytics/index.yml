@@ -1,0 +1,113 @@
+### YamlMime:Landing
+title: Azure Synapse Analytics
+summary: Azure Synapse je neomezená analytická služba, která spojuje podnikové skladování dat a analýzy velkých objemů dat. Dává vám možnost dotazovat se na data podle toho, jak vám to vyhovuje, s využitím bezserverové architektury na vyžádání, nebo zřízených prostředků, a to ve velkém měřítku.
+metadata:
+  title: Azure Synapse Analytics
+  description: Azure Synapse je neomezená analytická služba, která spojuje podnikové skladování dat a analýzy velkých objemů dat. Dává vám možnost dotazovat se na data podle toho, jak vám to vyhovuje, s využitím bezserverové architektury na vyžádání, nebo zřízených prostředků, a to ve velkém měřítku.
+  services: synapse-analytics
+  ms.service: synapse-analytics
+  ms.subservice: overview
+  ms.topic: landing-page
+  ms.collection: collection
+  author: julieMSFT
+  ms.author: jrasnick
+  ms.date: 12/01/2020
+  ms.openlocfilehash: 6de11d0830c332d19a133592b060caca1382b667
+  ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 12/01/2020
+  ms.locfileid: "96463338"
+landingContent:
+- title: Informace o službě Azure Synapse Analytics
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Synapse
+      url: overview-what-is.md
+    - text: Tipy a osvědčené postupy
+      url: overview-cheat-sheet.md
+    - text: Nejčastější dotazy
+      url: overview-faq.md
+- title: Synapse SQL
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Architektura Azure Synapse SQL
+      url: ./sql/overview-architecture.md
+  - linkListType: quickstart
+    links:
+    - text: Použití bezserverového fondu SQL
+      url: quickstart-sql-on-demand.md
+    - text: Vytvoření vyhrazeného fondu SQL s využitím sady Synapse Studio
+      url: quickstart-create-sql-pool-studio.md
+- title: Začínáme s Azure Synapse Analytics
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Podrobné pokyny k začátku
+      url: get-started.md
+    - text: 'KROK 1: Vytvoření a nastavení pracovního prostoru Synapse'
+      url: get-started-create-workspace.md
+    - text: 'KROK 2: Analýza s využitím vyhrazeného fondu SQL'
+      url: get-started-analyze-sql-pool.md
+    - text: 'KROK 3: Analýza s využitím Apache Sparku'
+      url: get-started-analyze-spark.md
+    - text: 'KROK 4: Analýza s využitím bezserverového fondu SQL'
+      url: get-started-analyze-sql-on-demand.md
+    - text: 'KROK 5: Analýza dat v účtu úložiště'
+      url: get-started-analyze-storage.md
+    - text: 'KROK 6: Orchestrace s využitím kanálů'
+      url: get-started-pipelines.md
+    - text: 'KROK 7: Vizualizace dat pomocí Power BI'
+      url: get-started-visualize-power-bi.md
+    - text: 'KROK 8: Monitorování aktivit'
+      url: get-started-monitor.md
+    - text: 'KROK 9: Seznámení s Centrem znalostí'
+      url: get-started-knowledge-center.md
+- title: Apache Spark
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Apache Spark v Azure Synapse Analytics
+      url: ./spark/apache-spark-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření bezserverového fondu úloh Apache Sparku s využitím sady Synapse Studio
+      url: quickstart-create-apache-spark-pool-studio.md
+- title: Synapse Link
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Synapse Link pro Azure Cosmos DB
+      url: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+  - linkListType: quickstart
+    links:
+    - text: Připojení k Azure Synapse Linku pro Azure Cosmos DB
+      url: quickstart-connect-synapse-link-cosmos-db.md
+- title: Machine Learning
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Strojové učení ve službě Azure Synapse
+      url: ./machine-learning/what-is-machine-learning.md
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření nové služby propojené s Azure Machine Learningem
+      url: ./machine-learning/quickstart-integrate-azure-machine-learning.md
+  - linkListType: tutorial
+    links:
+    - text: Průvodce bodováním modelů pro fondy SQL
+      url: ./machine-learning/tutorial-sql-pool-model-scoring-wizard.md
+- title: Kanál a tok dat
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Kanály a aktivity
+      url: ../data-factory/concepts-pipelines-activities.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+  - linkListType: quickstart
+    links:
+    - text: Transformace dat
+      url: quickstart-data-flow.md
+    - text: Načtení dat do fondu SQL
+      url: quickstart-copy-activity-load-sql-pool.md

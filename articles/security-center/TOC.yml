@@ -151,9 +151,9 @@
           href: security-center-network-recommendations.md
         - name: Ochrana identit a přístupu
           href: security-center-identity-access.md
-    - name: Upozornění Azure Defenderu
+    - name: Informace o výstrahách zabezpečení
       items:
-        - name: Přehled upozornění Azure Defenderu
+        - name: Přehled výstrah zabezpečení
           href: security-center-alerts-overview.md
         - name: Referenční seznam výstrah
           href: alerts-reference.md
@@ -244,7 +244,7 @@
           href: continuous-export.md
         - name: Stažení sestavy CSV se všemi upozorněními
           href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations
-    - name: Zpracování upozornění Azure Defenderu
+    - name: Zpracování výstrah zabezpečení
       items:
         - name: Správa výstrah zabezpečení
           href: security-center-managing-and-responding-alerts.md

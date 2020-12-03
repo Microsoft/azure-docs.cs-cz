@@ -2,8 +2,10 @@
   href: index.yml
 - name: Přehled
   items:
-    - name: Role Azure AD
+    - name: Co je Azure AD RBAC?
       href: custom-overview.md
+    - name: Seznámení s rolemi Azure AD
+      href: concept-understand-roles.md
 - name: Rychlé starty
   items:
     - name: Vytvoření neomezené registrace aplikací
@@ -50,8 +52,6 @@
     - name: Vlastní role
       expanded: true
       items:
-        - name: Přehled vlastních rolí
-          href: custom-overview.md
         - name: Vytvoření vlastní role
           href: custom-create.md
         - name: Zobrazení přiřazení vlastních rolí
