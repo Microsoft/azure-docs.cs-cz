@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2020
 ms.author: memildin
-ms.openlocfilehash: 304604b649381daa887b4d313ffd0f773f015a0b
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: bbc36dbb2a17d379d31a9a235898500aea36247d
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122216"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533906"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Kurz: Vylepšení dodržování právních předpisů
 
@@ -34,7 +34,10 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Pro krokování s funkcemi popsanými v tomto kurzu musí být povolený [Azure Defender](azure-defender.md) . Můžete vyzkoušet Azure Defender zdarma po dobu 30 dnů.
+Postup pro procházení funkcí popsaných v tomto kurzu:
+
+- Musí být povolený [Azure Defender](azure-defender.md) . Můžete vyzkoušet Azure Defender zdarma po dobu 30 dnů.
+- Musíte být přihlášeni pomocí účtu, který má přístup čtenář k datům dodržování zásad (**čtecí modul zabezpečení** není dostatečný). Role **globálního čtecího zařízení** pro předplatné bude fungovat. Musíte mít minimálně přiřazené role **přispěvatele zásad prostředků** a **Správce zabezpečení** .
 
 ##  <a name="assess-your-regulatory-compliance"></a>Posouzení dodržování legislativních předpisů
 

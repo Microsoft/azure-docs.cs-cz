@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 73887515eea344e920455e3c24f3eae3d5ad515a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 50cce15d14561bb1c8ebfdbbeeedd99dc8efcda1
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95013747"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532988"
 ---
 # <a name="optical-character-recognition-ocr"></a>optické rozpoznávání znaků (OCR),
 
@@ -133,7 +133,7 @@ Podívejte se na následující příklad úspěšné odpovědi JSON:
 ### <a name="read-32-preview-adds-text-line-style-latin-languages-only"></a>Čtení 3,2 Preview přidá styl čáry textu (jenom jazyky latinky).
 [Rozhraní API pro čtení 3,2 Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) vypisuje objekt **vzhledu** , který klasifikuje, jestli je každý textový řádek ve stylu tisk nebo psaní rukou, a také hodnocení spolehlivosti. Tato funkce je podporovaná jenom pro jazyky v latince.
 
-Začněte tím, že [počítačové zpracování obrazu přečtete rychlé starty pro rozpoznávání OCR](./quickstarts-sdk/client-library.md) a [přečtěte si REST API rychlý](./QuickStarts/CSharp-hand-text.md) Start pro zahájení integrace funkcí OCR do vašich aplikací.
+Začněte s Počítačové zpracování obrazu REST API nebo se seznamte s [klientskými knihovnami rychlý](./quickstarts-sdk/client-library.md) Start pro zahájení integrace možností OCR do vašich aplikací.
 
 ## <a name="supported-languages-for-print-text"></a>Podporované jazyky pro tisk textu
 [Rozhraní API pro čtení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) podporuje extrakci vytištěného textu v angličtině, španělštině, němčině, francouzštině, italštině, portugalštině a dánských jazycích.
@@ -197,7 +197,6 @@ Stejně jako u všech služeb rozpoznávání by mohli vývojáři, kteří pou�
 
 ## <a name="next-steps"></a>Další kroky
 
-- Začínáme s [počítačové zpracování obrazu čtení sady SDK pro rychlé](./quickstarts-sdk/client-library.md) zprovoznění v jazycích C#, Java, JavaScript nebo Python.
-- Pomocí [rychlých startů pro čtení REST API](./QuickStarts/CSharp-hand-text.md) v jazycích C#, Java, JavaScript nebo Python se naučíte používat rozhraní REST API.
+- Začněte s [Počítačové zpracování obrazu REST API nebo se šablonou rychlý Start knihovny klienta](./quickstarts-sdk/client-library.md).
 - Přečtěte si o [REST API pro čtení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005).
 - Přečtěte si o [REST API verze Public Preview pro čtení 3,2](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) s přidanou podporou pro zjednodušenou čínštinu a japonštinu.

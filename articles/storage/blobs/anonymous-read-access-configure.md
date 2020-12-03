@@ -10,12 +10,12 @@ ms.date: 11/03/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: a808a6bb0d4dc75f02147bbfdd74d17b34e96f6e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: feac7b890c973b1541c5362f860432687082953f
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313978"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533872"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Konfigurace anonymního veřejného přístupu pro čtení pro kontejnery a objekty blob
 
@@ -53,7 +53,7 @@ Nepovolení veřejného přístupu pro účet úložiště zabraňuje anonymním
 
 Pokud chcete povolit nebo zakázat veřejný přístup k účtu úložiště, nakonfigurujte vlastnost **AllowBlobPublicAccess** účtu. Tato vlastnost je k dispozici pro všechny účty úložiště, které jsou vytvořeny pomocí modelu nasazení Azure Resource Manager. Další informace najdete v tématu [Přehled účtu úložiště](../common/storage-account-overview.md).
 
-Vlastnost **AllowBlobPublicAccess** není nastavena ve výchozím nastavení a nevrací hodnotu, dokud ji explicitně nenastavíte. Účet úložiště povoluje veřejný přístup, pokud je hodnota vlastnosti buď **null** , nebo **true**.
+Vlastnost **AllowBlobPublicAccess** není ve výchozím nastavení nastavena pro účet úložiště a nevrací hodnotu, dokud ji explicitně nenastavíte. Účet úložiště povoluje veřejný přístup, pokud je hodnota vlastnosti buď **null** , nebo **true**.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -133,7 +133,7 @@ Pokud chcete povolit nebo zakázat veřejný přístup k účtu úložiště se 
 
 1. V Azure Portal klikněte na možnost **vytvořit prostředek**.
 1. V **části Hledat na Marketplace** zadejte **šablonu Deployment** a potom stiskněte **ENTER**.
-1. Zvolte **template Deployment (nasadit pomocí vlastních šablon) (Preview)** , zvolte **vytvořit** a potom **v editoru zvolte sestavit vlastní šablonu**.
+1. Zvolte **template Deployment (nasadit pomocí vlastních šablon) (Preview)**, zvolte **vytvořit** a potom **v editoru zvolte sestavit vlastní šablonu**.
 1. V editoru šablon vložte následující JSON pro vytvoření nového účtu a nastavte vlastnost **AllowBlobPublicAccess** na **hodnotu true** nebo **false**. Nezapomeňte nahradit zástupné symboly v lomených závorkách vlastními hodnotami.
 
     ```json

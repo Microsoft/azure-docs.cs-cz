@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 5/11/2020
-ms.openlocfilehash: 3a08b73a74d30a99ba3c360f012d5917f1d0c8bf
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 12/2/2020
+ms.openlocfilehash: 2cfd391daa13a100a56bb10b79b27eda80902374
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129724"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533601"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Použití referenčních dat pro vyhledávání v Stream Analytics
 
@@ -37,7 +37,7 @@ Referenční data jsou modelována jako sekvence objektů BLOB (definovaných ve
 
 ### <a name="configure-blob-reference-data"></a>Konfigurace referenčních dat objektů BLOB
 
-Chcete-li nakonfigurovat referenční data, musíte nejprve vytvořit vstup, který je typu **referenčních dat** . Následující tabulka vysvětluje každou vlastnost, kterou budete muset zadat při vytváření vstupních referenčních dat pomocí jejího popisu:
+Chcete-li nakonfigurovat referenční data, musíte nejprve vytvořit vstup, který je typu **referenčních dat**. Následující tabulka vysvětluje každou vlastnost, kterou budete muset zadat při vytváření vstupních referenčních dat pomocí jejího popisu:
 
 |**Název vlastnosti**  |**Popis**  |
 |---------|---------|
@@ -111,13 +111,13 @@ Můžete použít [spravovanou instanci SQL Azure](../azure-sql/managed-instance
 
 ## <a name="size-limitation"></a>Omezení velikosti
 
-Pro nejlepší výkon se doporučuje použít referenční datové sady, které jsou menší než 300 MB. Použití referenčních dat větší než 300 MB se podporuje v úlohách s 6 službami SUs nebo více. Tato funkce je ve verzi Preview a nesmí se používat v produkčním prostředí. Použití velmi velkých referenčních dat může mít vliv na výkon vaší úlohy. Vzhledem k tomu, že složitost dotazu se zvyšuje o zahrnutí stavového zpracování, jako jsou například agregace oken, dočasné spojení a dočasné analytické funkce, je očekáváno, že se maximální podporovaná velikost referenčních dat zkrátí. Pokud Azure Stream Analytics nemůže načíst referenční data a provádět složité operace, úloha nebude mít dostatek paměti a selže. V takových případech bude metrika využití% SU dostupná 100%.    
+Pro nejlepší výkon se doporučuje použít referenční datové sady, které jsou menší než 300 MB. Referenční datové sady 5 GB nebo nižší jsou podporovány v úlohách s 6 nebo více službami SUs. Použití velmi velkých referenčních dat může mít vliv na koncovou latenci vaší úlohy. Vzhledem k tomu, že složitost dotazu se zvyšuje o zahrnutí stavového zpracování, jako jsou například agregace oken, dočasné spojení a dočasné analytické funkce, je očekáváno, že se maximální podporovaná velikost referenčních dat zkrátí. Pokud Azure Stream Analytics nemůže načíst referenční data a provádět složité operace, úloha nebude mít dostatek paměti a selže. V takových případech bude metrika využití% SU dostupná 100%.    
 
 |**Počet jednotek streamování**  |**Doporučená velikost**  |
 |---------|---------|
 |1   |50 MB nebo méně   |
 |3   |150 MB nebo méně   |
-|6 a více   |300 MB nebo méně. Použití referenčních dat větší než 300 MB je ve verzi Preview podporováno a může mít vliv na výkon vaší úlohy.    |
+|6 a více   |5 GB nebo méně    |
 
 Podpora komprese není pro referenční data k dispozici.
 

@@ -4,12 +4,12 @@ description: Vytvoříte svou první aplikaci typu kontejner pro Linux na platfo
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: d085f8704850cdbb03e21b15b3cca7c8998b96fb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0481cc2d36f7882bbd8eea9b984c3dc388de5dee
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004224"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96534076"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Vytvoření první aplikace Service Fabric typu kontejner v Linuxu
 > [!div class="op_single_selector"]
@@ -21,7 +21,7 @@ Spuštění existující aplikace v kontejneru Linux v clusteru Service Fabric n
 > [!NOTE]
 > Tento článek se týká prostředí pro vývoj pro Linux.  Modul runtime clusteru Service Fabric a modul runtime Docker musí být spuštěný ve stejném operačním systému.  V clusteru Windows nemůžete spouštět kontejnery Linux.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Vývojový počítač s:
   * [Service Fabric SDK a nástroje](service-fabric-get-started-linux.md)
   * [Docker CE pro Linux](https://docs.docker.com/engine/installation/#prior-releases). 
@@ -87,10 +87,17 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
 ```
 
-## <a name="build-the-image"></a>Sestavení image
-Spuštěním příkazu `docker build` vytvořte image spouštějící vaši webovou aplikaci. Otevřete okno PowerShellu a přejděte do adresáře *c:\temp\helloworldapp*. Spusťte následující příkaz:
+## <a name="login-to-docker-and-build-the-image"></a>Přihlaste se k Docker a sestavte image.
 
-```bash
+V dalším kroku vytvoříme image, která spustí vaši webovou aplikaci. Při nastavování veřejných imagí z Docker (jako `python:2.7-slim` v našem souboru Dockerfile) je osvědčeným postupem ověřit si účet Docker Hub namísto vytvoření anonymní žádosti o získání dat.
+
+> [!NOTE]
+> Při provádění častých anonymních žádostí o přijetí změn se může zobrazit chyba Docker, která je podobná `ERROR: toomanyrequests: Too Many Requests.` nebo `You have reached your pull rate limit.` ověřena z dokovacího centra, aby tyto chyby nedocházelo. Další informace najdete v tématu [Správa veřejného obsahu pomocí Azure Container Registry](../container-registry/buffer-gate-public-content.md) .
+
+Otevřete okno PowerShellu a přejděte do adresáře, který obsahuje soubor Dockerfile. Potom spusťte následující příkazy:
+
+```
+docker login
 docker build -t helloworldapp .
 ```
 

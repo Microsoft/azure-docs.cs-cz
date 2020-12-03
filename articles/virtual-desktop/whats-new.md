@@ -3,17 +3,17 @@ title: Co je nového ve virtuálním počítači s Windows? – Azure
 description: Nové funkce a aktualizace produktů pro virtuální počítač s Windows
 author: Heidilohr
 ms.topic: overview
-ms.date: 11/11/2020
+ms.date: 12/02/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: c82312b40955b392243bf616ee991c0108a13fb5
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: e267de136271991446444a47a470dd52789b3613
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537386"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533957"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Co je nového ve virtuálním počítači s Windows?
 
@@ -25,6 +25,31 @@ Virtuální počítače s Windows se pravidelně aktualizují. V tomto článku 
 - Opravy chyb
 
 Tento článek se aktualizuje měsíčně. Nezapomeňte se podívat, jak často se budou zobrazovat nové aktualizace.
+
+## <a name="november-2020"></a>Listopad 2020
+
+### <a name="azure-portal-experience"></a>Prostředí Azure Portal
+
+Opravili jsme dvě chyby v uživatelském prostředí Azure Portal:
+
+- Popisný název aplikace klasické pracovní plochy už není přepsaný v pracovním postupu přidat virtuální počítač.
+- Karta hostitel relace se teď nahraje, pokud jsou hostitelé relace součástí sad škálování.
+
+### <a name="fslogix-client-version-2009"></a>Klient FSLogix, verze 2009 
+
+Vydali jsme novou verzi klienta FSLogix s mnoha opravami a vylepšeními. Další informace najdete v [našem blogovém příspěvku](https://social.msdn.microsoft.com/Forums/en-US/defe5828-fba4-4715-a68c-0e4d83eefa6b/release-notes-for-fslogix-apps-release-2009-29762130127?forum=FSLogix).
+
+### <a name="rdp-shortpath-public-preview"></a>Protokol RDP ShortPath Public Preview
+
+Protokol RDP ShortPath zavádí přímé připojení k hostiteli relace virtuálních počítačů s Windows pomocí připojení typu Point-to-site a VPN typu Site-to-site a ExpressRoute. Zavádí také transportní protokol URCP. Protokol RDP ShortPath je navržený tak, aby snižoval latenci a směrování sítě, aby se zlepšilo uživatelské prostředí. Další informace najdete v [ShortPath s Windows Virtual Desktop RDP](shortpath.md).
+
+### <a name="azdesktopvirtualization-version-201"></a>AZ. DesktopVirtualization, verze 2.0.1
+
+Vystavili jsme verzi 2.0.1 rutin pro virtuální počítače s Windows. Tato aktualizace zahrnuje rutiny, které vám umožní spravovat připojení aplikace MSIX. Novou verzi si můžete stáhnout v [galerii prostředí PowerShell](https://www.powershellgallery.com/packages/Az.DesktopVirtualization/2.0.1).
+
+### <a name="azure-advisor-updates"></a>Aktualizace Azure Advisor
+
+Azure Advisor teď má nové doporučení na pokyny k blízkosti na virtuálním počítači s Windows. Další informace najdete na [webu Azure](https://azure.microsoft.com/updates/new-recommendations-from-azure-advisor/).
 
 ## <a name="october-2020"></a>Říjen 2020
 
@@ -174,7 +199,6 @@ Tady je tato změna pro vás:
 - Funkce monitorování, které se použily k provedení prostřednictvím PowerShellu nebo webové aplikace diagnostické služby, se teď přesunuly na Log Analytics v Azure Portal. Nyní máte dvě možnosti vizualizace vašich sestav. Můžete spouštět dotazy Kusto a používat sešity k vytváření vizuálních sestav.
 
 - Už nebudete muset Azure Active Directory (Azure AD) vyjádřit souhlas s používáním virtuálního klienta Windows. V této aktualizaci tenant Azure AD v předplatném Azure ověřuje vaše uživatele a poskytuje pro správce ovládací prvky pro řízení přístupu na základě služby.
-
 
 ### <a name="powershell-support"></a>Podpora prostředí PowerShell
 

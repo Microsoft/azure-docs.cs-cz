@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 12/02/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90fc356929a9ea5713a8d359dfaa83286017b8f8
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 260df85f3e380e40d153fc17ce77bd56ca068982
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445434"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532818"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Upgrade na Azure Kognitivní hledání .NET SDK verze 11
 
-Pokud používáte verzi [sady .NET SDK](/dotnet/api/overview/azure/search)verze 10,0 nebo starší, Tento článek vám pomůže při upgradu na verzi 11.
+Pokud používáte verzi [sady .NET SDK](/dotnet/api/overview/azure/search)verze 10,0 nebo starší, Tento článek vám pomůže s upgradem na verzi 11 a v klientské knihovně **Azure.Search.Documents** .
 
 Verze 11 je plně přepracovaná Klientská knihovna, kterou vydala vývojový tým Azure SDK (předchozí verze vytvořil vývojářský tým Azure Kognitivní hledání). Pro zajištění větší konzistence s jinými klientskými knihovnami Azure došlo k přepracování této knihovny, která využívá závislost na [Azure. Core](/dotnet/api/azure.core) a [System.Text.Jsna](/dotnet/api/system.text.json)a implementuje známé přístupy k běžným úlohám.
 
@@ -49,7 +49,7 @@ V případě potřeby následující tabulka mapuje klientské knihovny mezi tě
 |---------------------|------------------------------|------------------------------|
 | Klient se používá pro dotazy a k naplnění indexu. | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) | [SearchClient](/dotnet/api/azure.search.documents.searchclient) |
 | Klient používaný pro indexy, analyzátory, mapy synonym | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) |
-| Klient používaný pro indexery, zdroje dat, dovednosti | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient ( **nové** )](/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
+| Klient používaný pro indexery, zdroje dat, dovednosti | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient (**nové**)](/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
 
 > [!Important]
 > `SearchIndexClient` existuje v obou verzích, ale podporuje různé věci. Ve verzi 10 `SearchIndexClient` Vytvořte indexy a další objekty. Ve verzi 11 `SearchIndexClient` funguje se stávajícími indexy. Aby nedocházelo k nejasnostem při aktualizaci kódu, nezapomeňte na pořadí, ve kterém jsou odkazy na klienta aktualizovány. Po sekvencování [kroků k upgradu](#UpgradeSteps) by měl být možné zmírnit případné problémy s nahrazením řetězce.
@@ -141,7 +141,7 @@ Následující funkce verze 10 ještě nejsou k dispozici ve verzi 11. Pokud tyt
 
 ## <a name="steps-to-upgrade"></a>Postup upgradu
 
-Následující kroky vám pomohou začít s migrací kódu proprocházením první sady požadovaných úloh, zejména v souvislosti s klientskými odkazy.
+Následující kroky vám pomohou začít s migrací kódu proprocházením první sady požadovaných úloh, zejména s ohledem na odkazy na klienty.
 
 1. Nainstalujte [ balíčekAzure.Search.Documents](https://www.nuget.org/packages/Azure.Search.Documents/) kliknutím pravým tlačítkem na odkazy na projekt a výběrem možnosti spravovat balíčky NuGet... v aplikaci Visual Studio.
 
@@ -170,7 +170,7 @@ Následující kroky vám pomohou začít s migrací kódu proprocházením prvn
 
 1. Přidejte nové odkazy na klienty pro objekty související s indexerem. Pokud používáte indexery, zdroje dat nebo dovednosti, změňte odkazy klienta na [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient). Tento klient je ve verzi 11 novinkou a nemá žádného předchůdce.
 
-1. Znovu navštěvujte kolekce. V nové sadě SDK jsou všechny seznamy jen pro čtení, aby nedocházelo k problémům, pokud se seznam bude obsahovat hodnoty null. Změnou kódu je přidání položek do seznamu. Například místo přiřazování řetězců k vlastnosti Select byste měli přidat následující:
+1. Revidujte kolekce a seznamy. V nové sadě SDK jsou všechny seznamy jen pro čtení, aby nedocházelo k problémům, pokud se seznam bude obsahovat hodnoty null. Změnou kódu je přidání položek do seznamu. Například místo přiřazování řetězců k vlastnosti Select byste měli přidat následující:
 
    ```csharp
    var options = new SearchOptions
@@ -188,11 +188,13 @@ Následující kroky vám pomohou začít s migrací kódu proprocházením prvn
     options.Select.Add("LastRenovationDate");
    ```
 
+   SELECT, omezující vlastnosti, SearchFields, SourceFields, ScoringParameters a OrderBy jsou všechny seznamy, které je nyní nutné znovu sestavit.
+
 1. Aktualizujte klientské odkazy na dotazy a import dat. Instance [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) by měly být změněny na [SearchClient](/dotnet/api/azure.search.documents.searchclient). Aby nedošlo k nejasnostem názvů, před pokračováním na další krok nezapomeňte zachytit všechny instance.
 
-1. Aktualizujte odkazy klienta pro objekty index, indexer, mapování synonym a objekty analyzátoru. Instance [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) by měly být změněny na [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient). 
+1. Aktualizujte klientské odkazy pro objekty index, mapování synonym a analyzátoru. Instance [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) by měly být změněny na [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient). 
 
-1. Co nejvíc je to možné, aktualizační třídy, metody a vlastnosti pro použití rozhraní API nové knihovny. Oddíl [rozdíly v pojmenování](#naming-differences) je místo, kde se má začít, ale můžete si také prohlédnout [protokol změn](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md).
+1. Pro zbytek kódu, aktualizujte třídy, metody a vlastnosti tak, aby používaly rozhraní API nové knihovny. Oddíl [rozdíly v pojmenování](#naming-differences) je místo, kde se má začít, ale můžete si také prohlédnout [protokol změn](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md).
 
    Pokud máte potíže při hledání ekvivalentních rozhraní API, doporučujeme, abyste nahlásili problém, abychom [https://github.com/MicrosoftDocs/azure-docs/issues](https://github.com/MicrosoftDocs/azure-docs/issues) mohli vylepšit dokumentaci nebo prozkoumat problém.
 

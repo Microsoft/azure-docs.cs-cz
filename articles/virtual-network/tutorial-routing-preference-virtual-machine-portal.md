@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2020
+ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: dd9c1c23bddf78eb1bdb8fc07f2cb6f8a7faa859
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 35e4b90e9bdd52a20bf892f0784b191384f271ac
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491209"
+ms.locfileid: "96533702"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-the-azure-portal"></a>Konfigurace předvolby směrování pro virtuální počítač pomocí Azure Portal
 
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak vytvořit virtuální počítač s veřejnou I
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://preview.portal.azure.com/).
+Přihlaste se na [Azure Portal](https://preview.portal.azure.com/).
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 

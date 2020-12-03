@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 11/02/2020
-ms.openlocfilehash: 8b372cc0fc19c6bf163d9d4e61cde6ce74cb3f28
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: cc853285e193dd3ac4e348525b8bf0db9f8cb023
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95538375"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533940"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Správa účtu komerčního tržiště v partnerském centru
 
@@ -115,7 +115,7 @@ Jakmile nastavíte stav blokování výběr na **zapnuto**, budou všechny výb�
 
 ### <a name="devices"></a>Zařízení
 
-Nastavení správy zařízení se vztahuje pouze na publikování UWP. [Přečtěte si další informace](/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info).
+Nastavení správy zařízení se vztahuje pouze na publikování UWP. [Další informace](/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info).
 
 ### <a name="tracking-guids"></a>Identifikátory GUID sledování
 
@@ -293,11 +293,11 @@ Pokud vaše aplikace Azure AD čte a zapisuje data v Microsoft Azure AD, bude po
 Uživatelům vaší společnosti můžete přiřadit následující role a oprávnění pro program komerčního tržiště v partnerském centru:
 
 - **Vlastník**
-  - "Je to osoba, která poprvé vytvořila účet a má k němu úplný přístup, včetně možnosti vytvářet a upravovat všechny uživatele účtu a měnit všechna finanční a účetní nastavení. Účet má obvykle pouze jednoho vlastníka. "
+  - Je to osoba, která poprvé vytvořila účet a má k němu úplný přístup, včetně možnosti vytvářet a upravovat všechny uživatele účtu a měnit všechna finanční a účetní nastavení. Účet má obvykle pouze jednoho vlastníka.
 - **Manažer**
   - Má přístup ke všem funkcím účet Microsoft s výjimkou nastavení daně a výběr
   - Může spravovat uživatele, role a pracovní účty (klienty).
-- **Vývojář**
+- **Maximalizac**
   - Může spravovat a publikovat nabídky.
   - Může zobrazit některé sestavy vydavatelů.
 

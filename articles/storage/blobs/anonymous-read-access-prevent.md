@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/09/2020
+ms.date: 12/02/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 01a5c696a41b9361c35e7af90f68088acea2944b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f12a899d3b6daa3b233e6a799871afca1e24d046
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913772"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533739"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Zabránit anonymnímu veřejnému přístupu pro čtení kontejnerů a objektů BLOB
 
@@ -166,6 +166,8 @@ New-AzStorageContainer -Name $containerName -Permission Blob -Context $ctx
 
 Pokud chcete zjistit nastavení veřejného přístupu v rámci sady účtů úložiště s optimálním výkonem, můžete použít Průzkumníka Azure Resource graphu v Azure Portal. Další informace o používání Průzkumníka grafů prostředků najdete v tématu [rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Průzkumníka Azure Resource graphu](../../governance/resource-graph/first-query-portal.md).
 
+Vlastnost **AllowBlobPublicAccess** není ve výchozím nastavení nastavena pro účet úložiště a nevrací hodnotu, dokud ji explicitně nenastavíte. Účet úložiště povoluje veřejný přístup, pokud je hodnota vlastnosti buď **null** , nebo **true**.
+
 Když spustíte následující dotaz, v Průzkumníku grafu prostředků se vrátí seznam účtů úložiště a v každém účtu se zobrazí nastavení veřejného přístupu:
 
 ```kusto
@@ -174,6 +176,10 @@ resources
 | extend allowBlobPublicAccess = parse_json(properties).allowBlobPublicAccess
 | project subscriptionId, resourceGroup, name, allowBlobPublicAccess
 ```
+
+Následující obrázek znázorňuje výsledky dotazu v rámci předplatného. Všimněte si, že u účtů úložiště, kde byla vlastnost **AllowBlobPublicAccess** explicitně nastavena, se zobrazí ve výsledcích jako **true** nebo **false**. Pokud vlastnost **AllowBlobPublicAccess** nebyla nastavena pro účet úložiště, ve výsledcích dotazu se zobrazí jako prázdná (nebo null).
+
+:::image type="content" source="media/anonymous-read-access-prevent/check-public-access-setting-accounts.png" alt-text="Snímek obrazovky s výsledky dotazu pro nastavení veřejného přístupu napříč účty úložiště":::
 
 ## <a name="use-azure-policy-to-audit-for-compliance"></a>Auditovat dodržování předpisů pomocí Azure Policy
 

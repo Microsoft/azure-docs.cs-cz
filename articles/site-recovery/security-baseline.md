@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f6d17b007fcccd87aed17a9ec3ca039b9559ab6d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 860bc9440547a4c62336ccc573859ec56b3400b5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492229"
+ms.locfileid: "96533855"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>Základní hodnoty zabezpečení Azure pro Site Recovery
 
@@ -164,9 +164,9 @@ Vizualizujte a Dotazujte výsledky protokolu a nakonfigurujte výstrahy tak, aby
 
 **Doprovodné** materiály: ve výchozím nastavení nejsou přiřazeny žádné role. Je potřeba je explicitně přiřadit na základě obchodních potřeb. Jakékoli přiřazení rolí se dá zkontrolovat pomocí PowerShell CLI nebo Azure Active Directory (Azure AD) a zjistit účty, které jsou členy skupin pro správu.
 
-- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?amp;preserve-view=true&view=azureadps-2.0)
+- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
+- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -224,7 +224,7 @@ Vytvořte proces, ve kterém můžete sledovat identitu a řízení přístupu p
 
 - [Pracovní stanice s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-- [Plánování nasazení služby Azure AD založené na cloudu Multi-Factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md)
+- [Plánování nasazení cloudové služby Azure AD Multi-Factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -431,7 +431,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 - [Jak vytvářet dotazy pomocí Azure graphu](../governance/resource-graph/first-query-portal.md)
 
-- [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
+- [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
@@ -530,7 +530,7 @@ Pochopení způsobu, jakým se v Azure vytvářejí a spravují zásady, je důl
 **Pokyny**: definování a implementace standardních konfigurací zabezpečení pro Recovery Services trezor pomocí Azure Policy. 
 
 Pomocí aliasů Azure Policy v oboru názvů Microsoft. RecoveryServices můžete vytvořit vlastní zásady pro audit nebo vynutili konfiguraci Recovery Services úložiště Site Recovery služby.
-- [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
+- [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -553,9 +553,9 @@ Pomocí aliasů Azure Policy v oboru názvů Microsoft. RecoveryServices můžet
 
 **Doprovodné** materiály: vyberte Azure Repos pro bezpečné uložení a správu kódu, pokud používáte vlastní definice Azure Policy pro Recovery Services trezory a související prostředky.
 
-- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Dokumentace k Azure Repos](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
+- [Dokumentace k Azure Repos](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -656,7 +656,7 @@ Všechny prostředky úložiště, které používá metadata služby Site Recov
 
 Nejedná se o obor zákazníka a Site Recovery se tým postará o interní oddělení IT. Zákazník může zálohovat Key Vault klíče v Azure.
 
-- [Postup zálohování klíčů trezoru klíčů v Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
+- [Postup zálohování klíčů trezoru klíčů v Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -666,7 +666,7 @@ Nejedná se o obor zákazníka a Site Recovery se tým postará o interní oddě
 
 **Pokyny**: pravidelné testování obnovení zálohovaných klíčů spravovaných zákazníkem.
 
-- [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
+- [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 

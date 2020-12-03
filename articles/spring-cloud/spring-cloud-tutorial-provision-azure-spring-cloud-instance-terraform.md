@@ -1,27 +1,27 @@
 ---
-title: Kurz – zřízení instance cloudového cloudu Azure pomocí terraformu
+title: Zřízení instance Azure Spring Cloudu s využitím Terraformu
 description: Zřízení instance cloudového cloudu Azure pomocí Terraformu
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: ed66da991df4dbe89c327a9a28ee28527c3da87b
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 060ef2d08b849706b47b24748142c608292971b5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091640"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533787"
 ---
-# <a name="tutorial-provision-an-azure-spring-cloud-instance-with-terraform"></a>Kurz: zřízení instance služby jarního cloudu Azure pomocí Terraformu
+# <a name="provision-an-azure-spring-cloud-instance-with-terraform"></a>Zřízení instance služby jarního cloudu Azure pomocí Terraformu
 
 **Tento článek se týká:** ✔️ Java ✔️ C #
 
-V tomto kurzu se vytvoří instance cloudu Azure jaře pomocí Terraformu. Postupy vás provedou vytvořením následujících prostředků:
+Tento příklad vytvoří instanci cloudu Azure jaře pomocí Terraformu. Postupy vás provedou vytvořením následujících prostředků:
 
 > [!div class="checklist"]
-> * Resource Group
+> * Skupina prostředků
 > * Instance Azure jaře Cloud
 > * Azure Storage pro Log Analytics
 
@@ -37,7 +37,7 @@ V tomto kurzu se vytvoří instance cloudu Azure jaře pomocí Terraformu. Postu
 
 ## <a name="create-configuration-file"></a>Vytvoření konfiguračního souboru
 
-1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Otevřete [Azure Cloud Shell](../app-service/quickstart-java.md#use-azure-cloud-shell).
 
@@ -72,7 +72,7 @@ V tomto kurzu se vytvoří instance cloudu Azure jaře pomocí Terraformu. Postu
     }
     ```
 
-1. Uložte soubor (** &lt; CTRL>S**) a ukončete editor (** &lt; CTRL>Q**).
+1. Uložte soubor (**&lt; CTRL>S**) a ukončete editor (**&lt; CTRL>Q**).
 
 ## <a name="apply-the-configuration"></a>Použít konfiguraci
 
@@ -143,7 +143,7 @@ V této části se dozvíte, jak aktualizovat konfiguraci a povolit protokol a m
     }
     ```
 
-1. Uložte soubor (** &lt; CTRL>S**) a ukončete editor (** &lt; CTRL>Q**).
+1. Uložte soubor (**&lt; CTRL>S**) a ukončete editor (**&lt; CTRL>Q**).
 
 1. Jak je uvedeno v předchozí části, spusťte následující příkaz, který provede změny:
 
@@ -161,7 +161,7 @@ V této části se dozvíte, jak aktualizovat konfiguraci a povolit protokol a m
 
 Pokud už je nepotřebujete, odstraňte prostředky vytvořené v tomto článku.
 
-Pokud chcete odebrat prostředky Azure vytvořené v tomto kurzu, spusťte příkaz [terraformu Destroy](https://www.terraform.io/docs/commands/destroy.html) :
+Pokud chcete odebrat prostředky Azure vytvořené v tomto cvičení, spusťte příkaz [terraformu Destroy](https://www.terraform.io/docs/commands/destroy.html) :
 
 ```bash
 terraform destroy -auto-approve

@@ -15,27 +15,30 @@ ms.custom:
 - devx-track-js
 - devx-track-csharp
 - cog-serv-seo-aug-2020
-zone_pivot_groups: programming-languages-set-one
+zone_pivot_groups: programming-languages-computer-vision
 keywords: počítačové zpracování obrazu, Služba Computer visioning
-ms.openlocfilehash: c0ed1d534ce76f870b34c626b1b21f7745aa3247
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 20378eff09abed0eb4d7587211f576de6313ea1d
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91309812"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533266"
 ---
 # <a name="quickstart-use-the-computer-vision-client-library"></a>Rychlý Start: použití klientské knihovny Počítačové zpracování obrazu
 
-Začněte s klientskou knihovnou Počítačové zpracování obrazu. Služba Počítačové zpracování obrazu poskytuje algoritmy AI pro zpracování imagí a vracení informací o jejich vizuálních funkcích. Pomocí těchto kroků nainstalujete balíček do aplikace a vyzkoušíte vzorový kód pro základní úlohy.
+Začněte s Počítačové zpracování obrazu REST API nebo klientské knihovny. Služba Počítačové zpracování obrazu poskytuje algoritmy AI pro zpracování imagí a vracení informací o jejich vizuálních funkcích. Pomocí těchto kroků nainstalujete balíček do aplikace a vyzkoušíte vzorový kód pro základní úlohy.
 
-Pomocí klientské knihovny Počítačové zpracování obrazu můžete:
 
-* Analyzujte obrázek pro značky, text Description, obličeje, obsah pro dospělé a další.
-* Přečtěte si vytištěné a ručně psaný text pomocí rozhraní API pro čtení.
 
 ::: zone pivot="programming-language-csharp"
 
 [!INCLUDE [C# SDK quickstart](../includes/quickstarts-sdk/csharp-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+[!INCLUDE [Python SDK quickstart](../includes/quickstarts-sdk/python-sdk.md)]
 
 ::: zone-end
 
@@ -51,14 +54,14 @@ Pomocí klientské knihovny Počítačové zpracování obrazu můžete:
 
 ::: zone-end
 
-::: zone pivot="programming-language-python"
-
-[!INCLUDE [Python SDK quickstart](../includes/quickstarts-sdk/python-sdk.md)]
-
-::: zone-end
-
 ::: zone pivot="programming-language-go"
 
 [!INCLUDE [Go SDK quickstart](../includes/quickstarts-sdk/go-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-rest-api"
+
+[!INCLUDE [REST API quickstart](../includes/curl-quickstart.md)]
 
 ::: zone-end

@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/25/2020
+ms.date: 12/02/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: dcc84dc252001721a3848a008a3db80dcc7822d2
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: c90b7ce86e06669696a4b9f7e0b2f5287e9dd97e
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301263"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533192"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Řešení potíží s konektory služby Azure Data Factory
 
@@ -205,7 +205,7 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 - **Řešení**: po několika minutách znovu spusťte aktivitu kopírování.
                   
 
-## <a name="azure-synapse-analytics-formerly-sql-data-warehouseazure-sql-databasesql-server"></a>Azure synapse Analytics (dříve SQL Data Warehouse)/Azure SQL Database/SQL Server
+## <a name="azure-synapse-analyticsazure-sql-databasesql-server"></a>Azure synapse Analytics/Azure SQL Database/SQL Server
 
 ### <a name="error-code--sqlfailedtoconnect"></a>Kód chyby: SqlFailedToConnect
 
@@ -488,7 +488,28 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Doporučení**: Spusťte kanál znovu. Pokud budete pokračovat, zkuste omezit paralelismus. Pokud pořád selže, obraťte se prosím na podporu Dynamics.
 
+## <a name="excel-format"></a>Excelový formát
 
+### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>Časový limit nebo pomalý výkon při analýze velkého souboru aplikace Excel
+
+- **Příznaky**:
+
+    1. Když vytváříte datovou sadu Excelu a importujete schéma z připojení/úložiště, zobrazíte náhled dat, vypíšete nebo aktualizujete listy, může se zobrazit chyba vypršení časového limitu, pokud je velikost souboru aplikace Excel velká.
+    2. Když použijete aktivitu kopírování ke kopírování dat z velkého excelového souboru (>= 100 MB) do jiného úložiště dat, může docházet ke zpomalení výkonu nebo OOM problému.
+
+- **Příčina**: 
+
+    1. Pro operace, jako je import schématu, zobrazení náhledu dat a výpis listů v datové sadě Excelu, je časový limit 100 a statický. U velkých souborů v Excelu se tyto operace nemusí dokončit v rámci hodnoty časového limitu.
+
+    2. Aktivita kopírování ADF přečte celý excelový soubor do paměti a pak vyhledá zadaný list a buňky pro čtení dat. K tomuto chování dochází z důvodu použití základní sady SDK ADF.
+
+- **Řešení**: 
+
+    1. Pro import schématu můžete vygenerovat menší ukázkový soubor, který je podmnožinou původního souboru, a místo příkazu importovat schéma z připojení nebo úložiště zvolit importovat schéma z ukázkového souboru.
+
+    2. Pokud chcete zobrazit seznam workseet, můžete v rozevíracím seznamu list kliknout na Upravit a místo toho zadat název nebo index listu.
+
+    3. Pokud chcete kopírovat velký excelový soubor (>100 MB) do jiného úložiště, můžete použít zdroj dat v aplikaci Excel flow, který zajišťuje čtení a lepší využívání streamování pro sport.
 
 ## <a name="json-format"></a>Formát JSON
 

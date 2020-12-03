@@ -1,20 +1,20 @@
 ---
-title: Kurz – nastavení automatického škálování pro aplikace mikroslužeb
+title: Nastavení automatického škálování pro aplikace mikroslužeb
 description: Tento článek popisuje, jak nastavit nastavení automatického škálování pro vaše aplikace pomocí portál Microsoft Azure nebo rozhraní příkazového řádku Azure CLI.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 6023d1ebd27ebaccacfce85ce0f49b7ef87e17ad
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: d59d5de0d98380be215747c7daa33721fcebf33c
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742668"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533821"
 ---
-# <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>Kurz: nastavení automatického škálování pro aplikace mikroslužeb
+# <a name="set-up-autoscale-for-microservice-applications"></a>Nastavení automatického škálování pro aplikace mikroslužeb
 
 **Tento článek se týká:** ✔️ Java ✔️ C #
 
@@ -24,17 +24,17 @@ Automatické škálování je integrovaná funkce Azure jarního cloudu, která 
 
 Chcete-li provést tyto postupy, potřebujete:
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Nasazená instance služby jarní cloudová služba Azure Pokud chcete začít, postupujte podle pokynů k [rychlému zprovoznění nasazení aplikace přes Azure CLI](./spring-cloud-quickstart.md) .
 * V instanci služby už je vytvořená aspoň jedna aplikace.
 
 ## <a name="navigate-to-the-autoscale-page-in-the-azure-portal"></a>Přejít na stránku automatického škálování v Azure Portal
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Přejít na stránku **přehledu** jarního cloudu Azure.
 3. Vyberte skupinu prostředků, která obsahuje vaši službu.
 4. V nabídce **Nastavení** v levém navigačním podokně vyberte kartu **aplikace** .
-5. Vyberte aplikaci, pro kterou chcete nastavit automatické škálování. V tomto příkladu vyberte aplikaci s názvem **demo** . Měla by se zobrazit Stránka s **přehledem** aplikace.
+5. Vyberte aplikaci, pro kterou chcete nastavit automatické škálování. V tomto příkladu vyberte aplikaci s názvem **demo**. Měla by se zobrazit Stránka s **přehledem** aplikace.
 6. V nabídce **Nastavení** v levém navigačním podokně přejděte na kartu horizontální navýšení **kapacity** .
 7. Vyberte nasazení, pro které chcete nastavit automatické škálování. Měli byste vidět možnosti automatického škálování zobrazené v následující části.
 

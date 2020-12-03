@@ -14,12 +14,12 @@ ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: počítačové zpracování obrazu, aplikace počítačové vidění, Služba Computer visioning Service
-ms.openlocfilehash: 1b4768781c45733590639b4a382fecfdb02adf48
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 566424f9344d1eeff258a0391fa3635d5a12aae6
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95532286"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533108"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
@@ -114,4 +114,4 @@ Stejně jako u všech Cognitive Services by měli vývojáři, kteří používa
 
 Začněte s Počítačové zpracování obrazu pomocí Průvodce rychlým startem v preferovaném vývojovém jazyce:
 
-- [Rychlý Start: Počítačové zpracování obrazu Klientská knihovna](./quickstarts-sdk/client-library.md)
+- [Rychlý Start: Počítačové zpracování obrazu REST API nebo klientské knihovny](./quickstarts-sdk/client-library.md)

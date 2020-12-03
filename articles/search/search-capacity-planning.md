@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 76084a9ddd6842194bb4c6b25d62e62c2ed2d4a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92dcbfd360938724bb65b734d7c69ea61d7826b0
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89660289"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533039"
 ---
 # <a name="adjust-the-capacity-of-an-azure-cognitive-search-service"></a>Úprava kapacity služby Azure Kognitivní hledání
 
 Než [zřídíte službu vyhledávání](search-create-service-portal.md) a zamknete ji v konkrétní cenové úrovni, pochopíte si, jak kapacita funguje a jak můžete upravovat repliky a oddíly, abyste vyhověli výkyvům úloh.
 
-Kapacita je funkce zvolené [úrovně](search-sku-tier.md) (úrovně určují hardwarové charakteristiky) a kombinaci repliky a oddílu potřebné pro plánované úlohy. Počet replik nebo oddílů můžete zvýšit nebo snížit jednotlivě. V závislosti na vrstvě a velikosti úpravy může přidání nebo snížení kapacity trvat až 15 minut až několik hodin.
+Kapacita je funkce zvolené [úrovně](search-sku-tier.md) (úrovně určují hardwarové charakteristiky) a kombinaci repliky a oddílu potřebné pro plánované úlohy. Po vytvoření služby můžete zvýšit nebo snížit počet replik nebo oddílů nezávisle na sobě. Náklady se budou nacházet s každým dalším fyzickým prostředkem, ale po dokončení rozsáhlých úloh můžete snížit měřítko a snížit tak svůj účet. V závislosti na vrstvě a velikosti úpravy může přidání nebo snížení kapacity trvat až 15 minut až několik hodin.
 
 Při úpravách přidělení replik a oddílů doporučujeme použít Azure Portal. Portál vynutil omezení povolených kombinací, které jsou nižší než maximální limity vrstvy. Nicméně pokud vyžadujete přístup založený na skriptech nebo způsobu zřizování na základě kódu, [Azure PowerShell](search-manage-powershell.md) nebo [REST API správy](/rest/api/searchmanagement/services) jsou alternativní řešení.
 
@@ -36,7 +36,7 @@ Kapacita se vyjadřuje v *jednotkách vyhledávání* , které se dají přiděl
 
 Následující diagram znázorňuje vztah mezi replikami, oddíly, horizontálních oddílů a jednotkami pro hledání. Ukazuje příklad toho, jak je jeden index rozložen mezi čtyři jednotky vyhledávání ve službě se dvěma replikami a dvěma oddíly. Každá ze čtyř jednotek hledání uchovává pouze polovinu horizontálních oddílůy indexu. Jednotky vyhledávání v levém sloupci ukládají první polovinu horizontálních oddílů, včetně prvního oddílu, zatímco ta v pravém sloupci ukládají druhou polovinu horizontálních oddílů, která zahrnuje druhý oddíl. Vzhledem k tomu, že existují dvě repliky, existují dvě kopie každého indexu horizontálních oddílů. Jednotky vyhledávání v horním řádku ukládají jednu kopii, která se skládá z první repliky, zatímco ta v dolním řádku ukládá další kopii, která se skládá z druhé repliky.
 
-:::image type="content" source="media/search-capacity-planning/shards.png" alt-text="Vyhledávací indexy se horizontálně dělené napříč oddíly.&quot;:::
+:::image type="content" source="media/search-capacity-planning/shards.png" alt-text="Vyhledávací indexy se horizontálně dělené napříč oddíly.":::
 
 Výše uvedený diagram je pouze jeden příklad. Je možné mnoha kombinací oddílů a replik, maximálně až 36 jednotek hledání (celkem až).
 
@@ -44,7 +44,7 @@ V Kognitivní hledání je Správa horizontálních oddílůa detailem implement
 
 + Řazení anomálií: skóre hledání se nejprve vypočítávají na úrovni horizontálních oddílů a pak se agreguje do jedné sady výsledků. V závislosti na charakteristikách horizontálních oddílů obsahu může být shoda z jedné horizontálních oddílů seřazená na vyšší hodnotu než shoda v jiném typu. Pokud si všimnete, že ve výsledcích hledání nenajdete intuitivní hodnocení, je nejpravděpodobnější vzhledem k efektům horizontálního dělení, zejména pokud jsou indexy malé. Těmto anomáliím se můžete vyhnout tak, že vyberete možnost [vypočítat skóre globálně napříč celým indexem](index-similarity-and-scoring.md#scoring-statistics-and-sticky-sessions), ale dojde k snížení výkonu.
 
-+ Gramatiky automatického dokončování: Automatické dokončování dotazů, kde se shody provádějí na prvních několika znakech částečně zadaného výrazu, přijměte přibližný parametr, který forgives malé odchylky v pravopisu. Pro automatické dokončování je přibližné porovnání omezené na výrazy v rámci aktuální horizontálních oddílů. Například pokud horizontálních oddílů obsahuje &quot;Microsoft" a částečný výraz "micor", vyhledávací web bude v tomto horizontálních oddílů odpovídat "Microsoft", ale ne v jiném horizontálních oddílů, které obsahují zbývající části indexu.
++ Gramatiky automatického dokončování: Automatické dokončování dotazů, kde se shody provádějí na prvních několika znakech částečně zadaného výrazu, přijměte přibližný parametr, který forgives malé odchylky v pravopisu. Pro automatické dokončování je přibližné porovnání omezené na výrazy v rámci aktuální horizontálních oddílů. Například pokud horizontálních oddílů obsahuje "Microsoft" a částečný výraz "micor", vyhledávací web bude v tomto horizontálních oddílů odpovídat "Microsoft", ale ne v jiném horizontálních oddílů, které obsahují zbývající části indexu.
 
 ## <a name="when-to-add-nodes"></a>Kdy přidat uzly
 
@@ -61,7 +61,7 @@ V rámci obecného pravidla hledají aplikace za následek větší repliky než
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) a vyberte vyhledávací službu.
 
-1. V **Nastavení**otevřete stránku **škálování** a upravte repliky a oddíly. 
+1. V **Nastavení** otevřete stránku **škálování** a upravte repliky a oddíly. 
 
    Následující snímek obrazovky ukazuje standardní službu zřízenou s jednou replikou a oddílem. Vzorec v dolní části indikuje, kolik jednotek hledání se používá (1). Pokud byla Jednotková cena $100 (nejedná se o skutečnou cenu), budou měsíční náklady na spuštění této služby $100 v průměru.
 
@@ -102,9 +102,9 @@ Všechny služby a služby optimalizované pro úložiště Standard a Storage m
 | **1 replika** |1. SU |2. SU |3. SU |4. SU |6. SU |12. SU |
 | **2 repliky** |2. SU |4. SU |6. SU |8. SU |12. SU |24 SU |
 | **3 repliky** |3. SU |6. SU |9. SU |12. SU |18 SU |36 SU |
-| **4 repliky** |4. SU |8. SU |12. SU |16. SU |24 SU |Není k dispozici |
-| **5 replik** |5 SU |10. SU |15 SU |20 SU |30 SU |Není k dispozici |
-| **6 replik** |6. SU |12. SU |18 SU |24 SU |36 SU |Není k dispozici |
+| **4 repliky** |4. SU |8. SU |12. SU |16. SU |24 SU |– |
+| **5 replik** |5 SU |10. SU |15 SU |20 SU |30 SU |– |
+| **6 replik** |6. SU |12. SU |18 SU |24 SU |36 SU |– |
 | **12 replik** |12. SU |24 SU |36 SU |N/A |N/A |N/A |
 
 Služba SUs, ceny a kapacita jsou podrobně vysvětleny na webu Azure. Další informace najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/search/).

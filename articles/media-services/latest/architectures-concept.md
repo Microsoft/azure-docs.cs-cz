@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: inhenkel
-ms.openlocfilehash: e00079190371b3ae0e318aaadd8cf724d9d339d0
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: c14dbe4253696e01e99111a24319e455c1d551e9
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512623"
+ms.locfileid: "96533991"
 ---
 # <a name="media-services-architectures"></a>Media Services architektury
 
@@ -30,12 +30,6 @@ ms.locfileid: "96512623"
 Toto řešení je postavené na spravovaných službách Azure: Media Services a Content Delivery Network. Tyto služby běží v prostředí s vysokou dostupností, které jsou opravené a podporované, takže se můžete soustředit na vaše řešení, a ne na prostředí, ve kterém běží.
 
 Podívejte se na [živá streamovaná digitální média](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/digital-media-live-stream) v centru architektury Azure.
-
-## <a name="instant-broadcasting-on-serverless-architecture"></a>Okamžité všesměrové vysílání na architektuře bez serveru
-
-Zjednodušte komunikaci a aktualizace 1:1 v reálném čase pomocí kódu bez serveru. Tato architektura používá Azure Functions, službu signalizace, účet úložiště a SQL Database.
-
-Podívejte se [na rychlé vysílání v architektuře bez serveru](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/instant-broadcasting-on-serverless-architecture) v centru architektury Azure.
 
 ## <a name="video-on-demand-digital-media"></a>Digitální média VoD (Video-on-Demand)
 
