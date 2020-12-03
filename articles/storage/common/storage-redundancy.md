@@ -6,22 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/24/2020
+ms.date: 12/02/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: fbc24db21ee43e3c2aef3d0164e8510a79508fd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57cde2c5c0a1caf7ad5182cad8db72ab8aa7c908
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658572"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531779"
 ---
-# <a name="azure-storage-redundancy"></a>Azure Storage redundance
+# <a name="azure-storage-redundancy"></a>Redundance Azure Storage
 
-Azure Storage vždycky ukládá více kopií vašich dat, takže je chráněná před plánovanými a neplánovanými událostmi, včetně přechodných selhání hardwaru, sítě nebo výpadků napájení a obrovských přirozených havárií. Redundance zajišťuje, že váš účet úložiště splňuje [smlouvu o úrovni služeb (SLA) pro Azure Storage](https://azure.microsoft.com/support/legal/sla/storage/) i v případě selhání.
+Azure Storage vždycky ukládá více kopií vašich dat, takže je chráněná před plánovanými a neplánovanými událostmi, včetně přechodných selhání hardwaru, sítě nebo výpadků napájení a obrovských přirozených havárií. Redundance zajišťuje, že váš účet úložiště splňuje požadavky na dostupnost a odolnost i v případě selhání.
 
-Při rozhodování, která možnost redundance je pro váš scénář nejvhodnější, zvažte kompromisy mezi nižšími náklady a vyšší dostupností a odolností. Mezi faktory, které vám pomůžou určit, kterou možnost redundance byste měli zvolit, patří:  
+Při rozhodování, která možnost redundance je pro váš scénář nejvhodnější, zvažte kompromisy mezi nižšími náklady a vyšší dostupností. Mezi faktory, které vám pomůžou určit, kterou možnost redundance byste měli zvolit, patří:  
 
 - Způsob replikace dat v primární oblasti
 - Bez ohledu na to, jestli se vaše data replikují do druhé oblasti, která je geograficky vzdálená v primární oblasti, aby se chránila před místními katastrofami
@@ -51,7 +51,7 @@ LRS je dobrou volbou pro následující scénáře:
 
 Zóna – redundantní úložiště (ZRS) replikuje data Azure Storage synchronně v rámci tří zón dostupnosti Azure v primární oblasti. Každá zóna dostupnosti je samostatné fyzické umístění s nezávislým napájením, chlazením a sítí. ZRS nabízí odolnost pro Azure Storage datových objektů nejméně 99,9999999999% (12 9) v průběhu daného roku.
 
-Pomocí ZRS jsou vaše data stále přístupná pro operace čtení i zápisu i v případě, že zóna nebude k dispozici. Pokud se zóna neuvolní, Azure si z nich vybere aktualizace sítě, jako je třeba nasměrování DNS. Tyto aktualizace mohou ovlivnit vaši aplikaci, pokud přistupujete k datům před dokončením aktualizací. Při navrhování aplikací pro ZRS se řiďte postupy pro zpracování přechodných chyb, včetně implementace zásad opakování pomocí exponenciálního zálohování.
+Pomocí ZRS jsou vaše data stále přístupná pro operace čtení i zápisu i v případě, že zóna nebude k dispozici. Pokud se zóna bude nedostupná, Azure si neuvolní síťové aktualizace, jako je třeba přesměrování DNS. Tyto aktualizace mohou ovlivnit vaši aplikaci, pokud přistupujete k datům před dokončením aktualizací. Při navrhování aplikací pro ZRS se řiďte postupy pro zpracování přechodných chyb, včetně implementace zásad opakování pomocí exponenciálního zálohování.
 
 Požadavek na zápis do účtu úložiště, který používá ZRS, proběhne synchronně. Operace zápisu se úspěšně vrátí až po zápisu dat do všech replik ve třech zónách dostupnosti.
 
@@ -153,11 +153,9 @@ Následující tabulka popisuje klíčové parametry pro každou možnost redund
 
 | Parametr | LRS | ZRS | GRS/RA – GRS | GZRS/RA – GZRS |
 |:-|:-|:-|:-|:-|
-| Procentuální hodnota odolnosti objektů v průběhu daného roku<sup>1</sup> | alespoň 99,999999999% (11 9 's) | minimálně 99,9999999999% (12 9 's) | minimálně 99.99999999999999% (16 9) | minimálně 99.99999999999999% (16 9) |
-| Smlouva SLA o dostupnosti pro žádosti o čtení<sup>1</sup> | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) pro GRS<br /><br />Minimálně 99,99% (99,9% pro studenou úroveň přístupu) pro RA-GRS | Minimálně 99,9% (99% pro studenou úroveň přístupu) pro GZRS<br /><br />Minimálně 99,99% (99,9% pro studenou úroveň přístupu) pro RA-GZRS |
-| Smlouva SLA o dostupnosti pro žádosti o zápis<sup>1</sup> | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) |
-
-<sup>1</sup> informace o tom, jak Azure Storage garantuje odolnost a dostupnost, najdete v [Azure Storage smlouvě SLA](https://azure.microsoft.com/support/legal/sla/storage/).
+| Procentuální hodnota odolnosti objektů v průběhu daného roku | alespoň 99,999999999% (11 9 's) | minimálně 99,9999999999% (12 9 's) | minimálně 99.99999999999999% (16 9) | minimálně 99.99999999999999% (16 9) |
+| Dostupnost pro žádosti o čtení | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) pro GRS<br /><br />Minimálně 99,99% (99,9% pro studenou úroveň přístupu) pro RA-GRS | Minimálně 99,9% (99% pro studenou úroveň přístupu) pro GZRS<br /><br />Minimálně 99,99% (99,9% pro studenou úroveň přístupu) pro RA-GZRS |
+| Dostupnost pro požadavky na zápis | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) |
 
 ### <a name="durability-and-availability-by-outage-scenario"></a>Scénář odolnosti a dostupnosti při výpadku
 
@@ -165,10 +163,10 @@ Následující tabulka uvádí, zda jsou vaše data v daném scénáři odolná 
 
 | Scénář výpadku | LRS | ZRS | GRS/RA – GRS | GZRS/RA – GZRS |
 |:-|:-|:-|:-|:-|
-| Uzel v datovém centru nebude dostupný. | Yes | Yes | Yes | Yes |
-| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast). | No | Yes | Ano<sup>1</sup> | Yes |
-| V primární oblasti dojde k výpadku v rámci oblasti. | No | No | Ano<sup>1</sup> | Ano<sup>1</sup> |
-| Přístup pro čtení do sekundární oblasti je k dispozici, pokud primární oblast nebude k dispozici. | No | No | Ano (s RA-GRS) | Ano (s RA-GZRS) |
+| Uzel v datovém centru nebude dostupný. | Ano | Ano | Ano | Ano |
+| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast). | Ne | Ano | Ano<sup>1</sup> | Ano |
+| V primární oblasti dojde k výpadku v rámci oblasti. | Ne | Ne | Ano<sup>1</sup> | Ano<sup>1</sup> |
+| Přístup pro čtení do sekundární oblasti je k dispozici, pokud primární oblast nebude k dispozici. | Ne | Ne | Ano (s RA-GRS) | Ano (s RA-GZRS) |
 
 <sup>1</sup> převzetí služeb při selhání účtu se vyžaduje k obnovení dostupnosti pro zápis, pokud primární oblast nebude k dispozici. Další informace najdete v tématu [převzetí služeb při selhání při zotavení po havárii a účtu úložiště](storage-disaster-recovery-guidance.md).
 
@@ -191,7 +189,7 @@ Informace o cenách pro jednotlivé možnosti redundance najdete v tématu [Azur
 
 Azure Storage pravidelně ověřuje integritu dat uložených pomocí redundantních kontrol redundance (CRCs). Pokud je zjištěno poškození dat, je opraveno pomocí redundantních dat. Azure Storage taky vypočítává kontrolní součty pro veškerý síťový provoz, aby se zjistilo poškození datových paketů při ukládání nebo načítání dat.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 - [Podívejte se na vlastnost čas poslední synchronizace pro účet úložiště.](last-sync-time-get.md)
 - [Změna možnosti redundance pro účet úložiště](redundancy-migration.md)

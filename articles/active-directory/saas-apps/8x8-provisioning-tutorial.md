@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0ed56d200c2b5a472dbf93d45ad25156ea02a884
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 90e3464ac9ddf1e839c3a731f79ac2c0771c37ea
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181148"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532691"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>Kurz: Konfigurace 8x8 pro Automatické zřizování uživatelů
 
@@ -50,17 +50,17 @@ V této části se seznámíte s postupem konfigurace 8x8 pro podporu zřizován
 
 ### <a name="to-configure-a-user-provisioning-access-token-in-8x8-configuration-manager"></a>Konfigurace přístupového tokenu pro zřizování uživatelů v 8x8 Configuration Manager:
 
-1. Přihlaste se k [Configuration Manager](https://vo-cm.8x8.com). Vyberte **Správa identit**.
+1. Přihlaste se ke [konzole pro správu](https://admin.8x8.com). Vyberte **Správa identit**.
 
-   ![Správa identit](./media/8x8-provisioning-tutorial/8x8-identity-management.png)
+   ![Správce](./media/8x8-provisioning-tutorial/8x8-identity-management.png)
 
 2. Kliknutím na odkaz **Zobrazit informace o zřizování uživatelů** vygenerujte token.
 
-   ![Zobrazit zřizování uživatelů](./media/8x8-provisioning-tutorial/8x8-show-user-provisioning.png)
+   ![Zobrazit](./media/8x8-provisioning-tutorial/8x8-show-user-provisioning.png)
 
 3. Zkopírujte hodnoty **8X8 URL** a **tokenu 8x8 API** . Tyto hodnoty se zadají do polí **Adresa URL tenanta** a **tajného tokenu** na kartě zřizování aplikace 8x8 ve Azure Portal.
 
-   ![Kopírovat adresu URL a token](./media/8x8-provisioning-tutorial/8x8-copy-url-token.png)
+   ![Token](./media/8x8-provisioning-tutorial/8x8-copy-url-token.png)
 
 ## <a name="step-3-add-8x8-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání 8x8 z Galerie aplikací Azure AD
 

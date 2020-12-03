@@ -12,17 +12,17 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 08/04/2020
 tags: azure-synpase
-ms.openlocfilehash: 5442ddab5b4925e40250e63833a634006db7aead
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: f8d352dac98f953f7f6d8033d0d9e1376c4da313
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781443"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532240"
 ---
 # <a name="dynamic-data-masking"></a>Dynamické maskování dat 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Azure SQL Database, Azure SQL Managed instance a Azure synapse Analytics podporují dynamické maskování dat. Dynamické maskování dat omezuje vystavení citlivých dat jejich maskováním na uživatele bez oprávnění. 
+Azure SQL Database, Azure SQL Managed instance a Azure synapse Analytics podporují dynamické maskování dat. Dynamické maskování dat minimalizuje odhalení citlivých dat tím, že je pro uživatele bez oprávnění maskuje. 
 
 Dynamické maskování dat pomáhá předcházet neoprávněnému přístupu k citlivým datům tím, že uživatelům umožňuje určit, kolik citlivých dat se může odhalit, aby to mělo minimální dopad na aplikační vrstvu. Je to funkce zabezpečení založená na zásadách, která skrývá citlivá data v sadě výsledků dotazu nad určenými poli databáze, zatímco data v databázi se nemění.
 
@@ -30,7 +30,7 @@ Například zástupce služby v centru volání může identifikovat volajícíc
 
 ## <a name="dynamic-data-masking-basics"></a>Základy dynamického maskování dat
 
-Zásadu dynamického maskování dat v Azure Portal nastavíte tak, že v podokně Konfigurace SQL Database vyberete okno **Maskování dynamických dat** v části **zabezpečení** . Tuto funkci nejde nastavit pomocí portálu pro Azure synapse (použijte PowerShell nebo REST API) nebo spravovanou instanci SQL. Další informace najdete v tématu [dynamické maskování dat](/sql/relational-databases/security/dynamic-data-masking).
+Zásadu dynamického maskování dat v Azure Portal nastavíte tak, že v podokně Konfigurace SQL Database vyberete okno **Maskování dynamických dat** v části **zabezpečení** . Tuto funkci nelze nastavit pomocí portálu pro spravovanou instanci SQL (použijte PowerShell nebo REST API). Další informace najdete v tématu [dynamické maskování dat](/sql/relational-databases/security/dynamic-data-masking).
 
 ### <a name="dynamic-data-masking-permissions"></a>Oprávnění k maskování dynamických dat
 
@@ -46,7 +46,7 @@ Dynamické maskování dat lze konfigurovat pomocí rolí správce Azure SQL Dat
 | --- | --- |
 | **Výchozí** |**Úplná maskování podle datových typů určených polí**<br/><br/>• Použijte XXXX nebo míň XS, pokud je velikost pole menší než 4 znaky pro řetězcové datové typy (nchar, ntext, nvarchar).<br/>• Použijte nulovou hodnotu pro číselné datové typy (bigint, bit, Decimal, int, Money, Numeric, smallint, smallmoney, tinyint, float, reálné).<br/>• Použijte 01-01-1900 pro datové typy datum/čas (datum, datetime2, DateTime, DateTimeOffset, smalldatetime, Time).<br/>• Pro variantu SQL se používá výchozí hodnota aktuálního typu.<br/>• Pro XML se dokument \<masked/> používá.<br/>• Použijte prázdnou hodnotu pro speciální datové typy (tabulka časového razítka, hierarchyid, GUID, binární, image, varbinary prostorového typu). |
 | **Platební karta** |**Metoda maskování, která zpřístupňuje poslední čtyři číslice určených polí** a přidá konstantní řetězec jako předponu ve formě platební karty.<br/><br/>XXXX-XXXX-XXXX-1234 |
-| **Elektron** |**Metoda maskování, která zpřístupňuje první písmeno a nahradí doménu řetězcem xxx.com** pomocí předpony konstantního řetězce ve formě e-mailové adresy.<br/><br/>aXX@XXXX.com |
+| **E-mail** |**Metoda maskování, která zpřístupňuje první písmeno a nahradí doménu řetězcem xxx.com** pomocí předpony konstantního řetězce ve formě e-mailové adresy.<br/><br/>aXX@XXXX.com |
 | **Náhodné číslo** |**Metoda maskování, která generuje náhodné číslo** podle vybraných hranic a skutečných datových typů. Pokud jsou určené hranice stejné, pak funkce maskování je konstantní číslo.<br/><br/>![Snímek obrazovky, který ukazuje metodu maskování pro generování náhodného čísla.](./media/dynamic-data-masking-overview/1_DDM_Random_number.png) |
 | **Vlastní text** |**Metoda maskování, která zpřístupňuje první a poslední znak** a přidá vlastní řetězec odsazení uprostřed. Je-li původní řetězec kratší než nezveřejněná předpona a přípona, je použit pouze řetězec odsazení. <br/>Přípona předpony [odsazení]<br/><br/>![Navigační podokno](./media/dynamic-data-masking-overview/2_DDM_Custom_text.png) |
 

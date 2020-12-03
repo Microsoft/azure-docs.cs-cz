@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 54e7a781ba9ed3cd4b53e1028c4a3bb79c256aed
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 533d4a83ea73b98e26a57febc077a607bcb25465
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012608"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532294"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Shromažďování zdrojů dat výkonu pro Windows a Linux pomocí agenta Log Analytics
 Čítače výkonu ve Windows a Linux poskytují přehled o výkonu hardwarových komponent, operačních systémů a aplikací.  Azure Monitor může shromažďovat čítače výkonu od agentů Log Analytics v častých intervalech pro analýzu téměř v reálném čase (NRT) společně s agregací údajů o výkonu pro dlouhodobé analýzy a generování sestav.
@@ -28,7 +28,7 @@ Při první konfiguraci čítačů výkonu systému Windows nebo Linux pro nový
 
 V případě čítačů výkonu systému Windows můžete zvolit konkrétní instanci pro každý čítač výkonu. Pro čítače výkonu Linux se instance každého čítače, kterou zvolíte, vztahuje na všechny podřízené čítače nadřazeného čítače. V následující tabulce jsou uvedeny běžné instance dostupné pro čítače výkonu pro systémy Linux a Windows.
 
-| Název instance | Description |
+| Název instance | Popis |
 | --- | --- |
 | \_Celkem |Celkem všech instancí |
 | \* |Všechny instance |
@@ -50,15 +50,14 @@ Pomocí tohoto postupu můžete přidat nový čítač výkonu systému Windows,
 
 ### <a name="linux-performance-counters"></a>Čítače výkonu pro Linux
 
-![Konfigurace čítačů výkonu systému Linux](media/data-sources-performance-counters/configure-linux.png)
+![Konfigurace čítačů výkonu systému Linux](media/data-sources-performance-counters/configure-linux-1.png)
 
 Pomocí tohoto postupu můžete přidat nový čítač výkonu pro Linux, který se má shromáždit.
 
-1. Ve výchozím nastavení jsou všechny změny konfigurace automaticky vloženy do všech agentů.  Pro agenty Linux se konfigurační soubor pošle do Fluent sběrače dat.  Pokud chcete tento soubor upravit ručně u každého agenta pro Linux, zrušte jeho zaškrtávací políčko u *počítačů se systémem Linux níže uvedená konfigurace* a postupujte podle pokynů níže.
-2. Do textového pole ve formátu *objekt (instance) \counter* zadejte název čítače.  Když začnete psát, zobrazí se seznam s vyhovujícími společnými čítači.  Můžete buď vybrat čítač ze seznamu, nebo zadat jednu z nich.  
-3. Klikněte **+** nebo stiskněte klávesu **ENTER** , chcete-li přidat čítač do seznamu dalších čítačů pro daný objekt.
-4. Všechny čítače pro objekt používají stejný **interval vzorkování**.  Výchozí hodnota je 10 sekund.  Pokud chcete snížit požadavky na úložiště shromážděných dat výkonu, změňte tuto hodnotu na vyšší hodnotu až na 1800 sekund (30 minut).
-5. Až budete s přidáváním čítačů hotovi, kliknutím na tlačítko **Uložit** v horní části obrazovky uložte konfiguraci.
+1. Do textového pole ve formátu *objekt (instance) \counter* zadejte název čítače.  Když začnete psát, zobrazí se seznam s vyhovujícími společnými čítači.  Můžete buď vybrat čítač ze seznamu, nebo zadat jednu z nich.  
+1. Klikněte **+** nebo stiskněte klávesu **ENTER** , chcete-li přidat čítač do seznamu dalších čítačů pro daný objekt.
+1. Všechny čítače pro objekt používají stejný **interval vzorkování**.  Výchozí hodnota je 10 sekund.  Pokud chcete snížit požadavky na úložiště shromážděných dat výkonu, změňte tuto hodnotu na vyšší hodnotu až na 1800 sekund (30 minut).
+1. Až budete s přidáváním čítačů hotovi, kliknutím na tlačítko **Uložit** v horní části obrazovky uložte konfiguraci.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>Konfigurace čítačů výkonu systému Linux v konfiguračním souboru
 Místo konfigurace čítačů výkonu systému Linux pomocí Azure Portal máte možnost upravovat konfigurační soubory v agentovi systému Linux.  Metriky výkonu ke shromáždění se řídí konfigurací v **/etc/opt/Microsoft/omsagent/ \<workspace id\> /conf/omsagent.conf**.
@@ -78,7 +77,7 @@ Každý objekt nebo kategorie metriky výkonu ke shromáždění by měly být d
 
 Parametry v tomto elementu jsou popsány v následující tabulce.
 
-| Parametry | Description |
+| Parametry | Popis |
 |:--|:--|
 | \_název objektu | Název objektu pro kolekci |
 | \_regulární výraz instance |  *Regulární výraz* definující, které instance se mají shromažďovat Hodnota: `.*` Určuje všechny instance. Pokud chcete shromáždit metriky procesoru jenom pro \_ celkovou instanci, můžete zadat `_Total` . Pokud chcete shromáždit metriky procesu jenom pro instance crond nebo sshd, můžete zadat: `(crond\|sshd)` . |
@@ -101,17 +100,17 @@ V následující tabulce jsou uvedeny objekty a čítače, které lze zadat v ko
 | Logický disk | Zápisy na disk/s |
 | Logický disk | Volné megabajty |
 | Logický disk | Bajty logického disku/s |
-| Paměť | % Dostupné paměti |
-| Paměť | % Dostupného odkládacího prostoru |
-| Paměť | % Využité paměti |
-| Paměť | % Využitého místa odkládacího souboru |
-| Paměť | Dostupná paměť v MB |
-| Paměť | Dostupný počet MB swap |
-| Paměť | Čtení stránek/s |
-| Paměť | Zápisy stránek/s |
-| Paměť | Stránky/s |
-| Paměť | Využité místo odkládacího souboru v MB |
-| Paměť | Využitá paměť v MB |
+| Memory (Paměť) | % Dostupné paměti |
+| Memory (Paměť) | % Dostupného odkládacího prostoru |
+| Memory (Paměť) | % Využité paměti |
+| Memory (Paměť) | % Využitého místa odkládacího souboru |
+| Memory (Paměť) | Dostupná paměť v MB |
+| Memory (Paměť) | Dostupný počet MB swap |
+| Memory (Paměť) | Čtení stránek/s |
+| Memory (Paměť) | Zápisy stránek/s |
+| Memory (Paměť) | Stránky/s |
+| Memory (Paměť) | Využité místo odkládacího souboru v MB |
+| Memory (Paměť) | Využitá paměť v MB |
 | Síť | Celkový počet odeslaných bajtů |
 | Síť | Celkový počet přijatých bajtů |
 | Síť | Bajty celkem |
@@ -206,7 +205,7 @@ Záznamy o výkonu mají typ **výkonu** a mají vlastnosti v následující tab
 ## <a name="log-queries-with-performance-records"></a>Dotazy protokolu se záznamy o výkonu
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy o výkonu.
 
-| Dotaz | Description |
+| Dotaz | Popis |
 |:--- |:--- |
 | Výkon |Všechna data o výkonu |
 | &#124; výkonu, kde Computer = = "MyComputer" |Všechna data o výkonu z konkrétního počítače |

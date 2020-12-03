@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 74211df6f925aaa09a4c87a518056e8ef3206b87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f7ddf94bbd077912cf0d7c2adef2eac548274ca
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078397"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532274"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Ukázky Azure Monitor PowerShellu
 Tento článek ukazuje ukázky příkazů PowerShellu, které vám pomůžou při přístupu k funkcím Azure Monitor.
@@ -54,7 +54,7 @@ Set-AzContext -SubscriptionId <subscriptionid>
 
 
 ## <a name="retrieve-activity-log"></a>Načíst protokol aktivit
-Použijte rutinu [Get-AzLog](/powershell/module/az.monitor/get-azlog) .  Níže jsou uvedeny některé běžné příklady. Protokol aktivit obsahuje posledních 90 dnů provozu. Použití dat před tímto časem má za následek chybovou zprávu.  
+Použijte rutinu [Get-AzLog](/powershell/module/az.monitor/get-azlog) .  Níže jsou uvedeny některé běžné příklady. Protokol aktivit uchovává operace za posledních 90 dnů. Použití dat před tímto časem má za následek chybovou zprávu.  
 
 Podívejte se, jak aktuální datum a čas slouží k ověření, které časy se mají použít v následujících příkazech:
 ```powershell
@@ -94,13 +94,13 @@ Get-AzLog -Caller 'myname@company.com'
 Následující příkaz načte poslední 1000 události z protokolu aktivit:
 
 ```powershell
-Get-AzLog -MaxRecord 10
+Get-AzLog -MaxRecord 1000
 ```
 
 `Get-AzLog` podporuje mnoho dalších parametrů. `Get-AzLog`Další informace najdete v referenčních informacích.
 
 > [!NOTE]
-> `Get-AzLog` poskytuje jenom 15 dní historie. Pomocí parametru **-MaxRecords** můžete zadávat dotazy na poslední N události mimo 15 dní. Pro přístup k událostem starším než 15 dní použijte REST API nebo SDK (ukázka jazyka C# pomocí sady SDK). Pokud neuvedete **čas_spuštění**, výchozí hodnota je **čas_ukončení** minus jedna hodina. Pokud nezahrnete do pole **čas_ukončení**, výchozí hodnota je aktuální čas. Všechny časy jsou v UTC.
+> `Get-AzLog` poskytuje jenom 15 dní historie. S využitím parametru **-MaxRecords** můžete dotazovat posledních N událostí za více než 15 dnů. Pokud chcete získat přístup k událostem starším než 15 dnů, použijte rozhraní REST API nebo sadu SDK (ukázka použití sady SDK v jazyce C#). Pokud nezadáte **počáteční čas**, jeho výchozí hodnota bude **koncový čas** minus jedna hodina. Pokud nezadáte **koncový čas**, jeho výchozí hodnota bude aktuální čas. Všechny časy jsou v UTC.
 > 
 > 
 

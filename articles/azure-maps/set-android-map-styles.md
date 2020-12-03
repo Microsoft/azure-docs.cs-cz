@@ -1,36 +1,36 @@
 ---
-title: Nastavení stylu mapy pomocí Azure Maps Android SDK | Mapy Microsoft Azure
-description: Přečtěte si dva způsoby nastavení stylu mapy. Chcete-li upravit styl, přečtěte si téma jak použít Azure Maps Android SDK v souboru rozložení nebo třídě Activity.
+title: Nastavení stylu mapy pomocí Azure Maps Android SDK
+description: Přečtěte si dva způsoby nastavení stylu mapy. Chcete-li upravit styl, přečtěte si téma jak použít Microsoft Azure Maps Android SDK v souboru rozložení nebo třídě Activity.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 04/26/2019
-ms.topic: conceptual
+ms.date: 11/18/2020
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 15dbe7d30652d0ace78bca4dc053757d57361c1a
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8c7689fb87575ac6e150f793b43f35e8bf6adc83
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895303"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532467"
 ---
 # <a name="set-map-style-using-azure-maps-android-sdk"></a>Nastavení stylu mapy pomocí Azure Maps Android SDK
 
-Tento článek ukazuje dva způsoby, jak nastavit styly mapy pomocí Azure Maps Android SDK. Azure Maps má šest různých stylů mapy, ze kterých si můžete vybrat. Další informace o podporovaných stylech map najdete [v tématu Podporované styly mapy v Azure Maps](./supported-map-styles.md).
-
+V tomto článku se dozvíte, jak nastavit styly mapy pomocí Android SDK Azure Maps. Azure Maps má šest různých stylů mapy, ze kterých si můžete vybrat. Další informace o podporovaných stylech map najdete [v tématu Podporované styly mapy v Azure Maps](./supported-map-styles.md).
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Chcete-li dokončit proces v tomto článku, je nutné nainstalovat [Azure Maps Android SDK](./how-to-use-android-map-control-library.md) , aby se načetla mapa.
+1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
+3. Stáhněte a nainstalujte [Azure Maps Android SDK](./how-to-use-android-map-control-library.md).
 
 
 ## <a name="set-map-style-in-the-layout"></a>Nastavení stylu mapy v rozložení
 
-Můžete nastavit styl mapy v souboru rozložení pro třídu Activity. Upravte **> rozložení res > activity_main.xml** , takže vypadá takto:
+Můžete nastavit styl mapy v souboru rozložení pro třídu Activity. Upravte `res > layout > activity_main.xml` , takže vypadá takto:
 
 ```XML
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -51,26 +51,27 @@ Můžete nastavit styl mapy v souboru rozložení pro třídu Activity. Upravte 
 </FrameLayout>
 ```
 
-`mapcontrol_style`Atribut výše nastaví styl mapy na **grayscale_dark** . 
+`mapcontrol_style`Atribut výše nastaví styl mapy na **grayscale_dark**.
 
-<center>
+:::image type="content" source="./media/set-android-map-styles/grayscale-dark.png" border="true" alt-text="Azure Maps, obrázek mapy znázorňující styl jako grayscale_dark":::
 
-![styl – grayscale_dark](./media/set-android-map-styles/grayscale-dark.png)</center>
+## <a name="set-map-style-in-the-mainactivity-class"></a>Nastavení stylu mapy ve třídě MainActivity
 
-## <a name="set-map-style-in-the-activity-class"></a>Nastavit styl mapy ve třídě Activity
+Styl mapy lze také nastavit ve třídě MainActivity. Otevřete `java > com.example.myapplication > MainActivity.java` soubor a zkopírujte následující fragment kódu do metody **Create ()** . Tento kód nastaví styl mapy na **satellite_road_labels**.
 
-Styl mapy lze nastavit ve třídě Activity. Zkopírujte následující fragment kódu do metody **Create ()** vaší `MainActivity.java` třídy. Tento kód nastaví styl mapy na **satellite_road_labels** .
+>[!WARNING]
+>Android Studio pravděpodobně neimportoval požadované třídy.  V důsledku toho bude mít kód nějaké nepřeložitelné odkazy. Chcete-li importovat požadované třídy, Stačí umístit ukazatel myši na každý nerozpoznaný odkaz a stisknout `Alt + Enter` (možnost + návrat na Macu).
 
 ```Java
 mapControl.onReady(map -> {
+
     //Set the camera of the map.
     map.setCamera(center(47.64, -122.33), zoom(14));
 
     //Set the style of the map.
-    map.setStyle(style(MapStyle.SATELLITE));
+    map.setStyle((style(SATELLITE_ROAD_LABELS)));
+       
 });
 ```
 
-<center>
-
-![styl – satelitní-silniční-štítky](./media/set-android-map-styles/satellite-road-labels.png)</center>
+:::image type="content" source="./media/set-android-map-styles/satellite-road-labels.png" border="true" alt-text="Azure Maps, obrázek mapy znázorňující styl jako satellite_road_labels":::

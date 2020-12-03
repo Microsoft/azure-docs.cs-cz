@@ -5,15 +5,15 @@ author: SnehaGunda
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 11/23/2020
+ms.date: 12/01/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 9410a38f7bc7a787fc439b5ad51f4a49f76771f8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f7cc9d4062ad9a49ff84db6ac035ff53934ae0a0
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488778"
+ms.locfileid: "96532053"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Monitorování služby Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -97,7 +97,7 @@ Pro referenci se zobrazí seznam [všech metrik prostředků, které jsou podpor
 
 ### <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Zobrazit metriky na úrovni operace pro Azure Cosmos DB
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. V levém navigačním panelu vyberte **monitor** a vyberte **metriky**.
 
@@ -176,7 +176,7 @@ Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech mo
 
 V následující tabulce jsou například uvedena několik pravidel upozornění pro vaše prostředky. Podrobný seznam pravidel upozornění najdete v Azure Portal. Další informace najdete v článku [Postup konfigurace výstrah](create-alerts.md) .  
 
-| Typ upozornění | Stav | Popis  |
+| Typ upozornění | Podmínka | Popis  |
 |:---|:---|:---|
 |Omezení rychlosti na jednotkách žádosti (výstraha metriky) |Název dimenze: StatusCode, operátor: Equals, hodnoty dimenze: 429  | Upozorní, pokud kontejner nebo databáze překročila zřízenou mez propustnosti. |
 |Převzetí služeb při selhání oblasti |Operator: větší než, typ agregace: počet, prahová hodnota: 1 | Při převzetí služeb při selhání jedné oblasti. Tato výstraha je užitečná, pokud jste nepovolili automatické převzetí služeb při selhání. |

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperfq2
-ms.openlocfilehash: ca8a36584c09d850ed1daab8cba301b244f76526
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a9bf03fd59e6088ce1c1b09a41b2bf55d1f45455
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447023"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532954"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Nastavení ověřování pro prostředky a pracovní postupy služby Azure Machine Learning
 
@@ -27,7 +27,7 @@ Přečtěte si, jak nastavit ověřování pro váš pracovní prostor Azure Mac
 
 * __Instanční objekt__: v Azure Active Directory vytvoříte hlavní účet služby a použijete ho k ověření nebo získání tokenu. Instanční objekt se používá v případě, že potřebujete _automatizovaný proces ověřování_ ke službě bez nutnosti zásahu uživatele. Například skript průběžné integrace a nasazení, který na vlaky a testuje model pokaždé, když se kód školení změní.
 
-* __Spravovaná identita__: při použití sady Azure Machine Learning SDK _na virtuálním počítači Azure_ můžete spravovat spravovanou identitu pro Azure. Tento pracovní postup umožňuje virtuálnímu počítači připojit se k pracovnímu prostoru pomocí spravované identity, aniž byste museli ukládat přihlašovací údaje v kódu Pythonu nebo vyzvat uživatele k ověření. Azure Machine Learning výpočetní clustery je taky možné nakonfigurovat tak, aby pro přístup k pracovnímu prostoru používaly spravovanou identitu při _výuce modelů_.
+* __Spravovaná identita__: při použití sady Azure Machine Learning SDK _na virtuálním počítači Azure_ můžete použít spravovanou identitu pro Azure. Tento pracovní postup umožňuje virtuálnímu počítači připojit se k pracovnímu prostoru pomocí spravované identity, aniž byste museli ukládat přihlašovací údaje v kódu Pythonu nebo vyzvat uživatele k ověření. Azure Machine Learning výpočetní clustery je taky možné nakonfigurovat tak, aby pro přístup k pracovnímu prostoru používaly spravovanou identitu při _výuce modelů_.
 
 > [!IMPORTANT]
 > Bez ohledu na použitou pracovní postup ověřování se řízení přístupu na základě role Azure (Azure RBAC) používá k vymezení úrovně přístupu (autorizace) povoleného pro prostředky. Například správce nebo proces automatizace může mít přístup k vytvoření výpočetní instance, ale ne k jeho použití, zatímco ho pracovník IT může použít, ale nemůže ho odstranit ani vytvořit. Další informace najdete v tématu [Správa přístupu k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md).

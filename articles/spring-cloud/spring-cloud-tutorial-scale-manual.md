@@ -1,30 +1,30 @@
 ---
-title: 'Kurz: škálování aplikace v Azure jaře cloudu | Microsoft Docs'
+title: Škálování aplikace v Azure jaře cloudu | Microsoft Docs
 description: Naučte se, jak škálovat aplikaci pomocí jarního cloudu Azure v Azure Portal
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 33d25edafa9249300406365699930ded1c8ec75b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5632f9a6126615255306cc89425bd08a9ffa9753
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906842"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531798"
 ---
-# <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>Kurz: škálování aplikace ve jarním cloudu Azure
+# <a name="scale-an-application-in-azure-spring-cloud"></a>Škálování aplikace ve jarním cloudu Azure
 
 **Tento článek se týká:** ✔️ Java ✔️ C #
 
-Tento kurz ukazuje, jak škálovat libovolnou aplikaci mikroslužeb pomocí řídicího panelu Azure jarního cloudu v Azure Portal.
+Tato dokumentace ukazuje, jak škálovat libovolnou aplikaci mikroslužeb pomocí řídicího panelu Azure jarního cloudu v Azure Portal.
 
 Škálujte svou aplikaci nahoru a dolů úpravou počtu virtuálních procesorů (vCPU) a velikosti paměti. Škálujte svoji aplikaci tak, že upravíte počet instancí aplikace a naškálujte je.
 
 Po dokončení budete potřebovat, abyste v každé aplikaci v rámci služby provedli rychlé ruční změny. Změna měřítka se projeví během několika sekund a nevyžaduje žádné změny kódu nebo opětovné nasazení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li provést tyto postupy, potřebujete:
 
@@ -34,7 +34,7 @@ Chcete-li provést tyto postupy, potřebujete:
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Přejít na stránku škálování v Azure Portal
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Přejít na stránku s **přehledem** jarního cloudu Azure.
 
@@ -67,7 +67,7 @@ Pokud se nacházíte na úrovni Basic a omezujete je na jednu nebo více těchto
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak ručně škálovat cloudovou aplikaci Azure na jaře. Pokud se chcete dozvědět, jak monitorovat aplikaci nastavením výstrah, pokračujte k dalšímu kurzu.
+Tento příklad vysvětluje, jak ručně škálovat cloudovou aplikaci Azure na jaře. Informace o tom, jak monitorovat aplikaci nastavením výstrah, najdete v tématu [Nastavení automatického škálování](spring-cloud-tutorial-setup-autoscale.md).
 
 > [!div class="nextstepaction"]
 > [Přečtěte si, jak nastavit výstrahy.](spring-cloud-tutorial-alerts-action-groups.md)

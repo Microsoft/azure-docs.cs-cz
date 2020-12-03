@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: a1159da782a8cb822bf726173ad0d0bcd9da844a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9cbce00e2c2743aec57cd857b6f38d20bce33698
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460886"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532903"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Koncové body služby virtuální sítě pro Azure Key Vault
 
@@ -80,7 +80,7 @@ Tady je seznam důvěryhodných služeb, které mají povolený přístup k trez
 |Azure Event Hubs|[Povolení přístupu k trezoru klíčů pro základní klíče spravované zákazníkem](../../event-hubs/configure-customer-managed-key.md)|
 |Azure Service Bus|[Povolení přístupu k trezoru klíčů pro základní klíče spravované zákazníkem](../../service-bus-messaging/configure-customer-managed-key.md)|
 |Azure Import/Export| [Použití klíčů spravovaných zákazníkem v Azure Key Vault pro službu import/export](../../storage/common/storage-import-export-encryption-key-portal.md)
-|Azure Container Registry|[Šifrování registru pomocí klíčů spravovaných zákazníkem](../../container-registry/container-registry-customer-managed-keys.md)<br><br/>[Přenos artefaktů do jiného registru](../../container-registry/container-registry-transfer-images.md)
+|Azure Container Registry|[Šifrování registru pomocí klíčů spravovaných zákazníkem](../../container-registry/container-registry-customer-managed-keys.md)
 
 > [!NOTE]
 > Aby mohly příslušné služby získat přístup k Key Vault, musíte nastavit příslušné zásady přístupu Key Vault.

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: sukishen
-ms.openlocfilehash: a92dafe6237d0f061f837f07c5dcf2686b1a8a7e
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 169477ffdf6fd593f1b6f01469c7303f8bd3a488
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510726"
+ms.locfileid: "96531833"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Propojení s Čínou pomocí Azure Virtual WAN a zabezpečeného centra
 
@@ -20,7 +20,7 @@ Při prohlížení společného automobilového, výrobního, logistického prů
 
 Ve většině případů se zákazníci působit potíže s vysokou latencí, nízkou šířkou pásma, nestabilním připojením a s vysokou propustností, které se připojují k mimo Čína (například Evropa nebo USA).
 
-Důvodem pro tyto potýká je "skvělý firewall pro Čínu", který chrání čínskou část internetu a filtruje provoz do Číny. Skoro veškerý provoz běžící z Číny pevniny mimo Čínu, s výjimkou zvláštních zón správy, jako jsou Hongkong a Macao, dává skvělé brány firewall. Provoz běžící přes Hongkong a Macao nevyužívá skvělou bránu firewall v plné síle, je zpracována podmnožinou skvělé brány firewall.
+Důvodem pro tyto potýká je "skvělý firewall pro Čínu", který chrání čínskou část internetu a filtruje provoz do Číny. Téměř veškerý provoz běžící z Čínské lidové republiky mimo Čína, s výjimkou zvláštních zón pro správu, jako jsou Hongkong a Macao, dává skvělé brány firewall. Provoz běžící přes Hongkong a Macao nevyužívá skvělou bránu firewall v plné síle, je zpracována podmnožinou skvělé brány firewall.
 
 :::image type="content" source="./media/interconnect-china/provider.png" alt-text="Diagram znázorňuje propojení zprostředkovatele.":::
 
@@ -71,13 +71,13 @@ V následujících seznamech jsou uvedeny možné internetové výměny v Hongko
 
 Při použití tohoto připojení musí být vaším dalším segmentem směrování protokolu BGP pro služby Microsoftu číslo autonomního systému Microsoft (#) 8075. Pokud používáte jedno umístění nebo řešení SDWAN, může to být volba připojení.
 
-S aktuálními změnami týkajícími se vzájemných propojení mezi pevniny a Hongkong, většina těchto poskytovatelů sítě sestaví MPLS most mezi pevninskou Číně a Hongkong.
+S aktuálními změnami týkajícími se vzájemného propojení mezi Čínou a Hongkong – zvláštní správní oblast, většina těchto poskytovatelů sítě sestaví most MPLS mezi Čínou a Hongkong.
 
 Můžete vidět, že připojení VPN typu Site-to-site v Číně jsou povolená a jsou většinou stabilní. Totéž platí pro připojení typu Site-to-site mezi větvemi ve zbývající části světa. Poskytovatelé nyní vytvářejí agregaci sítě VPN/SDWAN na obou stranách i přemostění prostřednictvím MPLS mezi nimi.
 
 :::image type="content" source="./media/interconnect-china/china-mpls-bridge.png" alt-text="Diagram znázorňuje MPLSový most v Číně.":::
 
-V obou případech stále doporučujeme, abyste měli k dispozici druhý a běžný internetový užitečných do kontinentální části čínského. Slouží k rozdělení provozu mezi podnikovým provozem na cloudové služby, jako jsou Microsoft 365 a Azure, a podle zákona řízený internetový provoz.
+V obou případech stále doporučujeme, abyste měli k dispozici druhý a běžný internetový užitečných do Číny. Slouží k rozdělení provozu mezi podnikovým provozem na cloudové služby, jako jsou Microsoft 365 a Azure, a podle zákona řízený internetový provoz.
 
 Kompatibilní architektura sítě v rámci Číny může vypadat jako v následujícím příkladu:
 

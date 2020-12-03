@@ -7,48 +7,64 @@ ms.topic: overview
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 74ebdafb835aff75f282b9d6ac02d8ccf672a2be
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 041ef9950300129d54c9374939e13a2f99035bc1
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501086"
+ms.locfileid: "96532838"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Co je Azure Spring Cloud?
 
-Jarní cloud Azure usnadňuje nasazení mikroslužeb založených na jarních aplikacích do Azure s nulovými změnami kódu.  Jarní cloud Azure spravuje infrastrukturu jarních cloudových aplikací, takže se vývojáři můžou soustředit na svůj kód.  Jarní Cloud poskytuje správu životního cyklu pomocí komplexního monitorování a diagnostiky, správy konfigurací, zjišťování služeb, integrace CI/CD, modrého zeleného nasazení a dalších.
+Jarní cloud Azure usnadňuje nasazení aplikací mikroslužeb s pružinou v systému Azure bez jakýchkoli změn kódu.  Služba spravuje infrastrukturu jarních cloudových aplikací, aby se vývojáři mohli soustředit na svůj kód.  Služba jarní Cloud v Azure poskytuje správu životního cyklu pomocí komplexního monitorování a diagnostiky, správy konfigurací, zjišťování služeb, integrace CI/CD, modrého zeleného nasazení a dalších.
 
-Jarní cloud Azure podporuje aplikace v jazyce Java pro [spouštění](https://spring.io/projects/spring-boot) a ASP.NET Core [Steeltoe](https://steeltoe.io/) . Podpora Steeltoe se v tuto chvíli nabízí jako verze Public Preview. Nabídky verze Public Preview vám umožní experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.  Další informace najdete v tématu [Nejčastější dotazy](https://azure.microsoft.com/support/faq/) nebo soubor a [support Request](../azure-portal/supportability/how-to-create-azure-support-request.md).
+## <a name="why-use-azure-spring-cloud"></a>Proč používat jarní cloud Azure?
 
-V rámci ekosystému Azure umožňuje Azure jaře Cloud snadnou vazbu na další služby Azure, včetně úložiště, databází, monitorování a dalších.
+Nasazení aplikací do Azure Pramenitého cloudu má spoustu výhod.  Můžete:
+* Efektivně Migrujte stávající jarní aplikace a spravujte škálování a náklady v cloudu.
+* Modernizovat aplikace pomocí jarních vzorů cloudu, abyste vylepšili flexibilitu a rychlost doručování.
+* Spouštějte Java v cloudovém měřítku a vyšší využití bez komplikované infrastruktury.
+* Rychle vyvíjet a nasazovat bez závislostí kontejneru
+* Sledujte provozní úlohy efektivně a snadno.
 
-Tento Úvod popisuje následující možnosti Azure jarního cloudu:
+Jarní cloud Azure podporuje aplikace v jazyce Java pro [spouštění](https://spring.io/projects/spring-boot) a ASP.NET Core [Steeltoe](https://steeltoe.io/) . Podpora Steeltoe se v tuto chvíli nabízí jako verze Public Preview. Nabídky verze Public Preview vám umožní experimentovat s novými funkcemi před jejich oficiální verzí. Funkce a služby verze Public Preview nejsou určeny pro produkční použití. Další informace najdete v tématu [Nejčastější dotazy](https://azure.microsoft.com/support/faq/) nebo soubor a [support Request](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
-* Konfigurační server
-* Modrá/zelená nasazení
-* Škálování aplikace
-* Integrace s Azure DevOps
-* Monitorování aplikace
+## <a name="service-overview"></a>Přehled služby
 
-## <a name="spring-cloud-config-server"></a>Jarní cloudový konfigurační server
+V rámci ekosystému Azure umožňuje Azure jaře Cloud snadnou vazbu na další služby Azure, včetně úložiště, databází, monitorování a dalších.  
 
-Azure jarní cloudový konfigurační server poskytuje v distribuovaném systému externou konfiguraci s podporou serveru i na straně klienta.  Azure jarní cloudový konfigurační server je centrální umístění pro správu vlastností aplikace napříč všemi prostředími. Další informace najdete v tématu [odkazování na server pro konfiguraci jarního cloudu](https://spring.io/projects/spring-cloud-config). 
+  ![Přehled služby jarní Cloud v Azure](media/spring-cloud-principles/azure-spring-cloud-overview.png)
 
-## <a name="bluegreen-deployments"></a>Modrá/zelená nasazení
+* Jarní cloud Azure je plně spravovaná služba pro aplikace pro jaře Boot, která vám umožní zaměřit se na vytváření a spouštění aplikací bez starostí se správou infrastruktury.
 
-Azure pružinový Cloud podporuje nasazení v různých a zelených prostředích, a to za účelem vydávání a aktualizace kódu v produkčním prostředí.  Tento model správy změn umožňuje vývojářům implementovat v případě potřeby funkce a změny kódu s jistotou okamžitého použití.  Vývojáři se můžou soustředit na psaní kódu s více provozními prostředími, aby aktualizovali nebo vrátili změny kódu beze přerušení aplikace.  Další informace o přípravných prostředích a o Blue-zelených nasazeních najdete v tomto [článku s postupem](spring-cloud-howto-staging-environment.md).
+* Jednoduše nasaďte jar nebo kód a v Azure jaře Cloud budou vaše aplikace automaticky nasazovat s využitím pružinové služby a integrovaného životního cyklu aplikace.
 
-## <a name="cicd-pipeline-automation"></a>Automatizace kanálů CI/CD
+* Monitorování je jednoduché. Po nasazení můžete monitorovat výkon aplikace, opravovat chyby a rychle vylepšit aplikace. 
 
-Azure jaře Cloud poskytuje integraci se službou Azure DevOps pomocí Azure CLI.  Pomocí Azure DevOps můžete automatizovat integraci kódu a nasazení do vaší aplikace pružiny.  Další informace najdete v tomto [článku](spring-cloud-howto-cicd.md).
+* Úplná integrace ekosystémů a služeb Azure.
 
-## <a name="application-scaling"></a>Škálování aplikace
+* Azure pružinový Cloud je připravený pro plně spravovanou infrastrukturu, vestavěnou správu životního cyklu a snadné monitorování.
 
-Jarní cloud Azure vám umožňuje snadno škálovat mikroslužby na řídicím panelu cloudu Azure na jaře.  Počet vCPU a velikost paměti dostupné pro vaše mikroslužby je možné škálovat nahoru nebo dolů, aby vyhovovaly vašim požadavkům.  Změna měřítka se projeví během několika sekund a nevyžaduje změny kódu nebo opětovné nasazení.  Pokud se chcete dozvědět víc, dokončete tento [kurz](spring-cloud-tutorial-scale-manual.md).
+## <a name="documentation-overview"></a>Přehled dokumentace
+Tato dokumentace obsahuje oddíly, které vysvětlují, jak začít a využívat jarní cloudové služby Azure.
 
-## <a name="application-monitoring"></a>Monitorování aplikace
-
-Nástroje distribuované distribuce jarního cloudu umožňují vývojářům ladit a monitorovat složitá propojení mezi mikroslužbami v aplikaci.  Díky integraci [jarních cloudových Sleuth](https://spring.io/projects/spring-cloud-sleuth) s [Application Insights](../azure-monitor/monitor-reference.md)Azure poskytuje Azure výkonnou schopnost distribuované vektorizace přímo z Azure Portal.  Pokud se chcete dozvědět víc, dokončete tento [kurz](spring-cloud-tutorial-distributed-tracing.md).
+* Začínáme
+    * [Spuštění první aplikace](spring-cloud-quickstart.md)
+    * [Zřízení služby jarního cloudu Azure](spring-cloud-quickstart-provision-service-instance.md)
+    * [Nastavení konfiguračního serveru]()
+    * [Sestavování a nasazování aplikací](spring-cloud-quickstart-deploy-apps.md)
+    * [Použití metrik a trasování protokolů](spring-cloud-quickstart-logs-metrics-tracing.md)
+* Postupy
+    * [Vývoj](spring-cloud-tutorial-prepare-app-deployment.md): Příprava existující aplikace pružiny v jazyce Java pro nasazení do jarního cloudu Azure. Pokud jsou správně nakonfigurovány, poskytuje Azure jarní Cloud robustní služby pro monitorování, škálování a aktualizace aplikací Java pro jarní Cloud.
+    * [Nasazení](spring-cloud-howto-staging-environment.md): jak nastavit pracovní nasazení pomocí modelu nasazení Blue-zelený ve jarním cloudu Azure. Modré/zelené nasazení je vzor průběžného doručování Azure DevOps, který spoléhá na zachování živé stávající (modré) verze, zatímco probíhá nasazení nové (zelené) verze.
+    * [Konfigurace aplikací](spring-cloud-howto-start-stop-delete.md): spouštění, zastavování a odstraňování aplikací Azure pro jarní Cloud Pomocí Azure Portal nebo rozhraní příkazového řádku Azure můžete změnit stav aplikace v jaře cloudu Azure.
+    * [Škálování](spring-cloud-tutorial-scale-manual.md): škálování jakékoli aplikace mikroslužeb pomocí řídicího panelu Azure jarního cloudu v Azure Portal nebo pomocí nastavení automatického škálování. Veřejné IP adresy jsou k dispozici pro komunikaci s externími prostředky, jako jsou databáze, úložiště a trezory klíčů.
+    * [Monitorujte aplikace](spring-cloud-tutorial-distributed-tracing.md): nástroje pro distribuované trasování, abyste mohli snadno ladit a monitorovat složité problémy. Jarní cloud Azure integruje jarní Cloud Sleuth s využitím Azure Application Insights. Tato integrace poskytuje výkonnou schopnost distribuované vektorizace z Azure Portal.
+    * [Zabezpečené aplikace](spring-cloud-howto-enable-system-assigned-managed-identity.md): prostředky Azure poskytují automaticky spravovanou identitu v Azure Active Directory. Tuto identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD, a to bez nutnosti přihlašovacích údajů ve vašem kódu.
+    * [Integrace s jinými službami Azure](spring-cloud-tutorial-bind-cosmos.md): místo ruční konfigurace aplikací pro spouštění pružiny můžete automaticky svázat vybrané služby Azure s vašimi aplikacemi, například vytvořit vazbu aplikace k databázi Azure Cosmos DB.
+    * [Automatizace](spring-cloud-howto-cicd.md): nástroje pro průběžnou integraci a průběžné doručování vám umožní rychle nasadit aktualizace stávajících aplikací s minimálním úsilím a rizikem. Azure DevOps pomáhá organizovat a řídit tyto klíčové úlohy. 
+    * [Řešení potíží](spring-cloud-howto-self-diagnose-solve.md): Diagnostika Azure jaře cloudu poskytuje interaktivní možnosti, které vám pomůžou při řešení potíží s aplikacemi. Není nutná žádná konfigurace. Když najdete problémy, diagnostika cloudu Azure vyhledá problémy a provede vás s informacemi, které vám pomohou vyřešit problémy.
+    * [Migrace](https://docs.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud): jak migrovat existující jarní cloudová aplikace nebo aplikace pro spouštění pružiny do provozu v Azure jaře cloudu.
 
 ## <a name="next-steps"></a>Další kroky
 
