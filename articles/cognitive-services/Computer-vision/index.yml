@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/22/2020
-  ms.openlocfilehash: a2db6db862a3e5f34215e140b917ef851504c332
-  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+  ms.openlocfilehash: 8a1710a44ebd93db352dbc63bd350aad8bfa2785
+  ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 11/21/2020
-  ms.locfileid: "95013628"
+  ms.lasthandoff: 12/02/2020
+  ms.locfileid: "96533889"
 landingContent:
 - title: Informace o počítačovém zpracování obrazu
   linkLists:
@@ -50,6 +50,8 @@ landingContent:
       url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: Použití sady Go SDK
       url: quickstarts-sdk/client-library.md?pivots=programming-language-go
+    - text: Použití rozhraní REST API
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-rest-api
 - title: Detekce objektů v obrázcích
   linkLists:
   - linkListType: concept
@@ -68,6 +70,8 @@ landingContent:
       url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: Použití sady Go SDK
       url: quickstarts-sdk/client-library.md?pivots=programming-language-go
+    - text: Použití rozhraní REST API
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-rest-api
 - title: Používání značek obsahu pro obrázky
   linkLists:
   - linkListType: concept
@@ -86,6 +90,8 @@ landingContent:
       url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: Použití sady Go SDK
       url: quickstarts-sdk/client-library.md?pivots=programming-language-go
+    - text: Použití rozhraní REST API
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-rest-api
 - title: Použití kontejneru Read
   linkLists:
   - linkListType: get-started

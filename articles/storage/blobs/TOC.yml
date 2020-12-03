@@ -205,8 +205,6 @@
                   href: scalability-targets-premium-page-blobs.md
                 - name: Poskytovatel prostředků úložiště
                   href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Souběžnost
-          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Hledání a vysvětlení dat objektů blob
           items:
             - name: Použití značek indexu objektů blob ke správě a hledání dat objektů blob
@@ -457,6 +455,8 @@
               href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Zahájení převzetí služeb při selhání účtu
               href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Správa souběžnosti
+          href: concurrency-manage.md
         - name: Použití emulátoru úložiště
           items:
             - name: Použití opensourcového emulátoru Azurite

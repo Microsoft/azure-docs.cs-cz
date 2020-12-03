@@ -25,10 +25,6 @@
           href: spring-cloud-quickstart-logs-metrics-tracing.md
 - name: Kurzy
   items:
-    - name: Ruční škálování aplikace
-      href: spring-cloud-tutorial-scale-manual.md
-    - name: Automatické škálování aplikace
-      href: spring-cloud-tutorial-setup-autoscale.md
     - name: Upozornění a skupiny akcí
       href: spring-cloud-tutorial-alerts-action-groups.md
     - name: Řídicí panel jističe
@@ -83,6 +79,12 @@
           href: spring-cloud-howto-start-stop-delete.md
         - name: Použití trvalého úložiště
           href: spring-cloud-howto-persistent-storage.md
+    - name: Měřítko
+      items:
+        - name: Ruční škálování aplikace
+          href: spring-cloud-tutorial-scale-manual.md
+        - name: Automatické škálování aplikace
+          href: spring-cloud-tutorial-setup-autoscale.md
         - name: Identifikace odchozích veřejných IP adres
           href: spring-cloud-howto-outbound-public-ip.md
     - name: Monitorování
@@ -132,7 +134,19 @@
         - name: Spring Boot
           href: /azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud
         - name: Tomcat
-          href: /azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud
+          href: 'https://docs.microsoft.com/azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud'
+- name: Nasazení DevOps
+  items:
+    - name: CI/CD s využitím Azure DevOps
+      href: spring-cloud-howto-cicd.md
+    - name: CI/CD s využitím GitHub Actions
+      href: spring-cloud-howto-github-actions.md
+    - name: Ověřování s využitím Key Vaultu v GitHub Actions
+      href: spring-cloud-github-actions-key-vault.md
+- name: Řešení potíží
+  items:
+    - name: Průvodce odstraňováním potíží
+      href: spring-cloud-troubleshoot.md
 - name: Referenční informace
   items:
     - name: Modul plug-in Azure CLI

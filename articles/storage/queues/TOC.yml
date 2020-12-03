@@ -94,8 +94,6 @@
               href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Kontrolní seznam pro výkon a škálovatelnost
           href: storage-performance-checklist.md
-    - name: Souběžnost
-      href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Monitorování a odstraňování potíží
       items:
         - name: Monitorování úložiště front
