@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/19/2020
+ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 90a4da2aadbbdf07d851e4407d2d417fc76d32af
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 5985c30973f703b897fa2eedc2be3b939d97900b
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512320"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558993"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Způsob volání Analýza textu REST API
 
@@ -48,13 +48,13 @@ V následující tabulce najdete informace o tom, které funkce se dají použí
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 
 > [!NOTE]
-> Pokud chcete použít koncové body nebo, budete potřebovat prostředek Analýza textu s použitím [cenové úrovně](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) Standard (S) `/analyze` `/health` .
+> * Pokud chcete použít koncové body nebo, budete potřebovat prostředek Analýza textu s použitím [cenové úrovně](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) Standard (S) `/analyze` `/health` .
 
-1.  Nejprve přejdete na [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) a vytvořte nový prostředek analýza textu, pokud ho ještě nemáte. Pokud chcete použít koncové body nebo, vyberte **cenovou úroveň Standard (y)** `/analyze` `/health` .
+1.  Nejprve přejdete na [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) a vytvořte nový prostředek analýza textu, pokud ho ještě nemáte. Pokud chcete použít koncové body nebo, vyberte **cenovou úroveň Standard (y)** `/analyze` `/health` . `/analyze`Koncový bod je zahrnutý ve vaší [cenové úrovni](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/).
 
 2.  Vyberte oblast, kterou chcete použít pro koncový bod.  Všimněte si prosím, že `/analyze` `/health` koncové body a jsou dostupné jenom v těchto oblastech: Západní USA 2, Východní USA 2, Střed USA, Severní Evropa a západní Evropa.
 

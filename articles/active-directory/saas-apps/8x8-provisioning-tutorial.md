@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 90e3464ac9ddf1e839c3a731f79ac2c0771c37ea
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: a6aa4ad009d037e6ea0d1ade3cc9735351bd634a
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532691"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558857"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>Kurz: Konfigurace 8x8 pro Automatické zřizování uživatelů
 
-Tento kurz popisuje kroky, které je třeba provést v 8x8 Configuration Manager a Azure Active Directory (Azure AD) ke konfiguraci automatického zřizování uživatelů. Po nakonfigurování Azure AD automaticky zřídí a odzřídí uživatele a skupiny, které se [8x8](https://www.8x8.com) pomocí služby zřizování Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../app-provisioning/user-provisioning.md). 
+Tento kurz popisuje kroky, které je třeba provést v konzole pro správu 8x8, a Azure Active Directory (Azure AD) ke konfiguraci automatického zřizování uživatelů. Po nakonfigurování Azure AD automaticky zřídí a odzřídí uživatele a skupiny, které se [8x8](https://www.8x8.com) pomocí služby zřizování Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../app-provisioning/user-provisioning.md). 
 
 ## <a name="capabilities-supported"></a>Podporované funkce
 > [!div class="checklist"]
@@ -36,7 +36,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 * [Tenant Azure AD](../develop/quickstart-create-new-tenant.md) 
 * Uživatelský účet v Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce)
 * Předplatné 8x8 X řady všech úrovní.
-* 8x8 uživatelský účet s oprávněním správce v [Configuration Manager](https://vo-cm.8x8.com).
+* Uživatelský účet 8x8 s oprávněním správce v [konzole pro správu](https://vo-cm.8x8.com).
 * [Jedna Sign-On s Azure AD](./8x8virtualoffice-tutorial.md) už je nakonfigurovaná.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Krok 1. Plánování nasazení zřizování
@@ -48,7 +48,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 V této části se seznámíte s postupem konfigurace 8x8 pro podporu zřizování s Azure AD.
 
-### <a name="to-configure-a-user-provisioning-access-token-in-8x8-configuration-manager"></a>Konfigurace přístupového tokenu pro zřizování uživatelů v 8x8 Configuration Manager:
+### <a name="to-configure-a-user-provisioning-access-token-in-8x8-admin-console"></a>Konfigurace přístupového tokenu pro zřizování uživatelů v konzole pro správu 8x8:
 
 1. Přihlaste se ke [konzole pro správu](https://admin.8x8.com). Vyberte **Správa identit**.
 
@@ -64,7 +64,7 @@ V této části se seznámíte s postupem konfigurace 8x8 pro podporu zřizován
 
 ## <a name="step-3-add-8x8-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání 8x8 z Galerie aplikací Azure AD
 
-Přidejte 8x8 z Galerie aplikací Azure AD a začněte spravovat zřizování pro 8x8. Pokud jste dříve nastavili 8x8 pro jednotné přihlašování, můžete použít stejnou aplikaci. Pro účely počátečního testování integrace však doporučujeme vytvořit samostatnou aplikaci. Další informace o přidání aplikace z galerie najdete [tady](../manage-apps/add-application-portal.md).
+Přidejte 8x8 z Galerie aplikací Azure AD a začněte spravovat zřizování pro 8x8. Pokud jste již dříve 8x8 nastavení pro jednotné přihlašování, můžete použít stejnou aplikaci. Pro účely počátečního testování integrace však doporučujeme vytvořit samostatnou aplikaci. Další informace o přidání aplikace z galerie najdete [tady](../manage-apps/add-application-portal.md).
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Krok 4: Definování uživatelů, kteří budou v rozsahu zřizování
 
@@ -102,7 +102,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Snímek obrazovky s rozevíracím seznamem režimu zřizování s možností automatického volání](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zkopírujte **adresu url 8x8** z Configuration Manager do **adresy URL tenanta**. Zkopírujte **token rozhraní API 8x8** z Configuration Manager do **tajného tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k 8x8. Pokud se připojení nepovede, ujistěte se, že má váš účet 8x8 oprávnění správce, a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zkopírujte **adresu URL 8x8** z konzoly pro správu do **adresy URL tenanta**. Zkopírujte **token rozhraní API 8x8** z konzoly pro správu do **tajného tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k 8x8. Pokud se připojení nepovede, ujistěte se, že má váš účet 8x8 oprávnění správce, a zkuste to znovu.
 
     ![Snímek obrazovky se zobrazí v dialogovém okně přihlašovací údaje správce, kde můžete zadat svého tenanta U R L a tajného tokenu.](./media/8x8-provisioning-tutorial/provisioning.png)
 

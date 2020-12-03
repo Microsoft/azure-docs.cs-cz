@@ -6,12 +6,12 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e6b8c7d54cf24d810a1f32082d816c908966f63c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 204e087908ff978880966332b4619935dc6f0458
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739682"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559112"
 ---
 # <a name="configure-premiumv3-tier-for-azure-app-service"></a>Konfigurace PremiumV3 úrovně pro Azure App Service
 
@@ -19,7 +19,7 @@ Nová cenová úroveň **PremiumV3** poskytuje rychlejší procesory, SSD úlož
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Abyste mohli škálovat aplikaci na **PremiumV3** , musíte mít Azure App Service aplikaci, která běží v cenové úrovni nižší než **PremiumV3** , a aplikace musí běžet v nasazení App Service, které podporuje PremiumV3.
+Abyste mohli škálovat aplikaci na **PremiumV3**, musíte mít Azure App Service aplikaci, která běží v cenové úrovni nižší než **PremiumV3**, a aplikace musí běžet v nasazení App Service, které podporuje PremiumV3.
 
 <a name="availability"></a>
 
@@ -42,14 +42,14 @@ az appservice list-locations --sku P1V3
 
 Cenová úroveň aplikace App Service je definována v [plánu App Service](overview-hosting-plans.md) , na kterém běží. Plán App Service můžete vytvořit samostatně nebo jako součást vytváření aplikací.
 
-Při konfiguraci plánu App Service v <a href="https://portal.azure.com" target="_blank">Azure Portal</a>vyberte **cenová úroveň** . 
+Při konfiguraci plánu App Service v <a href="https://portal.azure.com" target="_blank">Azure Portal</a>vyberte **cenová úroveň**. 
 
-Vyberte možnost **Výroba** , pak **Vyberte P1V3** , **P2V3** nebo **P3V3** a pak klikněte na **použít** .
+Vyberte možnost **Výroba**, pak **Vyberte P1V3**, **P2V3** nebo **P3V3** a pak klikněte na **použít**.
 
 ![Snímek obrazovky znázorňující Doporučené cenové úrovně pro vaši aplikaci](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
-> Pokud nevidíte **P1V3** , **P2V3** a **P3V3** jako možnosti, nebo pokud jsou možnosti šedé, pak **PremiumV3** pravděpodobně není k dispozici v podkladovém nasazení App Service, které obsahuje plán App Service. Další podrobnosti najdete v tématu [horizontální navýšení kapacity z nepodporované skupiny prostředků a kombinace oblastí](#unsupported) .
+> Pokud nevidíte **P1V3**, **P2V3** a **P3V3** jako možnosti, nebo pokud jsou možnosti šedé, pak **PremiumV3** pravděpodobně není k dispozici v podkladovém nasazení App Service, které obsahuje plán App Service. Další podrobnosti najdete v tématu [horizontální navýšení kapacity z nepodporované skupiny prostředků a kombinace oblastí](#unsupported) .
 
 ## <a name="scale-up-an-existing-app-to-premiumv3-tier"></a>Horizontální navýšení kapacity existující aplikace na úroveň PremiumV3
 
@@ -59,11 +59,11 @@ V závislosti na vašem hostitelském prostředí může škálování vyžadova
 
 V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>otevřete stránku aplikace App Service.
 
-V levém navigačním panelu aplikace App Service vyberte **škálovat nahoru (App Service plán)** .
+V levém navigačním panelu aplikace App Service vyberte **škálovat nahoru (App Service plán)**.
 
 ![Snímek obrazovky znázorňující postup horizontálního navýšení kapacity plánu služby App Service.](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
-Vyberte možnost **Výroba** , pak **Vyberte P1V3** , **P2V3** nebo **P3V3** a pak klikněte na **použít** .
+Vyberte možnost **Výroba**, pak **Vyberte P1V3**, **P2V3** nebo **P3V3** a pak klikněte na **použít**.
 
 ![Snímek obrazovky znázorňující Doporučené cenové úrovně pro vaši aplikaci](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
@@ -79,10 +79,10 @@ Některé plány App Service nemůžou škálovat až na úroveň PremiumV3, pok
 
 ## <a name="scale-up-from-an-unsupported-resource-group-and-region-combination"></a>Navýšení kapacity z nepodporované kombinace skupiny prostředků a oblastí
 
-Pokud je vaše aplikace spuštěná v nasazení App Service, kde **PremiumV3** není k dispozici, nebo pokud je vaše aplikace spuštěná v oblasti, která v současné době nepodporuje **PremiumV3** , musíte aplikaci znovu nasadit, abyste mohli využít výhod **PremiumV3** .  Máte dvě možnosti:
+Pokud je vaše aplikace spuštěná v nasazení App Service, kde **PremiumV3** není k dispozici, nebo pokud je vaše aplikace spuštěná v oblasti, která v současné době nepodporuje **PremiumV3**, musíte aplikaci znovu nasadit, abyste mohli využít výhod **PremiumV3**.  Máte dvě možnosti:
 
-- Vytvořte aplikaci v nové skupině prostředků a pomocí nového plánu App Service. Při vytváření plánu App Service vyberte úroveň **PremiumV3** . Tento krok zajistí, že je plán App Service nasazený do jednotky nasazení, která podporuje **PremiumV3** . Pak znovu nasaďte kód aplikace do nově vytvořené aplikace. I když App Service plán škálovat na nižší úroveň a ušetřit tak náklady, můžete vždy škálovat na **PremiumV3** , protože jednotka nasazení ho podporuje.
-- Pokud už vaše aplikace běží na stávající úrovni **Premium** , můžete svoji aplikaci klonovat pomocí nastavení aplikace, připojovacích řetězců a konfigurace nasazení do nového plánu služby App Service, který používá **PremiumV3** .
+- Vytvořte aplikaci v nové skupině prostředků a pomocí nového plánu App Service. Při vytváření plánu App Service vyberte úroveň **PremiumV3** . Tento krok zajistí, že je plán App Service nasazený do jednotky nasazení, která podporuje **PremiumV3**. Pak znovu nasaďte kód aplikace do nově vytvořené aplikace. I když App Service plán škálovat na nižší úroveň a ušetřit tak náklady, můžete vždy škálovat na **PremiumV3** , protože jednotka nasazení ho podporuje.
+- Pokud už vaše aplikace běží na stávající úrovni **Premium** , můžete svoji aplikaci klonovat pomocí nastavení aplikace, připojovacích řetězců a konfigurace nasazení do nového plánu služby App Service, který používá **PremiumV3**.
 
     ![Snímek obrazovky znázorňující způsob klonování aplikace](media/app-service-configure-premium-tier/clone-app.png)
 
@@ -90,7 +90,7 @@ Pokud je vaše aplikace spuštěná v nasazení App Service, kde **PremiumV3** n
 
 ## <a name="moving-from-premium-container-to-premium-v3-sku"></a>Přesun z kontejneru Premium na SKU Premium V3
 
-Pokud máte aplikaci, která využívá SKU kontejneru verze Preview Premium a chcete přejít na novou SKLADOVOU položku Premium v3, budete muset aplikaci znovu nasadit, abyste mohli využívat **PremiumV3** . Provedete to tak, že si přečtěte první možnost ve [škále po nepodporované kombinaci skupiny prostředků a oblasti](#scale-up-from-an-unsupported-resource-group-and-region-combination) .
+Pokud máte aplikaci, která využívá SKU kontejneru verze Preview Premium a chcete přejít na novou SKLADOVOU položku Premium v3, budete muset aplikaci znovu nasadit, abyste mohli využívat **PremiumV3**. Provedete to tak, že si přečtěte první možnost ve [škále po nepodporované kombinaci skupiny prostředků a oblasti](#scale-up-from-an-unsupported-resource-group-and-region-combination) .
 
 ## <a name="automate-with-scripts"></a>Automatizace pomocí skriptů
 
@@ -98,7 +98,7 @@ Vytváření aplikací můžete automatizovat v **PremiumV3** vrstvě pomocí sk
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Následující příkaz vytvoří plán App Service v _P1V2_ . Můžete ji spustit v Cloud Shell. Možnosti pro `--sku` jsou P1V3, _P2V3_ a _P3V3_ .
+Následující příkaz vytvoří plán App Service v _P1V3_. Můžete ji spustit v Cloud Shell. Možnosti pro `--sku` jsou P1V3, _P2V3_ a _P3V3_.
 
 ```azurecli-interactive
 az appservice plan create \
@@ -111,7 +111,7 @@ az appservice plan create \
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Následující příkaz vytvoří plán App Service v _P1V3_ . Možnosti pro `-WorkerSize` jsou _malá_ , _střední_ a _Velká_ .
+Následující příkaz vytvoří plán App Service v _P1V3_. Možnosti pro `-WorkerSize` jsou _malá_, _střední_ a _Velká_.
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName <resource_group_name> `

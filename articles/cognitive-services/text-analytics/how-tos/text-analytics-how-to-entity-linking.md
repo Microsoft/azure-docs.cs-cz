@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: ef06faa17739153b2a04e777498e1de6e97c0646
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 804d739efa5ac96c0b2d7228573f031f324e590e
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957091"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558976"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
@@ -31,7 +31,7 @@ Rozpoznávání pojmenovaných entit (NER) je schopnost identifikovat různé en
 
 ## <a name="personally-identifiable-information-pii"></a>Identifikovatelné osobní údaje (PII)
 
-Funkce PII je součástí NER a může identifikovat a redigování citlivé entity v textu, který je spojený s jednotlivou osobou, jako je telefonní číslo, e-mailová adresa, poštovní adresa, číslo služby Passport.  
+Funkce PII je součástí NER a může identifikovat a redigování citlivé entity v textu, který je spojený s jednotlivou osobou, jako je telefonní číslo, e-mailová adresa, poštovní adresa, číslo služby Passport.
 
 ## <a name="named-entity-recognition-features-and-versions"></a>Funkce a verze nástroje pro rozpoznávání pojmenovaných entit
 

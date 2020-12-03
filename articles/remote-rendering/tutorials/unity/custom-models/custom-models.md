@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ebadaf51a7dfbb286dac0bbdb0c3c8437ae2356f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5793e2958edce0a4c97660a75d0ecefa914c12d2
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022220"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559078"
 ---
 # <a name="tutorial-interfaces-and-custom-models"></a>Kurz: rozhraní a vlastní modely
 
@@ -24,24 +24,24 @@ V tomto kurzu se naučíte:
 > * Konfigurace služby Azure Blob Storage pro ingestování modelů
 > * Nahrávání a zpracování modelů pro vykreslování
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Tento kurz sestaví [kurz: zobrazení vzdáleně vykresleného modelu](../view-remote-models/view-remote-models.md).
 
 ## <a name="get-started-with-the-mixed-reality-toolkit-mrtk"></a>Začínáme se sadou nástrojů Mixed reality Toolkit (MRTK)
 
-Mixed reality Toolkit (MRTK) je sada nástrojů pro různé platformy, která slouží k vytváření hybridních prostředí realit. Pro své funkce interakce a vizualizace použijeme MRTK 2,3.
+Mixed reality Toolkit (MRTK) je sada nástrojů pro různé platformy, která slouží k vytváření hybridních prostředí realit. Pro své funkce interakce a vizualizace použijeme MRTK 2.5.1.
 
-Pokud chcete přidat MRTK, postupujte podle [požadovaných kroků](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#required) uvedených v části [Začínáme s MRTK](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html).
+Pokud chcete přidat MRTK, postupujte podle [požadovaných kroků](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#required) uvedených v [Průvodci instalací MRTK](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html).
 
 Jde o následující kroky:
- - [Získat nejnovější balíčky Unity pro MRTK](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#get-the-latest-mrtk-unity-packages)
-     - I když říká "poslední", je to pro verzi 2,3.
-     - V tomto kurzu používáme jenom balíček *Foundation* . Balíčky *rozšíření*, *nástroje*a *Příklady* se nevyžadují.
- - [Import balíčků MRTK do projektu Unity](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#import-mrtk-packages-into-your-unity-project)
- - [Přepnout projekt Unity na cílovou platformu](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#switch-your-unity-project-to-the-target-platform)
+ - [Získat nejnovější balíčky Unity pro MRTK](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#1-get-the-latest-mrtk-unity-packages)
+     - I když říká "poslední", použijte prosím verzi 2.5.1 ze stránky verze MRTK.
+     - V tomto kurzu používáme jenom balíček *Foundation* . Balíčky *rozšíření*, *nástroje* a *Příklady* se nevyžadují.
+ - [Import balíčků MRTK do projektu Unity](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#2-import-mrtk-packages-into-your-unity-project)
+ - [Přepnout projekt Unity na cílovou platformu](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#3-switch-your-unity-project-to-the-target-platform)
      - Tento krok byste si měli udělat už v první kapitole, ale teď je dobrý čas na dvojí kontrolu.
- - [Přidat MRTK do nové scény nebo nového projektu](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#add-mrtk-to-a-new-scene-or-new-project)
+ - [Přidat MRTK do nové scény nebo nového projektu](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#4-add-and-configure-mrtk-with-a-new-scene)
      - Můžete přidat MRTK do nové scény a znovu přidat koordinátora a objekty nebo skripty modelu, nebo můžete přidat MRTK k existující scéně pomocí sady *Mixed reality Toolkit – > přidat do scény a nakonfigurovat* příkaz nabídky.
 
 ## <a name="import-assets-used-by-this-tutorial"></a>Importovat assety používané v tomto kurzu
@@ -80,7 +80,7 @@ Teď můžete do scény přidat Prefab **AppMenu** , abyste mohli vizuální zp�
  ![Odebrat vynechat ](./media/remove-bypass-event.png) .
 1. Kliknutím na tlačítko **Přehrát** v editoru Unity otestujte kontroler zobrazení.
 1. V editoru teď, když je MRTK nakonfigurovaný, můžete pomocí klíčů WASD změnit umístění vašeho zobrazení a podržet pravé tlačítko myši + přesunout ukazatel myši a změnit směr zobrazení. Vyzkoušejte "jízda" kolem scény, abyste získali dojem pro ovládací prvky.
-1. Na zařízení můžete dovolávat svůj Palm k předvolání **AppMenu**v editoru Unity, a to pomocí klávesové zkratky '.
+1. Na zařízení můžete dovolávat svůj Palm k předvolání **AppMenu** v editoru Unity, a to pomocí klávesové zkratky '.
 1. Pokud jste ztratili pohled na nabídku, stiskněte klávesu ' m ' k předvolání nabídky. Nabídka se umístí poblíž kamery a umožní tak snadnou interakci.
 1. Autorizace se teď zobrazí jako žádost napravo od **AppMenu**, od této chvíle, kterou použijete k autorizaci aplikace ke správě relací vzdáleného vykreslování.
  ![Autorizace uživatelského rozhraní](./media/authorize-request-ui.png)

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 003203ef1a25102f9fd3c50001603dbd5d33ce5a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 48c835070329b5cb0892b10760d37708e46bfa1d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565966"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559129"
 ---
 # <a name="tutorial-manipulating-models"></a>Kurz: manipulace s modely
 
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte:
 > * Raycast s prostorovými dotazy
 > * Přidat jednoduché animace pro vzdáleně vykreslené objekty
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Tento kurz sestaví v [kurzu: rozhraní a vlastní modely](../custom-models/custom-models.md).
 
@@ -109,7 +109,7 @@ Meze modelu jsou definovány polem, které obsahuje celý model – stejně jako
     ```
 
     > [!NOTE]
-    > Pokud se v C# 6 zobrazí chyba funkce deklarace identity sady Visual Studio *X není dostupná. Použijte prosím jazyk verze 7,0 nebo vyšší* , tato chyba se dá bezpečně ignorovat. To se týká řešení Unity a generování projektů.
+    > Pokud se v C# 6 zobrazí chyba funkce deklarace identity sady Visual Studio *X není dostupná. Použijte prosím jazyk verze 7,0 nebo vyšší*, tato chyba se dá bezpečně ignorovat. To se týká řešení Unity a generování projektů.
 
     Tento skript by měl být přidán do stejného GameObject jako skript, který implementuje  **BaseRemoteRenderedModel**. V tomto případě to znamená **RemoteRenderedModel**. Podobně jako u předchozích skriptů bude tento počáteční kód zpracovávat všechny změny stavu, události a data související se vzdálenými mezemi.
 
@@ -152,7 +152,7 @@ Meze modelu jsou definovány polem, které obsahuje celý model – stejně jako
     }
     ```
 
-Když teď dojde k přidání skriptu **RemoteBounds** ke stejnému hernímu objektu jako **RemoteRenderedModel** , bude v případě potřeby přidán **BoxCollider** a když model dosáhne svého `Loaded` stavu, budou se tato hranice automaticky dotazovat a použít na **BoxCollider**.
+Když teď dojde k přidání skriptu **RemoteBounds** ke stejnému hernímu objektu jako **RemoteRenderedModel**, bude v případě potřeby přidán **BoxCollider** a když model dosáhne svého `Loaded` stavu, budou se tato hranice automaticky dotazovat a použít na **BoxCollider**.
 
 1. Pomocí **TestModel** GameObject, který jste vytvořili dříve, přidejte komponentu **RemoteBounds** .
 1. Potvrďte, že se skript přidá.
@@ -176,7 +176,7 @@ Tento kurz používá MRTK pro interakci s objekty. Většina implementace konkr
 1. Stisknutím tlačítka Přehrát v Unity přehrajete scénu a otevřete nabídku **nástroje modelu** v rámci **AppMenu**.
 ![Kontroler zobrazení](./media/model-with-view-controller.png)
 
-**AppMenu** má dílčí nabídky **modelů** , které implementují kontroler zobrazení pro vazbu s modelem. Pokud GameObject obsahuje komponentu **RemoteBounds** , kontroler zobrazení přidá komponentu [**BoundingBox**](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html) , což je komponenta MRTK, která vykresluje ohraničující rámeček kolem objektu s **BoxCollider**. [**ObjectManipulator**](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/api/Microsoft.MixedReality.Toolkit.Experimental.UI.ObjectManipulator.html?q=ObjectManipulator), který zodpovídá za interakci. Tyto skripty dohromady umožní přesunout, otočit a škálovat vzdáleně vykreslený model.
+**AppMenu** má dílčí nabídky **modelů** , které implementují kontroler zobrazení pro vazbu s modelem. Pokud GameObject obsahuje komponentu **RemoteBounds** , kontroler zobrazení přidá komponentu [**BoundingBox**](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html) , což je komponenta MRTK, která vykresluje ohraničující rámeček kolem objektu s **BoxCollider**. [**ObjectManipulator**](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/api/Microsoft.MixedReality.Toolkit.UI.ObjectManipulator.html), který zodpovídá za interakci. Tyto skripty dohromady umožní přesunout, otočit a škálovat vzdáleně vykreslený model.
 
 1. Přesuňte ukazatel myši na panel hry a kliknutím dovnitř ho přidělte fokus.
 1. Pokud používáte [MRTKou simulaci](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/InputSimulation/InputSimulationService.html#hand-simulation), stiskněte a podržte levý klávesu SHIFT.

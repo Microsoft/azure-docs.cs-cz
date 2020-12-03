@@ -1,20 +1,20 @@
 ---
-title: Spravovat přihlašovací údaje v Azure Automation
+title: Správa přihlašovacích údajů ve službě Automation
 description: V tomto článku se dozvíte, jak vytvořit assety přihlašovacích údajů a použít je v sadě Runbook nebo konfiguraci DSC.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 09/10/2020
+ms.date: 12/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4fbcf74c2c70d3dffd86728132d58430472271b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec35653f67c46a7032e834020d8e2ca4ab3125c8
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90004660"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558827"
 ---
-# <a name="manage-credentials-in-azure-automation"></a>Spravovat přihlašovací údaje v Azure Automation
+# <a name="manage-credentials-in-azure-automation"></a>Správa přihlašovacích údajů ve službě Automation
 
-Asset přihlašovacích údajů pro automatizaci obsahuje objekt, který obsahuje zabezpečovací pověření, například uživatelské jméno a heslo. Runbooky a konfigurace DSC používají rutiny, které přijímají pro ověřování objekt [PSCredential](/dotnet/api/system.management.automation.pscredential) . Případně mohou extrahovat uživatelské jméno a heslo `PSCredential` objektu, které mají být k dispozici pro některé aplikace nebo služby vyžadující ověřování. 
+Asset přihlašovacích údajů pro automatizaci obsahuje objekt, který obsahuje zabezpečovací pověření, například uživatelské jméno a heslo. Runbooky a konfigurace DSC používají rutiny, které přijímají pro ověřování objekt [PSCredential](/dotnet/api/system.management.automation.pscredential) . Případně mohou extrahovat uživatelské jméno a heslo `PSCredential` objektu, které mají být k dispozici pro některé aplikace nebo služby vyžadující ověřování.
 
 >[!NOTE]
 >Zabezpečené prostředky v Azure Automation zahrnují přihlašovací údaje, certifikáty, připojení a šifrované proměnné. Tyto prostředky jsou zašifrované a uložené v Azure Automation pomocí jedinečného klíče, který se generuje pro každý účet Automation. Azure Automation ukládá klíč do Key Vault spravovaném systémem. Před uložením zabezpečeného assetu Automation načte klíč z Key Vault a pak ho použije k zašifrování prostředku. 
@@ -44,7 +44,7 @@ Rutiny v následující tabulce se používají pro přístup k přihlašovacím
 
 Chcete-li načíst `PSCredential` objekty v kódu, musíte importovat `Orchestrator.AssetManagement.Cmdlets` modul. Další informace najdete v tématu [Správa modulů v Azure Automation](modules.md).
 
-```azurepowershell
+```powershell
 Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 ```
 
@@ -55,7 +55,7 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 
 Funkce v následující tabulce slouží k přístupu k přihlašovacím údajům v sadě Runbook Python 2.
 
-| Funkce | Description |
+| Funkce | Popis |
 |:---|:---|
 | `automationassets.get_automation_credential` | Načte informace o assetu přihlašovacích údajů. |
 
@@ -69,15 +69,15 @@ Pomocí Azure Portal nebo Windows PowerShellu můžete vytvořit nový prostřed
 ### <a name="create-a-new-credential-asset-with-the-azure-portal"></a>Vytvoření nového assetu přihlašovacích údajů pomocí Azure Portal
 
 1. Z účtu Automation v levém podokně vyberte **přihlašovací údaje** v části **sdílené prostředky**.
-1. Na stránce **pověření** vyberte **Přidat pověření**.
-2. V podokně nové přihlašovací údaje zadejte odpovídající název přihlašovacích údajů podle standardů pojmenování.
-3. Do pole **uživatelské jméno** zadejte své přístupové ID.
-4. Pro obě pole hesla zadejte svůj tajný přístupový klíč.
+2. Na stránce **pověření** vyberte **Přidat pověření**.
+3. V podokně nové přihlašovací údaje zadejte odpovídající název přihlašovacích údajů podle standardů pojmenování.
+4. Do pole **uživatelské jméno** zadejte své přístupové ID.
+5. Pro obě pole hesla zadejte svůj tajný přístupový klíč.
 
     ![Vytvořit nové přihlašovací údaje](../media/credentials/credential-create.png)
 
-5. Pokud je zaškrtnuto políčko Multi-Factor Authentication, zrušte jeho zaškrtnutí.
-6. Kliknutím na **vytvořit** uložte nový prostředek přihlašovacích údajů.
+6. Pokud je zaškrtnuto políčko Multi-Factor Authentication, zrušte jeho zaškrtnutí.
+7. Kliknutím na **vytvořit** uložte nový prostředek přihlašovacích údajů.
 
 > [!NOTE]
 > Azure Automation nepodporuje uživatelské účty, které používají službu Multi-Factor Authentication.
@@ -106,8 +106,7 @@ Alternativně můžete použít metodu [GetNetworkCredential](/dotnet/api/system
 
 Následující příklad ukazuje způsob použití přihlašovacích údajů prostředí PowerShell v Runbooku. Načte přihlašovací údaje a přiřadí jí uživatelské jméno a heslo k proměnným.
 
-
-```azurepowershell
+```powershell
 $myCredential = Get-AutomationPSCredential -Name 'MyCredential'
 $userName = $myCredential.UserName
 $securePassword = $myCredential.Password
@@ -116,14 +115,13 @@ $password = $myCredential.GetNetworkCredential().Password
 
 Přihlašovací údaje můžete použít také k ověření v Azure pomocí [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Ve většině případů byste měli použít [účet Spustit jako](../manage-runas-account.md) a načíst připojení pomocí rutiny [Get-AzAutomationConnection](../automation-connections.md).
 
-
-```azurepowershell
+```powershell
 $myCred = Get-AutomationPSCredential -Name 'MyCredential'
 $userName = $myCred.UserName
 $securePassword = $myCred.Password
 $password = $myCred.GetNetworkCredential().Password
 
-$myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$password)
+$myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$securePassword)
 
 Connect-AzAccount -Credential $myPsCred
 ```
@@ -145,7 +143,6 @@ I když konfigurace DSC v Azure Automation můžou pracovat s assety přihlašov
 ## <a name="use-credentials-in-a-python-2-runbook"></a>Použití přihlašovacích údajů v sadě Runbook Python 2
 
 Následující příklad ukazuje příklad přístupu k přihlašovacím údajům v sadách Python 2 Runbooky.
-
 
 ```python
 import automationassets

@@ -2,14 +2,14 @@
 title: Označení prostředků, skupin prostředků a předplatných pro logickou organizaci
 description: Ukazuje, jak použít značky k uspořádání prostředků Azure k fakturaci a správě.
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 12/03/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9e9ef96a712e5ac2ba483170fb8ef9c89115b4f8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e47d3acf15ce5e4f5cb70444419b76beb21ae98b
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95972554"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558143"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Použití značek k uspořádání prostředků Azure a hierarchie správy
 
@@ -26,9 +26,11 @@ Doporučení, jak implementovat strategii označování, najdete v článku [Pr�
 
 ## <a name="required-access"></a>Požadovaný přístup
 
-Chcete-li použít značky pro prostředek, musíte mít oprávnění k zápisu do typu prostředku **Microsoft. Resources/Tags** . Role [Přispěvatel značek](../../role-based-access-control/built-in-roles.md#tag-contributor) umožňuje aplikovat značky na entitu bez přístupu k samotné entitě. V současné době role Přispěvatel značek nemůže na základě portálu použít značky na prostředky nebo skupiny prostředků. Může použít značky pro odběry prostřednictvím portálu. Podporuje všechny operace značek prostřednictvím PowerShellu a REST API.  
+Existují dva způsoby, jak získat požadovaný přístup k prostředkům značky.
 
-Role [přispěvatele](../../role-based-access-control/built-in-roles.md#contributor) také uděluje požadovaný přístup k použití značek pro libovolnou entitu. Pokud chcete použít Tagy jenom pro jeden typ prostředku, použijte pro tento prostředek roli přispěvatele. Pokud například chcete použít značky pro virtuální počítače, použijte [přispěvatele virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
+- Můžete mít přístup pro zápis k typu prostředku **Microsoft. Resources/Tags** . Tento přístup vám umožní označit libovolný prostředek, a to i v případě, že nemáte přístup k samotnému prostředku. Tento přístup udělí role [Přispěvatel značek](../../role-based-access-control/built-in-roles.md#tag-contributor) . V současné době role Přispěvatel značek nemůže na základě portálu použít značky na prostředky nebo skupiny prostředků. Může použít značky pro odběry prostřednictvím portálu. Podporuje všechny operace značek prostřednictvím PowerShellu a REST API.  
+
+- Můžete mít přístup pro zápis k samotnému prostředku. Role [přispěvatele](../../role-based-access-control/built-in-roles.md#contributor) uděluje požadovaný přístup pro použití značek pro libovolnou entitu. Pokud chcete použít Tagy jenom pro jeden typ prostředku, použijte pro tento prostředek roli přispěvatele. Pokud například chcete použít značky pro virtuální počítače, použijte [přispěvatele virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
 
 ## <a name="powershell"></a>PowerShell
 
@@ -277,7 +279,7 @@ az tag create --resource-id $resource --tags Team=Compliance Environment=Product
 },
 ```
 
-Chcete-li přidat značky k prostředku, který již obsahuje značky, použijte příkaz **AZ tag Update**. Nastavte parametr **--Operation** , který se má **Sloučit**.
+Chcete-li přidat značky k prostředku, který již obsahuje značky, použijte `az tag update` . Nastavte `--operation` parametr na `Merge` .
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Merge --tags Dept=Finance Status=Normal
@@ -313,7 +315,7 @@ az tag update --resource-id $resource --operation Merge --tags Status=Green
 },
 ```
 
-Když nastavíte parametr **--Operation** **, který má být nahrazen**, existující značky budou nahrazeny novou sadou značek.
+Když nastavíte `--operation` parametr na `Replace` , existující značky budou nahrazeny novou sadou značek.
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Replace --tags Project=ECommerce CostCenter=00123 Team=Web
@@ -406,7 +408,7 @@ az group list --tag Dept=Finance
 
 ### <a name="remove-tags"></a>Odebrat značky
 
-Pokud chcete odebrat konkrétní značky, použijte příkaz **AZ tag Update** a set **--operatione** **Delete**. Předejte značky, které chcete odstranit.
+Chcete-li odebrat konkrétní značky, použijte `az tag update` a nastavte `--operation` na `Delete` . Předejte značky, které chcete odstranit.
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Delete --tags Project=ECommerce Team=Web

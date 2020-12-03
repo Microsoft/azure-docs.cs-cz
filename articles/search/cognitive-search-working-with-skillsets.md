@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/15/2020
-ms.openlocfilehash: f1d8715fcadeda5ccd1a98192a70939b0c359c88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5a893ee1923ba4b2bec53b20fb164337bd65902
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84976672"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558109"
 ---
 # <a name="skillset-concepts-in-azure-cognitive-search"></a>Dovednosti koncepty v Azure Kognitivní hledání
 
@@ -98,8 +98,8 @@ Jakmile je dokument v kanálu obohacení, je reprezentován jako strom obsahu a 
 |Režim Source\Parsing dat|Výchozí|JSON, řádky JSON & CSV|
 |---|---|---|
 |Blob Storage|/document/content<br>/Document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
-|SQL|/document/{column1}<br>/document/{column2}<br>…|Není k dispozici |
-|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|Není k dispozici|
+|SQL|/document/{column1}<br>/document/{column2}<br>…|– |
+|Databáze Cosmos|/document/{key1}<br>/document/{key2}<br>…|–|
 
  Při provádění dovedností přidávají nové uzly do stromu obohacení. Tyto nové uzly pak mohou být použity jako vstupy pro dovednosti s využitím pro příjem dat, projekci do obchodu Knowledge Store nebo mapování na pole indexu. Rozšíření nejsou proměnlivá: po vytvoření se uzly nedají upravovat. Vzhledem k tomu, že vaše dovednostiy jsou složitější, takže se strom pro rozšíření, ale ne všechny uzly ve stromu pro rozšíření, nemusí dělat na index nebo na obchod znalostní báze. 
 
@@ -222,8 +222,6 @@ Přístup Shaper je podrobnější než při vložené tvarování, ale zajišť
 Chcete-li příklad zvětšit, můžete odebrat vložené tvarování a použít dovednost Shaper k vytvoření nového uzlu pro klíčové fráze. Chcete-li vytvořit tvar vytvořený do tří tabulek, konkrétně, `hotelReviewsDocument` , `hotelReviewsPages` a `hotelReviewsKeyPhrases` , jsou tyto dvě možnosti popsány v následujících částech.
 
 #### <a name="shaper-skill-and-projection"></a>Shaper dovednosti a projekce
-
-Tento 
 
 > [!Note]
 > Některé sloupce z tabulky dokumentů byly z tohoto příkladu odebrány pro zkrácení.

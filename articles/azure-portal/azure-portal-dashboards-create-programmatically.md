@@ -3,21 +3,21 @@ title: Vytváření řídicích panelů Azure prostřednictvím kódu programu
 description: K programovému vytváření řídicích panelů Azure použijte řídicí panel v Azure Portal jako šablonu. Obsahuje odkaz JSON.
 services: azure-portal
 documentationcenter: ''
-author: adamabmsft
+author: mgblythe
 manager: mtillman
 ms.service: azure-portal
 ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 03/23/2020
+ms.date: 12/4/2020
 ms.author: mblythe
-ms.openlocfilehash: 7f52bd94a0286ea50d09ab7c77dce339e8a3ebf3
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 7e6819b01af3fc9357417a838fefce7f2c73dcce
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089362"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558212"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Vytváření řídicích panelů Azure prostřednictvím kódu programu
 
@@ -124,7 +124,7 @@ Deklaruje požadovaná metadata šablony a parametry v horní části šablony J
 ```
 Jakmile nakonfigurujete šablonu, nasaďte ji pomocí kterékoli z následujících metod:
 
-* [REST API](/rest/api/resources/deployments)
+* [Rozhraní REST API](/rest/api/resources/deployments)
 * [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure CLI](/cli/azure/group/deployment#az-group-deployment-create)
 * [Stránka Azure Portalho nasazení šablony](https://portal.azure.com/#create/Microsoft.Template)
@@ -658,3 +658,49 @@ Tento příklad nasadí řídicí panel sám o sobě, ale jazyk šablony vám um
 ```
 
 Teď, když jste viděli příklad použití parametrizované šablony pro nasazení řídicího panelu, můžete zkusit nasadit šablonu pomocí [Azure Resource Manager rozhraní REST API](/rest/api/), rozhraní [příkazového](/powershell/azure/get-started-azureps) [řádku Azure](/cli/azure)nebo Azure PowerShell.
+
+## <a name="programmatically-create-a-dashboard-by-using-azure-cli"></a>Programové vytvoření řídicího panelu pomocí Azure CLI
+
+Připravte prostředí pro rozhraní příkazového řádku Azure CLI.
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- Tyto příklady používají následující řídicí panel: [portal-dashboard-template-testvm.jsna](https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json). Nahraďte obsah v lomených závorkách hodnotami.
+
+Spuštěním příkazu [AZ Portal Dashboard Create](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_create) vytvořte řídicí panel:
+
+```azurecli
+az portal dashboard create --resource-group myResourceGroup --name 'Simple VM Dashboard' \
+   --input-path portal-dashboard-template-testvm.json --location centralus
+```
+
+Řídicí panel můžete aktualizovat pomocí příkazu [AZ Portal Dashboard Update](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_update) :
+
+```azurecli
+az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Dashboard' \
+--input-path portal-dashboard-template-testvm.json --location centralus
+```
+
+Podrobnosti řídicího panelu zobrazíte spuštěním příkazu [AZ Portal Dashboard show](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_show) :
+
+```azurecli
+az portal dashboard show --resource-group myResourceGroup --name 'Simple VM Dashboard'
+```
+
+Pokud chcete zobrazit všechny řídicí panely aktuálního předplatného, použijte příkaz [AZ Portal Dashboard list](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_list):
+
+```azurecli
+az portal dashboard list
+```
+
+Můžete také zobrazit všechny řídicí panely pro skupinu prostředků:
+
+```azurecli
+az portal dashboard list --resource-group myResourceGroup
+```
+
+## <a name="next-steps"></a>Další kroky
+
+Další informace o stolních počítačích najdete v tématu [Správa nastavení a předvoleb Azure Portal](set-preferences.md).
+
+Další informace o podpoře Azure CLI pro řídicí panely najdete v tématu [AZ Portal Dashboard](/cli/azure/ext/portal/portal/dashboard).

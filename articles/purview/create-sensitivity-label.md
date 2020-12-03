@@ -6,13 +6,13 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/22/2020
-ms.openlocfilehash: b286533da90565429f96c5701aaa72dab0fb21d0
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.date: 12/03/2020
+ms.openlocfilehash: 195ddfcc3c781c1866a7751f989c9460463edbb9
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553276"
+ms.locfileid: "96558160"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Automatické označování dat ve službě Azure dosah
 
@@ -36,13 +36,7 @@ Dosah používá stejné klasifikace, označované také jako typy citlivých in
 > I když se klasifikace shodují přímo (číslo sociálního zabezpečení má klasifikaci **rodného čísla**), používají se popisky citlivosti, když se jedna nebo víc klasifikací a scénářů najde společně. 
 > 
 
-Popisky citlivosti ve službě Azure dosah se dají použít k těmto akcím:
-
-- **Automaticky použít popisky** pro soubory a databázové sloupce
-
-- **Řízení** , kdo může a nemá přístup k datům
-
-- **Vynutili nastavení ochrany**, jako je například šifrování, u označených dat
+Popisky citlivosti ve službě Azure dosah se dají použít k automatickému použití popisků pro soubory a sloupce databáze.
 
 Další informace najdete tady:
 

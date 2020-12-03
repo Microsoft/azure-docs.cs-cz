@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: Azure App Service, Web App, Linux, Windows, Docker, kontejner
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: b5682275a9e5f3993de715ab5f23a708d5df47ae
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 68fe49ff201ead89d846a0676e81dda9fc9b75b9
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130098"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558602"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Migrace vlastního softwaru na Azure App Service pomocí vlastního kontejneru
 
@@ -31,7 +31,7 @@ Pro absolvování tohoto kurzu potřebujete:
 - <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Přepnout Docker na spouštění kontejnerů Windows</a>.
 - <a href="https://www.visualstudio.com/downloads/" target="_blank">Nainstalujte Visual Studio 2019</a> s pracovními procesy pro **vývoj ASP.NET a web** a **vývoj pro Azure** . Pokud jste již nainstalovali Visual Studio 2019:
     - Po **kliknutí na** tlačítko  >  **Vyhledat aktualizace** nainstalujte nejnovější aktualizace v aplikaci Visual Studio.
-    - Přidejte úlohy do sady Visual Studio tak, že kliknete na **nástroje**  >  **získat nástroje a funkce** .
+    - Přidejte úlohy do sady Visual Studio tak, že kliknete na **nástroje**  >  **získat nástroje a funkce**.
 
 ## <a name="set-up-the-app-locally"></a>Místní nastavení aplikace
 
@@ -40,13 +40,13 @@ Pro absolvování tohoto kurzu potřebujete:
 V tomto kroku nastavíte místní projekt .NET.
 
 - [Stáhněte si ukázkový projekt](https://github.com/Azure-Samples/custom-font-win-container/archive/master.zip).
-- Rozbalte (rozzipujte) soubor *custom-font-win-container.zip* .
+- Rozbalte (rozzipujte) soubor *custom-font-win-container.zip*.
 
 Tento ukázkový projekt obsahuje jednoduchou aplikaci ASP.NET, která využívá vlastní písmo nainstalované do knihovny písem Windows. Písma není potřeba instalovat, jde ale o příklad aplikace, která je integrovaná s podkladovým operačním systémem. Pokud chcete takovou aplikaci migrovat do služby App Service, buď úpravou kódu odeberete tuto integraci, nebo ji migrujete tak jak je ve vlastním kontejneru Windows.
 
 ### <a name="install-the-font"></a>Instalace písma
 
-V Průzkumníku Windows přejděte na _custom-font-win-container-master/CustomFontSample_ , klikněte pravým tlačítkem na _FrederickatheGreat-Regular.ttf_ a vyberte **Nainstalovat** .
+V Průzkumníku Windows přejděte na _custom-font-win-container-master/CustomFontSample_, klikněte pravým tlačítkem na _FrederickatheGreat-Regular.ttf_ a vyberte **Nainstalovat**.
 
 Toto písmo je veřejně dostupné na webu [Google Fonts](https://fonts.google.com/specimen/Fredericka+the+Great).
 
@@ -62,15 +62,15 @@ Protože tato aplikace používá nainstalované písmo, nemůže běžet v sand
 
 ### <a name="configure-windows-container"></a>Konfigurace kontejneru Windows
 
-V Průzkumníku řešení klikněte pravým tlačítkem na projekt **CustomFontSample** a vyberte **Přidat** > **Podpora orchestrace kontejnerů** .
+V Průzkumníku řešení klikněte pravým tlačítkem na projekt **CustomFontSample** a vyberte **Přidat** > **Podpora orchestrace kontejnerů**.
 
-:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="Snímek obrazovky zobrazující aplikaci zobrazenou ve výchozím prohlížeči":::
+:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="Snímek obrazovky okna Průzkumník řešení znázorňující vybrané položky nabídky projektu CustomFontSample, přidat a kontejner produktu Orchestrator support":::
 
-Vyberte **Docker Compose**  >  **OK** .
+Vyberte **Docker Compose**  >  **OK**.
 
 Projekt je teď nastavený tak, aby běžel v kontejneru Windows. Do projektu **CustomFontSample** se přidá soubor _Dockerfile_ a projekt **docker-compose** se přidá do řešení. 
 
-V Průzkumníku řešení otevřete soubor **Dockerfile** .
+V Průzkumníku řešení otevřete soubor **Dockerfile**.
 
 Musíte použít [podporovanou nadřazenou image](configure-custom-container.md#supported-parent-images). Nadřazenou image změníte tak, že řádek `FROM` nahradíte následujícím kódem:
 
@@ -84,7 +84,7 @@ Na konec souboru přidejte následující řádek a pak tento soubor uložte:
 RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 ```
 
-_InstallFont.ps1_ najdete v projektu **CustomFontSample** . Jde o jednoduchý skript, který nainstaluje toto písmo. Složitější verzi tohoto skriptu najdete v [centru skriptů](https://gallery.technet.microsoft.com/scriptcenter/fb742f92-e594-4d0c-8b79-27564c575133).
+_InstallFont.ps1_ najdete v projektu **CustomFontSample**. Jde o jednoduchý skript, který nainstaluje toto písmo. Složitější verzi tohoto skriptu najdete v [centru skriptů](https://gallery.technet.microsoft.com/scriptcenter/fb742f92-e594-4d0c-8b79-27564c575133).
 
 > [!NOTE]
 > Pokud chcete místně testovat kontejner Windows, ujistěte se, že je v místním počítači spuštěný Docker.
@@ -96,15 +96,15 @@ Služba [Azure Container Registry](../container-registry/index.yml) uchovává v
 
 ### <a name="open-publish-wizard"></a>Otevření průvodce publikováním
 
-V Průzkumníku řešení klikněte pravým tlačítkem na projekt **CustomFontSample** a vyberte **Publikovat** .
+V Průzkumníku řešení klikněte pravým tlačítkem na projekt **CustomFontSample** a vyberte **Publikovat**.
 
-:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="Snímek obrazovky zobrazující aplikaci zobrazenou ve výchozím prohlížeči":::
+:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="Snímek obrazovky Průzkumník řešení se zobrazením projektu CustomFontSample a publikováním vybraného.":::
 
 ### <a name="create-registry-and-publish"></a>Vytvoření registru a publikování
 
-V Průvodci publikováním vyberte **Container Registry**  >  **vytvořit nové Azure Container Registry**  >  **publikovat** .
+V Průvodci publikováním vyberte **Container Registry**  >  **vytvořit nové Azure Container Registry**  >  **publikovat**.
 
-:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="Snímek obrazovky zobrazující aplikaci zobrazenou ve výchozím prohlížeči":::
+:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="Snímek obrazovky s průvodcem publikováním, který zobrazuje Container Registry, vytvořte nové Azure Container Registry a vybrané tlačítko publikovat.":::
 
 ### <a name="sign-in-with-azure-account"></a>Přihlášení pomocí účtu Azure
 
@@ -114,13 +114,13 @@ V dialogu **Vytvořit nový Azure Container Registry** vyberte **Přidat účet*
 
 ### <a name="configure-the-registry"></a>Konfigurace registru
 
-Nakonfigurujte nový registr kontejneru podle navržených hodnot v následující tabulce. Jakmile budete hotovi, klikněte na **Vytvořit** .
+Nakonfigurujte nový registr kontejneru podle navržených hodnot v následující tabulce. Jakmile budete hotovi, klikněte na **Vytvořit**.
 
 | Nastavení  | Navrhovaná hodnota | Další informace |
 | ----------------- | ------------ | ----|
 |**Předpona DNS**| Ponechejte vygenerovaný název registru nebo ho změňte na jiný jedinečný název. |  |
-|**Skupina prostředků**| Klikněte na **Nový** , zadejte **myResourceGroup** a klikněte na **OK** . |  |
-|**Skladová jednotka (SKU)**| Základní | [Cenové úrovně](https://azure.microsoft.com/pricing/details/container-registry/)|
+|**Skupina prostředků**| Klikněte na **Nový**, zadejte **myResourceGroup** a klikněte na **OK**. |  |
+|**Skladová jednotka (SKU)**| Basic | [Cenové úrovně](https://azure.microsoft.com/pricing/details/container-registry/)|
 |**Umístění registru**| West Europe | |
 
 ![Konfigurace Azure Container Registry](./media/tutorial-custom-container/configure-registry.png)
@@ -133,21 +133,21 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-V nabídce vlevo vyberte **vytvořit prostředek**  >  **Web**  >  **Web App for Containers** .
+V nabídce vlevo vyberte **vytvořit prostředek**  >  **Web**  >  **Web App for Containers**.
 
 ### <a name="configure-app-basics"></a>Konfigurace základních informací o aplikaci
 
-Na kartě **základy** nakonfigurujte nastavení podle následující tabulky a pak klikněte na **Další: Docker** .
+Na kartě **základy** nakonfigurujte nastavení podle následující tabulky a pak klikněte na **Další: Docker**.
 
 | Nastavení  | Navrhovaná hodnota | Další informace |
 | ----------------- | ------------ | ----|
 |**Předplatné**| Ujistěte se, že je vybráno správné předplatné. |  |
-|**Skupina prostředků**| Vyberte **vytvořit nový** , zadejte **myResourceGroup** a klikněte na **OK** . |  |
+|**Skupina prostředků**| Vyberte **vytvořit nový**, zadejte **myResourceGroup** a klikněte na **OK**. |  |
 |**Název**| Zadejte jedinečný název. | Adresa URL webové aplikace je `http://<app-name>.azurewebsites.net`, kde `<app-name>` je název vaší aplikace. |
 |**Publikovat**| Kontejner Docker | |
 |**Operační systém**| Windows | |
 |**Oblast**| West Europe | |
-|**Plán Windows**| Vyberte **vytvořit nový** , zadejte **myAppServicePlan** a klikněte na **OK** . | |
+|**Plán Windows**| Vyberte **vytvořit nový**, zadejte **myAppServicePlan** a klikněte na **OK**. | |
 
 Karta **základy** by měla vypadat takto:
 
@@ -155,13 +155,13 @@ Karta **základy** by měla vypadat takto:
 
 ### <a name="configure-windows-container"></a>Konfigurace kontejneru Windows
 
-Na kartě **Docker** nakonfigurujte vlastní kontejner Windows, jak je znázorněno v následující tabulce, a vyberte **zkontrolovat + vytvořit** .
+Na kartě **Docker** nakonfigurujte vlastní kontejner Windows, jak je znázorněno v následující tabulce, a vyberte **zkontrolovat + vytvořit**.
 
 | Nastavení  | Navrhovaná hodnota |
 | ----------------- | ------------ |
 |**Zdroj image**| Azure Container Registry |
 |**Registr**| Vyberte [registr, který jste vytvořili dříve](#publish-to-azure-container-registry). |
-|**Image**| customfontsample |
+|**Obrázek**| customfontsample |
 |**Tag**| nejnovější |
 
 ### <a name="complete-app-creation"></a>Dokončení vytvoření aplikace
@@ -174,9 +174,9 @@ Po dokončení operace Azure se zobrazí okno s oznámením.
 
 ![Ukazuje, že se operace Azure dokončila.](media/tutorial-custom-container/portal-create-finished.png)
 
-1. Klikněte na **Přejít k prostředku** .
+1. Klikněte na **Přejít k prostředku**.
 
-2. Na stránce aplikace klikněte na odkaz v části **Adresa URL** .
+2. Na stránce aplikace klikněte na odkaz v části **Adresa URL**.
 
 Na nové stránce prohlížeče se otevře následující stránka:
 
@@ -228,31 +228,16 @@ V tomto kurzu vznikne v rámci vašeho účtu Azure v registru kontejneru malý 
 
 ## <a name="set-up-your-initial-environment"></a>Nastavení počátečního prostředí
 
-* Mít účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* Nainstalujte [Docker](https://docs.docker.com/get-started/#setup), který použijete k sestavení imagí Docker. Instalace Docker může vyžadovat restart počítače.
-* Nainstalujte rozhraní příkazového <a href="/cli/azure/install-azure-cli" target="_blank">řádku Azure CLI</a> 2.0.80 nebo novější, ve kterém spouštíte příkazy v jakémkoli prostředí pro zřizování a konfiguraci prostředků Azure.
+- Mít účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Nainstalujte [Docker](https://docs.docker.com/get-started/#setup), který použijete k sestavení imagí Docker. Instalace Docker může vyžadovat restart počítače.
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+- V tomto kurzu se vyžaduje verze rozhraní příkazového řádku Azure 2.0.80 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
-Po instalaci Docker a rozhraní příkazového řádku Azure otevřete okno terminálu a ověřte, že je Docker nainstalovaný:
+Po instalaci Docker nebo spuštění Azure Cloud Shell otevřete okno terminálu a ověřte, že je Docker nainstalovaný:
 
 ```bash
 docker --version
 ```
-
-Ověřte také, že verze Azure CLI je 2.0.80 nebo vyšší:
-
-```azurecli
-az --version
-```
-
-Pak se přihlaste k Azure prostřednictvím rozhraní příkazového řádku:
-
-```azurecli
-az login
-```
-
-`az login`Příkaz otevře prohlížeč pro shromáždění vašich přihlašovacích údajů. Po dokončení příkazu se zobrazí výstup JSON obsahující informace o vašich předplatných.
-
-Po přihlášení můžete spustit příkazy Azure pomocí Azure CLI a pracovat s prostředky ve vašem předplatném.
 
 ## <a name="clone-or-download-the-sample-app"></a>Klonování nebo stažení ukázkové aplikace
 
@@ -276,9 +261,9 @@ cd docker-django-webapp-linux
 
 ### <a name="download-from-github"></a>Stažení z GitHubu
 
-Místo použití klonu Git můžete navštívit [https://github.com/Azure-Samples/docker-django-webapp-linux](https://github.com/Azure-Samples/docker-django-webapp-linux) , vybrat **klonovat** a pak vybrat **Stáhnout ZIP** . 
+Místo použití klonu Git můžete navštívit [https://github.com/Azure-Samples/docker-django-webapp-linux](https://github.com/Azure-Samples/docker-django-webapp-linux) , vybrat **klonovat** a pak vybrat **Stáhnout ZIP**. 
 
-Rozbalte soubor ZIP do složky s názvem *Docker-Django-WebApp-Linux* . 
+Rozbalte soubor ZIP do složky s názvem *Docker-Django-WebApp-Linux*. 
 
 Pak otevřete okno terminálu v této složce *Docker-Django-WebApp-Linux* .
 
@@ -320,7 +305,7 @@ ENTRYPOINT ["init.sh"]
 ## <a name="build-and-test-the-image-locally"></a>Místní sestavení a otestování image
 
 > [!NOTE]
-> Docker Hub má [kvóty pro počet anonymních přijetí změn na jednu IP adresu a počet ověřených přijetí na bezplatného uživatele (viz **přenos dat** )](https://www.docker.com/pricing). Pokud si všimnete, že se vaše přijetí z dokovacího centra bude omezovat, zkuste, jestli ještě nejste `docker login` přihlášení.
+> Docker Hub má [kvóty pro počet anonymních přijetí změn na jednu IP adresu a počet ověřených přijetí na bezplatného uživatele (viz **přenos dat**)](https://www.docker.com/pricing). Pokud si všimnete, že se vaše přijetí z dokovacího centra bude omezovat, zkuste, jestli ještě nejste `docker login` přihlášení.
 > 
 
 1. Spusťte následující příkaz, který sestaví bitovou kopii:
@@ -338,13 +323,11 @@ ENTRYPOINT ["init.sh"]
     Tento [`docker run`](https://docs.docker.com/engine/reference/commandline/run/) příkaz určuje port s `-p` argumentem následovaným názvem obrázku. 
     
     > [!TIP]
-    > Pokud pracujete v systému Windows a zobrazí se chyba, *standard_init_linux. přejít: 211: exec uživatelský proces způsobil "žádný takový soubor nebo adresář"* , soubor *init.sh* obsahuje konce řádků CR-LF místo očekávaného LF. K této chybě dochází, pokud jste použili Git ke klonování ukázkového úložiště, ale tento parametr se vynechal `--config core.autocrlf=input` . V takovém případě znovu naklonujte úložiště pomocí argumentu--config. Chyba se může zobrazit také v případě, že jste upravili *init.sh* a uložili ji se zakončením CRLF. V takovém případě soubor uložte znovu s končícím LF.
+    > Pokud pracujete v systému Windows a zobrazí se chyba, *standard_init_linux. přejít: 211: exec uživatelský proces způsobil "žádný takový soubor nebo adresář"*, soubor *init.sh* obsahuje konce řádků CR-LF místo očekávaného LF. K této chybě dochází, pokud jste použili Git ke klonování ukázkového úložiště, ale tento parametr se vynechal `--config core.autocrlf=input` . V takovém případě znovu naklonujte úložiště pomocí argumentu--config. Chyba se může zobrazit také v případě, že jste upravili *init.sh* a uložili ji se zakončením CRLF. V takovém případě soubor uložte znovu s končícím LF.
 
 1. Pokud `http://localhost:8000` chcete ověřit, že webová aplikace a kontejner fungují správně, přejděte k části.
 
     ![Místní test webové aplikace](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-local.png)
-
-[!INCLUDE [Try Cloud Shell](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -501,7 +484,7 @@ Po nahrání image do registru kontejneru můžete tyto kroky dokončit a App Se
 
 V této části provedete změnu kódu webové aplikace, znovu sestavíte kontejner a potom kontejner nahrajete do registru. App Service pak automaticky načte aktualizovanou bitovou kopii z registru, aby se aktualizovala spuštěná webová aplikace.
 
-1. V místní složce *Docker-Django-WebApp-Linux* otevřete soubor *App/Templates/App/index.html* .
+1. V místní složce *Docker-Django-WebApp-Linux* otevřete soubor *App/Templates/App/index.html*.
 
 1. Změňte první prvek HTML tak, aby odpovídal následujícímu kódu.
 
@@ -565,7 +548,7 @@ V této části provedete změnu kódu webové aplikace, znovu sestavíte kontej
 
     Soubory protokolu můžete také zkontrolovat v prohlížeči na `https://<app-name>.scm.azurewebsites.net/api/logs/docker`.
 
-1. Pokud chcete streamování protokolů kdykoli zastavit, zadejte **CTRL** + **C** .
+1. Pokud chcete streamování protokolů kdykoli zastavit, zadejte **CTRL** + **C**.
 
 ## <a name="connect-to-the-container-using-ssh"></a>Připojit se ke kontejneru pomocí SSH
 

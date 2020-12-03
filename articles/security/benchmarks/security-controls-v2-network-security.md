@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b6aaad9cce330d755fb69f8be48737f9a8f6c4a7
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 38ab16fbadee245810a4486170dd54922c0c38f9
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487741"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558908"
 ---
 # <a name="security-control-v2-network-security"></a>Řízení zabezpečení v2: zabezpečení sítě
 
@@ -54,7 +54,7 @@ Pomocí ověřování Azure můžete zjistit použití starších nezabezpečen�
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
-| NS – 2 | Není k dispozici | CA – 3, AC-17, MA-4 |
+| NS – 2 | – | CA – 3, AC-17, MA-4 |
 
 Pomocí Azure ExpressRoute nebo virtuální privátní sítě (VPN) Azure můžete vytvořit privátní připojení mezi datacentry Azure a místní infrastrukturou v prostředí s okolním umístěním. Připojení ExpressRoute nevyužívají veřejný Internet a nabízejí spolehlivější, rychlejší a nižší latenci než typická připojení k Internetu. Pro sítě VPN typu Point-to-site a VPN typu Site-to-site můžete připojit místní zařízení nebo sítě k virtuální síti pomocí libovolné kombinace těchto možností sítě VPN a Azure ExpressRoute.
 
@@ -126,7 +126,11 @@ Chraňte prostředky Azure před útoky z externích sítí, včetně útoků di
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-Žádné
+- [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
+
+- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+
+- [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 ## <a name="ns-5-deploy-intrusion-detectionintrusion-prevention-systems-idsips"></a>NS-5: nasazení systémů pro zabránění vniknutí/prevence vniknutí (ID/IP adresy)
 
@@ -184,7 +188,7 @@ Skupiny zabezpečení aplikací můžete použít také ke zjednodušení složi
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
-| NS – 7 | Není k dispozici | SC-20, SC-21 |
+| NS – 7 | – | SC-20, SC-21 |
 
 Dodržujte osvědčené postupy pro zabezpečení DNS, které vám umožní zmírnit časté útoky, jako je dangling DNS, útoky na servery DNS, poškození DNS a falšování identity atd. 
 

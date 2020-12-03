@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 450d471beebbcc554a6d534fb2d5361778f158bc
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 74e9224b30ccee274eaf52ba47a0ec05573c2e9d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992314"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558721"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Vytvoření popisku dat pro projekt a Export popisků 
 
@@ -39,7 +39,7 @@ V tomto článku se naučíte:
 > * Export popisků
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Data, která chcete označit, buď v místních souborech nebo v úložišti objektů BLOB v Azure.
 * Sada popisků, které chcete použít.
@@ -109,7 +109,7 @@ Pokud máte v úmyslu přidat nové image do datové sady, použijte přírůstk
 
 K přidání dalších imagí do projektu použijte [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) k nahrání do příslušné složky v úložišti objektů BLOB. 
 
-Zaškrtněte políčko **Povolit přírůstkovou aktualizaci** , pokud chcete, aby projekt průběžně sledoval nová data v úložišti dat.
+Zaškrtněte políčko **Povolit přírůstkovou aktualizaci** , pokud chcete, aby projekt průběžně sledoval nová data v úložišti dat. Tato data budou do projektu načtena jednou denně, pokud je povoleno.
 
 Zrušte toto políčko, pokud nechcete, aby byly do projektu přidány nové obrázky, které se zobrazí v úložišti dat.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: dd4586128bf2ce657352c0a1d4608637ecf9dba9
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 69fda41249ced8518e430af8305c0cb10822b214
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531220"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559061"
 ---
 # <a name="azure-monitor-logs-overview"></a>Přehled protokolů Azure Monitoru
 Protokoly Azure Monitor jsou funkcí Azure Monitor, která shromažďuje a uspořádává data protokolů a výkonu z [monitorovaných prostředků](../monitor-reference.md). Data z různých zdrojů, jako jsou [protokoly platforem](platform-logs-overview.md) ze služeb Azure, data protokolů a výkonu z [agentů virtuálních počítačů](agents-overview.md)a data o využití a výkonu z [aplikací](../app/app-insights-overview.md) , se dají konsolidovat do jednoho pracovního prostoru, aby je bylo možné analyzovat společně pomocí sofistikovaného dotazovacího jazyka, který je schopný rychle analyzovat miliony záznamů. Můžete provést jednoduchý dotaz, který jednoduše načte konkrétní sadu záznamů, nebo provede propracované analýzy dat, které identifikují kritické vzory v datech monitorování. Pracujte s dotazy protokolů a jejich výsledky interaktivně pomocí Log Analytics, používejte je v pravidlech výstrah k proaktivnímu upozorňování na problémy nebo Vizualizujte jejich výsledky v sešitu nebo řídicím panelu.
@@ -42,7 +42,7 @@ Po vytvoření pracovního prostoru Log Analytics musíte nakonfigurovat různé
 
 
 ## <a name="log-analytics-workspaces"></a>Pracovní prostory služby Log Analytics
-Data shromážděná protokolem Azure Monitor se ukládají do jednoho [Log Analytics pracovních prostorů](./design-logs-deployment.md). Pracovní prostor definuje geografické umístění dat a přístupová práva definující, kteří uživatelé mají přístup k datům, a nastavení konfigurace, jako je například cenová úroveň a uchovávání dat.  
+Data shromážděná protokolem Azure Monitor se ukládají do jednoho nebo více [Log Analytics pracovních prostorů](./design-logs-deployment.md). Pracovní prostor definuje geografické umístění dat a přístupová práva definující, kteří uživatelé mají přístup k datům, a nastavení konfigurace, jako je například cenová úroveň a uchovávání dat.  
 
 Aby bylo možné používat protokoly Azure Monitor, je nutné vytvořit alespoň jeden pracovní prostor. Jeden pracovní prostor může být dostatečný pro všechna vaše data monitorování, nebo se může rozhodnout vytvořit několik pracovních prostorů v závislosti na vašich požadavcích. Například můžete mít jeden pracovní prostor pro vaše produkční data a další pro testování. 
 

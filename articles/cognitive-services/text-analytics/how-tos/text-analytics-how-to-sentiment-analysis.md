@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 11/11/2020
+ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 2c592a959dfb9d4e93f97488a9ac1b1f6683c23e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0437704709e863cdbc62321c8a4b79015564e362
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968263"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558755"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Postupy: analýza dolování mínění a jejich názoru
 
-Funkce Analýza mínění rozhraní API pro analýzu textu poskytuje dva způsoby, jak zjistit pozitivní a negativní mínění. Pokud odešlete žádost o Analýza mínění, rozhraní API vrátí mínění popisky (například "negativní", "neutrální" a "pozitivní") a hodnocení spolehlivosti na větě a na úrovni dokumentu. Můžete také odesílat názory na požadavky na dolování pomocí Analýza míněního koncového bodu, který poskytuje podrobné informace o stanoviscích souvisejících s aspekty (jako jsou atributy produktů nebo služeb) v textu.
+Funkce Analýza mínění rozhraní API pro analýzu textu poskytuje dva způsoby, jak zjistit pozitivní a negativní mínění. Pokud odešlete žádost o Analýza mínění, rozhraní API vrátí mínění popisky (například "negativní", "neutrální" a "pozitivní") a hodnocení spolehlivosti na větě a na úrovni dokumentu. Můžete také odesílat názory na požadavky na dolování pomocí Analýza míněního koncového bodu, který poskytuje podrobné informace o stanoviscích souvisejících s aspekty (jako jsou atributy produktů nebo služeb) v textu. 
 
 Modely AI používané rozhraním API jsou součástí služby, stačí ale odeslat obsah k analýze.
 
@@ -51,13 +51,14 @@ Výsledky spolehlivosti jsou v rozsahu od 1 do 0. Skóre Blíže k 1 znamenají 
 
 ## <a name="opinion-mining"></a>Dolování názoru
 
-Dolování stanovisek je funkce Analýza mínění, počínaje verzí 3,1-Preview. 1. Tato funkce také označovaná jako Analýza mínění založená na aspektech při zpracování přirozeného jazyka (NLP). Tato funkce poskytuje podrobnější informace o stanoviscích souvisejících s aspekty (jako jsou atributy produktů nebo služeb) v textu.
+Dolování stanovisek je funkce Analýza mínění, počínaje verzí 3,1-Preview. 1. Tato funkce také označovaná jako Analýza mínění založená na aspektech při zpracování přirozeného jazyka (NLP). Tato funkce poskytuje podrobnější informace o stanoviscích souvisejících s aspekty (jako jsou atributy produktů nebo služeb) v textu. 
 
 Například pokud zákazník opustí svůj názor na Hotel, například "místnost byla Skvělé, ale zaměstnanci byli nepříteli.", dolování názorů vyhledá aspekty v textu a jejich přidružená stanoviska a zabarvení. Analýza mínění může hlásit pouze negativní mínění.
 
 :::image type="content" source="../media/how-tos/opinion-mining.png" alt-text="Diagram příkladu dolování podle názoru" lightbox="../media/how-tos/opinion-mining.png":::
 
-Chcete-li získat výsledky dolování v rámci vašich výsledků, je nutné přidat `opinionMining=true` příznak do žádosti o analýzu mínění. Výsledky dolování výsledků budou zahrnuty v odpovědi na analýzu mínění.
+Chcete-li získat výsledky dolování v rámci vašich výsledků, je nutné přidat `opinionMining=true` příznak do žádosti o analýzu mínění. Výsledky dolování výsledků budou zahrnuty v odpovědi na analýzu mínění. Dolování stanovisek je rozšířením Analýza mínění a je součástí vaší aktuální [cenové úrovně](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/).
+
 
 ## <a name="sending-a-rest-api-request"></a>Odesílá se žádost o REST API. 
 
@@ -85,7 +86,7 @@ Vytvořte žádost POST. V následujících referenčních odkazech můžete [po
 
 ### <a name="request-endpoints"></a>Koncové body požadavku
 
-Nastavte koncový bod HTTPS pro analýzu mínění pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Musíte zahrnout správnou adresu URL pro verzi, kterou chcete použít. Například:
+Nastavte koncový bod HTTPS pro analýzu mínění pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Musíte zahrnout správnou adresu URL pro verzi, kterou chcete použít. Příklad:
 
 > [!NOTE]
 > Klíč a koncový bod pro váš Analýza textu prostředek můžete najít na Azure Portal. Budou se nacházet na stránce **rychlý Start** prostředku v části **Správa prostředků**. 
@@ -98,7 +99,7 @@ Nastavte koncový bod HTTPS pro analýzu mínění pomocí prostředku Analýza 
 
 **Dolování názoru**
 
-Chcete-li získat názory výsledků dolování, je nutné zahrnout `opinionMining=true` parametr. Například:
+Chcete-li získat názory výsledků dolování, je nutné zahrnout `opinionMining=true` parametr. Příklad:
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment?opinionMining=true`
 
@@ -298,7 +299,7 @@ V tomto článku jste zjistili koncepty a pracovní postup pro analýzu míněn�
 + Využijte `opinionMining=true` v žádostech o analýzu sentient k získání názoru na výsledky dolování.
 + Výstup odpovědi, který se skládá z mínění skóre pro každé ID dokumentu, se může streamovat do libovolné aplikace, která přijímá JSON. Například Excel a Power BI.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * [Přehled analýzy textu](../overview.md)
 * [Použití klientské knihovny Analýza textu](../quickstarts/text-analytics-sdk.md)

@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte konfigurovat úlohu Azure Container Regi
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 32b4dbe2563731664030dbc32c2b570ccc3e1d12
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 342f7fc37edb3a1623b72c57e8766b1a484d0e8d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030641"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559146"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Kurz: automatizace sestavení imagí kontejneru při aktualizaci základní image ve službě Azure Container Registry 
 
@@ -26,16 +26,16 @@ V tomto kurzu:
 > * Zobrazit aktivovanou úlohu
 > * Ověřit aktualizovanou image aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="complete-the-previous-tutorials"></a>Dokončení předchozích kurzů
 
 V tomto kurzu se předpokládá, že jste už nakonfigurovali své prostředí a dokončili jste postup v prvním dvou kurzech v řadě, ve kterých jste:
 
-* Vytvoření registru kontejneru Azure
-* Vytvoření forku ukázkového úložiště
-* Klonování ukázkového úložiště
-* Vytvoření tokenu PAT GitHubu
+- Vytvoření registru kontejneru Azure
+- Vytvoření forku ukázkového úložiště
+- Klonování ukázkového úložiště
+- Vytvoření tokenu PAT GitHubu
 
 Pokud jste to ještě neudělali, před pokračováním dokončete následující kurzy:
 
@@ -44,6 +44,9 @@ Pokud jste to ještě neudělali, před pokračováním dokončete následujíc�
 [Automatizace sestavení imagí kontejnerů pomocí Azure Container Registry Tasks](container-registry-tutorial-build-task.md)
 
 ### <a name="configure-the-environment"></a>Konfigurace prostředí
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.46 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 Tyto proměnné prostředí naplňte hodnotami vhodnými pro vaše prostředí. Tento krok není nezbytně nutný, ale usnadní provádění víceřádkových příkazů Azure CLI v tomto kurzu. Pokud tyto proměnné prostředí neplníte, je nutné ručně nahradit každou hodnotu, pokud se zobrazí v ukázkových příkazech.
 

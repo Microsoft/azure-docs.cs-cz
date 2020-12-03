@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/19/2020
+ms.date: 12/02/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: e7f017c1f3dc189af2b0fc053912decca3459478
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 27af0ffdeb254dbb671a0618d0e9973336a7f529
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952756"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559010"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Postupy: použití Analýza textu pro stav (Preview)
 
@@ -28,6 +28,8 @@ Analýza textu pro stav je funkce služby rozhraní API pro analýzu textu, kter
 
 * Webové rozhraní API (asynchronní) 
 * Kontejner Docker (synchronní)   
+
+> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Introducing-Text-Analytics-for-Health/player]
 
 ## <a name="features"></a>Funkce
 
@@ -434,7 +436,7 @@ Výstup extrakce vztahu obsahuje odkazy identifikátoru URI na *zdroj* vztahu a 
 ]
 ```
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * [Přehled analýzy textu](../overview.md)
 * [Kategorie pojmenovaných entit](../named-entity-types.md)

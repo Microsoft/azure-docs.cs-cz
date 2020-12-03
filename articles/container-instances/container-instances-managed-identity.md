@@ -3,12 +3,12 @@ title: Povolit spravovanou identitu ve skupině kontejnerů
 description: Naučte se, jak v Azure Container Instances povolit spravovanou identitu, která se dá ověřit u jiných služeb Azure.
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 23f2347593137a4846c8fd22e3b90f22db39bda3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67ef17b77a9db92e539dd860a3083760fe1160db
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259622"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558942"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Použití spravovaných identit se službou Azure Container Instances
 
@@ -45,9 +45,9 @@ Aby bylo možné používat spravovanou identitu, musí být identitě udělen p
 * V tuto chvíli nemůžete použít spravovanou identitu ve skupině kontejnerů nasazené do virtuální sítě.
 * Spravovanou identitu nemůžete použít k načtení obrázku z Azure Container Registry při vytváření skupiny kontejnerů. Identita je k dispozici pouze v rámci běžícího kontejneru.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.49 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+- Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.49 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-an-azure-key-vault"></a>Vytvoření trezoru klíčů Azure
 

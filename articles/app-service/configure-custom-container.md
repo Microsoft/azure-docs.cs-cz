@@ -4,12 +4,12 @@ description: Přečtěte si, jak nakonfigurovat vlastní kontejner v Azure App S
 ms.topic: article
 ms.date: 09/22/2020
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 9f71efbf7cc606efd598880e90ade3a549402245
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2aece0550d7b78ac4312e71b2671de4a64e4b86b
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787053"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96557922"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Konfigurace vlastního kontejneru pro službu Azure App Service
 
@@ -139,7 +139,17 @@ Pomocí adresáře *C:\home* v systému souborů vaší aplikace můžete uchov�
 
 Pokud je trvalé úložiště zakázané, zápisy do `C:\home` adresáře se nezachovají. [Protokoly hostitelů Docker a protokoly kontejnerů](#access-diagnostic-logs) se ukládají do výchozího trvalého sdíleného úložiště, které není připojené ke kontejneru. Pokud je povolené trvalé úložiště, všechny zápisy do `C:\home` adresáře jsou trvalé a můžou k němu přistupovat všechny instance aplikace s možností horizontálního rozšíření kapacity a protokol je dostupný na adrese `C:\home\LogFiles` .
 
-Ve výchozím nastavení je trvalé úložiště *zakázané* a nastavení se v nastavení aplikace nezveřejňuje. Pokud ho chcete povolit, nastavte `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení aplikace přes [Cloud Shell](https://shell.azure.com). V bash:
+::: zone-end
+
+::: zone pivot="container-linux"
+
+Pomocí adresáře */Home* v systému souborů vaší aplikace můžete uchovávat soubory mezi restarty a sdílet je mezi instancemi. K `/home` dispozici je ve vaší aplikaci, aby mohla vaše aplikace kontejneru přistupovat k trvalému úložišti.
+
+Když je trvalé úložiště zakázané, pak se zápisy do `/home` adresáře neukládají mezi restarty aplikace nebo mezi několika instancemi. Jedinou výjimkou je `/home/LogFiles` adresář, který se používá k uložení protokolů Docker a kontejner. Když je povolené trvalé úložiště, všechny zápisy do tohoto `/home` adresáře jsou trvalé a můžou k němu mít pøístup všechny instance aplikace s možností horizontálního rozšíření kapacity.
+
+::: zone-end
+
+Ve výchozím nastavení je trvalé úložiště zakázané a nastavení se v nastavení aplikace nezveřejňuje. Pokud ho chcete povolit, nastavte `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení aplikace přes [Cloud Shell](https://shell.azure.com). V bash:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=true
@@ -150,28 +160,6 @@ V PowerShellu:
 ```azurepowershell-interactive
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITES_ENABLE_APP_SERVICE_STORAGE"=true}
 ```
-
-::: zone-end
-
-::: zone pivot="container-linux"
-
-Pomocí adresáře */Home* v systému souborů vaší aplikace můžete uchovávat soubory mezi restarty a sdílet je mezi instancemi. K `/home` dispozici je ve vaší aplikaci, aby mohla vaše aplikace kontejneru přistupovat k trvalému úložišti.
-
-Když je trvalé úložiště zakázané, pak se zápisy do `/home` adresáře neukládají mezi restarty aplikace nebo mezi několika instancemi. Jedinou výjimkou je `/home/LogFiles` adresář, který se používá k uložení protokolů Docker a kontejner. Když je povolené trvalé úložiště, všechny zápisy do tohoto `/home` adresáře jsou trvalé a můžou k němu mít pøístup všechny instance aplikace s možností horizontálního rozšíření kapacity.
-
-Ve výchozím nastavení je trvalé úložiště *povolené* a nastavení se v nastavení aplikace nezveřejňuje. Pokud ho chcete zakázat, nastavte `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení aplikace přes [Cloud Shell](https://shell.azure.com). V bash:
-
-```azurecli-interactive
-az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
-```
-
-V PowerShellu:
-
-```azurepowershell-interactive
-Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITES_ENABLE_APP_SERVICE_STORAGE"=false}
-```
-
-::: zone-end
 
 > [!NOTE]
 > Můžete také [nakonfigurovat vlastní trvalé úložiště](configure-connect-to-azure-storage.md).
@@ -212,7 +200,7 @@ Existuje několik způsobů, jak získat přístup k protokolům Docker:
 
 ### <a name="in-azure-portal"></a>V Azure Portal
 
-Protokoly Docker se zobrazují na portálu na stránce **nastavení kontejneru** v aplikaci. Protokoly jsou zkráceny, ale můžete stáhnout všechny protokoly kliknutím na tlačítko **Stáhnout** . 
+Protokoly Docker se zobrazují na portálu na stránce **nastavení kontejneru** v aplikaci. Protokoly jsou zkráceny, ale můžete stáhnout všechny protokoly kliknutím na tlačítko **Stáhnout**. 
 
 ### <a name="from-the-kudu-console"></a>Z konzoly Kudu
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 03b112466ef094a578d47586a44ab383a5da1a9b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8dd3c60c3d1b714ab75b496a94ba4bd5aec4e43d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744894"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558466"
 ---
 # <a name="azure-signalr-service-authentication"></a>Ověřování pomocí služby Azure SignalR
 
@@ -45,11 +45,11 @@ V tomto kurzu se naučíte:
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
-* Účet vytvořený na [GitHubu](https://github.com/)
-* [Git](https://git-scm.com/)
-* [Sada .NET Core SDK](https://www.microsoft.com/net/download/windows)
-* [Nakonfigurovaná služba Azure Cloud Shell](../cloud-shell/quickstart.md)
-* Stáhněte nebo naklonujte úložiště GitHub [AzureSignalR-Sample](https://github.com/aspnet/AzureSignalR-samples) .
+- Účet vytvořený na [GitHubu](https://github.com/)
+- [Git](https://git-scm.com/)
+- [Sada .NET Core SDK](https://www.microsoft.com/net/download/windows)
+- [Azure Cloud Shell](/azure/cloud-shell/quickstart) nakonfigurovaná pro prostředí bash.
+- Stáhněte nebo naklonujte úložiště GitHub [AzureSignalR-Sample](https://github.com/aspnet/AzureSignalR-samples) .
 
 ## <a name="create-an-oauth-app"></a>Vytvoření aplikace OAuth
 
@@ -57,14 +57,14 @@ Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 2. Pro váš účet přejděte na **Nastavení**  >  **vývojář nastavení** a v části *aplikace OAuth* klikněte na **zaregistrovat novou aplikaci** nebo **novou aplikaci OAuth** .
 
-3. Pro tuto novou aplikaci OAuth použijte následující nastavení a potom klikněte na **Zaregistrovat aplikaci** :
+3. Pro tuto novou aplikaci OAuth použijte následující nastavení a potom klikněte na **Zaregistrovat aplikaci**:
 
     | Název nastavení | Navrhovaná hodnota | Popis |
     | ------------ | --------------- | ----------- |
     | Název aplikace | *Azure SignalR Chat* | Uživatel GitHubu by měl být schopný rozpoznat a důvěřovat aplikaci, se kterou ověřuje.   |
     | Adresa URL domovské stránky | `http://localhost:5000/home` | |
     | Popis aplikace | *Ukázka chatovací místnosti pomocí služby signalizace Azure s ověřováním GitHubu* | Popis aplikace je užitečný, protože pomůže uživatelům vaší aplikace zjistit, v jakém kontextu se ověřování používá. |
-    | Adresa URL zpětného volání autorizace | `http://localhost:5000/signin-github` | Toto nastavení je nejdůležitějším nastavením vaší aplikace OAuth. Je to adresa URL pro zpětné volání, na kterou GitHub po úspěšném ověření uživatele vrátí. V tomto kurzu musíte použít výchozí adresu URL pro zpětné volání pro balíček *AspNet.Security.OAuth.GitHub* , */signin-github* .  |
+    | Adresa URL zpětného volání autorizace | `http://localhost:5000/signin-github` | Toto nastavení je nejdůležitějším nastavením vaší aplikace OAuth. Je to adresa URL pro zpětné volání, na kterou GitHub po úspěšném ověření uživatele vrátí. V tomto kurzu musíte použít výchozí adresu URL pro zpětné volání pro balíček *AspNet.Security.OAuth.GitHub*, */signin-github*.  |
 
 4. Jakmile je registrace nové aplikace OAuth hotová, přidejte *ID klienta* a *tajný klíč klienta* do nástroje Secret Manager, a to pomocí následujících příkazů. Hodnoty *Your_GitHub_Client_Id* a *Your_GitHub_Client_Secret* nahraďte hodnotami pro vaši aplikaci OAuth.
 
@@ -155,9 +155,9 @@ Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 V této části budete implementovat rozhraní API `Login`, které ověřuje klienty pomocí aplikace OAuth GitHubu. Po ověření toto rozhraní API přidá do odpovědi webového klienta soubor cookie a potom klienta přesměruje zpátky do chatovací aplikace. Tento soubor cookie se pak bude používat k identifikaci příslušného klienta.
 
-1. Do adresáře *chattest\Controllers* přidejte soubor s kódem nového kontroleru. Tento soubor pojmenujte *AuthController.cs* .
+1. Do adresáře *chattest\Controllers* přidejte soubor s kódem nového kontroleru. Tento soubor pojmenujte *AuthController.cs*.
 
-2. Do kontroleru ověřování přidejte následující kód. Pokud jako adresář projektu nepoužíváte *chattest* , nezapomeňte aktualizovat obor názvů:
+2. Do kontroleru ověřování přidejte následující kód. Pokud jako adresář projektu nepoužíváte *chattest*, nezapomeňte aktualizovat obor názvů:
 
     ```csharp
     using AspNet.Security.OAuth.GitHub;
@@ -374,7 +374,7 @@ V této části zapnete reálné ověřování přidáním atributu `Authorize` 
 
     ![Protokol OAuth kompletně hostovaný v Azure](media/signalr-concept-authenticate-oauth/signalr-oauth-complete-azure.png)
 
-    Zobrazí se výzva k autorizaci přístupu chatovací aplikace k vašemu účtu GitHub. Klikněte na tlačítko **Authorize (Autorizovat)** .
+    Zobrazí se výzva k autorizaci přístupu chatovací aplikace k vašemu účtu GitHub. Klikněte na tlačítko **Authorize (Autorizovat)**.
 
     ![Autorizace aplikace OAuth](media/signalr-concept-authenticate-oauth/signalr-authorize-oauth-app.png)
 
@@ -384,19 +384,15 @@ V této části zapnete reálné ověřování přidáním atributu `Authorize` 
 
     Teď když chatovací aplikace provádí ověřování pomocí GitHubu a ukládá ověřovací informace jako soubory cookie, měli byste ji nasadit do Azure, aby se i ostatní uživatelé mohli ověřovat pomocí svých účtů a komunikovat z dalších pracovních stanic.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="deploy-the-app-to-azure"></a>Nasadit aplikaci do Azure
 
-V této části použijete rozhraní příkazového řádku Azure (CLI) z Azure Cloud Shell k vytvoření nové webové aplikace v [Azure App Service](../app-service/index.yml) k hostování vaší aplikace ASP.NET v Azure. Tato webová aplikace bude nakonfigurovaná tak, aby využívala místní nasazení z Gitu. Tato webová aplikace bude také nakonfigurovaná s využitím vašeho připojovacího řetězce SignalR, tajných kódů aplikace OAuth GitHubu a uživatele nasazení.
+Připravte prostředí pro rozhraní příkazového řádku Azure:
 
-Kroky v této části používají rozšíření *signalr* pro rozhraní příkazového řádku Azure. Spuštěním následujícího příkazu nainstalujte rozšíření *signalr* pro Azure CLI:
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-```azurecli-interactive
-az extension add -n signalr
-```
+V této části použijete rozhraní příkazového řádku Azure (CLI) k vytvoření nové webové aplikace v [Azure App Service](../app-service/index.yml) k hostování vaší aplikace ASP.NET v Azure. Tato webová aplikace bude nakonfigurovaná tak, aby využívala místní nasazení z Gitu. Tato webová aplikace bude také nakonfigurovaná s využitím vašeho připojovacího řetězce SignalR, tajných kódů aplikace OAuth GitHubu a uživatele nasazení.
 
-Při vytváření v následujících prostředků nezapomeňte použít stejnou skupinu prostředků, ve které jsou umístěné prostředky služby SignalR. Tento přístup vám později, až budete chtít odebrat všechny prostředky, výrazně usnadní čištění. Uvedený příklad předpokládá, že jste použili název skupiny doporučený v předchozích kurzech, *SignalRTestResources* .
+Při vytváření v následujících prostředků nezapomeňte použít stejnou skupinu prostředků, ve které jsou umístěné prostředky služby SignalR. Tento přístup vám později, až budete chtít odebrat všechny prostředky, výrazně usnadní čištění. Uvedený příklad předpokládá, že jste použili název skupiny doporučený v předchozích kurzech, *SignalRTestResources*.
 
 ### <a name="create-the-web-app-and-plan"></a>Vytvoření webové aplikace a plánu
 
@@ -541,7 +537,7 @@ Pokud chcete nasadit váš kód, spusťte následující příkazy v Git Shellu.
 4. Nasaďte váš kód do webové aplikace v Azure.
 
     ```bash
-    git push Azure master
+    git push Azure main
     ```
 
     Abyste mohli nasadit kód do Azure, zobrazí se výzva k ověření. Zadejte uživatelské jméno a heslo uživatele nasazení, které jste vytvořili výš.
@@ -552,7 +548,7 @@ Poslední věcí, která zbývá, je aktualizace nastavení **Adresa URL domovsk
 
 1. [https://github.com](https://github.com)V prohlížeči otevřete prohlížeč a přejděte na nastavení vašeho účtu **Settings**  >  **Developer settings**  >  **aplikace OAuth** nastavení pro vývojáře.
 
-2. Klikněte na vaši ověřovací aplikaci a aktualizujte nastavení **Adresa URL domovské stránky** a **Adresa URL zpětného volání autorizace** , jak je uvedeno dál:
+2. Klikněte na vaši ověřovací aplikaci a aktualizujte nastavení **Adresa URL domovské stránky** a **Adresa URL zpětného volání autorizace**, jak je uvedeno dál:
 
     | Nastavení | Příklad |
     | ------- | ------- |
@@ -572,13 +568,13 @@ V opačném případě, pokud jste už s ukázkovou aplikací v tomto rychlém s
 > [!IMPORTANT]
 > Odstranění skupiny prostředků je nevratné a skupina prostředků včetně všech v ní obsažených prostředků bude trvale odstraněna. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro hostování této ukázky ve stávající skupině prostředků obsahující prostředky, které chcete zachovat, můžete místo odstranění skupiny prostředků odstranit jednotlivé prostředky z jejich odpovídajících oken.
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com) a klikněte na **Skupiny prostředků** .
+Přihlaste se na web [Azure Portal](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
 
-Do textového pole **Filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *SignalRTestResources* . Ve výsledcích hledání klikněte na **...** u vaší skupiny prostředků a pak na **Odstranit skupinu prostředků** .
+Do textového pole **Filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *SignalRTestResources*. Ve výsledcích hledání klikněte na **...** u vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
 
 ![Odstranit](./media/signalr-concept-authenticate-oauth/signalr-delete-resource-group.png)
 
-Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění zadáním názvu vaší skupiny prostředků a klikněte na **Odstranit** .
+Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění zadáním názvu vaší skupiny prostředků a klikněte na **Odstranit**.
 
 Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
 

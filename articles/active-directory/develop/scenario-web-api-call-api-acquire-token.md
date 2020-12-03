@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 465544f1d861fc09d4b843270c6f3527036ee6a8
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e8301a1961479f57528802e6d8c0f10ceb0569d5
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94627998"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558262"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Webové rozhraní API, které volá webová rozhraní API: Získá token pro aplikaci.
 
@@ -86,8 +86,37 @@ public class ApiController {
 ```
 
 ### <a name="python"></a>[Python](#tab/python)
-
-Webové rozhraní API v Pythonu vyžaduje k ověření, že je nosný token přijatý od klienta, použití middleware. Webové rozhraní API pak může získat přístupový token pro rozhraní API pro příjem dat pomocí knihovny Pythonu MSAL voláním [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) metody. Ukázka demonstrující tento tok pomocí MSAL Pythonu ještě není k dispozici.
+ 
+Webové rozhraní API v Pythonu vyžaduje k ověření, že je nosný token přijatý od klienta, použití middleware. Webové rozhraní API pak může získat přístupový token pro rozhraní API pro příjem dat pomocí knihovny Pythonu MSAL voláním [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) metody.
+ 
+Zde je příklad kódu, který získá přístupový token pomocí `acquire_token_on_behalf_of` metody a rozhraní pro baňky. Volá rozhraní API pro příjem dat – koncový bod předplatných pro správu Azure.
+ 
+```python
+def get(self):
+ 
+        _scopes = ["https://management.azure.com/user_impersonation"]
+        _azure_management_subscriptions_uri = "https://management.azure.com/subscriptions?api-version=2020-01-01"
+ 
+        current_access_token = request.headers.get("Authorization", None)
+        
+        #This example only uses the default memory token cache and should not be used for production
+        msal_client = msal.ConfidentialClientApplication(
+                client_id=os.environ.get("CLIENT_ID"),
+                authority=os.environ.get("AUTHORITY"),
+                client_credential=os.environ.get("CLIENT_SECRET"))
+ 
+        #acquire token on behalf of the user that called this API
+        arm_resource_access_token = msal_client.acquire_token_on_behalf_of(
+            user_assertion=current_access_token.split(' ')[1],
+            scopes=_scopes
+        )
+ 
+        headers = {'Authorization': arm_resource_access_token['token_type'] + ' ' + arm_resource_access_token['access_token']}
+ 
+        subscriptions_list = req.get(_azure_management_subscriptions_uri), headers=headers).json()
+ 
+        return jsonify(subscriptions_list)
+```
 
 ## <a name="advanced-accessing-the-signed-in-users-token-cache-from-background-apps-apis-and-services"></a>Upřesnit Přístup k mezipaměti tokenů přihlášeného uživatele z aplikací na pozadí, rozhraní API a služeb
 
