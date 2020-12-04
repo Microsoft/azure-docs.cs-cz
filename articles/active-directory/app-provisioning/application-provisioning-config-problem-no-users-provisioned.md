@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 12/03/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 21f16a0b9c8b3b603735520d5dcdbf61601e1480
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 89a5838524daa1959ecf6b4fe3c17d6175ca8553
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994821"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571772"
 ---
 # <a name="no-users-are-being-provisioned"></a>Neprobíhá zřizování žádných uživatelů 
 >[!NOTE]
@@ -24,7 +24,7 @@ ms.locfileid: "95994821"
 >
 Po nakonfigurování automatického zřizování pro aplikaci (včetně ověření, jestli jsou přihlašovací údaje, které se poskytly službě Azure AD pro připojení k aplikaci platné), budou uživatelé nebo skupiny zřízené v aplikaci. Zřizování je určeno následujícími postupy:
 
--   Kteří uživatelé a skupiny jsou **přiřazeni** k aplikaci. Upozorňujeme, že zřizování vnořených skupin nebo skupin Microsoft 365 se nepodporuje. Další informace o přiřazení najdete v tématu [přiřazení uživatele nebo skupiny k podnikové aplikaci v Azure Active Directory](../manage-apps/assign-user-or-group-access-portal.md).
+-   Kteří uživatelé a skupiny jsou **přiřazeni** k aplikaci. Upozorňujeme, že zřizování vnořených skupin se nepodporuje. Další informace o přiřazení najdete v tématu [přiřazení uživatele nebo skupiny k podnikové aplikaci v Azure Active Directory](../manage-apps/assign-user-or-group-access-portal.md).
 -   Bez ohledu na to, jestli jsou **mapování atributů** povolená a nakonfigurovaná tak, aby synchronizoval platné atributy z Azure AD do aplikace. Další informace o mapování atributů najdete v tématu [Přizpůsobení mapování atributů zřizování uživatelů pro aplikace SaaS v Azure Active Directory](customize-application-attributes.md).
 -   Bez ohledu na to, zda existuje **Filtr oboru** , který filtruje uživatele na základě konkrétních hodnot atributů. Další informace o filtrech oborů najdete v tématu [zřizování aplikací na základě atributů s filtry oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
   

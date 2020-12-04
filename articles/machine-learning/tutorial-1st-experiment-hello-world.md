@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 20173c4ba02f53a526167a5a8e22bd0cedc85594
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 971bac8a0b0951d4e07e139aea6c465a9159b8db
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393214"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96570956"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Kurz: spuštění "Hello World!" Skript Pythonu (část 2 ze 4)
 
@@ -61,7 +61,8 @@ tutorial
 └──02-create-compute.py
 ```
 
-### <a name="test-your-script-locally"></a>Místní otestování skriptu
+
+### <a name="test-your-script-locally"></a><a name="test"></a>Místní otestování skriptu
 
 Svůj kód můžete spustit lokálně pomocí svého oblíbeného integrovaného vývojového prostředí (IDE) nebo terminálu. Místní spuštění kódu má výhodu interaktivního ladění kódu.
 
@@ -70,7 +71,10 @@ cd <path/to/tutorial>
 python ./src/hello.py
 ```
 
-## <a name="create-a-control-script"></a>Vytvoření skriptu ovládacího prvku
+> [!div class="nextstepaction"]
+> [Spustil (a) jsem skript místně](?success=run-local#control-script) [jsem narazil na problém](https://www.research.net/r/7C2NTH7?issue=run-local)
+
+## <a name="create-a-control-script"></a><a name="control-script"></a> Vytvoření skriptu ovládacího prvku
 
 *Řídicí skript* umožňuje spuštění `hello.py` skriptu v cloudu. Řídicí skript slouží k řízení, jak a kde se spouští kód strojového učení.  
 
@@ -89,6 +93,8 @@ run = experiment.submit(config)
 aml_url = run.get_portal_url()
 print(aml_url)
 ```
+
+
 
 ### <a name="understand-the-code"></a>Vysvětlení kódu
 
@@ -135,7 +141,10 @@ Tady je popis toho, jak skript ovládacího prvku funguje:
    :::column-end:::
 :::row-end:::
 
-## <a name="submit-and-run-your-code-in-the-cloud"></a>Odeslání a spuštění kódu v cloudu
+> [!div class="nextstepaction"]
+> [Vytvořili jste řídicí skript,](?success=create-control-script#submit) který [jsem narazil na problém](https://www.research.net/r/7C2NTH7?issue=create-control-script)
+
+## <a name="submit-and-run-your-code-in-the-cloud"></a><a name="submit"></a> Odeslání a spuštění kódu v cloudu
 
 Spusťte skript ovládacího prvku, který zase běží `hello.py` na výpočetním clusteru, který jste vytvořili v [kurzu instalace](tutorial-1st-experiment-sdk-setup-local.md).
 
@@ -154,7 +163,10 @@ python 03-run-hello.py
 > [!TIP]
 > Pokud spuštění tohoto kódu vám poskytne chybu, ke které nemáte přístup k předplatnému, přečtěte si téma [připojení k pracovnímu prostoru](how-to-manage-workspace.md?tab=python#connect-multi-tenant) , kde najdete informace o možnostech ověřování.
 
-## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a>Monitorování kódu v cloudu pomocí studia
+> [!div class="nextstepaction"]
+> Jsem poslal (a) jsem [kód v cloudu](?success=submit-to-cloud#monitor) , u kterého došlo k [problému](https://www.research.net/r/7C2NTH7?issue=submit-to-cloud) .
+
+## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a><a name="monitor"></a>Monitorování kódu v cloudu pomocí studia
 
 Výstup bude obsahovat odkaz na Studio, který vypadá nějak takto: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>` .
 
@@ -185,6 +197,9 @@ Použijte odkaz a přejděte na kartu **výstupy + protokoly** . Tady vidíte `7
 Na řádku 8 se zobrazí zpráva "Hello World!" výkonem.
 
 `70_driver_log.txt`Soubor obsahuje standardní výstup z běhu. Tento soubor může být užitečný při ladění vzdálených běhů v cloudu.
+
+> [!div class="nextstepaction"]
+> [Zjistili jsem, že v studiu](?success=monitor-in-studio#next-steps) [jsem narazil na problém](https://www.research.net/r/7C2NTH7?issue=monitor-in-studio)
 
 ## <a name="next-steps"></a>Další kroky
 

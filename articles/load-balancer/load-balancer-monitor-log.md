@@ -1,7 +1,7 @@
 ---
 title: Monitorování operací, událostí a čítačů pro veřejný základní Load Balancer
 titleSuffix: Azure Load Balancer
-description: Naučte se povolit události výstrah a protokolování stavu sondy pro veřejný základní Load Balancer.
+description: Naučte se, jak povolit protokolování pro Azure Load Balancer
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,29 +13,31 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: f24ab2c646757f0241748336243b0d5f977d081c
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 6742723e24df83ac8112e224f1999f116ab82c94
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698321"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572775"
 ---
-# <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Protokoly služby Azure Monitor pro veřejný Load Balancer úrovně Basic
+# <a name="azure-monitor-logs-for-the-standard-azure-load-balancer"></a>Protokoly Azure Monitor pro standardní Azure Load Balancer
 
-Pomocí různých typů protokolů v Azure můžete spravovat a řešit základní nástroje pro vyrovnávání zatížení. K některým z těchto protokolů se dá dostat prostřednictvím portálu. Protokoly můžou být streamované do centra událostí nebo do pracovního prostoru Log Analytics. Všechny protokoly se dají extrahovat z úložiště objektů BLOB v Azure a zobrazovat v různých nástrojích, jako je Excel a Power BI.  Další informace o různých typech protokolů najdete v níže uvedeném seznamu.
+Pomocí různých typů protokolů v Azure můžete spravovat a řešit standardní nástroje pro vyrovnávání zatížení. Protokoly můžou být streamované do centra událostí nebo do pracovního prostoru Log Analytics. Všechny protokoly se dají extrahovat z úložiště objektů BLOB v Azure a zobrazovat v různých nástrojích, jako je Excel a Power BI.  Další informace o různých typech protokolů najdete v níže uvedeném seznamu.
 
-* **Protokoly aktivit:** Pomocí [možnosti Zobrazit protokoly aktivit můžete monitorovat akce v prostředcích](../azure-resource-manager/management/view-activity-logs.md) a zobrazit všechny aktivity odeslané do vašich předplatných Azure a jejich stav. Protokoly aktivit jsou ve výchozím nastavení povolené a dají se zobrazit v Azure Portal.
-* **Protokoly událostí výstrah:** Pomocí tohoto protokolu můžete zobrazit výstrahy vyvolané nástrojem pro vyrovnávání zatížení. Stav nástroje pro vyrovnávání zatížení se shromáždí každých pět minut. Tento protokol je zapsán pouze v případě, že je vyvolána událost upozornění nástroje pro vyrovnávání zatížení.
-* **Protokoly sondy stavu:** Pomocí tohoto protokolu můžete zobrazit problémy zjištěné sondou stavu, jako je počet instancí ve fondu back-end, který nepřijímá požadavky z nástroje pro vyrovnávání zatížení z důvodu selhání sondy stavu. Do tohoto protokolu se zapisuje, když dojde ke změně stavu sondy stavu.
+* **Protokoly aktivit:** Pomocí [možnosti Zobrazit protokoly aktivit můžete monitorovat akce v prostředcích](../azure-resource-manager/management/view-activity-logs.md) a zobrazit všechny aktivity odeslané do vašich předplatných Azure a jejich stav. Protokoly aktivit jsou ve výchozím nastavení povolené a dají se zobrazit v Azure Portal. Tyto protokoly jsou k dispozici pro služby Vyrovnávání zatížení Basic i Standard.
+* **Standard Load Balancer metriky:** Tento protokol můžete použít k dotazování na metriky exportované jako protokoly pro standardní Azure Load Balancer. Tyto protokoly jsou dostupné jenom pro standardní nástroje pro vyrovnávání zatížení.
 
 > [!IMPORTANT]
-> **Protokoly událostí sondy stavu nejsou v současné době funkční a jsou uvedeny ve [známých problémech pro Azure Load Balancer](whats-new.md#known-issues).** Protokoly jsou k dispozici pouze pro prostředky nasazené v modelu nasazení Správce prostředků. Protokoly pro prostředky v modelu nasazení Classic nemůžete použít. Další informace o modelech nasazení najdete v tématu [Principy nasazení Správce prostředků a klasického nasazení](../azure-resource-manager/management/deployment-models.md).
+> **Protokoly událostí sondy stavu a Load Balancer výstrah nejsou v současné době funkční a jsou uvedeny ve [známých problémech pro Azure Load Balancer](whats-new.md#known-issues).** 
+
+> [!IMPORTANT]
+> Protokoly jsou k dispozici pouze pro prostředky nasazené v modelu nasazení Správce prostředků. Protokoly pro prostředky v modelu nasazení Classic nemůžete použít. Další informace o modelech nasazení najdete v tématu [Principy nasazení Správce prostředků a klasického nasazení](../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="enable-logging"></a>Povolit protokolování
 
 Protokolování aktivit je u každého prostředku Správce prostředků povolené automaticky. Povolte protokolování událostí a sondy stavu, abyste mohli začít shromažďovat data dostupná přes tyto protokoly. K povolení protokolování použijte následující postup.
 
-Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte Nástroj pro vyrovnávání zatížení, vytvořte před pokračováním [Nástroj pro vyrovnávání zatížení](./quickstart-load-balancer-standard-public-portal.md) .
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Pokud ještě nemáte Nástroj pro vyrovnávání zatížení, vytvořte před pokračováním [Nástroj pro vyrovnávání zatížení](./quickstart-load-balancer-standard-public-portal.md) .
 
 1. Na portálu klikněte na **skupiny prostředků**.
 2. Vyberte **\<resource-group-name>** , kde je nástroj pro vyrovnávání zatížení.
@@ -75,94 +77,30 @@ Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte
     3. V rozevíracím seznamu vyberte **pracovní prostor Log Analytics** .
 
 
-8. Pod oddílem **protokol** v podokně **nastavení diagnostiky** zaškrtněte políčko vedle obou:
-   * **LoadBalancerAlertEvent**
-   * **LoadBalancerProbeHealthStatus**
+8.  Pod oddílem **metrika** v podokně **nastavení diagnostiky** zaškrtněte políčko u: **AllMetrics**
 
-9.  Pod oddílem **metrika** v podokně **nastavení diagnostiky** zaškrtněte políčko vedle:
-   * **AllMetrics**
-
-11. Ověřte, zda je vše v pořádku, a v horní části podokna vytvořit **nastavení diagnostiky** klikněte na **Uložit** .
+9. Ověřte, zda je vše v pořádku, a v horní části podokna vytvořit **nastavení diagnostiky** klikněte na **Uložit** .
 
 ## <a name="activity-log"></a>Protokol aktivit
 
-Protokol aktivit je ve výchozím nastavení vygenerován. Protokoly se uchovávají po 90 dnech v úložišti protokolů událostí Azure. Další informace o těchto protokolech najdete v článku [zobrazení protokolů aktivit pro monitorování akcí v prostředcích](../azure-resource-manager/management/view-activity-logs.md) .
-
-## <a name="archive-to-storage-account-logs"></a>Archivace do protokolů účtu úložiště
-
-### <a name="alert-event-log"></a>Protokol událostí výstrah
-
-Tento protokol se vygeneruje jenom v případě, že jste ho povolili na základě nástroje pro vyrovnávání zatížení. Události se zaznamenávají ve formátu JSON a ukládají se do účtu úložiště, který jste zadali při povolování protokolování. V následujícím příkladu je událost.
-
-```json
-{
-    "time": "2016-01-26T10:37:46.6024215Z",
-    "systemId": "32077926-b9c4-42fb-94c1-762e528b5b27",
-    "category": "LoadBalancerAlertEvent",
-    "resourceId": "/SUBSCRIPTIONS/XXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXXXXXXX/RESOURCEGROUPS/RG7/PROVIDERS/MICROSOFT.NETWORK/LOADBALANCERS/WWEBLB",
-    "operationName": "LoadBalancerProbeHealthStatus",
-    "properties": {
-        "eventName": "Resource Limits Hit",
-        "eventDescription": "Ports exhausted",
-        "eventProperties": {
-            "public ip address": "40.117.227.32"
-        }
-    }
-}
-```
-
-Výstup JSON zobrazuje vlastnost *EventName* , která popíše důvod, proč Nástroj pro vyrovnávání zatížení vytvořil výstrahu. V takovém případě se vygenerovala výstraha z důvodu vyčerpání portů TCP způsobených omezeními zdrojového překladu IP adres (SNAT).
-
-### <a name="health-probe-log"></a>Protokol sondy stavu
-
-Tento protokol se vygeneruje jenom v případě, že jste ho povolili na jednotlivých nástrojích pro vyrovnávání zatížení, jak je popsáno výše. Data se ukládají do účtu úložiště, který jste zadali při povolování protokolování. Vytvoří se kontejner s názvem Insights-logs-loadbalancerprobehealthstatus a zaprotokoluje se následující data:
-
-```json
-{
-    "records":[
-    {
-        "time": "2016-01-26T10:37:46.6024215Z",
-        "systemId": "32077926-b9c4-42fb-94c1-762e528b5b27",
-        "category": "LoadBalancerProbeHealthStatus",
-        "resourceId": "/SUBSCRIPTIONS/XXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX/RESOURCEGROUPS/RG7/PROVIDERS/MICROSOFT.NETWORK/LOADBALANCERS/WWEBLB",
-        "operationName": "LoadBalancerProbeHealthStatus",
-        "properties": {
-            "publicIpAddress": "40.83.190.158",
-            "port": "81",
-            "totalDipCount": 2,
-            "dipDownCount": 1,
-            "healthPercentage": 50.000000
-        }
-    },
-    {
-        "time": "2016-01-26T10:37:46.6024215Z",
-        "systemId": "32077926-b9c4-42fb-94c1-762e528b5b27",
-        "category": "LoadBalancerProbeHealthStatus",
-        "resourceId": "/SUBSCRIPTIONS/XXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX/RESOURCEGROUPS/RG7/PROVIDERS/MICROSOFT.NETWORK/LOADBALANCERS/WWEBLB",
-        "operationName": "LoadBalancerProbeHealthStatus",
-        "properties": {
-            "publicIpAddress": "40.83.190.158",
-            "port": "81",
-            "totalDipCount": 2,
-            "dipDownCount": 0,
-            "healthPercentage": 100.000000
-        }
-    }]
-}
-```
-
-Výstup JSON se zobrazí v poli vlastnosti základní informace o stavu sondy. Vlastnost *dipDownCount* zobrazuje celkový počet instancí na back-endu, které nepříjemují síťový provoz z důvodu nezdařených odpovědí na testy.
+Protokol aktivit je ve výchozím nastavení vygenerován. Dá se nakonfigurovat tak, aby se vyexportoval na úrovni předplatného podle [pokynů v tomto článku](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log). Další informace o těchto protokolech najdete v článku [zobrazení protokolů aktivit pro monitorování akcí v prostředcích](../azure-resource-manager/management/view-activity-logs.md) .
 
 ### <a name="view-and-analyze-the-activity-log"></a>Zobrazení a analýza protokolu aktivit
 
 Data protokolu aktivit můžete zobrazit a analyzovat pomocí kterékoli z následujících metod:
 
 * **Nástroje Azure:** Načtěte informace z protokolu aktivit prostřednictvím Azure PowerShell, rozhraní příkazového řádku Azure (CLI), Azure REST API nebo Azure Portal. Podrobné pokyny pro jednotlivé metody jsou podrobně popsané v článku [operace auditu s správce prostředků](../azure-resource-manager/management/view-activity-logs.md) .
-* **Power BI:** Pokud ještě nemáte účet [Power BI](https:// .microsoft.com/pricing) , můžete si ho vyzkoušet zdarma. Pomocí [balíčku obsahu protokoly auditování Azure pro Power BI](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)můžete analyzovat data pomocí předem nakonfigurovaných řídicích panelů nebo můžete přizpůsobit zobrazení podle svých požadavků.
+* **Power BI:** Pokud ještě nemáte účet [Power BI](https://powerbi.microsoft.com/pricing) , můžete si ho vyzkoušet zdarma. Pomocí [integrace protokolů auditu Azure pro Power BI](https://powerbi.microsoft.com/integrations/azure-audit-logs/)můžete analyzovat data pomocí předem nakonfigurovaných řídicích panelů nebo můžete přizpůsobit zobrazení podle svých požadavků.
 
-### <a name="view-and-analyze-the-health-probe-and-event-log"></a>Zobrazit a analyzovat sondu stavu a protokol událostí
+## <a name="metrics-as-logs"></a>Metriky jako protokoly
+Použití metrik k protokolování funkcí exportu poskytovaných Azure Monitor můžete exportovat Load Balancer metriky. Tyto metriky vygenerují záznam protokolu pro každý minutový interval vzorkování.
 
-Připojte se k účtu úložiště a načtěte položky protokolu JSON pro protokoly událostí a stavu testu. Po stažení souborů JSON je můžete převést na CSV a zobrazit v Excelu, Power BI nebo jakémkoli jiném nástroji pro vizualizaci dat.
+Metrika pro export protokolu je povolená na úrovni jednotlivých prostředků. Tyto protokoly můžete povolit tak, že v okně nastavení diagnostiky kliknete na filtrovat podle skupiny prostředků a vyberete Load Balancer chcete povolit export metrik pro. Pokud je stránka nastavení diagnostiky Load Balancer nahoru, vyberte AllMetrics a exportujte vhodné metriky jako protokoly.
+
+Omezení exportu metrik najdete v části [omezení](#limitations) v tomto článku.
+
+### <a name="view-and-analyze-metrics-as-logs"></a>Zobrazit a analyzovat metriky jako protokoly
+Po povolení AllMetrics v nastavení diagnostiky vašeho Standard Load Balancer, pokud používáte centrum událostí nebo Log Analytics pracovní prostor, tyto protokoly se naplní v tabulce AzureMonitor. Pokud exportujete do úložiště, připojte se k účtu úložiště a načtěte položky protokolu JSON pro protokoly událostí a stavu testu. Po stažení souborů JSON je můžete převést na CSV a zobrazit v Excelu, Power BI nebo jakémkoli jiném nástroji pro vizualizaci dat. 
 
 > [!TIP]
 > Pokud znáte Visual Studio a máte představu, jak u konstant a proměnných v jazyce C# měnit hodnoty, můžete použít [nástroje pro převedení protokolů](https://github.com/Azure-Samples/networking-dotnet-log-converter), které jsou k dispozici na GitHubu.
@@ -173,6 +111,13 @@ Když se diagnostické informace streamují do centra událostí, dá se použí
 ## <a name="send-to-log-analytics"></a>Odeslání do Log Analytics
 Prostředky v Azure můžou mít své diagnostické informace odesílány přímo do Log Analytics pracovního prostoru, kde můžete provádět složité dotazy na informace pro řešení potíží a analýzy.  Další informace najdete v tématu [shromáždění protokolů prostředků Azure v pracovním prostoru Log Analytics v Azure monitor](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="limitations"></a>Omezení
+Při použití funkce metriky k protokolování funkcí exportu pro nástroje pro vyrovnávání zatížení existují v současné době tato omezení:
+* Metriky se aktuálně zobrazují s použitím interních názvů, pokud jsou exportované jako protokoly, mapování v níže uvedené tabulce.
+* Dimenze metriky se nezachovají. Například s metrikami jako DipAvailability (stav sondy stavu) nebudete moci rozdělit nebo zobrazit podle IP adresy back-endu.
+* Používané porty SNAT a přidělené metriky portů SNAT nejsou aktuálně k dispozici pro export jako protokoly.
 
-[Porozumění testům nástroje pro vyrovnávání zatížení](load-balancer-custom-probe-overview.md)
+## <a name="next-steps"></a>Další kroky
+* [Zkontrolujte dostupné metriky pro váš Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)
+* [Vytváření a testování dotazů za Azure Monitor instrukcí](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
+* Poskytněte nám svůj názor na tento článek nebo Load Balancer funkce pomocí níže uvedených odkazů.

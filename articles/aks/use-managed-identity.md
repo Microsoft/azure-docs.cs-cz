@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/17/2020
 ms.author: thomasge
-ms.openlocfilehash: 1f8cb98ea36fdad9a67eca26c6fbea7ede1f811a
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 96a1eebbdcbf269b06d2ece77987ce7813f1d5f5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94627876"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571058"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Použití spravovaných identit ve službě Azure Kubernetes
 
@@ -36,7 +36,7 @@ Musíte mít nainstalované následující prostředky:
 
 AKS používá několik spravovaných identit pro předdefinované služby a doplňky.
 
-| Identita                       | Name    | Případ použití | Výchozí oprávnění | Přineste si vlastní identitu
+| Identita                       | Název    | Případ použití | Výchozí oprávnění | Přineste si vlastní identitu
 |----------------------------|-----------|----------|
 | Řídicí rovina | neviditelné | Používá se v AKS pro spravované síťové prostředky, včetně nástrojů pro vyrovnávání zatížení vstupu a AKS spravované veřejné IP adresy. | Role přispěvatele pro skupinu prostředků uzlu | Preview
 | Kubelet | Název clusteru AKS – neznámá | Ověřování pomocí Azure Container Registry (ACR) | NEDEF (pro Kubernetes v 1.15 +) | Aktuálně se nepodporuje.
@@ -105,23 +105,35 @@ Nakonec Získejte přihlašovací údaje pro přístup ke clusteru:
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
-## <a name="update-an-existing-service-principal-based-aks-cluster-to-managed-identities"></a>Aktualizovat existující cluster AKS založený na instančních objektech na spravované identity
+## <a name="update-an-aks-cluster-to-managed-identities-preview"></a>Aktualizace clusteru AKS na spravované identity (Preview)
 
-Cluster AKS se spravovanými identitami teď můžete aktualizovat pomocí následujících příkazů rozhraní příkazového řádku.
+Teď můžete aktualizovat cluster AKS, který aktuálně pracuje s instančními objekty, aby fungoval se spravovanými identitami, a to pomocí následujících příkazů rozhraní příkazového řádku.
 
-Nejdřív aktualizujte identitu přiřazenou systémem:
+Nejdřív Zaregistrujte příznak funkce pro identitu přiřazenou systémem:
+
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n MigrateToMSIClusterPreview
+```
+
+Aktualizujte identitu přiřazenou systémem:
 
 ```azurecli-interactive
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity
 ```
 
-Pak aktualizujte identitu přiřazenou uživatelem:
+Aktualizujte identitu přiřazenou uživatelem:
+
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n UserAssignedIdentityPreview
+```
+
+Aktualizujte identitu přiřazenou uživatelem:
 
 ```azurecli-interactive
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identity <UserAssignedIdentityResourceID> 
 ```
 > [!NOTE]
-> Jakmile jsou přiřazené systémové identity nebo identity přiřazené uživatelem aktualizovány na spravovanou identitu, proveďte `az nodepool upgrade --node-image-only` ve svých uzlech aktualizaci spravované identity.
+> Až budou identity přiřazené systémem nebo uživatelem přiřazené k spravované identitě aktualizované, proveďte `az nodepool upgrade --node-image-only` na svých uzlech aktualizaci spravované identity.
 
 ## <a name="bring-your-own-control-plane-mi-preview"></a>Přineste si vlastní plochu ovládacího prvku MI (Preview).
 Vlastní identita roviny ovládacího prvku umožňuje přístup k existující identitě před vytvořením clusteru. To umožňuje scénářům, jako je například použití vlastní virtuální sítě nebo outboundType UDR se spravovanou identitou.

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: a4016751944e5b7ec5d32dc586e9034db99c9d73
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: f26b54a18ff137575cac208d70e4693c0b9914a8
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523459"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572282"
 ---
 # <a name="how-to-manage-synapse-rbac-role-assignments-in-synapse-studio"></a>Jak spravovat přiřazení rolí RBAC synapse v synapse studiu
 
@@ -23,12 +23,13 @@ Tento článek popisuje, jak přidat a odstranit přiřazení rolí synapse RBAC
 
 >[!Note]
 >- Pokud chcete spravovat přiřazení rolí RBAC synapse, musíte mít roli správce synapse v pracovním prostoru nebo v rozsahu nižší úrovně, který obsahuje objekty, které chcete spravovat. Pokud jste správce synapse v pracovním prostoru, můžete udělit přístup ke všem objektům v pracovním prostoru. 
->- Uživatelé s oprávněním ke správě přiřazení rolí služby **Azure RBAC** v pracovním prostoru můžou spravovat i přiřazení rolí **RBAC synapse** , což vám umožní přidat správce synapse nebo jiné přiřazení rolí v synapse RBAC, aby vám pomohli znovu získat přístup k pracovnímu prostoru v případě, že k němu nejsou přiřazeni žádní správci synapse nebo nebudou k dispozici.
+>- **Uživatelé typu Host** z jiného tenanta služby AD nemůžou zobrazit nebo spravovat přiřazení rolí, a to ani v případě, že je přiřazena role správce synapse.
+>- Uživatelé s oprávněním ke správě **přiřazení rolí služby** **Azure RBAC** v pracovním prostoru můžou také při přístupu k pracovnímu prostoru získat přístup k pracovnímu prostoru v případě, že k němu nejsou přiřazeni žádní synapse Administrators
 >- Přístup k fondům SQL se spravuje pomocí oprávnění SQL.  S výjimkou rolí správce synapse a synapse správců systému SQL synapse role RBAC neudělují přístup k fondům SQL.
 
 >[!important]
 >- Změny provedené v přiřazení rolí RBAC synapse můžou trvat až 2-5 minut. 
->- Pokud spravujete oprávnění synapse RBAC úpravou členství ve skupinách zabezpečení, budou se změny členství spravovat pomocí Azure Active Directory.  Změny členství ve skupinách může trvat několik minut.
+>- Pokud spravujete oprávnění synapse RBAC úpravou členství ve skupinách zabezpečení, budou se změny členství spravovat pomocí Azure Active Directory.  Změny členství ve skupinách mohou trvat až 10-15 minut nebo déle.
 
 ## <a name="open-synapse-studio"></a>Otevřít synapse Studio  
 

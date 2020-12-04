@@ -1,7 +1,7 @@
 ---
 title: Co je nového v Azure Active Directory externích identit
 description: Nová a aktualizovaná dokumentace pro Azure Active Directory externích identit.
-ms.date: 11/10/2020
+ms.date: 12/03/2020
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,24 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: f7c296b4a5bed0c3e599f59e9f0461295b86f197
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 35fa6909160ca707035ee9fc599e4035c2ae7981
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94550066"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573897"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory externích identit: co je nového
 
 Vítá vás, co je nového v dokumentaci Azure Active Directory externích identit. V tomto článku jsou uvedené nové dokumenty, které se přidaly, a ty, které měly v posledních třech měsících významné aktualizace. Další informace o tom, co je nového u služby External identity, najdete v tématu [co je nového v Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="november-2020"></a>Listopad 2020
+
+### <a name="updated-articles"></a>Aktualizované články
+- [Spolupráce s Microsoft 365 externích sdílení a Azure Active Directory (Azure AD) B2B](o365-external-user.md)
+- [Udělení přístupu ke cloudovým prostředkům místně spravovaným partnerským účtům s využitím spolupráce Azure AD s B2B](hybrid-on-premises-to-cloud.md)
+- [Vlastnosti Azure Active Directoryho uživatele spolupráce B2B](user-properties.md)
+
 
 ## <a name="october-2020"></a>Říjen 2020
 

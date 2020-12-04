@@ -7,12 +7,12 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 8884fd56cfc1e18a0a358d6902f7f8bcbfc1f5d3
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 5cb2f7b3b07c20e09d61e97412bc35f03b15cb3b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552642"
+ms.locfileid: "96572146"
 ---
 # <a name="cross-resource-query-azure-data-explorer-using-azure-monitor"></a>Dotazování mezi prostředky Azure Průzkumník dat pomocí Azure Monitor
 Azure Monitor podporuje dotazy mezi službami mezi Azure Průzkumník dat, [Application Insights (AI)](/azure/azure-monitor/app/app-insights-overview)a [Log Analytics (La)](/azure/azure-monitor/platform/data-platform-logs). Pak můžete dotazovat cluster Azure Průzkumník dat pomocí nástrojů pro Log Analytics nebo Application Insights a pak na něj odkazovat v dotazu mezi jednotlivými službami. V tomto článku se dozvíte, jak vytvořit dotaz mezi jednotlivými službami.
@@ -20,7 +20,7 @@ Azure Monitor podporuje dotazy mezi službami mezi Azure Průzkumník dat, [Appl
 Tok Azure Monitor mezi službami: :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-monitor-data-explorer-flow.png" alt-text="tok Azure monitor a azure Průzkumník dat mezi službami.":::
 
 >[!NOTE]
->* Azure Monitor proxy je v privátní verzi Preview – vyžaduje se AllowListing.
+>* Dotaz na Azure Monitor křížové služby je v privátní verzi Preview – vyžaduje se AllowListing.
 >* Kontaktujte [tým služby](mailto:ADXProxy@microsoft.com) s případnými dotazy.
 ## <a name="cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer"></a>Vzájemné dotazování Log Analytics nebo prostředků Application Insights a Azure Průzkumník dat
 
@@ -66,9 +66,3 @@ Průzkumník Kusto vás automaticky přihlásí k tenantovi, ke kterému uživat
 * [Zápis dotazů](https://docs.microsoft.com/azure/data-explorer/write-queries)
 * [Dotazování dat v Azure Monitor pomocí Azure Průzkumník dat](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)
 * [Provádění dotazů protokolu pro více prostředků v Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query)
-
-
-
-
-
-

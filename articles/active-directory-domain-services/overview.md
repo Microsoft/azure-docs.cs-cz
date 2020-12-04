@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 08/14/2020
+ms.date: 12/03/2020
 ms.author: joflore
 ms.custom: contperfq1
-ms.openlocfilehash: 988119c34ab0a8ef0e20ec86a7552fb7b4643cd1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d8d709590345982479301f25601fae25fa6f4fae
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967983"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571857"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Co je služba Azure Active Directory Domain Services?
 
@@ -33,7 +33,7 @@ Služba Azure služba AD DS se integruje s vaším stávajícím tenant Azure AD
 
 Při vytváření spravované domény Azure služba AD DS definujete jedinečný obor názvů. Tento obor názvů je název domény, například *aaddscontoso.com*. Do vybrané oblasti Azure se pak nasadí dva řadiče domény (DCs) Windows serveru. Toto nasazení řadičů domény se označuje jako sada replik.
 
-Tyto řadiče domény nemusíte spravovat, konfigurovat ani aktualizovat. Platforma Azure zpracovává řadiče domény jako součást spravované domény, včetně záloh.
+Tyto řadiče domény nemusíte spravovat, konfigurovat ani aktualizovat. Platforma Azure zpracovává řadiče domény jako součást spravované domény, včetně zálohování a šifrování v klidovém formátu pomocí Azure Disk Encryption.
 
 Spravovaná doména je nakonfigurovaná tak, aby prováděla jednosměrnou synchronizaci z Azure AD za účelem poskytnutí přístupu k centrální skupině uživatelů, skupin a přihlašovacích údajů. Prostředky můžete vytvořit přímo ve spravované doméně, ale nesynchronizují se zpátky do Azure AD. Aplikace, služby a virtuální počítače v Azure, které se připojují ke spravované doméně, pak můžou používat běžné funkce služba AD DS, jako je připojení k doméně, zásady skupiny, LDAP a ověřování pomocí protokolu Kerberos/NTLM.
 

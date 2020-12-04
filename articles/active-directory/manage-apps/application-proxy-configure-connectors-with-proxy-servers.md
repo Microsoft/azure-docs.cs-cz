@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 2d041782e8df795acb120ba1357cec5ef204dc28
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 9032e4c04279d87bf4422d3a87d19fdbecec1a64
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656323"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571789"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Práce se stávajícími místními proxy servery
 
@@ -167,6 +167,9 @@ Nyní byste měli vidět veškerý tok provozu prostřednictvím proxy serveru. 
 Nejlepším způsobem, jak identifikovat a řešit potíže s připojením konektoru, je zařídit síťové zachycení při spuštění služby konektoru. Tady jsou některé rychlé tipy pro zachytávání a filtrování trasování sítě.
 
 Můžete použít nástroj pro monitorování podle vašeho výběru. Pro účely tohoto článku jsme použili Microsoft Message Analyzer.
+
+> [!NOTE]
+> [Služba Microsoft Message Analyzer (MMA) byla vyřazena](https://docs.microsoft.com/openspecs/blog/ms-winintbloglp/dd98b93c-0a75-4eb0-b92e-e760c502394f) a balíčky pro stažení byly z webů Microsoft.com odebrány od listopadu 25 2019.  V současné době teď není ve vývoji žádná náhrada Microsoftu pro Microsoft Message Analyzer.  U podobných funkcí zvažte použití nástroje analyzátoru síťových protokolů od jiného výrobce, jako je třeba Wireshark.
 
 Následující příklady jsou specifické pro analyzátor zpráv, ale zásady je možné použít na jakýkoli nástroj pro analýzu.
 

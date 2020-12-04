@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1245010ae0b21c5bb8e3ebd93a9fe851d48c858b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 77a43d5bd5f2b228d5ed4384fc1efdca76f8ea0b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835505"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573880"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Použití sestavy aktivity aplikace AD FS (Preview) k migraci aplikací do služby Azure AD
 
@@ -26,9 +26,10 @@ Mnoho organizací používá Active Directory Federation Services (AD FS) (AD FS
 
 Sestava aktivita aplikace AD FS (Preview) v Azure Portal umožňuje rychle určit, které z vašich aplikací je možné migrovat do služby Azure AD. Posuzuje všechny AD FS aplikace kvůli kompatibilitě s Azure AD, kontroluje případné problémy a poskytuje pokyny k přípravě jednotlivých aplikací pro migraci. Pomocí sestavy aktivity aplikace AD FS můžete:
 
-* **Zjištění AD FS aplikací a určení rozsahu migrace** Sestava aktivita aplikace AD FS obsahuje seznam všech aplikací AD FS ve vaší organizaci a označuje jejich připravenost na migraci do služby Azure AD.
+* **Zjištění AD FS aplikací a určení rozsahu migrace** Sestava aktivita aplikace AD FS obsahuje seznam všech aplikací AD FS ve vaší organizaci, u kterých se během posledních 30 dnů přihlásilo aktivní uživatelské jméno. Tato sestava označuje připravenost aplikací pro migraci do služby Azure AD. Sestava nezobrazuje v AD FS, jako je například Office 365, žádné související předávající strany společnosti Microsoft. Například předávající strany s názvem "urn: Federation: MicrosoftOnline".
+
 * **Určete prioritu aplikací pro migraci.** Získejte počet jedinečných uživatelů, kteří se přihlásili k aplikaci za posledních 1, 7 nebo 30 dní, abyste mohli určit závažnost nebo riziko migrace aplikace.
-* **Spusťte testy migrace a opravte problémy.** Služba generování sestav automaticky spouští testy, aby zjistila, zda je aplikace připravena k migraci. Výsledky se zobrazí v sestavě aktivita aplikace AD FS jako stav migrace. Pokud se identifikují potenciální problémy s migrací, získáte konkrétní pokyny, jak tyto problémy vyřešit.
+* **Spusťte testy migrace a opravte problémy.** Služba generování sestav automaticky spouští testy, aby zjistila, zda je aplikace připravena k migraci. Výsledky se zobrazí v sestavě aktivita aplikace AD FS jako stav migrace. Pokud konfigurace AD FS není kompatibilní s konfigurací služby Azure AD, získáte konkrétní pokyny pro řešení konfigurace ve službě Azure AD.
 
 Data aktivity aplikace AD FS jsou k dispozici uživatelům, kteří mají přiřazenou některou z těchto rolí správce: globální správce, čtenář sestav, čtenář zabezpečení, správce aplikace nebo správce cloudové aplikace.
 
@@ -39,6 +40,9 @@ Data aktivity aplikace AD FS jsou k dispozici uživatelům, kteří mají přiř
 * Je nutné nainstalovat Azure AD Connect Health pro agenta AD FS.
    * [Další informace o Azure AD Connect Health](../hybrid/how-to-connect-health-adfs.md)
    * [Začněte s nastavením Azure AD Connect Health a nainstalujte agenta AD FS](../hybrid/how-to-connect-health-agent-install.md)
+
+>[!IMPORTANT] 
+>Existuje několik důvodů, proč po instalaci Azure AD Connect Health neuvidíte všechny aplikace, které očekáváte. Sestava aktivita aplikací AD FS aplikace zobrazuje v posledních 30 dnech pouze AD FS předávajících stran s přihlašovacími údaji uživatelů. Sestava také nezobrazuje Microsoft související předávající strany, jako je například Office 365.
 
 ## <a name="discover-ad-fs-applications-that-can-be-migrated"></a>Zjištění AD FSch aplikací, které se dají migrovat 
 
@@ -74,7 +78,7 @@ Sestava aktivity aplikace AD FS je k dispozici v Azure Portal v části Azure AD
 
 V následující tabulce jsou uvedeny všechny testy konfigurace, které se provádí v AD FSch aplikacích.
 
-|Výsledek  |Úspěch/upozornění/selhání  |Popis  |
+|Result  |Úspěch/upozornění/selhání  |Popis  |
 |---------|---------|---------|
 |Test-ADFSRPAdditionalAuthenticationRules <br> Pro AdditionalAuthentication se zjistilo aspoň jedno pravidlo, které není migrovat.       | Úspěch/upozornění          | Předávající strana obsahuje pravidla pro dotazování služby Multi-Factor Authentication (MFA). Pokud se chcete přesunout do služby Azure AD, přeložte tato pravidla na zásady podmíněného přístupu. Pokud používáte místní MFA, doporučujeme přejít na Azure AD MFA. [Přečtěte si další informace o podmíněném přístupu](../authentication/concept-mfa-howitworks.md).        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> Předávající strana má AdditionalWSFedEndpoint nastavenou na hodnotu true.       | Úspěch/neúspěch          | Předávající strana v AD FS umožňuje více koncových bodů kontrolního výrazu pro WS-Fed.V současné době Azure AD podporuje jenom jeden.Pokud máte scénář, kde tento výsledek blokuje migraci, [dejte nám prosím jistotu](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |
@@ -121,6 +125,17 @@ V následující tabulce jsou uvedeny všechny testy pravidel deklarací identit
 |EXTERNAL_ATTRIBUTE_STORE      | Příkaz vystavení používá úložiště atributů, které se liší v rámci služby Active Directory. V současné době Azure AD nepoužívá zdrojové deklarace identity z obchodů, které mají jinou službu Active Directory nebo Azure AD. Pokud se vám z tohoto důvodu blokuje migrace aplikací do služby Azure AD, [dejte nám prosím jistotu](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695717-allow-to-source-user-attributes-from-external-dire).          |
 |UNSUPPORTED_ISSUANCE_CLASS      | Příkaz vystavení pomocí příkazu přidat přidá deklarace do příchozí sady deklarací. V Azure AD to může být nakonfigurované jako vícenásobné transformace deklarací identity.Další informace najdete v tématu [přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace](../develop/active-directory-claims-mapping.md).         |
 |UNSUPPORTED_ISSUANCE_TRANSFORMATION      | Příkaz vystavení používá regulární výrazy k transformaci hodnoty deklarace, která se má vygenerovat.Chcete-li dosáhnout podobných funkcí v Azure AD, můžete použít předdefinovanou transformaci, jako je například Extract (), trim (), ToLower, mimo jiné. Další informace najdete v tématu [přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace](../develop/active-directory-saml-claims-customization.md).          |
+
+## <a name="troubleshooting"></a>Poradce při potížích
+
+### <a name="cant-see-all-my-ad-fs-applications-in-the-report"></a>V sestavě se nezobrazuje všechny aplikace AD FS.
+
+ Pokud jste nainstalovali Azure AD Connect stav, ale stále se zobrazuje výzva k jejímu instalaci, nebo Pokud nevidíte všechny AD FS aplikace v sestavě, může to být tím, že nemáte aktivní AD FS aplikace ani vaše AD FS aplikace od Microsoftu.
+ 
+ Sestava aktivita aplikace AD FS obsahuje seznam všech aplikací AD FS ve vaší organizaci s aktivními uživateli přihlašování za posledních 30 dní. Sestava také nezobrazuje související předávající strany Microsoftu v AD FS, jako je například Office 365. Například předávající strany s názvem "urn: Federation: MicrosoftOnline", "microsoftonline", "Microsoft: winhello: CERT: prov: Server" se v seznamu nezobrazí.
+
+
+
 
 
 ## <a name="next-steps"></a>Další kroky

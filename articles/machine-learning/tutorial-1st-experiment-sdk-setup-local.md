@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1b4ee9f06e8ed8bd47be1075070dea71b42b1cef
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 05ac0f78345e1c1d7643f24410d53b209ab7c375
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349065"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574152"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Kurz: Začínáme s Azure Machine Learning ve vývojovém prostředí (část 1 ze 4)
 
@@ -34,9 +34,9 @@ V části 1 této série kurzů budete:
 > [!NOTE]
 > Tato série kurzů se zaměřuje na Azure Machine Learning koncepty *založené* na úlohách strojového učení v Pythonu, které jsou náročné na výpočetní výkon a/nebo vyžadují reprodukovatelnost. Pokud máte více zajímat se o průzkumné pracovní postup, můžete místo toho použít [Jupyter nebo RStudio na instanci služby compute Azure Machine Learning](tutorial-1st-experiment-sdk-setup.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Zkuste [Azure Machine Learning](https://aka.ms/AMLFree).
+- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Zkuste [Azure Machine Learning](https://aka.ms/AMLFree).
 - Seznamte se s koncepty Pythonu a [Machine Learning](concept-azure-machine-learning-architecture.md). Mezi příklady patří prostředí, školení a bodování.
 - Místní vývojové prostředí, například Visual Studio Code, Jupyter nebo PyCharm.
 - Python (verze 3,5 až 3,7).
@@ -52,7 +52,10 @@ K nastavení prostředí Python pro použití v celém tomto kurzu můžete pou�
 pip install azureml-sdk
 ```
 
-## <a name="create-a-directory-structure-for-code"></a>Vytvoření adresářové struktury pro kód
+> [!div class="nextstepaction"]
+> [Nainstaloval (a) jsem sadu SDK](?success=install-sdk#dir) [do problému](https://www.research.net/r/7C8Z3DN?issue=install-sdk) .
+
+## <a name="create-a-directory-structure-for-code"></a><a name="dir"></a>Vytvoření adresářové struktury pro kód
 Pro tento kurz doporučujeme nastavit následující jednoduchou strukturu adresářů:
 
 ```markdown
@@ -63,7 +66,11 @@ tutorial
 - `tutorial`: Adresář nejvyšší úrovně projektu.
 - `.azureml`: Skrytý podadresář pro ukládání Azure Machine Learning konfiguračních souborů.
 
-## <a name="create-an-azure-machine-learning-workspace"></a>Vytvoření pracovního prostoru Azure Machine Learning
+
+> [!div class="nextstepaction"]
+> [Vytvořili jsem adresář,](?success=create-dir#workspace) [na který jsem narazil](https://www.research.net/r/7C8Z3DN?issue=create-dir)
+
+## <a name="create-an-azure-machine-learning-workspace"></a><a name="workspace"></a>Vytvoření pracovního prostoru Azure Machine Learning
 
 Pracovní prostor je prostředek nejvyšší úrovně pro Azure Machine Learning a je centralizované místo pro:
 
@@ -119,7 +126,10 @@ Soubor `.azureml/config.json` obsahuje metadata nutná pro připojení k pracovn
 >
 > K interakci s pracovním prostorem Azure Machine Learning je ještě vyžadováno ověřování.
 
-## <a name="create-an-azure-machine-learning-compute-cluster"></a>Vytvoření clusteru Azure Machine Learning COMPUTE
+> [!div class="nextstepaction"]
+> [Vytvořili jsem pracovní prostor,](?success=create-workspace#cluster) [který jsem narazil na problém](https://www.research.net/r/7C8Z3DN?issue=create-workspace)
+
+## <a name="create-an-azure-machine-learning-compute-cluster"></a><a name="cluster"></a> Vytvoření clusteru Azure Machine Learning COMPUTE
 
 Vytvořte skript Pythonu v `tutorial` adresáři nejvyšší úrovně s názvem `02-create-compute.py` . Naplňte ho pomocí následujícího kódu, abyste vytvořili Azure Machine Learning výpočetní cluster, který se automaticky škáluje mezi nulami a čtyřmi uzly:
 
@@ -167,6 +177,9 @@ tutorial
 └──01-create-workspace.py
 └──02-create-compute.py
 ```
+
+> [!div class="nextstepaction"]
+> [Vytvářený výpočetní cluster](?success=create-compute-cluster#next-steps) [jsem narazil na problém](https://www.research.net/r/7C8Z3DN?issue=create-compute-cluster)
 
 ## <a name="next-steps"></a>Další kroky
 

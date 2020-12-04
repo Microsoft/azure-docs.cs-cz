@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 09/23/2020
+ms.date: 12/03/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 29033cbabfcfa00c9f8458cbc161af67df5806cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21b1004a347dec3a7f2a6460d8b853350bf36ff0
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325959"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571041"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Vysoce výkonné výpočetní velikosti virtuálních počítačů
 
@@ -40,7 +40,7 @@ Většina velikostí virtuálních počítačů HPC (HBv2, Get, HC, H16r, H16mr,
 Toto rozhraní umožňuje, aby instance s podporou RDMA komunikovaly přes síť InfiniBand (IB), která pracuje s sazbami HDR pro HBv2, EDR sazbami pro NDv2, FDR sazby pro H16r, H16mr a další virtuální počítače řady N-Series s podporou RDMA a QDR sazby pro virtuální počítače A8 a c. Tyto možnosti RDMA můžou zvýšit škálovatelnost a výkon určitých aplikací MPI (Message Passing Interface).
 
 > [!NOTE]
-> V prostředí Azure HPC existují dvě třídy virtuálních počítačů v závislosti na tom, jestli mají rozhraní SR-IOV povolené pro InfiniBand. V současné době je rozhraní SR-IOV pro virtuální počítače s povolenou InfiniBand: HBv2,, HC, NCv3 a NDv2. Na ostatních virtuálních počítačích s povolenou InfiniBand nejsou aktuálně povoleny SR-IOV.
+> V prostředí Azure HPC existují dvě třídy virtuálních počítačů v závislosti na tom, jestli mají rozhraní SR-IOV povolené pro InfiniBand. V současné době skoro všechny novější generace a virtuální počítače s podporou RDMA nebo InfiniBand v Azure mají povolený rozhraní SR-IOV s výjimkou H16r, H16mr, NC24r, A8, A8.
 > RDMA se povoluje jenom přes síť InfiniBand (IB) a podporuje se u všech virtuálních počítačů podporujících RDMA.
 > IP přes IB se podporuje jenom na virtuálních počítačích s povolenou SR-IOV.
 > RDMA není povolený přes síť Ethernet.
@@ -55,7 +55,7 @@ Toto rozhraní umožňuje, aby instance s podporou RDMA komunikovaly přes síť
 
    Pokud chcete přidat rozšíření virtuálního počítače do virtuálního počítače, můžete použít rutiny [Azure PowerShell](/powershell/azure/) . Další informace najdete v tématu [rozšíření a funkce virtuálních počítačů](./extensions/overview.md). Můžete také pracovat s rozšířeními pro virtuální počítače nasazené v [modelu nasazení Classic](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic).
 
-- **MPI** – velikosti virtuálních počítačů s povoleným rozhraním SR-IOV v Azure (HBv2,, HC, NCv3, NDv2) umožňují téměř jakýkoli charakter MPI pro použití s Mellanox OFED. V případě virtuálních počítačů s podporou SR-IOV podporované implementace MPI používají ke komunikaci mezi virtuálními počítači rozhraní Microsoft Network Direct (ND). Proto jsou podporovány pouze verze Microsoft MPI (MS-MPI) 2012 R2 nebo novější a Intel MPI 5. x. Novější verze (2017, 2018) běhové knihovny Intel MPI mohou nebo nemusí být kompatibilní s ovladači Azure RDMA. Další podrobnosti o nastavení MPI na virtuálních počítačích HPC v Azure najdete v tématu [Nastavení MPI pro HPC](./workloads/hpc/setup-mpi.md) .
+- **MPI** – velikosti virtuálních počítačů s povoleným rozhraním SR-IOV v Azure umožňují téměř jakýkoli charakter MPI pro použití s Mellanox OFED. V případě virtuálních počítačů s podporou SR-IOV podporované implementace MPI používají ke komunikaci mezi virtuálními počítači rozhraní Microsoft Network Direct (ND). Proto jsou podporovány pouze verze Microsoft MPI (MS-MPI) 2012 R2 nebo novější a Intel MPI 5. x. Novější verze (2017, 2018) běhové knihovny Intel MPI mohou nebo nemusí být kompatibilní s ovladači Azure RDMA. Další podrobnosti o nastavení MPI na virtuálních počítačích HPC v Azure najdete v tématu [Nastavení MPI pro HPC](./workloads/hpc/setup-mpi.md) .
 
 - **Adresní prostor síťového adres RDMA** – síť RDMA v Azure rezervuje adresní prostor 172.16.0.0/16. Pokud chcete spouštět aplikace MPI na instancích nasazených ve službě Azure Virtual Network, ujistěte se, že adresní prostor virtuální sítě nepřekrývá síť RDMA.
 

@@ -2,16 +2,16 @@
 title: Konfigurace clusteru ve službě Azure Kubernetes Services (AKS)
 description: Informace o tom, jak nakonfigurovat cluster ve službě Azure Kubernetes Service (AKS)
 services: container-service
-ms.topic: conceptual
+ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 88774450fb196da5de24bcad047ecdb8c424f653
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: dcd9ec52992da8037bb498dc09701879c4c94667
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736525"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572571"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurace clusteru AKS
 
@@ -19,7 +19,7 @@ V rámci vytváření clusteru AKS možná budete muset přizpůsobit konfigurac
 
 ## <a name="os-configuration"></a>Konfigurace operačního systému
 
-AKS nyní podporuje Ubuntu 18,04 jako operační systém Node (OS) ve všeobecné dostupnosti pro clustery ve verzích Kubernetes vyšších než 1.18.8. Pro verze nižší než 1.18. x je výchozí základní bitová kopie i AKS Ubuntu 16,04. Od Kubernetes v 1.18. x a dalších je výchozí základ AKS Ubuntu 18,04.
+AKS nyní podporuje Ubuntu 18,04 jako operační systém Node (OS) ve všeobecné dostupnosti pro clustery ve verzích Kubernetes vyšších než 1.18.8. Pro verze nižší než 1.18. x je výchozí základní bitová kopie stále výchozí AKS Ubuntu 16,04. Od Kubernetes v 1.18. x a dalších je výchozí základ AKS Ubuntu 18,04.
 
 > [!IMPORTANT]
 > Fondy uzlů vytvořené ve výchozím nastavení Kubernetes v 1.18 nebo vyšší pro `AKS Ubuntu 18.04` Image Node. Fondy uzlů na podporované verzi Kubernetes, která je menší než 1,18, se přijímají `AKS Ubuntu 16.04` jako image uzlu, ale `AKS Ubuntu 18.04` po aktualizaci verze Kubernetes fondu uzlů na verzi v 1.18 nebo vyšší.
@@ -302,7 +302,7 @@ Při práci s skupinou prostředků uzlu Pamatujte na to, že nemůžete:
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se používat `Kured` k [nasazení zabezpečení a aktualizací jádra na uzly se systémem Linux](node-updates-kured.md) ve vašem clusteru.
+- Přečtěte si, jak [upgradovat image uzlů](node-image-upgrade.md) v clusteru.
 - Přečtěte si téma [upgrade clusteru Azure Kubernetes Service (AKS)](upgrade-cluster.md) , kde se dozvíte, jak upgradovat cluster na nejnovější verzi Kubernetes.
 - Přečtěte si další informace o [ `containerd` a Kubernetes](https://kubernetes.io/blog/2018/05/24/kubernetes-containerd-integration-goes-ga/)
 - V seznamu [nejčastějších dotazů k AKS](faq.md) najdete odpovědi na některé běžné otázky týkající se AKS.

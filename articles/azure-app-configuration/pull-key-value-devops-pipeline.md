@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 15810e65873c685565ccaad6c2dcdc1707713f2c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1c28b4e9821f31f927ef4f640aa664d330cf8792
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182644"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96570990"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Nastavení vyžádání do konfigurace aplikace pomocí Azure Pipelines
 
@@ -27,7 +27,7 @@ ms.locfileid: "96182644"
 
 ## <a name="create-a-service-connection"></a>Vytvoření připojení služby
 
-Připojení služby umožňuje přístup k prostředkům ve vašem předplatném Azure z vašeho projektu Azure DevOps.
+[Připojení služby](/azure/devops/pipelines/library/service-endpoints) umožňuje přístup k prostředkům ve vašem předplatném Azure z vašeho projektu Azure DevOps.
 
 1. V Azure DevOps se podívejte na projekt obsahující váš cílový kanál a otevřete **nastavení projektu** v levém dolním rohu.
 1. V části **kanály** vyberte **připojení služby**.
@@ -108,7 +108,7 @@ A hodnota bude vytištěna do konzoly.
 
 Pokud dojde k neočekávané chybě, můžete povolit protokoly ladění nastavením proměnné kanálu `system.debug` na `true` .
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Návody vytvořit konfiguraci z více klíčů a popisků?**
 

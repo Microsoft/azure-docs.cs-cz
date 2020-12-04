@@ -7,12 +7,12 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: bcdda8d1bd08a26dcdbec294be88fd4540670596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0c132d1aa7a37dc8e7620352bb7b9a078d79a09
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531419"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571602"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Postupy zřizování pro architekturu s více tenanty 
 
@@ -20,7 +20,7 @@ Tento článek ukazuje, jak bezpečně zřídit více zařízení symetrického 
 
 * **Zeměpisná poloha/geografická latence**: když se zařízení pohybuje mezi místy, zlepšuje se latence sítě díky tomu, že je zařízení zřízené službě IoT Hub nejblíže každému umístění. V tomto scénáři jsou pro registrace vybrány skupiny služby IoT Hub, které jsou rozloženy mezi oblastmi. Pro tyto registrace se vybere nejnižší zásada přidělení **latence** . Tato zásada způsobí, že služba Device Provisioning vyhodnocuje latenci zařízení a určí skříň IoT Hub ze skupiny centra IoT. 
 
-* **Víceklientská architektura: zařízení**používaná v rámci řešení IoT může být potřeba přiřadit ke konkrétnímu centru IoT nebo skupině centra IoT. Řešení může vyžadovat, aby všechna zařízení pro konkrétního tenanta komunikovala s konkrétní skupinou služby IoT Hub. V některých případech může tenant vlastnit centra IoT a vyžadovat, aby zařízení byla přiřazena ke svým centrům IoT.
+* **Víceklientská architektura: zařízení** používaná v rámci řešení IoT může být potřeba přiřadit ke konkrétnímu centru IoT nebo skupině centra IoT. Řešení může vyžadovat, aby všechna zařízení pro konkrétního tenanta komunikovala s konkrétní skupinou služby IoT Hub. V některých případech může tenant vlastnit centra IoT a vyžadovat, aby zařízení byla přiřazena ke svým centrům IoT.
 
 Tyto dva scénáře je běžné kombinovat. Například řešení IoT pro víceklientské klienty bude obvykle přiřazování klientských zařízení pomocí skupiny služby IoT Hub, které jsou rozptýlené napříč oblastmi. Tato zařízení klientů se dají přiřadit ke službě IoT Hub v této skupině, která má nejnižší latenci na základě geografického umístění.
 
@@ -36,13 +36,10 @@ Tento článek používá ukázku simulovaného zařízení ze [sady Azure IoT C
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Dokončení [nastavení IoT Hub Device Provisioning Service pomocí](./quick-setup-auto-provision.md) nástroje pro rychlý Start Azure Portal
-
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
+- Dokončení [nastavení IoT Hub Device Provisioning Service pomocí](./quick-setup-auto-provision.md) nástroje pro rychlý Start Azure Portal
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-two-regional-iot-hubs"></a>Vytvoření dvou oblastí centra IoT
 
@@ -59,7 +56,7 @@ V této části použijete Azure Cloud Shell k vytvoření dvou nových oblastí
 
 2. Pomocí Azure Cloud Shell vytvořte centrum IoT v oblasti **eastus** pomocí příkazu [AZ IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) . Centrum IoT se přidá do *skupiny contoso-US-Resource-Group*.
 
-    Následující příklad vytvoří centrum IoT s názvem *Contoso-východ-hub* v umístění *eastus* . Místo **Contoso-východ-hub**musíte použít vlastní jedinečný název centra.
+    Následující příklad vytvoří centrum IoT s názvem *Contoso-východ-hub* v umístění *eastus* . Místo **Contoso-východ-hub** musíte použít vlastní jedinečný název centra.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-east-hub --resource-group contoso-us-resource-group --location eastus --sku S1
@@ -69,7 +66,7 @@ V této části použijete Azure Cloud Shell k vytvoření dvou nových oblastí
 
 3. Pomocí Azure Cloud Shell vytvořte centrum IoT v oblasti **westus** pomocí příkazu [AZ IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) . Toto centrum IoT se taky přidá do *skupiny contoso-US-Resource-Group*.
 
-    Následující příklad vytvoří centrum IoT s názvem *Contoso-západ-hub* v umístění *westus* . Místo názvu **Contoso-západ-hub**musíte použít vlastní jedinečný název centra.
+    Následující příklad vytvoří centrum IoT s názvem *Contoso-západ-hub* v umístění *westus* . Místo názvu **Contoso-západ-hub** musíte použít vlastní jedinečný název centra.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-west-hub --resource-group contoso-us-resource-group --location westus --sku S1
@@ -89,7 +86,7 @@ V zájmu jednoduchosti Tento článek používá k registraci [symetrický klí�
 
 2. Vyberte kartu **spravovat registrace** a pak klikněte na tlačítko **Přidat skupinu** registrací v horní části stránky. 
 
-3. Do pole **Přidat skupinu**registrací zadejte následující informace a klikněte na tlačítko **Uložit** .
+3. Do pole **Přidat skupinu** registrací zadejte následující informace a klikněte na tlačítko **Uložit** .
 
     **Název skupiny**: zadejte **Contoso-US-Devices**.
 
@@ -102,7 +99,7 @@ V zájmu jednoduchosti Tento článek používá k registraci [symetrický klí�
     ![Přidat skupinu registrací víceklientské architektury pro ověření symetrického klíče](./media/how-to-provision-multitenant/create-multitenant-enrollment.png)
 
 
-4. V části **Přidat skupinu**registrací klikněte na **propojit nové centrum IoT** a propojte obě vaše místní centra.
+4. V části **Přidat skupinu** registrací klikněte na **propojit nové centrum IoT** a propojte obě vaše místní centra.
 
     **Předplatné**: Pokud máte více předplatných, vyberte předplatné, ve kterém jste vytvořili oblastní centra IoT.
 
@@ -191,7 +188,7 @@ K jednoduššímu vyčištění se tyto virtuální počítače přidají do ste
 
 V této části budete naklonovat sadu Azure IoT C SDK na každém virtuálním počítači. Sada SDK obsahuje ukázku, která simuluje zřizování zařízení tenanta z každé oblasti.
 
-1. Pro každý virtuální počítač nainstalujte **cmake**, **g + +**, **RSZ**a [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) pomocí následujících příkazů:
+1. Pro každý virtuální počítač nainstalujte **cmake**, **g + +**, **RSZ** a [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) pomocí následujících příkazů:
 
     ```bash
     sudo apt-get update
@@ -410,7 +407,7 @@ V těchto krocích se předpokládá, že jste vytvořili všechny prostředky v
 
 Odstranění skupiny prostředků podle názvu:
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
 
 2. Do textového pole **filtrovat podle názvu...** zadejte název skupiny prostředků obsahující vaše prostředky, **Contoso-US-Resource-Group**. 
 

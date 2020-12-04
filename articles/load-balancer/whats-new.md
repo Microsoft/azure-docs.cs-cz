@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: 3a20b69189226486de8cfceb95e2fa79a976cb12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a30a42e8a8c4049b53274da512089dd29965e775
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841029"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573149"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>Co je nového v Azure Load Balancer?
 
@@ -40,9 +40,9 @@ Nejnovější Azure Load Balancer aktualizace a přihlásit se k odběru informa
 
 Produktová skupina aktivně pracuje na řešeních pro následující známé problémy:
 
-|Problém |Description  |Omezení rizik  |
+|Problém |Popis  |Omezení rizik  |
 | ---------- |---------|---------|
-| Export Log Analytics | Log Analytics nemůže exportovat metriky pro standardní nástroje pro vyrovnávání zatížení ani protokoly stavu sondy stavu pro základní Load Balancer  | [Využijte Azure monitor pro multidimenzionální metriky pro vaši Standard Load Balancer](load-balancer-standard-diagnostics.md). I když není možné použít Log Analytics ke sledování, Azure Monitor poskytuje vizualizaci pro bohatou sadu multidimenzionálních metrik. Řídicí panel předem konfigurovaných metrik můžete využít v podokně přehledy Load Balancer. Pokud používáte základní Load Balancer [upgradujte na standard](upgrade-basic-standard.md) pro monitorování metrik na úrovni produkčního prostředí.
+| Load Balancer protokoly událostí výstrah a stavu sondy stavu | Protokolování nefunguje pro Load Balancer události výstrah pro základní a Standard Load Balancer nebo protokoly stavu sondy stavu pro základní Load Balancer  | [Využijte Azure monitor pro multidimenzionální metriky pro vaši Standard Load Balancer](load-balancer-standard-diagnostics.md). Azure Monitor poskytuje vizualizaci pro bohatou sadu multidimenzionálních metrik, která se dá také exportovat jako protokoly. Řídicí panel předem konfigurovaných metrik můžete využít v podokně přehledy Load Balancer. Pokud používáte základní Load Balancer [upgradujte na standard](upgrade-basic-standard.md) pro monitorování metrik na úrovni produkčního prostředí.
 
   
 

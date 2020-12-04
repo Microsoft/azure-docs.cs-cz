@@ -10,12 +10,12 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 09/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 43b03abb2aac13358a2187a0a5dc570c1e45934e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c612e2a95e2596b2732ed8282037c8ded908a0a0
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458497"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571381"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Obsáhlý Learning a strojové učení v Azure Machine Learning
 
@@ -93,8 +93,6 @@ Analýza textu založená na metodách hloubkového učení zahrnuje analýzu ve
 
 Společnosti využívají k analýze textu v rámci hloubkového učení k detekci obchodování zasvěcených osob a dodržování předpisů pro státní správu. Dalším běžným příkladem je pojišťovací podvod: Text Analytics se často používá k analýze velkých objemů dokumentů, aby se zjistilo, že se poškodí pojistka pojistného pojištění. 
 
-Naučte se používat TensorFlow model v Azure Machine Learning: [klasifikace rukou psaných číslic pomocí modelu TensorFlow](./how-to-train-tensorflow.md?WT.mc_id=docs-article-lazzeri)
-
 ## <a name="artificial-neural-networks"></a>Umělé sítě neuronové
 
 Umělé sítě neuronové se vytváří pomocí vrstev připojených uzlů. Modely hloubkového učení používají neuronové sítě, které mají velký počet vrstev. 
@@ -107,7 +105,7 @@ Síť neuronové Feedforward je nejjednodušší typ umělé neuronové sítě. 
 
 ### <a name="recurrent-neural-network"></a>Znovu aktuální neuronové síť
 
-Opakující se neuronové sítě jsou široce využívanou umělou neuronovéou síť. Tyto sítě ukládají výstup vrstvy a předává je zpět do vstupní vrstvy, aby bylo možné odhadnout výsledek vrstvy. Opakující se neuronové sítě mají skvělé možnosti učení. Jsou často používány pro komplexní úlohy, jako je například prognózování časových řad, učení rukopisu a rozpoznávání jazyka.
+Opakující se neuronové sítě jsou široce využívanou umělou neuronovéou síť. Tyto sítě ukládají výstup vrstvy a předává je zpět do vstupní vrstvy, aby bylo možné odhadnout výsledek vrstvy. Opakující se neuronové sítě mají skvělé možnosti učení. Jsou často používány pro komplexní úlohy, jako je prognózování časových řad, rozpoznávání rukopisu a rozpoznávání jazyka.
 
 ### <a name="convolutional-neural-networks"></a>Konvoluční neuronové sítě
 
@@ -118,6 +116,9 @@ Sítě konvoluční neuronové se používaly v oblastech, jako je rozpoznáván
 ## <a name="next-steps"></a>Další kroky
 
 V následujících článcích se dozvíte víc možností, jak používat Open Source modely hloubkového učení v [Azure Machine Learning](./index.yml?WT.mc_id=docs-article-lazzeri):
+
+
+- [Klasifikace rukou psaných číslic pomocí modelu TensorFlow](./how-to-train-tensorflow.md?WT.mc_id=docs-article-lazzeri) 
 
 - [Klasifikace rukou psaných číslic pomocí TensorFlow Estimator a Keras](./how-to-train-keras.md?WT.mc_id=docs-article-lazzeri)
 

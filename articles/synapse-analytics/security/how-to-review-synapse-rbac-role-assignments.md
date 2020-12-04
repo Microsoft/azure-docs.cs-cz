@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6d6a0bdb9a6aaa2d9ca75ccd4a6d71e9046bee4a
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 9ebbe54dd41cd7d7b83ef12f465326db3ef2b9ab
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523453"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572180"
 ---
 # <a name="how-to-review-synapse-rbac-role-assignments"></a>Kontrola přiřazení rolí RBAC synapse
 
@@ -21,7 +21,10 @@ Role RBAC synapse slouží k přiřazení oprávnění uživatelům, skupinám a
 
 Tento článek vysvětluje, jak zkontrolovat aktuální přiřazení rolí pro pracovní prostor.
 
-U jakékoli role synapse RBAC můžete vypsat přiřazení rolí RBAC synapse pro všechny obory, včetně přiřazení pro objekty, ke kterým nemáte přístup. Přístup synapse RBAC může udělit jenom správce synapse.   
+U jakékoli role synapse RBAC můžete vypsat přiřazení rolí RBAC synapse pro všechny obory, včetně přiřazení pro objekty, ke kterým nemáte přístup. Přístup synapse RBAC může udělit jenom správce synapse.  
+
+>[!Note]
+>Uživatelé typu Host (uživatelé z jiného tenanta služby AD) nemůžou zobrazit nebo spravovat přiřazení rolí, a to ani v případě, že máte přiřazenou roli správce synapse.    
 
 ## <a name="open-synapse-studio"></a>Otevřít synapse Studio  
 

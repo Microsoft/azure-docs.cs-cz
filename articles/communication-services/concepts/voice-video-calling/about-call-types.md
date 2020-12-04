@@ -9,18 +9,18 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 97a90284ad8d195751eb5dd90675822d00243ea8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 11c20f3f79a4fceafaca9b1a948f1b4a425dad87
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91665204"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572707"
 ---
 # <a name="voice-and-video-concepts"></a>Koncepce hlasových hovorů a videohovorů
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-Pomocí komunikačních služeb Azure můžete vytvářet a přijímat volání hlasu a videa, analyzovat metadata volání, nahrávat volání a dokonce i stromy volání sestavení. Vaše volání se dají provádět na jiných zařízeních připojených k Internetu a na obyčejných telefonních hovorech. Klientské knihovny pro komunikační služby JavaScript, Android nebo iOS můžete použít k sestavování aplikací, které umožňují uživatelům vzájemně mluvit v privátních konverzacích nebo v diskusích skupin. Komunikační služby Azure podporují volání a ze služeb nebo roboty.
+Pomocí komunikačních služeb Azure můžete vytvořit a přijmout jedno pro jedno nebo více skupin volání hlasu a videa. Vaše volání se dají provádět na jiných zařízeních připojených k Internetu a na obyčejných telefonních hovorech. Klientské knihovny pro komunikační služby JavaScript, Android nebo iOS můžete použít k sestavování aplikací, které umožňují uživatelům vzájemně mluvit v privátních konverzacích nebo v diskusích skupin. Komunikační služby Azure podporují volání a ze služeb nebo roboty.
 
 ## <a name="call-types-in-azure-communication-services"></a>Typy volání ve komunikačních službách Azure
 

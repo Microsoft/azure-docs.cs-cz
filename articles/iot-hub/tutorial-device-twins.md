@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 74d5e5395853bcba20b2012e54dd8f9fea03afe6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9ec2c51f01d6b13f33bc2d537a8f73a6721967d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748555"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572520"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -28,7 +28,7 @@ ms.locfileid: "92748555"
 
 Vedle příjmu telemetrických dat ze zařízení můžete potřebovat zařízení nakonfigurovat z back-endové služby. Když do zařízení odesíláte požadovanou konfiguraci, můžete z nich někdy chtít zároveň přijmout aktualizace stavu a souladu s předpisy. Můžete tak například pro zařízení nastavit cílový rozsah provozní teploty nebo z nich shromáždit informace o verzi firmwaru.
 
-K synchronizaci informací o stavu mezi zařízením a centrem IoT slouží _dvojčata zařízení_ . [Dvojče zařízení](iot-hub-devguide-device-twins.md) je dokument JSON přidružený ke konkrétnímu zařízení a uložený službou IoT Hub v cloudu, kam na něj můžete odeslat [dotaz](iot-hub-devguide-query-language.md). Dvojče zařízení obsahuje _požadované vlastnosti_ , _ohlášené vlastnosti_ a _značky_ . Požadované vlastnosti nastavuje back-endová aplikace a zařízení je přečte. Ohlášené vlastnosti nastavuje zařízení a čte je back-endová aplikace. Značku nastavuje back-endová aplikace a do zařízení ji neodesílá. Značky slouží k uspořádání zařízení. V tomto kurzu se dozvíte, jak používat požadované a ohlášené vlastnosti k synchronizaci informací o stavu:
+K synchronizaci informací o stavu mezi zařízením a centrem IoT slouží _dvojčata zařízení_. [Dvojče zařízení](iot-hub-devguide-device-twins.md) je dokument JSON přidružený ke konkrétnímu zařízení a uložený službou IoT Hub v cloudu, kam na něj můžete odeslat [dotaz](iot-hub-devguide-query-language.md). Dvojče zařízení obsahuje _požadované vlastnosti_, _ohlášené vlastnosti_ a _značky_. Požadované vlastnosti nastavuje back-endová aplikace a zařízení je přečte. Ohlášené vlastnosti nastavuje zařízení a čte je back-endová aplikace. Značku nastavuje back-endová aplikace a do zařízení ji neodesílá. Značky slouží k uspořádání zařízení. V tomto kurzu se dozvíte, jak používat požadované a ohlášené vlastnosti k synchronizaci informací o stavu:
 
 ![Přehled informací o dvojčatech](media/tutorial-device-twins/DeviceTwins.png)
 
@@ -39,11 +39,9 @@ V tomto kurzu provedete následující úlohy:
 > * Použití požadovaných vlastností k odeslání informací o stavu do simulovaného zařízení.
 > * Použití ohlášených vlastností k přijetí informací o stavu ze simulovaného zařízení
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
-
-## <a name="prerequisites"></a>Předpoklady
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí Node.js. Ve vývojovém počítači potřebujete Node.js v10 za účelem. x. x nebo novější.
 
@@ -63,7 +61,7 @@ Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízen�
 
 Abyste mohli dokončit tento kurz, musí vaše předplatné Azure obsahovat centrum IoT se zařízením přidaným do registru identit zařízení. Záznam v registru identit zařízení umožňuje připojení simulovaného zařízení, které v tomto kurzu spustíte, do vašeho centra.
 
-Pokud ještě nemáte ve svém předplatném nastavený IoT Hub, můžete ho nastavit pomocí následujícího skriptu CLI. Skript používá pro centrum IoT název **tutorial-iot-hub** . Při spuštění ho nahraďte vlastním jedinečným názvem. Skript vytvoří skupinu prostředků a centrum v oblasti **USA – střed** , kterou můžete změnit na bližší zeměpisnou oblast. Skript načte připojovací řetězec služby IoT Hub, který použijete v ukázkové back-endové aplikaci k připojení do centra IoT:
+Pokud ještě nemáte ve svém předplatném nastavený IoT Hub, můžete ho nastavit pomocí následujícího skriptu CLI. Skript používá pro centrum IoT název **tutorial-iot-hub**. Při spuštění ho nahraďte vlastním jedinečným názvem. Skript vytvoří skupinu prostředků a centrum v oblasti **USA – střed**, kterou můžete změnit na bližší zeměpisnou oblast. Skript načte připojovací řetězec služby IoT Hub, který použijete v ukázkové back-endové aplikaci k připojení do centra IoT:
 
 ```azurecli-interactive
 hubname=tutorial-iot-hub
@@ -83,7 +81,7 @@ az iot hub show-connection-string --name $hubname --policy-name service -o table
 
 ```
 
-V tomto kurzu se používá simulované zařízení s názvem **MyTwinDevice** . Následující skript přidá toto zařízení do registru identit a načte jeho připojovací řetězec:
+V tomto kurzu se používá simulované zařízení s názvem **MyTwinDevice**. Následující skript přidá toto zařízení do registru identit a načte jeho připojovací řetězec:
 
 ```azurecli-interactive
 # Set the name of your IoT hub:
@@ -120,7 +118,7 @@ Následující kód získá z klientského objektu dvojče:
 
 ### <a name="sample-desired-properties"></a>Ukázka požadovaných vlastností
 
-U požadovaných vlastnosti můžete použít jakoukoli strukturu, která vyhovuje potřebám vaší aplikace. V tomto příkladu používáme jednu vlastnost nejvyšší úrovně s názvem **fanOn** a ostatní vlastnosti seskupené do samostatných **součástí** . Následující fragment kódu JSON ukazuje strukturu požadovaných vlastností použitou v tomto kurzu:
+U požadovaných vlastnosti můžete použít jakoukoli strukturu, která vyhovuje potřebám vaší aplikace. V tomto příkladu používáme jednu vlastnost nejvyšší úrovně s názvem **fanOn** a ostatní vlastnosti seskupené do samostatných **součástí**. Následující fragment kódu JSON ukazuje strukturu požadovaných vlastností použitou v tomto kurzu:
 
 [!code[Sample desired properties](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/desired.json "Sample desired properties")]
 
@@ -130,15 +128,15 @@ K aktualizaci požadovaných vlastností můžete vytvořit obslužné rutiny, k
 
 [!code-javascript[Handle all properties](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=allproperties&highlight=2 "Handle all properties")]
 
-Následující obslužná rutina reaguje pouze na změny provedené v požadované vlastnosti **fanOn** :
+Následující obslužná rutina reaguje pouze na změny provedené v požadované vlastnosti **fanOn**:
 
 [!code-javascript[Handle fan property](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=fanproperty&highlight=2 "Handle fan property")]
 
 ### <a name="handlers-for-multiple-properties"></a>Obslužné rutiny pro více vlastností
 
-V předchozím příkladu požadovaných vlastností JSON obsahuje uzel **climate** v části **components** dvě vlastnosti: **minTemperature** a **maxTemperature** .
+V předchozím příkladu požadovaných vlastností JSON obsahuje uzel **climate** v části **components** dvě vlastnosti: **minTemperature** a **maxTemperature**.
 
-V místním objektu **dvojčete** zařízení se ukládá kompletní sada požadovaných a ohlášených vlastností. Proměnná **delta** odeslaná z back-endu může aktualizovat jen dílčí sadu požadovaných vlastností. Pokud simulované zařízení obdrží aktualizaci jen jedné z vlastností **minTemperature** a **maxTemperature** , následující fragment kódu zajistí, že se její hodnota použije v místním dvojčeti pro druhou hodnotu ke konfiguraci zařízení:
+V místním objektu **dvojčete** zařízení se ukládá kompletní sada požadovaných a ohlášených vlastností. Proměnná **delta** odeslaná z back-endu může aktualizovat jen dílčí sadu požadovaných vlastností. Pokud simulované zařízení obdrží aktualizaci jen jedné z vlastností **minTemperature** a **maxTemperature**, následující fragment kódu zajistí, že se její hodnota použije v místním dvojčeti pro druhou hodnotu ke konfiguraci zařízení:
 
 [!code-javascript[Handle climate component](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=climatecomponent&highlight=2 "Handle climate component")]
 
@@ -176,25 +174,25 @@ V této části spustíte dvě ukázkové aplikace a budete sledovat, jak back-e
 
 Ke spuštění aplikace simulovaného zařízení a back-endové aplikace potřebujete připojovací řetězce zařízení a služby. Tyto řetězce jste si poznamenali, když jste na začátku tohoto kurzu vytvářeli příslušné prostředky.
 
-Spusťte aplikaci simulovaného zařízení tak, že otevřete okno prostředí nebo příkazového řádku a přejdete v projektu Node.js, který jste si stáhli, do složky **iot-hub/Tutorials/DeviceTwins** . Potom spusťte následující příkazy:
+Spusťte aplikaci simulovaného zařízení tak, že otevřete okno prostředí nebo příkazového řádku a přejdete v projektu Node.js, který jste si stáhli, do složky **iot-hub/Tutorials/DeviceTwins**. Potom spusťte následující příkazy:
 
 ```cmd/sh
 npm install
 node SimulatedDevice.js "{your device connection string}"
 ```
 
-Back-endovou aplikaci spusťte tak, že otevřete další okno prostředí nebo příkazového řádku. Pak přejděte v projektu Node.js, který jste si stáhli, do složky **iot-hub/Tutorials/DeviceTwins** . Potom spusťte následující příkazy:
+Back-endovou aplikaci spusťte tak, že otevřete další okno prostředí nebo příkazového řádku. Pak přejděte v projektu Node.js, který jste si stáhli, do složky **iot-hub/Tutorials/DeviceTwins**. Potom spusťte následující příkazy:
 
 ```cmd/sh
 npm install
 node ServiceClient.js "{your service connection string}"
 ```
 
-Následující snímek obrazovky ukazuje výstup z aplikace simulovaného zařízení, je na něm zvýrazněno zpracování aktualizace požadované vlastnosti **maxTemperature** . Vidíte zde, jak se spouští obslužná rutina nejvyšší úrovně a obslužná rutina součásti climate:
+Následující snímek obrazovky ukazuje výstup z aplikace simulovaného zařízení, je na něm zvýrazněno zpracování aktualizace požadované vlastnosti **maxTemperature**. Vidíte zde, jak se spouští obslužná rutina nejvyšší úrovně a obslužná rutina součásti climate:
 
 ![Snímek obrazovky, který ukazuje, jak je spuštěná obslužná rutina nejvyšší úrovně a obslužné rutiny komponenty klimatického procesu.](./media/tutorial-device-twins/SimulatedDevice1.png)
 
-Následující snímek obrazovky ukazuje výstup z back-endové aplikace, je na něm zvýrazněno odeslání aktualizace požadované vlastnosti **maxTemperature** :
+Následující snímek obrazovky ukazuje výstup z back-endové aplikace, je na něm zvýrazněno odeslání aktualizace požadované vlastnosti **maxTemperature**:
 
 ![Snímek obrazovky, který zobrazuje výstup z back-endové aplikace a zvýrazní, jak pošle aktualizaci.](./media/tutorial-device-twins/BackEnd1.png)
 
@@ -226,14 +224,14 @@ Spouštět budete tytéž dvě ukázkové aplikace, které jste použili ke zji�
 
 Ke spuštění aplikace simulovaného zařízení a back-endové aplikace potřebujete připojovací řetězce zařízení a služby. Tyto řetězce jste si poznamenali, když jste na začátku tohoto kurzu vytvářeli příslušné prostředky.
 
-Spusťte aplikaci simulovaného zařízení tak, že otevřete okno prostředí nebo příkazového řádku a přejdete v projektu Node.js, který jste si stáhli, do složky **iot-hub/Tutorials/DeviceTwins** . Potom spusťte následující příkazy:
+Spusťte aplikaci simulovaného zařízení tak, že otevřete okno prostředí nebo příkazového řádku a přejdete v projektu Node.js, který jste si stáhli, do složky **iot-hub/Tutorials/DeviceTwins**. Potom spusťte následující příkazy:
 
 ```cmd/sh
 npm install
 node SimulatedDevice.js "{your device connection string}"
 ```
 
-Back-endovou aplikaci spusťte tak, že otevřete další okno prostředí nebo příkazového řádku. Pak přejděte v projektu Node.js, který jste si stáhli, do složky **iot-hub/Tutorials/DeviceTwins** . Potom spusťte následující příkazy:
+Back-endovou aplikaci spusťte tak, že otevřete další okno prostředí nebo příkazového řádku. Pak přejděte v projektu Node.js, který jste si stáhli, do složky **iot-hub/Tutorials/DeviceTwins**. Potom spusťte následující příkazy:
 
 ```cmd/sh
 npm install
@@ -252,7 +250,7 @@ Na následujícím snímku obrazovky vidíte výstup z back-endové aplikace a z
 
 Pokud si chcete projít další kurz, zachovejte skupinu prostředků a centrum IoT pro pozdější použití.
 
-Pokud už centrum IoT nepotřebujete, odstraňte ho společně se skupinou prostředků na portálu. Provedete to výběrem skupiny prostředků **tutorial-iot-hub-rg** , která obsahuje vaše centrum IoT, a kliknutím na **Odstranit** .
+Pokud už centrum IoT nepotřebujete, odstraňte ho společně se skupinou prostředků na portálu. Provedete to výběrem skupiny prostředků **tutorial-iot-hub-rg**, která obsahuje vaše centrum IoT, a kliknutím na **Odstranit**.
 
 Můžete použít také rozhraní příkazového řádku:
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 8/07/2020
-ms.openlocfilehash: 4179b06759802025f97bd32a355b788c96c9eddb
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a32491453812d74d4bd93f3f97b7e6a32036f65f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123316"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573370"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkce ve verzi Preview pro Azure Stream Analytics
 
@@ -22,7 +22,7 @@ Tento článek shrnuje všechny funkce, které jsou v současnosti ve verzi Prev
 
 Následující funkce jsou ve verzi Public Preview. Tyto funkce můžete využívat ještě dnes, ale nepoužívejte je v produkčním prostředí.
 
-### <a name="authenticate-to-sql-database-output-with-managed-identities"></a>Ověřování pro SQL Database výstup se spravovanými identitami
+### <a name="authenticate-to-sql-database-output-with-managed-identities-preview"></a>Ověřování pro SQL Database výstup se spravovanými identitami (Preview)
 
 Azure Stream Analytics podporuje [spravované ověřování identity](../active-directory/managed-identities-azure-resources/overview.md) pro Azure SQL Database výstupní jímky. Spravované identity odstraňují omezení metod ověřování založených na uživatelích, například nutnost opětovného ověření v důsledku změn hesel. 
 

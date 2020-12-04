@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: bae214fb8eff9747bf3f79323d8eb9ce1cb6cdb7
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: a978113265e5e61c0fc09ef0daeb1da9826f294d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531594"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572792"
 ---
 # <a name="synapse-rbac-roles"></a>Synapse role RBAC
 
@@ -28,7 +28,7 @@ Pro uživatele, kteří znají role synapse RBAC poskytované v rámci verze Pre
 - **Nové obory nižší úrovně** jsou představené pro několik rolí.  Tyto obory umožňují omezit role na konkrétní prostředky nebo objekty.
 
 >[!Note]
->- **Nové role a rozsahy nižší úrovně jsou momentálně ve verzi Preview**.  Doporučujeme používat tyto nové role a obory, které jsou plně podporované, a poskytovat zpětnou vazbu k jejich použití.
+>**Nové role RBAC synapse a rozsahy nižší úrovně jsou momentálně ve verzi Preview**.  Doporučujeme používat tyto nové role a obory, které jsou plně podporované, a poskytovat zpětnou vazbu k jejich použití.
 
 ## <a name="built-in-synapse-rbac-roles-and-scopes"></a>Předdefinované role a obory synapse RBAC
 

@@ -3,15 +3,15 @@ title: Instalace jazykových sad na virtuální počítače s Windows 10 na virt
 description: Jak nainstalovat jazykové sady pro virtuální počítače s Windows 10 s více relacemi na virtuálním počítači s Windows
 author: Heidilohr
 ms.topic: how-to
-ms.date: 11/06/2020
+ms.date: 12/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 10d79d08e3f6ed422f0354074ebc6e0acc125553
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ca4b5486b54de28497ea41765337bfa19f12e3d7
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94354032"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573115"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Přidání jazykových sad do bitové kopie Windows 10 s více relacemi
 
@@ -24,7 +24,7 @@ Existují dva způsoby, jak můžete přizpůsobit jazykovým potřebám uživat
 
 Druhá metoda je mnohem efektivnější a nákladově efektivní. Je ale na vás, abyste se rozhodli, kterou metodu nejlépe vyhovuje vašim potřebám. Tento článek vám ukáže, jak přizpůsobit jazyky pro image.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli přidat několik jazyků, budete potřebovat následující věci, abyste mohli přizpůsobit image Windows 10 Enterprise s více relacemi:
 
@@ -34,20 +34,24 @@ Abyste mohli přidat několik jazyků, budete potřebovat následující věci, 
      
      - Jazyk ISO:
         - [Windows 10, verze 1903 nebo 1909 Language Pack ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
-        - [Windows 10, verze 2004 Language Pack ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
+        - [Windows 10, verze 2004 nebo 20H2 Language Pack ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
 
      - Diskové zámořské departementy 1 ISO:
         - [Windows 10, verze 1903 nebo 1909 FRANCOUZSKÝch disket 1 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
-        - [Windows 10, verze 2004 – francouzský disk 1 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
+        - [Windows 10, verze 2004 nebo 20H2 francouzské disky 1 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
         
      - Doručená pošta v aplikacích ISO:
         - [Windows 10, verze 1903 nebo 1909 doručených zpráv – aplikace ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_InboxApps.iso)
         - [Windows 10, verze 2004 Inbox Apps ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_InboxApps.iso)
         - [Windows 10, verze 20H2 doručených zpráv ISO](https://software-download.microsoft.com/download/pr/19041.508.200905-1327.vb_release_svc_prod1_amd64fre_InboxApps.iso)
      
-     - Pokud používáte Windows 10, verze 2004 nebo 20H2, můžete ke stažení nových jazyků použít soubory ISO Local Experience Pack (LXP). Použijte informace v části [Přidání jazyků ve Windows 10: známé problémy](/windows-hardware/manufacture/desktop/language-packs-known-issue) , které vám pomůžou zjistit, jestli byste měli stáhnout verzi 9b nebo 9C:
-        - [Windows 10, verze 2004 nebo 20H2 **9b** lxp ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_64_ARM64_MultiLang_LangPckAll_LIP_LXP_ONLY)
-        - [Windows 10, verze 2004 nebo 20H2 **9C** lxp ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY) 
+     - Pokud k lokalizaci imagí používáte soubory ISO LXP (Local Experience Pack), budete také muset stáhnout odpovídající LXP ISO pro nejlepší jazykovou zkušenost.
+        - Pokud používáte Windows 10, verze 1903 nebo 1909:
+          - [Windows 10, verze 1903 nebo 1909 LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_1903_32_64_ARM64_MultiLng_LngPkAll_LXP_ONLY.iso)
+        - Pokud používáte Windows 10, verze 2004 nebo 20H2, použijte informace v části [Přidání jazyků ve Windows 10: známé problémy](/windows-hardware/manufacture/desktop/language-packs-known-issue) , které vám pomůžou zjistit, které z následujících lxp soubory ISO jsou pro vás nejvhodnější:
+          - [Windows 10, verze 2004 nebo 20H2 **9b** lxp ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_64_ARM64_MultiLang_LangPckAll_LIP_LXP_ONLY)
+          - [Windows 10, verze 2004 nebo 20H2 **9C** lxp ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY)
+          - [Windows 10, verze 2004 nebo 20H2 **10C** lxp ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2010C.iso)
 
 - Sdílená složka služby soubory Azure nebo sdílená složka na virtuálním počítači souborového serveru systému Windows
 
@@ -64,7 +68,7 @@ Vytvoření úložiště obsahu pro jazykové balíčky a FODs a úložiště pr
 
 3. Přejít do jazykové sady ISO a zkopírovat obsah ze složek **LocalExperiencePacks** a **x64 \\ Langpacks** a pak vložit obsah do sdílené složky.
 
-4. Přejít na **soubor ISO pro francouzské soubory** , zkopírujte veškerý jeho obsah a vložte ho do sdílené složky.
+4. Přejít na **soubor ISO pro francouzské soubory**, zkopírujte veškerý jeho obsah a vložte ho do sdílené složky.
 5. Do složky **amd64fre** ve složce Doručená pošta v aplikacích ISO a zkopírujte obsah v úložišti pro aplikace doručené pošty, které jste připravili.
 
      >[!NOTE]

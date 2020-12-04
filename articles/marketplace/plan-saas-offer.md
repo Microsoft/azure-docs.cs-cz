@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 9034757539a3dfd8b5e43e97ec518479da396456
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: d2d890db3c246ad7f3d0a56a3df264d5f78bd54d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917541"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571126"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Postup plánování nabídky SaaS pro komerční tržiště
 
@@ -113,10 +113,10 @@ Pokud vaše nabídka SaaS je řešení IT (Azure Marketplace *) i obchodní* ře
 
 | Měřené fakturace | Veřejný plán | Soukromý plán | K dispozici v: |
 |---|---|---|---|
-| Yes             | Yes         | Ne           | Azure Marketplace a Azure Portal |
-| Yes             | Yes         | Yes          | Azure Marketplace a Azure Portal * |
-| Yes             | Ne          | Yes          | Pouze Azure Portal |
-| Ne              | Ne          | Yes          | Pouze Azure Portal |
+| Ano             | Ano         | Ne           | Azure Marketplace a Azure Portal |
+| Ano             | Ano         | Ano          | Azure Marketplace a Azure Portal * |
+| Ano             | Ne          | Ano          | Pouze Azure Portal |
+| Ne              | Ne          | Ano          | Pouze Azure Portal |
 |||||
 
 &#42; soukromý plán této nabídky bude k dispozici pouze prostřednictvím Azure Portal
@@ -125,7 +125,7 @@ Zákazníci v Azure Portal zakoupí například nabídku s měřením fakturace 
 
 Podrobné informace o možnostech výpisu podporovaných online obchody najdete v tématu [Možnosti výpisu a cen podle online obchodu](determine-your-listing-type.md#listing-and-pricing-options-by-online-store). Další informace o kategoriích a podkategoriích najdete v tématu [kategorie a podkategorie na komerčním webu Marketplace](categories.md).
 
-## <a name="legal-contracts"></a>Platné smlouvy
+## <a name="legal-contracts"></a>Právní smlouvy
 
 Pro zjednodušení procesu nákupu pro zákazníky a omezení právní složitosti pro dodavatele softwaru nabízí společnost Microsoft standardní kontrakt, který můžete použít pro vaše nabídky na komerčním webu Marketplace. Když nabízený software obdržíte na základě standardního kontraktu, zákazníci ho musí přečíst a přijmout jenom jednou a vy nemusíte vytvářet vlastní podmínky.
 
@@ -152,7 +152,7 @@ Když [vytvoříte novou nabídku SaaS](create-new-saas-offer.md) v partnerském
 8. Shrnutí
 9. Popis
 10. Snímky obrazovky a videa
-11. Dokumenty
+11. dokumenty.
 
 Následující příklad ukazuje seznam nabídek v Azure Portal.
 
@@ -202,7 +202,7 @@ Abyste mohli snadněji vytvořit nabídku, připravte si některé z těchto pol
   - soubor. png
   - Musí obsahovat titulek
 - **Média – videa** (volitelné): můžete přidat až čtyři videa s následujícími požadavky, které předvádí vaši nabídku:
-  - Name
+  - Název
   - Adresa URL: musí být hostována pouze na YouTube nebo Vimeo.
   - Miniatura: soubor 1280 x 720. png
 
@@ -258,7 +258,7 @@ Můžete si vybrat, jestli se chcete zúčastnit marketingových a prodejních k
 
 - **Prodávejte dál prostřednictvím CSP**: tuto možnost použijte, pokud chcete, aby partneři poskytovatelé řešení Microsoft Cloud mohli své řešení znovu prodávat jako součást zahrnuté nabídky. Další informace najdete v tématu [program Cloud Solution Provider](cloud-solution-providers.md) .
 
-- **Spoluprodejní s Microsoftem**: Tato možnost umožňuje prodejcům Microsoftu zvážit, jaké řešení se svým zákazníkům nabízí při vyhodnocování vašich potřeb zákazníků. Podrobné informace o tom, jak připravit vaši nabídku k vyhodnocení, najdete v tématu [možnost společného prodeje v partnerském centru](./partner-center-portal/commercial-marketplace-co-sell.md) .
+- **Spoluprodejní s Microsoftem**: Tato možnost umožňuje prodejcům Microsoftu zvážit, jaké řešení se svým zákazníkům nabízí při vyhodnocování vašich potřeb zákazníků. Podrobné informace o tom, jak připravit vaši nabídku k vyhodnocení, najdete v tématu [možnost společného prodeje v partnerském centru](commercial-marketplace-co-sell.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
