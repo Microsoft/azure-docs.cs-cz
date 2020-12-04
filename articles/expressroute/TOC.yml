@@ -145,7 +145,11 @@
     - name: Správa peeringu
       items:
         - name: Povolení a zákaz peeringu
-          href: expressroute-howto-reset-peering.md
+          items:
+            - name: portál Azure
+              href: expressroute-howto-reset-peering-portal.md
+            - name: Azure PowerShell
+              href: expressroute-howto-reset-peering.md
         - name: Přechod od veřejného partnerského uzlu k partnerskému uzlu Microsoftu
           href: how-to-move-peering.md
     - name: Šifrování provozu přes okruhy
