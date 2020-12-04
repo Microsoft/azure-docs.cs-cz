@@ -9,14 +9,12 @@
       href: whats-new.md
 - name: Rychlé starty
   items:
-    - name: S využitím klientské knihovny
+    - name: S využitím klientských knihoven
       href: quickstarts-sdk/client-library.md
     - name: S využitím REST API
       items:
         - name: Analýza vzdáleného obrázku
           items:
-            - name: cURL
-              href: QuickStarts/curl-analyze.md
             - name: Přejít
               href: QuickStarts/go-analyze.md
             - name: Java
@@ -37,8 +35,6 @@
           items:
             - name: C#
               href: QuickStarts/CSharp-thumb.md
-            - name: cURL
-              href: QuickStarts/curl-thumb.md
             - name: Přejít
               href: QuickStarts/go-thumb.md
             - name: Java
@@ -63,8 +59,6 @@
           items:
             - name: C#
               href: QuickStarts/CSharp-print-text.md
-            - name: cURL
-              href: QuickStarts/curl-print-text.md
             - name: Přejít
               href: QuickStarts/go-print-text.md
             - name: Java
