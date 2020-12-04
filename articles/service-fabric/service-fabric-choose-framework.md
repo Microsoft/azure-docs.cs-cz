@@ -1,16 +1,15 @@
 ---
 title: Přehled programovacího modelu služby Service Fabric
 description: 'Service Fabric nabízí dvě architektury pro vytváření služeb: rozhraní actor Framework a rozhraní služeb. Nabízejí v jednoduchosti a řízení různé kompromisy.'
-author: vturecek
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: 8e1c96d0b04140f8c1121cfb74b43969b49cfdda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 523c9e0064d8b78698f1a0dd3544bda58436800c
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260519"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575716"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Přehled programovacího modelu služby Service Fabric
 
@@ -22,7 +21,7 @@ Service Fabric nabízí několik způsobů, jak psát a spravovat vaše služby.
 
 Začněte se spustitelnými soubory hosta nasazením první [spustitelné aplikace hosta](service-fabric-deploy-existing-app.md).
 
-## <a name="containers"></a>Kontejnery
+## <a name="containers"></a>Containers
 
 Ve výchozím nastavení Service Fabric nasadí a aktivuje služby jako procesy. Service Fabric mohou také nasazovat služby v [kontejnerech](service-fabric-containers-overview.md). Service Fabric podporuje nasazení kontejnerů Linux a kontejnerů Windows ve Windows serveru 2016 a novějších verzích. Image kontejnerů se dají z libovolného úložiště kontejnerů načíst a nasadit do počítače. Stávající aplikace můžete nasadit jako spustitelné soubory typu Host, Service Fabric spolehlivé nebo stavové služby nebo Reliable Actors v kontejnerech a můžete kombinovat služby v procesech a službách v kontejnerech ve stejné aplikaci.
 
@@ -38,7 +37,7 @@ Ve výhradním Service Fabric lze také Reliable Services stav, kde je stav ulo�
 
 [Přečtěte si další informace o Reliable Services](service-fabric-reliable-services-introduction.md) nebo Začněte vytvořením [první spolehlivé služby](service-fabric-reliable-services-quick-start.md).
 
-## <a name="aspnet-core"></a>Jádro ASP.NET
+## <a name="aspnet-core"></a>ASP.NET Core
 
 ASP.NET Core je open source architektura pro různé platformy pro vytváření moderních cloudových aplikací připojených k Internetu, jako jsou webové aplikace, aplikace IoT a mobilní back-endy. Service Fabric se integruje s ASP.NET Core, takže můžete napsat bezstavové a stavové ASP.NET Core aplikace, které využívají spolehlivé kolekce a možnosti pokročilé orchestrace Service Fabric.
 

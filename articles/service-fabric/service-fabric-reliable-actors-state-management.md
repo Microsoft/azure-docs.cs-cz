@@ -1,17 +1,15 @@
 ---
 title: Správa stavu Reliable Actors
 description: Popisuje, jak je stav Reliable Actors spravovaný, trvalý a replikovaný pro zajištění vysoké dostupnosti.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d5859886dbd1211f929be1031237f7e7d9b1fc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: badfc490f26b71881e7970c2c0be3472abfec25a
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89611720"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575597"
 ---
 # <a name="reliable-actors-state-management"></a>Správa stavu Reliable Actors
 Reliable Actors jsou objekty s jedním vláknem, které mohou zapouzdřit logiku i stav. Vzhledem k tomu, že objekty actor běží na Reliable Services, mohou spolehlivě udržovat stav pomocí stejných mechanismů trvalosti a replikace. Díky tomu objekty actor neztratí stav po selhání, po opětovné aktivaci po uvolnění paměti nebo při jejich přesunu mezi uzly v clusteru kvůli vyrovnávání nebo upgradu prostředků.

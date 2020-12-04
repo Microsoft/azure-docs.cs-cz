@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
-ms.date: 10/13/2020
+ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: d82cbafbbdeb379c8eb97494ca8d3243f356b7a1
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 18eb952d06d83b4604625a795be3c8512c3f90d7
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542112"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576583"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Správa a zvýšení kvót pro prostředky pomocí Azure Machine Learning
 
@@ -45,25 +45,29 @@ Spolu se správou kvót můžete zjistit, jak [plánovat a spravovat náklady na
 
 V této části se dozvíte o výchozích a maximálních limitech kvóty pro následující prostředky:
 
++ Prostředky Azure Machine Learning
+  + Azure Machine Learning COMPUTE
+  + Azure Machine Learning kanály
 + Virtuální počítače
-+ Azure Machine Learning COMPUTE
-+ Azure Machine Learning kanály
 + Azure Container Instances
 + Azure Storage
 
 > [!IMPORTANT]
 > Omezení se mohou změnit. Nejnovější informace najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md) pro všechny služby Azure.
 
-### <a name="virtual-machines"></a>Virtuální počítače
-Každé předplatné Azure má omezený počet virtuálních počítačů napříč všemi službami. Jádra virtuálních počítačů mají omezení regionálního součtu a místní omezení na každou velikost řady. Obě omezení se vynutily samostatně.
+### <a name="azure-machine-learning-assets"></a>Prostředky Azure Machine Learning
+Následující omezení prostředků platí pro jednotlivé pracovní prostory. 
 
-Představte si například předplatné s omezením celkového počtu 30 jader virtuálního počítače na oblast USA – východ, omezením počtu 30 jader na řadu A a 30 jader na řadu D. V tomto předplatném by bylo možné nasadit virtuální počítače s 30 a1 nebo 30 virtuálních počítačů D1 nebo kombinaci dvou, která nepřekračuje celkem 30 jader.
+| **Prostředek** | **Maximální omezení** |
+| --- | --- |
+| Datové sady | 10 milionů |
+| Běží | 10 milionů |
+| Modely | 10 milionů|
+| Artifacts | 10 milionů |
 
-Omezení pro virtuální počítače nad rámec hodnot zobrazených v následující tabulce nelze vyvolat.
+Maximální **Doba běhu** je navíc 30 dnů a maximální počet **zaznamenaných metrik na spuštění** je 1 000 000.
 
-[!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
-
-### <a name="azure-machine-learning-compute"></a>Azure Machine Learning COMPUTE
+#### <a name="azure-machine-learning-compute"></a>Azure Machine Learning COMPUTE
 [Azure Machine Learning COMPUTE](concept-compute-target.md#azure-machine-learning-compute-managed) má výchozí omezení pro počet jader i počet jedinečných výpočetních prostředků v rámci předplatného, který je povolený pro jednotlivé oblasti. Tato kvóta je oddělená od kvóty jádra virtuálního počítače z předchozí části.
 
 [Požádejte o zvýšení kvóty](#request-quota-increases) , aby se limity v této části zvýšily až do maximálního limitu uvedeného v tabulce.
@@ -90,13 +94,22 @@ Následující tabulka uvádí další omezení, která nemůžete překročit.
 <sup>1</sup> maximální doba života je doba mezi tím, kdy se spuštění spustí a kdy se dokončí. Dokončená spuštění budou trvalá po neomezenou dobu. Data pro spuštění nedokončená v rámci maximální doby života nejsou dostupná.
 <sup>2</sup> úlohy na uzlu s nízkou prioritou se můžou kdykoli považovat za omezení kapacity. Doporučujeme, abyste v úloze implementovali kontrolní body.
 
-### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning kanály
+#### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning kanály
 [Azure Machine Learning kanály](concept-ml-pipelines.md) mají následující omezení.
 
-| **Prostředek** | **Počtu** |
+| **Prostředek** | **Omezení** |
 | --- | --- |
 | Kroky v rámci kanálu | 30 000 |
 | Pracovní prostory na skupinu prostředků | 800 |
+
+### <a name="virtual-machines"></a>Virtuální počítače
+Každé předplatné Azure má omezený počet virtuálních počítačů napříč všemi službami. Jádra virtuálních počítačů mají omezení regionálního součtu a místní omezení na každou velikost řady. Obě omezení se vynutily samostatně.
+
+Představte si například předplatné s omezením celkového počtu 30 jader virtuálního počítače na oblast USA – východ, omezením počtu 30 jader na řadu A a 30 jader na řadu D. V tomto předplatném by bylo možné nasadit virtuální počítače s 30 a1 nebo 30 virtuálních počítačů D1 nebo kombinaci dvou, která nepřekračuje celkem 30 jader.
+
+Omezení pro virtuální počítače nad rámec hodnot zobrazených v následující tabulce nelze vyvolat.
+
+[!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
 
 ### <a name="container-instances"></a>Container Instances
 

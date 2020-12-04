@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 57948cf705d2a58b4f8e19e56121115ba33362ad
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: a427c77ec23bb933f96d8aec54ca33169aee84d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518630"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576022"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Nejčastější dotazy k Azure synapse Analytics
 
@@ -71,7 +71,7 @@ Odpověď: synapse odkaz na Apache Spark je GA. Odkaz synapse pro fond SQL bez s
 
 Odpověď: Ano! Všechny artefakty kanálů, poznámkové bloky, skripty SQL a definice úloh Sparku se budou nacházet v GITU. Všechny definice fondů budou uloženy v GITU jako šablony ARM. Vyhrazené objekty fondu SQL (schémata, tabulky, zobrazení atd.) se budou spravovat pomocí databázových projektů s podporou CI/CD.
 
-## <a name="pipelines"></a>Pipelines
+## <a name="pipelines"></a>Kanály
 
 ### <a name="q-how-do-i-ensure-i-know-what-credential-is-being-used-to-run-a-pipeline"></a>Otázka: Návody vědět, jaké přihlašovací údaje se používají ke spuštění kanálu? 
 
@@ -83,7 +83,7 @@ Odpověď: ne v tomto okamžiku.
 
 ### <a name="q-how-do-i-migrate-existing-pipelines-from-azure-data-factory-to-an-azure-synapse-workspace"></a>Otázka: Návody migrovat existující kanály z Azure Data Factory do pracovního prostoru Azure synapse?
 
-Odpověď: v tuto chvíli musíte ručně znovu vytvořit kanály Azure Data Factory a související artefakty ručně. 
+Odpověď: v tuto chvíli musíte ručně znovu vytvořit kanály Azure Data Factory a související artefakty tím, že vyexportujete JSON z původního kanálu a importujete ho do svého pracovního prostoru synapse.
 
 ## <a name="apache-spark"></a>Apache Spark
 
@@ -146,6 +146,6 @@ Odpověď: můžete najít úplný seznam rozdílů v [rozdílech funkcí T-SQL 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Začínáme s Azure synapse Analytics](get-started.md)
+* [Začínáme s Azure Synapse Analytics](get-started.md)
 * [Vytvoření pracovního prostoru](quickstart-create-workspace.md)
 * [Použití bezserverového fondu SQL](quickstart-sql-on-demand.md)

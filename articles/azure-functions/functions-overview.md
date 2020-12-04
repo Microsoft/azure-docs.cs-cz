@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperfq2
-ms.openlocfilehash: 514f2e9a82a50f95f9c054c6a54e7b5af3c0af15
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a312c0ff255df4545181755ae6accd0d7dfb13a2
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96167773"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574849"
 ---
 # <a name="introduction-to-azure-functions"></a>Úvod do Azure Functions
 
@@ -43,7 +43,7 @@ Níže jsou uvedeny běžné, _ale nemají vyčerpávající význam_, sadu scé
 | **Spouštění naplánovaných úloh** | Spustit kód v [Nastavení časů](./functions-bindings-timer.md) |
 | **Vytváření spolehlivých systémů fronty zpráv** | Zpracování front zpráv pomocí [Queue Storage](./functions-bindings-storage-queue.md), [Service Bus](./functions-bindings-service-bus.md)nebo [Event Hubs](./functions-bindings-event-hubs.md) |
 | **Analýza datových proudů IoT** | Shromažďování a zpracování [dat ze zařízení IoT](./functions-bindings-event-iot.md) |
-| **Zpracování dat v reálném čase** | Použití [funkcí a signálu R](./functions-bindings-signalr-service.md) k reakci na data v daném okamžiku |
+| **Zpracování dat v reálném čase** | Použití [funkcí a signálů](./functions-bindings-signalr-service.md) k reakci na data v daném okamžiku |
 
 Při sestavování funkcí máte k dispozici následující možnosti a prostředky:
 

@@ -8,12 +8,12 @@ ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ef6e86bbb55a2c51779f2dcf60f802ce549516cb
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 4ac7f300fa88d57efe65c6d79645d4e75ca7edd9
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959675"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575478"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Kurz: generování dat simulovaného zařízení
 
@@ -43,7 +43,7 @@ Dokončení úkolů popsaných v tomto článku by mělo trvat přibližně 20 m
 
 Real-World ekvivalent práce v tomto kroku by pravděpodobně prováděli vývojáři zařízení a cloudové vývojáře.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Každý článek v sérii vychází z práce v předchozím článku. Pokud jste dorazili přímo do tohoto článku, přejděte na [první článek](tutorial-machine-learning-edge-01-intro.md) v řadě.
 
@@ -157,6 +157,10 @@ Data, která jsme právě poslali do služby IoT Hub, byla směrována do kontej
 1. Soubory jsou zapsané ve formátu [Avro](https://avro.apache.org/) . Dvojím kliknutím na jeden z těchto souborů otevřete jinou kartu prohlížeče a částečně vykreslete data. Pokud se zobrazí výzva k otevření souboru v programu, můžete zvolit VS Code a správně se vykreslí.
 
 1. Není nutné se pokusit o data číst nebo interpretovat data hned teď; provedeme ho v dalším článku.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Tento kurz je součástí sady, kde každý článek sestaví na práci, která se provádí v předchozích verzích. Počkejte prosím na vyčištění všech prostředků, dokud nedokončíte finální kurz.
 
 ## <a name="next-steps"></a>Další kroky
 

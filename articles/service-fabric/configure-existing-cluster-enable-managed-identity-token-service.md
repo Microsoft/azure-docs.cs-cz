@@ -3,13 +3,12 @@ title: Konfigurace podpory spravované identity v existujícím clusteru Service
 description: Tady je postup povolení podpory spravovaných identit v existujícím clusteru Azure Service Fabric.
 ms.topic: article
 ms.date: 03/11/2019
-ms.custom: sfrev
-ms.openlocfilehash: 722c507300cc5766d162f336f77f60293c5c90dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7bcba34e941f6fee038aa475d7c0869eb65aca2e
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257612"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574696"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>Konfigurace podpory spravované identity v existujícím clusteru Service Fabric
 

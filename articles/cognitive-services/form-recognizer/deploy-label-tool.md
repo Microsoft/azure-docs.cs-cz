@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: df800938d568af0b94cfb1d368ef32e9b085b6eb
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 543e6115be30963600d867bb9c2a03dfbb54e9f1
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913105"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576549"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Nasazení ukázkového nástroje pro popisování
 
@@ -34,16 +34,16 @@ Nejrychlejší způsob, jak začít s označováním dat, je spustit nástroj pr
 
 Než začneme, je důležité si uvědomit, že existují dva způsoby, jak nasadit vzorový Nástroj pro označování do instance kontejneru Azure (ACI). Obě možnosti slouží ke spuštění ukázkového nástroje pro označování pomocí ACI: 
 
-* [Použití webu Azure Portal](#azure-portal)
+* [Použití Azure Portal](#azure-portal)
 * [Použití Azure CLI](#azure-cli)
 
 ### <a name="azure-portal"></a>portál Azure
 
 Pomocí následujících kroků vytvořte nový prostředek pomocí Azure Portal: 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/signin/index/).
-2. Vyberte **Vytvořit prostředek** . 
-3. Pak vyberte **Webová aplikace** . 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/signin/index/).
+2. Vyberte **Vytvořit prostředek**. 
+3. Pak vyberte **Webová aplikace**. 
 
    > [!div class="mx-imgBorder"]
    > ![Výběr webové aplikace](./media/quickstarts/formre-create-web-app.png)
@@ -136,7 +136,7 @@ DNS_NAME_LABEL=aci-demo-$RANDOM
 az container create \
   --resource-group <resource_group_name> \
   --name <name> \
-  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview \
   --ports 3000 \
   --dns-name-label $DNS_NAME_LABEL \
   --location <region name> \

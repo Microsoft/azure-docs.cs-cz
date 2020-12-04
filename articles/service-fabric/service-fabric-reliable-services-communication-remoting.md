@@ -1,17 +1,15 @@
 ---
 title: Vzdálená komunikace služby pomocí C# v Service Fabric
 description: Vzdálená komunikace Service Fabric umožňuje klientům a službám komunikovat se službami jazyka C# pomocí vzdáleného volání procedur.
-author: vturecek
 ms.topic: conceptual
 ms.date: 09/20/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 246b1456c05605c4015c19e1a139e9ad65f6eaba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3659fea73abae3c9c5264f227b90d0af95a93e7
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022152"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576651"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Vzdálená komunikace služby v jazyce C# s Reliable Services
 

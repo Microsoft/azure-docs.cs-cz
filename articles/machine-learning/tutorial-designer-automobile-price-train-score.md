@@ -10,14 +10,14 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: 0475e7a7b9bb40e77fe23362ff098350037bdd30
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: ca812fc7548e3c70f1faa1e1ed6a34afda3872af
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555252"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575971"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer"></a>Kurz: předpověď ceny automobilu pomocí návrháře
+# <a name="tutorial-predict-automobile-price-with-the-designer"></a>Kurz: Predikce ceny automobilů s využitím návrháře
 
 
 V tomto kurzu se dozvíte, jak pomocí návrháře Azure Machine Learning naučit a nasazovat model strojového učení, který předpovídá cenu každého auta. Návrhář je nástroj pro přetahování, který umožňuje vytvářet modely strojového učení bez jediného řádku kódu.
@@ -48,7 +48,10 @@ Pokud chcete vytvořit kanál Azure Machine Learning, potřebujete Azure Machine
 
 ### <a name="create-a-new-workspace"></a>Vytvoření nového pracovního prostoru
 
-Aby bylo možné používat návrháře, musíte nejprve použít pracovní prostor Azure Machine Learning. Pracovní prostor je prostředek nejvyšší úrovně pro Azure Machine Learning, poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte v Azure Machine Learning.
+K použití návrháře potřebujete Azure Machine Learning pracovní prostor. Pracovní prostor je prostředek nejvyšší úrovně pro Azure Machine Learning, poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte v Azure Machine Learning. Pokyny k vytvoření pracovního prostoru najdete v tématu [Vytvoření a správa Azure Machine Learningch pracovních prostorů](how-to-manage-workspace.md).
+
+> [!NOTE]
+> Pokud váš pracovní prostor používá virtuální síť, existují další kroky konfigurace, které musíte použít pro použití návrháře. Další informace najdete v tématu [použití Azure Machine Learning studia ve službě Azure Virtual Network](how-to-enable-studio-virtual-network.md) .
 
 ### <a name="create-the-pipeline"></a>Vytvoření kanálu
 
@@ -118,7 +121,7 @@ Při výukovém modelu je nutné provést něco o chybějících datech. Ve slou
 
 1. Přetáhněte modul **Výběr sloupců v datové sadě** na plátno. Přetáhněte modul pod modul DataSet.
 
-1. Připojte datovou sadu **dat o ceně automobilu (RAW)** do modulu **Výběr sloupců v datové sadě** . Přetáhněte z výstupního portu datové sady, což je malý kroužek v dolní části datové sady na plátně, na vstupní port pro **Výběr sloupců v datové sadě** , což je malý kruh v horní části modulu.
+1. Připojte datovou sadu **dat o ceně automobilu (RAW)** do modulu **Výběr sloupců v datové sadě** . Přetáhněte z výstupního portu datové sady, což je malý kroužek v dolní části datové sady na plátně, na vstupní port pro **Výběr sloupců v datové sadě**, což je malý kruh v horní části modulu.
 
     > [!TIP]
     > Pokud připojíte výstupní port jednoho modulu ke vstupnímu portu jiného, vytvoříte tok dat prostřednictvím kanálu.
@@ -275,7 +278,7 @@ Teď, když je váš kanál všechna nastavení, můžete odeslat spuštění ka
     
     Stav spuštění a podrobnosti můžete zobrazit v pravém horním rohu plátna.
     
-    Pokud je první spuštění, může trvat až 20 minut, než se váš kanál dokončí. Výchozí nastavení COMPUTE mají minimální velikost uzlu 0, což znamená, že Návrhář musí přidělit prostředky po nečinnosti. Opakované spuštění kanálu bude trvat kratší dobu, protože výpočetní prostředky už jsou přidělené. Kromě toho Návrhář používá výsledky v mezipaměti pro každý modul k dalšímu zvýšení efektivity.
+    Pokud se jedná o první spuštění, může trvat až 20 minut, než se váš kanál dokončí. Výchozí nastavení COMPUTE mají minimální velikost uzlu 0, což znamená, že Návrhář musí přidělit prostředky po nečinnosti. Opakované spuštění kanálu bude trvat kratší dobu, protože výpočetní prostředky už jsou přidělené. Kromě toho Návrhář používá výsledky v mezipaměti pro každý modul k dalšímu zvýšení efektivity.
 
 ### <a name="view-scored-labels"></a>Zobrazit popisky s skóre
 
@@ -295,11 +298,11 @@ Pomocí **modelu vyhodnocení** můžete zjistit, jak dobře byl vyškolený mod
 
 Pro váš model se zobrazí následující statistiky:
 
-* **Střední absolutní chyba (Mae)** : průměr absolutních chyb. Chyba je rozdíl mezi předpokládanou hodnotou a skutečnou hodnotou.
-* **Původní střední hodnota chyby (RMSE)** : druhá odmocnina průměru kvadratických chyb předpovědi provedených v testovací datové sadě.
-* **Relativní absolutní chyba** : Průměr absolutních chyb relativních k absolutnímu rozdílu mezi skutečnými hodnotami a průměrem všech skutečných hodnot
-* **Relativní kvadratická chyba** : Průměr kvadratických chyb relativních ke kvadratickému rozdílu mezi skutečnými hodnotami a průměrem všech skutečných hodnot
-* **Koeficient stanovitelnosti** : označuje se také jako hodnota v hodnotě R. Tato statistická metrika indikuje, jak dobře model odpovídá datům.
+* **Střední absolutní chyba (Mae)**: průměr absolutních chyb. Chyba je rozdíl mezi předpokládanou hodnotou a skutečnou hodnotou.
+* **Původní střední hodnota chyby (RMSE)**: druhá odmocnina průměru kvadratických chyb předpovědi provedených v testovací datové sadě.
+* **Relativní absolutní chyba**: Průměr absolutních chyb relativních k absolutnímu rozdílu mezi skutečnými hodnotami a průměrem všech skutečných hodnot
+* **Relativní kvadratická chyba**: Průměr kvadratických chyb relativních ke kvadratickému rozdílu mezi skutečnými hodnotami a průměrem všech skutečných hodnot
+* **Koeficient stanovitelnosti**: označuje se také jako hodnota v hodnotě R. Tato statistická metrika indikuje, jak dobře model odpovídá datům.
 
 Pro každou statistiku chyb platí, že menší hodnota je lepší. Menší hodnota označuje, že předpovědi jsou bližší k skutečným hodnotám. Pro koeficient stanovení je bližší jeho hodnota jednomu (1,0), což je lepší předpovědi.
 

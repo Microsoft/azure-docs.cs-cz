@@ -6,13 +6,13 @@ ms.author: jrasnick
 ms.topic: troubleshooting
 ms.service: synapse-analytics
 ms.subservice: sql
-ms.date: 11/24/2020
-ms.openlocfilehash: 238880cb3f3628df7591e8d08e3057ebfd885900
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/03/2020
+ms.openlocfilehash: 70ce3c82790db0296d5359b5db2e6a323306c309
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466168"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576413"
 ---
 # <a name="troubleshoot-reading-utf-8-text-from-csv-or-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Řešení potíží s čtením textu ve formátu UTF-8 ze souborů CSV nebo Parquet pomocí neserverového fondu SQL ve službě Azure synapse Analytics
 
@@ -24,11 +24,30 @@ Když je text ve formátu UTF-8 načtený ze souboru CSV nebo PARQUET s použit�
 
 Alternativním řešením tohoto problému je, aby při čtení textu UTF-8 ze souborů CSV nebo PARQUET vždy používala kolaci UTF-8.
 
--   V mnoha případech stačí pro databázi (operace s metadaty) nastavit kolaci UTF8.
--   Pokud jste neurčili kolaci UTF8 u externích tabulek, které čtou data UTF8, je nutné znovu vytvořit ovlivněné externí tabulky a nastavit kolaci UTF8 pro sloupce VARCHAR (operace metadat).
+- V mnoha případech stačí pro databázi (operace s metadaty) nastavit kolaci UTF8.
+
+   ```sql
+   alter database MyDB
+         COLLATE Latin1_General_100_BIN2_UTF8;
+   ```
+
+- Můžete explicitně definovat kolaci ve sloupci VARCHAR v OPENROWSET nebo externí tabulce:
+
+   ```sql
+   select geo_id, cases = sum(cases)
+   from openrowset(
+           bulk 'latest/ecdc_cases.parquet', data_source = 'covid', format = 'parquet'
+       ) with ( cases int,
+                geo_id VARCHAR(6) COLLATE Latin1_General_100_BIN2_UTF8 ) as rows
+   group by geo_id
+   ```
+ 
+- Pokud jste neurčili kolaci UTF8 u externích tabulek, které čtou data UTF8, je nutné znovu vytvořit ovlivněné externí tabulky a nastavit kolaci UTF8 pro sloupce VARCHAR (operace metadat).
 
 
 ## <a name="next-steps"></a>Další kroky
 
+* [Dotazování souborů Parquet pomocí synapse SQL](../sql/query-parquet-files.md)
+* [Dotazování na soubory CSV pomocí synapse SQL](../sql/query-single-csv-file.md)
 * [CETAS s synapse SQL](../sql/develop-tables-cetas.md)
 * [Rychlý Start: použití fondu SQL bez serveru](../quickstart-sql-on-demand.md)

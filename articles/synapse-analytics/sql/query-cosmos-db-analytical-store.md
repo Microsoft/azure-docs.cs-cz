@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 439337233e24dfcae2c8c911a9224fd3394d6846
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a7e9cdb18d109abeef7d7d7237444ac55f9e7da1
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462696"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576345"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Dotazování na data Azure Cosmos DB pomocí neserverového fondu SQL ve verzi Preview odkazu na Azure synapse
 
@@ -33,6 +33,12 @@ V tomto článku se dozvíte, jak napsat dotaz s neserverovým fondem SQL, kter�
 
 ## <a name="overview"></a>Přehled
 
+Fond SQL bez serveru umožňuje dotazovat se na Azure Cosmos DB analytické úložiště pomocí `OPENROWSET` funkce. 
+- `OPENROWSET` s vloženým klíčem Tato syntaxe se dá použít k dotazování kolekce Azure Cosmos DB bez nutnosti připravovat přihlašovací údaje.
+- `OPENROWSET` které odkazovalo na přihlašovací údaje obsahující Cosmos DB klíč účtu. Tato syntaxe se dá použít k vytvoření zobrazení Azure Cosmos DB kolekcí.
+
+### <a name="openrowset-with-key"></a>[OPENROWSET s klíčem](#tab/openrowset-key)
+
 Aby bylo možné podporovat dotazování a analýzu dat ve službě Azure Cosmos DB Analytical Store, fond SQL bez serveru používá následující `OPENROWSET` syntaxi:
 
 ```sql
@@ -45,17 +51,39 @@ OPENROWSET(
 
 Připojovací řetězec Azure Cosmos DB určuje Azure Cosmos DB název účtu, název databáze, hlavní klíč databázového účtu a nepovinný název oblasti `OPENROWSET` funkce.
 
-> [!IMPORTANT]
-> Ujistěte se, že používáte určitou databázovou kolaci UTF-8, například `Latin1_General_100_CI_AS_SC_UTF8` proto, že řetězcové hodnoty v Azure Cosmos DB analytických obchodech jsou kódované jako text v kódování UTF-8.
-> Neshoda mezi kódováním textu v souboru a kolaci může způsobit neočekávané chyby převodu textu.
-> Výchozí kolaci aktuální databáze můžete snadno změnit pomocí příkazu T-SQL `alter database current collate Latin1_General_100_CI_AI_SC_UTF8` .
-
 Připojovací řetězec má následující formát:
 ```sql
 'account=<database account name>;database=<database name>;region=<region name>;key=<database account master key>'
 ```
 
 Název kontejneru Azure Cosmos DB je zadán bez uvozovek v `OPENROWSET` syntaxi. Pokud má název kontejneru nějaké speciální znaky, například pomlčkou (-), měl by se název v syntaxi uzavřít do hranatých závorek ( `[]` ) `OPENROWSET` .
+
+### <a name="openrowset-with-credential"></a>[OPENROWSET s přihlašovacími údaji](#tab/openrowset-credential)
+
+Můžete použít `OPENROWSET` syntaxi, která odkazuje na přihlašovací údaje:
+
+```sql
+OPENROWSET( 
+       PROVIDER = 'CosmosDB',
+       CONNECTION = '<Azure Cosmos DB connection string without account key>',
+       OBJECT = '<Container name>',
+       [ CREDENTIAL | SERVER_CREDENTIAL ] = '<credential name>'
+    )  [ < with clause > ] AS alias
+```
+
+Připojovací řetězec Azure Cosmos DB v tomto případě neobsahuje klíč. Připojovací řetězec má následující formát:
+```sql
+'account=<database account name>;database=<database name>;region=<region name>'
+```
+
+Hlavní klíč databázového účtu je umístěný v přihlašovacích údajích na úrovni serveru nebo v rámci pověření v oboru databáze. 
+
+---
+
+> [!IMPORTANT]
+> Ujistěte se, že používáte určitou databázovou kolaci UTF-8, například `Latin1_General_100_CI_AS_SC_UTF8` proto, že řetězcové hodnoty v Azure Cosmos DB analytických obchodech jsou kódované jako text v kódování UTF-8.
+> Neshoda mezi kódováním textu v souboru a kolaci může způsobit neočekávané chyby převodu textu.
+> Výchozí kolaci aktuální databáze můžete snadno změnit pomocí příkazu T-SQL `alter database current collate Latin1_General_100_CI_AI_SC_UTF8` .
 
 > [!NOTE]
 > Fond SQL bez serveru nepodporuje dotazování na Azure Cosmos DB transakční úložiště.
@@ -76,6 +104,9 @@ Pokud chcete postupovat podle tohoto článku předvádí, jak zadávat dotazy n
 
 Nejjednodušší způsob, jak prozkoumat data v Azure Cosmos DB, je použití možnosti automatického odvození schématu. Vyvoláním `WITH` klauzule z `OPENROWSET` příkazu můžete instruovat fond SQL bez serveru na automatické rozpoznávání (odvodit) schéma analytického úložiště kontejneru Azure Cosmos DB.
 
+
+### <a name="openrowset-with-key"></a>[OPENROWSET s klíčem](#tab/openrowset-key)
+
 ```sql
 SELECT TOP 10 *
 FROM OPENROWSET( 
@@ -83,6 +114,25 @@ FROM OPENROWSET(
        'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
        EcdcCases) as documents
 ```
+
+### <a name="openrowset-with-credential"></a>[OPENROWSET s přihlašovacími údaji](#tab/openrowset-credential)
+
+```sql
+/*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
+    CREATE CREDENTIAL MyCosmosDbAccountCredential
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+*/
+SELECT TOP 10 *
+FROM OPENROWSET(
+      PROVIDER = 'CosmosDB',
+      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
+      OBJECT = 'EcdcCases',
+      SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
+    ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+```
+
+---
+
 V předchozím příkladu jsme pověřili fond SQL bez serveru pro připojení k `covid` databázi v Azure Cosmos DB účet `MyCosmosDbAccount` ověřený pomocí klíče Azure Cosmos dB (fiktivního v předchozím příkladu). Pak jsme k `EcdcCases` analytickému úložišti kontejneru přistupovali v `West US 2` oblasti. Vzhledem k tomu, že neexistuje žádná projekce specifických vlastností, `OPENROWSET` funkce vrátí všechny vlastnosti z Azure Cosmos DBch položek.
 
 Za předpokladu, že položky v kontejneru Azure Cosmos DB `date_rep` mají `cases` vlastnosti, a `geo_id` , výsledky tohoto dotazu jsou uvedeny v následující tabulce:
@@ -119,6 +169,7 @@ I když funkce automatického odvození schématu v nástroji `OPENROWSET` posky
 
 Tyto ploché dokumenty JSON ve Azure Cosmos DB můžou být reprezentované jako sada řádků a sloupců v synapse SQL. `OPENROWSET`Funkce umožňuje určit podmnožinu vlastností, které chcete číst, a přesné typy sloupců v `WITH` klauzuli:
 
+### <a name="openrowset-with-key"></a>[OPENROWSET s klíčem](#tab/openrowset-key)
 ```sql
 SELECT TOP 10 *
 FROM OPENROWSET(
@@ -127,7 +178,21 @@ FROM OPENROWSET(
        EcdcCases
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
-
+### <a name="openrowset-with-credential"></a>[OPENROWSET s přihlašovacími údaji](#tab/openrowset-credential)
+```sql
+/*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
+    CREATE CREDENTIAL MyCosmosDbAccountCredential
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+*/
+SELECT TOP 10 *
+FROM OPENROWSET(
+      PROVIDER = 'CosmosDB',
+      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
+      OBJECT = 'EcdcCases',
+      SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
+    ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+```
+---
 Výsledek tohoto dotazu může vypadat podobně jako v následující tabulce:
 
 | date_rep | věcech | geo_id |
@@ -137,6 +202,26 @@ Výsledek tohoto dotazu může vypadat podobně jako v následující tabulce:
 | 2020-08-11 | 163 | RS |
 
 Další informace o typech SQL, které by se měly používat pro Azure Cosmos DB hodnoty, najdete na stránce [pravidla pro mapování typů SQL](#azure-cosmos-db-to-sql-type-mappings) na konci článku.
+
+## <a name="create-view"></a>Vytvořit zobrazení
+
+Po identifikaci schématu můžete zobrazit zobrazení dat Azure Cosmos DB. Klíč účtu Azure Cosmos DB byste měli umístit do samostatného přihlašovacího údaje a odkazovat na toto pověření z `OPENROWSET` funkce. Neudržujte klíč účtu v definici zobrazení.
+
+```sql
+CREATE CREDENTIAL MyCosmosDbAccountCredential
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+GO
+CREATE OR ALTER VIEW EcdcCases
+AS SELECT *
+FROM OPENROWSET(
+      PROVIDER = 'CosmosDB',
+      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
+      OBJECT = 'EcdcCases',
+      SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
+    ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+```
+
+Nepoužívejte `OPENROWSET` bez explicitně definovaného schématu, protože by to mohlo mít vliv na výkon. Ujistěte se, že používáte nejmenší možné velikosti pro sloupce (například VARCHAR (100) namísto default VARCHAR (8000)). Měli byste použít určitou kolaci UTF-8 jako výchozí kolaci databáze nebo ji nastavit jako explicitní kolaci sloupců, aby nedocházelo k [problémům s převodem ve formátu UTF-8](/troubleshoot/reading-utf8-text). Kolace `Latin1_General_100_BIN2_UTF8` poskytuje nejlepší výkon, když Yu filtruje data pomocí některých řetězcových sloupců.
 
 ## <a name="query-nested-objects-and-arrays"></a>Dotazování vnořených objektů a polí
 
@@ -349,7 +434,7 @@ V tomto příkladu je počet případů uložen buď jako `int32` , `int64` nebo
 
 Možné chyby a akce při řešení potíží jsou uvedené v následující tabulce.
 
-| Chyba | Původní příčina |
+| Chybová | Původní příčina |
 | --- | --- |
 | Chyby syntaxe:<br/> -Nesprávná syntaxe poblíž textu "OPENROWSET"<br/> - `...` není rozpoznaná možnost HROMADNÉho poskytovatele OPENROWSET.<br/> – Nesprávná syntaxe poblíž textu `...` | Možné hlavní příčiny:<br/> – Nepoužívá CosmosDB jako první parametr.<br/> – Použití řetězcového literálu místo identifikátoru ve třetím parametru.<br/> -Nelze zadat třetí parametr (název kontejneru). |
 | V připojovacím řetězci CosmosDB došlo k chybě. | – Účet, databáze nebo klíč není zadaný. <br/> – V připojovacím řetězci je nějaká možnost, která není rozpoznaná.<br/> – Střední ( `;` ) je umístěn na konci připojovacího řetězce. |

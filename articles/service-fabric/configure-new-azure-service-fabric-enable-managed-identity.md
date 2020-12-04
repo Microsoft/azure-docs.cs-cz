@@ -3,13 +3,12 @@ title: Konfigurace podpory spravovaných identit pro nový cluster Service Fabri
 description: Tady je postup povolení podpory spravovaných identit v novém clusteru Azure Service Fabric.
 ms.topic: article
 ms.date: 12/09/2019
-ms.custom: sfrev
-ms.openlocfilehash: dd0cbd3251185a7831852ead47ca0b120126cf55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae4fec452a2342a68843d874ba955b594014c46d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81415673"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574662"
 ---
 # <a name="configure-managed-identity-support-for-a-new-service-fabric-cluster"></a>Konfigurace podpory spravovaných identit pro nový cluster Service Fabric
 
@@ -36,7 +35,7 @@ Pokud chcete službu Managed identity token Service povolit při vytváření cl
 ]
 ```
 
-## <a name="errors"></a>chyby
+## <a name="errors"></a>Chyby
 
 Pokud se nasazení v této zprávě nepovede, znamená to, že cluster není na požadované verzi Service Fabric (Minimální podporovaný modul runtime je 6,5 CU2):
 

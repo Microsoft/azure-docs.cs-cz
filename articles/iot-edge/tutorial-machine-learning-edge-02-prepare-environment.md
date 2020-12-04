@@ -8,18 +8,18 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f261db8d40e1a1cc1737ff6a3f5c50da661b73e6
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: f9471b6b465b63f48feb3bda82e7827308aae945
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433471"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575394"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Kurz: nastavení prostředí pro strojové učení na IoT Edge
 
 Tento článek vám pomůže připravit vaše prostředí pro vývoj a nasazení. Nejdřív nastavte vývojový počítač pro všechny nástroje, které potřebujete. Pak vytvořte potřebné cloudové prostředky v Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Každý článek v sérii vychází z práce v předchozím článku. Pokud jste dorazili přímo do tohoto článku, přejděte na [první článek](tutorial-machine-learning-edge-01-intro.md) v řadě.
 
@@ -209,6 +209,10 @@ V rámci vytváření služby IoT Hub vytvořil skript, který jsme spustili v p
 1. Podívejte se na **dotaz směrování**, který je nastaven na **hodnotu true**. Toto nastavení znamená, že všechny zprávy telemetrie zařízení budou odpovídat této trase; a proto se všechny zprávy odešlou do koncového bodu **turbofanDeviceStorage** .
 
 1. Vzhledem k tomu, že se neudělaly žádné úpravy, stačí tuto stránku zavřít.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Tento kurz je součástí sady, kde každý článek sestaví na práci, která se provádí v předchozích verzích. Počkejte prosím na vyčištění všech prostředků, dokud nedokončíte finální kurz.
 
 ## <a name="next-steps"></a>Další kroky
 

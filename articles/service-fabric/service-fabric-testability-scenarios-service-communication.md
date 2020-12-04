@@ -1,16 +1,14 @@
 ---
 title: 'Testování: komunikace s službami'
 description: Komunikace mezi službami je důležitým integračním bodem aplikace Service Fabric. Tento článek popisuje faktory návrhu a postupy testování.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 87b922cb9655588a22c739d26c9ce9e49d35781a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fbf889422d69d031d777acd80cf3becfb3184568
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96007116"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575920"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric scénáře testování: komunikace se službou
 Mikroslužby a architektury zaměřené na služby se přirozeně nacházejí v Azure Service Fabric. V těchto typech distribuovaných architektur se aplikace mikroslužeb s komponentami typicky skládají z několika služeb, které musí vzájemně komunikovat. I v nejjednodušších případech obvykle máte alespoň bezstavovou webovou službu a službu stavového úložiště dat, která potřebuje komunikovat.

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/20/2020
-ms.openlocfilehash: 5045a13bb932f5907584bae23e956374a5757a68
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: ac93d835b8dbdd5a12d031825dcb879160df5e95
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553099"
+ms.locfileid: "96575342"
 ---
 # <a name="asset-insights-on-your-data-in-azure-purview"></a>Přehledy assetů na vašich datech v Azure dosah
 
@@ -20,9 +20,10 @@ Tato příručka popisuje, jak získat přístup k sestavám dosah Asset Insight
 
 V této příručce se dozvíte, jak:
 
-* Podívejte se na přehledy z vašeho účtu dosah.
-* Získejte pohled na vaše data v pohledech na oči.
-* Podrobnosti o dalších podrobnostech o počtu prostředků najdete v podrobnostech.
+> [!div class="checklist"]
+> * Podívejte se na přehledy z vašeho účtu dosah.
+> * Získejte pohled na vaše data v pohledech na oči.
+> * Podrobnosti o dalších podrobnostech o počtu prostředků najdete v podrobnostech.
 
 ## <a name="prerequisites"></a>Předpoklady
 

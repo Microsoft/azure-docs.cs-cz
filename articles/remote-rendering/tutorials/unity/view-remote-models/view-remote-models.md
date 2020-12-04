@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bcee951dc85d9c317bad481ebdb91ff6c761371c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 834df29597abaaadad98b232ce75b32a6431cfc2
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653668"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574730"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Kurz: zobrazení vzdáleného vykresleného modelu
 
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 > * Připojení a odpojení od relací
 > * Načtení modelů do relace vykreslování
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro tento kurz potřebujete:
 
@@ -76,7 +76,7 @@ Je potřeba upravit soubor `Packages/manifest.json` , který je umístěný ve s
 
 Po úpravě a uložení manifestu se Unity automaticky aktualizuje. Potvrďte, že jsou balíčky načteny v okně *projektu* :
 
-:::image type="content" source="./media/confirm-packages.png" alt-text="Nový projekt Unity":::
+:::image type="content" source="./media/confirm-packages.png" alt-text="potvrdit importy balíčků":::
 
 Pokud se vaše balíčky nenačítá, vyhledejte chyby v konzole Unity. Pokud nemáte žádné chyby a stále nevidíte žádné balíčky ve složce **Packages** , zkontrolujte přepínací tlačítko viditelnosti balíčku. \
 ![Snímek obrazovky se šipkou ukazující na přepínací tlačítko viditelnost balíčku](./media/unity-package-visibility.png)
@@ -145,7 +145,7 @@ Následující kroky zajišťují, aby projekt používal nejnovější verzi ba
     * **SpatialPerception**
     * **PrivateNetworkClientServer** (*volitelné*). Tuto možnost vyberte, pokud chcete ke svému zařízení připojit vzdálený ladicí program Unity.
 
-1. V části **podporované rodiny zařízení**povolit **holografické** a **desktopové**
+1. V části **podporované rodiny zařízení** povolit **holografické** a **desktopové**
 1. Zavřít nebo ukotvit panel **nastavení projektu**
 1. Otevřít *soubor->nastavení sestavení*
 1. Vyberte **Univerzální platforma Windows**
@@ -169,7 +169,7 @@ Existují čtyři základní fáze pro zobrazení vzdáleně vygenerovaných mod
 
 ![Zásobník ARR 0](./media/remote-render-stack-0.png)
 
-1. V podokně *projekt* v části **assety**vytvořte novou složku s názvem *RemoteRenderingCore*. Pak uvnitř *RemoteRenderingCore*vytvořte další složku s názvem *skripty*.
+1. V podokně *projekt* v části **assety** vytvořte novou složku s názvem *RemoteRenderingCore*. Pak uvnitř *RemoteRenderingCore* vytvořte další složku s názvem *skripty*.
 
 1. Vytvořte [Nový skript jazyka C#](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) s názvem **RemoteRenderingCoordinator**.
 Váš projekt by měl vypadat takto:
@@ -220,7 +220,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     public static RemoteRenderingCoordinator instance;
 
     // AccountDomain must be '<region>.mixedreality.azure.com' - if no '<region>' is specified, connections will fail
-    // For most people '<region>' is either 'westus2' or 'westeurope'
+    // The list of regions is available at https://docs.microsoft.com/azure/remote-rendering/reference/regions
     [SerializeField]
     private string accountDomain = "westus2.mixedreality.azure.com";
     public string AccountDomain
@@ -605,7 +605,7 @@ Druhá fáze je vytvořit nebo připojit relaci vzdáleného vykreslování (Dal
 
 ![Zásobník ARR 2](./media/remote-render-stack-2.png)
 
-Vzdálená relace je místo, kde se budou modely vykreslovat. Metoda **JoinRemoteSession ()** se pokusí připojit k existující relaci, která je sledována pomocí vlastnosti **LastUsedSessionID** , nebo pokud je v **SessionIDOverride**přiřazeno ID aktivní relace. **SessionIDOverride** je určena pouze pro účely ladění a mělo by se používat pouze tehdy, když víte, že relace existuje a chcete se k ní explicitně připojit.
+Vzdálená relace je místo, kde se budou modely vykreslovat. Metoda **JoinRemoteSession ()** se pokusí připojit k existující relaci, která je sledována pomocí vlastnosti **LastUsedSessionID** , nebo pokud je v **SessionIDOverride** přiřazeno ID aktivní relace. **SessionIDOverride** je určena pouze pro účely ladění a mělo by se používat pouze tehdy, když víte, že relace existuje a chcete se k ní explicitně připojit.
 
 Pokud nejsou k dispozici žádné relace, vytvoří se nová relace. Vytvoření nové relace je však časově náročná operace. Proto byste se měli pokusit vytvořit relace pouze v případě potřeby a znovu je použít (viz [komerční Příprava: sdružování relací, plánování a osvědčené postupy](../commercial-ready/commercial-ready.md#fast-startup-time-strategies) pro další informace o správě relací).
 
@@ -669,7 +669,7 @@ V dalším kroku aplikace potřebuje připojit svůj místní modul runtime ke v
 
 ![ŠIPKA 1 – zásobník 3](./media/remote-render-stack-3.png)
 
-Aplikace také musí naslouchat událostem souvisejícím s připojením mezi modulem runtime a aktuální relací. Tyto změny stavu jsou zpracovávány v **OnLocalRuntimeStatusChanged**. Tento kód bude náš stav **ConnectingToRuntime**. Po připojení v **OnLocalRuntimeStatusChanged**bude stav přejít na **RuntimeConnected**. Připojení k modulu runtime je poslední stav, ve kterém se koordinátor týká, což znamená, že je aplikace prováděná se všemi běžnými konfiguracemi a je připravená začít pracovat s modelem načítání a vykreslování specifických pro relaci.
+Aplikace také musí naslouchat událostem souvisejícím s připojením mezi modulem runtime a aktuální relací. Tyto změny stavu jsou zpracovávány v **OnLocalRuntimeStatusChanged**. Tento kód bude náš stav **ConnectingToRuntime**. Po připojení v **OnLocalRuntimeStatusChanged** bude stav přejít na **RuntimeConnected**. Připojení k modulu runtime je poslední stav, ve kterém se koordinátor týká, což znamená, že je aplikace prováděná se všemi běžnými konfiguracemi a je připravená začít pracovat s modelem načítání a vykreslování specifických pro relaci.
 
  1. Nahraďte metody **ConnectRuntimeToRemoteSession ()** a **DisconnectRuntimeFromRemoteSession ()** s dokončenými verzemi níže.
  1. Je důležité poznamenat **volá** metodu Unity a aktualizovat aktuální aktivní relaci. Tím umožníte, aby aktuální relace odesílala a přijímala zprávy a aktualizovala vyrovnávací paměť snímků pomocí rámců přijatých ze vzdálené relace. Funkčnost pochodu na ni je velmi důležitá.

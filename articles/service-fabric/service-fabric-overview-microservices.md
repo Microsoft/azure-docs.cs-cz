@@ -3,13 +3,12 @@ title: Úvod do mikroslužeb v Azure
 description: Přehled důvodů, proč je vytváření cloudových aplikací s přístupem k mikroslužbám důležité pro vývoj moderních aplikací a způsob, jakým Azure Service Fabric poskytuje platformu k tomuto účelu.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.custom: sfrev
-ms.openlocfilehash: 4345c919e73e57667fb3b9c90c42224326bc3552
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d20e04820c87a7390d9c20e511259ee9860c27f5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91300764"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575648"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>Proč používat při sestavování aplikací přístup k mikroslužbám
 
@@ -43,7 +42,7 @@ Nevýhodou mikroslužeb je, že musíte spravovat více samostatných entit a za
 
 Standardy usnadňují práci mikroslužeb tím, že určují, jak komunikovat a tolerovat jenom věci, které potřebujete ze služby, a ne pevné smlouvy. Je důležité tyto smlouvy v návrhu předem definovat, protože služby se aktualizují nezávisle na sobě. Další popis mincí pro návrh s přístupem k mikroslužbám je "jemně odstupňované architektury orientované na služby" (SOA). "
 
-***V nejjednodušším případě přístup k návrhu mikroslužeb je zhruba o oddělenou federaci služeb, ale nezávislé změny v každé a dohodnuté normě pro komunikaci.***
+***V nejjednodušším případě přístup k návrhu mikroslužeb je zhruba o oddělenou federaci služeb, ale nezávislé změny v každé a dohodnuté normě pro komunikaci.** _
 
 Při vytvoření většího počtu cloudových aplikací si uživatelé zjistili, že toto dekompozice celkové aplikace je nezávislá na nezávislém scénáři, což je lepší dlouhodobý přístup.
 
@@ -67,7 +66,7 @@ Když použijete přístup k mikroslužbám, vytvoříte aplikaci řady malých 
 
 Existují různé definice mikroslužeb. Většina těchto vlastností mikroslužeb se ale široce přijímá:
 
-* Zapouzdřte scénář pro zákazníky nebo firmy. Jaký problém řešíte?
+_ Zapouzdřuje scénář pro zákazníky nebo firmy. Jaký problém řešíte?
 * Vyvinuto malým technickým týmem.
 * Napsané v libovolném programovacím jazyce pomocí libovolného rozhraní.
 * Se skládá z kódu a volitelně také v obou případech nezávisle na verzi, nasazení a škálování.
@@ -77,7 +76,7 @@ Existují různé definice mikroslužeb. Většina těchto vlastností mikroslu�
 
 K navýšení součtu:
 
-***Aplikace mikroslužeb se skládají z malých, nezávisle se správou verzí a škálovatelných služeb zaměřených na zákazníky, které spolu komunikují přes standardní protokoly s dobře definovanými rozhraními.***
+***Aplikace mikroslužeb se skládají z malých, nezávisle se správou verzí a škálovatelných služeb zaměřených na zákazníky, které spolu komunikují přes standardní protokoly s dobře definovanými rozhraními.** _
 
 ### <a name="written-in-any-programming-language-using-any-framework"></a>Napsaný v libovolném programovacím jazyce s použitím libovolného rozhraní
 
@@ -95,9 +94,9 @@ Pojďme se vrátit k našemu porovnání přístupů k monolitické a mikrosluž
 
 ![Service Fabric úložiště stavu platformy][Image2]
 
-***Přístup monolitické na levé straně má izolovanou databázi a úrovně konkrétních technologií.***
+_*_Přístup monolitické na levé straně má izolovanou databázi a úrovně konkrétních technologií._*_
 
-***Přístup k mikroslužbám na pravé straně má graf vzájemně propojených mikroslužeb, kde je stav obvykle vymezen na mikroslužbu a používají se různé technologie.***
+_*_Přístup k mikroslužbám na pravé straně má graf vzájemně propojených mikroslužeb, kde je stav obvykle vymezen na mikroslužbu a používají se různé technologie._*_
 
 V monolitické přístupu aplikace obvykle používá jedinou databázi. Výhodou použití jedné databáze je, že je v jednom umístění, které usnadňuje jejich nasazení. Každá komponenta může mít jednu tabulku, do které se uloží svůj stav. Týmy potřebují výhradně samostatný stav, což je výzva. Je nevyhnutelné, že někdo bude zvážit přidání sloupce do existující tabulky zákazníků, provede spojení mezi tabulkami a vytvoří závislosti ve vrstvě úložiště. Až k tomu dojde, nemůžete škálovat jednotlivé součásti.
 
@@ -137,18 +136,18 @@ Pokyny k [navrhování a vytváření mikroslužeb v Azure](/azure/architecture/
 
 Služba Azure Service Fabric v případě, kdy Microsoft přešla z doručování zabalených produktů, které se obvykle monolitické, na poskytování služeb. Prostředí pro vytváření a provozování velkých služeb, jako je Azure SQL Database a Azure Cosmos DB, Service Fabric tvarování. Platforma se v průběhu času vyvinula jako další služby, které ji přijaly. Service Fabric musela běžet nejen v Azure, ale také v samostatných nasazeních Windows serveru.
 
-***Cílem Service Fabric je vyřešit závažné problémy s vytvářením a provozem služby a efektivně využívat prostředky infrastruktury, takže týmy mohou řešit obchodní problémy pomocí přístupu k mikroslužbám.***
+_*_Cílem Service Fabric je vyřešit závažné problémy s vytvářením a provozem služby a efektivně využívat prostředky infrastruktury, takže týmy mohou řešit obchodní problémy pomocí přístupu k mikroslužbám._*_
 
 Toto krátké video představuje Service Fabric a mikroslužby:
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
 
 Service Fabric vám pomůže vytvářet aplikace, které využívají přístup k mikroslužbám, poskytováním těchto možností:
 
-* Platforma, která poskytuje systémové služby pro nasazení, upgrade, detekci a restartování neúspěšných služeb, zjišťování služeb, směrování zpráv, správu stavu a monitorování stavu.
+_ Platforma, která poskytuje systémové služby pro nasazení, upgrade, detekci a restartování neúspěšných služeb, zjišťování služeb, směrování zpráv, správu stavu a monitorování stavu.
 * Možnost nasazovat aplikace buď v kontejnerech, nebo jako procesy. Service Fabric je kontejner a proces Orchestrator.
 * Rozhraní API pro programování, které vám pomůžou sestavovat aplikace jako mikroslužby: [ASP.NET Core, Reliable Actors a Reliable Services](service-fabric-choose-framework.md). Můžete například získat informace o stavu a diagnostice nebo můžete využít integrovanou vysokou dostupnost.
 
-***Service Fabric se nezávislá o tom, jak službu sestavíte, a můžete použít libovolnou technologii. Poskytuje ale Vestavěná rozhraní API pro programování, která usnadňují vytváření mikroslužeb.***
+***Service Fabric se nezávislá o tom, jak službu sestavíte, a můžete použít libovolnou technologii. Poskytuje ale Vestavěná rozhraní API pro programování, která usnadňují vytváření mikroslužeb.** _
 
 ### <a name="migrating-existing-applications-to-service-fabric"></a>Migrace stávajících aplikací na Service Fabric
 
@@ -162,11 +161,11 @@ Service Fabric umožňuje znovu použít stávající kód a modernizovat ho s n
 
 ![Migrace na mikroslužby][Image3]
 
-Nezapomeňte, že můžete *začít a zastavovat v kterékoli z těchto fází*. Nemusíte postupovat do další fáze. 
+Nezapomeňte, že můžete _start a zastavit v kterékoli z těchto fází *. Nemusíte postupovat do další fáze. 
 
 Pojďme se podívat na příklady pro každou z těchto fází.
 
-**Migrate**  
+**Migrace**  
 Ve dvou případech mnoho společností migruje existující aplikace monolitické do kontejnerů:
 
 * Snížení nákladů, buď z důvodu konsolidace a odebrání stávajícího hardwaru, nebo z důvodu spuštěných aplikací s vyšší hustotou.

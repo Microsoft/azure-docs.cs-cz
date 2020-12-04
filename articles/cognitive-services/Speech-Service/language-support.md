@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 27cf5fef027b1e4786c0ff77f9f673bafea15f98
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9ef585d83c0606bedaf4c0a05c6c87fd52423b9a
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487265"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575529"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -41,12 +41,14 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 |Arabština (Bahrajn), moderní Standard  |`ar-BH` | Jazykový model                                   |
 |Arabština (Egypt)                     |`ar-EG` | Jazykový model                                   |
 |Arabština (Irák)                      |`ar-IQ` | Jazykový model                                   |
+|Arabština (Izrael)                              |`ar-IL` | Jazykový model                                                   |
 |Arabština (Jordánsko)                    |`ar-JO` | Jazykový model                                   |
 |Arabština (Kuvajt)                    |`ar-KW` | Jazykový model                                   |
 |Arabština (Libanon)                   |`ar-LB` | Jazykový model                                   |
 |Arabština (Omán)                      |`ar-OM` | Jazykový model                                   |
 |Arabština (Katar)                     |`ar-QA` | Jazykový model                                   |
 |Arabština (Saúdská Arábie)              |`ar-SA` | Jazykový model                                   |
+|Arabština (stav palestinská samospráva)            |`ar-PS` | Jazykový model                                   |
 |Arabština (Sýrie)                     |`ar-SY` | Jazykový model                                   |
 |Arabština (Spojené arabské emiráty)      |`ar-AE` | Jazykový model                                   |
 |Bulharština (Bulharsko)               |`bg-BG` | Jazykový model                                   |
@@ -64,6 +66,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 |Angličtina (Indie)                    |`en-IN` | Akustický model<br>Jazykový model                 |
 |Angličtina (Irsko)                  |`en-IE` | Jazykový model                                   |
 |Angličtina (Nový Zéland)              |`en-NZ` | Akustický model<br>Jazykový model                 |
+|Angličtina (Nigérie)                          |`en-NG` | Jazykový model                                                     |
 |Angličtina (Filipíny)              |`en-PH` | Jazykový model                                   |
 |Angličtina (Singapur)                |`en-SG` | Jazykový model                                   |
 |Angličtina (Jihoafrická republika)             |`en-ZA` | Jazykový model                                   |
@@ -103,6 +106,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 |Španělština (Dominikánská republika)       |`es-DO` | Jazykový model                                   |
 |Španělština (Ekvádor)                  |`es-EC` | Jazykový model                                   |
 |Španělština (Salvador)              |`es-SV` | Jazykový model                                   |
+|Španělština (Rovníková Guinea)            |`es-GQ` | Jazykový model                                   |
 |Španělština (Guatemala)                |`es-GT` | Jazykový model                                   |
 |Španělština (Honduras)                 |`es-HN` | Jazykový model                                   |
 |Španělština (Mexiko)                   |`es-MX` | Akustický model<br>Jazykový model                 |

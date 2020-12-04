@@ -2,13 +2,13 @@
 title: Filtrování událostí pro Azure Event Grid
 description: Popisuje, jak filtrovat události při vytváření předplatného Azure Event Grid.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 837209d4197c271598155776b8d171a705e1f454
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/03/2020
+ms.openlocfilehash: bc3e84037693fcd909961ba409871d947ef1de7d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86120088"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574902"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Principy filtrování událostí pro předplatná Event Grid
 
@@ -72,7 +72,7 @@ Pokud zadáte jeden filtr s více hodnotami, provede se operace **nebo** , takž
 ]
 ```
 
-Pokud zadáte více různých filtrů, provede se operace **a** , takže je nutné splnit všechny podmínky filtru. Tady je příklad: 
+Pokud zadáte více různých filtrů, operace **a** se provede, takže je nutné splnit všechny podmínky filtru. Tady je příklad: 
 
 ```json
 "advancedFilters": [
@@ -115,7 +115,24 @@ Dostupné operátory pro **řetězce** jsou:
 * StringIn
 * StringNotIn
 
-Všechna porovnávání řetězců nerozlišují **velká a malá písmena.**
+Všechna porovnávání řetězců nerozlišují **velká a malá písmena** .
+
+> [!NOTE]
+> Pokud JSON události neobsahuje klíč rozšířeného filtru, filtr se evaulated jako **neodpovídající** pro následující operátory: 
+> - NumberGreaterThan
+> - NumberGreaterThanOrEquals
+> - NumberLessThan
+> - NumberLessThanOrEquals
+> - NumberIn
+> - BoolEquals
+> - StringContains
+> - StringBeginsWith
+> - StringEndsWith
+> - StringIn
+> 
+>Filtr je evaulated podle **odpovídajících** následujících operátorů:
+> - NumberNotIn
+> - StringNotIn
 
 ### <a name="key"></a>Klíč
 
@@ -154,7 +171,7 @@ Rozšířené filtrování má následující omezení:
 * 5 rozšířených filtrů a 25 hodnot filtru napříč všemi filtry na odběr Event gridu
 * 512 znaků na hodnotu řetězce
 * Pět hodnot pro operátor **in** a **Not in**
-* Klávesy se znakem ** `.` (tečka)** . Například: `http://schemas.microsoft.com/claims/authnclassreference` nebo `john.doe@contoso.com` . V současné době není k dispozici podpora řídicích znaků v klíčích. 
+* Klávesy se znakem **`.` (tečka)** . Například: `http://schemas.microsoft.com/claims/authnclassreference` nebo `john.doe@contoso.com` . V současné době není v klíčích podporován řídicí znaky. 
 
 Stejný klíč lze použít ve více než jednom filtru.
 

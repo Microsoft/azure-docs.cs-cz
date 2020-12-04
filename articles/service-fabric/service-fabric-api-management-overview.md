@@ -1,16 +1,14 @@
 ---
 title: Přehled služby Azure Service Fabric s API Management
 description: Tento článek představuje úvod k používání služby Azure API Management jako brány k vašim Service Fabricm aplikacím.
-author: vturecek
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.author: vturecek
-ms.openlocfilehash: 8cbec0b4b28574bfbe46516de54f1b8a3fad7ce2
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 32f47d62cc9dda7cc88421dbf616bf69ffe152fc
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091130"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575682"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric se službou Azure API Management – Přehled
 
@@ -77,7 +75,7 @@ V tomto příkladu je nová Bezstavová instance služby vytvořena pro každéh
 
 - `fabric:/app/users/<username>`
 
-  Každá služba má jedinečný název, ale názvy nejsou známy, protože služby jsou vytvořeny v reakci na vstup uživatele nebo správce, a proto nemohou být pevně zakódovány do zásad APIM nebo pravidel směrování. Místo toho se název služby, pro kterou se má odeslat žádost, vygeneruje v definici zásady back-endu z `name` hodnoty zadané v cestě žádosti URL. Například:
+  Každá služba má jedinečný název, ale názvy nejsou známy, protože služby jsou vytvořeny v reakci na vstup uživatele nebo správce, a proto nemohou být pevně zakódovány do zásad APIM nebo pravidel směrování. Místo toho se název služby, pro kterou se má odeslat žádost, vygeneruje v definici zásady back-endu z `name` hodnoty zadané v cestě žádosti URL. Příklad:
 
   - Požadavek na `/api/users/foo` směrování do instance služby `fabric:/app/users/foo`
   - Požadavek na `/api/users/bar` směrování do instance služby `fabric:/app/users/bar`
@@ -96,7 +94,7 @@ V tomto příkladu se vytvoří nová stavová instance pro každého uživatele
 
 - `fabric:/app/users/<username>`
 
-  Každá služba má jedinečný název, ale názvy nejsou známy, protože služby jsou vytvořeny v reakci na vstup uživatele nebo správce, a proto nemohou být pevně zakódovány do zásad APIM nebo pravidel směrování. Místo toho se název služby, pro kterou se má odeslat žádost, vygeneruje v definici zásady back-endu z `name` hodnoty zadané v cestě URL požadavku. Například:
+  Každá služba má jedinečný název, ale názvy nejsou známy, protože služby jsou vytvořeny v reakci na vstup uživatele nebo správce, a proto nemohou být pevně zakódovány do zásad APIM nebo pravidel směrování. Místo toho se název služby, pro kterou se má odeslat žádost, vygeneruje v definici zásady back-endu z `name` hodnoty zadané v cestě URL požadavku. Příklad:
 
   - Požadavek na `/api/users/foo` směrování do instance služby `fabric:/app/users/foo`
   - Požadavek na `/api/users/bar` směrování do instance služby `fabric:/app/users/bar`

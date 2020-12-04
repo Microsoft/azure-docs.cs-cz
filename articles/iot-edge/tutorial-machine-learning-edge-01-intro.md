@@ -8,18 +8,36 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 965c420fa29c4cf82517148c01e17d6d7dd6ea97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d603e5d03480b99eb3d6adb72a3440198fda2e47
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74106508"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575461"
 ---
 # <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Kurz: ucelené řešení využívající Azure Machine Learning a IoT Edge
 
 Aplikace IoT často chtějí využívat inteligentní Cloud a inteligentní hraniční zařízení. V tomto kurzu Vás provedeme školením modelu strojového učení s daty shromážděnými ze zařízení IoT v cloudu, nasazením tohoto modelu IoT Edge a pravidelným udržováním a úpravami modelu.
 
 Hlavním cílem tohoto kurzu je zavést zpracování dat IoT pomocí strojového učení, konkrétně na hraničních zařízeních. I když jsme se dotkli mnoha aspektů obecného pracovního postupu strojového učení, tento kurz není určený jako podrobný Úvod do strojového učení. V takovém případě se nepokoušíme vytvořit vysoce optimalizovaný model pro případ použití – stačí, abyste ilustraci procesu vytváření a používání životaschopného modelu pro zpracování dat IoT.
+
+## <a name="prerequisites"></a>Předpoklady
+
+K dokončení tohoto kurzu potřebujete přístup k předplatnému Azure, ve kterém máte práva k vytváření prostředků. Některé ze služeb používaných v tomto kurzu se účtují za Azure. Pokud ještě nemáte předplatné Azure, možná budete moct začít s [bezplatným účtem Azure](https://azure.microsoft.com/offers/ms-azr-0044p/).
+
+Budete také potřebovat počítač s nainstalovaným prostředím PowerShell, kde můžete spouštět skripty pro nastavení virtuálního počítače Azure jako vývojového počítače.
+
+V tomto dokumentu používáme následující sadu nástrojů:
+
+* Azure IoT Hub pro zachycení dat
+
+* Azure Notebooks jako náš hlavní front-end pro přípravu dat a experimentování ve strojovém učení. Spuštění kódu Pythonu v poznámkovém bloku u podmnožiny ukázkových dat představuje skvělý způsob, jak rychle a interaktivní vyřízení při přípravě dat. Pomocí poznámkových bloků Jupyter můžete také připravovat skripty pro spouštění ve velkém měřítku v back-endu.
+
+* Azure Machine Learning jako back-end pro strojové učení ve velkém měřítku a pro generování imagí machine learningu. Azure Machine Learning back-end pomocí skriptů připravených a testovaných v poznámkových blocích Jupyter.
+
+* Azure IoT Edge pro necloudovou aplikaci image strojového učení
+
+V některých případech jsou k dispozici další možnosti. V některých scénářích můžete například IoT Central použít jako alternativu bez kódu k zachycení počátečních dat školení ze zařízení IoT.
 
 ## <a name="target-audience-and-roles"></a>Cílová skupina a role
 
@@ -40,9 +58,9 @@ Data použitá v tomto kurzu jsou pořízena ze [sady dat simulace degradace mod
 
 Ze souboru Readme:
 
-***Experimentální scénář***
+***Experimentální scénář** _
 
-*Sady dat se skládají z několika lineární časových řad. Každá sada dat je dále rozdělena na školicí a testovací podmnožiny. Každá časová řada pochází z jiného modulu, tj. je možné, že se data považují za z loďstva motorů stejného typu. Každý stroj začíná různými stupni počátečního opotřebení a výrobní variací, které uživatel nezná. Tento opotřebení a variace se považují za normální, tj. není považována za stav selhání. Existují tři provozní nastavení, která mají podstatný vliv na výkon motoru. Tato nastavení jsou také obsažena v datech. Data jsou kontaminována pomocí snímače hluku.*
+_Data sady se skládají z několika lineární časových řad. Každá sada dat je dále rozdělena na školicí a testovací podmnožiny. Každá časová řada pochází z jiného modulu, tj. je možné, že se data považují za z loďstva motorů stejného typu. Každý stroj začíná různými stupni počátečního opotřebení a výrobní variací, které uživatel nezná. Tento opotřebení a variace se považují za normální, tj. není považována za stav selhání. Existují tři provozní nastavení, která mají podstatný vliv na výkon motoru. Tato nastavení jsou také obsažena v datech. Data jsou kontaminována pomocí snímače hluku. *
 
 *Modul pracuje normálně na začátku každé časové řady a v určitém okamžiku během řady vyvíjí chybu. V sadě školení se chyba zvětšuje až do selhání systému. V sadě testů časová řada ukončí určitou dobu před selháním systému. Cílem konkurence je předpovědět počet zbývajících provozních cyklů před selháním v sadě testů, tj. počet provozních cyklů po posledním cyklu, kdy bude modul fungovat i nadále. K dispozici je také vektor hodnot true zbylé životnosti (RUL) pro testovací data.*
 
@@ -74,23 +92,9 @@ Následující obrázek znázorňuje přibližné kroky, které sledujeme v tomt
 
 1. **Udržujte a upřesněte model**. Naše práce se neprovádí po nasazení modelu. V mnoha případech chceme pokračovat ve shromažďování dat a pravidelné nahrávání těchto dat do cloudu. Tato data pak můžeme použít k reučení a upřesnění našeho modelu, který potom můžeme znovu nasadit do IoT Edge.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-K dokončení tohoto kurzu potřebujete přístup k předplatnému Azure, ve kterém máte práva k vytváření prostředků. Některé ze služeb používaných v tomto kurzu se účtují za Azure. Pokud ještě nemáte předplatné Azure, možná budete moct začít s [bezplatným účtem Azure](https://azure.microsoft.com/offers/ms-azr-0044p/).
-
-Budete také potřebovat počítač s nainstalovaným prostředím PowerShell, kde můžete spouštět skripty pro nastavení virtuálního počítače Azure jako vývojového počítače.
-
-V tomto dokumentu používáme následující sadu nástrojů:
-
-* Azure IoT Hub pro zachycení dat
-
-* Azure Notebooks jako náš hlavní front-end pro přípravu dat a experimentování ve strojovém učení. Spuštění kódu Pythonu v poznámkovém bloku u podmnožiny ukázkových dat představuje skvělý způsob, jak rychle a interaktivní vyřízení při přípravě dat. Pomocí poznámkových bloků Jupyter můžete také připravovat skripty pro spouštění ve velkém měřítku v back-endu.
-
-* Azure Machine Learning jako back-end pro strojové učení ve velkém měřítku a pro generování imagí machine learningu. Azure Machine Learning back-end pomocí skriptů připravených a testovaných v poznámkových blocích Jupyter.
-
-* Azure IoT Edge pro necloudovou aplikaci image strojového učení
-
-V některých případech jsou k dispozici další možnosti. V některých scénářích můžete například IoT Central použít jako alternativu bez kódu k zachycení počátečních dat školení ze zařízení IoT.
+Tento kurz je součástí sady, kde každý článek sestaví na práci, která se provádí v předchozích verzích. Počkejte prosím na vyčištění všech prostředků, dokud nedokončíte finální kurz.
 
 ## <a name="next-steps"></a>Další kroky
 

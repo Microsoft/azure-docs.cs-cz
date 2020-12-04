@@ -1,17 +1,15 @@
 ---
 title: Přehled komunikace Reliable Services
 description: Přehled komunikačního modelu Reliable Services, včetně otevření naslouchacího procesu pro služby, překladu koncových bodů a komunikace mezi službami.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b45ceaed9f0d3d64a0fc6890549542acc6b1c21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7dc10055633c8e6dd2c645f28b774d5d5f3ac3f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018633"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574322"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Jak používat rozhraní API pro komunikaci Reliable Services
 Služba Azure Service Fabric jako platforma zcela nezávislá o komunikaci mezi službami. Všechny protokoly a zásobníky jsou přijatelné od UDP přes HTTP. Chcete-li zvolit, jak by měly služby komunikovat, je k tomu vývojář služby. Rozhraní Reliable Services Application Framework poskytuje integrované komunikační zásobníky i rozhraní API, které můžete použít k sestavení vlastních komunikačních komponent.
@@ -208,7 +206,7 @@ ServicePartitionResolver resolver = ServicePartitionResolver.GetDefault();
 FabricServicePartitionResolver resolver = FabricServicePartitionResolver.getDefault();
 ```
 
-Pro připojení ke službám v jiném clusteru se dá ServicePartitionResolver vytvořit pomocí sady koncových bodů brány clusteru. Všimněte si, že koncové body brány jsou pouze různými koncovými body pro připojení ke stejnému clusteru. Například:
+Pro připojení ke službám v jiném clusteru se dá ServicePartitionResolver vytvořit pomocí sady koncových bodů brány clusteru. Všimněte si, že koncové body brány jsou pouze různými koncovými body pro připojení ke stejnému clusteru. Příklad:
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.cloudapp.azure.com:19000", "mycluster.cloudapp.azure.com:19001");
@@ -333,7 +331,7 @@ public class MyCommunicationClientFactory extends CommunicationClientFactoryBase
 }
 ```
 
-Nakonec je zodpovědná obslužná rutina výjimky za účelem určení, jakou akci chcete provést, když dojde k výjimce. Výjimky jsou zařazeny do kategorií, **které**lze **Opakovat** a nelze je opakovat.
+Nakonec je zodpovědná obslužná rutina výjimky za účelem určení, jakou akci chcete provést, když dojde k výjimce. Výjimky jsou zařazeny do kategorií, **které** lze **Opakovat** a nelze je opakovat.
 
 * **Neopakující se výjimky jednoduše** vrátí zpět volajícímu.
 * výjimky, které lze **Opakovat** , jsou dále zařazeny do **přechodného** a **nepřechodné**.

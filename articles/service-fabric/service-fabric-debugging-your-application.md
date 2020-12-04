@@ -1,17 +1,15 @@
 ---
 title: Ladění aplikace v aplikaci Visual Studio
 description: Vylepšete spolehlivost a výkon vašich služeb tím, že je vyvíjíte a ladíte v aplikaci Visual Studio v místním vývojovém clusteru.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 35c4875ca9bf3165fff84164eb3bb7ebe44cf932
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 0b7d08d610c883240abedc66c55abba64a74c8e3
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093391"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576311"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Ladění aplikace Service Fabric pomocí Visual Studia
 > [!div class="op_single_selector"]
@@ -36,7 +34,7 @@ Můžete ušetřit čas a peníze nasazením a laděním aplikace Azure Service 
 4. Okno **diagnostické události** se automaticky otevře, abyste mohli zobrazit diagnostické události v reálném čase.
    
     ![Zobrazit diagnostické události v reálném čase][diagnosticevents]
-5. V Průzkumníku cloudu můžete také otevřít okno **diagnostické události** .  V části **Service Fabric**klikněte pravým tlačítkem na libovolný uzel a vyberte **Zobrazit trasování streamování**.
+5. V Průzkumníku cloudu můžete také otevřít okno **diagnostické události** .  V části **Service Fabric** klikněte pravým tlačítkem na libovolný uzel a vyberte **Zobrazit trasování streamování**.
    
     ![Otevření okna diagnostické události][viewdiagnosticevents]
    
@@ -72,12 +70,12 @@ Pokud vaše aplikace Service Fabric běží na clusteru Service Fabric v Azure, 
 > [!WARNING]
 > Vzdálené ladění je určeno pro scénáře vývoje a testování a nepoužívá se v produkčních prostředích z důvodu dopadu na běžící aplikace.
 
-1. V **Průzkumníku cloudu**přejděte do clusteru. Klikněte pravým tlačítkem a vyberte **Povolit ladění** .
+1. V **Průzkumníku cloudu** přejděte do clusteru. Klikněte pravým tlačítkem a vyberte **Povolit ladění** .
    
     ![Povolit vzdálené ladění][enableremotedebugging]
    
     Tato akce zahájí proces povolení rozšíření vzdáleného ladění na uzlech clusteru a požadované konfigurace sítě.
-2. Klikněte pravým tlačítkem na uzel clusteru v **Průzkumníku cloudu**a vyberte **připojit ladicí program** .
+2. Klikněte pravým tlačítkem na uzel clusteru v **Průzkumníku cloudu** a vyberte **připojit ladicí program** .
    
     ![Připojit ladicí program][attachdebugger]
 3. V dialogovém okně **připojit k procesu** vyberte proces, který chcete ladit, a klikněte na tlačítko **připojit** .
@@ -116,7 +114,7 @@ Je také možné streamovat trasování přímo ze vzdáleného uzlu clusteru do
 > Trasování streamování je určené pro scénáře pro vývoj a testování a ne pro použití v produkčních prostředích z důvodu dopadu na běžící aplikace.
 > V produkčním scénáři byste měli spoléhat na události předávání pomocí Azure Diagnostics.
 
-1. V **Průzkumníku cloudu**přejděte do clusteru. Klikněte pravým tlačítkem a vyberte **Povolit trasování streamování** .
+1. V **Průzkumníku cloudu** přejděte do clusteru. Klikněte pravým tlačítkem a vyberte **Povolit trasování streamování** .
    
     ![Povolit trasování vzdáleného streamování][enablestreamingtraces]
    

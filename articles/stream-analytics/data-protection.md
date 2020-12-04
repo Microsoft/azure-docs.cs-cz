@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 09/23/2020
-ms.openlocfilehash: 72566987068729efef4310ce145c30584c4895b0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/03/2020
+ms.openlocfilehash: 4436289d544de057acef132117346ac53c20b5a7
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011400"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576488"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Ochrana dat v Azure Stream Analytics 
 
@@ -41,7 +41,7 @@ Kromě toho se můžete rozhodnout pro uložení všech datových assetů (záka
 
 Stream Analytics v rámci své infrastruktury automaticky využívaly osvědčené šifrovací standardy pro šifrování a zabezpečení vašich dat. Stream Analytics můžete jednoduše důvěřovat, aby bezpečně ukládala všechna vaše data, takže se nemusíte starat o správu infrastruktury.
 
-Pokud chcete k šifrování vašich dat používat klíče spravované zákazníkem (CMK), můžete použít vlastní účet úložiště (pro obecné účely v1 nebo v2) k uložení libovolných privátních datových assetů vyžadovaných modulem runtime Stream Analytics. Váš účet úložiště může být podle potřeby zašifrovaný. Žádná z vašich privátních datových assetů se trvale neukládá pomocí infrastruktury Stream Analytics. 
+Pokud chcete použít klíče spravované zákazníkem k šifrování vašich dat, můžete použít vlastní účet úložiště (pro obecné účely v1 nebo v2) k uložení libovolných privátních datových assetů, které jsou vyžadovány modulem runtime Stream Analytics. Váš účet úložiště může být podle potřeby zašifrovaný. Žádná z vašich privátních datových assetů se trvale neukládá pomocí infrastruktury Stream Analytics. 
 
 Toto nastavení musí být nakonfigurované v době vytváření úlohy Stream Analytics a nedá se upravit v průběhu životního cyklu úlohy. Úpravy nebo odstranění úložiště používaného vaší Stream Analytics se nedoporučují. Pokud odstraníte účet úložiště, trvale odstraníte všechny soukromé datové prostředky, což způsobí selhání vaší úlohy. 
 
@@ -50,16 +50,13 @@ Aktualizace nebo otočení klíčů k účtu úložiště není možné pomocí 
 
 ### <a name="configure-storage-account-for-private-data"></a>Konfigurace účtu úložiště pro soukromá data 
 
-
 Zašifrujte svůj účet úložiště, abyste zabezpečili všechna vaše data, a explicitně zvolíte umístění vašich privátních dat. 
 
 Další informace o [nabídkách dodržování předpisů Microsoftu](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)vám pomůžou splnit vaše povinnosti dodržování předpisů v jakémkoli regulovaném odvětví nebo prostředí. 
 
-
-
 Pomocí následujícího postupu můžete nakonfigurovat účet úložiště pro soukromé datové prostředky. Tato konfigurace se provádí z vaší Stream Analytics úlohy, nikoli z vašeho účtu úložiště.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**. 
 
@@ -69,9 +66,15 @@ Pomocí následujícího postupu můžete nakonfigurovat účet úložiště pro
 
 1. Zaškrtněte políčko, které uvádí *zabezpečení všech privátních datových assetů, které tato úloha potřebuje v účtu úložiště*.
 
-1. Vyberte účet úložiště z vašeho předplatného. Všimněte si, že toto nastavení nelze upravovat v průběhu životního cyklu úlohy. 
+1. Vyberte účet úložiště z vašeho předplatného. Všimněte si, že toto nastavení nelze upravovat v průběhu životního cyklu úlohy. Tuto možnost po vytvoření úlohy také nemůžete přidat.
+
+1. Chcete-li provést ověření pomocí připojovacího řetězce, v rozevíracím seznamu režim ověřování vyberte možnost **připojovací řetězec** . Klíč účtu úložiště se automaticky vyplní z vašeho předplatného.
 
    ![Nastavení účtu úložiště privátních dat](./media/data-protection/storage-account-create.png)
+
+1. Pokud se chcete ověřit pomocí spravované identity (Preview), vyberte v rozevíracím seznamu režim ověřování možnost **spravovaná identita** . Pokud zvolíte spravovanou identitu, musíte do seznamu řízení přístupu účtu úložiště přidat svou Stream Analyticsovou úlohu. Pokud neudělíte přístup k úloze, úloha nebude moci provádět žádné operace. Další informace o tom, jak udělit přístup, najdete v tématu [použití služby Azure RBAC k přiřazení spravované identity k jinému prostředku](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md#use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource).
+
+   :::image type="content" source="media/data-protection/storage-account-create-msi.png" alt-text="Nastavení účtu úložiště privátních dat s ověřováním spravovaných identit":::
 
 ## <a name="private-data-assets-that-are-stored-by-stream-analytics"></a>Soukromé datové prostředky, které jsou uloženy pomocí Stream Analytics
 

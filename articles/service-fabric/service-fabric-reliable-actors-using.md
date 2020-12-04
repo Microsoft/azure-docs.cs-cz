@@ -1,17 +1,15 @@
 ---
 title: Implementace funkcí v Azure Service Fabric Actors
 description: Popisuje, jak napsat vlastní službu objektu actor, která implementuje funkce na úrovni služby stejným způsobem jako při dědění StatefulService.
-author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4eb8dd98909459feab72f61e46834e60c5b07ebd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d39ec93e0ad03d6c860bae9d0790e860c95457a5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89007753"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575563"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>Implementace funkcí na úrovni služby ve službě objektu actor
 

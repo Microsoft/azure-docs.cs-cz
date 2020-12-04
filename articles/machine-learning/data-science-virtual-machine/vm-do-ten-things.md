@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 1e263886d0cc199bb30fd28877be32209ab32a22
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 09a4dc8467b9b3c11c8daeb5ca8c62a0e26e79de
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462381"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575002"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Datové vědy s Data Science Virtual Machine Windows
 
@@ -25,7 +25,7 @@ DSVM úzce spolupracuje se službami Azure. Může číst a zpracovávat data, k
 
 V tomto článku se dozvíte, jak používat DSVM k provádění úkolů s datovou vědy a k interakci s ostatními službami Azure. Tady jsou některé z akcí, které můžete provést na DSVM:
 
-- Pomocí poznámkového bloku Jupyter můžete experimentovat s daty v prohlížeči pomocí Python 2, Python 3 a Microsoft R. (Microsoft R je podniková verze R, která je připravená na výkon.)
+- Pomocí Jupyter Notebook můžete experimentovat s daty v prohlížeči pomocí Python 2, Python 3 a Microsoft R. (Microsoft R je podniková verze R, která je připravená na výkon.)
 - Prozkoumejte data a vývoj modelů místně na DSVM pomocí Microsoft Machine Learning Server a Pythonu.
 - Prostředky Azure spravujte pomocí Azure Portal nebo PowerShellu.
 - Rozšiřte prostor úložiště a sdílejte velké datové sady/kód v celém týmu tím, že vytvoříte sdílenou složku souborů Azure jako připojenou jednotku na DSVM.
@@ -49,8 +49,8 @@ V tomto článku se dozvíte, jak používat DSVM k provádění úkolů s datov
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 
-## <a name="use-jupyter-notebooks"></a>Použití poznámkových bloků Jupyter
-Jupyter Notebook poskytuje integrované vývojové prostředí (IDE) založené na prohlížeči pro zkoumání a modelování dat. V Jupyter poznámkovém bloku můžete použít Python 2, Python 3 nebo R (Open Source i Microsoft R Server).
+## <a name="use-jupyter-notebooks"></a>Použití Jupyter Notebooks
+Jupyter Notebook poskytuje integrované vývojové prostředí (IDE) založené na prohlížeči pro zkoumání a modelování dat. V Jupyter Notebook můžete použít Python 2, Python 3 nebo R (Open Source i Microsoft R Server).
 
 Jupyter Notebook spustíte tak, že v nabídce **Start** nebo na ploše vyberete ikonu **Jupyter notebook** . V příkazovém řádku DSVM můžete také spustit příkaz ```jupyter notebook``` z adresáře, ve kterém máte existující poznámkové bloky nebo kde chcete vytvořit nové poznámkové bloky.  
 
@@ -201,7 +201,7 @@ Data z místního souboru na VIRTUÁLNÍm počítači můžete také nahrát pom
 
 #### <a name="read-data-from-an-azure-blob-python-odbc"></a>Čtení dat z objektu blob Azure: Python ODBC
 
-Pomocí knihovny BlobService můžete číst data přímo z objektu BLOB v poznámkovém bloku Jupyter nebo v programu Pythonu.
+Pomocí knihovny BlobService můžete číst data přímo z objektu BLOB v Jupyter Notebook nebo v programu Pythonu.
 
 Nejdřív Importujte požadované balíčky:
 

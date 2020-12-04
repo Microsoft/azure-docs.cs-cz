@@ -1,16 +1,14 @@
 ---
 title: Správa aplikací pro víc prostředí
 description: Aplikace Azure Service Fabric lze spouštět v clusterech, které jsou v rozsahu od jednoho počítače po tisíce počítačů. V některých případech budete chtít nakonfigurovat aplikaci odlišně pro tato různá prostředí. Tento článek popisuje, jak definovat různé parametry aplikace pro každé prostředí.
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: mikhegn
-ms.openlocfilehash: b6d6ff37024a3181a43b67d2af26b067225654fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51bc77abca8ce2b3878df1c1859203618d3e2e27
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257483"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574441"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>Správa aplikací pro víc prostředí
 

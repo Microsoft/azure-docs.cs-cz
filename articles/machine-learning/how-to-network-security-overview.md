@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: fdfaef554e4e641656abd3fd2b4a5d3bbc519ccd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6398d23aeb0e26fbc336c0c1066078f327fa2f73
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325423"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576566"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Přehled izolace a ochrany osobních údajů virtuální sítě
 
@@ -145,10 +145,11 @@ Pokud je vaše úložiště ve virtuální síti, musíte nejdřív provést dal
 
 * Náhled dat v studiu
 * Vizualizujte data v návrháři.
+* Nasaďte model v návrháři.
 * Odešlete experiment AutoML.
 * Spusťte Popis projektu.
 
-Pokud chcete povolit úplnou funkci studia i v rámci virtuální sítě, přečtěte si téma [použití Azure Machine Learning studia ve virtuální síti](how-to-enable-studio-virtual-network.md#access-data-using-the-studio). Studio podporuje účty úložiště buď pomocí koncových bodů služby, nebo soukromých koncových bodů.
+Pokud chcete povolit úplnou funkci studia i v rámci virtuální sítě, přečtěte si téma [použití Azure Machine Learning studia ve virtuální síti](how-to-enable-studio-virtual-network.md#configure-data-access-in-the-studio). Studio podporuje účty úložiště buď pomocí koncových bodů služby, nebo soukromých koncových bodů.
 
 ### <a name="limitations"></a>Omezení
 - [Označení dat s podporou ml s asistencí](how-to-create-labeling-projects.md#use-ml-assisted-labeling) nepodporuje výchozí účty úložiště zabezpečené za virtuální sítí. Pro popisky dat s podporou ML s asistencí je nutné použít jiný než výchozí účet úložiště. Všimněte si, že účet úložiště, který není výchozí, může být zabezpečený za virtuální sítí. 

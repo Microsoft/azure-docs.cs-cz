@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 44365dec247b9f3135a090cee397cad32598fd29
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f621d11553101c2c0bcfce804b26c218ae58670c
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977863"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576464"
 ---
 # <a name="calling-client-library-overview"></a>Přehled klientských knihoven pro hovory
 
@@ -70,6 +70,26 @@ Následující tabulka představuje sadu podporovaných prohlížečů a verzí,
 * Všimněte si, že nejnovější verze Chrome je podporovaná Kromě předchozích dvou verzí.<br/>
 
 * * Upozorňujeme, že verze Safari 13.1 + jsou podporované. Odchozí video pro Safari macOS ještě není podporované, ale podporuje se v iOS. Sdílení odchozí obrazovky se podporuje jenom v desktopové iOS.
+
+## <a name="calling-client---browser-security-model"></a>Volání modelu zabezpečení prohlížeče klienta
+
+### <a name="user-webrtc-over-https"></a>Uživatel WebRTC přes HTTPS
+
+Rozhraní API WebRTC jako `getUserMedia` vyžadují, aby aplikace, která volá tato rozhraní API, byla obsluhována prostřednictvím protokolu HTTPS.
+
+Pro místní vývoj můžete použít `http://localhost` .
+
+### <a name="embed-the-communication-services-calling-sdk-in-an-iframe"></a>Vložení komunikačních služeb pro volání sady SDK v prvku IFRAME
+
+Nové [zásady oprávnění (označované taky jako zásady funkcí)](https://www.w3.org/TR/permissions-policy-1/#iframe-allow-attribute) se přijímají různými prohlížeči. Tato zásada má vliv na volání scénářů tím, že řídí, jak můžou aplikace přistupovat ke kameře a mikrofonu zařízení prostřednictvím elementu IFRAME s více zdroji.
+
+Pokud chcete použít prvek IFRAME k hostování části aplikace z jiné domény, je nutné přidat `allow` atribut se správnou hodnotou do prvku IFRAME.
+
+Tento prvek IFRAME například umožňuje přístup ke kameře a mikrofonu:
+
+```html
+<iframe allow="camera *; microphone *">
+```
 
 ## <a name="next-steps"></a>Další kroky
 

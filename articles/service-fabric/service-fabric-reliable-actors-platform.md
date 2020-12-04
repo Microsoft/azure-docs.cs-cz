@@ -1,17 +1,15 @@
 ---
 title: Reliable Actors v Service Fabric
 description: V této části najdete popis způsobu vrstvení Reliable Actors Reliable Services a použití funkcí platformy Service Fabric.
-author: vturecek
 ms.topic: conceptual
 ms.date: 3/9/2018
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1cd90d4567bde6cd2c4f2a29e2d516b51b79e2af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3bd67e0f71e20a8b5a74b4b38e5b423a14dc08d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016610"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575614"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Jak Reliable Actors používat platformu Service Fabric
 Tento článek vysvětluje, jak Reliable Actors pracovat na platformě Azure Service Fabric. Reliable Actors běžet v rámci architektury hostované v implementaci stavové spolehlivé služby nazývané *služby objektu actor*. Služba objektu actor obsahuje všechny součásti potřebné ke správě životního cyklu a odeslání zpráv pro vaše objekty actor:

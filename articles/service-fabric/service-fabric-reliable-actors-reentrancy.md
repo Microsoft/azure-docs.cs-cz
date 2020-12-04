@@ -1,17 +1,15 @@
 ---
 title: Vícenásobný přístup v Azure Service Fabric Actors
 description: Úvod do Vícenásobný přístup pro Service Fabric Reliable Actors, způsob, jak logicky zabránit zablokování na základě kontextu volání.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 75512633dae8d9a9f61c37bbc795d8e8d20c4ff1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2356db0eee82a133afad6aa95299ced0595db32
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89007804"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576056"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors Vícenásobný přístup
 Modul runtime Reliable Actors ve výchozím nastavení umožňuje logický volání Vícenásobný přístup na základě kontextu. To umožňuje, aby se aktéri znovu zavolaly, pokud jsou ve stejném řetězci kontextu volání. Například objekt actor A pošle zprávu objektu actor B, který pošle zprávu objektu actor C. V rámci zpracování zprávy, pokud objekt actor C volá objekt actor A, je zpráva znovu zavolána, takže bude povolena. Všechny ostatní zprávy, které jsou součástí jiného kontextu volání, budou blokovány u objektu actor A do doby, než dokončí zpracování.

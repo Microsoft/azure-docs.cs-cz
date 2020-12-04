@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 24d2418cc571e1cbb3feff8aab5eee70ab08a97a
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: ded15b45dd859b18180bd396067360ae6585ef97
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555729"
+ms.locfileid: "96575869"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Registrace a kontrola Azure SQL Database spravované instance
 
@@ -100,6 +100,20 @@ Je potřeba získat ID aplikace a tajný kód pro instanční objekt:
 1. Vyberte **vytvořit** a dokončete
 1. Pokud váš Trezor klíčů ještě není připojený k dosah, bude potřeba [vytvořit nové připojení trezoru klíčů](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account) .
 1. Nakonec [vytvořte nové přihlašovací údaje](manage-credentials.md#create-a-new-credential) pomocí instančního objektu a nastavte kontrolu.
+
+### <a name="firewall-settings"></a>Nastavení brány firewall
+
+Váš databázový server musí umožňovat povolení připojení Azure. To umožní službě Azure dosah dosáhnout a připojit server. Můžete postupovat podle pokynů pro [připojení v rámci Azure](../azure-sql/database/firewall-configure.md#connections-from-inside-azure).
+
+1. Přejít k vašemu databázovému účtu
+1. Vyberte název serveru na stránce **Přehled** .
+1. Vybrat **zabezpečení > brány firewall a virtuální sítě**
+1. Vyberte **Ano** , pokud **chcete, aby služby a prostředky Azure měly přístup k tomuto serveru** .
+
+    :::image type="content" source="media/register-scan-azure-sql-database/sql-firewall.png" alt-text="Možnosti registrace zdrojů" border="true":::
+    
+> [!Note]
+> V současné době Azure dosah nepodporuje konfiguraci virtuální sítě. Proto nemůžete provést nastavení brány firewall založené na protokolu IP.
 
 ## <a name="register-an-azure-sql-database-managed-instance-data-source"></a>Registrace zdroje dat spravované instance Azure SQL Database
 

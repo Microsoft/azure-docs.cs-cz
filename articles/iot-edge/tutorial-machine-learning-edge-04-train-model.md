@@ -8,12 +8,12 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b9a29e890553d15d19853ec836f8c4296869e143
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8efc0301296f64abfe9b827e943882e930929086
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959624"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575325"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Kurz: výuka a nasazení Azure Machine Learningho modelu
 
@@ -27,7 +27,7 @@ Azure Notebooks využít pracovní prostor Azure Machine Learning, což je zákl
 
 Kroky v tomto článku můžou obvykle provádět odborníci přes data.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Každý článek v sérii vychází z práce v předchozím článku. Pokud jste dorazili přímo do tohoto článku, přejděte na [první článek](tutorial-machine-learning-edge-01-intro.md) v řadě.
 
@@ -166,19 +166,23 @@ Chcete-li ověřit, zda byly poznámkové bloky úspěšně dokončeny, ověřte
 
 1. Ověřte, že byly vytvořeny následující prostředky Azure. Některé názvy prostředků se připojují s náhodnými znaky.
 
-    | Prostředek Azure | Name |
+    | Prostředek Azure | Název |
     | --- | --- |
     | Pracovní prostor Machine Learning | turborfanDemo |
     | Container Registry | turbofandemoxxxxxxxx |
     | Application Insights | turbofaninsightxxxxxxxx |
     | Key Vault | turbofankeyvaultbxxxxxxxx |
-    | Storage | turbofanstoragexxxxxxxxx |
+    | Úložiště | turbofanstoragexxxxxxxxx |
 
 ### <a name="debugging"></a>Ladění
 
 Do poznámkového bloku můžete vkládat příkazy Pythonu pro ladění, jako je například `print()` příkaz pro zobrazení hodnot. Pokud vidíte proměnné nebo objekty, které nejsou definovány, spusťte buňky, kde jsou nejprve deklarovány nebo vytvořeny instance.
 
 Pokud potřebujete opakovat poznámkové bloky, možná budete muset odstranit dříve vytvořené soubory a prostředky Azure.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Tento kurz je součástí sady, kde každý článek sestaví na práci, která se provádí v předchozích verzích. Počkejte prosím na vyčištění všech prostředků, dokud nedokončíte finální kurz.
 
 ## <a name="next-steps"></a>Další kroky
 

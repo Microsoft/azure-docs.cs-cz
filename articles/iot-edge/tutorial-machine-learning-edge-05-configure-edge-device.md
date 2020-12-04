@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: f57e809373a8bd06c4b4afbb9b193464315e788f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 754b1544f112fb63fae91a52c7e48f25b9790ed2
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959573"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575087"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Kurz: konfigurace zařízení IoT Edge
 
@@ -22,7 +22,7 @@ V tomto článku nakonfigurujeme virtuální počítač Azure se systémem Linux
 
 Kroky v tomto článku jsou obvykle prováděny vývojářem cloudu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Každý článek v sérii vychází z práce v předchozím článku. Pokud jste dorazili přímo do tohoto článku, přejděte na [první článek](tutorial-machine-learning-edge-01-intro.md) v řadě.
 
@@ -295,6 +295,10 @@ V dalším kroku aktualizujeme certifikáty a název hostitele přímým úpravo
     ```bash
     journalctl -u iotedge --no-pager --no-full
     ```
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Tento kurz je součástí sady, kde každý článek sestaví na práci, která se provádí v předchozích verzích. Počkejte prosím na vyčištění všech prostředků, dokud nedokončíte finální kurz.
+
 ## <a name="next-steps"></a>Další kroky
 
 Právě jsme dokončili konfiguraci virtuálního počítače Azure jako Azure IoT Edge transparentní brány. Začali jsme vygenerováním testovacích certifikátů, které jsme nahráli do Azure Key Vault. Dále jsme použili skript a šablonu Správce prostředků k nasazení virtuálního počítače s imagí "Ubuntu Server 16,04 LTS Azure IoT Edge + runtime" z Azure Marketplace. Když je virtuální počítač spuštěný a spuštěný přes SSH, přihlásili jsme se k Azure a stáhli jsme certifikáty z Key Vault. Provedli jsme několik aktualizací konfigurace modulu runtime IoT Edge aktualizací souboru config. yaml.

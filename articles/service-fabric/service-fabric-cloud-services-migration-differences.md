@@ -1,16 +1,14 @@
 ---
 title: Rozdíly mezi Cloud Services a Service Fabric
 description: Koncepční přehled migrace aplikací z Cloud Services na Service Fabric.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 763b9977f756075789b826c2f1e01cd41ac60a73
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: c7e7d346b5a39a262d1d55265becadb1c718cc04
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091164"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575767"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Přečtěte si o rozdílech mezi Cloud Services a Service Fabric před migrací aplikací.
 Microsoft Azure Service Fabric je cloudová aplikační platforma nové generace pro vysoce škálovatelné a vysoce spolehlivé distribuované aplikace. Zavádí mnoho nových funkcí pro balení, nasazování, upgradování a správu distribuovaných cloudových aplikací. 

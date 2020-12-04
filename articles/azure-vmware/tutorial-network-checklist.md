@@ -3,12 +3,12 @@ title: Kurz – kontrolní seznam pro plánování sítě
 description: Seznamte se s požadavky na požadavky na síť a podrobnostmi o připojení k síti a síťových portech pro řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 5ee70b8a297e1b8418049ff229b3c1869819145b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 52f973ada23576fd6d542c40c9a9e63e6f270df3
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948200"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575155"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Kontrolní seznam pro plánování sítě pro řešení Azure VMware 
 
@@ -47,9 +47,19 @@ Podsítě:
 | Využití sítě             | Podsíť | Příklad          |
 | ------------------------- | ------ | ---------------- |
 | Správa privátního cloudu  | `/26`  | `10.10.0.0/26`   |
+| Migrace HCX pro správu       | `/26`  | `10.10.0.64/26`  |
+| Global Reach rezervované     | `/26`  | `10.10.0.128/26` |
+| ExpressRoute rezervované     | `/27`  | `10.10.0.192/27` |
+| Partnerský vztah ExpressRoute      | `/27`  | `10.10.0.224/27` |
+| Správa ESXi           | `/25`  | `10.10.1.0/25`   |
 | vMotion síť           | `/25`  | `10.10.1.128/25` |
-| Úlohy virtuálních počítačů              | `/24`  | `10.10.2.0/24`   |
-| Partnerský vztah ExpressRoute      | `/29`  | `10.10.3.8/29`   |
+| Síť replikace       | `/25`  | `10.10.2.0/25`   |
+| Síti vSAN                      | `/25`  | `10.10.2.128/25` |
+| Odchozí připojení HCX                | `/26`  | `10.10.3.0/26`   |
+| Vyhrazené                  | `/26`  | `10.10.3.64/26`  |
+| Vyhrazené                  | `/26`  | `10.10.3.128/26` |
+| Vyhrazené                  | `/26`  | `10.10.3.192/26` |
+
 
 
 ## <a name="required-network-ports"></a>Požadované síťové porty

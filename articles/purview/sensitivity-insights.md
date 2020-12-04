@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: beaa231eddd57e29578a1d69ee30af05ce7c8d0f
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 74f4391fcd071ac510fc66b2f8bc36ec4549dc47
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552888"
+ms.locfileid: "96575750"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Přehledy o vašich datech v Azure dosah s popisem citlivosti
 
@@ -75,6 +75,7 @@ Dosah používá stejné klasifikace, označované také jako typy citlivých in
    |**Horní popisky použité v tabulkách**     | Zobrazuje horní popisky citlivosti použité pro tabulky databáze ve vašich datech. |   
    |  **Aktivita označování**  |  Zobrazuje samostatné grafy pro soubory a tabulky, z nichž každý zobrazuje počet souborů nebo tabulek označených přes vybraný časový rámec. <br>**Výchozí**: 30 dní<br>Vyberte filtr **času** nad grafy a vyberte jiný časový rámec, který chcete zobrazit.    |
    |    |    |
+
 ## <a name="sensitivity-labeling-insights-drilldown"></a>Citlivostní označování podrobností – přehled
 
 V některém z níže uvedených **citlivostních grafů s popisem přehledů** vyberte odkaz **Zobrazit další** a přejděte k podrobnostem, kde najdete další podrobnosti:
@@ -98,6 +99,7 @@ Další informace najdete v následujících informacích:
 |**Přejít k podrobnostem**     | Chcete-li přejít k podrobnostem konkrétního popisku, vyberte název ve sloupci **popisek citlivosti** , aby se zobrazil **popisek podle zdrojové** sestavy. <br><br>Tato sestava zobrazí data pro vybraný popisek, včetně názvu zdroje, typu zdroje, ID předplatného a počtu klasifikovaných souborů a tabulek.      |
 |**Procházet prostředky**     |  Pokud chcete procházet prostředky nalezené pomocí konkrétního popisku nebo zdroje, vyberte jeden nebo více popisků nebo zdrojů v závislosti na sestavě, kterou jste právě prohlíželi, a pak vyberte **Procházet assety** :::image type="icon" source="media/insights/ico-browse-assets.png" border="false"::: nad filtry. <br><br>Ve výsledcích hledání se zobrazí všechny nalezené prostředky označené pro vybraný filtr.  Další informace najdete v tématu [hledání Data Catalog v Azure dosah](how-to-search-catalog.md).       |
 | | |
+
 ## <a name="sensitivity-label-integration-with-microsoft-365-compliance"></a>Integrace označení citlivosti s Microsoft 365 dodržování předpisů
 
 Integrace se službou [Microsoft Information Protection](/microsoft-365/compliance/information-protection) nabídnutou v Microsoft 365 znamená, že dosah umožňuje přímým způsobům rozšiřování viditelnosti na vaši datovou plochu a klasifikace a označování dat.
@@ -108,15 +110,9 @@ Další informace najdete v tématu [automatické označení dat v Azure dosah](
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o sestavách Azure dosah Insight
-> [!div class="nextstepaction"]
-> [Glosář přehledů](glossary-insights.md)
+Přečtěte si další informace o těchto sestavách Azure dosah Insight:
 
-> [!div class="nextstepaction"]
-> [Vyhledat přehledy](scan-insights.md)
-
-> [!div class="nextstepaction"]
-> [Přehledy klasifikace](./classification-insights.md)
-
-> [!div class="nextstepaction"]
-> [Přehledy přípon souborů](file-extension-insights.md)
+- [Glosář přehledů](glossary-insights.md)
+- [Vyhledat přehledy](scan-insights.md)
+- [Přehledy klasifikace](./classification-insights.md)
+- [Přehledy přípon souborů](file-extension-insights.md)

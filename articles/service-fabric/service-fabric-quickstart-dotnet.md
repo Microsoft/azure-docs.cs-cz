@@ -1,17 +1,15 @@
 ---
 title: Rychlé vytvoření aplikace .NET v Service Fabric v Azure
 description: V tomto rychlém startu vytvoříte aplikaci .NET pro Azure s využitím ukázkové aplikace Service Fabric Reliable Services.
-author: mikkelhegn
 ms.topic: quickstart
 ms.date: 06/26/2019
-ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: b88dfedd5454d708386afa6912a26dac41c6d6b4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 15e2180e44acaa5ebefb403b2da3755396a45ba4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86258559"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575886"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Rychlý start: Nasazení aplikace spolehlivých služeb v .NET do Service Fabric
 
@@ -154,7 +152,7 @@ Pokud chcete upgradovat aplikaci, postupujte následovně:
 
 1. Otevřete v sadě Visual Studio soubor **/VotingWeb/Views/Home/Index.cshtml**.
 2. Změňte nadpis na stránce přidáním nebo aktualizací textu. Nadpis můžete změnit například na Ukázková hlasovací aplikace Service Fabric v2.
-3. Uložte soubor.
+3. Soubor uložte.
 4. V Průzkumníku řešení klikněte pravým tlačítkem na **Voting** a zvolte **Publikovat**. Zobrazí se dialogové okno Publikovat.
 5. Klikněte na tlačítko **Verze manifestu** a změňte verzi služby a aplikace.
 6. Změňte například verzi elementu **Kód** v části **VotingWebPkg** na 2.0.0 a klikněte na **Uložit**.

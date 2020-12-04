@@ -11,24 +11,25 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: df4d777ad78240b3ca84c51152b37861c4ccc486
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a90b98e8be976da9ee2669ab3b5fed4a890f0fb2
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959998"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576606"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Použití Azure Machine Learning studia ve službě Azure Virtual Network
 
-V tomto článku se dozvíte, jak používat Azure Machine Learning Studio ve virtuální síti. Získáte informace o těchto tématech:
+V tomto článku se dozvíte, jak používat Azure Machine Learning Studio ve virtuální síti. Studio zahrnuje funkce, jako je AutoML, Návrhář a popisek dat. Aby bylo možné používat tyto funkce ve virtuální síti, je nutné postupovat podle kroků v tomto článku.
+
+V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> - Přístup k studiu z prostředku v rámci virtuální sítě.
-> - Konfigurace privátních koncových bodů pro účty úložiště.
 > - Udělte studiu přístup k datům uloženým ve virtuální síti.
+> - Přístup k studiu z prostředku v rámci virtuální sítě.
 > - Zjistěte, jak Studio ovlivňuje zabezpečení úložiště.
 
-Tento článek je třetí částí série s pěti částmi, která vás provede zabezpečením Azure Machine Learningho pracovního postupu. Důrazně doporučujeme, abyste si přečetli [část One: VNet – přehled](how-to-network-security-overview.md) , abyste si nejdřív porozuměli celkové architektuře. 
+Tento článek je třetí částí série s pěti částmi, která vás provede zabezpečením Azure Machine Learningho pracovního postupu. Důrazně doporučujeme, abyste si přečetli předchozí části a nastavili prostředí virtuální sítě.
 
 Podívejte se na další články v této sérii:
 
@@ -39,9 +40,9 @@ Podívejte se na další články v této sérii:
 > Pokud je váš pracovní prostor v rámci __svrchovaného cloudu__, například Azure Government nebo Azure Čína 21Vianet, integrované poznámkové bloky _nepodporují použití_ úložiště, které je ve virtuální síti. Místo toho můžete na výpočetní instanci použít poznámkové bloky Jupyter. Další informace najdete v části [přístup k datům v poznámkovém bloku COMPUTE instance](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) .
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-+ Přečtěte si [Přehled zabezpečení sítě](how-to-network-security-overview.md) , abyste porozuměli běžným scénářům virtuální sítě a celkové architektuře virtuální sítě.
++ Přečtěte si [Přehled zabezpečení sítě](how-to-network-security-overview.md) a seznamte se s běžnými scénáři a architekturou virtuální sítě.
 
 + Již existující virtuální síť a podsíť, která se má použít.
 
@@ -49,21 +50,16 @@ Podívejte se na další články v této sérii:
 
 + Existující [účet Azure Storage přidaný do vaší virtuální sítě](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints).
 
-## <a name="access-the-studio-from-a-resource-inside-the-vnet"></a>Přístup k studiu z prostředku uvnitř virtuální sítě
+## <a name="configure-data-access-in-the-studio"></a>Konfigurace přístupu k datům v studiu
 
-Pokud k studiu přistupujete z prostředku uvnitř virtuální sítě (například výpočetní instance nebo virtuální počítač), musíte z této virtuální sítě pro Studio dovolit odchozí přenosy. 
+Některé funkce nástroje Studio jsou ve výchozím nastavení ve virtuální síti zakázané. Pokud chcete tyto funkce znovu povolit, musíte povolit spravovanou identitu pro účty úložiště, které chcete používat v studiu. 
 
-Pokud například používáte skupiny zabezpečení sítě (NSG) k omezení odchozího provozu, přidejte pravidlo do cíle __značky služby__ __AzureFrontDoor. front-end__.
-
-## <a name="access-data-using-the-studio"></a>Přístup k datům pomocí studia
-
-Po přidání účtu úložiště Azure do virtuální sítě s [koncovým bodem služby](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) nebo [soukromým koncovým bodem](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)musíte nakonfigurovat účet úložiště tak, aby používal [spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) k udělení přístupu Studio k vašim datům.
-
-Pokud nepovolíte spravovanou identitu, zobrazí se tato chyba, navíc se `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` zakážou tyto operace:
+Ve výchozím nastavení jsou ve virtuální síti zakázané tyto operace:
 
 * Náhled dat v studiu
 * Vizualizujte data v návrháři.
-* Odešlete experiment AutoML.
+* Nasaďte model v Návrháři ([výchozí účet úložiště](#enable-managed-identity-authentication-for-default-storage-accounts)).
+* Odešlete experiment AutoML ([výchozí účet úložiště](#enable-managed-identity-authentication-for-default-storage-accounts)).
 * Spusťte Popis projektu.
 
 Studio podporuje čtení dat z následujících typů úložiště dat ve virtuální síti:
@@ -71,36 +67,58 @@ Studio podporuje čtení dat z následujících typů úložiště dat ve virtu�
 * Azure Blob
 * Azure Data Lake Storage Gen1
 * Azure Data Lake Storage Gen2
-* Databáze Azure SQL
+* Azure SQL Database
 
-### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>Udělení přístupu ke spravované identitě spravovanému pracovnímu __prostoru k__ privátnímu odkazu na úložiště
+### <a name="configure-datastores-to-use-workspace-managed-identity"></a>Konfigurace úložiště dat pro použití identity spravované v pracovním prostoru
 
-Tento krok se vyžaduje jenom v případě, že jste do virtuální sítě přidali účet Azure Storage s [privátním koncovým bodem](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints). Další informace najdete v předdefinované roli [čtenáře](../role-based-access-control/built-in-roles.md#reader) .
+Po přidání účtu úložiště Azure do virtuální sítě s [koncovým bodem služby](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) nebo [soukromým koncovým bodem](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)musíte úložiště dat nakonfigurovat tak, aby používalo [spravované ověřování identity](../active-directory/managed-identities-azure-resources/overview.md) . Tím umožníte, aby aplikace Studio měla přístup k datům ve vašem účtu úložiště.
 
-### <a name="configure-datastores-to-use-workspace-managed-identity"></a>Konfigurace úložiště dat pro použití spravované identity v pracovním prostoru
-
-Azure Machine Learning používá [úložiště dat](concept-data.md#datastores) pro připojení k účtům úložiště. Pomocí následujících kroků můžete nakonfigurovat úložiště dat tak, aby používalo spravovanou identitu. 
+Azure Machine Learning používá [úložiště dat](concept-data.md#datastores) pro připojení k účtům úložiště. Pomocí následujících kroků můžete nakonfigurovat úložiště dat pro použití spravované identity:
 
 1. V nástroji Studio vyberte __úložiště dat__.
 
-1. Pokud chcete vytvořit nové úložiště dat, vyberte __+ nové úložiště dat__.
+1. Pokud chcete aktualizovat existující úložiště dat, vyberte úložiště dat a vyberte __Aktualizovat přihlašovací údaje__.
 
-    Pokud chcete aktualizovat existující úložiště dat, vyberte úložiště dat a vyberte __Aktualizovat přihlašovací údaje__.
+    Pokud chcete vytvořit nové úložiště dat, vyberte __+ nové úložiště dat__.
 
-1. V nastavení úložiště dat vyberte __Ano__ , pokud  __chcete, aby služba Azure Machine Learning měla přístup k úložišti pomocí identity spravované pracovním prostorem__.
+1. V nastavení úložiště dat vyberte __Ano__ , pokud chcete  __použít spravovanou identitu pracovního prostoru pro náhled a profilaci dat v Azure Machine Learning Studiu__.
+
+    ![Snímek obrazovky ukazující, jak povolit identitu spravovaného pracovního prostoru](./media/how-to-enable-studio-virtual-network/enable-managed-identity.png)
+
+Tyto kroky přidají identitu spravovanou pracovním prostorem jako __čtecí__ službu úložiště pomocí Azure RBAC. Přístup __Čtenář__ umožňuje pracovnímu prostoru načíst nastavení brány firewall, aby se zajistilo, že data neopustí virtuální síť. Změny se projeví až po dobu 10 minut.
+
+### <a name="enable-managed-identity-authentication-for-default-storage-accounts"></a>Povolit spravované ověřování identity pro výchozí účty úložiště
+
+Každý pracovní prostor Azure Machine Learning obsahuje dva výchozí účty úložiště, které jsou definovány při vytváření pracovního prostoru. Studio používá výchozí účty úložiště k ukládání artefaktů experimentů a modelů, které jsou pro určité funkce v studiu kritické.
+
+V následující tabulce jsou popsány důvody, proč je nutné povolit spravované ověřování identity pro výchozí účty úložiště v pracovním prostoru.
+
+|Účet úložiště  | Poznámky  |
+|---------|---------|
+|Výchozí úložiště objektů BLOB v pracovním prostoru| Ukládá assety modelu z návrháře. Pro nasazení modelů v Návrháři musíte povolit spravované ověřování identity na tomto účtu úložiště. <br> <br> Můžete vizualizovat a spustit kanál návrháře, pokud používá jiné než výchozí úložiště dat, které bylo nakonfigurováno pro použití spravované identity. Pokud se ale pokusíte nasadit vyškolený model bez povolené spravované identity ve výchozím úložišti dat, nasazení selže bez ohledu na to, jaké jiné úložiště dat se používá.|
+|Výchozí úložiště souborů v pracovním prostoru| Ukládá prostředky experimentů AutoML. Abyste mohli odesílat AutoML experimenty, musíte na tomto účtu úložiště povolit spravované ověřování identity. |
 
 
-Tyto kroky přidají identitu spravovanou pracovním prostorem jako __čtecí__ službu úložiště pomocí řízení přístupu na základě role Azure (RBAC). Přístup __Čtenář__ umožňuje pracovnímu prostoru načíst nastavení brány firewall a zajistit, aby data nezůstala virtuální síť.
+![Snímek obrazovky s informacemi o tom, kde je možné najít výchozí úložiště dat](./media/how-to-enable-studio-virtual-network/default-datastores.png)
 
-> [!NOTE]
-> Tyto změny mohou trvat až 10 minut, než se projeví.
+
+### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>Udělení přístupu ke spravované identitě spravovanému pracovnímu __prostoru k__ privátnímu odkazu na úložiště
+
+Pokud váš účet úložiště Azure používá privátní koncový bod, musíte tomuto pracovnímu prostoru udělit přístup ke **čtečce** identit spravovanému pracovním prostorem. Další informace najdete v předdefinované roli [čtenáře](../role-based-access-control/built-in-roles.md#reader) . 
+
+Pokud váš účet úložiště používá koncový bod služby, můžete tento krok přeskočit.
+
+## <a name="access-the-studio-from-a-resource-inside-the-vnet"></a>Přístup k studiu z prostředku uvnitř virtuální sítě
+
+Pokud k studiu přistupujete z prostředku uvnitř virtuální sítě (například výpočetní instance nebo virtuální počítač), musíte z této virtuální sítě pro Studio dovolit odchozí přenosy. 
+
+Pokud například používáte skupiny zabezpečení sítě (NSG) k omezení odchozího provozu, přidejte pravidlo do cíle __značky služby__ __AzureFrontDoor. front-end__.
 
 ## <a name="technical-notes-for-managed-identity"></a>Technické poznámky ke spravované identitě
 
-Použití spravované identity pro přístup ke službám úložiště má vliv na některé z hlediska zabezpečení. Tato část popisuje změny pro každý typ účtu úložiště.
+Použití spravované identity pro přístup ke službám úložiště ovlivňuje požadavky na zabezpečení. Tato část popisuje změny pro každý typ účtu úložiště. 
 
-> [!IMPORTANT]
-> Tyto požadavky jsou jedinečné pro __typ účtu úložiště__ , ke kterému přistupujete.
+Tyto požadavky jsou jedinečné pro __typ účtu úložiště__ , ke kterému přistupujete.
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
@@ -124,23 +142,17 @@ Pokud chcete získat přístup k datům uloženým v Azure SQL Database pomocí 
 
 Po vytvoření uživatele s omezením SQL udělte mu oprávnění pomocí [příkazu Grant T-SQL](/sql/t-sql/statements/grant-object-permissions-transact-sql).
 
-### <a name="azure-machine-learning-designer-default-datastore"></a>Výchozí úložiště dat návrháře Azure Machine Learning
+### <a name="azure-machine-learning-designer-intermediate-module-output"></a>Výstup zprostředkujícího modulu Azure Machine Learning návrháře
 
-Návrhář používá účet úložiště připojený k vašemu pracovnímu prostoru k uložení výstupu ve výchozím nastavení. Můžete ji však zadat pro uložení výstupu do libovolného úložiště dat, ke kterému máte přístup. Pokud vaše prostředí používá virtuální sítě, můžete pomocí těchto ovládacích prvků zajistit, aby data zůstala zabezpečená a přístupná.
-
-Nastavení nového výchozího úložiště pro kanál:
-
-1. V konceptu kanálu vyberte **ikonu ozubeného kolečka pro nastavení** vedle názvu vašeho kanálu.
-1. Vyberte **možnost vybrat výchozí úložiště dat**.
-1. Zadejte nové úložiště dat.
-
-Výchozí úložiště dat můžete také přepsat na základě jednotlivých modulů. Díky tomu budete mít kontrolu nad umístěním úložiště pro každý jednotlivý modul.
+Můžete zadat umístění výstupu pro libovolný modul v návrháři. Tato operace slouží k uložení mezilehlých datových sad do samostatného umístění pro účely zabezpečení, protokolování nebo auditování. Určení výstupu:
 
 1. Vyberte modul, jehož výstup chcete zadat.
-1. Rozbalte část **Nastavení výstupu** .
-1. Vyberte **přepsat výchozí nastavení výstupu**.
-1. Vyberte **nastavit výstupní nastavení**.
-1. Zadejte nové úložiště dat.
+1. V podokně nastavení modulu, které se zobrazí vpravo, vyberte **Nastavení výstupu**.
+1. Zadejte úložiště dat, které chcete použít pro jednotlivé výstupy modulu.
+ 
+Ujistěte se, že máte přístup k zprostředkujícím účtům úložiště ve vaší virtuální síti. V opačném případě se kanál nezdařil.
+
+Měli byste taky [Povolit spravované ověřování identity](#configure-datastores-to-use-workspace-managed-identity) pro dočasné účty úložiště k vizualizaci výstupních dat.
 
 ## <a name="next-steps"></a>Další kroky
 

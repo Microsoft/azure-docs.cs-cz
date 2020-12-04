@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.custom: designer
-ms.openlocfilehash: 28358db2e538867957fcc8d4984cf1c028f9ab2c
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 14be695f2f58b9738af11a3d2ca3f06592a1cc6e
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030356"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575954"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Kurz: nasazení modelu strojového učení pomocí návrháře
 
@@ -28,7 +28,7 @@ Můžete nasadit prediktivní model vyvinutý v [rámci jednoho kurzu](tutorial-
 > * Nasaďte koncový bod v reálném čase.
 > * Otestujte koncový bod v reálném čase.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Kompletní [část tohoto kurzu](tutorial-designer-automobile-price-train-score.md) se naučíte, jak v Návrháři naučit a vyhodnocovat model strojového učení.
 
@@ -123,7 +123,7 @@ Další informace o využívání webové služby najdete v tématu [Spotřeba m
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se seznámili s klíčovými kroky při vytváření, nasazování a využívání modelu Machine Learning v návrháři. Další informace o tom, jak můžete pomocí návrháře vyřešit jiné typy problémů, najdete v našich ukázkových kanálech.
+V tomto kurzu jste se seznámili s klíčovými kroky při vytváření, nasazování a využívání modelu Machine Learning v návrháři. Další informace o tom, jak můžete použít návrháře, najdete v následujících odkazech:
 
-> [!div class="nextstepaction"]
-> [Ukázky návrháře](samples-designer.md)
++ [Ukázky Návrháře](samples-designer.md): Naučte se, jak pomocí návrháře řešit jiné typy problémů.
++ [Použijte Azure Machine Learning Studio ve službě Azure Virtual Network](how-to-enable-studio-virtual-network.md).
