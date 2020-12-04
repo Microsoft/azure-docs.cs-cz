@@ -1,24 +1,42 @@
 ---
 title: Podpora Azure IoT Hub TLS
-description: Osvědčené postupy při použití zabezpečených připojení TLS pro zařízení a služby komunikující s IoT Hub
+description: Informace o použití zabezpečených připojení TLS pro zařízení a služby, které komunikují s IoT Hub
 services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 11/13/2020
+ms.date: 11/25/2020
 ms.author: jlian
-ms.openlocfilehash: c9dd66fe9d71f0a857e4b0821190bceb5d6d4680
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: ddb89f60c9fe380012c299afaafb6046bf6849c9
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628794"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602746"
 ---
-# <a name="tls-support-in-iot-hub"></a>Podpora TLS v IoT Hub
+# <a name="transport-layer-security-tls-support-in-iot-hub"></a>Podpora protokolu TLS (Transport Layer Security) v IoT Hub
 
 IoT Hub používá protokol TLS (Transport Layer Security) k zabezpečení připojení ze zařízení a služeb IoT. V současné době jsou podporovány tři verze protokolu TLS, a to verze 1,0, 1,1 a 1,2.
 
-TLS 1,0 a 1,1 se považují za starší verze a plánuje se jejich vyřazení. Další informace najdete v tématu [zastaralé TLS 1,0 a 1,1 pro IoT Hub](iot-hub-tls-deprecating-1-0-and-1-1.md). Při připojování k IoT Hub důrazně doporučujeme použít TLS 1,2 jako upřednostňovanou verzi protokolu TLS.
+TLS 1,0 a 1,1 se považují za starší verze a plánuje se jejich vyřazení. Další informace najdete v tématu [zastaralé TLS 1,0 a 1,1 pro IoT Hub](iot-hub-tls-deprecating-1-0-and-1-1.md). Aby nedocházelo k budoucím problémům, při připojování k IoT Hub použijte protokol TLS 1,2 jako jedinou verzi TLS.
+
+## <a name="iot-hubs-server-tls-certificate"></a>Certifikát TLS serveru IoT Hub
+
+Během protokolu TLS handshake IoT Hub prezentuje certifikát serveru RSA pro připojení klientů. Kořenovou certifikační autoritou Baltimore CyberTrust. V poslední době došlo ke změně v emitentech novými zprostředkujícími certifikačními autoritami (ICAs). Další informace najdete v tématu [IoT Hub aktualizace certifikátu TLS](https://azure.microsoft.com/updates/iot-hub-tls-certificate-update/) .
+
+### <a name="elliptic-curve-cryptography-ecc-server-tls-certificate-preview"></a>Certifikát TLS serveru s protokolem ECC (ve verzi Preview)
+
+Certifikát TLS serveru IoT Hub ECC je k dispozici pro verzi Public Preview. I když nabízíte podobné zabezpečení certifikátům RSA, ověřování certifikátu ECC (s šifrovacími sadami pouze ECC) využívá až 40% méně výpočetních prostředků, paměti a šířky pásma. Tyto úspory jsou pro zařízení IoT důležité kvůli jejich menšímu počtu profilů a paměti a k podpoře případů použití v prostředích s omezeným počtem šířky pásma sítě. 
+
+Pro náhled certifikátu serveru IoT Hub ECC:
+
+1. [Vytvořte nové centrum IoT s režimem náhledu zapnuto](iot-hub-preview-mode.md).
+1. [Nakonfigurujte klienta](#tls-configuration-for-sdk-and-iot-edge) tak, aby zahrnoval *jenom* šifrovací sady ECDSA a *vyloučil* žádné z nich. Toto jsou šifrovací sady pro certifikát ECC verze Public Preview:
+    - `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`
+    - `TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`
+    - `TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256`
+    - `TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384`
+1. Připojte svého klienta k službě IoT Hub ve verzi Preview.
 
 ## <a name="tls-12-enforcement-available-in-select-regions"></a>V výběru oblastí je k dispozici vynucení TLS 1,2
 
@@ -88,23 +106,37 @@ Pro služby IoT Hub, které nejsou nakonfigurované pro vynucování TLS 1,2, bu
 
 Klient může navrhnout seznam vyšších šifrovacích sad, které budou použity během `ClientHello` . Některé z nich však nemusí být podporovány IoT Hub (například `ECDHE-ECDSA-AES256-GCM-SHA384` ). V takovém případě se IoT Hub pokusí postupovat podle preference klienta, ale nakonec vyjednávat šifrovací sadu pomocí `ServerHello` .
 
-## <a name="use-tls-12-in-your-iot-hub-sdks"></a>Použití TLS 1,2 v sadách IoT Hub SDK
+## <a name="tls-configuration-for-sdk-and-iot-edge"></a>Konfigurace TLS pro sadu SDK a IoT Edge
 
 Pomocí níže uvedených odkazů nakonfigurujte TLS 1,2 a povolená šifra v IoT Hub klientských sadách SDK.
 
 | Jazyk | Verze podporující TLS 1,2 | Dokumentace |
 |----------|------------------------------------|---------------|
-| C        | Tag 2019-12-11 nebo novější            | [Odkaz](https://aka.ms/Tls_C_SDK_IoT) |
-| Python   | Verze 2.0.0 nebo novější             | [Odkaz](https://aka.ms/Tls_Python_SDK_IoT) |
-| C#       | Verze 1.21.4 nebo novější            | [Odkaz](https://aka.ms/Tls_CSharp_SDK_IoT) |
-| Java     | Verze 1.19.0 nebo novější            | [Odkaz](https://aka.ms/Tls_Java_SDK_IoT) |
-| NodeJS   | Verze 1.12.2 nebo novější            | [Odkaz](https://aka.ms/Tls_Node_SDK_IoT) |
-
-
-## <a name="use-tls-12-in-your-iot-edge-setup"></a>Použití TLS 1,2 v nastavení IoT Edge
+| C        | Tag 2019-12-11 nebo novější            | [Propojit](https://aka.ms/Tls_C_SDK_IoT) |
+| Python   | Verze 2.0.0 nebo novější             | [Propojit](https://aka.ms/Tls_Python_SDK_IoT) |
+| C#       | Verze 1.21.4 nebo novější            | [Propojit](https://aka.ms/Tls_CSharp_SDK_IoT) |
+| Java     | Verze 1.19.0 nebo novější            | [Propojit](https://aka.ms/Tls_Java_SDK_IoT) |
+| NodeJS   | Verze 1.12.2 nebo novější            | [Propojit](https://aka.ms/Tls_Node_SDK_IoT) |
 
 IoT Edge zařízení je možné nakonfigurovat tak, aby při komunikaci s IoT Hub používala TLS 1,2. Pro účely tohoto účelu použijte [stránku dokumentace IoT Edge](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md).
 
 ## <a name="device-authentication"></a>Ověřování zařízení
 
-Po úspěšném ověření TLS metodou handshake IoT Hub může ověřit zařízení pomocí symetrického klíče nebo certifikátu X. 509. Pro ověřování založené na certifikátech může to být libovolný certifikát X. 509, včetně ECC. IoT Hub ověří certifikát proti kryptografickému otisku nebo certifikační autoritě (CA), kterou zadáte. Další informace najdete v tématu [podporované certifikáty X. 509](iot-hub-devguide-security.md#supported-x509-certificates).
+Po úspěšném ověření TLS metodou handshake IoT Hub může ověřit zařízení pomocí symetrického klíče nebo certifikátu X. 509. U ověřování založeného na certifikátech může to být libovolný certifikát X. 509, včetně ECC. IoT Hub ověří certifikát proti kryptografickému otisku nebo certifikační autoritě (CA), kterou zadáte. Další informace najdete v tématu [podporované certifikáty X. 509](iot-hub-devguide-security.md#supported-x509-certificates).
+
+## <a name="tls-maximum-fragment-length-negotiation-preview"></a>Maximální délka fragmentu protokolu TLS (Preview)
+
+IoT Hub také podporuje vyjednávání s maximální délkou fragmentu protokolu TLS, což se někdy označuje jako vyjednávání velikosti rámce TLS. Tato funkce je ve verzi Public Preview. 
+
+Pomocí této funkce lze zadat maximální délku fragmentu nešifrovaného textu na hodnotu menší, než je výchozí hodnota 2 ^ 14 bajtů. Po vyjednání IoT Hub a klient zahájí fragmentaci zpráv, aby všechny fragmenty byly menší než vyjednaná délka. Toto chování je užitečné pro výpočetní nebo paměťově omezená zařízení. Další informace najdete v [oficiální specifikaci rozšíření TLS](https://tools.ietf.org/html/rfc6066#section-4).
+
+Oficiální podpora sady SDK pro tuto funkci veřejné verze Preview není zatím k dispozici. Začněte tím, že
+
+1. [Vytvořte nové centrum IoT s režimem náhledu zapnuto](iot-hub-preview-mode.md).
+1. Nakonfigurujte klienta tak, aby byl nastavený `SSL_CTX_set_tlsext_max_fragment_length` na jednu z těchto hodnot: 2 ^ 9, 2 ^ 10, 2 ^ 11 a 2 ^ 12.
+1. Připojte klienta k IoT Hub verze Preview.
+
+## <a name="next-steps"></a>Další kroky
+
+- Další informace o IoT Hub zabezpečení a řízení přístupu najdete v tématu [řízení přístupu k IoT Hub](iot-hub-devguide-security.md).
+- Další informace o použití certifikátu x509 pro ověřování zařízení najdete v tématu [ověřování zařízení pomocí certifikátů certifikační autority X. 509.](iot-hub-x509ca-overview.md)

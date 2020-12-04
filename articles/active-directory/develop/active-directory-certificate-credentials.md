@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 12/3/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 77e34e4a18012f15b9e907e3b9efc1965b98f824
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3222c790ccd0cee936b246253a16b5c434c61c8
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612116"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602202"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Přihlašovací údaje ověřovacího certifikátu aplikace Microsoft Identity Platform
 
@@ -30,13 +30,13 @@ Jedna forma přihlašovacích údajů, kterou může aplikace použít k ověřo
 
 Chcete-li vypočítat kontrolní výraz, můžete použít jednu z mnoha knihoven JWT v jazyce podle vašeho výběru – [MSAL to podporuje pomocí nástroje `.WithCertificate()` ](msal-net-client-assertions.md). Tato informace je převedená tokenem ve své [hlavičce](#header), [deklaracích identity](#claims-payload)a [podpisu](#signature).
 
-### <a name="header"></a>Záhlaví
+### <a name="header"></a>Hlavička
 
 | Parametr |  Přeznačit |
 | --- | --- |
 | `alg` | By měl být **RS256** |
 | `typ` | Měla by být **JWT** |
-| `x5t` | Šestnáctková reprezentace certifikátu X. 509 (označovaná také jako *kryptografický otisk*SHA-1 certifikátu) kódovaná jako řetězcová hodnota base64. Například pokud je zadána hodnota hash certifikátu X. 509 `84E05C1D98BCE3A5421D225B140B36E86A3D5534` (Hex), `x5t` deklarace by byla `hOBcHZi846VCHSJbFAs26Go9VTQ=` (Base64). |
+| `x5t` | Šestnáctková reprezentace certifikátu X. 509 (označovaná také jako *kryptografický otisk* SHA-1 certifikátu) kódovaná jako hodnota řetězce Base64url. Například s ohledem na hodnotu hash certifikátu X. 509 `84E05C1D98BCE3A5421D225B140B36E86A3D5534` (Hex) bude `x5t` deklarace identity `hOBcHZi846VCHSJbFAs26Go9VTQ=` (Base64url). |
 
 ### <a name="claims-payload"></a>Deklarace identity (datová část)
 
@@ -94,7 +94,7 @@ Přihlašovací údaje certifikátu můžete přidružit k klientské aplikaci n
 ### <a name="uploading-the-certificate-file"></a>Nahrává se soubor certifikátu.
 
 V registraci aplikace Azure pro klientskou aplikaci:
-1. Vyberte **certifikáty & tajných**kódů.
+1. Vyberte **certifikáty & tajných** kódů.
 2. Klikněte na **nahrát certifikát** a vyberte soubor certifikátu, který se má nahrát.
 3. Klikněte na **Přidat**.
   Po nahrání certifikátu se zobrazí miniatura, datum zahájení a hodnoty vypršení platnosti.

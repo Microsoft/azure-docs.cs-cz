@@ -10,14 +10,14 @@ author: lobrien
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy
-ms.openlocfilehash: 1d2e25f76d9a68eeb01a45c34651fe1537297980
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 71f393897dff266f1b0922a19eefd70cffea133d
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510569"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600349"
 ---
-# <a name="deploy-on-your-local-machines-models-trained-with-azure-machine-learning"></a>Nasazení na modelech místních počítačů, které jsou vyškolené pomocí Azure Machine Learning
+# <a name="deploy-models-trained-with-azure-machine-learning-on-your-local-machines"></a>Nasazení modelů vyškolených pomocí Azure Machine Learning na místních počítačích 
 
 Tento článek popisuje, jak použít místní počítač jako cíl pro školení nebo nasazení modelů vytvořených v Azure Machine Learning. Azure Machine Learning je dostatečně flexibilní, aby bylo možné pracovat s většinou architektur strojového učení pro Python. Řešení strojového učení mají obecně složité závislosti, které je obtížné duplikovat. V tomto článku se dozvíte, jak vyrovnávat celkovou kontrolu pomocí snadného použití.
 
@@ -27,7 +27,7 @@ Mezi scénáře pro místní nasazení patří:
 * Ladění a řešení potíží v pozdějších fázích.
 * Konečné nasazení na hardware spravovaný uživatelem.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 - Model a prostředí. Pokud nemáte školený model, můžete použít soubory modelů a závislostí, které jsou k dispozici v [tomto kurzu](tutorial-train-models-with-aml.md).

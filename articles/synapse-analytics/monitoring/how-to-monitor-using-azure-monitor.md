@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: f495de13c20aa2953f55e2837fab15a6c62e1083
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9032fcaf35265c791913f5b69fb0972bada6885f
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466833"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602457"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Použití Azure Monitor s pracovním prostorem Azure synapse Analytics
 
@@ -103,17 +103,16 @@ Přihlaste se k Azure Portal a vyberte **monitorování**  >  **výstrah** a vyt
 
 Tady jsou protokoly emitované pracovními prostory Azure synapse Analytics:
 
-| Název Log Analytics tabulky | Název kategorie protokolu                 | Popis |
+| Název Log Analytics tabulky | Název kategorie protokolu                 | Description |
 |-------------------------------|-------------------------------------------------|-------------|
 | SynapseGatewayApiRequests     | GatewayApiRequests             | Žádosti rozhraní API služby Azure synapse Gateway. |
 | SynapseRbacOperations         | SynapseRbacOperations          | Operace řízení přístupu založeného na rolích Azure synapse (SRBAC). |
-| SynapseBuiltinSqlPoolRequestsEnded   | BuiltInSqlReqsEnded    | Ukončily se integrované požadavky SQL serveru Azure synapse. |
 
 ### <a name="dedicated-sql-pool-logs"></a>Vyhrazené protokoly fondů SQL
 
 Tady jsou protokoly emitované vyhrazené fondy SQL:
 
-| Název Log Analytics tabulky        | Název kategorie protokolu             | Popis |
+| Název Log Analytics tabulky        | Název kategorie protokolu             | Description |
 |----------------------|--------------------------------------|-------------|
 | SynapseSqlPoolExecRequests  | ExecRequests | Informace o požadavcích a dotazech SQL ve vyhrazeném fondu SQL ve službě Azure synapse.
 | SynapseSqlPoolDmsWorkers    | DmsWorkers   | Informace o pracovních procesech, které dokončují kroky DMS ve vyhrazeném fondu SQL ve službě Azure synapse.
@@ -132,7 +131,7 @@ Další informace o těchto protokolech najdete v následujících informacích:
 
 Tady je protokol vysílaný Apache Spark fondy:
 
-| Název Log Analytics tabulky               | Název kategorie protokolu              | Popis                 |
+| Název Log Analytics tabulky               | Název kategorie protokolu              | Description                 |
 |-----------------------------|---------------------------------------|-----------------------------|
 | SynapseBigDataPoolApplicationsEnded | BigDataPoolAppsEnded | Informace o ukončených Apache Sparkch aplikacích |
 

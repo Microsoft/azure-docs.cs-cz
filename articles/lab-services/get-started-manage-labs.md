@@ -3,12 +3,12 @@ title: Začínáme s Azure Lab Services
 description: Tento článek popisuje, jak začít s Azure Lab Services.
 ms.topic: article
 ms.date: 11/18/2020
-ms.openlocfilehash: 6fb0da7f91e0eecdeefecdb6635b657245fda9af
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 44afe13fb6f555b12dfce939ce8e88e3af8dc7ef
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434426"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602661"
 ---
 # <a name="get-started-with-lab-services"></a>Začínáme se službami testovacího prostředí 
 
@@ -115,12 +115,8 @@ Učitelé můžou přidat uživatele studenta do testovacího prostředí a moni
 
 1. Na [webu Azure Lab Services](https://labs.azure.com/) klikněte na **Uživatelé** na levé straně okna.
 1. V horní části okna klikněte na **Přidat uživatele** a vyberte **Přidat podle e-mailové adresy**. 
-
-    :::image type="content" source="./media/how-to-configure-student-usage/add-users-button.png" alt-text="Tlačítko Přidat uživatele":::
 1. V podokně **Přidat uživatele** , které se zobrazí napravo, zadejte e-mailové adresy studentů na samostatné řádky nebo na jeden řádek oddělený středníky.
 1. Klikněte na **Uložit**.
-
-    :::image type="content" source="./media/get-started-manage-labs/add-students.png" alt-text="Přidání studentů do testovacího prostředí":::
 1. Seznam uživatelů se teď bude aktualizovat s e-maily, stavem, pozvánkou a hodinovou kvótou.
 
     Po registraci studentů pro testovací prostředí se jejich názvy aktualizují s křestními jmény a příjmeními z Azure Active Directory.

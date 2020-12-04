@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 94ab7e235f0796277d65aebb33d9011fc76b74ce
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 3d84f0df44f17bdc7dd68aa9cae1f01b06d261b4
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532784"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601637"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>Základní hodnoty zabezpečení Azure pro App Service
 
@@ -71,7 +71,7 @@ Použijte Azure Firewall k posílání provozu a centrálnímu vytváření, pro
 
 - [Pochopení zabezpečení sítě, které poskytuje Azure Security Center](../security-center/security-center-network-recommendations.md)
 
-- [Postup povolení monitorování a ochrany App Service](/azure/security-center/defender-for-app-service-intro)
+- [Postup povolení monitorování a ochrany App Service](/azure/security-center/defender-for-app-service-introduction)
 
 **Monitorování služby Azure Security Center:** Ano
 

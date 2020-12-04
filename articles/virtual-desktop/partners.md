@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bf314510a8569a825ccd309ec855e3ff186bba86
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7a1b178450a1aa06db07d7b1ef525f7f781db9ef
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023373"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602814"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integrace s partnery virtuálních počítačů s Windows
 
@@ -114,7 +114,7 @@ deviceTRUST je poskytovatel služeb s hodnotou "Windows Virtual Desktop-added", 
 
 deviceTRUST rozšiřuje hodnotu virtuálního klienta Windows s jejich kontextovou technologií zabezpečení. deviceTRUST umožňuje podmíněný přístup pro zabezpečený přístup k virtuálním plochám Windows, podmíněný přístup k aplikacím v rámci virtuálních ploch Windows a k aplikování podmíněné zásady virtuálních počítačů s Windows bez jakékoli další infrastruktury. Použití deviceTRUST umožňuje mobilní a flexibilní pracovní prostor, který splňuje všechny požadavky na zabezpečení, dodržování předpisů a předpisy.
 
-- [Přejít na web partnera](https://devicetrust.com/wvd).
+- [Přejít na web partnera](https://devicetrust.com/).
 
 ## <a name="ekran-system"></a>Ekran systém
 

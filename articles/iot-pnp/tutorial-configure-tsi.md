@@ -7,12 +7,12 @@ ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ad5c6f205fc832eb125e52b4135990fc58742e62
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e1eeb85980430e33446329b5f25ff963ab1c8027
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453250"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600825"
 ---
 # <a name="preview-tutorial-create-and-connect-to-time-series-insights-gen2-to-store-visualize-and-analyze-iot-plug-and-play-device-telemetry"></a>Kurz verze Preview: vytvoření a připojení k Time Series Insights Gen2 k ukládání, vizualizaci a analýze telemetrie technologie Plug and Play zařízení IoT
 
@@ -23,7 +23,7 @@ Nejdřív zřizujete prostředí TSI a připojíte své centrum IoT jako zdroj u
 > [!NOTE]
 > Tato integrace je ve verzi Preview. Způsob mapování modelů zařízení DTDL na model časové řady se může změnit.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -124,7 +124,7 @@ Můžete začít ingestovat data do Azure Time Series Insights Gen2 bez předdef
 * Název typu může být buď název modelu, nebo zobrazovaný název.
 * Popis modelu se stal popisem typu.
 * Pro každou telemetrii s číselným schématem je vytvořena alespoň jedna proměnná typu.
-  * Pro proměnné lze použít pouze číselné datové typy, ale pokud je hodnota odeslána jako jiný typ, který lze převést, `"0"` například můžete použít funkci [převodu](/rest/api/time-series-insights/reference-time-series-expression-syntax.md#conversion-functions) , jako je například `toDouble` .
+  * Pro proměnné lze použít pouze číselné datové typy, ale pokud je hodnota odeslána jako jiný typ, který lze převést, `"0"` například můžete použít funkci [převodu](/rest/api/time-series-insights/reference-time-series-expression-syntax#conversion-functions) , jako je například `toDouble` .
 * Název proměnné může být buď název telemetrie, nebo zobrazovaný název.
 * Při definování výrazu proměnné časové řady se podívejte na název telemetrie na lince a datový typ.
 
@@ -138,7 +138,7 @@ Můžete začít ingestovat data do Azure Time Series Insights Gen2 bez předdef
 ![Typ modelu DTDL na časové řady](./media/tutorial-configure-tsi/DTDL-to-TSM-Type.png)
 
 > [!NOTE]
-> Tento příklad ukazuje tři proměnné, ale každý typ může mít až 100. Různé proměnné mohou odkazovat na stejnou hodnotu telemetrie za účelem provádění různých výpočtů podle potřeby. Úplný seznam filtrů, agregace a skalárních funkcí najdete v tématu [Time Series Insights syntaxi výrazu Gen2 Time Series](/rest/api/time-series-insights/reference-time-series-expression-syntax.md).
+> Tento příklad ukazuje tři proměnné, ale každý typ může mít až 100. Různé proměnné mohou odkazovat na stejnou hodnotu telemetrie za účelem provádění různých výpočtů podle potřeby. Úplný seznam filtrů, agregace a skalárních funkcí najdete v tématu [Time Series Insights syntaxi výrazu Gen2 Time Series](/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
 Otevřete textový editor a uložte následující JSON na místní disk:
 
@@ -226,4 +226,4 @@ Přejděte zpátky do podokna pro vytváření grafů a rozbalte **> zařízení
 
 * Podrobný přehled modelu časových řad vašeho prostředí najdete v tématu [model služby Time Series v článku Azure Time Series Insights Gen2](../time-series-insights/concepts-model-overview.md) .
 
-* Pokud se chcete podrobně do rozhraní API pro dotazy a syntaxí výrazu časové řady, přečtěte si téma [rozhraní API pro dotazy na Azure Time Series Insights Gen2](/rest/api/time-series-insights/reference-query-apis.md).
+* Pokud se chcete podrobně do rozhraní API pro dotazy a syntaxí výrazu časové řady, přečtěte si téma [rozhraní API pro dotazy na Azure Time Series Insights Gen2](/rest/api/time-series-insights/reference-query-apis).

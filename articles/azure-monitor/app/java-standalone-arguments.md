@@ -3,13 +3,15 @@ title: Přidání JVM ARG-Azure Monitor Application Insights Java
 description: Přidání JVM ARG pro Azure Monitor Application Insights Java
 ms.topic: conceptual
 ms.date: 04/16/2020
+author: MS-jgol
 ms.custom: devx-track-java
-ms.openlocfilehash: 3c9c38d4173413310b715e05c9dcfb9c15be9d4f
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.author: jgol
+ms.openlocfilehash: e665bf734d2141081796f7810eed02eff3b5c5ad
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377629"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601097"
 ---
 # <a name="adding-the-jvm-arg-for-azure-monitor-application-insights-java"></a>Přidání JVM ARG pro Azure Monitor Application Insights Java
 
@@ -170,7 +172,7 @@ Přidat `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` k exist
 
 ## <a name="websphere-8"></a>WebSphere 8
 
-Otevřete konzolu pro správu přejděte na **servery > WebSphere aplikační servery > aplikační servery** , vyberte příslušné aplikační servery a klikněte na: 
+Otevřete konzolu pro správu přejděte na **servery > WebSphere aplikační servery > aplikační servery**, vyberte příslušné aplikační servery a klikněte na: 
 
 ```
 Java and Process Management > Process definition >  Java Virtual Machine

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 09/01/2020
 ms.author: azhussai
-ms.openlocfilehash: 1d88379726cfb6c4218c38b9ccc87005609a9aba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89ba6b7a69c95951a083628f23be68d811c7768c
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460741"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601607"
 ---
 # <a name="understanding-pricing-for-azure-application-gateway-and-web-application-firewall"></a>Principy cen pro Azure Application Gateway a firewall webových aplikací
 
@@ -56,9 +56,9 @@ V následující tabulce jsou uvedeny ukázkové ceny na základě snímku Vých
 
 |              Typ Application Gateway             |  Náklady ($/h)  |
 | ------------------------------------------------- | ---------------|
-|                     Malý                         |    $0,025      |
+|                     Malá                         |    $0,025      |
 |                     Střední                        |    $0,07       |
-|                     Velký                         |    $0,32       |
+|                     Velká                         |    $0,32       |
 
 Odhad měsíčních cen vychází z 730 hodin využití za měsíc.
 
@@ -82,9 +82,9 @@ V následující tabulce jsou uvedeny ukázkové ceny na základě snímku Vých
 
 |              Typ Application Gateway             |  Náklady ($/h)  |
 | ------------------------------------------------- | ---------------|
-|                     Malý                         |       Není k dispozici       |
+|                     Malá                         |       Není k dispozici       |
 |                     Střední                        |     $0,126     |
-|                     Velký                         |     $0,448     |
+|                     Velká                         |     $0,448     |
 
 Odhad měsíčních cen vychází z 730 hodin využití za měsíc.
 
@@ -254,9 +254,19 @@ Pokud byla pro použití v rámci 3 rezervovaných instancí dostupná kapacita 
 
 Pevná cena = $0,246 × 730 (hodiny) = $179,58
 
-Proměnné cost = $0,008 * (3 (jednotky instancí) * 10 (jednotky kapacity) + 5 (další jednotky kapacity)) * 730 (hodiny) = $204,4
+Variabilní náklady = $0,008 * (3 (jednotky instancí) * 10 (jednotky kapacity) + 10 (další jednotky kapacity)) * 730 (hodiny) = $233,6
 
-Celkové náklady = $179,58 + $204,4 = $383,98
+Celkové náklady = $179,58 + $233,6 = $413,18
+
+Pokud se ale kapacita zpracování rovná pouze 7 další kapacitní jednotky, je k dispozici pro použití v rámci 3 rezervovaných instancí.
+V tomto scénáři je Application Gateway prostředek pod měřítkem a může potenciálně vést ke zvýšení latence nebo vyřazení požadavků.
+
+Pevná cena = $0,246 × 730 (hodiny) = $179,58
+
+Proměnné cost = $0,008 * (3 (jednotky instancí) * 10 (jednotky kapacity) + 7 (další jednotky kapacity)) * 730 (hodiny) = $216,08
+
+Celkové náklady = $179,58 + $216,08 = $395,66
+
 
 ![Diagram ručního škálování 2](./media/pricing/manual-scale-2.png)
 

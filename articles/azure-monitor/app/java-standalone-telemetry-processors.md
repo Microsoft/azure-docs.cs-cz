@@ -3,12 +3,15 @@ title: Procesory telemetrie (Preview) – Azure Monitor Application Insights Jav
 description: Procesory telemetrie pro Azure Monitor Application Insights Java
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: e3c41a7a9968a7de743f0c513b1f2b194501d0df
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+author: MS-jgol
+ms.custom: devx-track-java
+ms.author: jgol
+ms.openlocfilehash: 316243e130345ce1b009e065cf9d8250c501ee84
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425792"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601029"
 ---
 # <a name="telemetry-processors-preview-for-azure-monitor-application-insights-java"></a>Procesory telemetrie (Preview) pro Azure Monitor Application Insights Java
 
@@ -56,10 +59,10 @@ Vytvořte konfigurační soubor s názvem `applicationinsights.json` a umístět
 
 Procesor atributů a procesor rozpětí zpřístupňují možnost poskytnout sadu vlastností rozsahu, který se má shodovat s, abyste zjistili, jestli by se rozpětí mělo zahrnout nebo vyloučit z procesoru. Chcete-li konfigurovat tuto možnost, musí být v části `include` a/nebo `exclude` aspoň jedna `matchType` a jedna z `spanNames` nebo `attributes` . Konfigurace zahrnutí/vyloučení je podporovaná tak, aby obsahovala víc než jednu zadanou podmínku. Všechny zadané podmínky se musí vyhodnotit na hodnotu true, aby došlo ke shodě. 
 
-**Povinné pole** : 
+**Povinné pole**: 
 * `matchType` Určuje, jakým `spanNames` způsobem `attributes` jsou interpretovány položky a pole. Možné hodnoty jsou `regexp` nebo `strict`. 
 
-**Volitelná pole** : 
+**Volitelná pole**: 
 * `spanNames` musí odpovídat nejméně jedné z položek. 
 * `attributes` Určuje seznam atributů, které mají být porovnány. Všechny tyto atributy se musí přesně shodovat, aby došlo ke shodě.
 

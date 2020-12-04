@@ -3,12 +3,12 @@ title: Použití Azure Lab Services pro Hackathon
 description: Tento článek popisuje, jak používat Azure Lab Services pro vytváření testovacích prostředí, která můžete použít ke spuštění hackathony.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 561351636a37c2cd5c3070dbfef2a3122e5c29b0
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: a0917ede4502dcbb59d1a30b7985b06c06975599
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434256"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602576"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>Použít Azure Lab Services pro další Hackathon
 Azure Lab Services je navržená tak, aby byla nenáročná a snadno použitelná, takže můžete rychle vymezit nové prostředí virtuálních počítačů (VM) pro vaši Hackathon.  Pomocí následujícího kontrolního seznamu zajistěte, aby váš Hackathon byl co nejrychleji. Tento kontrolní seznam by měl dokončit vaše IT oddělení nebo vyučující, kteří zodpovídají za vytváření a správu testovacího prostředí Hackathon. 
@@ -39,7 +39,7 @@ Pokud chcete používat služby testovacího prostředí pro Hackathon, ujistět
 
 - **Rozhodněte, jestli se má omezit přístup k testovacímu prostředí**. 
 
-    Při přidávání uživatelů do testovacího prostředí je k dispozici možnost omezit přístup, která je ve výchozím nastavení povolená. Tato funkce vyžaduje, abyste přidali všechny e-maily účastníků Hackathon do seznamu předtím, než se budou moct zaregistrovat a přistupovat k testovacímu prostředí pomocí odkazu registrace. Pokud máte Hackathon, kde nevíte, kdo budou účastníci před událostí, můžete zakázat možnost omezit přístup, která umožňuje komukoli zaregistrovat se do testovacího prostředí pomocí odkazu na registraci. Další informace najdete v [příručce Průvodce přidáváním uživatelů](how-to-configure-student-usage.md#add-users-to-a-lab).
+    Při přidávání uživatelů do testovacího prostředí je k dispozici možnost omezit přístup, která je ve výchozím nastavení povolená. Tato funkce vyžaduje, abyste přidali všechny e-maily účastníků Hackathon do seznamu předtím, než se budou moct zaregistrovat a přistupovat k testovacímu prostředí pomocí odkazu registrace. Pokud máte Hackathon, kde nevíte, kdo budou účastníci před událostí, můžete zakázat možnost omezit přístup, která umožňuje komukoli zaregistrovat se do testovacího prostředí pomocí odkazu na registraci. Další informace najdete v [příručce Průvodce přidáváním uživatelů](how-to-configure-student-usage.md).
 
 - **Ověřte nastavení plánu, kvót a automatické vypnutí**. 
 

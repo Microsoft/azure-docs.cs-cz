@@ -3,12 +3,12 @@ title: Testování částí Azure Durable Functions
 description: Přečtěte si, jak Durable Functions testování částí.
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: 86733f8b5b80799bad3e52c643ed27465dfc7641
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7786a0a2e2d31086e1938b70e63fe2374e16fe7f
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74231230"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601352"
 ---
 # <a name="durable-functions-unit-testing"></a>Testování částí Durable Functions
 
@@ -25,7 +25,7 @@ Příklady v tomto článku vyžadují znalost následujících konceptů a plat
 
 * Odolná služba Functions
 
-* rozhraní [xUnit](https://xunit.github.io/) -Testing
+* rozhraní [xUnit](https://github.com/xunit/xunit) -Testing
 
 * rozhraní pro návrhy [MOQ](https://github.com/moq/moq4)
 
@@ -179,6 +179,6 @@ A testy jednotek budou ověřovat formát výstupu. Testy jednotek mohou použí
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o xUnit](https://xunit.github.io/docs/getting-started-dotnet-core)
+> [Další informace o xUnit](https://xunit.net/docs/getting-started/netcore/cmdline)
 > 
 > [Další informace o MOQ](https://github.com/Moq/moq4/wiki/Quickstart)

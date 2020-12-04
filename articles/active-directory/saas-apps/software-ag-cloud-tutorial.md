@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/23/2020
+ms.date: 11/20/2020
 ms.author: jeedes
-ms.openlocfilehash: ccf945f8bfec85a18493d515dce48f4cb3e3b612
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4acc4c0cec530b8f83648042cd7a417992257543
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182330"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602015"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>Kurz: Azure Active Directory integraci jednotného přihlašování do programu Software AG Cloud
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Software AG Cloud s Azure Active Direc
 * Umožněte, aby se vaši uživatelé automaticky přihlásili do cloudu Software AG pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -77,9 +77,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://*.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.softwareag.cloud/auth/realms/TENANT-NAME`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://*.softwareag.cloud/auth/realms/TENANT-NAME`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory pro cloudového klienta softwaru AG](mailto:support@softwareag.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -121,19 +121,19 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1.  Klikněte na **Správa** .
 
-    ![Konfigurace softwaru AG Cloud1](./media/software-ag-cloud-tutorial/admin.png)
+    ![Konfigurace cloudové správy softwaru AG](./media/software-ag-cloud-tutorial/admin.png)
 
 1. Přejít na **jednotné přihlašování > přidat zprostředkovatele identity**
 
-    ![Konfigurace softwaru AG Cloud2](./media/software-ag-cloud-tutorial/add-identity-provider.png)
+    ![Konfigurace poskytovatele cloudových identit softwaru AG](./media/software-ag-cloud-tutorial/add-identity-provider.png)
 
 1. Na následující stránce proveďte následující kroky.
 
-    ![Konfigurace softwaru AG Cloud3](./media/software-ag-cloud-tutorial/saml-1.png)
+    ![Konfigurace softwaru software AG Cloud postupujte podle kroků](./media/software-ag-cloud-tutorial/saml-1.png)
 
     a. Do textového pole **Zobrazovaný název zprostředkovatele identity** zadejte název jako `azure ad` .
 
-    b. V rámci **jedinečného identifikátoru zprostředkovatele identity pro použití v textovém poli s identifikátorem URI přesměrování cloudu softwaru AG** vložte hodnotu **ID entity** , kterou jste zkopírovali z Azure Portal.
+    b. V rámci **jedinečného identifikátoru zprostředkovatele identity pro použití v textovém poli s identifikátorem URI pro přesměrování cloudu softwaru AG** zadejte jedinečný název poskytovatele identity. Pole **identifikátor URI pro přesměrování cloudu Software AG** se aktualizuje a NAplní identifikátorem URI. Zkopírujte tento identifikátor URI a použijte ho ke konfiguraci **ID entity** a dalších informací v Azure Portal podle definovaných schémat.
 
     c. Importujte soubor **XML federačních metadat** v **konfiguraci zprostředkovatele identity** a klikněte na **Další**.
 
@@ -147,11 +147,12 @@ V této části se v cloudu Software AG vytvoří uživatel s názvem Britta Sim
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-1. Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL softwaru software AG Cloud Signing, kde můžete spustit tok přihlášení. 
+* Za předpokladu, že Microsoft Azure je v cloudu Software AG nakonfigurovaný jako poskytovatel, přejděte na `www.softwareag.cloud` tlačítko přihlásit a klikněte na tlačítko pro přihlášení a zadejte název prostředí. Na další obrazovce klikněte na odkaz Přihlásit se pomocí <IDP NAME> a zadejte přihlašovací údaje. Po ověření se budete přihlásíte k domovské stránce cloudu Software AG a přejdete na ni.
 
-2. Přejít na adresu URL pro přihlášení ke cloudu softwaru AG přímo a zahájit tok přihlášení.
+* Přejít na adresu URL pro přihlášení ke cloudu softwaru AG přímo a zahájit tok přihlášení.
 
-3. Můžete použít panel Microsoft Access. Po kliknutí na dlaždici cloudu Software AG na přístupovém panelu se tato akce přesměruje na adresu URL pro přihlášení do cloudu softwaru AG. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md) .
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Software AG Cloud v části Moje aplikace, přesměruje se na adresu URL pro přihlášení ke cloudu softwaru AG. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) .
+
 
 ## <a name="next-steps"></a>Další kroky
 

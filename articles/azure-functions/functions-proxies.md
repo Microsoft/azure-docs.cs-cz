@@ -3,12 +3,12 @@ title: Práce se servery proxy v Azure Functions
 description: Přehled způsobu použití Proxy služby Azure Functions
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 3e08b9cf633162cc7015f47774b043cf58c115a0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fb263239f99bcb4ec4c893b700d5c1cce078659f
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020394"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601369"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Práce s Proxy služby Azure Functions
 
@@ -55,11 +55,11 @@ Konfigurace proxy serveru nemusí být statická. Tuto podmínku můžete použ�
 ### <a name="reference-local-functions"></a><a name="reference-localhost"></a>Místní funkce odkazů
 Můžete použít `localhost` pro odkazování na funkci v rámci stejné aplikace Function App přímo bez požadavku na proxy zpětného převodu.
 
-`"backendurl": "https://localhost/api/httptriggerC#1"` provede odkaz na místní funkci aktivovanou protokolem HTTP v trase. `/api/httptriggerC#1`
+`"backendUri": "https://localhost/api/httptriggerC#1"` provede odkaz na místní funkci aktivovanou protokolem HTTP v trase. `/api/httptriggerC#1`
 
  
 >[!Note]  
->Pokud vaše funkce používá úrovně autorizace *Function, admin nebo sys* , bude nutné zadat kód a ClientID, jak je uvedeno na základě původní adresy URL funkce. V takovém případě by odkaz vypadal takto: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` tyto klíče doporučujeme uložit do [nastavení aplikace] a odkazovat na ně v proxy serverech. Tím se vyhnete ukládání tajných kódů ve zdrojovém kódu. 
+>Pokud vaše funkce používá úrovně autorizace *Function, admin nebo sys* , bude nutné zadat kód a ClientID, jak je uvedeno na základě původní adresy URL funkce. V takovém případě by odkaz vypadal takto: `"backendUri": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` tyto klíče doporučujeme uložit do [nastavení aplikace] a odkazovat na ně v proxy serverech. Tím se vyhnete ukládání tajných kódů ve zdrojovém kódu. 
 
 ### <a name="reference-request-parameters"></a><a name="request-parameters"></a>Parametry referenční žádosti
 

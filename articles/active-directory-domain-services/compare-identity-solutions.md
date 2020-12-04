@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: joflore
-ms.openlocfilehash: 0576fdaa9bdcc90636c3cd2bc90ba2818f1e69e7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 916615808bc1e28b9794b57e08960520e3abd835
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962662"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602270"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Porovnání samoobslužně spravovaných Active Directory Domain Services, Azure Active Directory a spravovaných Azure Active Directory Domain Services
 
@@ -99,8 +99,8 @@ Zařízení je možné připojit k Azure AD s hybridním nasazením nebo bez ně
 | **Typ zařízení**                                        | **Platformy zařízení**             | **Mechanismus**          |
 |:----------------------------------------------------------| -------------------------------- | ---------------------- |
 | Osobní zařízení                                          | Windows 10, iOS, Android, macOS | Registrováno v Azure AD    |
-| Zařízení vlastněné organizací není připojené k místnímu služba AD DS | Windows 10                       | Připojené k Azure AD        |
-| Zařízení patřící organizaci připojené k místnímu služba AD DS  | Windows 10                       | k hybridní službě Azure AD. |
+| Zařízení vlastněné organizací není připojené k místnímu služba AD DS | Windows 10                       | Připojené k Azure AD        |
+| Zařízení patřící organizaci připojené k místnímu služba AD DS  | Windows 10                       | k hybridní službě Azure AD. |
 
 V případě zařízení připojeného k Azure AD se k ověřování uživatelů používá moderní protokoly založené na protokolu OAuth/OpenID Connect. Tyto protokoly jsou navržené tak, aby fungovaly přes Internet, takže jsou skvělé pro mobilní scénáře, kdy uživatelé přistupují k podnikovým prostředkům odkudkoli.
 
@@ -114,6 +114,9 @@ U zařízení připojených k Azure služba AD DS můžou aplikace používat pr
 | Správa                      | Software pro správu mobilních zařízení (MDM), jako je Intune | Zásady skupiny                                                              |
 | Sítě                      | Funguje přes Internet                             | Musí být připojen k virtuální síti, ve které je nasazena spravovaná doména, nebo s partnerským vztahem. |
 | Skvělé pro...                    | Mobilní zařízení koncových uživatelů nebo stolních počítačů                  | Serverové virtuální počítače nasazené v Azure                                              |
+
+
+Pokud je Prem služba AD DS a služba Azure AD je nakonfigurovaná pro federované ověřování pomocí služby AD FS, není v Azure DS dostupná žádná (aktuální/platná) hodnota hash hesla. Uživatelské účty Azure AD vytvořené před implementací dodaného ověřováním můžou mít starou hodnotu hash hesla, ale pravděpodobně neodpovídají hodnotě hash hesla on-Prem. Proto Azure služba AD DS nebude moci ověřit přihlašovací údaje uživatelů
 
 ## <a name="next-steps"></a>Další kroky
 

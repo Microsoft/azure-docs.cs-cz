@@ -2,15 +2,15 @@
 title: Testovací případy pro sadu nástrojů test Toolkit
 description: Popisuje testy, které jsou spuštěny pomocí sady nástrojů pro test šablon ARM.
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 12/03/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: dda8e92c17029126e7f473a6aee03acfc970e04b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff9ad659e15a88725e4c3905ab6c623fda7610fd
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378113"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600900"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>Výchozí testovací případy pro sadu nástrojů pro test šablon ARM
 
@@ -137,9 +137,11 @@ Následující příklad **projde** tímto testem.
 
 Název testu: **umístění by nemělo být pevně zakódované**
 
-Uživatelé šablony mohou mít k dispozici omezené oblasti. Když nastavíte umístění prostředku na `"[resourceGroup().location]"` , je možné, že se skupina prostředků vytvořila v oblasti, ke které nemají přístup jiní uživatelé. Uživatelům se zablokuje použití šablony.
+Vaše šablony by měly mít parametr pojmenovaný Location. Tento parametr slouží k nastavení umístění prostředků ve vaší šabloně. V hlavní šabloně (s názvem azuredeploy.json nebo mainTemplate.json) se tento parametr může ve výchozím nastavení namístit pro skupinu prostředků. V propojených nebo vnořených šablonách by parametr umístění neměl mít výchozí umístění.
 
-Při definování umístění každého prostředku použijte parametr, který se nastaví jako výchozí pro umístění skupiny prostředků. Po zadání tohoto parametru můžou uživatelé použít výchozí hodnotu, pokud je to vhodné, ale taky zadat jiné umístění.
+Uživatelé šablony mohou mít k dispozici omezené oblasti. Když zadáte pevný kód pro umístění prostředku, můžou být uživatelé zablokovaný v vytváření prostředků v této oblasti. Uživatele můžete zablokovat i v případě, že nastavíte umístění prostředku na `"[resourceGroup().location]"` . Skupina prostředků mohla být vytvořena v oblasti, ke které nemají přístup jiní uživatelé. Uživatelům se zablokuje použití šablony.
+
+Když zadáte parametr umístění, který je ve výchozím nastavení pro umístění skupiny prostředků, můžou uživatelé použít výchozí hodnotu, pokud je to vhodné, ale taky zadat jiné umístění.
 
 Následující příklad tento test **neprojde** , protože umístění v prostředku je nastaveno na `resourceGroup().location` .
 
@@ -195,7 +197,7 @@ V dalším příkladu se používá parametr Location, ale tento test se **nezda
 }
 ```
 
-Místo toho vytvořte parametr, který je ve výchozím nastavení pro umístění skupiny prostředků, ale umožní uživatelům zadat jinou hodnotu. Následující příklad **projde** tímto testem.
+Místo toho vytvořte parametr, který je ve výchozím nastavení pro umístění skupiny prostředků, ale umožní uživatelům zadat jinou hodnotu. Následující příklad **projde** tento test, pokud je šablona použita jako hlavní šablona.
 
 ```json
 {
@@ -227,6 +229,8 @@ Místo toho vytvořte parametr, který je ve výchozím nastavení pro umístěn
     "outputs": {}
 }
 ```
+
+Pokud je však předchozí příklad použit jako propojená šablona, test se **nezdařil**. Pokud se používá jako propojená šablona, odeberte výchozí hodnotu.
 
 ## <a name="resources-should-have-location"></a>Prostředky by měly mít umístění
 

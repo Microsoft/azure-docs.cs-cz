@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: e5593d530891e39404e0b9760861f2f22ae333d3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6f0b58374ae3eb972993b544117d8cbb98371ce5
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999990"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602610"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Nastavení Oracle ASM na virtuálním počítači Azure Linux  
 
@@ -33,7 +33,7 @@ Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového 
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupinu prostředků vytvoříte pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. V tomto příkladu se jedná o skupinu prostředků s názvem *myResourceGroup* v oblasti *eastus* .
+Pokud chcete vytvořit skupinu prostředků, použijte příkaz [AZ Group Create](/cli/azure/group) . Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. V tomto příkladu se jedná o skupinu prostředků s názvem *myResourceGroup* v oblasti *eastus* .
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -345,7 +345,7 @@ Pro tento kurz je výchozím uživatelem *Mřížka* a výchozí skupina je *asm
 
 Pokud chcete stáhnout a připravit software infrastruktury pro mřížku Oracle, proveďte následující kroky:
 
-1. Stáhněte si infrastrukturu pro mřížku Oracle ze [stránky pro stažení pro Oracle ASM](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-linux-download-2240591.html). 
+1. Stáhněte si infrastrukturu pro mřížku Oracle ze [stránky pro stažení pro Oracle ASM](https://www.oracle.com/database/technologies/oracle19c-linux-downloads.html). 
 
    Pod položkou stáhnout s názvem **Oracle Database 12c (12.1.0.2.0) pro Linux X86-64** Stáhněte dva soubory. zip.
 

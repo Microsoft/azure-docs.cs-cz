@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: eb1be4c78be0eb7fb943700b168fa82ede4d3861
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9a3a6bd6489baea90ed4143b42a09e7d697bbc50
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458394"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602440"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Předdefinovaný model faktury pro rozpoznávání formulářů
 
@@ -74,14 +74,14 @@ Výstup JSON má 3 části:
 
 Služba faktura bude extrahovat pole text, tabulky a 26 faktur. Níže jsou uvedená pole extrahovaná z faktury v odpovědi na výstup JSON (výstup níže používá tuto [ukázkovou fakturu](./media/sample-invoice.jpg)).  
 
-|Název| Typ | Popis | Text | Hodnota (standardní výstup) |
+|Název| Typ | Description | Text | Hodnota (standardní výstup) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | řetězec | Fakturovaná zákazník | Společnost Microsoft Corp |  |
 | CustomerId | řetězec | Referenční ID pro zákazníka | CID – 12345 |  |
 | PurchaseOrder | řetězec | Referenční číslo nákupní objednávky | PO-3333 | |  |
 | InvoiceId | řetězec | ID pro tuto konkrétní fakturu (často se jedná o číslo faktury) | INV-100 | |  |
-| InvoiceDate | date | Datum vydání faktury | 11/15/2019 | 
-| DueDate | date | Datum platby za tuto fakturu je splatnost. | 12/15/2019 | 2019-12-15 | 2019-11-15 |
+| InvoiceDate | datum | Datum vydání faktury | 11/15/2019 | 
+| DueDate | datum | Datum platby za tuto fakturu je splatnost. | 12/15/2019 | 2019-12-15 | 2019-11-15 |
 | Dodavatel | řetězec | Dodavatel, který vytvořil tuto fakturu | SPOLEČNOST CONTOSO LTD. | |
 | VendorAddress | řetězec | Poštovní adresa dodavatele | 123 456th St. New York, NY, 10001 | |
 | VendorAddressRecipient | řetězec | Název přidružený k VendorAddress | Ústředí společnosti Contoso | |
@@ -99,8 +99,8 @@ Služba faktura bude extrahovat pole text, tabulky a 26 faktur. Níže jsou uved
 | ServiceAddressRecipient | řetězec | Název přidružený k ServiceAddress | Služby společnosti Microsoft | |
 | RemittanceAddress | řetězec | Explicitní úhrada nebo platební adresa pro zákazníka | 123 úhrada St New York, NY, 10001 |  |
 | RemittanceAddressRecipient | řetězec | Název přidružený k RemittanceAddress | Fakturace společnosti Contoso |  |
-| ServiceStartDate | date | První datum období služby (například období služby faktura za nástroj) | 14. 10. 2019 | 2019-10-14 |
-| ServiceEndDate | date | Koncové datum období služby (například období služby faktura za nástroj) | 11/14/2019 | 2019-11-14 |
+| ServiceStartDate | datum | První datum období služby (například období služby faktura za nástroj) | 14. 10. 2019 | 2019-10-14 |
+| ServiceEndDate | datum | Koncové datum období služby (například období služby faktura za nástroj) | 11/14/2019 | 2019-11-14 |
 | PreviousUnpaidBalance | číslo | Explicitní dřív neplacený zůstatek | 500,00 $ | 500 |
 
 
@@ -112,4 +112,4 @@ Služba faktura bude extrahovat pole text, tabulky a 26 faktur. Níže jsou uved
 ## <a name="see-also"></a>Viz také
 
 * [Co je služba Rozpoznávání formulářů?](./overview.md)
-* [Referenční dokumentace REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeInvoiceAsync)
+* [Referenční dokumentace REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9843c2794cbb1a96291)

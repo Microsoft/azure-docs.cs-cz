@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 711b3399d865899770567583a1425faeb9e408ec
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 083d820c989870b2a73217eeebf192f0d540ba36
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555676"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602542"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>Kurz: Kontrola dat pomocí Azure dosah (Preview)
 
@@ -28,7 +28,7 @@ V části 1 této série kurzů budete:
 > * Vytvořte datovou nemovitost s různými datovými zdroji Azure.
 > * Naskenujte data do katalogu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * [Účet Azure dosah](create-catalog-portal.md).
@@ -146,11 +146,14 @@ Po dokončení konfigurace katalogu spusťte v okně PowerShellu následující 
 
    Když příkaz spustíte, zobrazí se automaticky otevírané okno, abyste se mohli přihlásit pomocí přihlašovacích údajů Azure Active Directory.
 
-1. K spuštění Úvodní sady použijte následující příkaz. Nahraďte `CatalogName` `TenantID` `SubscriptionID` `NewResourceGroupName` `CatalogResourceGroupName` zástupné symboly,,, a. Pro `NewResourceGroupName` použijte jedinečný název pro skupinu prostředků, která bude obsahovat datovou nemovitost.
+1. K spuštění Úvodní sady použijte následující příkaz. Nahraďte `CatalogName` `TenantID` `SubscriptionID` `newresourcegroupname` `CatalogResourceGroupName` zástupné symboly,,, a. Pro `newresourcegroupname` použijte jedinečný název pro skupinu prostředků, která bude obsahovat datovou nemovitost.
+
+> [!IMPORTANT]
+> **Newresourcegroupname** může obsahovat jenom alfanumerické znaky nebo číslice. **Neexistují velká písmena velkých a malých písmen a speciální znaky jsou povoleny.**
 
    ```powershell
    .\RunStarterKit.ps1 -CatalogName <CatalogName> -TenantId <TenantID>`
-   -ResourceGroup <NewResourceGroupName> `
+   -ResourceGroup <newresourcegroupname> `
    -SubscriptionId <SubscriptionID> `
    -CatalogResourceGroup <CatalogResourceGroupName>
    ```
@@ -158,6 +161,9 @@ Po dokončení konfigurace katalogu spusťte v okně PowerShellu následující 
 Nastavení prostředí může trvat až 10 minut. Během této doby se můžou zobrazit různá překryvná okna, která můžete ignorovat. Nezavírejte okno **BlobDataCreator.exe** ; Po dokončení se automaticky zavře.
 
 Až se zobrazí zpráva `Executing Copy pipeline xxxxxxxxxx-487e-4fc4-9628-92dd8c2c732b` , počkejte na spuštění a dokončení jiné instance **BlobDataCreator.exe** .
+
+> [!IMPORTANT]
+> V případě, že počet aktivních úloh přestane být klesající, můžete zavřít okno Tvůrce objektů BLOB a přejít do okna PowerShellu.
 
 Po dokončení procesu se vytvoří skupina prostředků s názvem, který jste zadali. Účty Azure Data Factory, Azure Blob Storage a Azure Data Lake Storage Gen2 jsou všechny v této skupině prostředků. Skupina prostředků je obsažená v předplatném, které jste zadali.
 

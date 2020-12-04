@@ -1,22 +1,22 @@
 ---
-title: Možnost společného prodeje v partnerském centru | Azure Marketplace
-description: Informace, které zadáte na kartě spoluprodejní nabídky, budou využívány prodejními týmy Microsoftu k získání dalších informací o vaší nabídce při vyhodnocování svých potřeb pro zákazníky.
+title: Možnost společného prodeje na komerčním webu Marketplace | Azure Marketplace
+description: Informace, které zadáte na kartě prodej v rámci nabídky, budou použity prodejními týmy Microsoftu k získání dalších informací o vaší nabídce při vyhodnocování svých potřeb pro zákazníky.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 12/03/2020
-ms.openlocfilehash: f424cd85e26511f8fe3d863b1f2c77bc1e5e7537
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.date: 12/04/2020
+ms.openlocfilehash: baa99518498b05b0a658627d9908298eb58f7775
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96582316"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602729"
 ---
-# <a name="co-sell-option-in-partner-center"></a>Možnost spoluprodeje v Partnerském centru
+# <a name="co-sell-option-in-the-commercial-marketplace"></a>Možnost společného prodeje na komerčním webu Marketplace
 
-Poskytování informací na kartě spoluprodejní je zcela volitelné. Je nutné, abyste dosáhli [motivovaní stavu pro spoluprodejní přípravu a IP](/legal/marketplace/certification-policies.md#3000-requirements-for-co-sell-status). Informace, které poskytnete, budou využívat prodejní týmy Microsoftu k získání dalších informací o vaší nabídce při vyhodnocování svých potřeb pro zákazníky. Není k dispozici přímo pro zákazníky. Další informace najdete v tématu [společný prodej s Microsoftem](https://partner.microsoft.com/membership/co-sell-with-microsoft).
+Poskytování informací o **společném prodeji** na kartě Microsoft je zcela volitelné. Je nutné, abyste dosáhli [motivovaní stavu pro spoluprodejní přípravu a IP](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status). Informace, které poskytnete, budou využívat prodejní týmy Microsoftu k získání dalších informací o vaší nabídce při vyhodnocování svých potřeb pro zákazníky. Není k dispozici přímo pro zákazníky. Další informace najdete v tématu [společný prodej s Microsoftem](https://partner.microsoft.com/membership/co-sell-with-microsoft).
 
 Možnost společného prodeje v partnerském centru je aktuálně k dispozici pro následující typy nabídek.
 

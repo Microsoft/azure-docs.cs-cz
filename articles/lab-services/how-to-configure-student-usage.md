@@ -2,39 +2,74 @@
 title: Konfigurace nastavení použití v laboratořích Azure Lab Services
 description: Přečtěte si, jak nakonfigurovat počet studentů pro testovací prostředí, jak je zaregistrované v testovacím prostředí, určete počet hodin, po které může virtuální počítač používat, a další.
 ms.topic: article
-ms.date: 11/11/2020
-ms.openlocfilehash: e768c74d338cf21eb56660fe3790fc1f0f3ec80d
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.date: 12/01/2020
+ms.openlocfilehash: 3b05246445aea708312891ec631a35da3bc1eb8e
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434545"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602627"
 ---
 # <a name="add-and-manage-lab-users"></a>Přidání a správa uživatelů testovacího prostředí
 
 Tento článek popisuje, jak přidat uživatele studenta do testovacího prostředí, zaregistrovat je v testovacím prostředí, řídit počet dalších hodin, po které může virtuální počítač (VM) používat. 
 
-## <a name="add-users-to-a-lab"></a>Přidání uživatelů do testovacího prostředí
+Když přidáváte uživatele, je ve výchozím nastavení zapnutá možnost **omezit přístup** , a pokud nejsou v seznamu uživatelů, Students se nemůže zaregistrovat v testovacím prostředí, i když mají odkaz na registraci. Pomocí registračního odkazu, který odešlete, se můžou do testovacího prostředí zaregistrovat jenom uvedení uživatelé. Můžete vypnout možnost **omezit přístup**, která umožňuje studentům registraci v testovacím prostředí, pokud mají odkaz na registraci. 
 
-V této části přidáte studenty do testovacího prostředí ručně nebo nahrajete soubor CSV. Postupujte následovně:
+Tento článek ukazuje, jak přidat uživatele do testovacího prostředí.
+
+## <a name="add-users-from-an-azure-ad-group"></a>Přidání uživatelů ze skupiny Azure AD
+
+### <a name="overview"></a>Přehled
+
+Nyní můžete synchronizovat seznam uživatelů testovacího prostředí s existující skupinou Azure Active Directory (Azure AD), abyste nemuseli přidávat ani odstraňovat uživatele ručně. 
+
+Skupinu Azure AD je možné vytvořit v rámci Azure Active Directory vaší organizace a spravovat tak přístup k prostředkům organizace a cloudovým aplikacím. Další informace najdete v tématu [skupiny Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups). Pokud vaše organizace používá systém Microsoft Office 365 nebo služeb Azure, vaše organizace už bude mít správce, kteří spravují vaše Azure Active Directory. 
+
+### <a name="sync-users-with-azure-ad-group"></a>Synchronizace uživatelů se skupinou Azure AD
+
+> [!IMPORTANT]
+> Ujistěte se, že seznam uživatelů je prázdný. Pokud v testovacím prostředí existují stávající uživatelé, které jste přidali ručně nebo importem souboru CSV, možnost synchronizace testovacího prostředí do existující skupiny se nezobrazí. 
+
+1. Přihlaste se k [webu Azure Lab Services](https://labs.azure.com/).
+1. Vyberte testovací prostředí, se kterým chcete pracovat.
+1. V levém podokně vyberte **Uživatelé**. 
+1. Klikněte na **synchronizovat ze skupiny**. 
+
+    :::image type="content" source="./media/how-to-configure-student-usage/add-users-sync-group.png" alt-text="Přidávání uživatelů synchronizací ze skupiny Azure AD":::
+    
+1. Zobrazí se výzva k výběru existující skupiny Azure AD pro synchronizaci testovacího prostředí s. 
+    
+    Pokud v seznamu nevidíte skupinu Azure AD, může to být z následujících důvodů:
+
+    -   Pokud jste uživatelem typu Host pro Azure Active Directory (obvykle mimo organizaci, která vlastní Azure AD), a nemůžete Hledat skupiny v rámci Azure AD. V takovém případě nebudete moct v tomto případě do testovacího prostředí přidat skupinu Azure AD. 
+    -   Skupiny Azure AD vytvořené prostřednictvím týmů se v tomto seznamu nezobrazují. Aplikaci Azure Lab Services můžete do týmů přidat, chcete-li vytvářet a spravovat laboratoře přímo z ní. Podívejte se na Další informace o [správě seznamu uživatelů testovacího prostředí v rámci týmů](how-to-manage-user-lists-within-teams.md). 
+1. Po vybrání skupiny Azure AD pro synchronizaci testovacího prostředí s klikněte na **Přidat**.
+1. Jakmile se testovací prostředí synchronizuje, vystaví se všichni členové skupiny Azure AD do testovacího prostředí jako uživatelé a seznam uživatelů se zobrazí jako aktualizovaný. Pouze lidé z této skupiny Azure AD budou mít přístup k vašemu testovacímu prostředí. Seznam uživatelů se každých 24 hodin aktualizuje tak, aby odpovídal nejnovějšímu členství ve skupině Azure AD. Můžete také kliknout na tlačítko synchronizovat na kartě Uživatelé a ručně synchronizovat nejnovější změny ve skupině Azure AD.
+1. Pozvěte uživatele do testovacího prostředí tak, že kliknete na tlačítko **pozvat všechny** , které pošle e-mail všem uživatelům s odkazem na registraci do testovacího prostředí. 
+
+### <a name="automatic-management-of-virtual-machines-based-on-changes-to-the-azure-ad-group"></a>Automatická správa virtuálních počítačů na základě změn ve skupině Azure AD 
+
+Po synchronizaci testovacího prostředí se skupinou Azure AD bude počet virtuálních počítačů v testovacím prostředí automaticky odpovídat počtu uživatelů ve skupině. Nebudete už moct ručně aktualizovat kapacitu testovacího prostředí. Při přidání uživatele do skupiny Azure AD bude testovací prostředí automaticky přidávat virtuální počítač pro tohoto uživatele. Když se uživatel ze skupiny Azure AD odstraní, testovací prostředí automaticky odstraní virtuální počítač uživatele z testovacího prostředí. 
+
+## <a name="add-users-manually-from-emails-or-csv-file"></a>Ruční přidání uživatelů z e-mailu nebo souboru CSV
+
+V této části přidáte studenty ručně (e-mailovou adresou nebo nahráním souboru CSV). 
+
+### <a name="add-users-by-email-address"></a>Přidat uživatele podle e-mailové adresy
 
 1. V levém podokně vyberte **Uživatelé**. 
+1. Klikněte na **Přidat uživatele ručně**. 
 
-    Ve výchozím nastavení je možnost **omezení přístupu** zapnutá a, pokud se nenacházejí v seznamu uživatelů, Students se v testovacím prostředí nemůže zaregistrovat, i když mají odkaz na registraci. Pomocí registračního odkazu, který odešlete, se můžou do testovacího prostředí zaregistrovat jenom uvedení uživatelé. V tomto postupu přidáte uživatele do seznamu. Alternativně můžete vypnout možnost **omezit přístup**, která umožňuje studentům registraci v testovacím prostředí, pokud mají odkaz na registraci. 
+    :::image type="content" source="./media/how-to-configure-student-usage/add-users-manually.png" alt-text="Ruční přidání uživatelů":::
+1. Vyberte **Přidat podle e-mailové adresy** (výchozí), zadejte e-mailové adresy studentů na samostatné řádky nebo na jeden řádek oddělený středníky. 
 
-1. V horní části podokna **Uživatelé** vyberte **Přidat uživatele** a pak vyberte **Přidat podle e-mailové adresy**. 
-
-    ![Tlačítko "Přidat uživatele"](./media/how-to-configure-student-usage/add-users-button.png)
-
-1. V podokně **Přidat uživatele** zadejte e-mailové adresy studentů na samostatné řádky nebo na jeden řádek oddělený středníky. 
-
-    ![Přidat e-mailové adresy uživatelů](./media/how-to-configure-student-usage/add-users-email-addresses.png)
-
+    :::image type="content" source="./media/how-to-configure-student-usage/add-users-email-addresses.png" alt-text="Přidat e-mailové adresy uživatelů":::
 1. Vyberte **Uložit**. 
 
     V seznamu se zobrazí e-mailové adresy a stavy aktuálních uživatelů, ať už jsou zaregistrované v testovacím prostředí, nebo ne. 
 
-    ![Seznam uživatelů](./media/how-to-configure-student-usage/list-of-added-users.png)
+    :::image type="content" source="./media/how-to-configure-student-usage/list-of-added-users.png" alt-text="Seznam uživatelů":::
 
     > [!NOTE]
     > Po registraci studentů v testovacím prostředí se v seznamu zobrazí jejich jména. Název, který je zobrazen v seznamu, je vytvořen pomocí prvního a posledního jména studentů v Azure Active Directory. 
@@ -47,23 +82,15 @@ Textový soubor CSV se používá k ukládání tabulkových dat oddělených č
 
 1. V aplikaci Microsoft Excel vytvořte soubor CSV se seznamem e-mailových adres studentů v jednom sloupci.
 
-    ![Seznam uživatelů v souboru CSV](./media/how-to-configure-student-usage/csv-file-with-users.png)
-
+    :::image type="content" source="./media/how-to-configure-student-usage/csv-file-with-users.png" alt-text="Seznam uživatelů v souboru CSV":::
 1. V horní části podokna **Uživatelé** vyberte **Přidat uživatele** a pak vyberte **nahrát sdílený svazek clusteru**.
-
-    ![Tlačítko pro nahrání sdíleného svazku clusteru](./media/how-to-configure-student-usage/upload-csv-button.png)
-
 1. Vyberte soubor CSV, který obsahuje e-mailové adresy studentů, a pak vyberte **otevřít**.
 
     V okně **Přidat uživatele** se zobrazí seznam e-mailových adres ze souboru CSV. 
-
-    ![Okno Přidat uživatele s e-mailovými adresami ze souboru CSV](./media/how-to-configure-student-usage/add-users-window.png)
-
 1. Vyberte **Uložit**. 
-
 1. V podokně **Uživatelé** si prohlédněte seznam přidaných studentů. 
 
-    ![Seznam přidaných uživatelů v podokně Uživatelé](./media/how-to-configure-student-usage/list-of-added-users.png)
+    :::image type="content" source="./media/how-to-configure-student-usage/list-of-added-users.png" alt-text="Seznam přidaných uživatelů v podokně Uživatelé":::
 
 ## <a name="send-invitations-to-users"></a>Odesílat pozvánky uživatelům
 
@@ -210,7 +237,6 @@ Pokud ještě neodkazují svůj účet GitHubu na účet Microsoft, může to ud
 1. Na panelu nástrojů vyberte tři tečky (**...**) a pak vyberte **exportovat sdílený svazek clusteru**. 
 
     ![Tlačítko "exportovat CSV"](./media/how-to-export-users-virtual-machines-csv/users-export-csv.png)
-
 
 ## <a name="next-steps"></a>Další kroky
 

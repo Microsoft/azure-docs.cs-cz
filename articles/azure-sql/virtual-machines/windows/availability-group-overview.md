@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d04f689dec3a3c182c0da23007247c20c4f8063d
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 8573e45270dfd1ff984eae3dc5fbf1dc5f2fc6da
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504386"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600859"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Skupina dostupnosti Always On u SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,9 +37,11 @@ Následující diagram znázorňuje skupinu dostupnosti pro SQL Server na virtu�
 
 ## <a name="vm-redundancy"></a>Redundance virtuálního počítače 
 
-Aby bylo možné zvýšit redundanci a vysokou dostupnost, musí být virtuální počítače s SQL Server buď ve stejné [skupině dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview), nebo v různých [zónách dostupnosti](../../../availability-zones/az-overview.md).
+Aby bylo možné zvýšit redundanci a vysokou dostupnost, SQL Server virtuální počítače buď ve stejné [skupině dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview), nebo v různých [zónách dostupnosti](../../../availability-zones/az-overview.md).
 
-Skupina dostupnosti je seskupení prostředků, které jsou nakonfigurované tak, aby ve stejné zóně dostupnosti nebyla žádná dvě půda. To brání vlivu na více prostředků ve skupině během zavádění nasazení. 
+Umístění sady virtuálních počítačů do stejné skupiny dostupnosti chrání před výpadky v rámci datového centra, které způsobilo selhání zařízení (virtuální počítače v rámci skupiny dostupnosti nesdílejí prostředky) nebo aktualizace (virtuální počítače v rámci skupiny dostupnosti nejsou aktualizované ve stejnou dobu). Zóny dostupnosti chránit před selháním celého datového centra, přičemž každá zóna představuje sadu Datacenter v rámci oblasti.  Díky zajištění umístění prostředků do různých Zóny dostupnosti nemůže žádný výpadek na úrovni datacentra přebírat všechny vaše virtuální počítače offline.
+
+Při vytváření virtuálních počítačů Azure musíte zvolit mezi konfigurací skupin dostupnosti vs Zóny dostupnosti.  Nejde virtuálního počítače Azure se účastní obojího.
 
 
 ## <a name="connectivity"></a>Připojení 
@@ -74,7 +76,7 @@ Existuje několik možností, jak nasadit skupinu dostupnosti, která se SQL Ser
 
 Následující tabulka poskytuje porovnání dostupných možností:
 
-| | portál Azure | Azure CLI/PowerShell | Šablony pro rychlý Start | Ruční |
+| | Azure Portal | Azure CLI/PowerShell | Šablony pro rychlý Start | Ruční |
 |---------|---------|---------|---------|---------|
 |**Verze SQL Serveru** |2016 + |2016 +|2016 +|2012 +|
 |**Edice SQL Serveru** |Enterprise |Enterprise |Enterprise |Enterprise, Standard|
@@ -93,7 +95,7 @@ Následující tabulka poskytuje porovnání dostupných možností:
 
 Další informace najdete v tématech [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md), [šablony rychlý Start](availability-group-quickstart-template-configure.md)a [Ruční](availability-group-manually-configure-prerequisites-tutorial.md).
 
-## <a name="considerations"></a>Co je potřeba vzít v úvahu 
+## <a name="considerations"></a>Požadavky 
 
 Na hostovaném clusteru s podporou převzetí služeb při selhání ve virtuálním počítači Azure IaaS doporučujeme použít jednu síťovou kartu na server (uzel clusteru) a jednu podsíť. Sítě Azure mají fyzickou redundanci, která v clusteru hostů virtuálních počítačů Azure IaaS vyžaduje další síťové adaptéry a podsítě, které nejsou potřebné. I když ověřovací zpráva clusteru vydá varování, že uzly jsou dosažitelné pouze v jedné síti, můžete toto varování bezpečně ignorovat ve všech hostovaných clusterech ve virtuálních počítačích Azure IaaS. 
 

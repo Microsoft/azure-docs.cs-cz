@@ -1,5 +1,5 @@
 ---
-title: Inverze Public Preview pro koncový bod služby Azure AD Connect Sync v2 | Microsoft Docs
+title: Koncový bod služby Azure AD Connect Sync v2 | Microsoft Docs
 description: Tento dokument popisuje aktualizace rozhraní API koncových bodů služby Azure AD Connect Sync v2.
 services: active-directory
 author: billmath
@@ -12,34 +12,24 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b9b73e30094ed7d07e19f4b93f2fe8ab8f6af3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ffb298bca53a06bd1ef14a750648fe6e76fd45ee
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339417"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602100"
 ---
-# <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Rozhraní API koncového bodu služby Azure AD Connect Sync v2 (Public Preview) 
+# <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Rozhraní API koncového bodu synchronizace služby Azure AD Connect v2 
 Společnost Microsoft nasadila nový koncový bod (rozhraní API) pro Azure AD Connect, který vylepšuje výkon operací synchronizační služby Azure Active Directory. Díky použití nového koncového bodu v2 budete mít při exportu a importu do Azure AD patrné zvýšení výkonu. Tento nový koncový bod podporuje následující:
     
- -  synchronizace skupin s až 250 tisíc členy
+ - synchronizace skupin s až 250 tisíc členy
  - zisky z výkonu při exportu a importu do Azure AD
  
 > [!NOTE]
 > V současné době nový koncový bod nemá nakonfigurovanou omezení velikosti skupiny pro Microsoft 365 skupiny, které jsou zapsány zpět. To může mít vliv na latenci služby Active Directory a synchronizaci cyklů. Doporučuje se postupně zvyšovat velikosti skupin.  
 
-
 ## <a name="pre-requisites"></a>Požadavky  
 Aby bylo možné použít nový koncový bod v2, budete muset použít [Azure AD Connect verze 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) nebo novější a postupovat podle níže uvedených kroků nasazení a povolit koncový bod v2 pro váš Azure AD Connect Server.   
-
->[!NOTE]
->V současné době je tato verze Public Preview dostupná jenom v globálním cloudu Azure a není dostupná pro [národní](../develop/authentication-national-cloud.md)cloudy.
-
-### <a name="public-preview-limitations"></a>Omezení veřejné verze Preview  
-I když tato verze prošla rozsáhlým testováním, může dojít k problémům. Jedním z cílů této verze Public Preview je vyhledat a opravit takové problémy.  
-
->[!IMPORTANT]
-> I když je pro tuto verzi veřejné verze Preview k dispozici podpora, společnost Microsoft nemusí vždy řešit všechny problémy, se kterými se můžete setkat hned. Z tohoto důvodu doporučujeme, abyste před nasazením této verze v produkčním prostředí používali svůj nejlepší odhad. 
 
 ## <a name="deployment-guidance"></a>Pokyny k nasazení 
 Pro použití koncového bodu v2 budete muset nasadit [Azure AD Connect verze 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) nebo novější. Použijte odkaz určený ke stažení. 
@@ -184,17 +174,9 @@ Pokud jste povolili koncový bod v2 a potřebujete provést vrácení zpět, pos
 > Když přepnete zpátky z koncových bodů v2 na V1, skupiny synchronizované s více než 50 tis členy se po spuštění úplné synchronizace odstraní pro obě skupiny AD zřízené na Azure AD a Microsoft 365 sjednocené skupiny zřízené pro AD. 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy  
-**Otázka: může zákazník použít tuto funkci v produkčním prostředí?**  
-</br>Ano, tato možnost se dá použít v produkčním prostředí s upozorněním, jak je uvedeno výše.
  
-**Otázka: kdo může kontaktovat zákazníka, když se něco pokazilo?**  
-</br>Pokud potřebujete podporu při používání této funkce, měli byste otevřít případ podpory. 
- 
-**Otázka: je možné očekávat časté aktualizace verze Public Preview?**  
-</br>Během Public Preview existuje omezená míra probíhajících změn.Toto riziko byste měli vyhodnotit při nasazování Public Previewch funkcí v produkčním prostředí.  
- 
-**Otázka: čas do dalšího milníku?**  
-</br>Je možné, že se funkce Public Preview před dalším milníkem odeberou a případně přenavrhují.  
+**Kdy se nový koncový bod stane výchozím nastavením pro upgrady a nové instalace?**  
+</br>Plánujeme nové vydání AADConnect pro publikování ke stažení v lednu 2021. Tato verze ve výchozím nastavení použije koncový bod v2 a umožní synchronizaci skupin větších než 50 tis withuot jakékoli další konfigurace. Tato verze bude následně publikována pro automatický upgrade na opravňující servery.
  
 ## <a name="next-steps"></a>Další kroky
 

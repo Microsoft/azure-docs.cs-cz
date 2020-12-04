@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 10ad0b83f3c85b48f9d066e1feec8d8aac4dd057
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: a6a1b41dd4ede055ba81c069c2164bb36da99876
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533668"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602304"
 ---
 # <a name="azure-security-baseline-for-azure-lighthouse"></a>Základní hodnoty zabezpečení Azure pro Azure Lighthouse
 
@@ -306,7 +306,7 @@ Pokud chce poskytovatel pro zabezpečení zkontrolovat prostředky delegovaného
 
 ## <a name="logging-and-threat-detection"></a>Protokolování a detekce hrozeb
 
-*Další informace najdete v tématu [Azure Security Benchmark: protokolování a detekce hrozeb](/azure/security/benchmarks/security-controls-v2-logging-threat-protection).*
+*Další informace najdete v tématu [Azure Security Benchmark: protokolování a detekce hrozeb](/azure/security/benchmarks/security-controls-v2-logging-threat-detection).*
 
 ### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: povolení detekce hrozeb pro prostředky Azure
 
@@ -676,7 +676,7 @@ Tato strategie by měla zahrnovat zdokumentované pokyny, zásady a standardy pr
 
 -   Strategie náprav v různých situacích ohrožení a útoků
 
--   Strategie pro Internet Edge a příchozí a odchozí/Azure/Security/benchmarks/Security-Controls-v2-Logging-Threat-Protection
+-   Strategie pro Internet Edge a příchozí a odchozí/Azure/Security/benchmarks/Security-Controls-v2-Logging-Threat-Detection
 -   Strategie vzájemného propojení hybridního cloudu a místního připojení
 
 -   Aktuální artefakty zabezpečení sítě (například síťové diagramy, referenční síťová architektura)
@@ -748,7 +748,7 @@ Další informace najdete v následujících referenčních materiálech:
 
 - [Azure Security Benchmark – protokolování a detekce hrozeb](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Azure Security Benchmark – reakce na incidenty](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure Security Benchmark – reakce na incidenty](/azure/security/benchmarks/security-controls-v2-incident-response)
 
 - [Osvědčený postup zabezpečení Azure 4 – Proces: aktualizace procesů reakcí na incidenty pro cloud](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 

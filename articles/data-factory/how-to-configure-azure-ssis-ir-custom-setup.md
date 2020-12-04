@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 11/06/2020
-ms.openlocfilehash: 1885dd76a94a7a4a6b91c67735103350c473ba44
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: bc5d2cad7b4fbf1871d2c02dc91db30daf55e855
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378427"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600723"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Přizpůsobení nastavení pro Azure-SSIS Integration Runtime
 
@@ -28,8 +28,8 @@ Pomocí vlastních nastavení můžete v Azure Data Factory (ADF) služba SSIS (
 Pomocí vlastních nastavení můžete změnit výchozí konfiguraci operačního systému nebo prostředí vašeho Azure-SSIS IR. Chcete-li například spustit další služby systému Windows, zachovat přihlašovací údaje pro sdílení souborů nebo použít silné šifrování/bezpečnější síťový protokol (TLS 1,2). Případně můžete do každého uzlu Azure-SSIS IR nainstalovat další komponenty, jako jsou například sestavení, ovladače nebo rozšíření. Můžou se jednat o vlastní, Open Source nebo komponenty třetích stran. Další informace o předdefinovaných/předinstalovaných součástech najdete v tématu [vestavěné/předinstalované komponenty na Azure-SSIS IR](./built-in-preinstalled-components-ssis-integration-runtime.md).
 
 Vlastní nastavení můžete provést na svém Azure-SSIS IR jedním ze dvou způsobů: 
-* **Standardní vlastní nastavení pomocí skriptu** : Připravte skript a jeho přidružené soubory a nahrajte je dohromady do kontejneru objektů BLOB v účtu úložiště Azure. Když nastavíte nebo znovu nakonfigurujete Azure-SSIS IR, zadáte identifikátor URI (Uniform Resource Identifier) sdíleného přístupového podpisu (SAS) pro váš kontejner. Každý uzel vaší Azure-SSIS IR pak stáhne skript a jeho přidružené soubory z vašeho kontejneru a spustí vlastní instalaci se zvýšenými oprávněními. Po dokončení vlastní instalace každý uzel nahraje standardní výstup spuštění a další protokoly do vašeho kontejneru.
-* **Expresní vlastní nastavení bez skriptu** : Spusťte některé běžné konfigurace systému a příkazy systému Windows nebo nainstalujte některé oblíbené nebo Doporučené dodatečné součásti bez použití skriptů.
+* **Standardní vlastní nastavení pomocí skriptu**: Připravte skript a jeho přidružené soubory a nahrajte je dohromady do kontejneru objektů BLOB v účtu úložiště Azure. Když nastavíte nebo znovu nakonfigurujete Azure-SSIS IR, zadáte identifikátor URI (Uniform Resource Identifier) sdíleného přístupového podpisu (SAS) pro váš kontejner. Každý uzel vaší Azure-SSIS IR pak stáhne skript a jeho přidružené soubory z vašeho kontejneru a spustí vlastní instalaci se zvýšenými oprávněními. Po dokončení vlastní instalace každý uzel nahraje standardní výstup spuštění a další protokoly do vašeho kontejneru.
+* **Expresní vlastní nastavení bez skriptu**: Spusťte některé běžné konfigurace systému a příkazy systému Windows nebo nainstalujte některé oblíbené nebo Doporučené dodatečné součásti bez použití skriptů.
 
 Můžete nainstalovat bezplatné (nelicencované) a placené (licencované) komponenty s vlastními nastaveními Standard a Express. Pokud jste nezávislý výrobce softwaru (ISV), přečtěte si téma [vývoj placených nebo licencovaných komponent pro Azure-SSIS IR](how-to-develop-azure-ssis-ir-licensed-components.md).
 
@@ -48,7 +48,7 @@ Následující omezení platí pouze pro standardní vlastní nastavení:
 
 - Ovladač IBM iSeries Access ODBC není podporován na Azure-SSIS IR. Při vlastní instalaci se může zobrazit chyba instalace. Pokud to uděláte, požádejte o pomoc podporu společnosti IBM.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -70,9 +70,9 @@ Pokud chcete zřídit nebo znovu nakonfigurovat Azure-SSIS IR se standardními v
 
 1. Připravte vlastní instalační skript a jeho přidružené soubory (například. bat,. cmd,. exe,. dll,. msi nebo. ps1).
 
-   * Musíte mít soubor skriptu s názvem *Main. cmd* , který je vstupním bodem vlastní instalace.  
+   * Musíte mít soubor skriptu s názvem *Main. cmd*, který je vstupním bodem vlastní instalace.  
    * Chcete-li zajistit, aby se skript mohl spouštět tiše, měli byste ho nejdřív otestovat na svém místním počítači.  
-   * Pokud chcete, aby byly do kontejneru nahrány další protokoly vygenerované jinými nástroji (například *msiexec.exe* ), zadejte předdefinovanou proměnnou prostředí, `CUSTOM_SETUP_SCRIPT_LOG_DIR` jako složku protokolu ve skriptech (například *msiexec/i xxx.msi/quiet/LV% CUSTOM_SETUP_SCRIPT_LOG_DIR% \ Install. log* ).
+   * Pokud chcete, aby byly do kontejneru nahrány další protokoly vygenerované jinými nástroji (například *msiexec.exe*), zadejte předdefinovanou proměnnou prostředí, `CUSTOM_SETUP_SCRIPT_LOG_DIR` jako složku protokolu ve skriptech (například *msiexec/i xxx.msi/quiet/LV% CUSTOM_SETUP_SCRIPT_LOG_DIR% \ Install. log*).
 
 1. Stáhněte, nainstalujte a otevřete [Průzkumník služby Azure Storage](https://storageexplorer.com/).
 
@@ -88,7 +88,7 @@ Pokud chcete zřídit nebo znovu nakonfigurovat Azure-SSIS IR se standardními v
 
       ![Zadejte název a klíč účtu úložiště.](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image3.png)
 
-   d. V rámci připojeného účtu úložiště Azure klikněte pravým tlačítkem na **kontejnery objektů BLOB** , vyberte **vytvořit kontejner objektů BLOB** a pojmenujte nový kontejner.
+   d. V rámci připojeného účtu úložiště Azure klikněte pravým tlačítkem na **kontejnery objektů BLOB**, vyberte **vytvořit kontejner objektů BLOB** a pojmenujte nový kontejner.
 
       ![Vytvoření kontejneru objektů blob](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png)
 
@@ -127,7 +127,7 @@ Pokud chcete zřídit nebo znovu nakonfigurovat Azure-SSIS IR pomocí expresníh
 
 #### <a name="running-cmdkey-command"></a>Spuštění příkazu cmdkey
 
-Pokud pro vlastní instalaci Express vyberete typ **příkazu Spustit cmdkey** , můžete na svém Azure-SSIS IR spustit příkaz Windows cmdkey. Provedete to tak, že do textových polí **/Add** , **/User** a **/Pass** zadáte název svého cílového počítače nebo název domény, uživatelské jméno nebo název účtu a heslo nebo klíč účtu. To vám umožní zachovat přihlašovací údaje pro přístup k serverům SQL, sdíleným složkám nebo souborům Azure na vašich Azure-SSIS IR. Například pro přístup k souborům Azure můžete zadat `YourAzureStorageAccountName.file.core.windows.net` , `azure\YourAzureStorageAccountName` a `YourAzureStorageAccountKey` pro **/Add** , **/User** a **/Pass** , v uvedeném pořadí. To se podobá spuštění příkazu Windows [cmdkey](/windows-server/administration/windows-commands/cmdkey) na místním počítači. Pro nyní je podporována pouze jedna expresní vlastní instalace pro spuštění příkazu cmdkey. Chcete-li spustit více příkazů cmdkey, použijte raději standardní vlastní instalaci.
+Pokud pro vlastní instalaci Express vyberete typ **příkazu Spustit cmdkey** , můžete na svém Azure-SSIS IR spustit příkaz Windows cmdkey. Provedete to tak, že do textových polí **/Add**, **/User** a **/Pass** zadáte název svého cílového počítače nebo název domény, uživatelské jméno nebo název účtu a heslo nebo klíč účtu. To vám umožní zachovat přihlašovací údaje pro přístup k serverům SQL, sdíleným složkám nebo souborům Azure na vašich Azure-SSIS IR. Například pro přístup k souborům Azure můžete zadat `YourAzureStorageAccountName.file.core.windows.net` , `azure\YourAzureStorageAccountName` a `YourAzureStorageAccountKey` pro **/Add**, **/User** a **/Pass**, v uvedeném pořadí. To se podobá spuštění příkazu Windows [cmdkey](/windows-server/administration/windows-commands/cmdkey) na místním počítači. Pro nyní je podporována pouze jedna expresní vlastní instalace pro spuštění příkazu cmdkey. Chcete-li spustit více příkazů cmdkey, použijte raději standardní vlastní instalaci.
 
 #### <a name="adding-environment-variables"></a>Přidávání proměnných prostředí
 
@@ -273,7 +273,7 @@ Pokud chcete zobrazit a znovu použít některé ukázky standardních vlastníc
 
 1. Připojte se k našemu Public Preview kontejneru pomocí Průzkumník služby Azure Storage.
 
-   a. V části **(místní a připojená)** klikněte pravým tlačítkem na **účty úložiště** , vyberte **připojit k Azure Storage** , vyberte **Použít připojovací řetězec nebo identifikátor URI sdíleného přístupového podpisu** a pak vyberte **Další**.
+   a. V části **(místní a připojená)** klikněte pravým tlačítkem na **účty úložiště**, vyberte **připojit k Azure Storage**, vyberte **Použít připojovací řetězec nebo identifikátor URI sdíleného přístupového podpisu** a pak vyberte **Další**.
 
       ![Připojení ke službě Azure Storage pomocí sdíleného přístupového podpisu](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image9.png)
 
@@ -287,67 +287,67 @@ Pokud chcete zobrazit a znovu použít některé ukázky standardních vlastníc
 
    d. V levém podokně vyberte připojený kontejner **publicpreview** a dvakrát klikněte na složku *CustomSetupScript* . V této složce jsou následující položky:
 
-      * *Ukázková* složka, která obsahuje vlastní instalaci pro instalaci základní úlohy do každého uzlu vašeho Azure-SSIS IR. Úkol neprovede žádnou akci, ale během několika sekund režim spánku. Složka obsahuje taky složku *Gacutil* , jejíž celý obsah ( *gacutil.exe* , *gacutil.exe.config* a *1033\gacutlrc.dll* ) se dá zkopírovat jako do vašeho kontejneru.
+      * *Ukázková* složka, která obsahuje vlastní instalaci pro instalaci základní úlohy do každého uzlu vašeho Azure-SSIS IR. Úkol neprovede žádnou akci, ale během několika sekund režim spánku. Složka obsahuje taky složku *Gacutil* , jejíž celý obsah (*gacutil.exe*, *gacutil.exe.config* a *1033\gacutlrc.dll*) se dá zkopírovat jako do vašeho kontejneru.
 
-      * Složka *UserScenarios* , která obsahuje několik vlastních ukázek instalace ze scénářů reálných uživatelů. Pokud chcete do svého Azure-SSIS IR nainstalovat více ukázek, můžete zkombinovat vlastní instalační soubory skriptu ( *Main. cmd* ) do jednoho a nahrát ho do kontejneru pomocí všech přidružených souborů.
+      * Složka *UserScenarios* , která obsahuje několik vlastních ukázek instalace ze scénářů reálných uživatelů. Pokud chcete do svého Azure-SSIS IR nainstalovat více ukázek, můžete zkombinovat vlastní instalační soubory skriptu (*Main. cmd*) do jednoho a nahrát ho do kontejneru pomocí všech přidružených souborů.
 
         ![Obsah kontejneru verze Public Preview](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image11.png)
 
    e. Dvojím kliknutím na složku *UserScenarios* vyhledejte následující položky:
 
-      * Složka *rozhraní .NET FRAMEWORK 3,5* , která obsahuje skript vlastního nastavení ( *Main. cmd* ) pro instalaci starší verze .NET Framework do každého uzlu Azure-SSIS IR. Tato verze může být vyžadována některými vlastními součástmi.
+      * Složka *rozhraní .NET FRAMEWORK 3,5* , která obsahuje skript vlastního nastavení (*Main. cmd*) pro instalaci starší verze .NET Framework do každého uzlu Azure-SSIS IR. Tato verze může být vyžadována některými vlastními součástmi.
 
-      * Složka *BCP* , která obsahuje skript vlastního nastavení ( *Main. cmd* ) pro instalaci SQL Server nástrojů příkazového řádku ( *MsSqlCmdLnUtils.msi* ) do každého uzlu Azure-SSIS IR. Jedním z těchto nástrojů je program hromadného kopírování ( *BCP* ).
+      * Složka *BCP* , která obsahuje skript vlastního nastavení (*Main. cmd*) pro instalaci SQL Server nástrojů příkazového řádku (*MsSqlCmdLnUtils.msi*) do každého uzlu Azure-SSIS IR. Jedním z těchto nástrojů je program hromadného kopírování (*BCP*).
 
-      * Složka *přípon DNS* , která obsahuje skript vlastního nastavení ( *Main. cmd* ) pro připojení vlastní přípony DNS (například *test.com* ) k libovolnému nekvalifikovanému názvu domény s názvem bez přípony a jejich převeďte na plně kvalifikovaný název domény (FQDN), než je použijete v dotazech DNS z vašeho Azure-SSIS IR.
+      * Složka *přípon DNS* , která obsahuje skript vlastního nastavení (*Main. cmd*) pro připojení vlastní přípony DNS (například *test.com*) k libovolnému nekvalifikovanému názvu domény s názvem bez přípony a jejich převeďte na plně kvalifikovaný název domény (FQDN), než je použijete v dotazech DNS z vašeho Azure-SSIS IR.
 
-      * Složka *aplikace Excel* , která obsahuje skript vlastního nastavení ( *Main. cmd* ) pro instalaci některých sestavení a knihoven v jazyce C# do každého uzlu Azure-SSIS IR. Můžete je použít v úlohách skriptu k dynamickému čtení a psaní excelových souborů. 
+      * Složka *aplikace Excel* , která obsahuje skript vlastního nastavení (*Main. cmd*) pro instalaci některých sestavení a knihoven v jazyce C# do každého uzlu Azure-SSIS IR. Můžete je použít v úlohách skriptu k dynamickému čtení a psaní excelových souborů. 
       
         Nejdřív stáhněte [*ExcelDataReader.dll*](https://www.nuget.org/packages/ExcelDataReader/) a [*DocumentFormat.OpenXml.dll*](https://www.nuget.org/packages/DocumentFormat.OpenXml/)a pak je nahrajte dohromady pomocí *Main. cmd* do kontejneru. Případně, pokud chcete pouze používat standardní konektory aplikace Excel (Správce připojení, zdroj a cíl), je již v Azure-SSIS IR předinstalována aplikace Access Redistributable, která je obsahuje, takže nepotřebujete žádnou vlastní instalaci.
       
-      * Složka *MySQL ODBC* , která obsahuje skript vlastního nastavení ( *Main. cmd* ) pro instalaci ovladačů MySQL odbc do každého uzlu Azure-SSIS IR. Tato instalace vám umožní připojit se k serveru MySQL pomocí konektorů rozhraní ODBC (Správce připojení, zdroje a cíle). 
+      * Složka *MySQL ODBC* , která obsahuje skript vlastního nastavení (*Main. cmd*) pro instalaci ovladačů MySQL odbc do každého uzlu Azure-SSIS IR. Tato instalace vám umožní připojit se k serveru MySQL pomocí konektorů rozhraní ODBC (Správce připojení, zdroje a cíle). 
      
-        Nejdřív [Stáhněte nejnovější verze 64 a 32 instalačních programů ovladačů MySQL ODBC](https://dev.mysql.com/downloads/connector/odbc/) (například *mysql-connector-odbc-8.0.13-winx64.msi* a *mysql-connector-odbc-8.0.13-win32.msi* ) a pak je nahrajte společně s *Main. cmd* do kontejneru.
+        Nejdřív [Stáhněte nejnovější verze 64 a 32 instalačních programů ovladačů MySQL ODBC](https://dev.mysql.com/downloads/connector/odbc/) (například *mysql-connector-odbc-8.0.13-winx64.msi* a *mysql-connector-odbc-8.0.13-win32.msi*) a pak je nahrajte společně s *Main. cmd* do kontejneru.
 
-      * Složka *Oracle Enterprise* , která obsahuje skript vlastního nastavení ( *Main. cmd* ) a konfigurační soubor bezobslužné instalace ( *Client. rsp* ) pro instalaci konektoru Oracle a ovladače OCI do každého uzlu vaší Azure-SSIS IR Enterprise Edition. Tato instalace vám umožní připojit se k serveru Oracle pomocí Správce připojení Oracle, zdroje a cíle. 
+      * Složka *Oracle Enterprise* , která obsahuje skript vlastního nastavení (*Main. cmd*) a konfigurační soubor bezobslužné instalace (*Client. rsp*) pro instalaci konektoru Oracle a ovladače OCI do každého uzlu vaší Azure-SSIS IR Enterprise Edition. Tato instalace vám umožní připojit se k serveru Oracle pomocí Správce připojení Oracle, zdroje a cíle. 
       
-        Nejdřív Stáhněte konektory Microsoft Connectors v 5.0 pro Oracle ( *AttunitySSISOraAdaptersSetup.msi* a *AttunitySSISOraAdaptersSetup64.msi* ) z [webu Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=55179) a nejnovějšího klienta Oracle (například *winx64_12102_client.zip* ) od [Oracle](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html). Dále je nahrajte do svého kontejneru společně s *Main. cmd* a *Client. rsp* . Pokud k připojení k Oracle používáte TNS, musíte si také stáhnout *souboru Tnsnames. Ora* , upravit ho a nahrát ho do svého kontejneru. Tímto způsobem je lze během instalace zkopírovat do instalační složky Oracle.
+        Nejdřív Stáhněte konektory Microsoft Connectors v 5.0 pro Oracle (*AttunitySSISOraAdaptersSetup.msi* a *AttunitySSISOraAdaptersSetup64.msi*) z [webu Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=55179) a nejnovějšího klienta Oracle (například *winx64_12102_client.zip*) od [Oracle](https://www.oracle.com/database/technologies/oracle19c-windows-downloads.html). Dále je nahrajte do svého kontejneru společně s *Main. cmd* a *Client. rsp* . Pokud k připojení k Oracle používáte TNS, musíte si také stáhnout *souboru Tnsnames. Ora*, upravit ho a nahrát ho do svého kontejneru. Tímto způsobem je lze během instalace zkopírovat do instalační složky Oracle.
 
-      * *Standardní složka ADO.NET Oracle* , která obsahuje skript vlastního nastavení ( *Main. cmd* ) pro instalaci ovladače Oracle ODP.NET do každého uzlu vašeho Azure-SSIS IR. Tato instalace vám umožní připojit se k serveru Oracle pomocí Správce připojení ADO.NET, zdroje a cíle. 
+      * *Standardní složka ADO.NET Oracle* , která obsahuje skript vlastního nastavení (*Main. cmd*) pro instalaci ovladače Oracle ODP.NET do každého uzlu vašeho Azure-SSIS IR. Tato instalace vám umožní připojit se k serveru Oracle pomocí Správce připojení ADO.NET, zdroje a cíle. 
       
-        Nejdřív [Stáhněte nejnovější ovladač Oracle ODP.NET](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html) (například *ODP.NET_Managed_ODAC122cR1.zip* ) a pak ho nahrajte společně s *Main. cmd* do kontejneru.
+        Nejdřív [Stáhněte nejnovější ovladač Oracle ODP.NET](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html) (například *ODP.NET_Managed_ODAC122cR1.zip*) a pak ho nahrajte společně s *Main. cmd* do kontejneru.
        
-      * *Standard Oracle* , který obsahuje skript pro vlastní nastavení ( *Main. cmd* ), který nainstaluje ovladač Oracle ODBC do každého uzlu vašeho Azure-SSIS IR. Skript také nakonfiguruje název zdroje dat (DSN). Tato instalace umožňuje použít Správce připojení ODBC, zdroj a cíl nebo Power Query Správce připojení a zdroj s typem zdroje dat ODBC pro připojení k serveru Oracle. 
+      * *Standard Oracle* , který obsahuje skript pro vlastní nastavení (*Main. cmd*), který nainstaluje ovladač Oracle ODBC do každého uzlu vašeho Azure-SSIS IR. Skript také nakonfiguruje název zdroje dat (DSN). Tato instalace umožňuje použít Správce připojení ODBC, zdroj a cíl nebo Power Query Správce připojení a zdroj s typem zdroje dat ODBC pro připojení k serveru Oracle. 
       
         Nejdřív Stáhněte nejnovější verzi pro okamžitého klienta Oracle (základní balíček nebo základní balíček verze Lite) a balíček ODBC a nahrajte ho dohromady pomocí *Main. cmd* do svého kontejneru:
-        * [Stáhnout 64 – bitové balíčky](https://www.oracle.com/technetwork/topics/winx64soft-089540.html) (základní balíček: *instantclient-basic-windows.x64-18.3.0.0.0dbru.zip* ; Základní balíček verze Lite: *instantclient-basiclite-windows.x64-18.3.0.0.0dbru.zip* ; Balíček ODBC: *instantclient-odbc-windows.x64-18.3.0.0.0dbru.zip* ) 
-        * [Stáhnout 32 – bitové balíčky](https://www.oracle.com/technetwork/topics/winsoft-085727.html) (základní balíček: *instantclient-basic-nt-18.3.0.0.0dbru.zip* ; Základní balíček verze Lite: *instantclient-basiclite-nt-18.3.0.0.0dbru.zip* ; Balíček ODBC: *instantclient-odbc-nt-18.3.0.0.0dbru.zip* )
+        * [Stáhnout 64 – bitové balíčky](https://www.oracle.com/technetwork/topics/winx64soft-089540.html) (základní balíček: *instantclient-basic-windows.x64-18.3.0.0.0dbru.zip*; Základní balíček verze Lite: *instantclient-basiclite-windows.x64-18.3.0.0.0dbru.zip*; Balíček ODBC: *instantclient-odbc-windows.x64-18.3.0.0.0dbru.zip*) 
+        * [Stáhnout 32 – bitové balíčky](https://www.oracle.com/technetwork/topics/winsoft-085727.html) (základní balíček: *instantclient-basic-nt-18.3.0.0.0dbru.zip*; Základní balíček verze Lite: *instantclient-basiclite-nt-18.3.0.0.0dbru.zip*; Balíček ODBC: *instantclient-odbc-nt-18.3.0.0.0dbru.zip*)
 
-      * *Standardní složka OLEDB Oracle* , která obsahuje skript vlastního nastavení ( *Main. cmd* ) pro instalaci ovladače Oracle OLEDB do každého uzlu vašeho Azure-SSIS IR. Tato instalace vám umožní připojit se k serveru Oracle pomocí Správce připojení OLEDB, zdroje a cíle. 
+      * *Standardní složka OLEDB Oracle* , která obsahuje skript vlastního nastavení (*Main. cmd*) pro instalaci ovladače Oracle OLEDB do každého uzlu vašeho Azure-SSIS IR. Tato instalace vám umožní připojit se k serveru Oracle pomocí Správce připojení OLEDB, zdroje a cíle. 
      
-        Nejdřív [Stáhněte nejnovější ovladač Oracle OLEDB](https://www.oracle.com/partners/campaign/index-090165.html) (například *ODAC122010Xcopy_x64.zip* ) a pak ho nahrajte společně s *Main. cmd* do kontejneru.
+        Nejdřív [Stáhněte nejnovější ovladač Oracle OLEDB](https://www.oracle.com/partners/campaign/index-090165.html) (například *ODAC122010Xcopy_x64.zip*) a pak ho nahrajte společně s *Main. cmd* do kontejneru.
 
-      * *POSTGRESQL složka ODBC* , která obsahuje skript vlastního nastavení ( *Main. cmd* ), který nainstaluje ovladače POSTGRESQL ODBC do každého uzlu vašeho Azure-SSIS IR. Tato instalace vám umožní připojit se k PostgreSQL serveru pomocí Správce připojení ODBC, zdroje a cíle. 
+      * *POSTGRESQL složka ODBC* , která obsahuje skript vlastního nastavení (*Main. cmd*), který nainstaluje ovladače POSTGRESQL ODBC do každého uzlu vašeho Azure-SSIS IR. Tato instalace vám umožní připojit se k PostgreSQL serveru pomocí Správce připojení ODBC, zdroje a cíle. 
      
-        Nejdřív [Stáhněte nejnovější 64 a 32 PostgreSQL instalačních ovladačů ovladačů ODBC](https://www.postgresql.org/ftp/odbc/versions/msi/) (například *psqlodbc_x64.msi* a *psqlodbc_x86.msi* ) a pak je nahrajte dohromady pomocí *Main. cmd* do kontejneru.
+        Nejdřív [Stáhněte nejnovější 64 a 32 PostgreSQL instalačních ovladačů ovladačů ODBC](https://www.postgresql.org/ftp/odbc/versions/msi/) (například *psqlodbc_x64.msi* a *psqlodbc_x86.msi*) a pak je nahrajte dohromady pomocí *Main. cmd* do kontejneru.
 
-      * *SAP BW* složky, která obsahuje skript vlastního nastavení ( *Main. cmd* ) pro instalaci sestavení SAP .NET Connector ( *librfc32.dll* ) na každý uzel vaší Azure-SSIS IR Enterprise Edition. Tato instalace vám umožní připojit se k serveru SAP BW pomocí SAP BW Správce připojení, zdroj a cíl. 
+      * *SAP BW* složky, která obsahuje skript vlastního nastavení (*Main. cmd*) pro instalaci sestavení SAP .NET Connector (*librfc32.dll*) na každý uzel vaší Azure-SSIS IR Enterprise Edition. Tato instalace vám umožní připojit se k serveru SAP BW pomocí SAP BW Správce připojení, zdroj a cíl. 
       
         Nejdřív nahrajte 64 nebo 32 verzi *librfc32.dll* z instalační složky SAP společně s *Main. cmd* do svého kontejneru. Skript pak zkopíruje sestavení SAP do složky *%windir%\syswow64* nebo *%windir%\System32* během instalace.
 
-      * Složka *úložiště* , která obsahuje skript vlastního nastavení ( *Main. cmd* ), který se má nainstalovat Azure PowerShell v každém uzlu Azure-SSIS IR. Tato instalace umožňuje nasadit a spustit balíčky SSIS, které spouští [rutiny a skripty Azure PowerShell pro správu Azure Storage](../storage/blobs/storage-quickstart-blobs-powershell.md). 
+      * Složka *úložiště* , která obsahuje skript vlastního nastavení (*Main. cmd*), který se má nainstalovat Azure PowerShell v každém uzlu Azure-SSIS IR. Tato instalace umožňuje nasadit a spustit balíčky SSIS, které spouští [rutiny a skripty Azure PowerShell pro správu Azure Storage](../storage/blobs/storage-quickstart-blobs-powershell.md). 
       
-        Zkopírujte *Main. cmd* , vzorový *AzurePowerShell.msi* (nebo použijte nejnovější verzi) a *storage.ps1* do svého kontejneru. Jako šablonu pro balíčky použijte *PowerShell. dtsx* . Šablona balíčku kombinuje [úlohu stažení objektu BLOB v Azure](/sql/integration-services/control-flow/azure-blob-download-task), která stáhne upravitelný skript PowerShellu ( *storage.ps1* ) a [úlohu spuštění procesu](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/), která spustí skript na každém uzlu.
+        Zkopírujte *Main. cmd*, vzorový *AzurePowerShell.msi* (nebo použijte nejnovější verzi) a *storage.ps1* do svého kontejneru. Jako šablonu pro balíčky použijte *PowerShell. dtsx* . Šablona balíčku kombinuje [úlohu stažení objektu BLOB v Azure](/sql/integration-services/control-flow/azure-blob-download-task), která stáhne upravitelný skript PowerShellu (*storage.ps1*) a [úlohu spuštění procesu](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/), která spustí skript na každém uzlu.
 
-      * Složka *Teradata* , která obsahuje skript vlastního nastavení ( *Main. cmd* ), přidružený soubor ( *install. cmd* ) a instalační balíčky ( *. msi* ). Tyto soubory instalují konektory Teradata, rozhraní API Teradata Parallel Transporter (TPT) a ovladač ODBC na každém uzlu vaší Azure-SSIS IR Enterprise Edition. Tato instalace vám umožní připojit se k serveru Teradata pomocí Správce připojení Teradata, zdroj a cíl. 
+      * Složka *Teradata* , která obsahuje skript vlastního nastavení (*Main. cmd*), přidružený soubor (*install. cmd*) a instalační balíčky (*. msi*). Tyto soubory instalují konektory Teradata, rozhraní API Teradata Parallel Transporter (TPT) a ovladač ODBC na každém uzlu vaší Azure-SSIS IR Enterprise Edition. Tato instalace vám umožní připojit se k serveru Teradata pomocí Správce připojení Teradata, zdroj a cíl. 
       
-        Nejprve [si stáhněte soubor zip Tools a Utilities 15. x](http://partnerintelligence.teradata.com) (například  *TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip* ) a pak ho nahrajte společně s dříve uvedenými soubory *. cmd* a *. msi* do kontejneru.
+        Nejprve [si stáhněte soubor zip Tools a Utilities 15. x](http://partnerintelligence.teradata.com) (například  *TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip*) a pak ho nahrajte společně s dříve uvedenými soubory *. cmd* a *. msi* do kontejneru.
 
-      * Složka *TLS 1,2* , která obsahuje skript vlastního nastavení ( *Main. cmd* ) pro použití silné kryptografie a bezpečnějšího síťového protokolu (TLS 1,2) na každém uzlu vašeho Azure-SSIS IR. Skript také zakáže starší verze protokolu SSL/TLS.
+      * Složka *TLS 1,2* , která obsahuje skript vlastního nastavení (*Main. cmd*) pro použití silné kryptografie a bezpečnějšího síťového protokolu (TLS 1,2) na každém uzlu vašeho Azure-SSIS IR. Skript také zakáže starší verze protokolu SSL/TLS.
 
-      * Složka *Zulu OPENJDK* , která obsahuje skript vlastního nastavení ( *Main. cmd* ) a soubor PowerShellu ( *install_openjdk.ps1* ) pro instalaci Zulu OPENJDK do každého uzlu Azure-SSIS IR. Tato instalace umožňuje použít Azure Data Lake Store a flexibilní konektory souborů ke zpracování souborů ORC a Parquet. Další informace najdete v tématu [Azure Feature Pack pro integrační služby](/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-ver15#dependency-on-java). 
+      * Složka *Zulu OPENJDK* , která obsahuje skript vlastního nastavení (*Main. cmd*) a soubor PowerShellu (*install_openjdk.ps1*) pro instalaci Zulu OPENJDK do každého uzlu Azure-SSIS IR. Tato instalace umožňuje použít Azure Data Lake Store a flexibilní konektory souborů ke zpracování souborů ORC a Parquet. Další informace najdete v tématu [Azure Feature Pack pro integrační služby](/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-ver15#dependency-on-java). 
       
-        Nejdřív [Stáhněte nejnovější Zulu OpenJDK](https://www.azul.com/downloads/zulu/zulu-windows/) (například *zulu8.33.0.1-jdk8.0.192-win_x64.zip* ) a pak ho nahrajte společně s *Main. cmd* a *install_openjdk.ps1* do svého kontejneru.
+        Nejdřív [Stáhněte nejnovější Zulu OpenJDK](https://www.azul.com/downloads/zulu/zulu-windows/) (například *zulu8.33.0.1-jdk8.0.192-win_x64.zip*) a pak ho nahrajte společně s *Main. cmd* a *install_openjdk.ps1* do svého kontejneru.
 
         ![Složky ve složce scénáře pro uživatele](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
 

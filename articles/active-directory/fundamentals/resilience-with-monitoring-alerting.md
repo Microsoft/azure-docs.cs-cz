@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcb63931f883c6061ded996621a09aacbacd14af
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 766fd80ae5f7450c8e45d10afa4612a788a8d5fc
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919406"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602152"
 ---
 # <a name="resilience-through-monitoring-and-analytics"></a>Odolnost prostřednictvím monitorování a analýzy
 
@@ -41,7 +41,7 @@ Například můžete sledovat následující metriky, protože náhlé zrušení
 
   - **Úspěšnost (%)**: úspěšné požadavky/celkový počet požadavků.
 
-  Přístup k [klíčovým indikátorům](https://docs.microsoft.com/azure/active-directory-b2c/view-audit-logs) v [application Insights](https://docs.microsoft.com/azure/active-directory-b2c/analytics-with-application-insights) , Azure AD B2C kde se ukládají protokoly na základě zásad, [protokoly auditu](https://docs.microsoft.coms/azure/active-directory-b2c/analytics-with-application-insights)a protokoly pro přihlášení.  
+  Přístup k [klíčovým indikátorům](https://docs.microsoft.com/azure/active-directory-b2c/view-audit-logs) v [application Insights](https://docs.microsoft.com/azure/active-directory-b2c/analytics-with-application-insights) , Azure AD B2C kde se ukládají protokoly na základě zásad, [protokoly auditu](https://docs.microsoft.com/azure/active-directory-b2c/analytics-with-application-insights)a protokoly pro přihlášení.  
 
    - **Vizualizace**: pomocí řídicích panelů pro sestavení Log Analytics můžete vizuálně monitorovat klíčové indikátory.
 
@@ -49,7 +49,7 @@ Například můžete sledovat následující metriky, protože náhlé zrušení
 
    - **Předchozí období**: Vytvořte dočasné grafy, abyste zobrazili změny v celkových požadavcích a úspěšnosti (%). v některém z předchozích období pro referenční účely, například minulý týden.
 
-- **Upozornění**: pomocí Log Analytics definujte [výstrahy](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) , které se aktivují, když se v klíčových ukazatelích dostanou náhlé změny. Tyto změny mohou negativně ovlivnit slo. Výstrahy využívají různé formy metod oznámení, včetně e-mailu, SMS a webhooků. Začněte tím, že definujete kritérium, které funguje jako prahová hodnota, na které se výstraha aktivuje. Například:
+- **Upozornění**: pomocí Log Analytics definujte [výstrahy](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) , které se aktivují, když se v klíčových ukazatelích dostanou náhlé změny. Tyto změny mohou negativně ovlivnit slo. Výstrahy využívají různé formy metod oznámení, včetně e-mailu, SMS a webhooků. Začněte tím, že definujete kritérium, které funguje jako prahová hodnota, na které se výstraha aktivuje. Příklad:
   - Výstraha proti náhlému poklesu celkového počtu požadavků: aktivuje výstrahu v případě, že celkový počet požadavků vynechává náhlé. Pokud je třeba 25% poklesu celkového počtu požadavků v porovnání s předchozím obdobím, vyvolejte výstrahu.  
   - Výstraha v důsledku významné míry poklesu úspěšnosti (%): aktivovat výstrahu, když je míra úspěšnosti vybrané zásady významně odložena.
   - Po přijetí výstrahy vyřešte problém pomocí [Log Analytics](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views), [Application Insights](https://docs.microsoft.com/azure/active-directory-b2c/troubleshoot-with-application-insights#:~:text=Setup%20Application%20Insights%201%20Go%20to%20the%20Azure,left-menu%2C%20and%20click%20on%20it.%20More%20items...%20)a [rozšíření vs Code](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) pro Azure AD B2C. Po vyřešení problému a nasazení aktualizované aplikace nebo zásady bude nadále monitorovat klíčové indikátory, dokud se nevrátí zpět do normálního rozsahu.

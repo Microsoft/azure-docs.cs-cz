@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: 00b504c7bcf51a69d03fb1294de4f52ef35ed163
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: c9e0b155a4cf34373bb6d851241dc62ddd661045
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555959"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602350"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Rychlý Start: vytvoření účtu Azure dosah v Azure Portal
 
@@ -21,11 +21,67 @@ ms.locfileid: "96555959"
 
 V tomto rychlém startu vytvoříte účet Azure dosah.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * Váš vlastní [Azure Active Directory tenant](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
+
+* Váš účet musí mít oprávnění k vytváření prostředků v předplatném.
+
+* Pokud jste **Azure Policy** blokující všechny aplikace při vytváření **účtu úložiště** a **oboru názvů EventHub**, je potřeba vytvořit výjimku zásad pomocí značky, která se dá zadat během procesu vytváření účtu dosah. Hlavním důvodem je to, že pro každý vytvořený účet dosah je potřeba vytvořit spravovanou skupinu prostředků a v rámci této skupiny prostředků, účtu úložiště a oboru názvů EventHub.
+    1. Přejděte na Azure Portal a vyhledejte **zásady** .
+    1. Postupujte podle pokynů pro [Vytvoření vlastní definice zásad](https://docs.microsoft.com/azure/governance/policy/tutorials/create-custom-policy-definition) nebo upravte existující zásady a přidejte dvě výjimky s `not` operátorem a `resourceBypass` tagem:
+
+        ```json
+        {
+          "mode": "All",
+          "policyRule": {
+            "if": {
+              "anyOf": [
+              {
+                "allOf": [
+                {
+                  "field": "type",
+                  "equals": "Microsoft.Storage/storageAccounts"
+                },
+                {
+                  "not": {
+                    "field": "tags['<resourceBypass>']",
+                    "exists": true
+                  }
+                }]
+              },
+              {
+                "allOf": [
+                {
+                  "field": "type",
+                  "equals": "Microsoft.EventHub/namespaces"
+                },
+                {
+                  "not": {
+                    "field": "tags['<resourceBypass>']",
+                    "exists": true
+                  }
+                }]
+              }]
+            },
+            "then": {
+              "effect": "deny"
+            }
+          },
+          "parameters": {}
+        }
+        ```
+        
+        > [!Note]
+        > Tato značka může být vedle sebe a je až na to, `resourceBypass` abyste mohli definovat hodnotu při vytváření dosah v těchto krocích, pokud zásada může detekovat značku.
+
+        :::image type="content" source="./media/create-catalog-portal/policy-definition.png" alt-text="Snímek obrazovky ukazující, jak vytvořit definici zásady":::
+
+    1. [Vytvořte přiřazení zásady](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal) pomocí vytvořených vlastních zásad.
+
+        [![Snímek obrazovky ukazující, jak vytvořit přiřazení zásad](./media/create-catalog-portal/policy-assignment.png)](./media/create-catalog-portal/policy-assignment.png#lightbox)
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -61,9 +117,17 @@ V případě potřeby pomocí těchto kroků nakonfigurujte předplatné, aby by
     1. Zadejte **název účtu dosah** pro váš katalog. Mezery a symboly nejsou povoleny.
     1. Zvolte  **umístění** a potom vyberte **Další: Konfigurace**.
 1. Na kartě **Konfigurace** vyberte požadovanou **Velikost platformy** – povolené hodnoty jsou 4 jednotky kapacity (CU) a 16 cu. Vyberte **Další: značky**.
-1. Na kartě **značky** můžete volitelně přidat jednu nebo více značek. Tyto značky jsou používány pouze v Azure Portal, nikoli v Azure dosah.
+1. Na kartě **značky** můžete volitelně přidat jednu nebo více značek. Tyto značky jsou používány pouze v Azure Portal, nikoli v Azure dosah. 
+
+    > [!Note] 
+    > Pokud máte **Azure Policy** a potřebujete přidat výjimku jako v **požadavcích**, je nutné přidat správnou značku. Můžete například přidat `resourceBypass` značku: :::image type="content" source="./media/create-catalog-portal/add-purview-tag.png" alt-text="Přidání značky k účtu dosah.":::
+
 1. Vyberte **zkontrolovat & vytvořit** a pak vyberte **vytvořit**. Dokončení vytváření může trvat několik minut. Nově vytvořená instance účtu Azure dosah se zobrazí v seznamu na stránce **účty dosah** .
 1. Až se nové zřizování účtů dokončí, vyberte **Přejít k prostředku**.
+
+    > [!Note]
+    > Pokud se zřizování nepovedlo se `Conflict` stavem, znamená to, že zásady Azure blokují dosah z vytváření **účtu úložiště** a **oboru názvů EventHub**. Chcete-li přidat výjimky, je nutné projít kroky pro splnění **požadavků** .
+    > :::image type="content" source="./media/create-catalog-portal/purview-conflict-error.png" alt-text="Chybová zpráva ke konfliktu dosah":::
 
 1. Vyberte **spustit účet dosah**.
 

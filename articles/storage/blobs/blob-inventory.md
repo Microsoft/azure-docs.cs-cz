@@ -4,18 +4,18 @@ description: Azure Storage Inventory je nástroj, který vám umožní získat p
 services: storage
 author: mhopkins-msft
 ms.service: storage
-ms.date: 11/04/2020
+ms.date: 12/03/2020
 ms.topic: conceptual
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 149fb9c888c54ea45d273890f3fe2cd59730fa01
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 86ded3dea819702631b1fa04dbc56f727566fc98
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96354965"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602678"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>Použití inventáře Azure Storage objektů BLOB pro správu dat objektů BLOB (Preview)
 
@@ -23,7 +23,7 @@ Funkce inventáře objektů blob Azure Storage poskytuje přehled o datech objek
 
 ## <a name="availability"></a>Dostupnost
 
-Pro obecné účely verze 2 (GPv2) se podporuje inventář objektů blob, úložiště objektů blob bloku Premium a účty Azure datalake Storage Gen2 (ADLS Gen2).
+Inventář objektů BLOB se podporuje pro účty pro obecné účely verze 2 (GPv2) i Premium Block BLOB Storage. Tato funkce je podporována s povolenou funkcí [hierarchického oboru názvů](data-lake-storage-namespace.md) nebo bez ní.
 
 ### <a name="preview-regions"></a>Oblasti verze Preview
 
@@ -87,9 +87,9 @@ Kliknutím na kartu **zobrazení kódu** v části **inventář objektů BLOB** 
 
 | Název parametru | Typ parametru        | Poznámky | Povinné? |
 |----------------|-----------------------|-------|-----------|
-| destination    | Řetězec                | Cílový kontejner, ve kterém budou všechny soubory inventáře vygenerovány. Cílový kontejner již musí existovat. | Ano |
-| enabled        | Logická hodnota               | Používá se k zakázání celé zásady. Při nastavení na **hodnotu true** přepíše pole povolená úroveň pravidla tento parametr. V případě zakázání bude inventář všech pravidel zakázán. | Ano |
-| pravidla          | Pole objektů pravidel | V zásadě je vyžadováno alespoň jedno pravidlo. Podporuje se až 10 pravidel. | Ano |
+| destination    | Řetězec                | Cílový kontejner, ve kterém budou všechny soubory inventáře vygenerovány. Cílový kontejner již musí existovat. | Yes |
+| enabled        | Logická hodnota               | Používá se k zakázání celé zásady. Při nastavení na **hodnotu true** přepíše pole povolená úroveň pravidla tento parametr. V případě zakázání bude inventář všech pravidel zakázán. | Yes |
+| pravidla          | Pole objektů pravidel | V zásadě je vyžadováno alespoň jedno pravidlo. Podporuje se až 10 pravidel. | Yes |
 
 ## <a name="inventory-rules"></a>Pravidla inventáře
 
@@ -99,9 +99,9 @@ Každé pravidlo v zásadě má několik parametrů:
 
 | Název parametru | Typ parametru                 | Poznámky | Povinné? |
 |----------------|--------------------------------|-------|-----------|
-| name           | Řetězec                         | Název pravidla může obsahovat až 256 alfanumerických znaků s rozlišením malých a velkých písmen. Název musí být v rámci zásady jedinečný. | Ano |
-| enabled        | Logická hodnota                        | Příznak umožňující povolit nebo zakázat pravidlo. Výchozí hodnota je **true (pravda**). | Ano |
-| definice     | Definice pravidla inventáře JSON | Každá definice se skládá ze sady filtrů pravidel. | Ano |
+| name           | Řetězec                         | Název pravidla může obsahovat až 256 alfanumerických znaků s rozlišením malých a velkých písmen. Název musí být v rámci zásady jedinečný. | Yes |
+| enabled        | Logická hodnota                        | Příznak umožňující povolit nebo zakázat pravidlo. Výchozí hodnota je **true (pravda**). | Yes |
+| definice     | Definice pravidla inventáře JSON | Každá definice se skládá ze sady filtrů pravidel. | Yes |
 
 Příznak globálního **soupisu povoleného objektu BLOB** má přednost před *povoleným* parametrem v pravidle.
 
@@ -111,10 +111,10 @@ K dispozici je několik filtrů pro přizpůsobení sestavy inventáře objektů
 
 | Název filtru         | Typ filtru                     | Poznámky | Povinné? |
 |---------------------|---------------------------------|-------|-----------|
-| blobTypes           | Pole předdefinovaných hodnot výčtu | Platné hodnoty jsou `blockBlob` a `appendBlob` pro hierarchické účty s povoleným oborem názvů, a, `blockBlob` `appendBlob` a `pageBlob` pro další účty. | Ano |
-| prefixMatch         | Pole až deseti řetězců, pro které mají být předpony spárovány. Předpona musí začínat názvem kontejneru, například "container1/foo". | Pokud nedefinujete *prefixMatch* nebo neposkytnete prázdnou předponu, pravidlo se vztahuje na všechny objekty BLOB v účtu úložiště. | Ne |
-| includeSnapshots    | Logická hodnota                         | Určuje, zda by měl inventář zahrnovat snímky. Výchozí hodnota je **false**. | Ne |
-| includeBlobVersions | Logická hodnota                         | Určuje, jestli by měl inventář obsahovat verze objektů BLOB. Výchozí hodnota je **false**. | Ne |
+| blobTypes           | Pole předdefinovaných hodnot výčtu | Platné hodnoty jsou `blockBlob` a `appendBlob` pro hierarchické účty s povoleným oborem názvů, a, `blockBlob` `appendBlob` a `pageBlob` pro další účty. | Yes |
+| prefixMatch         | Pole až deseti řetězců, pro které mají být předpony spárovány. Předpona musí začínat názvem kontejneru, například "container1/foo". | Pokud nedefinujete *prefixMatch* nebo neposkytnete prázdnou předponu, pravidlo se vztahuje na všechny objekty BLOB v účtu úložiště. | No |
+| includeSnapshots    | Logická hodnota                         | Určuje, zda by měl inventář zahrnovat snímky. Výchozí hodnota je **false**. | No |
+| includeBlobVersions | Logická hodnota                         | Určuje, jestli by měl inventář obsahovat verze objektů BLOB. Výchozí hodnota je **false**. | No |
 
 Kliknutím na kartu **zobrazení kódu** v části **inventář objektů BLOB** Azure Portal zobrazte pravidla pro inventarizaci. Filtry jsou zadané v definici pravidla.
 

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29580564ffa2fed579065e6a8551a6f44597e41a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: d8825dcb2d8dbcf4a1296d8bace84b3d2716687f
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433253"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602026"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Jaká jsou výchozí uživatelská oprávnění v Azure Active Directory?
 V Azure Active Directory (Azure AD) mají všichni uživatelé udělenou sadu výchozích oprávnění. Přístup uživatele se skládá z typu uživatel, [přiřazení jejich rolí](active-directory-users-assign-role-azure-portal.md)a jejich vlastnictví jednotlivých objektů. Tento článek popisuje tato výchozí oprávnění a obsahuje porovnání výchozích nastavení člena a uživatele typu host. Výchozí uživatelská oprávnění se dají změnit jenom v nastavení uživatele v Azure AD.
@@ -32,7 +32,7 @@ Sada výchozích oprávnění přijatá závisí na tom, jestli je uživatel nat
 
 **Oblast** | **Oprávnění člena** | **Výchozí oprávnění uživatele typu Host** | **Omezená uživatelská oprávnění typu Host (Preview)**
 ------------ | --------- | ---------- | ----------
-Uživatelé a kontakty | <ul><li>Výčet seznamu všech uživatelů a kontaktů<li>Čtení všech veřejných vlastností uživatelů a kontaktů</li><li>Zvaní hostů<li>Změna vlastního hesla<li>Správa vlastního čísla mobilního telefonu<li>Správa vlastní fotky<li>Zneplatnění vlastních obnovovacích tokenů</li></ul> | <ul><li>Čtení vlastních vlastností<li>Čtení zobrazovaného jména, e-mailu, přihlašovací jméno, fotografie, hlavní název uživatele a vlastnosti typu uživatele u dalších uživatelů a kontaktů<li>Změna vlastního hesla<li>Vyhledat jiného uživatele podle zobrazovaného jména, hlavního názvu uživatele nebo ObjectId (Pokud je povoleno)<li>Informace o Správci čtení a přímých sestavách jiných uživatelů</li></ul> | <ul><li>Čtení vlastních vlastností<li>Změna vlastního hesla</li></ul>
+Uživatelé a kontakty | <ul><li>Výčet seznamu všech uživatelů a kontaktů<li>Čtení všech veřejných vlastností uživatelů a kontaktů</li><li>Zvaní hostů<li>Změna vlastního hesla<li>Správa vlastního čísla mobilního telefonu<li>Správa vlastní fotky<li>Zneplatnění vlastních obnovovacích tokenů</li></ul> | <ul><li>Čtení vlastních vlastností<li>Čtení zobrazovaného jména, e-mailu, přihlašovací jméno, fotografie, hlavní název uživatele a vlastnosti typu uživatele u dalších uživatelů a kontaktů<li>Změna vlastního hesla<li>Vyhledat jiného uživatele podle ObjectId (Pokud je povoleno)<li>Informace o Správci čtení a přímých sestavách jiných uživatelů</li></ul> | <ul><li>Čtení vlastních vlastností<li>Změna vlastního hesla</li></ul>
 Skupiny | <ul><li>Vytváření skupin zabezpečení<li>Vytvoření skupin Microsoft 365<li>Výčet seznamu všech skupin<li>Čtení všech vlastností skupin<li>Čtení neskrytých členství ve skupinách<li>Číst skryté Microsoft 365 členství ve skupině pro připojenou skupinu<li>Správa vlastností, vlastnictví a členství ve skupinách, které uživatel vlastní<li>Přidávání hostů do vlastněných skupin<li>Správa nastavení dynamického členství<li>Odstranění vlastněných skupin<li>Obnovení vlastněných Microsoft 365 skupin</li></ul> | <ul><li>Číst vlastnosti neskrytých skupin, včetně členství a vlastnictví (i nepřipojené skupiny)<li>Číst skryté Microsoft 365 členství ve skupinách pro připojené skupiny<li>Vyhledat skupiny podle zobrazovaného jména nebo ObjectId (Pokud je povoleno)</li></ul> | <ul><li>ID objektu pro Spojené skupiny<li>Čtení členství a vlastnictví spojených skupin v některých aplikacích Microsoft 365 (Pokud je povolené)</li></ul>
 Aplikace | <ul><li>Registrace (vytvoření) nové aplikace<li>Zobrazení výčtu všech aplikací<li>Čtení vlastností zaregistrovaných a podnikových aplikací<li>Správa vlastností aplikací, jejich přiřazení a přihlašovacích údajů u vlastněných aplikací<li>Vytvoření nebo odstranění hesla aplikace pro uživatele<li>Odstranění vlastněných aplikací<li>Obnovení vlastněných aplikací</li></ul> | <ul><li>Čtení vlastností zaregistrovaných a podnikových aplikací</li></ul> | <ul><li>Čtení vlastností zaregistrovaných a podnikových aplikací
 Zařízení</li></ul> | <ul><li>Zobrazení výčtu všech zařízení<li>Čtení všech vlastností zařízení<li>Správa všech vlastností vlastněných zařízení</li></ul> | Žádná oprávnění | Žádná oprávnění
