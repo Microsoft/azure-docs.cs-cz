@@ -51,98 +51,6 @@
       href: tutorial-iis-sql.md
     - name: 16. Zabezpečení webového serveru pomocí SSL
       href: tutorial-secure-web-server.md
-- name: ukázky
-  items:
-    - name: Index PowerShellu
-      href: powershell-samples.md
-    - name: PowerShell
-      items:
-        - name: Vytvořit
-          items:
-            - name: Rychle
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md
-            - name: Plně nakonfigurovaný virtuální počítač
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm.md
-            - name: Vysoce dostupný virtuální počítač
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-nlb-vm.md
-            - name: Příklad vlastních skriptů
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md
-            - name: Použití DSC
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-iis-using-dsc.md
-            - name: Nahrání virtuálního počítače z virtuálního pevného disku
-              href: ./../scripts/virtual-machines-windows-powershell-upload-generalized-script.md
-            - name: Připojení disku s operačním systémem
-              href: ./../scripts/virtual-machines-powershell-sample-create-vm-from-managed-os-disks.md
-            - name: Virtuální počítač ze snímku
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md
-        - name: Správa úložiště
-          items:
-            - name: Vytvoření spravovaného disku z virtuálního pevného disku
-              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-vhd.md
-            - name: Vytvoření spravovaného disku ze snímku
-              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot.md
-            - name: Kopírování spravovaného disku
-              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md
-            - name: Export snímku jako VHD do účtu úložiště
-              href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md
-            - name: Export VHD spravovaného disku do účtu úložiště
-              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md
-            - name: Vytvoření snímku z VHD
-              href: ../scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd.md
-            - name: Kopírování snímku
-              href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md
-        - name: Zabezpečení
-          items:
-            - name: Šifrování virtuálního počítače a jeho datových disků
-              href: ./../scripts/virtual-machines-windows-powershell-sample-encrypt-vm.md?
-        - name: Monitorování
-          items:
-            - name: Azure Monitor
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md
-            - name: Shromažďování podrobností o všech virtuálních počítačích v rámci předplatného
-              href: ../scripts/virtual-machines-powershell-sample-collect-vm-details.md
-    - name: Index Azure CLI
-      href: cli-samples.md
-    - name: Rozhraní příkazového řádku
-      items:
-        - name: Vytvořit
-          items:
-            - name: Rychle
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-quick-create.md
-            - name: Plně nakonfigurovaný virtuální počítač
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm.md
-            - name: Vysoce dostupný virtuální počítač
-              href: ./../scripts/virtual-machines-windows-cli-sample-nlb.md
-            - name: Příklad vlastních skriptů
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-iis.md
-            - name: Použití konfigurace DSC
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-iis-using-dsc.md
-        - name: Správa úložiště
-          items:
-            - name: Vytvoření spravovaného disku z VHD
-              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd.md
-            - name: Vytvoření spravovaného disku ze snímku
-              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-snapshot.md
-            - name: Kopírování spravovaného disku
-              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription.md
-            - name: Export snímku jako VHD do účtu úložiště
-              href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md
-            - name: Export VHD spravovaného disku do účtu úložiště
-              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md
-            - name: Kopírování snímku
-              href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-same-or-different-subscription.md
-        - name: Síť
-          items:
-            - name: Zabezpečení provozu mezi virtuálními počítači
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-nsg.md
-        - name: Zabezpečení
-          items:
-            - name: Šifrování virtuálního počítače a datových disků
-              href: ./../scripts/virtual-machines-windows-cli-sample-encrypt-vm.md
-        - name: Monitorování
-          items:
-            - name: Azure Monitor
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
 - name: Koncepty
   items:
     - name: Image
@@ -672,9 +580,6 @@
           href: change-drive-letter.md
         - name: Změna skupiny dostupnosti
           href: change-availability-set.md
-        - name: Export šablony ARM
-          displayName: Azure Resource Manager
-          href: download-template.md
         - name: Agent virtuálního počítače Azure
           href: ../extensions/agent-windows.md
         - name: Omezení spekulativního spouštění
@@ -701,7 +606,7 @@
           items:
             - name: Přehled
               href: ../maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Rozhraní příkazového řádku
+            - name: CLI
               href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-control-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -951,6 +856,8 @@
           href: find-unattached-disks.md
         - name: Vyhledání nepřipojených disků – portál
           href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Mapování disků Azure na disky hostů
+          href: azure-to-guest-disk-mapping.md
         - name: Nejčastější dotazy k diskům
           href: ../faq-for-disks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Správa sítí
@@ -960,7 +867,7 @@
           href: ../../virtual-network/quick-create-portal.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
         - name: Otevření portů k virtuálnímu počítači
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: nsg-quickstart-portal.md
             - name: Azure PowerShell
               href: nsg-quickstart-powershell.md

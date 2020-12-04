@@ -39,6 +39,8 @@
       href: restart-resize-error-troubleshooting.md
     - name: 'Restartování, vypnutí nebo zastavení služeb'
       href: boot-error-troubleshoot-windows.md
+    - name: Problémy s plným diskem s operačním systémem na linuxovém virtuálním počítači
+      href: os-disk-full-linux.md
 - name: Neočekávané restartování
   items:
     - name: Neočekávaná restartování virtuálních počítačů s připojenými virtuálními pevnými disky

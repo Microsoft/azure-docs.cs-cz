@@ -124,7 +124,7 @@
           href: shortpath.md
         - name: Implementace technologie QoS (Quality of Service)
           href: rdp-quality-of-service-qos.md
-        - name: Seznam bezpečných adres URL
+        - name: Seznam požadovaných adres URL
           href: safe-url-list.md
         - name: Aspekty šířky pásma
           href: rdp-bandwidth.md

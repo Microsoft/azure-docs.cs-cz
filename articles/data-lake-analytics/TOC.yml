@@ -68,7 +68,7 @@
             - name: Základy
               href: data-lake-analytics-u-sql-get-started.md
             - name: Referenční informace k jazyku
-              href: /u-sql/
+              href: 'https://docs.microsoft.com/u-sql'
             - name: Katalog
               href: data-lake-analytics-u-sql-catalog.md
             - name: Uživatelsky definované operátory
@@ -79,8 +79,6 @@
               href: data-lake-analytics-u-sql-r-extensions.md
             - name: Kognitivní rozšíření
               href: data-lake-analytics-u-sql-cognitive.md
-            - name: Průvodce programovatelností
-              href: data-lake-analytics-u-sql-programmability-guide.md
         - name: Visual Studio
           items:
             - name: Instalace
@@ -115,6 +113,28 @@
               href: data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md
             - name: Místní spuštění a ladění
               href: data-lake-tools-for-vscode-local-run-and-debug.md
+        - name: Průvodce programovatelností
+          items:
+            - name: Přehled průvodce programovatelností
+              href: data-lake-analytics-u-sql-programmability-guide.md
+            - name: Průvodce programovatelností – UDT a UDAGG
+              href: data-lake-analytics-u-sql-programmability-guide-UDT-AGG.md
+            - name: Průvodce programovatelností – UDO
+              items:
+                - name: Přehled uživatelsky definovaných objektů
+                  href: data-lake-analytics-u-sql-programmability-guide-UDO.md
+                - name: Použití uživatelsky definovaného objektu extractor
+                  href: data-lake-analytics-u-sql-programmability-guide-extractor.md
+                - name: Použití uživatelsky definovaného objektu outputter
+                  href: data-lake-analytics-u-sql-programmability-guide-outputter.md
+                - name: Použití uživatelsky definovaného objektu processor
+                  href: data-lake-analytics-u-sql-programmability-guide-processor.md
+                - name: Použití uživatelsky definovaného objektu applier
+                  href: data-lake-analytics-u-sql-programmability-guide-applier.md
+                - name: Použití uživatelsky definovaného objektu combiner
+                  href: data-lake-analytics-u-sql-programmability-guide-combiner.md
+                - name: Použití uživatelsky definovaného objektu reducer
+                  href: data-lake-analytics-u-sql-programmability-guide-reducer.md
     - name: Plánování úloh U-SQL
       items:
         - name: Plánování úloh s využitím SSIS

@@ -142,7 +142,7 @@
               href: create-sql-api-python.md
             - name: Aplikace v Xamarinu
               href: create-sql-api-xamarin-dotnet.md
-    - name: Kurzy
+    - name: Výukové kurzy
       items:
         - name: 1. Vytváření a správa dat
           items:
@@ -1305,7 +1305,7 @@
           href: tutorial-setup-ci-cd.md
         - name: Použití Průzkumníka služby Azure Storage
           href: storage-explorer.md
-        - name: Použití Azure Cosmos Exploreru
+        - name: Použití Azure Cosmos DB Exploreru
           href: data-explorer.md
     - name: Analýzy a BI s využitím Azure Synapse Linku
       items:
