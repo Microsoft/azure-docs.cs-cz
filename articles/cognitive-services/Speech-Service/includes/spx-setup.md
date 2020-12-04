@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: da88b8554d6c3214da9a386613538c237a318f73
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 6011bf90d5a97dcc027f8a9a0916c28226c5c354
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546895"
+ms.locfileid: "96584491"
 ---
 ## <a name="download-and-install"></a>Stažení a instalace
 
@@ -97,13 +97,12 @@ V systému Windows budou vaše příkazy začínat takto:
 docker run -it -v c:\spx-data:/data --rm msftspeech/spx
 ```
 
-V systému Linux nebo macOS se příkazy začnou podobat této:
-```shell   
-sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx
-```
+V systému Linux nebo macOS budou vaše příkazy vypadat jako v ukázce níže. Nahraďte `ABSOLUTE_PATH` absolutní cestou k připojenému adresáři. Tato cesta byla vrácena `pwd` příkazem v předchozí části. 
 
-> [!NOTE]
-> Nahraďte `/ABSOLUTE_PATH` absolutní cestou zobrazenou `pwd` příkazem v předchozí části.
+Pokud před nastavením klíče a oblasti spustíte tento příkaz, zobrazí se vám chyba s oznámením, že byste si měli klíč a oblast nastavit:
+```shell   
+sudo docker run -it -v ABSOLUTE_PATH:/data --rm msftspeech/spx
+```
 
 Chcete-li použít `spx` příkaz nainstalovaný v kontejneru, vždy zadejte úplný příkaz, následovaný parametry vaší žádosti.
 Například v systému Windows tento příkaz nastaví klíč:
@@ -115,26 +114,28 @@ docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCR
 > [!WARNING]
 > Při spuštění funkce Speech CLI v kontejneru Docker nemůžete použít mikrofon počítače. Můžete si však přečíst a Uložit zvukové soubory do místního připojeného adresáře. 
 
-### <a name="optional-create-a-command-line-shortcut"></a>Volitelné: Vytvoření zástupce příkazového řádku
+<!-- Need to troubleshoot issues with docker pull image
 
-Pokud používáte rozhraní příkazového řádku pro rozpoznávání řeči z kontejneru Docker v systému Linux nebo macOS, můžete vytvořit zástupce. 
+### Optional: Create a command line shortcut
 
-Pomocí těchto pokynů vytvořte zástupce:
-1. Otevřete `.bash_profile` v oblíbeném textovém editoru. Příklad:
+If you're running the the Speech CLI from a Docker container on Linux or macOS you can create a shortcut. 
+
+Follow these instructions to create a shortcut:
+1. Open `.bash_profile` with your favorite text editor. For example:
    ```shell
    nano ~/.bash_profile
    ```
-2. Dále přidejte tuto funkci do `.bash_profile` . Ujistěte se, že tuto funkci aktualizujete se správnou cestou k připojenému adresáři:
+2. Next, add this function to your `.bash_profile`. Make sure you update this function with the correct path to your mounted directory:
    ```shell   
    spx(){
-       sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx
+       sudo docker run -it -v ABSOLUTE_PATH:/data --rm msftspeech/spx
    }
    ```
-3. Zdroj profilu:
+3. Source your profile:
    ```shell
    source ~/.bash_profile
    ```
-4. Místo spuštění můžete hned `sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx` napsat jenom `spx` argumenty a. Příklad: 
+4. Now instead of running `sudo docker run -it -v ABSOLUTE_PATH:/data --rm msftspeech/spx`, you can just type `spx` followed by arguments. For example: 
    ```shell
    // Get some help
    spx help recognize
@@ -144,8 +145,8 @@ Pomocí těchto pokynů vytvořte zástupce:
    ```
 
 > [!WARNING]
-> Pokud změníte připojený adresář, na který se odkazuje Docker, budete muset funkci aktualizovat v `.bash_profile` .
-
+> If you change the mounted directory that Docker is referencing, you need to update the function in `.bash_profile`.
+--->
 ***
 
 ## <a name="create-subscription-config"></a>Vytvořit konfiguraci předplatného

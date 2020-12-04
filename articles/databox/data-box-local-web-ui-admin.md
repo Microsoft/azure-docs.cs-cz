@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/01/2020
+ms.date: 12/03/2020
 ms.author: alkohli
-ms.openlocfilehash: 751ac870996fa1a2805bb018c991f85525fd797d
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 90869af032a381cecd3e65f5d5b367156dd047c5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548940"
+ms.locfileid: "96576833"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Použití místního webového uživatelského rozhraní ke správě Data Box a Data Box Heavy
 
@@ -29,21 +29,25 @@ Pokud budete mít se zařízením jakékoliv problémy, můžete vytvořit ze sy
 
 Chcete-li vytvořit balíček pro podporu, proveďte následující kroky:
 
-1. V místním webovém uživatelském rozhraní klikněte na **kontaktovat podporu** a vyberte **vytvořit balíček pro podporu**.
+1. V místním webovém uživatelském rozhraní klikněte na **kontaktovat podporu**. Volitelně můžete vybrat **Zahrnout výpis paměti**. Pak vyberte **vytvořit balíček pro podporu**.
+
+    Výpis paměti je obsah paměti zařízení, uložený po selhání systému.
+
+    Možnost **Zahrnout výpis paměti** byste neměli vybírat, pokud se na ni nežádá podpora. Shromažďování balíčku pro podporu, který obsahuje výpis paměti, a jejich zahrnutí citlivých dat, trvá příliš dlouho.
 
     ![Vytvoření balíčku pro podporu 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
-2. Shromáždí se položky balíčku pro podporu. Tato operace trvá několik minut.
+    Shromáždí se položky balíčku pro podporu. Tato operace trvá několik minut, pokud zahrnete pouze systémové protokoly. Pokud zahrnete výpis paměti, trvá to hodně déle.
 
     ![Vytvoření balíčku pro podporu 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
-3. Po dokončení vytváření balíčku podpory vyberte **Stáhnout balíček pro podporu**.
+2. Po vytvoření balíčku podpory vyberte **Stáhnout balíček pro podporu**.
+
+    ![Vytvořit balíček pro podporu 3](media/data-box-local-web-ui-admin/create-support-package-3.png)
+
+3. Přejděte k umístění pro stahování a vyberte ho. Otevřete složku a zobrazte obsah.
 
     ![Vytvoření balíčku pro podporu 4](media/data-box-local-web-ui-admin/create-support-package-4.png)
-
-4. Přejděte k umístění pro stahování a vyberte ho. Otevřete složku a zobrazte obsah.
-
-    ![Vytvoření balíčku pro podporu 5](media/data-box-local-web-ui-admin/create-support-package-5.png)
 
 ## <a name="erase-local-data-from-your-device"></a>Mazání místních dat ze zařízení
 
@@ -72,6 +76,7 @@ Zařízení můžete vypnout nebo restartovat pomocí místního webového uživ
 Pokud chcete zařízení vypnout, proveďte následující kroky.
 
 1. V místním webovém uživatelském rozhraní přejděte na **Vypnout nebo restartovat**.
+
 2. Vyberte **vypnout**.
 
     ![Vypnutí Data Boxu 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
@@ -107,7 +112,7 @@ Než začnete, postupujte podle těchto kroků a Stáhněte soubory kusovníku n
 
     <!-- ![Select Download list of files](media/data-box-portal-admin/download-list-of-files.png) -->
 
-3. V Průzkumníkovi souborů uvidíte, že se generují samostatné seznamy souborů v závislosti na protokolu používaném pro připojení k zařízení a používaném typu Azure Storage.
+3. V Průzkumníkovi souborů se generují samostatné seznamy souborů v závislosti na protokolu používaném pro připojení k zařízení a používaném typu Azure Storage.
 
     <!-- ![Files for storage type and connection protocol](media/data-box-portal-admin/files-storage-connection-type.png) -->
     ![Soubory pro typ úložiště a protokol připojení](media/data-box-local-web-ui-admin/prepare-to-ship-5.png)
@@ -184,7 +189,7 @@ Při přípravě na dodávání se pro vaše data generují kontrolní součty v
 
 Výpočet kontrolního součtu během Příprava na odeslání je proveden pouze pro objednávky importu, nikoli pro objednávky exportu.
 
-Důrazně doporučujeme kontrolní součet nezakazovat, pokud to výrazně neovlivňuje výkon.
+Důrazně doporučujeme, abyste kontrolní součet nezakázali, pokud neovlivníte výkon vážně.
 
 1. V pravém horním rohu místního webového uživatelského rozhraní vašeho zařízení, přejít na **Nastavení**.
 
@@ -263,7 +268,7 @@ Povolení přenosu seznamů ACL pro soubory Azure:
 
 Ve výchozím nastavení používá Azure Data Box k šifrování protokol TLS (Transport Layer Security) 1,2, protože je bezpečnější než TSL 1,1. Pokud ale vy nebo vaši klienti používáte prohlížeč pro přístup k datům, která nepodporují protokol TLS 1,2, můžete povolit TLS 1,1.
 
-Další informace související s protokolem TLS najdete v tématu [Azure Data box Gateway Security](../databox-online/data-box-gateway-security.md).
+Další informace související s protokolem TLS najdete v tématu [Azure Data box Gateway Security](../databox-gateway/data-box-gateway-security.md).
 
 Povolení TLS 1,1 ve vašem zařízení Azure:
 

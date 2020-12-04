@@ -1,17 +1,15 @@
 ---
 title: Komunikace služby s ASP.NET Core
 description: Naučte se používat ASP.NET Core v bezstavových a stavových aplikacích Azure Service Fabric Reliable Services.
-author: vturecek
 ms.topic: conceptual
 ms.date: 10/12/2018
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 69423e7545178fd74ad44f5cab7b37b6f24b3577
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba5626d477bbd6aa07d89703cc37b157f4cfd4d5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022186"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576787"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>ASP.NET Core v Azure Service Fabric Reliable Services
 
@@ -35,7 +33,7 @@ Ve zbývající části tohoto článku se dozvíte, jak používat ASP.NET Core
 
 V Service Fabric jedna nebo víc instancí a replik služby běží v *procesu hostitele služby*: spustitelný soubor, který spouští váš kód služby. Vy, jako autor služby, vlastní hostitelský proces služby a Service Fabric ho aktivovat a monitorovat za vás.
 
-Tradiční ASP.NET (až do MVC 5) je těsně spojená se službou IIS prostřednictvím System.Web.dll. ASP.NET Core poskytuje oddělení mezi webovým serverem a webovou aplikací. Díky tomuto oddělení můžou být webové aplikace přenosné mezi různými webovými servery. Umožňuje taky *samoobslužné hostování*webových serverů. To znamená, že můžete spustit webový server ve vlastním procesu, a to na rozdíl od procesu, který je vlastněn vyhrazeným softwarem webového serveru, jako je IIS.
+Tradiční ASP.NET (až do MVC 5) je těsně spojená se službou IIS prostřednictvím System.Web.dll. ASP.NET Core poskytuje oddělení mezi webovým serverem a webovou aplikací. Díky tomuto oddělení můžou být webové aplikace přenosné mezi různými webovými servery. Umožňuje taky *samoobslužné hostování* webových serverů. To znamená, že můžete spustit webový server ve vlastním procesu, a to na rozdíl od procesu, který je vlastněn vyhrazeným softwarem webového serveru, jako je IIS.
 
 Aby bylo možné kombinovat službu Service Fabric a ASP.NET, a to buď jako spustitelný soubor hosta, nebo ve spolehlivé službě, musíte být schopni spustit ASP.NET v rámci procesu hostitele služby. Tato funkce umožňuje samoobslužné hostování ASP.NET Core.
 
@@ -322,7 +320,7 @@ new KestrelCommunicationListener(serviceContext, "ServiceEndpoint", (url, listen
 Pokud ServiceManifest.xml nepoužívá `Endpoint` konfiguraci, vynechejte název v `KestrelCommunicationListener` konstruktoru. V takovém případě bude používat dynamický port. Další informace najdete v další části.
 
 #### <a name="use-kestrel-with-a-dynamic-port"></a>Použití Kestrel s dynamickým portem
-Kestrel nemůže použít automatické přiřazování portů z `Endpoint` konfigurace v ServiceManifest.xml. Důvodem je to, že automatické přiřazování portů z `Endpoint` konfigurace přiřadí jedinečný port pro každý *hostitelský proces*a jeden hostitelský proces může obsahovat několik instancí Kestrel. Nefunguje s Kestrel, protože nepodporuje sdílení portů. Proto musí být každá instance Kestrel otevřená na jedinečném portu.
+Kestrel nemůže použít automatické přiřazování portů z `Endpoint` konfigurace v ServiceManifest.xml. Důvodem je to, že automatické přiřazování portů z `Endpoint` konfigurace přiřadí jedinečný port pro každý *hostitelský proces* a jeden hostitelský proces může obsahovat několik instancí Kestrel. Nefunguje s Kestrel, protože nepodporuje sdílení portů. Proto musí být každá instance Kestrel otevřená na jedinečném portu.
 
 Chcete-li použít dynamické přiřazování portů s Kestrel, vynechejte `Endpoint` konfiguraci v ServiceManifest.xml zcela a nepředávejte do konstruktoru název koncového bodu `KestrelCommunicationListener` , a to následujícím způsobem:
 

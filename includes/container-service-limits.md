@@ -2,22 +2,22 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: container-service
-author: dlepow
+author: mlearned
 ms.service: container-service
 ms.topic: include
 ms.date: 11/22/2019
-ms.author: danlep
+ms.author: mlearned
 ms.custom: include file
-ms.openlocfilehash: 32edd880e5e455393e60c87f4f963d71a3e59a20
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a42bba1b6524825aa571e4c18319b61b97829792
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025882"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96584611"
 ---
 | Prostředek | Omezení |
 | --- | :--- |
-| Maximální počet clusterů na předplatné | 100 |
+| Maximální počet clusterů na předplatné | 1000 |
 | Maximální počet uzlů na cluster se skupinami dostupnosti virtuálních počítačů a základní Load Balancer SKU  | 100 |
 | Maximální počet uzlů na cluster s Virtual Machine Scale Sets a [Standard Load BALANCER SKU][standard-load-balancer] | 1000 (100 uzlů na [fond uzlů][node-pool]) |
 | Maximální počet lusků na uzel: [základní sítě][basic-networking] s Kubenet | 110 |
