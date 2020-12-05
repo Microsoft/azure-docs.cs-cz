@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: c689c83e50a42885900f62d1a65d0aa75f36f2ec
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 188bc14de502640ae05f1d1eb55330d86cee50b4
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014018"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621475"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtuální partneři sítě WAN a umístění virtuálních rozbočovačů
 
@@ -60,7 +60,7 @@ Tito partneři mají **spravované nabídky aplikací** , které jsou teď dostu
 |[Barracuda Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overviewus/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overview)| [Průvodce nasazením Barracuda CloudGen WAN](https://campus.barracuda.com/product/cloudgenwan/doc/91980640/deployment/)|
 |[VWAN se směrovačem služby Cisco Cloud Service (CSR)](https://aka.ms/ciscoMarketPlaceOffer)| Během Public Preview služby Cisco Cloud Services (CSR) WAN do centra VWAN vyžaduje Cisco registraci koncového zákazníka jako zákazníka Cisco EFT (předčasných zkušebních verzí), a to odesláním e-mailu vwan_public_preview@external.cisco.com a vyžádáním Průvodce nasazením vManage. |
 
-Následující partneři jsou plánované k uvedení síťové virtuální zařízení v rámci virtuálních rozbočovačů v blízké budoucnosti: Citrix, odrážky Networks a VeloCloud.
+Následující partneři jsou plánované k uvedení síťové virtuální zařízení do virtuálního centra v blízké budoucnosti: Aviatrix, Citrix, VeloCloud a naopak sítě.
 
 ## <a name="locations"></a><a name="locations"></a>Umístění
 

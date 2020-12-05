@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/11/2020
-ms.openlocfilehash: 2cfd498f73646b0021d5fbb3e982dc82871ef35c
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.date: 12/04/2020
+ms.openlocfilehash: 87465ff381c62343a11c54130378b48580ca40e2
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026985"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621636"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapování režimu ladění toku dat
 
@@ -25,9 +25,9 @@ Azure Data Factory režim ladění toku dat umožňuje interaktivně sledovat tr
 
 ![Posuvník ladění](media/data-flow/debugbutton.png "Posuvník ladění")
 
-Jakmile posuvník zapnete, zobrazí se výzva, abyste vybrali konfiguraci prostředí Integration runtime, kterou chcete použít. Pokud je zvolená možnost AutoResolveIntegrationRuntime, provedou se cluster s osmi jádry obecného COMPUTE s 60 minutou až do živého času. Další informace o modulu runtime integrace toku dat najdete v tématu [výkon toku dat](concepts-data-flow-performance.md#ir).
+Jakmile posuvník zapnete, zobrazí se výzva, abyste vybrali konfiguraci prostředí Integration runtime, kterou chcete použít. Pokud je zvolená možnost AutoResolveIntegrationRuntime, provedou se cluster s osmi jádry obecného COMPUTE s výchozí 60-minutovou dobou provozu. Pokud chcete pro více nečinných týmů, než vyprší časový limit relace, použít více než jednu nečinný tým, můžete zvolit vyšší nastavení TTL. Další informace o modulu runtime integrace toku dat najdete v tématu [výkon toku dat](concepts-data-flow-performance.md#ir).
 
-![Ladění INFRAČERVENého výběru](media/data-flow/debugbutton2.png "Ladění INFRAČERVENého výběru")
+![Ladění INFRAČERVENého výběru](media/data-flow/debug-new-1.png "Ladění INFRAČERVENého výběru")
 
 Když je režim ladění zapnutý, budete interaktivně vytvářet tok dat s aktivním clusterem Spark. Po vypnutí ladění v Azure Data Factory dojde k ukončení relace. Měli byste si uvědomit, že hodinové poplatky vzniklé Azure Databricks v době, kdy máte zapnutou relaci ladění.
 
@@ -36,7 +36,7 @@ Ve většině případů je vhodné sestavovat toky dat v režimu ladění, abys
 ![Zobrazit relace ladění toku dat](media/iterative-development-debugging/view-dataflow-debug-sessions.png)
 
 > [!NOTE]
-> Každá relace ladění, kterou uživatel spustí z uživatelského rozhraní prohlížeče ADF, je nová relace se svým vlastním clusterem Spark. Pomocí zobrazení monitorování pro relace ladění výše můžete zobrazit a spravovat relace ladění na objekt pro vytváření.
+> Každá relace ladění, kterou uživatel spustí z uživatelského rozhraní prohlížeče ADF, je nová relace se svým vlastním clusterem Spark. Pomocí zobrazení monitorování pro relace ladění výše můžete zobrazit a spravovat relace ladění na objekt pro vytváření. Účtuje se vám každá hodina, po kterou se spouští každá relace ladění, včetně času TTL.
 
 ## <a name="cluster-status"></a>Stav clusteru
 

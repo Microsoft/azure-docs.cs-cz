@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f9471b6b465b63f48feb3bda82e7827308aae945
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: b62790fd8f01b7ffb2df4d242b97e8464c11399b
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575394"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621123"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Kurz: nastavení prostředí pro strojové učení na IoT Edge
 
@@ -217,12 +217,6 @@ Tento kurz je součástí sady, kde každý článek sestaví na práci, která 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto článku jsme vytvořili IoT Hub a nakonfigurovali trasu k účtu Azure Storage. V dalším kroku pošleme data ze sady simulovaných zařízení prostřednictvím IoT Hub do účtu úložiště. Později v tomto kurzu až nakonfigurujeme naše IoT Edge zařízení a moduly, budeme znovu navštěvovat trasy a v dotazu směrování budete hledat trochu víc.
-
-Další informace o krocích popsaných v této části Machine Learning v IoT Edge kurzu najdete v tématu:
-
-* [Základy Azure IoT](../iot-fundamentals/index.yml)
-* [Konfigurace směrování zpráv pomocí IoT Hub](../iot-hub/tutorial-routing.md)
-* [Vytvoření centra IoT pomocí Azure Portal](../iot-hub/iot-hub-create-through-portal.md)
 
 Pokračujte dalším článkem a vytvořte simulované zařízení, které chcete monitorovat.
 

@@ -3,15 +3,15 @@ title: Přehled řešení potíží s virtuálním počítačem s Windows – Az
 description: Přehled řešení potíží při nastavování prostředí virtuálních počítačů s Windows
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 06/05/2020
+ms.date: 12/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 171322fbec099aa9fafc36c4f951213b33007976
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d051594572f742b290867d12e0fb148f2abbf370
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009354"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621310"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-windows-virtual-desktop"></a>Řešení potíží s přehledem, zpětnou vazbou a podporou pro virtuální počítače s Windows
 
@@ -45,7 +45,7 @@ Pomocí následující tabulky můžete identifikovat a vyřešit problémy, se 
 | Připojování klientů                                                                    | Viz [připojení k virtuálním počítačům s Windows](troubleshoot-service-connection.md) a pokud to problém nevyřeší, přečtěte si téma [Konfigurace virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md). |
 | Reakce vzdálených aplikací nebo plochy                                      | Pokud jsou problémy svázané s konkrétní aplikací nebo produktem, obraťte se na tým, který je zodpovědný za daný produkt. |
 | Licenční zprávy a chyby                                                          | Pokud jsou problémy svázané s konkrétní aplikací nebo produktem, obraťte se na tým, který je zodpovědný za daný produkt. |
-| Problémy s metodami ověřování třetích stran | Ověřte, jestli váš poskytovatel třetí strany podporuje scénáře virtuálních počítačů s Windows, a přiblíží se k nim ohledně známých problémů. |
+| Problémy s metodami nebo nástroji pro ověřování třetích stran | Ověřte, jestli váš poskytovatel třetí strany podporuje scénáře virtuálních počítačů s Windows, a přiblíží se k nim ohledně známých problémů. |
 | Problémy s používáním Log Analytics pro virtuální počítače s Windows | V případě problémů se schématem diagnostiky [otevřete žádost o podporu Azure](https://azure.microsoft.com/support/create-ticket/).<br><br>Pro dotazy, vizualizaci nebo jiné problémy v Log Analytics v části Log Analytics vyberte příslušný typ problému. |
 | Problémy s používáním aplikací M365 | Obraťte se na centrum pro správu M365 s jedním z [možností pomocníka centra pro správu M365](/microsoft-365/admin/contact-support-for-business-products/). |
 

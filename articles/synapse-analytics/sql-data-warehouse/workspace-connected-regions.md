@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/11/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 13716210ae967c9d4a7f21fb5a6c4afdb9033be1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8a345c2feaeea933af3fdce591283716443fbfda
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466792"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621667"
 ---
 # <a name="enabling-synapse-workspace-features-on-a-dedicated-sql-pool-formerly-sql-dw-in-your-region"></a>Povolení funkcí pracovního prostoru synapse ve vyhrazeném fondu SQL (dříve SQL DW) ve vaší oblasti.
 
@@ -30,7 +30,7 @@ Následující tabulka shrnuje podle oblastí, ve které se možnost povolit fun
 | Indie – jih |31. března 2021 |
 | Indie – západ |31. března 2021 |
 | Švýcarsko – západ |31. března 2021 |
-| Spojené arabské emiráty sever |1\. června 2020 |Od 1. července 2020 |
+| Spojené arabské emiráty sever |31. března 2021 |
 
 ## <a name="next-steps"></a>Další kroky
 Začínáme s [pracovním prostorem synapse a nástrojem Studio](../get-started.md).

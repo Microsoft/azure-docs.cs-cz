@@ -1,14 +1,14 @@
 ---
 title: Správa projektů migrace ve velkém měřítku pomocí Azure Migrate
 description: Naučte se efektivně používat Azure Migrate na delegovaných zákaznických zdrojích.
-ms.date: 12/3/2020
+ms.date: 12/4/2020
 ms.topic: how-to
-ms.openlocfilehash: 184307814bd3ceae6047734946f79b0ba5cb2e10
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: d1a01149c80b30f279f7d68551946c3ffe404d5e
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96603253"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621565"
 ---
 # <a name="manage-migration-projects-at-scale-with-azure-migrate"></a>Správa projektů migrace ve velkém měřítku pomocí Azure Migrate
 
@@ -38,7 +38,7 @@ Tento přístup minimalizuje přepínání kontextu pro poskytovatele služeb pr
 
 Pracovní postup pro tento model bude vypadat přibližně takto:
 
-1. Zákazník je připojen [do Azure Lighthouse](onboard-customer.md). Pro identitu, která se bude používat s Azure Migrate, se vyžaduje předdefinovaná role přispěvatele.
+1. Zákazník je připojen [do Azure Lighthouse](onboard-customer.md). Pro identitu, která se bude používat s Azure Migrate, se vyžaduje předdefinovaná role přispěvatele. Příklad použití této role najdete v ukázkové šabloně [delegované-Resource-Management-azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) .
 1. Označený uživatel se přihlásí ke správě tenanta v Azure Portal a pak přejde na Azure Migrate. Tento uživatel [vytvoří Azure Migrate projekt](/migrate/create-manage-projects.md)a vybere odpovídající delegovaný odběr zákazníka.
 1. Uživatel pak [provede kroky pro zjišťování a posouzení](../../migrate/tutorial-discover-vmware.md).
 
@@ -60,13 +60,15 @@ Tento přístup umožňuje poskytovatelům služeb rychle spustit zjišťování
 
 Pracovní postup pro tento model bude vypadat přibližně takto:
 
-1. Zákazník je připojen [do Azure Lighthouse](onboard-customer.md). Pro identitu, která se bude používat s Azure Migrate, se vyžaduje předdefinovaná role přispěvatele.
+1. Zákazník je připojen [do Azure Lighthouse](onboard-customer.md). Pro identitu, která se bude používat s Azure Migrate, se vyžaduje předdefinovaná role přispěvatele. Příklad použití této role najdete v ukázkové šabloně [delegované-Resource-Management-azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) .
 1. Označený uživatel se přihlásí ke správě tenanta v Azure Portal a pak přejde na Azure Migrate. Tento uživatel [vytvoří Azure Migrate projekt](/migrate/create-manage-projects.md) v rámci předplatného patřícího ke správě tenanta.
 1. Uživatel pak [provede kroky pro zjišťování a posouzení](../../migrate/tutorial-discover-vmware.md). Místní virtuální počítače budou zjišťovány a posouzeny v rámci projektu migrace vytvořeného ve správě tenanta a pak z něj budou migrovány.
 
    Pokud spravujete více zákazníků na stejném hostiteli Hyper-V, můžete zjistit všechny úlohy najednou. Virtuální počítače specifické pro zákazníka mohou být vybrány ve stejné skupině, pak může být vytvořen odhad a lze provést migraci výběrem příslušného předplatného zákazníka jako cílového umístění. Není nutné omezit rozsah vyhledávání a můžete udržovat úplný přehled všech zákaznických úloh v jednom projektu migrace.
 
 1. Až budete připraveni, pokračujte v migraci tak, že vyberete předplatné delegovaného zákazníka jako cílové cílové umístění pro replikaci a migraci úloh. Nově vytvořené prostředky budou existovat v rámci předplatného zákazníka, zatímco data posouzení a prostředky týkající se projektu migrace zůstanou ve správě tenanta.
+
+Poznámka: před nasazením musíte upravit soubor parametrů tak, aby odrážel vaše prostředí. https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate
 
 ## <a name="partner-recognition-for-customer-migrations"></a>Rozpoznávání partnerů pro migrace zákazníků
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: a915b5a348e3167d2cf81906b19abd9850584ce9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 694f501efc565ed498c1c8d8e2e38326277e8605
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460969"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621412"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>Plánování spravované aplikace Azure pro nabídku aplikací Azure
 
@@ -32,7 +32,7 @@ Použití aplikace Azure: plán spravované aplikace, pokud jsou potřeba násle
 | ------------ | ------------- |
 | Předplatné Azure | Spravované aplikace musí být nasazeny do předplatného zákazníka, ale mohou být spravovány třetí stranou. |
 | Fakturace a měření | Prostředky jsou k dispozici v předplatném Azure zákazníka. Virtuální počítače, které používají platební model průběžných plateb, se účtují u zákazníka přes Microsoft a účtují se prostřednictvím předplatného Azure zákazníka. <br><br> V případě virtuálních počítačů využívajících vlastní licenci společnost Microsoft účtuje náklady na infrastrukturu, které se účtují v rámci předplatného zákazníka, ale poplatky za licence na software se zákazníky účtují přímo. |
-| Virtuální pevný disk kompatibilní s Azure (VHD) | Virtuální počítače musí být postavené na Windows nebo Linux. Další informace naleznete v tématu:<br> • [Vytvořte technický prostředek virtuálního počítače Azure](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (pro virtuální pevné disky Windows).<br> •  [Distribuce systému Linux schválené v Azure](../virtual-machines/linux/endorsed-distros.md) (pro virtuální pevné disky se systémem Linux). |
+| Virtuální pevný disk kompatibilní s Azure (VHD) | Virtuální počítače musí být postavené na Windows nebo Linux. Další informace najdete tady:<br> • [Vytvořte technický prostředek virtuálního počítače Azure](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (pro virtuální pevné disky Windows).<br> •  [Distribuce systému Linux schválené v Azure](../virtual-machines/linux/endorsed-distros.md) (pro virtuální pevné disky se systémem Linux). |
 | Přisuzování využití ze strany zákazníků | Všechny nové nabídky aplikací Azure musí zahrnovat i identifikátor GUID [poskytovatele využívání zákaznických zákazníků Azure](azure-partner-customer-usage-attribution.md) . Další informace o přidaných zákaznických využití a o tom, jak ji povolit, najdete v tématu věnovaném [přidělení zákaznického využívání Azure partnerovi](azure-partner-customer-usage-attribution.md). |
 | Balíček pro nasazení | Budete potřebovat balíček pro nasazení, který zákazníkům umožní nasadit váš plán. Pokud vytvoříte více plánů vyžadujících stejnou technickou konfiguraci, můžete použít stejný balíček. Podrobnosti najdete v další části: balíček pro nasazení. |
 |||
@@ -90,7 +90,7 @@ Ceny se nastavují v USD (USD = USA dolar) se převádějí do místní měny v�
 Přístup JIT vám umožní požádat o zvýšený přístup k prostředkům spravované aplikace pro účely řešení potíží nebo údržby. Vždy máte přístup k prostředkům jen pro čtení, ale v určitém časovém období můžete mít větší přístup. Další informace najdete v tématu [povolení a vyžádat přístup za běhu pro Azure Managed Applications](../azure-resource-manager/managed-applications/request-just-in-time-access.md).
 
 > [!NOTE]
-> Informace, které by měl uživatel vyvšimnout, i když skimmingBe aktualizuje `createUiDefinition.json` soubor, aby podporoval tuto funkci.
+> Nezapomeňte soubor aktualizovat tak, aby `createUiDefinition.json` podporoval tuto funkci.
 
 ## <a name="deployment-mode"></a>Režim nasazení
 

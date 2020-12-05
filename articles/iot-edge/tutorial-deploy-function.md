@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 45f990e5426516db5537319d07c11aa705e462e7
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 5b5d60a014cf63bd28f3097ac3131ad4c7018208
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534836"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621242"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Kurz: nasazení Azure Functions jako IoT Edgech modulů
 
@@ -36,7 +36,7 @@ Funkce Azure, kterou vytvoříte v tomto kurzu, filtruje data o teplotě vygener
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
 
@@ -68,7 +68,7 @@ Vytvořte šablonu řešení Functions v jazyce C#, kterou lze přizpůsobit vla
    | Pole | Hodnota |
    | ----- | ----- |
    | Vybrat složku | Zvolte umístění na vývojovém počítači, ve kterém VS Code vytvoří soubory řešení. |
-   | Zadejte název řešení | Zadejte popisný název vašeho řešení, třeba **FunctionSolution** , nebo přijměte výchozí nastavení. |
+   | Zadejte název řešení | Zadejte popisný název vašeho řešení, třeba **FunctionSolution**, nebo přijměte výchozí nastavení. |
    | Vyberte šablonu modulu | Vyberte možnost **Azure Functions-C#**. |
    | Zadejte název modulu | Zadejte název modulu **CSharpFunction**. |
    | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Image kontejneru je předem vyplněná z předchozího kroku. Položku **localhost: 5000** nahraďte hodnotou **přihlašovacího serveru** z služby Azure Container Registry. Přihlašovací server můžete načíst ze stránky přehled v registru kontejneru v Azure Portal. Výsledný řetězec vypadá jako \<registry name\> . azurecr.IO/CSharpFunction. |
@@ -82,7 +82,7 @@ V souboru prostředí jsou uložené přihlašovací údaje pro registr kontejne
 Rozšíření IoT Edge se pokusí načíst přihlašovací údaje registru kontejneru z Azure a naplnit je do souboru prostředí. Zkontrolujte, jestli jsou vaše přihlašovací údaje už zahrnuté. Pokud ne, přidejte je nyní:
 
 1. V průzkumníku VS Code otevřete soubor .env.
-2. Aktualizujte pole hodnotami **uživatelské jméno** a **heslo** , které jste zkopírovali z registru kontejneru Azure.
+2. Aktualizujte pole hodnotami **uživatelské jméno** a **heslo**, které jste zkopírovali z registru kontejneru Azure.
 3. Soubor uložte.
 
 ### <a name="select-your-target-architecture"></a>Vyberte cílovou architekturu.
@@ -237,7 +237,7 @@ Jinak můžete místní konfigurace a prostředky Azure vytvořené v tomto čl�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili modul Azure Functions s kódem k filtrování nezpracovaných dat generovaných vaším zařízením IoT Edge. Až budete připraveni vytvořit vlastní moduly, můžete získat další informace o [vývoji Azure IoT Edge Visual Studio Code](how-to-vs-code-develop-module.md).
+V tomto kurzu jste vytvořili modul Azure Functions s kódem k filtrování nezpracovaných dat generovaných vaším zařízením IoT Edge.
 
 Pokračujte dalšími kurzy, ve kterých se seznámíte s jinými způsoby, jak vám může Azure IoT Edge pomoct přeměnit data na obchodní informace na hraničním zařízení.
 

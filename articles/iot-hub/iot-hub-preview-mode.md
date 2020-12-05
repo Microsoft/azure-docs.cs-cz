@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: jlian
-ms.openlocfilehash: 5299a049ab2cc2246a861dd3fb81f466b56afad3
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 864870c4392b12477c321c86afd9da848120490c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96603299"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621701"
 ---
 # <a name="turn-on-preview-mode-for-iot-hub-to-try-select-new-features"></a>Zapněte režim náhledu pro IoT Hub a zkuste vybrat nové funkce.
 
@@ -66,7 +66,7 @@ Po vytvoření se v režimu náhledu vždy zobrazí tato IoT Hub zpráva, takže
 
 Nepoužívejte *IoT* hub v režimu náhledu pro produkci. Režim náhledu je určený *jenom* pro náhled vybraných funkcí uvedených v horní části této stránky. Některá další omezení pro režim náhledu IoT Hub jsou
 
-- Některé existující funkce IoT Hub, jako je například soukromý odkaz, spravovaná identita, datové proudy zařízení a převzetí služeb při selhání, můžou fungovat neočekávaně nebo vůbec.
+- Některé existující funkce IoT Hub, jako je filtr IP adres, privátní odkaz, spravovaná identita, datové proudy zařízení a převzetí služeb při selhání, můžou fungovat neočekávaně nebo vůbec.
 - Centrum IoT v režimu náhledu nejde změnit ani upgradovat na normální centrum IoT.
 - Nemůžeme zaručit normální [IoT Hub smlouvu SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/v1_2/) – nepoužívejte pro produkční prostředí.
 

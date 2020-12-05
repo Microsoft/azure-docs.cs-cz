@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 50cce15d14561bb1c8ebfdbbeeedd99dc8efcda1
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 37a989082b63dc101bb519fea1cc4ef16c76ae49
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532988"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621531"
 ---
 # <a name="optical-character-recognition-ocr"></a>optické rozpoznávání znaků (OCR),
 
@@ -147,7 +147,7 @@ Začněte s Počítačové zpracování obrazu REST API nebo se seznamte s [klie
 Operace čtení aktuálně podporuje extrakci rukopisného textu výhradně v angličtině.
 
 ## <a name="use-the-rest-api-and-sdk"></a>Použití REST API a sady SDK
-[REST API pro čtení 3. x](./QuickStarts/CSharp-hand-text.md) je upřednostňovanou možností pro většinu zákazníků kvůli snadné integraci a rychlé produktivitě mimo pole. Azure a služba Počítačové zpracování obrazu obsluhují požadavky na škálování, výkon, zabezpečení dat a dodržování předpisů a přitom se soustředit na splnění potřeb vašich zákazníků.
+[REST API pro čtení 3. x](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) je upřednostňovanou možností pro většinu zákazníků kvůli snadné integraci a rychlé produktivitě mimo pole. Azure a služba Počítačové zpracování obrazu obsluhují požadavky na škálování, výkon, zabezpečení dat a dodržování předpisů a přitom se soustředit na splnění potřeb vašich zákazníků.
 
 ## <a name="deploy-on-premise-with-docker-containers"></a>Nasazení v místním počítači pomocí kontejnerů Docker
 [Kontejner pro čtení Docker (Preview)](./computer-vision-how-to-install-containers.md) umožňuje nasadit nové možnosti optického rozpoznávání OCR ve vlastním místním prostředí. Kontejnery jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat.

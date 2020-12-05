@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 0fda0b659dd2500e811fac1f53c99a9987276185
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ef284661d44f700cf0b5282efcd2e6f7b94fa3b6
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537469"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621514"
 ---
 # <a name="azure-cache-for-redis-network-isolation-options"></a>Azure cache pro možnosti izolace sítě Redis 
 V tomto článku se dozvíte, jak určit nejlepší řešení pro izolaci sítě podle svých potřeb. Projdeme základy používání privátních odkazů Azure, vkládání Azure Virtual Network (VNet) a Azure Firewall pravidla s jejich výhodami a omezeními.  
@@ -22,7 +22,7 @@ Privátní propojení Azure poskytuje privátní připojení z virtuální sít�
 ### <a name="advantages"></a>Výhody
 * Podporováno pro instance Redis na úrovni Basic, Standard a Premium Azure cache. 
 * Pomocí [privátního odkazu Azure](../private-link/private-link-overview.md)se můžete připojit k instanci Azure cache z vaší virtuální sítě prostřednictvím privátního koncového bodu, kterému se přiřadí privátní IP adresa v podsíti v rámci virtuální sítě. V tomto případě jsou instance mezipaměti dostupné jak v rámci virtuální sítě, tak i veřejně.  
-* Po vytvoření privátního koncového bodu může být přístup k veřejné síti omezený pomocí `publicNetworkAccess` příznaku. Tento příznak je nastaven jako `Enabled` výchozí, což vám dává možnost povolení přístupu veřejného i privátního propojení k mezipaměti. Pokud je tato možnost nastavená na `Disabled` , povolí přístup jenom k privátnímu propojení. Hodnotu lze nastavit na žádost o `Disabled` opravu. Další informace najdete v tématu [Azure cache for Redis s privátním odkazem na Azure (Preview)](cache-private-link.md). 
+* Po vytvoření privátního koncového bodu může být přístup k veřejné síti omezený pomocí `publicNetworkAccess` příznaku. Tento příznak je nastaven jako `Disabled` výchozí, což umožní přístup pouze k privátnímu propojení. Můžete nastavit hodnotu na `Enabled` nebo `Disabled` pomocí žádosti o opravu. Další informace najdete v tématu [Azure cache for Redis s privátním odkazem na Azure (Preview)](cache-private-link.md). 
 * Všechny závislosti externích mezipamětí nebudou mít vliv na pravidla NSG virtuální sítě.
 
 ### <a name="limitations"></a>Omezení 

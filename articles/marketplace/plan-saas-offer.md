@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: d2d890db3c246ad7f3d0a56a3df264d5f78bd54d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5f7278a688147842b7dbfab79a20afea2b4a9288
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571126"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621599"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Postup plánování nabídky SaaS pro komerční tržiště
 
@@ -113,10 +113,10 @@ Pokud vaše nabídka SaaS je řešení IT (Azure Marketplace *) i obchodní* ře
 
 | Měřené fakturace | Veřejný plán | Soukromý plán | K dispozici v: |
 |---|---|---|---|
-| Ano             | Ano         | Ne           | Azure Marketplace a Azure Portal |
-| Ano             | Ano         | Ano          | Azure Marketplace a Azure Portal * |
-| Ano             | Ne          | Ano          | Pouze Azure Portal |
-| Ne              | Ne          | Ano          | Pouze Azure Portal |
+| Yes             | Yes         | No           | Azure Marketplace a Azure Portal |
+| Yes             | Yes         | Yes          | Azure Marketplace a Azure Portal * |
+| Yes             | No          | Yes          | Pouze Azure Portal |
+| No              | No          | Yes          | Pouze Azure Portal |
 |||||
 
 &#42; soukromý plán této nabídky bude k dispozici pouze prostřednictvím Azure Portal
@@ -149,7 +149,7 @@ Když [vytvoříte novou nabídku SaaS](create-new-saas-offer.md) v partnerském
 5. Podmínky použití
 6. Zásady ochrany osobních údajů
 7. Název nabídky
-8. Shrnutí
+8. Souhrn
 9. Popis
 10. Snímky obrazovky a videa
 11. dokumenty.
@@ -250,15 +250,15 @@ Následující příklad ukazuje vzorový rozpis nákladů a výběrů k předve
 | Společnost Microsoft vám zaplatí 80% vašich licenčních nákladů.<br>`*` Pro kvalifikované aplikace SaaS přináší společnost Microsoft 90% vašich licenčních nákladů.| $80,00 za měsíc<br>``*`` $90,00 za měsíc |
 |||
 
-**`*` Omezený poplatek za službu Marketplace** – u některých nabídek SaaS, které jste publikovali na komerčním tržišti, společnost Microsoft sníží poplatek za službu Marketplace z 20% (jak je popsáno v tématu smlouva Microsoft Publisher Agreement) na 10%. Aby vaše nabídky získaly nárok, vaše nabídky musí být určené společností Microsoft jako spoluprodejní motivovaní Azure. Nárok na získání omezeného servisního poplatku za měsíc musí být splněn nejméně pět (5) pracovních dnů před koncem každého kalendářního měsíce. Snížený poplatek za službu Marketplace platí také pro virtuální počítače Azure s motivovaní, spravované aplikace a jakékoli další kvalifikované IaaS nabídky, které jsou k dispozici prostřednictvím komerčního tržiště.
+**`*` Omezený poplatek za službu Marketplace** – u některých nabídek SaaS, které jste publikovali na komerčním tržišti, společnost Microsoft sníží poplatek za službu Marketplace z 20% (jak je popsáno v tématu smlouva Microsoft Publisher Agreement) na 10%. Aby vaše nabídky získaly nárok, vaše nabídky musí být určené společností Microsoft jako spoluprodejní motivovaní Azure. Nárok na získání omezeného servisního poplatku za měsíc musí být splněn nejméně pět (5) pracovních dnů před koncem každého kalendářního měsíce. Podrobnosti o způsobilosti spoluprodejních IP adres najdete v tématu [požadavky na stav společného prodeje](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Snížený poplatek za službu Marketplace platí také pro virtuální počítače Azure s motivovaní, spravované aplikace a jakékoli další kvalifikované IaaS nabídky, které jsou k dispozici prostřednictvím komerčního tržiště.
 
 ## <a name="additional-sales-opportunities"></a>Další prodejní příležitosti
 
 Můžete si vybrat, jestli se chcete zúčastnit marketingových a prodejních kanálů podporovaných společností Microsoft. Při vytváření vaší nabídky v partnerském centru se zobrazí dvě karty na konec procesu:
 
-- **Prodávejte dál prostřednictvím CSP**: tuto možnost použijte, pokud chcete, aby partneři poskytovatelé řešení Microsoft Cloud mohli své řešení znovu prodávat jako součást zahrnuté nabídky. Další informace najdete v tématu [program Cloud Solution Provider](cloud-solution-providers.md) .
+- **Prodávejte dál prostřednictvím CSP**: tuto možnost použijte, pokud chcete, aby partneři poskytovatelé řešení Microsoft Cloud mohli své řešení znovu prodávat jako součást zahrnuté nabídky. Další informace o tomto programu najdete v tématu [program Cloud Solution Provider](cloud-solution-providers.md).
 
-- **Spoluprodejní s Microsoftem**: Tato možnost umožňuje prodejcům Microsoftu zvážit, jaké řešení se svým zákazníkům nabízí při vyhodnocování vašich potřeb zákazníků. Podrobné informace o tom, jak připravit vaši nabídku k vyhodnocení, najdete v tématu [možnost společného prodeje v partnerském centru](commercial-marketplace-co-sell.md) .
+- **Spoluprodejní s Microsoftem**: Tato možnost umožňuje prodejcům Microsoftu zvážit, jaké řešení se svým zákazníkům nabízí při vyhodnocování vašich potřeb zákazníků. Podrobnosti o způsobilosti společného prodeje najdete v tématu [požadavky na stav společného prodeje](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Podrobné informace o tom, jak připravit vaši nabídku k vyhodnocení, najdete v tématu [možnost společného prodeje v partnerském centru](commercial-marketplace-co-sell.md).
 
 ## <a name="next-steps"></a>Další kroky
 

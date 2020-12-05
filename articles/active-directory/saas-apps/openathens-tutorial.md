@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 7754da168465c58c1481f355f3597a621a99609e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: fc2d1c5dca4265bc0f0c26dd0a6c62a7e1698a38
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522304"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621463"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s OpenAthens
 
@@ -102,7 +102,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
@@ -114,13 +114,13 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k OpenAthens.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **OpenAthens**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -136,7 +136,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Snímek obrazovky zobrazující stránku webu společnosti "OpenAthens" se zvolenými možnostmi "připojení" na kartě Správa.](./media/openathens-tutorial/tutorial_openathens_application1.png)
 
-1. Vyberte **SAML 1.1/2.0**a pak klikněte na tlačítko **Konfigurovat** .
+1. Vyberte **SAML 1.1/2.0** a pak klikněte na tlačítko **Konfigurovat** .
 
     ![Snímek obrazovky zobrazující typ místního ověřování systému dialog s "S A M L 1.1/2.0" a vybraným tlačítkem "konfigurovat".](./media/openathens-tutorial/tutorial_openathens_application2.png)
 
@@ -148,17 +148,17 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Konfigurace jednotného přihlašování](./media/openathens-tutorial/tutorial_openathens_application4.png)
 
-    a. V **mapování zobrazovaný název**vyberte **použít atribut**.
+    a. V **mapování zobrazovaný název** vyberte **použít atribut**.
 
-    b. Do textového pole **atribut zobrazovaného názvu** zadejte hodnotu `http://schema.microsoft.com/identity/claims/displayname` .
+    b. Do textového pole **atribut zobrazovaného názvu** zadejte hodnotu `http://schemas.microsoft.com/identity/claims/displayname` .
 
-    c. V **mapování jedinečného uživatele**vyberte **použít atribut**.
+    c. V **mapování jedinečného uživatele** vyberte **použít atribut**.
 
     d. Do textového pole **jedinečný atribut uživatele** zadejte hodnotu `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` .
 
-    e. V části **stav**zaškrtněte políčko všechna tři zaškrtávací políčka.
+    e. V části **stav** zaškrtněte políčko všechna tři zaškrtávací políčka.
 
-    f. V nástroji **vytvořit místní účty**vyberte možnost **automaticky**.
+    f. V nástroji **vytvořit místní účty** vyberte možnost **automaticky**.
 
     například Vyberte **Uložit změny**.
 
@@ -176,7 +176,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici OpenAthens, měli byste se automaticky přihlásit k OpenAthens, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 7cf18e2d375d7a45c3641876b8a3ed5974882927
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 87758100299eb170a7950a1a7a2c6bd2029b27fb
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010023"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621548"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Ověření a řešení potíží SAP HANA nastavení vysoké dostupnosti škálování na SLES 12 SP3 
 
@@ -45,6 +45,9 @@ Všechny testy pro SAP HANA škálování v kombinaci s SAP HANA systémové rep
 SUSE publikoval [podrobný popis tohoto nastavení optimalizovaného pro výkon][sles-hana-scale-out-ha-paper].
 
 U typů virtuálních počítačů, které jsou podporované pro SAP HANA škálování na více instancí, se podívejte na [SAP HANA certifikovaný adresář IaaS][sap-hana-iaas-list].
+
+> [!NOTE]
+> Tento článek obsahuje odkazy na *Hlavní* a *podřízené* výrazy, které Microsoft už nepoužívá. Po odebrání těchto podmínek ze softwaru je odebereme z tohoto článku.
 
 V kombinaci s více podsítěmi a virtuální síťové adaptéry a nastavením HSR došlo k technickým potížím se škálováním na více instancí SAP HANA. Je nutné použít nejnovější opravy SAP HANA 2,0, kde byl tento problém vyřešen. Podporovány jsou následující verze SAP HANA: 
 
