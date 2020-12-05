@@ -1,20 +1,20 @@
 ---
 title: Kurz – vytvoření spravované domény Azure Active Directory Domain Services | Microsoft Docs
 description: V tomto kurzu se naučíte, jak vytvořit a nakonfigurovat Azure Active Directory Domain Services spravovanou doménu pomocí Azure Portal.
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 53720b19daa436893073b4f40528a49add653ff3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 945c131394a0a3c6273f79044c8500a2feba70fe
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967235"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618140"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: vytvoření a konfigurace spravované domény Azure Active Directory Domain Services
 

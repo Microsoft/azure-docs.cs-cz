@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 4e256d97d055b56df8c917c841416e5c7eb52465
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 45bc3aaf5217c626e2593b4eda861eaace2a8be2
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573523"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620405"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>Plánování nabídky aplikací Azure pro komerční tržiště
 
@@ -120,7 +120,7 @@ Když vytvoříte novou nabídku aplikace Azure v partnerském centru, zadáte t
 4. Podmínky použití
 5. Adresa zásad ochrany osobních údajů (odkaz)
 6. Název nabídky
-7. Shrnutí
+7. Souhrn
 8. Popis
 9. Snímky obrazovky a videa
 
@@ -210,7 +210,7 @@ Tato konfigurace je nutná, pokud chcete použít [událost dávkového použit�
 Můžete si vybrat, jestli se chcete zúčastnit marketingových a prodejních kanálů podporovaných společností Microsoft. Při vytváření vaší nabídky v partnerském centru se zobrazí dvě karty na konec procesu:
 
 - **Prodávejte dál prostřednictvím CSP**: tuto možnost použijte, pokud chcete, aby partneři poskytovatelé řešení Microsoft Cloud mohli své řešení znovu prodávat jako součást zahrnuté nabídky. Další informace najdete v tématu [program Cloud Solution Provider](./cloud-solution-providers.md) .
-- **Spoluprodejní s Microsoftem**: Tato možnost umožňuje prodejcům Microsoftu zvážit, jaké řešení se svým zákazníkům nabízí při vyhodnocování vašich potřeb zákazníků. Podrobné informace o tom, jak připravit vaši nabídku k vyhodnocení, najdete v tématu [možnost společného prodeje v partnerském centru](commercial-marketplace-co-sell.md) . Další informace o marketingu vaší nabídky prostřednictvím kanálů partnerů Microsoft CSP najdete v tématu [poskytovatelé Cloud Solution Provider](cloud-solution-providers.md).
+- **Spoluprodejní s Microsoftem**: Tato možnost umožňuje prodejcům Microsoftu zvážit, jaké řešení se svým zákazníkům nabízí při vyhodnocování vašich potřeb zákazníků. Podrobné informace o tom, jak připravit vaši nabídku k vyhodnocení, najdete v tématu [možnost společného prodeje na komerčním webu Marketplace](commercial-marketplace-co-sell.md). Podrobnosti o požadavcích na společný prodej IP adres najdete v tématu [požadavky na stav společného prodeje](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Další informace o marketingu vaší nabídky prostřednictvím kanálů partnerů Microsoft CSP najdete v tématu [poskytovatelé Cloud Solution Provider](cloud-solution-providers.md).
 
 Další informace najdete v tématu věnovaném [růstu cloudového podnikání pomocí Azure Marketplace](https://azuremarketplace.microsoft.com/sell).
 

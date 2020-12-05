@@ -2,14 +2,14 @@
 title: Šifrování registru pomocí klíče spravovaného zákazníkem
 description: Přečtěte si o šifrování v klidovém prostředí služby Azure Container registry a o tom, jak zašifrovat registr Premium pomocí klíče spravovaného zákazníkem, který je uložený v Azure Key Vault
 ms.topic: article
-ms.date: 11/17/2020
+ms.date: 12/03/2020
 ms.custom: ''
-ms.openlocfilehash: 6dac2239f223b5dee6ec728833caa01562873210
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 708a42a4f965f484060d42d89ea4f535c4365a10
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95255016"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620430"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Šifrování registru pomocí klíče spravovaného zákazníkem
 
@@ -46,12 +46,9 @@ Když konfigurujete šifrování registru pomocí klíče spravovaného zákazn�
 
 * **Ruční aktualizace verze klíče** – pro použití konkrétní verze klíče pro šifrování registru zadejte tuto verzi klíče, pokud povolíte šifrování registru s klíčem spravovaným zákazníkem. Pokud je registr zašifrovaný pomocí konkrétní verze klíče, Azure Container Registry používá tuto verzi pro šifrování, dokud ručně neotočíte klíč spravovaný zákazníkem.
 
-> [!NOTE]
-> V současné době můžete pomocí rozhraní příkazového řádku Azure CLI nakonfigurovat registr tak, aby automaticky aktualizoval verzi klíče spravované zákazníkem. Pokud používáte portál k povolení šifrování, musíte ručně aktualizovat verzi klíče.
-
 Podrobnosti najdete v části [Výběr ID klíče s nebo bez verze klíče](#choose-key-id-with-or-without-key-version) a [verze aktualizace klíče](#update-key-version)dále v tomto článku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete použít kroky Azure CLI v tomto článku, potřebujete Azure CLI verze 2.2.0 nebo novější, nebo Azure Cloud Shell. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
@@ -252,7 +249,7 @@ Název identity použijete v pozdějších krocích.
 
 ### <a name="create-a-key-vault"></a>Vytvořte trezor klíčů.
 
-Postup vytvoření trezoru klíčů najdete v tématu [rychlý Start: vytvoření Azure Key Vault pomocí Azure Portal](../key-vault/general/quick-create-portal.md).
+Postup vytvoření trezoru klíčů najdete v tématu [rychlý Start: vytvoření trezoru klíčů pomocí Azure Portal](../key-vault/general/quick-create-portal.md).
 
 Při vytváření trezoru klíčů pro klíč spravovaný zákazníkem můžete na kartě **základy** povolit nastavení **ochrany vyprázdnění** . Toto nastavení pomáhá zabránit ztrátě dat způsobené náhodným odstraněním klíčů nebo trezoru klíčů.
 
@@ -279,13 +276,15 @@ Případně můžete použít [Azure RBAC pro Key Vault](../key-vault/general/rb
     1. Přiřaďte přístup k **spravované identitě přiřazené uživateli**.
     1. Vyberte název prostředku vaší spravované identity přiřazené uživatelem a vyberte **Uložit**.
 
-### <a name="create-key"></a>Vytvořit klíč
+### <a name="create-key-optional"></a>Vytvořit klíč (volitelné)
+
+Volitelně můžete vytvořit klíč v trezoru klíčů, který se použije k zašifrování registru. Pokud chcete vybrat konkrétní verzi klíče jako klíč spravovaný zákazníkem, postupujte podle těchto kroků. 
 
 1. Přejděte do svého trezoru klíčů.
 1. Vyberte **Nastavení**  >  **klíče**.
 1. Vyberte **+ Generovat/importovat** a zadejte jedinečný název pro klíč.
 1. Potvrďte zbývající výchozí hodnoty a vyberte **vytvořit**.
-1. Po vytvoření vyberte klíč a poznamenejte si aktuální verzi klíče.
+1. Po vytvoření vyberte klíč a pak vyberte aktuální verzi. Zkopírujte **identifikátor klíče** pro verzi klíče.
 
 ### <a name="create-azure-container-registry"></a>Vytvoření registru kontejneru Azure
 
@@ -293,10 +292,11 @@ Případně můžete použít [Azure RBAC pro Key Vault](../key-vault/general/rb
 1. Na kartě **základy** vyberte nebo vytvořte skupinu prostředků a zadejte název registru. V položce **SKU** vyberte **Premium**.
 1. Na kartě **šifrování** v poli **klíč spravovaný zákazníkem** vyberte **povoleno**.
 1. V části **Identita** vyberte spravovanou identitu, kterou jste vytvořili.
-1. V případě **šifrování** vyberte **vybrat z Key Vault**.
-1. V okně **Vybrat klíč z Azure Key Vault** vyberte Trezor klíčů, klíč a verzi, které jste vytvořili v předchozí části.
+1. V části **šifrování** vyberte jednu z následujících možností:
+    * Vyberte **vybrat z Key Vault** a vyberte existující Trezor klíčů a klíč, nebo **vytvořte nový**. Vybraný klíč není bez verzí a umožňuje automatické střídání klíčů.
+    * Vyberte **zadat identifikátor URI klíče** a přímo zadejte identifikátor klíče. Můžete poskytnout buď identifikátor URI klíče s verzí (pro klíč, který se musí otočit ručně) nebo identifikátor URI nepoužívaného klíče (což umožňuje automatické střídání klíčů). 
 1. Na kartě **šifrování** vyberte **zkontrolovat + vytvořit**.
-1. Vyberte **vytvořit** a vytvořte instanci registru.
+1. Vyberte **vytvořit** a nasaďte instanci registru.
 
 :::image type="content" source="media/container-registry-customer-managed-keys/create-encrypted-registry.png" alt-text="Vytvoření šifrovaného registru v Azure Portal":::
 
@@ -498,11 +498,11 @@ Pokud například chcete nakonfigurovat nový klíč:
 
 1. Na portálu přejděte do svého registru.
 1. V části **Nastavení** vyberte **Encryption**  >  **klíč pro změnu** šifrování.
-1. Vyberte **Vybrat klíč**.
 
     :::image type="content" source="media/container-registry-customer-managed-keys/rotate-key.png" alt-text="Otočit klíč v Azure Portal":::
-1. V okně **Vybrat klíč z Azure Key Vault** vyberte Trezor klíčů a klíč, který jste nakonfigurovali dříve, a v části **verze** vyberte **vytvořit novou**.
-1. V okně **vytvořit klíč** vyberte **Generovat** a pak **vytvořit**.
+1. V části **šifrování** vyberte jednu z následujících možností:
+    * Vyberte **vybrat z Key Vault** a vyberte existující Trezor klíčů a klíč, nebo **vytvořte nový**. Vybraný klíč není bez verzí a umožňuje automatické střídání klíčů.
+    * Vyberte **zadat identifikátor URI klíče** a přímo zadejte identifikátor klíče. Můžete poskytnout buď identifikátor URI klíče s verzí (pro klíč, který se musí otočit ručně) nebo identifikátor URI nepoužívaného klíče (což umožňuje automatické střídání klíčů).
 1. Dokončete výběr klíče a vyberte **Uložit**.
 
 ## <a name="revoke-key"></a>Odvolat klíč
@@ -574,7 +574,7 @@ Pokud se pokusíte odebrat uživatelem přiřazenou identitu z registru, který 
 Azure resource '/subscriptions/xxxx/resourcegroups/myGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry' does not have access to identity 'xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx' Try forcibly adding the identity to the registry <registry name>. For more information on bring your own key, please visit 'https://aka.ms/acr/cmk'.
 ```
  
-Nebudete také moci změnit (otočit) šifrovací klíč. Pokud k tomuto problému dojde, napřed znovu přiřaďte identitu pomocí identifikátoru GUID zobrazeného v chybové zprávě. Například:
+Nebudete také moci změnit (otočit) šifrovací klíč. Pokud k tomuto problému dojde, napřed znovu přiřaďte identitu pomocí identifikátoru GUID zobrazeného v chybové zprávě. Příklad:
 
 ```azurecli
 az acr identity assign -n myRegistry --identities xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx

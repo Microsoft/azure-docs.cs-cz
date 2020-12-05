@@ -1,7 +1,7 @@
 ---
 title: Vytvoření a Správa zásad skupiny v Azure AD Domain Services | Microsoft Docs
 description: Naučte se, jak upravit předdefinované objekty zásad skupiny (GPO) a vytvořit vlastní zásady ve Azure Active Directory Domain Services spravované doméně.
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -9,13 +9,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: deefcb66e05199896e8997d707a06e45f397adec
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: f1f2499c49c4adf16b632bc75c246a28330ad27b
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963733"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619381"
 ---
 # <a name="administer-group-policy-in-an-azure-active-directory-domain-services-managed-domain"></a>Správa Zásady skupiny ve spravované doméně Azure Active Directory Domain Services
 
@@ -53,8 +53,8 @@ Pokud chcete vytvořit a nakonfigurovat objekt Zásady skupiny (GPO), musíte na
 1. Přihlaste se ke svému VIRTUÁLNÍmu počítači pro správu. Postup, jak se připojit pomocí Azure Portal, najdete v tématu [připojení k virtuálnímu počítači s Windows serverem][connect-windows-server-vm].
 1. Když se přihlásíte k virtuálnímu počítači, **Správce serveru** by se měly otevřít ve výchozím nastavení. Pokud ne, v nabídce **Start** vyberte **Správce serveru**.
 1. V podokně *řídicí panel* v okně **Správce serveru** vyberte **Přidat role a funkce**.
-1. Na stránce **než začnete** v *Průvodci přidáním rolí a funkcí*vyberte **Další**.
-1. Pro *typ instalace*ponechte zaškrtnutou možnost instalace na základě **rolí nebo na základě funkcí** a vyberte **Další**.
+1. Na stránce **než začnete** v *Průvodci přidáním rolí a funkcí* vyberte **Další**.
+1. Pro *typ instalace* ponechte zaškrtnutou možnost instalace na základě **rolí nebo na základě funkcí** a vyberte **Další**.
 1. Na stránce **Výběr serveru** zvolte aktuální virtuální počítač z fondu serverů, například *myvm.aaddscontoso.com*, a pak vyberte **Další**.
 1. Na stránce **role serveru** klikněte na **Další**.
 1. Na stránce **funkce** vyberte funkci **správy Zásady skupiny** .
@@ -80,7 +80,7 @@ Existují dva předdefinované Zásady skupiny objekty (GPO) ve spravované dom�
 
 1. V konzole **pro správu Zásady skupiny** rozbalte uzel **doménová struktura: aaddscontoso.com** . Dále rozbalte uzly **domény** .
 
-    Pro *počítače s AADDC* a *uživatele AADDC*existují dva předdefinované kontejnery. U každého z těchto kontejnerů je použit výchozí objekt zásad skupiny.
+    Pro *počítače s AADDC* a *uživatele AADDC* existují dva předdefinované kontejnery. U každého z těchto kontejnerů je použit výchozí objekt zásad skupiny.
 
     ![Předdefinované objekty zásad skupiny použité pro výchozí kontejnery AADDC počítače a AADDC Users](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
 

@@ -5,15 +5,15 @@ description: Tento článek poskytuje přehled firewallu webových aplikací (WA
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 09/16/2020
+ms.date: 12/04/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: f15a739904c28361a60210a0cc4606c7048d0f53
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 36f04b02774a01814811ea131388629de27e9f07
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518970"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621021"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Co je firewall webových aplikací Azure v Azure Application Gateway?
 
@@ -43,7 +43,7 @@ Tato část popisuje základní výhody, které WAF Application Gateway poskytuj
 
 * Chraňte své webové aplikace před škodlivými robotyy pomocí IP reputace RuleSet (Preview).
 
-### <a name="monitoring"></a>Monitorování
+### <a name="monitoring"></a>Sledování
 
 * Sledujte útoky na webové aplikace pomocí protokolu WAF v reálném čase. Protokol je integrovaný do [Azure monitor](../../azure-monitor/overview.md) a umožňuje sledovat výstrahy WAF a snadno sledovat trendy.
 
@@ -136,14 +136,14 @@ V režimu bodování anomálií není přenos, který odpovídá libovolnému pr
 |Závažnost  |Hodnota  |
 |---------|---------|
 |Kritické     |5|
-|Chybová        |4|
+|Chyba        |4|
 |Upozornění      |3|
 |Šestiměsíční       |2|
 
 Pro skóre anomálií pro blokování provozu existuje prahová hodnota 5. Proto je pro Application Gateway WAF k blokování požadavku jedna *kritická* pravidla dostatečná, a to i v režimu prevence. Ale jedna shoda pravidla *Upozornění* zvyšuje jenom skóre anomálií o 3, což není dostačující pro blokování provozu.
 
 > [!NOTE]
-> Zpráva zaznamenaná v případě, že pravidlo WAF odpovídá provozu, zahrnuje hodnotu akce "blokováno". Provoz je ale ve skutečnosti zablokovaný jenom pro skóre anomálií 5 nebo vyšší.  
+> Zpráva zaznamenaná v případě, že pravidlo WAF odpovídá provozu, zahrnuje hodnotu akce "blokováno". Provoz je ale ve skutečnosti zablokovaný jenom pro skóre anomálií 5 nebo vyšší. Další informace najdete v tématu [řešení potíží s bránou firewall webových aplikací (WAF) pro Azure Application Gateway](web-application-firewall-troubleshoot.md#understanding-waf-logs). 
 
 ### <a name="waf-monitoring"></a>Monitorování WAF
 
@@ -221,7 +221,7 @@ Application Gateway WAF poskytuje podrobné hlášení o každé zjištěné hro
 
 Cenové modely se liší od WAF_v1 a WAF_v2 SKU. Další informace najdete na stránce s [cenami Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/) . 
 
-## <a name="whats-new"></a>Co je nového
+## <a name="whats-new"></a>Novinky
 
 Další informace o tom, co je nového u brány firewall webových aplikací Azure, najdete v tématu [Aktualizace Azure](https://azure.microsoft.com/updates/?category=networking&query=Web%20Application%20Firewall).
 

@@ -2,7 +2,7 @@
 title: Běžné scénáře nasazení pro Azure AD Domain Services | Microsoft Docs
 description: Přečtěte si o některých běžných scénářích a případech použití Azure Active Directory Domain Services k poskytnutí hodnoty a splnění obchodních potřeb.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: c5216ec9-4c4f-4b7e-830b-9d70cf176b20
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/14/2020
-ms.author: joflore
-ms.openlocfilehash: 6c63609642b8dd8d1269222b06b57033d84ad8a0
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: d33698ed2f9ac53aae3c836acd54f19a4b72ceef
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967898"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619024"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Běžné případy použití a scénáře pro Azure Active Directory Domain Services
 

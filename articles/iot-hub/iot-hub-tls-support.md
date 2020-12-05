@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: jlian
-ms.openlocfilehash: ddb89f60c9fe380012c299afaafb6046bf6849c9
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: f4438aebcb81d665a19a595ac7ade4fea27fc43f
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602746"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621004"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>Podpora protokolu TLS (Transport Layer Security) v IoT Hub
 
@@ -22,7 +22,7 @@ TLS 1,0 a 1,1 se považují za starší verze a plánuje se jejich vyřazení. D
 
 ## <a name="iot-hubs-server-tls-certificate"></a>Certifikát TLS serveru IoT Hub
 
-Během protokolu TLS handshake IoT Hub prezentuje certifikát serveru RSA pro připojení klientů. Kořenovou certifikační autoritou Baltimore CyberTrust. V poslední době došlo ke změně v emitentech novými zprostředkujícími certifikačními autoritami (ICAs). Další informace najdete v tématu [IoT Hub aktualizace certifikátu TLS](https://azure.microsoft.com/updates/iot-hub-tls-certificate-update/) .
+Během protokolu TLS handshake IoT Hub prezentuje certifikát serveru RSA pro připojení klientů. Kořenovou certifikační autoritou Baltimore CyberTrust. Nedávno jsme zavedli změnu certifikátu serveru TLS tak, aby byl nyní vydán novými zprostředkujícími certifikačními autoritami (ICA). Další informace najdete v tématu [IoT Hub aktualizace certifikátu TLS](https://azure.microsoft.com/updates/iot-hub-tls-certificate-update/).
 
 ### <a name="elliptic-curve-cryptography-ecc-server-tls-certificate-preview"></a>Certifikát TLS serveru s protokolem ECC (ve verzi Preview)
 
@@ -31,7 +31,7 @@ Certifikát TLS serveru IoT Hub ECC je k dispozici pro verzi Public Preview. I k
 Pro náhled certifikátu serveru IoT Hub ECC:
 
 1. [Vytvořte nové centrum IoT s režimem náhledu zapnuto](iot-hub-preview-mode.md).
-1. [Nakonfigurujte klienta](#tls-configuration-for-sdk-and-iot-edge) tak, aby zahrnoval *jenom* šifrovací sady ECDSA a *vyloučil* žádné z nich. Toto jsou šifrovací sady pro certifikát ECC verze Public Preview:
+1. [Nakonfigurujte klienta](#tls-configuration-for-sdk-and-iot-edge) tak, aby zahrnoval *jenom* šifrovací sady ECDSA a *vyloučil* žádné z nich. Toto jsou podporované šifrovací sady pro certifikát ECC verze Public Preview:
     - `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`
     - `TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`
     - `TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256`
@@ -133,7 +133,7 @@ Pomocí této funkce lze zadat maximální délku fragmentu nešifrovaného text
 Oficiální podpora sady SDK pro tuto funkci veřejné verze Preview není zatím k dispozici. Začněte tím, že
 
 1. [Vytvořte nové centrum IoT s režimem náhledu zapnuto](iot-hub-preview-mode.md).
-1. Nakonfigurujte klienta tak, aby byl nastavený `SSL_CTX_set_tlsext_max_fragment_length` na jednu z těchto hodnot: 2 ^ 9, 2 ^ 10, 2 ^ 11 a 2 ^ 12.
+1. Při použití OpenSSL zavolejte [SSL_CTX_set_tlsext_max_fragment_length](https://manpages.debian.org/testing/libssl-doc/SSL_CTX_set_max_send_fragment.3ssl.en.html) a určete velikost fragmentu.
 1. Připojte klienta k IoT Hub verze Preview.
 
 ## <a name="next-steps"></a>Další kroky

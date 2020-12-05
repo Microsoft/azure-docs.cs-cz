@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f0695af6922182aa8be7acfb4b0a931bed35ef7d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1927ec00df67522563fb063f2cb127fee4c0bcbf
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959301"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621038"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Kurz: posílání dat přes transparentní bránu
 
@@ -24,7 +24,7 @@ Sledujeme operace IoT Edge zařízení, zatímco simulované zařízení odesíl
 
 Tento krok obvykle provádí vývojář cloudu nebo zařízení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Každý článek v sérii vychází z práce v předchozím článku. Pokud jste dorazili přímo do tohoto článku, přejděte na [první článek](tutorial-machine-learning-edge-01-intro.md) v řadě.
 
@@ -237,10 +237,7 @@ Pokud plánujete prozkoumat prostředky používané v tomto uceleném kurzu, po
 
 V tomto článku jsme použili náš vývojový virtuální počítač pro simulaci zařízení, které odesílá senzor a provozní data do našeho IoT Edge zařízení. Ověřili jsme, že moduly v zařízení směrované, klasifikované, zachované a nahrály data pomocí prověření operace hraničního zařízení v reálném čase a prohlížením souborů odeslaných do účtu úložiště.
 
-Další informace najdete na následujících stránkách:
+Pokud chcete pokračovat ve získávání možností IoT Edge, zkuste tento kurz dál:
 
 > [!div class="nextstepaction"]
-> [Připojení podřízeného zařízení k bráně služby Azure IoT Edge](how-to-connect-downstream-device.md)
-
-> [!div class="nextstepaction"]
-> [Ukládání dat na hraničních zařízeních pomocí Azure Blob Storage v IoT Edge (Preview)](how-to-store-data-blob.md)
+> [Vytvoření hierarchie zařízení IoT Edge (Preview)](tutorial-nested-iot-edge.md?view=iotedge-2020-11&preserve-view=true)

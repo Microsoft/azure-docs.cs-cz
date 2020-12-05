@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b9ed43019e7af0cb810c3e0fc849281a458a43e1
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 426cf78f6b87acf1d8c7551b0b0a6172a30167b1
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023629"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621091"
 ---
 # <a name="how-to-use-batch-transcription"></a>Použití dávkového přepisu
 
@@ -39,7 +39,7 @@ Můžete zkontrolovat a otestovat podrobné rozhraní API, které je k dispozici
 Úlohy dávkového přepisu jsou plánovány na základě optimálního úsilí.
 Nemůžete odhadnout, kdy se úloha změní do běžícího stavu, ale v rámci normálního zatížení systému by se měla vyskytnout během několika minut. Ve spuštěném stavu dojde k přepisu rychleji než rychlost přehrávání zvukového běhu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Stejně jako u všech funkcí služby pro rozpoznávání řeči vytvoříte pomocí [příručky Začínáme](overview.md#try-the-speech-service-for-free)klíč předplatného z [Azure Portal](https://portal.azure.com) .
 
@@ -214,7 +214,7 @@ Každý soubor výsledků přepisu má tento formát:
       "duration": "PT1.59S",            // audio duration of this phrase, ISO 8601 encoded duration
       "offsetInTicks": 700000.0,        // offset in audio of this phrase in ticks (1 tick is 100 nanoseconds)
       "durationInTicks": 15900000.0,    // audio duration of this phrase in ticks (1 tick is 100 nanoseconds)
-      
+
       // possible transcriptions of the current phrase with confidences
       "nBest": [
         {
@@ -224,7 +224,7 @@ Každý soubor výsledků přepisu má tento formát:
           "itn": "hello world",
           "maskedITN": "hello world",
           "display": "Hello world.",
-          
+
           // if wordLevelTimestampsEnabled is `true`, there will be a result for each word of the phrase, otherwise this property is not present
           "words": [
             {
@@ -245,7 +245,7 @@ Každý soubor výsledků přepisu má tento formát:
             }
           ]
         }
-      ]    
+      ]
     }
   ]
 }

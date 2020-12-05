@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: b54e965188be51ec54110bb85d8cda8f01256836
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 461f9354bb3a6eae0af186de8fe9f39c6b5fff2c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94370077"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620915"
 ---
 # <a name="how-to-test-and-publish-an-azure-application-offer"></a>Postup testování a publikování nabídky aplikací Azure
 
@@ -28,7 +28,7 @@ Tento článek vysvětluje, jak pomocí partnerského centra odeslat nabídku ap
     - **Nespuštěno** – stránka je neúplná.
     - **Nedokončeno** – stránka neobsahuje požadované informace nebo obsahuje chyby, které je třeba opravit. Budete se muset vrátit na stránku a aktualizovat ji.
     - **Dokončit** – stránka je dokončená. Byla zadána všechna požadovaná data a nejsou k dispozici žádné chyby.
-1. Pokud má kterákoli z těchto stránek stav jiný než **úplný** , vyberte název stránky, opravte problém, uložte stránku a pak znovu vyberte **zkontrolovat a publikovat** , abyste se vrátili na tuto stránku.
+1. Pokud má kterákoli z těchto stránek stav jiný než **úplný**, vyberte název stránky, opravte problém, uložte stránku a pak znovu vyberte **zkontrolovat a publikovat** , abyste se vrátili na tuto stránku.
 1. Až budou všechny stránky dokončené, poskytněte v poli **poznámky k certifikaci** pokyny k testování certifikačního týmu, aby se zajistilo správné testování vaší aplikace. Poskytněte jakékoli doplňkové poznámky užitečné pro porozumění vaší aplikaci.
 1. Chcete-li spustit proces publikování pro vaši nabídku, vyberte možnost **publikovat**. Zobrazí se stránka s **přehledem nabídky** a zobrazí se **stav publikování** nabídky.
 
@@ -72,4 +72,4 @@ Pokud máte v jednom nebo několika krocích publikování chyby, opravte je je�
 ## <a name="next-step"></a>Další krok
 
 - [Přístup k analytickým sestavám pro komerční tržiště v partnerském centru](partner-center-portal/analytics.md)
-- Naučte se, [jak nabízet nabídku aplikací Azure](create-new-azure-apps-offer-marketing.md) prostřednictvím společného prodeje s Microsoftem a prodávat prostřednictvím programů CSP.
+- Naučte se, [Jak prodávat nabídku aplikací Azure](create-new-azure-apps-offer-marketing.md) prostřednictvím společného prodeje s Microsoftem a prodávat prostřednictvím programů CSP.

@@ -1,20 +1,26 @@
 ---
 title: Přehled Azure Functions
-description: Přečtěte si, jak Azure Functions může pomáhat vytvářet škálovatelné aplikace bez serveru.
+description: Přečtěte si, jak Azure Functions můžou přispět k vytváření robustních aplikací bez serveru.
 author: craigshoemaker
 ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperfq2
-ms.openlocfilehash: 8b836ac8bd2255abf9a94e532a0599994c3ede89
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 269d911c13cbc59a054c5548e106780d630c8e2b
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608248"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620864"
 ---
 # <a name="introduction-to-azure-functions"></a>Úvod do Azure Functions
+
+Azure Functions je řešení bez serveru, které umožňuje psát méně kódu, udržovat méně infrastruktury a ušetřit náklady. V případě, že se nebudete muset starat o nasazení a údržbu serverů, cloudová infrastruktura poskytuje všechny aktuální servery potřebné k zachování spuštěných aplikací.
+
+Zaměřte se na části kódu, které jsou pro vás nejvhodnější, a Azure Functions zpracuje zbytek.<br /><br />
+
+> [!VIDEO https://www.youtube.com/embed/8-jz5f_JyEQ]
 
 Často vytváříme systémy, které reagují na řadu kritických událostí. Bez ohledu na to, jestli vytváříte webové rozhraní API, reagujete na změny v databázi, zpracováváte datové proudy IoT nebo dokonce spravujete fronty zpráv – každá aplikace potřebuje způsob, jak spustit nějaký kód, když dojde k těmto událostem.
 

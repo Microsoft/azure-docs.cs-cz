@@ -2,20 +2,20 @@
 title: Vymezená synchronizace pomocí prostředí PowerShell pro Azure AD Domain Services | Microsoft Docs
 description: Naučte se používat Azure AD PowerShell ke konfiguraci synchronizace s vymezeným oborem z Azure AD do spravované domény Azure Active Directory Domain Services.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/24/2020
-ms.author: joflore
-ms.openlocfilehash: dc6ebb88440ecdccc3ea78d85f0b6186100da01a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: c078117baf84d7dbfaaaa2b569abb8a5f5c67e6d
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967879"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619007"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-azure-ad-powershell"></a>Konfigurace vymezené synchronizace z Azure AD na Azure Active Directory Domain Services pomocí Azure AD PowerShellu
 
@@ -175,7 +175,7 @@ Změna rozsahu synchronizace způsobí, že spravovaná doména znovu synchroniz
 
 Chcete-li upravit seznam skupin, jejichž uživatelé mají být synchronizováni do spravované domény, spusťte `Select-GroupsToSync.ps1` skript a zadejte nový seznam skupin pro synchronizaci.
 
-V následujícím příkladu skupiny pro synchronizaci již nezahrnují *GroupName2*a teď obsahují *GroupName3*.
+V následujícím příkladu skupiny pro synchronizaci již nezahrnují *GroupName2* a teď obsahují *GroupName3*.
 
 > [!WARNING]
 > V seznamu skupin pro účely vymezené synchronizace musíte zahrnout skupinu *správců řadiče domény AAD* . Pokud tuto skupinu nezadáte, je spravovaná doména nepoužitelná.

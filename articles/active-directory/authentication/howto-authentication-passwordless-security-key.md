@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d9c4dff1e4a3ba7c7a2b11311e97eb5e66a1585
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8530b74a63f4e5e2c04ff95a0106b896102dda2c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994243"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618089"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Povolit přihlašování k bezpečnostnímu klíči s nezabezpečenými hesly (Preview)
 
@@ -29,7 +29,7 @@ Tento dokument se zaměřuje na povolení ověřování pomocí hesla založené
 
 ## <a name="requirements"></a>Požadavky
 
-- [Multi-Factor Authentication Azure AD](howto-mfa-getstarted.md)
+- [Azure AD Multi-Factor Authentication](howto-mfa-getstarted.md)
 - Povolit [souhrnnou registraci informací o zabezpečení ve verzi Preview](concept-registration-mfa-sspr-combined.md)
 - Kompatibilní [klíče zabezpečení FIDO2](concept-authentication-passwordless.md#fido2-security-keys)
 - Operace WebAuthN vyžaduje Windows 10 verze 1903 nebo vyšší * *
@@ -38,9 +38,9 @@ Chcete-li použít klíče zabezpečení pro přihlášení k webovým aplikací
 
 ## <a name="prepare-devices-for-preview"></a>Příprava zařízení pro verzi Preview
 
-Zařízení připojená k Azure AD, na kterých máte pilotní nasazení, musí používat Windows 10 verze 1909 nebo vyšší. Nejlepší prostředí je ve Windows 10 verze 1903 nebo vyšší.
+Pro zařízení připojená k Azure AD je nejlepší prostředí ve Windows 10 verze 1903 nebo vyšší.
 
-Hybridní zařízení připojená k Azure AD musí používat Windows 10 verze 2004 nebo novější.
+Hybridní zařízení připojená k Azure AD musí používat Windows 10 verze 2004 nebo vyšší.
 
 ## <a name="enable-passwordless-authentication-method"></a>Povolit metodu ověřování nejenom pro hesla
 
@@ -50,7 +50,7 @@ Funkce registrace pro metody ověřování nevyužívající hesla se spoléhaj�
 
 ### <a name="enable-fido2-security-key-method"></a>Povolit metodu klíče zabezpečení FIDO2
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Přejděte na **Azure Active Directory**  >  zásady **ověřování**  >  **metody** ověřování  >  **(Preview)**.
 1. V části **klíč zabezpečení FIDO2** metody vyberte následující možnosti:
    1. **Povolit** – Ano nebo ne

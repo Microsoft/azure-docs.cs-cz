@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: af38f68a9709b21989ba787fb5b2c623e07dc440
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 85080c018749f9aab716eff0a4527363da987007
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541279"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620473"
 ---
 # <a name="what-is-azure-machine-learning"></a>Co je Azure Machine Learning?
 
@@ -49,7 +49,7 @@ Azure Machine Learning poskytuje vývojářům a odborníkům přes data, kteř�
 
 + + [Mnohé modely řešení](https://aka.ms/many-models) (Preview) jsou sestavené na Azure Machine Learning a umožňují výuku, provozování a správu stovek nebo dokonce tisíců modelů strojového učení.
 
-+ [Rozšíření editoru Visual Studio Code](tutorial-setup-vscode-extension.md)
++ [Rozšíření Machine Learning pro uživatele Visual Studio Code](tutorial-setup-vscode-extension.md)
 
 + [Machine Learning CLI](reference-azure-machine-learning-cli.md)
 
@@ -111,10 +111,10 @@ Pokud chcete začít používat Azure Machine Learning, přečtěte si [Další 
 
 Azure Machine Learning funguje s ostatními službami na platformě Azure a integruje se s open source nástroji, jako je třeba Git a MLFlow.
 
-+ Výpočetní cíle, jako je __Služba Azure Kubernetes__ , __Azure Container Instances__ , __Azure Databricks__ , __Azure Data Lake Analytics__ a __Azure HDInsight__. Další informace o výpočetních cílech najdete v tématu [co jsou výpočetní cíle?](concept-compute-target.md).
++ Výpočetní cíle, jako je __Služba Azure Kubernetes__, __Azure Container Instances__, __Azure Databricks__, __Azure Data Lake Analytics__ a __Azure HDInsight__. Další informace o výpočetních cílech najdete v tématu [co jsou výpočetní cíle?](concept-compute-target.md).
 + __Azure Event Grid__. Další informace najdete v tématu věnovaném [využívání Azure Machine Learningch událostí](./how-to-use-event-grid.md).
 + __Azure monitor__. Další informace najdete v tématu [monitorování Azure Machine Learning](monitor-azure-machine-learning.md).
-+ Úložiště dat, jako jsou __účty Azure Storage__ , __Azure Data Lake Storage__ , __Azure SQL Database__ , __Azure Database for PostgreSQL__ a __Azure Open DataSet__. Další informace najdete v tématech [přístup k datům ve službě Azure Storage Services](how-to-access-data.md) a [vytváření datových sad pomocí Azure Open DataSets](how-to-create-register-datasets.md).
++ Úložiště dat, jako jsou __účty Azure Storage__, __Azure Data Lake Storage__, __Azure SQL Database__, __Azure Database for PostgreSQL__ a __Azure Open DataSet__. Další informace najdete v tématech [přístup k datům ve službě Azure Storage Services](how-to-access-data.md) a [vytváření datových sad pomocí Azure Open DataSets](how-to-create-register-datasets.md).
 + __Virtuální sítě Azure__. Další informace najdete v tématu [Přehled izolace a ochrany osobních údajů ve virtuální síti](how-to-network-security-overview.md).
 + __Azure Pipelines__. Další informace najdete v tématu [výuka a nasazení modelů strojového učení](/azure/devops/pipelines/targets/azure-machine-learning).
 + __Protokoly úložiště Git__ Další informace najdete v tématu [integrace Gitu](concept-train-model-git-integration.md).

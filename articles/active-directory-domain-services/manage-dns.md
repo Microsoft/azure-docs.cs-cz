@@ -1,7 +1,7 @@
 ---
 title: Správa DNS pro Azure AD Domain Services | Microsoft Docs
 description: Naučte se, jak nainstalovat nástroje serveru DNS pro správu DNS a vytvořit podmíněné servery pro přeposílání pro Azure Active Directory Domain Services spravovanou doménu.
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -9,13 +9,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: b347f8043216d4347099d68ff1c62156410582a3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: afa6920a36a5a7218571239b36815004d8f2d450
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963172"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619347"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-active-directory-domain-services-managed-domain"></a>Správa DNS a vytvoření podmíněného předávaného serveru ve Azure Active Directory Domain Services spravované doméně
 
@@ -50,8 +50,8 @@ Chcete-li vytvářet a upravovat záznamy DNS ve spravované doméně, je nutné
 1. Přihlaste se ke svému VIRTUÁLNÍmu počítači pro správu. Postup, jak se připojit pomocí Azure Portal, najdete v tématu [připojení k virtuálnímu počítači s Windows serverem][connect-windows-server-vm].
 1. Pokud se při přihlášení k virtuálnímu počítači ve výchozím nastavení **Správce serveru** neotevře, vyberte nabídku **Start** a pak zvolte **Správce serveru**.
 1. V podokně *řídicí panel* v okně **Správce serveru** vyberte **Přidat role a funkce**.
-1. Na stránce **než začnete** v *Průvodci přidáním rolí a funkcí*vyberte **Další**.
-1. Pro *typ instalace*ponechte zaškrtnutou možnost instalace na základě **rolí nebo na základě funkcí** a vyberte **Další**.
+1. Na stránce **než začnete** v *Průvodci přidáním rolí a funkcí* vyberte **Další**.
+1. Pro *typ instalace* ponechte zaškrtnutou možnost instalace na základě **rolí nebo na základě funkcí** a vyberte **Další**.
 1. Na stránce **Výběr serveru** zvolte aktuální virtuální počítač z fondu serverů, například *myvm.aaddscontoso.com*, a pak vyberte **Další**.
 1. Na stránce **role serveru** klikněte na **Další**.
 1. Na stránce **funkce** rozbalte uzel **Nástroje pro vzdálenou správu serveru** a potom rozbalte uzel **Nástroje pro správu rolí** . V seznamu nástrojů pro správu rolí vyberte funkci **Nástroje serveru DNS** .
@@ -69,7 +69,7 @@ S nainstalovanými nástroji serveru DNS můžete spravovat záznamy DNS ve spra
 > Pokud chcete spravovat DNS ve spravované doméně, musíte být přihlášeni k uživatelskému účtu, který je členem skupiny *Správci AAD řadiče domény* .
 
 1. Z obrazovky Start vyberte **Nástroje pro správu**. Zobrazí se seznam dostupných nástrojů pro správu, včetně **DNS** nainstalovaného v předchozí části. Vyberte **DNS** a spusťte konzolu pro správu DNS.
-1. V dialogovém okně **připojit k serveru DNS** vyberte **následující počítač**a potom zadejte název domény DNS spravované domény, například *aaddscontoso.com*:
+1. V dialogovém okně **připojit k serveru DNS** vyberte **následující počítač** a potom zadejte název domény DNS spravované domény, například *aaddscontoso.com*:
 
     ![Připojení ke spravované doméně v konzole DNS](./media/manage-dns/connect-dns-server.png)
 
@@ -89,12 +89,12 @@ Podmíněný Server pro dodávání je možnost konfigurace serveru DNS, která 
 Chcete-li vytvořit podmíněný Server pro směrování ve spravované doméně, proveďte následující kroky:
 
 1. Vyberte zónu DNS, například *aaddscontoso.com*.
-1. Vyberte **podmíněné dopředné**a pak klikněte pravým tlačítkem a vyberte **nové podmíněné dopředné...**
+1. Vyberte **podmíněné dopředné** a pak klikněte pravým tlačítkem a vyberte **nové podmíněné dopředné...**
 1. Zadejte svoji jinou **doménu DNS**, třeba *contoso.com*, a pak zadejte IP adresy serverů DNS pro daný obor názvů, jak je znázorněno v následujícím příkladu:
 
     ![Přidání a konfigurace podmíněného dodávání pro server DNS](./media/manage-dns/create-conditional-forwarder.png)
 
-1. Zaškrtněte políčko pro **uložení tohoto podmíněného dopředné služby ve službě Active Directory a replikaci následujícím způsobem, a**pak vyberte možnost pro *všechny servery DNS v této doméně*, jak je znázorněno v následujícím příkladu:
+1. Zaškrtněte políčko pro **uložení tohoto podmíněného dopředné služby ve službě Active Directory a replikaci následujícím způsobem, a** pak vyberte možnost pro *všechny servery DNS v této doméně*, jak je znázorněno v následujícím příkladu:
 
     ![Konzola DNS – vybere všechny servery DNS v této doméně.](./media/manage-dns/store-in-domain.png)
 

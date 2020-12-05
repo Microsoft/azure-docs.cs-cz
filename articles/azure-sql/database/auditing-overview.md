@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 11/08/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 8cf0652148ad54eeacdec874823ea680f39f670c
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: b09eb03994098f8cb68033f3c42309a77e15f91c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372723"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620987"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Auditování pro Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -54,17 +54,29 @@ Zásady auditování se dají definovat pro určitou databázi nebo jako výchoz
 
 - Zásady serveru se vztahují na všechny existující a nově vytvořené databáze na serveru.
 
-- Pokud *je auditování serveru povoleno* , bude *vždy použito pro databázi*. Databáze bude auditována bez ohledu na nastavení auditování databáze.
+- Pokud *je auditování serveru povoleno*, bude *vždy použito pro databázi*. Databáze bude auditována bez ohledu na nastavení auditování databáze.
 
 - Povolení auditování v databázi kromě jeho povolení na serveru *nepřepisuje ani* nemění žádné nastavení auditování serveru. Oba audity budou existovat vedle sebe. Jinými slovy, databáze je auditována dvakrát; jednou zásadami serveru a jednou zásadami databáze.
 
    > [!NOTE]
    > Měli byste se vyhnout vzájemnému povolení auditování serveru i auditování objektů BLOB databáze, pokud:
     >
-    > - Pro konkrétní databázi chcete použít jiný *účet úložiště* , *dobu uchování* nebo *Log Analytics pracovní prostor* .
+    > - Pro konkrétní databázi chcete použít jiný *účet úložiště*, *dobu uchování* nebo *Log Analytics pracovní prostor* .
     > - Chcete auditovat typy a kategorie událostí pro konkrétní databázi, která se liší od ostatních databází na serveru. Například můžete mít vložená vložení tabulky, která musí být auditována pouze pro konkrétní databázi.
    >
    > V opačném případě doporučujeme povolit pouze auditování na úrovni serveru a ponechat auditování na úrovni databáze zakázané pro všechny databáze.
+
+#### <a name="remarks"></a>Poznámky
+
+- Protokoly auditu se píší pro **doplňovací objekty blob** v úložišti objektů BLOB v Azure ve vašem předplatném Azure.
+- Protokoly auditu jsou ve formátu. XEL a lze je otevřít pomocí [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
+- Pokud chcete nakonfigurovat úložiště neměnného protokolu pro události auditu na úrovni serveru nebo databáze, postupujte podle [pokynů Azure Storage](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes). Pokud konfigurujete neměnné úložiště objektů blob, ujistěte se, že jste vybrali možnost **umožnit další připojení** .
+- Protokoly auditu můžete zapsat na účet Azure Storage za virtuální sítí nebo bránou firewall. Konkrétní pokyny najdete v tématu [zápis auditu do účtu úložiště za virtuální sítí a branou firewall](audit-write-storage-account-behind-vnet-firewall.md).
+- Podrobnosti o formátu protokolu, hierarchii složky úložiště a zásadách vytváření názvů najdete v referenčních informacích o [formátu protokolu auditu objektů BLOB](./audit-log-format.md).
+- Auditování [replik jen pro čtení](read-scale-out.md) je povoleno automaticky. Další podrobnosti o hierarchii složek úložiště, konvencí pojmenování a formátu protokolu najdete v tématu [Formát protokolu auditu SQL Database](audit-log-format.md).
+- Při použití ověřování Azure AD se záznamy neúspěšných přihlášení *nezobrazí v* protokolu auditu SQL. Chcete-li zobrazit záznamy auditu neúspěšných přihlášení, je nutné navštívit [portál Azure Active Directory](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), který protokoluje podrobnosti o těchto událostech.
+- Přihlašovací jména jsou směrována bránou do konkrétní instance, ve které je umístěna databáze.  V případě přihlášení AAD se přihlašovací údaje ověřují předtím, než se pokusíte použít tohoto uživatele k přihlášení do požadované databáze.  V případě selhání není k dispozici požadovaná databáze, takže nedojde k žádnému auditu.  V případě přihlašování SQL se přihlašovací údaje ověřují podle požadovaných dat, takže v takovém případě je můžete auditovat.  Úspěšná přihlášení, která zjevně dosáhnou databáze, se auditují v obou případech.
+- Po dokončení konfigurace nastavení auditování můžete zapnout funkci detekce nové hrozby a nakonfigurovat e-maily tak, aby přijímaly výstrahy zabezpečení. Pokud používáte detekci hrozeb, obdržíte proaktivní výstrahy týkající se neobvykléch databázových aktivit, které mohou označovat potenciální bezpečnostní hrozby. Další informace najdete v tématu [Začínáme s detekcí hrozeb](threat-detection-overview.md).
 
 ## <a name="set-up-auditing-for-your-server"></a><a id="setup-auditing"></a>Nastavení auditování pro server
 
@@ -120,17 +132,6 @@ Pokud chcete nakonfigurovat zápis protokolů auditu na účet úložiště, vyb
   - Pokud změníte dobu uchování z 0 (neomezené uchovávání) na jakoukoli jinou hodnotu, pamatujte na to, že doba uchovávání se bude vztahovat jenom na protokoly zapsané po změně hodnoty uchování (protokoly zapsané během období, kdy byla doba uchování nastavená na neomezený, se zachovají i po povolení uchování).
 
   ![účet úložiště](./media/auditing-overview/auditing_select_storage.png)
-
-#### <a name="remarks"></a>Poznámky
-
-- Protokoly auditu se píší pro **doplňovací objekty blob** v úložišti objektů BLOB v Azure ve vašem předplatném Azure.
-- Protokoly auditu jsou ve formátu. XEL a lze je otevřít pomocí [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
-- Pokud chcete nakonfigurovat úložiště neměnného protokolu pro události auditu na úrovni serveru nebo databáze, postupujte podle [pokynů Azure Storage](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes). Pokud konfigurujete neměnné úložiště objektů blob, ujistěte se, že jste vybrali možnost **umožnit další připojení** .
-- Protokoly auditu můžete zapsat na účet Azure Storage za virtuální sítí nebo bránou firewall. Konkrétní pokyny najdete v tématu [zápis auditu do účtu úložiště za virtuální sítí a branou firewall](audit-write-storage-account-behind-vnet-firewall.md).
-- Po dokončení konfigurace nastavení auditování můžete zapnout funkci detekce nové hrozby a nakonfigurovat e-maily tak, aby přijímaly výstrahy zabezpečení. Pokud používáte detekci hrozeb, obdržíte proaktivní výstrahy týkající se neobvykléch databázových aktivit, které mohou označovat potenciální bezpečnostní hrozby. Další informace najdete v tématu [Začínáme s detekcí hrozeb](threat-detection-overview.md).
-- Podrobnosti o formátu protokolu, hierarchii složky úložiště a zásadách vytváření názvů najdete v referenčních informacích o [formátu protokolu auditu objektů BLOB](./audit-log-format.md).
-- Při použití ověřování Azure AD se záznamy neúspěšných přihlášení *nezobrazí v* protokolu auditu SQL. Chcete-li zobrazit záznamy auditu neúspěšných přihlášení, je nutné navštívit [portál Azure Active Directory](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), který protokoluje podrobnosti o těchto událostech.
-- Auditování [replik jen pro čtení](read-scale-out.md) je povoleno automaticky. Další podrobnosti o hierarchii složek úložiště, konvencí pojmenování a formátu protokolu najdete v tématu [Formát protokolu auditu SQL Database](audit-log-format.md).
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Audit na Log Analytics cíl
   
@@ -219,11 +220,11 @@ Pokud jste se rozhodli zapsat protokoly auditu do účtu služby Azure Storage, 
 
 ### <a name="auditing-geo-replicated-databases"></a>Auditování geograficky replikovaných databází
 
-Když v případě geograficky replikovaných databází povolíte auditování primární databáze, bude mít sekundární databáze identické zásady auditování. U sekundární databáze je také možné nastavit auditování tím, že povolíte auditování na **sekundárním serveru** , nezávisle na primární databázi.
+Když v případě geograficky replikovaných databází povolíte auditování primární databáze, bude mít sekundární databáze identické zásady auditování. U sekundární databáze je také možné nastavit auditování tím, že povolíte auditování na **sekundárním serveru**, nezávisle na primární databázi.
 
-- Na úrovni serveru ( **doporučeno** ): zapnout auditování na **primárním serveru** i na **sekundárním serveru** – primární a sekundární databáze se každý z nich auditují nezávisle na příslušných zásadách na úrovni serveru.
+- Na úrovni serveru (**doporučeno**): zapnout auditování na **primárním serveru** i na **sekundárním serveru** – primární a sekundární databáze se každý z nich auditují nezávisle na příslušných zásadách na úrovni serveru.
 - Úroveň databáze: auditování na úrovni databáze pro sekundární databáze lze nakonfigurovat pouze z nastavení auditování primární databáze.
-  - Auditování je nutné povolit v *samotné primární databázi* , nikoli na serveru.
+  - Auditování je nutné povolit v *samotné primární databázi*, nikoli na serveru.
   - Po povolení auditování v primární databázi bude také zpřístupněna v sekundární databázi.
 
     > [!IMPORTANT]
@@ -246,7 +247,7 @@ V produkčním prostředí pravděpodobně pravidelně aktualizujete klíče úl
 
 ### <a name="using-azure-powershell"></a>Použití Azure Powershell
 
-**Rutiny PowerShellu (včetně podpory klauzule WHERE pro další filtrování)** :
+**Rutiny PowerShellu (včetně podpory klauzule WHERE pro další filtrování)**:
 
 - [Vytvořit nebo aktualizovat zásady auditování databáze (set-AzSqlDatabaseAudit)](/powershell/module/az.sql/set-azsqldatabaseaudit)
 - [Vytvořit nebo aktualizovat zásady auditování serveru (set-AzSqlServerAudit)](/powershell/module/az.sql/set-azsqlserveraudit)
@@ -259,7 +260,7 @@ Příklad skriptu najdete v tématu [Konfigurace auditování a detekce hrozeb p
 
 ### <a name="using-rest-api"></a>Pomocí rozhraní REST API
 
-**REST API** :
+**REST API**:
 
 - [Vytvořit nebo aktualizovat zásady auditování databáze](/rest/api/sql/database%20auditing%20settings/createorupdate)
 - [Vytvořit nebo aktualizovat zásady auditování serveru](/rest/api/sql/server%20auditing%20settings/createorupdate)

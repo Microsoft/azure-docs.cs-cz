@@ -10,14 +10,14 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 1823de88597756ba3db9aee0dc29501b1ba914a4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: d122cedbad41d6984614a0edccb2fd98269710f2
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646232"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618072"
 ---
-# <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Řešení potíží s jednotným přihlašováním založeném na heslech v Azure AD
+# <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Řešení potíží s jednotným přihlašováním založeným na heslech v Azure AD
 
 Pokud chcete v aplikacích používat jednotné přihlašování (SSO) založené na heslech, musí být nainstalované rozšíření prohlížeče. Rozšíření se automaticky stáhne při výběru aplikace, která je nakonfigurovaná pro jednotné přihlašování založené na heslech. Další informace o používání mých aplikací z perspektivy koncových uživatelů najdete v [nápovědě k portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
@@ -30,7 +30,7 @@ Ujistěte se, že je nakonfigurováno jednotné přihlašování založené na h
 ## <a name="users-not-assigned"></a>Uživatelé nejsou přiřazeni.
 Ujistěte se, že je uživatel přiřazený k aplikaci. Další informace najdete v tématu [přiřazení uživatele nebo skupiny k aplikaci](assign-user-or-group-access-portal.md).
 
-## <a name="credentials-are-filled-in-but-the-extension-does-not-submit-them"></a>Přihlašovací údaje jsou vyplněné, ale rozšíření je neodesílají.
+## <a name="credentials-are-filled-in-but-the-extension-does-not-submit-them"></a>Přihlašovací údaje jsou vyplněné, ale rozšíření je neodešle
 
 K tomuto problému obvykle dochází v případě, že dodavatel aplikace změnil svou přihlašovací stránku nedávno, aby přidal pole, změnil identifikátor používaný k detekci polí uživatelského jména a hesla nebo změnil způsob, jakým funguje přihlašování pro aplikaci. Naštěstí může společnost Microsoft v mnoha instancích spolupracovat s dodavateli aplikací a rychle tyto problémy vyřešit.
 
@@ -38,7 +38,7 @@ I když má společnost Microsoft technologie, aby automaticky zjistily, kdy int
 
 **Pokud se obrátíte na dodavatele této aplikace,** pošlete jim náš způsob, aby Microsoft mohl s nimi pracovat, aby nativně integroval svou aplikaci s Azure Active Directory. Dodavatele můžete odeslat do [výpisu vaší aplikace v Azure Active Directory Galerie aplikací](../develop/v2-howto-app-gallery-listing.md) , abyste je mohli začít.
 
-## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Přihlašovací údaje jsou vyplněné a odeslané, ale stránka indikuje, že přihlašovací údaje nejsou správné.
+## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Přihlašovací údaje jsou vyplněné a odeslané, ale na stránce se zobrazuje, že jsou přihlašovací údaje nesprávné
 
 Chcete-li tento problém vyřešit, vyzkoušejte nejprve tyto věci:
 
@@ -150,6 +150,13 @@ Pokud se setkáte s některým z těchto problémů, proveďte následující ak
 - Ujistěte se, že se uživatelé nesnaží přihlašovat k aplikaci z mých aplikací v *anonymním*, *InPrivate* nebo v *privátním režimu*.
 - Zkuste znovu zpracovat proces ručního zachycení. Ujistěte se, že červené značky jsou nad správnými poli.
 - Pokud se zdá, že proces ručního zachytávání přestane reagovat nebo stránka pro přihlášení nereaguje, zkuste proces ručního zachytávání zopakovat. Tentokrát ale po dokončení procesu stiskněte klávesu F12 a otevřete konzolu pro vývojáře v prohlížeči. Vyberte kartu **Konzola** . zadejte **window. Location = "*&lt; přihlašovací adresa URL, kterou jste zadali při konfiguraci aplikace &gt;***, a potom stiskněte klávesu ENTER. Tím se vynutí přesměrování stránky, které ukončí proces zachytávání a uloží pole, která byla zachycena.
+
+### <a name="i-cant-add-another-user-to-my-password-based-sso-app"></a>Nejde přidat dalšího uživatele do aplikace jednotného přihlašování založené na heslech
+
+Aplikace jednotného přihlašování založená na heslech má omezení 48 uživatelů. Proto má omezení 48 klíčů pro dvojice uživatelského jména a hesla na aplikaci.
+Pokud chcete přidat další uživatele, můžete:
+-   Přidat další instanci aplikace
+-   Odebrat uživatele, kteří už aplikaci nepoužívají
 
 ## <a name="request-support"></a>Požádat o podporu 
 Pokud se zobrazí chybová zpráva, když nastavíte jednotné přihlašování a přiřadíte uživatele, otevřete lístek podpory. Co je možné zahrnout co nejvíc následujících informací:

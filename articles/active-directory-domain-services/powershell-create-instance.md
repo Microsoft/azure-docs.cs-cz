@@ -2,7 +2,7 @@
 title: Povolení služby Azure DS Domain Services pomocí PowerShellu | Microsoft Docs
 description: Přečtěte si, jak nakonfigurovat a povolit Azure Active Directory Domain Services s využitím Azure AD PowerShellu a Azure PowerShell.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: d4bc5583-6537-4cd9-bc4b-7712fdd9272a
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
 ms.date: 10/02/2020
-ms.author: joflore
+ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 46fdaed4a3e1dbbe5575cd573061a480bf330389
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 89061af04147d7cfaa0fdb3a6b1a8fb1cd8c8da7
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041946"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619143"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Povolení Azure Active Directory Domain Services pomocí prostředí PowerShell
 
@@ -44,7 +44,7 @@ K dokončení tohoto článku potřebujete tyto prostředky:
 
 Služba Azure služba AD DS vyžaduje instanční objekt a skupinu Azure AD. Tyto prostředky umožňují, aby Azure služba AD DS spravovaná doména synchronizovaná data a definovali, kteří uživatelé mají oprávnění správce ve spravované doméně.
 
-Nejdřív vytvořte instanční objekt služby Azure AD pro Azure služba AD DS, který bude komunikovat a ověřovat sám sebe. Konkrétní ID aplikace se používá s názvem *služby řadiče domény* s ID *6ba9a5d4-8456-4118-b521-9c5ca10cdf84* . Neměňte toto ID aplikace.
+Nejdřív vytvořte instanční objekt služby Azure AD pro Azure služba AD DS, který bude komunikovat a ověřovat sám sebe. Konkrétní ID aplikace se používá s názvem *služby řadiče domény* s ID *6ba9a5d4-8456-4118-b521-9c5ca10cdf84*. Neměňte toto ID aplikace.
 
 Pomocí rutiny [New-AzureADServicePrincipal][New-AzureADServicePrincipal] vytvořte instanční objekt služby Azure AD:
 
@@ -52,7 +52,7 @@ Pomocí rutiny [New-AzureADServicePrincipal][New-AzureADServicePrincipal] vytvo�
 New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 ```
 
-Nyní vytvořte skupinu Azure AD s názvem *AAD DC Administrators* . Uživatelům přidaným do této skupiny se pak udělí oprávnění k provádění úloh správy ve spravované doméně.
+Nyní vytvořte skupinu Azure AD s názvem *AAD DC Administrators*. Uživatelům přidaným do této skupiny se pak udělí oprávnění k provádění úloh správy ve spravované doméně.
 
 Nejprve pomocí rutiny [Get-AzureADGroup][Get-AzureADGroup] Získejte ID objektu skupiny *AAD DC Administrators* . Pokud skupina neexistuje, vytvořte ji se skupinou *správců řadiče domény AAD* pomocí rutiny [New-AzureADGroup][New-AzureADGroup] :
 
@@ -109,7 +109,7 @@ New-AzResourceGroup `
   -Location $AzureLocation
 ```
 
-Vytvořte virtuální síť a podsítě pro Azure AD Domain Services. Vytvoří se dvě podsítě – jeden pro *DomainServices* a jeden pro *úlohy* . Azure služba AD DS je nasazený do vyhrazené podsítě *DomainServices* . Do této podsítě nesaďte žádné další aplikace ani úlohy. Pro zbytek virtuálních počítačů použijte samostatné *úlohy* nebo jiné podsítě.
+Vytvořte virtuální síť a podsítě pro Azure AD Domain Services. Vytvoří se dvě podsítě – jeden pro *DomainServices* a jeden pro *úlohy*. Azure služba AD DS je nasazený do vyhrazené podsítě *DomainServices* . Do této podsítě nesaďte žádné další aplikace ani úlohy. Pro zbytek virtuálních počítačů použijte samostatné *úlohy* nebo jiné podsítě.
 
 Vytvořte podsítě pomocí rutiny [New-AzVirtualNetworkSubnetConfig][New-AzVirtualNetworkSubnetConfig] a pak vytvořte virtuální síť pomocí rutiny [New-AzVirtualNetwork][New-AzVirtualNetwork] .
 
@@ -200,7 +200,7 @@ $vnet | Set-AzVirtualNetwork
 
 ## <a name="create-a-managed-domain"></a>Vytvoření spravované domény
 
-Nyní vytvoříme spravovanou doménu. Nastavte ID vašeho předplatného Azure a potom zadejte název spravované domény, třeba *aaddscontoso.com* . ID vašeho předplatného můžete získat pomocí rutiny [Get-AzSubscription][Get-AzSubscription] .
+Nyní vytvoříme spravovanou doménu. Nastavte ID vašeho předplatného Azure a potom zadejte název spravované domény, třeba *aaddscontoso.com*. ID vašeho předplatného můžete získat pomocí rutiny [Get-AzSubscription][Get-AzSubscription] .
 
 Pokud zvolíte oblast, která podporuje Zóny dostupnosti, prostředky Azure služba AD DS se rozdělují mezi zóny, aby se mohla zvýšit redundance.
 

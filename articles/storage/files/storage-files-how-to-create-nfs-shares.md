@@ -4,16 +4,16 @@ description: Naučte se, jak vytvořit sdílenou složku Azure, kterou je možn�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 7680e251d8411ce154e1f7dfb8af1d66514dd579
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 3cf22ee22c35b850aff33290a59a7043bb57c984
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629457"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620936"
 ---
 # <a name="how-to-create-an-nfs-share"></a>Postup vytvoření sdílené složky systému souborů NFS
 
@@ -64,7 +64,7 @@ az feature register --name AllowNfsFileShares \
 az provider register --namespace Microsoft.Storage
 ```
 
-## <a name="verify-that-the-feature-is-registered"></a>Ověřte, zda je funkce zaregistrována.
+## <a name="verify-feature-registration"></a>Ověřit registraci funkce
 
 Schválení registrace může trvat až hodinu. Chcete-li ověřit, zda byla registrace dokončena, použijte následující příkazy:
 
@@ -80,6 +80,34 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNfs
 az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscription <yourSubscriptionIDHere>
 ```
 
+## <a name="verify-storage-account-kind"></a>Ověřit druh účtu úložiště
+
+V současné době můžou sdílené složky systému souborů NFS vytvářet jenom účty úložiště. 
+
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+Pokud chcete ověřit, jaký druh účtu úložiště máte, přejděte k němu v Azure Portal. Pak z účtu úložiště vyberte **vlastnosti**. V okně Vlastnosti zkontrolujte hodnotu v části **druh účtu**. Tato hodnota by měla být **Storage**.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+Pokud chcete ověřit, že máte účet úložiště, můžete použít následující příkaz:
+
+```azurepowershell
+$accountKind=Get-AzStorageAccount -ResourceGroupName "yourResourceGroup" -Name "yourStorageAccountName"
+$accountKind.Kind
+```
+
+Výstup by měl být **úložiště**, pokud není, váš účet úložiště je nesprávného typu. Pokud chcete vytvořit účet **úložiště** souborů, přečtěte si téma [jak vytvořit sdílenou složku Azure Premium](storage-how-to-create-premium-fileshare.md).
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+Pokud chcete ověřit, že máte účet úložiště, můžete použít následující příkaz:
+
+```azurecli
+az storage account show -g yourResourceGroup -n yourStorageAccountName
+```
+
+Výstup by měl obsahovat **"druh": "Storage**", pokud ne, váš účet úložiště je nesprávného typu. Pokud chcete vytvořit účet **úložiště** souborů, přečtěte si téma [jak vytvořit sdílenou složku Azure Premium](storage-how-to-create-premium-fileshare.md).
+
+---
 ## <a name="create-an-nfs-share"></a>Vytvoření sdílené složky NFS
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)

@@ -2,20 +2,20 @@
 title: Kurz – vytvoření vztahu důvěryhodnosti doménové struktury v Azure AD Domain Services | Microsoft Docs
 description: Naučte se vytvořit jednosměrnou odchozí doménovou strukturu do místní služba AD DS domény v Azure Portal pro Azure AD Domain Services
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: cbdcd170e6c6fb768172acfe3eb3c907714cd560
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 0231689acef3345fb2b0f25170522d59552171ba
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967252"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618327"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>Kurz: Vytvoření vztahu důvěryhodnosti odchozí doménové struktury do místní domény v Azure Active Directory Domain Services
 
@@ -75,7 +75,7 @@ Chcete-li správně přeložit spravovanou doménu z místního prostředí, bud
 
 1. Vyberte **Spustit | Nástroje pro správu | Služba DNS**
 1. Pravým tlačítkem vyberte server DNS, například *myAD01*, a pak vyberte **vlastnosti** .
-1. Zvolte nástroje **pro přeposílání**a pak **Upravit** pro přidání dalších služeb pro dodávání.
+1. Zvolte nástroje **pro přeposílání** a pak **Upravit** pro přidání dalších služeb pro dodávání.
 1. Přidejte IP adresy spravované domény, například *10.0.2.4* a *10.0.2.5*.
 
 ## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>Vytvoření vztahu důvěryhodnosti příchozí doménové struktury v místní doméně
@@ -88,9 +88,9 @@ Pokud chcete nakonfigurovat příchozí vztah důvěryhodnosti v místní domén
 1. Klikněte pravým tlačítkem na doména, jako je *OnPrem.contoso.com*, a pak vyberte **vlastnosti** .
 1. Zvolte kartu **vztahy důvěryhodnosti** a pak **nový vztah důvěryhodnosti** .
 1. Zadejte název domény Azure služba AD DS, jako je *aaddscontoso.com*, a pak vyberte **Další** .
-1. Vyberte možnost vytvoření **vztahu důvěryhodnosti doménové struktury**a pak vytvořte **jednosměrné: příchozí** vztah důvěryhodnosti.
+1. Vyberte možnost vytvoření **vztahu důvěryhodnosti doménové struktury** a pak vytvořte **jednosměrné: příchozí** vztah důvěryhodnosti.
 1. Vyberte, chcete-li vytvořit vztah důvěryhodnosti **pouze pro tuto doménu**. V dalším kroku vytvoříte vztah důvěryhodnosti v Azure Portal pro spravovanou doménu.
-1. Zvolte možnost použití **ověřování v rámci doménové struktury**a pak zadejte a potvrďte heslo vztahu důvěryhodnosti. Stejné heslo je také zadáno v Azure Portal v další části.
+1. Zvolte možnost použití **ověřování v rámci doménové struktury** a pak zadejte a potvrďte heslo vztahu důvěryhodnosti. Stejné heslo je také zadáno v Azure Portal v další části.
 1. Projděte několik dalších oken s výchozími možnostmi a zvolte možnost **Ne, Nepotvrzujte odchozí vztah důvěryhodnosti**.
 1. Vyberte **Dokončit** .
 
@@ -100,8 +100,8 @@ Když je místní služba AD DS doména nakonfigurovaná k překladu spravované
 
 Chcete-li vytvořit odchozí vztah důvěryhodnosti pro spravovanou doménu v Azure Portal, proveďte následující kroky:
 
-1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services**a pak vyberte spravovanou doménu, například *aaddscontoso.com* .
-1. V nabídce na levé straně spravované domény vyberte možnost **vztahy důvěryhodnosti**a pak zvolte možnost **Přidat** vztah důvěryhodnosti.
+1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services** a pak vyberte spravovanou doménu, například *aaddscontoso.com* .
+1. V nabídce na levé straně spravované domény vyberte možnost **vztahy důvěryhodnosti** a pak zvolte možnost **Přidat** vztah důvěryhodnosti.
 
    > [!NOTE]
    > Pokud nevidíte možnost nabídky **důvěryhodnosti** , zkontrolujte v části **vlastnosti** pro *Typ doménové struktury*. Vztahy důvěryhodnosti můžou vytvářet jenom doménové struktury *prostředků* . Pokud je typem doménové struktury *uživatel*, nemůžete vytvořit vztahy důvěryhodnosti. V současné době neexistuje způsob, jak změnit typ doménové struktury spravované domény. Je nutné odstranit a znovu vytvořit spravovanou doménu jako doménovou strukturu prostředků.
@@ -154,17 +154,17 @@ Pomocí virtuálního počítače s Windows serverem připojeného k doménové 
 
 1. Otevřete **nastavení systému Windows**, vyhledejte a vyberte **Centrum síťových a sdílení**.
 1. Vyberte možnost pro **změnu pokročilého nastavení sdílení** .
-1. V části **Profil domény**vyberte **zapnout sdílení souborů a tiskáren** a pak **změny uložte**.
+1. V části **Profil domény** vyberte **zapnout sdílení souborů a tiskáren** a pak **změny uložte**.
 1. Zavřete **Centrum síťových a sdílení**.
 
 #### <a name="create-a-security-group-and-add-members"></a>Vytvoření skupiny zabezpečení a přidání členů
 
 1. Otevřete položku **Uživatelé a počítače služby Active Directory**.
-1. Klikněte pravým tlačítkem myši na název domény, vyberte možnost **Nový**a pak vyberte možnost **organizační jednotka**.
-1. Do pole název zadejte *LocalObjects*a pak vyberte **OK**.
+1. Klikněte pravým tlačítkem myši na název domény, vyberte možnost **Nový** a pak vyberte možnost **organizační jednotka**.
+1. Do pole název zadejte *LocalObjects* a pak vyberte **OK**.
 1. V navigačním podokně vyberte a klikněte pravým tlačítkem na **LocalObjects** . Vyberte **Nový** a potom **Skupina**.
-1. Do pole **název skupiny** zadejte *FileServerAccess* . V poli **Rozsah skupiny**vyberte **místní doména**a pak zvolte **OK**.
-1. V podokně obsah poklikejte na **FileServerAccess**. Vyberte možnost **Členové**, zvolte možnost **Přidat**a potom vyberte **umístění**.
+1. Do pole **název skupiny** zadejte *FileServerAccess* . V poli **Rozsah skupiny** vyberte **místní doména** a pak zvolte **OK**.
+1. V podokně obsah poklikejte na **FileServerAccess**. Vyberte možnost **Členové**, zvolte možnost **Přidat** a potom vyberte **umístění**.
 1. V zobrazení **umístění** vyberte místní službu Active Directory a pak zvolte **OK**.
 1. Do pole **Zadejte názvy objektů k výběru** zadejte *Domain Users* . Vyberte možnost **kontrolovat jména**, zadejte přihlašovací údaje pro místní službu Active Directory a pak vyberte **OK**.
 
@@ -179,18 +179,18 @@ Pomocí virtuálního počítače s Windows serverem připojeného k doménové 
 1. Klepněte pravým tlačítkem myši na složku a vyberte možnost **vlastnosti**.
 1. Vyberte kartu **zabezpečení** a pak zvolte **Upravit**.
 1. V dialogovém okně *oprávnění pro CrossForestShare* vyberte **Přidat**.
-1. Do pole **Zadejte názvy objektů k výběru**zadejte *FileServerAccess* a pak vyberte **OK**.
+1. Do pole **Zadejte názvy objektů k výběru** zadejte *FileServerAccess* a pak vyberte **OK**.
 1. V seznamu **skupiny nebo jména uživatelů** vyberte *FileServerAccess* . V seznamu **oprávnění pro FileServerAccess** zvolte možnost *Povolení* oprávnění k **úpravám** a **zápisu** a pak vyberte **OK**.
 1. Vyberte kartu **sdílení** a pak zvolte **Rozšířené sdílení...**
-1. Zvolte **sdílet tuto složku**a pak zadejte zapamatovatelné jméno sdílené složky v **názvu sdílené složky** , například *CrossForestShare*.
-1. Vyberte **oprávnění**. V seznamu **oprávnění pro všechny** vyberte možnost **udělit** oprávnění ke **změně** .
+1. Zvolte **sdílet tuto složku** a pak zadejte zapamatovatelné jméno sdílené složky v **názvu sdílené složky** , například *CrossForestShare*.
+1. Vyberte **Oprávnění**. V seznamu **oprávnění pro všechny** vyberte možnost **udělit** oprávnění ke **změně** .
 1. Dvakrát klikněte na **OK** a pak na **Zavřít**.
 
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>Ověření ověřování mezi doménovými strukturami v prostředku
 
 1. Přihlaste se k počítači s Windows připojenému k místní službě Active Directory pomocí uživatelského účtu z vaší místní služby Active Directory.
-1. Pomocí **Průzkumníka Windows**se připojte ke sdílené složce, kterou jste vytvořili, pomocí plně kvalifikovaného názvu hostitele a sdílené složky, jako je například `\\fs1.aaddscontoso.com\CrossforestShare` .
-1. Chcete-li ověřit oprávnění k zápisu, ve složce klikněte pravým tlačítkem myši, vyberte možnost **Nový**a pak vyberte možnost **textový dokument**. Použijte výchozí název **nový textový dokument**.
+1. Pomocí **Průzkumníka Windows** se připojte ke sdílené složce, kterou jste vytvořili, pomocí plně kvalifikovaného názvu hostitele a sdílené složky, jako je například `\\fs1.aaddscontoso.com\CrossforestShare` .
+1. Chcete-li ověřit oprávnění k zápisu, ve složce klikněte pravým tlačítkem myši, vyberte možnost **Nový** a pak vyberte možnost **textový dokument**. Použijte výchozí název **nový textový dokument**.
 
     Pokud jsou oprávnění k zápisu nastavena správně, je vytvořen nový textový dokument. Následující kroky pak otevřou, upraví a odstraní soubor podle potřeby.
 1. Chcete-li ověřit oprávnění ke čtení, otevřete **nový textový dokument**.

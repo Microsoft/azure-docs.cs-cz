@@ -2,20 +2,20 @@
 title: Plánování a připojení k síti pro Azure AD Domain Services | Microsoft Docs
 description: Přečtěte si o některých faktorech návrhu virtuální sítě a o prostředcích, které se používají pro připojení při spuštění Azure Active Directory Domain Services.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 43731f84066943b991b566ff5936e4288aa669eb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.author: justinha
+ms.openlocfilehash: 246da3a35396430bbda86e5a5e927a456618ac05
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175215"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619279"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Požadavky na návrh virtuální sítě a možnosti konfigurace pro Azure Active Directory Domain Services
 
@@ -62,10 +62,10 @@ Jak je uvedeno v předchozí části, můžete v Azure vytvořit jenom spravovan
 
 Aplikační úlohy hostované v jiných virtuálních sítích Azure můžete připojit pomocí jedné z následujících metod:
 
-* Partnerský vztah virtuální sítě
+* Peering virtuálních sítí
 * Virtuální privátní sítě (VPN)
 
-### <a name="virtual-network-peering"></a>Partnerský vztah virtuální sítě
+### <a name="virtual-network-peering"></a>Peering virtuálních sítí
 
 Partnerský vztah virtuálních sítí je mechanismus, který propojuje dvě virtuální sítě ve stejné oblasti prostřednictvím páteřní sítě Azure. Globální partnerské vztahy virtuálních sítí se můžou připojit k virtuální síti napříč oblastmi Azure. Po navázání partnerského vztahu mezi dvěma virtuálními sítěmi umožníte komunikaci přímo pomocí privátních IP adres, jako jsou třeba virtuální počítače. Pomocí partnerského vztahu virtuálních sítí můžete nasadit spravovanou doménu s úlohami vaší aplikace nasazenými v jiných virtuálních sítích.
 
@@ -108,11 +108,11 @@ Spravovaná doména vytvoří během nasazení některé síťové prostředky. 
 
 Aby mohla spravovaná doména poskytovat služby ověřování a správy, vyžadují se následující pravidla skupiny zabezpečení sítě. Neupravujte ani neodstraňujte tato pravidla skupiny zabezpečení sítě pro podsíť virtuální sítě, do které je spravovaná doména nasazená.
 
-| Číslo portu | Protokol | Zdroj                             | Cíl | Akce | Požaduje se | Účel |
+| Číslo portu | Protokol | Zdroj                             | Cíl | Akce | Vyžadováno | Účel |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Všechny         | Povolit  | Ano      | Synchronizace s vaším klientem služby Azure AD. |
-| 3389        | TCP      | CorpNetSaw                         | Všechny         | Povolit  | Ano      | Správa vaší domény. |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Všechny         | Povolit  | Ano      | Správa vaší domény. |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Všechny         | Povolit  | Yes      | Synchronizace s vaším klientem služby Azure AD. |
+| 3389        | TCP      | CorpNetSaw                         | Všechny         | Povolit  | Yes      | Správa vaší domény. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Všechny         | Povolit  | Yes      | Správa vaší domény. |
 
 Vytvoří se standardní nástroj pro vyrovnávání zatížení Azure, který vyžaduje, aby se tato pravidla mohla umístit. Tato skupina zabezpečení sítě zabezpečuje službu Azure služba AD DS a je potřeba, aby správně fungovala spravovaná doména. Tuto skupinu zabezpečení sítě neodstraňujte. Nástroj pro vyrovnávání zatížení nebude bez něj správně fungovat.
 

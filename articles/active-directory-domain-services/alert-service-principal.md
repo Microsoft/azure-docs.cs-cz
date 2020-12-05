@@ -2,7 +2,7 @@
 title: Vyřešit výstrahy instančního objektu v Azure AD Domain Services | Microsoft Docs
 description: Naučte se řešit výstrahy konfigurace instančního objektu pro Azure Active Directory Domain Services
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: f168870c-b43a-4dd6-a13f-5cfadc5edf2c
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: fc980d18a05b18706bb7eeecd907769b80e1b18f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 00ab5c85a477c9c4080acf252cbbde9d4ce816a9
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962713"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620235"
 ---
 # <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>Známé problémy: výstrahy instančního objektu v Azure Active Directory Domain Services
 
@@ -68,12 +68,12 @@ Stav spravované domény se automaticky aktualizuje během dvou hodin a výstrah
 
 ### <a name="re-register-the-microsoft-aad-namespace"></a>Znovu zaregistrujte obor názvů Microsoft AAD.
 
-Pokud v adresáři služby Azure AD chybí ID aplikace *443155a6-77f3-45e3-882b-22b3a8d431fb*, *abba844e-bc0e-44b0-947a-dc74e5d09022*nebo *d87dcbc6-a371-462e-88e3-28ad15ec4e64* , proveďte následující kroky a znovu zaregistrujte poskytovatele prostředků *Microsoft. aad* :
+Pokud v adresáři služby Azure AD chybí ID aplikace *443155a6-77f3-45e3-882b-22b3a8d431fb*, *abba844e-bc0e-44b0-947a-dc74e5d09022* nebo *d87dcbc6-a371-462e-88e3-28ad15ec4e64* , proveďte následující kroky a znovu zaregistrujte poskytovatele prostředků *Microsoft. aad* :
 
 1. V Azure Portal vyhledejte a vyberte **předplatná**.
 1. Vyberte předplatné přidružené k vaší spravované doméně.
 1. V levém navigačním panelu vyberte **poskytovatelé prostředků**.
-1. Vyhledejte *Microsoft. aad*a pak vyberte **znovu registrovat**.
+1. Vyhledejte *Microsoft. aad* a pak vyberte **znovu registrovat**.
 
 Stav spravované domény se automaticky aktualizuje během dvou hodin a výstraha se odstraní.
 
@@ -99,8 +99,8 @@ K opětovnému vytvoření aplikace služby Azure AD používané pro synchroniz
 2. Nyní odstraňte starou aplikaci a objekt pomocí následujících rutin PowerShellu:
 
     ```powershell
-    $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
-    Remove-AzureADApplication -ObjectId $app.ObjectId
+    $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
+    Remove-AzureADApplication -ObjectId $app.ObjectId
     $spObject = Get-AzureADServicePrincipal -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
     Remove-AzureADServicePrincipal -ObjectId $spObject
     ```

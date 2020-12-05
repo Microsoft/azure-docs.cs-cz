@@ -2,7 +2,7 @@
 title: Povolení služby profilů uživatelů SharePointu pomocí Azure služba AD DS | Microsoft Docs
 description: Informace o tom, jak nakonfigurovat Azure Active Directory Domain Services spravovanou doménu pro podporu synchronizace profilů pro SharePoint Server
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: 7bd63ece1ec32e5e4cecfd2a458124a4f24ccaa6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 8fbde10ccf5a7f083f5fbddaadd6668d880a1fac
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962475"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619823"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Konfigurace Azure Active Directory Domain Services pro podporu synchronizace profilů uživatelů pro server SharePoint
 
@@ -64,7 +64,7 @@ Z virtuálního počítače pro správu Azure služba AD DS proveďte následuj�
 1. Pokud chcete spravovat členství ve skupině, vyberte **Centrum správy služby Active Directory** ze seznamu nástrojů pro správu.
 1. V levém podokně vyberte spravovanou doménu, například *aaddscontoso.com*. Zobrazí se seznam existujících organizačních jednotek a prostředků.
 1. Vyberte organizační jednotku **uživatelů** a pak zvolte skupinu zabezpečení *AAD DC Service Accounts* .
-1. Vyberte **Členové**a pak zvolte **Přidat...**.
+1. Vyberte **Členové** a pak zvolte **Přidat...**.
 1. Zadejte název účtu služby SharePoint a pak vyberte **OK**. V následujícím příkladu má účet služby SharePoint název *SPAdmin*:
 
     ![Přidejte účet služby SharePoint do skupiny zabezpečení účty služby AAD DC.](./media/deploy-sp-profile-sync/add-member-to-aad-dc-service-accounts-group.png)

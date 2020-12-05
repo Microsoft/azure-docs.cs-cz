@@ -2,7 +2,7 @@
 title: Ověřit stav Azure Active Directory Domain Services | Microsoft Docs
 description: Přečtěte si, jak kontrolovat stav Azure Active Directory Domain Services (Azure služba AD DS) spravované domény a porozumět stavovým zprávám pomocí Azure Portal.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: bf65657ea60e94f167bfbb6585026702b64e9658
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 92cc6157c590d3e05b4002e0f071c08e4ec23a16
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962730"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620320"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Zkontroluje stav Azure Active Directory Domain Services spravované domény.
 
@@ -38,7 +38,7 @@ Stav pro spravovanou doménu je zobrazený pomocí Azure Portal. Informace o pos
 
 Stav v pravém horním rohu udává celkový stav spravované domény. Stav má všechny existující výstrahy ve vaší doméně. Následující tabulka podrobně popisuje dostupné indikátory stavu:
 
-| Status | Ikona | Vysvětlení |
+| Stav | Ikona | Vysvětlení |
 | --- | :----: | --- |
 | Spuštěno | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Spravovaná doména je spuštěná správně a nemá žádné kritické výstrahy nebo upozornění. Doména může obsahovat informativní výstrahy. |
 | Vyžaduje pozornost (upozornění) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | Ve spravované doméně nejsou k dispozici žádné kritické výstrahy, ale je potřeba vyřešit aspoň jedno upozornění. |
@@ -47,7 +47,7 @@ Stav v pravém horním rohu udává celkový stav spravované domény. Stav má 
 
 ## <a name="understand-monitors-and-alerts"></a>Pochopení monitorování a výstrah
 
-Stav spravované domény zobrazuje dva typy informací – *monitorování*a *výstrahy*. Monitory ukazují dobu, po kterou byly dokončeny základní úlohy na pozadí. Výstrahy obsahují informace nebo návrhy, které zlepšují stabilitu spravované domény.
+Stav spravované domény zobrazuje dva typy informací – *monitorování* a *výstrahy*. Monitory ukazují dobu, po kterou byly dokončeny základní úlohy na pozadí. Výstrahy obsahují informace nebo návrhy, které zlepšují stabilitu spravované domény.
 
 ### <a name="monitors"></a>Monitory
 

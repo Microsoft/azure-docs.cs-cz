@@ -2,20 +2,20 @@
 title: Změna SKU pro Azure AD Domain Services | Microsoft Docs
 description: Přečtěte si, jak na úrovni SKU Azure AD Domain Services spravované doméně, pokud se změní vaše obchodní požadavky.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: c85a3f3262da6002e9604b1506552b9188a64460
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 320bd87aa78d26cee44c48f27365febd1dd426ff
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962747"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620286"
 ---
 # <a name="change-the-sku-for-an-existing-azure-active-directory-domain-services-managed-domain"></a>Změna SKU pro existující Azure Active Directory Domain Services spravovanou doménu
 
@@ -40,7 +40,7 @@ K dokončení tohoto článku potřebujete následující prostředky a oprávn�
 
 Po nasazení spravované domény můžete skladové jednotky změnit nahoru nebo dolů. Pokud ale používáte doménovou strukturu prostředků a vytvořili jste jednosměrnou odchozí důvěryhodnost doménové struktury z Azure služba AD DS do místního prostředí služba AD DS, existují určitá omezení operace změny skladové položky. SKU *Premium* a *Enterprise* definují limit počtu vztahů důvěryhodnosti, které můžete vytvořit. Nemůžete změnit na SKU s nižším maximálním limitem, než je aktuálně nakonfigurované.
 
-Například:
+Příklad:
 
 * Pokud jste vytvořili dvě vztahy důvěryhodnosti doménové struktury na SKU *Premium* , nemůžete přejít na standardní SKU *Standard* . *Standardní* SKU nepodporuje vztahy důvěryhodnosti doménové struktury.
 * Případně, pokud jste vytvořili sedm vztahů důvěryhodnosti na SKU *Premium* , nemůžete přejít na SKU *Enterprise* . SKU *Enterprise* podporuje maximálně pět vztahů důvěryhodnosti.

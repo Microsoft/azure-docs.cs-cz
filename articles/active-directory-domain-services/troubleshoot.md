@@ -2,7 +2,7 @@
 title: Řešení potíží s Azure Active Directory Domain Services | Microsoft Docs
 description: Naučte se řešit běžné chyby při vytváření nebo správě Azure Active Directory Domain Services
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 9593fe71fc4a29678d58d7c67699210a4a39f95e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 89b04f86d41f8e4828580f70a9aec8acea3e0053
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967371"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618446"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Běžné chyby a kroky při řešení potíží pro Azure Active Directory Domain Services
 
@@ -121,7 +121,7 @@ Chcete-li zjistit stav této aplikace a v případě potřeby ji povolit, prove�
 1. V Azure Portal v navigační nabídce vlevo vyberte **Azure Active Directory** .
 1. Vyberte **podnikové aplikace**. Zvolte možnost *všechny aplikace* z rozevírací nabídky **Typ aplikace** a pak vyberte **použít**.
 1. Do vyhledávacího pole zadejte *00000002-0000-0000-C000-00000000000*. Vyberte aplikaci a pak zvolte **vlastnosti**.
-1. Pokud se **povolí uživatelům přihlášení** , nastavte hodnotu na *Ano*a *pak*vyberte **Uložit**.
+1. Pokud se **povolí uživatelům přihlášení** , nastavte hodnotu na *Ano* a *pak* vyberte **Uložit**.
 1. Jakmile aplikaci povolíte, zkuste službu Azure služba AD DS znovu povolit.
 
 ## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>Uživatelé se nemůžou přihlásit ke spravované doméně Azure AD Domain Services

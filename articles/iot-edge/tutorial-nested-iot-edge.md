@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 2f59feb83149042781b624aeb0df73fe3ab32587
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 0226635fe34244bf09bc92f9fe065593d3a79a5a
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574220"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621055"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Kurz: vytvoření hierarchie zařízení IoT Edge (Preview)
 
@@ -611,7 +611,7 @@ Odstranění prostředků:
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nakonfigurovali dvě IoT Edge zařízení jako brány a nastavili je jako nadřazené zařízení druhého. Pak jste si ukázali, že se k podřízenému zařízení z brány odhlásí image kontejneru. Tento scénář můžete vyzkoušet také pomocí skriptu [Azure IoT Edge pro průmyslovou ukázku IoT](https://aka.ms/iotedge-nested-sample), který nasadí virtuální počítače Azure jako předem nakonfigurovaná zařízení pro simulaci prostředí továrny.
+V tomto kurzu jste nakonfigurovali dvě IoT Edge zařízení jako brány a nastavili je jako nadřazené zařízení druhého. Pak jste si ukázali, že se k podřízenému zařízení z brány odhlásí image kontejneru.
 
 Pokud chcete zjistit, jak Azure IoT Edge může vytvořit další řešení pro firemní využití, pokračujte dalšími kurzy.
 

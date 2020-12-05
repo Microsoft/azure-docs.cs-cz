@@ -2,7 +2,7 @@
 title: Zabezpečený Azure AD Domain Services | Microsoft Docs
 description: Přečtěte si, jak zakázat slabé šifry, staré protokoly a synchronizaci hodnot hash hesel protokolu NTLM pro Azure Active Directory Domain Services spravovanou doménu.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 6b4665b5-4324-42ab-82c5-d36c01192c2a
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: c5a3a7b6cd43bebccdbfb22bb4c81f376abc15d9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: a89c898e150facc9860d86e18a7acc42f5e0f441
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967745"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618854"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>Zakázání slabých šifr a synchronizace hodnot hash hesel k zabezpečení Azure Active Directory Domain Services spravované domény
 

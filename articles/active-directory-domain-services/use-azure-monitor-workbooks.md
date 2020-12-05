@@ -1,20 +1,20 @@
 ---
 title: Použití Azure Monitorch sešitů s Azure AD Domain Services | Microsoft Docs
 description: Naučte se používat sešity Azure Monitor ke kontrole auditů zabezpečení a pochopení problémů v Azure Active Directory Domain Services spravované doméně.
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: 5d19cddc82d9fb092887c5cdeba36b8ab7127f94
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.author: justinha
+ms.openlocfilehash: 3067388265fb69b916fe0e179cb896401b7c2dc4
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175130"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618157"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Kontrola událostí auditu zabezpečení v Azure Active Directory Domain Services používání sešitů Azure Monitor
 

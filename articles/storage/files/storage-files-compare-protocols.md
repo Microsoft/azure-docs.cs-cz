@@ -4,16 +4,16 @@ description: Před vytvořením sdílené složky Azure, včetně protokolu SMB 
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: c4cbbc437b633232ea65dd202b7531a1a5ac2c58
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 288d1740c1c4c67dd8756de5fc0652966ae89488
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "96022580"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620970"
 ---
 # <a name="azure-file-share-protocols"></a>Protokoly sdílení souborů Azure
 
@@ -27,7 +27,7 @@ Soubory Azure nabízí dva protokoly pro připojení a připojení ke sdíleným
 |Podporovaný operační systém     |Jádro Linux verze 4.3 +         |Windows 2008 R2 +, jádro Linux verze 4.11 +         |
 |[Dostupné úrovně](storage-files-planning.md#storage-tiers)     |Premium Storage         |Premium Storage, transakce optimalizovaná, horká, studená         |
 |[Redundance](storage-files-planning.md#redundancy)     |LRS, ZRS         |LRS, ZRS, GRS         |
-|Authentication     |Pouze ověřování založené na hostiteli        |Ověřování na základě identity, ověřování uživatelů         |
+|Ověřování     |Pouze ověřování založené na hostiteli        |Ověřování na základě identity, ověřování uživatelů         |
 |Oprávnění     |Oprávnění ve stylu systému UNIX         |Oprávnění ve stylu NTFS         |
 |Sémantika systému souborů     |Kompatibilní s POSIX         |Není kompatibilní se standardem POSIX         |
 |Rozlišovat velká a malá písmena     |Malá a velká písmena se rozlišují.         |Nerozlišuje velká a malá písmena         |

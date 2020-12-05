@@ -2,20 +2,20 @@
 title: Připojte virtuální počítač SLE k Azure AD Domain Services | Microsoft Docs
 description: Přečtěte si, jak nakonfigurovat a připojit virtuální počítač s SUSE Linux Enterprise k Azure AD Domain Services spravované doméně.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.author: joflore
-ms.openlocfilehash: 607d3bc8eca3bd969f0f47ca95923040fb22591e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.author: justinha
+ms.openlocfilehash: f2f421d95dfc376aed373c718198db33a870d9dc
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275856"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619602"
 ---
 # <a name="join-a-suse-linux-enterprise-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Připojení virtuálního počítače s SUSE Linux Enterprise k Azure Active Directory Domain Services spravované doméně
 
@@ -89,7 +89,7 @@ Pokud se chcete připojit ke spravované doméně pomocí **SSSD** a modulu *pro
 
     V YaST vyberte **nastavení systémové > sítě**.
 
-1. Vyberte kartu *název hostitele/DNS* a potom do textového pole *názvového serveru*zadejte IP adresu (ES) spravované domény. Tyto IP adresy se zobrazí v okně *vlastnosti* v Azure Portal vaší spravované domény, jako je například *10.0.2.4* a *10.0.2.5*.
+1. Vyberte kartu *název hostitele/DNS* a potom do textového pole *názvového serveru* zadejte IP adresu (ES) spravované domény. Tyto IP adresy se zobrazí v okně *vlastnosti* v Azure Portal vaší spravované domény, jako je například *10.0.2.4* a *10.0.2.5*.
 
     Přidejte vlastní IP adresy spravované domény a pak vyberte **OK**.
 
@@ -133,17 +133,17 @@ Jakmile je virtuální počítač zaregistrovaný ve spravované doméně, nakon
 
 1. Pokud chcete přihlašovat pomocí dat poskytovaných spravovanou doménou, zaškrtněte políčko pro možnost *Povolení přihlášení uživatele domény*.
 
-1. Volitelně můžete v části *Povolit zdroj dat domény*kontrolovat další zdroje dat, které jsou potřeba pro vaše prostředí. Tyto možnosti zahrnují, kteří uživatelé smějí používat **sudo** nebo které síťové jednotky jsou k dispozici.
+1. Volitelně můžete v části *Povolit zdroj dat domény* kontrolovat další zdroje dat, které jsou potřeba pro vaše prostředí. Tyto možnosti zahrnují, kteří uživatelé smějí používat **sudo** nebo které síťové jednotky jsou k dispozici.
 
 1. Pokud chcete uživatelům ve spravované doméně dovolit, aby měli domovské adresáře na virtuálním počítači, zaškrtněte políčko *vytvořit domovské adresáře*.
 
-1. Na bočním panelu vyberte **Možnosti služby › název přepínače**a pak *Rozšířené možnosti*. Z tohoto okna vyberte buď *fallback_homedir* , nebo *override_homedir*a pak vyberte **Přidat**.
+1. Na bočním panelu vyberte **Možnosti služby › název přepínače** a pak *Rozšířené možnosti*. Z tohoto okna vyberte buď *fallback_homedir* , nebo *override_homedir* a pak vyberte **Přidat**.
 
-1. Zadejte hodnotu umístění domovského adresáře. Chcete-li mít domovské adresáře, postupujte podle formátu */home/user_name*použijte */Home/%u*. Další informace o možných proměnných naleznete na stránce SSSD. conf Man ( `man 5 sssd.conf` ), část *override_homedir*.
+1. Zadejte hodnotu umístění domovského adresáře. Chcete-li mít domovské adresáře, postupujte podle formátu */home/user_name* použijte */Home/%u*. Další informace o možných proměnných naleznete na stránce SSSD. conf Man ( `man 5 sssd.conf` ), část *override_homedir*.
 
 1. Vyberte **OK**.
 
-1. Pokud chcete změny uložit, vyberte **OK**. Pak se ujistěte, že jsou hodnoty zobrazené nyní správné. Pokud chcete dialogové okno opustit, vyberte **Zrušit**.
+1. Vyberte **OK**, aby se změny uložily. Pak se ujistěte, že jsou hodnoty zobrazené nyní správné. Pokud chcete dialogové okno opustit, vyberte **Zrušit**.
 
 1. Pokud máte v úmyslu spouštět SSSD a winbind současně (například při připojení prostřednictvím SSSD, ale na serveru se systémem souborů Samba), měla by být *Metoda protokolu Kerberos* možnosti serveru Samba nastavená na *tajné klíče a keytab* v SMB. conf. Možnost SSSD *ad_update_samba_machine_account_password* by měla být také nastavena na *hodnotu true* v SSSD. conf. Tyto možnosti zabrání tomu, aby systém keytab ze synchronizace.
 
@@ -187,7 +187,7 @@ Připojení ke spravované doméně pomocí **winbind** a *rozhraní příkazov�
 
 ## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-terminal"></a>Připojení virtuálního počítače ke spravované doméně pomocí winbind z terminálu
 
-Připojení ke spravované doméně pomocí **winbind** a * `samba net` příkazu*:
+Připojení ke spravované doméně pomocí **winbind** a *`samba net` příkazu*:
 
 1. Instalace klienta Kerberos a systému SAMBA – winbind:
 

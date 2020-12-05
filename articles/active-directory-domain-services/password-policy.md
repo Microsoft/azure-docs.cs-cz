@@ -2,7 +2,7 @@
 title: Vytvoření a použití zásad hesel v Azure AD Domain Services | Microsoft Docs
 description: Přečtěte si, jak a proč používat podrobné zásady pro hesla k zabezpečení a řízení hesel účtů ve spravované doméně Azure služba AD DS.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 1a14637e-b3d0-4fd9-ba7a-576b8df62ff2
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 2dbc75ac4f143089db778b260bb2c4bee5b49f6a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.author: justinha
+ms.openlocfilehash: df132af1675b3f373fe1eab5685c5d2f07813445
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393162"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619228"
 ---
 # <a name="password-and-account-lockout-policies-on-azure-active-directory-domain-services-managed-domains"></a>Zásady hesel a uzamčení účtů v Azure Active Directory Domain Services spravované domény
 
@@ -117,7 +117,7 @@ Pokud chcete vytvořit vlastní zásady pro hesla, použijte nástroje pro sprá
 
     ![Vyberte uživatele a skupiny, pro které chcete zásady hesel použít.](./media/password-policy/fgpp-applies-to.png)
 
-1. Zásady hesel se dají použít jenom u skupin. V dialogovém okně **umístění** rozbalte název domény, například *aaddscontoso.com* , a pak vyberte organizační jednotku, například **uživatele AADDC**. Pokud máte vlastní organizační jednotku obsahující skupinu uživatelů, kterou chcete použít, vyberte tuto organizační jednotku.
+1. Zásady hesel se dají použít jenom u skupin. V dialogovém okně **umístění** rozbalte název domény, například *aaddscontoso.com*, a pak vyberte organizační jednotku, například **uživatele AADDC**. Pokud máte vlastní organizační jednotku obsahující skupinu uživatelů, kterou chcete použít, vyberte tuto organizační jednotku.
 
     ![Vyberte organizační jednotku, do které skupina patří.](./media/password-policy/fgpp-container.png)
 

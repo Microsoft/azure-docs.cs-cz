@@ -2,20 +2,20 @@
 title: Jak vztahy důvěryhodnosti fungují pro Azure AD Domain Services | Microsoft Docs
 description: Další informace o tom, jak vztah důvěryhodnosti doménové struktury funguje s Azure AD Domain Services
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 50b400ffa047d3865a9df77912da187de1ce9cc9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 5c72ab7d085de558ee95f3c602ccc6be6160b322
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962611"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620201"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Jak vztahy důvěryhodnosti fungují pro doménové struktury prostředků v Azure Active Directory Domain Services
 
@@ -45,7 +45,7 @@ Následující diagram znázorňuje, že všechny domény ve *stromové struktu�
 
 Vztahy důvěryhodnosti povolují přístup k prostředkům, které můžou být jednosměrné nebo obousměrné.
 
-Jednosměrný vztah důvěryhodnosti je jednosměrná ověřovací cesta vytvořená mezi dvěma doménami. V jednosměrovém vztahu důvěryhodnosti mezi *doménou* a a *doménou b*můžou uživatelé v *doméně a* přistupovat k prostředkům v *doméně b*. Uživatelé v *doméně B* ale nemůžou získat přístup k prostředkům v *doméně A*.
+Jednosměrný vztah důvěryhodnosti je jednosměrná ověřovací cesta vytvořená mezi dvěma doménami. V jednosměrovém vztahu důvěryhodnosti mezi *doménou* a a *doménou b* můžou uživatelé v *doméně a* přistupovat k prostředkům v *doméně b*. Uživatelé v *doméně B* ale nemůžou získat přístup k prostředkům v *doméně A*.
 
 Některé jednosměrné vztahy důvěryhodnosti mohou být buď netranzitivní, nebo přechodné v závislosti na typu vytvářeného vztahu důvěryhodnosti.
 
@@ -70,7 +70,7 @@ Vztahy důvěryhodnosti doménové struktury vám pomůžou spravovat segmentova
 
 Pomocí vztahů důvěryhodnosti doménové struktury můžete propojit dvě různé doménové struktury a vytvořit tak jednosměrný nebo obousměrný vztah s obousměrným vztahem důvěryhodnosti. Vztah důvěryhodnosti doménové struktury umožňuje správcům propojit dvě služba AD DS doménových struktur s jedním vztahem důvěryhodnosti a zajistit tak bezproblémové ověřování a možnosti autorizace napříč doménovými strukturami.
 
-Vztah důvěryhodnosti doménové struktury je možné vytvořit jenom mezi kořenovou doménou struktury v jedné doménové struktuře a kořenovou doménou struktury v jiné doménové struktuře. Vztahy důvěryhodnosti doménové struktury je možné vytvořit jenom mezi dvěma doménovými strukturami a nedá se implicitně rozšířit na třetí doménovou strukturu. To znamená, že pokud se vytvoří vztah důvěryhodnosti doménové struktury mezi doménovou strukturou *1* a doménovou strukturou *2*a vytvoří se další vztah důvěryhodnosti doménové struktury mezi *doménovou strukturou 2* a *doménovou* *strukturou*3, *doménová struktura 1* nemá implicitní vztah důvěryhodnosti
+Vztah důvěryhodnosti doménové struktury je možné vytvořit jenom mezi kořenovou doménou struktury v jedné doménové struktuře a kořenovou doménou struktury v jiné doménové struktuře. Vztahy důvěryhodnosti doménové struktury je možné vytvořit jenom mezi dvěma doménovými strukturami a nedá se implicitně rozšířit na třetí doménovou strukturu. To znamená, že pokud se vytvoří vztah důvěryhodnosti doménové struktury mezi doménovou strukturou *1* a doménovou strukturou *2* a vytvoří se další vztah důvěryhodnosti doménové struktury mezi *doménovou strukturou 2* a *doménovou* *strukturou* 3, *doménová struktura 1* nemá implicitní vztah důvěryhodnosti
 
 Následující diagram znázorňuje dva samostatné vztahy důvěryhodnosti doménové struktury mezi třemi služba AD DS doménovou strukturou v jedné organizaci.
 
@@ -170,7 +170,7 @@ Následující diagram a kroky poskytují podrobný popis procesu ověřování 
 
 1. *Uživatel1* se přihlásí k *Workstation1* pomocí přihlašovacích údajů z domény *Europe.tailspintoys.com* . Uživatel se pak pokusí získat přístup ke sdílenému prostředku ve složce *Server1* umístěné v doménové struktuře *USA.wingtiptoys.com* .
 
-2. *Workstation1* kontaktuje službu KDC protokolu Kerberos v řadiči domény ve své doméně, *ChildDC1*a požádá o lístek služby pro *hlavní název* služby (SPN).
+2. *Workstation1* kontaktuje službu KDC protokolu Kerberos v řadiči domény ve své doméně, *ChildDC1* a požádá o lístek služby pro *hlavní název* služby (SPN).
 
 3. *ChildDC1* nenajde hlavní název služby (SPN) v doméně databáze a dotazuje se na globální katalog, aby bylo možné zjistit, zda některé domény v doménové struktuře *tailspintoys.com* obsahují tento název SPN. Vzhledem k tomu, že globální katalog je omezený na vlastní doménovou strukturu, hlavní název služby se nenalezne.
 
@@ -190,7 +190,7 @@ Následující diagram a kroky poskytují podrobný popis procesu ověřování 
 
 9. *Workstation1* kontaktuje službu KDC na *ChildDC2* a vyjednává lístek pro *Uživatel1* , aby získal přístup k souborům *Server1*.
 
-10. Jakmile *Workstation1* má lístek služby, pošle lístek služby do příkazu *Server1*, který přečte přihlašovací údaje zabezpečení *user1*a podle toho vytvoří token pro přístup.
+10. Jakmile *Workstation1* má lístek služby, pošle lístek služby do příkazu *Server1*, který přečte přihlašovací údaje zabezpečení *user1* a podle toho vytvoří token pro přístup.
 
 ## <a name="trusted-domain-object"></a>Objekt důvěryhodné domény
 
@@ -271,7 +271,7 @@ Subsystém zabezpečení LSA poskytuje služby v režimu jádra i v uživatelsk�
 
 ### <a name="management-tools"></a>Nástroje pro správu
 
-Správci můžou *domény a vztahy důvěryhodnosti služby Active Directory*používat *Netdom* *k* vystavení, vytváření, odebírání a úpravám vztahů důvěryhodnosti.
+Správci můžou *domény a vztahy důvěryhodnosti služby Active Directory* používat *Netdom* *k* vystavení, vytváření, odebírání a úpravám vztahů důvěryhodnosti.
 
 * *Domény a vztahy důvěryhodnosti služby Active Directory* je konzola MMC (Microsoft Management Console), která slouží ke správě vztahů důvěryhodnosti domén, úrovní funkčnosti domény a doménové struktury a přípon hlavního názvu uživatele.
 * Nástroje příkazového řádku *netdom* a *Nltest* lze použít k vyhledání, zobrazení, vytvoření a správě vztahů důvěryhodnosti. Tyto nástroje komunikují přímo s autoritou LSA na řadiči domény.

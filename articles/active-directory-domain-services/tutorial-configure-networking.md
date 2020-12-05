@@ -1,20 +1,20 @@
 ---
 title: Kurz – konfigurace virtuální sítě pro Azure AD Domain Services | Microsoft Docs
 description: V tomto kurzu se naučíte, jak vytvořit a nakonfigurovat podsíť virtuální sítě Azure nebo partnerský vztah sítě pro Azure Active Directory Domain Services spravovanou doménu pomocí Azure Portal.
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 33beb0767ef1f21d4fb3d08c9072d7c8479d2cb1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: ddb8f360304bdb41ae359f293af4d10b0afc6558
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967405"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618412"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Konfigurace virtuální sítě pro Azure Active Directory Domain Services spravovanou doménu
 
@@ -86,7 +86,7 @@ Pro vytvoření podsítě virtuální sítě pro virtuální počítače a úloh
 
     ![Přidejte do Azure Portal další rozsah IP adres virtuální sítě.](./media/tutorial-configure-networking/add-vnet-address-range.png)
 
-1. V nabídce vlevo v okně virtuální síť vyberte **podsítě**a pak vyberte **+ podsíť** a přidejte podsíť.
+1. V nabídce vlevo v okně virtuální síť vyberte **podsítě** a pak vyberte **+ podsíť** a přidejte podsíť.
 1. Zadejte název podsítě, například *úlohy*. V případě potřeby aktualizujte **Rozsah adres** , pokud chcete použít podmnožinu rozsahu IP adres nakonfigurovaného pro virtuální síť v předchozích krocích. Prozatím ponechte výchozí nastavení pro možnosti, jako je skupina zabezpečení sítě, směrovací tabulka, koncové body služby.
 
     V následujícím příkladu se vytvoří podsíť s názvem *úlohy* , která používá rozsah IP adres *10.0.3.0/24* :

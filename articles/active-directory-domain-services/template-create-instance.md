@@ -2,20 +2,20 @@
 title: Povolení služby Azure DS Domain Services pomocí šablony | Microsoft Docs
 description: Informace o tom, jak nakonfigurovat a povolit Azure Active Directory Domain Services pomocí šablony Azure Resource Manager
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: 30fc6b0b7eae6b3dd3477944a5d9ddacf83c677a
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.author: justinha
+ms.openlocfilehash: e18825da64d0d200f55ce72985ac843b93b1e612
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041676"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618786"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Vytvoření spravované domény Azure Active Directory Domain Services pomocí šablony Azure Resource Manager
 
@@ -42,12 +42,12 @@ Při vytváření spravované domény Azure služba AD DS zadáte název DNS. P�
 
 * **Název předdefinované domény:** Ve výchozím nastavení se používá integrovaný název domény adresáře (přípona *. onmicrosoft.com* ). Pokud chcete povolit přístup přes Internet k spravované doméně pomocí protokolu Secure LDAP, nemůžete vytvořit digitální certifikát pro zabezpečení připojení s touto výchozí doménou. Společnost Microsoft vlastní doménu *. onmicrosoft.com* , takže certifikační autorita (CA) certifikát nevydá.
 * **Vlastní názvy domén:** Nejběžnějším přístupem je zadat vlastní název domény, obvykle ten, který už vlastníte a který je směrovatelný. Když použijete směrovatelný, vlastní doménu, může provoz správně přesměrovat podle potřeby na podporu vašich aplikací.
-* **Přípony domén bez směrování:** Obecně doporučujeme, abyste se vyhnuli příponě názvu domény, která není směrovatelný, například *contoso. Local* . Přípona *. Local* není směrovatelný a může způsobit problémy s překladem názvů DNS.
+* **Přípony domén bez směrování:** Obecně doporučujeme, abyste se vyhnuli příponě názvu domény, která není směrovatelný, například *contoso. Local*. Přípona *. Local* není směrovatelný a může způsobit problémy s překladem názvů DNS.
 
 > [!TIP]
 > Pokud vytváříte vlastní název domény, je třeba dbát na stávající obory názvů DNS. Doporučuje se použít název domény oddělený od existujícího prostoru názvů Azure nebo místního DNS.
 >
-> Pokud máte například existující obor názvů DNS *contoso.com* , vytvořte spravovanou doménu s vlastním názvem domény *aaddscontoso.com* . Pokud potřebujete použít zabezpečený protokol LDAP, musíte tento vlastní název domény pro vygenerování požadovaných certifikátů zaregistrovat a vlastnit.
+> Pokud máte například existující obor názvů DNS *contoso.com*, vytvořte spravovanou doménu s vlastním názvem domény *aaddscontoso.com*. Pokud potřebujete použít zabezpečený protokol LDAP, musíte tento vlastní název domény pro vygenerování požadovaných certifikátů zaregistrovat a vlastnit.
 >
 > Možná budete muset vytvořit některé další záznamy DNS pro další služby ve vašem prostředí nebo podmíněné služby DNS pro přeposílání mezi stávajícími obory názvů DNS ve vašem prostředí. Pokud například spustíte webový server, který je hostitelem lokality pomocí kořenového názvu DNS, může dojít ke konfliktům názvů, které vyžadují další položky DNS.
 >
@@ -71,7 +71,7 @@ Nejdřív Zaregistrujte poskytovatele prostředků Azure AD Domain Services pomo
 Register-AzResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
-Vytvořte instanční objekt služby Azure AD pomocí rutiny [New-AzureADServicePrincipal][New-AzureADServicePrincipal] pro Azure služba AD DS, abyste mohli komunikovat a ověřovat sám sebe. Konkrétní ID aplikace se používá s názvem *služby řadiče domény* s ID *6ba9a5d4-8456-4118-b521-9c5ca10cdf84* . Neměňte toto ID aplikace.
+Vytvořte instanční objekt služby Azure AD pomocí rutiny [New-AzureADServicePrincipal][New-AzureADServicePrincipal] pro Azure služba AD DS, abyste mohli komunikovat a ověřovat sám sebe. Konkrétní ID aplikace se používá s názvem *služby řadiče domény* s ID *6ba9a5d4-8456-4118-b521-9c5ca10cdf84*. Neměňte toto ID aplikace.
 
 ```powershell
 New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"

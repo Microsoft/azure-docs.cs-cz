@@ -5,25 +5,26 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 12/02/2020
+ms.date: 12/04/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: db4bc51b937535b7b53273bf01057d9b6c5198b3
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 372342611265640a2a64100f003880a430d61ca0
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96584601"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620935"
 ---
 Ve verzi Preview má systém souborů NFS tato omezení:
 
-- Systém souborů NFS 4,1 aktuálně podporuje pouze povinné funkce ze [specifikace protokolu](https://tools.ietf.org/html/rfc5661). Volitelné funkce, jako jsou delegování a zpětné volání všech druhů, zamknutí zámků a downgradů a ověřování pomocí protokolu Kerberos a šifrování se nepodporuje.
+- Systém souborů NFS 4,1 aktuálně podporuje pouze většinu funkcí ze [specifikace protokolu](https://tools.ietf.org/html/rfc5661). Některé funkce, jako jsou delegování a zpětné volání všech druhů, zamknutí zámků a downgradů, ověřování protokolem Kerberos a šifrování se nepodporují.
 - Pokud je většina vašich požadavků orientovaných na metadata, pak bude latence ve srovnání s operacemi čtení, zápisu a aktualizace horší.
 - Aby bylo možné vytvořit sdílenou složku NFS, je nutné vytvořit nový účet úložiště.
 - Podporují se jenom rozhraní REST API roviny správy. Rozhraní REST API pro rovinu dat nejsou k dispozici, což znamená, že nástroje, jako Průzkumník služby Storage, nebudou pracovat se sdílenými složkami NFS, ani nebude možné procházet sdílená data NFS v Azure Portal.
 - AzCopy se v tuto chvíli nepodporuje.
 - Dostupné jenom pro úroveň Premium.
-- Aktuálně dostupné jenom pro místně redundantní úložiště (LRS).
+- Sdílené složky NFS akceptují jenom číselné UID/GID. Chcete-li klientům zabránit, aby odesílali alfanumerické UID/GID, měli byste zakázat mapování ID.
+- Sdílené složky se můžou při použití privátních odkazů připojit jenom z jednoho účtu úložiště na samostatném virtuálním počítači. Pokus o připojení sdílených složek z jiných účtů úložiště se nezdaří.
 
 ### <a name="azure-storage-features-not-yet-supported"></a>Azure Storage funkce ještě nejsou podporované.
 

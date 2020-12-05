@@ -2,7 +2,7 @@
 title: Vyřešit výstrahy skupiny zabezpečení sítě v Azure služba AD DS | Microsoft Docs
 description: Přečtěte si, jak řešit a řešit výstrahy konfigurace skupiny zabezpečení sítě pro Azure Active Directory Domain Services
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 95f970a7-5867-4108-a87e-471fa0910b8c
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: f8917d7bd8fc1a4091607b9a405cfefbb51bc188
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: d8f2e77b7225306844cec85363a2971eaac4eebd
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962781"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620252"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Známé problémy: výstrahy konfigurace sítě v Azure Active Directory Domain Services
 
@@ -80,7 +80,7 @@ Chcete-li přidat chybějící pravidlo zabezpečení, proveďte následující 
 1. V Azure Portal vyhledejte a vyberte **skupiny zabezpečení sítě**.
 1. Vyberte skupinu zabezpečení sítě přidruženou k vaší spravované doméně, například *AADDS-contoso.com-NSG*.
 1. V části **Nastavení** na levém panelu klikněte na *příchozí pravidla zabezpečení* nebo na *odchozí pravidla zabezpečení* v závislosti na tom, které pravidlo potřebujete přidat.
-1. Vyberte **Přidat**a pak vytvořte požadované pravidlo na základě portu, protokolu, směru atd. Až budete připraveni, vyberte **OK**.
+1. Vyberte **Přidat** a pak vytvořte požadované pravidlo na základě portu, protokolu, směru atd. Až budete připraveni, vyberte **OK**.
 
 Přidání a zobrazení pravidla zabezpečení v seznamu bude chvíli trvat.
 

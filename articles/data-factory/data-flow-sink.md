@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/17/2020
-ms.openlocfilehash: 63be912986542741359cd5e88227f06905d42647
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: da89d4fbc3f9e03e76d901c2215e4f16c5273013
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350870"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621106"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Transformace jímky v toku dat mapování
 
@@ -103,6 +103,10 @@ Ve výchozím nastavení jsou data zapisována do více umyvadel v nedeterminist
 > Při použití [vyhledávání uložených v mezipaměti](./concepts-data-flow-expression-builder.md#cached-lookup)se ujistěte, že vaše řazení jímky má jímky v mezipaměti nastavené na 1, nejnižší (nebo první) v pořadí řazení.
 
 ![Vlastní řazení jímky](media/data-flow/cache-2.png "Vlastní řazení jímky")
+
+### <a name="sink-groups"></a>Skupiny jímky
+
+Můžete seskupovat jímky pomocí stejného pořadového čísla pro řadu umyvadel. ADF bude tyto jímky považovat za skupiny, které se můžou spouštět paralelně. Možnosti paralelního spouštění se budou nacházet v aktivitě toku dat kanálu.
 
 ## <a name="error-row-handling"></a>Zpracování chybového řádku
 

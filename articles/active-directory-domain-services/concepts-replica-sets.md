@@ -2,20 +2,20 @@
 title: Koncepty sad replik pro Azure AD Domain Services | Microsoft Docs
 description: Zjistěte, jaké sady replik jsou v Azure Active Directory Domain Services a jak poskytují redundanci aplikacím, které vyžadují služby identity.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.author: joflore
-ms.openlocfilehash: 499f4df303993d97ebb4eb38de98828b085aff00
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 5359a955ea97b559b7e3d244bfb6c4fb09e8681b
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961064"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620031"
 ---
 # <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services-preview"></a>Klíčové pojmy a funkce pro Azure Active Directory Domain Services sady repliky (Preview)
 
@@ -68,7 +68,7 @@ Sady replik jsou funkcí veřejné verze Preview v Azure AD Domain Services. Mů
 
 ### <a name="can-i-create-a-replica-set-in-subscription-different-from-my-managed-domain"></a>Můžu v předplatném vytvořit sadu replik odlišnou od mé spravované domény?
 
-Ne. Sady replik musí být ve stejném předplatném jako spravovaná doména.
+No. Sady replik musí být ve stejném předplatném jako spravovaná doména.
 
 ### <a name="how-many-replica-sets-can-i-create"></a>Kolik sad replik můžu vytvořit?
 

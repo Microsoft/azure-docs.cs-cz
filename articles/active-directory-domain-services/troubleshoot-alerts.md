@@ -2,7 +2,7 @@
 title: Běžné výstrahy a řešení v Azure AD Domain Services | Microsoft Docs
 description: Naučte se řešit běžné výstrahy vygenerované jako součást stavu pro Azure Active Directory Domain Services
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 54319292-6aa0-4a08-846b-e3c53ecca483
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: 5324018bace0ad530dea8ae94cecdc5b41b618c7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 80011b2ae2a70ce4c540ac31897cc8be4a6580c3
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967592"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618616"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Známé problémy: běžné výstrahy a řešení v Azure Active Directory Domain Services
 
@@ -73,7 +73,7 @@ Pokud chcete tuto výstrahu vyřešit, odstraňte existující spravovanou domé
 
 1. [Odstraňte spravovanou doménu](delete-aadds.md) z adresáře.
 1. Chcete-li aktualizovat rozsah IP adres virtuální sítě, vyhledejte a vyberte možnost *virtuální síť* v Azure Portal. Vyberte virtuální síť pro Azure služba AD DS, která má nesprávně nastavený rozsah veřejných IP adres.
-1. V části **Nastavení**vyberte *adresní prostor*.
+1. V části **Nastavení** vyberte *adresní prostor*.
 1. Aktualizujte rozsah adres tak, že vyberete stávající rozsah adres, upravíte ho nebo přidáte další rozsah adres. Ujistěte se, že je nový rozsah IP adres v rozsahu privátních IP adres. Až budete připraveni, změny **uložte** .
 1. V levém navigačním panelu vyberte **podsítě** .
 1. Vyberte podsíť, kterou chcete upravit, nebo vytvořte další podsíť.
@@ -179,7 +179,7 @@ Pokud chcete tuto výstrahu vyřešit, odstraňte existující spravovanou domé
 
 1. [Odstraňte spravovanou doménu](delete-aadds.md) z adresáře.
 1. Chcete-li aktualizovat rozsah IP adres virtuální sítě, vyhledejte a vyberte možnost *virtuální síť* v Azure Portal. Vyberte virtuální síť pro spravovanou doménu, která má malý rozsah IP adres.
-1. V části **Nastavení**vyberte *adresní prostor*.
+1. V části **Nastavení** vyberte *adresní prostor*.
 1. Aktualizujte rozsah adres tak, že vyberete stávající rozsah adres, upravíte ho nebo přidáte další rozsah adres. Zajistěte, aby byl nový rozsah IP adres dostatečně velký pro rozsah podsítí spravované domény. Až budete připraveni, změny **uložte** .
 1. V levém navigačním panelu vyberte **podsítě** .
 1. Vyberte podsíť, kterou chcete upravit, nebo vytvořte další podsíť.
@@ -221,7 +221,7 @@ K tomu, aby se zabránilo změně nebo odstranění, se můžou použít zámky 
 Pokud chcete vyhledat zámky prostředků na součástech Azure služba AD DS a odebrat je, proveďte následující kroky:
 
 1. U každé síťové součásti spravované domény, jako je třeba virtuální síť, síťové rozhraní nebo veřejná IP adresa, se podívejte na protokoly operací v Azure Portal. Tyto protokoly operací by měly ukazovat, proč selže operace a kde se používá zámek prostředku.
-1. Vyberte prostředek, na kterém je zámek použit, a pak v části **zámky**vyberte a odeberte zámky.
+1. Vyberte prostředek, na kterém je zámek použit, a pak v části **zámky** vyberte a odeberte zámky.
 
 ## <a name="aadds116-resources-are-unusable"></a>AADDS116: prostředky jsou nepoužitelné.
 
@@ -236,7 +236,7 @@ Zásady se používají u prostředků Azure a skupin prostředků, které urču
 Pokud chcete vyhledat použité zásady v součástech Azure služba AD DS a aktualizovat je, proveďte následující kroky:
 
 1. U každé síťové součásti spravované domény, jako je například virtuální síť, síťová karta nebo veřejná IP adresa, se podívejte na protokoly operací v Azure Portal. Tyto protokoly operací by měly ukazovat, proč selže operace a kde se uplatní omezující zásada.
-1. Vyberte prostředek, u kterého se zásada používá, a pak v části **zásady**vyberte a upravte zásadu tak, aby byla méně omezující.
+1. Vyberte prostředek, u kterého se zásada používá, a pak v části **zásady** vyberte a upravte zásadu tak, aby byla méně omezující.
 
 ## <a name="aadds500-synchronization-has-not-completed-in-a-while"></a>AADDS500: synchronizace se ještě nedokončila.
 

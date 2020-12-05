@@ -3,19 +3,22 @@ title: Požadovaný seznam adres URL pro virtuální počítač s Windows – Az
 description: Seznam adres URL, které musíte odblokovat, abyste měli jistotu, že vaše nasazení virtuálních klientů Windows funguje tak, jak je zamýšlené.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 12/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6b3fdc18a04dadf4bf1cf380c7bb51d21f826633
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 70b7042e4006cc59419d0ea6798fe7626a82c086
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512337"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621072"
 ---
 # <a name="required-url-list"></a>Seznam požadovaných adres URL
 
-Aby bylo možné nasadit a používat virtuální počítač s Windows, musíte odblokovat určité adresy URL, aby k nim měli přístup vaše virtuální počítače, aby k nim měli přístup kdykoli. V tomto článku jsou uvedené požadované adresy URL, které potřebujete odblokovat.
+Aby bylo možné nasadit a používat virtuální počítač s Windows, musíte odblokovat určité adresy URL, aby k nim měli přístup vaše virtuální počítače, aby k nim měli přístup kdykoli. V tomto článku jsou uvedené požadované adresy URL, které potřebujete odblokovat, aby funkce Virtual Desktop systému Windows fungovala správně. 
+
+>[!IMPORTANT]
+>Virtuální počítač s Windows nepodporuje nasazení, která blokují adresy URL uvedené v tomto článku.
 
 ## <a name="virtual-machines"></a>Virtuální počítače
 
