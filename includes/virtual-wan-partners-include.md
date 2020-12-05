@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 827b4689629dec0318ad66b21b59744392bf9919
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: fe6faf72f17dae23f6e8a6c7cc56f8577881281a
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504005"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96615757"
 ---
 V odkazech v této části najdete další informace o službách, které nabízejí partneři. Pokud vaše pobočka zařízení není uvedená v následující části, obraťte se na svého poskytovatele firemního zařízení. Můžou nás kontaktovat odesláním e-mailu na adresu azurevirtualwan@microsoft.com .
 
@@ -29,7 +29,7 @@ V odkazech v této části najdete další informace o službách, které nabíz
 | [NetFoundry](https://netfoundry.io/solutions/netfoundry-for-microsoft-azure-virtual-wan/)|[Centrum podpory Netfoundry: Azure Virtual WAN](https://support.netfoundry.io/hc/en-us/articles/360018137891-Introduction-to-Azure-Virtual-WAN-sites)|
 |[Nuage/Nokia](https://www.nuagenetworks.net/our-partners/nuage-networks-virtualized-cloud-interconnect-for-azure/)|[Průvodce nasazením Nuage a Azure Virtual WAN](https://onestore.nokia.com/asset/210073)|
 |[Otevřené systémy]( https://open-systems.com/solutions/microsoft-azure-virtual-wan)|[Průvodce nasazením systému a Azure Virtual WAN](https://open-systems.com/wp-content/uploads/2020/07/Azure-Virtual-WAN-UserGuide.pdf)|
-|[Palo Alto Networks](https://researchcenter.paloaltonetworks.com/2018/09/azure-vwan-integration/) |* |
+|[Palo Alto Networks](https://researchcenter.paloaltonetworks.com/2018/09/azure-vwan-integration/) |[Průvodce nasazením Palo Alto Networks Azure Virtual WAN](https://github.com/PaloAltoNetworks/microsoft_azure_virtual_wan)|
 |[Riverbed Technology](https://www.riverbed.com/go/steelconnect-azurewan.html)|* |
 |[Stříbrná špička]( https://www.silver-peak.com/silver-peak-expands-integration-with-microsoft-cloud-services)|[Průvodce integrací virtuální sítě WAN v EdgeConnect a Microsoft Azure](https://www.silver-peak.com/documentation/edgeconnect-and-azure-vwan-integration-guide)|
 |[Velocloud – VMWare]( https://wan.velocloud.com/rs/098-RBR-178/images/sdwan-654-connect-azure-vwan-so-0819.pdf)|[Průvodce nasazením Azure Virtual WAN Velocloud](https://kb.vmware.com/s/article/79000)|

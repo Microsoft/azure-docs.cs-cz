@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/07/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: a0ed1ef796412211d1d0871d3e09aed4f7346ae5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 35d5940fbc001d1806711afb14aa4a549bcb1826
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979230"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96615770"
 ---
 <a name="HOLTop"></a>
 
@@ -28,11 +28,11 @@ ms.locfileid: "94979230"
 
 # <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
-[Referenční dokumentace v2](/dotnet/api/overview/azure/cognitiveservices/client/textanalytics)  |  [zdrojový kód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics)  |  knihovny v2 [balíček v2 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/)  |  [ukázky v2](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
+[Referenční dokumentace v2](/dotnet/api/overview/azure/cognitiveservices/client?view=azure-dotnet)  |  [zdrojový kód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics)  |  knihovny v2 [balíček v2 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/)  |  [ukázky v2](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
 
 ---
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * [Integrované vývojové prostředí (IDE) sady Visual Studio](https://visualstudio.microsoft.com/vs/)
@@ -176,10 +176,10 @@ Pokud používáte verzi `3.x` služby, můžete použít volitelnou `TextAnalyt
 
 * [Analýza mínění](#sentiment-analysis)
 * [Dolování názoru](#opinion-mining)
-* [Rozpoznávání jazyka](#language-detection)
+* [rozpoznávání jazyka,](#language-detection)
 * [Rozpoznávání pojmenovaných entit](#named-entity-recognition-ner)
 * [Propojení entit](#entity-linking)
-* [Extrakce klíčových frází](#key-phrase-extraction)
+* [extrakce klíčových frází,](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
