@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 75ccfe7a8e62e519b1df89792211433260a6abf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6584b2ecc54efd257bb30c479fd0f22150e8d9e1
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89294709"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608584"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurace funkce MPIO na hostiteli StorSimple se systémem CentOS
 Tento článek popisuje kroky potřebné ke konfiguraci funkce MPIO (CentOS) na hostitelském serveru s 6,6 v/v. Hostitelský server je připojený k vašemu zařízení Microsoft Azure StorSimple pro zajištění vysoké dostupnosti prostřednictvím iniciátorů iSCSI. Podrobně popisuje automatické zjišťování zařízení s více cestami a konkrétní nastavení jenom pro StorSimple svazky.
@@ -21,6 +21,9 @@ Tento postup platí pro všechny modely zařízení řady StorSimple 8000.
 
 > [!NOTE]
 > Tuto proceduru nelze použít pro StorSimple Cloud Appliance. Další informace najdete v tématu Postup konfigurace hostitelských serverů pro vaše cloudové zařízení.
+
+> [!NOTE]
+> Tento článek obsahuje odkazy na termín nesouhlasný – *termín, který* společnost Microsoft už nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 
 
 ## <a name="about-multipathing"></a>O více cestách
@@ -60,7 +63,7 @@ Zařízení StorSimple připojené k hostiteli se systémem Linux je možné nak
 
 Následující postup popisuje, jak nakonfigurovat více cest, pokud je zařízení StorSimple se dvěma síťovými rozhraními připojeno k hostiteli se dvěma síťovými rozhraními.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Tato část podrobně popisuje požadavky na konfiguraci pro server CentOS a zařízení StorSimple.
 
 ### <a name="on-centos-host"></a>Na hostiteli CentOS

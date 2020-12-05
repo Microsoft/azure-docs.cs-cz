@@ -3,16 +3,16 @@ title: Vlastní CI kontejnerů/CD z akcí GitHubu
 description: Naučte se používat akce GitHubu k nasazení vlastního kontejneru Linux do App Service z kanálu CI/CD.
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2020
+ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: 068fc9dcb9a4f4a62c2dd879bf8144097452f1e0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 76d82695f0f43638e840589c52d6713ae36c1608
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099024"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607802"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Nasazení vlastního kontejneru pro App Service pomocí akcí GitHubu
 
@@ -31,10 +31,10 @@ Pro pracovní postup kontejneru Azure App Service má soubor tři části:
 ## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořit účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Účet GitHub. Pokud ho ještě nemáte, zaregistrujte se [zdarma](https://github.com/join).  
-- Pracovní kontejner registru a aplikace Azure App Service pro kontejnery. Tento příklad používá Azure Container Registry. 
+- Účet GitHub. Pokud ho ještě nemáte, zaregistrujte se [zdarma](https://github.com/join). K nasazení do Azure App Service musíte mít v úložišti GitHub kód. 
+- Pracovní kontejner registru a aplikace Azure App Service pro kontejnery. Tento příklad používá Azure Container Registry. Nezapomeňte dokončit úplné nasazení, aby se Azure App Service pro kontejnery. Na rozdíl od běžných webových aplikací nemá Web Apps for Containers výchozí cílovou stránku. Publikujte kontejner, aby měl pracovní příklad.
     - [Naučte se vytvořit kontejnerovou aplikaci Node.js pomocí Docker, nahrajte image kontejneru do registru a pak nasaďte image do Azure App Service](/azure/developer/javascript/tutorial-vscode-docker-node-01)
-
+        
 ## <a name="generate-deployment-credentials"></a>Generovat přihlašovací údaje nasazení
 
 Doporučený způsob ověřování pomocí Azure App Services pro akce GitHubu je profil publikování. Můžete se také ověřit pomocí instančního objektu, ale proces vyžaduje více kroků. 
@@ -47,10 +47,10 @@ Profil publikování je přihlašovací údaje na úrovni aplikace. Nastavte sv�
 
 1. V Azure Portal přejdete do služby App Service. 
 
-1. Na stránce **Přehled** vyberte **získat profil publikování** .
+1. Na stránce **Přehled** vyberte **získat profil publikování**.
 
     > [!NOTE]
-    > Od října 2020 budou webové aplikace pro Linux potřebovat nastavení aplikace `WEBSITE_WEBDEPLOY_USE_SCM` nastavené na hodnotu `true` **před stažením souboru** . Tento požadavek se v budoucnu odebere.
+    > Od října 2020 budou webové aplikace pro Linux potřebovat nastavení aplikace `WEBSITE_WEBDEPLOY_USE_SCM` nastavené na hodnotu `true` **před stažením souboru**. Tento požadavek se v budoucnu odebere. Informace o tom, jak nakonfigurovat běžné nastavení webové aplikace, najdete [v tématu Konfigurace aplikace App Service v Azure Portal](/azure/app-service/configure-common).  
 
 1. Stažený soubor uložte. Pomocí obsahu souboru vytvoříte tajný klíč GitHubu.
 
@@ -80,30 +80,15 @@ V tomto příkladu Nahraďte zástupné symboly IDENTIFIKÁTORem vašeho předpl
 > Je vždy dobrým zvykem udělit minimální přístup. Obor v předchozím příkladu je omezený na konkrétní App Service aplikaci, a ne na celou skupinu prostředků.
 
 ---
-
-## <a name="configure-the-github-secret"></a>Konfigurace tajného kódu GitHubu
-
-V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení > tajných kódů > přidejte nový tajný kód** .
-
-Vložte obsah výstupu JSON jako hodnotu tajné proměnné. Zadejte tajný kód jako název `AZURE_CREDENTIALS` .
-
-Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Například:
-
-```yaml
-- uses: azure/login@v1
-  with:
-    creds: ${{ secrets.AZURE_CREDENTIALS }}
-```
-
 ## <a name="configure-the-github-secret-for-authentication"></a>Konfigurace tajného kódu GitHubu pro ověřování
 
 # <a name="publish-profile"></a>[Publikovat profil](#tab/publish-profile)
 
-V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení > tajných kódů > přidejte nový tajný kód** .
+V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení > tajných kódů > přidejte nový tajný kód**.
 
 Pokud chcete použít [přihlašovací údaje na úrovni aplikace](#generate-deployment-credentials), vložte obsah staženého souboru publikačního profilu do pole hodnota tajného klíče. Pojmenujte tajný klíč `AZURE_WEBAPP_PUBLISH_PROFILE` .
 
-Když nakonfigurujete pracovní postup GitHubu, použijte `AZURE_WEBAPP_PUBLISH_PROFILE` v akci nasazení webové aplikace Azure. Například:
+Když nakonfigurujete pracovní postup GitHubu, použijte `AZURE_WEBAPP_PUBLISH_PROFILE` v akci nasazení webové aplikace Azure. Příklad:
     
 ```yaml
 - uses: azure/webapps-deploy@v2
@@ -113,11 +98,11 @@ Když nakonfigurujete pracovní postup GitHubu, použijte `AZURE_WEBAPP_PUBLISH_
 
 # <a name="service-principal"></a>[Instanční objekt](#tab/service-principal)
 
-V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení > tajných kódů > přidejte nový tajný kód** .
+V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení > tajných kódů > přidejte nový tajný kód**.
 
 Pokud chcete použít [přihlašovací údaje na úrovni uživatele](#generate-deployment-credentials), vložte celý výstup JSON z příkazu Azure CLI do pole hodnota tajného klíče. Zadejte tajný kód jako název `AZURE_CREDENTIALS` .
 
-Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Například:
+Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Příklad:
 
 ```yaml
 - uses: azure/login@v1
@@ -129,9 +114,9 @@ Když později nakonfigurujete soubor pracovního postupu, použijete tajný kl�
 
 ## <a name="configure-github-secrets-for-your-registry"></a>Konfigurace tajných kódů GitHubu pro váš registr
 
-Definování tajných kódů pro použití s akcí přihlášení k Docker 
+Definování tajných kódů pro použití s akcí přihlášení k Docker Příklad v tomto dokumentu používá Azure Container Registry pro Registry kontejneru. 
 
-1. V Azure Portal nebo Docker klikněte na kontejner a zkopírujte uživatelské jméno a heslo. 
+1. V Azure Portal nebo Docker klikněte na kontejner a zkopírujte uživatelské jméno a heslo. Azure Container Registry uživatelské jméno a heslo najdete v Azure Portal v části **Nastavení**  >  **přístupových klíčů** pro váš registr. 
 
 2. Zadejte nový tajný klíč pro uživatelské jméno registru s názvem `REGISTRY_USERNAME` . 
 
@@ -163,7 +148,7 @@ jobs:
         docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
 ```
 
-Můžete také použít [přihlášení Docker](https://github.com/azure/docker-login) pro přihlášení k více registrům kontejnerů současně. Tento příklad obsahuje dva nové tajné kódy GitHubu pro ověřování pomocí docker.io.
+Můžete také použít [přihlášení Docker](https://github.com/azure/docker-login) pro přihlášení k více registrům kontejnerů současně. Tento příklad obsahuje dva nové tajné kódy GitHubu pro ověřování pomocí docker.io. V příkladu se předpokládá, že existuje souboru Dockerfile na kořenové úrovni registru. 
 
 ```yml
 name: Linux Container Node Workflow
@@ -248,7 +233,7 @@ jobs:
     steps:
     # checkout the repo
     - name: 'Checkout GitHub Action' 
-      uses: actions/checkout@master
+      uses: actions/checkout@main
     
     - name: 'Login via Azure CLI'
       uses: azure/login@v1

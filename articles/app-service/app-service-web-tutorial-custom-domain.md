@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a74a3b7542a8d683e9bbf16f99c9b2646d95e00d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b45e1fbaf912cc045ba51a79db434baecbabdf43
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95986531"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608244"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Kurz: mapování stávajícího vlastního názvu DNS na Azure App Service
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Přesměrujte výchozí adresu URL na vlastní adresář.
 > * Automatizace mapování domén pomocí skriptů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -83,7 +83,7 @@ Zobrazí se stránka pro správu aplikace App Service.
 
 1. Vyberte některou z placených úrovní (**D1**, **B1**, **B2**, **B3** nebo kteroukoli úroveň v kategorii **Produkční**). Další možnosti **zobrazíte výběrem možnosti Zobrazit další možnosti**.
 
-1. Vyberte **Apply** (Použít).
+1. Vyberte **Použít**.
 
    ![Snímek obrazovky, který ukazuje kontrolu cenové úrovně.](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
@@ -206,7 +206,7 @@ Pokud chcete namapovat záznam A na aplikaci, obvykle pro kořenovou doménu, vy
 > | Typ záznamu | Hostitel | Hodnota |
 > | - | - | - |
 > | A | `www` | IP adresa z části [Zkopírování IP adresy aplikace](#info) |
-> | TXT | `asuid.www` | `<app-name>.azurewebsites.net` |
+> | TXT | `asuid.www` | [ID ověření, které jste získali dříve](#get-a-domain-verification-id) |
 >
 
 Po přidání záznamů bude stránka záznamů DNS vypadat jako v následujícím příkladu:

@@ -4,12 +4,12 @@ description: Vytvoření a správa instančního objektu služby Azure Active Di
 services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 7f62c7dc7aacf9be4a59498aa5c556e9991ad578
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e95eae3ab8d992bc169e54700e7e31715e72102e
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85298544"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607819"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Instanční objekty se službou Azure Kubernetes Service (AKS)
 
@@ -23,7 +23,7 @@ Abyste mohli vytvořit instanční objekt služby Azure AD, musíte mít oprávn
 
 Pokud používáte instanční objekt z jiného tenanta Azure AD, existují další okolnosti týkající se oprávnění, která jsou k dispozici při nasazení clusteru. Možná nemáte potřebná oprávnění ke čtení a zápisu informací o adresáři. Další informace najdete v tématu [co jsou výchozí oprávnění uživatele v Azure Active Directory?][azure-ad-permissions]
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 ## <a name="automatically-create-and-use-a-service-principal"></a>Automatické vytvoření a použití instančního objektu
 
@@ -105,7 +105,6 @@ Můžete použít pokročilé sítě, ve kterých se virtuální síť a podsí�
 - Vytvořte [vlastní roli][rbac-custom-role] a definujte následující oprávnění role:
   - *Microsoft. Network/virtualNetworks/subnets/JOIN/Action*
   - *Microsoft. Network/virtualNetworks/podsítí/čtení*
-  - *Microsoft. Network/virtualNetworks/podsítí/Write*
   - *Microsoft. Network/publicIPAddresses/JOIN/Action*
   - *Microsoft. Network/publicIPAddresses/Read*
   - *Microsoft. Network/publicIPAddresses/Write*

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 5976649ee396d897b76713b7863668d92279612e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6b0504f5e4199ee3cd8e86660b866fddf2568485
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484304"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608567"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
@@ -53,6 +53,10 @@ ms.locfileid: "96484304"
 
 Tento článek popisuje, jak nasadit virtuální počítače, nakonfigurovat virtuální počítače, nainstalovat architekturu clusteru a nainstalovat vysoce dostupný server NFS, který se dá použít k ukládání sdílených dat vysoce dostupného systému SAP.
 Tato příručka popisuje, jak nastavit vysoce dostupný server NFS, který se používá dvěma systémy SAP, NW1 a NW2. Názvy prostředků (například virtuální počítače, virtuální sítě) v příkladu předpokládají, že jste použili [šablonu souborového serveru SAP][template-file-server] s předponou prostředků **výr**.
+
+
+> [!NOTE]
+> Tento článek obsahuje odkazy na *podřízené* a *hlavní* pravidla, které Microsoft už nepoužívá. Po odebrání podmínek ze softwaru je odebereme z tohoto článku.
 
 Nejprve si přečtěte následující poznámky a dokumenty SAP
 

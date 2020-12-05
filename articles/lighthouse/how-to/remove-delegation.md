@@ -1,14 +1,14 @@
 ---
 title: Odebrání přístupu k delegování
 description: Naučte se, jak odebrat přístup k prostředkům, které byly delegované pro poskytovatele služeb pro Azure Lighthouse.
-ms.date: 08/12/2020
+ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 72a2c49dde8cccfcc298d4128384a10bb7e8840f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3442bb9fd2f6e7423fd4bf28cace1f7fd91ad80
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167219"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608448"
 ---
 # <a name="remove-access-to-a-delegation"></a>Odebrání přístupu k delegování
 
@@ -45,7 +45,7 @@ Tato role se dá vybrat taky při **autorizaci** při [vytváření nabídky spr
 
 Uživatel s tímto oprávněním může odebrat delegování jedním z následujících způsobů.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 1. Přejděte na [stránku Moji zákazníci](view-manage-customers.md).
 2. Vyberte **delegování**.
@@ -99,3 +99,4 @@ az managedservices assignment delete --assignment <id or full resourceId>
 
 - Další informace o [správě delegovaných prostředků Azure](../concepts/azure-delegated-resource-management.md)
 - V **Azure Portal můžete** [Zobrazit a spravovat zákazníky](view-manage-customers.md) .
+- Přečtěte si, jak [aktualizovat předchozí delegování](update-delegation.md).

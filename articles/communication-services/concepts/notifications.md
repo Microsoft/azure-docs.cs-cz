@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9cf503f374cd2fd1ca04aad6650b2c07abebbc46
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a52188dc5058dbc74d3b03fba860b98540cd4a41
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519349"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608499"
 ---
 # <a name="communication-services-notifications"></a>Oznámení služby Communication Services
 
@@ -48,13 +48,10 @@ Komunikační služby využívají Azure Notification hub jako předávací slu�
 Pokud chcete odesílat nabízená oznámení do klientských zařízení pomocí Notification Hubs, [vytvořte centrum oznámení](../../notification-hubs/create-notification-hub-portal.md) v rámci stejného předplatného jako prostředek služby Communications. Pro službu oznámení platformy, kterou chcete použít, musí být služba Azure Notification Hubs nakonfigurovaná. Informace o tom, jak v klientské aplikaci získat nabízená oznámení z Notification Hubs, najdete v tématu [Začínáme s Notification Hubs](../../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md) a v rozevíracím seznamu v horní části stránky vyberte cílovou klientskou platformu.
 
 > [!NOTE]
-> V současné době jsou podporovány platformy APNs a FCM.
+> V současné době jsou podporovány platformy APNs a FCM.  
+U platformy APNs je potřeba nakonfigurovat režim ověřování tokenu. Režim ověřování certifikátu není nyní podporován. 
 
 Jakmile je vaše centrum oznámení nakonfigurované, můžete ho přidružit k vašemu prostředku komunikačních služeb zadáním připojovacího řetězce pro centrum pomocí klienta Azure Resource Manager nebo prostřednictvím Azure Portal. Připojovací řetězec by měl obsahovat oprávnění Send (Odeslat). Doporučujeme vytvořit další zásadu přístupu s oprávněním Send jenom pro vaše centrum. Další informace o [Notification Hubs zásadách zabezpečení a přístupu](../../notification-hubs/notification-hubs-push-notification-security.md)
-
-> [!IMPORTANT]
-> To platí jenom pro režim ověřování tokenu. Režim ověřování certifikátu není nyní podporován.  
-Aby bylo možné povolit oznámení služby APN VOIP, je nutné nastavit hodnotu ID sady prostředků při konfiguraci centra oznámení tak, aby se staly IDENTIFIKÁTORem aplikačního sady s `.voip` příponou. Další podrobnosti najdete v tématu [použití služby APN VoIP prostřednictvím Notification Hubs](../../notification-hubs/voip-apns.md) .
 
 #### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>Konfigurace centra oznámení pomocí klienta Azure Resource Manager
 

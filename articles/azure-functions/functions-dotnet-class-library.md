@@ -4,12 +4,12 @@ description: Naučte se vyvíjet Azure Functions pomocí jazyka C#.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 3c363d13933e6554a6eefbeaf02d87dc6b382628
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dc08e378d68743ed7906f4dec7c8f31202959880
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002378"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608278"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Referenční informace pro vývojáře v jazyce C# Azure Functions
 
@@ -21,7 +21,7 @@ Jako vývojář v jazyce C# může být také zajímat některé z následujíc�
 
 | Začínáme | Koncepty| Učení s asistencí/ukázky |
 | -- | -- | -- | 
-| <ul><li>[Pomocí sady Visual Studio](functions-create-your-first-function-visual-studio.md)</li><li>[Používání nástroje Visual Studio Code](create-first-function-vs-code-csharp.md)</li><li>[Používání nástrojů příkazového řádku](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Možnosti hostování](functions-scale.md)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li><li>[Vývoj sady Visual Studio](functions-develop-vs.md)</li><li>[Vkládání závislostí](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Vytváření bezserverových aplikací](/learn/paths/create-serverless-applications/)</li><li>[Ukázky C#](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
+| <ul><li>[Pomocí sady Visual Studio](functions-create-your-first-function-visual-studio.md)</li><li>[Používání nástroje Visual Studio Code](create-first-function-vs-code-csharp.md)</li><li>[Používání nástrojů příkazového řádku](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Možnosti hostování](functions-scale.md)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li><li>[Vývoj sady Visual Studio](functions-develop-vs.md)</li><li>[Injektáž závislostí](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Vytváření bezserverových aplikací](/learn/paths/create-serverless-applications/)</li><li>[Ukázky C#](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
 
 Azure Functions podporuje programovací jazyky C# a C#. Pokud hledáte pokyny k [používání jazyka C# v Azure Portal](functions-create-function-app-portal.md), přečtěte si téma [referenční informace pro vývojáře skriptu jazyka c# (. csx)](functions-reference-csharp.md).
 
@@ -31,7 +31,7 @@ Verze běhových funkcí fungují s konkrétními verzemi .NET. Následující t
 
 | Verze modulu runtime Functions | Maximální verze .NET |
 | ---- | ---- |
-| Funkce 3. x | .NET Core 3,1 |
+| Funkce 3. x | .NET Core 3.1 |
 | Functions 2.x | .NET Core 2.2 |
 | Functions 1.x |  .NET Framework 4.7 |
 
@@ -312,7 +312,7 @@ public static class CancellationTokenExample
 }
 ```
 
-## <a name="logging"></a>Protokolování
+## <a name="logging"></a>protokolování
 
 V kódu funkce můžete napsat výstup do protokolů, které se zobrazí jako trasování v Application Insights. Doporučeným způsobem, jak zapisovat do protokolů, je zahrnout parametr typu [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger), který se obvykle nazývá `log` . Verze 1. x používaného modulu runtime Functions `TraceWriter` , který také zapisuje do Application Insights, ale nepodporuje strukturované protokolování. Nepoužívejte `Console.Write` k zápisu protokolů, protože tato data nejsou zachycena Application Insights. 
 
@@ -327,6 +327,8 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
 {
     logger.LogInformation("Request for item with key={itemKey}.", id);
 ```
+
+Další informace o tom, jak funkce implementují `ILogger` , najdete v tématu [shromažďování dat telemetrie](functions-monitoring.md#collecting-telemetry-data). Kategorie s předponou `Function` předpokládá, že používáte `ILogger` instanci. Pokud se rozhodnete místo toho použít `ILogger<T>` , název kategorie může být založen na `T` .  
 
 ### <a name="structured-logging"></a>Strukturované protokolování
 
@@ -616,7 +618,7 @@ public static class IBinderExample
 
 ### <a name="multiple-attribute-example"></a>Příklad více atributů
 
-Předchozí příklad získá nastavení aplikace pro připojovací řetězec hlavního účtu úložiště aplikace Function App (což je `AzureWebJobsStorage` ). Můžete zadat vlastní nastavení aplikace, které se má použít pro účet úložiště, a to přidáním [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) a předáním pole atributu do `BindAsync<T>()` . Použijte `Binder` parametr, ne `IBinder` .  Například:
+Předchozí příklad získá nastavení aplikace pro připojovací řetězec hlavního účtu úložiště aplikace Function App (což je `AzureWebJobsStorage` ). Můžete zadat vlastní nastavení aplikace, které se má použít pro účet úložiště, a to přidáním [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) a předáním pole atributu do `BindAsync<T>()` . Použijte `Binder` parametr, ne `IBinder` .  Příklad:
 
 ```cs
 public static class IBinderExampleMultipleAttributes

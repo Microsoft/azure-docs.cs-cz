@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 42259b36f1a9bfe243df47cc08b33fe8c46d819d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5d105ad4c2aff03dae52b340037e4c193bf82ca1
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493062"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608431"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB emulátor – poznámky k verzi a informace o stažení
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,6 +26,12 @@ Tento článek ukazuje poznámky k verzi emulátoru Azure Cosmos DB se seznamem 
 |**Začínáme**|[Místní vývoj pomocí emulátoru Azure Cosmos](local-emulator.md)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="2119-3-december-2020"></a>2.11.9 (3. prosince 2020)
+
+ - Tato verze řeší několik problémů s funkcí emulátoru Azure Cosmos DB kromě obecného aktualizace obsahu, která odráží nejnovější funkce a vylepšení v Azure Cosmos DB:
+ * Opravte problém, kde při použití přímého režimu a klientských aplikací Java selže velké požadavky na datovou část dokumentu.
+ * Opravte problém s připojením ke koncovému bodu MongoDB verze 3,6, pokud cílíte na aplikace založené na rozhraní .NET.
 
 ### <a name="2118-6-november-2020"></a>2.11.8 (6. listopadu 2020)
 

@@ -5,12 +5,12 @@ description: Naučte se aktualizovat uzly AKS pomocí akcí GitHubu.
 services: container-service
 ms.topic: article
 ms.date: 11/27/2020
-ms.openlocfilehash: 7a24911fd771663c7edbbdf0c8d2d763a74fc586
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 504c99a7305a5010f8dbe56a30b53d6fc3a13c5b
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96535186"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607836"
 ---
 # <a name="apply-security-updates-to-azure-kubernetes-service-aks-nodes-automatically-using-github-actions"></a>Použití aktualizací zabezpečení u uzlů AKS (Azure Kubernetes Service) automaticky pomocí akcí GitHubu
 
@@ -170,8 +170,8 @@ Po vytvoření potvrzení bude pracovní postup uložen a připraven ke spuště
 
 > [!NOTE]
 > Chcete-li upgradovat jeden fond uzlů místo všech fondů uzlů v clusteru, přidejte do `--name` příkazu parametr a `az aks nodepool upgrade` Zadejte název fondu uzlů. Příklad:
-> ```
-> inlineScript: az aks nodepool upgrade -g {resourceGroupName} --cluster-name {aksClusterName} --name {{nodePoolName}} --node-image-only
+> ```azurecli-interactive
+> az aks nodepool upgrade -g {resourceGroupName} --cluster-name {aksClusterName} --name {{nodePoolName}} --node-image-only
 > ```
 
 ## <a name="run-the-github-action-manually"></a>Ruční spuštění akce GitHubu

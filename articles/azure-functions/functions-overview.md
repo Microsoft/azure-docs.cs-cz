@@ -7,18 +7,18 @@ ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperfq2
-ms.openlocfilehash: a312c0ff255df4545181755ae6accd0d7dfb13a2
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 8b836ac8bd2255abf9a94e532a0599994c3ede89
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574849"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608248"
 ---
 # <a name="introduction-to-azure-functions"></a>Úvod do Azure Functions
 
 Často vytváříme systémy, které reagují na řadu kritických událostí. Bez ohledu na to, jestli vytváříte webové rozhraní API, reagujete na změny v databázi, zpracováváte datové proudy IoT nebo dokonce spravujete fronty zpráv – každá aplikace potřebuje způsob, jak spustit nějaký kód, když dojde k těmto událostem.
 
-Pro splnění této potřeby Azure Functions poskytuje "výpočetní výkon na vyžádání" a dvěma významnými způsoby.
+Pro splnění tohoto požadavku Azure Functions poskytuje "výpočetní výkon na vyžádání" dvěma významnými způsoby.
 
 Nejprve Azure Functions umožňuje implementovat logiku systému do snadno dostupných bloků kódu. Tyto bloky kódu se nazývají "Functions". Různé funkce můžou běžet kdykoli, když potřebujete reagovat na kritické události.
 

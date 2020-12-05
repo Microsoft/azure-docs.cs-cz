@@ -15,16 +15,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: juergent
-ms.openlocfilehash: fcc247e9e3122515ebe9230f58860df8c6dd3948
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 85f268990ac9e0c04cba1b9c409a232a24ce0d61
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484324"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608630"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Vysoká dostupnost IBM DB2 LUW ve virtuálních počítačích Azure na linuxovém serveru Red Hat Enterprise
 
 IBM Db2 pro Linux, UNIX a Windows (LUW) v [konfiguraci vysoké dostupnosti a zotavení po havárii (hadr)](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html) se skládá z jednoho uzlu, na kterém běží primární instance databáze, a aspoň jednoho uzlu, na kterém běží sekundární instance databáze. Změny primární instance databáze jsou replikovány do sekundární instance databáze synchronně nebo asynchronně v závislosti na konfiguraci. 
+
+> [!NOTE]
+> Tento článek obsahuje odkazy na *Hlavní* a *podřízené* výrazy, které Microsoft už nepoužívá. Po odebrání těchto podmínek ze softwaru je odebereme z tohoto článku.
 
 Tento článek popisuje, jak nasadit a nakonfigurovat virtuální počítače Azure, nainstalovat architekturu clusteru a nainstalovat IBM Db2 LUW s konfigurací HADR. 
 
@@ -114,7 +117,7 @@ Před spuštěním nasazení dokončete proces plánování. Plánování staví
 | Virtuální počítače hostující IBM Db2 LUW | Velikost virtuálního počítače, úložiště, sítě, IP adresa. |
 | Název a virtuální IP adresa virtuálního hostitele pro databázi IBM Db2| Virtuální IP adresa nebo název hostitele, který se používá pro připojení aplikačních serverů SAP. **DB-Virt-hostname**, **DB-Virt-IP**. |
 | Oplocení Azure | Způsob, jak zabránit rozdělení situací v mozku, je zabránit. |
-| Azure Load Balancer | Využití úrovně Basic nebo Standard (doporučeno), port testu pro databázi Db2 (náš doporučení 62500) **– port**. |
+| Nástroj pro vyrovnávání zatížení Azure | Využití úrovně Basic nebo Standard (doporučeno), port testu pro databázi Db2 (náš doporučení 62500) **– port**. |
 | Překlad adres| Jak řešení překladu názvů funguje v prostředí. Služba DNS se důrazně doporučuje. Je možné použít místní soubor hostitelů. |
     
 Další informace o Pacemaker pro Linux v Azure najdete v tématu [Nastavení Pacemaker na Red Hat Enterprise Linux v Azure][rhel-pcs-azr].
@@ -510,7 +513,7 @@ Archivace protokolu je prováděna pouze v primární databázi. Pokud změníte
 
 Doporučujeme nakonfigurovat společné sdílené složky NFS nebo GlusterFS, ve kterých jsou protokoly napsané z obou uzlů. Sdílená složka nebo GlusterFS systému souborů NFS musí být vysoce dostupná. 
 
-Pro přenosy nebo adresář profilu můžete použít stávající vysoce dostupné sdílené složky systému souborů NFS nebo GlusterFS. Další informace naleznete v tématu:
+Pro přenosy nebo adresář profilu můžete použít stávající vysoce dostupné sdílené složky systému souborů NFS nebo GlusterFS. Další informace najdete tady:
 
 - [GlusterFS na virtuálních počítačích Azure s Red Hat Enterprise Linuxem pro SAP NetWeaver][glusterfs] 
 - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP][anf-rhel]

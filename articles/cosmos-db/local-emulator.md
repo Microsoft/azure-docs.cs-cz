@@ -7,12 +7,12 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: 6fb1ef45ff4e77ab21480a1013a3cec6bcc7cfa1
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: bfab099c3b81164e0d9ffaa009ea13f42aefb875
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030896"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608618"
 ---
 # <a name="install-and-use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Instalace a použití emulátoru Azure Cosmos DB pro místní vývoj a testování
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -60,7 +60,7 @@ Vzhledem k tomu, že emulátor Azure Cosmos DB poskytuje emulované prostředí,
 Před instalací emulátoru se ujistěte, že máte následující požadavky na hardware a software:
 
 * Požadavky na software:
-  * V současné době jsou podporovány systémy Windows Server 2012 R2, Windows Server 2016, 2019 nebo Windows 8, což je hostitelský operační systém 10. Hostitelský operační systém se zapnutou službou Active Directory se v tuto chvíli nepodporuje.
+  * V současnosti se podporují systémy Windows Server 2016, 2019 nebo hostitelský operační systém Windows 10. Hostitelský operační systém se zapnutou službou Active Directory se v tuto chvíli nepodporuje.
   * 64bitový operační systém
 
 * Minimální požadavky na hardware:

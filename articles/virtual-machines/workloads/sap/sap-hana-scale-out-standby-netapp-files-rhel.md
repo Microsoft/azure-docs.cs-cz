@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/15/2020
 ms.author: radeltch
-ms.openlocfilehash: f4693af9c29a36aad60b7b525fec024509a4d586
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d2cc8487f9864a27c1a2b02ef6e846bc43727e27
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958741"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608533"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Nasazení SAP HANA systému se škálováním na více systémů s pohotovostním uzlem na virtuálních počítačích Azure pomocí Azure NetApp Files v Red Hat Enterprise Linux 
 
@@ -59,6 +59,10 @@ ms.locfileid: "94958741"
 Tento článek popisuje, jak nasadit vysoce dostupný SAP HANA systém v konfiguraci se škálováním na více systémů pomocí úsporného režimu v Azure Red Hat Enterprise Linux virtuálních počítačů (VM) pomocí [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) pro sdílené svazky úložiště.  
 
 V ukázkových konfiguracích, instalačních příkazech atd. instance HANA je **03** a ID systému Hana je **HN1**. Příklady jsou založené na HANA 2,0 SP4 a Red Hat Enterprise Linux pro SAP 7,6. 
+
+> [!NOTE]
+> Tento článek obsahuje odkazy na *Hlavní* a *podřízené* výrazy, které Microsoft už nepoužívá. Po odebrání těchto podmínek ze softwaru je odebereme z tohoto článku.
+
 
 Než začnete, přečtěte si následující poznámky a dokumenty SAP:
 

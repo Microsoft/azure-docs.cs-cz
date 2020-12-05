@@ -6,12 +6,12 @@ ms.topic: conceptual
 description: Naučte se nakonfigurovat Azure Dev Spaces k použití vlastního kontroleru NGINX příchozího přenosu dat a konfiguraci HTTPS pomocí tohoto kontroleru příchozího přenosu dat.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: e1918b5ce9c0fdba81174f0b36fd1ce51d0df70a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 873057e88809c1aaa8047ac02129d83ca8e9a478
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748817"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608550"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Použití vlastního kontroleru NGINX příchozího přenosu dat a konfigurace HTTPS
 
@@ -100,7 +100,7 @@ cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
 Otevřete [hodnoty. yaml][values-yaml] a proveďte následující aktualizace:
-* Nahradí všechny výskyty *<REPLACE_ME_WITH_HOST_SUFFIX>* pomocí *Nginx. MY_CUSTOM_DOMAIN* používání vaší domény pro *MY_CUSTOM_DOMAIN* . 
+* Nahradí všechny výskyty *<REPLACE_ME_WITH_HOST_SUFFIX>* pomocí *Nginx. MY_CUSTOM_DOMAIN* používání vaší domény pro *MY_CUSTOM_DOMAIN*. 
 * Nahraďte *Kubernetes.IO/Ingress.Class: traefik-azds # dev Spaces-Specific* to *Kubernetes.IO/Ingress.Class: Nginx # Custom* příchozí příchozí přenos dat. 
 
 Níže je příklad aktualizovaného `values.yaml` souboru:
@@ -210,7 +210,7 @@ spec:
 ```
 
 > [!NOTE]
-> Pro účely testování je k dispozici také [přípravný Server][letsencrypt-staging-issuer] , který můžete použít pro *ClusterIssuer* .
+> Pro účely testování je k dispozici také [přípravný Server][letsencrypt-staging-issuer] , který můžete použít pro *ClusterIssuer*.
 
 Použijte `kubectl` k použití `letsencrypt-clusterissuer.yaml` .
 
@@ -328,7 +328,7 @@ Přečtěte si další informace o tom, jak Azure Dev Spaces funguje.
 [az-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-add-record
-[custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-the-domain
+[custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain
 [dns-zone]: ../../dns/dns-getstarted-cli.md
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml
 [azure-account-create]: https://azure.microsoft.com/free

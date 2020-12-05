@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet, contperfq2
-ms.openlocfilehash: 892d73c2b23a9806cd38b188f594f129fda9303d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 7901ad4f67f6f3243a2d3b8dc25733ac68b612db
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340715"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608363"
 ---
 # <a name="azure-cosmos-db-sql-sdk-connectivity-modes"></a>Azure Cosmos DB režimy připojení sady SQL SDK
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,7 +47,7 @@ V následující tabulce najdete přehled režimů připojení dostupných pro r
 |Režim připojení  |Podporovaný protokol  |Podporované sady SDK  |Port API/Service  |
 |---------|---------|---------|---------|
 |brána  |   HTTPS    |  Všechny sady SDK    |   SQL (443), MongoDB (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443) <br> Port 10250 se mapuje na výchozí rozhraní Azure Cosmos DB API pro instanci MongoDB bez geografické replikace. V případě, že jsou porty 10255 a 10256 mapovány na instanci, která má geografickou replikaci.   |
-|Direct    |     TCP    |  .NET SDK    | Při použití koncových bodů veřejné/služby: porty v rozsahu 10000 až 20000<br>Při použití privátních koncových bodů: porty v rozsahu 0 až 65535 |
+|Direct    |     TCP    |  Sada .NET SDK Java SDK    | Při použití koncových bodů veřejné/služby: porty v rozsahu 10000 až 20000<br>Při použití privátních koncových bodů: porty v rozsahu 0 až 65535 |
 
 ## <a name="next-steps"></a>Další kroky
 

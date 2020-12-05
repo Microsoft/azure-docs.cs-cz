@@ -6,12 +6,12 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 204e087908ff978880966332b4619935dc6f0458
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 7ade24b6478f78a51e0be68ae69ae0b076ecff1f
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559112"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607870"
 ---
 # <a name="configure-premiumv3-tier-for-azure-app-service"></a>Konfigurace PremiumV3 úrovně pro Azure App Service
 
@@ -82,7 +82,7 @@ Některé plány App Service nemůžou škálovat až na úroveň PremiumV3, pok
 Pokud je vaše aplikace spuštěná v nasazení App Service, kde **PremiumV3** není k dispozici, nebo pokud je vaše aplikace spuštěná v oblasti, která v současné době nepodporuje **PremiumV3**, musíte aplikaci znovu nasadit, abyste mohli využít výhod **PremiumV3**.  Máte dvě možnosti:
 
 - Vytvořte aplikaci v nové skupině prostředků a pomocí nového plánu App Service. Při vytváření plánu App Service vyberte úroveň **PremiumV3** . Tento krok zajistí, že je plán App Service nasazený do jednotky nasazení, která podporuje **PremiumV3**. Pak znovu nasaďte kód aplikace do nově vytvořené aplikace. I když App Service plán škálovat na nižší úroveň a ušetřit tak náklady, můžete vždy škálovat na **PremiumV3** , protože jednotka nasazení ho podporuje.
-- Pokud už vaše aplikace běží na stávající úrovni **Premium** , můžete svoji aplikaci klonovat pomocí nastavení aplikace, připojovacích řetězců a konfigurace nasazení do nového plánu služby App Service, který používá **PremiumV3**.
+- Pokud už vaše aplikace běží na stávající úrovni **Premium** , můžete svoji aplikaci klonovat pomocí nastavení aplikace, připojovacích řetězců a konfigurace nasazení do nové skupiny prostředků v novém plánu služby App Service, který používá **PremiumV3**.
 
     ![Snímek obrazovky znázorňující způsob klonování aplikace](media/app-service-configure-premium-tier/clone-app.png)
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: 947b509468857b98b868881bdd48adf67a5d60db
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7bdea9239faa4ec66fffa236bea40afd5e628e62
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994621"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607139"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Získejte přehled o vaší infrastruktuře DNS pomocí řešení DNS Analytics Preview.
 
@@ -57,13 +57,13 @@ Pro konfiguraci řešení použijte následující informace:
 
 Kliknutím na položku **Konfigurace** na řídicím panelu řešení otevřete stránku konfigurace DNS Analytics. Existují dva typy změn konfigurace, které lze provést:
 
-- **Názvy povolených domén**. Řešení nezpracovává všechny vyhledávací dotazy. Udržuje seznam povolených přípon názvů domén. Řešení vyhledávacích dotazů, které se shodují s názvy domén, které odpovídají příponám názvů domén v tomto seznamu povolených, nejsou zpracovávány řešením. Nezpracovávání názvů povolených domén pomáhá optimalizovat data odesílaná do Azure Monitor. Výchozí seznam povolených serverů obsahuje oblíbené názvy veřejných domén, například www.google.com a www.facebook.com. Úplný výchozí seznam můžete zobrazit posouváním.
+- **Allowlisted názvy domén**. Řešení nezpracovává všechny vyhledávací dotazy. Udržuje povolených přípon názvů domén. Řešení vyhledávacích dotazů, které jsou přeloženy na názvy domén, které odpovídají příponám názvů domén v tomto povolených, nejsou zpracovávány řešením. Nezpracovávání názvů domén allowlisted přispívá k optimalizaci dat odesílaných do Azure Monitor. Výchozí povolených zahrnuje oblíbené názvy veřejných domén, jako je například www.google.com a www.facebook.com. Úplný výchozí seznam můžete zobrazit posouváním.
 
   Seznam můžete upravit tak, aby se přidala libovolná přípona názvu domény, pro kterou chcete zobrazit přehledy vyhledávání. Můžete také odebrat libovolnou příponu názvu domény, pro kterou nechcete zobrazit přehledy vyhledávání.
 
 - **Prahová hodnota klienta prahová** Klienti DNS, kteří překročí prahovou hodnotu pro počet požadavků na vyhledávání, se v okně **klienti DNS** zvýrazní. Výchozí prahová hodnota je 1 000. Prahovou hodnotu můžete upravit.
 
-    ![Povolené názvy domén](./media/dns-analytics/dns-config.png)
+    ![Názvy domén Allowlisted](./media/dns-analytics/dns-config.png)
 
 ## <a name="management-packs"></a>Sady Management Pack
 
@@ -110,7 +110,7 @@ Tyto informace vám pomůžou identifikovat:
 - IP adresy, na které se název domény překládá.
 - Škodlivá IP adresa.
 - Závažnost problému.
-- Důvod, proč by škodlivá IP adresa byla zakázaná
+- Důvod, proč se Blocklisting škodlivá IP adresa
 - Čas detekce
 
 **Dotazování domén**. Poskytuje nejčastěji používané názvy domén, které klienti DNS ve vašem prostředí dotazují. Můžete zobrazit seznam všech dotazovaných názvů domén. V hledání v protokolu můžete také přejít k podrobnostem o požadavku vyhledávání pro konkrétní název domény.

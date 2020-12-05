@@ -3,15 +3,15 @@ title: Geografické zotavení po havárii – Azure Event Hubs | Microsoft Docs
 description: Použití geografických oblastí k převzetí služeb při selhání a zotavení po havárii v Azure Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 1807c22645c3246f4cf18d723fc19da475e4d4f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dd2385a6f6e61136a1284171532aedd70a9cc96
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934068"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608346"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – geografická zotavení po havárii 
-Když se nepoužívá celá oblast Azure nebo datová centra (Pokud se nepoužívají žádné [zóny dostupnosti](../availability-zones/az-overview.md) ), je důležité, aby zpracování dat pokračovalo v provozu v jiné oblasti nebo datacentru. V takovém případě *geografické zotavení po havárii* a *geografická replikace* jsou důležité funkce pro všechny podniky. Azure Event Hubs podporuje jak geografické zotavení po havárii, tak i geografickou replikaci na úrovni oboru názvů. 
+Když se nepoužívá celá oblast Azure nebo datová centra (Pokud se nepoužívají žádné [zóny dostupnosti](../availability-zones/az-overview.md) ), je důležité, aby zpracování dat pokračovalo v provozu v jiné oblasti nebo datacentru. V takovém případě *geografické zotavení po havárii* a *geografická replikace* jsou důležité funkce pro všechny podniky. Azure Event Hubs podporuje jak geografické zotavení po havárii, tak i geografickou replikaci na úrovni oboru názvů. 
 
 > [!NOTE]
 > Funkce geografického zotavení po havárii je dostupná jenom pro [standardní a vyhrazené SKU](https://azure.microsoft.com/pricing/details/event-hubs/).  
@@ -65,7 +65,7 @@ Nejprve vytvoříte nebo použijete existující primární obor názvů a nový
 
 ### <a name="example"></a>Příklad
 
-V jednom z těchto scénářů zvažte řešení prodejního bodu (POS), které vysílá buď zprávy, nebo události. Event Hubs tyto události předá do některého řešení mapování nebo přeformátování, které pak předává namapovaná data do jiného systému pro další zpracování. V tomto okamžiku můžou být všechny tyto systémy hostované ve stejné oblasti Azure. Rozhodnutí o tom, kdy a jakou část služby převezme služby při selhání, závisí na toku dat ve vaší infrastruktuře. 
+V jednom z těchto scénářů zvažte řešení prodejního bodu (POS), které vysílá buď zprávy, nebo události. Event Hubs tyto události předá do některého řešení mapování nebo přeformátování, které pak předává namapovaná data do jiného systému pro další zpracování. V tomto okamžiku můžou být všechny tyto systémy hostované ve stejné oblasti Azure. Rozhodnutí o tom, kdy a jakou část převezme služby při selhání, závisí na toku dat ve vaší infrastruktuře. 
 
 Převzetí služeb při selhání můžete automatizovat buď s monitorovacími systémy, nebo s vlastními řešeními monitorování. Tato automatizace ale má dodatečné plánování a práci, což není v rozsahu tohoto článku.
 
@@ -94,9 +94,9 @@ Pokud jste udělali chybu; například jste spároval nesprávné oblasti při p
 - Postup potřebný ke spuštění ukázkového kódu. 
 - Odeslat a přijmout z aktuálního primárního oboru názvů 
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
-Vezměte v úvahu následující skutečnosti:
+Vezměte na vědomí následující skutečnosti:
 
 1. V rámci návrhu Event Hubs geograficky zotavení po havárii nereplikují data, a proto nemůžete znovu použít starou hodnotu posunu primárního centra událostí v sekundárním centru událostí. K restartování přijímače událostí doporučujeme použít jednu z následujících metod:
 
@@ -106,7 +106,7 @@ Vezměte v úvahu následující skutečnosti:
 
 2. Při plánování převzetí služeb při selhání byste měli také zvážit časový faktor. Pokud například ztratíte připojení po dobu delší než 15 až 20 minut, můžete se rozhodnout zahájit převzetí služeb při selhání. 
  
-3. Skutečnost, že se žádná data nereplikují, znamená, že aktuálně aktivní relace nejsou replikované. Kromě toho nemusí fungovat duplicita duplicit a naplánované zprávy. Budou fungovat nové relace, naplánované zprávy a nové duplicity. 
+3. Skutečnost, že nejsou replikována žádná data znamená, že aktuální aktivní relace nebudou replikovány. Kromě toho nemusí fungovat duplicita duplicit a naplánované zprávy. Budou fungovat nové relace, naplánované zprávy a nové duplicity. 
 
 4. Převzetí služeb při selhání přes složitou distribuovanou infrastrukturu by mělo být alespoň jednou [vyzkoušeno](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan) . 
 

@@ -1,14 +1,14 @@
 ---
 title: Onboarding zákazníků do služby Azure Lighthouse
 description: Naučte se, jak začlenit zákazníka do Azure Lighthouse, který umožňuje získat a spravovat jejich prostředky prostřednictvím vlastního tenanta pomocí delegované správy prostředků Azure.
-ms.date: 09/24/2020
+ms.date: 12/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 43f28073c996167c82e241476020bdc341486b26
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b353a8194b9f5dd48b315340435669531359e8d5
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024292"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608465"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding zákazníků do služby Azure Lighthouse
 
@@ -36,7 +36,7 @@ Pokud chcete připojit tenanta zákazníka, musí mít aktivní předplatné Azu
 
 Pokud tyto hodnoty ID již nemáte, můžete je načíst jedním z následujících způsobů. Ujistěte se, že používáte tyto přesné hodnoty v nasazení.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 ID tenanta si můžete zobrazit tak, že najedete myší na název účtu v horní pravé části Azure Portal, nebo výběrem **přepínače Adresář**. Pokud chcete vybrat a zkopírovat ID tenanta, vyhledejte na portálu "Azure Active Directory", pak vyberte **vlastnosti** a zkopírujte hodnotu zobrazenou v poli **ID adresáře** . Pokud chcete najít ID předplatného v tenantovi zákazníka, vyhledejte "Subscriptions" a pak vyberte příslušné ID předplatného.
 
@@ -208,7 +208,7 @@ Po aktualizaci souboru parametrů musí uživatel v tenantovi zákazníka nasadi
 
 Nasazení se může provést v Azure Portal, pomocí PowerShellu nebo pomocí rozhraní příkazového řádku Azure CLI, jak vidíte níže.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 1. V našem [úložišti GitHub](https://github.com/Azure/Azure-Lighthouse-samples/)vyberte tlačítko **nasadit do Azure** zobrazené vedle šablony, kterou chcete použít. Šablona se otevře v prostředí Azure Portal.
 1. Zadejte hodnoty pro **název nabídky MSP**, **Popis nabídky MSP**, **spravovaný podle ID tenanta** a **autorizací**. Pokud dáváte přednost, můžete vybrat možnost **Upravit parametry** a zadat hodnoty pro `mspOfferName` , `mspOfferDescription` , `managedbyTenantId` a `authorizations` přímo do souboru parametrů. Nezapomeňte aktualizovat tyto hodnoty namísto použití výchozích hodnot z šablony.
@@ -260,7 +260,7 @@ az deployment sub create --name <deploymentName> \
 
 Po úspěšném připojení zákaznického předplatného do Azure Lighthouse uvidí uživatelé v tenantovi poskytovatele služeb předplatné a jeho prostředky (pokud jim k ní byl udělen přístup prostřednictvím výše uvedeného procesu), a to buď jednotlivě, nebo jako člen skupiny Azure AD s příslušnými oprávněními. Potvrďte to tak, že zkontrolujete, že se odběr zobrazuje jedním z následujících způsobů:  
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 V tenantovi poskytovatele služeb:
 
@@ -301,8 +301,9 @@ Get-AzManagedServicesAssignment
 az account list
 ```
 
+Pokud po zprovoznění zákazníka potřebujete provést změny, můžete [delegování aktualizovat](update-delegation.md). [Přístup k delegování](remove-delegation.md) můžete také odebrat úplně.
+
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o [prostředích pro správu mezi klienty](../concepts/cross-tenant-management-experience.md).
 - V **Azure Portal můžete** [Zobrazit a spravovat zákazníky](view-manage-customers.md) .
-- Naučte se, jak [Odebrat přístup k](remove-delegation.md) dříve zadanému delegování.

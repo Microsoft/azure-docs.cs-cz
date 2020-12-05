@@ -4,12 +4,12 @@ description: Naučte se, jak připojit aplikaci Function App k Application Insig
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperfq2, devx-track-azurecli
-ms.openlocfilehash: 0b8aae707f0fb055677af111f1e88c0a2e19b227
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 02d5ad2e9697c14818a985325267d7caea80f65e
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175742"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607122"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Postup konfigurace monitorování pro Azure Functions
 
@@ -38,6 +38,9 @@ Protokolovací nástroj Azure Functions zahrnuje *kategorii* pro každý protoko
 | **`Host.Results`** | **požadavky** | Tyto protokoly generované modulem runtime označují úspěch nebo neúspěch funkce. Všechny tyto protokoly jsou zapisovány na `Information` úrovni. Pokud filtrujete `Warning` nad nebo výše, nezobrazí se žádná z těchto dat. |
 | **`Microsoft`** | **trasování** | Plně kvalifikovaná kategorie protokolu, která odráží komponentu modulu runtime .NET vyvolanou hostitelem.  |
 | **`Worker`** | **trasování** | Protokoly generované pracovním procesem jazyka pro jazyky non-.NET Do kategorie se můžou zapisovat i v případě, že se zaprotokoluje v kategorii pracovních pracovních procesů `Microsoft.*` `Microsoft.Azure.WebJobs.Script.Workers.Rpc.RpcFunctionInvocationDispatcher` . Tyto protokoly jsou zapisovány na `Information` úrovni.|
+
+> [!NOTE]
+> Pro funkce knihovny tříd .NET tyto kategorie předpokládají, že používáte `ILogger` a nikoli `ILogger<T>` . Další informace najdete v dokumentaci k [funkcím ILogger](functions-dotnet-class-library.md#ilogger). 
 
 # <a name="v1x"></a>[V1. x](#tab/v1)
 

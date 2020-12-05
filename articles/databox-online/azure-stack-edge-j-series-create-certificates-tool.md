@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 11/24/2020
 ms.author: alkohli
-ms.openlocfilehash: 5e5cb077868a224620d1a23e1ff1aac9c8d9f095
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: ab9559e1e8265b3adf08b36d1a8097a00297c61a
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874470"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96606986"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>Vytvoření certifikátů pro Azure Stack Edge pro pomocí nástroje pro kontrolu připravenosti centra Azure Stack 
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak vytvořit certifikáty pro Azure Stack Edge pro pom
 
 ## <a name="using-azure-stack-hub-readiness-checker-tool"></a>Použití nástroje pro kontrolu připravenosti centra Azure Stack
 
-Pomocí nástroje pro kontrolu připravenosti centra Azure Stack můžete vytvořit žádosti o podepsání certifikátu pro nasazení zařízení Azure Stack Edge pro. Tyto požadavky můžete vytvořit po umístění objednávky pro zařízení Azure Stack Edge pro a čekání na doručení zařízení. 
+Pomocí nástroje pro kontrolu připravenosti centra Azure Stack můžete vytvořit žádosti o podepsání certifikátu pro nasazení zařízení Azure Stack Edge pro. Tyto požadavky můžete vytvořit po umístění objednávky pro zařízení Azure Stack Edge pro a počkat na doručení zařízení.
 
 > [!NOTE]
 > Tento nástroj použijte pouze pro účely testování nebo vývoje, nikoli pro produkční zařízení. 
@@ -59,19 +59,19 @@ Pomocí těchto kroků Připravte certifikáty zařízení Azure Stack Edge pro:
     Install-Module -Name Microsoft.AzureStack.ReadinessChecker
     ```
 
-    Nainstalovanou verzi ověříte tak, že zadáte:  
+    Nainstalovanou verzi získáte tak, že zadáte:  
 
     ```azurepowershell
     Get-InstalledModule -Name Microsoft.AzureStack.ReadinessChecker  | ft Name, Version 
     ```
 
-3. Vytvořte adresář pro všechny certifikáty, pokud neexistuje. Zadejte: 
+3. Vytvořte adresář pro všechny certifikáty, pokud ho ještě nemáte. Zadejte: 
     
     ```azurepowershell
     New-Item "C:\certrequest" -ItemType Directory
     ``` 
     
-4. Pokud chcete vytvořit žádost o certifikát, zadejte následující informace. Pokud vygenerujete certifikát sítě VPN, některé z těchto vstupů se nevztahují. 
+4. Pokud chcete vytvořit žádost o certifikát, zadejte následující informace. Pokud vygenerujete certifikát sítě VPN, některé z těchto vstupů se nevztahují.
     
     |Vstup |Popis  |
     |---------|---------|
@@ -107,7 +107,7 @@ Pomocí těchto kroků Připravte certifikáty zařízení Azure Stack Edge pro:
     ```
 
     
-5. Soubory žádostí o certifikát najdete v adresáři, který jste zadali v parametru OutputRequestPath výše. Při použití parametru se v `MultipleCSR` rozšíření zobrazí 4 soubory `.req` . Soubory jsou následující:
+5. Soubory žádostí o certifikát najdete v adresáři, který jste zadali v parametru OutputRequestPath výše. Při použití `MultipleCSR` parametru se zobrazí následující čtyři soubory s `.req` příponou:
 
     
     |Názvy souborů  |Typ žádosti o certifikát  |
@@ -115,7 +115,7 @@ Pomocí těchto kroků Připravte certifikáty zařízení Azure Stack Edge pro:
     |Od `DeviceName`     |Žádost o certifikát místního webového uživatelského rozhraní      |
     |Od `NodeSerialNumber`     |Žádost o certifikát uzlu         |
     |Od `login`     |Žádost o certifikát koncového bodu Azure Resource Manager       |
-    |Od `wildcard`     |Žádost o certifikát BLOB Storage; obsahuje zástupný znak, protože se zabývá všemi účty úložiště, které můžete na zařízení vytvořit.          |
+    |Od `wildcard`     |Žádost o certifikát BLOB Storage. Obsahuje zástupný znak, protože se zabývá všemi účty úložiště, které můžete na zařízení vytvořit.          |
     |Od `AzureStackEdgeVPNCertificate`     |Žádost o certifikát klienta VPN         |
 
     Zobrazí se také Složka INF. Obsahuje správu. <Edge-název_zařízení> informační soubor v nejasném textu vysvětlujícího podrobnosti o certifikátu.  
@@ -125,7 +125,7 @@ Pomocí těchto kroků Připravte certifikáty zařízení Azure Stack Edge pro:
 
 ## <a name="prepare-certificates-for-deployment"></a>Příprava certifikátů pro nasazení
 
-Soubory certifikátů, které získáte od certifikační autority (CA), musí být importovány a exportovány s vlastnostmi, které odpovídají Azure Stack požadavky na certifikát pro zařízení Edge pro. Proveďte následující kroky ve stejném systému, ve kterém jste vygenerovali žádosti o podepsání certifikátu.
+Soubory certifikátů, které získáte od certifikační autority (CA), musí být naimportovány a exportovány s vlastnostmi, které odpovídají požadavkům na certifikát zařízení Azure Stack Edge pro. Proveďte následující kroky ve stejném systému, ve kterém jste vygenerovali žádosti o podepsání certifikátu.
 
 - Pokud chcete importovat certifikáty, postupujte podle kroků v části [Import certifikátů na klienty, kteří přistupují k zařízení Azure Stack Edge pro](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device).
 

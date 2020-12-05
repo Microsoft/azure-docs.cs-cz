@@ -2,13 +2,13 @@
 title: Omezení pojmenování prostředků
 description: Zobrazuje pravidla a omezení pro pojmenování prostředků Azure.
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: 206bd6604ecd9dfece9c946c653b2720e75ff1e3
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 12/04/2020
+ms.openlocfilehash: a6aac03277a11cf671f5a618bc85ff987cfdc2dd
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347790"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608312"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Omezení a pravidla pojmenování prostředků Azure
 
@@ -596,6 +596,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | ResourceGroups | předplatné | 1–90 | Alfanumerické znaky, podtržítka, závorky, spojovníky, tečky a znaky Unicode, které odpovídají [dokumentaci regulárního výrazu](/rest/api/resources/resourcegroups/createorupdate).<br><br>Nemůže končit tečkou. |
 > | tagName | prostředek | 1-512 | Nejde použít:<br>`<>%&\?/` |
 > | tagName/tagValues | název značky | 1-256 | Všechny znaky. |
+> | templateSpecs | skupina prostředků | 1–90 | Alfanumerické znaky, podtržítka, kulaté závorky, spojovníky a tečky. |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 

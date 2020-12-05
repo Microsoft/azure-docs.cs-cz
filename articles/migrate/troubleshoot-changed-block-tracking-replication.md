@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: da1f7ce1474513fd9de286495f59aca63d8628b6
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 04dcf8edbce7782e6d196271bfa85f2f8d1c5ba3
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377200"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608329"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Řešení potíží s replikací v migraci virtuálních počítačů VMware bez agenta
 
@@ -59,7 +59,7 @@ Když portál vytvoří Trezor klíčů, přidá taky zásadu přístupu uživat
 
 - Druhý případ, kdy k tomu může dojít, nastane, když se jeden uživatel (uživatel1) pokusil nastavit replikaci zpočátku a narazil na chybu, ale Trezor klíčů už je vytvořený (a zásady přístupu uživatele jsou správně přiřazené tomuto uživateli). Nyní se teď jiný uživatel (uživatel2) pokusí nastavit replikaci, ale operace konfigurace spravovaného účtu úložiště nebo vygenerování definice SAS se nezdařila, protože neexistují žádné zásady přístupu uživatele, které by v trezoru klíčů odpovídaly.
 
-**Řešení** : Pokud chcete tento problém vyřešit, vytvořte zásadu přístupu uživatele pro uživatel2 v trezoru klíčů udělující oprávnění uživatel2 ke konfiguraci spravovaného účtu úložiště a generování definic SAS. Uživatel2 to může udělat z Azure PowerShell pomocí níže uvedených rutin:
+**Řešení**: Pokud chcete tento problém vyřešit, vytvořte zásadu přístupu uživatele pro uživatel2 v trezoru klíčů udělující oprávnění uživatel2 ke konfiguraci spravovaného účtu úložiště a generování definic SAS. Uživatel2 to může udělat z Azure PowerShell pomocí níže uvedených rutin:
 
 $userPrincipalId = $ (Get-AzureRmADUser-UserPrincipalName "user2_email_address"). Účet
 
@@ -139,7 +139,7 @@ Komponenta, která se pokouší replikovat data do Azure, je buď nefunkční, n
     
     Tento příkaz se pokusí o připojení TCP a vrátí výstup.
     
-     - Ve výstupu vyhledejte pole " _TcpTestSucceeded_ ". Pokud je hodnota " _true_ ", nedochází k žádnému problému s připojením mezi Azure Migrate zařízením a Azure Key Vault. Pokud je hodnota false, dojde k problému s připojením.
+     - Ve výstupu vyhledejte pole "_TcpTestSucceeded_". Pokud je hodnota "_true_", nedochází k žádnému problému s připojením mezi Azure Migrate zařízením a Azure Key Vault. Pokud je hodnota false, dojde k problému s připojením.
     
     **Řešení:** Pokud tento test neproběhne úspěšně, dojde k problémům s připojením mezi Azure Migrate zařízením a Azure Key Vault. Zapojte svůj místní síťový tým, aby zkontroloval problémy s připojením. Obvykle se může jednat o některá nastavení brány firewall, která způsobují selhání.
     
@@ -225,7 +225,7 @@ Mezi možné příčiny patří:
     
     Tento příkaz se pokusí o připojení TCP a vrátí výstup.
     
-    1. Ve výstupu vyhledejte pole " _TcpTestSucceeded_ ". Pokud je hodnota " _true_ ", nedochází k žádnému problému s připojením mezi Azure Migrate zařízením a Azure Key Vault. Pokud je hodnota false, dojde k problému s připojením.
+    1. Ve výstupu vyhledejte pole "_TcpTestSucceeded_". Pokud je hodnota "_true_", nedochází k žádnému problému s připojením mezi Azure Migrate zařízením a Azure Key Vault. Pokud je hodnota false, dojde k problému s připojením.
     
     **Řešení:** Pokud tento test neproběhne úspěšně, dojde k problémům s připojením mezi Azure Migrate zařízením a Azure Key Vault. Zapojte svůj místní síťový tým, aby zkontroloval problémy s připojením. Obvykle se může jednat o některá nastavení brány firewall, která způsobují selhání.
     
@@ -242,7 +242,7 @@ Tuto chybu lze vyřešit následujícími dvěma způsoby:
 
 Jeden takový známý problém, který může způsobit obnovení CBT virtuálního počítače na VMware vSphere 5,5 je popsán v tématu [VMware KB 2048201: změněné sledování bloků](https://go.microsoft.com/fwlink/?linkid=2138888) se resetuje po operaci vMotion úložiště v vSphere 5. x. Pokud používáte VMware vSphere 5.5, nezapomeňte provést aktualizace popsané v tomto článku znalostní báze.
 
-Alternativně můžete na virtuálním počítači s využitím VMware PowerCLI použít [resetovat a zrušit sledování bloků VMware.
+Alternativně můžete na virtuálním počítači pomocí VMware PowerCLI resetovat sledování změn ve VMware.
 
 ## <a name="an-internal-error-occurred"></a>Došlo k vnitřní chybě.
 
@@ -276,7 +276,7 @@ Pokud máte virtuální počítač s více disky, může dojít k této chybě p
 
 K tomuto problému dochází, když generování snímků přestane reagovat. Když k tomuto problému dojde, můžete vidět, že se úloha vytvoření snímku zastaví na 95% nebo v 99%. Pokud chcete tento problém vyřešit, přečtěte si tento [článek o VMware KB](https://go.microsoft.com/fwlink/?linkid=2138969) .
 
-### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Chybová zpráva: došlo k vnitřní chybě. [Nepovedlo se konsolidovat disky na virtuálním počítači _[důvody]_ ]
+### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Chybová zpráva: došlo k vnitřní chybě. [Nepovedlo se konsolidovat disky na virtuálním počítači _[důvody]_]
 
 Když konsolidujeme disky na konci replikačního cyklu, operace se nezdařila. Postupujte podle pokynů v nástroji [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138970) výběrem vhodného _důvodu_ k vyřešení problému.
 
