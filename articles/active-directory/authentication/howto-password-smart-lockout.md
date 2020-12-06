@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/20/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baffe307a560f2668c2d93e36939a695cf963e89
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b8a57e77ea572f899bf540714e8ac9968988f028
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968374"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741724"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Ochrana uživatelských účtů před útoky pomocí Azure Active Directory inteligentní uzamčení
 
@@ -58,7 +58,7 @@ Pokud chcete ověřit zásady uzamčení místních služba AD DS účtů, prove
 
 1. Otevřete nástroj pro správu Zásady skupiny.
 2. Upravte zásady skupiny, které zahrnují zásady uzamčení účtů vaší organizace, jako je například **výchozí zásada domény**.
-3. Přejít na **zásady konfigurace počítače**  >  **Policies**  >  **nastavení systému Windows nastavení**  >  **zabezpečení**zásady  >  **účtů**zásady  >  **uzamčení účtů**.
+3. Přejít na **zásady konfigurace počítače**  >  **Policies**  >  **nastavení systému Windows nastavení**  >  **zabezpečení** zásady  >  **účtů** zásady  >  **uzamčení účtů**.
 4. Ověřte **prahovou hodnotu uzamčení účtu** a **Vynulovat čítač uzamčení účtu po** hodnotách.
 
 ![Úprava zásad uzamčení místních účtů služby Active Directory](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
@@ -70,12 +70,12 @@ Na základě požadavků vaší organizace můžete přizpůsobit hodnoty inteli
 Chcete-li kontrolovat nebo upravovat hodnoty inteligentního uzamknutí pro vaši organizaci, proveďte následující kroky:
 
 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-1. Vyhledejte a vyberte *Azure Active Directory*a pak vyberte **Security**  >  **metody ověřování**zabezpečení  >  **ochrana heslem**.
-1. Nastavte **prahovou hodnotu uzamčení**na základě toho, kolik neúspěšných přihlášení na účtu je před prvním uzamčením povolené.
+1. Vyhledejte a vyberte *Azure Active Directory* a pak vyberte **Security**  >  **metody ověřování** zabezpečení  >  **ochrana heslem**.
+1. Nastavte **prahovou hodnotu uzamčení** na základě toho, kolik neúspěšných přihlášení na účtu je před prvním uzamčením povolené.
 
     Výchozí hodnota je 10.
 
-1. Nastavte **dobu uzamčení v sekundách**na délku v sekundách každého uzamknutí.
+1. Nastavte **dobu uzamčení v sekundách** na délku v sekundách každého uzamknutí.
 
     Výchozí hodnota je 60 sekund (jedna minuta).
 

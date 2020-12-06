@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 10/01/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: c3fcff5673f4498e92f5d66fe96d806a08527197
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: ff6ae6ea6812397e737deb4b97bf1cd15e022c03
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576015"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743169"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Přihlášení k Azure Active Directory používání e-mailu jako alternativního přihlašovacího ID (Preview)
 
@@ -30,7 +30,7 @@ Některé organizace se nepřesunuly do hybridního ověřování z následujíc
 * Změna hlavního názvu uživatele (UPN) Azure AD vytvoří neshodu mezi prostředími Prem a Azure AD, která by mohla způsobit problémy s určitými aplikacemi a službami.
 * Organizace nechce, aby se k Azure AD přihlásili pomocí místního hlavního názvu uživatele (UPN) nebo dodržování předpisů.
 
-Abyste mohli přejít na hybridní ověřování, můžete teď nakonfigurovat Azure AD tak, aby se uživatelé mohli přihlašovat pomocí e-mailu v ověřené doméně jako alternativní přihlašovací ID. Pokud se například *Contoso* přesměruje na *Fabrikam* , místo toho, abyste se mohli dál přihlašovat pomocí staršího `balas@contoso.com` hlavního názvu uživatele (UPN), se teď dá použít alternativní přihlašovací ID. Pro přístup k aplikaci nebo službám se uživatelé přihlásí k Azure AD pomocí přiřazeného e-mailu, jako je například `balas@fabrikam.com` .
+Abyste mohli přejít na hybridní ověřování, můžete teď nakonfigurovat Azure AD tak, aby se uživatelé mohli přihlašovat pomocí e-mailu v ověřené doméně jako alternativní přihlašovací ID. Pokud se například *Contoso* přesměruje na *Fabrikam*, místo toho, abyste se mohli dál přihlašovat pomocí staršího `balas@contoso.com` hlavního názvu uživatele (UPN), se teď dá použít alternativní přihlašovací ID. Pro přístup k aplikaci nebo službám se uživatelé přihlásí k Azure AD pomocí přiřazeného e-mailu, jako je například `balas@fabrikam.com` .
 
 V tomto článku se dozvíte, jak povolit a používat e-maily jako alternativní přihlašovací ID. Tato funkce je k dispozici v edici Azure AD Free a vyšší.
 
@@ -244,7 +244,7 @@ Pokud uživatelé mají problémy s přihlašovacími událostmi pomocí své e-
 
 1. Ujistěte se, že uživatelský účet má svou e-mailovou adresu nastavenou pro atribut *proxyAddresses* v prostředí Prem služba AD DS.
 1. Ověřte, že je konfigurace Azure AD Connect nakonfigurovaná, a úspěšně synchronizuje uživatelské účty z prostředí on-Prem služba AD DS do Azure AD.
-1. Potvrďte, že zásada Azure AD *HomeRealmDiscoveryPolicy* má atribut *AlternateIdLogin* nastavený na *Enabled: true* :
+1. Potvrďte, že zásada Azure AD *HomeRealmDiscoveryPolicy* má atribut *AlternateIdLogin* nastavený na *Enabled: true*:
 
     ```powershell
     Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *

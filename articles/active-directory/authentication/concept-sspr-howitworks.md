@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fae9872593b48355d4ad3711e8e5092481b16213
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: eaa8b586b7d1ae073d0746569d61de837eec3b7d
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174526"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743866"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to funguje: Samoobslužné resetování hesla v Azure AD
 
@@ -78,7 +78,7 @@ Předtím, než uživatelé můžou resetovat nebo měnit heslo pomocí SSPR, se
 Můžete povolit, aby uživatel po přihlášení k aplikacím pomocí Azure AD dokončil registraci SSPR. Tento pracovní postup obsahuje následující aplikace:
 
 * Microsoft 365
-* portál Azure
+* Azure Portal
 * Přístupový panel
 * Federované aplikace
 * Vlastní aplikace s využitím Azure AD
@@ -152,7 +152,7 @@ Uživatelé nemají možnost registrovat svou mobilní aplikaci při registraci 
 
 Pokud začnete se zásadou, která má jenom jednu požadovanou metodu ověřování pro resetování nebo odemknutí, a změníte ji na dvě metody, co se stane?
 
-| Počet registrovaných metod | Vyžaduje se počet metod. | Výsledek |
+| Počet registrovaných metod | Vyžaduje se počet metod. | Result |
 | :---: | :---: | :---: |
 | 1 nebo více | 1 | **Může** resetovat nebo odemknout |
 | 1 | 2 | **Nejde** resetovat ani odemknout |

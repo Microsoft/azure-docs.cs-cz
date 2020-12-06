@@ -1,21 +1,21 @@
 ---
-title: Povolit Multi-Factor Authentication služby Azure AD
+title: Povolení vícefaktorového ověřování Azure AD
 description: V tomto kurzu se dozvíte, jak povolit Multi-Factor Authentication služby Azure AD pro skupinu uživatelů a otestovat během přihlašovací události sekundární faktor.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/13/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62818ae5be079dc154e6d6faef4a8ebaae8fcd9d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 32228e90e3cfc064cd5be9cd0655f321ab3e2809
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837868"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741146"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-ad-multi-factor-authentication"></a>Kurz: zabezpečení událostí přihlašování uživatelů pomocí Azure AD Multi-Factor Authentication
 
@@ -118,7 +118,7 @@ Teď se přihlaste k Azure Portal. Protože Azure Portal byl nakonfigurován v z
 
 Pokud už nechcete, aby se zásady podmíněného přístupu povolily Multi-Factor Authentication v rámci tohoto kurzu jste nakonfigurovali Azure AD, odstraňte zásadu pomocí následujících kroků:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Vyhledejte a vyberte **Azure Active Directory** a pak v nabídce na levé straně zvolte **zabezpečení** .
 1. Vyberte **podmíněný přístup** a pak vyberte zásadu, kterou jste vytvořili, jako je například *MFA pilot* .
 1. Zvolte **Odstranit** a pak potvrďte, že chcete zásadu odstranit.

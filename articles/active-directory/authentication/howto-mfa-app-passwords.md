@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 06/05/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 282bf6a30d8ff70440999ff3763c0d5544ef428d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: dfb38f9fcdba6898b690d0af68b715fea07e80bb
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839263"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743101"
 ---
 # <a name="enable-and-use-azure-ad-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Povolení a používání Multi-Factor Authentication Azure AD se staršími aplikacemi pomocí hesel aplikací
 
@@ -83,7 +83,7 @@ V tomto scénáři použijete následující přihlašovací údaje:
 
 Ve výchozím nastavení uživatelé nemůžou vytvářet hesla aplikací. Funkce hesla aplikací musí být povolená, aby je uživatelé mohli používat. Pokud chcete uživatelům poskytnout možnost vytvářet hesla aplikací, proveďte následující kroky:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Vyhledejte a vyberte **Azure Active Directory** a pak zvolte **Uživatelé**.
 3. Na navigačním panelu v horní části okna *uživatele* vyberte **Multi-Factor Authentication** .
 4. V části Multi-Factor Authentication vyberte **nastavení služby**.

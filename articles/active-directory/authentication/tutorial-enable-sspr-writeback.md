@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/13/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 3723bfdad91fcbcb8c135c29c49d5eb9237c5b86
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: fc5291544f1cd64caa7e4ab1dd7d541604706920
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966470"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741163"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Kurz: povolení zpětného zápisu pro Samoobslužné resetování hesla Azure Active Directory do místního prostředí
 
@@ -73,11 +73,11 @@ Chcete-li nastavit příslušná oprávnění ke zpětnému zápisu hesla, prove
 1. V nabídce **zobrazení** se ujistěte, že jsou zapnuté **Rozšířené funkce** .
 1. Na levém panelu klikněte pravým tlačítkem myši na objekt, který představuje kořen domény, a vyberte **vlastnosti**  >  **zabezpečení**  >  **Upřesnit**.
 1. Na kartě **oprávnění** vyberte **Přidat**.
-1. V části **objekt zabezpečení**vyberte účet, na který se mají oprávnění použít (účet používaný Azure AD Connect).
+1. V části **objekt zabezpečení** vyberte účet, na který se mají oprávnění použít (účet používaný Azure AD Connect).
 1. V rozevíracím seznamu **platí pro** vyberte **podřízené objekty uživatele**.
-1. V části *oprávnění*zaškrtněte políčko pro následující možnost:
+1. V části *oprávnění* zaškrtněte políčko pro následující možnost:
     * **Resetování hesla**
-1. V části *vlastnosti*zaškrtněte políčka pro následující možnosti. Pokud chcete najít tyto možnosti, které se ve výchozím nastavení můžou nastavit, procházejte seznamem:
+1. V části *vlastnosti* zaškrtněte políčka pro následující možnosti. Pokud chcete najít tyto možnosti, které se ve výchozím nastavení můžou nastavit, procházejte seznamem:
     * **Zápis lockoutTime**
     * **Zápis pwdLastSet**
 
@@ -119,7 +119,7 @@ Se zapnutým zpětným zápisem hesla v Azure AD Connect teď nakonfigurujte Azu
 Pokud chcete povolit zpětný zápis hesla v SSPR, proveďte následující kroky:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu globálního správce.
-1. Vyhledejte a vyberte **Azure Active Directory**, vyberte **resetování hesla**a pak zvolte místní **integrace**.
+1. Vyhledejte a vyberte **Azure Active Directory**, vyberte **resetování hesla** a pak zvolte místní **integrace**.
 1. Nastavte možnost pro **zápis hesel zpátky do místního adresáře?** na *Ano*.
 1. Nastavte možnost, aby **Uživatelé odemkli účty bez resetování hesla?** na *Ano*.
 
@@ -132,7 +132,7 @@ Pokud chcete povolit zpětný zápis hesla v SSPR, proveďte následující krok
 Pokud už nechcete používat funkci zpětného zápisu SSPR, kterou jste nakonfigurovali v rámci tohoto kurzu, proveďte následující kroky:
 
 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-1. Vyhledejte a vyberte **Azure Active Directory**, vyberte **resetování hesla**a pak zvolte místní **integrace**.
+1. Vyhledejte a vyberte **Azure Active Directory**, vyberte **resetování hesla** a pak zvolte místní **integrace**.
 1. Nastavte možnost pro **zápis hesel zpátky do místního adresáře?** na *ne*.
 1. Nastavte možnost *,* aby **Uživatelé odemkli účty bez resetování hesla?**
 

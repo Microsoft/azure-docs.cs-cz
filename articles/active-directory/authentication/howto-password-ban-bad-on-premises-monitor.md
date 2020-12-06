@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6efcadf85816bb6aa014893bb9b20476a0701990
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: edc246a414401c4c1c0248787eda0381fcd63037
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886749"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741758"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Monitorování a kontrola protokolů pro místní prostředí ochrany heslem služby Azure AD
 
@@ -41,7 +41,7 @@ Všimněte si, že protokol trasování je ve výchozím nastavení vypnutý.
 
 Události zaznamenané různými součástmi agenta řadiče domény spadají do těchto rozsahů:
 
-|Součást |Rozsah ID události|
+|Komponenta |Rozsah ID události|
 | --- | --- |
 |Knihovna DLL filtru hesel agenta řadiče domény| 10000-19999|
 |Proces hostování služby agenta DC| 20000-29999|
@@ -314,7 +314,7 @@ Všimněte si, že protokol trasování je ve výchozím nastavení vypnutý.
 
 Události jsou protokolovány různými součástmi proxy serveru pomocí následujících rozsahů:
 
-|Součást |Rozsah ID události|
+|Komponenta |Rozsah ID události|
 | --- | --- |
 |Proces hostování služby proxy| 10000-19999|
 |Základní obchodní logika služby proxy| 20000-29999|

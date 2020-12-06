@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 04/15/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7ac03ff017f8beefe7cc487cdc32741ac1c5a35
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5ba1e280e3c14a24e33246799ca0d7ef8221294f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94838174"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741690"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>Řešení potíží s kombinovanou registrací informací o zabezpečení
 
@@ -30,7 +30,7 @@ Události protokolované pro kombinovanou registraci jsou v kategorii metody ov�
 
 V následující tabulce jsou uvedeny všechny události auditu generované kombinovanou registrací:
 
-| Aktivita | Status | Důvod | Popis |
+| Aktivita | Stav | Důvod | Popis |
 | --- | --- | --- | --- |
 | Uživatel zaregistroval všechny požadované bezpečnostní údaje. | Success | Uživatel zaregistroval všechny požadované bezpečnostní údaje. | Tato událost nastane, pokud uživatel úspěšně dokončil registraci.|
 | Uživatel zaregistroval všechny požadované bezpečnostní údaje. | Selhání | Uživatel zrušil registraci bezpečnostních údajů. | K této události dojde, když uživatel zruší registraci z režimu přerušení.|
@@ -139,7 +139,7 @@ Následující kroky vám pomůžou vrátit uživatele nebo skupinu uživatelů.
    }
    ```
 
-#### <a name="rollback"></a>Návrat
+#### <a name="rollback"></a>Vrácení zpět
 
 V okně PowerShellu spusťte následující příkaz, který zadává skript a umístění souborů uživatele. Po zobrazení výzvy zadejte přihlašovací údaje globálního správce. Skript vypíše výstup každé operace aktualizace uživatele.
 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/17/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1cd40b8df0251aee7692df24e9bc3f7186c155d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 478ae6146caeb8a27cdaf13b7f33e421b8121afc
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966504"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741486"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>Povolení samoobslužného resetování hesla Azure Active Directory na přihlašovací obrazovce Windows
 
@@ -75,20 +75,20 @@ Nasazení změny konfigurace, aby se povolilo SSPR z přihlašovací obrazovky p
 #### <a name="create-a-device-configuration-policy-in-intune"></a>Vytvoření zásad konfigurace zařízení v Intune
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **Intune**.
-1. Vytvořte nový profil konfigurace zařízení tak, že přejdete na **konfigurační**  >  **profily**zařízení a pak vyberete **+ vytvořit profil** .
+1. Vytvořte nový profil konfigurace zařízení tak, že přejdete na **konfigurační**  >  **profily** zařízení a pak vyberete **+ vytvořit profil** .
    - Pro **platformu** vyberte *Windows 10 a novější* .
-   - Jako **typ profilu**vyberte *vlastní* .
-1. Vyberte **vytvořit**a zadejte smysluplný název profilu, jako je například *přihlašovací obrazovka Windows 10 SSPR* .
+   - Jako **typ profilu** vyberte *vlastní* .
+1. Vyberte **vytvořit** a zadejte smysluplný název profilu, jako je například *přihlašovací obrazovka Windows 10 SSPR* .
 
     Volitelně můžete zadat smysluplný popis profilu a pak vybrat **Další**.
-1. V části *nastavení konfigurace*vyberte **Přidat** a zadejte následující nastavení OMA-URI, které povolí odkaz pro resetování hesla:
+1. V části *nastavení konfigurace* vyberte **Přidat** a zadejte následující nastavení OMA-URI, které povolí odkaz pro resetování hesla:
       - Zadejte smysluplný název, který vysvětluje, co toto nastavení dělá, například *odkaz Přidat SSPR*.
       - Volitelně můžete zadat smysluplný popis nastavení.
       - Identifikátor **OMA-URI** nastavte na `./Vendor/MSFT/Policy/Config/Authentication/AllowAadPasswordReset`.
       - **Datový typ** nastavte na **Integer**.
       - Jako **Hodnota** nastavte **1**.
 
-    Vyberte **Přidat**a **Další**.
+    Vyberte **Přidat** a **Další**.
 1. Zásady je možné přiřadit konkrétním uživatelům, zařízením nebo skupinám. Přiřaďte profil požadovaný pro vaše prostředí, ideálně do testovací skupiny zařízení a pak vyberte **Další**.
 
     Další informace najdete v tématu [přiřazení profilů uživatelů a zařízení v Microsoft Intune](/mem/intune/configuration/device-profile-assign).

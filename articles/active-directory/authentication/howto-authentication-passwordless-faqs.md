@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 08/19/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5cc6847332765419001eadc5944905f55a425ef
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 98cb990ede7c4d6e261bba05b0b8c97d758e6c32
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964787"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743526"
 ---
 # <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad-preview"></a>Nejčastější dotazy k nasazení (FAQ) pro klíče zabezpečení Hybrid FIDO2 ve službě Azure AD (Preview)
 
@@ -218,7 +218,7 @@ Dostali jsme zpětnou vazbu o složitosti modelu nasazení pro Windows Hello pro
 Stejně jako u jakýchkoli jiných řadičů domény by se měly pravidelně střídat šifrovací klíče serveru Azure AD Kerberos *KRBTGT* . Doporučuje se postupovat podle stejného plánu, jaký používáte k otočení všech ostatních služba AD DS *KRBTGT* klíče.
 
 > [!NOTE]
-> I když jsou k dispozici další nástroje pro otočení klíčů *KRBTGT* , je nutné [použít rutiny prostředí PowerShell k otočení klíčů *KRBTGT* ](howto-authentication-passwordless-security-key-on-premises.md#rotating-the-azure-ad-kerberos-server-key) serveru Kerberos služby Azure AD. Tato metoda zajistí, že se klíče aktualizují v místním prostředí služba AD DS i ve službě Azure AD.
+> I když jsou k dispozici další nástroje pro otočení klíčů *KRBTGT* , je nutné [použít rutiny prostředí PowerShell k otočení klíčů *KRBTGT*](howto-authentication-passwordless-security-key-on-premises.md#rotating-the-azure-ad-kerberos-server-key) serveru Kerberos služby Azure AD. Tato metoda zajistí, že se klíče aktualizují v místním prostředí služba AD DS i ve službě Azure AD.
 
 ### <a name="why-do-we-need-azure-ad-connect-does-it-write-any-info-back-to-ad-ds-from-azure-ad"></a>Proč potřebuji Azure AD Connect? Zapisuje se do služba AD DS z Azure AD nějaké informace zpátky?
 

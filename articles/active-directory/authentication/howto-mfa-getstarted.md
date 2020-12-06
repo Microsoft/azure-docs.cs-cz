@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aa093411e40b2fc60c52c2a22434658bab78e59
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 978f404aa9b99819460e46ea89df19d27431b8b8
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839246"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743135"
 ---
 # <a name="plan-an-azure-ad-multi-factor-authentication-deployment"></a>Plánování nasazení Multi-Factor Authentication služby Azure AD
 
@@ -29,7 +29,7 @@ V této příručce pro nasazení se dozvíte, jak naplánovat a otestovat Multi
 K rychlému zobrazení Multi-Factor Authentication Azure AD v akci a pak se vraťte k pochopení dalších hledisek nasazení:
 
 > [!div class="nextstepaction"]
-> [Povolit Multi-Factor Authentication služby Azure AD](tutorial-enable-azure-mfa.md)
+> [Povolení vícefaktorového ověřování Azure AD](tutorial-enable-azure-mfa.md)
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -370,4 +370,4 @@ Služba Azure AD Multi-Factor Authentication poskytuje sestavy prostřednictvím
 Pokud chcete zobrazit Multi-Factor Authentication Azure AD v akci, proveďte následující kurz:
 
 > [!div class="nextstepaction"]
-> [Povolit Multi-Factor Authentication služby Azure AD](tutorial-enable-azure-mfa.md)
+> [Povolení vícefaktorového ověřování Azure AD](tutorial-enable-azure-mfa.md)

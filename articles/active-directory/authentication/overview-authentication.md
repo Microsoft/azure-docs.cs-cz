@@ -6,24 +6,24 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: overview
 ms.date: 07/13/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92ac495381f63e01d64c9a3d02777dca37ebb343
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f85b78480e7258780f8dd396431edeb968189e4c
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837987"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741248"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Co je Azure Active Directory ověřování?
 
 Jednou z hlavních funkcí platformy identity je ověření, nebo *ověření* přihlašovacích údajů, když se uživatel přihlásí k zařízení, aplikaci nebo službě. V Azure Active Directory (Azure AD) ověřování zahrnuje víc než jenom ověření uživatelského jména a hesla. K vylepšení zabezpečení a omezení nutnosti pomoci helpdesku zahrnuje ověřování Azure AD následující komponenty:
 
 * Samoobslužné resetování hesla
-* Multi-Factor Authentication Azure AD
+* Vícefaktorové ověřování Azure AD
 * Hybridní integrace pro zápis změn hesel zpátky do místního prostředí
 * Hybridní integrace, která vynutila zásady ochrany hesel pro místní prostředí
 * Ověřování bez hesla
@@ -50,7 +50,7 @@ Samoobslužné resetování hesla funguje v následujících scénářích:
 
 Když uživatel aktualizuje nebo obnoví heslo pomocí samoobslužného resetování hesla, může se toto heslo také zapsat zpátky do místního prostředí Active Directory. Zpětný zápis hesla zajistí, že uživatel může ihned použít aktualizované přihlašovací údaje s místními zařízeními a aplikacemi.
 
-## <a name="azure-ad-multi-factor-authentication"></a>Multi-Factor Authentication Azure AD
+## <a name="azure-ad-multi-factor-authentication"></a>Vícefaktorové ověřování Azure AD
 
 Vícefaktorové ověřování je postup, ve kterém se uživateli při přihlašování zobrazí výzva k další formě prokázání totožnosti, třeba k zadání kódu na svém mobilním telefonu nebo k naskenování otisku prstu.
 

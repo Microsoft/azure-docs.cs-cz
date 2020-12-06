@@ -5,30 +5,39 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 05/29/2020
-ms.openlocfilehash: 427b488fe6673bef505fccdaa7185d69437bceaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/05/2020
+ms.openlocfilehash: 783431c4888a68e24cf3d2603c541c4797ea65d8
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231312"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741095"
 ---
-# <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Vytvoření prostředí ISE (Integration Service Environment) pomocí Logic Apps REST API
+# <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Vytvoření prostředí integrační služby (ISE) s využitím rozhraní REST API služby Logic Apps
 
-Tento článek ukazuje, jak vytvořit [ *prostředí ISE (Integration Service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) prostřednictvím REST API Logic Apps ve scénářích, ve kterých aplikace logiky a účty pro integraci potřebují přístup k [virtuální síti Azure](../virtual-network/virtual-networks-overview.md). Prostředí integrační služby (ISE) je vyhrazené prostředí, které využívá vyhrazené úložiště a další prostředky oddělené od globální služby Logic Apps pro více tenantů. Toto oddělení také snižuje vliv na výkon, který můžou mít jiní klienti Azure na výkon vašich aplikací. Prostředí integrační služby vám také poskytuje vlastní statickou IP adresu. Tyto IP adresy jsou oddělené od statických IP adres, které jsou sdílené pomocí Logic Apps ve veřejné víceklientské službě.
+Pro scénáře, ve kterých aplikace logiky a účty pro integraci potřebují přístup k [virtuální síti Azure](../virtual-network/virtual-networks-overview.md), můžete pomocí REST API Logic Apps vytvořit [ *prostředí ISE (Integration Service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) . Další informace o ISEs najdete v tématu [přístup k prostředkům Azure Virtual Network z Azure Logic Apps](connect-virtual-network-vnet-isolated-environment-overview.md).
 
-Můžete také vytvořit ISE pomocí [ukázkové Azure Resource Manager šablony pro rychlé](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment) zprovoznění nebo pomocí [Azure Portal](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
+V tomto článku se dozvíte, jak vytvořit ISE pomocí REST API Logic Apps všeobecně. V případě potřeby můžete také ve svých ISE povolit [spravovanou identitu přiřazenou systémem nebo uživateli](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) , ale jenom pomocí Logic Apps REST API v tuto chvíli. Tato identita umožňuje vašemu ISE ověřovat přístup k zabezpečeným prostředkům, například k virtuálním počítačům a jiným systémům nebo službám, které jsou v systému nebo připojeny k virtuální síti Azure. Tímto způsobem se nemusíte přihlašovat pomocí svých přihlašovacích údajů.
 
-> [!IMPORTANT]
-> Logic Apps, integrované triggery, integrované akce a konektory spouštěné ve vašem ISE používají Cenový tarif, který se liší od cenového plánu založeného na spotřebě. Informace o cenách a fakturační práci pro ISEs najdete v článku o [cenovém modelu Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing). Cenové sazby najdete v tématu [Logic Apps ceny](../logic-apps/logic-apps-pricing.md).
+Další informace o dalších způsobech vytvoření ISE najdete v těchto článcích:
 
-## <a name="prerequisites"></a>Požadavky
+* [Vytvoření ISE pomocí Azure Portal](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
+* [Vytvoření ISE pomocí ukázkové Azure Resource Manager šablony pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)
+* [Vytvoření ISE, který podporuje použití klíčů spravovaných zákazníkem k šifrování neaktivních dat](customer-managed-keys-integration-service-environment.md)
 
-* Stejné [požadavky](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) a [požadavky pro povolení přístupu pro ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) jako při vytváření ISE v Azure Portal
+## <a name="prerequisites"></a>Předpoklady
+
+* Stejné [předpoklady](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) a [požadavky na přístup](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) jako při vytváření ISE v Azure Portal
+
+* Všechny další prostředky, které chcete použít se svým ISE, abyste mohli zahrnout jejich informace do definice ISE, například: 
+
+  * Pokud chcete povolit podporu certifikátů podepsaných svým držitelem, musíte do definice ISE zahrnout informace o tomto certifikátu.
+
+  * Pokud chcete povolit spravovanou identitu přiřazenou uživatelem, musíte tuto identitu vytvořit předem a do `objectId` `principalId` definice ISE zahrnout vlastnosti a a `clientId` jejich hodnoty. Další informace najdete v tématu [Vytvoření spravované identity přiřazené uživatelem v Azure Portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity).
 
 * Nástroj, který můžete použít k vytvoření ISE, voláním Logic Apps REST API s požadavkem PUT protokolu HTTPS. Můžete například použít [post](https://www.getpostman.com/downloads/)nebo můžete vytvořit aplikaci logiky, která provede tuto úlohu.
 
-## <a name="send-the-request"></a>Odeslat žádost
+## <a name="create-the-ise"></a>Vytvoření ISE
 
 Pokud chcete vytvořit ISE voláním REST API Logic Apps, udělejte tuto žádost o vložení HTTPS:
 
@@ -58,17 +67,40 @@ V hlavičce požadavku zahrňte tyto vlastnosti:
 
 ## <a name="request-body"></a>Text požadavku
 
-Tady je syntaxe textu žádosti, která popisuje vlastnosti, které se mají použít při vytváření ISE. Chcete-li vytvořit ISE, který umožňuje používat certifikát podepsaný svým držitelem, který je nainstalován v `TrustedRoot` umístění, zahrňte `certificates` objekt do oddílu definice ISE `properties` . Pro existující ISE můžete odeslat žádost o opravu pouze pro `certificates` objekt. Další informace o použití certifikátů podepsaných svým držitelem najdete v tématech [zabezpečený přístup a přístup k datům pro odchozí hovory na jiné služby a systémy](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
+V textu žádosti zadejte definici prostředků, která se má použít k vytvoření vašeho ISEu, včetně informací o dalších funkcích, které chcete povolit na ISE, například:
+
+* Chcete-li vytvořit ISE, který umožňuje používat certifikát podepsaný svým držitelem, který je nainstalován v `TrustedRoot` umístění, zahrňte `certificates` objekt do oddílu definice ISE `properties` , jak je uvedeno dále v tomto článku.
+
+  Pokud chcete tuto funkci povolit pro existující ISE, můžete odeslat žádost o opravu jenom pro `certificates` objekt. Další informace o použití certifikátů podepsaných svým držitelem najdete v tématech [zabezpečený přístup a přístup k datům pro odchozí hovory na jiné služby a systémy](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
+
+* Pokud chcete vytvořit ISE, který používá spravovanou identitu přiřazenou systémem nebo uživatelem, zahrňte `identity` objekt se spravovaným typem identity a dalšími požadovanými informacemi v definici ISE, jak je uvedeno dále v tomto článku.
+
+* Pokud chcete vytvořit ISE, který používá klíče spravované zákazníkem a Azure Key Vault k šifrování neaktivních dat, uveďte [informace, které umožňují zákaznickou podporu](customer-managed-keys-integration-service-environment.md). Klíče spravované zákazníkem můžete nastavit *jenom při vytváření*, ne později.
+
+### <a name="request-body-syntax"></a>Syntaxe textu žádosti
+
+Tady je syntaxe textu žádosti, která popisuje vlastnosti, které se mají použít při vytváření ISE:
 
 ```json
 {
-   "id": "/subscriptions/{Azure-subscription-ID/resourceGroups/{Azure-resource-group}/providers/Microsoft.Logic/integrationServiceEnvironments/{ISE-name}",
+   "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Logic/integrationServiceEnvironments/{ISE-name}",
    "name": "{ISE-name}",
    "type": "Microsoft.Logic/integrationServiceEnvironments",
    "location": "{Azure-region}",
    "sku": {
       "name": "Premium",
       "capacity": 1
+   },
+   // Include the `identity` object to enable the system-assigned identity or user-assigned identity
+   "identity": {
+      "type": <"SystemAssigned" | "UserAssigned">,
+      // When type is "UserAssigned", include the following "userAssignedIdentities" object:
+      "userAssignedIdentities": {
+         "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{user-assigned-managed-identity-object-ID}": {
+            "principalId": "{principal-ID}",
+            "clientId": "{client-ID}"
+         }
+      }
    },
    "properties": {
       "networkConfiguration": {
@@ -112,6 +144,15 @@ Tento ukázkový text požadavku zobrazuje ukázkové hodnoty:
    "name": "Fabrikam-ISE",
    "type": "Microsoft.Logic/integrationServiceEnvironments",
    "location": "WestUS2",
+   "identity": {
+      "type": "UserAssigned",
+      "userAssignedIdentities": {
+         "/subscriptions/********************/resourceGroups/Fabrikam-RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/*********************************": {
+            "principalId": "*********************************",
+            "clientId": "*********************************"
+         }
+      }
+   },
    "sku": {
       "name": "Premium",
       "capacity": 1
@@ -150,4 +191,3 @@ Tento ukázkový text požadavku zobrazuje ukázkové hodnoty:
 
 * [Přidání prostředků do prostředí integrační služby](../logic-apps/add-artifacts-integration-service-environment-ise.md)
 * [Správa prostředí integrační služby](../logic-apps/ise-manage-integration-service-environment.md#check-network-health)
-

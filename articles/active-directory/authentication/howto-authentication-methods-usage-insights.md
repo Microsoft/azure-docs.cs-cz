@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe8a916f4c3ce8869b6b487e33dcdecc061f8cbf
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8633ae0d23650eb12ee2e1fdcd355864dfd8b6c3
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839586"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743628"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Použití metod ověřování & Insights (Preview)
 
@@ -65,7 +65,7 @@ Kliknutím na **zaregistrované uživatele**, **povoleným uživatelům** nebo *
 
 Sestava Podrobnosti o registraci zobrazuje pro každého uživatele následující informace:
 
-- Name
+- Název
 - Uživatelské jméno
 - Stav registrace (vše, registrováno, Neregistrováno)
 - Povolený stav (vše, povoleno, Nepovoleno)
@@ -80,7 +80,7 @@ Kliknutím na registrace nebo resetování grafů zobrazíte podrobnosti o reset
 
 Sestava obnovit podrobnosti zobrazuje události registrace a resetování za posledních 30 dní, včetně:
 
-- Name
+- Název
 - Uživatelské jméno
 - Funkce (vše, registrace, resetování)
 - Metoda ověřování (oznámení aplikace, kód aplikace, telefonní hovor, volání Office, SMS, E-mail, bezpečnostní otázky)
