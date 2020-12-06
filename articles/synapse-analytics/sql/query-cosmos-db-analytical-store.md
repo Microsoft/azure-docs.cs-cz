@@ -6,15 +6,15 @@ author: jovanpop-msft
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
-ms.date: 09/15/2020
+ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: a7e9cdb18d109abeef7d7d7237444ac55f9e7da1
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 129534727248ff05b5d38da60dead7903d9a5815
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576345"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744461"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Dotazování na data Azure Cosmos DB pomocí neserverového fondu SQL ve verzi Preview odkazu na Azure synapse
 
@@ -98,12 +98,13 @@ Pokud chcete postupovat podle tohoto článku předvádí, jak zadávat dotazy n
 
 * Účet databáze Azure Cosmos DB s [povoleným odkazem na Azure synapse](../../cosmos-db/configure-synapse-link.md).
 * Azure Cosmos DB databáze s názvem `covid` .
-* Dva kontejnery Azure Cosmos DB s názvem `EcdcCases` a `Cord19` načteny s předchozími ukázkovými datovými sadami.
+* Dva kontejnery Azure Cosmos DB s názvem `Ecdc` a `Cord19` načteny s předchozími ukázkovými datovými sadami.
+
+Pro účely testování můžete použít následující připojovací řetězec: `Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==` . Všimněte si, že toto připojení nezaručuje výkon, protože tento účet se v porovnání s vaším koncovým bodem SQL synapse může nacházet ve vzdálené oblasti.
 
 ## <a name="explore-azure-cosmos-db-data-with-automatic-schema-inference"></a>Zkoumání Azure Cosmos DB dat pomocí automatického odvození schématu
 
 Nejjednodušší způsob, jak prozkoumat data v Azure Cosmos DB, je použití možnosti automatického odvození schématu. Vyvoláním `WITH` klauzule z `OPENROWSET` příkazu můžete instruovat fond SQL bez serveru na automatické rozpoznávání (odvodit) schéma analytického úložiště kontejneru Azure Cosmos DB.
-
 
 ### <a name="openrowset-with-key"></a>[OPENROWSET s klíčem](#tab/openrowset-key)
 
@@ -111,8 +112,8 @@ Nejjednodušší způsob, jak prozkoumat data v Azure Cosmos DB, je použití mo
 SELECT TOP 10 *
 FROM OPENROWSET( 
        'CosmosDB',
-       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases) as documents
+       'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
+       Ecdc) as documents
 ```
 
 ### <a name="openrowset-with-credential"></a>[OPENROWSET s přihlašovacími údaji](#tab/openrowset-credential)
@@ -120,20 +121,20 @@ FROM OPENROWSET(
 ```sql
 /*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
     CREATE CREDENTIAL MyCosmosDbAccountCredential
-    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
 */
 SELECT TOP 10 *
 FROM OPENROWSET(
       PROVIDER = 'CosmosDB',
-      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
-      OBJECT = 'EcdcCases',
+      CONNECTION = 'Account=synapselink-cosmosdb-sqlsample;Database=covid',
+      OBJECT = 'Ecdc',
       SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
 
 ---
 
-V předchozím příkladu jsme pověřili fond SQL bez serveru pro připojení k `covid` databázi v Azure Cosmos DB účet `MyCosmosDbAccount` ověřený pomocí klíče Azure Cosmos dB (fiktivního v předchozím příkladu). Pak jsme k `EcdcCases` analytickému úložišti kontejneru přistupovali v `West US 2` oblasti. Vzhledem k tomu, že neexistuje žádná projekce specifických vlastností, `OPENROWSET` funkce vrátí všechny vlastnosti z Azure Cosmos DBch položek.
+V předchozím příkladu jsme pověřili fond SQL bez serveru pro připojení k `covid` databázi v Azure Cosmos DB účet `MyCosmosDbAccount` ověřený pomocí klíče Azure Cosmos dB (fiktivního v předchozím příkladu). Pak jsme k `Ecdc` analytickému úložišti kontejneru přistupovali v `West US 2` oblasti. Vzhledem k tomu, že neexistuje žádná projekce specifických vlastností, `OPENROWSET` funkce vrátí všechny vlastnosti z Azure Cosmos DBch položek.
 
 Za předpokladu, že položky v kontejneru Azure Cosmos DB `date_rep` mají `cases` vlastnosti, a `geo_id` , výsledky tohoto dotazu jsou uvedeny v následující tabulce:
 
@@ -149,7 +150,7 @@ Pokud potřebujete prozkoumat data z druhého kontejneru ve stejné Azure Cosmos
 SELECT TOP 10 *
 FROM OPENROWSET( 
        'CosmosDB',
-       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+       'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
        Cord19) as cord19
 ```
 
@@ -174,21 +175,21 @@ Tyto ploché dokumenty JSON ve Azure Cosmos DB můžou být reprezentované jako
 SELECT TOP 10 *
 FROM OPENROWSET(
       'CosmosDB',
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases
+      'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
+       Ecdc
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
 ### <a name="openrowset-with-credential"></a>[OPENROWSET s přihlašovacími údaji](#tab/openrowset-credential)
 ```sql
 /*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
     CREATE CREDENTIAL MyCosmosDbAccountCredential
-    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
 */
 SELECT TOP 10 *
 FROM OPENROWSET(
       PROVIDER = 'CosmosDB',
-      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
-      OBJECT = 'EcdcCases',
+      CONNECTION = 'Account=synapselink-cosmosdb-sqlsample;Database=covid',
+      OBJECT = 'Ecdc',
       SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
@@ -209,14 +210,14 @@ Po identifikaci schématu můžete zobrazit zobrazení dat Azure Cosmos DB. Klí
 
 ```sql
 CREATE CREDENTIAL MyCosmosDbAccountCredential
-WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
 GO
-CREATE OR ALTER VIEW EcdcCases
+CREATE OR ALTER VIEW Ecdc
 AS SELECT *
 FROM OPENROWSET(
       PROVIDER = 'CosmosDB',
-      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
-      OBJECT = 'EcdcCases',
+      CONNECTION = 'Account=synapselink-cosmosdb-sqlsample;Database=covid',
+      OBJECT = 'Ecdc',
       SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
@@ -241,41 +242,28 @@ Například datová sada [šňůr-19](https://azure.microsoft.com/services/open-
 }
 ```
 
-Vnořené objekty a pole v Azure Cosmos DB jsou reprezentovány jako řetězce JSON ve výsledku dotazu, pokud `OPENROWSET` je funkce čte. Jedna z možností, jak číst hodnoty z těchto komplexních typů jako sloupce SQL, je použití funkcí SQL JSON:
+Vnořené objekty a pole v Azure Cosmos DB jsou reprezentovány jako řetězce JSON ve výsledku dotazu, pokud `OPENROWSET` je funkce čte. Můžete zadat cesty k vnořeným hodnotám v objektech při použití `WITH` klauzule:
 
 ```sql
-SELECT
-    title = JSON_VALUE(metadata, '$.title'),
-    authors = JSON_QUERY(metadata, '$.authors'),
-    first_author_name = JSON_VALUE(metadata, '$.authors[0].first')
-FROM
-    OPENROWSET(
-      'CosmosDB',
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       Cord19
-    WITH ( metadata varchar(MAX) ) AS docs;
+SELECT TOP 10 *
+FROM OPENROWSET( 
+       'CosmosDB',
+       'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
+       Cord19)
+WITH (  paper_id    varchar(8000),
+        title        varchar(1000) '$.metadata.title',
+        metadata     varchar(max),
+        authors      varchar(max) '$.metadata.authors'
+) AS docs;
 ```
 
 Výsledek tohoto dotazu může vypadat podobně jako v následující tabulce:
 
-| title | Autoři | first_autor_name |
+| paper_id | title | zprostředkovatele identity | Autoři |
 | --- | --- | --- |
-| Doplňující informace epidemi... |   `[{"first":"Julien","last":"Mélade","suffix":"","affiliation":{"laboratory":"Centre de Recher…` | Julien |  
-
-Jako alternativní možnost můžete také zadat cesty k vnořeným hodnotám v objektech při použití `WITH` klauzule:
-
-```sql
-SELECT
-    *
-FROM
-    OPENROWSET(
-      'CosmosDB',
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       Cord19
-    WITH ( title varchar(1000) '$.metadata.title',
-           authors varchar(max) '$.metadata.authors'
-    ) AS docs;
-```
+| bb11206963e831f... | Doplňující informace epidemi... | `{"title":"Supplementary Informati…` | `[{"first":"Julien","last":"Mélade","suffix":"","af…`| 
+| bb1206963e831f1... | Použití Convalescent séra v imunní-E... | `{"title":"The Use of Convalescent…` | `[{"first":"Antonio","last":"Lavazza","suffix":"", …` |
+| bb378eca9aac649... | Tylosema esculentum (Marama) hlízy a B... | `{"title":"Tylosema esculentum (Ma…` | `[{"first":"Walter","last":"Chingwaru","suffix":"",…` | 
 
 Přečtěte si další informace o analýze [složitých datových typů v odkazech Azure synapse](../how-to-analyze-complex-schema.md) a [ve vnořených strukturách v neserverovém fondu SQL](query-parquet-nested-types.md).
 
@@ -315,7 +303,7 @@ SELECT
 FROM
     OPENROWSET(
       'CosmosDB',
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+      'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
        Cord19
     ) WITH ( title varchar(1000) '$.metadata.title',
              authors varchar(max) '$.metadata.authors' ) AS docs
@@ -365,7 +353,7 @@ SELECT *
 FROM OPENROWSET(
       'CosmosDB',
       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases
+       Ecdc
     ) as rows
 ```
 
@@ -400,7 +388,7 @@ SELECT geo_id, cases = SUM(cases)
 FROM OPENROWSET(
       'CosmosDB'
       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases
+       Ecdc
     ) WITH ( geo_id VARCHAR(50) '$.geo_id.string',
              cases INT '$.cases.int32'
     ) as rows
@@ -416,7 +404,7 @@ SELECT geo_id, cases = SUM(cases_int) + SUM(cases_bigint) + SUM(cases_float)
 FROM OPENROWSET(
       'CosmosDB',
       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases
+       Ecdc
     ) WITH ( geo_id VARCHAR(50) '$.geo_id.string', 
              cases_int INT '$.cases.int32',
              cases_bigint BIGINT '$.cases.int64',
@@ -430,18 +418,18 @@ V tomto příkladu je počet případů uložen buď jako `int32` , `int64` nebo
 ## <a name="known-issues"></a>Známé problémy
 
 - Dotaz na možnosti, že fond SQL bez serveru poskytuje [Azure Cosmos DB úplných schémat přesnosti](#full-fidelity-schema) je dočasné chování, které se změní na základě zpětné vazby ve verzi Preview. Nespoléhá se na schéma, které `OPENROWSET` funkce bez `WITH` klauzule poskytuje během veřejné verze Preview, protože prostředí dotazů může být zarovnané podle dobře definovaného schématu na základě zpětné vazby od zákazníků. Pokud chcete poskytnout zpětnou vazbu, obraťte se na [produktový tým s odkazem na Azure synapse](mailto:cosmosdbsynapselink@microsoft.com).
-- Fond SQL bez serveru nevrátí chybu při kompilaci, pokud `OPENROWSET` kolace sloupce nemá kódování UTF-8. Můžete snadno změnit výchozí kolaci pro všechny `OPENROWSET` funkce běžící v aktuální databázi pomocí příkazu T-SQL `alter database current collate Latin1_General_100_CI_AI_SC_UTF8` .
+- Fond SQL bez serveru vrátí upozornění v době kompilace, pokud `OPENROWSET` řazení sloupce nemá kódování UTF-8. Můžete snadno změnit výchozí kolaci pro všechny `OPENROWSET` funkce běžící v aktuální databázi pomocí příkazu T-SQL `alter database current collate Latin1_General_100_CI_AS_SC_UTF8` .
 
 Možné chyby a akce při řešení potíží jsou uvedené v následující tabulce.
 
-| Chybová | Původní příčina |
+| Chyba | Původní příčina |
 | --- | --- |
-| Chyby syntaxe:<br/> -Nesprávná syntaxe poblíž textu "OPENROWSET"<br/> - `...` není rozpoznaná možnost HROMADNÉho poskytovatele OPENROWSET.<br/> – Nesprávná syntaxe poblíž textu `...` | Možné hlavní příčiny:<br/> – Nepoužívá CosmosDB jako první parametr.<br/> – Použití řetězcového literálu místo identifikátoru ve třetím parametru.<br/> -Nelze zadat třetí parametr (název kontejneru). |
+| Chyby syntaxe:<br/> – Nesprávná syntaxe poblíž textu `Openrowset`<br/> - `...` není rozpoznanou `BULK OPENROWSET` možností poskytovatele.<br/> – Nesprávná syntaxe poblíž textu `...` | Možné hlavní příčiny:<br/> – Nepoužívá CosmosDB jako první parametr.<br/> – Použití řetězcového literálu místo identifikátoru ve třetím parametru.<br/> -Nelze zadat třetí parametr (název kontejneru). |
 | V připojovacím řetězci CosmosDB došlo k chybě. | – Účet, databáze nebo klíč není zadaný. <br/> – V připojovacím řetězci je nějaká možnost, která není rozpoznaná.<br/> – Střední ( `;` ) je umístěn na konci připojovacího řetězce. |
 | Překlad cesty CosmosDB se nezdařil s chybou "nesprávný název účtu" nebo "nesprávný název databáze". | Zadaný název účtu, název databáze nebo kontejner se nepodařilo najít, nebo nebylo povoleno analytické úložiště do zadané kolekce.|
 | Překlad cesty CosmosDB se nezdařil s chybou "nesprávná tajná hodnota" nebo "tajný klíč má hodnotu null nebo je prázdný." | Klíč účtu není platný nebo chybí. |
 | Sloupec `column name` typu `type name` není kompatibilní s externím datovým typem `type name` . | Zadaný typ sloupce v klauzuli se `WITH` neshoduje s typem v kontejneru Azure Cosmos DB. Zkuste změnit typ sloupce tak, jak je popsán v části [Azure Cosmos DB mapování typu SQL](#azure-cosmos-db-to-sql-type-mappings), nebo použijte `VARCHAR` typ. |
-| Sloupec obsahuje `NULL` hodnoty ve všech buňkách. | Pravděpodobnou příčinou je nesprávný název sloupce nebo výraz cesty v `WITH` klauzuli. Název sloupce (nebo výraz cesty za typem sloupce) v `WITH` klauzuli se musí shodovat s názvem některé vlastnosti v kolekci Azure Cosmos DB. Porovnávání rozlišuje *velká a malá písmena*. Například `productCode` a `ProductCode` jsou různé vlastnosti. |
+| Sloupec obsahuje `NULL` hodnoty ve všech buňkách. | Pravděpodobnou příčinou je nesprávný název sloupce nebo výraz cesty v `WITH` klauzuli. Název sloupce (nebo výraz cesty za typem sloupce) v `WITH` klauzuli se musí shodovat s názvem některé vlastnosti v kolekci Azure Cosmos DB. U porovnávání se rozlišují *malá a velká písmena*. Například `productCode` a `ProductCode` jsou různé vlastnosti. |
 
 Návrhy a problémy můžete nahlásit na [stránce pro zpětnou vazbu ke službě Azure synapse Analytics](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862).
 

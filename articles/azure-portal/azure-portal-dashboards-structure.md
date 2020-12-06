@@ -1,23 +1,14 @@
 ---
-title: Struktura řídicích panelů Azure | Microsoft Docs
+title: Struktura řídicích panelů Azure
 description: Projděte si strukturu JSON řídicího panelu Azure pomocí ukázkového řídicího panelu. Obsahuje odkaz na vlastnosti prostředku.
-services: azure-portal
-documentationcenter: ''
-author: adamabmsft
-manager: mtillman
-ms.service: azure-portal
-ms.devlang: NA
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: na
 ms.date: 12/20/2019
-ms.author: mblythe
-ms.openlocfilehash: 014463fb0a5af639ff0da5f8db2805f9796fd928
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d37e2fd9c9f6ef6e7ddea6dea002f26f20cd66a7
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072471"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745957"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Struktura řídicích panelů Azure
 Tento dokument projde strukturu řídicího panelu Azure pomocí následujícího řídicího panelu jako příklad:
@@ -290,7 +281,7 @@ Vzhledem k tomu, že sdílené [řídicí panely Azure jsou prostředky](../azur
 
 ## <a name="common-resource-properties"></a>Obecné vlastnosti prostředku
 
-Pojďme rozdělit relevantní části JSON.  Vlastnosti nejvyšší úrovně, __ID__, __název__, __typ__, __umístění__a __značky__ se sdílejí mezi všemi typy prostředků Azure. To znamená, že se s obsahem řídicího panelu nemusejí dělat mnohem.
+Pojďme rozdělit relevantní části JSON.  Vlastnosti nejvyšší úrovně, __ID__, __název__, __typ__, __umístění__ a __značky__ se sdílejí mezi všemi typy prostředků Azure. To znamená, že se s obsahem řídicího panelu nemusejí dělat mnohem.
 
 ### <a name="the-id-property"></a>Vlastnost ID
 
@@ -322,10 +313,10 @@ Objekt pod "0" obsahuje dvě vlastnosti, __pořadí__ a __části__.  V aktuáln
 Objekt __Parts__ obsahuje vlastnost pro každou část, kde název vlastnosti je číslo. Toto číslo není významné. 
 
 ### <a name="the-part-object"></a>Objekt součásti
-Každý objekt jednotlivé součásti má __pozici__a __metadata__.
+Každý objekt jednotlivé součásti má __pozici__ a __metadata__.
 
 ### <a name="the-position-object"></a>Objekt pozice
-Vlastnost __Position__ obsahuje informace o velikosti a umístění pro část vyjádřené jako __x__, __y__, __RowSpan__a __ColSpan__. Hodnoty jsou v jednotkách mřížky. Tyto jednotky mřížky se zobrazí, když je řídicí panel v režimu přizpůsobení, jak je znázorněno zde. Chcete-li, aby dlaždice měla šířku dvou jednotek mřížky, výšku jedné jednotky mřížky a umístění v levém horním rohu řídicího panelu, bude objekt pozice vypadat takto:
+Vlastnost __Position__ obsahuje informace o velikosti a umístění pro část vyjádřené jako __x__, __y__, __RowSpan__ a __ColSpan__. Hodnoty jsou v jednotkách mřížky. Tyto jednotky mřížky se zobrazí, když je řídicí panel v režimu přizpůsobení, jak je znázorněno zde. Chcete-li, aby dlaždice měla šířku dvou jednotek mřížky, výšku jedné jednotky mřížky a umístění v levém horním rohu řídicího panelu, bude objekt pozice vypadat takto:
 
 `location: { x: 0, y: 0, rowSpan: 2, colSpan: 1 }`
 
@@ -340,7 +331,7 @@ Každá část má vlastnost metadat, objekt má pouze jednu povinnou vlastnost 
 1. `Extension[azure]/HubsExtension/PartType/VideoPart` – Používá se k zobrazení videí z YouTube, channel9 a jakéhokoli jiného typu videa, které funguje ve značce HTML video.
 1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart` – Slouží k zobrazení názvu a stavu virtuálního počítače Azure.
 
-Každý typ součásti má svou vlastní konfiguraci. Možné vlastnosti konfigurace se nazývají __vstupy__, __Nastavení__a __assety__. 
+Každý typ součásti má svou vlastní konfiguraci. Možné vlastnosti konfigurace se nazývají __vstupy__, __Nastavení__ a __assety__. 
 
 ### <a name="the-inputs-object"></a>Objekt Inputs
 Objekt Inputs obecně obsahuje informace, které vážou dlaždici s instancí prostředků.  Část virtuálního počítače na našem řídicím panelu ukázky obsahuje jeden vstup, který k vyjádření vazby používá ID prostředku Azure.  Tento formát ID prostředku je konzistentní napříč všemi prostředky Azure.

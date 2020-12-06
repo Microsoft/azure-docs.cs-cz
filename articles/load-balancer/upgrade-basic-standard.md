@@ -7,37 +7,54 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: dd0617536147787f436e5817f3f2367a19ba6aa4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f97facd8d184be05cbfd79af92dbcaab3a022ebd
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009275"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746297"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Upgrade veřejné Load Balancer Azure
 [Azure Standard Load Balancer](load-balancer-overview.md) nabízí bohatou sadu funkcí a vysokou dostupnost prostřednictvím redundance zóny. Další informace o Load Balancer SKU najdete v tématu [srovnávací tabulka](./skus.md#skus).
 
-V upgradu existují tři fáze:
+Existují dva fáze upgradu:
 
-1. Migrace konfigurace
-2. Přidání virtuálních počítačů do back-endovéch fondů Standard Load Balancer
-
-Tento článek popisuje migraci konfigurace. Přidávání virtuálních počítačů do back-end fondů se může lišit v závislosti na konkrétním prostředí. [Jsou však k dispozici](#add-vms-to-backend-pools-of-standard-load-balancer)některá obecná doporučení.
+1. Změňte metodu přidělování IP adres z dynamické na statickou.
+2. Spuštěním skriptu PowerShellu dokončete upgrade a migraci provozu.
 
 ## <a name="upgrade-overview"></a>Přehled upgradu
 
 K dispozici je skript Azure PowerShell, který provede následující akce:
 
 * Vytvoří standardní SKU Load Balancer ve skupině prostředků a umístění, které zadáte.
+* Provede upgrade veřejné IP adresy ze základní SKU na místo na úrovni Standard.
 * Bezproblémově kopíruje konfiguraci základní SKU Load Balancer nově vytvořeným Standard Load Balancer.
 * Vytvoří výchozí odchozí pravidlo, které umožňuje odchozí připojení.
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
 * Skript podporuje pouze upgrade veřejné Load Balancer. Pro interní základní Load Balancer upgrade najdete pokyny v [této stránce](./upgrade-basicinternal-standard.md) .
-* Standard Load Balancer má novou veřejnou adresu. Je možné, že nebudete moct bez problémů přesunout IP adresy přidružené k existujícím základním Load Balancerm Standard Load Balancer, protože mají jiné SKU.
-* Pokud se standardní nástroj pro vyrovnávání zatížení vytvoří v jiné oblasti, nebudete moct k nově vytvořeným Standard Load Balancer přidružit virtuální počítače existující ve staré oblasti. Pokud chcete toto omezení obejít, nezapomeňte vytvořit nový virtuální počítač v nové oblasti.
+* Před spuštěním skriptu musí být metoda přidělení veřejné IP adresy změněna na "static". 
 * Pokud vaše Load Balancer nemá front-end IP konfiguraci ani back-end fond, pravděpodobně při spuštění skriptu dojde k chybě. Ujistěte se prosím, že nejsou prázdné.
+
+### <a name="change-allocation-method-of-the-public-ip-address-to-static"></a>Změnit metodu přidělení veřejné IP adresy na statickou
+
+* * * Tady jsou doporučené kroky:
+
+    1. Pokud chcete provádět úkoly v rámci tohoto rychlého startu, přihlaste se k [Azure Portal](https://portal.azure.com).
+ 
+    1. V nabídce vlevo vyberte **všechny prostředky** a potom v seznamu prostředků vyberte **základní veřejnou IP adresu přidruženou k základní Load Balancer** .
+   
+    1. V části **Nastavení** vyberte **Konfigurace**.
+   
+    1. V části **přiřazení** vyberte **statické**.
+    1. Vyberte **Uložit**.
+    >[!NOTE]
+    >U virtuálních počítačů, které mají veřejné IP adresy, budete muset nejprve vytvořit standardní IP adresy, kde není zaručena stejná IP adresa. Zruší přidružení virtuálních počítačů ze základních IP adres a přidruží je k nově vytvořeným standardním IP adresám. Pak budete moct postupovat podle pokynů pro přidání virtuálních počítačů do back-endového fondu Standard Load Balancer. 
+
+* **Vytváření nových virtuálních počítačů pro přidání do back-endovéch fondů nově vytvořených standardních veřejných Load Balancer**.
+    * Další pokyny k vytvoření virtuálního počítače a jeho přidružení k Standard Load Balancer najdete [tady](./quickstart-load-balancer-standard-public-portal.md#create-virtual-machines).
+
 
 ## <a name="download-the-script"></a>Stáhnout skript
 
@@ -76,39 +93,14 @@ Spuštění skriptu:
    * **oldRgName: [String]: povinné** – jedná se o skupinu prostředků pro stávající základní Load Balancer, kterou chcete upgradovat. Tuto řetězcovou hodnotu zjistíte tak, že přejdete na Azure Portal, vyberete svůj základní zdroj Load Balancer a kliknete na **Přehled** nástroje pro vyrovnávání zatížení. Skupina prostředků se nachází na dané stránce.
    * **oldLBName: [String]: povinné** – Toto je název vašeho stávajícího základního nástroje pro vyrovnávání zatížení, který chcete upgradovat. 
    * **newrgName: [String]: povinné** – jedná se o skupinu prostředků, ve které se vytvoří Standard Load Balancer. Může se jednat o novou skupinu prostředků nebo o tu existující. Pokud vyberete existující skupinu prostředků, Všimněte si, že název Load Balancer musí být v rámci skupiny prostředků jedinečný. 
-   * **NewLocation: [String]: povinné** – Toto je umístění, ve kterém se vytvoří Standard Load Balancer. Doporučuje se dědit stejné umístění zvoleného základního Load Balancer do Standard Load Balancer pro lepší přidružení k ostatním existujícím prostředkům.
    * **newLBName: [String]: Required** – jedná se o název Standard Load Balancer, který se má vytvořit.
 1. Spusťte skript s použitím příslušných parametrů. Dokončení může trvat pět až 7 minut.
 
     **Příklad**
 
    ```azurepowershell
-   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newLbName "LBForUpgrade"
    ```
-
-### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>Přidání virtuálních počítačů do back-endovéch fondů Standard Load Balancer
-
-Nejprve dvakrát ověřte, že skript úspěšně vytvořil novou standardní veřejnou Load Balancer s přesnou konfigurací, která je migrována ze základní veřejné Load Balancer. Můžete to ověřit z Azure Portal.
-
-Nezapomeňte poslat malý objem provozu prostřednictvím Standard Load Balancer jako ruční test.
-  
-Tady je několik scénářů, jak můžete nakonfigurovat virtuální počítače do back-endovéch fondů nově vytvořených standardních veřejných Load Balancer a naše doporučení pro každé z nich:
-
-* **Přesunování stávajících virtuálních počítačů ze back-endového fondu starých základních Load Balancer do back-endu nově vytvořených standardních veřejných Load Balancer**.
-    1. Pokud chcete provádět úkoly v rámci tohoto rychlého startu, přihlaste se k [Azure Portal](https://portal.azure.com).
- 
-    1. V nabídce vlevo vyberte **všechny prostředky** a potom v seznamu prostředků vyberte **nově vytvořenou Standard Load Balancer** .
-   
-    1. V části **Nastavení** vyberte **back-endové fondy**.
-   
-    1. Vyberte back-end fond, který se shoduje se back-end fondem základního Load Balancer, vyberte následující hodnotu: 
-      - **Virtuální počítač**: rozevírací seznam a výběr virtuálních počítačů z odpovídajícího back-end fondu základní Load Balancer.
-    1. Vyberte **Uložit**.
-    >[!NOTE]
-    >U virtuálních počítačů, které mají veřejné IP adresy, budete muset nejprve vytvořit standardní IP adresy, kde není zaručena stejná IP adresa. Zruší přidružení virtuálních počítačů ze základních IP adres a přidruží je k nově vytvořeným standardním IP adresám. Pak budete moct postupovat podle pokynů pro přidání virtuálních počítačů do back-endového fondu Standard Load Balancer. 
-
-* **Vytváření nových virtuálních počítačů pro přidání do back-endovéch fondů nově vytvořených standardních veřejných Load Balancer**.
-    * Další pokyny k vytvoření virtuálního počítače a jeho přidružení k Standard Load Balancer najdete [tady](./quickstart-load-balancer-standard-public-portal.md#create-virtual-machines).
 
 ### <a name="create-an-outbound-rule-for-outbound-connection"></a>Vytvoření odchozího pravidla pro odchozí připojení
 
@@ -120,11 +112,15 @@ Postupujte podle [pokynů](./quickstart-load-balancer-standard-public-powershell
 
 ### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Existují nějaká omezení Azure PowerShell skriptu pro migraci konfigurace z V1 na v2?
 
-Ano. Podívejte se na [Upozornění a omezení](#caveatslimitations).
+Yes. Podívejte se na [Upozornění a omezení](#caveatslimitations).
+
+### <a name="how-long-does-the-upgrade-take"></a>Jak dlouho trvá upgrade?
+
+Dokončení skriptu obvykle trvá přibližně 5-10 minut a může trvat delší dobu, v závislosti na složitosti konfigurace Load Balancer. V případě potřeby proto mějte na paměti, že v případě potřeby převzetí služeb při selhání naplánujte.
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Přepíná Azure PowerShell skript také přenos z mé základní Load Balancer na nově vytvořenou Standard Load Balancer?
 
-Ne. Azure PowerShell skript migruje pouze konfiguraci. Skutečná migrace provozu je vaší zodpovědností a vaším ovládacím prvkem.
+Yes. Skript Azure PowerShell neupgraduje pouze veřejnou IP adresu, zkopíruje konfiguraci ze základního do Standard Load Balancer, ale také migruje virtuální počítač na pozadí nově vytvořených standardních veřejných Load Balancer. 
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Narazili jsme na některé problémy s použitím tohoto skriptu. Jak získám pomoc?
   

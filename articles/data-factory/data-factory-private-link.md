@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 8d28a1f2040cfec7b81081754a6abd3bc3e14439
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 5d13a6a77ede6277eebc7fdab7cd42165cb602fa
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511470"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746339"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Privátní odkaz Azure pro Azure Data Factory
 
@@ -96,20 +96,26 @@ Další informace o konfiguraci vlastního serveru DNS pro podporu privátních 
 ## <a name="set-up-private-link-for-azure-data-factory"></a>Nastavit privátní odkaz pro Azure Data Factory
 Soukromé koncové body lze vytvořit pomocí [Azure Portal](../private-link/create-private-endpoint-portal.md).
 
+Můžete zvolit, jestli se má připojit k místnímu prostředí Integration runtime k Azure Data Factory prostřednictvím veřejného koncového bodu nebo privátního koncového bodu. 
+
+![Snímek obrazovky blokující veřejný přístup k samoobslužným Integration Runtimeům](./media/data-factory-private-link/disable-public-access-shir.png)
+
+
 Můžete také přejít na objekt pro vytváření dat Azure v Azure Portal a vytvořit privátní koncový bod, jak je znázorněno zde:
 
 ![Snímek obrazovky s podoknem připojení privátního koncového bodu pro vytvoření privátního koncového bodu.](./media/data-factory-private-link/create-private-endpoint.png)
 
+V kroku **prostředku** vyberte **Microsoft. DataFactory/Factory** jako **typ prostředku**. A pokud chcete vytvořit privátní koncový bod pro komunikaci příkazů mezi místním prostředím Integration runtime a službou Azure Data Factory, vyberte jako **cílový dílčí prostředek** možnost **DataFactory** .
 
-Pokud chcete zablokovat veřejný přístup k objektu pro vytváření dat Azure a povolit přístup pouze prostřednictvím privátního odkazu, zakažte v Azure Portal přístup k síti Azure Data Factory, jak je znázorněno zde:
-
-![Snímek obrazovky s podoknem "přístup k síti" pro vytvoření privátního koncového bodu.](./media/data-factory-private-link/disable-network-access.png)
+![Snímek obrazovky s podoknem připojení privátního koncového bodu pro výběr prostředku](./media/data-factory-private-link/private-endpoint-resource.png)
 
 > [!NOTE]
 > Zákaz přístupu k veřejné síti se vztahuje jenom na prostředí Integration runtime v místním prostředí, ne na Azure Integration Runtime a služba SSIS (SQL Server Integration Services) (SSIS) Integration Runtime.
 
+Pokud chcete vytvořit privátní koncový bod pro vytváření a monitorování datové továrny ve vaší virtuální síti, vyberte **portál** jako **cílový dílčí prostředek**.
+
 > [!NOTE]
-> Po zakázání přístupu k veřejné síti máte stále přístup k portálu Azure Data Factory prostřednictvím veřejné sítě.
+> Po vytvoření privátního koncového bodu pro portál máte stále přístup k portálu Azure Data Factory prostřednictvím veřejné sítě.
 
 ## <a name="next-steps"></a>Další kroky
 

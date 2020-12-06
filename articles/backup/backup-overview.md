@@ -4,12 +4,12 @@ description: Poskytuje přehled služby Azure Backup a jejich podíl na strategi
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 537605498fe166b24bd4e24673cfa1542bc449ea
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 805fa81362b9f90c1d6ba468caaf4b6745e42c62
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172470"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746110"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Co je služba Azure Backup?
 
@@ -37,13 +37,13 @@ Azure Backup přináší tyto klíčové výhody:
 - **Snadné škálování** – Azure Backup využívá základní výkon a neomezené škálování cloudu Azure pro zajištění vysoké dostupnosti bez režie údržby a monitorování.
 - **Získání neomezeného přenosu dat**: Azure Backup neomezuje množství příchozích a odchozích dat, která přenášíte, nebo poplatky za přenesená data.
   - Odchozí data označují data přenášená z trezoru služby Recovery Services během operace obnovení.
-  - Pokud provedete offline prvotní zálohování pomocí služby Azure import/export k importu velkých objemů dat, budou se vám pro příchozí data přidružit náklady.  [Další informace](backup-azure-backup-import-export.md).
+  - Pokud provedete offline prvotní zálohování pomocí služby Azure import/export k importu velkých objemů dat, budou se vám pro příchozí data přidružit náklady.  [Přečtěte si další informace](backup-azure-backup-import-export.md).
 - **Zabezpečení dat**: Azure Backup poskytuje řešení pro zabezpečení dat [při přenosu](backup-azure-security-feature.md) a [v klidovém](backup-azure-security-feature-cloud.md)provozu.
 - **Centralizované monitorování a Správa**: Azure Backup poskytují [integrované funkce monitorování a upozorňování](backup-azure-monitoring-built-in-monitor.md) v trezoru Recovery Services. Tyto možnosti jsou k dispozici bez jakékoli další infrastruktury pro správu. Můžete také zvýšit měřítko monitorování a vytváření sestav [pomocí Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
-- **Získání záloh konzistentních vzhledem**k aplikacím: záloha konzistentní vzhledem k aplikacím znamená, že bod obnovení obsahuje všechna požadovaná data pro obnovení záložní kopie. Azure Backup poskytuje zálohy konzistentní s aplikacemi, které zajistí, že se pro obnovení dat nevyžadují další opravy. Obnovování dat konzistentních s aplikací zkracuje čas obnovení, což vám umožní rychle se vrátit do funkčního stavu.
+- **Získání záloh konzistentních vzhledem** k aplikacím: záloha konzistentní vzhledem k aplikacím znamená, že bod obnovení obsahuje všechna požadovaná data pro obnovení záložní kopie. Azure Backup poskytuje zálohy konzistentní s aplikacemi, které zajistí, že se pro obnovení dat nevyžadují další opravy. Obnovování dat konzistentních s aplikací zkracuje čas obnovení, což vám umožní rychle se vrátit do funkčního stavu.
 - **Uchování krátkodobých a dlouhodobých dat**: [Recovery Services trezory](backup-azure-recovery-services-vault-overview.md) můžete použít k krátkodobému a dlouhodobému uchovávání dat.
 - **Automatická správa úložiště** – Hybridní prostředí často vyžadují heterogenní úložiště – některá místní a některá cloudová. S Azure Backup se neúčtují žádné náklady na používání místních úložných zařízení. Azure Backup automaticky přiděluje a spravuje úložiště záloh a používá model založený na průběžných platbách. Platíte jenom za úložiště, které spotřebováváte. [Přečtěte si další informace](https://azure.microsoft.com/pricing/details/backup) o cenách.
-- **Více možností úložiště** – Azure Backup nabízí dva typy replikace k zajištění vysoké dostupnosti úložiště/dat.
+- **Více možností úložiště** – Azure Backup nabízí tři typy replikace k zajištění vysoké dostupnosti úložiště/dat.
   - [Místně redundantní úložiště (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) replikuje vaše data třikrát (vytváří tři kopie dat) v jednotce škálování úložiště v datacentru. Všechny kopie dat existují ve stejné oblasti. Místně redundantní úložiště nabízí cenově úsporný způsob ochrany dat před selháním místního hardwaru.
   - [Geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) je výchozí a doporučená možnost replikace. GRS replikuje vaše data do sekundární oblasti (vzdálené stovky kilometrů od primárního umístění zdrojových dat). GRS náklady jsou větší než LRS, ale GRS poskytuje vyšší úroveň trvanlivosti vašich dat, i když dojde k oblastnímu výpadku.
   - [Zóna – redundantní úložiště (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) replikuje vaše data do [zón dostupnosti](../availability-zones/az-overview.md#availability-zones)a zaručuje jejich započet a odolnost dat ve stejné oblasti. ZRS nemá žádný výpadek. Takže vaše důležité úlohy, které vyžadují zajistěení [dat](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)a musí být bez výpadků, se dají zálohovat v ZRS.

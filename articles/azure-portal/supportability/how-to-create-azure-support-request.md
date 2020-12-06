@@ -1,20 +1,15 @@
 ---
-title: Jak vytvořit žádost o podporu Azure | Microsoft Docs
+title: Jak vytvořit žádost o podporu Azure
 description: Zákazníci, kteří potřebují pomoc, můžou pomocí Azure Portal najít samoobslužná řešení a vytvářet a spravovat žádosti o podporu.
-services: Azure Supportability
-author: mgblythe
-manager: scotthit
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
-ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/25/2020
-ms.author: mblythe
-ms.openlocfilehash: f937b03b2f838f69f56a4b132d0ea7a7e298b532
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 11ca7925ce1664b5586ab8ec0fb523a2d562ee80
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372119"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745583"
 ---
 # <a name="create-an-azure-support-request"></a>Vytvoření žádosti o podporu Azure
 
@@ -69,11 +64,11 @@ K zahájení žádosti o podporu v kontextu prostředku teď pracujete s:
 
 Provede vás několik kroků, které vám pomůžou shromáždit informace o vašem problému a vyřešit ho. Jednotlivé kroky jsou popsány v následujících částech.
 
-### <a name="basics"></a>Základní kroky
+### <a name="basics"></a>Základy
 
 V prvním kroku procesu žádosti o podporu se shromažďují základní informace o vašem problému a plánu podpory.
 
-Na kartě **základy** **nové žádosti o podporu**Využijte selektory a začněte nám informovat o problému. Nejdříve zjistíte některé obecné kategorie pro typ problému a zvolíte související předplatné. Vyberte službu, například **virtuální počítač s Windows**. Vyberte prostředek, jako je název vašeho virtuálního počítače. Popište problém vlastním slovem a potom vyberte **typ problému** a podtyp **problému** , abyste získali konkrétnější informace.
+Na kartě **základy** **nové žádosti o podporu** Využijte selektory a začněte nám informovat o problému. Nejdříve zjistíte některé obecné kategorie pro typ problému a zvolíte související předplatné. Vyberte službu, například **virtuální počítač s Windows**. Vyberte prostředek, jako je název vašeho virtuálního počítače. Popište problém vlastním slovem a potom vyberte **typ problému** a podtyp **problému** , abyste získali konkrétnější informace.
 
 ![Okno Základy](./media/how-to-create-azure-support-request/basics2lower.png)
 
@@ -87,7 +82,7 @@ Dále shromáždíme další podrobnosti o problému. Poskytování podrobných 
 
 1. Pokud je to možné, řekněte nám, kdy problém začal, a kroky pro reprodukování. Můžete nahrát soubor, například soubor protokolu nebo výstup z diagnostiky. Další informace o nahrání souborů najdete v tématu [pokyny pro nahrávání souborů](how-to-manage-azure-support-request.md#file-upload-guidelines).
 
-1. Až máme všechny informace o problému, vyberte, jak se má podpora získat. V části **informace**o **metodě podpory** vyberte závažnost dopadu. Maximální úroveň závažnosti závisí na [plánu podpory](https://azure.microsoft.com/support/plans).
+1. Až máme všechny informace o problému, vyberte, jak se má podpora získat. V části **informace** o **metodě podpory** vyberte závažnost dopadu. Maximální úroveň závažnosti závisí na [plánu podpory](https://azure.microsoft.com/support/plans).
 
     Ve výchozím nastavení je vybraná možnost **Sdílet diagnostické informace** . Díky tomu může podpora Azure shromažďovat [diagnostické informace](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) z vašich prostředků Azure. V některých případech je k dispozici druhá otázka, která není ve výchozím nastavení vybrána, například vyžádání přístupu k paměti virtuálního počítače.
 

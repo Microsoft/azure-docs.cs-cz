@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 74f4391fcd071ac510fc66b2f8bc36ec4549dc47
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e6a92282d2bcd316a771742048dacd9a7181de4f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575750"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746178"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Přehledy o vašich datech v Azure dosah s popisem citlivosti
 
@@ -48,6 +48,9 @@ Popisky citlivosti umožňují určit, jak citlivá data jsou ve vaší organiza
 I když se klasifikace shodují přímo (číslo sociálního zabezpečení má klasifikaci **rodného čísla**), používají se popisky citlivosti, když se jedna nebo víc klasifikací a scénářů najde společně. 
 
 Dosah používá stejné klasifikace, označované také jako typy citlivých informací, jak Microsoft 365. To vám umožní roztáhnout stávající popisky citlivosti napříč prostředky Azure dosah.
+
+> [!NOTE]
+> Po prohledání vašich typů zdrojů popište **citlivostní označování** o několik hodin, aby odrážely nové prostředky.
 
 **Chcete-li zobrazit přehledy označování citlivosti:**
 

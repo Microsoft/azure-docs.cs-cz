@@ -1,20 +1,15 @@
 ---
-title: Přehled webu Azure Portal | Dokumentace Microsoftu
+title: Přehled webu Azure Portal
 description: Azure Portal je grafické uživatelské rozhraní, které můžete použít ke správě služeb Azure. Naučte se procházet a hledat prostředky v Azure Portal.
-services: azure-portal
 keywords: portál
-author: mgblythe
-ms.author: mblythe
 ms.date: 12/20/2019
 ms.topic: overview
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 4a00c1dcf973098895e80d5e3d656efd4a35d0d0
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 1e9cf1a9609b9d4f30e51094f1d0542335ead0e2
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147041"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745923"
 ---
 # <a name="azure-portal-overview"></a>Přehled webu Azure Portal
 
@@ -40,7 +35,7 @@ Pokud zvolíte možnost ukotvený režim pro nabídku portálu, bude se vždycky
 
 ## <a name="azure-home"></a>Domovská stránka Azure
 
-Jako noví předplatitelé služeb Azure se první věc, kterou vidíte po [přihlášení k portálu](https://portal.azure.com) , nachází na **domovské stránce Azure** . Tato stránka kompiluje prostředky, které vám pomůžou získat maximum z předplatného Azure. Zahrnuli jsme odkazy na bezplatné online kurzy, dokumentaci, základní služby a užitečné weby, které vám pozůstávají aktuální a spravovat změny vaší organizace. Pro rychlý a snadný přístup k probíhající práci se zobrazí také seznam naposledy navštívených prostředků. Tuto stránku nemůžete přizpůsobit, ale můžete zvolit, jestli se má jako výchozí zobrazení zobrazovat **řídicí panel** **Azure Home** nebo Azure. Při prvním přihlášení se zobrazí výzva v horní části stránky, kde můžete uložit preference.
+Jako noví předplatitelé služeb Azure se první věc, kterou vidíte po [přihlášení k portálu](https://portal.azure.com) , nachází na **domovské stránce Azure**. Tato stránka kompiluje prostředky, které vám pomůžou získat maximum z předplatného Azure. Zahrnuli jsme odkazy na bezplatné online kurzy, dokumentaci, základní služby a užitečné weby, které vám pozůstávají aktuální a spravovat změny vaší organizace. Pro rychlý a snadný přístup k probíhající práci se zobrazí také seznam naposledy navštívených prostředků. Tuto stránku nemůžete přizpůsobit, ale můžete zvolit, jestli se má jako výchozí zobrazení zobrazovat **řídicí panel** **Azure Home** nebo Azure. Při prvním přihlášení se zobrazí výzva v horní části stránky, kde můžete uložit preference.
 
 ![Snímek obrazovky s informacemi o tom, kam uložit preference](./media/azure-portal-overview/azure-portal-default-view.png)
 
@@ -64,18 +59,18 @@ Obrázek níže popisuje základní prvky Azure Portal, z nichž každá je pops
 
 ![Snímek obrazovky znázorňující nabídku rozbaleného portálu](./media/azure-portal-overview/azure-portal-overview-portal-menu-callouts.png)
 
-|Klíč|Description
+|Klíč|Popis
 |:---:|---|
 |1|Záhlaví stránky Zobrazuje se v horní části každé stránky portálu a obsahuje globální prvky.|
 |2| Globální vyhledávání. Panel hledání slouží k rychlému vyhledání konkrétního prostředku, služby nebo dokumentace.|
 |3|Globální ovládací prvky. Podobně jako u všech globálních prvků jsou tyto funkce na portálu trvalé a zahrnují: Cloud Shell, filtr předplatných, oznámení, nastavení portálu, pomoc a podpora a pošleme nám svůj názor.|
 |4|Váš účet. Zobrazte si informace o vašem účtu, přepněte si adresáře, odhlaste se nebo se přihlaste pomocí jiného účtu.|
-|5|Nabídka portál Nabídka portál je globální prvek, který vám pomůže s navigací mezi službami. V případě, že se někdy označuje jako postranní panel, lze režim nabídky portálu změnit v **nastavení portálu** .|
+|5|Nabídka portál Nabídka portál je globální prvek, který vám pomůže s navigací mezi službami. V případě, že se někdy označuje jako postranní panel, lze režim nabídky portálu změnit v **nastavení portálu**.|
 |6|Nabídka prostředků Mnoho služeb zahrnuje nabídku prostředků, které vám pomůžou službu spravovat. Může se zobrazit tento element, na který se odkazuje jako v levém podokně.|
 |7|Panel příkazů. Ovládací prvky na panelu příkazů jsou kontextové na váš aktuální fokus.|
 |8|Pracovní podokno.  Zobrazí podrobnosti o prostředku, který je aktuálně aktivní.|
 |9|S popisem cesty. Pomocí odkazů s popisem cesty můžete v pracovním postupu přejít zpět na úroveň.|
-|10|Hlavní ovládací prvek pro vytvoření nového prostředku v aktuálním předplatném. Rozbalte nebo otevřete nabídku portál a vyhledejte **+ vytvořit prostředek** . Vyhledejte nebo vyhledejte Azure Marketplace pro typ prostředku, který chcete vytvořit.|
+|10|Hlavní ovládací prvek pro vytvoření nového prostředku v aktuálním předplatném. Rozbalte nebo otevřete nabídku portál a vyhledejte **+ vytvořit prostředek**. Vyhledejte nebo vyhledejte Azure Marketplace pro typ prostředku, který chcete vytvořit.|
 |11|Seznam oblíbených položek. Informace o tom, jak seznam přizpůsobit, najdete v tématu [Přidání, odebrání a seřazení oblíbených položek](../azure-portal/azure-portal-add-remove-sort-favorites.md) .|
 
 ## <a name="get-started-with-services"></a>Začínáme se službami

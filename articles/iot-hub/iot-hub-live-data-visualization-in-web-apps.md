@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 8f7baca94d653d9851c506068ccf7ecf84063641
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 3218df4601ef7a5e1b1e04c20c89eefc367b720b
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832173"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746450"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Vizualizace dat snímačů v reálném čase z Azure IoT Hub ve webové aplikaci
 
@@ -184,7 +184,7 @@ V této části zřídíte webovou aplikaci v App Service a do ní nasadíte kó
 
 5. Chcete-li nasadit kód pro App Service, použijte [přihlašovací údaje pro nasazení na úrovni uživatele](../app-service/deploy-configure-credentials.md). Přihlašovací údaje pro nasazení na úrovni uživatele se liší od vašich přihlašovacích údajů Azure a používají se pro místní nasazení Git a FTP do webové aplikace. Po nastavení jsou platné napříč všemi vašimi aplikacemi App Service ve všech předplatných ve vašem účtu Azure. Pokud jste dříve nastavili přihlašovací údaje pro nasazení na úrovni uživatele, můžete je použít.
 
-   Pokud jste dříve nenastavili přihlašovací údaje pro nasazení na úrovni uživatele nebo si nepamatujete heslo, spusťte následující příkaz. Uživatelské jméno nasazení musí být v rámci Azure jedinečné a nesmí obsahovat symbol @ pro místní nabízená oznámení Git. Po zobrazení výzvy zadejte a potvrďte nové heslo. Heslo musí mít délku alespoň osm znaků a dva z následujících tří prvků: písmena, číslice a symboly.
+   Pokud jste dříve nenastavili přihlašovací údaje pro nasazení na úrovni uživatele nebo si nepamatujete heslo, spusťte následující příkaz. Vaše uživatelské jméno nasazení musí být v rámci Azure jedinečné a nesmí obsahovat \@ symbol pro místní nabízená oznámení Git. Po zobrazení výzvy zadejte a potvrďte nové heslo. Heslo musí mít délku alespoň osm znaků a dva z následujících tří prvků: písmena, číslice a symboly.
 
    ```azurecli-interactive
    az webapp deployment user set --user-name <your deployment user name>

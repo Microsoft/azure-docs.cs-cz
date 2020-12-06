@@ -1,17 +1,14 @@
 ---
 title: Zobrazení a filtrování informací o prostředcích Azure
 description: Filtrujte informace a používejte různá zobrazení k lepšímu pochopení vašich prostředků Azure.
-author: mgblythe
-ms.service: azure-portal
 ms.topic: how-to
-ms.author: mblythe
 ms.date: 09/11/2020
-ms.openlocfilehash: f6185e1c4042110f446337c1b2c2904fefdae7a9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d1bd00a9e7f8c9c18484378f7c21d3bacdac2d3f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280248"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745889"
 ---
 # <a name="view-and-filter-azure-resource-information"></a>Zobrazení a filtrování informací o prostředcích Azure
 
@@ -25,13 +22,15 @@ Azure Portal vám umožní procházet podrobné informace o prostředcích v rá
 
 Začněte zkoumat **všechny prostředky** pomocí filtrů, abyste se mohli soustředit na podmnožinu vašich prostředků. Následující snímek obrazovky ukazuje filtrování u skupin prostředků a výběr dvou z šesti skupin prostředků v rámci předplatného.
 
-:::image type="content" source="media/manage-filter-resource-views/filter-resource-group.png" alt-text="Azure Portal zobrazení všech prostředků" v jedné ze dvou skupin prostředků, které jsou již vybrány.
+:::image type="content" source="media/manage-filter-resource-views/filter-resource-group.png" alt-text="Zobrazení filtru na základě skupin prostředků":::
 
-:::image type="content" source="media/manage-filter-resource-views/filter-simplewinvm.png" alt-text="Azure Portal zobrazení všech prostředků":::
+Filtry můžete kombinovat, včetně těch, které jsou založené na hledání textu, jak je znázorněno na následujícím snímku obrazovky. V takovém případě jsou výsledky vymezeny na prostředky, které obsahují "SimpleWinVM" v jedné ze dvou skupin prostředků, které jsou již vybrány.
+
+:::image type="content" source="media/manage-filter-resource-views/filter-simplewinvm.png" alt-text="Filtrovat zobrazení na základě zadávání textu":::
 
 Pokud chcete změnit, které sloupce jsou zahrnuté v zobrazení, vyberte **Spravovat zobrazení** a pak **Upravit sloupce**.
 
-:::image type="content" source="media/manage-filter-resource-views/edit-columns.png" alt-text="Azure Portal zobrazení všech prostředků":::
+:::image type="content" source="media/manage-filter-resource-views/edit-columns.png" alt-text="Upravit sloupce zobrazené v zobrazení":::
 
 ## <a name="save-use-and-delete-views"></a>Uložení, použití a odstranění zobrazení
 
@@ -41,7 +40,7 @@ Můžete uložit zobrazení, která zahrnují filtry a sloupce, které jste vybr
 
 1. Zadejte název zobrazení a pak vyberte **OK**. Uložené zobrazení se nyní zobrazí v nabídce **Spravovat zobrazení** .
 
-    :::image type="content" source="media/manage-filter-resource-views/simple-view.png" alt-text="Azure Portal zobrazení všech prostředků":::
+    :::image type="content" source="media/manage-filter-resource-views/simple-view.png" alt-text="Uložené zobrazení":::
 
 1. Chcete-li použít zobrazení, přepínejte mezi **výchozími** a jedním z vašich vlastních zobrazení, abyste viděli, jak to ovlivní seznam zobrazených prostředků.
 
@@ -55,23 +54,23 @@ Odstranění zobrazení:
 
 Zobrazení, která jsme prohlédli zatím, byla _zobrazením seznamu_, ale existují také _Souhrnná zobrazení_ , která obsahují vizuály. Tato zobrazení můžete uložit a používat stejně jako seznam zobrazení. Filtry se chovají mezi dvěma typy zobrazení. Existují standardní zobrazení, jako je například zobrazení **umístění** , které je relevantní pro konkrétní služby, jako je například zobrazení **stavu** pro Azure Storage.
 
-:::image type="content" source="media/manage-filter-resource-views/summary-map.png" alt-text="Azure Portal zobrazení všech prostředků":::
+:::image type="content" source="media/manage-filter-resource-views/summary-map.png" alt-text="Souhrn prostředků v zobrazení mapy":::
 
 Uložení a použití souhrnného zobrazení:
 
 1. V nabídce zobrazení vyberte **souhrnné zobrazení**.
 
-    :::image type="content" source="media/manage-filter-resource-views/menu-summary-view.png" alt-text="Azure Portal zobrazení všech prostředků":::
+    :::image type="content" source="media/manage-filter-resource-views/menu-summary-view.png" alt-text="Nabídka zobrazení souhrnu":::
 
 1. Souhrnné zobrazení umožňuje vytvořit souhrn podle různých atributů, včetně **umístění** a **typu**. Vyberte možnost **Shrnutí podle** možnosti a odpovídající vizuál. Následující snímek obrazovky ukazuje **Souhrn typu** s **pruhem pruhového grafu** .
 
-    :::image type="content" source="media/manage-filter-resource-views/type-summary-bar-chart.png" alt-text="Azure Portal zobrazení všech prostředků":::
+    :::image type="content" source="media/manage-filter-resource-views/type-summary-bar-chart.png" alt-text="Shrnutí typu znázorňující pruhový graf":::
 
 1. Vyberte **Spravovat zobrazení** a pak **Uložit** a uložte toto zobrazení jako v zobrazení seznamu.
 
-1. V souhrnném zobrazení v části **Souhrn typu**vyberte pruh v grafu. Výběr pruhu poskytuje seznam filtrovaný na jeden typ prostředku.
+1. V souhrnném zobrazení v části **Souhrn typu** vyberte pruh v grafu. Výběr pruhu poskytuje seznam filtrovaný na jeden typ prostředku.
 
-    :::image type="content" source="media/manage-filter-resource-views/all-resources-filtered-type.png" alt-text="Azure Portal zobrazení všech prostředků":::
+    :::image type="content" source="media/manage-filter-resource-views/all-resources-filtered-type.png" alt-text="Všechny prostředky filtrované podle typu":::
 
 ## <a name="run-queries-in-azure-resource-graph"></a>Spuštění dotazů v Azure Resource graphu
 
@@ -81,11 +80,11 @@ Spuštění dotazu na graf prostředku:
 
 1. Vyberte **Otevřít dotaz**.
 
-    :::image type="content" source="media/manage-filter-resource-views/open-query.png" alt-text="Azure Portal zobrazení všech prostředků":::
+    :::image type="content" source="media/manage-filter-resource-views/open-query.png" alt-text="Otevřít dotaz na graf prostředků Azure":::
 
-1. V **Průzkumníku Azure Resource graphu**vyberte **Spustit dotaz** a zobrazí se výsledky.
+1. V **Průzkumníku Azure Resource graphu** vyberte **Spustit dotaz** a zobrazí se výsledky.
 
-    :::image type="content" source="media/manage-filter-resource-views/run-query.png" alt-text="Azure Portal zobrazení všech prostředků":::
+    :::image type="content" source="media/manage-filter-resource-views/run-query.png" alt-text="Spustit dotaz na Azure Resource Graph":::
 
     Další informace najdete v tématu [spuštění prvního dotazu na graf prostředku pomocí Průzkumníka Azure Resource graphu](../governance/resource-graph/first-query-portal.md).
 

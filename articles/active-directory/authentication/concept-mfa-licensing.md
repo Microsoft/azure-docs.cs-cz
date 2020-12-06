@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 06/15/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 204a656194af9473defc8cf983526dd2b8266021
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 63d880146a0b068a5d097c452c14b28db4907098
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839807"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743951"
 ---
 # <a name="features-and-licenses-for-azure-ad-multi-factor-authentication"></a>Funkce a licence pro Azure AD Multi-Factor Authentication
 
@@ -41,7 +41,7 @@ V závislosti na potřebách vaší organizace se dá Azure AD Multi-Factor Auth
 
 Následující tabulka obsahuje seznam funkcí, které jsou k dispozici v různých verzích Multi-Factor Authentication služby Azure AD. Naplánujte si potřeby pro zabezpečení ověřování uživatelů a pak určete, který přístup splňuje tyto požadavky. I když Azure AD Free například poskytuje výchozí nastavení zabezpečení, které poskytuje Multi-Factor Authentication Azure AD, dá se pro výzvu k ověření použít jenom aplikace Mobile Authenticator, ne telefonní hovor nebo SMS. Tento přístup může být omezením, pokud nemůžete zajistit, aby byla aplikace pro mobilní ověřování nainstalovaná na osobním zařízení uživatele.
 
-| Příznak | Azure AD Free – výchozí hodnoty zabezpečení | Azure AD Free – globální Správci služby Azure AD | Aplikace Microsoft 365 | Azure AD Premium P1 nebo P2 |
+| Funkce | Azure AD Free – výchozí hodnoty zabezpečení | Azure AD Free – globální Správci služby Azure AD | Aplikace Microsoft 365 | Azure AD Premium P1 nebo P2 |
 | --- |:---:|:---:|:---:|:---:|
 | Ochrana účtů správců tenantů Azure AD pomocí MFA | ● | ● (Jenom účty *globálního správce Azure AD* ) | ● | ● |
 | Mobilní aplikace jako druhý faktor | ● | ● | ● | ● |

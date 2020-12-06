@@ -7,12 +7,12 @@ ms.date: 10/21/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 421f9dc26d184d16a2fe563aefa72062c5d8c7e6
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 360da015f012822593dbb6390cb7df0017ba85b1
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608397"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745073"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Spuštění vlastního kontejneru v Azure
 
@@ -20,6 +20,10 @@ ms.locfileid: "96608397"
 [Azure App Service](overview.md) poskytuje předdefinované zásobníky aplikací ve Windows, jako je ASP.NET nebo Node.js, které běží ve službě IIS. Předem nakonfigurované prostředí kontejnerů Windows zamkne operační systém od přístupu pro správu, instalací softwaru, změn v globální mezipaměti sestavení atd. Další informace najdete v tématu [funkce operačního systému na Azure App Service](operating-system-functionality.md). Pokud vaše aplikace vyžaduje vyšší úroveň přístupu, než předkonfigurované prostředí umožňuje, můžete místo toho nasadit vlastní kontejner s Windows.
 
 V tomto rychlém startu se dozvíte, jak nasadit aplikaci ASP.NET v imagi Windows do [Docker Hub](https://hub.docker.com/) ze sady Visual Studio. Aplikaci spustíte ve vlastním kontejneru v Azure App Service.
+
+> [!NOTE]
+> Kontejnery Windows jsou omezené na soubory Azure a aktuálně nepodporují Azure Blob.
+
 
 ## <a name="prerequisites"></a>Předpoklady
 

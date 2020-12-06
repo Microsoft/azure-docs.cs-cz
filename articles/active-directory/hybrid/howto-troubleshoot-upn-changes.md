@@ -11,16 +11,16 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46ecc2cba96b07d9105020e69ae3198a3765be7c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 59b304505c29f424d85d5b1e16dc83c060ac2ac1
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96172227"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744594"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Plánování a odstraňování potíží se změnami hlavního názvu uživatele v Azure Active Directory
 
-Hlavní název uživatele (UPN) je atribut, který je standardem Internet Communications pro uživatelské účty. Hlavní název uživatele se skládá z předpony hlavního názvu uživatele (UPN) (název uživatelského účtu) a přípony UPN (název domény DNS). Předpona spojuje příponu pomocí symbolu "@". Například, someone@example.com. Hlavní název uživatele (UPN) musí být jedinečný mezi všemi objekty zabezpečení v rámci doménové struktury adresáře. 
+Hlavní název uživatele (UPN) je atribut, který je standardem Internet Communications pro uživatelské účty. Hlavní název uživatele se skládá z předpony hlavního názvu uživatele (UPN) (název uživatelského účtu) a přípony UPN (název domény DNS). Předpona spojuje příponu pomocí \@ symbolu "". Například, someone@example.com. Hlavní název uživatele (UPN) musí být jedinečný mezi všemi objekty zabezpečení v rámci doménové struktury adresáře. 
 
 **V tomto článku se předpokládá, že jako identifikátor uživatele použijete hlavní název uživatele (UPN). Zaměřuje se na plánování pro změny UPN a obnovuje se z problémů, které mohou vzniknout ze změn hlavního názvu uživatele.**
 

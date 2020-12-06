@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 6c475971f604c951280d0351d593cd5d96879d31
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: c09f8c5ae4a742e6caa489ee29043f500617bb24
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992399"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746484"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS Protection standardní časté otázky
 
@@ -29,7 +29,7 @@ Distributed Denial of Service nebo DDoS je typ útoku, kdy útočník odesílá 
 Azure DDoS Protection Standard, v kombinaci s osvědčenými postupy návrhu aplikací, poskytuje rozšířené funkce zmírnění DDoS, které chrání před útoky DDoS. Automaticky se vyladěna tak, aby chránila vaše konkrétní prostředky Azure ve virtuální síti. Ochranu je snadné povolit v jakékoli nové nebo existující virtuální síti a nevyžaduje žádné změny aplikací nebo prostředků. Má několik výhod oproti základní službě, včetně protokolování, upozorňování a telemetrie. Další podrobnosti najdete v tématu [Přehled služby Azure DDoS Protection Standard](ddos-protection-overview.md) . 
 
 ## <a name="what-about-protection-at-the-service-layer-layer-7"></a>Co je ochrana ve vrstvě služeb (vrstva 7)?
-Zákazníci mohou používat službu Azure DDoS Protection v kombinaci s [Application Gateway WAF SKU](../web-application-firewall/ag/ag-overview.md) k ochraně jak v síťové vrstvě (vrstva 3 a 4, kterou nabízí Azure DDoS Protection služba), tak i na vrstvě aplikace (vrstva 7, kterou nabízí Application Gateway SKU WAF).
+Zákazníci můžou používat službu Azure DDoS Protection v kombinaci s firewallem webových aplikací (WAF) k ochraně jak v síťové vrstvě (vrstva 3 a 4, nabízená Azure DDoS Protection Standard), tak i na vrstvě aplikace (vrstva 7, kterou nabízí WAF). Nabídky WAF zahrnují SKU Azure [Application Gateway WAF](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a také nabídky firewallu webových aplikací třetích stran, které jsou k dispozici v [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall).
 
 ## <a name="are-services-unsafe-in-azure-without-the-service"></a>Jsou služby v Azure nebezpečné bez služby?
 Služby běžící v Azure jsou v podstatě chráněné Azure DDoS Protection Basic, která je na místě pro ochranu infrastruktury Azure. Ochrana, která chrání infrastrukturu, ale má mnohem vyšší prahovou hodnotu, než většina aplikací má kapacitu zvládnout a neposkytuje telemetrii ani výstrahy, takže když je objem provozu na platformě neškodný, může být devastating k aplikaci, která ji přijímá. 
@@ -41,6 +41,9 @@ Veřejné IP adresy v virtuální sítě založených na ARM jsou aktuálně jed
 
 ## <a name="are-classicrdfe-protected-resources-supported"></a>Jsou podporovány prostředky pro klasický/RDFE Protected?
 Ve verzi Preview se podporují jenom chráněné prostředky založené na ARM. Virtuální počítače v nasazeních Classic a RDFE se nepodporují. Podpora není aktuálně plánována pro prostředky Classic a RDFE. Další podrobnosti najdete v tématu [Azure DDoS Protection standardní referenční architektury](ddos-protection-reference-architectures.md) .
+
+## <a name="can-i-protect-my-paas-resources-using-ddos-protection"></a>Můžu chránit svoje PaaS prostředky pomocí DDoS Protection?
+Veřejné IP adresy připojené k víceklientské architektuře – jedna VIP PaaS Services se v současné době nepodporují. Mezi nepodporované prostředky patří virtuální IP adresy úložiště, virtuální IP adresy centra událostí a aplikace a aplikace Cloud Services. Další podrobnosti najdete v tématu [Azure DDoS Protection standardní referenční architektury](ddos-protection-reference-architectures.md) .
 
 ## <a name="can-i-protect-my-on-premise-resources-using-ddos-protection"></a>Můžu chránit místní prostředky pomocí DDoS Protection?
 Aby bylo možné povolit ochranu DDoS, musíte mít veřejné koncové body vaší služby přidružené k virtuální síti v Azure. Příklady návrhů zahrnují:

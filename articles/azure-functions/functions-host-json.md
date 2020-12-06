@@ -3,12 +3,12 @@ title: host.jsna referenci pro Azure Functions 2. x
 description: Referenční dokumentace pro Azure Functions host.jsv souboru s modulem runtime v2.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: c12a9244cdc1a76f678578e281532c73bc9385ba
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 96d6b884e9e2c835316af01140c6fc7208ee5ab9
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917235"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746076"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Referenční informace k souboru host.json pro Azure Functions 2.x a novější 
 
@@ -174,7 +174,7 @@ Další informace o těchto nastaveních najdete [v tématu vzorkování v Appli
 | samplingPercentageDecreaseTimeout | 00:00:01 | Když se změní procentuální hodnota vzorkování, tato vlastnost určuje, jak brzo Application Insights může snížit procento vzorkování znovu a zachytit tak méně dat. |
 | minSamplingPercentage | 0,1 | Když se procento vzorkování liší, tato vlastnost určuje minimální povolený procentuální podíl vzorkování. |
 | maxSamplingPercentage | 100,0 | Když se procento vzorkování liší, tato vlastnost určuje maximální povolené procento vzorkování. |
-| movingAverageRatio | 1,0 | Při výpočtu klouzavého průměru je váha přiřazená k nejnovější hodnotě. Použijte hodnotu rovnou nebo menší než 1. Menší hodnoty nastaví algoritmus méně aktivní na náhlé změny. |
+| movingAverageRatio | 1.0 | Při výpočtu klouzavého průměru je váha přiřazená k nejnovější hodnotě. Použijte hodnotu rovnou nebo menší než 1. Menší hodnoty nastaví algoritmus méně aktivní na náhlé změny. |
 | excludedTypes | null | Středníkem oddělený seznam typů, které nechcete vzorkovat. Rozpoznané typy jsou: `Dependency` , `Event` , `Exception` , `PageView` , a `Request` `Trace` . Jsou přenášeny všechny instance zadaných typů; typy, které nejsou určeny, jsou vzorkované. |
 | includedTypes | null | Seznam typů, které chcete vzorkovat, oddělený středníky; prázdný seznam zahrnuje všechny typy. Typ uvedený v seznamu přepsat typy, které jsou `excludedTypes` zde uvedeny. Rozpoznané typy jsou: `Dependency` , `Event` , `Exception` , `PageView` , a `Request` `Trace` . Instance zadaných typů jsou vzorkované; typy, které nejsou zadány nebo implicitně jsou přenášeny bez vzorkování. |
 
@@ -219,6 +219,28 @@ Další informace o snímcích najdete v tématu [ladění snímků při výjimk
 
 Nastavení konfigurace najdete v [Cosmos DB triggerech a vazbách](functions-bindings-cosmosdb-v2-output.md#host-json).
 
+## <a name="customhandler"></a>customHandler
+
+Konfigurační nastavení vlastní obslužné rutiny. Další informace naleznete v tématu [Azure Functions vlastní obslužné rutiny](functions-custom-handlers.md#configuration).
+
+```json
+"customHandler": {
+  "description": {
+    "defaultExecutablePath": "server",
+    "workingDirectory": "handler",
+    "arguments": [ "--port", "%FUNCTIONS_CUSTOMHANDLER_PORT%" ]
+  },
+  "enableForwardingHttpRequest": false
+}
+```
+
+|Vlastnost | Výchozí | Popis |
+| --------- | --------- | --------- |
+| defaultExecutablePath | neuvedeno | Spustitelný soubor, který se spustí jako vlastní proces obslužné rutiny. Je vyžadováno nastavení při použití vlastních obslužných rutin a její hodnota je relativní vzhledem k kořenu aplikace Function App. |
+| workingDirectory | *kořen aplikace Function App* | Pracovní adresář, ve kterém má být spuštěn vlastní proces obslužné rutiny. Je to volitelné nastavení a jeho hodnota je relativní vzhledem k kořenu aplikace Function App. |
+| náhodné | neuvedeno | Pole argumentů příkazového řádku, které se má předat procesu vlastní obslužné rutiny. |
+| enableForwardingHttpRequest | false (nepravda) | Pokud se nastaví všechny funkce, které se skládají jenom z triggeru HTTP a výstupu HTTP, přepošle původní požadavek HTTP namísto [datové části žádosti](functions-custom-handlers.md#request-payload)vlastní obslužné rutiny. |
+
 ## <a name="durabletask"></a>durableTask
 
 Nastavení konfigurace lze nalézt v [vazby pro Durable Functions](durable/durable-functions-bindings.md#host-json).
@@ -253,7 +275,7 @@ Označuje dobu trvání časového limitu pro všechny funkce. Postupuje podle f
 
 | Typ plánu | Výchozí (min.) | Maximum (min) |
 | -- | -- | -- |
-| Consumption | 5 | 10 |
+| Využití | 5 | 10 |
 | Premium<sup>1</sup> | 30 | -1 (nevázané)<sup>2</sup> |
 | Vyhrazeno (App Service) | 30 | -1 (nevázané)<sup>2</sup> |
 

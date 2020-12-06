@@ -1,18 +1,16 @@
 ---
-title: Řady oblastí nebo SKU nejsou dostupné – Azure
+title: Řada oblastí nebo SKU není dostupná.
 description: Některé řady SKU nejsou pro vybrané předplatné v této oblasti k dispozici, což může vyžadovat požadavek na podporu správy předplatných.
-services: Azure Supportability
 author: stevendotwang
-ms.service: azure-supportability
 ms.topic: troubleshooting
 ms.date: 01/27/2020
 ms.author: xingwan
-ms.openlocfilehash: fccde344a06d39bd4bb8e3178444ec20677e2f50
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 2bbe1dff6bbf8fed481300db95482c46b0e8a7b7
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078506"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745277"
 ---
 # <a name="region-or-sku-unavailable"></a>Oblast nebo skladová položka není k dispozici
 
@@ -60,15 +58,15 @@ Pokud nemůžete najít vhodnou oblast nebo SKU, vytvořte [žádost o podporu](
 
 1. V nabídce [Azure Portal](https://portal.azure.com) vyberte možnost **help + podpora**. Pak vyberte **Nová žádost o podporu**.
 
-1. V **základních**informacích pro **typ problému**vyberte **Správa předplatných**.
+1. V **základních** informacích pro **typ problému** vyberte **Správa předplatných**.
 
-1. Vyberte **předplatné** a v **souhrnu**zadejte stručný popis.
+1. Vyberte **předplatné** a v **souhrnu** zadejte stručný popis.
 
    ![Karta základy nové žádosti o podporu](./media/SKU-series-unavailable/support-request-basics.png)
 
-1. Jako **typ problému**zvolte **Vybrat typ problému**.
+1. Jako **typ problému** zvolte **Vybrat typ problému**.
 
-1. Pro **možnost vybrat typ problému**zvolte možnost, například **nemůžete získat přístup k předplatnému nebo prostředek**  >  **můj problém není uveden výše**. Vyberte **Uložit**.
+1. Pro **možnost vybrat typ problému** zvolte možnost, například **nemůžete získat přístup k předplatnému nebo prostředek**  >  **můj problém není uveden výše**. Vyberte **Uložit**.
 
    ![Zadejte problém pro požadavek.](./media/SKU-series-unavailable/support-request-select-problem-type.png)
 

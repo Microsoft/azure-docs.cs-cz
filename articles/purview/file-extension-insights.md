@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 63bb235dcebc67b753e01dd8b193ef1a2b66787d
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 222106f5838a1eb237987afaa93924f1efe4a1f4
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553261"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746280"
 ---
 # <a name="file-extension-insights-about-your-data-from-azure-purview"></a>Přehled o rozšířeních souborů z Azure dosah 
 
@@ -39,6 +39,9 @@ Další informace najdete v tématu [Správa zdrojů dat ve službě Azure dosah
 ## <a name="use-purview-file-extension-insights"></a>Použití přehledů přípon souborů dosah
 
 Při kontrole prostředků dokáže Azure dosah rozpoznat typy souborů nalezené v datovém majetku a zadat další podrobnosti o jednotlivých typech souborů. Podrobnosti zahrnují počet souborů každého typu, které máte, kde jsou tyto soubory, a to, jestli jsou scannable pro citlivá data.
+
+> [!NOTE]
+> Až provedete prohledání vašich typů zdrojů, poskytněte novému zdroji přehled o **rozšířeních souborů** o několik hodin.
 
 **Zobrazení rozšíření souboru – přehled:**
 

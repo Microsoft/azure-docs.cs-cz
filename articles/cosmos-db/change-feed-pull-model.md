@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 10/27/2020
+ms.date: 12/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b3f7a8fbe2afcf9b5603f288fe6e3bc429b14532
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 674bb67018fcbf7df6285a66c2e0aeb37d24f409
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340188"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744877"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Změna modelu vyžádání obsahu kanálu v Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -41,7 +41,7 @@ Měli byste zvážit použití modelu vyžádání obsahu v těchto scénáříc
 
 Tady jsou některé klíčové rozdíly mezi procesorem Change feed a modelem Pull:
 
-|Příznak  | Procesor kanálu změn| Model vyžádání |
+|Funkce  | Procesor kanálu změn| Model vyžádání |
 | --- | --- | --- |
 | Udržování přehledu o aktuálním bodu ve zpracování kanálu změn | Zapůjčení (uložené v kontejneru Azure Cosmos DB) | Token pro pokračování (uložený v paměti nebo ručně trvalý) |
 | Možnost Přehrát minulé změny | Ano, s modelem push | Ano, s modelem pull|
@@ -52,7 +52,7 @@ Tady jsou některé klíčové rozdíly mezi procesorem Change feed a modelem Pu
 | Úroveň podpory | Obecná dostupnost | Preview |
 
 > [!NOTE]
-> Na rozdíl od při čtení pomocí procesoru změny kanálu musíte explicitně zpracovat případy, kdy žádné nové změny neexistují. 
+> Na rozdíl od při čtení pomocí procesoru změny kanálu musíte explicitně zpracovat případy, kdy neexistují žádné nové změny. 
 
 ## <a name="consuming-an-entire-containers-changes"></a>Spotřebovávání změn celého kontejneru
 

@@ -8,19 +8,19 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: d84e1508dec4d4a5802f7a2ac8c0e6ada5a8044c
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 28c0be40387f411286230f94c19fa23a80e650af
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128687"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746399"
 ---
 # <a name="how-to-add-technical-details-for-your-saas-offer"></a>Postup přidání technických podrobností pro nabídku SaaS
 
 Tento článek popisuje, jak zadat technické údaje, které vám pomůžou připojit se k vašemu řešení Microsoftu pro komerční tržišti. Toto připojení nám umožní zřídit vaši nabídku pro zákazníka, pokud se rozhodne získat a spravovat. Další podrobnosti o těchto nastaveních najdete v tématu [technické informace](plan-saas-offer.md#technical-information).
 
 > [!NOTE]
-> Pokud se rozhodnete zpracovávat transakce nezávisle, tato možnost se nezobrazí. Místo toho přejděte k tomu, [jak si SaaS nabídku na trh](create-new-saas-offer-marketing.md).
+> Pokud se rozhodnete zpracovávat transakce nezávisle, tato možnost se nezobrazí. Místo toho přejděte k tomu, [Jak prodávat nabídku SaaS](create-new-saas-offer-marketing.md).
 
 ## <a name="technical-configuration"></a>Technická konfigurace
 

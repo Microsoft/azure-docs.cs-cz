@@ -1,18 +1,18 @@
 ---
-title: Azure Functions vlastní obslužné rutiny (Preview)
+title: Azure Functions vlastní obslužné rutiny
 description: Naučte se používat Azure Functions s libovolným jazykem nebo verzí modulu runtime.
 author: anthonychu
 ms.author: antchu
-ms.date: 8/18/2020
+ms.date: 12/1/2020
 ms.topic: article
-ms.openlocfilehash: 402ce1e9e92ab87689abe9c18a503a479d7421f9
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 099f90ba8c5d9dabb6c4c505e50d8c077e3eaf0f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164546"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746025"
 ---
-# <a name="azure-functions-custom-handlers-preview"></a>Azure Functions vlastní obslužné rutiny (Preview)
+# <a name="azure-functions-custom-handlers"></a>Azure Functions vlastní obslužné rutiny
 
 Každá aplikace Functions se spustí obslužnou rutinou specifickou pro konkrétní jazyk. I když Azure Functions podporuje mnoho [obslužných rutin jazyka](./supported-languages.md) ve výchozím nastavení, existují případy, kdy je vhodné použít jiné jazyky nebo moduly runtime.
 
@@ -20,10 +20,12 @@ Vlastní obslužné rutiny jsou jednoduché webové servery, které přijímají
 
 Vlastní obslužné rutiny se nejlépe hodí pro situace, kdy chcete:
 
-- Implementujte aplikaci Function App v jazyce, který není aktuálně podporován, například přejít a Rust.
+- Implementujte aplikaci Function App v jazyce, který není v současné době podporován, například jít nebo Rust.
 - Implementujte aplikaci Function App v modulu runtime, který není aktuálně podporován, například deno.
 
 S vlastními obslužnými rutinami můžete použít [triggery a vstupní a výstupní vazby](./functions-triggers-bindings.md) prostřednictvím [sad rozšíření](./functions-bindings-register.md).
+
+Začínáme s Azure Functions vlastní obslužné rutiny s [rychlým startem v cestách a Rust](create-first-function-vs-code-other.md).
 
 ## <a name="overview"></a>Přehled
 
@@ -36,7 +38,7 @@ Následující diagram znázorňuje vztah mezi hostitelem funkcí a webovým ser
 1. Webový server spustí jednotlivé funkce a vrátí [datovou část odpovědi](#response-payload) na hostitele Functions.
 1. Hostitel Functions předá data z odpovědi na výstupní vazby funkce pro zpracování.
 
-Azure Functions aplikace implementovaná jako vlastní obslužná rutina musí nakonfigurovat *host.jszapnutá*, *local.settings.jszapnutá*a *function.js* soubory podle několika konvencí.
+Azure Functions aplikace implementovaná jako vlastní obslužná rutina musí nakonfigurovat *host.jszapnutá*, *local.settings.jszapnutá* a *function.js* soubory podle několika konvencí.
 
 ## <a name="application-structure"></a>Struktura aplikace
 
@@ -226,7 +228,7 @@ Scénář implementovaný v tomto příkladu obsahuje funkci s názvem `order` ,
 
 #### <a name="implementation"></a>Implementace
 
-Ve složce s názvem *order*function.jsse * v* souboru NAkonfiguruje funkce aktivované protokolem HTTP.
+Ve složce s názvem *order* function.jsse *v* souboru NAkonfiguruje funkce aktivované protokolem HTTP.
 
 **pořadí/function.jsna**
 
@@ -534,7 +536,7 @@ func azure functionapp publish $functionAppName
 
 - Webový server vlastní obslužné rutiny musí být spuštěn do 60 sekund.
 
-## <a name="samples"></a>Ukázky
+## <a name="samples"></a>ukázky
 
 Příklady implementace funkcí v různých jazycích najdete v části [vlastní obslužné rutiny ukázky v úložišti GitHub](https://github.com/Azure-Samples/functions-custom-handlers) .
 
@@ -578,8 +580,12 @@ Tuto strategii můžete použít také v kanálech CI/CD a spouštět automatizo
 
 Vlastní obslužné rutiny běží ve stejném prostředí jako typická aplikace Azure Functions. Otestujte obslužnou rutinu, abyste zajistili, že prostředí obsahuje všechny závislosti, které musí spustit. U aplikací, které vyžadují další závislosti, je možná budete muset spustit pomocí [vlastní image kontejneru](functions-create-function-linux-custom-image.md) hostované v plánu Azure Functions [Premium](functions-premium-plan.md).
 
-### <a name="get-support"></a>Získat podporu
+### <a name="get-support"></a>Získání podpory
 
 Pokud potřebujete pomoc s vlastními obslužnými rutinami aplikace Function App, můžete odeslat žádost prostřednictvím běžných kanálů podpory. Vzhledem k nejrůznějším jazykům, které se používají k vytváření vlastních obslužných rutin, ale podpora není neomezené.
 
 Podpora je k dispozici v případě, že hostitel Functions má potíže se spouštěním nebo komunikací s vlastním procesem obslužné rutiny. Pro problémy, které jsou specifické pro vnitřní pracovní procesy vlastní obslužné rutiny, jako jsou například problémy se zvoleným jazykem nebo architekturou, náš tým podpory nemůže v tomto kontextu poskytnout pomoc.
+
+## <a name="next-steps"></a>Další kroky
+
+Začněte sestavovat Azure Functions aplikaci v cestách nebo Rust pomocí [rychlého startu vlastních obslužných rutin](create-first-function-vs-code-other.md).

@@ -4,15 +4,15 @@ description: Základní Azure Migrate zabezpečení poskytuje postupy a prostře
 author: msmbaldwin
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/18/2020
+ms.date: 12/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0562e395cc877dc4eec751880a01551bce016cb7
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 338052e8bc9b25a3cf04069f2a44ede8180e508f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530863"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744750"
 ---
 # <a name="azure-security-baseline-for-azure-migrate"></a>Základní hodnoty zabezpečení Azure pro Azure Migrate
 
@@ -24,15 +24,15 @@ Pokud chcete zjistit, jak Azure Migrate kompletně mapuje srovnávací test zabe
 
 ## <a name="identity-management"></a>Správa identit
 
-*Další informace najdete v tématu [Azure Security Benchmark: správa identit](../security/benchmarks/security-controls-v2-identity-management.md).*
+*Další informace najdete v tématu [Azure Security Benchmark: správa identit](/azure/security/benchmarks/security-controls-v2-identity-management).*
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1: Standardizace Azure Active Directory jako centrálního systému pro identifikaci a ověřování
 
 **Pokyny**: Azure Migrate jako výchozí službu pro správu identit a přístupu používá Azure Active Directory (Azure AD). Službu Azure AD byste měli standardizovat, abyste mohli řídit identitu a správu přístupu vaší organizace v nástroji:
 
- Microsoft Cloud prostředky, jako jsou Azure Portal, Azure Storage, virtuální počítače Azure (Linux a Windows), Azure Key Vault, PaaS a SaaS aplikace.
+- Microsoft Cloud prostředky, jako jsou Azure Portal, Azure Storage, virtuální počítače Azure (Linux a Windows), Azure Key Vault, PaaS a SaaS aplikace.
 
- prostředky vaší organizace, jako jsou aplikace v Azure nebo prostředky vaší podnikové sítě
+- Prostředky vaší organizace, jako jsou aplikace v Azure nebo podnikové síťové prostředky.
 
 Zabezpečení služby Azure AD by mělo mít vysokou prioritu v praxi cloudového zabezpečení vaší organizace. Azure AD poskytuje bezpečnostní skóre identity, které vám pomůže vyhodnotit stav zabezpečení identity vzhledem k doporučeným osvědčeným postupům od Microsoftu. Pomocí skóre můžete vyhodnotit, jak přesně vaše konfigurace vyhovuje doporučeným osvědčeným postupům, a provádět v zabezpečení vylepšení.
 
@@ -42,11 +42,11 @@ Azure AD podporuje externí identitu, která umožňuje uživatelům bez účet 
 
 - [Jak vytvořit a nakonfigurovat instanci Azure AD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) 
 
-- [Použití externích zprostředkovatelů identity pro aplikaci](../active-directory/external-identities/identity-providers.md) 
+- [Použití externích zprostředkovatelů identity pro aplikaci](/azure/active-directory/b2b/identity-providers) 
 
 - [Co je skóre zabezpečení identity v Azure Active Directory](../active-directory/fundamentals/identity-secure-score.md)
 
-**Monitorování služby Azure Security Center:** Ano
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -56,21 +56,21 @@ Azure AD podporuje externí identitu, která umožňuje uživatelům bez účet 
 
 - [Principy jednotného přihlašování k aplikacím pomocí Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
-**Monitorování služby Azure Security Center:** Ano
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
 ### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4: Použití řídicích prvků silného ověřování pro veškerý přístup založený na Azure Active Directory
 
-**Doprovodné** materiály: Azure Migrate používá Azure Active Directory, které podporují ovládací prvky silného ověřování prostřednictvím vícefaktorového ověřování (MFA), a metod se silnými hesly.
+**Doprovodné** materiály: Azure Migrate používá Azure Active Directory, které podporují ovládací prvky silného ověřování prostřednictvím vícefaktorového ověřování a metod se silnými hesly.
 
-Vícefaktorové ověřování – povolte vícefaktorové ověřování Azure AD a projděte si doporučení pro správu identit a přístupu služby Azure Security Center, odkud při instalaci MFA využijte některé osvědčené postupy. Vícefaktorové ověřování se dá vynutit u všech uživatelů, u vybraných uživatelů nebo u jednotlivých uživatelů na základě podmínek přihlašování a rizikových faktorů.
+Vícefaktorové ověřování – povolte vícefaktorové ověřování Azure AD a sledujte Azure Security Center doporučení pro správu identit a přístupu pro některé osvědčené postupy při nastavení vícefaktorového ověřování. Vícefaktorové ověřování lze vyhovět všem uživatelům nebo na úrovni jednotlivých uživatelů, a to na základě podmínek přihlášení a rizikových faktorů.
 
 Ověřování bez hesla – k dispozici jsou tři možnosti ověřování bez hesla: Windows Hello pro firmy, aplikace Microsoft Authenticator a místní metody ověřování, jako jsou čipové karty.
 
 Pro správce a privilegované uživatele zkontrolujte, že se používá nejvyšší úroveň metody silného ověřování, a pak uveďte příslušné zásady silného ověřování pro ostatní uživatele.
 
-- [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md) 
+- [Postup povolení vícefaktorového ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md) 
 
 - [Úvod do možností ověřování bez hesla pro Azure Active Directory](../active-directory/authentication/concept-authentication-passwordless.md) 
 
@@ -86,13 +86,13 @@ Pro správce a privilegované uživatele zkontrolujte, že se používá nejvyš
 
 **Doprovodné** materiály: Azure Migrate je integrována s Azure Active Directory v, která poskytuje následující zdroje dat:
 
-Přihlášení – Sestava přihlášení poskytuje informace o využití spravovaných aplikací a aktivitách přihlašování uživatelů.
+- Přihlášení – Sestava přihlášení poskytuje informace o využití spravovaných aplikací a aktivitách přihlašování uživatelů.
 
-Protokoly auditu – Zajišťuje sledovatelnost prostřednictvím protokolů všech změn provedených různými funkcemi v rámci Azure AD. Mezi příklady protokolů auditu patří změny jakýchkoli prostředků v rámci Azure AD, jako jsou přidání nebo odebrání uživatelů, aplikací, skupin, rolí nebo zásad.
+- Protokoly auditu – Zajišťuje sledovatelnost prostřednictvím protokolů všech změn provedených různými funkcemi v rámci Azure AD. Mezi příklady protokolů auditu patří změny jakýchkoli prostředků v rámci Azure AD, jako jsou přidání nebo odebrání uživatelů, aplikací, skupin, rolí nebo zásad.
 
-Riziková přihlášení – rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu.
+- Riziková přihlášení – rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu.
 
-Uživatelé označení příznakem rizika – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený.
+- Uživatelé označení příznakem rizika – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený.
 
 Tyto zdroje dat je možné integrovat s Azure Monitor, s Sentinelou v Azure a systémy SIEM třetích stran.
 
@@ -102,9 +102,9 @@ Rozšířená ochrana před internetovými útoky (ATP) v Azure je řešení zab
 
 - [Sestavy aktivit auditu v Azure Active Directory](../active-directory/reports-monitoring/concept-audit-logs.md) 
 
-- [Zobrazení rizikových přihlášení Azure AD](../active-directory/identity-protection/overview-identity-protection.md) 
+- [Zobrazení rizikových přihlášení Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins) 
 
-- [Identifikace uživatelů Azure AD označených příznakem rizikové aktivity](../active-directory/identity-protection/overview-identity-protection.md) 
+- [Identifikace uživatelů Azure AD označených příznakem rizikové aktivity](/azure/active-directory/reports-monitoring/concept-user-at-risk) 
 
 - [Monitorování identit a aktivit přístupu uživatelů ve službě Azure Security Center](../security-center/security-center-identity-access.md) 
 
@@ -118,7 +118,7 @@ Rozšířená ochrana před internetovými útoky (ATP) v Azure je řešení zab
 
 ## <a name="privileged-access"></a>Privilegovaný přístup
 
-*Další informace najdete v tématu [Azure Security Benchmark: privilegovaný přístup](../security/benchmarks/security-controls-v2-privileged-access.md).*
+*Další informace najdete v tématu [Azure Security Benchmark: privilegovaný přístup](/azure/security/benchmarks/security-controls-v2-privileged-access).*
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2: Omezení přístupu pro správu k nejdůležitějším podnikovým systémům
 
@@ -150,7 +150,7 @@ Některé služby Azure podporují místní uživatele a role, které se nesprav
 
 - [Používání kontrol přístupu a identit Azure AD](../active-directory/governance/access-reviews-overview.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Ano
 
 **Odpovědnost:** Zákazník
 
@@ -160,7 +160,18 @@ Některé služby Azure podporují místní uživatele a role, které se nesprav
 
 Měli byste zajistit, aby přihlašovací údaje (například heslo, certifikát nebo čipová karta) pro účty pro nouzový přístup byly zabezpečené a aby o nich věděli jenom ti, kteří jsou oprávněni je použít jenom v případě nouze.
 
-- [Správa účtů pro nouzový přístup v Azure AD](../active-directory/roles/security-emergency-access.md)
+- [Správa účtů pro nouzový přístup v Azure AD](/azure/active-directory/users-groups-roles/directory-emergency-access)
+
+**Monitorování služby Azure Security Center:** Nelze použít
+
+**Odpovědnost:** Zákazník
+
+### <a name="pa-5-automate-entitlement-management"></a>PA-5: automatizace správy nároků 
+
+**Doprovodné** materiály: Azure Migrate je integrována s Azure Active Directory ke správě prostředků. Pomocí funkcí správy opravňujících ke službě Azure AD můžete automatizovat pracovní postupy pro žádosti o přístup, včetně přiřazení přístupu, revizí a vypršení platnosti. Podporuje se také duální nebo vícenásobné schválení.
+
+- [Co jsou kontroly přístupu Azure AD](../active-directory/governance/access-reviews-overview.md) 
+- [Co je Správa nároků Azure AD](../active-directory/governance/entitlement-management-overview.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -184,7 +195,7 @@ Měli byste zajistit, aby přihlašovací údaje (například heslo, certifikát
 
 Využijte k přidělování oprávnění předdefinované role a vlastní role vytvářejte pouze v případě potřeby.
 
-- [Co je řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/overview.md) 
+- [Co je řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/overview.md)
 
 - [Konfigurace řízení přístupu na základě role Azure](../role-based-access-control/role-assignments-portal.md) 
 
@@ -196,7 +207,7 @@ Využijte k přidělování oprávnění předdefinované role a vlastní role v
 
 ## <a name="data-protection"></a>Ochrana dat
 
-*Další informace najdete v tématu [Azure Security Benchmark: ochrana dat](../security/benchmarks/security-controls-v2-data-protection.md).*
+*Další informace najdete v tématu [Azure Security Benchmark: ochrana dat](/azure/security/benchmarks/security-controls-v2-data-protection).*
 
 ### <a name="dp-2-protect-sensitive-data"></a>DP-2: Ochrana citlivých dat
 
@@ -214,26 +225,6 @@ Pro základní platformu spravovanou Microsoftem platí, že Microsoft považuje
 
 **Odpovědnost:** Zákazník
 
-### <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4: Šifrování citlivých informací při přenosu
-
-**Doprovodné** materiály: pro doplnění řízení přístupu by se data v přenosu měla chránit před útoky typu "vzdálené správy" (např. zachycení provozu) pomocí šifrování, aby útočníci mohli snadno číst nebo upravovat data.
-
-Azure Migrate podporuje šifrování dat při přenosu s protokolem TLS v 1.2 nebo vyšším.
-
-I když je to pro přenosy v privátních sítích volitelné, je to pro provoz v externích i veřejných sítích velmi důležité. U přenosů HTTP zajistěte, aby všichni klienti (včetně zařízení Azure Migrate a dalších počítačů, na kterých jste nainstalovali Azure Migrate software), připojení k prostředkům Azure, mohly vyjednávat TLS v 1.2 nebo vyšší. Pro vzdálenou správu použijte místo nešifrovaného protokolu SSH (pro Linux) nebo RDP/TLS (pro Windows). Zastaralé verze a protokoly SSL, TLS a SSH a slabé šifry by měly být zakázané.
-
-Ve výchozím nastavení poskytuje Azure šifrování dat při přenosu mezi datovými centry Azure.
-
-- [Pochopení šifrování při přenosu pomocí Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) 
-
-- [Informace o zabezpečení TLS](/security/engineering/solving-tls1-problem) 
-
-- [Dvojité šifrování pro Azure data při přenosu](../security/fundamentals/double-encryption.md#data-in-transit)
-
-**Monitorování služby Azure Security Center:** Nelze použít
-
-**Odpovědnost:** Sdílené
-
 ### <a name="dp-5-encrypt-sensitive-data-at-rest"></a>DP-5: Šifrování citlivých neaktivních uložených dat
 
 **Doprovodné** materiály: Azure Migrate neuchovává žádná citlivá data. Všechna data trvalá v Azure Migrate jsou v klidovém stavu šifrovaná pomocí klíčů spravovaných Microsoftem.
@@ -250,7 +241,7 @@ Nástroj pro migraci serveru v Azure Migrate replikuje data z disků serverů, k
 
 ## <a name="asset-management"></a>Správa aktiv
 
-*Další informace najdete v tématu [Azure Security Benchmark: správa prostředků](../security/benchmarks/security-controls-v2-asset-management.md).*
+*Další informace najdete v tématu [Azure Security Benchmark: správa prostředků](/azure/security/benchmarks/security-controls-v2-asset-management).*
 
 ### <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1: Zajištění přehledu bezpečnostního týmu o rizicích pro prostředky
 
@@ -280,7 +271,7 @@ Azure Migrate neumožňuje spuštění aplikace nebo instalace softwaru na svýc
 
 - [Správa inventáře Azure Security Center prostředků](../security-center/asset-inventory.md) 
 
-- [Průvodce rozhodováním ohledně pojmenování a označování prostředků](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
+- [Průvodce rozhodováním ohledně pojmenování a označování prostředků](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -300,20 +291,12 @@ Azure Migrate neumožňuje spuštění aplikace nebo instalace softwaru na svýc
 
 **Odpovědnost:** Zákazník
 
-### <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>AM-4: Zajištění zabezpečení správy životního cyklu prostředků
-
-**Doprovodné** materiály: nelze použít. Azure Migrate nelze použít k zajištění zabezpečení prostředků v procesu správy životního cyklu. Je zodpovědností zákazníka udržovat atributy a síťové konfigurace prostředků, které jsou považovány za vysoce ovlivněné. Doporučuje se, aby zákazník vytvořil proces pro zachycení atributů a změny konfigurace sítě, jak je to možné, a to měření vlivu na změny a vytváření úloh.
-
-**Monitorování služby Azure Security Center:** Nelze použít
-
-**Odpovědnost:** Zákazník
-
 ### <a name="am-5-limit-users-ability-to-interact-with-azure-resource-manager"></a>DOP. 5: Omezte schopnost uživatelů pracovat s Azure Resource Manager
 
-**Pokyny**: pomocí podmíněného přístupu Azure omezte schopnost uživatelů pracovat se správcem prostředků Azure tak, že nakonfigurujete "blokování přístupu" pro aplikaci "Microsoft Azure Management".
+**Pokyny**: pomocí podmíněného přístupu Azure omezte schopnost uživatelů komunikovat s Azure Resource Manager konfigurací "blokování přístupu" pro aplikaci Microsoft Azure Management.
 
 Jak nakonfigurovat
-- [Podmíněný přístup k blokování přístupu k Azure Resource Manageru](../role-based-access-control/conditional-access-azure-management.md)
+- [Podmíněný přístup k blokování přístupu k Azure Resource Manager](../role-based-access-control/conditional-access-azure-management.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -321,7 +304,7 @@ Jak nakonfigurovat
 
 ## <a name="logging-and-threat-detection"></a>Protokolování a detekce hrozeb
 
-*Další informace najdete v tématu [Azure Security Benchmark: protokolování a detekce hrozeb](/azure/security/benchmarks/security-controls-v2-logging-threat-detection).*
+*Další informace najdete v tématu [Azure Security Benchmark: protokolování a detekce hrozeb](/azure/security/benchmarks/security-controls-v2-logging-threat-protection).*
 
 ### <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2: Povolení detekce hrozeb pro správu identit a přístupu v Azure
 
@@ -335,13 +318,13 @@ Protokoly auditu – Zajišťuje sledovatelnost prostřednictvím protokolů vš
 
 - Uživatelé označení příznakem rizika – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený.
 
-Azure Security Center může také upozorňovat na určité podezřelé aktivity, jako jsou nadměrný počet neúspěšných pokusů o ověření nebo zastaralé účty v předplatném. Kromě základního monitorování hygieny zabezpečení může modul ochrany před hrozbami služby Azure Security Center také shromažďovat podrobnější upozornění zabezpečení z jednotlivých výpočetních prostředků Azure (virtuální počítače, kontejnery, App Service), datových prostředků (databáze SQL a úložiště) a vrstev služeb Azure. Tato funkce umožňuje získat přehled o anomáliích u účtů v rámci jednotlivých prostředků.
+Azure Security Center může také upozorňovat na určité podezřelé aktivity, jako jsou nadměrný počet neúspěšných pokusů o ověření nebo zastaralé účty v předplatném. Kromě základního monitorování hygieny zabezpečení může modul ochrany před hrozbami služby Azure Security Center také shromažďovat podrobnější upozornění zabezpečení z jednotlivých výpočetních prostředků Azure (virtuální počítače, kontejnery, App Service), datových prostředků (databáze SQL a úložiště) a vrstev služeb Azure. Díky této funkci můžete mít přehled o anomáliích v účtech v jednotlivých prostředcích.
 
 - [Sestavy aktivit auditu v Azure Active Directory](../active-directory/reports-monitoring/concept-audit-logs.md) 
 
 - [Povolení ochrany identit Azure](../active-directory/identity-protection/overview-identity-protection.md) 
 
-- [Ochrana před hrozbami v Azure Security Center](../security-center/azure-defender.md)
+- [Ochrana před hrozbami v Azure Security Center](/azure/security-center/threat-protection)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -349,15 +332,15 @@ Azure Security Center může také upozorňovat na určité podezřelé aktivity
 
 ### <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4: Povolení protokolování pro prostředky Azure
 
-**Doprovodné** materiály: protokoly aktivit, které jsou automaticky k dispozici, obsahují všechny operace zápisu (Put, post, DELETE) pro prostředky Azure Migrate s výjimkou operací čtení (Get). Protokoly aktivit se dají použít k nalezení chyby při odstraňování potíží nebo sledování, jak uživatel ve vaší organizaci změnil prostředek.
+**Doprovodné** materiály: Azure Migrate aktuálně nevytváří protokoly prostředků Azure.
+
+Protokoly aktivit, které jsou automaticky k dispozici, obsahují všechny operace zápisu (PUT, POST, DELETE) pro prostředky Azure Migrate s výjimkou operací čtení (GET). Protokoly aktivit se dají použít k nalezení chyby při odstraňování potíží nebo sledování, jak uživatel ve vaší organizaci změnil prostředek.
 
 - [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
 
-- [Principy protokolování a různých typů protokolů v Azure](../azure-monitor/platform/platform-logs-overview.md) 
+- [Principy protokolování a různých typů protokolů v Azure](../azure-monitor/platform/platform-logs-overview.md)
 
-Azure Migrate aktuálně nevytváří protokoly prostředků Azure.
-
-**Monitorování služby Azure Security Center:** Ano
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -375,13 +358,13 @@ Kromě toho povolte a zaveďte data do Azure Sentinel nebo SIEM třetí strany.
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Monitorování služby Azure Security Center:** Nelze použít
+**Monitorování služby Azure Security Center:** Ano
 
 **Odpovědnost:** Zákazník
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
-*Další informace najdete v tématu [Azure Security Benchmark: reakce na incidenty](../security/benchmarks/security-controls-v2-incident-response.md).*
+*Další informace najdete v tématu [Azure Security Benchmark: reakce na incidenty](/azure/security/benchmarks/security-controls-v2-incident-response).*
 
 ### <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1: Příprava – aktualizace procesu reakce na incidenty pro Azure
 
@@ -405,13 +388,13 @@ Kromě toho povolte a zaveďte data do Azure Sentinel nebo SIEM třetí strany.
 
 **Odpovědnost:** Zákazník
 
-### <a name="ir-3-detection-and-analysis--create-incidents-based-on-high-quality-alerts"></a>IR-3: Detekce a analýza – Vytváření incidentů na základě vysoce kvalitních upozornění
+### <a name="ir-3-detection-and-analysis--create-incidents-based-on-high-quality-alerts"></a>IR-3: Detekce a analýza – vytvoření incidentů na základě upozornění s vysokou kvalitou
 
-**Pokyny:** Ujistěte se, že máte nastavené procesy vytváření vysoce kvalitních upozornění a měření kvality upozornění. To vám umožní učit se z minulých incidentů a určovat prioritu upozornění pro analytiky, aby neztráceli čas falešně pozitivními výsledky. 
+**Pokyny:** Zajistěte, abyste měli proces pro vytváření vysoce kvalitních upozornění a měření jejich kvality. To vám umožní poučit se z minulých incidentů a stanovit priority upozornění pro analytiky, aby nemuseli ztrácet čas s falešně pozitivními výsledky. 
 
-Vysoce kvalitní upozornění je možné vytvářet na základě zkušeností z minulých incidentů, ověřených komunitních zdrojů a nástrojů, které spojují a korelují signály z různorodých zdrojů a generují a mažou upozornění. 
+Vysoce kvalitní upozornění se dají vytvářet na základě zkušeností z minulých incidentů, ověřených zdrojů komunity a nástrojů určených k vygenerování a vyčištění upozornění spojením a sladěním různých zdrojů signálu. 
 
-Azure Security Center nabízí vysoce kvalitní upozornění pro celou řadu prostředků Azure. Pomocí datového konektoru ASC můžete upozornění streamovat do služby Azure Sentinel. Azure Sentinel umožňuje vytvářet rozšířená pravidla upozornění, která automaticky generují incidenty pro účely šetření. 
+Azure Security Center poskytuje vysoce kvalitní výstrahy napříč mnoha prostředky Azure. Pomocí datového konektoru ASC můžete upozornění streamovat do služby Azure Sentinel. Azure Sentinel umožňuje vytvářet rozšířená pravidla upozornění, která automaticky generují incidenty pro účely šetření. 
 
 Pomocí funkce exportu můžete upozornění a doporučení služby Azure Security Center exportovat, abyste mohli lépe identifikovat rizika pro prostředky Azure. Upozornění a doporučení můžete exportovat ručně nebo průběžně a nepřetržitě.
 
@@ -457,13 +440,13 @@ Azure Sentinel nabízí rozsáhlé analýzy dat z prakticky jakéhokoli zdroje p
 
 **Pokyny:** Poskytněte analytikům kontext, aby věděli, na jaké incidenty se zaměřit jako první v závislosti na závažnosti upozornění a citlivosti prostředků. 
 
-Azure Security Center jednotlivým upozorněním přiřazuje závažnost, která vám pomůže určit, jaká upozornění by se měla vyšetřit jako první. Závažnost vychází z míry důvěry služby Security Center v závěr nebo analýzu, na základě kterých se upozornění vygenerovalo, a také z úrovně spolehlivosti, že za aktivitou, která vedla k upozornění, byl škodlivý záměr.
+Azure Security Center jednotlivým upozorněním přiřazuje závažnost, která vám pomůže určit, jaká upozornění by se měla vyšetřit jako první. Závažnost je založena na tom, jak se Security Center ve vyhledávání, nebo na analýze, která se používá k vystavení výstrahy, a také na úrovni spolehlivosti, u které došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
 
 Kromě toho můžete prostředky označit pomocí značek a vytvořit systém vytváření názvů, který vám pomůže identifikovat a kategorizovat prostředky Azure, zejména prostředky zpracovávající citlivá data.  Je vaší zodpovědností určit prioritu nápravy upozornění v závislosti na důležitosti prostředků Azure a prostředí, ve kterém k incidentu došlo.
 
 - [Výstrahy zabezpečení ve službě Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-- [Používání značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md)
+- [Používání značek k uspořádání prostředků Azure](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -485,7 +468,7 @@ Kromě toho můžete prostředky označit pomocí značek a vytvořit systém vy
 
 ## <a name="posture-and-vulnerability-management"></a>Stav a správa ohrožení zabezpečení
 
-*Další informace najdete v tématu [Azure Security Benchmark: stav a správa ohrožení zabezpečení](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management).*
+*Další informace najdete v tématu [Azure Security Benchmark: stav a správa ohrožení zabezpečení](/azure/security/benchmarks/security-controls-v2-vulnerability-management).*
 
 ### <a name="pv-8-conduct-regular-attack-simulation"></a>PV-8: Provádění pravidelné simulace útoku
 
@@ -504,7 +487,7 @@ Postupujte podle pravidel zapojení testování průniku cloudových služeb Mic
 
 ## <a name="governance-and-strategy"></a>Zásady správného řízení a strategie
 
-*Další informace najdete v tématu [Azure Security Benchmark: zásady správného řízení a strategie](../security/benchmarks/security-controls-v2-governance-strategy.md).*
+*Další informace najdete v tématu [Azure Security Benchmark: zásady správného řízení a strategie](/azure/security/benchmarks/security-controls-v2-governance-strategy).*
 
 ### <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1: Definování strategie správy prostředků a ochrany dat 
 
@@ -520,24 +503,24 @@ Tato strategie by měla zahrnovat zdokumentované pokyny, zásady a standardy pr
 
 -   Zabezpečení prostředků po dobu jejich životního cyklu
 
--   Požadovaná strategie řízení přístupu podle klasifikace dat organizace
+-   Požadovaná strategie řízení přístupu v souladu s klasifikací dat organizace
 
--   Využívání funkcí ochrany dat nativních pro Azure a funkcí ochrany dat třetích stran
+-   Použití funkcí pro ochranu dat nativních pro Azure i třetích stran
 
--   Požadavky na šifrování přenášených a neaktivních uložených dat
+-   Požadavky na šifrování dat pro případy použití v přenosech a u neaktivních uložených dat
 
 -   Vhodné kryptografické standardy
 
 Další informace najdete v následujících referenčních materiálech:
-- [Doporučení architektury zabezpečení Azure – úložiště, data a šifrování](/azure/architecture/framework/security/storage-data-encryption?bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
+- [Doporučení architektury zabezpečení Azure – úložiště, data a šifrování](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
 
 - [Základy zabezpečení Azure – zabezpečení, šifrování a úložiště dat Azure](../security/fundamentals/encryption-overview.md)
 
-- [Cloud Adoption Framework – osvědčené postupy zabezpečení a šifrování dat Azure](../security/fundamentals/data-encryption-best-practices.md?bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
+- [Cloud Adoption Framework – osvědčené postupy zabezpečení a šifrování dat Azure](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
 
-- [Azure Security Benchmark – správa prostředků](/azure/security/benchmarks/security-controls-v2-asset-management)
+- [Azure Security Benchmark – správa prostředků](/azure/security/benchmarks/security-benchmark-v2-asset-management)
 
-- [Azure Security Benchmark – ochrana dat](/azure/security/benchmarks/security-controls-v2-data-protection)
+- [Azure Security Benchmark – ochrana dat](/azure/security/benchmarks/security-benchmark-v2-data-protection)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -565,7 +548,7 @@ Zajistěte, aby se strategie segmentace implementovala konzistentně ve všech t
 
 **Pokyny:** Nepřetržitě měřte a zmírňujte rizika pro jednotlivé prostředky a prostředí, ve kterém jsou hostovány. Stanovte prioritu prostředků s vysokou hodnotou a míst nejvíce vystavených útokům, jako jsou publikované aplikace, body sítě pro příchozí a odchozí přenosy dat, koncové body uživatelů a správců atd.
 
-- [Azure Security Benchmark – správa stavu a ohrožení zabezpečení](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
+- [Azure Security Benchmark – správa stavu a ohrožení zabezpečení](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -606,7 +589,7 @@ Tato strategie by měla zahrnovat zdokumentované pokyny, zásady a standardy pr
 Další informace najdete v následujících referenčních materiálech:
 - [Osvědčený postup zabezpečení Azure 11 – Architektura: jednotná strategie zabezpečení](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure Security Benchmark – zabezpečení sítě](/azure/security/benchmarks/security-controls-v2-network-security)
+- [Azure Security Benchmark – zabezpečení sítě](/azure/security/benchmarks/security-benchmark-v2-network-security)
 
 - [Přehled zabezpečení sítě v Azure](../security/fundamentals/network-overview.md)
 
@@ -634,9 +617,9 @@ Tato strategie by měla zahrnovat zdokumentované pokyny, zásady a standardy pr
 
 Další informace najdete v následujících referenčních materiálech:
 
-- [Azure Security Benchmark – správa identit](/azure/security/benchmarks/security-controls-v2-identity-management)
+- [Azure Security Benchmark – správa identit](/azure/security/benchmarks/security-benchmark-v2-identity-management)
 
-- [Azure Security Benchmark – privilegovaný přístup](/azure/security/benchmarks/security-controls-v2-privileged-access)
+- [Azure Security Benchmark – privilegovaný přístup](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
 
 - [Osvědčený postup zabezpečení Azure 11 – Architektura: jednotná strategie zabezpečení](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -648,9 +631,9 @@ Další informace najdete v následujících referenčních materiálech:
 
 ### <a name="gs-7-define-logging-and-threat-response-strategy"></a>GS-7: Definování strategie protokolování a reakcí na hrozby
 
-**Pokyny:** Nastavte strategii protokolování a reakce na hrozby, abyste mohli rychle detekovat a zmírňovat hrozby při současném splnění požadavků na dodržování předpisů. Jako prioritu si stanovte poskytování vysoce kvalitních upozornění a bezproblémových prostředí analytikům, aby se mohli soustředit na hrozby, a ne na integraci a ruční kroky. 
+**Pokyny:** Zřiďte strategii protokolování a reakcí na hrozby, která umožní rychle zjistit a zneškodnit hrozby při současném splnění požadavků na dodržování předpisů. Stanovte prioritu poskytování vysoce kvalitních upozornění a bezproblémového prostředí analytikům, aby se mohli soustředit na hrozby, nikoli na integraci a ruční kroky. 
 
-Tato strategie by měla zahrnovat zdokumentované pokyny, zásady a standardy pro následující aspekty: 
+Tato strategie by měla zahrnovat zdokumentované pokyny, zásady a standardy pro následující prvky: 
 
 -   Role a odpovědnosti organizace v oblasti operací zabezpečení (SecOps) 
 
@@ -668,9 +651,9 @@ Tato strategie by měla zahrnovat zdokumentované pokyny, zásady a standardy pr
 
 Další informace najdete v následujících referenčních materiálech:
 
-- [Azure Security Benchmark – protokolování a detekce hrozeb](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
+- [Azure Security Benchmark – protokolování a detekce hrozeb](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
 
-- [Azure Security Benchmark – reakce na incidenty](/azure/security/benchmarks/security-controls-v2-incident-response)
+- [Azure Security Benchmark – reakce na incidenty](/azure/security/benchmarks/security-benchmark-v2-incident-response)
 
 - [Osvědčený postup zabezpečení Azure 4 – Proces: aktualizace procesů reakcí na incidenty pro cloud](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
@@ -684,5 +667,5 @@ Další informace najdete v následujících referenčních materiálech:
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../security/benchmarks/overview.md).
-- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
+- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)

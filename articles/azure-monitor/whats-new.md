@@ -5,17 +5,81 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 11/11/2020
-ms.openlocfilehash: bf15e380eb1a88acc39ca63165d18d04a260b35d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 12/04/2020
+ms.openlocfilehash: 91aa76fd3d9dbb54316f32fdb319e92ca2283b1d
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185891"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745770"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Co je nového v dokumentaci k Azure Monitor?
 
 Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové, nebo byly významně aktualizované. Bude aktualizován první týden v měsíci, aby zahrnoval aktualizace článků z předchozího měsíce.
+
+## <a name="november-2020"></a>Listopad 2020
+
+### <a name="general"></a>Obecné
+- [Omezení služby Azure monitor](service-limits.md) – Aktualizováno pro podporu ARC Azure.
+
+### <a name="agents"></a>Agenti
+- [Přehled agentů monitorování Azure](platform/agents-overview.md) – aktualizované pro podporu ARC Azure
+- [Nainstalujte agenta Azure monitor](platform/azure-monitor-agent-install.md) – nový článek.
+- [Přehled agenta Azure monitor](platform/azure-monitor-agent-overview.md) – Aktualizováno pro podporu ARC Azure.
+- [Ukázky šablon Správce prostředků pro agenty](samples/resource-manager-agent.md) – aktualizované pro podporu ARC Azure.
+
+### <a name="alerts"></a>Výstrahy
+- [Vytváření a Správa skupin akcí ve Azure Portal](platform/action-groups.md) – byly přidány zdrojové IP adresy pro Webhooky.
+
+### <a name="application-insights"></a>Application Insights
+- [Monitorování aplikací s nekódováním kódu Java Azure Monitor Application Insights](app/java-in-process-agent.md) přidány příklad konfigurace.
+- [Reakce modulu plug-in pro Application Insights JavaScript SDK](app/javascript-react-plugin.md) – přidání části na používání nereagujících zavěšení
+- [Upgrade z Application Insights Java 2. x SDK](app/java-standalone-upgrade-from-2x.md) – nový článek.
+- [Poznámky k verzi pro Microsoft. ApplicationInsights. SnapshotCollector](app/snapshot-collector-release-notes.md) -New article
+
+### <a name="autoscale"></a>Automatické škálování
+- [Začínáme s automatické škálováním v Azure](platform/autoscale-get-started.md) – Přidání oddílu o přesunutí automatického škálování do jiné oblasti.
+
+### <a name="data-collection"></a>Shromažďování dat
+- [Konfigurace shromažďování dat pro agenta Azure monitor (Preview)](platform/data-collection-rule-azure-monitor-agent.md) – Aktualizováno pro podporu ARC Azure
+- [Pravidla shromažďování dat v Azure monitor (Preview)](platform/data-collection-rule-overview.md) – Aktualizováno pro podporu ARC Azure.
+- [Ukázky šablon Správce prostředků pro pravidla shromažďování dat](samples/resource-manager-data-collection-rules.md) – nový článek
+
+### <a name="insights-and-solutions"></a>Přehledy a řešení
+- [Připojte Azure k nástrojům ITSM pomocí zabezpečeného exportu, který](platform/it-service-management-connector-secure-webhook-connections.md) je přidaný v tématu připojení k ServiceNow.
+
+### <a name="logs"></a>Protokoly
+- [Integrujte Log Analytics a Excel](log-query/log-excel.md) – nový článek.
+- [Log Analytics zabezpečení dat](platform/data-security.md) – přidáno do části Další funkce zabezpečení.
+- [Log Analytics integrace s Power BI](log-query/log-powerbi.md) – nový článek.
+- [Standardní sloupce v Azure monitor záznamy protokolu](platform/log-standard-columns.md) – přidáno _SubscriptionId sloupci.
+
+Nové a aktualizované články z změny struktury obsahu dotazů protokolu
+
+- [Kurz Log Analytics](log-query/log-analytics-tutorial.md)
+- [Dotazy protokolu v Azure Monitor](log-query/log-query-overview.md)
+- [Přehled Log Analytics v Azure Monitor](log-query/log-analytics-overview.md)
+- [Ukázky pro dotazy pro Azure Průzkumník dat a Azure Monitor](/azure/data-explorer/kusto/query/samples?pivots=azuremonitor)
+- [Kurz: použití dotazů Kusto v Azure Průzkumník dat a Azure Monitor](/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor)
+
+
+
+### <a name="virtual-machines"></a>Virtuální počítače
+
+- [Povolit Azure monitor pro virtuální počítače přehled](insights/vminsights-enable-overview.md) – přidané oblasti
+
+Nové články pro stav hosta Azure Monitor pro virtuální počítače (Preview)
+
+- [Stav hosta Azure Monitor pro virtuální počítače (Preview)](insights/vminsights-health-overview.md)
+- [Azure Monitor pro virtuální počítače upozornění na stav hosta (Preview)](insights/vminsights-health-alerts.md)
+- [Konfigurace monitorování v Azure Monitor pro virtuální počítače stav hosta (Preview)](insights/vminsights-health-configure.md)
+- [Konfigurace monitorování v Azure Monitor pro virtuální počítače stav hosta pomocí pravidel shromažďování dat (Preview)](insights/vminsights-health-configure-dcr.md)
+- [Povolit stav hosta Azure Monitor pro virtuální počítače (Preview)](insights/vminsights-health-enable.md)
+- [Řešení potíží s Azure Monitor pro virtuální počítačem stavem hosta (Preview)](insights/vminsights-health-troubleshoot.md)
+
+
+
+
 
 ## <a name="october-2020"></a>Říjen 2020
 

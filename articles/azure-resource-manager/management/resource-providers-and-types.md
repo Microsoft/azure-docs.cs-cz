@@ -2,14 +2,14 @@
 title: Poskytovatelé prostředků a typy prostředků
 description: Popisuje poskytovatele prostředků, kteří podporují Azure Resource Manager. Popisuje jejich schémata, dostupné verze rozhraní API a oblasti, které mohou hostovat prostředky.
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 12/04/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6413a1279c9c7a995bb144097e3db55d5f3a90d2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6d114fdfae12dd9ee96a23e4dafc3847c6429d0c
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452103"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745102"
 ---
 # <a name="azure-resource-providers-and-types"></a>Poskytovatelé a typy prostředků Azure
 
@@ -43,22 +43,30 @@ Kód vaší aplikace by neměl blokovat vytváření prostředků pro poskytovat
 
 Pokud v předplatném máte typy prostředků od tohoto poskytovatele prostředků, nemůžete zrušit registraci poskytovatele prostředků.
 
-## <a name="azure-portal"></a>portál Azure
+## <a name="azure-portal"></a>Azure Portal
+
+### <a name="register-resource-provider"></a>Registrace poskytovatele prostředků
 
 Pokud chcete zobrazit všechny poskytovatele prostředků a stav registrace pro vaše předplatné:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-2. V nabídce webu Azure Portal vyberte **Všechny služby**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. V nabídce Azure Portal vyhledejte **předplatná**. Vyberte ho z dostupných možností.
 
-    ![vybrat odběry](./media/resource-providers-and-types/select-all-services.png)
+   :::image type="content" source="./media/resource-providers-and-types/search-subscriptions.png" alt-text="Hledat předplatná":::
 
-3. V poli **všechny služby** zadejte **předplatné** a pak vyberte **předplatná**.
-4. Vyberte předplatné ze seznamu odběrů, které chcete zobrazit.
-5. Vyberte **poskytovatele prostředků** a zobrazte seznam dostupných poskytovatelů prostředků.
+1. Vyberte předplatné, které chcete zobrazit.
 
-    ![Zobrazit poskytovatele prostředků](./media/resource-providers-and-types/show-resource-providers.png)
+   :::image type="content" source="./media/resource-providers-and-types/select-subscription.png" alt-text="vybrat odběry":::
 
-6. Chcete-li zaregistrovat poskytovatele prostředků, vyberte možnost **Registrovat**. Na předchozím snímku obrazovky se zvýrazní odkaz **zaregistrovat** pro **Microsoft. detail**. Pokud chcete zachovat v předplatném nejnižší oprávnění, zaregistrujte pouze ty poskytovatele prostředků, které jste připraveni použít.
+1. V nabídce vlevo v části **Nastavení** vyberte **poskytovatelé prostředků**.
+
+   :::image type="content" source="./media/resource-providers-and-types/select-resource-providers.png" alt-text="vybrat poskytovatele prostředků":::
+
+6. Vyhledejte poskytovatele prostředků, kterého chcete zaregistrovat, a vyberte **Registrovat**. Pokud chcete zachovat v předplatném nejnižší oprávnění, zaregistrujte pouze ty poskytovatele prostředků, které jste připraveni použít.
+
+   :::image type="content" source="./media/resource-providers-and-types/register-resource-provider.png" alt-text="registrovat poskytovatele prostředků":::
+
+### <a name="view-resource-provider"></a>Zobrazit poskytovatele prostředků
 
 Chcete-li zobrazit informace o konkrétním poskytovateli prostředků:
 

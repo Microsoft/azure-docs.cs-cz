@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 96e22beb9f9b088e698f0db12104f526af2b936b
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 5c3bfbdf133777f0bc219d1306f80bd4d38b56ea
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989449"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746263"
 ---
 # <a name="configure-ddos-attack-mitigation-reports-and-flow-logs"></a>Konfigurace protokolů toků a sestav omezení rizik útoků DDoS 
 
@@ -74,7 +74,7 @@ Tato [Šablona](https://github.com/Azure/Azure-Network-Security/tree/master/Azur
 
 ### <a name="azure-sentinel-data-connector"></a>Datový konektor Azure Sentinel
 
-Můžete se připojit k Azure Sentinel, zobrazit a analyzovat data v sešitech, vytvořit vlastní výstrahy a začlenit je do vyšetřovacích procesů. Pokud se chcete připojit k Azure Sentinel, přečtěte si téma [připojení k Azure Sentinel](../sentinel/connect-azure-ddos-protection.md). 
+Protokoly o zmírňování útoků na útoky můžete propojit se službou Azure Sentinel, zobrazovat a analyzovat data v sešitech, vytvářet vlastní výstrahy a začlenit je do vyšetřovacích procesů. Pokud se chcete připojit k Azure Sentinel, přečtěte si téma [připojení k Azure Sentinel](../sentinel/connect-azure-ddos-protection.md). 
 
 ![Konektor Azure Sentinel DDoS](./media/ddos-attack-telemetry/azure-sentinel-ddos.png)
 

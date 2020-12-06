@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: b6b3cac51ffd4ccd138994ac65b4f96b07816970
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 3a47ba2025bcaba542d2dbec0c89643e0900f233
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368691"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746144"
 ---
 # <a name="how-to-configure-your-saas-offer-listing-details"></a>Jak nakonfigurovat podrobnosti seznamu nabídky SaaS
 
@@ -71,7 +71,7 @@ Je nutné přidat alespoň jeden a maximálně tři marketingové dokumenty pro 
 
 ### <a name="add-logos"></a>Přidat loga
 
-V části **log (loga** ) Nahrajte ve formátu PNG **velké** logo mezi 216 x 216 a 350 × 350 pixelů. Partnerské centrum automaticky vytvoří **malé** logo (48 x 48) a **střední** (90 x 90), které můžete později nahradit, pokud chcete.
+V části **log (loga**) Nahrajte ve formátu PNG **velké** logo mezi 216 x 216 a 350 × 350 pixelů. Partnerské centrum automaticky vytvoří **malé** logo (48 x 48) a **střední** (90 x 90), které můžete později nahradit, pokud chcete.
 
 Všechny tři velikosti loga se používají na různých místech v online úložištích.
 
@@ -105,4 +105,4 @@ Než budete pokračovat na další kartu, vyberte **Uložit koncept** . v část
 ## <a name="next-steps"></a>Další kroky
 
 - Pokud vaše nabídka prodáváte prostřednictvím Microsoftu, přečtěte si, [jak přidat cílovou skupinu Preview pro nabídku SaaS](create-new-saas-offer-preview.md). 
-- V opačném případě si přečtěte, [jak uvádět SaaS nabídku](create-new-saas-offer-marketing.md).
+- V opačném případě si přečtěte, [Jak prodávat nabídku SaaS](create-new-saas-offer-marketing.md).

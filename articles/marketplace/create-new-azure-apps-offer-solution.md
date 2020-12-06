@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 8a8b04501bf81f41fb87de8fc0ce42eb4e7fda93
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 8469cad02009d054bd8ba97fb4aabfdae84ef842
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94370081"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744614"
 ---
 # <a name="configure-a-solution-template-plan"></a>Konfigurace plánu šablony řešení
 
@@ -28,7 +28,7 @@ Každý plán můžete nakonfigurovat tak, aby byl viditelný pro všechny uživ
 
 Na kartě **dostupnost** v části **plán viditelnost** proveďte jednu z následujících akcí:
 
-- Pokud chcete nastavit plán jako veřejný, vyberte možnost **veřejné** (označuje se také jako _přepínač_ ).
+- Pokud chcete nastavit plán jako veřejný, vyberte možnost **veřejné** (označuje se také jako _přepínač_).
 - Pokud chcete nastavit plán jako soukromý, vyberte možnost **Private** a pak přidejte ID předplatného Azure ručně nebo se souborem CSV.
 
     > [!NOTE]
@@ -89,11 +89,11 @@ Po vytvoření jednoho nebo více plánů uvidíte název svého plánu, ID plá
 
 Akce, které jsou k dispozici ve sloupci **Akce** na kartě **Přehled plánu** , se liší v závislosti na stavu plánu a mohou zahrnovat následující:
 
-- Pokud je stav plánu **koncept** , odkaz ve sloupci **Akce** bude vyslovit **Odstranit koncept**.
-- Pokud je stav plánu **Live** , odkaz ve sloupci **Akce** buď **zastaví prodej plánu** , nebo **synchronizuje soukromou cílovou skupinu**. Odkaz **synchronizovat soukromou cílovou skupinu** bude publikovat jenom změny vašich privátních cílových skupin, aniž byste museli publikovat další aktualizace, které jste mohli v této nabídce udělat.
+- Pokud je stav plánu **koncept**, odkaz ve sloupci **Akce** bude vyslovit **Odstranit koncept**.
+- Pokud je stav plánu **Live**, odkaz ve sloupci **Akce** buď **zastaví prodej plánu** , nebo **synchronizuje soukromou cílovou skupinu**. Odkaz **synchronizovat soukromou cílovou skupinu** bude publikovat jenom změny vašich privátních cílových skupin, aniž byste museli publikovat další aktualizace, které jste mohli v této nabídce udělat.
 - Pokud chcete pro tuto nabídku vytvořit další plán, vyberte v horní části karty **Přehled plánu** možnost **+ vytvořit nový plán**. Pak opakujte postup v tématu [Postup vytvoření plánů pro nabídku aplikace Azure](create-new-azure-apps-offer-plans.md). V opačném případě, pokud jste dokončili vytváření plánů, jděte do další části: další kroky.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Jak otestovat a publikovat nabídku aplikace Azure](create-new-azure-apps-offer-test-publish.md)
-- Naučte se, [jak nabízet nabídku aplikací Azure](create-new-azure-apps-offer-marketing.md) prostřednictvím společného prodeje s Microsoftem a prodávat prostřednictvím programů CSP.
+- Naučte se, [Jak prodávat nabídku aplikací Azure](create-new-azure-apps-offer-marketing.md) prostřednictvím společného prodeje s Microsoftem a prodávat prostřednictvím programů CSP.

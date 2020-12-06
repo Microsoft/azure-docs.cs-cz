@@ -12,18 +12,18 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: b01ade25c6592e68e34eeb542a90cdd0124a0446
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 4a6cd529511d4a2e71e1a31c1600f8a51f455a37
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96738010"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746127"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>Integrace služeb Azure s virtuálními sítěmi pro izolaci sítě
 
-Virtual Network Integration pro službu Azure vám umožní uzamknout přístup k této službě pouze do vaší infrastruktury virtuální sítě. Infrastruktura virtuální sítě také zahrnuje partnerské virtuální sítě a místní sítě.
+Integrace Virtual Network (VNet) pro službu Azure umožňuje uzamknout přístup k této službě pouze do vaší infrastruktury virtuální sítě. Infrastruktura virtuální sítě také zahrnuje partnerské virtuální sítě a místní sítě.
 
-Služby Azure dosahují izolace sítě pomocí jedné nebo několika z následujících metod:
+Integrace virtuální sítě poskytuje službám Azure výhody izolace sítě a je možné ji provést pomocí jedné nebo několika z následujících metod:
 - [Nasazení vyhrazených instancí služby do virtuální sítě](virtual-network-service-endpoints-overview.md). Služby pak mohou být soukromě přistupované v rámci virtuální sítě a z místních sítí.
 - Pomocí [privátního koncového bodu](../private-link/private-endpoint-overview.md) , který se připojuje soukromě a bezpečně ke službě využívající [privátní propojení Azure](../private-link/private-link-overview.md). Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě.
 - Přístup ke službě pomocí veřejných koncových bodů rozšířením virtuální sítě na službu prostřednictvím [koncových bodů služby](virtual-network-service-endpoints-overview.md). Koncové body služby umožňují zabezpečit prostředky služby ve virtuální síti.

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3854bb410aba8da65b47a335bf13f1dcc51a0180
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 40751b7864cc62d17836ab6d57cd106f6904f64a
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839892"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744104"
 ---
 # <a name="data-residency-and-customer-data-for-azure-ad-multi-factor-authentication"></a>Data o sídle a zákaznických datech pro Azure AD Multi-Factor Authentication
 
@@ -45,7 +45,7 @@ Tyto informace se uchovávají po dobu 90 dnů.
 
 Služba Azure AD Multi-Factor Authentication neprotokoluje osobní údaje, jako je uživatelské jméno, telefonní číslo nebo IP adresa, ale existuje *UserObjectId* , který identifikuje Multi-Factor Authentication pokusů o přihlášení uživatelů. Data protokolu se ukládají po dobu 30 dnů.
 
-### <a name="azure-ad-multi-factor-authentication"></a>Multi-Factor Authentication Azure AD
+### <a name="azure-ad-multi-factor-authentication"></a>Vícefaktorové ověřování Azure AD
 
 Pro veřejné cloudy Azure, kromě ověřování Azure B2C, serveru NPS a Windows Server 2016 nebo 2019 AD FS adaptéru se ukládají následující osobní údaje:
 

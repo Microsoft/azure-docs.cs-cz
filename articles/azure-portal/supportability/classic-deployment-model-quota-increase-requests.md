@@ -5,14 +5,13 @@ author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
 ms.topic: how-to
-ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: afdb8b2b677321239f240e74d49711195ac186c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5b5e8c11bfe164aaa3539742dac8c4d267c69e1
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763903"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745600"
 ---
 # <a name="classic-deployment-model"></a>Model nasazení Classic
 
@@ -38,7 +37,7 @@ Podle následujících pokynů vytvořte žádost o podporu pomocí **pomoci a p
 
    ![Vytvořit novou žádost o podporu v Azure Portal](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-1. V možnosti **typ problému**vyberte **omezení služby a předplatné (kvóty)**.
+1. V možnosti **typ problému** vyberte **omezení služby a předplatné (kvóty)**.
 
    ![Jako typ problému vyberte kvóty.](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
 
@@ -46,7 +45,7 @@ Podle následujících pokynů vytvořte žádost o podporu pomocí **pomoci a p
 
    ![Vyberte předplatné, pro které se má zvýšit kvóta.](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
 
-1. V části **typ kvóty**vyberte **COMPUTE-VM (cores-vCPU) zvýšení limitu předplatného**.
+1. V části **typ kvóty** vyberte **COMPUTE-VM (cores-vCPU) zvýšení limitu předplatného**.
 
    ![Vyberte typ kvóty, který se má zvýšit.](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
@@ -54,11 +53,11 @@ Podle následujících pokynů vytvořte žádost o podporu pomocí **pomoci a p
 
    ![Zadejte podrobnosti, které vám pomůžou vaši žádost společně.](./media/resource-manager-core-quotas-request/provide-details-link.png)
 
-1. V **Podrobnosti kvóty**vyberte **Classic** a vyberte **umístění**.
+1. V **Podrobnosti kvóty** vyberte **Classic** a vyberte **umístění**.
 
    ![Přidat podrobnosti včetně modelu nasazení a umístění](./media/resource-manager-core-quotas-request/quota-details-classic.png)
 
-1. Pro **rodinu SKU**vyberte jednu nebo více rodin SKU, které chcete zvýšit.
+1. Pro **rodinu SKU** vyberte jednu nebo více rodin SKU, které chcete zvýšit.
 
    ![Určete rodinu SKU, která se má zvýšit.](./media/resource-manager-core-quotas-request/sku-family-classic.png)
 
@@ -94,7 +93,7 @@ Podle následujících pokynů vytvořte žádost o podporu pomocí Azure Portal
 
    ![Zadejte podrobnosti žádosti.](./media/resource-manager-core-quotas-request/provide-details-link.png)
 
-1. V **podrobnostech o kvótě**vyberte **Classic** a **umístění**.
+1. V **podrobnostech o kvótě** vyberte **Classic** a **umístění**.
 
    ![Výběr podrobností kvóty včetně modelu nasazení a umístění](./media/resource-manager-core-quotas-request/quota-details-classic.png)
 

@@ -1,20 +1,15 @@
 ---
 title: Série videí s postupy pro Azure Portal
 description: Najděte si ukázky videí, jak pracovat se službami Azure na portálu. Zobrazení a odkazování přímo na nejnovější videa s postupy.
-services: azure-portal
 keywords: ''
-author: mgblythe
-ms.author: mblythe
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 42d9c418ee6feae7a763b1a2cc76d8edb2fec6ce
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 0762174a3207c0620d3b6413d14c817014fc49a0
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873706"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745855"
 ---
 # <a name="azure-portal-how-to-video-series"></a>Série videí s postupy pro Azure Portal
 
