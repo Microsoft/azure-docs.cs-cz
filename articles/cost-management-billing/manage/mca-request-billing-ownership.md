@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 11/30/2020
 ms.author: banders
-ms.openlocfilehash: 2aae71836a4eaba845e4752edf708607977763fa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8c3ab3f4f9bc56e9651a98e5c011cad65f21fd9d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014278"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348976"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Získání vlastnictví fakturace předplatných Azure od ostatních účtů
 
@@ -28,7 +28,7 @@ Pokud chcete požádat o vlastnictví fakturace, musíte být **vlastníkem odd�
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako vlastník nebo přispěvatel oddílu faktury pro fakturační účet spojený se smlouvou se zákazníkem Microsoftu.
 1. Vyhledejte **Cost Management a fakturace**.  
     ![Screenshot znázorňující hledání položky Správa nákladů a fakturace na webu Azure Portal](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
-1. Na stránce s rozsahy fakturace vyberte fakturační účet, který se má použít k platbě za využití předplatných. Tento fakturační účet by měl být typu **Smlouva se zákazníkem Microsoftu**.  
+1. Na stránce s rozsahy fakturace vyberte **Rozsahy fakturace** a potom vyberte fakturační účet, který se má použít k platbě za využití předplatných. Tento fakturační účet by měl být typu **Smlouva se zákazníkem Microsoftu**.  
     [![Screenshot zachycující hledání položky Cost Management a fakturace na portálu](./media/mca-request-billing-ownership/list-of-scopes.png)](./media/mca-request-billing-ownership/list-of-scopes.png#lightbox)
     > [!NOTE]
     > Azure Portal si pamatuje poslední rozsah fakturace, který jste využili, a tento rozsah se zobrazí, když na stránku Správa nákladů a fakturace vrátíte příště. Pokud jste stránku Správa nákladů a fakturace navštívili dřív, stránka s rozsahy fakturace se vám nezobrazí. Pokud ano, zkontrolujte, že jste ve [správném rozsahu](#check-for-access). Pokud ne, [přepněte rozsah](view-all-accounts.md#switch-billing-scope-in-the-azure-portal) a vyberte fakturační účet pro smlouvu se zákazníkem Microsoftu.

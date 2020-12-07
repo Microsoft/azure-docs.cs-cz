@@ -52,6 +52,8 @@
       items:
         - name: Transformace
           href: how-to-transformation.md
+        - name: Příchozí synchronizace s využitím MS Graph API
+          href: how-to-inbound-synch-ms-graph.md
         - name: Rozhraní API pro synchronizaci s Azure AD
           href: /graph/api/resources/synchronization-overview
     - name: Řešení potíží

@@ -167,6 +167,12 @@
           href: iot-hub-devguide-sdks.md
         - name: Podpora MQTT
           href: iot-hub-mqtt-support.md
+        - name: Podpora MQTT 5 (Preview)
+          items:
+            - name: Přehled MQTT 5
+              href: iot-hub-mqtt-5.md
+            - name: Reference k rozhraní API MQTT 5
+              href: iot-hub-mqtt-5-reference.md
         - name: Podpora AMQP
           href: iot-hub-amqp-support.md
         - name: Glosář

@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/30/2020
 ms.author: banders
-ms.openlocfilehash: 0049efda603532099cc9bf24dc9d9411b5aaa389
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 3df6b694f3a40cef17c6e0114464ad4aa2fa30ce
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132121"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344330"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Rozsahy a fakturační účty na webu Azure Portal
 
@@ -33,6 +33,12 @@ Pokud chcete zjistit, jaký typ fakturačního účtu máte, přejděte do čás
 
 ## <a name="scopes-for-billing-accounts"></a>Rozsahy pro fakturační účty
 Rozsah je uzel v rámci fakturačního účtu, pomocí kterého zobrazujete a spravujete fakturaci. Právě tady spravujete fakturační údaje, platby a faktury a provádíte všeobecnou správu účtu.
+
+Pokud nemáte přístup k zobrazení nebo správě fakturačních účtů, pravděpodobně nemáte oprávnění k přístupu. Můžete požádat správce fakturačního účtu, aby vám udělil přístup. Další informace najdete v následujících článcích:
+
+- [Přístup pro program MOSP (Microsoft Online Services Program)](manage-billing-access.md)
+- [Přístup pro Smlouvu se zákazníkem Microsoftu](understand-mca-roles.md)
+- [Přístup pro smlouvu Enterprise](understand-ea-roles.md)
 
 ### <a name="microsoft-online-services-program"></a>Program MOSP (Microsoft Online Services Program)
 

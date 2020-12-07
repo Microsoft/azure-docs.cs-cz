@@ -134,6 +134,8 @@
           href: how-to-request-real-time-data.md
         - name: Vyžádání předpovědí a údajů o počasí v reálném čase
           href: how-to-request-weather-data.md
+        - name: Vyžádání údajů o nadmořské výšce
+          href: how-to-request-elevation-data.md
     - name: Vývoj s využitím sady Web SDK
       items:
         - name: Mapový ovládací prvek

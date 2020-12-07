@@ -152,6 +152,8 @@
           href: node-updates-kured.md
         - name: Konfigurace clusteru AKS
           href: cluster-configuration.md
+        - name: Konfigurace vlastních uzlů (Preview)
+          href: custom-node-configuration.md
         - name: Integrace ACR s clusterem AKS
           href: cluster-container-registry-integration.md
         - name: Vytváření virtuálních uzlů

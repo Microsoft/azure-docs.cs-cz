@@ -1,0 +1,153 @@
+items:
+  - name: Dokumentace ke službě Azure Purview
+    href: index.yml
+  - name: Přehled
+    items:
+      - name: Co je Azure Purview?
+        href: overview.md
+  - name: Rychlé starty
+    expanded: true
+    items:
+      - name: Vytvoření účtu Purview – Azure Portal
+        href: create-catalog-portal.md
+      - name: Vytvoření účtu Purview – Azure PowerShell
+        href: create-catalog-powershell.md
+  - name: Kurzy
+    items:
+      - name: Úvodní sada
+        items:
+          - name: Prohledávání dat
+            href: tutorial-scan-data.md
+          - name: Navigace na domovské stránce a hledání
+            href: tutorial-asset-search.md
+          - name: Procházení prostředků a zobrazení rodokmenu
+            href: tutorial-browse-and-view-lineage.md
+          - name: 'Seznámení se sadami prostředků, aktivy, schématy a klasifikacemi'
+            href: tutorial-schemas-and-classifications.md
+          - name: Vytváření termínů glosáře
+            href: tutorial-import-create-glossary-terms.md
+      - name: Registrace a prohledávání serveru SQL v místním prostředí
+        href: register-scan-on-premises-sql-server.md
+  - name: Koncepty
+    items:
+      - name: Použití sady Purview Studio
+        href: use-purview-studio.md
+      - name: Osvědčené postupy pro nasazení
+        href: deployment-best-practices.md
+      - name: Omezení Azure Purview
+        href: how-to-manage-quotas.md
+      - name: Jak se při prohledávání zjišťují odstraněné prostředky
+        href: concept-detect-deleted-assets.md
+      - name: Principy sad prostředků
+        href: concept-resource-sets.md
+      - name: Rodokmen dat
+        href: concept-data-lineage.md
+      - name: Podporované zdroje dat a typy souborů
+        href: sources-and-scans.md
+      - name: Oprávnění katalogu
+        href: catalog-permissions.md
+      - name: Katalogové hledání
+        href: concept-search.md
+      - name: Obchodní glosář
+        href: concept-business-glossary.md
+      - name: Přehledy dat
+        href: concept-insights.md
+      - name: Nejčastější dotazy
+        href: frequently-asked-questions.md
+  - name: Návody
+    items:
+      - name: Registrace a prohledávání
+        items:
+          - name: Správa přihlašovacích údajů
+            href: manage-credentials.md
+            displayName: Create and manage Credentials
+          - name: Vytvoření sady pravidel prohledávání
+            href: create-a-scan-rule-set.md
+          - name: Správa modulů runtime integrace
+            href: manage-integration-runtimes.md
+          - name: Řešení potíží s připojením
+            href: troubleshoot-connections.md
+          - name: zdroje
+            items:
+              - name: Správa zdrojů dat
+                href: manage-data-sources.md
+              - name: Přehled konektorů Purview
+                href: purview-connector-overview.md
+              - name: Azure Blob Storage
+                href: register-scan-azure-blob-storage-source.md
+                displayName: Register and scan azure blob storage
+              - name: Azure Cosmos DB
+                href: register-scan-azure-cosmos-database.md
+                displayName: Register and scan Azure Cosmos DB
+              - name: Průzkumník dat Azure
+                href: register-scan-azure-data-explorer.md
+                displayName: Register and scan Azure Data Explorer Kusto
+              - name: Azure Data Lake Storage Gen 1
+                href: register-scan-adls-gen1.md
+                displayName: Register and scan Azure Data Lake Storage Gen 1 ADLS
+              - name: Azure Data Lake Storage Gen2
+                href: register-scan-adls-gen2.md
+                displayName: Register and scan Azure Data Lake Storage Gen 2 ADLS
+              - name: Azure SQL Database
+                href: register-scan-azure-sql-database.md
+                displayName: Register and scan Azure SQL DB
+              - name: Azure SQL DB s bránou firewall
+                href: scan-sqlresource-firewall.md
+                displayName: Register and scan Azure SQL DB with a firewall
+              - name: Spravovaná instance Azure SQL Database
+                href: register-scan-azure-sql-database-managed-instance.md
+                displayName: Register and scan Azure SQL DB Managed Instance
+              - name: Azure Synapse Analytics
+                href: register-scan-azure-synapse-analytics.md
+              - name: Tenant Power BI – portál
+                href: register-scan-power-bi-tenant.md
+              - name: Tenant Power BI – PowerShell
+                href: powershell-register-scan-power-bi.md
+              - name: Místní server SQL
+                href: register-scan-on-premises-sql-server.md
+      - name: Obchodní glosář
+        items:
+          - name: 'Vytvoření, import a export termínů glosáře'
+            href: how-to-create-import-export-glossary.md
+          - name: Správa šablon termínů
+            href: how-to-manage-term-templates.md
+      - name: Klasifikace
+        items:
+          - name: Vytváření vlastních klasifikací a klasifikačních pravidel
+            href: create-a-custom-classification-and-classification-rule.md
+          - name: Využití klasifikací
+            href: apply-classifications.md
+          - name: Automatické označování obsahu
+            href: create-sensitivity-label.md
+      - name: Hledání a procházení
+        items:
+          - name: Procházení služby Data Catalog
+            href: how-to-browse-catalog.md
+          - name: Prohledávání služby Data Catalog
+            href: how-to-search-catalog.md
+      - name: Lineage
+        items:
+          - name: Uživatelská příručka k rodokmenům
+            href: catalog-lineage-user-guide.md
+          - name: Rodokmen služby Azure Data Factory
+            href: how-to-link-azure-data-factory.md
+          - name: Rodokmen služby Azure Data Share
+            href: how-to-link-azure-data-share.md
+      - name: Insights
+        items:
+          - name: Zobrazení přehledů prostředků
+            href: asset-insights.md
+          - name: Zobrazení glosářových přehledů
+            href: glossary-insights.md
+          - name: Zobrazení přehledů prohledávání
+            href: scan-insights.md
+          - name: Zobrazení přehledů klasifikace
+            href: classification-insights.md
+          - name: Zobrazení přehledů popisků citlivosti
+            href: sensitivity-insights.md
+          - name: Zobrazení přehledů přípon souborů
+            href: file-extension-insights.md
+  - name: Referenční informace
+    items:
+      - name: Podporované klasifikace
+        href: supported-classifications.md

@@ -255,7 +255,7 @@
               href: log-query/query-audit.md
             - name: Optimalizace dotazů
               href: log-query/query-optimization.md
-            - name: Functions
+            - name: Funkce
               href: log-query/functions.md
             - name: Analýza textových dat
               href: log-query/parse-text.md
@@ -274,6 +274,8 @@
                   href: log-query/resource-expression.md
                 - name: Sjednocení prostředků dat aplikací
                   href: log-query/unify-app-resource-data.md
+                - name: Dotazování Azure Data Exploreru z Azure Monitoru
+                  href: platform/azure-monitor-data-explorer-proxy.md
         - name: Export dat
           items:
             - name: Export dat pracovního prostoru
@@ -550,7 +552,7 @@
               href: platform/it-service-management-connector-secure-webhook-connections.md
             - name: Vytvoření webové aplikace Service Manageru
               href: platform/itsmc-service-manager-script.md
-            - name: Řešení problémů se synchronizací ITSM pro ServiceNow
+            - name: Řešení potíží v ITSM konektoru
               href: platform/itsmc-resync-servicenow.md
         - name: Migrace klasických pravidel upozornění
           items:

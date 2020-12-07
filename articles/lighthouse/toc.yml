@@ -54,12 +54,18 @@
     - name: Propojení ID partnera
       displayName: 'partner earned credit, pec, mpn'
       href: ./how-to/partner-earned-credit.md
+    - name: Aktualizace delegování
+      displayName: upgrade
+      href: ./how-to/update-delegation.md
     - name: Odebrání přístupu k delegování
       displayName: 'delete, undelegate'
       href: ./how-to/remove-delegation.md
     - name: Integrace služby 0Azure Arc
       displayName: 'server, kubernetes, hybrid, infrastructure'
       href: ./how-to/manage-hybrid-infrastructure-arc.md
+    - name: Integrace služby Azure Migrate
+      displayName: 'migration, project, on-prem'
+      href: ./how-to/migration-at-scale.md
     - name: Integrace služby Azure Monitor
       items:
         - name: Použití protokolů Azure Monitoru ve velkém měřítku

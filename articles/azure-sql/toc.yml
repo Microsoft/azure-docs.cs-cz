@@ -1055,6 +1055,8 @@
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
                 - name: Migrace úložiště do UltraSSD
                   href: virtual-machines/windows/storage-migrate-to-ultradisk.md
+                - name: Povolení posouzení ohrožení zabezpečení SQL
+                  href: virtual-machines/windows/sql-vulnerability-assessment-enable.md
                 - name: Instalace rozšíření agenta SQL IaaS
                   displayName: 'resource provider, registration, sql vm rp'
                   items:

@@ -61,7 +61,7 @@
           href: load-balancer-insights.md
         - name: Diagnostika a metriky Load Balanceru úrovně Standard
           href: load-balancer-standard-diagnostics.md
-        - name: Protokoly služby Azure Monitor pro Load Balancer úrovně Basic
+        - name: Protokoly Azure Monitoru pro Load Balancer
           href: load-balancer-monitor-log.md
         - name: Získání metrik nástroje pro vyrovnávání zatížení s využitím REST
           href: load-balancer-query-metrics-rest-api.md

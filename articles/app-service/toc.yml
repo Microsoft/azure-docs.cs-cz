@@ -223,6 +223,8 @@
               href: configure-authentication-provider-twitter.md
             - name: Ověřování pomocí poskytovatele OpenID Connect (Preview)
               href: configure-authentication-provider-openid-connect.md
+            - name: Ověřování pomocí přihlášení přes Apple (Preview)
+              href: configure-authentication-provider-apple.md
         - name: Pokročilé ověřování
           href: app-service-authentication-how-to.md
         - name: Omezení přístupu
