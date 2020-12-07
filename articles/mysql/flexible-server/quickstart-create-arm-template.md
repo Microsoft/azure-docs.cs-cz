@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: sumuth
 ms.date: 10/23/2020
-ms.openlocfilehash: 3f32d3d7cc498126d0fbdb709aaf0424d335793f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a7dc6a6b11d3bfacf0aac5472a872ffaa7acc92b
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534120"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96748701"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql---flexible-server-preview"></a>Rychlý Start: použití šablony ARM k vytvoření Azure Database for MySQL-flexibilního serveru (Preview)
 
@@ -23,7 +23,7 @@ Azure Database for MySQL-flexibilní Server (Preview) je spravovaná služba, po
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
 
@@ -53,14 +53,12 @@ Vytvoří _mysql-flexible-server-template.jspro_ soubor a zkopíruje do něj ten
     "serverEdition": {
       "type": "String"
     },
-    "vCores": {
-      "type": "Int"
-    },
     "storageSizeMB": {
       "type": "Int"
     },
-    "standbyCount": {
-      "type": "Int"
+    "haEnabled": {
+      "type": "string",
+      "defaultValue": "Disabled"
     },
     "availabilityZone": {
       "type": "String"
@@ -85,11 +83,11 @@ Vytvoří _mysql-flexible-server-template.jspro_ soubor a zkopíruje do něj ten
     }
   },
   "variables": {
-    "api": "2020-02-14-privatepreview",
+    "api": "2020-07-01-preview",
     "firewallRules": "[parameters('firewallRules').rules]",
     "publicNetworkAccess": "[if(empty(parameters('vnetData')), 'Enabled', 'Disabled')]",
-    "vnetDataSet": "[if(empty(parameters('vnetData')), json('{ \"vnetId\": \"\", \"vnetName\": \"\", \"vnetResourceGroup\": \"\", \"subnetName\": \"\" }'), parameters('vnetData'))]",
-    "finalVnetData": "[json(concat('{ \"DelegatedVnetID\": \"', variables('vnetDataSet').vnetId, '\", \"DelegatedVnetName\": \"', variables('vnetDataSet').vnetName, '\", \"DelegatedVnetResourceGroup\": \"', variables('vnetDataSet').vnetResourceGroup, '\", \"DelegatedSubnetName\": \"', variables('vnetDataSet').subnetName, '\"}'))]"
+    "vnetDataSet": "[if(empty(parameters('vnetData')), json('{ \"subnetArmResourceId\": \"\" }'), parameters('vnetData'))]",
+    "finalVnetData": "[json(concat('{ \"subnetArmResourceId\": \"', variables('vnetDataSet').subnetArmResourceId, '\"}'))]"
   },
   "resources": [
     {
@@ -99,8 +97,7 @@ Vytvoří _mysql-flexible-server-template.jspro_ soubor a zkopíruje do něj ten
       "location": "[parameters('location')]",
       "sku": {
         "name": "Standard_D4ds_v4",
-        "tier": "[parameters('serverEdition')]",
-        "capacity": "[parameters('vCores')]"
+        "tier": "[parameters('serverEdition')]"        
       },
       "tags": "[parameters('tags')]",
       "properties": {
@@ -108,8 +105,8 @@ Vytvoří _mysql-flexible-server-template.jspro_ soubor a zkopíruje do něj ten
         "administratorLogin": "[parameters('administratorLogin')]",
         "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
         "publicNetworkAccess": "[variables('publicNetworkAccess')]",
-        "VnetInjArgs": "[if(empty(parameters('vnetData')), json('null'), variables('finalVnetData'))]",
-        "standbyCount": "[parameters('standbyCount')]",
+        "DelegatedSubnetArguments": "[if(empty(parameters('vnetData')), json('null'), variables('finalVnetData'))]",
+        "haEnabled": "[parameters('haEnabled')]",
         "storageProfile": {
           "storageMB": "[parameters('storageSizeMB')]",
           "backupRetentionDays": "[parameters('backupRetentionDays')]"
@@ -182,9 +179,9 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 Postupujte podle těchto kroků a ověřte, zda byl server vytvořen v Azure.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
-1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **Azure Database for MySQL servery** .
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **Azure Database for MySQL servery**.
 1. V seznamu databáze vyberte nový server. Zobrazí se stránka s **přehledem** nového serveru Azure Database for MySQL.
 
 ### <a name="powershell"></a>PowerShell
@@ -197,7 +194,7 @@ Get-AzResource -ResourceType "Microsoft.DBforMySQL/flexibleServers" -Name $serve
 Write-Host "Press [ENTER] to continue..."
 ```
 
-### <a name="cli"></a>CLI
+### <a name="cli"></a>Rozhraní příkazového řádku
 
 Pokud chcete zobrazit podrobnosti o Azure Database for MySQL flexibilním serveru, budete muset zadat název a skupinu prostředků nového serveru.
 
@@ -215,12 +212,12 @@ Pokud chcete přejít k [dalším krokům](#next-steps), zachovejte tuto skupinu
 
 Odstranění skupiny prostředků:
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
-1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **skupiny prostředků** .
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **skupiny prostředků**.
 1. V seznamu Skupina prostředků vyberte název vaší skupiny prostředků.
-1. Na stránce **Přehled** vaší skupiny prostředků vyberte **Odstranit skupinu prostředků** .
-1. V potvrzovacím dialogovém okně zadejte název vaší skupiny prostředků a pak vyberte **Odstranit** .
+1. Na stránce **Přehled** vaší skupiny prostředků vyberte **Odstranit skupinu prostředků**.
+1. V potvrzovacím dialogovém okně zadejte název vaší skupiny prostředků a pak vyberte **Odstranit**.
 
 ### <a name="powershell"></a>PowerShell
 

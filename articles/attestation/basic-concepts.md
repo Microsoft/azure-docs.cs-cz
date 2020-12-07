@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 66401e048413163af0d96da80a0415ee8f9cbb19
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 95f59b73682e461a350410b38e3a021226cd7db6
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601522"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96748684"
 ---
 # <a name="basic-concepts"></a>Základní koncepty
 
@@ -99,6 +99,15 @@ Příklad generovaného tokenu JWT pro SGX enklávy:
 }.[Signature]
 ```
 Deklarace identity, jako je "EXP", "IAT", "ISS", "NBF", jsou definovány v [dokumentu RFC](https://tools.ietf.org/html/rfc7517) a zbývající jsou generovány pomocí ověření identity Azure. Další informace najdete v tématu [deklarace identity vydané Azure Attestation](claim-sets.md) .
+
+## <a name="encryption-of-data-at-rest"></a>Šifrování dat v klidovém umístění
+
+K ochraně zákaznických dat zachovává Azure Attestation data v Azure Storage. Služba Azure Storage poskytuje šifrování neaktivních dat, která se zapisují do datových center, a dešifruje je pro zákazníky, kteří k nim mají přístup. K tomuto šifrování dochází pomocí spravovaného šifrovacího klíče společnosti Microsoft. 
+
+Kromě ochrany dat ve službě Azure Storage využívá Azure Attestation taky Azure Disk Encryption (ADE) k šifrování virtuálních počítačů služby. Pro Azure Attestation běžící v enklávy v prostředích s důvěrnými výpočetními prostředími Azure se v současnosti nepodporuje rozšíření ADE. V takových scénářích, aby nedocházelo k ukládání dat v paměti, je stránkovací soubor zakázaný. 
+
+Na místních pevných discích instance Azure Attestation se neukládají žádná zákaznická data.
+
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 2ee906b406f5fd09fc870626f1905541a4270c66
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 6a587ecbe7ff67908b22d4f2429cfdd0c511e07d
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670524"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96748769"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (Preview)
 
-Ověřování identity Microsoft Azure (Preview) je řešení pro ověřování prostředí pro důvěryhodné spuštění (TEEs), jako je například [rozšíření Intel® software Guard](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX) Enclaves a [zabezpečení na základě virtualizace](/windows-hardware/design/device-experiences/oem-vbs) (VBS) enclaves. Enklávy Attestation je proces pro ověření, že je enklávy zabezpečený a důvěryhodný.
+Ověřování identity Microsoft Azure (Preview) je jednotné řešení pro vzdálené ověření věrohodnosti platformy a integrity binárních souborů, které jsou v ní spuštěné. Služba podporuje ověřování platforem, které jsou zajištěny pomocí čipy TPM (Trusted Platform Module), spolu s možností ověření stavu prostředí pro důvěryhodné spuštění (TEEs), jako je například [rozšíření Intel® software Guard](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX) Enclaves a [zabezpečení založené na virtualizaci](/windows-hardware/design/device-experiences/oem-vbs) (VBS) enclaves. 
 
 Ověření identity je proces, který demonstruje, že binární soubory softwaru byly správně vytvořeny na důvěryhodné platformě. Vzdálené předávající strany pak mohou získat jistotu, že na důvěryhodném hardwaru je spuštěn pouze takový zamýšlený software. Ověření identity Azure je jednotná služba a architektura pro uživatele, které jsou pro ověřování identity zaměřené na zákazníky.
 
@@ -34,12 +34,6 @@ Azure Attestation poskytuje komplexní služby ověření identity pro více pro
 SGX odkazuje na izolaci na základě hardwarového výkonu, která je podporovaná na určitých modelech procesorů Intel. SGX umožňuje, aby kód běžel v upravených oddílech známých jako SGX enclaves. Oprávnění k přístupu a paměti se pak spravují pomocí hardwaru, aby se zajistilo minimum prostoru pro útoky se správnou izolací.
 
 Klientské aplikace můžou být navržené tak, aby využívaly výhod SGX enclaves tím, že v těchto enclaves probíhají úlohy citlivé na zabezpečení. Takové aplikace pak můžou využít ověření Azure pro rutinní vytvoření vztahu důvěryhodnosti v enklávy a jeho schopnost přistupovat k citlivým datům.
-
-### <a name="vbs-attestation"></a>VBS Attestation
-
-VBS je softwarová architektura pro ochranu enklávy paměti založenou na technologii Hyper-V. Brání v kódu správce hostitele a správcům místních a cloudových služeb přístup k datům v VBS enklávy nebo ovlivnění jejího spuštění.
-
-Podobně jako u technologie SGX podporuje Azure Attestation ověřování VBS enclaves proti nakonfigurovaným zásadám a vydávání prohlášení o certifikaci jako důkaz platnosti.
 
 ### <a name="open-enclave"></a>Otevřít enklávy
 [Open enklávy](https://openenclave.io/sdk/) (OE) je kolekce knihoven, které cílí na vytvoření jedné sjednocené enclaving abstrakce pro vývojáře pro vytváření aplikací založených na Tee. Nabízí univerzální zabezpečený model aplikace, který minimalizuje určité platformy. Microsoft se zobrazí jako základní krok – kámen pro democratizing hardwarové technologie enklávy, jako je SGX, a zvyšování jejich přijetí v Azure.
@@ -65,19 +59,15 @@ Zákazníci Azure Attestation vyjádřili požadavek, aby Microsoft mohl být v 
 
 Ověření identity Azure je upřednostňovanou volbou pro ověřování TEEs, protože nabízí následující výhody: 
 
-- Sjednocené rozhraní pro ověřování více TEEs, například SGX enclaves a VBS enclaves
+- Sjednocené rozhraní pro ověřování více prostředí, jako jsou čipy TPM, SGX enclaves a VBS enclaves 
 - Víceklientská služba, která umožňuje konfiguraci vlastních poskytovatelů a zásad ověřování identity pro omezení generování tokenů
 - Nabízí výchozí poskytovatele, kteří můžou potvrzovat bez konfigurace od uživatelů.
 - Chrání data při použití s implementací v SGX enklávy.
-- Služba s vysokou dostupností, která bude nabízet smlouva SLA (SLA)
+- Služba s vysokou dostupností 
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr-support"></a>Podpora pro provozní kontinuitu a zotavení po havárii (BCDR)
 
 Provozní [kontinuita a zotavení po havárii](../best-practices-availability-paired-regions.md) (BCDR) pro Azure Attestation umožňuje zmírnit přerušení služeb vyplývající z významných problémů s dostupností nebo událostí po havárii v oblasti.
-
-Níže jsou uvedené oblasti, které aktuálně podporuje BCDR.
-- Východní USA 2 => spárována s Střed USA.
-- Střed USA => spárována s Východní USA 2.
 
 Clustery nasazené ve dvou oblastech budou za běžných okolností fungovat nezávisle. V případě chyby nebo výpadku jedné oblasti dojde k následujícímu:
 

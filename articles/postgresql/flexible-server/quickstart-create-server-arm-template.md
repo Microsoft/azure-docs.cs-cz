@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: sumuth
 ms.date: 10/23/2020
-ms.openlocfilehash: 3eccb3fb4f4c65896f3956e265509258525c1ac9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 542528bb0a3f76705e61f28338ccf1460159871d
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535752"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96749075"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---flexible-server"></a>Rychlý Start: použití šablony ARM k vytvoření Azure Database for PostgreSQLho flexibilního serveru
 
@@ -25,7 +25,7 @@ Flexibilní Server je spravovaná služba, pomocí které můžete spouštět, s
 
 Azure Resource Manager je služba nasazování a správy pro Azure. Poskytuje úroveň správy, která vám umožňuje vytvářet, aktualizovat a odstraňovat prostředky v účtu Azure. Pomocí funkcí správy, jako jsou řízení přístupu, zámky a značky, můžete zabezpečit a organizovat prostředky po nasazení. Další informace o šablonách Azure Resource Manager najdete v tématu [template Deployment Overview](../../azure-resource-manager/templates/overview.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
 
@@ -55,14 +55,11 @@ Vytvořte _postgres-flexible-server-template.jsna_ soubor a zkopírujte do něj 
     "serverEdition": {
       "type": "String"
     },
-    "vCores": {
-      "type": "Int"
-    },
     "storageSizeMB": {
       "type": "Int"
     },
-    "standbyCount": {
-      "type": "Int"
+    "haEnabled": {
+      "type": "string"
     },
     "availabilityZone": {
       "type": "String"
@@ -90,8 +87,8 @@ Vytvořte _postgres-flexible-server-template.jsna_ soubor a zkopírujte do něj 
     "api": "2020-02-14-privatepreview",
     "firewallRules": "[parameters('firewallRules').rules]",
     "publicNetworkAccess": "[if(empty(parameters('vnetData')), 'Enabled', 'Disabled')]",
-    "vnetDataSet": "[if(empty(parameters('vnetData')), json('{ \"vnetId\": \"\", \"vnetName\": \"\", \"vnetResourceGroup\": \"\", \"subnetName\": \"\" }'), parameters('vnetData'))]",
-    "finalVnetData": "[json(concat('{ \"DelegatedVnetID\": \"', variables('vnetDataSet').vnetId, '\", \"DelegatedVnetName\": \"', variables('vnetDataSet').vnetName, '\", \"DelegatedVnetResourceGroup\": \"', variables('vnetDataSet').vnetResourceGroup, '\", \"DelegatedSubnetName\": \"', variables('vnetDataSet').subnetName, '\"}'))]"
+    "vnetDataSet": "[if(empty(parameters('vnetData')), json('{ \"subnetArmResourceId\": \"\" }'), parameters('vnetData'))]",
+    "finalVnetData": "[json(concat('{ \"subnetArmResourceId\": \"', variables('vnetDataSet').subnetArmResourceId, '\"}'))]"
   },
   "resources": [
     {
@@ -100,9 +97,8 @@ Vytvořte _postgres-flexible-server-template.jsna_ soubor a zkopírujte do něj 
       "name": "[parameters('serverName')]",
       "location": "[parameters('location')]",
       "sku": {
-        "name": "GP_D4s_v3",
-        "tier": "[parameters('serverEdition')]",
-        "capacity": "[parameters('vCores')]"
+        "name": "Standard_D4ds_v4",
+        "tier": "[parameters('serverEdition')]"        
       },
       "tags": "[parameters('tags')]",
       "properties": {
@@ -110,8 +106,8 @@ Vytvořte _postgres-flexible-server-template.jsna_ soubor a zkopírujte do něj 
         "administratorLogin": "[parameters('administratorLogin')]",
         "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
         "publicNetworkAccess": "[variables('publicNetworkAccess')]",
-        "VnetInjArgs": "[if(empty(parameters('vnetData')), json('null'), variables('finalVnetData'))]",
-        "standbyCount": "[parameters('standbyCount')]",
+        "DelegatedSubnetArguments": "[if(empty(parameters('vnetData')), json('null'), variables('finalVnetData'))]",
+        "haEnabled": "[parameters('haEnabled')]",
         "storageProfile": {
           "storageMB": "[parameters('storageSizeMB')]",
           "backupRetentionDays": "[parameters('backupRetentionDays')]"
@@ -120,15 +116,9 @@ Vytvořte _postgres-flexible-server-template.jsna_ soubor a zkopírujte do něj 
       }
     },
     {
-      "condition": "[greater(length(variables('firewallRules')), 0)]",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2019-08-01",
       "name": "[concat('firewallRules-', copyIndex())]",
-      "copy": {
-        "name": "firewallRulesIterator",
-        "count": "[if(greater(length(variables('firewallRules')), 0), length(variables('firewallRules')), 1)]",
-        "mode": "Serial"
-      },
       "dependsOn": [
         "[concat('Microsoft.DBforPostgreSQL/flexibleServers/', parameters('serverName'))]"
       ],
@@ -149,7 +139,13 @@ Vytvořte _postgres-flexible-server-template.jsna_ soubor a zkopírujte do něj 
             }
           ]
         }
-      }
+      },
+      "copy": {
+        "name": "firewallRulesIterator",
+        "count": "[if(greater(length(variables('firewallRules')), 0), length(variables('firewallRules')), 1)]",
+        "mode": "Serial"
+      },
+      "condition": "[greater(length(variables('firewallRules')), 0)]"
     }
   ]
 }
@@ -187,7 +183,7 @@ Postupujte podle těchto kroků a ověřte, zda byl server vytvořen v Azure.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **Azure Database for PostgreSQL flexibilní servery (Preview)** .
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **Azure Database for PostgreSQL flexibilní servery (Preview)**.
 1. V seznamu databáze vyberte nový server, abyste zobrazili stránku **Přehled** pro správu serveru.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
@@ -224,7 +220,7 @@ Odstranění skupiny prostředků:
 
 Na [portálu](https://portal.azure.com)vyberte skupinu prostředků, kterou chcete odstranit.
 
-1. Vyberte **Odstranit skupinu prostředků** .
+1. Vyberte **Odstranit skupinu prostředků**.
 1. Odstranění potvrďte tak, že zadáte název skupiny prostředků.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)

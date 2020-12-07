@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 70edf224494fdf1395d59d1c591d0369b9b20557
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cf84a8abcc0f1c890a51bf07056ac31d37107e53
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018082"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96749109"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-powershell"></a>Kurz: návrh Azure Database for PostgreSQLho samostatného serveru pomocí prostředí PowerShell
 
@@ -28,7 +28,7 @@ Azure Database for PostgreSQL je služba relačních databází v cloudu Microso
 > - Aktualizace dat
 > - Obnovení dat
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -100,7 +100,7 @@ New-AzPostgreSqlFirewallRule -Name AllowMyIP -ResourceGroupName myresourcegroup 
 ```
 
 > [!NOTE]
-> Připojení Azure Database for PostgreSQL komunikovat přes port 3306. Pokud se pokoušíte připojit z podnikové sítě, odchozí provoz přes port 3306 nemusí být povolený. V tomto scénáři se můžete připojit k serveru jenom v případě, že vaše IT oddělení otevře port 3306.
+> Připojení Azure Database for PostgreSQL komunikovat přes port 5432. Pokud se pokusíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 5432 povolen. V tomto scénáři se můžete připojit k serveru jenom v případě, že vaše IT oddělení otevře port 5432.
 
 ## <a name="get-the-connection-information"></a>Získání informací o připojení
 

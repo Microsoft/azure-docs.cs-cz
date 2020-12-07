@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 87e33940d927fc9116c03345011e21398384d484
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3ec9718d313e7e8d757eb41c230225bdcf9ebd49
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024411"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96749041"
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 
@@ -33,12 +33,12 @@ Následující tabulka shrnuje typy vzorkování dostupné pro každou sadu SDK 
 | Sada Application Insights SDK | Adaptivní vzorkování se podporuje. | Vzorkování s pevnou sazbou je podporováno. | Podporuje se vzorkování přijímání. |
 |-|-|-|-|
 | ASP.NET | [Ano (ve výchozím nastavení zapnuto)](#configuring-adaptive-sampling-for-aspnet-applications) | [Ano](#configuring-fixed-rate-sampling-for-aspnet-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
-| Jádro ASP.NET | [Ano (ve výchozím nastavení zapnuto)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Ano](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
-| Azure Functions | [Ano (ve výchozím nastavení zapnuto)](#configuring-adaptive-sampling-for-azure-functions) | Ne | Jenom v případě, že se neplatí žádné jiné vzorkování |
-| Java | Ne | [Ano](#configuring-fixed-rate-sampling-for-java-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
-| Node.JS | Ne | [Ano](./nodejs.md#sampling) | Jenom v případě, že se neplatí žádné jiné vzorkování
-| Python | Ne | [Ano](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
-| Všichni ostatní | Ne | Ne | [Ano](#ingestion-sampling) |
+| ASP.NET Core | [Ano (ve výchozím nastavení zapnuto)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Ano](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
+| Azure Functions | [Ano (ve výchozím nastavení zapnuto)](#configuring-adaptive-sampling-for-azure-functions) | No | Jenom v případě, že se neplatí žádné jiné vzorkování |
+| Java | No | [Ano](#configuring-fixed-rate-sampling-for-java-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
+| Node.JS | No | [Ano](./nodejs.md#sampling) | Jenom v případě, že se neplatí žádné jiné vzorkování
+| Python | No | [Ano](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
+| Všichni ostatní | No | No | [Ano](#ingestion-sampling) |
 
 > [!NOTE]
 > Informace na většině této stránky se vztahují na aktuální verze sad Application Insights SDK. Informace o starších verzích sad SDK [najdete v části níže](#older-sdk-versions).
@@ -54,7 +54,7 @@ Existují tři různé metody vzorkování:
 * **Vzorkování** ingestování proběhne na koncovém bodu služby Application Insights. Zahodí některé telemetrie, které dorazí z vaší aplikace, při vzorkovací frekvenci, kterou jste nastavili. Neomezuje provoz telemetrie odeslaný z vaší aplikace, ale pomáhá udržet se v rámci měsíční kvóty. Hlavní výhodou pro vzorkování ingestování je, že můžete nastavit vzorkovací frekvenci bez opětovného nasazení aplikace. Vzorkování ingestování funguje jednotně pro všechny servery a klienty, ale nevztahuje se na to, kdy se v provozu nacházejí jiné typy vzorkování.
 
 > [!IMPORTANT]
-> Pokud se v provozu používají metody vzorkování s adaptivní nebo pevnou sazbou, je vzorkování ingest vypnuto.
+> Pokud jsou pro typ telemetrie povolené metody vzorkování s adaptivní nebo pevnou sazbou, je vzorkování ingest pro tuto telemetrii zakázané. Typy telemetrie, které jsou vyloučené z vzorkování na úrovni sady SDK, však budou i nadále v rámci míry nastavené na portálu vycházet z vzorkování ingestování.
 
 ## <a name="adaptive-sampling"></a>Adaptivní vzorkování
 
@@ -531,7 +531,7 @@ Přesnost aproximace je převážně závislá na nakonfigurované procentuáln�
 
 *Je možné telemetrii vzorkovat více než jednou?*
 
-* Ne. SamplingTelemetryProcessors ignorovat položky z hlediska vzorkování, pokud je položka již vzorkovat. Totéž platí také pro vzorkování ingestování, které nepoužijí vzorkování na ty položky, které jsou již v samotné sadě SDK navzorkované.
+* No. SamplingTelemetryProcessors ignorovat položky z hlediska vzorkování, pokud je položka již vzorkovat. Totéž platí také pro vzorkování ingestování, které nepoužijí vzorkování na ty položky, které jsou již v samotné sadě SDK navzorkované.
 
 *Proč není vzorkování jednoduché "shromáždit X procento každého typu telemetrie"?*
 
