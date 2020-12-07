@@ -1,14 +1,17 @@
 ---
 title: Nejčastější dotazy k Azure Migrate
 description: Získejte odpovědi na běžné otázky týkající se služby Azure Migrate.
+author: ms-psharma
+ms.author: panshar
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: d0877ad0d36e131525a227050cf44321e39e8b30
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b36a4089a15118499b0ce57500f221b74af82242
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494609"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753738"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: běžné otázky
 
@@ -19,7 +22,7 @@ Tento článek obsahuje odpovědi na běžné otázky týkající se Azure Migra
 
 ## <a name="what-is-azure-migrate"></a>Co je Azure Migrate?
 
-Azure Migrate poskytuje centrální centrum pro sledování zjišťování, hodnocení a migrace vašich místních aplikací a úloh a privátních a veřejných cloudových virtuálních počítačů do Azure. Centrum poskytuje Azure Migrate nástroje pro posuzování a migraci a nabídky nezávislých výrobců softwaru. [Další informace](migrate-services-overview.md).
+Azure Migrate poskytuje centrální centrum pro sledování zjišťování, hodnocení a migrace vašich místních aplikací a úloh a privátních a veřejných cloudových virtuálních počítačů do Azure. Centrum poskytuje Azure Migrate nástroje pro posuzování a migraci a nabídky nezávislých výrobců softwaru. [Přečtěte si další informace](migrate-services-overview.md).
 
 ## <a name="what-can-i-do-with-azure-migrate"></a>Co se dá dělat s Azure Migrate?
 

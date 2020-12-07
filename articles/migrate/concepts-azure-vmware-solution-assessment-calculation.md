@@ -2,16 +2,16 @@
 title: Výpočty pro vyhodnocování pro funkci AVS v Azure Migrate | Microsoft Docs
 description: Poskytuje přehled výpočtů služby AVS ve službě Azure Migrate.
 author: rashi-ms
-ms.service: azure-migrate
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.author: mahain
-ms.openlocfilehash: 400c2d91383b5f21fcd40fdbbe279bd83fcef51a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67d4137a21753b221e17a1effde35bc1b89600d3
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576536"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753803"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vmware-solution"></a>Přehled posouzení serveru (migrace do řešení VMware Azure)
 
@@ -167,7 +167,7 @@ Posouzení serveru spolu s vlastnostmi virtuálního počítače podívá na hos
 Když je počítač označený jako připravený pro funkci AVS, hodnocení služby AVS v posouzení serveru umožňuje doporučení pro změnu velikosti uzlů, která zahrnují identifikaci příslušných požadavků na místní virtuální počítač a vyhledání celkového počtu požadovaných uzlů služby AVS. Tato doporučení se liší v závislosti na zadaných vlastnostech posouzení.
 
 - Pokud hodnocení používá určení *velikosti na základě výkonu*, Azure Migrate považuje historii výkonu počítače za vhodné, aby se pro službu AVS zajistila vhodná doporučení pro změnu velikosti. Tato metoda je užitečná hlavně v případě, že jste přestali využívat místní virtuální počítač, ale využití je nízké a vy chcete ušetřit náklady tak, aby se virtuální počítač ve službě AVS nastavil na správné velikosti. Tato metoda vám pomůže optimalizovat velikosti během migrace.
-- Pokud nechcete brát v úvahu údaje o výkonu pro změny velikosti virtuálních počítačů a chcete, aby místní počítače byly v rámci služby AVS, můžete nastavit kritéria pro změnu velikosti *jako v*místním prostředí. Vyhodnocování serveru pak provede velikost virtuálních počítačů na základě místní konfigurace bez zvážení dat o využití. 
+- Pokud nechcete brát v úvahu údaje o výkonu pro změny velikosti virtuálních počítačů a chcete, aby místní počítače byly v rámci služby AVS, můžete nastavit kritéria pro změnu velikosti *jako v* místním prostředí. Vyhodnocování serveru pak provede velikost virtuálních počítačů na základě místní konfigurace bez zvážení dat o využití. 
 
 
 ### <a name="ftt-sizing-parameters"></a>Parametry změny velikosti FTT
@@ -190,7 +190,7 @@ Pro určení velikosti na základě výkonu začíná posouzení serveru disky p
 
 1. Pro virtuální počítače VMware shromažďuje Azure Migrate zařízení ukázkový bod v reálném čase v intervalu 20 sekund. 
 2. Zařízení zahrne vzorové body shromážděné každých 10 minut a pošle maximální hodnotu za posledních 10 minut do posouzení serveru.
-3. Vyhodnocování serveru ukládá všechny ukázkové body 10 minut za poslední měsíc. V závislosti na vlastnostech posouzení zadaných pro *historii výkonu* a procento *využití*se pak určí vhodný datový bod, který se má použít pro správnou velikost. Například pokud je historie výkonu nastavena na 1 den a procento využití je 95. percentil, vyhodnocování serveru používá pro poslední den 10 minut, seřadí je ve vzestupném pořadí a vybere hodnotu percentilu 95. pro správnou velikost.
+3. Vyhodnocování serveru ukládá všechny ukázkové body 10 minut za poslední měsíc. V závislosti na vlastnostech posouzení zadaných pro *historii výkonu* a procento *využití* se pak určí vhodný datový bod, který se má použít pro správnou velikost. Například pokud je historie výkonu nastavena na 1 den a procento využití je 95. percentil, vyhodnocování serveru používá pro poslední den 10 minut, seřadí je ve vzestupném pořadí a vybere hodnotu percentilu 95. pro správnou velikost.
 4. Tato hodnota je vynásobena faktorem komfortu, aby získala efektivní data o využití výkonu pro každou metriku (využití procesoru, využití paměti, IOPS disku (čtení a zápis), propustnost disku (čtení a zápis) a propustnost sítě (v/v), kterou zařízení shromažďuje.
 
 Po určení efektivní hodnoty využití se velikost úložiště, sítě a výpočetního prostředí zpracuje následujícím způsobem.

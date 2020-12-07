@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/24/2020
+ms.date: 12/06/2020
 ms.author: memildin
-ms.openlocfilehash: 6c0e92c566dd69cdea14c9c7d346a5ec65f892bf
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d92047a5b24f04ee7e0d08454867ec9e1a52a8b1
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487945"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754367"
 ---
 # <a name="pricing-of-azure-security-center"></a>Ceny Azure Security Center
 Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami pro úlohy běžící v Azure, na místních systémech a v jiných cloudech. Poskytuje přehled a kontrolu nad úlohami hybridního cloudu, aktivní ochranou, která snižuje vaše nároky na hrozby a inteligentní zjišťování, které vám pomůže udržet krok s rychle se rozvíjejícími se internetovými riziky.
@@ -37,7 +37,9 @@ Security Center se nabízí ve dvou režimech:
     - **Hybridní zabezpečení** – Získejte jednotný přehled o zabezpečení napříč všemi vašimi místními i Cloud úlohami. Použijte zásady zabezpečení a průběžně vyhodnoťte zabezpečení vašich hybridních cloudových úloh, abyste zajistili dodržování standardů zabezpečení. Shromažďovat, vyhledávat a analyzovat data zabezpečení z různých zdrojů, včetně bran firewall a dalších partnerských řešení.
     - **Výstrahy ochrany před hrozbami** – Pokročilá analýza chování a Microsoft Intelligent Security Graph poskytují hraniční rozšíření pro počítačové útoky. Integrované analýzy chování a strojové učení můžou identifikovat útoky a zneužití funkce Zero-Day. Monitorujte sítě, počítače a cloudové služby pro příchozí útoky a činnost po porušení zabezpečení. Zjednodušte šetření pomocí interaktivních nástrojů a kontextové analýzy hrozeb.
     - **Přístup a ovládací prvky aplikace** (AAC) – zablokuje malware a další nežádoucí aplikace, a to pomocí doporučení pro založenou na strojovém učení přizpůsobených vašim konkrétním úlohám a vytvoření seznamů povolených a odepřených Snižte úroveň útoku na síť pomocí řízeného přístupu za běhu k portům pro správu virtuálních počítačů Azure. AAC významně omezuje expozici útokům hrubou silou a dalším síťovým útokům.
-    - **Funkce zabezpečení kontejnerů** – výhody správy ohrožení zabezpečení a ochrany před hrozbami v reálném čase ve vašich kontejnerových prostředích. Když povolíte **Azure Defender pro Registry kontejnerů**, může trvat až 12 hodin, než se všechny funkce povolí. Poplatky vycházejí z počtu jedinečných imagí kontejnerů, které jsou vloženy do připojeného registru. Po kontrole obrázku jednou se vám nebude nic účtovat, dokud ho neupravíte a znovu nepřidáte. 
+    - **Funkce zabezpečení kontejnerů** – výhody správy ohrožení zabezpečení a ochrany před hrozbami v reálném čase ve vašich kontejnerových prostředích. Když povolíte **Azure Defender pro Registry kontejnerů**, může trvat až 12 hodin, než se všechny funkce povolí. Poplatky vycházejí z počtu jedinečných imagí kontejnerů, které jsou vloženy do připojeného registru. Po kontrole obrázku jednou se vám nebude nic účtovat, dokud ho neupravíte a znovu nepřidáte.
+    - Škálování **ochrany před hrozbami pro prostředky připojené k prostředí Azure** – Azure Defender zahrnuje ochranu před internetovými útoky v Azure, která je společná pro všechny vaše prostředky: Azure Resource Manager, Azure DNS, síťová vrstva azure a Azure Key Vault. Azure Defender má jedinečný přehled o vrstvě správy Azure a vrstvě Azure DNS a může proto chránit cloudové prostředky, které jsou k těmto vrstvám připojené.
+
 
 ## <a name="try-azure-defender-free-for-30-days"></a>Vyzkoušení Azure Defenderu zdarma po dobu 30 dnů
 Azure Defender je pro prvních 30 dnů zdarma. Po uplynutí 30 dnů se můžete rozhodnout, že budete službu dál používat, a automaticky začneme účtovat za využití.
@@ -93,25 +95,25 @@ Pro povolení služby Azure Defender pro vaše předplatné můžete použít n�
 |||
 
 ### <a name="can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription"></a>Můžu Azure Defender povolit pro podmnožinu serverů v mém předplatném?
-Ne. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, budou všechny servery v tomto předplatném chráněny pomocí Azure Defenderu. 
+No. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, budou všechny servery v tomto předplatném chráněny pomocí Azure Defenderu. 
 
 Alternativou je povolení Azure Defenderu pro servery na úrovni pracovního prostoru Log Analytics. Pokud to uděláte, budou se chránit a fakturovat jenom servery, které se budou hlásit do tohoto pracovního prostoru. Některé možnosti však nebudou k dispozici. Mezi ně patří přístup k virtuálnímu počítači za běhu, detekce sítě, dodržování legislativních předpisů, adaptivní posílení zabezpečení sítě, adaptivní řízení aplikací a další. 
 
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>Má předplatné Azure Defender pro servery povolené, mám platit za Nespuštěné servery? 
-Ne. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, bude se vám účtovat po hodinách jenom pro spuštěné servery. Za dobu, kdy je vypnutý, se vám nebude účtovat žádný server, který je vypnutý. 
+No. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, bude se vám účtovat po hodinách jenom pro spuštěné servery. Za dobu, kdy je vypnutý, se vám nebude účtovat žádný server, který je vypnutý. 
 
 > [!TIP]
 > To platí i pro ostatní typy prostředků, které jsou chráněné pomocí Security Center. 
 
 ### <a name="will-i-be-charged-for-machines-without-the-log-analytics-agent-installed"></a>Budou se mi účtovat počítače bez nainstalovaného agenta Log Analytics?
-Ano. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, počítače v tomto předplatném získají rozsah ochrany i v případě, že jste nenainstalovali agenta Log Analytics.
+Yes. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, počítače v tomto předplatném získají rozsah ochrany i v případě, že jste nenainstalovali agenta Log Analytics.
 
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice"></a>Pokud agent Log Analytics nahlásí do několika pracovních prostorů, bude se mi účtovat dvakrát? 
-Ano. Pokud jste agenta Log Analytics nakonfigurovali tak, aby odesílal data do dvou nebo více různých pracovních prostorů Log Analytics (více domovských), bude se vám účtovat každý pracovní prostor, který má nainstalované řešení Security nebo antimalware. 
+Yes. Pokud jste agenta Log Analytics nakonfigurovali tak, aby odesílal data do dvou nebo více různých pracovních prostorů Log Analytics (více domovských), bude se vám účtovat každý pracovní prostor, který má nainstalované řešení Security nebo antimalware. 
 
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them"></a>Pokud agent Log Analytics nahlásí do více pracovních prostorů, je pro všechny z nich dostupná příjem dat 500 MB.
-Ano. Pokud jste agenta Log Analytics nakonfigurovali tak, aby odesílal data do dvou nebo více různých pracovních prostorů Log Analytics (více domovských), dostanete 500 až MB volného příjmu dat. Počítá se podle počtu uzlů, podle nahlášeného pracovního prostoru za den a je k dispozici pro každý pracovní prostor s nainstalovanými řešeními zabezpečení nebo antimalwaru. Budou se vám účtovat všechna data ingestovaná přes 500 MB.
+Yes. Pokud jste agenta Log Analytics nakonfigurovali tak, aby odesílal data do dvou nebo více různých pracovních prostorů Log Analytics (více domovských), dostanete 500 až MB volného příjmu dat. Počítá se podle počtu uzlů, podle nahlášeného pracovního prostoru za den a je k dispozici pro každý pracovní prostor s nainstalovanými řešeními zabezpečení nebo antimalwaru. Budou se vám účtovat všechna data ingestovaná přes 500 MB.
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,18 +1,17 @@
 ---
 title: Řešení potíží s vizualizací a vizualizací závislostí v Azure Migrate
-description: Získejte pomoc s řešením potíží a vizualizace závislostí v Azure Migrate.
-ms.service: azure-migrate
-ms.topic: troubleshooting
-author: musa-57
+description: Získejte pomoc s vizualizací a vizualizací závislostí v Azure Migrate.
+author: rashi-ms
+ms.author: rajosh
 ms.manager: abhemraj
-ms.author: hamusa
+ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 4da0f40c25d322953fea968396ef33924877c2e1
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: cefcd4ce287eecfe2c764d88d5d2233cc8ac0a5c
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505219"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753441"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Řešení potíží s vyhodnocením a vizualizací závislostí
 
@@ -23,7 +22,7 @@ Tento článek vám pomůže řešit problémy s vizualizací a vizualizací zá
 
 Opravte problémy připravenosti vyhodnocování následujícím způsobem:
 
-**Chybu** | **Opravit**
+**Chybu** | **Oprava**
 --- | ---
 Nepodporovaný typ spuštění | Azure nepodporuje virtuální počítače s typem spouštění EFI. Před spuštěním migrace doporučujeme převést typ spouštění na systém BIOS. <br/><br/>K obsluze migrace takových virtuálních počítačů můžete použít migraci Azure Migrate serveru. Při migraci převede typ spouštění virtuálního počítače na systém BIOS.
 Podmíněně podporované operační systémy Windows | Operační systém předal své datum ukončení podpory a pro [podporu v Azure](/troubleshoot/azure/virtual-machines/server-software-support)potřebuje vlastní smlouvu o podpoře (CSA). Před migrací do Azure zvažte možnost upgradovat. [Přečtěte si]() informace o [přípravě počítačů s Windows serverem 2003](prepare-windows-server-2003-migration.md) pro migraci do Azure.
@@ -83,7 +82,7 @@ Pokud chcete vidět, jak to může ovlivnit doporučení, Podívejme se na pří
 
 Máme místní virtuální počítač se čtyřmi jádry a 8 GB paměti s 50% využitím procesoru a 50% využití paměti a stanovený faktor komfortu 1,3.
 
--  Pokud je posouzení **místní** , doporučuje se skladová položka virtuálního počítače Azure se čtyřmi jádry a 8 GB paměti.
+-  Pokud je posouzení **místní**, doporučuje se skladová položka virtuálního počítače Azure se čtyřmi jádry a 8 GB paměti.
 - Pokud je hodnocení založené na výkonu, na základě efektivního využití procesoru a paměti (50% ze 4 jader × 1,3 = 2,6 jader a 50% 8 GB paměti * 1,3 = 5,3-GB paměti), je doporučena SKU nejlevnější virtuálního počítače se čtyřmi jádry (nejbližší podporovaný počet jader) a 8 GB paměti (nejbližší podporovaná velikost paměti).
 - [Přečtěte si další informace](concepts-assessment-calculation.md#types-of-assessments) o velikosti hodnocení.
 
@@ -91,8 +90,8 @@ Máme místní virtuální počítač se čtyřmi jádry a 8 GB paměti s 50% vy
 
 Posouzení serveru Azure Migrate může doporučit větší disk na základě typu posouzení.
 - Velikost disku v posuzování serveru závisí na dvou vlastnostech posouzení: kritéria změny velikosti a typ úložiště.
-- Pokud jsou kritéria změny velikosti **založená na výkonu** a typ úložiště je nastaven na hodnotu **automaticky** , při určení typu cílového disku (HDD úrovně Standard, SSD úrovně Standard nebo Premium) se bere v úvahu hodnota vstupně-výstupních operací a propustnosti disku. Pak se doporučuje disková jednotka disku z typu disku a doporučení posuzuje požadavky na velikost místního disku.
-- Pokud jsou kritéria změny velikosti v **závislosti na výkonu** a typ úložiště je **Premium** , doporučuje se SKU na disku Premium v Azure na základě požadavků na vstupně-výstupní operace, propustnost a velikost na místním disku. Stejná logika se používá k provedení velikosti disku, pokud jsou kritéria změny velikosti **místní** a typ úložiště je **HDD úrovně Standard** , **SSD úrovně Standard** nebo **Premium**.
+- Pokud jsou kritéria změny velikosti **založená na výkonu** a typ úložiště je nastaven na hodnotu **automaticky**, při určení typu cílového disku (HDD úrovně Standard, SSD úrovně Standard nebo Premium) se bere v úvahu hodnota vstupně-výstupních operací a propustnosti disku. Pak se doporučuje disková jednotka disku z typu disku a doporučení posuzuje požadavky na velikost místního disku.
+- Pokud jsou kritéria změny velikosti v **závislosti na výkonu** a typ úložiště je **Premium**, doporučuje se SKU na disku Premium v Azure na základě požadavků na vstupně-výstupní operace, propustnost a velikost na místním disku. Stejná logika se používá k provedení velikosti disku, pokud jsou kritéria změny velikosti **místní** a typ úložiště je **HDD úrovně Standard**, **SSD úrovně Standard** nebo **Premium**.
 
 Příklad: Pokud máte místní disk s 32 GB paměti, ale agregované vstupně-výstupní operace čtení a zápisu pro disk je 800 IOPS, vyhodnocování serveru doporučuje prémiový disk (kvůli vyššímu počtu požadavků IOPS) a potom doporučuje SKU disku, které může podporovat požadované vstupně-výstupní operace a velikost. Nejbližší shodou by v tomto případě byla skladová položka P15 (256 GB, 1 100 IOPS). I když velikost požadovaná místním diskem byla 32 GB, vyhodnocování serveru doporučuje větší disk kvůli vysokému počtu požadavků na požadavky na místní disk.
 
@@ -165,8 +164,8 @@ Pro virtuální počítače se systémem Linux se ujistěte, že instalační p�
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
-- **Agent MMS** : Zkontrolujte podporované operační systémy [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)a [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) .
-- **Agent závislostí** : podporované operační systémy [Windows a Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) .
+- **Agent MMS**: Zkontrolujte podporované operační systémy [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)a [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) .
+- **Agent závislostí**: podporované operační systémy [Windows a Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) .
 
 ## <a name="visualize-dependencies-for--hour"></a>Vizualizace závislostí pro > hodinu
 
@@ -199,7 +198,7 @@ Azure Migrate v současné době podporuje vytvoření pracovního prostoru OMS 
 
 Shromážděte protokoly síťového provozu následujícím způsobem:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Stisknutím klávesy F12 spusťte Vývojářské nástroje. V případě potřeby zrušte zaškrtnutí  **políčka vymazat položky u nastavení navigace** .
 3. Vyberte kartu **síť** a zahajte zachytávání síťového provozu:
    - V části Chrome vyberte **zachovat protokol**. Záznam by se měl spustit automaticky. Červený kroužek indikuje, že se zaznamenává provoz. Pokud se červené kolečko nezobrazí, vyberte černý kroužek, který chcete spustit.
@@ -209,7 +208,7 @@ Shromážděte protokoly síťového provozu následujícím způsobem:
    - V Chrome klikněte pravým tlačítkem a vyberte **Uložit jako Har s obsahem**. Tato akce zkomprimuje a exportuje protokoly jako soubor. har.
    - V Microsoft Edge nebo Internet Exploreru vyberte možnost **exportovat zachycené přenosy** . Tato akce komprimuje a exportuje protokol.
 6. Vyberte kartu **Konzola** a vyhledejte všechna upozornění a chyby. Uložení protokolu konzoly:
-   - V prohlížeči Chrome klikněte pravým tlačítkem myši kdekoli v protokolu konzoly. Vyberte **Uložit jako** , exportovat a protokol zip.
+   - V prohlížeči Chrome klikněte pravým tlačítkem myši kdekoli v protokolu konzoly. Vyberte **Uložit jako**, exportovat a protokol zip.
    - V Microsoft Edge nebo Internet Exploreru klikněte pravým tlačítkem na chyby a vyberte **Kopírovat vše**.
 7. Zavřete Vývojářské nástroje.
 

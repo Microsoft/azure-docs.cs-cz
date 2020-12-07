@@ -1,17 +1,17 @@
 ---
 title: Odstranění projektu Azure Migrate
 description: V tomto článku se dozvíte, jak odstranit Azure Migrate projekt pomocí Azure Portal.
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
+author: ms-psharma
+ms.author: panshar
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 10/22/2019
-ms.author: raynew
-ms.openlocfilehash: c58081e7cf88ac4820aa7d4f367b7344f3340a77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: face3d02ee72d1e05c6c08330dae4fffc2fd0e0b
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307870"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754245"
 ---
 # <a name="delete-an-azure-migrate-project"></a>Odstranění projektu Azure Migrate
 

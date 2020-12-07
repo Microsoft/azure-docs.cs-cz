@@ -1,17 +1,17 @@
 ---
-title: Sestavit plán migrace s Azure Migrate | Microsoft Docs
+title: Sestavení plánu migrace pomocí Azure Migrate
 description: Poskytuje pokyny k vytvoření plánu migrace pomocí Azure Migrate.
 author: rashi-ms
-ms.service: azure-migrate
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.author: rajosh
-ms.openlocfilehash: 8f37814e29ce0089c26e235123768296efc2c0b0
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: ef916e0e8b32c96382a731d4a307e2b2a98ba1ea
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504904"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753854"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Sestavení plánu migrace s využitím Azure Migrate
 
@@ -23,7 +23,7 @@ Než začnete, seznámení a vyhodnocení vaší [motivace](/azure/cloud-adoptio
 
 **Obchodní událost** | **Výsledek migrace**
 --- | ---
-Ukončení Datacenter | Cost 
+Ukončení Datacenter | Náklady 
 Fúze, akvizice nebo divestiture | Snížení od dodavatele a technické složitosti
 Snížení nákladů na velká písmena | Optimalizace interních operací
 Konec podpory pro klíčové technologie | Zvýšení flexibility firmy
@@ -72,10 +72,10 @@ Azure poskytuje flexibilitu při změně velikosti cloudové kapacity v průběh
 
 Sestavu posouzení můžete vyexportovat a vyfiltrovat podle těchto kategorií, abyste pochopili připravenost na Azure:
 
-- **Připraveno pro Azure** : počítače se dají migrovat tak, jak jsou, do Azure bez jakýchkoli změn. 
-- **Podmíněně připravené pro Azure** : počítače se dají migrovat do Azure, ale potřebují menší změny v souladu s pokyny k nápravě, které jsou uvedené v posouzení.
-- **Nepřipraveno pro Azure** : počítače nejde migrovat do Azure tak, jak jsou. Před migrací musí být problémy vyřešené v souladu s pokyny k nápravě. 
-- **Připravenost neznámá** : Azure Migrate nemůže určit připravenost počítače z důvodu nedostatečných metadat.
+- **Připraveno pro Azure**: počítače se dají migrovat tak, jak jsou, do Azure bez jakýchkoli změn. 
+- **Podmíněně připravené pro Azure**: počítače se dají migrovat do Azure, ale potřebují menší změny v souladu s pokyny k nápravě, které jsou uvedené v posouzení.
+- **Nepřipraveno pro Azure**: počítače nejde migrovat do Azure tak, jak jsou. Před migrací musí být problémy vyřešené v souladu s pokyny k nápravě. 
+- **Připravenost neznámá**: Azure Migrate nemůže určit připravenost počítače z důvodu nedostatečných metadat.
 
 Pomocí vyhodnocení databáze můžete vyhodnotit připravenost SQL Serverch dat pro migraci na Azure SQL Database nebo na spravované instance Azure SQL. Posouzení znázorňuje procento stavu připravenosti migrace pro každou instanci SQL serveru. U každé instance můžete navíc zobrazit doporučený cíl v Azure, potenciální blokující migrace, počet nezměněných změn, připravenost pro Azure SQL DB nebo Azure SQL VM a úroveň kompatibility. Můžete Dig hlouběji a pochopit dopad migračních bloků a doporučení pro jejich opravu.
 
@@ -89,12 +89,12 @@ Když je počítač označený jako připravený pro Azure, vyhodnocování serv
 
 Možnost změny velikosti na základě výkonu v Azure Migrate hodnocení vám pomůže s virtuálními počítači správné velikosti a měla by se používat jako osvědčený postup pro optimalizaci úloh v Azure. Kromě správného určení velikosti je k dispozici několik dalších možností, které vám pomůžou ušetřit náklady na Azure: 
 
-- **Rezervované instance** : s [rezervovanými instancemi (ri)](https://azure.microsoft.com/pricing/reserved-vm-instances/)můžete významně snížit náklady v porovnání s [cenami za](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/)průběžné platby.
-- **Zvýhodněné hybridní využití Azure** : s [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/)můžete přenést místní licence k Windows serveru s aktivním softwarem Software Assurance nebo předplatným systému Linux, do Azure a kombinovat s možnostmi rezervovaných instancí.
-- **Smlouva Enterprise** : [smlouvy Azure Enterprise Agreement (EA)](../cost-management-billing/manage/ea-portal-agreements.md) můžou nabízet úspory pro služby a předplatná Azure.
-- **Nabídky** : existuje několik [nabídek Azure](https://azure.microsoft.com/support/legal/offer-details/). Například [průběžné platby dle aktuálního využití pro vývoj/testování](https://azure.microsoft.com/pricing/dev-test/)nebo [Enterprise pro vývoj/testování nabídku](https://azure.microsoft.com/offers/ms-azr-0148p/)pro zajištění nižších sazeb pro virtuální počítače pro vývoj a testování
-- **Doba provozu virtuálního počítače** : můžete zkontrolovat dny za měsíc a hodiny za den, kdy se virtuální počítače Azure spouštějí. Vypnutí počítačů, když se nepoužívají, může snížit vaše náklady (neplatí pro služby RIs).
-- **Cílová oblast** : můžete vytvořit posouzení v různých oblastech, abyste zjistili, jestli může být migrace do konkrétní oblasti cenově výhodnější. 
+- **Rezervované instance**: s [rezervovanými instancemi (ri)](https://azure.microsoft.com/pricing/reserved-vm-instances/)můžete významně snížit náklady v porovnání s [cenami za](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/)průběžné platby.
+- **Zvýhodněné hybridní využití Azure**: s [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/)můžete přenést místní licence k Windows serveru s aktivním softwarem Software Assurance nebo předplatným systému Linux, do Azure a kombinovat s možnostmi rezervovaných instancí.
+- **Smlouva Enterprise**: [smlouvy Azure Enterprise Agreement (EA)](../cost-management-billing/manage/ea-portal-agreements.md) můžou nabízet úspory pro služby a předplatná Azure.
+- **Nabídky**: existuje několik [nabídek Azure](https://azure.microsoft.com/support/legal/offer-details/). Například [průběžné platby dle aktuálního využití pro vývoj/testování](https://azure.microsoft.com/pricing/dev-test/)nebo [Enterprise pro vývoj/testování nabídku](https://azure.microsoft.com/offers/ms-azr-0148p/)pro zajištění nižších sazeb pro virtuální počítače pro vývoj a testování
+- **Doba provozu virtuálního počítače**: můžete zkontrolovat dny za měsíc a hodiny za den, kdy se virtuální počítače Azure spouštějí. Vypnutí počítačů, když se nepoužívají, může snížit vaše náklady (neplatí pro služby RIs).
+- **Cílová oblast**: můžete vytvořit posouzení v různých oblastech, abyste zjistili, jestli může být migrace do konkrétní oblasti cenově výhodnější. 
 
 ### <a name="visualize-data"></a>Vizualizace dat
 
@@ -114,9 +114,9 @@ Pokud chcete určit prioritu pořadí migrace, můžete použít strategické fa
 
 Několik doporučení:
 
-- Určení **priorit rychlé služby WINS** : pomocí sestav hodnocení Identifikujte neúplné ovoce, včetně serverů a databází, které jsou plně připravené a vyžadují minimální úsilí při migraci do Azure. Tato tabulka shrnuje několik způsobů, jak to provést.
+- Určení **priorit rychlé služby WINS**: pomocí sestav hodnocení Identifikujte neúplné ovoce, včetně serverů a databází, které jsou plně připravené a vyžadují minimální úsilí při migraci do Azure. Tato tabulka shrnuje několik způsobů, jak to provést.
 
-    **Stav** | **Akce**
+    **Státech** | **Akce**
     --- | ---
     **Virtuální počítače připravené pro Azure** | Exportujte sestavu posouzení a vyfiltrujte všechny počítače se stavem *připraveným pro Azure*. Může se jednat o první skupinu počítačů, které získáte a přesunete do Azure, pomocí nástroje [Azure Migrate: Server pro migraci](migrate-services-overview.md#azure-migrate-server-migration-tool) .
     **Operační systémy ukončení podpory** | Exportujte sestavu posouzení a filtrujte všechny počítače se systémem Windows Server 2008 R2/Windows Server 2008. Tyto operační systémy jsou na konci podpory a jenom Azure poskytuje zdarma tři roky aktualizací zabezpečení, když je migrujete do Azure. Pokud kombinujete Zvýhodněné hybridní využití Azure a použijete služby vzdálené instalace, může být úspory mnohem vyšší.
@@ -125,18 +125,18 @@ Několik doporučení:
     **Místně zřízené počítače** | Exportujte sestavu posouzení a vyfiltrujte počítače s nízkým využitím procesoru (%) a využití paměti (%).  Migrujte na virtuální počítač Azure ve správné velikosti a ušetříte náklady na nevyužité prostředky.
     **Předem zřízené počítače** | Exportovat sestavu posouzení a vyfiltrovat pro počítače s vysokým využitím procesoru (%) a využití paměti (%).  Vyřešte omezení kapacity, Zabraňte poškození přetížení počítačů a zvyšte výkon migrací těchto počítačů do Azure. V Azure Využijte možnosti automatického škálování pro splnění požadavků.<br/><br/> Analyzujte sestavy hodnocení a prozkoumejte omezení úložiště. Analyzujte vstupně-výstupní operace disku a propustnost a doporučený typ disku.
 
-- **Začněte malým a pak se zajděte na velké** : Začněte přesunutím aplikací a úloh, které představují minimální riziko a složitost, a Sestavujte důvěru v strategii migrace. Analyzujte doporučení pro vyhodnocení Azure Migrate společně s úložištěm CMDB, abyste našli a migrovali úlohy pro vývoj a testování, které mohou být kandidáty na pilotní migrace. Zpětná vazba a učení z pilotních migrací můžou být užitečné při zahájení migrace produkčních úloh.  
+- **Začněte malým a pak se zajděte na velké**: Začněte přesunutím aplikací a úloh, které představují minimální riziko a složitost, a Sestavujte důvěru v strategii migrace. Analyzujte doporučení pro vyhodnocení Azure Migrate společně s úložištěm CMDB, abyste našli a migrovali úlohy pro vývoj a testování, které mohou být kandidáty na pilotní migrace. Zpětná vazba a učení z pilotních migrací můžou být užitečné při zahájení migrace produkčních úloh.  
 - V **souladu** s: Azure udržuje největší portfolio dodržování předpisů v oboru, a to z hlediska šířky a hloubky nabídek. Použijte požadavky na dodržování předpisů k určení priorit migrace, aby aplikace a úlohy splňovaly vaše národní, regionální a standardní standardy a zákony. To platí hlavně pro organizace, které zabývají podnikovým procesem, uchovávají citlivé informace nebo jsou v silně regulovaných odvětvích. V těchto typech organizací, standardů a předpisů Abound a se mohou často měnit, takže je obtížné je udržet.  
 
 ## <a name="finalize-the-migration-plan"></a>Finalizace plánu migrace
 
 Před dokončením plánu migrace se ujistěte, že máte v úvahu a zmírnit další možné blokování, a to takto: 
 
-- **Požadavky na síť** : vyhodnoťte omezení šířky pásma sítě a latence, což může způsobit nepředvídatelné zpoždění a přerušení rychlosti replikace migrace.
-- **Vylepšení testování/po migraci** : umožňuje, aby časová vyrovnávací paměť prováděla testování přijetí a schvalování uživatelů pro migrované aplikace, nebo aby se nakonfigurovali/neprováděla následná migrace aplikací, jako je třeba aktualizace připojovacích řetězců databáze, konfigurace webových serverů, provádění vyjmutí nebo vyčištění atd.
-- **Oprávnění** : Zkontrolujte doporučená oprávnění Azure a role serveru/databáze přístupu a oprávnění potřebná k migraci.
-- **Školení** : Připravte svoji organizaci na digitální transformaci. Základní nadace pro školení je důležitá pro úspěšnou změnu organizace. Projděte si bezplatné školení na [Microsoft Learn](/learn/azure/?ocid=CM_Discovery_Checklist_PDF), včetně kurzů pro základy Azure, architektury řešení a zabezpečení. Doporučte vašemu týmu prozkoumat [certifikace Azure](https://www.microsoft.com/learning/certification-overview.aspx?ocid=CM_Discovery_Checklist_PDF).  
-- **Podpora implementace** : Získejte podporu pro vaši implementaci, pokud ji potřebujete. Mnoho organizací si pro podporu migrace do cloudu vyžádá externí pomoc. Pokud chcete rychle a bez obav přejít na Azure s přizpůsobenou asistencí, berte v úvahu [poskytovatele spravované služby Azure expert](https://www.microsoft.com/solution-providers/search?cacheId=9c2fed4f-f9e2-42fb-8966-4c565f08f11e&ocid=CM_Discovery_Checklist_PDF)nebo [FastTrack for Azure](https://azure.microsoft.com/programs/azure-fasttrack/?ocid=CM_Discovery_Checklist_PDF).  
+- **Požadavky na síť**: vyhodnoťte omezení šířky pásma sítě a latence, což může způsobit nepředvídatelné zpoždění a přerušení rychlosti replikace migrace.
+- **Vylepšení testování/po migraci**: umožňuje, aby časová vyrovnávací paměť prováděla testování přijetí a schvalování uživatelů pro migrované aplikace, nebo aby se nakonfigurovali/neprováděla následná migrace aplikací, jako je třeba aktualizace připojovacích řetězců databáze, konfigurace webových serverů, provádění vyjmutí nebo vyčištění atd.
+- **Oprávnění**: Zkontrolujte doporučená oprávnění Azure a role serveru/databáze přístupu a oprávnění potřebná k migraci.
+- **Školení**: Připravte svoji organizaci na digitální transformaci. Základní nadace pro školení je důležitá pro úspěšnou změnu organizace. Projděte si bezplatné školení na [Microsoft Learn](/learn/azure/?ocid=CM_Discovery_Checklist_PDF), včetně kurzů pro základy Azure, architektury řešení a zabezpečení. Doporučte vašemu týmu prozkoumat [certifikace Azure](https://www.microsoft.com/learning/certification-overview.aspx?ocid=CM_Discovery_Checklist_PDF).  
+- **Podpora implementace**: Získejte podporu pro vaši implementaci, pokud ji potřebujete. Mnoho organizací si pro podporu migrace do cloudu vyžádá externí pomoc. Pokud chcete rychle a bez obav přejít na Azure s přizpůsobenou asistencí, berte v úvahu [poskytovatele spravované služby Azure expert](https://www.microsoft.com/solution-providers/search?cacheId=9c2fed4f-f9e2-42fb-8966-4c565f08f11e&ocid=CM_Discovery_Checklist_PDF)nebo [FastTrack for Azure](https://azure.microsoft.com/programs/azure-fasttrack/?ocid=CM_Discovery_Checklist_PDF).  
 
 
 Vytvořte účinný plán migrace do cloudu, který obsahuje podrobné informace o aplikacích, které chcete migrovat, dostupnosti aplikace nebo databáze, omezeních výpadků a milníky migrace. Plán posuzuje, jak dlouho bude trvat kopírování dat, a zahrnuje realistickou vyrovnávací paměť pro testování po migraci a aktivity vyjmuté z provozu. 

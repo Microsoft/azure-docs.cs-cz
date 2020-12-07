@@ -1,15 +1,18 @@
 ---
 title: Vyhodnocení instancí AWS pro migraci do Azure pomocí posouzení serveru Azure Migrate
-description: Popisuje postup vyhodnocení instancí AWS pro migraci do Azure pomocí posouzení serveru Azure Migrate.
+description: Přečtěte si, jak získat přístup k instancím AWS pro migraci do Azure pomocí posouzení serveru Azure Migrate.
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 14928c8a3249cca172ad088f290b54a22a125ae7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7d64d239eeb3be5bf94830a425c6e097a69a64b
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90108716"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753347"
 ---
 # <a name="tutorial-assess-aws-instances-for-migration-to-azure"></a>Kurz: vyhodnocení instancí AWS pro migraci do Azure
 
@@ -25,10 +28,10 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Kurzy ukazují nejrychlejší cestu k vyzkoušení scénáře a používají výchozí možnosti, pokud je to možné. 
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Než budete postupovat podle kroků v tomto kurzu, dokončete první kurz v této sérii a [Zjistěte svůj místní inventář](tutorial-discover-aws.md). 
 - Ujistěte se, že instance AWS neběží na Windows serveru 2003 nebo SUSE Linux. Posouzení není pro tyto počítače podporováno.
@@ -48,7 +51,7 @@ Rozhodněte, jestli chcete spustit posouzení pomocí kritérií pro změnu veli
 
 Proveďte posouzení následujícím způsobem:
 
-1. Na stránce **servery** > **serverech se systémem Windows a Linux**klikněte na možnost **zhodnotit a migrovat servery**.
+1. Na stránce **servery** > **serverech se systémem Windows a Linux** klikněte na možnost **zhodnotit a migrovat servery**.
 
    ![Umístění tlačítka pro posouzení a migraci serverů](./media/tutorial-assess-aws/assess.png)
 
@@ -56,7 +59,7 @@ Proveďte posouzení následujícím způsobem:
 
     ![Umístění tlačítka pro vyhodnocení](./media/tutorial-assess-aws/assess-servers.png)
 
-3. V **Assess servers**  >  případě vyhodnocení**typu vyhodnocení**serverů vyberte **virtuální počítač Azure**.
+3. V **Assess servers**  >  případě vyhodnocení **typu vyhodnocení** serverů vyberte **virtuální počítač Azure**.
 4. Ve **zdroji zjišťování**:
 
     - Pokud jste v zařízení zjistili počítače, vyberte **počítače zjištěné z Azure Migrate zařízení**.
@@ -66,44 +69,44 @@ Proveďte posouzení následujícím způsobem:
 
     ![Umístění tlačítka Zobrazit vše pro kontrolu vlastností posouzení](./media/tutorial-assess-aws/assessment-name.png)
 
-7. Ve vlastnostech **posouzení**vlastnosti  >  **cíle**:
-    - V části **cílové umístění**zadejte oblast Azure, do které chcete migrovat.
+7. Ve vlastnostech **posouzení** vlastnosti  >  **cíle**:
+    - V části **cílové umístění** zadejte oblast Azure, do které chcete migrovat.
         - Doporučení pro velikost a náklady jsou založena na umístění, které zadáte.
         - V Azure Government můžete cílit na posouzení v [těchto oblastech](migrate-support-matrix.md#supported-geographies-azure-government) .
     - V **typu úložiště**
         - Pokud chcete v rámci posouzení použít data založená na výkonu, vyberte možnost **automaticky** pro Azure Migrate, která doporučuje typ úložiště, a to na základě vstupně-výstupních operací disku a propustnosti.
         - Případně vyberte typ úložiště, který chcete použít pro virtuální počítač, když ho migrujete.
-    - V části **rezervované instance**určete, jestli chcete pro virtuální počítač použít rezervované instance, když ho migrujete.
+    - V části **rezervované instance** určete, jestli chcete pro virtuální počítač použít rezervované instance, když ho migrujete.
         - Pokud vyberete možnost použití rezervované instance, nemůžete zadat hodnotu "**sleva (%)**" nebo **Doba provozu virtuálního počítače**. 
-        - [Další informace](https://aka.ms/azurereservedinstances).
+        - [Přečtěte si další informace](https://aka.ms/azurereservedinstances).
 8. Ve **velikosti virtuálního počítače**:
  
-    - V části **kritéria změny velikosti**vyberte, pokud chcete vyhodnotit vyhodnocení pro data konfigurace počítače/metadata nebo na data založená na výkonu. Pokud používáte údaje o výkonu:
-        - V části **Historie výkonu**určete dobu trvání dat, na které chcete vyhodnotit základ posouzení.
-        - V části **využití percentilu**zadejte hodnotu percentilu, kterou chcete použít pro vzorek výkonu. 
-    - V poli **série virtuálních počítačů**určete řadu virtuálních počítačů Azure, které chcete zvážit.
+    - V části **kritéria změny velikosti** vyberte, pokud chcete vyhodnotit vyhodnocení pro data konfigurace počítače/metadata nebo na data založená na výkonu. Pokud používáte údaje o výkonu:
+        - V části **Historie výkonu** určete dobu trvání dat, na které chcete vyhodnotit základ posouzení.
+        - V části **využití percentilu** zadejte hodnotu percentilu, kterou chcete použít pro vzorek výkonu. 
+    - V poli **série virtuálních počítačů** určete řadu virtuálních počítačů Azure, které chcete zvážit.
         - Pokud používáte posouzení na základě výkonu, Azure Migrate navrhne hodnotu.
         - Podle potřeby selepšit nastavení. Pokud například nemáte produkční prostředí, které potřebuje pro virtuální počítače řady A-Series v Azure, můžete ze seznamu řad vyloučit řady.
-    - V části **faktor komfortu**určete vyrovnávací paměť, kterou chcete použít při posuzování. Tyto účty jsou důležité pro problémy, jako je sezónní využití, historie krátkého výkonu a pravděpodobný nárůst využití v budoucnu. Pokud například použijete faktor komfortu dvou: **Podrobnosti**  |  **využití**  |  **Přidat faktor komfortu (2,0)** číst IOPS | 100 | 200 zápis IOPS | 100 | 200 čtení propustnosti | 100 MB/s | 200 MB/s propustnost zápisu | 100 MB/200 MB/s
+    - V části **faktor komfortu** určete vyrovnávací paměť, kterou chcete použít při posuzování. Tyto účty jsou důležité pro problémy, jako je sezónní využití, historie krátkého výkonu a pravděpodobný nárůst využití v budoucnu. Pokud například použijete faktor komfortu dvou: **Podrobnosti**  |  **využití**  |  **Přidat faktor komfortu (2,0)** číst IOPS | 100 | 200 zápis IOPS | 100 | 200 čtení propustnosti | 100 MB/s | 200 MB/s propustnost zápisu | 100 MB/200 MB/s
    
 9. V **ceně**:
-    - Pokud jste zaregistrovaní, zadejte v **nabídce**nabídku [Azure](https://azure.microsoft.com/support/legal/offer-details/) . Posouzení serveru odhaduje náklady na tuto nabídku.
-    - V části **Měna**vyberte fakturační měnu vašeho účtu.
+    - Pokud jste zaregistrovaní, zadejte v **nabídce** nabídku [Azure](https://azure.microsoft.com/support/legal/offer-details/) . Posouzení serveru odhaduje náklady na tuto nabídku.
+    - V části **Měna** vyberte fakturační měnu vašeho účtu.
     - V části **sleva (%)** přidejte do nabídky Azure všechny slevy specifické pro předplatné, které obdržíte. Výchozí nastavení je 0 %.
-    - V části **Doba provozu virtuálního počítače**zadejte dobu (ve dnech měsíčně za hodinu za den), po kterou budou virtuální počítače běžet.
+    - V části **Doba provozu virtuálního počítače** zadejte dobu (ve dnech měsíčně za hodinu za den), po kterou budou virtuální počítače běžet.
         - To je užitečné pro virtuální počítače Azure, které neběží nepřetržitě.
         - Odhad nákladů vychází z určeného trvání.
         - Výchozí hodnota je 31 dní za měsíc/24 hodin denně.
 
-    - V **předplatném EA**určete, jestli se má při odhadu nákladů vzít v úvahu sleva předplatného smlouva Enterprise (EA). 
-    - V **zvýhodněné hybridní využití Azure**určete, jestli už máte licenci Windows serveru. Pokud tak učiníte a jsou zahrnuté v aktivním programu Software Assurance předplatných Windows serveru, můžete požádat o [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/) , když přenášíte licence do Azure.
+    - V **předplatném EA** určete, jestli se má při odhadu nákladů vzít v úvahu sleva předplatného smlouva Enterprise (EA). 
+    - V **zvýhodněné hybridní využití Azure** určete, jestli už máte licenci Windows serveru. Pokud tak učiníte a jsou zahrnuté v aktivním programu Software Assurance předplatných Windows serveru, můžete požádat o [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/) , když přenášíte licence do Azure.
 
 10. Pokud provedete změny, klikněte na **Uložit** .
 
     ![Vlastnosti posouzení](./media/tutorial-assess-aws/assessment-properties.png)
 
-11. V nabídce **vyhodnotit servery**klikněte na **Další**.
-12. V **Vyberte počítače, které chcete vyhodnotit**, vyberte **vytvořit novou**a zadejte název skupiny. 
+11. V nabídce **vyhodnotit servery** klikněte na **Další**.
+12. V **Vyberte počítače, které chcete vyhodnotit**, vyberte **vytvořit novou** a zadejte název skupiny. 
 13. Vyberte zařízení a vyberte virtuální počítače, které chcete do skupiny přidat. Potom klikněte na **Další**.
 14. V části * * revize + vytvořit posouzení zkontrolujte podrobnosti posouzení a kliknutím na **vytvořit posouzení** vytvořte skupinu a spusťte posouzení.
 
@@ -121,7 +124,7 @@ Posouzení popisuje:
 
 Zobrazení posouzení:
 
-1. V části **servery**  >  **Azure Migrate: vyhodnocování serveru**klikněte na číslo vedle **posouzení**.
+1. V části **servery**  >  **Azure Migrate: vyhodnocování serveru** klikněte na číslo vedle **posouzení**.
 2. Výběrem posouzení v části **Posouzení** ho otevřete. Příklad (odhad a náklady pouze pro příklad): 
 
     ![Souhrn posouzení](./media/tutorial-assess-aws/assessment-summary.png)
@@ -132,7 +135,7 @@ Zobrazení posouzení:
 ### <a name="review-readiness"></a>Kontrola připravenosti
 
 1. Klikněte na **připravenost na Azure**.
-2. V části **připravenost na Azure**zkontrolujte stav virtuálního počítače:
+2. V části **připravenost na Azure** zkontrolujte stav virtuálního počítače:
     - **Připraveno pro Azure**: používá se, když Azure Migrate pro virtuální počítače v posouzení doporučuje velikost virtuálního počítače a odhad nákladů.
     - **Připraveno s podmínkami**: zobrazuje problémy a navrhovanou nápravu.
     - **Nepřipraveno pro Azure**: zobrazuje problémy a navrhovanou nápravu.

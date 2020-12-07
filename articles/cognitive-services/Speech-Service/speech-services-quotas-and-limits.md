@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 12/07/2020
 ms.author: alexeyo
-ms.openlocfilehash: a304628e05054124fde6ffe5c2b63177991d8cfd
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 9b923ba208dd2a5111a59f67401b1e4f080b7187
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345393"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754160"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Kvóty a omezení služeb Speech
 
@@ -37,9 +37,9 @@ V tabulkách **níže jsou parametry bez "měnitelného** " řádku pro všechny
 | Kvóta | Zdarma (F0)<sup>1</sup> | Standardní (S0) |
 |--|--|--|
 | Omezení REST API | Batch přepis není pro F0 k dispozici. | 300 požadavků za minutu |
-| Maximální velikost zvukového vstupního souboru | – | 1 GB |
+| Maximální velikost zvukového vstupního souboru | – | 1 GB |
 | Maximální velikost vstupního objektu BLOB (může obsahovat více než jeden soubor, například v archivu zip, nezapomeňte si uvědomit výše uvedený limit velikosti souboru) | – | 2,5 GB |
-| Maximální velikost kontejneru objektů BLOB | – | 5 GB |
+| Maximální velikost kontejneru objektů BLOB | – | 5 GB |
 | Maximální počet objektů blob na kontejner | – | 10000 |
 | Maximální počet souborů na žádost o přepis (při použití více adres URL obsahu jako vstupu) | – | 1000  |
 | Maximální počet souběžně spuštěných úloh | – | 2000  |
@@ -104,17 +104,17 @@ Souběžná omezení požadavků pro **základní** a **vlastní** modely je pot
 Hodnota pro souběžný parametr limitu požadavků **se nezobrazuje prostřednictvím** Azure Portal, Command-Linech nástrojů nebo požadavků rozhraní API. Pokud chcete ověřit existující hodnotu, vytvořte žádost o podporu Azure.
 
 >[!NOTE]
->[Kontejnery řeči](speech-container-howto.md) nevyžadují zvýšení limitu souběžných požadavků, protože kontejnery jsou omezené jenom procesory hardwaru, na kterých jsou hostované.
+>[Kontejnery řeči](speech-container-howto.md) nevyžadují zvýšení limitu souběžných požadavků, protože kontejnery jsou omezené jenom procesory hardwaru, na kterých jsou hostované. Kontejnery řeči ale mají svá vlastní omezení kapacity, která by se měla vzít v úvahu. Přečtěte si otázku *"může vám pomáhat s plánováním kapacity a odhadem nákladů na kontejnery Prem řeči na text?"* z [kontejnerů řeči se Nejčastější dotazy](speech-container-faq.md).
 
 #### <a name="have-the-required-information-ready"></a>Připravte požadované informace:
-- Pro **základní model** :
+- Pro **základní model**:
   - ID prostředku pro rozpoznávání řeči
   - Oblast
-- Pro **vlastní model** : 
+- Pro **vlastní model**: 
   - Oblast
   - ID vlastního koncového bodu
 
-- **Jak získat informace (základní model)** :  
+- **Jak získat informace (základní model)**:  
   - Přejít na [Azure Portal](https://portal.azure.com/)
   - Vyberte prostředek řeči, pro který chcete zvýšit limit počtu požadavků na souběžnost.
   - Vybrat *vlastnosti* (skupina *pro správu prostředků* ) 
@@ -122,7 +122,7 @@ Hodnota pro souběžný parametr limitu požadavků **se nezobrazuje prostředni
     - **ID prostředku**
     - **Umístění** (vaše koncová oblast)
 
-- **Jak získat informace (vlastní model)** :
+- **Jak získat informace (vlastní model)**:
   - Přejít na portál [Speech Studio](https://speech.microsoft.com/)
   - V případě potřeby se přihlaste.
   - Přejít na Custom Speech
@@ -139,7 +139,7 @@ Zahajte zvýšení limitu souběžných požadavků pro váš prostředek nebo v
 - Ujistěte se, že máte [požadované informace](#have-the-required-information-ready) .
 - Přejít na [Azure Portal](https://portal.azure.com/)
 - Vyberte prostředek řeči, pro který chcete zvýšit (nebo zda chcete kontrolu) limitu požadavků na souběžnost.
-- Výběr *nové žádosti o podporu* ( *Podpora a skupina řešení potíží* ) 
+- Výběr *nové žádosti o podporu* (*Podpora a skupina řešení potíží* ) 
 - Zobrazí se nové okno s automaticky vyplněnými informacemi o vašem předplatném Azure a prostředku Azure.
 - Zadejte *Souhrn* (například zvýšení limitu požadavků na STT Concurrency).
 - V části *typ problému* vyberte možnost problémy s kvótou nebo předplatným.
@@ -191,7 +191,7 @@ Zahajte zvýšení limitu souběžných požadavků pro váš prostředek nebo v
 - Ujistěte se, že máte [požadované informace](#prepare-the-required-information) .
 - Přejít na [Azure Portal](https://portal.azure.com/)
 - Vyberte prostředek řeči, pro který chcete zvýšit (nebo zda chcete kontrolu) limitu požadavků na souběžnost.
-- Výběr *nové žádosti o podporu* ( *Podpora a skupina řešení potíží* ) 
+- Výběr *nové žádosti o podporu* (*Podpora a skupina řešení potíží* ) 
 - Zobrazí se nové okno s automaticky vyplněnými informacemi o vašem předplatném Azure a prostředku Azure.
 - Zadat *Souhrn* (například "zvýšit počet požadavků na souběžnost vlastního koncového bodu TTS")
 - V části *typ problému* vyberte možnost problémy s kvótou nebo předplatným.

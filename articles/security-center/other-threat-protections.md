@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: 7d59c0e751054522f4c54fe059f19aa0a941464e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5b9e9f5cc5184a083f45999eaeb031eb83b17c58
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489993"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754330"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Další ochrana před hrozbami v Azure Security Center
 I integrované [ochrany v Azure defenderu](azure-defender.md)Azure Security Center taky nabízí následující možnosti ochrany před hrozbami.
@@ -41,7 +41,7 @@ Vrstva ochrany Security Center založená na Azure Resource Manager je momentál
 
 Security Center nabízí další vrstvu ochrany pomocí Azure Resource Managerch událostí, které se považují za řídicí plochu pro Azure. Díky analýze záznamů Azure Resource Manager Security Center detekuje neobvyklé nebo potenciálně škodlivé operace v prostředí předplatného Azure.
 
-Seznam výstrah Azure Resource Manager (Preview) najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-azureresourceman).
+Seznam upozornění na Správce prostředků Azure Defenderu najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-resourcemanager).
 
 
 >[!NOTE]
@@ -65,7 +65,7 @@ Seznam výstrah Azure Resource Manager (Preview) najdete v [referenční tabulce
 
 Výstrahy Azure Cosmos DB jsou generovány neobvyklými a potenciálně škodlivými pokusy o přístup k účtům Azure Cosmos DB nebo jejich zneužití.
 
-Další informace naleznete v tématu:
+Další informace najdete tady:
 
 * [Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB (Preview)](../cosmos-db/cosmos-db-advanced-threat-protection.md)
 * [Seznam výstrah ochrany před hrozbami pro Azure Cosmos DB (Preview)](alerts-reference.md#alerts-azurecosmos)

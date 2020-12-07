@@ -1,14 +1,17 @@
 ---
 title: Podpora pro vyhodnocení VMware v Azure Migrate
 description: Přečtěte si o podpoře vyhodnocení virtuálních počítačů VMware pomocí posouzení serveru Azure Migrate.
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 6e033bdf0f1492d6cbb4c41192cca8206816917d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e6582443ddc56b315c1c666c81a596fa71b1d54f
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444941"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753973"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Matice podpory pro vyhodnocení VMware 
 
@@ -70,7 +73,7 @@ Kromě zjišťování počítačů může posouzení serveru zjišťovat aplikac
 **Operační systémy** | Podpora pro virtuální počítače, na kterých běží všechny verze systému Windows a Linux.
 **Požadavky na virtuální počítače** | Na virtuálních počítačích, na kterých chcete zjišťovat aplikace, musí být nainstalované a spuštěné nástroje VMware. <br/><br/> Verze nástrojů VMware musí být pozdější než 10.2.0.<br/><br/> Virtuální počítače musí mít nainstalované prostředí PowerShell verze 2,0 nebo novější.
 **Zjišťování** | Informace o aplikacích nainstalovaných na virtuálním počítači se shromažďují z vCenter Server pomocí nástrojů VMware nainstalovaných na virtuálním počítači. Zařízení shromažďuje informace o aplikaci z vCenter Server pomocí rozhraní API vSphere. Zjišťování aplikací je bez agenta. Na virtuálních počítačích není nic nainstalované a zařízení se nepřipojuje přímo k virtuálním počítačům. Na virtuálních počítačích by měla být povolená a dostupná služba WMI/SSH.
-**vCenter** | VCenter Server účet jen pro čtení, který se používá pro posouzení, potřebuje oprávnění povolená pro **Virtual Machines**  >  **operace hosta** , aby bylo možné pracovat s virtuálním počítačem pro zjišťování aplikací.
+**vCenter** | VCenter Server účet jen pro čtení, který se používá pro posouzení, potřebuje oprávnění povolená pro **Virtual Machines**  >  **operace hosta**, aby bylo možné pracovat s virtuálním počítačem pro zjišťování aplikací.
 **Přístup k virtuálnímu počítači** | Zjišťování aplikací vyžaduje místní uživatelský účet na virtuálním počítači pro zjišťování aplikací.<br/><br/> Azure Migrate aktuálně podporuje použití jednoho pověření pro všechny servery se systémem Windows a jedno přihlašovací údaje pro všechny servery se systémem Linux.<br/><br/> Vytvoříte uživatelský účet hosta pro virtuální počítače s Windows a běžný/normální uživatelský účet (bez přístupu sudo) pro všechny virtuální počítače se systémem Linux.
 **Přístup k portu** | Zařízení Azure Migrate musí být schopné se připojit k portu TCP 443 na hostiteli ESXi, na kterém běží virtuální počítače, na kterých chcete zjišťovat aplikace. VCenter Server vrátí připojení hostitele ESXI pro stažení souboru obsahujícího informace o aplikaci.
 

@@ -1,14 +1,17 @@
 ---
 title: Příprava Azure Migrate pro práci s nástrojem/stěhovací společnosti ISV
 description: Tento článek popisuje, jak připravit Azure Migrate pro práci s nástrojem ISV nebo stěhovací společnosti a jak začít používat nástroj.
+author: ms-psharma
+ms.author: panshar
+ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/10/2020
-ms.openlocfilehash: 885e64536e516e4fd96233c37a68f6e77fb84e33
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1716db0476169e12822b3f47f7199bf6e2c4ee92
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369144"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753769"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>Příprava na práci s nástrojem ISV nebo jeho stěhovací pracovníky
 
@@ -36,7 +39,7 @@ Ve vašem předplatném Azure vyžaduje váš účet **Microsoft. Authorization/
 1. Na webu Azure Portal otevřete **Předplatná**.
 2. Vyberte příslušné předplatné. Pokud ho nevidíte, vyberte **Filtr globálních předplatných**. 
 3. Vyberte **Moje oprávnění**. Pak vyberte **kliknutím sem zobrazíte informace o úplných přístupech k tomuto předplatnému**.
-4. V **zobrazení přiřazení rolí**  >  **View**Zkontrolujte oprávnění. Pokud váš účet nemá oprávnění, požádejte správce předplatného, aby vás přidal do role [Správce přístupu uživatele](../role-based-access-control/built-in-roles.md#user-access-administrator) nebo role [vlastníka](../role-based-access-control/built-in-roles.md#owner) .
+4. V **zobrazení přiřazení rolí**  >  **View** Zkontrolujte oprávnění. Pokud váš účet nemá oprávnění, požádejte správce předplatného, aby vás přidal do role [Správce přístupu uživatele](../role-based-access-control/built-in-roles.md#user-access-administrator) nebo role [vlastníka](../role-based-access-control/built-in-roles.md#owner) .
 
 ## <a name="allow-access-to-urls"></a>Povolení přístupu k adresám URL
 
@@ -53,7 +56,7 @@ management.azure.com | Proveďte Azure Resource Manager volání do projektu Azu
 
 ## <a name="start-using-the-tool"></a>Začněte používat nástroj.
 
-1. Pokud ještě nemáte licenci nebo bezplatnou zkušební verzi nástroje, v položce nástroje v Azure Migrate v části **Registrovat**vyberte další **informace**.
+1. Pokud ještě nemáte licenci nebo bezplatnou zkušební verzi nástroje, v položce nástroje v Azure Migrate v části **Registrovat** vyberte další **informace**.
 2. V nástroji postupujte podle pokynů pro odkazování nástroje na projekt Azure Migrate a k odeslání dat do Azure Migrate.
 
 ## <a name="next-steps"></a>Další kroky

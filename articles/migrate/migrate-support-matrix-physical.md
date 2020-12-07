@@ -1,14 +1,17 @@
 ---
 title: Podpora pro posouzení fyzického serveru v Azure Migrate
 description: Další informace o podpoře pro posouzení fyzického serveru pomocí Azure Migrateho posouzení serveru
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 58ecba6bcedc036e31046aef292e482085ad7cc6
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: cfbbc1d218f590241fab804e389acd689c009dac
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148401"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754007"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Matice podpory pro posouzení fyzického serveru 
 

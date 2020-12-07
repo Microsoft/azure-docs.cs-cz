@@ -1,14 +1,17 @@
 ---
 title: Nejčastější dotazy k Azure Migrate zařízením
 description: Získejte odpovědi na běžné otázky týkající se zařízení Azure Migrate.
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 7be6260a7d3eb25ce2854f6949554e2c66019980
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9badbfe6cfe12d67e07f0889d175ed32bc455321
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337587"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753871"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Zařízení Azure Migrate: běžné otázky
 
@@ -66,9 +69,9 @@ Zařízení potřebuje přístup k adresám URL Azure. [Zkontrolujte](migrate-ap
 
 Informace o datech, která Azure Migrate zařízení shromažďuje na virtuálních počítačích, najdete v následujících článcích:
 
-- **Virtuální počítač VMware** : [Projděte si](migrate-appliance.md#collected-data---vmware) shromážděná data.
-- **Virtuální počítač Hyper-V** : [Projděte si](migrate-appliance.md#collected-data---hyper-v) shromážděná data.
-- **Fyzické nebo virtuální servery** : [Prohlédněte si](migrate-appliance.md#collected-data---physical) shromážděná data.
+- **Virtuální počítač VMware**: [Projděte si](migrate-appliance.md#collected-data---vmware) shromážděná data.
+- **Virtuální počítač Hyper-V**: [Projděte si](migrate-appliance.md#collected-data---hyper-v) shromážděná data.
+- **Fyzické nebo virtuální servery**:[Prohlédněte si](migrate-appliance.md#collected-data---physical) shromážděná data.
 
 ## <a name="how-is-data-stored"></a>Jak se data ukládají?
 
@@ -102,7 +105,7 @@ Tento postup popisuje, jak se zařízení připojuje k VMware vCenter Server:
 
 ## <a name="can-the-azure-migrate-appliance-connect-to-multiple-vcenter-servers"></a>Může se zařízení Azure Migrate připojit k více serverům vCenter?
 
-Ne. Mezi [zařízením Azure Migrate](migrate-appliance.md) a vCenter Server existuje mapování 1:1. Chcete-li zjistit virtuální počítače ve více instancích vCenter Server, je nutné nasadit více zařízení. 
+No. Mezi [zařízením Azure Migrate](migrate-appliance.md) a vCenter Server existuje mapování 1:1. Chcete-li zjistit virtuální počítače ve více instancích vCenter Server, je nutné nasadit více zařízení. 
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Může Azure Migrate projekt mít více zařízení?
 
@@ -110,7 +113,7 @@ K projektu může být připojeno více zařízení. Zařízení je však možn�
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Může se zařízení Azure Migrate/zařízení replikace připojit ke stejnému vCenter?
 
-Ano. Do stejného serveru vCenter můžete přidat Azure Migrate zařízení (používá se pro vyhodnocení a migraci VMware bez agentů) a zařízení replikace (používané pro migraci virtuálních počítačů VMware na základě agenta). Ujistěte se ale, že nenastavujete obě zařízení na jednom virtuálním počítači a že se v tuto chvíli nepodporuje.
+Yes. Do stejného serveru vCenter můžete přidat Azure Migrate zařízení (používá se pro vyhodnocení a migraci VMware bez agentů) a zařízení replikace (používané pro migraci virtuálních počítačů VMware na základě agenta). Ujistěte se ale, že nenastavujete obě zařízení na jednom virtuálním počítači a že se v tuto chvíli nepodporuje.
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Kolik virtuálních počítačů nebo serverů můžu zjistit pomocí zařízení?
 
@@ -132,11 +135,11 @@ Také nelze znovu použít existující klíč projektu Azure Migrate na znovu n
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>Můžu zařízení nastavit na virtuálním počítači Azure?
 
-Ne. V tuto chvíli není tato možnost podporovaná. 
+No. V tuto chvíli není tato možnost podporovaná. 
 
 ## <a name="can-i-discover-on-an-esxi-host"></a>Můžu na hostiteli ESXi zjistit?
 
-Ne. Pokud chcete zjistit virtuální počítače VMware, musíte mít vCenter Server.
+No. Pokud chcete zjistit virtuální počítače VMware, musíte mít vCenter Server.
 
 ## <a name="how-do-i-update-the-appliance"></a>Návody aktualizovat zařízení?
 
@@ -146,7 +149,7 @@ Pomocí těchto automatických aktualizací se aktualizují jenom zařízení a 
 
 ## <a name="can-i-check-agent-health"></a>Můžu kontrolovat stav agenta?
 
-Ano. Na portálu navštivte stránku **Stav agenta** pro Azure Migrate: Server Assessment nebo Azure Migrate: Nástroj pro migraci serveru. Tady můžete kontrolovat stav připojení mezi Azure a agenty zjišťování a vyhodnocení na zařízení.
+Yes. Na portálu navštivte stránku **Stav agenta** pro Azure Migrate: Server Assessment nebo Azure Migrate: Nástroj pro migraci serveru. Tady můžete kontrolovat stav připojení mezi Azure a agenty zjišťování a vyhodnocení na zařízení.
 
 ## <a name="next-steps"></a>Další kroky
 

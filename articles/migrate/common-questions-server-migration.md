@@ -1,14 +1,17 @@
 ---
 title: Běžné otázky týkající se migrace Azure Migrate serveru
 description: Získejte odpovědi na běžné otázky týkající se použití migrace serveru Azure Migrate k migraci počítačů.
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: b62110e6b2ce97cdd80ed91ee4b1e75d119c7c7d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1f32e9788b2255be373a4db8c159ef2a6b6ccf04
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180689"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753837"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Migrace Azure Migrate serveru: běžné otázky
 
@@ -131,7 +134,7 @@ Pro metodu replikace založenou na agentovi může Plánovač nasazení pomáhat
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Návody omezení replikace při používání zařízení Azure Migrate pro bezagentskou replikaci VMware?  
 
-Můžete omezit pomocí NetQosPolicy. Příklad:
+Můžete omezit pomocí NetQosPolicy. Například:
 
 AppNamePrefix pro použití v NetQosPolicy je "GatewayWindowsService.exe". Můžete vytvořit zásadu na zařízení Azure Migrate, abyste omezili provoz replikace ze zařízení tím, že vytvoříte zásadu, jako je tato:
 

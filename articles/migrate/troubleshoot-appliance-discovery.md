@@ -1,17 +1,17 @@
 ---
 title: Řešení potíží s nasazením a zjišťováním Azure Migrate zařízení
-description: Získejte pomoc s nasazením Azure Migrate zařízení a zjišťováním počítačů.
-author: musa-57
+description: Získejte pomoc s nasazením zařízení a zjišťováním počítačů.
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
-ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 0d4630cad94a30e0dd53785c512e452d7b4a7d38
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 26bb61e0c5a473a56c57391b53009419453956fd
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494439"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753412"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Řešení potíží s Azure Migrate zařízením a zjišťováním
 
@@ -27,7 +27,7 @@ Tento článek vám pomůže při řešení potíží při nasazování zaříze
 
 Pokud se zobrazí chyba "zadaný soubor manifestu je neplatný: Neplatná položka manifestu OVF", udělejte toto:
 
-1. Zkontrolujte jeho hodnotu hash tak, že zkontrolujete, jestli se soubor vajíček Azure Migrate zařízení správně stáhl. [Další informace](./tutorial-discover-vmware.md). Pokud hodnota hash neodpovídá, Stáhněte si znovu soubor vajíček a spusťte nasazení znovu.
+1. Zkontrolujte jeho hodnotu hash tak, že zkontrolujete, jestli se soubor vajíček Azure Migrate zařízení správně stáhl. [Přečtěte si další informace](./tutorial-discover-vmware.md). Pokud hodnota hash neodpovídá, Stáhněte si znovu soubor vajíček a spusťte nasazení znovu.
 2. Pokud se nasazení stále nedaří a k nasazení souboru OVF používáte klienta VMware vSphere, zkuste ho nasadit prostřednictvím webového klienta vSphere. Pokud nasazení ještě neproběhne úspěšně, zkuste použít jiný webový prohlížeč.
 3. Pokud používáte webového klienta vSphere a pokusíte se ho nasadit na vCenter Server 6,5 nebo 6,7, zkuste nasadit VAJÍČKu přímo na hostiteli ESXi:
    - Připojte se k hostiteli ESXi přímo (místo vCenter Server) s webovým klientem ( *IP adresa hostitele* https://<>/UI).

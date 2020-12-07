@@ -2,16 +2,16 @@
 title: Řešení potíží s replikací v migraci virtuálních počítačů VMware bez agenta
 description: Získat pomoc s chybami cyklu replikace
 author: anvar-ms
-ms.manager: bsiva
 ms.author: anvar
+ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 04dcf8edbce7782e6d196271bfa85f2f8d1c5ba3
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: e19c5064dd69538dfc025b0d244baf4fa74706b2
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608329"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753531"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Řešení potíží s replikací v migraci virtuálních počítačů VMware bez agenta
 

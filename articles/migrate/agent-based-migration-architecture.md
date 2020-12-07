@@ -1,17 +1,17 @@
 ---
 title: Migrace založená na agentech v migraci serveru Azure Migrate
 description: Poskytuje přehled migrace virtuálních počítačů VMware založených na agentech v Azure Migrate.
-author: rayne-wiselman
-ms.service: azure-migrate
+author: rahulg1190
+ms.author: rahugup
+ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.author: raynew
-ms.openlocfilehash: 90e499b436a3ae44fa29cec1138d939a106a4db7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1389b03d87beb24cba50fec0a782de8b7f935557
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357161"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753888"
 ---
 # <a name="agent-based-migration-architecture"></a>Architektura migrace založené na agentech
 
@@ -120,7 +120,7 @@ Provoz VMware, který se replikuje do Azure, prochází přes konkrétní proces
 
     1. Na počítači procesového serveru otevřete modul snap-in Azure Backup MMC. Je k dispozici zástupce na ploše nebo ve složce C:\Program Files\Microsoft Azure Recovery Services Agent\bin. 
     2. V modulu snap-in vyberte **změnit vlastnosti**.
-    3. V případě **omezení**vyberte možnost **Povolit omezování šířky pásma internetu u operací zálohování**. Nastavte limity pro pracovní a nepracovní dobu. Platné rozsahy jsou od 512 do 1 023 MB/s.
+    3. V případě **omezení** vyberte možnost **Povolit omezování šířky pásma internetu u operací zálohování**. Nastavte limity pro pracovní a nepracovní dobu. Platné rozsahy jsou od 512 do 1 023 MB/s.
 
 
 ## <a name="next-steps"></a>Další kroky

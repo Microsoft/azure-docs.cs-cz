@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení při zálohování v
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: cd73c07b139aec3b7079c2b042581e26560ed1bc
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 0dd0979b4dcc7c3828d88c594c02addaf00813c4
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309609"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754194"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 
@@ -50,7 +50,6 @@ Měsíční nebo roční záloha| Při zálohování s rozšířením virtuáln�
 Automatické úpravy hodin | Nepodporováno<br/><br/> Azure Backup se při zálohování virtuálního počítače automaticky nezmění na letní čas při ukládání.<br/><br/>  Zásadu podle potřeby upravte ručně.
 [Funkce zabezpečení pro hybridní zálohování](./backup-azure-security-feature.md) |Zákaz funkcí zabezpečení není podporován.
 Zálohování virtuálního počítače, u kterého se změnil čas počítače | Nepodporováno<br/><br/> Pokud se čas počítače změní na budoucí datum a čas po povolení zálohování pro tento virtuální počítač, ale i když se změna času vrátí zpět, není zaručena úspěšná záloha.
-Virtuální počítače Azure ve službě [Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md) |Skupiny dostupnosti nejsou podporované.
 
 ## <a name="operating-system-support-windows"></a>Podpora operačního systému (Windows)
 
@@ -140,7 +139,6 @@ Obnovení virtuálního počítače v jiné virtuální síti |Podporuje se.<br/
 Velikost virtuálního počítače |Všechny velikosti virtuálních počítačů Azure s minimálně 2 jádry procesoru a 1 GB paměti RAM.<br/><br/> [Další informace](../virtual-machines/sizes.md)
 Zálohování virtuálních počítačů ve [skupinách dostupnosti](../virtual-machines/availability.md#availability-sets) | Podporuje se.<br/><br/> Virtuální počítač nejde obnovit v dostupné sadě pomocí možnosti pro rychlé vytvoření virtuálního počítače. Místo toho můžete při obnovení virtuálního počítače obnovit disk a použít ho k nasazení virtuálního počítače nebo obnovení disku a použít ho k nahrazení stávajícího disku.
 Zálohování virtuálních počítačů nasazených s [využitím programu zvýhodněné hybridní využití (centrum)](../virtual-machines/windows/hybrid-use-benefit-licensing.md) | Podporuje se.
-Zálohování virtuálních počítačů, které jsou nasazené v [sadě škálování](../virtual-machine-scale-sets/overview.md) |Podporuje se. Skupina dostupnosti není podporovaná.
 Zálohování virtuálních počítačů nasazených z [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images)<br/><br/> (Vydavatel: Microsoft, třetí strana) |Podporuje se.<br/><br/> Na virtuálním počítači musí běžet podporovaný operační systém.<br/><br/> Při obnovování souborů na virtuálním počítači se můžete zotavit jenom na kompatibilní operační systém (ne na starší verzi operačního systému nebo novější). Neobnovíme Azure Marketplace virtuální počítače, které jsou zálohované jako virtuální počítače, protože tyto informace jsou potřeba k nákupu. Obnoví se jenom jako disky.
 Zálohování virtuálních počítačů, které se nasazují z vlastní image (třetí strana) |Podporuje se.<br/><br/> Na virtuálním počítači musí běžet podporovaný operační systém.<br/><br/> Při obnovování souborů na virtuálním počítači se můžete zotavit jenom na kompatibilní operační systém (ne na starší verzi operačního systému nebo novější).
 Zálohování virtuálních počítačů, které se migrují do Azure| Podporuje se.<br/><br/> Pokud chcete zálohovat virtuální počítač, musí být na migrovaném počítači nainstalovaný agent virtuálního počítače.
@@ -208,10 +206,10 @@ Zabezpečení dat:
 
 **Počítač** | **Při přenosu** | **V klidovém umístění**
 --- | --- | ---
-Místní počítače s Windows bez DPM/MABS | ![Yes][green] | ![Yes][green]
-Virtuální počítače Azure | ![Yes][green] | ![Yes][green]
-Místní nebo virtuální počítače Azure s DPM | ![Yes][green] | ![Yes][green]
-Místní nebo virtuální počítače Azure s MABS | ![Yes][green] | ![Yes][green]
+Místní počítače s Windows bez DPM/MABS | ![Ano][green] | ![Ano][green]
+Virtuální počítače Azure | ![Ano][green] | ![Ano][green]
+Místní nebo virtuální počítače Azure s DPM | ![Ano][green] | ![Ano][green]
+Místní nebo virtuální počítače Azure s MABS | ![Ano][green] | ![Ano][green]
 
 ## <a name="vm-compression-support"></a>Podpora komprese virtuálních počítačů
 
@@ -224,8 +222,8 @@ Zálohování podporuje komprimaci provozu zálohování, jak je shrnuto v násl
 --- | --- | ---
 Místní počítače s Windows bez DPM/MABS | Není k dispozici | ![Ano][green]
 Virtuální počítače Azure | Není k dispozici | Není k dispozici
-Místní nebo virtuální počítače Azure s DPM | ![Yes][green] | ![Yes][green]
-Místní nebo virtuální počítače Azure s MABS | ![Yes][green] | ![Ano][green]
+Místní nebo virtuální počítače Azure s DPM | ![Ano][green] | ![Ano][green]
+Místní nebo virtuální počítače Azure s MABS | ![Ano][green] | ![Ano][green]
 
 ## <a name="next-steps"></a>Další kroky
 

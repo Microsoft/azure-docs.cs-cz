@@ -1,14 +1,17 @@
 ---
 title: Podpora pro vyhodnocení technologie Hyper-V v Azure Migrate
 description: Další informace o podpoře pro vyhodnocení technologie Hyper-V s Azure Migrate posouzení serveru
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 4c50bd2bdd0e5a0d68b545a914582352d7b34421
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 5b5c85b599f02cedc3bb1bda84c28ef2169c8e2d
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331970"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754041"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Matice podpory pro posouzení technologie Hyper-V
 

@@ -1,14 +1,17 @@
 ---
 title: Nastavení zařízení Azure Migrate pomocí skriptu
 description: Naučte se, jak nastavit zařízení Azure Migrate pomocí skriptu.
-ms.topic: article
+ms.topic: how-to
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
 ms.date: 04/16/2020
-ms.openlocfilehash: c4f92d787ea2a72dd534e514e27fa1a5defef39c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 38db1e68adde21d0e566256e9393f6fa4fc58824
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317331"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753786"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Nastavení zařízení pomocí skriptu
 
@@ -61,7 +64,7 @@ Tento skript:
 
 - Nainstaluje agenty a webovou aplikaci.
 - Nainstaluje role Windows, včetně aktivační služby Windows, služby IIS a prostředí PowerShell ISE.
-- Stáhne a nainstaluje modul IIS s možností zápisu. [Další informace](https://www.microsoft.com/download/details.aspx?id=7435).
+- Stáhne a nainstaluje modul IIS s možností zápisu. [Přečtěte si další informace](https://www.microsoft.com/download/details.aspx?id=7435).
 - Aktualizuje klíč registru (HKLM) s trvalým nastavením pro Azure Migrate.
 - Vytvoří protokol a konfigurační soubory následujícím způsobem:
     - **Konfigurační soubory**:%ProgramData%\Microsoft Azure\Config
@@ -72,7 +75,7 @@ Spuštění skriptu:
 1. Extrahujte soubor zip do složky na počítači, který bude hostovat zařízení. Ujistěte se, že nespouštíte skript na počítači v existujícím zařízení Azure Migrate.
 2. Na počítači spusťte PowerShell s oprávněními správce (se zvýšenými oprávněními).
 3. Změňte adresář PowerShellu na složku obsahující obsah extrahovaný ze staženého souboru ZIP.
-4. Spusťte skript **AzureMigrateInstaller.ps1**následujícím způsobem:
+4. Spusťte skript **AzureMigrateInstaller.ps1** následujícím způsobem:
 
     ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 -scenario VMware ```
    
@@ -108,7 +111,7 @@ Tento skript:
 
 - Nainstaluje agenty a webovou aplikaci.
 - Nainstaluje role Windows, včetně aktivační služby Windows, služby IIS a prostředí PowerShell ISE.
-- Stáhne a nainstaluje modul IIS s možností zápisu. [Další informace](https://www.microsoft.com/download/details.aspx?id=7435).
+- Stáhne a nainstaluje modul IIS s možností zápisu. [Přečtěte si další informace](https://www.microsoft.com/download/details.aspx?id=7435).
 - Aktualizuje klíč registru (HKLM) s trvalým nastavením pro Azure Migrate.
 - Vytvoří protokol a konfigurační soubory následujícím způsobem:
     - **Konfigurační soubory**:%ProgramData%\Microsoft Azure\Config
@@ -119,7 +122,7 @@ Spuštění skriptu:
 1. Extrahujte soubor zip do složky na počítači, který bude hostovat zařízení. Ujistěte se, že nespouštíte skript na počítači v existujícím zařízení Azure Migrate.
 2. Na počítači spusťte PowerShell s oprávněními správce (se zvýšenými oprávněními).
 3. Změňte adresář PowerShellu na složku obsahující obsah extrahovaný ze staženého souboru ZIP.
-4. Spusťte skript **AzureMigrateInstaller.ps1**následujícím způsobem: 
+4. Spusťte skript **AzureMigrateInstaller.ps1** následujícím způsobem: 
 
     ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 -scenario Hyperv ```
    

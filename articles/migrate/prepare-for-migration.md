@@ -1,15 +1,17 @@
 ---
 title: Příprava počítačů na migraci pomocí Azure Migrate
 description: Přečtěte si, jak připravit místní počítače na migraci pomocí Azure Migrate.
-ms.topic: tutorial
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
+ms.topic: how-to
 ms.date: 06/08/2020
-ms.custom: MVC
-ms.openlocfilehash: ed5a1b6dc47c91815cc88200ddd1b1246603f806
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 979f40e13aab71f02a316e4ddf60306170166845
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275400"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753922"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Příprava místních počítačů na migraci do Azure
 
@@ -136,12 +138,12 @@ Následující tabulka shrnuje kroky prováděné automaticky pro operační sys
 | Akce                                      | \-Migrace VMware založená na agentech | Migrace VMware bez agentů | Hyper\-V   |
 |---------------------------------------------|-------------------------------|----------------------------|------------|
 | Nainstalovat \- integrační služby Hyper-V Linux | Ano                           | Ano                        | Není potřeba |
-| Povolit protokolování na sériové konzole Azure         | Ano                           | Ano                        | No         |
-| Aktualizovat soubor mapování zařízení                      | Ano                           | No                         | No         |
-| Aktualizovat položky fstab                        | Ano                           | Ano                        | No         |
-| Odebrat pravidlo udev                            | Ano                           | Ano                        | No         |
-| Aktualizace síťových rozhraní                   | Ano                           | Ano                        | No         |
-| Povolit SSH                                  | No                            | No                         | No         |
+| Povolit protokolování na sériové konzole Azure         | Ano                           | Ano                        | Ne         |
+| Aktualizovat soubor mapování zařízení                      | Ano                           | Ne                         | Ne         |
+| Aktualizovat položky fstab                        | Ano                           | Ano                        | Ne         |
+| Odebrat pravidlo udev                            | Ano                           | Ano                        | Ne         |
+| Aktualizace síťových rozhraní                   | Ano                           | Ano                        | Ne         |
+| Povolit SSH                                  | Ne                            | Ne                         | Ne         |
 
 Přečtěte si další informace o postupu při [spuštění virtuálního počítače se systémem Linux v Azure](../virtual-machines/linux/create-upload-generic.md)a pokyny pro některé z oblíbených distribucí pro Linux.
 
@@ -181,7 +183,7 @@ Na místních počítačích se systémem Linux:
 
 Po dokončení migrace proveďte tyto kroky na virtuálních počítačích Azure, které se vytvoří:
 
-1. Pokud se chcete připojit k virtuálnímu počítači přes Internet, přiřaďte virtuálnímu počítači veřejnou IP adresu. Pro virtuální počítač Azure je nutné použít jinou veřejnou IP adresu, než jste použili pro místní počítač. [Další informace](../virtual-network/virtual-network-public-ip-address.md).
+1. Pokud se chcete připojit k virtuálnímu počítači přes Internet, přiřaďte virtuálnímu počítači veřejnou IP adresu. Pro virtuální počítač Azure je nutné použít jinou veřejnou IP adresu, než jste použili pro místní počítač. [Přečtěte si další informace](../virtual-network/virtual-network-public-ip-address.md).
 2. Ověřte, že pravidla skupiny zabezpečení sítě (NSG) na virtuálním počítači povolují příchozí připojení k portu RDP nebo SSH.
 3. Zkontrolujte [diagnostiku spouštění](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) a zobrazte si virtuální počítač.
 

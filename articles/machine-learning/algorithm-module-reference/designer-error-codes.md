@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 11/25/2020
-ms.openlocfilehash: af7ac49fd6c1a31a8363c4ba0bf925787613ecc2
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 846c5519dced06ed16f5a0d12b0bb25443961f93
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030403"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753905"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>Výjimky a kódy chyb pro návrháře
 
@@ -279,7 +279,7 @@ Pokud byl model vyškolen pomocí některého ze specializovaných školicích m
 ## <a name="error-0014"></a>Chyba 0014  
  K výjimce dojde v případě, že počet jedinečných hodnot sloupce je větší, než je povoleno.  
 
- K této chybě dochází, pokud sloupec obsahuje příliš mnoho jedinečných hodnot.  Tato chyba se může zobrazit například v případě, že určíte, že sloupec bude zpracován jako kategoriíá data, ale ve sloupci je příliš mnoho jedinečných hodnot, aby bylo možné zpracování dokončit. Tato chyba se může zobrazit také v případě, že došlo k neshodě mezi počtem jedinečných hodnot ve dvou vstupech.   
+ K této chybě dochází, pokud sloupec obsahuje příliš mnoho jedinečných hodnot, například sloupec ID nebo textový sloupec. Tato chyba se může zobrazit, pokud určíte, že sloupec bude zpracován jako kategoriíá data, ale ve sloupci je příliš mnoho jedinečných hodnot, aby bylo možné dokončit zpracování. Tato chyba se může zobrazit také v případě, že došlo k neshodě mezi počtem jedinečných hodnot ve dvou vstupech.   
 
 Chyba jedinečných hodnot je větší, než je povoleno, pokud splňujete **obě** následující podmínky:
 
@@ -292,7 +292,9 @@ Otevřete modul, který chybu generoval, a Identifikujte sloupce používané ja
 
 Pro sloupce, které chcete použít pro seskupování nebo kategorizaci, proveďte kroky ke snížení počtu jedinečných hodnot ve sloupcích. Můžete omezit různými způsoby v závislosti na typu dat sloupce. 
 
-U sloupce, který se při tomto scénáři obvykle nepoužívá, je tato chyba nevýznamná jako funkce pro výuku modelů. Proto můžete použít možnost [Upravit metadata](../algorithm-module-reference/edit-metadata.md) k označení tohoto sloupce jako **nejasné funkce** a nebude se používat během školení modelu. 
+Pro sloupce ID, které během školení modelu nedávají smysluplné funkce, můžete použít možnost [Upravit metadata](../algorithm-module-reference/edit-metadata.md) k označení tohoto sloupce jako **jasné funkce** a nebude se používat během školení modelu. 
+
+U textových sloupců můžete k předběžnému zpracování textových sloupců použít [funkce hash](../algorithm-module-reference/feature-hashing.md) nebo [extrahovat N-gram funkcí z modulu text](../algorithm-module-reference/extract-n-gram-features-from-text.md) .
 <!--
 + For text data, you might be able to use [Preprocess Text](preprocess-text.md) to collapse similar entries. 
 + For numeric data, you can create a smaller number of bins using [Group Data into Bins](group-data-into-bins.md), remove or truncate values using [Clip Values](clip-values.md), or use machine learning methods such as [Principal Component Analysis](principal-component-analysis.md) or [Learning with Counts](data-transformation-learning-with-counts.md) to reduce the dimensionality of the data.  
@@ -1086,7 +1088,7 @@ Chybová zpráva z podregistru se obvykle hlásí zpět v protokolu chyb, takže
 + Ověřte, že dotaz funguje správně mimo Azure Machine Learning tím, že se přihlásí do konzoly podregistru clusteru Hadoop a spustí se dotaz.  
 + Zkuste umístit komentáře do skriptu v podregistru do samostatného řádku, a to na rozdíl v kombinování spustitelných příkazů a komentářů na jednom řádku.  
 
-### <a name="resources"></a>Zdroje informací
+### <a name="resources"></a>Zdroje a prostředky
 
 Nápovědu k dotazům na podregistr pro strojové učení najdete v následujících článcích:
 

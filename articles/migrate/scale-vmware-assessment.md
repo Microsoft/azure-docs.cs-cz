@@ -1,14 +1,17 @@
 ---
 title: Vyhodnoťte velký počet virtuálních počítačů VMware pro migraci do Azure pomocí Azure Migrate
-description: Popisuje, jak vyhodnotit velký počet virtuálních počítačů VMware pro migraci do Azure pomocí služby Azure Migrate. e
+description: Popisuje, jak vyhodnotit velký počet virtuálních počítačů VMware pro migraci do Azure pomocí služby Azure Migrate.
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: 0be7a7ea4afc400787456533689fe00b1db1c116
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 206df399736dbd3b5d1d52531a249bbd37646514
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492926"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753667"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Vyhodnocení velkého počtu virtuálních počítačů VMware pro migraci do Azure
 
@@ -68,7 +71,7 @@ Pokud plánujete pro více tenantů prostředí, můžete určit rozsah zjišťo
 
 - Rozsah zjišťování zařízení můžete nastavit vCenter Server datacentrech, clusterech nebo složkách clusterů, hostitelů nebo složek hostitelů nebo jednotlivých virtuálních počítačů.
 - Pokud je vaše prostředí sdíleno mezi klienty a chcete zjistit jednotlivé klienty samostatně, můžete nastavit rozsah přístupu k účtu vCenter, který zařízení používá ke zjišťování. 
-    - Můžete chtít obor podle složek virtuálních počítačů, pokud klienti sdílejí hostitele. Azure Migrate nemůže zjistit virtuální počítače, pokud má účet vCenter udělen přístup na úrovni složky virtuálního počítače vCenter. Pokud chcete určit obor zjišťování pomocí složek virtuálních počítačů, můžete to provést tak, že účet vCenter má přiřazený přístup jen pro čtení na úrovni virtuálního počítače. [Další informace](set-discovery-scope.md).
+    - Můžete chtít obor podle složek virtuálních počítačů, pokud klienti sdílejí hostitele. Azure Migrate nemůže zjistit virtuální počítače, pokud má účet vCenter udělen přístup na úrovni složky virtuálního počítače vCenter. Pokud chcete určit obor zjišťování pomocí složek virtuálních počítačů, můžete to provést tak, že účet vCenter má přiřazený přístup jen pro čtení na úrovni virtuálního počítače. [Přečtěte si další informace](set-discovery-scope.md).
 
 ## <a name="prepare-for-assessment"></a>Příprava na posouzení
 

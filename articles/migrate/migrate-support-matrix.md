@@ -1,15 +1,17 @@
 ---
 title: Azure Migrateová matice podpory
 description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Migrate.
+author: ms-psharma
+ms.author: panshar
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.author: raynew
-ms.openlocfilehash: 2aab8e9caeaf61c2c8dd1bf29894b13a887e44de
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d9a18173403cd95e0abf6b9e495f3d948ac6ac61
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424812"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753956"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrateová matice podpory
 
@@ -122,7 +124,7 @@ Cílová replikace | USA | Cílové oblasti: US DoD – střed, US DoD – vých
 
 Existují dvě verze služby Azure Migrate:
 
-- **Aktuální verze**: pomocí této verze můžete vytvořit nové projekty Azure Migrate, zjišťovat místní vyhodnocení a orchestrovat posouzení a migrace. [Další informace](whats-new.md).
+- **Aktuální verze**: pomocí této verze můžete vytvořit nové projekty Azure Migrate, zjišťovat místní vyhodnocení a orchestrovat posouzení a migrace. [Přečtěte si další informace](whats-new.md).
 - **Předchozí verze**: pro zákazníky používající předchozí verzi Azure Migrate (podporuje se jenom posouzení místních virtuálních počítačů VMware), měli byste teď použít aktuální verzi. V předchozí verzi nemůžete vytvářet nové projekty Azure Migrate ani provádět nové zjišťování.
 
 ## <a name="next-steps"></a>Další kroky
