@@ -74,7 +74,9 @@
       items:
         - name: Podpora služby Azure Migrate
           href: migrate-support-matrix.md
-        - name: Standardní hodnoty zabezpečení pro Azure Migrate
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
     - name: Zjišťování
       items:

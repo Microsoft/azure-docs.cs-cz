@@ -13,7 +13,7 @@
           href: quick-setup-auto-provision.md
         - name: Azure CLI
           href: quick-setup-auto-provision-cli.md
-        - name: Šablona Azure RM
+        - name: Šablona ARM
           href: quick-setup-auto-provision-rm.md
     - name: Zřízení zařízení se symetrickým klíčem
       items:

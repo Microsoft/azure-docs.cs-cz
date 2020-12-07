@@ -37,8 +37,10 @@
       href: workflow.md
     - name: Zobrazení protokolů auditu
       href: audit-logs.md
-- name: Odkazy
+- name: Reference
   items:
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation'
     - name: Nejčastější dotazy
       href: faq.md
     - name: REST
