@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 85fd5a4246e891ef6640438b07e12a9c32ad12fa
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ac75a5b0b59a06855b7ee88d971c269ca915e429
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094328"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763159"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Vysoká dostupnost a zotavení po havárii pro digitální vlákna Azure
 
@@ -28,7 +28,7 @@ V části věnované [*osvědčeným postupům*](#best-practices) si můžete pr
 
 ## <a name="intra-region-ha"></a>HA uvnitř oblasti
  
-Digitální vlákna Azure zajišťuje vysoké dostupnosti v rámci oblasti, protože implementuje redundance v rámci služby. **Vývojáři řešení digitálních vláken Azure nevyžadují žádnou další práci, aby mohli využívat tyto funkce HA.** I když digitální vlákna Azure nabízí dostatečně vysokou zaručenou dobu provozu, může se u všech distribuovaných výpočetních platforem stále očekávat přechodné selhání. Příslušné zásady opakování by měly být integrované pro součásti, které pracují s cloudovou aplikací pro řešení přechodných chyb.
+Digitální vlákna Azure zajišťuje vysoké dostupnosti v rámci oblasti, protože implementuje redundance v rámci služby. To se projeví v [smlouvě SLA](https://azure.microsoft.com/support/legal/sla/digital-twins) pro dobu provozu. **Vývojáři řešení digitálních vláken Azure nevyžadují žádnou další práci, aby mohli využívat tyto funkce HA.** I když digitální vlákna Azure nabízí dostatečně vysokou zaručenou dobu provozu, může se u všech distribuovaných výpočetních platforem stále očekávat přechodné selhání. Příslušné zásady opakování by měly být integrované pro součásti, které pracují s cloudovou aplikací pro řešení přechodných chyb.
 
 ## <a name="cross-region-dr"></a>Vzájemná oblast DR
 

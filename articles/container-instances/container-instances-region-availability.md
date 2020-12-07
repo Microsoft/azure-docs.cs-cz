@@ -4,12 +4,12 @@ description: Dostupnost výpočetních a paměťových prostředků pro službu 
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 2a833c93c80d932305f47b6e292e5e5df4d0cb95
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8651a1cc2c2ba41e2c28e9f63dc78c091a6af61d
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576610"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763889"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Dostupnost prostředků pro Azure Container Instances v oblastech Azure
 
@@ -81,9 +81,9 @@ Následující oblasti a maximální prostředky jsou k dispozici pro skupiny ko
 
 | Oblast | Maximální využití procesoru 1B/2B | Maximální velikost paměti 1B/2B (GB) |Maximální využití procesoru 3B | Maximální velikost paměti 3B (v GB) | Úložiště (GB) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: |
-| Austrálie – východ | 2 | 8 | 2 | 3,5 | 20 |
+| Austrálie – východ | 2 | 8 | 2 | 8 | 20 |
 | Brazil South | 4 | 16 | 4 | 16 | 20 |
-| Střední Kanada | 2 | 3,5 | 2 | 3,5 | 20 |
+| Střední Kanada | 2 | 8 | 2 | 3,5 | 20 |
 | Indie – střed | 2 | 3,5 | 2 | 3,5 | 20 |
 | Střední USA | 2 | 3,5 | 2 | 3,5 | 20 |
 | Východní Asie | 2 | 3,5 | 2 | 3,5 | 20 |
@@ -92,15 +92,15 @@ Následující oblasti a maximální prostředky jsou k dispozici pro skupiny ko
 | Japan East | 4 | 16 | 4 | 16 | 20 |
 | Jižní Korea – střed | 4 | 16 | 4 | 16 | 20 |
 | USA – středosever | 4 | 16 | 4 | 16 | 20 |
-| Severní Evropa | 2 | 3,5 | 2 | 8 | 20 |
-| Středojižní USA | 2 | 3,5 | 2 | 3,5 | 20 |
+| Severní Evropa | 2 | 8 | 2 | 8 | 20 |
+| Středojižní USA | 2 | 3,5 | 2 | 8 | 20 |
 | Southeast Asia | N/A | N/A | 2 | 3,5 | 20 |
 | Indie – jih | 2 | 3,5 | 2 | 3,5 | 20 |
 | Spojené království – jih | 2 | 8 | 2 | 3,5 | 20 |
-| USA – středozápad | 4 | 16 | 4 | 16 | 20 |
+| USA – středozápad | 4 | 16 | 2 | 8 | 20 |
 | West Europe | 4 | 16 | 4 | 16 | 20 |
 | USA – západ | 4 | 16 | 2 | 8 | 20 |
-| Západní USA 2 | 2 | 3,5 | 2 | 3,5 | 20 |
+| Západní USA 2 | 2 | 8 | 2 | 3,5 | 20 |
 
 
 ### <a name="windows-server-2019-ltsc"></a>Windows Server 2019 LTSC

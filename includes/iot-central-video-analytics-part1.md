@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 7246375468b3419c3d52ee3d5a51a95aa20050a9
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 2f3e4bf640b8da31a7fa4d818b94b0372d3026b8
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91877173"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763401"
 ---
 Ukázková aplikace zahrnuje dvě simulovaná zařízení a jednu IoT Edge bránu. V následujících kurzech se dozvíte dva přístupy k experimentování s funkcemi brány a jejich pochopení:
 
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření šablony zařízení pro zařízení IoT Edge brány
 > * Přidání zařízení brány do aplikace IoT Central
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení této série kurzů potřebujete:
 
@@ -36,6 +36,6 @@ K dokončení této série kurzů potřebujete:
 
 ## <a name="initial-setup"></a>Počáteční nastavení
 
-V těchto kurzech aktualizujete a použijete několik konfiguračních souborů. Počáteční verze těchto souborů jsou k dispozici v úložišti GitHub [lva-Gateway](https://github.com/Azure/live-video-analytics/tree/master/ref-apps/lva-edge-iot-central-gateway) . Úložiště obsahuje také textový soubor scratchpad, který můžete stáhnout a použít k nahrání hodnot konfigurace ze služeb, které nasazujete.
+V těchto kurzech aktualizujete a použijete několik konfiguračních souborů. Počáteční verze těchto souborů jsou k dispozici v úložišti GitHub [lva-Gateway](https://github.com/Azure/live-video-analytics/tree/master/ref-apps/lva-edge-iot-central-gateway) . Úložiště obsahuje textový soubor [scratchpad](https://github.com/Azure/live-video-analytics/blob/master/ref-apps/lva-edge-iot-central-gateway/setup/Scratchpad.txt) , který můžete stáhnout a použít k nahrání hodnot konfigurace ze služeb, které nasazujete. Tento soubor vám pomůže dokončit pozdější kroky v kurzech.
 
 Vytvořte složku s názvem *lva-Configuration* na místním počítači pro uložení kopií těchto souborů. Potom klikněte pravým tlačítkem na každý z následujících odkazů a zvolte **Uložit jako** a uložte soubor do složky *lva-Configuration* :

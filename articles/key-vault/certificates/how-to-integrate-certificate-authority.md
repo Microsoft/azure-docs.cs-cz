@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 4d29d7401cf944e8d999db847ce2e1266169ea34
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4635bcc51d2ab626b16ddcf02e772bf3df3cad4d
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448412"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763736"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Integrace služby Key Vault s certifikační autoritou DigiCert
 
@@ -122,11 +122,14 @@ Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertifica
 
 Certifikát byl teď úspěšně vydaný certifikační autoritou DigiCert v zadaném Key Vault prostřednictvím této integrace.
 
-## <a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshoot"></a>Odstraňování potíží
 
 Pokud je certifikát vystavený ve Azure Portal stav zakázáno, přejděte k části zobrazení **certifikátu** a zkontrolujte, jestli je v něm zobrazená chybová zpráva DigiCert.
 
  ![Operace certifikátu](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
+
+Chybová zpráva: pro dokončení této žádosti o certifikát prosím proveďte sloučení.
+Aby bylo možné dokončit tuto žádost, bude nutné sloučit CSR podepsané certifikační autoritou. Další informace najdete [tady](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request).
 
 Další informace najdete v referenčních informacích o [operacích certifikátu v REST API Key Vault](/rest/api/keyvault). Informace o tom, jak vytvářet oprávnění, najdete v tématu [trezory – vytvoření nebo aktualizace](/rest/api/keyvault/vaults/createorupdate) a [trezory – zásady přístupu pro aktualizaci](/rest/api/keyvault/vaults/updateaccesspolicy).
 
@@ -134,7 +137,7 @@ Další informace najdete v referenčních informacích o [operacích certifiká
 
 - Můžu vytvořit certifikát se zástupným znakem DigiCert prostřednictvím trezoru klíčů? 
    Ano. Bude záviset na tom, jak jste nakonfigurovali účet DigiCert.
-- Jak můžu vytvořit certifikát **ov-SSL nebo EV-SSL** s DigiCert?? 
+- Jak můžu vytvořit certifikát **ov-SSL nebo EV-SSL** s DigiCert? 
    Trezor klíčů podporuje vytváření certifikátů SSL OV a EV. Při vytváření certifikátu klikněte na Pokročilá konfigurace zásad a pak zadejte typ certifikátu. Podporované hodnoty: OV-SSL, EV-SSL
    
    Tento typ certifikátu byste mohli vytvořit v trezoru klíčů, pokud to váš účet DigiCert povoluje. Pro tento typ certifikátu provádí ověření DigiCert a jejich tým podpory by vám mohl při ověřování probíhat, pokud se ověření nepodaří. Při vytváření certifikátu můžete přidat další informace jejich definováním v tématu Subject.
@@ -144,7 +147,7 @@ Příklad
     ```
    
 - Je při vytváření certifikátu DigiCert prostřednictvím integrace, která přímo získává certifikát prostřednictvím DigiCert, k dispozici časová prodleva?
-   Ne. Při vytváření certifikátu se jedná o proces ověřování, který může chvíli trvat a toto ověření závisí na procesu, který DigiCert sleduje.
+   No. Při vytváření certifikátu se jedná o proces ověřování, který může chvíli trvat a toto ověření závisí na procesu, který DigiCert sleduje.
 
 
 ## <a name="next-steps"></a>Další kroky

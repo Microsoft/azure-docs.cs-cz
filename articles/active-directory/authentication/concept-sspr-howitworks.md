@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 12/07/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eaa8b586b7d1ae073d0746569d61de837eec3b7d
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 620b696be0b9a06cf0d68145b06e3cacf2bedff2
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743866"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762546"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to funguje: Samoobslužné resetování hesla v Azure AD
 
@@ -69,16 +69,13 @@ Pokud chcete začít pracovat s SSPR, dokončete následující kurz:
 > [!div class="nextstepaction"]
 > [Kurz: povolení samoobslužného resetování hesla (SSPR)](tutorial-enable-sspr.md)
 
-## <a name="registration-options"></a>Možnosti registrace
 
-Předtím, než uživatelé můžou resetovat nebo měnit heslo pomocí SSPR, se musí zaregistrovat sami a metody ověřování, které se mají použít. Jak je uvedeno v předchozí části, musí být uživatel zaregistrován pro SSPR a musí mít použitou příslušnou licenci.
-
-### <a name="require-users-to-register-when-they-sign-in"></a>Vyžadovat, aby se uživatelé zaregistrovali při přihlášení
+## <a name="require-users-to-register-when-they-sign-in"></a>Vyžadovat, aby se uživatelé zaregistrovali při přihlášení
 
 Můžete povolit, aby uživatel po přihlášení k aplikacím pomocí Azure AD dokončil registraci SSPR. Tento pracovní postup obsahuje následující aplikace:
 
 * Microsoft 365
-* Azure Portal
+* portál Azure
 * Přístupový panel
 * Federované aplikace
 * Vlastní aplikace s využitím Azure AD
@@ -92,7 +89,7 @@ Pokud nepotřebujete registraci, nebudou se uživatelé během přihlašování 
 >
 > Toto přerušení, které se má zaregistrovat pro SSPR, neruší připojení uživatele, pokud už se přihlásilo.
 
-### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Nastavte počet dní, než se uživatelům zobrazí výzva k potvrzení ověřovacích informací.
+## <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Nastavte počet dní, než se uživatelům zobrazí výzva k potvrzení ověřovacích informací.
 
 Aby bylo zajištěno, že metody ověřování jsou správné, když jsou potřeba k resetování nebo změně hesla, můžete vyžadovat, aby uživatelé po uplynutí určité doby ověřili informace zaregistrované v informacích. Tato možnost je k dispozici pouze v případě, že povolíte možnost **vyžadovat registraci uživatelů při přihlášení** .
 

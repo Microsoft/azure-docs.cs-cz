@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: d826b80c11b700d753acc18f8d4c626a65510f93
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 370b84f451e22c20c798018951a7a801e0bba826
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833805"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763940"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Osvědčené postupy a Průvodce odstraňováním potíží pro aplikace uzlů v Azure App Service Windows
 
@@ -140,7 +140,7 @@ let keepaliveAgent = new Agent({
 
 #### <a name="my-node-application-is-consuming-too-much-cpu"></a>Moje aplikace Node spotřebovává příliš mnoho CPU.
 
-Můžete obdržet doporučení od Azure App Service na portálu o vysoké spotřebě procesoru. Můžete také nastavit monitory, které sledují určité [metriky](web-sites-monitor.md). Při kontrole využití CPU na [řídicím panelu webu Azure Portal](../azure-monitor/app/web-monitor-performance.md)si prohlédněte maximální hodnoty pro procesor, abyste nemuseli vysílat nejvyšší hodnoty.
+Můžete obdržet doporučení od Azure App Service na portálu o vysoké spotřebě procesoru. Můžete také nastavit monitory, které sledují určité [metriky](web-sites-monitor.md). Když kontrolujete využití CPU na [řídicím panelu Azure Portal](../azure-monitor/platform/metrics-charts.md), podívejte se na maximum hodnot CPU, abyste nemuseli přijít na nejvyšší hodnoty.
 Pokud se domníváte, že vaše aplikace spotřebovává příliš mnoho CPU a nemůžete vysvětlit, proč, můžete profilovat aplikaci uzlu, abyste zjistili, jestli je.
 
 #### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>Profilování aplikace Node na Azure App Service s využitím V8-Profiler
@@ -213,7 +213,7 @@ Pomocí funkce WriteConsoleLog můžete zjistit, že 95% času bylo spotřebová
 
 ### <a name="my-node-application-is-consuming-too-much-memory"></a>Aplikace můj uzel spotřebovává příliš mnoho paměti.
 
-Pokud vaše aplikace spotřebovává příliš mnoho paměti, zobrazí se na portálu oznámení o vysoké spotřebě paměti Azure App Service na portálu. Můžete nastavit monitory, které sledují určité [metriky](web-sites-monitor.md). Když kontrolujete využití paměti na [řídicím panelu webu Azure Portal](../azure-monitor/app/web-monitor-performance.md), zkontrolujte maximální hodnoty paměti, abyste nemuseli přijít na nejvyšší hodnoty.
+Pokud vaše aplikace spotřebovává příliš mnoho paměti, zobrazí se na portálu oznámení o vysoké spotřebě paměti Azure App Service na portálu. Můžete nastavit monitory, které sledují určité [metriky](web-sites-monitor.md). Když kontrolujete využití paměti na [řídicím panelu Azure Portal](../azure-monitor/platform/metrics-charts.md), zkontrolujte maximální hodnoty paměti, abyste nemuseli přijít na nejvyšší hodnoty.
 
 #### <a name="leak-detection-and-heap-diff-for-nodejs"></a>Detekce nevracení a rozdíl haldy pro node.js
 

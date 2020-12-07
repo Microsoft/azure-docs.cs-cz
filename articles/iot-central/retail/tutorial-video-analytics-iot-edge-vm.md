@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 23173432db9364f25901e6e9b285d390c6a63a34
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: f798e65b1517430bc67af793ebb517c586d5d58f
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426541"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763872"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Kurz: vytvoření instance IoT Edge pro video Analytics (virtuální počítač se systémem Linux)
 
@@ -51,15 +51,15 @@ K dokončení formuláře **vlastního nasazení** použijte informace v násled
 | Předplatné | Vyberte své předplatné Azure. |
 | Skupina prostředků | *lva-RG* – skupina prostředků, kterou jste vytvořili v předchozím kurzu. |
 | Oblast       | *East US* |
-| Předpona popisku DNS | Vyberte jedinečnou předponu DNS pro virtuální počítač. |
+| Předpona popisku DNS | Vyberte jedinečnou předponu DNS pro virtuální počítač. Musí být všechny abecední znaky, žádné číslice ani speciální znaky. |
 | Uživatelské jméno správce | *AzureUser* |
 | Heslo správce | Zadejte heslo. Poznamenejte si heslo v souboru *scratchpad.txt* , budete ho používat později. |
 | ID oboru | **ID oboru** , které jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu, když jste přidali zařízení brány. |
 | ID zařízení | *Brána – 001* – zařízení brány, které jste vytvořili v předchozím kurzu. |
-| Klíč zařízení | Primární klíč zařízení, který jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu, když jste přidali zařízení brány. |
+| Klíč zařízení | **Primární klíč zařízení** , který jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu, když jste přidali zařízení brány. |
 | Hostitel aplikace IoT Central | **Adresa URL aplikace** , kterou jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu. Například *Traders.azureiotcentral.com*. |
-| Token API aplikace IoT Central | Token rozhraní API pro operátora, na který jste si poznamenali v předchozím kurzu. |
-| Klíč pro zřizování zařízení IoT Central | Token sdíleného přístupového podpisu primární skupiny jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu. |
+| Token API aplikace IoT Central | **Token rozhraní API pro operátora** , který jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu. |
+| Klíč pro zřizování zařízení IoT Central | **Primární klíč skupiny SAS-IoT-Devices** , který jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu. |
 | Velikost virtuálního počítače | *Standard_DS1_v2* |
 | Verze operačního systému Ubuntu | *18,04 – LTS* |
 | Umístění | *[resourceName (). Location]* |

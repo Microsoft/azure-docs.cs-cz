@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: 5dbe161af172b65919328fca0b272f3b658f1b32
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: fe79797aeef2b0c148aece0319d6b340b663b184
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600485"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763719"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Jak používat metodu POST k posílání žádostí do rozhraní API digitálních vláken Azure
 
@@ -25,7 +25,7 @@ Tento článek popisuje, jak nakonfigurovat [klienta post REST](https://www.getp
 1. Nastavte si kolekci post a nakonfigurujte klienta post REST, aby k ověřování používal váš nosný token.
 1. Použijte nakonfigurovaného Poster k vytvoření a odeslání žádosti do rozhraní API digitálních vláken Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete pokračovat v používání metody post pro přístup k rozhraním API digitálních vláken Azure, musíte nastavit instanci digitálních vláken Azure a stáhnout post. Zbytek této části vás provede následujícími kroky.
 
@@ -130,7 +130,7 @@ Pokud chcete poslat žádost o odeslání do jedné z rozhraní API digitálníc
 
 Chcete-li pokračovat s příkladem dotazu, bude tento článek používat rozhraní API pro dotazy (a jeho [referenční dokumentaci](/rest/api/digital-twins/dataplane/query/querytwins)) k dotazování na všechny digitální vlákna v instanci.
 
-1. Získejte adresu URL a typ žádosti z referenční dokumentace. Pro rozhraní API pro dotazy je to *post `https://digitaltwins-name.digitaltwins.azure.net/query?api-version=2020-10-31`*.
+1. Získejte adresu URL a typ žádosti z referenční dokumentace. Pro rozhraní API pro dotazování je aktuálně *post `https://digitaltwins-hostname/query?api-version=2020-10-31`*.
 1. V poli PSČ nastavte typ pro požadavek a zadejte adresu URL požadavku, podle potřeby vyplňte zástupné symboly v adrese URL. Tady budete používat **název hostitele** vaší instance z oddílu [*požadavky*](#prerequisites) .
     
    :::image type="content" source="media/how-to-use-postman/postman-request-url.png" alt-text="V podrobnostech nové žádosti byla do pole Adresa URL žádosti vložena adresa URL dotazu z referenční dokumentace." lightbox="media/how-to-use-postman/postman-request-url.png":::

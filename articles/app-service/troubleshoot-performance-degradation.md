@@ -7,12 +7,12 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: 82373dcd9e1d55e0c4a5867ddaff6875ee57da5a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cf8b0e1fda03a74d30ec77c911d705bf12cf0126
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147503"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763804"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Řešení potíží s výkonem pomalých aplikací v Azure App Service
 Tento článek vám pomůže při řešení problémů s výkonem pomalých aplikací v [Azure App Service](./overview.md).
@@ -58,7 +58,7 @@ Některé metriky, které můžete chtít monitorovat pro vaši aplikaci, jsou
 
 ![monitorování výkonu aplikace](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
-Další informace naleznete v tématech:
+Další informace najdete tady:
 
 * [Monitorování aplikací v Azure App Service](web-sites-monitor.md)
 * [Zobrazování oznámení o výstrahách](../azure-monitor/platform/alerts-overview.md)
@@ -82,7 +82,7 @@ Každá aplikace App Service poskytuje rozšiřitelný koncový bod správy, kte
 - Editory zdrojového kódu, jako je například [Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
 - Nástroje pro správu připojených prostředků, například databáze MySQL připojené k aplikaci.
 
-[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) je rozšíření webu pro monitorování výkonu, které je dostupné taky. Chcete-li použít Application Insights, znovu sestavte kód pomocí sady SDK. Můžete také nainstalovat rozšíření, které poskytuje přístup k dalším datům. Sada SDK umožňuje psát kód pro sledování využití a výkonu vaší aplikace podrobněji. Další informace najdete v tématu [monitorování výkonu ve webových aplikacích](../azure-monitor/app/web-monitor-performance.md).
+[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) je rozšíření webu pro monitorování výkonu, které je dostupné taky. Chcete-li použít Application Insights, znovu sestavte kód pomocí sady SDK. Můžete také nainstalovat rozšíření, které poskytuje přístup k dalším datům. Sada SDK umožňuje psát kód pro sledování využití a výkonu vaší aplikace podrobněji. Další informace najdete v tématu [monitorování výkonu ve webových aplikacích](../azure-monitor/app/app-insights-overview.md).
 
 <a name="collect"></a>
 
@@ -161,4 +161,4 @@ Restartování je často nejjednodušší způsob, jak provést zotavení při j
 
  ![restartování aplikace za účelem řešení problémů s výkonem](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-Svou aplikaci můžete spravovat i pomocí Azure PowerShellu. Další informace najdete v tématu [Použití Azure PowerShellu s Azure Resource Managerem](../azure-resource-manager/management/manage-resources-powershell.md).
+Aplikaci můžete spravovat také pomocí Azure PowerShell. Další informace najdete v tématu [Použití Azure PowerShellu s Azure Resource Managerem](../azure-resource-manager/management/manage-resources-powershell.md).

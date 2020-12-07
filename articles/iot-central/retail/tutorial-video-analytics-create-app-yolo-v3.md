@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 10/06/2020
-ms.openlocfilehash: 3994b05f613cbebcf6daa05cf8db3ef429b52407
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: ecc32908aea2fb474d2ebe5bd94f556527eda814
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428056"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763402"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central-yolo-v3"></a>Kurz: Vytvoření aplikace pro video Analytics – objekt a detekce pohybu v Azure IoT Central (YOLO V3)
 
@@ -24,10 +24,10 @@ Jako tvůrce řešení se naučíte, jak vytvořit aplikaci video Analytics pomo
 
 [!INCLUDE [iot-central-video-analytics-part1](../../../includes/iot-central-video-analytics-part1.md)]
 
-- [Scratchpad.txt](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/Scratchpad.txt)
+- [Scratchpad.txt](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/Scratchpad.txt) – tento soubor vám pomůže zaznamenat různé možnosti konfigurace, které potřebujete při práci s těmito kurzy.
 - [deployment.amd64.jsna](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/deployment.amd64.json)
 - [LvaEdgeGatewayDcm.jsna](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/LvaEdgeGatewayDcm.json)
-- [state.jsna](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/state.json)
+- [state.jszapnuto](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/state.json) , stačí stáhnout tento soubor jenom v případě, že v druhém kurzu plánujete použít zařízení Intel nuc.
 
 > [!NOTE]
 > Úložiště GitHub obsahuje také zdrojový kód pro moduly **LvaEdgeGatewayModule** a **lvaYolov3** IoT Edge. Další informace o práci se zdrojovým kódem najdete v tématu [sestavování modulů brány lva](tutorial-video-analytics-build-module.md).
@@ -42,7 +42,7 @@ Příprava manifestu nasazení:
 
 1. Otevřete *deployment.amd64.jsv* souboru, který jste uložili do složky *lva-Configuration* pomocí textového editoru.
 
-1. Vyhledejte `LvaEdgeGatewayModule` nastavení a změňte název bitové kopie, jak je znázorněno v následujícím fragmentu kódu:
+1. Vyhledejte nastavení a ujistěte se, `LvaEdgeGatewayModule` že je název obrázku uveden v následujícím fragmentu kódu:
 
     ```json
     "LvaEdgeGatewayModule": {
@@ -50,7 +50,7 @@ Příprava manifestu nasazení:
             "image": "mcr.microsoft.com/lva-utilities/lva-edge-iotc-gateway:1.0-amd64",
     ```
 
-1. Přidejte název účtu Media Services do `env` uzlu v `LvaEdgeGatewayModule` části. Tento název účtu jste si poznamenali v souboru *scratchpad.txt* :
+1. Přidejte název účtu Media Services do `env` uzlu v `LvaEdgeGatewayModule` části. Poznamenali jste název Media Services účtu v souboru *scratchpad.txt* :
 
     ```json
     "env": {
@@ -58,7 +58,7 @@ Příprava manifestu nasazení:
             "value": "lvaEdge"
         },
         "amsAccountName": {
-            "value": "<YOUR_AZURE_MEDIA_ACCOUNT_NAME>"
+            "value": "<YOUR_AZURE_MEDIA_SERVICES_ACCOUNT_NAME>"
         }
     }
     ```
@@ -67,7 +67,16 @@ Příprava manifestu nasazení:
 
     `azureMediaServicesArmId`Je **ID prostředku** , které jste si poznamenali v souboru *scratchpad.txt* při vytváření účtu Media Services.
 
-    Poznamenali jste `aadTenantId` , `aadServicePrincipalAppId` a `aadServicePrincipalSecret` v souboru *scratchpad.txt* , když jste vytvořili instanční objekt pro účet Media Services:
+    Následující tabulka ukazuje hodnoty z **rozhraní API pro připojení k Media Services (JSON)** v souboru *scratchpad.txt* , který byste měli použít v manifestu nasazení:
+
+    | Manifest nasazení       | Scratchpad  |
+    | ------------------------- | ----------- |
+    | aadTenantId               | AadTenantId |
+    | aadServicePrincipalAppId  | AadClientId |
+    | aadServicePrincipalSecret | AadSecret   |
+
+    > [!CAUTION]
+    > Použijte předchozí tabulku a ujistěte se, že jste přidali správné hodnoty v manifestu nasazení, jinak nebude zařízení fungovat.
 
     ```json
     {

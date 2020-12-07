@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 87e7f959dd932c874604df43fa61112d181ac581
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 53324709e2d3dd11160ee0b7837d86d9e9594571
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531696"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763923"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>Základní hodnoty zabezpečení Azure pro přední dveře Azure
 
@@ -206,7 +206,7 @@ Doporučuje se, aby zákazník vytvořil proces pro zachycení atributů a změn
 
 ### <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3: Povolení protokolování pro síťové aktivity Azure
 
-**Doprovodné** materiály: Síťová dvířka Azure nejsou určená k nasazení do virtuálních sítí. vzhledem k tomu, že tento zákazník nemůže povolit protokolování toku skupin zabezpečení sítě, směrovat provoz přes bránu firewall nebo provádět zachycení paketů.
+**Doprovodné** materiály: přední dveře Azure nejsou určeny k nasazení do virtuálních sítí. vzhledem k tomu, že tento zákazník nemůže povolit protokolování toku skupin zabezpečení sítě, směrovat provoz přes bránu firewall nebo provádět zachycení paketů.
 
 Přední dvířka Azure zapisuje všechny síťové přenosy, které IT zpracovává pro přístup zákazníků. Povolte funkci protokoly toku sítě a nakonfigurujte tyto protokoly, aby se odesílaly do účtu úložiště pro dlouhodobé uchovávání a auditování.
 

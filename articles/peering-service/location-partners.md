@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 11/06/2020
 ms.author: derekol
-ms.openlocfilehash: 29ce0c1421019b95adb00c4eab3f9c1d90da0510
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: c2c16e6b5be4e187a776f75454ecf9377da911e3
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353777"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763171"
 ---
 # <a name="peering-service-partners"></a>Partneři služby partnerského vztahu
 
@@ -30,7 +30,7 @@ Tabulka v tomto článku poskytuje informace o partnerech připojení služby pe
 
 | **Partneři** | **Uvádět**|
 |-----------|---------|
-| [CenturyLink](https://www.ctl.io/microsoft-azure-peering-services/) |USA|
+| [Lumen – technologie](https://www.ctl.io/microsoft-azure-peering-services/) |Severní Amerika, Evropa|
 | [BBIX](https://www.bbix.net/en/service/) |Japonsko |
 | [CCL](https://concepts.co.nz/news/general-news/) |Oceánie |
 | [Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/)|Evropa, Asie|

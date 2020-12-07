@@ -7,13 +7,13 @@ ms.date: 11/23/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.custom: mvc
-ms.openlocfilehash: 55f187781a0f11417b0c918034dcfe3362be4468
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: mvc, contperfq2
+ms.openlocfilehash: 847fc5345708dc313f706fcb0d370b0d1761aa41
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457666"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763702"
 ---
 # <a name="what-is-azure-iot-central"></a>Co je Azure IoT Central?
 
@@ -34,7 +34,7 @@ Tento článek popisuje, jak IoT Central:
 
 Dokumentace IoT Central odkazuje na čtyři osobyy, které komunikují s aplikací IoT Central:
 
-- _Tvůrce řešení_ zodpovídá za [Definování typů zařízení](howto-set-up-template.md) , která se připojují k aplikaci, a přizpůsobení aplikace pro operátor.
+- _Tvůrce řešení_ zodpovídá za [Vytvoření aplikace](quick-deploy-iot-central.md), [konfiguraci pravidel a akcí](quick-configure-rules.md), [Definování integrace s jinými službami](howto-export-data.md)a další přizpůsobení aplikace pro operátory a vývojáře zařízení.
 - _Operátor_ [spravuje zařízení](howto-manage-devices.md) připojená k aplikaci.
 - _Správce_ zodpovídá za úlohy správy, jako je například Správa [rolí uživatelů a oprávnění](howto-administer.md) v rámci aplikace.
 - _Vývojář zařízení_ [vytvoří kód, který běží na zařízení](concepts-telemetry-properties-commands.md) nebo [IoT Edge modul](concepts-iot-edge.md) připojený k vaší aplikaci.

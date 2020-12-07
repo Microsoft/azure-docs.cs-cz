@@ -4,12 +4,12 @@ description: Application Insights provádí inteligentní analýzu telemetrie ap
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 28a32c714618a3b6b0c3126d8060295f134ddc7c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ead71a5ac6e2cfa0df6654c7ba9aa7b5b9238d04
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186231"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763770"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Inteligentní zjišťování – anomálie výkonu
 
@@ -57,10 +57,10 @@ Oznámení inteligentní detekce jsou ve výchozím nastavení povolená a odes�
 
 U e-mailů o inteligentních Detekcích se anomálie výkonu u každého Application Insights prostředku omezí na jeden e-mail za den. E-mail se pošle jenom v případě, že se v daném dni našel aspoň jeden nový problém. Žádná zpráva se neopakuje. 
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 * *Proto si zaměstnanci Microsoftu prohledají moje údaje?*
-  * Ne. Služba je zcela automatická. Oznámení se zobrazí jenom vy. Vaše data jsou [soukromá](./data-retention-privacy.md).
+  * No. Služba je zcela automatická. Oznámení se zobrazí jenom vy. Vaše data jsou [soukromá](./data-retention-privacy.md).
 * *Analyzujete všechna data shromažďovaná v Application Insights?*
   * V současné době není k dispozici. V současné době analyzujeme dobu odezvy požadavku, dobu odezvy závislosti a dobu načítání stránky. Analýza dalších metrik je na našich nevyřízených položkách, které jsou vyhledány.
 
@@ -76,7 +76,7 @@ U e-mailů o inteligentních Detekcích se anomálie výkonu u každého Applica
 
   * Analýzy provedeme denně na telemetrie z předchozího dne (celý den v časovém pásmu UTC).
 * *To znamená, že tyto [výstrahy metriky](../platform/alerts-log.md)nahrazují?*
-  * Ne.  Nepotvrzuji jsme zjišťování všech chování, která by se vám mohla považovat za neobvyklou.
+  * No.  Nepotvrzuji jsme zjišťování všech chování, která by se vám mohla považovat za neobvyklou.
 
 
 * *Pokud v reakci na oznámení něco neudělám, zobrazí se vám připomenutí?*
@@ -99,7 +99,7 @@ Kde se jedná o problém? Reaguje Server pomaleji, je stránka velmi dlouhá neb
 
 Otevřete okno metrika prohlížeče. Segmentované zobrazení času načtení stránky v prohlížeči ukazuje, kde se bude zobrazovat čas. 
 
-* Pokud je **čas požadavku na odeslání** vysoký, znamená to, že server reaguje pomalu nebo se jedná o příspěvek s velkým množstvím dat. Podívejte se na [metriky výkonu](./web-monitor-performance.md#metrics) a prozkoumejte dobu odezvy.
+* Pokud je **čas požadavku na odeslání** vysoký, znamená to, že server reaguje pomalu nebo se jedná o příspěvek s velkým množstvím dat. Podívejte se na [metriky výkonu](./performance-counters.md) a prozkoumejte dobu odezvy.
 * Nastavením [sledování závislostí](./asp-net-dependencies.md) zjistíte, jestli je zpomalení způsobeno externími službami nebo databází.
 * Pokud je **příjem odpovědi** převládající, vaše stránka a její závislé součásti – JavaScript, CSS, obrázky atd. (ale ne asynchronně načtená data) jsou dlouhé. Nastavte [Test dostupnosti](./monitor-web-app-availability.md)a nezapomeňte nastavit možnost načítání závislých částí. Když dostanete nějaké výsledky, otevřete Podrobnosti výsledku a rozbalte ho, abyste viděli dobu načítání různých souborů.
 * Vysoká **Doba zpracování klienta** navrhuje spouštění skriptů pomalu. Pokud důvod není zjevný, zvažte přidání nějakého kódu časování a odeslání času v voláních trackMetric.

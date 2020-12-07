@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: de916fcbe0623185821e2f5da15a8f9cf71dfd4e
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 0b3ccc31c9159b5d7b1615add89e8fdc308bf8df
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426738"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763403"
 ---
 ### <a name="publish-the-device-template"></a>Publikování šablony zařízení
 
@@ -41,6 +41,12 @@ Migrace zařízení **brány – 001** :
 
 Po několika sekundách se migrace dokončí. Vaše zařízení teď používá šablonu zařízení **lva Edge Gateway v2** s vlastním přizpůsobeným manifestem nasazení.
 
+V tuto chvíli nejsou k dispozici žádná zařízení pomocí původní šablony zařízení **brány lva Edge** . Odstranit tuto šablonu zařízení:
+
+1. Přejděte na stránku **šablony zařízení** a vyberte šablonu zařízení **lva Edge Gateway** .
+
+1. Vyberte **Odstranit** a odstraňte šablonu zařízení.
+
 ### <a name="get-the-device-credentials"></a>Získání přihlašovacích údajů zařízení
 
 Budete potřebovat přihlašovací údaje, které umožní zařízení připojit se k vaší IoT Central aplikaci. Přihlašovací údaje pro získání zařízení:
@@ -49,7 +55,7 @@ Budete potřebovat přihlašovací údaje, které umožní zařízení připojit
 
 1. Vyberte **Connect** (Připojit).
 
-1. Na stránce **připojení zařízení** si poznamenejte v souboru *scratchpad.txt* **rozsahu ID** , **ID zařízení** a **primární klíč** zařízení. Tyto hodnoty použijete později.
+1. Na stránce **připojení zařízení** si poznamenejte v souboru *scratchpad.txt* **rozsahu ID**, **ID zařízení** a **primární klíč** zařízení. Tyto hodnoty použijete později.
 
 1. Ujistěte se, že je metoda připojení nastavená na **sdílený přístupový podpis**.
 

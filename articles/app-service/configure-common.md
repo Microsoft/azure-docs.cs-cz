@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
-ms.openlocfilehash: 1ab6f5e9c7b602ce124116c02584c5a48a3f597f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7c1b9ad033ade3b577dc4a06e84801dab3b7eb70
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999973"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763957"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurace aplikace App Service v Azure Portal
 
@@ -29,7 +29,7 @@ V nabídce vlevo aplikace vyberte nastavení **Konfigurace**  >  **aplikace**.
 
 ![Nastavení aplikace](./media/configure-common/open-ui.png)
 
-V případě vývojářů ASP.NET a ASP.NET Core je nastavení aplikace v App Service třeba nastavit v `<appSettings>` v *Web.config* nebo *appsettings.jsna*, ale hodnoty v App Service přepisují ty *Web.config* nebo *appsettings.jsna*. Můžete zachovat nastavení pro vývoj (například místní heslo MySQL) ve *Web.config* nebo *appsettings.jsna*, ale provozní tajemství (například heslo databáze MySQL Azure) jsou v App Service bezpečná. Stejný kód používá vaše vývojové nastavení při ladění místně a při nasazení do Azure používá vaše provozní tajemství.
+V případě vývojářů ASP.NET a ASP.NET Core je nastavení aplikace v App Service třeba nastavit v `<appSettings>` v *Web.config* nebo *appsettings.jsna*, ale hodnoty v App Service přepisují ty *Web.config* nebo *appsettings.jsna*. Můžete zachovat nastavení vývoje (například místní heslo MySQL) ve *Web.config* nebo *appsettings.jsna* a v produkčních tajných klíčích (například heslo databáze Azure MySQL) v App Service. Stejný kód používá vaše vývojové nastavení při ladění místně a při nasazení do Azure používá vaše provozní tajemství.
 
 Další jazykové zásobníky také získají nastavení aplikace jako proměnné prostředí za běhu. Postup pro konkrétní jazykový zásobník najdete v těchto tématech:
 

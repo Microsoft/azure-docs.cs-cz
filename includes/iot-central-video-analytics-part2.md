@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 383cd286f89bde13f5e557792e980f0455e00917
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 472c1770e2793d8da4e8fc76fafbf3b9073b746d
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91877182"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763400"
 ---
 ## <a name="deploy-and-configure-azure-media-services"></a>Nasazení a konfigurace Azure Media Services
 
@@ -34,7 +34,15 @@ Vytvořte [účet Media Services v Azure Portal](https://portal.azure.com/?r=1#c
 
 Poznamenejte si název **Media Services** účtu v souboru *scratchpad.txt* .
 
-Po dokončení nasazení přejděte na stránku **vlastnosti** pro váš účet **Media Services** . Poznamenejte si **ID prostředku** v souboru *scratchpad.txt* . tuto hodnotu použijete později při konfiguraci modulu IoT Edge.
+Po dokončení nasazení otevřete Cloud Shell a spusťte následující příkaz, který načte **ID prostředku** pro váš účet Media Service:
+
+```azurecli
+az resource list --resource-group lva-rg --resource-type microsoft.media/mediaservices --output table --query "[].{ResourceID:id}"
+```
+
+:::image type="content" source="media/iot-central-video-analytics-part2/get-resource-id.png" alt-text="K získání ID prostředku použijte Cloud Shell.":::
+
+Poznamenejte si **ID prostředku** v souboru *scratchpad.txt* . tuto hodnotu použijete později při konfiguraci modulu IoT Edge.
 
 Dále nakonfigurujte Azure Active Directory instančního objektu pro prostředek Media Services. Vyberte **přístup přes rozhraní API** a pak **ověřování instančního objektu**. Vytvořte novou aplikaci Azure Active Directory se stejným názvem jako má prostředek Media Services a vytvořte tajný klíč s popisem *IoT Edge přístupu*.
 
@@ -66,15 +74,15 @@ Vytvoření nové aplikace video Analytics:
 1. Volitelně můžete zvolit popisný **název aplikace**. Tato aplikace je založená na fiktivním maloobchodním obchodě s názvem Northwind Traders. V tomto kurzu se používá **název aplikace** *Northwind Traders video Analytics*.
 
     > [!NOTE]
-    > Použijete-li popisný **název aplikace**, je stále nutné použít jedinečnou hodnotu pro **adresu URL**aplikace.
+    > Použijete-li popisný **název aplikace**, je stále nutné použít jedinečnou hodnotu pro **adresu URL** aplikace.
 
-1. Pokud máte předplatné Azure, vyberte svůj **adresář**, **předplatné Azure**a **USA** jako **umístění**. Pokud předplatné nemáte, můžete povolit **7 dní bezplatnou zkušební verzi** a dokončit požadované kontaktní údaje. V tomto kurzu se používají tři zařízení – dva kamery a IoT Edge zařízení. Pokud nepoužijete bezplatnou zkušební verzi, bude se vám účtovat využití.
+1. Pokud máte předplatné Azure, vyberte svůj **adresář**, **předplatné Azure** a **USA** jako **umístění**. Pokud předplatné nemáte, můžete povolit **7 dní bezplatnou zkušební verzi** a dokončit požadované kontaktní údaje. V tomto kurzu se používají tři zařízení – dva kamery a IoT Edge zařízení. Pokud nepoužijete bezplatnou zkušební verzi, bude se vám účtovat využití.
 
     Další informace o adresářích, předplatných a umístěních najdete v tématu [rychlý Start k vytvoření aplikace](../articles/iot-central/core/quick-deploy-iot-central.md).
 
 1. Vyberte **Vytvořit**.
 
-    :::image type="content" source="./media/iot-central-video-analytics-part2/new-application.png" alt-text="Konfigurace aplikace Azure A D pro Azure Media Services":::
+    :::image type="content" source="./media/iot-central-video-analytics-part2/new-application.png" alt-text="Stránka aplikace Azure IoT Central":::
 
 ### <a name="retrieve-the-configuration-data"></a>Načíst konfigurační data
 
@@ -82,14 +90,14 @@ Později v tomto kurzu při konfiguraci IoT Edge brány potřebujete některá k
 
 V části **Správa** vyberte **svou aplikaci** a poznamenejte si **adresu URL aplikace** a **ID aplikace** v souboru *scratchpad.txt* :
 
-:::image type="content" source="./media/iot-central-video-analytics-part2/administration.png" alt-text="Konfigurace aplikace Azure A D pro Azure Media Services":::
+:::image type="content" source="./media/iot-central-video-analytics-part2/administration.png" alt-text="Snímek obrazovky se zobrazí v podokně Správa stránky video Analytics se zvýrazněnou možností aplikace U R L a aplikace I D.":::
 
 Vyberte **tokeny API** a vygenerujte nový token s názvem **LVAEdgeToken** pro roli **operátora** :
 
-:::image type="content" source="./media/iot-central-video-analytics-part2/token.png" alt-text="Konfigurace aplikace Azure A D pro Azure Media Services":::
+:::image type="content" source="./media/iot-central-video-analytics-part2/token.png" alt-text="Generovat token":::
 
 Poznamenejte si token v souboru *scratchpad.txt* pro pozdější provedení. Po zavření dialogového okna nelze token znovu zobrazit.
 
-V části **Správa** vyberte **připojení zařízení**a pak vyberte **SAS-IoT-Devices**.
+V části **Správa** vyberte **připojení zařízení** a pak vyberte **SAS-IoT-Devices**.
 
 Poznamenejte si **primární klíč** pro zařízení v souboru *scratchpad.txt* . Pomocí tohoto *tokenu sdíleného přístupového podpisu primární skupiny* můžete později nakonfigurovat IoT Edge zařízení.
