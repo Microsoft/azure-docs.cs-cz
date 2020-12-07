@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 9e613331760a1715c3821bdc7dbbf0469e8bfd97
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 5d160c46b235c6890426cab9de52ec7b827efe4a
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337606"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750709"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Příprava aplikace pro nasazení v jarním cloudu Azure
 
@@ -29,7 +29,7 @@ Tento článek vysvětluje závislosti, konfiguraci a kód, které jsou nutné k
 
 Azure jarní Cloud podporuje:
 
-* .NET Core 3,1
+* .NET Core 3.1
 * Steeltoe 2,4 a 3,0
 
 ## <a name="dependencies"></a>Závislosti
@@ -149,6 +149,9 @@ Jarní spouštěcí verze | Jarní cloudová verze
 2.1 | Střední verze
 2,2 | Hoxton.SR8
 2.3 | Hoxton.SR8
+
+> [!NOTE]
+> Zjistili jsme problém se jarním 2,4 spuštěním ověřování TLS mezi vašimi aplikacemi a Eureka a momentálně spolupracujete se zdrojovou komunitou, abyste ji mohli vyřešit. Alternativní řešení najdete v našich [nejčastějších dotazech](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) .
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>Závislosti pro jaře Booting verze 2,1
 

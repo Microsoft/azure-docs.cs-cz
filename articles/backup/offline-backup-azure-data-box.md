@@ -3,12 +3,12 @@ title: Offline zálohování pomocí Azure Data Box
 description: Naučte se, jak můžete použít Azure Data Box k osazení velkých počátečních zálohovaných dat offline od agenta MARS do trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 5a4aeebeddcca4adcac511c7c225c8809dd29c93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e789b6c9f4ff2e8cd168e6b5c138d423911d4743
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89180928"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752579"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Backup offline zálohování pomocí Azure Data Box
 
@@ -56,7 +56,7 @@ Proces pro osazení dat z agenta MARS pomocí Azure Data Box je podporován v n�
 >[!IMPORTANT]
 >Počáteční data zálohy z jednoho serveru musí být obsažena v rámci jedné Azure Data Box instance nebo Azure Data Box disku a nemohou být sdílena mezi více zařízeními stejné nebo jiné SKU. Zařízení Azure Data Box může ale obsahovat počáteční zálohy z více serverů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="azure-subscription-and-required-permissions"></a>Předplatné Azure a požadovaná oprávnění
 
@@ -116,7 +116,7 @@ Azure PowerShell mohl být nainstalován také pomocí souboru MSI. Pokud ho chc
 Proces offline zálohování pomocí MARS a Azure Data Box vyžaduje, aby byla Data Boxá zařízení v doručeném stavu před aktivací offline zálohování pomocí agenta MARS. Pro seřazení nejvhodnější skladové položky podle vašeho požadavku si přečtěte část [Velikost dat zálohy a podporované data box SKU](#backup-data-size-and-supported-data-box-skus). Postupujte podle kroků v [kurzu: objednání Azure Data Boxho disku](../databox/data-box-disk-deploy-ordered.md) pro objednání a příjem data box zařízení.
 
 > [!IMPORTANT]
-> Pro **druh účtu**nevybírejte *BlobStorage* . Agent MARS vyžaduje účet, který podporuje objekty blob stránky, které nejsou podporované, když je vybraná možnost *BlobStorage* . Jako **druh účtu** při vytváření cílového účtu úložiště pro úlohu Azure Data box vyberte **úložiště v2 (obecné účely v2)** .
+> Pro **druh účtu** nevybírejte *BlobStorage* . Agent MARS vyžaduje účet, který podporuje objekty blob stránky, které nejsou podporované, když je vybraná možnost *BlobStorage* . Jako **druh účtu** při vytváření cílového účtu úložiště pro úlohu Azure Data box vyberte **úložiště v2 (obecné účely v2)** .
 
 ![Volba druhu účtu v podrobnostech instance](./media/offline-backup-azure-data-box/instance-details.png)
 
@@ -124,7 +124,7 @@ Proces offline zálohování pomocí MARS a Azure Data Box vyžaduje, aby byla D
 
 1. Ujistěte se, že jste odinstalovali všechny předchozí instalace agenta MARS.
 1. Stáhněte si nejnovějšího agenta MARS z [tohoto webu](https://aka.ms/azurebackup_agent).
-1. Spusťte *MARSAgentInstaller.exe*a proveďte *pouze* kroky pro [instalaci a registraci agenta](./install-mars-agent.md#install-and-register-the-agent) do trezoru Recovery Services, kde chcete ukládat zálohy.
+1. Spusťte *MARSAgentInstaller.exe* a proveďte *pouze* kroky pro [instalaci a registraci agenta](./install-mars-agent.md#install-and-register-the-agent) do trezoru Recovery Services, kde chcete ukládat zálohy.
 
    > [!NOTE]
    > Trezor Recovery Services musí být ve stejném předplatném jako úloha Azure Data Box.
@@ -216,7 +216,7 @@ K zajištění toho, aby zařízení Data Box bylo možné připojit jako místn
     >
     >Pokud jste [nastavili Azure Data Box 100-TB zařízení](#set-up-azure-data-box-devices), zadejte `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` jako síťovou cestu k zařízení.
 
-1. Vyberte **Další**a na další stránce vyberte **Dokončit** a uložte zásady zálohování a uchovávání informací s konfigurací offline zálohování pomocí Azure Data box.
+1. Vyberte **Další** a na další stránce vyberte **Dokončit** a uložte zásady zálohování a uchovávání informací s konfigurací offline zálohování pomocí Azure Data box.
 
    Na následující stránce se potvrdí, že se zásada úspěšně uložila.
 
@@ -247,7 +247,7 @@ V této části najdete popis kroků, které je potřeba provést po úspěšné
 
 - Poté, co agent MARS úspěšně vytvoří bod obnovení, který odpovídá prvotnímu zálohování, můžete odstranit účet úložiště nebo konkrétní obsah přidružený k Azure Data Box úlohy.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Agent Microsoft Azure Recovery Services (MARS) vytvoří ve vašem tenantovi aplikaci Azure Active Directory (Azure AD). Tato aplikace vyžaduje certifikát pro ověřování, který se vytvoří a nahraje při konfiguraci zásad pro počáteční nastavení offline. K vytvoření a nahrání certifikátu do aplikace Azure AD používáme Azure PowerShell.
 
@@ -277,14 +277,14 @@ Chcete-li tento problém vyřešit, postupujte podle následujících kroků a o
 
 #### <a name="step-1-of-workaround"></a>Krok 1 alternativního řešení
 
-Přihlaste se k PowerShellu, který se zobrazí v uživatelském rozhraní MAB pomocí jiného účtu s přístupem správce k předplatnému, které bude mít vytvořenou úlohu importu nebo exportu.
+Přihlaste se k PowerShellu, který se zobrazí v uživatelském rozhraní MAB pomocí jiného účtu s přístupem správce k předplatnému, které bude mít vytvořenou úlohu Data Box.
 
 #### <a name="step-2-of-workaround"></a>Krok 2 – alternativní řešení
 
 Pokud na žádném jiném serveru není nakonfigurované počáteční nastavování offline a na aplikaci není závislý žádný jiný server `AzureOfflineBackup_<Azure User Id>` , odstraňte tuto aplikaci. Vyberte **Azure Portal**  >  **Azure Active Directory**  >  **Registrace aplikací**.
 
 >[!NOTE]
-> Zkontrolujte, jestli aplikace nemá `AzureOfflineBackup_<Azure User Id>` nakonfigurované žádné další offline nastavení, a jestli není na této aplikaci závislý žádný jiný server. **Settings**  >  V části **veřejné klíče** pokračujte na**klíče** nastavení. Neměl by mít přidané žádné jiné veřejné klíče. Odkaz najdete na následujícím snímku obrazovky.
+> Zkontrolujte, jestli aplikace nemá `AzureOfflineBackup_<Azure User Id>` nakonfigurované žádné další offline nastavení, a jestli není na této aplikaci závislý žádný jiný server. **Settings**  >  V části **veřejné klíče** pokračujte na **klíče** nastavení. Neměl by mít přidané žádné jiné veřejné klíče. Odkaz najdete na následujícím snímku obrazovky.
 >
 >![Veřejné klíče](./media/offline-backup-azure-data-box/public-keys.png)
 
@@ -294,7 +294,7 @@ Ze serveru, který se pokoušíte nakonfigurovat pro offline zálohování, prov
 
 1. Přejít na kartu **Správa počítačového certifikátu**  >  **osobní** a vyhledejte certifikát s názvem `CB_AzureADCertforOfflineSeeding_<ResourceId>` .
 
-2. Vyberte certifikát, klikněte pravým tlačítkem na **všechny úlohy**a vyberte **exportovat** bez privátního klíče ve formátu. cer.
+2. Vyberte certifikát, klikněte pravým tlačítkem na **všechny úlohy** a vyberte **exportovat** bez privátního klíče ve formátu. cer.
 
 3. V kroku 2 přejdete do aplikace Azure offline Backup. Vyberte **Nastavení**  >  **klíče**  >  **nahrát veřejný klíč**. Nahrajte certifikát, který jste exportovali v předchozím kroku.
 
@@ -302,7 +302,7 @@ Ze serveru, který se pokoušíte nakonfigurovat pro offline zálohování, prov
 
 4. Na serveru otevřete registr zadáním příkazu **Regedit** v okně Spustit.
 
-5. Přejít doComputer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider registru * .* Klikněte pravým tlačítkem na **CloudBackupProvider**a přidejte novou řetězcovou hodnotu s názvem `AzureADAppCertThumbprint_<Azure User Id>` .
+5. Přejít doComputer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider registru *.* Klikněte pravým tlačítkem na **CloudBackupProvider** a přidejte novou řetězcovou hodnotu s názvem `AzureADAppCertThumbprint_<Azure User Id>` .
 
     >[!NOTE]
     > Pokud chcete získat ID uživatele Azure, proveďte jednu z následujících akcí:
@@ -312,7 +312,7 @@ Ze serveru, který se pokoušíte nakonfigurovat pro offline zálohování, prov
 
 6. Klikněte pravým tlačítkem na řetězec přidaný v předchozím kroku a vyberte **změnit**. V poli hodnota zadejte kryptografický otisk certifikátu, který jste exportovali v kroku 2. Vyberte **OK**.
 
-7. Pokud chcete získat hodnotu kryptografického otisku, poklikejte na certifikát. Vyberte kartu **Podrobnosti** a posuňte se dolů, dokud se nezobrazí pole kryptografický otisk. Vyberte **kryptografický otisk**a zkopírujte hodnotu.
+7. Pokud chcete získat hodnotu kryptografického otisku, poklikejte na certifikát. Vyberte kartu **Podrobnosti** a posuňte se dolů, dokud se nezobrazí pole kryptografický otisk. Vyberte **kryptografický otisk** a zkopírujte hodnotu.
 
     ![Pole s kryptografickým otiskem certifikátu](./media/offline-backup-azure-data-box/thumbprint-field.png)
 

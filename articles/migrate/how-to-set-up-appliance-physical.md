@@ -1,15 +1,17 @@
 ---
 title: Nastavení zařízení Azure Migrate pro fyzické servery
 description: Přečtěte si, jak nastavit zařízení Azure Migrate pro posouzení fyzického serveru.
-ms.service: azure-migrate
-ms.topic: article
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 04/15/2020
-ms.openlocfilehash: 1e9d79d16e805eeaf770327a56a4247067c78a35
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 21d40b1962a3e4000876686659b76d019991785d
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314155"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751678"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Nastavení zařízení pro fyzické servery
 
@@ -43,7 +45,7 @@ Nastavení zařízení:
 
 ### <a name="download-the-installer-script"></a>Stažení instalačního skriptu
 
-V **2: Stáhněte zařízení Azure Migrate**a klikněte na **Stáhnout**.
+V **2: Stáhněte zařízení Azure Migrate** a klikněte na **Stáhnout**.
 
    ![Výběry pro zjišťování počítačů](./media/tutorial-assess-physical/servers-discover.png)
 
@@ -67,7 +69,7 @@ Skript instalačního programu provede následující akce:
 
 - Nainstaluje agenty a webovou aplikaci pro zjišťování a hodnocení fyzických serverů.
 - Nainstalujte role Windows, včetně aktivační služby Windows, služby IIS a prostředí PowerShell ISE.
-- Stáhněte a nainstalujte zapisovatelný modul IIS. [Další informace](https://www.microsoft.com/download/details.aspx?id=7435).
+- Stáhněte a nainstalujte zapisovatelný modul IIS. [Přečtěte si další informace](https://www.microsoft.com/download/details.aspx?id=7435).
 - Aktualizuje klíč registru (HKLM) o trvalé podrobnosti nastavení pro Azure Migrate.
 - Vytvoří následující soubory pod cestou:
     - **Konfigurační soubory**:%ProgramData%\Microsoft Azure\Config
@@ -104,8 +106,8 @@ Nastavte zařízení poprvé.
 1. Otevřete prohlížeč na jakémkoli počítači, který se může připojit k zařízení, a otevřete adresu URL webové aplikace zařízení: ***název zařízení https://nebo IP adresa*: 44368**.
 
    Alternativně můžete aplikaci otevřít z plochy kliknutím na zástupce aplikace.
-2. Přijměte **licenční podmínky**a přečtěte si informace třetích stran.
-1. Ve webové aplikaci > **nastavení požadavků**postupujte takto:
+2. Přijměte **licenční podmínky** a přečtěte si informace třetích stran.
+1. Ve webové aplikaci > **nastavení požadavků** postupujte takto:
     - **Připojení**: aplikace kontroluje, jestli má server přístup k Internetu. Pokud server používá proxy server:
         - Klikněte na **nastavit proxy server** na a zadejte adresu proxy serveru (ve formuláři http://ProxyIPAddress nebo na http://ProxyFQDN) naslouchajícím portu.
         - Pokud proxy server potřebuje přihlašovací údaje, zadejte je.
@@ -132,7 +134,7 @@ Nyní se z zařízení připojte k fyzickým serverům, které se mají zjistit,
 
 1. V **kroku 1: zadejte přihlašovací údaje pro zjišťování fyzických nebo virtuálních serverů s Windows a Linux**, klikněte na **Přidat přihlašovací údaje** a zadejte popisný název pro přihlašovací údaje, přidejte **uživatelské jméno** a **heslo** pro server s Windows nebo Linux. Klikněte na **Uložit**.
 1. Pokud chcete přidat více přihlašovacích údajů najednou, klikněte na **Přidat další** a uložte a přidejte další přihlašovací údaje. Pro zjišťování fyzických serverů je podporováno více přihlašovacích údajů.
-1. V **kroku 2: zadání podrobností o fyzickém nebo virtuálním serveru**klikněte na **Přidat zdroj zjišťování** a určete **IP adresu nebo plně kvalifikovaný název domény** serveru a popisný název přihlašovacích údajů pro připojení k serveru.
+1. V **kroku 2: zadání podrobností o fyzickém nebo virtuálním serveru** klikněte na **Přidat zdroj zjišťování** a určete **IP adresu nebo plně kvalifikovaný název domény** serveru a popisný název přihlašovacích údajů pro připojení k serveru.
 1. Můžete buď **přidat jednu položku** najednou, nebo **Přidat více položek** do jednoho přechodu. K dispozici je také možnost zadat podrobnosti o serveru prostřednictvím **importu CSV**.
 
     ![Výběry pro přidání zdroje zjišťování](./media/tutorial-assess-physical/add-discovery-source-physical.png)
@@ -145,7 +147,7 @@ Nyní se z zařízení připojte k fyzickým serverům, které se mají zjistit,
     - Pokud se ověření serveru nepovede, zkontrolujte chybu kliknutím na tlačítko **ověření** ve sloupci Stav v tabulce. Opravte problém a znovu ověřte.
     - Pokud chcete odebrat server, klikněte na **Odstranit**.
 1. Před zahájením zjišťování můžete znovu **ověřit** připojení k serverům.
-1. Kliknutím na **Spustit zjišťování zahajte**zjišťování úspěšně ověřených serverů. Po úspěšném spuštění zjišťování můžete zjistit stav zjišťování proti každému serveru v tabulce.
+1. Kliknutím na **Spustit zjišťování zahajte** zjišťování úspěšně ověřených serverů. Po úspěšném spuštění zjišťování můžete zjistit stav zjišťování proti každému serveru v tabulce.
 
 
 Spustí se zjišťování. Bude trvat přibližně 2 minuty na server, aby se metadata zjištěného serveru zobrazila v Azure Portal.

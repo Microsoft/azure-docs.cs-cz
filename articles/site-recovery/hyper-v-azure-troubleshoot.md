@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: sharrai
-ms.openlocfilehash: 721e09c2bc0562ba833115361cf33c3daaef380b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c804e13029dcec42a43885cbf0d9b227b3d0338f
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364027"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750798"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Řešení potíží s replikací a převzetím služeb při selhání Hyper-V do Azure
 
@@ -26,7 +26,7 @@ Pokud se setkáte s problémy, když povolíte ochranu pro virtuální počíta�
 1. Ověřte, že hostitelé a virtuální počítače Hyper-V splňují všechny [požadavky a](hyper-v-azure-support-matrix.md)požadavky.
 2. Pokud se servery Hyper-V nacházejí v cloudech System Center Virtual Machine Manager (VMM), ověřte, že jste připravili [server VMM](hyper-v-prepare-on-premises-tutorial.md#prepare-vmm-optional).
 3. Ověřte, zda je na hostitelích Hyper-V spuštěná služba správy virtuálních počítačů Hyper-V.
-4. Vyhledejte problémy, které se zobrazí v Hyper-V-VMMS\Admin přihlášení k virtuálnímu počítači. Tento protokol se nachází v **protokolech aplikací a služeb**v  >  **Microsoft**  >  **systému Microsoft Windows**.
+4. Vyhledejte problémy, které se zobrazí v Hyper-V-VMMS\Admin přihlášení k virtuálnímu počítači. Tento protokol se nachází v **protokolech aplikací a služeb** v  >  **Microsoft**  >  **systému Microsoft Windows**.
 5. Na virtuálním počítači hosta ověřte, zda je služba WMI povolená a přístupná.
    - [Přečtěte si o](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf) základních testech rozhraní WMI.
    - [Řešení potíží](/windows/win32/wmisdk/wmi-troubleshooting) WMI.
@@ -34,7 +34,21 @@ Pokud se setkáte s problémy, když povolíte ochranu pro virtuální počíta�
 6. Na virtuálním počítači hosta zajistěte, aby byla spuštěná nejnovější verze integračních služeb.
     - [Ověřte](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) , že máte nejnovější verzi.
     - [Zachovat](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) Integrační služby jsou v aktuálním stavu.
-    
+
+### <a name="cannot-enable-protection-as-the-virtual-machine-is-not-highly-available-error-code-70094"></a>Ochranu nejde povolit, protože virtuální počítač není vysoce dostupný (kód chyby 70094).
+
+Pokud povolujete replikaci pro počítač a narazíte na chybu s oznámením, že replikaci nelze povolit, protože počítač není vysoce dostupný, pak tento problém vyřešíte následujícím postupem:
+
+- Restartujte službu VMM na serveru VMM.
+- Odeberte virtuální počítač z clusteru a znovu ho přidejte.
+
+### <a name="the-vss-writer-ntds-failed-with-status-11-and-writer-specific-failure-code-0x800423f4"></a>Funkce pro zápis stínové kopie svazku se nezdařila se stavem Chyba 11 a zápis specifický kód chyby 0x800423F4
+
+Při pokusu o povolení replikace se může při pokusu o povolení replikace pro neúspěšnou replikaci AST NTDS nepovedlo vytvořit chybu. Jedním z možných příčin tohoto problému je, že operační systém virtuálního počítače v systému Windows Server 2012 a ne Windows Server 2012 R2. Chcete-li tento problém vyřešit, vyzkoušejte následující kroky:
+
+- Upgradujte na Windows Server R2 s použitím 4072650.
+- Ujistěte se, že Hostitel Hyper-V je taky Windows 2016 nebo vyšší.
+
 ## <a name="replication-issues"></a>Potíže s replikací
 
 Při řešení potíží s počáteční a probíhající replikací postupujte následovně:
@@ -53,7 +67,7 @@ Při řešení potíží s počáteční a probíhající replikací postupujte 
     - Pokud v prostředí provádíte replikaci pomocí nástroje VMM, ověřte, že jsou spuštěné tyto služby:
         - Na hostiteli Hyper-V ověřte, jestli je spuštěná služba Správa virtuálních počítačů, agent Microsoft Azure Recovery Services a hostitelská služba poskytovatele rozhraní WMI.
         - Na serveru VMM se ujistěte, že je spuštěná služba System Center Virtual Machine Manager.
-4. Zkontrolujte připojení mezi serverem Hyper-V a Azure. Chcete-li zjistit připojení, otevřete Správce úloh na hostiteli Hyper-V. Na kartě **výkon** klikněte na **otevřít sledování prostředků**. Na kartě **síť** > **procesu s aktivitou sítě**ověřte, zda cbengine.exe aktivně odesílá velké objemy dat (MB).
+4. Zkontrolujte připojení mezi serverem Hyper-V a Azure. Chcete-li zjistit připojení, otevřete Správce úloh na hostiteli Hyper-V. Na kartě **výkon** klikněte na **otevřít sledování prostředků**. Na kartě **síť** > **procesu s aktivitou sítě** ověřte, zda cbengine.exe aktivně odesílá velké objemy dat (MB).
 5. Ověřte, jestli se hostitelé Hyper-V můžou připojit k adrese URL objektu BLOB služby Azure Storage. Pokud chcete zjistit, jestli se hostitelé můžou připojit, vyberte a zaškrtněte **cbengine.exe**. Zobrazte **připojení TCP** a ověřte připojení z hostitele k objektu BLOB služby Azure Storage.
 6. Ověřte problémy s výkonem, jak je popsáno níže.
     
@@ -130,7 +144,7 @@ Snímek konzistentní vzhledem k aplikacím je snímkem dat aplikací v rámci v
 
 2. Pokud chcete pro virtuální počítač vygenerovat snímky VSS, ověřte, že jsou na virtuálním počítači nainstalované integrační služby technologie Hyper-V a že je povolená služba Backup (VSS).
     - Zajistěte, aby na hostovi běžela služba nebo démony služby VSS integrační služby a jsou ve stavu **OK** .
-    - Tuto kontrolu můžete provést z relace PowerShellu se zvýšenými oprávněními na hostiteli Hyper-V pomocí příkazu **Get-VMIntegrationService-VMName \<VMName> -Name VSS** . Tyto informace můžete také získat tak, že se přihlásíte do virtuálního počítače hosta. [Další informace](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
+    - Tuto kontrolu můžete provést z relace PowerShellu se zvýšenými oprávněními na hostiteli Hyper-V pomocí příkazu **Get-VMIntegrationService-VMName \<VMName> -Name VSS** . Tyto informace můžete také získat tak, že se přihlásíte do virtuálního počítače hosta. [Přečtěte si další informace](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
     - Ujistěte se, že na virtuálním počítači běží služby Backup/VSS Integration Services, a to v dobrém stavu. V takovém případě tyto služby restartujte a na hostitelském serveru technologie Hyper-V svazek služba žadatele stínové kopie svazku.
 
 ### <a name="common-errors"></a>Běžné chyby
@@ -144,14 +158,14 @@ Snímek konzistentní vzhledem k aplikacím je snímkem dat aplikací v rámci v
 
 ## <a name="collect-replication-logs"></a>Shromáždit protokoly replikace
 
-Všechna událost replikace technologie Hyper-V se zaznamenávají do protokolu Hyper-V-VMMS\Admin, který se nachází v protokolech **aplikací a služeb**v  >  **Microsoft**  >  **systému Microsoft Windows**. Kromě toho můžete povolit analytický protokol pro službu správy virtuálních počítačů s technologií Hyper-V následujícím způsobem:
+Všechna událost replikace technologie Hyper-V se zaznamenávají do protokolu Hyper-V-VMMS\Admin, který se nachází v protokolech **aplikací a služeb** v  >  **Microsoft**  >  **systému Microsoft Windows**. Kromě toho můžete povolit analytický protokol pro službu správy virtuálních počítačů s technologií Hyper-V následujícím způsobem:
 
 1. Zpřístupněte protokoly pro analýzu a ladění v Prohlížeč událostí. Aby byly protokoly dostupné, klikněte v Prohlížeč událostí na **Zobrazit**  >  **Zobrazit protokoly pro analýzu a ladění.** Analytický protokol se zobrazí pod položkou **Hyper-V-VMMS**.
 2. V podokně **Akce** klikněte na **Povolit protokol**. 
 
     ![Povolit protokol](media/hyper-v-azure-troubleshoot/enable-log.png)
     
-3. Jakmile je tato možnost povolená, zobrazí se v **nástroji Sledování výkonu**jako **relace trasování událostí** v části **sady kolekcí dat**. 
+3. Jakmile je tato možnost povolená, zobrazí se v **nástroji Sledování výkonu** jako **relace trasování událostí** v části **sady kolekcí dat**. 
 4. Chcete-li zobrazit shromážděné informace, zastavte relaci trasování zakázáním protokolu. Pak uložte protokol a znovu ho otevřete v Prohlížeč událostí, nebo pomocí jiných nástrojů ho podle potřeby převeďte.
 
 

@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a8180088e5a0db613d5f04106fe102f58594bf72
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 268862d6e868342a252ca9d5eb08b9753142e8b1
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655047"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750742"
 ---
 # <a name="azure-spring-cloud-faq"></a>Nejčastější dotazy k jarnímu cloudu Azure
 
@@ -69,6 +69,23 @@ Nejrychlejší způsob, jak začít s jarním cloudem v Azure, najdete podle pok
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Jaký běhový modul Java podporuje Azure jaře Cloud?
 
 Azure jarní Cloud podporuje jazyky Java 8 a 11. Viz [Java Runtime a verze operačních systémů](#java-runtime-and-os-versions)
+
+### <a name="is-spring-boot-24x-supported"></a>Je podporováno pružinové spouštění 2.4. x?
+Zjistili jsme problém se jarním spouštěním 2,4 a momentálně pracujete se zdrojovou komunitou pro jejich řešení. Do té doby přidejte tyto dvě závislosti, aby se povolilo ověřování TLS mezi vašimi aplikacemi a Eureka.
+
+```xml
+<dependency> 
+    <groupId>com.sun.jersey</groupId>
+    <artifactId>jersey-client</artifactId>
+    <version>1.19.4</version>
+</dependency>
+<dependency>
+    <groupId>com.sun.jersey.contribs</groupId>
+    <artifactId>jersey-apache-client4</artifactId>
+    <version>1.19.4</version>
+</dependency>
+```
+
 ::: zone-end
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Kde můžu zobrazit protokoly a metriky cloudových aplikací pro jaře?
@@ -79,7 +96,7 @@ Azure jaře Cloud podporuje Exportování protokolů a metriky aplikace na jaře
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Podporuje Azure jaře Cloud distribuované trasování?
 
-Ano. Další informace najdete v tématu [kurz: použití distribuovaného trasování u jarního cloudu Azure](spring-cloud-tutorial-distributed-tracing.md).
+Yes. Další informace najdete v tématu [kurz: použití distribuovaného trasování u jarního cloudu Azure](spring-cloud-tutorial-distributed-tracing.md).
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-resource-types-does-service-binding-support"></a>Jaké typy prostředků podporuje Service Binding?
@@ -92,7 +109,7 @@ V současné době jsou podporovány tři služby:
 
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Můžu v rámci svých aplikací zobrazit, přidat nebo přesunout trvalé svazky?
 
-Ano.
+Yes.
 
 ### <a name="how-many-outbound-public-ip-addresses-does-an-azure-spring-cloud-instance-have"></a>Kolik odchozích veřejných IP adres má instance Azure jaře Cloud?
 
@@ -169,19 +186,19 @@ Důležité opravy zabezpečení (CVE skóre >= 9) použitelné pro jarní cloud
 ## <a name="deployment"></a>Nasazení
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Podporuje nasazení s modrou zeleným cloudem Azure?
-Ano. Další informace najdete v tématu [Nastavení přípravného prostředí](spring-cloud-howto-staging-environment.md).
+Yes. Další informace najdete v tématu [Nastavení přípravného prostředí](spring-cloud-howto-staging-environment.md).
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>Můžu získat přístup k Kubernetes, abyste mohli manipulovat s kontejnery aplikací?
 
-Ne.  Azure jaře Cloud vyabstrakce vývojáře z základní architektury, což vám umožní soustředit se na kód aplikace a obchodní logiku.
+No.  Azure jaře Cloud vyabstrakce vývojáře z základní architektury, což vám umožní soustředit se na kód aplikace a obchodní logiku.
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Podporuje Azure jaře Cloud vytváření kontejnerů ze zdroje?
 
-Ano. Další informace najdete v tématu [spuštění vaší jarní cloudové aplikace ze zdrojového kódu](spring-cloud-quickstart.md).
+Yes. Další informace najdete v tématu [spuštění vaší jarní cloudové aplikace ze zdrojového kódu](spring-cloud-quickstart.md).
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Podporuje Azure jaře Cloud automatické škálování v instancích aplikací?
 
-Ano.  Další informace najdete v tématu [Nastavení automatického škálování](spring-cloud-tutorial-setup-autoscale.md).
+Yes.  Další informace najdete v tématu [Nastavení automatického škálování](spring-cloud-tutorial-setup-autoscale.md).
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>Jaké jsou osvědčené postupy pro migraci stávajících mikroslužeb pro jarní Cloud do Azure jaře cloudu?
@@ -209,7 +226,7 @@ Až do 3. prosince 2022. Viz [zásady podpory .NET Core](https://dotnet.microsof
 ::: zone-end
 
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>Jaké dopady služby Service registry nejsou zřídka dostupné?
 

@@ -3,12 +3,12 @@ title: Offline zálohování s Azure Data Box pro DPM a MABS
 description: Azure Data Box můžete použít k počátečnímu počátečnímu zálohování dat v režimu offline z aplikace DPM a MABS.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 80b3977a9fb886b90c3d48d54f4cda1abfd77df9
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 1cfd9131099ad6a8ccd3d43e93f3d97641514f03
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172230"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752545"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offline osazení pomocí Azure Data Box pro DPM a MABS (Preview)
 
@@ -67,7 +67,7 @@ Zajistěte, aby:
 Před aktivací offline zálohování zajistěte, aby byla požadovaná zařízení Data Box v *doručeném* stavu. V tématu [Velikost zálohovaných dat a podporovaných data box SKU](#backup-data-size-and-supported-data-box-skus) můžete seřadit nejvhodnější SKU podle vašich požadavků. Podle kroků v [tomto článku](../databox/data-box-disk-deploy-ordered.md) seřiďte a dodržujte zařízení data box.
 
 > [!IMPORTANT]
-> Pro **druh účtu**nevybírejte *BlobStorage* . Server DPM/MABS vyžaduje účet, který podporuje objekty blob stránky, které nejsou podporované, když je vybraná možnost *BlobStorage* . Jako **druh účtu** při vytváření cílového účtu úložiště pro úlohu Azure Data box vyberte **úložiště v2 (obecné účely v2)** .
+> Pro **druh účtu** nevybírejte *BlobStorage* . Server DPM/MABS vyžaduje účet, který podporuje objekty blob stránky, které nejsou podporované, když je vybraná možnost *BlobStorage* . Jako **druh účtu** při vytváření cílového účtu úložiště pro úlohu Azure Data box vyberte **úložiště v2 (obecné účely v2)** .
 
 ![Nastavení Azure Databox](./media/offline-backup-azure-data-box-dpm-mabs/setup-azure-databox.png)
 
@@ -147,7 +147,7 @@ Zadejte alternativní zdroj: *WIM: D: \zdroje\install.wim: 4*
           – AzureRM. Resources   *6.7.3*<br>
           – AzureRM. Storage     *5.2.0*<br>
           – Azure. Storage       *4.6.1*<br>
-     >  - Aplikace Azure AD je registrovaná jako *AzureOfflineBackup_ \<object GUID of the user> *.
+     >  - Aplikace Azure AD je registrovaná jako *AzureOfflineBackup_ \<object GUID of the user>*.
 
 13. Vyberte správné pořadí datových polí, pro které jste nebaleni, připojili a odemkli Data Box disk. Vyberte **Další**.
 
@@ -177,7 +177,7 @@ Zadejte alternativní zdroj: *WIM: D: \zdroje\install.wim: 4*
 
     V takovém případě se počáteční replikace dat projeví na disku DPM/MABS. Po dokončení ochrany se ve stavu skupiny na stránce **ochrana** zobrazí stav ochrany jako v **pořádku** .
 
-17. Chcete-li spustit offline a záložní kopii na zařízení Azure Data Box, klikněte pravým tlačítkem na **skupinu ochrany**a potom zvolte možnost **vytvořit bod obnovení** . Pak zvolíte možnost **Online ochrany** .
+17. Chcete-li spustit offline a záložní kopii na zařízení Azure Data Box, klikněte pravým tlačítkem na **skupinu ochrany** a potom zvolte možnost **vytvořit bod obnovení** . Pak zvolíte možnost **Online ochrany** .
 
     ![Vytvořit bod obnovení](./media/offline-backup-azure-data-box-dpm-mabs/create-recovery-point.png)
 
@@ -194,14 +194,14 @@ Zadejte alternativní zdroj: *WIM: D: \zdroje\install.wim: 4*
 Po úspěšném zálohování dat do Azure Data Box Disk postupujte podle těchto kroků.
 
 - Pomocí kroků v [tomto článku](../databox/data-box-disk-deploy-picked-up.md) dodáte Azure Data box disk do Azure. Pokud jste použili Azure Data Box 100 TB, dokončete Azure Data Box do Azure pomocí [těchto kroků](../databox/data-box-deploy-picked-up.md) .
-- [Monitorujte úlohu data box](../databox/data-box-disk-deploy-upload-verify.md) v Azure Portal. Po *dokončení*úlohy Azure Data box server DPM/MABS automaticky přesune data z účtu úložiště do trezoru Recovery Services v době příštího naplánovaného zálohování. Po úspěšném vytvoření bodu obnovení bude pak označovat úlohu zálohování jako *dokončenou úlohu* .
+- [Monitorujte úlohu data box](../databox/data-box-disk-deploy-upload-verify.md) v Azure Portal. Po *dokončení* úlohy Azure Data box server DPM/MABS automaticky přesune data z účtu úložiště do trezoru Recovery Services v době příštího naplánovaného zálohování. Po úspěšném vytvoření bodu obnovení bude pak označovat úlohu zálohování jako *dokončenou úlohu* .
 
   > [!NOTE]
   > Server DPM/MABS spustí zálohy v časech naplánovaných během vytváření skupiny ochrany. Tyto úlohy však označí čekání na *dokončení Azure Data box úlohy* až do doby, kdy je úloha dokončena.
 
 - Po úspěšném vytvoření bodu obnovení, který odpovídá počátečnímu zálohování, pak server DPM/MABS odstraní účet úložiště (nebo konkrétní obsah) přidružený k úloze Azure Data Box.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Agent Microsoft Azure Backup (MAB) na serveru DPM vytvoří pro vás aplikaci Azure AD ve vašem tenantovi. Tato aplikace vyžaduje certifikát pro ověřování, který se vytvoří a nahraje při konfiguraci zásad pro dosazení hodnot do režimu offline.
 
@@ -230,7 +230,7 @@ Zkontrolujte, jestli se v konzole DPM/MABS v době konfigurace offline zálohov�
 
 Chcete-li vyřešit tento problém, proveďte následující kroky a opakujte konfiguraci zásad.
 
-1. Přihlaste se na přihlašovací stránku Azure, která se zobrazí v uživatelském rozhraní serveru DPM nebo MABS pomocí jiného účtu s přístupem správce k předplatnému, které bude mít vytvořenou úlohu importu exportu.
+1. Přihlaste se na přihlašovací stránku Azure, která se zobrazí v uživatelském rozhraní serveru DPM nebo MABS pomocí jiného účtu s přístupem správce k předplatnému, které bude mít vytvořenou úlohu Data Box.
 2. Pokud na žádném jiném serveru není nakonfigurované počáteční nastavování offline a na aplikaci není závislý žádný jiný server `AzureOfflineBackup_<Azure User Id>` , odstraňte tuto aplikaci z **Azure Portal > Azure Active Directory > registrace aplikací**.
 
    > [!NOTE]

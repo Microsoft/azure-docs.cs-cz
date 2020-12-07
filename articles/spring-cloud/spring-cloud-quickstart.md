@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 448707ab84ccca03dc0572d2ebed1b4bd1b6325f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: a1732f42ea95c16cdec7a1d7569c954667e52cb4
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505287"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750896"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rychlý Start: nasazení první aplikace pro cloudovou službu Azure jaře
 
@@ -33,7 +33,7 @@ V tomto rychlém startu se dozvíte, jak:
 
 Kód aplikace použitý v tomto rychlém startu je jednoduchá aplikace vytvořená pomocí šablony projektu webového rozhraní API .NET Core. Po dokončení tohoto příkladu bude aplikace dostupná online a bude ji možné spravovat prostřednictvím Azure Portal a Azure CLI.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Sada .NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1). Služba pružinového cloudu Azure podporuje .NET Core 3,1 a novější verze.
@@ -112,7 +112,7 @@ V aplikaci Visual Studio vytvořte ASP.NET Core webové aplikace s názvem "Hell
    }
    ```
 
-1. Také v *appsettings.jszapnuto* , změňte úroveň protokolu pro `Microsoft` kategorii z `Warning` na `Information` . Tato změna zajistí, že se protokoly vytvoří při zobrazení protokolů streamování v pozdějším kroku.
+1. Také v *appsettings.jszapnuto*, změňte úroveň protokolu pro `Microsoft` kategorii z `Warning` na `Information` . Tato změna zajistí, že se protokoly vytvoří při zobrazení protokolů streamování v pozdějším kroku.
 
    *appsettings.jsv* souboru teď vypadá podobně jako v následujícím příkladu:
 
@@ -218,10 +218,10 @@ Následující postup vytvoří instanci Azure jarního cloudu pomocí Azure Por
 
 1. Vyplňte formulář na stránce **Vytvoření** jarního cloudu Azure.  Vezměte v úvahu následující pokyny:
 
-   * **Předplatné** : vyberte předplatné, které chcete pro tento prostředek fakturovat.
-   * **Skupina prostředků** : Vytvořte novou skupinu prostředků. Název, který zde zadáte, bude použit v pozdějších krocích jako **\<resource group name\>** .
-   * **Podrobnosti o službě/název** : zadejte **\<service instance name\>** .  Název musí být dlouhý 4 až 32 znaků a může obsahovat jenom malá písmena, číslice a spojovníky.  První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.
-   * **Oblast** : Vyberte oblast pro instanci služby.
+   * **Předplatné**: vyberte předplatné, které chcete pro tento prostředek fakturovat.
+   * **Skupina prostředků**: Vytvořte novou skupinu prostředků. Název, který zde zadáte, bude použit v pozdějších krocích jako **\<resource group name\>** .
+   * **Podrobnosti o službě/název**: zadejte **\<service instance name\>** .  Název musí být dlouhý 4 až 32 znaků a může obsahovat jenom malá písmena, číslice a spojovníky.  První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.
+   * **Oblast**: Vyberte oblast pro instanci služby.
 
    ![Začátek portálu ASC](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
@@ -334,7 +334,7 @@ V tomto rychlém startu se dozvíte, jak:
 > * Sestavení a nasazení aplikace s veřejným koncovým bodem
 > * Streamování protokolů v reálném čase
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
@@ -351,6 +351,9 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4
 ```
 
   ![Stránka Initializr](media/spring-cloud-quickstart-java/initializr-page.png)
+
+> [!NOTE]
+> Zjistili jsme problém se jarním 2,4 spuštěním ověřování TLS mezi vašimi aplikacemi a Eureka a momentálně spolupracujete se zdrojovou komunitou, abyste ji mohli vyřešit. Alternativní řešení najdete v našich [nejčastějších dotazech](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) .
 
 1. Po nastavení všech závislostí klikněte na **vygenerovat** . Stáhněte a rozbalte balíček a pak vytvořte webový řadič pro jednoduchou webovou aplikaci přidáním `src/main/java/com/example/hellospring/HelloController.java` následujícího postupu:
 
@@ -387,10 +390,10 @@ Následující postup vytvoří instanci Azure jarního cloudu pomocí Azure Por
     ![Ikona ASC přidat](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
 5. Vyplňte formulář na stránce **Vytvoření** jarního cloudu Azure.  Vezměte v úvahu následující pokyny:
-    - **Předplatné** : vyberte předplatné, které chcete pro tento prostředek fakturovat.
-    - **Skupina prostředků** : vytváření nových skupin prostředků pro nové prostředky je osvědčeným postupem. Tento postup bude použit v pozdějších krocích jako **\<resource group name\>** .
-    - **Podrobnosti o službě/název** : zadejte **\<service instance name\>** .  Název musí být dlouhý 4 až 32 znaků a může obsahovat jenom malá písmena, číslice a spojovníky.  První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.
-    - **Umístění** : Vyberte oblast pro instanci služby.
+    - **Předplatné**: vyberte předplatné, které chcete pro tento prostředek fakturovat.
+    - **Skupina prostředků**: vytváření nových skupin prostředků pro nové prostředky je osvědčeným postupem. Tento postup bude použit v pozdějších krocích jako **\<resource group name\>** .
+    - **Podrobnosti o službě/název**: zadejte **\<service instance name\>** .  Název musí být dlouhý 4 až 32 znaků a může obsahovat jenom malá písmena, číslice a spojovníky.  První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.
+    - **Umístění**: Vyberte oblast pro instanci služby.
 
     ![Začátek portálu ASC](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 

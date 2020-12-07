@@ -1,15 +1,18 @@
 ---
 title: Zjištění instancí AWS pomocí posouzení serveru Azure Migrate
 description: Naučte se zjišťovat instance AWS pomocí posouzení serveru Azure Migrate.
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: b837ae89831024b169782fe9ae1a062677a4b45b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: dda6f6e37a42d4ee55a32fc8e1c05916c6be4367
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311278"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753123"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>Kurz: zjištění instancí AWS pomocí posouzení serveru
 
@@ -31,7 +34,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem, Projděte si tyto požadavky.
 
@@ -49,23 +52,23 @@ Chcete-li vytvořit projekt Azure Migrate a zaregistrovat Azure Migrate zaříze
 
 Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vašeho předplatného. Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte oprávnění následujícím způsobem:
 
-1. V Azure Portal vyhledejte "předplatná" a v části **služby**vyberte **předplatná**.
+1. V Azure Portal vyhledejte "předplatná" a v části **služby** vyberte **předplatná**.
 
     ![Vyhledávací pole pro hledání předplatného Azure](./media/tutorial-discover-aws/search-subscription.png)
 
 2. Na stránce **předplatná** vyberte předplatné, ve kterém chcete vytvořit projekt Azure Migrate. 
 3. V předplatném vyberte **řízení přístupu (IAM)**  >  **Kontrola přístupu**.
-4. V části **kontrolovat přístup**vyhledejte příslušný uživatelský účet.
-5. V nabídce **Přidat přiřazení role**klikněte na **Přidat**.
+4. V části **kontrolovat přístup** vyhledejte příslušný uživatelský účet.
+5. V nabídce **Přidat přiřazení role** klikněte na **Přidat**.
 
     ![Vyhledejte uživatelský účet pro kontrolu přístupu a přiřazení role.](./media/tutorial-discover-aws/azure-account-access.png)
 
-6. V části **Přidat přiřazení role**vyberte roli přispěvatel nebo vlastník a v našem příkladu vyberte účet (azmigrateuser). Potom klikněte na **Uložit**.
+6. V části **Přidat přiřazení role** vyberte roli přispěvatel nebo vlastník a v našem příkladu vyberte účet (azmigrateuser). Potom klikněte na **Uložit**.
 
     ![Otevře stránku přidat přiřazení role, která účtu přiřadí roli.](./media/tutorial-discover-aws/assign-role.png)
 
-7. Na portálu vyhledejte uživatele a v části **služby**vyberte **Uživatelé**.
-8. V **nastavení uživatele**ověřte, že uživatelé Azure AD můžou registrovat aplikace (ve výchozím nastavení nastavené na **Ano** ).
+7. Na portálu vyhledejte uživatele a v části **služby** vyberte **Uživatelé**.
+8. V **nastavení uživatele** ověřte, že uživatelé Azure AD můžou registrovat aplikace (ve výchozím nastavení nastavené na **Ano** ).
 
     ![Ověřte v uživatelských nastaveních, která můžou uživatelé registrovat v aplikacích Active Directory.](./media/tutorial-discover-aws/register-apps.png)
 
@@ -95,8 +98,8 @@ Nastavte nový projekt Azure Migrate.
 
 1. Na webu Azure Portal v části **Všechny služby** vyhledejte **Azure Migrate**.
 2. V části **Služby** vyberte **Azure Migrate**.
-3. V **přehledu**vyberte **vytvořit projekt**.
-5. V nástroji **vytvořit projekt**vyberte své předplatné Azure a skupinu prostředků. Vytvořte skupinu prostředků, pokud ji nemáte.
+3. V **přehledu** vyberte **vytvořit projekt**.
+5. V nástroji **vytvořit projekt** vyberte své předplatné Azure a skupinu prostředků. Vytvořte skupinu prostředků, pokud ji nemáte.
 6. V části **Project Details (podrobnosti projektu**) zadejte název projektu a zeměpisnou oblast, ve které chcete vytvořit projekt. Projděte si podporované geografické oblasti pro cloudy [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [státní správy](migrate-support-matrix.md#supported-geographies-azure-government).
 
    ![Pole pro název a oblast projektu](./media/tutorial-discover-aws/new-project.png)
@@ -138,7 +141,7 @@ Nastavení zařízení:
 
 ### <a name="download-the-installer-script"></a>Stažení instalačního skriptu
 
-V **2: Stáhněte zařízení Azure Migrate**a klikněte na **Stáhnout**.
+V **2: Stáhněte zařízení Azure Migrate** a klikněte na **Stáhnout**.
 
 
 ### <a name="verify-security"></a>Ověřit zabezpečení
@@ -153,13 +156,13 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 3.  Ověřte nejnovější verze zařízení a hodnoty hash:
     - Pro veřejný cloud:
 
-        **Scénář** | **Stáhnout*** | **Hodnota hash**
+        **Scénář** | **Stáhnout** _ | _ *Hodnota hash**
         --- | --- | ---
         Fyzický (85 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140334) | 207157bab39303dca1c2b93562d6f1deaa05aa7c992f480138e17977641163fb
 
     - Pro Azure Government:
 
-        **Scénář** | **Stáhnout*** | **Hodnota hash**
+        **Scénář** | **Stáhnout** _ | _ *Hodnota hash**
         --- | --- | ---
         Fyzický (85 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140338) | ca67e8dbe21d113ca93bfe94c1003ab7faba50472cb03972d642be8a466f78ce
  
@@ -169,7 +172,7 @@ Skript instalačního programu provede následující akce:
 
 - Nainstaluje agenty a webovou aplikaci pro zjišťování a hodnocení fyzických serverů.
 - Nainstalujte role Windows, včetně aktivační služby Windows, služby IIS a prostředí PowerShell ISE.
-- Stáhněte a nainstalujte zapisovatelný modul IIS. [Další informace](https://www.microsoft.com/download/details.aspx?id=7435).
+- Stáhněte a nainstalujte zapisovatelný modul IIS. [Přečtěte si další informace](https://www.microsoft.com/download/details.aspx?id=7435).
 - Aktualizuje klíč registru (HKLM) o trvalé podrobnosti nastavení pro Azure Migrate.
 - Vytvoří následující soubory pod cestou:
     - **Konfigurační soubory**:%ProgramData%\Microsoft Azure\Config
@@ -206,8 +209,8 @@ Nastavte zařízení poprvé.
 1. Otevřete prohlížeč na jakémkoli počítači, který se může připojit k zařízení, a otevřete adresu URL webové aplikace zařízení: ***název zařízení https://nebo IP adresa*: 44368**.
 
    Alternativně můžete aplikaci otevřít z plochy kliknutím na zástupce aplikace.
-2. Přijměte **licenční podmínky**a přečtěte si informace třetích stran.
-1. Ve webové aplikaci > **nastavení požadavků**postupujte takto:
+2. Přijměte **licenční podmínky** a přečtěte si informace třetích stran.
+1. Ve webové aplikaci > **nastavení požadavků** postupujte takto:
     - **Připojení**: aplikace kontroluje, jestli má server přístup k Internetu. Pokud server používá proxy server:
         - Klikněte na **nastavit proxy server** na a zadejte adresu proxy serveru (ve formuláři http://ProxyIPAddress nebo na http://ProxyFQDN) naslouchajícím portu.
         - Pokud proxy server potřebuje přihlašovací údaje, zadejte je.
@@ -234,7 +237,7 @@ Nyní se z zařízení připojte k fyzickým serverům, které se mají zjistit,
 
 1. V **kroku 1: zadejte přihlašovací údaje pro zjišťování fyzických nebo virtuálních serverů s Windows a Linux**, klikněte na **Přidat přihlašovací údaje** a zadejte popisný název pro přihlašovací údaje, přidejte **uživatelské jméno** a **heslo** pro server s Windows nebo Linux. Klikněte na **Uložit**.
 1. Pokud chcete přidat více přihlašovacích údajů najednou, klikněte na **Přidat další** a uložte a přidejte další přihlašovací údaje. Pro zjišťování fyzických serverů je podporováno více přihlašovacích údajů.
-1. V **kroku 2: zadání podrobností o fyzickém nebo virtuálním serveru**klikněte na **Přidat zdroj zjišťování** a určete **IP adresu nebo plně kvalifikovaný název domény** serveru a popisný název přihlašovacích údajů pro připojení k serveru.
+1. V **kroku 2: zadání podrobností o fyzickém nebo virtuálním serveru** klikněte na **Přidat zdroj zjišťování** a určete **IP adresu nebo plně kvalifikovaný název domény** serveru a popisný název přihlašovacích údajů pro připojení k serveru.
 1. Můžete buď **přidat jednu položku** najednou, nebo **Přidat více položek** do jednoho přechodu. K dispozici je také možnost zadat podrobnosti o serveru prostřednictvím **importu CSV**.
 
 
@@ -246,7 +249,7 @@ Nyní se z zařízení připojte k fyzickým serverům, které se mají zjistit,
     - Pokud se ověření serveru nepovede, zkontrolujte chybu kliknutím na tlačítko **ověření** ve sloupci Stav v tabulce. Opravte problém a znovu ověřte.
     - Pokud chcete odebrat server, klikněte na **Odstranit**.
 1. Před zahájením zjišťování můžete znovu **ověřit** připojení k serverům.
-1. Kliknutím na **Spustit zjišťování zahajte**zjišťování úspěšně ověřených serverů. Po úspěšném spuštění zjišťování můžete zjistit stav zjišťování proti každému serveru v tabulce.
+1. Kliknutím na **Spustit zjišťování zahajte** zjišťování úspěšně ověřených serverů. Po úspěšném spuštění zjišťování můžete zjistit stav zjišťování proti každému serveru v tabulce.
 
 
 Spustí se zjišťování. Bude trvat přibližně 2 minuty na server, aby se metadata zjištěného serveru zobrazila v Azure Portal.

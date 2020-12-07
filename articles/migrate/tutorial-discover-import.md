@@ -1,14 +1,17 @@
 ---
 title: Vyhodnocení místních serverů pomocí importovaného souboru CSV s Azure Migrate posouzení serveru
 description: Popisuje, jak zjišťovat místní servery pro migraci do Azure pomocí importovaného souboru CSV v Azure Migrate posouzení serveru.
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
-ms.openlocfilehash: 30f17bb6b22d4d19cf225aa52d8284f5306a44ee
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: dfa7ee941e2c373b02fe5fb2f2a648a60a677670
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308392"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753105"
 ---
 # <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>Kurz: posouzení serverů pomocí importovaného souboru CSV
 
@@ -39,7 +42,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Do jednoho souboru CSV a do Azure Migrateho projektu můžete přidat až 20 000 serverů. 
 - Názvy operačních systémů zadané v souboru CSV musí obsahovat a odpovídat [podporovaným názvům](#supported-operating-system-names).
@@ -53,23 +56,23 @@ Chcete-li vytvořit projekt Azure Migrate, budete potřebovat účet s:
 
 Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vašeho předplatného. Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte oprávnění následujícím způsobem:
 
-1. V Azure Portal vyhledejte "předplatná" a v části **služby**vyberte **předplatná**.
+1. V Azure Portal vyhledejte "předplatná" a v části **služby** vyberte **předplatná**.
 
     ![Vyhledávací pole pro hledání předplatného Azure](./media/tutorial-discover-import/search-subscription.png)
 
 2. Na stránce **předplatná** vyberte předplatné, ve kterém chcete vytvořit projekt Azure Migrate. 
 3. V předplatném vyberte **řízení přístupu (IAM)**  >  **Kontrola přístupu**.
-4. V části **kontrolovat přístup**vyhledejte příslušný uživatelský účet.
-5. V nabídce **Přidat přiřazení role**klikněte na **Přidat**.
+4. V části **kontrolovat přístup** vyhledejte příslušný uživatelský účet.
+5. V nabídce **Přidat přiřazení role** klikněte na **Přidat**.
 
     ![Vyhledejte uživatelský účet pro kontrolu přístupu a přiřazení role.](./media/tutorial-discover-import/azure-account-access.png)
 
-6. V části **Přidat přiřazení role**vyberte roli přispěvatel nebo vlastník a v našem příkladu vyberte účet (azmigrateuser). Potom klikněte na **Uložit**.
+6. V části **Přidat přiřazení role** vyberte roli přispěvatel nebo vlastník a v našem příkladu vyberte účet (azmigrateuser). Potom klikněte na **Uložit**.
 
     ![Otevře stránku přidat přiřazení role, která účtu přiřadí roli.](./media/tutorial-discover-import/assign-role.png)
 
-7. Na portálu vyhledejte uživatele a v části **služby**vyberte **Uživatelé**.
-8. V **nastavení uživatele**ověřte, že uživatelé Azure AD můžou registrovat aplikace (ve výchozím nastavení nastavené na **Ano** ).
+7. Na portálu vyhledejte uživatele a v části **služby** vyberte **Uživatelé**.
+8. V **nastavení uživatele** ověřte, že uživatelé Azure AD můžou registrovat aplikace (ve výchozím nastavení nastavené na **Ano** ).
 
     ![Ověřte v uživatelských nastaveních, která můžou uživatelé registrovat v aplikacích Active Directory.](./media/tutorial-discover-import/register-apps.png)
 
@@ -81,8 +84,8 @@ Nastavte nový projekt Azure Migrate, pokud ho ještě nemáte.
 
 1. Na webu Azure Portal v části **Všechny služby** vyhledejte **Azure Migrate**.
 2. V části **Služby** vyberte **Azure Migrate**.
-3. V **přehledu**vyberte **vytvořit projekt**.
-5. V nástroji **vytvořit projekt**vyberte své předplatné Azure a skupinu prostředků. Vytvořte skupinu prostředků, pokud ji nemáte.
+3. V **přehledu** vyberte **vytvořit projekt**.
+5. V nástroji **vytvořit projekt** vyberte své předplatné Azure a skupinu prostředků. Vytvořte skupinu prostředků, pokud ji nemáte.
 6. V části **Project Details (podrobnosti projektu**) zadejte název projektu a zeměpisnou oblast, ve které chcete vytvořit projekt. Projděte si podporované geografické oblasti pro cloudy [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [státní správy](migrate-support-matrix.md#supported-geographies-azure-government).
 
    ![Pole pro název a oblast projektu](./media/tutorial-discover-import/new-project.png)

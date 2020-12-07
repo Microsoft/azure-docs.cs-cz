@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0004c874a2011a78bb5cfe67ff0a840224d47bbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e02323df3a12c4a74de1fb62b36762fc739e9e5
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258961"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750435"
 ---
 # <a name="azure-ad-b2c-session"></a>Azure AD B2C relace
 
@@ -96,8 +96,12 @@ Po žádosti o odhlášení Azure AD B2C:
 1. Zruší platnost Azure AD B2C relace na základě souborů cookie.
 1. Pokusy o odhlášení od federovaných zprostředkovatelů identity:
    - OpenId Connect – Pokud se ve správném koncovém bodu konfigurace poskytovatele identity Určuje `end_session_endpoint` umístění.
-   - SAML – Pokud metadata zprostředkovatele identity obsahují `SingleLogoutService` umístění.
+   - OAuth2 – Pokud [metadata zprostředkovatele identity](oauth2-technical-profile.md#metadata) obsahují `end_session_endpoint` umístění.
+   - SAML – Pokud [metadata zprostředkovatele identity](saml-identity-provider-technical-profile.md#metadata) obsahují `SingleLogoutService` umístění.
 1. Volitelně můžete odhlásit z jiných aplikací. Další informace najdete v části věnované [jednotnému odhlašování](#single-sign-out) .
+
+> [!NOTE]
+> Pomocí [vlastních zásad](custom-policy-overview.md)můžete zakázat odhlašování od federovaných zprostředkovatelů identity tím, že nastavíte metadata technického profilu zprostředkovatele identity `SingleLogoutEnabled` na `false` .
 
 Odhlášení vymaže stav jednotného přihlašování uživatele s Azure AD B2C, ale nemusí uživatele podepsat z relace sociální identity Provider. Pokud uživatel vybere stejného poskytovatele identity během následného přihlášení, může se znovu ověřit bez zadání přihlašovacích údajů. Pokud se uživatel chce z aplikace odhlásit, neznamená to nutně, že se chce odhlásit z účtu Facebook. Pokud se ale použijí místní účty, relace uživatele se ukončí správně.
 

@@ -1,14 +1,17 @@
 ---
 title: Dotazy týkající se zjišťování, hodnocení a analýzy závislostí v Azure Migrate
 description: Získejte odpovědi na běžné dotazy týkající se zjišťování, hodnocení a analýzy závislostí v Azure Migrate.
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: cb1696c521f436280177f0263abd66aa2bfed7dc
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4531d68c2fbd0698c33d70a75bb82ac9c7f52f49
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312923"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752239"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Analýzy zjišťování, hodnocení a závislostí – běžné otázky
 
@@ -44,7 +47,7 @@ Pokud zařízení Azure Migrate nemůže shromáždit údaje o výkonu místníc
 
 - Byly virtuální počítače po dobu trvání, pro kterou vytváříte posouzení, zapnuté?
 - Pokud chybí pouze čítače paměti a pokoušíte se posoudit virtuální počítače Hyper-V, zkontrolujte, jestli je na těchto virtuálních počítačích povolená dynamická paměť. V současné době existuje známý problém, kvůli kterému zařízení Azure Migrate nemůže shromáždit data o využití paměti takových virtuálních počítačů.
-- Pokud chybí všechny čítače výkonu, ujistěte se, že jsou povolená odchozí připojení na portu 443 (HTTPS).
+- Pokud chybí všechny čítače výkonu, zajistěte, aby odchozí připojení na portech 443 (HTTPS) byla povolená.
 
 Poznámka: Pokud jakýkoli čítač výkonu chybí, nástroj Azure Migrate: Hodnocení serverů se vrátí zpět k přiděleným jádrům a paměti v místním prostředí a na jejich základě doporučí velikost virtuálního počítače.
 
@@ -54,7 +57,7 @@ Míra spolehlivosti posouzení na základě výkonu se počítá na základě pr
 
 - Neprofilovali jste své prostředí po dobu trvání, pro kterou vytváříte interní hodnocení. Například pokud vytváříte posouzení s dobou výkonu nastavenou na jeden týden, budete muset počkat alespoň jeden týden po spuštění zjišťování, aby se shromáždily všechny datové body. Pokud tuto dobu nemůžete počkat, snižte dobu výkonu a přepočítejte posouzení.
  
-- Nástroj Hodnocení serverů nemůže shromáždit údaje o výkonu některých nebo všech virtuálních počítačů v daném období posouzení. Zkontrolujte, jestli byly virtuální počítače po dobu trvání posouzení zapnuté a jestli jsou povolená odchozí připojení na portu 443. U virtuálních počítačů Hyper-V platí, že pokud je povolená dynamická paměť, čítače paměti budou chybět, což povede ke snížení míry spolehlivosti. Přepočítejte posouzení, aby se projevily poslední změny míry spolehlivosti. 
+- Vyhodnocování serveru nemůže shromáždit údaje o výkonu pro některé nebo všechny virtuální počítače v období posouzení. Zkontrolujte, jestli byly virtuální počítače po dobu trvání posouzení zapnuté a jestli jsou povolená odchozí připojení na portu 443. U virtuálních počítačů Hyper-V platí, že pokud je povolená dynamická paměť, čítače paměti budou chybět, což povede ke snížení míry spolehlivosti. Přepočítejte posouzení, aby se projevily poslední změny míry spolehlivosti. 
 
 - Po zahájení zjišťování v nástroji Hodnocení serverů se vytvořilo několik virtuálních počítačů. Například pokud vytváříte posouzení historie výkonu za poslední měsíc, ale před týdnem se v prostředí vytvořilo několik virtuálních počítačů. V takovém případě nebudou k dispozici data o výkonu nových virtuálních počítačů za celou dobu trvání a míra spolehlivosti bude nízká.
 
@@ -129,7 +132,7 @@ V případě počítačů importovaných prostřednictvím souboru CSV není vý
 
 ## <a name="what-is-dependency-visualization"></a>Co je Vizualizace závislostí?
 
-Vizualizace závislostí vám může posuzovat skupiny virtuálních počítačů, které se budou migrovat s větší jistotou. Vizualizace závislostí křížově kontroluje závislosti počítačů před spuštěním posouzení. Pomáhá zajistit, aby nic nezůstalo a při migraci do Azure pomáhá zabránit neočekávanému výpadku. Azure Migrate používá řešení Service Map v Azure Monitor k povolení Vizualizace závislostí. [Další informace](concepts-dependency-visualization.md).
+Vizualizace závislostí vám může posuzovat skupiny virtuálních počítačů, které se budou migrovat s větší jistotou. Vizualizace závislostí křížově kontroluje závislosti počítačů před spuštěním posouzení. Pomáhá zajistit, aby nic nezůstalo a při migraci do Azure pomáhá zabránit neočekávanému výpadku. Azure Migrate používá řešení Service Map v Azure Monitor k povolení Vizualizace závislostí. [Přečtěte si další informace](concepts-dependency-visualization.md).
 
 > [!NOTE]
 > Analýza závislostí na základě agenta není v Azure Government k dispozici. Můžete použít analýzu závislostí bez agentů.
@@ -143,7 +146,7 @@ Rozdíly mezi vizualizacemi bez agentů a vizualizací na základě agentů jsou
 Podpora | Tato možnost je momentálně ve verzi Preview a je dostupná jenom pro virtuální počítače VMware. [Zkontrolujte](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) podporované operační systémy. | Obecně dostupná (GA).
 Agent | Není nutné instalovat agenty na počítačích, které chcete křížově kontrolovat. | Agenti, kteří se mají nainstalovat na každý místní počítač, který chcete analyzovat: [Microsoft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)a [Agent závislostí](../azure-monitor/platform/agents-overview.md#dependency-agent). 
 Předpoklady | [Projděte si](concepts-dependency-visualization.md#agentless-analysis) požadavky a požadavky na nasazení. | [Projděte si](concepts-dependency-visualization.md#agent-based-analysis) požadavky a požadavky na nasazení.
-Log Analytics | Nepožadováno. | Azure Migrate používá řešení [Service map](../azure-monitor/insights/service-map.md) v [protokolech Azure monitor](../azure-monitor/log-query/log-query-overview.md) pro vizualizaci závislostí. [Další informace](concepts-dependency-visualization.md#agent-based-analysis).
+Log Analytics | Nepožadováno. | Azure Migrate používá řešení [Service map](../azure-monitor/insights/service-map.md) v [protokolech Azure monitor](../azure-monitor/log-query/log-query-overview.md) pro vizualizaci závislostí. [Přečtěte si další informace](concepts-dependency-visualization.md#agent-based-analysis).
 Jak to funguje | Zachycuje data připojení TCP na počítačích, které jsou povoleny pro vizualizaci závislostí. Po zjištění se data shromáždí v intervalech po pěti minutách. | Agenti Service Map nainstalovaná na počítači shromažďují data o procesech TCP a příchozích a odchozích připojeních pro jednotlivé procesy.
 Data | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port. | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port.<br/><br/> Pro Log Analytics dotazy se shromažďují a k dispozici informace o počtu připojení, latenci a přenosu dat. 
 Vizualizace | Mapa závislostí jednoho serveru se dá zobrazit po dobu od 1 hodiny do 30 dnů. | Mapa závislostí pro jeden server.<br/><br/> Mapu lze zobrazit pouze za hodinu.<br/><br/> Mapa závislostí skupiny serverů.<br/><br/> Přidejte nebo odeberte servery ve skupině z zobrazení mapy.
@@ -156,7 +159,7 @@ Ano, [zařízení Azure Migrate](migrate-appliance.md) musí být nasazeno.
 
 ## <a name="do-i-pay-for-dependency-visualization"></a>Platíte za vizualizaci závislostí?
 
-Ne. Přečtěte si další informace o [cenách Azure Migrate](https://azure.microsoft.com/pricing/details/azure-migrate/).
+No. Přečtěte si další informace o [cenách Azure Migrate](https://azure.microsoft.com/pricing/details/azure-migrate/).
 
 ## <a name="what-do-i-install-for-agent-based-dependency-visualization"></a>Co mám nainstalovat pro vizualizaci závislostí založenou na agentech?
 

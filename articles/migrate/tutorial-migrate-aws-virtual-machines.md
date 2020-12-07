@@ -1,15 +1,18 @@
 ---
 title: Zjišťování, vyhodnocení a migrace Amazon Web Services (AWS) EC2 virtuálních počítačů do Azure
 description: Tento článek popisuje, jak migrovat virtuální počítače s AWS do Azure pomocí Azure Migrate.
+author: deseelam
+ms.author: deseelam
+ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 12785d1e65caf11b24102d2a9c186fe0adcb1fd3
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 10b5f84677deb221bf763870b188ef30ee87e9c2
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302653"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752851"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Zjišťování, posouzení a migrace virtuálních počítačů Amazon Web Services (AWS) do Azure
 
@@ -32,7 +35,7 @@ V tomto kurzu se naučíte, jak:
 > * Spusťte test migrace a ujistěte se, že vše funguje podle očekávání.
 > * Spusťte úplnou migraci do Azure.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/pricing/free-trial/), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="discover-and-assess"></a>Zjišťování a vyhodnocení
 
@@ -61,7 +64,7 @@ I když doporučujeme, abyste si vyzkoušeli posouzení, provádění posouzení
 
 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 - Zajistěte, aby virtuální počítače s AWS, které chcete migrovat, používaly podporovanou verzi operačního systému. Virtuální počítače s AWS se považují za účely migrace jako fyzické. Přečtěte si [podporované operační systémy a verze jádra](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) pro pracovní postup migrace fyzického serveru. Ke kontrole verzí operačního systému a jádra pro virtuální počítače se systémem Linux můžete použít standardní příkazy, jako je *hostnamectl* nebo *uname-a* .  Doporučujeme, abyste provedli migraci testů (testovací převzetí služeb při selhání), abyste ověřili, jestli virtuální počítač funguje očekávaným způsobem, a teprve potom se stejnou migrací.
 - Zajistěte, aby virtuální počítače s AWS splňovaly [podporované konfigurace](./migrate-support-matrix-physical-migration.md#physical-server-requirements) pro migraci do Azure.
@@ -75,7 +78,7 @@ Zkontrolujte změny v [systému Windows](prepare-for-migration.md#windows-machin
 
 Připravte Azure pro migraci pomocí Azure Migrate: Server Migration Tool.
 
-**Úkol** | **Podrobnosti**
+**Úloha** | **Podrobnosti**
 --- | ---
 **Vytvoření projektu Azure Migrate** | Váš účet Azure potřebuje oprávnění Přispěvatel nebo Owner k [Vytvoření nového projektu](https://docs.microsoft.com/azure/migrate/create-manage-projects).
 **Ověření oprávnění pro účet Azure** | Váš účet Azure potřebuje oprávnění k vytvoření virtuálního počítače a zápis na spravovaný disk Azure.

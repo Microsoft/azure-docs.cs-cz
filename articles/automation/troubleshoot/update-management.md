@@ -2,15 +2,15 @@
 title: Řešení potíží s Azure Automation Update Management
 description: V tomto článku se dozvíte, jak řešit problémy s Azure Automation Update Management.
 services: automation
-ms.date: 10/14/2020
+ms.date: 12/04/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 8818047dd4fef9c495c46b353e68841f83e9677c
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e8fc2a840ce019282625f286a6d54b132a1806c8
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217214"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751253"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Řešení problémů s Update Managementem
 
@@ -18,6 +18,40 @@ Tento článek popisuje problémy, ke kterým může dojít při nasazování fu
 
 >[!NOTE]
 >Pokud narazíte na problémy při nasazení Update Management na počítači s Windows, otevřete Prohlížeč událostí systému Windows a v protokolu událostí pro **aplikace a služby** v místním počítači zaškrtněte protokol událostí **Operations Manager** . Vyhledejte události s ID události 4502 a podrobnostmi události, které obsahují `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` .
+
+## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a>Scénář: aktualizace pro Linux zobrazené jako čeká na vyřízení a instalace se liší.
+
+### <a name="issue"></a>Problém
+
+V případě počítače se systémem Linux Update Management v části **zabezpečení** klasifikace a **dalších** jsou k dispozici konkrétní aktualizace. Pokud se ale na počítači spustí plán aktualizací, například pokud chcete instalovat jenom aktualizace, které odpovídají klasifikaci **zabezpečení** , nainstalované aktualizace se liší od verze nebo sady aktualizací, které jsou uvedené dříve, které odpovídají této klasifikaci.
+
+### <a name="cause"></a>Příčina
+
+Když se dokončí posouzení aktualizací operačního systému, které čekají na váš počítač se systémem Linux, [otevřete](https://oval.mitre.org/) Update Management pro klasifikaci, které poskytuje distribuce dodavatel pro Linux Kategorizace se provádí pro aktualizace pro Linux jako **zabezpečení** nebo **jiné** na základě elipsových souborů, které určují aktualizace řešení potíží se zabezpečením a ohrožení zabezpečení. Ale při spuštění plánu aktualizace se na počítači se systémem Linux spustí pomocí příslušného správce balíčků, jako je YUMU, APT nebo ZYPPERU, aby se nainstalovaly. Správce balíčků pro Linux distribuce může mít jiný mechanismus pro klasifikaci aktualizací, kde se výsledky mohou lišit od těch, které jsou získány ze souborů ELIPSy Update Management.
+
+### <a name="resolution"></a>Řešení
+
+Můžete ručně kontrolovat počítač se systémem Linux, příslušné aktualizace a jejich klasifikaci pro správce balíčků distribuce. Chcete-li zjistit, které aktualizace jsou ve Správci balíčků klasifikovány jako **zabezpečení** , spusťte následující příkazy.
+
+V případě YUMU následující příkaz vrátí nenulový seznam aktualizací, které jsou zařazeny do kategorií **Security** by Red Hat. Všimněte si, že v případě CentOS vždy vrátí prázdný seznam a nedojde k žádné klasifikaci zabezpečení.
+
+```bash
+sudo yum -q --security check-update
+```
+
+Pro ZYPPERU následující příkaz vrátí nenulový seznam aktualizací, které jsou zařazené do kategorií **Security** by SUSE.
+
+```bash
+sudo LANG=en_US.UTF8 zypper --non-interactive patch --category security --dry-run
+```
+
+V případě APT následující příkaz vrátí nenulový seznam aktualizací zařazených do kategorie **zabezpečení** podle kanonického tvaru pro Ubuntu Linux distribuce.
+
+```bash
+sudo grep security /etc/apt/sources.list > /tmp/oms-update-security.list LANG=en_US.UTF8 sudo apt-get -s dist-upgrade -oDir::Etc::Sourcelist=/tmp/oms-update-security.list
+```
+
+Z tohoto seznamu pak spuštěním příkazu `grep ^Inst` načtete všechny aktualizace zabezpečení, které čekají na zpracování.
 
 ## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a><a name="failed-to-enable-error"></a>Scénář: zobrazí se chyba "Nepodařilo se povolit řešení aktualizace".
 
@@ -101,7 +135,7 @@ K tomuto problému může dojít při potížích s místními konfiguracemi neb
 
 1. Spusťte Poradce při potížích pro [Windows](update-agent-issues.md#troubleshoot-offline) nebo [Linux](update-agent-issues-linux.md#troubleshoot-offline), a to v závislosti na operačním systému.
 
-2. Ujistěte se, že váš počítač hlásí správný pracovní prostor. Pokyny k tomu, jak tento aspekt ověřit, najdete v tématu [ověření připojení agenta k Azure monitor](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Také se ujistěte, že je tento pracovní prostor propojený s vaším účtem Azure Automation. Potvrďte to tak, že přejdete na svůj účet Automation a v části **související prostředky**vyberete **propojený pracovní prostor** .
+2. Ujistěte se, že váš počítač hlásí správný pracovní prostor. Pokyny k tomu, jak tento aspekt ověřit, najdete v tématu [ověření připojení agenta k Azure monitor](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Také se ujistěte, že je tento pracovní prostor propojený s vaším účtem Azure Automation. Potvrďte to tak, že přejdete na svůj účet Automation a v části **související prostředky** vyberete **propojený pracovní prostor** .
 
 3. Ujistěte se, že se počítače zobrazí v pracovním prostoru Log Analytics, který je propojený s vaším účtem Automation. Spusťte následující dotaz v pracovním prostoru Log Analytics.
 
@@ -124,7 +158,7 @@ K tomuto problému může dojít při potížích s místními konfiguracemi neb
    | sort by TimeGenerated desc
    ```
 
-8. Pokud získáte `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` výsledek, je dosaženo kvóty definované v pracovním prostoru, která zastavila ukládání dat. V pracovním prostoru přejděte na **Správa objemu dat** v části **využití a odhadované náklady**a změňte nebo odeberte kvótu.
+8. Pokud získáte `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` výsledek, je dosaženo kvóty definované v pracovním prostoru, která zastavila ukládání dat. V pracovním prostoru přejděte na **Správa objemu dat** v části **využití a odhadované náklady** a změňte nebo odeberte kvótu.
 
 9. Pokud je problém stále nevyřešený, postupujte podle kroků v části [nasazení Hybrid Runbook Worker Windows](../automation-windows-hrw-install.md) a přeinstalujte Hybrid Worker pro Windows. V případě systému Linux postupujte podle pokynů v části [nasazení Hybrid Runbook Worker pro Linux](../automation-linux-hrw-install.md).
 
@@ -146,11 +180,11 @@ Zprostředkovatel prostředků Automation není v předplatném zaregistrován.
 
 Chcete-li zaregistrovat poskytovatele prostředků služby Automation, postupujte podle následujících kroků v Azure Portal.
 
-1. V seznamu služeb Azure v dolní části portálu vyberte **všechny služby**a potom vyberte **předplatná** ve skupině obecné služby.
+1. V seznamu služeb Azure v dolní části portálu vyberte **všechny služby** a potom vyberte **předplatná** ve skupině obecné služby.
 
 2. Vyberte své předplatné.
 
-3. V části **Nastavení**vyberte **poskytovatelé prostředků**.
+3. V části **Nastavení** vyberte **poskytovatelé prostředků**.
 
 4. V seznamu poskytovatelů prostředků ověřte, že je zaregistrován poskytovatel prostředků Microsoft. Automation.
 
@@ -178,11 +212,11 @@ Pokud vaše předplatné není pro poskytovatele prostředků služby Automation
 
 1. V [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)přejděte na seznam služeb Azure.
 
-2. Vyberte **všechny služby**a potom vyberte **předplatná** ve skupině obecné služby.
+2. Vyberte **všechny služby** a potom vyberte **předplatná** ve skupině obecné služby.
 
 3. Vyhledá předplatné definované v oboru pro vaše nasazení.
 
-4. V části **Nastavení**vyberte **poskytovatelé prostředků**.
+4. V části **Nastavení** vyberte **poskytovatelé prostředků**.
 
 5. Ověřte, že je zaregistrován poskytovatel prostředků Microsoft. Automation.
 
@@ -259,7 +293,7 @@ Počítače se zobrazí ve výsledcích dotazu ARG, ale ve verzi Preview dynamic
 
 1. V Azure Portal přejdete do účtu Automation pro počítač, který se nezobrazuje správně.
 
-2. V části **Automatizace procesu**vyberte **skupiny hybridních pracovních procesů** .
+2. V části **Automatizace procesu** vyberte **skupiny hybridních pracovních procesů** .
 
 3. Vyberte kartu **System Hybrid Worker Groups** .
 

@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 4f5049d1589b741e60db69c782107cab1f047b77
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 1ca2ded69b0279a60d8ed83cf310a58dadf1a337
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436789"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751984"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Potlačit výstrahy z Azure Defenderu
 
@@ -23,10 +23,10 @@ Tato stránka vysvětluje, jak můžete pomocí pravidel potlačení výstrah po
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|Stav vydaných verzí:| Obecná dostupnost |
 |Stanov|Free<br>(Většina výstrah zabezpečení je dostupná jenom v Azure Defenderu.)|
 |Požadované role a oprávnění:|**Správce zabezpečení** a **vlastník** můžou pravidla vytvářet a odstraňovat.<br>**Čtenáři zabezpečení** a **čtenáři** můžou zobrazit pravidla.|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 

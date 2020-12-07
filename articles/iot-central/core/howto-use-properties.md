@@ -7,12 +7,12 @@ ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 992fb4422974dad7a48e5fea953ac4530bb52d5c
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: a517f7a796b6543c8d60f0d1ebdba16afa0bc4b7
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122589"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751423"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Použití vlastností v řešení Azure IoT Central
 
@@ -79,7 +79,7 @@ Tento příklad ukazuje dvě vlastnosti. Tyto vlastnosti se vztahují k definici
 
 * `@type` Určuje typ schopnosti: `Property` . Předchozí příklad také ukazuje sémantický typ `Temperature` pro obě vlastnosti.
 * `name` pro vlastnost.
-* `schema` Určuje datový typ pro vlastnost. Tato hodnota může být primitivní typ, například Double, Integer, Boolean nebo String. Podporují se také komplexní typy objektů, pole a mapy.
+* `schema` Určuje datový typ pro vlastnost. Tato hodnota může být primitivní typ, například Double, Integer, Boolean nebo String. Podporují se také komplexní typy objektů a mapy.
 * `writable` Ve výchozím nastavení jsou vlastnosti jen pro čtení. Pomocí tohoto pole můžete označit vlastnost jako zapisovatelnou.
 
 Volitelná pole, jako je zobrazované jméno a popis, umožňují přidat další podrobnosti k rozhraní a funkcím.

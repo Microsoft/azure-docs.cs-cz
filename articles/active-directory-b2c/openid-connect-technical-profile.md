@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/03/2020
+ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8273d4bbb0b58a256521cf11cacf6d1fed67e10d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2010f55a28d393086aad544cbec3f5c009801872
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345112"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750488"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu OpenID Connect v Azure Active Directory B2C vlastní zásady
 
@@ -80,6 +80,7 @@ Technický profil také vrací deklarace identity, které nejsou vráceny zprost
 | IdTokenAudience | Ne | Cílová skupina id_token. Když se tato možnost zadá, Azure AD B2C ověří, jestli je `aud` deklarace identity v tokenu, kterou vrátil poskytovatel identity, rovna hodnotě uvedené v metadatech IdTokenAudience.  |
 | MEZIPAMĚŤ | Ano | Adresa URL, která odkazuje na dokument konfigurace zprostředkovatele identity OpenID Connect, který se taky označuje jako OpenID dobře známý koncový bod konfigurace. Adresa URL může obsahovat `{tenant}` výraz, který je nahrazen názvem tenanta.  |
 | authorization_endpoint | Ne | Adresa URL, která odkazuje na koncový bod autorizace konfigurace zprostředkovatele identity OpenID Connect. Hodnota metadat authorization_endpoint má přednost před `authorization_endpoint` zadanou hodnotou v koncovém bodu známé konfigurace OpenID. Adresa URL může obsahovat `{tenant}` výraz, který je nahrazen názvem tenanta. |
+| end_session_endpoint | Ne | Adresa URL koncového bodu koncové relace. Hodnota metadat authorization_endpoint má přednost před `end_session_endpoint` zadanou hodnotou v koncovém bodu známé konfigurace OpenID. |
 | issuer | Ne | Jedinečný identifikátor poskytovatele identity OpenID Connect. Hodnota metadat vystavitele má přednost před `issuer` zadanou hodnotou v OpenIDm známém koncovém bodu konfigurace.  Když se tato možnost zadá, Azure AD B2C ověří, jestli je `iss` deklarace identity v tokenu, kterou vrátil poskytovatel identity, rovna hodnotě určené v metadatech vystavitele. |
 | ProviderName | Ne | Název zprostředkovatele identity  |
 | response_types | Ne | Typ odpovědi v souladu se specifikací OpenID Connect Core 1,0. Možné hodnoty: `id_token` , `code` , nebo `token` . |
@@ -92,7 +93,7 @@ Technický profil také vrací deklarace identity, které nejsou vráceny zprost
 | DiscoverMetadataByTokenIssuer | Ne | Určuje, zda mají být metadata OIDC zjištěna pomocí vystavitele v tokenu JWT. |
 | IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false` (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
 |token_endpoint_auth_method| Ne| Určuje způsob, jakým Azure AD B2C odesílá hlavičku ověřování na koncový bod tokenu. Možné hodnoty: `client_secret_post` (výchozí) a `client_secret_basic` (Public Preview). Další informace najdete v [části ověřování klientů OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
-
+|SingleLogoutEnabled| Ne| Určuje, jestli se během přihlašování technického profilu pokusí odhlásit od zprostředkovatelů federovaných identit. Další informace najdete v tématu věnovaném [odhlášení Azure AD B2C relace](session-overview.md#sign-out).  Možné hodnoty: `true` (výchozí), nebo `false` .|
 
 ```xml
 <Metadata>

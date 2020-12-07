@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/25/2020
-ms.openlocfilehash: f9a7623fd27178e8b9c213a1759bb09863d16c72
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 7063452d23d2975cf0c26a89e7a08a422de54942
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030692"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751933"
 ---
 # <a name="train-model-module"></a>Modul vlakového modelu
 
@@ -63,7 +63,9 @@ V Azure Machine Learning je vytváření a používání modelu strojového uče
 1.  Odešlete kanál. Pokud máte velké množství dat, může to chvíli trvat.
 
     > [!IMPORTANT] 
-    > Pokud máte sloupec ID, který má ID každého řádku, může **model výuky** mít chybu typu "počet jedinečných hodnot ve sloupci:" {column_name} "větší než povolený." Důvodem je to, že sloupec ID dosáhl prahové hodnoty jedinečných hodnot a příčinou může být nedostatek paměti. Sloupec ID obvykle nemá během školení žádný význam. Pomocí příkazu [Upravit metadata](edit-metadata.md) můžete tento sloupec označit jako **nejasná funkce** a nebude se používat při výuce. Další podrobnosti o chybě najdete v [kódu chyby návrháře](././designer-error-codes.md) .
+    > Pokud máte sloupec ID, který má ID každého řádku, nebo textový sloupec, který obsahuje příliš mnoho jedinečných hodnot, může dojít k chybě **modelu výuky** , například "počet jedinečných hodnot ve sloupci:" {column_name} "je větší než povolený.
+    >
+    > Důvodem je to, že sloupec dosáhl prahové hodnoty jedinečných hodnot a příčinou může být nedostatek paměti. Pomocí možnosti [Upravit metadata](edit-metadata.md) můžete tento sloupec označit jako **nejasná funkce** a nebude se používat při výuce, nebo [extrahovat N-gram funkcí z modulu textu](extract-n-gram-features-from-text.md) do předběžného zpracování textového sloupce. Další podrobnosti o chybě najdete v [kódu chyby návrháře](././designer-error-codes.md) .
 
 ## <a name="results"></a>Výsledky
 

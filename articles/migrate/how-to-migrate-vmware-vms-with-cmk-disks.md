@@ -1,18 +1,17 @@
 ---
 title: Migrace virtuálních počítačů VMware do Azure pomocí šifrování na straně serveru (SSE) a klíčů spravovaných zákazníkem (CMK) pomocí migrace serveru Azure Migrate
 description: Naučte se migrovat virtuální počítače VMware do Azure pomocí šifrování na straně serveru (SSE) a klíčů spravovaných zákazníkem (CMK) pomocí migrace Azure Migrate serveru.
-author: bsiva
-ms.service: azure-migrate
-ms.manager: carmonm
-ms.topic: article
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
+ms.topic: how-to
 ms.date: 03/12/2020
-ms.author: raynew
-ms.openlocfilehash: 89b795011460ee2803d07d14b9c2abe9c8ffca55
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8a174c3b2bfb390eb7d691ae1bdcb0e28dde9032
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483347"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751083"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>Migrace virtuálních počítačů VMware na virtuální počítače Azure s povoleným šifrováním na straně serveru a zákaznickými klíči
 

@@ -1,14 +1,17 @@
 ---
 title: Posouzení virtuálních počítačů Azure v Azure Migrate posouzení serveru
 description: Další informace o hodnoceních v Azure Migrate posouzení serveru
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: d08e3c1c0035ee2bb56ee54f1ffb7ffb439d61b6
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: f8a4f29114f7e0a2ed7868f01e05e25c8a0d0ce1
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319319"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752222"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>Přehled posouzení serveru (migrace na virtuální počítače Azure)
 
@@ -152,7 +155,7 @@ Vlastnost | Podrobnosti | Stav připravenosti na Azure
 --- | --- | ---
 **Typ spouštění** | Azure podporuje virtuální počítače s typem spouštění systému BIOS, nikoli UEFI. | Podmíněně připravený, pokud je typ spouštění UEFI
 **Cores** | Každý počítač nesmí mít více než 128 jader, což je maximální počet podporovaných virtuálních počítačů Azure.<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate považuje využité jádra k porovnání. Pokud nastavení posouzení určí faktor komfortu, vynásobí se počet využitých jader faktorem komfortu.<br/><br/> Pokud není k dispozici žádná historie výkonu, Azure Migrate používá přidělená jádra k použití faktoru pohodlí. | Připraveno, pokud je počet jader v rámci limitu
-**SRAM** | Každý počítač nesmí mít více než 3 892 GB paměti RAM, což je maximální velikost, kterou virtuální počítač Azure M-Series Standard_M128m &nbsp; <sup>2</sup> podporuje. [Další informace](../virtual-machines/sizes.md).<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate považuje využitou paměť RAM za účelem porovnání. Pokud je určen faktor komfortu, vynásobit se využití paměti RAM faktorem komfortu.<br/><br/> Pokud není k dispozici žádná historie, použije se přidělená paměť RAM k použití faktoru pohodlí.<br/><br/> | Připraveno, pokud je velikost paměti RAM v rámci limitu
+**SRAM** | Každý počítač nesmí mít více než 3 892 GB paměti RAM, což je maximální velikost, kterou virtuální počítač Azure M-Series Standard_M128m &nbsp; <sup>2</sup> podporuje. [Přečtěte si další informace](../virtual-machines/sizes.md).<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate považuje využitou paměť RAM za účelem porovnání. Pokud je určen faktor komfortu, vynásobit se využití paměti RAM faktorem komfortu.<br/><br/> Pokud není k dispozici žádná historie, použije se přidělená paměť RAM k použití faktoru pohodlí.<br/><br/> | Připraveno, pokud je velikost paměti RAM v rámci limitu
 **Disk úložiště** | Přidělená velikost disku nesmí být větší než 32 TB. I když Azure podporuje disky 64 – TB s SSD úrovně Ultra disky Azure, Azure Migrate: posouzení serveru aktuálně kontroluje 32 TB jako limit velikosti disku, protože to ještě nepodporuje SSD úrovně Ultra. <br/><br/> Počet disků připojených k počítači, včetně disku s operačním systémem, musí být 65 nebo menší. | Připraveno, pokud je velikost disku a číslo v mezích
 **Sítě** | Počítač musí mít k němu připojená maximálně 32 síťových rozhraní (nic). | Připraveno, pokud je počet síťových adaptérů v limitu
 
@@ -275,7 +278,7 @@ Tady je několik důvodů, proč hodnocení může získat nízkou spolehlivost:
 
 Po dokončení doporučení pro vyhodnocení velikosti virtuálního počítače Azure v Azure Migrate vypočítá náklady na výpočetní prostředky a úložiště pro po migraci.
 
-- **Náklady na výpočetní**výkon: Azure Migrate využívá doporučená velikost virtuálního počítače Azure a fakturační rozhraní API Azure pro výpočet měsíčních nákladů na virtuální počítač.
+- **Náklady na výpočetní** výkon: Azure Migrate využívá doporučená velikost virtuálního počítače Azure a fakturační rozhraní API Azure pro výpočet měsíčních nákladů na virtuální počítač.
 
     Výpočet vezme v úvahu:
     - Operační systém

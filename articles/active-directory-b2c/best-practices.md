@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: d8c0a5ce6f3befd41c0e1399363fd73726693837
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1c3c3d38ac0d8334f70f681d8ef86c0d6f86ecfa
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949713"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750216"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Doporučení a osvědčené postupy pro Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Následující osvědčené postupy a doporučení se týkají některých prim�
 |--|--|
 | Volba toků uživatelů pro většinu scénářů | Architektura prostředí identit Azure AD B2C je základní silou služby. Zásady plně popisují prostředí identity, jako je registrace, přihlašování nebo úpravy profilu. Aby vám pomohly nastavit nejběžnější úkoly identity, Azure AD B2C portál obsahuje předdefinované a konfigurovatelné zásady nazývané uživatelské toky. Díky tokům uživatelů můžete vytvořit skvělé uživatelské prostředí během několika minut. stačí jenom několik kliknutí. [Naučte se používat toky uživatelů a vlastní zásady](custom-policy-overview.md#comparing-user-flows-and-custom-policies).|
 | Registrace aplikací | Všechny aplikace (web, nativní) a rozhraní API, které je třeba zabezpečit, musí být registrovány v Azure AD B2C. Pokud má aplikace jak webovou, tak nativní verzi iOS a Android, můžete je zaregistrovat jako jednu aplikaci v Azure AD B2C se stejným ID klienta. Naučte se [Registrovat OIDC, SAML, web a nativní aplikace](./tutorial-register-applications.md?tabs=applications). Další informace o [typech aplikací, které lze použít v Azure AD B2C](./application-types.md). |
-| Fakturace po měsících aktivních uživatelů | Azure AD B2C přesunula z měsíčních aktivních ověřování na měsíční fakturace aktivních uživatelů (MAU). Většina zákazníků bude tento model nákladově efektivní. [Přečtěte si další informace o fakturaci měsíčně aktivních uživatelů](https://azure.microsoft.com/updates/mau-billing/). |
+| Fakturace po měsících aktivních uživatelů | Azure AD B2C přesunula z měsíčních aktivních ověřování na měsíční fakturace aktivních uživatelů (MAU). Většina zákazníků bude tento model nákladově efektivní. [Přečtěte si další informace o fakturaci měsíčně aktivních uživatelů](https://azure.microsoft.com/updates/mau-billing/). [Uložit tento odkaz](b2clogin.md) |
 
 ## <a name="planning-and-design"></a>Plánování a návrh
 
@@ -84,11 +84,11 @@ Spravujte své Azure AD B2C prostředí.
 | Nastavení aktivního upozorňování a monitorování | [Sledovat chování uživatele](./analytics-with-application-insights.md) v Azure AD B2C pomocí Application Insights. |
 
 ## <a name="support-and-status-updates"></a>Aktualizace stavu a podpory
-
+## <a name="todays-support-and-status-updates"></a>Dnešní podpora a aktualizace stavu
 Udržujte si přehled o stavu služby a vyhledejte možnosti podpory.
 
 | Osvědčený postup | Popis |
 |--|--|
 | [Aktualizace služeb](https://azure.microsoft.com/updates/?product=active-directory-b2c) |  Udržujte si přehled o Azure AD B2C aktualizacích produktů a oznámeních. |
-| [podpora Microsoftu](support-options.md) | Soubor a žádost o podporu pro Azure AD B2C technické problémy. Podpora fakturace a správy předplatného se poskytuje bez jakýchkoli nákladů. |
+| [Podpora společnosti Microsoft](support-options.md) | Soubor a žádost o podporu pro Azure AD B2C technické problémy. Podpora fakturace a správy předplatného se poskytuje bez jakýchkoli nákladů. |
 | [Stav Azure](https://status.azure.com/status) | Podívejte se na aktuální stav všech služeb Azure. |

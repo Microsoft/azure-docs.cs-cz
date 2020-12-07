@@ -4,12 +4,12 @@ description: Zjistěte, jak upgradovat cluster Azure Kubernetes Service (AKS), a
 services: container-service
 ms.topic: article
 ms.date: 11/17/2020
-ms.openlocfilehash: 30ad80727c238ae7e415039adf3e4eb75dbbc1b5
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: c5de1a02a077ccb5f46b685572c6c43f5951b224
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531339"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751491"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Upgrade clusteru Azure Kubernetes Service (AKS)
 
@@ -93,7 +93,7 @@ az aks nodepool update -n mynodepool -g MyResourceGroup --cluster-name MyManaged
 
 ## <a name="upgrade-an-aks-cluster"></a>Upgrade clusteru AKS
 
-Seznam dostupných verzí pro cluster AKS můžete upgradovat pomocí příkazu [AZ AKS upgrade][az-aks-upgrade] . Během procesu upgradu AKS přidá nový uzel vyrovnávací paměti (nebo tolik uzlů, jak jsou nakonfigurované v [maximálním](#customize-node-surge-upgrade)přetečení) do clusteru, na kterém je spuštěná zadaná verze Kubernetes. Pak bude [Cordon a vyprázdnit][kubernetes-drain] jeden ze starých uzlů, aby se minimalizovalo přerušení spuštěných aplikací (Pokud používáte max. nárůst, [Cordon a vyprázdní][kubernetes-drain] tolik uzlů ve stejnou dobu jako počet zadaných uzlů vyrovnávací paměti). Když je starý uzel úplně vyprázdněný, obnoví se jeho image, aby se získala Nová verze, a ta se stane uzlem vyrovnávací paměti pro upgrade následujícího uzlu. Tento proces se opakuje, dokud nebudou upgradovány všechny uzly v clusteru. Na konci procesu se odstraní poslední vyprázdnující uzel a zachová se stávající počet uzlů agentů.
+Seznam dostupných verzí pro cluster AKS můžete upgradovat pomocí příkazu [AZ AKS upgrade][az-aks-upgrade] . Během procesu upgradu AKS přidá nový uzel vyrovnávací paměti (nebo tolik uzlů, jak jsou nakonfigurované v [maximálním](#customize-node-surge-upgrade)přetečení) do clusteru, na kterém je spuštěná zadaná verze Kubernetes. Pak bude [Cordon a vyprázdnit][kubernetes-drain] jeden ze starých uzlů, aby se minimalizovalo přerušení spuštěných aplikací (Pokud používáte max. nárůst, [Cordon a vyprázdní][kubernetes-drain] tolik uzlů ve stejnou dobu jako počet zadaných uzlů vyrovnávací paměti). Když je starý uzel úplně vyprázdněný, obnoví se jeho image, aby se získala Nová verze, a ta se stane uzlem vyrovnávací paměti pro upgrade následujícího uzlu. Tento proces se opakuje, dokud nebudou upgradovány všechny uzly v clusteru. Na konci procesu se odstraní poslední uzel vyrovnávací paměti, čímž se zachová existující počet uzlů agenta a zůstatek v zóně.
 
 ```azurecli-interactive
 az aks upgrade \
@@ -104,8 +104,9 @@ az aks upgrade \
 
 Upgrade clusteru může trvat několik minut v závislosti na tom, kolik uzlů máte.
 
-> [!NOTE]
-> Je celkově povolený čas pro dokončení upgradu clusteru. Tento čas se vypočítá pomocí produktu `10 minutes * total number of nodes in the cluster` . Například v clusteru 20 uzlů musí operace upgradu úspěšně probíhat během 200 minut nebo AKS operace, aby se předešlo neopravitelnému stavu clusteru. Chcete-li provést obnovení při selhání upgradu, opakujte operaci upgradu po vypršení časového limitu.
+> [!IMPORTANT]
+> Zajistěte, aby všechny `PodDisruptionBudgets` (soubory PDB) umožňovaly přesun alespoň 1 pod replikou v čase, v opačném případě se operace vyprázdnění/vyřazení nezdaří.
+> Pokud operace vyprázdnění selže, operace upgradu neprovede návrh, aby se zajistilo, že nedojde k přerušení aplikací. Opravte prosím, co způsobilo zastavení operace (nesprávné soubory PDB, nedostatek kvóty atd.), a opakujte operaci znovu.
 
 Pokud chcete ověřit, že upgrade proběhl úspěšně, použijte příkaz [AZ AKS show][az-aks-show] :
 

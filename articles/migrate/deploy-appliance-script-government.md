@@ -1,14 +1,17 @@
 ---
 title: Nastavení zařízení Azure Migrate v Azure Government
 description: Přečtěte si, jak nastavit zařízení Azure Migrate v Azure Government
-ms.topic: article
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 1060bda13cc593980850bc6563555cf5dd4b7fd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f31211c4448ad5bbe8d839b2ec86b0b61970f568
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450018"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752188"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Nastavení zařízení v Azure Government 
 
@@ -19,7 +22,7 @@ Podle tohoto článku nasaďte [Azure Migrate zařízení](./migrate-appliance-a
 > Možnost nasadit zařízení pomocí šablony (pro virtuální počítače VMware a virtuální počítače Hyper-V) není v Azure Government podporovaná.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Skript nastaví zařízení Azure Migrate na stávajícím fyzickém počítači nebo VIRTUÁLNÍm počítači.
 
@@ -33,7 +36,7 @@ Pokud chcete nastavit zařízení pro VMware, Stáhněte si z Azure Portal soubo
 
 ### <a name="download-the-script"></a>Stáhnout skript
 
-1.  V Azure Migrate **cíle migrace**  >  na**servery**  >  **: vyhodnocování serveru**klikněte na **zjistit**.
+1.  V Azure Migrate **cíle migrace**  >  na **servery**  >  **: vyhodnocování serveru** klikněte na **zjistit**.
 2.  V možnosti **zjišťovat počítače**  >  **jsou vaše počítače virtualizované?** vyberte **Ano, pomocí VMware vSphere hypervisor**.
 3.  Pro stažení souboru ZIP klikněte na **Stáhnout**. 
 
@@ -60,7 +63,7 @@ Tento skript:
 
 - Nainstaluje agenty a webovou aplikaci.
 - Nainstaluje role Windows, včetně aktivační služby Windows, služby IIS a prostředí PowerShell ISE.
-- Stáhne a nainstaluje modul IIS s možností zápisu. [Další informace](https://www.microsoft.com/download/details.aspx?id=7435).
+- Stáhne a nainstaluje modul IIS s možností zápisu. [Přečtěte si další informace](https://www.microsoft.com/download/details.aspx?id=7435).
 - Aktualizuje klíč registru (HKLM) s trvalým nastavením pro Azure Migrate.
 - Vytvoří protokol a konfigurační soubory následujícím způsobem:
     - **Konfigurační soubory**:%ProgramData%\Microsoft Azure\Config
@@ -71,7 +74,7 @@ Spuštění skriptu:
 1. Extrahujte soubor zip do složky na počítači, který bude hostovat zařízení. Ujistěte se, že nespouštíte skript na počítači v existujícím zařízení Azure Migrate.
 2. Na počítači spusťte PowerShell s oprávněními správce (se zvýšenými oprávněními).
 3. Změňte adresář PowerShellu na složku obsahující obsah extrahovaný ze staženého souboru ZIP.
-4. Spusťte skript **AzureMigrateInstaller.ps1**následujícím způsobem: 
+4. Spusťte skript **AzureMigrateInstaller.ps1** následujícím způsobem: 
     
     ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>.\AzureMigrateInstaller.ps1 ```
 1. Po úspěšném spuštění skriptu se spustí webová aplikace zařízení, aby bylo možné zařízení nastavit. Pokud narazíte na nějaké problémy, zkontrolujte protokoly skriptu na adrese C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log.
@@ -87,8 +90,8 @@ Pokud chcete nastavit zařízení pro Hyper-V, Stáhněte ze Azure Portal soubor
 
 ### <a name="download-the-script"></a>Stáhnout skript
 
-1.  V Azure Migrate **cíle migrace**  >  na**servery**  >  **: vyhodnocování serveru**klikněte na **zjistit**.
-2.  V rozevíracích **seznamech počítačů**  >  , ve**kterých jsou počítače virtualizované?** vyberte **Ano, s technologií Hyper-V**.
+1.  V Azure Migrate **cíle migrace**  >  na **servery**  >  **: vyhodnocování serveru** klikněte na **zjistit**.
+2.  V rozevíracích **seznamech počítačů**  >  , ve **kterých jsou počítače virtualizované?** vyberte **Ano, s technologií Hyper-V**.
 3.  Pro stažení souboru ZIP klikněte na **Stáhnout**. 
 
 
@@ -115,7 +118,7 @@ Tento skript:
 
 - Nainstaluje agenty a webovou aplikaci.
 - Nainstaluje role Windows, včetně aktivační služby Windows, služby IIS a prostředí PowerShell ISE.
-- Stáhne a nainstaluje modul IIS s možností zápisu. [Další informace](https://www.microsoft.com/download/details.aspx?id=7435).
+- Stáhne a nainstaluje modul IIS s možností zápisu. [Přečtěte si další informace](https://www.microsoft.com/download/details.aspx?id=7435).
 - Aktualizuje klíč registru (HKLM) s trvalým nastavením pro Azure Migrate.
 - Vytvoří protokol a konfigurační soubory následujícím způsobem:
     - **Konfigurační soubory**:%ProgramData%\Microsoft Azure\Config
@@ -126,7 +129,7 @@ Spuštění skriptu:
 1. Extrahujte soubor zip do složky na počítači, který bude hostovat zařízení. Ujistěte se, že nespouštíte skript na počítači v existujícím zařízení Azure Migrate.
 2. Na počítači spusťte PowerShell s oprávněními správce (se zvýšenými oprávněními).
 3. Změňte adresář PowerShellu na složku obsahující obsah extrahovaný ze staženého souboru ZIP.
-4. Spusťte skript **AzureMigrateInstaller.ps1**následujícím způsobem: 
+4. Spusťte skript **AzureMigrateInstaller.ps1** následujícím způsobem: 
 
     ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-HyperV-USGov>.\AzureMigrateInstaller.ps1 ``` 
 1. Po úspěšném spuštění skriptu se spustí webová aplikace zařízení, aby bylo možné zařízení nastavit. Pokud narazíte na nějaké problémy, zkontrolujte protokoly skriptu na adrese C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log.
@@ -142,7 +145,7 @@ Pokud chcete nastavit zařízení pro VMware, Stáhněte si z Azure Portal soubo
 
 ### <a name="download-the-script"></a>Stáhnout skript
 
-1.  V Azure Migrate **cíle migrace**  >  na**servery**  >  **: vyhodnocování serveru**klikněte na **zjistit**.
+1.  V Azure Migrate **cíle migrace**  >  na **servery**  >  **: vyhodnocování serveru** klikněte na **zjistit**.
 2.  V rámci **zjišťování počítačů**  >  **jsou vaše počítače virtualizované?** vyberte **nevirtualizované/jiné**.
 3.  Pro stažení souboru ZIP klikněte na **Stáhnout**. 
 
@@ -158,7 +161,7 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 
 3. Ověřte nejnovější verzi a hodnotu hash zařízení:
 
-    **Scénář** | **Stáhnout*** | **Hodnota hash**
+    **Scénář** | **Stáhnout** _ | _ *Hodnota hash**
     --- | --- | ---
     Fyzický (85 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140338) | cfed44bb52c9ab3024a628dc7a5d0df8c624f156ec1ecc3507116bae330b257f
           
@@ -169,7 +172,7 @@ Tento skript:
 
 - Nainstaluje agenty a webovou aplikaci.
 - Nainstaluje role Windows, včetně aktivační služby Windows, služby IIS a prostředí PowerShell ISE.
-- Stáhne a nainstaluje modul IIS s možností zápisu. [Další informace](https://www.microsoft.com/download/details.aspx?id=7435).
+- Stáhne a nainstaluje modul IIS s možností zápisu. [Přečtěte si další informace](https://www.microsoft.com/download/details.aspx?id=7435).
 - Aktualizuje klíč registru (HKLM) s trvalým nastavením pro Azure Migrate.
 - Vytvoří protokol a konfigurační soubory následujícím způsobem:
     - **Konfigurační soubory**:%ProgramData%\Microsoft Azure\Config
@@ -180,7 +183,7 @@ Spuštění skriptu:
 1. Extrahujte soubor zip do složky na počítači, který bude hostovat zařízení. Ujistěte se, že nespouštíte skript na počítači v existujícím zařízení Azure Migrate.
 2. Na počítači spusťte PowerShell s oprávněními správce (se zvýšenými oprávněními).
 3. Změňte adresář PowerShellu na složku obsahující obsah extrahovaný ze staženého souboru ZIP.
-4. Spusťte skript **AzureMigrateInstaller.ps1**následujícím způsobem: 
+4. Spusťte skript **AzureMigrateInstaller.ps1** následujícím způsobem: 
 
     ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>.\AzureMigrateInstaller.ps1 ```
 1. Po úspěšném spuštění skriptu se spustí webová aplikace zařízení, aby bylo možné zařízení nastavit. Pokud narazíte na nějaké problémy, zkontrolujte protokoly skriptu na adrese C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log.

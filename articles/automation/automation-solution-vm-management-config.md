@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3fdb3b2b23d07b79a8e9979450bee653d646196c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 552cac01cd492229a19bdbc297665eb7d3ccb401
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182797"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751287"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Konfigurace Start/Stop VMs during off-hours
 
@@ -48,7 +48,7 @@ Můžete povolit buď cílení akce na předplatné a skupinu prostředků, nebo
 
 2. Do pole parametr **VMList** přidejte čárkami oddělený seznam virtuálních počítačů (bez mezer). Seznam příkladů je `vm1,vm2,vm3` .
 
-3. Nastavte pole parametr **WHATIF** na hodnotu true.
+3. Chcete-li zobrazit náhled změn, nastavte pole parametr **WHATIF** na hodnotu true.
 
 4. Nakonfigurujte `External_ExcludeVMNames` proměnnou pomocí čárkami odděleného seznamu virtuálních počítačů (VM1, VM2, VM3) bez mezer mezi hodnotami oddělenými čárkou.
 
@@ -79,7 +79,7 @@ V prostředí, které obsahuje dvě nebo více součástí na více virtuálníc
 
 3. Do pole parametr **VMList** přidejte čárkami oddělený seznam virtuálních počítačů (bez mezer). Seznam příkladů je `vm1,vm2,vm3` .
 
-4. Nastavte vlastnost **WHATIF** na hodnotu true. 
+4. Nastavením **WHATIF** na hodnotu true zobrazíte náhled změn. 
 
 5. Nakonfigurujte `External_ExcludeVMNames` proměnnou se seznamem virtuálních počítačů oddělených čárkami, bez mezer mezi hodnotami oddělenými čárkami.
 

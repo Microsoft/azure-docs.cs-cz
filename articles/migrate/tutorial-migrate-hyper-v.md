@@ -1,17 +1,20 @@
 ---
 title: Migrace virtuálních počítačů Hyper-V do Azure pomocí migrace serveru Azure Migrate
 description: Přečtěte si, jak migrovat místní virtuální počítače Hyper-V do Azure pomocí migrace Azure Migrate serveru.
+author: bsiva
+ms.author: bsiva
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 2d31c5b90f37f336b48118e4f4adde4777f8cf4a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 48fe0c737cf7005676a5c803107b4402c7039141
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493127"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752741"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrace virtuálních počítačů Hyper-V do Azure 
 
@@ -213,8 +216,8 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
 ## <a name="post-migration-best-practices"></a>Osvědčené postupy po migraci
 
 - Pro zvýšení odolnosti:
-    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Další informace](../backup/quick-backup-vm-portal.md).
-    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
+    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Přečtěte si další informace](../backup/quick-backup-vm-portal.md).
+    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Přečtěte si další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Pro zvýšení zabezpečení:
     - Odblokujte a omezte přístup k příchozímu provozu pomocí [správy v čase Azure Security Center](../security-center/security-center-just-in-time.md).
     - Omezte síťový provoz na koncové body správy pomocí [skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md).

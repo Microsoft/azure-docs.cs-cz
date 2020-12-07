@@ -2,16 +2,16 @@
 title: Vytvoření posouzení služby AVS pomocí Azure Migrate posouzení serveru | Microsoft Docs
 description: V této části najdete popis postupu vytvoření posouzení funkce AVS pomocí nástroje Azure Migrate Server Assessment Tool.
 author: rashi-ms
-ms.service: azure-migrate
-ms.topic: article
-ms.date: 06/26/2020
 ms.author: rajosh
-ms.openlocfilehash: f9fdff54cbd795c6aeda1708dcae8d00022a6a43
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.manager: abhemraj
+ms.topic: how-to
+ms.date: 06/26/2020
+ms.openlocfilehash: 93d17ec2a4fb5c191ce02c73a7a3532e9c854b00
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483500"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752069"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Vytvoření posouzení řešení Azure VMware (AVS)
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak vytvořit vyhodnocení řešení Azure VMware (AVS)
 
 - Ujistěte se, že jste [vytvořili](./create-manage-projects.md) projekt Azure Migrate.
 - Pokud jste již vytvořili projekt, ujistěte se, že jste [přidali](how-to-assess.md) Azure Migrate: nástroj Server Assessment Tool.
-- Chcete-li vytvořit posouzení, je třeba nastavit zařízení Azure Migrate pro [VMware](how-to-set-up-appliance-vmware.md), které zjišťuje místní počítače a odesílá data o metadatech a výkonu do Azure Migrate: posouzení serveru. [Další informace](migrate-appliance.md).
+- Chcete-li vytvořit posouzení, je třeba nastavit zařízení Azure Migrate pro [VMware](how-to-set-up-appliance-vmware.md), které zjišťuje místní počítače a odesílá data o metadatech a výkonu do Azure Migrate: posouzení serveru. [Přečtěte si další informace](migrate-appliance.md).
 - [Metadata serveru](./tutorial-discover-import.md) můžete také importovat ve formátu hodnot oddělených čárkami (CSV).
 
 

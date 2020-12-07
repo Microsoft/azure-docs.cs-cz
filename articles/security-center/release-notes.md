@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2020
+ms.date: 12/07/2020
 ms.author: memildin
-ms.openlocfilehash: 0dbd208cea64a3b2dc22f7603f654127e5b46294
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d8b690201ea4349f9577377ff24c91bd75ecd58b
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511759"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751865"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -31,12 +31,13 @@ Další informace o *plánovaných* změnách, které už brzy Security Center, 
 > Pokud hledáte položky starší než šest měsíců, najdete je v archivu, kde najdete novinky [v Azure Security Center](release-notes-archive.md).
 
 
-## <a name="december-2020"></a>Prosince 2020
+## <a name="december-2020"></a>Prosinec 2020
 
 Aktualizace v prosinci zahrnují:
 
 - [Azure Defender pro servery SQL na počítačích je všeobecně dostupný.](#azure-defender-for-sql-servers-on-machines-is-generally-available)
 - [Podpora Azure Defenderu pro Azure synapse Analytics vyhrazený fond SQL je všeobecně dostupná.](#azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available)
+- [Dva nové plány Azure Defenderu: Azure Defender pro DNS a Azure Defender pro Správce prostředků (ve verzi Preview)](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>Azure Defender pro servery SQL na počítačích je všeobecně dostupný.
 
@@ -68,6 +69,24 @@ Azure Defender pro SQL chrání vyhrazené fondy SQL pomocí:
 Podpora Azure Defenderu pro fondy SQL služby Azure synapse Analytics je automaticky přidaná do sady Azure SQL databases v Azure Security Center. V Azure Portal najdete novou kartu Azure Defender for SQL na stránce pracovního prostoru synapse.
 
 Přečtěte si další informace o [Azure Defenderu pro SQL](defender-for-sql-introduction.md).
+
+
+### <a name="two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview"></a>Dva nové plány Azure Defenderu: Azure Defender pro DNS a Azure Defender pro Správce prostředků (ve verzi Preview)
+
+Přidali jsme dvě nové možnosti ochrany před hrozbami v cloudu pro vaše prostředí Azure.
+
+Tyto nové ochrany významně zvyšují odolnost proti útokům z aktérů hrozeb a významně zvyšují počet prostředků Azure chráněných pomocí Azure Defenderu.
+
+- **Azure Defender pro správce prostředků** – automaticky monitoruje všechny operace správy prostředků provedené ve vaší organizaci. Další informace najdete tady:
+    - [Seznámení s Azure Defenderem pro Správce prostředků](defender-for-resource-manager-introduction.md)
+    - [Reakce na Správce prostředků upozornění na Azure Defender](defender-for-resource-manager-usage.md)
+    - [Seznam výstrah, které poskytuje Azure Defender pro Správce prostředků](alerts-reference.md#alerts-resourcemanager)
+
+- **Azure Defender pro DNS** – nepřetržitě monitoruje všechny dotazy DNS z vašich prostředků Azure. Další informace najdete tady:
+    - [Seznámení s Azure Defenderem pro DNS](defender-for-dns-introduction.md)
+    - [Reakce na Azure Defender pro výstrahy DNS](defender-for-dns-usage.md)
+    - [Seznam upozornění poskytovaných službou Azure Defender pro DNS](alerts-reference.md#alerts-dns)
+
 
 ## <a name="november-2020"></a>Listopad 2020
 
@@ -226,7 +245,7 @@ Přečtěte si další informace o [Azure firewall](https://azure.microsoft.com/
 
 **Povolené rozsahy IP adres pro doporučení by měly být definované v Kubernetes Services** nyní mají možnost Rychlá oprava.
 
-Další podrobnosti o tomto doporučení a všech dalších Security Center doporučeních najdete v tématu [doporučení zabezpečení – referenční příručka](recommendations-reference.md).
+Další informace o tomto doporučení a všech dalších Security Center doporučeních najdete v tématu [doporučení zabezpečení – referenční příručka](recommendations-reference.md).
 
 :::image type="content" source="./media/release-notes/authorized-ip-ranges-recommendation.png" alt-text="Pro doporučení služby Kubernetes Services s možností Rychlá oprava by se měly definovat rozsahy autorizovaných IP adres.":::
 
@@ -244,7 +263,7 @@ Další informace najdete v [Odebrání standardu z řídicího panelu](update-r
 
 Azure Resource Graph je služba v Azure, která je navržená tak, aby poskytovala efektivní průzkum prostředků s možností škálování v rámci dané sady předplatných, abyste mohli efektivně řídit vaše prostředí. 
 
-Pro Azure Security Center můžete použít ARG a [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) k dotazování široké škály dat stav zabezpečení. Příklad:
+Pro Azure Security Center můžete použít ARG a [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) k dotazování široké škály dat stav zabezpečení. Například:
 
 - Využití inventáře prostředků (ARG)
 - Popsali jsme vzorový ARGický dotaz pro [identifikaci účtů bez povoleného vícefaktorového ověřování (MFA)](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled) .
@@ -375,7 +394,7 @@ Pokud povolíte Azure Defender z oblasti **ceny a nastavení** Azure Security Ce
 - [Azure Defender pro servery](defender-for-servers-introduction.md)
 - [Azure Defender pro App Service](defender-for-app-service-introduction.md)
 - [Azure Defender pro úložiště](defender-for-storage-introduction.md)
-- [Azure Defender pro SQL](defender-for-sql-introduction.md)
+- [Azure Defender for SQL](defender-for-sql-introduction.md)
 - [Azure Defender pro trezor klíčů](defender-for-key-vault-introduction.md)
 - [Azure Defender pro Kubernetes](defender-for-kubernetes-introduction.md)
 - [Azure Defender pro registry kontejnerů](defender-for-container-registries-introduction.md)
@@ -623,7 +642,7 @@ Pokud máte skripty, dotazy nebo automatizace odkazující na předchozí doporu
 
 ##### <a name="before-august-2020"></a>Před srpna 2020
 
-|Doporučení|Obor|
+|Doporučení|Rozsah|
 |----|:----|
 |**Povolení integrovaného řešení posouzení ohrožení zabezpečení na virtuálních počítačích (používá se Qualys)**<br>Klíč: 550e890b-e652-4d22-8274-60b3bdb24c63|Integrované|
 |**Náprava ohrožení zabezpečení zjištěná na vašich virtuálních počítačích (používá se Qualys)**<br>Klíč: 1195afff-c881-495E-9bc5-1486211ae03f|Integrované|
@@ -632,7 +651,7 @@ Pokud máte skripty, dotazy nebo automatizace odkazující na předchozí doporu
 ||||
 
 
-|Zásady|Obor|
+|Zásady|Rozsah|
 |----|:----|
 |**Na virtuálních počítačích by mělo být povolené posouzení ohrožení zabezpečení**<br>ID zásady: 501541f7-f7e7-4cd6-868c-4190fdad3ac9|Integrované|
 |**Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.**<br>ID zásady: 760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
@@ -641,13 +660,13 @@ Pokud máte skripty, dotazy nebo automatizace odkazující na předchozí doporu
 
 ##### <a name="from-august-2020"></a>Od srpna 2020
 
-|Doporučení|Obor|
+|Doporučení|Rozsah|
 |----|:----|
 |**Na virtuálních počítačích by mělo být povolené řešení posouzení ohrožení zabezpečení.**<br>Klíč: ffff0522-1e88-47fc-8382-2a80ba848f5d|Předdefinované + BYOL|
 |**Ohrožení zabezpečení ve vašich virtuálních počítačích by se mělo opravit.**<br>Klíč: 1195afff-c881-495E-9bc5-1486211ae03f|Předdefinované + BYOL|
 ||||
 
-|Zásady|Obor|
+|Zásady|Rozsah|
 |----|:----|
 |[**Na virtuálních počítačích by mělo být povolené posouzení ohrožení zabezpečení**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>ID zásady: 501541f7-f7e7-4cd6-868c-4190fdad3ac9 |Předdefinované + BYOL|
 ||||

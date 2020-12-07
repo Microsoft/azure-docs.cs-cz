@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 41d98750f3c869eff5abf7482a9bb04435407318
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 8bf3959651048a7a568df1d94aa07aa206663d50
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436755"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750981"
 ---
 # <a name="introduction-to-azure-defender"></a>Seznámení s Azure Defenderem
 
@@ -35,10 +35,12 @@ Pokud povolíte Azure Defender z oblasti **ceny a nastavení** Azure Security Ce
 - [Azure Defender pro servery](defender-for-servers-introduction.md)
 - [Azure Defender pro App Service](defender-for-app-service-introduction.md)
 - [Azure Defender pro úložiště](defender-for-storage-introduction.md)
-- [Azure Defender pro SQL](defender-for-sql-introduction.md)
+- [Azure Defender for SQL](defender-for-sql-introduction.md)
 - [Azure Defender pro Kubernetes](defender-for-kubernetes-introduction.md)
 - [Azure Defender pro registry kontejnerů](defender-for-container-registries-introduction.md)
 - [Azure Defender pro trezor klíčů](defender-for-key-vault-introduction.md)
+- [Azure Defender pro Správce prostředků](defender-for-resource-manager-introduction.md)
+- [Azure Defender pro DNS](defender-for-dns-introduction.md)
 
 Každý z těchto plánů je vysvětlen samostatně v dokumentaci Security Center.
 
@@ -61,9 +63,9 @@ K rozšiřování ochrany virtuálních počítačů a databází SQL, které js
 
 
 
-## <a name="security-alerts"></a>Výstrahy zabezpečení 
+## <a name="azure-defender-security-alerts"></a>Výstrahy zabezpečení v Azure Defenderu 
 
-Když Azure Defender zjistí hrozbu v jakékoli oblasti vašeho prostředí, vygeneruje výstrahu. Tyto výstrahy popisují podrobnosti o ovlivněných prostředcích, navrhovaných krocích pro nápravu a v některých případech možnost aktivovat aplikaci logiky v reakci.
+Když Azure Defender zjistí hrozbu v jakékoli oblasti vašeho prostředí, vygeneruje výstrahu zabezpečení. Tyto výstrahy popisují podrobnosti o ovlivněných prostředcích, navrhovaných krocích pro nápravu a v některých případech možnost aktivovat aplikaci logiky v reakci.
 
 Bez ohledu na to, jestli je výstraha vygenerovaná Security Center nebo přijatá Security Center z integrovaného bezpečnostního produktu, můžete ji exportovat. Pokud chcete exportovat výstrahy do Azure Sentinel, všech SIEM třetích stran nebo jakýchkoli jiných externích nástrojů, postupujte podle pokynů v tématu [výstrahy streamování do řešení pro správu služeb Siem, společnosti nebo IT](export-to-siem.md).
 

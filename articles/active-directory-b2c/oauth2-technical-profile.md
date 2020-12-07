@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/03/2020
+ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 35b1f57a2361c5a4360e2ff1944b93e767168799
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 486622b37f02ab8b2a53a273a6eaea4cb5add3a5
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259386"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750422"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu OAuth2 v Azure Active Directory B2C vlastní zásady
 
@@ -79,26 +79,28 @@ Technický profil také vrací deklarace identity, které nejsou vráceny zprost
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| client_id | Yes | Identifikátor aplikace zprostředkovatele identity |
-| IdTokenAudience | No | Cílová skupina id_token. Když se tato možnost zadá, Azure AD B2C ověří, jestli je token v deklaraci identity vrácené zprostředkovatelem identity a který se rovná zadanému typu. |
-| authorization_endpoint | Yes | Adresa URL koncového bodu autorizace na základě RFC 6749. |
-| AccessTokenEndpoint | Yes | Adresa URL koncového bodu tokenu na základě RFC 6749. |
-| ClaimsEndpoint | Yes | Adresa URL koncového bodu pro informace o uživateli podle RFC 6749. |
-| AccessTokenResponseFormat | No | Formát volání koncového bodu přístupového tokenu. Například Facebook vyžaduje metodu HTTP GET, ale odpověď přístupového tokenu je ve formátu JSON. |
-| AdditionalRequestQueryParameters | No | Další parametry dotazu žádosti Například může být vhodné odeslat poskytovateli identity další parametry. Můžete zahrnout více parametrů pomocí oddělovače čárky. |
-| ClaimsEndpointAccessTokenName | No | Název parametru řetězce dotazu přístupového tokenu. Někteří poskytovatelé deklarací koncových bodů identity podporují požadavek GET HTTP. V takovém případě se nosný token posílá pomocí parametru řetězce dotazu místo hlavičky Authorization. |
-| ClaimsEndpointFormatName | No | Název parametru řetězce formátu dotazu. Můžete například nastavit název jako `format` v tomto koncovém bodu deklarací LinkedIn `https://api.linkedin.com/v1/people/~?format=json` . |
-| ClaimsEndpointFormat | No | Hodnota parametru řetězce formátu dotazu. Můžete například nastavit hodnotu jako `json` v tomto koncovém bodě deklarací LinkedIn `https://api.linkedin.com/v1/people/~?format=json` . |
-| ProviderName | No | Název zprostředkovatele identity |
-| response_mode | No | Metoda, kterou zprostředkovatel identity používá k odeslání výsledku zpět do Azure AD B2C. Možné hodnoty: `query` , `form_post` (výchozí) nebo `fragment` . |
-| scope | No | Rozsah požadavku, který je definován podle specifikace poskytovatele identity OAuth2. Například `openid` , `profile` a `email` . |
-| HttpBinding | No | Očekávaná vazba protokolu HTTP k přístupovému tokenu a koncovým bodům tokenu deklarací identity. Možné hodnoty: `GET` nebo `POST` .  |
-| ResponseErrorCodeParamName | No | Název parametru, který obsahuje chybovou zprávu vrácenou přes HTTP 200 (ok). |
-| ExtraParamsInAccessTokenEndpointResponse | No | Obsahuje další parametry, které mohou být vráceny v odpovědi od **AccessTokenEndpoint** některými zprostředkovateli identity. Například odpověď z **AccessTokenEndpoint** obsahuje další parametr `openid` , například, což je povinný parametr kromě access_token v řetězci dotazu **ClaimsEndpoint** žádosti. Více názvů parametrů by mělo být uvozeno řídicím znakem a odděleno čárkou, oddělovačem. |
-| ExtraParamsInClaimsEndpointRequest | No | Obsahuje další parametry, které mohou být vráceny v žádosti **ClaimsEndpoint** některými zprostředkovateli identity. Více názvů parametrů by mělo být uvozeno řídicím znakem a odděleno čárkou, oddělovačem. |
-| IncludeClaimResolvingInClaimsHandling  | No | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false`   (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
-| ResolveJsonPathsInJsonTokens  | No | Určuje, zda technický profil řeší cesty JSON. Možné hodnoty: `true` , nebo `false` (výchozí). Tato metadata slouží ke čtení dat z vnořeného prvku JSON. V [OutputClaim](technicalprofiles.md#outputclaims)nastavte na `PartnerClaimType` element cesty JSON, který chcete výstup. Například: `firstName.localized` nebo `data.0.to.0.email` .|
-|token_endpoint_auth_method| No| Určuje způsob, jakým Azure AD B2C odesílá hlavičku ověřování na koncový bod tokenu. Možné hodnoty: `client_secret_post` (výchozí) a `client_secret_basic` (Public Preview). Další informace najdete v [části ověřování klientů OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
+| client_id | Ano | Identifikátor aplikace zprostředkovatele identity |
+| IdTokenAudience | Ne | Cílová skupina id_token. Když se tato možnost zadá, Azure AD B2C ověří, jestli je token v deklaraci identity vrácené zprostředkovatelem identity a který se rovná zadanému typu. |
+| authorization_endpoint | Ano | Adresa URL koncového bodu autorizace na základě RFC 6749. |
+| AccessTokenEndpoint | Ano | Adresa URL koncového bodu tokenu na základě RFC 6749. |
+| ClaimsEndpoint | Ano | Adresa URL koncového bodu pro informace o uživateli podle RFC 6749. |
+| end_session_endpoint | Ano | Adresa URL koncového bodu relace na základě RFC 6749. |
+| AccessTokenResponseFormat | Ne | Formát volání koncového bodu přístupového tokenu. Například Facebook vyžaduje metodu HTTP GET, ale odpověď přístupového tokenu je ve formátu JSON. |
+| AdditionalRequestQueryParameters | Ne | Další parametry dotazu žádosti Například může být vhodné odeslat poskytovateli identity další parametry. Můžete zahrnout více parametrů pomocí oddělovače čárky. |
+| ClaimsEndpointAccessTokenName | Ne | Název parametru řetězce dotazu přístupového tokenu. Někteří poskytovatelé deklarací koncových bodů identity podporují požadavek GET HTTP. V takovém případě se nosný token posílá pomocí parametru řetězce dotazu místo hlavičky Authorization. |
+| ClaimsEndpointFormatName | Ne | Název parametru řetězce formátu dotazu. Můžete například nastavit název jako `format` v tomto koncovém bodu deklarací LinkedIn `https://api.linkedin.com/v1/people/~?format=json` . |
+| ClaimsEndpointFormat | Ne | Hodnota parametru řetězce formátu dotazu. Můžete například nastavit hodnotu jako `json` v tomto koncovém bodě deklarací LinkedIn `https://api.linkedin.com/v1/people/~?format=json` . |
+| ProviderName | Ne | Název zprostředkovatele identity |
+| response_mode | Ne | Metoda, kterou zprostředkovatel identity používá k odeslání výsledku zpět do Azure AD B2C. Možné hodnoty: `query` , `form_post` (výchozí) nebo `fragment` . |
+| scope | Ne | Rozsah požadavku, který je definován podle specifikace poskytovatele identity OAuth2. Například `openid` , `profile` a `email` . |
+| HttpBinding | Ne | Očekávaná vazba protokolu HTTP k přístupovému tokenu a koncovým bodům tokenu deklarací identity. Možné hodnoty: `GET` nebo `POST` .  |
+| ResponseErrorCodeParamName | Ne | Název parametru, který obsahuje chybovou zprávu vrácenou přes HTTP 200 (ok). |
+| ExtraParamsInAccessTokenEndpointResponse | Ne | Obsahuje další parametry, které mohou být vráceny v odpovědi od **AccessTokenEndpoint** některými zprostředkovateli identity. Například odpověď z **AccessTokenEndpoint** obsahuje další parametr `openid` , například, což je povinný parametr kromě access_token v řetězci dotazu **ClaimsEndpoint** žádosti. Více názvů parametrů by mělo být uvozeno řídicím znakem a odděleno čárkou, oddělovačem. |
+| ExtraParamsInClaimsEndpointRequest | Ne | Obsahuje další parametry, které mohou být vráceny v žádosti **ClaimsEndpoint** některými zprostředkovateli identity. Více názvů parametrů by mělo být uvozeno řídicím znakem a odděleno čárkou, oddělovačem. |
+| IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false` (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
+| ResolveJsonPathsInJsonTokens  | Ne | Určuje, zda technický profil řeší cesty JSON. Možné hodnoty: `true` , nebo `false` (výchozí). Tato metadata slouží ke čtení dat z vnořeného prvku JSON. V [OutputClaim](technicalprofiles.md#outputclaims)nastavte na `PartnerClaimType` element cesty JSON, který chcete výstup. Například: `firstName.localized` nebo `data.0.to.0.email` .|
+|token_endpoint_auth_method| Ne| Určuje způsob, jakým Azure AD B2C odesílá hlavičku ověřování na koncový bod tokenu. Možné hodnoty: `client_secret_post` (výchozí) a `client_secret_basic` (Public Preview). Další informace najdete v [části ověřování klientů OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
+|SingleLogoutEnabled| Ne| Určuje, jestli se během přihlašování technického profilu pokusí odhlásit od zprostředkovatelů federovaných identit. Další informace najdete v tématu věnovaném [odhlášení Azure AD B2C relace](session-overview.md#sign-out).  Možné hodnoty: `true` (výchozí), nebo `false` .|
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 
@@ -106,7 +108,7 @@ Element **CryptographicKeys** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| client_secret | Yes | Tajný kód klienta aplikace zprostředkovatele identity. Kryptografický klíč je vyžadován pouze v případě, že jsou metadata **response_types** nastavena na hodnotu `code` . V takovém případě Azure AD B2C provede další volání výměny autorizačního kódu pro přístupový token. Pokud jsou metadata nastavená na `id_token` , můžete kryptografický klíč vynechat. |
+| client_secret | Ano | Tajný kód klienta aplikace zprostředkovatele identity. Kryptografický klíč je vyžadován pouze v případě, že jsou metadata **response_types** nastavena na hodnotu `code` . V takovém případě Azure AD B2C provede další volání výměny autorizačního kódu pro přístupový token. Pokud jsou metadata nastavená na `id_token` , můžete kryptografický klíč vynechat. |
 
 ## <a name="redirect-uri"></a>Identifikátor URI pro přesměrování
 

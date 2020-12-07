@@ -1,15 +1,18 @@
 ---
 title: Migrujte počítače jako fyzický server do Azure pomocí Azure Migrate.
 description: Tento článek popisuje, jak migrovat fyzické počítače do Azure pomocí Azure Migrate.
+author: rahulg1190
+ms.author: rahugup
+ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: c783cb22ce8a31d346e98c53dee365fa59b73b8a
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: af1c321e5c537fbd3af770cb392c538e6056e075
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302888"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752868"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrace počítačů jako fyzických serverů do Azure
 
@@ -50,7 +53,7 @@ Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 
 Připravte Azure na migraci pomocí migrace serveru.
 
-**Úkol** | **Podrobnosti**
+**Úloha** | **Podrobnosti**
 --- | ---
 **Vytvoření projektu Azure Migrate** | Váš účet Azure potřebuje oprávnění Přispěvatel nebo Owner k [Vytvoření nového projektu](https://docs.microsoft.com/azure/migrate/create-manage-projects).
 **Ověření oprávnění pro účet Azure** | Váš účet Azure potřebuje oprávnění k vytvoření virtuálního počítače a zápis na spravovaný disk Azure.

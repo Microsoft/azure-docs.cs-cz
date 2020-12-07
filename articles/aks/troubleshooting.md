@@ -4,12 +4,12 @@ description: Přečtěte si, jak řešit problémy a řešit běžné problémy 
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: aefb33325c1a5bf8e94d47106147d4c7c4f0f1ca
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d157dd6b3347c8fbfd8712fa20d52cedb425f47f
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684164"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751474"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -24,41 +24,36 @@ Je zde také [Průvodce odstraňováním potíží](https://github.com/feiskyer/
 
  [Vyžádejte si více jader](../azure-portal/supportability/resource-manager-core-quotas-request.md).
 
-## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>Jaké je nastavení maximálního počtu lusků na uzel pro AKS?
-
-Pokud nasadíte cluster AKS do Azure Portal, je nastavení maximálního počtu lusků na jeden uzel ve výchozím nastavení 30.
-Pokud nasadíte cluster AKS v rozhraní příkazového řádku Azure, je nastavení maximálního počtu lusků na jeden uzel standardně 110. (Ujistěte se, že používáte nejnovější verzi rozhraní příkazového řádku Azure CLI). Toto nastavení lze změnit pomocí `–-max-pods` příznaku v `az aks create` příkazu.
-
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Při nasazování clusteru AKS s pokročilými sítěmi se zobrazuje chyba insufficientSubnetSize. Co bych měl/a dělat?
 
 Tato chyba znamená, že podsíť, která se používá pro cluster, už nemá k dispozici žádné IP adresy v rámci jejího CIDR pro úspěšné přiřazení prostředku. U clusterů Kubenet je požadavek pro každý uzel v clusteru dostatečným místem pro IP adresu. U clusterů Azure CNI je požadavek pro každý uzel a pod v clusteru dostatečným místem pro IP adresu.
 Přečtěte si další informace o [návrhu Azure CNI, abyste přiřadili IP adresy do lusků](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
-Tyto chyby jsou také v [AKS Diagnostics](./concepts-diagnostics.md) , které aktivně povrchují problémy, jako je například nedostatečná velikost podsítě.
+Tyto chyby se také procházejí v [AKS diagnostice](concepts-diagnostics.md), které aktivně povrchují problémy, jako je například nedostatečná velikost podsítě.
 
 V následujících třech případech dojde k chybě nedostatečné velikosti podsítě:
 
-1. Škálování na AKS nebo AKS Nodepool
-   1. Pokud používáte Kubenet, k tomu dochází, když `number of free IPs in the subnet` je **menší než** `number of new nodes requested` .
-   1. Pokud používáte Azure CNI, k tomu dochází, když `number of free IPs in the subnet` je **menší než** `number of nodes requested times (*) the node pool's --max-pod value` .
+1. Škálování AKS nebo škálování fondu uzlů AKS
+   1. Při použití Kubenet, pokud `number of free IPs in the subnet` je **menší než** `number of new nodes requested` .
+   1. Pokud používáte Azure CNI, pokud `number of free IPs in the subnet` je **menší než** `number of nodes requested times (*) the node pool's --max-pod value` .
 
-1. Upgrade AKS nebo upgrade AKS Nodepool
-   1. Pokud používáte Kubenet, k tomu dochází, když `number of free IPs in the subnet` je **menší než** `number of buffer nodes needed to upgrade` .
-   1. Pokud používáte Azure CNI, k tomu dochází, když `number of free IPs in the subnet` je **menší než** `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` .
+1. Upgrade AKS nebo aktualizace fondu uzlů AKS
+   1. Při použití Kubenet, pokud `number of free IPs in the subnet` je **menší než** `number of buffer nodes needed to upgrade` .
+   1. Pokud používáte Azure CNI, pokud `number of free IPs in the subnet` je **menší než** `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` .
    
-   Ve výchozím nastavení jsou clustery AKS nastavené na hodnotu maximálního nárůstu (vyrovnávací paměti pro upgrade) jednoho (1), ale toto chování při upgradu se dá přizpůsobit nastavením [maximální hodnoty přetečení fondu uzlů](upgrade-cluster.md#customize-node-surge-upgrade) , která zvýší počet dostupných IP adres potřebných k dokončení upgradu.
+   Ve výchozím nastavení jsou clustery AKS nastavené na hodnotu maximálního nárůstu (velikost vyrovnávací paměti pro upgrade) jednoho (1), ale toto chování upgradu se dá přizpůsobit nastavením hodnoty [maximální přetečení fondu uzlů. tím se zvýší počet dostupných IP adres potřebných k dokončení upgradu.
 
-1. AKS Create nebo AKS Nodepool Add
-   1. Pokud používáte Kubenet, k tomu dochází, když `number of free IPs in the subnet` je **menší než** `number of nodes requested for the node pool` .
-   1. Pokud používáte Azure CNI, k tomu dochází, když `number of free IPs in the subnet` je **menší než** `number of nodes requested times (*) the node pool's --max-pod value` .
+1. AKS vytvořit nebo AKS Přidat fond uzlů
+   1. Při použití Kubenet, pokud `number of free IPs in the subnet` je **menší než** `number of nodes requested for the node pool` .
+   1. Pokud používáte Azure CNI, pokud `number of free IPs in the subnet` je **menší než** `number of nodes requested times (*) the node pool's --max-pod value` .
 
 Následující omezení se dá učinit vytvořením nových podsítí. Kvůli neschopnosti aktualizovat rozsah CIDR existující podsítě se vyžaduje oprávnění k vytvoření nové podsítě.
 
 1. Sestavte novou podsíť s větším rozsahem CIDR postačující pro cíle operace:
    1. Vytvoří novou podsíť s novým požadovaným rozsahem, který se překrývá.
-   1. Vytvořte novou nodepool na nové podsíti.
-   1. Vyprázdní se z původního nodepoolu umístěného v staré podsíti, která se má nahradit.
-   1. Odstraňte starou podsíť a starou nodepool.
+   1. Vytvořte nový fond uzlů v nové podsíti.
+   1. Vyprázdní se z původního fondu uzlů, který je umístěný ve staré podsíti, aby se nahradil.
+   1. Odstraňte starou podsíť a starý fond uzlů.
 
 ## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Můj pod je zablokovaný v CrashLoopBackOff režimu. Co bych měl/a dělat?
 
@@ -89,10 +84,6 @@ Tyto časové limity můžou souviset s vnitřním přenosem mezi blokovanými u
 ## <a name="im-trying-to-enable-kubernetes-role-based-access-control-kubernetes-rbac-on-an-existing-cluster-how-can-i-do-that"></a>V existujícím clusteru se snažím Povolit řízení přístupu na základě role (Kubernetes RBAC) Kubernetes. Jak to můžu udělat?
 
 Povolení řízení přístupu na základě role (Kubernetes RBAC) v existujících clusterech se v tuto chvíli nepodporuje, musí se nastavit při vytváření nových clusterů. Kubernetes RBAC je ve výchozím nastavení povolena při použití rozhraní příkazového řádku, portálu nebo verze API novější než `2020-03-01` .
-
-## <a name="i-created-a-cluster-with-kubernetes-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Vytvořil (a) jsem cluster s povoleným Kubernetes RBAC a v řídicím panelu Kubernetes se teď zobrazuje spousta upozornění. Řídicí panel, který se používá pro práci bez upozornění. Co bych měl/a dělat?
-
-Důvodem upozornění je, že cluster má povolený Kubernetes RBAC a přístup k řídicímu panelu je teď ve výchozím nastavení omezený. Obecně platí, že tento přístup je dobrým zvykem, protože výchozí expozicí řídicího panelu všem uživatelům clusteru může vést k bezpečnostním hrozbám. Pokud přesto chcete řídicí panel povolit, postupujte podle kroků v [tomto blogovém příspěvku](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/).
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nemůžu získat protokoly pomocí protokolů kubectl nebo se nemůžu připojit k serveru rozhraní API. Zobrazuje se chyba ze serveru: Chyba při vytáčení back-endu: vytočit TCP... Co bych měl/a dělat?
 
@@ -182,11 +173,11 @@ Pro tento problém použijte následující alternativní řešení:
 
 ## <a name="im-getting-aadsts7000215-invalid-client-secret-is-provided-when-using-aks-api-what-should-i-do"></a>Zobrazuje se `"AADSTS7000215: Invalid client secret is provided."` při používání rozhraní AKS API. Co bych měl/a dělat?
 
-Většinou je důvodem vypršení platnosti přihlašovacích údajů instančního objektu. [Aktualizujte přihlašovací údaje pro cluster AKS.](update-credentials.md)
+K tomuto problému dochází z důvodu vypršení platnosti přihlašovacích údajů instančního objektu. [Aktualizujte přihlašovací údaje pro cluster AKS.](update-credentials.md)
 
 ## <a name="i-cant-access-my-cluster-api-from-my-automationdev-machinetooling-when-using-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>Nemůžu získat přístup k rozhraní API clusteru z automatizace/vývojového počítače/nástrojů při použití rozsahů IP adres autorizovaných serverem API. Návody tento problém vyřešit?
 
-To vyžaduje, `--api-server-authorized-ip-ranges` aby zahrnovaly IP (y) nebo rozsahy IP adres pro automatizaci, vývoj a nástroje, které se používají. V části Jak najít IP [adresu použijte zabezpečený přístup k serveru API pomocí povolených rozsahů IP adres](api-server-authorized-ip-ranges.md).
+Chcete-li tento problém vyřešit, zajistěte, aby `--api-server-authorized-ip-ranges` zahrnovaly IP (s) nebo rozsahy IP adres pro automatizaci, vývoj a nástroje pro využívané systémy. V části Jak najít IP [adresu použijte zabezpečený přístup k serveru API pomocí povolených rozsahů IP adres](api-server-authorized-ip-ranges.md).
 
 ## <a name="im-unable-to-view-resources-in-kubernetes-resource-viewer-in-azure-portal-for-my-cluster-configured-with-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>Nedaří se mi zobrazit prostředky v prohlížeči prostředků Kubernetes v Azure Portal pro cluster nakonfigurovaný s rozsahy IP adres autorizovaných serverem API. Návody tento problém vyřešit?
 
@@ -208,11 +199,11 @@ Service returned an error. Status=429 Code=\"OperationNotAllowed\" Message=\"The
 
 Tyto chyby omezování jsou podrobně popsané [tady](../azure-resource-manager/management/request-limits-and-throttling.md) a [tady](../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md)
 
-Pro rezprovoznění z AKS technického týmu je potřeba zajistit, aby se verze používala aspoň 1.18. x, která obsahuje mnoho vylepšení. Další podrobnosti najdete [tady](https://github.com/Azure/AKS/issues/1413) a [tady](https://github.com/kubernetes-sigs/cloud-provider-azure/issues/247).
+Doporučení od týmu AKS Engineering je, abyste měli jistotu, že používáte verzi aspoň 1.18. x, která obsahuje mnoho vylepšení. Další podrobnosti najdete [tady](https://github.com/Azure/AKS/issues/1413) a [tady](https://github.com/kubernetes-sigs/cloud-provider-azure/issues/247).
 
 Vzhledem k těmto chybám omezení se měří na úrovni předplatného, může se přesto vyskytnout:
-- Existují aplikace třetích stran, které provádějí požadavky GET (např. Monitorujte aplikace atd...). Doporučujeme, abyste snížili četnost těchto volání.
-- V VMSS je velký počet clusterů AKS/nodepools. Obvyklé doporučení je mít v daném předplatném méně než 20-30 clusterů.
+- Existují aplikace třetích stran, které provádějí požadavky GET (například monitorování aplikací atd.). Doporučujeme, abyste snížili četnost těchto volání.
+- K dispozici je mnoho clusterů AKS a fondů uzlů využívajících sady škálování virtuálních počítačů. Pokuste se rozdělit počet clusterů do různých předplatných, zejména pokud očekáváte, že budou vysoce aktivní (například aktivní automatické škálování clusteru), nebo máte více klientů (například Rancher, terraformu atd.).
 
 ## <a name="my-clusters-provisioning-status-changed-from-ready-to-failed-with-or-without-me-performing-an-operation-what-should-i-do"></a>Stav zřizování mého clusteru se změnil z připraveno na selhalo s nebo bez provedení operace. Co bych měl/a dělat?
 
@@ -220,46 +211,13 @@ Pokud se stav zřizování vašeho clusteru změní z *připraveno* na *selhalo*
 
 Pokud stav zřizování vašeho clusteru zůstane *neúspěšný* nebo pokud aplikace v clusteru přestanou fungovat, [odešlete žádost o podporu](https://azure.microsoft.com/support/options/#submit).
 
+## <a name="my-watch-is-stale-or-azure-ad-pod-identity-nmi-is-returning-status-500"></a>Moje kukátko je zastaralé nebo služba Azure AD pod identitou NMI vrací stav 500
+
+Pokud používáte Azure Firewall jako v tomto [příkladu](limit-egress-traffic.md#restrict-egress-traffic-using-azure-firewall), může dojít k tomuto problému jako dlouhodobá připojení TCP přes bránu firewall, která používají pravidla aplikací, aktuálně mají chybu (která se má vyřešit v Q1CY21), která způsobí, že se v `keepalives` bráně firewall ukončí příkaz Přejít na. Dokud se tento problém nevyřeší, můžete zmírnit přidáním síťového pravidla (místo pravidla aplikace) do IP adresy serveru AKS API.
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Řešení potíží s Azure Storage a AKS
 
-### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-disk"></a>Jaké jsou doporučené stabilní verze Kubernetes pro disk Azure? 
-
-| Verze Kubernetes | Doporučená verze |
-|--|:--:|
-| 1.12 | 1.12.9 nebo novější |
-| 1.13 | 1.13.6 nebo novější |
-| 1,14 | 1.14.2 nebo novější |
-
-
-### <a name="waitforattach-failed-for-azure-disk-parsing-devdiskazurescsi1lun1-invalid-syntax"></a>WaitForAttach se nezdařilo pro disk Azure: analýza "/dev/disk/Azure/scsi1/lun1": Neplatná syntaxe
-
-V Kubernetes verze 1,10 může MountVolume. WaitForAttach selhat s opětovným připojením k disku Azure.
-
-V systému Linux se může zobrazit nesprávná chyba formátu DevicePath. Například:
-
-```console
-MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
-  Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
-```
-
-Ve Windows se může zobrazit nesprávná chyba na číslo DevicePath (LUN). Například:
-
-```console
-Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
-1102-dynamic-pvc-6c526c51-4a18-11e8-ab5c-000d3af7b38e) lun:(4)
-```
-
-Tento problém byl opraven v následujících verzích Kubernetes:
-
-| Verze Kubernetes | Pevná verze |
-|--|:--:|
-| 1.10 | 1.10.2 nebo novější |
-| 1,11 | 1.11.0 nebo novější |
-| 1,12 a novější | – |
-
-
-### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Při nastavování UID a GID v mountOptions pro disk Azure došlo k chybě.
+### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Chyba při nastavování UID a `GID` v mountOptions pro disk Azure
 
 Disk Azure používá ve výchozím nastavení systém souborů ext4, XFS a mountOptions, jako je UID = x, GID = x, nejde nastavit v době připojení. Například pokud jste se pokusili nastavit mountOptions UID = 999, GID = 999, uvidí chybu jako:
 
@@ -290,7 +248,7 @@ spec:
   >[!NOTE]
   > Vzhledem k tomu, že GID a UID jsou ve výchozím nastavení připojeny jako kořen nebo 0. Pokud jsou GID nebo UID nastaveny jako neroot, například 1000, použije Kubernetes `chown` ke změně všech adresářů a souborů v tomto disku. Tato operace může být časově náročná a může způsobit velmi pomalé připojení disku.
 
-* Použijte `chown` v initContainers k nastavení GID a UID. Například:
+* Použijte `chown` v initContainers k nastavení `GID` a `UID` . Například:
 
 ```yaml
 initContainers:
@@ -387,8 +345,8 @@ parameters:
 
 Některá další užitečná nastavení *mountOptions* :
 
-* *mfsymlinks* provede podporu protokolu CIFS (Azure Files Mount), která podporuje symbolické odkazy.
-* *nobrl* zabrání odeslání požadavků na zámek rozsahu bajtů do serveru. Toto nastavení je nezbytné pro některé aplikace, které jsou přerušeny pomocí stylu CIFS povinných zámků rozsahu bajtů. Většina serverů CIFS ještě nepodporují požadavky na zámky rozsahu v poradním bajtech. Pokud nepoužíváte *nobrl*, můžou aplikace, které mají přerušení s povinnými zámky rozsahu bajtů, způsobit chybové zprávy podobné:
+* `mfsymlinks` provede podporu protokolu CIFS (Azure Files Mount) symbolické odkazy.
+* `nobrl` zabrání odeslání požadavků na zámek rozsahu bajtů serveru. Toto nastavení je nezbytné pro některé aplikace, které jsou přerušeny pomocí stylu CIFS povinných zámků rozsahu bajtů. Většina serverů CIFS ještě nepodporují požadavky na zámky rozsahu v poradním bajtech. Pokud nepoužíváte *nobrl*, můžou aplikace, které mají přerušení s povinnými zámky rozsahu bajtů, způsobit chybové zprávy podobné:
     ```console
     Error: SQLITE_BUSY: database is locked
     ```
@@ -404,7 +362,7 @@ fixing permissions on existing directory /var/lib/postgresql/data
 
 Tato chyba je způsobená modulem plug-in soubory Azure pomocí protokolu CIFS/SMB. Při použití protokolu CIFS/SMB se oprávnění k souborům a adresářům po připojení nedala změnit.
 
-Pokud chcete tento problém vyřešit, použijte dílčí *cestu* spolu s modulem plug-in Azure disk. 
+Pokud chcete tento problém vyřešit, použijte `subPath` společně s modulem plug-in Azure disk. 
 
 > [!NOTE] 
 > Pro typ disku ext3/4 existuje po formátování disku ztracené a nalezené adresáře.
@@ -474,7 +432,7 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 
 Tato chyba je způsobena konfliktem časování v případě automatického škálování nadřazeného clusteru. V takovém případě funkce automatického škálování clusteru končí jinou hodnotou než ta, která je ve skutečnosti v clusteru. Pokud se chcete dostat z tohoto stavu, zakažte a znovu povolte [Automatické škálování clusteru][cluster-autoscaler].
 
-### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>Pomalé přílohy disku, GetAzureDiskLun trvá 10 až 15 minut a zobrazí se chyba.
+### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>Pomalá disková příloha, `GetAzureDiskLun` trvá 10 až 15 minut a zobrazí se chyba.
 
 Ve verzích Kubernetes **starších než 1.15.0** se může zobrazit chyba, jako je například **Error WaitForAttach. pro disk se nepovedlo najít logickou jednotku (LUN)**.  Alternativním řešením tohoto problému je počkat přibližně 15 minut a pak to zkuste znovu.
 
@@ -483,13 +441,13 @@ Ve verzích Kubernetes **starších než 1.15.0** se může zobrazit chyba, jako
 
 Od Kubernetes [1,16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) je možné použít kubelet na uzly [pouze definovanou podmnožinu popisků s předponou Kubernetes.IO](https://github.com/kubernetes/enhancements/blob/master/keps/sig-auth/0000-20170814-bounding-self-labeling-kubelets.md#proposal) . AKS nemůže odebrat aktivní popisky bez souhlasu, protože by mohlo dojít k výpadkům ovlivněných úloh.
 
-V důsledku toho můžete tyto problémy zmírnit:
+V důsledku toho můžete tyto potíže zmírnit:
 
 1. Upgradovat rovinu řízení clusteru na 1,16 nebo vyšší
 2. Přidat nový nodepoool na 1,16 nebo vyšší bez nepodporovaných popisků kubernetes.io
-3. Odstranit starší nodepool
+3. Odstraní starší fond uzlů.
 
-AKS zkoumá schopnost využít aktivní popisky na nodepool pro zlepšení tohoto zmírnění.
+AKS vychází z možností, jak se potýkají aktivní popisky ve fondu uzlů, aby se toto zmírnění zlepšilo.
 
 
 

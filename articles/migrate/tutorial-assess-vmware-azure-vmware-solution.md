@@ -1,15 +1,18 @@
 ---
 title: Posouzení virtuálních počítačů VMware pro migraci do řešení Azure VMware (AVS) pomocí Azure Migrate
 description: Přečtěte si, jak vyhodnotit virtuální počítače VMware pro migraci do funkce AVS pomocí posouzení serveru Azure Migrate.
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 29f7f824d96aedd80e490ba84c390be4d9493683
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6d3c6f77b062939a88e7277cb7f0ab6ecff9fcb
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604236"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753072"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-avs"></a>Kurz: posouzení virtuálních počítačů VMware pro migraci do služby AVS
 
@@ -25,11 +28,11 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Kurzy ukazují nejrychlejší cestu k vyzkoušení scénáře a používají výchozí možnosti, pokud je to možné. 
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete postupovat podle tohoto kurzu a vyhodnoťte počítače pro migraci do služby AVS, ujistěte se, že jste zjistili počítače, které chcete vyhodnotit:
 
@@ -51,13 +54,13 @@ Rozhodněte, jestli chcete spustit posouzení pomocí kritérií pro změnu veli
 
 Proveďte posouzení následujícím způsobem:
 
-1. Na stránce **servery** > **serverech se systémem Windows a Linux**klikněte na možnost **zhodnotit a migrovat servery**.
+1. Na stránce **servery** > **serverech se systémem Windows a Linux** klikněte na možnost **zhodnotit a migrovat servery**.
 
    ![Umístění tlačítka pro posouzení a migraci serverů](./media/tutorial-assess-vmware-azure-vmware-solution/assess.png)
 
-2. V **Azure Migrate: vyhodnocování serveru**klikněte na **vyhodnotit**.
+2. V **Azure Migrate: vyhodnocování serveru** klikněte na **vyhodnotit**.
 
-3. V **Assess servers**  >  případě vyhodnocení**typu vyhodnocení**serverů vyberte **Azure VMware Solution (AVS) (verze Preview)**.
+3. V **Assess servers**  >  případě vyhodnocení **typu vyhodnocení** serverů vyberte **Azure VMware Solution (AVS) (verze Preview)**.
 4. Ve **zdroji zjišťování**:
 
     - Pokud jste v zařízení zjistili počítače, vyberte **počítače zjištěné z Azure Migrate zařízení**.
@@ -71,42 +74,42 @@ Proveďte posouzení následujícím způsobem:
 
 7. vlastnosti 1N **posouzení vlastností**  >  **cíle**:
 
-    - V části **cílové umístění**zadejte oblast Azure, do které chcete migrovat.
+    - V části **cílové umístění** zadejte oblast Azure, do které chcete migrovat.
        - Doporučení pro velikost a náklady jsou založena na umístění, které zadáte.
        - V současné době můžete vyhodnotit tři oblasti (Východní USA, Západní USA Západní Evropa).
-   - V **typu úložiště**ponechte **síti vSAN**. Toto je výchozí typ úložiště pro privátní cloud služby AVS.
+   - V **typu úložiště** ponechte **síti vSAN**. Toto je výchozí typ úložiště pro privátní cloud služby AVS.
    - **Rezervované instance** se aktuálně pro uzly služby AVS nepodporují.
 8. Ve **velikosti virtuálního počítače**:
-    - V části **typ uzlu**vyberte typ uzlu na základě úloh spuštěných na místních virtuálních počítačích.
+    - V části **typ uzlu** vyberte typ uzlu na základě úloh spuštěných na místních virtuálních počítačích.
         - Azure Migrate doporučuje uzel uzlů potřebných k migraci virtuálních počítačů na funkci AVS.
         - Výchozí typ uzlu je AV36.
     - **FTT nastavení, úroveň RAID**, vyberte nemožnost Netolerovat a kombinaci RAID.  Vybraná možnost FTT v kombinaci s požadavkem na místní disk virtuálního počítače Určuje celkové úložiště síti vSAN vyžadované v rámci funkce AVS.
-    - V části přepočet virtuálních **procesorů**zadejte poměr virtuálních jader přidružených k jednomu fyzickému jádru v uzlu AVS. Přesáhne předplatné větší než 4:1 může způsobit snížení výkonu, ale dá se použít pro úlohy typu webový server.
+    - V části přepočet virtuálních **procesorů** zadejte poměr virtuálních jader přidružených k jednomu fyzickému jádru v uzlu AVS. Přesáhne předplatné větší než 4:1 může způsobit snížení výkonu, ale dá se použít pro úlohy typu webový server.
 
 9. V **uzlu velikost**: 
-    - V části **kritéria změny velikosti**vyberte, pokud chcete vyhodnotit vyhodnocení statických metadat nebo dat na základě výkonu. Pokud používáte údaje o výkonu:
-        - V části **Historie výkonu**určete dobu trvání dat, na které chcete vyhodnotit základ posouzení.
-        - V části **využití percentilu**zadejte hodnotu percentilu, kterou chcete použít pro vzorek výkonu. 
-    - V části **faktor komfortu**určete vyrovnávací paměť, kterou chcete použít při posuzování. Tyto účty jsou důležité pro problémy, jako je sezónní využití, historie krátkého výkonu a pravděpodobný nárůst využití v budoucnu. Pokud například použijete faktor komfortu 2:
+    - V části **kritéria změny velikosti** vyberte, pokud chcete vyhodnotit vyhodnocení statických metadat nebo dat na základě výkonu. Pokud používáte údaje o výkonu:
+        - V části **Historie výkonu** určete dobu trvání dat, na které chcete vyhodnotit základ posouzení.
+        - V části **využití percentilu** zadejte hodnotu percentilu, kterou chcete použít pro vzorek výkonu. 
+    - V části **faktor komfortu** určete vyrovnávací paměť, kterou chcete použít při posuzování. Tyto účty jsou důležité pro problémy, jako je sezónní využití, historie krátkého výkonu a pravděpodobný nárůst využití v budoucnu. Pokud například použijete faktor komfortu 2:
     
         **Komponenta** | **Efektivní využití** | **Přidat faktor pohodlí (2,0)**
         --- | --- | ---  
         Cores | 2 | 4
-        Paměť | 8 GB | 16 GB     
+        Memory (Paměť) | 8 GB | 16 GB     
 
 10. V **ceně**:
-    - V **nabídce**se zobrazí [Nabídka Azure](https://azure.microsoft.com/support/legal/offer-details/) , kterou jste zaregistrovali v nástroji, a zobrazí se odhad serveru. cena za tuto nabídku se vyhodnotí.
-    - V části **Měna**vyberte fakturační měnu vašeho účtu.
+    - V **nabídce** se zobrazí [Nabídka Azure](https://azure.microsoft.com/support/legal/offer-details/) , kterou jste zaregistrovali v nástroji, a zobrazí se odhad serveru. cena za tuto nabídku se vyhodnotí.
+    - V části **Měna** vyberte fakturační měnu vašeho účtu.
     - V části **sleva (%)** přidejte do nabídky Azure všechny slevy specifické pro předplatné, které obdržíte. Výchozí nastavení je 0 %.
 
 11. Pokud provedete změny, klikněte na **Uložit** .
 
     ![Vlastnosti posouzení](./media/tutorial-assess-vmware-azure-vmware-solution/view-all.png)
 
-12. V nabídce **vyhodnotit servery**klikněte na **Další**.
-13. V části **vyhodnocování serverů**  >  **Vyberte počítače k**vyhodnocení, pro vytvoření nové skupiny serverů pro posouzení vyberte **vytvořit novou**a zadejte název skupiny. 
+12. V nabídce **vyhodnotit servery** klikněte na **Další**.
+13. V části **vyhodnocování serverů**  >  **Vyberte počítače k** vyhodnocení, pro vytvoření nové skupiny serverů pro posouzení vyberte **vytvořit novou** a zadejte název skupiny. 
 14. Vyberte zařízení a vyberte virtuální počítače, které chcete do skupiny přidat. Potom klikněte na **Další**.
-15. V části **Revize + vytvořit posouzení**zkontrolujte podrobnosti posouzení a kliknutím na **vytvořit posouzení** vytvořte skupinu a spusťte posouzení.
+15. V části **Revize + vytvořit posouzení** zkontrolujte podrobnosti posouzení a kliknutím na **vytvořit posouzení** vytvořte skupinu a spusťte posouzení.
 
     > [!NOTE]
     > Pro posouzení na základě výkonu doporučujeme, abyste před vytvořením posouzení počkali alespoň den od spuštění zjišťování. To poskytuje čas ke shromažďování dat o výkonu s větší jistotou. V ideálním případě po zahájení zjišťování počkejte na dobu trvání výkonu, kterou zadáte (den/týden/měsíc) pro hodnocení s vysokou mírou jistoty.
@@ -124,7 +127,7 @@ Posouzení služby AVS popisuje:
 
 Zobrazení posouzení:
 
-1. V části **servery**  >  **Azure Migrate: vyhodnocování serveru**klikněte na číslo vedle **posouzení**.
+1. V části **servery**  >  **Azure Migrate: vyhodnocování serveru** klikněte na číslo vedle **posouzení**.
 2. Výběrem posouzení v části **Posouzení** ho otevřete. 
 3. Přečtěte si Souhrn posouzení. Můžete také upravit vlastnosti posouzení nebo přepočítat vyhodnocení.
  
@@ -132,7 +135,7 @@ Zobrazení posouzení:
 ### <a name="review-readiness"></a>Kontrola připravenosti
 
 1. Klikněte na **připravenost na Azure**.
-2. V části **připravenost na Azure**zkontrolujte stav virtuálního počítače.
+2. V části **připravenost na Azure** zkontrolujte stav virtuálního počítače.
 
     - **Připraveno k funkci AVS**: počítač se dá migrovat tak, jak je, do Azure AVS, aniž by došlo k žádným změnám. Počítač se spustí v programu AVS a plná podpora pro funkci AVS.
     - **Připraveno s podmínkami**: počítač může mít problémy s kompatibilitou s aktuální verzí vSphere. Před úplnými funkcemi funkce AVS může být potřeba nainstalovat nástroje VMware nebo jiná nastavení.

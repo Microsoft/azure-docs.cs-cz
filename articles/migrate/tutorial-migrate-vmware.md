@@ -1,15 +1,18 @@
 ---
 title: Migrace Azure Migrate migrace serveru bez agentů pro virtuální počítače VMware
 description: Naučte se spouštět migraci virtuálních počítačů VMware bez agenta pomocí Azure Migrate.
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 202886bc0a7738f8211cfea6d90a380c7bac82b8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 88b3879a648117329f2485012542b48d6a7a7755
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492943"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752681"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrace virtuálních počítačů VMware do Azure (bez agenta)
 
@@ -190,8 +193,8 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
 ## <a name="post-migration-best-practices"></a>Osvědčené postupy po migraci
 
 - Pro zvýšení odolnosti:
-    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Další informace](../backup/quick-backup-vm-portal.md).
-    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
+    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Přečtěte si další informace](../backup/quick-backup-vm-portal.md).
+    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Přečtěte si další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Pro zvýšení zabezpečení:
     - Odblokujte a omezte přístup k příchozímu provozu pomocí [správy v čase Azure Security Center](../security-center/security-center-just-in-time.md).
     - Omezte síťový provoz na koncové body správy pomocí [skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md).

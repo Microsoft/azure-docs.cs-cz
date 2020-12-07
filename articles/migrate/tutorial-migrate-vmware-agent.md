@@ -1,15 +1,18 @@
 ---
 title: Migrace virtuálních počítačů VMware pomocí migrace serveru na základě agentů Azure Migrate
 description: Naučte se spouštět migraci virtuálních počítačů VMware založených na agentech pomocí Azure Migrate.
+author: rahulg1190
+ms.author: rahugup
+ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 46f23953e6572b752f8773bc9db86be946ccf212
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0c3b86fc823e4b563dc747a5604fcb2e04995fed
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492993"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752647"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Migrace virtuálních počítačů VMware do Azure (na základě agentů)
 
@@ -40,7 +43,7 @@ Než začnete s tímto kurzem, [Přečtěte si](./agent-based-migration-architec
 
 Dokončete úkoly v tabulce a připravte Azure na migraci založenou na agentech.
 
-**Úkol** | **Podrobnosti**
+**Úloha** | **Podrobnosti**
 --- | ---
 **Vytvoření projektu Azure Migrate** | Váš účet Azure potřebuje k vytvoření projektu oprávnění přispěvatele nebo vlastníka.
 **Ověření oprávnění účtu Azure** | Váš účet Azure potřebuje oprávnění k vytvoření virtuálního počítače a zápis na spravovaný disk Azure.
@@ -84,7 +87,7 @@ Migrace Azure Migrate serveru potřebuje přístup k serverům VMware ke zjišt�
 
 #### <a name="vmware-account-permissions"></a>Oprávnění účtu VMware
 
-**Úkol** | **Role/oprávnění** | **Podrobnosti**
+**Úloha** | **Role/oprávnění** | **Podrobnosti**
 --- | --- | ---
 **Zjišťování virtuálních počítačů** | Alespoň uživatel jen pro čtení<br/><br/> Objekt datového centra –> Rozšířit na podřízený objekt, role=Read-only | Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v datacentru.<br/><br/> Chcete-li omezit přístup, přiřaďte podřízeným objektům (hostitelé vSphere, úložiště dat, virtuální počítače a sítě) roli **bez přístupu** s **podřízeným objektem rozšířit do podřízeného** objektu.
 **Replikace** |  Vytvořte roli (Azure_Site_Recovery) s požadovanými oprávněními a pak ji přiřaďte uživateli nebo skupině VMware.<br/><br/> Objekt datového centra –> Rozšířit na podřízený objekt, role=Azure_Site_Recovery<br/><br/> Úložiště dat –> Přidělit prostor, procházet úložiště dat, operace se soubory nízké úrovně, odebrat soubor, aktualizovat soubory virtuálního počítače<br/><br/> Síť –> Přiřazení sítě<br/><br/> Prostředek –> Přiřadit virtuální počítač k fondu prostředků, migrovat vypnutý virtuální počítač, migrovat zapnutý virtuální počítač<br/><br/> Úlohy –> Vytvořit úlohu, aktualizovat úlohu<br/><br/> Virtuální počítač –> Konfigurace<br/><br/> Virtuální počítač –> Interakce –> zodpovědět dotazy, připojení zařízení, konfigurovat disk CD, konfigurovat disketu, vypnout, zapnout, instalace nástrojů VMware<br/><br/> Virtuální počítač –> Inventář –> Vytvořit, zaregistrovat, zrušit registraci<br/><br/> Virtuální počítač –> Zřizování –> Povolit stažení virtuálního počítače, povolit nahrávání souborů virtuálního počítače<br/><br/> Virtuální počítač –> Snímky –> Odebrat snímky | Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v datacentru.<br/><br/> Chcete-li omezit přístup, přiřaďte k podřízeným objektům (hostitelé vSphere, úložiště dat, VMsa, ND sítě) roli **bez přístupu** s **podřízeným objektem šířit do podřízeného** objektu.
@@ -357,8 +360,8 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
     - Proveďte všechna vylepšení aplikace po migraci, například aktualizujte databázové připojovací řetězce a nakonfigurujte webové servery.
     - U migrované aplikace, která teď běží v Azure, proveďte finální akceptační testování aplikace a migrace.
 - Provozní kontinuita a zotavení po havárii
-    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Další informace](../backup/quick-backup-vm-portal.md).
-    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
+    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Přečtěte si další informace](../backup/quick-backup-vm-portal.md).
+    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Přečtěte si další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Pro zvýšení zabezpečení:
     - Odblokujte a omezte přístup k příchozímu provozu pomocí [správy v čase Azure Security Center](../security-center/security-center-just-in-time.md).
     - Omezte síťový provoz na koncové body správy pomocí [skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md).

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 48f223a55e4a1e4db4ac7057065d67ae64fa0f2c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 58616b647affd33e96357e556ab61f85d1c62129
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288474"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752273"
 ---
 # <a name="authentication-requests-and-responses"></a>Ověřování, požadavky a odpovědi
 
@@ -134,3 +134,6 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 -   autorizace: adresa autorizační služby OAuth2, která se dá použít k získání přístupového tokenu pro požadavek.  
 
 -   prostředek: název prostředku ( `https://vault.azure.net` ), který se má použít v žádosti o autorizaci.
+
+> [!NOTE]
+> Key Vault klienti SDK pro tajné klíče, certifikáty a klíče v prvním volání Key Vault neposkytují přístupový token pro načtení informací o tenantovi. Očekává se, že příjem HTTP 401 pomocí Key Vault klienta SDK, kde Key Vault v aplikaci zobrazuje hlavičku WWW-Authenticate obsahující prostředek a tenanta, kde musí přejít a požádat o token. Pokud je vše nakonfigurované správně, druhé volání z aplikace do Key Vault bude obsahovat platný token a bude úspěšné. 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: f4803cc9871b71e65e4d94ed37d3f9771be1cae0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 42e7f2ced0de00b088e3344c914fc71da84e4e8f
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454963"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750726"
 ---
 # <a name="what-is-azure-private-link"></a>Co je privátní propojení Azure? 
 Privátní odkaz Azure vám umožňuje přístup ke službám Azure PaaS (například Azure Storage a SQL Database) a službám, které hostuje zákaznická/Partnerská služba Azure, prostřednictvím [privátního koncového bodu](private-endpoint-overview.md) ve vaší virtuální síti.
@@ -70,6 +70,7 @@ Privátní propojení Azure přináší následující výhody:
 | Azure Monitor <br/>(Log Analytics & Application Insights) | Všechny veřejné oblasti      |  | GA   <br/> [Naučte se vytvořit privátní koncový bod pro Azure Monitor.](../azure-monitor/platform/private-link-security.md)   | 
 | Azure Batch | Všechny veřejné oblasti kromě: Německo – střed, Německo – SEVEROVÝCHOD <br/> Všechny oblasti státní správy  | | GA <br/> [Naučte se vytvořit privátní koncový bod pro Azure Batch.](../batch/private-connectivity.md) |
 |Azure Data Factory | Všechny veřejné oblasti<br/> Všechny oblasti státní správy<br/>Všechny čínské oblasti    | Přihlašovací údaje musí být uložené v trezoru klíčů Azure.| GA   <br/> [Naučte se vytvořit privátní koncový bod pro Azure Data Factory.](../data-factory/data-factory-private-link.md)   |
+|Spravované disky Azure | Všechny veřejné oblasti<br/> Všechny oblasti státní správy<br/>Všechny čínské oblasti    | [Kliknutím sem zobrazíte známá omezení.](https://docs.microsoft.com/azure/virtual-machines/disks-enable-private-links-for-import-export-portal#limitations) | GA   <br/> [Naučte se vytvořit privátní koncový bod pro Azure Data Factory.](https://docs.microsoft.com/azure/virtual-machines/disks-enable-private-links-for-import-export-portal)   |
 
 
 

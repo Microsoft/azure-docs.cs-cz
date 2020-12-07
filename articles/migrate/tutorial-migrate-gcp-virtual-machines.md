@@ -1,15 +1,18 @@
 ---
 title: Zjišťování, vyhodnocení a migrace instancí virtuálních počítačů Google Cloud Platform (GCP) do Azure
 description: Tento článek popisuje, jak migrovat virtuální počítače s GCP do Azure pomocí Azure Migrate.
+author: deseelam
+ms.author: deseelam
+ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 0093bb453131eb87172021a976b8019a23e445f1
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: ddde352df5fc6063dbe04aa05fe01fca9747f8fa
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302596"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752834"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>Zjišťování, vyhodnocení a migrace virtuálních počítačů Google Cloud Platform (GCP) do Azure
 
@@ -29,7 +32,7 @@ V tomto kurzu se naučíte, jak:
 > * Spusťte test migrace a ujistěte se, že vše funguje podle očekávání.
 > * Spusťte úplnou migraci do Azure.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/pricing/free-trial/), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="discover-and-assess"></a>Zjišťování a vyhodnocení
 
@@ -58,7 +61,7 @@ I když doporučujeme, abyste si vyzkoušeli posouzení, provádění posouzení
 
 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 - Zajistěte, aby virtuální počítače s GCP, které chcete migrovat, používaly podporovanou verzi operačního systému. Virtuální počítače s GCP se považují za účely migrace jako fyzické. Přečtěte si [podporované operační systémy a verze jádra](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) pro pracovní postup migrace fyzického serveru. Ke kontrole verzí operačního systému a jádra pro virtuální počítače se systémem Linux můžete použít standardní příkazy, jako je *hostnamectl* nebo *uname-a* .  Doporučujeme provést test, abyste ověřili, jestli virtuální počítač funguje podle očekávání, než budete pokračovat v rámci aktuální migrace.
 - Zajistěte, aby virtuální počítače s GCP splňovaly [podporované konfigurace](./migrate-support-matrix-physical-migration.md#physical-server-requirements) pro migraci do Azure.
@@ -72,7 +75,7 @@ Zkontrolujte změny v [systému Windows](prepare-for-migration.md#windows-machin
 
 Připravte Azure pro migraci pomocí Azure Migrate: Server Migration Tool.
 
-**Úkol** | **Podrobnosti**
+**Úloha** | **Podrobnosti**
 --- | ---
 **Vytvoření projektu Azure Migrate** | Váš účet Azure potřebuje oprávnění Přispěvatel nebo Owner k [Vytvoření nového projektu](https://docs.microsoft.com/azure/migrate/create-manage-projects).
 **Ověření oprávnění pro účet Azure** | Váš účet Azure potřebuje oprávnění k vytvoření virtuálního počítače a zápis na spravovaný disk Azure.
