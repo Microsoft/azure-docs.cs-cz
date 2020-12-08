@@ -255,7 +255,7 @@
               href: log-query/query-audit.md
             - name: Optimalizace dotazů
               href: log-query/query-optimization.md
-            - name: Funkce
+            - name: Functions
               href: log-query/functions.md
             - name: Analýza textových dat
               href: log-query/parse-text.md
@@ -890,8 +890,6 @@
               items:
                 - name: Hloubková diagnostika webových aplikací a služeb
                   href: app/devops.md
-                - name: Sledování výkonu webových aplikací
-                  href: app/web-monitor-performance.md
                 - name: 'Samostatný vývoj, testování a provoz'
                   href: app/separate-resources.md
                 - name: Jak mám udělat ... pomocí Application Insights?
