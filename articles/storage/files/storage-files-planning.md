@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 650ee1fc9e0e1941a7a3655bca1c75950ab878dd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 98cc72f85499481ba3841ce82fe307740d5e9fab
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492110"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96842698"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 [Soubory Azure](storage-files-introduction.md) se dají nasadit dvěma hlavními způsoby: přímým připojením sdílených složek Azure bez serveru nebo ukládáním do mezipaměti sdílených složek Azure v místním prostředí pomocí Azure File Sync. Kterou možnost nasazení zvolíte, změní se to, co je potřeba vzít v úvahu při plánování nasazení. 
@@ -114,23 +114,6 @@ Další informace najdete v tématu [Rozšířená ochrana před internetovými 
 
 ## <a name="storage-tiers"></a>Úrovně úložiště
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
-
-Obecně platí, že funkce a interoperabilita souborů Azure s ostatními službami jsou stejné mezi sdílenými složkami souborů Premium a standardními sdílenými složkami (včetně transakcí optimalizovaných, Hot a studených souborů), ale existuje několik důležitých rozdílů:
-- **Model fakturace**
-    - Soubory úrovně Premium se účtují pomocí zřízeného fakturačního modelu, což znamená, že platíte pevnou cenu za to, kolik úložiště využijete místo toho, co využijete. Neexistují žádné další poplatky za transakce a metadata v klidovém umístění.
-    - Standardní sdílené složky se účtují s využitím modelu průběžných plateb, který zahrnuje základní náklady na úložiště pro množství úložiště, které skutečně spotřebováváte, a další náklady na transakci na základě toho, jak sdílenou složku používáte. Se standardními sdílenými složkami se vaše vyúčtování zvýší, pokud používáte (čtení/zápis/připojení) sdílené složky Azure.
-- **Možnosti redundance**
-    - Soubory úrovně Premium jsou dostupné jenom pro místně redundantní úložiště (LRS) a zónu redundantního úložiště (ZRS).
-    - Standardní sdílené složky jsou k dispozici pro místně redundantní, geograficky redundantní (GRS) a redundantní úložiště geografických zón (GZRS).
-- **Maximální velikost sdílené složky**
-    - Ke sdílení souborů Premium se dá zřídit až 100 TiB, aniž by se musela provádět žádná další práce.
-    - Ve výchozím nastavení můžou standardní sdílené složky zabírat jenom až 5 TiB, i když se limit sdílení dá zvýšit na 100 TiB, a přitom se zaměříte na příznak funkce pro účet úložiště s *velkými sdílenými složkami* . Standardní sdílené složky můžou zahrnovat až 100 TiB pro místně redundantní nebo redundantní účty úložiště. Další informace o zvyšování velikosti sdílených složek najdete v tématu [povolení a vytváření velkých sdílených složek](./storage-files-how-to-create-large-file-share.md).
-- **Regionální dostupnost**
-    - Soubory úrovně Premium jsou dostupné ve většině oblastí Azure s výjimkou několika oblastí. Redundantní podpora zóny je k dispozici v podmnožině oblastí. Pokud chcete zjistit, jestli jsou v současnosti ve vaší oblasti dostupné sdílené složky Premium, přečtěte si stránku [Dostupné produkty podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=storage) pro Azure. Pokud chcete zjistit, které oblasti podporují ZRS, přečtěte si téma [redundantní úložiště zóny](../common/storage-redundancy.md#zone-redundant-storage). Abychom vám pomohli upřednostnit nové oblasti a funkce úrovně Premium, vyplňte prosím tento [průzkum](https://aka.ms/pfsfeedback).
-    - Standardní sdílené složky jsou dostupné v každé oblasti Azure.
-- Služba Azure Kubernetes Service (AKS) podporuje prémiové sdílené složky ve verzi 1,13 a novější.
-
-Jakmile je sdílená složka vytvořená jako verze Premium nebo standardní, nemůžete ji automaticky převést na jinou úroveň. Pokud byste chtěli přepnout na jinou úroveň, musíte v této vrstvě vytvořit novou sdílenou složku a ručně zkopírovat data z původní sdílené složky do nové sdílené složky, kterou jste vytvořili. `robocopy`K provedení této kopie doporučujeme použít pro Windows nebo `rsync` pro MacOS a Linux.
 
 ### <a name="understanding-provisioning-for-premium-file-shares"></a>Principy zřizování pro sdílení souborů úrovně Premium
 Soubory úrovně Premium se zřídí na základě pevného poměru propustnosti GiB/IOPS/. Pro všechny velikosti sdílených složek se nabízí minimální základní hodnota a propustnost a povolený nárůst. Pro každou zřízenou GiB bude mít sdílená složka minimální IOPS/propustnost a 1 IOPS a 0,1 MiB/s až do maximálních limitů pro každou sdílenou složku. Minimální povolené zřizování je 100 GiB s minimálním počtem vstupně-výstupních operací/propustnosti. 
