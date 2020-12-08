@@ -111,6 +111,8 @@
               href: data-lake-analytics-data-lake-tools-for-vscode.md
             - name: Vlastní kód
               href: data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md
+            - name: Přístup k prostředkům
+              href: data-lake-analytics-data-lake-tools-for-vscode-access-resource.md
             - name: Místní spuštění a ladění
               href: data-lake-tools-for-vscode-local-run-and-debug.md
         - name: Průvodce programovatelností

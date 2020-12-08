@@ -87,10 +87,12 @@
       href: supported-map-styles.md
     - name: Úrovně přiblížení a mřížka dlaždic
       href: zoom-levels-and-tile-grid.md
-    - name: Datová struktura Mobility Service
+    - name: Služby Mobility
       href: mobility-service-data-structure.md
-    - name: Koncepty povětrnostních služby
+    - name: Koncepce služby Weather
       href: weather-services-concepts.md
+    - name: Nejčastější dotazy ke službě Weather
+      href: weather-services-faq.md
 - name: Návody
   items:
     - name: Správa účtů Maps

@@ -133,7 +133,7 @@
       href: ../../azure-resource-manager/managed-applications/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Monitor
       href: ../../azure-monitor/security-baseline.md
-    - name: Standardní hodnoty zabezpečení pro Azure Migrate Learning
+    - name: Standardní hodnoty zabezpečení pro Azure Migrate
       href: ../../migrate/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Policy
       href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md

@@ -28,6 +28,8 @@ items:
             href: tutorial-import-create-glossary-terms.md
       - name: Registrace a prohledávání serveru SQL v místním prostředí
         href: register-scan-on-premises-sql-server.md
+      - name: Volání rozhraní REST API pro katalog
+        href: tutorial-using-rest-apis.md
   - name: Koncepty
     items:
       - name: Použití sady Purview Studio
@@ -133,6 +135,10 @@ items:
             href: how-to-link-azure-data-factory.md
           - name: Rodokmen služby Azure Data Share
             href: how-to-link-azure-data-share.md
+      - name: Monitor
+        items:
+          - name: Monitorování pomocí služby Azure Monitor
+            href: how-to-monitor-with-azure-monitor.md
       - name: Insights
         items:
           - name: Zobrazení přehledů prostředků
@@ -147,7 +153,7 @@ items:
             href: sensitivity-insights.md
           - name: Zobrazení přehledů přípon souborů
             href: file-extension-insights.md
-  - name: Referenční informace
+  - name: Reference
     items:
       - name: Podporované klasifikace
         href: supported-classifications.md

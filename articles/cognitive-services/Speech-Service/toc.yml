@@ -38,7 +38,7 @@
         - name: Použití rozhraní API pro dávkový přepis
           href: batch-transcription.md
         - name: Migrace z v2.0 na v3.0
-          url: migrate-v2-to-v3.md
+          href: migrate-v2-to-v3.md
         - name: Posouzení výslovnosti
           href: how-to-pronunciation-assessment.md
     - name: Kurzy
