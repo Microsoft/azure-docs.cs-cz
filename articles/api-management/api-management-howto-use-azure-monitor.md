@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 031b3bfd30e0272589c5c7ee2c546b9459767b33
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5e5c59d611cb7f4b5333b9919488e6fc083611cd
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183188"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779239"
 ---
 # <a name="tutorial-monitor-published-apis"></a>Kurz: monitorování publikovaných rozhraní API
 
@@ -26,6 +26,8 @@ V tomto kurzu se naučíte:
 > * Nastavení pravidla výstrahy 
 > * Zobrazení protokolů aktivit
 > * Povolit a zobrazit protokoly prostředků
+
+Pomocí předdefinovaných [analýz](howto-use-analytics.md) API Management taky můžete monitorovat využití a výkon vašich rozhraní API.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -90,7 +92,7 @@ Postup konfigurace ukázkového pravidla výstrahy na základě metriky požadav
 
 1. Zadejte název a popis pravidla výstrahy a vyberte úroveň závažnosti. 
 1. Vyberte **Vytvořit pravidlo upozornění**.
-1. Nyní otestujte pravidlo výstrahy voláním rozhraní API pro konferenci bez klíče rozhraní API. Příklad:
+1. Nyní otestujte pravidlo výstrahy voláním rozhraní API pro konferenci bez klíče rozhraní API. Například:
 
     ```bash
     curl GET https://apim-hello-world.azure-api.net/conference/speakers HTTP/1.1 

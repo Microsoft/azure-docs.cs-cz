@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: c56d83e551265f3fb4de106cb8fa77efd6dcbabc
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7f56ff94c4dcf276accc56e8d1076266099d635d
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452125"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780701"
 ---
 # <a name="how-to-plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>Jak naplánovat nabídku konzultační služby na komerčním webu Marketplace
 
@@ -27,9 +27,23 @@ Konzultační nabídky služby se publikují jako seznam **kontaktů** . To znam
 
 ## <a name="primary-products-and-online-stores"></a>Primární produkty a online obchody
 
-Každá konzultační nabídka služeb by se měla zaměřit na produkt společnosti Microsoft, který se nazývá **primární produkt**. Primární produkt, který vyberete v partnerském centru, určuje, jestli se vaše nabídka publikuje do Microsoft AppSource nebo Azure Marketplace.
+Každá konzultační služba se musí soustředit na jeden z těchto produktů společnosti Microsoft, který se nazývá **primární produkt** této nabídky:
 
-* Pokud je primárním produktem konzultační služby Azure, nabídka bude uvedená v Azure Marketplace.
+|Primární produkt                               |                   |
+|-------------------------------|-------------------|
+|Azure                          |Automatizace služby projektu Dynamics 365 |
+|Dynamics 365 Business Central  |Dynamics 365 Sales |
+|Dynamics 365 – obchod          |Správa dodavatelských řetězců Dynamics 365 |
+|Dynamics 365 Customer Insights |Microsoft 365 |
+|Zákaznická služba Dynamics 365  |Power Apps |
+|Služba pole Dynamics 365     |Power Automate |
+|Dynamics 365 – finance           |Power BI |
+|Dynamics 365 marketing         |Power Virtual Agents |
+|    |    |
+
+Primární produkt, který vyberete v partnerském centru, určuje, jestli se vaše nabídka publikuje do Microsoft AppSource nebo Azure Marketplace.
+
+* Pokud je primárním produktem konzultační služby Azure, bude tato nabídka uvedená Azure Marketplace.
 * Pokud primární produkt není Azure, nabídka bude uvedená v AppSource.
 
 Další informace o rozdílech mezi AppSource a Azure Marketplace najdete v článku [online obchody pro obchod na webu Marketplace](./overview.md#commercial-marketplace-online-stores).
@@ -91,6 +105,7 @@ Abyste mohli snadněji vytvořit nabídku, připravte si některé z těchto pol
 |Začínáme s využitím Azure IoT v výrobě |Výrobní IoT: posouzení dvou dnů |
 |Workshop na inteligentních informačních oznámeních |Inteligentní informační zprávy: 1 – týden Workshop |
 |Ověření koncepce migrace SQL Server podle společnosti Contoso |Migrace SQL: 3 – týden – ověření konceptu |
+| | |
 
 **Shrnutí výsledků hledání**: popište účel nebo cíl vaší nabídky na 200 znaků nebo méně. Tento souhrn se používá ve výsledcích hledání ve výpisech z komerčního tržiště. Neměl by být stejný jako název. Zvažte zahrnutí nejdůležitějších klíčových slov SEO.
 
@@ -105,6 +120,7 @@ Při psaní popisu použijte tato kritéria podle typu služby:
 |Implementace |Zahrňte detailní agendu pro implementace delší než jeden den a popište, jaké technické změny, technické artefakty nebo jiné artefakty může zákazník očekávat jako výsledek zapojení. |
 |Testování konceptu |Popište, jaké technické změny, technické artefakty nebo jiné artefakty může zákazník očekávat jako výsledek zapojení. |
 |Dílně |V závislosti na době trvání vaší nabídky uveďte podrobný program na denní, týdenní nebo měsíční agendu. Vyjadřují studijní cíle nebo jiné dodávky vaší dílny. |
+| | |
 
 Zde jsou některé tipy pro psaní popisu:
 
@@ -142,6 +158,11 @@ Postupujte podle těchto pokynů pro vaše loga:
 **Media Marketplace – snímky obrazovky**: přidejte aspoň jednu a až pět imagí, které předvádí vaši nabídku. Všechny obrázky musí mít velikost 1280 × 720 pixelů a v. Formát PNG.
 
 **Média Marketplace – videa** (volitelné): můžete přidat až čtyři videa, která předvádí vaši nabídku. Videa musí být hostována na YouTube nebo Vimeo a mají miniaturu (soubor PNG 1280 x 720).
+
+## <a name="pricing-and-availability"></a>Ceny a dostupnost
+
+Nabídku konzultační služby lze zpřístupnit v jedné nebo více zemích nebo oblastech. V partnerském centru můžete pro každý vybraný trh rozhodnout cenu. Úplný seznam podporovaných trhů a měn najdete v tématu [geografická dostupnost a podpora měny pro komerční tržiště](./marketplace-geo-availability-currencies.md).
+
 
 ## <a name="next-steps"></a>Další kroky
 

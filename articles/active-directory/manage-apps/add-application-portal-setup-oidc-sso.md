@@ -10,18 +10,20 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 9ea4ec748ca37f93e9711970b10746a009543d00
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c0253dc3c9dc029cd964fb32b148be1405e7fbad
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656594"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780174"
 ---
 # <a name="quickstart-set-up-oidc-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Rychlý Start: nastavení jednotného přihlašování (SSO) založeného na OIDC pro aplikaci ve vašem tenantovi Azure Active Directory (Azure AD)
 
 Začněte s zjednodušeným přihlášením uživatelů nastavením jednotného přihlašování (SSO) pro aplikaci, kterou jste přidali do svého tenanta Azure Active Directory (Azure AD). Když nastavíte jednotné přihlašování, uživatelé se budou moct přihlašovat k aplikaci pomocí svých přihlašovacích údajů Azure AD. Jednotné přihlašování je součástí bezplatné edice služby Azure AD.
 
-## <a name="prerequisites"></a>Požadavky
+Další informace o jednotném přihlašování založeném na OIDC najdete v tématu [Principy jednotného přihlašování](configure-oidc-single-sign-on.md)založeného na OIDC.
+
+## <a name="prerequisites"></a>Předpoklady
 
 K nastavení jednotného přihlašování pro aplikaci, kterou jste přidali do tenanta Azure AD, budete potřebovat:
 
@@ -52,7 +54,7 @@ Nastavení jednotného přihlašování pro aplikaci:
    > [!IMPORTANT]
     > Pokud již máte předplatné aplikace, pak dojde k ověření podrobností uživatele a informace o tenantovi/adresáři. Pokud aplikace není schopna ověřit uživatele, bude přesměrována k registraci do služby Application Service nebo na chybovou stránku.
 
-3. Po úspěšném ověření se zobrazí dialogové okno s výzvou k vyjádření souhlasu správce. Vyberte **souhlas jménem vaší organizace** a pak vyberte **přijmout**. 
+3. Po úspěšném ověření se zobrazí dialogové okno s výzvou k vyjádření souhlasu správce. Vyberte **souhlas jménem vaší organizace** a pak vyberte **přijmout**. Další informace o souhlasu uživatele a správce najdete v tématu [vysvětlení souhlasu uživatele a správce](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent).
 
     :::image type="content" source="media/add-application-portal-setup-oidc-sso/consent.png" alt-text="Snímek obrazovky s informacemi o souhlasu aplikace" lightbox="media/add-application-portal-setup-oidc-sso/consent.png":::
 
@@ -62,6 +64,11 @@ Nastavení jednotného přihlašování pro aplikaci:
 > [!TIP]
 > Správu aplikací můžete automatizovat pomocí Graph API, přečtěte si téma [Automatizace správy aplikací pomocí rozhraní Microsoft Graph API](/graph/application-saml-sso-configure-api).
 
+Tady je video s dalšími podrobnostmi o přidání aplikace založené na OIDC do služby Azure AD.
+
+Přidání aplikace založené na OIDC v Azure Active Directory
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4HoNI]
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

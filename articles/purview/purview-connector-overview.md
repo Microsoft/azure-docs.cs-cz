@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/13/2020
-ms.openlocfilehash: 88fb9c823df6ae5df345911ccce1c579009fba02
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 26efa840bacd3ee542816cf861cf2ef586b0582f
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553246"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780208"
 ---
 # <a name="supported-data-stores"></a>Podporované zdroje dat
 
@@ -27,11 +27,12 @@ Dosah podporuje následující úložiště dat. Klikněte na jednotlivá úlož
 ||[Azure Data Explorer](register-scan-azure-data-explorer.md)|Ano| Ano| Ano| Ano| Ano| Ano|
 ||[Azure Data Lake Storage Gen1](register-scan-adls-gen1.md)|Ano| Ano| Ano| Ano| Ano| Ano|
 ||[Azure Data Lake Storage Gen2](register-scan-adls-gen2.md)|Ano| Ano| Ano| Ano| Ano| Ano|
-||[Azure SQL Database](register-scan-azure-sql-database.md)|Ano| Ano| Ne| Ano| Ano| Ano|
-||[Azure SQL Database spravovaná instance](register-scan-azure-sql-database-managed-instance.md)|Ano| Ano| Ne| Ano| Ano| Ano|
-||[Azure Synapse Analytics (dříve SQL DW)](register-scan-azure-synapse-analytics.md)|Ano| Ano| Ne| Ano| Ano| Ano|
-|databáze|[SQL Server](register-scan-on-premises-sql-server.md)|Ano| Ano| Ne| Ano| Ano| Ano|
-|Power BI|[Power BI](register-scan-power-bi-tenant.md)|Ano| Ano| Ne| Ne| Ne| Ano|
+||[Azure SQL Database](register-scan-azure-sql-database.md)|Ano| Ano| No| Ano| Ano| Ano|
+||[Spravovaná instance Azure SQL Database](register-scan-azure-sql-database-managed-instance.md)|Ano| Ano| No| Ano| Ano| Ano|
+||[Azure Synapse Analytics (dříve SQL DW)](register-scan-azure-synapse-analytics.md)|Ano| Ano| No| Ano| Ano| Ano|
+|Databáze|[SQL Server](register-scan-on-premises-sql-server.md)|Ano| Ano| No| Ano| Ano| Ano|
+||[Teradata (Preview)](register-scan-teradata-source.md)|Ano| Ano| No| No| No| Ano|
+|Power BI|[Power BI](register-scan-power-bi-tenant.md)|Ano| Ano| No| No| No| Ano|
 
 ## <a name="next-steps"></a>Další kroky
 

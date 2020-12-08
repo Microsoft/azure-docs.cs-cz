@@ -6,12 +6,12 @@ ms.date: 11/10/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 adobe-target: true
-ms.openlocfilehash: b32977ac1c8cfe0c461bcd1628c08a0ca215ba93
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 7eebbe5605c0b4d70ea15c1605cff5416965e535
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506188"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780769"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Rychlý Start: Vytvoření aplikace v Pythonu v Azure App Service v systému Linux
 
@@ -74,23 +74,11 @@ Naklonujte ukázkové úložiště pomocí následujícího příkazu a přejdě
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-world
 ```
-
-Pak přejděte do této složky:
-
-```terminal
-cd python-docs-hello-world
-```
 ::: zone-end
 
 ::: zone pivot="python-framework-django"
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-django
-```
-
-Pak přejděte do této složky:
-
-```terminal
-cd python-docs-hello-django
 ```
 ::: zone-end
 
@@ -101,7 +89,11 @@ Máte problémy? [Dejte nám prosím jistotu](https://aka.ms/FlaskCLIQuickstartH
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
 ::: zone pivot="python-framework-flask"
-1. Ujistěte se, že jste ve složce *Python-docs-Hello-World* . 
+1. Přejděte do složky *Python-docs-Hello-World* :
+
+    ```terminal
+    cd python-docs-hello-world
+    ```
 
 1. Vytvořte virtuální prostředí a nainstalujte závislosti:
 
@@ -115,7 +107,11 @@ Máte problémy? [Dejte nám prosím jistotu](https://aka.ms/FlaskCLIQuickstartH
     flask run
     ```
     
-    Ve výchozím nastavení server předpokládá, že je modul vstupu aplikace v *App.py* , jak se používá v ukázce. (Pokud použijete jiný název modulu, nastavte `FLASK_APP` proměnnou prostředí na tento název.)
+    Ve výchozím nastavení server předpokládá, že je modul vstupu aplikace v *App.py*, jak se používá v ukázce.
+
+    Pokud použijete jiný název modulu, nastavte `FLASK_APP` proměnnou prostředí na tento název.
+
+    Pokud dojde k chybě, "nepovedlo se najít aplikaci v baňce. Nezadali jste proměnnou prostředí FLASK_APP a modul ' wsgi.py ' nebo ' app.py ' nebyl v aktuálním adresáři nalezen. ', ujistěte se, že jste ve `python-docs-hello-world` složce, která obsahuje ukázku.
 
 1. Otevřete webový prohlížeč a v části použijte ukázkovou aplikaci `http://localhost:5000/` . Aplikace zobrazí zprávu **Hello, World!**.
 
@@ -125,7 +121,11 @@ Máte problémy? [Dejte nám prosím jistotu](https://aka.ms/FlaskCLIQuickstartH
 ::: zone-end
 
 ::: zone pivot="python-framework-django"
-1. Ujistěte se, že jste ve složce *Python-docs-Hello-Django* . 
+1. Přejděte do složky *Python-docs-Hello-Django* :
+
+    ```terminal
+    cd python-docs-hello-django
+    ```
 
 1. Vytvořte virtuální prostředí a nainstalujte závislosti:
 
@@ -150,7 +150,7 @@ Máte problémy? [Dejte nám prosím jistotu](https://aka.ms/FlaskCLIQuickstartH
 
 ## <a name="deploy-the-sample"></a>Nasazení ukázky
 
-Nasaďte kód do místní složky ( *Python-docs-Hello-World* ) pomocí `az webapp up` příkazu:
+Nasaďte kód do místní složky (*Python-docs-Hello-World*) pomocí `az webapp up` příkazu:
 
 ```azurecli
 az webapp up --sku F1 --name <app-name>
@@ -158,7 +158,7 @@ az webapp up --sku F1 --name <app-name>
 
 - Pokud `az` příkaz není rozpoznaný, ujistěte se, že máte nainstalované rozhraní příkazového řádku Azure, jak je popsané v tématu [Nastavení počátečního prostředí](#set-up-your-initial-environment).
 - Pokud `webapp` příkaz není rozpoznaný, protože verze Azure CLI je 2.0.80 nebo vyšší. Pokud ne, [nainstalujte nejnovější verzi](/cli/azure/install-azure-cli).
-- Nahraďte `<app_name>` názvem, který je jedinečný v rámci všech Azure ( *platné znaky jsou `a-z` , `0-9` a `-`* ). Dobrým vzorem je použití kombinace názvu vaší společnosti a identifikátoru aplikace.
+- Nahraďte `<app_name>` názvem, který je jedinečný v rámci všech Azure (*platné znaky jsou `a-z` , `0-9` a `-`*). Dobrým vzorem je použití kombinace názvu vaší společnosti a identifikátoru aplikace.
 - `--sku F1`Argument vytvoří webovou aplikaci na cenové úrovni Free. Vynechejte tento argument pro použití rychlejší úrovně Premium, což stojí za hodinu.
 - Volitelně můžete zahrnout argument `--location <location-name>` , kde `<location_name>` je dostupná oblast Azure. Seznam povolených oblastí pro váš účet Azure můžete načíst spuštěním [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) příkazu.
 - Pokud se zobrazí chyba, "nebylo možné automaticky rozpoznat zásobník modulu runtime vaší aplikace", ujistěte se, že jste spustili příkaz ve složce *Python-docs-Hello-World* (baňka), nebo ve složce *Python-docs-Hello-Django* (Django), která obsahuje soubor *requirements.txt* . (Další informace najdete v tématu [řešení potíží při automatickém rozpoznávání potíží pomocí AZ WebApp up](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md) (GitHub).)

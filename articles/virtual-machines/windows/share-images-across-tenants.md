@@ -1,22 +1,22 @@
 ---
 title: Sdílení imagí Galerie napříč klienty v Azure
-description: Naučte se sdílet image virtuálních počítačů napříč klienty Azure pomocí galerií sdílených imagí v příkladech Windows.
+description: Naučte se sdílet image virtuálních počítačů napříč klienty Azure pomocí galerií sdílených imagí a PowerShellu.
 author: axayjo
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/15/2019
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 89987ccc975f5d473a493c48be61094de1177c1b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 84998182081c6a681668fbd9bc05446357beb959
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832411"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96781041"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>Sdílení imagí virtuálních počítačů galerie v klientech Azure
+# <a name="share-gallery-vm-images-across-azure-tenants-using-powershell"></a>Sdílení imagí virtuálních počítačů galerie v rámci tenantů Azure pomocí PowerShellu
 
 Galerie sdílených imagí vám umožní sdílet Image pomocí Azure RBAC. Pomocí služby Azure RBAC můžete sdílet image v rámci vašeho tenanta, a to i u jednotlivců mimo vašeho tenanta. Další informace o této možnosti jednoduchého sdílení najdete v tématu [sdílení Galerie](./shared-images-portal.md#share-the-gallery).
 

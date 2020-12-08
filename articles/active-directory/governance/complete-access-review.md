@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/07/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23266043d5efd65a4e6e79dd515a54a2c321b077
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6491de18e65c5071ac0972e7ff49d1253cbd402
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87798830"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779534"
 ---
 # <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Dokončení kontroly přístupu skupin a aplikací v prohlídekch Azure AD Access
 
@@ -29,7 +29,7 @@ Jako správce [vytvoříte kontrolu přístupu pro skupiny nebo aplikace](create
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure AD Premium P2
 - Globální správce, Správce uživatelů, správce zabezpečení nebo čtecí modul zabezpečení
@@ -46,11 +46,19 @@ Můžete sledovat průběh, když kontroloři dokončí revize.
 
 1. V seznamu klikněte na kontrolu přístupu.
 
-    Pokud chcete zobrazit řadu kontrol přístupu, přejděte na kontrolu přístupu a v části naplánované recenze najdete nadcházející výskyty.
+    Pokud chcete zobrazit budoucí instance kontrol přístupu, přejděte na kontrolu přístupu a vyberte naplánované recenze.
 
     Na stránce **Přehled** můžete zobrazit průběh. V adresáři se nezměnila žádná přístupová práva, dokud se kontrola nedokončí.
 
     ![Průběh kontrol přístupu](./media/complete-access-review/overview-progress.png)
+    
+    Pokud prohlížíte kontrolu přístupu, která kontroluje přístup hostů v rámci skupin Microsoft 365 (Preview), zobrazí se v okně Přehled každou skupinu v revizi.  
+
+   ![Kontrola přístupu hostů mezi skupinami Microsoft 365](./media/complete-access-review/review-guest-access-across-365-groups.png)
+
+    Kliknutím na skupinu zobrazíte průběh kontroly v této skupině.
+
+   ![Podrobnosti o přístupu hostů mezi Microsoft 365mi skupinami](./media/complete-access-review/progress-group-review.png)
 
 1. Chcete-li před dosažením naplánovaného koncového data zastavit kontrolu přístupu, klikněte na tlačítko **zastavit** .
 
@@ -62,7 +70,7 @@ Můžete sledovat průběh, když kontroloři dokončí revize.
 
 Pokud je možnost **automaticky použít výsledky do prostředku** zapnutá a na základě vašich výběrů v **nastavení po dokončení**, provede se automatické použití po datu ukončení revize nebo při ručním zastavení kontroly.
 
-Pokud se u prostředku pro kontrolu nepovolilo **automatické použití výsledků** , klikněte na **použít** , aby se změny projevily ručně. Pokud se k přístupu uživatele v recenzi odepře přístup, po kliknutí na **použít**Azure AD odebere přiřazení členství nebo aplikací.
+Pokud se u prostředku pro kontrolu nepovolilo **automatické použití výsledků** , klikněte na **použít** , aby se změny projevily ručně. Pokud se k přístupu uživatele v recenzi odepře přístup, po kliknutí na **použít** Azure AD odebere přiřazení členství nebo aplikací.
 
 ![Použití změn kontroly přístupu](./media/complete-access-review/apply-changes.png)
 
@@ -74,11 +82,11 @@ Nakonfigurované automatické použití revize nebo volba **použít** nemá vli
 
 Chcete-li zobrazit výsledky pro jednorázovou kontrolu přístupu, klikněte na stránku **výsledky** . Chcete-li zobrazit přístup pouze uživatele, zadejte do vyhledávacího pole název zobrazení nebo hlavní název uživatele, jehož přístup byl zkontrolován.
 
-![Načtení výsledků pro kontrolu přístupu](./media/complete-access-review/retrieve-results.png)
+![Načtení výsledků pro kontrolu přístupu](./media/complete-access-review/retrieve-results.png) 
 
 Pokud chcete zobrazit průběh aktivní kontroly přístupu, klikněte na stránku **výsledky** .
 
-Chcete-li zobrazit výsledky dokončené instance kontroly přístupu, klikněte na tlačítko **zkontrolovat historii**a pak vyberte konkrétní instanci ze seznamu dokončených instancí kontroly přístupu na základě počátečního a koncového data instance. Výsledky této instance lze získat ze stránky **výsledků** .
+Chcete-li zobrazit výsledky dokončené instance kontroly přístupu, klikněte na tlačítko **zkontrolovat historii** a pak vyberte konkrétní instanci ze seznamu dokončených instancí kontroly přístupu na základě počátečního a koncového data instance. Výsledky této instance lze získat ze stránky **výsledků** .
 
 Chcete-li načíst všechny výsledky kontroly přístupu, klikněte na tlačítko **Stáhnout** . Výsledný soubor CSV se dá zobrazit v Excelu nebo v jiných programech, které otevřou soubory CSV s kódováním UTF-8.
 

@@ -4,18 +4,17 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/19/2020
 ms.author: glenga
-ms.openlocfilehash: ca8da227c97a44abe14354a5c530d508ce357884
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a5c113849296275432acf1f5603377a1909a2c04
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88703310"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96842256"
 ---
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
 
 Azure Functions Core Tools se integruje s Visual Studio Code, aby se mohl spustit a ladit Azure Functions projektu místně. Podrobnosti o tom, jak ladit v Visual Studio Code, najdete v tématu [ladění powershellu Azure Functions místně](../articles/azure-functions/functions-debug-powershell-local.md). 
-
-1. Stisknutím klávesy F5 spusťte projekt Function App. Výstup z nástrojů Tools se zobrazí na panelu **Terminál**.
+1. Pro volání funkce stiskněte klávesu <kbd>F5</kbd> ke spuštění projektu Function App. Výstup z nástrojů Tools se zobrazí na panelu **Terminál**. Pokud máte v systému Windows potíže, ujistěte se, že výchozí terminál pro Visual Studio Code není nastaven na **WSL bash**.
 
 1. Na panelu **Terminál** zkopírujte adresu URL koncového bodu vaší funkce aktivované protokolem HTTP.
 

@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/03/2019
+ms.date: 12/08/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e1c780d1eb9535343373701e6dfe4899a9cba366
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: b5f4f3d2b3eda9f00049cee26ae95850d65257d6
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803917"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778865"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>Rychlý Start: vytvoření trezoru klíčů pomocí Azure Portal
 
@@ -41,7 +41,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 5. V části **Vytvořit trezor klíčů** zadejte následující informace:
     - **Název:** Je potřeba zadat jedinečný název. V tomto rychlém startu používáme **Contoso-vault2**. 
     - **Předplatné:** Zvolte předplatné.
-    - V části **Skupina prostředků**vyberte **vytvořit novou** a zadejte název skupiny prostředků.
+    - V části **Skupina prostředků** vyberte **vytvořit novou** a zadejte název skupiny prostředků.
     - V rozevírací nabídce **Umístění** zvolte umístění.
     - U ostatních možností ponechte jejich výchozí hodnoty.
 6. Po zadání výše uvedených informací vyberte **Vytvořit**.
@@ -67,7 +67,7 @@ Až nebudete prostředky potřebovat, odstraňte jejich skupinu. Tím odstranít
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili Key Vault a uložili do něj tajný klíč. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
+V tomto rychlém startu jste vytvořili Key Vault pomocí Azure Portal. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
 
 - Přečtěte si [přehled Azure Key Vault](overview.md)
 - Další informace najdete v [příručce pro vývojáře Azure Key Vault](developers-guide.md) .

@@ -3,12 +3,12 @@ title: Nejčastější dotazy ke službě Azure Kubernetes (AKS)
 description: Vyhledejte odpovědi na některé běžné dotazy ke službě Azure Kubernetes Service (AKS).
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 1ca342c1ea4134f4d9d8f1dbcae4e61bf2a75eaf
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 94cbaf417413b3e11071fb8c7237cbb3ac7b9a37
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751378"
+ms.locfileid: "96780344"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy ohledně služby Azure Kubernetes Service (AKS)
 
@@ -24,11 +24,11 @@ No. Clustery AKS jsou regionální prostředky a nemůžou zahrnovat oblasti. Po
 
 ## <a name="can-i-spread-an-aks-cluster-across-availability-zones"></a>Je možné rozložit cluster AKS napříč zónami dostupnosti?
 
-Yes. Cluster AKS můžete nasadit v rámci jedné nebo více [zón dostupnosti][availability-zones] v [oblastech, které je podporují][az-regions].
+Ano. Cluster AKS můžete nasadit v rámci jedné nebo více [zón dostupnosti][availability-zones] v [oblastech, které je podporují][az-regions].
 
 ## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Můžu omezit, kdo má přístup k serveru rozhraní Kubernetes API?
 
-Yes. K dispozici jsou dvě možnosti omezení přístupu k serveru rozhraní API:
+Ano. K dispozici jsou dvě možnosti omezení přístupu k serveru rozhraní API:
 
 - Použijte [rozsahy povolených IP adres serveru API][api-server-authorized-ip-ranges] , pokud chcete zachovat veřejný koncový bod pro Server rozhraní API, ale omezte přístup na sadu důvěryhodných IP adres.
 - Pokud chcete omezit Server API tak, aby byl dostupný *jenom* v rámci vaší virtuální sítě, použijte [Privátní cluster][private-clusters] .
@@ -60,7 +60,7 @@ Pro povolení této architektury zahrnuje každé nasazení AKS dvě skupiny pro
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Můžu pro skupinu prostředků uzlu AKS zadat vlastní název?
 
-Yes. Ve výchozím nastavení AKS pojmenuje skupinu prostředků uzlu *MC_resourcegroupname_clustername_location*, ale můžete také zadat vlastní název.
+Ano. Ve výchozím nastavení AKS pojmenuje skupinu prostředků uzlu *MC_resourcegroupname_clustername_location*, ale můžete také zadat vlastní název.
 
 Pokud chcete zadat vlastní název skupiny prostředků, nainstalujte rozšíření Azure CLI [AKS-Preview][aks-preview-cli] verze *0.3.2* nebo novější. Při vytváření clusteru AKS pomocí příkazu [AZ AKS Create][az-aks-create] použijte `--node-resource-group` parametr a zadejte název skupiny prostředků. Pokud k nasazení clusteru AKS [použijete šablonu Azure Resource Manager][aks-rm-template] , můžete definovat název skupiny prostředků pomocí vlastnosti *nodeResourceGroup* .
 
@@ -215,7 +215,7 @@ Z 1.2.0 Azure CNI bude mít transparentní režim jako výchozí pro nasazení s
 
 ### <a name="bridge-mode"></a>Režim mostu
 
-Jak je název navržený, v režimu mostu Azure CNI ve formě "právě včas" vytvoří most L2 s názvem "azure0". Všechna párové rozhraní na straně hostitele `veth` se připojí k tomuto mostu. Takže Pod-Pod komunikaci uvnitř virtuálního počítače prostřednictvím tohoto mostu. Daný most je virtuální zařízení vrstvy 2, které sám o sobě nemůže přijímat ani přenášet, pokud k němu navážete jedno nebo více skutečných zařízení. Z tohoto důvodu se eth0 virtuálního počítače se systémem Linux převedou na most "azure0". Tím se vytvoří složitá topologie sítě v rámci virtuálního počítače se systémem Linux a jako příznak CNI se musela postarat o další síťové funkce, jako je třeba aktualizace serveru DNS atd.
+Jak je název navržený, v režimu mostu Azure CNI ve formě "právě včas" vytvoří most L2 s názvem "azure0". Všechna párové rozhraní na straně hostitele `veth` se připojí k tomuto mostu. Takže se v rámci tohoto mostu přejdou Pod-Pod komunikace mezi virtuálními počítači a zbývající provoz. Daný most je virtuální zařízení vrstvy 2, které sám o sobě nemůže přijímat ani přenášet, pokud k němu navážete jedno nebo více skutečných zařízení. Z tohoto důvodu se eth0 virtuálního počítače se systémem Linux převedou na most "azure0". Tím se vytvoří složitá topologie sítě v rámci virtuálního počítače se systémem Linux a jako příznak CNI se musela postarat o další síťové funkce, jako je třeba aktualizace serveru DNS atd.
 
 :::image type="content" source="media/faq/bridge-mode.png" alt-text="Topologie režimu mostu":::
 
@@ -229,19 +229,11 @@ root@k8s-agentpool1-20465682-1:/#
 ```
 
 ### <a name="transparent-mode"></a>Transparentní režim
-Transparentní režim používá k nastavení sítě pro Linux přímý přístup. V tomto režimu Azure CNI nemění žádné vlastnosti rozhraní eth0 na virtuálním počítači se systémem Linux. Tento minimální přístup ke změně vlastností sítě pro Linux pomáhá snižovat složité problémy v rohových případech, které by mohly způsobit clustery s režimem mostu. V transparentním režimu vytvoří Azure CNI a přidá `veth` rozhraní dvojice na straně hostitele, které se přidá do sítě hostitele. Komunikace mezi virtuálními počítači pod virtuálním počítačem je prostřednictvím tras IP, které budou CNI přidávat. V podstatě okolní virtuální počítač je nižší než síťový provoz nižší vrstvy 3.
+Transparentní režim používá k nastavení sítě pro Linux přímý přístup. V tomto režimu Azure CNI nemění žádné vlastnosti rozhraní eth0 na virtuálním počítači se systémem Linux. Tento minimální přístup ke změně vlastností sítě pro Linux pomáhá snižovat složité problémy v rohových případech, které by mohly způsobit clustery s režimem mostu. V transparentním režimu vytvoří Azure CNI a přidá `veth` rozhraní dvojice na straně hostitele, které se přidá do sítě hostitele. Komunikace mezi virtuálními počítači pod virtuálním počítačem je prostřednictvím tras IP, které budou CNI přidávat. Nepostradatelná komunikace pod vrstvou od 3 do 1 se přesměruje prostřednictvím pravidel směrování L3.
 
 :::image type="content" source="media/faq/transparent-mode.png" alt-text="Topologie transparentního režimu":::
 
 Níže je uveden příklad nastavení protokolu IP v transparentním režimu, přičemž každé rozhraní pod bude mít připojenou statickou trasu, aby se provoz s cílovým protokolem IP, který se nachází pod, odesílal přímo na rozhraní dvojice na straně hostitele pod `veth` ním.
-
-### <a name="benefits-of-transparent-mode"></a>Výhody transparentního režimu
-
-- Poskytuje omezení pro `conntrack` paralelní časování DNS a vyhne se problémům s latencí služby DNS 5 – s bez nutnosti nastavovat místní DNS uzlu (z důvodů výkonu můžete i místní DNS uzel použít).
-- Eliminuje počáteční režim mostu CNI pro latenci služby DNS v řádu 5 s
-- Jedním z rohových případů v režimu mostu je to, že Azure CNI nemůže uchovat aktualizace vlastního serveru DNS seznam uživatelů, kteří se přidávají buď do sítě VNET, nebo do síťového adaptéru. Výsledkem je, že CNI vybírá jenom první instanci seznamu serverů DNS. Vyřeší v transparentním režimu, protože CNI nemění žádné vlastnosti eth0. Další informace [najdete tady](https://github.com/Azure/azure-container-networking/issues/713).
-- Poskytuje lepší zacházení s přenosy UDP a omezením pro zahlcení zahlcení UDP při vypršení časového limitu protokolu ARP. Pokud most nezná v režimu mostu adresu MAC cílového umístění v rámci komunikace mezi virtuálním počítačem a s tím, jak to bude mít za následek vytvoření paketu na všechny porty. Vyřeší v transparentním režimu, protože v cestě nejsou žádná zařízení L2. Další informace najdete [tady](https://github.com/Azure/azure-container-networking/issues/704).
-- Transparentní režim v rámci komunikace mezi virtuálními počítači a s přenosovou hodnotou v porovnání s režimem mostu zajišťuje lepší přenos z hlediska propustnosti a latence.
 
 ```bash
 10.240.0.216 dev azv79d05038592 proto static
@@ -254,6 +246,15 @@ Níže je uveden příklad nastavení protokolu IP v transparentním režimu, p�
 169.254.169.254 via 10.240.0.1 dev eth0 proto dhcp src 10.240.0.4 metric 100
 172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown
 ```
+
+### <a name="benefits-of-transparent-mode"></a>Výhody transparentního režimu
+
+- Poskytuje omezení pro `conntrack` paralelní časování DNS a vyhne se problémům s latencí služby DNS 5 – s bez nutnosti nastavovat místní DNS uzlu (z důvodů výkonu můžete i místní DNS uzel použít).
+- Eliminuje počáteční režim mostu CNI pro latenci služby DNS v řádu 5 s
+- Jedním z rohových případů v režimu mostu je to, že Azure CNI nemůže uchovat aktualizace vlastního serveru DNS seznam uživatelů, kteří se přidávají buď do sítě VNET, nebo do síťového adaptéru. Výsledkem je, že CNI vybírá jenom první instanci seznamu serverů DNS. Vyřeší v transparentním režimu, protože CNI nemění žádné vlastnosti eth0. Další informace najdete [tady](https://github.com/Azure/azure-container-networking/issues/713).
+- Poskytuje lepší zacházení s přenosy UDP a omezením pro zahlcení zahlcení UDP při vypršení časového limitu protokolu ARP. Pokud most nezná v režimu mostu adresu MAC cílového umístění v rámci komunikace mezi virtuálním počítačem a s tím, jak to bude mít za následek vytvoření paketu na všechny porty. Vyřeší v transparentním režimu, protože v cestě nejsou žádná zařízení L2. Další informace najdete [tady](https://github.com/Azure/azure-container-networking/issues/704).
+- Transparentní režim v rámci komunikace mezi virtuálními počítači a s přenosovou hodnotou v porovnání s režimem mostu zajišťuje lepší přenos z hlediska propustnosti a latence.
+
 
 <!-- LINKS - internal -->
 

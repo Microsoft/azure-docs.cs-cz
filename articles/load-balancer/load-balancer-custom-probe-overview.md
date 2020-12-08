@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 605692d15a08246dd574b0724a550b4543a237a3
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: a008d7b26738b9552a7a43ab026391bd9afe0aa8
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695516"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780939"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy stavu Load Balanceru
 
@@ -66,7 +66,7 @@ Zadané hodnoty časového limitu a intervalu určují, zda bude instance označ
 
 Chování můžeme dále ilustrovat v příkladu. Pokud jste nastavili počet testů testu na hodnotu 2 a interval na 5 sekund, znamená to, že 2 selhání sondy musí být dodržena v intervalu 10 sekund.  Vzhledem k tomu, že čas odeslání sondy není synchronizován, když vaše aplikace může změnit stav, můžeme čas zjistit podle dvou scénářů:
 
-1. Pokud vaše aplikace začne vytvářet odpověď sondy časového limitu těsně před tím, než se první test dorazí, detekce těchto událostí bude trvat 10 sekund (2 x 5 sekund) a doba trvání aplikace, která začíná signalizovat časový limit, kdy se první test dorazí.  Můžete předpokládat, že tato detekce bude trochu víc než 10 sekund trvat.
+1. Pokud vaše aplikace začne vytvářet odpověď sondy časového limitu těsně před tím, než se první test dorazí, detekce těchto událostí bude trvat 10 sekund (2 x 5 sekund) a doba trvání aplikace, která začíná signalizovat časový limit při první dochodu testu.  Můžete předpokládat, že tato detekce bude trochu víc než 10 sekund trvat.
 2. Pokud vaše aplikace začne vytvářet odezvy sondy časového limitu hned po přijetí prvního testu, detekce těchto událostí nebude zahájena, dokud nedojde k dalšímu testu paměti (a vypršení časového limitu) a dalších 10 sekund (2 x 5 sekund intervalů).  Tuto detekci můžete předpokládat, pokud chcete trvat jen 15 sekund.
 
 V tomto příkladu, jakmile k detekci dojde, bude platforma trvat malou dobu, než bude tato změna reagovat.  To znamená, že v závislosti na 
@@ -249,7 +249,7 @@ Pokud máte na svém VIRTUÁLNÍm počítači více rozhraní, musíte si být j
 
 Nepovolujte [Časová razítka TCP](https://tools.ietf.org/html/rfc1323).  Povolení časových razítek TCP může způsobit selhání sond stavu kvůli tomu, že pakety TCP jsou vyřazeny z hostovaného operačního systému hostovaného operačního systému virtuálního počítače. výsledkem Load Balancer označení příslušného koncového bodu.  Ve výchozím nastavení jsou časová razítka TCP zapnutá u imagí s posíleným zabezpečením virtuálních počítačů a musí být zakázaná.
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 Veřejné i interní [Standard Load Balancer](./load-balancer-overview.md) zveřejňují stav testu stavu koncového bodu na koncovém bodu a koncovým bodem back-end jako multidimenzionální metriky prostřednictvím Azure monitor. Tyto metriky můžou využívat jiné služby Azure nebo partnerské aplikace. 
 

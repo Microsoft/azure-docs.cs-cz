@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: e2d577261a1cea0bad9aab549b3669f8fdef5751
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96f316b1ca6a7684630c1ab14d722651c1f3ffbc
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715848"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778900"
 ---
 # <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Přiřazení role Azure pro přístup k datům BLOB a Queue pomocí Azure Portal
 
@@ -39,12 +39,14 @@ Po určení vhodného oboru pro přiřazení role přejděte k tomuto prostředk
 
 1. Pokud chcete udělit přístup k objektu zabezpečení služby Azure AD, přiřaďte příslušné Azure Storage roli Azure.
 
-1. Přiřaďte roli Azure Resource Manager [Reader](../../role-based-access-control/built-in-roles.md#reader) uživatelům, kteří potřebují přistupovat k kontejnerům nebo frontám prostřednictvím Azure Portal pomocí svých přihlašovacích údajů Azure AD. 
+1. Přiřaďte roli Azure Resource Manager [Reader](../../role-based-access-control/built-in-roles.md#reader) uživatelům, kteří potřebují přistupovat k kontejnerům nebo frontám prostřednictvím Azure Portal pomocí svých přihlašovacích údajů Azure AD.
 
 Následující části popisují všechny tyto kroky podrobněji.
 
 > [!NOTE]
-> Jako vlastník účtu Azure Storage nebudete automaticky přiřazena oprávnění pro přístup k datům. Musíte explicitně přiřadit roli Azure pro Azure Storage. Můžete ji přiřadit na úrovni předplatného, skupiny prostředků, účtu úložiště nebo kontejneru nebo fronty.
+> Když vytvoříte účet Azure Storage, nebudete automaticky přiřazovat oprávnění pro přístup k datům prostřednictvím služby Azure AD. Musíte explicitně přiřadit roli Azure pro Azure Storage. Můžete ji přiřadit na úrovni předplatného, skupiny prostředků, účtu úložiště nebo kontejneru nebo fronty.
+>
+> Předtím, než přiřadíte roli pro přístup k datům, budete mít přístup k datům v účtu úložiště prostřednictvím Azure Portal, protože Azure Portal může k přístupu k datům použít taky klíč účtu. Další informace najdete v tématu [Volba způsobu autorizace přístupu k datům objektu BLOB v Azure Portal](../blobs/authorize-data-operations-portal.md).
 >
 > Pokud má váš účet úložiště povolený hierarchický obor názvů, nemůžete přiřadit obor rolí k kontejneru nebo frontě.
 
@@ -64,11 +66,11 @@ Procedura zobrazená tady přiřadí obor role na kontejner, ale stejný postup 
 1. Kliknutím na tlačítko **Přidat přiřazení role** přidejte novou roli.
 1. V okně **Přidat přiřazení role** vyberte roli Azure Storage, kterou chcete přiřadit. Pak vyhledejte objekt zabezpečení, ke kterému chcete přiřadit tuto roli.
 
-    :::image type="content" source="media/storage-auth-aad-rbac-portal/add-rbac-role.png" alt-text="Snímek obrazovky zobrazující nastavení řízení přístupu k kontejneru":::
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/add-rbac-role.png" alt-text="Snímek obrazovky, který ukazuje, jak přiřadit roli Azure":::
 
 1. Klikněte na **Uložit**. Identita, ke které jste přiřadili roli, se zobrazí v seznamu v rámci této role. Například následující obrázek ukazuje, že uživatel přidaný teď má oprávnění číst pro data v kontejneru s názvem *Sample-Container*.
 
-    :::image type="content" source="media/storage-auth-aad-rbac-portal/container-scoped-role.png" alt-text="Snímek obrazovky zobrazující nastavení řízení přístupu k kontejneru":::
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/container-scoped-role.png" alt-text="Snímek obrazovky zobrazující seznam uživatelů přiřazených k roli":::
 
 Podle podobných kroků můžete přiřadit obor role k účtu úložiště, skupině prostředků nebo předplatnému.
 

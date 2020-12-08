@@ -9,18 +9,82 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 03825e0f091df01b98355dd6789eb5c9cb2897b0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4998469fa353fef9e8a91d078349150d9f739ac2
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444546"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779409"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
 V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) .
 
 Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde se dozvíte o známých chybách a alternativním řešení.
+
+## <a name="2020-12-07"></a>2020-12-07
+
+### <a name="azure-machine-learning-sdk-for-python-v1190"></a>Sada SDK Azure Machine Learning pro Python v 1.19.0
++ **Opravy chyb a vylepšení**
+  + **azureml-automl-core**
+    + Do AutoMLStep se přidala experimentální podpora testovacích dat.
+    + Byla přidána počáteční implementace základní implementace funkce pro příjem testovací sady.
+    + Odkazy na skriptu sklearn. externals. joblib se přesunuly na závislé přímo na joblib.
+    + Zaveďte nový typ úlohy AutoML pro "Image-instance-segmentace".
+  + **azureml-automl-runtime**
+    + Byla přidána počáteční implementace základní implementace funkce pro příjem testovací sady.
+    + Pokud všechny řetězce v textovém sloupci mají délku přesně 1 znak, TfIdf Word-gram featurizer nebude fungovat, protože jeho provádějících tokenizaci ignoruje řetězce s méně než 2 znaky. Aktuální Změna kódu umožní AutoML zpracování tohoto případu použití.
+    + Zaveďte nový typ úlohy AutoML pro "Image-instance-segmentace".
+  + **AzureML-contrib-automl-DNN-NLP**
+    + Počáteční PR pro nový balíček DNN-NLP
+  + **AzureML-contrib-automl-DNN-Vision**
+    + Zaveďte nový typ úlohy AutoML pro "Image-instance-segmentace".
+  + **AzureML-contrib-automl-Pipeline – kroky**
+    + Tento nový balíček zodpovídá za vytváření kroků potřebných pro mnoho modelů, scénář výuky/odvozování. – Také přesune kód pro výuku a odvození do balíčku AzureML. Train. automl. Runtime, takže případné budoucí opravy budou automaticky dostupné prostřednictvím vydaných verzí prostředí.
+  + **azureml-contrib-dataset**
+    + Zaveďte nový typ úlohy AutoML pro "Image-instance-segmentace".
+  + **azureml-core**
+    + Byla přidána počáteční implementace základní implementace funkce pro příjem testovací sady.
+    + Oprava upozornění odkazy XREF pro dokumentaci v balíčku AzureML-Core
+    + Opravy řetězce doc pro funkci podpory příkazu v sadě SDK
+    + Přidání vlastnosti Command do RunConfiguration Tato funkce umožňuje uživatelům spustit skutečný příkaz nebo spustitelné soubory ve výpočetním prostředí prostřednictvím sady AzureML SDK.
+    + Uživatelé mohou odstranit prázdný experiment s daným ID tohoto experimentu.
+  + **azureml-dataprep**
+    + Přidala se podpora datové sady pro Spark sestavený pomocí Scala 2,12. Tím se přidá stávající podpora 2,11.
+  + **azureml-mlflow**
+    + AzureML-MLflow přidává bezpečné ochranné kryty ve vzdálených skriptech, aby nedocházelo k předčasnému ukončení odeslaných běhů.
+  + **azureml-pipeline-core**
+    + Opravili jsme chybu v nastavení výchozího kanálu pro koncový bod kanálu vytvořený prostřednictvím uživatelského rozhraní.
+  + **azureml-pipeline-steps**
+    + Do AutoMLStep se přidala experimentální podpora testovacích dat.
+  + **azureml-tensorboard**
+    + Oprava upozornění odkazy XREF pro dokumentaci v balíčku AzureML-Core
+  + **azureml-train-automl-client**
+    + Do AutoMLStep se přidala experimentální podpora testovacích dat.
+    + Byla přidána počáteční implementace základní implementace funkce pro příjem testovací sady.
+    + Zaveďte nový typ úlohy AutoML pro "Image-instance-segmentace".
+  + **azureml-train-automl-runtime**
+    + Byla přidána počáteční implementace základní implementace funkce pro příjem testovací sady.
+    + Opravte výpočet nezpracovaných vysvětlení pro nejlepší model AutoML, pokud jsou modely AutoML vyškoleny pomocí nastavení validation_size.
+    + Odkazy na skriptu sklearn. externals. joblib se přesunuly na závislé přímo na joblib.
+  + **azureml-train-core**
+    + HyperDriveRun.get_children_sorted_by_primary_metric () by se teď měly dokončit rychleji.
+    + Vylepšené zpracování chyb v sadě HyperDrive SDK.
+    +  Zastaraly se všechny třídy Estimator a využívají ScriptRunConfig ke konfiguraci spuštění experimentů. Zastaralé třídy zahrnují:
+        + MMLBaseEstimator
+        + Estimator
+        + PyTorch 
+        + TensorFlow 
+        + Chainer 
+        + SKLearn
+    + Zastaralé použití Nccl a Gloo jako platných vstupních typů pro třídy Estimator ve prospěch použití PyTorchConfiguration s ScriptRunConfig.
+    + Zastaralé použití MPI jako platného vstupního typu pro třídy Estimator namísto použití MpiConfiguration s ScriptRunConfig.
+    + Přidání vlastnosti Command do RunConfiguration Tato funkce umožňuje uživatelům spustit skutečný příkaz nebo spustitelné soubory ve výpočetním prostředí prostřednictvím sady AzureML SDK.
+
+    +  Zastaraly se všechny třídy Estimator a využívají ScriptRunConfig ke konfiguraci spuštění experimentů. Mezi zastaralé třídy patří: + MMLBaseEstimator + Estimator + PyTorch + TensorFlow + chainer + skriptu sklearn
+    + Zastaralé použití Nccl a Gloo jako platného typu vstupu pro třídy Estimator namísto použití PyTorchConfiguration s ScriptRunConfig. 
+    + Zastaralé použití MPI jako platného typu vstupu pro třídy Estimator namísto použití MpiConfiguration s ScriptRunConfig.
+
 
 
 ## <a name="2020-11-09"></a>2020-11-09
@@ -47,12 +111,6 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
     + Rozhraní API propojené služby je upřesněné. Místo poskytnutí ID prostředku máme 3 samostatné parametry sub_id, RG a název definovaný v konfiguraci.
     + Aby mohli zákazníci povolit řešení potíží s poškozením tokenu, povolte synchronizaci tokenu pracovního prostoru jako veřejné metody.
     + Tato změna umožňuje použít jako hodnotu pro script_param prázdný řetězec.
-  + **azureml-pipeline-core**
-    + Sada SDK pro podporu typu SynapseCompute a SynapseSparkStep. Zákazníci můžou spouštět experimenty a spouštět kanály ve fondu synapse Spark.
-  + **azureml-pipeline-steps**
-    + Sada SDK pro podporu typu SynapseCompute a SynapseSparkStep. Zákazníci můžou spouštět experimenty a spouštět kanály ve fondu synapse Spark.
-  + **AzureML-synapse**
-    + Přidejte synapse Magic a SparkMonitor, aby uživatel mohl odeslat Syanpse úlohu a zobrazit průběh úlohy v poznámkovém bloku.
   + **azureml-train-automl-client**
     +  Vylepšené zpracování krátkých časových řad tím, že umožňují jejich odsazení pomocí Gaussovského šumu.
   + **azureml-train-automl-runtime**
@@ -90,7 +148,6 @@ Přečtěte si další informace o [označování segmentace instancí imagí](h
     + Opravili jsme problém, kdy VotingRegressor předpovědi může být po remontáži modelu nepřesný.
   + **azureml-core**
     + Přidala se další podrobnosti o vztahu mezi konfigurací nasazení AKS a koncepty služby Azure Kubernetes.
-    + Zákazník může pomocí propojené služby SDK propojit pracovní prostor synapse s pracovním prostorem AML. CRUD se podporuje.
     + Podpora popisků klientů prostředí. Uživatel může označovat prostředí a odkazovat na ně pomocí popisku.
   + **azureml-dataprep**
     + Lepší chybová zpráva při použití aktuálně nepodporovaného Sparku s Scala 2,12.

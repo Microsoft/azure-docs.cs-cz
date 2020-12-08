@@ -4,15 +4,15 @@ description: Přečtěte si, jak migrovat řešení pro společné prodeje z OCP
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: keferna
-ms.author: keferna
-ms.date: 12/04/2020
-ms.openlocfilehash: 6af7095dbb57c5ceb17989b2d6106a42e1d23fb9
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+author: vamahtan
+ms.author: vamahtan
+ms.date: 12/07/2020
+ms.openlocfilehash: 6ad58283ad9078088f241a67426657eb7a538e10
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/07/2020
-ms.locfileid: "96771982"
+ms.locfileid: "96781126"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>Migrace řešení společného prodeje z OCP GTM na komerční tržiště
 
@@ -79,7 +79,8 @@ Tuto možnost vyberte, pokud už je řešení publikované na komerčním webu M
 1. Identifikujte existující nabídku.
     1. Vyberte **Chci toto řešení sloučit s podobnou nabídkou na komerčním webu Marketplace** (podívejte se na obrázek **požadované akce** [výše](#beginmigration)).
     1. Na kartě **Akce 1** se zobrazují možnosti Live Commercial Marketplace, ke kterým je možné přidružit vaše řešení OCP GTM. Vyberte živou nabídku ze seznamu, pokud ji máte. Pokud není k dispozici žádný seznam nabídek, které by bylo možné vybrat, zadejte adresu URL (adresa URL) z Microsoft AppSource nebo Azure Marketplace.
-        [![Karta akce procesu sloučení akce 1.](media/co-sell-migrate/action-1-merge.png)](media/co-sell-migrate/action-1-merge.png#lightbox)    1. Vyberte **Pokračovat**.
+        [![Karta akce procesu sloučení akce 1.](media/co-sell-migrate/action-1-merge.png)](media/co-sell-migrate/action-1-merge.png#lightbox)
+    1. Vyberte **Pokračovat**.
 1. Požádejte o sloučení.
     1. Na kartě **Akce 2** se zobrazí pokyny pro vyžádání sloučení řešení OCP GTM s vámi identifikovanou. Pokud chcete požádat o sloučení, vyberte **uložit & obraťte** se na podporu. otevře se stránka podpory partnera v prohlížeči.
     1. Vyberte **zadat podrobnosti o problému** a zadejte následující: [ ![ karta akce 2 procesu sloučení.](media/co-sell-migrate/action-2-merge.png)](media/co-sell-migrate/action-2-merge.png#lightbox)
@@ -93,7 +94,7 @@ Tuto možnost vyberte, když máte řešení OCP GTM, které ještě nemá odpov
 1. Vyberte **Chci migrovat toto řešení z OCP GTM na komerční web Marketplace** (podívejte se na obrázek **požaduje akci** [výše](#beginmigration)) a pak **pokračovat**.
 1. Na kartě **Akce 1** vyberte [Typ nabídky](publisher-guide-by-offer-type.md)a potom **pokračujte**.
 
-    [![Karta akce v procesu migrace.](media/co-sell-migrate/action-1-migrate.png)](media/co-sell-migrate/action-1-migrate.png#lightbox)    1. Vyberte **Pokračovat**.
+    [![Karta akce v procesu migrace.](media/co-sell-migrate/action-1-migrate.png)](media/co-sell-migrate/action-1-migrate.png#lightbox)
 
 1. Na kartě **Akce 2** vyberte z poskytnutého seznamu [profil vydavatele](partner-center-portal/create-account.md) . Pokud nemáte účet vydavatele, vytvořte ho v [partnerském centru](https://partner.microsoft.com/solutions/migration), vyberte ho tady.
 

@@ -8,27 +8,27 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: dafb4485ae9b10d89fa36bd790dcf3a799054de3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2cd50b1b35b87b1a11301ddc36ac355bef20dc4
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90064136"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780611"
 ---
 # <a name="manage-spark-application-dependencies"></a>Správa závislostí sparkových aplikací
 
 V tomto článku se dozvíte, jak spravovat závislosti pro aplikace Spark běžící v HDInsight. Scala i PySpark se týkají aplikace Spark a oboru clusteru.
 
 Pomocí rychlých odkazů můžete přejít k části na základě vašeho uživatelského případu:
-* [Nastavení závislostí pro úlohy Spark pomocí poznámkového bloku Jupyter](#use-jupyter-notebook)
+* [Nastavení závislostí pro úlohy Spark pomocí Jupyter Notebook](#use-jupyter-notebook)
 * [Nastavení závislosti jar úlohy Spark pomocí Azure Toolkit for IntelliJ použít](#use-azure-toolkit-for-intellij)
 * [Konfigurace závislostí JAR pro cluster Spark](#jar-libs-for-cluster)
 * [Zabezpečená správa závislostí Jar](#safely-manage-jar-dependencies)
-* [Nastavení balíčků Python úlohy Spark pomocí poznámkového bloku Jupyter](#use-jupyter-notebook-1)
+* [Nastavení balíčků Python úlohy Spark pomocí Jupyter Notebook](#use-jupyter-notebook-1)
 * [Bezpečně spravovat balíčky Pythonu pro cluster Spark](#python-packages-for-cluster)
 
 ## <a name="jar-libs-for-one-spark-job"></a>JAR knihovny pro jednu úlohu Spark
-### <a name="use-jupyter-notebook"></a>Použití poznámkového bloku Jupyter
+### <a name="use-jupyter-notebook"></a>Použít Jupyter Notebook
 Když se relace Spark spustí v Jupyter Notebook v jádru Spark pro Scala, můžete nakonfigurovat balíčky z:
 
 * [Maven úložiště](https://search.maven.org/)nebo balíčky komunitní komunitou v [balíčcích Spark](https://spark-packages.org/).
@@ -42,7 +42,7 @@ Když se relace Spark spustí v Jupyter Notebook v jádru Spark pro Scala, můž
 
 **Ukázka pro balíčky z úložiště Maven nebo balíčků Spark**
 
-Po nalezení balíčku z úložiště Maven Shromážděte hodnoty pro ID **skupiny**, **ArtifactId**a **verzi**. Zřetězí tři hodnoty oddělené dvojtečkou (**:**).
+Po nalezení balíčku z úložiště Maven Shromážděte hodnoty pro ID **skupiny**, **ArtifactId** a **verzi**. Zřetězí tři hodnoty oddělené dvojtečkou (**:**).
 
    ![Zřetězení schématu balíčku](./media/apache-spark-manage-dependencies/spark-package-schema.png "Zřetězení schématu balíčku")
 
@@ -102,8 +102,8 @@ Kroky můžete automatizovat pomocí [akcí skriptů](../hdinsight-hadoop-custom
 Cluster HDInsight má integrované závislosti jar a aktualizace pro tyto verze JAR se od času stávají časem. Chcete-li se vyhnout konfliktu verzí mezi vestavěnými jar a JAR, které jste přizpůsobili pro referenci, zvažte [vystínování závislostí aplikace](./safely-manage-jar-dependency.md).
 
 ## <a name="python-packages-for-one-spark-job"></a>Balíčky Pythonu pro jednu úlohu Spark
-### <a name="use-jupyter-notebook"></a>Použití poznámkového bloku Jupyter
-Jádro HDInsight Jupyter poznámkového bloku PySpark nepodporuje instalaci balíčků Pythonu z úložiště PyPi nebo Anaconda přímo do úložiště balíčků. Pokud máte `.zip` závislosti, `.egg` nebo `.py` a chcete je odkazovat na jednu relaci Sparku, postupujte podle následujících kroků:
+### <a name="use-jupyter-notebook"></a>Použít Jupyter Notebook
+Jádro HDInsight Jupyter Notebook PySpark nepodporuje instalaci balíčků Pythonu přímo z úložiště balíčků PyPi nebo Anaconda. Pokud máte `.zip` závislosti, `.egg` nebo `.py` a chcete je odkazovat na jednu relaci Sparku, postupujte podle následujících kroků:
 
 1. Spustit pod ukázkovou akcí skriptu kopírování `.zip` `.egg` nebo `.py` souborů z primárního úložiště `wasb://mycontainer@mystorageaccount.blob.core.windows.net/libs/*` do místního systému souborů clusteru `/usr/libs/pylibs` . Tento krok je potřeba, protože Linux používá `:` k oddělení seznamu cest hledání, ale podporuje jenom cesty úložiště se schématem, jako je `wasb://` . Cesta vzdáleného úložiště nebude při použití fungovat správně `sys.path.insert` .
 

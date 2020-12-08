@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperfq4
 ms.date: 11/09/2020
-ms.openlocfilehash: 46763bddd0f173ccf73edc54e5f2688d3bf6efc0
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 55ac11b7888a8e351b52554f76fb44af35633c16
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445395"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780973"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Známé problémy a řešení potíží ve službě Azure Machine Learning
 
@@ -143,13 +143,13 @@ V některých případech může být užitečné, pokud při dotazování na n�
 
     Případně můžete použít skripty init, pokud máte potíže s instalací v knihovně Python. Tento přístup není oficiálně podporován. Další informace najdete v tématu [skripty init v oboru clusteru](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
 
-* **Chyba importu datacihly: `Timedelta` `pandas._libs.tslibs` název nelze importovat** : Pokud se při použití automatizovaného strojového učení zobrazí tato chyba, spusťte na poznámkovém bloku tyto dva řádky:
+* **Chyba importu datacihly: `Timedelta` `pandas._libs.tslibs` název nelze importovat**: Pokud se při použití automatizovaného strojového učení zobrazí tato chyba, spusťte na poznámkovém bloku tyto dva řádky:
     ```
     %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
     %sh /databricks/python/bin/pip install pandas==0.23.4
     ```
 
-* **Chyba importu datacihly: žádný modul s názvem PANDAS. Core. Indexes** : Pokud se vám při použití automatizovaného strojového učení zobrazí tato chyba:
+* **Chyba importu datacihly: žádný modul s názvem PANDAS. Core. Indexes**: Pokud se vám při použití automatizovaného strojového učení zobrazí tato chyba:
 
     1. Spuštěním tohoto příkazu nainstalujete do clusteru Azure Databricks dva balíčky:
     
@@ -162,7 +162,7 @@ V některých případech může být užitečné, pokud při dotazování na n�
     
     Pokud tyto kroky problém nevyřeší, zkuste restartovat cluster.
 
-* **Datacihly FailToSendFeather** : Pokud se `FailToSendFeather` při čtení dat v Azure Databricks clusteru zobrazí chyba, přečtěte si následující řešení:
+* **Datacihly FailToSendFeather**: Pokud se `FailToSendFeather` při čtení dat v Azure Databricks clusteru zobrazí chyba, přečtěte si následující řešení:
     
     * Upgradujte `azureml-sdk[automl]` balíček na nejnovější verzi.
     * Přidejte `azureml-dataprep` 1.1.8 verze nebo vyšší.
@@ -173,11 +173,11 @@ V některých případech může být užitečné, pokud při dotazování na n�
 > [!WARNING]
 > Přesunutím pracovního prostoru Azure Machine Learning do jiného předplatného nebo přesunutím vlastnícího předplatného na nového tenanta se nepodporuje. V takovém případě může dojít k chybám.
 
-* **Azure Portal** : 
+* **Azure Portal**: 
   * Pokud přejdete přímo k pracovnímu prostoru z odkazu pro sdílení ze sady SDK nebo Azure Portal, nemůžete zobrazit standardní stránku s **přehledem** , která obsahuje informace o předplatném v rozšíření. V tomto scénáři se také nedá přepnout na jiný pracovní prostor. Pokud chcete zobrazit jiný pracovní prostor, přejít přímo na [Azure Machine Learning Studio](https://ml.azure.com) a vyhledejte název pracovního prostoru.
   * Všechny prostředky (datové sady, experimenty, výpočty atd.) jsou k dispozici pouze v [Azure Machine Learning Studiu](https://ml.azure.com). *Nejsou* k dispozici z Azure Portal.
 
-* **Podporované prohlížeče na webovém portálu Azure Machine Learning Studio** : Doporučujeme, abyste používali nejaktuálnější prohlížeč, který je kompatibilní s vaším operačním systémem. Podporovány jsou následující prohlížeče:
+* **Podporované prohlížeče na webovém portálu Azure Machine Learning Studio**: Doporučujeme, abyste používali nejaktuálnější prohlížeč, který je kompatibilní s vaším operačním systémem. Podporovány jsou následující prohlížeče:
   * Microsoft Edge (nová Microsoft Edge, nejnovější verze Ne Microsoft Edge starší verze)
   * Safari (nejnovější verze, jen Mac)
   * Chrome (nejnovější verze)
@@ -185,9 +185,9 @@ V některých případech může být užitečné, pokud při dotazování na n�
 
 ## <a name="set-up-your-environment"></a>Nastavení prostředí
 
-* **Problémy při vytváření AmlCompute** : je pravděpodobné, že někteří uživatelé, kteří vytvořili svůj Azure Machine Learning pracovní prostor z Azure Portal před vydáním GA, nemusí být schopni vytvořit AmlCompute v tomto pracovním prostoru. Můžete buď vyvolat žádost o podporu na službu, nebo vytvořit nový pracovní prostor prostřednictvím portálu nebo sadu SDK pro okamžité odblokování.
+* **Problémy při vytváření AmlCompute**: je pravděpodobné, že někteří uživatelé, kteří vytvořili svůj Azure Machine Learning pracovní prostor z Azure Portal před vydáním GA, nemusí být schopni vytvořit AmlCompute v tomto pracovním prostoru. Můžete buď vyvolat žádost o podporu na službu, nebo vytvořit nový pracovní prostor prostřednictvím portálu nebo sadu SDK pro okamžité odblokování.
 
-* **Azure Container Registry v současné době nepodporuje znaky Unicode v názvech skupin prostředků** : je možné, že požadavky ACR selžou, protože název skupiny prostředků obsahuje znaky Unicode. Pokud chcete tento problém zmírnit, doporučujeme vytvořit ACR v jiné skupině prostředků s názvem.
+* **Azure Container Registry v současné době nepodporuje znaky Unicode v názvech skupin prostředků**: je možné, že požadavky ACR selžou, protože název skupiny prostředků obsahuje znaky Unicode. Pokud chcete tento problém zmírnit, doporučujeme vytvořit ACR v jiné skupině prostředků s názvem.
 
 ## <a name="work-with-data"></a>Práce s daty
 
@@ -199,7 +199,7 @@ Pokud používáte sdílenou složku pro jiné úlohy, jako je třeba přenos da
 
 ### <a name="passing-data-as-input"></a>Předávání dat jako vstupů
 
-*  **TypeError: FileNotFound: žádný takový soubor nebo adresář** : k této chybě dochází, pokud se v souboru nenachází cesta, kterou zadáte. Je nutné zajistit, aby se způsob, jakým na soubor odkazujete, shodoval s tím, kam jste připojili datovou sadu na výpočetním cíli. Pro zajištění deterministického stavu doporučujeme při připojování datové sady k cíli výpočtů použít abstraktní cestu. Například v následujícím kódu připojíme datovou sadu do kořenového adresáře systému souborů cíle služby COMPUTE `/tmp` . 
+*  **TypeError: FileNotFound: žádný takový soubor nebo adresář**: k této chybě dochází, pokud se v souboru nenachází cesta, kterou zadáte. Je nutné zajistit, aby se způsob, jakým na soubor odkazujete, shodoval s tím, kam jste připojili datovou sadu na výpočetním cíli. Pro zajištění deterministického stavu doporučujeme při připojování datové sady k cíli výpočtů použít abstraktní cestu. Například v následujícím kódu připojíme datovou sadu do kořenového adresáře systému souborů cíle služby COMPUTE `/tmp` . 
     
     ```python
     # Note the leading / in '/tmp/dataset'
@@ -211,7 +211,10 @@ Pokud používáte sdílenou složku pro jiné úlohy, jako je třeba přenos da
     Pokud nezadáte úvodní lomítko, "/", budete muset zadat předponu pracovního adresáře, např. `/mnt/batch/.../tmp/dataset` na výpočetním cíli, abyste označili, kam chcete datovou sadu připojit.
 
 ### <a name="mount-dataset"></a>Připojit datovou sadu
-* **Inicializace datové sady se nezdařila: čekání na přípravu přípojného bodu vypršel časový limit** : pro zmírnění problému byla přidána logika opakování `azureml-sdk >=1.12.0` . Pokud jste v předchozích verzích sady AzureML-SDK, upgradujte prosím na nejnovější verzi. Pokud už jste zapnuti `azureml-sdk>=1.12.0` , vytvořte prosím znovu prostředí, abyste měli k opravě k dispozici nejnovější opravu.
+* **Inicializace datové sady se nezdařila: časový limit čekání na bod připojení vypršel**: 
+  * Pokud nemáte žádná pravidla odchozích [skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview) a používáte `azureml-sdk>=1.12.0` je, aktualizujte je `azureml-dataset-runtime` a závislosti, které mají být nejnovější pro konkrétní podverze, nebo pokud ji používáte v běhu, vytvořte prosím znovu prostředí, aby bylo možné provést nejnovější opravu s touto opravou. 
+  * Pokud používáte `azureml-sdk<1.12.0` , upgradujte prosím na nejnovější verzi.
+  * Pokud máte odchozí pravidla NSG, ujistěte se, že existuje odchozí pravidlo, které povoluje veškerý provoz pro značku služby `AzureResourceMonitor` .
 
 ### <a name="data-labeling-projects"></a>Projekty označování dat
 
@@ -233,7 +236,7 @@ Omezení a známé problémy pro sledování posunu dat:
 * Monitory datové sady budou fungovat jenom u datových sad, které obsahují 50 nebo více řádků.
 * Sloupce nebo funkce v datové sadě jsou klasifikovány jako kategorií nebo číselné na základě podmínek v následující tabulce. Pokud tato funkce nesplňuje tyto podmínky – například sloupec typu řetězec s >100 jedinečnými hodnotami, funkce je vyřazena z našeho algoritmu pro posun dat, ale je stále profilovaná. 
 
-    | Typ funkce | Datový typ | Stav | Omezení | 
+    | Typ funkce | Datový typ | Podmínka | Omezení | 
     | ------------ | --------- | --------- | ----------- |
     | Kategorické | String, bool, int, float | Počet jedinečných hodnot ve funkci je menší než 100 a menší než 5% počtu řádků. | Hodnota null se považuje za svou vlastní kategorii. | 
     | Číselné | int, float | Hodnoty ve funkci jsou číselného datového typu a nesplňují podmínky pro funkci kategorií. | Funkce byla vynechána, pokud >15% hodnot mají hodnotu null. | 
@@ -305,7 +308,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 ## <a name="train-models"></a>Trénování modelů
 
-* **ModuleErrors (žádný modul s názvem)** : Pokud při odesílání experimentů ve službě Azure ml používáte systém ModuleErrors, znamená to, že školicí skript očekává, že je balíček nainstalovaný, ale nepřidá se. Po zadání názvu balíčku nainstaluje Azure ML balíček do prostředí používaného pro váš školicí běh. 
+* **ModuleErrors (žádný modul s názvem)**: Pokud při odesílání experimentů ve službě Azure ml používáte systém ModuleErrors, znamená to, že školicí skript očekává, že je balíček nainstalovaný, ale nepřidá se. Po zadání názvu balíčku nainstaluje Azure ML balíček do prostředí používaného pro váš školicí běh. 
 
     Pokud používáte odhady k odesílání experimentů, můžete zadat název balíčku prostřednictvím `pip_packages` nebo `conda_packages` parametr v Estimator na základě toho, ze kterého zdroje chcete balíček nainstalovat. Můžete také zadat soubor YML se všemi vašimi závislostmi pomocí `conda_dependencies_file` nebo vypsat všechny požadavky PIP v souboru txt pomocí `pip_requirements_file` parametru. Pokud máte vlastní objekt prostředí Azure ML, který chcete přepsat výchozí image, kterou používá Estimator, můžete toto prostředí zadat prostřednictvím `environment` parametru konstruktoru Estimator.
 
@@ -317,15 +320,15 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     > [!Note]
     > Pokud si myslíte, že konkrétní balíček je dostatečně společný, aby ho bylo možné přidat do spravovaných imagí a prostředí Azure ML, vyřešte v [kontejnerech AzureML](https://github.com/Azure/AzureML-Containers)problém GitHubu. 
  
-* **NameError (název není definován), AttributeError (objekt nemá žádný atribut)** : Tato výjimka by měla pocházet z vašich školicích skriptů. Můžete si prohlédnout soubory protokolu z Azure Portal a získat další informace o konkrétním názvu, který není definován nebo chyba atributu. V sadě SDK se můžete podívat na `run.get_details()` chybovou zprávu. Zobrazí se také seznam všech souborů protokolu generovaných pro váš běh. Ujistěte se prosím, že se podíváte na školicí skript a opravte chybu před opětovným odesláním běhu. 
+* **NameError (název není definován), AttributeError (objekt nemá žádný atribut)**: Tato výjimka by měla pocházet z vašich školicích skriptů. Můžete si prohlédnout soubory protokolu z Azure Portal a získat další informace o konkrétním názvu, který není definován nebo chyba atributu. V sadě SDK se můžete podívat na `run.get_details()` chybovou zprávu. Zobrazí se také seznam všech souborů protokolu generovaných pro váš běh. Ujistěte se prosím, že se podíváte na školicí skript a opravte chybu před opětovným odesláním běhu. 
 
-* **Horovod byla vypnuta** : ve většině případů, pokud se zobrazí zpráva "AbortedError: Horovod byla vypnuta" Tato výjimka znamená, že došlo k základní výjimce v jednom z procesů, které způsobily vypnutí Horovod. V Azure ML má každá vrstva v úloze MPI vlastní vyhrazený soubor protokolu. Tyto protokoly mají název `70_driver_logs`. V případě distribuovaného trénování se k názvům těchto protokolů přidává přípona `_rank`, aby bylo snadnější tyto protokoly odlišit. Pokud chcete najít přesnou chybu, která způsobila vypnutí Horovod, Projděte všechny soubory protokolů a hledejte na `Traceback` konci driver_log souborů. Jeden z těchto souborů vám poskytne vlastní podkladovou výjimku. 
+* **Horovod byla vypnuta**: ve většině případů, pokud se zobrazí zpráva "AbortedError: Horovod byla vypnuta" Tato výjimka znamená, že došlo k základní výjimce v jednom z procesů, které způsobily vypnutí Horovod. V Azure ML má každá vrstva v úloze MPI vlastní vyhrazený soubor protokolu. Tyto protokoly mají název `70_driver_logs`. V případě distribuovaného trénování se k názvům těchto protokolů přidává přípona `_rank`, aby bylo snadnější tyto protokoly odlišit. Pokud chcete najít přesnou chybu, která způsobila vypnutí Horovod, Projděte všechny soubory protokolů a hledejte na `Traceback` konci driver_log souborů. Jeden z těchto souborů vám poskytne vlastní podkladovou výjimku. 
 
-* **Spuštění nebo experimentování při odstraňování** : experimenty se dají archivovat pomocí metody [experiment. Archive](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truearchive--) nebo na kartě experiment v Azure Machine Learning klientovi studia pomocí tlačítka "archivní experiment". Tato akce skryje experiment ze seznamu dotazy a zobrazení, ale neodstraní ho.
+* **Spuštění nebo experimentování při odstraňování**: experimenty se dají archivovat pomocí metody [experiment. Archive](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truearchive--) nebo na kartě experiment v Azure Machine Learning klientovi studia pomocí tlačítka "archivní experiment". Tato akce skryje experiment ze seznamu dotazy a zobrazení, ale neodstraní ho.
 
     Trvalé odstranění jednotlivých experimentů nebo spuštění se v současné době nepodporuje. Další informace o odstraňování prostředků pracovního prostoru najdete v tématu [Export nebo odstranění dat pracovního prostoru služby Machine Learning](how-to-export-delete-data.md).
 
-* **Dokument metriky je příliš velký** : Azure Machine Learning má interní omezení velikosti objektů metriky, které je možné v jednom z školicích běhů přihlásit. Pokud při protokolování metriky hodnot seznamu dojde k chybě Dokument metriky je příliš velký, zkuste seznam rozdělit na menší části, například:
+* **Dokument metriky je příliš velký**: Azure Machine Learning má interní omezení velikosti objektů metriky, které je možné v jednom z školicích běhů přihlásit. Pokud při protokolování metriky hodnot seznamu dojde k chybě Dokument metriky je příliš velký, zkuste seznam rozdělit na menší části, například:
 
     ```python
     run.log_list("my metric name", my_metric[:N])
@@ -336,7 +339,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 ## <a name="automated-machine-learning"></a>Automatizované strojové učení
 
-* **Poslední upgrade závislostí AutoML na novější verze bude mít za následek porušení kompatibility** : od verze 1.13.0 sady SDK nebudou modely načteny do starších sad SDK z důvodu nekompatibility mezi staršími verzemi, které jsme připnuli v předchozích balíčcích, a novějšími verzemi, které teď zapnete. Zobrazí se chyba, například:
+* **Poslední upgrade závislostí AutoML na novější verze bude mít za následek porušení kompatibility**: od verze 1.13.0 sady SDK nebudou modely načteny do starších sad SDK z důvodu nekompatibility mezi staršími verzemi, které jsme připnuli v předchozích balíčcích, a novějšími verzemi, které teď zapnete. Zobrazí se chyba, například:
   * Modul nebyl nalezen: ex. `No module named 'sklearn.decomposition._truncated_svd` ,
   * Chyby importu: ex. `ImportError: cannot import name 'RollingOriginValidator'` ,
   * Chyby atributů: ex. `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
@@ -356,9 +359,9 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     pip install --upgrade scikit-learn==0.20.3
   ```
  
-* **Předpověď na pozici R2 je vždycky nulová** : k tomuto problému dochází, pokud mají poskytnuté školicí údaje časovou řadu, která obsahuje stejnou hodnotu pro poslední `n_cv_splits`  +  `forecasting_horizon` datové body. Pokud je tento model očekáván v časové řadě, můžete přepínat primární metriku na normalizovaný základní průměrnou chybu.
+* **Předpověď na pozici R2 je vždycky nulová**: k tomuto problému dochází, pokud mají poskytnuté školicí údaje časovou řadu, která obsahuje stejnou hodnotu pro poslední `n_cv_splits`  +  `forecasting_horizon` datové body. Pokud je tento model očekáván v časové řadě, můžete přepínat primární metriku na normalizovaný základní průměrnou chybu.
  
-* **TensorFlow** : od verze 1.5.0 sady SDK služba automatizovaného strojového učení neinstaluje modely TensorFlow ve výchozím nastavení. Pokud chcete nainstalovat TensorFlow a používat ho s automatizovanými experimenty ML, nainstalujte TensorFlow = = 1.12.0 prostřednictvím CondaDependecies. 
+* **TensorFlow**: od verze 1.5.0 sady SDK služba automatizovaného strojového učení neinstaluje modely TensorFlow ve výchozím nastavení. Pokud chcete nainstalovat TensorFlow a používat ho s automatizovanými experimenty ML, nainstalujte TensorFlow = = 1.12.0 prostřednictvím CondaDependecies. 
  
    ```python
    from azureml.core.runconfig import RunConfiguration
@@ -366,18 +369,18 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
    run_config = RunConfiguration()
    run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['tensorflow==1.12.0'])
   ```
-* **Grafy experimentů** : binární klasifikační grafy (přesnost-odvolání, ROC, křivka získání atd.) zobrazené v automatizovaných iteracích experimentu se nevykreslují správně v uživatelském rozhraní od 4/12. V grafu jsou v současné době zobrazeny inverzní výsledky, kde je lepší provádět modely s nižšími výsledky. Řešení je v šetření.
+* **Grafy experimentů**: binární klasifikační grafy (přesnost-odvolání, ROC, křivka získání atd.) zobrazené v automatizovaných iteracích experimentu se nevykreslují správně v uživatelském rozhraní od 4/12. V grafu jsou v současné době zobrazeny inverzní výsledky, kde je lepší provádět modely s nižšími výsledky. Řešení je v šetření.
 
-* **Datacihly ruší automatizované spuštění strojového učení** : když v Azure Databricks používáte automatizované funkce machine learningu, ke zrušení spuštění a spuštění nového experimentu restartujte cluster Azure Databricks.
+* **Datacihly ruší automatizované spuštění strojového učení**: když v Azure Databricks používáte automatizované funkce machine learningu, ke zrušení spuštění a spuštění nového experimentu restartujte cluster Azure Databricks.
 
-* **Datacihly >10 iterací pro automatizované strojové učení** : v případě automatizovaného nastavení strojového učení, pokud máte více než 10 iterací, nastavte `show_output` na hodnotu `False` při odeslání běhu.
+* **Datacihly >10 iterací pro automatizované strojové učení**: v případě automatizovaného nastavení strojového učení, pokud máte více než 10 iterací, nastavte `show_output` na hodnotu `False` při odeslání běhu.
 
-* **Widget datacihly pro sadu Azure Machine Learning SDK a automatizované Machine Learning** : pomůcka SDK pro Azure Machine Learning není v poznámkovém bloku datacihly podporovaná, protože poznámkové bloky nemůžou analyzovat widgety HTML. Widget můžete zobrazit na portálu pomocí tohoto kódu Pythonu v buňce s Azure Databricksm poznámkového bloku:
+* **Widget datacihly pro sadu Azure Machine Learning SDK a automatizované Machine Learning**: pomůcka SDK pro Azure Machine Learning není v poznámkovém bloku datacihly podporovaná, protože poznámkové bloky nemůžou analyzovat widgety HTML. Widget můžete zobrazit na portálu pomocí tohoto kódu Pythonu v buňce s Azure Databricksm poznámkového bloku:
 
     ```
     displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
     ```
-* **automl_setup se nezdařila** : 
+* **automl_setup se nezdařila**: 
     * Ve Windows spusťte automl_setup z příkazového řádku Anaconda. Pomocí tohoto odkazu [nainstalujete Miniconda](https://docs.conda.io/en/latest/miniconda.html).
     * Zajistěte, aby byl nainstalován conda 64, nikoli 32-bit spuštěním `conda info` příkazu. `platform`Měla by být `win-64` pro Windows nebo `osx-64` pro Mac.
     * Ujistěte se, že je nainstalovaný conda 4.4.10 nebo novější. Verzi můžete ověřit pomocí příkazu `conda -V` . Pokud máte nainstalovanou předchozí verzi, můžete ji aktualizovat pomocí příkazu: `conda update conda` .
@@ -385,20 +388,20 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
       *  Pokud `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` dojde k chybě, nainstalujte základy sestavení pomocí příkazu `sudo apt-get install build-essential` .
       * Pokud chcete automl_setup vytvořit nové prostředí Conda, předejte nový název jako první parametr. Zobrazit existující prostředí conda pomocí `conda env list` a odebrat je pomocí `conda env remove -n <environmentname>` .
       
-* **automl_setup_linux. sh se nezdařila** : Pokud se v Ubuntu Linux automl_setup_linus. sh, došlo k chybě: `unable to execute 'gcc': No such file or directory`-
+* **automl_setup_linux. sh se nezdařila**: Pokud se v Ubuntu Linux automl_setup_linus. sh, došlo k chybě: `unable to execute 'gcc': No such file or directory`-
   1. Ujistěte se, že jsou povolené Odchozí porty 53 a 80. Na virtuálním počítači Azure to můžete udělat z Azure Portal tím, že vyberete virtuální počítač a kliknete na sítě.
   2. Spusťte příkaz: `sudo apt-get update`
   3. Spusťte příkaz: `sudo apt-get install build-essential --fix-missing`
   4. Spustit `automl_setup_linux.sh` znovu
 
-* **konfigurace. ipynb se nezdařila** :
+* **konfigurace. ipynb se nezdařila**:
   * V případě místních conda nejdříve zajistěte, aby byl úspěšně spuštěn automl_setup.
   * Ujistěte se, že je subscription_id správná. Subscription_id v Azure Portal Najděte tak, že vyberete všechny služby a potom předplatné. Znaky "<" a ">" by neměly být zahrnuty do hodnoty subscription_id. Například `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` má platný formát.
   * Zajistěte přístup k předplatnému pro přispěvatele nebo vlastníka.
   * Ověřte, zda je oblast jednou z podporovaných oblastí: `eastus2` , `eastus` , `westcentralus` , `southeastasia` , `westeurope` , `australiaeast` , `westus2` , `southcentralus` .
   * Ověřte přístup k oblasti pomocí Azure Portal.
   
-* **Import AutoMLConfig se nezdařil** : byly zjištěny změny balíčku v automatizované verzi Machine Learning 1.0.76, která vyžaduje odinstalaci předchozí verze před aktualizací na novou verzi. Pokud `ImportError: cannot import name AutoMLConfig` dojde k chybě po upgradu z verze sady SDK před 1.0.76 na verzi v 1.0.76 nebo novější, vyřešte tuto chybu spuštěním: `pip uninstall azureml-train automl` a potom `pip install azureml-train-auotml` . Skript automl_setup. cmd to provede automaticky. 
+* **Import AutoMLConfig se nezdařil**: byly zjištěny změny balíčku v automatizované verzi Machine Learning 1.0.76, která vyžaduje odinstalaci předchozí verze před aktualizací na novou verzi. Pokud `ImportError: cannot import name AutoMLConfig` dojde k chybě po upgradu z verze sady SDK před 1.0.76 na verzi v 1.0.76 nebo novější, vyřešte tuto chybu spuštěním: `pip uninstall azureml-train automl` a potom `pip install azureml-train-auotml` . Skript automl_setup. cmd to provede automaticky. 
 
 * **Workspace.from_config** Chyba: Pokud volání ws = Workspace.from_config () selhává –
   1. Ujistěte se, že Poznámkový blok Configuration. ipynb byl úspěšně spuštěn.
@@ -406,7 +409,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   3. Pokud se používá nové předplatné, skupina prostředků, pracovní prostor nebo oblast, ujistěte se, že jste `configuration.ipynb` Poznámkový blok znovu spustili. Přímá změna config.jsna přímo bude fungovat jenom v případě, že pracovní prostor už existuje v zadané skupině prostředků v rámci zadaného předplatného.
   4. Pokud chcete změnit oblast, změňte prosím pracovní prostor, skupinu prostředků nebo předplatné. `Workspace.create` pracovní prostor nebude vytvořen ani aktualizován, pokud již existuje, i když je zadaná oblast odlišná.
   
-* **Ukázkový Poznámkový blok se nezdařil** : Pokud ukázkový Poznámkový blok selhává s chybou, že vlastnost, metoda nebo knihovna neexistuje:
+* **Ukázkový Poznámkový blok se nezdařil**: Pokud ukázkový Poznámkový blok selhává s chybou, že vlastnost, metoda nebo knihovna neexistuje:
   * Ujistěte se, že jste v poznámkovém bloku Jupyter vybrali správné jádro. Jádro se zobrazí v pravém horním rohu stránky poznámkového bloku. Výchozí hodnota je azure_automl. Všimněte si, že jádro je uloženo jako součást poznámkového bloku. Pokud tedy přepnete na nové prostředí Conda, budete muset vybrat nové jádro v poznámkovém bloku.
       * V případě Azure Notebooks by měl být Python 3,6. 
       * V místních prostředích conda by měl být název prostředí Conda, který jste zadali v automl_setup.
@@ -414,7 +417,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 * **Numpy import se v systému Windows nezdařil. v** některých prostředích systému Windows se zobrazí chyba při načítání numpy s nejnovější verzí jazyka Python 3.6.8. Pokud se tento problém zobrazí, vyzkoušejte Python verze 3.6.7.
 
-* **Import numpy se nezdařil** : Podívejte se na verzi TensorFlow v prostředí conda automatizovaného ml. Podporované verze jsou < 1,13. Odinstalace TensorFlow z prostředí Pokud je verze >= 1,13, můžete zjistit verzi TensorFlow a odinstalovat ji následujícím způsobem –
+* **Import numpy se nezdařil**: Podívejte se na verzi TensorFlow v prostředí conda automatizovaného ml. Podporované verze jsou < 1,13. Odinstalace TensorFlow z prostředí Pokud je verze >= 1,13, můžete zjistit verzi TensorFlow a odinstalovat ji následujícím způsobem –
   1. Spusťte příkazové prostředí, aktivujte prostředí Conda, ve kterém jsou nainstalované automatizované balíčky ml.
   2. Zadejte `pip freeze` a vyhledejte `tensorflow` , pokud se nachází, uvedená verze by měla být < 1,13
   3. Pokud uvedená verze není podporovanou verzí, `pip uninstall tensorflow` v příkazovém prostředí a zadejte y pro potvrzení.

@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 66155e5dce00caf73af64fb0b8a4ab75f7c948a7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b9920956a8983a1c71c1f91cd1c19a6e84be6aee
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316632"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780293"
 ---
 # <a name="azure-table-storage-monitoring-data-reference"></a>Referenční informace k datům monitorování úložiště tabulek v Azure
 
@@ -34,7 +34,7 @@ Azure Storage poskytuje v Azure Monitor následující metriky kapacity.
 
 [!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-account-capacity-metrics.md)]
 
-#### <a name="table-storage"></a>Table Storage
+#### <a name="table-storage"></a>Úložiště Table
 
 Tato tabulka zobrazuje [metriky úložiště tabulek](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountstableservices).
 
@@ -61,7 +61,7 @@ Azure Storage podporuje pro metriky v Azure Monitor následující dimenze.
 ## <a name="resource-logs-preview"></a>Protokoly prostředků (Preview)
 
 > [!NOTE]
-> Protokoly Azure Storage v Azure Monitor jsou ve verzi Public Preview a jsou dostupné pro testování ve verzi Preview ve všech oblastech veřejného cloudu. Pokud se chcete zaregistrovat ve verzi Preview, podívejte se na [tuto stránku](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u).  Tato verze Preview umožňuje protokoly objektů BLOB (včetně Azure Data Lake Storage Gen2), souborů, front a tabulek a účtů Premium Storage v účtech úložiště pro obecné účely V1 a obecné účely v2. Klasické účty úložiště se nepodporují.
+> Protokoly Azure Storage v Azure Monitor jsou ve verzi Public Preview a jsou dostupné pro testování ve verzi Preview ve všech oblastech veřejného cloudu. Tato verze Preview umožňuje protokoly objektů BLOB (včetně Azure Data Lake Storage Gen2), souborů, front a tabulek a účtů Premium Storage v účtech úložiště pro obecné účely V1 a obecné účely v2. Klasické účty úložiště se nepodporují.
 
 V následující tabulce jsou uvedeny vlastnosti Azure Storagech protokolů prostředků při jejich shromažďování v protokolech Azure Monitor nebo Azure Storage. Vlastnosti popisují operaci, službu a typ autorizace, které byly použity k provedení operace.
 
@@ -77,7 +77,7 @@ V následující tabulce jsou uvedeny vlastnosti Azure Storagech protokolů pros
 
 [!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-logs-properties-service.md)]
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - Popis monitorování Azure Storage najdete v tématu [monitorování úložiště Azure Table](monitor-table-storage.md) .
 - Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](../../azure-monitor/insights/monitor-azure-resource.md) .

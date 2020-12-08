@@ -4,12 +4,12 @@ description: Naučte se řešit běžné problémy při nasazení, spuštění n
 ms.topic: article
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ac75fff3b088a7d595de2b27c92126ce592aff47
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: d8e7fb85e369f5f278436370944eafeb1fb6a50e
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746911"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779511"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Řešení běžných potíží se službou Azure Container Instances
 
@@ -99,7 +99,7 @@ Tato chyba označuje, že kvůli vysokému zatížení v oblasti, ve které se p
 ## <a name="issues-during-container-group-runtime"></a>Problémy při běhu skupiny kontejnerů
 ### <a name="container-continually-exits-and-restarts-no-long-running-process"></a>Kontejner se průběžně zastavuje a restartuje (bez dlouhotrvajícího procesu)
 
-Skupiny kontejnerů jsou standardně nastavené na [zásady restartování](container-instances-restart-policy.md) **vždy** , takže kontejnery ve skupině kontejnerů se po spuštění po dokončení vždy restartují. Je možné, že tuto změnu budete muset změnit na **neúspěšné** nebo **nikdy** , pokud máte v úmyslu spouštět kontejnery založené na úlohách. Pokud zadáte **chybu** a stále se zobrazuje nepřetržité restartování, může se jednat o problém s aplikací nebo skriptem provedeným ve vašem kontejneru.
+Skupiny kontejnerů jsou standardně nastavené na [zásady restartování](container-instances-restart-policy.md) **vždy**, takže kontejnery ve skupině kontejnerů se po spuštění po dokončení vždy restartují. Je možné, že tuto změnu budete muset změnit na **neúspěšné** nebo **nikdy** , pokud máte v úmyslu spouštět kontejnery založené na úlohách. Pokud zadáte **chybu** a stále se zobrazuje nepřetržité restartování, může se jednat o problém s aplikací nebo skriptem provedeným ve vašem kontejneru.
 
 Pokud spouštíte skupiny kontejnerů bez dlouhotrvajících procesů, můžete se setkat se opakovanými ukončeními a restarty s obrázky, jako je Ubuntu nebo Alpine. Připojení přes [exec](container-instances-exec.md) nebude fungovat, protože kontejner nemá žádný proces, který ho udržuje aktivní. Chcete-li tento problém vyřešit, zahrňte do nasazení skupiny kontejnerů příkaz Start podobný tomuto:, aby byl kontejner spuštěný.
 
@@ -187,7 +187,7 @@ Dalším způsobem, jak snížit dopad navýšení obrázku na dobu spuštění 
 
 #### <a name="cached-images"></a>Obrázky v mezipaměti
 
-Azure Container Instances používá mechanismus ukládání do mezipaměti, který urychluje čas spuštění kontejneru pro image vytvořené na běžných [obrázcích Windows Base](container-instances-faq.md#what-windows-base-os-images-are-supported), včetně `nanoserver:1809` , `servercore:ltsc2019` a `servercore:1809` . Běžně používané image Linux, například `ubuntu:1604` a, `alpine:3.6` jsou také uloženy v mezipaměti. Aktuální seznam imagí a značek uložených v mezipaměti najdete v rozhraní API pro [vypsání imagí v mezipaměti][list-cached-images] .
+Azure Container Instances používá mechanismus ukládání do mezipaměti, který urychluje čas spuštění kontejneru pro image vytvořené na běžných [obrázcích Windows Base](container-instances-faq.md#what-windows-base-os-images-are-supported), včetně `nanoserver:1809` , `servercore:ltsc2019` a `servercore:1809` . Běžně používané image Linux, například `ubuntu:1604` a, `alpine:3.6` jsou také uloženy v mezipaměti. Pro image Windows i Linux Nepoužívejte `latest` značku. Projděte si [osvědčené postupy pro značky Image](../container-registry/container-registry-image-tag-version.md) Container registry pro doprovodné materiály. Aktuální seznam imagí a značek uložených v mezipaměti najdete v rozhraní API pro [vypsání imagí v mezipaměti][list-cached-images] .
 
 > [!NOTE]
 > Používání imagí založených na Windows serveru 2019 v Azure Container Instances je ve verzi Preview.
@@ -213,7 +213,7 @@ Pokud chcete potvrdit, že Azure Container Instances může naslouchat na portu,
     --ip-address Public --ports 9000 \
     --environment-variables 'PORT'='9000'
     ```
-1. Ve výstupu příkazu vyhledejte IP adresu skupiny kontejnerů `az container create` . Vyhledejte hodnotu **IP** . 
+1. Ve výstupu příkazu vyhledejte IP adresu skupiny kontejnerů `az container create` . Vyhledejte hodnotu **IP**. 
 1. Po úspěšném zřízení kontejneru přejděte na adresu IP a port aplikace kontejneru v prohlížeči, například: `192.0.2.0:9000` . 
 
     Měla by se zobrazit zpráva "Vítá vás Azure Container Instances!" zpráva zobrazená webovou aplikací

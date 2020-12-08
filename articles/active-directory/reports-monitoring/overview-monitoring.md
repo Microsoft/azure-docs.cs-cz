@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efa4b625afb641209d3920c8663ed810ee27e1ad
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 427cf2614f81a086dcb174db06cd636df4876c7e
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89228643"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778491"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>Co je monitorování Azure Active Directory?
 
@@ -39,6 +39,22 @@ V současné době můžete směrovat protokoly do následujících umístění:
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="licensing-and-prerequisites-for-azure-ad-reporting-and-monitoring"></a>Licencování a předpoklady pro Azure AD Reporting a monitoring
+
+Pro přístup k protokolům přihlášení Azure AD budete potřebovat licenci Azure AD Premium.
+
+Podrobné informace o funkcích a licencování najdete v [Azure Active Directory cenové příručce](https://azure.microsoft.com/pricing/details/active-directory/).
+
+K nasazení monitorování a vytváření sestav Azure AD budete potřebovat uživatele, který je globálním správcem nebo správcem zabezpečení pro tenanta Azure AD.
+
+V závislosti na konečném cíli dat protokolu budete potřebovat jednu z následujících možností:
+
+* Účet úložiště Azure, pro který máte oprávnění ListKeys. Doporučujeme použít obecný účet úložiště, ne účet úložiště objektů blob. Informace o cenách úložiště najdete v [cenové kalkulačce služby Azure Storage](https://azure.microsoft.com/pricing/calculator/?service=storage).
+
+* Obor názvů Azure Event Hubs, který se má integrovat s řešeními SIEM třetích stran.
+
+* Pracovní prostor Azure Log Analytics k odesílání protokolů do protokolů Azure Monitor.
 
 ## <a name="diagnostic-settings-configuration"></a>Konfigurace nastavení diagnostiky
 

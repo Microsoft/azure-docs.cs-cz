@@ -7,12 +7,12 @@ ms.date: 12/04/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 7c09105312bc648c95d24de7582b95baf61bdc10
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ec3fc490466f5fce36b67b2f3744e4ee5cc0ae79
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744801"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96781092"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-for-ruby"></a>Rychlý Start: Klientská knihovna pro Azure Blob Storage pro Ruby
 
@@ -56,7 +56,7 @@ Následující kód v souboru *example. RB* vytvoří instanci nového objektu [
 account_name = "accountname"
 account_key = "accountkey"
 
-    blob_client = Azure::Storage::Blob::BlobService.create(
+blob_client = Azure::Storage::Blob::BlobService.create(
     storage_account_name: account_name,
     storage_access_key: account_key
 )
@@ -192,6 +192,7 @@ Podívejte se na tyto další zdroje informací o vývoji Ruby:
 
 - Prohlédněte a stáhněte si [zdrojový kód klientské knihovny pro Ruby](https://github.com/Azure/azure-storage-ruby) pro službu Azure Storage na GitHubu.
 - Prozkoumejte [ukázky Azure](/samples/browse/?products=azure&languages=ruby) napsané pomocí klientské knihovny Ruby.
+- [Ukázka: Začínáme s Azure Storage v Ruby](https://github.com/Azure-Samples/storage-blob-ruby-getting-started)
 
 ## <a name="next-steps"></a>Další kroky
 

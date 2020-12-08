@@ -8,12 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/19/2020
-ms.openlocfilehash: 043020abd44bc1f8e671cf386149d6a818136de9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6ee72a25fc8435159ae75ac3296742eda58617b6
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014359"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779936"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Vytvoření privátního koncového bodu pro zabezpečené připojení k Azure Kognitivní hledání
 
@@ -22,7 +22,7 @@ V tomto článku použijete Azure Portal k vytvoření nové instance služby Az
 Soukromé koncové body poskytuje služba [Azure Private Link](../private-link/private-link-overview.md)jako samostatnou službu. Další informace o nákladech najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/private-link/).
 
 > [!Important]
-> Podporu privátního koncového bodu pro Azure Kognitivní hledání můžete nakonfigurovat pomocí Azure Portal nebo [REST API pro správu verze 2020-03-13](/rest/api/searchmanagement/). Pokud je koncový bod služby privátní, některé funkce portálu jsou zakázané. Budete moct zobrazit a spravovat informace o úrovni služby, ale přístup k indexovým datům a různým součástem ve službě, jako je index, indexer a definice dovednosti, je z bezpečnostních důvodů omezený.
+> Podporu privátního koncového bodu pro Azure Kognitivní hledání můžete nakonfigurovat pomocí Azure Portal nebo [REST API pro správu verze 2020-03-13](/rest/api/searchmanagement/). Pokud je koncový bod služby privátní, některé funkce portálu jsou zakázané. Budete moct zobrazit a spravovat informace o úrovni služby, ale přístup k indexovým datům a různým součástem ve službě, jako je index, indexer a definice dovednosti, je z bezpečnostních důvodů omezený. Jako alternativu k portálu můžete použít [rozšíření vs Code](https://aka.ms/vscode-search) k interakci s různými komponentami ve službě.
 
 ## <a name="why-use-a-private-endpoint-for-secure-access"></a>Proč používat privátní koncový bod pro zabezpečený přístup?
 
@@ -46,7 +46,7 @@ V této části vytvoříte virtuální síť a podsíť pro hostování virtuá
     | ------- | ----- |
     | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup* a pak vyberte **OK** . |
-    | Name | Zadejte *MyVirtualNetwork* |
+    | Název | Zadejte *MyVirtualNetwork* |
     | Oblast | Vyberte požadovanou oblast. |
     |||
 

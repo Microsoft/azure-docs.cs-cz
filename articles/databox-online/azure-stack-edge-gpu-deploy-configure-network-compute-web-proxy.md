@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/03/2020
+ms.date: 12/07/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: a6b72c9e6cc366d04937598f653f8ba887ce1b85
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
-ms.translationtype: HT
+ms.openlocfilehash: 640098e118db87214d7364132a5119e35cb94c0a
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952178"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778712"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>Kurz: konfigurace sítě pro Azure Stack Edge pro pomocí GPU
 
@@ -143,7 +143,7 @@ Toto je volitelná konfigurace.
 
     1. Do pole **Adresa URL webového proxy serveru** zadejte adresu URL v tomto formátu: `http://host-IP address or FQDN:Port number` . Adresy URL protokolu HTTPS se nepodporují.
 
-    2. V části **ověřování**vyberte **žádné** nebo **NTLM**. Pokud povolíte výpočetní prostředí a použijete modul IoT Edge na zařízení Azure Stack Edge pro, doporučujeme, abyste nastavili ověřování webového proxy serveru na **žádné**. **Protokol NTLM** není podporován.
+    2. V části **ověřování** vyberte **žádné** nebo **NTLM**. Pokud povolíte výpočetní prostředí a použijete modul IoT Edge na zařízení Azure Stack Edge pro, doporučujeme, abyste nastavili ověřování webového proxy serveru na **žádné**. **Protokol NTLM** není podporován.
 
     3. Pokud používáte ověřování, zadejte uživatelské jméno a heslo.
 

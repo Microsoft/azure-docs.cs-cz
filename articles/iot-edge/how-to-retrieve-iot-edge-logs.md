@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: dccb734ef4eaa9f22b70488918f14ad94f723453
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: abd30c22aa2b4df20cdb795013768cd175cfef4c
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437129"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780735"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Načtení protokolů z nasazení IoT Edge
 
@@ -33,7 +33,7 @@ I když není to nutné, pro zajištění nejlepší kompatibility s touto funkc
 <{Log Level}> {Timestamp} {Message Text}
 ```
 
-`{Log Level}` musí následovat po [formátu úrovně závažnosti SYSLOG](https://wikipedia.org/wiki/Syslog#Severity_level) a `{Timestamp}` měla by být naformátovaná jako `yyyy-mm-dd hh:mm:ss.fff zzz` .
+`{Log Level}` musí následovat po [formátu úrovně závažnosti SYSLOG](https://wikipedia.org/wiki/Syslog#Severity_level) a `{Timestamp}` měla by být naformátovaná jako `yyyy-MM-dd hh:mm:ss.fff zzz` .
 
 [Třída protokolovacího nástroje v IoT Edge](https://github.com/Azure/iotedge/blob/master/edge-util/src/Microsoft.Azure.Devices.Edge.Util/Logger.cs) slouží jako kanonická implementace.
 
@@ -82,7 +82,7 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
 
 Úspěšné načtení protokolů vrátí **"stav": 200** následovaný datovou částí, která obsahuje protokoly načtené z modulu, filtrované podle nastavení, které zadáte v žádosti.
 
-Příklad:
+Například:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'GetModuleLogs' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
@@ -123,7 +123,7 @@ V Azure Portal volejte metodu s názvem metody `GetModuleLogs` a následující 
 
 ![Vyvolat přímo metodu GetModuleLogs v Azure Portal](./media/how-to-retrieve-iot-edge-logs/invoke-get-module-logs.png)
 
-Výstup rozhraní příkazového řádku (CLI) můžete také přesměrovat na nástroje pro Linux, jako je třeba [gzip](https://en.wikipedia.org/wiki/Gzip), a zpracovat tak komprimovanou odpověď. Příklad:
+Výstup rozhraní příkazového řádku (CLI) můžete také přesměrovat na nástroje pro Linux, jako je třeba [gzip](https://en.wikipedia.org/wiki/Gzip), a zpracovat tak komprimovanou odpověď. Například:
 
 ```azurecli
 az iot hub invoke-module-method \
@@ -192,7 +192,7 @@ Tato metoda přijímá datovou část JSON podobnou **GetModuleLogs** a přidán
 | zpráva | řetězec | Zpráva v případě chyby, v opačném případě prázdný řetězec. |
 | correlationId | řetězec   | ID, které se má dotazovat na stav žádosti o nahrání |
 
-Příklad:
+Například:
 
 Následující vyvolání nahraje poslední řádky protokolu 100 ze všech modulů v komprimovaném formátu JSON:
 
@@ -316,7 +316,7 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
 | zpráva | řetězec | Zpráva v případě chyby, v opačném případě prázdný řetězec. |
 | correlationId | řetězec   | ID, které se má dotazovat na stav žádosti o nahrání |
 
-Příklad:
+Například:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'UploadSupportBundle' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
@@ -374,7 +374,7 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
 | zpráva | řetězec | Zpráva v případě chyby, v opačném případě prázdný řetězec. |
 | correlationId | řetězec   | ID, které se má dotazovat na stav žádosti o nahrání |
 
-Příklad:
+Například:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'GetTaskStatus' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \

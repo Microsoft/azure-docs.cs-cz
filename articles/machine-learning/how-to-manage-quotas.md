@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: 18eb952d06d83b4604625a795be3c8512c3f90d7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 30859593e240c4143dc298cff446ce8bc116a993
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576583"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780582"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Správa a zvýšení kvót pro prostředky pomocí Azure Machine Learning
 
@@ -67,10 +67,10 @@ Následující omezení prostředků platí pro jednotlivé pracovní prostory.
 
 Maximální **Doba běhu** je navíc 30 dnů a maximální počet **zaznamenaných metrik na spuštění** je 1 000 000.
 
-#### <a name="azure-machine-learning-compute"></a>Azure Machine Learning COMPUTE
-[Azure Machine Learning COMPUTE](concept-compute-target.md#azure-machine-learning-compute-managed) má výchozí omezení pro počet jader i počet jedinečných výpočetních prostředků v rámci předplatného, který je povolený pro jednotlivé oblasti. Tato kvóta je oddělená od kvóty jádra virtuálního počítače z předchozí části.
+### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
+Služba [Azure Machine Learning COMPUTE](concept-compute-target.md#azure-machine-learning-compute-managed) má výchozí omezení pro počet jader (dělené jednotlivými RODINAMI virtuálních počítačů a kumulativních celkových jader) a také počet jedinečných výpočetních prostředků povolených pro jednotlivé oblasti v rámci předplatného. Tato kvóta se odliší od kvóty jádra virtuálního počítače uvedené v předchozí části, protože se vztahuje pouze na spravované výpočetní prostředky Azure Machine Learning.
 
-[Požádejte o zvýšení kvóty](#request-quota-increases) , aby se limity v této části zvýšily až do maximálního limitu uvedeného v tabulce.
+[Požádat o zvýšení kvóty](#request-quota-increases) pro zvýšení limitů pro různé kvóty jader virtuálních počítačů, celkový počet základních kvót a prostředků předplatného v této části.
 
 Dostupné prostředky:
 + V závislosti na typu nabídky předplatného mají **vyhrazené jádra na oblast** výchozí limit 24 až 300. Počet vyhrazených jader na předplatné můžete pro každou rodinu virtuálních počítačů zvýšit. Specializované rodiny virtuálních počítačů, jako jsou NCv2, NCv3 nebo řady ND, začínají výchozím nastavením s nulovými jádry.
@@ -79,12 +79,19 @@ Dostupné prostředky:
 
 + Počet **clusterů na oblast** má výchozí limit 200. Tyto jsou sdíleny mezi školicím clusterem a výpočetní instancí. (Výpočetní instance se považuje za cluster s jedním uzlem pro účely kvóty.)
 
-Následující tabulka uvádí další omezení, která nemůžete překročit.
+> [!TIP]
+> Další informace o tom, kterou rodinu virtuálních počítačů požádat o zvýšení kvóty, najdete [v Azure na velikostech virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/sizes). U rodin virtuálních počítačů GPU se například v názvu rodiny začíná znakem "N" (např. NCv3 Series)
 
-| **Prostředek** | **Maximální omezení** |
+V následující tabulce jsou uvedena další omezení platformy. Pokud si chcete vyžádat výjimku, obraťte se na tým produktu AzureML prostřednictvím lístku **technické** podpory.
+
+| **Prostředek nebo akce** | **Maximální omezení** |
 | --- | --- |
 | Pracovní prostory na skupinu prostředků | 800 |
-| Uzly v prostředku s jednou Azure Machine Learning COMPUTE (AmlCompute) | uzly 100 |
+| Uzly v nastavení **clusteru** s jednou Azure Machine Learning výpočetním prostředím (AmlCompute) jako fond s podporou nekomunikace (tj. nejde spustit úlohy MPI) | uzly 100, ale konfigurovatelné až 65000 uzlů |
+| Uzly v jednom kroku paralelního spuštění **běží** na clusteru Azure Machine Learning COMPUTE (AmlCompute). | 100 uzlů, ale konfigurovatelné až 65000 uzlů, pokud je váš cluster nastavený na škálování podle výše |
+| Uzly v nastavení **clusteru** s jednou Azure Machine Learning COMPUTE (AmlCompute) jako fond s povoleným komunikací | uzly 300, ale konfigurovatelné až 4000 uzlů |
+| Uzly v nastavení **clusteru** s jednou Azure Machine Learning COMPUTE (AmlCompute) jako fondem s povolenou komunikací na rodině virtuálních počítačů s POVOLENOu RDMA | uzly 100 |
+| Uzly v jednom MPI se **spouštějí** v clusteru s Azure Machine Learning COMPUTE (AmlCompute). | 100 uzlů, ale lze zvýšit na 300 uzlů |
 | MPI procesy GPU na uzel | 1-4 |
 | Počet pracovníků GPU na uzel | 1-4 |
 | Doba života úlohy | 21 dnů<sup>1</sup> |

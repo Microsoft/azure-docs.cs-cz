@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
 ms.date: 06/16/2020
-ms.openlocfilehash: aac85fdab157d581285af91c4c818258a5f1790b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 092e07ed01fb870cdcd9a3fd63d46d30cef96007
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124777"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780837"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Uživatelem definované funkce jazyka JavaScript v Azure Stream Analytics
  
-Azure Stream Analytics podporuje uživatelem definované funkce, které jsou napsané v jazyce JavaScript. S bohatou sadou metod **řetězců** , **RegExp** , **Math** , **Array** a **Date** , které poskytuje jazyk JavaScript, je snazší vytvořit složitou transformaci dat s Stream Analytics úlohami.
+Azure Stream Analytics podporuje uživatelem definované funkce, které jsou napsané v jazyce JavaScript. S bohatou sadou metod **řetězců**, **RegExp**, **Math**, **Array** a **Date** , které poskytuje jazyk JavaScript, je snazší vytvořit složitou transformaci dat s Stream Analytics úlohami.
 
 ## <a name="overview"></a>Přehled
 
@@ -45,7 +45,7 @@ Pokud chcete vytvořit uživatelsky definovanou funkci JavaScriptu v úloze Stre
 
 ![Přidat JavaScript UDF](./media/javascript/stream-analytics-jsudf-add.png)
 
-Pak je nutné zadat následující vlastnosti a vybrat **Uložit** .
+Pak je nutné zadat následující vlastnosti a vybrat **Uložit**.
 
 |Vlastnost|Popis|
 |--------|-----------|
@@ -57,11 +57,11 @@ Pak je nutné zadat následující vlastnosti a vybrat **Uložit** .
 
 Logiku JavaScriptu pro systém souborů JavaScript můžete testovat a ladit v jakémkoli prohlížeči. Ladění a testování logiky těchto uživatelsky definovaných funkcí se v současnosti na portálu Stream Analytics nepodporuje. Jakmile funkce funguje podle očekávání, můžete ji přidat do Stream Analytics úlohy, jak je uvedeno výše, a pak ji vyvolat přímo z dotazu. Logiku dotazu můžete testovat pomocí JavaScriptu UDF pomocí [Stream Analyticsch nástrojů pro Visual Studio](./stream-analytics-tools-for-visual-studio-install.md).
 
-Chyby jazyka JavaScript za běhu se považují za závažné a zobrazují se prostřednictvím protokolu aktivit. Pokud chcete protokol načíst, přejděte na portálu Azure Portal na příslušnou úlohu a vyberte **Protokol aktivit** .
+Chyby jazyka JavaScript za běhu se považují za závažné a zobrazují se prostřednictvím protokolu aktivit. Pokud chcete protokol načíst, přejděte na portálu Azure Portal na příslušnou úlohu a vyberte **Protokol aktivit**.
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>Volání uživatelem definované funkce jazyka JavaScript v dotazu
 
-Funkci JavaScriptu můžete v dotazu snadno vyvolat pomocí aliasu funkce s předponou **UDF** . Tady je příklad JavaScriptu UDF, který převede hexadecimální hodnoty na celé číslo vyvolané v Stream Analytics dotazu.
+Funkci JavaScriptu můžete v dotazu snadno vyvolat pomocí aliasu funkce s předponou **UDF**. Tady je příklad JavaScriptu UDF, který převede hexadecimální hodnoty na celé číslo vyvolané v Stream Analytics dotazu.
 
 ```SQL
     SELECT
@@ -109,7 +109,7 @@ Jazyk JavaScript rozlišuje velká a malá písmena a velká a malá písmena po
 
 ### <a name="write-nested-json-to-output"></a>Zápis vnořeného řetězce JSON do výstupu
 
-Pokud máte krok následného zpracování, který jako vstup používá výstup úlohy Stream Analytics a vyžaduje formát JSON, můžete do výstupu zapsat řetězec JSON. V dalším příkladu se volá funkce **JSON.stringify()** , která sbalí všechny dvojice název/hodnota ve vstupu a pak je zapíše jako jedinou hodnotu řetězce do výstupu.
+Pokud máte krok následného zpracování, který jako vstup používá výstup úlohy Stream Analytics a vyžaduje formát JSON, můžete do výstupu zapsat řetězec JSON. V dalším příkladu se volá funkce **JSON.stringify()**, která sbalí všechny dvojice název/hodnota ve vstupu a pak je zapíše jako jedinou hodnotu řetězce do výstupu.
 
 **Definice uživatelem definované funkce jazyka JavaScript:**
 
@@ -184,6 +184,35 @@ INTO
     output
 FROM
     input A
+```
+
+### <a name="tolocalestring"></a>toLocaleString – ()
+Metoda **toLocaleString –** v jazyce JavaScript může být použita k vrácení řetězce citlivého na jazyk, který představuje data pro datum a čas, kdy je tato metoda volána.
+I když Azure Stream analýzy přijímá pouze datum a čas UTC jako systémové časové razítko, tato metoda se dá použít k přetajnení systémového časového razítka do jiného národního prostředí a časového pásma.
+Tato metoda odpovídá stejnému chování implementace jako ta, která je k dispozici v aplikaci Internet Explorer.
+
+**Definice uživatelem definované funkce jazyka JavaScript:**
+
+```javascript
+function main(datetime){
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    return event.toLocaleDateString('de-DE', options);
+}
+```
+
+**Vzorový dotaz: předání hodnoty DateTime jako vstupní hodnoty**
+```SQL
+SELECT
+    udf.toLocaleString(input.datetime) as localeString
+INTO
+    output
+FROM
+    input
+```
+
+Výstupem tohoto dotazu bude vstupní hodnota DateTime v **de-de** s poskytnutými možnostmi.
+```
+Samstag, 28. Dezember 2019
 ```
 
 ## <a name="next-steps"></a>Další kroky

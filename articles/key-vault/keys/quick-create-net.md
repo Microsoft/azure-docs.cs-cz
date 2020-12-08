@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 658fa81c972846292b1bf608110fc95ffe1a730d
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 77907b6e901ae074c879b4911a8ee755224a7948
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96318453"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780412"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-net-sdk-v4"></a>Rychlý Start: Azure Key Vault klíč klientské knihovny pro .NET (SDK v4)
 
@@ -27,7 +27,7 @@ Další informace o Key Vault a klíčích najdete v tématech:
 - [Přehled Key Vault](../general/overview.md)
 - [Přehled klíčů](about-keys.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/dotnet) .
 * [.NET Core 3,1 SDK nebo novější](https://dotnet.microsoft.com/download/dotnet-core)
@@ -54,6 +54,13 @@ Tento rychlý Start používá Azure identity Library s Azure CLI k ověřován�
 
 2. Přihlaste se pomocí přihlašovacích údajů vašeho účtu v prohlížeči.
 
+#### <a name="grant-access-to-your-key-vault"></a>Udělení přístupu k trezoru klíčů
+
+Vytvořte zásady přístupu pro váš Trezor klíčů, který uděluje klíčovým oprávněním k vašemu uživatelskému účtu.
+
+```console
+az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --key-permissions delete get list create purge
+```
 
 ### <a name="create-new-net-console-app"></a>Vytvořit novou konzolovou aplikaci .NET
 
@@ -89,14 +96,6 @@ Pro tento rychlý Start budete taky muset nainstalovat klientskou knihovnu Azure
 
 ```dotnetcli
 dotnet add package Azure.Identity
-```
-
-#### <a name="grant-access-to-your-key-vault"></a>Udělení přístupu k trezoru klíčů
-
-Vytvořte zásady přístupu pro váš Trezor klíčů, který uděluje klíč oprávnění k vašemu uživatelskému účtu.
-
-```console
-az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --key-permissions delete get list create purge
 ```
 
 #### <a name="set-environment-variables"></a>Nastavení proměnných prostředí
@@ -137,7 +136,7 @@ using Azure.Security.KeyVault.Keys;
 
 V tomto rychlém startu se přihlášený uživatel používá k ověření v trezoru klíčů, což je upřednostňovaná metoda pro místní vývoj. Pro aplikace nasazené do Azure by se měla App Service nebo virtuální počítač přiřadit spravovaná identita. Další informace najdete v tématu [Přehled spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
-V níže uvedeném příkladu je název trezoru klíčů rozbalený do identifikátoru URI trezoru klíčů ve formátu "https:// \<your-key-vault-name\> . Vault.Azure.NET". Tento příklad používá třídu  [' DefaultAzureCredential () '](/dotnet/api/azure.identity.defaultazurecredential) , která umožňuje použít stejný kód v různých prostředích s různými možnostmi k poskytnutí identity. Další informace o ověřování do trezoru klíčů najdete v tématu [Příručka pro vývojáře](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code).
+V níže uvedeném příkladu je název trezoru klíčů rozbalený do identifikátoru URI trezoru klíčů ve formátu "https:// \<your-key-vault-name\> . Vault.Azure.NET". Tento příklad používá třídu [' DefaultAzureCredential () '](/dotnet/api/azure.identity.defaultazurecredential) z [knihovny Azure identity Library](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme), která umožňuje použít stejný kód v různých prostředích s různými možnostmi k poskytnutí identity. Další informace o ověřování do trezoru klíčů najdete v tématu [Příručka pro vývojáře](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code).
 
 ```csharp
 var keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
@@ -247,41 +246,8 @@ Upravte konzolovou aplikaci .NET Core tak, aby spolupracovala s Key Vault, a to 
     Retrieving your key from mykeyvault.
     Your key version is '8532359bced24e4bb2525f2d2050738a'.
     Deleting your key from jl-kv ... done
+    Purging your key from <your-unique-keyvault-name> ... done.   
     ```
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Pokud už je nepotřebujete, můžete k odebrání trezoru klíčů a odpovídající skupiny prostředků použít Azure CLI nebo Azure PowerShell.
-
-### <a name="delete-a-key-vault"></a>Odstranit Key Vault
-
-```azurecli
-az keyvault delete --name <your-unique-keyvault-name>
-```
-
-```azurepowershell
-Remove-AzKeyVault -VaultName <your-unique-keyvault-name>
-```
-
-### <a name="purge-a-key-vault"></a>Vyprázdnit Key Vault
-
-```azurecli
-az keyvault purge --location eastus --name <your-unique-keyvault-name>
-```
-
-```azurepowershell
-Remove-AzKeyVault -VaultName <your-unique-keyvault-name> -InRemovedState -Location eastus
-```
-
-### <a name="delete-a-resource-group"></a>Odstranění skupiny prostředků
-
-```azurecli
-az group delete -g "myResourceGroup"
-```
-
-```azurepowershell
-Remove-AzResourceGroup -Name "myResourceGroup"
-```
 
 ## <a name="next-steps"></a>Další kroky
 

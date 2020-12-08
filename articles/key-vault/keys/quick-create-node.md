@@ -1,31 +1,31 @@
 ---
-title: Rychlý Start-Azure Key Vault Klientská knihovna pro JavaScript (verze 4)
-description: Naučte se vytvářet, načítat a odstraňovat tajné klíče z trezoru klíčů Azure pomocí klientské knihovny JavaScriptu.
+title: Rychlý Start – Azure Key Vault klíčovou knihovnou klienta pro JavaScript (verze 4)
+description: Naučte se vytvářet, načítat a odstraňovat klíče z trezoru klíčů Azure pomocí klientské knihovny JavaScript.
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 12/6/2020
 ms.service: key-vault
-ms.subservice: secrets
+ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 8e04fcea53869fe15ebbeb3c7709cff842893931
+ms.openlocfilehash: 1d842a4eaf0ff4afbc61ca58847747c3da57b1da
 ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780786"
+ms.locfileid: "96841910"
 ---
-# <a name="quickstart-azure-key-vault-secret-client-library-for-javascript-version-4"></a>Rychlý Start: Klientská knihovna Azure Key Vault tajných klíčů pro JavaScript (verze 4)
+# <a name="quickstart-azure-key-vault-key-client-library-for-javascript-version-4"></a>Rychlý Start: Azure Key Vault klíč klientské knihovny pro JavaScript (verze 4)
 
-Začínáme s klientskou knihovnou Azure Key Vault tajných klíčů pro JavaScript [Azure Key Vault](../general/overview.md) je cloudová služba, která poskytuje zabezpečené úložiště tajných kódů. Můžete bezpečně ukládat klíče, hesla, certifikáty a další tajné klíče. Trezory klíčů Azure můžete vytvářet a spravovat přes web Azure Portal. V tomto rychlém startu se naučíte vytvářet, načítat a odstraňovat tajné klíče z trezoru klíčů Azure pomocí klientské knihovny JavaScriptu.
+Začněte s knihovnou klienta Azure Key Vault Key pro JavaScript. [Azure Key Vault](../general/overview.md) je cloudová služba, která poskytuje zabezpečené úložiště pro kryptografické klíče. Můžete bezpečně ukládat klíče, hesla, certifikáty a další tajné klíče. Trezory klíčů Azure můžete vytvářet a spravovat přes web Azure Portal. V tomto rychlém startu se naučíte vytvářet, načítat a odstraňovat klíče z trezoru klíčů Azure pomocí klientské knihovny JavaScript Key.
 
 Prostředky klientské knihovny Key Vault:
 
-[Referenční dokumentace k](/javascript/api/overview/azure/key-vault-index)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
+[Referenční dokumentace k](/javascript/api/overview/azure/key-vault-index)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/keyvault-keys)
 
-Další informace o Key Vault a tajných klíčích najdete v tématech:
+Další informace o Key Vault a klíčích najdete v tématech:
 - [Přehled Key Vault](../general/overview.md)
-- [Přehled tajných klíčů](about-secrets.md)
+- [Přehled klíčů](about-keys.md).
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -69,10 +69,10 @@ npm init -y
 
 ## <a name="install-key-vault-packages"></a>Nainstalovat Key Vault balíčky
 
-V okně konzoly nainstalujte Azure Key Vault [knihovny tajných](https://www.npmjs.com/package/@azure/keyvault-secrets) kódů pro Node.js.
+V okně konzoly nainstalujte [knihovnu Azure Key Vault Keys](https://www.npmjs.com/package/@azure/keyvault-keys) pro Node.js.
 
 ```azurecli
-npm install @azure/keyvault-secrets
+npm install @azure/keyvault-keys
 ```
 
 Nainstalujte balíček [Azure. identity](https://www.npmjs.com/package/@azure/identity) , aby se ověřil na Key Vault.
@@ -101,15 +101,15 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 ## <a name="grant-access-to-your-key-vault"></a>Udělení přístupu k trezoru klíčů
 
-Vytvořte zásady přístupu pro váš Trezor klíčů, který uděluje oprávnění tajnosti vašemu uživatelskému účtu.
+Vytvořte zásady přístupu pro váš Trezor klíčů, který uděluje klíčovým oprávněním k vašemu uživatelskému účtu.
 
 ```azurecli
-az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set purge
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --key-permissions delete get list create purge
 ```
 
 ## <a name="code-examples"></a>Příklady kódu
 
-Následující ukázka kódu vám ukáže, jak vytvořit klienta, nastavit tajný klíč, načíst tajný klíč a odstranit tajný klíč. 
+Následující ukázka kódu vám ukáže, jak vytvořit klienta, nastavit klíč, načíst klíč a odstranit klíč. 
 
 ### <a name="set-up-the-app-framework"></a>Nastavení aplikační architektury
 
@@ -147,7 +147,7 @@ Do horní části kódu přidejte následující direktivy:
 
 ```javascript
 const { DefaultAzureCredential } = require("@azure/identity");
-const { SecretClient } = require("@azure/keyvault-secrets");
+const { KeyClient } = require("@azure/keyvault-keys");
 ```
 
 ### <a name="authenticate-and-create-a-client"></a>Ověření a vytvoření klienta
@@ -163,42 +163,40 @@ const keyVaultName = process.env["KEY_VAULT_NAME"];
 const KVUri = "https://" + keyVaultName + ".vault.azure.net";
 
 const credential = new DefaultAzureCredential();
-const client = new SecretClient(KVUri, credential);
+const client = new KeyClient(KVUri, credential);
 ```
 
-### <a name="save-a-secret"></a>Uložení tajného klíče
+### <a name="save-a-key"></a>Uložení klíče
 
-Teď, když je vaše aplikace ověřená, můžete do trezoru klíčů vložit tajný klíč pomocí [metody setSecret](/javascript/api/@azure/keyvault-secrets/secretclient?#setsecret-string--string--setsecretoptions-) , která vyžaduje název tajného kódu – v této ukázce používáme "mySecret".  
+Teď, když je vaše aplikace ověřená, můžete do trezoru klíčů vložit klíč pomocí [metody createKey](/javascript/api/@azure/keyvault-keys/keyclient?#createKey_string__KeyType__CreateKeyOptions_) . parametry metody akceptují název klíče a [typ klíče](https://docs.microsoft.com/javascript/api/@azure/keyvault-keys/keytype) .
 
 ```javascript
-await client.setSecret(secretName, secretValue);
+await client.createKey(keyName, keyType);
 ```
 
-### <a name="retrieve-a-secret"></a>Načtení tajného kódu
+### <a name="retrieve-a-key"></a>Načtení klíče
 
-Nyní můžete načíst dříve nastavenou hodnotu pomocí [metody getsecret](/javascript/api/@azure/keyvault-secrets/secretclient?#getsecret-string--getsecretoptions-).
+Nyní můžete načíst dříve nastavenou hodnotu pomocí [metody getKey](/javascript/api/@azure/keyvault-keys/keyclient?#getKey_string__GetKeyOptions_).
 
 ```javascript
-const retrievedSecret = await client.getSecret(secretName);
+const retrievedKey = await client.getKey(keyName);
  ```
 
-Váš tajný kód se teď uloží jako `retrievedSecret.value` .
+### <a name="delete-a-key"></a>Odstranění klíče
 
-### <a name="delete-a-secret"></a>Odstranění tajného klíče
-
-Nakonec smažte a vyprázdnit tajný klíč z trezoru klíčů pomocí metod [beginDeleteSecret](https://docs.microsoft.com/javascript/api/@azure/keyvault-secrets/secretclient?#beginDeleteSecret_string__BeginDeleteSecretOptions_) a [purgeDeletedSecret](https://docs.microsoft.com/javascript/api/@azure/keyvault-secrets/secretclient?#purgeDeletedSecret_string__PurgeDeletedSecretOptions_) .
+Nakonec tento klíč odstraníme a vymažeme z vašeho trezoru klíčů pomocí metod [beginDeleteKey](https://docs.microsoft.com/javascript/api/@azure/keyvault-keys/keyclient?#beginDeleteKey_string__BeginDeleteKeyOptions_) a [purgeDeletedKey](https://docs.microsoft.com/javascript/api/@azure/keyvault-keys/keyclient?#purgeDeletedKey_string__PurgeDeletedKeyOptions_) .
 
 ```javascript
-const deletePoller = await client.beginDeleteSecret(secretName);
+const deletePoller = await client.beginDeleteKey(keyName);
 await deletePoller.pollUntilDone();
-await client.purgeDeletedSecret(secretName);
+await client.purgeDeletedKey(keyName);
 ```
 
 ## <a name="sample-code"></a>Ukázka kódu
 
 ```javascript
 const { DefaultAzureCredential } = require("@azure/identity");
-const { SecretClient } = require("@azure/keyvault-secrets");
+const { KeyClient } = require("@azure/keyvault-keys");
 
 const readline = require('readline');
 
@@ -220,33 +218,28 @@ async function main() {
   const KVUri = "https://" + keyVaultName + ".vault.azure.net";
 
   const credential = new DefaultAzureCredential();
-  const client = new SecretClient(KVUri, credential);
+  const client = new KeyClient(KVUri, credential);
 
-  const secretName = "mySecret";
-  var secretValue = await askQuestion("Input the value of your secret > ");
-
-  console.log("Creating a secret in " + keyVaultName + " called '" + secretName + "' with the value '" + secretValue + "` ...");
-  await client.setSecret(secretName, secretValue);
+  const keyName = "myKey";
+  
+  console.log("Creating a key in " + keyVaultName + " called '" + keyName + "` ...");
+  await client.createKey(keyName, "RSA");
 
   console.log("Done.");
 
-  console.log("Forgetting your secret.");
-  secretValue = "";
-  console.log("Your secret is '" + secretValue + "'.");
+  console.log("Retrieving your key from " + keyVaultName + ".");
 
-  console.log("Retrieving your secret from " + keyVaultName + ".");
+  const retrievedKey = await client.getKey(keyName);
 
-  const retrievedSecret = await client.getSecret(secretName);
+  console.log("Your key version is '" + retrievedKey.properties.version + "'.");
 
-  console.log("Your secret is '" + retrievedSecret.value + "'.");
-
-  console.log("Deleting your secret from " + keyVaultName + " ...");
-  const deletePoller = await client.beginDeleteSecret(secretName);
+  console.log("Deleting your key from " + keyVaultName + " ...");
+  const deletePoller = await client.beginDeleteKey(keyName);
   await deletePoller.pollUntilDone();
   console.log("Done.");
   
-  console.log("Purging your secret from {keyVaultName} ...");
-  await client.purgeDeletedSecret(secretName);
+  console.log("Purging your key from {keyVaultName} ...");
+  await client.purgeDeletedKey(keyName);
   
 }
 
@@ -256,35 +249,29 @@ main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
 
 ## <a name="test-and-verify"></a>Testování a ověření
 
-1. Spusťte následující příkazy ke spuštění aplikace.
+Spusťte následující příkazy ke spuštění aplikace.
 
-    ```azurecli
-    npm install
-    npm index.js
-    ```
+```azurecli
+npm install
+npm index.js
+```
 
-1. Po zobrazení výzvy zadejte tajnou hodnotu. Například mySecretPassword.
+Zobrazí se varianta následujícího výstupu:
 
-    Zobrazí se varianta následujícího výstupu:
-
-    ```azurecli
-    Input the value of your secret > mySecretPassword
-    Creating a secret in <your-unique-keyvault-name> called 'mySecret' with the value 'mySecretPassword' ... done.
-    Forgetting your secret.
-    Your secret is ''.
-    Retrieving your secret from <your-unique-keyvault-name>.
-    Your secret is 'mySecretPassword'.
-    Deleting your secret from <your-unique-keyvault-name> ... done.  
-    Purging your secret from <your-unique-keyvault-name> ... done.   
-    ```
-
+```azurecli
+Creating a key in <your-unique-keyvault-name> called 'myKey' ... done.
+Retrieving your key from mykeyvault.
+Your key version is '8532359bced24e4bb2525f2d2050738a'.
+Deleting your key from <your-unique-keyvault-name> ... done.  
+Purging your key from <your-unique-keyvault-name> ... done.   
+```
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili Trezor klíčů, uložili tajný klíč a získali tento tajný klíč. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
+V tomto rychlém startu jste vytvořili Trezor klíčů, uložili klíč a načetli jste tento klíč. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
 
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md)
-- Přečtěte si [přehled Azure Key Vault tajných klíčů](about-secrets.md)
+- Přečtěte si [přehled Azure Key Vaultch klíčů](about-keys.md)
 - Jak [zabezpečit přístup k trezoru klíčů](../general/secure-your-key-vault.md)
 - Další informace najdete v [příručce pro vývojáře Azure Key Vault](../general/developers-guide.md) .
 - Kontrola [Azure Key Vault osvědčených postupů](../general/best-practices.md)

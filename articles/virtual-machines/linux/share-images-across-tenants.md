@@ -1,6 +1,6 @@
 ---
 title: Sdílení imagí Galerie mezi klienty
-description: Naučte se sdílet image virtuálních počítačů napříč klienty Azure pomocí galerií sdílených imagí pomocí ukázek pro Linux.
+description: Naučte se sdílet image virtuálních počítačů napříč klienty Azure pomocí galerií sdílených imagí pomocí Azure CLI.
 author: axayjo
 ms.service: virtual-machines
 ms.subservice: imaging
@@ -10,14 +10,14 @@ ms.date: 05/04/2019
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a5e71f09179d414be84896a49a66480f19a0665d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f0192a6eb60c72c9f7ac605db492f4e5f97b76ed
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843583"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779256"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants---linux-examples"></a>Sdílení imagí virtuálních počítačů galerie v klientech Azure – příklady pro Linux
+# <a name="share-gallery-vm-images-across-azure-tenants-using-the-azure-cli"></a>Sdílení imagí virtuálních počítačů galerie v klientech Azure pomocí Azure CLI
 
 Galerie sdílených imagí vám umožní sdílet Image pomocí Azure RBAC. Pomocí služby Azure RBAC můžete sdílet image v rámci vašeho tenanta, a to i u jednotlivců mimo vašeho tenanta. Další informace o této možnosti jednoduchého sdílení najdete v tématu [sdílení Galerie](./shared-images-portal.md#share-the-gallery).
 

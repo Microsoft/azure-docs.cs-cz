@@ -4,12 +4,12 @@ description: Pokud chcete sledovat využití a diagnostikovat problémy, vložte
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d1ed05cd7337a7e82a02b25a2f29d54567b9f9a3
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: ae64888669fb9a3c053802ee4f7ad7db6316265d
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748888"
+ms.locfileid: "96780497"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API služby Application Insights pro vlastní události a metriky
 
@@ -437,7 +437,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-Většina důležitých informací o zásobníku se už extrahuje do samostatných proměnných, ale pokud chcete získat další informace, můžete si ji stáhnout ze své `details` struktury. Vzhledem k tomu, že je tato struktura dynamická, je vhodné přetypovat výsledek na očekávaný typ. Příklad:
+Většina důležitých informací o zásobníku se už extrahuje do samostatných proměnných, ale pokud chcete získat další informace, můžete si ji stáhnout ze své `details` struktury. Vzhledem k tomu, že je tato struktura dynamická, je vhodné přetypovat výsledek na očekávaný typ. Například:
 
 ```kusto
 exceptions
@@ -500,7 +500,7 @@ Můžete hledat obsah zprávy, ale (na rozdíl od hodnot vlastností) nemůžete
 Omezení velikosti `message` je mnohem vyšší než omezení vlastností.
 Výhodou TrackTrace je, že do zprávy můžete ukládat poměrně dlouhá data. Můžete například zakódovat data POST.  
 
-Kromě toho můžete do zprávy přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Příklad:
+Kromě toho můžete do zprávy přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Například:
 
 *C#*
 
@@ -569,8 +569,8 @@ finally {
     Instant endTime = Instant.now();
     Duration delta = Duration.between(startTime, endTime);
     RemoteDependencyTelemetry dependencyTelemetry = new RemoteDependencyTelemetry("My Dependency", "myCall", delta, success);
-    RemoteDependencyTelemetry.setTimeStamp(startTime);
-    RemoteDependencyTelemetry.trackDependency(dependencyTelemetry);
+    dependencyTelemetry.setTimeStamp(startTime);
+    telemetry.trackDependency(dependencyTelemetry);
 }
 ```
 
@@ -1066,7 +1066,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient má kontextovou vlastnost, která obsahuje hodnoty, které jsou odesílány společně se všemi daty telemetrie. Obvykle jsou nastavené standardními moduly telemetrie, ale můžete je také nastavit sami. Příklad:
+TelemetryClient má kontextovou vlastnost, která obsahuje hodnoty, které jsou odesílány společně se všemi daty telemetrie. Obvykle jsou nastavené standardními moduly telemetrie, ale můžete je také nastavit sami. Například:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";

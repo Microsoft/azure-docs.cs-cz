@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 620b696be0b9a06cf0d68145b06e3cacf2bedff2
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: e5bcc6503af5f5f685ee589ed7671b4715834fef
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762546"
+ms.locfileid: "96779358"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to funguje: Samoobslužné resetování hesla v Azure AD
 
@@ -89,7 +89,7 @@ Pokud nepotřebujete registraci, nebudou se uživatelé během přihlašování 
 >
 > Toto přerušení, které se má zaregistrovat pro SSPR, neruší připojení uživatele, pokud už se přihlásilo.
 
-## <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Nastavte počet dní, než se uživatelům zobrazí výzva k potvrzení ověřovacích informací.
+## <a name="reconfirm-authentication-information"></a>Znovu potvrdit ověřovací informace
 
 Aby bylo zajištěno, že metody ověřování jsou správné, když jsou potřeba k resetování nebo změně hesla, můžete vyžadovat, aby uživatelé po uplynutí určité doby ověřili informace zaregistrované v informacích. Tato možnost je k dispozici pouze v případě, že povolíte možnost **vyžadovat registraci uživatelů při přihlášení** .
 

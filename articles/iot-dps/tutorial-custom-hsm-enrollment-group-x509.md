@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f6026680dd566bf7a13c83b37883341bff8b4570
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6845923d65b5fbe5a9f010474330ce2bbed948e1
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96355149"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780089"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Kurz: zřízení více zařízení X. 509 pomocí skupin registrace
 
@@ -26,7 +26,7 @@ Služba Azure IoT Device Provisioning podporuje dva typy registrací:
 
 Tento kurz je podobný jako v předchozích kurzech, které demonstrují, jak pomocí skupin registrací zřizovat sady zařízení. V tomto kurzu se ale místo symetrických klíčů použijí certifikáty X. 509. V předchozích kurzech v této části najdete jednoduchý přístup pomocí [symetrických klíčů](./concepts-symmetric-key-attestation.md).
 
-Tento kurz předvádí [vlastní ukázku modulu HSM](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/custom_hsm_example) , která poskytuje zástupnou implementaci pro propojení s zabezpečeným úložištěm na základě hardwaru. Modul hardwarového [zabezpečení (HSM)](./concepts-service.md#hardware-security-module) se používá k zabezpečenému hardwarovému úložišti tajných kódů zařízení. Modul hardwarového zabezpečení (HSM) je možné použít s symetrickým klíčem, certifikátem X. 509 nebo ověřováním pomocí čipu TPM k zajištění zabezpečeného úložiště tajných kódů. Důrazně doporučujeme hardwarové úložiště tajných kódů zařízení.
+Tento kurz předvádí [vlastní ukázku modulu HSM](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/custom_hsm_example) , která poskytuje zástupnou implementaci pro propojení s zabezpečeným úložištěm na základě hardwaru. Modul hardwarového [zabezpečení (HSM)](./concepts-service.md#hardware-security-module) se používá k zabezpečenému hardwarovému úložišti tajných kódů zařízení. Modul hardwarového zabezpečení (HSM) je možné použít s symetrickým klíčem, certifikátem X. 509 nebo ověřováním pomocí čipu TPM k zajištění zabezpečeného úložiště tajných kódů. Hardwarové úložiště tajných kódů zařízení se nevyžaduje, ale důrazně se doporučuje chránit citlivé informace, jako je privátní klíč certifikátu zařízení.
 
 Pokud nejste obeznámeni s procesem autozřizování, přečtěte si přehled [zřizování](about-iot-dps.md#provisioning-process) . Před pokračováním v tomto kurzu se taky ujistěte, že jste dokončili kroky v [části nastavení IoT Hub Device Provisioning Service s Azure Portal](quick-setup-auto-provision.md) . 
 
@@ -42,7 +42,7 @@ V tomto kurzu provedete následující cíle:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Následující požadavky jsou pro vývojové prostředí systému Windows. Informace o systému Linux nebo macOS najdete v příslušné části [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) v dokumentaci k sadě SDK.
 
@@ -225,7 +225,9 @@ Postup vytvoření řetězu certifikátů:
 
 ## <a name="configure-the-custom-hsm-stub-code"></a>Konfigurace kódu vlastní zástupné procedury HSM
 
-V závislosti na hardwaru se liší specifika interakce s aktuálním zabezpečeným úložištěm založeným na hardwaru. V důsledku toho se řetěz certifikátů, který zařízení používá v tomto kurzu, pevně zakódované v kódu vlastního zástupné procedury HSM. Ve scénáři reálného světa by byl řetěz certifikátů uložený ve skutečném hardwaru HSM, aby bylo zajištěno lepší zabezpečení citlivých informací. Metody podobné metodám zástupných procedur zobrazeným v této ukázce by pak byly implementovány pro čtení tajných kódů z daného hardwarového úložiště.
+V závislosti na hardwaru se liší specifika interakce s aktuálním zabezpečeným úložištěm založeným na hardwaru. V důsledku toho se řetěz certifikátů, který zařízení používá v tomto kurzu, pevně zakódované v kódu vlastního zástupné procedury HSM. Ve scénáři reálného světa by byl řetěz certifikátů uložený ve skutečném hardwaru HSM, aby bylo zajištěno lepší zabezpečení citlivých informací. Metody podobné metodám zástupných procedur zobrazeným v této ukázce by pak byly implementovány pro čtení tajných kódů z daného hardwarového úložiště. 
+
+Hardware HSM se sice nevyžaduje, ale nedoporučuje se mít citlivé informace, jako je privátní klíč certifikátu, který se zaregistruje do zdrojového kódu. Tím klíč zpřístupníte komukoli, kdo může zobrazit kód. To se provádí jenom v tomto článku, abyste mohli pomoct s učením.
 
 Postup aktualizace vlastního kódu stub pro vlastní kód HSM pro tento kurz:
 
@@ -287,7 +289,7 @@ Postup aktualizace vlastního kódu stub pro vlastní kód HSM pro tento kurz:
 
 ## <a name="verify-ownership-of-the-root-certificate"></a>Ověřit vlastnictví kořenového certifikátu
 
-1. Pomocí pokynů z [registrace veřejné části certifikátu X. 509 a získání ověřovacího kódu](how-to-verify-certificates.md#register-the-public-part-of-an-x509-certificate-and-get-a-verification-code)nahrajte kořenový certifikát a získejte ověřovací kód z DPS.
+1. Pomocí směrů z [registrace veřejné části certifikátu X. 509 a získání ověřovacího kódu](how-to-verify-certificates.md#register-the-public-part-of-an-x509-certificate-and-get-a-verification-code)nahrajte kořenový certifikát ( `./certs/azure-iot-test-only.root.ca.cert.pem` ) a získejte ověřovací kód z DPS.
 
 2. Jakmile budete mít ověřovací kód z DPS pro kořenový certifikát, spusťte následující příkaz z pracovního adresáře skriptu certifikátu pro vygenerování ověřovacího certifikátu.
  
@@ -297,7 +299,7 @@ Postup aktualizace vlastního kódu stub pro vlastní kód HSM pro tento kurz:
     ./certGen.sh create_verification_certificate 1B1F84DE79B9BD5F16D71E92709917C2A1CA19D5A156CB9F    
     ```    
 
-    Tento skript vytvoří certifikát podepsaný kořenovým certifikátem s názvem subjektu nastaveným na ověřovací kód. Tento certifikát umožňuje DPS, abyste ověřili, že máte přístup k privátnímu klíči kořenového certifikátu. Všimněte si umístění ověřovacího certifikátu ve výstupu skriptu.
+    Tento skript vytvoří certifikát podepsaný kořenovým certifikátem s názvem subjektu nastaveným na ověřovací kód. Tento certifikát umožňuje DPS, abyste ověřili, že máte přístup k privátnímu klíči kořenového certifikátu. Všimněte si umístění ověřovacího certifikátu ve výstupu skriptu. Tento certifikát je vygenerovaný ve `.pfx` formátu.
 
     ```output
     Leaf Device PFX Certificate Generated At:
