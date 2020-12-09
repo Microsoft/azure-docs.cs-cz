@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 978f404aa9b99819460e46ea89df19d27431b8b8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: c9ee81abd7cd0268a7cbd6b16aa6065ec7b54bef
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743135"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861302"
 ---
 # <a name="plan-an-azure-ad-multi-factor-authentication-deployment"></a>Plánování nasazení Multi-Factor Authentication služby Azure AD
 
@@ -165,7 +165,7 @@ Pomocí následujících kroků může zásada podmíněného přístupu vynutit
 2. Pomocí podmíněného přístupu vynuťte službu Multi-Factor Authentication pro tuto skupinu pro přístup ke všem prostředkům.
 3. Pravidelně znovu vyhodnoťte členství ve skupině a odeberte uživatele, kteří se zaregistrovali ze skupiny.
 
-Můžete identifikovat registrované a neregistrované uživatele Azure AD MFA pomocí příkazů PowerShellu, které se spoléhají na [modul MSOnline PowerShellu](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).
+Můžete identifikovat registrované a neregistrované uživatele Azure AD MFA pomocí příkazů PowerShellu, které se spoléhají na [modul MSOnline PowerShellu](/powershell/azure/active-directory/install-msonlinev1).
 
 #### <a name="identify-registered-users"></a>Identifikace registrovaných uživatelů
 

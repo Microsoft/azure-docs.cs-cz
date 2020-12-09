@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: vytvoření indexu vyhledávání v Pythonu'
 titleSuffix: Azure Cognitive Search
-description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí Pythonu, poznámkových bloků Jupyter a Azure.Documents. Hledání v knihovně.
+description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí Pythonu, poznámkových bloků a Azure.Documents. Hledání v knihovně.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/19/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 528d29f3b285c2583fd1bb52e1de7c24fdc9e28a
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 126fc69678148d4d478c96ff8d05f194c7e3d1b3
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917082"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861863"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Pythonu pomocí poznámkových bloků Jupyter
 
@@ -26,7 +26,7 @@ ms.locfileid: "94917082"
 > * [Azure Portal](search-get-started-portal.md)
 >
 
-Pomocí Pythonu a [knihovny Azure Search-Documents](/python/api/overview/azure/search-documents-readme) v sadě Azure SDK pro Python vytvoříte Jupyter Poznámkový blok, který vytváří, načítá a odesílá dotazy do indexu služby Azure kognitivní hledání. Tento článek vysvětluje, jak vytvořit Poznámkový blok krok za krokem. Případně můžete [Stáhnout a spustit dokončený Poznámkový blok Pythonu Jupyter](https://github.com/Azure-Samples/azure-search-python-samples).
+Sestavte Jupyter Notebook, který vytvoří, načte a zadá dotaz na index Azure Kognitivní hledání pomocí Pythonu a [knihovny Azure-Search-Documents](/python/api/overview/azure/search-documents-readme) v sadě Azure SDK pro Python. Tento článek vysvětluje, jak vytvořit Poznámkový blok krok za krokem. Případně můžete [Stáhnout a spustit dokončený Poznámkový blok Pythonu Jupyter](https://github.com/Azure-Samples/azure-search-python-samples).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -54,7 +54,7 @@ Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odesla
 
 ## <a name="connect-to-azure-cognitive-search"></a>Připojení k Azure Kognitivní hledání
 
-V této úloze spusťte Poznámkový blok Jupyter a ověřte, jestli se můžete připojit k Azure Kognitivní hledání. Provedete to tak, že si vyžádáte seznam indexů z vaší služby. Ve Windows s Anaconda3 můžete použít Anaconda Navigator ke spuštění poznámkového bloku.
+V této úloze spusťte Jupyter Notebook a ověřte, že se můžete připojit k Azure Kognitivní hledání. Provedete to tak, že si vyžádáte seznam indexů z vaší služby. Ve Windows s Anaconda3 můžete použít Anaconda Navigator ke spuštění poznámkového bloku.
 
 1. Vytvoření nového poznámkového bloku python3
 

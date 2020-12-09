@@ -3,16 +3,16 @@ title: Vytvořit nový prostředek služby Azure Application Insights | Microsof
 description: Ručně nastavte Application Insights monitorování pro novou živou aplikaci.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d2e367e84aed7abac70d803f28d26070f7b0a85e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fd05e6bd68be89b964fe1ad32029bf44f3352ea
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323124"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906365"
 ---
 # <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 
-Azure Application Insights zobrazuje data o vaší aplikaci v *prostředku*Microsoft Azure. Vytvoření nového prostředku je proto součástí [nastavení Application Insights k monitorování nové aplikace][start]. Po vytvoření nového prostředku můžete získat jeho klíč instrumentace a použít ho ke konfiguraci sady Application Insights SDK. Klíč instrumentace propojuje vaši telemetrii s prostředkem.
+Azure Application Insights zobrazuje data o vaší aplikaci v *prostředku* Microsoft Azure. Vytvoření nového prostředku je proto součástí [nastavení Application Insights k monitorování nové aplikace][start]. Po vytvoření nového prostředku můžete získat jeho klíč instrumentace a použít ho ke konfiguraci sady Application Insights SDK. Klíč instrumentace propojuje vaši telemetrii s prostředkem.
 
 ## <a name="sign-in-to-microsoft-azure"></a>Přihlášení k Microsoft Azure
 
@@ -44,7 +44,8 @@ Po vytvoření aplikace se otevře nové podokno. V tomto podokně vidíte data 
 
 Klíč instrumentace identifikuje prostředek, ke kterému chcete přidružit data telemetrie. Budete muset zkopírovat klíč instrumentace a přidat ho do kódu vaší aplikace.
 
-![Klikněte a zkopírujte klíč instrumentace.](./media/create-new-resource/instrumentation-key.png)
+> [!IMPORTANT]
+> Nové oblasti Azure **vyžadují** použití připojovacích řetězců místo klíčů instrumentace. [Připojovací řetězec](./sdk-connection-string.md?tabs=net) identifikuje prostředek, ke kterému chcete přidružit data telemetrie. Umožňuje také upravit koncové body, které prostředek použije jako cíl pro vaši telemetrii. Budete muset zkopírovat připojovací řetězec a přidat ho do kódu aplikace nebo do proměnné prostředí.
 
 ## <a name="install-the-sdk-in-your-app"></a>Instalace sady SDK do aplikace
 

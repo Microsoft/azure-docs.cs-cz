@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/24/2020
-ms.openlocfilehash: c0d0e3154360d787bfc2072c5ae1fe878fa1d138
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.date: 12/08/2020
+ms.openlocfilehash: 49e4a6f7f8c268669a94796257d5740ec6f4e6ff
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96003649"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902081"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>Kopírování a transformace dat v Snowflake pomocí Azure Data Factory
 
@@ -49,8 +49,8 @@ Pro službu propojenou s Snowflake jsou podporovány následující vlastnosti.
 
 | Vlastnost         | Popis                                                  | Povinné |
 | :--------------- | :----------------------------------------------------------- | :------- |
-| typ             | Vlastnost Type musí být nastavená na **Snowflake**.              | Yes      |
-| připojovací řetězec | Určuje informace potřebné pro připojení k instanci Snowflake. Můžete si vybrat, že chcete do Azure Key Vault umístit heslo nebo celý připojovací řetězec. Další podrobnosti najdete v příkladech pod tabulkou a také s [přihlašovacími údaji úložiště v Azure Key Vaultovém](store-credentials-in-key-vault.md) článku.<br><br>Některá typická nastavení:<br>- **Název účtu:**  [Úplný název](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) účtu Snowflake (včetně dalších segmentů, které identifikují oblast a cloudovou platformu), např. xy12345. východ-US-2. Azure.<br/>- **Uživatelské jméno:** Přihlašovací jméno uživatele pro připojení.<br>- **Heslo:** Heslo pro uživatele<br>- **Databáze:** Výchozí databáze, která má být použita po připojení. Měla by to být existující databáze, pro kterou má zadaná role oprávnění.<br>- Datový **sklad:** Virtuální sklad, který se má použít po připojení. Mělo by se jednat o existující sklad, pro který má zadaná role oprávnění.<br>- **Role:** Výchozí role řízení přístupu, která se má použít v relaci Snowflake. Zadaná role by měla být stávající role, která je už přiřazená k zadanému uživateli. Výchozí role je veřejná. | Yes      |
+| typ             | Vlastnost Type musí být nastavená na **Snowflake**.              | Ano      |
+| připojovací řetězec | Určuje informace potřebné pro připojení k instanci Snowflake. Můžete si vybrat, že chcete do Azure Key Vault umístit heslo nebo celý připojovací řetězec. Další podrobnosti najdete v příkladech pod tabulkou a také s [přihlašovacími údaji úložiště v Azure Key Vaultovém](store-credentials-in-key-vault.md) článku.<br><br>Některá typická nastavení:<br>- **Název účtu:**  [Úplný název](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) účtu Snowflake (včetně dalších segmentů, které identifikují oblast a cloudovou platformu), např. xy12345. východ-US-2. Azure.<br/>- **Uživatelské jméno:** Přihlašovací jméno uživatele pro připojení.<br>- **Heslo:** Heslo pro uživatele<br>- **Databáze:** Výchozí databáze, která má být použita po připojení. Měla by to být existující databáze, pro kterou má zadaná role oprávnění.<br>- Datový **sklad:** Virtuální sklad, který se má použít po připojení. Mělo by se jednat o existující sklad, pro který má zadaná role oprávnění.<br>- **Role:** Výchozí role řízení přístupu, která se má použít v relaci Snowflake. Zadaná role by měla být stávající role, která je už přiřazená k zadanému uživateli. Výchozí role je veřejná. | Ano      |
 | connectVia       | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se používá pro připojení k úložišti dat. Můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí prostředí Azure Integration runtime. | No       |
 
 **Příklad:**
@@ -109,7 +109,7 @@ Následující vlastnosti jsou podporovány pro datovou sadu Snowflake.
 
 | Vlastnost  | Popis                                                  | Povinné                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| typ      | Vlastnost Type datové sady musí být nastavená na **SnowflakeTable**. | Yes                         |
+| typ      | Vlastnost Type datové sady musí být nastavená na **SnowflakeTable**. | Ano                         |
 | schema | Název schématu. Všimněte si, že v názvu schématu se v ADF bude rozlišovat velká a malá písmena. |Ne pro zdroj, Ano pro jímku  |
 | stolu | Název tabulky/zobrazení Všimněte si, že v názvu tabulky se nachází v podavači ADF velká a malá písmena. |Ne pro zdroj, Ano pro jímku  |
 
@@ -147,11 +147,11 @@ Chcete-li kopírovat data z Snowflake, v části **zdroj** aktivity kopírován�
 
 | Vlastnost                     | Popis                                                  | Povinné |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| typ                         | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **SnowflakeSource**. | Yes      |
+| typ                         | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **SnowflakeSource**. | Ano      |
 | query          | Určuje dotaz SQL, který má načíst data z Snowflake. Pokud názvy schématu, tabulky a sloupců obsahují malá písmena, citujte v dotazu identifikátor objektu, např. `select * from "schema"."myTable"` .<br>Provádění uložené procedury není podporováno. | No       |
 | exportSettings | Rozšířená nastavení používaná k načtení dat z Snowflake. Můžete nakonfigurovat ty, které podporuje příkaz Kopírovat do, který Data Factory projde při vyvolání příkazu. | No       |
 | ***Pod `exportSettings` :** _ |  |  |
-| typ | Typ příkazu pro export nastavený na _ * SnowflakeExportCopyCommand * *. | Yes |
+| typ | Typ příkazu pro export nastavený na _ * SnowflakeExportCopyCommand * *. | Ano |
 | additionalCopyOptions | Další možnosti kopírování, které jsou k dispozici jako slovník párů klíč-hodnota. Příklady: MAX_FILE_SIZE, OVERWRITE. Další informace najdete v tématu [Možnosti kopírování Snowflake](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions). | No |
 | additionalFormatOptions | Další možnosti formátu souboru, které jsou k dispozici pro kopírování příkazu jako slovníku párů klíč-hodnota. Příklady: DATE_FORMAT, TIME_FORMAT TIMESTAMP_FORMAT. Další informace najdete v tématu [Možnosti typu formátu Snowflake](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions). | No |
 
@@ -159,7 +159,7 @@ Chcete-li kopírovat data z Snowflake, v části **zdroj** aktivity kopírován�
 
 Pokud vaše úložiště a formát dat jímky splňují kritéria popsaná v této části, můžete aktivitu kopírování použít k přímému kopírování z Snowflake do jímky. Data Factory kontroluje nastavení a v případě, že nejsou splněná následující kritéria, se spustí aktivita kopírování:
 
-- **Propojená služba jímky** je [**úložiště objektů BLOB v Azure**](connector-azure-blob-storage.md) s ověřováním pomocí **sdíleného přístupového podpisu** .
+- **Propojená služba jímky** je [**úložiště objektů BLOB v Azure**](connector-azure-blob-storage.md) s ověřováním pomocí **sdíleného přístupového podpisu** . Pokud chcete přímo zkopírovat data Azure Data Lake Storage Gen2 v následujícím podporovaném formátu, můžete vytvořit propojenou službu Azure Blob s ověřováním SAS na účtu ADLS Gen2, abyste se vyhnuli použití [připravené kopie z Snowflake](#staged-copy-from-snowflake).
 
 - **Formát dat jímky** je **Parquet**, **oddělený text** nebo **JSON** s následujícími konfiguracemi:
 
@@ -173,7 +173,6 @@ Pokud vaše úložiště a formát dat jímky splňují kritéria popsaná v té
         - `compression` nemůže být **žádná komprese**, **gzip**, **bzip2** ani **zúžení**.
         - `encodingName` je ponechán jako výchozí nebo nastavený na **UTF-8**.
         - `filePattern` v jímky aktivity kopírování je ponecháno jako výchozí nebo nastavené na **setOfObjects**.
-
 - Ve zdroji aktivity kopírování není `additionalColumns` zadán.
 - Není zadáno mapování sloupce.
 
@@ -278,11 +277,11 @@ Chcete-li kopírovat data do Snowflake, jsou v části **jímka** aktivity kopí
 
 | Vlastnost          | Popis                                                  | Povinné                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| typ              | Vlastnost Type jímky aktivity kopírování nastavená na **SnowflakeSink**. | Yes                                           |
+| typ              | Vlastnost Type jímky aktivity kopírování nastavená na **SnowflakeSink**. | Ano                                           |
 | preCopyScript     | Zadejte dotaz SQL pro aktivitu kopírování, která se má spustit před zápisem dat do Snowflake při každém spuštění. Tato vlastnost slouží k vyčištění předem načtených dat. | No                                            |
 | importSettings | Rozšířená nastavení používaná k zápisu dat do Snowflake. Můžete nakonfigurovat ty, které podporuje příkaz Kopírovat do, který Data Factory projde při vyvolání příkazu. | No |
 | **_Pod `importSettings` :_* _ |                                                              |  |
-| typ | Typ příkazu pro import, nastavený na _ * SnowflakeImportCopyCommand * *. | Yes |
+| typ | Typ příkazu pro import, nastavený na _ * SnowflakeImportCopyCommand * *. | Ano |
 | additionalCopyOptions | Další možnosti kopírování, které jsou k dispozici jako slovník párů klíč-hodnota. Příklady: ON_ERROR, FORCE, LOAD_UNCERTAIN_FILES. Další informace najdete v tématu [Možnosti kopírování Snowflake](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions). | No |
 | additionalFormatOptions | Další možnosti formátu souboru, které jsou k dispozici pro příkaz kopírování, který je k dispozici jako slovník párů klíč-hodnota. Příklady: DATE_FORMAT, TIME_FORMAT TIMESTAMP_FORMAT. Další informace najdete v tématu [Možnosti typu formátu Snowflake](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions). | No |
 
@@ -290,7 +289,7 @@ Chcete-li kopírovat data do Snowflake, jsou v části **jímka** aktivity kopí
 
 Pokud zdrojové úložiště a formát dat splňují kritéria popsaná v této části, můžete aktivitu kopírování použít k přímému kopírování ze zdroje do Snowflake. Azure Data Factory kontroluje nastavení a v případě, že nejsou splněná následující kritéria, se spustí aktivita kopírování:
 
-- **Zdrojová propojená služba** je [**úložiště objektů BLOB v Azure**](connector-azure-blob-storage.md) s ověřováním pomocí **sdíleného přístupového podpisu** .
+- **Zdrojová propojená služba** je [**úložiště objektů BLOB v Azure**](connector-azure-blob-storage.md) s ověřováním pomocí **sdíleného přístupového podpisu** . Pokud chcete přímo kopírovat data z Azure Data Lake Storage Gen2 v následujícím podporovaném formátu, můžete vytvořit propojenou službu Azure Blob s ověřováním SAS na účtu ADLS Gen2, abyste se vyhnuli použití  [připravené kopie do Snowflake](#staged-copy-to-snowflake).
 
 - **Formát zdrojových dat** je **Parquet**, **oddělený text** nebo **JSON** s následujícími konfiguracemi:
 
@@ -411,7 +410,7 @@ V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem Snowflake
 
 | Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Table | Vyberete-li možnost tabulka jako vstup, bude tok dat při použití vložené datové sady načítat všechna data z tabulky zadané v datové sadě Snowflake nebo v možnostech zdroje. | No | Řetězec | *(pouze pro vloženou datovou sadu)*<br>tableName<br>schemaName |
+| Tabulka | Vyberete-li možnost tabulka jako vstup, bude tok dat při použití vložené datové sady načítat všechna data z tabulky zadané v datové sadě Snowflake nebo v možnostech zdroje. | No | Řetězec | *(pouze pro vloženou datovou sadu)*<br>tableName<br>schemaName |
 | Dotaz | Pokud jako vstup vyberete dotaz, zadejte dotaz, který načte data z Snowflake. Toto nastavení přepisuje jakoukoli tabulku, kterou jste zvolili v datové sadě.<br>Pokud názvy schématu, tabulky a sloupců obsahují malá písmena, citujte v dotazu identifikátor objektu, např. `select * from "schema"."myTable"` . | No | Řetězec | query |
 
 #### <a name="snowflake-source-script-examples"></a>Příklady zdrojového skriptu Snowflake
@@ -441,7 +440,7 @@ V níže uvedené tabulce jsou uvedeny vlastnosti, které Snowflake jímka podpo
 
 | Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Update – metoda | Určete, jaké operace jsou v cíli Snowflake povoleny.<br>Aby bylo možné aktualizovat, Upsert nebo odstraňovat řádky, je nutné transformaci řádků pro tyto akce označit [změnou řádku](data-flow-alter-row.md) . | Yes | `true` nebo `false` | lze odstranit <br/>vložitelný <br/>aktualizovatelné <br/>upsertable |
+| Update – metoda | Určete, jaké operace jsou v cíli Snowflake povoleny.<br>Aby bylo možné aktualizovat, Upsert nebo odstraňovat řádky, je nutné transformaci řádků pro tyto akce označit [změnou řádku](data-flow-alter-row.md) . | Ano | `true` nebo `false` | lze odstranit <br/>vložitelný <br/>aktualizovatelné <br/>upsertable |
 | Klíčové sloupce | V případě aktualizací upsertuje a DELETE musí být klíčový sloupec nebo sloupce nastaveny k určení, který řádek má být změněn. | No | Pole | keys |
 | Akce tabulky | Určuje, zda mají být před zápisem znovu vytvořeny nebo odebrány všechny řádky z cílové tabulky.<br>- **Žádné**: v tabulce se neprovede žádná akce.<br>- **Znovu vytvořit**: tabulka se vynechá a znovu vytvoří. Požadováno při dynamickém vytváření nové tabulky.<br>- **Zkrátit**: všechny řádky z cílové tabulky se odeberou. | No | `true` nebo `false` | znovu vytvořit<br/>zkrátit |
 

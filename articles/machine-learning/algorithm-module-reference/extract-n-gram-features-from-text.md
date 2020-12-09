@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/01/2019
-ms.openlocfilehash: c4d9c7c2cb7a0a86824a373f1b64044b6dcd6c20
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 12/08/2019
+ms.openlocfilehash: 37a10d90fa0e277fbe45d9f1377e365cb3d42996
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420797"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861447"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>Extrahovat N-gram funkcí z odkazu na modul textu
 
@@ -28,7 +28,7 @@ Modul podporuje následující scénáře pro použití slovníku n-gramů:
 
 * [Pomocí existující sady textových funkcí](#use-an-existing-n-gram-dictionary) zpracování volný textový sloupec.
 
-* [Skóre nebo publikování modelu](#score-or-publish-a-model-that-uses-n-grams) , který používá n-gramů.
+* [Skóre nebo nasazení modelu](#build-inference-pipeline-that-uses-n-grams-to-deploy-a-real-time-endpoint) , který používá n-gramů.
 
 ### <a name="create-a-new-n-gram-dictionary"></a>Vytvořit nový slovník n-gramů
 
@@ -44,15 +44,15 @@ Modul podporuje následující scénáře pro použití slovníku n-gramů:
 
 1. **Funkce váhy** určuje, jak se má vytvořit vektor funkce dokumentu a jak z dokumentů extrahovat slovník.
 
-    * **Binární váha** : přiřadí hodnotu binární přítomnosti extrahovaných n-gramů. Hodnota pro každý n-gram je 1, pokud v dokumentu existuje, a 0 jinak.
+    * **Binární váha**: přiřadí hodnotu binární přítomnosti extrahovaných n-gramů. Hodnota pro každý n-gram je 1, pokud v dokumentu existuje, a 0 jinak.
 
-    * **TF Weight** : přiřadí skóre termínu (TF) pro extrahované n-gramy. Hodnota pro každý n-gram je jeho četnost výskytů v dokumentu.
+    * **TF Weight**: přiřadí skóre termínu (TF) pro extrahované n-gramy. Hodnota pro každý n-gram je jeho četnost výskytů v dokumentu.
 
-    * **IDF Weight** : přiřadí skóre funkce inverzního dokumentu (IDF) k extrahované n-gramům. Hodnota pro každý n-gram je protokol velikosti corpus dělené četností výskytů v celém corpus.
+    * **IDF Weight**: přiřadí skóre funkce inverzního dokumentu (IDF) k extrahované n-gramům. Hodnota pro každý n-gram je protokol velikosti corpus dělené četností výskytů v celém corpus.
     
       `IDF = log of corpus_size / document_frequency`
  
-    *  **TF-IDF Weight** : přiřadí skóre období/inverzní funkce četnosti dokumentů (TF/IDF) na extrahované n-gramy. Hodnota pro každé n-gram je jeho skóre TF vynásobené skóre IDF.
+    *  **TF-IDF Weight**: přiřadí skóre období/inverzní funkce četnosti dokumentů (TF/IDF) na extrahované n-gramy. Hodnota pro každé n-gram je jeho skóre TF vynásobené skóre IDF.
 
 1. Nastavte **minimální délku slova** na minimální počet písmen, která se dají použít v jakémkoli *jediném slově* v n-gramu.
 
@@ -94,36 +94,42 @@ Modul podporuje následující scénáře pro použití slovníku n-gramů:
 
 1.  Odešlete kanál.
 
-### <a name="score-or-publish-a-model-that-uses-n-grams"></a>Skóre nebo publikování modelu, který používá n-gramů
+### <a name="build-inference-pipeline-that-uses-n-grams-to-deploy-a-real-time-endpoint"></a>Vytvoření odvozeného kanálu, který používá n-gramů k nasazení koncového bodu v reálném čase
 
-1.  Zkopírujte **funkce extrakce N-gramů z modulu textu** z školicího toku dat do toku dat bodování.
+Školicí kanál, který obsahuje **funkci Extrakce N-gramů z modelu textu** a **skóre** pro vytvoření předpovědi pro testovací datovou sadu, je sestavený v následující struktuře:
 
-1.  Připojte výstup **slovníku výsledků** z školicího toku dat ke **vstupnímu slovníku** v toku dat bodování.
+:::image type="content" source="./media/module/extract-n-gram-training-pipeline-score-model.png" alt-text="Příklad extrakce školicího kanálu N-gramů" border="true":::
 
-1.  V pracovním postupu bodování upravte funkce extrakce N-gramů z textového modulu a nastavte parametr **režimu slovníku** na **jen pro čtení**. Všechny ostatní ponechte stejné.
+**Režim slovníku** v kruhovém **extrahování funkce N-gramů z modulu textu** je **vytvořený** a **režim slovníku** modulu, který se připojuje k modulu **bodového modelu** , je **jen pro čtení**.
 
-1.  Pokud chcete publikovat kanál, uložte **slovník výsledků** jako datovou sadu.
+Po úspěšném odeslání kanálu školení můžete zaregistrovat výstup modulu s kroužkem jako datovou sadu.
 
-1.  Připojte uloženou datovou sadu k extrakci N-gram funkcí z modulu textu v grafu bodování.
+:::image type="content" source="./media/module/extract-n-gram-output-voc-register-dataset.png" alt-text="registrovat datovou sadu" border="true":::
+
+Pak můžete vytvořit kanál odvození v reálném čase. Po vytvoření kanálu odvození je potřeba upravit kanál odvození ručně, například následujícím způsobem:
+
+:::image type="content" source="./media/module/extract-n-gram-inference-pipeline.png" alt-text="odvození kanálu" border="true":::
+
+Pak odešlete kanál odvození a nasaďte koncový bod v reálném čase.
 
 ## <a name="results"></a>Výsledky
 
 Extrahování N-gramů funkcí z textového modulu vytvoří dva typy výstupu: 
 
-* **Výsledná sada dat** : Tento výstup je souhrnem analyzovaného textu v kombinaci s počtem odebraných n-gramů. Sloupce, které jste nevybrali v možnosti **textový sloupec** , se předávají do výstupu. Pro každý sloupec textu, který analyzujete, modul vygeneruje tyto sloupce:
+* **Výsledná sada dat**: Tento výstup je souhrnem analyzovaného textu v kombinaci s počtem odebraných n-gramů. Sloupce, které jste nevybrali v možnosti **textový sloupec** , se předávají do výstupu. Pro každý sloupec textu, který analyzujete, modul vygeneruje tyto sloupce:
 
-  * **Matice n-gramů výskytů** : modul vygeneruje sloupec pro každý n-gram, který byl nalezen v celkové corpus, a přidá do každého sloupce skóre, které určuje váhu n-gramu pro daný řádek. 
+  * **Matice n-gramů výskytů**: modul vygeneruje sloupec pro každý n-gram, který byl nalezen v celkové corpus, a přidá do každého sloupce skóre, které určuje váhu n-gramu pro daný řádek. 
 
-* **Slovník výsledků** : slovník obsahuje skutečný slovník n-gramů spolu s termínem četnosti, která se generují jako součást analýzy. Datovou sadu můžete uložit pro opakované použití s jinou sadou vstupů nebo pro pozdější aktualizace. Slovník můžete také použít pro modelování a bodování.
+* **Slovník výsledků**: slovník obsahuje skutečný slovník n-gramů spolu s termínem četnosti, která se generují jako součást analýzy. Datovou sadu můžete uložit pro opakované použití s jinou sadou vstupů nebo pro pozdější aktualizace. Slovník můžete také použít pro modelování a bodování.
 
 ### <a name="result-vocabulary"></a>Slovník výsledků
 
 Slovník obsahuje slovník n-gramů s termínem četnosti, která se generují jako součást analýzy. Skóre DF a IDF jsou vygenerována bez ohledu na jiné možnosti.
 
-+ **ID** : identifikátor generovaný pro každý jedinečný n-gram.
-+ **NGram** : n-gram. Mezery nebo jiné oddělovače slov jsou nahrazeny znakem podtržítka.
-+ **DF** : skóre četnosti pro n-gram v původní corpus.
-+ **IDF** : inverzní četnosti dokumentů pro n-gram v původní Corpus
++ **ID**: identifikátor generovaný pro každý jedinečný n-gram.
++ **NGram**: n-gram. Mezery nebo jiné oddělovače slov jsou nahrazeny znakem podtržítka.
++ **DF**: skóre četnosti pro n-gram v původní corpus.
++ **IDF**: inverzní četnosti dokumentů pro n-gram v původní Corpus
 
 Tuto datovou sadu můžete ručně aktualizovat, ale můžete uvést chyby. Například:
 

@@ -3,12 +3,12 @@ title: Připravenost na produkční prostředí a osvědčené postupy – Azure
 description: Tento článek poskytuje pokyny ke konfiguraci a nasazení živé analýzy videí v modulu IoT Edge v produkčním prostředí.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: c34e05e184cfa6f0933701a76177fae3eed70c0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 215427e3524861a842349b197668d92167960e5c
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87071930"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906331"
 ---
 # <a name="production-readiness-and-best-practices"></a>Připravenost na produkční prostředí a osvědčené postupy
 
@@ -62,7 +62,7 @@ Dále můžete v manifestu nasazení nastavit proměnné prostředí LOCAL_USER_
 
 Live video Analytics v modulu IoT Edge vyžaduje možnost zapisovat soubory do místního systému souborů v těchto případech:
 
-* Pomocí vlastnosti modulu s dvojitou vlastností [[applicationDataDirectory](module-twin-configuration-schema.md#module-twin-properties)], kde byste měli zadat adresář v místním systému souborů pro ukládání konfiguračních dat.
+* Pomocí vlastnosti modulu s dvojitou vlastností [`applicationDataDirectory`](module-twin-configuration-schema.md#module-twin-properties) , kde byste měli zadat adresář v místním systému souborů pro ukládání konfiguračních dat.
 * Pomocí Media graphu zaznamenáte video do cloudu, modul vyžaduje použití adresáře na hraničním zařízení jako mezipaměti (Další informace najdete v článku [průběžné nahrávání videa](continuous-video-recording-concept.md) ).
 * [Záznam do místního souboru](event-based-video-recording-concept.md#video-recording-based-on-events-from-other-sources), kde byste měli zadat cestu k souboru pro zaznamenané video.
 
@@ -115,7 +115,7 @@ Grafy médií umožňují vytvářet prostředky v cloudu nebo souborech MP4 na 
 "assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}
 ```
 
-Pro prostředky vygenerované záznamem videa založeného na událostech je doporučený vzor pojmenování " &lt; anytext &gt; -$ {System. DateTime}". Systémová proměnná zajišťuje, že assety nejsou přepsány, pokud dojde k událostem ve stejnou dobu. Jako příklad můžete nastavit assetNamePattern na jímku Assetu následujícím způsobem:
+Pro prostředky vygenerované záznamem videa založeného na událostech je doporučený vzor pojmenování " &lt; anytext &gt; -$ {System. DateTime}". Systémová proměnná zajišťuje, že se prostředky nepřepisují, pokud dojde k událostem ve stejnou dobu. Jako příklad můžete nastavit assetNamePattern na jímku Assetu následujícím způsobem:
 
 ```
 "assetNamePattern": "sampleAssetFromEVR-LVAEdge-${System.DateTime}"
@@ -124,7 +124,7 @@ Pro prostředky vygenerované záznamem videa založeného na událostech je dop
 Pokud spouštíte více instancí stejného grafu, můžete použít název a název instance topologie grafu pro rozlišení. Jako příklad můžete nastavit assetNamePattern na jímku assetu následujícím způsobem:
 
 ```
-"assetNamePattern": "sampleAssetFromEVR-${System.GraphTopologyName}-${System.GraphInstanceName} -${System.DateTime}"
+"assetNamePattern": "sampleAssetFromEVR-${System.GraphTopologyName}-${System.GraphInstanceName}-${System.DateTime}"
 ```
 
 U video na hranách vygenerovaných datovými klipy MP4 založenými na událostech by měl být doporučený vzor pro pojmenování typu DateTime a pro více instancí stejného grafu doporučujeme použít systémové proměnné GraphTopologyName a GraphInstanceName. Jako příklad můžete nastavit filePathPattern pro jímky souborů následujícím způsobem: 

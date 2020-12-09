@@ -3,21 +3,25 @@ title: Referenční příručka schématu StylesObject pro dynamickou Azure Maps
 description: Referenční příručka k dynamickému Azure Maps schématu a syntaxi StylesObject
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/20/2020
+ms.date: 12/07/2020
 ms.topic: reference
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: f6bc4c62febf24dee790ac6136b1661426d4d619
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 08379e66c97d34eea53410190475e90e156a58e2
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536944"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903339"
 ---
 # <a name="stylesobject-schema-reference-guide-for-dynamic-maps"></a>Referenční příručka schématu StylesObject pro dynamická mapování
 
- `StylesObject`Je `StyleObject` pole reprezentující styly stateset. Pomocí [služby stavu funkce](/rest/api/maps/featurestate) Azure Maps Creator můžete použít styly stateset pro funkce dat mapy v interiéru. Jakmile vytvoříte styly stateset a přidružíte je k funkcím vnitřních map, můžete je použít k vytvoření dynamické mapy vnitřních oken. Další informace o vytváření dynamických map vnitřníchy najdete v tématu [Implementace dynamického stylu pro mapy vnitřních vnitřních](indoor-map-dynamic-styling.md)přípon.
+> [!IMPORTANT]
+> Služby Azure Maps Creator jsou momentálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+ `StylesObject`Je `StyleObject` pole reprezentující styly stateset. Pomocí [služby stavu funkce](/rest/api/maps/featurestate) Azure Maps Creator (Preview) můžete použít styly stateset pro funkce dat mapy v interiéru. Jakmile vytvoříte styly stateset a přidružíte je k funkcím vnitřních map, můžete je použít k vytvoření dynamické mapy vnitřních oken. Další informace o vytváření dynamických map vnitřníchy najdete v tématu [Implementace dynamického stylu pro mapy vnitřních vnitřních](indoor-map-dynamic-styling.md)přípon.
 
 ## <a name="styleobject"></a>StyleObject
 
@@ -121,7 +125,7 @@ V následujícím příkladu JSON budou oba rozsahy platit, pokud je hodnota *st
 
 | Vlastnost | Typ | Popis | Povinné |
 |-----------|----------|-------------|-------------|
-| `range` | [RangeObject](#rangeobject) | [RangeObject](#rangeobject) definuje sadu logických podmínek rozsahu, které v případě `true` změny barvy zobrazení *stavu* na barvu určenou `color` vlastností. Pokud `range` parametr není zadán, bude vždy použita barva definovaná ve `color` Vlastnosti.   | Ne |
+| `range` | [RangeObject](#rangeobject) | [RangeObject](#rangeobject) definuje sadu logických podmínek rozsahu, které v případě `true` změny barvy zobrazení *stavu* na barvu určenou `color` vlastností. Pokud `range` parametr není zadán, bude vždy použita barva definovaná ve `color` Vlastnosti.   | No |
 | `color` | řetězec | Barva, která se má použít, pokud hodnota stavu spadá do rozsahu. `color`Vlastnost je řetězec formátu JSON v jednom z následujících formátů: <ul><li> Šestnáctkové hodnoty ve stylu HTML </li><li> RGB ("#ff0", "#ffff00", "RGB (255, 255, 0)")</li><li> RGBA ("RGBA (255, 255, 0, 1)")</li><li> HSL ("HSL (100, 50%, 50%)")</li><li> HSLA ("HSLA (100; 50%; 50%; 1)")</li><li> Předdefinované názvy barev HTML, jako je žlutá a modrá.</li></ul> | Ano |
 
 ### <a name="rangeobject"></a>RangeObject
@@ -130,10 +134,10 @@ V následujícím příkladu JSON budou oba rozsahy platit, pokud je hodnota *st
 
 | Vlastnost | Typ | Popis | Povinné |
 |-----------|----------|-------------|-------------|
-| `minimum` | double | Celé číslo x, které x ≥ `minimum` .| Ne |
-| `maximum` | double | Vše číslo x, které x ≤ `maximum` . | Ne |
-| `exclusiveMinimum` | double | Číslo x > `exclusiveMinimum` .| Ne |
-| `exclusiveMaximum` | double | Číslo x < `exclusiveMaximum` .| Ne |
+| `minimum` | double | Celé číslo x, které x ≥ `minimum` .| No |
+| `maximum` | double | Vše číslo x, které x ≤ `maximum` . | No |
+| `exclusiveMinimum` | double | Číslo x > `exclusiveMinimum` .| No |
+| `exclusiveMaximum` | double | Číslo x < `exclusiveMaximum` .| No |
 
 ### <a name="example-of-numerictypestylerule"></a>Příklad NumericTypeStyleRule
 
@@ -180,9 +184,9 @@ Při porovnávání řetězcové hodnoty se rozlišují malá a velká písmena.
 
 | Vlastnost | Typ | Popis | Povinné |
 |-----------|----------|-------------|-------------|
-| `stateValue1` | řetězec | Barva, pokud je řetězec hodnoty stateValue1. | Ne |
-| `stateValue2` | řetězec | Barva, pokud je řetězec hodnoty stateValue. | Ne |
-| `stateValueN` | řetězec | Barva, pokud je řetězec hodnoty stateValueN. | Ne |
+| `stateValue1` | řetězec | Barva, pokud je řetězec hodnoty stateValue1. | No |
+| `stateValue2` | řetězec | Barva, pokud je řetězec hodnoty stateValue. | No |
+| `stateValueN` | řetězec | Barva, pokud je řetězec hodnoty stateValueN. | No |
 
 ### <a name="example-of-stringtypestylerule"></a>Příklad StringTypeStyleRule
 

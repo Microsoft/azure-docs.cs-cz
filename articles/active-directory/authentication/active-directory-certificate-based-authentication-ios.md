@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffddac13009b84aa8253955d265f11aefe2ce5dd
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a5f9b96fe9ee0781803bbbd86316e8783b60a6f1
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744410"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861319"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Azure Active Directory ověřování pomocí certifikátů v iOS
 
@@ -75,7 +75,7 @@ Další informace najdete v tématu [přizpůsobení AD FS přihlašovací strá
 
 Některé aplikace Office s povoleným moderním ověřováním odesílají `prompt=login` do služby Azure AD v jejich žádosti. Ve výchozím nastavení Azure AD překládá `prompt=login` v žádosti na službu AD FS `wauth=usernamepassworduri` (požádá službu AD FS, aby provedou ověřování U/P), a `wfresh=0` (POžádá službu ADFS, aby ignorovala stav jednotného přihlašování a provede nové ověřování). Pokud chcete pro tyto aplikace povolit ověřování na základě certifikátů, upravte výchozí chování služby Azure AD.
 
-Chcete-li aktualizovat výchozí chování, nastavte '*PromptLoginBehavior*' v nastavení federované domény na *disabled*. K provedení této úlohy můžete použít rutinu [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) , jak je znázorněno v následujícím příkladu:
+Chcete-li aktualizovat výchozí chování, nastavte '*PromptLoginBehavior*' v nastavení federované domény na *disabled*. K provedení této úlohy můžete použít rutinu [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings) , jak je znázorněno v následujícím příkladu:
 
 ```powershell
 Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled

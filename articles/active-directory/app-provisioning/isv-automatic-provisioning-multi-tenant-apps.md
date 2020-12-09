@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 9cb3d8f39d83e27755b1e8982dfe3b807c431413
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d4c6c5b51e00f7f2ed7e29c27aa8e8bb88a2ea94
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069717"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861353"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Povolení automatického zřizování uživatelů pro aplikaci s více klienty
 
@@ -64,13 +64,13 @@ Pokud chcete zjistit, která možnost integrace se má použít pro vaši aplika
 |---|---|---|---|
 | Správa uživatelů a skupin ve službě Azure AD| √| √| Pouze uživatel |
 | Správa uživatelů a skupin synchronizovaných z místní služby Active Directory| √*| √*| Jenom uživatel * |
-| Přístup k datům mimo uživatele a skupiny během zřizování přístupu k Microsoft 365 dat (týmy, SharePoint, E-mail, kalendář, dokumenty atd.)| X +| √| × |
+| Přístup k datům mimo uživatele a skupiny během zřizování přístupu k Microsoft 365 dat (týmy, SharePoint, E-mail, kalendář, dokumenty atd.)| X +| √| X |
 | Vytváření, čtení a aktualizace uživatelů na základě obchodních pravidel| √| √| √ |
-| Odstranění uživatelů na základě obchodních pravidel| √| √| × |
-| Správa automatického zřizování uživatelů pro všechny aplikace z Azure Portal| √| ×| √ |
-| Podpora více zprostředkovatelů identity| √| ×| √ |
+| Odstranění uživatelů na základě obchodních pravidel| √| √| X |
+| Správa automatického zřizování uživatelů pro všechny aplikace z Azure Portal| √| X| √ |
+| Podpora více zprostředkovatelů identity| √| X| √ |
 | Podpora účtů hostů (B2B)| √| √| √ |
-| Podpora účtů mimo podnik (B2C)| ×| √| √ |
+| Podpora účtů mimo podnik (B2C)| X| √| √ |
 
 <sup>*</sup> – Azure AD Connect instalační program je nutný k synchronizaci uživatelů ze služby AD do Azure AD.  
 <sup>+</sup >– Použití SCIM pro zřizování vám nevylučuje integraci aplikace s Microsoft Graph pro jiné účely.
@@ -89,7 +89,7 @@ Další informace o tom, jak se uživatelé služby zřizování Azure AD SCIM, 
 
 ## <a name="microsoft-graph-for-provisioning"></a>Microsoft Graph pro zřizování
 
-Při použití Microsoft Graph ke zřízení máte přístup ke všem uživatelům, kteří jsou k dispozici v grafu. Kromě podrobností o uživatelích a skupinách můžete také načítat Další informace, jako jsou role uživatelů, vedoucí a přímé sestavy, vlastněná a registrovaná zařízení a stovky dalších datových částí, které jsou k dispozici v [Microsoft Graph](/graph/api/overview?view=graph-rest-1.0). 
+Při použití Microsoft Graph ke zřízení máte přístup ke všem uživatelům, kteří jsou k dispozici v grafu. Kromě podrobností o uživatelích a skupinách můžete také načítat Další informace, jako jsou role uživatelů, vedoucí a přímé sestavy, vlastněná a registrovaná zařízení a stovky dalších datových částí, které jsou k dispozici v [Microsoft Graph](/graph/api/overview). 
 
 Při přihlášení k odběru cloudových služeb Microsoftu, jako je Microsoft 365, Microsoft Azure nebo sada Enterprise mobility, se za víc než 15 000 000 organizací a 90% z Fortune 500 společnosti používá Azure AD. Pomocí Microsoft Graph můžete integrovat svou aplikaci s pracovními postupy pro správu, jako je například registrace zaměstnanců (a ukončení), údržba profilu a další. 
 

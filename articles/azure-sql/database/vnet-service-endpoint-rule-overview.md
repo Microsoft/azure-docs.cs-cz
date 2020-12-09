@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 2ff8f6134f74e0eda355342a7282e8be81a3d8df
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c5839589c35ea5a9c52303801a8767fc598434fc
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450226"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905872"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Použití koncových bodů a pravidel služby virtuální sítě pro servery v Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -95,7 +95,7 @@ Při použití koncových bodů služby pro Azure SQL Database se podívejte na 
 ### <a name="expressroute"></a>ExpressRoute
 
 Pokud používáte [ExpressRoute](../../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) z vašich místních partnerských vztahů nebo partnerských vztahů Microsoftu, budete muset určit IP adresy NAT, které se používají. Ve veřejných partnerských vztazích každý okruh ExpressRoute automaticky využívá dvě IP adresy pro překlad adres (NAT), které se používají k provozu služeb Azure při vstupu do páteřní sítě Microsoft Azure. IP adresy pro překlad adres (NAT) používané v partnerských vztazích s Microsoftem poskytuje zákazník nebo poskytovatel služby. Pokud chcete povolit přístup k prostředkům služby, musíte tyto veřejné IP adresy povolit v nastavení IP adresy brány firewall prostředku. Pokud chcete zjistit IP adresy veřejného partnerského okruhu ExpressRoute, [otevřete lístek podpory pro ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) na webu Azure Portal. Další informace o [překladu adres (NAT) pro veřejné partnerské vztahy a partnerské vztahy s Microsoftem v ExpressRoute.](../../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering)
-  
+
 Aby bylo možné Azure SQL Database komunikaci z okruhu, musíte vytvořit pravidla sítě IP pro veřejné IP adresy vašeho překladu adres (NAT).
 
 <!--
@@ -122,7 +122,7 @@ Základ a příkaz COPY se běžně používá k načtení dat do služby Azure 
 
 #### <a name="steps"></a>Postup
 
-1. V prostředí PowerShell **Zaregistrujte server** hostující službu Azure Synapse pomocí Azure Active Directory (AAD):
+1. Pokud máte samostatný vyhrazený fond SQL, zaregistrujte SQL Server pomocí Azure Active Directory (AAD) pomocí prostředí PowerShell: 
 
    ```powershell
    Connect-AzAccount
@@ -130,6 +130,14 @@ Základ a příkaz COPY se běžně používá k načtení dat do služby Azure 
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
+   Tento krok není nutný pro vyhrazené fondy SQL v pracovním prostoru synapse.
+
+1. Pokud máte pracovní prostor synapse, zaregistrujte identitu spravovanou systémem v pracovním prostoru:
+
+   1. V Azure Portal můžete přejít do svého pracovního prostoru synapse
+   2. Přejít na okno spravované identity 
+   3. Ujistěte se, že je povolená možnost Povolit kanály.
+   
 1. Pomocí této [příručky](../../storage/common/storage-account-create.md)vytvořte **účet úložiště pro obecné účely v2** .
 
    > [!NOTE]
@@ -137,7 +145,7 @@ Základ a příkaz COPY se běžně používá k načtení dat do služby Azure 
    > - Pokud máte účet úložiště pro obecné účely v1 nebo blob, musíte **nejdřív upgradovat na verzi v2** pomocí této [příručky](../../storage/common/storage-account-upgrade.md).
    > - Známé problémy s Azure Data Lake Storage Gen2 najdete v tomto [Průvodci](../../storage/blobs/data-lake-storage-known-issues.md).
 
-1. V části účet úložiště přejděte na **Access Control (IAM)** a vyberte **Přidat přiřazení role**. Přiřaďte roli Azure **Přispěvatel dat objektů BLOB úložiště** k serveru, který je hostitelem služby Azure synapse Analytics, kterou jste zaregistrovali v Azure Active Directory (AAD) jako v kroku #1.
+1. V části účet úložiště přejděte na **Access Control (IAM)** a vyberte **Přidat přiřazení role**. Přiřaďte roli Azure **Přispěvatel dat objektů BLOB úložiště** k serveru nebo pracovnímu prostoru hostujícím vyhrazený fond SQL, který jste zaregistrovali v Azure Active Directory (AAD).
 
    > [!NOTE]
    > Tento krok můžou provést jenom členové s oprávněním vlastníka v účtu úložiště. Informace o různých předdefinovaných rolích Azure najdete v tomto [Průvodci](../../role-based-access-control/built-in-roles.md).
@@ -239,7 +247,7 @@ Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *t
 
 ## <a name="azure-portal-steps"></a>Azure Portal kroky
 
-1. Přihlaste se k [portálu Azure Portal][http-azure-portal-link-ref-477t].
+1. Přihlaste se k webu [Azure Portal][http-azure-portal-link-ref-477t].
 
 2. Vyhledejte a vyberte **SQL servery** a pak vyberte svůj server. V části **zabezpečení** vyberte možnost **brány firewall a virtuální sítě**.
 

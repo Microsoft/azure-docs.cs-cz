@@ -12,12 +12,12 @@ ms.date: 09/29/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: moderátor obsahu, Moderování obsahu
-ms.openlocfilehash: d1d9315986f7a6c57c1da012b9034e4f1a3730bc
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: c026c42fe3c7a7f3f0d6b80e3123904077c104cf
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93143681"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905209"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Rychlý Start: Vyzkoušejte Content Moderator na webu
 
@@ -34,7 +34,7 @@ Nástroj pro kontrolu Content Moderator je webový nástroj, který umožňuje l
 
 ## <a name="create-a-review-team"></a>Vytvořit tým pro revize
 
-Dále vytvořte tým revize. V pracovním scénáři bude tento tým skupinou uživatelů, kteří ručně kontrolují rozhodnutí o moderování služby. Chcete-li vytvořit tým, je nutné vybrat **oblast** a zadat **název týmu** a **ID týmu** . Pokud chcete kolegům pozvat do týmu, můžete to udělat tak, že zadáte e-mailovou adresu.
+Dále vytvořte tým revize. V pracovním scénáři bude tento tým skupinou uživatelů, kteří ručně kontrolují rozhodnutí o moderování služby. Chcete-li vytvořit tým, je nutné vybrat **oblast** a zadat **název týmu** a **ID týmu**. Pokud chcete kolegům pozvat do týmu, můžete to udělat tak, že zadáte e-mailovou adresu.
 
 > [!NOTE]
 > **Název týmu** je popisný název pro váš tým recenze. Toto je název zobrazený v Azure Portal. **ID týmu** je to, co se používá k identifikaci programově týmu.
@@ -49,7 +49,7 @@ Pokud se rozhodnete šifrovat data pomocí klíče spravovaného zákazníkem (C
 
 ## <a name="upload-sample-content"></a>Nahrát ukázkový obsah
 
-Teď jste připraveni nahrát ukázkový obsah. Vyberte možnost **vyzkoušet > obrázek** , **zkuste > Text** nebo **Vyzkoušejte > video** .
+Teď jste připraveni nahrát ukázkový obsah. Vyberte možnost **vyzkoušet > obrázek**, **zkuste > Text** nebo **Vyzkoušejte > video**.
 
 > [!div class="mx-imgBorder"]
 > ![Vyzkoušení obrázku nebo moderování textu](images/tryimagesortext.png)
@@ -88,6 +88,6 @@ Nebo pokračujte dalšími kroky, abyste mohli začít používat rozhraní API 
 ## <a name="next-steps"></a>Další kroky
 
 Naučte se používat rozhraní API pro moderování ve vaší aplikaci.
-- Implementujte moderování imagí. Použijte [konzolu rozhraní API](try-image-api.md) nebo postupujte podle pokynů k [rychlému zprovoznění klientské knihovny](client-libraries.md) a pomocí značek, hodnocení spolehlivosti a dalších extrahovaných informací vyhledejte potenciální obsah pro dospělé a pikantní.
-- Implementujte moderování textu. Použijte [konzolu rozhraní API](try-text-api.md) nebo pomocí nástroje pro [rychlý Start knihovny klienta](client-libraries.md) naskenujte textový obsah pro potenciální vulgární výrazy, nepotřebnou klasifikaci textu s asistencí pro počítače (Preview) a osobní údaje.
+- Implementujte moderování imagí. Použijte [konzolu rozhraní API](try-image-api.md) nebo použijte [klientskou knihovnu nebo REST API rychlý Start](client-libraries.md) pro skenování imagí a detekci potenciálního dospělého a pikantní obsahu pomocí značek, hodnocení spolehlivosti a dalších extrahovaných informací.
+- Implementujte moderování textu. Použijte [konzolu rozhraní API](try-text-api.md) nebo použijte [klientskou knihovnu nebo REST API rychlý Start](client-libraries.md) pro kontrolu textového obsahu pro potenciální vulgární výrazy, nepotřebnou klasifikaci textu s asistencí počítače (Preview) a osobní údaje.
 - Implementujte moderování videa. Postupujte podle pokynů v tématu [postup pro jazyk C#](video-moderation-api.md) , který vám pomůže při skenování videí a detekci potenciálního dospělého a pikantní obsahu. 

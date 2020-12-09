@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0769366ad56e1b7431dbfa7c95f1256c509d24fa
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: bed64df921326ad4d219f934f7a7bc6860bfc7d8
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358163"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861897"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Použití spravovaných identit pro prostředky Azure na virtuálním počítači Azure k získání přístupového tokenu 
 
@@ -30,7 +30,7 @@ Spravované identity pro prostředky Azure poskytují služby Azure s automatick
 
 Tento článek poskytuje různé příklady kódu a skriptů pro získání tokenu a také pokyny k důležitým tématům, jako je zpracování vypršení platnosti tokenu a chyby protokolu HTTP. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -64,7 +64,7 @@ Klientská aplikace může pro přístup k danému prostředku požádat o sprav
 
 Základní rozhraní pro získání přístupového tokenu je založené na REST, které je dostupné pro všechny klientské aplikace spuštěné na virtuálním počítači, které můžou provádět volání HTTP REST. To se podobá programovacímu modelu Azure AD s tím rozdílem, že klient používá koncový bod na virtuálním počítači (oproti koncovému bodu Azure AD).
 
-Ukázková žádost s použitím koncového bodu Azure Instance Metadata Service ( *doporučeno)* :
+Ukázková žádost s použitím koncového bodu Azure Instance Metadata Service ( *doporučeno)*:
 
 ```
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
@@ -81,7 +81,7 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `client_id` | Volitelné Parametr řetězce dotazu, který označuje client_id spravované identity, pro kterou chcete vytvořit token. Vyžaduje se, pokud má váš virtuální počítač více spravovaných identit přiřazených uživatelem.|
 | `mi_res_id` | Volitelné Parametr řetězce dotazu, který označuje mi_res_id (ID prostředku Azure) spravované identity, pro kterou chcete token. Vyžaduje se, pokud má váš virtuální počítač více spravovaných identit přiřazených uživatelem. |
 
-Ukázková žádost s použitím spravovaných identit pro Azure Resources Endpoint Extension *(plánované pro vyřazení v lednu 2019)* :
+Ukázková žádost s použitím spravovaných identit pro Azure Resources Endpoint Extension *(plánované pro vyřazení v lednu 2019)*:
 
 ```http
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
@@ -125,7 +125,7 @@ Content-Type: application/json
 
 ## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>Získání tokenu pomocí knihovny Microsoft. Azure. Services. AppAuthentication pro .NET
 
-Pro aplikace a funkce .NET je nejjednodušší způsob práce se spravovanými identitami prostředků Azure prostřednictvím balíčku Microsoft. Azure. Services. AppAuthentication. Tato knihovna vám také umožní testovat kód místně na vývojovém počítači pomocí uživatelského účtu ze sady Visual Studio, [Azure CLI](/cli/azure?view=azure-cli-latest)nebo integrovaného ověřování služby Active Directory. Další informace o možnostech místního vývoje pomocí této knihovny najdete v [referenčních informacích k Microsoft. Azure. Services. AppAuthentication](../../key-vault/general/service-to-service-authentication.md). V této části se dozvíte, jak začít s knihovnou ve vašem kódu.
+Pro aplikace a funkce .NET je nejjednodušší způsob práce se spravovanými identitami prostředků Azure prostřednictvím balíčku Microsoft. Azure. Services. AppAuthentication. Tato knihovna vám také umožní testovat kód místně na vývojovém počítači pomocí uživatelského účtu ze sady Visual Studio, [Azure CLI](/cli/azure)nebo integrovaného ověřování služby Active Directory. Další informace o možnostech místního vývoje pomocí této knihovny najdete v [referenčních informacích k Microsoft. Azure. Services. AppAuthentication](../../key-vault/general/service-to-service-authentication.md). V této části se dozvíte, jak začít s knihovnou ve vašem kódu.
 
 1. Do své aplikace přidejte odkazy na balíčky [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) a [Microsoft. Azure. trezoru](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) .
 

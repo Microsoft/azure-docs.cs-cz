@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: 291586bc2e34784a7bbf29016ea1da35d51e844b
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: bb2eb36e4116c17efb20946b0da4586678838f3b
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489943"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861999"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Kurz: spuštění Azure Functions z úloh Azure Stream Analytics 
 
@@ -150,14 +150,14 @@ Postupem uvedeným v kurzu [Zjišťování možných podvodů v reálném čase]
    |Alias pro výstup| Popisný název, který v dotazu úlohy používáte k odkazu na výstup |
    |Možnost importu| Můžete použít funkci z aktuálního předplatného nebo ručně zadat nastavení, pokud se funkce nachází v jiném předplatném. |
    |Function App| Název vaší aplikace Functions |
-   |Function| Název funkce ve vaší aplikaci Functions (název vaší funkce run.csx)|
+   |Funkce| Název funkce ve vaší aplikaci Functions (název vaší funkce run.csx)|
    |Maximální velikost dávky|Nastaví maximální velikost pro každou výstupní dávku, která se pošle do vaší funkce v bajtech. Ve výchozím nastavení je tato hodnota nastavená na 262 144 bajtů (256 KB).|
    |Maximální počet v dávce|Určuje maximální počet událostí v každé dávce, která se odesílá do dané funkce. Výchozí hodnota je 100. Tato vlastnost je nepovinná.|
    |Klíč|Umožňuje vám použít funkci z jiného předplatného. Zadejte hodnotu klíče pro přístup k dané funkci. Tato vlastnost je nepovinná.|
 
-3. Zadejte název aliasu pro výstup. V tomto kurzu se jmenuje **saop1** , ale můžete použít libovolný název. Zadejte další podrobnosti.
+3. Zadejte název aliasu pro výstup. V tomto kurzu se jmenuje **saop1**, ale můžete použít libovolný název. Zadejte další podrobnosti.
 
-4. Otevřete úlohu Stream Analytics a aktualizujte dotaz následujícím způsobem. Pokud jste své výstupní jímky nevytvořili **saop1** , nezapomeňte je změnit v dotazu.  
+4. Otevřete úlohu Stream Analytics a aktualizujte dotaz následujícím způsobem. Pokud jste své výstupní jímky nevytvořili **saop1**, nezapomeňte je změnit v dotazu.  
 
    ```sql
     SELECT
@@ -195,7 +195,9 @@ Postupem uvedeným v kurzu [Zjišťování možných podvodů v reálném čase]
 Pokud při posílání událostí do Azure Functions dojde k selhání, Stream Analytics opakuje většinu operací. Všechny výjimky http se zopakují až do úspěchu s výjimkou chyby HTTP 413 (entita je moc velká). Entita příliš velká chyba je považována za chybu dat, která je předmětem [zásad opakování nebo vyřazení](stream-analytics-output-error-policy.md).
 
 > [!NOTE]
-> Časový limit pro požadavky HTTP od Stream Analytics do Azure Functions je nastaven na 100 sekund. Pokud vaše aplikace Azure Functions pro zpracování dávky trvá déle než 100 sekund, Stream Analytics chyby.
+> Časový limit pro požadavky HTTP od Stream Analytics do Azure Functions je nastaven na 100 sekund. Pokud vaše aplikace Azure Functions pro zpracování dávky trvá déle než 100 sekund, Stream Analytics chyby a rety se pro dávku.
+
+Opakovaný pokus o vypršení časového limitu může způsobit duplicitní události zapsané do výstupní jímky. Když se Stream Analytics pokusy o selhání dávky, pokusy se znovu pokusí o všechny události v dávce. Představte si například dávku 20 událostí, které se odesílají do Azure Functions z Stream Analytics. Předpokládejme, že Azure Functions zpracování prvních 10 událostí v této dávce trvá 100 sekund. Po 100 sekundách Pass Stream Analytics pozastaví požadavek, protože neobdržel kladnou odpověď od Azure Functions a pošle se do stejné dávky další požadavek. Prvních 10 událostí v dávce se znovu zpracuje pomocí Azure Functions, což způsobí duplicitní. 
 
 ## <a name="known-issues"></a>Známé problémy
 
@@ -210,7 +212,7 @@ Podpora pro připojení k Azure Functions hostované ve virtuální síti není 
 Odstraňte skupinu prostředků, úlohu streamování a všechny související prostředky, pokud je už nepotřebujete. Odstraněním úlohy se zabrání zaúčtování jednotek streamování, které daná úloha spotřebovává. Pokud plánujete používat tuto úlohu v budoucnu, můžete ji zastavit a znovu ji spustit později, až ji budete potřebovat. Pokud nebudete tuto úlohu nadále používat, odstraňte všechny prostředky vytvořené podle tohoto rychlého startu pomocí následujícího postupu:
 
 1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku.  
-2. Na stránce skupiny prostředků klikněte na **Odstranit** , do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
+2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

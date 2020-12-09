@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6c30dffbc8f97273ee59ce33ae3fe75ed730763
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: b2ce3b362d02e7acb0a11e6d93b8e94ca8e4d04e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356633"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903526"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Vytvoření nového balíčku pro přístup ve správě nároků Azure AD
 
@@ -57,7 +57,7 @@ Tady je postup vysoké úrovně pro vytvoření nového přístupového balíčk
 
 **Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Klikněte na **Azure Active Directory** a pak na zásady **správného řízení identity**.
 
@@ -89,7 +89,7 @@ Na kartě **základy** udělíte přístupovému balíčku název a určíte, ke
 
 Na kartě **role prostředků** vyberte prostředky, které se mají zahrnout do balíčku pro přístup. Uživatelé, kteří požadují a obdrží balíček pro přístup, obdrží všechny role prostředků v balíčku pro přístup.
 
-1. Klikněte na typ prostředku, který chcete přidat ( **skupiny a týmy** , **aplikace** nebo **weby SharePointu** ).
+1. Klikněte na typ prostředku, který chcete přidat (**skupiny a týmy**, **aplikace** nebo **weby SharePointu**).
 
 1. V zobrazeném podokně vyberte jeden nebo více prostředků ze seznamu.
 
@@ -106,6 +106,9 @@ Na kartě **role prostředků** vyberte prostředky, které se mají zahrnout do
     ![Přístup k balíčku – výběr role prostředků](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
 1. Klikněte na **Next** (Další).
+
+>[!NOTE]
+>Do katalogu a přístupového balíčku můžete přidat dynamické skupiny. Při správě prostředku dynamické skupiny v přístupovém balíčku ale budete moct vybrat jenom roli vlastníka.
 
 ## <a name="requests"></a>Žádosti
 

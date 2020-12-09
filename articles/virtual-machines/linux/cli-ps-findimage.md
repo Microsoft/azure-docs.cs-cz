@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 34f43d51bf0df488e04605f7f7c77e9c6dcfe9a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56d2aa9f7aa36808774876ac0f5cfc596887ff26
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374078"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906382"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Vyhledání imagí virtuálních počítačů s Linuxem na Azure Marketplace pomocí Azure CLI
 
@@ -22,6 +22,45 @@ K dispozici je také procházení dostupných imagí a nabídek pomocí [Azure M
 Ujistěte se, že jste nainstalovali nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) a že jste přihlášeni k účtu Azure ( `az login` ).
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
+
+
+## <a name="deploy-from-a-vhd-using-purchase-plan-parameters"></a>Nasazení z VHD pomocí parametrů plánu nákupu
+
+Pokud máte existující virtuální pevný disk, který byl vytvořen pomocí placené Azure Marketplace image, může být nutné při vytváření nového virtuálního počítače z daného virtuálního pevného disku poskytnout informace o plánu nákupu. 
+
+Pokud máte i nadále původní virtuální počítač nebo jiný virtuální počítač vytvořený pomocí stejné image na webu Marketplace, můžete z něj získat název plánu, vydavatele a informace o produktu pomocí [příkaz AZ VM Get-instance-View](/cli/azure/vm#az_vm_get_instance_view). Tento příklad načte virtuální počítač s názvem *myVM* ve skupině prostředků *myResourceGroup* a pak zobrazí informace o plánu nákupu.
+
+```azurepowershell-interactive
+az vm get-instance-view -g myResourceGroup -n myVM --query plan
+```
+
+Pokud jste neobdrželi informace o plánu před odstraněním původního virtuálního počítače, můžete [požádat o podporu](https://ms.portal.azure.com/#create/Microsoft.Support). Budou potřebovat název virtuálního počítače, ID předplatného a časové razítko operace odstranění.
+
+Jakmile budete mít informace o plánu, můžete vytvořit nový virtuální počítač pomocí `--attach-os-disk` parametru a zadat virtuální pevný disk.
+
+```azurecli-interactive
+az vm create \
+   --resource-group myResourceGroup \
+  --name myNewVM \
+  --nics myNic \
+  --size Standard_DS1_v2 --os-type Linux \
+  --attach-os-disk myVHD \
+  --plan-name planName \
+  --plan-publisher planPublisher \
+  --plan-product planProduct 
+```
+
+## <a name="deploy-a-new-vm-using-purchase-plan-parameters"></a>Nasazení nového virtuálního počítače s využitím parametrů plánu nákupu
+
+Pokud již máte informace o imagi, můžete ji nasadit pomocí `az vm create` příkazu. V tomto příkladu nasadíme virtuální počítač s imagí RabbitMQ Certified by Bitnami:
+
+```azurecli
+az group create --name myResourceGroupVM --location westus
+
+az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabbitmq:rabbitmq:latest --plan-name rabbitmq --plan-product rabbitmq --plan-publisher bitnami
+```
+
+Pokud se vám zobrazí zpráva, jak přijmout podmínky obrázku, přečtěte si část [přijměte podmínky](#accept-the-terms) dále v tomto článku.
 
 ## <a name="list-popular-images"></a>Výpis oblíbených imagí
 
@@ -325,7 +364,7 @@ Výstup:
 }
 ```
 
-### <a name="accept-the-terms"></a>Přijetí podmínek použití
+## <a name="accept-the-terms"></a>Přijetí podmínek použití
 
 Pokud si chcete zobrazit a přijmout licenční podmínky, použijte příkaz [AZ VM Image Accept-terms](/cli/azure/vm/image?) . Když souhlasíte s podmínkami, povolíte v předplatném programové nasazení. Pro bitovou kopii musíte pro Image přijmout jenom jednou za odběr. Například:
 
@@ -350,16 +389,6 @@ Výstup obsahuje `licenseTextLink` licenční smlouvy a označuje, že hodnota `
   "signature": "XXXXXXLAZIK7ZL2YRV5JYQXONPV76NQJW3FKMKDZYCRGXZYVDGX6BVY45JO3BXVMNA2COBOEYG2NO76ONORU7ITTRHGZDYNJNXXXXXX",
   "type": "Microsoft.MarketplaceOrdering/offertypes"
 }
-```
-
-### <a name="deploy-using-purchase-plan-parameters"></a>Nasazení pomocí parametrů plánu nákupu
-
-Po přijetí podmínek pro image můžete nasadit virtuální počítač v rámci předplatného. Chcete-li nasadit bitovou kopii pomocí `az vm create` příkazu, zadejte kromě názvu URN obrázku také parametry pro plán nákupu. Pokud například chcete nasadit virtuální počítač s RabbitMQ certifikováno pomocí Bitnami Image:
-
-```azurecli
-az group create --name myResourceGroupVM --location westus
-
-az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabbitmq:rabbitmq:latest --plan-name rabbitmq --plan-product rabbitmq --plan-publisher bitnami
 ```
 
 ## <a name="next-steps"></a>Další kroky

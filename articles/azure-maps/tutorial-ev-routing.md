@@ -1,20 +1,20 @@
 ---
-title: 'Kurz: směrování elektrických vozidel pomocí Azure Notebooks (Python) | Mapy Microsoft Azure'
+title: 'Kurz: směrování elektrických vozidel pomocí Azure Notebooks (Python) s mapami Microsoft Azure'
 description: Kurz týkající se směrování elektrických vozidel pomocí rozhraní API pro směrování v Microsoft Azure Maps a Azure Notebooks
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/12/2019
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 6dde7abef1769b9441c037f3727e7fd9d83ab172
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: f30b99a1d9c8303d5b2ed4b02819d0ca837946d2
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896814"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905736"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Kurz: směrování elektrických vozidel pomocí Azure Notebooks (Python)
 
@@ -50,11 +50,11 @@ Další informace o ověřování v Azure Maps najdete v tématu [Správa ověř
 Chcete-li postupovat spolu s tímto kurzem, je třeba vytvořit projekt Azure Notebooks a stáhnout a spustit Jupyter Notebook soubor. Jupyter Notebook soubor obsahuje kód Pythonu, který implementuje scénář v tomto kurzu. Chcete-li vytvořit projekt Azure Notebooks a nahrát do něj dokument Jupyter Notebook, proveďte následující kroky:
 
 1. Přejít na [Azure Notebooks](https://notebooks.azure.com) a přihlásit se. Další informace najdete v tématu [rychlý Start: přihlášení a nastavení ID uživatele](../notebooks/quickstart-sign-in-azure-notebooks.md).
-1. V horní části stránky veřejného profilu vyberte **Moje projekty** .
+1. V horní části stránky veřejného profilu vyberte **Moje projekty**.
 
     ![Tlačítko Moje projekty](./media/tutorial-ev-routing/myproject.png)
 
-1. Na stránce **Moje projekty** vyberte **Nový projekt** .
+1. Na stránce **Moje projekty** vyberte **Nový projekt**.
  
    ![Tlačítko Nový projekt](./media/tutorial-ev-routing/create-project.png)
 
@@ -62,7 +62,7 @@ Chcete-li postupovat spolu s tímto kurzem, je třeba vytvořit projekt Azure No
  
     ![Podokno vytvořit nový projekt](./media/tutorial-ev-routing/create-project-window.png)
 
-1. Vyberte **Vytvořit** .
+1. Vyberte **Vytvořit**.
 
 1. Po vytvoření projektu Stáhněte tento [soubor dokumentu Jupyter notebook](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) z [úložiště Azure Maps Jupyter notebook](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook).
 
@@ -70,26 +70,26 @@ Chcete-li postupovat spolu s tímto kurzem, je třeba vytvořit projekt Azure No
 
     ![Odeslat Jupyter Notebook](./media/tutorial-ev-routing/upload-notebook.png)
 
-1. Nahrajte soubor z počítače a potom vyberte **Hotovo** .
+1. Nahrajte soubor z počítače a potom vyberte **Hotovo**.
 
 1. Po úspěšném dokončení nahrávání se Váš soubor zobrazí na stránce projektu. Dvakrát klikněte na soubor a otevřete ho jako Jupyter Notebook.
 
 Zkuste pochopit funkčnost, která je implementovaná v souboru Jupyter Notebook. Spusťte kód v souboru Jupyter Notebook vždy po jedné buňce. Kód můžete v každé buňce spustit tak, že v horní části aplikace Jupyter Notebook vyberete tlačítko **Spustit** .
 
-  ![Tlačítko Spustit](./media/tutorial-ev-routing/run.png)
+  ![Tlačítko spustit](./media/tutorial-ev-routing/run.png)
 
 ## <a name="install-project-level-packages"></a>Instalovat balíčky na úrovni projektu
 
 Chcete-li spustit kód v Jupyter Notebook, nainstalujte balíčky na úrovni projektu pomocí následujících kroků:
 
 1. Stáhněte soubor [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) z [úložiště Azure Maps Jupyter notebook](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)a pak ho nahrajte do svého projektu.
-1. Na řídicím panelu projekt vyberte **nastavení projektu** . 
-1. V podokně **nastavení projektu** vyberte kartu **prostředí** a pak vyberte **Přidat** .
+1. Na řídicím panelu projekt vyberte **nastavení projektu**. 
+1. V podokně **nastavení projektu** vyberte kartu **prostředí** a pak vyberte **Přidat**.
 1. V části **nastavení prostředí** proveďte následující kroky:   
-    a. V prvním rozevíracím seznamu vyberte možnost **Requirements.txt** .  
+    a. V prvním rozevíracím seznamu vyberte možnost **Requirements.txt**.  
     b. V druhém rozevíracím seznamu vyberte soubor *requirements.txt* .  
     c. V třetím rozevíracím seznamu vyberte v části vaše verze **Python verze 3,6** .
-1. Vyberte **Uložit** .
+1. Vyberte **Uložit**.
 
     ![Nainstalovat balíčky](./media/tutorial-ev-routing/install-packages.png)
 
@@ -108,7 +108,7 @@ from IPython.display import Image, display
 
 Společnost pro doručování balíčků má ve svém loďstvu některá elektrická vozidla. V průběhu dne musí být elektrická vozidla znovu naúčtována bez nutnosti vracet se do skladu. Pokaždé, když se zbývající poplatek sníží na méně než hodinu, vyhledáte sadu zpoplatněných stanic, které jsou v dosahu dosažitelného rozsahu. V podstatě vyhledáváte stanoviště zpoplatnění při nízkém nabití baterie. A získáte informace o hranicích pro daný rozsah zpoplatněných stanic. 
 
-Vzhledem k tomu, že se společnost upřednostňuje používat trasy, které vyžadují rovnováhu mezi ekonomicky a rychlostí, je požadovaná routeTypea *ekosystém* . Následující skript volá [rozhraní API rozsahu trasy](/rest/api/maps/route/getrouterange) služby Azure Maps Routing Service. Používá parametry pro model spotřeby vozidla. Skript pak analyzuje odpověď a vytvoří objekt mnohoúhelníku ve formátu injson, který představuje maximální dosažitelný rozsah auta.
+Vzhledem k tomu, že se společnost upřednostňuje používat trasy, které vyžadují rovnováhu mezi ekonomicky a rychlostí, je požadovaná routeTypea *ekosystém*. Následující skript volá [rozhraní API rozsahu trasy](/rest/api/maps/route/getrouterange) služby Azure Maps Routing Service. Používá parametry pro model spotřeby vozidla. Skript pak analyzuje odpověď a vytvoří objekt mnohoúhelníku ve formátu injson, který představuje maximální dosažitelný rozsah auta.
 
 Chcete-li určit hranice pro dostupný rozsah elektrického vozidla, spusťte skript v následující buňce:
 
@@ -171,9 +171,9 @@ for loc in range(len(searchPolyResponse["results"])):
                 reachableLocations.append(location)
 ```
 
-## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>Nahrajte dostupný rozsah a vyúčtování bodů do služby Azure Maps data Service.
+## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service-preview"></a>Nahrajte dostupný rozsah a vyúčtování bodů do služby Azure Maps data Service (Preview).
 
-Na mapě budete chtít vizualizovat stanice zpoplatnění a hranici pro maximální dosažitelný rozsah elektrického vozidla. Provedete to tak, že nahrajete data hranic a nabíjíte data stanic jako své objekty pro Azure Maps datovou službu. Použijte [rozhraní API pro nahrání dat](/rest/api/maps/data/uploadpreview). 
+Na mapě budete chtít vizualizovat stanice zpoplatnění a hranici pro maximální dosažitelný rozsah elektrického vozidla. Provedete to tak, že do služby Data Service (Preview) nahrajete data hranic a vybíjíte data stanic jako své Azure Maps objekty. Použijte [rozhraní API pro nahrání dat](/rest/api/maps/data/uploadpreview). 
 
 Chcete-li nahrát data hranice a bodu zpoplatnění do služby Azure Maps data Service, spusťte následující dvě buňky:
 
@@ -194,7 +194,7 @@ rangeData = {
   ]
 }
 
-# Upload the range data to Azure Maps Data Service.
+# Upload the range data to Azure Maps Data service (Preview).
 uploadRangeResponse = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = rangeData)
 
 rangeUdidRequest = uploadRangeResponse.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
@@ -223,7 +223,7 @@ poiData = {
   ]
 }
 
-# Upload the electric vehicle charging station data to Azure Maps Data Service.
+# Upload the electric vehicle charging station data to Azure Maps Data service (Preview).
 uploadPOIsResponse = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = poiData)
 
 poiUdidRequest = uploadPOIsResponse.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
@@ -336,12 +336,12 @@ routeData = {
 
 ## <a name="visualize-the-route"></a>Vizualizace trasy
 
-Pro lepší vizualizaci trasy nejprve odešlete data směrování jako objekt pro obAzure Maps datové služby. K tomu použijte Azure Maps [rozhraní API pro nahrání dat](/rest/api/maps/data/uploadpreview). Pak zavolejte vykreslovací službu, [Získejte rozhraní API mapy](/rest/api/maps/render/getmapimage)pro vykreslení trasy na mapě a vizualizujte ji.
+Pro lepší vizualizaci trasy nejprve odešlete data směrování jako objekt pro zobrazení dat typu "injson" do služby Azure Maps data Service (Preview). K tomu použijte Azure Maps [rozhraní API pro nahrání dat](/rest/api/maps/data/uploadpreview). Pak zavolejte vykreslovací službu, [Získejte rozhraní API mapy](/rest/api/maps/render/getmapimage)pro vykreslení trasy na mapě a vizualizujte ji.
 
 Chcete-li získat obrázek pro vykreslenou trasu na mapě, spusťte následující skript:
 
 ```python
-# Upload the route data to Azure Maps Data Service.
+# Upload the route data to Azure Maps Data service (Preview).
 routeUploadRequest = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = routeData)
 
 udidRequestURI = routeUploadRequest.headers["Location"]+"&subscription-key={}".format(subscriptionKey)

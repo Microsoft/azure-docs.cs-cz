@@ -4,12 +4,12 @@ description: Jak zajistit maximální možnou dostupnost a konzistenci s Azure E
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 774332b8f2d5c336f1a22d717516ae35a62b341f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81bacd5507396352bb814310979498234ee35347
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000630"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902897"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Dostupnost a konzistence ve službě Event Hubs
 
@@ -40,7 +40,9 @@ Pokud vytvoříte nový objekt **[EventHubClient](/dotnet/api/microsoft.azure.ev
 Pro případy použití, které vyžadují maximální dobu provozu, je tento model upřednostňován.
 
 ## <a name="consistency"></a>Konzistence
-V některých scénářích může být řazení událostí důležité. Například může být vhodné, aby váš back-end systém zpracovával příkaz Update před příkazem DELETE. V této instanci můžete buď nastavit klíč oddílu na událost, nebo použít `PartitionSender` objekt (Pokud používáte starou knihovnu Microsoft. Azure. Messaging) k posílání událostí jenom na určitý oddíl. Tím zajistíte, že při čtení těchto událostí z oddílu budou čteny v daném pořadí. Pokud používáte knihovnu **Azure. Messaging. EventHubs** a další informace najdete v tématu [migrace kódu z PartitionSender do EventHubProducerClient pro publikování událostí do oddílu](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition).
+V některých scénářích může být řazení událostí důležité. Například může být vhodné, aby váš back-end systém zpracovával příkaz Update před příkazem DELETE. V této instanci můžete buď nastavit klíč oddílu na událost, nebo použít `PartitionSender` objekt (Pokud používáte starou knihovnu Microsoft. Azure. Messaging) k posílání událostí jenom na určitý oddíl. Tím zajistíte, že při čtení těchto událostí z oddílu budou čteny v daném pořadí. 
+
+Pokud používáte novější knihovnu **Azure. Messaging. EventHubs** , přečtěte si téma [migrace kódu z PartitionSender do EventHubProducerClient pro publikování událostí do oddílu](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition).
 
 #### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure. Messaging. EventHubs (5.0.0 nebo novější)](#tab/latest)
 

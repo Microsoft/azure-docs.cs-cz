@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9ed3a4b0827e81b3f779d95a6eab1dc341e69bb1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: de446209104c113b10346645f79b461239c3efab
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019374"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901266"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Bezpečné načtení dat pomocí synapse SQL
 
@@ -23,11 +23,14 @@ Tento článek popisuje a poskytuje příklady mechanismů zabezpečeného ově�
 
 Následující matice popisuje podporované metody ověřování pro každý typ souboru a účet úložiště. To platí pro zdrojové umístění úložiště a umístění chybového souboru.
 
-|                          |                CSV                |              Parquet               |                ORC                 |
-| :----------------------: | :-------------------------------: | :-------------------------------:  | :-------------------------------:  |
-|  **Úložiště objektů BLOB v Azure**  | SAS/MSI/INSTANČNÍ OBJEKT/KLÍČ/AAD |              SAS/KLÍČ               |              SAS/KLÍČ               |
-| **Azure Data Lake Gen2** | SAS/MSI/INSTANČNÍ OBJEKT/KLÍČ/AAD | SAS (koncový bod objektu BLOB)/MSI (koncový bod DFS)/SERVICE hlavní klíč/AAD | SAS (koncový bod objektu BLOB)/MSI (koncový bod DFS)/SERVICE hlavní klíč/AAD |
+|                          |                CSV                |                      Parquet                       |                        ORC                         |
+| :----------------------: | :-------------------------------: | :------------------------------------------------: | :------------------------------------------------: |
+|  **Azure Blob Storage**  | SAS/MSI/INSTANČNÍ OBJEKT/KLÍČ/AAD |                      SAS/KLÍČ                       |                      SAS/KLÍČ                       |
+| **Azure Data Lake Gen2** | SAS/MSI/INSTANČNÍ OBJEKT/KLÍČ/AAD | SAS (BLOB<sup>1</sup>)/MSI (DFS<sup>2</sup>)/Service Principal/Key/AAD | SAS (BLOB<sup>1</sup>)/MSI (DFS<sup>2</sup>)/Service Principal/Key/AAD |
 
+1: pro tuto metodu ověřování je vyžadován koncový bod objektu BLOB (**. blob**. Core.Windows.NET) v cestě k externímu umístění.
+
+2: pro tuto metodu ověřování je vyžadován koncový bod. DFS (**. DFS**. Core.Windows.NET) v cestě k externímu umístění.
 
 ## <a name="a-storage-account-key-with-lf-as-the-row-terminator-unix-style-new-line"></a>A. Klíč účtu úložiště s LF jako ukončovací znak řádku (nový řádek systému UNIX)
 
@@ -69,27 +72,40 @@ WITH (
 
 Pokud je váš účet úložiště připojený k virtuální síti, vyžaduje se spravované ověřování identity. 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 1. Pomocí tohoto [průvodce](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) nainstalujte Azure PowerShell.
 2. Pokud máte účet úložiště pro obecné účely verze 1 nebo účet úložiště objektů blob, musíte nejprve pomocí tohoto [průvodce](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) upgradovat na účet úložiště pro obecné účely verze 2.
 3. Abyste měli přístup k tomuto účtu úložiště zapnutý, musíte mít **povolené důvěryhodné služby Microsoftu** v nabídce Azure Storage **brány firewall účtů a nastavení virtuálních sítí** . Další informace najdete v tomto [průvodci](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions).
+
 #### <a name="steps"></a>Postup
 
-1. V prostředí PowerShell **Zaregistrujte SQL Server** pomocí Azure Active Directory:
+1. Pokud máte samostatný vyhrazený fond SQL, zaregistrujte SQL Server pomocí Azure Active Directory (AAD) pomocí prostředí PowerShell: 
 
    ```powershell
    Connect-AzAccount
-   Select-AzSubscription -SubscriptionId your-subscriptionId
-   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+   Select-AzSubscription -SubscriptionId <subscriptionId>
+   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
-2. Pomocí této [příručky](../../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)vytvořte **účet úložiště pro obecné účely v2** .
+   Tento krok není nutný pro vyhrazené fondy SQL v pracovním prostoru synapse.
+
+1. Pokud máte pracovní prostor synapse, zaregistrujte identitu spravovanou systémem v pracovním prostoru:
+
+   1. V Azure Portal můžete přejít do svého pracovního prostoru synapse
+   2. Přejít na okno spravované identity 
+   3. Ujistěte se, že je povolená možnost Povolit kanály.
+   
+   ![Registrovat MSI systému v pracovním prostoru](./media/quickstart-bulk-load-copy-tsql-examples/msi-register-example.png)
+
+1. Pomocí této [příručky](../../storage/common/storage-account-create.md)vytvořte **účet úložiště pro obecné účely v2** .
 
    > [!NOTE]
-   > Pokud máte účet úložiště pro obecné účely v1 nebo blob, musíte **nejdřív upgradovat na verzi v2** pomocí této [příručky](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+   >
+   > - Pokud máte účet úložiště pro obecné účely v1 nebo blob, musíte **nejdřív upgradovat na verzi v2** pomocí této [příručky](../../storage/common/storage-account-upgrade.md).
+   > - Známé problémy s Azure Data Lake Storage Gen2 najdete v tomto [Průvodci](../../storage/blobs/data-lake-storage-known-issues.md).
 
-3. V části účet úložiště přejděte na **Access Control (IAM)** a vyberte **Přidat přiřazení role**. K vašemu SQL serveru přiřaďte roli **vlastníka dat objektů BLOB úložiště, přispěvatele nebo čtenáře** .
+1. V části účet úložiště přejděte na **Access Control (IAM)** a vyberte **Přidat přiřazení role**. Přiřaďte roli Azure **Přispěvatel dat objektů BLOB úložiště** k serveru nebo pracovnímu prostoru hostujícím vyhrazený fond SQL, který jste zaregistrovali v Azure Active Directory (AAD).
 
    > [!NOTE]
    > Tento krok mohou provádět pouze členové s oprávněním vlastníka. Informace o různých předdefinovaných rolích Azure najdete v tomto [Průvodci](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).

@@ -4,12 +4,12 @@ description: Obsahuje odpovědi na některé běžné dotazy týkající se ře�
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: dikamath
-ms.openlocfilehash: 0bc3e0ab5b3017c2d051113a57d79214ffce0836
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3033df2021a8d1780caf9b0b7cd4dbe8de2a6050
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967342"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861404"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Nejčastější dotazy týkající se řešení Azure VMware
 
@@ -65,7 +65,7 @@ Díky novému řešení Azure VMware mají Microsoft a VMware přímé partnerst
 Ano, pokud je systém, na kterém je nainstalován, má přístup k privátnímu cloudu vCenter a používá veřejnou službu DNS k překladu názvů ESXi.
 
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>Existují zvláštní pokyny k instalaci a používání VMRC s virtuálními počítači řešení Azure VMware?
-Ne. Použijte [Pokyny dodávané společností VMware](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) pro splnění požadavků virtuálních počítačů uvedených v těchto pokynech. 
+No. Použijte [Pokyny dodávané společností VMware](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) pro splnění požadavků virtuálních počítačů uvedených v těchto pokynech. 
 
 #### <a name="is-vmware-hcx-supported-on-vpns"></a>Podporuje se VMware HCX na sítích VPN?
 Ne, z důvodu požadavků na šířku pásma a latenci.
@@ -74,7 +74,7 @@ Ne, z důvodu požadavků na šířku pásma a latenci.
 Služba Azure bastionu se doporučuje připojit k poli s odkazem, abyste zabránili odhalení řešení Azure VMware na Internet. Azure bastionu se nedá použít pro připojení k virtuálním počítačům řešení VMware Azure, protože se nejedná o objekty Azure IaaS.
 
 #### <a name="can-azure-load-balancer-internal-be-used-for-azure-vmware-solution-vms"></a>Dá se Azure Load Balancer interní použít pro virtuální počítače řešení Azure VMware?
-Ne. Azure Load Balancer interní – podporuje jenom virtuální počítače Azure s IaaS. Azure Load Balancer nepodporuje back-end fondy založené na IP adrese; jenom virtuální počítače Azure nebo objekty sady škálování virtuálních počítačů, ve kterých virtuální počítače řešení Azure VMware nejsou objekty Azure.
+No. Azure Load Balancer interní – podporuje jenom virtuální počítače Azure s IaaS. Azure Load Balancer nepodporuje back-end fondy založené na IP adrese; jenom virtuální počítače Azure nebo objekty sady škálování virtuálních počítačů, ve kterých virtuální počítače řešení Azure VMware nejsou objekty Azure.
 
 #### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>Může se pro připojení k řešení Azure VMware použít existující brána ExpressRoute?
 Ano, můžete použít existující bránu ExpressRoute pro připojení k řešení Azure VMware, pokud nepřekračuje limit čtyř ExpressRoute okruhů na jednu virtuální síť.  Pro přístup k řešení Azure VMware z místního prostředí prostřednictvím ExpressRoute ale musíte mít ExpressRoute Global Reach, protože brána ExpressRoute neposkytuje přechodné směrování mezi připojenými okruhy.
@@ -119,7 +119,7 @@ Použijte zásady úložiště *thin_provision* pro šablonu virtuálního poč�
 
 #### <a name="are-the-snmp-infrastructure-logs-shared"></a>Jsou protokoly infrastruktury SNMP sdílené?
 
-Ne.
+No.
 
 ## <a name="hosts-clusters-and-private-clouds"></a>Hostitelé, clustery a privátní cloudy
 
@@ -141,7 +141,7 @@ Clustery zkušební verze jsou tři hostitelské clustery, které se používaj�
 
 #### <a name="can-i-use-high-end-hosts-for-trial-clusters"></a>Můžu pro zkušební clustery použít špičkové hostitele?
 
-Ne. Vysoce koncoví hostitelé ESXi jsou rezervované pro použití v produkčních clusterech.
+No. Vysoce koncoví hostitelé ESXi jsou rezervované pro použití v produkčních clusterech.
 
 ## <a name="azure-vmware-solution-and-vmware-software"></a>Řešení Azure VMware a software VMware
 
@@ -155,7 +155,7 @@ Ano, NSX-T 2,5 se používá pro softwarově definované sítě v privátních c
 
 #### <a name="can-i-use-vmware-nsx-v-in-a-private-cloud"></a>Můžu použít VMware NSX-V v privátním cloudu?
 
-Ne. NSX-T je jediná podporovaná verze NSX.
+No. NSX-T je jediná podporovaná verze NSX.
 
 #### <a name="is-nsx-required-in-on-premises-environments-or-networks-that-connect-to-a-private-cloud"></a>Je NSX vyžadováno v místních prostředích nebo sítích, které se připojují k privátnímu cloudu?
 
@@ -188,7 +188,7 @@ V Azure Portal povolte připojení k Internetu pro privátní cloud. Pomocí Spr
 
 #### <a name="do-i-need-to-restrict-access-from-the-internet-to-vms-on-logical-networks-in-a-private-cloud"></a>Potřebuji omezit přístup z Internetu k virtuálním počítačům v logických sítích v privátním cloudu?
 
-Ne. Příchozí síťový provoz z Internetu přímo do privátních cloudů není povolený.
+No. Příchozí síťový provoz z Internetu přímo do privátních cloudů není ve výchozím nastavení povolen.  Můžete ale vystavovat virtuální počítače řešení Azure VMware na internetu prostřednictvím možnosti [veřejné IP adresy](public-ip-usage.md) v Azure Portal pro váš privátní cloud řešení Azure VMware.
 
 #### <a name="do-i-need-to-restrict-internet-access-from-vms-on-logical-networks-to-the-internet"></a>Je potřeba omezit přístup k Internetu z virtuálních počítačů v logických sítích na Internet?
 
@@ -302,7 +302,7 @@ Ano. CSP může koupit rezervované instance pro zákazníky. Další informace 
 
 #### <a name="does-azure-vmware-solution-offer-multi-tenancy-for-hosting-csp-partners"></a>Nabízí řešení Azure VMware víceklientské prostředí pro hostování partnerů CSP?
 
-Ne. V současné době řešení Azure VMware nenabízí víceklientské prostředí.
+No. V současné době řešení Azure VMware nenabízí víceklientské prostředí.
 
 #### <a name="will-traffic-between-on-premises-and-azure-vmware-solution-over-expressroute-incur-any-outbound-data-transfer-charge-in-the-metered-data-plan"></a>Budou přenosy dat mezi místními a Azure VMware přes ExpressRoute účtovány za všechny poplatky za odchozí přenosy dat v plánu měřených dat?
 

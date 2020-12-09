@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cdf89fa3281e070d6b1ac762d30d7c391f4126f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: bf91c9e081bff9860153b342648fedc0990b68b9
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963636"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862053"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -142,7 +142,7 @@ V | Může
 
 ### <a name="compliance-data-administrator"></a>[Správce dat dodržování předpisů](#compliance-data-administrator-permissions)
 
-Uživatelé s touto rolí mají oprávnění sledovat data v Microsoft 365 centrum dodržování předpisů, Microsoft 365 centrum pro správu a Azure. Uživatelé také mohou sledovat data o dodržování předpisů v centru pro správu Exchange, správců dodržování předpisů a týmech & centru pro správu Skypu pro firmy a vytvářet lístky podpory pro Azure a Microsoft 365. [Tato dokumentace](/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center?view=o365-worldwide#permissions-needed-to-use-features-in-the-security--compliance-center) obsahuje podrobnosti o rozdílech mezi správcem dodržování předpisů a správcem dat dodržování předpisů.
+Uživatelé s touto rolí mají oprávnění sledovat data v Microsoft 365 centrum dodržování předpisů, Microsoft 365 centrum pro správu a Azure. Uživatelé také mohou sledovat data o dodržování předpisů v centru pro správu Exchange, správců dodržování předpisů a týmech & centru pro správu Skypu pro firmy a vytvářet lístky podpory pro Azure a Microsoft 365. [Tato dokumentace](/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center) obsahuje podrobnosti o rozdílech mezi správcem dodržování předpisů a správcem dat dodržování předpisů.
 
 V | Může
 ----- | ----------
@@ -317,7 +317,7 @@ Uživatelé s uživatelskou rolí moderního obchodování mají obvykle oprávn
 
 **Kdy je role uživatele moderního obchodování přiřazená?**
 
-* **Nákup samoobslužných služeb v centru pro správu Microsoft 365** – nákup samoobslužných služeb dává uživatelům možnost vyzkoušet si nové produkty, a to tak, že si je zakoupí nebo zaregistrují sami. Tyto produkty se spravují v centru pro správu. Uživatelům, kteří si zakoupí samoobslužné služby, se přiřadí role v systému pro obchodování a moderní obchodní role, aby mohli spravovat své nákupy v centru pro správu. Správci můžou blokovat nákupy samoobslužných služeb (pro Power BI, Power Apps, Power Automate) prostřednictvím [PowerShellu](/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide). Další informace najdete v [nejčastějších dotazech k samoobslužnému nákupu](/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide).  
+* **Nákup samoobslužných služeb v centru pro správu Microsoft 365** – nákup samoobslužných služeb dává uživatelům možnost vyzkoušet si nové produkty, a to tak, že si je zakoupí nebo zaregistrují sami. Tyto produkty se spravují v centru pro správu. Uživatelům, kteří si zakoupí samoobslužné služby, se přiřadí role v systému pro obchodování a moderní obchodní role, aby mohli spravovat své nákupy v centru pro správu. Správci můžou blokovat nákupy samoobslužných služeb (pro Power BI, Power Apps, Power Automate) prostřednictvím [PowerShellu](/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell). Další informace najdete v [nejčastějších dotazech k samoobslužnému nákupu](/microsoft-365/commerce/subscriptions/self-service-purchase-faq).  
 * **Nákupy od komerčního tržiště Microsoftu**  – podobně jako při nákupu samoobslužných služeb, když uživatel koupí produkt nebo službu z Microsoft AppSource nebo Azure Marketplace, přiřadí se moderní obchodní role uživatele, pokud nemají roli globálního správce nebo správce fakturace. V některých případech je možné, že uživatelé můžou tyto nákupy zablokovat. Další informace najdete v tématu [komerční tržiště Microsoftu](../../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase).
 * **Návrhy od Microsoftu**  – návrh je formální nabídka Microsoftu, která vaší organizaci koupí produkty a služby Microsoftu. Když osoba, která přijímá návrh, nemá roli globálního správce nebo správce fakturace ve službě Azure AD, přiřadí se mu role specifická pro obchod pro dokončení návrhu a role uživatele moderního obchodování pro přístup k centru pro správu. Když přistupují k centru pro správu, můžou používat jenom funkce, které jsou autorizované v rámci své obchodní role.
 * **Role specifické pro obchod** – někteří uživatelé mají přiřazeny role specifické pro obchod. Pokud uživatel není globálním správcem nebo správcem fakturace, získá uživatel moderní obchodní role, aby mohl získat přístup k centru pro správu.  

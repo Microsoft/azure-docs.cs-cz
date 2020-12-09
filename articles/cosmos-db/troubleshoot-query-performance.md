@@ -8,12 +8,12 @@ ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 012e155737b9251827c668b3a9cacbbe8d59ae77
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 42f01b140a44d7aa6d75dece9a4398fd7b41bf5a
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411350"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905107"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Řešení potíží s dotazy při používání služby Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -51,7 +51,7 @@ Když v Azure Cosmos DB optimalizujete dotaz, prvním krokem je vždycky [získa
 
 Po získání metriky dotazu Porovnejte **počet načtených dokumentů** s **počtem výstupních dokumentů** pro váš dotaz. Pomocí tohoto porovnání Identifikujte relevantní oddíly, které je potřeba si projít v tomto článku.
 
-**Počet načtených dokumentů** je počet dokumentů, které dotazovací stroj potřebuje k načtení. **Počet výstupních dokumentů** je počet dokumentů, které byly potřeba pro výsledky dotazu. Pokud je **počet načtených dokumentů** výrazně vyšší než **Počet výstupních dokumentů** , existovala aspoň jedna část dotazu, která nedokázala použít index a aby se provedla kontrola.
+**Počet načtených dokumentů** je počet dokumentů, které dotazovací stroj potřebuje k načtení. **Počet výstupních dokumentů** je počet dokumentů, které byly potřeba pro výsledky dotazu. Pokud je **počet načtených dokumentů** výrazně vyšší než **Počet výstupních dokumentů**, existovala aspoň jedna část dotazu, která nedokázala použít index a aby se provedla kontrola.
 
 V následujících částech najdete informace o relevantních optimalizaci dotazů pro váš scénář.
 
@@ -93,7 +93,7 @@ V následujících částech najdete informace o relevantních optimalizaci dota
 
 ## <a name="queries-where-retrieved-document-count-exceeds-output-document-count"></a>Dotazy, kde počet načtených dokumentů překračuje počet výstupních dokumentů
 
- **Počet načtených dokumentů** je počet dokumentů, které dotazovací stroj potřebuje k načtení. **Počet výstupních dokumentů** je počet dokumentů vrácených dotazem. Pokud je **počet načtených dokumentů** výrazně vyšší než **Počet výstupních dokumentů** , existovala aspoň jedna část dotazu, která nedokázala použít index a aby se provedla kontrola.
+ **Počet načtených dokumentů** je počet dokumentů, které dotazovací stroj potřebuje k načtení. **Počet výstupních dokumentů** je počet dokumentů vrácených dotazem. Pokud je **počet načtených dokumentů** výrazně vyšší než **Počet výstupních dokumentů**, existovala aspoň jedna část dotazu, která nedokázala použít index a aby se provedla kontrola.
 
 Tady je příklad skenovacího dotazu, který nebyl zcela obsluhován indexem:
 
@@ -142,7 +142,7 @@ Vaše zásada indexování by měla zahrnovat jakékoli vlastnosti zahrnuté v `
 
 Pokud spustíte následující jednoduchý dotaz na [nutriční](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) datové sadě, budete při indexování klauzule v klauzuli pozorovat mnohem nižší poplatky za ru `WHERE` :
 
-#### <a name="original"></a>Původně
+#### <a name="original"></a>Původní
 
 Dotaz:
 
@@ -196,9 +196,7 @@ Můžete kdykoli přidat vlastnosti k zásadě indexování bez vlivu na zápis 
 
 ### <a name="understand-which-system-functions-use-the-index"></a>Pochopení, které systémové funkce používají index
 
-Pokud lze výraz přeložit do rozsahu řetězcových hodnot, může použít index. V opačném případě to nemůže.
-
-Zde je seznam některých běžných řetězcových funkcí, které mohou použít index:
+Většina systémových funkcí používá indexy. Tady je seznam některých běžných řetězcových funkcí, které používají indexy:
 
 - STARTSWITH (str_expr1, str_expr2, bool_expr)  
 - OBSAHUJE (str_expr, str_expr, bool_expr)
@@ -214,7 +212,26 @@ Níže jsou uvedeny některé běžné systémové funkce, které nepoužívají
 
 ------
 
-Jiné části dotazu mohou i nadále používat index, i když systémové funkce ne.
+Pokud systémová funkce používá indexy a má stále vysoké poplatky, můžete se pokusit o přidání `ORDER BY` do dotazu. V některých případech může přidání `ORDER BY` zlepšit využití indexu systémové funkce, zejména v případě, že je dotaz dlouhotrvající nebo pokrývá více stránek.
+
+Například zvažte následující dotaz s `CONTAINS` . `CONTAINS` měl by se použít index, ale Představte si, že po přidání relevantního indexu se při spuštění následujícího dotazu stále sleduje velmi vysoký poplatek:
+
+Původní dotaz:
+
+```sql
+SELECT *
+FROM c
+WHERE CONTAINS(c.town, "Sea")
+```
+
+Aktualizovaný dotaz s `ORDER BY` :
+
+```sql
+SELECT *
+FROM c
+WHERE CONTAINS(c.town, "Sea")
+ORDER BY c.town
+```
 
 ### <a name="understand-which-aggregate-queries-use-the-index"></a>Vysvětlení, které agregační dotazy používají index
 
@@ -277,7 +294,7 @@ Pokud máte v plánu často spouštět stejné agregované dotazy, může být e
 
 I když dotazy, které obsahují klauzuli Filter a `ORDER BY` klauzule, budou normálně používat index rozsahu, budou efektivnější, pokud je lze zpracovat ze složeného indexu. Kromě změny zásad indexování byste měli do klauzule přidat všechny vlastnosti složeného indexu `ORDER BY` . Tato změna dotazu zajistí, že se použije složený index.  Můžete sledovat dopad spuštěním dotazu na [nutriční](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) datovou sadu:
 
-#### <a name="original"></a>Původně
+#### <a name="original"></a>Původní
 
 Dotaz:
 
@@ -385,7 +402,7 @@ Předpokládejte, že pouze jedna položka v poli značek odpovídá filtru a ž
 
 ## <a name="queries-where-retrieved-document-count-is-equal-to-output-document-count"></a>Dotazy, kde se načtený počet dokumentů rovná počtu výstupních dokumentů
 
-Pokud je **počet načtených dokumentů** přibližně roven **výstupnímu počtu dokumentů** , stroj dotazů nemusel kontrolovat mnoho zbytečných dokumentů. U mnoha dotazů, například u těch, které používají `TOP` klíčové slovo, může **počet načtených dokumentů** překročit **Počet výstupních dokumentů** o 1. Nemusíte se k tomu zabývat.
+Pokud je **počet načtených dokumentů** přibližně roven **výstupnímu počtu dokumentů**, stroj dotazů nemusel kontrolovat mnoho zbytečných dokumentů. U mnoha dotazů, například u těch, které používají `TOP` klíčové slovo, může **počet načtených dokumentů** překročit **Počet výstupních dokumentů** o 1. Nemusíte se k tomu zabývat.
 
 ### <a name="minimize-cross-partition-queries"></a>Minimalizace dotazů mezi oddíly
 

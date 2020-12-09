@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: 7d6c0d13e440beb9a934adba3908cc9a08f396f1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b3c172584c42e1ed1d7ca94b6cd51bedd4e49dae
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997897"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862288"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace Ruby a Postgres v Azure App Service v systému Linux
 
@@ -30,14 +30,15 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* [Nainstalovat Git](https://git-scm.com/).
-* [Instalace Ruby 2,6](https://www.ruby-lang.org/en/documentation/installation/)
-* [Nainstalovat rámec Ruby on Rails 5.1](https://guides.rubyonrails.org/v5.1/getting_started.html).
-* [Nainstalovat a spustit PostgreSQL](https://www.postgresql.org/download/)
+- [Nainstalovat Git](https://git-scm.com/).
+- [Instalace Ruby 2,6](https://www.ruby-lang.org/en/documentation/installation/)
+- [Nainstalovat rámec Ruby on Rails 5.1](https://guides.rubyonrails.org/v5.1/getting_started.html).
+- [Instalace a spuštění PostgreSQL](https://www.postgresql.org/download/)
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="prepare-local-postgres"></a>Příprava místního Postgres
 
@@ -103,8 +104,6 @@ V prohlížeči přejděte na `http://localhost:3000`. Na stránce přidejte n�
 ![Aplikace Ruby on Rails se úspěšně připojí k Postgres](./media/tutorial-ruby-postgres-app/postgres-connect-success.png)
 
 Pokud chcete server Rails zastavit, zadejte do terminálu `Ctrl + C`.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-postgres-in-azure"></a>Vytvoření Postgres v Azure
 
@@ -292,7 +291,7 @@ git remote add azure <paste-copied-url-here>
 Nasdílením změn do vzdáleného prostředí Azure nasaďte aplikaci Ruby on Rails. Zobrazí se výzva k zadání hesla, které jste zadali dříve v rámci vytváření uživatele nasazení.
 
 ```bash
-git push azure master
+git push azure main
 ```
 
 Během nasazení bude služba Azure App Service hlásit Gitu průběh nasazení.
@@ -303,7 +302,7 @@ Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
@@ -422,7 +421,7 @@ Potvrďte všechny změny v Gitu a potom odešlete změny kódu do Azure.
 ```bash
 git add .
 git commit -m "added complete checkbox"
-git push azure master
+git push azure main
 ```
 
 Až `git push` to bude hotové, přejděte do aplikace Azure a vyzkoušejte nové funkce.

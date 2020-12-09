@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: moderátor obsahu, moderátor obsahu Azure, moderátor online, software pro filtrování obsahu, služba pro moderování obsahu, Moderování obsahu
-ms.openlocfilehash: aa1f4c1fab9b3d8a1b5db0e965f1608e694646b2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c7c996ae49bdf7aa72873322f11af754843fd835
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91596850"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905243"
 ---
 # <a name="what-is-azure-content-moderator"></a>Co je Azure Content Moderator?
 
@@ -52,7 +52,7 @@ Služba Content Moderator zahrnuje rozhraní API pro moderování, které kontro
 
 Následující tabulka popisuje různé typy rozhraní API pro moderování.
 
-| Skupina rozhraní API | Popis |
+| Skupina rozhraní API | Description |
 | ------ | ----------- |
 |[**Moderování textu**](text-moderation-api.md)| Kontroluje text pro urážlivý obsah, sexuální explicitní nebo sugestivní obsah, vulgární výrazy a osobní údaje.|
 |[**Seznamy vlastních výrazů**](try-terms-list-api.md)| Vyhledá text na základě vlastního seznamu podmínek spolu s vestavěnými podmínkami. Pomocí vlastních seznamů můžete blokovat nebo povolovat obsah podle vlastních zásad obsahu.|  
@@ -81,4 +81,4 @@ Stejně jako u všech Cognitive Services by měli vývojáři, kteří používa
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete začít používat Content Moderator na webovém portálu, postupujte podle [Content moderator vyzkoušet na webu](quick-start.md). Nebo dokončete průvodce [rychlým startem klientské knihovny](client-libraries.md) , který implementuje základní scénáře v kódu.
+Pokud chcete začít používat Content Moderator na webovém portálu, postupujte podle [Content moderator vyzkoušet na webu](quick-start.md). Nebo dokončete [knihovnu klienta nebo REST API rychlý Start](client-libraries.md) pro implementaci základních scénářů v kódu.

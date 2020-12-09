@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/13/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 7e7b524f125eda406adc9be2300c94e5944e1819
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c749dbb1cc78bf06dfe665875bc05f75152778b
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715946"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862135"
 ---
 # <a name="authorize-access-to-azure-app-configuration-using-azure-active-directory"></a>Autorizace přístupu ke konfiguraci aplikace Azure pomocí Azure Active Directory
 Kromě použití kódu HMAC (hash-based Message Authentication Code) podporuje konfigurace aplikací Azure používání služby Azure Active Directory (Azure AD) k autorizaci požadavků na instance konfigurace aplikace.  Azure AD umožňuje použít řízení přístupu na základě role Azure (Azure RBAC) k udělení oprávnění objektu zabezpečení.  Objekt zabezpečení může být uživatel, [spravovaná identita](../active-directory/managed-identities-azure-resources/overview.md) nebo [instanční objekt aplikace](../active-directory/develop/app-objects-and-service-principals.md).  Další informace o rolích a přiřazení rolí najdete v tématu [porozumění různým rolím](../role-based-access-control/overview.md).
@@ -39,7 +39,7 @@ Azure poskytuje následující předdefinované role Azure pro autorizaci přís
 - **Čtecí modul**: tuto roli použijte, pokud chcete udělit přístup pro čtení prostředku konfigurace aplikace. Tím se neudělí přístup k přístupovým klíčům prostředku ani k datům uloženým v konfiguraci aplikace.
 
 > [!NOTE]
-> V současné době Azure Portal a CLI podporují pouze ověřování HMAC pro přístup k datům konfigurace aplikace. Ověřování Azure AD se nepodporuje. Proto uživatelé Azure Portal a CLI vyžadují, aby role *Přispěvatel* načetla přístupové klíče prostředku konfigurace aplikace. Přístup k rolím *pro čtečku konfiguračních dat aplikace* nebo k *datům konfigurace aplikace* nemá žádný vliv na přístup prostřednictvím portálu a CLI.
+> V současné době Azure Portal podporuje pouze ověřování HMAC pro přístup k datům konfigurace aplikace. Ověřování Azure AD se nepodporuje. Proto uživatelé Azure Portal vyžadují, aby role *Přispěvatel* načetla přístupové klíče prostředku konfigurace aplikace. Přístup k rolím *pro čtečku konfiguračních dat aplikace* nebo k *datům konfigurace aplikace* nemá žádný vliv na přístup prostřednictvím portálu.
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o použití [spravovaných identit](howto-integrate-azure-managed-service-identity.md) ke správě služby konfigurace aplikací.

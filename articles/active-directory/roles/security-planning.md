@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a62aafd8073b5f1a35ba340c48c80f498be2c2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 3a7304ffbb7718205ead48e27989d4a169375997
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94834451"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861982"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD
 
@@ -93,7 +93,7 @@ Po zapnutí Azure AD Privileged Identity Management se podívejte na uživatele,
 * Správce Exchange
 * Správce SharePointu
 
-Pokud ve vaší organizaci nemáte Azure AD Privileged Identity Management, můžete použít [rozhraní PowerShell API](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0). Začněte s rolí globálního správce, protože globální správce má stejná oprávnění pro všechny cloudové služby, pro které má vaše organizace předplacené předplatné. Tato oprávnění se udělují bez ohledu na to, kam byla přiřazena: v centru pro správu Microsoft 365, Azure Portal nebo modulu Azure AD pro Microsoft PowerShell.
+Pokud ve vaší organizaci nemáte Azure AD Privileged Identity Management, můžete použít [rozhraní PowerShell API](/powershell/module/azuread/get-azureaddirectoryrolemember). Začněte s rolí globálního správce, protože globální správce má stejná oprávnění pro všechny cloudové služby, pro které má vaše organizace předplacené předplatné. Tato oprávnění se udělují bez ohledu na to, kam byla přiřazena: v centru pro správu Microsoft 365, Azure Portal nebo modulu Azure AD pro Microsoft PowerShell.
 
 Odeberte všechny účty, které už v těchto rolích nepotřebujete. Pak zařaďte do kategorií zbývající účty, které jsou přiřazené rolím Správce:
 
@@ -358,7 +358,7 @@ Fáze 4 plánu by se měla implementovat po dobu šesti měsíců a později. Do
 
 Zabezpečení privilegovaného přístupu je důležité pro zajištění bezpečnostních ujištění vašich obchodních prostředků. Měl by však být součástí kompletního programu zabezpečení, který poskytuje průběžné záruky zabezpečení. Tento program by měl obsahovat tyto prvky:
 
-* Zásady
+* Zásada
 * Operace
 * Zabezpečení informací
 * Servery

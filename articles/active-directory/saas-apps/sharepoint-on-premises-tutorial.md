@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 1a52fc28d99e0f072323e5042257baec9bf98ecb
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a693b22c609829f3bf6e76637eac5793d73703e6
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518378"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862305"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-sharepoint-on-premises"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí služby SharePoint v místním prostředí
 
@@ -48,7 +48,7 @@ Postup přidání místního SharePointu z Galerie:
    > [!NOTE]
    > Pokud prvek není k dispozici, můžete jej otevřít také pomocí odkazu **všechny služby** v horní části podokna vlevo. V následujícím přehledu se **Azure Active Directory** odkaz nachází v části **Identita** . Můžete ho také vyhledat pomocí pole Filtr.
 
-1. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
 1. Chcete-li přidat novou aplikaci, vyberte v horní části dialogového okna možnost **Nová aplikace** .
 
@@ -58,7 +58,7 @@ Postup přidání místního SharePointu z Galerie:
 
 1. Zadejte název místní instance SharePointu a vyberte **Přidat** pro přidání aplikace.
 
-1. V nové podnikové aplikaci vyberte možnost **vlastnosti**a ověřte, zda je požadovaná hodnota **přiřazení uživatele?**.
+1. V nové podnikové aplikaci vyberte možnost **vlastnosti** a ověřte, zda je požadovaná hodnota **přiřazení uživatele?**.
 
    <kbd>![Je vyžadováno přiřazení uživatele? přepnut](./media/sharepoint-on-premises-tutorial/user-assignment-required.png)</kbd>
 
@@ -133,7 +133,7 @@ Konfigurace jednotného přihlašování Azure AD pomocí služby SharePoint v m
     Spusťte následující příkazy, abyste nakonfigurovali nového důvěryhodného zprostředkovatele identity.
 
     > [!TIP]
-    > Pokud s prostředím PowerShell ještě začínáte a chcete získat další informace o tom, jak prostředí PowerShell funguje, podívejte se na téma [SharePoint PowerShell](/powershell/sharepoint/overview?view=sharepoint-ps).
+    > Pokud s prostředím PowerShell ještě začínáte a chcete získat další informace o tom, jak prostředí PowerShell funguje, podívejte se na téma [SharePoint PowerShell](/powershell/sharepoint/overview).
 
 
     ```
@@ -152,7 +152,7 @@ Konfigurace jednotného přihlašování Azure AD pomocí služby SharePoint v m
 
     1. Na pásu karet vyberte možnost **poskytovatelé ověřování** a zvolte zónu, kterou chcete použít.
 
-    1. Vyberte **Důvěryhodný zprostředkovatel identity**a vyberte poskytovatele identifikace, kterého jste právě zaregistrovali s názvem *AzureAD*.
+    1. Vyberte **Důvěryhodný zprostředkovatel identity** a vyberte poskytovatele identifikace, kterého jste právě zaregistrovali s názvem *AzureAD*.
 
     1. Vyberte **OK**.
 
@@ -166,7 +166,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal.
 
 1. V horní části obrazovky vyberte **Všichni uživatelé**  >  **Nový uživatel** .
 
-1. Vyberte **vytvořit uživatele**a ve vlastnostech uživatele postupujte podle těchto kroků. Můžete být schopni vytvářet uživatele v Azure AD pomocí vaší přípony tenanta nebo jakékoli ověřené domény. 
+1. Vyberte **vytvořit uživatele** a ve vlastnostech uživatele postupujte podle těchto kroků. Můžete být schopni vytvářet uživatele v Azure AD pomocí vaší přípony tenanta nebo jakékoli ověřené domény. 
 
     1. Do pole **název** zadejte uživatelské jméno. Použili jsme k použití **testuser**.
   
@@ -186,7 +186,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal.
 
 1. Vyberte možnost **Nová skupina**.
 
-1. Vyplňte pole **typ skupiny**, **název skupiny**, **Popis skupiny**a **typ členství** . Vyberte šipky pro výběr členů a potom vyhledejte nebo vyberte členy, které chcete přidat do skupiny. Zvolte **Vybrat** pro přidání vybraných členů a pak vyberte **vytvořit**.
+1. Vyplňte pole **typ skupiny**, **název skupiny**, **Popis skupiny** a **typ členství** . Vyberte šipky pro výběr členů a potom vyhledejte nebo vyberte členy, které chcete přidat do skupiny. Zvolte **Vybrat** pro přidání vybraných členů a pak vyberte **vytvořit**.
 
 ![Vytvoření skupiny zabezpečení Azure AD](./media/sharepoint-on-premises-tutorial/new-group.png)
 
@@ -240,7 +240,7 @@ Konzistentním způsobem můžete udělit přístup k webu služby SharePoint k 
 
 1. V **požadované zóně deklarací identity** vyberte **jedinečný identifikátor uživatele (ID názvu)**.
 
-1. Změňte vlastnost **atributu source** na hodnotu **User. Localuserprincipalname**a vyberte **Save (Uložit**).
+1. Změňte vlastnost **atributu source** na hodnotu **User. Localuserprincipalname** a vyberte **Save (Uložit**).
 
     ![Atributy uživatele & atribut deklarace identity počáteční zdroj](./media/sharepoint-on-premises-tutorial/manage-claim.png)
 
@@ -281,7 +281,7 @@ Konfigurace funguje pro jednu webovou aplikaci, ale pokud chcete použít stejn�
     $t.UseWReplyParameter=$true
     $t.Update()
     ```
-1. V **centrální správě**přejdete do webové aplikace a povolíte stávajícího důvěryhodného zprostředkovatele identity.
+1. V **centrální správě** přejdete do webové aplikace a povolíte stávajícího důvěryhodného zprostředkovatele identity.
 
 Můžete mít další scénáře, ve kterých chcete pro interní uživatele poskytnout přístup k místní instanci služby SharePoint. V tomto scénáři je nutné nasadit Microsoft Azure Active Directory Connect, aby bylo možné synchronizovat místní uživatele s Azure AD. Tato instalace je popsána v jiném článku.
 

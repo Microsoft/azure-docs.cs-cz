@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/29/2020
+ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: b1f95cf0a62aa68fe86f37cea137251553458a1d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 8f19ccc90c44ef90cee7bb1ae881086321e863b6
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348870"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902030"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Excelový formát v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -33,13 +33,14 @@ Formát aplikace Excel je podporován pro následující konektory [: Amazon S3]
 | ---------------- | ------------------------------------------------------------ | -------- |
 | typ             | Vlastnost Type datové sady musí být nastavená na **Excel**.   | Ano      |
 | location         | Nastavení umístění souborů. Každý konektor založený na souborech má svůj vlastní typ umístění a podporované vlastnosti v rámci `location` . | Ano      |
-| sheetName        | Název sešitu aplikace Excel, ve kterém se mají číst data                       | Ano      |
-| range            | Rozsah buněk v daném listu pro hledání selektivních dat, např.:<br>-Neurčeno: přečte celý list jako tabulku z prvního neprázdného řádku a sloupce.<br>- `A3`: přečte tabulku od dané buňky, dynamicky detekuje všechny řádky níže a všechny sloupce napravo.<br>- `A3:H5`: přečte tento pevný rozsah jako tabulku.<br>- `A3:A3`: přečte tuto jedinou buňku. | Ne       |
-| firstRowAsHeader | Určuje, zda má být první řádek v daném listu nebo rozsahu považován za řádek záhlaví s názvy sloupců.<br>Povolené hodnoty jsou **true** a **false** (výchozí). | Ne       |
-| nullValue        | Určuje řetězcovou reprezentaci hodnoty null. <br>Výchozí hodnota je **prázdný řetězec**. | Ne       |
-| komprese | Skupina vlastností pro konfiguraci komprese souborů. Tuto část nakonfigurujte, pokud chcete během provádění aktivit provést kompresi nebo dekompresi. | Ne |
-| typ<br/>(*pod `compression`*) | Kompresní kodek používaný pro čtení a zápis souborů JSON. <br>Povolené hodnoty jsou **bzip2**, **gzip**, **Deflate**, **ZipDeflate**, **TarGzip**, **tar**, **přichycení** a **LZ4**. Výchozí hodnota není komprimovaná.<br>**Poznámka:** aktivita kopírování nepodporuje "přichycení" & "LZ4" a tok dat mapování nepodporuje "ZipDeflate", "TarGzip" a "tar".<br>**Poznámka** : při použití aktivity kopírování k dekompresi souborů **ZipDeflate** a zápisu do úložiště dat jímky založeného na souborech se soubory extrahují do složky: `<path specified in dataset>/<folder named as source zip file>/` . | Ne.  |
-| úroveň<br/>(*pod `compression`*) | Kompresní poměr <br>Povolené hodnoty jsou **optimální** nebo **nejrychlejší**.<br>- **Nejrychlejší:** Kompresní operace by se měla dokončit co nejrychleji, a to i v případě, že výsledný soubor není optimálně komprimován.<br>- **Optimální**: komprese by měla být optimálně komprimována i v případě, že dokončení operace trvá delší dobu. Další informace najdete v tématu [úroveň komprese](/dotnet/api/system.io.compression.compressionlevel) . | Ne       |
+| sheetName        | Název sešitu aplikace Excel, ve kterém se mají číst data                       | Zadejte `sheetName` nebo `sheetIndex` |
+| sheetIndex | Index excelového listu pro čtení dat, od 0. | Zadejte `sheetName` nebo `sheetIndex` |
+| range            | Rozsah buněk v daném listu pro hledání selektivních dat, např.:<br>-Neurčeno: přečte celý list jako tabulku z prvního neprázdného řádku a sloupce.<br>- `A3`: přečte tabulku od dané buňky, dynamicky detekuje všechny řádky níže a všechny sloupce napravo.<br>- `A3:H5`: přečte tento pevný rozsah jako tabulku.<br>- `A3:A3`: přečte tuto jedinou buňku. | No       |
+| firstRowAsHeader | Určuje, zda má být první řádek v daném listu nebo rozsahu považován za řádek záhlaví s názvy sloupců.<br>Povolené hodnoty jsou **true** a **false** (výchozí). | No       |
+| nullValue        | Určuje řetězcovou reprezentaci hodnoty null. <br>Výchozí hodnota je **prázdný řetězec**. | No       |
+| komprese | Skupina vlastností pro konfiguraci komprese souborů. Tuto část nakonfigurujte, pokud chcete během provádění aktivit provést kompresi nebo dekompresi. | No |
+| typ<br/>(*pod `compression`*) | Kompresní kodek používaný pro čtení a zápis souborů JSON. <br>Povolené hodnoty jsou **bzip2**, **gzip**, **Deflate**, **ZipDeflate**, **TarGzip**, **tar**, **přichycení** a **LZ4**. Výchozí hodnota není komprimovaná.<br>**Poznámka:** aktivita kopírování nepodporuje "přichycení" & "LZ4" a tok dat mapování nepodporuje "ZipDeflate", "TarGzip" a "tar".<br>**Poznámka** : při použití aktivity kopírování k dekompresi souborů **ZipDeflate** a zápisu do úložiště dat jímky založeného na souborech se soubory extrahují do složky: `<path specified in dataset>/<folder named as source zip file>/` . | No.  |
+| úroveň<br/>(*pod `compression`*) | Kompresní poměr <br>Povolené hodnoty jsou **optimální** nebo **nejrychlejší**.<br>- **Nejrychlejší:** Kompresní operace by se měla dokončit co nejrychleji, a to i v případě, že výsledný soubor není optimálně komprimován.<br>- **Optimální**: komprese by měla být optimálně komprimována i v případě, že dokončení operace trvá delší dobu. Další informace najdete v tématu [úroveň komprese](/dotnet/api/system.io.compression.compressionlevel) . | No       |
 
 Níže je příklad datové sady Excelu v Azure Blob Storage:
 
@@ -78,7 +79,7 @@ V oddílu aktivita kopírování **_ \_ zdroj \**** jsou podporovány následuj�
 | Vlastnost      | Popis                                                  | Povinné |
 | ------------- | ------------------------------------------------------------ | -------- |
 | typ          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **ExcelSource**. | Ano      |
-| storeSettings | Skupina vlastností, jak číst data z úložiště dat. Jednotlivé konektory založené na souborech mají v rámci své vlastní podporované nastavení pro čtení `storeSettings` . | Ne       |
+| storeSettings | Skupina vlastností, jak číst data z úložiště dat. Jednotlivé konektory založené na souborech mají v rámci své vlastní podporované nastavení pro čtení `storeSettings` . | No       |
 
 ```json
 "activities": [

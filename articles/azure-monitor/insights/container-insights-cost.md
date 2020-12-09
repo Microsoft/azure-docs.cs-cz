@@ -3,14 +3,14 @@ title: Náklady na monitorování pro Azure Monitor kontejnerů | Microsoft Docs
 description: Tento článek popisuje náklady na monitorování metriky & inventáře shromažďovaných pomocí Azure Monitor pro kontejnery, které zákazníkům pomůžou spravovat jejich využití a přidružené náklady.
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: a03e94fa7650c56a4d3b3beda3c27283329aebbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81a20f564af68c3da6d63394e4cffe7caed91b46
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84204646"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903209"
 ---
-# <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>Pochopení nákladů na monitorování Azure Monitor pro kontejnery
+# <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>Vysvětlení nákladů na monitorování služby Azure Monitor pro kontejnery
 
 Tento článek poskytuje cenové poradenství pro Azure Monitor kontejnerů, které vám pomůžou pochopit následující informace:
 
@@ -127,19 +127,21 @@ S využitím výchozích [cen](https://azure.microsoft.com/pricing/details/monit
 
 ## <a name="controlling-ingestion-to-reduce-cost"></a>Řízení ingestování za účelem snížení nákladů
 
-Vezměte v úvahu scénář, ve kterém má vaše organizace různé obchodní jednotky sdílené Kubernetes infrastruktury a pracovního prostoru Log Analytics. U každé obchodní jednotky oddělené oborem názvů Kubernetes. Můžete vizualizovat, kolik dat je v každém pracovním prostoru v nedávno vydaných sešitech. Sešit **využití služby Container Insights** , který najdete v [galerii sešitů](../platform/workbooks-overview.md#getting-started), vám pomůže vizualizovat zdroj vašich dat bez nutnosti sestavovat vlastní knihovnu dotazů z toho, co sdílíme v naší dokumentaci. V tomto sešitu jsou grafy, pomocí kterých můžete zobrazit fakturovatelná data z těchto perspektiv jako:
+Vezměte v úvahu scénář, ve kterém má vaše organizace různé obchodní jednotky sdílené Kubernetes infrastruktury a pracovního prostoru Log Analytics. U každé obchodní jednotky oddělené oborem názvů Kubernetes. Pomocí sady Runbook **využití dat** , která je k dispozici v rozevíracím seznamu **Zobrazit sešity** , můžete vizualizovat, kolik dat je v každém pracovním prostoru přijímáno.
+
+[![Zobrazit rozevírací seznam sešitů](media/container-insights-cost/workbooks-dropdown.png)](media/container-insights-cost/workbooks-dropdown.png#lightbox)
+
+
+Tento sešit vám pomůže vizualizovat zdroj dat, aniž byste museli vytvářet vlastní knihovnu dotazů z toho, co sdílíme v naší dokumentaci. V tomto sešitu jsou grafy, pomocí kterých můžete zobrazit fakturovatelná data z těchto perspektiv jako:
 
 - Celková fakturovatelná data ingestovaná v GB podle řešení
-
 - Fakturovatelné data ingestovaná protokoly kontejnerů (protokoly aplikací)
-
 - Fakturovatelné protokoly kontejneru data ingestovaná podle oboru názvů Kubernetes
-
 - Fakturovatelné protokoly kontejnerů data ingestovaná oddělená názvem clusteru
-
 - Fakturovatelné data protokolu kontejneru podle položky logsource
-
 - Fakturovatelné diagnostická data ingestovaná v protokolech diagnostických hlavních uzlů
+
+[![Sešit využití dat](media/container-insights-cost/data-usage-workbook.png)](media/container-insights-cost/data-usage-workbook.png#lightbox)
 
 Chcete-li získat informace o správě práv a oprávnění k sešitu, zkontrolujte [řízení přístupu](../platform/workbooks-access-control.md).
 

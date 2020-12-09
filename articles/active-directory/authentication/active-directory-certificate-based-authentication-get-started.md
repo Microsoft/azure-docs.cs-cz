@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6db7037cbcad335db77784ecfa624f08e88b1e83
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 3ba84bb3ee38981217e72f8372a836b03647083d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744427"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861336"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Začínáme s ověřováním pomocí certifikátů v Azure Active Directory
 
@@ -93,7 +93,7 @@ Schéma certifikační autority vypadá takto:
     }
 ```
 
-Pro konfiguraci můžete použít [Azure Active Directory PowerShell verze 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0):
+Pro konfiguraci můžete použít [Azure Active Directory PowerShell verze 2](/powershell/azure/active-directory/install-adv2):
 
 1. Spusťte prostředí Windows PowerShell s oprávněními správce.
 2. Nainstalujte modul Azure AD verze [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) nebo novější.
@@ -106,7 +106,7 @@ Jako první krok konfigurace musíte navázat spojení s vaším klientem. Jakmi
 
 ### <a name="connect"></a>Připojení
 
-K navázání spojení s vaším klientem použijte rutinu [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) :
+K navázání spojení s vaším klientem použijte rutinu [Connect-AzureAD](/powershell/module/azuread/connect-azuread) :
 
 ```azurepowershell
     Connect-AzureAD
@@ -114,7 +114,7 @@ K navázání spojení s vaším klientem použijte rutinu [Connect-AzureAD](/po
 
 ### <a name="retrieve"></a>Stahovat
 
-K načtení důvěryhodných certifikačních autorit, které jsou definovány ve vašem adresáři, použijte rutinu [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) .
+K načtení důvěryhodných certifikačních autorit, které jsou definovány ve vašem adresáři, použijte rutinu [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority) .
 
 ```azurepowershell
     Get-AzureADTrustedCertificateAuthority
@@ -122,7 +122,7 @@ K načtení důvěryhodných certifikačních autorit, které jsou definovány v
 
 ### <a name="add"></a>Přidání
 
-Chcete-li vytvořit důvěryhodnou certifikační autoritu, použijte rutinu [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) a nastavte atribut **crlDistributionPoint** na správnou hodnotu:
+Chcete-li vytvořit důvěryhodnou certifikační autoritu, použijte rutinu [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority) a nastavte atribut **crlDistributionPoint** na správnou hodnotu:
 
 ```azurepowershell
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"
@@ -135,7 +135,7 @@ Chcete-li vytvořit důvěryhodnou certifikační autoritu, použijte rutinu [Ne
 
 ### <a name="remove"></a>Odebrat
 
-K odebrání důvěryhodné certifikační autority použijte rutinu [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) :
+K odebrání důvěryhodné certifikační autority použijte rutinu [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority) :
 
 ```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority
@@ -144,7 +144,7 @@ K odebrání důvěryhodné certifikační autority použijte rutinu [Remove-Azu
 
 ### <a name="modify"></a>Modify
 
-Chcete-li upravit důvěryhodnou certifikační autoritu, použijte rutinu [set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) :
+Chcete-li upravit důvěryhodnou certifikační autoritu, použijte rutinu [set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority) :
 
 ```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority

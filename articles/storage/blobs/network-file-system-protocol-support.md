@@ -9,19 +9,19 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 78455659d76d259c626745c93770428c25042b2d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b4146f11804dd11f7dd0f5536bc040cb30e25b03
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95908808"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902727"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Podpora protokolů systému souborů NFS (Network File System) 3,0 v úložišti objektů BLOB v Azure (Preview)
 
 BLOB Storage teď podporuje protokol NFS (Network File System) 3,0. Tato podpora umožňuje klientům systému Windows nebo Linux připojit kontejner v úložišti objektů BLOB z virtuálního počítače Azure nebo místního počítače. 
 
 > [!NOTE]
-> Podpora protokolu NFS 3,0 v úložišti objektů BLOB v Azure je ve verzi Public Preview a je dostupná v těchto oblastech: USA – východ, USA – střed, USA – středozápad, Austrálie – jihovýchod, Severní Evropa, Velká Británie – západ, Korea – jih, Jižní Korea a Kanada – střed.
+> Podpora protokolu NFS 3,0 ve službě Azure Blob Storage je ve verzi Public Preview. Podporuje GPV2 účty úložiště s výkonem úrovně Standard v následujících oblastech: Austrálie – východ, Korea – střed a Střed USA – jih. Verze Preview také podporuje objekt blob bloku s úrovní výkonu Premium ve všech veřejných oblastech.
 
 ## <a name="general-workflow-mounting-a-storage-account-container"></a>Obecný pracovní postup: připojení kontejneru účtu úložiště
 

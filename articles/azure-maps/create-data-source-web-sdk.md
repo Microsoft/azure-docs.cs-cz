@@ -1,27 +1,27 @@
 ---
-title: Vytvoření zdroje dat pro mapu | Mapy Microsoft Azure
+title: Vytvoření zdroje dat pro mapu v Microsoft Azure Maps
 description: 'Zjistěte, jak vytvořit zdroj dat pro mapu. Přečtěte si o zdrojích dat, které používá Azure Maps Web SDK: mikrojsonické zdroje a vektorové dlaždice.'
 author: rbrundritt
 ms.author: richbrun
-ms.date: 08/08/2019
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 9c82b74ffdc8672dc3d84a98a036c6083bc6c309
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d09dddbceed773cd723897cc9730198b68be0ff7
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895915"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903611"
 ---
 # <a name="create-a-data-source"></a>Vytvoření zdroje dat
 
 Sada Azure Maps Web SDK ukládá data do zdrojů dat. Použití zdrojů dat optimalizuje datové operace pro dotazování a vykreslování. V současné době existují dva typy zdrojů dat:
 
 - Geografická **zdrojová** data: Správa nezpracovaných dat umístění ve formátu geografických JSON místně. Vhodný pro malé až střední datové sady (nahoru z stovek tisíců tvarů).
-- **Zdroj vektorové dlaždice** : načte data formátovaná jako vektorové dlaždice pro aktuální zobrazení mapy na základě systému mapy dláždění. Ideální pro velké až obrovský datové sady (miliony nebo miliardy tvarů).
+- **Zdroj vektorové dlaždice**: načte data formátovaná jako vektorové dlaždice pro aktuální zobrazení mapy na základě systému mapy dláždění. Ideální pro velké až obrovský datové sady (miliony nebo miliardy tvarů).
 
 ## <a name="geojson-data-source"></a>Zdroj dat pro injson
 
@@ -86,7 +86,7 @@ Azure Maps dodržuje [specifikaci vektorové dlaždice Mapbox](https://github.co
 - [documentation](/rest/api/maps/renderv2/getmaptilepreview)  |  [Podrobnosti o formátu dat](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile) v dokumentaci k částem silničních bloků
 - [documentation](/rest/api/maps/traffic/gettrafficincidenttile)  |  [Podrobnosti o formátu dat](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles) v dokumentaci k incidentům přenosu
 - [documentation](/rest/api/maps/traffic/gettrafficflowtile)  |  [Podrobnosti o formátu dat](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles) v dokumentaci toku provozu
-- Azure Maps Creator taky umožňuje vytvořit vlastní vektorové dlaždice a získat přístup přes [vykreslování dlaždice získat 2](/rest/api/maps/renderv2/getmaptilepreview) .
+- Azure Maps Creator (Preview) umožňuje také vytvořit vlastní vektorové dlaždice a získat přístup přes [vykreslování dlaždice získat 2](/rest/api/maps/renderv2/getmaptilepreview) .
 
 > [!TIP]
 > Když použijete dlaždice vektorového nebo rastrového obrázku ze služby Azure Maps Renderer s webovou sadou SDK, můžete nahradit `atlas.microsoft.com` zástupným symbolem `{azMapsDomain}` . Tento zástupný symbol bude nahrazen stejnou doménou, kterou používá mapa, a automaticky bude automaticky připojovat stejné podrobnosti ověřování. To významně zjednodušuje ověřování pomocí služby vykreslování při použití Azure Active Directory ověřování.

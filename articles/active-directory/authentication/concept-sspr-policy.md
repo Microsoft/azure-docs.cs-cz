@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 344fee9482cd935375d25fab80b1f365d72586f8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a53b193d16a2cefbde7877fd930e5fa73b0c6a36
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743662"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861268"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení účtů v Azure Active Directory
 
@@ -95,7 +95,7 @@ Zásady dvou bran vyžadují dvě části ověřovacích dat, jako je e-mailová
 * Pro vašeho tenanta Azure AD je nakonfigurovaná vlastní doména, třeba *contoso.com*; ani
 * Azure AD Connect synchronizuje identity z místního adresáře.
 
-Pomocí rutiny [set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) prostředí PowerShell můžete zakázat použití SSPR pro účty správců. `-SelfServePasswordResetEnabled $False`Parametr ZAKÁŽE SSPR správcům.
+Pomocí rutiny [set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings) prostředí PowerShell můžete zakázat použití SSPR pro účty správců. `-SelfServePasswordResetEnabled $False`Parametr ZAKÁŽE SSPR správcům.
 
 ### <a name="exceptions"></a>Výjimky
 
@@ -107,7 +107,7 @@ Zásada s jedním bránou vyžaduje jedno z ověřovacích dat, jako je e-mailov
 
 ## <a name="password-expiration-policies"></a><a name="set-password-expiration-policies-in-azure-ad"></a>Zásady vypršení platnosti hesla
 
-*Globální správce* nebo *Správce uživatelů* může použít [modul Microsoft Azure AD pro Windows PowerShell](/powershell/module/Azuread/?view=azureadps-2.0) k nastavení hesla uživatele, která nebrzy vyprší.
+*Globální správce* nebo *Správce uživatelů* může použít [modul Microsoft Azure AD pro Windows PowerShell](/powershell/module/Azuread/) k nastavení hesla uživatele, která nebrzy vyprší.
 
 Pomocí rutin prostředí PowerShell můžete také odebrat konfiguraci pro nikdy nevypršení platnosti nebo zjistit, která uživatelská hesla jsou nastavena na hodnotu nikdy nevyprší.
 
@@ -118,13 +118,13 @@ Tento návod se vztahuje na jiné poskytovatele, jako je Intune a Microsoft 365,
 
 ### <a name="set-or-check-the-password-policies-by-using-powershell"></a>Nastavení nebo kontrola zásad hesla pomocí PowerShellu
 
-Začněte tím, [že si stáhnete a nainstalujete modul Azure AD PowerShell](/powershell/module/Azuread/?view=azureadps-2.0) a [připojíte ho k vašemu tenantovi Azure AD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples).
+Začněte tím, [že si stáhnete a nainstalujete modul Azure AD PowerShell](/powershell/module/Azuread/) a [připojíte ho k vašemu tenantovi Azure AD](/powershell/module/azuread/connect-azuread#examples).
 
 Po instalaci modulu použijte následující postup k dokončení jednotlivých úkolů podle potřeby.
 
 ### <a name="check-the-expiration-policy-for-a-password"></a>Podívejte se na zásady vypršení platnosti hesla.
 
-1. Otevřete příkazový řádek PowerShellu a [Připojte se k Tenantovi Azure AD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples) pomocí účtu *globálního správce* nebo *Správce uživatelů* .
+1. Otevřete příkazový řádek PowerShellu a [Připojte se k Tenantovi Azure AD](/powershell/module/azuread/connect-azuread#examples) pomocí účtu *globálního správce* nebo *Správce uživatelů* .
 1. Pro jednotlivé uživatele nebo všechny uživatele spusťte jeden z následujících příkazů:
 
    * Pokud chcete zjistit, jestli je u jednoho uživatele nastavené na nikdy vypršení platnosti hesla, spusťte následující rutinu. Nahraďte `<user ID>` ID uživatele, které chcete kontrolovat, například *driley \@ contoso.onmicrosoft.com*:
@@ -141,7 +141,7 @@ Po instalaci modulu použijte následující postup k dokončení jednotlivých 
 
 ### <a name="set-a-password-to-expire"></a>Nastavit vypršení platnosti hesla
 
-1. Otevřete příkazový řádek PowerShellu a [Připojte se k Tenantovi Azure AD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples) pomocí účtu *globálního správce* nebo *Správce uživatelů* .
+1. Otevřete příkazový řádek PowerShellu a [Připojte se k Tenantovi Azure AD](/powershell/module/azuread/connect-azuread#examples) pomocí účtu *globálního správce* nebo *Správce uživatelů* .
 1. Pro jednotlivé uživatele nebo všechny uživatele spusťte jeden z následujících příkazů:
 
    * Pokud chcete nastavit heslo jednoho uživatele, aby platnost hesla vyprší, spusťte následující rutinu. Nahraďte `<user ID>` ID uživatele, které chcete kontrolovat, například *driley \@ contoso.onmicrosoft.com* .
@@ -158,7 +158,7 @@ Po instalaci modulu použijte následující postup k dokončení jednotlivých 
 
 ### <a name="set-a-password-to-never-expire"></a>Nastavit heslo na nikdy neplatnost
 
-1. Otevřete příkazový řádek PowerShellu a [Připojte se k Tenantovi Azure AD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples) pomocí účtu *globálního správce* nebo *Správce uživatelů* .
+1. Otevřete příkazový řádek PowerShellu a [Připojte se k Tenantovi Azure AD](/powershell/module/azuread/connect-azuread#examples) pomocí účtu *globálního správce* nebo *Správce uživatelů* .
 1. Pro jednotlivé uživatele nebo všechny uživatele spusťte jeden z následujících příkazů:
 
    * Pokud chcete nastavit heslo pro jednoho uživatele, který nikdy nevyprší, spusťte následující rutinu. Nahraďte `<user ID>` ID uživatele, které chcete kontrolovat, například *driley \@ contoso.onmicrosoft.com* .

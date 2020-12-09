@@ -1,21 +1,27 @@
 ---
-title: Práce s mapami ve službě Azure Maps Creator
-description: V tomto článku se seznámíte s koncepty, které se vztahují na služby Azure Maps Creator.
+title: Práce s mapami ve vnitřních mapách v Azure Maps Creator (Preview)
+description: Tento článek představuje koncepty, které se vztahují na služby Azure Maps Creator (Preview).
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 558903ead572363c5545a4a3121f7cf61f549df6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4ab00317e71f832bb677c4c7587e2356a37cb7a1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895898"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903560"
 ---
-# <a name="creator-for-indoor-maps"></a>Autor pro mapy vnitřníchy
+# <a name="creator-preview-for-indoor-maps"></a>Autor (Preview) pro mapy vnitřních verzí
+
+
+> [!IMPORTANT]
+> Služby Azure Maps Creator jsou momentálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 V tomto článku se seznámíte s koncepty a nástroji, které se týkají Azure Maps Creator. Doporučujeme, abyste si tento článek přečetli dřív, než začnete používat rozhraní API pro Azure Maps Creator a sadu SDK.
 
@@ -23,15 +29,15 @@ Tvůrce můžete použít k vývoji aplikací s funkcemi mapy založenými na vn
 
 ![Pracovní postup tvůrce dat mapy](./media/creator-indoor-maps/workflow.png)
 
-## <a name="create-azure-maps-creator"></a>Vytvořit tvůrce Azure Maps
+## <a name="create-azure-maps-creator-preview"></a>Vytvořit tvůrce Azure Maps (Preview) 
 
-Chcete-li používat služby Creator Services, je třeba vytvořit Azure Maps tvůrce v účtu Azure Maps. Informace o tom, jak vytvořit tvůrce Azure Maps v Azure Maps, najdete v tématu [správa Azure Maps Creator](how-to-manage-creator.md).
+Chcete-li používat službu Creator Services (Preview), je třeba vytvořit Azure Maps tvůrce v účtu Azure Maps. Informace o tom, jak vytvořit tvůrce Azure Maps v Azure Maps, najdete v tématu [správa Azure Maps Creator](how-to-manage-creator.md).
 
 ## <a name="upload-a-drawing-package"></a>Nahrání balíčku pro kreslení
 
-Tvůrce shromažďuje data vnitřních map tím, že převede nahraný balíček pro kreslení. Balíček pro kreslení představuje vytvořené nebo přemodelované zařízení. Informace o požadavcích na sbalení balíčku najdete v tématu [požadavky na balíčky pro vykreslování](drawing-requirements.md).
+Creator (Preview) shromažďuje data vnitřních map tím, že převede nahraný balíček pro kreslení. Balíček pro kreslení představuje vytvořené nebo přemodelované zařízení. Informace o požadavcích na sbalení balíčku najdete v tématu [požadavky na balíčky pro vykreslování](drawing-requirements.md).
 
-Pro nahrání balíčku pro kreslení použijte [Azure Maps rozhraní API pro nahrání dat](/rest/api/maps/data/uploadpreview) .  Po úspěšném nahrání načte rozhraní API pro nahrání dat identifikátor dat uživatele ( `udid` ). `udid`V dalším kroku se použije k převedení nahraného balíčku na data mapy interiéru.
+Pomocí [rozhraní API pro nahrávání Azure maps dat (Preview)](/rest/api/maps/data/uploadpreview) nahrajte balíček pro kreslení.  Po úspěšném nahrání načte rozhraní API pro nahrání dat identifikátor dat uživatele ( `udid` ). `udid`V dalším kroku se použije k převedení nahraného balíčku na data mapy interiéru.
 
 ## <a name="convert-a-drawing-package"></a>Převod balíčku pro kreslení
 
@@ -41,7 +47,7 @@ Pokud dojde k chybě, služba převodu poskytuje odkaz na Azure Maps vykreslení
 
 ## <a name="create-indoor-map-data"></a>Vytvoření dat vnitřních map
 
-Azure Maps Creator nabízí tři služby:
+Azure Maps Creator (Preview) poskytuje tři služby:
 
 * [Služba DataSet](/rest/api/maps/dataset/createpreview)
 Pomocí služby DataSet Vytvořte datovou sadu z převedených dat balíčku vykreslování.
@@ -72,9 +78,9 @@ Pokud se TILESET stane zastaralým a již není užitečný, můžete TILESET od
 
 ### <a name="feature-statesets"></a>Statesets funkcí
 
-Funkce statesets jsou kolekce dynamických vlastností ( *stavů* ) přiřazených k funkcím datové sady, jako jsou místnosti nebo vybavení. Příkladem *stavu* může být teplota nebo obsazení. Každý *stav* je dvojice klíč/hodnota obsahující název vlastnosti, hodnotu a časové razítko poslední aktualizace.
+Funkce statesets jsou kolekce dynamických vlastností (*stavů*) přiřazených k funkcím datové sady, jako jsou místnosti nebo vybavení. Příkladem *stavu* může být teplota nebo obsazení. Každý *stav* je dvojice klíč/hodnota obsahující název vlastnosti, hodnotu a časové razítko poslední aktualizace.
 
-[Služba stavu funkce](/rest/api/maps/featurestate/createstatesetpreview) umožňuje vytvořit a spravovat funkci stateset pro datovou sadu. Stateset je definován jedním nebo více *stavy* . Každá funkce, jako je například místnost, může mít k sobě připojen jeden *stav* .
+[Služba stavu funkce](/rest/api/maps/featurestate/createstatesetpreview) umožňuje vytvořit a spravovat funkci stateset pro datovou sadu. Stateset je definován jedním nebo více *stavy*. Každá funkce, jako je například místnost, může mít k sobě připojen jeden *stav* .
 
 Hodnota každého *stavu* ve stateset může být aktualizována nebo načtena zařízeními IoT nebo jinými aplikacemi.  Například při použití [rozhraní API aktualizace stavu funkce](/rest/api/maps/featurestate/updatestatespreview)zařízení, která měří obsazení místa, můžou systematicky zveřejnit stavovou změnu místnosti.
 
@@ -87,9 +93,9 @@ Aplikace může používat funkci stateset k dynamickému vykreslování funkcí
 
 ### <a name="render-v2-service"></a>Služba vykreslování v2
 
-Služba Azure Maps [Render v2 – získání rozhraní API dlaždice mapy](/rest/api/maps/renderv2/getmaptilepreview) bylo rozšířeno na podporu Creator tilesets.
+Služba Azure Maps [Render v2 – získat rozhraní API dlaždice mapy (Preview)](/rest/api/maps/renderv2/getmaptilepreview) , které podporuje tvůrce (Preview) tilesets.
 
-[Služba vykreslování v2 – rozhraní API dlaždice získat stav mapy](/rest/api/maps/renderv2/getmaptilepreview) umožňuje aplikacím požadovat tilesets. Tilesets je pak možné integrovat do mapového ovládacího prvku nebo sady SDK. Příklad mapového ovládacího prvku, který používá službu vykreslování v2, najdete v tématu [modul vnitřních map](#indoor-maps-module).
+Služba vykreslování v2 – rozhraní API dlaždice získat stav mapy umožňuje aplikacím požadovat tilesets. Tilesets je pak možné integrovat do mapového ovládacího prvku nebo sady SDK. Příklad mapového ovládacího prvku, který používá službu vykreslování v2, najdete v tématu [modul vnitřních map](#indoor-maps-module).
 
 ### <a name="web-feature-service-api"></a>Rozhraní API služby webové funkce
 
@@ -97,7 +103,7 @@ K datovým sadám se dá zadat dotaz pomocí [rozhraní API služby webové funk
 
 ### <a name="indoor-maps-module"></a>Modul interiérových map
 
-[Azure Maps webová sada SDK](./index.yml) obsahuje modul vnitřních map. Tento modul nabízí rozšířené funkce knihovny Azure Maps *ovládací prvek mapa* . Modul mapy Vnitřníchy vykresluje mapy vnitřních vytvořených v tvůrci. Integruje widgety, jako je *Výběr podlaží* , což pomáhá uživatelům vizualizovat různá podlaží.
+[Azure Maps webová sada SDK](./index.yml) obsahuje modul vnitřních map. Tento modul nabízí rozšířené funkce knihovny Azure Maps *ovládací prvek mapa* . Modul mapy Vnitřníchy vykresluje vnitřní mapy vytvořené v tvůrci (Preview). Integruje widgety, jako je *Výběr podlaží*, což pomáhá uživatelům vizualizovat různá podlaží.
 
 Modul mapy vnitřních souborů umožňuje vytvářet webové aplikace, které integrují data ze vnitřních map s ostatními [Azure Maps službami](./index.yml). Nejběžnější instalace aplikací můžou zahrnovat přidání znalostí do vnitřních map z jiných map, jako jsou silniční, satelitní a klimatické a tranzitní.
 
@@ -109,7 +115,7 @@ Jak začnete vyvíjet řešení pro mapy vnitřních prostorů, můžete zjistit
 
 ### <a name="data-maintenance"></a>Údržba dat
 
- Tilesets Creator list, Update a DELETE API umožňuje zobrazit, aktualizovat a odstranit datové sady, a funkce statesets. Azure Maps
+ Rozhraní API pro Azure Maps tvůrce (Preview), Update a DELETE umožňuje zobrazit, aktualizovat a odstranit vaše datové sady, tilesets a funkce statesets.
 
 >[!NOTE]
 >Kdykoli provedete kontrolu seznamu položek a rozhodnete se je odstranit, musíte vzít v úvahu dopad tohoto odstranění na všechny závislé rozhraní API nebo aplikace. Například pokud byste měli odstranit TILESET, který aktuálně používá aplikace, pomocí [rozhraní vykreslování v2 rozhraní API pro zobrazení dlaždice mapy](/rest/api/maps/renderv2/getmaptilepreview), odstranění tohoto TILESET by vedlo k selhání aplikace při vykreslování tohoto TILESET.
@@ -129,4 +135,4 @@ Následující příklad ukazuje, jak aktualizovat datovou sadu, vytvořit novou
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření mapy interiéru autora](tutorial-creator-indoor-maps.md)
+> [Kurz: vytvoření mapy vnitřních verzí pro tvůrce (Preview)](tutorial-creator-indoor-maps.md)

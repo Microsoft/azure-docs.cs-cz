@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.openlocfilehash: f4fe368e9a56e5ac4c9dfa2648ce4af15a1b5ac0
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: a4bfe2b87f3f2242189a78d9a31a89d82720fd37
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684402"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862067"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>Kurz: Integrace jednotného přihlašování Azure AD s Maverics identity Orchestrator konektorem SAML
 
@@ -38,7 +38,7 @@ V tomto kurzu se dozvíte, jak migrovat místní webovou aplikaci, která je akt
 
 Další pokyny k instalaci a konfiguraci najdete na [webu vrstvy](https://www.strata.io).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 - Předplatné Maverics identity Orchestrator s povoleným SSO konektorem SAML. Pokud chcete získat Maverics software, kontaktujte [oddělení prodej](mailto:sales@strata.io).
@@ -157,7 +157,7 @@ secrets:
 Trezor klíčů Azure můžete nastavit buď pomocí Azure Portal, nebo pomocí Azure CLI.
 
 **Použití webu Azure Portal**
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. [Vytvořte nový trezor klíčů](../../key-vault/general/quick-create-portal.md).
 1. [Přidejte tajné klíče do trezoru klíčů](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
 1. [Registrace aplikace ve službě Azure AD](../develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)
@@ -165,7 +165,7 @@ Trezor klíčů Azure můžete nastavit buď pomocí Azure Portal, nebo pomocí 
 
 **Použití Azure CLI**
 
-1. Otevřete rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest)a potom zadejte následující příkaz:
+1. Otevřete rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)a potom zadejte následující příkaz:
 
     ```shell
     az login

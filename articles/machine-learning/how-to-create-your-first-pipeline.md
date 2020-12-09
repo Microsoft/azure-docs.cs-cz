@@ -11,16 +11,14 @@ author: NilsPohlmann
 ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 57806ecaf4b0e295457c78faaff6033126ddb2c8
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2b534f82aeda438b1d2bd5d60eeb4871acffc54a
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463009"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902013"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK
-
-
 
 V tomto článku se dozvíte, jak vytvořit a spustit [kanál strojového učení](concept-ml-pipelines.md) pomocí [sady Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py). Použití **kanálů ml** k vytvoření pracovního postupu, který spojuje různé fáze ml. Pak tento kanál publikujte pro pozdější přístup nebo sdílení s ostatními. Sledujte kanály ML a podívejte se, jak váš model funguje v reálném světě a že se má detekovat posun dat. Kanály ML jsou ideální pro scénáře dávkového vyhodnocování, které používají různé výpočetní prostředky, místo jejich spouštění a sdílení pracovních postupů ML s ostatními.
 
@@ -106,6 +104,9 @@ output_data1 = PipelineData(
 
 > [!TIP]
 > Zachování mezilehlých dat mezi jednotlivými kroky kanálu je také možné u třídy Public Preview [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) . Příklad kódu, který používá `OutputFileDatasetConfig` třídu, najdete v tématu Postup [vytvoření dvou kroků kanálu ml](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb).
+
+> [!TIP]
+> Nahrávat pouze soubory, které jsou relevantní pro úlohu. Jakékoli změny v souborech v adresáři dat se zobrazí jako důvod pro opětovné spuštění kroku při příštím spuštění kanálu i v případě, že je parametr znovu použit. 
 
 ## <a name="set-up-a-compute-target"></a>Nastavení cíle výpočtů
 

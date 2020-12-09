@@ -1,5 +1,5 @@
 ---
-title: Průběžná integrace a doručování v Azure Data Factory
+title: Kontinuální integrace a průběžné doručování ve službě Azure Data Factory
 description: Naučte se používat průběžnou integraci a doručování k přesunu Data Factory kanálů z jednoho prostředí (vývoj, testování, produkce) do jiného.
 services: data-factory
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: a7d392412aa481d9541cd4987cfb4c18d04dafa0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 84e156074d6db837556ba4ed9febdb43bcdf3318
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500151"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902294"
 ---
-# <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Průběžná integrace a doručování v Azure Data Factory
+# <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Kontinuální integrace a průběžné doručování ve službě Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -235,7 +235,7 @@ Níže jsou uvedeny některé pokyny, které je třeba provést při vytvářen�
       * `-` znamená, že neuchovává výchozí hodnotu parametru.
       * `|` je speciální případ pro tajné klíče z Azure Key Vault pro připojovací řetězce nebo klíče.
    * `<name>` je název parametru. Pokud je prázdný, převezme název vlastnosti. Pokud hodnota začíná `-` znakem, název se zkrátí. Například `AzureStorage1_properties_typeProperties_connectionString` by byl zkrácen na `AzureStorage1_connectionString` .
-   * `<stype>` je typ parametru. Pokud `<stype>` je prázdné, výchozí typ je `string` . Podporované hodnoty: `string` , `bool` , `number` , `object` a `securestring` .
+   * `<stype>` je typ parametru. Pokud `<stype>` je prázdné, výchozí typ je `string` . Podporované hodnoty: `string` , `securestring` , `int` , `bool` , `object` a `secureobject` `array` .
 * Zadání pole v definičním souboru znamená, že vlastnost Matching v šabloně je pole. Data Factory projde všemi objekty v poli pomocí definice, která je zadána v objektu Integration runtime daného pole. Druhý objekt, řetězec, se zobrazí jako název vlastnosti, která se používá jako název parametru pro každou iteraci.
 * Definice nemůže být specifická pro instanci prostředku. Každá definice se vztahuje na všechny prostředky daného typu.
 * Ve výchozím nastavení jsou všechny zabezpečené řetězce, jako jsou Key Vault tajné klíče a zabezpečené řetězce, jako jsou připojovací řetězce, klíče a tokeny, parametrizované.
@@ -250,7 +250,7 @@ Tady je příklad toho, co může šablona Parametrizace vypadat jako:
         "properties": {
             "activities": [{
                 "typeProperties": {
-                    "waitTimeInSeconds": "-::number",
+                    "waitTimeInSeconds": "-::int",
                     "headers": "=::object"
                 }
             }]
@@ -268,7 +268,7 @@ Tady je příklad toho, co může šablona Parametrizace vypadat jako:
             "typeProperties": {
                 "recurrence": {
                     "*": "=",
-                    "interval": "=:triggerSuffix:number",
+                    "interval": "=:triggerSuffix:int",
                     "frequency": "=:-freq"
                 },
                 "maxConcurrency": "="
@@ -305,7 +305,7 @@ Tady je příklad toho, co může šablona Parametrizace vypadat jako:
 ```
 Zde je vysvětlení, jak je předchozí šablona vytvořena, rozdělená podle typu prostředku.
 
-#### <a name="pipelines"></a>Pipelines
+#### <a name="pipelines"></a>Kanály
     
 * Vlastnost v cestě `activities/typeProperties/waitTimeInSeconds` je parametrizovaná. Všechny aktivity v kanálu, které mají vlastnost na úrovni kódu s názvem `waitTimeInSeconds` (například `Wait` aktivita), jsou parametrizované jako číslo s výchozím názvem. V šabloně Správce prostředků ale nebude mít výchozí hodnotu. Během nasazení Správce prostředků se bude jednat o povinný vstup.
 * Podobně je vlastnost s názvem `headers` (například v `Web` aktivitě) Parametrizovaná s typem `object` (JObject). Má výchozí hodnotu, která je stejná jako hodnota zdrojové továrny.
@@ -314,10 +314,10 @@ Zde je vysvětlení, jak je předchozí šablona vytvořena, rozdělená podle t
 
 * Všechny vlastnosti v cestě `typeProperties` jsou parametrizované s příslušnými výchozími hodnotami. Například existují dvě vlastnosti v části `IntegrationRuntimes` vlastnosti typu: `computeProperties` a `ssisProperties` . Oba typy vlastností jsou vytvořeny s příslušnými výchozími hodnotami a typy (Object).
 
-#### <a name="triggers"></a>Aktivační události
+#### <a name="triggers"></a>Aktivační procedury
 
 * V rámci `typeProperties` jsou parametrizované dvě vlastnosti. První z nich je `maxConcurrency` , který má mít výchozí hodnotu a je typu `string` . Má výchozí název parametru `<entityName>_properties_typeProperties_maxConcurrency` .
-* `recurrence`Vlastnost také je parametrizovaná. V takovém případě jsou všechny vlastnosti na dané úrovni parametrizované jako řetězce s výchozími hodnotami a názvy parametrů. Výjimka je `interval` vlastnost, která je parametrizovaná jako typ `number` . Název parametru je s příponou `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . Podobně tato `freq` vlastnost je řetězec a je parametrizovaná jako řetězec. `freq`Vlastnost je však Parametrizovaná bez výchozí hodnoty. Název je zkrácen a přípona. Například, `<entityName>_freq`.
+* `recurrence`Vlastnost také je parametrizovaná. V takovém případě jsou všechny vlastnosti na dané úrovni parametrizované jako řetězce s výchozími hodnotami a názvy parametrů. Výjimka je `interval` vlastnost, která je parametrizovaná jako typ `int` . Název parametru je s příponou `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . Podobně tato `freq` vlastnost je řetězec a je parametrizovaná jako řetězec. `freq`Vlastnost je však Parametrizovaná bez výchozí hodnoty. Název je zkrácen a přípona. Například, `<entityName>_freq`.
 
 #### <a name="linkedservices"></a>LinkedServices
 
@@ -668,7 +668,7 @@ Pokud používáte integraci Git s datovou továrnou a máte kanál CI/CD, kter�
     - Entity Data Factory jsou vzájemně závislé. Například triggery závisejí na kanálech a kanály závisí na datových sadách a dalších kanálech. Selektivní publikování podmnožiny prostředků by mohlo vést k neočekávanému chování a chybám.
     - Ve výjimečných případech když potřebujete selektivní publikování, zvažte použití opravy hotfix. Další informace najdete v tématu [provozní prostředí oprav hotfix](#hotfix-production-environment).
 
-- Tým Azure Data Factory nedoporučuje přiřazovat řízení služby Azure RBAC jednotlivým entitám (kanálům, datovým sadám atd.) v datové továrně. Pokud má například vývojář přístup k kanálu nebo datové sadě, měl by mít přístup ke všem kanálům nebo datovým sadám v datové továrně. Pokud se domníváte, že v rámci datové továrny potřebujete implementovat mnoho rolí Azure, podívejte se na nasazení druhého objektu pro vytváření dat.
+- Tým Azure Data Factory nedoporučuje přiřazovat řízení služby Azure RBAC jednotlivým entitám (kanálům, datovým sadám atd.) v datové továrně. Pokud má například vývojář přístup ke kanálu nebo k datové sadě, měl by mít přístup ke všem kanálům nebo datovým sadám v datové továrně. Pokud se domníváte, že v rámci datové továrny potřebujete implementovat mnoho rolí Azure, podívejte se na nasazení druhého objektu pro vytváření dat.
 
 -   Nemůžete publikovat z privátních větví.
 

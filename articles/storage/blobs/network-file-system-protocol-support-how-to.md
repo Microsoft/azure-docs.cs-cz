@@ -9,19 +9,16 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 7419e8667f07eec03e860634c7b3fddcac0e186b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 97b52159684eca9be59ccc711f6d2f19b5eb8d49
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95901549"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906110"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Připojení úložiště objektů BLOB pomocí protokolu NFS (Network File System) 3,0 (Preview)
 
 Kontejner v úložišti objektů blob můžete připojit z virtuálního počítače Azure (VM) se systémem Windows nebo Linux nebo z systému Windows nebo Linux, který běží místně pomocí protokolu NFS 3,0. Tento článek poskytuje podrobné pokyny. Další informace o podpoře protokolů NFS 3,0 v BLOB Storage najdete v tématu [Podpora protokolu NFS (Network File System) 3,0 v Azure Blob Storage (Preview)](network-file-system-protocol-support.md).
-
-> [!NOTE]
-> Podpora protokolu NFS 3,0 v úložišti objektů BLOB v Azure je ve verzi Public Preview a je dostupná v těchto oblastech: USA – východ, USA – střed, USA – středozápad, Austrálie – jihovýchod, Severní Evropa, Velká Británie – západ, Korea – jih, Jižní Korea a Kanada – střed.
 
 ## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>Krok 1: registrace funkce protokolu NFS 3,0 v rámci vašeho předplatného
 
@@ -48,13 +45,7 @@ Kontejner v úložišti objektů blob můžete připojit z virtuálního počít
    Register-AzProviderFeature -FeatureName AllowNFSV3 -ProviderNamespace Microsoft.Storage 
    ```
 
-5. Zaregistrujte `PremiumHns` funkci také pomocí následujícího příkazu.
-
-   ```powershell
-   Register-AzProviderFeature -FeatureName PremiumHns -ProviderNamespace Microsoft.Storage  
-   ```
-
-6. Zaregistrujte poskytovatele prostředků pomocí následujícího příkazu.
+5. Zaregistrujte poskytovatele prostředků pomocí následujícího příkazu.
     
    ```powershell
    Register-AzResourceProvider -ProviderNamespace Microsoft.Storage   
@@ -66,7 +57,6 @@ Schválení registrace může trvat až hodinu. Chcete-li ověřit, zda byla reg
 
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFSV3
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumHns  
 ```
 
 ## <a name="step-3-create-an-azure-virtual-network-vnet"></a>Krok 3: vytvoření Azure Virtual Network (virtuální síť)
@@ -86,20 +76,20 @@ Pokud chcete zabezpečit data v účtu, přečtěte si tato doporučení: [dopor
 
 Pokud chcete připojit kontejner pomocí NFS 3,0, musíte **po** registraci funkce u svého předplatného vytvořit účet úložiště. Nemůžete povolit účty, které existovaly před registrací funkce. 
 
-V rámci verze Preview této funkce je protokol NFS 3,0 podporován pouze v účtech [BlockBlobStorage](../blobs/storage-blob-create-account-block-blob.md) .
+V rámci verze Preview této funkce je protokol NFS 3,0 podporován v účtech [BlockBlobStorage](../blobs/storage-blob-create-account-block-blob.md) a [obecné účely v2](../common/storage-account-overview.md#general-purpose-v2-accounts) .
 
 Při konfiguraci účtu vyberte tyto hodnoty:
 
-|Nastavení | Hodnota|
-|----|---|
-|Umístění|Jedna z následujících oblastí: USA – východ, USA – střed, USA – středozápad, Austrálie – jihovýchod, Severní Evropa, Velká Británie – západ, Korea – jih a Kanada – střed |
-|Výkon|Premium|
-|Druh účtu|BlockBlobStorage|
-|Replikace|Místně redundantní úložiště (LRS)|
-|Metoda připojení|Veřejný koncový bod (vybrané sítě) nebo soukromý koncový bod|
-|Secure transfer required (Vyžádání bezpečného přenosu)|Zakázáno|
-|Hierarchický obor názvů|Povoleno|
-|SYSTÉM SOUBORŮ NFS V3|Povoleno|
+|Nastavení | Výkon úrovně Premium | Standardní výkon  
+|----|---|---|
+|Umístění|Všechny dostupné oblasti |Jedna z následujících oblastí: Austrálie – východ, Korea – střed a Střed USA – jih   
+|Výkon|Premium| Standard
+|Druh účtu|BlockBlobStorage| Obecné účely v2
+|Replikace|Místně redundantní úložiště (LRS)| Místně redundantní úložiště (LRS)
+|Metoda připojení|Veřejný koncový bod (vybrané sítě) nebo soukromý koncový bod |Veřejný koncový bod (vybrané sítě) nebo soukromý koncový bod
+|Secure transfer required (Vyžádání bezpečného přenosu)|Zakázáno|Zakázáno
+|Hierarchický obor názvů|Povoleno|Povoleno
+|SYSTÉM SOUBORŮ NFS V3|Povoleno |Povoleno 
 
 Můžete přijmout výchozí hodnoty pro všechna ostatní nastavení. 
 
@@ -107,7 +97,7 @@ Můžete přijmout výchozí hodnoty pro všechna ostatní nastavení.
 
 Vytvořte kontejner v účtu úložiště pomocí některé z těchto nástrojů nebo sad SDK:
 
-|nástroje|Sady SDK|
+|Nástroje|Sady SDK|
 |---|---|
 |[Azure Portal](https://portal.azure.com)|[.NET](data-lake-storage-directory-file-acl-dotnet.md#create-a-container)|
 |[AzCopy](../common/storage-use-azcopy-blobs.md#create-a-container)|[Java](data-lake-storage-directory-file-acl-java.md#create-a-container)|

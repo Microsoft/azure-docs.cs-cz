@@ -1,24 +1,28 @@
 ---
-title: Vyžádání dat počasí v reálném čase a předpovědi s využitím Azure Maps povětrnostních služeb
-description: Naučte se, jak vyžádat data v reálném čase (aktuální) a předpovědi (minutová, hodinová, denní) počasí pomocí služby Microsoft Azure Maps počasí.
+title: Vyžádání dat počasí v reálném čase a předpovědi s využitím Azure Maps povětrnostních služeb (Preview)
+description: Naučte se, jak vyžádat data v reálném čase (aktuální) a předpovědi (minutová, hodinová, denní) s daty počasí pomocí služby Microsoft Azure Maps počasí (Preview).
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 10/27/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: c11f20286c514056d14b8faa941315345fea71f2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a5ae262d2882bd76e31666f058fa9a7a703a9e1e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186333"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906008"
 ---
-# <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services"></a>Vyžádání dat počasí v reálném čase a předpovědi s využitím Azure Maps povětrnostních služeb
+# <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services-preview"></a>Vyžádání dat počasí v reálném čase a předpovědi s využitím Azure Maps povětrnostních služeb (Preview) 
 
-Služba Azure Maps [počasí](/rest/api/maps/weather) je sada rozhraní API RESTful, která vývojářům umožňuje integrovat do jejich řešení vysoce dynamická data historických, v reálném čase a předpovědi počasí. V tomto článku vám ukážeme, jak si vyžádat data počasí v reálném čase i předpovědi.
+> [!IMPORTANT]
+> Služba Azure Maps počasí jsou momentálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Azure Maps [povětrnostní služby](/rest/api/maps/weather) jsou sadou rozhraní API RESTful, která vývojářům umožňují integrovat do jejich řešení vysoce dynamická data historických dat, která jsou v reálném čase a předpovědi předpověď počasí. V tomto článku vám ukážeme, jak si vyžádat data počasí v reálném čase i předpovědi.
 
 V tomto článku se dozvíte, jak:
 
@@ -28,7 +32,7 @@ V tomto článku se dozvíte, jak:
 * Vyžádá hodinové prognózy pomocí [rozhraní Get hodinové prognózy API](/rest/api/maps/weather/gethourlyforecastpreview).
 * Vyžádejte si minutové prognózy s použitím [rozhraní API pro předpovědi pro získání minut](/rest/api/maps/weather/getminuteforecastpreview).
 
-Toto video poskytuje přehled služeb počasí v Azure Maps s příklady volání REST.
+V tomto videu najdete příklady, jak volat REST Azure Maps povětrnostním službám.
 
 <br/>
 
@@ -751,8 +755,7 @@ V tomto příkladu použijete [rozhraní API pro předpověď minut](/rest/api/m
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Azure Maps koncepty služby počasí](./weather-services-concepts.md)
+> [Koncepty Azure Maps počasí Services (Preview)](./weather-services-concepts.md)
 
 > [!div class="nextstepaction"]
-> [Služba Azure Maps počasí REST API](/rest/api/maps/weather
-)
+> [Azure Maps povětrnostní služby (Preview) REST API](/rest/api/maps/weather)

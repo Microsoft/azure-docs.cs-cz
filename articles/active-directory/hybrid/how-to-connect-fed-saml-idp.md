@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cd95d01c9b49bb6002c00c805dc82dcf30941e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20088ccc79abe978eb5b3f1c98e958f6c26bcb86
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295033"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861795"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Použití zprostředkovatele identity (IdP) SAML 2.0 pro Jednotné přihlašování
 
@@ -250,7 +250,7 @@ Než budete moct ověřit uživatele a Microsoft 365, musíte zřídit Azure AD 
 
 Azure AD Connect můžete použít ke zřízení objektů zabezpečení domén v adresáři služby Azure AD z místní služby Active Directory. Podrobnější informace najdete v tématu [Integrace místních adresářů s Azure Active Directory](whatis-hybrid-identity.md).
 
-Prostředí Windows PowerShell můžete také použít k automatizaci přidání nových uživatelů do služby Azure AD a synchronizaci změn z místního adresáře. Pokud chcete používat rutiny Windows PowerShellu, musíte si stáhnout [Azure Active Directory moduly](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).
+Prostředí Windows PowerShell můžete také použít k automatizaci přidání nových uživatelů do služby Azure AD a synchronizaci změn z místního adresáře. Pokud chcete používat rutiny Windows PowerShellu, musíte si stáhnout [Azure Active Directory moduly](/powershell/azure/active-directory/install-adv2).
 
 Tento postup ukazuje, jak přidat jednoho uživatele do služby Azure AD.
 

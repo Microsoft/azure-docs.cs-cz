@@ -1,39 +1,39 @@
 ---
 title: Nejčastější dotazy k šabloně ARM
-description: Nejčastější dotazy týkající se Azure Resource Manager šablon.
+description: Nejčastější dotazy týkající se Azure Resource Manager šablon (šablony ARM).
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: af6a46e16cd888e3ff6a382be2b1a4264fcc2941
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5a23cf031b5d7cf40e2077f2e5287e10de563207
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184004"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902999"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Nejčastější dotazy týkající se šablon ARM
 
-Tento článek obsahuje odpovědi na nejčastější dotazy týkající se šablon Azure Resource Manager (ARM).
+Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Resource Manager šablon (šablony ARM).
 
 ## <a name="getting-started"></a>Začínáme
 
 * **Co jsou šablony ARM a proč je mám použít?**
 
   Šablony ARM jsou soubory JSON, kde definujete, co chcete nasadit do Azure. Šablony vám pomůžou implementovat řešení infrastruktury jako kódu pro Azure. Vaše organizace může opakovaně a spolehlivě nasadit požadovanou infrastrukturu do různých prostředí.
-  
+
   Další informace o tom, jak šablony ARM vám pomůžou spravovat infrastrukturu Azure, najdete v tématu [co jsou šablony ARM?](overview.md)
 
 * **Návody začít se šablonami?**
 
-  Abyste zjednodušili vytváření šablon ARM, potřebujete správné nástroje. Doporučujeme nainstalovat [Visual Studio Code](https://code.visualstudio.com/) a [rozšíření Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools). Rychlý úvod k těmto nástrojům najdete v tématu [rychlý Start: vytvoření Azure Resource Manager šablon pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+  Abyste zjednodušili vytváření šablon ARM, potřebujete správné nástroje. Doporučujeme nainstalovat [Visual Studio Code](https://code.visualstudio.com/) a [rozšíření Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools). Rychlý úvod k těmto nástrojům najdete v tématu [rychlý Start: vytvoření šablon ARM pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
   Až budete připraveni získat informace o vytváření šablon ARM, začněte v [šablonách ARM na začátečníkích řadu kurzů pro začátečníky](template-tutorial-create-first-template.md). Tyto kurzy vás provedou procesem vytvoření šablony ARM krok za krokem. Dozvíte se o různých oddílech šablony a o tom, jak spolu pracují. Tento obsah je také k dispozici jako [modul Microsoft Learn](/learn/modules/authoring-arm-templates/).
 
 * **Mám k nasazení do Azure použít šablony ARM nebo Terraformu?**
 
   Použijte možnost, kterou si přejete nejlépe. Obě služby vám pomůžou s automatizací nasazení do Azure.
-  
+
   Věříme, že existují výhody používání šablon ARM pro jiné služby infrastruktury jako kódu. Další informace o těchto výhodách najdete v tématu [Proč zvolit šablony ARM?](overview.md#why-choose-arm-templates)
 
 ## <a name="build-2020"></a>Sestavení 2020
@@ -59,7 +59,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se šabl
 * **Nastavil (a) jsem prostředí prostřednictvím portálu. Existuje nějaký způsob, jak získat šablonu z existující skupiny prostředků?**
 
   Ano, šablonu můžete [exportovat](export-template-portal.md) ze skupiny prostředků. Vyexportovaná šablona je dobrým výchozím bodem pro získání informací o šablonách, ale budete ji pravděpodobně chtít před použitím v produkčním prostředí revidovat.
-  
+
   Při exportování šablony můžete vybrat prostředky, které chcete zahrnout do šablony.
 
 * **Můžu v šabloně ARM vytvořit skupinu prostředků a nasadit do ní prostředky?**
@@ -182,11 +182,11 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se šabl
 
 * **Můžu do Azure Pipelines integrovat šablony ARM?**
 
-  Ano. Vysvětlení používání šablon a kanálů najdete v tématu [kurz: průběžná integrace šablon Azure Resource Manager s Azure Pipelines](deployment-tutorial-pipeline.md) a [integrace šablon ARM s Azure Pipelines](add-template-to-azure-pipelines.md).
+  Ano. Vysvětlení používání šablon a kanálů najdete v tématu [kurz: průběžná integrace šablon ARM pomocí Azure Pipelines](deployment-tutorial-pipeline.md) a [integrace šablon ARM s Azure Pipelines](add-template-to-azure-pipelines.md).
 
 * **Můžu k nasazení šablony použít akce GitHubu?**
 
-  Ano, další informace najdete v tématu [nasazení Azure Resource Manager šablon pomocí akcí GitHubu](deploy-github-actions.md).
+  Ano, další informace najdete v tématu [Nasazení šablon ARM pomocí akcí GitHubu](deploy-github-actions.md).
 
 ## <a name="next-steps"></a>Další kroky
 

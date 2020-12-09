@@ -8,12 +8,12 @@ author: sabbour
 ms.author: asabbour
 keywords: ARO, OpenShift, AZ ARO, Red Hat, CLI
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 03ecd0e11df5fa20f134b6fd87baf788078a2203
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 0d69fa10408618fb188b42e1dd8f7b9d02820cc3
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748031"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862407"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>Konfigurace ověřování Azure Active Directory pro cluster Azure Red Hat OpenShift 4 (CLI)
 
@@ -21,47 +21,67 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 Načtěte adresy URL pro konkrétní clustery, které se budou používat ke konfiguraci aplikace Azure Active Directory.
 
-Vytvořte adresu URL zpětného volání OAuth clusteru a uložte ji do proměnné **oauthCallbackURL** . Nezapomeňte nahradit položku **ARO – RG** pomocí názvu skupiny prostředků a **ARO – cluster** s názvem vašeho clusteru.
+Nastavte proměnné pro skupinu prostředků a název clusteru.
+
+Nahraďte **\<resource_group>** názvem vaší skupiny prostředků a **\<aro_cluster>** názvem vašeho clusteru.
+
+```azurecli-interactive
+resource_group=<resource_group>
+aro_cluster=<aro_cluster>
+```
+
+Vytvořte adresu URL zpětného volání OAuth clusteru a uložte ji do proměnné **oauthCallbackURL**. 
 
 > [!NOTE]
 > `AAD`Oddíl v adrese URL zpětného volání OAuth by se měl shodovat s názvem zprostředkovatele identity OAuth, který nastavíte později.
 
+
 ```azurecli-interactive
-domain=$(az aro show -g aro-rg -n aro-cluster --query clusterProfile.domain -o tsv)
-location=$(az aro show -g aro-rg -n aro-cluster --query location -o tsv)
-apiServer=$(az aro show -g aro-rg -n aro-cluster --query apiserverProfile.url -o tsv)
-webConsole=$(az aro show -g aro-rg -n aro-cluster --query consoleProfile.url -o tsv)
-oauthCallbackURL=https://oauth-openshift.apps.$domain.$location.aroapp.io/oauth2callback/AAD
+domain=$(az aro show -g $resource_group -n $aro_cluster --query clusterProfile.domain -o tsv)
+location=$(az aro show -g $resource_group -n $aro_cluster --query location -o tsv)
+apiServer=$(az aro show -g $resource_group -n $aro_cluster --query apiserverProfile.url -o tsv)
+webConsole=$(az aro show -g $resource_group -n $aro_cluster --query consoleProfile.url -o tsv)
 ```
+
+Formát oauthCallbackURL se mírně liší od vlastních domén:
+
+* Spusťte následující příkaz, pokud používáte vlastní doménu, např. `contoso.com` . 
+
+    ```azurecli-interactive
+    oauthCallbackURL=https://oauth-openshift.apps.$domain/oauth2callback/AAD
+    ```
+
+* Pokud nepoužíváte vlastní doménu, `$domain` bude to osm znaků alnum řetězec a je rozšířeno o `$location.aroapp.io` .
+
+    ```azurecli-interactive
+    oauthCallbackURL=https://oauth-openshift.apps.$domain.$location.aroapp.io/oauth2callback/AAD
+    ```
+
+> [!NOTE]
+> `AAD`Oddíl v adrese URL zpětného volání OAuth by se měl shodovat s názvem zprostředkovatele identity OAuth, který nastavíte později.
 
 ## <a name="create-an-azure-active-directory-application-for-authentication"></a>Vytvoření aplikace Azure Active Directory pro ověřování
 
-Vytvořte aplikaci Azure Active Directory a načtěte vytvořený identifikátor aplikace. Nahraďte **\<ClientSecret>** zabezpečeným heslem.
+Nahraďte **\<client_secret>** zabezpečeným heslem pro aplikaci.
 
 ```azurecli-interactive
-az ad app create \
+client_secret=<client_secret>
+```
+
+Vytvořte aplikaci Azure Active Directory a načtěte vytvořený identifikátor aplikace.
+
+```azurecli-interactive
+app_id=$(az ad app create \
   --query appId -o tsv \
   --display-name aro-auth \
   --reply-urls $oauthCallbackURL \
-  --password '<ClientSecret>'
-```
-
-Měli byste se vrátit jako takový. Poznamenejte si ji, protože se jedná o **AppID** , který budete potřebovat v pozdějších krocích.
-
-```output
-6a4cb4b2-f102-4125-b5f5-9ad6689f7224
+  --password $client_secret)
 ```
 
 Načtěte ID tenanta předplatného, které vlastní aplikace.
 
 ```azure
-az account show --query tenantId -o tsv
-```
-
-Měli byste se vrátit jako takový. Poznamenejte si ho, protože to je **TenantId** , které budete potřebovat v pozdějších krocích.
-
-```output
-72f999sx-8sk1-8snc-js82-2d7cj902db47
+tenant_id=$(az account show --query tenantId -o tsv)
 ```
 
 ## <a name="create-a-manifest-file-to-define-the-optional-claims-to-include-in-the-id-token"></a>Vytvořte soubor manifestu, který definuje nepovinné deklarace identity, které se mají zahrnout do tokenu ID.
@@ -97,19 +117,15 @@ EOF
 
 ## <a name="update-the-azure-active-directory-applications-optionalclaims-with-a-manifest"></a>Aktualizace optionalClaims aplikace Azure Active Directory s manifestem
 
-Nahraďte **\<AppID>** ID, které jste získali dříve.
-
 ```azurecli-interactive
 az ad app update \
   --set optionalClaims.idToken=@manifest.json \
-  --id <AppId>
+  --id $app_id
 ```
 
 ## <a name="update-the-azure-active-directory-application-scope-permissions"></a>Aktualizace oprávnění rozsahu Azure Active Directory aplikace
 
 Aby bylo možné číst informace o uživateli z Azure Active Directory, musíme definovat správné obory.
-
-Nahraďte **\<AppID>** ID, které jste získali dříve.
 
 Přidejte oprávnění pro obor **Azure Active Directory Graph. User. Read** , aby bylo možné povolit přihlášení a čtení profilu uživatele.
 
@@ -117,11 +133,11 @@ Přidejte oprávnění pro obor **Azure Active Directory Graph. User. Read** , a
 az ad app permission add \
  --api 00000002-0000-0000-c000-000000000000 \
  --api-permissions 311a71cc-e848-46a1-bdf8-97ff7156d8e6=Scope \
- --id <AppId>
+ --id $app_id
 ```
 
 > [!NOTE]
-> Pokud nejste ověřeni jako globální správce pro tento Azure Active Directory, můžete zprávu pro udělení souhlasu ignorovat, protože po přihlášení k vlastnímu účtu se zobrazí výzva.
+> Zprávu můžete bez obav ignorovat, pokud nejste ověřeni jako globální správce tohoto Azure Active Directory. Standardní uživatelé domény budou požádáni o udělení souhlasu při prvním přihlášení ke clusteru pomocí svých přihlašovacích údajů AAD.
 
 ## <a name="assign-users-and-groups-to-the-cluster-optional"></a>Přiřazení uživatelů a skupin ke clusteru (volitelné)
 
@@ -134,35 +150,27 @@ Při [přiřazování uživatelů a skupin do aplikace](../active-directory/deve
 Načtěte `kubeadmin` přihlašovací údaje. Spusťte následující příkaz a vyhledejte heslo pro `kubeadmin` uživatele.
 
 ```azurecli-interactive
-az aro list-credentials \
-  --name aro-cluster \
-  --resource-group aro-rg
+kubeadmin_password=$(az aro list-credentials \
+  --name $aro_cluster \
+  --resource-group $resource_group \
+  --query kubeadminPassword --output tsv)
 ```
 
-Následující příklad výstupu ukazuje, že heslo bude v `kubeadminPassword` .
-
-```json
-{
-  "kubeadminPassword": "<generated password>",
-  "kubeadminUsername": "kubeadmin"
-}
-```
-
-Přihlaste se k serveru rozhraní API OpenShift clusteru pomocí následujícího příkazu. `$apiServer`Proměnná byla nastavena [dříve](). Nahraďte **\<kubeadmin password>** heslem, které jste načetli.
+Přihlaste se k serveru rozhraní API OpenShift clusteru pomocí následujícího příkazu. 
 
 ```azurecli-interactive
-oc login $apiServer -u kubeadmin -p <kubeadmin password>
+oc login $apiServer -u kubeadmin -p $kubeadmin_password
 ```
 
-Vytvoření tajného klíče OpenShift pro uložení tajného kódu aplikace Azure Active Directory nahraďte **\<ClientSecret>** tajným klíčem, který jste získali dříve.
+Vytvořte tajný klíč OpenShift pro uložení tajného kódu aplikace Azure Active Directory.
 
 ```azurecli-interactive
 oc create secret generic openid-client-secret-azuread \
   --namespace openshift-config \
-  --from-literal=clientSecret=<ClientSecret>
+  --from-literal=clientSecret=$client_secret
 ```
 
-Vytvořte soubor **oidc. yaml** pro konfiguraci ověřování OpenShift OpenID proti Azure Active Directory. **\<AppID>** Hodnoty a nahraďte **\<TenantId>** hodnotami, které jste získali dříve.
+Vytvořte soubor **oidc. yaml** pro konfiguraci ověřování OpenShift OpenID proti Azure Active Directory. 
 
 ```bash
 cat > oidc.yaml<< EOF
@@ -176,7 +184,7 @@ spec:
     mappingMethod: claim
     type: OpenID
     openID:
-      clientID: <AppId>
+      clientID: $app_id
       clientSecret:
         name: openid-client-secret-azuread
       extraScopes:
@@ -192,7 +200,7 @@ spec:
         - name
         email:
         - email
-      issuer: https://login.microsoftonline.com/<TenantId>
+      issuer: https://login.microsoftonline.com/$tenant_id
 EOF
 ```
 
@@ -210,6 +218,6 @@ oauth.config.openshift.io/cluster configured
 
 ## <a name="verify-login-through-azure-active-directory"></a>Ověření přihlašovacích údajů prostřednictvím Azure Active Directory
 
-Pokud se teď odhlásíte do webové konzoly OpenShift a zkusíte se znovu přihlásit, zobrazí se nová možnost přihlášení pomocí **AAD** . Možná budete muset několik minut počkat.
+Pokud se teď odhlásíte do webové konzoly OpenShift a zkusíte se znovu přihlásit, zobrazí se nová možnost přihlášení pomocí **AAD**. Možná budete muset několik minut počkat.
 
 ![Přihlašovací obrazovka s možností Azure Active Directory](media/aro4-login-2.png)

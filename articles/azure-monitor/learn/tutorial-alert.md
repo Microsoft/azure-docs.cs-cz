@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 706f3913e25eca6240c186e45709faf6c77620bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1aa3ae5be3e9f3fb50909cb5311d167bbeee647
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324569"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904223"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Monitorování a upozornění na stav aplikace pomocí Azure Application Insights
 
@@ -24,11 +24,11 @@ Získáte informace o těchto tématech:
 > * Vytvořit test dostupnosti pro nepřetržitou kontrolu odezvy aplikace
 > * Při výskytu problému poslat e-mail správcům
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
-Vytvořte [prostředek Application Insights](./dotnetcore-quick-start.md#enable-application-insights).
+Vytvořte [prostředek Application Insights](../app/create-new-resource.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 

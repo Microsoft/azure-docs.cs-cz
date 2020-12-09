@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/07/2020
+ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 0c248149694c2bf66b8c94e9c0a29a8f7da9f4e4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9ea29c47349fd7ccee469188f8929a864cf7bbef
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843736"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905787"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Upgrade veřejných IP adres
 
@@ -159,6 +159,7 @@ US DoD – střed<br>
 
 * Aby bylo možné upgradovat základní veřejnou IP adresu, nelze ji přidružit k žádnému prostředku Azure.  Přečtěte si prosím [tuto stránku](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) , kde najdete další informace, jak zrušit přidružení veřejných IP adres.  Podobně, aby bylo možné migrovat Vyhrazená IP adresa, nelze je přidružit k žádné cloudové službě.  Další informace o tom, jak zrušit přidružení rezervovaných IP adres, najdete na [této stránce](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm) .  
 * Veřejné IP adresy upgradované z úrovně Basic na standard SKU budou mít i nadále žádné [zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) , a proto se nedají přidružit k prostředku Azure, který je buď redundantní v zóně nebo v oblasti.  Všimněte si, že to platí jenom pro oblasti, které nabízí zóny dostupnosti.
+* Nemůžete downgradovat z úrovně Standard na Basic.
 
 ## <a name="next-steps"></a>Další kroky
 

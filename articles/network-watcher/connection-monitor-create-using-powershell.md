@@ -1,7 +1,7 @@
 ---
 title: Vytvoření monitorování připojení – PowerShell
 titleSuffix: Azure Network Watcher
-description: Naučte se vytvářet monitorování připojení pomocí PowerShellu.
+description: Naučte se vytvořit monitorování připojení pomocí PowerShellu.
 services: network-watcher
 documentationcenter: na
 author: vinigam
@@ -12,33 +12,33 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: 1a554177bf7084b9a7f4c413dbe82271b3ab6b3a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 1d5f879ead35ef6d47b993ff833dc0b0595e3c6c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95545529"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861914"
 ---
-# <a name="create-a-connection-monitor-using-powershell"></a>Vytvoření monitorování připojení pomocí PowerShellu
+# <a name="create-a-connection-monitor-by-using-powershell"></a>Vytvoření monitorování připojení pomocí PowerShellu
 
-Naučte se vytvářet monitorování připojení, abyste mohli monitorovat komunikaci mezi prostředky pomocí PowerShellu.
+Naučte se používat funkci monitorování připojení služby Azure Network Watcher k monitorování komunikace mezi prostředky.
 
 
-## <a name="before-you-begin"></a>Než začnete 
+## <a name="before-you-begin"></a>Než začnete
 
-V okně Sledování připojení, které vytvoříte v monitorování připojení, můžete přidat místní počítače a virtuální počítače Azure jako zdroje. Tato sledování připojení také mohou monitorovat připojení k koncovým bodům. Koncové body můžou být na Azure nebo na jakékoli jiné adrese URL nebo IP adrese.
+V okně Sledování připojení, které vytvoříte pomocí monitorování připojení, můžete přidat místní počítače a virtuální počítače Azure jako zdroje. Tato sledování připojení také mohou monitorovat připojení k koncovým bodům. Koncové body můžou být na Azure nebo na jakékoli jiné adrese URL nebo IP adrese.
 
 Monitorování připojení zahrnuje následující entity:
 
-* **Prostředek sledování připojení** – prostředek Azure specifický pro oblast. Všechny následující entity jsou vlastnosti prostředku monitorování připojení.
-* **Koncový bod** – zdroj nebo cíl, který se účastní kontrol připojení. Mezi příklady koncových bodů patří virtuální počítače Azure, místní agenti, adresy URL a IP adresy.
-* **Konfigurace testu** – konfigurace specifická pro protokol pro test. V závislosti na zvoleném protokolu můžete definovat port, prahové hodnoty, frekvenci testování a další parametry.
-* **Testovací skupina** – skupina, která obsahuje zdrojové koncové body, cílové koncové body a konfigurace testu. Monitorování připojení může obsahovat více než jednu skupinu testů.
-* **Test** – kombinace zdrojového koncového bodu, cílového koncového bodu a konfigurace testu. Test je nejpřesnější úroveň, při které jsou dostupná data monitorování. Data monitorování zahrnují procento kontrol, které selhaly, a čas odezvy (RTT).
+* **Prostředek monitorování připojení**: prostředek Azure specifický pro oblast. Všechny následující entity jsou vlastnosti prostředku monitorování připojení.
+* **Koncový bod**: zdroj nebo cíl, který se účastní kontrol připojení. Mezi příklady koncových bodů patří virtuální počítače Azure, místní agenti, adresy URL a IP adresy.
+* **Konfigurace testu**: konfigurace specifická pro protokol pro test. V závislosti na zvoleném protokolu můžete definovat port, prahové hodnoty, frekvenci testování a další parametry.
+* **Testovací skupina**: skupina, která obsahuje zdrojové koncové body, cílové koncové body a konfigurace testu. Monitorování připojení může obsahovat více než jednu skupinu testů.
+* **Test**: kombinace zdrojového koncového bodu, cílového koncového bodu a konfigurace testu. Test je nejpřesnější úroveň, při které jsou dostupná data monitorování. Data monitorování zahrnují procento kontrol, které selhaly, a čas odezvy (RTT).
 
-    ![Diagram znázorňující monitorování připojení, definování vztahu mezi testovacími skupinami a testy](./media/connection-monitor-2-preview/cm-tg-2.png)
+    ![Diagram znázorňující monitorování připojení a definování vztahu mezi testovacími skupinami a testy.](./media/connection-monitor-2-preview/cm-tg-2.png)
 
-## <a name="steps-to-create-with-powershell"></a>Postup vytvoření pomocí prostředí PowerShell
+## <a name="steps-to-create-a-connection-monitor"></a>Postup vytvoření monitorování připojení
 
 Pomocí následujících příkazů vytvořte monitorování připojení pomocí prostředí PowerShell.
 
@@ -71,43 +71,42 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
 
 ## <a name="description-of-properties"></a>Popis vlastností
 
-* connectionMonitorName – název prostředku monitorování připojení
+* **ConnectionMonitorName**: název prostředku monitorování připojení.
 
-* ID DÍLČÍho předplatného, kde chcete vytvořit monitorování připojení
+* **Sub**: ID předplatného pro předplatné, ve kterém chcete vytvořit monitorování připojení.
 
-* NW-Network Watcher ID prostředku, ve kterém bude vytvořeno CM 
+* **NW**: Network Watcher ID prostředku, ve kterém se vytvoří monitor připojení.
 
-* umístění – oblast, ve které se bude monitor připojení vytvořit
+* **Umístění**: oblast, ve které se vytvoří monitor připojení.
 
-* Koncové body
-    * název – jedinečný název pro každý koncový bod
-    * resourceId – pro koncové body Azure ID prostředku odkazuje na ID prostředku Azure Resource Manager pro virtuální počítače. U koncových bodů mimo Azure odkazuje ID prostředku na ID prostředku Azure Resource Manager pro pracovní prostor Log Analytics propojený s agenty mimo Azure.
-    * Adresa – platí pouze v případě, že buď není zadáno ID prostředku, nebo pokud je ID prostředku Log Analytics pracovního prostoru. Pokud se používá s ID prostředku Log Analytics, odkazuje se na plně kvalifikovaný název domény agenta, který se dá použít k monitorování. Pokud se používá bez ID prostředku, může to být adresa URL nebo IP adresa libovolného veřejného koncového bodu.
-    * filtr – pro koncové body mimo Azure použijte filtr k výběru agentů z Log Analytics pracovního prostoru, který se použije pro monitorování v prostředku monitorování připojení. Pokud nejsou filtry nastavené, můžete k monitorování použít všechny agenty patřící do Log Analyticsho pracovního prostoru.
-        * typ – nastavte typ jako "adresa agenta".
-        * Adresa – nastaví adresu jako plně kvalifikovaný název domény místního agenta.
+* **Koncové body**
+    * **Název**: jedinečný název pro každý koncový bod.
+    * **ID prostředku**: pro koncové body Azure odkazuje ID prostředku na id prostředku Azure Resource Manager pro virtuální počítače. U koncových bodů mimo Azure odkazuje ID prostředku na ID prostředku Azure Resource Manager pro pracovní prostor Log Analytics propojený s agenty mimo Azure.
+    * **Adresa**: platí pouze v případě, že není zadáno ID prostředku nebo pokud je ID prostředku v pracovním prostoru Log Analytics. Pokud se používá bez ID prostředku, může to být adresa URL nebo IP adresa libovolného veřejného koncového bodu. Pokud se používá s ID prostředku Log Analytics, vztahuje se to na plně kvalifikovaný název domény agenta monitorování.
+    * **Filtr**: u koncových bodů mimo Azure použijte filtry k výběru agentů monitorování z pracovního prostoru Log Analytics v prostředku monitorování připojení. Pokud nejsou filtry nastavené, můžete k monitorování použít všechny agenty patřící do Log Analytics pracovního prostoru.
+        * **Typ**: nastavte **adresu agenta**.
+        * **Adresa**: nastaví se jako plně kvalifikovaný název domény vašeho místního agenta.
 
-* Testovací skupiny
-    * Název – pojmenujte testovací skupinu.
-    * testConfigurations-test konfigurace na základě toho, které zdrojové koncové body se připojují k cílovým koncovým bodům
-    * zdroje – vyberte z koncových bodů vytvořených výše. Zdrojové koncové body založené na Azure musí mít nainstalované rozšíření Azure Network Watcher a zdrojové koncové body založené na Azure musí být nainstalované haveAzure Log Analytics agent. Chcete-li nainstalovat agenta pro zdroj, přečtěte si téma [Instalace agentů monitorování](./connection-monitor-overview.md#install-monitoring-agents).
-    * cíle – vybrat z koncových bodů vytvořených výše. Můžete monitorovat připojení k virtuálním počítačům Azure nebo libovolnému koncovému bodu (veřejné IP adresy, adresy URL nebo plně kvalifikovanému názvu domény) jejich zadáním jako cíle. V jedné skupině testů můžete přidat virtuální počítače Azure, adresy URL pro Office 365, adresy URL Dynamics 365 a vlastní koncové body.
-    * zakázat – pomocí tohoto pole zakážete monitorování pro všechny zdroje a cíle, které určuje skupina testů.
+* **Testovací skupiny**
+    * **Název**: pojmenujte testovací skupinu.
+    * **Zdroje**: vyberte z koncových bodů, které jste vytvořili dříve. Zdrojové koncové body založené na Azure musí mít nainstalované rozšíření Azure Network Watcher; zdrojové koncové body, které nejsou založené na Azure, musí mít nainstalovaného agenta Azure Log Analytics. Chcete-li nainstalovat agenta pro zdroj, přečtěte si téma [Instalace agentů monitorování](./connection-monitor-overview.md#install-monitoring-agents).
+    * **Cílová umístění**: vyberte z koncových bodů, které jste vytvořili dříve. Můžete monitorovat připojení k virtuálním počítačům Azure nebo libovolnému koncovému bodu (veřejné IP adresy, adresy URL nebo plně kvalifikovanému názvu domény) jejich zadáním jako cíle. V jedné skupině testů můžete přidat virtuální počítače Azure, adresy URL pro Office 365, adresy URL Dynamics 365 a vlastní koncové body.
+    * **Zakázat**: zakáže monitorování pro všechny zdroje a cíle, které určuje testovací skupina.
 
-* Konfigurace testů
-    * Název – název konfigurace testu.
-    * testFrequencySec – určete, jak často budou zdroje testovat cíle nástroje pro otestování na zadaném protokolu a portu. Můžete zvolit 30 sekund, 1 minutu, 5 minut, 15 minut nebo 30 minut. Zdroje budou testovat připojení k cílům na základě hodnoty, kterou zvolíte. Pokud například vyberete 30 sekund, zdroje budou kontrolovat připojení k cíli nejméně jednou za 30 sekund.
-    * protokol – můžete zvolit TCP, ICMP, HTTP nebo HTTPS. V závislosti na protokolu můžete provést několik konfigurací specifických pro protokol.
-        * preferHTTPS – určuje, jestli se má použít HTTPS přes HTTP
-        * Port – zadejte cílový port, který chcete vybrat.
-        * disableTraceRoute – to platí pro testovací skupiny, jejichž protokol je TCP nebo ICMP. Zastavuje zdroje z vyhledávání topologie a času směrování po směrování.
-        * Metoda – to platí pro testovací konfigurace, jejichž protokol je HTTP. Vyberte metodu žádosti HTTP – buď GET, nebo POST.
-        * cesta – zadejte parametry cesty, které se mají připojit k adrese URL.
-        * validStatusCodes – vyberte příslušné stavové kódy. Pokud kód odpovědi neodpovídá tomuto seznamu, zobrazí se diagnostická zpráva.
-        * requestHeaders hostitele – zadejte vlastní řetězce hlaviček žádostí, které se předají do cílového umístění.
-    * successThreshold – prahové hodnoty můžete nastavit u následujících síťových parametrů:
-        * checksFailedPercent – nastaví procento kontrol, které mohou selhat, když zdroje kontrolují připojení k cílům pomocí zadaných kritérií. V případě protokolu TCP nebo ICMP může být Procento neúspěšných kontrol rovno procentům ztráty paketů. V případě protokolu HTTP toto pole představuje procento požadavků HTTP, které neobdržely odpověď.
-        * roundTripTimeMs – doba odezvy v milisekundách, po kterou mohou dlouhé zdroje trvat pro připojení k cíli prostřednictvím konfigurace testu.
+* **Konfigurace testů**
+    * **Název**: pojmenujte konfiguraci testu.
+    * **TestFrequencySec**: Určete, jak často se mají ve zdrojích odeslat příkazy pro zadání adresy pro odeslání na protokol a port. Můžete zvolit 30 sekund, 1 minutu, 5 minut, 15 minut nebo 30 minut. Zdroje otestují připojení k cílům na základě hodnoty, kterou zvolíte. Pokud například vyberete 30 sekund, zdroje kontrolují připojení k cílovému umístění nejméně jednou za 30 sekund.
+    * **Protokol**: Vyberte TCP, ICMP, http nebo HTTPS. V závislosti na protokolu můžete také vybrat následující konfigurace specifické pro protokol:
+        * **preferHTTPS**: Určete, jestli se má používat HTTPS přes HTTP.
+        * **port**: Zadejte cílový port, který chcete vybrat.
+        * **disableTraceRoute**: Zastavte zdroje z vyhledávání topologie a času směrování po směrování. To platí pro testovací skupiny pomocí TCP nebo ICMP.
+        * **Metoda**: Vyberte metodu požadavku HTTP (Get nebo post). To platí pro testovací konfigurace pomocí protokolu HTTP.
+        * **cesta**: zadejte parametry cesty, které se mají připojit k adrese URL.
+        * **validStatusCodes**: vyberte příslušné stavové kódy. Pokud se kód odpovědi neshoduje, zobrazí se diagnostická zpráva.
+        * **requestHeaders hostitele**: zadejte vlastní řetězce hlaviček žádostí, které přecházejí do cíle.
+    * **Prahová hodnota úspěšnosti**: Nastavte prahové hodnoty u následujících síťových parametrů:
+        * **checksFailedPercent**: nastavte procento kontrol, které mohou selhat, když zdroje kontrolují připojení k cílům pomocí zadaných kritérií. V případě protokolu TCP nebo ICMP se procento neúspěšných kontrol může rovnat procentu ztráty paketů. V případě protokolu HTTP toto pole představuje procento požadavků HTTP, které neobdržely odpověď.
+        * **roundTripTimeMs**: Nastavte, jak dlouho můžou zdroje trvat pro připojení k cíli v konfiguraci testu v milisekundách.
 
 ## <a name="scale-limits"></a>Omezení škálování
 
@@ -120,5 +119,5 @@ Monitory připojení mají následující meze škálování:
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte [se analyzovat data monitorování a nastavovat upozornění](./connection-monitor-overview.md#analyze-monitoring-data-and-set-alerts) .
-* Zjistěte [, jak diagnostikovat problémy ve vaší síti](./connection-monitor-overview.md#diagnose-issues-in-your-network) .
+* Naučte [se analyzovat data monitorování a nastavovat upozornění](./connection-monitor-overview.md#analyze-monitoring-data-and-set-alerts).
+* Naučte [se diagnostikovat problémy ve vaší síti](./connection-monitor-overview.md#diagnose-issues-in-your-network).

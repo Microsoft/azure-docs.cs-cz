@@ -6,27 +6,31 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 12/04/2020
-ms.openlocfilehash: 7b335c3db5fb52c4323b797556d48e3ed9ae410a
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.date: 12/08/2020
+ms.openlocfilehash: b5001898fa18834ce7c04403de70879084df85f1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621616"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904904"
 ---
-# <a name="co-sell-option-in-the-commercial-marketplace"></a>Možnost společného prodeje na komerčním webu Marketplace
+# <a name="co-sell-option-in-the-commercial-marketplace"></a>Možnost spoluprodeje na komerčním marketplace
 
 Poskytování informací o **společném prodeji** na kartě Microsoft je zcela volitelné. Je nutné, abyste dosáhli [motivovaní stavu pro spoluprodejní přípravu a IP](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Informace, které poskytnete, budou využívat prodejní týmy Microsoftu k získání dalších informací o vaší nabídce při vyhodnocování svých potřeb pro zákazníky. Není k dispozici přímo pro zákazníky. Další informace najdete v tématu [společný prodej s Microsoftem](https://partner.microsoft.com/membership/co-sell-with-microsoft).
 
-Možnost společného prodeje v partnerském centru je aktuálně k dispozici pro následující typy nabídek.
+Možnost společného prodeje v partnerském centru je k dispozici pro následující typy nabídek.
 
 - Azure Application
+- Kontejner Azure
+- Virtuální počítač Azure
+- Konzultační služba
 - Dynamics 365 pro Customer Engagement & PowerApps
-- Dynamics 365 for Operations
+- Dynamics 365 pro operace
 - Dynamics 365 Business Central
+- Modul IoT Edge
+- Spravovaná služba
+- Aplikace Power BI
 - Software jako služba (SaaS)
-
-Podpora dalších typů nabídek bude k dispozici v průběhu času.
 
 ## <a name="listing"></a>Výpis
 
@@ -54,7 +58,7 @@ Typy řešení usnadňují definování scénářů, na které je vaše nabídka
 
 Můžete přidat až tři oblasti řešení pro vaši nabídku. Pro každou oblast řešení můžete zvolit až dvě podoblasti řešení. Pokud chcete vybrat více podkategorií, použijte `Ctrl` klíč (ve Windows) nebo klíč příkazu (na MacOS).
 
-## <a name="documents"></a>dokumenty.
+## <a name="documents"></a>Dokumenty
 
 Máte možnost poskytnout dokumentaci, kterou Microsoft bude používat k získání dalších informací o vaší nabídce, a vyhodnotit, co vyhovuje vašim potřebám zákazníků.
 
