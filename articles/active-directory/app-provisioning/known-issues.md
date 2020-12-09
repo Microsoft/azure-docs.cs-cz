@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 11/19/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: e0a77e1e4757c8951756c3e41479628c293dfd8f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b8bdb216cbe8d359f35c758ae89f4267ab223483
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174828"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928745"
 ---
 # <a name="known-issues-application-provisioning"></a>Známé problémy: zřizování aplikací
 Známé problémy, které je třeba znát při práci s zřizováním aplikací. Zpětnou vazbu o službě zřizování aplikací na UserVoice najdete v tématu [Azure AD Application zřizování UserVoice](https://aka.ms/appprovisioningfeaturerequest). Úzce sledujeme UserVoice, abychom mohli službu vylepšit. 
@@ -24,7 +24,7 @@ Známé problémy, které je třeba znát při práci s zřizováním aplikací.
 > [!NOTE]
 > Nejedná se o úplný seznam známých problémů. Pokud víte, který problém není uveden, poskytněte nám zpětnou vazbu v dolní části stránky.
 
-## <a name="authorization"></a>Autorizace 
+## <a name="authorization"></a>Authorization (Autorizace) 
 
 **Po úspěšném testu připojení se nepovedlo Uložit.**
 
@@ -56,6 +56,10 @@ Služba Azure AD momentálně nemůže zřídit atributy s hodnotou null. Pokud 
 **Maximální počet znaků pro výrazy mapování atributů**
 
 Výrazy mapování atributu můžou mít maximálně 10 000 znaků. 
+
+**Nepodporované filtry oborů**
+
+Rozšíření adresáře, appRoleAssignments, userType a accountExpires nejsou podporována jako filtry oborů.
 
 
 ## <a name="service-issues"></a>Potíže se službou 

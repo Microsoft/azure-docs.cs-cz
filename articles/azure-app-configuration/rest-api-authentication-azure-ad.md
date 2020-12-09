@@ -1,17 +1,17 @@
 ---
 title: Azure Active Directory REST API – ověřování
 description: Použití Azure Active Directory k ověření v konfiguraci aplikace Azure pomocí REST API
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 73d951b3e85c170cf068693bb9b374349516ca8f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cbf05245768a663e324e9bb6e1ad422eeee3ab1a
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183477"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930513"
 ---
 # <a name="azure-active-directory-authentication"></a>Ověřování služby Azure Active Directory
 

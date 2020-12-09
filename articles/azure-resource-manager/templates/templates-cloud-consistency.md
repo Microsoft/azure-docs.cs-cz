@@ -1,23 +1,23 @@
 ---
 title: Opakované použití šablon napříč cloudy
-description: Vývoj Azure Resource Manager šablon, které pracují konzistentně pro různá cloudová prostředí. Vytvořte nové nebo aktualizujte existující šablony pro Azure Stack.
+description: Vývoj šablon Azure Resource Manager (šablony ARM), které pracují konzistentně pro různá cloudová prostředí. Vytvořte nové nebo aktualizujte existující šablony pro Azure Stack.
 author: marcvaneijk
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: ea010a625c3e3cd6228513299d878733bf3775ce
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 806556a8da97ec84fe8141b95198b4a7da95c062
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744751"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928354"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>Vývoj šablon ARM pro cloudovou konzistenci
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Klíčovou výhodou Azure je konzistence. Investice do vývoje pro jedno umístění se znovu používají v jiné. Šablona Azure Resource Manager (ARM) umožňuje nasazení konzistentně a opakovaně v různých prostředích, včetně globálních cloudů Azure, Azure svrchovaného cloudu a Azure Stack. Aby bylo možné opakovaně používat šablony napříč cloudy, je třeba vzít v úvahu, že v této příručce jsou vysvětleny specifické závislosti cloudu.
+Klíčovou výhodou Azure je konzistence. Investice do vývoje pro jedno umístění se znovu používají v jiné. Šablona Azure Resource Manager (šablona ARM) umožňuje nasazení konzistentně a opakovaně v různých prostředích, včetně globálního cloudu Azure, Azure svrchovaného cloudu a Azure Stack. Aby bylo možné opakovaně používat šablony napříč cloudy, je třeba vzít v úvahu, že v této příručce jsou vysvětleny specifické závislosti cloudu.
 
 Microsoft nabízí inteligentní cloudové služby připravené pro podnikové prostředí v mnoha umístěních, včetně těchto:
 
@@ -205,7 +205,7 @@ Chcete-li vytvořit absolutní identifikátor URI artefaktu, upřednostňovanou 
 }
 ```
 
-S tímto přístupem můžete všechny artefakty nasazení, včetně konfiguračních skriptů, ukládat ve stejném umístění se šablonou samotné. Chcete-li změnit umístění všech odkazů, stačí zadat jinou základní adresu URL pro _parametry artifactsLocation_ .
+S tímto přístupem můžete všechny artefakty nasazení, včetně konfiguračních skriptů, ukládat ve stejném umístění se šablonou samotné. Chcete-li změnit umístění všech odkazů, stačí zadat jinou základní adresu URL pro _parametry artifactsLocation_.
 
 ## <a name="factor-in-differing-regional-capabilities"></a>Faktor lišící se různými možnostmi regionálního výkonu
 
@@ -443,8 +443,8 @@ Obory názvů koncových bodů můžete také použít ve výstupu šablony jako
 
 Obecně se vyhněte koncovým bodům pevně zakódované v šabloně. Osvědčeným postupem je použití referenční funkce šablony k dynamickému načítání koncových bodů. Například koncový bod nejčastěji pevně zakódované je obor názvů koncového bodu pro účty úložiště. Každý účet úložiště má jedinečný plně kvalifikovaný název domény, který je vytvořený zřetězením názvu účtu úložiště s oborem názvů koncového bodu. Účet Blob Storage s názvem mystorageaccount1 má za následek různé plně kvalifikované názvy domény v závislosti na cloudu:
 
-* **mystorageaccount1.blob.Core.Windows.NET** , když se vytvoří v globálním cloudu Azure.
-* **mystorageaccount1.blob.Core.chinacloudapi.cn** , když se vytvoří v cloudu Azure Čína 21Vianet.
+* `mystorageaccount1.blob.core.windows.net` Při vytvoření v globálním cloudu Azure.
+* `mystorageaccount1.blob.core.chinacloudapi.cn` Při vytvoření v cloudu Azure Čína 21Vianet.
 
 Následující referenční funkce šablony načte obor názvů koncového bodu z poskytovatele prostředků úložiště:
 
@@ -641,7 +641,7 @@ Každé konkrétní rozšíření je také ve verzi. Tato verze je zobrazená ve
         ...
 ```
 
-Pokud chcete načíst seznam dostupných verzí pro konkrétní rozšíření virtuálního počítače, použijte rutinu [Get-AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) . Následující příklad načte dostupné verze rozšíření VM DSC (Konfigurace požadovaného stavu) z **myLocation** :
+Pokud chcete načíst seznam dostupných verzí pro konkrétní rozšíření virtuálního počítače, použijte rutinu [Get-AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) . Následující příklad načte dostupné verze rozšíření VM DSC (Konfigurace požadovaného stavu) z **myLocation**:
 
 ```azurepowershell-interactive
 Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerShell -Type DSC | FT

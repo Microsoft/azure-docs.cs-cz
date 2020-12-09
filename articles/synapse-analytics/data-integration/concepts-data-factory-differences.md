@@ -2,18 +2,18 @@
 title: Rozdíly oproti Azure Data Factory
 description: Přečtěte si, jak se možnosti integrace dat služby Azure synapse Analytics liší od Azure Data Factory
 services: synapse-analytics
-author: djpmsft
+author: shirleywangmsft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.author: daperlov
+ms.author: shwang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 10f5336dd4c8a02acf623b1b14226ca676006953
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: db5d05e1a211ce14926ee4031054669fff5110d9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357645"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930207"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Integrace dat ve službě Azure synapse Analytics versus Azure Data Factory
 
@@ -42,7 +42,6 @@ Následující funkce se chovají odlišně nebo v současnosti neexistují v Az
 
 * **Toky dat tahání:** Aktivita toku dat tahání je v tuto chvíli dostupná jenom v Azure Data Factory.
 * **Galerie šablon řešení:** V Azure Data Factory můžou uživatelé najít šablony kanálu v galerii šablon řešení. V pracovních prostorech synapse obsahuje znalostní centrum jinou sadu šablon spolu s dalšími datovými sadami a skripty SQL. 
-* **Integrace Gitu a nativní řešení CI/CD:** V současné době se pracovní prostor synapse nemůže připojit k úložišti Git ani se neřídí stejným procesem nepřetržité integrace a doručování jako Azure Data Factory.
 * **Integrace se službou Azure monitor:** Pracovní prostory synapse se neintegrují s Azure Monitor jako Azure Data Factory.
 * **Konfigurace hybridního prostředí Integration Runtime:** V pracovním prostoru synapse nemůže uživatel mít spravovanou virtuální síť IR i Azure IR. Tato funkce je podporovaná v Azure Data Factory.
 * **Sdílení modulu runtime integrace:** Místní prostředí Integration runtime se nedají sdílet mezi synapse pracovními prostory. Tato funkce je podporovaná v Azure Data Factory.

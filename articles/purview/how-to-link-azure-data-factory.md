@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: 55651b3201676ee5cddb5412e950791afaa4e87a
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 01af7b251c9ce3bfebb87016c85ea3efd9c0e8ac
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852128"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928762"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Jak připojit Azure Data Factory a Azure dosah
 
@@ -42,6 +42,13 @@ Několik datových továrn Azure se může připojit k jednomu Data Catalog Azur
 
 ## <a name="create-new-data-factory-connection"></a>Vytvořit nové připojení Data Factory
 
+>[!Note]
+>Chcete-li přidat nebo odebrat připojení Data Factory, je nutné přiřadit jednu z rolí dosah:
+>- Vlastník
+>- Správce uživatelských přístupů
+>
+> Kromě toho vyžaduje, aby uživatelé byli "vlastníkem" objektu pro vytváření dat "vlastník" nebo "Přispěvatel". 
+
 Pomocí následujících kroků připojte existující účty Data Factory ke Data Catalog dosah.
 
 1. V levém navigačním podokně vyberte **Centrum pro správu** .
@@ -70,11 +77,6 @@ Pokud chcete odebrat připojení k datové továrně, udělejte toto:
 1. V místní nabídce vyberte **Potvrdit** a odstraňte vybraná připojení ke službě Data Factory.
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="Snímek obrazovky ukazující, jak vybrat datové továrny pro odebrání připojení" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
-
->[!Note]
->Chcete-li přidat nebo odebrat připojení Data Factory, je nutné přiřadit jednu z rolí dosah:
->- Vlastník
->- Správce přístupu uživatele kromě toho vyžaduje, aby uživatelé byli "vlastníkem" objektu pro vytváření dat "vlastník" nebo "Přispěvatel" nebo "Data Factory Přispěvatel". 
 
 ## <a name="configure-a-self-hosted-ir-to-collect-lineage-from-on-prem-sql"></a>Konfigurace prostředí IR v místním prostředí pro shromažďování řádků z Prem SQL
 

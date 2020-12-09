@@ -5,12 +5,12 @@ services: automation
 ms.date: 12/04/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: e8fc2a840ce019282625f286a6d54b132a1806c8
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: c6d0f38eaa25f2fe033a5e2cf48ee6daa51fcbe6
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751253"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929272"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Řešení problémů s Update Managementem
 
@@ -19,7 +19,7 @@ Tento článek popisuje problémy, ke kterým může dojít při nasazování fu
 >[!NOTE]
 >Pokud narazíte na problémy při nasazení Update Management na počítači s Windows, otevřete Prohlížeč událostí systému Windows a v protokolu událostí pro **aplikace a služby** v místním počítači zaškrtněte protokol událostí **Operations Manager** . Vyhledejte události s ID události 4502 a podrobnostmi události, které obsahují `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` .
 
-## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a>Scénář: aktualizace pro Linux zobrazené jako čeká na vyřízení a instalace se liší.
+## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a><a name="updates-linux-installed-different"></a>Scénář: aktualizace pro Linux zobrazené jako čeká na vyřízení a instalace se liší.
 
 ### <a name="issue"></a>Problém
 

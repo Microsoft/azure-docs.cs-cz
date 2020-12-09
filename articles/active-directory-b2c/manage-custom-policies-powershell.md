@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29db2214ddabeb6df2aa937c4ccd1f9938143969
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: fcc482e215e646fec20516f35641bd05398d2f2d
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949441"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928711"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Správa Azure AD B2C vlastních zásad pomocí Azure PowerShell
 
@@ -27,11 +27,11 @@ Azure PowerShell poskytuje několik rutin pro správu vlastních zásad na zákl
 * Nahrajte do svého tenanta Azure AD B2C novou zásadu.
 * Odstranění vlastních zásad z tenanta
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Azure AD B2C tenant](tutorial-create-tenant.md)a přihlašovací údaje uživatele v adresáři s rolí [správce zásad IEF B2C](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)
 * [Vlastní zásady](custom-policy-get-started.md) odeslané do vašeho tenanta
-* [Azure AD PowerShell pro **modul Graph Preview**](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
+* [Azure AD PowerShell pro **modul Graph Preview**](/powershell/azure/active-directory/install-adv2)
 
 ## <a name="connect-powershell-session-to-b2c-tenant"></a>Připojení relace PowerShellu k tenantovi B2C
 

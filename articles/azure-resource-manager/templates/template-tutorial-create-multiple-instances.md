@@ -1,21 +1,21 @@
 ---
 title: Vytvoření několika instancí prostředku
-description: Zjistěte, jak vytvořit šablonu Azure Resource Manageru k vytvoření více instancí prostředků Azure.
+description: Naučte se vytvořit šablonu Azure Resource Manager (šablonu ARM) pro vytvoření více instancí prostředků Azure.
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: dac1e9429965607aea1490f0ec3b540d7b441d09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94509ba209e95eb9199ddd760529d47eb48bda10
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614389"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930794"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>Kurz: vytvoření více instancí prostředků pomocí šablon ARM
 
-Přečtěte si, jak iterovat v šabloně Azure Resource Manager (ARM), abyste vytvořili víc instancí prostředku Azure. V tomto kurzu upravíte šablonu tak, aby vytvořila tři instance účtu úložiště.
+Přečtěte si, jak iterovat šablonu Azure Resource Manager (šablonu ARM) a vytvořit víc instancí prostředku Azure. V tomto kurzu upravíte šablonu tak, aby vytvořila tři instance účtu úložiště.
 
 ![Azure Resource Manager vytvoří diagram více instancí.](./media/template-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
 
@@ -32,7 +32,7 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 
 K dokončení tohoto článku potřebujete:
 
-* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Další informace najdete v tématu [rychlý Start: vytváření Azure Resource Manager šablon pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Další informace najdete v tématu [rychlý Start: vytvoření šablon ARM pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony pro rychlý start
 

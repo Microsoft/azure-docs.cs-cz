@@ -2,18 +2,18 @@
 title: Použití spravovaných identit pro přístup ke službě App Configuration
 titleSuffix: Azure App Configuration
 description: Ověření v konfiguraci aplikace Azure pomocí spravovaných identit
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: f2d8c6e94638c01fb21e070a756c0c97c330fb26
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8ef3ff20c67eefa2091ffb1732ced813b169e596
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671597"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929748"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Použití spravovaných identit pro přístup ke službě App Configuration
 
@@ -22,6 +22,9 @@ Azure Active Directory [spravované identity](../active-directory/managed-identi
 Konfigurace aplikace Azure a její klientské knihovny pro navýšení .NET Core, .NET Framework a Java mají do nich vestavěnou podporu spravovaných identit. I když ho použít nemusíte, spravovaná identita eliminuje potřebu přístupového tokenu, který obsahuje tajné klíče. Váš kód má přístup k úložišti konfigurace aplikace jenom pomocí koncového bodu služby. Tuto adresu URL můžete do kódu vložit přímo bez vystavení tajného kódu.
 
 V tomto článku se dozvíte, jak můžete využít spravovanou identitu pro přístup ke konfiguraci aplikací. Sestavuje se ve webové aplikaci představené v rychlých startech. Než budete pokračovat,  [vytvořte nejprve aplikaci ASP.NET Core s konfigurací aplikace](./quickstart-aspnet-core-app.md) .
+
+> [!NOTE]
+> Tento článek používá Azure App Service jako příklad, ale stejný koncept se vztahuje i na jakoukoliv jinou službu Azure, která podporuje spravovanou identitu, například [Azure Kubernetes Service](../aks/use-azure-ad-pod-identity.md), [virtuální počítač Azure](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)a [Azure Container Instances](../container-instances/container-instances-managed-identity.md). Pokud je vaše zatížení hostováno v některé z těchto služeb, můžete také využít podporu spravované identity služby.
 
 Tento článek také ukazuje, jak můžete použít spravovanou identitu ve spojení s Key Vault odkazy na konfiguraci aplikace. S jedinou spravovanou identitou můžete bezproblémově přistupovat k oběma tajným klíčům z Key Vault a konfiguračních hodnot z konfigurace aplikace. Pokud chcete tuto funkci prozkoumat, dokončete nejprve [použití Key Vault odkazů ASP.NET Core](./use-key-vault-references-dotnet-core.md) .
 
@@ -49,9 +52,9 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
 
 1. Vytvořte instanci App Services v [Azure Portal](https://portal.azure.com) běžným způsobem. Přejít na něj na portálu.
 
-1. Přejděte dolů do skupiny **Nastavení** v levém podokně a vyberte možnost **Identita** .
+1. Přejděte dolů do skupiny **Nastavení** v levém podokně a vyberte možnost **Identita**.
 
-1. Na kartě **přiřazené systémem** přepněte **stav** na **zapnuto** a vyberte **Uložit** .
+1. Na kartě **přiřazené systémem** přepněte **stav** na **zapnuto** a vyberte **Uložit**.
 
 1. Pokud se zobrazí výzva k povolení spravované identity přiřazené systémem, odpovězte na **Ano** .
 
@@ -65,11 +68,11 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
 
 1. Na kartě **kontrolovat přístup** vyberte **Přidat** v uživatelském rozhraní karty **Přidat přiřazení role** .
 
-1. V části **role** vyberte **čtečka konfiguračních dat aplikace** . V části **přiřadit přístup k** vyberte **App Service** v části **spravovaná identita přiřazená systémem** .
+1. V části **role** vyberte **čtečka konfiguračních dat aplikace**. V části **přiřadit přístup k** vyberte **App Service** v části **spravovaná identita přiřazená systémem**.
 
 1. V části **předplatné** vyberte své předplatné Azure. Vyberte prostředek App Service pro vaši aplikaci.
 
-1. Vyberte **Uložit** .
+1. Vyberte **Uložit**.
 
     ![Přidat spravovanou identitu](./media/add-managed-identity.png)
 
@@ -136,7 +139,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
     ```
     ---
 
-1. Pokud chcete použít konfigurační hodnoty aplikace i odkazy na Key Vault, aktualizujte *program.cs* , jak je znázorněno níže. Tento kód vytvoří nový `KeyVaultClient` pomocí objektu `AzureServiceTokenProvider` a předá tento odkaz volání `UseAzureKeyVault` metody.
+1. Pokud chcete použít konfigurační hodnoty aplikace i odkazy na Key Vault, aktualizujte *program.cs* , jak je znázorněno níže. Tento kód volá `SetCredential` jako součást `ConfigureKeyVault` k tomu, aby poskytovatel konfigurace informoval, jaké přihlašovací údaje se mají použít při ověřování Key Vault.
 
     ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -151,10 +154,10 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
                    config.AddAzureAppConfiguration(options =>
                    {
                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                           .ConfigureKeyVault(kv =>
-                           {
-                              kv.SetCredential(credentials);
-                           });
+                              .ConfigureKeyVault(kv =>
+                              {
+                                 kv.SetCredential(credentials);
+                              });
                    });
                })
                .UseStartup<Startup>();
@@ -175,10 +178,10 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
                     config.AddAzureAppConfiguration(options =>
                     {
                         options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                            .ConfigureKeyVault(kv =>
-                            {
-                                kv.SetCredential(credentials);
-                            });
+                               .ConfigureKeyVault(kv =>
+                               {
+                                   kv.SetCredential(credentials);
+                               });
                     });
                 });
             })
@@ -186,10 +189,10 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
     ```
     ---
 
-    Nyní máte přístup k Key Vault odkazům stejně jako jakýkoli jiný konfigurační klíč aplikace. Poskytovatel konfigurace použije `KeyVaultClient` konfiguraci, kterou jste nakonfigurovali k ověřování, aby Key Vault a načetla hodnotu.
+    Nyní máte přístup k Key Vault odkazům stejně jako jakýkoli jiný konfigurační klíč aplikace. Poskytovatel konfigurace použije `ManagedIdentityCredential` k ověření, aby Key Vault a načetl hodnotu.
 
-> [!NOTE]
-> `ManagedIdentityCredential` podporuje pouze spravované ověřování identity. Nefunguje v místních prostředích. Pokud chcete spustit kód místně, zvažte použití nástroje `DefaultAzureCredential` , který podporuje také ověřování instančního objektu. Podrobnosti najdete v [odkazu](/dotnet/api/azure.identity.defaultazurecredential) .
+    > [!NOTE]
+    > `ManagedIdentityCredential`Funguje pouze v prostředích služby Azure, které podporují spravované ověřování identity. Nefunguje v místním prostředí. Použijte [`DefaultAzureCredential`](/dotnet/api/azure.identity.defaultazurecredential) kód pro práci v místních i v prostředích Azure, protože se vrátí k několika možnostem ověřování, včetně spravované identity.
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
@@ -235,7 +238,7 @@ git remote add azure <url>
 Nasaďte aplikaci do vzdáleného úložiště Azure pomocí následujícího příkazu. Jakmile budete vyzváni k zadání hesla, zadejte heslo, které jste vytvořili v části [Konfigurace uživatele nasazení](#configure-a-deployment-user). Nepoužívejte heslo, které používáte k přihlášení do Azure Portal.
 
 ```bash
-git push azure master
+git push azure main
 ```
 
 Ve výstupu se může zobrazit automatizace specifická pro modul runtime, jako je například MSBuild pro ASP.NET, `npm install` pro Node.js a `pip install` Python.

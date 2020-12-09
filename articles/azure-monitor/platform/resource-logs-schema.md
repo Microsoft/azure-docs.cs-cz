@@ -4,12 +4,12 @@ description: Pochopte podporované služby a schéma událostí pro protokoly pr
 ms.subservice: logs
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: 1f8754245e394ecdffbb045d7f4cc96ec8a3ff78
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6a76d642863a0baac8021a3da196ad5a2db48126
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184497"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931159"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Společné schéma pro protokoly prostředků Azure a schématu pro konkrétní služby
 
@@ -23,14 +23,14 @@ Kombinace typu prostředku (k dispozici ve `resourceId` Vlastnosti) a `category`
 
 ## <a name="top-level-common-schema"></a>Společné schéma nejvyšší úrovně
 
-| Název | Požadováno/volitelné | Popis |
+| Name (Název) | Požadováno/volitelné | Popis |
 |---|---|---|
-| time | Požaduje se | Časové razítko (UTC) události. |
-| resourceId | Požaduje se | ID prostředku prostředku, který vyvolal událost. Pro služby tenanta se jedná o formulář/tenants/tenant-ID/Providers/Provider-Name. |
+| time | Požadováno | Časové razítko (UTC) události. |
+| resourceId | Požadováno | ID prostředku prostředku, který vyvolal událost. Pro služby tenanta se jedná o formulář/tenants/tenant-ID/Providers/Provider-Name. |
 | tenantId | Vyžadováno pro protokoly klientů | ID tenanta klienta služby Active Directory, se kterým je tato událost svázána. Tato vlastnost se používá jenom pro protokoly na úrovni tenanta, nezobrazuje se v protokolech na úrovni prostředků. |
-| operationName | Požaduje se | Název operace reprezentované touto událostí. Pokud událost představuje operaci Azure RBAC, jedná se o název operace Azure RBAC (například Microsoft. Storage/storageAccounts/blobServices/BLOBs/Read). Obvykle se modeluje ve formě operace Správce prostředků, i když nejsou skutečné dokumentované Správce prostředků operace ( `Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>` ). |
+| operationName | Požadováno | Název operace reprezentované touto událostí. Pokud událost představuje operaci Azure RBAC, jedná se o název operace Azure RBAC (například Microsoft. Storage/storageAccounts/blobServices/BLOBs/Read). Obvykle se modeluje ve formě operace Správce prostředků, i když nejsou skutečné dokumentované Správce prostředků operace ( `Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>` ). |
 | operationVersion | Volitelné | Verze rozhraní API přidružená k operaci, pokud se operace provedla pomocí rozhraní API (například `http://myservice.windowsazure.net/object?api-version=2016-06-01` ). Pokud neexistuje žádné rozhraní API, které by odpovídalo této operaci, verze představuje verzi této operace pro případ, že se vlastnosti přidružené k operaci v budoucnu mění. |
-| category | Požaduje se | Kategorie protokolu události Kategorie je členitost, na které můžete povolit nebo zakázat protokoly na konkrétním prostředku. Vlastnosti, které se zobrazují v objektu BLOB vlastností události, jsou stejné v rámci konkrétní kategorie protokolu a typu prostředku. Typické kategorie protokolu jsou "Audit" "provozní" "provádění" a "Request". |
+| category | Požadováno | Kategorie protokolu události Kategorie je členitost, na které můžete povolit nebo zakázat protokoly na konkrétním prostředku. Vlastnosti, které se zobrazují v objektu BLOB vlastností události, jsou stejné v rámci konkrétní kategorie protokolu a typu prostředku. Typické kategorie protokolu jsou "Audit" "provozní" "provádění" a "Request". |
 | resultType | Volitelné | Stav události Mezi obvyklé hodnoty patří počáteční, probíhající, úspěšná, neúspěšná, aktivní a vyřešená. |
 | resultSignature | Volitelné | Stav sub události Pokud tato operace odpovídá volání REST API, toto pole je stavový kód HTTP odpovídajícího volání REST. |
 | resultDescription | Volitelné | Popis statického textu této operace, například "získat soubor úložiště". |
@@ -38,7 +38,7 @@ Kombinace typu prostředku (k dispozici ve `resourceId` Vlastnosti) a `category`
 | callerIpAddress | Volitelné | IP adresa volajícího, pokud operace odpovídá volání rozhraní API, které pochází z entity s veřejně dostupnou IP adresou. |
 | correlationId | Volitelné | Identifikátor GUID použitý k seskupení sady souvisejících událostí. Pokud má obvykle dvě události stejný OperationName, ale dva různé stavy (například spuštěno a úspěšné), sdílejí stejné ID korelace. To může také představovat jiné vztahy mezi událostmi. |
 | identity | Volitelné | Objekt BLOB JSON, který popisuje identitu uživatele nebo aplikace, která provedla operaci. Obvykle toto pole zahrnuje autorizaci a tokeny deklarací identity/JWT ze služby Active Directory. |
-| Úroveň | Volitelné | Úroveň závažnosti události Musí se jednat o jednu z informativních, varovných, chybových nebo kritických. |
+| Level | Volitelné | Úroveň závažnosti události Musí se jednat o jednu z informativních, varovných, chybových nebo kritických. |
 | location | Volitelné | Oblast zdroje, která vyvolala událost, například "Východní USA" nebo "Francie – jih" |
 | properties | Volitelné | Všechny rozšířené vlastnosti související s touto konkrétní kategorií událostí. Všechny vlastní a jedinečné vlastnosti musí být vloženy do tohoto "části B" schématu. |
 
@@ -51,6 +51,7 @@ Schéma pro protokoly prostředků se liší v závislosti na kategoriích prost
 | Azure Active Directory | [Přehled](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), [schéma protokolu auditu](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) a [schéma přihlášení](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | [Protokolování diagnostiky Azure Analysis Servicesho nastavení](../../analysis-services/analysis-services-logging.md) |
 | API Management | [Protokoly prostředků API Management](../../api-management/api-management-howto-use-azure-monitor.md#resource-logs) |
+| App Service | [Protokoly App Service](../../app-service/troubleshoot-diagnostic-logs.md)
 | Brány Application Gateway |[Protokolování pro Application Gateway](../../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Log Analytics pro Azure Automation](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Protokolování Azure Batch](../../batch/batch-diagnostics.md) |
@@ -68,7 +69,7 @@ Schéma pro protokoly prostředků se liší v závislosti na kategoriích prost
 | Azure Digital Twins | [Nastavení diagnostiky digitálních vláken Azure](../../digital-twins/troubleshoot-diagnostics.md#log-schemas)
 | Event Hubs |[Protokoly Event Hubs Azure](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | Express Route | Schéma není k dispozici. |
-| Azure Firewall | Schéma není k dispozici. |
+| Brána Azure Firewall | Schéma není k dispozici. |
 | Front Door | [Protokolování pro přední dveře](../../frontdoor/front-door-diagnostics.md) |
 | IoT Hub | [IoT Hub operace](../../iot-hub/monitor-iot-hub-reference.md#resource-logs) |
 | Key Vault |[Protokolování Azure Key Vault](../../key-vault/general/logging.md) |
@@ -79,9 +80,9 @@ Schéma pro protokoly prostředků se liší v závislosti na kategoriích prost
 | Ochrana před útoky DDoS | [Spravovat Azure DDoS Protection Standard](../../ddos-protection/manage-ddos-protection.md) |
 | Vyhrazená služba Power BI | [Protokolování Power BI Embedded v Azure](/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Datový model pro Azure Backup](../../backup/backup-azure-reports-data-model.md)|
-| Hledat |[Povolení a použití Analýza provozu vyhledávání](../../search/search-traffic-analytics.md) |
+| Search |[Povolení a použití Analýza provozu vyhledávání](../../search/search-traffic-analytics.md) |
 | Service Bus |[Protokoly Azure Service Bus](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
-| SQL Database | [Protokolování Azure SQL Database](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
+| Databáze SQL | [Protokolování Azure SQL Database](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
 | Stream Analytics |[Protokoly úloh](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
 | Traffic Manager | [Schéma Traffic Managerho protokolu](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | Virtuální sítě | Schéma není k dispozici. |

@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 819654ef88584cb91d6032e46256258aaed524fd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ea812df825288eae3822cce01b24ebc82534c541
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500304"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928813"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Velikosti virtuálních počítačů řady B-Series
 
@@ -132,7 +132,7 @@ Odpověď **: Ano**, všechny velikosti řady B-Series podporují Premium Storag
 
 ### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>Otázka: Proč je můj zbývající kredit nastavený na 0 po opětovném nasazení nebo zastavení/spuštění?
 
-Odpověď **: když** je virtuální počítač "REDPLOYED" a virtuální počítač se přesune do jiného uzlu, kumulovaný kredit se ztratí. Pokud je virtuální počítač zastavený nebo spuštěný, ale zůstává ve stejném uzlu, si virtuální počítač zachová Kumulovaný kredit. Pokaždé, když se virtuální počítač na uzlu spustí znovu, získá počáteční kredit za Standard_B8ms je 240.
+Odpověď **: když** se virtuální počítač znovu nasadí a virtuální počítač se přesune do jiného uzlu, kumulovaný kredit se ztratí. Pokud je virtuální počítač zastavený nebo spuštěný, ale zůstává ve stejném uzlu, si virtuální počítač zachová Kumulovaný kredit. Pokaždé, když se virtuální počítač na uzlu spustí znovu, získá počáteční kredit za Standard_B8ms je 240.
 
 ### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>Otázka: co se stane, když nasadím nepodporovanou bitovou kopii operačního systému na B1ls?
 

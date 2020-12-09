@@ -1,23 +1,23 @@
 ---
 title: Kurz – přidání funkcí šablon
-description: Přidejte do šablony Azure Resource Manager funkce šablon k vytvoření hodnot.
+description: Přidáním funkcí šablony do šablony Azure Resource Manager (šablona ARM) můžete vytvářet hodnoty.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: c6ced832cad6809e7cd016eee132713c6b266480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67c88e98d966a21163aafefcad8363086d5b3bf4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613845"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931040"
 ---
 # <a name="tutorial-add-template-functions-to-your-arm-template"></a>Kurz: Přidání funkcí šablony do šablony ARM
 
-V tomto kurzu se naučíte, jak přidat [funkce šablon](template-functions.md) do šablony Azure Resource Manager (ARM). Funkce slouží k dynamickému vytváření hodnot. Kromě těchto funkcí šablon poskytovaných systémem můžete také vytvořit [uživatelsky definované funkce](./template-user-defined-functions.md). Dokončení tohoto kurzu trvá **7 minut** .
+V tomto kurzu se naučíte, jak přidat [funkce šablon](template-functions.md) do šablony Azure Resource Manager (šablona ARM). Funkce slouží k dynamickému vytváření hodnot. Kromě těchto funkcí šablon poskytovaných systémem můžete také vytvořit [uživatelsky definované funkce](./template-user-defined-functions.md). Dokončení tohoto kurzu trvá **7 minut** .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Doporučujeme, abyste dokončili [kurz týkající se parametrů](template-tutorial-add-parameters.md), ale není to nutné.
 
@@ -33,7 +33,7 @@ Umístění účtu úložiště je pevně zakódováno pro **východní USA**. J
 
 ## <a name="use-function"></a>Použití funkce
 
-Pokud jste dokončili předchozí kurz v této sérii, už jste použili funkci. Když jste přidali **[Parameters (' Storage ')]**, použili jste funkci [Parameters](template-functions-deployment.md#parameters) . Hranaté závorky označují, že syntaxe uvnitř závorek je [výraz šablony](template-expressions.md). Správce prostředků vyřeší syntax místo toho, aby ji znovu nakládala jako hodnota literálu.
+Pokud jste dokončili předchozí kurz v této sérii, už jste použili funkci. Když jste přidali `"[parameters('storageName')]"` , použili jste funkci [Parameters](template-functions-deployment.md#parameters) . Hranaté závorky označují, že syntaxe uvnitř závorek je [výraz šablony](template-expressions.md). Správce prostředků vyřeší syntax místo toho, aby ji znovu nakládala jako hodnota literálu.
 
 Funkce přidávají vaší šabloně flexibilitu pomocí dynamického načítání hodnot během nasazování. V tomto kurzu použijete funkci k získání umístění skupiny prostředků, kterou používáte pro nasazení.
 
@@ -80,7 +80,7 @@ az deployment group create \
 
 Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 1. Vyberte skupinu prostředků, do které jste nasadili.
 1. Vidíte, že je prostředek účtu úložiště nasazený a má stejné umístění jako skupina prostředků.

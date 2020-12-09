@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 12/01/2020
+ms.date: 12/09/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: f0cb7d4ebe428da4a370433b3e90a829f30489db
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: a1307aa19c66e3f6fcb71f677e6c67551d2a01f9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512201"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928320"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Nejčastější dotazy k aplikaci Microsoft Authenticator
 
@@ -45,7 +45,7 @@ Odpověď **: zde** je úplný seznam oprávnění, která mohou být požádán
 
 **Otázka**: protože starší verze binárního rozhraní pro službu Apple Push Notification Service je v listopadu 2020 zastaralá, jak můžu i nadále používat Microsoft Authenticator/Phone faktor pro přihlášení?
 
-**A** Odpověď: [Apple oznámil](https://developer.apple.com/news/?id=11042019a) vyřazení nabízených oznámení, která používají své binární rozhraní pro zařízení s iOS, jako jsou například ty, které používá telefonní faktor. Aby bylo možné nadále přijímat nabízená oznámení, doporučujeme, aby uživatelé aktualizovali svou ověřovací aplikaci na nejnovější verzi aplikace. Mezitím je můžete obejít ruční kontrolou oznámení v ověřovací aplikaci.
+Odpověď: [Apple oznámil](https://developer.apple.com/news/?id=11042019a) vyřazení nabízených oznámení, která používají své binární rozhraní pro zařízení s iOS, jako jsou například ty, které používá telefonní faktor. Aby bylo možné nadále přijímat nabízená oznámení, doporučujeme, aby uživatelé aktualizovali svou ověřovací aplikaci na nejnovější verzi aplikace. Mezitím je můžete obejít ruční kontrolou oznámení v ověřovací aplikaci.
 
 ### <a name="app-lock-feature"></a>Funkce zámku aplikace
 
@@ -118,7 +118,7 @@ Odpověď **: můžete** nastavit oznámení pro svůj pracovní nebo školní �
 
 Odpověď **: ne**, oznámení fungují pouze s účty Microsoft a účty Azure Active Directory. Pokud vaše práce nebo škola používá účty Azure AD, může tuto funkci vypnout.
 
-### <a name="backup-and-recovery"></a>Zálohování a obnova
+### <a name="backup-and-recovery"></a>Backup a obnovení
 
 **Otázka**: Mám nové zařízení nebo obnovilo zařízení ze zálohy. Návody nastavit moje účty znovu v ověřovateli?
 
@@ -146,7 +146,7 @@ Odpověď **: zde** je úplný seznam oprávnění, která mohou být požádán
 
 **Otázka**: Proč ověřovatel umožňuje schválit požadavek bez odemknutí zařízení?
 
-**A** Odpověď: nemusíte odemykat zařízení, abyste mohli schvalovat žádosti o ověření, protože stačí, abyste se rozhodli, že máte telefon s vámi. Dvoustupňové ověřování vyžaduje, abyste provedli prokázání dvou věcí, a to věcí, kterou znáte, a věcí, kterou máte. To, co znáte, je vaše heslo. Věc, kterou máte, je váš telefon (nastavte s ověřovatelem a zaregistrujte se jako ověření služby Multi-Factor Authentication). Proto má telefon a schválení žádosti splňovat kritéria pro druhý faktor ověřování.
+Odpověď: nemusíte odemykat zařízení, abyste mohli schvalovat žádosti o ověření, protože stačí, abyste se rozhodli, že máte telefon s vámi. Dvoustupňové ověřování vyžaduje, abyste provedli prokázání dvou věcí, a to věcí, kterou znáte, a věcí, kterou máte. To, co znáte, je vaše heslo. Věc, kterou máte, je váš telefon (nastavte s ověřovatelem a zaregistrujte se jako ověření služby Multi-Factor Authentication). Proto má telefon a schválení žádosti splňovat kritéria pro druhý faktor ověřování.
 
 ### <a name="activity-notifications"></a>Oznámení o aktivitách
 
@@ -207,6 +207,74 @@ Odpověď **: Pokud** se aplikace v kukátku nezobrazuje, zkuste provést násle
 **Otázka**: došlo k chybě doprovodné aplikace My Apple Watch. Můžu vám poslat svoje protokoly o chybách, abyste je mohli prozkoumat?
 
 Odpověď **: nejprve** se musíte ujistit, že jste zvolili sdílení vašich analýz s námi. Pokud jste uživatelem testovacího prostředí, už jste se zaregistrovali. V opačném případě můžete přejít na **nastavení > ochrany osobních údajů > Analytics** a vybrat možnost **sdílet iPhone & sledovat analýzy** a **sdílet s možnostmi vývojářů aplikací** .<br>Po registraci se můžete pokusit reprodukování chyby, aby byly protokoly chyb automaticky odesílány do nás pro účely šetření. Pokud ale nemůžete reprodukování svého selhání, můžete soubory protokolu ručně zkopírovat a odeslat je do nás.<ol><li>Otevřete aplikaci Watch na telefonu, přejděte na **nastavení > obecné** a potom klikněte na **Kopírovat sledovací analýzu**.</li><li>Najděte odpovídající chybu v části **nastavení > ochrany osobních údajů > analytics > analytické údaje** a pak ručně zkopírujte celý text.</li><li>Otevřete ověřovací data na telefonu a vložte zkopírovaný text do textového pole **sdílet s vývojáři aplikací** na stránce **Odeslat protokoly** .</li></ol>
+
+## <a name="autofill-for-consumers"></a>Automatické vyplňování pro příjemce
+
+**Otázka**: co je automatické vyplnění ověřovatelem?
+
+Odpověď **: aplikace** ověřovatele teď bezpečně ukládá a vyplní hesla pro aplikace a weby, které navštívíte na telefonu. Automatické vyplňování můžete použít k synchronizaci a automatickému vyplňování hesel na zařízeních s iOS a Androidem. Po nastavení aplikace ověřovatele jako poskytovatele automatického vyplňování na telefonu nabízí možnost uložit hesla při jejich zadávání na přihlašovací stránku webu nebo aplikace. Hesla se ukládají jako součást [účet Microsoft](https://account.microsoft.com/account) a jsou k dispozici i při přihlášení k Microsoft Edge pomocí účet Microsoft.
+
+**Otázka**: Jaké informace může ověřovatel automaticky vyplnit?
+
+Odpověď **: ověřovací** data umožňují automatické vyplňování uživatelských jmen a hesel na webech a v aplikacích, které navštívíte na telefonu.
+
+**Otázka**: návody zapnout automatické vyplňování hesla v telefonu?
+
+Odpověď **: proveďte následující kroky:**
+
+1. Otevřete ověřovací aplikaci.
+1. V **Nastavení** v části **beta** zapněte **Automatické vyplňování**.
+1. Na kartě **hesla** v okně ověřovatel vyberte **Přihlásit se účtem Microsoft** a přihlaste se pomocí [účet Microsoft](https://account.microsoft.com/account). Tato funkce aktuálně podporuje jenom účty Microsoft, a zatím nepodporuje pracovní nebo školní účty.
+
+**Otázka**: návody nastavit ověřovatele jako výchozího zprostředkovatele automatického vyplňování na telefonu?
+
+Odpověď **: proveďte následující kroky:**
+
+1. Otevřete **Nastavení** ověřovatele a v části **beta** zapněte **Automatické vyplňování**.
+1. Na kartě **hesla** v aplikaci se přihlaste pomocí [účet Microsoft](https://account.microsoft.com/account).
+1. Proveďte některou z následujících akcí:
+
+   - V systému iOS v části **Nastavení** vyberte **zapnout automatické vyplňování** v části nastavení automatického vyplňování, kde se dozvíte, jak nastavit ověřovací data jako výchozího poskytovatele automatického vyplňování.
+   - V Androidu v části **Nastavení** vyberte v části nastavení automatického vyplňování možnost **nastavit jako poskytovatele automatického** vyplňování, aby se ověřovací kód nastavil jako výchozí zprostředkovatel automatického vyplňování.
+
+**Otázka**: Co když je pro mě v nastavení šedý přepínač pro **Automatické vyplňování** ?
+
+Odpověď **: automatické** vyplňování je momentálně ve verzi beta a ještě není povolené pro všechny organizace nebo typy účtů. Pokud je přepínač pro **Automatické vyplňování** v **Nastavení** pro vás šedý, je pravděpodobnou příčinou to, že používáte ověřovací aplikaci s vaším pracovním účtem. Tuto funkci můžete použít na zařízení, kam nepřidáte pracovní účet. Pokud vaše organizace spolupracuje s Microsoftem, povolí se přepínač **automatického vyplňování** i v případě, že se do ověřovatele přidá pracovní účet.
+
+**Otázka**: návody zastavit synchronizaci hesel?
+
+Odpověď **: Chcete-li** zastavit synchronizaci hesel v ověřovací aplikaci, otevřete **Nastavení**  >  **automatického vyplňování** nastavení  >  **účet synchronizace**. Na další obrazovce můžete vybrat možnost **zastavit synchronizaci a odebrat všechna data automatického vyplňování**. Tím se ze zařízení odeberou hesla a další data automatického vyplňování. Odebrání automatického vyplňování dat nemá vliv na službu Multi-Factor Authentication.
+
+**Otázka**: jak jsou hesla chráněná ověřovací aplikací?
+
+Odpověď **: aplikace** ověřovatele již poskytuje vysokou úroveň zabezpečení pro službu Multi-Factor Authentication a správu účtů a stejný vysoký pruh zabezpečení je také rozšířen o správu hesel.
+
+- **Ověřovací aplikace vyžaduje silné ověřování**: přihlášení k ověřovateli vyžaduje druhý faktor. To znamená, že hesla uvnitř ověřovací aplikace nejsou dostupná, i když má někdo účet Microsoft heslo.
+- **Data automatického vyplnění jsou chráněná pomocí biometrika a** hesla: než budete moct zadat automatické vyplňování hesla pro aplikaci nebo web, vyžaduje ověřovatel biometriku nebo heslo zařízení. To zajišťuje, že i když má někdo jiný přístup k vašemu zařízení, nemůže vyplnit ani zobrazit vaše heslo, protože by nebylo možné zadat kód biometriky nebo PIN zařízení. Uživatel navíc nemůže otevřít stránku hesla, pokud neposkytují biometrické údaje nebo PIN, a to ani v případě, že v nastavení aplikace vypne zámek aplikace.
+- **Šifrovaná hesla na zařízení**: hesla na zařízení jsou šifrovaná a šifrovací a dešifrovací klíče se nikdy neukládají a pořád se generují průběžně. Hesla se dešifrují jenom v případě, že uživatel chce, to znamená při automatickém vyplňování nebo když chce, aby si uživatel heslo zobrazil, a to jak pro to je potřeba biometriku nebo PIN.
+- **Zabezpečení cloudu a sítě**: vaše hesla na cloudu se šifrují a dešifrují jenom v případě, že se k vašemu zařízení dostanou. Hesla se synchronizují přes připojení HTTPS s chráněným protokolem SSL, což zajistí, že se žádný Útočník nemůže při synchronizaci eavesdrop na citlivá data. Také zajišťujeme, abychom správnosti data synchronizovaná přes síť s použitím kryptografických funkcí hash (konkrétně kód pro ověřování zpráv založených na algoritmu hash).
+
+## <a name="autofill-for-it-admins"></a>Automatické vyplňování pro správce IT
+
+**Otázka**: budou se zaměstnanci nebo studenti při použití automatické vyplňování hesel v ověřovací aplikaci používat?
+
+Odpověď **: ne**. Funkce automatického vyplňování je momentálně ve verzi beta a ještě není povolená pro všechny organizace nebo typy účtů. Pokud Váš zaměstnanec nebo student přidal do aplikace Microsoft Authenticator svůj pracovní nebo školní účet, nebude jim k dispozici automatické vyplňování hesel. Jedinou výjimkou z tohoto omezení je, že zaměstnanec nebo student přidá svůj pracovní nebo školní účet do služby Multi-Factor Authentication založeného na cloudu Microsoftu jako [externí účet nebo účet třetí strany](user-help-auth-app-add-non-ms-account.md).
+
+**Otázka**: můžu zpřístupnit funkci automatického vyplňování mým zaměstnancům (nebo studentům)?
+
+Odpověď **: Ano**. Pokud chcete zaměstnancům nebo studentům umožnit přidání do seznamu povolených zaměstnanců nebo studentů, můžete do něj přidat svůj podnik nebo školu. Přihlaste se k vaší podpoře nebo kontaktu Microsoftu a přidejte je do seznamu povolených. Pokud jste správcem IT ve vaší organizaci, můžete také vyplnit formulář, ve kterém můžete vyjádřit svůj zájem [o automatické vyplňování v ověřovacím podniku v seznamu povolených podnikových dat](https://aka.ms/RequestAutofillInAuthenticator).
+
+**Otázka**: budou automaticky synchronizována hesla "pracovní nebo školní účet uživatele"?
+
+Odpověď **: ne**. Automatické vyplňování hesla nebude synchronizovat heslo pracovního nebo školního účtu pro vaše uživatele. Když uživatel navštíví web nebo aplikaci, bude přihlašovací data nabízet možnost Uložit heslo pro daný web nebo aplikaci a heslo bude uloženo pouze v případě, že uživatel zvolí možnost.
+  
+**Otázka**: Mohu pro automatické vyplňování použít seznam pouze určitých uživatelů mojí organizace?
+
+Odpověď **: ne**. Podniky můžou v tuto chvíli povolit automatické vyplňování hesel jenom pro všechny zaměstnance nebo žádné z nich. Tyto ovládací prvky budeme postupně rozšiřovat.
+
+**Otázka**: co dělat v případě, že má můj zaměstnanec nebo student více pracovních nebo školních účtů? Například můj zaměstnanec má v Microsoft Authenticator účty z více podniků nebo škol.
+
+**O**: všechny podniky nebo školy přidané v ověřovací aplikaci je třeba umožnit, aby se v ověřovacím poli pro vlastníka aplikace, který má být možné použít, vyplnili. Jedinou výjimkou z tohoto omezení je, že zaměstnanec nebo student přidá svůj pracovní nebo školní účet do služby Multi-Factor Authentication založeného na cloudu Microsoftu jako [externí účet nebo účet třetí strany](user-help-auth-app-add-non-ms-account.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -4,23 +4,22 @@ titleSuffix: Azure App Configuration
 description: V tomto kurzu se naučíte dynamicky aktualizovat konfigurační data pro ASP.NET Core aplikace.
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 02/24/2019
-ms.author: lcozzens
+ms.date: 09/1/2020
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: f98ec384876da1d30952d1c4edc1d00049e44682
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1fd495083f5f9be367dd0f125883b181e3bed27b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076993"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930547"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Kurz: použití dynamické konfigurace v aplikaci ASP.NET Core
 
@@ -40,7 +39,7 @@ V tomto kurzu se naučíte:
 > * Nastavte svoji aplikaci tak, aby aktualizovala svou konfiguraci v reakci na změny v úložišti konfigurace aplikace.
 > * Vloží nejnovější konfiguraci do řadičů vaší aplikace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení tohoto kurzu nainstalujte [.NET Core SDK](https://dotnet.microsoft.com/download).
 
@@ -53,11 +52,11 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
 *Klíč Sentinel* je speciální klíč, který se používá k signalizaci, že se konfigurace změnila. Vaše aplikace sleduje změny v klíči Sentinel. Když se zjistí změna, aktualizují se všechny hodnoty konfigurace. Tento přístup snižuje celkový počet požadavků provedených vaší aplikací na konfiguraci aplikací v porovnání s monitorováním všech klíčů pro změny.
 
 1. V Azure Portal vyberte možnost **Průzkumník konfigurace > vytvořit > klíč-hodnota**.
-1. Jako **klíč**zadejte *TestApp: Settings: Sentinel*. Jako **hodnotu**zadejte 1. Ponechte **popisek** a **typ obsahu** prázdné.
+1. Jako **klíč** zadejte *TestApp: Settings: Sentinel*. Jako **hodnotu** zadejte 1. Ponechte **popisek** a **typ obsahu** prázdné.
 1. Vyberte **Použít**.
 
 > [!NOTE]
-> Pokud nepoužíváte klíč Sentinel, je nutné ručně zaregistrovat každý klíč, který chcete sledovat.
+> Pokud nepoužíváte klíč Sentinel, je nutné ručně zaregistrovat každý klíč, který chcete sledovat.
 
 ## <a name="reload-data-from-app-configuration"></a>Znovu načíst data z konfigurace aplikace
 
@@ -67,7 +66,7 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
     ```
 
-1. Otevřete *program.cs*a aktualizujte `CreateWebHostBuilder` metodu pro přidání `config.AddAzureAppConfiguration()` metody.
+1. Otevřete *program.cs* a aktualizujte `CreateWebHostBuilder` metodu pro přidání `config.AddAzureAppConfiguration()` metody.
 
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -138,7 +137,7 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
     }
     ```
 
-3. Otevřete *Startup.cs*a pomocí `IServiceCollection.Configure<T>` `ConfigureServices` metody navažte konfigurační data ke `Settings` třídě.
+3. Otevřete *Startup.cs* a pomocí `IServiceCollection.Configure<T>` `ConfigureServices` metody navažte konfigurační data ke `Settings` třídě.
 
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -161,7 +160,7 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
     ```
     ---
     > [!Tip]
-    > Další informace o vzoru možností při čtení hodnot konfigurace najdete v tématu [vzory možností v ASP.NET Core](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1).
+    > Další informace o vzoru možností při čtení hodnot konfigurace najdete v tématu [vzory možností v ASP.NET Core](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1).
 
 4. Aktualizujte `Configure` metodu přidáním `UseAzureAppConfiguration` middlewaru, který umožní aktualizaci nastavení konfigurace zaregistrovaných pro aktualizaci, když ASP.NET Core webová aplikace nadále přijímá požadavky.
 
@@ -221,6 +220,9 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
     ---
     
     Middleware používá konfiguraci aktualizace zadanou v `AddAzureAppConfiguration` metodě v `Program.cs` k aktivaci aktualizace pro každý požadavek přijatý webovou aplikací ASP.NET Core. Pro každý požadavek se aktivuje operace aktualizace a Klientská knihovna zkontroluje, jestli vypršela platnost hodnoty uložené v mezipaměti pro zaregistrované nastavení konfigurace. Pokud platnost vypršela, aktualizuje se.
+
+    > [!NOTE]
+    > Pokud chcete zajistit, aby se konfigurace aktualizovala, přidejte middleware jako nejdříve do vašeho kanálu požadavků, aby se v aplikaci nepřidal jiný middleware.
 
 ## <a name="use-the-latest-configuration-data"></a>Použít nejnovější konfigurační data
 
@@ -327,9 +329,9 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
 
     ![Místní spuštění aplikace pro rychlý Start](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
-1. Vyberte **Průzkumník konfigurace**a aktualizujte hodnoty následujících klíčů:
+1. Vyberte **Průzkumník konfigurace** a aktualizujte hodnoty následujících klíčů:
 
     | Klíč | Hodnota |
     |---|---|

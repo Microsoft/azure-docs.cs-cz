@@ -1,17 +1,17 @@
 ---
 title: Synchronizovat úložiště GitHub s konfigurací aplikace
 description: Použijte akce GitHubu k automatické aktualizaci instance konfigurace aplikace při aktualizaci úložiště GitHub.
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 02/20/2020
+author: AlexandraKemperMS
+ms.author: alkemper
+ms.date: 05/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 66d0e32e7dfdd5ab2abee5108ac8ce54c5222747
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b2b5f4bcbcc5af07a763ee4dff2d42413750fb7
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87371817"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930275"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>Synchronizovat úložiště GitHub s konfigurací aplikace
 
@@ -25,7 +25,7 @@ Týmy, které chtějí dál používat své stávající postupy správy zdrojov
 [Dokumentace k](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) GitHubu poskytuje podrobný pohled na pracovní postupy a akce GitHubu. 
 
 ## <a name="enable-github-actions-in-your-repository"></a>Povolení akcí GitHubu v úložišti
-Tuto akci GitHubu můžete začít používat tak, že přejdete do svého úložiště a vyberete kartu **Akce** . Vyberte **nový pracovní postup**a pak **nastavte pracovní postup sami**. Nakonec na webu Marketplace vyhledejte "synchronizace konfigurace aplikací Azure".
+Tuto akci GitHubu můžete začít používat tak, že přejdete do svého úložiště a vyberete kartu **Akce** . Vyberte **nový pracovní postup** a pak **nastavte pracovní postup sami**. Nakonec na webu Marketplace vyhledejte "synchronizace konfigurace aplikací Azure".
 > [!div class="mx-imgBorder"]
 > ![Vyberte kartu akce.](media/find-github-action.png)
 
@@ -35,7 +35,7 @@ Tuto akci GitHubu můžete začít používat tak, že přejdete do svého úlo�
 ## <a name="sync-configuration-files-after-a-push"></a>Synchronizovat konfigurační soubory po vložení
 Tato akce synchronizuje konfigurační soubory aplikace Azure při vložení změny do `appsettings.json` . Když vývojář nahraje změnu na `appsettings.json` , akce synchronizace konfigurace aplikace aktualizuje instanci konfigurace aplikace o nové hodnoty.
 
-První část tohoto pracovního postupu určuje, že akce se spustí *u* *nabízených oznámení* , která obsahují `appsettings.json` *hlavní* větev. Druhá část uvádí úlohy, které se spustí, jakmile se spustí akce. Tato akce rezervuje příslušné soubory a aktualizuje instanci konfigurace aplikace pomocí připojovacího řetězce uloženého jako tajného klíče v úložišti.  Další informace o používání tajných kódů v GitHubu najdete v [článku GitHubu](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) o vytváření a používání šifrovaných tajných klíčů.
+První část tohoto pracovního postupu určuje, že akce se spustí *u* *nabízených oznámení* , která obsahují `appsettings.json` do *hlavní* větve. Druhá část uvádí úlohy, které se spustí, jakmile se spustí akce. Tato akce rezervuje příslušné soubory a aktualizuje instanci konfigurace aplikace pomocí připojovacího řetězce uloženého jako tajného klíče v úložišti.  Další informace o používání tajných kódů v GitHubu najdete v [článku GitHubu](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) o vytváření a používání šifrovaných tajných klíčů.
 
 ```json
 on: 
@@ -177,7 +177,7 @@ jobs:
 ## <a name="use-a-dynamic-label-on-sync"></a>Při synchronizaci použít dynamický popisek
 Následující akce vloží dynamický popisek pro každou synchronizaci, což zajistí, že každou synchronizaci lze jednoznačně identifikovat a povolit mapování změn kódu na změny konfigurace.
 
-První část tohoto pracovního postupu určuje, že akce se spustí *u* *nabízených oznámení* , která obsahují `appsettings.json` *hlavní* větev. Druhá část spustí úlohu, která vytvoří jedinečnou jmenovku pro aktualizaci konfigurace na základě hodnoty hash potvrzení. Úloha pak aktualizuje instanci konfigurace aplikace o nové hodnoty a jedinečnou jmenovku pro tuto aktualizaci.
+První část tohoto pracovního postupu určuje, že akce se spustí *u* *nabízených oznámení* , která obsahují `appsettings.json` do *hlavní* větve. Druhá část spustí úlohu, která vytvoří jedinečnou jmenovku pro aktualizaci konfigurace na základě hodnoty hash potvrzení. Úloha pak aktualizuje instanci konfigurace aplikace o nové hodnoty a jedinečnou jmenovku pro tuto aktualizaci.
 
 ```json
 on: 
@@ -308,15 +308,15 @@ Vstupní parametry určují data, která akce používá během běhu.  Následu
 
 | Název vstupu | Povinné? | Hodnota |
 |----|----|----|
-| configurationFile | Yes | Relativní cesta ke konfiguračnímu souboru v úložišti  Jsou podporovány vzory glob a mohou obsahovat více souborů. |
-| formát | Yes | Formát souboru konfiguračního souboru.  Platné formáty jsou: JSON, YAML, Properties. |
-| připojovací řetězec | Yes | Připojovací řetězec pro instanci konfigurace aplikace Připojovací řetězec by měl být uložen jako tajný klíč v úložišti GitHub a v pracovním postupu by měl být použit pouze tajný název. |
-| oddělování | Yes | Oddělovač použitý při sloučení konfiguračního souboru na páry klíč-hodnota.  Platné hodnoty jsou:. , ; : - _ __ / |
-| směr | No | Předpona, která se má přidat na začátek klíčů |
-| label | No | Popisek použitý při nastavování párů klíč-hodnota Je-li tento parametr zadán, je použit popisek s hodnotou null. |
-| přísné | No | Logická hodnota, která určuje, zda je povolen striktní režim. Výchozí hodnota je False. |
-| úrovní | No | Maximální hloubka pro sloučení konfiguračního souboru.  Hloubka musí být kladné číslo.  Výchozí hodnota nebude mít žádnou maximální hloubku. |
-| tags | No | Určuje sadu značek pro páry klíč-hodnota.  Očekávaným formátem je dokument formulář objektu JSON následujícího obrazce: {[propertyName: String]: String;} Název každé vlastnosti – hodnota se zobrazí jako značka. |
+| configurationFile | Ano | Relativní cesta ke konfiguračnímu souboru v úložišti  Jsou podporovány vzory glob a mohou obsahovat více souborů. |
+| formát | Ano | Formát souboru konfiguračního souboru.  Platné formáty jsou: JSON, YAML, Properties. |
+| připojovací řetězec | Ano | Připojovací řetězec pro instanci konfigurace aplikace Připojovací řetězec by měl být uložen jako tajný klíč v úložišti GitHub a v pracovním postupu by měl být použit pouze tajný název. |
+| oddělování | Ano | Oddělovač použitý při sloučení konfiguračního souboru na páry klíč-hodnota.  Platné hodnoty jsou:. , ; : - _ __ / |
+| směr | Ne | Předpona, která se má přidat na začátek klíčů |
+| label | Ne | Popisek použitý při nastavování párů klíč-hodnota Je-li tento parametr zadán, je použit popisek s hodnotou null. |
+| přísné | Ne | Logická hodnota, která určuje, zda je povolen striktní režim. Výchozí hodnota je False. |
+| úrovní | Ne | Maximální hloubka pro sloučení konfiguračního souboru.  Hloubka musí být kladné číslo.  Výchozí hodnota nebude mít žádnou maximální hloubku. |
+| tags | Ne | Určuje sadu značek pro páry klíč-hodnota.  Očekávaným formátem je dokument formulář objektu JSON následujícího obrazce: {[propertyName: String]: String;} Název každé vlastnosti – hodnota se zobrazí jako značka. |
 
 ## <a name="next-steps"></a>Další kroky
 

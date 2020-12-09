@@ -12,14 +12,14 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15debb69172dba00163950fdd301826c903e5307
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: b9bc7d94cff46b54b81615cf064ed63927b3ec60
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548272"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929289"
 ---
-# <a name="email-one-time-passcode-authentication"></a>E-mailové ověřování heslem jednorázového hesla
+# <a name="email-one-time-passcode-authentication-preview"></a>E-mailové ověřování heslem jednorázového hesla (Preview)
 
 Tento článek popisuje, jak povolit jednorázové ověřování e-mailových hesel pro uživatele typu Host B2B. Funkce jednorázového hesla pro e-mail ověřuje uživatele typu Host B2B, když se nemůžou ověřit jiným způsobem jako Azure AD, účet Microsoft (MSA) nebo Google Federation. Při jednorázovém ověřování pomocí hesla není nutné vytvářet účet Microsoft. Když uživatel typu Host uplatňuje pozvánku nebo přistupuje ke sdílenému prostředku, může požádat o dočasný kód, který se pošle na svou e-mailovou adresu. Pak tento kód zadá, aby bylo možné pokračovat v přihlašování.
 

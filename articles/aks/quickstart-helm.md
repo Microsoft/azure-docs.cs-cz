@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: 0ca2d7ccc863e2208db1212ef3d3f10fa709d069
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2c4e39ae664c89e4f6d49f2941115e5a7d44cf7b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006640"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929169"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Rychlý Start: vývoj ve službě Azure Kubernetes Service (AKS) s využitím Helm
 
@@ -19,10 +19,10 @@ ms.locfileid: "96006640"
 
 V tomto článku se dozvíte, jak pomocí Helm zabalit a spustit aplikaci na AKS. Další informace o instalaci existující aplikace pomocí Helm najdete v tématu [instalace existujících aplikací pomocí Helm v AKS][helm-existing].
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
-* [Nainstalované rozhraní Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Nainstalované rozhraní Azure CLI](/cli/azure/install-azure-cli)
 * [Nainstalovaná verze Helm V3][helm-install].
 
 ## <a name="create-an-azure-container-registry"></a>Vytvoření služby Azure Container Registry
@@ -134,7 +134,7 @@ Proveďte následující aktualizace *webendu/Values. yaml*. Nahraďte loginServ
 * Změnit `image.repository` na `<loginServer>/webfrontend`
 * Změnit `service.type` na `LoadBalancer`
 
-Například:
+Příklad:
 
 ```yml
 # Default values for webfrontend.

@@ -3,13 +3,13 @@ title: Protokoly prostředků Azure Monitor podporují služby a kategorie.
 description: Referenční informace o Azure Monitorch pochopit podporované služby a schéma událostí pro protokoly prostředků Azure.
 ms.subservice: logs
 ms.topic: reference
-ms.date: 06/03/2020
-ms.openlocfilehash: 463b1d9d9c3ed1d94728874ba814554deb4f97c6
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 12/09/2020
+ms.openlocfilehash: c7b2d48b40843930bba78f54d2294769d952daf6
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920844"
+ms.locfileid: "96931224"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Podporované kategorie pro protokoly prostředků Azure
 
@@ -23,7 +23,7 @@ Kombinace typu prostředku (k dispozici ve `resourceId` Vlastnosti) a `category`
 
 ## <a name="costs"></a>Náklady
 
- Existují náklady spojené s odesíláním a ukládáním dat do do Log Analytics a/nebo centra událostí. Protokoly prostředků jsou jedním z typů dat, která můžete odesílat do těchto umístění. [Pro export některých kategorií protokolů prostředků](https://azure.microsoft.com/pricing/details/monitor/)se účtují další náklady. Jiné jsou zdarma vývozní náklady. Konkrétní části jsou uvedeny v následující tabulce.
+Existují náklady spojené s odesíláním a ukládáním dat do Log Analytics, Azure Storage a/nebo centra událostí. Můžete platit za náklady a získat data do těchto umístění a uchovávat je.  Protokoly prostředků jsou jedním z typů dat, která můžete odesílat do těchto umístění. [Pro export některých kategorií protokolů prostředků](https://azure.microsoft.com/pricing/details/monitor/) do těchto umístění se účtují další poplatky, zatímco jiné jsou zdarma vývozní náklady. Konkrétní náklady na export jsou uvedené v následující tabulce.
 
 ## <a name="supported-log-categories-per-resource-type"></a>Podporované kategorie protokolů na typ prostředku
 

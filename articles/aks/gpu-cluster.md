@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: f631f8ee022f501cb30af4aae5cf48294b9ca3c2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d7e312f049acc0b74aa0a253864bfce6100044bd
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125831"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929136"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Použití GPU pro úlohy náročné na výpočetní výkon ve službě Azure Kubernetes Service (AKS)
 
-Grafické procesory (GPU) se často používají pro úlohy náročné na výpočetní výkon, jako jsou například úlohy grafiky a vizualizace. AKS podporuje vytváření fondů uzlů s podporou GPU pro spouštění těchto úloh náročných na výpočetní výkon v Kubernetes. Další informace o dostupných virtuálních počítačích s podporou GPU najdete [v tématu velikosti virtuálních počítačů optimalizované pro GPU v Azure][gpu-skus]. Pro uzly AKS doporučujeme minimální velikost *Standard_NC6* .
+Grafické procesory (GPU) se často používají pro úlohy náročné na výpočetní výkon, jako jsou například úlohy grafiky a vizualizace. AKS podporuje vytváření fondů uzlů s podporou GPU pro spouštění těchto úloh náročných na výpočetní výkon v Kubernetes. Další informace o dostupných virtuálních počítačích s podporou GPU najdete [v tématu velikosti virtuálních počítačů optimalizované pro GPU v Azure][gpu-skus]. Pro uzly AKS doporučujeme minimální velikost *Standard_NC6*.
 
 > [!NOTE]
 > Virtuální počítače s podporou GPU obsahují specializovaný hardware, který je předmětem vyšší ceny a dostupnosti oblastí. Další informace najdete v tématu dostupnost nástroje pro [ceny][azure-pricing] a [oblasti][azure-availability].
@@ -58,7 +58,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 Než bude možné použít GPU v uzlech, je nutné nasadit DaemonSet pro modul plug-in zařízení NVIDIA. Tento DaemonSet spustí pod každým uzlem, aby poskytoval požadované ovladače pro GPU.
 
-Nejprve vytvořte obor názvů pomocí příkazu [kubectl Create Namespace][kubectl-create] , například *GPU-Resources* :
+Nejprve vytvořte obor názvů pomocí příkazu [kubectl Create Namespace][kubectl-create] , například *GPU-Resources*:
 
 ```console
 kubectl create namespace gpu-resources
@@ -134,13 +134,13 @@ Zaregistrujte `GPUDedicatedVHDPreview` funkci:
 az feature register --name GPUDedicatedVHDPreview --namespace Microsoft.ContainerService
 ```
 
-Může trvat několik minut, než se stav zobrazí jako **zaregistrované** . Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) :
+Může trvat několik minut, než se stav zobrazí jako **zaregistrované**. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature#az-feature-list) :
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/GPUDedicatedVHDPreview')].{Name:name,State:properties.state}"
 ```
 
-Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft.ContainerService` poskytovatele prostředků pomocí příkazu [AZ Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
+Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft.ContainerService` poskytovatele prostředků pomocí příkazu [AZ Provider Register](/cli/azure/provider#az-provider-register) :
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -198,7 +198,7 @@ aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
 
 Nyní použijte příkaz [kubectl popsat uzel][kubectl-describe] a potvrďte, že GPU jsou plánovatelná. V části *kapacita* by měl grafický procesor vypsat jako `nvidia.com/gpu:  1` .
 
-Následující zhuštěný příklad ukazuje, že grafický procesor je k dispozici na uzlu s názvem *AKS-nodepool1-18821093-0* :
+Následující zhuštěný příklad ukazuje, že grafický procesor je k dispozici na uzlu s názvem *AKS-nodepool1-18821093-0*:
 
 ```console
 $ kubectl describe node aks-nodepool1-28993262-0
@@ -289,7 +289,7 @@ kubectl apply -f samples-tf-mnist-demo.yaml
 
 ## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>Zobrazení stavu a výstupu úlohy s podporou GPU
 
-Sledujte průběh úlohy pomocí příkazu [kubectl získat úlohy][kubectl-get] s `--watch` argumentem. První načtení obrázku a zpracování datové sady může trvat několik minut. Když se ve sloupci *dokončení* zobrazí *1/1* , úloha se úspěšně dokončila. Ukončete `kubetctl --watch` příkaz pomocí *kombinace kláves CTRL-C* :
+Sledujte průběh úlohy pomocí příkazu [kubectl získat úlohy][kubectl-get] s `--watch` argumentem. První načtení obrázku a zpracování datové sady může trvat několik minut. Když se ve sloupci *dokončení* zobrazí *1/1*, úloha se úspěšně dokončila. Ukončete `kubetctl --watch` příkaz pomocí *kombinace kláves CTRL-C*:
 
 ```console
 $ kubectl get jobs samples-tf-mnist-demo --watch

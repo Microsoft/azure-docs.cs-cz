@@ -1,23 +1,23 @@
 ---
 title: Kurz – přidání proměnné do šablony
-description: K zjednodušení syntaxe přidejte proměnné do šablony Azure Resource Manager.
+description: Chcete-li zjednodušit syntaxi, přidejte do šablony Azure Resource Manager (šablonu ARM) proměnné.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 482608172ac9e6e2b9765f236a4b6d655e2455fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d259510d880cbfc60e9ae80b533af6792cc95536
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613148"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930724"
 ---
 # <a name="tutorial-add-variables-to-your-arm-template"></a>Kurz: Přidání proměnných do šablony ARM
 
-V tomto kurzu se dozvíte, jak přidat proměnnou do šablony Azure Resource Manager (ARM). Proměnné zjednodušují vaše šablony tím, že umožňují napsat výraz jednou a znovu ho použít v celé šabloně. Dokončení tohoto kurzu trvá **7 minut** .
+V tomto kurzu se dozvíte, jak přidat proměnnou do šablony Azure Resource Manager (šablona ARM). Proměnné zjednodušují vaše šablony tím, že umožňují napsat výraz jednou a znovu ho použít v celé šabloně. Dokončení tohoto kurzu trvá **7 minut** .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Doporučujeme, abyste dokončili [kurz týkající se funkcí](template-tutorial-add-functions.md), ale není to nutné.
 
@@ -89,7 +89,7 @@ az deployment group create \
 
 Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 1. Vyberte skupinu prostředků, do které jste nasadili.
 1. Vidíte, že byl nasazen prostředek účtu úložiště. Název účtu úložiště je **uložený** spolu s řetězcem náhodných znaků.

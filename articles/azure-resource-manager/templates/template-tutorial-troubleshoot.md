@@ -1,20 +1,20 @@
 ---
 title: Řešení potíží s nasazeními
-description: Naučte se monitorovat a řešit potíže s nasazeními šablon Azure Resource Manager. Zobrazuje protokoly aktivit a historii nasazení.
+description: Naučte se monitorovat a řešit potíže s nasazením šablony Azure Resource Manager (šablony ARM). Zobrazuje protokoly aktivit a historii nasazení.
 author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0da6c614572e73a00db1087621eaca3bd790aad6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 7a44edc7cd09709f14415fa0a92e63558001d46d
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891801"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928524"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>Kurz: řešení potíží s nasazeními šablon ARM
 
-Naučte se řešit potíže s nasazením šablony Azure Resource Manager (ARM). V tomto kurzu nastavíte dvě chyby v šabloně a naučíte se, jak pomocí protokolů aktivit a historie nasazení tyto problémy vyřešit.
+Naučte se řešit potíže s nasazením šablony Azure Resource Manager (šablony ARM). V tomto kurzu nastavíte dvě chyby v šabloně a naučíte se, jak pomocí protokolů aktivit a historie nasazení tyto problémy vyřešit.
 
 Existují dva typy chyb, které souvisejí s nasazením šablony:
 
@@ -37,13 +37,13 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 
 K dokončení tohoto článku potřebujete:
 
-- Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Další informace najdete v tématu [rychlý Start: vytváření Azure Resource Manager šablon pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+- Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Další informace najdete v tématu [rychlý Start: vytvoření šablon ARM pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="create-a-problematic-template"></a>Vytvoření problematické šablony
 
 Otevřete šablonu s názvem [Vytvoření standardního účtu úložiště](https://azure.microsoft.com/resources/templates/101-storage-account-create/) ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/)a nastavte dvě problémy se šablonou.
 
-1. Z Visual Studio Code vyberte **soubor** > **otevřít soubor** .
+1. Z Visual Studio Code vyberte **soubor** > **otevřít soubor**.
 2. Do pole **File name** (Název souboru) vložte následující adresu URL:
 
     ```url
@@ -72,7 +72,7 @@ Z prostředí se zobrazí chyba, která bude vypadat přibližně takto:
 New-AzResourceGroupDeployment : 4:29:24 PM - Error: Code=InvalidRequestContent; Message=The request content was invalid and could not be deserialized: 'Could not find member 'apiVersion1' on object of type 'TemplateResource'. Path 'properties.template.resources[0].apiVersion1', line 36, position 24.'.
 ```
 
-Chybová zpráva indikuje, že se jedná o problém s **apiVersion1** .
+Chybová zpráva indikuje, že se jedná o problém s **apiVersion1**.
 
 K opravě problému použijte Visual Studio Code změňte **apiVersion1** na **apiVersion** a pak šablonu uložte.
 
@@ -93,11 +93,11 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 
 Chybu nasazení najdete v Azure Portal pomocí následujícího postupu:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Otevřete skupinu prostředků tak, že vyberete **skupiny prostředků** a potom název skupiny prostředků. V rámci **nasazení** se zobrazí **1 chyba** .
 
     ![Snímek obrazovky, který zvýrazní neúspěšné nasazení.](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
-3. Vyberte **Podrobnosti o chybě** .
+3. Vyberte **Podrobnosti o chybě**.
 
     ![Snímek obrazovky, který zvýrazní odkaz Podrobnosti o chybě.](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
 
@@ -107,8 +107,8 @@ Chybu nasazení najdete v Azure Portal pomocí následujícího postupu:
 
 Chybu můžete najít také v protokolech aktivit:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
-2. Vyberte **monitorování**  >  **protokolu aktivit** .
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+2. Vyberte **monitorování**  >  **protokolu aktivit**.
 3. K vyhledání protokolu použijte filtry.
 
     ![Řešení potíží s Správce prostředků kurzu](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-activity-log.png)

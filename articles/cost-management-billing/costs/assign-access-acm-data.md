@@ -10,10 +10,10 @@ ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
 ms.openlocfilehash: 660b5751e3b3cbc632331e99d797af3392a8aea4
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 12/05/2020
 ms.locfileid: "91371962"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Přiřazení přístupu k datům služby Cost Management
@@ -68,7 +68,7 @@ Pokud chcete aktivovat možnost na webu Azure Portal, postupujte takto:
 1. Vyberte položku nabídky **Správa nákladů a fakturace**.
 1. Vyberte **Rozsahy fakturace**. Zobrazí se seznam dostupných rozsahů fakturace a fakturačních účtů.
 1. Ze seznamu dostupných fakturačních účtů vyberte váš **fakturační účet**.
-1. V části **Nastavení**vyberte položku nabídky **Zásady** a potom nakonfigurujte požadované nastavení.  
+1. V části **Nastavení** vyberte položku nabídky **Zásady** a potom nakonfigurujte požadované nastavení.  
     ![Zásady rozsahu fakturace s možnostmi pro zobrazení poplatků](./media/assign-access-acm-data/azure-portal-policies-view-charges.png)
 
 Po povolení možností zobrazení nákladů bude většina rozsahů na portálu Azure Portal vyžadovat konfiguraci oprávnění řízení přístupu na základě role v Azure (Azure RBAC).
@@ -146,7 +146,7 @@ Přístup k zobrazení rozsahu skupiny pro správu vyžaduje alespoň oprávněn
 4. Vedle názvu skupiny pro správu vyberte **Podrobnosti**.
 5. V levém podokně vyberte **Access Control (IAM)** .
 6. Vyberte **Přidat**.
-7. V části **Role**vyberte **Čtenář Cost Management**.
+7. V části **Role** vyberte **Čtenář Cost Management**.
 8. V rozbalovací nabídce **Přiřadit přístup k** vyberte **Uživatel, skupina nebo aplikace Azure AD**.
 9. Chcete-li přiřadit přístup, vyhledejte a vyberte uživatele.
 10. Vyberte **Uložit**.  
@@ -161,7 +161,7 @@ Přístup k předplatnému vyžaduje alespoň oprávnění Čtenář Cost Manage
 3. Vyberte své předplatné.
 4. V levém podokně vyberte **Access Control (IAM)** .
 5. Vyberte **Přidat**.
-6. V části **Role**vyberte **Čtenář Cost Management**.
+6. V části **Role** vyberte **Čtenář Cost Management**.
 7. V rozbalovací nabídce **Přiřadit přístup k** vyberte **Uživatel, skupina nebo aplikace Azure AD**.
 8. Chcete-li přiřadit přístup, vyhledejte a vyberte uživatele.
 9. Vyberte **Uložit**.
@@ -175,7 +175,7 @@ Přístup ke skupině prostředků vyžaduje alespoň oprávnění Čtenář Cos
 3. Vyberte skupinu prostředků.
 4. V levém podokně vyberte **Access Control (IAM)** .
 5. Vyberte **Přidat**.
-6. V části **Role**vyberte **Čtenář Cost Management**.
+6. V části **Role** vyberte **Čtenář Cost Management**.
 7. V rozbalovací nabídce **Přiřadit přístup k** vyberte **Uživatel, skupina nebo aplikace Azure AD**.
 8. Chcete-li přiřadit přístup, vyhledejte a vyberte uživatele.
 9. Vyberte **Uložit**.

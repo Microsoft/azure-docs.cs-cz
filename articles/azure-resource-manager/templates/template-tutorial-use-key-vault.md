@@ -1,21 +1,21 @@
 ---
 title: Použití Azure Key Vault v šablonách
-description: Zjistěte, jak pomocí služby Azure Key Vault předávat hodnoty zabezpečených parametrů během nasazení šablony Resource Manageru.
+description: Naučte se, jak pomocí Azure Key Vault předat hodnoty zabezpečeného parametru během nasazování šablony Azure Resource Manager (šablona ARM).
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 73a50c282eee023bff525bc737bd2170938de1dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75eb977559573b72883de3ddbc27391c7e299a6f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119272"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929312"
 ---
-# <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Kurz: Integrace Azure Key Vault v nasazení šablony ARM
+# <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Kurz: Integrace služby Azure Key Vault v nasazení šablony ARM
 
-Naučte se, jak načíst tajné kódy z trezoru klíčů Azure a předat tajné klíče jako parametry při nasazení šablony Azure Resource Manager (ARM). Hodnota parametru se nikdy nezveřejňuje, protože odkazuje jenom na jeho ID trezoru klíčů. Na tajný klíč trezoru klíčů můžete odkazovat pomocí statického ID nebo dynamického ID. V tomto kurzu se používá statické ID. S přístupem ke statickému ID odkazujete na Trezor klíčů v souboru parametrů šablony, nikoli v souboru šablony. Další informace o obou metodách naleznete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](./key-vault-parameter.md).
+Naučte se, jak načíst tajné kódy z trezoru klíčů Azure a předat tajné klíče jako parametry při nasazení šablony Azure Resource Manager (šablona ARM). Hodnota parametru se nikdy nezveřejňuje, protože odkazuje jenom na jeho ID trezoru klíčů. Na tajný klíč trezoru klíčů můžete odkazovat pomocí statického ID nebo dynamického ID. V tomto kurzu se používá statické ID. S přístupem ke statickému ID odkazujete na Trezor klíčů v souboru parametrů šablony, nikoli v souboru šablony. Další informace o obou metodách naleznete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](./key-vault-parameter.md).
 
 V kurzu [Nastavení pořadí nasazení prostředků](./template-tutorial-create-templates-with-dependent-resources.md) můžete vytvořit virtuální počítač (VM). Musíte zadat uživatelské jméno a heslo správce virtuálního počítače. Místo zadání hesla můžete heslo ukládat do trezoru klíčů Azure a pak šablonu přizpůsobit, aby se během nasazování načetlo heslo z trezoru klíčů.
 
@@ -33,11 +33,11 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
-* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Další informace najdete v tématu [rychlý Start: vytváření Azure Resource Manager šablon pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Další informace najdete v tématu [rychlý Start: vytvoření šablon ARM pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 * Pokud chcete zvýšit zabezpečení, použijte vygenerované heslo pro účet správce virtuálního počítače. Tady je ukázka pro vygenerování hesla:
 
     ```console
@@ -119,7 +119,7 @@ Teď jste připravili Trezor klíčů a tajný klíč. V následujících část
 
    Před přizpůsobením šablony je užitečné, abyste měli základní znalosti šablony.
 
-1. Vyberte **soubor**  >  **Uložit jako**a pak uložte kopii souboru do místního počítače s názvem *azuredeploy.jsv*.
+1. Vyberte **soubor**  >  **Uložit jako** a pak uložte kopii souboru do místního počítače s názvem *azuredeploy.jsv*.
 
 1. Opakujte kroky 1-3 pro otevření následující adresy URL a pak soubor uložte jako *azuredeploy.parameters.jsna*.
 
@@ -194,7 +194,7 @@ Po úspěšném nasazení virtuálního počítače testujte přihlašovací úd
 
 1. Vyberte **skupiny prostředků**  >  **\<*YourResourceGroupName*>**  >  **simpleWinVM**.
 1. V horní části vyberte **připojit** .
-1. Vyberte **Stáhnout soubor RDP**a pak podle pokynů se přihlaste k virtuálnímu počítači pomocí hesla uloženého v trezoru klíčů.
+1. Vyberte **Stáhnout soubor RDP** a pak podle pokynů se přihlaste k virtuálnímu počítači pomocí hesla uloženého v trezoru klíčů.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

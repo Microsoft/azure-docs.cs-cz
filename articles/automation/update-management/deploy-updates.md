@@ -3,14 +3,14 @@ title: Postup vytvoření nasazení aktualizací pro Azure Automation Update Man
 description: Tento článek popisuje, jak naplánovat nasazení aktualizací a zkontrolovat jejich stav.
 services: automation
 ms.subservice: update-management
-ms.date: 10/27/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 41ccecfb844f11a0d234271bcddc1851d3c02fda
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ec0d6d618edad87b76861ea834adb2f29531e6f5
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742294"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929663"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Jak nasadit aktualizace a zkontrolovat výsledky
 
@@ -20,7 +20,7 @@ V každém scénáři je nasazení, které jste vytvořili, cíleno na vybraný 
 
 * Operační systém se automaticky vybere v závislosti na operačním systému počítače.
 * Cílový počítač, který chcete aktualizovat, je nastaven na automatické zacílení.
-* Při konfiguraci plánu můžete zadat **Update now** , nastane jednou nebo používá opakovaný plán.
+* Při konfiguraci plánu můžete zadat **Update now**, nastane jednou nebo používá opakovaný plán.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -43,9 +43,9 @@ K naplánování nového nasazení aktualizace proveďte následující kroky. V
 
 2. V závislosti na prostředku, který jste vybrali, přejděte na Update Management:
 
-   * Pokud jste vybrali svůj účet Automation, v části **Správa aktualizací** klikněte na **Správa aktualizací** a pak vyberte **naplánovat nasazení aktualizace** .
-   * Pokud jste vybrali virtuální počítač Azure, klikněte na **Host + aktualizace hostitelů** a pak vyberte **Přejít na Update Management** .
-   * Pokud jste vybrali Server s podporou ARC, klikněte na **Update Management** a pak vyberte **naplánovat nasazení aktualizací** .
+   * Pokud jste vybrali svůj účet Automation, v části **Správa aktualizací** klikněte na **Správa aktualizací** a pak vyberte **naplánovat nasazení aktualizace**.
+   * Pokud jste vybrali virtuální počítač Azure, klikněte na **Host + aktualizace hostitelů** a pak vyberte **Přejít na Update Management**.
+   * Pokud jste vybrali Server s podporou ARC, klikněte na **Update Management** a pak vyberte **naplánovat nasazení aktualizací**.
 
 3. V části **nové nasazení aktualizací** do pole **název** zadejte jedinečný název pro vaše nasazení.
 
@@ -76,12 +76,12 @@ K naplánování nového nasazení aktualizace proveďte následující kroky. V
    > [!NOTE]
    > Aktualizace, které se nahradily, se nedají zadat, aby se zahrnuly do nasazení aktualizace.
 
-9. Vyberte **Nastavení plánu** . Výchozí čas spuštění je 30 minut po aktuálním čase. Čas spuštění můžete nastavit na jakýkoli čas minimálně 10 minut po aktuálním čase.
+9. Vyberte **Nastavení plánu**. Výchozí čas spuštění je 30 minut po aktuálním čase. Čas spuštění můžete nastavit na jakýkoli čas minimálně 10 minut po aktuálním čase.
 
     > [!NOTE]
     > Tato možnost je odlišná, pokud jste vybrali Server s podporou ARC. Můžete vybrat **aktualizovat hned** nebo čas zahájení 20 minut do budoucna.
 
-10. Pomocí **opakování** určete, jestli k nasazení dojde jednou, nebo použijte opakovaný plán, a pak vyberte **OK** .
+10. Pomocí **opakování** určete, jestli k nasazení dojde jednou, nebo použijte opakovaný plán, a pak vyberte **OK**.
 
 11. V oblasti **pre-Scripts + post-Scripts** vyberte skripty, které chcete spustit před a po nasazení. Další informace najdete v tématu [Správa předběžných skriptů a pozálohovacích skriptů](pre-post-scripts.md).
 
@@ -102,14 +102,14 @@ K naplánování nového nasazení aktualizace proveďte následující kroky. V
     * Pouze restart; Tato možnost neinstaluje aktualizace.
 
     > [!NOTE]
-    > Klíče registru uvedené v části [klíče registru používané ke správě restartování](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) můžou způsobit restart události, pokud jsou **Možnosti restartování** nastavené na **Nikdy nerestartovat** .
+    > Klíče registru uvedené v části [klíče registru používané ke správě restartování](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) můžou způsobit restart události, pokud jsou **Možnosti restartování** nastavené na **Nikdy nerestartovat**.
 
-14. Až skončíte s konfigurací plánu nasazení, vyberte **vytvořit** .
+14. Až skončíte s konfigurací plánu nasazení, vyberte **vytvořit**.
 
     ![Podokno nastavení plánu aktualizací](./media/deploy-updates/manageupdates-schedule-win.png)
 
     > [!NOTE]
-    > Až dokončíte konfiguraci plánu nasazení pro vybraný server s povoleným obloukem, vyberte **zkontrolovat + vytvořit** .
+    > Až dokončíte konfiguraci plánu nasazení pro vybraný server s povoleným obloukem, vyberte **zkontrolovat + vytvořit**.
 
 15. Vrátíte se na řídicí panel stavu. Vyberte **plány nasazení** a zobrazte plán nasazení, který jste vytvořili. Uvádí se maximálně 500 plánů. Pokud máte více než 500 plánů a chcete zobrazit úplný seznam, přečtěte si téma [Konfigurace aktualizace softwaru – seznam](/rest/api/automation/softwareupdateconfigurations/list) REST API metoda. Zadejte rozhraní API verze 2019-06-01 nebo vyšší.
 
@@ -121,7 +121,7 @@ Pomocí ukázkové sady Runbook můžete vytvořit týdenní nasazení aktualiza
 
 ## <a name="check-deployment-status"></a>Zkontroluje stav nasazení.
 
-Po spuštění naplánovaného nasazení uvidíte jeho stav na kartě **Historie** v části **Správa aktualizací** . Pokud je nasazení aktuálně spuštěné, jeho stav je **Probíhá** . Po úspěšném dokončení nasazení se stav změní na **úspěch** . Pokud dojde k chybám s jednou nebo více aktualizacemi v nasazení, stav se **nezdařil** .
+Po spuštění naplánovaného nasazení uvidíte jeho stav na kartě **Historie** v části **Správa aktualizací**. Pokud je nasazení aktuálně spuštěné, jeho stav je **Probíhá**. Po úspěšném dokončení nasazení se stav změní na **úspěch**. Pokud dojde k chybám s jednou nebo více aktualizacemi v nasazení, stav se **nezdařil**.
 
 ## <a name="view-results-of-a-completed-update-deployment"></a>Zobrazit výsledky dokončeného nasazení aktualizace
 

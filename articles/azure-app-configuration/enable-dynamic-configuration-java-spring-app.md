@@ -3,18 +3,18 @@ title: Použití dynamické konfigurace v aplikaci pružinového spuštění
 titleSuffix: Azure App Configuration
 description: Naučte se dynamicky aktualizovat konfigurační data pro aplikace pro spouštění pružiny.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: tutorial
-ms.date: 3/5/2020
+ms.date: 08/06/2020
 ms.custom: devx-track-java
-ms.author: lcozzens
-ms.openlocfilehash: 653fcb6f6590fd503a97800ec8196025cf14a3b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: alkemper
+ms.openlocfilehash: c32e928bd4a83b4884c99e3ec3a9c647f5433e87
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88121557"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929153"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Kurz: použití dynamické konfigurace v aplikaci Java pružiny
 
@@ -67,7 +67,7 @@ Pak otevřete soubor *pom.xml* v textovém editoru a přidejte `<dependency>` pr
     curl -X GET http://localhost:8080/
     ```
 
-1. Pokud chcete otestovat dynamickou konfiguraci, otevřete portál Azure App Configuration Portal přidružený k vaší aplikaci. Vyberte **Průzkumník konfigurace**a aktualizujte hodnotu zobrazeného klíče, například:
+1. Pokud chcete otestovat dynamickou konfiguraci, otevřete portál Azure App Configuration Portal přidružený k vaší aplikaci. Vyberte **Průzkumník konfigurace** a aktualizujte hodnotu zobrazeného klíče, například:
     | Klíč | Hodnota |
     |---|---|
     | Application/config. Message | Hello – Aktualizováno |

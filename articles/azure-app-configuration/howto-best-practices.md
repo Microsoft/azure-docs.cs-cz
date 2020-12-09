@@ -3,21 +3,20 @@ title: Osvědčené postupy pro konfiguraci aplikací Azure | Microsoft Docs
 description: Naučte se osvědčené postupy při používání konfigurace aplikací Azure. Mezi zahrnutá témata patří například seskupení klíčů, kompozice hodnot klíčů, zavedení konfigurace aplikace a další.
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: c45d1668ad39e9584a89921f46218ba243978a05
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 038d19270fbdb672d397eb2bd56bd27e17ea7af9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078047"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929085"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Osvědčené postupy pro konfiguraci aplikací Azure
 
@@ -42,7 +41,7 @@ Je důležité si uvědomit, že klíče jsou v souladu s tím, jak kód aplikac
 
 Konfigurace aplikace považuje všechny klíče uložené s nimi jako nezávislé entity. Konfigurace aplikace se nepokouší odvodit žádnou relaci mezi klíči nebo zdědit hodnoty klíčů na základě jejich hierarchie. Můžete agregovat více sad klíčů, ale pomocí popisků, které jsou v kódu aplikace v kombinaci se správnými konfiguračními balíčky.
 
-Podívejme se na příklad. Předpokládejme, že máte nastavení s názvem **Asset1**, jehož hodnota se může lišit v závislosti na vývojovém prostředí. Pomocí prázdného popisku a popisku s názvem "vývoj" vytvoříte klíč s názvem "Asset1". Do prvního popisku vložíte výchozí hodnotu pro **Asset1**a do druhé hodnoty vložíte určitou hodnotu "vývoj".
+Podívejme se na příklad. Předpokládejme, že máte nastavení s názvem **Asset1**, jehož hodnota se může lišit v závislosti na vývojovém prostředí. Pomocí prázdného popisku a popisku s názvem "vývoj" vytvoříte klíč s názvem "Asset1". Do prvního popisku vložíte výchozí hodnotu pro **Asset1** a do druhé hodnoty vložíte určitou hodnotu "vývoj".
 
 Ve vašem kódu nejdříve načtete hodnoty klíčů bez popisků a potom navedete stejnou sadu hodnot klíčů podruhé s označením "vývoj". Při druhém načtení hodnot se přepíší předchozí hodnoty klíčů. Konfigurační systém .NET Core umožňuje "sestavovat" více sad konfiguračních dat nad sebou. Pokud klíč existuje ve více než jedné sadě, použije se poslední sada, která ho obsahuje. V případě moderního programovacího rozhraní, jako je .NET Core, získáte tuto funkci zásobníku zdarma, pokud pro přístup ke konfiguraci aplikací použijete nativního poskytovatele konfigurace. Následující fragment kódu ukazuje, jak lze implementovat skládání do aplikace .NET Core:
 
@@ -79,7 +78,7 @@ Nadměrné požadavky na konfiguraci aplikací můžou mít za následek omezen�
 
 * Zvyšte časový limit aktualizace, zejména v případě, že se konfigurační hodnoty nemění často. Zadejte nový časový limit aktualizace pomocí [ `SetCacheExpiration` metody](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.azureappconfigurationrefreshoptions.setcacheexpiration).
 
-* Sledujte jeden *klíč ověřovacího klíče*místo sledování jednotlivých klíčů. Aktualizuje veškerou konfiguraci pouze v případě, že se změní klíč Sentinel. Příklad najdete v tématu [použití dynamické konfigurace v aplikaci ASP.NET Core](enable-dynamic-configuration-aspnet-core.md) .
+* Sledujte jeden *klíč ověřovacího klíče* místo sledování jednotlivých klíčů. Aktualizuje veškerou konfiguraci pouze v případě, že se změní klíč Sentinel. Příklad najdete v tématu [použití dynamické konfigurace v aplikaci ASP.NET Core](enable-dynamic-configuration-aspnet-core.md) .
 
 * Použijte Azure Event Grid k přijímání oznámení při změnách konfigurace, a ne při průběžném dotazování na změny. Další informace najdete v tématu [Směrování událostí konfigurace aplikace Azure do koncového bodu webu](./howto-app-configuration-event.md) .
 

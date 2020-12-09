@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 48fc8533ee1fd206e69e16d4c03e4b4acf047135
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 46c6eac80ddbff73d99e05c070e66aa1700da174
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953678"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928626"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci Onfido s využitím Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ V tomto ukázkovém kurzu poskytujeme pokyny pro integraci Azure AD B2C s [Onfid
 
 V této ukázce připojíme k ověření identity službu Onfido v procesu registrace nebo přihlašování. Informovaná rozhodnutí o tom, ke kterému produktu a službě může uživatel přistupovat, se provádí na základě výsledků Onfido.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli začít, budete potřebovat:
 
@@ -74,7 +74,7 @@ Další informace o Onfido najdete v tématu [dokumentace k rozhraní Onfido API
 
 ### <a name="part-1---deploy-the-api"></a>Část 1 – nasazení rozhraní API
 
-- Nasaďte poskytnutý [kód rozhraní API](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/API/Onfido.Api) do služby Azure. Kód lze publikovat ze sady Visual Studio, a to podle těchto [pokynů](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+- Nasaďte poskytnutý [kód rozhraní API](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/API/Onfido.Api) do služby Azure. Kód lze publikovat ze sady Visual Studio, a to podle těchto [pokynů](/visualstudio/deployment/quickstart-deploy-to-azure).
 - Nastavte CORS, přidejte **povolený původ** jako https://{your_tenant_name}. b2clogin. com.
 
 >[!NOTE]

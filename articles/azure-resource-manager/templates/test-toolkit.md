@@ -1,20 +1,20 @@
 ---
 title: Sada nástrojů pro test šablon ARM
-description: Popisuje, jak spustit sadu nástrojů pro test šablon ARM ve vaší šabloně. Sada nástrojů vám umožní zjistit, jestli jste implementovali Doporučené postupy.
+description: Popisuje, jak spustit sadu nástrojů test Toolkit šablony Azure Resource Manager (ARM Template) ve vaší šabloně. Sada nástrojů vám umožní zjistit, jestli jste implementovali Doporučené postupy.
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 73f6db8cbd5e4d7a0670c394f6af338aae8e9e79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29ebe2f0ec4d4c39154272bbbdf4d0c9ede9fd95
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439556"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928184"
 ---
 # <a name="use-arm-template-test-toolkit"></a>Použít sadu nástrojů pro test šablon ARM
 
-[Sada testů šablon Azure Resource Manager (ARM)](https://aka.ms/arm-ttk) kontroluje, jestli vaše šablona používá Doporučené postupy. Pokud vaše šablona není kompatibilní s doporučenými postupy, vrátí seznam upozornění s navrhovanými změnami. Pomocí sady nástrojů test Toolkit se můžete dozvědět, jak se vyhnout běžným problémům při vývoji šablon.
+[Sada testů pro šablonu Azure Resource Manager (šablona ARM)](https://aka.ms/arm-ttk) kontroluje, jestli vaše šablona používá Doporučené postupy. Pokud vaše šablona není kompatibilní s doporučenými postupy, vrátí seznam upozornění s navrhovanými změnami. Pomocí sady nástrojů test Toolkit se můžete dozvědět, jak se vyhnout běžným problémům při vývoji šablon.
 
 Sada testů poskytuje [sadu výchozích testů](test-cases.md). Tyto testy jsou doporučení, ale ne požadavky. Můžete určit, které testy jsou relevantní pro vaše cíle, a přizpůsobit, které testy se mají spustit.
 
@@ -120,7 +120,7 @@ Sada nástrojů je sada PowerShellových skriptů, které se dají spouštět z 
    Test-AzTemplate -TemplatePath /path/to/template
    ```
 
-## <a name="result-format"></a>Výsledný formát
+## <a name="result-format"></a>Formát výsledku
 
 Testy, které jsou předávány, jsou zobrazeny **zeleně** a uvozeny **[+]**.
 
@@ -282,4 +282,4 @@ Další příklad ukazuje, jak spustit testy.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o výchozích testech naleznete v tématu [testové případy pro sadu nástrojů](test-cases.md).
+Další informace o výchozích testech naleznete v tématu [Default test Cases for a Template test Toolkit](test-cases.md).

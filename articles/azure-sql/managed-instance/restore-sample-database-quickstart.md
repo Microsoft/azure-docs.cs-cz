@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 413786cf8946c1ffbb76bd0e18eae7c7ba16a9c1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9b2333e38415a2c0ad50ce36c213ead711c70ab4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790742"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928796"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>Rychlý Start: obnovení databáze do spravované instance Azure SQL pomocí SSMS
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -51,6 +51,9 @@ V SQL Server Management Studio postupujte podle těchto kroků a obnovte databá
 1. Otevřete SSMS a připojte se ke svojí spravované instanci.
 2. V **Průzkumník objektů** klikněte pravým tlačítkem na spravovanou instanci a vyberte **Nový dotaz** . otevře se nové okno dotazu.
 3. Spusťte následující skript SQL, který pomocí předem nakonfigurovaného účtu úložiště a klíče SAS [vytvoří přihlašovací údaje](/sql/t-sql/statements/create-credential-transact-sql) ve spravované instanci.
+ 
+   > [!IMPORTANT]
+   > `CREDENTIAL` musí odpovídat cestě kontejneru, začínat znakem `https` a nesmí obsahovat koncové lomítko. `IDENTITY` musí být `SHARED ACCESS SIGNATURE` . `SECRET` musí se jednat o token sdíleného přístupového podpisu a nemůže obsahovat přední `?` .
 
    ```sql
    CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]

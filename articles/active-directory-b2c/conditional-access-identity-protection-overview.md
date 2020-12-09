@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4a71740c487896208a3da7bf35bb39899c56937
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b17706f908613336714bb7daf08fdf3bfd5eaf64
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952059"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928388"
 ---
 # <a name="identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Identity Protection a podmíněný přístup pro Azure AD B2C
 
@@ -60,7 +60,7 @@ V Azure AD B2C můžete aktivovat podmínky podmíněného přístupu z vestavě
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-Zásady podmíněného přístupu můžete spravovat také v Azure AD B2C pomocí rozhraní API Microsoft Graph. Podrobnosti najdete v dokumentaci k [podmíněnému přístupu](../active-directory/conditional-access/overview.md) a v [referenčním Microsoft Graph](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md).
+Zásady podmíněného přístupu můžete spravovat také v Azure AD B2C pomocí rozhraní API Microsoft Graph. Podrobnosti najdete v dokumentaci k [podmíněnému přístupu](../active-directory/conditional-access/overview.md) a v [referenčním Microsoft Graph](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta).
 
 ## <a name="next-steps"></a>Další kroky
 

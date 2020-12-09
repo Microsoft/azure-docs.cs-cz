@@ -3,12 +3,12 @@ title: Porovnání front služeb Azure Storage a Service Bus
 description: Analyzuje rozdíly a podobnosti mezi dvěma typy front, které nabízí Azure.
 ms.topic: article
 ms.date: 11/04/2020
-ms.openlocfilehash: 5c65cf5ef2d572417ea70d0e0259cf2c03ab590e
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 31992aa2012009c51cbeae78010ae8ced65fc872
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379566"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928303"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Fronty úložiště a fronty Service Bus – porovnání a kontrast
 Tento článek analyzuje rozdíly a podobnosti mezi dvěma typy front, které nabízí Microsoft Azure: fronty úložiště a fronty Service Bus. Pomocí těchto informací můžete učinit podrobnější rozhodnutí o tom, které řešení nejlépe vyhovuje vašim potřebám.
@@ -101,7 +101,7 @@ Tato část porovnává rozšířené možnosti poskytované frontami úložišt
 | Místní aktualizace |**Ano** |**Ano** |
 | Protokol transakcí na straně serveru |**Ano** |**Ne** |
 | Metriky úložiště |**Ano**<br/><br/>**Minutové metriky** poskytují metriky v reálném čase pro dostupnost, TPS, počty volání rozhraní API, počty chyb a další. Jsou všechny v reálném čase, agregované za minutu a nahlášeny během několika minut od toho, co se právě stalo v produkčním prostředí. Další informace najdete v tématu [o metrikách analýza úložiště](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics). |**Ano**<br/><br/>(hromadné dotazy voláním [Getqueues](/dotnet/api/microsoft.servicebus.namespacemanager.getqueues#Microsoft_ServiceBus_NamespaceManager_GetQueues)) |
-| Řízení stavu |**Ne** |**Ano**<br/><br/>[Microsoft. ServiceBus. Messaging. EntityStatus. Active](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. disabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. SendDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. ReceiveDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus) |
+| Správa stavu |**Ne** |**Ano**<br/><br/>[Microsoft. ServiceBus. Messaging. EntityStatus. Active](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. disabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. SendDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. ReceiveDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus) |
 | Přeposílání zpráv |**Ne** |**Ano** |
 | Vyprázdnit funkci Queue |**Ano** |**Ne** |
 | Skupiny zpráv |**Ne** |**Ano**<br/><br/>(pomocí relací zasílání zpráv) |
@@ -131,12 +131,12 @@ V této části se porovnávají fronty úložiště a Service Bus fronty z pers
 | Maximální velikost zprávy |**64 kB**<br/><br/>(48 KB při použití kódování **Base64** )<br/><br/>Azure podporuje velké zprávy kombinováním front a objektů BLOB – v takovém bodě můžete každou položku zařadit do fronty až 200 GB. |**256 KB** nebo **1 MB**<br/><br/>(včetně záhlaví a textu, maximální velikost hlavičky: 64 KB).<br/><br/>Závisí na [úrovni služby](service-bus-premium-messaging.md). |
 | Maximální hodnota TTL zprávy |**Infinite** (API-Version 2017-07-27 nebo novější) |**TimeSpan. max** |
 | Maximální počet front |**Unlimited** |**10 000**<br/><br/>(obor názvů pro službu) |
-| Maximální počet souběžných klientů |**Unlimited** |**Unlimited**<br/><br/>(100 souběžného počtu připojení se vztahuje jenom na komunikaci založenou na protokolu TCP). |
+| Maximální počet souběžných klientů |**Unlimited** |**5 000** |
 
 ### <a name="additional-information"></a>Další informace
 * Service Bus vynutila omezení velikosti fronty. Maximální velikost fronty je určena při vytváření fronty. Může být v rozmezí 1 GB až 80 GB. Pokud velikost fronty dosáhne tohoto limitu, další příchozí zprávy se odmítnou a volající obdrží výjimku. Další informace o kvótách v Service Bus najdete v tématu [kvóty Service Bus](service-bus-quotas.md).
 * Dělení na [úrovni Premium](service-bus-premium-messaging.md)se nepodporuje. Na úrovni Standard pro zasílání zpráv můžete vytvořit Service Bus fronty a témata ve velikosti 1 (výchozí), 2, 3, 4 nebo 5 GB. Když je zapnuté dělení, Service Bus vytvoří 16 kopií (16 oddílů) entity, každé zadané velikosti. Pokud vytvoříte frontu o velikosti 5 GB, přičemž 16 oddílů se změní na maximální velikost fronty (5 × 16) = 80 GB.  V [Azure Portal][Azure portal]můžete zobrazit maximální velikost rozdělené fronty nebo tématu.
-* Pokud se ve frontách úložiště nejedná o zabezpečený obsah zprávy, musí být kódovaný v **kódování Base64** . Pokud zprávu zakódujete ve **formátu base64** , může být datová část uživatele až 48 kb namísto 64 KB.
+* Pokud se ve frontách úložiště nejedná o zabezpečený obsah zprávy, musí být kódovaný v **kódování Base64** . Pokud zprávu zakódujete ve **formátu base64**, může být datová část uživatele až 48 kb namísto 64 KB.
 * U Service Busch front se každá zpráva uložená ve frontě skládá ze dvou částí: záhlaví a tělo. Celková velikost zprávy nepřekračuje maximální velikost zprávy podporované vrstvou služby.
 * Pokud klienti komunikují s Service Bus frontami přes protokol TCP, maximální počet souběžných připojení k jedné frontě Service Bus je omezený na 100. Toto číslo je sdíleno mezi odesílateli a přijímači. Pokud je dosažena tato kvóta, žádosti o další připojení budou odmítnuty a volající kód bude přijímat výjimku. Toto omezení není uloženo u klientů připojujících se k frontám pomocí rozhraní API založeného na REST.
 * Pokud potřebujete více než 10 000 front v jednom oboru názvů Service Bus, můžete kontaktovat tým podpory Azure a požádat o zvýšení. Pokud chcete škálovat více než 10 000 front pomocí Service Bus, můžete také vytvořit další obory názvů pomocí [Azure Portal][Azure portal].
@@ -170,7 +170,7 @@ Tato část popisuje funkce pro ověřování a autorizaci podporované frontami
 
 | Kritéria porovnání | Fronty úložiště | Fronty služby Service Bus |
 | --- | --- | --- |
-| Authentication |**Symetrický klíč** |**Symetrický klíč** |
+| Ověřování |**Symetrický klíč** |**Symetrický klíč** |
 | Model zabezpečení |Delegovaný přístup prostřednictvím tokenů SAS. |SAS |
 | Federace zprostředkovatele identity |**Ne** |**Ano** |
 

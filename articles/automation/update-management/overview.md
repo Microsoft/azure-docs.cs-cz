@@ -3,14 +3,14 @@ title: Přehled Azure Automation Update Management
 description: Tento článek poskytuje přehled funkce Update Management, která implementuje aktualizace pro počítače se systémem Windows a Linux.
 services: automation
 ms.subservice: update-management
-ms.date: 11/30/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 37ab05ce7e963ab7fdc4d2b02e254adaa205446c
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 4b557c9772e76b6b61cdf01799ee30ba6bc11807
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327487"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928422"
 ---
 # <a name="update-management-overview"></a>Přehled Update Managementu
 
@@ -224,7 +224,7 @@ Následující tabulka definuje podporované klasifikace aktualizací pro Linux.
 >
 > neexistují žádné klasifikace aktualizací pro Linux a jsou hlášeny v kategorii **ostatní aktualizace** . Update Management používá data publikovaná v podporovaných distribucích, konkrétně v jejich vydaných [oválech](https://oval.mitre.org/) (otevřené soubory zabezpečení a posouzení). Vzhledem k tomu, že přístup k Internetu je z těchto národních cloudů omezený, Update Management nemůže získat přístup k těmto souborům a využívat je.
 
-V případě systému Linux může Update Management rozlišovat mezi důležitými aktualizacemi a aktualizacemi zabezpečení v cloudu a současně zobrazuje data posouzení z důvodu obohacení dat v cloudu. Pro opravy Update Management spoléhá na data klasifikace, která jsou k dispozici v počítači. Na rozdíl od jiných distribucí nemá CentOS tyto informace dostupné ve verzi RTM. Pokud máte počítače CentOS nakonfigurované tak, aby vracely data zabezpečení pro následující příkaz, Update Management se může opravit na základě klasifikací.
+V případě systému Linux může Update Management rozlišovat mezi důležitými aktualizacemi a aktualizacemi zabezpečení v cloudu pod položkou **zabezpečení** klasifikace a **ostatními** a současně zobrazuje data vyhodnocení v důsledku rozšíření dat v cloudu. Pro opravy Update Management spoléhá na data klasifikace, která jsou k dispozici v počítači. Na rozdíl od jiných distribucí nemá CentOS tyto informace dostupné ve verzi RTM. Pokud máte počítače CentOS nakonfigurované tak, aby vracely data zabezpečení pro následující příkaz, Update Management se může opravit na základě klasifikací.
 
 ```bash
 sudo yum -q --security check-update
@@ -233,6 +233,10 @@ sudo yum -q --security check-update
 V současné době není podporována žádná podporovaná metoda pro povolení nativní klasifikace – dostupnost dat v CentOS. V tuto chvíli se zákazníkům, kteří si tuto funkci povolili, poskytne omezená podpora.
 
 Chcete-li klasifikovat aktualizace na Red Hat Enterprise verze 6, je nutné nainstalovat modul plug-in Yumu-Security. V Red Hat Enterprise Linux 7 je modul plug-in již součástí samotného Yumu a není nutné nic instalovat. Další informace najdete v následujícím [článku znalostní báze](https://access.redhat.com/solutions/10021)Red Hat.
+
+Když naplánujete, aby se aktualizace spouštěla v počítači se systémem Linux, který je například nakonfigurován pro instalaci pouze aktualizací, které odpovídají klasifikaci **zabezpečení** , nainstalované aktualizace se mohou lišit od nástroje nebo jsou podmnožinou aktualizací, které odpovídají této klasifikaci. Když se provede posouzení aktualizací operačního systému, které čekají na váš počítač se systémem Linux, [otevřete](https://oval.mitre.org/) Update Management pro klasifikaci pomocí souborů.
+
+Kategorizace se provádí pro aktualizace pro Linux jako **zabezpečení** nebo **jiné** na základě elipsových souborů, včetně aktualizací, které řeší problémy zabezpečení nebo chyby zabezpečení. Ale při spuštění plánu aktualizace se na počítači se systémem Linux spustí pomocí příslušného správce balíčků, jako je YUMU, APT nebo ZYPPERU, aby se nainstalovaly. Správce balíčků pro Linux distribuce může mít jiný mechanismus pro klasifikaci aktualizací, kde se výsledky mohou lišit od těch, které jsou získány ze souborů ELIPSy Update Management. Pokud chcete ručně kontrolovat počítač a porozumět tomu, které aktualizace jsou důležité pro správce balíčků, přečtěte si téma [řešení potíží s nasazením aktualizací pro Linux](../troubleshoot/update-management.md#updates-linux-installed-different).
 
 ## <a name="integrate-update-management-with-configuration-manager"></a>Integrace Update Management s Configuration Manager
 

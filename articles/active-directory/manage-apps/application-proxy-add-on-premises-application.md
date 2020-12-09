@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/04/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 55d40719fe2d51f03f3b969438678edde2972b05
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 5d0b2df551c73e8c9b24d80280bbc993d9b361b7
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607921"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928463"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory
 
@@ -191,7 +191,7 @@ Teď, když jste připravili prostředí a nainstalovali konektor, jste připrav
 1. Přihlaste se jako správce v [Azure Portal](https://portal.azure.com/).
 2. V levém navigačním panelu vyberte **Azure Active Directory**.
 3. Vyberte **podnikové aplikace** a pak vyberte **Nová aplikace**.
-4. V části místní **aplikace** vyberte **Přidat místní aplikaci**.
+4. V části **vytvořit vlastní aplikaci** vyberte **konfigurovat proxy aplikací pro zabezpečený vzdálený přístup k místní aplikaci**.
 5. V části **Přidat vlastní místní aplikaci** zadejte následující informace o vaší aplikaci:
 
     | Pole | Popis |
