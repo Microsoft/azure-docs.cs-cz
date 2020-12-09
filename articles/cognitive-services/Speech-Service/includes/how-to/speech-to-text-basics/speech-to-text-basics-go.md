@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/15/2020
 ms.author: trbye
-ms.openlocfilehash: f3a3d897d5cc5a22340dccf3aeeac8d52158a3a0
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: f87db54b43f0ece49b940521bea34737da676a31
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425161"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96912263"
 ---
 Jednou z klíčových funkcí služby Speech je možnost rozpoznávat a přepisovat lidské řeči (často se označuje jako převod řeči na text). V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitních převodů řeči na text.
 
@@ -30,6 +30,8 @@ Předtím, než můžete cokoli udělat, musíte nainstalovat [sadu Speech SDK f
 Pomocí následující ukázky kódu spusťte rozpoznávání řeči z výchozího mikrofonu zařízení. Nahraďte proměnné `subscription` a `region` klíči vaší předplatného a oblasti. Spuštění skriptu spustí relaci rozpoznávání ve vašem výchozím mikrofonu a výstupním textu.
 
 ```go
+package main
+
 import (
     "bufio"
     "fmt"
@@ -104,6 +106,8 @@ Podrobné informace o třídách a naleznete v referenční [`SpeechConfig`](htt
 Pomocí následující ukázky spusťte rozpoznávání řeči ze zvukového souboru. Nahraďte proměnné `subscription` a `region` klíči vaší předplatného a oblasti. Kromě toho nahraďte proměnnou `file` cestou k souboru. wav. Spuštění skriptu rozpozná řeč ze souboru a vypíše výstup výsledku textu.
 
 ```go
+package main
+
 import (
     "fmt"
     "time"

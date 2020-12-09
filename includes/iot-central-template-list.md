@@ -8,16 +8,18 @@ ms.topic: include
 ms.date: 02/11/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 182296793b46f1900744bf629625906b2d6e9b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08e4fd82bea6bb1b510b127db8dee7803ee112f5
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91377497"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96912239"
 ---
 **Šablony aplikací**
 
-| Šablona                 | Název        | Popis |
+**IoT Central šablon aplikací**
+
+| Template (Šablona)                 | Název        | Description |
 | ------------------------ | ----------- | ----------- |
 | IOTC – PNP – Preview         | Custom application (Vlastní aplikace) | Vytvoří prázdnou aplikaci, kterou můžete naplnit vlastními šablonami zařízení a zařízeními. |
 | IOTC – podmínka           | Analýzy v obchodě – monitorování podmínek | Vytvoří aplikaci pro připojení a monitorování prostředí úložiště. |
@@ -33,3 +35,7 @@ ms.locfileid: "91377497"
 | IOTC – kvalita             | Monitorování kvality vody | Vytvoří aplikaci pro digitální monitorování kvality vody. |
 | IOTC – úložiště               | Analýzy v obchodě – rezervace | Vytvoří aplikaci, která bude monitorovat a spravovat tok rezervací v rámci vašeho obchodu. |
 | IOTC – odpad               | Správa propojených odpadů | Vytvoří aplikaci pro monitorování odpadkových přihrádek a operátorů pole dispatch. |
+
+**Šablona vlastní aplikace**
+
+Pokud jste vytvořili vlastní šablonu aplikace, můžete ji použít k vytvoření nové aplikace. Po zobrazení výzvy k zadání šablony aplikace zadejte ID aplikace zobrazené v odkazu Shared URL exportované aplikace v části [Export šablony aplikace](../articles/iot-central/core/howto-use-app-templates.md#create-an-application-template) ve vaší aplikaci. 

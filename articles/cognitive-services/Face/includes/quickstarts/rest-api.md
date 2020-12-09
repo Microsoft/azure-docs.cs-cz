@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 12/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 0f668f3a9ec4e158dfddd15f9c5d744fb0a5a847
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: be942f73ee0a3d5a8850141c937754bad330db90
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763641"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96912165"
 ---
 Začněte s rozpoznáváním obličeje pomocí REST API obličeje. Služba Faceer poskytuje přístup k pokročilým algoritmům pro zjišťování a rozpoznávání lidských plošek na obrázcích.
 
@@ -22,6 +22,9 @@ REST API obličej použijte k těmto akcím:
 
 * [Rozpoznávání tváří na obrázku](#detect-faces-in-an-image)
 * [Hledání podobných plošek](#find-similar-faces)
+
+> [!NOTE]
+> V tomto rychlém startu se pomocí oblé příkazy zavolá REST API. REST API můžete volat také pomocí programovacího jazyka. Příklady najdete v ukázkách v [jazycích C#](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/Face/rest), [Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/Face/rest), [Java](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/java/Face/rest), [JavaScript](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/Face/rest)a [Přejít](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/go/Face/rest)na ukázky GitHubu.
 
 ## <a name="prerequisites"></a>Předpoklady
 
