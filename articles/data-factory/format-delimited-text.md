@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/29/2020
+ms.date: 12/07/2020
 ms.author: jingwang
-ms.openlocfilehash: bb284db102ea2fcb9086f65f9d19bdfee2c2936c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 0fa68a8dbdcb1f2c0cc4af1b4df751fd81c0de14
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348882"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854627"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Textový formát s oddělovači v Azure Data Factory
 
@@ -175,6 +175,9 @@ source(
     multiLineRow: true,
     wildcardPaths:['*.csv']) ~> CSVSource
 ```
+
+> [!NOTE]
+> Zdroje toku dat podporují omezené sady expanze názvů Linux, které podporují systémy souborů Hadoop.
 
 ### <a name="sink-properties"></a>Vlastnosti jímky
 

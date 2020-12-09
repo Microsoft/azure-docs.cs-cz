@@ -1,6 +1,6 @@
 ---
 title: Vytvoření svazku SMB pro Azure NetApp Files | Microsoft Docs
-description: V tomto článku se dozvíte, jak vytvořit SMBv3 svazek v Azure NetApp Files. Seznamte se s požadavky na připojení služby Active Directory a doménové služby.
+description: V tomto článku se dozvíte, jak vytvořit SMB3 svazek v Azure NetApp Files. Seznamte se s požadavky na připojení služby Active Directory a doménové služby.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: b-juche
-ms.openlocfilehash: 682a97738e94c2a8188b4976a229d6a850a5b6ac
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: cd2a293ebcc35d4884211f50783738a502dcc7de
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511997"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854821"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
-Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS (NFSv3 a NFSv 4.1), SMBv3 nebo duálního protokolu (NFSv3 a SMB). Spotřeba kapacity svazku se počítá proti zřízené kapacitě příslušného fondu. V tomto článku se dozvíte, jak vytvořit svazek SMBv3.
+Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS (NFSv3 a NFSv 4.1), SMB3 nebo duálního protokolu (NFSv3 a SMB). Spotřeba kapacity svazku se počítá proti zřízené kapacitě příslušného fondu. V tomto článku se dozvíte, jak vytvořit svazek SMB3.
 
 ## <a name="before-you-begin"></a>Než začnete 
 Musíte mít už nastavený fond kapacity.   

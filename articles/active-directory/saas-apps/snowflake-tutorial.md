@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 26ca1fffb3932493dc7182de1b520f8c0a17d59c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 3beb4e7831ce17a46f6daaa1258f284a0caefe8e
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514839"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855123"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>Kurz: Azure Active Directory integrace s Snowflake
 
@@ -27,7 +27,7 @@ Integrace Snowflake s Azure AD poskytuje následující výhody:
 * Můžete povolit, aby se vaši uživatelé automaticky přihlásili k Snowflake (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Předpoklady
@@ -41,14 +41,14 @@ Ke konfiguraci integrace služby Azure AD s Snowflake potřebujete následujíc�
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Snowflake podporuje jednotné přihlašování (SSO) **a IDP** .
-* Snowflake podporuje [automatizované zřizování a rušení zřizování uživatelů](snowflake-provisioning-tutorial.md) (doporučeno)
+- Snowflake podporuje jednotné přihlašování (SSO) **a IDP** .
+- Snowflake podporuje [automatizované zřizování a rušení zřizování uživatelů](snowflake-provisioning-tutorial.md) (doporučeno)
 
 ## <a name="adding-snowflake-from-the-gallery"></a>Přidání Snowflake z Galerie
 
 Pokud chcete nakonfigurovat integraci Snowflake do služby Azure AD, musíte přidat Snowflake z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Snowflake z Galerie, proveďte následující kroky:**
+**Přidat Snowflake z Galerie:**
 
 1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
@@ -64,11 +64,11 @@ Pokud chcete nakonfigurovat integraci Snowflake do služby Azure AD, musíte př
 
 4. Do vyhledávacího pole zadejte **Snowflake**, vyberte **Snowflake** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Snowflake v seznamu výsledků](common/search-new-app.png)
+     ![Snowflake v seznamu výsledků](common/search-new-app-snowflake.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Snowflake na základě testovacího uživatele s názvem **Britta Simon**.
+V této části budete konfigurovat a testovat jednotné přihlašování Azure AD pomocí Snowflake na základě testovacího uživatele s názvem **Britta Simon**.
 Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Snowflake.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Snowflake, musíte dokončit tyto stavební bloky:
@@ -135,14 +135,14 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Snowflak
 
 1. V jiném okně webového prohlížeče se přihlaste k Snowflake jako správce zabezpečení.
 
-1. **Přepněte roli** na **ACCOUNTADMIN**kliknutím na **profil** v pravé horní části stránky.
+1. **Přepněte roli** na **ACCOUNTADMIN** kliknutím na **profil** v pravé horní části stránky.
 
     > [!NOTE]
     > To je oddělené od kontextu, který jste vybrali v pravém horním rohu pod vaším uživatelským jménem.
     
     ![Správce Snowflake](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
-1. Otevřete **stažený certifikát základní 64** v programu Poznámkový blok. Zkopírujte hodnotu mezi "-----BEGIN CERTIFICATE-----" a "-----END CERTIFICATE-----" a vložte ji do uvozovek vedle **certifikátu** níže. Do pole **ssoUrl**vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal. Vyberte **všechny dotazy** a klikněte na **Spustit**.
+1. Otevřete **stažený certifikát základní 64** v programu Poznámkový blok. Zkopírujte hodnotu mezi "-----BEGIN CERTIFICATE-----" a "-----END CERTIFICATE-----" a vložte ji do uvozovek vedle **certifikátu** níže. Do pole **ssoUrl** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal. Vyberte **všechny dotazy** a klikněte na **Spustit**.
 
    ![Snowflake SQL](./media/snowflake-tutorial/tutorial_snowflake_sql.png)
 
@@ -161,7 +161,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Snowflak
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -186,7 +186,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Snowflake.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Snowflake**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **Snowflake**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -216,7 +216,7 @@ Aby se uživatelé Azure AD mohli přihlásit k Snowflake, musí se zřídit v S
 
 1. Přihlaste se k Snowflake jako správce zabezpečení.
 
-2. **Přepněte roli** na **ACCOUNTADMIN**kliknutím na **profil** v pravé horní části stránky.  
+2. **Přepněte roli** na **ACCOUNTADMIN** kliknutím na **profil** v pravé horní části stránky.  
 
     ![Správce Snowflake](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
@@ -235,7 +235,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Snowflake, měli byste se automaticky přihlásit k Snowflake, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

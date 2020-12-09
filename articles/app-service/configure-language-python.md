@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 11/16/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: f12ed42755af64f024fdcb0452173134f7b58482
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7589b5c66bf4fa86db243574f551ec585ccccea1
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183732"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855052"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux v Pythonu pro Azure App Service
 
@@ -101,19 +101,19 @@ Existující webové aplikace je možné znovu nasadit do Azure následujícím 
 1. **Zdrojové úložiště**: Udržujte svůj zdrojový kód v vhodném úložišti, jako je GitHub, což vám umožní nastavit průběžné nasazování později v tomto procesu.
     1. Soubor *requirements.txt* musí být v kořenovém adresáři vašeho úložiště, aby se App Service automaticky nainstalovaly potřebné balíčky.    
 
-1. **Databáze**: Pokud aplikace závisí na databázi, zajistěte také potřebné prostředky v Azure. Viz [kurz: nasazení webové aplikace v Django s PostgreSQL – vytvoření databáze](tutorial-python-postgresql-app.md#create-postgres-database-in-azure) pro příklad.
+1. **Databáze**: Pokud aplikace závisí na databázi, zajistěte také potřebné prostředky v Azure. Viz [kurz: nasazení webové aplikace v Django s PostgreSQL – vytvoření databáze](tutorial-python-postgresql-app.md#3-create-postgres-database-in-azure) pro příklad.
 
-1. **Prostředky služby App Service**: Vytvořte skupinu prostředků, App Service plán a App Service webovou aplikaci pro hostování vaší aplikace. To nejsnadněji provedete provedením počátečního nasazení kódu prostřednictvím příkazu Azure CLI `az webapp up` , jak je znázorněno v [kurzu: nasazení webové aplikace v Django s PostgreSQL – nasazení kódu](tutorial-python-postgresql-app.md#deploy-the-code-to-azure-app-service). Nahraďte názvy skupiny prostředků, App Service plánu a webové aplikace tak, aby byly pro vaši aplikaci vhodnější.
+1. **Prostředky služby App Service**: Vytvořte skupinu prostředků, App Service plán a App Service webovou aplikaci pro hostování vaší aplikace. To nejsnadněji provedete provedením počátečního nasazení kódu prostřednictvím příkazu Azure CLI `az webapp up` , jak je znázorněno v [kurzu: nasazení webové aplikace v Django s PostgreSQL – nasazení kódu](tutorial-python-postgresql-app.md#4-deploy-the-code-to-azure-app-service). Nahraďte názvy skupiny prostředků, App Service plánu a webové aplikace tak, aby byly pro vaši aplikaci vhodnější.
 
 1. **Proměnné prostředí**: Pokud vaše aplikace vyžaduje nějaké proměnné prostředí, vytvořte ekvivalentní [App Service nastavení aplikace](configure-common.md#configure-app-settings). Tato App Service nastavení se zobrazí jako proměnné prostředí v kódu, jak je popsáno v tématu [přístup k proměnným prostředí](#access-app-settings-as-environment-variables).
-    - Databázová připojení se například často spravují prostřednictvím takového nastavení, jak je znázorněno v [kurzu: nasazení webové aplikace v Django s postgresql – Nakonfigurujte proměnné pro připojení databáze](tutorial-python-postgresql-app.md#configure-environment-variables-to-connect-the-database).
+    - Databázová připojení se například často spravují prostřednictvím takového nastavení, jak je znázorněno v [kurzu: nasazení webové aplikace v Django s postgresql – Nakonfigurujte proměnné pro připojení databáze](tutorial-python-postgresql-app.md#42-configure-environment-variables-to-connect-the-database).
     - Konkrétní nastavení pro typické aplikace Django najdete v tématu [Nastavení výroby pro aplikace Django](#production-settings-for-django-apps) .
 
 1. **Spuštění aplikace**: Další informace o tom, jak se App Service pokusy o spuštění vaší aplikace, najdete v části, [spouštěcím procesu kontejneru](#container-startup-process) dále v tomto článku. Ve výchozím nastavení používá App Service webový server Gunicorn, který musí být schopný najít objekt aplikace nebo složku *WSGI.py* . V případě potřeby můžete [Upravit spouštěcí příkaz](#customize-startup-command).
 
 1. **Průběžné** nasazování: nastavte průběžné nasazování, jak je popsáno v tématu [průběžné](deploy-continuous-deployment.md) nasazování Azure App Service při použití nasazení Azure Pipelines nebo Kudu, nebo [nasazení do App Service pomocí akcí GitHubu](deploy-github-actions.md) , pokud používáte akce GitHubu.
 
-1. **Vlastní akce**: Pokud chcete provádět akce v rámci kontejneru App Service, který hostuje vaši aplikaci, jako je třeba migrace databáze Django, můžete [se k kontejneru připojit přes SSH](configure-linux-open-ssh-session.md). Příklad spuštění migrace databáze Django najdete v tématu [kurz: nasazení webové aplikace v Django pomocí PostgreSQL – spusťte migrace databáze](tutorial-python-postgresql-app.md#run-django-database-migrations).
+1. **Vlastní akce**: Pokud chcete provádět akce v rámci kontejneru App Service, který hostuje vaši aplikaci, jako je třeba migrace databáze Django, můžete [se k kontejneru připojit přes SSH](configure-linux-open-ssh-session.md). Příklad spuštění migrace databáze Django najdete v tématu [kurz: nasazení webové aplikace v Django pomocí PostgreSQL – spusťte migrace databáze](tutorial-python-postgresql-app.md#43-run-django-database-migrations).
     - Při použití průběžného nasazování můžete provádět tyto akce pomocí příkazů po sestavení, jak je popsáno výše v části [přizpůsobení automatizace sestavení](#customize-build-automation).
 
 Po dokončení těchto kroků byste měli být schopni potvrdit změny ve zdrojovém úložišti a nechat tyto aktualizace automaticky nasazeny do App Service.
@@ -306,7 +306,7 @@ V těchto protokolech se zobrazí problémy, jako jsou nesprávné závislosti v
 
 Po úspěšném připojení k relaci SSH by se v dolní části okna měla zobrazit zpráva "připojení SSH je ZŘÍZENÉ". Pokud se zobrazí chyby, jako je například "SSH_CONNECTION_CLOSED" nebo zpráva o restartování kontejneru, může dojít k chybě, která brání spuštění kontejneru aplikace. Postup, jak prozkoumat možné problémy, najdete v tématu [věnovaném řešení potíží](#troubleshooting) .
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Prvním krokem při řešení potíží je obecně použití diagnostiky App Service:
 

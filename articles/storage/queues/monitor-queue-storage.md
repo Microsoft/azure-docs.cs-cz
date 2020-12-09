@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: be340ffd2df53124f516e370359df688d887ab6c
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 15bc943052218761327fa57ce8ff6f5d32bfb116
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780956"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855086"
 ---
 # <a name="monitoring-azure-queue-storage"></a>Monitorování úložiště Azure Queue
 
@@ -99,6 +99,8 @@ Obecné pokyny najdete v tématu [Vytvoření nastavení diagnostiky pro shroma�
 
 #### <a name="archive-logs-to-a-storage-account"></a>Archivace protokolů do účtu úložiště
 
+Pokud se rozhodnete archivovat protokoly do účtu úložiště, platíte za objem protokolů, které se odesílají do účtu úložiště. Konkrétní ceny najdete v části **protokoly platformy** na stránce s [cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) .
+
 1. Zaškrtněte políčko **archivovat do účtu úložiště** a pak vyberte tlačítko **Konfigurovat** .
 
    > [!div class="mx-imgBorder"]
@@ -110,6 +112,8 @@ Obecné pokyny najdete v tématu [Vytvoření nastavení diagnostiky pro shroma�
    > Než zvolíte účet úložiště jako cíl exportu, přečtěte si téma [archivace protokolů prostředků Azure](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) a pochopení požadavků v účtu úložiště.
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>Streamování protokolů do Azure Event Hubs
+
+Pokud se rozhodnete streamovat protokoly do centra událostí, platíte za objem protokolů, které se odesílají do centra událostí. Konkrétní ceny najdete v části **protokoly platformy** na stránce s [cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) .
 
 1. Zaškrtněte políčko **datový proud do centra událostí** a pak klikněte na tlačítko **Konfigurovat** .
 
@@ -143,6 +147,8 @@ Obecné pokyny najdete v tématu [Vytvoření nastavení diagnostiky pro shroma�
 
 #### <a name="archive-logs-to-a-storage-account"></a>Archivace protokolů do účtu úložiště
 
+Pokud se rozhodnete archivovat protokoly do účtu úložiště, platíte za objem protokolů, které se odesílají do účtu úložiště. Konkrétní ceny najdete v části **protokoly platformy** na stránce s [cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) .
+
 Povolte protokoly pomocí rutiny [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) prostředí PowerShell spolu s `StorageAccountId` parametrem.
 
 ```powershell
@@ -160,6 +166,8 @@ Tady je příklad:
 Popis jednotlivých parametrů najdete v tématu [archivace protokolů prostředků Azure prostřednictvím Azure PowerShell](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage).
 
 #### <a name="stream-logs-to-an-event-hub"></a>Streamování protokolů do centra událostí
+
+Pokud se rozhodnete streamovat protokoly do centra událostí, platíte za objem protokolů, které se odesílají do centra událostí. Konkrétní ceny najdete v části **protokoly platformy** na stránce s [cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) .
 
 Povolte protokoly pomocí rutiny [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) prostředí PowerShell s `EventHubAuthorizationRuleId` parametrem.
 
@@ -201,6 +209,8 @@ Další informace najdete v tématu [streamování protokolů prostředků Azure
 
 #### <a name="archive-logs-to-a-storage-account"></a>Archivace protokolů do účtu úložiště
 
+Pokud se rozhodnete archivovat protokoly do účtu úložiště, platíte za objem protokolů, které se odesílají do účtu úložiště. Konkrétní ceny najdete v části **protokoly platformy** na stránce s [cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) .
+
 Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
 
 ```azurecli-interactive
@@ -218,6 +228,8 @@ Tady je příklad:
 Popis jednotlivých parametrů najdete v tématu [archivní protokoly prostředků přes Azure CLI](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage).
 
 #### <a name="stream-logs-to-an-event-hub"></a>Streamování protokolů do centra událostí
+
+Pokud se rozhodnete streamovat protokoly do centra událostí, platíte za objem protokolů, které se odesílají do centra událostí. Konkrétní ceny najdete v části **protokoly platformy** na stránce s [cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) .
 
 Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
 

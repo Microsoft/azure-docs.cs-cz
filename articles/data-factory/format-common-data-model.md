@@ -5,14 +5,14 @@ author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 12/07/2020
 ms.author: makromer
-ms.openlocfilehash: 7fc3a63f841a88451746d088a527a41d756e711f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e3152f1dff4a80ce3ae8bd121215ceb2595b9ee2
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015167"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854000"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Formát modelu Common data model v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -20,9 +20,6 @@ ms.locfileid: "95015167"
 Systém metadat CDM (Common data model) umožňuje, aby data a jejich význam bylo možné snadno sdílet napříč aplikacemi a obchodními procesy. Další informace najdete v tématu Přehled [modelu Common data model](/common-data-model/) .
 
 V Azure Data Factory můžou uživatelé transformovat data z entit CDM v model.jsna a ve formě manifestu uložené v [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (adls Gen2) pomocí mapování datových toků. Data můžete také ve formátu CDM založit pomocí odkazů na entity CDM, které budou vaše data uvádět ve formátu CSV nebo Parquet v dělených složkách. 
-
-> [!NOTE]
-> Konektor formátu CDM (Common data model) pro toky dat ADF je aktuálně k dispozici jako veřejná verze Preview.
 
 ## <a name="mapping-data-flow-properties"></a>Mapování vlastností toku dat
 
@@ -38,7 +35,7 @@ V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem CDM. Tyto
 | Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Formát | Formát musí být `cdm` | ano | `cdm` | formát |
-| Formát metadat | Kde se nachází odkaz na entitu na data. Pokud používáte CDM verze 1,0, vyberte manifest. Pokud používáte verzi CDM před 1,0, vyberte model.jszapnuto. | Yes | `'manifest'` nebo `'model'` | manifestType |
+| Formát metadat | Kde se nachází odkaz na entitu na data. Pokud používáte CDM verze 1,0, vyberte manifest. Pokud používáte verzi CDM před 1,0, vyberte model.jszapnuto. | Ano | `'manifest'` nebo `'model'` | manifestType |
 | Kořen umístění: kontejner | Název kontejneru složky CDM | ano | Řetězec | Systému souborů |
 | Kořenové umístění: cesta ke složce | Umístění kořenové složky složky CDM | ano | Řetězec | folderPath |
 | Soubor manifestu: cesta k entitě | Cesta ke složce entity v kořenové složce | ne | Řetězec | entityPath |
@@ -88,7 +85,6 @@ Při mapování sloupců toku dat na vlastnosti entity v transformaci jímky kli
 2. Najděte oddíly. Location – vlastnost 
 3. Změňte "blob.core.windows.net" na "dfs.core.windows.net"
 4. Opravte jakékoli kódování "% 2F" v adrese URL na "/".
- 
 
 ### <a name="cdm-source-data-flow-script-example"></a>Příklad skriptu zdrojového toku dat CDM
 

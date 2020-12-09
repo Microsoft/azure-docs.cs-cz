@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3ec9718d313e7e8d757eb41c230225bdcf9ebd49
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: e9334d222d443679362514481ecd83b90bbda0ac
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96749041"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855069"
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 
@@ -33,12 +33,12 @@ Následující tabulka shrnuje typy vzorkování dostupné pro každou sadu SDK 
 | Sada Application Insights SDK | Adaptivní vzorkování se podporuje. | Vzorkování s pevnou sazbou je podporováno. | Podporuje se vzorkování přijímání. |
 |-|-|-|-|
 | ASP.NET | [Ano (ve výchozím nastavení zapnuto)](#configuring-adaptive-sampling-for-aspnet-applications) | [Ano](#configuring-fixed-rate-sampling-for-aspnet-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
-| ASP.NET Core | [Ano (ve výchozím nastavení zapnuto)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Ano](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
-| Azure Functions | [Ano (ve výchozím nastavení zapnuto)](#configuring-adaptive-sampling-for-azure-functions) | No | Jenom v případě, že se neplatí žádné jiné vzorkování |
-| Java | No | [Ano](#configuring-fixed-rate-sampling-for-java-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
-| Node.JS | No | [Ano](./nodejs.md#sampling) | Jenom v případě, že se neplatí žádné jiné vzorkování
-| Python | No | [Ano](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
-| Všichni ostatní | No | No | [Ano](#ingestion-sampling) |
+| Jádro ASP.NET | [Ano (ve výchozím nastavení zapnuto)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Ano](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
+| Azure Functions | [Ano (ve výchozím nastavení zapnuto)](#configuring-adaptive-sampling-for-azure-functions) | Ne | Jenom v případě, že se neplatí žádné jiné vzorkování |
+| Java | Ne | [Ano](#configuring-fixed-rate-sampling-for-java-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
+| Node.JS | Ne | [Ano](./nodejs.md#sampling) | Jenom v případě, že se neplatí žádné jiné vzorkování
+| Python | Ne | [Ano](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
+| Všichni ostatní | Ne | Ne | [Ano](#ingestion-sampling) |
 
 > [!NOTE]
 > Informace na většině této stránky se vztahují na aktuální verze sad Application Insights SDK. Informace o starších verzích sad SDK [najdete v části níže](#older-sdk-versions).
@@ -315,18 +315,12 @@ Ve výchozím nastavení nejsou v agentech Java a v sadě SDK povoleny žádné 
 
 1. Stáhnout [ApplicationInsights-agent-3.0.0-Preview. 5. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar)
 
-1. Pokud chcete vzorkování povolit, přidejte do `ApplicationInsights.json` souboru následující:
+1. Pokud chcete vzorkování povolit, přidejte do `applicationinsights.json` souboru následující:
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "sampling": {
-        "fixedRate": {
-          "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
-        }
-      }
-    }
+  "sampling": {
+    "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
   }
 }
 ```
@@ -559,7 +553,7 @@ Přesnost aproximace je převážně závislá na nakonfigurované procentuáln�
 
 * Vzorkování příjmu se může vyskytnout automaticky pro všechny telemetrie nad určitým svazkem, pokud sada SDK neprovádí vzorkování. Tato konfigurace by mohla fungovat například v případě, že používáte starší verzi sady ASP.NET SDK nebo Java SDK.
 * Pokud používáte aktuální ASP.NET nebo ASP.NET Core sady SDK (hostované buď v Azure, nebo na vašem vlastním serveru), můžete ve výchozím nastavení získat adaptivní vzorkování, ale můžete přejít na pevný kurz, jak je popsáno výše. Při vzorkování s pevnou sazbou se sada SDK pro prohlížeč automaticky synchronizuje s ukázkovými událostmi, které se týkají. 
-* Pokud používáte aktuálního agenta Java, můžete pro `ApplicationInsights.json` vzorkování s pevnou sazbou nakonfigurovat (pro sadu Java SDK, nakonfigurovat `ApplicationInsights.xml` ). Vzorkování je ve výchozím nastavení vypnuté. Při vzorkování s pevnou sazbou se sada SDK pro prohlížeč a server automaticky synchronizuje s ukázkovými událostmi, které jsou v relaci.
+* Pokud používáte aktuálního agenta Java, můžete pro `applicationinsights.json` vzorkování s pevnou sazbou nakonfigurovat (pro sadu Java SDK, nakonfigurovat `ApplicationInsights.xml` ). Vzorkování je ve výchozím nastavení vypnuté. Při vzorkování s pevnou sazbou se sada SDK pro prohlížeč a server automaticky synchronizuje s ukázkovými událostmi, které jsou v relaci.
 
 *Existují určité vzácné události, které vždycky chcete vidět. Jak se dají dostat za modul vzorkování?*
 

@@ -1,17 +1,17 @@
 ---
 title: Použití Azure Private Linku k bezpečnému propojení sítí k Azure Monitoru
 description: Použití Azure Private Linku k bezpečnému propojení sítí k Azure Monitoru
-author: nkiest
-ms.author: nikiest
+author: noakup
+ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 8633aba2f7cda5dec4a48e9f7132283f8235f746
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: a85619b4947808ba1c13df3c1543102eea7273fd
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317516"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853917"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Použití Azure Private Linku k bezpečnému propojení sítí k Azure Monitoru
 
@@ -43,7 +43,7 @@ Azure Monitor obor privátních odkazů je prostředek seskupení pro připojen�
 Před nastavením prostředků AMPLS Zvažte požadavky na izolaci sítě. Vyhodnoťte přístup k virtuálním sítím k veřejnému Internetu a omezení přístupu každého z vašich Azure Monitorch prostředků (tj. Application Insights komponent a Log Analytics pracovních prostorů).
 
 > [!NOTE]
-> Sítě rozbočovače a paprsků nebo jakákoli jiná topologie partnerských sítí může nastavit privátní propojení mezi sítí VNet (hlavní) a příslušnými prostředky Azure Monitor, místo abyste nastavili privátní propojení na každé virtuální síti a každou virtuální síť. To je vhodné zejména v případě, že Azure Monitor prostředky používané těmito sítěmi jsou sdílené. Pokud ale chcete, aby každá virtuální síť měla přístup k samostatné sadě prostředků monitorování, vytvořte pro každou síť privátní odkaz na vyhrazené AMPLS.
+> Sítě rozbočovačů a paprsků nebo jakákoli jiná topologie partnerských sítí může nastavit privátní propojení mezi virtuální sítí (hlavní) a relevantními prostředky Azure Monitor, místo abyste nastavili privátní propojení na každé virtuální síti a každou virtuální síť. To je vhodné zejména v případě, že Azure Monitor prostředky používané těmito sítěmi jsou sdílené. Pokud ale chcete, aby každá virtuální síť měla přístup k samostatné sadě prostředků monitorování, vytvořte pro každou síť privátní odkaz na vyhrazené AMPLS.
 
 ### <a name="evaluate-which-virtual-networks-should-connect-to-a-private-link"></a>Vyhodnotit, které virtuální sítě by se měly připojit k privátnímu propojení
 
@@ -85,6 +85,11 @@ V následující topologii:
 * Workspace2 se připojuje k AMPLS a a AMPLS B pomocí 2/5 (40%) z možných připojení AMPLS.
 
 ![Diagram omezení AMPLS](./media/private-link-security/ampls-limits.png)
+
+> [!NOTE]
+> V některých topologiích sítě (hlavně hub – střed) se můžete rychle dostat k 10 virtuální sítě limitu pro jednu AMPLS. V takových případech doporučujeme použít sdílené připojení privátního propojení místo samostatných. Vytvořte v síti rozbočovače jeden privátní koncový bod, propojte ho s AMPLS a připojte příslušné sítě k síti rozbočovače.
+
+![Střed a-paprsek – jednoduché – PE](./media/private-link-security/hub-and-spoke-with-single-private-endpoint.png)
 
 ## <a name="example-connection"></a>Příklad připojení
 
@@ -185,7 +190,7 @@ Pokud chcete, aby mohl agent Log Analytics stahovat balíčky řešení, přidej
 |:--|:--|:--|:--|
 |Veřejný partnerský vztah Azure     | scadvisorcontent.blob.core.windows.net         | 443 | Odchozí
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Odchozí
-|Azure (Čína) 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Odchozí
+|Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Odchozí
 
 ## <a name="configure-application-insights"></a>Konfigurace Application Insights
 

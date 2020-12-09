@@ -5,23 +5,20 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 12/07/2020
 ms.author: daperlov
-ms.openlocfilehash: 3e1c5f3b360960779dd58c8c05b25885df81d2e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 794c9a0768a7b649ce4fb123c85f6cc0120764c8
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276497"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854967"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Rozdílový formát v Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak kopírovat data do a z rozdílového jezera uloženého v [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) nebo v [Azure Blob Storage](connector-azure-blob-storage.md) pomocí rozdílového formátu. Tento konektor je k dispozici jako [vložená datová sada](data-flow-source.md#inline-datasets) v mapování dat toků jako zdroj i jímka.
-
-> [!NOTE]
-> Rozdílových formátů konektoru pro mapování datových toků je aktuálně k dispozici ve verzi Public Preview.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4ALTs]
 
@@ -78,7 +75,7 @@ V níže uvedené tabulce jsou uvedeny vlastnosti, které jsou podporovány rozd
 | Typ komprese | Typ komprese tabulky Delta | ne | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | Argument |
 | Úroveň komprese | Vyberte, jestli se komprese dokončí co nejrychleji, nebo jestli se má výsledný soubor optimálně komprimovat. | požadováno `compressedType` , pokud je zadáno. | `Optimal` nebo `Fastest` | compressionLevel |
 | Vacuum | Zadejte prahovou hodnotu uchování v hodinách pro starší verze tabulky. Výchozí hodnota je 0 nebo menší než 30 dní. | ano | Integer | sávací |
-| Update – metoda | Určete, které operace aktualizace jsou povoleny na rozdílovém Lake. Pro metody, které nejsou vloženy, je nutné před označením řádků označit předchozí transformaci řádků. | ano | `true` nebo `false` | lze odstranit <br> vložitelný <br> aktualizovatelné <br> upsertable |
+| Update – metoda | Určete, které operace aktualizace jsou povoleny na rozdílovém Lake. Pro metody, které nejsou vloženy, je nutné před označením řádků označit předchozí transformaci řádků. | ano | `true` nebo `false` | lze odstranit <br> vložitelný <br> aktualizovatelné <br> sloučení |
 
 ### <a name="delta-sink-script-example"></a>Příklad skriptu jímky v rozdílu
 

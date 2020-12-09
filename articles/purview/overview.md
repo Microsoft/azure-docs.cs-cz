@@ -7,23 +7,27 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 11/30/2020
-ms.openlocfilehash: e7ad561cf9ce9983f41fa166eb744c90f126e01e
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 9ead9a564c11901775ac7c471cd53fe65b3fdef9
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555947"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855103"
 ---
-# <a name="what-is-azure-purview"></a>Co je Azure dosah?
+# <a name="what-is-azure-purview"></a>Co je Azure Purview?
 
 > [!IMPORTANT]
 > Služba Azure dosah je aktuálně ve verzi PREVIEW. [Doplňkové podmínky použití pro](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verze Preview Microsoft Azure zahrnují další právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti.
 
-Azure dosah je nová cloudová služba pro použití uživateli dat. Azure dosah slouží k centrální správě zásad správného řízení dat napříč vašimi datovými podstatami, které jsou rozložená v cloudu i v Prem prostředích. Tato služba umožňuje obchodním analytikům vyhledat relevantní data pomocí smysluplných obchodních podmínek.
+Azure dosah je sjednocená služba pro řízení dat, která pomáhá spravovat a řídit vaše místní data, data ve více cloudech a SaaS (software jako služba). Snadno můžete vytvořit holistickýou, aktuální mapu vašich dat na šířku díky automatizovanému zjišťování dat, utajení citlivých dat a koncovým datovým zavedením. Umožněte spotřebitelům dat najít cenná a důvěryhodná data.
 
-Pomocí uživatelského rozhraní dosah nebo rozhraní Apache Atlas API můžou techničtí uživatelé zobrazovat metadata a vyplňování datových assetů v centrálním katalogu.
+Mapa dat Azure dosah poskytuje základ pro zjišťování dat a efektivní řízení dat. Dosah data map je cloudová nativní služba PaaS, která zachycuje metadata o podnikových datech v místních a cloudových systémech. Mapa dat dosah je automaticky udržována v aktuálním stavu díky integrovanému automatizovanému prohledávání a klasifikačnímu systému. Obchodní uživatelé můžou nakonfigurovat a používat mapu dat dosah prostřednictvím intuitivního uživatelského rozhraní a vývojáři mohou programově pracovat s mapováním dat pomocí Open Source rozhraní API Apache Atlas 2,0.
 
-Odborníci na danou problematiku, vlastníci dat a správci zabezpečení můžou k datovým assetům přidávat poznámky, aby mohli sdílet své obce znalosti. V závislosti na metadatech a kontrole obsahu to dělají s uživatelským rozhraním nebo se škálováním prostřednictvím automatizované klasifikace a zásad automatického označování.
+Služba Azure dosah data map zajišťuje dosah Data Catalog a dosah data Insights jako sjednocené prostředí v rámci sady dosah Studio.
+ 
+Díky dosah Data Catalog můžou obchodní a technické uživatele rychle & snadno najít relevantní data pomocí vyhledávacího prostředí s filtry na základě různých objektivů, jako jsou glosářové podmínky, klasifikace, popisky citlivosti a další. Pro odborníky na danou problematiku, stewardsí dat a úředníky, dosah Data Catalog poskytuje funkce pro zpracování dat, jako je správa podnikového glosáře, a možnost automatizace označování datových assetů pomocí pojmů glosáře. Příjemci dat a producenti mohou také vizuálně sledovat linii datových assetů od místních operačních systémů, a to prostřednictvím pohybu, transformačního & obohacení s různými systémy zpracování dat & v cloudu a spotřebovat v analytickém systému, jako je Power BI.
+
+Dosah data Insights, důstojníci a bezpečnostní důstojníci můžou získat pohled na oči a na první pohled pochopit, která data se aktivně prohledávají, kde jsou citlivá data a jak se přesunují.
 
 ## <a name="discovery-challenges-for-data-consumers"></a>Problémy zjišťování pro spotřebitele dat
 

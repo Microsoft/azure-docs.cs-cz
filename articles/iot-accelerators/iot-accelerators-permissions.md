@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: 6585718a549c0e0a6eac1ab50788798e1021fef9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b05ed6e1239721bcf3c1cf33d3ee63a992fd9843
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446819"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853219"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>Nasazení akcelerátoru řešení pomocí webu azureiotsolutions.com
 
@@ -22,7 +22,7 @@ Akcelerátory řešení Azure IoT můžete nasadit do předplatného Azure z [Az
 ![AzureIoTSolutions.com](media/iot-accelerators-permissions/iotsolutionscom.png)
 
 > [!TIP]
-> Pokud potřebujete větší kontrolu nad procesem nasazení, můžete použít rozhraní příkazového [řádku k nasazení akcelerátoru řešení](iot-accelerators-remote-monitoring-deploy-cli.md).
+> Pokud potřebujete větší kontrolu nad procesem nasazení, můžete použít rozhraní příkazového řádku k nasazení akcelerátoru řešení.
 
 Akcelerátory řešení můžete nasadit v následujících konfiguracích:
 
@@ -64,9 +64,4 @@ Pokud jste výrobce hardwaru, klikněte na **stát se partnerem** , kde se dozv�
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud si chcete vyzkoušet některý z akcelerátorů řešení IoT, projděte si následující rychlé starty:
-
-* [Vyzkoušení řešení pro vzdálené monitorování](quickstart-remote-monitoring-deploy.md)
-* [Vyzkoušení řešení propojené továrny](quickstart-connected-factory-deploy.md)
-* [Vyzkoušení řešení prediktivní údržby](quickstart-predictive-maintenance-deploy.md)
-* [Vyzkoušení řešení simulace zařízení](quickstart-device-simulation-deploy.md)
+Pokud si chcete vyzkoušet některý z akcelerátorů řešení IoT, Projděte si rychlý Start: [Vyzkoušejte řešení propojené továrny](quickstart-connected-factory-deploy.md).

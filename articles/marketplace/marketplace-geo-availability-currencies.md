@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: keferna
 ms.author: keferna
-ms.date: 07/29/2020
-ms.openlocfilehash: bdb746c75a175d906301bcfca0b1472383fceff9
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.date: 12/07/2020
+ms.openlocfilehash: 118fe70abf52a6c96f4f2dc47e3ad23a388f3598
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778066"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853743"
 ---
 # <a name="geographic-availability-and-currency-support-for-the-commercial-marketplace"></a>Geografická dostupnost a podpora měny pro komerční tržiště
 
@@ -46,22 +46,22 @@ Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpi
 | Brunej                              | BN        | USD          | BND, EUR, SGD, USD |
 | Bulharsko                            | BG        | EUR          | BGN, EUR, USD |
 | Cabo Verde                          | CV        | USD          | CVE, EUR, USD |
-| Kamerun                            | CM        | USD          | XAF, EUR, USD |
-| Kanada                              | CA        | CAD          | CAD, EUR, USD  |
-| Kajmanské ostrovy                      | KY        | USD          | KYD, EUR, USD |
+| Kamerun                            | CM        | USD          | EUR, USD, XAF |
+| Kanada                              | CA        | CAD          | CAD, EUR, USD |
+| Kajmanské ostrovy                      | KY        | USD          | EUR, KYD, USD |
 | Chile                               | CL        | USD          | CLP, EUR, USD |
 | Lidov\**                            | CN        | N/A          | N/A |
 | Kolumbie                            | CO        | USD          | COP, EUR, USD |
 | Kostarika                          | CR        | USD          | CRC, EUR, USD |
-| Côte d’Ivoire (Pobřeží slonoviny)                       | CI        | USD          | XOF, EUR, USD |
-| Chorvatsko                             | HR        | EUR          | HRK, EUR, USD |
+| Côte d’Ivoire (Pobřeží slonoviny)                       | CI        | USD          | EUR, USD, XOF |
+| Chorvatsko                             | HR        | EUR          | EUR, HRK, USD |
 | Curaçao                             | Skupina        | USD          | ANG, EUR, USD |
 | Kypr                              | CY        | EUR          | EUR, USD  |
-| Czechia                             | CZ        | EUR          | EUR, USD, CZK |
+| Czechia                             | CZ        | EUR          | CZK, EUR, USD |
 | Dánsko                             | DK        | DKK          | DKK, EUR, USD |
 | Dominikánská republika                  | DO        | USD          | DOP, EUR, USD |
 | Ekvádor                             | EC        | USD          | EUR, USD |
-| Egypt                               | EG        | USD          | EUR, EGP USD |
+| Egypt                               | EG        | USD          | EGP, EUR, USD |
 | Salvador                         | SV        | USD          | EUR, USD |
 | Estonsko                             | EE        | EUR          | EUR, USD |
 | Etiopie                            | ET        | USD          | ETB, EUR, USD |
@@ -91,7 +91,7 @@ Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpi
 | Keňa                               | KE        | USD          | EUR, KES, USD |
 | Korea (Jižní)                       | KR        | KRW          | EUR, KRW, USD |
 | Kuvajt                              | KW        | USD          | EUR, KWD, USD |
-| Kyrgyzstán                          | KG        | USD          | USD, EUR, KGS |
+| Kyrgyzstán                          | KG        | USD          | EUR, KGS, USD |
 | Lotyšsko                              | LV        | EUR          | EUR, USD |
 | Libanon                             | LB        | USD          | EUR, LBP, USD |
 | Libye                               | LY        | USD          | EUR, LYD, USD |
@@ -139,8 +139,8 @@ Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpi
 | Slovinsko                            | SI        | EUR          | EUR, USD |
 | Jižní Afrika                        | ZA        | USD          | EUR, USD, ZAR |
 | Španělsko                               | ES        | EUR          | EUR, USD |
-| Srí Lanka                           | LK        | USD          | EUR, USD, LKR |
-| Švédsko                              | SE        | SEK          | EUR, USD, SEK |
+| Srí Lanka                           | LK        | USD          | EUR, LKR, USD |
+| Švédsko                              | SE        | SEK          | EUR, SEK, USD  |
 | Švýcarsko                         | CH        | CHF          | CHF, EUR, USD |
 | Tchaj-wan                              | TW        | TWD          | EUR, TWD, USD |
 | Tádžikistán                          | TJ        | USD          | EUR, TJS, USD |
@@ -151,7 +151,7 @@ Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpi
 | Turecko                              | TR        | USD          | EUR, TRY, USD |
 | Turkmenistán                        | TM        | USD          | EUR, TMT, USD |
 | Uganda                              | UG        | USD          | EUR, UGX, USD |
-| Ukrajina                             | UA        | USD          | EUR, UAH, RUB, USD |
+| Ukrajina                             | UA        | USD          | EUR, RUB, UAH, USD |
 | Spojené arabské emiráty                | AE        | USD          | AED, EUR, USD |
 | Spojené království                      | GB        | GBP          | EUR, GBP, USD |
 | USA                       | USA        | USD          | EUR, USD |

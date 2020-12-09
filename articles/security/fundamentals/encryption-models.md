@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a00dc5beb2bde02f71b40f6eb374502136c37c67
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 141daa485fae5aba2db23647fada30ba5b621cd0
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410483"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854610"
 ---
 # <a name="data-encryption-models"></a>Modely šifrování dat
 
@@ -151,7 +151,7 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Azure Machine Learning           | Ano                | Ano                | -                  |
 | Azure Machine Learning Studio (klasický) | Ano         | Verze Preview, RSA 2048-bit | -               |
 | Content Moderator                | Ano                | Ano                | -                  |
-| Rozpoznávání tváře                             | Ano                | Ano                | -                  |
+| Tvář                             | Ano                | Ano                | -                  |
 | Language Understanding           | Ano                | Ano                | -                  |
 | Personalizace                     | Ano                | Ano                | -                  |
 | QnA Maker                        | Ano                | Ano                | -                  |
@@ -159,9 +159,9 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Translator Text                  | Ano                | Ano                | -                  |
 | Power BI                         | Ano                | Ano, RSA 4096-bit  | -                  |
 | **Analýzy**                    |                    |                    |                    |
-| Azure Stream Analytics           | Ano                | Není k dispozici\*              | -                  |
+| Azure Stream Analytics           | Ano                | Ano\*\*            | -                  |
 | Event Hubs                       | Ano                | Ano                | -                  |
-| Funkce                        | Ano                | Ano                | -                  |
+| Functions                        | Ano                | Ano                | -                  |
 | Azure Analysis Services          | Ano                | -                  | -                  |
 | Azure Data Catalog               | Ano                | -                  | -                  |
 | Azure HDInsight                  | Ano                | Vše                | -                  |
@@ -175,7 +175,7 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Container Instances              | Ano                | Ano                | -                  |
 | Container Registry               | Ano                | Ano                | -                  |
 | **Výpočetní služby**                      |                    |                    |                    |
-| Virtual Machines                 | Ano                | Ano                | -                  |
+| Virtuální počítače                 | Ano                | Ano                | -                  |
 | Sada škálování virtuálních počítačů        | Ano                | Ano                | -                  |
 | SAP HANA                         | Ano                | Ano                | -                  |
 | App Service                      | Ano                | Ano\*\*            | -                  |
@@ -197,7 +197,7 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Table Storage                    | Ano                | Ano                | Ano                |
 | Azure Cosmos DB                  | Ano                | Ano                | -                  |
 | Azure Databricks                 | Ano                | Ano                | -                  |
-| Azure Database Migration Service | Ano                | Není k dispozici\*              | -                  |
+| Azure Database Migration Service | Ano                | NENÍ K DISPOZICI\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps Services            | Ano                | -                  | Ano                |
 | Azure Repos                      | Ano                | -                  | Ano                |
@@ -215,7 +215,7 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Azure Site Recovery              | Ano                | -                  | -                  |
 | Azure Migrate                    | Ano                | Ano                | -                  |
 | **Média**                        |                    |                    |                    |
-| Media Services                   | Ano                | -                  | Ano                |
+| Media Services                   | Ano                | Ano                | Ano                |
 | **Zabezpečení**                     |                    |                    |                    |
 | Azure Security Center for IoT    | Ano                | Ano                | -                  |
 | Azure Sentinel                   | Ano                | Ano                | -                  |
@@ -230,7 +230,7 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Synchronizace souborů                        | Ano                | Ano                | -                  |
 | Queue Storage                    | Ano                | Ano                | Ano                |
 | Avere vFXT                       | Ano                | -                  | -                  |
-| Azure Cache for Redis            | Ano                | Není k dispozici\*              | -                  |
+| Azure Cache for Redis            | Ano                | NENÍ K DISPOZICI\*              | -                  |
 | Azure NetApp Files               | Ano                | Ano                | -                  |
 | Archiv služby Storage                  | Ano                | Ano                | -                  |
 | StorSimple                       | Ano                | Ano                | Ano                |

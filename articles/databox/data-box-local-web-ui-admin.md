@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/03/2020
+ms.date: 12/07/2020
 ms.author: alkohli
-ms.openlocfilehash: 90869af032a381cecd3e65f5d5b367156dd047c5
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 859eb6abd138f0660407618bba4550daf9158ab9
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576833"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855001"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Použití místního webového uživatelského rozhraní ke správě Data Box a Data Box Heavy
 
@@ -29,15 +29,15 @@ Pokud budete mít se zařízením jakékoliv problémy, můžete vytvořit ze sy
 
 Chcete-li vytvořit balíček pro podporu, proveďte následující kroky:
 
-1. V místním webovém uživatelském rozhraní klikněte na **kontaktovat podporu**. Volitelně můžete vybrat **Zahrnout výpis paměti**. Pak vyberte **vytvořit balíček pro podporu**.
+1. V místním webovém uživatelském rozhraní klikněte na **kontaktovat podporu**. Volitelně můžete vybrat **Zahrnout výpisy paměti**. Pak vyberte **vytvořit balíček pro podporu**.
 
     Výpis paměti je obsah paměti zařízení, uložený po selhání systému.
 
-    Možnost **Zahrnout výpis paměti** byste neměli vybírat, pokud se na ni nežádá podpora. Shromažďování balíčku pro podporu, který obsahuje výpis paměti, a jejich zahrnutí citlivých dat, trvá příliš dlouho.
+    Nevybírejte možnost **Zahrnout výpisy paměti** , pokud se na ni nežádá podpora. Shromažďování balíčku podpory obsahujícího výpisy paměti trvá příliš dlouho a jsou zahrnutá citlivá data.
 
     ![Vytvoření balíčku pro podporu 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
-    Shromáždí se položky balíčku pro podporu. Tato operace trvá několik minut, pokud zahrnete pouze systémové protokoly. Pokud zahrnete výpis paměti, trvá to hodně déle.
+    Shromáždí se položky balíčku pro podporu. Tato operace trvá několik minut, pokud zahrnete pouze systémové protokoly. Pokud zahrnete výpisy paměti, trvá to hodně déle.
 
     ![Vytvoření balíčku pro podporu 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
