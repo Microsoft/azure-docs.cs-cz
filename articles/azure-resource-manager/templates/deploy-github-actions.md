@@ -1,26 +1,26 @@
 ---
 title: Nasazení šablon Správce prostředků pomocí akcí GitHubu
-description: Popisuje způsob nasazení Azure Resource Manager šablon pomocí akcí GitHubu.
+description: Popisuje způsob nasazení Azure Resource Manager šablon (šablon ARM) pomocí akcí GitHubu.
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: cf705f68544c4c4e0db55d4a375e1e50530c8957
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4cda8307d417880469e6043b84c3ac55ed30071c
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185704"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905838"
 ---
-# <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>Nasazení šablon Azure Resource Manager pomocí akcí GitHubu
+# <a name="deploy-arm-templates-by-using-github-actions"></a>Nasazení šablon ARM pomocí akcí GitHubu
 
 [Akce GitHubu](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) je sada funkcí v GitHubu pro automatizaci pracovních postupů vývoje softwaru na stejném místě, kam ukládáte kód a spolupracujete na žádostech o přijetí změn a problémech.
 
-Použijte [akci nasadit Azure Resource Manager šablonu](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) k automatizaci nasazení Správce prostředků šablony do Azure. 
+Použijte [akci nasadit Azure Resource Manager šablonu](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) k automatizaci nasazení Azure Resource Manager šablony (šablony ARM) do Azure.
 
 ## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Účet GitHub. Pokud ho ještě nemáte, zaregistrujte se [zdarma](https://github.com/join).  
+- Účet GitHub. Pokud ho ještě nemáte, zaregistrujte se [zdarma](https://github.com/join).
     - Úložiště GitHub pro uložení šablon Správce prostředků a souborů pracovního postupu. Pokud ho chcete vytvořit, přečtěte si téma [Vytvoření nového úložiště](https://help.github.com/en/enterprise/2.14/user/articles/creating-a-new-repository).
 
 
@@ -40,21 +40,21 @@ Soubor má dvě části:
 
 [Instanční objekt](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) v rozhraní příkazového [řádku Azure CLI](/cli/azure/). Spusťte tento příkaz s [Azure Cloud Shell](https://shell.azure.com/) v Azure Portal nebo vyberte tlačítko **vyzkoušet** .
 
-Vytvořte skupinu prostředků, pokud ji ještě nemáte. 
+Vytvořte skupinu prostředků, pokud ji ještě nemáte.
 
 ```azurecli-interactive
     az group create -n {MyResourceGroup}
 ```
 
-Zástupný symbol nahraďte `myApp` názvem vaší aplikace. 
+Zástupný symbol nahraďte `myApp` názvem vaší aplikace.
 
 ```azurecli-interactive
    az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth
 ```
 
-V předchozím příkladu Nahraďte zástupné symboly IDENTIFIKÁTORem vašeho předplatného a názvem skupiny prostředků. Výstupem je objekt JSON s přihlašovacími údaji přiřazení role, které poskytují přístup k vaší App Service aplikaci, která je podobná níže. Zkopírujte tento objekt JSON pro pozdější verzi. Tyto oddíly budete potřebovat jenom s `clientId` `clientSecret` hodnotami,, `subscriptionId` a `tenantId` . 
+V předchozím příkladu Nahraďte zástupné symboly IDENTIFIKÁTORem vašeho předplatného a názvem skupiny prostředků. Výstupem je objekt JSON s přihlašovacími údaji přiřazení role, které poskytují přístup k vaší App Service aplikaci, která je podobná níže. Zkopírujte tento objekt JSON pro pozdější verzi. Tyto oddíly budete potřebovat jenom s `clientId` `clientSecret` hodnotami,, `subscriptionId` a `tenantId` .
 
-```output 
+```output
   {
     "clientId": "<GUID>",
     "clientSecret": "<GUID>",
@@ -71,7 +71,7 @@ V předchozím příkladu Nahraďte zástupné symboly IDENTIFIKÁTORem vašeho 
 
 ## <a name="configure-the-github-secrets"></a>Konfigurace tajných kódů GitHubu
 
-Musíte vytvořit tajné kódy pro přihlašovací údaje Azure, skupinu prostředků a odběry. 
+Musíte vytvořit tajné kódy pro přihlašovací údaje Azure, skupinu prostředků a odběry.
 
 1. V [GitHubu](https://github.com/)přejděte do úložiště.
 
@@ -79,9 +79,9 @@ Musíte vytvořit tajné kódy pro přihlašovací údaje Azure, skupinu prostř
 
 1. Do pole hodnota tajného klíče vložte celý výstup JSON z příkazu Azure CLI. Zadejte název tajného klíče `AZURE_CREDENTIALS` .
 
-1. Vytvořte další tajný kód s názvem `AZURE_RG` . Přidejte název skupiny prostředků do pole hodnota tajného klíče (příklad: `myResourceGroup` ). 
+1. Vytvořte další tajný kód s názvem `AZURE_RG` . Přidejte název skupiny prostředků do pole hodnota tajného klíče (příklad: `myResourceGroup` ).
 
-1. Vytvořte další tajný kód s názvem `AZURE_SUBSCRIPTION` . Přidejte ID předplatného do pole hodnota tajného kódu (příklad: `90fd3f9d-4c61-432d-99ba-1273f236afa2` ). 
+1. Vytvořte další tajný kód s názvem `AZURE_SUBSCRIPTION` . Přidejte ID předplatného do pole hodnota tajného kódu (příklad: `90fd3f9d-4c61-432d-99ba-1273f236afa2` ).
 
 ## <a name="add-resource-manager-template"></a>Přidat šablonu Správce prostředků
 
@@ -118,7 +118,7 @@ Soubor pracovního postupu musí být uložený ve složce **. GitHub/Workflows*
         - uses: azure/login@v1
           with:
             creds: ${{ secrets.AZURE_CREDENTIALS }}
-     
+
           # Deploy ARM template
         - name: Run ARM deploy
           uses: azure/arm-deploy@v1
@@ -126,13 +126,13 @@ Soubor pracovního postupu musí být uložený ve složce **. GitHub/Workflows*
             subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
             resourceGroupName: ${{ secrets.AZURE_RG }}
             template: ./azuredeploy.json
-            parameters: storageAccountType=Standard_LRS 
-        
+            parameters: storageAccountType=Standard_LRS
+
           # output containerName variable from template
         - run: echo ${{ steps.deploy.outputs.containerName }}
     ```
     > [!NOTE]
-    > Místo toho můžete v akci nasazení ARM zadat soubor parametrů formátu JSON (příklad: `.azuredeploy.parameters.json` ).  
+    > Místo toho můžete v akci nasazení ARM zadat soubor parametrů formátu JSON (příklad: `.azuredeploy.parameters.json` ).
 
     První část souboru pracovního postupu obsahuje:
 
@@ -152,7 +152,7 @@ Vzhledem k tomu, že pracovní postup je nakonfigurován tak, aby se aktivoval b
 1. V nabídce vyberte **Spustit nasazení ARM** a ověřte nasazení.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už vaše skupina prostředků a úložiště nepotřebujete, vyčistěte prostředky, které jste nasadili, odstraněním skupiny prostředků a úložiště GitHubu. 
+Pokud už vaše skupina prostředků a úložiště nepotřebujete, vyčistěte prostředky, které jste nasadili, odstraněním skupiny prostředků a úložiště GitHubu.
 
 ## <a name="next-steps"></a>Další kroky
 

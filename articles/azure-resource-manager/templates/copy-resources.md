@@ -1,26 +1,26 @@
 ---
 title: Nasazení více instancí prostředků
-description: K nasazení typu prostředku mnohokrát použijte operaci kopírování a pole v šabloně Azure Resource Manager.
+description: Pomocí operace kopírování a polí v šabloně Azure Resource Manager (šablona ARM) můžete typ prostředku mnohokrát nasadit.
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 411c92061826a6e8bc59380d0440fb69816557a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47f3d693b84347973889a6003360d7113c427f4d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293964"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905906"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>Iterace prostředků v šablonách ARM
 
-V tomto článku se dozvíte, jak vytvořit více než jednu instanci prostředku v šabloně Azure Resource Manager (ARM). Přidáním prvku **kopírování** do části Resources (prostředky) vaší šablony můžete dynamicky nastavit počet nasazených prostředků. Nemusíte se také vyhnout opakování syntaxe šablony.
+V tomto článku se dozvíte, jak vytvořit více než jednu instanci prostředku v šabloně Azure Resource Manager (šablona ARM). Přidáním `copy` elementu do části Resources (prostředky) vaší šablony můžete dynamicky nastavit počet prostředků k nasazení. Nemusíte se také vyhnout opakování syntaxe šablony.
 
-Můžete také použít kopírování s [vlastnostmi](copy-properties.md), [proměnnými](copy-variables.md)a [výstupy](copy-outputs.md).
+Můžete také použít `copy` s [vlastnostmi](copy-properties.md), [proměnnými](copy-variables.md)a [výstupy](copy-outputs.md).
 
 Pokud potřebujete určit, jestli je prostředek nasazený vůbec, viz [Podmínka elementu](conditional-resource-deployment.md).
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxe
 
-Element Copy má následující obecný formát:
+`copy`Element má následující obecný formát:
 
 ```json
 "copy": {
@@ -31,9 +31,9 @@ Element Copy má následující obecný formát:
 }
 ```
 
-Vlastnost **Name** je libovolná hodnota, která identifikuje smyčku. Vlastnost **Count** určuje počet iterací, které chcete pro daný typ prostředku.
+`name`Vlastnost je libovolná hodnota, která identifikuje smyčku. `count`Vlastnost určuje počet iterací, které chcete pro typ prostředku.
 
-Vlastnosti **Mode** a **BatchSize** můžete použít k určení, jestli se prostředky nasazují paralelně nebo v sekvenci. Tyto vlastnosti jsou popsány v [sériové nebo paralelní](#serial-or-parallel).
+Pomocí `mode` vlastností a `batchSize` Určete, jestli jsou prostředky nasazené paralelně nebo v pořadí. Tyto vlastnosti jsou popsány v [sériové nebo paralelní](#serial-or-parallel).
 
 ## <a name="copy-limits"></a>Omezení kopírování
 
@@ -52,7 +52,7 @@ Pomocí [úplného nasazení režimu](deployment-modes.md) s kopírováním buď
 
 ## <a name="resource-iteration"></a>Iterace prostředku
 
-Následující příklad vytvoří počet účtů úložiště, které jsou zadány v parametru **storageCount** .
+Následující příklad vytvoří počet účtů úložiště zadaných v `storageCount` parametru.
 
 ```json
 {
@@ -97,7 +97,7 @@ Vytvoří tyto názvy:
 * storage1
 * storage2.
 
-Abyste odsadili hodnotu indexu, můžete hodnotu předat do funkce copyIndex(). Počet iterací je stále specifikován v elementu Copy, ale hodnota copyIndex je posunuta podle zadané hodnoty. V následujícím příkladu:
+K posunutí hodnoty indexu můžete předat hodnotu ve `copyIndex()` funkci. Počet iterací je stále specifikován v elementu Copy, ale hodnota `copyIndex` je posunuta podle zadané hodnoty. V následujícím příkladu:
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -187,7 +187,7 @@ Pokud například chcete sériové nasazení účtů úložiště vytvořit dvak
 }
 ```
 
-Vlastnost Mode také akceptuje **paralelní**, což je výchozí hodnota.
+`mode`Vlastnost také akceptuje **paralelní**, což je výchozí hodnota.
 
 ## <a name="depend-on-resources-in-a-loop"></a>Závislá na prostředcích ve smyčce
 
@@ -281,7 +281,7 @@ Následující příklad ukazuje implementaci:
 
 Následující příklady znázorňují běžné scénáře pro vytvoření více než jedné instance prostředku nebo vlastnosti.
 
-|Šablona  |Description  |
+|Template (Šablona)  |Description  |
 |---------|---------|
 |[Kopírovat úložiště](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Nasadí více než jeden účet úložiště s číslem indexu v názvu. |
 |[Úložiště sériového kopírování](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Nasadí několik účtů úložiště v jednom okamžiku. Název zahrnuje číslo indexu. |
@@ -291,12 +291,11 @@ Následující příklady znázorňují běžné scénáře pro vytvoření víc
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete projít kurz, přečtěte si [kurz: vytvoření více instancí prostředků pomocí šablon ARM](template-tutorial-create-multiple-instances.md).
+* Kurz najdete v tématu [kurz: vytvoření více instancí prostředků pomocí šablon ARM](template-tutorial-create-multiple-instances.md).
 * Pro jiné použití kopie elementu viz:
   * [Iterace vlastnosti v šablonách ARM](copy-properties.md)
   * [Iterace proměnných v šablonách ARM](copy-variables.md)
   * [Výstupní iterace v šablonách ARM](copy-outputs.md)
 * Informace o použití kopírování s vnořenými šablonami naleznete v tématu [using Copy](linked-templates.md#using-copy).
-* Pokud se chcete dozvědět o oddílech šablony, přečtěte si téma [vytváření šablon ARM](template-syntax.md).
-* Informace o tom, jak šablonu nasadit, najdete v tématu [nasazení aplikace se šablonou ARM](deploy-powershell.md).
-
+* Pokud se chcete dozvědět o oddílech šablony, přečtěte si téma [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
+* Informace o tom, jak šablonu nasadit, najdete v tématu [nasazení prostředků pomocí šablon ARM a Azure PowerShell](deploy-powershell.md).

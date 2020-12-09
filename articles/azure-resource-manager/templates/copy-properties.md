@@ -1,24 +1,24 @@
 ---
 title: Definování více instancí vlastnosti
-description: Použijte operaci kopírování v šabloně Azure Resource Manager k iterování několikrát při vytváření vlastnosti prostředku.
+description: Pomocí operace kopírování v šabloně Azure Resource Manager (šablona ARM) můžete iterovat několikrát při vytváření vlastnosti prostředku.
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: f199872d5bb8a0333bf7bedb9501a6ca1b884691
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 446a303104e6b538129cd22d1f1fbbba6282b2ee
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605239"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905923"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Iterace vlastnosti v šablonách ARM
 
-V tomto článku se dozvíte, jak vytvořit více než jednu instanci vlastnosti v šabloně Azure Resource Manager (šablona ARM). Přidáním elementu **kopírování** do oddílu Vlastnosti prostředku ve vaší šabloně můžete dynamicky nastavit počet položek pro vlastnost během nasazení. Nemusíte se také vyhnout opakování syntaxe šablony.
+V tomto článku se dozvíte, jak vytvořit více než jednu instanci vlastnosti v šabloně Azure Resource Manager (šablona ARM). Přidáním `copy` elementu do oddílu Properties (vlastnosti) prostředku ve vaší šabloně můžete dynamicky nastavit počet položek pro vlastnost během nasazování. Nemusíte se také vyhnout opakování syntaxe šablony.
 
-Kopírovat můžete pouze pomocí prostředků nejvyšší úrovně, i když aplikujete kopírování na vlastnost. Další informace o změně podřízeného prostředku na prostředek nejvyšší úrovně najdete v tématu [iterace u podřízeného prostředku](copy-resources.md#iteration-for-a-child-resource).
+Můžete použít jenom `copy` s prostředky nejvyšší úrovně, i když použijete `copy` u vlastnosti. Další informace o změně podřízeného prostředku na prostředek nejvyšší úrovně najdete v tématu [iterace u podřízeného prostředku](copy-resources.md#iteration-for-a-child-resource).
 
 Můžete také použít kopírování s [prostředky](copy-resources.md), [proměnnými](copy-variables.md)a [výstupy](copy-outputs.md).
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxe
 
 Element Copy má následující obecný formát:
 
@@ -32,11 +32,11 @@ Element Copy má následující obecný formát:
 ]
 ```
 
-Do pole **název**zadejte název vlastnosti prostředku, kterou chcete vytvořit.
+Pro `name` Zadejte název vlastnosti prostředku, kterou chcete vytvořit.
 
-Vlastnost **Count** určuje počet iterací, které chcete pro vlastnost.
+`count`Vlastnost určuje počet iterací, které chcete pro vlastnost.
 
-Vlastnost **input** určuje vlastnosti, které chcete opakovat. Vytvoříte pole prvků vytvořené z hodnoty vlastnosti **input** .
+`input`Vlastnost určuje vlastnosti, které chcete opakovat. Vytvoříte pole prvků konstruovaných z hodnoty `input` Vlastnosti.
 
 ## <a name="copy-limits"></a>Omezení kopírování
 
@@ -53,7 +53,7 @@ Starší verze prostředí PowerShell, rozhraní příkazového řádku a REST A
 
 ## <a name="property-iteration"></a>Iterace vlastnosti
 
-Následující příklad ukazuje, jak použít `copy` vlastnost Datadisks na virtuálním počítači:
+Následující příklad ukazuje, jak použít `copy` `dataDisks` vlastnost na virtuálním počítači:
 
 ```json
 {
@@ -97,7 +97,7 @@ Následující příklad ukazuje, jak použít `copy` vlastnost Datadisks na vir
 }
 ```
 
-Všimněte si, že při použití `copyIndex` v rámci iterace vlastnosti je nutné zadat název iterace. Iterace vlastnosti také podporuje argument posunu. Posun musí být zadán za názvem iterace, například copyIndex (' datadisks ', 1).
+Všimněte si, že při použití `copyIndex` v rámci iterace vlastnosti je nutné zadat název iterace. Iterace vlastnosti také podporuje argument posunu. Posun musí být zadán za názvem iterace, například `copyIndex('dataDisks', 1)` .
 
 Správce prostředků rozbalí `copy` pole během nasazování. Název pole se zobrazí jako název vlastnosti. Vstupní hodnoty se stanou vlastnostmi objektu. Nasazená šablona bude:
 
@@ -188,7 +188,7 @@ Následující příklad šablony vytvoří skupinu převzetí služeb při selh
 }
 ```
 
-Element Copy je pole, abyste mohli zadat více než jednu vlastnost prostředku.
+`copy`Element je pole, abyste mohli zadat více než jednu vlastnost pro daný prostředek.
 
 ```json
 {
@@ -254,17 +254,16 @@ Můžete použít iteraci prostředků a vlastností společně. Odkázat na ite
 
 Následující příklad ukazuje běžný scénář pro vytvoření více než jedné hodnoty pro vlastnost.
 
-|Šablona  |Description  |
+|Template (Šablona)  |Description  |
 |---------|---------|
 |[Nasazení virtuálního počítače s proměnným počtem datových disků](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Nasadí několik datových disků s virtuálním počítačem. |
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete projít kurz, přečtěte si [kurz: vytvoření více instancí prostředků pomocí šablon ARM](template-tutorial-create-multiple-instances.md).
+* Kurz najdete v tématu [kurz: vytvoření více instancí prostředků pomocí šablon ARM](template-tutorial-create-multiple-instances.md).
 * Pro jiné použití kopie elementu viz:
   * [Iterace prostředků v šablonách ARM](copy-resources.md)
   * [Iterace proměnných v šablonách ARM](copy-variables.md)
   * [Výstupní iterace v šablonách ARM](copy-outputs.md)
-* Pokud se chcete dozvědět o oddílech šablony, přečtěte si téma [vytváření šablon ARM](template-syntax.md).
-* Informace o tom, jak šablonu nasadit, najdete v tématu [nasazení aplikace se šablonou ARM](deploy-powershell.md).
-
+* Pokud se chcete dozvědět o oddílech šablony, přečtěte si téma [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
+* Informace o tom, jak šablonu nasadit, najdete v tématu [nasazení prostředků pomocí šablon ARM a Azure PowerShell](deploy-powershell.md).
