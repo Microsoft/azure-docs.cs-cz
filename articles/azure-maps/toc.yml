@@ -290,7 +290,7 @@
           href: /rest/api/maps/data
         - name: Služba geografické polohy
           href: /rest/api/maps/geolocation
-        - name: Služba Mobility
+        - name: Služby Mobility
           href: /rest/api/maps/mobility
         - name: Služba Render
           href: /rest/api/maps/render
@@ -306,7 +306,7 @@
           href: /rest/api/maps/timezone
         - name: Služba Traffic
           href: /rest/api/maps/traffic
-        - name: Služba Weather
+        - name: Služby Weather
           href: /rest/api/maps/weather
         - name: Služba Maps Creator
           items:

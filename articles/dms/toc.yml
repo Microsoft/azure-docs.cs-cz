@@ -28,6 +28,10 @@
           href: resource-network-topologies.md
         - name: Vlastní role
           href: resource-custom-roles-sql-db-managed-instance.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
 - name: Kurzy
   expanded: true
   items:

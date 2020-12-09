@@ -280,7 +280,7 @@
     - name: Práce s knihovnou Microsoft Authentication Library
       displayName: MSAL
       items:
-        - Name: Všechny platformy
+        - name: Všechny platformy
           items:
             - name: Podporované toky ověřování
               href: msal-authentication-flows.md
