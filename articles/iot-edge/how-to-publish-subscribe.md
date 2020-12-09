@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: acde6f401404596212b713f248bb6d11c25b4671
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 005830575ba7f45d30fed71a73e7a419e4d98220
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461414"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922592"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Publikování a přihlášení k odběru pomocí Azure IoT Edge
 
@@ -31,7 +31,7 @@ K publikování a odběru zpráv můžete použít zprostředkovatele Azure IoT 
 - **IoT Hub** položky SKU buď F1, S1, S2 nebo S3.
 - Mít **IoT Edge zařízení s verzí 1,2 nebo vyšší**. Vzhledem k tomu, že IoT Edge zprostředkovatel MQTT je aktuálně ve verzi Public Preview, nastavte následující proměnné prostředí na hodnotu true v kontejneru edgeHub pro povolení zprostředkovatele MQTT:
 
-   | Name | Hodnota |
+   | Název | Hodnota |
    | - | - |
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__mqttBrokerEnabled` | `true` |
@@ -60,7 +60,7 @@ Pokud chcete protokol TLS zakázat, použijte port 1883 (MQTT) a navažte kontej
 
 Pokud chcete povolit protokol TLS, bude se iniciovat kanál TLS, pokud se klient připojí na portu 8883 (MQTTS) k zprostředkovateli MQTT. Zprostředkovatel odešle svůj řetěz certifikátů, který musí klient ověřit. Aby bylo možné ověřit řetěz certifikátů, musí být kořenový certifikát zprostředkovatele MQTT nainstalován jako důvěryhodný certifikát na klientovi. Pokud kořenový certifikát není důvěryhodný, klient služby MQTT odmítl knihovnu klienta s chybou ověřování certifikátu. Postup pro instalaci tohoto kořenového certifikátu zprostředkovatele na straně klienta je stejný jako v případě [transparentní brány](how-to-create-transparent-gateway.md) a je popsaný v dokumentaci [Příprava zařízení pro příjem dat](how-to-connect-downstream-device.md#prepare-a-downstream-device) .
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 
 Aby se klient MQTT mohl sám ověřit, musí nejdřív odeslat paket připojení ke zprostředkovateli MQTT a iniciovat připojení v jeho názvu. Tento paket nabízí tři části ověřovacích informací: a `client identifier` , a `username` a `password` :
 
@@ -87,7 +87,7 @@ Aby se klient MQTT mohl sám ověřit, musí nejdřív odeslat paket připojení
 
 Moduly nasazené pomocí IoT Edge používají [ověřování symetrických klíčů](how-to-authenticate-downstream-device.md#symmetric-key-authentication) a můžou volat místní [rozhraní API pro IoT Edge úlohy](https://github.com/Azure/iotedge/blob/40f10950dc65dd955e20f51f35d69dd4882e1618/edgelet/workload/README.md) , které programově získá token SAS, i když je offline.
 
-### <a name="authorization"></a>Autorizace
+### <a name="authorization"></a>Authorization (Autorizace)
 
 Jakmile je klient MQTT ověřený pro IoT Edge centra, musí mít oprávnění k připojení. Po připojení je potřeba mít oprávnění k publikování nebo přihlášení k odběru určitých témat. Tato autorizace jsou udělována službou IoT Edge hub na základě zásad autorizace. Zásady autorizace jsou sady příkazů vyjádřené jako struktura JSON, která se odesílá do centra IoT Edge prostřednictvím jeho vlákna. Pokud chcete nakonfigurovat zásady autorizace, upravte stav vlákna IoT Edge hub.
 
@@ -177,7 +177,6 @@ Ověřování pro témata služby IoT Hub se zpracovává trochu jinak než uži
 
 - Zařízení nebo moduly Azure IoT potřebují explicitní autorizační pravidlo pro připojení ke službě IoT Edge hub MQTT Broker. Níže jsou uvedené výchozí zásady autorizace připojení.
 - Zařízení nebo moduly Azure IoT mají ke svým vlastním tématům služby IoT Hub přístup ve výchozím nastavení bez explicitního autorizačního pravidla. V takovém případě se ale autorizace vyplňují z vztahů nadřazenosti a podřízenosti a tyto vztahy musí být nastavené. IoT Edge moduly se automaticky nastaví jako podřízené položky jejich IoT Edge zařízení, ale zařízení musí být explicitně nastavená jako podřízené pro bránu IoT Edge.
-- Zařízení nebo moduly Azure IoT mají přístup k tématům, včetně témat služby IoT Hub, dalších zařízení nebo modulů, které poskytují příslušná explicitní autorizační pravidla.
 
 Tady je výchozí zásada autorizace, která se dá použít k tomu, aby se všechna zařízení nebo moduly Azure IoT mohla **připojit** ke zprostředkovateli:
 
@@ -275,7 +274,7 @@ Pokud chcete autorizovat vydavatele a předplatitele, upravte IoT Edge centrum p
                },
                {
                   "identities": [
-                     "sub_client"
+                     "<iot_hub_name>.azure-devices.net/sub_client"
                   ],
                   "allow":[
                      {
@@ -284,13 +283,13 @@ Pokud chcete autorizovat vydavatele a předplatitele, upravte IoT Edge centrum p
                         ],
                         "resources":[
                            "test_topic"
-                        ],
+                        ]
                      }
                   ],
                },
                {
                   "identities": [
-                     "pub_client"
+                     "<iot_hub_name>.azure-devices.net/pub_client"
                   ],
                   "allow":[
                      {
@@ -299,9 +298,9 @@ Pokud chcete autorizovat vydavatele a předplatitele, upravte IoT Edge centrum p
                         ],
                         "resources":[
                            "test_topic"
-                        ],
+                        ]
                      }
-                  ],
+                  ]
                }
             ]
          }
@@ -333,7 +332,7 @@ Všimněte si, že v tomto prvním příkladu se používá port 1883 (MQTT) bez
 
 Klient **sub_client** MQTT je teď spuštěný a čeká na příchozí zprávy `test_topic` .
 
-#### <a name="publish"></a>Publikování
+#### <a name="publish"></a>Publikovat
 
 Připojte klienta **pub_client** MQTT ke zprostředkovateli MQTT a publikuje zprávu na stejném základě, a `test_topic` to spuštěním následujícího příkazu na zařízení IoT Edge z jiného terminálu:
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 083d820c989870b2a73217eeebf192f0d540ba36
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 802b7d2ca5d96bf385c4b8f0ee0cdaa3db181a1c
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602542"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922574"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>Kurz: Kontrola dat pomocí Azure dosah (Preview)
 
@@ -28,7 +28,7 @@ V části 1 této série kurzů budete:
 > * Vytvořte datovou nemovitost s různými datovými zdroji Azure.
 > * Naskenujte data do katalogu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * [Účet Azure dosah](create-catalog-portal.md).
@@ -39,7 +39,7 @@ V části 1 této série kurzů budete:
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-data-estate"></a>Vytvořit datovou nemovitost
 
@@ -149,7 +149,7 @@ Po dokončení konfigurace katalogu spusťte v okně PowerShellu následující 
 1. K spuštění Úvodní sady použijte následující příkaz. Nahraďte `CatalogName` `TenantID` `SubscriptionID` `newresourcegroupname` `CatalogResourceGroupName` zástupné symboly,,, a. Pro `newresourcegroupname` použijte jedinečný název pro skupinu prostředků, která bude obsahovat datovou nemovitost.
 
 > [!IMPORTANT]
-> **Newresourcegroupname** může obsahovat jenom alfanumerické znaky nebo číslice. **Neexistují velká písmena velkých a malých písmen a speciální znaky jsou povoleny.**
+> **Newresourcegroupname** používají pouze čísla a malá písmena a musí být kratší než 17 znaků. **Neexistují velká písmena velkých a malých písmen a speciální znaky jsou povoleny.** Toto omezení pochází z pravidel pojmenování účtů úložiště.
 
    ```powershell
    .\RunStarterKit.ps1 -CatalogName <CatalogName> -TenantId <TenantID>`
