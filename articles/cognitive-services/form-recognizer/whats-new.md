@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 929aed28df2725ccde62c348a18ef7b41334e233
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 03f2109a32cd8a8c2643f3c2aa74900f4edd1cee
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96172125"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852842"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Co je nového ve službě Rozpoznávání formulářů?
 
@@ -37,7 +37,7 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
  
   > [Další informace o extrakci rozložení](concept-layout.md)
 
-- **Aktualizace klientské knihovny** – pro [klientské knihovny](quickstarts/client-library.md) pro .NET, Python, Java a JavaScript se zadala Obecná dostupnost.
+- **Aktualizace klientské knihovny** – nejnovější verzi [klientských knihoven](quickstarts/client-library.md) pro .NET, Python, Java a JavaScript podporují rozhraní API pro rozpoznávání formulářů 2,1.
 - **Podporován nový jazyk: japonština** : nyní jsou podporovány následující nové jazyky: pro `AnalyzeLayout` a `AnalyzeCustomForm` : japonština ( `ja` ). [Podpora jazyků](language-support.md)
 - **Označení stylu čáry textu (ručně psané) (jenom v jazycích Latin)** – Nástroj pro rozpoznávání formulářů teď vytvoří výstup `appearance` objektu, který klasifikuje, jestli je každý textový řádek v rukopisu, nebo ne, společně s skóre spolehlivosti. Tato funkce je podporovaná jenom pro jazyky v latince.
 - **Vylepšení kvality** – vylepšení extrakce, včetně vylepšení pro extrakci s jednou číslicí.
