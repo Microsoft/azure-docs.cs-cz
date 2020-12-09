@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 11/25/2020
-ms.openlocfilehash: 4a58f25e6183c674990d1d7722ce3196cce0f47c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 04efb7bcae11ef6cf377d821b49f9b07d41d347f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350462"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932587"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místního prostředí Integration Runtime
 
@@ -102,29 +102,28 @@ Dmgcmd.exe je součástí instalačního programu pro samoobslužné hostování
 Použijte aplikaci následujícím způsobem:
 
 ```powershell
-dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<thumbprint>"] -EnableRemoteAccessInContainer "<port>" ["<thumbprint>"] -DisableRemoteAccess -Key "<AuthenticationKey>" -GenerateBackupFile "<filePath>" "<password>" -ImportBackupFile "<filePath>" "<password>" -Restart -Start -Stop -StartUpgradeService -StopUpgradeService -TurnOnAutoUpdate -TurnOffAutoUpdate -SwitchServiceAccount "<domain\user>" ["<password>"] -Loglevel <logLevel> ]
+dmgcmd ACTION args...
 ```
 
-Zde jsou uvedeny podrobnosti o parametrech a vlastnostech aplikace: 
+Tady jsou podrobnosti o akcích a argumentech aplikace: 
 
-| Vlastnost                                                    | Popis                                                  | Povinné |
-| ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
-| **RegisterNewNode** "`<AuthenticationKey>`"                     | Zaregistrujte místně hostovaný uzel Integration runtime se zadaným ověřovacím klíčem. | Ne       |
-| **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | Zaregistrujte místně hostovaný uzel Integration runtime se zadaným ověřovacím klíčem a názvem uzlu. | Ne       |
-| **EnableRemoteAccess** "`<port>`" ["`<thumbprint>`"]            | Povolením vzdáleného přístupu na aktuálním uzlu nastavte cluster s vysokou dostupností. Nebo povolte nastavení přihlašovacích údajů přímo v místním prostředí IR bez průchodu Azure Data Factory. Provedete to tak, že použijete rutinu **New-AzDataFactoryV2LinkedServiceEncryptedCredential** ze vzdáleného počítače ve stejné síti. | Ne       |
-| **EnableRemoteAccessInContainer** "`<port>`" ["`<thumbprint>`"] | Pokud je uzel spuštěn v kontejneru, povolte vzdálený přístup k aktuálnímu uzlu. | Ne       |
-| **DisableRemoteAccess**                                         | Zakáže vzdálený přístup k aktuálnímu uzlu. Pro instalaci s více uzly je potřeba vzdálený přístup. Rutina **New-AzDataFactoryV2LinkedServiceEncryptedCredential** prostředí PowerShell stále funguje i v případě, že je vzdálený přístup zakázán. Toto chování je pravdivé, pokud je rutina spuštěna ve stejném počítači jako uzel IR v místním prostředí. | Ne       |
-| **Klíč** "`<AuthenticationKey>`"                                 | Přepsat nebo aktualizovat předchozí ověřovací klíč Tuto akci buďte opatrní. Váš předchozí místně hostovaný uzel IR může přejít do režimu offline, pokud klíč je nového prostředí Integration runtime. | Ne       |
-| **GenerateBackupFile** "`<filePath>`" "`<password>`"            | Vygeneruje záložní soubor pro aktuální uzel. Záložní soubor zahrnuje přihlašovací údaje klíče uzlu a datového úložiště. | Ne       |
-| **ImportBackupFile** "`<filePath>`" "`<password>`"              | Obnovte uzel ze záložního souboru.                          | Ne       |
-| **Restartovat**                                                     | Restartujte hostitelskou službu Integration runtime v místním prostředí.   | Ne       |
-| **Zahájení**                                                       | Spusťte hostovanou hostitelskou službu Integration runtime.     | Ne       |
-| **Zastavit**                                                        | Zastavte hostitelskou službu Integration runtime v místním prostředí.        | Ne       |
-| **StartUpgradeService**                                         | Spusťte službu upgradu místního prostředí Integration runtime.       | Ne       |
-| **StopUpgradeService**                                          | Zastavte službu upgradu místního prostředí Integration runtime.        | Ne       |
-| **TurnOnAutoUpdate**                                            | Zapněte automatickou aktualizaci prostředí Integration runtime pro místní hostování.        | Ne       |
-| **TurnOffAutoUpdate**                                           | Vypněte automatickou aktualizaci prostředí Integration runtime pro místní hostování.       | Ne       |
-| **SwitchServiceAccount** "`<domain\user>`" ["`<password>`"]           | Nastavte DIAHostService tak, aby běžel jako nový účet. Pro systémové účty a virtuální účty použijte prázdné heslo. | Ne       |
+|KROKY|args|Popis|
+|------|----|-----------|
+|RN<br/>-RegisterNewNode|"`<AuthenticationKey>`" ["`<NodeName>`"]|Zaregistrujte místně hostovaný uzel Integration runtime se zadaným ověřovacím klíčem a názvem uzlu.|
+|věk<br/>-EnableRemoteAccess|"`<port>`" ["`<thumbprint>`"]|Povolením vzdáleného přístupu na aktuálním uzlu nastavte cluster s vysokou dostupností. Nebo povolte nastavení přihlašovacích údajů přímo v místním prostředí IR bez průchodu Azure Data Factory. Provedete to tak, že použijete rutinu **New-AzDataFactoryV2LinkedServiceEncryptedCredential** ze vzdáleného počítače ve stejné síti.|
+|-erac,<br/>-EnableRemoteAccessInContainer|"`<port>`" ["`<thumbprint>`"]|Pokud je uzel spuštěn v kontejneru, povolte vzdálený přístup k aktuálnímu uzlu.|
+|agenta<br/>-DisableRemoteAccess||Zakáže vzdálený přístup k aktuálnímu uzlu. Pro instalaci s více uzly je potřeba vzdálený přístup. Rutina **New-AzDataFactoryV2LinkedServiceEncryptedCredential** prostředí PowerShell stále funguje i v případě, že je vzdálený přístup zakázán. Toto chování je pravdivé, pokud je rutina spuštěna ve stejném počítači jako uzel IR v místním prostředí.|
+|k<br/>– Klíč|"`<AuthenticationKey>`"|Přepsat nebo aktualizovat předchozí ověřovací klíč Tuto akci buďte opatrní. Váš předchozí místně hostovaný uzel IR může přejít do režimu offline, pokud klíč je nového prostředí Integration runtime.|
+|-gbf,<br/>-GenerateBackupFile|"`<filePath>`" "`<password>`"|Vygeneruje záložní soubor pro aktuální uzel. Záložní soubor zahrnuje přihlašovací údaje klíče uzlu a datového úložiště.|
+|-ibf,<br/>-ImportBackupFile|"`<filePath>`" "`<password>`"|Obnovte uzel ze záložního souboru.|
+|í<br/>-Restart||Restartujte hostitelskou službu Integration runtime v místním prostředí.|
+|pracují<br/>– Spustit||Spusťte hostovanou hostitelskou službu Integration runtime.|
+|š<br/>-Stop||Zastavte hostitelskou službu Integration runtime v místním prostředí.|
+|služby SUS<br/>-StartUpgradeService||Spusťte službu upgradu místního prostředí Integration runtime.|
+|počet propustnosti<br/>-StopUpgradeService||Zastavte službu upgradu místního prostředí Integration runtime.|
+|-tonau,<br/>-TurnOnAutoUpdate||Zapněte automatickou aktualizaci prostředí Integration runtime pro místní hostování.|
+|-toffau,<br/>-TurnOffAutoUpdate||Vypněte automatickou aktualizaci prostředí Integration runtime pro místní hostování.|
+|SSA<br/>-SwitchServiceAccount|"`<domain\user>`" ["`<password>`"]|Nastavte DIAHostService tak, aby běžel jako nový účet. Pro systémové účty a virtuální účty použijte prázdné heslo.|
 
 
 ## <a name="command-flow-and-data-flow"></a>Tok příkazů a tok dat
@@ -152,7 +151,7 @@ Tady je souhrn kroků toku dat pro kopírování pomocí prostředí IR s místn
 - Využijte místní prostředí Integration runtime i v případě, že je úložiště dat v cloudu na virtuálním počítači infrastruktury Azure jako služba (IaaS).
 - Úlohy můžou selhat v místním prostředí Integration runtime, které jste nainstalovali na Windows Server, pro který je povolené šifrování kompatibilní se standardem FIPS. Pokud chcete tento problém obejít, máte dvě možnosti: uložení přihlašovacích údajů/tajných hodnot v Azure Key Vault nebo zakázání šifrování kompatibilního se standardem FIPS na serveru. Chcete-li zakázat šifrování kompatibilní se standardem FIPS, změňte hodnotu v následujícím podklíči registru z 1 (povoleno) na 0 (zakázáno): `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` . Pokud použijete místní [prostředí Integration runtime jako proxy pro SSIS Integration runtime](./self-hosted-integration-runtime-proxy-ssis.md), může být povoleno šifrování kompatibilní se standardem FIPS a bude použito při přesunu dat z místního prostředí do Azure Blob Storage jako pracovní oblast.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Podporované verze Windows jsou:
   + Windows 7 Service Pack 1
@@ -331,7 +330,7 @@ Na úrovni brány firewall systému Windows nebo počítači jsou tyto Odchozí 
 
 Ujistěte se, že jste správně povolili pravidla brány firewall pro podnikovou bránu firewall, bránu Windows Firewall počítače v místním prostředí Integration runtime a samotné úložiště dat. Povolení těchto pravidel umožňuje, aby se místní prostředí Integration runtime úspěšně připojovalo ke zdroji i jímky. Povolte pravidla pro každé úložiště dat, které je součástí operace kopírování.
 
-Pokud například chcete kopírovat z místního úložiště dat do jímky SQL Database nebo do jímky Azure synapse Analytics (dřív SQL Data Warehouse), proveďte následující kroky:
+Pokud například chcete kopírovat z místního úložiště dat do jímky SQL Database nebo do jímky Azure synapse Analytics, proveďte následující kroky:
 
 1. Povolí odchozí komunikaci TCP na portu 1433 pro bránu firewall systému Windows i pro podnikovou bránu firewall.
 1. Nakonfigurujte nastavení brány firewall SQL Database a přidejte tak IP adresu počítače místního prostředí Integration runtime do seznamu povolených IP adres.

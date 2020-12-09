@@ -8,12 +8,12 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8efc0301296f64abfe9b827e943882e930929086
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 757e34fd45b7d3d9703aa09daa7f040c5f605637
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575325"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932383"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Kurz: výuka a nasazení Azure Machine Learningho modelu
 
@@ -26,6 +26,14 @@ V tomto článku provedeme následující úlohy:
 Azure Notebooks využít pracovní prostor Azure Machine Learning, což je základní blok, který se používá k experimentování, výuce a nasazování modelů strojového učení.
 
 Kroky v tomto článku můžou obvykle provádět odborníci přes data.
+
+V této části kurzu se dozvíte, jak:
+
+> [!div class="checklist"]
+>
+> * Vytvořte projekt Azure Notebooks pro výuku modelu strojového učení.
+> * Kontejnerizace se na školicí model strojového učení.
+> * Vytvořte modul Azure IoT Edge z kontejneru strojového učení s dodaným objektem.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -166,13 +174,13 @@ Chcete-li ověřit, zda byly poznámkové bloky úspěšně dokončeny, ověřte
 
 1. Ověřte, že byly vytvořeny následující prostředky Azure. Některé názvy prostředků se připojují s náhodnými znaky.
 
-    | Prostředek Azure | Název |
+    | Prostředek Azure | Name (Název) |
     | --- | --- |
     | Pracovní prostor Machine Learning | turborfanDemo |
     | Container Registry | turbofandemoxxxxxxxx |
     | Application Insights | turbofaninsightxxxxxxxx |
     | Key Vault | turbofankeyvaultbxxxxxxxx |
-    | Úložiště | turbofanstoragexxxxxxxxx |
+    | Storage | turbofanstoragexxxxxxxxx |
 
 ### <a name="debugging"></a>Ladění
 

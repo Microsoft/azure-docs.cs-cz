@@ -1,20 +1,20 @@
 ---
 title: Šablona se závislými prostředky
-description: Zjistěte, jak vytvořit šablonu Azure Resource Manageru s více prostředky a jak ji nasadit pomocí webu Azure Portal
+description: Naučte se vytvořit šablonu Azure Resource Manager (šablonu ARM) s několika prostředky a jak ji nasadit pomocí Azure Portal
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3ed653c511dbd775d124e1abd6f4bb02923edb25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a43fa12e72484e97b828648cd7d610f5cf15ea4e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86102068"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931584"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Kurz: vytvoření šablon ARM se závislými prostředky
 
-Naučte se vytvořit šablonu Azure Resource Manager (ARM) pro nasazení více prostředků a konfiguraci pořadí nasazení. Po vytvoření šablony nasadíte šablonu pomocí Cloud Shell z Azure Portal.
+Naučte se vytvořit šablonu Azure Resource Manager (šablonu ARM) k nasazení několika prostředků a konfiguraci pořadí nasazení. Po vytvoření šablony nasadíte šablonu pomocí Cloud Shell z Azure Portal.
 
 V tomto kurzu vytvoříte účet úložiště, virtuální počítač, virtuální síť a několik dalších závislých prostředků. Některé prostředky se nedají nasadit, dokud bude existovat jiný prostředek. Nemůžete třeba vytvořit virtuální počítač, dokud bude existovat jeho účet úložiště a síťové rozhraní. Tento vztah se definuje tím, že jeden prostředek označíte jako závislý na jiných prostředcích. Resource Manager vyhodnocuje závislosti mezi prostředky a provádí nasazení v závislém pořadí. Pokud na sobě prostředky nezávisí, Resource Manager je nasadí paralelně. Další informace najdete v tématu [Definování pořadí pro nasazení prostředků v šablonách ARM](./define-resource-dependency.md).
 
@@ -29,11 +29,11 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
-* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Další informace najdete v tématu [rychlý Start: vytváření Azure Resource Manager šablon pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Další informace najdete v tématu [rychlý Start: vytvoření šablon ARM pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 * Pro zlepšení zabezpečení použijte pro účet správce virtuálního počítače vygenerované heslo. Tady ukázka generování hesla:
 
     ```console
@@ -67,7 +67,7 @@ Při zkoumání šablony v této části zkuste zodpovědět tyto otázky:
 
 1. V nástroji Visual Studio Code sbalte elementy tak, abyste viděli jenom elementy první úrovně a u položky **resources** elementy druhé úrovně:
 
-    ![Šablony Azure Resource Manageru ve Visual Studio Code](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
+    ![Visual Studio Code šablon ARM](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
     Šablona definuje šest prostředků:
 
@@ -82,19 +82,19 @@ Při zkoumání šablony v této části zkuste zodpovědět tyto otázky:
 
 1. Rozbalte první prostředek. Jedná se o účet úložiště. Porovnejte definici prostředků s [odkazem na šablonu](/azure/templates/Microsoft.Storage/storageAccounts).
 
-    ![Šablony Azure Resource Manageru ve Visual Studio Code – definice účtu úložiště](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
+    ![Definice účtu úložiště pro šablony Visual Studio Code ARM](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
 
 1. Rozbalte druhý prostředek. Typ prostředku je `Microsoft.Network/publicIPAddresses`. Porovnejte definici prostředků s [odkazem na šablonu](/azure/templates/microsoft.network/publicipaddresses).
 
-    ![Šablony Azure Resource Manageru ve Visual Studio Code – definice veřejné IP adresy](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
+    ![Definice veřejné IP adresy šablon Visual Studio Code ARM](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
 
 1. Rozbalte třetí prostředek. Typ prostředku je `Microsoft.Network/networkSecurityGroups`. Porovnejte definici prostředků s [odkazem na šablonu](/azure/templates/microsoft.network/networksecuritygroups).
 
-    ![Definice skupiny zabezpečení sítě Visual Studio Code Azure Resource Manager šablony](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-network-security-group-definition.png)
+    ![Definice skupiny zabezpečení sítě Visual Studio Code ARM](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-network-security-group-definition.png)
 
 1. Rozbalte čtvrtý prostředek. Typ prostředku je `Microsoft.Network/virtualNetworks`:
 
-    ![Visual Studio Code Azure Resource Manager šablon dependsOn virtuální sítě](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
+    ![DependsOn virtuální sítě šablon ARM Visual Studio Code](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
 
     Element DependsOn umožňuje definovat jeden prostředek jako závislý na jednom nebo více prostředcích. Tento prostředek závisí na jednom dalším prostředku:
 
@@ -112,7 +112,7 @@ Při zkoumání šablony v této části zkuste zodpovědět tyto otázky:
 
 Následující diagram znázorňuje prostředky a informace o závislostech pro tuto šablonu:
 
-![Šablony Azure Resource Manageru ve Visual Studio Code – diagram](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependency-diagram.png)
+![Diagram závislosti Visual Studio Code šablon ARM](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependency-diagram.png)
 
 Určení závislostí umožňuje Resource Manageru účinně nasadit řešení. Paralelně nasadí účet úložiště, veřejnou IP adresu a virtuální síť, protože tyto prostředky nemají žádné závislosti. Po nasazení veřejné IP adresy a virtuální sítě se vytvoří síťové rozhraní. Po nasazení všech ostatních prostředků Resource Manager nasadí virtuální počítač.
 

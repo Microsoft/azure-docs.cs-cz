@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 410281ce67faf345539701389d4b03351d403b99
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 502d5a5c4b3d13d32fece648ce1de6763d012096
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186061"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932281"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Propojení produktů nebo služeb ITSM s využitím ITSM konektoru
 Tento článek poskytuje informace o tom, jak nakonfigurovat připojení mezi ITSM produktem/službou a konektorem Service Management Connector (ITSMC) v Log Analytics pro centrální správu vašich pracovních položek. Další informace o ITSMC najdete v tématu [Přehled](./itsmc-overview.md).
@@ -25,8 +25,7 @@ Podporují se tyto ITSM produkty nebo služby. Výběrem produktu zobrazíte pod
 
 > [!NOTE]
 > 
-> Od 1. října 2020 Cherwell a ITSM integrace s s výstrahou Azure už nebudou pro nové zákazníky povolené. Nová připojení ITSM se nepodporují. 
-> Existující připojení ITSM budou podporována.
+> Naši zákazníci Cherwell a prov navrhují, aby používali [akci Webhooku](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) pro koncový bod Cherwell a prov jako jiné řešení pro integraci.
 
 ## <a name="connect-system-center-service-manager-to-it-service-management-connector-in-azure"></a>Připojení System Center Service Manager ke konektoru pro správu služeb IT v Azure
 

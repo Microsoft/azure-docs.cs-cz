@@ -2,17 +2,17 @@
 title: Nastavení nabízených oznámení do konfigurace aplikace pomocí Azure Pipelines
 description: Naučte se používat Azure Pipelines k odesílání hodnot klíč-hodnota do úložiště konfigurace aplikace.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.author: lcozzens
-ms.openlocfilehash: 7c0f886f23bc24eeed54043e9a7ee5fb1f645172
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.author: alkemper
+ms.openlocfilehash: fd3f7dbfd824360dcba9f8a166c579e3b55527ba
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572503"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932111"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Nastavení nabízených oznámení do konfigurace aplikace pomocí Azure Pipelines
 
@@ -56,7 +56,7 @@ Přiřaďte správné přiřazení role konfigurace aplikace k přihlašovacím 
 
 V této části se dozvíte, jak používat úlohu Azure App Configuration Push v kanálu sestavení Azure DevOps.
 
-1. Přejděte na stránku kanálu **sestavení kliknutím na kanály kanály**  >  **Pipelines**. Dokumentaci k kanálům sestavení najdete [tady](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2&view=azure-devops).
+1. Přejděte na stránku kanálu **sestavení kliknutím na kanály kanály**  >  . Dokumentaci k kanálům sestavení najdete [tady](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2&view=azure-devops).
       - Pokud vytváříte nový kanál sestavení, vyberte **Zobrazit pomocníka** na pravé straně kanálu a vyhledejte úlohu **nabízených oznámení konfigurace Azure App** .
       - Pokud používáte existující kanál sestavení, přejděte na kartu **úlohy** při úpravách kanálu a vyhledejte úlohu **nabízených oznámení konfigurace Azure App** .
 2. Proveďte konfiguraci nezbytných parametrů pro úlohu, aby se navložily hodnoty klíče z konfiguračního souboru do úložiště konfigurace aplikace. Parametr **cesty ke konfiguračnímu souboru** začíná v kořenovém adresáři úložiště souborů.
@@ -66,7 +66,7 @@ V této části se dozvíte, jak používat úlohu Azure App Configuration Push 
 
 V této části se dozvíte, jak používat úlohu Azure App Configuration Push v kanálech pro vydávání verzí Azure DevOps.
 
-1. Vyberte vydaná vydání **kanálů** a přejděte na stránku kanály vydání  >  **Releases**. Dokumentaci k kanálům pro vydávání verzí najdete [tady](/azure/devops/pipelines/release?view=azure-devops).
+1. Vyberte vydaná vydání **kanálů** a přejděte na stránku kanály vydání  >  . Dokumentaci k kanálům pro vydávání verzí najdete [tady](/azure/devops/pipelines/release?view=azure-devops).
 1. Vyberte existující kanál verze. Pokud ji nemáte, vyberte **+ Nová** a vytvořte novou.
 1. Kliknutím na tlačítko **Upravit** v pravém horním rohu upravte kanál verze.
 1. Vyberte **fázi** pro přidání úlohy. Další informace o fázích najdete [tady](/azure/devops/pipelines/release/environments?view=azure-devops).
@@ -93,7 +93,7 @@ Následující parametry používá úloha nabízení konfigurace aplikace:
 
 Po vyplnění požadovaných parametrů spusťte kanál. Všechny klíčové hodnoty v zadaném konfiguračním souboru se nahrají do konfigurace aplikace.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud dojde k neočekávané chybě, můžete povolit protokoly ladění nastavením proměnné kanálu `system.debug` na `true` .
 

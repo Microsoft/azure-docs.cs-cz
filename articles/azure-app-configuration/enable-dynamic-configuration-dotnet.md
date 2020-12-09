@@ -2,19 +2,19 @@
 title: '.NET Framework kurz: dynamická konfigurace v konfiguraci aplikace Azure'
 description: V tomto kurzu se naučíte dynamicky aktualizovat konfigurační data pro .NET Framework aplikace pomocí konfigurace aplikací Azure.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.custom: devx-track-csharp
 ms.topic: tutorial
-ms.date: 10/21/2019
-ms.author: lcozzens
-ms.openlocfilehash: b90334d4978c485033323b398e1409fa5731e813
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 07/24/2020
+ms.author: alkemper
+ms.openlocfilehash: 03940a86176d0bc93c5066977fdc87de5c456060
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767590"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932757"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>Kurz: použití dynamické konfigurace v aplikaci .NET Framework
 
@@ -55,12 +55,12 @@ V tomto kurzu se naučíte:
 
 1. V části **vytvořit nový projekt**, vyfiltrujte typ projektu **konzoly** a klikněte na **Konzolová aplikace (.NET Framework)**. Klikněte na **Next** (Další).
 
-1. V **konfiguraci nového projektu**zadejte název projektu. V části **rozhraní**vyberte **.NET Framework 4.7.1** nebo vyšší. Klikněte na **Vytvořit**.
+1. V **konfiguraci nového projektu** zadejte název projektu. V části **rozhraní** vyberte **.NET Framework 4.7.1** nebo vyšší. Klikněte na **Vytvořit**.
 
 ## <a name="reload-data-from-app-configuration"></a>Znovu načíst data z konfigurace aplikace
 1. Klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**. Na kartě **Procházet** vyhledejte a přidejte *Microsoft.Extensions.Configuration. AzureAppConfiguration* balíček NuGet do vašeho projektu. Pokud nemůžete najít, zaškrtněte políčko **zahrnout předběžné verze** .
 
-1. Otevřete *program.cs*a přidejte odkaz na poskytovatele konfigurace aplikace .NET Core.
+1. Otevřete *program.cs* a přidejte odkaz na poskytovatele konfigurace aplikace .NET Core.
 
     ```csharp
     using Microsoft.Extensions.Configuration;
@@ -118,7 +118,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="build-and-run-the-app-locally"></a>Místní sestavení a spuštění aplikace
 
-1. Nastavte proměnnou prostředí s názvem **ConnectionString**a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. Použijete-li příkazový řádek systému Windows, spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
+1. Nastavte proměnnou prostředí s názvem **ConnectionString** a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. Použijete-li příkazový řádek systému Windows, spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
 
     ```console
         setx ConnectionString "connection-string-of-your-app-configuration-store"
@@ -136,9 +136,9 @@ V tomto kurzu se naučíte:
 
     ![Místní spuštění aplikace](./media/dotnet-app-run.png)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
-1. Vyberte **Průzkumník konfigurace**a aktualizujte hodnoty následujících klíčů:
+1. Vyberte **Průzkumník konfigurace** a aktualizujte hodnoty následujících klíčů:
 
     | Klíč | Hodnota |
     |---|---|

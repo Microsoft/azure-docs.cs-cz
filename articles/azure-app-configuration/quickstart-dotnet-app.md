@@ -3,18 +3,18 @@ title: Rychlý Start pro konfiguraci aplikací Azure s .NET Framework | Microsof
 description: V tomto článku vytvoříte aplikaci .NET Framework s využitím konfigurace aplikací Azure k centralizaci úložiště a správy nastavení aplikace odděleně od vašeho kódu.
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
-ms.author: lcozzens
-ms.openlocfilehash: d338ca5cf2c794f15d3eb535b5280208236d1e34
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.author: alkemper
+ms.openlocfilehash: 62516218ed2c0249f829ad8d286e4ad8bbc471f8
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767752"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932086"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace .NET Framework s využitím konfigurace aplikace Azure
 
@@ -46,7 +46,7 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové apl
 
 1. V části **vytvořit nový projekt**, vyfiltrujte typ projektu **konzoly** a klikněte na **Konzolová aplikace (.NET Framework)**. Vyberte **Další**.
 
-1. V **konfiguraci nového projektu**zadejte název projektu. V části **rozhraní**vyberte **.NET Framework 4.7.1** nebo vyšší. Vyberte **Vytvořit**.
+1. V **konfiguraci nového projektu** zadejte název projektu. V části **rozhraní** vyberte **.NET Framework 4.7.1** nebo vyšší. Vyberte **Vytvořit**.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
@@ -80,7 +80,7 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové apl
 
    Připojovací řetězec úložiště konfigurace aplikace je načtený z proměnné prostředí `ConnectionString` . Přidejte nástroj `Environment` Configuration Builder před do `MyConfigStore` `configBuilders` vlastnosti `appSettings` oddílu.
 
-1. Otevřete *program.cs*a aktualizujte `Main` metodu na použití konfigurace aplikace voláním `ConfigurationManager` .
+1. Otevřete *program.cs* a aktualizujte `Main` metodu na použití konfigurace aplikace voláním `ConfigurationManager` .
 
     ```csharp
     static void Main(string[] args)

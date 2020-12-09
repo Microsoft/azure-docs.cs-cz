@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2c7503cf51ab74dc486f83de8033bfe4850a8c68
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 25db7104e565a987f3be9e2d6f3b239cf1884ae4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575053"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932332"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Kurz: vytvoření a nasazení vlastních modulů IoT Edge
 
@@ -51,6 +51,15 @@ Následující diagram znázorňuje moduly, vstupy, výstupy a trasy centra IoT 
 ![Diagram architektury IoT Edge tří modulů](media/tutorial-machine-learning-edge-06-custom-modules/modules-diagram.png)
 
 Kroky v tomto článku jsou obvykle prováděny vývojářem cloudu.
+
+V této části kurzu se dozvíte, jak:
+
+> [!div class="checklist"]
+>
+> * Vytvořte modul IoT Edge z vlastního kódu.
+> * Vygenerujte image Docker z vlastního modulu.
+> * Překonfigurujte IoT Hub směrování, aby podporovalo vaše vlastní moduly.
+> * Sestavujte, publikujte a nasaďte vlastní moduly.
 
 ## <a name="prerequisites"></a>Předpoklady
 

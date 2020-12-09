@@ -5,18 +5,18 @@ ms.author: puagarw
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
-ms.openlocfilehash: 36b2e829e56cf4d3b5ace64af989fa7f71725c44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15b0413eabcfae7e3a4b28243caf2a708260ccae
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360833"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932213"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Centrum nasazení pro Azure Kubernetes
 
 Centrum nasazení v Azure DevOps zjednodušuje nastavení robustního kanálu Azure DevOps pro vaši aplikaci. Ve výchozím nastavení centrum nasazení nakonfiguruje kanál Azure DevOps, aby nasadil aktualizace vaší aplikace do clusteru Kubernetes. Můžete rozšíření výchozího nakonfigurovaného kanálu Azure DevOps a také přidat bohatší možnosti: možnost získat před nasazením, zřídit další prostředky Azure, spouštět skripty, upgradovat aplikaci a dokonce i spustit více ověřovacích testů.
 
-V tomto kurzu provedete následující:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Nakonfigurujte kanál Azure DevOps pro nasazení aktualizací vaší aplikace do clusteru Kubernetes.
@@ -56,7 +56,7 @@ V tomto kurzu provedete následující:
 
    ![Snímek obrazovky ukazuje Azure Portal se šipkou ukazující na centrum nasazení.](media/deployment-center-launcher/settings.png)
 
-1. Zvolte umístění kódu a vyberte **Další**. Pak vyberte jedno z aktuálně podporovaných úložišť: **[Azure Repos](/azure/devops/repos/index?view=azure-devops)** nebo **GitHub**.
+1. Zvolte umístění kódu a vyberte **Další**. Pak vyberte jedno z aktuálně podporovaných úložišť: **[Azure Repos](/azure/devops/repos/index)** nebo **GitHub**.
 
     Azure Repos je sada nástrojů pro správu verzí, které vám pomůžou spravovat kód. Bez ohledu na to, jestli je váš softwarový projekt velký nebo malý, je dobrý nápad pomocí správy verzí co nejdříve.
 
@@ -77,7 +77,7 @@ V tomto kurzu provedete následující:
 
     ![Snímek obrazovky se zobrazením centra nasazení se zprávou nebylo možné najít souboru Dockerfile v úložišti.](media/deployment-center-launcher/dockerfile.png)
 
-1. Vyberte existující registr kontejnerů nebo ho vytvořte a pak vyberte **Dokončit**. Kanál se vytvoří automaticky a zařadí do fronty sestavení v [Azure Pipelines](/azure/devops/pipelines/index?view=azure-devops).
+1. Vyberte existující registr kontejnerů nebo ho vytvořte a pak vyberte **Dokončit**. Kanál se vytvoří automaticky a zařadí do fronty sestavení v [Azure Pipelines](/azure/devops/pipelines/index).
 
     Azure Pipelines je cloudová služba, kterou můžete použít k automatickému sestavení a otestování projektu kódu a zpřístupnění pro jiné uživatele. Azure Pipelines kombinuje průběžnou integraci a průběžné doručování pro neustálé a konzistentní testování a sestavování kódu a dodávání do libovolného cíle.
 
@@ -103,7 +103,7 @@ Centrum nasazení automaticky nakonfiguruje kanál CI/CD vaší organizace Azure
 
 1. Vyberte název kanálu sestavení v horní části kanálu.
 
-1. Změňte název kanálu sestavení na výstižnější, vyberte **uložit & fronty**a pak vyberte **Uložit**.
+1. Změňte název kanálu sestavení na výstižnější, vyberte **uložit & fronty** a pak vyberte **Uložit**.
 
 1. V rámci kanálu sestavení vyberte **Historie**. V tomto podokně se zobrazuje záznam pro audit vašich poslední změny sestavení. Azure DevOps sleduje všechny změny provedené v kanálu sestavení a umožňuje porovnat verze.
 
@@ -115,7 +115,7 @@ Centrum nasazení automaticky nakonfiguruje kanál CI/CD vaší organizace Azure
 
 Centrum nasazení automaticky vytvoří a nakonfiguruje vztah mezi vaší organizací Azure DevOps a vaším předplatným Azure. Mezi zahrnuté kroky patří nastavení připojení služby Azure pro ověření předplatného Azure pomocí Azure DevOps. Automatizovaný proces také vytvoří kanál pro vydávání verzí, který poskytuje průběžné doručování do Azure.
 
-1. Vyberte **kanály**a pak vybrat **verze**.
+1. Vyberte **kanály** a pak vybrat **verze**.
 
 1. Chcete-li upravit kanál verze, vyberte možnost **Upravit**.
 

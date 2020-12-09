@@ -8,12 +8,12 @@ ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4ac7f300fa88d57efe65c6d79645d4e75ca7edd9
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: eef5e60b06eedb1fb07c57aa2e369dd3830fcad5
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575478"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932400"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Kurz: generování dat simulovaného zařízení
 
@@ -43,6 +43,14 @@ Dokončení úkolů popsaných v tomto článku by mělo trvat přibližně 20 m
 
 Real-World ekvivalent práce v tomto kroku by pravděpodobně prováděli vývojáři zařízení a cloudové vývojáře.
 
+V této části kurzu se dozvíte, jak:
+
+> [!div class="checklist"]
+>
+> * Do vývojového prostředí zahrňte externí projekt.
+> * Pomocí ukázkového projektu DeviceHarness vygenerujte Simulovaná data zařízení IoT.
+> * Zobrazení vygenerovaných dat ve vašem IoT Hub.
+
 ## <a name="prerequisites"></a>Předpoklady
 
 Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Každý článek v sérii vychází z práce v předchozím článku. Pokud jste dorazili přímo do tohoto článku, přejděte na [první článek](tutorial-machine-learning-edge-01-intro.md) v řadě.
@@ -70,7 +78,7 @@ Tento článek je součástí série, kde najdete kurz použití Azure Machine L
 
    Pokud tato oznámení neobdržíte, zavřete Visual Studio Code, odstraňte adresáře bin a obj v `C:\source\IoTEdgeAndMlSample\DeviceHarness` , otevřete Visual Studio Code a znovu otevřete složku DeviceHarness.
 
-1. Ověřte, že je prostředí správně nastavené spuštěním sestavení, **kombinace kláves CTRL**  +  **SHIFT**  +  **B** nebo **Terminal**  >  **úlohy sestavení pro spuštění** terminálu.
+1. Ověřte, že je prostředí správně nastavené spuštěním sestavení, **kombinace kláves CTRL**  +  **SHIFT**  +  **B** nebo   >  **úlohy sestavení pro spuštění** terminálu.
 
 1. Zobrazí se výzva k výběru úlohy sestavení, která se má spustit. Vyberte **sestavení**.
 

@@ -8,16 +8,23 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b62790fd8f01b7ffb2df4d242b97e8464c11399b
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: d86a273a69203a92a9b437f021486feb3bcb31da
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621123"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932366"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Kurz: nastavení prostředí pro strojové učení na IoT Edge
 
 Tento článek vám pomůže připravit vaše prostředí pro vývoj a nasazení. Nejdřív nastavte vývojový počítač pro všechny nástroje, které potřebujete. Pak vytvořte potřebné cloudové prostředky v Azure.
+
+V této části kurzu se dozvíte, jak:
+
+> [!div class="checklist"]
+>
+> * Nastavte virtuální počítač pro vývoj.
+> * Nastavte IoT Hub a cloudové úložiště pro použití ve vývojovém prostředí.
 
 ## <a name="prerequisites"></a>Předpoklady
 

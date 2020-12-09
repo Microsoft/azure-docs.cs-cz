@@ -9,12 +9,12 @@ ms.date: 08/03/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, amqp, devx-track-csharp
-ms.openlocfilehash: d6bc11f4f468b784b957ded954dc9a1720e89bfd
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 46d3a9e961be0717aba75c1f5845b97b52092510
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964435"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931958"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Kurz: vývoj modulu C# IoT Edge pro zařízení s Windows
 
@@ -33,7 +33,7 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento kurz ukazuje, jak vyvíjet modul v **jazyce C#** pomocí sady **Visual Studio 2019** a jak ho nasadit na **zařízení s Windows**. Pokud vyvíjíte moduly pro zařízení se systémem Linux, přečtěte si místo toho [vývoj modulu C# IoT Edge modul pro zařízení se systémem Linux](tutorial-csharp-module.md) .
 
@@ -53,7 +53,7 @@ Před zahájením tohoto kurzu byste měli projít předchozí kurz pro nastaven
 * [Docker Desktop](https://docs.docker.com/docker-for-windows/install/) nakonfigurovaný pro spouštění kontejnerů Windows.
 
 > [!TIP]
-> Pokud používáte Visual Studio 2017 (verze 15,7 nebo novější), plrease si stáhněte a nainstalujte [nástroje Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) pro vs 2017 z webu Visual Studio Marketplace.
+> Pokud používáte Visual Studio 2017 (verze 15,7 nebo novější), Stáhněte si a nainstalujte [Azure IoT Edge nástroje](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) pro vs 2017 z webu Visual Studio Marketplace.
 
 ## <a name="create-a-module-project"></a>Vytvořit projekt modulu
 
@@ -77,7 +77,7 @@ Nástroje Azure IoT Edge poskytují šablony projektů pro všechny podporované
 
    | Pole | Hodnota |
    | ----- | ----- |
-   | Vybrat šablonu | Vyberte **modul C#**. |
+   | Výběr šablony | Vyberte **modul C#**. |
    | Název projektu modulu | Dejte modulu název **CSharpModule**. |
    | Úložiště imagí Docker | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Vaše image kontejneru je předem vyplněná z hodnoty název projektu modulu. Položku **localhost: 5000** nahraďte hodnotou **přihlašovacího serveru** z služby Azure Container Registry. Přihlašovací server můžete načíst ze stránky přehled v registru kontejneru v Azure Portal. <br><br> Konečné úložiště imagí vypadá jako \<registry name\> . azurecr.IO/csharpmodule. |
 
@@ -91,7 +91,7 @@ Manifest nasazení sdílí přihlašovací údaje pro váš registr kontejneru s
 
 1. V Průzkumníku řešení sady Visual Studio otevřete **deployment.template.jsv** souboru.
 
-2. V $edgeAgent požadovaných vlastnostech Najděte vlastnost **registryCredentials** . Měla by mít vaše adresa registru vytvořená z informací, které jste zadali při vytváření projektu, a pole s uživatelským jménem a heslem by měla obsahovat názvy proměnných. Například:
+2. V $edgeAgent požadovaných vlastnostech Najděte vlastnost **registryCredentials** . Měla by mít vaše adresa registru vytvořená z informací, které jste zadali při vytváření projektu, a pole s uživatelským jménem a heslem by měla obsahovat názvy proměnných. Příklad:
 
    ```json
    "registryCredentials": {

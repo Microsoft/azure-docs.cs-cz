@@ -3,26 +3,25 @@ title: Rychlý Start, kde se dozvíte, jak používat konfiguraci aplikací Azur
 description: V tomto rychlém startu vytvoříte aplikaci v jazyce Java s konfigurací aplikace v systému Azure, která bude centralizovat úložiště a správu nastavení aplikace odděleně od vašeho kódu.
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 04/18/2020
 ms.custom: devx-track-java
-ms.author: lcozzens
-ms.openlocfilehash: dd2305e13322540e9e30223f200baed9919d1840
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.author: alkemper
+ms.openlocfilehash: 40c8fae292f465b3ecc8778a21e4903bdf423a3a
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075395"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932026"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace s pružinou v jazyce Java pomocí konfigurace aplikace Azure
 
 V tomto rychlém startu zařadíte konfiguraci aplikace Azure do aplikace v pružině Java, která bude centralizovat úložiště a správu nastavení aplikace odděleně od vašeho kódu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - Podporovaná [sada Java Development Kit (JDK)](/java/azure/jdk) s verzí 8.
@@ -147,7 +146,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
     spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-1. Nastavte proměnnou prostředí s názvem **APP_CONFIGURATION_CONNECTION_STRING**a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. Na příkazovém řádku spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
+1. Nastavte proměnnou prostředí s názvem **APP_CONFIGURATION_CONNECTION_STRING** a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. Na příkazovém řádku spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
 
     ```cmd
     setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"

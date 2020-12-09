@@ -1,21 +1,21 @@
 ---
 title: Použití referenčních informací k šablonám
-description: K vytvoření šablony použijte odkaz na šablonu Azure Resource Manager.
+description: K vytvoření šablony použijte odkaz šablony Azure Resource Manager (šablona ARM).
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 3709511fa8da0a40f4faf4ab2dac9505d69003ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfd6311fab8d9c65fa7c82d2f707ac96549a32a9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86118507"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931414"
 ---
-# <a name="tutorial-utilize-the-resource-manager-template-reference"></a>Kurz: využití odkazu na šablonu Správce prostředků
+# <a name="tutorial-utilize-the-arm-template-reference"></a>Kurz: Využijte odkaz na šablonu ARM.
 
-Naučte se najít informace o schématu šablony a použít je k vytvoření šablon Azure Resource Manager (ARM).
+Naučte se najít informace o schématu šablony a použít je k vytváření Azure Resource Manager šablon (šablony ARM).
 
 V tomto kurzu použijete základní šablonu Azure pro rychlý start. Pomocí referenční dokumentace šablon můžete šablonu přizpůsobit.
 
@@ -32,11 +32,11 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
-* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Další informace najdete v tématu [rychlý Start: vytváření Azure Resource Manager šablon pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Další informace najdete v tématu [rychlý Start: vytvoření šablon ARM pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony pro rychlý start
 
@@ -76,7 +76,7 @@ K dokončení tohoto článku potřebujete:
 ## <a name="find-the-template-reference"></a>Vyhledání referenčních informací k šablonám
 
 1. Přejděte na [odkaz šablony Azure](/azure/templates/).
-1. V poli **filtrovat podle názvu** zadejte **účty úložiště**a v části **referenční > úložiště**vyberte první **účty úložiště** .
+1. V poli **filtrovat podle názvu** zadejte **účty úložiště** a v části **referenční > úložiště** vyberte první **účty úložiště** .
 
     ![Odkaz šablony Azure Resource Manageru na účet úložiště](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts.png)
 

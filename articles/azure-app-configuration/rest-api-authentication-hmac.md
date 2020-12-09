@@ -1,17 +1,17 @@
 ---
 title: Konfigurace aplikace Azure REST API – ověřování HMAC
 description: Použití HMAC k ověření konfigurace aplikace Azure pomocí REST API
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: bd1667f6c17922b6c0b0bfba7a7329a3fc96b62e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f761d86bd7dbe54b687e8db75ecb3df2dbba3384
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182627"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932706"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>Ověřování HMAC – REST API odkaz
 
@@ -45,7 +45,7 @@ Authorization: HMAC-SHA256 Credential={Access Key ID}&SignedHeaders=x-ms-date;ho
 
 ## <a name="authorization-header"></a>Autorizační hlavička
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>Syntaxe
 
 ``Authorization``: **HMAC-SHA256**```Credential```=\<value\>&```SignedHeaders```=\<value\>&```Signature```=\<value\>
 

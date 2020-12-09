@@ -1,23 +1,23 @@
 ---
 title: Kurz – přidání výstupů do šablony
-description: Chcete-li zjednodušit syntaxi, přidejte do šablony Azure Resource Manager výstupy.
+description: Pokud chcete zjednodušit syntaxi, přidejte do šablony Azure Resource Manager (šablonu ARM) výstupy.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: abd5fbed4ab19135fb30ec5adda387d839df3ab6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e55638e20bceb6df4b8e74375d67836123167162
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613862"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931737"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>Kurz: Přidání výstupů do šablony ARM
 
-V tomto kurzu zjistíte, jak vrátit hodnotu ze šablony Azure Resource Manager (ARM). Výstupy použijete, když potřebujete hodnotu z nasazeného prostředku. Dokončení tohoto kurzu trvá **7 minut** .
+V tomto kurzu zjistíte, jak vrátit hodnotu ze šablony Azure Resource Manager (šablona ARM). Výstupy použijete, když potřebujete hodnotu z nasazeného prostředku. Dokončení tohoto kurzu trvá **7 minut** .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Doporučujeme, abyste dokončili [kurz o proměnných](template-tutorial-add-variables.md), ale není to nutné.
 
@@ -100,7 +100,7 @@ Za posledních šest kurzů jste provedli spoustu. Pojďme se podívat na to, co
 
 Teď se podívejme na skupinu prostředků a historii nasazení.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 1. Vyberte skupinu prostředků, do které jste nasadili.
 1. V závislosti na krocích, které jste provedli, byste měli mít ve skupině prostředků aspoň jeden a možná několik účtů úložiště.

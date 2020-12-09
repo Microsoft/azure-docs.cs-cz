@@ -2,17 +2,17 @@
 title: Import nebo export dat pomocí konfigurace aplikace Azure
 description: Naučte se importovat nebo exportovat konfigurační data do nebo z konfigurace aplikace Azure. Výměna dat mezi úložištěm konfigurace aplikace a projektem kódu.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: lcozzens
-ms.openlocfilehash: 0e127a11f3821325602a78d46c69b2330bfb8293
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.author: alkemper
+ms.openlocfilehash: 5e4eeb37bb5efa11a656600072e4aa364fc71500
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074613"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931788"
 ---
 # <a name="import-or-export-configuration-data"></a>Import nebo export konfiguračních dat
 
@@ -28,7 +28,7 @@ Importujte data buď pomocí [Azure Portal](https://portal.azure.com) , nebo pom
 
 1. Přejděte do úložiště konfigurace aplikace a v nabídce **operace** vyberte **Import/export** .
 
-1. Na kartě **Import** vyberte konfigurační soubor **zdrojové služby**  >  **Configuration File**.
+1. Na kartě **Import** vyberte konfigurační soubor **zdrojové služby**  >  .
 
 1. Vyberte možnost **jazyk** a vyberte požadovaný typ vstupu.
 
@@ -36,7 +36,7 @@ Importujte data buď pomocí [Azure Portal](https://portal.azure.com) , nebo pom
 
     ![Importovat soubor](./media/import-file.png)
 
-1. Vyberte **oddělovač**a volitelně zadejte **předponu** , která se má použít pro importované názvy klíčů.
+1. Vyberte **oddělovač** a volitelně zadejte **předponu** , která se má použít pro importované názvy klíčů.
 
 1. Volitelně můžete vybrat **popisek**.
 
@@ -52,11 +52,11 @@ Exportujte data buď pomocí [Azure Portal](https://portal.azure.com) , nebo pom
 
 1. Přejděte do úložiště konfigurace aplikace a vyberte **Import/export**.
 
-1. Na kartě **Export** vyberte **cílový**  >  **konfigurační soubor**služby.
+1. Na kartě **Export** vyberte **cílový**  >  **konfigurační soubor** služby.
 
 1. Volitelně můžete zadat **předponu** a vybrat **popisek** a časový okamžik pro export klíčů.
 
-1. Vyberte oddělovač **typů souborů**  >  **Separator**.
+1. Vyberte oddělovač **typů souborů**  >  .
 
 1. Pro dokončení exportu vyberte **použít** .
 

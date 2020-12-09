@@ -1,21 +1,21 @@
 ---
 title: Nasazení rozšíření virtuálních počítačů pomocí šablony
-description: Zjistěte, jak nasazovat rozšíření virtuálních počítačů pomocí šablon Azure Resource Manageru.
+description: Naučte se nasazovat rozšíření virtuálních počítačů pomocí Azure Resource Manager šablon (šablony ARM).
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f82e0eb45f4bc7c3260554b1b1120025029336bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49bc1a77e2e25cb069a89812603ff562b8a4c1cd
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89073638"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931448"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Kurz: nasazení rozšíření virtuálních počítačů pomocí šablon ARM
 
-Zjistěte, jak pomocí [rozšíření virtuálních počítačů Azure](../../virtual-machines/extensions/features-windows.md) provádět na virtuálních počítačích Azure úlohy konfigurace a automatizace po nasazení. Pro použití s virtuálními počítači Azure je k dispozici řada různých rozšíření virtuálních počítačů. V tomto kurzu nasadíte rozšíření vlastních skriptů ze šablony Azure Resource Manager (ARM), ve kterém spustíte skript prostředí PowerShell na virtuálním počítači s Windows.  Tento skript na virtuálním počítači nainstaluje webový server.
+Zjistěte, jak pomocí [rozšíření virtuálních počítačů Azure](../../virtual-machines/extensions/features-windows.md) provádět na virtuálních počítačích Azure úlohy konfigurace a automatizace po nasazení. Pro použití s virtuálními počítači Azure je k dispozici řada různých rozšíření virtuálních počítačů. V tomto kurzu nasadíte rozšíření vlastních skriptů ze šablony Azure Resource Manager (šablona ARM) pro spuštění skriptu PowerShellu na virtuálním počítači s Windows. Tento skript na virtuálním počítači nainstaluje webový server.
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -27,11 +27,11 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
-* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Další informace najdete v tématu [rychlý Start: vytváření Azure Resource Manager šablon pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Další informace najdete v tématu [rychlý Start: vytvoření šablon ARM pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 * Pro zlepšení zabezpečení použijte pro účet správce virtuálního počítače vygenerované heslo. Tady ukázka generování hesla:
 
     ```console
@@ -110,7 +110,7 @@ Další informace o této definici prostředků najdete v odkazu na [rozšířen
 * **identifikátory URI**: umístění, kde jsou uloženy soubory skriptu. Pokud se rozhodnete, že nepoužijete zadané umístění, je nutné aktualizovat hodnoty.
 * **commandToExecute**: Tento příkaz vyvolá skript.
 
-Pokud chcete použít vložený skript, odeberte **identifikátory URI**a aktualizujte **commandToExecute** na:
+Pokud chcete použít vložený skript, odeberte **identifikátory URI** a aktualizujte **commandToExecute** na:
 
 ```powershell
 powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)
@@ -121,7 +121,7 @@ Tento vložený skript také aktualizuje obsah iisstart.html.
 Musíte taky otevřít port HTTP, abyste mohli získat přístup k webovému serveru.
 
 1. V šabloně vyhledejte **securityRules** .
-1. Do pole **výchozí-Allow-3389**přidejte následující pravidlo.
+1. Do pole **výchozí-Allow-3389** přidejte následující pravidlo.
 
     ```json
     {

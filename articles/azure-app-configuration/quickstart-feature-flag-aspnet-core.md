@@ -1,18 +1,18 @@
 ---
 title: Rychlý Start pro přidání příznaků funkcí do ASP.NET Core
 description: Přidání příznaků funkcí pro ASP.NET Core aplikací a jejich správa pomocí konfigurace aplikací Azure
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
-ms.author: lcozzens
-ms.openlocfilehash: 5179a619b1adba432910605c75fae0789efd3397
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.author: alkemper
+ms.openlocfilehash: d465f3c44ede8b4df56ef0da08c5bbbcd477d93f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182669"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932132"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace ASP.NET Core
 
@@ -181,7 +181,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     Předchozí kód umožňuje `<feature>` použití pomocné rutiny tag v souborech *. cshtml* projektu.
 
-1. Otevřete *_Layout. cshtml* ve sdíleném adresáři *views* \\ *Shared* . Vyhledejte `<nav>` Čárový kód v části `<body>`  >  `<header>` . Vložte novou `<feature>` značku mezi položky *Domů* a navigační panel *ochrany osobních údajů* , jak je znázorněno na zvýrazněných řádcích níže.
+1. Otevřete *_Layout. cshtml* ve sdíleném adresáři *views* \\  . Vyhledejte `<nav>` Čárový kód v části `<body>`  >  `<header>` . Vložte novou `<feature>` značku mezi položky *Domů* a navigační panel *ochrany osobních údajů* , jak je znázorněno na zvýrazněných řádcích níže.
 
     :::code language="html" source="../../includes/azure-app-configuration-navbar.md" range="15-38" highlight="13-17":::
 
@@ -217,7 +217,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-before.png" alt-text="Místní aplikace pro rychlý Start před změnou" border="true":::
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **správce funkcí**. 
 

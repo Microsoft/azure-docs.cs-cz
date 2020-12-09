@@ -1,18 +1,18 @@
 ---
 title: Funkce šablon
-description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení hodnot, práci s řetězci a čísly a načtení informací o nasazení.
+description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager (šablona ARM) k načtení hodnot, práci s řetězci a čísly a načtení informací o nasazení.
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: a479b81d0f0bc378f77885cbd644e70d7be1d857
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2d124893cbe1694671231fd206f8e44cc20f6204
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961166"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931703"
 ---
 # <a name="arm-template-functions"></a>Funkce šablon ARM
 
-Tento článek popisuje všechny funkce, které můžete použít v šabloně Azure Resource Manager (ARM). Informace o používání funkcí v šabloně najdete v tématu [syntaxe šablony](template-expressions.md).
+Tento článek popisuje všechny funkce, které můžete použít v šabloně Azure Resource Manager (šablona ARM). Informace o používání funkcí v šabloně najdete v tématu [syntaxe šablony](template-expressions.md).
 
 Chcete-li vytvořit vlastní funkce, přečtěte si téma [uživatelsky definované funkce](template-syntax.md#functions).
 
@@ -47,7 +47,7 @@ Správce prostředků poskytuje několik funkcí pro práci s poli.
 * [průnik](template-functions-array.md#intersection)
 * [posledního](template-functions-array.md#last)
 * [length](template-functions-array.md#length)
-* [min](template-functions-array.md#min)
+* [dlouhé](template-functions-array.md#min)
 * [počet](template-functions-array.md#max)
 * [oblasti](template-functions-array.md#range)
 * [přímo](template-functions-array.md#skip)
@@ -66,7 +66,7 @@ Správce prostředků poskytuje několik funkcí pro práci s poli.
 Správce prostředků poskytuje několik funkcí pro porovnávání v šablonách.
 
 * [COALESCE](template-functions-comparison.md#coalesce)
-* [rovná se](template-functions-comparison.md#equals)
+* [rovná](template-functions-comparison.md#equals)
 * [tolik](template-functions-comparison.md#less)
 * [lessOrEquals](template-functions-comparison.md#lessorequals)
 * [greater](template-functions-comparison.md#greater)
@@ -130,7 +130,7 @@ Správce prostředků poskytuje následující funkce pro práci s celými čís
 * [div](template-functions-numeric.md#div)
 * [float](template-functions-numeric.md#float)
 * [int](template-functions-numeric.md#int)
-* [min](template-functions-numeric.md#min)
+* [dlouhé](template-functions-numeric.md#min)
 * [počet](template-functions-numeric.md#max)
 * [střední](template-functions-numeric.md#mod)
 * [mul](template-functions-numeric.md#mul)
@@ -174,7 +174,7 @@ Správce prostředků poskytuje následující funkce pro získání hodnot pros
 * [pickZones](template-functions-resource.md#pickzones)
 * [dodavateli](template-functions-resource.md#providers)
 * [odkaz](template-functions-resource.md#reference)
-* [resourceGroup](template-functions-resource.md#resourcegroup) skupina prostředků se dá použít jenom v nasazeních do skupiny prostředků.
+* [](template-functions-resource.md#resourcegroup) skupina prostředků se dá použít jenom v nasazeních do skupiny prostředků.
 * [ResourceID](template-functions-resource.md#resourceid) -lze použít v jakémkoli oboru, ale platné parametry se mění v závislosti na rozsahu.
 * [předplatné](template-functions-resource.md#subscription) – dá se použít jenom v nasazeních do skupiny prostředků nebo předplatného.
 * [subscriptionResourceId](template-functions-resource.md#subscriptionresourceid)
@@ -250,7 +250,7 @@ Správce prostředků poskytuje následující funkce pro práci s řetězci:
 
 ## <a name="next-steps"></a>Další kroky
 
-* Popis sekcí v šabloně ARM najdete v tématu [vytváření šablon ARM](template-syntax.md) .
-* Chcete-li sloučit více šablon, přečtěte si téma [použití propojených šablon s Azure Resource Manager](linked-templates.md)
-* Informace o iteraci zadaného počtu výskytů při vytváření typu prostředku najdete v tématu [vytvoření více instancí prostředků v Azure Resource Manager](copy-resources.md).
-* Pokud chcete zjistit, jak nasadit šablonu, kterou jste vytvořili, přečtěte si téma [nasazení aplikace pomocí šablon ARM](deploy-powershell.md) .
+* Popis sekcí v šabloně ARM najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
+* Pokud chcete sloučit více šablon, přečtěte si téma [použití propojených a vnořených šablon při nasazování prostředků Azure](linked-templates.md).
+* Pro iteraci zadaného počtu výskytů při vytváření typu prostředku se podívejte na téma [iterace prostředků v šablonách ARM](copy-resources.md).
+* Pokud chcete zjistit, jak nasadit šablonu, kterou jste vytvořili, přečtěte si téma [nasazení prostředků pomocí šablon ARM a Azure PowerShell](deploy-powershell.md).

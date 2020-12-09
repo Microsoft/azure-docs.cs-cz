@@ -1,6 +1,6 @@
 ---
 title: Použití skriptů nasazení šablony | Microsoft Docs
-description: Naučte se používat skripty pro nasazení v šablonách Azure Resource Manager.
+description: Naučte se používat skripty pro nasazení v šablonách Azure Resource Manager (šablony ARM).
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.date: 08/25/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e1094befcc6b3a6e9d56ba3b603dc45fcb91ba13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc19222cf1e610c6c65d7c721a54f9949bed70ae
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88825490"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931431"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Kurz: použití skriptů pro nasazení k vytvoření certifikátu podepsaného svým držitelem (Preview)
 
-Naučte se používat skripty pro nasazení v šablonách Azure Resource Manage (ARM). Skripty pro nasazení lze použít k provedení vlastních kroků, které nelze provést pomocí šablon ARM. Například vytvoření certifikátu podepsaného svým držitelem.  V tomto kurzu vytvoříte šablonu pro nasazení trezoru klíčů Azure a pak pomocí `Microsoft.Resources/deploymentScripts` prostředku ve stejné šabloně vytvoříte certifikát a pak certifikát přidáte do trezoru klíčů. Další informace o skriptu nasazení najdete v tématu [použití skriptů nasazení v šablonách ARM](./deployment-script-template.md).
+Naučte se používat skripty pro nasazení v šablonách Azure Resource Manager (šablony ARM). Skripty pro nasazení lze použít k provedení vlastních kroků, které nelze provést pomocí šablon ARM. Například vytvoření certifikátu podepsaného svým držitelem.  V tomto kurzu vytvoříte šablonu pro nasazení trezoru klíčů Azure a pak pomocí `Microsoft.Resources/deploymentScripts` prostředku ve stejné šabloně vytvoříte certifikát a pak certifikát přidáte do trezoru klíčů. Další informace o skriptu nasazení najdete v tématu [použití skriptů nasazení v šablonách ARM](./deployment-script-template.md).
 
 > [!IMPORTANT]
 > Dva prostředky skriptu nasazení, účet úložiště a instance kontejneru, se vytvoří ve stejné skupině prostředků ke spuštění skriptu a odstraňování potíží. Tyto prostředky obvykle odstraní služba skriptu, když se spuštění skriptu dostane do stavu terminálu. Budou se vám účtovat prostředky, dokud se prostředky neodstraní. Další informace najdete v tématu [vyčištění prostředků skriptu nasazení](./deployment-script-template.md#clean-up-deployment-script-resources).
@@ -36,11 +36,11 @@ Tento kurz se zabývá následujícími úkony:
 > * Ladění neúspěšného skriptu
 > * Vyčištění prostředků
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
-* ** [Visual Studio Code](https://code.visualstudio.com/) s rozšířením nástroje Správce prostředků Tools**. Další informace najdete v tématu [rychlý Start: vytváření Azure Resource Manager šablon pomocí Visual Studio Code](./quickstart-create-templates-use-visual-studio-code.md).
+* **[Visual Studio Code](https://code.visualstudio.com/) s rozšířením nástroje Správce prostředků Tools**. Další informace najdete v tématu [rychlý Start: vytvoření šablon ARM pomocí Visual Studio Code](./quickstart-create-templates-use-visual-studio-code.md).
 
 * **Spravovaná identita přiřazená uživatelem s rolí přispěvatele na úrovni předplatného**. Tato identita se používá ke spouštění skriptů nasazení. Pokud ho chcete vytvořit, přečtěte si téma [spravovaná identita přiřazená uživatelem](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). ID identity budete potřebovat při nasazení šablony. Formát identity je:
 
@@ -324,7 +324,7 @@ Skript nasazení přidá certifikát do trezoru klíčů. Konfigurace zásad př
 
 ## <a name="debug-the-failed-script"></a>Ladění neúspěšného skriptu
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Otevřete skupinu prostředků. Je to název projektu s připojeným **RG** . Ve skupině prostředků se zobrazí dva další prostředky. Tyto prostředky se označují jako *prostředky skriptu nasazení*.
 
     ![Prostředky skriptu pro nasazení Správce prostředků šablon](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
@@ -335,7 +335,7 @@ Skript nasazení přidá certifikát do trezoru klíčů. Konfigurace zásad př
 
 1. Vyberte účet úložiště s příponou **azscripts** .
 1. Vyberte dlaždici **sdílení souborů** . Zobrazí se složka **azscripts** .  Složka obsahuje spouštěcí soubory skriptu nasazení.
-1. Vyberte **azscripts**. Zobrazí se dvě složky **azscriptinput** a **azscriptoutput**.  Vstupní složka obsahuje systémový soubor skriptu PowerShellu a soubory skriptu nasazení uživatele. Výstupní složka obsahuje **executionresult.js** a výstupní soubor skriptu. V **executionresult.js**se zobrazí chybová zpráva. Výstupní soubor není k dispozici, protože spuštění selhalo.
+1. Vyberte **azscripts**. Zobrazí se dvě složky **azscriptinput** a **azscriptoutput**.  Vstupní složka obsahuje systémový soubor skriptu PowerShellu a soubory skriptu nasazení uživatele. Výstupní složka obsahuje **executionresult.js** a výstupní soubor skriptu. V **executionresult.js** se zobrazí chybová zpráva. Výstupní soubor není k dispozici, protože spuštění selhalo.
 
 Odeberte řádek **Write-Output1** a znovu nasaďte šablonu.
 

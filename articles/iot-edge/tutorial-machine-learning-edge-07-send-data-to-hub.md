@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1927ec00df67522563fb063f2cb127fee4c0bcbf
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 50df3424892594a6817d481aa4a3d540a342854f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621038"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932315"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Kurz: posílání dat přes transparentní bránu
 
@@ -23,6 +23,14 @@ V tomto článku se znovu používá vývojový virtuální počítač jako simu
 Sledujeme operace IoT Edge zařízení, zatímco simulované zařízení odesílá data. Jakmile se zařízení dokončí, podíváme se na data v našem účtu úložiště, abyste ověřili, co všechno fungovalo podle očekávání.
 
 Tento krok obvykle provádí vývojář cloudu nebo zařízení.
+
+V této části kurzu se dozvíte, jak:
+
+> [!div class="checklist"]
+>
+> * Sestavování a spouštění zařízení typu list.
+> * Ověřte, že se vygenerovaná data ukládají do úložiště objektů BLOB v Azure.
+> * Ověřte, jestli model strojového učení klasifikuje data zařízení.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -39,7 +47,7 @@ Podívejte se na kód a podívejte se, jak jsou tyto dvě položky implementová
 
 1. Na vývojovém počítači otevřete Visual Studio Code.
 
-1. Pomocí **File**  >  **otevřené složky** souborů otevřete soubor C: \\ source \\ IoTEdgeAndMlSample \\ DeviceHarness.
+1. Pomocí   >  **otevřené složky** souborů otevřete soubor C: \\ source \\ IoTEdgeAndMlSample \\ DeviceHarness.
 
 1. Podívejte se na metodu InstallCertificate () v Program.cs.
 

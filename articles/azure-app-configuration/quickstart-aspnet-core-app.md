@@ -2,25 +2,25 @@
 title: Rychlý Start pro konfiguraci aplikací Azure s ASP.NET Core | Microsoft Docs
 description: Vytvoření aplikace ASP.NET Core s využitím konfigurace aplikace Azure k centralizaci úložiště a správy nastavení aplikace pro ASP.NET Core aplikace.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.custom: devx-track-csharp, contperfq1
 ms.topic: quickstart
 ms.date: 09/25/2020
-ms.author: lcozzens
-ms.openlocfilehash: 13283a9531804502b8a8d72e615be955b413658c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.author: alkemper
+ms.openlocfilehash: fc2b218621fcf91a7d82b0554da79a8b4582c3a2
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075837"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932162"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace ASP.NET Core s využitím konfigurace aplikace Azure
 
 V tomto rychlém startu použijete Azure App Configuration k centralizaci úložiště a správy nastavení aplikace pro ASP.NET Core aplikaci. ASP.NET Core vytvoří jeden objekt konfigurace založený na hodnotě klíč-hodnota pomocí nastavení z jednoho nebo více zdrojů dat určených aplikací. Tyto zdroje dat jsou známé jako *poskytovatelé konfigurace*. Vzhledem k tomu, že klient .NET Core konfigurace aplikace je implementovaný jako poskytovatel konfigurace, služba se zobrazí jako jiný zdroj dat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/dotnet) .
 * [Sada .NET Core SDK](https://dotnet.microsoft.com/download)
@@ -76,7 +76,7 @@ dotnet new mvc --no-https --output TestAppConfig
 
     Přístup k tomuto tajnému kódu pomocí konfiguračního rozhraní API .NET Core. Dvojtečka ( `:` ) funguje v názvu konfigurace s rozhraním API konfigurace na všech podporovaných platformách. Další informace najdete v tématu [konfigurační klíče a hodnoty](/aspnet/core/fundamentals/configuration#configuration-keys-and-values).
 
-1. Do *program.cs*přidejte odkaz na obor názvů rozhraní .NET Core Configuration API:
+1. Do *program.cs* přidejte odkaz na obor názvů rozhraní .NET Core Configuration API:
 
     ```csharp
     using Microsoft.Extensions.Configuration;
@@ -123,7 +123,7 @@ dotnet new mvc --no-https --output TestAppConfig
 
 Provedením následujících kroků přečtete a zobrazíte hodnoty uložené v úložišti konfigurace aplikace. Rozhraní .NET Core Configuration API se bude používat pro přístup k úložišti. Pro zobrazení hodnot klíčů se použije syntaxe Razor.
 
-Otevřete * \<app root> /views/Home/index.cshtml*a nahraďte jeho obsah následujícím kódem:
+Otevřete *\<app root> /views/Home/index.cshtml* a nahraďte jeho obsah následujícím kódem:
 
 ```cshtml
 @using Microsoft.Extensions.Configuration

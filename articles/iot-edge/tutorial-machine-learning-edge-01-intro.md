@@ -8,18 +8,29 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d603e5d03480b99eb3d6adb72a3440198fda2e47
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: b23324a7226d4b3de4908bd78a8f19c799e59f06
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575461"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932179"
 ---
 # <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Kurz: ucelené řešení využívající Azure Machine Learning a IoT Edge
 
 Aplikace IoT často chtějí využívat inteligentní Cloud a inteligentní hraniční zařízení. V tomto kurzu Vás provedeme školením modelu strojového učení s daty shromážděnými ze zařízení IoT v cloudu, nasazením tohoto modelu IoT Edge a pravidelným udržováním a úpravami modelu.
 
 Hlavním cílem tohoto kurzu je zavést zpracování dat IoT pomocí strojového učení, konkrétně na hraničních zařízeních. I když jsme se dotkli mnoha aspektů obecného pracovního postupu strojového učení, tento kurz není určený jako podrobný Úvod do strojového učení. V takovém případě se nepokoušíme vytvořit vysoce optimalizovaný model pro případ použití – stačí, abyste ilustraci procesu vytváření a používání životaschopného modelu pro zpracování dat IoT.
+
+V této části kurzu se zabývá:
+
+> [!div class="checklist"]
+>
+> * Požadavky na dokončení dalších částí tohoto kurzu.
+> * Cílová skupina tohoto kurzu.
+> * Případ použití, který kurz simuluje.
+> * Celkový proces, který tento kurz sleduje, aby splnil případ použití.
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Předpoklady
 

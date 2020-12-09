@@ -1,20 +1,20 @@
 ---
 title: Import souborů SQL BACPAC pomocí šablon
-description: Naučte se používat rozšíření Azure SQL Database k importu souborů SQL BACPAC pomocí šablon Azure Resource Manager.
+description: Naučte se používat rozšíření Azure SQL Database k importu souborů SQL BACPAC pomocí šablon Azure Resource Manager (šablony ARM).
 author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6a56602ad5217af07d9e35872a26ddb478146d0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b798e5ceb72ece3989fb81014555f2bc0fea5926
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86101881"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931397"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Kurz: Import souborů SQL BACPAC pomocí šablon ARM
 
-Naučte se používat rozšíření Azure SQL Database k importu souboru BACPAC pomocí šablon Azure Resource Manager (ARM). Artefakty nasazení jsou kromě hlavních souborů šablon, které jsou potřeba k dokončení nasazení, také všechny soubory. Soubor BACPAC je artefaktem.
+Naučte se používat rozšíření Azure SQL Database k importu souboru BACPAC pomocí šablon Azure Resource Manager (šablony ARM). Artefakty nasazení jsou kromě hlavních souborů šablon, které jsou potřeba k dokončení nasazení, také všechny soubory. Soubor BACPAC je artefaktem.
 
 V tomto kurzu vytvoříte šablonu pro nasazení [logického SQL serveru](../../azure-sql/database/logical-servers.md) a jediné databáze a naimportujete soubor BacPac. Informace o tom, jak nasadit rozšíření virtuálních počítačů Azure pomocí šablon ARM, najdete v tématu [kurz: nasazení rozšíření virtuálních počítačů pomocí šablon ARM](./template-tutorial-deploy-vm-extensions.md).
 
@@ -25,16 +25,16 @@ Tento kurz se zabývá následujícími úkony:
 > * Připravte soubor BACPAC.
 > * Otevřete šablonu pro rychlý Start.
 > * Upravte šablonu.
-> * Nasaďte šablonu.
+> * Nasazení šablony
 > * Ověřte nasazení.
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
-* Visual Studio Code s rozšířením Nástroje Resource Manageru Další informace najdete v tématu [rychlý Start: vytváření Azure Resource Manager šablon pomocí Visual Studio Code](./quickstart-create-templates-use-visual-studio-code.md).
+* Visual Studio Code s rozšířením Nástroje Resource Manageru Další informace najdete v tématu [rychlý Start: vytvoření šablon ARM pomocí Visual Studio Code](./quickstart-create-templates-use-visual-studio-code.md).
 * Chcete-li zvýšit zabezpečení, použijte vygenerované heslo pro účet správce serveru. Tady je ukázka, kterou můžete použít k vygenerování hesla:
 
     ```console
@@ -137,7 +137,7 @@ Soubor BACPAC musí být uložený v účtu Azure Storage, aby se mohl importova
         }
     ```
 
-    Za **adminPassword**vložte čárku. Pokud chcete soubor JSON naformátovat z Visual Studio Code, vyberte SHIFT + ALT + F.
+    Za **adminPassword** vložte čárku. Pokud chcete soubor JSON naformátovat z Visual Studio Code, vyberte SHIFT + ALT + F.
 
     Chcete-li získat tyto dvě hodnoty, přečtěte si téma [Příprava souboru BacPac](#prepare-a-bacpac-file).
 

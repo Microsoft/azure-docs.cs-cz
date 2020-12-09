@@ -1,17 +1,17 @@
 ---
 title: Konfigurace aplikace Azure – REST API – hlavičky
 description: Referenční stránky pro hlavičky používané s konfigurací aplikace Azure REST API
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 5e1f92c68004d0197391ab72df775913c0940fec
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 80b20b0b55219766872166685c0b1257f3c39c55
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424092"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932570"
 ---
 # <a name="headers"></a>Hlavičky
 
@@ -21,7 +21,7 @@ Tento článek obsahuje odkazy na referenční stránky pro hlavičky používan
 
 V následující tabulce jsou popsány běžné hlavičky požadavků používané v konfiguraci aplikací Azure.
 
-| Záhlaví | Popis | Příklad |
+| Hlavička | Popis | Příklad |
 |--|--|--|
 | **Autorizace** | Slouží k [ověření](./rest-api-authentication-index.md) požadavku na službu. Viz [část 14,8](https://tools.ietf.org/html/rfc2616#section-14.8) | `Authorization: HMAC-SHA256 Credential=<Credential>&SignedHeaders=Host;x-ms-date;x-ms-content-sha256&Signature=<Signature>` |
 | **Přijetí** | Informuje server o tom, jaký typ média bude klient přijímat v odpovědi HTTP. Viz [část 14,1](https://tools.ietf.org/html/rfc2616#section-14.1) | `Accept: application/vnd.microsoft.appconfig.kv+json;` |
@@ -41,12 +41,12 @@ V následující tabulce jsou popsány běžné hlavičky požadavků používan
 
 Server může ve svých odpovědích zahrnovat následující hlavičky protokolu HTTP.
 
-| Záhlaví | Popis | Příklad |
+| Hlavička | Popis | Příklad |
 |--|--|--|
 | **Typ obsahu** | Obsahuje typ média obsahu v těle odpovědi HTTP. Viz [část 14,17](https://tools.ietf.org/html/rfc2616#section-14.17) | `Content-Type: application/vnd.microsoft.appconfig.kv+json; charset=utf-8;` |
 | **Značk** | Neprůhledný token představující stav daného prostředku. Dá se použít v podmíněných operacích. Viz [část 14,19](https://tools.ietf.org/html/rfc2616#section-14.19) | `ETag: "4f6dd610dd5e4deebc7fbaef685fb903"` |
 | **Naposledy změněno** | V této části najdete popis poslední změny požadovaného prostředku. Formátováno jako [Datum http](https://tools.ietf.org/html/rfc2616#section-3.3.1). Viz [část 14,29](https://tools.ietf.org/html/rfc2616#section-14.29) | `Last-Modified: Tue, 05 Dec 2017 02:41:26 GMT` |
-| **Propojit** | Obsahuje odkazy na prostředky, které se vztahují k odpovědi. Tato hlavička se používá pro stránkování pomocí _následujícího_ odkazu. Viz [RFC 5988](https://tools.ietf.org/html/rfc5988) | `Link: </kv?after={token}>; rel="next"` |
+| **Odkaz** | Obsahuje odkazy na prostředky, které se vztahují k odpovědi. Tato hlavička se používá pro stránkování pomocí _následujícího_ odkazu. Viz [RFC 5988](https://tools.ietf.org/html/rfc5988) | `Link: </kv?after={token}>; rel="next"` |
 | **Soupisky – DateTime** | Indikuje, že obsah obsažený v odpovědi představuje předchozí stav. Hodnota tohoto záhlaví je DateTime tohoto stavu. Viz [RFC 7089](https://tools.ietf.org/html/rfc7089#section-2.1.1) | `Memento-Datetime: Sat, 12 May 2018 02:10:00 GMT` |
 | **opakovat po – MS** | Poskytuje navrhované období (v milisekundách), po které bude klient čekat před opakováním neúspěšné žádosti. | `retry-after-ms: 10` |
 | **x-MS-Request-ID** | Jedinečné ID vygenerované serverem, které se používá ke sledování žádosti v rámci služby. | `x-ms-request-id: 00000000-0000-0000-0000-000000000000` |

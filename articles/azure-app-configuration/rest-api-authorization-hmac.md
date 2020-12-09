@@ -1,17 +1,17 @@
 ---
 title: Konfigurace aplikací Azure REST API – ověřování HMAC
 description: Použití HMAC k autorizaci pro konfiguraci aplikací Azure pomocí REST API
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 8d1f8a17f51711cc5c10567797e1224f96eb7630
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 3746fcf06aea48c9c80696b634d6323b9cb21822
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424003"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932655"
 ---
 # <a name="hmac-authorization---rest-api-reference"></a>Ověřování HMAC – REST API Reference
 
