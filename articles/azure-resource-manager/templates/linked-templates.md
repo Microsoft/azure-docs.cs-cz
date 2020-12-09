@@ -2,19 +2,19 @@
 title: Propojení šablon pro nasazení
 description: Popisuje způsob použití propojených šablon v šabloně Azure Resource Manager k vytvoření modulárního řešení šablon. Ukazuje, jak předat hodnoty parametrů, určit soubor parametrů a dynamicky vytvořené adresy URL.
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.openlocfilehash: 603445fdd96cc72a2d64bae21a47cfeabd6dd167
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.date: 12/07/2020
+ms.openlocfilehash: 1e2ccc57b42f8072c9aa28612d534507b9a674ed
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366331"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852094"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Použití propojené a vnořené šablony při nasazování prostředků Azure
 
 K nasazení složitých řešení můžete rozdělit šablonu na mnoho souvisejících šablon a pak je nasadit společně prostřednictvím hlavní šablony. Související šablony mohou být samostatné soubory nebo syntaxe šablony, která je vložena do hlavní šablony. V tomto článku se používá pojem **propojená šablona** pro odkazování na samostatný soubor šablony, na který se odkazuje pomocí odkazu z hlavní šablony. Používá termín **vnořená šablona** pro odkazování na vloženou syntaxi šablony v rámci hlavní šablony.
 
-U malých až středních řešení je jednodušší pochopit a spravovat jedinou šablonu. Všechny prostředky a hodnoty vidíte v jednom souboru. Ve složitějších scénářích umožňují propojené šablony rozdělit řešení do specializovaných komponent. Tyto šablony můžete snadno opakovaně použít pro jiné scénáře.
+U malých až středních řešení je jednodušší pochopit a spravovat jedinou šablonu. Všechny prostředky a hodnoty vidíte v jednom souboru. Ve složitějších scénářích umožňují propojené šablony rozdělit řešení do specializovaných komponent. Tyto šablony můžete jednoduše opakovaně použít v jiných scénářích.
 
 Kurz najdete v tématu [kurz: Vytvoření propojených Azure Resource Manager šablon](./deployment-tutorial-linked-template.md).
 
@@ -380,6 +380,12 @@ Další informace najdete tady:
 - [Kurz: Vytvoření specifikace šablony s propojenými šablonami](./template-specs-create-linked.md).
 - [Kurz: nasazení specifikace šablony jako propojené šablony](./template-specs-deploy-linked-template.md).
 
+## <a name="dependencies"></a>Závislosti
+
+Stejně jako u jiných typů prostředků můžete nastavit závislosti mezi propojenými šablonami. Pokud musí být prostředky v jedné propojené šabloně nasazené před prostředky ve druhé propojené šabloně, nastavte druhou šablonu závislou na prvním.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/linked-dependency.json" highlight="10,22,24":::
+
 ## <a name="contentversion"></a>Contentversion –
 
 Nemusíte zadávat `contentVersion` vlastnost pro `templateLink` `parametersLink` vlastnost nebo. Pokud neposkytnete `contentVersion` , je nasazena aktuální verze šablony. Pokud zadáte hodnotu verze obsahu, musí odpovídat verzi v propojené šabloně. v opačném případě se nasazení nepovede a dojde k chybě.
@@ -388,7 +394,7 @@ Nemusíte zadávat `contentVersion` vlastnost pro `templateLink` `parametersLink
 
 Předchozí příklady ukázaly pevně kódované hodnoty adresy URL pro odkazy šablony. Tento přístup může fungovat pro jednoduchou šablonu, ale nefunguje dobře pro velkou sadu modulárních šablon. Místo toho můžete vytvořit statickou proměnnou, která bude ukládat základní adresu URL pro hlavní šablonu a pak dynamicky vytvořit adresy URL pro propojené šablony z této základní adresy URL. Výhodou tohoto přístupu je, že šablonu můžete snadno přesunout nebo rozvětvit, protože v hlavní šabloně potřebujete změnit jenom statickou proměnnou. Hlavní šablona projde správné identifikátory URI v rámci rozložené šablony.
 
-Následující příklad ukazuje, jak použít základní adresu URL pro vytvoření dvou adres URL pro propojené šablony ( **sharedTemplateUrl** a **vmTemplate** ).
+Následující příklad ukazuje, jak použít základní adresu URL pro vytvoření dvou adres URL pro propojené šablony (**sharedTemplateUrl** a **vmTemplate**).
 
 ```json
 "variables": {
@@ -472,156 +478,19 @@ Při získávání výstupní vlastnosti z propojené šablony nesmí název vla
 
 Následující příklady ukazují, jak odkazovat na propojenou šablonu a načíst výstupní hodnotu. Odkazovaná šablona vrátí jednoduchou zprávu.  Nejprve odkazovaná Šablona:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [],
-  "outputs": {
-    "greetingMessage": {
-      "value": "Hello World",
-      "type" : "string"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/helloworld.json":::
 
 Hlavní šablona nasadí propojenou šablonu a získá vrácenou hodnotu. Všimněte si, že odkazuje na prostředek nasazení podle názvu a používá název vlastnosti vrácenou propojenou šablonou.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
-      "name": "linkedTemplate",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[uri(deployment().properties.templateLink.uri, 'helloworld.json')]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    }
-  ],
-  "outputs": {
-    "messageFromLinkedTemplate": {
-      "type": "string",
-      "value": "[reference('linkedTemplate').outputs.greetingMessage.value]"
-    }
-  }
-}
-```
-
-Stejně jako u jiných typů prostředků můžete nastavit závislosti mezi propojenou šablonou a dalšími prostředky. Pokud jiné zdroje vyžadují výstupní hodnotu z propojené šablony, zajistěte, aby byla propojená šablona nasazena před nimi. Nebo, pokud propojená šablona spoléhá na jiné prostředky, zajistěte, aby byly nasazeny další prostředky před propojenou šablonou.
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/helloworldparent.json" highlight="10,23":::
 
 Následující příklad ukazuje šablonu, která nasadí veřejnou IP adresu a vrátí ID prostředku prostředku Azure pro tuto veřejnou IP adresu:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "publicIPAddresses_name": {
-      "type": "string"
-    }
-  },
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Network/publicIPAddresses",
-      "apiVersion": "2018-11-01",
-      "name": "[parameters('publicIPAddresses_name')]",
-      "location": "eastus",
-      "properties": {
-        "publicIPAddressVersion": "IPv4",
-        "publicIPAllocationMethod": "Dynamic",
-        "idleTimeoutInMinutes": 4
-      },
-      "dependsOn": []
-    }
-  ],
-  "outputs": {
-    "resourceID": {
-      "type": "string",
-      "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_name'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/public-ip.json" highlight="27":::
 
 Chcete-li při nasazování nástroje pro vyrovnávání zatížení použít veřejnou IP adresu z předchozí šablony, připojte se k šabloně a deklarujte závislost na `Microsoft.Resources/deployments` prostředku. Veřejná IP adresa v nástroji pro vyrovnávání zatížení je nastavená na výstupní hodnotu z propojené šablony.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "loadBalancers_name": {
-      "defaultValue": "mylb",
-      "type": "string"
-    },
-    "publicIPAddresses_name": {
-      "defaultValue": "myip",
-      "type": "string"
-    }
-  },
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Network/loadBalancers",
-      "apiVersion": "2018-11-01",
-      "name": "[parameters('loadBalancers_name')]",
-      "location": "eastus",
-      "properties": {
-        "frontendIPConfigurations": [
-          {
-            "name": "LoadBalancerFrontEnd",
-            "properties": {
-              "privateIPAllocationMethod": "Dynamic",
-              "publicIPAddress": {
-                // this is where the output value from linkedTemplate is used
-                "id": "[reference('linkedTemplate').outputs.resourceID.value]"
-              }
-            }
-          }
-        ],
-        "backendAddressPools": [],
-        "loadBalancingRules": [],
-        "probes": [],
-        "inboundNatRules": [],
-        "outboundNatRules": [],
-        "inboundNatPools": []
-      },
-      // This is where the dependency is declared
-      "dependsOn": [
-        "linkedTemplate"
-      ]
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
-      "name": "linkedTemplate",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[uri(deployment().properties.templateLink.uri, 'publicip.json')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters":{
-          "publicIPAddresses_name":{"value": "[parameters('publicIPAddresses_name')]"}
-        }
-      }
-    }
-  ]
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json" highlight="28,41":::
 
 ## <a name="deployment-history"></a>Historie nasazení
 

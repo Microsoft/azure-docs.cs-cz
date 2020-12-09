@@ -55,6 +55,12 @@
         - name: Azure Defender pro trezor klíčů
           displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
+        - name: Azure Defender pro Resource Manager
+          displayName: ARM
+          href: defender-for-resource-manager-introduction.md
+        - name: Azure Defender pro DNS
+          displayName: domain
+          href: defender-for-dns-introduction.md
         - name: Azure Defender pro Kubernetes
           displayName: 'clusters, k8s, aks'
           href: defender-for-kubernetes-introduction.md
@@ -253,6 +259,11 @@
         - name: Reakce na upozornění Azure Defenderu pro Key Vault
           displayName: 'akv, kv'
           href: defender-for-key-vault-usage.md
+        - name: Reakce na upozornění Azure Defenderu pro DNS
+          href: defender-for-dns-usage.md
+        - name: Reakce na upozornění Azure Defenderu pro Resource Manager
+          displayName: arm
+          href: defender-for-resource-manager-usage.md
         - name: Správa incidentů zabezpečení
           href: security-center-incident.md
         - name: Generování sestav analýzy hrozeb

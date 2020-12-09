@@ -66,6 +66,8 @@
           href: sap-hana-backup-support-matrix.md
         - name: Matice podpory pro zálohování sdílených složek Azure
           href: azure-file-share-support-matrix.md
+        - name: Řadiče domény služby Active Directory
+          href: active-directory-backup-restore.md
         - name: Podporované SKU virtuálních počítačů pro Azure Policy
           href: backup-azure-policy-supported-skus.md
     - name: Nejčastější dotazy

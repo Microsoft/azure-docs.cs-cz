@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: cb74a799efb6099b55c9da9650d9cca7358ecbed
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 55651b3201676ee5cddb5412e950791afaa4e87a
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552867"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852128"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Jak připojit Azure Data Factory a Azure dosah
 
@@ -34,7 +34,7 @@ Několik datových továrn Azure se může připojit k jednomu Data Catalog Azur
     - **Odpojeno**: objekt pro vytváření dat má přístup ke katalogu, ale je připojený k jinému katalogu. V důsledku toho se datový řádek nebude automaticky hlásit katalogu.
     - **CannotAccess**: aktuální uživatel nemá přístup k objektu pro vytváření dat, takže stav připojení není známý.
  >[!Note]
- >Chcete-li zobrazit Data Factory připojení, je nutné přiřadit jednu z rolí Azure Build-in:
+ >Aby bylo možné zobrazit Data Factory připojení, je nutné přiřadit jednu z rolí dosah:
  >- Přispěvatel
  >- Vlastník
  >- Čtenář
@@ -72,9 +72,9 @@ Pokud chcete odebrat připojení k datové továrně, udělejte toto:
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="Snímek obrazovky ukazující, jak vybrat datové továrny pro odebrání připojení" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
 
 >[!Note]
->Chcete-li přidat nebo odebrat připojení Data Factory, je nutné přiřadit jednu z rolí Azure Build-in:
+>Chcete-li přidat nebo odebrat připojení Data Factory, je nutné přiřadit jednu z rolí dosah:
 >- Vlastník
->- Správce uživatelských přístupů
+>- Správce přístupu uživatele kromě toho vyžaduje, aby uživatelé byli "vlastníkem" objektu pro vytváření dat "vlastník" nebo "Přispěvatel" nebo "Data Factory Přispěvatel". 
 
 ## <a name="configure-a-self-hosted-ir-to-collect-lineage-from-on-prem-sql"></a>Konfigurace prostředí IR v místním prostředí pro shromažďování řádků z Prem SQL
 

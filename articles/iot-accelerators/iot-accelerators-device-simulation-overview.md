@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
-ms.openlocfilehash: f58eb05ed582cf18157a76f4d637d72a228f4e96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7be0278fd8870395b8495168eb9723780eba4b26
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "65464874"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852366"
 ---
 # <a name="device-simulation-solution-accelerator-overview"></a>Přehled akcelerátorů řešení simulace zařízení
 
@@ -36,7 +36,7 @@ Simulace zařízení je zdarma. Simulace zařízení se ale nasadí do vašeho p
 
 ## <a name="sample-simulations"></a>Ukázkové simulace
 
-Když nasadíte simulaci zařízení, zobrazí se několik ukázkových simulací a ukázkových zařízení. Pomocí těchto ukázek můžete zjistit, jak používat simulaci zařízení. Chcete-li začít, spusťte [ukázkovou simulaci, která simuluje 10 vozíků](quickstart-device-simulation-deploy.md). Můžete také [vytvořit vlastní simulaci pomocí jedné z mnoha dostupných ukázkových zařízení](iot-accelerators-device-simulation-create-simulation.md).
+Když nasadíte simulaci zařízení, zobrazí se několik ukázkových simulací a ukázkových zařízení. Pomocí těchto ukázek můžete zjistit, jak používat simulaci zařízení. Chcete-li začít, spusťte [ukázkovou simulaci](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md). Můžete také [vytvořit vlastní simulaci pomocí jedné z mnoha dostupných ukázkových zařízení](iot-accelerators-device-simulation-create-simulation.md).
 
 ![Konfigurace simulace](media/iot-accelerators-device-simulation-overview/samplesimulation1.png)
 
@@ -60,7 +60,7 @@ Pokročilé modely zařízení vám umožní:
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o akcelerátoru řešení pro simulaci zařízení a jeho schopnostech. Pokud chcete začít používat akcelerátor řešení, pokračujte k rychlému startu:
+V tomto článku jste se dozvěděli o akcelerátoru řešení pro simulaci zařízení a jeho schopnostech. Pokud chcete nasadit akcelerátor řešení, navštivte úložiště GitHub:
 
 > [!div class="nextstepaction"]
-> [Nasazení a spuštění simulace zařízení IoT v Azure](quickstart-device-simulation-deploy.md)
+> [Nasazení a spuštění simulace zařízení IoT v Azure](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)

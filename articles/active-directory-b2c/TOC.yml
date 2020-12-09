@@ -125,10 +125,12 @@
       items:
         - name: Vytvořit tok
           items:
-            - name: Registrace nebo přihlášení
-              href: tutorial-create-user-flows.md
+            - name: Vytvoření toků uživatele
+              href: create-user-flow.md
             - name: Přihlašovací údaje vlastníka prostředku s heslem
               href: configure-ropc.md
+            - name: Nastavení ověřování telefonem
+              href: phone-authentication-user-flows.md
             - name: Nastavení samoobslužného resetování hesla
               href: user-flow-self-service-password-reset.md
         - name: Přidání podmíněného přístupu

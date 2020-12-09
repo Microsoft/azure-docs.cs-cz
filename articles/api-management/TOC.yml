@@ -58,6 +58,8 @@
           href: api-management-howto-policies.md
         - name: Rejstřík referenčních informací o zásadách
           href: api-management-policies.md
+        - name: Zpracování chyb
+          href: api-management-error-handling-policies.md
     - name: Zabezpečení
       items:
         - name: Standardní hodnoty zabezpečení
@@ -70,8 +72,6 @@
       href: api-management-revisions.md
     - name: Správa s použitím automatizace
       href: automation-manage-api-management.md
-    - name: Zpracování chyb
-      href: api-management-error-handling-policies.md
     - name: Omezení pro import API
       href: api-management-api-import-restrictions.md
     - name: Přehled brány v místním prostředí
@@ -240,6 +240,8 @@
           href: api-management-howto-create-groups.md
         - name: Načtení IP adres
           href: api-management-howto-ip-addresses.md
+        - name: Získání analýz rozhraní API
+          href: howto-use-analytics.md
         - name: Protokolování událostí ve službě Azure Event Hubs
           href: api-management-howto-log-event-hubs.md
         - name: Protokolování žádostí s Azure Application Insights
@@ -305,5 +307,9 @@
       href: /azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json
     - name: "Pokyny k\_implementaci API"
       href: /azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json
-    - name: Při řešení potíží se nepovedlo aktualizovat názvy hostitelů
-      href: api-management-troubleshoot-cannot-add-custom-domain.md
+    - name: Řešení potíží
+      items:
+        - name: Při řešení potíží se nepovedlo aktualizovat názvy hostitelů
+          href: api-management-troubleshoot-cannot-add-custom-domain.md
+        - name: Řešení potíží s chybami a dobami odezvy
+          href: troubleshoot-response-timeout-and-errors.md

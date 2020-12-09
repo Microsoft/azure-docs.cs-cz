@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: 12aa18c966745b450b3c9aa55e87e576b0c3f99b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 77a795b8f704084b612a2dcbd364b8d5be0a3333
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018524"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852145"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Serializace telemetrie pomocí vyrovnávacích pamětí protokolu
 
@@ -32,7 +32,7 @@ Postup v tomto návodu vám ukáže, jak:
 1. Generovat třídy Protobuf
 1. Test lokálně
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete postupovat podle kroků v tomto průvodci, budete potřebovat:
 
@@ -174,7 +174,7 @@ Když máte model zařízení a určíte formát zprávy, můžete **vytvořit s
 
 1. [Stažení kompilátoru Protobuf z GitHubu](https://github.com/protocolbuffers/protobuf/releases/download/v3.4.0/protoc-3.4.0-win32.zip)
 
-1. Spusťte kompilátor, určete zdrojový adresář, cílový adresář a **název souboru.** Například:
+1. Spusťte kompilátor, určete zdrojový adresář, cílový adresář a **název souboru.** Příklad:
 
     ```cmd
     protoc -I c:\temp\device-simulation-dotnet-master\Services\Models\Protobuf\proto --csharp_out=C:\temp\device-simulation-dotnet-master\Services\Models\Protobuf assettracker.proto
@@ -206,7 +206,7 @@ Otevřete soubor **WebService\appsettings.ini** a upravte nastavení následují
 
 Ve výchozím nastavení se vaše nové soubory JSON a JS modelů zařízení do sestaveného řešení nekopírují. Je nutné je explicitně zahrnout.
 
-Přidejte položku do souboru **services\services.csproj** pro každý soubor, který chcete zahrnout. Například:
+Přidejte položku do souboru **services\services.csproj** pro každý soubor, který chcete zahrnout. Příklad:
 
 ```xml
 <None Update="data\devicemodels\assettracker-01.json">
@@ -277,4 +277,4 @@ Mnoho funkcí IoT Hub neumožňuje nativně podporovat Protobuf nebo jiné biná
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste se naučili, jak přizpůsobit simulaci zařízení, aby při posílání telemetrie používal Protobuf, v dalším kroku se dozvíte, jak [nasadit vlastní image do cloudu](iot-accelerators-device-simulation-deploy-image.md).
+Nyní jste se naučili, jak přizpůsobit simulaci zařízení, aby při posílání telemetrie používal Protobuf, další krok je navštívit úložiště GitHub a získat další informace o [simulaci zařízení](https://github.com/Azure/device-simulation-dotnet).

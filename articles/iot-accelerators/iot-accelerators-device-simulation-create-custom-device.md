@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
-ms.openlocfilehash: 7ddd1aa9865cb4061212ce77b31efc82ad339283
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 1fe86aef832223a7485036343b4b12d8bb526e06
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165566"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852383"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>Kurz: Vytvoření vlastního simulovaného zařízení
 
@@ -28,21 +28,13 @@ V tomto kurzu jste:
 > * Klonování modelu zařízení
 > * Odstranění modelu zařízení
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli postupovat podle tohoto kurzu, musíte ve svém předplatném Azure mít nasazenou instanci Simulace zařízení.
 
-Pokud jste Simulaci zařízení ještě nenasadili, měli byste dokončit rychlý start [Nasazení a spuštění simulace zařízení IoT v Azure](quickstart-device-simulation-deploy.md).
-
-## <a name="open-device-simulation"></a>Otevření Simulace zařízení
-
-Pokud chcete spustit Simulaci zařízení v prohlížeči, nejprve přejděte na web [Akcelerátory řešení Microsoft Azure IoT](https://www.azureiotsolutions.com).
-
-Může se zobrazit výzva k přihlášení pomocí vašich přihlašovacích údajů k předplatnému Azure.
-
-Pak klikněte na **Spustit** na dlaždici instance Simulace zařízení, kterou jste nasadili v rychlém startu [Nasazení a spuštění simulace zařízení IoT v Azure](quickstart-device-simulation-deploy.md).
+Pokud jste ještě nasadili simulaci zařízení, přečtěte si téma [nasazení simulace zařízení](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) na GitHubu.
 
 ## <a name="view-your-device-models"></a>Zobrazení modelů zařízení
 
@@ -64,7 +56,7 @@ Do formuláře zadejte následující informace:
 | ------------------- | ---------------------------------------------------- |
 | Název modelu zařízení   | Lednice                                         |
 | Popis modelu   | Lednice se snímači teploty a vlhkosti |
-| Verze             | 1,0                                                  |
+| Verze             | 1.0                                                  |
 
 > [!NOTE]
 > Název modelu zařízení musí být jedinečný.

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
-ms.openlocfilehash: 09a6920e0d3a50da1bdacbf2bc7a80396c885897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e0d7310c4863c8dd431b991a2c249f2d8e257aeb
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61448518"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852349"
 ---
 # <a name="tutorial-create-and-run-an-iot-device-simulation"></a>Kurz: Vytvoření a spuštění simulace zařízení IoT
 
@@ -28,21 +28,13 @@ V tomto kurzu jste:
 > * Zobrazení metrik simulace
 > * Zastavení simulace
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli postupovat podle tohoto kurzu, musíte ve svém předplatném Azure mít nasazenou instanci Simulace zařízení.
 
-Pokud jste Simulaci zařízení ještě nenasadili, měli byste dokončit rychlý start [Nasazení a spuštění simulace zařízení IoT v Azure](quickstart-device-simulation-deploy.md).
-
-## <a name="open-device-simulation"></a>Otevření Simulace zařízení
-
-Pokud chcete spustit Simulaci zařízení v prohlížeči, nejprve přejděte na web [Akcelerátory řešení Microsoft Azure IoT](https://www.azureiotsolutions.com). 
-
-Může se zobrazit výzva k přihlášení pomocí vašich přihlašovacích údajů k předplatnému Azure.
-
-Pak klikněte na **Spustit** na dlaždici instance Simulace zařízení, kterou jste nasadili v tomto [rychlém startu](quickstart-device-simulation-deploy.md).
+Pokud jste ještě nasadili simulaci zařízení, přečtěte si téma [nasazení simulace zařízení](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) na GitHubu.
 
 ## <a name="view-simulations"></a>Zobrazení simulací
 

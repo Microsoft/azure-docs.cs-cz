@@ -51,6 +51,8 @@
           href: marketplace-co-sell.md
         - name: Možnost spoluprodeje v Partnerském centru
           href: commercial-marketplace-co-sell.md
+        - name: Migrace řešení spoluprodeje z OCP GTM
+          href: co-sell-solution-migration.md
         - name: Prodej prostřednictvím partnerů CSP
           href: cloud-solution-providers.md
         - name: Průvodce onboardingem programu Connect

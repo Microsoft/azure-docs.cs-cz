@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d175ac75ce76836d012cdd04d4dbd7d81ffda584
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b6f4610887092b1dac5cdc85622739318d5921d7
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460695"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852230"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-the-azure-cli"></a>Kurz: nasazení HSM do existující virtuální sítě pomocí Azure CLI
 
@@ -36,7 +36,7 @@ Typická, vysoká dostupnost, architektura nasazení ve více oblastech, může 
 
 Tento kurz se zaměřuje na pár HSM a požadovanou bránu ExpressRoute (viz podsíť 1 výše), která se integruje do existující virtuální sítě (viz virtuální síť 1 výše).  Všechny ostatní prostředky jsou standardní prostředky Azure. Stejný proces integrace lze použít pro HSM v podsíti 4 ve virtuální síti 3 výše.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Vyhrazený modul HARDWAROVÉho zabezpečení Azure není v současnosti dostupný v Azure Portal. Veškerá interakce se službou bude prostřednictvím příkazového řádku nebo pomocí PowerShellu. V tomto kurzu použijete rozhraní příkazového řádku (CLI) v Azure Cloud Shell. Pokud začínáte s rozhraním příkazového řádku Azure CLI, postupujte podle pokynů v části Začínáme: [Azure CLI 2,0](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest&preserve-view=true)Začínáme.
 
@@ -233,14 +233,14 @@ Výstup by měl vypadat, jak je znázorněno na obrázku níže:
 
 ![Snímek obrazovky ukazuje výstup v okně PowerShellu.](media/tutorial-deploy-hsm-cli/hsm-show-output.png)
 
-V tuto chvíli jste přidělili všechny prostředky pro vysoce dostupný, dva nasazení HSM a ověřený přístup a provozní stav. Jakákoli další konfigurace nebo testování zahrnuje více práce se samotným zařízením HSM. V takovém případě byste měli postupovat podle pokynů v tématu Identita Gemalto Luna Network HSM 7 Kapitola 7 a inicializovat modul HSM a vytvořit oddíly. Veškerá dokumentace a software jsou k dispozici přímo z identita Gemalto ke stažení, jakmile se zaregistrujete na portálu zákaznické podpory identita Gemalto a máte ID zákazníka. Stáhněte si klientský software verze 7,2, abyste získali všechny požadované součásti.
+V tuto chvíli jste přidělili všechny prostředky pro vysoce dostupný, dva nasazení HSM a ověřený přístup a provozní stav. Jakákoli další konfigurace nebo testování zahrnuje více práce se samotným zařízením HSM. V takovém případě byste měli postupovat podle pokynů v tématu Thales Luna Network HSM 7 Kapitola 7 a inicializovat modul HSM a vytvořit oddíly. Veškerá dokumentace a software jsou k dispozici přímo z Thales ke stažení, jakmile se zaregistrujete na portálu zákaznické podpory Thales a máte ID zákazníka. Stáhněte si klientský software verze 7,2, abyste získali všechny požadované součásti.
 
 ## <a name="delete-or-clean-up-resources"></a>Odstranění nebo vyčištění prostředků
 
 Pokud jste hotovi s pouze zařízením HSM, pak ho můžete odstranit jako prostředek a vrátit se do bezplatného fondu. Zjevné obavy při tom, že se jedná o veškerá citlivá zákaznická data, která jsou na zařízení. Nejlepším způsobem, jak "zeroize", zařízení je získat heslo správce HSM nesprávně třikrát (Poznámka: Toto není správce zařízení, je to skutečný správce HSM). Jako bezpečnostní opatření k ochraně klíčových materiálů se zařízení nedá odstranit jako prostředek Azure, dokud nebude v nenulovém stavu.
 
 > [!NOTE]
-> Pokud máte problém s libovolnou konfigurací zařízení identita Gemalto, měli byste kontaktovat [zákaznickou podporu identita Gemalto](https://safenet.gemalto.com/technical-support/).
+> Pokud máte problém s libovolnou konfigurací zařízení Thales, měli byste kontaktovat [zákaznickou podporu Thales](https://safenet.gemalto.com/technical-support/).
 
 Pokud jste dokončili všechny prostředky v této skupině prostředků, můžete je odebrat pomocí následujícího příkazu:
 

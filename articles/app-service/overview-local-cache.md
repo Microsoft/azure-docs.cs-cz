@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: b9e43cb9188df8274d5bafa7fd9bc90c24339237
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 81782f63199a9fe8f43f56aeefcd1c68951d57a4
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286846"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852248"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Přehled Azure App Service místní mezipaměti
 
@@ -120,3 +120,6 @@ Místní mezipaměť zabraňuje restartování aplikace související s úloži�
 
 ### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>Vylučuje místní mezipaměť kopírování všech adresářů na rychlejší místní disk?
 V rámci kroku, který kopíruje obsah úložiště, se vyloučí všechny složky s názvem úložiště. To pomáhá scénářům, kde obsah webu může obsahovat úložiště správy zdrojového kódu, které nemusí být potřeba během každodenního provozu aplikace. 
+
+### <a name="how-to-flush-the-local-cache-logs-after-a-site-management-operation"></a>Jak vyprázdnit protokoly místní mezipaměti po operaci správy lokality?
+Pokud chcete vyprázdnit protokoly místních mezipamětí, zastavte a restartujte aplikaci. Tato akce vymaže starou mezipaměť. 

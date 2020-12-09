@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2020
 ms.author: memildin
-ms.openlocfilehash: 68cb738ae6e4689a0356ea56c1de2d383ea83ad6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31ff3620bcab6b10b59582daa255ff1f259ab0d3
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449932"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852638"
 ---
 # <a name="supported-platforms"></a>Podporované platformy 
 
@@ -44,8 +44,10 @@ Security Center závisí na [agentu Log Analytics](../azure-monitor/platform/age
 
 Ujistěte se také, že je váš agent Log Analytics [správně nakonfigurovaný tak, aby odesílal data Security Center](security-center-enable-data-collection.md#manual-agent)
 
-> [!TIP]
-> Další informace o konkrétních funkcích Security Center dostupných v systému Windows a Linux najdete v tématu věnovaném [pokrytí funkcí pro počítače](security-center-services.md).
+Další informace o konkrétních funkcích Security Center dostupných v systému Windows a Linux najdete v tématu věnovaném [pokrytí funkcí pro počítače](security-center-services.md).
+
+> [!NOTE]
+> I když je Azure Defender navržený tak, aby chránil servery, většina možností **Azure Defenderu pro servery** je podporovaná pro počítače s Windows 10. Jednou funkcí, která není aktuálně podporovaná, je [Security Center integrované řešení EDR: Microsoft Defender pro koncové body](security-center-wdatp.md).
 
 ## <a name="managed-virtual-machine-services"></a>Spravované služby virtuálních počítačů <a name="virtual-machine"></a>
 

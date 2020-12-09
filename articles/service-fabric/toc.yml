@@ -797,6 +797,8 @@
               href: configure-existing-cluster-enable-managed-identity-token-service.md
             - name: Konfigurace nového clusteru Azure Service Fabric pomocí spravované identity
               href: configure-new-azure-service-fabric-enable-managed-identity.md
+            - name: Konfigurace spravovaného clusteru Service Fabric pomocí spravované identity
+              href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
         - name: Nastavení aplikace
           items:
             - name: Nasazení aplikace pomocí spravované identity

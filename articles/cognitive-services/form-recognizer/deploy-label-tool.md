@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 543e6115be30963600d867bb9c2a03dfbb54e9f1
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: abc8cffa3d5b9dffb55beabc90cdaecb3adc647f
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576549"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852519"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Nasazení ukázkového nástroje pro popisování
 
@@ -34,14 +34,14 @@ Nejrychlejší způsob, jak začít s označováním dat, je spustit nástroj pr
 
 Než začneme, je důležité si uvědomit, že existují dva způsoby, jak nasadit vzorový Nástroj pro označování do instance kontejneru Azure (ACI). Obě možnosti slouží ke spuštění ukázkového nástroje pro označování pomocí ACI: 
 
-* [Použití Azure Portal](#azure-portal)
+* [Použití webu Azure Portal](#azure-portal)
 * [Použití Azure CLI](#azure-cli)
 
 ### <a name="azure-portal"></a>portál Azure
 
 Pomocí následujících kroků vytvořte nový prostředek pomocí Azure Portal: 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/signin/index/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/signin/index/).
 2. Vyberte **Vytvořit prostředek**. 
 3. Pak vyberte **Webová aplikace**. 
 
@@ -99,6 +99,9 @@ Pomocí následujících kroků vytvořte nový prostředek pomocí Azure Portal
 
 > [!NOTE]
 > Při vytváření webové aplikace můžete taky nakonfigurovat autorizaci a ověřování. Není to nutné pro začátek. 
+
+> [!IMPORTANT]
+> Pro vaši webovou aplikaci možná budete muset povolit TLS, aby se mohla zobrazit na `https` adrese. Postupujte podle pokynů v části [Povolení koncového bodu TLS](https://docs.microsoft.com/azure/container-instances/container-instances-container-group-ssl) pro nastavení kontejneru Webhooku, než pro vaši webovou aplikaci povolíte protokol TLS/SSL.
 
 ### <a name="azure-cli"></a>Azure CLI
 
