@@ -17,7 +17,7 @@ ms.locfileid: "93061596"
 ---
 Pokud používáte PowerShell místně, otevřete konzolu PowerShellu se zvýšenými oprávněními a připojte se ke svému účtu Azure. Rutina *Connect-AzAccount* vás vyzve k zadání přihlašovacích údajů. Po ověření se stáhne nastavení vašeho účtu, aby bylo možné Azure PowerShell.
 
-Pokud používáte Azure Cloud Shell prostředí PowerShell místně, budete si všimnout, že nemusíte spouštět rutinu *Connect-AzAccount* . Po výběru **vyzkoušet** se Azure Cloud Shell ke svému účtu Azure automaticky připojí.
+Pokud používáte Azure Cloud Shell prostředí PowerShell místně, budete si všimnout, že nemusíte spouštět rutinu *Connect-AzAccount*. Po výběru **vyzkoušet** se Azure Cloud Shell ke svému účtu Azure automaticky připojí.
 
 1. Pokud používáte PowerShell místně, přihlaste se.
 

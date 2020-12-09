@@ -33,6 +33,6 @@ az webapp log tail --name <app-name> --resource-group <resource-group-name>
 
 Pokud nevidíte protokoly konzoly okamžitě, podívejte se znovu za 30 sekund.
 
-Pokud chcete streamování protokolů kdykoli zastavit, zadejte **CTRL** + **C** .
+Pokud chcete streamování protokolů kdykoli zastavit, zadejte **CTRL** + **C**.
 
 Můžete také zkontrolovat soubory protokolu v prohlížeči na adrese `https://<app-name>.scm.azurewebsites.net/api/logs/docker` .
